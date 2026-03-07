@@ -1,0 +1,90 @@
+name: Docs Release
+
+on:
+  schedule:
+    - cron: '0 6 * * *'  # Daily at 6:00 AM UTC
+  workflow_dispatch:       # Allow manual trigger for first run after PR approval
+
+permissions:
+  contents: write
+
+jobs:
+  build-and-release:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Check if docs have changed since last release
+        id: changes
+        run: |
+          # On manual dispatch (first run), always build
+          if [ "${{ github.event_name }}" = "workflow_dispatch" ]; then
+            echo "changed=true" >> "$GITHUB_OUTPUT"
+            echo "First run (manual dispatch) — building unconditionally."
+            exit 0
+          fi
+
+          # For scheduled runs, check if docs/ or html/docs/ changed in the last 24 hours
+          LAST_CHANGE=$(git log --since="24 hours ago" --format="%H" -- docs/ html/docs/ | head -1)
+          if [ -n "$LAST_CHANGE" ]; then
+            echo "changed=true" >> "$GITHUB_OUTPUT"
+            echo "Changes detected in docs/ or html/docs/."
+          else
+            echo "changed=false" >> "$GITHUB_OUTPUT"
+            echo "No changes detected — skipping release."
+          fi
+
+      - name: Set date tag
+        if: steps.changes.outputs.changed == 'true'
+        id: date
+        run: |
+          DATE=$(date -u +"%Y-%m-%d")
+          echo "date=$DATE" >> "$GITHUB_OUTPUT"
+          echo "tag=v$DATE" >> "$GITHUB_OUTPUT"
+          echo "zip_name=Git-Going-With-Git-$DATE.zip" >> "$GITHUB_OUTPUT"
+
+      - name: Create zip of docs and html/docs
+        if: steps.changes.outputs.changed == 'true'
+        run: |
+          zip -r "${{ steps.date.outputs.zip_name }}" docs/ html/docs/
+
+      - name: Delete existing release for today if it exists
+        if: steps.changes.outputs.changed == 'true'
+        run: |
+          gh release delete "${{ steps.date.outputs.tag }}" --yes --cleanup-tag 2>/dev/null || true
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Create GitHub release
+        if: steps.changes.outputs.changed == 'true'
+        run: |
+          gh release create "${{ steps.date.outputs.tag }}" \
+            "${{ steps.date.outputs.zip_name }}" \
+            --title "Docs Release ${{ steps.date.outputs.date }}" \
+            --notes "Daily docs release for ${{ steps.date.outputs.date }}. Contains docs/ (Markdown) and html/docs/ (HTML)." \
+            --latest
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Clean up old releases (keep last 10)
+        if: steps.changes.outputs.changed == 'true'
+        run: |
+          # List all releases sorted by date (newest first), skip the first 10
+          RELEASES_TO_DELETE=$(gh release list --limit 100 --json tagName,createdAt \
+            --jq 'sort_by(.createdAt) | reverse | .[10:] | .[].tagName' \
+            | grep -E '^v[0-9]{4}-[0-9]{2}-[0-9]{2}$' || true)
+
+          if [ -z "$RELEASES_TO_DELETE" ]; then
+            echo "No old releases to clean up."
+          else
+            for TAG in $RELEASES_TO_DELETE; do
+              echo "Deleting release $TAG..."
+              gh release delete "$TAG" --yes --cleanup-tag 2>/dev/null || true
+            done
+          fi
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
