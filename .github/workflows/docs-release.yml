@@ -28,14 +28,21 @@ jobs:
             exit 0
           fi
 
-          # For scheduled runs, check if docs/ or html/docs/ changed in the last 24 hours
-          LAST_CHANGE=$(git log --since="24 hours ago" --format="%H" -- docs/ html/docs/ | head -1)
-          if [ -n "$LAST_CHANGE" ]; then
+          # For scheduled runs, compare against the last release tag
+          LAST_TAG=$(git tag --list 'v[0-9][0-9][0-9][0-9]-[0-9][0-9]-[0-9][0-9]' --sort=-version:refname | head -1)
+          if [ -z "$LAST_TAG" ]; then
             echo "changed=true" >> "$GITHUB_OUTPUT"
-            echo "Changes detected in docs/ or html/docs/."
+            echo "No previous release tag found — building unconditionally."
+            exit 0
+          fi
+
+          DIFF=$(git diff --name-only "$LAST_TAG"..HEAD -- docs/ html/docs/)
+          if [ -n "$DIFF" ]; then
+            echo "changed=true" >> "$GITHUB_OUTPUT"
+            echo "Changes detected since $LAST_TAG in docs/ or html/docs/."
           else
             echo "changed=false" >> "$GITHUB_OUTPUT"
-            echo "No changes detected — skipping release."
+            echo "No changes since $LAST_TAG — skipping release."
           fi
 
       - name: Set date tag
