@@ -20,14 +20,16 @@
 5. [Challenge-to-Chapter Mapping](#challenge-to-chapter-mapping)
 6. [The New Appendix Structure](#the-new-appendix-structure)
 7. [The Classroom Engine](#the-classroom-engine)
-8. [Failsafe Design System](#failsafe-design-system)
-9. [Learning Cards System](#learning-cards-system)
-10. [Multi-Tool-Path System](#multi-tool-path-system)
-11. [Cross-Linking Strategy](#cross-linking-strategy)
-12. [Authoritative Source Registry](#authoritative-source-registry)
-13. [Consolidation Ledger](#consolidation-ledger)
-14. [File Rename Map](#file-rename-map)
-15. [Implementation Roadmap](#implementation-roadmap)
+8. [Challenge Artifacts and Solution Files](#challenge-artifacts-and-solution-files)
+9. [Failsafe Design System](#failsafe-design-system)
+10. [Learning Cards System](#learning-cards-system)
+11. [Multi-Tool-Path System](#multi-tool-path-system)
+12. [Cross-Linking Strategy](#cross-linking-strategy)
+13. [Authoritative Source Registry](#authoritative-source-registry)
+14. [GitHub Skills Integration Strategy](#github-skills-integration-strategy)
+15. [Consolidation Ledger](#consolidation-ledger)
+16. [File Rename Map](#file-rename-map)
+17. [Implementation Roadmap](#implementation-roadmap)
 
 ---
 
@@ -408,6 +410,182 @@ This is always accepted. A student who explains a failure thoughtfully has learn
 
 ---
 
+## Challenge Artifacts and Solution Files
+
+The plan describes 16 challenges with evidence types and autograding, but every challenge also depends on concrete files: starter content students interact with, workflows that validate their work, issue templates that create their challenge issues, and reference solutions they compare against. This section inventories everything that must exist before students arrive.
+
+### The Problem This Solves
+
+Without a systematic artifact inventory:
+
+- Facilitators set up a new cohort and discover a challenge has no starter file
+- Students complete a challenge and have no way to verify they did it correctly
+- Autograding workflows reference files that were renamed in the restructure
+- New facilitators cannot tell which files are essential vs. optional
+
+### Architecture: Where Artifacts Live
+
+| Artifact type | Repository | Directory | Why there |
+|---|---|---|---|
+| Starter files (TODOs, seed content) | `learning-room` | `docs/` and root | Students clone this repo; starter files are their workspace |
+| Issue templates (challenge issues) | `learning-room` | `.github/ISSUE_TEMPLATE/` | GitHub Classroom creates issues from these templates per student |
+| Autograding workflows | `learning-room` | `.github/workflows/` | Runs automatically when students push or open PRs |
+| Validation scripts | `learning-room` | `.github/scripts/` | Called by autograding workflows |
+| Sample files (mid-challenge reference) | `learning-room` | `docs/samples/` | Students can peek at these during a challenge for syntax examples |
+| Solution files (completed reference) | `git-going-with-github` | `docs/solutions/` | Students do NOT clone the curriculum repo, so solutions are not visible in their workspace. Facilitators share specific URLs when students need them. |
+
+**Key design decision:** Solution files live in the curriculum repo, not the learning-room. This prevents students from accidentally reading the answer before attempting the challenge. The "If You Get Stuck" section in each chapter links to the solution URL as the last resort before the universal safety net.
+
+### Starter Files Inventory (learning-room)
+
+These files must exist in the learning-room template repo before GitHub Classroom creates student copies.
+
+| File | Used by challenge | Purpose | Status |
+|---|---|---|---|
+| `docs/welcome.md` | 1, 2, 5 | Contains intentional TODOs for students to discover and fix. Scavenger hunt targets for Ch02-04. | Exists (needs TODO audit for restructured challenges) |
+| `docs/setup-guide.md` | 1, 10 | Setup reference; contains a deliberate broken link for issue practice | Exists |
+| `docs/keyboard-shortcuts.md` | 1, 2 | Reference file; contains a deliberate incorrect shortcut for issue practice | Exists |
+| `docs/CHALLENGES.md` | All | Challenge hub linking all 16 challenges with expandable instructions | Exists (851 lines; needs restructured challenge numbering) |
+| `docs/GROUP_CHALLENGES.md` | Bonus C | Group challenge specs for fast finishers | Exists |
+| `docs/samples/chapter-6-conflict-practice-sample.md` | 7 | Shows conflict markers and resolved output for reference | Exists |
+| `docs/samples/chapter-15-registration-remix-example.yml` | 14 | Example issue template YAML for the template remix challenge | Exists (rename to match new challenge numbering) |
+| `docs/samples/copilot-improvement-before.md` | 13 | **NEW.** Before-state of a documentation section for Copilot improvement exercise | Needs creation |
+| `docs/samples/agent-file-template.md` | 16 | **NEW.** Skeleton `.agent.md` showing required YAML frontmatter and section stubs | Needs creation |
+| `docs/samples/fork-workflow-checklist.md` | 16 | **NEW.** Step-by-step fork-clone-branch-push-PR checklist students can print | Needs creation |
+| `README.md` | 1 | Repository landing page; students navigate this during scavenger hunt | Exists |
+| `AUTOMATION.md` | -- | Documents the bot system for facilitators | Exists |
+| `package.json` | -- | Node.js dependencies for validation scripts | Exists |
+
+### Issue Templates Inventory (learning-room)
+
+GitHub Classroom (or the facilitator setup script) creates one issue per challenge per student. These templates define the issue body.
+
+| Template file | Challenge | Issue title pattern | What the body contains |
+|---|---|---|---|
+| `challenge-01-find-your-way.yml` | 1 | Challenge 1: Find Your Way Around (@username) | Scavenger hunt checklist, evidence prompt, buddy check |
+| `challenge-02-first-issue.yml` | 2 | Challenge 2: File Your First Issue (@username) | Instructions, title/desc requirements, evidence prompt |
+| `challenge-03-conversation.yml` | 3 | Challenge 3: Join the Conversation (@username) | @mention instructions, evidence prompt |
+| `challenge-04-branch-out.yml` | 4 | Challenge 4: Branch Out (@username) | Branch naming convention, evidence prompt |
+| `challenge-05-make-your-mark.yml` | 5 | Challenge 5: Make Your Mark (@username) | Commit message guidance, evidence prompt |
+| `challenge-06-first-pr.yml` | 6 | Challenge 6: Open Your First PR (@username) | `Closes #XX` pattern, PR description template, evidence prompt |
+| `challenge-07-merge-conflict.yml` | 7 | Challenge 7: Survive a Merge Conflict (@username) | Conflict marker reference, evidence prompt, autograded flag |
+| `challenge-08-culture.yml` | 8 | Challenge 8: The Culture Layer (@username) | Reflection prompts, label triage task, evidence prompt |
+| `challenge-09-merge-day.yml` | 9 | Challenge 9: Merge Day (@username) | PR merge checklist, Day 1 celebration, evidence prompt |
+| `challenge-10-go-local.yml` | 10 | Challenge 10: Go Local (@username) | Clone + branch + commit + push instructions, autograded flag |
+| `challenge-11-day2-pr.yml` | 11 | Challenge 11: Open a Day 2 PR (@username) | PR from local branch, pattern recognition prompt |
+| `challenge-12-review.yml` | 12 | Challenge 12: Review Like a Pro (@username) | Review checklist, inline comment instructions, verdict options |
+| `challenge-13-copilot.yml` | 13 | Challenge 13: AI as Your Copilot (@username) | Copilot task, critical evaluation prompts, evidence prompt |
+| `challenge-14-template.yml` | 14 | Challenge 14: Template Remix (@username) | Template requirements, autograded flag, evidence prompt |
+| `challenge-15-agents.yml` | 15 | Challenge 15: Meet the Agents (@username) | Agent discovery tasks, evidence prompt |
+| `challenge-16-capstone.yml` | 16 | Challenge 16: Build Your Agent (@username) | Five-phase capstone instructions, requirements, autograded flag |
+| `bonus-a-improve-agent.yml` | Bonus A | Bonus: Improve an Existing Agent (@username) | Improvement criteria, evidence prompt |
+| `bonus-b-document-journey.yml` | Bonus B | Bonus: Document Your Journey (@username) | Reflection structure, evidence prompt |
+| `bonus-c-group-challenge.yml` | Bonus C | Bonus: Create a Group Challenge (@username) | Design criteria, evidence prompt |
+| `bonus-d-notifications.yml` | Bonus D | Bonus: Notification Mastery (@username) | Config checklist, evidence prompt |
+| `bonus-e-git-history.yml` | Bonus E | Bonus: Explore Git History Visually (@username) | GitHub Desktop timeline tasks, evidence prompt |
+
+**Current status:** The existing CHALLENGES.md contains inline challenge details in expandable sections, but dedicated YAML issue templates for per-student issue creation do not yet exist. These must be created during Phase 7.
+
+### Autograding Workflows Inventory (learning-room)
+
+| Workflow file | Challenge | What it validates | Trigger |
+|---|---|---|---|
+| `pr-validation-bot.yml` | 6, 7, 10, 11 | PR format, linked issues, conflict markers, commit presence | `pull_request` events |
+| `content-validation.yml` | 5, 7, 14 | Markdown quality, accessibility checks, template YAML syntax | `push` events |
+| `skills-progression.yml` | All | Tracks completions, awards badges, updates progress | `pull_request` (merged), `issues` (closed) |
+| `autograder-conflicts.yml` | 7 | **NEW.** Verifies no conflict markers remain; file has substantive content | `pull_request` targeting paths matching `docs/welcome.md` |
+| `autograder-local-commit.yml` | 10 | **NEW.** Verifies at least one commit exists on a non-default branch | `pull_request` from `fix/*` branches |
+| `autograder-template.yml` | 14 | **NEW.** Verifies custom YAML template exists with required `name` field | `pull_request` targeting `.github/ISSUE_TEMPLATE/` |
+| `autograder-capstone.yml` | 16 | **NEW.** Verifies agent file exists, YAML frontmatter is valid, contains responsibilities and guardrails | `pull_request` in `accessibility-agents` repo (separate workflow) |
+
+**Current status:** Three general-purpose workflows exist. Four challenge-specific autograding workflows need creation. The existing `pr-validation-bot.yml` handles some validation but is not challenge-aware -- it validates all PRs generically.
+
+### Solution Files Inventory (git-going-with-github)
+
+These files live in `docs/solutions/` in the curriculum repo. Students never see them unless directed there by a chapter's "If You Get Stuck" section or by the facilitator.
+
+**Design principles for solution files:**
+
+1. **One file per challenge.** Named `solution-NN-short-name.md` where NN matches the challenge number.
+2. **Not just the answer -- the annotated answer.** Each file shows the completed artifact with inline comments explaining WHY each element is there, not just WHAT it contains.
+3. **Multiple valid approaches.** Where a challenge has more than one correct outcome (most do), the solution file shows 2-3 variants with trade-off notes.
+4. **Accessibility first.** Solution files are written in clean Markdown that works well with screen readers. No images without alt text. No tables where lists work better.
+5. **Never punitive.** The tone is "here is one way this could look" not "this is the right answer." Students who did it differently but achieved the learning objective succeeded.
+
+| Solution file | Challenge | What it shows |
+|---|---|---|
+| `solution-01-scavenger-hunt.md` | 1 | Completed checklist with the expected findings from navigating the learning-room |
+| `solution-02-first-issue.md` | 2 | Two example issues: one bug report, one feature request -- both with good titles and descriptions |
+| `solution-03-conversation.md` | 3 | Example comment thread showing a productive @mention exchange |
+| `solution-04-branch-out.md` | 4 | Correct branch creation from each tool (github.com, VS Code, GitHub Desktop, CLI) with screenshots described in alt text |
+| `solution-05-make-your-mark.md` | 5 | Example commit with a well-structured message, before/after of the edited file |
+| `solution-06-first-pr.md` | 6 | Complete PR with title, description using `Closes #XX`, linked issue, and passing checks |
+| `solution-07-merge-conflict.md` | 7 | Before (with conflict markers), after (resolved), and explanation of the three-way merge decision |
+| `solution-08-culture.md` | 8 | Example reflection comment and a triage recommendation with label justification |
+| `solution-09-merge-day.md` | 9 | Merged PR screenshot (described), the commit on main, and the Day 1 recap evidence |
+| `solution-10-go-local.md` | 10 | Terminal/VS Code/GitHub Desktop output showing clone, branch, edit, commit, push sequence |
+| `solution-11-day2-pr.md` | 11 | PR opened from a locally-pushed branch with pattern recognition commentary |
+| `solution-12-review.md` | 12 | Complete code review: inline comment, suggestion, verdict with explanation |
+| `solution-13-copilot.md` | 13 | Copilot interaction transcript, before/after of improved documentation, critical evaluation notes |
+| `solution-14-template.md` | 14 | Completed custom YAML issue template with annotations on each field |
+| `solution-15-agents.md` | 15 | Agent discovery notes for 3 agents, output from running one, summary of reading one agent's instructions |
+| `solution-16-capstone.md` | 16 | Complete `.agent.md` file with valid YAML frontmatter, responsibilities, guardrails, and the PR description |
+| `solution-bonus-a.md` | Bonus A | Example improvement PR for an existing agent |
+| `solution-bonus-b.md` | Bonus B | Example journey reflection document |
+| `solution-bonus-c.md` | Bonus C | Example group challenge design |
+| `solution-bonus-d.md` | Bonus D | Notification configuration walkthrough with before/after |
+| `solution-bonus-e.md` | Bonus E | GitHub Desktop timeline exploration with annotated history |
+
+**Current status:** No solution files exist yet. All 21 files need creation during implementation Phase 7.
+
+### How Students Access Solution Files
+
+Solution files are surfaced through three paths, each progressively more direct:
+
+**Path 1: Chapter "If You Get Stuck" tables.** Every chapter's troubleshooting table includes a final row:
+
+```markdown
+| I finished but I am not sure I did it right | Compare your work against the [Challenge N reference solution](https://github.com/Community-Access/git-going-with-github/blob/main/docs/solutions/solution-NN-short-name.md). Your version does not need to match exactly -- if you achieved the learning objective, you succeeded. |
+```
+
+**Path 2: CHALLENGES.md in the learning-room.** Each expandable challenge section ends with:
+
+```markdown
+**Compare your work:** When you are done, you can [view a completed example](https://github.com/Community-Access/git-going-with-github/blob/main/docs/solutions/solution-NN-short-name.md) to see how your approach compares. Different is fine. The learning objective is what matters.
+```
+
+**Path 3: Facilitator direct share.** When a student is stuck and the facilitator diagnoses "you are close but unsure," the facilitator shares the specific solution URL in a private message or issue comment.
+
+### Facilitator Setup Checklist
+
+Before each cohort, the facilitator verifies all artifacts are in place:
+
+```text
+Starter files
+- [ ] docs/welcome.md has current TODOs matching Challenge 2 and 5
+- [ ] docs/setup-guide.md has the deliberate broken link
+- [ ] docs/keyboard-shortcuts.md has the deliberate incorrect shortcut
+- [ ] docs/samples/ contains all sample files listed above
+- [ ] docs/CHALLENGES.md references correct challenge numbers
+
+Issue templates
+- [ ] All 16 core + 5 bonus YAML templates exist in .github/ISSUE_TEMPLATE/
+- [ ] Template variables (@username) are ready for the setup script
+- [ ] Test: create a dummy issue from each template to verify rendering
+
+Autograding workflows
+- [ ] All 7 workflow files are enabled and have correct triggers
+- [ ] Test: push a deliberate failure to verify error messages are educational
+- [ ] Test: push a correct submission to verify pass messages are celebratory
+
+Solution files (curriculum repo)
+- [ ] All 21 solution files exist in docs/solutions/
+- [ ] All solution URLs in chapter "If You Get Stuck" sections are valid
+- [ ] All solution URLs in CHALLENGES.md are valid
+```
+
+---
+
 ## Failsafe Design System
 
 Adopted from the classroom plan and integrated into every chapter.
@@ -675,6 +853,66 @@ Every GitHub feature, VS Code feature, Git concept, and accessibility standard l
 
 ---
 
+## GitHub Skills Integration Strategy
+
+Day 1 already embeds three GitHub Skills courses into the teaching flow (DAY1_AGENDA.md references Mona 30 times). Day 2 has zero. This section defines the integration model and extends it.
+
+### The Model: Link, Don't Clone
+
+GitHub Skills courses are **not forked or cloned into the Community-Access org.** Students click "Start course" on skills.github.com and GitHub creates a copy in their personal account. This is the designed delivery mechanism because:
+
+1. **Mona's workflows run correctly** -- they reference the `skills` org's infrastructure and break in forks
+2. **Updates are free** -- GitHub ships improvements and new courses regularly; linking gets them automatically
+3. **No maintenance burden** -- forked copies drift and lose upstream accessibility fixes
+4. **Post-workshop continuity** -- students find the same courses at `skills.github.com` when they continue learning independently
+
+### Day 1 Courses (Existing)
+
+These three courses are already woven into the Day 1 agenda:
+
+| Course | Day 1 Block | What Mona Teaches | Workshop Chapter Parallel |
+|---|---|---|---|
+| [Introduction to GitHub](https://github.com/skills/introduction-to-github) | Block 1-3 | Create branch, commit, open PR, merge | Ch02-06 |
+| [Communicate Using Markdown](https://github.com/skills/communicate-using-markdown) | Block 2 | Headers, emphasis, images, code blocks, task lists, tables | Ch05, Appendix C |
+| [Review Pull Requests](https://github.com/skills/review-pull-requests) | Block 4 | Review a PR, leave comments, approve/request changes | Ch06, Ch15 preview |
+
+### Day 2 Courses (New)
+
+These three courses extend the two-track model to Day 2:
+
+| Course | Day 2 Block | What Mona Teaches | Workshop Chapter Parallel |
+|---|---|---|---|
+| [Introduction to Git](https://github.com/skills/introduction-to-git) | Block 1 | CLI branch, commit, merge -- local Git operations | Ch13-14 (Git mental model + practice) |
+| [Getting Started with GitHub Copilot](https://github.com/skills/getting-started-with-github-copilot) | Block 2 | Completions, chat, AI-assisted coding | Ch16 (GitHub Copilot) |
+| [Copilot Code Review](https://github.com/skills/copilot-code-review) | Block 3 | Use Copilot to review a PR | Ch15 (Code Review) |
+
+### Mona Bridge Callouts
+
+Chapters that run parallel to a GitHub Skills course get a callout box connecting the two tracks:
+
+```markdown
+> **GitHub Skills parallel:** While working through this section, you can also
+> start the [course-name](course-url) course. Mona will walk you through the
+> same [specific-skill] in your own repository. The two exercises reinforce
+> each other -- the chapter explains WHY, Mona lets you practice HOW.
+```
+
+Chapters requiring Mona Bridge callouts: Ch14 (Git in Practice), Ch15 (Code Review), Ch16 (GitHub Copilot).
+
+### Bonus Challenges: Skills Courses for Fast Finishers
+
+Students who complete challenges early can start additional GitHub Skills courses. The "If You Get Stuck" section in each Day 2 chapter includes:
+
+```markdown
+| Finished early? | Start the [Resolve Merge Conflicts](https://github.com/skills/resolve-merge-conflicts) GitHub Skills course. It takes 30 minutes and reinforces everything from Day 1 Challenge 7. |
+```
+
+### Appendix Z Updates
+
+Appendix Z (GitHub Skills Course Catalog) is updated to reflect 6 workshop-embedded courses (up from 3) and marks the Day 2 courses in the "Courses Used in This Workshop" table.
+
+---
+
 ## Consolidation Ledger
 
 Every merge, split, absorption, and deletion tracked for implementation.
@@ -869,17 +1107,71 @@ Wire everything together.
 - [ ] Add challenge references to relevant chapters
 - [ ] Verify all authoritative source URLs are live
 
-### Phase 7: Classroom Integration (Weeks 8-9)
+### Phase 7: Classroom Integration (Weeks 8-10)
 
-Update the classroom delivery document to match the restructured curriculum.
+Update the classroom delivery document, create all challenge artifacts, and verify the complete student flow.
+
+**Classroom document updates:**
 
 - [ ] Update challenge-to-chapter mapping in classroom.md
 - [ ] Verify all evidence templates reference correct chapter numbers
-- [ ] Update autograding test specs for any changed file paths
 - [ ] Update facilitator deployment checklist
-- [ ] Update learning-room template repo to match new structure
-- [ ] Test full student flow end-to-end with dummy account
 - [ ] Update podcast episode references
+
+**Challenge issue templates (learning-room):**
+
+- [ ] Create 16 core challenge YAML issue templates (`challenge-01` through `challenge-16`)
+- [ ] Create 5 bonus challenge YAML issue templates (`bonus-a` through `bonus-e`)
+- [ ] Each template includes: instructions, evidence prompt, buddy check, "If You Get Stuck" link
+- [ ] Test: generate issues from every template with a dummy student account
+
+**Starter and sample files (learning-room):**
+
+- [ ] Audit `docs/welcome.md` TODOs to match restructured Challenges 2 and 5
+- [ ] Rename `docs/samples/chapter-15-registration-remix-example.yml` to match new Challenge 14
+- [ ] Create `docs/samples/copilot-improvement-before.md` for Challenge 13
+- [ ] Create `docs/samples/agent-file-template.md` for Challenge 16
+- [ ] Create `docs/samples/fork-workflow-checklist.md` for Challenge 16
+- [ ] Update `docs/CHALLENGES.md` with restructured challenge numbering and solution links
+
+**Autograding workflows (learning-room):**
+
+- [ ] Create `autograder-conflicts.yml` for Challenge 7
+- [ ] Create `autograder-local-commit.yml` for Challenge 10
+- [ ] Create `autograder-template.yml` for Challenge 14
+- [ ] Create `autograder-capstone.yml` for Challenge 16 (in accessibility-agents repo)
+- [ ] Update existing `pr-validation-bot.yml` to be challenge-aware
+- [ ] Test: push deliberate failures to verify error messages are educational
+- [ ] Test: push correct submissions to verify pass messages are celebratory
+
+**Solution files (git-going-with-github):**
+
+- [ ] Create `docs/solutions/` directory
+- [ ] Create 16 core solution files (`solution-01` through `solution-16`)
+- [ ] Create 5 bonus solution files (`solution-bonus-a` through `solution-bonus-e`)
+- [ ] Each solution file includes: annotated completed artifact, multiple valid approaches, accessibility-first formatting
+- [ ] Add solution links to every chapter's "If You Get Stuck" table
+- [ ] Add solution links to every CHALLENGES.md expandable section
+- [ ] Verify all solution URLs resolve correctly
+
+**GitHub Skills integration (Day 2):**
+
+- [ ] Add Introduction to Git course link to Day 2, Block 1 (supports Ch14)
+- [ ] Add Getting Started with GitHub Copilot course link to Day 2, Block 2 (supports Ch16)
+- [ ] Add Copilot Code Review course link to Day 2, Block 3 (supports Ch15)
+- [ ] Add Mona Bridge callout boxes to Chapters 14, 15, and 16
+- [ ] Update Appendix Z "Courses Used in This Workshop" table from 3 to 6 courses
+- [ ] Update DAY2_AGENDA.md with GitHub Skills setup instructions
+
+**End-to-end verification:**
+
+- [ ] Create dummy student GitHub account
+- [ ] Run complete Day 1 flow: Challenges 1-9 with all evidence types
+- [ ] Run complete Day 2 flow: Challenges 10-16 with all evidence types
+- [ ] Verify all 4 autograded challenges pass with correct input, fail with incorrect input
+- [ ] Verify all 21 solution file URLs are accessible from chapter text
+- [ ] Verify all 6 GitHub Skills courses launch correctly from agenda links
+- [ ] Update learning-room template repo to match new structure
 
 ---
 
@@ -953,6 +1245,11 @@ From the classroom plan -- the emotional peaks where facilitators pause the room
 | Total files | 49 | 49 (net zero: 5 new chapters, 5 eliminated appendix stubs, 1 split offsets 1 merge) |
 | Challenges | 16 core + 5 bonus | 16 core + 5 bonus (unchanged) |
 | Autograded challenges | 4 | 4 (unchanged) |
+| Challenge issue templates | 0 | 21 (16 core + 5 bonus) |
+| Solution/reference files | 0 | 21 (16 core + 5 bonus, in `docs/solutions/`) |
+| Starter/sample files | 2 | 5 (3 new sample files for Challenges 13, 16) |
+| Autograding workflows | 3 (generic) | 7 (3 existing + 4 challenge-specific) |
+| GitHub Skills courses embedded | 3 (Day 1 only) | 6 (3 Day 1 + 3 Day 2) |
 | Learning card sets | ~50 | ~300 |
 | Failsafe sections | 0 standardized | 22 (every chapter) |
 | Tool card sets | ~12 scattered | ~80+ standardized |
@@ -960,4 +1257,4 @@ From the classroom plan -- the emotional peaks where facilitators pause the room
 | Stub appendices (under 300 lines) | 7 | 0 |
 | Authoritative source links | ~20 scattered | 60+ systematically placed |
 
-The file count stays at 49. The quality per file goes up dramatically. Every chapter teaches with learning cards, tool cards, failsafe sections, and authoritative citations. Every appendix serves as a focused reference document with cross-links back to the teaching chapters. The whole thing fits into GitHub Classroom like it was built for it -- because now, it was.
+The file count stays at 49. The quality per file goes up dramatically. Every chapter teaches with learning cards, tool cards, failsafe sections, and authoritative citations. Every appendix serves as a focused reference document with cross-links back to the teaching chapters. Every challenge has a starter file, an issue template, and a solution file students can compare against. The whole thing fits into GitHub Classroom like it was built for it -- because now, it was.
