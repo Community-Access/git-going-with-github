@@ -1,5 +1,9 @@
 # Choose Your Adventure: A Tool Tour
 
+> **Related appendices:** [Appendix G: VS Code Reference](appendix-g-vscode-reference.md) | [Appendix H: GitHub Desktop](appendix-h-github-desktop.md) | [Appendix I: GitHub CLI](appendix-i-github-cli.md) | [Appendix J: Codespaces](appendix-j-cloud-editors.md)
+> **Authoritative sources:** [VS Code Docs: Setup](https://code.visualstudio.com/docs/setup/setup-overview) | [GitHub Desktop Docs](https://docs.github.com/en/desktop) | [GitHub CLI Manual](https://cli.github.com/manual/)
+
+
 > **Day 1, Opening Material**
 >
 > Before you write your first line of code, you need to know what tools are available and which ones match the way you work. This chapter is a guided tour of the five tool environments you can use throughout this workshop. You do not need to install anything right now -- just explore what is available so you can make confident choices later.
@@ -475,10 +479,9 @@ You opened a real repository and found a real file. That is the core action of t
 | GitHub Desktop cannot find the repo | Verify the URL is correct and your GitHub account has access to the repository. |
 | GitHub CLI says "not authenticated" | Run `gh auth login` and follow the prompts. See [Appendix I](appendix-i-github-cli.md). |
 
-**If nothing in this table helps:** Post on your challenge issue with what you tried, what happened, and what you expected. A facilitator or buddy will help you before Day 1 begins.
-
 ---
 
-*Next: [Understanding GitHub](02-understanding-github.md)*
-*Back: [Pre-Workshop Setup](00-pre-workshop-setup.md)*
-*Related: [VS Code Interface](11-vscode-interface.md) | [GitHub Desktop](appendix-h-github-desktop.md) | [GitHub CLI](appendix-i-github-cli.md) | [Cloud Editors](appendix-j-cloud-editors.md)*
+*Next: [Chapter 02: Understanding GitHub](02-understanding-github.md)*  
+*Back: [Chapter 00: Pre-Workshop Setup](00-pre-workshop-setup.md)*  
+*Related appendices: [Appendix H: GitHub Desktop](appendix-h-github-desktop.md) | [Appendix I: GitHub CLI](appendix-i-github-cli.md) | [Appendix J: Codespaces](appendix-j-cloud-editors.md)*
+

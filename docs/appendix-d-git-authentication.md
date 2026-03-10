@@ -2,6 +2,10 @@
 >
 > **Listen to Episode 21:** [Git Authentication](../PODCASTS.md) - a conversational audio overview of this chapter. Listen before reading to preview the concepts, or after to reinforce what you learned.
 
+> **Reference companion to:** [Chapter 00: Pre-Workshop Setup](00-pre-workshop-setup.md) | Also relevant: [Chapter 14](14-git-in-practice.md)
+>
+> **Authoritative source:** [GitHub Docs: Authenticating with GitHub from Git](https://docs.github.com/en/get-started/getting-started-with-git/set-up-git#authenticating-with-github-from-git)
+
 ## SSH Keys & Personal Access Tokens
 
 > **Audience:** This appendix is for contributors who need to configure Git authentication for push access. If you're working entirely through the GitHub web interface or GitHub Desktop, you can skip this. If you're using VS Code with Git command line, this becomes relevant when you want to push commits to your fork.
@@ -414,5 +418,9 @@ GitHub has an optional setting called **Vigilant Mode** (in Settings → SSH and
 
 SSH keys are great for long-term use, but PATs are faster to set up and more accessible for screen reader users during a time-constrained workshop.
 
+---
 
-*Return to: [Pre-Workshop Setup](00-pre-workshop-setup.md) | [Resources](appendix-x-resources.md)*
+*Next: [Appendix E: Advanced Git](appendix-e-advanced-git.md)*  
+*Back: [Appendix C: Markdown Reference](appendix-c-markdown-reference.md)*  
+*Teaching chapter: [Chapter 00: Pre-Workshop Setup](00-pre-workshop-setup.md)*
+

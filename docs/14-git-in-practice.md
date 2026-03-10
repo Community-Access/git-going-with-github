@@ -2,6 +2,10 @@
 >
 > **Listen to Episode 12:** [Git and Source Control in VS Code](../PODCASTS.md) - a conversational audio overview of this chapter. Listen before reading to preview the concepts, or after to reinforce what you learned.
 
+> **Related appendices:** [Appendix E: Advanced Git](appendix-e-advanced-git.md) | [Appendix D: Git Authentication](appendix-d-git-authentication.md) | [Appendix H: GitHub Desktop](appendix-h-github-desktop.md)
+> **Authoritative sources:** [VS Code Docs: Source Control](https://code.visualstudio.com/docs/sourcecontrol/overview) | [GitHub Docs: Using Git](https://docs.github.com/en/get-started/using-git)
+
+
 ## Managing Repositories, Branches, and Changes Accessibly
 
 > **Day 2, Block 1-2 Material**
@@ -67,6 +71,8 @@ This repo contains custom Copilot Chat loading phrases from three sci-fi univers
 > The `*` marks your current branch. Lines starting with `remotes/origin/` are branches on GitHub that you can check out locally with `git checkout branch-name` or `git switch branch-name`. This is especially useful in the Learning Room, where facilitators may have pre-created branches for challenges.
 
 ### Challenge 11.2 Step-by-Step: Create a Branch and Commit
+
+> **See also:** [Chapter 13: How Git Works](13-how-git-works.md) explains the three areas (working directory, staging, repository) that make commits meaningful.
 
 **Goal:** Create a properly named branch, edit a theme file, stage the change, and commit with a clear message.
 
@@ -190,6 +196,27 @@ You do not need to read every card. Pick the one or two that match your setup an
 
 
 ## 1. Cloning a Repository in VS Code
+
+### Tool Cards: Clone a Repository (Day 2)
+
+**VS Code Desktop (primary for Day 2):**
+1. `Ctrl+Shift+P` > **Git: Clone** > paste the HTTPS URL > choose a folder > **Open**.
+
+**github.dev (web editor):**
+No clone needed. Press `.` on any GitHub repository page to open it instantly.
+
+**GitHub Desktop:**
+1. **File > Clone Repository** > paste URL or select from your account > **Clone**.
+
+**Git CLI (terminal):**
+```bash
+git clone https://github.com/owner/repo.git && cd repo
+```
+
+**GitHub CLI:**
+```bash
+gh repo clone owner/repo && cd repo
+```
 
 ### Three ways to clone a repository
 
@@ -1227,6 +1254,8 @@ Ctrl+Shift+P → "Git: Push"
 
 ### When Conflicts Occur During Sync
 
+> **See also:** [Chapter 07: Merge Conflicts](07-merge-conflicts.md) for a dedicated walkthrough of conflict resolution.
+
 If you've made changes to the same files the upstream has changed, merge conflicts can occur during sync. The same conflict resolution flow applies - see Section 9 of this chapter.
 
 **Best practice:** Always sync before starting new work on a fork. A quick `git fetch upstream` at the start of each session prevents conflicts from accumulating.
@@ -2079,7 +2108,9 @@ Do the complete Git workflow once, start to finish:
 
 > **What success feels like:** Your change is on GitHub. You can verify by visiting the repository and switching to your branch. Every future contribution follows this same six-step pattern. And your Copilot Chat now has a custom sci-fi loading phrase you wrote.
 
+---
 
-*Next: [GitHub Pull Requests Extension](15-code-review.md)*  
-*Back: [VS Code Setup & Accessibility Basics](11-vscode-interface.md)*  
-*Related: [Merge Conflicts](07-merge-conflicts.md) | [Culture & Etiquette](08-open-source-culture.md)*
+*Next: [Chapter 15: Code Review](15-code-review.md)*  
+*Back: [Chapter 13: How Git Works](13-how-git-works.md)*  
+*Related appendices: [Appendix E: Advanced Git](appendix-e-advanced-git.md) | [Appendix D: Git Authentication](appendix-d-git-authentication.md)*
+

@@ -1361,21 +1361,21 @@ Add tri-audience learning cards to major teaching sections in every chapter and 
 
 Add multi-tool-path cards to every exercise and failsafe sections to every chapter.
 
-- [ ] Tool cards in all Day 1 chapters (browser is primary, others are options)
-- [ ] Tool cards in all Day 2 chapters (VS Code is primary, others are options)
-- [ ] Failsafe "If You Get Stuck" tables in all 22 chapters
-- [ ] Verify all tool cards cover: github.com, github.dev, VS Code, GitHub Desktop, CLI
+- [x] Tool cards in all Day 1 chapters (browser is primary, others are options)
+- [x] Tool cards in all Day 2 chapters (VS Code is primary, others are options)
+- [x] Failsafe "If You Get Stuck" tables in all 22 chapters
+- [x] Verify all tool cards cover: github.com, github.dev, VS Code, GitHub Desktop, CLI
 
 ### Phase 6: Cross-Linking and Attribution (Weeks 7-8)
 
 Wire everything together.
 
-- [ ] Add header blocks (related appendices, authoritative sources) to all chapters
-- [ ] Add header blocks (teaching chapter, authoritative sources) to all appendices
-- [ ] Add footer navigation (prev/next + related) to all files
-- [ ] Add inline forward/back refs throughout all chapters
-- [ ] Add challenge references to relevant chapters
-- [ ] Verify all authoritative source URLs are live
+- [x] Add header blocks (related appendices, authoritative sources) to all chapters
+- [x] Add header blocks (teaching chapter, authoritative sources) to all appendices
+- [x] Add footer navigation (prev/next + related) to all files
+- [x] Add inline forward/back refs throughout all chapters
+- [x] Add challenge references to relevant chapters
+- [x] Verify all authoritative source URLs are live
 
 ### Phase 7: Classroom Integration (Weeks 8-10)
 

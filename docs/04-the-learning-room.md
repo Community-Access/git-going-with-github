@@ -2,6 +2,10 @@
 >
 > **Listen to Episode 4:** [The Learning Room](../PODCASTS.md) - a conversational audio overview of this chapter. Listen before reading to preview the concepts, or after to reinforce what you learned.
 
+> **Related appendices:** [Appendix A: Glossary](appendix-a-glossary.md) | [Appendix C: Markdown Reference](appendix-c-markdown-reference.md)
+> **Authoritative sources:** [GitHub Docs: About README files](https://docs.github.com/en/repositories/managing-your-repositorys-settings-and-features/customizing-your-repository/about-readmes) | [GitHub Docs: Editing files](https://docs.github.com/en/repositories/working-with-files/managing-files/editing-files)
+
+
 ## What Is the Learning Room?
 
 The **Learning Room** is a single, shared GitHub repository where all workshop participants collaborate together. It is not your personal fork. It is not your individual repository. It is one repo with many students, many branches, and many pull requests.
@@ -197,7 +201,34 @@ When you join the workshop, the facilitator creates a **personal practice branch
 </details>
 
 
+### Tool Cards: Switch to Your Practice Branch
+
+**github.com (browser):**
+1. On the repository page, click the branch selector dropdown (shows "main").
+2. Type your username to filter, then select `username-practice`.
+
+**github.dev (web editor):**
+1. Click the branch name in the bottom-left status bar.
+2. Select your `username-practice` branch from the list.
+
+**VS Code Desktop:**
+1. Click the branch name in the bottom-left status bar (or press `Ctrl+Shift+P` then type **Git: Checkout to**).
+2. Select `origin/username-practice` from the branch list.
+
+**GitHub Desktop:**
+1. Click the **Current Branch** dropdown at the top.
+2. Type your username to filter, then select `username-practice`.
+
+**Git CLI (terminal):**
+```bash
+git checkout username-practice
+```
+
+---
+
 ## The Practice Files: What You Will Work On
+
+> **See also:** [Appendix C: Markdown Reference](appendix-c-markdown-reference.md) covers all Markdown syntax with accessible examples -- you will need it for editing these files.
 
 The `docs/` folder contains three practice files with intentional issues. These are the files you will edit, fix, and submit pull requests for during the contribution sprint. Here is exactly what you will encounter in each file.
 
@@ -757,6 +788,18 @@ Comment explaining why. Request human review. The bot isn't perfect - that's why
 No! The Learning Room has challenges for all skill levels. You can pick what interests you, complete at your pace, and continue after the workshop.
 
 
+## If You Get Stuck
+
+| Problem | What to do |
+|---|---|
+| Cannot find your practice branch | In the branch selector, type your GitHub username (lowercase). If the branch does not appear, ask a facilitator to create it. |
+| Push rejected to main branch | Main is protected. You need to push to your practice branch: `git checkout username-practice` then push again. |
+| Cannot see other students' PRs | Check the Pull Requests tab filter is set to "All" (not "Created by you"). |
+| Practice file has no TODO markers | Verify you are on the correct branch. Run `git branch` to see your current branch. The main branch may have already been updated. |
+| Accidentally committed to main | Do not panic. See the failsafe instructions in [Chapter 13](13-how-git-works.md#10-if-you-get-stuck) or ask a facilitator. |
+| Everything else | Post a comment on your challenge issue describing what happened. That always counts as participation. |
+
+
 ## Celebration: You're Contributing
 
 Every PR you open and merge in the Learning Room is a **real contribution**:
@@ -771,7 +814,9 @@ You merged your work
 
 This is not hypothetical. This is not simulation. This is real.
 
+---
 
-*Next: [Working with Issues](05-working-with-issues.md)*
-*Back: [Navigating Repositories](03-navigating-repositories.md)*
-*Reference: [Automation Guide](../learning-room/AUTOMATION.md) | [Available Challenges](../learning-room/docs/CHALLENGES.md)*
+*Next: [Chapter 05: Working with Issues](05-working-with-issues.md)*  
+*Back: [Chapter 03: Navigating Repositories](03-navigating-repositories.md)*  
+*Related appendices: [Appendix A: Glossary](appendix-a-glossary.md)*
+

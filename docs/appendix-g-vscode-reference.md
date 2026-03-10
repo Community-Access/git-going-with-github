@@ -1,6 +1,10 @@
-# Appendix M: VS Code Accessibility Reference
+# Appendix G: VS Code Accessibility Reference
 >
 > **Listen to Episode 30:** [VS Code Accessibility Reference](../PODCASTS.md) - a conversational audio overview of this chapter. Listen before reading to preview the concepts, or after to reinforce what you learned.
+
+> **Reference companion to:** [Chapter 11: VS Code Interface](11-vscode-interface.md) | Also relevant: [Chapter 12](12-vscode-accessibility.md)
+>
+> **Authoritative source:** [VS Code Docs: Accessibility](https://code.visualstudio.com/docs/editor/accessibility)
 
 ## Complete Technical Reference for Screen Reader Users
 
@@ -856,6 +860,9 @@ The configuration examples below are JSON blocks you paste into your `settings.j
 }
 ```
 
+---
 
-*Back to: [VS Code Setup & Accessibility Basics](11-vscode-interface.md) | [GitHub Copilot](16-github-copilot.md) | [Accessibility Agents](19-accessibility-agents.md)*  
-*Related: [Appendix B: Screen Reader Cheat Sheet](appendix-b-screen-reader-cheatsheet.md)*
+*Next: [Appendix H: GitHub Desktop](appendix-h-github-desktop.md)*  
+*Back: [Appendix F: Git Security](appendix-f-git-security.md)*  
+*Teaching chapter: [Chapter 11: VS Code Interface](11-vscode-interface.md)*
+

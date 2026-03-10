@@ -1,6 +1,10 @@
-# Appendix V: Accessibility Agents Reference
+# Appendix L: Accessibility Agents Reference
 >
 > **Listen to Episode 39:** [Accessibility Agents - Complete Reference](../PODCASTS.md) - a conversational audio overview of this chapter. Listen before reading to preview the concepts, or after to reinforce what you learned.
+
+> **Reference companion to:** [Chapter 19: Accessibility Agents](19-accessibility-agents.md) | Also relevant: [Chapter 20](20-build-your-agent.md)
+>
+> **Authoritative source:** [GitHub Docs: Building Copilot extensions](https://docs.github.com/en/copilot/building-copilot-extensions/about-building-copilot-extensions)
 
 ## Complete Reference - Agents, Slash Commands, Instructions, Configuration Levels, and All File Formats
 
@@ -1300,6 +1304,9 @@ For the broader ecosystem - the community plugin marketplace, MCP server integra
 | Optimizing Copilot with custom instructions (accessibility) | [accessibility.github.com/documentation/guide/copilot-instructions/](https://accessibility.github.com/documentation/guide/copilot-instructions/) |
 | GitHub Copilot for VS Code screen reader guide | [accessibility.github.com/documentation/guide/github-copilot-vsc/](https://accessibility.github.com/documentation/guide/github-copilot-vsc/) |
 
+---
 
-*Chapter: [Accessibility Agents](19-accessibility-agents.md)*
-*Related: [Appendix W: GitHub Copilot Reference](appendix-k-copilot-reference.md) | [Issue Templates](17-issue-templates.md) | [Chapter 13: GitHub Copilot](16-github-copilot.md)*
+*Next: [Appendix M: Accessibility Standards](appendix-m-accessibility-standards.md)*  
+*Back: [Appendix K: Copilot Reference](appendix-k-copilot-reference.md)*  
+*Teaching chapter: [Chapter 19: Accessibility Agents](19-accessibility-agents.md)*
+

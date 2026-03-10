@@ -1,6 +1,10 @@
-# Appendix H: Releases, Tags, and Repository Insights
+# Appendix S: Releases, Tags, and Repository Insights
 >
 > **Listen to Episode 25:** [Releases, Tags, and Insights](../PODCASTS.md) - a conversational audio overview of this chapter. Listen before reading to preview the concepts, or after to reinforce what you learned.
+
+> **Reference companion to:** [Chapter 08: Open Source Culture](08-open-source-culture.md)
+>
+> **Authoritative source:** [GitHub Docs: About releases](https://docs.github.com/en/repositories/releasing-projects-on-github/about-releases)
 
 ## Understanding Versioned Releases and Repository Activity
 
@@ -620,7 +624,9 @@ Output includes:
 - Open issues by assignee
 - CI health across team repos
 
-**Use these instead of navigating the Insights UI** when you want contribution data without leaving VS Code and without dealing with canvas charts.
+---
 
+*Next: [Appendix T: Community and Social](appendix-t-community-and-social.md)*  
+*Back: [Appendix R: Projects Deep Dive](appendix-r-projects-deep-dive.md)*  
+*Teaching chapter: [Chapter 08: Open Source Culture](08-open-source-culture.md)*
 
-*Return to: [Resources](appendix-x-resources.md) | [Glossary](appendix-a-glossary.md)*

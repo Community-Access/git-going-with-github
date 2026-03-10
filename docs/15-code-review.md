@@ -1,5 +1,9 @@
 # Code Review: PRs, Diffs, and Constructive Feedback
 
+> **Related appendices:** [Appendix G: VS Code Reference](appendix-g-vscode-reference.md) | [Appendix C: Markdown Reference](appendix-c-markdown-reference.md)
+> **Authoritative sources:** [GitHub Docs: Reviewing changes in pull requests](https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/reviewing-changes-in-pull-requests) | [GitHub Accessibility Guide: Pull Request Reviews](https://accessibility.github.com/documentation/guide/pull-requests/)
+
+
 > **Day 2, Block 2 Material**
 >
 > This chapter unifies PR management, accessible code review, and the reviewer's craft into one chapter. Part 1 covers the GitHub Pull Requests extension in VS Code. Part 2 covers accessible code review with diffs and inline comments. Part 3 (to be written in Phase 3) adds the reviewer's judgment framework.
@@ -7,6 +11,8 @@
 ---
 
 ## Part 1: The GitHub Pull Requests Extension
+
+> **See also:** [Appendix G: VS Code Reference](appendix-g-vscode-reference.md) for the complete list of GitHub Pull Requests extension keyboard shortcuts.
 
 >
 > **Listen to Episode 13:** [The GitHub Pull Requests Extension](../PODCASTS.md) - a conversational audio overview of this chapter. Listen before reading to preview the concepts, or after to reinforce what you learned.
@@ -515,6 +521,26 @@ As you review, note any problems:
 
 
 ## 5. Creating a Pull Request from VS Code
+
+### Tool Cards: Create a Pull Request (from your editor)
+
+**VS Code Desktop (primary for Day 2):**
+1. `Ctrl+Shift+P` > **GitHub Pull Requests: Create Pull Request**.
+2. Fill in the title, description, and base branch.
+3. Click **Create**.
+
+**github.com (browser):**
+1. Push your branch, then click the **Compare & pull request** banner on the repo page.
+2. Fill in the form and click **Create pull request**.
+
+**GitHub Desktop:**
+1. After pushing, click **Create Pull Request** -- this opens gitub.com with the form pre-filled.
+
+**Git CLI / GitHub CLI:**
+```bash
+git push -u origin your-branch
+gh pr create --title "Title" --body "Description"
+```
 
 After you've pushed commits to a feature branch, you can create a PR without leaving VS Code.
 
@@ -2866,13 +2892,9 @@ Your manual skills + agent efficiency = **leverage.**
 >
 > **The ecosystem is designed to grow.** Agents 56, 57, 58... will be built by contributors like you who saw a gap and filled it.
 
-
-*Next: [Issue Templates](17-issue-templates.md)*
-*Back: [GitHub Copilot](16-github-copilot.md)*
-*Related: [Screen Reader Cheat Sheet](appendix-b-screen-reader-cheatsheet.md) | [Merge Conflicts](07-merge-conflicts.md) | [Git & Source Control in VS Code](14-git-in-practice.md)*
-
 ---
 
-*Next: [GitHub Copilot](16-github-copilot.md)*
-*Back: [Git in Practice](14-git-in-practice.md)*
-*Related: [VS Code Reference](appendix-g-vscode-reference.md) | [Screen Reader Cheat Sheet](appendix-b-screen-reader-cheatsheet.md)*
+*Next: [Chapter 16: GitHub Copilot](16-github-copilot.md)*  
+*Back: [Chapter 14: Git in Practice](14-git-in-practice.md)*  
+*Related appendices: [Appendix G: VS Code Reference](appendix-g-vscode-reference.md)*
+

@@ -2,6 +2,10 @@
 >
 > **Listen to Episode 7:** [Merge Conflicts Are Not Scary](../PODCASTS.md) - a conversational audio overview of this chapter. Listen before reading to preview the concepts, or after to reinforce what you learned.
 
+> **Related appendices:** [Appendix E: Advanced Git](appendix-e-advanced-git.md) | [Appendix G: VS Code Reference](appendix-g-vscode-reference.md)
+> **Authoritative sources:** [GitHub Docs: Resolving merge conflicts](https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/addressing-merge-conflicts/resolving-a-merge-conflict-on-github) | [Git SCM: Basic Merge Conflicts](https://git-scm.com/book/en/v2/Git-Branching-Basic-Branching-and-Merging#_basic_merge_conflicts)
+
+
 ## Understanding, Preventing, and Resolving Conflicts
 
 > Merge conflicts sound intimidating but are a normal, manageable part of collaborative development. This guide explains what conflicts are, how to read conflict markers, and how to resolve them - step by step.
@@ -315,6 +319,37 @@ If you never have conflicts, it might mean:
 
 ## Spotting a Conflict on GitHub
 
+### Tool Cards: Resolve a Merge Conflict
+
+**github.com (browser):**
+1. On the PR page, click **Resolve conflicts** if the button is available.
+2. Edit the file in the web editor to remove conflict markers.
+3. Click **Mark as resolved**, then **Commit merge**.
+
+**github.dev (web editor):**
+1. Open the PR's branch by pressing `.` on the repository page.
+2. Open the conflicting file -- conflict markers are highlighted in the editor.
+3. Edit to resolve, commit via Source Control panel.
+
+**VS Code Desktop:**
+1. Pull the latest changes: `git pull origin main`.
+2. VS Code highlights conflicts with **Accept Current / Accept Incoming / Accept Both** buttons.
+3. Click your choice, save, stage, and commit.
+
+**GitHub Desktop:**
+1. **Branch > Update from main** (or the merge prompt banner).
+2. GitHub Desktop opens your editor with conflict markers highlighted.
+3. Resolve in the editor, return to GitHub Desktop, and click **Commit merge**.
+
+**Git CLI (terminal):**
+```bash
+git merge main
+# Edit conflicting files to remove <<<<<<< / ======= / >>>>>>>
+git add resolved-file.md
+git commit -m "resolve merge conflict"
+```
+
+
 When a PR has a merge conflict, you will see this message on the Conversation tab, near the merge section:
 
 > “This branch has conflicts that must be resolved”
@@ -546,6 +581,8 @@ When the conflict editor opens, your screen reader will announce a text editor. 
 
 
 ## Resolving Conflicts in VS Code (Day 2)
+
+> **See also:** [Appendix E: Advanced Git](appendix-e-advanced-git.md) covers rebase, cherry-pick, and other advanced conflict resolution strategies.
 
 VS Code has excellent merge conflict tooling with full screen reader support. This is covered in depth in [Git & Source Control in VS Code](14-git-in-practice.md), but here is an overview:
 
@@ -806,7 +843,9 @@ Answer these three questions:
 >
 > *Understanding conflict markers is not a stepping stone to letting AI handle conflicts. It is the skill that tells you when AI got it wrong.*
 
+---
 
-*Next: [Culture and Etiquette](08-open-source-culture.md)*
-*Back: [Working with Pull Requests](06-working-with-pull-requests.md)*
-*Related: [Git & Source Control in VS Code](14-git-in-practice.md)*
+*Next: [Chapter 08: Open Source Culture](08-open-source-culture.md)*  
+*Back: [Chapter 06: Working with Pull Requests](06-working-with-pull-requests.md)*  
+*Related appendices: [Appendix E: Advanced Git](appendix-e-advanced-git.md)*
+

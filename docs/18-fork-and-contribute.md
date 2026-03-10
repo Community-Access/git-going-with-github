@@ -1,5 +1,9 @@
 # Fork and Contribute: The Open Source Workflow
 
+> **Related appendices:** [Appendix E: Advanced Git](appendix-e-advanced-git.md) | [Appendix O: Branch Protection](appendix-o-branch-protection.md) | [Appendix D: Git Authentication](appendix-d-git-authentication.md)
+> **Authoritative sources:** [GitHub Docs: Fork a repo](https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/working-with-forks/fork-a-repo) | [GitHub Docs: Syncing a fork](https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/working-with-forks/syncing-a-fork) | [Open Source Guides: How to Contribute](https://opensource.guide/how-to-contribute/)
+
+
 > **Day 2, Block 3 Material**
 >
 > This chapter teaches the complete fork-based contribution workflow from start to finish. You will fork a real repository, create a feature branch, make changes, push to your fork, and open a pull request against the upstream repository. This is the workflow used by millions of open source contributors every day, and it is the foundation for the capstone project in [Chapter 20](20-build-your-agent.md).
@@ -22,7 +26,11 @@
 
 ---
 
+> **Challenge 16: Build Your Agent (Capstone)** uses this fork-based workflow end to end. Practice it here so the capstone feels familiar.
+
 ## 1. What Is a Fork?
+
+> **See also:** [Chapter 08: Open Source Culture](08-open-source-culture.md) for the cultural context of forking and contributing.
 
 A fork is your personal copy of someone else's repository on GitHub. When you fork a repository, GitHub creates a full copy under your account. You own the fork -- you can push to it, create branches on it, and modify it freely without affecting the original.
 
@@ -108,6 +116,26 @@ Upstream repo (GitHub)      Your fork (GitHub)        Your computer (local)
 ---
 
 ## 3. Step 1: Fork the Repository
+
+### Tool Cards: Fork and Clone a Repository
+
+**github.com (browser):**
+1. Click **Fork** on the repository page > **Create fork**.
+2. Clone: click the green **Code** button > copy URL > paste into your local tool.
+
+**VS Code Desktop:**
+1. Fork on github.com first (browser required for forking).
+2. `Ctrl+Shift+P` > **Git: Clone** > paste your fork's URL.
+
+**GitHub Desktop:**
+1. Fork on github.com first.
+2. **File > Clone Repository** > select your fork from the GitHub.com tab.
+
+**GitHub CLI (one command):**
+```bash
+gh repo fork Community-Access/accessibility-agents --clone
+cd accessibility-agents
+```
 
 For this workshop, you will fork the [Community-Access/accessibility-agents](https://github.com/Community-Access/accessibility-agents) repository.
 
@@ -204,6 +232,8 @@ After cloning, your local repository has one remote called `origin` that points 
 ---
 
 ## 5. Step 3: Add the Upstream Remote
+
+> **See also:** [Appendix E: Advanced Git](appendix-e-advanced-git.md) for advanced remote and upstream management.
 
 Your clone knows about your fork (`origin`). It does not know about the original repository. You need to add it as a second remote called `upstream`.
 
@@ -567,10 +597,9 @@ GitHub also offers a "Delete branch" button on the merged PR page.
 | "Repository not found" when cloning | Double-check the URL. Make sure the fork exists under your account. |
 | Accidentally committed to main instead of a branch | Check [Appendix E](appendix-e-advanced-git.md) for how to move commits to a new branch. |
 
-**If nothing in this table helps:** Post on your challenge issue with the exact error message and the output of `git remote -v` and `git status`. A facilitator or buddy will help.
-
 ---
 
-*Next: [Accessibility Agents](19-accessibility-agents.md)*
-*Back: [Issue Templates](17-issue-templates.md)*
-*Related: [Open Source Culture](08-open-source-culture.md) | [Git in Practice](14-git-in-practice.md) | [How Git Works](13-how-git-works.md)*
+*Next: [Chapter 19: Accessibility Agents](19-accessibility-agents.md)*  
+*Back: [Chapter 17: Issue Templates](17-issue-templates.md)*  
+*Related appendices: [Appendix E: Advanced Git](appendix-e-advanced-git.md) | [Appendix O: Branch Protection](appendix-o-branch-protection.md)*
+

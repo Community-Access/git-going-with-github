@@ -2,6 +2,10 @@
 >
 > **Listen to Episode 18:** [Glossary of Terms](../PODCASTS.md) - a conversational audio overview of this chapter. Listen before reading to preview the concepts, or after to reinforce what you learned.
 
+> **Reference companion to:** [Chapter 02: Understanding GitHub](02-understanding-github.md) | Also relevant: all chapters
+>
+> **Authoritative source:** [GitHub Docs: Glossary](https://docs.github.com/en/get-started/learning-about-github/github-glossary)
+
 ## Every Term You Need for Open Source Contribution
 
 > This glossary is your reference for the entire two-day workshop. When you hear a term you don't recognize - check here first. Terms are grouped by category and also sorted alphabetically at the end.
@@ -689,7 +693,8 @@ Every healthy open source project has these files in the root of the repository:
 | Triage | Reviewing and categorizing new issues |
 | Upstream | The original repo you forked from |
 
+---
 
-*Appendix B - look up any term here at any point during the workshop.*
-*Return to: [Day 1 Agenda](../DAY1_AGENDA.md) | [Understanding GitHub's Web Structure](02-understanding-github.md)*
-*See also: [Screen Reader Cheat Sheet](appendix-b-screen-reader-cheatsheet.md)*
+*Next: [Appendix B: Screen Reader Cheat Sheet](appendix-b-screen-reader-cheatsheet.md)*  
+*Teaching chapter: [Chapter 02: Understanding GitHub](02-understanding-github.md)*
+

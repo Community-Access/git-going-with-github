@@ -2,6 +2,10 @@
 >
 > **Listen to Episode 16:** [Issue Templates](../PODCASTS.md) - a conversational audio overview of this chapter. Listen before reading to preview the concepts, or after to reinforce what you learned.
 
+> **Related appendices:** [Appendix Q: GitHub Actions](appendix-q-actions-workflows.md) | [Appendix C: Markdown Reference](appendix-c-markdown-reference.md) | [Appendix N: Advanced Search](appendix-n-advanced-search.md)
+> **Authoritative sources:** [GitHub Docs: About issue and PR templates](https://docs.github.com/en/communities/using-templates-to-encourage-useful-issues-and-pull-requests/about-issue-and-pull-request-templates) | [GitHub Docs: Configuring issue templates](https://docs.github.com/en/communities/using-templates-to-encourage-useful-issues-and-pull-requests/configuring-issue-templates-for-your-repository)
+
+
 ## Structuring Contributions for Clarity and Quality
 
 > Issue templates turn a blank text box into a guided form. They help contributors provide the information maintainers need, reduce back-and-forth, and make every issue immediately actionable. This guide teaches you what templates are, how to use the ones in [accessibility-agents](https://github.com/Community-Access/accessibility-agents), and how to create your own - including an accessibility-specific bug report template.
@@ -425,7 +429,30 @@ The `about` text appears in the template chooser. The `title` pre-fills the issu
 
 ## 5. Creating a New Template - Step by Step
 
+### Tool Cards: Create an Issue Template
+
+**github.com (browser):**
+1. Go to **Settings > General** (scroll to Features section) > **Set up templates**.
+2. Choose a starter template or create a blank one.
+3. Edit the template content and click **Propose changes** to commit.
+
+**VS Code Desktop / github.dev:**
+1. Create the file `.github/ISSUE_TEMPLATE/your-template.md` (or `.yml` for form-based).
+2. Add YAML frontmatter (`name`, `description`, `title`, `labels`) and body content.
+3. Commit and push.
+
+**Git CLI / GitHub CLI:**
+```bash
+mkdir -p .github/ISSUE_TEMPLATE
+# Create and edit your template file, then:
+git add .github/ISSUE_TEMPLATE/
+git commit -m "feat: add issue template"
+git push
+```
+
 ### Choosing Between Markdown and YAML Templates
+
+> **See also:** [Appendix Q: GitHub Actions](appendix-q-actions-workflows.md) covers how templates connect to automated workflows.
 
 Before creating a template, decide which format best suits your needs:
 
@@ -2464,13 +2491,9 @@ The Template Builder does not teach you to design templates - Section 5 taught y
 
 ### Using the Template Builder
 
-**Prerequisite:** Complete Exercise D above. You should understand what fields you want to ask for and why.
+---
 
-**Chapter 16 Exercise (Accessibility Agents):** Use `@template-builder` to generate a template for a real project, then customize or extend it. See [Accessibility Agents: Contributing to the Ecosystem](19-accessibility-agents.md#6-contributing-to-the-ecosystem).
+*Next: [Chapter 18: Fork and Contribute](18-fork-and-contribute.md)*  
+*Back: [Chapter 16: GitHub Copilot](16-github-copilot.md)*  
+*Related appendices: [Appendix Q: GitHub Actions](appendix-q-actions-workflows.md) | [Appendix C: Markdown Reference](appendix-c-markdown-reference.md)*
 
-**After the Workshop:** Any repetitive GitHub task - templates, checklists, workflows - can be built with Accessibility Agents. The Template Builder shows how.
-
-
-*Next: [Accessibility Agents](19-accessibility-agents.md)*
-*Back: [Accessible Code Review](15-code-review.md)*
-*Related: [Working with Issues](05-working-with-issues.md) | [Culture & Etiquette](08-open-source-culture.md) | [Accessibility Agents](19-accessibility-agents.md)*

@@ -2,7 +2,13 @@
 >
 > **Listen to Episode 6:** [Working with Pull Requests](../PODCASTS.md) - a conversational audio overview of this chapter. Listen before reading to preview the concepts, or after to reinforce what you learned.
 
+> **Related appendices:** [Appendix C: Markdown Reference](appendix-c-markdown-reference.md) | [Appendix B: Screen Reader Cheat Sheet](appendix-b-screen-reader-cheatsheet.md)
+> **Authoritative sources:** [GitHub Docs: About pull requests](https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/about-pull-requests) | [GitHub Accessibility Guide: Pull Requests](https://accessibility.github.com/documentation/guide/pull-requests/)
+
+
 ## Creating, Reviewing, and Merging Pull Requests with a Screen Reader
+
+> **See also:** [Chapter 15: Code Review](15-code-review.md) covers the full review workflow including multi-file diffs and suggested changes.
 
 > Pull requests are where your work becomes a contribution. This guide takes you through the full pull request workflow - from opening one to participating in review - using only your keyboard and screen reader.
 >
@@ -768,6 +774,33 @@ Inline comments appear as expandable threads within the diff table. Navigate to 
 
 ## Opening a Pull Request
 
+### Tool Cards: Open a Pull Request
+
+**github.com (browser):**
+1. Push your branch, then click the **Compare & pull request** banner (or go to **Pull requests > New pull request**).
+2. Set base branch to `main`, compare branch to yours.
+3. Fill in the title and description, then click **Create pull request**.
+
+**github.dev (web editor):**
+1. After committing changes, click the **Source Control** icon.
+2. Click **Create Pull Request** in the Source Control panel header.
+3. Fill in details and submit.
+
+**VS Code Desktop (GitHub Pull Requests extension):**
+1. Press `Ctrl+Shift+P`, type **GitHub Pull Requests: Create Pull Request**.
+2. Select base and compare branches.
+3. Fill in the title and description, then click **Create**.
+
+**GitHub Desktop:**
+1. After pushing your branch, click **Create Pull Request** in the banner or **Branch > Create Pull Request**.
+2. This opens github.com with the PR form pre-filled.
+
+**Git CLI / GitHub CLI:**
+```bash
+git push -u origin your-branch
+gh pr create --title "Your title" --body "Description"
+```
+
 ### From the web editor workflow (editing a file on GitHub)
 
 1. You edited a file → GitHub showed a "Propose changes" form
@@ -1373,6 +1406,8 @@ Merge box → Tab → "Disable auto-merge" button → Enter
 
 ## Writing PR Descriptions That Get Reviewed
 
+> **See also:** [Appendix C: Markdown Reference](appendix-c-markdown-reference.md) for formatting your PR description with headings, lists, and task lists.
+
 A pull request is only as useful as its description. Reviewers decide whether to pick up your PR -- and how carefully to read it -- based on what you write in that text box. A strong description saves everyone time, catches misunderstandings early, and makes the review conversation productive instead of confused.
 
 This section walks you through what reviewers expect, how to structure your description, and the patterns that separate descriptions people actually read from descriptions people skip.
@@ -1581,7 +1616,9 @@ Go to the Learning Room repository's Pull Requests tab and find any open or rece
 >
 > *The agent documents the diff. You bring the context that no diff can contain.*
 
+---
 
-*Next: [Merge Conflicts](07-merge-conflicts.md)*
-*Back: [VS Code Accessibility](11-vscode-interface.md)*
-*Related: [Accessible Code Review](15-code-review.md) | [Screen Reader Cheat Sheet](appendix-b-screen-reader-cheatsheet.md) | [Culture & Etiquette](08-open-source-culture.md) | [GitHub Actions](appendix-q-actions-workflows.md)*
+*Next: [Chapter 07: Merge Conflicts](07-merge-conflicts.md)*  
+*Back: [Chapter 05: Working with Issues](05-working-with-issues.md)*  
+*Related appendices: [Appendix C: Markdown Reference](appendix-c-markdown-reference.md) | [Appendix B: Screen Reader Cheat Sheet](appendix-b-screen-reader-cheatsheet.md)*
+

@@ -2,6 +2,10 @@
 >
 > **Listen to Episode 14:** [GitHub Copilot](../PODCASTS.md) - a conversational audio overview of this chapter. Listen before reading to preview the concepts, or after to reinforce what you learned.
 
+> **Related appendices:** [Appendix K: Copilot Reference](appendix-k-copilot-reference.md) | [Appendix G: VS Code Reference](appendix-g-vscode-reference.md)
+> **Authoritative sources:** [GitHub Docs: About GitHub Copilot](https://docs.github.com/en/copilot/about-github-copilot/what-is-github-copilot) | [GitHub Accessibility: Copilot in VS Code](https://accessibility.github.com/documentation/guide/github-copilot-vsc/) | [VS Code Docs: GitHub Copilot](https://code.visualstudio.com/docs/copilot/overview)
+
+
 ## AI-Powered Code Assistance in VS Code
 
 > **Day 2, Block 2-3 Material**
@@ -424,6 +428,8 @@ The Copilot status bar icon (`><`) can be tiny at standard DPI. Use the Command 
 
 ## 4. GitHub Copilot Chat - Conversational Assistance
 
+> **See also:** [Appendix K: Copilot Reference](appendix-k-copilot-reference.md) has the complete slash command and chat variable reference.
+
 Copilot Chat is a full conversation interface where you ask questions, request explanations, and have content drafted.
 
 ### Opening Copilot Chat
@@ -749,6 +755,8 @@ Copilot Edits is the **Edit** chat mode. Instead of just answering questions, Co
 ---
 
 ## 6. Agent Mode — Let Copilot Drive
+
+> **See also:** [Chapter 19: Accessibility Agents](19-accessibility-agents.md) and [Chapter 20: Build Your Agent](20-build-your-agent.md) for creating your own Copilot agent.
 
 Agent mode is the most autonomous way to use Copilot. You describe a goal and Copilot figures out what files to open, what changes to make, and what commands to run — asking for your approval when it needs to run something that has side effects.
 
@@ -1596,7 +1604,9 @@ For more on working with AI tools responsibly, see [Chapter 20](20-build-your-ag
 
 > **What success feels like:** Copilot answered a real question about real files in your repository. You can use this same pattern to ask about code, documentation, or anything else in the project - and the Accessible View ensures you can always read the response.
 
+---
 
-*Next: [Accessible Code Review](15-code-review.md)*
-*Back: [GitHub Pull Requests Extension](15-code-review.md)*
-*Related: [VS Code Setup & Accessibility Basics](11-vscode-interface.md) | [Appendix M: VS Code Accessibility Reference](appendix-g-vscode-reference.md) | [Appendix W: GitHub Copilot Reference](appendix-k-copilot-reference.md) | [Appendix X: AI Models Reference](appendix-k-copilot-reference.md)*
+*Next: [Chapter 17: Issue Templates](17-issue-templates.md)*  
+*Back: [Chapter 15: Code Review](15-code-review.md)*  
+*Related appendices: [Appendix K: Copilot Reference](appendix-k-copilot-reference.md)*
+

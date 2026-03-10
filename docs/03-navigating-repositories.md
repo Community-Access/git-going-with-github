@@ -2,6 +2,10 @@
 >
 > **Listen to Episode 3:** [Navigating Repositories](../PODCASTS.md) - a conversational audio overview of this chapter. Listen before reading to preview the concepts, or after to reinforce what you learned.
 
+> **Related appendices:** [Appendix A: Glossary](appendix-a-glossary.md) | [Appendix B: Screen Reader Cheat Sheet](appendix-b-screen-reader-cheatsheet.md)
+> **Authoritative sources:** [GitHub Docs: About repositories](https://docs.github.com/en/repositories/creating-and-managing-repositories/about-repositories) | [GitHub Accessibility Guide: Repositories](https://accessibility.github.com/documentation/guide/repos/)
+
+
 ## A Screen Reader Guide to GitHub Repositories
 
 > This guide covers everything you need to explore a GitHub repository using your keyboard and screen reader. No mouse required.
@@ -117,6 +121,8 @@ Each tab link reads with its name and the count of items: "Issues, 14 open" or "
 
 
 ## The Files Table
+
+> **See also:** [Appendix B: Screen Reader Cheat Sheet](appendix-b-screen-reader-cheatsheet.md) lists the keyboard shortcuts for navigating repository file trees.
 
 The files table is the core of the Code tab - it shows every file and folder in the repo.
 
@@ -358,6 +364,32 @@ cd learning-room
 - The Source Control icon in VS Code's Activity Bar shows a badge number when there are uncommitted changes in your clone
 
 </details>
+
+### Tool Cards: Clone a Repository
+
+**github.com (browser):**
+1. Click the green **Code** button above the file table.
+2. Copy the HTTPS URL.
+3. You will paste this into your local tool of choice below.
+
+**github.dev (web editor):**
+No clone needed. Press `.` on any repository page to open it in the browser-based editor instantly.
+
+**VS Code Desktop:**
+1. Press `Ctrl+Shift+P`, type **Git: Clone**, press `Enter`.
+2. Paste the HTTPS URL and choose a local folder.
+3. Click **Open** when prompted.
+
+**GitHub Desktop:**
+1. **File > Clone Repository** (or `Ctrl+Shift+O`).
+2. Paste the URL or select from your GitHub account list.
+3. Choose a local path and click **Clone**.
+
+**Git CLI (terminal):**
+```bash
+git clone https://github.com/owner/repo.git
+cd repo
+```
 
 
 ## Fork vs. Clone vs. Branch - What Is the Difference?
@@ -766,6 +798,18 @@ Quick way to check the project description, website link, and topics:
 4. Then go to Issues tab and filter by `good first issue`
 
 
+## If You Get Stuck
+
+| Problem | What to do |
+|---|---|
+| Clone fails with "authentication required" | You need to sign in. See [Appendix D](appendix-d-git-authentication.md) for HTTPS authentication setup. |
+| Cannot find the Code button for cloning | Press `B` to cycle buttons. The green "Code" button is above the file table. On narrow screens it may be hidden behind a "..." overflow menu. |
+| File finder (`T` shortcut) does not open | Ensure you are in Focus Mode (NVDA: `NVDA+Space`). The `T` shortcut only works in the repository Code tab. |
+| Forking creates a repo I did not expect | By default, forking copies only the default branch. Go to your fork's settings if you need to adjust. The original repo is untouched. |
+| `G I` or `G P` shortcuts do not work | These require two separate key presses (G, release, then I or P), not simultaneous. Ensure Focus Mode is active first. |
+| Everything else | Post a comment on your challenge issue describing what you tried. A facilitator or buddy will help. |
+
+
 ## Try It: The Five-Tab Tour
 
 **Time:** 3 minutes | **What you need:** Browser with screen reader, signed in to GitHub
@@ -795,7 +839,9 @@ Navigate to the [Accessibility Agents repository](https://github.com/community-a
 >
 > *An agent's output only makes sense when you already know what it is describing. You are building that knowledge right now.*
 
+---
 
-*Next: [The Learning Room](04-the-learning-room.md)*
-*Back: [Understanding GitHub's Web Structure](02-understanding-github.md)*
-*Reference: [Screen Reader Cheat Sheet](appendix-b-screen-reader-cheatsheet.md)*
+*Next: [Chapter 04: The Learning Room](04-the-learning-room.md)*  
+*Back: [Chapter 02: Understanding GitHub](02-understanding-github.md)*  
+*Related appendices: [Appendix B: Screen Reader Cheat Sheet](appendix-b-screen-reader-cheatsheet.md)*
+

@@ -2,7 +2,13 @@
 >
 > **Listen to Episode 10:** [Notifications and Mentions](../PODCASTS.md) - a conversational audio overview of this chapter. Listen before reading to preview the concepts, or after to reinforce what you learned.
 
+> **Related appendices:** [Appendix T: Community and Social](appendix-t-community-and-social.md) | [Appendix U: Discussions and Gists](appendix-u-discussions-and-gists.md) | [Appendix V: GitHub Mobile](appendix-v-github-mobile.md)
+> **Authoritative sources:** [GitHub Docs: About notifications](https://docs.github.com/en/account-and-profile/managing-subscriptions-and-notifications-on-github/setting-up-notifications/about-notifications)
+
+
 ## Managing Your GitHub Notification Inbox
+
+> **See also:** [Appendix V: GitHub Mobile](appendix-v-github-mobile.md) for managing notifications on your phone.
 
 > GitHub notifications are how GitHub tells you when something needs your attention. This guide teaches you to keep the inbox useful - not overwhelming - using only your keyboard and screen reader.
 
@@ -142,6 +148,27 @@ At the top of any repository page, find the **Watch** button (near Star and Fork
 
 
 ## The Notifications Inbox
+
+### Tool Cards: Manage Notifications
+
+**github.com (browser):**
+1. Go to [github.com/notifications](https://github.com/notifications) (or press `G` then `N`).
+2. Use `E` to mark done, `I` to mark read/unread, `Shift+M` to mute a thread.
+
+**VS Code Desktop (GitHub Pull Requests extension):**
+1. The **Notifications** view in the GitHub sidebar shows items needing attention.
+2. Click a notification to open the related issue or PR directly in VS Code.
+
+**GitHub Desktop:**
+GitHub Desktop does not manage notifications. Use the browser or CLI.
+
+**Git CLI / GitHub CLI:**
+```bash
+# List PRs requesting your review (most common notification)
+gh search prs --review-requested @me --state open
+# Open the notifications page in your browser
+gh browse notifications
+```
 
 Navigate to your inbox: `https://github.com/notifications` or press `G` then `N` (GitHub keyboard shortcut).
 
@@ -624,6 +651,8 @@ If you completed all eleven challenges, you are ready for Day 2 with a strong fo
 
 ## What Day 2 Adds
 
+> **See also:** [Chapter 11: VS Code Interface](11-vscode-interface.md) is where Day 2 begins -- have VS Code installed and ready.
+
 On Day 1, you worked entirely on GitHub.com. Everything happened in your browser -- creating issues, editing files, opening pull requests, resolving conflicts. On Day 2, you bring that same workflow to your own computer and add powerful new tools on top of it.
 
 Here is what Day 2 covers:
@@ -659,7 +688,9 @@ Think about where you started this morning. You may not have known what a reposi
 
 Day 2 builds on every one of those skills. Nothing gets thrown away. Everything you did today is the foundation for everything that comes next.
 
+---
 
-*Next: [Day 2 Agenda](../DAY2_AGENDA.md)*
-*Back: [Labels, Milestones, and Projects](09-labels-milestones-projects.md)*
-*Related: [Culture & Etiquette](08-open-source-culture.md) | [Working with Issues](05-working-with-issues.md)*
+*Next: [Chapter 11: VS Code Interface](11-vscode-interface.md)*  
+*Back: [Chapter 09: Labels, Milestones, and Projects](09-labels-milestones-projects.md)*  
+*Related appendices: [Appendix T: Community and Social](appendix-t-community-and-social.md) | [Appendix U: Discussions and Gists](appendix-u-discussions-and-gists.md)*
+

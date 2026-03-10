@@ -2,6 +2,10 @@
 >
 > **Listen to Episode 19:** [Screen Reader Cheat Sheet](../PODCASTS.md) - a conversational audio overview of this chapter. Listen before reading to preview the concepts, or after to reinforce what you learned.
 
+> **Reference companion to:** [Chapter 02: Understanding GitHub](02-understanding-github.md) | Also relevant: [Chapter 03](03-navigating-repositories.md), [Chapter 11](11-vscode-interface.md)
+>
+> **Authoritative source:** [GitHub Docs: Keyboard shortcuts](https://docs.github.com/en/get-started/accessibility/keyboard-shortcuts)
+
 ## GitHub Navigation with NVDA, JAWS, and VoiceOver
 
 > **How to use this sheet:** Keep it open in a second window or print it. Commands are organized by task so you can find what you need quickly while you work. All commands are keyboard-only - no mouse required.
@@ -726,7 +730,9 @@ The commands in this cheat sheet have been written for and tested with the follo
 3. Check GitHub's own shortcut dialog (`?` key) for the current page's shortcuts
 4. See [Troubleshooting](#troubleshooting-common-issues) above for common fixes
 
+---
 
-*Appendix B - keep this open as a reference throughout both days.*
-*Return to: [Day 1 Agenda](../DAY1_AGENDA.md) | [Understanding GitHub's Web Structure](02-understanding-github.md)*
-*See also: [GitHub Concepts Glossary](appendix-a-glossary.md)*
+*Next: [Appendix C: Markdown Reference](appendix-c-markdown-reference.md)*  
+*Back: [Appendix A: Glossary](appendix-a-glossary.md)*  
+*Teaching chapter: [Chapter 02: Understanding GitHub](02-understanding-github.md)*
+

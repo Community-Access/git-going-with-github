@@ -2,6 +2,10 @@
 
 > **Listen to Episode 11:** [VS Code Setup and Accessibility](../PODCASTS.md) - a conversational audio overview covering both this chapter and [Chapter 12](12-vscode-accessibility.md).
 
+> **Related appendices:** [Appendix G: VS Code Reference](appendix-g-vscode-reference.md) | [Appendix B: Screen Reader Cheat Sheet](appendix-b-screen-reader-cheatsheet.md)
+> **Authoritative sources:** [VS Code Docs: User Interface](https://code.visualstudio.com/docs/getstarted/userinterface) | [VS Code Docs: Accessibility](https://code.visualstudio.com/docs/editor/accessibility)
+
+
 ## Your Accessible Development Environment - The Foundation
 
 > **Day 2, Block 1 Material**
@@ -368,6 +372,8 @@ Before reading the rest of this guide:
 
 ## 3. Screen Reader Mode in VS Code
 
+> **See also:** [Chapter 12: VS Code Accessibility](12-vscode-accessibility.md) goes deeper into accessibility features, Accessible View, and signal customization.
+
 > **Who needs this section?** If you use NVDA, JAWS, VoiceOver, or another screen reader, read this section before continuing. If you are not using a screen reader, you can skip to [Section 4](#4-the-vs-code-interface-tour) - VS Code works fully without enabling this mode.
 
 VS Code has built-in accessibility support designed for screen reader users. It changes how focus moves, how announcements work, and how navigation behaves.
@@ -529,6 +535,8 @@ Before diving into individual features, here is how VS Code is organized. Every 
 ---
 
 ## 5. The Accounts Button and GitHub Sign-In
+
+> **See also:** [Chapter 14: Git in Practice](14-git-in-practice.md) covers the full Git workflow in VS Code including the Source Control panel.
 
 The **Accounts** button sits at the bottom of the Activity Bar (the vertical icon strip on the left side of VS Code). It manages your authentication with GitHub, Microsoft, and other services.
 
@@ -1063,12 +1071,9 @@ The editor has a search box that supports:
 
 </details>
 
-
 ---
 
+*Next: [Chapter 12: VS Code Accessibility](12-vscode-accessibility.md)*  
+*Back: [Chapter 10: Notifications and Day 1 Close](10-notifications-and-day-1-close.md)*  
+*Related appendices: [Appendix G: VS Code Reference](appendix-g-vscode-reference.md) | [Appendix B: Screen Reader Cheat Sheet](appendix-b-screen-reader-cheatsheet.md)*
 
----
-
-*Next: [VS Code: Accessibility Deep Dive](12-vscode-accessibility.md)*
-*Back: [Notifications and Day 1 Close](10-notifications-and-day-1-close.md)*
-*Related: [VS Code Reference](appendix-g-vscode-reference.md) | [Screen Reader Cheat Sheet](appendix-b-screen-reader-cheatsheet.md)*

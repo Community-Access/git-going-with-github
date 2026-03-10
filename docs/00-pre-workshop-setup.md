@@ -2,6 +2,10 @@
 >
 > **Listen to Episode 1:** [Pre-Workshop Setup](../PODCASTS.md) - a conversational audio overview of this chapter. Listen before reading to preview the concepts, or after to reinforce what you learned.
 
+> **Related appendices:** [Appendix D: Git Authentication](appendix-d-git-authentication.md) | [Appendix Y: Workshop Materials](appendix-y-workshop-materials.md) | [Appendix Z: GitHub Skills](appendix-z-github-skills.md)
+> **Authoritative sources:** [GitHub Docs: Create an account](https://docs.github.com/en/get-started/start-your-journey/creating-an-account-on-github) | [GitHub Docs: Set up Git](https://docs.github.com/en/get-started/getting-started-with-git/set-up-git)
+
+
 ## Everything You Need Before Day 1 Begins
 
 > **A [Community Access](https://community-access.org) workshop.**
@@ -60,6 +64,8 @@ You only need **one** of these. Use whichever you are most comfortable with.
 
 
 ## Step 1 - Create Your GitHub Account
+
+> **See also:** [Appendix D: Git Authentication](appendix-d-git-authentication.md) covers SSH keys and personal access tokens in detail.
 
 If you already have a GitHub account, skip to [Step 2](#step-2---configure-github-accessibility-settings).
 
@@ -548,6 +554,8 @@ If you open Feature Preview and neither **"New Issues Experience"** nor **"New F
 
 ## Step 6 - Install Git and Visual Studio Code
 
+> **See also:** [Chapter 01: Choose Your Tools](01-choose-your-tools.md) walks through every tool option with screen reader and low-vision guidance.
+
 ### Install Git First
 
 > **VS Code does not install Git.** It detects whether Git is already on your system. If Git is missing, the Source Control panel will display a warning, and all `git` commands in the terminal will fail. Install Git before installing VS Code.
@@ -823,6 +831,25 @@ For this workshop, Free tier is sufficient. If you want unlimited access, paid p
 
 ## Step 9 - Verification Checklist
 
+### Tool Cards: Verify Your Setup
+
+**github.com (browser):**
+Sign in at github.com and verify your profile, accessibility settings, and that you can navigate with keyboard shortcuts (`G I` for Issues, `G P` for Pull Requests).
+
+**VS Code Desktop:**
+Open VS Code and confirm: Screen Reader Mode is on (`Shift+Alt+F1`), Git is detected (run `git --version` in the terminal), and the GitHub Pull Requests extension is installed.
+
+**GitHub Desktop:**
+Open GitHub Desktop, sign in with your GitHub account, and verify it shows your repositories list.
+
+**Git CLI (terminal):**
+```bash
+git --version
+git config user.name
+git config user.email
+gh auth status  # if GitHub CLI is installed
+```
+
 Work through this checklist before Day 1. Check off each item:
 
 ```text
@@ -913,6 +940,19 @@ We are not covering Git commands in this workshop. If you want to learn Git, the
 - [GitHub Skills: Introduction to GitHub](https://github.com/skills/introduction-to-github)
 
 
+## If You Get Stuck
+
+| Problem | What to do |
+|---|---|
+| GitHub signup verification puzzle fails | Refresh the page and try again. Some puzzles are audio-based: look for an audio button. If it fails three times, try a different browser. |
+| Two-factor authentication codes not arriving | Check your spam folder. If using an authenticator app, verify the time on your phone is correct (auto-sync). |
+| Git not found after installing | Close and reopen your terminal. On Windows, restart VS Code. Run `git --version` to confirm. |
+| VS Code does not detect screen reader | Press `Shift+Alt+F1` (Windows) or run "Toggle Screen Reader Mode" from the Command Palette. |
+| Copilot does not respond in Agent mode | Verify you are signed in to GitHub in VS Code. Check that Copilot is enabled in your GitHub account settings. |
+| Cannot install VS Code extensions | Check your internet connection. Try installing from the terminal: `code --install-extension GitHub.vscode-pull-request-github`. |
+| Everything else | File an issue at [community-access/git-going-with-github](https://github.com/community-access/git-going-with-github/issues) describing what step you are on and what happened. We will help. |
+
+
 ## Getting Help Before the Event
 
 If you cannot complete any step in this guide before the workshop:
@@ -923,6 +963,9 @@ If you cannot complete any step in this guide before the workshop:
 
 You will not be left behind. Every setup issue we can solve before Day 1 means more time for learning on the day.
 
+---
 
-*Next: [Understanding GitHub's Web Structure](02-understanding-github.md)*
-*Back: [README](../README.md)*
+*Next: [Chapter 01: Choose Your Tools](01-choose-your-tools.md)*  
+*Back: [Course Guide](course-guide.md)*  
+*Related appendices: [Appendix D: Git Authentication](appendix-d-git-authentication.md) | [Appendix Y: Workshop Materials](appendix-y-workshop-materials.md)*
+

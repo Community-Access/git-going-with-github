@@ -1,6 +1,10 @@
-# Appendix J: GitHub Advanced Search
+# Appendix N: GitHub Advanced Search
 >
 > **Listen to Episode 27:** [Advanced Search](../PODCASTS.md) - a conversational audio overview of this chapter. Listen before reading to preview the concepts, or after to reinforce what you learned.
+
+> **Reference companion to:** [Chapter 05: Working with Issues](05-working-with-issues.md) | Also relevant: [Chapter 09](09-labels-milestones-projects.md)
+>
+> **Authoritative source:** [GitHub Docs: Searching on GitHub](https://docs.github.com/en/search-github)
 
 ## Finding Anything Across All of GitHub
 
@@ -364,5 +368,9 @@ GitHub does not have a built-in saved-search feature, but you can:
 https://github.com/issues?q=is%3Aissue+is%3Aopen+assignee%3A%40me
 ```
 
+---
 
-*Return to: [Resources](appendix-x-resources.md) | [Screen Reader Cheat Sheet](appendix-b-screen-reader-cheatsheet.md)*
+*Next: [Appendix O: Branch Protection](appendix-o-branch-protection.md)*  
+*Back: [Appendix M: Accessibility Standards](appendix-m-accessibility-standards.md)*  
+*Teaching chapter: [Chapter 05: Working with Issues](05-working-with-issues.md)*
+

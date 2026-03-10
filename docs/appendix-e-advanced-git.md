@@ -1,6 +1,10 @@
-# Appendix: Advanced Git Operations
+# Appendix E: Advanced Git Operations
 >
 > **Episode coming soon:** Advanced Git Operations - a conversational audio overview of this appendix. Listen before reading to preview the concepts, or after to reinforce what you learned.
+
+> **Reference companion to:** [Chapter 13: How Git Works](13-how-git-works.md) | Also relevant: [Chapter 14](14-git-in-practice.md)
+>
+> **Authoritative source:** [Pro Git Book](https://git-scm.com/book/en/v2)
 
 ## Going Deeper with Git
 
@@ -929,4 +933,7 @@ Copilot CLI explains the command before running it and asks for confirmation —
 
 ---
 
-*Related appendices: [Appendix D: Git Authentication](appendix-d-git-authentication.md) · [Appendix H: Releases, Tags, and Insights](appendix-s-releases-tags-insights.md) · [Appendix K: Branch Protection and Rulesets](appendix-o-branch-protection.md) · [Chapter 11: Git & Source Control](14-git-in-practice.md)*
+*Next: [Appendix F: Git Security](appendix-f-git-security.md)*  
+*Back: [Appendix D: Git Authentication](appendix-d-git-authentication.md)*  
+*Teaching chapter: [Chapter 13: How Git Works](13-how-git-works.md)*
+

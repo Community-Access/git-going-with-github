@@ -1,6 +1,10 @@
-# Appendix C: Accessibility Standards Reference
+# Appendix M: Accessibility Standards Reference
 >
 > **Listen to Episode 20:** [Accessibility Standards Reference](../PODCASTS.md) - a conversational audio overview of this chapter. Listen before reading to preview the concepts, or after to reinforce what you learned.
+
+> **Reference companion to:** [Chapter 08: Open Source Culture](08-open-source-culture.md) | Also relevant: [Chapter 12](12-vscode-accessibility.md)
+>
+> **Authoritative source:** [W3C WCAG 2.2](https://www.w3.org/TR/WCAG22/) | [WAI-ARIA 1.2](https://www.w3.org/TR/wai-aria-1.2/)
 
 ## WCAG, ARIA, and What They Mean for Your Contributions
 
@@ -317,5 +321,9 @@ Documentation in Markdown is converted to HTML. Accessible Markdown:
 | MDN Accessibility | [developer.mozilla.org/en-US/docs/Web/Accessibility](https://developer.mozilla.org/en-US/docs/Web/Accessibility) |
 | GitHub Accessibility | [accessibility.github.com](https://accessibility.github.com) |
 
+---
 
-*Return to: [Resources](appendix-x-resources.md) | [Appendix B - Screen Reader Cheat Sheet](appendix-b-screen-reader-cheatsheet.md) | [Appendix A - Glossary](appendix-a-glossary.md)*
+*Next: [Appendix N: Advanced Search](appendix-n-advanced-search.md)*  
+*Back: [Appendix L: Agents Reference](appendix-l-agents-reference.md)*  
+*Teaching chapter: [Chapter 08: Open Source Culture](08-open-source-culture.md)*
+

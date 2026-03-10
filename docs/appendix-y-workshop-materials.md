@@ -2,6 +2,10 @@
 >
 > **Listen to Episode 42:** [Accessing Workshop Materials](../PODCASTS.md) - a conversational audio overview of this chapter. Listen before reading to preview the concepts, or after to reinforce what you learned.
 
+> **Reference companion to:** [Chapter 00: Pre-Workshop Setup](00-pre-workshop-setup.md)
+>
+> **Authoritative source:** [Community-Access/git-going-with-github](https://github.com/Community-Access/git-going-with-github)
+
 ## How to Get, Read, and Keep These Documents
 
 > **Why this appendix exists:** The workshop content is available in multiple formats - Markdown source files, pre-built HTML pages, and a live GitHub Pages site. This guide explains how to access each format, download materials for offline use, and keep your copy up to date.
@@ -243,5 +247,9 @@ Download a fresh ZIP from the repository and replace your local copy. There is n
 
 </details>
 
+---
 
-*Return to: [Appendix X - Copilot AI Models](appendix-k-copilot-reference.md) | [Appendix A - Glossary](appendix-a-glossary.md) | [README](../README.md)*
+*Next: [Appendix Z: GitHub Skills](appendix-z-github-skills.md)*  
+*Back: [Appendix X: Resources](appendix-x-resources.md)*  
+*Teaching chapter: [Chapter 00: Pre-Workshop Setup](00-pre-workshop-setup.md)*
+

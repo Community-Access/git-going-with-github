@@ -1,6 +1,10 @@
-# Appendix AC: GitHub CLI Reference
+# Appendix I: GitHub CLI Reference
 >
 > **Episode coming soon:** GitHub CLI Reference - a conversational audio overview of this appendix. Listen before reading to preview the concepts, or after to reinforce what you learned.
+
+> **Reference companion to:** [Chapter 01: Choose Your Tools](01-choose-your-tools.md) | Also relevant: [Chapter 14](14-git-in-practice.md)
+>
+> **Authoritative source:** [GitHub CLI Manual](https://cli.github.com/manual/)
 
 ## Your Terminal, Supercharged for GitHub
 
@@ -802,4 +806,7 @@ gh issue create --title "Bug: focus lost after modal closes" --body-file ./issue
 
 ---
 
-*Related appendices: [Appendix AA: Advanced Git Operations](appendix-e-advanced-git.md) · [Appendix AB: GitHub Desktop](appendix-h-github-desktop.md) · [Appendix D: Git Authentication](appendix-d-git-authentication.md) · [Appendix W: Copilot Reference](appendix-k-copilot-reference.md)*
+*Next: [Appendix J: Codespaces](appendix-j-cloud-editors.md)*  
+*Back: [Appendix H: GitHub Desktop](appendix-h-github-desktop.md)*  
+*Teaching chapter: [Chapter 01: Choose Your Tools](01-choose-your-tools.md)*
+

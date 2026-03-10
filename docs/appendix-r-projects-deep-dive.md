@@ -1,6 +1,10 @@
-# Appendix I: GitHub Projects Deep Dive
+# Appendix R: GitHub Projects Deep Dive
 >
 > **Listen to Episode 26:** [GitHub Projects Deep Dive](../PODCASTS.md) - a conversational audio overview of this chapter. Listen before reading to preview the concepts, or after to reinforce what you learned.
+
+> **Reference companion to:** [Chapter 09: Labels, Milestones, and Projects](09-labels-milestones-projects.md)
+>
+> **Authoritative source:** [GitHub Docs: About Projects](https://docs.github.com/en/issues/planning-and-tracking-with-projects/learning-about-projects/about-projects)
 
 ## Boards, Tables, Roadmaps, Automations, and Accessible Navigation
 
@@ -565,4 +569,9 @@ After the overview: "Want to see a specific column or check a team member's work
 
 > **From Chapter 9:** For the introductory coverage of Labels, Milestones, and Projects including screen reader basics for getting started, see [Chapter 9: Labels, Milestones, and Projects](09-labels-milestones-projects.md).
 
-*Return to: [Resources](appendix-x-resources.md) | [Glossary](appendix-a-glossary.md)*
+---
+
+*Next: [Appendix S: Releases and Insights](appendix-s-releases-tags-insights.md)*  
+*Back: [Appendix Q: GitHub Actions](appendix-q-actions-workflows.md)*  
+*Teaching chapter: [Chapter 09: Labels, Milestones, and Projects](09-labels-milestones-projects.md)*
+

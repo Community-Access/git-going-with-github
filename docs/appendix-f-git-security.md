@@ -1,6 +1,10 @@
-# Appendix AD: Git Security for Contributors
+# Appendix F: Git Security for Contributors
 >
 > **Episode coming soon:** Git Security for Contributors - a conversational audio overview of this appendix. Listen before reading to preview the concepts, or after to reinforce what you learned.
+
+> **Reference companion to:** [Chapter 08: Open Source Culture](08-open-source-culture.md) | Also relevant: [Chapter 14](14-git-in-practice.md)
+>
+> **Authoritative source:** [GitHub Docs: Code security](https://docs.github.com/en/code-security)
 
 ## Keeping Secrets Out of Your Repository
 
@@ -609,4 +613,7 @@ Use this before every push to a public repository.
 
 ---
 
-*Related appendices: [Appendix D: Git Authentication](appendix-d-git-authentication.md) · [Appendix K: Branch Protection and Rulesets](appendix-o-branch-protection.md) · [Appendix L: GitHub Security Features](appendix-p-security-features.md) · [Appendix AA: Advanced Git Operations](appendix-e-advanced-git.md)*
+*Next: [Appendix G: VS Code Reference](appendix-g-vscode-reference.md)*  
+*Back: [Appendix E: Advanced Git](appendix-e-advanced-git.md)*  
+*Teaching chapter: [Chapter 08: Open Source Culture](08-open-source-culture.md)*
+

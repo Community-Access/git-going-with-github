@@ -1,8 +1,10 @@
 # Appendix T: Community and Social
 
-> This appendix consolidates three related reference topics: GitHub profiles, sponsors, and wikis (formerly Appendix R), GitHub organizations and templates (formerly Appendix S), and GitHub social features (formerly Appendix AE).
+> **Reference companion to:** [Chapter 08: Open Source Culture](08-open-source-culture.md) | Also relevant: [Chapter 10](10-notifications-and-day-1-close.md)
 >
-> **Teaching chapter:** [Chapter 08: Open Source Culture and Contributing](08-open-source-culture.md)
+> **Authoritative source:** [GitHub Docs: About organizations](https://docs.github.com/en/organizations) | [GitHub Docs: Sponsors](https://docs.github.com/en/sponsors)
+
+> This appendix consolidates three related reference topics: GitHub profiles, sponsors, and wikis (formerly Appendix R), GitHub organizations and templates (formerly Appendix S), and GitHub social features (formerly Appendix AE).
 
 ---
 
@@ -954,4 +956,7 @@ gh api user/subscriptions --jq '.[].full_name'     # List watched repos
 
 ---
 
-*Related appendices: [Appendix R: Profile, Sponsors, and Wikis](appendix-t-community-and-social.md) · [Appendix J: Advanced Search](appendix-n-advanced-search.md) · [Appendix T: Contributing to Open Source](08-open-source-culture.md) · [Appendix AC: GitHub CLI Reference](appendix-i-github-cli.md)*
+*Next: [Appendix U: Discussions and Gists](appendix-u-discussions-and-gists.md)*  
+*Back: [Appendix S: Releases and Insights](appendix-s-releases-tags-insights.md)*  
+*Teaching chapter: [Chapter 08: Open Source Culture](08-open-source-culture.md)*
+

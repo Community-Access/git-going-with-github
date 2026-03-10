@@ -2,13 +2,31 @@
 
 > **Listen to Episode 11:** [VS Code Setup and Accessibility](../PODCASTS.md) - a conversational audio overview covering both [Chapter 11](11-vscode-interface.md) and this chapter.
 
+> **Related appendices:** [Appendix G: VS Code Reference](appendix-g-vscode-reference.md) | [Appendix B: Screen Reader Cheat Sheet](appendix-b-screen-reader-cheatsheet.md)
+> **Authoritative sources:** [VS Code Docs: Accessibility](https://code.visualstudio.com/docs/editor/accessibility) | [GitHub Accessibility: GitHub Copilot in VS Code](https://accessibility.github.com/documentation/guide/github-copilot-vsc/)
+
+
 ## Accessibility Features for Power Users
+
+> **Challenge 10: Go Local** depends on the accessibility features covered in this chapter. Configure these settings before your first local commit.
 
 > **Day 2, Block 1 Material (continued)**
 >
 > This chapter covers the accessibility features that make VS Code productive for screen reader users, keyboard-only users, and low-vision users: essential keyboard navigation, the Problems panel, the Terminal, Copilot Chat, Accessible Help/View/Diff, Accessibility Signals, and VS Code Speech.
 >
 > For VS Code interface basics (setup, sign-in, Activity Bar, Settings, keyboard shortcuts), see [Chapter 11: VS Code Interface and Setup](11-vscode-interface.md).
+
+## Table of Contents
+
+12. [Essential Keyboard Navigation and Find/Filter](#12-essential-keyboard-navigation-and-findfilter)
+13. [The Problems Panel](#13-the-problems-panel)
+14. [The Terminal](#14-the-terminal)
+15. [Copilot Chat Window](#15-copilot-chat-window)
+16. [Accessible Help, Accessible View, and Accessible Diff](#16-accessible-help-accessible-view-and-accessible-diff)
+17. [Accessibility Signals](#17-accessibility-signals)
+18. [VS Code Speech - Voice Input and Output](#18-vs-code-speech---voice-input-and-output)
+19. [Markdown Authoring in VS Code](#19-markdown-authoring-in-vs-code)
+20. [If You Get Stuck](#if-you-get-stuck)
 
 ## 12. Essential Keyboard Navigation and Find/Filter
 
@@ -358,6 +376,8 @@ Type `@` in the chat input to see available participants:
 ---
 
 ## 16. Accessible Help, Accessible View, and Accessible Diff
+
+> **See also:** [Appendix G: VS Code Reference](appendix-g-vscode-reference.md) has a complete keyboard shortcut reference for all VS Code accessibility features.
 
 VS Code has a family of purpose-built accessibility features that give screen reader users complete, structured access to content that is otherwise conveyed visually or through dynamic regions. These three are the most important to know before working with Copilot and diffs.
 
@@ -1144,11 +1164,21 @@ Getting comfortable with preview, linting, and navigation tools means fewer form
 Install markdownlint now. Open a Markdown file. Press `Ctrl+Shift+M` to check for warnings. Fix one. That small habit pays off in every challenge ahead.
 
 
+## If You Get Stuck
+
+| Problem | What to do |
+|---|---|
+| Screen Reader Mode not working | Press `Shift+Alt+F1` or open Command Palette > "Toggle Screen Reader Mode". Restart VS Code if needed. |
+| Terminal does not announce output | Press `Ctrl+Shift+A` to open Accessible Terminal Buffer. Or use **Accessible View** (`Shift+Alt+F2`) while the terminal is focused. |
+| Copilot Chat not responding | Verify you are signed in to GitHub (check Accounts button in Activity Bar). Check that Copilot is enabled in your account settings. |
+| Problems panel shows no errors | Open a file first. Some linters only activate when the file type is recognized. Check that extensions (e.g., markdownlint) are installed and enabled. |
+| Keyboard shortcut does not work | The shortcut may be remapped. Open Keyboard Shortcuts (`Ctrl+K Ctrl+S`) and search for the action to find or reset the binding. |
+| Accessibility Signals not playing | Go to Settings > search "accessibility signal" > verify the signals you want are set to "on" or "auto". Check your system audio volume. |
+| Everything else | Open Command Palette > "Developer: Toggle Developer Tools" to check the console for errors. Post what you find on your challenge issue. |
+
 ---
 
+*Next: [Chapter 13: How Git Works](13-how-git-works.md)*  
+*Back: [Chapter 11: VS Code Interface](11-vscode-interface.md)*  
+*Related appendices: [Appendix G: VS Code Reference](appendix-g-vscode-reference.md)*
 
----
-
-*Next: [How Git Works](13-how-git-works.md)*
-*Back: [VS Code: Interface and Setup](11-vscode-interface.md)*
-*Related: [VS Code Reference](appendix-g-vscode-reference.md) | [Screen Reader Cheat Sheet](appendix-b-screen-reader-cheatsheet.md)*

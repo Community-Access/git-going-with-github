@@ -1,8 +1,10 @@
 # Appendix K: Copilot Reference
 
-> This appendix consolidates Copilot reference tables (formerly Appendix W) and Copilot model information (formerly Appendix X) into one complete reference.
+> **Reference companion to:** [Chapter 16: GitHub Copilot](16-github-copilot.md)
 >
-> **Teaching chapter:** [Chapter 16: GitHub Copilot](16-github-copilot.md)
+> **Authoritative source:** [GitHub Docs: Copilot](https://docs.github.com/en/copilot)
+
+> This appendix consolidates Copilot reference tables (formerly Appendix W) and Copilot model information (formerly Appendix X) into one complete reference.
 
 ---
 
@@ -1382,8 +1384,9 @@ To stay current, watch the [GitHub Copilot changelog](https://github.blog/change
 
 ## Related Resources
 
-- [GitHub Docs: Comparing AI models](https://docs.github.com/en/copilot/reference/ai-models/model-comparison)
-- [GitHub Docs: Supported AI models in Copilot](https://docs.github.com/en/copilot/reference/ai-models/supported-models)
-- [GitHub Docs: Changing the model for Copilot Chat](https://docs.github.com/en/copilot/using-github-copilot/ai-models/changing-the-ai-model-for-copilot-chat)
-- [Appendix W: GitHub Copilot Reference](appendix-k-copilot-reference.md)
-- [Chapter 13: GitHub Copilot](16-github-copilot.md)
+---
+
+*Next: [Appendix L: Agents Reference](appendix-l-agents-reference.md)*  
+*Back: [Appendix J: Codespaces](appendix-j-cloud-editors.md)*  
+*Teaching chapter: [Chapter 16: GitHub Copilot](16-github-copilot.md)*
+

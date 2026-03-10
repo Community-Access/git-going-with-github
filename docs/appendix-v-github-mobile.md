@@ -1,6 +1,10 @@
-# Appendix O: GitHub Mobile
+# Appendix V: GitHub Mobile
 >
 > **Listen to Episode 32:** [GitHub Mobile](../PODCASTS.md) - a conversational audio overview of this chapter. Listen before reading to preview the concepts, or after to reinforce what you learned.
+
+> **Reference companion to:** [Chapter 05: Working with Issues](05-working-with-issues.md) | Also relevant: [Chapter 10](10-notifications-and-day-1-close.md)
+>
+> **Authoritative source:** [GitHub Docs: GitHub Mobile](https://docs.github.com/en/get-started/using-github/github-mobile)
 
 ## Accessibility Guide for iOS and Android
 
@@ -278,5 +282,9 @@ Scroll down past the text field; buttons are below the keyboard dismiss area. On
 
 Force close the app and reopen. If the problem persists, sign out and back in via Profile → Settings → Sign out.
 
+---
 
-*Return to: [Resources](appendix-x-resources.md) | [Appendix B - Screen Reader Cheat Sheet](appendix-b-screen-reader-cheatsheet.md) | [Appendix A - Glossary](appendix-a-glossary.md)*
+*Next: [Appendix W: GitHub Pages](appendix-w-github-pages.md)*  
+*Back: [Appendix U: Discussions and Gists](appendix-u-discussions-and-gists.md)*  
+*Teaching chapter: [Chapter 05: Working with Issues](05-working-with-issues.md)*
+

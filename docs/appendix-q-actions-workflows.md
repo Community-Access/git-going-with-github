@@ -2,6 +2,10 @@
 >
 > **Listen to Episode 34:** [GitHub Actions and Workflows](../PODCASTS.md) - a conversational audio overview of this chapter. Listen before reading to preview the concepts, or after to reinforce what you learned.
 
+> **Reference companion to:** [Chapter 17: Issue Templates](17-issue-templates.md) | Also relevant: [Chapter 19](19-accessibility-agents.md)
+>
+> **Authoritative source:** [GitHub Docs: Understanding Actions](https://docs.github.com/en/actions/learn-github-actions/understanding-github-actions)
+
 ## Understanding Automation in Open Source Repositories
 
 > **Why this matters for you:** Every time you open a pull request on a real open source project, automated processes will run. Understanding what they are, what they mean, and what to do when they fail is essential to being a confident contributor.
@@ -576,6 +580,9 @@ When you are ready to go deeper, these are the best places to start:
 >
 > *You cannot skip a layer. Each one only makes sense because you understand the one before it.*
 
+---
 
-*Back: [GitHub Concepts and Glossary](appendix-a-glossary.md)*
-*Related: [Day 1 Agenda](../DAY1_AGENDA.md) | [Day 2 Agenda](../DAY2_AGENDA.md)*
+*Next: [Appendix R: Projects Deep Dive](appendix-r-projects-deep-dive.md)*  
+*Back: [Appendix P: Security Features](appendix-p-security-features.md)*  
+*Teaching chapter: [Chapter 17: Issue Templates](17-issue-templates.md)*
+

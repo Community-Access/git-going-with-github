@@ -1,6 +1,10 @@
-# Appendix L: GitHub Security Features
+# Appendix P: GitHub Security Features
 >
 > **Listen to Episode 29:** [GitHub Security Features](../PODCASTS.md) - a conversational audio overview of this chapter. Listen before reading to preview the concepts, or after to reinforce what you learned.
+
+> **Reference companion to:** [Chapter 08: Open Source Culture](08-open-source-culture.md) | Also relevant: [Chapter 17](17-issue-templates.md)
+>
+> **Authoritative source:** [GitHub Docs: Code security](https://docs.github.com/en/code-security)
 
 ## Dependabot, Secret Scanning, Code Scanning, and Private Advisories
 
@@ -410,7 +414,9 @@ Accessibility Agents' `/security-dashboard` slash command gives you a quick secu
 Action needed: Review PR #47 (5 minutes - single file change)
 ```
 
-**Workshop exercise:** Run `/security-dashboard` on your fork after Day 2. Review any Dependabot PRs open on the upstream `community-access/accessibility-agents` - merging one is a real security contribution.
+---
 
+*Next: [Appendix Q: GitHub Actions](appendix-q-actions-workflows.md)*  
+*Back: [Appendix O: Branch Protection](appendix-o-branch-protection.md)*  
+*Teaching chapter: [Chapter 08: Open Source Culture](08-open-source-culture.md)*
 
-*Return to: [Resources](appendix-x-resources.md) | [Appendix Q - GitHub Actions](appendix-q-actions-workflows.md) | [Appendix K - Branch Protection](appendix-o-branch-protection.md)*

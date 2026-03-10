@@ -1,6 +1,10 @@
-# Appendix AB: GitHub Desktop
+# Appendix H: GitHub Desktop
 >
 > **Episode coming soon:** GitHub Desktop - a conversational audio overview of this appendix. Listen before reading to preview the concepts, or after to reinforce what you learned.
+
+> **Reference companion to:** [Chapter 01: Choose Your Tools](01-choose-your-tools.md) | Also relevant: [Chapter 14](14-git-in-practice.md)
+>
+> **Authoritative source:** [GitHub Desktop Docs](https://docs.github.com/en/desktop)
 
 ## A Visual Git Client for Every Workflow
 
@@ -565,4 +569,7 @@ GitHub Desktop, VS Code, and the Git CLI all talk to the same Git repository. Yo
 
 ---
 
-*Related chapters and appendices: [Chapter 11: Git & Source Control in VS Code](14-git-in-practice.md) · [Appendix AA: Advanced Git Operations](appendix-e-advanced-git.md) · [Appendix D: Git Authentication](appendix-d-git-authentication.md) · [Chapter 12: GitHub Pull Requests Extension](15-code-review.md)*
+*Next: [Appendix I: GitHub CLI Reference](appendix-i-github-cli.md)*  
+*Back: [Appendix G: VS Code Reference](appendix-g-vscode-reference.md)*  
+*Teaching chapter: [Chapter 01: Choose Your Tools](01-choose-your-tools.md)*
+

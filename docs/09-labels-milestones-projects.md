@@ -2,6 +2,10 @@
 >
 > **Listen to Episode 9:** [Labels, Milestones, and Projects](../PODCASTS.md) - a conversational audio overview of this chapter. Listen before reading to preview the concepts, or after to reinforce what you learned.
 
+> **Related appendices:** [Appendix R: Projects Deep Dive](appendix-r-projects-deep-dive.md) | [Appendix A: Glossary](appendix-a-glossary.md)
+> **Authoritative sources:** [GitHub Docs: About labels](https://docs.github.com/en/issues/using-labels-and-milestones-to-track-work/managing-labels) | [GitHub Docs: About milestones](https://docs.github.com/en/issues/using-labels-and-milestones-to-track-work/about-milestones) | [GitHub Docs: About Projects](https://docs.github.com/en/issues/planning-and-tracking-with-projects/learning-about-projects/about-projects)
+
+
 ## Organizing Work and Cross-Referencing on GitHub
 
 > Labels, milestones, and projects are the organizational layer of GitHub. They turn a chaotic list of issues into a structured, navigable, prioritized body of work.
@@ -151,6 +155,29 @@ gh label list --json name,description
 </details>
 
 ### Applying a Label to an Issue or PR
+
+### Tool Cards: Apply a Label
+
+**github.com (browser):**
+1. Open the issue or PR.
+2. In the right sidebar, click the gear icon next to **Labels**.
+3. Select labels from the dropdown, then click outside to apply.
+
+**github.dev (web editor):**
+Not available -- labels are managed on the issue/PR page, not in the code editor.
+
+**VS Code Desktop (GitHub Pull Requests extension):**
+1. Open the issue in the **GitHub** sidebar panel.
+2. Click the label area to add or remove labels.
+
+**GitHub Desktop:**
+Not directly supported. Use **Repository > View on GitHub** to manage labels in the browser.
+
+**Git CLI / GitHub CLI:**
+```bash
+gh issue edit 42 --add-label "accessibility,good first issue"
+gh pr edit 15 --add-label "documentation"
+```
 
 From an open issue or PR:
 
@@ -516,6 +543,8 @@ It does **not** fire from comments on the PR. If you write "Closes #42" in a com
 
 ## GitHub Projects
 
+> **See also:** [Appendix R: Projects Deep Dive](appendix-r-projects-deep-dive.md) covers advanced project board configuration, custom fields, and automation.
+
 ### What Is a GitHub Project?
 
 GitHub Projects is a built-in project management tool. It can display issues and PRs from across multiple repositories in one view. Projects support three layouts:
@@ -662,7 +691,9 @@ Go to the Learning Room repository and do two things:
 >
 > *Labeling today is not overhead. It is configuring the input layer that every agent downstream depends on.*
 
+---
 
-*Next: [Notifications](10-notifications-and-day-1-close.md)*
-*Back: [Culture and Etiquette](08-open-source-culture.md)*
-*Related: [Working with Issues](05-working-with-issues.md) | [Day 1 Agenda](../DAY1_AGENDA.md)*
+*Next: [Chapter 10: Notifications and Day 1 Close](10-notifications-and-day-1-close.md)*  
+*Back: [Chapter 08: Open Source Culture](08-open-source-culture.md)*  
+*Related appendices: [Appendix R: Projects Deep Dive](appendix-r-projects-deep-dive.md)*
+

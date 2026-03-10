@@ -1,6 +1,8 @@
-# Appendix U: Resources
+# Appendix X: Resources
 >
 > **Listen to Episode 38:** [Resources and Links](../PODCASTS.md) - a conversational audio overview of this chapter. Listen before reading to preview the concepts, or after to reinforce what you learned.
+
+> **Reference companion to:** All chapters | Master resource index for the entire curriculum
 
 ## Everything You Need - Before, During, and After the Workshop
 
@@ -898,7 +900,9 @@ The documentation set is in the `docs/` folder of this learning repository (sepa
 | **Appendix W:** GitHub Copilot Reference | [docs/appendix-k-copilot-reference.md](appendix-k-copilot-reference.md) |
 | **Appendix X:** GitHub Copilot AI Models | [docs/appendix-k-copilot-reference.md](appendix-k-copilot-reference.md) |
 
+---
 
-*Back: [Issue Templates](17-issue-templates.md)*
-*Start over: [README ←](../README.md)*
-*Reference: [Screen Reader Cheat Sheet](appendix-b-screen-reader-cheatsheet.md)*
+*Next: [Appendix Y: Workshop Materials](appendix-y-workshop-materials.md)*  
+*Back: [Appendix W: GitHub Pages](appendix-w-github-pages.md)*  
+*Teaching chapter: All chapters*
+

@@ -1,6 +1,10 @@
-# Appendix K: Branch Protection Rules and Repository Rulesets
+# Appendix O: Branch Protection Rules and Repository Rulesets
 >
 > **Listen to Episode 28:** [Branch Protection and Rulesets](../PODCASTS.md) - a conversational audio overview of this chapter. Listen before reading to preview the concepts, or after to reinforce what you learned.
+
+> **Reference companion to:** [Chapter 08: Open Source Culture](08-open-source-culture.md) | Also relevant: [Chapter 14](14-git-in-practice.md)
+>
+> **Authoritative source:** [GitHub Docs: Protected branches](https://docs.github.com/en/repositories/configuring-branches-and-merges-in-your-repository/managing-protected-branches/about-protected-branches)
 
 ## How Merging Rules Work and Why Your PR May Be Blocked
 
@@ -370,8 +374,10 @@ Then practice opening a PR on your fork and requesting your workshop partner's r
 - [Appendix D - Git Authentication and Commit Signing](appendix-d-git-authentication.md)
 - [Appendix Q - GitHub Actions Workflows](appendix-q-actions-workflows.md)
 - [Appendix L - GitHub Security Features](appendix-p-security-features.md)
-- [Chapter 6 - Working with Pull Requests](../docs/06-working-with-pull-requests.md)
-- [Chapter 7 - Merge Conflicts](../docs/07-merge-conflicts.md)
 
+---
 
-*Return to: [Resources](appendix-x-resources.md) | [Appendix L - Security Features](appendix-p-security-features.md)*
+*Next: [Appendix P: Security Features](appendix-p-security-features.md)*  
+*Back: [Appendix N: Advanced Search](appendix-n-advanced-search.md)*  
+*Teaching chapter: [Chapter 08: Open Source Culture](08-open-source-culture.md)*
+

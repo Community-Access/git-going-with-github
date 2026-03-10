@@ -1,6 +1,10 @@
-# Appendix P: Publishing with GitHub Pages
+# Appendix W: Publishing with GitHub Pages
 >
 > **Listen to Episode 33:** [Publishing with GitHub Pages](../PODCASTS.md) - a conversational audio overview of this chapter. Listen before reading to preview the concepts, or after to reinforce what you learned.
+
+> **Reference companion to:** [Chapter 08: Open Source Culture](08-open-source-culture.md) | Also relevant: [Chapter 21](21-next-steps.md)
+>
+> **Authoritative source:** [GitHub Docs: About Pages](https://docs.github.com/en/pages/getting-started-with-github-pages/about-github-pages)
 
 ## How to Deploy a Static Website Directly from Your Repository
 
@@ -411,5 +415,9 @@ This usually indicates a **base URL mismatch**. If your site is at `https://user
 
 The published `<title>` element is set during the HTML build step. Update the template in `scripts/build-html.js` to ensure each page has a unique, descriptive title.
 
+---
 
-*Return to: [Resources](appendix-x-resources.md) | [Appendix E - GitHub Flavored Markdown](appendix-c-markdown-reference.md) | [Appendix A - Glossary](appendix-a-glossary.md)*
+*Next: [Appendix X: Resources](appendix-x-resources.md)*  
+*Back: [Appendix V: GitHub Mobile](appendix-v-github-mobile.md)*  
+*Teaching chapter: [Chapter 08: Open Source Culture](08-open-source-culture.md)*
+

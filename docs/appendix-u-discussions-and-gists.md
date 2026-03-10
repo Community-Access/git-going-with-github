@@ -1,8 +1,10 @@
 # Appendix U: Discussions and Gists
 
-> This appendix consolidates two related community content features: GitHub Discussions (formerly Appendix G) and GitHub Gists (formerly Appendix F).
+> **Reference companion to:** [Chapter 08: Open Source Culture](08-open-source-culture.md) | Also relevant: [Chapter 10](10-notifications-and-day-1-close.md)
 >
-> **Teaching chapter:** [Chapter 08: Open Source Culture and Contributing](08-open-source-culture.md)
+> **Authoritative source:** [GitHub Docs: About discussions](https://docs.github.com/en/discussions)
+
+> This appendix consolidates two related community content features: GitHub Discussions (formerly Appendix G) and GitHub Gists (formerly Appendix F).
 
 ---
 
@@ -598,7 +600,9 @@ When answering questions, paste your code as a Gist and link to it. Readers get 
 3. Select **"Delete"** (top-right, after Edit button)
 4. Confirm deletion
 
-**Warning:** Deletion is permanent. Forks of your Gist are not deleted.
+---
 
+*Next: [Appendix V: GitHub Mobile](appendix-v-github-mobile.md)*  
+*Back: [Appendix T: Community and Social](appendix-t-community-and-social.md)*  
+*Teaching chapter: [Chapter 08: Open Source Culture](08-open-source-culture.md)*
 
-*Return to: [Resources](appendix-x-resources.md)*

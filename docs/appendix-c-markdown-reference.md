@@ -1,6 +1,10 @@
-# Appendix E: Markdown and GitHub Flavored Markdown - Complete Guide
+# Appendix C: Markdown and GitHub Flavored Markdown - Complete Guide
 >
 > **Listen to Episode 22:** [GitHub Flavored Markdown](../PODCASTS.md) - a conversational audio overview of this chapter. Listen before reading to preview the concepts, or after to reinforce what you learned.
+
+> **Reference companion to:** [Chapter 06: Working with Pull Requests](06-working-with-pull-requests.md) | Also relevant: [Chapter 12](12-vscode-accessibility.md), [Chapter 17](17-issue-templates.md)
+>
+> **Authoritative source:** [GitHub Docs: Basic writing and formatting syntax](https://docs.github.com/en/get-started/writing-on-github/getting-started-with-writing-and-formatting-on-github/basic-writing-and-formatting-syntax)
 
 ## From First Paragraph to Polished Repository - Everything You Need to Know
 
@@ -2383,5 +2387,9 @@ flowchart LR
 </details>
 ````
 
+---
 
-*Return to: [Course Guide](course-guide.md) | [Appendix B - Screen Reader Cheat Sheet](appendix-b-screen-reader-cheatsheet.md) | [Appendix A - Glossary](appendix-a-glossary.md) | [Resources](appendix-x-resources.md)*
+*Next: [Appendix D: Git Authentication](appendix-d-git-authentication.md)*  
+*Back: [Appendix B: Screen Reader Cheat Sheet](appendix-b-screen-reader-cheatsheet.md)*  
+*Teaching chapter: [Chapter 06: Working with Pull Requests](06-working-with-pull-requests.md)*
+

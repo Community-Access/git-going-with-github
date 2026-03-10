@@ -2,6 +2,10 @@
 >
 > **Listen to Episode 43:** [GitHub Skills - Complete Course Catalog](../PODCASTS.md) - a conversational audio overview of this chapter. Listen before reading to preview the concepts, or after to reinforce what you learned.
 
+> **Reference companion to:** [Chapter 00: Pre-Workshop Setup](00-pre-workshop-setup.md) | Also relevant: [Chapter 21](21-next-steps.md)
+>
+> **Authoritative source:** [GitHub Skills](https://skills.github.com/)
+
 GitHub Skills is GitHub's free, self-paced interactive learning platform. Every course runs entirely inside GitHub - no external site, no separate login, no video. You copy a course repository to your own account, and an automated bot named Mona teaches you through real issues and pull requests.
 
 This appendix catalogs every available GitHub Skills module, organized into learning paths that build on the skills you practiced in this workshop. Use it as a roadmap for continued learning after Day 2.
@@ -340,7 +344,9 @@ Path 6: Cloud and Migration
 - [GitHub Skills homepage](https://skills.github.com/) - browse all courses with descriptions
 - [GitHub Skills organization](https://github.com/skills) - view all course repositories directly
 - [GitHub Skills Discussions](https://github.com/orgs/skills/discussions) - ask questions and share feedback with the GitHub Skills community
-- [Skills Exercise Creator](https://github.com/skills/exercise-creator) - build your own GitHub Skills courses using Copilot
 
+---
 
-Last updated: March 2026
+*Back: [Appendix Y: Workshop Materials](appendix-y-workshop-materials.md)*  
+*Teaching chapter: [Chapter 00: Pre-Workshop Setup](00-pre-workshop-setup.md)*
+

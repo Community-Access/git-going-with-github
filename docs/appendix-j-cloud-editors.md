@@ -1,6 +1,10 @@
-# Appendix N: GitHub Codespaces
+# Appendix J: GitHub Codespaces
 >
 > **Listen to Episode 31:** [GitHub Codespaces](../PODCASTS.md) - a conversational audio overview of this chapter. Listen before reading to preview the concepts, or after to reinforce what you learned.
+
+> **Reference companion to:** [Chapter 01: Choose Your Tools](01-choose-your-tools.md) | Also relevant: [Chapter 11](11-vscode-interface.md)
+>
+> **Authoritative source:** [GitHub Docs: Codespaces](https://docs.github.com/en/codespaces)
 
 ## Cloud Development Environments - Accessibility Guide
 
@@ -358,5 +362,9 @@ If the branch exists on GitHub, you can create a new Codespace from it. Uncommit
 
 You may have committed but not pushed. In the Source Control panel, look for the **Sync Changes** or **Push** button. Run `git push` in the terminal if needed.
 
+---
 
-*Return to: [Resources](appendix-x-resources.md) | [Appendix M - VS Code Accessibility Reference](appendix-g-vscode-reference.md) | [Appendix A - Glossary](appendix-a-glossary.md)*
+*Next: [Appendix K: Copilot Reference](appendix-k-copilot-reference.md)*  
+*Back: [Appendix I: GitHub CLI Reference](appendix-i-github-cli.md)*  
+*Teaching chapter: [Chapter 01: Choose Your Tools](01-choose-your-tools.md)*
+

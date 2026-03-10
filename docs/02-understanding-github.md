@@ -2,11 +2,17 @@
 >
 > **Listen to Episode 2:** [Understanding GitHub on the Web](../PODCASTS.md) - a conversational audio overview of this chapter. Listen before reading to preview the concepts, or after to reinforce what you learned.
 
+> **Related appendices:** [Appendix A: Glossary](appendix-a-glossary.md) | [Appendix B: Screen Reader Cheat Sheet](appendix-b-screen-reader-cheatsheet.md)
+> **Authoritative sources:** [GitHub Docs: About GitHub](https://docs.github.com/en/get-started/start-your-journey/about-github-and-git) | [GitHub Accessibility Documentation](https://accessibility.github.com/documentation)
+
+
 ## How GitHub Is Organized, and How to Orient Yourself on Every Page
 
 > **Read this before navigating GitHub for the first time.** This lesson gives you the mental model that makes every subsequent guide easier. Once you understand how GitHub pages are built - their landmark structure, heading hierarchy, and URL patterns - you will know how to orient yourself on any page you land on, even ones this guide never mentions.
 
 ## Table of Contents
+
+> **Challenge 1: Find Your Way Around** uses the concepts from this chapter and [Chapter 03](03-navigating-repositories.md) and [Chapter 04](04-the-learning-room.md). Read this chapter first to build the mental model, then navigate repositories with confidence.
 
 1. [GitHub's Three-Level Structure](#1-githubs-three-level-structure)
 2. [What Is Always on Every GitHub Page](#2-what-is-always-on-every-github-page)
@@ -251,6 +257,8 @@ Your personal home (`github.com`) shows activity from repositories you follow. Y
 
 
 ## 5. Visual Map of a Repository Page
+
+> **See also:** [Appendix A: Glossary](appendix-a-glossary.md) defines every term used in this course. [Appendix B: Screen Reader Cheat Sheet](appendix-b-screen-reader-cheatsheet.md) has quick-reference keyboard shortcuts for navigating headings and landmarks.
 
 ### Description
 
@@ -616,11 +624,24 @@ Open any GitHub repository - try [github.com/community-access/accessibility-agen
 > **What success feels like:** You heard a repo name, at least two landmarks, and several headings. If you did, you can orient yourself on *any* GitHub page using these same four keys.
 
 
+## If You Get Stuck
+
+| Problem | What to do |
+|---|---|
+| Screen reader says nothing when pressing `1` | Ensure browse mode is active (NVDA: press `Escape`; JAWS: press `Num Pad Plus`). GitHub pages must fully load before heading navigation works. |
+| Landmarks announce differently than expected | GitHub updates its landmark structure periodically. Press `D` to cycle landmarks and listen to what is announced rather than expecting exact names. |
+| Page seems empty or broken | Some GitHub features require JavaScript. Ensure your browser has JavaScript enabled and try refreshing with `Ctrl+Shift+R`. |
+| Cannot find the repository navigation tabs | Press `D` until you hear "Repository navigation" then press `K` or `Tab` to find Code, Issues, Pull Requests tabs. |
+| Everything else | Post a comment on your challenge issue describing what you see and hear. A facilitator or buddy can walk you through it. |
+
+
 ## Day 2 Amplifier
 
 > Once you have this mental model solid, the Accessibility Agents make more sense. The `@daily-briefing` agent reads your GitHub notifications and presents a structured report - but the report structure mirrors the landmark structure of GitHub itself: global activity, then per-repo activity, then per-issue and per-PR detail. The agent describes the same building you have already walked through manually.
 
+---
 
-*Next: [Navigating Repositories](03-navigating-repositories.md)*
-*Back: [Pre-Workshop Setup](00-pre-workshop-setup.md)*
-*Reference: [Screen Reader Cheat Sheet](appendix-b-screen-reader-cheatsheet.md) | [GitHub Concepts Glossary](appendix-a-glossary.md)*
+*Next: [Chapter 03: Navigating Repositories](03-navigating-repositories.md)*  
+*Back: [Chapter 01: Choose Your Tools](01-choose-your-tools.md)*  
+*Related appendices: [Appendix A: Glossary](appendix-a-glossary.md) | [Appendix B: Screen Reader Cheat Sheet](appendix-b-screen-reader-cheatsheet.md)*
+

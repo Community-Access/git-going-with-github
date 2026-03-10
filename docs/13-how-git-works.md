@@ -1,5 +1,9 @@
 # How Git Works: The Mental Model
 
+> **Related appendices:** [Appendix E: Advanced Git](appendix-e-advanced-git.md) | [Appendix D: Git Authentication](appendix-d-git-authentication.md) | [Appendix F: Git Security](appendix-f-git-security.md)
+> **Authoritative sources:** [Git SCM: Git Basics](https://git-scm.com/book/en/v2/Getting-Started-What-is-Git%3F) | [Git SCM: Branching in a Nutshell](https://git-scm.com/book/en/v2/Git-Branching-Branches-in-a-Nutshell) | [GitHub Docs: About Git](https://docs.github.com/en/get-started/using-git/about-git)
+
+
 > **Day 2, Block 1 Material**
 >
 > Before you start running Git commands, you need a mental model of what Git actually does. This chapter builds that model from the ground up: what a commit is, what a branch is, how local and remote repositories relate, and why merge conflicts happen. Every operation in [Chapter 14](14-git-in-practice.md) will make more sense after reading this.
@@ -18,6 +22,8 @@
 10. [If You Get Stuck](#10-if-you-get-stuck)
 
 ---
+
+> **Challenges 10-16** all depend on the mental model built in this chapter. Understanding the three areas, branches, and push/pull makes every Day 2 Git command predictable.
 
 ## 1. Why a Mental Model Matters
 
@@ -175,6 +181,8 @@ Once a commit is made, it is part of the repository's history. You can make new 
 
 ## 4. What Is a Branch?
 
+> **See also:** [Chapter 14: Git in Practice](14-git-in-practice.md) shows how to create and switch branches hands-on in VS Code.
+
 A branch is a name that points to a specific commit. That is the entire definition. A branch is not a copy of your files. It is not a separate folder. It is a pointer -- a label stuck on one specific commit.
 
 ### The default branch: main
@@ -243,6 +251,8 @@ Git uses a special pointer called `HEAD` to track which branch you are currently
 ---
 
 ## 5. Local vs Remote
+
+> **See also:** [Appendix D: Git Authentication](appendix-d-git-authentication.md) covers how to set up credentials so push and pull work without password prompts.
 
 So far, we have talked about one repository. In practice, you work with two copies of the same repository.
 
@@ -519,10 +529,9 @@ If you can answer these four questions, you can troubleshoot almost any Git situ
 | "Git says my branch is behind the remote" | Run `git pull` to download the new commits. If there are conflicts, resolve them. |
 | "I do not understand the error message" | Copy the exact error text and search for it. The [Pro Git book troubleshooting section](https://git-scm.com/book/en/v2) and [Stack Overflow](https://stackoverflow.com/questions/tagged/git) both have clear explanations. |
 
-**If nothing in this table helps:** Post the exact error message on your challenge issue. Include the output of `git status` and `git log --oneline -5`. A facilitator or buddy can diagnose almost any Git problem from these two commands.
-
 ---
 
-*Next: [Git in Practice](14-git-in-practice.md)*
-*Back: [VS Code: Accessibility Deep Dive](12-vscode-accessibility.md)*
-*Related: [Advanced Git](appendix-e-advanced-git.md) | [Git Authentication](appendix-d-git-authentication.md) | [Git Security](appendix-f-git-security.md)*
+*Next: [Chapter 14: Git in Practice](14-git-in-practice.md)*  
+*Back: [Chapter 12: VS Code Accessibility](12-vscode-accessibility.md)*  
+*Related appendices: [Appendix E: Advanced Git](appendix-e-advanced-git.md) | [Appendix D: Git Authentication](appendix-d-git-authentication.md)*
+

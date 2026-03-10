@@ -1,5 +1,9 @@
 # What Comes Next: Your Developer Journey
 
+> **Related appendices:** [Appendix X: Resources](appendix-x-resources.md) | [Appendix Z: GitHub Skills](appendix-z-github-skills.md) | [Appendix Y: Workshop Materials](appendix-y-workshop-materials.md)
+> **Authoritative sources:** [GitHub Skills](https://skills.github.com/) | [GitHub Docs: Getting started](https://docs.github.com/en/get-started)
+
+
 > **Day 2, Closing Material**
 >
 > Congratulations -- you have completed the Git Going with GitHub workshop. This chapter is your graduation guide: what you accomplished, where to go next, how to build your portfolio, and how to stay connected with the community.
@@ -78,6 +82,8 @@ The following table maps what you learned to where it applies beyond this worksh
 
 ## 3. Building Your Developer Portfolio
 
+> **See also:** [Appendix X: Resources](appendix-x-resources.md) has links to every tool and resource mentioned in this course.
+
 Your GitHub profile is your portfolio. Here is how to make what you built visible.
 
 ### Pin your best repositories
@@ -131,6 +137,8 @@ The green squares on your GitHub profile show when you made contributions. Even 
 ---
 
 ## 4. Continued Learning Roadmap
+
+> **See also:** [Appendix Z: GitHub Skills](appendix-z-github-skills.md) has the complete catalog of recommended GitHub Skills courses.
 
 The workshop taught you the fundamentals. Here is where to go deeper in each area.
 
@@ -268,6 +276,17 @@ You have already practiced every step of this workflow. This is the real thing.
 
 ---
 
+## If You Get Stuck After the Workshop
+
+| Problem | What to do |
+|---|---|
+| Forgot how to do something from the workshop | Search the [course guide](../course-guide.md) by topic. Every major skill links to the chapter and appendix that covers it. |
+| Git error you have not seen before | Copy the exact error text and search for it. [Pro Git](https://git-scm.com/book/en/v2) and Stack Overflow's [git tag](https://stackoverflow.com/questions/tagged/git) cover nearly every scenario. |
+| VS Code extension not working | Check the extension's page in the marketplace for known issues. Try disabling and re-enabling it. |
+| Want to contribute but do not know where to start | Search for `good first issue` labels on projects that interest you. See [Section 4: Continued Learning Roadmap](#4-continued-learning-roadmap). |
+| Need help from the community | Post in [GitHub Community Accessibility Discussions](https://github.com/orgs/community/discussions/categories/accessibility) or file an issue in the workshop repo. |
+
+
 ## 8. Final Words
 
 Two days ago, GitHub was new. Git was a mystery. The terminal was unfamiliar. Now you have filed issues, opened pull requests, resolved conflicts, reviewed code, and contributed to a real open source project.
@@ -280,5 +299,6 @@ Keep committing.
 
 ---
 
-*Back: [Build Your Agent](20-build-your-agent.md)*
-*Related: [Resources](appendix-x-resources.md) | [GitHub Skills](appendix-z-github-skills.md) | [Workshop Materials](appendix-y-workshop-materials.md)*
+*Back: [Chapter 20: Build Your Agent](20-build-your-agent.md)*  
+*Related appendices: [Appendix X: Resources](appendix-x-resources.md) | [Appendix Z: GitHub Skills](appendix-z-github-skills.md)*
+

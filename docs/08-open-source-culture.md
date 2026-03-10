@@ -2,6 +2,10 @@
 >
 > **Listen to Episode 8:** [Open Source Culture and Etiquette](../PODCASTS.md) - a conversational audio overview of this chapter. Listen before reading to preview the concepts, or after to reinforce what you learned.
 
+> **Related appendices:** [Appendix M: Accessibility Standards](appendix-m-accessibility-standards.md) | [Appendix F: Git Security](appendix-f-git-security.md) | [Appendix O: Branch Protection](appendix-o-branch-protection.md) | [Appendix W: GitHub Pages](appendix-w-github-pages.md)
+> **Authoritative sources:** [GitHub Docs: Contributing to open source](https://docs.github.com/en/get-started/exploring-projects-on-github/contributing-to-a-project) | [Open Source Guides: How to Contribute](https://opensource.guide/how-to-contribute/)
+
+
 ## How to Be an Effective and Respectful Open Source Contributor
 
 > Technical skills get your code into a project. Communication skills keep you welcomed in the community. This guide covers the human side of open source.
@@ -737,6 +741,8 @@ When you take a good first issue, your responsibilities:
 
 ## Writing Your First README
 
+> **See also:** [Appendix W: GitHub Pages](appendix-w-github-pages.md) for publishing your README as a website.
+
 A README is the front door of your project. It is the first file visitors read, and often the only file they read before deciding whether to stay or move on.
 
 ### What belongs in a README
@@ -843,6 +849,8 @@ Most projects adopt the [Contributor Covenant](https://www.contributor-covenant.
 When you see a CODE_OF_CONDUCT.md in a repository, it means the maintainers take community health seriously, there is a process for reporting violations, and you are both protected and expected to protect others.
 
 ### SECURITY.md
+
+> **See also:** [Appendix F: Git Security](appendix-f-git-security.md) and [Appendix P: Security Features](appendix-p-security-features.md) for security best practices.
 
 If someone discovers a vulnerability in your project, you do not want them to file a public issue. A SECURITY.md file tells reporters how to disclose responsibly:
 
@@ -1077,6 +1085,39 @@ If the issue looks right for you, comment briefly to let the team know you are w
 
 ## 6. Making Your Contribution
 
+### Tool Cards: Fork, Clone, and Contribute
+
+**github.com (browser):**
+1. Click **Fork** on the repository page, then **Create fork**.
+2. Edit files directly in your fork's web interface.
+3. Click **Contribute > Open pull request** to submit back to the original.
+
+**github.dev (web editor):**
+1. Fork the repo on github.com first.
+2. Navigate to your fork and press `.` to open in the web editor.
+3. Edit, commit, and create a PR from the Source Control panel.
+
+**VS Code Desktop:**
+1. Fork on github.com, then clone your fork: `Ctrl+Shift+P` > **Git: Clone**.
+2. Create a branch, make edits, commit and push.
+3. Use **GitHub Pull Requests: Create Pull Request** to submit.
+
+**GitHub Desktop:**
+1. **File > Clone Repository**, select your fork.
+2. Create a branch via **Branch > New Branch**, make edits.
+3. Push and click **Create Pull Request** (opens browser).
+
+**Git CLI / GitHub CLI:**
+```bash
+gh repo fork owner/repo --clone
+cd repo
+git checkout -b fix/my-change
+# edit files
+git add . && git commit -m "fix: description"
+git push -u origin fix/my-change
+gh pr create
+```
+
 ### The Basic Workflow
 
 1. **Fork the repository** - creates your own copy on GitHub
@@ -1137,5 +1178,9 @@ The hardest part of open source contribution is starting. Once you have one merg
 - **Review other PRs.** Even as a new contributor, you can leave useful feedback: "Does this change affect screen reader users?" or "The example in the PR description is missing a step."
 - **Set a low bar.** A contribution does not need to be impressive. A fixed typo merged into a project used by thousands of people is more valuable than a perfect contribution never submitted.
 
+---
 
-*Return to: [Resources](appendix-x-resources.md) | [Appendix A - Glossary](appendix-a-glossary.md)*
+*Next: [Chapter 09: Labels, Milestones, and Projects](09-labels-milestones-projects.md)*  
+*Back: [Chapter 07: Merge Conflicts](07-merge-conflicts.md)*  
+*Related appendices: [Appendix M: Accessibility Standards](appendix-m-accessibility-standards.md) | [Appendix F: Git Security](appendix-f-git-security.md) | [Appendix O: Branch Protection](appendix-o-branch-protection.md)*
+

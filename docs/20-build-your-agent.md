@@ -1,5 +1,9 @@
 # Build Your Agent: The Capstone Project
 
+> **Related appendices:** [Appendix L: Agents Reference](appendix-l-agents-reference.md) | [Appendix K: Copilot Reference](appendix-k-copilot-reference.md) | [Appendix C: Markdown Reference](appendix-c-markdown-reference.md)
+> **Authoritative sources:** [VS Code Docs: Chat participants](https://code.visualstudio.com/docs/copilot/copilot-chat#_chat-participants) | [GitHub Docs: About GitHub Copilot agents](https://docs.github.com/en/copilot/using-github-copilot/using-extensions-to-integrate-external-tools-with-copilot-chat)
+
+
 > **Day 2, Block 4 Material (Capstone)**
 >
 > Everything you have learned comes together here. You will design, build, and contribute an accessibility agent to the [Community-Access/accessibility-agents](https://github.com/Community-Access/accessibility-agents) repository. This is a real contribution to a real project -- your agent will join the roster of 55+ agents serving 3 accessibility teams across 5 platforms.
@@ -18,6 +22,8 @@
 10. [If You Get Stuck](#10-if-you-get-stuck)
 
 ---
+
+> **Challenge 16: Build Your Agent (Capstone).** This is the culminating challenge of the workshop. You will fork, write, test, and contribute an accessibility agent.
 
 ## 1. The Capstone Challenge
 
@@ -47,6 +53,8 @@ Most students complete the capstone in 60 to 90 minutes. The phases are designed
 ---
 
 ## 2. Phase 1: Choose Your Agent's Mission
+
+> **See also:** [Chapter 19: Accessibility Agents](19-accessibility-agents.md) introduces the agent ecosystem and shows existing agents for inspiration.
 
 ### What makes a good agent mission
 
@@ -244,6 +252,8 @@ Guardrails define what the agent must not do. They prevent the agent from overst
 
 ## 5. Phase 4: Test Your Agent Locally
 
+> **See also:** [Chapter 18: Fork and Contribute](18-fork-and-contribute.md) covers the fork-and-PR workflow you will use to submit your agent.
+
 Before opening a pull request, test your agent to verify it works.
 
 ### Testing with GitHub Copilot Chat
@@ -308,6 +318,24 @@ Most students iterate 2-3 times before they are satisfied.
 ---
 
 ## 6. Phase 5: Open Your Pull Request
+
+### Tool Cards: Open Your Capstone PR
+
+**VS Code Desktop (primary for Day 2):**
+1. Push your branch: `Ctrl+Shift+P` > **Git: Push**.
+2. `Ctrl+Shift+P` > **GitHub Pull Requests: Create Pull Request**.
+3. Set base repo to `Community-Access/accessibility-agents`, fill in the title and description.
+
+**github.com (browser):**
+1. Navigate to your fork on GitHub.
+2. Click **Contribute > Open pull request**.
+3. Verify the base is `Community-Access/accessibility-agents:main` and the compare is your branch.
+
+**GitHub CLI:**
+```bash
+git push -u origin your-branch
+gh pr create --repo Community-Access/accessibility-agents
+```
 
 You have a working agent file. Now contribute it.
 
@@ -542,6 +570,7 @@ This is always accepted. A student who explains a failure thoughtfully has learn
 
 ---
 
-*Next: [What Comes Next](21-next-steps.md)*
-*Back: [Accessibility Agents](19-accessibility-agents.md)*
-*Related: [Fork and Contribute](18-fork-and-contribute.md) | [Agents Reference](appendix-l-agents-reference.md) | [GitHub Copilot](16-github-copilot.md)*
+*Next: [Chapter 21: Next Steps](21-next-steps.md)*  
+*Back: [Chapter 19: Accessibility Agents](19-accessibility-agents.md)*  
+*Related appendices: [Appendix L: Agents Reference](appendix-l-agents-reference.md) | [Appendix K: Copilot Reference](appendix-k-copilot-reference.md)*
+

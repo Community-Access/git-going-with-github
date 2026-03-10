@@ -2,6 +2,10 @@
 >
 > **Listen to Episode 17:** [Accessibility Agents](../PODCASTS.md) - a conversational audio overview of this chapter. Listen before reading to preview the concepts, or after to reinforce what you learned.
 
+> **Related appendices:** [Appendix L: Agents Reference](appendix-l-agents-reference.md) | [Appendix K: Copilot Reference](appendix-k-copilot-reference.md)
+> **Authoritative sources:** [GitHub Docs: Using extensions with Copilot](https://docs.github.com/en/copilot/using-github-copilot/using-extensions-to-integrate-external-tools-with-copilot-chat) | [VS Code Docs: Chat participants](https://code.visualstudio.com/docs/copilot/copilot-chat#_chat-participants)
+
+
 ## 55 AI Agents Across 3 Teams and 5 Platforms
 
 > **Day 2, Block 3 Material**
@@ -1332,6 +1336,8 @@ The 55 Accessibility Agents and 54+ slash commands are starting points. The `.ag
 
 ### Agent File Structure
 
+> **See also:** [Appendix L: Agents Reference](appendix-l-agents-reference.md) has the complete agent.md format specification and examples.
+
 Every `.agent.md` file has two parts: **YAML frontmatter** (metadata) and a **system prompt** (markdown body).
 
 ```markdown
@@ -2414,7 +2420,9 @@ Run this command? (Y/n)
 3. Check file naming: must be a `.md` file in `.github/prompts/`
 4. Try typing the full command name (autocomplete may be incomplete)
 
+---
 
-*Back: [Issue Templates](17-issue-templates.md)*  
-*Reference: [Appendix V: Accessibility Agents Reference](appendix-l-agents-reference.md)*  
-*Related: [Culture & Etiquette](08-open-source-culture.md) | [Working with Issues](05-working-with-issues.md) | [Appendix M: VS Code Accessibility Reference](appendix-g-vscode-reference.md)*
+*Next: [Chapter 20: Build Your Agent](20-build-your-agent.md)*  
+*Back: [Chapter 18: Fork and Contribute](18-fork-and-contribute.md)*  
+*Related appendices: [Appendix L: Agents Reference](appendix-l-agents-reference.md) | [Appendix K: Copilot Reference](appendix-k-copilot-reference.md)*
+

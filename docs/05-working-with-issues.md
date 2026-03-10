@@ -2,6 +2,10 @@
 >
 > **Listen to Episode 5:** [Working with Issues](../PODCASTS.md) - a conversational audio overview of this chapter. Listen before reading to preview the concepts, or after to reinforce what you learned.
 
+> **Related appendices:** [Appendix N: Advanced Search](appendix-n-advanced-search.md) | [Appendix V: GitHub Mobile](appendix-v-github-mobile.md) | [Appendix B: Screen Reader Cheat Sheet](appendix-b-screen-reader-cheatsheet.md)
+> **Authoritative sources:** [GitHub Docs: About issues](https://docs.github.com/en/issues/tracking-your-work-with-issues/about-issues) | [GitHub Accessibility Guide: Issues](https://accessibility.github.com/documentation/guide/issues/)
+
+
 ## Filing, Managing, and Participating in GitHub Issues
 
 > Issues are where open source collaboration begins. This guide covers everything from finding the right issue to file a perfect bug report - all with your keyboard and screen reader.
@@ -834,6 +838,8 @@ Any other information, screenshots (with alt text), or links.
 
 ### Assigning labels from the sidebar
 
+> **See also:** [Chapter 09: Labels, Milestones, and Projects](09-labels-milestones-projects.md) covers the full label and milestone system.
+
 While the form is open, the sidebar has dropdowns for Labels, Assignees, and Milestone.
 
 <details>
@@ -923,6 +929,31 @@ The interactive mode walks you step-by-step through title, body (opens your edit
 - Sidebar options (Labels, Assignees, Milestone) appear to the right of the body field; click the gear icon next to each to open a dropdown
 
 </details>
+
+### Tool Cards: File a New Issue
+
+**github.com (browser):**
+1. Navigate to the repository's **Issues** tab (or press `G` then `I`).
+2. Click **New issue**, choose a template or blank issue.
+3. Fill in the title and description, then click **Submit new issue**.
+
+**github.dev (web editor):**
+Not available -- issues are managed through the repository's Issues tab, not the code editor.
+
+**VS Code Desktop (GitHub Pull Requests extension):**
+1. Open the **GitHub** panel in the sidebar.
+2. Under **Issues**, click the **+** icon to create a new issue.
+3. Fill in the title and body, then click **Create**.
+
+**GitHub Desktop:**
+Not directly supported. Click **Repository > View on GitHub** to open the browser, then file the issue there.
+
+**Git CLI / GitHub CLI:**
+```bash
+gh issue create --title "Your title" --body "Description here"
+# Or interactively:
+gh issue create
+```
 
 
 ## Cross-Referencing Issues
@@ -1261,6 +1292,8 @@ so the macOS behavior appears correct.
 
 ## Writing Effective Issues
 
+> **See also:** [Appendix N: Advanced Search](appendix-n-advanced-search.md) covers search qualifiers to find existing issues before filing a new one.
+
 A well-written issue saves everyone time -- the maintainer who reads it, the contributor who fixes it, and the future searcher who finds it six months later. This section gives you reusable templates for the two most common issue types and a set of principles that apply to every issue you file.
 
 ### Bug Report Structure
@@ -1417,7 +1450,9 @@ Go to the Learning Room repository and file a real issue:
 >
 > *Today you are the triage engine. On Day 2, you understand the engine well enough to direct it.*
 
+---
 
-*Next: [VS Code Accessibility](11-vscode-interface.md)*
-*Back: [The Learning Room](04-the-learning-room.md)*
-*Related: [Issue Templates Guide](17-issue-templates.md) | [Labels & Milestones](09-labels-milestones-projects.md) | [Culture & Etiquette](08-open-source-culture.md)*
+*Next: [Chapter 06: Working with Pull Requests](06-working-with-pull-requests.md)*  
+*Back: [Chapter 04: The Learning Room](04-the-learning-room.md)*  
+*Related appendices: [Appendix N: Advanced Search](appendix-n-advanced-search.md) | [Appendix V: GitHub Mobile](appendix-v-github-mobile.md)*
+
