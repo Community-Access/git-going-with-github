@@ -356,4 +356,4 @@ GitHub has an optional setting called **Vigilant Mode** (in Settings → SSH and
 SSH keys are great for long-term use, but PATs are faster to set up and more accessible for screen reader users during a time-constrained workshop.
 
 
-*Return to: [Pre-Workshop Setup](00-pre-workshop-setup.md) | [Resources](appendix-u-resources.md)*
+*Return to: [Pre-Workshop Setup](00-pre-workshop-setup.md) | [Resources](appendix-x-resources.md)*

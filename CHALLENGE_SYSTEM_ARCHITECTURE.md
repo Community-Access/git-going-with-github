@@ -294,19 +294,19 @@ Each challenge issue transitions through states. PR-based challenges (Ch 04, 05,
 │       └── CHALLENGES.md                <- Challenge Hub (student reference)
 │
 ├── docs/
-│   ├── 04-working-with-issues.md
+│   ├── 05-working-with-issues.md
 │   ├── 06-working-with-pull-requests.md
 │   ├── 07-merge-conflicts.md
-│   ├── 08-culture-etiquette.md
+│   ├── 08-open-source-culture.md
 │   ├── 09-labels-milestones-projects.md
-│   ├── 10-notifications.md
-│   ├── 05-vscode-accessibility.md
-│   ├── 11-git-source-control.md
-│   ├── 12-github-pull-requests-extension.md
-│   ├── 13-github-copilot.md
-│   ├── 14-accessible-code-review.md
-│   ├── 15-issue-templates.md
-│   └── 16-accessibility-agents.md
+│   ├── 10-notifications-and-day-1-close.md
+│   ├── 11-vscode-interface.md
+│   ├── 14-git-in-practice.md
+│   ├── 15-code-review.md
+│   ├── 16-github-copilot.md
+│   ├── 15-code-review.md
+│   ├── 17-issue-templates.md
+│   └── 19-accessibility-agents.md
 │
 ├── README.md                            <- Challenge discovery section
 ├── FACILITATOR.md                       <- Main facilitator guide (links to challenges)
@@ -319,19 +319,19 @@ Each challenge issue transitions through states. PR-based challenges (Ch 04, 05,
 ## Integration Points
 
 ### From Student Docs
-- [docs/04-working-with-issues.md](docs/04-working-with-issues.md) - links to Chapter 4 challenges
+- [docs/05-working-with-issues.md](docs/05-working-with-issues.md) - links to Chapter 4 challenges
 - [docs/06-working-with-pull-requests.md](docs/06-working-with-pull-requests.md) - links to Chapter 6 challenges
 - [docs/07-merge-conflicts.md](docs/07-merge-conflicts.md) - links to Chapter 7 challenges
-- [docs/08-culture-etiquette.md](docs/08-culture-etiquette.md) - links to Chapter 8 challenges
+- [docs/08-open-source-culture.md](docs/08-open-source-culture.md) - links to Chapter 8 challenges
 - [docs/09-labels-milestones-projects.md](docs/09-labels-milestones-projects.md) - links to Chapter 9 challenges
-- [docs/10-notifications.md](docs/10-notifications.md) - links to Chapter 10 challenges
-- [docs/05-vscode-accessibility.md](docs/05-vscode-accessibility.md) - links to Chapter 5 challenges
-- [docs/11-git-source-control.md](docs/11-git-source-control.md) - links to Chapter 11 challenges
-- [docs/12-github-pull-requests-extension.md](docs/12-github-pull-requests-extension.md) - links to Chapter 12 challenges
-- [docs/13-github-copilot.md](docs/13-github-copilot.md) - links to Chapter 13 challenges
-- [docs/14-accessible-code-review.md](docs/14-accessible-code-review.md) - links to Chapter 14 challenges
-- [docs/15-issue-templates.md](docs/15-issue-templates.md) - links to Chapter 15 challenges
-- [docs/16-accessibility-agents.md](docs/16-accessibility-agents.md) - links to Chapter 16 challenges
+- [docs/10-notifications-and-day-1-close.md](docs/10-notifications-and-day-1-close.md) - links to Chapter 10 challenges
+- [docs/11-vscode-interface.md](docs/11-vscode-interface.md) - links to Chapter 5 challenges
+- [docs/14-git-in-practice.md](docs/14-git-in-practice.md) - links to Chapter 11 challenges
+- [docs/15-code-review.md](docs/15-code-review.md) - links to Chapter 12 challenges
+- [docs/16-github-copilot.md](docs/16-github-copilot.md) - links to Chapter 13 challenges
+- [docs/15-code-review.md](docs/15-code-review.md) - links to Chapter 14 challenges
+- [docs/17-issue-templates.md](docs/17-issue-templates.md) - links to Chapter 15 challenges
+- [docs/19-accessibility-agents.md](docs/19-accessibility-agents.md) - links to Chapter 16 challenges
 
 ### From README
 - [README.md](README.md) section " Your Challenges Are Waiting" → directs students to Issues tab

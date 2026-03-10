@@ -220,7 +220,7 @@ All 13 chapters (4-16) have challenge content defined with generally clear instr
 
 #### File/Link Validation
  **Verified:**
-- Chapter 8 documentation (`docs/08-culture-etiquette.md`) exists
+- Chapter 8 documentation (`docs/08-open-source-culture.md`) exists
 - Podcast reference (Episode 8) links correctly
 - Learning moment is well-written
 
@@ -328,7 +328,7 @@ All 13 chapters (4-16) have challenge content defined with generally clear instr
 - `.github/` templates reference correct
 - PODCASTS.md link (Episode 10) verified
 - Notification filters reference GitHub standard features
-- Main chapter documentation (`docs/10-notifications.md`) exists
+- Main chapter documentation (`docs/10-notifications-and-day-1-close.md`) exists
 
 #### Time Estimate Accuracy
  **ISSUE FOUND - Estimate optimism:**
@@ -386,7 +386,7 @@ All 13 chapters (4-16) have challenge content defined with generally clear instr
  **Verified:**
 - Reference to Accessible Help in VS Code (product feature) exists
 - Reference to Accessible View exists in VS Code Help
-- Main chapter documentation (`docs/05-vscode-accessibility.md`) exists
+- Main chapter documentation (`docs/11-vscode-interface.md`) exists
 - Podcast reference (Episode 11) verified
 
 #### Time Estimate Accuracy
@@ -473,7 +473,7 @@ All 13 chapters (4-16) have challenge content defined with generally clear instr
  **Verified:**
 - Reference to sci-fi themes repository is a real, public repository
 - Command examples reference real git commands
-- Main chapter documentation (`docs/11-git-source-control.md`) exists
+- Main chapter documentation (`docs/14-git-in-practice.md`) exists
 - Podcast reference (Episode 12) exists
 - Cross-references to Chapter 6, 7, 5 all exist
 
@@ -567,7 +567,7 @@ All 13 chapters (4-16) have challenge content defined with generally clear instr
 
 #### File/Link Validation
  **Verified:**
-- Main chapter documentation (`docs/12-github-pull-requests-extension.md`) exists
+- Main chapter documentation (`docs/15-code-review.md`) exists
 - Podcast reference (Episode 13) verified
 - Cross-references to Chapter 6 and 11 exist
 - Extension reference is to official Microsoft/GitHub extension
@@ -656,7 +656,7 @@ All 13 chapters (4-16) have challenge content defined with generally clear instr
 #### File/Link Validation
  **Verified:**
 - Reference to vscode-sci-fi-themes repository is real and public
-- Main chapter documentation (`docs/13-github-copilot.md`) exists
+- Main chapter documentation (`docs/16-github-copilot.md`) exists
 - Podcast reference (Episode 14) exists
 - Cross-references to Chapter 6, 11 exist
 
@@ -772,7 +772,7 @@ All 13 chapters (4-16) have challenge content defined with generally clear instr
   - `docs/setup-guide.md` (broken links and incomplete steps)
   - `docs/welcome.md` (`[TODO]` sections)
 - Chapter 15 link references exist
-- Main chapter documentation (`docs/14-accessible-code-review.md`) exists
+- Main chapter documentation (`docs/15-code-review.md`) exists
 - Podcast reference (Episode 15) exists
 
 #### Time Estimate Accuracy
@@ -843,7 +843,7 @@ All 13 chapters (4-16) have challenge content defined with generally clear instr
 #### File/Link Validation
  **Verified:**
 - `.github/ISSUE_TEMPLATE/workshop-registration.yml` exists and is readable 
-- Main chapter documentation (`docs/15-issue-templates.md`) exists
+- Main chapter documentation (`docs/17-issue-templates.md`) exists
 - Podcast reference (Episode 16) verified
 - Cross-reference to Chapter 16 provided
 - Appendix C (Accessibility Standards) referenced
@@ -1168,10 +1168,10 @@ All 13 chapters (4-16) have challenge content defined with generally clear instr
 - [ ] **Chapter 16: Add discovery framework and scope reduction (URGENT)**
 
 ### Chapter-specific docs (docs/NN-*.md)
-- [ ] `05-vscode-accessibility.md`: Clarify Mac/VoiceOver; github.dev vs desktop distinction
-- [ ] `13-github-copilot.md`: Add JSON editing guidance and real-world time expectations
-- [ ] `15-issue-templates.md`: Add YAML validation section; show before/after remix example
-- [ ] `16-accessibility-agents.md`: Add local exploration alternative; agent discovery framework
+- [ ] `11-vscode-interface.md`: Clarify Mac/VoiceOver; github.dev vs desktop distinction
+- [ ] `16-github-copilot.md`: Add JSON editing guidance and real-world time expectations
+- [ ] `17-issue-templates.md`: Add YAML validation section; show before/after remix example
+- [ ] `19-accessibility-agents.md`: Add local exploration alternative; agent discovery framework
 
 ### Issue Template
 - [ ] `.github/ISSUE_TEMPLATE/challenge-hub.md`: May need template variables for Chapter 13 subscription callout

@@ -32,7 +32,7 @@
 ## About This Workshop
 
 ### Q: Is this guide only for programmers?
-**A:** No. While it focuses on GitHub (a platform developers use), the concepts apply to anyone collaborating on projects. Documentation improvements, issue filing, accessibility testing, and code reviews are all valuable contributions that require no coding. **Start:** [Chapter 1](docs/01-understanding-github-web-structure.md) - no coding required.
+**A:** No. While it focuses on GitHub (a platform developers use), the concepts apply to anyone collaborating on projects. Documentation improvements, issue filing, accessibility testing, and code reviews are all valuable contributions that require no coding. **Start:** [Chapter 1](docs/02-understanding-github.md) - no coding required.
 
 ### Q: Do I need to know how to code to understand this guide?
 **A:** Not for most chapters. Chapters 0-10 teach GitHub concepts without requiring code knowledge. Chapters 5 and 11-16 introduce programming tools and concepts but explain them for beginners. If you are non-technical, you can skip code examples and still understand the workflows.
@@ -60,13 +60,13 @@
 ## Is This For Me?
 
 ### Q: I am a complete beginner to GitHub. Where do I start?
-**A:** Start with [Chapter 0 (Pre-Workshop Setup)](docs/00-pre-workshop-setup.md) to install tools, then [Chapter 1 (Understanding GitHub Web Structure)](docs/01-understanding-github-web-structure.md). Both assume zero prior knowledge.
+**A:** Start with [Chapter 0 (Pre-Workshop Setup)](docs/00-pre-workshop-setup.md) to install tools, then [Chapter 1 (Understanding GitHub Web Structure)](docs/02-understanding-github.md). Both assume zero prior knowledge.
 
 ### Q: I use GitHub at work but do not understand how to use it well. Can this help?
-**A:** Yes. [Chapter 4 (Working with Issues)](docs/04-working-with-issues.md) and [Chapter 6 (Working with Pull Requests)](docs/06-working-with-pull-requests.md) will deepen your understanding. Then jump to [Chapter 14 (Accessible Code Review)](docs/14-accessible-code-review.md) for best practices.
+**A:** Yes. [Chapter 4 (Working with Issues)](docs/05-working-with-issues.md) and [Chapter 6 (Working with Pull Requests)](docs/06-working-with-pull-requests.md) will deepen your understanding. Then jump to [Chapter 14 (Accessible Code Review)](docs/15-code-review.md) for best practices.
 
 ### Q: I am a maintainer of an open-source project. What should I read?
-**A:** [Chapter 9 (Labels, Milestones & Projects)](docs/09-labels-milestones-projects.md) → [Chapter 15 (Issue Templates)](docs/15-issue-templates.md) → [Chapter 16 (Accessibility Agents)](docs/16-accessibility-agents.md). These focus on organizing projects and automating common tasks.
+**A:** [Chapter 9 (Labels, Milestones & Projects)](docs/09-labels-milestones-projects.md) → [Chapter 15 (Issue Templates)](docs/17-issue-templates.md) → [Chapter 16 (Accessibility Agents)](docs/19-accessibility-agents.md). These focus on organizing projects and automating common tasks.
 
 ### Q: I am teaching GitHub to a group. Do I need to know everything?
 **A:** Yes, read the full curriculum first. Also read [FACILITATOR.md](FACILITATOR.md), [DAY1_AGENDA.md](DAY1_AGENDA.md), and [DAY2_AGENDA.md](DAY2_AGENDA.md) for lesson plans and pacing tips.
@@ -118,7 +118,7 @@ Full instructions: [Chapter 0 (Pre-Workshop Setup)](docs/00-pre-workshop-setup.m
 **A:** No. A free GitHub account is sufficient for everything in this workshop, including creating repositories, filing issues, opening pull requests, and participating in discussions. GitHub Copilot has a free tier with limited usage, but a paid subscription (~$10/month) provides full access for Day 2 content.
 
 ### Q: Can I use a Chromebook or tablet?
-**A:** Day 1 (browser-based) works on any device with a modern browser and a keyboard. Day 2 requires Visual Studio Code, which runs on Windows, macOS, and Linux desktops. If you have a Chromebook, consider [GitHub Codespaces](docs/appendix-n-github-codespaces.md) as an alternative to a local VS Code install.
+**A:** Day 1 (browser-based) works on any device with a modern browser and a keyboard. Day 2 requires Visual Studio Code, which runs on Windows, macOS, and Linux desktops. If you have a Chromebook, consider [GitHub Codespaces](docs/appendix-j-cloud-editors.md) as an alternative to a local VS Code install.
 
 
 ## Screen Readers and Accessibility
@@ -252,7 +252,7 @@ Full reference: [Appendix B (Screen Reader Cheat Sheet)](docs/appendix-b-screen-
 - `is:pr is:open review-requested:@me` - Find PRs awaiting your review
 - `language:python stars:>100` - Find popular Python repositories
 
-Full reference: [Appendix J (Advanced Search)](docs/appendix-j-advanced-search.md)
+Full reference: [Appendix J (Advanced Search)](docs/appendix-n-advanced-search.md)
 
 
 ## Issues
@@ -262,7 +262,7 @@ Full reference: [Appendix J (Advanced Search)](docs/appendix-j-advanced-search.m
 - **Issue** = A problem or request (e.g., "Fix login bug" or "Add dark mode")
 - **Pull request** = Your solution - the actual changed code or documentation that fixes the issue
 - An issue describes what needs to happen. A PR makes it happen.
-- See [Chapter 4](docs/04-working-with-issues.md) for issues and [Chapter 6](docs/06-working-with-pull-requests.md) for PRs.
+- See [Chapter 4](docs/05-working-with-issues.md) for issues and [Chapter 6](docs/06-working-with-pull-requests.md) for PRs.
 
 ### Q: How do I know if I should open an issue or a PR?
 **A:**
@@ -437,7 +437,7 @@ After resolving: `git add [filename]` → `git commit -m "Resolved merge conflic
 | `> quote` | Blockquote |
 | `- [ ] task` | Checkbox (task list) |
 
-Full reference: [Appendix E (GitHub Flavored Markdown)](docs/appendix-e-github-flavored-markdown.md)
+Full reference: [Appendix E (GitHub Flavored Markdown)](docs/appendix-c-markdown-reference.md)
 
 ### Q: How do I add a code block in Markdown?
 **A:** Wrap code in triple backticks. Add a language name for syntax highlighting:
@@ -458,7 +458,7 @@ print("Hello, world!")
 The `|` characters create columns. The `---` row separates the header from the body.
 
 ### Q: What is GitHub Flavored Markdown (GFM)?
-**A:** GitHub's extended version of Markdown that adds features like task lists (`- [ ]`), tables, strikethrough (`~~text~~`), autolinked URLs, emoji (`:smile:`), alert blocks, Mermaid diagrams, and math expressions. See [Appendix E](docs/appendix-e-github-flavored-markdown.md).
+**A:** GitHub's extended version of Markdown that adds features like task lists (`- [ ]`), tables, strikethrough (`~~text~~`), autolinked URLs, emoji (`:smile:`), alert blocks, Mermaid diagrams, and math expressions. See [Appendix E](docs/appendix-c-markdown-reference.md).
 
 ### Q: How do I preview Markdown before submitting?
 **A:** On GitHub, click the "Preview" tab above any text input area. In VS Code, press `Ctrl+Shift+V` to open Markdown preview in a new tab, or `Ctrl+K V` for a side-by-side preview.
@@ -476,7 +476,7 @@ The `|` characters create columns. The `---` row separates the header from the b
 **A:** A grouping of issues and PRs that represent a goal or deadline (e.g., "v2.0 Release" or "Hackathon Day 1"). Milestones show a progress bar indicating how many items are complete.
 
 ### Q: What is a GitHub Project?
-**A:** A flexible planning tool with boards (Kanban-style columns), tables, and roadmaps. You can add issues and PRs from multiple repositories. See [Appendix I (GitHub Projects Deep Dive)](docs/appendix-i-github-projects.md).
+**A:** A flexible planning tool with boards (Kanban-style columns), tables, and roadmaps. You can add issues and PRs from multiple repositories. See [Appendix I (GitHub Projects Deep Dive)](docs/appendix-r-projects-deep-dive.md).
 
 
 ## Notifications
@@ -489,7 +489,7 @@ The `|` characters create columns. The `---` row separates the header from the b
 4. Set watch preferences per repository: "Participating and @mentions" is usually best
 5. Configure email preferences at https://github.com/settings/notifications
 
-See [Chapter 10 (Notifications)](docs/10-notifications.md).
+See [Chapter 10 (Notifications)](docs/10-notifications-and-day-1-close.md).
 
 ### Q: What is the difference between "Watching," "Participating," and "@mentioned"?
 **A:**
@@ -535,7 +535,7 @@ See [Chapter 10 (Notifications)](docs/10-notifications.md).
 | `Alt+F2` | Accessible View |
 | `Shift+Alt+F1` | Toggle screen reader mode |
 
-Full reference: [Appendix M (VS Code Accessibility Reference)](docs/appendix-m-vscode-accessibility-reference.md)
+Full reference: [Appendix M (VS Code Accessibility Reference)](docs/appendix-g-vscode-reference.md)
 
 ### Q: VS Code extensions are not loading or crashing. What do I do?
 **A:** See [TROUBLESHOOTING.md](TROUBLESHOOTING.md) → "VS Code extensions not loading." Quick fix: `Ctrl+Shift+P` → "Developer: Reload Window." If that does not work, check the Output panel (View → Output → select the extension name from the dropdown) for error messages.
@@ -554,7 +554,7 @@ Within each view, use `Tab`, `Arrow keys`, and `Enter` to navigate.
 **A:** Press `Alt+F2` to open the Accessible View. It renders any VS Code content (Copilot Chat responses, hover tooltips, notifications) as a plain text document that your screen reader can read naturally. Use it whenever VS Code's default rendering is hard to navigate.
 
 ### Q: What are audio cues (accessibility signals) in VS Code?
-**A:** VS Code can play short sounds for events like errors, warnings, breakpoints, and diff changes. Configure them at Settings → search `accessibility.signals`. Each signal can be set to "on," "off," or "auto" (only when a screen reader is detected). See [Appendix M](docs/appendix-m-vscode-accessibility-reference.md).
+**A:** VS Code can play short sounds for events like errors, warnings, breakpoints, and diff changes. Configure them at Settings → search `accessibility.signals`. Each signal can be set to "on," "off," or "auto" (only when a screen reader is detected). See [Appendix M](docs/appendix-g-vscode-reference.md).
 
 
 ## Git and Source Control in VS Code
@@ -596,7 +596,7 @@ Within each view, use `Tab`, `Arrow keys`, and `Enter` to navigate.
 1. **Inline suggestions** - Copilot predicts what you will type next and offers completions. Press `Tab` to accept.
 2. **Copilot Chat** - A conversational interface (`Ctrl+Shift+I`) where you can ask questions, get explanations, and generate content.
 
-See [Chapter 13 (GitHub Copilot)](docs/13-github-copilot.md).
+See [Chapter 13 (GitHub Copilot)](docs/16-github-copilot.md).
 
 ### Q: Do I need a paid subscription to use Copilot?
 **A:** GitHub Copilot now offers a free tier with limited usage. For full access including chat and agents, you need:
@@ -628,19 +628,19 @@ See [Chapter 13 (GitHub Copilot)](docs/13-github-copilot.md).
 - `/doc` - Generate documentation
 - Custom commands from Accessibility Agents (28 available)
 
-Full reference: [Appendix W (GitHub Copilot Reference)](docs/appendix-w-github-copilot-reference.md)
+Full reference: [Appendix W (GitHub Copilot Reference)](docs/appendix-k-copilot-reference.md)
 
 ### Q: Copilot Chat is not responding or freezing. What do I do?
 **A:** See [TROUBLESHOOTING.md](TROUBLESHOOTING.md) → "Copilot Chat freezes or stops responding." Quick fix: Close the chat panel, reopen with `Ctrl+Shift+I`. Check your internet connection and Copilot subscription status.
 
 ### Q: Can I choose which AI model Copilot uses?
-**A:** Yes. In Copilot Chat, click the model selector (announced by your screen reader near the input field) to choose from available models. Different models have different strengths. See [Appendix X (Copilot AI Models)](docs/appendix-x-copilot-models.md).
+**A:** Yes. In Copilot Chat, click the model selector (announced by your screen reader near the input field) to choose from available models. Different models have different strengths. See [Appendix X (Copilot AI Models)](docs/appendix-k-copilot-reference.md).
 
 
 ## Accessibility Agents
 
 ### Q: What is Accessibility Agents?
-**A:** An ecosystem of **55 AI-powered agents** organized into three teams (Accessibility, GitHub Workflow, Developer Tools), running on five platforms. It includes 54+ slash commands and is an MIT-licensed open-source project at `community-access/accessibility-agents` that you will fork, use, and contribute to during the workshop. See [Chapter 16 (Accessibility Agents)](docs/16-accessibility-agents.md).
+**A:** An ecosystem of **55 AI-powered agents** organized into three teams (Accessibility, GitHub Workflow, Developer Tools), running on five platforms. It includes 54+ slash commands and is an MIT-licensed open-source project at `community-access/accessibility-agents` that you will fork, use, and contribute to during the workshop. See [Chapter 16 (Accessibility Agents)](docs/19-accessibility-agents.md).
 
 ### Q: What agents are available?
 **A:** The ecosystem spans three teams:
@@ -651,7 +651,7 @@ Full reference: [Appendix W (GitHub Copilot Reference)](docs/appendix-w-github-c
 | GitHub Workflow | 12 | Issue triage, PR review, analytics, templates, repo management |
 | Developer Tools | 6 | Python, desktop, wxPython accessibility patterns |
 
-See [Appendix V](docs/appendix-v-accessibility-agents-reference.md) for the complete list of all 55 agents.
+See [Appendix V](docs/appendix-l-agents-reference.md) for the complete list of all 55 agents.
 
 ### Q: Do I need to install anything to use agents?
 **A:** No separate installation. Agents are defined as `.agent.md` files in your repository's `.github/agents/` folder. When you fork `accessibility-agents`, the agents come with it. You need GitHub Copilot (paid subscription) for agents to function.
@@ -663,13 +663,13 @@ See [Appendix V](docs/appendix-v-accessibility-agents-reference.md) for the comp
 **A:** Copy `.github/agents/preferences.example.md` to `.github/agents/preferences.md` and edit it with your GitHub username, preferred repositories, and output format preferences.
 
 ### Q: Can I create my own agents?
-**A:** Yes. Create a new `.agent.md` file in `.github/agents/` following the existing file format. The file is plain Markdown with YAML frontmatter. See [Appendix V (Accessibility Agents Reference)](docs/appendix-v-accessibility-agents-reference.md).
+**A:** Yes. Create a new `.agent.md` file in `.github/agents/` following the existing file format. The file is plain Markdown with YAML frontmatter. See [Appendix V (Accessibility Agents Reference)](docs/appendix-l-agents-reference.md).
 
 
 ## Issue Templates
 
 ### Q: What is an issue template and why should I care?
-**A:** Templates guide people to provide the right information when filing issues. Well-structured templates save time for maintainers and help screen reader users navigate the form. See [Chapter 15 (Issue Templates)](docs/15-issue-templates.md).
+**A:** Templates guide people to provide the right information when filing issues. Well-structured templates save time for maintainers and help screen reader users navigate the form. See [Chapter 15 (Issue Templates)](docs/17-issue-templates.md).
 
 ### Q: My template does not show up when I click "New Issue." What is wrong?
 **A:** Check:
@@ -681,10 +681,10 @@ See [Appendix V](docs/appendix-v-accessibility-agents-reference.md) for the comp
 See [TROUBLESHOOTING.md](TROUBLESHOOTING.md) → "Template not showing in GitHub" for full diagnostics.
 
 ### Q: What is YAML and why is it used for templates?
-**A:** YAML is a simple format for writing structured data - easier to read than JSON or XML. GitHub uses it for issue form templates because it is human-readable and supports validation. You do not need to be an expert - [Chapter 15](docs/15-issue-templates.md) teaches you everything you need.
+**A:** YAML is a simple format for writing structured data - easier to read than JSON or XML. GitHub uses it for issue form templates because it is human-readable and supports validation. You do not need to be an expert - [Chapter 15](docs/17-issue-templates.md) teaches you everything you need.
 
 ### Q: Can I use the @template-builder agent to create templates?
-**A:** Yes. The `@template-builder` agent in Copilot Chat walks you through creating templates interactively. It asks questions and generates the YAML for you. See [Chapter 16 (Accessibility Agents)](docs/16-accessibility-agents.md).
+**A:** Yes. The `@template-builder` agent in Copilot Chat walks you through creating templates interactively. It asks questions and generates the YAML for you. See [Chapter 16 (Accessibility Agents)](docs/19-accessibility-agents.md).
 
 
 ## Code Review
@@ -695,7 +695,7 @@ See [TROUBLESHOOTING.md](TROUBLESHOOTING.md) → "Template not showing in GitHub
 - Testing that diffs are screen reader navigable
 - Writing descriptive review comments (not just "LGTM")
 - Using the Accessible Diff Viewer (`F7`) in VS Code
-- See [Chapter 14 (Accessible Code Review)](docs/14-accessible-code-review.md)
+- See [Chapter 14 (Accessible Code Review)](docs/15-code-review.md)
 
 ### Q: How do I read a diff with a screen reader?
 **A:** Two approaches:
@@ -723,7 +723,7 @@ Example: "The `alt` attribute on this image is empty. Screen readers will skip i
 ## The Learning Room
 
 ### Q: What is the Learning Room?
-**A:** A shared practice repository (`learning-room/`) where participants make their first real contributions during the workshop. It contains intentionally incomplete documents and accessibility issues for you to find and fix. See [Chapter 3 (The Learning Room)](docs/03-the-learning-room.md).
+**A:** A shared practice repository (`learning-room/`) where participants make their first real contributions during the workshop. It contains intentionally incomplete documents and accessibility issues for you to find and fix. See [Chapter 3 (The Learning Room)](docs/04-the-learning-room.md).
 
 ### Q: What are the challenges?
 **A:** Two types:
@@ -784,13 +784,13 @@ Then rebuild the HTML: `npm run build:html`
 
 ### Q: Where can I continue learning after this workshop?
 **A:**
-- Contribute to open-source accessibility projects - see [Appendix T (Contributing to Open Source)](docs/appendix-t-contributing-to-open-source.md)
+- Contribute to open-source accessibility projects - see [Appendix T (Contributing to Open Source)](docs/08-open-source-culture.md)
 - Explore [GitHub Skills](https://skills.github.com/) for more guided modules
 - Browse the [GitHub Accessibility Discussions](https://github.com/orgs/community/discussions/categories/accessibility)
-- Read our [Resources appendix](docs/appendix-u-resources.md) for comprehensive links
+- Read our [Resources appendix](docs/appendix-x-resources.md) for comprehensive links
 
 ### Q: How do I download all the workshop materials for offline reading?
-**A:** See [Appendix Y (Accessing Workshop Materials)](docs/appendix-y-accessing-workshop-materials.md) for complete instructions - clone via Git, download as ZIP, or read individual files on GitHub.com.
+**A:** See [Appendix Y (Accessing Workshop Materials)](docs/appendix-y-workshop-materials.md) for complete instructions - clone via Git, download as ZIP, or read individual files on GitHub.com.
 
 
 ## Concepts and Terminology
@@ -802,7 +802,7 @@ Then rebuild the HTML: `npm run build:html`
 - **Use fork to:** Contribute to someone else's open-source project
 - **Use branch to:** Work on features in your own repository
 
-See [Chapter 1](docs/01-understanding-github-web-structure.md) for detailed explanation.
+See [Chapter 1](docs/02-understanding-github.md) for detailed explanation.
 
 ### Q: What is Git? How is it different from GitHub?
 **A:**
@@ -823,10 +823,10 @@ See [Chapter 1](docs/01-understanding-github-web-structure.md) for detailed expl
 **A:** A comparison showing what changed between two versions of a file. Added lines are marked with `+` (green), removed lines with `-` (red), and unchanged lines provide context. Screen readers announce additions and deletions.
 
 ### Q: What is CI/CD?
-**A:** **Continuous Integration / Continuous Deployment** - automated systems that run tests, build code, and deploy software when you push changes. On GitHub, this is done through GitHub Actions. See [Appendix Q (GitHub Actions)](docs/appendix-q-github-actions-workflows.md).
+**A:** **Continuous Integration / Continuous Deployment** - automated systems that run tests, build code, and deploy software when you push changes. On GitHub, this is done through GitHub Actions. See [Appendix Q (GitHub Actions)](docs/appendix-q-actions-workflows.md).
 
 ### Q: What is WCAG?
-**A:** **Web Content Accessibility Guidelines** - the international standard for web accessibility. WCAG 2.2 defines criteria in three levels: A (minimum), AA (recommended), and AAA (highest). See [Appendix C (Accessibility Standards Reference)](docs/appendix-c-accessibility-standards.md).
+**A:** **Web Content Accessibility Guidelines** - the international standard for web accessibility. WCAG 2.2 defines criteria in three levels: A (minimum), AA (recommended), and AAA (highest). See [Appendix C (Accessibility Standards Reference)](docs/appendix-m-accessibility-standards.md).
 
 ### Q: What is ARIA?
 **A:** **Accessible Rich Internet Applications** - A set of HTML attributes that add accessibility information to web elements. For example, `aria-label` provides a text description for screen readers, and `role` identifies the purpose of an element (button, navigation, main content, etc.).
@@ -840,7 +840,7 @@ This FAQ does not cover your question? Try these resources in order:
 2. [**TROUBLESHOOTING.md**](TROUBLESHOOTING.md) - Common problems and step-by-step solutions
 3. [**Appendix A (Glossary)**](docs/appendix-a-glossary.md) - Term definitions
 4. [**Appendix B (Screen Reader Cheat Sheet)**](docs/appendix-b-screen-reader-cheatsheet.md) - NVDA, JAWS, VoiceOver keyboard commands
-5. [**Appendix U (Resources)**](docs/appendix-u-resources.md) - External documentation and links
+5. [**Appendix U (Resources)**](docs/appendix-x-resources.md) - External documentation and links
 6. **GitHub Issues** - Search existing issues or [open a new one](../../issues)
 7. [**FACILITATOR.md**](FACILITATOR.md) - If you are leading a workshop
 

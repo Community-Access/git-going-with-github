@@ -520,7 +520,7 @@ A tag marks a specific commit as significant - usually a version release like `v
 
 GitHub Actions is an automation platform built into GitHub. Workflows are automated scripts (written in YAML) that run in response to events - like a PR being opened or code being pushed. CI/CD stands for Continuous Integration / Continuous Deployment.
 
-In practice: when you open a PR, you will often see automated checks run (tests, linting, accessibility checks). These are GitHub Actions. See [GitHub Actions & Workflows](appendix-q-github-actions-workflows.md) for a full explanation.
+In practice: when you open a PR, you will often see automated checks run (tests, linting, accessibility checks). These are GitHub Actions. See [GitHub Actions & Workflows](appendix-q-actions-workflows.md) for a full explanation.
 
 
 ### Status Check
@@ -551,7 +551,7 @@ Your GitHub profile is your public identity. It shows your name, bio, location, 
 
 ### GitHub Copilot
 
-GitHub Copilot is an AI-powered coding assistant. It suggests code, documentation, and commit messages. In this workshop, we use Copilot to help write issue descriptions, PR descriptions, documentation, and code. See [GitHub Copilot](13-github-copilot.md) for the full walkthrough.
+GitHub Copilot is an AI-powered coding assistant. It suggests code, documentation, and commit messages. In this workshop, we use Copilot to help write issue descriptions, PR descriptions, documentation, and code. See [GitHub Copilot](16-github-copilot.md) for the full walkthrough.
 
 
 ## Part 6: Community Files
@@ -633,5 +633,5 @@ Every healthy open source project has these files in the root of the repository:
 
 
 *Appendix B - look up any term here at any point during the workshop.*
-*Return to: [Day 1 Agenda](../DAY1_AGENDA.md) | [Understanding GitHub's Web Structure](01-understanding-github-web-structure.md)*
+*Return to: [Day 1 Agenda](../DAY1_AGENDA.md) | [Understanding GitHub's Web Structure](02-understanding-github.md)*
 *See also: [Screen Reader Cheat Sheet](appendix-b-screen-reader-cheatsheet.md)*

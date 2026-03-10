@@ -155,7 +155,7 @@ Edit the file or files. Limit your changes to what is described in your branch n
 Write a commit message that a future contributor can read and understand without context:
 
 ```bash
-git add docs/04-working-with-issues.md
+git add docs/05-working-with-issues.md
 git commit -m "fix: correct NVDA virtual cursor toggle shortcut in Section 3
 
 The documented shortcut was NVDA+Space which is correct for switching
@@ -426,4 +426,4 @@ If two weeks pass with no response, feel free to leave a comment on the PR to ch
 
 *Workshops run better when participants contribute back. Every correction, every clarification, every additional exercise makes this material stronger for everyone who comes after you. Your name in the commit history is not the end of your participation - it is the beginning.*
 
-*[Back to README →](README.md) | [Resources →](docs/appendix-u-resources.md) | [Code of Conduct →](CODE_OF_CONDUCT.md)*
+*[Back to README →](README.md) | [Resources →](docs/appendix-x-resources.md) | [Code of Conduct →](CODE_OF_CONDUCT.md)*

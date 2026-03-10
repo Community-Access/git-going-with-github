@@ -280,9 +280,9 @@ gh issue list --label challenge --state closed --limit 50 | \
 ### Student Documentation
 
 - `learning-room/docs/CHALLENGES.md` - Master challenge hub (YOU ARE HERE)
-- `docs/04-working-with-issues.md` - Chapter 4 detailed guide
+- `docs/05-working-with-issues.md` - Chapter 4 detailed guide
 - `docs/06-working-with-pull-requests.md` - Chapter 6 detailed guide
-- `docs/11-git-source-control.md` - Chapter 11 detailed guide
+- `docs/14-git-in-practice.md` - Chapter 11 detailed guide
 
 
 ##  FAQ - Facilitators

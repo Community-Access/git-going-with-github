@@ -779,5 +779,5 @@ If you cannot complete any step in this guide before the workshop:
 You will not be left behind. Every setup issue we can solve before Day 1 means more time for learning on the day.
 
 
-*Next: [Understanding GitHub's Web Structure](01-understanding-github-web-structure.md)*
+*Next: [Understanding GitHub's Web Structure](02-understanding-github.md)*
 *Back: [README](../README.md)*

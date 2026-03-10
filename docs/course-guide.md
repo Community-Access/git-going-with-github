@@ -46,7 +46,7 @@ Day 2 - Deepen with VS Code + Accessibility Agents
 
 ## Before You Begin
 
-Complete everything in **[Chapter 0: Pre-Workshop Setup](00-pre-workshop-setup.md)** before Day 1. This chapter walks you through:
+Complete everything in **[Chapter 00: Pre-Workshop Setup](00-pre-workshop-setup.md)** before Day 1. This chapter walks you through:
 
 - Creating a GitHub account
 - Installing Git
@@ -73,17 +73,18 @@ These chapters are designed to be read and practiced in order. Each builds on th
 | # | Chapter | What You Will Learn | Time |
 |---|---------|-------------------|------|
 | [00](00-pre-workshop-setup.md) | **Pre-Workshop Setup** | Install and configure everything before Day 1 | 30 min |
-| [01](01-understanding-github-web-structure.md) | **Understanding GitHub's Web Structure** | How GitHub is organized - page types, headings, landmarks, screen reader orientation | 1 hr |
-| [02](02-navigating-repositories.md) | **Navigating Repositories** | Explore any repo using your screen reader - tabs, files, commits, branches | 45 min |
-| [03](03-the-learning-room.md) | **The Learning Room** | Your shared practice environment - challenges, PR workflow, bot feedback, peer review | 30 min |
-| [04](04-working-with-issues.md) | **Working with Issues** | File, search, filter, comment on, and manage issues | 1 hr |
-| [05](06-working-with-pull-requests.md) | **Working with Pull Requests** | Create, review, comment on, and merge pull requests | 1 hr |
-| [06](07-merge-conflicts.md) | **Merge Conflicts** | Understand why conflicts happen and how to resolve them | 1 hr |
-| [07](08-culture-etiquette.md) | **Culture and Etiquette** | Open source communication - tone, reviews, inclusive language | 30 min |
-| [08](09-labels-milestones-projects.md) | **Labels, Milestones and Projects** | Organize and cross-reference work | 45 min |
-| [09](10-notifications.md) | **Notifications and Mentions** | Manage your inbox, @mentions, and subscriptions | 30 min |
+| [01](01-choose-your-tools.md) | **Choose Your Adventure: A Tool Tour** | Explore the 5 tool environments before you start | 30 min |
+| [02](02-understanding-github.md) | **Understanding GitHub's Web Structure** | How GitHub is organized - page types, headings, landmarks, screen reader orientation | 1 hr |
+| [03](03-navigating-repositories.md) | **Navigating Repositories** | Explore any repo using your screen reader - tabs, files, commits, branches | 45 min |
+| [04](04-the-learning-room.md) | **The Learning Room** | Your shared practice environment - challenges, PR workflow, bot feedback, peer review | 30 min |
+| [05](05-working-with-issues.md) | **Working with Issues** | File, search, filter, comment on, and manage issues | 1 hr |
+| [06](06-working-with-pull-requests.md) | **Working with Pull Requests** | Create, review, comment on, and merge pull requests | 1 hr |
+| [07](07-merge-conflicts.md) | **Merge Conflicts** | Understand why conflicts happen and how to resolve them | 1 hr |
+| [08](08-open-source-culture.md) | **Open Source Culture and Contributing** | Communication, tone, reviews, inclusive language, your first contribution | 30 min |
+| [09](09-labels-milestones-projects.md) | **Labels, Milestones and Projects** | Organize and cross-reference work | 45 min |
+| [10](10-notifications-and-day-1-close.md) | **Notifications and Day 1 Close** | Manage your inbox, @mentions, and subscriptions; recap Day 1 | 30 min |
 
-**Day 1 Total:** ~7.5 hours of structured time
+**Day 1 Total:** ~8 hours of structured time
 
 
 ## Day 2: VS Code + Accessibility Agents
@@ -92,17 +93,20 @@ Day 2 moves you from the browser to the desktop. Every skill maps directly to wh
 
 | # | Chapter | What You Will Learn | Time |
 |---|---------|-------------------|------|
-| [10](05-vscode-accessibility.md) | **VS Code: Setup & Accessibility Basics** | VS Code interface, github.dev, screen reader mode, keyboard navigation, Accessible Help and Diff | 45 min |
-| [11](11-git-source-control.md) | **VS Code: Git & Source Control** | Clone, branch, stage, commit, push, merge - all from VS Code | 1 hr |
-| [12](12-github-pull-requests-extension.md) | **VS Code: GitHub Pull Requests Extension** | View, review, create, and merge PRs from inside VS Code | 45 min |
-| [13](13-github-copilot.md) | **VS Code: GitHub Copilot** | Inline suggestions, Copilot Chat, effective prompting, custom instructions | 1 hr |
-| [14](14-accessible-code-review.md) | **Accessible Code Review** | Navigate diffs and review PRs with a screen reader - the culminating skill before automation | 1.5 hrs |
-| [15](15-issue-templates.md) | **Issue Templates** | Create and customize GitHub issue templates with YAML | 1.5 hrs |
-| [16](16-accessibility-agents.md) | **Accessibility Agents** | 55 agents across 3 teams, 54+ slash commands, contributing to the ecosystem | 1.5 hrs |
+| [11](11-vscode-interface.md) | **VS Code: Interface and Setup** | Launch VS Code, sign in, screen reader mode, Activity Bar, Settings, shortcuts | 45 min |
+| [12](12-vscode-accessibility.md) | **VS Code: Accessibility Deep Dive** | Keyboard navigation, Problems panel, Terminal, Copilot Chat, Accessible Help/View/Diff, Signals, Speech | 45 min |
+| [13](13-how-git-works.md) | **How Git Works: The Mental Model** | Commits, branches, local vs remote, push/pull/fetch, why conflicts happen | 30 min |
+| [14](14-git-in-practice.md) | **Git in Practice** | Clone, branch, stage, commit, push, merge - all from VS Code | 1 hr |
+| [15](15-code-review.md) | **Code Review: PRs, Diffs, and Feedback** | PR extension, accessible diffs, inline comments, the reviewer's craft | 1.5 hrs |
+| [16](16-github-copilot.md) | **GitHub Copilot** | Inline suggestions, Copilot Chat, effective prompting, custom instructions | 1 hr |
+| [17](17-issue-templates.md) | **Issue Templates** | Create and customize GitHub issue templates with YAML | 1 hr |
+| [18](18-fork-and-contribute.md) | **Fork and Contribute** | The complete fork-based open source contribution workflow | 45 min |
+| [19](19-accessibility-agents.md) | **Accessibility Agents** | 55 agents across 3 teams, 54+ slash commands, contributing to the ecosystem | 1 hr |
+| [20](20-build-your-agent.md) | **Build Your Agent: Capstone** | Design, build, and contribute a real accessibility agent | 1.5 hrs |
+| [21](21-next-steps.md) | **What Comes Next** | Graduation, portfolio, continued learning, community | 30 min |
 
-**Day 2 Total:** ~8 hours of structured time
+**Day 2 Total:** ~10 hours of structured time
 
-> **Note on Chapters 14 and 15:** These chapters do not have dedicated agenda blocks. Their content is woven into the Day 2 agenda: Chapter 14 (Accessible Code Review) skills are practiced in Blocks 2 and 5 when you review diffs and submit PRs. Chapter 15 (Issue Templates) is reference material you can consult when filing issues or building your own templates. Read them as needed rather than in sequence.
 
 ## Appendices - Reference Material
 
@@ -115,96 +119,82 @@ Open these at any time during the workshop. They are not part of the chapter seq
 | [A](appendix-a-glossary.md) | **Glossary** | Every term, concept, and piece of jargon explained |
 | [B](appendix-b-screen-reader-cheatsheet.md) | **Screen Reader Cheat Sheet** | NVDA, JAWS, and VoiceOver navigation commands plus GitHub keyboard shortcuts |
 
-### Git Reference
+### Core Reference (C-D)
 
 | Appendix | Document | What It Covers |
 |----------|----------|---------------|
+| [C](appendix-c-markdown-reference.md) | **Markdown and GitHub Flavored Markdown** | Complete guide from basics through GFM - headings, lists, links, tables, alerts, Mermaid, math, footnotes |
 | [D](appendix-d-git-authentication.md) | **Git Authentication** | SSH keys, Personal Access Tokens, credential storage, commit signing |
-| [AA](appendix-aa-advanced-git.md) | **Advanced Git Operations** | Cherry-pick, interactive rebase, reset, revert, tags, detached HEAD, force push, bisect, git clean, branch protection for contributors |
-| [AB](appendix-ab-github-desktop.md) | **GitHub Desktop** | Visual Git client — clone, branch, stage, commit, push, cherry-pick, conflict resolution, accessibility notes |
-| [AC](appendix-ac-github-cli.md) | **GitHub CLI Reference** | Installing, auth, repos, issues, PRs, releases, search, aliases, extensions, Copilot CLI, screen reader tips |
-| [AD](appendix-ad-git-security.md) | **Git Security for Contributors** | .gitignore deep dive, env variables, pre-commit hooks, accidentally committed secrets recovery, push protection, credential storage |
 
-### GitHub Community and Social
+### Git Deep Dive (E-F)
 
 | Appendix | Document | What It Covers |
 |----------|----------|---------------|
-| [AE](appendix-ae-github-social.md) | **GitHub Social — Stars, Following, and Finding Your Community** | Stars, watching repos, following people, home feed, Explore, Trending, Topics, Lists, building your profile presence |
+| [E](appendix-e-advanced-git.md) | **Advanced Git Operations** | Cherry-pick, interactive rebase, reset, revert, tags, detached HEAD, force push, bisect, git clean |
+| [F](appendix-f-git-security.md) | **Git Security for Contributors** | .gitignore deep dive, env variables, pre-commit hooks, secrets recovery, push protection |
 
-### GitHub Features
-
-| Appendix | Document | What It Covers |
-|----------|----------|---------------|
-| [C](appendix-c-accessibility-standards.md) | **Accessibility Standards Reference** | WCAG 2.2, ARIA roles and patterns, PR accessibility checklist |
-| [E](appendix-e-github-flavored-markdown.md) | **Markdown and GitHub Flavored Markdown** | Complete guide from basics through GFM - paragraphs, headings, lists, links, tables, alert blocks, Mermaid, math, footnotes, accessible authoring |
-| [F](appendix-f-github-gists.md) | **GitHub Gists** | Code snippets, sharing, embedding, cloning |
-| [G](appendix-g-github-discussions.md) | **GitHub Discussions** | Forum-style conversations, Q&A, polls, accessibility navigation |
-| [H](appendix-h-releases-tags-insights.md) | **Releases, Tags, and Insights** | Versioned releases, semver, pulse, contributors, traffic |
-| [I](appendix-i-github-projects.md) | **GitHub Projects Deep Dive** | Boards, tables, roadmaps, custom fields, cross-repo projects |
-| [J](appendix-j-advanced-search.md) | **Advanced Search** | Complete query language reference for issues, PRs, code, and repos |
-| [K](appendix-k-branch-protection-rulesets.md) | **Branch Protection and Rulesets** | Required reviews, status checks, diagnosing blocked PRs |
-| [L](appendix-l-github-security-features.md) | **Security Features** | Dependabot, secret scanning, code scanning, private advisories |
-
-### VS Code and Copilot
+### VS Code and Copilot (G-L)
 
 | Appendix | Document | What It Covers |
 |----------|----------|---------------|
-| [M](appendix-m-vscode-accessibility-reference.md) | **VS Code Accessibility Reference** | All accessibility settings, audio signals, diff viewer, screen reader configs |
-| [N](appendix-n-github-codespaces.md) | **GitHub Codespaces** | Cloud development environments, accessibility setup, screen reader usage |
-| [V](appendix-v-accessibility-agents-reference.md) | **Accessibility Agents Reference** | 55 agents, 3 teams, 5 platforms, slash commands, workspace configuration |
-| [W](appendix-w-github-copilot-reference.md) | **Copilot Reference** | Copilot features, chat participants, slash commands, MCP servers |
-| [X](appendix-x-copilot-models.md) | **Copilot AI Models** | Model comparison, strengths, plan availability, selection guidance |
+| [G](appendix-g-vscode-reference.md) | **VS Code Accessibility Reference** | All accessibility settings, audio signals, diff viewer, screen reader configs |
+| [H](appendix-h-github-desktop.md) | **GitHub Desktop** | Visual Git client - clone, branch, stage, commit, push, cherry-pick, conflict resolution |
+| [I](appendix-i-github-cli.md) | **GitHub CLI Reference** | Installing, auth, repos, issues, PRs, releases, search, aliases, extensions, Copilot CLI |
+| [J](appendix-j-cloud-editors.md) | **Cloud Editors (Codespaces and github.dev)** | Cloud development environments, accessibility setup, screen reader usage |
+| [K](appendix-k-copilot-reference.md) | **Copilot Reference** | Features, chat participants, slash commands, MCP servers, model comparison |
+| [L](appendix-l-agents-reference.md) | **Accessibility Agents Reference** | 55 agents, 3 teams, 5 platforms, slash commands, workspace configuration |
 
-### GitHub Ecosystem
-
-| Appendix | Document | What It Covers |
-|----------|----------|---------------|
-| [O](appendix-o-github-mobile.md) | **GitHub Mobile** | VoiceOver and TalkBack guide for iOS and Android |
-| [P](appendix-p-github-pages.md) | **Publishing with GitHub Pages** | Deploy a static site from your repository |
-| [Q](appendix-q-github-actions-workflows.md) | **GitHub Actions and Workflows** | Automation, CI/CD, agentic workflows |
-| [R](appendix-r-github-profile-sponsors-wikis.md) | **Profile, Sponsors, and Wikis** | Profile README, GitHub Sponsors, GitHub Wikis |
-| [S](appendix-s-github-organizations-templates.md) | **Organizations and Templates** | Organizations, repo templates, visibility, archiving |
-
-### Contributing and Community
+### GitHub Platform (M-S)
 
 | Appendix | Document | What It Covers |
 |----------|----------|---------------|
-| [T](appendix-t-contributing-to-open-source.md) | **Contributing to Open Source** | Finding issues, scoping contributions, writing PRs, building a habit |
-| [U](appendix-u-resources.md) | **Resources** | Every link, tool, and reference from this event |
-| [Y](appendix-y-accessing-workshop-materials.md) | **Accessing Workshop Materials** | How to download, read offline, and keep updated |
-| [Z](appendix-z-github-skills-catalog.md) | **GitHub Skills - Complete Course Catalog** | All 36 modules in six learning paths with links and prerequisites |
+| [M](appendix-m-accessibility-standards.md) | **Accessibility Standards Reference** | WCAG 2.2, ARIA roles and patterns, PR accessibility checklist |
+| [N](appendix-n-advanced-search.md) | **Advanced Search** | Complete query language reference for issues, PRs, code, and repos |
+| [O](appendix-o-branch-protection.md) | **Branch Protection and Rulesets** | Required reviews, status checks, diagnosing blocked PRs |
+| [P](appendix-p-security-features.md) | **Security Features** | Dependabot, secret scanning, code scanning, private advisories |
+| [Q](appendix-q-actions-workflows.md) | **GitHub Actions and Workflows** | Automation, CI/CD, agentic workflows |
+| [R](appendix-r-projects-deep-dive.md) | **GitHub Projects Deep Dive** | Boards, tables, roadmaps, custom fields, cross-repo projects |
+| [S](appendix-s-releases-tags-insights.md) | **Releases, Tags, and Insights** | Versioned releases, semver, pulse, contributors, traffic |
+
+### Community and Continuing (T-Z)
+
+| Appendix | Document | What It Covers |
+|----------|----------|---------------|
+| [T](appendix-t-community-and-social.md) | **Community and Social** | Profiles, sponsors, wikis, organizations, templates, stars, following, topics |
+| [U](appendix-u-discussions-and-gists.md) | **Discussions and Gists** | Forum-style conversations, Q&A, polls, code snippets, sharing |
+| [V](appendix-v-github-mobile.md) | **GitHub Mobile** | VoiceOver and TalkBack guide for iOS and Android |
+| [W](appendix-w-github-pages.md) | **Publishing with GitHub Pages** | Deploy a static site from your repository |
+| [X](appendix-x-resources.md) | **Resources** | Every link, tool, and reference from this event |
+| [Y](appendix-y-workshop-materials.md) | **Accessing Workshop Materials** | How to download, read offline, and keep updated |
+| [Z](appendix-z-github-skills.md) | **GitHub Skills - Complete Course Catalog** | All 36 modules in six learning paths with links and prerequisites |
 
 
 ## Exercises at a Glance
 
-The workshop includes 24 structured exercises across the curriculum. Every exercise is designed to be completed in 1-5 minutes, is impossible to fail, and follows the same pattern: **Try It** → **You're done when** → **What success feels like**.
+The workshop includes structured exercises across the curriculum. Every exercise is designed to be completed in 1-5 minutes, is impossible to fail, and follows the same pattern: **Try It** -> **You're done when** -> **What success feels like**.
+
+> **Note:** Exercise details will be updated as chapter content is finalized in Phases 2-5. The exercises below reflect the new chapter numbers.
 
 | Chapter | Exercise | What You Do |
 |---------|----------|-------------|
-| **Ch 1** | 60-Second Orientation | Press `1`, `D`, `2`, `H` on a repo page - prove you can navigate by ear |
-| **Ch 2** | Five-Tab Tour | Visit Code, Issues, PRs, file finder, and README on a real repo |
-| **Ch 3** | Individual Challenges | 12 progressive challenges in the Learning Room |
-| **Ch 3** | Group Challenges | 7 collaborative exercises in the Learning Room |
-| **Ch 4** | File Your First Issue | Create an introduction issue in the Learning Room |
-| **Ch 5** | Try It Right Now | Open a repo in github.dev, enable screen reader mode, explore |
-| **Ch 6** | Read a Real PR | Navigate a PR's description, conversation, and diff |
-| **Ch 7** | Read a Conflict | Read merge conflict markers and identify both versions |
-| **Ch 8** | Rewrite One Comment | Transform a dismissive review comment into constructive feedback |
-| **Ch 9** | Label and Link | Add a label to an issue and create a cross-reference |
+| **Ch 02** | 60-Second Orientation | Press `1`, `D`, `2`, `H` on a repo page - prove you can navigate by ear |
+| **Ch 03** | Five-Tab Tour | Visit Code, Issues, PRs, file finder, and README on a real repo |
+| **Ch 04** | Individual Challenges | Progressive challenges in the Learning Room |
+| **Ch 04** | Group Challenges | Collaborative exercises in the Learning Room |
+| **Ch 05** | File Your First Issue | Create an introduction issue in the Learning Room |
+| **Ch 06** | Read a Real PR | Navigate a PR's description, conversation, and diff |
+| **Ch 07** | Read a Conflict | Read merge conflict markers and identify both versions |
+| **Ch 08** | Rewrite One Comment | Transform a dismissive review comment into constructive feedback |
+| **Ch 09** | Label and Link | Add a label to an issue and create a cross-reference |
 | **Ch 10** | Tame Your Inbox | Mark a notification as done and configure watch settings |
-| **Ch 11** | Clone, Branch, Commit | Complete the full Git cycle: clone → branch → edit → stage → commit → push |
-| **Ch 12** | Review a PR from VS Code | Open a diff, use Accessible Diff Viewer (`F7`), leave a comment |
-| **Ch 13** | First Copilot Conversation | Ask Copilot Chat a question about your repo and read the response |
-| **Ch 14** | Exercise A | Complete a web-based PR review using screen reader navigation |
-| **Ch 14** | Exercise B | Use the VS Code Accessible Diff Viewer on the same PR |
-| **Ch 14** | Exercise C | Compare web vs. VS Code review and document findings |
-| **Ch 15** | Exercise A | Use an existing issue template in Accessibility Agents |
-| **Ch 15** | Exercise B | Create an accessibility bug report template locally |
-| **Ch 15** | Exercise C | Submit your template upstream via a real PR |
-| **Ch 15** | Exercise D | Design a custom template for your own project |
-| **Ch 16** | Exercise 1 | Generate a template with the @template-builder agent |
-| **Ch 16** | Exercise 2 | Extend the @template-builder agent with new workflows |
-| **Ch 16** | Exercise 3 | Practice iterative refinement with agents |
+| **Ch 14** | Clone, Branch, Commit | Complete the full Git cycle: clone, branch, edit, stage, commit, push |
+| **Ch 15** | Review a PR from VS Code | Open a diff, use Accessible Diff Viewer (`F7`), leave a comment |
+| **Ch 16** | First Copilot Conversation | Ask Copilot Chat a question about your repo and read the response |
+| **Ch 17** | Use an Issue Template | Use an existing issue template in Accessibility Agents |
+| **Ch 17** | Create a Template | Create an accessibility bug report template locally |
+| **Ch 17** | Submit Upstream | Submit your template upstream via a real PR |
+| **Ch 19** | Agent Exercises | Generate, extend, and iterate with accessibility agents |
+| **Ch 20** | Capstone | Design, build, and contribute an accessibility agent |
 
 
 ## Getting Help
@@ -218,7 +208,7 @@ If you get stuck at any point during the workshop, these resources are always av
 | [Quick Reference](../QUICK_REFERENCE.md) | Condensed shortcuts and commands | When you need a keyboard shortcut or command fast |
 | [Glossary](appendix-a-glossary.md) | Term definitions | When you encounter an unfamiliar word |
 | [Screen Reader Cheat Sheet](appendix-b-screen-reader-cheatsheet.md) | Navigation commands | When you need a screen reader shortcut |
-| [Resources](appendix-u-resources.md) | External links and documentation | When you want to learn more about a topic |
+| [Resources](appendix-x-resources.md) | External links and documentation | When you want to learn more about a topic |
 
 **Still stuck?** Open an issue on this repository describing what you tried, what happened, and what you expected. Include your screen reader and operating system.
 
@@ -229,12 +219,13 @@ If you get stuck at any point during the workshop, these resources are always av
 |---|-------|-------|
 | **Focus** | GitHub web interface | VS Code + Accessibility Agents |
 | **Tools** | Browser, screen reader | VS Code, Copilot, Accessibility Agents |
-| **Skills** | Navigate, Issue, PR, Review, Merge | Git in VS Code, Copilot Chat, Agents, Ship |
+| **Chapters** | 00-10 (11 chapters) | 11-21 (11 chapters) |
+| **Skills** | Navigate, Issue, PR, Review, Merge | Git, Copilot, Agents, Fork, Capstone |
 | **Outcome** | You can use GitHub independently | Your name is in a real project's commit history |
-| **Time** | ~7.5 hours | ~8 hours |
+| **Time** | ~8 hours | ~10 hours |
 
 
-*Ready to begin? Start with [Chapter 0: Pre-Workshop Setup](00-pre-workshop-setup.md).*
+*Ready to begin? Start with [Chapter 00: Pre-Workshop Setup](00-pre-workshop-setup.md).*
 
 
-Last updated: February 2026
+Last updated: March 2026

@@ -147,22 +147,22 @@ The Facilitator guide includes templates, scripts, success metrics, and a final 
 | # | Document | What It Covers |
 |---|----------|----------------|
 | [00](docs/00-pre-workshop-setup.md) | **Pre-Workshop Setup** | Everything to install and configure before Day 1 |
-| [01](docs/01-understanding-github-web-structure.md) | **Understanding GitHub's Web Structure** | How GitHub is organized, page types, landmark structure, heading hierarchy, and the screen reader orientation sequence |
-| [02](docs/02-navigating-repositories.md) | **Navigating Repositories** | Step-by-step repository navigation with your screen reader |
-| [03](docs/03-the-learning-room.md) | **The Learning Room: Shared Practice Repo** | Your shared contribution environment, PR sharing workflow, automation system, peer reviewing, and how everything works together |
-| [04](docs/04-working-with-issues.md) | **Working with Issues** | Filing, managing, and participating in issues |
-| [05](docs/05-vscode-accessibility.md) | **VS Code Accessibility** | VS Code interface, github.dev, screen reader mode, keyboard navigation, accessibility signals, Accessible Help/View/Diff, git operations overview |
+| [01](docs/02-understanding-github.md) | **Understanding GitHub's Web Structure** | How GitHub is organized, page types, landmark structure, heading hierarchy, and the screen reader orientation sequence |
+| [02](docs/03-navigating-repositories.md) | **Navigating Repositories** | Step-by-step repository navigation with your screen reader |
+| [03](docs/04-the-learning-room.md) | **The Learning Room: Shared Practice Repo** | Your shared contribution environment, PR sharing workflow, automation system, peer reviewing, and how everything works together |
+| [04](docs/05-working-with-issues.md) | **Working with Issues** | Filing, managing, and participating in issues |
+| [05](docs/11-vscode-interface.md) | **VS Code Accessibility** | VS Code interface, github.dev, screen reader mode, keyboard navigation, accessibility signals, Accessible Help/View/Diff, git operations overview |
 | [06](docs/06-working-with-pull-requests.md) | **Working with Pull Requests** | Creating, reviewing, and merging pull requests |
 | [07](docs/07-merge-conflicts.md) | **Merge Conflicts** | Understanding, preventing, and resolving merge conflicts |
-| [08](docs/08-culture-etiquette.md) | **Culture and Etiquette** | Open source language, tone, commenting, review etiquette |
+| [08](docs/08-open-source-culture.md) | **Culture and Etiquette** | Open source language, tone, commenting, review etiquette |
 | [09](docs/09-labels-milestones-projects.md) | **Labels, Milestones and Projects** | Organizing and cross-referencing work |
-| [10](docs/10-notifications.md) | **Notifications and Mentions** | Managing your inbox, @mentions, and subscriptions |
-| [11](docs/11-git-source-control.md) | **VS Code: Git & Source Control** | Cloning, Source Control panel, branching, staging, committing, Timeline view, merge conflicts, stash management |
-| [12](docs/12-github-pull-requests-extension.md) | **VS Code: GitHub Pull Requests Extension** | Viewing PRs, checking out branches, reviewing with Accessible Diff, creating PRs, commenting, merging |
-| [13](docs/13-github-copilot.md) | **VS Code: GitHub Copilot** | Inline suggestions, Copilot Chat, effective prompting for documentation work, custom instructions vs custom agents, Accessible View workflow |
-| [14](docs/14-accessible-code-review.md) | **Accessible Code Review** | Navigating diffs and conducting PR reviews with a screen reader, on GitHub and in VS Code - culminating skill before automation |
-| [15](docs/15-issue-templates.md) | **Issue Templates** | Creating and using GitHub issue templates |
-| [16](docs/16-accessibility-agents.md) | **Accessibility Agents** | 55 agents across 3 teams (Accessibility, GitHub Workflow, Developer Tools), 54+ slash commands, contributing to the ecosystem - agentic flow after all learning complete |
+| [10](docs/10-notifications-and-day-1-close.md) | **Notifications and Mentions** | Managing your inbox, @mentions, and subscriptions |
+| [11](docs/14-git-in-practice.md) | **VS Code: Git & Source Control** | Cloning, Source Control panel, branching, staging, committing, Timeline view, merge conflicts, stash management |
+| [12](docs/15-code-review.md) | **VS Code: GitHub Pull Requests Extension** | Viewing PRs, checking out branches, reviewing with Accessible Diff, creating PRs, commenting, merging |
+| [13](docs/16-github-copilot.md) | **VS Code: GitHub Copilot** | Inline suggestions, Copilot Chat, effective prompting for documentation work, custom instructions vs custom agents, Accessible View workflow |
+| [14](docs/15-code-review.md) | **Accessible Code Review** | Navigating diffs and conducting PR reviews with a screen reader, on GitHub and in VS Code - culminating skill before automation |
+| [15](docs/17-issue-templates.md) | **Issue Templates** | Creating and using GitHub issue templates |
+| [16](docs/19-accessibility-agents.md) | **Accessibility Agents** | 55 agents across 3 teams (Accessibility, GitHub Workflow, Developer Tools), 54+ slash commands, contributing to the ecosystem - agentic flow after all learning complete |
 
 **Workshop Agendas** - For facilitators only (not part of learner sequence)
 
@@ -177,30 +177,30 @@ The Facilitator guide includes templates, scripts, success metrics, and a final 
 |---|---|---|
 | [A](docs/appendix-a-glossary.md) | **GitHub Concepts Glossary** | Every term, concept, and piece of jargon explained |
 | [B](docs/appendix-b-screen-reader-cheatsheet.md) | **Screen Reader Cheat Sheet** | Complete NVDA, JAWS, and VoiceOver navigation commands - task-based and per-screen-reader - plus the full GitHub built-in keyboard shortcut system |
-| [C](docs/appendix-c-accessibility-standards.md) | **Accessibility Standards Reference** | WCAG 2.2 success criteria, ARIA roles and patterns, and a quick-reference PR checklist |
+| [C](docs/appendix-m-accessibility-standards.md) | **Accessibility Standards Reference** | WCAG 2.2 success criteria, ARIA roles and patterns, and a quick-reference PR checklist |
 | [D](docs/appendix-d-git-authentication.md) | **Git Authentication** | SSH keys, Personal Access Tokens, credential storage, and commit signing |
-| [E](docs/appendix-e-github-flavored-markdown.md) | **GitHub Flavored Markdown** | Alert blocks, collapsible sections, Mermaid diagrams, math, footnotes, heading anchors, and screen reader guidance |
-| [F](docs/appendix-f-github-gists.md) | **GitHub Gists** | Code snippets, sharing, embedding, and cloning |
-| [G](docs/appendix-g-github-discussions.md) | **GitHub Discussions** | Forum-style conversations, Q&A, polls, and accessibility navigation for discussion threads |
-| [H](docs/appendix-h-releases-tags-insights.md) | **Releases, Tags, and Repository Insights** | Versioned releases, semver, reading release notes, pulse, contributors, traffic, and Insights metrics |
-| [I](docs/appendix-i-github-projects.md) | **GitHub Projects Deep Dive** | Boards, tables, roadmaps, custom fields, automations, iterations, cross-repo projects, and accessible navigation |
-| [J](docs/appendix-j-advanced-search.md) | **GitHub Advanced Search** | Complete query language reference for searching issues, PRs, code, commits, and repositories |
-| [K](docs/appendix-k-branch-protection-rulesets.md) | **Branch Protection and Rulesets** | Required reviews, status checks, repository rulesets, and diagnosing why your PR cannot be merged |
-| [L](docs/appendix-l-github-security-features.md) | **GitHub Security Features** | Dependabot alerts and updates, secret scanning, code scanning/CodeQL, private vulnerability reporting, and SBOM |
-| [M](docs/appendix-m-vscode-accessibility-reference.md) | **VS Code Accessibility Reference** | Complete technical reference for all accessibility settings, audio cues, diff viewer, screen reader configurations, keyboard shortcuts |
-| [N](docs/appendix-n-github-codespaces.md) | **GitHub Codespaces** | Cloud development environments - setup, accessibility configuration, and screen reader usage |
-| [O](docs/appendix-o-github-mobile.md) | **GitHub Mobile** | Accessibility guide for iOS and Android - VoiceOver, TalkBack, notifications, and PR reviews |
-| [P](docs/appendix-p-github-pages.md) | **Publishing with GitHub Pages** | Deploy a static site from your repository - branch setup, custom domains, CI workflows, and accessibility checks |
-| [Q](docs/appendix-q-github-actions-workflows.md) | **GitHub Actions and Workflows** | Deep-dive reference - automation, status checks, CI/CD workflows, and the path to agentic cloud |
-| [R](docs/appendix-r-github-profile-sponsors-wikis.md) | **GitHub Profile, Sponsors, and Wikis** | Profile README, GitHub Sponsors, and GitHub Wikis |
-| [S](docs/appendix-s-github-organizations-templates.md) | **Organizations, Templates, and Repository Settings** | Organizations, repository templates, visibility, archiving, and contributor-relevant settings |
-| [T](docs/appendix-t-contributing-to-open-source.md) | **Contributing to Open Source** | A first-timer's guide: finding issues, scoping contributions, writing PRs, and building a contribution habit |
-| [U](docs/appendix-u-resources.md) | **Resources** | Every link, tool, and reference from this event |
-| [V](docs/appendix-v-accessibility-agents-reference.md) | **Accessibility Agents Reference** | 55 agents, 3 teams, 5 platforms, slash commands, and workspace configuration |
-| [W](docs/appendix-w-github-copilot-reference.md) | **GitHub Copilot Reference** | Copilot features, chat participants, slash commands, MCP servers, and agentic ecosystem |
-| [X](docs/appendix-x-copilot-models.md) | **GitHub Copilot AI Models** | Model comparison, strengths, plan availability, and selection guidance |
-| [Y](docs/appendix-y-accessing-workshop-materials.md) | **Accessing and Downloading Workshop Materials** | GitHub Pages, GitHub.com, cloning, ZIP download, offline reading, folder guide |
-| [Z](docs/appendix-z-github-skills-catalog.md) | **GitHub Skills - Complete Course Catalog** | All 36 GitHub Skills modules organized into six learning paths, with links, prerequisites, and integration guidance |
+| [E](docs/appendix-c-markdown-reference.md) | **GitHub Flavored Markdown** | Alert blocks, collapsible sections, Mermaid diagrams, math, footnotes, heading anchors, and screen reader guidance |
+| [F](docs/appendix-u-discussions-and-gists.md) | **GitHub Gists** | Code snippets, sharing, embedding, and cloning |
+| [G](docs/appendix-u-discussions-and-gists.md) | **GitHub Discussions** | Forum-style conversations, Q&A, polls, and accessibility navigation for discussion threads |
+| [H](docs/appendix-s-releases-tags-insights.md) | **Releases, Tags, and Repository Insights** | Versioned releases, semver, reading release notes, pulse, contributors, traffic, and Insights metrics |
+| [I](docs/appendix-r-projects-deep-dive.md) | **GitHub Projects Deep Dive** | Boards, tables, roadmaps, custom fields, automations, iterations, cross-repo projects, and accessible navigation |
+| [J](docs/appendix-n-advanced-search.md) | **GitHub Advanced Search** | Complete query language reference for searching issues, PRs, code, commits, and repositories |
+| [K](docs/appendix-o-branch-protection.md) | **Branch Protection and Rulesets** | Required reviews, status checks, repository rulesets, and diagnosing why your PR cannot be merged |
+| [L](docs/appendix-p-security-features.md) | **GitHub Security Features** | Dependabot alerts and updates, secret scanning, code scanning/CodeQL, private vulnerability reporting, and SBOM |
+| [M](docs/appendix-g-vscode-reference.md) | **VS Code Accessibility Reference** | Complete technical reference for all accessibility settings, audio cues, diff viewer, screen reader configurations, keyboard shortcuts |
+| [N](docs/appendix-j-cloud-editors.md) | **GitHub Codespaces** | Cloud development environments - setup, accessibility configuration, and screen reader usage |
+| [O](docs/appendix-v-github-mobile.md) | **GitHub Mobile** | Accessibility guide for iOS and Android - VoiceOver, TalkBack, notifications, and PR reviews |
+| [P](docs/appendix-w-github-pages.md) | **Publishing with GitHub Pages** | Deploy a static site from your repository - branch setup, custom domains, CI workflows, and accessibility checks |
+| [Q](docs/appendix-q-actions-workflows.md) | **GitHub Actions and Workflows** | Deep-dive reference - automation, status checks, CI/CD workflows, and the path to agentic cloud |
+| [R](docs/appendix-t-community-and-social.md) | **GitHub Profile, Sponsors, and Wikis** | Profile README, GitHub Sponsors, and GitHub Wikis |
+| [S](docs/appendix-t-community-and-social.md) | **Organizations, Templates, and Repository Settings** | Organizations, repository templates, visibility, archiving, and contributor-relevant settings |
+| [T](docs/08-open-source-culture.md) | **Contributing to Open Source** | A first-timer's guide: finding issues, scoping contributions, writing PRs, and building a contribution habit |
+| [U](docs/appendix-x-resources.md) | **Resources** | Every link, tool, and reference from this event |
+| [V](docs/appendix-l-agents-reference.md) | **Accessibility Agents Reference** | 55 agents, 3 teams, 5 platforms, slash commands, and workspace configuration |
+| [W](docs/appendix-k-copilot-reference.md) | **GitHub Copilot Reference** | Copilot features, chat participants, slash commands, MCP servers, and agentic ecosystem |
+| [X](docs/appendix-k-copilot-reference.md) | **GitHub Copilot AI Models** | Model comparison, strengths, plan availability, and selection guidance |
+| [Y](docs/appendix-y-workshop-materials.md) | **Accessing and Downloading Workshop Materials** | GitHub Pages, GitHub.com, cloning, ZIP download, offline reading, folder guide |
+| [Z](docs/appendix-z-github-skills.md) | **GitHub Skills - Complete Course Catalog** | All 36 GitHub Skills modules organized into six learning paths, with links, prerequisites, and integration guidance |
 > **Each guide from Lesson 03 onward includes a "Day 2 Amplifier" callout** that shows how Accessibility Agents extends that skill across three scopes: your VS Code editor → your repository (travels with every fork) → the cloud (GitHub Agentic Workflows running without VS Code). **Learn the manual skill first (Chapter 14), then see how it's automated (Chapter 16).**
 
 
@@ -237,7 +237,7 @@ The Facilitator guide includes templates, scripts, success metrics, and a final 
 │       ├── daily-briefing.prompt.md
 │       ├── review-pr.prompt.md
 │       ├── triage.prompt.md
-│       └── ... (23 more - see appendix-v-accessibility-agents-reference.md)
+│       └── ... (23 more - see appendix-l-agents-reference.md)
 ├── learning-room/                       ← Practice target for the contribution sprint
 │   ├── README.md
 │   └── docs/
@@ -255,50 +255,50 @@ The Facilitator guide includes templates, scripts, success metrics, and a final 
 └── docs/                               ← Full workshop curriculum (17 lessons + 31 appendices A-Z, AA-AE)
     ├── course-guide.md                           ← Student landing page: day-by-day overview, exercises, help
     ├── 00-pre-workshop-setup.md
-    ├── 01-understanding-github-web-structure.md  ← How GitHub is organized (start here)
-    ├── 02-navigating-repositories.md  ← Accessibility Agents: @daily-briefing
-    ├── 03-the-learning-room.md        ← Read this early: your shared space and PR workflow
-    ├── 04-working-with-issues.md      ← Accessibility Agents: @issue-tracker
-    ├── 05-vscode-accessibility.md     ← VS Code accessibility: screen reader mode, accessibility signals, interface tour
+    ├── 02-understanding-github.md  ← How GitHub is organized (start here)
+    ├── 03-navigating-repositories.md  ← Accessibility Agents: @daily-briefing
+    ├── 04-the-learning-room.md        ← Read this early: your shared space and PR workflow
+    ├── 05-working-with-issues.md      ← Accessibility Agents: @issue-tracker
+    ├── 11-vscode-interface.md     ← VS Code accessibility: screen reader mode, accessibility signals, interface tour
     ├── 06-working-with-pull-requests.md ← Accessibility Agents: @pr-review
     ├── 07-merge-conflicts.md          ← Accessibility Agents: Copilot conflict prevention
-    ├── 08-culture-etiquette.md        ← Accessibility Agents: output responsibility
+    ├── 08-open-source-culture.md        ← Accessibility Agents: output responsibility
     ├── 09-labels-milestones-projects.md ← Accessibility Agents: @issue-tracker + labels
-    ├── 10-notifications.md            ← Accessibility Agents: @daily-briefing + inbox
-    ├── 11-git-source-control.md       ← Git operations in VS Code: clone, branch, commit, merge, stash
-    ├── 12-github-pull-requests-extension.md ← GitHub PR extension: view, review, create, merge PRs
-    ├── 13-github-copilot.md           ← GitHub Copilot: inline suggestions, Chat, prompting, custom agents
-    ├── 14-accessible-code-review.md   ← Reviewer mechanics: diffs, comments, Accessible Diff Viewer - final culminating skill
-    ├── 15-issue-templates.md          ← Creating GitHub issue templates
-    ├── 16-accessibility-agents.md              ← Accessibility Agents: 55 agents, 3 teams, 5 platforms - automate everything you learned
+    ├── 10-notifications-and-day-1-close.md            ← Accessibility Agents: @daily-briefing + inbox
+    ├── 14-git-in-practice.md       ← Git operations in VS Code: clone, branch, commit, merge, stash
+    ├── 15-code-review.md ← GitHub PR extension: view, review, create, merge PRs
+    ├── 16-github-copilot.md           ← GitHub Copilot: inline suggestions, Chat, prompting, custom agents
+    ├── 15-code-review.md   ← Reviewer mechanics: diffs, comments, Accessible Diff Viewer - final culminating skill
+    ├── 17-issue-templates.md          ← Creating GitHub issue templates
+    ├── 19-accessibility-agents.md              ← Accessibility Agents: 55 agents, 3 teams, 5 platforms - automate everything you learned
     ├── appendix-a-glossary.md                    ← A: Every term explained (look up any time)
     ├── appendix-b-screen-reader-cheatsheet.md    ← B: Full shortcut reference, per-screen-reader tables (keep open)
-    ├── appendix-c-accessibility-standards.md     ← C: WCAG 2.2, ARIA, PR checklist
+    ├── appendix-m-accessibility-standards.md     ← C: WCAG 2.2, ARIA, PR checklist
     ├── appendix-d-git-authentication.md          ← D: SSH keys, PATs, credential storage
-    ├── appendix-e-github-flavored-markdown.md    ← E: Alert blocks, Mermaid, math, footnotes, heading anchors
-    ├── appendix-f-github-gists.md                ← F: Code snippets, sharing, embedding
-    ├── appendix-g-github-discussions.md          ← G: GitHub Discussions navigation and participation
-    ├── appendix-h-releases-tags-insights.md      ← H: Releases, tags, version numbers, pulse, contributors, traffic
-    ├── appendix-i-github-projects.md             ← I: GitHub Projects deep dive (boards, tables, roadmaps, automations)
-    ├── appendix-j-advanced-search.md             ← J: Search query language reference
-    ├── appendix-k-branch-protection-rulesets.md  ← K: Branch rules, rulesets, diagnosing blocked PRs
-    ├── appendix-l-github-security-features.md    ← L: Dependabot, secret scanning, code scanning, private advisories
-    ├── appendix-m-vscode-accessibility-reference.md ← M: Complete VS Code accessibility technical reference
-    ├── appendix-n-github-codespaces.md           ← N: Cloud dev environments, accessibility setup, screen reader usage
-    ├── appendix-o-github-mobile.md               ← O: VoiceOver and TalkBack guide for iOS and Android
-    ├── appendix-p-github-pages.md                ← P: GitHub Pages deployment guide
-    ├── appendix-q-github-actions-workflows.md    ← Q: Automation, CI/CD workflows, and agentic cloud
-    ├── appendix-r-github-profile-sponsors-wikis.md ← R: Profile README, GitHub Sponsors, wikis
-    ├── appendix-s-github-organizations-templates.md ← S: Organizations, templates, repository settings
-    ├── appendix-t-contributing-to-open-source.md ← T: First contribution guide
-    ├── appendix-u-resources.md                   ← U: Every link, tool, and reference (lookup anytime)
-    ├── appendix-v-accessibility-agents-reference.md       ← V: Accessibility Agents agents, commands, and customization
-    ├── appendix-w-github-copilot-reference.md    ← W: Copilot features, chat, MCP servers, agentic ecosystem
-    ├── appendix-x-copilot-models.md              ← X: AI model comparison and selection guide
-    ├── appendix-y-accessing-workshop-materials.md ← Y: How to get, download, and read these materials
-    └── appendix-z-github-skills-catalog.md  ← Z: All 36 GitHub Skills modules with learning paths
+    ├── appendix-c-markdown-reference.md    ← E: Alert blocks, Mermaid, math, footnotes, heading anchors
+    ├── appendix-u-discussions-and-gists.md                ← F: Code snippets, sharing, embedding
+    ├── appendix-u-discussions-and-gists.md          ← G: GitHub Discussions navigation and participation
+    ├── appendix-s-releases-tags-insights.md      ← H: Releases, tags, version numbers, pulse, contributors, traffic
+    ├── appendix-r-projects-deep-dive.md             ← I: GitHub Projects deep dive (boards, tables, roadmaps, automations)
+    ├── appendix-n-advanced-search.md             ← J: Search query language reference
+    ├── appendix-o-branch-protection.md  ← K: Branch rules, rulesets, diagnosing blocked PRs
+    ├── appendix-p-security-features.md    ← L: Dependabot, secret scanning, code scanning, private advisories
+    ├── appendix-g-vscode-reference.md ← M: Complete VS Code accessibility technical reference
+    ├── appendix-j-cloud-editors.md           ← N: Cloud dev environments, accessibility setup, screen reader usage
+    ├── appendix-v-github-mobile.md               ← O: VoiceOver and TalkBack guide for iOS and Android
+    ├── appendix-w-github-pages.md                ← P: GitHub Pages deployment guide
+    ├── appendix-q-actions-workflows.md    ← Q: Automation, CI/CD workflows, and agentic cloud
+    ├── appendix-t-community-and-social.md ← R: Profile README, GitHub Sponsors, wikis
+    ├── appendix-t-community-and-social.md ← S: Organizations, templates, repository settings
+    ├── 08-open-source-culture.md ← T: First contribution guide
+    ├── appendix-x-resources.md                   ← U: Every link, tool, and reference (lookup anytime)
+    ├── appendix-l-agents-reference.md       ← V: Accessibility Agents agents, commands, and customization
+    ├── appendix-k-copilot-reference.md    ← W: Copilot features, chat, MCP servers, agentic ecosystem
+    ├── appendix-k-copilot-reference.md              ← X: AI model comparison and selection guide
+    ├── appendix-y-workshop-materials.md ← Y: How to get, download, and read these materials
+    └── appendix-z-github-skills.md  ← Z: All 36 GitHub Skills modules with learning paths
 
-> *Note: Appendices were renumbered during a February 2026 review. If you encounter external references to "Appendix D" or later letters, subtract one letter (e.g., the former Appendix D is now [Appendix C](docs/appendix-c-accessibility-standards.md)).*
+> *Note: Appendices were renumbered during a February 2026 review. If you encounter external references to "Appendix D" or later letters, subtract one letter (e.g., the former Appendix D is now [Appendix C](docs/appendix-m-accessibility-standards.md)).*
 
 
 ## Quick Reference

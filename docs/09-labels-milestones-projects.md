@@ -72,7 +72,7 @@ Your triage recommendation comment is your evidence. Close your Chapter 9 challe
 
 Triage is about clarity, not authority. You do not need maintainer permissions to help organize work. A clear recommendation saves maintainers time and speeds up collaboration. This is a skill used daily in open source.
 
-> **Continue learning:** The GitHub Skills course [Introduction to Repository Management](https://github.com/skills/introduction-to-repository-management) covers labels, milestones, and contributor settings in an interactive, self-paced format. See [Appendix Z](appendix-z-github-skills-catalog.md) for the full catalog.
+> **Continue learning:** The GitHub Skills course [Introduction to Repository Management](https://github.com/skills/introduction-to-repository-management) covers labels, milestones, and contributor settings in an interactive, self-paced format. See [Appendix Z](appendix-z-github-skills.md) for the full catalog.
 
 ### Learning Pattern Used in This Chapter
 
@@ -547,6 +547,6 @@ Go to the Learning Room repository and do two things:
 > *Labeling today is not overhead. It is configuring the input layer that every agent downstream depends on.*
 
 
-*Next: [Notifications](10-notifications.md)*
-*Back: [Culture and Etiquette](08-culture-etiquette.md)*
-*Related: [Working with Issues](04-working-with-issues.md) | [Day 1 Agenda](../DAY1_AGENDA.md)*
+*Next: [Notifications](10-notifications-and-day-1-close.md)*
+*Back: [Culture and Etiquette](08-open-source-culture.md)*
+*Related: [Working with Issues](05-working-with-issues.md) | [Day 1 Agenda](../DAY1_AGENDA.md)*

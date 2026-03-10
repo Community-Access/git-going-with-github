@@ -12,54 +12,54 @@ See [docs/REORGANIZATION-PLAN.md](docs/REORGANIZATION-PLAN.md) for the full rati
 
 Create new files, rename existing files, update all internal links. Structurally complete, content-thin in new chapters.
 
-- [ ] Create Ch01 stub (`01-choose-your-tools.md`)
-- [ ] Create Ch13 stub (`13-how-git-works.md`)
-- [ ] Create Ch18 stub (`18-fork-and-contribute.md`)
-- [ ] Create Ch20 stub (`20-build-your-agent.md`)
-- [ ] Create Ch21 stub (`21-next-steps.md`)
-- [ ] Split Ch05 into Ch11 (`11-vscode-interface.md`, Sections 1-11) + Ch12 (`12-vscode-accessibility.md`, Sections 12-18)
-- [ ] Merge Ch12 + Ch14 into Ch15 (`15-code-review.md`)
-- [ ] Rename `01-understanding-github-web-structure.md` to `02-understanding-github.md`
-- [ ] Rename `02-navigating-repositories.md` to `03-navigating-repositories.md`
-- [ ] Rename `03-the-learning-room.md` to `04-the-learning-room.md`
-- [ ] Rename `04-working-with-issues.md` to `05-working-with-issues.md`
-- [ ] Keep `06-working-with-pull-requests.md` (same number)
-- [ ] Keep `07-merge-conflicts.md` (same number)
-- [ ] Rename `08-culture-etiquette.md` to `08-open-source-culture.md`
-- [ ] Keep `09-labels-milestones-projects.md` (same number)
-- [ ] Rename `10-notifications.md` to `10-notifications-and-day-1-close.md`
-- [ ] Rename `11-git-source-control.md` to `14-git-in-practice.md`
-- [ ] Rename `13-github-copilot.md` to `16-github-copilot.md`
-- [ ] Rename `15-issue-templates.md` to `17-issue-templates.md`
-- [ ] Rename `16-accessibility-agents.md` to `19-accessibility-agents.md`
-- [ ] Merge stub appendices: R + S + AE into `appendix-t-community-and-social.md`
-- [ ] Merge stub appendices: G + F into `appendix-u-discussions-and-gists.md`
-- [ ] Merge stub appendices: W + X into `appendix-k-copilot-reference.md`
-- [ ] Absorb `appendix-t-contributing-to-open-source.md` into Ch08
-- [ ] Rename `appendix-e-github-flavored-markdown.md` to `appendix-c-markdown-reference.md`
-- [ ] Rename `appendix-aa-advanced-git.md` to `appendix-e-advanced-git.md`
-- [ ] Rename `appendix-ad-git-security.md` to `appendix-f-git-security.md`
-- [ ] Rename `appendix-m-vscode-accessibility-reference.md` to `appendix-g-vscode-reference.md`
-- [ ] Rename `appendix-ab-github-desktop.md` to `appendix-h-github-desktop.md`
-- [ ] Rename `appendix-ac-github-cli.md` to `appendix-i-github-cli.md`
-- [ ] Rename `appendix-n-github-codespaces.md` to `appendix-j-cloud-editors.md`
-- [ ] Rename `appendix-v-accessibility-agents-reference.md` to `appendix-l-agents-reference.md`
-- [ ] Rename `appendix-c-accessibility-standards.md` to `appendix-m-accessibility-standards.md`
-- [ ] Rename `appendix-j-advanced-search.md` to `appendix-n-advanced-search.md`
-- [ ] Rename `appendix-k-branch-protection-rulesets.md` to `appendix-o-branch-protection.md`
-- [ ] Rename `appendix-l-github-security-features.md` to `appendix-p-security-features.md`
-- [ ] Retitle `appendix-q-github-actions-workflows.md` to `appendix-q-actions-workflows.md`
-- [ ] Rename `appendix-i-github-projects.md` to `appendix-r-projects-deep-dive.md`
-- [ ] Rename `appendix-h-releases-tags-insights.md` to `appendix-s-releases-tags-insights.md`
-- [ ] Rename `appendix-o-github-mobile.md` to `appendix-v-github-mobile.md`
-- [ ] Rename `appendix-p-github-pages.md` to `appendix-w-github-pages.md`
-- [ ] Rename `appendix-u-resources.md` to `appendix-x-resources.md`
-- [ ] Retitle `appendix-y-accessing-workshop-materials.md` to `appendix-y-workshop-materials.md`
-- [ ] Retitle `appendix-z-github-skills-catalog.md` to `appendix-z-github-skills.md`
-- [ ] Delete merged source files (appendix-t, appendix-x, appendix-r, appendix-s, appendix-ae, appendix-f, 12-github-pull-requests-extension, 14-accessible-code-review)
-- [ ] Update `course-guide.md` with new chapter/appendix numbers
-- [ ] Grep for all old filenames, fix cross-references
-- [ ] Verify no broken links
+- [x] Create Ch01 stub (`01-choose-your-tools.md`)
+- [x] Create Ch13 stub (`13-how-git-works.md`)
+- [x] Create Ch18 stub (`18-fork-and-contribute.md`)
+- [x] Create Ch20 stub (`20-build-your-agent.md`)
+- [x] Create Ch21 stub (`21-next-steps.md`)
+- [x] Split Ch05 into Ch11 (`11-vscode-interface.md`, Sections 1-11) + Ch12 (`12-vscode-accessibility.md`, Sections 12-18)
+- [x] Merge Ch12 + Ch14 into Ch15 (`15-code-review.md`)
+- [x] Rename `01-understanding-github-web-structure.md` to `02-understanding-github.md`
+- [x] Rename `02-navigating-repositories.md` to `03-navigating-repositories.md`
+- [x] Rename `03-the-learning-room.md` to `04-the-learning-room.md`
+- [x] Rename `04-working-with-issues.md` to `05-working-with-issues.md`
+- [x] Keep `06-working-with-pull-requests.md` (same number)
+- [x] Keep `07-merge-conflicts.md` (same number)
+- [x] Rename `08-culture-etiquette.md` to `08-open-source-culture.md`
+- [x] Keep `09-labels-milestones-projects.md` (same number)
+- [x] Rename `10-notifications.md` to `10-notifications-and-day-1-close.md`
+- [x] Rename `11-git-source-control.md` to `14-git-in-practice.md`
+- [x] Rename `13-github-copilot.md` to `16-github-copilot.md`
+- [x] Rename `15-issue-templates.md` to `17-issue-templates.md`
+- [x] Rename `16-accessibility-agents.md` to `19-accessibility-agents.md`
+- [x] Merge stub appendices: R + S + AE into `appendix-t-community-and-social.md`
+- [x] Merge stub appendices: G + F into `appendix-u-discussions-and-gists.md`
+- [x] Merge stub appendices: W + X into `appendix-k-copilot-reference.md`
+- [x] Absorb `appendix-t-contributing-to-open-source.md` into Ch08
+- [x] Rename `appendix-e-github-flavored-markdown.md` to `appendix-c-markdown-reference.md`
+- [x] Rename `appendix-aa-advanced-git.md` to `appendix-e-advanced-git.md`
+- [x] Rename `appendix-ad-git-security.md` to `appendix-f-git-security.md`
+- [x] Rename `appendix-m-vscode-accessibility-reference.md` to `appendix-g-vscode-reference.md`
+- [x] Rename `appendix-ab-github-desktop.md` to `appendix-h-github-desktop.md`
+- [x] Rename `appendix-ac-github-cli.md` to `appendix-i-github-cli.md`
+- [x] Rename `appendix-n-github-codespaces.md` to `appendix-j-cloud-editors.md`
+- [x] Rename `appendix-v-accessibility-agents-reference.md` to `appendix-l-agents-reference.md`
+- [x] Rename `appendix-c-accessibility-standards.md` to `appendix-m-accessibility-standards.md`
+- [x] Rename `appendix-j-advanced-search.md` to `appendix-n-advanced-search.md`
+- [x] Rename `appendix-k-branch-protection-rulesets.md` to `appendix-o-branch-protection.md`
+- [x] Rename `appendix-l-github-security-features.md` to `appendix-p-security-features.md`
+- [x] Retitle `appendix-q-github-actions-workflows.md` to `appendix-q-actions-workflows.md`
+- [x] Rename `appendix-i-github-projects.md` to `appendix-r-projects-deep-dive.md`
+- [x] Rename `appendix-h-releases-tags-insights.md` to `appendix-s-releases-tags-insights.md`
+- [x] Rename `appendix-o-github-mobile.md` to `appendix-v-github-mobile.md`
+- [x] Rename `appendix-p-github-pages.md` to `appendix-w-github-pages.md`
+- [x] Rename `appendix-u-resources.md` to `appendix-x-resources.md`
+- [x] Retitle `appendix-y-accessing-workshop-materials.md` to `appendix-y-workshop-materials.md`
+- [x] Retitle `appendix-z-github-skills-catalog.md` to `appendix-z-github-skills.md`
+- [x] Delete merged source files (appendix-t, appendix-x, appendix-r, appendix-s, appendix-ae, appendix-f, 12-github-pull-requests-extension, 14-accessible-code-review)
+- [x] Update `course-guide.md` with new chapter/appendix numbers
+- [x] Grep for all old filenames, fix cross-references
+- [x] Verify no broken links
 
 ---
 

@@ -102,7 +102,7 @@ Security: We strongly recommend enabling Two-Factor Authentication (2FA) on your
 
 **Solution:**
 - **Corporate/restricted device:** Ask your IT department to allow VS Code, or use the portable ZIP version: https://code.visualstudio.com/docs/editor/portable
-- **Chromebook:** Use github.dev (press `.` on any repo) for Day 1. For Day 2, consider GitHub Codespaces: see [Appendix N](docs/appendix-n-github-codespaces.md)
+- **Chromebook:** Use github.dev (press `.` on any repo) for Day 1. For Day 2, consider GitHub Codespaces: see [Appendix N](docs/appendix-j-cloud-editors.md)
 - **Older OS:** VS Code requires Windows 10+, macOS 10.15+, or a modern Linux distribution
 
 
@@ -429,7 +429,7 @@ git checkout -b recovered-branch COMMIT-HASH
 - Request a review from a teammate or the maintainer
 
 **Cause D: Branch protection rules**
-- The main branch may have protection rules. See [Appendix K (Branch Protection)](docs/appendix-k-branch-protection-rulesets.md)
+- The main branch may have protection rules. See [Appendix K (Branch Protection)](docs/appendix-o-branch-protection.md)
 
 
 ### Problem: PR shows wrong base branch
@@ -561,7 +561,7 @@ After fixing, commit and push to main, then hard-refresh the browser.
 - **Too quiet:** Check that `editor.accessibilitySupport` is set to `on` (not `auto` or `off`)
 - **Audio signals:** Search `accessibility.signals` in Settings → enable or disable specific sounds (error, warning, breakpoint, diff changes, etc.)
 
-See [Appendix M (VS Code Accessibility Reference)](docs/appendix-m-vscode-accessibility-reference.md) for all settings.
+See [Appendix M (VS Code Accessibility Reference)](docs/appendix-g-vscode-reference.md) for all settings.
 
 
 ### Problem: Cannot find a VS Code command
@@ -1036,7 +1036,7 @@ See [Appendix M (VS Code Accessibility Reference)](docs/appendix-m-vscode-access
 ### Problem: Cannot access workshop materials
 **Symptoms:** You want to read the materials but cannot find where they are hosted or how to download them.
 
-**Solution:** See [Appendix Y (Accessing Workshop Materials)](docs/appendix-y-accessing-workshop-materials.md) for complete instructions covering:
+**Solution:** See [Appendix Y (Accessing Workshop Materials)](docs/appendix-y-workshop-materials.md) for complete instructions covering:
 - Reading on GitHub Pages (if hosted)
 - Reading directly on GitHub.com
 - Cloning the repository with Git
@@ -1086,7 +1086,7 @@ If your issue is not listed here:
 2. **[Quick Reference](QUICK_REFERENCE.md)** - Condensed keyboard shortcuts and commands
 3. **[Glossary](docs/appendix-a-glossary.md)** - Term definitions
 4. **[Screen Reader Cheat Sheet](docs/appendix-b-screen-reader-cheatsheet.md)** - NVDA, JAWS, VoiceOver commands
-5. **[Resources](docs/appendix-u-resources.md)** - External documentation and links
+5. **[Resources](docs/appendix-x-resources.md)** - External documentation and links
 6. **Open an issue** on this repository with:
    - What you tried
    - What happened (exact error messages)

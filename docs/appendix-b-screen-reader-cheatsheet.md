@@ -645,10 +645,10 @@ This cheat sheet covers GitHub web navigation and screen reader commands. Additi
 
 | Topic | Location |
 | -------  | ----------  |
-| VS Code keyboard navigation and accessibility | [Appendix M - VS Code Accessibility Reference](appendix-m-vscode-accessibility-reference.md) |
-| GitHub Copilot Chat and inline suggestions | [Appendix W - GitHub Copilot Reference](appendix-w-github-copilot-reference.md) |
-| VS Code setup and configuration shortcuts | [Chapter 5 - VS Code Basics](05-vscode-accessibility.md) |
-| GitHub Copilot activation and model switching | [Chapter 13 - GitHub Copilot](13-github-copilot.md) |
+| VS Code keyboard navigation and accessibility | [Appendix M - VS Code Accessibility Reference](appendix-g-vscode-reference.md) |
+| GitHub Copilot Chat and inline suggestions | [Appendix W - GitHub Copilot Reference](appendix-k-copilot-reference.md) |
+| VS Code setup and configuration shortcuts | [Chapter 5 - VS Code Basics](11-vscode-interface.md) |
+| GitHub Copilot activation and model switching | [Chapter 13 - GitHub Copilot](16-github-copilot.md) |
 
 
 ## Screen Reader Compatibility Notes
@@ -670,5 +670,5 @@ The commands in this cheat sheet have been written for and tested with the follo
 
 
 *Appendix B - keep this open as a reference throughout both days.*
-*Return to: [Day 1 Agenda](../DAY1_AGENDA.md) | [Understanding GitHub's Web Structure](01-understanding-github-web-structure.md)*
+*Return to: [Day 1 Agenda](../DAY1_AGENDA.md) | [Understanding GitHub's Web Structure](02-understanding-github.md)*
 *See also: [GitHub Concepts Glossary](appendix-a-glossary.md)*

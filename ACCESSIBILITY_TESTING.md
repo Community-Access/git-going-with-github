@@ -318,7 +318,7 @@ This repository includes a build system that converts all Markdown files to HTML
 
 - **Having trouble testing?** See `TROUBLESHOOTING.md`
 - **Need screen reader help?** See `docs/appendix-b-screen-reader-cheatsheet.md`
-- **Want resources?** See `docs/appendix-u-resources.md`
+- **Want resources?** See `docs/appendix-x-resources.md`
 
 
 *Last updated: February 2026*  

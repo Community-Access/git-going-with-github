@@ -111,7 +111,7 @@ The following table describes the five learning card types used in this chapter.
 <details>
 <summary>If you cloned the learning-room in Block 0 and prefer resolving conflicts locally</summary>
 
-The GitHub web conflict editor works well and is the primary method taught in this chapter. If you cloned the Learning Room in Block 0 and prefer working in your terminal, here is how to resolve conflicts locally. This is the same workflow covered in depth in [Chapter 11: Git and Source Control](11-git-source-control.md).
+The GitHub web conflict editor works well and is the primary method taught in this chapter. If you cloned the Learning Room in Block 0 and prefer working in your terminal, here is how to resolve conflicts locally. This is the same workflow covered in depth in [Chapter 11: Git and Source Control](14-git-in-practice.md).
 
 **Step 1 - Sync main and merge into your branch:**
 
@@ -460,7 +460,7 @@ When the conflict editor opens, your screen reader will announce a text editor. 
 
 ## Resolving Conflicts in VS Code (Day 2)
 
-VS Code has excellent merge conflict tooling with full screen reader support. This is covered in depth in [Git & Source Control in VS Code](11-git-source-control.md), but here is an overview:
+VS Code has excellent merge conflict tooling with full screen reader support. This is covered in depth in [Git & Source Control in VS Code](14-git-in-practice.md), but here is an overview:
 
 ### VS Code shows conflicts as
 
@@ -691,6 +691,6 @@ Answer these three questions:
 > *Understanding conflict markers is not a stepping stone to letting AI handle conflicts. It is the skill that tells you when AI got it wrong.*
 
 
-*Next: [Culture and Etiquette](08-culture-etiquette.md)*
+*Next: [Culture and Etiquette](08-open-source-culture.md)*
 *Back: [Working with Pull Requests](06-working-with-pull-requests.md)*
-*Related: [Git & Source Control in VS Code](11-git-source-control.md)*
+*Related: [Git & Source Control in VS Code](14-git-in-practice.md)*

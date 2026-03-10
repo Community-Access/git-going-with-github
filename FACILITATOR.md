@@ -108,29 +108,29 @@ learning-room/                  ← workshop repository root
 │       ├── explain-code.prompt.md
 │       ├── review-pr.prompt.md
 │       ├── triage.prompt.md
-│       └── ... (48 more - see docs/appendix-v-accessibility-agents-reference.md)
+│       └── ... (48 more - see docs/appendix-l-agents-reference.md)
 ├── docs/                       ← full workshop curriculum (17 chapters + appendices A-Z)
 │   ├── 00-pre-workshop-setup.md
-│   ├── 01-understanding-github-web-structure.md
-│   ├── 02-navigating-repositories.md
-│   ├── 03-the-learning-room.md
-│   ├── 04-working-with-issues.md
-│   ├── 05-vscode-accessibility.md
+│   ├── 02-understanding-github.md
+│   ├── 03-navigating-repositories.md
+│   ├── 04-the-learning-room.md
+│   ├── 05-working-with-issues.md
+│   ├── 11-vscode-interface.md
 │   ├── 06-working-with-pull-requests.md
 │   ├── 07-merge-conflicts.md
-│   ├── 08-culture-etiquette.md
+│   ├── 08-open-source-culture.md
 │   ├── 09-labels-milestones-projects.md
-│   ├── 10-notifications.md
-│   ├── 11-git-source-control.md
-│   ├── 12-github-pull-requests-extension.md
-│   ├── 13-github-copilot.md
-│   ├── 14-accessible-code-review.md
-│   ├── 15-issue-templates.md
-│   ├── 16-accessibility-agents.md
+│   ├── 10-notifications-and-day-1-close.md
+│   ├── 14-git-in-practice.md
+│   ├── 15-code-review.md
+│   ├── 16-github-copilot.md
+│   ├── 15-code-review.md
+│   ├── 17-issue-templates.md
+│   ├── 19-accessibility-agents.md
 │   ├── appendix-a-glossary.md              ← every term explained
 │   ├── appendix-b-screen-reader-cheatsheet.md ← full shortcut reference
 │   ├── appendix-c through appendix-x      ← deep-dive references (C-X)
-│   └── (see appendix-u-resources.md for complete file listing)
+│   └── (see appendix-x-resources.md for complete file listing)
 └── learning-room/              ← practice content (contribution sprint targets)
     ├── README.md
     └── docs/
@@ -222,7 +222,7 @@ what line or section to look at.]
 
 ## How to Contribute
 
-See [Working with Issues](docs/04-working-with-issues.md) and the [Day 1 Agenda](DAY1_AGENDA.md) for the full contribution workflow.
+See [Working with Issues](docs/05-working-with-issues.md) and the [Day 1 Agenda](DAY1_AGENDA.md) for the full contribution workflow.
 ```
 
 **Pre-seeded issues to create (by file):**

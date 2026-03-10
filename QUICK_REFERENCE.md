@@ -143,12 +143,12 @@ git fetch upstream                       # Fetch without merging
 ```
 docs/
 ├── 00-pre-workshop-setup.md             ← Start here
-├── 01-understanding-github-web-structure.md
-├── 04-working-with-issues.md            ← File issues
+├── 02-understanding-github.md
+├── 05-working-with-issues.md            ← File issues
 ├── 06-working-with-pull-requests.md     ← Review PRs
-├── 14-accessible-code-review.md         ← Day 2 manual skill
-├── 15-issue-templates.md                ← Design templates (manual)
-├── 16-accessibility-agents.md                    ← Automate with agents
+├── 15-code-review.md         ← Day 2 manual skill
+├── 17-issue-templates.md                ← Design templates (manual)
+├── 19-accessibility-agents.md                    ← Automate with agents
 └── appendix-a-glossary.md               ← Term definitions
 ```
 
@@ -233,7 +233,7 @@ body:
 | Topic | File |
 |-------|------|
 | Troubleshooting | `TROUBLESHOOTING.md` |
-| Resources & setup | `docs/appendix-u-resources.md` |
+| Resources & setup | `docs/appendix-x-resources.md` |
 | Glossary & terms | `docs/appendix-a-glossary.md` |
 | Screen reader guide | `docs/appendix-b-screen-reader-cheatsheet.md` |
 

@@ -38,7 +38,7 @@
 ## Chapter 1: Understanding GitHub Web Structure
 **Time:** 1 hour  |  **What You'll Do:** Learn GitHub's layout and terminology
 
-- [ ] Read `docs/01-understanding-github-web-structure.md`
+- [ ] Read `docs/02-understanding-github.md`
 - [ ] Understand: Repositories, Branches, Commits, PRs, Issues
 - [ ] Identify on any GitHub repo: Code tab, Issues tab, PR tab, Settings
 - [ ] Know the difference: Fork vs. Branch
@@ -50,7 +50,7 @@
 ## Chapter 2: Navigating Repositories
 **Time:** 45 minutes  |  **What You'll Do:** Practice exploring real repositories
 
-- [ ] Read `docs/02-navigating-repositories.md`
+- [ ] Read `docs/03-navigating-repositories.md`
 - [ ] Navigate to 3 different repos and identify key files
 - [ ] Use keyboard navigation (accessibility focus)
 - [ ] Found: README, CONTRIBUTING, License, Issues template
@@ -62,7 +62,7 @@
 ## Chapter 3: The Learning Room
 **Time:** 30 minutes  |  **What You'll Do:** Understand the shared practice environment
 
-- [ ] Read `docs/03-the-learning-room.md`
+- [ ] Read `docs/04-the-learning-room.md`
 - [ ] Understand: How the Learning Room automation works
 - [ ] Know: Where to find your first contribution challenge
 - [ ] Reviewed: Available practice challenges
@@ -74,7 +74,7 @@
 ## Chapter 4: Working with Issues
 **Time:** 1 hour  |  **What You'll Do:** Create, read, and comment on issues
 
-- [ ] Read `docs/04-working-with-issues.md`
+- [ ] Read `docs/05-working-with-issues.md`
 - [ ] Create an issue in a practice repo
 - [ ] Comment on someone else's issue
 - [ ] Add a label and assignment to an issue
@@ -87,7 +87,7 @@
 ## Chapter 5: VS Code Accessibility
 **Time:** 45 minutes  |  **What You'll Do:** Set up VS Code for accessible development
 
-- [ ] Read `docs/05-vscode-accessibility.md`
+- [ ] Read `docs/11-vscode-interface.md`
 - [ ] Installed: VS Code with accessibility settings configured
 - [ ] Enabled: Screen reader mode and keyboard navigation
 - [ ] Know how to: Use the Command Palette (`Ctrl+Shift+P`)
@@ -124,7 +124,7 @@
 ## Chapter 8: Culture & Etiquette
 **Time:** 30 minutes  |  **What You'll Do:** Learn collaborative best practices
 
-- [ ] Read `docs/08-culture-etiquette.md`
+- [ ] Read `docs/08-open-source-culture.md`
 - [ ] Understand: Respectful code review
 - [ ] Know the difference: Suggestion vs. Requirement
 - [ ] Can give constructive feedback on code
@@ -148,7 +148,7 @@
 ## Chapter 10: Notifications
 **Time:** 30 minutes  |  **What You'll Do:** Master GitHub notifications
 
-- [ ] Read `docs/10-notifications.md`
+- [ ] Read `docs/10-notifications-and-day-1-close.md`
 - [ ] Set up notifications: Email or in-app
 - [ ] Understand: @mentions, subscriptions, digest settings
 - [ ] Configured: Notifications for your projects
@@ -160,7 +160,7 @@
 ## Chapter 11: Git & Source Control in VS Code
 **Time:** 1 hour  |  **What You'll Do:** Master Git operations within VS Code
 
-- [ ] Read `docs/11-git-source-control.md`
+- [ ] Read `docs/14-git-in-practice.md`
 - [ ] Know how to: Clone, branch, commit, push from VS Code
 - [ ] Used: Source Control panel (`Ctrl+Shift+G`)
 - [ ] Understand: Staging, committing, and syncing changes
@@ -172,7 +172,7 @@
 ## Chapter 12: GitHub Pull Requests Extension
 **Time:** 45 minutes  |  **What You'll Do:** Review and create PRs from VS Code
 
-- [ ] Read `docs/12-github-pull-requests-extension.md`
+- [ ] Read `docs/15-code-review.md`
 - [ ] Installed: GitHub Pull Requests and Issues extension
 - [ ] Know how to: View, review, and create PRs in VS Code
 - [ ] Understand: Inline code review workflow
@@ -184,7 +184,7 @@
 ## Chapter 13: GitHub Copilot
 **Time:** 1 hour  |  **What You'll Do:** Use AI-assisted coding and chat
 
-- [ ] Read `docs/13-github-copilot.md`
+- [ ] Read `docs/16-github-copilot.md`
 - [ ] Installed: GitHub Copilot and Copilot Chat extensions
 - [ ] Verified: Copilot Chat works (`Ctrl+Shift+I`)
 - [ ] Know how to: Use inline suggestions, chat, and custom instructions
@@ -197,7 +197,7 @@
 **Time:** 1.5 hours + Exercises  |  **What You'll Do:** Review code accessibly
 
 ### Reading & Concepts
-- [ ] Read `docs/14-accessible-code-review.md`
+- [ ] Read `docs/15-code-review.md`
 - [ ] Understand: Accessible code review principles
 - [ ] Know the difference: Manual review vs. Copilot review
 - [ ] Familiar with: VS Code Accessible Diff Viewer (F7)
@@ -215,7 +215,7 @@
 **Time:** 1.5 hours + Exercises  |  **What You'll Do:** Create accessible issue templates
 
 ### Reading & Concepts
-- [ ] Read `docs/15-issue-templates.md`
+- [ ] Read `docs/17-issue-templates.md`
 - [ ] Understand: YAML syntax for templates
 - [ ] Know how to: Create and test custom templates
 - [ ] Understand: Form accessibility in templates
@@ -385,7 +385,7 @@ The workshop includes structured exercises in the following chapters. Use this t
 
 - **Check:** `TROUBLESHOOTING.md` (common issues & fixes)
 - **Search:** `QUICK_REFERENCE.md` (commands & shortcuts)
-- **Look up:** `docs/appendix-u-resources.md` (external documentation)
+- **Look up:** `docs/appendix-x-resources.md` (external documentation)
 - **Define:** `docs/appendix-a-glossary.md` (term definitions)
 - **Ask:** Open an issue or discussion on GitHub
 

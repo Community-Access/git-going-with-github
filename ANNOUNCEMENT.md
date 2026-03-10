@@ -83,12 +83,12 @@ Your screen reader and keyboard are the only tools you need. Everything happens 
 | Block | What Happens |
 |-------|-------------|
 | **[Welcome and Setup Check](https://community-access.org/git-going-with-github/docs/00-pre-workshop-setup.html)** | Introductions, verify everyone's screen reader and browser are ready |
-| **[Screen Reader Orientation to GitHub](https://community-access.org/git-going-with-github/docs/01-understanding-github-web-structure.html)** | Navigate GitHub pages using headings, landmarks, and keyboard shortcuts |
+| **[Screen Reader Orientation to GitHub](https://community-access.org/git-going-with-github/docs/02-understanding-github.html)** | Navigate GitHub pages using headings, landmarks, and keyboard shortcuts |
 | **[Navigating Repositories](https://community-access.org/git-going-with-github/docs/02-navigating-repositories.html)** | Explore a real repository - files, branches, commits, contributors |
 | **[Working with Issues](https://community-access.org/git-going-with-github/docs/04-working-with-issues.html)** | Search, file, comment on, and triage issues using [Markdown](https://community-access.org/git-going-with-github/docs/appendix-e-github-flavored-markdown.html) |
 | **[Understanding Pull Requests](https://community-access.org/git-going-with-github/docs/06-working-with-pull-requests.html)** | Read diffs, write inline review comments, approve and merge |
 | **[Your First Contribution Sprint](https://community-access.org/git-going-with-github/docs/07-merge-conflicts.html)** | Make a real contribution to the shared practice repository - with automated bot feedback and human peer review |
-| **[Community and Culture](https://community-access.org/git-going-with-github/docs/08-culture-etiquette.html)** | Open source etiquette, constructive feedback, [managing notifications](https://community-access.org/git-going-with-github/docs/10-notifications.html), organizing with [labels](https://community-access.org/git-going-with-github/docs/09-labels-milestones-projects.html) |
+| **[Community and Culture](https://community-access.org/git-going-with-github/docs/08-open-source-culture.html)** | Open source etiquette, constructive feedback, [managing notifications](https://community-access.org/git-going-with-github/docs/10-notifications-and-day-1-close.html), organizing with [labels](https://community-access.org/git-going-with-github/docs/09-labels-milestones-projects.html) |
 
 You will also work through [GitHub Skills](https://skills.github.com/) modules - interactive, bot-guided courses that run in your own GitHub account. A bot named Mona creates real issues and pull requests for you, verifies your actions, and guides you through each step. It is the same mechanism used by real open source projects.
 
@@ -99,10 +99,10 @@ You earned the tools. Now you wield them.
 | Block | What Happens |
 |-------|-------------|
 | **Day 1 Debrief** | Celebrate what shipped, surface questions, set your Day 2 goal |
-| **[VS Code Setup](https://community-access.org/git-going-with-github/docs/05-vscode-accessibility.html)** | Screen reader mode, workspace navigation, the bridge from browser to editor |
+| **[VS Code Setup](https://community-access.org/git-going-with-github/docs/11-vscode-interface.html)** | Screen reader mode, workspace navigation, the bridge from browser to editor |
 | **[Deep Contribution with Copilot](https://community-access.org/git-going-with-github/docs/13-github-copilot.html)** | Use [GitHub Copilot](https://github.com/features/copilot) as a writing partner - draft improvements, review your own work, commit with confidence |
-| **[Activate the Agents](https://community-access.org/git-going-with-github/docs/16-accessibility-agents.html)** | Explore 55 AI agents across 3 teams that amplify every skill you built on Day 1 - daily briefings, issue triage, PR review, accessibility monitoring |
-| **[Ship Your Contribution](https://community-access.org/git-going-with-github/docs/14-accessible-code-review.html)** | Open a real pull request to a live public repository. Your facilitator reviews and merges it. |
+| **[Activate the Agents](https://community-access.org/git-going-with-github/docs/19-accessibility-agents.html)** | Explore 55 AI agents across 3 teams that amplify every skill you built on Day 1 - daily briefings, issue triage, PR review, accessibility monitoring |
+| **[Ship Your Contribution](https://community-access.org/git-going-with-github/docs/15-code-review.html)** | Open a real pull request to a live public repository. Your facilitator reviews and merges it. |
 | **Design the Future** | Collaborative speccing session - what should the next version of these tools look like? Your ideas, on the record. |
 
 

@@ -167,7 +167,7 @@ The following table describes the six learning card types used in this chapter.
 <details>
 <summary>If you cloned the learning-room in Block 0 and prefer working locally</summary>
 
-The web editor workflow (pencil button, "Propose changes") is the primary path taught in this chapter. If you cloned the Learning Room in Block 0 and are comfortable in a terminal, here is the local equivalent. This is the same workflow covered in depth in [Chapter 11: Git and Source Control](11-git-source-control.md).
+The web editor workflow (pencil button, "Propose changes") is the primary path taught in this chapter. If you cloned the Learning Room in Block 0 and are comfortable in a terminal, here is the local equivalent. This is the same workflow covered in depth in [Chapter 11: Git and Source Control](14-git-in-practice.md).
 
 **Step 1 - Sync and create a feature branch:**
 
@@ -435,7 +435,7 @@ Status checks appear as a coloured banner below the PR description - green tick 
 
 </details>
 
-See [GitHub Actions & Workflows](appendix-q-github-actions-workflows.md) for full guidance on reading status checks.
+See [GitHub Actions & Workflows](appendix-q-actions-workflows.md) for full guidance on reading status checks.
 
 ### Review Comments
 
@@ -1247,5 +1247,5 @@ Go to the Learning Room repository's Pull Requests tab and find any open or rece
 
 
 *Next: [Merge Conflicts](07-merge-conflicts.md)*
-*Back: [VS Code Accessibility](05-vscode-accessibility.md)*
-*Related: [Accessible Code Review](14-accessible-code-review.md) | [Screen Reader Cheat Sheet](appendix-b-screen-reader-cheatsheet.md) | [Culture & Etiquette](08-culture-etiquette.md) | [GitHub Actions](appendix-q-github-actions-workflows.md)*
+*Back: [VS Code Accessibility](11-vscode-interface.md)*
+*Related: [Accessible Code Review](15-code-review.md) | [Screen Reader Cheat Sheet](appendix-b-screen-reader-cheatsheet.md) | [Culture & Etiquette](08-open-source-culture.md) | [GitHub Actions](appendix-q-actions-workflows.md)*

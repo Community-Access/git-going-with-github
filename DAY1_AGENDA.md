@@ -27,7 +27,7 @@ Three modules run across Day 1. You will set each one up during the block where 
 
 ## Read This BEFORE Day 1 Starts
 
-**[Chapter 3: The Learning Room](docs/03-the-learning-room.md)** - Your complete guide to the shared repo, PR sharing workflow, and how the automation system works. Read this before Block 0 to understand the environment where you'll be making real contributions.
+**[Chapter 3: The Learning Room](docs/04-the-learning-room.md)** - Your complete guide to the shared repo, PR sharing workflow, and how the automation system works. Read this before Block 0 to understand the environment where you'll be making real contributions.
 
 
 ## At a Glance
@@ -239,7 +239,7 @@ Find the answers to these questions using keyboard navigation in `learning-room`
 You will work through each Markdown step during the natural pauses in Blocks 3 and 4. Your facilitator will call out when to switch.
 
 ### Reference Document
-[Navigating Repositories](docs/02-navigating-repositories.md)
+[Navigating Repositories](docs/03-navigating-repositories.md)
 
 
 ## Break (11:00 AM, 15 min)
@@ -344,7 +344,7 @@ Getting started with open source AT contributions.
 5. Submit - note the issue number. You will use `Closes #XX` in your PR during Block 5
 
 ### Reference Document
-[Working with Issues](docs/04-working-with-issues.md) | [GitHub Concepts Glossary](docs/appendix-a-glossary.md)
+[Working with Issues](docs/05-working-with-issues.md) | [GitHub Concepts Glossary](docs/appendix-a-glossary.md)
 
 
 ## Block 4 - Understanding Pull Requests (12:10 PM, 50 min)
@@ -730,7 +730,7 @@ Tomorrow we move from the browser to **Visual Studio Code**. Here is what is com
 - Complete any Markdown Skills module steps you didn't finish
 - Explore [docs/GROUP_CHALLENGES.md](learning-room/docs/GROUP_CHALLENGES.md) - 7 collaborative exercises your study group can tackle together
 - Fork [accessibility-agents](https://github.com/community-access/accessibility-agents) - it will be ready and waiting when you open VS Code tomorrow
-- Browse the [55 agents by team](docs/16-accessibility-agents.md#3-the-ecosystem-55-agents-3-teams-5-platforms) - which ones spark ideas for you?
+- Browse the [55 agents by team](docs/19-accessibility-agents.md#3-the-ecosystem-55-agents-3-teams-5-platforms) - which ones spark ideas for you?
 
 
 ## Facilitator Notes
@@ -792,4 +792,4 @@ learning-room/
 
 
 *Day 2: [Day 2 Agenda](DAY2_AGENDA.md)*
-*Related: [Navigating Repositories](docs/02-navigating-repositories.md) | [Working with Issues](docs/04-working-with-issues.md) | [Working with Pull Requests](docs/06-working-with-pull-requests.md)*
+*Related: [Navigating Repositories](docs/03-navigating-repositories.md) | [Working with Issues](docs/05-working-with-issues.md) | [Working with Pull Requests](docs/06-working-with-pull-requests.md)*
