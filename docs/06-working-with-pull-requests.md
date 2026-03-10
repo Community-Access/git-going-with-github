@@ -465,6 +465,35 @@ When a review comment has been addressed, you can mark the conversation as resol
 
 Resolved conversations are still accessible - they collapse but can be expanded again. This helps both reviewers and authors track which feedback items have been addressed.
 
+### Learning Cards: Reading the Conversation Tab
+
+<details>
+<summary>Screen reader users</summary>
+
+- Press `2` to jump between H2 headings: "Description" (the PR body) and "Activity" (the comment thread)
+- Press `3` to jump between individual review comments (each is an H3); each announces the reviewer's username, timestamp, and verdict
+- Press `D` to jump to the "Add a comment" landmark at the bottom to skip directly to the reply box
+
+</details>
+
+<details>
+<summary>Low vision users</summary>
+
+- Status checks below the description show green checkmarks (passed), red X marks (failed), or yellow spinners (running); zoom in on this area after opening a PR
+- Review comments have a colored left border: green for "Approved," red for "Request changes," grey for "Comment"
+- The merge button section at the bottom turns green when all checks pass; it is disabled (greyed out) when checks are pending or reviews are missing
+
+</details>
+
+<details>
+<summary>Sighted users</summary>
+
+- The Conversation tab has a timeline layout: PR description at the top, status checks below, then comments and events in chronological order
+- Review verdicts appear as banners in the timeline: a green banner for Approve, a red banner for Request Changes
+- The merge section at the bottom shows which requirements are met (green checkmarks) and which are pending (yellow dots)
+
+</details>
+
 
 ## Reading the Commits Tab
 
@@ -673,6 +702,35 @@ The inline comment button (a blue `+` icon) appears on hover near the left margi
 
 Inline comments appear as expandable threads within the diff table. Navigate to them with `3` (they are h3 headings). Each thread shows the comment, any replies, and a "Reply" button.
 
+### Learning Cards: Reading the Files Changed Tab
+
+<details>
+<summary>Screen reader users</summary>
+
+- Press `D` to jump to the "File tree" landmark on the left; use `Up/Down Arrow` to navigate files, `Enter` to jump to that file's diff
+- Press `T` to jump to the next diff table; use `Ctrl+Alt+Down Arrow` to walk through diff lines row by row
+- Each line is announced with its change type: `+` for additions, `-` for deletions, and context lines with no prefix
+
+</details>
+
+<details>
+<summary>Low vision users</summary>
+
+- Added lines have a green background; removed lines have a red background; in high-contrast themes, these use bolder system-color shading
+- Toggle between Split diff (two-column) and Unified diff (single-column) using the dropdown at the top of the Files Changed tab; Unified is easier at high zoom
+- Each file heading shows the path and a summary like "+24 -6"; zoom in on this to quickly assess the scope of changes per file
+
+</details>
+
+<details>
+<summary>Sighted users</summary>
+
+- The file tree panel on the left lists every changed file; click a filename to scroll the right panel to that file's diff
+- Green-highlighted lines are additions; red-highlighted lines are deletions; grey lines are unchanged context
+- Hover over any line number in the diff to reveal a blue "+" button for adding an inline review comment
+
+</details>
+
 
 ## Opening a Pull Request
 
@@ -856,6 +914,35 @@ gh pr view 42
 # List only draft PRs
 gh pr list --draft
 ```
+
+</details>
+
+### Learning Cards: Opening a Pull Request
+
+<details>
+<summary>Screen reader users</summary>
+
+- After editing a file on GitHub, the "Propose changes" form has a branch name field and a commit message field; press `Tab` to move between them
+- On the "Open a pull request" page, press `F` to jump to the Title field; `Tab` moves to the Description text area
+- Press `Ctrl+Enter` from inside the description text area to submit the PR without finding the Create button
+
+</details>
+
+<details>
+<summary>Low vision users</summary>
+
+- The "Compare & pull request" yellow banner appears at the top of the repo after a recent push; at high zoom it may span the full width of the page
+- The branch comparison dropdowns (base and compare) use small text; zoom in on the area above the diff preview to read them
+- Draft PR: look for the dropdown arrow next to the green "Create pull request" button to switch to "Create draft pull request"
+
+</details>
+
+<details>
+<summary>Sighted users</summary>
+
+- After pushing a branch, a yellow "Compare & pull request" banner appears at the top of the repository page; click it to pre-fill the PR form
+- The PR form shows a diff preview below the description field so you can verify your changes before submitting
+- The dropdown arrow next to "Create pull request" lets you switch to Draft mode; the button text changes to "Create draft pull request"
 
 </details>
 
@@ -1366,6 +1453,35 @@ Closes #7
 This version answers every question a reviewer has before they touch the diff. They know the file, the issue, the change, and the testing. The review conversation can focus on the content itself rather than on figuring out what the PR is about.
 
 > **Screen reader tip:** When scanning a list of open PRs, the title and first line of the description are what you hear first. Front-load the most important information so you can triage PRs quickly using `Arrow Down` from the PR title.
+
+### Learning Cards: Writing PR Descriptions That Get Reviewed
+
+<details>
+<summary>Screen reader users</summary>
+
+- Use Markdown headings (`##`) in your description (Summary, Changes, Related Issues, Testing) so reviewers can press `H` to jump between sections
+- Type `Closes #` followed by the issue number to auto-close the linked issue on merge; GitHub autocompletes when you type `#`
+- Press `Ctrl+Shift+P` in the description text area to toggle between Write and Preview modes; Preview renders your Markdown so you can check structure before submitting
+
+</details>
+
+<details>
+<summary>Low vision users</summary>
+
+- Use the Preview tab to verify your Markdown renders correctly; headings, bullet lists, and code blocks are easier to proofread in rendered form
+- Keep bullet points short (one line each) so the description is scannable at high zoom without excessive horizontal scrolling
+- When including screenshots, add alt text in the Markdown image syntax: `![description](url)` so every reader gets the same information
+
+</details>
+
+<details>
+<summary>Sighted users</summary>
+
+- A well-structured description uses bold section headers and bullet lists; reviewers scan these visually to decide whether to dive into the diff
+- The `Closes #XX` link renders as a clickable cross-reference; GitHub adds a small icon showing the linked issue's state (open/closed)
+- Use the checklist syntax (`- [ ]` and `- [x]`) for your testing and accessibility checklist; these render as interactive checkboxes
+
+</details>
 
 
 ## Try It: Read a Real Pull Request

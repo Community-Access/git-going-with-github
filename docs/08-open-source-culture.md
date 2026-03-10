@@ -176,6 +176,35 @@ If you join a project that uses Git Flow, the pull request skills you learn here
 
 A branch and its PR should do **one thing**. If you are fixing a broken link and you notice a typo nearby, fix the typo in a **separate branch and PR**. This keeps reviews fast, history clean, and reduces the risk of one unrelated problem blocking an urgent fix.
 
+### Learning Cards: GitHub Flow
+
+<details>
+<summary>Screen reader users</summary>
+
+- The six steps (branch, commit, PR, review, checks, merge) map to six distinct pages on GitHub; you can verify your stage by pressing `1` to hear the page title on each
+- When you open a PR, press `D` to the "Pull request navigation tabs" landmark; the Conversation tab confirms your PR is open and shows the linked issue
+- After merge, press `G I` to jump to the Issues tab and verify the linked issue closed automatically (it now shows a purple "Closed" badge)
+
+</details>
+
+<details>
+<summary>Low vision users</summary>
+
+- Each PR in the Pull Requests list has a colored icon: green circle for open, purple merged icon for merged, red circle for closed
+- The "Compare & pull request" yellow banner appears at the top of the repo after pushing a branch; it is full-width and prominent at any zoom level
+- Before merging, the status checks area below the PR description shows green checkmarks (passed) or red X marks (failed); zoom in to read individual check names
+
+</details>
+
+<details>
+<summary>Sighted users</summary>
+
+- GitHub Flow uses one long-lived branch (`main`) plus short-lived feature branches; the branch dropdown on the Code tab shows all active branches
+- After pushing, look for the yellow "Compare & pull request" banner at the top of the repository page to quickly open a PR
+- The PR timeline on the Conversation tab shows the entire story: description, bot checks, review comments, and merge status in chronological order
+
+</details>
+
 
 ## Keeping Your Fork Up to Date
 
@@ -370,6 +399,35 @@ Part of #200
 
 **When you make a habit of writing good commit messages, you build trust.** Maintainers see that you care about the project's long-term health, not just your immediate contribution.
 
+### Learning Cards: Writing Good Commit Messages
+
+<details>
+<summary>Screen reader users</summary>
+
+- In VS Code's Source Control panel (`Ctrl+Shift+G`), the commit message input is the first field; type your message there and press `Ctrl+Enter` to commit
+- On the Commits tab of a PR, press `3` to jump between date-group headings, then `I` to navigate individual commits; each commit announces its message and author
+- Good commit messages start with a verb in imperative mood ("Add," "Fix," "Remove"); your screen reader will read these as the first word when navigating commit lists
+
+</details>
+
+<details>
+<summary>Low vision users</summary>
+
+- In the commit history view, only the first line (subject) of each commit message is visible by default; click "..." to expand the full body
+- Keep the subject line under 50 characters so it does not truncate in GitHub's commit list view at any zoom level
+- VS Code shows a vertical ruler in the commit message field at 72 characters; lines longer than this may wrap awkwardly in terminal and email displays
+
+</details>
+
+<details>
+<summary>Sighted users</summary>
+
+- The commit list on GitHub shows one commit per row with the subject line, author avatar, and relative timestamp; descriptive subjects make scanning easy
+- Use the format "type: description" (e.g., `fix: remove broken link in setup guide`) to categorize commits at a glance
+- Separate the subject from the body with a blank line; GitHub renders the body as expandable detail below the subject
+
+</details>
+
 
 ## The Nature of Open Source Communication
 
@@ -525,6 +583,35 @@ In a comment text area:
 ```
 
 **Limit:** GitHub allows up to 100 saved replies per account.
+
+### Learning Cards: Commenting Etiquette
+
+<details>
+<summary>Screen reader users</summary>
+
+- Press `D` to jump to the "Add a comment" landmark on any issue or PR, then switch to Focus Mode (`NVDA+Space`) to type your comment
+- Use `Ctrl+Enter` to submit a comment directly from the text area without needing to find the Submit button
+- In a comment, type `@` followed by a username to trigger autocomplete; press `Down Arrow` to navigate suggestions and `Enter` to select
+
+</details>
+
+<details>
+<summary>Low vision users</summary>
+
+- The comment box has a formatting toolbar above it (bold, italic, code, link); at high zoom these icons may wrap but remain functional
+- Use the Preview tab next to Write to check how your Markdown renders before posting; this helps catch formatting issues at any zoom level
+- Saved replies are accessed via the speech bubble icon in the comment toolbar; they insert pre-written text to save typing on common responses
+
+</details>
+
+<details>
+<summary>Sighted users</summary>
+
+- The comment box appears at the bottom of every issue and PR Conversation tab; it supports full Markdown with a live Preview tab
+- Use `Ctrl+B` for bold, `Ctrl+I` for italic, `Ctrl+K` for links, and `Ctrl+E` for inline code while typing in the comment area
+- GitHub renders @mentions, issue references (`#42`), and emoji shortcodes (`:+1:`) automatically in the posted comment
+
+</details>
 
 
 ## Code Review Etiquette - For Reviewers
@@ -744,6 +831,35 @@ You do not need to become a licensing expert. The [choosealicense.com](https://c
 Navigate to any repository and click **Insights** then **Community Standards**. GitHub shows a checklist of which community health files are present and links to add any that are missing. This is the fastest way to audit a project before you contribute.
 
 > **Screen reader tip:** The Community Standards page is a simple checklist. Each item is a link -- if the file exists, the link text includes a checkmark. You can tab through the list to quickly confirm which files are in place.
+
+### Learning Cards: Community Health Files
+
+<details>
+<summary>Screen reader users</summary>
+
+- Navigate to any repo's Insights tab by pressing `D` to the repository navigation landmark, then `K` to find "Insights"; from there, find "Community Standards"
+- On the Community Standards page, each file is announced as a list item with a checkmark status (present or missing); `Tab` through the list to audit quickly
+- When creating a README, use heading levels (`#`, `##`, `###`) so screen readers can navigate sections with `H`; start with a single H1 for the project name
+
+</details>
+
+<details>
+<summary>Low vision users</summary>
+
+- The Community Standards checklist uses green checkmarks for present files and grey circles for missing ones; in high-contrast mode these use distinct system colors
+- README files render below the file table on the repository's Code tab; zoom in on the rendered Markdown for the most comfortable reading experience
+- When writing a README, keep paragraphs short (3-4 sentences) and use bullet lists so the content is scannable at high magnification
+
+</details>
+
+<details>
+<summary>Sighted users</summary>
+
+- Navigate to Insights tab, then Community Standards to see a checklist of recommended files (README, LICENSE, CONTRIBUTING, CODE_OF_CONDUCT, etc.)
+- Each missing file has an "Add" link next to it that opens a pre-filled template editor on GitHub
+- The README renders as formatted Markdown below the file table on the main Code tab; it is the first thing visitors see when they land on your repository
+
+</details>
 
 
 ## When to Use Different Communication Channels

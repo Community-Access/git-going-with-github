@@ -173,6 +173,35 @@ Navigate to the Name column, hear the filename, then move right to read the comm
 - When you open a folder, the page reloads showing the contents of that folder
 - Press the back button or use the breadcrumb links to go back up
 
+### Learning Cards: The Files Table
+
+<details>
+<summary>Screen reader users</summary>
+
+- Press `T` in Browse Mode to jump to the files table; NVDA announces "Table with N rows and 3 columns"
+- Navigate rows with `Ctrl+Alt+Down Arrow`; each row reads: filename, last commit message, age
+- Press `Enter` on the Name column to open a file or folder; press `Alt+Left Arrow` in your browser to go back
+
+</details>
+
+<details>
+<summary>Low vision users</summary>
+
+- The files table uses alternating row shading; switch to a high-contrast GitHub theme if rows blend together at your zoom level
+- Folder icons (small triangle) appear before folder names; file icons (small document) appear before file names
+- If the commit message column is truncated at high zoom, hover over it to see the full message in a tooltip
+
+</details>
+
+<details>
+<summary>Sighted users</summary>
+
+- The files table is the large panel in the center of the Code tab, listing folders first (alphabetically), then files
+- The rightmost column shows relative timestamps like "3 days ago"; hover to see the exact date and time
+- Click a folder name to drill into it; breadcrumb links above the table let you navigate back up the path
+
+</details>
+
 
 ## The Branch Selector
 
@@ -301,6 +330,35 @@ cd learning-room
 
 </details>
 
+### Learning Cards: Cloning a Repository
+
+<details>
+<summary>Screen reader users</summary>
+
+- Navigate to the green "Code" button with `B` (Browse Mode), press `Enter` to open the flyout, then `Tab` to reach the HTTPS URL and the "Copy url to clipboard" button
+- After cloning in VS Code's terminal, press `Ctrl+Shift+E` to focus the Explorer panel; the cloned repository's file tree appears there
+- If the clone fails with an authentication error, VS Code will open a browser tab for OAuth sign-in; press `Alt+Tab` to switch back after approving
+
+</details>
+
+<details>
+<summary>Low vision users</summary>
+
+- The green "Code" button is above the file table on the right side; at high zoom it may shift below the branch selector
+- The clone URL in the flyout panel uses small monospace text; use the copy button (clipboard icon) instead of trying to select the text manually
+- After cloning, VS Code's Explorer panel shows the folder tree on the left; zoom VS Code independently with `Ctrl+=` if needed
+
+</details>
+
+<details>
+<summary>Sighted users</summary>
+
+- The green "Code" dropdown shows three tabs: HTTPS (default), SSH, and GitHub CLI, each with a one-click copy button
+- After cloning, look for a notification in VS Code's bottom-right corner asking "Would you like to open the cloned repository?"; click "Open"
+- The Source Control icon in VS Code's Activity Bar shows a badge number when there are uncommitted changes in your clone
+
+</details>
+
 
 ## Fork vs. Clone vs. Branch - What Is the Difference?
 
@@ -318,6 +376,35 @@ The following table compares forks, clones, and branches across six dimensions.
 | **Workshop usage** | Not required for the Learning Room (you have direct write access) | Optional in Block 0 (for local Git work in Ch11+) | Required from Chapter 6 onward (feature branches for every PR) |
 
 **In this workshop,** you will primarily use **branches** (Chapter 6 onward) and optionally **clone** the Learning Room for local work (Chapter 11). Forking is the standard workflow when contributing to repositories where you are not a collaborator, which is covered in [Contributing to Open Source](08-open-source-culture.md).
+
+### Learning Cards: Fork vs. Clone vs. Branch
+
+<details>
+<summary>Screen reader users</summary>
+
+- Fork: press `B` to find the "Fork" button on any repo page, then `Enter`; the fork creation page opens with fields for owner and name
+- Clone: use the green "Code" button or run `gh repo clone owner/repo` in VS Code's terminal (`` Ctrl+` ``)
+- Branch: you will create branches starting in Chapter 6; the branch selector (`W` shortcut in Focus Mode) lists all branches in the current repo
+
+</details>
+
+<details>
+<summary>Low vision users</summary>
+
+- The Fork button shows a count (e.g., "Fork 8") in the top-right of the repo page near Watch and Star
+- After forking, your fork's URL changes to `github.com/your-username/repo-name`; check the address bar to confirm you are on your fork
+- Branches are listed in the branch selector dropdown; the currently active branch is highlighted with your theme's selection color
+
+</details>
+
+<details>
+<summary>Sighted users</summary>
+
+- Fork, Watch, and Star buttons are grouped in the top-right corner of the repository page, right-aligned below the global nav
+- A forked repo shows "forked from owner/repo" in small text just below the repository name
+- Branches appear in the branch dropdown (click the branch name above the file tree); the default branch is usually labeled "main" or "master"
+
+</details>
 
 
 ## Watching, Starring, and Forking
@@ -462,6 +549,35 @@ Press `B` from within the file area, OR use `D` to navigate to the "Repository f
 
 </details>
 
+### Learning Cards: Viewing a Single File
+
+<details>
+<summary>Screen reader users</summary>
+
+- On a Markdown file, the rendered content has full heading structure; press `H` to navigate headings within the file, `T` for tables, `K` for links
+- On a code file, content reads as a table with one line per row; press `Down Arrow` in Focus Mode to read line by line
+- The action buttons (Raw, Blame, History, Edit) are above the file content; press `B` or navigate to the "Repository files navigation" landmark with `D` to find them
+
+</details>
+
+<details>
+<summary>Low vision users</summary>
+
+- Markdown files render with styled headings and formatted text; code files render with syntax highlighting in a monospace font
+- The Edit button (pencil icon) is in the top-right corner of the file content area; at high zoom it appears above the first line of the file
+- Use the Raw button to view files as plain text in a new page, which can be easier to read at high zoom without the GitHub page chrome
+
+</details>
+
+<details>
+<summary>Sighted users</summary>
+
+- The file action buttons (Raw, Blame, History, pencil icon for Edit) are in a toolbar row above the file content
+- Line numbers appear on the left side of code files; click a line number to highlight that line and generate a permalink URL
+- The breadcrumb path above the file (e.g., "repo > docs > README.md") is clickable; each segment navigates to that folder level
+
+</details>
+
 
 ## The Blame View
 
@@ -533,6 +649,35 @@ The "Go to file" shortcut is extremely useful when you know what you are looking
 - **Option 1:** Switch to Focus Mode first (`Insert+Space` for NVDA, `Insert+Z` for JAWS)
 - **Option 2:** Use `F` key to find the "Go to file" or "Find file" edit field instead
 - **Recommended:** Option 2 is more reliable and doesn't require mode switching.
+
+### Learning Cards: Searching for a File
+
+<details>
+<summary>Screen reader users</summary>
+
+- Press `F` or `E` in Browse Mode to jump to the "Go to file" search field; type a filename and results appear as a dropdown navigable with `Down Arrow`
+- The GitHub `T` shortcut also opens the file finder, but it conflicts with the "next table" key in Browse Mode; switch to Focus Mode first (`NVDA+Space`) or use `F` instead
+- After selecting a result and pressing `Enter`, the file page loads; press `1` to hear the file name, then `H` to navigate its headings
+
+</details>
+
+<details>
+<summary>Low vision users</summary>
+
+- The "Go to file" button is near the top of the Code tab, above the file table; it opens a search overlay in the center of the screen
+- Search results highlight matching characters in bold; at high zoom the overlay may cover part of the file table underneath
+- Use browser `Ctrl+F` as a fallback to search for a filename visible in the file table without opening the overlay
+
+</details>
+
+<details>
+<summary>Sighted users</summary>
+
+- The "Go to file" button (or press `T`) opens a search-as-you-type overlay showing matching file paths as you type
+- Results show the full file path with matching characters highlighted in bold; press `Enter` on a result to open the file
+- Fuzzy matching works: typing "readme" matches "README.md" and "docs/readme.txt" and any other file with those characters in order
+
+</details>
 
 
 ## GitHub Shortcuts for Repository Navigation - Spotlight

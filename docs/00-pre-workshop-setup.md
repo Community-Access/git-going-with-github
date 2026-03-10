@@ -169,6 +169,35 @@ For this workshop, participants need a GitHub account with 2FA enabled. The brow
 
 If you run into any authentication issues before the workshop, contact the workshop organizers at the email or issue link in this guide so we can help.
 
+### Learning Cards: Create Your GitHub Account
+
+<details>
+<summary>Screen reader users</summary>
+
+- During signup, press `Tab` to move between form fields; GitHub announces validation errors inline as you type
+- The CAPTCHA step may not have an audio fallback -- look for a button labeled "Audio" or "Try an audio challenge" before requesting help
+- After enabling 2FA, use `Ctrl+A` then `Ctrl+C` in the recovery codes text area to copy all codes at once into a password manager
+
+</details>
+
+<details>
+<summary>Low vision users</summary>
+
+- GitHub signup fields have high-contrast focus rings; if you cannot see them, switch to your browser's High Contrast mode (`Alt+Shift+H` in Edge) before starting
+- Zoom to 200% on the verification puzzle -- the puzzle images scale but button text may overlap; resize the browser window wider if controls disappear
+- Recovery codes are displayed in small monospace text; use `Ctrl+Plus` to enlarge before copying them
+
+</details>
+
+<details>
+<summary>Sighted users</summary>
+
+- Watch for the green checkmark next to the username field confirming your chosen name is available
+- The verification email sometimes lands in spam -- check your Junk folder if nothing arrives within two minutes
+- After enabling 2FA, the recovery codes appear in a grey box below the QR code; screenshot or download them immediately
+
+</details>
+
 
 ## Step 2 - Configure GitHub Accessibility Settings
 
@@ -273,6 +302,35 @@ Theme is on a separate page: [GitHub Appearance Settings](https://github.com/set
    - **High contrast dark** - maximum contrast on dark background
    - **Colorblind** variants - Protanopia, Deuteranopia, Tritanopia
 4. Select your preferred theme and activate **Save** if prompted (some changes apply immediately)
+
+### Learning Cards: Configure GitHub Accessibility Settings
+
+<details>
+<summary>Screen reader users</summary>
+
+- Press `F` in Browse Mode to jump between checkboxes on the Accessibility settings page; each setting auto-saves when toggled
+- After disabling hovercards, verify the change: navigate any repository page and confirm links no longer announce "Press H to preview"
+- The Theme selector on the Appearance page is a set of radio buttons; press `Arrow Down` to cycle through themes and hear each name announced
+
+</details>
+
+<details>
+<summary>Low vision users</summary>
+
+- Choose "High contrast dark" or "High contrast light" under Appearance -- these themes increase border weight and icon contrast across all GitHub pages
+- Enable "Link underlines" so links are visible without relying on color difference alone
+- After changing themes, check the diff view on any pull request; some themes render additions/deletions with subtle shading that may need further zoom
+
+</details>
+
+<details>
+<summary>Sighted users</summary>
+
+- The Accessibility settings page is a single column of checkboxes near the bottom of the left sidebar in Settings
+- Hovercards appear as floating cards when you hover on usernames or issues; turning them off removes that popup behavior
+- After choosing a theme, scroll down on the Appearance page to preview how code blocks and diffs render in your chosen colors
+
+</details>
 
 
 ## Step 3 - Configure Your Profile
@@ -458,6 +516,35 @@ If you open Feature Preview and neither **"New Issues Experience"** nor **"New F
 
 **Before the workshop:** Open GitHub.com in your chosen browser with your screen reader running and confirm you can navigate the page using heading keys.
 
+### Learning Cards: Set Up Your Screen Reader and Browser
+
+<details>
+<summary>Screen reader users</summary>
+
+- NVDA: press `NVDA+N` then `P` then `S` to reach Settings quickly; Browse Mode settings are under the "Browse Mode" category
+- JAWS: press `Insert+F2` to open the Run JAWS Manager dialog, then type "Settings" to jump directly to Settings Center
+- VoiceOver: press `VO+F8` to open VoiceOver Utility; add "Form Controls" to the Web Rotor list so you can jump to GitHub's search and filter fields
+
+</details>
+
+<details>
+<summary>Low vision users</summary>
+
+- In Chrome, press `Ctrl+Plus` to zoom; GitHub's layout reflows cleanly up to 200% but the top navigation bar may collapse items into a hamburger menu at higher zoom
+- Firefox's Reader View (`F9`) does not work on GitHub pages, so rely on browser zoom and GitHub's high-contrast themes instead
+- On macOS, enable "Hover Text" in System Settings, Accessibility, Zoom to see enlarged text under the pointer without zooming the full screen
+
+</details>
+
+<details>
+<summary>Sighted users</summary>
+
+- Chrome DevTools (`F12`) includes a "Rendering" panel where you can simulate vision deficiencies to preview how GitHub looks to other users
+- Firefox and Chrome both support the `Tab` key for visible focus rings; if you do not see them, check that your OS "focus indicator" setting is not suppressed
+- Safari on macOS has the tightest VoiceOver integration; if you use a Mac in the workshop, Safari is the safest default browser
+
+</details>
+
 
 ## Step 6 - Install Git and Visual Studio Code
 
@@ -557,6 +644,35 @@ If VS Code did **not** prompt you automatically, enable it manually:
 | Open terminal | `` Ctrl+` `` (backtick) |
 | Focus Explorer panel | `Ctrl+Shift+E` |
 | Focus editor | `Ctrl+1` |
+
+### Learning Cards: Install Git and Visual Studio Code
+
+<details>
+<summary>Screen reader users</summary>
+
+- After installing VS Code, press `Shift+Alt+F1` immediately to enable Screen Reader Optimized mode; without it the editor area is not linearized for your screen reader
+- Press `Ctrl+Shift+P` to open the Command Palette; it behaves like an autocomplete list -- type a few letters and press `Down Arrow` to browse matches
+- The VS Code terminal (`` Ctrl+` ``) is a standard text area; press `Up Arrow` to review previous command output line by line
+
+</details>
+
+<details>
+<summary>Low vision users</summary>
+
+- In VS Code, press `Ctrl+Plus` or `Ctrl+Minus` to zoom the entire interface; the zoom level persists across restarts
+- Open Settings (`Ctrl+,`), search "editor.fontSize" and increase it to 18-24 for comfortable code reading alongside your browser zoom
+- Choose a high-contrast theme: press `Ctrl+K Ctrl+T`, then select "High Contrast" or "High Contrast Light" from the list
+
+</details>
+
+<details>
+<summary>Sighted users</summary>
+
+- The Activity Bar on the left edge of VS Code shows icons for Explorer, Search, Source Control, Run, and Extensions; hover each to see its name and shortcut
+- A small Git icon with a number badge in the Activity Bar means VS Code detected Git successfully and is tracking changes
+- The Status Bar at the bottom shows your current branch name on the left and encoding, language mode, and line/column on the right
+
+</details>
 
 
 ## Step 7 - Configure Git Identity
@@ -674,6 +790,35 @@ Copilot Free is available to all GitHub users at no cost. It includes:
 - Limited Copilot Chat messages per month
 
 For this workshop, Free tier is sufficient. If you want unlimited access, paid plans are available at [GitHub Copilot pricing](https://github.com/features/copilot#pricing).
+
+### Learning Cards: Install VS Code Extensions
+
+<details>
+<summary>Screen reader users</summary>
+
+- In the Extensions panel (`Ctrl+Shift+X`), type your search, press `Tab` to enter the results list, then `Down Arrow` through results; each announces the extension name and publisher
+- Verify the publisher is "GitHub" before installing; after arrowing to a result, press `Tab` once to hear the publisher name announced
+- To confirm Copilot is active, press `Ctrl+Shift+I` to open Agent mode; your screen reader should announce the chat input field within two seconds
+
+</details>
+
+<details>
+<summary>Low vision users</summary>
+
+- Extension search results show the publisher name in smaller grey text beneath the extension name; zoom to 150%+ to read it clearly
+- The Install button is blue and appears on the right side of each extension card; after installation it changes to a gear icon for settings
+- The Copilot icon in the Status Bar (bottom right, a small two-sparkle icon) turns solid when Copilot is authenticated and active
+
+</details>
+
+<details>
+<summary>Sighted users</summary>
+
+- Look for the blue verified badge (checkmark) next to "GitHub" in the publisher field to confirm you have the official extension
+- After installing the Pull Requests extension, a new GitHub icon appears in the Activity Bar on the left; click it to see open PRs for the current repo
+- The Copilot chat panel opens on the right side when you press `Ctrl+Shift+I`; the sparkle icon in the editor gutter means Copilot has an inline suggestion
+
+</details>
 
 
 ## Step 9 - Verification Checklist

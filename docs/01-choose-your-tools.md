@@ -94,6 +94,35 @@ GitHub supports light and dark themes, high contrast themes, and responds to you
 
 GitHub's layout adapts to browser zoom up to 400% without horizontal scrolling on most pages.
 
+### Learning Cards: GitHub.com (Browser)
+
+<details>
+<summary>Screen reader users</summary>
+
+- Press `S` on any GitHub page to jump to the main search field; press `/` as an alternative
+- Press `D` in Browse Mode to jump between ARIA landmark regions; the repository tabs (Code, Issues, Pull Requests) are inside the "Repository navigation" landmark
+- Press `G` then `I` (two keystrokes in sequence) to jump directly to the Issues tab from anywhere in a repository
+
+</details>
+
+<details>
+<summary>Low vision users</summary>
+
+- Switch to "High contrast dark" or "High contrast light" at github.com/settings/appearance for maximum border and text contrast
+- Browser zoom up to 200% keeps GitHub's layout intact; above 200% the repository sidebar collapses into a hamburger menu
+- Enable "Link underlines" in GitHub Accessibility settings so links are distinguishable without color
+
+</details>
+
+<details>
+<summary>Sighted users</summary>
+
+- The repository navigation tabs (Code, Issues, Pull Requests, etc.) appear as a horizontal bar just below the repository name
+- Code files turn into clickable links in the file tree; folders show a folder icon and files show a document icon
+- The green "Code" dropdown button on the repository home page is where you find clone URLs and the "Open with github.dev" option
+
+</details>
+
 ---
 
 ## 4. Path 2: github.dev (Browser-Based Editor)
@@ -178,6 +207,35 @@ VS Code has a dedicated accessibility mode that activates automatically when a s
 
 VS Code supports high contrast themes, custom zoom levels (`Ctrl+=` to zoom in, `Ctrl+-` to zoom out), and configurable font sizes. The minimap (the small code preview on the right side of the editor) can be disabled if it is distracting: open the command palette, type "minimap," and toggle the setting.
 
+### Learning Cards: VS Code (Desktop)
+
+<details>
+<summary>Screen reader users</summary>
+
+- Press `Ctrl+Shift+E` to focus the File Explorer tree; `Up/Down Arrow` navigates files, `Enter` opens a file, `Right Arrow` expands a folder
+- Press `Ctrl+Shift+G` to focus Source Control; the tree lists changed files and each item announces its Git status (modified, untracked, etc.)
+- Press `Alt+F1` inside any view to open the Accessibility Help dialog, which lists every keyboard shortcut for that specific panel
+
+</details>
+
+<details>
+<summary>Low vision users</summary>
+
+- Press `Ctrl+K Ctrl+T` to open the theme picker; "High Contrast" and "High Contrast Light" offer the strongest visual differentiation
+- Press `Ctrl+=` repeatedly to zoom the entire interface; the zoom level persists after restart
+- Disable the minimap to reclaim screen width: `Ctrl+Shift+P`, type "minimap", toggle "Editor: Minimap Enabled" off
+
+</details>
+
+<details>
+<summary>Sighted users</summary>
+
+- The Activity Bar (left edge) shows icons for Explorer, Search, Source Control, Run/Debug, and Extensions; a dot badge means there is activity in that panel
+- The Status Bar (bottom edge) shows your current Git branch on the far left and sync status (cloud icon with arrows) next to it
+- Click the split-editor icon (top right of any tab) to view two files side by side for comparison
+
+</details>
+
 ---
 
 ## 6. Path 4: GitHub Desktop
@@ -243,6 +301,35 @@ The GitHub CLI is a text-based tool running in a terminal. Screen reader users r
 
 Choose the CLI if you are comfortable in a terminal and want fast, scriptable access to GitHub features. It pairs well with VS Code's integrated terminal, giving you the best of both worlds.
 
+### Learning Cards: GitHub CLI
+
+<details>
+<summary>Screen reader users</summary>
+
+- CLI output is plain text; use `Up Arrow` to re-read previous lines or pipe output through `more` to page through long results
+- Run `gh issue list --state open` and output reads as a tab-separated table; each row is one line your screen reader can navigate
+- Use `gh pr view --web` to open the current PR directly in your browser where full ARIA landmarks are available
+
+</details>
+
+<details>
+<summary>Low vision users</summary>
+
+- Increase terminal font size in VS Code: Settings (`Ctrl+,`), search "terminal.integrated.fontSize" and set to 18-24
+- Use `gh pr diff` to view diffs in the terminal with colored additions (green) and deletions (red); if colors are hard to see, pipe through `less -R` for paginated output
+- Set your terminal theme to high contrast in VS Code's theme picker (`Ctrl+K Ctrl+T`) to improve command and output readability
+
+</details>
+
+<details>
+<summary>Sighted users</summary>
+
+- The `gh` tool uses colored output by default: green for success, red for errors, yellow for warnings
+- Run `gh repo view --web` to instantly open the current repository's GitHub page in your browser
+- Tab completion is available after running `gh completion -s powershell | Out-String | Invoke-Expression` in PowerShell
+
+</details>
+
 ---
 
 ## 8. Which Path Should I Start With?
@@ -277,6 +364,35 @@ You will likely use more than one tool during the workshop. The tools complement
 - **Automate** repetitive tasks with the GitHub CLI
 
 The workshop chapters always tell you which tool to use for each step. If a step says "open the file in your editor," use whichever editor you chose.
+
+### Learning Cards: Which Path Should I Start With?
+
+<details>
+<summary>Screen reader users</summary>
+
+- Start with GitHub.com on Day 1; its ARIA landmarks, heading hierarchy, and single-key shortcuts (`G I` for Issues, `G P` for Pull Requests) provide the most navigable experience
+- When Day 2 adds VS Code, press `Shift+Alt+F1` immediately to enable Screen Reader Optimized mode before doing anything else
+- You can switch tools mid-exercise; the workshop always tells you which tool each step targets, so look for the tool name at the start of each instruction
+
+</details>
+
+<details>
+<summary>Low vision users</summary>
+
+- GitHub.com at 150-200% zoom with a high-contrast theme is the easiest starting environment; no installation needed
+- When you add VS Code on Day 2, set both the editor zoom (`Ctrl+=`) and the font size (Settings, "editor.fontSize") independently for maximum comfort
+- GitHub Desktop's visual branch diagram uses thin colored lines; if those are hard to see, stick with VS Code's Source Control panel which uses text labels
+
+</details>
+
+<details>
+<summary>Sighted users</summary>
+
+- Start with GitHub.com to learn the layout; the repository tabs, file tree, and right-hand sidebar become familiar quickly
+- On Day 2, VS Code's split-pane layout lets you view the terminal and editor side by side, which speeds up the Git workflow
+- If you like visual branch history, GitHub Desktop draws branches as colored lines in a timeline; VS Code's Source Control panel is text-based by default
+
+</details>
 
 ---
 

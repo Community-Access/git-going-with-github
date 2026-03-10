@@ -328,6 +328,35 @@ When you navigate to an issue in the list, your screen reader will announce (in 
 - Who opened it and when ("Opened 3 days ago by username")
 - Number of comments ("5 comments")
 
+### Learning Cards: The Issues List Page
+
+<details>
+<summary>Screen reader users</summary>
+
+- Press `D` to jump to the "Search Results List" landmark, then press `3` to navigate issue titles (each is an H3 link)
+- Press `I` to move between individual list items if you want full detail per issue (number, labels, author, age)
+- After applying a filter, the issue list updates silently; press `3` again to re-navigate the updated list from the top
+
+</details>
+
+<details>
+<summary>Low vision users</summary>
+
+- Issue titles are the largest text per row and stay readable at 200%+ zoom; labels appear as small colored badges to the right of each title
+- The Open/Closed toggle links are near the top of the list; the active state is bold or underlined depending on your theme
+- If the comment count icon (speech bubble) is too small at your zoom level, hover over it for a tooltip showing the exact count
+
+</details>
+
+<details>
+<summary>Sighted users</summary>
+
+- Each issue row shows: open/closed icon (green circle = open, purple merged icon = closed), title, label badges, PR link icon, comment count, and assignee avatar
+- Click the Open/Closed tabs above the list to switch between open and closed issues; the count next to each tab updates as you filter
+- Issue labels appear as colored rounded rectangles inline with the title; hover over a label to see its description
+
+</details>
+
 
 ## Filtering and Searching Issues
 
@@ -505,6 +534,35 @@ Each comment announces:
 - A "Reply" link
 
 Other timeline events (label added, PR linked, issue closed) appear between comments in the activity stream. They are typically announced as text paragraphs.
+
+### Learning Cards: Reading an Issue
+
+<details>
+<summary>Screen reader users</summary>
+
+- Press `1` to hear the issue title, then `2` to reach "Description" and "Activity" headings, and `3` to jump between individual comments
+- Stay in Browse Mode for reading; only switch to Focus Mode (`NVDA+Space`) when you need to type in the comment box
+- Press `D` to jump to the "Add a comment" landmark at the bottom of the page to skip directly to the reply area
+
+</details>
+
+<details>
+<summary>Low vision users</summary>
+
+- The issue title is the largest text on the page, followed by an Open/Closed badge in green or purple
+- Comment blocks have a subtle border and a grey header bar showing the author's avatar and timestamp; zoom in on the header to identify commenters
+- The sidebar (Labels, Assignees, Milestone) is on the right at desktop width; at high zoom it may move below the main content
+
+</details>
+
+<details>
+<summary>Sighted users</summary>
+
+- The issue page has a two-column layout: main content on the left (description, timeline, comment box) and sidebar on the right (labels, assignees, milestone, linked PRs)
+- Each comment shows the author's avatar in the left margin, with a header bar containing their username and a relative timestamp
+- Timeline events (label changes, assignments, cross-references) appear as small lines between comments with icons indicating the event type
+
+</details>
 
 
 ## Leaving a Comment
@@ -783,6 +841,35 @@ gh issue create --template "bug_report.md"
 ```
 
 The interactive mode walks you step-by-step through title, body (opens your editor), labels, and assignees - fully usable from a terminal with a screen reader.
+
+</details>
+
+### Learning Cards: Filing a New Issue
+
+<details>
+<summary>Screen reader users</summary>
+
+- After pressing "New issue," if a template picker appears, press `3` to jump between template names; each has a "Get started" link next to it
+- In the title field, type at least 12 characters for a meaningful title; press `Tab` to move to the body field
+- Press `Ctrl+Enter` from inside the body text area to submit the issue without needing to find the Submit button
+
+</details>
+
+<details>
+<summary>Low vision users</summary>
+
+- The green "New issue" button is in the top-right of the Issues list page; at 200%+ zoom it may wrap below the search bar
+- Template cards (if the repo uses them) show truncated descriptions at high zoom; hover over them for the full text
+- The sidebar dropdowns for Labels, Assignees, and Milestone are gear icons that may be small at high zoom; they open searchable dropdown panels
+
+</details>
+
+<details>
+<summary>Sighted users</summary>
+
+- The new issue form has a Title field at the top and a large Body text area below; a formatting toolbar (bold, italic, code, etc.) appears above the body
+- The Write/Preview tabs above the body let you toggle between editing and rendered Markdown views
+- Sidebar options (Labels, Assignees, Milestone) appear to the right of the body field; click the gear icon next to each to open a dropdown
 
 </details>
 
@@ -1117,6 +1204,35 @@ The maintainer has to ask: What doesn't work? Where did you click? What browser?
 The maintainer can reproduce this in under a minute. No follow-up questions needed -- the fix can start immediately.
 
 > **Screen reader tip:** You can use the issue template feature in GitHub to pre-fill these sections automatically. If the repository provides templates, your screen reader will announce each section heading as you Tab through the form. You will set up your own issue templates in [Chapter 9](09-managing-your-project.md).
+
+### Learning Cards: Writing Effective Issues
+
+<details>
+<summary>Screen reader users</summary>
+
+- Use fenced code blocks (triple backticks) when pasting error messages or screen reader output; your screen reader announces "code block" so listeners know the text is literal, not description
+- When writing "Steps to Reproduce," type each step as a numbered Markdown list item (`1.`, `2.`, etc.) so screen readers announce "list with N items"
+- Type `#` in the comment body to trigger issue autocomplete; press `Down Arrow` to navigate matching issues and `Enter` to insert a cross-reference link
+
+</details>
+
+<details>
+<summary>Low vision users</summary>
+
+- Use the Preview tab (next to Write) to check your Markdown rendering before submitting; headings, bold text, and code blocks are much easier to proofread in rendered form
+- Screenshots with alt text are valuable evidence; add them with the image button in the formatting toolbar or drag-and-drop into the body field
+- Keep paragraphs short (3-4 sentences max) so the issue is scannable at high zoom without excessive scrolling
+
+</details>
+
+<details>
+<summary>Sighted users</summary>
+
+- A well-structured issue uses H2 headings (##) for major sections: What happened, Expected, How to reproduce, Environment
+- GitHub renders Markdown tables in issue bodies; use a table to compare expected vs. actual behavior side by side
+- The title appears in issue lists, email notifications, and search results; front-load it with the specific component or action for discoverability
+
+</details>
 
 
 ## Try It: File Your First Issue

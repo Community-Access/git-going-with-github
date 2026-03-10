@@ -283,6 +283,35 @@ gh label create "in progress" --description "Being actively worked on" --color "
 
 **Accessibility note for color:** Labels have color, but they also have a text name and description - the color is supplementary information. Screen readers announce the label name, not the color, so labels are fully accessible.
 
+### Learning Cards: Labels
+
+<details>
+<summary>Screen reader users</summary>
+
+- On the Issues list, labels are announced alongside each issue title: "Label: bug" or "Labels: accessibility, good first issue"
+- Press `L` on an open issue (Focus Mode) to open the label picker directly; type to filter, `Down Arrow` to navigate, `Enter` to select
+- When filtering issues by label, type `is:open label:accessibility` in the search bar and press `Enter`; the list updates to show only matching issues
+
+</details>
+
+<details>
+<summary>Low vision users</summary>
+
+- Labels appear as colored rounded rectangles next to issue titles in the list; in Windows High Contrast mode, labels use system border colors with readable text
+- The Label dropdown from the sidebar gear icon is searchable: type the first few letters of a label name to filter the long list
+- On the Labels management page (Issues tab, then Labels link), each label row shows its color swatch, name, and description in a table-like layout
+
+</details>
+
+<details>
+<summary>Sighted users</summary>
+
+- Labels appear as small colored pills next to issue titles in the Issues list; hover over a label to see its description in a tooltip
+- Click the gear icon next to Labels in the issue sidebar to open a searchable dropdown; a checkmark appears next to selected labels
+- The filter bar shows active label filters as text (e.g., `label:accessibility`); remove a filter by clicking the X next to it or clearing the search text
+
+</details>
+
 
 ## Milestones
 
@@ -384,6 +413,35 @@ Requires write access:
 
 Screen readers handle date pickers inconsistently - typing the date is most reliable across browsers.
 
+### Learning Cards: Milestones
+
+<details>
+<summary>Screen reader users</summary>
+
+- On the Milestones page, each milestone is an H3 heading link; it announces the title, progress ("3 of 8 issues closed"), and due date
+- Press `Enter` on a milestone heading to open it; the detail page lists all assigned issues, navigable with `3` for titles or `I` for list items
+- To assign an issue to a milestone, navigate to the sidebar "Milestone" heading (`H`), activate the gear button, then use `Up/Down Arrow` to select
+
+</details>
+
+<details>
+<summary>Low vision users</summary>
+
+- Each milestone row shows a progress bar (green fill) and a fraction like "3 / 8" next to the title; the bar is visible at any zoom level
+- The due date appears as grey text to the right of the progress bar; at high zoom it may wrap below the title
+- The due date field when creating a milestone accepts typed input in YYYY-MM-DD format, which is more reliable than using the date picker at high magnification
+
+</details>
+
+<details>
+<summary>Sighted users</summary>
+
+- Milestones are listed on the Milestones page (accessible from the Issues tab, via the "Milestones" link in the toolbar)
+- Each milestone shows a green progress bar, an issue count (e.g., "3 of 8"), an optional due date, and a description
+- When viewing an issue, the assigned milestone appears in the right sidebar; click the milestone name to see all issues in that milestone
+
+</details>
+
 
 ## Cross-References
 
@@ -425,6 +483,35 @@ The `Closes #42` keyword must appear in:
 - A **commit message** pushed to the default branch
 
 It does **not** fire from comments on the PR. If you write "Closes #42" in a comment, it creates a reference but does not auto-close the issue on merge.
+
+### Learning Cards: Cross-References
+
+<details>
+<summary>Screen reader users</summary>
+
+- Type `#` in any comment box (Focus Mode) to trigger a live-search dropdown of issues and PRs; press `Down Arrow` to navigate, `Enter` to insert the reference
+- Type `@` followed by a username to trigger user autocomplete; press `Down Arrow` and `Enter` to insert the mention
+- After a PR merges with `Closes #42` in the description, navigate to issue 42 and press `3` to find the "Closed by #XX" cross-reference comment
+
+</details>
+
+<details>
+<summary>Low vision users</summary>
+
+- Cross-reference links (`#42`, `@username`) render as blue clickable text in comments; they are distinct from surrounding text at any zoom level
+- GitHub adds automatic back-links when you reference an issue or PR; look for them as timeline events (small text between comments) on the referenced item
+- The `Closes #42` keyword in a PR description renders as a clickable link to the issue, with a small icon showing the issue's current state
+
+</details>
+
+<details>
+<summary>Sighted users</summary>
+
+- Typing `#` in a comment box opens a dropdown showing matching issues and PRs with their number, title, and open/closed state
+- Cross-references create bidirectional links: issue 42 gets a timeline event "Referenced in PR #25" and the PR shows "Closes #42" as a clickable link
+- Use `Closes #42`, `Fixes #42`, or `Resolves #42` in the PR description body (not in comments) to trigger automatic issue closure on merge
+
+</details>
 
 
 ## GitHub Projects
@@ -484,6 +571,35 @@ Or from within a project:
 1. Activate "Add item" button at the bottom of a column/table
 2. Type `#` to search for existing issues
 3. Select the issue → it's added to the project
+
+### Learning Cards: GitHub Projects
+
+<details>
+<summary>Screen reader users</summary>
+
+- In Table view, press `T` to jump to the project table, then use `Ctrl+Alt+Down Arrow` for rows and `Ctrl+Alt+Right Arrow` for columns (Title, Status, Priority, Assignee)
+- In Board view, press `D` to navigate between column landmarks (Todo, In Progress, Done), then `3` to jump between card titles within a column
+- Press `Enter` on any card or table row to open the issue/PR detail panel without leaving the project view
+
+</details>
+
+<details>
+<summary>Low vision users</summary>
+
+- Board view shows issues as cards in vertical columns (Todo, In Progress, Done); each card displays the title, assignee avatar, and labels
+- Table view is wider and has more columns; at high zoom, use horizontal scrolling to see columns like Priority and Assignee
+- The view selector button (Table/Board/Roadmap) is near the top of the project page; it uses icon buttons that have text labels on hover
+
+</details>
+
+<details>
+<summary>Sighted users</summary>
+
+- Switch between Table, Board, and Roadmap views using the view selector buttons at the top of the project page
+- Board view: drag and drop cards between columns, or click the Status field on a card to change it without dragging
+- Table view: click column headers to sort, use the "+" button to add custom fields (Priority, Estimate, etc.), and click a row to open the issue detail panel
+
+</details>
 
 
 ## Practical Organization Strategy for the Hackathon

@@ -212,6 +212,35 @@ The inbox shows notifications grouped by date (Today, Yesterday, This week, Olde
 
 Components: **repo/org** | **thread title** | **event type** | **timestamp**
 
+### Learning Cards: The Notifications Inbox
+
+<details>
+<summary>Screen reader users</summary>
+
+- Press `G N` (two sequential keys, not simultaneous) from any GitHub page to jump directly to your notifications inbox
+- Press `H` to navigate date-group headings (Today, Yesterday, This Week, Older), then `Tab` through individual notification rows within each group
+- Each notification row announces: repository name, issue/PR title, event type (mentioned, review requested, assigned), and relative timestamp
+
+</details>
+
+<details>
+<summary>Low vision users</summary>
+
+- The inbox has a three-panel layout: filters on the left, notification list in the center, and an optional detail preview on the right; at high zoom the detail pane may collapse
+- Unread notifications have a blue dot on the left edge of the row; read notifications do not, which is the primary visual distinction
+- The left sidebar filter labels (Inbox, Unread, Saved, Done) are text links that remain readable at any zoom level
+
+</details>
+
+<details>
+<summary>Sighted users</summary>
+
+- The notifications inbox at github.com/notifications shows a list of notifications grouped by date, with a filter sidebar on the left
+- Unread notifications have a blue dot indicator; click a notification row to open the issue or PR in context
+- Quick actions appear on hover: a checkmark icon to mark as done, a bookmark icon to save for later, and a mute icon to unsubscribe from the thread
+
+</details>
+
 
 ## Inbox Actions - Keyboard Shortcuts
 
@@ -328,6 +357,35 @@ If you were @mentioned in an unfamiliar thread:
 2. If it seems like a mistake, a simple "I don't think this mention was meant for me - feel free to remove it!" is enough
 3. Unsubscribe after reading if you don't need to stay in the loop
 
+### Learning Cards: Managing Notifications at Scale
+
+<details>
+<summary>Screen reader users</summary>
+
+- To mute a noisy thread from the inbox, focus the notification row with `Tab` and press `M`; you will stop receiving updates from that thread
+- Press `E` to mark a focused notification as done (archived); focus automatically moves to the next notification for rapid triage
+- To bulk-clear, Tab to the "Mark all as done" button at the top of the inbox and press `Enter`; then use the "Done" filter to retrieve anything you need later
+
+</details>
+
+<details>
+<summary>Low vision users</summary>
+
+- The "Mark all as done" button is at the top of the notification list, above the first notification group; it clears the entire inbox at once
+- After marking notifications as done, switch to the "Done" filter in the left sidebar to review archived items; this filter persists until you switch back
+- On an issue or PR page, the "Unsubscribe" button is in the right sidebar under a "Notifications" heading; it prevents future notifications from that thread
+
+</details>
+
+<details>
+<summary>Sighted users</summary>
+
+- Hover over any notification row to reveal quick-action icons: checkmark (done), bookmark (save), and mute (unsubscribe)
+- Use the "Mark all as done" button to clear the entire inbox, then revisit important items via the "Done" filter in the left sidebar
+- On an issue/PR page, the "Unsubscribe" link in the sidebar Notifications section stops notifications for that specific thread without unwatching the entire repository
+
+</details>
+
 
 ## Notification Settings - Per Your Account
 
@@ -400,6 +458,35 @@ This immediately reduces notifications from that repository to only threads you 
 | Your own fork | **All Activity** - this is your fork; know everything |
 | Very busy popular repos | **Ignore** or **Participating** - do not watch for All Activity |
 | Repos you're evaluating | **Star only** - save without subscribing |
+
+### Learning Cards: Starring vs. Watching
+
+<details>
+<summary>Screen reader users</summary>
+
+- The Star and Watch buttons are adjacent in the repository header; press `B` to navigate buttons and listen for "Star" or "Watch" (or "Unstar" / "Unwatch" if already active)
+- Star: press `Enter` on the Star button to bookmark; this generates zero notifications and is purely a bookmark to github.com/stars
+- Watch: press `Enter` on the Watch button to open a dropdown; use `Up/Down Arrow` to choose a subscription level and `Enter` to confirm
+
+</details>
+
+<details>
+<summary>Low vision users</summary>
+
+- The Star button shows a star icon and a count (e.g., "Star 1.2k"); the Watch button shows an eye icon and a count; both are in the top-right area of the repository page
+- After starring, the button changes to "Unstar" with a filled yellow star; after watching, it changes to "Unwatch" with a filled eye icon
+- At 200%+ zoom, these buttons may wrap below the repository title; they remain functional at any zoom level
+
+</details>
+
+<details>
+<summary>Sighted users</summary>
+
+- Star (star icon) = bookmark only; Watch (eye icon) = subscribe to notifications; they are next to each other and next to the Fork button in the repo header
+- Star counts are public and show on your profile; watch settings are private and affect only your notification inbox
+- If you accidentally watched a busy repo and are flooded with notifications, click Unwatch and switch to "Participating and @mentions" to reduce noise immediately
+
+</details>
 
 
 ## Screen Reader Tips for the Notification Inbox
@@ -504,6 +591,35 @@ Before you close your laptop, take two minutes to answer these questions in your
 Look at how many challenge issues you completed today. Each one represents a skill you did not just read about -- you practiced it, posted evidence, and moved on. Some workshops hand you a certificate for sitting in a chair. This one asked you to prove your skills in a live repository, and you did.
 
 If you completed all eleven challenges, you are ready for Day 2 with a strong foundation. If you missed a few, that is fine -- you can finish them at your own pace before Day 2 begins. The Learning Room stays open.
+
+### Learning Cards: What You Accomplished Today
+
+<details>
+<summary>Screen reader users</summary>
+
+- You navigated GitHub entirely by keyboard: headings (`H`), landmarks (`D`), buttons (`B`), links (`K`), and form fields (`F` or `E`) became your primary navigation tools
+- You created issues, opened PRs, resolved conflicts, and managed notifications -- all skills that transfer to any repository on GitHub
+- Revisit any chapter by pressing `Ctrl+L` in your browser and typing the URL, or by navigating to the docs folder in the Learning Room repository
+
+</details>
+
+<details>
+<summary>Low vision users</summary>
+
+- Everything you did today at your current zoom level and contrast settings will work the same way tomorrow; GitHub's layout adapts consistently to browser zoom up to 400%
+- If you found certain pages hard to read, revisit Settings, Accessibility on GitHub to try a different theme or motion preference before Day 2
+- Your profile page at github.com/your-username now shows contribution activity from today; zoom in on the contribution graph to see your green squares
+
+</details>
+
+<details>
+<summary>Sighted users</summary>
+
+- Your GitHub profile now shows contribution activity from today: issues created, PRs opened, and commits made appear as green squares on your contribution graph
+- Every skill from today (issues, PRs, reviews, labels, notifications) is used daily by professional developers; you practiced the real workflow, not a simplified version
+- Bookmark your Learning Room repository and the notifications page (github.com/notifications) for quick access on Day 2
+
+</details>
 
 
 ## What Day 2 Adds

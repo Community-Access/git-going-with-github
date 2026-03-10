@@ -70,6 +70,35 @@ Throughout Day 1, you work on **two parallel learning tracks**:
 | 4 | Mona verifies your step | Human peer reviewer approves |
 | 5 | Next step unlocked | Ready to merge |
 
+### Learning Cards: Two Tracks, One Repository
+
+<details>
+<summary>Screen reader users</summary>
+
+- GitHub Skills modules run in your personal account; press `G I` from any Skills repo to see the issue thread where Mona posts instructions
+- The Learning Room is at a different URL; bookmark both repos and use `Alt+D` (address bar) to confirm which one you are in
+- Mona's bot comments in Skills modules appear as issue comments; press `3` to jump between them in the discussion thread
+
+</details>
+
+<details>
+<summary>Low vision users</summary>
+
+- GitHub Skills repos have a distinct green banner at the top of the README that says "Start course"; the Learning Room has no such banner
+- Check the repository name in the top-left header to confirm which track you are working in (Skills repo vs. learning-room)
+- Mona's avatar (the GitHub octocat logo) appears next to bot comments; your human reviewer's avatar appears next to peer review comments in the Learning Room
+
+</details>
+
+<details>
+<summary>Sighted users</summary>
+
+- Skills modules appear as separate repos under your account page (github.com/your-username); the Learning Room appears under the organization (github.com/Community-Access/learning-room)
+- Mona's comments in Skills modules have a distinct grey bot badge next to the username
+- Keep both repos open in separate browser tabs so you can switch between tracks during the workshop
+
+</details>
+
 
 ## Learning Room Folder Structure
 
@@ -137,6 +166,35 @@ When you join the workshop, the facilitator creates a **personal practice branch
 > | Chapter 11+ (Local Git) | Yes | Use your `username-practice` branch or create `fix/yourname-issueXX` branches from `main`. |
 >
 > **Summary:** Chapter 4 needs no branch. Chapters 6-7 use short-lived `fix/` branches. Your `username-practice` branch becomes essential starting in Chapter 11 when you work locally with Git and VS Code.
+
+### Learning Cards: Your Practice Branch
+
+<details>
+<summary>Screen reader users</summary>
+
+- To switch branches on GitHub.com, press `W` (in Focus Mode) to open the branch selector, type your username, and press `Enter` when your branch appears
+- In VS Code's terminal, type `git checkout username-practice` (replacing "username" with your GitHub username in lowercase)
+- Press `Ctrl+Shift+G` in VS Code to open Source Control; the current branch name is announced at the top of the panel
+
+</details>
+
+<details>
+<summary>Low vision users</summary>
+
+- The branch selector button shows the current branch name (e.g., "main") above the file table; click it and type your username to filter to your practice branch
+- After switching branches, the branch name updates in the selector button; verify it reads your username, not "main"
+- In VS Code, the current branch name appears in the bottom-left corner of the Status Bar in small text; zoom in or check Source Control panel header for a larger display
+
+</details>
+
+<details>
+<summary>Sighted users</summary>
+
+- The branch selector is the dropdown button above the file table showing the current branch name with a down-arrow icon
+- Your practice branch follows the pattern `username-practice` (all lowercase); type your username in the dropdown search to find it quickly
+- In VS Code, the current branch is shown in the bottom-left of the Status Bar; click it to switch branches via a dropdown
+
+</details>
 
 
 ## The Practice Files: What You Will Work On
@@ -335,6 +393,35 @@ Seven group exercises for study groups, ranging from a Documentation Sprint (div
 - All students see the merged PR
 - Achievement comment is public
 - Progress reflected in Learning Paths documentation
+
+### Learning Cards: How PR Sharing Works
+
+<details>
+<summary>Screen reader users</summary>
+
+- When a bot comment appears on your PR, press `3` on the Conversation tab to jump between comment headers; bot comments include the bot's username in the heading
+- To find your assigned reviewer, press `D` to reach the sidebar landmark, then `H` until you hear "Reviewers" -- your reviewer's username follows
+- When you receive a "review requested" notification, press `G N` from any GitHub page to go to Notifications and find the review request
+
+</details>
+
+<details>
+<summary>Low vision users</summary>
+
+- Bot comments are visually indented and often have a colored banner (green for pass, yellow for warnings); zoom in on the banner text for the summary
+- The Reviewers section in the PR sidebar shows a small avatar and username; at high zoom avatars may overlap -- read the text username instead
+- Merge button turns green when all required checks pass and the reviewer approves; it appears at the bottom of the Conversation tab
+
+</details>
+
+<details>
+<summary>Sighted users</summary>
+
+- Bot comments appear in the PR timeline with a small "bot" badge next to the commenter's name
+- The green "Merge pull request" button appears at the bottom of the Conversation tab once all checks pass and the reviewer approves
+- The PR sidebar (right side) shows Reviewers, Assignees, Labels, and Linked Issues; each section has its own heading
+
+</details>
 
 
 ## What All Students See
@@ -598,6 +685,35 @@ Files Changed Tab (what actually changed):
 6. Push your fixes to the same branch
 7. Comment: "Updates pushed, ready for review"
 ```
+
+</details>
+
+### Learning Cards: Tips for PR Sharing
+
+<details>
+<summary>Screen reader users</summary>
+
+- To find PRs assigned to you for review, navigate to Pull Requests tab and type `review-requested:@me` in the filter field; press `Enter` to apply
+- On the Files Changed tab, press `3` to jump between file headings in the diff; press `Tab` to navigate to inline comment buttons
+- When leaving a review, press `Tab` from the comment box to reach the "Review Changes" button; the review type selector uses radio buttons navigable with `Arrow` keys
+
+</details>
+
+<details>
+<summary>Low vision users</summary>
+
+- In the Files Changed tab, additions are highlighted in green and deletions in red; use a high-contrast theme if these colors are hard to distinguish
+- Inline review comments appear as small text boxes embedded in the diff; at high zoom they may be narrow -- resize the browser window wider if text wraps awkwardly
+- The "Submit review" button changes appearance based on your selected review type; "Approve" shows a green icon, "Request changes" shows a red icon
+
+</details>
+
+<details>
+<summary>Sighted users</summary>
+
+- The review filter `review-requested:@me` in the Pull Requests tab filters to only PRs waiting for your review
+- On the Files Changed tab, click the "+" icon that appears when you hover over a line number to leave an inline comment at that exact line
+- The "Review Changes" button (top-right of Files Changed tab) opens a dropdown with three radio options: Comment, Approve, or Request Changes
 
 </details>
 

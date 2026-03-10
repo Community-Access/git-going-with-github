@@ -72,6 +72,35 @@ When you are inside a repository, a second navigation bar appears below the glob
 
 **Screen reader landmark:** This is labeled **"Repository navigation"**. Press `D` to jump to it directly.
 
+### Learning Cards: What Is Always on Every GitHub Page
+
+<details>
+<summary>Screen reader users</summary>
+
+- Press `D` to cycle landmarks; the first landmark on every page is "Navigation Menu" -- this is your fixed anchor point
+- Press `G` then `N` (two keystrokes in sequence) to jump directly to Notifications from any GitHub page
+- The global search field is reachable with `S` or `/`; after searching, results load into the Main landmark -- press `D` to jump there
+
+</details>
+
+<details>
+<summary>Low vision users</summary>
+
+- The global navigation bar is pinned to the top of every page; at 200%+ zoom it may shrink icons but keeps all items in a single row
+- The notification bell shows an unread count as a blue dot (or a number badge); zoom in on the top-right corner to see it clearly
+- Repository tabs below the global bar highlight the active tab with a colored underline; switch to a high-contrast theme if the underline is hard to see
+
+</details>
+
+<details>
+<summary>Sighted users</summary>
+
+- The global nav bar runs across the top: GitHub logo (left), search bar (center), and profile avatar/bell icon (right)
+- Inside a repository, a second row of tabs (Code, Issues, Pull requests, etc.) appears below the global bar; the active tab has a bold underline
+- The notification bell icon in the top-right shows a blue dot when you have unread notifications
+
+</details>
+
 
 ## 3. How to Tell Where You Are
 
@@ -191,6 +220,35 @@ Your personal home (`github.com`) shows activity from repositories you follow. Y
 - Pinned repositories
 - A list of your recent public activity
 
+### Learning Cards: The Five Key Page Types
+
+<details>
+<summary>Screen reader users</summary>
+
+- On the Repository Home page, press `T` to jump to the file table, then `Ctrl+Alt+Down Arrow` to walk through files row by row
+- On an Issue Detail page, press `3` to jump between H3 comment headers; each announces the author and timestamp
+- On the PR Files Changed tab, press `3` to jump between file name headings; press `4` to jump between diff hunk headers inside each file
+
+</details>
+
+<details>
+<summary>Low vision users</summary>
+
+- On the Repository Home page, the file tree uses alternating row shading; enable a high-contrast theme if rows blend together
+- Issue labels appear as small colored badges next to each title in the Issues list; zoom to 150%+ so the label text is readable
+- On the PR Files Changed tab, additions are shaded green and deletions are shaded red; high-contrast themes use bolder shading
+
+</details>
+
+<details>
+<summary>Sighted users</summary>
+
+- The Repository Home page has a two-column layout: file tree on the left, About sidebar on the right, and README rendered below both
+- The Issues list shows a green "Open" or red "Closed" icon next to each issue title, plus label badges and comment count icons
+- Pull request tabs (Conversation, Commits, Files changed) appear as a horizontal bar just below the PR title
+
+</details>
+
 
 ## 5. Visual Map of a Repository Page
 
@@ -274,6 +332,35 @@ After these three steps, you know:
 From there, navigate with purpose: `VO+U → Landmarks` to jump to regions, Quick Nav `H` to jump to content headings, Quick Nav `K` for links, Quick Nav `B` for buttons.
 
 > **VoiceOver tip:** `VO` = `Control+Option`. Turn Quick Nav on/off by pressing `Left Arrow + Right Arrow` simultaneously. Quick Nav lets you use single keys (`H`, `B`, `K`, `T`) without holding `VO`, matching the feel of NVDA/JAWS browse mode.
+
+</details>
+
+### Learning Cards: Screen Reader Orientation Sequence
+
+<details>
+<summary>Screen reader users</summary>
+
+- Make the three-step sequence automatic: `1` (hear H1), `D D D` (hear landmarks), `NVDA+F7` or `Insert+F3` (see headings list)
+- VoiceOver users: `VO+U` then arrow to "Landmarks" replaces the `D` key; `VO+U` then arrow to "Headings" replaces `NVDA+F7`
+- If pressing `1` reads something unexpected, you may be inside a modal or dialog; press `Escape` first, then try `1` again
+
+</details>
+
+<details>
+<summary>Low vision users</summary>
+
+- Use the browser tab title as a quick orientation check without scrolling; it always shows the page type and repository context
+- Press `Alt+D` (Windows) or `Cmd+L` (macOS) to jump to the address bar and read the URL for exact location context
+- When disoriented, press `Home` to scroll to the top of the page where the repository name and tabs are always visible
+
+</details>
+
+<details>
+<summary>Sighted users</summary>
+
+- The H1 heading is visually the largest text near the top of the page, just below the repository tabs
+- Landmarks correspond to visual regions you can already see: nav bar at top, tabs below it, main content area, and comment box at bottom
+- The Elements List (NVDA+F7) is also useful for sighted users to get a structured outline of any complex page quickly
 
 </details>
 
@@ -387,6 +474,35 @@ H1: PR title
 
 > **Why this matters:** Pressing `3` on a PR Files Changed tab jumps between file headings - this is how you quickly navigate to a specific file without tabbing through the entire diff.
 
+### Learning Cards: GitHub's Heading Hierarchy
+
+<details>
+<summary>Screen reader users</summary>
+
+- Press `1` for H1 (page identity), `2` for H2 (major sections), `3` for H3 (individual items like comments, files, or issues)
+- On the PR Files Changed tab, `3` jumps between file headings and `4` jumps between diff hunks within each file
+- Open the heading list (`NVDA+F7` or `Insert+F3`) and use it as a table of contents to jump directly to any section
+
+</details>
+
+<details>
+<summary>Low vision users</summary>
+
+- H1 headings on GitHub are displayed in large bold text near the top center of the page; H2 headings use slightly smaller bold text with a horizontal rule above them
+- Issue comments (H3) each have a header bar with the author's avatar, name, and timestamp; zoom in on this bar to orient yourself in long discussions
+- On the Files Changed tab, each file heading (H3) shows the file path in monospace text with a green/red summary of lines added/removed
+
+</details>
+
+<details>
+<summary>Sighted users</summary>
+
+- GitHub's heading hierarchy maps to visual size: H1 is the page title, H2 are section dividers, H3 are individual items within sections
+- In the Issues list, issue titles function as H3 headings; scan visually or use `3` to jump between them
+- On PR conversations, review comments appear in indented boxes; each box header corresponds to an H3 or H4 heading
+
+</details>
+
 
 ## 9. How GitHub's Layout Changes by Viewport
 
@@ -453,6 +569,35 @@ When you get disoriented:
 3. Press `NVDA+F7` - see the full outline - know what's in the room
 
 You are never lost. You always have these three fallbacks.
+
+### Learning Cards: Building Your Internal Map
+
+<details>
+<summary>Screen reader users</summary>
+
+- Memorize the elevator shortcuts: `G I` (Issues), `G P` (Pull Requests), `G C` (Code), `G A` (Actions); press `?` on any page to see the full list
+- The "Add a comment" landmark is always at the bottom of Issue and PR Conversation pages; press `D` repeatedly until you hear it to jump directly to the reply box
+- If a page feels unfamiliar, fall back to the three-step sequence: `1`, `D`, `NVDA+F7` and you will re-orient within seconds
+
+</details>
+
+<details>
+<summary>Low vision users</summary>
+
+- Think of GitHub like a building: the top bar (lobby) never changes, the tabs below it (floor selector) change per repo, and the main area (room) changes per page
+- When disoriented at high zoom, press `Home` to return to the top of the page where the navigation bar and repo tabs are always visible
+- The comment box ("mailbox") at the bottom of issue and PR pages has a distinct white input area with a green "Comment" button on its right
+
+</details>
+
+<details>
+<summary>Sighted users</summary>
+
+- The mental map is: top bar (always there), repo tabs (one row below), then main content; every GitHub page follows this three-layer stack
+- Press `?` on any page to see a popup listing all keyboard shortcuts available on that specific page
+- The comment box at the bottom of issues and PRs has a tabbed interface (Write/Preview) and a green Submit button; it is always the last section on the page
+
+</details>
 
 
 ## Try It: The 60-Second Orientation
