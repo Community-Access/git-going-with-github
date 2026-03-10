@@ -37,6 +37,35 @@ Type your query → Enter
 → Results page opens, grouped by type (Code, Issues, PRs, Repositories, etc.)
 ```
 
+### Learning Cards: The Search Interface
+
+<details>
+<summary>Screen reader users</summary>
+
+- Press `/` on any GitHub page to jump straight to the global search bar — no Tab hunting required
+- After pressing Enter on a query, results are grouped by type under headings (Code, Issues, PRs, Repositories) — use `H` to jump between groups
+- Query syntax typed directly in the search bar is often faster and more accessible than the Advanced Search form at github.com/search/advanced
+
+</details>
+
+<details>
+<summary>Low vision users</summary>
+
+- The search bar sits at the very top of every GitHub page — if you lose it at high zoom, press `/` to refocus instantly
+- Search results use bold text for matched terms — increase browser zoom to make the highlighted keywords easier to spot
+- Pin the Advanced Search page (github.com/search/advanced) as a bookmark for days when you prefer large labeled form fields over compact query syntax
+
+</details>
+
+<details>
+<summary>Sighted users</summary>
+
+- Look for the search bar in the top navigation bar — it shows a `/` hint icon on the right to remind you of the keyboard shortcut
+- After submitting a query, use the left sidebar type filters (Code, Issues, PRs, etc.) to narrow results visually
+- GitHub highlights matched keywords in yellow within search results — scan for those highlights to evaluate relevance quickly
+
+</details>
+
 
 ## 2. Search Scopes
 
@@ -151,6 +180,35 @@ is:issue is:open author:@me
 ```text
 is:issue is:open repo:owner/name updated:<2024-08-01
 ```
+
+### Learning Cards: Searching Issues and Pull Requests
+
+<details>
+<summary>Screen reader users</summary>
+
+- The `is:pr is:open review-requested:@me` query is your daily go-to — it lists every PR waiting for your review without navigating the Pulls tab
+- Combine `assignee:@me` with `is:open` to get your personal task list announced as a simple results list
+- Use `in:title` or `in:body` qualifiers to avoid noisy matches buried in long comment threads
+
+</details>
+
+<details>
+<summary>Low vision users</summary>
+
+- Bookmark the URL after running a search — the full query is encoded in the address bar so you can reuse it without retyping
+- The Issues search page (github.com/issues) pre-scopes to your repos — at high zoom this single-column list is easier to scan than a full global search
+- Results show labels as colored badges next to each title — zoom in or hover to read the label text if the color alone is hard to distinguish
+
+</details>
+
+<details>
+<summary>Sighted users</summary>
+
+- The left sidebar on the search results page lets you toggle between Issues and PRs with one click — use it to refine without editing your query
+- Look for the green (open), purple (merged), or red (closed) state icons next to each result for quick visual triage
+- Star or bookmark the "good first issue" query from Section 4 — it is the fastest way to find your next contribution
+
+</details>
 
 
 ## 5. Searching Code

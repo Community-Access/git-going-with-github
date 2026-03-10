@@ -45,6 +45,35 @@ Tab navigation → secondary nav region → "Security" link → Enter
 Or: G then S (GitHub keyboard shortcut - enable Focus Mode first)
 ```
 
+### Learning Cards: The Security Tab
+
+<details>
+<summary>Screen reader users</summary>
+
+- Use G then S (GitHub keyboard shortcut) to jump directly to the Security tab from any repo page — much faster than Tab-navigating the full nav bar
+- The Security tab content varies by your access level — public viewers see only the security policy and vulnerability reporting form; contributors with write access see alerts
+- Dependabot alerts, secret scanning alerts, and code scanning alerts are each a separate link inside the Security tab — use K to navigate between them
+
+</details>
+
+<details>
+<summary>Low vision users</summary>
+
+- The Security tab link sits in the repository's top navigation bar alongside Code, Issues, PRs, and Actions — zoom in if the tab labels are small
+- Alert severity badges (Critical, High, Medium, Low) use colored labels — each badge also includes the severity word, so color is not the only indicator
+- If the Security tab shows "No alerts," that is good news — look for the green shield icon next to the tab name as confirmation
+
+</details>
+
+<details>
+<summary>Sighted users</summary>
+
+- Find the Security tab in the repository navigation bar — it shows a shield icon and may display a count badge if alerts exist
+- Inside the Security tab, the left sidebar lists Dependabot, Secret scanning, and Code scanning as separate pages — click each to see its alert list
+- A green shield on the repo home page (or no security count badge) means zero open security alerts
+
+</details>
+
 
 ## 2. Dependabot - Automated Dependency Updates
 
@@ -155,6 +184,35 @@ const token = process.env.GITHUB_TOKEN;
 For public repositories, GitHub scans all existing commits and creates alerts for any detected secrets. These appear in Security → Secret scanning.
 
 **Priority action:** If you find a secret scanning alert in a project you contribute to - especially a token or API key - treat it as urgent. The credential may have been exposed for a long time.
+
+### Learning Cards: Secret Scanning
+
+<details>
+<summary>Screen reader users</summary>
+
+- If your `git push` is blocked with "GH013: Repository rule violations found," the terminal output lists the exact file, line number, and secret type — read the error lines carefully
+- After removing the secret from your code, use environment variables instead (`process.env.GITHUB_TOKEN`) — your screen reader will confirm the variable name in the code
+- Secret scanning alerts appear under Security tab, Secret scanning — navigate with T to reach the alert table, then arrow keys to read each row
+
+</details>
+
+<details>
+<summary>Low vision users</summary>
+
+- Push Protection error messages appear in your terminal with red text — increase terminal font size to read the file path, line number, and secret type clearly
+- The secret scanning alert list in the Security tab uses a table layout — zoom in to read the Secret type and Location columns
+- Environment variable names in code (like `process.env.GITHUB_TOKEN`) are easier to spot when syntax highlighting is enabled in your editor theme
+
+</details>
+
+<details>
+<summary>Sighted users</summary>
+
+- Push Protection errors show a red banner in your terminal with the exact commit, file, and line containing the secret — look for the "secret:" label
+- In the Security tab, secret scanning alerts are listed with a yellow or red severity icon — click any alert to see the exposed credential's location and revocation status
+- The code examples in this section show the BAD vs. GOOD pattern — never hardcode tokens; always use environment variables as shown
+
+</details>
 
 
 ## 4. Code Scanning and CodeQL

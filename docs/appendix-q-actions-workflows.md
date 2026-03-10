@@ -32,6 +32,35 @@ Think of it as a robot assistant that every repository can optionally configure.
 
 **As a contributor, you do not need to write workflows.** But you will see their results on nearly every pull request you open, and you need to understand what those results mean.
 
+### Learning Cards: What Is GitHub Actions
+
+<details>
+<summary>Screen reader users</summary>
+
+- Workflow files live in `.github/workflows/` — use T (Go to file) on any repo page to search for `.yml` files in that directory
+- The Actions tab is in the repository navigation landmark — press D (NVDA/JAWS) to jump between landmarks and find it
+- You do not need to write YAML to contribute — your job is to read the status check results on your PR and fix any issues they flag
+
+</details>
+
+<details>
+<summary>Low vision users</summary>
+
+- The Actions tab icon (a play-button triangle) sits in the repo's top navigation bar — zoom in if the icon-only display is hard to read; the word "Actions" appears next to it
+- Workflow YAML files use indentation-sensitive syntax — increase your editor font size and enable visible whitespace to distinguish nesting levels
+- Status check results on your PR use small colored icons (green checkmark, red X, yellow spinner) — zoom to 150%+ to read the text labels beside them
+
+</details>
+
+<details>
+<summary>Sighted users</summary>
+
+- Find the Actions tab in the repository's top navigation bar between Projects and Security — a play-button icon marks it
+- Workflow files are YAML files in `.github/workflows/` — open any one in the Code tab to see the triggers (`on:`) and job steps
+- On your PR, scroll to the checks section near the merge box to see green checkmarks (passed), red X marks (failed), or yellow spinners (running)
+
+</details>
+
 
 ## 2. Key Vocabulary
 
@@ -159,6 +188,35 @@ When you open a pull request on a repo that uses GitHub Actions, you will see a 
 - **Required checks** must pass before a PR can be merged. A maintainer configures which checks are required in Branch Protection Rules.
 - **Non-required checks** are informational - a failure shown in grey/yellow usually won't block a merge.
 - If you're not sure whether a check is required, look for the phrase **"Required"** next to the check name.
+
+### Learning Cards: Understanding Status Checks
+
+<details>
+<summary>Screen reader users</summary>
+
+- Status checks live near the bottom of the PR Conversation tab — press H or 2 to jump to the checks section heading, then arrow down through each result
+- Each check is announced with its name and status ("CI / test — passed" or "lint — failed") — press Enter on a failing check to open its details
+- The word "Required" appears after required checks — listen for it to distinguish must-pass checks from informational ones
+
+</details>
+
+<details>
+<summary>Low vision users</summary>
+
+- Status icons use green (passed), red (failed), yellow (running), and grey (skipped) — each icon also has a text label, so color is not the only indicator
+- At high zoom levels, the checks section may appear below the fold — scroll past the PR description and comments to find it above the merge button
+- Click "Details" next to any check to open the full log — the log page uses monospace text, so increase font size for readability
+
+</details>
+
+<details>
+<summary>Sighted users</summary>
+
+- Look for the checks section between the last comment and the merge button on the PR page — it shows a vertical list of check names with colored status icons
+- Green checkmark = passed, red X = failed, yellow spinner = running, grey slash = skipped — scan for red X items first
+- "Required" checks have a label badge — these must all pass before the merge button turns green
+
+</details>
 
 
 ## 7. Reading the Actions Tab with a Screen Reader
@@ -314,7 +372,34 @@ It is completely acceptable to comment on your PR:
 > "The CI check is failing on [step name]. I've read the error log and I'm not sure how to fix [specific issue]. Could a maintainer point me in the right direction?"
 
 Asking for help is not weakness. It is collaboration.
+### Learning Cards: What To Do When a Check Fails
 
+<details>
+<summary>Screen reader users</summary>
+
+- From the failing check's Details link, the log page has a sidebar listing job steps — the failed step has focus or is announced as "failed"; expand it to read the error
+- Use your screen reader's find command (NVDA+Ctrl+F, JAWS: Insert+F) to search the log for "Error:" or "FAILED" — this skips hundreds of passing log lines
+- After pushing a fix, return to the PR page — checks re-run automatically and the status updates from red X to yellow spinner to green checkmark
+
+</details>
+
+<details>
+<summary>Low vision users</summary>
+
+- CI log pages can be very long with small monospace text — use Ctrl+F in your browser to search for "Error" or "FAIL" rather than scrolling through everything
+- The failing step is marked with a red X icon in the left sidebar of the log page — zoom in to identify it, then click to expand only that step
+- If you cannot read the log comfortably, copy the error text and paste it into your editor at a larger font size
+
+</details>
+
+<details>
+<summary>Sighted users</summary>
+
+- On the workflow run page, the left sidebar shows all job steps — the failing step has a red X icon; click it to jump directly to the error output
+- Error messages are usually highlighted in red within the log output — scan for red text and the phrases "Error:", "FAILED", or "exit code 1"
+- After pushing a fix, watch for the yellow spinner on the PR page to confirm that checks are re-running
+
+</details>
 
 ## 10. Workflow Permissions and Security
 

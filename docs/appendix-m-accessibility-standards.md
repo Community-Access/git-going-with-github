@@ -34,6 +34,35 @@ WCAG (Web Content Accessibility Guidelines) is organized around four principles,
 
 Every WCAG success criterion belongs to one of these four principles.
 
+### Learning Cards: WCAG Overview
+
+<details>
+<summary>Screen reader users</summary>
+
+- WCAG is organized around four principles: Perceivable, Operable, Understandable, Robust (POUR) — use this mnemonic when reviewing any PR
+- Most projects target WCAG 2.2 AA — when a reviewer cites a criterion number like 1.4.3, search the tables in Section 3 of this appendix
+- The WCAG Quick Reference (Section 10) is a filterable web page — use your screen reader's find command to jump to any criterion number
+
+</details>
+
+<details>
+<summary>Low vision users</summary>
+
+- The tables in this appendix use pipe-delimited Markdown — increase your editor font size or use a Markdown preview for cleaner column alignment
+- WCAG 1.4.3 (contrast) and 1.4.11 (non-text contrast) are the criteria most relevant to your daily experience — bookmark them
+- When checking contrast ratios, use the WebAIM Contrast Checker link in Section 10 with your browser zoom set to your preferred level
+
+</details>
+
+<details>
+<summary>Sighted users</summary>
+
+- The POUR table in this section is your one-glance cheat sheet — scan the Example Failure column to see what each principle looks like when violated
+- Conformance level badges (A, AA, AAA) appear in the Level column of the Section 3 tables — AA rows are your primary targets
+- Bookmark the ARIA Authoring Practices Guide link in Section 10 for live interactive pattern demos
+
+</details>
+
 
 ## 2. Conformance Levels: A, AA, AAA
 
@@ -228,6 +257,35 @@ Documentation in Markdown is converted to HTML. Accessible Markdown:
 3. **200% zoom** - does content reflow without horizontal scrolling?
 4. **High contrast mode** - Windows High Contrast or macOS Increase Contrast; are all elements still visible?
 5. **Disable CSS** - does the content still make sense in reading order?
+
+### Learning Cards: Testing Against Standards
+
+<details>
+<summary>Screen reader users</summary>
+
+- You are the manual test — automated tools catch only 30-40% of issues; your screen reader walkthrough catches the rest
+- Install the axe DevTools browser extension (Section 8 table) and run it on any page; results are announced as a list of violations with WCAG criterion references
+- When doing a keyboard-only navigation test, press Tab repeatedly and listen — every interactive element should announce its name and role
+
+</details>
+
+<details>
+<summary>Low vision users</summary>
+
+- The 200% zoom test (item 3) mirrors your daily experience — if content breaks at 200%, file a bug citing WCAG 1.4.4 Resize Text
+- Windows High Contrast mode test (item 4) is one click: Settings, Accessibility, Contrast themes — switch and check that all UI elements remain visible
+- The WAVE browser extension overlays icons on the page showing errors and warnings — zoom in to read the small annotation labels
+
+</details>
+
+<details>
+<summary>Sighted users</summary>
+
+- The Lighthouse accessibility audit (Chrome DevTools, Ctrl+Shift+I, Lighthouse tab) gives a 0-100 score — aim for 90+ on any page you contribute to
+- For the keyboard-only test, unplug your mouse and try completing every action — watch for the blue focus ring moving logically through the page
+- The automated vs. manual split (30-40% / 60-70%) means green CI checks do not guarantee accessibility — always pair tool output with a quick manual review
+
+</details>
 
 
 ## 9. Quick Reference: What to Check in a PR

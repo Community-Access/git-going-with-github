@@ -109,6 +109,35 @@ K → Navigate links (download assets, compare, tag links)
 ↓ → Read release notes
 ```
 
+### Learning Cards: Navigating Releases
+
+<details>
+<summary>Screen reader users</summary>
+
+- On the repository home page, press H or 3 to find the "Releases" heading in the right sidebar, then K to the version link — Enter opens the latest release directly
+- On the Releases list page, each release is a heading — use 2 or 3 to jump between releases and arrow down to read the notes inline
+- The "Latest" badge appears next to the most recent stable release — listen for it to distinguish stable releases from pre-releases or older versions
+
+</details>
+
+<details>
+<summary>Low vision users</summary>
+
+- The Releases link on the repo home page sits in the right sidebar — at high zoom the sidebar may collapse below the main content; scroll down to find it
+- Release notes use Markdown headings (Breaking Changes, New Features, Bug Fixes) — zoom in and scan the bold section labels for quick triage
+- The green "Latest" badge next to the newest stable release is small — zoom to 150%+ to spot it among the release list entries
+
+</details>
+
+<details>
+<summary>Sighted users</summary>
+
+- On the repository home page, look at the right sidebar for the Releases section showing the latest version number and a link to all releases
+- On the Releases list page, each release card shows a title, date, tag, and a "Latest" badge on the most recent stable version
+- Scroll through release notes to see categorized change lists — look for the "Full Changelog" link at the bottom to see every merged PR between two versions
+
+</details>
+
 
 ## 4. Understanding Version Numbers
 
@@ -300,6 +329,35 @@ T → navigate the repository tab bar
 3 → Individual PR/issue title links within each section
 K → Navigate all links
 ```
+
+### Learning Cards: Pulse (Recent Activity Summary)
+
+<details>
+<summary>Screen reader users</summary>
+
+- Pulse is the Insights landing page — after entering the Insights tab, you land here; use 2 to jump between section headings (Merged PRs, Opened Issues, etc.)
+- Each section lists linked PR or issue titles — press 3 to jump between individual items, or K to navigate the links directly
+- Use the time period selector (last 24 hours, 7 days, 30 days) at the top to scope the summary — Tab to it and select with arrow keys
+
+</details>
+
+<details>
+<summary>Low vision users</summary>
+
+- Pulse displays activity counts in large numbers at the top of the page — zoom in to read the open/closed/merged totals
+- The merged PR and opened issue lists below the summary use standard link formatting — increase font size to scan titles comfortably
+- The time period toggle (24h, 7d, 30d) sits near the top — it can be small at default zoom; look for the underlined active period indicator
+
+</details>
+
+<details>
+<summary>Sighted users</summary>
+
+- Pulse shows a dashboard-style summary at the top with counts for issues opened/closed and PRs opened/merged/closed in the chosen time period
+- Below the summary, merged PRs and proposed PRs are listed as clickable links — scan titles to see recent activity at a glance
+- Use the time period selector (24 hours, 7 days, 30 days) at the top right to adjust the window — 7 days is the default and most useful for weekly check-ins
+
+</details>
 
 
 ## 12. Contributors - Who Builds the Project

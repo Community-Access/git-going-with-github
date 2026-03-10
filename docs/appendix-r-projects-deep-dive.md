@@ -74,6 +74,35 @@ Projects can be created at the **organization level** (shared across all repos i
 5. You land on the new empty project
 ```
 
+### Learning Cards: Creating a Project
+
+<details>
+<summary>Screen reader users</summary>
+
+- The "New project" button is on the Projects tab of any org or repo page — Tab to it and press Enter to open the template modal
+- Template cards in the modal are navigable with arrow keys — each template announces its name and description; press Enter on your choice
+- After creation, you land on an empty project — Tab to the "+ Add item" button at the bottom to start adding issues
+
+</details>
+
+<details>
+<summary>Low vision users</summary>
+
+- The green "New project" button on the Projects tab is high-contrast and easy to spot even at high zoom
+- Template cards in the creation modal are displayed as a grid — zoom in to read the titles and descriptions before selecting one
+- After the project is created, the empty Table view has a "+ Add item" row at the bottom — it can scroll off screen at high zoom, so scroll down to find it
+
+</details>
+
+<details>
+<summary>Sighted users</summary>
+
+- Navigate to the Projects tab on your org or repo page and click the green "New project" button in the upper right
+- The template picker shows visual cards for common project types (blank table, blank board, feature release) — hover to preview each layout
+- After creating, you land on an empty project with a prominent "+ Add item" prompt at the bottom of the table or board
+
+</details>
+
 
 ## 3. The Three Layouts in Depth
 
@@ -138,6 +167,35 @@ A horizontal timeline. Items appear as bars spanning their start/due dates. Iter
 
 - Add a **Date** custom field (e.g., "Start Date", "Due Date") or use a **Milestone** field
 - Items without dates appear in the ungrouped section
+
+### Learning Cards: The Three Layouts
+
+<details>
+<summary>Screen reader users</summary>
+
+- Table view is the most accessible layout — navigate with arrow keys (up/down for rows, left/right for columns) and press Enter to open an item's detail panel
+- Board view drag-and-drop is not keyboard accessible — change a card's column by opening it (Enter), navigating to the Status field, and selecting a new value from the dropdown
+- Roadmap view is chart-based and not directly readable — use Table view for all data access and editing, then switch to Roadmap only for visual context if needed
+
+</details>
+
+<details>
+<summary>Low vision users</summary>
+
+- Table view works best at high zoom because it is a standard grid — Board view columns can overflow horizontally and require scrolling
+- Board view cards show title, labels, and assignee — zoom in on individual cards to read the small label badges and avatar icons
+- Roadmap view uses horizontal bars on a calendar timeline — the bars can be narrow at default zoom; increase zoom or switch to Table for the same date data in text form
+
+</details>
+
+<details>
+<summary>Sighted users</summary>
+
+- Switch between layouts using the view tabs at the top of the project — Table (grid icon), Board (columns icon), and Roadmap (timeline icon)
+- Board view shows Kanban columns — drag cards between columns to change status, or click a card to open its detail panel
+- Roadmap view displays items as horizontal bars on a calendar — look for the date fields (Start Date, Due Date) to position items on the timeline
+
+</details>
 
 
 ## 4. Custom Fields

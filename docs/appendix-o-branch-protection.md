@@ -31,6 +31,35 @@ A **branch protection rule** is a set of requirements that must be satisfied bef
 
 Think of branch protection as the quality gate for a repository's primary branch.
 
+### Learning Cards: What Branch Protection Does
+
+<details>
+<summary>Screen reader users</summary>
+
+- The merge box at the bottom of every PR page is where branch protection surfaces its requirements — press End to jump to the bottom, then use H to find the merge heading
+- Each requirement is announced as a status line: "1 review required," "Some checks haven't completed yet," etc. — listen for these before attempting to merge
+- If the Merge button says "disabled" or "grayed out," branch protection is blocking — the status lines immediately above explain exactly what is needed
+
+</details>
+
+<details>
+<summary>Low vision users</summary>
+
+- The merge box uses green (ready), yellow (pending), and red (blocked) indicators — zoom in on the merge area to read the text labels next to each colored icon
+- The "Update branch" button appears as a secondary button above the merge button when your PR is behind main — it can be easy to miss at high zoom
+- Required checks show checkmark or X icons that are small at default size — browser zoom to 150%+ makes the pass/fail status easier to distinguish
+
+</details>
+
+<details>
+<summary>Sighted users</summary>
+
+- Look at the bottom of the PR Conversation tab for the merge box — a green "Merge pull request" button means all requirements are met; grey means something is blocking
+- The list of requirements appears as a vertical checklist above the merge button — each item shows a green checkmark, yellow spinner, or red X
+- Click "Show all checks" to expand the full list of status checks if only a summary is visible
+
+</details>
+
 
 ## 2. Common Branch Protection Rules
 
@@ -174,6 +203,35 @@ When you open a PR and the merge button is grayed out or shows an error, the mer
 ### "Merging is blocked"
 
 **What it means:** A ruleset or branch protection has explicitly blocked merging for a reason not covered by other messages. Check the PR for a pinned comment from the mergeable status check or a GitHub Actions check that posts a comment explaining the block.
+
+### Learning Cards: Why Your PR Cannot Be Merged
+
+<details>
+<summary>Screen reader users</summary>
+
+- Navigate to the merge box (End key, then H key to find "Merge" heading) and read each status line with arrow keys — the messages tell you exactly what action to take
+- When a check fails, Tab to the "Details" link next to the failing check name and press Enter to open the log — use Ctrl+F to search for "error" or "failed"
+- After pushing a fix, the checks re-run automatically — return to the PR page and listen for the status to change from "pending" to "passed"
+
+</details>
+
+<details>
+<summary>Low vision users</summary>
+
+- Failed checks show a red X icon that can be tiny — zoom to 150%+ and look for the word "failing" or "failed" next to each check name
+- The "Update branch" button (for out-of-date PRs) is a secondary action that blends in at low zoom — look for it directly above the main merge button
+- The Details link next to each check opens a log page with monospace text — increase your editor or browser font size before reading long CI logs
+
+</details>
+
+<details>
+<summary>Sighted users</summary>
+
+- Scroll to the bottom of the PR page and scan the checklist in the merge box — red X items are blocking, yellow spinners are still running, green checks are done
+- Click the "Details" link next to any red X to see the full error log — the failing step is highlighted with a red icon in the left sidebar
+- If "This branch is out of date," click the blue "Update branch" button and wait for checks to re-run before merging
+
+</details>
 
 
 ## 5. Navigating the Merge Box with a Screen Reader
