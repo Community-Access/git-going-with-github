@@ -140,6 +140,35 @@ GitHub's browser interface is excellent for reviewing, discussing, and triaging.
 
 For Markdown contributions (which is most of what [accessibility-agents](https://github.com/Community-Access/accessibility-agents) needs), VS Code gives you Copilot assistance, live preview, and the same Git workflow - with less tab switching and with agents available on every file you open.
 
+### Learning Cards: Why VS Code
+
+<details>
+<summary>Screen reader users</summary>
+
+- VS Code announces errors, warnings, and suggestions via ARIA live regions -- you hear problems as you type instead of after pushing to GitHub
+- Press `Ctrl+Shift+P` (Mac: `Cmd+Shift+P`) to open the Command Palette and access every VS Code feature without a mouse
+- The Explorer sidebar (`Ctrl+Shift+E`) gives you the same file tree as GitHub.com but with keyboard-driven editing one `Enter` away
+
+</details>
+
+<details>
+<summary>Low vision users</summary>
+
+- VS Code supports zoom levels up to 500%: press `Ctrl+=` (Mac: `Cmd+=`) to increase and `Ctrl+-` (Mac: `Cmd+-`) to decrease
+- High Contrast themes are built in -- open Command Palette and type "Color Theme" to switch
+- Inline error squiggles use both color and underline style so they remain visible at any zoom level or contrast setting
+
+</details>
+
+<details>
+<summary>Sighted users</summary>
+
+- The Activity Bar on the left shows icons for Explorer, Search, Source Control, Extensions, and more -- each lights up when active
+- Real-time red/yellow squiggles under errors and warnings appear as you type, replacing the GitHub "push and wait" cycle
+- Copilot suggestions appear as dimmed ghost text to the right of your cursor
+
+</details>
+
 
 ---
 
@@ -288,6 +317,35 @@ These limitations are why **desktop VS Code exists**. github.dev is for quick ed
 - Use `VO+Shift+Down` to interact with the editor area
 - Standard text navigation (`Control+A` for line start, `Control+E` for line end, etc.)
 
+### Learning Cards: github.dev
+
+<details>
+<summary>Screen reader users</summary>
+
+- Press `.` (period, no modifiers) on any GitHub repository page to open github.dev instantly -- your screen reader announces the VS Code interface loading
+- Immediately press `Shift+Alt+F1` (Mac: `Shift+Option+F1`) to enable screen reader mode after github.dev loads
+- Use `Ctrl+Shift+O` (Mac: `Cmd+Shift+O`) to navigate by headings in Markdown files -- this is the fastest way to scan a document
+
+</details>
+
+<details>
+<summary>Low vision users</summary>
+
+- github.dev inherits your browser zoom level -- use `Ctrl+=` (Mac: `Cmd+=`) to enlarge the entire editor before you start working
+- Switch to a High Contrast theme via Command Palette (`Ctrl+Shift+P` then type "Color Theme") -- this persists for the session
+- The minimap on the right edge of the editor shows a zoomed-out preview of your file; disable it in Settings if it is distracting at high zoom
+
+</details>
+
+<details>
+<summary>Sighted users</summary>
+
+- Look for the URL changing from `github.com` to `github.dev` to confirm you are in the web editor
+- The Activity Bar on the left and the Status Bar at the bottom look identical to desktop VS Code
+- Use `Ctrl+P` (Mac: `Cmd+P`) to open the quick file picker -- start typing a filename and select from the dropdown
+
+</details>
+
 
 ### Try It Right Now
 
@@ -357,6 +415,35 @@ VS Code uses a web-based renderer. Configure NVDA for best results:
 2. In VoiceOver Utility: Verbosity then set "Punctuation" to "All" for reading code
 3. Use Quick Nav OFF (`Left+Right Arrow`) when inside the editor - standard cursor navigation is more predictable
 4. Use `VO+Shift+Down` to interact with the editor, `VO+Shift+Up` to stop interacting
+
+### Learning Cards: Screen Reader Mode
+
+<details>
+<summary>Screen reader users</summary>
+
+- Toggle screen reader mode with `Shift+Alt+F1` (Mac: `Shift+Option+F1`) -- VS Code announces "Screen reader optimized" when activated
+- Set `editor.accessibilitySupport` to `"on"` (not `"auto"`) in Settings (`Ctrl+,`) for consistent behavior across sessions
+- NVDA users: set "Maximum length of text on a single line" to 10000 in Browse Mode settings to prevent long code lines from being truncated
+
+</details>
+
+<details>
+<summary>Low vision users</summary>
+
+- Screen reader mode suppresses inline decorations that can clutter the display -- enable it even if you use a magnifier for a cleaner view
+- Pair screen reader mode with a High Contrast theme (`Ctrl+Shift+P` then "Color Theme") for maximum readability
+- Use `Ctrl+=` / `Ctrl+-` (Mac: `Cmd+=` / `Cmd+-`) to adjust font size independently of your OS zoom settings
+
+</details>
+
+<details>
+<summary>Sighted users</summary>
+
+- Screen reader mode is invisible to sighted users -- you will not notice any visual changes if you toggle it on
+- If you are pair-programming with a screen reader user, enable it so the experience is consistent for both of you
+- The mode changes how suggestions are announced but does not remove any visual features you rely on
+
+</details>
 
 
 ---

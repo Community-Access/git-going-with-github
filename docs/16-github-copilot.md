@@ -392,6 +392,35 @@ The Copilot status bar icon (`><`) can be tiny at standard DPI. Use the Command 
 
 </details>
 
+### Learning Cards: Inline Suggestions
+
+<details>
+<summary>Screen reader users</summary>
+
+- Press `Alt+]` to trigger an inline suggestion manually; your screen reader announces "Suggestion:" followed by the proposed text
+- Press `Tab` to accept the suggestion or `Escape` to dismiss it -- Copilot does not insert anything until you explicitly accept
+- Press `Alt+F2` to open Accessible View and read the full suggestion in a clean, navigable pane before deciding
+
+</details>
+
+<details>
+<summary>Low vision users</summary>
+
+- Suggestions appear as dimmed gray "ghost text" after your cursor -- increase editor font size with `Ctrl+=` if the gray text is hard to distinguish from your real code
+- Switch to a High Contrast theme (`Ctrl+Shift+P` then "Color Theme") to improve the contrast between ghost text and your actual content
+- The Status Bar Copilot icon spins while generating a suggestion and stops when one is ready
+
+</details>
+
+<details>
+<summary>Sighted users</summary>
+
+- Look for gray text appearing after your cursor as you type -- this is the ghost text suggestion
+- Press `Tab` to accept or keep typing to ignore; press `Alt+]` / `Alt+[` to cycle through alternative suggestions
+- The Copilot icon in the Status Bar shows a spinning animation while generating and stays still when idle
+
+</details>
+
 
 ## 4. GitHub Copilot Chat - Conversational Assistance
 
@@ -622,6 +651,35 @@ Useful built-in actions include:
 
 > **Screen reader tip:** After pressing `F1` and typing `copilot`, use `Down Arrow` to browse the filtered list. Your screen reader announces each action name. Press `Enter` to run the selected action on your current selection.
 
+### Learning Cards: Copilot Chat
+
+<details>
+<summary>Screen reader users</summary>
+
+- Open Copilot Chat with `Ctrl+Shift+I` (Mac: `Cmd+Shift+I`) -- focus lands in the chat input box, ready for your question
+- After the response finishes streaming, press `Alt+F2` to open Accessible View and read the complete response with arrow keys, one paragraph at a time
+- Use `@workspace` before your question to give Copilot context about your entire project (e.g., "@workspace what files reference heading levels?")
+
+</details>
+
+<details>
+<summary>Low vision users</summary>
+
+- The Chat panel opens on the right side of VS Code; drag its border to make it wider for easier reading at high zoom
+- Code blocks in Chat responses have a "Copy" button and an "Insert at Cursor" button at the top-right corner of each block
+- Use Accessible View (`Alt+F2`) to read responses at your configured editor font size instead of the Chat panel's smaller default
+
+</details>
+
+<details>
+<summary>Sighted users</summary>
+
+- Click the Copilot icon in the Activity Bar sidebar or use `Ctrl+Shift+I` to open the Chat panel
+- The mode picker dropdown at the top of Chat lets you switch between Ask, Edit, and Agent modes
+- Code blocks in responses have hover-revealed buttons: Copy, Insert at Cursor, and Run in Terminal
+
+</details>
+
 
 ## 5. Copilot Edits — Making Multi-File Changes
 
@@ -658,6 +716,35 @@ Copilot Edits is the **Edit** chat mode. Instead of just answering questions, Co
 - Start with a **small working set** (2–3 files) to see how Copilot interprets your request before expanding to the full project
 - You can add or remove files from the working set mid-conversation
 - Copilot will tell you if it needs a file that isn't in the working set — add it and ask again
+
+### Learning Cards: Copilot Edits
+
+<details>
+<summary>Screen reader users</summary>
+
+- Copilot Edits shows proposed changes as diffs -- use `F7` in the diff view to step through hunks with announced change types (added, removed, unchanged)
+- Press `Ctrl+Shift+P` then "Accept" or "Discard" to confirm or reject each proposed edit; nothing is saved until you explicitly accept
+- Review each file's diff individually with arrow keys before accepting to ensure Copilot did not introduce errors
+
+</details>
+
+<details>
+<summary>Low vision users</summary>
+
+- Proposed changes appear as standard diff views with green/red highlighting for added/removed lines
+- Start with a small working set (2-3 files) so the diff review is manageable at high zoom
+- The accept/discard buttons appear at the top of the diff view pane and remain visible as you scroll through changes
+
+</details>
+
+<details>
+<summary>Sighted users</summary>
+
+- Look for a multi-file list in the Chat panel showing every file Copilot wants to change -- click each to see the proposed diff
+- Green highlighted lines = additions, red highlighted lines = deletions, just like a normal Git diff
+- Use the "Accept" and "Discard" buttons at the top of the diff to control changes file by file
+
+</details>
 
 ---
 
@@ -902,6 +989,35 @@ Format this as a table instead of a bulleted list
 ```
 
 Copilot remembers the conversation context - just say what to change.
+
+### Learning Cards: Effective Prompting
+
+<details>
+<summary>Screen reader users</summary>
+
+- Include "assume the reader uses a screen reader" in your prompts to get responses with keyboard shortcuts and non-visual descriptions by default
+- Ask Copilot to "use headings and bullet points" so the response is structured and easy to navigate with `Alt+F2` (Accessible View)
+- Iterate by saying "make it shorter" or "add more detail about NVDA" -- Copilot retains conversation context so you do not need to repeat the original request
+
+</details>
+
+<details>
+<summary>Low vision users</summary>
+
+- Ask Copilot to "include a table" when requesting reference information -- tables are often easier to scan than dense paragraphs at high zoom
+- Use the "Draft from Outline" pattern: give Copilot your section headings and let it fill in the content, then review the structure before the details
+- If a response is too long to review comfortably, ask "summarize in 5 bullet points" for a manageable overview
+
+</details>
+
+<details>
+<summary>Sighted users</summary>
+
+- Start with a specific prompt that includes audience, format, and length requirements for better first-draft quality
+- The Chat panel shows your conversation history on the left so you can return to previous prompts and refine them
+- Use the "Rewrite" prompt pattern -- paste content and ask Copilot to restructure it rather than writing from scratch
+
+</details>
 
 
 ## 10. Custom Instructions vs Custom Agents
@@ -1333,6 +1449,35 @@ Think of Copilot as a fast typist who has read a lot of code. It can reproduce p
 The right relationship with Copilot is the one you have with a first draft. You would never submit a first draft without reading it, testing it, and revising it. Treat every Copilot suggestion the same way.
 
 For more on working with AI tools responsibly, see [Chapter 20](20-build-your-agent.md) on building and evaluating your own agent, and [Chapter 21](21-next-steps.md) for continued learning resources.
+
+### Learning Cards: Critically Evaluating AI Output
+
+<details>
+<summary>Screen reader users</summary>
+
+- After accepting a Copilot suggestion, run `Ctrl+Shift+M` to open the Problems panel -- if new errors appear, Copilot may have introduced invalid syntax or broken links
+- Use `F8` to jump to the next error in the file and hear it announced; compare it against what Copilot changed to decide if the suggestion caused it
+- When Copilot generates Markdown, check heading levels with `Ctrl+Shift+O` (symbol outline) to verify the hierarchy was not broken
+
+</details>
+
+<details>
+<summary>Low vision users</summary>
+
+- After accepting a suggestion, look for red squiggles (errors) or yellow squiggles (warnings) in the editor -- these appear near lines Copilot modified
+- Use Markdown Preview (`Ctrl+Shift+V`) to visually verify that Copilot-generated content renders correctly, especially tables and links
+- Zoom in on the Problems panel (`Ctrl+Shift+M`) to read error details that reference specific line numbers
+
+</details>
+
+<details>
+<summary>Sighted users</summary>
+
+- Check the Problems panel (`Ctrl+Shift+M`) after accepting any suggestion -- new entries indicate Copilot may have introduced issues
+- Red underlines in the editor appear instantly on syntax errors; yellow underlines appear on warnings -- scan the changed area for these
+- Use the Source Control diff view to compare exactly what Copilot changed versus the previous version before committing
+
+</details>
 
 
 ## Troubleshooting

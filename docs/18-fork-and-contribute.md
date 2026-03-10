@@ -76,6 +76,35 @@ Upstream repo (GitHub)      Your fork (GitHub)        Your computer (local)
 
 > **Screen reader note:** The text diagram above shows three boxes arranged left to right. The upstream repo on GitHub is on the left. Your fork on GitHub is in the middle. Your local computer is on the right. A fork arrow goes from left to middle. A clone arrow goes from middle to right. Editing happens on the right. Git push goes from right to middle. A PR goes from middle to left.
 
+### Learning Cards: Fork vs Clone vs Branch
+
+<details>
+<summary>Screen reader users</summary>
+
+- Run `git remote -v` in the terminal to hear your configured remotes -- `origin` is your fork, `upstream` is the original repository
+- The Status Bar in VS Code shows the current branch name -- press `F6` to navigate there and confirm you are on a feature branch, not `main`
+- Use `Ctrl+Shift+P` then "Git: Checkout to" to switch between branches; your screen reader announces each branch name in the picker
+
+</details>
+
+<details>
+<summary>Low vision users</summary>
+
+- Your fork URL includes your username (e.g., `github.com/your-name/repo`) making it visually distinct from the upstream URL
+- In VS Code, the branch name in the bottom-left Status Bar confirms which branch you are working on -- zoom with `Ctrl+=` if it is too small
+- The Source Control panel heading shows the repository name to help you verify you are working in the correct clone
+
+</details>
+
+<details>
+<summary>Sighted users</summary>
+
+- On GitHub.com, forked repos show a "forked from" label under the repository name at the top of the page
+- The fork icon (a branching arrow) appears next to forked repository names in your GitHub profile
+- In VS Code, the bottom-left branch name and the Source Control panel header confirm your current branch and repository
+
+</details>
+
 ---
 
 ## 3. Step 1: Fork the Repository
@@ -142,6 +171,35 @@ cd accessibility-agents
 ```
 
 After cloning, your local repository has one remote called `origin` that points to your fork.
+
+### Learning Cards: Cloning Your Fork
+
+<details>
+<summary>Screen reader users</summary>
+
+- Use `Ctrl+Shift+P` then "Git: Clone" and paste your fork URL -- VS Code announces progress and opens the repository when done
+- After cloning, press `Ctrl+Shift+E` to open the Explorer and verify the file tree loaded correctly
+- Run `git remote -v` in the terminal (`Ctrl+\``) to confirm `origin` points to your fork URL
+
+</details>
+
+<details>
+<summary>Low vision users</summary>
+
+- After cloning, the Explorer sidebar populates with the repository files -- increase sidebar width by dragging its edge for better readability
+- The VS Code title bar shows the repository folder name, confirming which project is open
+- Use `Ctrl+P` to quick-open any file by name if the file tree is hard to navigate at high zoom
+
+</details>
+
+<details>
+<summary>Sighted users</summary>
+
+- After cloning, the Explorer sidebar shows the full file tree; the title bar displays the folder name
+- Look for the blue "Open Folder" notification or the repository name in the bottom Status Bar to confirm the clone succeeded
+- The Source Control panel (`Ctrl+Shift+G`) should show the repository with `main` as the current branch
+
+</details>
 
 ---
 
@@ -330,6 +388,35 @@ gh pr create --repo Community-Access/accessibility-agents --title "Add document-
 
 > **Screen reader tip:** The PR creation form is a standard web form. Navigate with `Tab` to move between fields. The title field and body field are `<input>` and `<textarea>` elements. The base and compare dropdowns use ARIA listbox patterns.
 
+### Learning Cards: Opening a Pull Request
+
+<details>
+<summary>Screen reader users</summary>
+
+- The PR form has a title input and a body textarea -- `Tab` between them; your screen reader announces field labels
+- The base and compare branch dropdowns use ARIA listbox patterns -- press `Down Arrow` to open and select branches
+- After submitting, GitHub navigates to the new PR page; press `h` to jump by headings and find the "Files changed" section
+
+</details>
+
+<details>
+<summary>Low vision users</summary>
+
+- The "Compare and pull request" yellow banner appears at the top of your fork page after pushing -- it is a large, visible button
+- Use browser zoom (`Ctrl+=`) to enlarge the PR creation form if the text inputs are too small
+- The base and head repository/branch selectors appear near the top of the form -- verify these before submitting
+
+</details>
+
+<details>
+<summary>Sighted users</summary>
+
+- After pushing, look for the yellow "Compare and pull request" banner at the top of your fork's GitHub page
+- Verify the base repository and branch (upstream/main) and head repository (your fork) are correct in the dropdown selectors
+- The PR creation form preview tab shows how your Markdown description will render -- check it before submitting
+
+</details>
+
 ---
 
 ## 10. Step 8: Respond to Review Feedback
@@ -403,6 +490,35 @@ gh repo sync your-username/accessibility-agents
 - **Before starting new work:** Always sync before creating a new feature branch. This ensures your branch starts from the latest code.
 - **Before opening a PR:** Sync and merge `main` into your feature branch to check for conflicts before asking for review.
 - **Periodically:** If you are working on a long-running branch, sync weekly to avoid large conflicts.
+
+### Learning Cards: Keeping Your Fork in Sync
+
+<details>
+<summary>Screen reader users</summary>
+
+- Run `git fetch upstream` then `git merge upstream/main` in the terminal -- listen for "Already up to date" or a merge summary announcing new commits
+- Use `git status` after syncing to confirm your local `main` is not behind the upstream
+- On GitHub.com, the "Sync fork" button is near the top of your fork page; press `Tab` to reach it and `Enter` to activate
+
+</details>
+
+<details>
+<summary>Low vision users</summary>
+
+- On GitHub.com, the "Sync fork" button appears below the repository description with a dropdown showing how many commits behind you are
+- After syncing, the Status Bar in VS Code shows no up/down arrows next to the branch name, confirming you are in sync
+- If a merge conflict occurs during sync, VS Code highlights conflicts with colored backgrounds (green = yours, blue = upstream)
+
+</details>
+
+<details>
+<summary>Sighted users</summary>
+
+- On GitHub.com, look for the "Sync fork" button below the green Code button -- it shows "N commits behind" if your fork is out of date
+- Click "Update branch" in the dropdown to sync your fork with one click
+- In VS Code, the sync icon (circular arrows) next to the branch name in the Status Bar performs fetch + merge in one action
+
+</details>
 
 ---
 

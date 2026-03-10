@@ -885,6 +885,35 @@ git status
 2. Press `Ctrl+Enter` (Mac: `Cmd+Enter`) or `Space`
 3. File moves back to "Changes"
 
+### Learning Cards: Staging Changes
+
+<details>
+<summary>Screen reader users</summary>
+
+- In Source Control (`Ctrl+Shift+G`), press `+` or `Space` on a file to stage it -- your screen reader announces the file moving from "Changes" to "Staged Changes"
+- To stage individual lines, open the file diff (`Enter` on the file), select lines with `Shift+Up/Down`, then use Command Palette: "Git: Stage Selected Ranges"
+- Press `Ctrl+Z` in the Source Control panel to unstage the last staged file if you staged the wrong one
+
+</details>
+
+<details>
+<summary>Low vision users</summary>
+
+- Staged files appear under a separate "Staged Changes" heading with a green `+` icon -- look for the section break in the Source Control panel
+- The inline diff view highlights added lines in green and removed lines in red; use `Ctrl+=` to zoom if the colors are hard to distinguish
+- Right-click a file in the Source Control panel for a context menu with "Stage Changes", "Discard Changes", and "Open File" options
+
+</details>
+
+<details>
+<summary>Sighted users</summary>
+
+- Hover over a file in the Changes list to see `+` (stage), curved arrow (discard), and file-open icons appear on the right
+- Click the `+` icon next to "Changes" header to stage all files at once, or click `+` on individual files for selective staging
+- The Source Control badge number on the Activity Bar decreases as you stage and commit changes
+
+</details>
+
 
 ## 5. Committing with Screen Readers
 
@@ -1655,6 +1684,35 @@ If you want to cancel the merge and go back to before you started:
 
 Everything returns to the pre-merge state.
 
+### Learning Cards: Resolving Merge Conflicts
+
+<details>
+<summary>Screen reader users</summary>
+
+- Press `F7` in a conflict file to enter the Accessible Diff Viewer and step through conflicts hunk by hunk with announced change types
+- Conflict markers (`<<<<<<<`, `=======`, `>>>>>>>`) are read aloud as you arrow through lines -- listen for these to identify conflict boundaries
+- After resolving all markers, stage the file with `Ctrl+Shift+G` then navigate to it and press `+`, then commit to complete the merge
+
+</details>
+
+<details>
+<summary>Low vision users</summary>
+
+- VS Code highlights conflict regions with colored backgrounds: green for "Current Change" (yours) and blue for "Incoming Change" (theirs)
+- The inline action buttons ("Accept Current", "Accept Incoming", "Accept Both") appear above each conflict -- they are visible at high zoom levels
+- Use `Ctrl+Shift+M` to check the Problems panel for any remaining conflict markers you may have missed
+
+</details>
+
+<details>
+<summary>Sighted users</summary>
+
+- Look for the colored conflict blocks in the editor: green background = your version, blue background = incoming version
+- Click "Accept Current Change", "Accept Incoming Change", or "Accept Both Changes" above each conflict for one-click resolution
+- The Source Control panel shows a merge badge when conflicts exist -- it clears after you commit the resolution
+
+</details>
+
 
 ## 10. Stash Management
 
@@ -1907,6 +1965,35 @@ git checkout -b feature/deleted-branch-name abc1234
 Reflog records are stored in your local `.git/` directory and are **not pushed to GitHub**. If your entire local clone is destroyed (hard drive failure, `rm -rf`), reflog cannot help - but GitHub retains the pushed commits in the remote history.
 
 **Workshop tip:** If you run a reset or rebase during the workshop and lose something, immediately run `git reflog` before doing anything else. The recovery window is open as long as you haven't run `git gc`.
+
+### Learning Cards: Emergency Recovery
+
+<details>
+<summary>Screen reader users</summary>
+
+- Run `git reflog --oneline` in the terminal and arrow through the output -- each line announces a HEAD movement with its SHA and action description
+- Copy the SHA you want to recover to by selecting it in the terminal (`Shift+Arrow`) then pressing `Ctrl+C`, then run `git checkout -b recovery <SHA>`
+- Reflog entries are kept for 90 days -- you have time to recover, so do not panic
+
+</details>
+
+<details>
+<summary>Low vision users</summary>
+
+- `git reflog` output is columnar text: SHA on the left, action description on the right -- increase terminal font size with `Ctrl+=` for readability
+- Each reflog entry starts with `HEAD@{N}` where N is the number of steps back -- lower numbers are more recent
+- Use `git log --oneline --graph` after recovery to visually confirm the branch history looks correct
+
+</details>
+
+<details>
+<summary>Sighted users</summary>
+
+- Look for the SHA hash in the leftmost column of `git reflog` output -- these are the restore points you can checkout or reset to
+- The action column (e.g., "commit:", "reset:", "checkout:") tells you what caused each HEAD movement
+- After recovering with `git checkout -b`, verify in the Source Control panel that the branch appears with the expected files
+
+</details>
 
 
 ## 11. Alternative Git Interfaces

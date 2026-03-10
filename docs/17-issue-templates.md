@@ -268,6 +268,35 @@ contact_links:
 
 With `blank_issues_enabled: false`, the "Open a blank issue" link disappears from the template chooser. Contributors must use one of your structured templates or one of the contact links. This is one of the most effective ways to improve the quality of incoming issues in any project you maintain.
 
+### Learning Cards: How Templates Work on GitHub
+
+<details>
+<summary>Screen reader users</summary>
+
+- Templates live in `.github/ISSUE_TEMPLATE/` -- navigate there in the Explorer (`Ctrl+Shift+E`) to review existing templates before creating new ones
+- YAML form templates (`.yml`) are better for screen readers than Markdown templates because each field has an explicit label announced by your screen reader
+- The `config.yml` file in `ISSUE_TEMPLATE/` controls whether blank issues are allowed -- set `blank_issues_enabled: false` to require templates
+
+</details>
+
+<details>
+<summary>Low vision users</summary>
+
+- YAML form templates render as labeled form fields on GitHub.com, making them easier to fill out at high zoom than freeform Markdown editors
+- Template filenames use lowercase with hyphens (e.g., `accessibility-bug.yml`) -- look for them in the `.github/ISSUE_TEMPLATE/` folder in the Explorer
+- The template chooser page on GitHub shows each template's name and description in a card layout that scales well with browser zoom
+
+</details>
+
+<details>
+<summary>Sighted users</summary>
+
+- Look in `.github/ISSUE_TEMPLATE/` in the file tree -- `.md` files are Markdown templates, `.yml` files are YAML form templates, and `config.yml` configures the chooser
+- The `about:` field in each template's frontmatter becomes the description shown on the template chooser page
+- Template labels auto-apply when someone submits an issue using that template -- check the `labels:` array in the frontmatter
+
+</details>
+
 
 ## 3. Navigating the Template Picker
 
@@ -316,6 +345,35 @@ If you want to file an issue without using a template:
 
 - Scroll past all templates to the bottom of the chooser page
 - Activate "Open a blank issue"
+
+### Learning Cards: Navigating the Template Picker
+
+<details>
+<summary>Screen reader users</summary>
+
+- On the template chooser page, press `Tab` to cycle through template options -- each one announces its name and description
+- Press `Enter` on a template to select it and open the issue editor pre-filled with that template's content
+- If blank issues are disabled, the "Open a blank issue" link is absent -- all contributors must use a structured template
+
+</details>
+
+<details>
+<summary>Low vision users</summary>
+
+- The template chooser displays each option as a card with its name in bold and description below -- use browser zoom (`Ctrl+=`) to enlarge the cards
+- Contact links (for security issues or external trackers) appear alongside templates in the chooser with a distinct link icon
+- The "Get started" button next to each template is clearly visible and clickable at any zoom level
+
+</details>
+
+<details>
+<summary>Sighted users</summary>
+
+- The template chooser page shows cards for each template with a green "Get started" button -- click to begin
+- Contact links appear with a different icon (external link arrow) distinguishing them from standard issue templates
+- If configured, blank issues are disabled and only the structured template cards appear
+
+</details>
 
 
 ## 4. The Accessibility Agents Issue Templates
@@ -599,6 +657,35 @@ Screen reader and browser information is especially important for us to reproduc
 - Use lowercase with hyphens: `accessibility-bug.md`, `feature-request.md`
 - Be descriptive: `security-vulnerability.md` is better than `security.md`
 - Avoid spaces in filenames
+
+### Learning Cards: Creating a New Template
+
+<details>
+<summary>Screen reader users</summary>
+
+- Create template files in VS Code at `.github/ISSUE_TEMPLATE/your-template.yml` -- use `Ctrl+Shift+E` to navigate to the folder, then `Ctrl+N` to create a new file
+- YAML form templates use explicit `label:` fields that your screen reader announces for each form input -- prefer `.yml` over `.md` for accessibility
+- Test your template by pushing to GitHub and opening a new issue -- tab through every field with your screen reader to verify labels are announced
+
+</details>
+
+<details>
+<summary>Low vision users</summary>
+
+- YAML syntax uses indentation and colons -- enable "Render Whitespace" in VS Code Settings (`Ctrl+,` then search `renderWhitespace`) to see spaces clearly
+- Use a YAML linter extension to catch indentation errors before pushing -- errors show as red squiggles in the editor
+- Preview your Markdown template content by opening it in Markdown Preview (`Ctrl+Shift+V`) to verify formatting
+
+</details>
+
+<details>
+<summary>Sighted users</summary>
+
+- YAML form templates use a structured syntax: each field starts with `- type:` followed by `id:`, `attributes:`, and `validations:` properties
+- Use the VS Code Outline view (`Ctrl+Shift+O`) to navigate between YAML keys in large template files
+- Compare your template structure against existing templates in `.github/ISSUE_TEMPLATE/` to match the project's conventions
+
+</details>
 
 
 ## 6. YAML Form-Based Templates
@@ -887,6 +974,35 @@ A group of checkboxes. Contributors can select multiple options or use as a veri
 - If the answer is multiple sentences or a code block → `textarea`
 - If the contributor must verify multiple conditions → `checkboxes` with `required: true`
 - If you need to explain something → `markdown`
+
+### Learning Cards: YAML Form Templates
+
+<details>
+<summary>Screen reader users</summary>
+
+- YAML form fields are announced by screen readers with their `label:` and `description:` values -- verify these are descriptive by tabbing through the rendered form on GitHub
+- Dropdown fields (`type: dropdown`) announce options as a listbox; use `Up/Down Arrow` to select and `Enter` to confirm
+- Required fields are announced with "required" before the label -- use `validations: required: true` in your YAML to enforce this
+
+</details>
+
+<details>
+<summary>Low vision users</summary>
+
+- YAML form templates render as proper HTML forms on GitHub with labeled inputs, dropdowns, and checkboxes that scale with browser zoom
+- Textarea fields expand as you type, so content remains visible without scrolling at high zoom
+- Error messages for required fields appear in red text below the field -- increase browser zoom if these are hard to read
+
+</details>
+
+<details>
+<summary>Sighted users</summary>
+
+- YAML forms render as polished HTML forms on GitHub with clear field labels, placeholder text, and validation indicators
+- Required fields show a red asterisk next to the label; optional fields have no indicator
+- Use the `markdown` field type to add explanatory text between form fields -- it renders as styled HTML in the form
+
+</details>
 
 
 ## 7. Building an Accessibility Bug Report Template
@@ -1217,6 +1333,35 @@ Open `.github/pull_request_template.md` in VS Code. You will see the standard se
 ```
 
 **Using it when opening a PR:** The template auto-fills the PR description field. Tab through the sections with your screen reader and fill in each one. Delete placeholder comments (`<!-- ... -->`) - they will not appear in the rendered PR but can confuse screen readers if left in.
+
+### Learning Cards: Pull Request Templates
+
+<details>
+<summary>Screen reader users</summary>
+
+- The PR template auto-fills the description field when you create a new PR -- `Tab` through the sections and your screen reader announces each heading
+- Use `Ctrl+F` to find `<!-- comment -->` placeholders and replace them with your content; press `F3` to jump to the next placeholder
+- Delete HTML comments (`<!-- ... -->`) after filling in sections -- they are invisible visually but screen readers still announce them
+
+</details>
+
+<details>
+<summary>Low vision users</summary>
+
+- The PR template appears as pre-filled Markdown in the description editor -- use Preview mode to verify your formatting looks correct
+- Checkbox items (`- [ ]`) render as interactive checkboxes in the previewed PR -- click to toggle each one
+- The template uses standard Markdown headings that scale with browser zoom for easy reading
+
+</details>
+
+<details>
+<summary>Sighted users</summary>
+
+- When creating a PR, the description field is pre-populated with the template's headings and placeholder comments
+- Replace each `<!-- ... -->` comment with your content -- the Preview tab shows how it will render
+- Checklist items appear as clickable checkboxes in the rendered PR so reviewers can track progress
+
+</details>
 
 
 ## 9. Hands-On Activity

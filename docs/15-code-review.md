@@ -192,6 +192,35 @@ After installation, you gain:
 - **Inline PR review features** in the editor
 - **Issue linking** when writing commit messages
 
+### Learning Cards: Installing the PR Extension
+
+<details>
+<summary>Screen reader users</summary>
+
+- Open Extensions with `Ctrl+Shift+X`, type "GitHub Pull Requests" -- your screen reader announces each result; press `Enter` on the correct one then `Tab` to "Install"
+- After installation, verify sign-in via Command Palette (`Ctrl+Shift+P`): type "GitHub Pull Requests: Sign in" -- if already signed in, it shows "Sign out" instead
+- The GitHub view appears as a new icon in the Activity Bar; press `F6` to cycle between panels until you hear "GitHub"
+
+</details>
+
+<details>
+<summary>Low vision users</summary>
+
+- A new GitHub logo icon appears in the Activity Bar (left sidebar) after installation -- it is the Octocat silhouette
+- After signing in, the notification bar at the bottom confirms authentication with your username
+- Increase sidebar width by dragging its edge so PR titles are not truncated at high zoom levels
+
+</details>
+
+<details>
+<summary>Sighted users</summary>
+
+- Look for the GitHub Octocat icon in the Activity Bar after installation -- click it to open the Pull Requests and Issues panel
+- A blue notification badge appears on the icon when there are new PRs to review
+- The Explorer sidebar also gains a "GitHub Pull Requests" section that you can expand or collapse
+
+</details>
+
 
 ## 2. Viewing Pull Requests
 
@@ -356,6 +385,35 @@ After reviewing:
 2. Type "git checkout"
 3. Select "Git: Checkout to..."
 4. Choose your original branch (usually `main` or your feature branch)
+
+### Learning Cards: Checking Out a PR
+
+<details>
+<summary>Screen reader users</summary>
+
+- After checkout, press `F6` to navigate to the Status Bar and hear the branch name (e.g., "jeffb/fix-alt-text") confirming you are on the PR branch
+- Use `Ctrl+Shift+P` then "Git: Checkout to" to switch back to your original branch when done reviewing
+- The PR detail view is Markdown-rendered HTML -- navigate with `h` (heading), `t` (table), and arrow keys in your screen reader's virtual mode
+
+</details>
+
+<details>
+<summary>Low vision users</summary>
+
+- The Status Bar in the bottom-left changes to show the PR branch name, confirming the checkout succeeded
+- Files changed by the PR are highlighted in the Explorer sidebar with colored badges (M for modified, A for added)
+- Use `Ctrl+=` to zoom the editor if diff annotations are hard to read
+
+</details>
+
+<details>
+<summary>Sighted users</summary>
+
+- After checkout, the branch name in the bottom-left Status Bar changes to the PR branch name
+- Changed files appear in the Source Control panel with status badges so you can quickly see what was modified
+- Right-click a file in the PR file list to open a side-by-side diff view
+
+</details>
 
 
 ## 4. Reviewing Pull Requests in VS Code
@@ -562,6 +620,35 @@ gh pr create --web
 
 </details>
 
+### Learning Cards: Creating a Pull Request
+
+<details>
+<summary>Screen reader users</summary>
+
+- Press `Ctrl+Shift+P` then type "GitHub Pull Requests: Create" -- the PR creation form opens with title, description, base branch, and reviewer fields navigable with `Tab`
+- The description field supports full Markdown -- use `Ctrl+F` to find and replace `<!-- comment -->` placeholders in templates
+- After creating, your screen reader announces the new PR number; the PR detail view opens automatically
+
+</details>
+
+<details>
+<summary>Low vision users</summary>
+
+- The PR creation form appears as a new editor tab with clearly labeled input fields for title, description, base branch, and reviewers
+- Use `Ctrl+=` to zoom the form if the input fields are small; the form reflows to accommodate larger text
+- The base branch dropdown is near the top of the form -- verify it shows `main` (or your target branch) before submitting
+
+</details>
+
+<details>
+<summary>Sighted users</summary>
+
+- Click the "Create Pull Request" button in the Source Control panel header (appears when you have unpushed changes on a feature branch)
+- The PR form shows a preview pane for your Markdown description so you can verify formatting before submitting
+- Use the reviewer picker to search for and add specific GitHub users to request reviews
+
+</details>
+
 
 ## 6. Pull Request Description Templates
 
@@ -709,6 +796,35 @@ gh pr review 42 --comment --body "A few suggestions."
 ```
 
 **Note:** For inline comments on specific lines, use the web interface or VS Code.
+
+</details>
+
+### Learning Cards: Commenting and Requesting Changes
+
+<details>
+<summary>Screen reader users</summary>
+
+- In a diff view, navigate to a line and press `Shift+F10` for the context menu, then select "Add Comment" to leave inline feedback
+- Choose "Start Review" instead of "Single Comment" to batch multiple comments before submitting them all at once
+- When submitting a review, use `Ctrl+Shift+P` then "GitHub Pull Requests: Submit Review" and choose Approve, Request Changes, or Comment
+
+</details>
+
+<details>
+<summary>Low vision users</summary>
+
+- Inline comments appear as expandable banners within the diff view -- look for the text input box that opens below the target line
+- The review submission dialog has radio buttons for Approve, Request Changes, and Comment with clear labels
+- Increase diff view font size with `Ctrl+=` so line numbers and change annotations are easier to read
+
+</details>
+
+<details>
+<summary>Sighted users</summary>
+
+- Hover over the line gutter in a diff view to see a blue `+` icon -- click it to start an inline comment on that line
+- A yellow banner appears for pending review comments; green for approved comments
+- The "Submit Review" button in the PR detail view shows the count of pending comments ready to send
 
 </details>
 
@@ -2588,6 +2704,35 @@ Reviewing is not just a gate to keep bad code out. It is one of the fastest ways
 **Reviewing builds trust.** When you leave thoughtful, respectful reviews, authors start seeking your input. That trust turns into collaboration, mentorship, and eventually the kind of team culture where everyone improves together. See [Chapter 6](06-working-with-pull-requests.md) for how PRs fit into collaborative workflows.
 
 > **Screen reader tip:** After submitting a review, GitHub returns you to the PR's Conversation tab. Press `h` in GitHub's keyboard shortcuts to jump by heading and confirm your review appears in the timeline.
+
+### Learning Cards: The Reviewer's Craft
+
+<details>
+<summary>Screen reader users</summary>
+
+- Jump between changed hunks in a diff with `Alt+F5` (next change) and `Shift+Alt+F5` (previous change) to scan for scope creep efficiently
+- Use `Alt+F2` (Accessible View) on a Copilot-generated review summary to read the full text with arrow keys before posting
+- When leaving feedback, mention specific line numbers ("Line 42 skips from h2 to h4") so the author can navigate directly with `Ctrl+G`
+
+</details>
+
+<details>
+<summary>Low vision users</summary>
+
+- The three review actions (Approve, Request Changes, Comment) are shown as clearly labeled radio buttons in the review submission form
+- Use the reviewer checklist in this section as a mental framework -- copy it into your notes and check items off as you review each PR
+- The diff view uses green and red backgrounds for added/removed lines; pair with a High Contrast theme if these colors are hard to distinguish
+
+</details>
+
+<details>
+<summary>Sighted users</summary>
+
+- The Files Changed tab on GitHub.com shows a progress bar indicating how many files you have viewed -- aim for 100% before submitting
+- Green checkmarks next to file names mean you have already viewed that file; gray dots mean unreviewed
+- Use the "Viewed" checkbox on each file to track your progress through large PRs
+
+</details>
 
 
 ##  Day 2 Teaser: The Full Accessibility Agents Review Ecosystem

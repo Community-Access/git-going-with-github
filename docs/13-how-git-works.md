@@ -78,6 +78,35 @@ Think of it like packing a box to mail:
 
 You can put items in and take them out of the box (stage and unstage) as many times as you want before sealing it (committing).
 
+### Learning Cards: The Three Areas
+
+<details>
+<summary>Screen reader users</summary>
+
+- Run `git status` in the terminal (`Ctrl+\``) -- it announces which files are in each area (working directory, staging, committed) with clear labels
+- In VS Code Source Control (`Ctrl+Shift+G`), files are grouped under "Changes" (working directory) and "Staged Changes" (staging area) -- navigate with arrow keys
+- Press `Enter` on any file in the Source Control panel to hear the diff -- added and removed lines are announced with change-type prefixes
+
+</details>
+
+<details>
+<summary>Low vision users</summary>
+
+- In Source Control (`Ctrl+Shift+G`), staged files appear under a separate "Staged Changes" heading with a green `+` icon; unstaged files are under "Changes" with an orange `M` icon
+- Use `Ctrl+=` to increase editor font size if the Source Control file list is hard to read at default zoom
+- The gutter indicator (colored bar on the left edge of the editor) shows green for added lines and blue for modified lines
+
+</details>
+
+<details>
+<summary>Sighted users</summary>
+
+- The Source Control badge on the Activity Bar shows a number indicating how many files have changes -- click it to see the full list
+- Look for letter badges next to filenames: `M` (modified), `U` (untracked), `A` (added to staging), `D` (deleted)
+- The inline gutter colors in the editor margin (green = added, blue = modified, red = deleted) show changes at a glance without opening Source Control
+
+</details>
+
 ---
 
 ## 3. What Is a Commit?
@@ -112,6 +141,35 @@ You do not need to memorize these. Git commands accept both the full hash and th
 Once a commit is made, it is part of the repository's history. You can make new commits that undo the changes, but the original commit still exists in the timeline. This is what makes Git safe: you can always go back.
 
 > **The Day 1 connection:** When you edited a file on GitHub.com and clicked "Commit changes," GitHub created a commit for you. It did the stage-and-commit steps in a single action. On Day 2, you will do these steps separately, which gives you more control.
+
+### Learning Cards: Commits
+
+<details>
+<summary>Screen reader users</summary>
+
+- After committing, run `git log --oneline -5` in the terminal to hear the last 5 commit hashes and messages read aloud
+- In VS Code, press `Ctrl+Shift+G` then navigate to the commit message input box -- your screen reader announces "Message" -- type your description and press `Ctrl+Enter` to commit
+- The 7-character short hash (e.g., `a1b2c3d`) is what Git commands accept -- you do not need the full 40 characters
+
+</details>
+
+<details>
+<summary>Low vision users</summary>
+
+- The Source Control commit input box is at the top of the Source Control panel -- increase panel width by dragging the panel edge if the text is truncated
+- After committing, the file count badge on the Source Control icon drops to zero, confirming the commit succeeded
+- Use Timeline view (`Ctrl+Shift+P` then "Focus on Timeline View") to see a chronological list of commits for the current file
+
+</details>
+
+<details>
+<summary>Sighted users</summary>
+
+- The commit message input box sits at the top of the Source Control panel with a checkmark button to commit
+- After committing, the "Staged Changes" section disappears and the Activity Bar badge number decreases
+- Hover over any commit in the Timeline view to see the full message, author, and timestamp in a tooltip
+
+</details>
 
 ---
 
@@ -153,6 +211,35 @@ Git uses a special pointer called `HEAD` to track which branch you are currently
 
 > **The Day 1 connection:** On Day 1, you created a `learn/[username]` branch on GitHub.com. That branch was a pointer to a specific commit on the repository. When you edited files on that branch, new commits moved the pointer forward. The `main` branch stayed unchanged until your pull request was merged.
 
+### Learning Cards: Branches
+
+<details>
+<summary>Screen reader users</summary>
+
+- Press `Ctrl+Shift+G` then `Tab` to reach the branch name in the Source Control panel -- your screen reader announces the current branch
+- The Status Bar at the bottom of VS Code shows the current branch name -- navigate to it with `F6` to cycle through Status Bar items
+- To switch branches, press `Ctrl+Shift+P` then type "Git: Checkout to" and arrow through the branch list
+
+</details>
+
+<details>
+<summary>Low vision users</summary>
+
+- The current branch name appears in the bottom-left of the Status Bar -- click it to see a dropdown of all branches
+- Branch names in the Status Bar use the same font size as the rest of the bar; zoom the entire window with `Ctrl+=` if it is too small
+- In the Source Control panel, the branch name is shown above the commit input -- verify it before committing
+
+</details>
+
+<details>
+<summary>Sighted users</summary>
+
+- Look at the bottom-left corner of VS Code for the branch icon and name (e.g., a git-branch icon followed by `main`)
+- Click the branch name to open a picker showing all local and remote branches -- select one to switch
+- The branch icon changes to a sync icon with arrows when your branch is ahead of or behind the remote
+
+</details>
+
 ---
 
 ## 5. Local vs Remote
@@ -193,6 +280,35 @@ Your computer (local)              GitHub.com (remote / origin)
 ```
 
 > **Screen reader note:** The text diagram above shows two boxes side by side connected by arrows. The left box is labeled "Your computer (local)" and contains working directory, staging area, and repository. The right box is labeled "GitHub.com (remote / origin)" and contains shared branches, pull requests, and issues. Arrows show `git push` going from left to right and `git pull` going from right to left.
+
+### Learning Cards: Local vs Remote
+
+<details>
+<summary>Screen reader users</summary>
+
+- Run `git remote -v` in the terminal to hear which remote URLs are configured -- typically `origin` pointing to your GitHub repository
+- After `git push`, your screen reader announces the output including the branch name and commit count sent -- listen for "Everything up-to-date" if nothing new to push
+- Run `git status` to hear whether your local branch is ahead of, behind, or in sync with the remote tracking branch
+
+</details>
+
+<details>
+<summary>Low vision users</summary>
+
+- The Status Bar sync indicator (bottom-left, next to the branch name) shows up/down arrow counts: up-arrows = commits to push, down-arrows = commits to pull
+- Click the sync icon in the Status Bar to push and pull in one action -- the arrows disappear when local and remote are in sync
+- The Source Control panel heading shows the repository name and branch so you can confirm which remote you are working with
+
+</details>
+
+<details>
+<summary>Sighted users</summary>
+
+- Look for the cloud icon or sync arrows next to the branch name in the Status Bar to see push/pull status at a glance
+- A number next to the up arrow means you have unpushed commits; next to the down arrow means the remote has commits you have not pulled
+- The Source Control panel shows a "Publish Branch" button when you have a local branch that does not yet exist on the remote
+
+</details>
 
 ---
 
@@ -287,6 +403,35 @@ This is the text from the branch you are merging in.
 ### Why conflicts are normal
 
 Conflicts are not mistakes. They happen in every project where more than one person works at the same time. The fact that Git stops and asks is a safety feature -- it prevents data loss by never silently choosing one version over another.
+
+### Learning Cards: Merge Conflicts
+
+<details>
+<summary>Screen reader users</summary>
+
+- When a conflict occurs, VS Code announces "Merge conflict" and the file appears in Source Control under "Merge Changes" -- navigate with arrow keys
+- Use `F7` in the diff viewer to step through conflict hunks; each hunk announces the line range and both versions of the conflicting text
+- After resolving, stage the file (`Ctrl+Shift+G`, navigate to the file, press `+`) then commit to complete the merge
+
+</details>
+
+<details>
+<summary>Low vision users</summary>
+
+- Conflict markers (`<<<<<<<`, `=======`, `>>>>>>>`) appear as highlighted blocks in the editor -- look for colored backgrounds (green for current, blue for incoming)
+- VS Code places "Accept Current Change", "Accept Incoming Change", and "Accept Both" buttons inline above each conflict -- they are large enough to click at high zoom
+- Increase editor zoom with `Ctrl+=` to make the conflict marker labels easier to read
+
+</details>
+
+<details>
+<summary>Sighted users</summary>
+
+- Conflict regions are highlighted with distinct background colors: green for your changes (Current), blue for incoming changes
+- Click "Accept Current Change", "Accept Incoming Change", or "Accept Both Changes" above each conflict block to resolve with one click
+- The Source Control badge shows a merge icon when you are in a merge state -- commit after all conflicts are resolved to complete the merge
+
+</details>
 
 ---
 

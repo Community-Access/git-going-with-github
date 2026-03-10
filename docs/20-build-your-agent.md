@@ -144,6 +144,35 @@ The instructions body tells the agent how to behave. Write it as if you are brie
 
 > **Screen reader note:** The agent file is plain Markdown. There are no special tools needed to write it. Use any text editor.
 
+### Learning Cards: Writing the Agent File
+
+<details>
+<summary>Screen reader users</summary>
+
+- Create your agent file with `Ctrl+N`, then `Ctrl+S` and save to `.github/agents/your-agent-name.md` -- the Explorer navigates to the folder automatically
+- Use `Ctrl+Shift+O` to navigate between YAML frontmatter fields and Markdown headings (Responsibilities, Guardrails) in your agent file
+- The YAML frontmatter is between `---` markers at the top -- your screen reader announces these as horizontal rules
+
+</details>
+
+<details>
+<summary>Low vision users</summary>
+
+- Agent files are standard Markdown -- open Markdown Preview (`Ctrl+Shift+V`) side by side to verify formatting as you write
+- The YAML frontmatter at the top uses `name:` and `description:` fields -- keep these on separate lines for readability at high zoom
+- Use a consistent heading hierarchy (# for title, ## for sections) so the Outline view (`Ctrl+Shift+O`) shows a clean structure
+
+</details>
+
+<details>
+<summary>Sighted users</summary>
+
+- Agent files follow a standard pattern: YAML frontmatter at the top, then identity statement, responsibilities, guardrails, and examples
+- Use the Outline view (`Ctrl+Shift+O`) to see your agent file's structure at a glance and navigate between sections
+- Copy the template from this chapter as a starting point -- replace the placeholder content with your agent's specific instructions
+
+</details>
+
 ---
 
 ## 4. Phase 3: Define Responsibilities and Guardrails
@@ -182,6 +211,35 @@ Guardrails define what the agent must not do. They prevent the agent from overst
 
 **Why guardrails matter:** An agent without guardrails will confidently do things it should not. A contrast checker that silently changes your CSS colors is dangerous. A document reviewer that deletes "unnecessary" alt text is destructive. Guardrails are how you make an agent safe.
 
+### Learning Cards: Responsibilities and Guardrails
+
+<details>
+<summary>Screen reader users</summary>
+
+- Use `## Responsibilities` and `## Guardrails` as exact heading names -- the autograder searches for these strings
+- Each responsibility should start with a verb (Scan, Check, Verify, Flag) -- this makes them concrete and testable
+- Guardrails should start with "Never" or "Do not" to set clear boundaries your screen reader identifies as restrictions when reviewing the file
+
+</details>
+
+<details>
+<summary>Low vision users</summary>
+
+- Format responsibilities as a bulleted list (starting with `-`) for easy scanning at high zoom -- one responsibility per bullet
+- Keep each guardrail to a single line so it remains visible without horizontal scrolling at your zoom level
+- Use bold text for emphasis on critical guardrails (e.g., **Never modify files without approval**) to improve visual scanning
+
+</details>
+
+<details>
+<summary>Sighted users</summary>
+
+- The autograder checks for "Responsibilities" and "Guardrails" headings -- use exactly these words as `## ` headings
+- Aim for 4-6 responsibilities and 3-5 guardrails -- too few makes the agent vague, too many makes it rigid
+- Compare your responsibilities against the example agents in Section 9 to calibrate specificity
+
+</details>
+
 ---
 
 ## 5. Phase 4: Test Your Agent Locally
@@ -217,6 +275,35 @@ If the agent does not behave as expected:
 4. Repeat until the behavior matches your intent.
 
 Most students iterate 2-3 times before they are satisfied.
+
+### Learning Cards: Testing Your Agent
+
+<details>
+<summary>Screen reader users</summary>
+
+- Open Copilot Chat (`Ctrl+Shift+I`) and type `@your-agent-name` followed by a test prompt -- your screen reader announces the response as it streams
+- Press `Alt+F2` after the response finishes to read the full output in Accessible View with arrow keys
+- If the agent does not respond as expected, edit the `.agent.md` file and ask again -- Copilot picks up changes immediately
+
+</details>
+
+<details>
+<summary>Low vision users</summary>
+
+- Agent responses appear in the Copilot Chat panel -- widen the panel by dragging its left edge for better readability
+- Test with a simple prompt first (e.g., "review this file") and read the full response before trying complex requests
+- Use Accessible View (`Alt+F2`) to read responses at your preferred editor font size instead of the Chat panel's default
+
+</details>
+
+<details>
+<summary>Sighted users</summary>
+
+- Type `@agent-name` in Copilot Chat followed by your test prompt -- look for the agent name in the response header confirming it was invoked
+- Check that the response follows your Responsibilities section and does not violate any Guardrails
+- Iterate by editing the agent file and re-testing until the output matches your expectations
+
+</details>
 
 ---
 
@@ -263,6 +350,35 @@ The repository has an autograding workflow that runs on every pull request. It c
 | **Total** | | **60** |
 
 The autograder posts results as a comment on your PR. If any checks fail, read the comment, fix the issue, commit, and push. The autograder re-runs automatically.
+
+### Learning Cards: Opening Your Pull Request
+
+<details>
+<summary>Screen reader users</summary>
+
+- The autograder comment appears in the PR timeline -- navigate to Comments on GitHub.com with `h` (heading navigation) to find the results
+- Each autograder check is listed with a pass/fail status and point value -- listen for "10/10" or "0/15" to identify which checks need attention
+- If a check fails, read the failure message, fix the issue locally, commit, push, and the autograder re-runs automatically
+
+</details>
+
+<details>
+<summary>Low vision users</summary>
+
+- The autograder results appear as a comment with a table showing checks, points, and pass/fail status -- zoom with `Ctrl+=` to read the details
+- Green checkmarks indicate passing checks; red X marks indicate failures -- pair with High Contrast theme for clearest visibility
+- Your PR description should include your mission statement, responsibilities summary, and testing notes
+
+</details>
+
+<details>
+<summary>Sighted users</summary>
+
+- The autograder comment on your PR shows a table with four checks and a total score out of 60
+- Green checkmarks = passing, red X = failing -- fix failures and push to trigger a re-run
+- Include your mission statement, agent summary, and test results in the PR description for reviewers
+
+</details>
 
 ---
 

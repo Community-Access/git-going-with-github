@@ -277,6 +277,35 @@ That question is not rhetorical. Answer it before running the agent. If you cann
 
 > **Exploration prompt:** As you browse the [full agent ecosystem](#3-the-ecosystem-55-agents-3-teams-5-platforms), identify which agents match workflows you already do by hand. Those are your starting points. On Day 2, you will also have the opportunity to contribute improvements, new patterns, or entirely new agents back to the project.
 
+### Learning Cards: Skill First, Agent Second
+
+<details>
+<summary>Screen reader users</summary>
+
+- Before using any agent, verify you can do the task manually -- for `@daily-briefing`, confirm you can navigate Issues and PRs on GitHub.com with keyboard shortcuts (`j`/`k` to move, `Enter` to open)
+- Agent output appears in Copilot Chat -- press `Alt+F2` to open Accessible View and read the full response with arrow keys before acting on it
+- If an agent produces something you do not understand, stop and learn the manual skill first from the relevant chapter
+
+</details>
+
+<details>
+<summary>Low vision users</summary>
+
+- Agent responses appear in the Copilot Chat panel -- drag the panel wider or use `Alt+F2` (Accessible View) for a larger, cleaner reading pane
+- Each agent's instructions are in a `.agent.md` file you can open in VS Code and read at your preferred zoom level before invoking the agent
+- The agent ecosystem table in Section 3 uses standard Markdown tables that scale with your editor font size
+
+</details>
+
+<details>
+<summary>Sighted users</summary>
+
+- Each agent has a descriptive name prefixed with `@` -- look for the agent file in `.github/agents/` in the Explorer sidebar to read its full instructions before using it
+- Agent responses appear in the Copilot Chat panel on the right; code blocks have Copy and Insert buttons for quick use
+- The three-team organization (GitHub Workflow, Accessibility, Developer Tools) maps to different colored badge labels in the agent table
+
+</details>
+
 
 ## 2. Setup and Configuration
 
@@ -538,6 +567,35 @@ When creating a release (Releases tab → Draft a new release), GitHub provides 
 
 This directly connects to the `/draft-release` slash command in Accessibility Agents - use the browser button for one-click generation, or use the agent when you want to customize the structure and add narrative context.
 
+### Learning Cards: Setup and Configuration
+
+<details>
+<summary>Screen reader users</summary>
+
+- Run the installer command in the VS Code terminal (`Ctrl+\``) -- it announces progress as it copies agent files to `.github/agents/`
+- After installation, press `Ctrl+Shift+E` to open the Explorer and navigate to `.github/agents/` to verify agent files are present
+- Edit `.github/agents/preferences.md` to configure your username, repositories, and notification preferences -- it is a standard Markdown file
+
+</details>
+
+<details>
+<summary>Low vision users</summary>
+
+- The installer creates files in `.github/agents/` and `.github/prompts/` -- verify in the Explorer sidebar that these folders appeared
+- Open `preferences.md` in the editor to set your configuration -- use `Ctrl+=` to zoom if the YAML frontmatter is hard to read
+- Agent files use `.agent.md` extension -- they appear alongside regular Markdown files in the Explorer but are distinguished by their extension
+
+</details>
+
+<details>
+<summary>Sighted users</summary>
+
+- After installation, two new folders appear in `.github/`: `agents/` (55 `.agent.md` files) and `prompts/` (54+ `.prompt.md` files)
+- Open `preferences.md` to customize your settings -- it controls which repositories agents query and how results are formatted
+- The agent files are readable Markdown documents -- open any one to see its instructions, responsibilities, and guardrails
+
+</details>
+
 
 ## 3. The Ecosystem: 55 Agents, 3 Teams, 5 Platforms
 
@@ -661,6 +719,35 @@ The project roadmap includes:
 - **Multi-language support** - agent instructions in languages beyond English
 
 **Your contribution could be the next item that ships.** Every agent started as one person's idea and one pull request.
+
+### Learning Cards: The Agent Ecosystem
+
+<details>
+<summary>Screen reader users</summary>
+
+- The three team tables use standard Markdown table format -- navigate with `T` (NVDA/JAWS) to jump between tables, then `Arrow` keys to read cells
+- Agent names start with `@` -- type `@` followed by the agent name in Copilot Chat to invoke it (e.g., `@daily-briefing`)
+- Use `Ctrl+Shift+O` (symbol outline) in any agent file to navigate between its YAML frontmatter sections (Purpose, Responsibilities, Guardrails)
+
+</details>
+
+<details>
+<summary>Low vision users</summary>
+
+- The agent tables are dense -- use `Ctrl+=` to increase font size or open the file in Markdown Preview (`Ctrl+Shift+V`) for cleaner rendering
+- Each team has a distinct table: Team 1 (Accessibility, 26 agents), Team 2 (GitHub Workflow, 15 agents), Team 3 (Developer Tools, 14 agents)
+- Agent files in `.github/agents/` have descriptive filenames that match the `@agent-name` -- browse them in the Explorer to find specific agents
+
+</details>
+
+<details>
+<summary>Sighted users</summary>
+
+- Browse the tables to find agents matching your interests -- the "What It Does" column gives a one-line summary of each agent's purpose
+- Agent names are clickable in Copilot Chat after typing `@` -- start typing to fuzzy-match available agents
+- The three teams are visually separated by headings: Accessibility, GitHub Workflow, and Developer Tools
+
+</details>
 
 
 ## 4. Agents in Detail - Hands-On Reference
@@ -1189,6 +1276,35 @@ Load accessibility tracking configuration from `.github/agents/preferences.md`
 ```
 
 **This is how you learn to write your own.** Copy an existing file, edit the instructions, save it with a new name - you have just created a new slash command for your fork.
+
+### Learning Cards: Slash Commands and Prompts
+
+<details>
+<summary>Screen reader users</summary>
+
+- Type `/` in Copilot Chat to see all available slash commands -- your screen reader announces each command name as you arrow through the list
+- Slash commands are defined in `.github/prompts/` as `.prompt.md` files -- open them in the Explorer to read what each command does before using it
+- Create your own command by copying an existing `.prompt.md` file, renaming it, and editing the instructions -- no code required
+
+</details>
+
+<details>
+<summary>Low vision users</summary>
+
+- The `/` command menu appears as a dropdown list in Copilot Chat -- it scales with VS Code's font and zoom settings
+- Each command has a short description visible in the dropdown; use `Ctrl+=` to zoom if the text is too small
+- Open the `.prompt.md` file in the editor to read the full command definition at your preferred zoom level
+
+</details>
+
+<details>
+<summary>Sighted users</summary>
+
+- Type `/` in Copilot Chat to see a categorized list of available commands -- scroll or type to filter
+- The command table in this section lists the most useful workshop commands with usage examples
+- Each `.prompt.md` file in `.github/prompts/` corresponds to one slash command -- browse them in the Explorer to discover all available commands
+
+</details>
 
 
 ## 6. Contributing to the Ecosystem
@@ -1994,6 +2110,35 @@ In practice, a single task often spans multiple teams:
 - You fix the issue using patterns from `@desktop-a11y-specialist` (Developer Tools) if it is a desktop application, or directly in the HTML if it is a web project.
 
 No single agent covers the entire workflow. The teams complement each other: GitHub Workflow agents surface *what happened*, Accessibility agents evaluate *whether it is correct*, and Developer Tools agents help you *implement the fix*.
+
+### Learning Cards: Teams and Orchestration
+
+<details>
+<summary>Screen reader users</summary>
+
+- Orchestrator agents like `@accessibility-lead` coordinate multi-agent workflows -- invoke one and it delegates to specialists, announcing which agent it is calling
+- Multi-agent output appears in sequence in Copilot Chat -- press `Alt+F2` after each response to read it in Accessible View before the next agent responds
+- The three teams are GitHub Workflow (what happened), Accessibility (is it correct), and Developer Tools (fix it) -- choose your entry point based on your current task
+
+</details>
+
+<details>
+<summary>Low vision users</summary>
+
+- Orchestrator responses can be long -- use Accessible View (`Alt+F2`) or widen the Chat panel to read comfortably at high zoom
+- The workflow diagrams in this section are described in text -- no visual-only content is required to understand the agent coordination pattern
+- Each team's agents are listed in the tables in Section 3 -- refer back there to find the right specialist agent
+
+</details>
+
+<details>
+<summary>Sighted users</summary>
+
+- The coordination pattern follows a pipeline: Workflow agent surfaces an issue, Accessibility agent evaluates it, Developer Tools agent fixes it
+- Orchestrator agents produce structured output with headings for each delegated agent's findings -- scan the headings for a quick overview
+- The four orchestrator agents (`@accessibility-lead`, `@security-lead`, `@documentation-lead`, `@project-lead`) each manage a different concern domain
+
+</details>
 
 ### Orchestrator Agents
 

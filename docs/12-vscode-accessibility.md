@@ -119,6 +119,35 @@ In any Markdown file, `Ctrl+Shift+O` opens a symbol picker populated by every he
 | Delete file | `Delete` |
 | New file | `Ctrl+N` (then save with `Ctrl+S`) |
 
+### Learning Cards: Keyboard Navigation and Find
+
+<details>
+<summary>Screen reader users</summary>
+
+- Press `Ctrl+M` to toggle Tab focus mode -- when on, `Tab` moves focus between UI elements instead of inserting a tab character
+- Use `Ctrl+G` then type a line number to jump directly to any line; type `10:5` to land at line 10, column 5
+- In the Find widget (`Ctrl+F`), match count is announced as you type (e.g., "3 of 12 matches"); press `F3` / `Shift+F3` to step through results
+
+</details>
+
+<details>
+<summary>Low vision users</summary>
+
+- Press `Alt+Z` to toggle word wrap so long lines stay visible without horizontal scrolling at high zoom
+- Increase font size with `Ctrl+=` (Mac: `Cmd+=`) independently of your OS magnification for sharper text rendering
+- The Find widget highlights all matches in the scrollbar gutter with colored ticks -- look for the bright orange markers
+
+</details>
+
+<details>
+<summary>Sighted users</summary>
+
+- The breadcrumb bar above the editor (`Ctrl+Shift+;`) shows your file path and symbol hierarchy -- click any segment to navigate
+- `Ctrl+P` opens the Quick Open file picker with fuzzy matching -- type a few letters of any filename to jump there instantly
+- Use `Ctrl+Shift+O` in Markdown files to see all headings as a navigable symbol list
+
+</details>
+
 
 ---
 
@@ -450,6 +479,35 @@ This gives you the complete picture of what changed, in reading order, without v
 
 With `accessibility.signals.diffLineInserted` and `accessibility.signals.diffLineDeleted` both set to `on` in Settings, VS Code plays a distinct tone when your cursor moves over an added line (higher pitched) or a removed line (lower pitched). You receive change-type information through sound before the line text is announced.
 
+### Learning Cards: Accessible Help, View, and Diff
+
+<details>
+<summary>Screen reader users</summary>
+
+- Press `Alt+H` in any VS Code panel to open Accessible Help -- it lists every keyboard shortcut available in your current context
+- Press `Alt+F2` to open Accessible View for Copilot responses, hover documentation, or terminal output -- read the full content with arrow keys
+- In a diff view, press `F7` to enter the Accessible Diff Viewer and step through changes hunk by hunk with line-level change-type announcements
+
+</details>
+
+<details>
+<summary>Low vision users</summary>
+
+- Accessible View (`Alt+F2`) renders Copilot responses as plain text in a scrollable pane -- easier to read at high zoom than the streaming chat panel
+- In diff views, enable `accessibility.signals.diffLineInserted` for an audible cue on added lines so you do not rely solely on color
+- The Accessible Diff Viewer text uses the same font size as your editor -- zoom settings apply automatically
+
+</details>
+
+<details>
+<summary>Sighted users</summary>
+
+- The diff editor shows added lines in green and removed lines in red, with a gutter icon indicating the change type
+- Click the inline "Copy" or "Insert at Cursor" buttons on code blocks in Copilot Chat responses for quick use
+- Use the minimap colored regions on the right to spot clusters of changes in long diffs at a glance
+
+</details>
+
 
 ---
 
@@ -751,6 +809,35 @@ Start with **Help: List Signal Sounds** to preview each tone and build your pers
 If you previously configured the older `audioCues.*` settings (deprecated since VS Code 1.85), VS Code automatically maps them to the new `accessibility.signals.*` namespace. However, the new settings offer the dual sound/announcement structure that the old settings did not have. Review your configured signals using **Help: List Signal Sounds** and **Help: List Signal Announcements** to take advantage of the new independent controls.
 
 **Note:** `minimap.enabled: false` in the recommended profile removes the visual minimap that adds no value for screen reader users and can cause some accessibility tools to announce additional regions.
+
+### Learning Cards: Accessibility Signals
+
+<details>
+<summary>Screen reader users</summary>
+
+- Run `Help: List Signal Sounds` from the Command Palette (`Ctrl+Shift+P`) to preview every available signal tone and decide which to enable
+- Enable `accessibility.signals.lineHasError` so you hear an immediate tone when your cursor lands on a line with an error -- no need to open the Problems panel
+- Set signals to `"announcement"` channel if you prefer spoken labels (e.g., "error on line") over tones
+
+</details>
+
+<details>
+<summary>Low vision users</summary>
+
+- Signals provide a second channel of awareness -- hearing a "task completed" chime means you can keep your magnifier focused on your editor instead of watching the terminal
+- Enable `accessibility.signals.chatResponseReceived` to get an audible notification when Copilot finishes generating a response
+- Pair error signals with High Contrast themes so both color and sound reinforce error locations
+
+</details>
+
+<details>
+<summary>Sighted users</summary>
+
+- Accessibility signals are opt-in -- open Settings (`Ctrl+,`) and search `accessibility.signals` to see all available signals with toggle switches
+- Enable diff line signals (`diffLineInserted`, `diffLineDeleted`) for an extra audio channel during code review
+- The Status Bar shows a speaker icon when signals are active; click it for quick access to signal settings
+
+</details>
 
 
 ---
