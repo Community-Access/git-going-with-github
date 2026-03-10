@@ -21,15 +21,20 @@
 6. [The New Appendix Structure](#the-new-appendix-structure)
 7. [The Classroom Engine](#the-classroom-engine)
 8. [Challenge Artifacts and Solution Files](#challenge-artifacts-and-solution-files)
-9. [Failsafe Design System](#failsafe-design-system)
-10. [Learning Cards System](#learning-cards-system)
-11. [Multi-Tool-Path System](#multi-tool-path-system)
-12. [Cross-Linking Strategy](#cross-linking-strategy)
-13. [Authoritative Source Registry](#authoritative-source-registry)
-14. [GitHub Skills Integration Strategy](#github-skills-integration-strategy)
-15. [Consolidation Ledger](#consolidation-ledger)
-16. [File Rename Map](#file-rename-map)
-17. [Implementation Roadmap](#implementation-roadmap)
+9. [GitHub Classroom Setup Artifacts](#github-classroom-setup-artifacts)
+10. [Supplementary File Rebuild Inventory](#supplementary-file-rebuild-inventory)
+11. [Failsafe Design System](#failsafe-design-system)
+12. [Learning Cards System](#learning-cards-system)
+13. [Multi-Tool-Path System](#multi-tool-path-system)
+14. [Cross-Linking Strategy](#cross-linking-strategy)
+15. [Authoritative Source Registry](#authoritative-source-registry)
+16. [GitHub Skills Integration Strategy](#github-skills-integration-strategy)
+17. [Consolidation Ledger](#consolidation-ledger)
+18. [File Rename Map](#file-rename-map)
+19. [Implementation Roadmap](#implementation-roadmap)
+20. [Resolved Decisions](#resolved-decisions)
+21. [Celebration Moments](#celebration-moments)
+22. [Summary: The Numbers](#summary-the-numbers)
 
 ---
 
@@ -586,6 +591,269 @@ Solution files (curriculum repo)
 
 ---
 
+## GitHub Classroom Setup Artifacts
+
+GitHub Classroom is the assignment distribution engine. It clones template repos, runs autograding, and tracks submissions. But every assignment requires a facilitator to fill in UI fields -- title, description, autograding config, deadline, roster. If those values live only in someone's head, the workshop is not reproducible.
+
+### The Problem This Solves
+
+The Classroom UI has no import/export for assignment definitions. Every new cohort requires a facilitator to manually create two assignments, configure autograding tests, import a roster, and set deadlines. Without pre-written copy-paste artifacts, each facilitator reinvents the setup and introduces inconsistencies.
+
+### Architecture: The `classroom/` Directory
+
+A new `classroom/` directory in the ggg repo contains everything a facilitator needs to stand up a cohort in the classroom.github.com UI. Students never see this directory -- it is facilitator-only infrastructure.
+
+```
+classroom/
+  README.md                          # Step-by-step setup guide
+  assignment-day1-you-belong-here.md  # Copy-paste assignment description
+  assignment-day2-you-can-build-this.md
+  autograding-day1.json               # Autograding test definitions
+  autograding-day2.json
+  roster-template.csv                 # Blank roster with required columns
+  cohort-checklist.md                 # Pre-workshop verification checklist
+  teardown-checklist.md               # Post-workshop cleanup steps
+```
+
+### Assignment Description Files
+
+Each assignment file contains the exact Markdown text the facilitator pastes into the Classroom "Assignment description" field:
+
+| File | Classroom Field | Contains |
+|---|---|---|
+| `assignment-day1-you-belong-here.md` | Assignment description | Objectives, challenge list (1-9), links to chapters in ggg repo, evidence expectations, buddy system intro, "If You Get Stuck" links, accessibility notes |
+| `assignment-day2-you-can-build-this.md` | Assignment description | Objectives, challenge list (10-16), links to chapters, autograded challenge callouts, capstone overview, fork workflow instructions |
+
+Each file also includes a **metadata header** (not pasted into the UI) documenting:
+
+```
+<!-- Classroom Setup Metadata
+Assignment title: You Belong Here
+Template repository: Community-Access/learning-room
+Visibility: Private (student repos are private)
+Grant admin access: No
+Deadline: [Set per cohort]
+Group assignment: No (individual)
+Enable feedback pull requests: Yes
+Autograding: See autograding-day1.json
+Supported editor: github.dev, VS Code, GitHub Desktop, CLI
+-->
+```
+
+### Autograding Configuration Files
+
+GitHub Classroom autograding tests are configured in the UI with: test name, setup command, run command, timeout, points. These JSON files document every test so the facilitator can recreate them exactly:
+
+**`autograding-day1.json`:**
+
+| Test Name | Run Command | Points | Timeout | What It Checks |
+|---|---|---|---|---|
+| Conflict Resolution | `grep -rL '<<<<<<< ' docs/ && echo PASS` | 10 | 30s | No conflict markers left in any file |
+
+**`autograding-day2.json`:**
+
+| Test Name | Run Command | Points | Timeout | What It Checks |
+|---|---|---|---|---|
+| Local Commit Exists | `git log --oneline --branches --not --remotes \| head -1` | 10 | 15s | At least one local commit on a non-default branch |
+| Custom Template | `test -f .github/ISSUE_TEMPLATE/custom-*.yml && echo PASS` | 15 | 15s | A custom YAML issue template exists |
+| Agent File Valid | Script checks agents/ for valid frontmatter | 60 | 60s | Agent .md file exists with required fields |
+
+Each JSON file is structured so a future Classroom API (if one becomes available for assignment creation) could consume it directly.
+
+### Roster Template
+
+`roster-template.csv` contains the columns GitHub Classroom expects:
+
+```csv
+identifier,github_username,name,email
+```
+
+The README explains: identifier is the school or org ID, github_username is what matters for repo creation, name/email are optional display fields. For this workshop, identifier and github_username are typically the same (GitHub username).
+
+### Setup Guide (`README.md`)
+
+Step-by-step walkthrough for a facilitator creating a new cohort:
+
+1. **Create a Classroom** at classroom.github.com linked to the Community-Access org
+2. **Import roster** from `roster-template.csv` (filled with this cohort's students)
+3. **Create Assignment 1** -- paste title, description, set template repo, configure Day 1 autograding tests
+4. **Create Assignment 2** -- paste title, description, set template repo, configure Day 2 autograding tests
+5. **Share invite links** -- each assignment generates a unique invite URL; add these to DAY1_AGENDA.md and DAY2_AGENDA.md
+6. **Verify** -- accept both assignments with a dummy account, confirm repo creation, confirm autograding runs
+
+### Teardown Checklist (`teardown-checklist.md`)
+
+Post-workshop steps to archive a cohort cleanly:
+
+- Archive student repos (do not delete -- students may want ongoing access)
+- Export grades via `gh classroom assignment-grades`
+- Save roster + grades CSV to `.github/data/cohort-[name]-[date].csv` in ggg repo
+- Rotate any tokens or secrets used in autograding workflows
+- Debrief notes: what worked, what to change for next cohort
+
+### Automation Boundary
+
+The GitHub Classroom REST API (as of 2026) is **read-only** for assignments. It supports:
+
+- `GET /classrooms` -- list classrooms
+- `GET /classrooms/{id}/assignments` -- list assignments
+- `GET /assignments/{id}` -- get assignment details
+- `GET /assignments/{id}/accepted_assignments` -- list student repos
+- `GET /assignments/{id}/grades` -- export grades
+
+The `gh classroom` CLI extension adds: `list`, `view`, `assignments`, `accepted-assignments`, `assignment-grades`, `clone student-repos`, `clone starter-repo`.
+
+**What CAN be automated** (via `gh` CLI + GitHub API):
+
+| Task | How | Script location |
+|---|---|---|
+| Export grades after workshop | `gh classroom assignment-grades` | `classroom/scripts/export-grades.sh` |
+| Clone all student repos for review | `gh classroom clone student-repos` | `classroom/scripts/clone-student-repos.sh` |
+| Verify template repo matches spec | `gh api` to check file existence | `classroom/scripts/verify-template.sh` |
+| Import roster | `gh classroom` (if org has API access) | Manual fallback: CSV upload in UI |
+| Archive student repos | `gh api` PATCH to set archived=true | `classroom/scripts/archive-cohort.sh` |
+
+**What CANNOT be automated** (requires classroom.github.com UI):
+
+- Creating a classroom (one-time per org)
+- Creating assignments (no POST endpoint exists)
+- Configuring autograding tests (no write API exists)
+- Generating assignment invite links (created on assignment creation)
+- Setting deadlines (part of assignment creation)
+
+The `classroom/` directory closes this gap by making the manual steps copy-paste reproducible rather than freeform.
+
+---
+
+## Supplementary File Rebuild Inventory
+
+The curriculum restructure changes every chapter number, appendix letter, challenge number, and file path. Every supplementary file that references ANY of these must be rewritten from scratch. This is not a search-and-replace job -- most of these files also have structural problems (outdated information, wrong architecture descriptions, stale references to workflows that changed). They will be recreated, not patched.
+
+### The Rule
+
+**Every supplementary file is regenerated after the chapter/appendix content is final.** No supplementary file is updated during Phases 1-6. Phase 7 and Phase 8 (new) handle all supplementary files. This prevents churn from editing a file that references chapter numbers that are still moving.
+
+### Category 1: Workshop Operations Files (root of ggg repo)
+
+These files live at the repo root and drive the facilitator experience. All 28 must be rewritten.
+
+| File | Purpose | Depends On |
+|---|---|---|
+| `DAY1_AGENDA.md` | Minute-by-minute Day 1 schedule with chapter refs, challenge refs, Classroom invite links | Chapter sequence, challenge map, Classroom assignment URLs |
+| `DAY2_AGENDA.md` | Minute-by-minute Day 2 schedule | Chapter sequence, challenge map, GitHub Skills links |
+| `FACILITATOR.md` | Master facilitator guide | Chapter sequence, challenge map, appendix letters, classroom architecture |
+| `FACILITATOR_ASSESSMENT.md` | Rubric for evaluating student work | Challenge map, evidence types, autograding points |
+| `FACILITATOR_CHALLENGES.md` | Facilitator-only challenge answer key | Challenge map, solution file paths |
+| `FAQ.md` | Student-facing FAQ | Chapter refs, tool paths, common errors |
+| `TROUBLESHOOTING.md` | Error resolution guide | Tool paths, workflow names, Git commands |
+| `QUICK_REFERENCE.md` | One-page cheat sheet | Key Git commands, GitHub URLs, VS Code shortcuts |
+| `CONTRIBUTING.md` | Contributor guide for ggg repo itself | File structure, branch conventions |
+| `CODE_OF_CONDUCT.md` | Code of conduct | Minimal deps (review only) |
+| `BUILD.md` | Build/deploy instructions | File structure, workflow names |
+| `ANNOUNCEMENT.md` | Workshop announcement template | Dates, prereqs, registration link |
+| `REGISTER.md` | Registration instructions | Registration workflow, issue template |
+| `REGISTRATION-ADMIN.md` | Admin guide for processing registrations | Data files, workflow, roster format |
+| `ENROLLMENT_SUMMARY.md` | Cohort enrollment stats | Roster data |
+| `STUDENT_MANAGEMENT.md` | Student tracking procedures | Classroom, roster, progress tracker |
+| `PROGRESS_TRACKER.md` | Challenge completion tracker template | Challenge map, evidence types |
+| `WORKSHOP_READINESS.md` | Pre-workshop readiness checklist | All infrastructure files |
+| `PODCASTS.md` | Podcast episode guide | Chapter sequence for episode mapping |
+| `ACCESSIBILITY_TESTING.md` | Accessibility testing guide for materials | Chapter/appendix files |
+| `ADMIN_TEST_PLAN.md` | Admin test plan for automation | Workflow names, script paths |
+| `CHALLENGE_SYSTEM_ARCHITECTURE.md` | Challenge system design doc | Challenge map, evidence types, autograding |
+| `COMPREHENSIVE_VALIDATION_AUDIT.md` | Validation audit report | All file paths |
+| `GITHUB_PROPOSAL.md` | Original workshop proposal | Review only -- may archive |
+| `COMING_SOON.md` | Placeholder page | Minimal deps |
+| `LEARNING_ROOM_AUTOMATION_SUMMARY.md` | Automation system overview | Workflow names, script names |
+| `REPOSITORY_SECURITY.md` | Security policy for repos | Repo architecture |
+| `SECURITY.md` | Security vulnerability reporting | Minimal deps |
+
+**Decision for each file:** Rewrite from scratch using final chapter/appendix/challenge numbering. Files marked "review only" or "may archive" are evaluated during Phase 8 -- if they are no longer needed, they are deleted rather than rewritten.
+
+### Category 2: Learning-Room Guide Files (`learning-room/.github/`)
+
+These 6 Markdown files tell facilitators and students how the learning-room automation works. All reference old challenge numbers, old workflow names, and old script behavior.
+
+| File | Purpose | Action |
+|---|---|---|
+| `FACILITATOR_GUIDE.md` | Facilitator quick-reference for bot behavior | Rewrite: new challenge numbers, new validation behavior, new autograders |
+| `SETUP_AND_MAINTENANCE.md` | Technical setup for learning-room automation | Rewrite: new workflow inventory, new script inventory, new file structure |
+| `IMPLEMENTATION_GUIDE.md` | Step-by-step deployment of automation stack | Rewrite: new deployment steps matching restructured workflows |
+| `DEPLOYMENT_VALIDATION.md` | Checklist for verifying deployment | Rewrite: new test cases for each challenge |
+| `STUDENT_GUIDE.md` | Student-facing automation guide | Rewrite: new challenge progression, new bot responses |
+| `LEARNING_PATHS.md` | Skill progression documentation | Rewrite: new skill levels matching restructured challenges |
+
+### Category 3: Learning-Room Validation Scripts (`learning-room/.github/scripts/`)
+
+These 6 scripts power the PR validation bot and content checks. They contain hardcoded chapter numbers, file paths, and validation rules.
+
+| Script | Language | Action |
+|---|---|---|
+| `validate-pr.js` | Node.js | Rewrite: new file paths, new challenge-aware validation, new chapter refs |
+| `validation-report.js` | Node.js | Rewrite: new report format, new section labels |
+| `comment-responder.js` | Node.js | Rewrite: new help topics, new challenge references |
+| `check_links.py` | Python | Rewrite: new expected link targets |
+| `check_markdown.py` | Python | Rewrite: new expected heading patterns |
+| `check_accessibility.py` | Python | Rewrite: new expected alt text patterns |
+
+### Category 4: Main Repo Workflows (`.github/workflows/`)
+
+| Workflow | Action |
+|---|---|
+| `learning-room-pr-bot.yml` | Rewrite: updated trigger paths, new validation logic |
+| `learning-room-validation.yml` | Rewrite: updated check scripts |
+| `skills-progression.yml` | Rewrite: new skill levels, new badge definitions |
+| `student-grouping.yml` | Rewrite: new roster format |
+| `registration.yml` | Review: may need registration template updates |
+| `automation-tests.yml` | Rewrite: new test expectations |
+| `build-epub.yml` | Rewrite: new chapter file list |
+| `deploy-pages.yml` | Rewrite: new file structure for static site |
+| `generate-diagram-svgs.yml` | Review: diagram file paths |
+| `sync-docs-to-wiki.yml` | Rewrite: new chapter/appendix file list |
+| `create-release.yml` | Review: may need new release artifact list |
+
+### Category 5: Main Repo Data Files (`.github/data/`)
+
+| File | Action |
+|---|---|
+| `challenge-progression.json` | Rewrite: new challenge IDs, new skill levels, new badge names |
+| `student-roster.json` | Rewrite: new schema matching restructured cohort model |
+| `progress-tracker-template.json` | Rewrite: new challenge IDs and evidence types |
+| `peer-reviewer-assignments.json` | Review: structure may be reusable |
+
+### Category 6: Main Repo Issue Templates (`.github/ISSUE_TEMPLATE/`)
+
+| Template | Action |
+|---|---|
+| `workshop-registration.yml` | Review: update to reference new URLs |
+| `feedback-workshop.yml` | Rewrite: new challenge references in feedback fields |
+| `challenge-hub.md` | Rewrite: new challenge list |
+| All other templates | Review for stale references |
+
+### Category 7: Main Repo Test Suite (`.github/scripts/__tests__/`)
+
+| Test File | Action |
+|---|---|
+| `validate-pr.chapter4.test.js` | Delete and replace: old chapter numbers |
+| `validate-pr.chapter5-6-11.test.js` | Delete and replace: old chapter numbers |
+| `validate-pr.edge-cases.test.js` | Rewrite with new edge cases |
+| `validation-integration.test.js` | Rewrite: new integration expectations |
+| `validation-report.test.js` | Rewrite: new report format assertions |
+| `comment-responder.test.js` | Rewrite: new response expectations |
+
+### Category 8: Podcast System (`podcasts/`)
+
+Podcast episodes are mapped to chapters. The episode generation and manifest system references chapter numbers.
+
+| File/System | Action |
+|---|---|
+| `manifest.json` | Rewrite: episode-to-chapter mapping |
+| `feed.xml` | Regenerated from manifest |
+| `transcripts/` | Review: episode transcripts may reference old chapter titles |
+| Build scripts | Review: `build-episode.js`, `generate-site.js` for chapter path references |
+
+---
+
 ## Failsafe Design System
 
 Adopted from the classroom plan and integrated into every chapter.
@@ -1037,7 +1305,7 @@ Complete mapping from old filenames to new filenames. Every cross-reference, the
 
 ## Implementation Roadmap
 
-Seven phases. Each phase produces a working, consistent state. No phase depends on uncommitted work from another phase.
+Eight phases. Each phase produces a working, consistent state. No phase depends on uncommitted work from another phase.
 
 ### Phase 1: Scaffold (Week 1)
 
@@ -1173,6 +1441,114 @@ Update the classroom delivery document, create all challenge artifacts, and veri
 - [ ] Verify all 6 GitHub Skills courses launch correctly from agenda links
 - [ ] Update learning-room template repo to match new structure
 
+### Phase 8: GitHub Classroom Artifacts and Supplementary Rebuild (Weeks 10-12)
+
+All supplementary files are rewritten AFTER chapter/appendix content is final. No supplementary file is touched before this phase.
+
+**GitHub Classroom setup artifacts (`classroom/` directory in ggg):**
+
+- [ ] Create `classroom/README.md` -- step-by-step Classroom setup guide
+- [ ] Create `classroom/assignment-day1-you-belong-here.md` -- copy-paste assignment description
+- [ ] Create `classroom/assignment-day2-you-can-build-this.md` -- copy-paste assignment description
+- [ ] Create `classroom/autograding-day1.json` -- test definitions for Day 1 autograder
+- [ ] Create `classroom/autograding-day2.json` -- test definitions for Day 2 autograder
+- [ ] Create `classroom/roster-template.csv` -- blank roster with required columns
+- [ ] Create `classroom/cohort-checklist.md` -- pre-workshop verification checklist
+- [ ] Create `classroom/teardown-checklist.md` -- post-workshop cleanup steps
+- [ ] Create `classroom/scripts/export-grades.sh` -- grade export via `gh classroom`
+- [ ] Create `classroom/scripts/clone-student-repos.sh` -- bulk clone for facilitator review
+- [ ] Create `classroom/scripts/verify-template.sh` -- verify learning-room template matches spec
+- [ ] Create `classroom/scripts/archive-cohort.sh` -- archive student repos post-workshop
+- [ ] Test: create a test classroom, paste both assignment descriptions, verify autograding configs
+- [ ] Test: run all 4 scripts against the test classroom
+
+**Workshop operations files (root of ggg repo) -- rewrite all 28:**
+
+- [ ] Rewrite `DAY1_AGENDA.md` with new chapter sequence, challenge map, Classroom invite link placeholders
+- [ ] Rewrite `DAY2_AGENDA.md` with new chapter sequence, GitHub Skills links, capstone timeline
+- [ ] Rewrite `FACILITATOR.md` as master facilitator guide
+- [ ] Rewrite `FACILITATOR_ASSESSMENT.md` with new challenge rubric and autograding points
+- [ ] Rewrite `FACILITATOR_CHALLENGES.md` as facilitator answer key
+- [ ] Rewrite `FAQ.md` with new chapter refs and tool paths
+- [ ] Rewrite `TROUBLESHOOTING.md` with new error scenarios
+- [ ] Rewrite `QUICK_REFERENCE.md` one-page cheat sheet
+- [ ] Rewrite `CONTRIBUTING.md` with new file structure and branch conventions
+- [ ] Rewrite `BUILD.md` with new build/deploy steps
+- [ ] Rewrite `REGISTER.md`, `REGISTRATION-ADMIN.md`, `ENROLLMENT_SUMMARY.md`
+- [ ] Rewrite `STUDENT_MANAGEMENT.md`, `PROGRESS_TRACKER.md`
+- [ ] Rewrite `WORKSHOP_READINESS.md` as pre-workshop checklist referencing all new artifacts
+- [ ] Rewrite `PODCASTS.md` with new episode-to-chapter mapping
+- [ ] Rewrite `ANNOUNCEMENT.md` with new prereqs and schedule
+- [ ] Rewrite `ACCESSIBILITY_TESTING.md`, `ADMIN_TEST_PLAN.md`
+- [ ] Rewrite `CHALLENGE_SYSTEM_ARCHITECTURE.md` to match new challenge map
+- [ ] Rewrite `LEARNING_ROOM_AUTOMATION_SUMMARY.md`
+- [ ] Review `CODE_OF_CONDUCT.md`, `SECURITY.md`, `REPOSITORY_SECURITY.md` (minimal deps, likely unchanged)
+- [ ] Evaluate `GITHUB_PROPOSAL.md`, `COMING_SOON.md`, `COMPREHENSIVE_VALIDATION_AUDIT.md` for deletion
+
+**Learning-room guide files -- rewrite all 6:**
+
+- [ ] Rewrite `learning-room/.github/FACILITATOR_GUIDE.md`
+- [ ] Rewrite `learning-room/.github/SETUP_AND_MAINTENANCE.md`
+- [ ] Rewrite `learning-room/.github/IMPLEMENTATION_GUIDE.md`
+- [ ] Rewrite `learning-room/.github/DEPLOYMENT_VALIDATION.md`
+- [ ] Rewrite `learning-room/.github/STUDENT_GUIDE.md`
+- [ ] Rewrite `learning-room/.github/LEARNING_PATHS.md`
+
+**Learning-room validation scripts -- rewrite all 6:**
+
+- [ ] Rewrite `learning-room/.github/scripts/validate-pr.js`
+- [ ] Rewrite `learning-room/.github/scripts/validation-report.js`
+- [ ] Rewrite `learning-room/.github/scripts/comment-responder.js`
+- [ ] Rewrite `learning-room/.github/scripts/check_links.py`
+- [ ] Rewrite `learning-room/.github/scripts/check_markdown.py`
+- [ ] Rewrite `learning-room/.github/scripts/check_accessibility.py`
+
+**Main repo workflows -- rewrite or review all 11:**
+
+- [ ] Rewrite `.github/workflows/learning-room-pr-bot.yml`
+- [ ] Rewrite `.github/workflows/learning-room-validation.yml`
+- [ ] Rewrite `.github/workflows/skills-progression.yml`
+- [ ] Rewrite `.github/workflows/student-grouping.yml`
+- [ ] Rewrite `.github/workflows/automation-tests.yml`
+- [ ] Rewrite `.github/workflows/build-epub.yml` with new chapter file list
+- [ ] Rewrite `.github/workflows/deploy-pages.yml` with new file structure
+- [ ] Rewrite `.github/workflows/sync-docs-to-wiki.yml` with new file list
+- [ ] Review `.github/workflows/registration.yml`, `create-release.yml`, `generate-diagram-svgs.yml`
+
+**Main repo data files and issue templates:**
+
+- [ ] Rewrite `.github/data/challenge-progression.json`
+- [ ] Rewrite `.github/data/student-roster.json` schema
+- [ ] Rewrite `.github/data/progress-tracker-template.json`
+- [ ] Rewrite `.github/ISSUE_TEMPLATE/challenge-hub.md`
+- [ ] Rewrite `.github/ISSUE_TEMPLATE/feedback-workshop.yml`
+- [ ] Review all other issue templates for stale references
+
+**Test suite -- rewrite all 6:**
+
+- [ ] Delete and replace `.github/scripts/__tests__/validate-pr.chapter4.test.js` for new chapter numbers
+- [ ] Delete and replace `.github/scripts/__tests__/validate-pr.chapter5-6-11.test.js` for new chapter numbers
+- [ ] Rewrite `.github/scripts/__tests__/validate-pr.edge-cases.test.js`
+- [ ] Rewrite `.github/scripts/__tests__/validation-integration.test.js`
+- [ ] Rewrite `.github/scripts/__tests__/validation-report.test.js`
+- [ ] Rewrite `.github/scripts/__tests__/comment-responder.test.js`
+
+**Podcast system:**
+
+- [ ] Rewrite `podcasts/manifest.json` episode-to-chapter mapping
+- [ ] Regenerate `podcasts/feed.xml` from updated manifest
+- [ ] Review transcript files for old chapter title references
+- [ ] Review build scripts for chapter path references
+
+**Verification:**
+
+- [ ] Run `npm test` -- all test suites pass
+- [ ] Run `build-epub` workflow -- produces valid ePub
+- [ ] Run `deploy-pages` workflow -- site builds and all links resolve
+- [ ] Open a test PR in learning-room -- bot responds with correct new content
+- [ ] Verify all 28+ supplementary files reference only new chapter/appendix/challenge numbers
+- [ ] Grep entire repo for old chapter numbers (01-16 pattern) and old appendix letters -- zero false hits
+
 ---
 
 ## Resolved Decisions
@@ -1214,6 +1590,16 @@ For accessibility reasons: if a student has a disability that makes independent 
 Students do not need to know about accessibility-agents until Challenge 15. The facilitator introduces it at that point: "There is a second repository. It is the real agent project. You are about to explore it." The fork is either pre-created by the facilitator (recommended) or created by the student as part of Challenge 16 setup.
 
 This avoids the cognitive overload of multi-repo work on Day 1 when students are still learning what a repository IS.
+
+### 6. Where do chapters live relative to GitHub Classroom?
+
+**Decision: Chapters stay in the ggg repo only. GitHub Classroom gets assignment descriptions that link to chapters.**
+
+GitHub Classroom is an assignment distribution engine -- it clones template repos and runs autograding. It does not host reading material. The chapter .md files remain in the `git-going-with-github` repo (public, readable at the GitHub URL or a GitHub Pages site). Each assignment description in the Classroom UI links to the relevant chapters for that day.
+
+The `classroom/` directory in ggg contains pre-written assignment descriptions, autograding JSON, and setup guides that facilitators copy-paste into the Classroom UI. Students never see the `classroom/` directory. They access chapters by following links in their challenge issues and in the assignment description.
+
+This avoids duplicating teaching content across repos, eliminates sync drift between two copies of the same chapter, and keeps the learning-room focused on scaffolded practice (TODOs, challenge workspace, samples) rather than reading material.
 
 ---
 
@@ -1257,4 +1643,8 @@ From the classroom plan -- the emotional peaks where facilitators pause the room
 | Stub appendices (under 300 lines) | 7 | 0 |
 | Authoritative source links | ~20 scattered | 60+ systematically placed |
 
-The file count stays at 49. The quality per file goes up dramatically. Every chapter teaches with learning cards, tool cards, failsafe sections, and authoritative citations. Every appendix serves as a focused reference document with cross-links back to the teaching chapters. Every challenge has a starter file, an issue template, and a solution file students can compare against. The whole thing fits into GitHub Classroom like it was built for it -- because now, it was.
+| GitHub Classroom setup files | 0 | 12 (assignment descriptions, autograding JSON, roster template, setup/teardown guides, 4 automation scripts) |
+| Supplementary files to rewrite | -- | 28 root ops files + 6 learning-room guides + 6 validation scripts + 11 workflows + 4 data files + 6 test files + podcast manifest = **61+ files** |
+| Implementation phases | 7 | 8 (Phase 8: Classroom artifacts and supplementary rebuild) |
+
+The file count stays at 49 for curriculum content (chapters + appendices). The supporting infrastructure around it -- classroom setup, facilitator guides, automation, tests -- adds roughly 12 new files and requires rewriting 61+ existing files. Every chapter teaches with learning cards, tool cards, failsafe sections, and authoritative citations. Every appendix serves as a focused reference document with cross-links back to the teaching chapters. Every challenge has a starter file, an issue template, and a solution file students can compare against. The GitHub Classroom setup is copy-paste reproducible per cohort. The whole thing fits into GitHub Classroom like it was built for it -- because now, it was.
