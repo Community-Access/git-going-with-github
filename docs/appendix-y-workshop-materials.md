@@ -6,6 +6,35 @@
 
 > **Why this appendix exists:** The workshop content is available in multiple formats - Markdown source files, pre-built HTML pages, and a live GitHub Pages site. This guide explains how to access each format, download materials for offline use, and keep your copy up to date.
 
+### Learning Cards: Accessing Workshop Materials
+
+<details>
+<summary>Screen reader users</summary>
+
+- The GitHub Pages site includes skip-to-content links and ARIA landmarks -- press `D` (NVDA) or `R` (JAWS) to jump to the main content landmark on any page
+- On GitHub.com, press `T` on the repository's main page to open the file finder -- type any filename to jump directly to it without navigating the file tree
+- After cloning the repository, open it in VS Code and use the Explorer panel (`Ctrl+Shift+E`) to browse the file tree with arrow keys
+
+</details>
+
+<details>
+<summary>Low vision users</summary>
+
+- The HTML version in the `html/` folder provides the most polished reading experience with styled, navigable pages that work offline in any browser
+- For reading Markdown source files, use VS Code's built-in preview (`Ctrl+Shift+V`) which renders headings, links, and code blocks in a formatted view
+- When downloading a ZIP from GitHub, the Code button and its dropdown appear near the top of the repository page -- look for the green button
+
+</details>
+
+<details>
+<summary>Sighted users</summary>
+
+- Three ways to access materials: GitHub Pages site (online, styled), GitHub.com (browse rendered Markdown), or local clone (offline, editable)
+- The repository's `docs/` folder contains all Markdown source files; the `html/` folder contains pre-built HTML versions of every page
+- Use `git clone` for a full copy you can update with `git pull` -- ZIP downloads are snapshots that do not update automatically
+
+</details>
+
 
 ## Table of Contents
 
@@ -184,6 +213,35 @@ Download a fresh ZIP from the repository and replace your local copy. There is n
 | Quick lookup of one section | **GitHub.com** | Navigate directly in the browser, no download |
 | Archiving a copy | **ZIP download** or **Git clone** | Full snapshot of all materials |
 | Staying updated long-term | **Git clone** | One-command updates with `git pull` |
+
+### Learning Cards: Choosing the Right Format
+
+<details>
+<summary>Screen reader users</summary>
+
+- For workshop use, the GitHub Pages HTML site is the most accessible option -- it includes skip links, landmarks, and proper heading structure in every page
+- For offline reference, the local HTML files in the `html/` folder work identically to the online version with full navigation between pages
+- For contributing edits, work with the Markdown source files in `docs/` using VS Code -- these are the canonical source that generates everything else
+
+</details>
+
+<details>
+<summary>Low vision users</summary>
+
+- GitHub Pages and local HTML both support browser zoom to 200%+ without layout breakage -- use whichever gives you a better reading experience
+- VS Code's Markdown preview inherits your editor theme -- if you use a high-contrast theme, the preview will match
+- If viewing on GitHub.com, enable GitHub's dark theme (Settings then Appearance) for reduced eye strain during long reading sessions
+
+</details>
+
+<details>
+<summary>Sighted users</summary>
+
+- Use the GitHub Pages site during the workshop for the most polished, hyperlinked reading experience with no setup required
+- Clone the repository for a permanent offline copy -- the `html/index.html` file serves as a local homepage linking to all content
+- The Markdown source in `docs/` is what you edit to contribute improvements -- changes are rebuilt to HTML automatically via the GitHub Actions workflow
+
+</details>
 
 
 *Return to: [Appendix X - Copilot AI Models](appendix-k-copilot-reference.md) | [Appendix A - Glossary](appendix-a-glossary.md) | [README](../README.md)*

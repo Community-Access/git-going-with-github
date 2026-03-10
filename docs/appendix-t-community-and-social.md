@@ -16,6 +16,35 @@
 
 > This appendix covers three community-facing GitHub features: your profile README (how the world sees you), GitHub Sponsors (financially supporting the people whose work you depend on), and GitHub Wikis (community-editable documentation inside a repository).
 
+### Learning Cards: Profiles, Sponsors, and Wikis
+
+<details>
+<summary>Screen reader users</summary>
+
+- Your profile README is announced as regular page content when someone visits your profile -- use `##` headings for structure so visitors can navigate with `H`
+- The Sponsor button on a profile or repo is a standard button element -- press `B` to cycle through buttons until you hear "Sponsor"
+- Wiki pages are read in browse mode like any other GitHub Markdown page -- use heading navigation to jump between sections
+
+</details>
+
+<details>
+<summary>Low vision users</summary>
+
+- Profile READMEs respect GitHub's dark and light themes -- test yours in both modes to confirm text remains readable
+- The Sponsor button uses a heart icon with a pink/magenta accent -- look near the repo name or profile photo area
+- Wiki sidebar navigation appears on the right side of the page with links to all wiki pages
+
+</details>
+
+<details>
+<summary>Sighted users</summary>
+
+- Your profile README appears directly below your avatar and bio -- visitors see it immediately on your profile page
+- The Sponsor heart icon is near the top of a profile or repository page, next to the Star and Watch buttons
+- Wiki pages have an auto-generated sidebar listing all pages -- click any page title to navigate directly
+
+</details>
+
 
 ## Profile Customization
 
@@ -203,6 +232,35 @@ Wiki pages automatically appear in a sidebar for navigation.
 
 > This appendix covers three features that shape how repositories and communities are organized on GitHub: repository templates (how new projects are bootstrapped), GitHub organizations (the account type behind most open source projects and companies), and repository settings (the configuration that governs visibility, archiving, and other behavior contributors encounter in the wild).
 
+### Learning Cards: Organizations and Templates
+
+<details>
+<summary>Screen reader users</summary>
+
+- The "Use this template" button is near the "Code" button at the top of a template repository -- press `B` to navigate buttons until you hear it
+- Organization profiles list repositories and members under heading sections -- use `H` to jump between People, Repositories, and Projects
+- Repository visibility (Public, Private, Internal) is announced as a badge near the repository name heading
+
+</details>
+
+<details>
+<summary>Low vision users</summary>
+
+- Template repositories show a green "Use this template" button prominently near the top -- it replaces or sits alongside the Fork button
+- Organization pages use the same layout as personal profiles but with team-oriented sections
+- Archived repositories display a yellow warning banner across the top of the page
+
+</details>
+
+<details>
+<summary>Sighted users</summary>
+
+- Template repos display "Use this template" as a green button near the Code button -- do not confuse it with Fork, which keeps upstream history
+- Organization profiles show member avatars in a grid and repositories in a searchable list below
+- Look for the visibility label (Public/Private) as a small badge next to the repository name
+
+</details>
+
 
 ## Repository Templates
 
@@ -345,6 +403,35 @@ The default branch name appears in the branch selector at the top of the Code ta
 > **Who this is for:** You have learned the basics of GitHub and want to know how to use it as a social platform — discovering interesting projects, following developers whose work you admire, and building a presence in the open source community. This appendix covers the social layer of GitHub that most tutorials skip entirely.
 
 GitHub has over 100 million developers on it. The social features — stars, follows, Explore, Topics, trending repos — are how you find the interesting ones, stay connected to projects you care about, and make yourself visible to the community.
+
+### Learning Cards: Social Features
+
+<details>
+<summary>Screen reader users</summary>
+
+- The Star button is announced as "Star this repository" or "Unstar this repository" -- press `B` to find it in the repository header area
+- The Follow button on a user profile is announced as "Follow [username]" -- Tab forward from the avatar and bio to reach it
+- On the Explore and Trending pages, each repository entry is a heading with a link -- use `H` or `3` to jump between entries
+
+</details>
+
+<details>
+<summary>Low vision users</summary>
+
+- Star and Watch buttons sit side by side in the repository header with distinct icons (star and eye) -- both show counts next to them
+- Your contribution graph uses green intensity to show activity levels -- enable high-contrast theme if the color differences are hard to distinguish
+- The Trending page lists repositories in a numbered vertical list with star counts and daily gain on the right side
+
+</details>
+
+<details>
+<summary>Sighted users</summary>
+
+- The Star button (star icon) and Watch button (eye icon) are in the top-right header of every repository page, next to Fork
+- Your home feed at github.com shows activity from people you follow and repos you watch -- curate it by adjusting who you follow
+- GitHub Lists let you organize starred repos into named collections visible at your profile's Stars tab -- use the dropdown arrow next to Star to add to a list
+
+</details>
 
 ---
 

@@ -16,6 +16,35 @@
 
 > GitHub Discussions is a built-in community forum for repositories and organizations. It's where open-ended conversations live - questions, ideas, announcements, polls, and community Q&A - separate from the action-oriented world of issues and pull requests.
 
+### Learning Cards: GitHub Discussions
+
+<details>
+<summary>Screen reader users</summary>
+
+- The Discussions tab is in the repository's main navigation bar alongside Code, Issues, and Pull Requests -- press `T` to navigate tab items or `K` to find the "Discussions" link
+- Inside a discussion, replies are `article` elements -- in NVDA press `A` to jump between replies; in JAWS use `A` as well
+- The reply editor uses the same behavior as issue comments -- enter Focus Mode to type, then press `Ctrl+Enter` to submit
+
+</details>
+
+<details>
+<summary>Low vision users</summary>
+
+- Discussion categories appear as a sidebar panel on the left or right depending on viewport width -- look for the category list with item counts
+- Answered discussions in the Q&A category display a green "Answered" badge next to the title, with the accepted answer pinned to the top
+- Polls show percentage bars next to each option after you vote -- the bars use color fill to indicate proportion
+
+</details>
+
+<details>
+<summary>Sighted users</summary>
+
+- Discussions are organized by category with colored labels -- the sidebar shows all categories and pinned items
+- In Q&A threads, look for the green checkmark on the accepted answer pinned above the regular reply timeline
+- Use the upvote button (thumbs up) on replies instead of posting "+1" comments -- maintainers often sort by upvotes
+
+</details>
+
 
 ## Table of Contents
 
@@ -276,6 +305,35 @@ This works well for first-response drafts on Q&A threads or community questions 
 ## Shareable Code Snippets and Notes
 
 > Gists are a simple way to share code snippets, notes, or small files without creating a full repository. Think of them as lightweight, version-controlled pastebins.
+
+### Learning Cards: GitHub Gists
+
+<details>
+<summary>Screen reader users</summary>
+
+- On the Gist creation page at gist.github.com, press `D` to jump to the main landmark, then `F` to navigate form fields: Description, Filename, Content, and Visibility buttons
+- Your Gists page lists each gist as an `H2` heading with its description -- press `2` or `H` to jump between gists
+- Gists are full Git repositories -- you can clone them with `git clone` and edit locally using your usual screen reader workflow in VS Code
+
+</details>
+
+<details>
+<summary>Low vision users</summary>
+
+- Gist pages use syntax highlighting matching GitHub's current theme -- switch between light and dark mode for comfortable reading
+- Public and secret gists look identical on the page; the only difference is the URL visibility -- check the "Create secret gist" or "Create public gist" button label before submitting
+- The revision history link appears at the top of any gist -- click "Revisions" to see a diff view of every edit
+
+</details>
+
+<details>
+<summary>Sighted users</summary>
+
+- Gists live at gist.github.com, separate from regular repositories -- each gist shows a syntax-highlighted code block with filename tabs at the top
+- The visibility selector is a split button at the bottom of the editor -- the dropdown arrow reveals "Create secret gist" vs "Create public gist"
+- You can add multiple files to one gist using the "Add file" button below the first editor pane
+
+</details>
 
 
 ## What Is a Gist?

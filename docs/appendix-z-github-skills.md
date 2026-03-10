@@ -6,6 +6,35 @@ GitHub Skills is GitHub's free, self-paced interactive learning platform. Every 
 
 This appendix catalogs every available GitHub Skills module, organized into learning paths that build on the skills you practiced in this workshop. Use it as a roadmap for continued learning after Day 2.
 
+### Learning Cards: How GitHub Skills Works
+
+<details>
+<summary>Screen reader users</summary>
+
+- Every GitHub Skills course runs inside a standard GitHub repository -- the screen reader navigation skills from this workshop (heading nav, issue reading, PR workflows) apply directly
+- After copying a course with "Use this template," navigate to the Issues tab (`G` then `I`) and press `H` or `3` to find "Step 1:" -- this is where Mona's first lesson appears
+- Mona posts feedback as issue comments -- press `9` (NVDA/JAWS) to jump to the comments section and read her instructions
+
+</details>
+
+<details>
+<summary>Low vision users</summary>
+
+- Course content appears as standard GitHub issues and comments -- your existing GitHub theme and font size settings apply automatically
+- Mona's step numbers appear as issue titles with "Step 1:", "Step 2:" prefixes -- scan the Issues list for these numbered titles to track your progress
+- Course completion is indicated when Mona closes the final issue with a success message -- look for the purple "Closed" badge
+
+</details>
+
+<details>
+<summary>Sighted users</summary>
+
+- Start any course by clicking "Start course" on the module page, then "Use this template" then "Create a new repository" -- Mona activates within 20 seconds
+- Each step appears as a new issue or comment in your copied repository -- follow the instructions, complete the task, and Mona advances you automatically
+- Track progress by watching the Issues tab -- open issues are pending steps, closed issues are completed steps
+
+</details>
+
 
 ## How GitHub Skills Works
 
@@ -41,6 +70,35 @@ If you did not finish these during the workshop, complete them first before movi
 ## Learning Paths
 
 The remaining courses are organized into six learning paths. Each path builds on skills from this workshop and progresses from introductory to advanced. You do not need to complete every path - choose the ones that match your goals.
+
+### Learning Cards: Navigating Learning Paths
+
+<details>
+<summary>Screen reader users</summary>
+
+- The six learning paths below are organized as H3 headings with tables listing courses in recommended order -- press `3` to jump between paths, then `T` to enter each course table
+- Each course link is in the rightmost "Link" column of the table -- navigate to it with arrow keys after entering the table
+- Use the Personal Completion Checklist at the bottom of this appendix as a progress tracker -- copy it into a GitHub issue or personal notes file
+
+</details>
+
+<details>
+<summary>Low vision users</summary>
+
+- Each learning path table has columns for Order, Module, Duration, Prerequisite, What You Learn, and Link -- widen your browser if columns appear truncated at high zoom
+- Course durations range from 30 minutes to 2 hours -- the Duration column helps you plan which courses fit your available time
+- The Quick Reference table near the bottom alphabetically lists all 36 courses for fast scanning when you know the course name
+
+</details>
+
+<details>
+<summary>Sighted users</summary>
+
+- Six paths organize 33 post-workshop courses by topic: Git, Collaboration, Actions, Copilot, Security, and Cloud
+- Each path is sequenced from introductory to advanced -- start at Order 1 in any path and work down
+- The Quick Reference section at the bottom lists all 36 courses alphabetically with category labels and direct "Start course" links
+
+</details>
 
 ### Path 1: Git Fundamentals
 

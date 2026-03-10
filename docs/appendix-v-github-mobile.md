@@ -6,6 +6,35 @@
 
 > GitHub Mobile brings issues, pull requests, notifications, and code review to your iPhone, iPad, or Android device. This appendix covers setup, VoiceOver and TalkBack usage, and the tasks best suited to mobile.
 
+### Learning Cards: GitHub Mobile Overview
+
+<details>
+<summary>Screen reader users</summary>
+
+- GitHub Mobile supports VoiceOver (iOS) and TalkBack (Android) natively -- swipe right to move through elements, double-tap to activate
+- The app uses five bottom tabs (Home, Notifications, Explore, Pull Requests, Profile) -- swipe left or right along the bottom tab bar to switch between them
+- Use the VoiceOver Rotor (two-finger twist) set to Headings to jump between sections within an issue or PR description
+
+</details>
+
+<details>
+<summary>Low vision users</summary>
+
+- GitHub Mobile supports dynamic text sizing on both iOS and Android -- increase your system font size and the app respects it
+- Dark mode is available in the app settings and follows your system preference -- use it to reduce glare on OLED screens
+- The simplified diff view in Files Changed shows additions and removals as text only, without the two-column table layout used on desktop
+
+</details>
+
+<details>
+<summary>Sighted users</summary>
+
+- The five-tab navigation bar at the bottom of the screen (Home, Notifications, Explore, Pull Requests, Profile) is your primary way around the app
+- Notification badges appear as red dots on the Notifications tab -- swipe left on individual notifications for quick actions (read, archive, unsubscribe)
+- Pull request diffs use a simplified single-column view optimized for small screens -- additions appear in green, removals in red
+
+</details>
+
 
 ## Table of Contents
 
@@ -119,6 +148,35 @@ Tap with three fingers (or swipe down then right) to open the TalkBack menu. Fro
 ## 5. Working with Notifications
 
 GitHub Mobile's Notifications tab is one of its strongest features for AT users - it surfaces all activity in a clean, linear list that is much easier to navigate than the GitHub web notifications page.
+
+### Learning Cards: Mobile Notifications
+
+<details>
+<summary>Screen reader users</summary>
+
+- The Notifications tab presents a linear list that is more accessible than the web version -- swipe right through items one by one to hear each notification's context
+- Filter controls are accessible form elements at the top -- navigate to the filter icon, activate it, then swipe through filter options (Type, Repository, Reason)
+- Swipe actions (left to archive, right to mark done) work with VoiceOver custom actions -- use the VoiceOver Actions rotor item on each notification
+
+</details>
+
+<details>
+<summary>Low vision users</summary>
+
+- Notifications are displayed as a vertical list with the repository name, notification type, and title on each row -- text is sized according to your system accessibility settings
+- The filter panel overlays on top of the list -- look for the funnel icon in the top-right corner of the Notifications tab
+- Unread notifications appear with a blue dot indicator on the left edge of each row
+
+</details>
+
+<details>
+<summary>Sighted users</summary>
+
+- The Notifications tab shows all activity in a chronological list -- unread items have a blue dot on the left
+- Swipe left on any notification to reveal quick-action buttons: Mark as Read, Archive, and Unsubscribe
+- Use the filter icon (top right) to narrow by notification type, repository, or reason (mentioned, review requested, assigned)
+
+</details>
 
 ### Inbox Management
 

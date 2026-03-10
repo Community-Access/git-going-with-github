@@ -6,6 +6,35 @@
 
 > GitHub Pages lets you publish a static website straight from a GitHub repository - no server, no hosting bill, no deployment pipeline required for simple sites. This appendix explains how to enable it, what it can publish, and how to ensure the published site meets the same accessibility standards as your source code.
 
+### Learning Cards: GitHub Pages Overview
+
+<details>
+<summary>Screen reader users</summary>
+
+- The Pages settings are under Settings (gear icon in repository navigation) then "Pages" in the left sidebar under the "Code and automation" group heading
+- Branch and folder selectors in the Pages settings are standard `select` elements -- navigate with arrow keys to choose your publishing source
+- After deployment, the published URL appears as a link at the top of the Pages settings page
+
+</details>
+
+<details>
+<summary>Low vision users</summary>
+
+- GitHub Pages settings use the same layout as other repository settings -- look for the "Pages" link in the left sidebar after clicking Settings
+- The deployment status indicator shows a green checkmark for successful deployments and a red X for failures
+- Published sites inherit no special styling from GitHub -- ensure your site's CSS provides adequate contrast and font sizing
+
+</details>
+
+<details>
+<summary>Sighted users</summary>
+
+- Find Pages settings via the repository's Settings tab, then "Pages" in the left sidebar under "Code and automation"
+- The publishing source selector lets you choose a branch and folder (`/` root or `/docs`) -- select your combination and click Save
+- After a successful deployment, a green banner with your site URL appears at the top of the Pages settings
+
+</details>
+
 
 ## Table of Contents
 
@@ -234,6 +263,35 @@ GitHub Pages enforces HTTPS automatically for `github.io` subdomains. For custom
 ## 7. Accessibility Considerations for Published Sites
 
 Publishing a site does not automatically make it accessible. Consider the following for the published HTML output:
+
+### Learning Cards: Accessibility of Published Sites
+
+<details>
+<summary>Screen reader users</summary>
+
+- Verify that published HTML pages include a skip-to-content link as the first focusable element -- press `Tab` once after the page loads to check
+- Confirm the page has a descriptive `title` element and a single `H1` heading -- these are announced first when the page opens
+- Test that all internal navigation links work and land on the correct heading or section
+
+</details>
+
+<details>
+<summary>Low vision users</summary>
+
+- Run an automated contrast checker (axe, WAVE) on published pages after any CSS changes to confirm text remains readable
+- Test the published site at 200% browser zoom to verify layouts do not break or hide content
+- If the site uses a custom theme, verify it works in both forced-colors mode (Windows High Contrast) and standard mode
+
+</details>
+
+<details>
+<summary>Sighted users</summary>
+
+- Check that the page has clear visual heading hierarchy -- headings should be visually distinct and match the HTML heading levels (H1, H2, H3)
+- Verify all images have visible alt text or are clearly decorative -- missing alt attributes leave broken-image icons with no context
+- Test keyboard navigation through the entire page by pressing Tab repeatedly to ensure focus is visible and flows logically
+
+</details>
 
 ### Navigation and landmarks
 

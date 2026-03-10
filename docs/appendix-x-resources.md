@@ -6,6 +6,35 @@
 
 > This is your permanent reference. Every link, tool, guide, and community resource from the two-day workshop in one place. Bookmark this page in your fork so it travels with you.
 
+### Learning Cards: Navigating This Resource Guide
+
+<details>
+<summary>Screen reader users</summary>
+
+- This appendix is organized as 16 numbered sections with heading levels -- press `H` or `2` to jump between major sections in browse mode
+- Most sections contain tables of links -- navigate tables with `T` to jump to the next table, then use arrow keys to read rows and columns
+- Each resource link opens in the same tab by default -- use `Ctrl+Enter` (Windows) to open in a new tab and keep this reference page available
+
+</details>
+
+<details>
+<summary>Low vision users</summary>
+
+- Tables in this appendix have a Resource/URL/Notes column structure -- widen your browser or zoom out slightly if columns overlap at high magnification
+- Link text is descriptive (resource names, not raw URLs) making it easier to scan the page visually
+- Bookmark this page in your browser for quick access -- it is the single-page reference for everything from the workshop
+
+</details>
+
+<details>
+<summary>Sighted users</summary>
+
+- Use the Table of Contents at the top to jump directly to any of the 16 resource categories
+- Each section uses a consistent table layout: Resource name (left), URL (middle), Notes (right)
+- The GitHub keyboard shortcuts section (14) is worth bookmarking separately -- press `?` on any GitHub page for a shortcuts overlay
+
+</details>
+
 
 ## Table of Contents
 
@@ -130,6 +159,35 @@ GitHub Skills courses are available 24/7 and are completely free. Recommended or
 
 
 ## 4. Screen Reader Downloads and Documentation
+
+### Learning Cards: Screen Reader Downloads and Setup
+
+<details>
+<summary>Screen reader users</summary>
+
+- NVDA (free, Windows): download from nvaccess.org -- after installing, toggle browse/focus mode with `NVDA+Space` and open the elements list with `NVDA+F7`
+- JAWS (Windows): download a trial from freedomscientific.com -- Virtual PC Cursor toggle is `Insert+Z`, elements list is `Insert+F3`
+- VoiceOver (macOS/iOS): built in, no download needed -- start with `Cmd+F5` on Mac, or Settings then Accessibility then VoiceOver on iOS
+
+</details>
+
+<details>
+<summary>Low vision users</summary>
+
+- NVDA and JAWS both support speech and braille output simultaneously if you use a refreshable braille display
+- VoiceOver on macOS integrates with Zoom (screen magnifier) -- enable both in System Settings then Accessibility for combined magnification and speech
+- Narrator on Windows is built in and requires no download -- launch with `Win+Ctrl+Enter` for a quick, lightweight screen reader experience
+
+</details>
+
+<details>
+<summary>Sighted users</summary>
+
+- NVDA is free and the most common screen reader for testing on Windows -- install it to verify your content is accessible
+- VoiceOver is built into every Mac and iPhone -- toggle it with `Cmd+F5` (Mac) to quickly test how your pages sound
+- The key commands listed in this section (H for headings, B for buttons, K for links) work in all major screen readers and are essential for understanding how AT users navigate
+
+</details>
 
 ### NVDA (Windows)
 
