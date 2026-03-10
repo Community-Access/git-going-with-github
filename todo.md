@@ -67,11 +67,11 @@ Create new files, rename existing files, update all internal links. Structurally
 
 Write the five new chapters with full content, learning cards, tool cards, and failsafe sections.
 
-- [ ] Ch01: Choose Your Adventure -- tool tour with confidence exercises
-- [ ] Ch13: How Git Works -- mental model from Pro Git book
-- [ ] Ch18: Fork and Contribute -- end-to-end fork workflow walkthrough
-- [ ] Ch20: Build Your Agent -- capstone phases (from classroom plan)
-- [ ] Ch21: What Comes Next -- graduation, portfolio, roadmap
+- [x] Ch01: Choose Your Adventure -- tool tour with confidence exercises
+- [x] Ch13: How Git Works -- mental model from Pro Git book
+- [x] Ch18: Fork and Contribute -- end-to-end fork workflow walkthrough
+- [x] Ch20: Build Your Agent -- capstone phases (from classroom plan)
+- [x] Ch21: What Comes Next -- graduation, portfolio, roadmap
 
 ---
 
