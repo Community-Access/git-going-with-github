@@ -6,6 +6,35 @@
 
 > **Audience:** This appendix is for contributors who need to configure Git authentication for push access. If you're working entirely through the GitHub web interface or GitHub Desktop, you can skip this. If you're using VS Code with Git command line, this becomes relevant when you want to push commits to your fork.
 
+### Learning Cards: Using This Authentication Reference
+
+<details>
+<summary>Screen reader users</summary>
+
+- This appendix has two main paths: Personal Access Token (recommended) and SSH Keys -- jump to your chosen method via heading navigation
+- Step-by-step instructions are numbered lists -- your screen reader announces "1 of 8," etc. to track progress
+- The Troubleshooting section near the bottom covers the error messages you are most likely to encounter
+
+</details>
+
+<details>
+<summary>Low vision users</summary>
+
+- Command-line examples are in code blocks with high contrast -- increase zoom to read them comfortably
+- Each method (PAT vs SSH) is a separate section with its own step-by-step flow
+- The "Do not" lists use bold text to highlight security warnings
+
+</details>
+
+<details>
+<summary>Sighted users</summary>
+
+- Start at "Two Authentication Methods" for a pros/cons comparison, then follow the section for your choice
+- Code blocks show the exact commands to copy -- use the copy button in the top-right corner on GitHub
+- The Troubleshooting section at the bottom is organized by error message
+
+</details>
+
 
 ## When You Need Authentication
 
@@ -207,6 +236,36 @@ git remote set-url origin git@github.com:your-username/repo.git
 ```bash
 git remote set-url origin https://github.com/your-username/repo.git
 ```
+
+
+### Learning Cards: Troubleshooting Authentication
+
+<details>
+<summary>Screen reader users</summary>
+
+- Each troubleshooting entry starts with the error message in quotes as an h3 heading -- press 3 to jump between errors
+- Solutions include terminal commands in code blocks -- switch to Focus Mode before copying them
+- If your error is not listed here, search the GitHub Docs authentication troubleshooting page
+
+</details>
+
+<details>
+<summary>Low vision users</summary>
+
+- Error messages are displayed as bold h3 headings for easy visual scanning
+- Solution steps are numbered and include code blocks you can copy directly
+- If terminal output is hard to read, paste commands into VS Code's integrated terminal which respects your theme settings
+
+</details>
+
+<details>
+<summary>Sighted users</summary>
+
+- Scan the h3 headings to find your exact error message
+- Each solution starts with the most common fix first -- try that before the alternatives
+- The "Security Best Practices" section below is worth skimming after you resolve your issue
+
+</details>
 
 
 ## Troubleshooting

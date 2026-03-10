@@ -6,6 +6,35 @@
 
 > **How to use this sheet:** Keep it open in a second window or print it. Commands are organized by task so you can find what you need quickly while you work. All commands are keyboard-only - no mouse required.
 
+### Learning Cards: Using This Cheat Sheet
+
+<details>
+<summary>Screen reader users</summary>
+
+- Use heading navigation (H key) to jump between task categories -- each section is an h2 heading
+- Open the Elements List (NVDA+F7 or Insert+F6) and switch to the Headings tab to see all sections at once
+- Tables list commands in the left column and actions in the right -- use Ctrl+Alt+Arrow keys to navigate
+
+</details>
+
+<details>
+<summary>Low vision users</summary>
+
+- Keep this open in a second browser tab or print it for side-by-side reference while working
+- Command tables are compact -- increase zoom to 150-200% and the two-column layout stays readable
+- Key names are in backtick code formatting which gives them a distinct visual border
+
+</details>
+
+<details>
+<summary>Sighted users</summary>
+
+- Sections are organized by task (navigation, typing, dropdowns, troubleshooting) -- scan the h2 headings
+- The "Per-Screen-Reader Command Reference" section groups everything by NVDA, JAWS, and VoiceOver
+- Bookmark this page -- it is the single fastest reference when you forget a key combination
+
+</details>
+
 
 ## Screen Reader Mode Basics
 
@@ -192,6 +221,35 @@ Activate VoiceOver: `Cmd+F5`. The VO modifier key is `Control+Option` (abbreviat
 | `VO+A` | Start reading from cursor |
 | `Ctrl` | Stop reading |
 | `Cmd+F5` | Start / stop VoiceOver |
+
+### Learning Cards: Task-Based Navigation
+
+<details>
+<summary>Screen reader users</summary>
+
+- The sections below are organized by GitHub page type -- jump to the page you are currently on
+- Each table shows Goal in the left column and Key Sequence in the right -- read left-to-right per row
+- Practice one page's commands at a time rather than memorizing everything at once
+
+</details>
+
+<details>
+<summary>Low vision users</summary>
+
+- Each page section has a compact table -- at high zoom, the two-column layout reads naturally
+- Key sequences are shown in backtick formatting for clear visual distinction from descriptions
+- Open the matching GitHub page side by side and try each key sequence as you read
+
+</details>
+
+<details>
+<summary>Sighted users</summary>
+
+- Find the section matching the GitHub page you are on (Repository, Issue, Pull Request, etc.)
+- Key sequences are listed in the order you would typically use them on that page
+- The Goal column tells you what happens -- scan it to find the action you need
+
+</details>
 
 
 ## Navigating Specific GitHub Pages

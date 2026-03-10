@@ -6,6 +6,35 @@
 
 > This glossary is your reference for the entire two-day workshop. When you hear a term you don't recognize - check here first. Terms are grouped by category and also sorted alphabetically at the end.
 
+### Learning Cards: Navigating the Glossary
+
+<details>
+<summary>Screen reader users</summary>
+
+- Press H to jump between term headings (h3 level) within each category section
+- Use the Elements List (NVDA+F7 or Insert+F6) to see all terms at once and type a few letters to filter
+- Jump to "Alphabetical Quick Reference" at the bottom for a flat A-Z lookup table
+
+</details>
+
+<details>
+<summary>Low vision users</summary>
+
+- Each term is a bold h3 heading -- increase zoom and scan headings to browse terms quickly
+- The alphabetical table at the bottom works well at high zoom since each row is self-contained
+- Use Ctrl+F in your browser to search for any term by name
+
+</details>
+
+<details>
+<summary>Sighted users</summary>
+
+- Terms are grouped by category (Parts 1-6) -- scan the bold headings to find the right group
+- Scroll to the bottom for the alphabetical quick reference table if you know the term name
+- Use Ctrl+F to jump directly to any term on the page
+
+</details>
+
 
 ## Part 1: The Building Blocks
 
@@ -568,6 +597,35 @@ Every healthy open source project has these files in the root of the repository:
 | `CHANGELOG.md` | History of notable changes by version |
 | `.github/ISSUE_TEMPLATE/` | Templates for bug reports, feature requests, etc. |
 | `.github/PULL_REQUEST_TEMPLATE.md` | Template for PR descriptions |
+
+### Learning Cards: Alphabetical Quick Reference
+
+<details>
+<summary>Screen reader users</summary>
+
+- Press T to jump to the table, then use Ctrl+Alt+Arrow keys to navigate rows and columns
+- Each row has two cells: Term and Definition -- column headers are announced on first entry
+- For longer definitions, the table keeps them concise; see the full entry above for details
+
+</details>
+
+<details>
+<summary>Low vision users</summary>
+
+- This table is designed for quick lookups -- each row fits on a single line at most zoom levels
+- If the table wraps awkwardly, try reducing zoom slightly or switching to a wider window
+- Bold term names in the left column create a visible scan line
+
+</details>
+
+<details>
+<summary>Sighted users</summary>
+
+- Scan the left column alphabetically to find your term quickly
+- Definitions here are one-liners -- look up the full entry in Parts 1-6 above for examples and commands
+- Use Ctrl+F and type the term name to jump directly to it
+
+</details>
 
 
 ## Alphabetical Quick Reference

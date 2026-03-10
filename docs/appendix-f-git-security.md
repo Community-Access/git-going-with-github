@@ -22,6 +22,35 @@
 8. [Secure Credential Storage](#8-secure-credential-storage)
 9. [Security Checklist for Contributors](#9-security-checklist-for-contributors)
 
+### Learning Cards: Using This Security Reference
+
+<details>
+<summary>Screen reader users</summary>
+
+- Sections are ordered from understanding (section 1) to prevention (2-5) to recovery (6-7) to daily habits (8-9)
+- Code blocks contain exact gitignore patterns and terminal commands -- switch to Focus Mode before copying
+- The Security Checklist (section 9) is a task list you can use before every push
+
+</details>
+
+<details>
+<summary>Low vision users</summary>
+
+- Code examples for .gitignore patterns and terminal commands are in high-contrast code blocks
+- Warning callouts use bold text -- scan for bold to find the most critical safety notes
+- The Security Checklist at the bottom uses checkbox formatting for easy visual tracking
+
+</details>
+
+<details>
+<summary>Sighted users</summary>
+
+- Read section 1 for motivation, then jump to the section matching your current need
+- The .gitignore templates in section 2 are copy-paste ready for most project types
+- Skip to the Security Checklist (section 9) for a pre-push routine you can follow every time
+
+</details>
+
 ---
 
 ## 1. Why This Matters — What Happens When Secrets Leak
@@ -514,6 +543,35 @@ git config --global credential.helper
 ```
 
 If this returns nothing, your credentials may be stored in plaintext. Set a credential helper as above.
+
+### Learning Cards: Security Checklist
+
+<details>
+<summary>Screen reader users</summary>
+
+- The checklist below uses Markdown task list formatting -- each item is announced as "checkbox not checked"
+- Items are grouped into three categories: Before Committing, Before Pushing, and Repository Setup
+- Read through the list once to learn the habits, then use it as a pre-push routine
+
+</details>
+
+<details>
+<summary>Low vision users</summary>
+
+- Checkboxes create a clear visual pattern for scanning -- each line starts with a square box
+- Three groups are separated by h3 headings: Before Committing, Before Pushing, Repository Setup
+- Consider copying this checklist into a personal note and checking items off for each project
+
+</details>
+
+<details>
+<summary>Sighted users</summary>
+
+- This is a printable pre-push checklist -- bookmark it or copy it into your project's CONTRIBUTING.md
+- Three sections cover the complete workflow: staging, pushing, and one-time repository setup
+- The most critical items are the first two in "Before Committing" -- git diff review and selective git add
+
+</details>
 
 ---
 

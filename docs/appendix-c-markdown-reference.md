@@ -57,6 +57,35 @@
 
 ## Part 1 - Markdown Foundations
 
+### Learning Cards: Using This Markdown Reference
+
+<details>
+<summary>Screen reader users</summary>
+
+- Use heading navigation (H key) to jump between numbered sections -- each topic is an h2 heading
+- Every section shows raw Markdown first, then rendered output, then screen reader behavior notes
+- The Table of Contents at the top has anchor links -- activate any link to jump directly to that section
+
+</details>
+
+<details>
+<summary>Low vision users</summary>
+
+- Code blocks show the raw Markdown to type -- increase zoom and the monospace font stays readable
+- Each section follows the same pattern: explanation, raw code, rendered result, and accessibility notes
+- Use Ctrl+F to search for a specific Markdown element (e.g., search "table" or "heading")
+
+</details>
+
+<details>
+<summary>Sighted users</summary>
+
+- Sections are numbered 1-32 -- use the Table of Contents to jump to any topic
+- Raw Markdown is in grey code blocks; rendered output follows immediately after
+- Part 1 covers standard Markdown, Part 2 covers GitHub-specific extensions, Part 3 ties it together
+
+</details>
+
 
 ## 1. What Is Markdown?
 
@@ -1024,6 +1053,35 @@ If your "table" has only two columns where the first is a label and the second i
 ```
 
 This is often easier to read with a screen reader than a two-column table.
+
+### Learning Cards: GitHub Flavored Markdown
+
+<details>
+<summary>Screen reader users</summary>
+
+- GFM features (sections 17-27) work only on GitHub -- your screen reader behavior notes are in each section
+- Alert blocks (section 18) render as blockquotes with a type prefix -- listen for "Note," "Warning," etc.
+- Task list checkboxes (section 20) are announced as "checkbox checked" or "checkbox not checked"
+
+</details>
+
+<details>
+<summary>Low vision users</summary>
+
+- Alert blocks use color-coded left borders (blue for Note, yellow for Warning, red for Caution) -- the text label also identifies the type
+- Mermaid diagrams (section 22) are visual only on GitHub -- the raw code block is always readable
+- Use GitHub's Preview tab when writing to confirm your GFM renders correctly before submitting
+
+</details>
+
+<details>
+<summary>Sighted users</summary>
+
+- GFM features have visual cues: colored alert blocks, rendered checkboxes, syntax-highlighted code
+- Mermaid diagrams render as interactive SVGs -- hover for tooltips on nodes
+- The autolinked references section (26) explains the shorthand (#123, @user) you see everywhere on GitHub
+
+</details>
 
 
 ## Part 2 - GitHub Flavored Markdown (GFM)
@@ -2056,6 +2114,35 @@ accessibility bug reports to open source projects.
 - The details section collapses and expands
 
 **Congratulations.** You just wrote a Markdown document that uses headings, paragraphs, emphasis, inline code, links, blockquotes, tables, task lists, and collapsible sections. Every one of these skills transfers directly to issues, pull requests, and documentation in this workshop.
+
+### Learning Cards: Quick-Reference Card
+
+<details>
+<summary>Screen reader users</summary>
+
+- This card shows raw Markdown syntax in code blocks -- read each block to hear the exact characters to type
+- Keep this section bookmarked as a daily reference when writing issues, PRs, and comments
+- Each code block is labeled by format type (headings, lists, links, etc.) in the heading above it
+
+</details>
+
+<details>
+<summary>Low vision users</summary>
+
+- The card uses large monospace code blocks -- increase zoom and each syntax example stays on one or two lines
+- Print this section or save it as a separate file for quick side-by-side reference while writing
+- Syntax characters (*, #, -, []) are visually distinct in the code font
+
+</details>
+
+<details>
+<summary>Sighted users</summary>
+
+- This is a one-page cheat sheet for all Markdown syntax covered in the guide
+- Scan the code blocks for the formatting you need -- copy the pattern and replace the placeholder text
+- Pin this section in a browser tab alongside your editing window
+
+</details>
 
 
 ## 32. Quick-Reference Card

@@ -24,6 +24,35 @@
 10. [Branch Protection — Why Your Push or Merge May Be Blocked](#10-branch-protection--why-your-push-or-merge-may-be-blocked)
 11. [Using GitHub Copilot for Git Operations](#11-using-github-copilot-for-git-operations)
 
+### Learning Cards: Using This Advanced Git Reference
+
+<details>
+<summary>Screen reader users</summary>
+
+- Each operation is a numbered h2 section with three sub-paths: VS Code, GitHub CLI, and Git CLI
+- Use H to jump between operations and 3 to jump between the tool-specific sub-headings within each
+- The Table of Contents above has anchor links -- activate any link to jump directly to that operation
+
+</details>
+
+<details>
+<summary>Low vision users</summary>
+
+- Command examples are in labeled code blocks -- increase zoom and each command fits on one line
+- Every section follows the same structure: what it is, when to use it, then tool-specific steps
+- The Quick Reference table near the bottom gives a one-row-per-operation summary for fast lookup
+
+</details>
+
+<details>
+<summary>Sighted users</summary>
+
+- Scan the Table of Contents to find the Git operation you need -- sections are ordered from most to least common
+- Each section has VS Code, CLI, and GitHub CLI paths shown side by side
+- Jump to the Quick Reference table at the bottom for a compact summary of all commands
+
+</details>
+
 ---
 
 ## 1. Cherry-Pick — Grabbing a Specific Commit
@@ -751,6 +780,35 @@ gh api repos/{owner}/{repo}/branches/main/protection --jq '{
 Navigate to **Settings → Branches** in the repository. (You need admin access to see the full config; contributors can see the effect through blocked PRs and the merge box status.)
 
 > **For a deep dive on branch protection rules, rulesets, and diagnosing why your PR can't merge:** See [Appendix K: Branch Protection and Rulesets](appendix-o-branch-protection.md) — it includes a full diagnosis guide, screen reader navigation of the merge box, and what each status check means.
+
+### Learning Cards: Quick Reference Table
+
+<details>
+<summary>Screen reader users</summary>
+
+- This table has four columns: Task, VS Code, Git CLI, and GitHub CLI -- column headers are announced on entry
+- Use Ctrl+Alt+Arrow keys to navigate cells; the Task column on the left identifies each row
+- Cells with a dash (--) mean that tool does not support the operation -- move right to try another column
+
+</details>
+
+<details>
+<summary>Low vision users</summary>
+
+- At high zoom the table may scroll horizontally -- use Shift+scroll or arrow keys to see all four columns
+- The Task column is always the leftmost -- anchor your reading from there
+- Consider copying this table into a text file or spreadsheet for easier viewing at your preferred zoom
+
+</details>
+
+<details>
+<summary>Sighted users</summary>
+
+- This is a single-page summary of every advanced operation -- scan the Task column for what you need
+- The Git CLI column is always populated; VS Code and GitHub CLI columns show alternatives where available
+- Bookmark this table as your daily reference for less-common Git commands
+
+</details>
 
 ---
 
