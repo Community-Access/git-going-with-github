@@ -767,6 +767,7 @@ These files live at the repo root and drive the facilitator experience. All 28 m
 | `LEARNING_ROOM_AUTOMATION_SUMMARY.md` | Automation system overview | Workflow names, script names |
 | `REPOSITORY_SECURITY.md` | Security policy for repos | Repo architecture |
 | `SECURITY.md` | Security vulnerability reporting | Minimal deps |
+| `course-guide.md` (in `docs/`) | Master course guide linking every chapter and appendix | Chapter sequence, appendix letters, file paths |
 
 **Decision for each file:** Rewrite from scratch using final chapter/appendix/challenge numbering. Files marked "review only" or "may archive" are evaluated during Phase 8 -- if they are no longer needed, they are deleted rather than rewritten.
 
@@ -1297,6 +1298,7 @@ Complete mapping from old filenames to new filenames. Every cross-reference, the
 | `appendix-x-copilot-models.md` | Appendix K |
 | `appendix-r-github-profile-sponsors-wikis.md` | Appendix T |
 | `appendix-s-github-organizations-templates.md` | Appendix T |
+| `appendix-ae-github-social.md` | Appendix T |
 | `appendix-f-github-gists.md` | Appendix U |
 | `12-github-pull-requests-extension.md` | Chapter 15 |
 | `14-accessible-code-review.md` | Chapter 15 |
@@ -1482,6 +1484,7 @@ All supplementary files are rewritten AFTER chapter/appendix content is final. N
 - [ ] Rewrite `ACCESSIBILITY_TESTING.md`, `ADMIN_TEST_PLAN.md`
 - [ ] Rewrite `CHALLENGE_SYSTEM_ARCHITECTURE.md` to match new challenge map
 - [ ] Rewrite `LEARNING_ROOM_AUTOMATION_SUMMARY.md`
+- [ ] Rewrite `docs/course-guide.md` with new chapter/appendix sequence and file paths
 - [ ] Review `CODE_OF_CONDUCT.md`, `SECURITY.md`, `REPOSITORY_SECURITY.md` (minimal deps, likely unchanged)
 - [ ] Evaluate `GITHUB_PROPOSAL.md`, `COMING_SOON.md`, `COMPREHENSIVE_VALIDATION_AUDIT.md` for deletion
 
@@ -1628,7 +1631,7 @@ From the classroom plan -- the emotional peaks where facilitators pause the room
 |---|---|---|
 | Chapters | 17 (00-16) | 22 (00-21) |
 | Appendices | 31 (A-Z, AA-AE) | 26 (A-Z) |
-| Total files | 49 | 49 (net zero: 5 new chapters, 5 eliminated appendix stubs, 1 split offsets 1 merge) |
+| Total curriculum files | 49 (17 ch + 31 app + course-guide) | 49 (22 ch + 26 app + course-guide; net zero: 5 new chapters, 5 eliminated appendix stubs, 1 split offsets 1 merge) |
 | Challenges | 16 core + 5 bonus | 16 core + 5 bonus (unchanged) |
 | Autograded challenges | 4 | 4 (unchanged) |
 | Challenge issue templates | 0 | 21 (16 core + 5 bonus) |
