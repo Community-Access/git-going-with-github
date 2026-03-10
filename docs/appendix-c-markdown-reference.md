@@ -653,6 +653,23 @@ The angle brackets tell Markdown to create a `mailto:` link: <support@example.co
 
 GitHub automatically converts full URLs in your text into clickable links, but always prefer explicit descriptive links in prose. Bare URLs should only appear in reference sections or code examples.
 
+### Learning Cards: Links
+
+**Screen reader users:**
+- Pull up a links list (NVDA: `NVDA+F7` then Links tab; JAWS: `Insert+F7`) to audit your document -- every link must make sense without its surrounding sentence
+- Reference-style links (`[text][ref]`) produce identical HTML to inline links -- screen readers announce them the same way, so choose whichever keeps your source readable
+- Relative links to other repo files (e.g., `[Setup](00-pre-workshop-setup.md)`) work on any fork or branch -- prefer them over full URLs for internal documentation
+
+**Low-vision users:**
+- Links render as blue underlined text by default -- if your GitHub theme reduces underline visibility, rely on the color difference or hover state to identify links
+- Long URLs in link text are hard to read at high zoom; always use descriptive text like `[Contributing Guide](url)` instead of pasting the raw URL
+- The title attribute (text in quotes after the URL) appears as a tooltip on hover -- useful at high magnification but do not put essential information only there
+
+**Sighted users:**
+- Scan for blue underlined text to identify all links in rendered Markdown -- bare URLs will also be clickable but look cluttered in prose
+- Reference-style links keep the prose clean by moving URLs to the bottom of the file -- look for `[label]: url` definitions at the end of the document
+- When reviewing a PR, check that no links use "click here" or "read more" as their visible text -- these fail accessibility audits and are unhelpful to all readers
+
 
 ## 11. Images
 
@@ -712,6 +729,23 @@ The architecture has three tiers:
 ```
 
 > **Screen reader note:** Screen readers announce images as "graphic" followed by the alt text. If alt text is empty, the image is treated as decorative and skipped. If alt text is missing entirely (no square brackets), some screen readers will announce the filename, which is not helpful. Always include the square brackets, even if empty for decorative images.
+
+### Learning Cards: Images
+
+**Screen reader users:**
+- Alt text is read aloud as the only representation of the image -- write it to answer "what information does this image convey?" not just "what does it look like?"
+- For decorative images, use empty alt text (`![](image.png)`) so the screen reader skips them entirely rather than announcing the filename
+- Complex images (architecture diagrams, charts) need a full text description in a `<details>` block below the image -- expand it to read the complete information
+
+**Low-vision users:**
+- Images render at their original size by default -- use browser or VS Code zoom to enlarge them, and ensure alt text is present in case the image becomes too pixelated
+- Screenshots with small text are the hardest images to read at high magnification -- request that contributors use cropped, focused screenshots instead of full-screen captures
+- The alt text is invisible in the rendered view but visible in the raw Markdown source -- switch to the source view to verify alt text exists on all images
+
+**Sighted users:**
+- Alt text does not appear visually on the rendered page unless the image fails to load -- check alt text quality by viewing the raw Markdown or using a Markdown linter
+- Use the `<details>` pattern for complex images: display the image normally, then add a collapsible text description below for screen reader users and anyone who wants more detail
+- Linked images (`[![alt](img)](url)`) show a clickable image -- ensure the alt text describes both the image content and the link destination
 
 
 ## 12. Blockquotes
@@ -1054,6 +1088,23 @@ If your "table" has only two columns where the first is a label and the second i
 
 This is often easier to read with a screen reader than a two-column table.
 
+### Learning Cards: Tables
+
+**Screen reader users:**
+- Navigate tables with `Ctrl+Alt+Arrow` keys (NVDA/JAWS) -- Right moves to the next column, Down to the next row; the column header is announced each time you change columns
+- Enter table mode automatically when your screen reader encounters a table -- press `T` in browse mode to jump to the next table on the page
+- Before the table structure, listen for the description sentence the author should place above it -- this tells you what data the table contains before you enter cell-by-cell navigation
+
+**Low-vision users:**
+- Wide tables (6+ columns) may require horizontal scrolling at high zoom -- if the table overflows, scroll right to see truncated columns or view the raw Markdown source instead
+- Column alignment (left, center, right) is controlled by colons in the separator row -- at high magnification, right-aligned numbers are easier to compare than left-aligned ones
+- If a table is hard to read at your zoom level, try narrowing the browser window -- GitHub will sometimes reflow content or add a horizontal scrollbar
+
+**Sighted users:**
+- The header row is visually bold and separated by a line from data rows -- scan headers first to understand the table structure before reading data
+- Column alignment is subtle: left-aligned is default, centered and right-aligned text may not be obvious without comparing multiple cells
+- Consider whether your data truly needs a table -- if it is a simple label-value list, use bold labels (`**Key:** value`) instead for less visual complexity
+
 ### Learning Cards: GitHub Flavored Markdown
 
 <details>
@@ -1266,6 +1317,23 @@ The `<details>` element renders as a disclosure widget:
 - VoiceOver: announces "collapsed, button" - press `VO+Space` to activate
 
 **After expanding:** The content is immediately readable. Screen readers announce "button expanded" for the summary. No page reload occurs.
+
+### Learning Cards: Collapsible Sections
+
+**Screen reader users:**
+- The `<summary>` element is announced as a button -- press `Enter` or `Space` to toggle between collapsed and expanded; listen for "collapsed" or "expanded" state announcements
+- After expanding, the content is immediately available -- arrow down to read it; no page reload or focus change occurs
+- Nested `<details>` blocks (details inside details) work but add complexity -- each level is an independent toggle button; keep nesting to one level deep for predictable navigation
+
+**Low-vision users:**
+- The summary text is the only visible element when collapsed -- it appears as a disclosure triangle (`>`) with text; zoom in to ensure the triangle and text are both readable
+- Expanded content appears inline below the summary -- at high zoom it flows naturally with the rest of the page content
+- The `open` attribute forces a section to start expanded -- useful when the content is important enough that most readers should see it by default
+
+**Sighted users:**
+- Collapsed sections show a disclosure triangle (`>`) that rotates to point downward when expanded -- click the summary text or triangle to toggle
+- Use collapsible sections to keep long documents manageable: error logs, configuration blocks, and exercise solutions are good candidates for hiding behind a summary
+- Always write descriptive summary text ("Full error log from CI run" not just "Details") so readers know whether they need to expand the section
 
 
 ## 20. Task List Checkboxes

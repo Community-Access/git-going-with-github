@@ -303,6 +303,23 @@ gh pr view 42 --web
 
 </details>
 
+### Learning Cards: Navigating to Pull Requests
+
+**Screen reader users:**
+- Press `D` to jump to the "Repository navigation" landmark, then `K` to reach the "Pull requests" tab link -- this is faster than arrowing through the entire page
+- The tab link announces the open PR count ("Pull requests, 7 open"), giving you a quick triage number without opening the list
+- From any GitHub page, press `G` then `P` (two sequential key presses in Focus Mode) to jump directly to the repository's Pull Requests tab
+
+**Low-vision users:**
+- The Pull requests tab is in the repository navigation bar near the page top; at 200%+ zoom the tab bar may wrap to a second line, but each tab remains a distinct clickable link
+- The open PR count appears in parentheses next to the tab text; zoom into the tab area to read it without opening the list
+- Use `Tab` key navigation to step through the repository nav links if pointer targeting is difficult at high magnification
+
+**Sighted users:**
+- Click the **Pull requests** tab in the horizontal navigation bar below the repository name; the badge shows the number of open PRs
+- Bookmark the URL pattern `github.com/OWNER/REPO/pulls` to skip navigation entirely
+- The active tab is underlined; open PRs are the default view -- use the "Closed" filter link to toggle
+
 
 ## The Pull Request List Page
 
@@ -533,6 +550,23 @@ The Checks tab shows the status of automated tests, CI workflows, and other veri
 4. For summary: `VO+U` -> Landmarks -> "check run summary"
 
 </details>
+
+### Learning Cards: Reading the Checks Tab
+
+**Screen reader users:**
+- Each check button is labeled with the check's name and its pass/fail state; listen for "success" or "failure" in the ARIA label before expanding the details
+- Press `D` to jump between the "check suites" and "check run summary" landmarks to get a high-level pass/fail overview without expanding every check
+- If a check fails, expand it and press `K` to navigate step links inside the log -- the failing step is usually labeled with a red X icon described in the accessible name
+
+**Low-vision users:**
+- Passed checks show a green checkmark icon; failed checks show a red X icon; pending checks show a yellow dot -- in Windows High Contrast mode these map to system success/error/warning colors
+- At high zoom, each check row may wrap; the icon and check name stay on the first line, while the duration and "Details" link may appear on a second line
+- Click the "Details" link next to a failed check to jump to the CI log; failed steps are highlighted with a red background that remains visible in high-contrast themes
+
+**Sighted users:**
+- Scan the Checks tab for a row of green checkmarks (all passed) or spot a red X (failed); the summary banner at the top reads "All checks have passed" or "Some checks were not successful"
+- Click any check name to expand its step log inline; failed steps are bolded and marked with a red X so you can skip passing steps quickly
+- The "Re-run" button (circular arrow) appears next to each check for maintainers; use it to retry a flaky check without pushing a new commit
 
 
 ## Reading the Files Changed Tab
@@ -1095,6 +1129,23 @@ These are the GitHub built-in shortcuts for PR pages. Enable Focus Mode first (N
 
 For the full shortcut system, see [Screen Reader Cheat Sheet - GitHub Shortcuts section](appendix-b-screen-reader-cheatsheet.md#github-built-in-keyboard-shortcuts).
 
+### Learning Cards: Submitting a Review
+
+**Screen reader users:**
+- The review verdict controls are inside a popover triggered by the "Finish your review" button; press `1` to return to the h1 (PR title), then `B` or `Tab` forward to find the button -- it is easy to miss because it is not a landmark
+- Inside the popover, `Tab` past the summary text area to reach a radio group labeled "Review Event"; use `Up/Down Arrow` to switch between Comment, Approve, and Request Changes
+- Shortcut: press `Ctrl+Shift+Enter` from any review comment text area to open the submit review dialog directly, bypassing the search for the button
+
+**Low-vision users:**
+- The "Finish your review" button sits in the top-right corner of the Files Changed tab with a small badge showing your pending comment count; at 200%+ zoom it may scroll off-screen to the right
+- Inside the submit popover, the three radio buttons (Comment, Approve, Request changes) are small standard HTML radios; zoom in on the popover area or use `Tab` to step between them
+- After submitting, your review verdict appears as a colored banner in the Conversation timeline: green for Approve, red for Request Changes, grey for Comment
+
+**Sighted users:**
+- Look for the green "Finish your review" button in the sticky header of the Files Changed tab; the badge shows how many comments are pending
+- The popover has a text area for an overall summary at the top and three radio buttons at the bottom: Comment, Approve, Request changes -- select one before clicking "Submit review"
+- If you added comments with "Add single comment" instead of "Start a review," those are already posted; the submit review flow only applies to batched review comments
+
 ### Suggested Changes
 
 A **suggested change** is a special form of inline review comment where the reviewer proposes exact replacement text. The PR author can apply the suggestion directly from GitHub - no copy-paste or separate commit needed.
@@ -1155,6 +1206,23 @@ your proposed text here
 5. Switch to Focus Mode → type your summary comment
 6. Navigate to the radio buttons with arrow keys → select your verdict
 7. Tab to "Submit review" button → Enter
+
+### Learning Cards: Suggested Changes
+
+**Screen reader users:**
+- To insert a suggestion block, press `Ctrl+G` (Windows) or `Cmd+G` (Mac) in the comment text area; the screen reader announces the inserted fence -- arrow down to edit the text between the backtick lines
+- Alternatively type the block manually: three backticks, the word `suggestion`, Enter, your replacement text, Enter, three backticks -- this avoids relying on the keyboard shortcut
+- As a PR author, navigate to a suggestion comment with `3`, then `Tab` to the "Apply suggestion" button; GitHub commits the change automatically with no file editing required
+
+**Low-vision users:**
+- Suggestion blocks render as a mini inline diff: the original line in red/pink background and your proposed replacement in green background; in high-contrast mode these use system diff colors
+- The "Apply suggestion" button is small and sits below the suggestion diff preview; zoom into the comment area to find it, or `Tab` from the suggestion text to reach it
+- When batching multiple suggestions, a floating "Commit suggestions" bar appears at the top of the page; at high zoom scroll up or press `Home` to find it
+
+**Sighted users:**
+- In the comment box, press `Ctrl+G` / `Cmd+G` to wrap the current line in a suggestion block; edit the text inside to show your proposed replacement -- the preview tab renders it as an inline diff
+- As a PR author, each suggestion shows an "Apply suggestion" button and an "Add suggestion to batch" button; use batching to combine several suggestions into one clean commit
+- Applied suggestions auto-resolve the conversation thread and create a commit attributed to both the reviewer (author of the suggestion) and you (committer)
 
 
 ## Understanding Merge Options (for Maintainers)

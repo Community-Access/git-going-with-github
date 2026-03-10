@@ -111,6 +111,23 @@ I am a developer focused on [your interests].
 
 The green squares on your GitHub profile show when you made contributions. Even small actions count: filing issues, opening PRs, making commits, and reviewing code. Consistency matters more than volume.
 
+### Learning Cards: Building Your Developer Portfolio
+
+**Screen reader users:**
+- Navigate to your profile settings at github.com/settings/profile -- the "Pinned repositories" section is a group of checkboxes; Tab through and press Space to pin or unpin
+- Your profile README repository must match your username exactly (case-sensitive) -- screen readers will read the rendered README as regular page content when visitors navigate your profile
+- The contribution graph is announced as a table or grid; arrow keys move between day cells, each announcing the date and contribution count
+
+**Low-vision users:**
+- Pinned repositories appear as cards below your avatar -- at high zoom the 2x3 grid may reflow to a single column, which is easier to scan
+- The profile README renders with your current GitHub theme -- test yours in both light and dark modes to confirm text and images remain readable
+- Contribution graph squares use green intensity to show activity levels; enable high-contrast mode if the shading differences are hard to distinguish
+
+**Sighted users:**
+- Pinned repos appear in a 2x3 grid directly below your bio -- visitors see them immediately, so choose repos that showcase your best work
+- Your profile README renders above the pinned repos section -- keep it concise and scannable with headings and bullet points
+- The contribution graph shows a full year of activity; consistent small green squares look better to visitors than occasional intense bursts
+
 ---
 
 ## 4. Continued Learning Roadmap
@@ -231,6 +248,23 @@ This workshop is open source. If you found something confusing, incorrect, or mi
 4. Mention the chapter number and section in your PR.
 
 You have already practiced every step of this workflow. This is the real thing.
+
+### Learning Cards: Contributing Back to This Workshop
+
+**Screen reader users:**
+- The contribution workflow here is identical to Chapter 18 (Fork and Contribute) -- fork, clone, branch, edit, push, PR; use the same keyboard and screen reader patterns you already practiced
+- When filing an issue, include the chapter number and section heading in the title so maintainers can locate the problem with heading navigation
+- After opening a PR, listen for the automated check results in the PR timeline -- each check is announced as a link with its pass/fail status
+
+**Low-vision users:**
+- The contribution types table above maps each kind of contribution to its workflow -- zoom in on the "How to do it" column for the quickest path
+- When editing documentation in your fork, use VS Code's Markdown Preview (`Ctrl+Shift+V`) at your preferred zoom level to verify formatting before pushing
+- PR descriptions render as Markdown on GitHub -- use headings and lists so reviewers can scan your changes at any zoom level
+
+**Sighted users:**
+- The simplest contribution is fixing a typo -- fork the repo, edit the file directly on GitHub.com, and open a PR in under two minutes
+- Reference the chapter number and section in your PR title (e.g., "Fix broken link in Ch07 Section 3") so maintainers can review quickly
+- Check the repository's open issues for items labeled "good first issue" or "help wanted" to find contributions the maintainers are actively seeking
 
 ---
 

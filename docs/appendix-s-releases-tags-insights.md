@@ -219,6 +219,23 @@ This section is relevant if you become a maintainer or contribute to a project t
 
 The `/draft-release` command generates structured release notes automatically from your merged PRs - much faster and more consistent than writing them manually. See [Section 8](#8-accessibility-agents-draft-release).
 
+### Learning Cards: Creating a Release
+
+**Screen reader users:**
+- The release creation form at `github.com/owner/repo/releases/new` has several fields -- Tab through them in order: tag selector (combobox), target branch, title input, release notes textarea, asset upload, pre-release checkbox, draft checkbox, and publish button
+- The tag selector is a combobox -- type a new version tag (e.g., `v2.1.0`) and the option to create it appears; arrow down and press Enter to select
+- The "Generate release notes" button auto-fills the textarea with merged PR titles -- after clicking it, arrow through the generated notes to verify accuracy before publishing
+
+**Low-vision users:**
+- The release creation page uses a single-column form layout -- zoom in and the form fields stack vertically for easy scanning
+- The "Pre-release" and "Draft" checkboxes are at the bottom of the form, below the release notes editor -- scroll past the potentially long textarea to find them
+- The "Generate release notes" button is a small link-style button near the release notes textarea -- look for it above or beside the text area at high magnification
+
+**Sighted users:**
+- The tag selector dropdown shows existing tags and a text input for creating new ones -- type `v` to filter for version tags
+- Click "Generate release notes" to auto-populate from merged PRs since the last release -- review and manually categorize the entries (Breaking Changes, Features, Bug Fixes) for a polished result
+- The Assets section at the bottom accepts drag-and-drop file uploads for binaries, installers, or compiled packages
+
 
 ## 7. Draft and Pre-Release States
 
@@ -388,6 +405,23 @@ Tab → Column headers (click to sort: Commits, Additions, Deletions)
 ↓ → Navigate rows (each contributor is a row)
 K → Links to each contributor's filtered commit list
 ```
+
+### Learning Cards: Contributors
+
+**Screen reader users:**
+- The contributor chart is a canvas graphic that screen readers cannot access -- skip it and navigate to the data table below with `T` (next table) which contains the same information in accessible form
+- The table has sortable column headers (Commits, Additions, Deletions) -- Tab to a header and press Enter to sort; the table reloads with the new sort order
+- Each contributor's username is a link to their filtered commit list -- activate it to see every commit that person made to this repository
+
+**Low-vision users:**
+- The bar chart uses color to distinguish contributors -- the table below provides the same data as text; zoom in on the table if the chart colors are hard to differentiate
+- Sorting by Commits (default) puts top contributors first -- at high zoom, the table may require horizontal scrolling to see the Additions and Deletions columns
+- After your first merged PR, your username appears in this table -- link to it (`github.com/owner/repo/graphs/contributors`) as proof of contribution in your portfolio
+
+**Sighted users:**
+- The color-coded bar chart at the top shows commit frequency over time -- each contributor is a different color in the stacked bars
+- The table below the chart is sortable by column -- click Commits, Additions, or Deletions to reorder and quickly find the most active contributors
+- Your name appears here after your first merged PR -- bookmark the URL to reference your contribution history when building your developer portfolio
 
 
 ## 13. Traffic - Who Visits the Repo

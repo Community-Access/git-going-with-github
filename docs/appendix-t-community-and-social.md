@@ -508,6 +508,23 @@ Go to `github.com/username?tab=stars` — or click your avatar → **Your stars*
 
 You'll see all your starred repositories sorted by most recently starred. Use the search box to filter by name, and the language filter to narrow by programming language.
 
+### Learning Cards: Stars
+
+**Screen reader users:**
+- The Star button is in the repository header area -- press `B` to navigate buttons until you hear "Star this repository" (or "Unstar this repository" if already starred); press Enter to toggle
+- The keyboard shortcut `g` then `s` on any repository page toggles the star without needing to navigate to the button
+- Your starred repos are listed at `github.com/username?tab=stars` -- each entry is a heading with the repo name as a link; use `H` to jump between starred repos
+
+**Low-vision users:**
+- The Star button shows a star icon with a count next to it in the repository header -- at high zoom, the button may wrap below the repo name; look for the star icon near Fork and Watch
+- When you star a repo, the button changes from an outline star to a filled star with the label "Starred" -- the visual change is subtle; confirm by re-reading the button text
+- The dropdown arrow next to Star lets you add the repo to a List -- look for a small triangle icon to the right of the Star button at high magnification
+
+**Sighted users:**
+- The Star button is in the top-right header of every repository page, between Watch and Fork -- the count next to it shows total stars
+- Click the dropdown arrow next to Star to add the repo to a named List (like playlists for repos) -- this keeps your stars organized instead of one long pile
+- Your stars page at `github.com/username?tab=stars` is public -- curate it as a "recommended tools" list for your community
+
 ---
 
 ## 2. Watching Repositories — Staying in the Loop
@@ -556,6 +573,23 @@ gh api user/subscriptions --jq '.[].full_name'
 # Stop watching a repository
 gh api repos/owner/repo/subscription --method DELETE
 ```
+
+### Learning Cards: Watching Repositories
+
+**Screen reader users:**
+- The Watch button is next to the Star button in the repository header -- press `B` to navigate buttons until you hear "Watch" or a watch level label; press Enter to open the dropdown
+- The watch level dropdown presents radio-style options (Not watching, Participating, All Activity, Releases only, Ignore) -- arrow through them and press Enter to select
+- "Participating and @mentions" is the recommended default for repos you contribute to -- it notifies you only for threads you are in or mentioned in, avoiding inbox overload
+
+**Low-vision users:**
+- The Watch button shows an eye icon with a dropdown arrow and a count of watchers -- at high zoom, look for it immediately to the left of the Star button in the repository header
+- The dropdown menu lists five watch levels vertically with radio indicators -- the currently selected level has a filled radio dot or checkmark next to it
+- "Releases only" is the best choice for tools and dependencies you use but do not contribute to -- it sends one notification per release instead of every issue and PR
+
+**Sighted users:**
+- The Watch button (eye icon) is in the header next to Star and Fork -- click it to open a dropdown with five notification levels
+- "Participating and @mentions" (the default for repos you contribute to) gives you relevant notifications without noise -- upgrade to "All Activity" only for small, focused repos
+- The watcher count next to the button shows how many people are watching -- a high watcher count on a repo signals an active, engaged community
 
 ---
 

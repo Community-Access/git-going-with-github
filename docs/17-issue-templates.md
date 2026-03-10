@@ -1298,6 +1298,23 @@ When designing templates for a project you maintain, use these principles:
 
 **Test every template with your screen reader before committing.** Navigate through the form, tab through all fields, confirm every label is announced correctly, and verify that required-field errors are surfaced in a way a screen reader user will encounter before submitting.
 
+### Learning Cards: Building an Accessibility Bug Report Template
+
+**Screen reader users:**
+- YAML indentation is invisible to your ears but critical to the parser -- use VS Code's "Editor: Detect Indentation" setting and listen for the indentation level announcement (`Alt+Shift+I` in NVDA) to catch misaligned fields before committing
+- When editing YAML `body:` fields, each `- type:` block begins at the same indent level; use line-by-line arrow navigation and listen for consistent leading whitespace to verify structure
+- Test your finished template by filing a real issue with your screen reader -- tab through every field, confirm labels are announced, and verify that required-field validation errors are spoken before the form submits
+
+**Low-vision users:**
+- Turn on VS Code bracket and indentation colorization (`"editor.guides.indentation": true`) so the nested YAML structure of `body > attributes > validations` is visually distinct at each level
+- Use the Minimap or breadcrumb bar to track your position in a long YAML file -- accessibility bug report templates can easily exceed 100 lines, and losing your place is common at high zoom
+- Preview the rendered form on GitHub.com at your working zoom level to confirm that dropdown options, placeholders, and help text are all readable without horizontal scrolling
+
+**Sighted users:**
+- Install the YAML extension in VS Code for red-squiggle validation as you type -- a single wrong indent in YAML silently breaks the field and GitHub shows no error, just a missing field
+- After pushing your template, open the "New issue" template chooser in an incognito window to verify it appears correctly; caching can hide updates in your normal browser session
+- Compare your template side-by-side with the accessibility-agents `accessibility-bug-report.yml` to check that you have not missed critical fields like assistive technology setup or WCAG criterion
+
 
 ## 8. Pull Request Templates
 
@@ -1362,6 +1379,23 @@ Open `.github/pull_request_template.md` in VS Code. You will see the standard se
 - Checklist items appear as clickable checkboxes in the rendered PR so reviewers can track progress
 
 </details>
+
+### Learning Cards: Hands-On Activity
+
+**Screen reader users:**
+- When filing an issue using a YAML form template, Tab moves between form fields and your screen reader announces each label -- listen for "required" on mandatory fields so you do not submit an incomplete form
+- After submitting your test issue, navigate to it and use heading navigation (`H` key in browse mode) to verify that your field responses rendered under the correct headings
+- When verifying your own created template, file a test issue yourself and read the entire rendered output with your screen reader before asking others to use it
+
+**Low-vision users:**
+- The GitHub template chooser displays template names and descriptions in a list -- at high zoom, the descriptions may wrap; look for the bold template name as your anchor point
+- After filing your test issue, switch to the rendered view and check that dropdown selections, text areas, and checkbox states are all visible and correctly formatted at your zoom level
+- When testing your custom template in Exercise B, open the form at both 100% and your preferred zoom to catch layout breaks that only appear at magnification
+
+**Sighted users:**
+- Use the template chooser's visual cards to compare your new template against existing ones -- consistent naming, description length, and label style make the chooser look professional
+- After creating your template, file a test issue and screenshot the rendered output; compare it against the original YAML to verify every field type (dropdown, textarea, checkboxes) rendered as intended
+- Try the "Preview" tab on GitHub.com while editing Markdown templates to catch formatting issues before committing; YAML form templates have no preview, so you must test by filing a real issue
 
 
 ## 9. Hands-On Activity
