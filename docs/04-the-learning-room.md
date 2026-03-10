@@ -109,8 +109,10 @@ Throughout Day 1, you work on **two parallel learning tracks**:
 The learning-room repository contains these files and folders:
 
 - **README.md** -- Getting started guide
-- **AUTOMATION.md** -- How the bot works
 - **.github/**
+  - **STUDENT_GUIDE.md** -- How the bot works
+  - **IMPLEMENTATION_GUIDE.md** -- Full setup walkthrough
+  - **SETUP_AND_MAINTENANCE.md** -- Maintenance reference
   - **workflows/** -- 3 automation workflows
     - learning-room-pr-bot.yml (PR validation)
     - skills-progression.yml (progress tracking)
@@ -120,12 +122,8 @@ The learning-room repository contains these files and folders:
   - **data/**
     - student-roster.json (your cohort info)
     - challenge-progression.json (levels, badges)
-  - **docs/**
-    - LEARNING_PATHS.md (skill progression guide)
-    - IMPLEMENTATION_GUIDE.md (facilitator setup)
 - **docs/**
-  - CHALLENGES.md -- 12 challenges (Beginner to Expert)
-  - GROUP_CHALLENGES.md -- 7 collaborative exercises
+  - CHALLENGES.md -- 21 challenges (16 core + 5 bonus)
   - welcome.md -- Has a TODO to complete
   - keyboard-shortcuts.md -- Has intentional errors
   - setup-guide.md -- Has broken links
@@ -278,20 +276,23 @@ This file is used for **intermediate and advanced challenges** (Challenges 4-6) 
 
 ### docs/CHALLENGES.md - Your Challenge Menu
 
-This file lists all 12 challenges organized by skill level:
+This file lists all 21 challenges organized by progression level:
 
 | Level | Challenges | Requirement |
 | -------  | -----------  | -------------  |
-| Beginner (1-3) | Fix broken link, add shortcut, complete welcome guide | 0+ merged PRs |
-| Intermediate (4-6) | Fix heading hierarchy, improve link text, add alt text | 1+ merged PRs |
-| Advanced (7-9) | Accessibility review, create documentation, mentor a peer | 3+ merged PRs |
-| Expert (10-12) | Design a challenge, full accessibility audit, create issue template | 5+ merged PRs |
+| Explorer (01-03) | Scavenger hunt, first issue, join conversation | Getting started |
+| Contributor (04-07) | Branch out, make your mark, first PR, merge conflict | 3+ challenges |
+| Collaborator (08-09) | Culture reflection, merge day | 7+ challenges |
+| Operator (10-11) | Go local, Day 2 PR | 9+ challenges |
+| Reviewer (12-14) | Code review, Copilot, issue template | 11+ challenges |
+| Agent Navigator (15-16) | Agents, capstone | 14+ challenges |
+| Bonus (A-E) | Accessibility audit, mentor, cross-repo, workflow, docs | Optional |
 
-Each challenge lists the file(s) to edit, estimated time, skills practiced, success criteria, and a link to detailed instructions.
+Each challenge lists the file(s) to edit, estimated time, skills practiced, and success criteria.
 
-### docs/GROUP_CHALLENGES.md - Collaborative Exercises
+### Bonus Challenges
 
-Seven group exercises for study groups, ranging from a Documentation Sprint (divide `docs/welcome.md` among group members) to a Full Repository Audit (each person audits a section of the workshop documentation). Groups of 2-6 students work together with coordinated PRs and cross-review.
+Five bonus challenges (A through E) are available for students who finish faster. These include an accessibility audit, mentoring a peer, cross-repository contribution, creating a custom workflow, and documentation improvement.
 
 
 ## How PR Sharing Works
@@ -798,6 +799,8 @@ No! The Learning Room has challenges for all skill levels. You can pick what int
 | Practice file has no TODO markers | Verify you are on the correct branch. Run `git branch` to see your current branch. The main branch may have already been updated. |
 | Accidentally committed to main | Do not panic. See the failsafe instructions in [Chapter 13](13-how-git-works.md#10-if-you-get-stuck) or ask a facilitator. |
 | Everything else | Post a comment on your challenge issue describing what happened. That always counts as participation. |
+| I finished Challenge 4 but I am not sure I did it right | Compare your work against the [Challenge 4 reference solution](solutions/solution-04-branch-out.md). Any branch with any name is a success. |
+| I finished Challenge 5 but I am not sure I did it right | Compare your work against the [Challenge 5 reference solution](solutions/solution-05-make-your-mark.md). Any clear edit with a descriptive commit message is a success. |
 
 
 ## Celebration: You're Contributing

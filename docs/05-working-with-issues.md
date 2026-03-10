@@ -132,6 +132,7 @@ Replace `[number]` with the actual issue numbers. Then close your Chapter 4 chal
 2. @mention not working? Make sure you type `@` immediately followed by the username with no space.
 3. Sub-issue option not visible? Ask a facilitator - the feature may need to be enabled for the repository.
 4. Still stuck? Ask a facilitator for a direct issue link.
+5. Finished but not sure you did it right? Compare your work against the [Challenge 2 reference solution](solutions/solution-02-first-issue.md) or the [Challenge 3 reference solution](solutions/solution-03-conversation.md).
 
 ### Learning Moment
 

@@ -217,10 +217,11 @@ Remember: **The bot enables human connection, not replaces it.**
 
 ## Quick Links
 
-- [Automation Setup & Maintenance](./SETUP_AND_MAINTENANCE.md)
+- [Automation Setup and Maintenance](./SETUP_AND_MAINTENANCE.md)
 - [Learning Room README](../README.md)
-- [Challenge List](../docs/CHALLENGES.md)
-- [Group Challenges](../docs/GROUP_CHALLENGES.md)
+- [Challenge Hub](../../docs/CHALLENGES.md)
+- [Grading Guide](../../classroom/grading-guide.md)
+- [Solutions Directory](../../docs/solutions/)
 
 
-**Questions?** Check the setup guide or reach out in your facilitator Slack!
+**Questions?** Check the setup guide or reach out in your facilitator channel.

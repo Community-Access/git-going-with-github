@@ -596,6 +596,7 @@ GitHub also offers a "Delete branch" button on the merged PR page.
 | Reviewer requested changes but I do not understand | Reply to the review comment with a question. Reviewers expect questions from new contributors. |
 | "Repository not found" when cloning | Double-check the URL. Make sure the fork exists under your account. |
 | Accidentally committed to main instead of a branch | Check [Appendix E](appendix-e-advanced-git.md) for how to move commits to a new branch. |
+| I finished but I am not sure I did it right | Compare your work against the [Challenge 15 reference solution](solutions/solution-15-agents.md) (for agent discovery) or the [Challenge 16 reference solution](solutions/solution-16-capstone.md) (for the capstone). Your version does not need to match exactly. |
 
 ---
 

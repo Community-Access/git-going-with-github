@@ -633,6 +633,7 @@ Open any GitHub repository - try [github.com/community-access/accessibility-agen
 | Page seems empty or broken | Some GitHub features require JavaScript. Ensure your browser has JavaScript enabled and try refreshing with `Ctrl+Shift+R`. |
 | Cannot find the repository navigation tabs | Press `D` until you hear "Repository navigation" then press `K` or `Tab` to find Code, Issues, Pull Requests tabs. |
 | Everything else | Post a comment on your challenge issue describing what you see and hear. A facilitator or buddy can walk you through it. |
+| I finished but I am not sure I did it right | Compare your work against the [Challenge 1 reference solution](solutions/solution-01-scavenger-hunt.md). Your version does not need to match exactly -- if you explored the tabs and found the key files, you succeeded. |
 
 
 ## Day 2 Amplifier

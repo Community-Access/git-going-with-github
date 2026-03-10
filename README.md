@@ -91,47 +91,21 @@ Every skill you build on Day 1 maps directly to an Accessibility Agents command 
 All documentation lives in the `docs/` folder. Read them in order for the full experience, or jump to what you need.
 
 
-##  Your Challenges Are Waiting (Start Here!)
+##  Your Challenges
 
-**You have 30+ challenges pre-assigned to you by your GitHub username.**
+**16 challenges guide you through the workshop, plus 5 bonus challenges for those who finish early.**
 
-Go to the **Issues** tab of this repository and filter by your username. You'll see challenges like:
+Open the **Issues** tab of the Learning Room repository and look for challenge issue templates matching each chapter. The [Challenge Hub](docs/CHALLENGES.md) has the full list with instructions, evidence requirements, and links.
 
-```
-Chapter 4.1: Create Your First Issue (@YOUR_USERNAME)
-Chapter 4.2: Claim a Challenge (@YOUR_USERNAME)
-Chapter 6.1: Open Your First Pull Request (@YOUR_USERNAME)
-... and 27 more
-```
+**The workflow:**
+1. Open the challenge issue template for the current chapter
+2. Follow the instructions in the issue and the corresponding chapter
+3. Complete the challenge and post your evidence
+4. Open a PR that references your issue with `Closes #N`
+5. The validation bot checks your work
+6. When it passes, merge and move to the next challenge
 
-Each issue is your personal challenge tracker. Inside, you'll find:
-- **Clear instructions** (with links back to this documentation)
-- **Step-by-step walkthrough** for your screen reader
-- **Bot validation** (automatic feedback on your work)
-- **Proof that you completed it** (closed issue = skill unlocked)
-
-**[Open the Challenge Hub](learning-room/docs/CHALLENGES.md)** for detailed instructions on every challenge, organized by chapter, with full context and learning moments.
-
-**The workflow is simple:**
-1. Click on a challenge issue assigned to you
-2. Click "I'm working on this!" to claim it
-3. Follow the instructions in the issue + the Challenge Hub
-4. Open a PR that says `Closes #<issue_number>`
-5. The bot validates your work
-6. When it passes, merge your PR and your issue auto-closes
-7. Move to the next challenge!
-
-**You don't need to memorize anything.** Every challenge is in the Issues tab, waiting for you. Every step is documented. Every question has a "If You Get Stuck" section.
-
-###  Facilitators: Challenge Management
-
-Are you running this workshop? See [FACILITATOR_CHALLENGES.md](FACILITATOR_CHALLENGES.md) for:
--  Pre-workshop setup (batch issue generation for your cohort)
--  Real-time monitoring and student support
--  Understanding and configuring bot validation
--  Cleaning up and refreshing between cohorts
-
-The Facilitator guide includes templates, scripts, success metrics, and a final pre-workshop checklist.
+Every chapter has an "If You Get Stuck" section. Every challenge has a [reference solution](docs/solutions/). You do not need to memorize anything.
 
 
 > **HTML Version Available:** All markdown documentation is automatically converted to HTML format. After cloning the repository, you can browse the `html/` directory for web-formatted versions of every document. See [BUILD.md](BUILD.md) for details.
@@ -142,27 +116,32 @@ The Facilitator guide includes templates, scripts, success metrics, and a final 
 
 > **Looking for a student-friendly table of contents?** See the [Course Guide](docs/course-guide.md) - a single page with day-by-day chapter tables, grouped appendices, all 24 exercises at a glance, and where to get help.
 
-**Lessons**
+**Chapters**
 
 | # | Document | What It Covers |
 |---|----------|----------------|
 | [00](docs/00-pre-workshop-setup.md) | **Pre-Workshop Setup** | Everything to install and configure before Day 1 |
-| [01](docs/02-understanding-github.md) | **Understanding GitHub's Web Structure** | How GitHub is organized, page types, landmark structure, heading hierarchy, and the screen reader orientation sequence |
-| [02](docs/03-navigating-repositories.md) | **Navigating Repositories** | Step-by-step repository navigation with your screen reader |
-| [03](docs/04-the-learning-room.md) | **The Learning Room: Shared Practice Repo** | Your shared contribution environment, PR sharing workflow, automation system, peer reviewing, and how everything works together |
-| [04](docs/05-working-with-issues.md) | **Working with Issues** | Filing, managing, and participating in issues |
-| [05](docs/11-vscode-interface.md) | **VS Code Accessibility** | VS Code interface, github.dev, screen reader mode, keyboard navigation, accessibility signals, Accessible Help/View/Diff, git operations overview |
+| [01](docs/01-choose-your-tools.md) | **Choose Your Tools** | Screen reader options, tooling decisions, and workflow setup |
+| [02](docs/02-understanding-github.md) | **Understanding GitHub** | How GitHub is organized, page types, landmark structure, and screen reader orientation |
+| [03](docs/03-navigating-repositories.md) | **Navigating Repositories** | Step-by-step repository navigation with your screen reader |
+| [04](docs/04-the-learning-room.md) | **The Learning Room** | Your shared practice space, branching, committing, and PR workflow |
+| [05](docs/05-working-with-issues.md) | **Working with Issues** | Filing, managing, and participating in issues |
 | [06](docs/06-working-with-pull-requests.md) | **Working with Pull Requests** | Creating, reviewing, and merging pull requests |
 | [07](docs/07-merge-conflicts.md) | **Merge Conflicts** | Understanding, preventing, and resolving merge conflicts |
-| [08](docs/08-open-source-culture.md) | **Culture and Etiquette** | Open source language, tone, commenting, review etiquette |
-| [09](docs/09-labels-milestones-projects.md) | **Labels, Milestones and Projects** | Organizing and cross-referencing work |
-| [10](docs/10-notifications-and-day-1-close.md) | **Notifications and Mentions** | Managing your inbox, @mentions, and subscriptions |
-| [11](docs/14-git-in-practice.md) | **VS Code: Git & Source Control** | Cloning, Source Control panel, branching, staging, committing, Timeline view, merge conflicts, stash management |
-| [12](docs/15-code-review.md) | **VS Code: GitHub Pull Requests Extension** | Viewing PRs, checking out branches, reviewing with Accessible Diff, creating PRs, commenting, merging |
-| [13](docs/16-github-copilot.md) | **VS Code: GitHub Copilot** | Inline suggestions, Copilot Chat, effective prompting for documentation work, custom instructions vs custom agents, Accessible View workflow |
-| [14](docs/15-code-review.md) | **Accessible Code Review** | Navigating diffs and conducting PR reviews with a screen reader, on GitHub and in VS Code - culminating skill before automation |
-| [15](docs/17-issue-templates.md) | **Issue Templates** | Creating and using GitHub issue templates |
-| [16](docs/19-accessibility-agents.md) | **Accessibility Agents** | 55 agents across 3 teams (Accessibility, GitHub Workflow, Developer Tools), 54+ slash commands, contributing to the ecosystem - agentic flow after all learning complete |
+| [08](docs/08-open-source-culture.md) | **Open Source Culture** | Community norms, contributing, giving feedback |
+| [09](docs/09-labels-milestones-projects.md) | **Labels, Milestones, and Projects** | Organizing and cross-referencing work |
+| [10](docs/10-notifications-and-day-1-close.md) | **Notifications and Day 1 Close** | Managing your inbox, merging your work, Day 1 recap |
+| [11](docs/11-vscode-interface.md) | **VS Code Interface** | VS Code accessibility, screen reader mode, keyboard navigation |
+| [12](docs/12-vscode-accessibility.md) | **VS Code Accessibility** | Accessibility signals, Accessible View, Accessible Diff Viewer |
+| [13](docs/13-how-git-works.md) | **How Git Works** | Commits, branches, merges, and the mental model |
+| [14](docs/14-git-in-practice.md) | **Git in Practice** | Clone, branch, edit, commit, push using VS Code and terminal |
+| [15](docs/15-code-review.md) | **Code Review** | PR extension, diffs, inline comments, review verdicts |
+| [16](docs/16-github-copilot.md) | **GitHub Copilot** | Inline suggestions, Copilot Chat, prompting, Accessible View |
+| [17](docs/17-issue-templates.md) | **Issue Templates** | Creating and using GitHub issue templates |
+| [18](docs/18-fork-and-contribute.md) | **Fork and Contribute** | Fork workflow, upstream sync, cross-repo contributions |
+| [19](docs/19-accessibility-agents.md) | **Accessibility Agents** | 55 agents across 3 teams, contributing to the ecosystem |
+| [20](docs/20-build-your-agent.md) | **Build Your Own Agent** | Design an agent with responsibilities and guardrails (capstone) |
+| [21](docs/21-next-steps.md) | **Next Steps** | Where to go after the workshop |
 
 **Workshop Agendas** - For facilitators only (not part of learner sequence)
 
@@ -210,93 +189,47 @@ The Facilitator guide includes templates, scripts, success metrics, and a final 
 
 ```
 [repo root]/
-├── README.md                            ← You are here
-├── CONTRIBUTING.md                      ← How to contribute to this repo
-├── CODE_OF_CONDUCT.md                   ← Community standards
-├── FACILITATOR.md                       ← For workshop organizers only
-├── DAY1_AGENDA.md                       ← Day 1 workshop schedule (facilitators only)
-├── DAY2_AGENDA.md                       ← Day 2 workshop schedule (facilitators only)
-├── .gitignore
+├── README.md                            -- You are here
+├── CONTRIBUTING.md                      -- How to contribute to this repo
+├── CODE_OF_CONDUCT.md                   -- Community standards
+├── FACILITATOR.md                       -- For workshop organizers only
+├── DAY1_AGENDA.md                       -- Day 1 workshop schedule
+├── DAY2_AGENDA.md                       -- Day 2 workshop schedule
 ├── .github/
 │   ├── ISSUE_TEMPLATE/
-│   │   ├── config.yml                   ← Links to GitHub Skills; disables blank issues
-│   │   ├── accessibility-bug.yml        ← Structured accessibility bug form (YAML)
-│   │   └── feature-request.yml         ← Feature/improvement request form (YAML)
-│   ├── PULL_REQUEST_TEMPLATE.md        ← PR checklist with accessibility section
-│   ├── agents/                          ← Accessibility Agents: workshop Copilot Chat agents (55 total across 3 teams)
-│   │   ├── daily-briefing.agent.md
-│   │   ├── issue-tracker.agent.md
-│   │   ├── pr-review.agent.md
-│   │   ├── analytics.agent.md
-│   │   ├── insiders-a11y-tracker.agent.md
-│   │   ├── template-builder.agent.md
-│   │   └── preferences.example.md      ← Copy to preferences.md and personalize
-│   └── prompts/                         ← 54+ slash commands for Copilot Chat
-│       ├── a11y-update.prompt.md
-│       ├── create-issue.prompt.md
-│       ├── daily-briefing.prompt.md
-│       ├── review-pr.prompt.md
-│       ├── triage.prompt.md
-│       └── ... (23 more - see appendix-l-agents-reference.md)
-├── learning-room/                       ← Practice target for the contribution sprint
+│   │   ├── config.yml                   -- Links to GitHub Skills; disables blank issues
+│   │   ├── challenge-*.yml              -- 16 core challenge templates
+│   │   ├── bonus-*.yml                  -- 5 bonus challenge templates
+│   │   ├── accessibility-bug.yml        -- Structured accessibility bug form
+│   │   └── feature-request.yml          -- Feature/improvement request form
+│   ├── PULL_REQUEST_TEMPLATE.md         -- PR checklist with accessibility section
+│   ├── workflows/                       -- CI/CD and autograding workflows
+│   ├── agents/                          -- 55 Accessibility Agents for Copilot Chat
+│   └── prompts/                         -- 54+ slash commands for Copilot Chat
+├── classroom/                           -- GitHub Classroom setup artifacts
+│   ├── README.md                        -- Setup guide for new cohorts
+│   ├── assignment-day1-you-belong-here.md
+│   ├── assignment-day2-you-can-build-this.md
+│   ├── autograding-day1.json
+│   ├── autograding-day2.json
+│   ├── roster-template.csv
+│   ├── grading-guide.md
+│   └── teardown-checklist.md
+├── learning-room/                       -- Practice target for contribution exercises
 │   ├── README.md
 │   └── docs/
-│       ├── welcome.md                   ← Has [TODO] sections for you to complete
-│       ├── keyboard-shortcuts.md        ← Has intentional accessibility issues to find and fix
-│       └── setup-guide.md              ← Has a broken link to find and fix
-├── PODCASTS.md                          ← Audio player page (44 episodes, HTML5 audio)
-├── podcasts/                            ← Podcast production pipeline
-│   ├── build-bundles.js                 ← Generates NotebookLM source bundles
-│   ├── generate-site.js                 ← Generates PODCASTS.md and RSS feed from manifest
-│   ├── manifest.json                    ← Episode manifest (status, metadata)
-│   ├── feed.xml                         ← RSS 2.0 podcast feed
-│   ├── README.md                        ← Production guide
-│   └── bundles/                         ← 44 generated episode source bundles
-└── docs/                               ← Full workshop curriculum (17 lessons + 31 appendices A-Z, AA-AE)
-    ├── course-guide.md                           ← Student landing page: day-by-day overview, exercises, help
-    ├── 00-pre-workshop-setup.md
-    ├── 02-understanding-github.md  ← How GitHub is organized (start here)
-    ├── 03-navigating-repositories.md  ← Accessibility Agents: @daily-briefing
-    ├── 04-the-learning-room.md        ← Read this early: your shared space and PR workflow
-    ├── 05-working-with-issues.md      ← Accessibility Agents: @issue-tracker
-    ├── 11-vscode-interface.md     ← VS Code accessibility: screen reader mode, accessibility signals, interface tour
-    ├── 06-working-with-pull-requests.md ← Accessibility Agents: @pr-review
-    ├── 07-merge-conflicts.md          ← Accessibility Agents: Copilot conflict prevention
-    ├── 08-open-source-culture.md        ← Accessibility Agents: output responsibility
-    ├── 09-labels-milestones-projects.md ← Accessibility Agents: @issue-tracker + labels
-    ├── 10-notifications-and-day-1-close.md            ← Accessibility Agents: @daily-briefing + inbox
-    ├── 14-git-in-practice.md       ← Git operations in VS Code: clone, branch, commit, merge, stash
-    ├── 15-code-review.md ← GitHub PR extension: view, review, create, merge PRs
-    ├── 16-github-copilot.md           ← GitHub Copilot: inline suggestions, Chat, prompting, custom agents
-    ├── 15-code-review.md   ← Reviewer mechanics: diffs, comments, Accessible Diff Viewer - final culminating skill
-    ├── 17-issue-templates.md          ← Creating GitHub issue templates
-    ├── 19-accessibility-agents.md              ← Accessibility Agents: 55 agents, 3 teams, 5 platforms - automate everything you learned
-    ├── appendix-a-glossary.md                    ← A: Every term explained (look up any time)
-    ├── appendix-b-screen-reader-cheatsheet.md    ← B: Full shortcut reference, per-screen-reader tables (keep open)
-    ├── appendix-m-accessibility-standards.md     ← C: WCAG 2.2, ARIA, PR checklist
-    ├── appendix-d-git-authentication.md          ← D: SSH keys, PATs, credential storage
-    ├── appendix-c-markdown-reference.md    ← E: Alert blocks, Mermaid, math, footnotes, heading anchors
-    ├── appendix-u-discussions-and-gists.md                ← F: Code snippets, sharing, embedding
-    ├── appendix-u-discussions-and-gists.md          ← G: GitHub Discussions navigation and participation
-    ├── appendix-s-releases-tags-insights.md      ← H: Releases, tags, version numbers, pulse, contributors, traffic
-    ├── appendix-r-projects-deep-dive.md             ← I: GitHub Projects deep dive (boards, tables, roadmaps, automations)
-    ├── appendix-n-advanced-search.md             ← J: Search query language reference
-    ├── appendix-o-branch-protection.md  ← K: Branch rules, rulesets, diagnosing blocked PRs
-    ├── appendix-p-security-features.md    ← L: Dependabot, secret scanning, code scanning, private advisories
-    ├── appendix-g-vscode-reference.md ← M: Complete VS Code accessibility technical reference
-    ├── appendix-j-cloud-editors.md           ← N: Cloud dev environments, accessibility setup, screen reader usage
-    ├── appendix-v-github-mobile.md               ← O: VoiceOver and TalkBack guide for iOS and Android
-    ├── appendix-w-github-pages.md                ← P: GitHub Pages deployment guide
-    ├── appendix-q-actions-workflows.md    ← Q: Automation, CI/CD workflows, and agentic cloud
-    ├── appendix-t-community-and-social.md ← R: Profile README, GitHub Sponsors, wikis
-    ├── appendix-t-community-and-social.md ← S: Organizations, templates, repository settings
-    ├── 08-open-source-culture.md ← T: First contribution guide
-    ├── appendix-x-resources.md                   ← U: Every link, tool, and reference (lookup anytime)
-    ├── appendix-l-agents-reference.md       ← V: Accessibility Agents agents, commands, and customization
-    ├── appendix-k-copilot-reference.md    ← W: Copilot features, chat, MCP servers, agentic ecosystem
-    ├── appendix-k-copilot-reference.md              ← X: AI model comparison and selection guide
-    ├── appendix-y-workshop-materials.md ← Y: How to get, download, and read these materials
-    └── appendix-z-github-skills.md  ← Z: All 36 GitHub Skills modules with learning paths
+│       ├── welcome.md                   -- Has TODO sections for you to complete
+│       ├── keyboard-shortcuts.md        -- Has intentional accessibility issues to fix
+│       └── setup-guide.md              -- Has a broken link to find and fix
+├── docs/                                -- Full workshop curriculum (22 chapters + appendices)
+│   ├── course-guide.md                  -- Student landing page
+│   ├── CHALLENGES.md                    -- Challenge Hub: all 21 challenges
+│   ├── 00-pre-workshop-setup.md through 21-next-steps.md
+│   ├── appendix-a-glossary.md through appendix-z-github-skills.md
+│   └── solutions/                       -- Reference solutions for every challenge
+├── podcasts/                            -- Audio companion episodes
+└── PODCASTS.md                          -- Audio player page
+```
 
 > *Note: Appendices were renumbered during a February 2026 review. If you encounter external references to "Appendix D" or later letters, subtract one letter (e.g., the former Appendix D is now [Appendix C](docs/appendix-m-accessibility-standards.md)).*
 
@@ -347,5 +280,5 @@ And by the end of Day 2, you will not just be a learner. You will be a product m
 All workshop documentation is licensed under [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/) - you are free to share and adapt with attribution.
 
 
-*Last reviewed: February 2026*
+*Last reviewed: March 2026*
 *A [Community Access](https://community-access.org) initiative.*

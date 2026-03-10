@@ -81,6 +81,7 @@ Chapter 7 completed:
 3. Accidentally deleted too much? Undo with `Ctrl+Z` and start the section over.
 4. PR bot says content is wrong? Double-check that zero marker lines remain - search for `<<<<<<<`, `=======`, and `>>>>>>>`.
 5. Ask facilitator to sanity-check your final content before opening the PR.
+6. Finished but not sure you did it right? Compare your work against the [Challenge 7 reference solution](solutions/solution-07-merge-conflict.md).
 
 ### Learning Moment
 

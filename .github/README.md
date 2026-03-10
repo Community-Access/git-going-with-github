@@ -81,14 +81,15 @@ Automates peer review assignment and study group formation:
 │   ├── challenge-progression.json     ← Levels, badges, milestones
 │   └── student-roster.json            ← Student information (update per cohort)
 └── docs/
-    ├── LEARNING_PATHS.md              ← Detailed skill progression guide
     └── IMPLEMENTATION_GUIDE.md        ← Setup instructions for facilitators
 
 learning-room/
-├── AUTOMATION.md                      ← Student-facing bot guide
+├── .github/
+│   ├── STUDENT_GUIDE.md               ← Student-facing bot guide
+│   ├── IMPLEMENTATION_GUIDE.md        ← Full setup walkthrough
+│   └── SETUP_AND_MAINTENANCE.md       ← Maintenance reference
 └── docs/
-    ├── CHALLENGES.md                  ← Available challenge list
-    └── GROUP_CHALLENGES.md            ← Collaborative exercises
+    └── CHALLENGES.md                  ← Challenge hub (21 challenges)
 ```
 
 
@@ -114,7 +115,7 @@ When you open a PR:
 5. Respond to both bot and human feedback
 6. Merge when approved!
 
-**See:** [Automation Guide](../learning-room/AUTOMATION.md) for how to use the bot
+**See:** [Student Guide](../learning-room/.github/STUDENT_GUIDE.md) for how to use the bot
 
 
 ## Configuration
@@ -362,13 +363,13 @@ Edit `.github/data/challenge-progression.json`:
 ## Documentation Map
 
 **For Students:**
-- [Automation Guide](../learning-room/AUTOMATION.md) - How bot works, interpreting feedback
-- [Learning Paths](docs/LEARNING_PATHS.md) - Skill progression, challenge details
-- [Challenges List](../learning-room/docs/CHALLENGES.md) - Available challenges
-- [Group Challenges](../learning-room/docs/GROUP_CHALLENGES.md) - Collaborative exercises
+- [Student Guide](../learning-room/.github/STUDENT_GUIDE.md) - How bot works, interpreting feedback
+- [Challenge Hub](../learning-room/docs/CHALLENGES.md) - All 21 challenges
+- [Course Guide](../docs/course-guide.md) - Full curriculum with chapter links
 
 **For Facilitators:**
 - [Implementation Guide](docs/IMPLEMENTATION_GUIDE.md) - Setup instructions
+- [Classroom Setup](../classroom/README.md) - GitHub Classroom guide
 - [Facilitator Guide](../FACILITATOR.md) - Workshop facilitation (includes automation section)
 - [Workflow Files](workflows/) - Automation source code
 - [Data Files](data/) - Configuration (roster, progression)

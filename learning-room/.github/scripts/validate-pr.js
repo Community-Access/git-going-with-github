@@ -55,8 +55,8 @@ function validateBasicRequirements() {
   if (!hasIssueReference) {
     results.passed = false;
     results.resources.push({
-      title: 'Opening Your First PR',
-      url: '../docs/OPENING_FIRST_PR.md'
+      title: 'Opening a Pull Request (Chapter 06)',
+      url: 'https://github.com/Community-Access/git-going-with-github/blob/main/docs/06-working-with-pull-requests.md'
     });
   }
 
@@ -77,8 +77,8 @@ function validateBasicRequirements() {
   if (!hasDescription) {
     results.passed = false;
     results.resources.push({
-      title: 'Writing Great PR Descriptions',
-      url: '../docs/PR_DESCRIPTION_TIPS.md'
+      title: 'Writing a PR Description',
+      url: 'https://github.com/Community-Access/git-going-with-github/blob/main/docs/06-working-with-pull-requests.md'
     });
   }
 }
@@ -141,15 +141,15 @@ function runValidation() {
   if (results.resources.length === 0) {
     results.resources.push(
       {
-        title: 'GitHub Flavored Markdown Reference',
-        url: '../docs/MARKDOWN_REFERENCE.md'
+        title: 'Markdown Reference (Appendix C)',
+        url: 'https://github.com/Community-Access/git-going-with-github/blob/main/docs/appendix-c-markdown-reference.md'
       },
       {
-        title: 'Accessibility Standards Guide',
-        url: '../docs/ACCESSIBILITY_GUIDE.md'
+        title: 'Accessibility Standards (Appendix M)',
+        url: 'https://github.com/Community-Access/git-going-with-github/blob/main/docs/appendix-m-accessibility-standards.md'
       },
       {
-        title: 'Learning Paths & Challenges',
+        title: 'Challenge Hub',
         url: './docs/CHALLENGES.md'
       }
     );

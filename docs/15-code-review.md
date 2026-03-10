@@ -119,6 +119,7 @@ Close your Chapter 12 challenge issues when done.
 5. Diff Editor is hard to navigate? Press `F7` for the Accessible Diff Viewer mode, which is purpose-built for screen readers.
 6. Cannot find the Add Comment command? Use Command Palette and search for `GitHub Pull Requests: Add Comment`.
 7. Ask facilitator to help verify the GitHub PR panel and model one review comment.
+8. Finished but not sure you did it right? Compare your work against the [Challenge 11 reference solution](solutions/solution-11-day2-pr.md).
 
 > **Continue learning:** The GitHub Skills course [Review Pull Requests](https://github.com/skills/review-pull-requests) practices approving, requesting changes, and using suggestions in an interactive format. See [Appendix Z](appendix-z-github-skills.md) for the full catalog.
 
@@ -1178,6 +1179,7 @@ Close your Chapter 14 challenge issues when done.
 4. Review verdict button not working? Make sure you have at least one comment or have written summary text. Try reloading the page.
 5. Submitting the review fails? Check that you are not in draft mode and have at least read access to the repo.
 6. Ask facilitator to model one inline comment and one verdict submission.
+7. Finished but not sure you did it right? Compare your work against the [Challenge 12 reference solution](solutions/solution-12-review.md).
 
 > **Continue learning:** The GitHub Skills courses [Review Pull Requests](https://github.com/skills/review-pull-requests) and [Code Review with GitHub Copilot](https://github.com/skills/copilot-codereview) cover review workflows and AI-assisted code review. See [Appendix Z](appendix-z-github-skills.md) for the full catalog.
 

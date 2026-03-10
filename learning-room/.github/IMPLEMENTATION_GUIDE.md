@@ -65,10 +65,9 @@ Copy these templates into `.github/data/`:
 
 Copy these docs:
 
-- **`learning-room/AUTOMATION.md`** - Student guide to automation
-- **`.github/docs/LEARNING_PATHS.md`** - Detailed skill progression paths
-- **`learning-room/docs/CHALLENGES.md`** - Available challenge list
-- **`learning-room/docs/GROUP_CHALLENGES.md`** - Collaborative exercises
+- **`learning-room/.github/STUDENT_GUIDE.md`** - Student guide to automation
+- **`docs/CHALLENGES.md`** - Challenge Hub with all 21 challenges
+- **`docs/solutions/`** - Reference solutions for every challenge
 
 
 ## Step 2: Configure for Your Repository
@@ -117,10 +116,12 @@ Edit `.github/data/challenge-progression.json` if you want to:
 - Add new skill levels
 
 **Default progression:**
-- Beginner: 0+ PRs
-- Intermediate: 1+ PRs
-- Advanced: 3+ PRs
-- Expert: 5+ PRs
+- Explorer: 0+ challenges
+- Contributor: 3+ challenges
+- Collaborator: 7+ challenges
+- Operator: 9+ challenges
+- Reviewer: 11+ challenges
+- Agent Navigator: 14+ challenges
 
 ### 2.3 Verify File Paths
 
@@ -267,7 +268,7 @@ Find and fix the broken internal link in `learning-room/docs/welcome.md`.
 
 **Resources:**
 - [Markdown Guide: Links](https://www.markdownguide.org/basic-syntax/#links)
-- [Workshop: Working with PRs](../../docs/05-working-with-pull-requests.md)
+- [Workshop: Working with PRs](../../docs/06-working-with-pull-requests.md)
 ```
 
 ### 4.2 Add Learning Files
@@ -295,10 +296,9 @@ Students will fix these during challenges.
 
 In all documentation, ensure links point correctly:
 
-- `../../docs/` - Workshop materials
-- `../../learning-room/docs/` - Practice files
-- `../../.github/docs/` - Learning paths
-- `AUTOMATION.md` - Bot guide
+- `../../docs/` - Workshop materials (22 chapters + 26 appendices)
+- `../../learning-room/docs/` - Practice files and challenge hub
+- `../../classroom/` - GitHub Classroom setup guide
 
 Test all internal links before workshop.
 
@@ -309,7 +309,7 @@ Test all internal links before workshop.
 
 Ensure `learning-room/README.md`:
 - Mentions bot in contribution workflow
-- Links to AUTOMATION.md guide
+- Links to the Student Guide
 - Explains skills progression system
 - Lists available challenges
 
@@ -323,7 +323,7 @@ In `docs/02-day1-agenda.md` (or your Day 1 materials):
 >
 > The bot is NOT a substitute for peer review. After addressing bot feedback, always request review from your assigned peer reviewer.
 >
-> See [Learning Room Automation Guide](../learning-room/AUTOMATION.md) for details.
+> See [Student Guide](../learning-room/.github/STUDENT_GUIDE.md) for details.
 
 ### 5.3 Pre-Workshop Announcement
 
@@ -571,14 +571,14 @@ Create GitHub Pages site that reads `student-roster.json` and displays:
 ## Additional Resources
 
 ### For Students
-- [Automation Guide](../../learning-room/AUTOMATION.md) - How the bot works
-- [Learning Paths](LEARNING_PATHS.md) - Skill progression details
-- [Available Challenges](../../learning-room/docs/CHALLENGES.md) - Challenge list
+- [Student Guide](../STUDENT_GUIDE.md) - How the bot works
+- [Challenge Hub](../../docs/CHALLENGES.md) - All 21 challenges
+- [Solutions Directory](../../docs/solutions/) - Reference solutions
 
 ### For Facilitators
 - [FACILITATOR.md](../../FACILITATOR.md) - Workshop facilitation guide
+- [Classroom Setup](../../classroom/README.md) - GitHub Classroom guide
 - [GitHub Actions Docs](https://docs.github.com/en/actions) - Workflow reference
-- [GitHub GraphQL API](https://docs.github.com/en/graphql) - For advanced automation
 
 ### Example Implementation
 See this repository as working example of full system.

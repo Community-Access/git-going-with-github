@@ -181,7 +181,7 @@ Before Saturday workshop, verify:
 | `REPOSITORY_SECURITY.md` | Access control, permissions, compliance | Facilitators, Admins |
 | `ADMIN_TEST_PLAN.md` | 8 test scenarios for Friday validation | Admin volunteers |
 | `facilitator/FACILITATOR_GUIDE.md` | Full 2-day timeline, roles, protocols | Facilitators |
-| `.github/docs/LEARNING_PATHS.md` | Challenge solutions with rubric | Facilitators, Students |
+| `learning-room/.github/STUDENT_GUIDE.md` | Bot guide and challenge walkthrough | Facilitators, Students |
 | `ENROLLMENT_SUMMARY.md` | This document | Project stakeholders |
 
 

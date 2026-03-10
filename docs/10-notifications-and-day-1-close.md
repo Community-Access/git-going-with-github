@@ -75,6 +75,7 @@ Close your Chapter 10 challenge issue when done.
 3. Keyboard shortcuts not working? If your screen reader intercepts `M` or `E`, click on the notification row first to give it focus, then press the shortcut.
 4. Filters not showing results? Clear all filters first (click the X next to each active filter), then apply one filter at a time.
 5. Ask facilitator to model one inbox action live, then repeat the steps yourself.
+6. Finished but not sure you did it right? Compare your work against the [Challenge 9 reference solution](solutions/solution-09-merge-day.md).
 
 ### Learning Moment
 

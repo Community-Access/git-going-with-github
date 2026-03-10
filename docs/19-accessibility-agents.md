@@ -202,6 +202,7 @@ Your evidence is the individual challenge issue comments (16.1, 16.2, 16.3). Clo
 3. Cannot access the agents in Copilot Chat? Verify: Is Copilot Chat extension installed (not just base Copilot)? Are you signed in to GitHub in VS Code? Does `.github/agents/` folder exist in your cloned repository?
 4. Repository will not clone? Use the terminal: `git clone https://github.com/[your-username]/accessibility-agents.git` then open the folder in VS Code.
 5. Ask facilitator to show them what agent you wanted to run, what output you got, and what you expected.
+6. Finished but not sure you did it right? Compare your work against the [Challenge 15 reference solution](solutions/solution-15-agents.md).
 
 > **Continue learning:** The GitHub Skills courses [Build Applications with Copilot Agent Mode](https://github.com/skills/build-with-copilot-agent-mode) and [Expand Your Team with Copilot](https://github.com/skills/expand-your-team-with-copilot) explore agent-powered development workflows. See [Appendix Z](appendix-z-github-skills.md) for the full catalog.
 

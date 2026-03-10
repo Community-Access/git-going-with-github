@@ -146,6 +146,7 @@ Close your Chapter 11 challenge issues (11.1, 11.2, 11.3) when your PR is open.
 5. Cannot find the "Compare & pull request" banner on GitHub? Navigate to Pull requests tab and create the PR manually (step 6 above).
 6. Cross-repo link not working? Make sure the format is exactly `Closes Community-Access/learning-room#XX` with no extra spaces. The org/repo prefix is required when linking across repositories.
 7. Ask facilitator to verify your clone location, branch name, and help with one push.
+8. Finished but not sure you did it right? Compare your work against the [Challenge 10 reference solution](solutions/solution-10-go-local.md).
 
 > **Continue learning:** The GitHub Skills course [Introduction to Git](https://github.com/skills/introduction-to-git) walks through commits, branches, and merges in an interactive, self-paced format. See [Appendix Z](appendix-z-github-skills.md) for the full catalog.
 

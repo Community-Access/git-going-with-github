@@ -140,6 +140,7 @@ The following table summarizes the practice files in the learning-room, what eac
 2. Check that changed files are only in `learning-room/`.
 3. Open the bot validation comment and resolve one required check at a time.
 4. If checks still fail, ask for peer or facilitator review with the exact error message.
+5. Finished but not sure you did it right? Compare your work against the [Challenge 6 reference solution](solutions/solution-06-first-pr.md).
 
 ### Learning Moment
 

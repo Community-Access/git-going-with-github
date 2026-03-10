@@ -528,7 +528,7 @@ Edit `.github/data/challenge-progression.json`:
 **Adding New Challenges:**
 1. Create issue template in `.github/ISSUE_TEMPLATE/`
 2. Add to `learning-room/docs/CHALLENGES.md`
-3. Document in `.github/docs/LEARNING_PATHS.md`
+3. Add to `.github/data/challenge-progression.json`
 4. Add to progression data
 
 ### Post-Workshop: Reviewing Automation Impact

@@ -39,12 +39,12 @@ jobs:
       - name: Check for broken links
         id: links
         run: |
-          python .github/scripts/check_links.py learning-room/ || true
+          python learning-room/.github/scripts/check_links.py learning-room/ || true
       
       - name: Validate accessibility
         id: accessibility
         run: |
-          python .github/scripts/check_accessibility.py learning-room/ || true
+          python learning-room/.github/scripts/check_accessibility.py learning-room/ || true
       
       - name: Post feedback comment
         if: always()
@@ -75,7 +75,7 @@ jobs:
               if (feedback.errors.length > 0) {
                 comment += `### ❌ Required Fixes\n`;
                 feedback.errors.forEach(err => {
-                  const helpUrl = err.help_url || '../../docs/appendix-e-github-flavored-markdown.md';
+                  const helpUrl = err.help_url || '../../docs/appendix-c-markdown-reference.md';
                   comment += `- **${err.file}**: ${err.message}\n`;
                   comment += `  [→ Learn more](${helpUrl})\n\n`;
                 });
@@ -91,12 +91,12 @@ jobs:
             }
             
             comment += `### 📚 Resources\n`;
-            comment += `- [Markdown Guide](../../docs/appendix-e-github-flavored-markdown.md)\n`;
-            comment += `- [Accessibility Standards](../../docs/appendix-c-accessibility-standards.md)\n`;
-            comment += `- [Accessible Content Tips](../../docs/07-culture-etiquette.md)\n`;
+            comment += `- [Markdown Guide](../../docs/appendix-c-markdown-reference.md)\n`;
+            comment += `- [Accessibility Standards](../../docs/appendix-m-accessibility-standards.md)\n`;
+            comment += `- [Open Source Culture](../../docs/08-open-source-culture.md)\n`;
             
             try {
-              github.rest.issues.createComment({
+              await github.rest.issues.createComment({
                 issue_number: context.issue.number,
                 owner: context.repo.owner,
                 repo: context.repo.repo,

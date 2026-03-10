@@ -575,7 +575,7 @@ The automation bot validates these things:
 - HOW to fix it (with examples)
 - Links to learning resources
 
-**See:** [Learning Room Automation Guide](learning-room/AUTOMATION.md) for detailed explanation of bot feedback
+**See:** [Student Guide](learning-room/.github/STUDENT_GUIDE.md) for detailed explanation of bot feedback
 
 ### What to look for in each practice file
 
@@ -595,9 +595,7 @@ The automation bot validates these things:
 - Incomplete setup steps
 - A note at the bottom referencing `[TODO]` items
 
-**`docs/CHALLENGES.md`** lists all 12 challenges with success criteria for each. When reviewing a peer's PR, check their work against the success criteria listed for their challenge.
-
-**`docs/GROUP_CHALLENGES.md`** has 7 collaborative exercises if your study group wants to tackle something together after individual challenges.
+**`docs/CHALLENGES.md`** lists all 21 challenges with success criteria for each. When reviewing a peer's PR, check their work against the success criteria listed for their challenge.
 
 
 ## Break (3:00 PM, 15 min)
@@ -618,7 +616,7 @@ Participants understand the human side of open source: how to communicate well, 
 1. Read `CODE_OF_CONDUCT.md` - what does it commit to?
 2. Read `CONTRIBUTING.md` - what does the project ask of contributors?
 3. Read the Issue Templates - navigate to `.github/ISSUE_TEMPLATE/` and open the beginner challenge template. What information does it require and why?
-4. Read `AUTOMATION.md` - find the "Common Validation Issues and Fixes" section. This explains every bot feedback message you might see.
+4. Read the Student Guide (`.github/STUDENT_GUIDE.md`) - find the "Common Validation Issues and Fixes" section. This explains every bot feedback message you might see.
 
 **Key insight:** These files exist to lower barriers AND set expectations. A project with these files sends a signal of maturity and intention.
 
@@ -728,7 +726,7 @@ Tomorrow we move from the browser to **Visual Studio Code**. Here is what is com
 **Tonight (optional):**
 - Install VS Code and the GitHub Copilot Chat extension (see [Pre-Workshop Setup](docs/00-pre-workshop-setup.md))
 - Complete any Markdown Skills module steps you didn't finish
-- Explore [docs/GROUP_CHALLENGES.md](learning-room/docs/GROUP_CHALLENGES.md) - 7 collaborative exercises your study group can tackle together
+- Browse the bonus challenges (A through E) in the [Challenge Hub](learning-room/docs/CHALLENGES.md) for extra practice
 - Fork [accessibility-agents](https://github.com/community-access/accessibility-agents) - it will be ready and waiting when you open VS Code tomorrow
 - Browse the [55 agents by team](docs/19-accessibility-agents.md#3-the-ecosystem-55-agents-3-teams-5-platforms) - which ones spark ideas for you?
 
@@ -757,15 +755,13 @@ Create the `learning-room` repo in your org with the following:
 ```
 learning-room/
 ├── README.md                           ← Getting started guide with file inventory
-├── AUTOMATION.md                       ← Bot feedback guide with fix examples
 ├── CODE_OF_CONDUCT.md
 ├── CONTRIBUTING.md
 ├── .github/
+│   ├── STUDENT_GUIDE.md                ← Bot feedback guide with fix examples
 │   ├── ISSUE_TEMPLATE/
 │   │   ├── config.yml
-│   │   ├── beginner-challenge.yml
-│   │   ├── intermediate-challenge.yml
-│   │   └── advanced-challenge.yml
+│   │   └── [21 challenge templates]        ← 16 core + 5 bonus
 │   ├── PULL_REQUEST_TEMPLATE.md        ← Checklist template students fill out
 │   ├── workflows/
 │   │   ├── learning-room-pr-bot.yml    ← PR validation + educational feedback
@@ -774,11 +770,10 @@ learning-room/
 │   └── scripts/
 │       └── validate-pr.js              ← Validation logic (checks headings, links, TODOs)
 ├── docs/
-│   ├── CHALLENGES.md                   ← 12 challenges: Beginner → Expert
-│   ├── GROUP_CHALLENGES.md             ← 7 collaborative exercises
-│   ├── welcome.md                      ← 3 [TODO] sections + broken link (Challenges 1, 3)
-│   ├── keyboard-shortcuts.md           ← NVDA/JAWS/VO tables with errors (Challenge 2)
-│   └── setup-guide.md                  ← Broken links + incomplete steps (Advanced)
+│   ├── CHALLENGES.md                   ← 21 challenges: 16 core + 5 bonus
+│   ├── welcome.md                      ← 3 [TODO] sections + broken link
+│   ├── keyboard-shortcuts.md           ← NVDA/JAWS/VO tables with errors
+│   └── setup-guide.md                  ← Broken links + incomplete steps
 └── [GITHUB_SKILLS.md]                  ← Self-paced GitHub Skills module reference
 ```
 

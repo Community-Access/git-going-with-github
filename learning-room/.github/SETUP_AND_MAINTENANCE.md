@@ -34,8 +34,7 @@ learning-room/
 ├── package.json                   # Node.js dependencies
 └── docs/                          # Challenge and documentation
     ├── CHALLENGES.md
-    ├── GROUP_CHALLENGES.md
-    └── [challenge files]
+│   └── [starter files]
 ```
 
 ### How Student Branches Work

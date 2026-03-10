@@ -131,6 +131,7 @@ Close your Chapter 13 challenge issues when done.
 4. Copilot seems unresponsive? Click the model selector at the bottom of Chat panel and confirm you are signed in.
 5. Cannot copy from Copilot response? Use `Alt+F2` (Accessible View) to get the text in a copyable buffer.
 6. Ask facilitator to verify Copilot is activated and show you one example prompt.
+7. Finished but not sure you did it right? Compare your work against the [Challenge 13 reference solution](solutions/solution-13-copilot.md).
 
 > **Continue learning:** The GitHub Skills courses [Getting Started with GitHub Copilot](https://github.com/skills/getting-started-with-github-copilot) and [Customize Your GitHub Copilot Experience](https://github.com/skills/customize-copilot) cover Copilot setup, prompting, and personalization. See [Appendix Z](appendix-z-github-skills.md) for the full catalog.
 

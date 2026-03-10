@@ -331,10 +331,10 @@ Here's the support path:
 
 ## Resources
 
-- [Opening Your First PR](../../docs/OPENING_FIRST_PR.md)
-- [Markdown Guide](../../docs/MARKDOWN_REFERENCE.md)
-- [Accessibility Standards](../../docs/ACCESSIBILITY_GUIDE.md)
-- [Challenge List](./docs/CHALLENGES.md)
+- [Pull Requests (Chapter 06)](https://github.com/Community-Access/git-going-with-github/blob/main/docs/06-working-with-pull-requests.md)
+- [Markdown Reference (Appendix C)](https://github.com/Community-Access/git-going-with-github/blob/main/docs/appendix-c-markdown-reference.md)
+- [Accessibility Standards (Appendix M)](https://github.com/Community-Access/git-going-with-github/blob/main/docs/appendix-m-accessibility-standards.md)
+- [Challenge Hub](../docs/CHALLENGES.md)
 - [GitHub Help](https://docs.github.com/en)
 
 

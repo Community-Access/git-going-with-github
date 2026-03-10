@@ -27,9 +27,8 @@ learning-room/
 ├──  package.json
 ├──  docs/
 │   ├──  CHALLENGES.md
-│   ├──  GROUP_CHALLENGES.md
 │   └── [other docs]
-└──  [challenge files]
+└──  [starter files]
 ```
 
 

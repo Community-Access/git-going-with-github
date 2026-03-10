@@ -70,20 +70,18 @@ The bot isn't always right! If you believe feedback is incorrect:
 2. Request human review
 3. Facilitators can override bot checks
 
-[**Read the full Automation Guide →**](AUTOMATION.md)
+[**Read the Student Guide →**](.github/STUDENT_GUIDE.md)
 
 
 ## Skills & Progression
 
 As you complete challenges, you'll:
-- **Track progress** through skill levels (Beginner → Intermediate → Advanced → Expert)
-- **Unlock new challenges** when you reach milestones (based on merged PRs)
-- **Earn badges** for specific achievements (Markdown Master Accessibility Advocate, etc.)
-- **Celebrate milestones** (1st, 5th, 10th PR merges)
+- **Track progress** through skill levels (Explorer, Contributor, Collaborator, Operator, Reviewer, Agent Navigator)
+- **Unlock new challenges** when you reach milestones
+- **Earn badges** for specific achievements (Branch Builder, PR Pioneer, Conflict Resolver, and more)
+- **Celebrate milestones** (first challenge, Day 1 complete, all challenges complete)
 
-[**View Learning Paths →**](../.github/docs/LEARNING_PATHS.md)  
-[**View Available Challenges →**](docs/CHALLENGES.md)  
-[**View Group Challenges →**](docs/GROUP_CHALLENGES.md)
+[**View Available Challenges →**](docs/CHALLENGES.md)
 
 
 ## Study Groups

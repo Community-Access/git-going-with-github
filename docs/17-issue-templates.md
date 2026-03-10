@@ -191,6 +191,7 @@ Close your Chapter 15 challenge issues when done.
 5. Testing in the template chooser is not working? Reload the Issues page, try a different repository, or ask facilitator for a test repository with write access.
 6. Remix approach feels overwhelming? Start by changing just the field labels and descriptions. Do not change the structure yet.
 7. Ask facilitator to review your template and suggest improvements.
+8. Finished but not sure you did it right? Compare your work against the [Challenge 14 reference solution](solutions/solution-14-template.md).
 
 > **Continue learning:** The GitHub Skills course [Introduction to Repository Management](https://github.com/skills/introduction-to-repository-management) covers templates and contributor settings in an interactive format. See [Appendix Z](appendix-z-github-skills.md) for the full catalog.
 

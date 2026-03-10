@@ -54,7 +54,7 @@ jobs:
                   '### While You Wait',
                   '',
                   '- ✅ Check the automated validation report below',
-                  '- 📖 Review the [PR Guidelines](../docs/05-working-with-pull-requests.md)',
+                  '- 📖 Review the [PR Guidelines](https://github.com/Community-Access/git-going-with-github/blob/main/docs/06-working-with-pull-requests.md)',
                   '- 👀 Look at other open PRs to learn from examples',
                   '- 💬 Ask questions in comments - no question is too basic!',
                   '',
@@ -122,6 +122,42 @@ jobs:
           PR_AUTHOR: ${{ github.event.pull_request.user.login }}
           BASE_SHA: ${{ github.event.pull_request.base.sha }}
           HEAD_SHA: ${{ github.event.pull_request.head.sha }}
+          HEAD_REF: ${{ github.head_ref }}
+
+      - name: Detect challenge context
+        id: challenge
+        uses: actions/github-script@v7
+        with:
+          script: |
+            // Detect which challenge this PR relates to from linked issues or branch name
+            const prBody = process.env.PR_BODY || '';
+            const branch = '${{ github.head_ref }}' || '';
+            
+            // Check for "Closes #N" or "Fixes #N" patterns linking to challenge issues
+            const closePattern = /(?:closes|fixes|resolves)\s+#(\d+)/gi;
+            const matches = [...prBody.matchAll(closePattern)];
+            const linkedIssues = matches.map(m => parseInt(m[1]));
+            
+            // Detect challenge from branch name (e.g., challenge-06/username)
+            const branchMatch = branch.match(/challenge-(\d+)/i);
+            const branchChallenge = branchMatch ? parseInt(branchMatch[1]) : null;
+            
+            // Map challenges to curriculum chapters for help links
+            const challengeToChapter = {
+              1: '02', 2: '05', 3: '05', 4: '04', 5: '04',
+              6: '06', 7: '07', 8: '08', 9: '06', 10: '14',
+              11: '06', 12: '15', 13: '16', 14: '17', 15: '19', 16: '20'
+            };
+            
+            const detected = branchChallenge || (linkedIssues.length > 0 ? null : null);
+            const chapter = detected ? challengeToChapter[detected] : null;
+            
+            core.setOutput('number', detected || '');
+            core.setOutput('chapter', chapter || '');
+            core.setOutput('linked_issues', linkedIssues.join(','));
+        env:
+          PR_BODY: ${{ github.event.pull_request.body }}
+
 
       - name: Post validation results
         if: always()

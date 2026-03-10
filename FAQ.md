@@ -726,11 +726,11 @@ Example: "The `alt` attribute on this image is empty. Screen readers will skip i
 **A:** A shared practice repository (`learning-room/`) where participants make their first real contributions during the workshop. It contains intentionally incomplete documents and accessibility issues for you to find and fix. See [Chapter 3 (The Learning Room)](docs/04-the-learning-room.md).
 
 ### Q: What are the challenges?
-**A:** Two types:
-- **12 individual challenges** - Progressive tasks you complete on your own (find broken links, fix headings, add alt text, etc.)
-- **7 group challenges** - Collaborative exercises requiring coordination with other participants
+**A:** The workshop has 21 challenges:
+- **16 core challenges** - Progressive tasks across two days covering issues, PRs, branches, merge conflicts, code review, Copilot, issue templates, and agents
+- **5 bonus challenges** - Optional stretch goals including accessibility audits, mentoring peers, and cross-repo contributions
 
-Details in `learning-room/docs/CHALLENGES.md` and `learning-room/docs/GROUP_CHALLENGES.md`.
+Details in `learning-room/docs/CHALLENGES.md`.
 
 ### Q: How does the bot feedback work?
 **A:** When you open a PR in the Learning Room, an automated bot reviews your changes within about 30 seconds. It checks for broken links, heading hierarchy, image descriptions, link text quality, and formatting. Every issue includes an explanation of why it matters and how to fix it.

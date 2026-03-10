@@ -980,10 +980,10 @@ See [Appendix M (VS Code Accessibility Reference)](docs/appendix-g-vscode-refere
 **Symptoms:** Individual challenges do not match your skill level.
 
 **Solution:**
-1. Challenges are progressive - start with #1 and work up
-2. **Too easy:** Skip ahead to the group challenges in `learning-room/docs/GROUP_CHALLENGES.md`
+1. Challenges are progressive - start with #01 and work up
+2. **Too easy:** Jump ahead to the bonus challenges (A through E) in `learning-room/docs/CHALLENGES.md`
 3. **Too hard:** Go back to the relevant chapter and review the concepts
-4. The 12 individual challenges span four skill levels - find the range that stretches you without frustrating you
+4. The 21 challenges span six skill levels - find the range that stretches you without frustrating you
 
 
 ## HTML Build System

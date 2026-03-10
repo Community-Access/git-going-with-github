@@ -69,6 +69,7 @@ The reflection comment itself is your evidence. No additional steps are needed. 
 3. If writing feels hard, draft bullet points first in a text editor, then paste into the comment.
 4. Look at the "Giving Feedback" and "Asking for Help" sections in this chapter for concrete examples.
 5. Ask facilitator for one example response and adapt it to your own words.
+6. Finished but not sure you did it right? Compare your work against the [Challenge 8 reference solution](solutions/solution-08-culture.md).
 
 ### Learning Moment
 

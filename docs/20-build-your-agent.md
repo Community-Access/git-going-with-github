@@ -554,6 +554,7 @@ These examples show the range of valid agent designs. Your agent does not need t
 | Agent ignores its guardrails | Add more explicit instructions. Instead of "be careful," say "Never do X under any circumstances." |
 | PR fails to open across forks | Verify you are comparing your fork's branch against the upstream's `main`. See [Chapter 18, Step 7](18-fork-and-contribute.md#9-step-7-open-a-pull-request). |
 | Reviewer feedback feels overwhelming | Address one comment at a time. Start with the smallest change. Reply to each comment individually. |
+| I finished but I am not sure I did it right | Compare your work against the [Challenge 16 reference solution](solutions/solution-16-capstone.md). If your agent file has valid frontmatter, responsibilities, and guardrails, you succeeded. |
 
 ### The universal safety net
 
