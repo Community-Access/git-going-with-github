@@ -79,13 +79,13 @@ Write the five new chapters with full content, learning cards, tool cards, and f
 
 Fill content gaps in existing chapters.
 
-- [ ] Ch05: Add "Writing Effective Issues" section
-- [ ] Ch06: Add "Writing PR Descriptions That Get Reviewed" section
-- [ ] Ch08: Absorb App T content + add "Writing Your First README" + "Community Health Files"
-- [ ] Ch10: Add "What You Accomplished Today" recap + "What Day 2 Adds" preview
-- [ ] Ch12: Add "Markdown Authoring in VS Code" section
-- [ ] Ch15: Add "The Reviewer's Craft" section
-- [ ] Ch16: Add "Critically Evaluating AI Output" section
+- [x] Ch05: Add "Writing Effective Issues" section
+- [x] Ch06: Add "Writing PR Descriptions That Get Reviewed" section
+- [x] Ch08: Absorb App T content + add "Writing Your First README" + "Community Health Files"
+- [x] Ch10: Add "What You Accomplished Today" recap + "What Day 2 Adds" preview
+- [x] Ch12: Add "Markdown Authoring in VS Code" section
+- [x] Ch15: Add "The Reviewer's Craft" section
+- [x] Ch16: Add "Critically Evaluating AI Output" section
 
 ---
 

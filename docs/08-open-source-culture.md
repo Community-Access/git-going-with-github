@@ -632,28 +632,118 @@ When you take a good first issue, your responsibilities:
 3. Adjust going forward
 
 
+## Writing Your First README
+
+A README is the front door of your project. It is the first file visitors read, and often the only file they read before deciding whether to stay or move on.
+
+### What belongs in a README
+
+Every README should answer these questions, roughly in this order:
+
+| Section | What it answers |
+| --- | --- |
+| **Project name** | What is this? |
+| **Description** | Why does it exist? What problem does it solve? |
+| **Installation** | How do I get it running on my machine? |
+| **Usage** | How do I use it once it is installed? |
+| **Contributing** | How can I help? (or link to CONTRIBUTING.md) |
+| **License** | What am I allowed to do with this code? |
+
+You do not need all six sections for a tiny project, but you should have at least a name, a one-sentence description, and a license.
+
+### A skeleton you can copy
+
+```markdown
+# Project Name
+
+One sentence that describes what this project does.
+
+## Installation
+
+Steps to install and set up the project locally.
+
+## Usage
+
+Show a basic example of how to use the project.
+
+## Contributing
+
+Contributions are welcome. See [CONTRIBUTING.md](CONTRIBUTING.md) for details.
+
+## License
+
+This project is licensed under the MIT License. See [LICENSE](LICENSE) for the full text.
+```
+
+### Accessibility in READMEs
+
+Your README is a web page -- GitHub renders it as HTML. That means the same accessibility rules apply:
+
+- **Alt text for images and badges.** A badge that says `![](https://img.shields.io/badge/build-passing-green)` is invisible to screen readers. Write `![Build status: passing](...)` instead.
+- **Heading hierarchy.** Use `#` for the project name, `##` for top-level sections, `###` for subsections. Never skip levels.
+- **Descriptive link text.** Write `See the [installation guide](docs/install.md)` -- not `Click [here](docs/install.md)`.
+
+> **Screen reader tip:** When you navigate a README with a screen reader, the heading list (`Insert + F7` in NVDA, `Rotor > Headings` in VoiceOver) is your table of contents. A flat list of `##` headings with clear names makes the document fast to scan.
+
+### Good README vs. bad README
+
+**Bad:** A single paragraph that says "This is my project. Run it with npm start." No headings, no license, no description of what the project does.
+
+**Good:** A clear name, a sentence explaining the purpose, a short install block, a usage example, a link to CONTRIBUTING.md, and a license section -- all under well-structured headings.
+
+The difference is about two minutes of writing and saves every future visitor from guessing.
+
+
 ## Community Health Files
 
-A healthy open source project makes these expectations explicit and visible. When you join a project, always check:
-
-### CODE_OF_CONDUCT.md
-
-Community standards and what behavior is expected. Most projects use the [Contributor Covenant](https://www.contributor-covenant.org/). When you see this file, it means:
-
-- The maintainers take community health seriously
-- There is a process for reporting violations
-- You are protected and expected to protect others
+Community health files tell contributors how your project operates before they write a single line of code. GitHub recognizes these files and surfaces them in the repository's **Community Standards** page (under the **Insights** tab), so visitors can see at a glance which expectations are documented.
 
 ### CONTRIBUTING.md
 
-Specific instructions for how to contribute to this project:
+This file answers the question every newcomer asks: "How do I help?" A good CONTRIBUTING.md covers:
 
-- How to set up the development environment
-- The branch and PR naming conventions
-- What tests to run before submitting
-- How to have a change considered
+- **How to report bugs** -- what information to include, which issue template to use
+- **How to suggest features** -- whether to open a Discussion first or go straight to an Issue
+- **Code style** -- formatting rules, linter settings, naming conventions
+- **PR process** -- branch naming, commit message format, who reviews, how long to wait
 
-**Always read CONTRIBUTING.md before opening a PR.** Skipping it leads to rejected PRs and wasted effort.
+Keep the tone welcoming. A sentence like "We are glad you are here" costs nothing and signals that newcomers are expected, not tolerated.
+
+**Always read CONTRIBUTING.md before opening a PR.** Skipping it leads to rejected PRs and wasted effort on both sides. See [Chapter 6](06-working-with-pull-requests.md) for the full PR workflow.
+
+### CODE_OF_CONDUCT.md
+
+A code of conduct sets the social contract for your project. Without one, "acceptable behavior" is whatever each participant assumes it is -- and those assumptions vary widely.
+
+Most projects adopt the [Contributor Covenant](https://www.contributor-covenant.org/), which covers:
+
+- Expected behavior (be respectful, use welcoming language, accept constructive criticism)
+- Unacceptable behavior (harassment, trolling, personal attacks)
+- Enforcement -- who to contact and what happens after a report
+
+When you see a CODE_OF_CONDUCT.md in a repository, it means the maintainers take community health seriously, there is a process for reporting violations, and you are both protected and expected to protect others.
+
+### SECURITY.md
+
+If someone discovers a vulnerability in your project, you do not want them to file a public issue. A SECURITY.md file tells reporters how to disclose responsibly:
+
+- **Supported versions** -- which releases still receive security patches
+- **How to report** -- a private email address or GitHub's private vulnerability reporting feature
+- **What to expect** -- typical response time and disclosure timeline
+
+Even small projects benefit from this file. It takes five minutes to write and prevents an accidental public disclosure that could affect your users.
+
+### LICENSE
+
+Without a license file, your code is "all rights reserved" by default -- meaning nobody can legally use, copy, or modify it, regardless of whether the repository is public. Adding a LICENSE file is a one-time step that makes your project genuinely open source.
+
+You do not need to become a licensing expert. The [choosealicense.com](https://choosealicense.com/) site walks you through the most common options. For class projects, MIT or Apache 2.0 are typical choices.
+
+### Finding these files on GitHub
+
+Navigate to any repository and click **Insights** then **Community Standards**. GitHub shows a checklist of which community health files are present and links to add any that are missing. This is the fastest way to audit a project before you contribute.
+
+> **Screen reader tip:** The Community Standards page is a simple checklist. Each item is a link -- if the file exists, the link text includes a checkmark. You can tab through the list to quickly confirm which files are in place.
 
 
 ## When to Use Different Communication Channels

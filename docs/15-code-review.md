@@ -2512,6 +2512,84 @@ Your manual code review skills - identifying heading issues, catching link text 
 In **Chapter 16 (Accessibility Agents)**, you'll meet a full team of agents designed to **amplify** these skills:
 
 
+## Part 4: The Reviewer's Craft
+
+Parts 1 through 3 taught you the mechanics -- how to read diffs, leave comments, and use Copilot to understand unfamiliar code. This part covers something equally important: **how to think like a reviewer**. Good reviews are not about finding faults. They are about helping the author ship better work while learning something yourself.
+
+### What to Look for in a Review
+
+Every PR is different, but most reviews benefit from scanning across these five categories:
+
+| Category | What you're checking | Example question |
+|---|---|---|
+| **Clarity** | Readable code, clear naming, consistent style | "Would another contributor understand this variable name six months from now?" |
+| **Accuracy** | The code does what the PR description says it does | "The description says this fixes the heading hierarchy -- does it actually change the heading level?" |
+| **Scope** | The change stays within the PR's stated goal | "This PR says it updates alt text, but it also refactors the navigation bar -- should that be a separate PR?" |
+| **Regressions** | The change does not break existing behavior | "This function used to return a list. Now it returns a single item. Will callers still work?" |
+| **Accessibility** | Screen reader support, keyboard navigation, WCAG basics | "Does this new button have an accessible label? Can a keyboard-only user reach it?" |
+
+You do not need to check every category exhaustively on every PR. Skim the list, focus on whatever stands out, and flag anything you are unsure about as a question rather than a demand.
+
+> **Screen reader tip:** When reading a diff in VS Code, you can jump between changed hunks with `Alt+F5` (next change) and `Shift+Alt+F5` (previous change). This helps you scan for scope creep -- changes that appear in files you did not expect.
+
+### The Three Review Actions
+
+When you submit a review on GitHub, you choose one of three actions. Picking the right one matters because it signals your intent to the author and to anyone else watching the PR.
+
+**Approve** -- Use this when everything looks good, or when only trivial nits remain (typos, minor style preferences). An approval tells the author: "I've read this and I'm satisfied it can merge."
+
+**Request Changes** -- Use this when something **must** be fixed before merge. Bugs, security issues, broken tests, accessibility regressions, or changes that do not match the PR's description all qualify. A request-changes review blocks the PR (in many team configurations) until you re-review.
+
+**Comment** -- Use this when you have questions, suggestions, or discussion points that do **not** block the merge. Comments are for learning, brainstorming, and optional improvements. If you are not sure whether something is a blocker, use Comment and explain your uncertainty in the text.
+
+**Decision tree:**
+
+1. Did you find a bug, security issue, or broken test? -- **Request Changes**
+2. Does the code do something different from what the description says? -- **Request Changes**
+3. Does everything work, with maybe a few style nits? -- **Approve** (mention the nits in a comment)
+4. Do you have questions or optional suggestions? -- **Comment**
+
+### Writing Constructive Feedback
+
+The way you phrase feedback determines whether the author feels supported or attacked. A few principles go a long way:
+
+**Lead with what works.** Before pointing out problems, acknowledge something the author did well. "The new heading structure looks great -- much easier to follow" takes five seconds to write and sets a collaborative tone.
+
+**Be specific about what to change.** "This doesn't look right" is frustrating. "Line 42 uses an `h4` immediately after an `h2`, which skips a heading level -- screen readers announce this as a navigation error" gives the author everything they need to fix it.
+
+**Explain why, not just what.** "Change this to `h3`" is an instruction. "Change this to `h3` because screen readers use heading levels to build a page outline, and skipping from `h2` to `h4` creates a gap in that outline" teaches the author something they will remember next time.
+
+**Offer alternatives, not just criticism.** Instead of "this naming is confusing," try "consider renaming `processData` to `parseUserInput` -- it would make the function's purpose clearer at the call site."
+
+**Use soft language for suggestions, direct language for requirements.** "Consider using a `<button>` here instead of a `<div>` -- it gives you keyboard support for free" is a suggestion. "This `onclick` handler on a `<div>` must be changed to a `<button>` or given `role='button'` and a `keydown` handler -- without that, keyboard users cannot activate it" is a requirement. Match your tone to the severity.
+
+### The Reviewer's Checklist
+
+Run through this list mentally (or copy it into your notes) for every PR you review:
+
+- [ ] I read the PR description before reading the code
+- [ ] The code does what the description says it does
+- [ ] The change does not include unrelated modifications
+- [ ] Variable and function names are clear
+- [ ] I checked for accessibility: labels, headings, keyboard reach, contrast
+- [ ] I verified no existing behavior is broken by the change
+- [ ] I left at least one positive comment
+- [ ] I chose the right review action (Approve, Request Changes, or Comment)
+- [ ] My feedback explains **why**, not just **what**
+
+### Reviewing as a Learning Tool
+
+Reviewing is not just a gate to keep bad code out. It is one of the fastest ways to grow as a developer.
+
+**Reading other people's code teaches you patterns.** Every PR you review exposes you to a different way of solving a problem. Over time, you build a mental library of approaches -- some you will adopt, some you will avoid, all of which make you a stronger contributor. See [Chapter 8](08-open-source-culture.md) for more on learning through open source participation.
+
+**Giving feedback forces you to articulate your understanding.** When you write "this heading skip will confuse screen reader users," you are not just helping the author -- you are reinforcing your own knowledge. If you struggle to explain why something is wrong, that struggle is a signal that you have more to learn about the topic. Follow that signal.
+
+**Reviewing builds trust.** When you leave thoughtful, respectful reviews, authors start seeking your input. That trust turns into collaboration, mentorship, and eventually the kind of team culture where everyone improves together. See [Chapter 6](06-working-with-pull-requests.md) for how PRs fit into collaborative workflows.
+
+> **Screen reader tip:** After submitting a review, GitHub returns you to the PR's Conversation tab. Press `h` in GitHub's keyboard shortcuts to jump by heading and confirm your review appears in the timeline.
+
+
 ##  Day 2 Teaser: The Full Accessibility Agents Review Ecosystem
 
 You now have the manual skills. Chapter 16 shows you how to leverage 50+ specialized agents to make your reviews faster, more consistent, and more thorough - while staying in full control of what you post.

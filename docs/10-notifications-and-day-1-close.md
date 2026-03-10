@@ -460,6 +460,90 @@ Go to [github.com/notifications](https://github.com/notifications) and practice:
 > *Your notification discipline today becomes the standard the agent enforces at scale tomorrow.*
 
 
+## What You Accomplished Today
+
+Take a breath. Day 1 is complete -- and you did a lot.
+
+Here is every skill you practiced, mapped to the chapter where you learned it and the evidence you created along the way:
+
+| Chapter | Skill | Evidence |
+|---|---|---|
+| [Chapter 00](00-pre-workshop-setup.md) | Created a GitHub account and configured accessibility settings | Account exists, profile is visible |
+| [Chapter 01](01-choose-your-tools.md) | Chose your editing environment and tested it | Tool preference noted in your challenge issue |
+| [Chapter 02](02-understanding-github.md) | Understood what GitHub is, how repositories work, and what collaboration looks like | Completion comment on challenge issue |
+| [Chapter 03](03-navigating-repositories.md) | Navigated a real repository using keyboard and screen reader | Found specific files and folders in the Learning Room |
+| [Chapter 04](04-the-learning-room.md) | Opened the Learning Room, found your challenge issues, and understood the workflow | First structured comment posted |
+| [Chapter 05](05-working-with-issues.md) | Created, labeled, and commented on issues | Issue created with a descriptive title and body |
+| [Chapter 06](06-working-with-pull-requests.md) | Created a branch, edited a file, and opened a pull request | Merged PR visible in the repository |
+| [Chapter 07](07-merge-conflicts.md) | Recognized a merge conflict and resolved it | Conflict-free merge committed |
+| [Chapter 08](08-open-source-culture.md) | Read contributing guidelines, understood community norms, and practiced respectful communication | Thoughtful comment on a peer's issue or PR |
+| [Chapter 09](09-labels-milestones-projects.md) | Used labels, milestones, and project boards to organize work | Labels applied, milestone progress visible |
+| [Chapter 10](10-notifications-and-day-1-close.md) | Configured notification preferences and managed your inbox | Watch level set, at least one notification acted on |
+
+That is eleven chapters, eleven skills, and a trail of real evidence in a real repository.
+
+### If This Was Your First Time
+
+If today was your first time using GitHub -- or your first time using it with a screen reader -- you have already done something most developers take weeks to piece together on their own. You navigated a complex platform, created real contributions, and collaborated with other people in a shared codebase. That is not a small thing.
+
+If parts felt confusing or slow, that is completely normal. Every skill you practiced today gets faster with repetition. The point was never speed -- it was understanding.
+
+### Confidence Check
+
+Before you close your laptop, take two minutes to answer these questions in your Chapter 10 challenge issue. There are no wrong answers -- this is for you.
+
+1. Which chapter felt the most natural to you? Which one do you want to revisit?
+2. Can you explain what a pull request does to someone who has never used GitHub?
+3. If you saw a merge conflict right now, would you know where to start?
+4. What is one thing you want to try on GitHub this week that you did not get to today?
+
+> **Screen reader tip:** You can copy these questions into your challenge issue comment and type your answers directly below each one. Use a blank line between each question-answer pair so the structure is clear when read back.
+
+### Your Challenge Progress
+
+Look at how many challenge issues you completed today. Each one represents a skill you did not just read about -- you practiced it, posted evidence, and moved on. Some workshops hand you a certificate for sitting in a chair. This one asked you to prove your skills in a live repository, and you did.
+
+If you completed all eleven challenges, you are ready for Day 2 with a strong foundation. If you missed a few, that is fine -- you can finish them at your own pace before Day 2 begins. The Learning Room stays open.
+
+
+## What Day 2 Adds
+
+On Day 1, you worked entirely on GitHub.com. Everything happened in your browser -- creating issues, editing files, opening pull requests, resolving conflicts. On Day 2, you bring that same workflow to your own computer and add powerful new tools on top of it.
+
+Here is what Day 2 covers:
+
+| Chapters | Topic | What You Will Do |
+|---|---|---|
+| [Ch 11](11-vscode-interface.md) -- [Ch 12](12-vscode-accessibility.md) | VS Code deep dive | Install and configure VS Code with full screen reader and accessibility support |
+| [Ch 13](13-how-git-works.md) -- [Ch 14](14-git-in-practice.md) | Local Git | Clone repositories, commit locally, push and pull changes between your computer and GitHub |
+| [Ch 15](15-code-review.md) | Code review | Review pull requests with inline comments, suggestions, and approval workflows |
+| [Ch 16](16-github-copilot.md) | GitHub Copilot | Use AI-assisted coding with accessibility-first prompting techniques |
+| [Ch 17](17-issue-templates.md) | Issue templates | Create structured templates so every issue in your project starts with the right information |
+| [Ch 18](18-fork-and-contribute.md) | Fork workflow | Fork a repository, make changes, and submit a pull request back to the original project |
+| [Ch 19](19-accessibility-agents.md) | Accessibility agents | Build and use custom agents that automate accessibility checks and team workflows |
+| [Ch 20](20-build-your-agent.md) | Capstone | Design, build, test, and ship your own accessibility agent from scratch |
+
+The mental model shift is straightforward: Day 1 taught you *what* GitHub does. Day 2 teaches you how to use it from your own development environment, with real tools that professional developers use every day.
+
+### Between Days
+
+If your workshop has a gap between Day 1 and Day 2, here are three optional things you can do to stay sharp:
+
+1. **Explore your notification settings.** Now that you understand how notifications work, visit [github.com/settings/notifications](https://github.com/settings/notifications) and customize your email and web preferences. There is no wrong configuration -- just find what feels manageable.
+
+2. **Read issues in a project you care about.** Pick any open source project on GitHub and browse its issue tracker. You now know enough to understand labels, milestones, and comment threads. Notice how maintainers communicate -- you will recognize the patterns from [Chapter 08](08-open-source-culture.md).
+
+3. **Try a GitHub Skills course.** [GitHub Skills](https://skills.github.com/) offers free, self-paced courses that run inside real repositories. "Introduction to GitHub" is a good one if you want to reinforce what you learned today. See [Appendix Z](appendix-z-github-skills.md) for the full list of recommended courses.
+
+> **Screen reader tip:** GitHub Skills courses use bot-driven feedback inside pull requests. The interaction model is similar to the Learning Room -- you push a change, a bot reviews it, and you get instructions for the next step. If you completed today's challenges, you already know the workflow.
+
+### You Already Know More Than You Think
+
+Think about where you started this morning. You may not have known what a repository was, or how to navigate one with a keyboard, or what happens when two people edit the same file. Now you do. You have created real issues, opened real pull requests, resolved real conflicts, and configured your own notification workflow -- all in a live, shared codebase.
+
+Day 2 builds on every one of those skills. Nothing gets thrown away. Everything you did today is the foundation for everything that comes next.
+
+
 *Next: [Day 2 Agenda](../DAY2_AGENDA.md)*
 *Back: [Labels, Milestones, and Projects](09-labels-milestones-projects.md)*
 *Related: [Culture & Etiquette](08-open-source-culture.md) | [Working with Issues](05-working-with-issues.md)*

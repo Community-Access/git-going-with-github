@@ -1216,6 +1216,158 @@ Merge box → Tab → "Disable auto-merge" button → Enter
 | Not responding to reviewer comments | Acknowledge all comments, even if you disagree |
 
 
+## Writing PR Descriptions That Get Reviewed
+
+A pull request is only as useful as its description. Reviewers decide whether to pick up your PR -- and how carefully to read it -- based on what you write in that text box. A strong description saves everyone time, catches misunderstandings early, and makes the review conversation productive instead of confused.
+
+This section walks you through what reviewers expect, how to structure your description, and the patterns that separate descriptions people actually read from descriptions people skip.
+
+### What Reviewers Look For
+
+When a reviewer opens your PR, they are asking four questions before they ever look at the diff:
+
+1. **Why does this change exist?** -- What problem does it solve, or what goal does it advance?
+2. **What is the scope?** -- Which files changed, and roughly how big is the change?
+3. **How was it tested?** -- Did you verify that the change works, and how?
+4. **What should I pay attention to?** -- Are there tricky parts, trade-offs, or areas where you want a second opinion?
+
+If your description answers all four, the reviewer can jump straight into the code with context. If it answers none, the reviewer has to reverse-engineer your intent from the diff -- and that slows everything down.
+
+> **Screen reader tip:** When you write your description in the GitHub comment box, use Markdown headings (`##` or `###`) to separate sections. Reviewers using screen readers can then press `H` to jump between sections instead of arrowing through a wall of text.
+
+### The `Closes #XX` Pattern
+
+GitHub recognizes special keywords in PR descriptions that automatically close linked issues when the PR merges. You do not need to close issues by hand -- just include the right keyword followed by the issue number.
+
+| Keyword | Effect When PR Merges | When to Use |
+| ------- | --------------------- | ----------- |
+| `Closes #12` | Closes issue #12 | The PR fully resolves the issue |
+| `Fixes #12` | Closes issue #12 | The PR fixes a bug described in the issue |
+| `Resolves #12` | Closes issue #12 | The PR resolves a discussion or question in the issue |
+
+All three keywords behave identically -- GitHub closes the linked issue on merge. The difference is purely semantic. Use whichever word best describes the relationship between your PR and the issue.
+
+You can link multiple issues in one description:
+
+```text
+Closes #12
+Closes #14
+```
+
+If your PR is related to an issue but does not fully resolve it, skip the keyword and write a plain reference instead: "Related to #12" or "See #12 for background." That creates a clickable link without triggering auto-close.
+
+> **Screen reader tip:** After your PR merges, navigate to the linked issue. GitHub adds a cross-reference comment like "Closed by #25" that you can find by pressing `3` to jump between comments. This confirms the link worked.
+
+### Before/After Structure
+
+One of the most effective patterns for PR descriptions is showing the state before your change and the state after. This gives the reviewer an instant mental model of what changed without reading the diff line by line.
+
+For text-based changes, use a simple two-part layout:
+
+```text
+**Before:** The welcome page had a [TODO] placeholder where the
+introduction paragraph should be.
+
+**After:** The welcome page now has a three-sentence introduction
+that describes what the Learning Room is and who it is for.
+```
+
+For visual changes -- layout shifts, color updates, new UI elements -- describe what the reviewer would see. Since this curriculum prioritizes accessibility, write your before/after as text descriptions rather than relying solely on screenshots. A reviewer using a screen reader cannot see an image, but they can read "Before: the sidebar had no skip link. After: the sidebar has a skip link targeting the main content area."
+
+If you do include screenshots, always add alt text that conveys the same information as the image. The screenshot is a convenience, not the only source of truth.
+
+### A PR Description Template
+
+Here is a template you can copy into your PR descriptions. Not every section applies to every PR, but filling in even a few sentences per section makes a meaningful difference.
+
+```markdown
+## Summary
+
+One or two sentences describing what this PR does and why.
+
+## Changes Made
+
+- Bullet list of specific changes
+- One bullet per logical change
+- Reference filenames when helpful
+
+## Related Issues
+
+Closes #XX
+
+## Testing
+
+- How you verified the change works
+- Any edge cases you checked
+
+## Checklist
+
+- [ ] I tested my changes locally
+- [ ] I checked for accessibility (alt text, heading order, link text)
+- [ ] I linked the related issue
+```
+
+You will see a version of this template in the Learning Room's `.github/PULL_REQUEST_TEMPLATE.md` file. When a repository has a PR template, GitHub auto-fills the description box with it every time you open a new PR. You just fill in the blanks. See [Chapter 5](05-working-with-issues.md) for how issue templates work the same way.
+
+### Common Description Mistakes
+
+Even experienced contributors make these mistakes. Knowing what to avoid is half the battle.
+
+| Mistake | Why It Hurts | Better Version |
+| ------- | ------------ | -------------- |
+| Empty description | Reviewer has zero context; they may skip the PR entirely | Write at least a Summary and Related Issues section |
+| "Fixed stuff" or "Updates" | No one can tell what changed or why | "Add missing alt text to three images on the setup page" |
+| Describing HOW but not WHY | The diff already shows how; the description should explain the motivation | "The setup page had three images with empty alt attributes, which caused screen readers to announce 'image' with no context" |
+| Forgetting to link issues | The reviewer cannot see what problem you are solving, and the issue stays open after merge | Add `Closes #XX` or at minimum "Related to #XX" |
+| Pasting a massive paragraph | Hard to scan, especially with a screen reader | Use Markdown headings and bullet lists to break it up |
+
+### Good vs. Bad: Side by Side
+
+**Bad description:**
+
+```text
+fixed the file
+```
+
+That is the entire description. No context, no linked issue, no explanation of what file or what was wrong with it. A reviewer seeing this has to open the diff, figure out which file changed, read every line, and guess at the intent. Most reviewers will either skip this PR or leave a comment asking for more information -- which delays the merge.
+
+**Good description:**
+
+```text
+## Summary
+
+Fill in the [TODO] introduction section on the welcome page so new
+visitors understand what the Learning Room is.
+
+## Changes Made
+
+- Replaced the [TODO] placeholder in docs/welcome.md with a
+  three-sentence introduction paragraph
+- Added a "What you will learn" bullet list below the introduction
+
+## Related Issues
+
+Closes #7
+
+## Testing
+
+- Opened docs/welcome.md in the VS Code preview and confirmed the
+  new text renders correctly
+- Checked heading order with the accessibility linter -- no warnings
+- Verified the [TODO] marker is completely removed
+
+## Checklist
+
+- [x] I tested my changes locally
+- [x] I checked for accessibility (alt text, heading order, link text)
+- [x] I linked the related issue
+```
+
+This version answers every question a reviewer has before they touch the diff. They know the file, the issue, the change, and the testing. The review conversation can focus on the content itself rather than on figuring out what the PR is about.
+
+> **Screen reader tip:** When scanning a list of open PRs, the title and first line of the description are what you hear first. Front-load the most important information so you can triage PRs quickly using `Arrow Down` from the PR title.
+
+
 ## Try It: Read a Real Pull Request
 
 **Time:** 3 minutes | **What you need:** Browser, signed in to GitHub

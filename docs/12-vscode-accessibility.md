@@ -967,6 +967,98 @@ On Linux, the extension requires the ALSA shared library (`libasound`). Install 
 
 ---
 
+## 19. Markdown Authoring in VS Code
+
+You write Markdown in nearly every challenge of this workshop -- issue descriptions, pull request bodies, README updates, and agent files. VS Code has built-in tools and extensions that make Markdown authoring faster, catch formatting mistakes before you commit, and work well with screen readers and keyboard navigation.
+
+### Markdown Preview
+
+VS Code includes a live Markdown preview so you can see rendered output alongside your source.
+
+- **Side-by-side preview:** Press `Ctrl+K V` (Mac: `Cmd+K V`) to open a preview pane to the right of your editor. As you type, the preview updates automatically.
+- **Full preview:** Press `Ctrl+Shift+V` (Mac: `Cmd+Shift+V`) to replace the editor tab with a rendered preview. Press the same shortcut again to return to the source.
+- **Scroll sync:** The preview scrolls in sync with the editor by default. If you scroll in the source, the preview follows.
+
+> **Screen reader tip:** The preview pane renders HTML, so your screen reader announces headings, links, and list items using their semantic roles. This is a quick way to verify that your heading hierarchy is correct -- listen for "heading level 2," "heading level 3," and so on. Switch between the editor and preview panes with `Ctrl+1` and `Ctrl+2`.
+
+### The markdownlint Extension
+
+The **markdownlint** extension (identifier: `DavidAnson.vscode-markdownlint`) catches common Markdown mistakes as you type, the same way a spell checker catches typos.
+
+**What it catches:**
+
+- Heading levels that skip (jumping from `##` to `####`)
+- Missing blank lines before and after headings, lists, and code blocks
+- Inconsistent list markers (mixing `-` and `*`)
+- Trailing spaces and hard tabs
+- Bare URLs that should be wrapped in angle brackets or link syntax
+
+**Installing markdownlint:**
+
+1. Open Extensions: `Ctrl+Shift+X` (Mac: `Cmd+Shift+X`)
+2. Search for **markdownlint**
+3. Install the one by **David Anson**
+
+Once installed, problems appear as wavy underlines in the editor and as entries in the Problems panel (`Ctrl+Shift+M`). Each entry includes the rule number (such as MD022 or MD032) and a short description.
+
+**Configuring rules:** If a rule does not fit your project, create a `.markdownlint.json` file in the repository root:
+
+```json
+{
+  "MD013": false,
+  "MD033": false
+}
+```
+
+This disables the line-length rule (MD013) and the inline-HTML rule (MD033). The extension picks up the file automatically.
+
+> **Screen reader tip:** Press `Ctrl+Shift+M` to open the Problems panel, then use `Up` and `Down` arrows to browse warnings. Press `Enter` on a warning to jump directly to the offending line in the editor. Your screen reader announces the rule number and description for each item.
+
+### Outline View for Headings
+
+The Outline view shows the heading structure of your Markdown file as a navigable tree -- think of it as a table of contents you can jump through.
+
+- **Open Outline:** Press `Ctrl+Shift+O` (Mac: `Cmd+Shift+O`) to open the Go to Symbol quick-pick, which lists every heading in the file. Type to filter, then press `Enter` to jump.
+- **Outline panel:** The Outline view also appears in the Explorer sidebar. Press `Ctrl+Shift+E` to open Explorer, then `Tab` until you reach the Outline section.
+- **Breadcrumbs:** The breadcrumb bar at the top of the editor shows your current heading context. Press `Ctrl+Shift+.` to focus breadcrumbs and navigate between headings.
+
+> **Screen reader tip:** The Go to Symbol list (`Ctrl+Shift+O`) announces each heading with its level -- for example, "H2 Installation" or "H3 Configuring rules." This is the fastest way to verify your document structure without scrolling through the entire file.
+
+### Copilot Markdown Assistance
+
+If you have GitHub Copilot enabled (see [Chapter 16](16-github-copilot.md)), it can help with Markdown authoring directly in the editor.
+
+- **Generate tables:** Type a comment like `<!-- table comparing Git commands -->` and Copilot suggests a formatted Markdown table. Press `Tab` to accept.
+- **Fix formatting:** Select a block of text, open inline chat (`Ctrl+I`), and type "fix the Markdown formatting." Copilot restructures headings, adds missing blank lines, and corrects list indentation.
+- **Suggest alt text:** Select an image link like `![](screenshot.png)`, open inline chat, and ask "suggest alt text for this image." Copilot proposes a description based on the filename and surrounding context.
+- **Complete link syntax:** Start typing `[link text](` and Copilot often autocompletes the URL from your recent files or repository structure.
+
+These features save time when you are writing issue descriptions or pull request bodies during the workshop challenges.
+
+### Markdown Keyboard Shortcuts
+
+| Action | Windows / Linux | macOS |
+| ------ | --------------- | ----- |
+| Toggle Markdown preview (full) | `Ctrl+Shift+V` | `Cmd+Shift+V` |
+| Open preview to the side | `Ctrl+K V` | `Cmd+K V` |
+| Go to heading (symbol) | `Ctrl+Shift+O` | `Cmd+Shift+O` |
+| Open Problems panel | `Ctrl+Shift+M` | `Cmd+Shift+M` |
+| Toggle bold | `Ctrl+B` | `Cmd+B` |
+| Toggle italic | `Ctrl+I` (when text is selected) | `Cmd+I` (when text is selected) |
+| Open inline chat (Copilot) | `Ctrl+I` (when nothing is selected) | `Cmd+I` |
+| Focus breadcrumbs | `Ctrl+Shift+.` | `Cmd+Shift+.` |
+
+### Why This Matters for the Workshop
+
+Students write Markdown in every single challenge -- from the very first issue you file in [Chapter 5](05-working-with-issues.md) to the agent file you create in [Chapter 20](20-build-your-agent.md). Markdown is also how you write pull request descriptions ([Chapter 6](06-working-with-pull-requests.md)) and README files.
+
+Getting comfortable with preview, linting, and navigation tools means fewer formatting mistakes, faster editing, and more confidence that your content looks right before you submit it. The markdownlint extension is especially valuable because it catches problems that are invisible when you are reading raw Markdown in a screen reader -- like a skipped heading level or a missing blank line that breaks a list.
+
+Install markdownlint now. Open a Markdown file. Press `Ctrl+Shift+M` to check for warnings. Fix one. That small habit pays off in every challenge ahead.
+
+
+---
+
 
 ---
 

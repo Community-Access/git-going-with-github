@@ -1036,6 +1036,89 @@ so the macOS behavior appears correct.
 ```
 
 
+## Writing Effective Issues
+
+A well-written issue saves everyone time -- the maintainer who reads it, the contributor who fixes it, and the future searcher who finds it six months later. This section gives you reusable templates for the two most common issue types and a set of principles that apply to every issue you file.
+
+### Bug Report Structure
+
+A strong bug report answers five questions. Use this template every time you report something broken.
+
+| Section | What to write |
+|---|---|
+| **Title** | Follow the formula: "When I [action], [unexpected result] instead of [expected result]" |
+| **Steps to Reproduce** | Numbered list -- start from the earliest relevant step |
+| **Expected Behavior** | What *should* happen according to documentation or common sense |
+| **Actual Behavior** | What *does* happen -- include exact error messages or screenshots |
+| **Environment** | OS, browser, screen reader, app version -- anything that might matter |
+
+The title formula is the most important part. A title like "When I press Enter on the Submit button, nothing happens instead of creating the issue" tells the maintainer exactly what is broken before they even open the issue.
+
+> **Screen reader tip:** When pasting error messages into the Actual Behavior section, wrap them in a fenced code block (triple backticks). Screen readers will announce "code block" so the listener knows the text is a literal error, not your description.
+
+**Steps to Reproduce matter more than you think.** Maintainers cannot fix what they cannot recreate. Number every step, starting from a clean slate -- "Open the repository" is better than "Go to the page." Include what you clicked, what keyboard shortcut you pressed, and what happened after each step.
+
+### Feature Request Structure
+
+Feature requests work best when they focus on the *problem* before jumping to the solution. Use this four-part structure:
+
+1. **Problem statement** -- Describe the pain point. What are you trying to do, and why is it hard or impossible right now?
+2. **Proposed solution** -- Your best idea for fixing the problem. Be specific enough to discuss, but hold it loosely.
+3. **Alternatives considered** -- Other approaches you thought about and why they fell short. This shows you have done your homework.
+4. **Who benefits** -- Name the audience. "Screen reader users navigating large repositories" is more compelling than "everyone."
+
+A feature request that starts with "I want a dark mode toggle" is weaker than one that starts with "Low-vision users report eyestrain after 20 minutes because the current theme has insufficient contrast." The second version gives maintainers something to design around.
+
+### General Issue Writing Principles
+
+These rules apply to every issue -- bugs, features, questions, and everything in between.
+
+**One issue per problem.** If you discovered two bugs during the same session, file two separate issues. Combining them makes it impossible to close one without the other and clutters the conversation.
+
+**Write searchable titles.** Future contributors will search before filing. "Bug with button" will never surface in a search for "Submit button unresponsive on Safari." Front-load the title with the specific component or action.
+
+**Include context, not assumptions.** Instead of "The API is broken," write "The `/repos` endpoint returns a 403 when I pass a valid token." Let maintainers draw their own conclusions from the evidence you provide.
+
+**Link related issues.** If your bug might be connected to issue #42, mention it: "This might be related to #42." GitHub automatically creates a back-link, building a web of context that helps everyone. You will learn more about cross-referencing in [Chapter 6](06-working-with-pull-requests.md).
+
+| Principle | Bad example | Good example |
+|---|---|---|
+| One issue per problem | "The button is broken and also the logo is wrong" | Two separate issues, each with its own title |
+| Searchable title | "Help needed" | "Keyboard focus lost after closing modal dialog" |
+| Context over assumptions | "Nothing works" | "After upgrading to v2.3, the dashboard returns a blank page on Firefox 124" |
+| Link related issues | (no mention) | "Possibly related to #42 -- same component, different trigger" |
+
+### Before and After: A Vague Issue vs. a Clear Issue
+
+**Vague issue (hard to act on):**
+
+> **Title:** Bug
+>
+> It doesn't work. I tried clicking and nothing happened. Please fix.
+
+The maintainer has to ask: What doesn't work? Where did you click? What browser? What did you expect? Every follow-up question costs a round-trip of waiting.
+
+**Clear issue (ready to fix):**
+
+> **Title:** When I press Enter on the "New issue" button, nothing happens instead of opening the issue form
+>
+> **Steps to Reproduce:**
+> 1. Navigate to github.com/org/repo
+> 2. Press `G` then `I` to go to the Issues tab
+> 3. Tab to the "New issue" button
+> 4. Press `Enter`
+>
+> **Expected:** The new issue form opens.
+>
+> **Actual:** The page does not respond. No error in the console.
+>
+> **Environment:** Windows 11, Firefox 128, JAWS 2025
+
+The maintainer can reproduce this in under a minute. No follow-up questions needed -- the fix can start immediately.
+
+> **Screen reader tip:** You can use the issue template feature in GitHub to pre-fill these sections automatically. If the repository provides templates, your screen reader will announce each section heading as you Tab through the form. You will set up your own issue templates in [Chapter 9](09-managing-your-project.md).
+
+
 ## Try It: File Your First Issue
 
 **Time:** 3 minutes | **What you need:** Browser, signed in to GitHub

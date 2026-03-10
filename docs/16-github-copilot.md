@@ -1243,6 +1243,98 @@ GitHub's accessibility team has published screen reader walkthroughs for each ma
 > **Tip:** These videos show NVDA with VS Code on Windows. The workflows apply to JAWS and VoiceOver with minor shortcut differences noted in each section above.
 
 
+## 13. Critically Evaluating AI Output
+
+Copilot is fast, fluent, and frequently wrong. The suggestions it produces look like they were written by someone who knows what they are doing -- and that is exactly what makes them dangerous if you accept them without thinking. This section gives you a framework for deciding what to keep, what to verify, and what to throw away.
+
+### When to Trust Copilot
+
+Copilot is at its best when it is generating code that thousands of developers have written before. You can generally trust suggestions that fall into these categories:
+
+- **Boilerplate and scaffolding** -- file headers, import statements, class constructors, standard function signatures
+- **Well-known patterns** -- iterating over arrays, reading files, formatting strings, writing basic tests
+- **Standard library usage** -- calling built-in methods with correct argument order
+- **Common syntax** -- closing brackets, finishing a loop body, completing a switch/case block
+
+In these situations Copilot is essentially autocomplete with broader context. The risk of error is low because the patterns are so widely repeated in its training data.
+
+### When to Verify
+
+Some suggestions look correct at first glance but carry hidden risks. Always read these carefully before accepting:
+
+- **Domain-specific logic** -- business rules, financial calculations, date/time math
+- **Security-sensitive code** -- authentication, authorization, input sanitization, cryptographic operations
+- **Accessibility attributes** -- ARIA roles, `alt` text, keyboard event handlers, focus management
+- **Numerical calculations** -- off-by-one errors, floating-point precision, unit conversions
+- **API usage** -- endpoint URLs, request headers, query parameters, response shapes
+- **Regular expressions** -- Copilot loves to generate regex patterns that almost work
+
+> **Screen reader tip:** When reviewing a suggestion in Accessible View (`Alt+F2`), read it line by line with `Down Arrow` rather than skimming. Copilot's mistakes are usually on individual lines, not in the overall structure.
+
+### When to Reject
+
+Delete the suggestion and write the code yourself when you see any of these:
+
+- **Fabricated APIs** -- function or method names that do not exist in the library you are using
+- **Outdated syntax** -- deprecated methods, old package versions, removed browser APIs
+- **Insecure patterns** -- SQL string concatenation, `eval()`, hardcoded secrets, disabled HTTPS verification
+- **Convention violations** -- naming styles, file organization, or patterns that contradict your project's standards
+- **Accessibility violations** -- interactive elements without keyboard handlers, missing label associations, incorrect heading hierarchy
+
+If you are not sure whether a suggestion falls into this category, verify it. When in doubt, reject.
+
+### Common Failure Modes
+
+The table below shows the kinds of mistakes Copilot makes most often. Recognizing these patterns helps you catch problems before they reach a reviewer.
+
+| Failure mode | What it looks like | Why it happens |
+| --- | --- | --- |
+| Fabricated function names | `response.getData()` on an object that has no `getData` method | Copilot blends APIs from multiple libraries into one suggestion |
+| Incorrect ARIA attributes | `role="textbox"` on a `<div>` that acts as a button | Training data includes many inaccessible websites |
+| Outdated dependency versions | `"react": "^16.8"` in a new project | Training data includes older tutorials and starter templates |
+| Plausible-but-wrong logic | A sort function that works for most inputs but fails on edge cases | The pattern matches what Copilot has seen, but the details are wrong |
+| Confidently incorrect explanations | Chat says "this function is O(n)" when it is actually O(n squared) | Copilot generates fluent text, not verified analysis |
+| Hallucinated URLs | Links to documentation pages or API endpoints that do not exist | Copilot predicts likely URLs from patterns, not from a live index |
+
+### The Verification Checklist
+
+Before you accept any non-trivial Copilot suggestion, run through these steps:
+
+1. **Does it compile or run?** -- Accept the suggestion, save the file, and check for errors in the Problems panel (`Ctrl+Shift+M`).
+2. **Does it do what I asked?** -- Read the code and confirm it matches your intent, not just your prompt.
+3. **Could I explain this to a reviewer?** -- If you cannot explain what every line does, you do not understand it well enough to keep it.
+4. **Does it match the project's conventions?** -- Check naming, formatting, file organization, and error handling against the existing codebase.
+5. **Did I check any URLs or references it generated?** -- Open every link, verify every package name, confirm every API endpoint.
+6. **Would this pass an accessibility review?** -- Run it through the checks described below.
+
+> **Screen reader tip:** Keep the Problems panel open (`Ctrl+Shift+M`) while you work with Copilot. After accepting a suggestion, press `F8` to jump to the next diagnostic. This catches syntax errors immediately.
+
+### Accessibility-Specific Concerns
+
+Copilot generates HTML and UI code based on what it has seen -- and much of the web is inaccessible. Watch for these problems in any suggestion that touches the user interface:
+
+- **Missing `alt` text** -- Copilot frequently generates `<img>` tags with empty or missing `alt` attributes
+- **Improper heading levels** -- jumping from `<h2>` to `<h4>`, breaking the document outline
+- **No keyboard handlers** -- `onClick` without `onKeyDown`, making elements unreachable for keyboard users
+- **Decorative ARIA** -- adding `role` or `aria-label` attributes that contradict the element's native semantics
+- **Generic link text** -- "click here" or "read more" instead of descriptive link text
+
+Always verify ARIA roles and patterns against the [APG (ARIA Authoring Practices)](https://www.w3.org/WAI/ARIA/apg/). If Copilot suggests an ARIA pattern, open the APG page for that widget and confirm the roles, states, and keyboard interactions match. See also [Chapter 12](12-vscode-accessibility.md) for accessibility verification workflows in VS Code.
+
+### The Right Mental Model
+
+Think of Copilot as a fast typist who has read a lot of code. It can reproduce patterns it has seen before, and it can combine those patterns in new ways. What it cannot do is:
+
+- **Understand your project** -- it does not know your business rules, your users, or your constraints
+- **Verify its own output** -- it cannot run the code it generates or check whether it works
+- **Stay current** -- its training data has a cutoff date, so newer APIs and libraries may be missing or wrong
+- **Reason about correctness** -- it predicts the most likely next token, not the most correct one
+
+The right relationship with Copilot is the one you have with a first draft. You would never submit a first draft without reading it, testing it, and revising it. Treat every Copilot suggestion the same way.
+
+For more on working with AI tools responsibly, see [Chapter 20](20-build-your-agent.md) on building and evaluating your own agent, and [Chapter 21](21-next-steps.md) for continued learning resources.
+
+
 ## Troubleshooting
 
 ### Copilot Not Suggesting Anything
