@@ -59,6 +59,36 @@ GitHub Desktop covers the everyday Git workflow that most contributors use on mo
 
 For these operations, open the repository in your terminal directly from GitHub Desktop — **Repository → Open in Terminal** or **Repository → Open in Command Prompt** puts you in the right directory instantly.
 
+
+### Learning Cards: What GitHub Desktop Does
+
+<details>
+<summary>Screen reader users</summary>
+
+- GitHub Desktop handles cloning, branching, staging, committing, and pushing -- all accessible via keyboard and standard form controls
+- For operations Desktop does not support (rebase, bisect, clean), use Repository then Open in Terminal to land in the right directory instantly
+- All commit message fields are standard text inputs that screen readers announce as editable text
+
+</details>
+
+<details>
+<summary>Low vision users</summary>
+
+- GitHub Desktop supports system-level zoom and high-contrast OS themes on both Windows and macOS
+- The diff panel uses green and red backgrounds for additions and deletions -- pair these with font size adjustments in your OS display settings
+- If the diff colors are hard to distinguish, open the same diff in VS Code via Repository then Open in VS Code for more theme options
+
+</details>
+
+<details>
+<summary>Sighted users</summary>
+
+- The three-panel layout (toolbar, file list, diff view) gives you a visual snapshot of your repository state at a glance
+- Look for the badge count on the Fetch/Push button to see how many commits are waiting to push or pull
+- The check mark, plus, and minus icons next to filenames show modified, added, and deleted status instantly
+
+</details>
+
 ---
 
 ## 2. Installing GitHub Desktop
@@ -149,6 +179,36 @@ GitHub Desktop has three main areas:
 | **History tab** | Shows your commit history |
 | **Summary field** (bottom left) | Where you type your commit message |
 | **Commit button** (bottom left) | Commits staged changes |
+
+
+### Learning Cards: The Desktop Interface
+
+<details>
+<summary>Screen reader users</summary>
+
+- Use `Tab` to move between the toolbar, file list, diff pane, and commit area -- each is a distinct focus region
+- The branch selector is a searchable dropdown: type to filter, `Down Arrow` to navigate, `Enter` to select
+- The commit button is announced as "Commit to [branch name]" -- press `Enter` to activate
+
+</details>
+
+<details>
+<summary>Low vision users</summary>
+
+- The toolbar at the top stays fixed as you scroll -- repository name, branch, and sync button are always visible
+- Increase your OS display scaling to enlarge all panels proportionally without breaking the layout
+- The Changes and History tabs are side-by-side at the top of the left panel -- each tab label is clearly distinct
+
+</details>
+
+<details>
+<summary>Sighted users</summary>
+
+- The left panel toggles between Changes (uncommitted work) and History (past commits) -- click each tab to switch
+- The main diff area updates when you select a different file in the left panel
+- Look for the upward or downward arrow on the Fetch/Push button to see whether you need to push or pull
+
+</details>
 
 ---
 
@@ -456,6 +516,36 @@ GitHub Desktop has partial screen reader support. Core workflows work well with 
 ### VS Code as a better accessible alternative
 
 If screen reader navigation in GitHub Desktop is frustrating for a specific operation, VS Code's Source Control panel is often more accessible. The two tools complement each other — use whichever works best for the task at hand.
+
+
+### Learning Cards: Desktop Accessibility
+
+<details>
+<summary>Screen reader users</summary>
+
+- Commit message fields, branch selector, and conflict resolution buttons are fully keyboard-accessible and announced
+- The diff panel has partial screen reader support -- for difficult diffs, switch to VS Code's Accessible Diff Viewer (`F7` / `Alt+F2`)
+- Use `Shift+F10` on Windows to open context menus via keyboard when right-click actions are needed
+
+</details>
+
+<details>
+<summary>Low vision users</summary>
+
+- File status icons (M, A, D) are small -- increase OS scaling or watch for the filename and status text that accompany them
+- The conflict resolution dialog uses labeled buttons ("Use mine", "Use theirs") that are easy to identify at any zoom level
+- If diff colors are indistinguishable at your contrast settings, open the same file in VS Code for richer theme support
+
+</details>
+
+<details>
+<summary>Sighted users</summary>
+
+- The colored diff highlights (green for added, red for removed) are visible in the main panel as soon as you click a file
+- Modal conflict dialogs appear front-and-center with clear action buttons -- no hunting required
+- Keyboard shortcuts like `Ctrl+Shift+O` (Clone) and `Ctrl+Shift+N` (New Branch) speed up common workflows visually
+
+</details>
 
 ---
 

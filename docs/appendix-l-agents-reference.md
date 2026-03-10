@@ -109,6 +109,36 @@ Accessibility Agents includes 55 agents organized into three specialized teams, 
 | Example violations | 20+ | `example/` directory |
 
 
+### Learning Cards: Agent Ecosystem Overview
+
+<details>
+<summary>Screen reader users</summary>
+
+- Invoke any agent by typing `@agent-name` in Copilot Chat (`Ctrl+Shift+I`) -- the autocomplete list is keyboard-navigable with arrow keys
+- The 55 agents are organized into 3 teams (Accessibility, GitHub Workflow, Developer Tools) -- use `H` in the team tables to jump between headings
+- Agent responses appear in the Chat panel; press `Alt+F2` (Accessible View) for a structured, non-streaming version
+
+</details>
+
+<details>
+<summary>Low vision users</summary>
+
+- The agent team tables use consistent columns (Agent, Type, What It Does) -- increase font size so the narrow "Type" column remains readable
+- Agents work in the Chat panel with your current theme and font settings -- no separate UI to configure
+- The five supported platforms (VS Code, Claude Code, Gemini CLI, Claude Desktop, Codex CLI) share the same agent logic with platform-specific formatting
+
+</details>
+
+<details>
+<summary>Sighted users</summary>
+
+- Skim the three team tables to find the agent closest to your task -- orchestrators coordinate specialists, task agents do focused work
+- The Supporting Resources table at the bottom shows file counts and locations for prompts, skills, instructions, and hooks
+- Bookmark this section as your directory of all 55 agents; the later sections document the file formats behind them
+
+</details>
+
+
 ## 2. GitHub Workflow Agents - Quick Reference
 
 The GitHub Workflow team includes 12 agents that automate common repository operations. These are good starting points if you have completed the Day 1 skills - but explore any agent in the ecosystem that matches your workflow.\n\nInvoke any agent by typing `@agent-name` in Copilot Chat (`Ctrl+Shift+I`).
@@ -310,6 +340,36 @@ Before creating any file, choose the right primitive for the job. Each primitive
 #### Instructions vs Hooks?
 
 - Instructions *guide* the agent (non-deterministic). Hooks *enforce* behavior via shell commands at lifecycle events - they run regardless of what the agent was prompted to do.
+
+
+### Learning Cards: Customization Primitives
+
+<details>
+<summary>Screen reader users</summary>
+
+- The decision table maps each file type to its purpose -- navigate with `T` (next table) in browse mode, then arrow through rows
+- Key distinction: instructions are passive (always-on guidance), agents are active (on-demand task performers), hooks are deterministic (shell commands at lifecycle events)
+- Use the "Choosing Between Primitives" Q&A pairs below the table to decide which file type fits your need
+
+</details>
+
+<details>
+<summary>Low vision users</summary>
+
+- The 7-row decision table is the single most important reference here -- zoom in on the "When to Use" column for the clearest guidance
+- Each Q&A pair under "Choosing Between Primitives" is a short paragraph -- easy to scan at high magnification
+- Color-coded syntax in YAML frontmatter examples benefits from a high-contrast theme with distinct keyword colors
+
+</details>
+
+<details>
+<summary>Sighted users</summary>
+
+- Scan the decision table visually to match your use case to the right primitive -- the "When to Use" column gives one-sentence guidance
+- The Q&A comparisons (Instructions vs Agent, Prompt vs Skill, etc.) appear as bold subheadings -- skim them to resolve common ambiguities
+- If in doubt, start with a `.prompt.md` file for a focused task; graduate to `.agent.md` only when you need multi-step tool orchestration
+
+</details>
 
 
 ## 5. Scope and Priority - All Levels
@@ -841,6 +901,36 @@ For each finding include:
 7. Type `/your-command` to invoke it
 
 **Both prompts and agent skills appear as `/` slash commands.** The difference: prompts are single-task Markdown files; skills are folders with bundled scripts and references.
+
+
+### Learning Cards: Prompts and Slash Commands
+
+<details>
+<summary>Screen reader users</summary>
+
+- Type `/` in Copilot Chat to see all available slash commands -- the autocomplete list reads each command name and description aloud
+- `.prompt.md` files use YAML frontmatter for metadata (name, description, tools) followed by plain Markdown instructions
+- Use `${input:variableName}` placeholders in prompts to create interactive fill-in-the-blank commands that prompt the user at invocation
+
+</details>
+
+<details>
+<summary>Low vision users</summary>
+
+- The slash command picker popup is themed to match your current VS Code theme -- ensure your theme has sufficient contrast for dropdown items
+- `.prompt.md` files are small Markdown files that are easy to read and edit at high zoom -- typically under 50 lines
+- The YAML frontmatter block at the top is indentation-sensitive -- use VS Code's indentation guides or a linter to verify structure
+
+</details>
+
+<details>
+<summary>Sighted users</summary>
+
+- The `/` picker shows a scrollable list of commands grouped by source -- built-in commands appear first, then workspace prompts
+- Look at the `.github/prompts/` folder in the Explorer to see all custom slash commands defined in the project
+- Copy an existing `.prompt.md` file as a template when creating new commands -- the frontmatter structure is the same for all prompts
+
+</details>
 
 
 ## 10. Agent Skills (`SKILL.md`) - Complete Format Reference

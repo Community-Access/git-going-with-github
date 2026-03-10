@@ -90,6 +90,36 @@ gh auth refresh
 
 > **Screen reader tip:** `gh auth login` is an interactive prompt — navigate with `Arrow` keys, confirm with `Enter`. All prompts are plain text and read naturally. The browser step opens automatically; switch back to the terminal when the browser confirms success.
 
+
+### Learning Cards: Getting Started with gh
+
+<details>
+<summary>Screen reader users</summary>
+
+- `gh auth login` uses plain-text arrow-key prompts -- every option is announced as you arrow through the list
+- After authentication, `gh auth status` confirms your login in a single readable line -- no browser needed
+- All `gh` output is plain text with no hidden elements, making it one of the most screen-reader-friendly GitHub interfaces
+
+</details>
+
+<details>
+<summary>Low vision users</summary>
+
+- Increase your terminal font size before running `gh` commands -- all output scales with your terminal settings
+- Use a high-contrast terminal theme (light text on dark background, or vice versa) for comfortable reading of command output
+- `gh` output is plain text with no color-dependent meaning -- colors are supplementary labels, not the only indicator
+
+</details>
+
+<details>
+<summary>Sighted users</summary>
+
+- The interactive prompts use arrow-based selection with a highlight marker -- look for the `>` indicator next to your current choice
+- After `gh auth login`, the terminal prints a success confirmation with your username -- verify it matches your GitHub account
+- Install `gh` via winget or brew for the fastest setup; the binary is immediately available in your current terminal session
+
+</details>
+
 ---
 
 ## 2. Repos — Clone, Fork, Create, View
@@ -487,6 +517,36 @@ gh issue list --template '{{range .}}#{{.number}} {{.title}} ({{.state}}){{"\n"}
 
 > **Screen reader tip:** `--json` with `--jq` produces clean, predictable output — ideal for piping to a file or reading with a screen reader. The default human-readable output is also clean, but JSON gives you precise control over what's announced.
 
+
+### Learning Cards: Output Formatting
+
+<details>
+<summary>Screen reader users</summary>
+
+- Use `--json` with `--jq` to extract exactly the fields you need -- this eliminates table formatting noise and reads as clean key-value pairs
+- Pipe long output to a file (`gh issue list --json title > issues.txt`) and open it in VS Code for structured navigation with `Alt+F2`
+- Go templates (`--template`) let you define a single-line-per-item format that reads naturally with arrow keys
+
+</details>
+
+<details>
+<summary>Low vision users</summary>
+
+- The default table output aligns columns with spaces -- increase terminal font size so columns stay readable
+- JSON output with `--jq` strips visual formatting and gives compact text that scales cleanly with any font size
+- Pipe output to VS Code (`gh pr view 42 --json body --jq '.body' | code -`) to read it with your preferred editor theme and zoom
+
+</details>
+
+<details>
+<summary>Sighted users</summary>
+
+- Default table output is already human-readable with aligned columns -- scan the header row to orient on each column
+- Use `--web` on any command to open the result in your browser if you prefer the GitHub web interface for detailed views
+- Chain `| head -20` (macOS/Linux) or `| Select-Object -First 20` (PowerShell) to preview long output before reading the full list
+
+</details>
+
 ---
 
 ## 9. Aliases — Create Your Own Shortcuts
@@ -654,6 +714,36 @@ gh issue create --title "Bug: focus lost after modal closes" --body-file ./issue
 - Run `gh` in Terminal.app or VS Code integrated terminal
 - `VO+Right` moves through terminal output character by character; `VO+Down` line by line
 - Use `Ctrl+C` to stop a running command if output is too long
+
+
+### Learning Cards: Screen Reader CLI Workflow
+
+<details>
+<summary>Screen reader users</summary>
+
+- `gh` is keyboard-first by design -- no focus traps, no streaming, no unlabelled buttons; everything is typed and read as plain text
+- Use `Insert+Down` (NVDA) or `Insert+F12` (JAWS) to read the current line, and arrow keys to move through multi-line output
+- Write issue and PR bodies in a text file first, then use `--body-file ./issue.md` to submit -- much easier than composing inline
+
+</details>
+
+<details>
+<summary>Low vision users</summary>
+
+- Terminal output from `gh` has no icons or images -- all information is conveyed as text that scales with your terminal font
+- Use `--limit 10` on list commands to keep output short enough to scan comfortably without scrolling
+- Run `gh` in the VS Code integrated terminal to benefit from VS Code's zoom, themes, and Accessible View (`Alt+F2`)
+
+</details>
+
+<details>
+<summary>Sighted users</summary>
+
+- `gh` output uses subtle color coding (green for open, red for closed) -- these are supplementary; the text labels are always present
+- Use `gh pr view --web` or `gh issue view --web` to jump to the browser when you want the full visual GitHub interface
+- The `gh pr checks` command gives a quick pass/fail summary of CI checks without opening the browser
+
+</details>
 
 ---
 

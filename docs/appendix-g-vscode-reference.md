@@ -9,6 +9,36 @@
 > **Referenced by:** [VS Code Setup & Accessibility Basics](11-vscode-interface.md), [GitHub Copilot](16-github-copilot.md)
 
 
+### Learning Cards: VS Code Accessibility Reference Overview
+
+<details>
+<summary>Screen reader users</summary>
+
+- This appendix is your lookup manual -- use `Ctrl+G` (Go to Line) or `Ctrl+Shift+O` (Go to Symbol) to jump directly to a setting name
+- Every table is structured with headers; use `T` in browse mode to jump between tables, then arrow through rows
+- Bookmark this file in VS Code (`Ctrl+K Ctrl+K`) so you can return instantly when you need a setting path
+
+</details>
+
+<details>
+<summary>Low vision users</summary>
+
+- Increase editor font size (`Ctrl+=`) before scanning the long settings tables -- column values are easier to compare at larger sizes
+- Use the Minimap (if sighted enough) or breadcrumbs bar to orient within this large reference file
+- High-contrast themes make the table grid lines and code spans easier to distinguish from body text
+
+</details>
+
+<details>
+<summary>Sighted users</summary>
+
+- The Table of Contents links jump directly to each section -- click any link to scroll there instantly
+- Use `Ctrl+Shift+O` to open the outline view and see all 7 sections as a navigable list
+- The settings tables use consistent columns (Setting Path, Values, Default, Description) -- scan the Default column to see what changes from your current setup
+
+</details>
+
+
 ## Table of Contents
 
 1. [Complete Accessibility Settings Reference](#1-complete-accessibility-settings-reference)
@@ -256,6 +286,36 @@ The unchanged lines help you understand where in the file the change occurred.
 1. Open Settings: `Ctrl+,`
 2. Search: "diffEditor.renderSideBySide"
 3. Uncheck the box (or set to `false` in settings.json)
+
+
+### Learning Cards: Accessible Diff Viewer
+
+<details>
+<summary>Screen reader users</summary>
+
+- Press `F7` in any diff editor to jump to the first changed hunk -- then `F7` / `Shift+F7` to move between hunks
+- Use `Alt+F2` (Accessible View) to read the full diff in a structured, non-streaming pane with proper line prefixes
+- Switch to inline diff view (`diffEditor.renderSideBySide: false`) so all changes appear in one editor instead of two panels
+
+</details>
+
+<details>
+<summary>Low vision users</summary>
+
+- Inline diff view places removed and added lines back-to-back with color-coded backgrounds -- increase font size for easier scanning
+- Enable `accessibility.signals.diffLineInserted` and `diffLineDeleted` for audio feedback as you arrow through changed lines
+- Zoom the diff editor independently with `Ctrl+=` if the surrounding UI is already at a comfortable size
+
+</details>
+
+<details>
+<summary>Sighted users</summary>
+
+- Green-highlighted lines are additions; red-highlighted lines are deletions -- look for the `+` and `-` gutters on the left
+- Use the minimap sidebar to spot clusters of changes in a long diff without scrolling
+- Click the hunk arrows in the gutter to jump directly to the next block of changes
+
+</details>
 
 
 ## 4. Screen Reader-Specific Configurations
@@ -597,6 +657,36 @@ When multiple signals occur simultaneously, VS Code prioritizes them:
 4. **Focus changes** - announced last
 
 This prevents overlapping announcements.
+
+
+### Learning Cards: Accessibility Signals
+
+<details>
+<summary>Screen reader users</summary>
+
+- Start with `auto` for most signals -- they play only when screen reader mode is active, keeping things quiet otherwise
+- The `lineHasError` and `taskFailed` signals are the highest-value audio cues; enable these first
+- Use `accessibility.signals.volume` (0-100) to balance signal volume against your screen reader speech
+
+</details>
+
+<details>
+<summary>Low vision users</summary>
+
+- Audio cues supplement visual indicators you might miss -- enable `lineHasWarning` and `lineHasError` for sounds on the current line
+- The `save` and `format` signals confirm file operations completed without needing to check the status bar visually
+- Pair audio cues with high-contrast gutter icons for a dual-channel (sight + sound) feedback loop
+
+</details>
+
+<details>
+<summary>Sighted users</summary>
+
+- Audio cues can speed up your workflow even with full vision -- the `taskCompleted` chime saves you from watching terminal output
+- Search "accessibility.signals" in Settings UI to see all toggles in one filtered view with checkboxes
+- Custom sound files (WAV/MP3, under 2 seconds) can replace defaults if you want distinctive tones per event
+
+</details>
 
 
 ## 7. Settings.json Configuration Examples

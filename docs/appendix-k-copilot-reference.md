@@ -172,6 +172,36 @@ Copilot Chat has four modes. Select the current mode from the dropdown at the bo
 **Model selection** is a separate control, also at the bottom of the Chat input. See [Appendix X: AI Models Reference](appendix-k-copilot-reference.md) for a complete guide to choosing models.
 
 
+### Learning Cards: Chat Participants, Commands, and Modes
+
+<details>
+<summary>Screen reader users</summary>
+
+- Type `@` in Chat to scope context (`@workspace`, `@terminal`, `@github`) -- the autocomplete list is keyboard-navigable with arrow keys
+- Type `/` for slash commands (`/explain`, `/fix`, `/tests`) -- each is announced with its description as you arrow through
+- The mode selector is at the bottom of the Chat panel toolbar; Tab to it, then `Space` or `Enter` to open the dropdown
+
+</details>
+
+<details>
+<summary>Low vision users</summary>
+
+- Chat responses appear in the panel with syntax highlighting -- increase the Chat panel font size via `editor.fontSize` in settings
+- The `@` and `/` trigger characters are small but the autocomplete popup that follows is large and themed to your current color scheme
+- Use Ask mode for reading explanations, Edit mode for controlled changes, and Agent mode for autonomous multi-step tasks
+
+</details>
+
+<details>
+<summary>Sighted users</summary>
+
+- The `@` participant picker and `/` command picker both show inline descriptions -- scan them visually to discover available options
+- The mode dropdown at the bottom of Chat shows the current mode name; the icon changes shape per mode for quick visual identification
+- Code blocks in Chat responses have a "Copy" and "Insert at Cursor" button in the top-right corner of each block
+
+</details>
+
+
 ## 5. Custom Instructions - All Levels
 
 GitHub Copilot supports multiple ways to provide custom instructions. They differ by scope, priority, trigger mechanism, and which tools recognize them. This section documents every supported approach.
@@ -467,6 +497,36 @@ This is especially important for multi-line suggestions where ghost text is hard
 - Screen readers announce "code block" or "pre-formatted text" at the start
 - Each line is on its own line (not run together)
 - Indentation is preserved
+
+
+### Learning Cards: Accessible View Workflow
+
+<details>
+<summary>Screen reader users</summary>
+
+- Press `Alt+F2` immediately after sending a prompt -- Accessible View now streams dynamically so you can follow along in real time
+- Navigate Chat responses with `Up/Down Arrow`; headings, code blocks, and lists are structurally intact in the view
+- For inline suggestions, press `Alt+F2` to read the full ghost text, then `Ctrl+/` to insert it directly from the Accessible View
+
+</details>
+
+<details>
+<summary>Low vision users</summary>
+
+- Accessible View renders Chat responses as a static, scrollable pane -- easier to read at high zoom than the streaming Chat panel
+- Code blocks in Accessible View preserve indentation and syntax -- pair with a high-contrast theme for maximum readability
+- `Ctrl+Home` jumps to the start of the response; `Ctrl+End` to the end -- useful for long multi-section outputs
+
+</details>
+
+<details>
+<summary>Sighted users</summary>
+
+- Even with full vision, Accessible View (`Alt+F2`) is useful for reviewing long Copilot responses without streaming distraction
+- Code blocks are rendered as `<pre>` elements with line breaks preserved -- easy to scan and compare against your editor
+- Press `Escape` to close Accessible View and return focus to the Chat input for your next prompt
+
+</details>
 
 
 ## 7. Configuration Scope Reference
@@ -824,6 +884,36 @@ Pressing `Ctrl+Enter` opens a **Suggestions Panel** - a separate editor tab that
 | Official screen reader guide | [accessibility.github.com/documentation/guide/github-copilot-vsc/](https://accessibility.github.com/documentation/guide/github-copilot-vsc/) |
 | Optimizing Copilot with custom instructions (accessibility) | [accessibility.github.com/documentation/guide/copilot-instructions/](https://accessibility.github.com/documentation/guide/copilot-instructions/) |
 | Getting started with custom agents for accessibility | [accessibility.github.com/documentation/guide/getting-started-with-agents/](https://accessibility.github.com/documentation/guide/getting-started-with-agents/) |
+
+
+### Learning Cards: Screen Reader Copilot Workflow
+
+<details>
+<summary>Screen reader users</summary>
+
+- The golden rule: never accept a suggestion with `Tab` before reviewing it -- press `Alt+F2` first, read it, then `Ctrl+/` to insert
+- Enable the four Copilot audio signals (inline suggestion, request sent, response pending, response received) for non-verbal status awareness
+- `Ctrl+Enter` opens a Suggestions Panel with up to 10 alternatives -- navigate with `H` for headings, then `Tab` to the Accept button
+
+</details>
+
+<details>
+<summary>Low vision users</summary>
+
+- Inline ghost text is typically rendered in a muted color -- if hard to see, rely on the `lineHasInlineSuggestion` audio signal instead
+- The Suggestions Panel (`Ctrl+Enter`) shows alternatives in a full editor tab at your current font size and theme
+- Chat responses are easier to read in Accessible View than in the streaming panel, especially at high zoom
+
+</details>
+
+<details>
+<summary>Sighted users</summary>
+
+- Ghost text appears in gray after your cursor -- press `Tab` to accept, `Escape` to dismiss, or `Alt+]` / `Alt+[` for alternatives
+- The Chat panel shows response progress with a typing indicator; the Accessible View shows the same content without animation
+- Use the Resources table above to bookmark the official accessibility guides for Copilot configuration and agent setup
+
+</details>
 
 
 ## 13. awesome-copilot - Plugin Ecosystem

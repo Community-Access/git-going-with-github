@@ -35,6 +35,36 @@ A Codespace is a cloud-hosted development environment. When you open one, GitHub
 **Free tier:** GitHub provides a monthly free allowance of Codespace hours for personal accounts. Workshop usage typically falls well within the free tier.
 
 
+### Learning Cards: Cloud Editors Overview
+
+<details>
+<summary>Screen reader users</summary>
+
+- Codespaces gives you a full VS Code interface with terminal access -- your screen reader and OS settings stay on your local machine
+- The browser-based editor activates screen reader optimized mode automatically if your OS signals a screen reader is running
+- Connect a Codespace to your local VS Code Desktop (via the Codespaces extension) for the most familiar screen reader experience
+
+</details>
+
+<details>
+<summary>Low vision users</summary>
+
+- Settings Sync carries your font size, theme, and zoom preferences from local VS Code into Codespaces automatically
+- The browser-based editor supports `Ctrl+=` / `Ctrl+-` zoom just like desktop VS Code
+- Use a high-contrast VS Code theme -- it applies identically in the cloud editor
+
+</details>
+
+<details>
+<summary>Sighted users</summary>
+
+- Press `.` on any GitHub repository page to open it instantly in github.dev (browser editor, no terminal)
+- Codespaces provisions a full VM with terminal -- use it when you need to run code, not just edit
+- The default 2-core machine is sufficient for workshop exercises; upgrade only for heavy builds
+
+</details>
+
+
 ## 2. Creating a Codespace
 
 ### From a Repository Page
@@ -125,6 +155,36 @@ The integrated terminal in a Codespace is a standard terminal:
 - Screen readers read terminal output in NVDA and JAWS using their document/browse mode after output arrives
 - In NVDA: Switch to Browse Mode to read static terminal output, then back to Focus Mode to type
 - VS Code also has **Accessible View** (`Alt+F2` when cursor is in the terminal) which renders terminal output in a navigable buffer
+
+
+### Learning Cards: Codespace Accessibility
+
+<details>
+<summary>Screen reader users</summary>
+
+- Screen Reader Optimized mode activates automatically -- verify with Command Palette `Ctrl+Shift+P` then "Toggle Screen Reader Accessibility Mode"
+- Audio cues (error, warning, task completed, Copilot suggestion) work identically in Codespaces and desktop VS Code
+- In NVDA, switch to Browse Mode to read terminal output, then Focus Mode to type -- same pattern as local VS Code
+
+</details>
+
+<details>
+<summary>Low vision users</summary>
+
+- All VS Code zoom and theme settings apply in the browser-based Codespace -- `Ctrl+=` increases editor font size
+- Audio cues for errors and Copilot suggestions supplement visual indicators you might miss at lower zoom levels
+- Chrome and Edge provide the most consistent rendering of the Codespace UI at high zoom and magnification levels
+
+</details>
+
+<details>
+<summary>Sighted users</summary>
+
+- The Codespace browser tab looks and feels like desktop VS Code -- same layout, same panels, same shortcuts
+- Look for the green "Codespaces" badge in the bottom-left corner to confirm you are connected to a cloud environment
+- If an extension is unavailable in the browser, connect the Codespace to local VS Code Desktop for full extension support
+
+</details>
 
 
 ## 5. Screen Reader Configuration
@@ -240,6 +300,36 @@ VS Code settings (themes, font size, keybindings) can be synchronized to Codespa
 | Best for | Active development, running tests | Quick edits, reading code |
 
 For workshop exercises that involve running scripts or tests, use Codespaces. For quickly browsing or editing a file, GitHub.dev is faster to open.
+
+
+### Learning Cards: Choosing Your Cloud Editor
+
+<details>
+<summary>Screen reader users</summary>
+
+- GitHub.dev has no terminal -- choose Codespaces when you need to run commands, and github.dev for quick file edits
+- Both editors support screen reader mode, but Codespaces gives you the full terminal Accessible View (`Alt+F2`) that github.dev lacks
+- Press `.` on any repo page for github.dev; use the Codespaces dashboard at github.com/codespaces for a full environment
+
+</details>
+
+<details>
+<summary>Low vision users</summary>
+
+- GitHub.dev loads instantly with your synced VS Code theme -- good for quick high-contrast reading of source files
+- Codespaces takes 30-60 seconds to provision but gives you terminal, builds, and the same zoom/theme settings
+- Both editors scale with browser zoom (`Ctrl+=`) in addition to VS Code's own font-size settings
+
+</details>
+
+<details>
+<summary>Sighted users</summary>
+
+- Use github.dev (press `.`) for quick drive-by edits -- it opens immediately with no provisioning wait
+- Use Codespaces when you need to run scripts, install dependencies, or test your changes before committing
+- The comparison table above summarizes every difference -- refer back to it when deciding which to open
+
+</details>
 
 
 ## 10. Common Issues and Workarounds
