@@ -16,7 +16,7 @@ For this workshop, Classroom handles the infrastructure so facilitators can focu
 ### Architecture Overview
 
 ```text
-Community-Access/learning-room (template repo)
+Community-Access/learning-room-template (template repo)
     |
     +--> [Classroom clones per student]
     |       student-a/learning-room-student-a
@@ -57,7 +57,7 @@ Before creating your first classroom, confirm the following:
 
 - [ ] You have **Owner** or **Admin** access to the Community-Access GitHub organization
 - [ ] Your facilitator GitHub account has a verified email address
-- [ ] The `Community-Access/learning-room` repository is public (or the classroom org has read access)
+- [ ] The `Community-Access/learning-room-template` repository is public (or the classroom org has read access)
 - [ ] You have the student list (GitHub usernames are required; real names are optional)
 - [ ] You have confirmed dates for Day 1 and Day 2
 - [ ] You have tested that GitHub Actions are enabled on the organization (Settings then Actions then General)
@@ -110,7 +110,7 @@ This assignment covers Challenges 01 through 09 (Day 1 of the workshop).
 | **Title** | You Belong Here |
 | **Type** | Individual |
 | **Visibility** | Private (student repos are only visible to the student and facilitators) |
-| **Template repository** | `Community-Access/learning-room` |
+| **Template repository** | `Community-Access/learning-room-template` |
 | **Grant students admin access** | No |
 | **Enable feedback pull requests** | Yes |
 | **Deadline** | End of Day 1 for this cohort (deadline is soft -- late work is still accepted) |
@@ -136,7 +136,7 @@ This assignment covers Challenges 10 through 16 plus the 5 bonus challenges.
 | **Title** | You Can Build This |
 | **Type** | Individual |
 | **Visibility** | Private |
-| **Template repository** | `Community-Access/learning-room` |
+| **Template repository** | `Community-Access/learning-room-template` |
 | **Grant students admin access** | No |
 | **Enable feedback pull requests** | Yes |
 | **Deadline** | One week after Day 2 (gives students time for the capstone and bonus challenges) |
