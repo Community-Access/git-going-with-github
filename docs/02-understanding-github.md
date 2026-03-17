@@ -25,6 +25,9 @@
 9. [How GitHub's Layout Changes by Viewport](#9-how-githubs-layout-changes-by-viewport)
 10. [The Mental Model - Building Your Internal Map](#10-the-mental-model---building-your-internal-map)
 
+
+> **The Capstone Connection:** By the end of tomorrow, you will build your own customized AI Agent. But agents do not have magic portals into your code — they read Issues, they write Pull Requests, and they trigger on Labels. Think of GitHub as the operating system for AI. As you learn these manual features today, you are actually learning how to converse with the agents you will build tomorrow.
+
 ## 1. GitHub's Three-Level Structure
 
 GitHub is not a single page or a single kind of page. It is three nested levels, and understanding which level you are on changes how you navigate.
@@ -645,4 +648,6 @@ Open any GitHub repository - try [github.com/community-access/accessibility-agen
 *Next: [Chapter 03: Navigating Repositories](03-navigating-repositories.md)*  
 *Back: [Chapter 01: Choose Your Tools](01-choose-your-tools.md)*  
 *Related appendices: [Appendix A: Glossary](appendix-a-glossary.md) | [Appendix B: Screen Reader Cheat Sheet](appendix-b-screen-reader-cheatsheet.md)*
+
+
 

@@ -90,7 +90,11 @@ The following table summarizes the practice files in the learning-room, what eac
 
 ### Challenge 6.2 Step-by-Step: Open a Linked PR
 
-**Goal:** Open a pull request that links to your challenge issue so it closes automatically on merge.
+**Goal:** Open a pull request
+
+> **🛠️ Agentic Strategy:** AI Agents do not just deploy code directly; they submit Pull Requests. Learning to edit a file, format it in Markdown, and review a PR today prepares you to effectively audit and approve the code your AI generates tomorrow. Make your Markdown clean and structured — AI agents love reading well-formatted Markdown!
+
+> **🛠️ Agentic Strategy:** AI Agents do not just deploy code directly; they submit Pull Requests. Learning to edit a file, format it in Markdown, and review a PR today prepares you to effectively audit and approve the code your AI generates tomorrow. Make your Markdown clean and structured—AI agents love reading well-formatted Markdown! that links to your challenge issue so it closes automatically on merge.
 
 **Where you are working:** the "Open a pull request" page that appeared after Challenge 6.1 (or navigate to Pull Requests tab and select "Compare and pull request").
 
@@ -1622,4 +1626,7 @@ Go to the Learning Room repository's Pull Requests tab and find any open or rece
 *Next: [Chapter 07: Merge Conflicts](07-merge-conflicts.md)*  
 *Back: [Chapter 05: Working with Issues](05-working-with-issues.md)*  
 *Related appendices: [Appendix C: Markdown Reference](appendix-c-markdown-reference.md) | [Appendix B: Screen Reader Cheat Sheet](appendix-b-screen-reader-cheatsheet.md)*
+
+
+
 

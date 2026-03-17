@@ -28,6 +28,9 @@ Chapter 9 is a **guided triage chapter** focused on organization skills.
 
 **Goal:** Read the details of a Learning Room issue and post a structured triage recommendation that a maintainer could act on immediately.
 
+> **🛠️ Agentic Strategy:** Labels and issue states are how we wake up Agents. In the Day 2 Capstone, you can design an agent that only activates when an Issue gets a specific label (like \
+eeds-review\ or \ccessibility-check\).
+
 **Where you are working:** your assigned Chapter 9 challenge issue in the [learning-room](https://github.com/Community-Access/learning-room) repository on GitHub.com, plus one other open issue you will triage.
 
 1. Open the **Issues** tab in the [learning-room](https://github.com/Community-Access/learning-room) repository.
@@ -696,4 +699,6 @@ Go to the Learning Room repository and do two things:
 *Next: [Chapter 10: Notifications and Day 1 Close](10-notifications-and-day-1-close.md)*  
 *Back: [Chapter 08: Open Source Culture](08-open-source-culture.md)*  
 *Related appendices: [Appendix R: Projects Deep Dive](appendix-r-projects-deep-dive.md)*
+
+
 

@@ -30,6 +30,8 @@ Chapter 7 uses **one controlled practice challenge** so students can learn confl
 
 **Goal:** Identify the three types of conflict markers in a practice file, decide which content to keep, remove the markers, and submit a clean PR.
 
+> **🛠️ Agentic Strategy:** Sometimes an AI agent will confidently generate code that conflicts with human-written code. Resolving merge conflicts is not just a hurdle for human teamwork—it is exactly how you supervise, correct, and collaborate safely with an AI.
+
 **Where you are working:** the [learning-room](https://github.com/Community-Access/learning-room) repository on GitHub.com (web editor) or in VS Code if you cloned locally.
 
 **Before you start:** Open your **assigned Chapter 7 challenge issue** (the one titled "Chapter 7.1: Resolve Conflict Markers (@yourname)"). The issue description tells you which practice file contains the conflict markers.
@@ -849,4 +851,6 @@ Answer these three questions:
 *Next: [Chapter 08: Open Source Culture](08-open-source-culture.md)*  
 *Back: [Chapter 06: Working with Pull Requests](06-working-with-pull-requests.md)*  
 *Related appendices: [Appendix E: Advanced Git](appendix-e-advanced-git.md)*
+
+
 

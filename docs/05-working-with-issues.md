@@ -48,6 +48,10 @@ Chapter 4 is the first **issue-based challenge chapter** with short, confidence-
 
 **Goal:** File a new issue in the Learning Room repository with a specific title and a meaningful description.
 
+> **🛠️ Agentic Strategy:** Issues are the prompts that wake up AI. A clear Issue for a human is also a prompt for an agent. For this challenge, log an Issue describing an accessibility problem or chore you wish an AI agent could fix for you.
+
+> **🛠️ Agentic Strategy:** Issues are the prompts that wake up AI. A clear Issue for a human is also a prompt for an agent. For this challenge, log an Issue describing an accessibility problem or chore you wish an AI agent could fix for you.
+
 **Where you are working:** the Issues tab of the [learning-room](https://github.com/Community-Access/learning-room) repository on GitHub.com.
 
 1. Open the [learning-room](https://github.com/Community-Access/learning-room) repository in your browser.
@@ -55,7 +59,7 @@ Chapter 4 is the first **issue-based challenge chapter** with short, confidence-
 3. Activate the **New issue** button.
 4. If a template picker appears, select **Open a blank issue** (or choose a template if one fits).
 5. In the **Title** field, type a clear, specific title (at least 12 characters). Examples:
-   - "Add missing contributor background paragraph in welcome.md"
+   - "Agent Request: Add missing contributor background paragraph in welcome.md"
    - "Keyboard shortcuts table has incorrect NVDA modifier key"
    - "Setup guide link to accessibility settings is broken"
 6. In the **Body** field, write a meaningful description (at least 80 characters). Include:
@@ -1456,4 +1460,7 @@ Go to the Learning Room repository and file a real issue:
 *Next: [Chapter 06: Working with Pull Requests](06-working-with-pull-requests.md)*  
 *Back: [Chapter 04: The Learning Room](04-the-learning-room.md)*  
 *Related appendices: [Appendix N: Advanced Search](appendix-n-advanced-search.md) | [Appendix V: GitHub Mobile](appendix-v-github-mobile.md)*
+
+
+
 
