@@ -10,10 +10,10 @@ This guide outlines the end-to-end process for provisioning a new learning room.
 
 ## Step 1: Create the New Sandbox Repository
 
-The base structure of the learning room (including the practice Markdown files with intentionally broken links, base `.github` workflows, and the Aria bot responders) lives in the `main` branch of the `learning-room` repository, stripped of all student data.
+The base structure of the learning room (including the practice Markdown files with intentionally broken links, base `.github` workflows, and the Aria bot responders) lives in the `main` branch of the **`learning-room-template`** repository, stripped of all student data.
 
-1. Navigate to the canonical repository: `https://github.com/Community-Access/learning-room`
-2. Click the green **Use this template** button (or create a new repository and select `learning-room` as the template).
+1. Navigate to the canonical template repository: `https://github.com/Community-Access/learning-room-template`
+2. Click the green **Use this template** button (or create a new repository and select `learning-room-template` as the template).
 3. Name the new repository using a cohort-specific identifier, e.g., `learning-room-summer-2026`.
 4. Ensure the repository is **Public** (required for GitHub Actions and branching workflows).
 5. Do *not* include all branches; only include `main`.
