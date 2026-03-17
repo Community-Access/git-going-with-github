@@ -257,7 +257,7 @@ If you get stuck at any point during the workshop, these resources are always av
 
 | Resource | What It Is | When to Use It |
 |----------|-----------|---------------|
-| [FAQ](../FAQ.md) | Answers to common questions | When you have a question about the workshop, GitHub, or screen readers |
+| [FAQ](admin/FAQ.md) | Answers to common questions | When you have a question about the workshop, GitHub, or screen readers |
 | [Troubleshooting](../TROUBLESHOOTING.md) | Step-by-step solutions to common problems | When something is not working |
 | [Quick Reference](../QUICK_REFERENCE.md) | Condensed shortcuts and commands | When you need a keyboard shortcut or command fast |
 | [Glossary](appendix-a-glossary.md) | Term definitions | When you encounter an unfamiliar word |

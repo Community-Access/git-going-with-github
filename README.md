@@ -147,8 +147,8 @@ Every chapter has an "If You Get Stuck" section. Every challenge has a [referenc
 
 | Document | What It Covers |
 |----------|----------------|
-| [DAY1_AGENDA.md](DAY1_AGENDA.md) | Full Day 1 schedule, objectives, and activities |
-| [DAY2_AGENDA.md](DAY2_AGENDA.md) | Full Day 2 schedule, objectives, and activities |
+| [DAY1_AGENDA.md](admin/DAY1_AGENDA.md) | Full Day 1 schedule, objectives, and activities |
+| [DAY2_AGENDA.md](admin/DAY2_AGENDA.md) | Full Day 2 schedule, objectives, and activities |
 
 **Appendices** - Reference material; open any time during the workshop
 
@@ -192,10 +192,10 @@ Every chapter has an "If You Get Stuck" section. Every challenge has a [referenc
 ├── README.md                            -- You are here
 ├── CONTRIBUTING.md                      -- How to contribute to this repo
 ├── CODE_OF_CONDUCT.md                   -- Community standards
-├── FACILITATOR.md                       -- For workshop organizers only
-├── COHORT_PROVISIONING.md               -- How to set up a new Learning Room cohort
-├── DAY1_AGENDA.md                       -- Day 1 workshop schedule
-├── DAY2_AGENDA.md                       -- Day 2 workshop schedule
+├── admin/FACILITATOR_GUIDE.md           -- For workshop organizers only
+├── admin/COHORT_PROVISIONING.md         -- How to set up a new Learning Room cohort
+├── admin/DAY1_AGENDA.md                 -- Day 1 workshop schedule
+├── admin/DAY2_AGENDA.md                 -- Day 2 workshop schedule
 ├── .github/
 │   ├── ISSUE_TEMPLATE/
 │   │   ├── config.yml                   -- Links to GitHub Skills; disables blank issues
@@ -241,10 +241,10 @@ These standalone documents provide additional guidance and resources:
 
 | Document | Description |
 |----------|-------------|
-| [FAQ](FAQ.md) | Frequently asked questions about the workshop |
-| [Quick Reference](QUICK_REFERENCE.md) | Condensed cheat sheet for common tasks |
-| [Troubleshooting](TROUBLESHOOTING.md) | Solutions for common setup and workflow issues |
-| [Progress Tracker](PROGRESS_TRACKER.md) | Track your learning progress through the workshop |
+| [FAQ](admin/FAQ.md) | Frequently asked questions about the workshop |
+| [Quick Reference](admin/QUICK_REFERENCE.md) | Condensed cheat sheet for common tasks |
+| [Troubleshooting](admin/TROUBLESHOOTING.md) | Solutions for common setup and workflow issues |
+| [Progress Tracker](admin/PROGRESS_TRACKER.md) | Track your learning progress through the workshop |
 | [Accessibility Testing](ACCESSIBILITY_TESTING.md) | Accessibility testing procedures and standards |
 | [Security](SECURITY.md) | Security policy and vulnerability reporting |
 | [GitHub Proposal](GITHUB_PROPOSAL.md) | Original event proposal and curriculum overview (internal reference) |

@@ -622,7 +622,7 @@ Add this to your VS Code `settings.json` (Command Palette → "Open User Setting
 
 
 *Next: [Git & Source Control in VS Code](11-git-source-control.md)*  
-*Back: [Day 2 Agenda](../DAY2_AGENDA.md)*  
+*Back: [Day 2 Agenda](admin/DAY2_AGENDA.md)*  
 *Related: [GitHub Pull Requests Extension](12-github-pull-requests-extension.md) | [GitHub Copilot](13-github-copilot.md)*
 
 

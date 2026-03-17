@@ -815,8 +815,8 @@ The documentation set is in the `docs/` folder of this learning repository (sepa
 | Culture and etiquette | [docs/08-culture-etiquette.md](08-culture-etiquette.md) |
 | Labels, milestones, projects | [docs/09-labels-milestones-projects.md](09-labels-milestones-projects.md) |
 | Notifications | [docs/10-notifications.md](10-notifications.md) |
-| Day 1 agenda | [DAY1_AGENDA.md](../DAY1_AGENDA.md) |
-| Day 2 agenda | [DAY2_AGENDA.md](../DAY2_AGENDA.md) |
+| Day 1 agenda | [DAY1_AGENDA.md](admin/DAY1_AGENDA.md) |
+| Day 2 agenda | [DAY2_AGENDA.md](admin/DAY2_AGENDA.md) |
 | VS Code: Setup & Accessibility Basics | [docs/05-vscode-accessibility.md](05-vscode-accessibility.md) |
 | VS Code: Git & Source Control | [docs/11-git-source-control.md](11-git-source-control.md) |
 | VS Code: GitHub Pull Requests Extension | [docs/12-github-pull-requests-extension.md](12-github-pull-requests-extension.md) |

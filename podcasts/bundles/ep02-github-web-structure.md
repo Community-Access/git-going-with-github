@@ -1238,5 +1238,5 @@ The commands in this cheat sheet have been written for and tested with the follo
 
 
 *Appendix B - keep this open as a reference throughout both days.*
-*Return to: [Day 1 Agenda](../DAY1_AGENDA.md) | [Understanding GitHub's Web Structure](01-understanding-github-web-structure.md)*
+*Return to: [Day 1 Agenda](admin/DAY1_AGENDA.md) | [Understanding GitHub's Web Structure](01-understanding-github-web-structure.md)*
 *See also: [GitHub Concepts Glossary](appendix-a-glossary.md)*

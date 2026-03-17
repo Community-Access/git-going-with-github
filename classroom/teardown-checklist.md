@@ -30,7 +30,7 @@ GitHub Classroom creates one repository per student per assignment. After the co
 - [ ] Document any chapter sections that confused multiple students
 - [ ] Note any technical issues encountered (e.g., Copilot activation problems, clone failures)
 - [ ] File issues in the git-going-with-github repo for curriculum improvements
-- [ ] Update the [FACILITATOR.md](../FACILITATOR.md) with any new troubleshooting tips
+- [ ] Update the [FACILITATOR.md](admin/FACILITATOR.md) with any new troubleshooting tips
 
 ## Prepare for next cohort
 

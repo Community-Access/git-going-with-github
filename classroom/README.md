@@ -293,7 +293,7 @@ See [teardown-checklist.md](teardown-checklist.md) for the complete post-worksho
 
 - [GitHub Classroom documentation](https://docs.github.com/en/education/manage-coursework-with-github-classroom)
 - [Autograding documentation](https://docs.github.com/en/education/manage-coursework-with-github-classroom/teach-with-github-classroom/use-autograding)
-- [Facilitator Guide](../FACILITATOR.md) -- workshop-level facilitation reference
+- [Facilitator Guide](admin/FACILITATOR.md) -- workshop-level facilitation reference
 - [Challenge Hub](../docs/CHALLENGES.md) -- all 21 challenges with instructions
 - [Solutions Directory](../docs/solutions/) -- reference solutions for facilitator use
 - [Grading Guide](grading-guide.md) -- per-challenge rubric and completion levels
