@@ -6,11 +6,12 @@
 param(
     [switch]$DryRun,
     [int]$BatchSize = 20,
-    [int]$DelayMs = 500
+    [int]$DelayMs = 500,
+    [string]$TargetRepo = "Community-Access/learning-room" # Make target repo configurable for future cohorts
 )
 
 $ErrorActionPreference = "Stop"
-$repo = "Community-Access/learning-room"
+$repo = $TargetRepo
 $templateUser = "Weijun-Zhang-1996"
 
 # Issue number -> challenge key mapping

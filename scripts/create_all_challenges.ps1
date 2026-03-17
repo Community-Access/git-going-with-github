@@ -11,11 +11,12 @@
 param(
     [switch]$DryRun,
     [int]$DelayMs = 800,
-    [string]$ChaptersOnly = ""  # comma-separated, e.g. "07,08" to only create specific chapters
+    [string]$ChaptersOnly = "",  # comma-separated, e.g. "07,08" to only create specific chapters
+    [string]$TargetRepo = "Community-Access/learning-room" # Make target repo configurable for future cohorts
 )
 
 $ErrorActionPreference = "Stop"
-$repo = "Community-Access/learning-room"
+$repo = $TargetRepo
 
 # ============================================================
 # CHALLENGE DEFINITIONS - all 26 challenges

@@ -193,6 +193,7 @@ Every chapter has an "If You Get Stuck" section. Every challenge has a [referenc
 ├── CONTRIBUTING.md                      -- How to contribute to this repo
 ├── CODE_OF_CONDUCT.md                   -- Community standards
 ├── FACILITATOR.md                       -- For workshop organizers only
+├── COHORT_PROVISIONING.md               -- How to set up a new Learning Room cohort
 ├── DAY1_AGENDA.md                       -- Day 1 workshop schedule
 ├── DAY2_AGENDA.md                       -- Day 2 workshop schedule
 ├── .github/
