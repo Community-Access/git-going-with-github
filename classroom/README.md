@@ -63,6 +63,8 @@ Before creating your first classroom, confirm the following:
 - [ ] You have tested that GitHub Actions are enabled on the organization (Settings then Actions then General)
 
 
+> **Note on Automation:** While we use scripts to automate repository creation and API settings, GitHub deliberately restricts Classroom creation to the Web GUI to prevent spam. You will need to click through the creation screens, but all assets (rosters, test payloads, config values) have been templated for you in this directory.
+
 ## Phase 1: Create the Classroom
 
 1. Go to [classroom.github.com](https://classroom.github.com) and sign in with your facilitator account
