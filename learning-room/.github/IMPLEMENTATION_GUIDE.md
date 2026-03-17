@@ -218,7 +218,7 @@ Create issues with intentional problems for students to fix.
 
 **Using the challenges list:**
 
-For each challenge in `learning-room/docs/CHALLENGES.md`:
+For each challenge in `docs/CHALLENGES.md`:
 
 1. **Create an issue:**
    - Title: `Challenge: [Challenge Name]`

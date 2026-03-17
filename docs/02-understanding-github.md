@@ -643,7 +643,11 @@ Open any GitHub repository - try [github.com/community-access/accessibility-agen
 
 > Once you have this mental model solid, the Accessibility Agents make more sense. The `@daily-briefing` agent reads your GitHub notifications and presents a structured report - but the report structure mirrors the landmark structure of GitHub itself: global activity, then per-repo activity, then per-issue and per-PR detail. The agent describes the same building you have already walked through manually.
 
+
+> ➡️ **Next Step:** Move on to [Chapter 03: Navigating Repositories](03-navigating-repositories.md).
+
 ---
+
 
 *Next: [Chapter 03: Navigating Repositories](03-navigating-repositories.md)*  
 *Back: [Chapter 01: Choose Your Tools](01-choose-your-tools.md)*  

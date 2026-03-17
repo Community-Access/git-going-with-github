@@ -689,7 +689,11 @@ Think about where you started this morning. You may not have known what a reposi
 
 Day 2 builds on every one of those skills. Nothing gets thrown away. Everything you did today is the foundation for everything that comes next.
 
+
+> ➡️ **End of Day 1:** Congratulations! You have completed **Challenge 9: Merge Day** and finished the browser-based foundation. [Return to the Course Guide](course-guide.md) to prepare for Day 2.
+
 ---
+
 
 *Next: [Chapter 11: VS Code Interface](11-vscode-interface.md)*  
 *Back: [Chapter 09: Labels, Milestones, and Projects](09-labels-milestones-projects.md)*  

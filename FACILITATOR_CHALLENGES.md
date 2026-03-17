@@ -279,7 +279,7 @@ gh issue list --label challenge --state closed --limit 50 | \
 
 ### Student Documentation
 
-- `learning-room/docs/CHALLENGES.md` - Master challenge hub (YOU ARE HERE)
+- `docs/CHALLENGES.md` - Master challenge hub (YOU ARE HERE)
 - `docs/05-working-with-issues.md` - Chapter 4 detailed guide
 - `docs/06-working-with-pull-requests.md` - Chapter 6 detailed guide
 - `docs/14-git-in-practice.md` - Chapter 11 detailed guide
@@ -332,7 +332,7 @@ If >80% of students need retries → bot might be too strict. Relax rules or add
 - [ ] Each issue has correct labels, assignment, and description
 - [ ] Bot workflow is enabled: `gh workflow list | grep learning-room`
 - [ ] PR bot script is in place: `.github/scripts/validate-pr.js` exists
-- [ ] Challenge Hub is accessible: `learning-room/docs/CHALLENGES.md`
+- [ ] Challenge Hub is accessible: `docs/CHALLENGES.md`
 - [ ] README.md directs to Challenge Hub clearly
 - [ ] All chapter docs (4-16) link to their challenge issues
 - [ ] Facilitators understand the "How to Monitor Progress" section

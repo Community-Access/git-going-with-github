@@ -694,7 +694,11 @@ Go to the Learning Room repository and do two things:
 >
 > *Labeling today is not overhead. It is configuring the input layer that every agent downstream depends on.*
 
+
+> ➡️ **Next Step:** Move on to [Chapter 10: Notifications](10-notifications-and-day-1-close.md) to finish Day 1!
+
 ---
+
 
 *Next: [Chapter 10: Notifications and Day 1 Close](10-notifications-and-day-1-close.md)*  
 *Back: [Chapter 08: Open Source Culture](08-open-source-culture.md)*  

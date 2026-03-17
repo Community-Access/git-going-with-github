@@ -839,7 +839,11 @@ Navigate to the [Accessibility Agents repository](https://github.com/community-a
 >
 > *An agent's output only makes sense when you already know what it is describing. You are building that knowledge right now.*
 
+
+> ➡️ **Next Step:** Move on to [Chapter 04: The Learning Room](04-the-learning-room.md) to understand where we'll be practicing our new skills.
+
 ---
+
 
 *Next: [Chapter 04: The Learning Room](04-the-learning-room.md)*  
 *Back: [Chapter 02: Understanding GitHub](02-understanding-github.md)*  

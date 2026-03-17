@@ -1621,7 +1621,11 @@ Go to the Learning Room repository's Pull Requests tab and find any open or rece
 >
 > *The agent documents the diff. You bring the context that no diff can contain.*
 
+
+> ➡️ **Challenge Time:** Go to the [Challenge Hub](CHALLENGES.md) and complete **Challenges 4, 5, and 6** to open your first PR. Aria will guide you from there.
+
 ---
+
 
 *Next: [Chapter 07: Merge Conflicts](07-merge-conflicts.md)*  
 *Back: [Chapter 05: Working with Issues](05-working-with-issues.md)*  

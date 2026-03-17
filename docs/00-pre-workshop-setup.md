@@ -963,7 +963,11 @@ If you cannot complete any step in this guide before the workshop:
 
 You will not be left behind. Every setup issue we can solve before Day 1 means more time for learning on the day.
 
+
+> ➡️ **Next Step:** You are all set up! Move on to [Chapter 01: Choose Your Tools](01-choose-your-tools.md).
+
 ---
+
 
 *Next: [Chapter 01: Choose Your Tools](01-choose-your-tools.md)*  
 *Back: [Course Guide](course-guide.md)*  

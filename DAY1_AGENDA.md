@@ -439,7 +439,7 @@ When multiple contributors edit the same file at the same time, Git cannot autom
 The facilitator will walk through a live conflict resolution if one occurs during the sprint.
 
 ### Setup
-The `learning-room` repo has a `docs/` folder with three intentionally imperfect practice files. Each participant will work on one of the first three challenges from [docs/CHALLENGES.md](learning-room/docs/CHALLENGES.md):
+The `learning-room` repo has a `docs/` folder with three intentionally imperfect practice files. Each participant will work on one of the first three challenges from [docs/CHALLENGES.md](docs/CHALLENGES.md):
 
 | Challenge | File | What to fix | Difficulty |
 |-----------|------|-------------|-----------|
@@ -467,7 +467,7 @@ Before starting your challenge, explore the file you will be editing. This is th
 2. Which links are broken? Where should they point?
 3. Read the step-by-step instructions - which steps are incomplete?
 
-The challenges in [docs/CHALLENGES.md](learning-room/docs/CHALLENGES.md) map directly to these files and list success criteria for each.
+The challenges in [docs/CHALLENGES.md](docs/CHALLENGES.md) map directly to these files and list success criteria for each.
 Each participant will:
 1. Find their assigned issue (which maps to one of these challenges)
 2. Edit the practice file on GitHub
@@ -726,7 +726,7 @@ Tomorrow we move from the browser to **Visual Studio Code**. Here is what is com
 **Tonight (optional):**
 - Install VS Code and the GitHub Copilot Chat extension (see [Pre-Workshop Setup](docs/00-pre-workshop-setup.md))
 - Complete any Markdown Skills module steps you didn't finish
-- Browse the bonus challenges (A through E) in the [Challenge Hub](learning-room/docs/CHALLENGES.md) for extra practice
+- Browse the bonus challenges (A through E) in the [Challenge Hub](docs/CHALLENGES.md) for extra practice
 - Fork [accessibility-agents](https://github.com/community-access/accessibility-agents) - it will be ready and waiting when you open VS Code tomorrow
 - Browse the [55 agents by team](docs/19-accessibility-agents.md#3-the-ecosystem-55-agents-3-teams-5-platforms) - which ones spark ideas for you?
 

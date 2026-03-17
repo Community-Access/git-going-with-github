@@ -1455,7 +1455,11 @@ Go to the Learning Room repository and file a real issue:
 >
 > *Today you are the triage engine. On Day 2, you understand the engine well enough to direct it.*
 
+
+> ➡️ **Challenge Time:** It's time for the real deal. Go to the [Challenge Hub](CHALLENGES.md) and complete **Challenge 2: File Your First Issue** and **Challenge 3: Join the Conversation**. When Aria the bot replies to you, she will tell you when it's time to move to [Chapter 06: Working with Pull Requests](06-working-with-pull-requests.md).
+
 ---
+
 
 *Next: [Chapter 06: Working with Pull Requests](06-working-with-pull-requests.md)*  
 *Back: [Chapter 04: The Learning Room](04-the-learning-room.md)*  

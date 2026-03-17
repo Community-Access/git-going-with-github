@@ -981,7 +981,7 @@ See [Appendix M (VS Code Accessibility Reference)](docs/appendix-g-vscode-refere
 
 **Solution:**
 1. Challenges are progressive - start with #01 and work up
-2. **Too easy:** Jump ahead to the bonus challenges (A through E) in `learning-room/docs/CHALLENGES.md`
+2. **Too easy:** Jump ahead to the bonus challenges (A through E) in `docs/CHALLENGES.md`
 3. **Too hard:** Go back to the relevant chapter and review the concepts
 4. The 21 challenges span six skill levels - find the range that stretches you without frustrating you
 

@@ -846,7 +846,11 @@ Answer these three questions:
 >
 > *Understanding conflict markers is not a stepping stone to letting AI handle conflicts. It is the skill that tells you when AI got it wrong.*
 
+
+> ➡️ **Challenge Time:** Check the [Challenge Hub](CHALLENGES.md) for **Challenge 7: Survive a Merge Conflict**. Follow the steps to resolve it, then move to [Chapter 08: Open Source Culture](08-open-source-culture.md).
+
 ---
+
 
 *Next: [Chapter 08: Open Source Culture](08-open-source-culture.md)*  
 *Back: [Chapter 06: Working with Pull Requests](06-working-with-pull-requests.md)*  

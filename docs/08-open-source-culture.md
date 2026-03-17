@@ -1179,7 +1179,11 @@ The hardest part of open source contribution is starting. Once you have one merg
 - **Review other PRs.** Even as a new contributor, you can leave useful feedback: "Does this change affect screen reader users?" or "The example in the PR description is missing a step."
 - **Set a low bar.** A contribution does not need to be impressive. A fixed typo merged into a project used by thousands of people is more valuable than a perfect contribution never submitted.
 
+
+> ➡️ **Challenge Time:** Complete **Challenge 8: The Culture Layer** in the [Challenge Hub](CHALLENGES.md), then advance to [Chapter 09: Labels, Milestones and Projects](09-labels-milestones-projects.md).
+
 ---
+
 
 *Next: [Chapter 09: Labels, Milestones, and Projects](09-labels-milestones-projects.md)*  
 *Back: [Chapter 07: Merge Conflicts](07-merge-conflicts.md)*  

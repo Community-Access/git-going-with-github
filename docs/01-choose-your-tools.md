@@ -479,7 +479,11 @@ You opened a real repository and found a real file. That is the core action of t
 | GitHub Desktop cannot find the repo | Verify the URL is correct and your GitHub account has access to the repository. |
 | GitHub CLI says "not authenticated" | Run `gh auth login` and follow the prompts. See [Appendix I](appendix-i-github-cli.md). |
 
+
+> ➡️ **Next Step:** Start your learning journey with [Chapter 02: Understanding GitHub](02-understanding-github.md).
+
 ---
+
 
 *Next: [Chapter 02: Understanding GitHub](02-understanding-github.md)*  
 *Back: [Chapter 00: Pre-Workshop Setup](00-pre-workshop-setup.md)*  

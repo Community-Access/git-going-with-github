@@ -817,7 +817,11 @@ You merged your work
 
 This is not hypothetical. This is not simulation. This is real.
 
+
+> ➡️ **Challenge Time:** Let's practice! Go to the [Challenge Hub](CHALLENGES.md) and complete **Challenge 1: Find Your Way Around**, then return for [Chapter 05: Working with Issues](05-working-with-issues.md).
+
 ---
+
 
 *Next: [Chapter 05: Working with Issues](05-working-with-issues.md)*  
 *Back: [Chapter 03: Navigating Repositories](03-navigating-repositories.md)*  

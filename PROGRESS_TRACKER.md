@@ -282,7 +282,7 @@ The workshop includes structured exercises in the following chapters. Use this t
 |---------|----------|-------------|-------|
 | **Ch 1** | 60-Second Orientation | Press `1`, `D`, `2`, `H` on a repo page - prove you can navigate by ear | |
 | **Ch 2** | Five-Tab Tour | Visit Code, Issues, PRs, file finder, and README on a real repo | |
-| **Ch 3** | Individual Challenges | 21 challenges (16 core + 5 bonus) in `learning-room/docs/CHALLENGES.md` | |
+| **Ch 3** | Individual Challenges | 21 challenges (16 core + 5 bonus) in `docs/CHALLENGES.md` | |
 | **Ch 4** | File Your First Issue | Create an introduction issue in the Learning Room | |
 | **Ch 5** | Try It Right Now | Open a repo in github.dev, enable screen reader mode, explore the interface | |
 | **Ch 6** | Read a Real PR | Navigate a PR's description, conversation, and diff | |

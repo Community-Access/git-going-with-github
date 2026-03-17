@@ -730,7 +730,7 @@ Example: "The `alt` attribute on this image is empty. Screen readers will skip i
 - **16 core challenges** - Progressive tasks across two days covering issues, PRs, branches, merge conflicts, code review, Copilot, issue templates, and agents
 - **5 bonus challenges** - Optional stretch goals including accessibility audits, mentoring peers, and cross-repo contributions
 
-Details in `learning-room/docs/CHALLENGES.md`.
+Details in `docs/CHALLENGES.md`.
 
 ### Q: How does the bot feedback work?
 **A:** When you open a PR in the Learning Room, an automated bot reviews your changes within about 30 seconds. It checks for broken links, heading hierarchy, image descriptions, link text quality, and formatting. Every issue includes an explanation of why it matters and how to fix it.

@@ -21,7 +21,7 @@ Everything in this repository is designed for learning. The files in `docs/` hav
 
 ## How to Contribute
 
-1. Open the canonical challenge list: `learning-room/docs/CHALLENGES.md`
+1. Open the canonical challenge list: `docs/CHALLENGES.md`
 2. Find your assigned issue (Issues tab → filter by "Assignee: me" or search your username in issue title)
 3. Claim the issue with a comment: `I'd like to try this!`
 4. Read the issue description - it tells you which file to edit and what to fix

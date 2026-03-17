@@ -54,7 +54,7 @@ All 13 chapters (4-16) have challenge content defined with generally clear instr
 
 #### File/Link Validation
  **All files and references verified:**
-- `learning-room/docs/CHALLENGES.md` exists 
+- `docs/CHALLENGES.md` exists 
 - `.github/ISSUE_TEMPLATE/challenge-hub.md` exists 
 - Guide links to Chapter 4 section in CHALLENGES.md 
 - Cross-reference to podcasts working (Episode 5) 

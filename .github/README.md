@@ -364,7 +364,7 @@ Edit `.github/data/challenge-progression.json`:
 
 **For Students:**
 - [Student Guide](../learning-room/.github/STUDENT_GUIDE.md) - How bot works, interpreting feedback
-- [Challenge Hub](../learning-room/docs/CHALLENGES.md) - All 21 challenges
+- [Challenge Hub](../docs/CHALLENGES.md) - All 21 challenges
 - [Course Guide](../docs/course-guide.md) - Full curriculum with chapter links
 
 **For Facilitators:**

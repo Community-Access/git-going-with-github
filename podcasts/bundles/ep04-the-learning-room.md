@@ -638,4 +638,4 @@ This is not hypothetical. This is not simulation. This is real.
 
 *Next: [Working with Issues](04-working-with-issues.md)*
 *Back: [Navigating Repositories](02-navigating-repositories.md)*
-*Reference: [Automation Guide](../learning-room/AUTOMATION.md) | [Available Challenges](../learning-room/docs/CHALLENGES.md)*
+*Reference: [Automation Guide](../learning-room/AUTOMATION.md) | [Available Challenges](../docs/CHALLENGES.md)*
