@@ -9,7 +9,7 @@ function getAutoResponse(commentBody, author) {
 
   if (comment.includes('@bot help') || comment.includes('need help')) {
     return [
-      `Hi @${safeAuthor}! Here are some helpful resources:`,
+      `Hi @${safeAuthor}! 👋 I am Aria, your workshop agent. I see you are looking for help—do not worry, that is exactly what I am here for! Together, we have got this. Here are some great resources to get you unstuck:`,
       '',
       '**Guides:**',
       '- [Working with Pull Requests](../../docs/05-working-with-pull-requests.md)',
@@ -27,7 +27,7 @@ function getAutoResponse(commentBody, author) {
 
   if (comment.includes('merge conflict')) {
     return [
-      `Hi @${safeAuthor}! I see you are dealing with a merge conflict.`,
+      `Hi @${safeAuthor}! 👋 I am Aria. I see you have bumped into a merge conflict. Take a deep breath—merge conflicts can seem scary at first, but resolving them is a superpower every developer learns. You can absolutely do this. Let us walk through it together!`,
       '',
       '**Quick steps to resolve:**',
       '',
@@ -46,7 +46,7 @@ function getAutoResponse(commentBody, author) {
 
   if (comment.includes('how do i') && comment.includes('request review')) {
     return [
-      `Hi @${safeAuthor}! To request a review:`,
+      `Hi @${safeAuthor}! 👋 Aria here! Asking for a review is a wonderful way to collaborate. It is like asking a teammate, 'Hey, can you double-check my work?' Here is exactly how to do it:`,
       '',
       '1. On your PR page, find the "Reviewers" section in the right sidebar',
       '2. Click the gear icon next to "Reviewers"',
@@ -64,3 +64,5 @@ function getAutoResponse(commentBody, author) {
 module.exports = {
   getAutoResponse
 };
+
+
