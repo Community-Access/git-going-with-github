@@ -3,18 +3,35 @@
 
 **Date:** Sunday, March 8, 2026 | 9:00 AM - 5:00 PM
 
-> **The premise of Day 2:** You spent Day 1 (Saturday, March 7) learning how GitHub works - by hand, in the browser, with your screen reader. You filed real issues. You opened a real pull request. You reviewed someone else's work. Those skills are yours now.
+> **The premise of Day 2:** Whether you built your GitHub skills yesterday in Day 1 or you are joining today with existing GitHub experience, the foundation is the same: you know how to navigate repositories, file issues, open pull requests, and review someone else's work. Those skills are yours now.
 >
 > Day 2 is about what you can build with those skills. You will deepen your contributions using VS Code and GitHub Copilot. You will use Accessibility Agents - a live, public accessibility project built by your facilitator - not as a shortcut around the skills you learned, but as a **product you can understand, evaluate, critique, and improve** because you now know exactly what it is doing and why.
 >
 > You will leave with your name in the commit history of a real open source project and a set of tools you can use on any GitHub repository you ever work on.
+>
+> **Joining on Day 2 without attending Day 1?** See the [Day 2 Quick Start](DAY2_QUICK_START.md) guide to verify your setup and self-assess your readiness.
+
+
+## Prerequisites for Day 2
+
+Day 2 requires the following skills and setup. If you attended Day 1, you have all of these. If you are joining fresh, verify each item before the session.
+
+| Requirement | What it means | Where to get it |
+|---|---|---|
+| Navigate a GitHub repository | Find files, read commits, switch branches using keyboard/screen reader | [Chapter 3](../docs/03-navigating-repositories.md) |
+| File and manage issues | Create issues, add labels, use @mentions | [Chapter 5](../docs/05-working-with-issues.md) |
+| Open and review pull requests | Create a PR, link it to an issue, review a diff, leave comments | [Chapter 6](../docs/06-working-with-pull-requests.md) |
+| Understand merge conflicts | Recognize conflict markers, resolve manually | [Chapter 7](../docs/07-merge-conflicts.md) |
+| Git installed and configured | `git config` with your name and email set | [Pre-Workshop Setup](../docs/00-pre-workshop-setup.md) |
+| VS Code installed with extensions | GitHub PR extension, Copilot, Copilot Chat | [Pre-Workshop Setup](../docs/00-pre-workshop-setup.md) |
+| Learning-room repo cloned | `git clone https://github.com/Community-Access/learning-room.git` | [Day 2 Quick Start](DAY2_QUICK_START.md) |
 
 
 ## At a Glance
 
 | Time | Block | Theme |
 |------|-------|-------|
-| 9:00-9:30 | Block 0 - Day 1 Debrief | Reinforce skills, surface questions, set goals |
+| 9:00-9:30 | Block 0 - Welcome and Orientation | Onboard all participants, verify setup, set goals |
 | 9:30-10:30 | Block 1 - VS Code Setup | Screen reader mode, Accessibility Agents as workspace, navigation |
 | 10:30-10:45 | Break | - |
 | 10:45-12:00 | Block 2 - Deep Contribution | Copilot Chat, inline suggestions, richer PR work |
@@ -27,18 +44,27 @@
 | 17:00-17:30 | Wrap-Up | Names in history, reflections, next steps |
 
 
-## Block 0 - Day 1 Debrief
+## Block 0 - Welcome and Orientation
 **9:00-9:30**
 
 ### Purpose
-Close the loop on Day 1. Celebrate what was shipped. Surface anything incomplete. Set the Day 2 mindset: you are not a learner today - you are a product maker.
+Bring everyone to the same starting line -- whether they attended Day 1 or are joining fresh today. Celebrate what was shipped yesterday, onboard new participants, and set the Day 2 mindset: you are not a learner today - you are a product maker.
 
-### Facilitator-Led Discussion
+### Track A: Returning from Day 1 (Facilitator-Led, 15 min)
 - *"Show me your merged PR from yesterday."* (30-second screen reader tour - navigate to pull requests tab, filter by closed, confirm the merge)
 - *"What did you file an issue about? Is it still open or was it triaged?"*
 - *"What felt hard yesterday? What clicked?"*
 
-### Day 2 Goal-Setting
+### Track B: Joining on Day 2 (Parallel Setup, 15 min)
+New participants work with a facilitator or designated Day 1 veteran to:
+1. Introduce themselves (name, screen reader, OS, GitHub experience)
+2. Verify setup: GitHub account, VS Code, Git identity, learning-room cloned (see [Day 2 Quick Start](DAY2_QUICK_START.md))
+3. Get paired with a Day 1 participant who can answer context questions during the session
+4. Quick orientation: open the learning-room repo in the browser, navigate to Issues, confirm screen reader announces headings
+
+> **Facilitator note:** Run Track A and Track B simultaneously. Day 1 veterans share their experience while new participants verify setup. Both groups reconvene for goal-setting.
+
+### Day 2 Goal-Setting (Everyone, 10 min)
 Each participant states one contribution goal for the day. Examples:
 - *"I want to add a new slash command to accessibility-agents for tracking accessibility issues."*
 - *"I want to improve the screen reader output of the `@daily-briefing` report."*
@@ -86,7 +112,7 @@ VS Code has a dedicated screen reader accessibility mode that adjusts verbosity,
 
 Before you can work on Accessibility Agents locally, you need your own copy (a fork) and a local clone of that fork.
 
-**Fork the repository (browser - a Day 1 skill):**
+**Fork the repository (browser - see [Working with Pull Requests](../docs/06-working-with-pull-requests.md) if this is new):**
 1. Navigate to [github.com/community-access/accessibility-agents](https://github.com/community-access/accessibility-agents)
 2. Find and activate the **Fork** button (`B` to navigate buttons)
 3. Keep the defaults and activate **Create fork**
@@ -218,12 +244,12 @@ Before leaving for lunch, check your progress:
 
 Agents are run in a specific sequence - from broadest to most specific, from observation to action. This is not arbitrary. Each agent in this block builds on the skill directly before it.
 
-| Step | Agent | Skill It Amplifies | Day 1 Source |
+| Step | Agent | Skill It Amplifies | Reference |
 |------|-------|-------------------|-------------|
-| 1 | `@daily-briefing` | Reading your notification inbox and activity summary | [Navigating Repos](docs/03-navigating-repositories.md) + [Notifications](docs/10-notifications-and-day-1-close.md) |
-| 2 | `@issue-tracker` | Triaging and prioritizing issues manually | [Working with Issues](docs/05-working-with-issues.md) + [Labels & Milestones](docs/09-labels-milestones-projects.md) |
-| 3 | `@pr-review` | Manually reviewing a PR diff and writing inline comments | [Working with Pull Requests](docs/06-working-with-pull-requests.md) |
-| 4 | `@insiders-a11y-tracker` | Filing accessibility bugs and applying WCAG labels | [Working with Issues](docs/05-working-with-issues.md) + [Labels & Milestones](docs/09-labels-milestones-projects.md) |
+| 1 | `@daily-briefing` | Reading your notification inbox and activity summary | [Navigating Repos](../docs/03-navigating-repositories.md) + [Notifications](../docs/10-notifications-and-day-1-close.md) |
+| 2 | `@issue-tracker` | Triaging and prioritizing issues manually | [Working with Issues](../docs/05-working-with-issues.md) + [Labels & Milestones](../docs/09-labels-milestones-projects.md) |
+| 3 | `@pr-review` | Manually reviewing a PR diff and writing inline comments | [Working with Pull Requests](../docs/06-working-with-pull-requests.md) |
+| 4 | `@insiders-a11y-tracker` | Filing accessibility bugs and applying WCAG labels | [Working with Issues](../docs/05-working-with-issues.md) + [Labels & Milestones](../docs/09-labels-milestones-projects.md) |
 
 `@analytics` is available as an extension if Block 3 runs ahead of schedule - it requires understanding contribution graphs and activity history.
 

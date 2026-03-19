@@ -29,6 +29,9 @@ Community-Access/learning-room-template (template repo)
     |       autograder-template.yml    (Challenge 14)
     |       pr-validation-bot.yml      (all PR challenges)
     |
+    +--> **Progressive Release Bot**
+    |       student-progression.yml    (Unlocks challenges step-by-step based on issue closures)
+    |
     +--> Feedback PRs (one per student, created by Classroom)
             Facilitators comment here for async feedback
 
@@ -49,6 +52,20 @@ Community-Access/accessibility-agents (upstream target)
 | [grading-guide.md](grading-guide.md) | Facilitator rubric for all 21 challenges |
 | [roster-template.csv](roster-template.csv) | Starter CSV for importing student roster |
 | [teardown-checklist.md](teardown-checklist.md) | Post-workshop cleanup steps |
+
+
+## Two Participation Paths
+
+The workshop supports two entry points to accommodate participants with different backgrounds:
+
+| Path | Who it is for | Classroom assignment | Entry point |
+|---|---|---|---|
+| **Day 1 + Day 2** | Participants starting from scratch with GitHub | Assignment 1 (Day 1) then Assignment 2 (Day 2) | [Day 1 Agenda](../admin/DAY1_AGENDA.md) |
+| **Day 2 only** | Participants who already have GitHub fundamentals (can navigate repos, file issues, open PRs, review code) | Assignment 2 (Day 2) only | [Day 2 Quick Start](../admin/DAY2_QUICK_START.md) then [Day 2 Agenda](../admin/DAY2_AGENDA.md) |
+
+**Day-2-only participants** skip Assignment 1 entirely and accept only the Day 2 invite link. They verify their readiness using the [Day 2 Quick Start](../admin/DAY2_QUICK_START.md) self-assessment before the session.
+
+**Facilitator action:** When distributing invite links, send both links to full-workshop participants and only the Day 2 link to Day-2-only participants. Day 2 Block 0 includes parallel onboarding tracks so both groups start together.
 
 
 ## Prerequisites
@@ -102,7 +119,7 @@ student-a,Alice Student,alice@example.com
 
 ## Phase 3: Create Assignment 1 -- You Belong Here (Day 1)
 
-This assignment covers Challenges 01 through 09 (Day 1 of the workshop).
+This assignment covers Challenges 01 through 09 (Day 1 of the workshop). **Day-2-only participants skip this assignment entirely.**
 
 1. From the classroom dashboard, click **New assignment**
 2. Fill in the assignment settings:
@@ -128,7 +145,9 @@ This assignment covers Challenges 01 through 09 (Day 1 of the workshop).
 
 ## Phase 4: Create Assignment 2 -- You Can Build This (Day 2)
 
-This assignment covers Challenges 10 through 16 plus the 5 bonus challenges.
+This assignment covers Challenges 10 through 16 plus the 5 bonus challenges. **Both full-workshop and Day-2-only participants accept this assignment.**
+
+Day-2-only participants will not have completed Assignment 1, but Assignment 2 does not depend on Assignment 1 artifacts. The Day 2 challenges use a fresh branch workflow starting from the cloned learning-room repository.
 
 1. Click **New assignment** again
 2. Fill in the settings:

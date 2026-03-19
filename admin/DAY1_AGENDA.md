@@ -44,7 +44,7 @@ Three modules run across Day 1. You will set each one up during the block where 
 | 5 | 2:00 PM | Your first real contribution sprint | `learning-room` (group) |
 | - | 3:00 PM | **Break** | - |
 | 6 | 3:15 PM | Community: culture, etiquette, labels, and notifications | `learning-room` (group) |
-| - | 4:30 PM | Wrap-up, completions, and Day 2 preview | - |
+| - | 4:30 PM | Wrap-up and completions | - |
 
 **Total:** ~7.5 hours of structured time
 
@@ -690,11 +690,15 @@ Then write a review comment for this change: "A PR removes the `<main>` landmark
 4. Change `learning-room` Watch settings to "Participating and @mentions only"
 
 
-## Wrap-Up and Day 2 Preview (4:30 PM, 30 min)
+## Wrap-Up (4:30 PM, 30 min)
+
+### What You Built Today (10 min)
+
+Today you navigated real GitHub repositories, filed real issues, opened real pull requests, reviewed real contributions, and merged real changes. Those skills work on every GitHub repository in the world -- not just this workshop.
 
 ### Skills Module Completion Check (10 min)
 
-> **Magic Moment #5:** Before the Day 2 preview, check your completions.
+> **Magic Moment #5:** Check your completions.
 
 1. Navigate to the [Introduction to GitHub skills course](https://github.com/skills/introduction-to-github) - completed?
 2. Navigate to the [Review Pull Requests skills course](https://github.com/skills/review-pull-requests) - completed?
@@ -708,8 +712,9 @@ These completions are yours permanently. They travel to every GitHub profile pag
 - What is one thing you want to get better at?
 - What is one contribution you want to make to a real accessibility project this week?
 
-### Day 2 Preview (10 min)
-Tomorrow we move from the browser to **Visual Studio Code**. Here is what is coming:
+### If You Are Joining Us Tomorrow for Day 2
+
+Day 2 moves from the browser to **Visual Studio Code**. Here is what is coming:
 
 - **VS Code Screen Reader Mode** - Accessible Help (`Alt+H`), Accessible View (`Alt+F2`), Accessible Diff Viewer (`F7`)
 - **Accessibility Agents** - your earned reward for completing Day 1. An ecosystem of **55 AI agents across 3 teams and 5 platforms** that amplify the exact skills you built today. Explore the agents that match your interests and workflows - there is no fixed subset you are required to use.
@@ -729,6 +734,23 @@ Tomorrow we move from the browser to **Visual Studio Code**. Here is what is com
 - Browse the bonus challenges (A through E) in the [Challenge Hub](docs/CHALLENGES.md) for extra practice
 - Fork [accessibility-agents](https://github.com/community-access/accessibility-agents) - it will be ready and waiting when you open VS Code tomorrow
 - Browse the [55 agents by team](docs/19-accessibility-agents.md#3-the-ecosystem-55-agents-3-teams-5-platforms) - which ones spark ideas for you?
+
+### If Today Is Your Only Day
+
+Everything you learned today is complete and self-contained. You can now:
+
+- **Navigate any GitHub repository** and understand its structure
+- **File issues** that communicate clearly and help maintainers
+- **Open pull requests** that follow contribution standards
+- **Review other people's work** with constructive, specific feedback
+- **Merge contributions** and see your name in a project's history
+
+**What to do next on your own:**
+- Explore the [Next Steps](docs/21-next-steps.md) guide for continuing your GitHub journey independently
+- Browse [github.com/topics/accessibility](https://github.com/topics/accessibility) for projects that need contributors
+- Look for issues labeled `good first issue` on any project that interests you
+- Complete the bonus challenges (A through E) in the [Challenge Hub](docs/CHALLENGES.md)
+- Share what you built today with someone who might want to learn GitHub too
 
 
 ## Facilitator Notes

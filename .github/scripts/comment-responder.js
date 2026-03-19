@@ -7,7 +7,7 @@ function getAutoResponse(commentBody, author) {
   const comment = (commentBody || '').toLowerCase();
   const safeAuthor = author || 'contributor';
 
-  if (comment.includes('@bot help') || comment.includes('need help')) {
+  if (comment.includes('@aria-bot') || comment.includes('@bot help') || comment.includes('need help')) {
     return [
       `Hi @${safeAuthor}! 👋 I am Aria, your workshop agent. I see you are looking for help—do not worry, that is exactly what I am here for! Together, we have got this. Here are some great resources to get you unstuck:`,
       '',
@@ -25,13 +25,13 @@ function getAutoResponse(commentBody, author) {
     ].join('\n');
   }
 
-  if (comment.includes('merge conflict')) {
+  if (comment.includes('merge conflict') || (comment.includes('@aria-bot') && comment.includes('conflict'))) {
     return [
-      `Hi @${safeAuthor}! 👋 I am Aria. I see you have bumped into a merge conflict. Take a deep breath—merge conflicts can seem scary at first, but resolving them is a superpower every developer learns. You can absolutely do this. Let us walk through it together!`,
+      `Hi @${safeAuthor}! 👋 I am Aria. I see you want to learn about merge conflicts. Take a deep breath—merge conflicts can seem scary at first, but resolving them is a superpower every developer learns. You can absolutely do this. Let us walk through it together!`,
       '',
       '**Quick steps to resolve:**',
       '',
-      '1. Go to the "Files changed" tab',
+      '1. Go to the "Files changed" tab of your Pull Request',
       '2. Click "Resolve conflicts" button',
       '3. GitHub conflict editor will show you both versions',
       '4. Choose which lines to keep (remove the `<<<<<<<`, `=======`, `>>>>>>>` markers)',
@@ -41,6 +41,17 @@ function getAutoResponse(commentBody, author) {
       '**Need detailed guidance?** See [Merge Conflicts Guide](../../docs/06-merge-conflicts.md)',
       '',
       '**For screen readers:** If conflict editing is difficult in the browser, use github.dev by pressing the `.` key on the repository page.'
+    ].join('\n');
+  }
+
+  if (comment.includes('@aria-bot') && (comment.includes('check') || comment.includes('review'))) {
+    return [
+      `Hi @${safeAuthor}! 👋 Aria here! I see you want me to check your work.`,
+      '',
+      '- **If you are on an Issue:** Great job practice @mentions! Next, head to Challenge 4 to start branching.',
+      '- **If you are on a Pull Request:** I am already scanning your changes! Look for my "Validation Report" above. If you do not see it, wait a few seconds and refresh.',
+      '',
+      'I am here to ensure our workspace remains accessible and inclusive for everyone. Keep up the great work!'
     ].join('\n');
   }
 

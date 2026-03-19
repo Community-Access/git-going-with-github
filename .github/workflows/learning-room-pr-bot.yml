@@ -5,7 +5,7 @@ on:
   pull_request:
     types: [opened, edited, synchronize, reopened]
     paths:
-      - 'learning-room/**'
+      - "learning-room/**"
   pull_request_review:
     types: [submitted]
   issue_comment:
@@ -68,7 +68,7 @@ jobs:
     name: Welcome First-Time Contributors
     runs-on: ubuntu-latest
     if: github.event_name == 'pull_request' && github.event.action == 'opened'
-    
+
     steps:
       - name: Check if first-time contributor
         uses: actions/github-script@v7
@@ -132,7 +132,7 @@ jobs:
     name: Validate PR Requirements
     runs-on: ubuntu-latest
     if: github.event_name == 'pull_request'
-    
+
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
@@ -142,7 +142,7 @@ jobs:
       - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
-          node-version: '20'
+          node-version: "20"
 
       - name: Install dependencies
         run: npm ci
@@ -167,7 +167,7 @@ jobs:
             const fs = require('fs');
             const { buildValidationReportBody } = require('./.github/scripts/validation-report.js');
             let results;
-            
+
             try {
               if (!fs.existsSync('validation-results.json')) {
                 console.log('Warning: validation-results.json not found, creating default response');
@@ -201,19 +201,19 @@ jobs:
             }
 
             const body = buildValidationReportBody(results);
-            
+
             // Find and update existing bot comment, or create new one
             const { data: comments } = await github.rest.issues.listComments({
               owner: context.repo.owner,
               repo: context.repo.repo,
               issue_number: context.payload.pull_request.number
             });
-            
+
             const botComment = comments.find(comment => 
               comment.user.type === 'Bot' && 
               comment.body.includes('PR Validation Report')
             );
-            
+
             if (botComment) {
               await github.rest.issues.updateComment({
                 owner: context.repo.owner,
@@ -229,7 +229,7 @@ jobs:
                 body: body
               });
             }
-            
+
             // Apply labels
             const labels = ['documentation'];
             if (!results.passed) {
@@ -238,7 +238,7 @@ jobs:
             if (results.accessibility.some(a => a.type === 'error')) {
               labels.push('accessibility');
             }
-            
+
             await github.rest.issues.addLabels({
               owner: context.repo.owner,
               repo: context.repo.repo,
@@ -257,12 +257,12 @@ jobs:
               return;
             }
             const results = JSON.parse(fs.readFileSync('validation-results.json', 'utf8'));
-            
+
             const state = results.passed ? 'success' : 'failure';
             const description = results.passed 
               ? 'All validation checks passed!' 
               : 'Some validation checks need attention';
-            
+
             await github.rest.repos.createCommitStatus({
               owner: context.repo.owner,
               repo: context.repo.repo,
@@ -277,7 +277,7 @@ jobs:
     name: Celebrate Peer Review
     runs-on: ubuntu-latest
     if: github.event_name == 'pull_request_review' && github.event.review.state == 'approved'
-    
+
     steps:
       - name: Congratulate reviewer
         uses: actions/github-script@v7
@@ -306,8 +306,8 @@ jobs:
   respond-to-questions:
     name: Respond to Common Questions
     runs-on: ubuntu-latest
-    if: github.event_name == 'issue_comment' && github.event.issue.pull_request
-    
+    if: github.event_name == 'issue_comment'
+
     steps:
       - name: Auto-respond to keywords
         uses: actions/github-script@v7
@@ -316,12 +316,12 @@ jobs:
             const { getAutoResponse } = require('./.github/scripts/comment-responder.js');
             const comment = context.payload.comment.body.toLowerCase();
             const author = context.payload.comment.user.login;
-            
+
             // Don't respond to bots
             if (context.payload.comment.user.type === 'Bot') return;
-            
+
             const response = getAutoResponse(comment, author);
-            
+
             if (response) {
               await github.rest.issues.createComment({
                 owner: context.repo.owner,
@@ -330,6 +330,3 @@ jobs:
                 body: response + '\n\n---\n*Auto-response from Aria 🤖, your friendly Workshop Agent*'
               });
             }
-
-
-

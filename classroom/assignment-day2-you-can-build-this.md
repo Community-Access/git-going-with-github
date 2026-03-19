@@ -12,7 +12,13 @@ Supported editor: VS Code (required for Day 2), GitHub Desktop, CLI
 
 # Assignment 2: You Can Build This
 
-Welcome back! Day 2 moves from the browser to your local machine and introduces real-world development workflows.
+Welcome back -- or welcome for the first time! Day 2 moves from the browser to your local machine and introduces real-world development workflows.
+
+## Joining Day 2 Without Day 1?
+
+You do not need to have attended Day 1 to succeed today. If you already have GitHub fundamentals (navigating repos, filing issues, opening PRs, reviewing code), you have the same foundation as Day 1 participants.
+
+Before starting the challenges below, verify your readiness with the [Day 2 Quick Start](https://github.com/Community-Access/git-going-with-github/blob/main/admin/DAY2_QUICK_START.md) guide. It takes about 30 minutes and confirms you have the accounts, tools, and skills needed.
 
 ## What You Will Do Today
 
@@ -70,7 +76,7 @@ For the capstone challenges, you will work with the [accessibility-agents](https
 3. Create a branch for your work
 4. Open a PR from your fork back to the original
 
-See [Chapter 18](https://github.com/Community-Access/git-going-with-github/blob/main/docs/18-fork-and-contribute.md) for the full fork workflow.
+See [Chapter 18](https://github.com/Community-Access/git-going-with-github/blob/main/docs/18-fork-and-contribute.md) for the full fork workflow. If forking is new to you, [Chapter 6: Working with Pull Requests](https://github.com/Community-Access/git-going-with-github/blob/main/docs/06-working-with-pull-requests.md) covers the fundamentals.
 
 ## Bonus Challenges
 

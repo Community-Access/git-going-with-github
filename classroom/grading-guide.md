@@ -62,11 +62,13 @@ Bonus challenges are entirely optional and do not affect core completion. Award 
 
 ## Completion Levels
 
-| Level | Day 1 | Day 2 | Label |
+| Level | Day 1 + Day 2 participants | Day 2 only participants | Label |
 |---|---|---|---|
-| Workshop Complete | 7 of 9 | 5 of 7 | Participated fully |
-| Workshop Complete with Distinction | 9 of 9 | 7 of 7 | Completed all core challenges |
-| Workshop Complete with Honors | 9 of 9 | 7 of 7 + 2 bonus | Exceeded expectations |
+| Workshop Complete | 7 of 9 (Day 1) + 5 of 7 (Day 2) | 5 of 7 (Day 2) | Participated fully |
+| Workshop Complete with Distinction | 9 of 9 + 7 of 7 | 7 of 7 | Completed all core challenges |
+| Workshop Complete with Honors | 9 of 9 + 7 of 7 + 2 bonus | 7 of 7 + 2 bonus | Exceeded expectations |
+
+> **Day-2-only participants** are evaluated only on Day 2 challenges (10-16). They are not penalized for missing Day 1.
 
 ## Edge Cases
 
@@ -74,3 +76,4 @@ Bonus challenges are entirely optional and do not affect core completion. Award 
 - **Student's evidence is in the wrong place:** Still counts. Redirect them for next time.
 - **Student helped others but did not finish their own work:** Give credit for completed challenges. Helping others is valuable but does not substitute for personal evidence.
 - **Student worked ahead and completed Day 2 challenges on Day 1:** Fine. Do not penalize initiative.
+- **Student joined on Day 2 without attending Day 1:** Evaluate on Day 2 challenges only. They verified their GitHub fundamentals via the Day 2 Quick Start self-assessment. Do not require Day 1 challenge completion.
