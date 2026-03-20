@@ -2,15 +2,19 @@
 
 ## Overview
 
-The Learning Room uses three interconnected GitHub Actions workflows to provide magical, real-time feedback to students as they work on challenges. This guide explains how the system works and how to maintain/extend it for future workshops.
+The Learning Room uses GitHub Actions workflows to provide real-time feedback to students as they work through challenges in their individual Classroom repos. This guide explains how the system works and how to maintain or extend it.
 
 ### The Automation Stack
 
 | Workflow | Purpose | Triggers |
 |----------|---------|----------|
-| `pr-validation-bot.yml` | Welcomes first-timers, validates PR structure | PR opened/edited/reviewed |
-| `content-validation.yml` | Checks links, markdown, accessibility | PR opened/edited |
-| `skills-progression.yml` | Awards badges, tracks progress, unlocks challenges | PR merged, issue closed |
+| `pr-validation-bot.yml` | Aria bot -- welcomes first-timers, validates PR structure | PR opened/edited/reviewed |
+| `content-validation.yml` | Checks links, Markdown, accessibility | PR opened/edited |
+| `skills-progression.yml` | Unlocks next challenge issue in sequence | Issue closed |
+| `autograder-conflicts.yml` | Validates merge conflict resolution (Ch07) | PR opened/edited |
+| `autograder-local-commit.yml` | Validates local Git commit (Ch10) | Push to branch |
+| `autograder-template.yml` | Validates issue template creation (Ch14) | Issues created |
+| `autograder-capstone.yml` | Validates capstone challenge (Ch16) | PR opened |
 
 
 ## Architecture

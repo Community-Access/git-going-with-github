@@ -8,13 +8,13 @@ Thank you to everyone who registered! We are excited to learn together.
 
 | | |
 |---|---|
-| **Dates** | Saturday, March 7 and Sunday, March 8, 2026 |
+| **Dates** | [WORKSHOP_DATE_DAY1] and [WORKSHOP_DATE_DAY2] |
 | **Time** | 12:00 PM - 8:00 PM Eastern (both days) |
 | **Location** | Online via [Zoom](https://zoom.us/) |
 | **Cost** | Free |
 
 
-**Already registered?** Complete the [**Pre-Workshop Setup Guide**](https://community-access.org/git-going-with-github/docs/00-pre-workshop-setup.html) before March 7. It walks you through GitHub account setup, screen reader configuration, [VS Code](https://code.visualstudio.com/), and [GitHub Copilot](https://github.com/features/copilot) - with instructions for NVDA, JAWS, and VoiceOver.
+**Already registered?** Complete the [**Pre-Workshop Setup Guide**](https://community-access.org/git-going-with-github/docs/00-pre-workshop-setup.html) before the workshop. It walks you through GitHub account setup, screen reader configuration, [VS Code](https://code.visualstudio.com/), and [GitHub Copilot](https://github.com/features/copilot) - with instructions for NVDA, JAWS, and VoiceOver.
 
 
 ### Questions?
@@ -25,7 +25,7 @@ Need help? [File an issue](https://github.com/community-access/git-going-with-gi
 
 **Important:** You must be signed into your GitHub account before clicking the link below. If you are not signed in, go to [GitHub](https://github.com) and sign in first.
 
-> [**Start Step 2 - File your registration issue**](https://github.com/community-access/git-going-with-github/issues/new?template=workshop-registration.yml&title=%5BREGISTER%5D+GIT+Going+with+GitHub+-+March+2026)
+> [**Start Step 2 - File your registration issue**](https://github.com/community-access/git-going-with-github/issues/new?template=workshop-registration.yml&title=%5BREGISTER%5D+GIT+Going+with+GitHub)
 
 **Note:** The issue title is pre-filled and required by GitHub. You do not need to change it - just fill out the form fields below it and submit.
 
@@ -47,7 +47,7 @@ Once you have completed both steps:
 
 1. You will receive a Zoom confirmation email (Step 1)
 2. You will see a confirmation comment on your GitHub issue (Step 2)
-3. Complete the [Pre-Workshop Setup Guide](https://community-access.org/git-going-with-github/docs/00-pre-workshop-setup.html) before March 7 - it covers GitHub account setup, screen reader configuration, [VS Code](https://code.visualstudio.com/), and [GitHub Copilot](https://github.com/features/copilot)
+3. Complete the [Pre-Workshop Setup Guide](https://community-access.org/git-going-with-github/docs/00-pre-workshop-setup.html) before the workshop - it covers GitHub account setup, screen reader configuration, [VS Code](https://code.visualstudio.com/), and [GitHub Copilot](https://github.com/features/copilot)
 4. Questions? [File an issue](https://github.com/community-access/git-going-with-github/issues) in the workshop repository
 
 

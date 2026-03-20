@@ -54,12 +54,14 @@ Install these before the session:
 - **GitHub Copilot** (required -- included with VS Code)
 - **GitHub Copilot Chat** (required -- included with VS Code)
 
-### Clone the Learning Room
+### Accept the Day 2 Classroom Assignment
+
+Your facilitator will share the Day 2 assignment link. Click it to create your own private repository. Once created, clone it locally:
 
 ```bash
 cd ~/Documents
-git clone https://github.com/Community-Access/learning-room.git
-cd learning-room
+git clone https://github.com/YOUR-ORG/YOUR-REPO-NAME.git
+cd YOUR-REPO-NAME
 ```
 
 Verify the files are present: `ls` should show `README.md`, `docs/`, and other project files.
@@ -71,7 +73,7 @@ For detailed instructions on any of the above steps, see [Pre-Workshop Setup](..
 
 ## What You Missed on Day 1 (and Do Not Need to Repeat)
 
-Day 1 participants completed three GitHub Skills modules (Introduction to GitHub, Communicate Using Markdown, Review Pull Requests) and contributed to practice files in the learning-room repository. These activities taught the same skills listed in the self-assessment above.
+Day 1 participants worked through Challenges 1-9 in their own Classroom repositories, covering repository navigation, issues, branching, commits, pull requests, merge conflicts, and open source culture. These activities taught the same skills listed in the self-assessment above.
 
 You do not need to complete those modules or practice files. If you already have GitHub fundamentals, you have the same foundation.
 
@@ -96,3 +98,4 @@ After Block 0, everyone works on the same material regardless of which day they 
 | [Screen Reader Cheat Sheet](../docs/appendix-b-screen-reader-cheatsheet.md) | NVDA, JAWS, and VoiceOver shortcuts for GitHub and VS Code |
 | [VS Code Interface Guide](../docs/11-vscode-interface.md) | Screen reader mode, navigation, accessibility features |
 | [Glossary](../docs/appendix-a-glossary.md) | Every term used in the workshop, explained |
+    

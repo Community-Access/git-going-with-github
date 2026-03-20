@@ -14,7 +14,7 @@ License: CC BY 4.0 | [Site](https://community-access.org/git-going-with-github/)
 | **Registration** | Closed - thank you to all who registered! |
 | **Discussions** | [Join the conversation](https://github.com/community-access/git-going-with-github/discussions) |
 | **Support** | [File an issue](https://github.com/community-access/git-going-with-github/issues) |
-| **Dates** | March 7-8, 2026 · 12-8 PM Eastern |
+| **Dates** | [WORKSHOP_DATE_DAY1] & [WORKSHOP_DATE_DAY2] |
 
 
 > **The Central Project: Accessibility Agents**
@@ -193,7 +193,6 @@ Every chapter has an "If You Get Stuck" section. Every challenge has a [referenc
 ├── CONTRIBUTING.md                      -- How to contribute to this repo
 ├── CODE_OF_CONDUCT.md                   -- Community standards
 ├── admin/FACILITATOR_GUIDE.md           -- For workshop organizers only
-├── admin/COHORT_PROVISIONING.md         -- How to set up a new Learning Room cohort
 ├── admin/DAY1_AGENDA.md                 -- Day 1 workshop schedule
 ├── admin/DAY2_AGENDA.md                 -- Day 2 workshop schedule
 ├── .github/
@@ -208,7 +207,7 @@ Every chapter has an "If You Get Stuck" section. Every challenge has a [referenc
 │   ├── agents/                          -- 55 Accessibility Agents for Copilot Chat
 │   └── prompts/                         -- 54+ slash commands for Copilot Chat
 ├── classroom/                           -- GitHub Classroom setup artifacts
-│   ├── README.md                        -- Setup guide for new cohorts
+│   ├── README.md                        -- Workshop Deployment Guide (unified setup for new cohorts)
 │   ├── assignment-day1-you-belong-here.md
 │   ├── assignment-day2-you-can-build-this.md
 │   ├── autograding-day1.json

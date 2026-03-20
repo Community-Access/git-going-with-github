@@ -1,95 +1,88 @@
 # Day 1 Agenda
-## Open Source Assistive Technology Hackathon - GitHub Learning Lab
+## Open Source Assistive Technology Workshop - GitHub Classroom Edition
 
-> **Day 1 Focus:** The GitHub web interface - navigating repositories, filing and responding to issues, understanding pull requests, and contributing through the browser using only your keyboard and screen reader.
+> **Day 1 Focus:** The GitHub web interface -- navigating repositories, filing and responding to issues, understanding pull requests, and contributing through the browser using only your keyboard and screen reader.
 >
-> **How learning works today:** Each participant works through two tracks in parallel. GitHub Skills modules give you a real repository in your own GitHub account, with a bot called Mona that responds to your actions automatically and guides you through each step. The shared `learning-room` repo is for group exercises and the collaborative contribution sprint. The two tracks reinforce exactly the same skills.
+> **How learning works today:** Each participant has their own private repository, created automatically when you accept the Classroom assignment. Inside that repo, an automation system called Aria guides you through a series of challenges delivered as GitHub Issues. When you complete one challenge and close the issue, Aria unlocks the next. You work at your own pace through Challenges 1-9 during the structured blocks below, with facilitator guidance and peer collaboration throughout.
 
 
-## GitHub Skills Modules Used Today
+## Your Classroom Repository
 
-Three modules run across Day 1. You will set each one up during the block where it is introduced - no pre-work required.
+When you accept the Day 1 assignment link, GitHub creates a private copy of the template repository in your own account. Your repo comes pre-configured with:
 
-| Module | When | What Mona teaches |
-|--------|------|-------------------|
-| [Introduction to GitHub](https://github.com/skills/introduction-to-github) | Blocks 1-3 | Branches, commits, pull requests, merge |
-| [Communicate Using Markdown](https://github.com/skills/communicate-using-markdown) | Block 3 | Headings, emphasis, links, code, task lists, tables |
-| [Review Pull Requests](https://github.com/skills/review-pull-requests) | Block 4 | Assign reviewers, leave comments, suggest changes, approve, merge |
+- **Aria bot** -- an automated assistant that validates your pull requests and provides educational feedback within 30 seconds
+- **Challenge progression** -- when you close one challenge issue, the next one opens automatically
+- **Practice files** in `docs/` with intentional issues for you to find and fix
+- **21 challenge templates** (Challenges 1-9 today, 10-16 + bonus on Day 2)
 
-**How GitHub Skills modules work:**
-1. You navigate to the module URL and activate "Start course" - this copies the repository to your GitHub account
-2. Mona (a GitHub Actions bot) reads your account's new repo, creates an issue with Step 1 instructions, and waits
-3. You follow the instructions in the issue. When you complete a step - create a branch, open a PR, merge - Mona detects it and responds with the next step
-4. Repeat until completion. You receive a course completion badge on your profile.
+**How Aria works:**
+1. You open Challenge 1 as your first issue (created automatically when you accept the assignment)
+2. You work through the instructions and submit your evidence
+3. When you close the issue, the progression system creates Challenge 2
+4. When you open a pull request, Aria comments within 30 seconds with structured validation feedback
+5. This continues through all 9 Day 1 challenges
 
-**Why this is different from a tutorial:** You are not reading about GitHub. You are doing GitHub, in your own repository, and an automated system is verifying each step and giving you feedback. The mechanics are identical to what happens when you contribute to any real open source project.
-
-
-## Read This BEFORE Day 1 Starts
-
-**[Chapter 3: The Learning Room](docs/04-the-learning-room.md)** - Your complete guide to the shared repo, PR sharing workflow, and how the automation system works. Read this before Block 0 to understand the environment where you'll be making real contributions.
+**Why this matters:** You are not reading about GitHub. You are doing GitHub, in your own repository, and an automated system is verifying your work and giving you feedback. The mechanics are identical to what happens when you contribute to any real open source project.
 
 
 ## At a Glance
 
-| Block | Time | Topic | Skills Module |
-|-------|------|-------|--------------|
-| 0 | 9:00 AM | Welcome, setup verification, and introductions | - |
-| 1 | 9:30 AM | Screen reader orientation to GitHub | Introduction to GitHub (setup) |
-| 2 | 10:10 AM | Navigating repositories and Markdown module setup | Introduction to GitHub (Steps 1-2) + Communicate Using Markdown (setup) |
-| - | 11:00 AM | **Break** | - |
-| 3 | 11:15 AM | Working with Issues and Pull Requests | Introduction to GitHub (Steps 2-4) |
-| 4 | 12:10 PM | Pull Request review and merge | Review Pull Requests |
-| - | 1:00 PM | **Lunch** | - |
-| 5 | 2:00 PM | Your first real contribution sprint | `learning-room` (group) |
-| - | 3:00 PM | **Break** | - |
-| 6 | 3:15 PM | Community: culture, etiquette, labels, and notifications | `learning-room` (group) |
-| - | 4:30 PM | Wrap-up and completions | - |
+| Block | Time | Topic | Challenges |
+|-------|------|-------|-----------|
+| 0 | 9:00 AM | Welcome, setup verification, and accept Classroom assignment | -- |
+| 1 | 9:30 AM | Screen reader orientation to GitHub | Challenge 1: Find Your Way |
+| 2 | 10:10 AM | Navigating repositories, issues, and conversations | Challenges 2-3 |
+| -- | 11:00 AM | **Break** | -- |
+| 3 | 11:15 AM | Branching, editing, and committing | Challenges 4-5 |
+| 4 | 12:10 PM | Pull requests, review, and merge conflicts | Challenges 6-7 |
+| -- | 1:00 PM | **Lunch** | -- |
+| 5 | 2:00 PM | Culture, triage, and merge day | Challenges 8-9 |
+| -- | 3:00 PM | **Break** | -- |
+| 6 | 3:15 PM | Community: communication, labels, and notifications | -- |
+| -- | 4:30 PM | Wrap-up and reflections | -- |
 
 **Total:** ~7.5 hours of structured time
 
 
 ## Pre-Day Checklist
 
-Before entering the room (or joining the call), participants should have completed everything in [Pre-Workshop Setup](docs/00-pre-workshop-setup.md). The facilitator will do a quick verification at the start.
-
-GitHub Skills modules require no pre-work - they are set up together, in-session, during the blocks where they are used.
+Before entering the room (or joining the call), participants should have completed everything in [Pre-Workshop Setup](../docs/00-pre-workshop-setup.md). The facilitator will do a quick verification at the start.
 
 
-## Block 0 - Welcome and Orientation (9:00 AM, 45 min)
+## Block 0 - Welcome and Orientation (9:00 AM, 30 min)
 
-### Date & Location
-**Saturday, March 7, 2026** | 9:00 AM - 5:00 PM  
-**Sunday, March 8, 2026** | 9:00 AM - 5:00 PM
+### Date and Location
+
+**[WORKSHOP_DATE_DAY1]** | 9:00 AM - 5:00 PM
+**[WORKSHOP_DATE_DAY2]** | 9:00 AM - 5:00 PM
 
 ### Purpose
+
 Make participants comfortable, set expectations, verify setups, and create a psychologically safe space for the day.
 
 ### Activities
 
 **Facilitator introduces:**
 - The purpose of this session: building real, usable GitHub skills for open source AT contribution
-- What "contribution" means - it is not only code. Documentation, accessibility testing, issue triage, and feedback are all valuable contributions.
-- The "ask before you assume" norm - it is always OK to ask what something means
-- The two-track learning model: GitHub Skills (your own account) + `learning-room` (group exercises)
+- What "contribution" means -- it is not only code. Documentation, accessibility testing, issue triage, and feedback are all valuable contributions.
+- The "ask before you assume" norm -- it is always OK to ask what something means
+- The Classroom model: each participant has their own private repo with Aria bot and challenge progression
 
-**Quick setup verification (10 minutes):**
-- Can everyone navigate to the repo URL?
+**Quick setup verification (10 min):**
+- Can everyone navigate to github.com?
 - Does everyone's screen reader announce page headings?
-- Is hovercards turned off? (If not - navigate to Accessibility Settings now)
-- Can everyone access GitHub Issues and Pull Requests? (Modern experience may already be active - if not, verify via User Menu → Feature preview; see Step 4 in [Pre-Workshop Setup](docs/00-pre-workshop-setup.md))
+- Is hovercards turned off? (If not -- navigate to Accessibility Settings now)
+- Can everyone access GitHub Issues and Pull Requests? (see Step 4 in [Pre-Workshop Setup](../docs/00-pre-workshop-setup.md))
 
-**Clone the learning-room repository (15 minutes):**
-Everyone will work in the shared `learning-room` repository today. Clone it now so it's ready for Block 5:
-1. Open your terminal (or GitHub Desktop if you prefer GUI)
-2. Navigate to where you store projects: `cd ~/Documents` (or your preferred location)
-3. Clone the repository:
-   ```bash
-   git clone https://github.com/Community-Access/learning-room.git
-   cd learning-room
-   ```
-4. Verify you can see the files: `ls` (you should see `README.md`, `docs/`, etc.)
-5. **Optional:** Open the folder in your code editor to explore the file structure
+**Accept the Classroom assignment (10 min):**
+The facilitator shares the Day 1 assignment link. Each participant:
+1. Opens the assignment link in their browser
+2. Accepts the assignment -- GitHub creates a private repo in the workshop organization
+3. Waits ~30 seconds for the repo to finish creating
+4. Navigates to their new repository
+5. Checks the Issues tab -- Challenge 1 should appear automatically
+
+> **If Challenge 1 does not appear:** Wait 60 seconds and refresh. If it still does not appear, the facilitator can manually create it from the issue template.
 
 **Introductions:**
 - Each participant: your name, your screen reader and OS, what brings you here
@@ -98,148 +91,116 @@ Everyone will work in the shared `learning-room` repository today. Clone it now 
 ## Block 1 - Screen Reader Orientation to GitHub (9:30 AM, 40 min)
 
 ### Purpose
-Establish a shared navigation foundation AND set up the Introduction to GitHub Skills module. Every participant leaves this block with a real repository in their own account and a message from Mona waiting for them.
+
+Establish a shared navigation foundation. Every participant leaves this block able to confidently navigate a GitHub repository page using their screen reader.
 
 ### Key Concepts Covered
-- Browse Mode vs Focus Mode - when to be in each
+
+- Browse Mode vs Focus Mode -- when to be in each
 - Single-key navigation: H (headings), D (landmarks), K (links), B (buttons), F (form fields)
 - The Elements List (`NVDA+F7` / `Insert+F3` JAWS / VoiceOver Rotor `VO+U`)
-- How GitHub uses landmarks - navigation, main, search-results
+- How GitHub uses landmarks -- navigation, main, search-results
 - Submitting text with `Ctrl+Enter`
 
 ### Part A - Navigate GitHub Together (15 min)
 
 **Navigate the GitHub homepage:**
-1. Open GitHub.com - what is announced? (heading level, landmark)
-2. Press `H` repeatedly - list the headings aloud
-3. Press `D` - what landmarks exist?
-4. Open Elements List - how many links are on the page?
+1. Open GitHub.com -- what is announced? (heading level, landmark)
+2. Press `H` repeatedly -- list the headings aloud
+3. Press `D` -- what landmarks exist?
+4. Open Elements List -- how many links are on the page?
 
-**Navigate the learning-room repo (group):**
-1. Go to `github.com/Community-Access/learning-room`
+**Navigate your Classroom repository:**
+1. Go to your repository URL (provided by the facilitator or visible in your Classroom dashboard)
 2. Find the repo name with `1` (h1)
-3. Find the tab bar (Issues, Pull Requests, etc.) with `D` → repository navigation landmark
-4. Navigate the files table with `T` then `Ctrl+Alt+↓`
-5. Open `README.md` - read the "What Is in This Repository" table
+3. Find the tab bar (Issues, Pull Requests, etc.) with `D` -- repository navigation landmark
+4. Navigate the files table with `T` then `Ctrl+Alt+Down`
+5. Open `README.md` -- read the description of what this repository contains
 
 **Explore the practice files:**
-The `docs/` folder contains three files with intentional issues that you will fix during today's contribution sprint:
+The `docs/` folder contains files with intentional issues that you will fix during today's challenges:
 
-| File | What it contains | What students will fix |
-|------|------------------|----------------------|
-| `docs/welcome.md` | Introduction to open source contribution | Three `[TODO]` sections to complete (contributor backgrounds, evaluating issues, GitHub profile impact) |
+| File | What it contains | What you will fix |
+|------|------------------|-------------------|
+| `docs/welcome.md` | Introduction to open source contribution | `[TODO]` sections to complete, a broken link to find |
 | `docs/keyboard-shortcuts.md` | NVDA, JAWS, and VoiceOver shortcut tables | Intentional errors in keyboard shortcut references |
 | `docs/setup-guide.md` | Step-by-step GitHub setup instructions | Broken links and incomplete steps |
 
-6. Open `docs/welcome.md` - navigate with `H` to read the headings. Notice the `[TODO]` markers. You will fix these during the contribution sprint in Block 5.
+6. Open `docs/welcome.md` -- navigate with `H` to read the headings. Notice the `[TODO]` markers.
 
-> **Key insight:** These files are intentionally imperfect. You will explore them in detail during Block 5 when you are ready to contribute. For now, notice the structure - headings, tables, links - and how your screen reader announces each one.
+> **Key insight:** These files are intentionally imperfect. You will fix them during your challenges. For now, notice the structure -- headings, tables, links -- and how your screen reader announces each one.
 
-### Part B - Set Up Your First GitHub Skills Repository
+### Part B - Start Challenge 1: Find Your Way Around (25 min)
 
-> **Magic Moment #1:** You are about to copy a real repository to your own GitHub account. When you complete this, you will have made your first GitHub action - and Mona will respond automatically.
+> **Your first challenge is waiting.** Navigate to the Issues tab in your repo. Challenge 1 is a scavenger hunt across the repository.
 
-**Group activity - follow together:**
+**What Challenge 1 asks you to do:**
+- Find the Code tab and count root files
+- Open the Issues tab and find an open issue
+- Navigate to `docs/welcome.md` and read the first paragraph
+- Find the repository description
+- Locate the README and identify the workshop audience
+- Find the About section
 
-1. Navigate to the [Introduction to GitHub skills course](https://github.com/skills/introduction-to-github)
-2. Read the repository description with your screen reader
-3. Find and activate the **"Start course"** button (NVDA/JAWS: `B` to navigate buttons; VoiceOver: `VO+Right` → find the button → `VO+Space`)
-4. GitHub opens a "Create a new repository" page - fill in:
-   - Owner: your account
-   - Repository name: accept the pre-filled name
-   - Public or private: Public
-5. Activate "Create repository"
+**Work through the scavenger hunt using your screen reader.**
 
-**Wait together:** GitHub redirects you to your new repository. Mona is running in the background. Within 20 seconds, Mona will:
-- Create an issue: "Welcome to GitHub!"
-- Tag you in it with `@[your-username]`
-- Post Step 1 instructions
+When you finish, submit your evidence in the challenge issue and close it. Within seconds, the progression system creates Challenge 2 for you.
 
-**Verify:** Navigate to the Issues tab → open Issue #1. What does Mona say? Read it aloud using your screen reader.
-
-> This is the same mechanism used by open source projects with bot-assisted workflows - Dependabot, GitHub Actions CI, automated labelers. You are experiencing that pattern for the first time right now.
+> **Magic Moment:** You just completed your first GitHub challenge in your own repository, and an automated system detected it and responded. This is the same mechanism used by real open source projects -- automated workflows responding to contributor actions.
 
 ### Reference Document
-[Screen Reader Cheat Sheet](docs/appendix-b-screen-reader-cheatsheet.md)
+
+[Screen Reader Cheat Sheet](../docs/appendix-b-screen-reader-cheatsheet.md)
 
 
-## Block 2 - Navigating Repositories (10:10 AM, 50 min)
+## Block 2 - Issues and Conversations (10:10 AM, 50 min)
 
 ### Purpose
-Participants can confidently explore any GitHub repository using only their screen reader and keyboard - both your own (Skills repo) and others.
+
+Participants can file, read, respond to, and navigate issues -- and understand how GitHub's conversation model works.
 
 ### Key Concepts Covered
-- Anatomy of a repository page (tabs, description, files table, README)
-- Switching branches
-- Viewing a file's history
-- Reading a commit
-- Finding contributor information
 
-### Part A - Introduction to GitHub: Step 1 (20 min)
+- What issues are and why they matter
+- Searching and filtering the issues list
+- Filing a new issue using a template
+- Commenting with Markdown -- headings, bold, links, code, task lists
+- @mentions and cross-references
 
-Mona's issue told you to create a branch. Before doing that, explore your new repository with your screen reader.
+### Part A - Challenge 2: File Your First Issue (25 min)
 
-> **Screen reader navigation practice:** Answer these questions using only keyboard navigation - no mouse.
+Challenge 2 asks you to find a TODO in `docs/welcome.md` and file a well-structured issue describing the problem.
 
-1. How many files are in the root of your repo?
-2. What is the repository description?
-3. When was the README last committed (find the commit date in the file table)?
-4. Who created the repo? (find the "About" sidebar)
+**Key skills you practice:**
+1. Navigating to a file and finding specific content
+2. Going to the Issues tab and creating a new issue
+3. Writing a clear, descriptive title (not just "Fix TODO")
+4. Writing a description that explains what, where, and why
 
-**Now follow Mona's Step 1 instructions:** Create a branch named `my-first-branch`
+> **Markdown practice:** Your issue description is Markdown. Use `##` for headings, `**bold**` for emphasis, and backtick-wrapped text for file names. Every comment you write on GitHub is Markdown -- you are practicing it in context, not in isolation.
 
-- Find the branch switcher button on the Code tab (B to navigate buttons → find "main")
-- Activate it, type the new branch name: `my-first-branch`
-- Activate "Create branch: my-first-branch"
+When you close Challenge 2, Challenge 3 appears.
 
-Mona detects the new branch and updates the issue with Step 2 instructions.
+### Part B - Challenge 3: Join the Conversation (25 min)
 
-### Part B - Exploring the learning-room Repo (25 min)
+Challenge 3 asks you to comment on a classmate's issue, use @mentions, and add reactions.
 
-Now practice the same navigation skills in the shared group repo.
+**What you will do:**
+1. Find a classmate's Challenge 2 issue (your facilitator will help pair you)
+2. Leave a meaningful comment -- confirm you see the same problem, suggest an approach, or ask a clarifying question
+3. Use `@username` to mention your classmate
+4. Add a reaction (thumbs up, heart, or any emoji) to their original issue
 
-**Activity 2A - Repo Exploration:**
-Find the answers to these questions using keyboard navigation in `learning-room`:
-1. How many files are in the `docs/` folder?
-2. What is the description of the repo?
-3. Who opened the last commit?
-4. When was `docs/welcome.md` last edited?
-5. How many branches exist?
+**Good commenting tips:**
+- Be specific ("I found the same TODO on line 12" beats "I agree")
+- Be encouraging ("Great find!" is always welcome)
+- Be constructive (suggest, do not just criticize)
 
-**Activity 2B - Reading Practice File Content:**
-1. Open `docs/keyboard-shortcuts.md`
-2. Navigate to the NVDA section using `2` (H2 headings)
-3. Find the "Single-Key Navigation" table with `T`
-4. Read through the table rows - how many shortcuts are listed for NVDA?
-5. Navigate to the VoiceOver section - what is the VoiceOver modifier key combination?
-6. Open `docs/CHALLENGES.md` - navigate to "Beginner Challenges" with `2`
-7. Read Challenge 1 - which file does it ask you to fix, and what is the issue?
-
-**Activity 2C - Reading a Commit:**
-1. Navigate to the Commits tab
-2. Find the most recent commit - read its message aloud
-3. Open that commit - navigate the diff with your screen reader
-4. What file(s) changed, and what specifically changed?
-
-**Activity 2D - Branch Navigation:**
-1. Open the branch dropdown (find the "main" button)
-2. Switch to the `day1-practice` branch
-3. Navigate to `docs/` - do any files differ from `main`?
-4. Switch back to `main`
-
-### Part C - Set Up Communicate Using Markdown Skills Module (10 min)
-
-> **The Markdown module** runs alongside everything else you do today. Every comment you write, every issue you file, every PR description - you are practicing Markdown in real GitHub contexts.
-
-1. Navigate to the [Communicate Using Markdown skills course](https://github.com/skills/communicate-using-markdown)
-2. "Start course" → create the repo in your account
-3. Wait for Mona to create Issue #1 with Step 1 instructions
-4. Read the instructions - Mona will walk you through: headers, emphasis, images, code blocks, task lists, and tables
-
-You will work through each Markdown step during the natural pauses in Blocks 3 and 4. Your facilitator will call out when to switch.
+After submitting your evidence, close Challenge 3. Challenge 4 opens.
 
 ### Reference Document
-[Navigating Repositories](docs/03-navigating-repositories.md)
+
+[Working with Issues](../docs/05-working-with-issues.md) | [Glossary](../docs/appendix-a-glossary.md)
 
 
 ## Break (11:00 AM, 15 min)
@@ -247,380 +208,244 @@ You will work through each Markdown step during the natural pauses in Blocks 3 a
 Encourage participants to stand, stretch, and rest their ears. Screen reader listening is cognitively demanding work.
 
 
-## Block 3 - Working with Issues and Pull Requests (11:15 AM, 55 min)
+## Block 3 - Branching, Editing, and Committing (11:15 AM, 55 min)
 
 ### Purpose
-Participants can file, read, respond to, and navigate issues - and open their first pull request.
 
-### Catch-Up Buffer (5 min)
-
-If you are still completing a Skills module step from Block 2, finish it now. If you are on pace, start a Communicate Using Markdown step - you will use Markdown in every activity from this point forward.
+Participants create a branch, edit a file on GitHub, and commit with a meaningful message -- the core Git workflow that every contribution uses.
 
 ### Key Concepts Covered
-- What issues are and why they matter
-- Searching and filtering the issues list
-- Filing a new issue using a template
-- Commenting with Markdown - headings, bold, links, code, task lists
-- @mentions and cross-references
-- `good first issue` label
 
-### Part A - Introduction to GitHub: Step 2 - Add a File (15 min)
+- What branches are and why they exist
+- Creating a branch from the GitHub UI
+- Editing a file in the browser editor
+- Writing meaningful commit messages
+- The difference between committing to a branch vs. main
 
-Mona's Step 2 instructions ask you to commit a new file to your `my-first-branch` branch.
+### Part A - Challenge 4: Branch Out (20 min)
 
-1. Navigate to your Skills repo → switch to `my-first-branch`
-2. Find and activate "Add file" button → "Create new file"
-3. Name the file: `PROFILE.md`
-4. In the editor (switch to Focus Mode): type a brief self-introduction:
+Challenge 4 asks you to create a personal branch named `learn/YOUR-USERNAME`.
 
-```markdown
-# Hello, I am [your name]
+**Step by step:**
+1. Make sure you are on the Code tab of your repository
+2. Find the branch dropdown (it shows "main" by default) -- use `B` to navigate buttons
+3. Type `learn/YOUR-USERNAME` (replace with your actual GitHub username)
+4. Select "Create branch: learn/YOUR-USERNAME from main"
 
-I use [your screen reader] on [your OS].
+> **Why branches matter:** A branch is your private workspace. You can make changes without affecting anyone else. When you are ready, you open a pull request to propose merging your changes into `main`. This is how every contribution works in open source.
 
-I am contributing to open source because...
-```
+Submit your evidence and close Challenge 4. Challenge 5 appears.
 
-5. Commit the file to `my-first-branch` (fill in a commit message → "Commit new file")
+### Part B - Challenge 5: Make Your Mark (25 min)
 
-Mona detects your commit and responds with Step 3 instructions: open a pull request.
+Challenge 5 asks you to edit `docs/welcome.md` on your branch to fix the TODO you identified in Challenge 2, then commit with a meaningful message.
 
-### Part B - Introduction to GitHub: Step 3 - Open a Pull Request (15 min)
+**Step by step:**
+1. Make sure you are on your `learn/YOUR-USERNAME` branch (check the branch dropdown)
+2. Navigate to `docs/welcome.md`
+3. Find the edit button (pencil icon) -- use `B` to navigate buttons
+4. Switch to Focus Mode and make your edit
+5. Write a meaningful commit message:
 
-Return to your `introduction-to-github` Skills repo. Mona has asked you to open a pull request from `my-first-branch` into `main`.
+| Instead of this | Write this |
+|-----------------|-----------|
+| Update welcome.md | Add workshop description to replace TODO in welcome.md |
+| Fix stuff | Replace placeholder text with actual welcome message |
+| changes | Add participant introduction section to welcome.md |
 
-1. Navigate to the Pull Requests tab
-2. Activate "New pull request"
-3. The base should be `main`, the compare branch `my-first-branch`
-4. Review the diff - your `PROFILE.md` appears as an addition
-5. Fill in the PR title: `Add my profile`
-6. In the PR description field (Focus Mode), write:\
-```markdown
-## What this adds
+6. Commit directly to your branch
 
-A profile introduction for [your name].
+> **Key insight:** A good commit message answers two questions: **What** did you change and **Why?** Future contributors (including future you) will read these messages to understand the project's history.
 
-## Why
+Submit your evidence and close Challenge 5. Challenge 6 appears.
 
-Getting started with open source AT contributions.
-```
-7. Submit the PR
+### Part C - Catch-Up and Exploration (10 min)
 
-> **Magic Moment #2:** Mona will respond to your PR within seconds. Navigate to the Conversations tab of your new PR. Mona has left a comment - read it with your screen reader. This is automated feedback on your real GitHub action, from an actual GitHub Actions workflow running in your repository.
+If you finished Challenges 4-5, explore your repository using the navigation skills from Block 1:
+- View your commit history (navigate to the Commits section)
+- Compare your branch to `main` -- what differs?
+- Read `docs/keyboard-shortcuts.md` and find the intentional errors you will fix later
 
-### Part C - Issues Practice in learning-room (20 min)
-
-**Activity 3A - Find and read a challenge issue:**
-1. Navigate to `learning-room` Issues tab
-2. Filter by `good first issue` label: type `is:open label:"good first issue"` in the filter bar
-3. Open issue #1 - "Welcome! Introduce yourself"
-4. Read the full issue description with your screen reader
-
-**Activity 3B - Leave a comment on the welcome issue:**
-1. Navigate to the comment box (`D` → "Add a comment" landmark or region)
-2. Switch to Focus Mode - type your introduction using Markdown:
-   - Use `##` for a heading with your name
-   - Bold your screen reader name with `**NVDA**` or `**JAWS**` or `**VoiceOver**`
-   - Add a task list of things you want to learn:
-     ```markdown
-     - [ ] Fix a broken link in setup-guide.md
-     - [ ] Complete a [TODO] section in welcome.md
-     - [ ] Add a keyboard shortcut to keyboard-shortcuts.md
-     ```
-3. Submit with `Ctrl+Enter`
-
-**Activity 3C - File a new issue based on what you found:**
-1. Navigate to Issues → New issue
-2. Choose the "Beginner Challenge" template (this maps to Challenge 1, 2, or 3 from CHALLENGES.md)
-3. In the title, be specific: "Fix broken link in docs/welcome.md" or "Add missing NVDA shortcut to keyboard-shortcuts.md"
-4. In the description, reference the file and line where you found the issue:
-   ```markdown
-   ## What I found
-   The `[DATE]` placeholder at the bottom of `docs/welcome.md` needs to be updated with today's date.
-
-   ## Which challenge
-   Challenge 1: Update [DATE] Placeholder (from CHALLENGES.md)
-   ```
-5. Submit - note the issue number. You will use `Closes #XX` in your PR during Block 5
+If you are still working on a challenge, use this time to finish.
 
 ### Reference Document
-[Working with Issues](docs/05-working-with-issues.md) | [GitHub Concepts Glossary](docs/appendix-a-glossary.md)
+
+[Working with Pull Requests](../docs/06-working-with-pull-requests.md)
 
 
-## Block 4 - Understanding Pull Requests (12:10 PM, 50 min)
+## Block 4 - Pull Requests, Review, and Merge Conflicts (12:10 PM, 50 min)
 
 ### Purpose
-Participants understand what pull requests are, how to read one, and how to participate in a review - by reviewing a PR that Mona creates specifically for them.
 
-### Catch-Up Buffer (5 min)
-
-If you are still completing Step 2 or Step 3 from the Introduction to GitHub module, finish your current step now. If you are on pace, work through a Communicate Using Markdown step.
+Participants open their first pull request, experience automated feedback from Aria bot, and resolve a facilitator-triggered merge conflict.
 
 ### Key Concepts Covered
+
 - Anatomy of a PR (title, description, base/compare branches)
 - Navigating the three PR tabs: Conversation, Commits, Files Changed
-- Reading a diff - additions, deletions, context lines
-- Reviewing a PR - inline comments, overall comments, approvals
-- Status checks
+- Reading a diff -- additions, deletions, context lines
+- The `Closes #XX` pattern for linking PRs to issues
+- Status checks and automated feedback
+- What merge conflicts are and how to resolve them
 
-### Part A - Set Up Review Pull Requests Skills Module (10 min)
+### Part A - Challenge 6: Open Your First Pull Request (20 min)
 
-> **Magic Moment #3:** Instead of reviewing a pre-built PR in a shared repo, you are about to review a pull request that Mona creates *exclusively for you*, in *your own repository*. The content of the PR is real. Your review will be read by Mona and trigger the next step.
+Challenge 6 asks you to open a PR from your `learn/YOUR-USERNAME` branch to `main`, linking it to the issue you filed in Challenge 2.
 
-1. Navigate to the [Review Pull Requests skills course](https://github.com/skills/review-pull-requests)
-2. "Start course" → create the repo in your account
-3. Wait for Mona to create Issue #1 and a practice pull request titled "Update the game over message"
-4. Navigate to the Pull Requests tab - open the PR Mona created
+**Step by step:**
+1. Navigate to the Pull Requests tab
+2. Activate "New pull request"
+3. Set base to `main`, compare to `learn/YOUR-USERNAME`
+4. Review the diff -- your edits to `docs/welcome.md` appear as additions
+5. Write a descriptive PR title
+6. In the PR description, include `Closes #XX` (replace XX with your Challenge 2 issue number)
+7. Submit the pull request
 
-### Part B - Review the Pull Request (25 min)
+> **Magic Moment:** Within 30 seconds, Aria bot comments on your PR. Navigate to the Conversation tab and read the comment with your screen reader. Aria checks for:
+> - Issue reference (did you include `Closes #XX`?)
+> - Description quality
+> - File location
+> - Heading hierarchy
+> - Link text quality
+> - `[TODO]` markers (did you remove them all?)
+>
+> The feedback explains WHY each issue matters and links to resources. This is automated feedback on your real GitHub action, from an actual GitHub Actions workflow running in your repository.
 
-Work through Mona's instructions for the review:
+**If Aria flags issues:**
+1. Address any required checks
+2. Push your changes to the same branch -- Aria re-checks automatically
+3. The bot is educational, not punitive. Every message tells you what to fix and why.
 
-**Navigate the PR with your screen reader:**
-1. Read the PR title and description (Conversation tab)
-2. Navigate to Commits tab - how many commits? Who authored them?
-3. Navigate to Files Changed tab
-4. Navigate the diff - what changed in which file?
+Submit your evidence and close Challenge 6. Challenge 7 appears.
 
-**Leave an inline comment:**
-1. In Files Changed, navigate to the changed line
-2. Find the comment button (screen reader note: in the New Files Changed Experience, changed lines have a comment button - use `B` to find it, or right-click/`Shift+F10` on the line)
-3. Type an inline comment: "This change improves clarity for users who have lost - good improvement."
-4. Submit as "Start a review"
+### Part B - Challenge 7: Survive a Merge Conflict (20 min)
 
-**Submit your review:**
-1. Back on the Conversation tab, navigate to "Finish your review"
-2. Add an overall comment: "Good change. I've left one inline note."
-3. Select "Approve"
-4. Submit your review
+Challenge 7 is facilitator-triggered. Your facilitator will make a change to `main` that conflicts with your branch, creating a merge conflict in your PR.
 
-> **Mona responds:** After you submit the approval, Mona merges the PR automatically and creates the next step.
+**What you will see:**
+Your PR shows a message that it has conflicts. The "Merge pull request" button is disabled.
 
-### Part C - Introduction to GitHub: Step 4 - Merge Your PR (10 min)
+**What conflict markers look like:**
 
-Return to your `introduction-to-github` Skills repo. Mona has been waiting for you to merge your own PR.
+`
+<<<<<<< HEAD
+The version currently on the target branch
+=======
+Your version from your branch
+>>>>>>> learn/your-username
+`
 
-1. Navigate to your open PR ("Add my profile")
-2. Confirm there are no merge conflicts (Mona will have noted this)
-3. Find and activate the "Merge pull request" button
-4. Confirm the merge
-5. Navigate back to the Code tab - `PROFILE.md` now appears on `main`
+**How to resolve:**
+1. Select "Resolve conflicts" in your PR (or edit the file directly on your branch)
+2. Find the conflict markers
+3. Decide which content to keep (or combine both)
+4. Delete all three marker lines (`<<<<<<<`, `=======`, `>>>>>>>`)
+5. Commit the resolution
 
-> **Magic Moment #4:** The `introduction-to-github` course is now complete. Navigate to the [Introduction to GitHub skills course](https://github.com/skills/introduction-to-github) - your completion badge appears on the course page. Your GitHub profile now shows this course as completed.
+> **Key insight:** Merge conflicts are normal. They happen whenever two people edit the same part of the same file. The markers show both versions so you can choose the right content. In real projects, conflicts happen regularly and resolving them is a routine skill.
+
+**Autograded:** The autograder checks that no conflict markers remain in your file and that the file has meaningful content.
+
+Submit your evidence and close Challenge 7. Challenge 8 appears.
+
+### Part C - Navigating a PR with Your Screen Reader (10 min)
+
+Before lunch, practice navigating the PR you just opened:
+
+1. **Conversation tab:** Read the PR title, description, and Aria's comment
+2. **Commits tab:** How many commits? Navigate the list
+3. **Files Changed tab:** Navigate the diff -- what changed?
+4. **Leave an inline comment:** In Files Changed, find a changed line, find the comment button (`B` for buttons or `Shift+F10` for context menu), type a comment, submit as "Start a review"
+5. Submit your review with an overall comment
 
 ### Reference Document
-[Working with Pull Requests](docs/06-working-with-pull-requests.md)
+
+[Working with Pull Requests](../docs/06-working-with-pull-requests.md) | [Merge Conflicts](../docs/07-merge-conflicts.md)
 
 
 ## Lunch (1:00 PM, 60 min)
 
 
-## Block 5 - Your First Real Contribution Sprint (2:00 PM, 60 min)
+## Block 5 - Culture, Triage, and Merge Day (2:00 PM, 60 min)
 
 ### Purpose
-Every participant makes at least one real contribution to the `learning-room` repo. This block is where the mechanics practiced in the Skills modules get applied to a collaborative, real-world contribution - with both automated bot feedback AND another human reviewer on the other end.
 
-> **The difference from Skills modules:** Mona gave you instant, automated feedback. Now you will experience TWO types of feedback:
-> 1. **Bot feedback** - instant, technical checking (accessibility, formatting, links)
-> 2. **Human feedback** - considered, contextual suggestions (what matters most, creative ideas, encouragement)
-> 
-> Both are valuable. Both are part of professional open source development.
+Participants reflect on open source culture, practice issue triage, and get their Day 1 PR merged.
 
-### Merge Conflicts: What to Expect (10 min)
+### Part A - Challenge 8: The Culture Layer (25 min)
 
-When multiple contributors edit the same file at the same time, Git cannot automatically combine the changes. This is called a **merge conflict**. During this sprint, conflicts are likely because several participants will be editing `docs/welcome.md` simultaneously.
+Challenge 8 has two parts:
 
-**Before you start your challenge**, read the conflict prevention strategies and resolution steps in [Chapter 7: Merge Conflicts](docs/07-merge-conflicts.md). Key points:
+**Part 1 - Reflection:**
+Think about your experience so far. Answer one or more:
+- What made you feel welcome when you arrived?
+- What would make this workshop more accessible or inclusive?
+- What is one thing you learned from a classmate today?
 
-- **Communicate with your team.** If two people are both working on `docs/welcome.md`, coordinate who edits which `[TODO]` section.
-- **Pull before you push.** Always sync with the latest `main` before opening a PR.
-- **If you see conflict markers** (`<<<<<<<`, `=======`, `>>>>>>>`), do not panic. The markers show both versions. Keep the correct content, delete the markers, and commit.
+**Part 2 - Triage an issue:**
+1. Go to the Issues tab and find an open issue (yours or a classmate's)
+2. Add at least one label that describes the issue (`bug`, `enhancement`, `documentation`, `good first issue`)
+3. If you think the issue needs someone's attention, leave a comment tagging them
 
-The facilitator will walk through a live conflict resolution if one occurs during the sprint.
+> **Why labels matter:** Labels are how maintainers organize hundreds of issues. A well-labeled issue gets found faster. The `good first issue` label is specifically how newcomers find their first contribution in any project.
 
-### Setup
-The `learning-room` repo has a `docs/` folder with three intentionally imperfect practice files. Each participant will work on one of the first three challenges from [docs/CHALLENGES.md](docs/CHALLENGES.md):
+Submit your evidence and close Challenge 8. Challenge 9 appears.
 
-| Challenge | File | What to fix | Difficulty |
-|-----------|------|-------------|-----------|
-| Challenge 1: Fix Broken Link | `docs/welcome.md` | Update the `[DATE]` placeholder with today's date | 5-10 min |
-| Challenge 2: Add Keyboard Shortcut | `docs/keyboard-shortcuts.md` | Add a missing shortcut to the correct table | 15-20 min |
-| Challenge 3: Complete Welcome Guide | `docs/welcome.md` | Fill in the three `[TODO]` sections | 20-30 min |
-### Know Your File Before You Fix It (5 min)
+### Part B - Challenge 9: Merge Day (25 min)
 
-Before starting your challenge, explore the file you will be editing. This is the reconnaissance you previewed in Block 1 - now with purpose.
+Challenge 9 is the Day 1 capstone: get your PR merged.
 
-**If your challenge targets `docs/welcome.md` (Challenges 1 and 3):**
-1. Open `docs/welcome.md` - press `H` to navigate through all headings
-2. Find the `[TODO]` markers - these are the sections you will complete
-3. Press `K` to check the internal links - is there a broken one?
-4. Note the heading hierarchy: H1, H2, H3. Your additions must follow this pattern.
+**Merge checklist:**
+- [ ] Your PR has no merge conflicts (if it does, resolve them first)
+- [ ] Your PR links to your issue with `Closes #XX`
+- [ ] Your commit message is meaningful
+- [ ] You have reviewed your own changes one last time
 
-**If your challenge targets `docs/keyboard-shortcuts.md` (Challenge 2):**
-1. Open `docs/keyboard-shortcuts.md` - press `2` to navigate H2 sections (NVDA, JAWS, VoiceOver)
-2. Press `T` to navigate into the shortcut tables
-3. Read through the table rows - can you spot the intentional errors?
-4. Check: does every screen reader section have the same set of shortcuts?
+**Steps:**
+1. Open your PR on the Pull Requests tab
+2. If all checks pass (green checkmarks), you are ready to merge
+3. Select "Merge pull request" (your facilitator may handle this step)
+4. After the merge, go to the Code tab and verify your changes appear on `main`
+5. Check that your linked issue was automatically closed
 
-**If your challenge targets `docs/setup-guide.md` (Advanced):**
-1. Open `docs/setup-guide.md` - press `K` to navigate all links
-2. Which links are broken? Where should they point?
-3. Read the step-by-step instructions - which steps are incomplete?
+> **Magic Moment:** Navigate to the Code tab. Your changes are on `main`. The issue you filed is closed. Your name is in the commit history. This is how every open source contribution works -- everywhere, on every project, forever.
 
-The challenges in [docs/CHALLENGES.md](docs/CHALLENGES.md) map directly to these files and list success criteria for each.
-Each participant will:
-1. Find their assigned issue (which maps to one of these challenges)
-2. Edit the practice file on GitHub
-3. Commit, branch, and open a PR
-4. **Wait for bot feedback** (watch for comment within 30 seconds)
-5. Address bot feedback if needed
-6. Request review from another participant
-7. Review someone else's PR
+Submit your evidence and close Challenge 9.
 
-### Full Workflow
+### Part C - Help a Classmate (10 min)
 
-**Example walkthrough: Challenge 3 - Complete the welcome guide**
+If you finished Challenges 8-9, find a classmate who is still working:
+- Help them resolve a merge conflict
+- Review their PR and leave a constructive comment
+- Answer a question about something you figured out
 
-This example shows the full workflow for filling in `[TODO]` sections in `docs/welcome.md`. Your actual challenge may differ.
-
-```
-Step 1: Find your issue
-  Issues tab → filter by Assignee: me
-  Open the issue - it says: "Complete the [TODO] sections in docs/welcome.md"
-  Read the full description - it references Challenge 3 from CHALLENGES.md
-
-Step 2: Navigate to the file
-  Code tab → docs/ folder → welcome.md
-  Read the file - find the [TODO] markers:
-    • "Who Can Contribute?" section: [TODO: Add a paragraph explaining 
-      that contributors come from all backgrounds...]
-    • "Finding Something to Work On" section: [TODO: Add two or three 
-      sentences about how to read an issue...]
-    • "After Your Contribution Is Merged" section: [TODO: Add a sentence
-      or two about what this means for someone's GitHub profile...]
-
-Step 3: Edit the file on GitHub
-  Find the edit pencil button (B for buttons → "Edit this file")
-  Switch to Focus Mode → replace each [TODO] with real content
-  Example for the first [TODO]:
-    "Contributors come from all backgrounds, skill levels, and 
-    countries. Using assistive technology is not a barrier to 
-    contribution - in fact, AT users bring a perspective that 
-    improves projects for everyone."
-
-Step 4: Commit and branch
-  Commit changes → select "Create a new branch"
-  Name: fix/[your-name]-issue-[number]
-  "Propose changes"
-
-Step 5: Open the Pull Request
-  Fill in the PR description using the template:
-    ## What Changed
-    Completed the three [TODO] sections in docs/welcome.md
-
-    ## Related Issue
-    Closes #[your-issue-number]
-
-    ## Checklist
-    - [x] All [TODO] markers removed
-    - [x] Content matches the style of existing sections
-    - [x] Heading hierarchy is correct (H1 → H2 → H3)
-
-WAIT FOR BOT (30 seconds)
-  The Learning Room bot will automatically comment on your PR
-  Read the comment carefully - it checks for:
-    • Issue reference (did you include "Closes #XX"?)
-    • File location (are changes in docs/ only?)
-    • Heading hierarchy (no H1→H3 skips)
-    • Link text quality (no "click here")
-    • [TODO] markers (did you remove them all?)
-  The bot explains WHY each issue matters and links to resources
-
-Step 6: Fix bot issues (if any)
-  Address any required checks the bot flagged
-  Push your changes to the same branch - the bot re-checks automatically
-
-Step 7: Request human review
-  Click "Reviewers" → select another participant
-  THE BOT IS NOT A SUBSTITUTE FOR HUMAN REVIEW
-  You need both: bot technical feedback + human judgment
-
-Step 8: Review someone else's PR
-  Find the PR opened by another participant
-  Leave a constructive comment addressing:
-    • The issues the bot flagged (did they fix them well?)
-    • Content quality (is the writing clear and inclusive?)
-    • Accessibility (do headings, links, and structure work for screen readers?)
-  Approve if it looks good
-```
-
-**Other challenge examples:**
-
-**Challenge 1 (Fix Broken Link):** Open `docs/welcome.md`, find the broken internal link, determine the correct file path, and update the link. The bot will verify the link resolves correctly.
-
-**Challenge 2 (Add Keyboard Shortcut):** Open `docs/keyboard-shortcuts.md`, find the appropriate screen reader section (NVDA, JAWS, or VoiceOver), add a missing shortcut to the table using proper Markdown table syntax. The bot checks that table formatting is preserved.
-
-### What the Bot Checks
-The automation bot validates these things:
-- **Broken links** - do internal and external links work?
-- **Heading hierarchy** - no skips (H1→H3), proper structure
-- **Image descriptions** - all images have meaningful alt text
-- **Link text quality** - links use descriptive text (not "click here")
-- **[TODO] markers** - all must be completed
-- **Document formatting** - tables, code blocks, lists are correct
-
-**The bot is educational.** Every issue includes:
-- What the problem is
-- WHY it matters (accessibility, clarity, usability)
-- HOW to fix it (with examples)
-- Links to learning resources
-
-**See:** [Student Guide](learning-room/.github/STUDENT_GUIDE.md) for detailed explanation of bot feedback
-
-### What to look for in each practice file
-
-**`docs/welcome.md`** (Challenges 1 and 3):
-- Three `[TODO]` sections that need real content (see "Who Can Contribute?", "Finding Something to Work On", "After Your Contribution Is Merged")
-- A broken internal link to verify and fix
-- Heading hierarchy to check (H1 → H2 flow)
-
-**`docs/keyboard-shortcuts.md`** (Challenge 2):
-- NVDA, JAWS, and VoiceOver shortcut tables
-- Intentional errors in some shortcut references
-- Missing shortcuts that should be added
-- Table formatting that must be preserved
-
-**`docs/setup-guide.md`** (Advanced challenges):
-- Broken links to GitHub settings pages
-- Incomplete setup steps
-- A note at the bottom referencing `[TODO]` items
-
-**`docs/CHALLENGES.md`** lists all 21 challenges with success criteria for each. When reviewing a peer's PR, check their work against the success criteria listed for their challenge.
+If everyone is done, browse the bonus challenges (A through E) for extra practice.
 
 
 ## Break (3:00 PM, 15 min)
 
-Stand, stretch, and rest your ears. The contribution sprint demands focus. The final block is discussion-centered and lower intensity.
+Stand, stretch, and rest your ears. The final block is discussion-centered and lower intensity.
 
 
-## Block 6 - Community: Culture, Etiquette, Labels, and Notifications (3:15 PM, 75 min)
+## Block 6 - Community: Communication, Labels, and Notifications (3:15 PM, 75 min)
 
 ### Purpose
+
 Participants understand the human side of open source: how to communicate well, how to stay organized, and how to manage their GitHub notification experience.
 
-### Part 6A - Community Health Files (15 min)
+### Part A - Community Health Files (15 min)
 
 **Discussion:** What makes an open source project a welcoming place?
 
-**Hands-on:** Navigate the community health files in `learning-room`:
-1. Read `CODE_OF_CONDUCT.md` - what does it commit to?
-2. Read `CONTRIBUTING.md` - what does the project ask of contributors?
-3. Read the Issue Templates - navigate to `.github/ISSUE_TEMPLATE/` and open the beginner challenge template. What information does it require and why?
-4. Read the Student Guide (`.github/STUDENT_GUIDE.md`) - find the "Common Validation Issues and Fixes" section. This explains every bot feedback message you might see.
+**Hands-on:** Navigate the community health files in your repository:
+1. Read `CODE_OF_CONDUCT.md` -- what does it commit to?
+2. Read `CONTRIBUTING.md` -- what does the project ask of contributors?
+3. Navigate to `.github/ISSUE_TEMPLATE/` and open a challenge template. What information does it require and why?
+4. Read the Student Guide (`.github/STUDENT_GUIDE.md`) -- find the "Common Validation Issues and Fixes" section. This explains every Aria bot feedback message you might see.
 
 **Key insight:** These files exist to lower barriers AND set expectations. A project with these files sends a signal of maturity and intention.
 
-### Part 6B - Communication and Review Culture (30 min)
+### Part B - Communication and Review Culture (30 min)
 
 **Discussion: How to communicate in open source (10 min)**
 
@@ -629,7 +454,7 @@ Open source communication is asynchronous. Your comment will be read out of cont
 - Clarity and precision: "I noticed X, which might cause Y" vs "This is wrong"
 - The difference between critiquing code and critiquing people
 - Handling disagreement: "I see it differently because..." rather than "No, that's incorrect"
-- Acknowledging effort: starting with what's working before identifying problems
+- Acknowledging effort: starting with what is working before identifying problems
 - Avoiding jargon and acronyms that exclude newcomers
 
 **The anatomy of a good review comment (10 min)**
@@ -651,31 +476,29 @@ Example:
 **Exercise: Rewrite and write (10 min)**
 
 Rewrite these comments to be more inclusive:
-1. "This is obviously wrong - anyone can see it doesn't handle nulls."
+1. "This is obviously wrong -- anyone can see it does not handle nulls."
 2. "LGTM but TBH this feels like over-engineering IMO."
 3. "Fix this before EOD."
 
 Then write a review comment for this change: "A PR removes the `<main>` landmark element from a page."
 
-### Part 6C - Labels, Milestones, and Cross-References (20 min)
+### Part C - Labels, Milestones, and Cross-References (20 min)
 
-**Labels - organizing intent:**
-- Creating a label: Issues → Labels → New label
+**Labels -- organizing intent:**
+- Creating a label: Issues > Labels > New label
 - Applying labels from the issue sidebar
 - Filtering issues by multiple labels
 - Label naming conventions
 
-**Milestones - organizing time:**
-- Navigate to Issues → Milestones
-- Open the "Hackathon Day 1" milestone
-- Add your issue to it from the sidebar
-
-**Cross-references - linking work:**
+**Cross-references -- linking work:**
 - From a PR description: `Closes #42` auto-closes the issue on merge
 - Referencing across repos: `owner/repo#42`
 - From comments: type `#` and a number
 
-### Part 6D - Notifications: Taking Control of Your Inbox (10 min)
+**Hands-on:**
+Practice applying labels to a challenge issue in your repo. If you have completed all your challenges, help a classmate label theirs.
+
+### Part D - Notifications: Taking Control of Your Inbox (10 min)
 
 **Concepts:**
 - GitHub Notifications inbox: `github.com/notifications`
@@ -685,29 +508,31 @@ Then write a review comment for this change: "A PR removes the `<main>` landmark
 
 **Hands-on:**
 1. Navigate to your Notifications inbox
-2. Find the notification from your PR comment
+2. Find the notification from your PR or issue comment
 3. Mark it as Done
-4. Change `learning-room` Watch settings to "Participating and @mentions only"
+4. Change your repository Watch settings to "Participating and @mentions only"
 
 
 ## Wrap-Up (4:30 PM, 30 min)
 
 ### What You Built Today (10 min)
 
-Today you navigated real GitHub repositories, filed real issues, opened real pull requests, reviewed real contributions, and merged real changes. Those skills work on every GitHub repository in the world -- not just this workshop.
+Today you navigated real GitHub repositories, filed real issues, opened real pull requests, reviewed real contributions, and merged real changes -- in your own repository with automated feedback. Those skills work on every GitHub repository in the world, not just this workshop.
 
-### Skills Module Completion Check (10 min)
+### Challenge Progress Check (10 min)
 
-> **Magic Moment #5:** Check your completions.
+Where are you in the challenge sequence?
 
-1. Navigate to the [Introduction to GitHub skills course](https://github.com/skills/introduction-to-github) - completed?
-2. Navigate to the [Review Pull Requests skills course](https://github.com/skills/review-pull-requests) - completed?
-3. Navigate to the [Communicate Using Markdown skills course](https://github.com/skills/communicate-using-markdown) - how many steps complete?
-4. Navigate to your GitHub profile - what appears there now?
+| Status | What to Do |
+|--------|-----------|
+| Challenges 1-9 complete | Celebrate. Browse the bonus challenges for extra practice tonight. |
+| Challenges 7-8 in progress | Finish during tonight's optional time or first thing tomorrow. |
+| Challenge 6 or earlier | Talk to your facilitator about a catch-up plan for tonight. |
 
-These completions are yours permanently. They travel to every GitHub profile page you have. They are evidence of skills, not just reading.
+Your repository is yours. Aria is waiting. You can work through challenges at your own pace after the session ends.
 
 ### Reflection (10 min)
+
 - What is one thing you did not know before today?
 - What is one thing you want to get better at?
 - What is one contribution you want to make to a real accessibility project this week?
@@ -716,24 +541,24 @@ These completions are yours permanently. They travel to every GitHub profile pag
 
 Day 2 moves from the browser to **Visual Studio Code**. Here is what is coming:
 
-- **VS Code Screen Reader Mode** - Accessible Help (`Alt+H`), Accessible View (`Alt+F2`), Accessible Diff Viewer (`F7`)
-- **Accessibility Agents** - your earned reward for completing Day 1. An ecosystem of **55 AI agents across 3 teams and 5 platforms** that amplify the exact skills you built today. Explore the agents that match your interests and workflows - there is no fixed subset you are required to use.
-- **Ship a real PR upstream** - `community-access/accessibility-agents` is a live repository. Your name in its commit history is the Day 2 capstone.
+- **VS Code Screen Reader Mode** -- Accessible Help (`Alt+H`), Accessible View (`Alt+F2`), Accessible Diff Viewer (`F7`)
+- **Accessibility Agents** -- your earned reward for completing Day 1. An ecosystem of AI agents across 3 teams and 5 platforms that amplify the exact skills you built today.
+- **Ship a real PR upstream** -- `community-access/accessibility-agents` is a live repository. Your name in its commit history is the Day 2 capstone.
 
-> **Start thinking now:** Accessibility Agents has 26 agents for accessibility auditing (web, documents, mobile, ePub), 12 for GitHub workflows, and 6 for developer tools. As you reflect on today's experience - navigating repositories, filing issues, reviewing PRs by hand - ask yourself:
+> **Start thinking now:** As you reflect on today's experience -- navigating repositories, filing issues, reviewing PRs by hand -- ask yourself:
 >
 > - What took the longest? What was repetitive?
 > - What would be easier if an AI agent could handle the mechanical parts?
 > - What accessibility problem have you encountered that no tool addresses well?
 >
-> Tomorrow you will see the agents in action and have the opportunity to **contribute new agents, improve existing ones, or shape the project's roadmap**. The best contributions come from people who have done the manual work first - and that is exactly what you did today.
+> Tomorrow you will see the agents in action and have the opportunity to contribute new agents, improve existing ones, or shape the project's roadmap. The best contributions come from people who have done the manual work first -- and that is exactly what you did today.
 
 **Tonight (optional):**
-- Install VS Code and the GitHub Copilot Chat extension (see [Pre-Workshop Setup](docs/00-pre-workshop-setup.md))
-- Complete any Markdown Skills module steps you didn't finish
-- Browse the bonus challenges (A through E) in the [Challenge Hub](docs/CHALLENGES.md) for extra practice
-- Fork [accessibility-agents](https://github.com/community-access/accessibility-agents) - it will be ready and waiting when you open VS Code tomorrow
-- Browse the [55 agents by team](docs/19-accessibility-agents.md#3-the-ecosystem-55-agents-3-teams-5-platforms) - which ones spark ideas for you?
+- Install VS Code and the GitHub Copilot Chat extension (see [Pre-Workshop Setup](../docs/00-pre-workshop-setup.md))
+- Complete any remaining Day 1 challenges
+- Browse the bonus challenges (A through E) for extra practice
+- Fork [accessibility-agents](https://github.com/community-access/accessibility-agents) -- it will be ready and waiting when you open VS Code tomorrow
+- Browse the [agents by team](../docs/19-accessibility-agents.md) -- which ones spark ideas for you?
 
 ### If Today Is Your Only Day
 
@@ -746,67 +571,47 @@ Everything you learned today is complete and self-contained. You can now:
 - **Merge contributions** and see your name in a project's history
 
 **What to do next on your own:**
-- Explore the [Next Steps](docs/21-next-steps.md) guide for continuing your GitHub journey independently
+- Explore the [Next Steps](../docs/21-next-steps.md) guide for continuing your GitHub journey independently
 - Browse [github.com/topics/accessibility](https://github.com/topics/accessibility) for projects that need contributors
 - Look for issues labeled `good first issue` on any project that interests you
-- Complete the bonus challenges (A through E) in the [Challenge Hub](docs/CHALLENGES.md)
+- Complete the bonus challenges (A through E) in your Classroom repository
 - Share what you built today with someone who might want to learn GitHub too
 
 
 ## Facilitator Notes
 
-### Sandbox Repo Setup Required Before Day 1
+### Before Day 1
 
-Create the `learning-room` repo in your org with the following:
+**Template repository setup:**
+Ensure the template repo (`learning-room-template` or equivalent) has all automation configured and tested. See [classroom/README.md](../classroom/README.md) for the full deployment guide.
 
-**Pre-seeded issues:**
-- `#1` - "Welcome! Introduce yourself" (open, labeled `good first issue`, no assignee)
-- `#2` through `#N` - pre-assigned to each participant, each mapping to a specific challenge from `docs/CHALLENGES.md`:
-  - Challenges 1-3 (Beginner): Fix broken link in `welcome.md`, add shortcut to `keyboard-shortcuts.md`, complete `[TODO]` sections in `welcome.md`
-  - Challenges 4-6 (Intermediate): Fix heading hierarchy, improve link text, add alt text across docs
-  - Advanced challenges for faster students: review, documentation creation, mentoring
-- Several unlabeled "triage practice" issues for Part 6E
-- One issue labeled `accessibility` with a realistic AT-related bug report for reference
+**Classroom assignment:**
+Create the Day 1 assignment ("You Belong Here") in GitHub Classroom linked to the template repo. Set it to individual assignment, private repos.
 
-**Pre-seeded PR:**
-- "Fix typo in keyboard-shortcuts.md" - a clean PR fixing a minor error in the NVDA shortcuts table, with a meaningful diff, at least two commits, and active status checks. This is the PR students examine in Block 4.
+**Pre-create the merge conflict trigger:**
+For Challenge 7, you need to edit `docs/welcome.md` on `main` in each student's repo AFTER they have committed to their branch but BEFORE they try to merge. Plan the timing:
+- Watch for students reaching Challenge 6 (opening a PR)
+- Push a conflicting edit to `main` in their repos, or use a workflow to trigger it
+- This must happen between Challenge 6 and Challenge 7
 
-**Pre-created branch:** `day1-practice` with edits to `docs/welcome.md` and `docs/setup-guide.md` that differ from `main` (used in Block 2 Activity 2D)
+### Pacing Tips
 
-**Files included in learning-room repo:**
-```
-learning-room/
-├── README.md                           ← Getting started guide with file inventory
-├── CODE_OF_CONDUCT.md
-├── CONTRIBUTING.md
-├── .github/
-│   ├── STUDENT_GUIDE.md                ← Bot feedback guide with fix examples
-│   ├── ISSUE_TEMPLATE/
-│   │   ├── config.yml
-│   │   └── [21 challenge templates]        ← 16 core + 5 bonus
-│   ├── PULL_REQUEST_TEMPLATE.md        ← Checklist template students fill out
-│   ├── workflows/
-│   │   ├── learning-room-pr-bot.yml    ← PR validation + educational feedback
-│   │   ├── skills-progression.yml      ← Progress tracking + badge awards
-│   │   └── student-grouping.yml        ← Auto-assigns peer reviewers
-│   └── scripts/
-│       └── validate-pr.js              ← Validation logic (checks headings, links, TODOs)
-├── docs/
-│   ├── CHALLENGES.md                   ← 21 challenges: 16 core + 5 bonus
-│   ├── welcome.md                      ← 3 [TODO] sections + broken link
-│   ├── keyboard-shortcuts.md           ← NVDA/JAWS/VO tables with errors
-│   └── setup-guide.md                  ← Broken links + incomplete steps
-└── [GITHUB_SKILLS.md]                  ← Self-paced GitHub Skills module reference
-```
+- **Block 0:** Allow the full 30 minutes for assignment acceptance. Some screen reader users may need help navigating the Classroom acceptance page.
+- **Block 1, Part B:** Allow 25 minutes for Challenge 1. The scavenger hunt requires navigating multiple repository sections, which takes longer with a screen reader.
+- **Blocks 2-3:** Challenges 2-5 are the core workflow (issue, branch, edit, commit). If a participant gets stuck on one, help them directly rather than moving on -- these skills build on each other.
+- **Block 4, Part B:** The merge conflict is facilitator-triggered. Time it carefully. If a participant has not opened their PR yet, wait before triggering the conflict.
+- **Block 5:** If participants finish Challenges 8-9 quickly, direct them to bonus challenges or peer review.
+- **Stragglers:** Some participants will not finish all 9 challenges in-session. This is fine -- the repos are theirs and Aria is waiting. They can finish on their own time.
 
-### Pacing Tips for Skills Modules
+### The Emotional Arc
 
-- **Block 1, Part B:** Allow 10 minutes for every participant to copy the Skills repo and see Mona's first message. If someone does not see Mona's response within 2 minutes, check: was the repo created as public? (Mona requires public visibility on the free tier.)
-- **Block 3, Part A:** Participants work at different speeds. Have a "bonus" ready: while waiting for Mona, participants can start the Communicate Using Markdown module setup.
-- **Block 4, Part A:** The `review-pull-requests` module creates its PR automatically. Give everyone 5 minutes to copy the repo before moving to Part B - Mona needs time to set up the PR.
-- **If a Skills module step gets stuck:** Do not spend more than 5 minutes unblocking one participant's bot issue. Have them watch your screen while you continue with the group, and revisit during activity periods.
-- **Completion badges:** Not all participants will complete every module in-session. This is fine - the repos are theirs, Mona is waiting, and they can finish on their own time.
+Day 1 has three peaks:
+1. **The first Aria response** (Block 1) -- participants see an automated system react to their action
+2. **The first PR feedback** (Block 4) -- Aria comments on their real PR within 30 seconds
+3. **The merge** (Block 5) -- their changes are on `main` and their issue auto-closed
+
+Do not rush these moments. Give each one time to land.
 
 
 *Day 2: [Day 2 Agenda](DAY2_AGENDA.md)*
-*Related: [Navigating Repositories](docs/03-navigating-repositories.md) | [Working with Issues](docs/05-working-with-issues.md) | [Working with Pull Requests](docs/06-working-with-pull-requests.md)*
+*Related: [Navigating Repositories](../docs/03-navigating-repositories.md) | [Working with Issues](../docs/05-working-with-issues.md) | [Working with Pull Requests](../docs/06-working-with-pull-requests.md)*

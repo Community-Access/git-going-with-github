@@ -2,316 +2,264 @@
 
 ## Overview
 
-This repository is configured for a 2-day workshop with 67 blind/low-vision students.
-Safety, accessibility, and reliability are the top priorities.
+This repository hosts the curriculum and facilitator materials for the Git Going with GitHub workshop. Student work happens in **individual private repositories** created by GitHub Classroom, not in this repository. This document covers the security model for both the curriculum repository and the student repositories.
 
 
 ## Access Control
 
-### Who Can Access What
+### Curriculum Repository (git-going-with-github)
 
-| Role          | Repository     | Issues              | PRs                | Assignments      |
-|---------------|----------------|---------------------|--------------------|------------------|
-| Students      | Read (public)  | Create & Comment    | Create & Merge     | Can work on       |
-| Facilitators  | Full Access    | Full Access         | Review & Merge     | Assign issues     |
-| Org Members   | Read           | Comment             | Review             | N/A              |
-| Public        | Read           | N/A                 | N/A                | N/A              |
+| Role | Repository | Issues | PRs | Settings |
+|---|---|---|---|---|
+| Facilitators | Full access | Full access | Review and merge | Admin |
+| Contributors | Read | Create and comment | Create | None |
+| Public | Read | View | View | None |
 
-### Organization Invitations
+This repository is public. It contains no secrets, student data, or sensitive configuration. All curriculum content is openly licensed.
 
-Students are invited to the `Community-Access` organization as **Members** with:
-- **Role**: Member (not Admin or Owner)
-- **Repository Access**: Read/Write to git-going-with-github
-- **No permissions** to access organization settings or other repos
-- **Team assignment**: Optional - for grouping during reviews
+### Student Repositories (created by GitHub Classroom)
 
-### Joining the Organization
+| Role | Repository | Issues | PRs | Settings |
+|---|---|---|---|---|
+| Student (owner) | Read/Write | Full access | Create and merge | Limited (no Actions config) |
+| Facilitators | Full access via Classroom | Full access | Review and comment | Admin |
+| Other students | No access | No access | No access | No access |
 
-**Process:**
-1. Student receives GitHub organization invitation via email
-2. Email comes from: noreply@github.com with subject "You've been invited..."
-3. Student clicks invitation link (valid for 7 days)
-4. GitHub shows org approval page - student clicks "Join"
-5. Student is now able to:
-   - See assignment issues
-   - Push to their `student/[username]` branch
-   - Create and merge pull requests
-   - View other students' branches
+Student repositories are **private by default**. Each student can only see their own repo. Facilitators see all student repos through the GitHub Classroom dashboard.
 
-**Troubleshooting:**
-- Invitation expired? Re-send from org settings
-- Can't see issues marked "assigned"? Check org membership at:
-  https://github.com/orgs/Community-Access/members
-- Branch push rejected? Verify you are a member of the org
+### Organization Membership
+
+Students do **not** need to be members of the Community-Access organization. GitHub Classroom handles all access automatically when a student accepts an assignment invite link. The student is granted access to their individual repo without any org-level permissions.
+
+Facilitators **do** need organization-level access to manage the classroom. See the Facilitator Access section below.
 
 
 ## Branch Protection
 
-### Main Branch (`main`)
+### Curriculum Repository (main branch)
 
 **Protection Rules:**
-- Require pull request reviews: YES (1 approval minimum)
-- Require status checks to pass: YES (GitHub Actions validation)
-- Require branches to be up to date: NO (to avoid merge conflicts)
-- Allow auto-merge: NO (manual merge only for safety)
-- Allow force pushes: NO (protect history)
-- Allow deletions: NO (protect branch)
+- Require pull request reviews: Yes (1 approval minimum)
+- Require status checks to pass: Yes (GitHub Actions validation)
+- Require branches to be up to date: No (to avoid unnecessary merge conflicts)
+- Allow auto-merge: No (manual merge only for safety)
+- Allow force pushes: No (protect history)
+- Allow deletions: No (protect branch)
 
-### Student Branches (`student/*`)
+### Student Repositories
 
-**Protection Rules:**
-- Creation allowed: Students can create at any time
-- Force push allowed: NO (protect work)
-- Deletion allowed: Only by admins (prevent data loss)
-- Protected from accidental overwrites
+Student repos are created from the `learning-room-template`. Branch protection in student repos is intentionally minimal:
 
-### Action: Student Cannot Break Main
+- Students can create branches freely (required for challenges)
+- Students can merge their own PRs (required for the learning flow)
+- No force push protection (students are learning; mistakes are part of the process)
+- GitHub Actions workflows run with read/write permissions (required for Aria and the Progression Bot)
 
-Even if a student force-pushes to their branch, they cannot:
-- Delete their branch
-- Corrupt the main branch
-- Block other students
-- Undo someone else's work
+### What Students Cannot Do
+
+Even within their own repo, students cannot:
+- Access GitHub Actions secrets at the organization level
+- Modify workflow files that run with elevated permissions
+- Access other students' repositories
+- View the classroom admin settings
 
 
 ## Permission Model
 
 ### Least Privilege
 
-Students have exactly the permissions they need:
-- NOT admins of org/repo
-- NOT access to secrets or CI/CD settings
-- NOT access to other repos in org
-- NOT access to billing or org management
-- CAN create branches, issues, and PRs
-- CAN push to their own student branch
-- CAN review other students' PRs
-- CAN merge PRs (with protection checks)
+The GitHub Classroom model enforces least privilege by design:
+
+- Students are **not** organization members
+- Students have **no** access to the curriculum repository's settings
+- Students have **no** access to other students' repos
+- Students have **no** access to CI/CD secrets or org-level configuration
+- Students **can** create branches, issues, and PRs in their own repo
+- Students **can** push to any branch in their own repo
+- Students **can** merge PRs in their own repo (with autograder checks reporting status)
 
 
 ## Facilitator Access
 
-### Facilitators MUST be Organization Owners
+### Required Access Level
 
-Facilitators need:
-- Create/edit issues
-- Assign issues to students
-- Merge pull requests
-- Review and comment on PRs
-- Monitor workshop progress
+Facilitators must be **Owners** or **Admins** of the Community-Access organization to:
 
-### Setup
+- Create and manage GitHub Classroom assignments
+- View all student repositories through the classroom dashboard
+- Comment on student PRs via the feedback pull request
+- Monitor autograding results
+- Troubleshoot workflow failures in student repos
 
-Run these commands (one per facilitator username):
+### Adding a Facilitator
 
 ```bash
-gh api /orgs/Community-Access/members/[username] -X PUT -f role=admin
+# Add a facilitator as an org admin
+gh api /orgs/Community-Access/memberships/USERNAME -X PUT -f role=admin
 
-# Verify
-gh api /orgs/Community-Access/members/[username] --jq .role
-# Should return: "admin"
+# Verify the role
+gh api /orgs/Community-Access/memberships/USERNAME --jq .role
+# Expected output: "admin"
+```
+
+### Removing a Facilitator After the Workshop
+
+```bash
+# Downgrade to member (retains read access) or remove entirely
+gh api /orgs/Community-Access/memberships/USERNAME -X DELETE
 ```
 
 
 ## GitHub Actions Security
 
-### Workflows
+### Workflows in Student Repositories
 
-**Learning Room PR Validation** (learning-room-validation.yml)
-- Triggers: On PR to `main` modifying `learning-room/**`
-- Permissions: Read-only access to repo
-- Actions: Validates markdown, links, accessibility
-- Output: Single comment on PR with feedback
-- Safety: Cannot modify code or create commits
+The template repository includes these workflows, which are copied into every student repo:
 
-### Secrets
+| Workflow | Trigger | Permissions | What It Does |
+|---|---|---|---|
+| `pr-validation-bot.yml` | PR opened/updated | Read/Write | Aria validates PR structure and posts feedback |
+| `student-progression.yml` | Issue closed | Read/Write | Creates the next challenge issue |
+| `autograder-conflicts.yml` | Push | Read | Checks for conflict markers |
+| `autograder-local-commit.yml` | Push | Read | Verifies local commit evidence |
+| `autograder-template.yml` | Push | Read | Validates YAML template |
+| `autograder-capstone.yml` | Push | Read | Validates agent file structure |
 
-**No sensitive secrets stored in repo**
+**Safety guarantees:**
+- Workflows use only `GITHUB_TOKEN` (scoped to the individual student repo)
+- No external API keys or webhook secrets are stored
+- Workflows cannot access other repositories or organization-level resources
+- Workflow code is visible to the student (transparency)
 
-Repository does not contain:
-- GitHub tokens
-- API keys
-- Webhook secrets
-- SSH keys
-- Passwords
+### Curriculum Repository Workflows
 
-**Safe to**: Public repos, student access, teaching
+The curriculum repo uses standard CI workflows for building HTML/EPUB output. These workflows:
+- Run on PRs to `main` only
+- Have read-only permissions
+- Do not deploy to production automatically
+- Cannot modify student repositories
 
 
 ## Data Privacy
 
 ### What Data Is Stored
 
-In the repository:
-- Student usernames (GitHub public)
-- Roster file with pronouns, timezone, interests
-- Branch names (`student/[username]`)
-- Commit history (who wrote what)
-- PR/issue history (who said what)
+**In the curriculum repository:**
+- No student data. This repo contains only curriculum content and facilitator guides.
+
+**In GitHub Classroom:**
+- Student GitHub usernames (public information)
+- Roster data (identifier, optional name, optional email) -- visible only to classroom admins
+- Assignment acceptance timestamps
+- Autograding scores
+
+**In student repositories:**
+- Commit history (who wrote what, when)
+- Issue and PR comments (visible only to the student and facilitators)
+- Branch names
 
 ### What Data Is NOT Stored
 
-Protected from accidental exposure:
-- Real names (optional, in roster under "name" field)
+- Real names (optional in roster; not required)
 - Home addresses
 - Phone numbers
-- Email addresses (GitHub enterprise feature only)
+- Email addresses (only if added to roster by the facilitator)
 - Payment information
-- Health information beyond "uses screen reader"
+- Health information beyond what students voluntarily disclose
 
-### Access to Roster
+### Data Retention
 
-File: `.github/data/student-roster.json`
-- Visible in: Repository code
-- Accessible to: All org members
-- Sensitivity: LOW (only public GitHub usernames + opt-in profile)
-- Safe to: Share roster with facilitators, teaching staff
+Student repositories persist after the workshop unless explicitly deleted. Facilitators can:
+- Archive the classroom (makes repos read-only; preserves them as portfolio pieces)
+- Delete student repos through the classroom settings
+- Export grades before archiving
+
+See [teardown-checklist.md](classroom/teardown-checklist.md) for the complete post-workshop cleanup process.
 
 
 ## Safety Checks
 
-### Before Workshop (Friday, March 7)
+### Before the Workshop
 
-**Repository Readiness:**
-- All 67 student branches created
-- Main branch protection enabled
-- GitHub Actions workflows enabled
-- Facilitators added as org admins
-- Students invited to org (pending their acceptance)
-- Assignment issues created successfully
-- Peer reviewer assignments generated
+**Deployment verification:** Complete the verification checklist in the [Workshop Deployment Guide](classroom/README.md#step-6-verify-everything-works). This confirms:
+- Student repos are created correctly from the template
+- Aria responds to PRs within 60 seconds
+- The Progression Bot creates challenge issues on issue close
+- Autograding runs and reports results
+- The feedback PR is created by Classroom
 
-**Access Verification:**
-- Facilitators can create and edit issues
-- Facilitators can review and merge PRs
-- Student branch access configured
-- GitHub Actions workflows run on test PR
+**Facilitator access:** Confirm all facilitators can:
+- View the classroom dashboard
+- Open student repos from the dashboard
+- Comment on student issues and PRs
 
-**Accessibility Check:**
-- Facilitator guide readable with screen reader
-- Assignment issues accessible
-- PR templates accessible
-
-### During Workshop (Saturday, March 8-9)
+### During the Workshop
 
 **Monitoring:**
-- GitHub status page monitored (https://www.githubstatus.com/)
-- Facilitators watch for API errors
-- Quick help docs ready for common issues
-- Fallback: Manual issue assignment if API down
+- GitHub status page: https://www.githubstatus.com/
+- Classroom dashboard for student progress and autograding results
+- Student repos' Actions tabs for workflow failures
 
 **Incident Response:**
-- If bot fails: Facilitators post feedback manually
-- If merge fails: Facilitator manually merges
-- If branch access denied: Check org membership
-- If PR template missing: Check .github/PULL_REQUEST_TEMPLATE directory
 
-
-## Daily Operations
-
-### Day 1 (Saturday, March 8, 12pm-8pm ET)
-
-1. **Orientation (12pm-1pm)**
-   - Explain org membership and issue assignment
-   - Demo: How to find your issue
-   - Demo: How to create a PR
-
-2. **Working Session (1pm-6pm)**
-   - Students work on assignments
-   - Facilitators monitor for issues
-   - Check: Issues appearing in Issues tab
-   - Check: GitHub Actions bot responding to PRs
-
-3. **Q&A/Office Hours (6pm-8pm)**
-   - Troubleshoot individual issues
-   - Answer technical questions
-   - Review example PRs
-
-### Day 2 (Sunday, March 9, 12pm-8pm ET)
-
-1. **Recap (12pm-1pm)**
-   - Review progress from Day 1
-   - Discuss common issues
-
-2. **Code Review Training (1pm-3pm)**
-   - Teach students how to review PRs
-   - Use facilitators' repos as examples
-   - Practice peer reviews
-
-3. **Skill Challenges (3pm-6pm)**
-   - Advanced challenges for fast finishers
-   - Small group deep dives
-   - Accessibility focus discussions
-
-4. **Celebration (6pm-8pm)**
-   - Showcase completed work
-   - Q&A
-   - Next steps & resources
+| Incident | Response |
+|---|---|
+| GitHub is down | Continue teaching fundamentals offline; resume when GitHub is back |
+| Aria stops responding | Check Actions tab; facilitators post feedback manually until resolved |
+| Autograding fails | Check workflow logs; use it as a teaching moment about CI/CD |
+| Student cannot accept invite | Verify GitHub account exists and is signed in; check roster match |
+| Progression Bot skips a challenge | Check Actions tab for errors; manually create the missed issue |
 
 
 ## Rollback & Emergency
 
 ### If Something Goes Wrong
 
-**GitHub Down:**
+**GitHub outage:**
 - Monitor: https://www.githubstatus.com/
 - Fallback: Continue teaching fundamentals offline
-- Recovery: Resume when GitHub is back
+- Recovery: Resume when GitHub is back; student repos persist through outages
 
-**Organization Issues:**
-- If students can't join org, invite them to repo collaborators instead
-- Command: `gh repo add-member -p pull [username]`
-- Result: Same access, different method
+**Student accidentally deletes a workflow file:**
+- Restore the file from the template repository
+- Commit directly to the student's `main` branch
+- The workflow resumes on the next trigger
 
-**Bot Not Working:**
-- Facilitators post feedback manually
-- Include: Link to learning-room-validation.yml for transparency
-- Continue: Workflow still valid, just faster with automation
+**Need to revert a student's work:**
+- Use `git revert` (do not force push -- protect learning history)
+- Guide the student through the revert as a teaching moment
 
-**Need to Revert Something:**
-- Merge conflict: Facilitator helps student resolve
-- Bad commit: Use `git revert` (don't force push)
-- Deleted branch: Can restore from GitHub's trash (within 90 days)
+**Student repo is corrupted:**
+- Have the student accept the invite link again (Classroom creates a fresh repo if the original is deleted)
+- Or restore files manually from the template
 
 
 ## Compliance & Audit
 
-### What's Logged
+### What Is Logged
 
-GitHub logs:
+GitHub automatically logs:
 - All push events (who, what, when)
 - All PR activity (created, reviewed, merged)
 - All issue activity (created, commented, closed)
-- All member activities (access, permissions changes)
+- Workflow runs and results
 
-These are available in:
-- Repository settings > Code security and analysis
-- Organization settings > Audit log
+These logs are available in:
+- Each repository's Actions tab (workflow history)
+- Organization settings > Audit log (admin actions)
+- GitHub Classroom dashboard (assignment and grading data)
 
-### What's Audited
+### Audit Priorities
 
-For safety:
-- No one pushed to `main` directly (all via PR)
-- All PRs have at least 1 review (from protection rules)
-- No one with admin access without reason
-- GitHub Actions workflows only do what's documented
-
-### For Teaching
-
-We can show students:
-- Their commit history on their branch
-- Their PR reviews on other students' PRs
-- How the GitHub Actions bot validated their work
-- Example of a properly merged PR
+- All curriculum changes go through PR review (enforced by branch protection)
+- No direct pushes to `main` in the curriculum repository
+- Student repos use automation only through `GITHUB_TOKEN` (no external credentials)
+- Facilitator access is scoped to the workshop duration and removed afterward
 
 
 ## Contact & Support
 
-**Workshop Coordinator:** [Facilitator Name]
-**Emergency Contact:** [Phone/Email]
 **GitHub Organization:** https://github.com/Community-Access
-**Repository:** https://github.com/Community-Access/git-going-with-github
-**Learning Room:** /learning-room/README.md
-
-**Facilitator Private Slack:** [Link to channel]
-**Student Support Channel:** [Zoom link for office hours]
+**Curriculum Repository:** https://github.com/Community-Access/git-going-with-github
+**GitHub Classroom:** https://classroom.github.com
+**GitHub Status:** https://www.githubstatus.com/

@@ -845,5 +845,5 @@ This FAQ does not cover your question? Try these resources in order:
 7. [**FACILITATOR.md**](FACILITATOR.md) - If you are leading a workshop
 
 
-*Last updated: February 2026*  
+*Last updated: March 2026*  
 *Have more questions? Open an issue or discussion on GitHub!*

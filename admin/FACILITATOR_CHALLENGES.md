@@ -1,342 +1,272 @@
 # Facilitator Operations Guide
 
-This section is for facilitators and administrators managing the workshop challenge system.
+How to monitor, support, and troubleshoot the workshop challenge system during a live cohort. For deployment and classroom setup, see the [Workshop Deployment Guide](../classroom/README.md).
 
 
-##  Pre-Workshop Setup (Facilitator Only)
+## How the Challenge System Works
 
-### Step 1: Prepare the Student List
+Each student gets a **private repository** from GitHub Classroom. Inside that repo, three automation systems run independently:
 
-Get a CSV or list of GitHub usernames for all workshop participants:
+| System | What it does |
+|---|---|
+| **Student Progression Bot** | Creates the next challenge issue when the student closes the current one |
+| **Aria (PR Validation Bot)** | Validates PR structure, welcomes first-timers, responds to `@aria-bot` help |
+| **Autograders** | Runs automated tests on specific challenges to verify completion evidence |
 
-```
-accesswatch
-amandarush
-andysq62
-apelli95
-arqamgrt
-...
-```
+Challenges are sequential. A student cannot see Challenge 5 until they close Challenge 4. This keeps students focused and prevents overwhelm.
 
-Save this list as `student-usernames.txt` in the repository root (commit it but don't modify between workshops).
 
-### Step 2: Generate Challenge Issues
+## Monitoring Student Progress
 
-**Use the batch issue generator script:**
+### GitHub Classroom Dashboard
 
-```bash
-python scripts/batch_create_challenges.py \
-  --students student-usernames.txt \
-  --chapters 4,5,6,11 \
-  --cohort "March 2026"
-```
+The primary monitoring tool is the classroom dashboard at [classroom.github.com](https://classroom.github.com):
 
-This creates:
-- Challenge 4.1, 4.2, 4.3 (one set per student)
-- Challenge 6.1, 5.2, 5.3 (one set per student)
-- Challenge 7.1 (one per student)
-- Challenge 11.1, 11.2, 11.3 (one set per student)
+- **Accepted assignments** -- how many students have started
+- **Recent commits** -- who is actively working
+- **Autograding results** -- pass/fail per student per test
 
-**Total generated:** 10 issues per student (for these 4 chapters). Example: 12 students = 120 issues.
+### Checking Individual Students
 
-### Step 3: Verify Generation
-
-Check that issues were created:
+To inspect a specific student's repo, open it from the classroom dashboard or navigate directly:
 
 ```bash
-# List all challenges by label
-gh issue list --label challenge --limit 100
+# Open the student's repo from the classroom org
+# Pattern: Community-Access-Classroom/learning-room-[username]
 
-# Count issues by chapter
-gh issue list --label challenge --label "skill: github-issues" --limit 100
+# List open challenge issues in a student's repo
+gh issue list --repo Community-Access-Classroom/learning-room-studentname --state open
+
+# List closed (completed) challenges
+gh issue list --repo Community-Access-Classroom/learning-room-studentname --state closed
 ```
 
-Each issue should:
--  Have the student's `@username` in the title
--  Be assigned to that student
--  Have labels: `challenge`, level label, skill label, day label
--  Have a clear, complete description with links to this hub and the chapter docs
--  Have a link to the full Challenge Hub
+### Identifying Students Who Are Stuck
 
-### Step 4: Set Up Bot Validation (Optional)
+Look for these signals on the classroom dashboard:
 
-If using PR bot validation for Chapters 4, 5, 6, 11:
-
-```bash
-# Verify the PR validation workflow exists
-ls .github/workflows/learning-room-pr-bot.yml
-
-# Check bot configuration
-cat .github/scripts/validate-pr.js
-```
-
-The bot automatically validates PRs that reference challenge issues.
-
-### Step 5: Brief Students
-
-In your opening welcome, say:
-
-> "You have 30+ challenges pre-assigned to you. Go to the **Issues** tab, filter by your username, and your challenges appear. Click any issue to read the full instructions. Complete the challenge, open a PR that says `Closes #XX`, and watch the bot validate your work. When it passes, merge and move to the next challenge."
-
-**That's it.** Instructions are self-contained in the issues and the Challenge Hub.
+- Student accepted the assignment but has zero commits (may need help getting started)
+- Student has not closed an issue in over an hour (may be stuck on a challenge)
+- Autograding shows repeated failures (may need guidance on what the test expects)
 
 
-##  Managing Challenges During the Workshop
+## Responding to Help Requests
 
-### Monitoring Student Progress
+### When a Student Says "I am stuck"
 
-**Real-time dashboard:**
-
-```bash
-# See all open challenges by chapter
-gh issue list --label challenge --label "day: 1" --state open
-
-# See which students have uncompleted challenges
-gh issue list --label challenge --assignee @USERNAME --state open
-
-# See completed challenges (auto-closed on PR merge)
-gh issue list --label challenge --state closed --limit 20
-```
-
-### Responding to Help Requests
-
-When a student says **"I'm stuck on Challenge 4.2":**
-
-1. Open their issue: `gh issue view [issue_number]`
-2. See the exact challenge description
-3. Review the "If You Get Stuck" section in the issue
-4. Post a comment with: "Let me help. Try [step] next. Let me know how it goes."
+1. Open their repo from the classroom dashboard
+2. Check which challenge issue is open -- that is where they are stuck
+3. Read the challenge instructions in the issue body (every challenge includes a "If You Get Stuck" section)
+4. Comment on their issue: "Let me help. Try [specific step] next. Let me know how it goes."
 
 The issue becomes a support thread. Every comment builds evidence of learning.
 
-### Validating Difficult Challenges
+### When a Student Uses @aria-bot
 
-For challenges **without bot validation** (Chapters 5, 8-10, 12-16):
+Students can comment `@aria-bot` followed by a question on any PR. Aria responds automatically with guidance. If Aria's response is insufficient:
 
-1. Review the student's PR or issue comment
-2. Look for: clear evidence, correct steps, good explanation
-3. Comment: "Great work! Your [X] shows you understand [concept].  Moving you to the next challenge."
-4. Leave the PR open or issue open - don't auto-merge/close until you've reviewed
+1. Read Aria's reply to understand what it already covered
+2. Add your own comment with more specific guidance
+3. No need to disable Aria -- your comment supplements the bot's response
 
-### Troubleshooting Failed Bot Validation
+### Priority Intervention Triggers
 
-If a student's PR fails bot checks:
+Act immediately when you see:
 
-1. Read the bot's comment carefully - it explains exactly what failed
-2. Ask: "Can you check the bot comment and try [specific fix]?"
-3. Have them push again - bot re-validates automatically
-4. If it's a real bot bug, flag it for later and manually approve the PR
+- A student closes 3+ issues within 2 minutes (they may be closing without completing -- check for evidence)
+- A student has zero activity for over 90 minutes after accepting (they may be lost)
+- Aria posts an error or does not respond to a PR within 60 seconds (workflow may be disabled)
 
 
-##  Post-Workshop Cleanup
+## Validating Challenges
 
-### Step 1: Archive Old Issues
+### Challenges with Automatic Validation
 
-After the workshop ends:
+These challenges have autograding tests that verify completion:
 
-```bash
-# Close all challenge issues for this cohort
-gh issue list --label challenge --state open \
-  | xargs -I {} gh issue close {} --comment "Cohort complete. Thanks for participating!"
-```
+| Challenge | What the autograder checks |
+|---|---|
+| 4 - Branch Out | Branch exists with correct naming |
+| 5 - Make Your Mark | File was edited on the branch |
+| 6 - Your First Pull Request | PR references an issue with `Closes #` |
+| 7 - Resolve a Merge Conflict | No conflict markers remain in the file |
+| 9 - Merge Day | PR was merged successfully |
+| 10 - Go Local | Local commit was pushed to GitHub |
+| 11 - Open a Day 2 PR | Push from local to remote succeeded |
+| 12 - Review Like a Pro | Review comment exists on a PR |
+| 14 - Template Remix | YAML file passes validation |
+| 16 - Build Your Agent (Capstone) | Agent file is present and structured correctly |
 
-Issues remain searchable, but students know they're closed.
+### Challenges That Require Manual Review
 
-### Step 2: Update the Student List
+Challenges 1, 2, 3, 8, 13, and 15 do not have autograders. The Progression Bot still unlocks the next challenge when the student closes the issue. Facilitators review the evidence in the issue comments using the [grading guide](../classroom/grading-guide.md).
 
-For the **next cohort**, update `student-usernames.txt` with new usernames and re-run the batch script.
+What to look for:
+1. Clear evidence the student completed the task (screenshot description, pasted output, or linked artifact)
+2. Correct application of the concept (not just clicking through)
+3. Genuine engagement (not copy-pasting the example verbatim)
 
-The script will:
-- Create fresh issues with the new usernames
-- Auto-assign to new students
-- Old issues stay archived and searchable (great for future reference)
-
-### Step 3: Refresh Issue Templates
-
-Before running the batch script for a new cohort:
-
-```bash
-# Verify templates are up to date
-ls -la .github/ISSUE_TEMPLATE/challenge-chapter-*.md
-
-# Update if chapter content changed
-git pull origin main
-```
-
-The templates pull from the chapter documentation, so they're always fresh.
+Comment on the issue: "Great work! Your [specific thing] shows you understand [concept]."
 
 
-##  Challenge Metadata
+## Troubleshooting
 
-### Issue Labels (Standard Across All Challenges)
+### Progression Bot Did Not Create the Next Challenge
 
-| Label | Purpose | Values |
-|-------|---------|--------|
-| `challenge` | Marks an issue as a workshop challenge | Always applied |
-| Level | Difficulty | `challenge: beginner`, `challenge: intermediate` |
-| Skill | Topic | `skill: github-issues`, `skill: pull-requests`, `skill: git-source-control`, etc. |
-| Day | When assigned | `day: 1` (Chapters 2-10) or `day: 2` (Chapters 11-16) |
+**Symptoms:** Student closes an issue but no new issue appears.
+
+**Possible causes:**
+- The student edited the issue title (the bot matches on title pattern)
+- GitHub Actions is disabled in the student's repo
+- The workflow file was deleted or corrupted during a student's edit
+
+**Fix:**
+1. Check the Actions tab in the student's repo for workflow run errors
+2. If the workflow did not trigger, verify `.github/workflows/student-progression.yml` exists
+3. If the file is missing, the student may have accidentally deleted it -- restore from the template
+4. As a last resort, manually create the next challenge issue using the issue template
+
+### Aria Did Not Comment on a PR
+
+**Symptoms:** Student opens a PR but Aria does not respond.
+
+**Possible causes:**
+- Workflow permissions: the repo may need `GITHUB_TOKEN` write access
+- The PR validation workflow is not enabled
+- The student opened the PR against a branch other than `main`
+
+**Fix:**
+1. Go to the student's repo > Settings > Actions > General
+2. Verify "Read and write permissions" is selected for workflow permissions
+3. Check the Actions tab for the `pr-validation-bot` workflow -- did it trigger?
+4. If it triggered but failed, read the error log for specifics
+
+### Autograding Reports a Failure the Student Believes Is Wrong
+
+**Symptoms:** Student completed the challenge correctly but the autograder fails.
+
+**Fix:**
+1. Open the student's repo > Actions tab > most recent autograding run
+2. Read the test output to see what specifically failed
+3. Common false failures:
+   - File is in the wrong directory (student created it in repo root instead of `docs/`)
+   - Branch name does not match expected pattern (case sensitivity)
+   - YAML has a formatting error the student cannot see
+4. Guide the student to fix the specific issue
+5. The autograder reruns automatically on the next push
+
+### Student Cannot Accept the Invite Link
+
+**Symptoms:** Student clicks the invite but gets an error or cannot see the assignment.
+
+**Fix:**
+1. Verify the student has a GitHub account and is signed in
+2. If using a roster, confirm the student's GitHub username matches the roster entry exactly
+3. Try having the student open the link in an incognito/private window to rule out caching
+4. If persistent, add the student to the roster manually from the classroom settings
+
+
+## Challenge Metadata
+
+### Labels
+
+The Progression Bot applies these labels to each challenge issue it creates:
+
+| Label | Purpose | Example values |
+|---|---|---|
+| `challenge` | Identifies the issue as a workshop challenge | Always applied |
+| Level | Difficulty tier | `challenge: beginner`, `challenge: intermediate` |
+| Skill | Topic category | `skill: github-issues`, `skill: pull-requests`, `skill: git-source-control` |
+| Day | Workshop day | `day: 1` (Challenges 1-9), `day: 2` (Challenges 10-16) |
 
 ### Issue Title Convention
 
 ```
-Chapter X.Y: [Challenge Name] (@YOUR_USERNAME)
+Challenge [NUMBER]: [Title]
 ```
 
-**Example:**
+Examples:
 ```
-Chapter 4.1: Create Your First Issue (@accesswatch)
-Chapter 6.2: Open Your First Pull Request (@amandarush)
-Chapter 11.3: Push to GitHub (@andysq62)
-```
-
-This makes it **instantly clear** which challenge, which chapter, which student.
-
-
-##  Automation & Bot Validation
-
-### Challenges with Automatic Validation
-
-These chapters have PR bot validation:
-
-| Chapter | Bot Checks | What It Validates |
-|---------|-----------|------------------|
-| **4: Issues** |  PR bot | `Closes #XX`, evidence issue reference, created issue quality |
-| **5: Pull Requests** |  PR bot | `Closes #XX` syntax, Markdown, accessibility |
-| **6: Merge Conflicts** |  PR bot | Clean conflict resolution, commit message |
-| **11: Git & Source Control** |  PR bot | Branch name, commit presence, push success |
-| **12-16** | Manual | Facilitator reviews |
-
-### How PR Bot Works (Behind the Scenes)
-
-1. Student opens PR with `Closes #ISSUE_NUMBER`
-2. GitHub workflow (`.github/workflows/learning-room-pr-bot.yml`) triggers
-3. Bot script (`.github/scripts/validate-pr.js`) checks:
-   -  PR references an issue with `Closes #`
-   -  Changed files are in appropriate folder (`learning-room/docs/`)
-   -  Markdown syntax is valid
-   -  No major accessibility violations (heading hierarchy, link text, alt text)
-4. Bot posts a comment with pass/fail status and specific fixes
-5. Student pushes fixes, bot re-validates automatically
-6. When all checks pass, bot approves the PR
-
-### Disabling Bot Checks (If Needed)
-
-If a student hits a false positive:
-
-```bash
-# Temporarily disable the workflow
-gh workflow disable learning-room-pr-bot
-
-# After manual review, re-enable
-gh workflow enable learning-room-pr-bot
+Challenge 1: Find Your Way Around
+Challenge 7: Resolve a Merge Conflict
+Challenge 16: Build Your Agent
 ```
 
-Then manually approve the PR.
+The Progression Bot uses these exact titles. Do not rename challenge issues in student repos or the bot will not recognize them for sequencing.
 
 
-##  Success Metrics
+## Automation File References
 
-### Track These During the Workshop
+All automation files live in the student's repo (copied from the template):
+
+| File | Purpose |
+|---|---|
+| `.github/workflows/student-progression.yml` | Progression Bot -- creates next challenge on issue close |
+| `.github/workflows/pr-validation-bot.yml` | Aria -- PR feedback and `@aria-bot` responses |
+| `.github/scripts/comment-responder.js` | Aria's response logic for `@aria-bot` mentions |
+| `.github/workflows/autograder-conflicts.yml` | Validates Challenge 7 (merge conflicts) |
+| `.github/workflows/autograder-local-commit.yml` | Validates Challenge 10 (local commit) |
+| `.github/workflows/autograder-template.yml` | Validates Challenge 14 (YAML template) |
+| `.github/workflows/autograder-capstone.yml` | Validates Challenge 16 (agent file) |
+
+
+## Success Metrics
+
+### Track During the Workshop
 
 **Participation:**
-- Issues claimed per chapter
-- PRs opened per chapter
-- Bot validation pass rate (% of PRs that passed checks on first try)
+- Assignments accepted (visible on classroom dashboard)
+- Challenges completed per student (count of closed issues)
+- Autograding pass rate (percentage of tests that pass on first push)
 
 **Quality:**
-- Average comments per issue (discussion depth)
-- Review feedback quality (are students helping each other?)
-- Merge rate (% of PRs that merged without changes)
+- Comments per challenge issue (discussion depth)
+- PR review engagement (are students reviewing each other's work?)
+- Merge rate (percentage of PRs merged without facilitator intervention)
 
 **Support Load:**
-- "I'm stuck" comments per day (indicates challenge clarity)
-- Bot validation failures per day (indicates if bot is too strict)
-
-**Example Command:**
-```bash
-# See bot validation pass rate
-gh issue list --label challenge --state closed --limit 50 | \
-  jq '.[] | .pull_request' | \
-  xargs -I {} gh pr view {} --json statusCheckRollup
-```
+- Number of students requiring direct facilitator help per hour
+- Autograding failures per hour (if high, may indicate unclear challenge instructions)
+- Aria response failures (if any, indicates workflow configuration issue)
 
 
-##  File References
+## FAQ
 
-### Templates Used by Batch Script
+### "A student says they completed a challenge but the next one did not appear"
 
-- `.github/ISSUE_TEMPLATE/challenge-chapter-4.md` - Chapter 4 issues
-- `.github/ISSUE_TEMPLATE/challenge-chapter-5.md` - Chapter 6 issues
-- `.github/ISSUE_TEMPLATE/challenge-chapter-6.md` - Chapter 7 issues
-- `.github/ISSUE_TEMPLATE/challenge-chapter-11.md` - Chapter 11 issues
+Check whether they actually **closed** the issue. Students sometimes comment "done" without clicking Close. Guide them to close the issue, and the Progression Bot will create the next challenge within seconds.
 
-### Bot Validation
+### "Can students skip challenges?"
 
-- `.github/workflows/learning-room-pr-bot.yml` - Workflow trigger
-- `.github/scripts/validate-pr.js` - Validation logic
-- `learning-room/bot-config.json` - Bot rules and exceptions
+Not by default. The Progression Bot creates challenges sequentially. If a student demonstrates mastery and you want to skip them ahead, manually create the next challenge issue using the appropriate issue template.
 
-### Student Documentation
+### "A student accidentally deleted a workflow file"
 
-- `docs/CHALLENGES.md` - Master challenge hub (YOU ARE HERE)
-- `docs/05-working-with-issues.md` - Chapter 4 detailed guide
-- `docs/06-working-with-pull-requests.md` - Chapter 6 detailed guide
-- `docs/14-git-in-practice.md` - Chapter 11 detailed guide
+Restore it from the template. The easiest method:
 
+1. Open the `Community-Access/learning-room-template` repo
+2. Navigate to the missing file
+3. Copy its contents
+4. In the student's repo, create the file at the same path
+5. Commit directly to `main`
 
-##  FAQ - Facilitators
+### "How do I know if the autograder is too strict?"
 
-### "A student claims they completed a challenge but I don't see evidence"
+Track the first-attempt pass rate on the classroom dashboard. If fewer than 50% of students pass a specific test on their first try, the test criteria may need adjustment. Update the test in the Classroom assignment settings -- changes apply to all future pushes.
 
-Check the PR that references their issue:
-```bash
-gh pr list --assignee @STUDENT_USERNAME --state merged
-```
+### "Can I add more challenges mid-workshop?"
 
-If there's no PR, the issue is still open and they haven't submitted. Guide them to open a PR.
-
-### "The bot gave false positive feedback. Can I manually approve?"
-
-Yes:
-1. Review the PR manually
-2. Comment: `@github-actions approve` (workflow-dependent)
-3. Or manually merge if you have permissions
-4. Update the bot config if this is a pattern
-
-### "I want to add challenges for Chapters 12-16"
-
-The challenge hub already has them! But they're **manual validation** (no bot). You can:
-1. Create issues using the same template pattern
-2. Review student submissions manually
-3. Close issues when quality is good
-
-### "Can students skip chapters?"
-
-It's possible but not recommended. The arc builds: Ch 4 (issues) → Ch 6 (PRs) → Ch 7 (conflicts) → Ch 11 (local Git). Each depends on the previous.
-
-*Recommended:* "Try them in order first. You can skip only if you've already mastered that skill."
-
-### "How do I know if my bot configuration is too strict?"
-
-Track daily: "How many students needed bot help and retries?"
-
-If >80% of students need retries → bot might be too strict. Relax rules or add exceptions.
+Yes. Add new issue templates to the `learning-room-template` repo and update the Progression Bot's challenge sequence in `student-progression.yml`. New challenges will only appear for students who have not yet passed the insertion point.
 
 
-##  Final Checklist (Pre-Workshop)
+## Pre-Workshop Checklist
 
-- [ ] `student-usernames.txt` committed and updated
-- [ ] Batch script runs without errors: `python scripts/batch_create_challenges.py --dry-run`
-- [ ] Expected challenge issues created (students × 10 for Chapters 4,5,6,11)
-- [ ] Each issue has correct labels, assignment, and description
-- [ ] Bot workflow is enabled: `gh workflow list | grep learning-room`
-- [ ] PR bot script is in place: `.github/scripts/validate-pr.js` exists
-- [ ] Challenge Hub is accessible: `docs/CHALLENGES.md`
-- [ ] README.md directs to Challenge Hub clearly
-- [ ] All chapter docs (4-16) link to their challenge issues
-- [ ] Facilitators understand the "How to Monitor Progress" section
-- [ ] Dry run: one facilitator completes one challenge end-to-end as a test
-
-**This checklist ready? You're go for launch.** 
+- [ ] Classroom created and assignments configured (see [Workshop Deployment Guide](../classroom/README.md))
+- [ ] Roster imported with all expected student usernames
+- [ ] Verification completed with a test account (Progression Bot, Aria, and autograding all confirmed working)
+- [ ] Classroom dashboard loads and shows the assignments
+- [ ] Facilitators have the classroom dashboard bookmarked
+- [ ] [Grading guide](../classroom/grading-guide.md) reviewed by all facilitators
+- [ ] Invite links ready to share (posted in agenda documents and available for chat/email)
+- [ ] One facilitator has completed a full challenge end-to-end as a test run
 

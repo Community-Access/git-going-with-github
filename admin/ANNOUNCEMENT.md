@@ -4,7 +4,7 @@
 
 ## You Belong in Open Source. Let Us Show You the Door.
 
-> **Note:** Workshop content is being actively refined during the week of March 7, 2026. Students should expect updates to materials leading up to and during the course.
+> **Note:** Workshop content is being actively refined before the workshop. Students should expect updates to materials leading up to and during the course.
 
 ### A Two-Day Workshop by [Community Access](https://community-access.org)
 
@@ -12,7 +12,7 @@ Sponsored by [Community Access](https://community-access.org) in partnership wit
 
 | Detail | Information |
 |---|---|
-| **Dates** | Saturday, March 7 & Sunday, March 8, 2026 |
+| **Dates** | [WORKSHOP_DATE_DAY1] & [WORKSHOP_DATE_DAY2] |
 | **Time** | 12:00 PM - 8:00 PM Eastern (both days) |
 | **Location** | Online via [Zoom](https://zoom.us/) |
 | **Cost** | Free |
@@ -25,7 +25,7 @@ Sponsored by [Community Access](https://community-access.org) in partnership wit
 > **Join the conversation!** Have a question before the workshop? Want to connect with other participants? Head to our [**Discussion Forum**](https://github.com/community-access/git-going-with-github/discussions) - introduce yourself, ask questions, and start building your network before Day 1.
 
 
-> **Already registered?** Complete the [**Pre-Workshop Setup Guide**](https://community-access.org/git-going-with-github/docs/00-pre-workshop-setup.html) before March 7. It walks you through every step - GitHub account, screen reader configuration, [VS Code](https://code.visualstudio.com/), and [GitHub Copilot](https://github.com/features/copilot) - with instructions for NVDA, JAWS, and VoiceOver. Get set up early so Day 1 starts with learning, not troubleshooting.
+> **Already registered?** Complete the [**Pre-Workshop Setup Guide**](https://community-access.org/git-going-with-github/docs/00-pre-workshop-setup.html) before the workshop. It walks you through every step - GitHub account, screen reader configuration, [VS Code](https://code.visualstudio.com/), and [GitHub Copilot](https://github.com/features/copilot) - with instructions for NVDA, JAWS, and VoiceOver. Get set up early so Day 1 starts with learning, not troubleshooting.
 
 
 ## What Is This?

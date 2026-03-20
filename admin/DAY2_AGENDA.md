@@ -1,7 +1,7 @@
 # Day 2 Agenda
 ## From Contributor to Product Maker - Igniting the Forge
 
-**Date:** Sunday, March 8, 2026 | 9:00 AM - 5:00 PM
+**Date:** [WORKSHOP_DATE_DAY2] | 9:00 AM - 5:00 PM
 
 > **The premise of Day 2:** Whether you built your GitHub skills yesterday in Day 1 or you are joining today with existing GitHub experience, the foundation is the same: you know how to navigate repositories, file issues, open pull requests, and review someone else's work. Those skills are yours now.
 >
@@ -24,7 +24,7 @@ Day 2 requires the following skills and setup. If you attended Day 1, you have a
 | Understand merge conflicts | Recognize conflict markers, resolve manually | [Chapter 7](../docs/07-merge-conflicts.md) |
 | Git installed and configured | `git config` with your name and email set | [Pre-Workshop Setup](../docs/00-pre-workshop-setup.md) |
 | VS Code installed with extensions | GitHub PR extension, Copilot, Copilot Chat | [Pre-Workshop Setup](../docs/00-pre-workshop-setup.md) |
-| Learning-room repo cloned | `git clone https://github.com/Community-Access/learning-room.git` | [Day 2 Quick Start](DAY2_QUICK_START.md) |
+| Classroom repo accepted | Accept the Day 2 Classroom assignment link from your facilitator | [Day 2 Quick Start](DAY2_QUICK_START.md) |
 
 
 ## At a Glance
@@ -58,9 +58,9 @@ Bring everyone to the same starting line -- whether they attended Day 1 or are j
 ### Track B: Joining on Day 2 (Parallel Setup, 15 min)
 New participants work with a facilitator or designated Day 1 veteran to:
 1. Introduce themselves (name, screen reader, OS, GitHub experience)
-2. Verify setup: GitHub account, VS Code, Git identity, learning-room cloned (see [Day 2 Quick Start](DAY2_QUICK_START.md))
+2. Verify setup: GitHub account, VS Code, Git identity, Day 2 Classroom assignment accepted (see [Day 2 Quick Start](DAY2_QUICK_START.md))
 3. Get paired with a Day 1 participant who can answer context questions during the session
-4. Quick orientation: open the learning-room repo in the browser, navigate to Issues, confirm screen reader announces headings
+4. Quick orientation: open their Classroom repo in the browser, navigate to Issues, confirm screen reader announces headings
 
 > **Facilitator note:** Run Track A and Track B simultaneously. Day 1 veterans share their experience while new participants verify setup. Both groups reconvene for goal-setting.
 

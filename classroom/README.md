@@ -1,45 +1,52 @@
-# GitHub Classroom Setup Guide
+# Workshop Deployment Guide
 
-> Complete guide for creating, configuring, and managing a Git Going with GitHub workshop cohort using GitHub Classroom. This guide covers everything from initial setup through post-workshop teardown.
+> Single, end-to-end guide for deploying a new Git Going with GitHub workshop cohort. Covers everything from creating the classroom through post-workshop teardown. This is the only deployment document you need.
 
-## What GitHub Classroom Does
+## How the Workshop Works
 
-GitHub Classroom is an assignment distribution engine. When a student accepts an assignment:
+Each student gets their own **private repository** created by GitHub Classroom from the `learning-room-template`. Inside that repo, three automation systems guide the student through all 21 challenges without facilitator intervention:
 
-1. Classroom forks the template repository into the student's own private copy
-2. Autograding workflows run automatically on every push
-3. A feedback pull request is created for facilitator comments
-4. The classroom dashboard shows progress across all students
+1. **Aria** (the PR Validation Bot) -- welcomes first-time contributors, validates PR structure, responds to `@aria-bot` help requests, and provides real-time feedback on every push
+2. **Student Progression Bot** -- when a student closes a challenge issue, the bot automatically creates the next challenge issue with full instructions, step-by-step guidance, and troubleshooting tips
+3. **Autograders** -- automated tests that verify objective evidence of challenge completion (branch exists, conflict markers removed, template file valid, agent file structured correctly)
 
-For this workshop, Classroom handles the infrastructure so facilitators can focus on teaching and mentoring.
+No shared repository. No manual issue provisioning. No scripts to run. The facilitator's deployment work is creating the classroom and two assignments in the GitHub Classroom web UI. The template handles everything else.
 
-### Architecture Overview
+### Architecture
 
 ```text
 Community-Access/learning-room-template (template repo)
     |
-    +--> [Classroom clones per student]
-    |       student-a/learning-room-student-a
-    |       student-b/learning-room-student-b
+    +--> GitHub Classroom creates one private repo per student
+    |       learning-room-student-a
+    |       learning-room-student-b
     |       ...
     |
-    +--> Autograding workflows run in each student repo
-    |       autograder-conflicts.yml   (Challenge 07)
-    |       autograder-local-commit.yml (Challenge 10)
-    |       autograder-template.yml    (Challenge 14)
-    |       pr-validation-bot.yml      (all PR challenges)
+    +--> Each student repo contains:
+    |       Aria (pr-validation-bot.yml)          -- PR feedback and help responses
+    |       Student Progression Bot               -- Unlocks challenges sequentially
+    |       Autograders                            -- Validates specific challenges
+    |       Issue templates (16 core + 5 bonus)   -- Challenge definitions
+    |       Feedback PR (created by Classroom)     -- Facilitator async comments
     |
-    +--> **Progressive Release Bot**
-    |       student-progression.yml    (Unlocks challenges step-by-step based on issue closures)
+    +--> Student flow:
+    |       Accept invite --> repo created --> Challenge 1 issue appears
+    |       --> complete challenge --> close issue --> next challenge unlocked
+    |       --> repeat through all challenges
     |
-    +--> Feedback PRs (one per student, created by Classroom)
-            Facilitators comment here for async feedback
-
-Community-Access/accessibility-agents (upstream target)
-    |
-    +--> autograder-capstone.yml (Challenge 16)
-            Validates agent file structure in real PRs
+    +--> Capstone (Challenge 16):
+            Student forks Community-Access/accessibility-agents
+            Opens cross-fork PR (validated by autograder-capstone.yml)
 ```
+
+### Two Participation Paths
+
+| Path | Who it is for | Assignment | Entry point |
+|---|---|---|---|
+| **Day 1 + Day 2** | Participants starting from scratch | Assignment 1 (Day 1) then Assignment 2 (Day 2) | [Day 1 Agenda](../admin/DAY1_AGENDA.md) |
+| **Day 2 only** | Participants with GitHub fundamentals | Assignment 2 only | [Day 2 Quick Start](../admin/DAY2_QUICK_START.md) then [Day 2 Agenda](../admin/DAY2_AGENDA.md) |
+
+Day-2-only participants skip Assignment 1 entirely. They verify readiness using the [Day 2 Quick Start](../admin/DAY2_QUICK_START.md) self-assessment, then accept only the Day 2 invite link.
 
 ### What Is in This Directory
 
@@ -51,38 +58,26 @@ Community-Access/accessibility-agents (upstream target)
 | [autograding-day2.json](autograding-day2.json) | Test definitions for Day 2 autograder |
 | [grading-guide.md](grading-guide.md) | Facilitator rubric for all 21 challenges |
 | [roster-template.csv](roster-template.csv) | Starter CSV for importing student roster |
+| [student-progression.yml](student-progression.yml) | Reference copy of the progression bot workflow |
 | [teardown-checklist.md](teardown-checklist.md) | Post-workshop cleanup steps |
 
-
-## Two Participation Paths
-
-The workshop supports two entry points to accommodate participants with different backgrounds:
-
-| Path | Who it is for | Classroom assignment | Entry point |
-|---|---|---|---|
-| **Day 1 + Day 2** | Participants starting from scratch with GitHub | Assignment 1 (Day 1) then Assignment 2 (Day 2) | [Day 1 Agenda](../admin/DAY1_AGENDA.md) |
-| **Day 2 only** | Participants who already have GitHub fundamentals (can navigate repos, file issues, open PRs, review code) | Assignment 2 (Day 2) only | [Day 2 Quick Start](../admin/DAY2_QUICK_START.md) then [Day 2 Agenda](../admin/DAY2_AGENDA.md) |
-
-**Day-2-only participants** skip Assignment 1 entirely and accept only the Day 2 invite link. They verify their readiness using the [Day 2 Quick Start](../admin/DAY2_QUICK_START.md) self-assessment before the session.
-
-**Facilitator action:** When distributing invite links, send both links to full-workshop participants and only the Day 2 link to Day-2-only participants. Day 2 Block 0 includes parallel onboarding tracks so both groups start together.
-
+---
 
 ## Prerequisites
 
-Before creating your first classroom, confirm the following:
+Before starting, confirm the following:
 
 - [ ] You have **Owner** or **Admin** access to the Community-Access GitHub organization
 - [ ] Your facilitator GitHub account has a verified email address
-- [ ] The `Community-Access/learning-room-template` repository is public (or the classroom org has read access)
-- [ ] You have the student list (GitHub usernames are required; real names are optional)
+- [ ] The `Community-Access/learning-room-template` repository exists and is public (or the classroom org has read access)
+- [ ] The template repo has GitHub Actions enabled with **Read and write** permissions for `GITHUB_TOKEN` (Settings > Actions > General) -- Aria needs this to post comments
+- [ ] "Allow GitHub Actions to create and approve pull requests" is checked in the template repo
+- [ ] You have the student list (GitHub usernames required; real names optional)
 - [ ] You have confirmed dates for Day 1 and Day 2
-- [ ] You have tested that GitHub Actions are enabled on the organization (Settings then Actions then General)
 
+---
 
-> **Note on Automation:** While we use scripts to automate repository creation and API settings, GitHub deliberately restricts Classroom creation to the Web GUI to prevent spam. You will need to click through the creation screens, but all assets (rosters, test payloads, config values) have been templated for you in this directory.
-
-## Phase 1: Create the Classroom
+## Step 1: Create the Classroom
 
 1. Go to [classroom.github.com](https://classroom.github.com) and sign in with your facilitator account
 2. Click **New classroom**
@@ -93,10 +88,11 @@ Before creating your first classroom, confirm the following:
 5. **Skip the TA / co-teacher setup** -- facilitators use organization-level permissions instead
 6. Click **Create classroom**
 
+---
 
-## Phase 2: Import the Student Roster
+## Step 2: Import the Student Roster
 
-The roster links GitHub usernames to student identities.
+The roster links GitHub usernames to student identities so facilitators can track progress on the classroom dashboard.
 
 1. Open the classroom you just created
 2. Go to **Settings** (gear icon) then **Roster Management**
@@ -111,67 +107,90 @@ student-a,Alice Student,alice@example.com
 
 - The `identifier` column **must** match the student's exact GitHub username
 - `name` and `email` are optional but helpful for facilitator reference
-- Students who are not on the roster can still accept the assignment; they will appear as "unidentified"
+- Students not on the roster can still accept; they appear as "unidentified"
+- Verify all expected students appear in the roster list
+- Students can be added later -- the roster is not locked
 
-5. Verify all expected students appear in the roster list
-6. Students can be added later -- the roster is not locked
+---
 
+## Step 3: Create Assignment 1 -- You Belong Here (Day 1)
 
-## Phase 3: Create Assignment 1 -- You Belong Here (Day 1)
+This assignment covers Challenges 1 through 9. When a student accepts the invite link, GitHub Classroom creates their private repo from the template. The Student Progression Bot creates Challenge 1 automatically. As the student closes each challenge issue, the bot unlocks the next one.
 
-This assignment covers Challenges 01 through 09 (Day 1 of the workshop). **Day-2-only participants skip this assignment entirely.**
+**Day-2-only participants skip this assignment entirely.**
 
-1. From the classroom dashboard, click **New assignment**
-2. Fill in the assignment settings:
+From the classroom dashboard, click **New assignment** and fill in the assignment settings:
 
 | Setting | Value |
 |---|---|
 | **Title** | You Belong Here |
 | **Type** | Individual |
-| **Visibility** | Private (student repos are only visible to the student and facilitators) |
+| **Visibility** | Private (student repos visible only to the student and facilitators) |
 | **Template repository** | `Community-Access/learning-room-template` |
 | **Grant students admin access** | No |
 | **Enable feedback pull requests** | Yes |
-| **Deadline** | End of Day 1 for this cohort (deadline is soft -- late work is still accepted) |
+| **Deadline** | End of Day 1 (deadline is soft -- late work is still accepted) |
 
-3. **Assignment description:** Open [assignment-day1-you-belong-here.md](assignment-day1-you-belong-here.md), copy everything below the HTML metadata comment, and paste it into the description field
-4. **Autograding tests:** Open [autograding-day1.json](autograding-day1.json) and add each test entry manually:
-   - For each test in the JSON array, click **Add test**
-   - Set the **Test name**, **Run command**, **Comparison**, and **Points** to match the JSON values
-   - Set timeout to 60 seconds per test unless otherwise specified
+Then complete the remaining fields:
 
-5. Click **Create assignment** (this generates your Day 1 invite link)
+1. **Assignment description:** Open [assignment-day1-you-belong-here.md](assignment-day1-you-belong-here.md), copy everything below the HTML metadata comment, and paste it into the description field
+2. **Autograding tests:** Open [autograding-day1.json](autograding-day1.json) and add each test entry manually -- for each test in the JSON array, click **Add test**, set the **Test name**, **Run command**, **Comparison**, and **Points** to match the JSON values, and set timeout to 60 seconds per test unless otherwise specified
+3. Click **Create assignment** -- this generates your Day 1 invite link
 
+### What the student experiences (Day 1)
 
-## Phase 4: Create Assignment 2 -- You Can Build This (Day 2)
+1. Student clicks the invite link
+2. GitHub Classroom creates their private repo (30-60 seconds)
+3. Challenge 1 issue appears automatically (Find Your Way Around)
+4. Student completes the challenge, posts evidence, closes the issue
+5. Progression Bot creates Challenge 2 issue with full instructions
+6. Student repeats through Challenge 9 (Merge Day)
+7. Aria provides real-time feedback on every PR along the way
+8. Autograders validate Challenges 4, 5, 6, 7, and 9 automatically
+
+---
+
+## Step 4: Create Assignment 2 -- You Can Build This (Day 2)
 
 This assignment covers Challenges 10 through 16 plus the 5 bonus challenges. **Both full-workshop and Day-2-only participants accept this assignment.**
 
-Day-2-only participants will not have completed Assignment 1, but Assignment 2 does not depend on Assignment 1 artifacts. The Day 2 challenges use a fresh branch workflow starting from the cloned learning-room repository.
+Day-2-only participants will not have completed Assignment 1, but Assignment 2 does not depend on Assignment 1 artifacts.
 
-1. Click **New assignment** again
-2. Fill in the settings:
+Click **New assignment** again and fill in the settings:
 
-| Setting | Value |
-|---|---|
-| **Title** | You Can Build This |
-| **Type** | Individual |
-| **Visibility** | Private |
-| **Template repository** | `Community-Access/learning-room-template` |
-| **Grant students admin access** | No |
-| **Enable feedback pull requests** | Yes |
-| **Deadline** | One week after Day 2 (gives students time for the capstone and bonus challenges) |
+   | Setting | Value |
+   |---|---|
+   | **Title** | You Can Build This |
+   | **Type** | Individual |
+   | **Visibility** | Private |
+   | **Template repository** | `Community-Access/learning-room-template` |
+   | **Grant students admin access** | No |
+   | **Enable feedback pull requests** | Yes |
+   | **Deadline** | One week after Day 2 (gives students time for the capstone and bonus challenges) |
 
-3. **Assignment description:** Use [assignment-day2-you-can-build-this.md](assignment-day2-you-can-build-this.md)
-4. **Autograding tests:** Use [autograding-day2.json](autograding-day2.json)
-5. Click **Create assignment** (this generates your Day 2 invite link)
+Then complete the remaining fields:
 
+1. **Assignment description:** Use [assignment-day2-you-can-build-this.md](assignment-day2-you-can-build-this.md)
+2. **Autograding tests:** Use [autograding-day2.json](autograding-day2.json)
+3. Click **Create assignment** -- this generates your Day 2 invite link
 
-## Phase 5: Share Invite Links
+### What the student experiences (Day 2)
 
-Each assignment has a unique invite URL that students click to accept the assignment.
+1. Student clicks the Day 2 invite link
+2. GitHub Classroom creates a new private repo for Day 2
+3. Challenge 10 issue appears automatically (Go Local)
+4. Student clones the repo, works locally, pushes, and closes the issue
+5. Progression Bot unlocks Challenges 11 through 16 sequentially
+6. Challenge 16 (Capstone) has the student fork the accessibility-agents repo and open a cross-fork PR
+7. Bonus challenges (A through E) are available via issue templates for students who finish early
 
-### Where to Add the Links
+---
+
+## Step 5: Share Invite Links
+
+Each assignment generates a unique invite URL.
+
+### Where to add the links
 
 1. Copy the **Day 1 invite URL** from the assignment page
 2. In the `git-going-with-github` repository, open `DAY1_AGENDA.md` and replace the `[INVITE_LINK]` placeholder
@@ -179,34 +198,45 @@ Each assignment has a unique invite URL that students click to accept the assign
 4. Open `DAY2_AGENDA.md` and replace its `[INVITE_LINK]` placeholder
 5. Optionally, email the invite links directly to students before the workshop
 
-### What Students See When They Click
+### What students see when they click
 
 1. GitHub shows a "Join classroom" page if they are not already on the roster
 2. If on the roster, they see "Accept this assignment"
-3. After accepting, GitHub creates their private fork within 30-60 seconds
+3. After accepting, GitHub creates their private repo within 30-60 seconds
 4. The student's repository URL follows the pattern: `github.com/Community-Access-Classroom/learning-room-[username]`
 
+### Which links to send
 
-## Phase 6: Verify Everything Works
+| Participant type | Send Day 1 link | Send Day 2 link |
+|---|---|---|
+| Full workshop (Day 1 + Day 2) | Yes | Yes |
+| Day-2-only | No | Yes |
+
+---
+
+## Step 6: Verify Everything Works
 
 Run this verification with a test account before the workshop. Do not skip this step.
 
-### Quick Verification Checklist
+### Verification checklist
 
 - [ ] Accept the Day 1 invite with a test GitHub account
 - [ ] Verify a student repository was created under the classroom org
-- [ ] Verify the learning-room template files are present (docs/welcome.md, docs/keyboard-shortcuts.md, docs/setup-guide.md)
+- [ ] Verify the learning-room template files are present (`docs/welcome.md`, `docs/keyboard-shortcuts.md`, `docs/setup-guide.md`)
+- [ ] Verify Challenge 1 issue was created automatically by the Progression Bot
 - [ ] Open a test PR with a trivial change
-- [ ] Verify the PR validation bot comments within 60 seconds
+- [ ] Verify Aria (PR validation bot) comments within 60 seconds
 - [ ] Verify autograding runs and reports a score
 - [ ] Verify a feedback pull request was created by Classroom
+- [ ] Close Challenge 1 and verify Challenge 2 is created by the Progression Bot
 - [ ] Accept the Day 2 invite with the same test account
+- [ ] Verify Challenge 10 issue appears in the Day 2 repo
 - [ ] Repeat the PR test for the Day 2 repository
 - [ ] Delete the test student repositories when done
 
-### Autograding Verification
+### Autograding verification
 
-To test that specific autograding checks work:
+To test specific autograding checks:
 
 1. In the test student repo, create a branch and make a change that should pass a check
 2. Open a PR
@@ -214,31 +244,40 @@ To test that specific autograding checks work:
 4. Check the workflow output -- each test should report pass or fail correctly
 5. Try a change that should fail a check and verify it catches the problem
 
+### Aria verification
 
-## Phase 7: Day-of-Workshop Facilitation
+1. Open a PR without a `Closes #XX` reference
+2. Verify Aria posts a comment asking for an issue link
+3. Comment `@aria-bot I have a merge conflict, can you explain this?`
+4. Verify the comment responder replies with guidance
 
-### Before Students Arrive
+---
+
+## Step 7: Day-of-Workshop Facilitation
+
+### Before students arrive
 
 - [ ] Verify the classroom dashboard loads at [classroom.github.com](https://classroom.github.com)
 - [ ] Have both invite links ready to share (on-screen, in chat, or printed on cards)
 - [ ] Open the [grading-guide.md](grading-guide.md) for reference during the day
 - [ ] Have the [Challenge Hub](../docs/CHALLENGES.md) open in a browser tab
 
-### During the Workshop
+### During the workshop
 
-**Monitor the classroom dashboard:** It shows the number of accepted assignments, recent commits, and autograding results in real time.
+**Monitor the classroom dashboard:** It shows accepted assignments, recent commits, and autograding results in real time.
 
 **Common student issues and fixes:**
 
 | Issue | What to Do |
 |---|---|
 | "I cannot find the invite link" | Reshare the link; post it in the workshop chat channel |
-| "Assignment not showing my work" | Student may have pushed to wrong branch; check their repo's branches |
+| "My next challenge did not appear" | The student may not have closed the previous issue; check their Issues tab |
 | "Autograding says I failed" | Check the workflow output; often a formatting issue; use it as a teaching moment |
 | "I do not see the feedback PR" | It appears after the first push; have them make any commit and push |
-| "The bot did not comment on my PR" | Check Actions tab in the student repo; may need to enable workflows |
+| "Aria did not comment on my PR" | Check the Actions tab in the student repo; workflows may need to be enabled |
+| "Assignment not showing my work" | Student may have pushed to the wrong branch; check their repo's branches |
 
-### Using the Feedback PR
+### Using the feedback PR
 
 The feedback pull request is Classroom's built-in channel for async facilitator comments:
 
@@ -248,57 +287,99 @@ The feedback pull request is Classroom's built-in channel for async facilitator 
 4. Leave comments, encouragement, and guidance here
 5. Students receive email notifications for your comments
 
+---
 
-## How Autograding Maps to Challenges
+## How Challenges Flow Through the System
 
-The autograding JSON files define automated tests that check for objective evidence of challenge completion:
+### Challenge progression
 
-### Day 1 Tests (from autograding-day1.json)
+The Student Progression Bot manages the entire challenge sequence. Each student works through challenges independently in their own repo:
 
-| Test | Challenge | What It Checks |
-|---|---|---|
-| Branch exists | 04: Branch Out | At least one non-main branch exists |
-| File edited | 05: Make Your Mark | A file on a branch differs from the original |
-| PR structure | 06: First PR | PR has title, body, and issue reference |
-| No conflict markers | 07: Merge Conflict | Changed files contain no `<<<<<<<` or `>>>>>>>` markers |
-| Merge status | 09: Merge Day | At least one PR has been merged |
+#### Day 1 (Assignment 1): Challenges 1-9
 
-### Day 2 Tests (from autograding-day2.json)
+| Challenge | Title | How it completes | Aria validates | Autograded |
+|---|---|---|---|---|
+| 1 | Find Your Way Around | Close issue | -- | -- |
+| 2 | File Your First Issue | Close issue | -- | -- |
+| 3 | Join the Conversation | Close issue | -- | -- |
+| 4 | Branch Out | Close issue | -- | Yes (branch exists) |
+| 5 | Make Your Mark | Close issue | -- | Yes (file edited) |
+| 6 | Your First Pull Request | Close issue | Yes (PR structure) | Yes (issue reference) |
+| 7 | Resolve a Merge Conflict | Close issue | Yes (PR feedback) | Yes (no conflict markers) |
+| 8 | Open Source Culture | Close issue | -- | -- |
+| 9 | Merge Day | Close issue | Yes (merge) | Yes (PR merged) |
 
-| Test | Challenge | What It Checks |
-|---|---|---|
-| Local clone signature | 10: Go Local | Commit author does not match the GitHub web editor pattern |
-| PR from local | 11: Day 2 PR | A PR exists with commits pushed from a local Git client |
-| Review comment | 12: Code Review | Student left a review comment on another student's PR |
-| Template file exists | 14: Issue Template | A `.yml` file exists in `.github/ISSUE_TEMPLATE/` with valid frontmatter |
-| Capstone structure | 16: Capstone | Agent file exists with `name`, `description`, and `responsibilities` fields |
+#### Day 2 (Assignment 2): Challenges 10-16 + Bonus
 
-Tests that cannot be automated (like Challenge 03: Join the Conversation or Challenge 08: Culture) are evaluated manually using the [grading-guide.md](grading-guide.md).
+| Challenge | Title | How it completes | Aria validates | Autograded |
+|---|---|---|---|---|
+| 10 | Go Local | Close issue | -- | Yes (local commit) |
+| 11 | Open a Day 2 PR | Close issue | Yes (PR structure) | Yes (local push) |
+| 12 | Review Like a Pro | Close issue | -- | Yes (review comment) |
+| 13 | AI as Your Copilot | Close issue | -- | -- |
+| 14 | Template Remix | Close issue | -- | Yes (YAML valid) |
+| 15 | Meet the Agents | Close issue | -- | -- |
+| 16 | Build Your Agent (Capstone) | Close issue | -- | Yes (agent file) |
+| A-E | Bonus challenges | Close issue | -- | -- |
 
+### Challenges that cannot be automated
+
+Challenges 1, 2, 3, 8, 13, and 15 are evaluated manually using the [grading-guide.md](grading-guide.md). The Progression Bot still unlocks the next challenge when the student closes the issue -- the facilitator reviews evidence in the issue comments.
+
+---
+
+## Post-Workshop
+
+Follow the [teardown-checklist.md](teardown-checklist.md) for complete post-workshop steps. The key actions:
+
+1. **Export grades** from the classroom dashboard
+2. **Archive the classroom** in the Classroom UI (this preserves student repos as read-only portfolio pieces)
+3. **Review feedback** and update facilitation notes for next cohort
+
+---
 
 ## Customization Options
 
-### Adjusting Deadlines
+### Adjusting deadlines
 
-Edit the assignment deadline in the Classroom UI at any time. Students who already accepted the assignment will see the updated deadline.
+Edit the assignment deadline in the Classroom UI at any time. Students who already accepted will see the updated deadline.
 
-### Adding or Removing Tests
+### Adding or removing autograding tests
 
-Modify the autograding tests in the Classroom UI:
+Modify tests in the Classroom UI:
 
 1. Open the assignment
 2. Scroll to **Autograding**
 3. Add, edit, or remove individual tests
 4. Changes apply to all future student pushes (not retroactively)
 
-### Changing Point Values
+### Changing point values
 
 The point values in the JSON files are suggestions. Adjust them in the Classroom UI to match your grading approach. The [grading-guide.md](grading-guide.md) has recommended completion thresholds.
 
-### Disabling Autograding
+### Disabling autograding
 
-If you prefer manual-only grading, skip adding the autograding tests when creating the assignment. The PR validation bot and feedback PRs will still work.
+If you prefer manual-only grading, skip adding the autograding tests when creating the assignment. Aria and the Progression Bot still work independently of autograding.
 
+---
+
+## Legacy Notes
+
+Previous versions of this workshop used a shared "multi-player sandbox" repository model where a facilitator manually provisioned challenge issues for each student using PowerShell scripts (`create_all_challenges.ps1` and `create_student_issues.ps1`). That approach required:
+
+- Creating a per-cohort `learning-room-[cohort]` repository from the template
+- Inviting all students to the GitHub organization
+- Running batch scripts to create challenge issues per student via the GitHub API (the scripts split chapters into sub-challenges like 04.1, 04.2, 04.3, totaling 26 issues per student)
+- Updating curriculum links with find-and-replace across all Markdown files
+
+The current model replaces all of that with GitHub Classroom. Each student gets their own private repo automatically when they accept the invite link, and the Student Progression Bot handles challenge delivery. The legacy scripts are preserved in the repository's Git history for reference but are no longer needed for deployment.
+
+Key decisions preserved from the legacy scripts:
+
+- The scripts defined 26 sub-challenges across chapters 4-16, which the current system consolidates into 16 core challenges + 5 bonus challenges (21 total)
+- Challenges used two submission types: issue comment (evidence-based) and PR with `Closes #XX` (code-based)
+- The script was idempotent -- safe to rerun for late-joining students
+- Labels followed the pattern: `challenge`, `challenge: [level]`, `skill: [tag]`, `day: [1 or 2]`
 
 ## After the Workshop
 
@@ -309,12 +390,11 @@ See [teardown-checklist.md](teardown-checklist.md) for the complete post-worksho
 - Cleaning up student repositories
 - Documenting facilitator notes for the next cohort
 
-
 ## Reference Links
 
 - [GitHub Classroom documentation](https://docs.github.com/en/education/manage-coursework-with-github-classroom)
 - [Autograding documentation](https://docs.github.com/en/education/manage-coursework-with-github-classroom/teach-with-github-classroom/use-autograding)
-- [Facilitator Guide](admin/FACILITATOR.md) -- workshop-level facilitation reference
+- [Facilitator Guide](../facilitator/FACILITATOR_GUIDE.md) -- workshop-level facilitation reference
 - [Challenge Hub](../docs/CHALLENGES.md) -- all 21 challenges with instructions
 - [Solutions Directory](../docs/solutions/) -- reference solutions for facilitator use
 - [Grading Guide](grading-guide.md) -- per-challenge rubric and completion levels
