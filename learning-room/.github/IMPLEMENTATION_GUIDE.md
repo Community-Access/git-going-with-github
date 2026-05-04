@@ -21,7 +21,8 @@ automatically:
 |----------|---------|-------------|
 | `pr-validation-bot.yml` | PR opened, edited, reviewed | Aria bot -- welcomes first-timers, validates PR structure, provides educational feedback |
 | `content-validation.yml` | PR opened, edited | Checks links, Markdown structure, and accessibility |
-| `skills-progression.yml` | Issue closed | Unlocks the next challenge issue in sequence |
+| `student-progression.yml` | Workflow dispatch, issue closed | Creates the first challenge when triggered and unlocks the next challenge issue in sequence |
+| `skills-progression.yml` | PR merged | Posts achievement and progress feedback |
 | `autograder-conflicts.yml` | PR opened, edited | Validates merge conflict resolution (Challenge 07) |
 | `autograder-local-commit.yml` | Push to branch | Validates local Git commit (Challenge 10) |
 | `autograder-template.yml` | Issues created | Validates issue template creation (Challenge 14) |
@@ -73,9 +74,7 @@ Edit `validate-pr.js` to adjust what the PR bot checks:
 
 ### Changing Challenge Progression
 
-The `skills-progression.yml` workflow uses the issue template filenames to
-determine challenge order. To change the sequence, rename the template files
-(they sort alphabetically by filename).
+The `student-progression.yml` workflow uses the issue template filenames to determine challenge order. To change the sequence, rename the template files using the `challenge-NN-short-name.yml` pattern.
 
 ### Changing Bot Messages
 

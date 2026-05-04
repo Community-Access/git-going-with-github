@@ -147,6 +147,11 @@ The curriculum repo uses standard CI workflows for building HTML/EPUB output. Th
 **In the curriculum repository:**
 - No student data. This repo contains only curriculum content and facilitator guides.
 
+**In the private student-success repository:**
+- Private cohort operations data belongs in `Community-Access/git-going-student-success`
+- This includes registration exports, facilitator notes, accommodation follow-up, grade exports, and student-success follow-up records
+- Do not store credentials, API keys, or tokens there; use an approved secret manager for secrets
+
 **In GitHub Classroom:**
 - Student GitHub usernames (public information)
 - Roster data (identifier, optional name, optional email) -- visible only to classroom admins
@@ -174,7 +179,7 @@ Student repositories persist after the workshop unless explicitly deleted. Facil
 - Delete student repos through the classroom settings
 - Export grades before archiving
 
-See [teardown-checklist.md](classroom/teardown-checklist.md) for the complete post-workshop cleanup process.
+See [teardown-checklist.md](classroom/teardown-checklist.md) for the complete post-workshop cleanup process. Preserve private student-success records in `Community-Access/git-going-student-success` before deleting local exports or archiving Classroom data.
 
 
 ## Safety Checks

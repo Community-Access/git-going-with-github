@@ -37,7 +37,7 @@ For this workshop, Chapter 5 is a **guided setup chapter** with a lightweight co
 
 **Estimated time:** 10-15 minutes.
 
-1. Open the [learning-room](https://github.com/Community-Access/learning-room) repository on GitHub.com.
+1. Open your Learning Room repository on GitHub.com.
 2. Press `.` (the period key) on your keyboard. This launches **github.dev** - a full VS Code editor running in your browser. Wait a few seconds for it to load.
 3. Enable screen reader mode:
    - **Windows (NVDA/JAWS):** Press `Shift+Alt+F1`. You should hear an announcement confirming screen reader mode is on.
@@ -355,7 +355,7 @@ These limitations are why **desktop VS Code exists**. github.dev is for quick ed
 
 Before reading the rest of this guide:
 
-1. Open [github.com/community-access/learning-room](https://github.com/community-access/learning-room) in your browser
+1. Open your Learning Room repository in your browser
 2. Press `.` (period key)
 3. github.dev opens
 4. Press `Shift+Alt+F1` (Mac: `Shift+Option+F1`) to enable screen reader mode
@@ -636,7 +636,7 @@ The Copilot icon appears in the **Status Bar** at the bottom-right of the VS Cod
 
 | Problem | Solution |
 | --- | --- |
-| No Copilot icon in status bar | Install the GitHub Copilot extension: `Ctrl+Shift+X` then search `GitHub Copilot` then install |
+| No Copilot icon in status bar | On VS Code 1.116+, Copilot is built-in -- sign in to GitHub (`Ctrl+Shift+P` then `GitHub: Sign in`). On older VS Code: `Ctrl+Shift+X` then search `GitHub Copilot` then install |
 | Icon shows warning | Open Output panel (`Ctrl+Shift+U`), select "GitHub Copilot" from the dropdown, read the error |
 | "Not signed in" | Sign in to GitHub (Section 5 above) |
 | Copilot not suggesting | Check that Copilot is not disabled for the file type: `Ctrl+Shift+P` then `GitHub Copilot: Toggle` |

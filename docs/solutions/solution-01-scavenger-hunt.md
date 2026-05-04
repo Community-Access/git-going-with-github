@@ -29,7 +29,7 @@ This is one way the scavenger hunt could look. Your exact findings will vary dep
 - **github.com:** Click each tab in the top navigation bar
 - **github.dev:** Press `.` on any repo page to open the web editor, then use the Explorer sidebar
 - **VS Code with GitHub extension:** Use the GitHub Repositories extension to browse remotely
-- **GitHub CLI:** `gh repo view Community-Access/learning-room --web` opens the repo in a browser
+- **GitHub CLI:** `gh repo view Community-Access/git-going-with-github --web` opens the repo in a browser
 
 ## What matters
 

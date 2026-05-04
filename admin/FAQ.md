@@ -723,7 +723,7 @@ Example: "The `alt` attribute on this image is empty. Screen readers will skip i
 ## The Learning Room
 
 ### Q: What is the Learning Room?
-**A:** A shared practice repository (`learning-room/`) where participants make their first real contributions during the workshop. It contains intentionally incomplete documents and accessibility issues for you to find and fix. See [Chapter 3 (The Learning Room)](docs/04-the-learning-room.md).
+**A:** A private Learning Room repository created for you by GitHub Classroom. It contains intentionally incomplete documents, accessibility issues, challenge issues, and automated feedback workflows. See [Chapter 4 (The Learning Room)](docs/04-the-learning-room.md).
 
 ### Q: What are the challenges?
 **A:** The workshop has 21 challenges:
@@ -774,7 +774,7 @@ Details in `docs/CHALLENGES.md`.
 ### Q: How do I keep my fork up to date?
 **A:**
 ```bash
-git remote add upstream https://github.com/community-access/learning-room.git
+git remote add upstream https://github.com/community-access/git-going-with-github.git
 git fetch upstream
 git checkout main
 git merge upstream/main
@@ -845,5 +845,5 @@ This FAQ does not cover your question? Try these resources in order:
 7. [**FACILITATOR.md**](FACILITATOR.md) - If you are leading a workshop
 
 
-*Last updated: March 2026*  
+*Last updated: May 2026*  
 *Have more questions? Open an issue or discussion on GitHub!*

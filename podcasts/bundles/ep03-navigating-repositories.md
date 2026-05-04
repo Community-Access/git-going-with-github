@@ -296,14 +296,14 @@ Clone a repository with one command using the GitHub CLI:
 gh repo clone community-access/learning-room
 
 # Clone and cd into the folder
-gh repo clone community-access/learning-room && cd learning-room
+gh repo clone community-access/git-going-with-github && cd git-going-with-github
 ```
 
 **Or with standard Git:**
 
 ```bash
-git clone https://github.com/community-access/learning-room.git
-cd learning-room
+git clone https://github.com/community-access/git-going-with-github.git
+cd git-going-with-github
 ```
 
 **Setup:** Install the GitHub CLI from [cli.github.com](https://cli.github.com) and authenticate with `gh auth login`. See [Appendix D](appendix-d-git-authentication.md) for details.

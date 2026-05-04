@@ -1,6 +1,6 @@
 <!-- Classroom Setup Metadata
 Assignment title: You Can Build This
-Template repository: Community-Access/learning-room
+Template repository: Community-Access/learning-room-template
 Visibility: Private (student repos are private)
 Grant admin access: No
 Deadline: [Set per cohort - one week after Day 2]

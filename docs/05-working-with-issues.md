@@ -46,15 +46,15 @@ Chapter 4 is the first **issue-based challenge chapter** with short, confidence-
 
 ### Challenge 4.1 Step-by-Step: Create Your First Issue
 
-**Goal:** File a new issue in the Learning Room repository with a specific title and a meaningful description.
+**Goal:** File a new issue in your Learning Room repository with a specific title and a meaningful description.
 
 > **🛠️ Agentic Strategy:** Issues are the prompts that wake up AI. A clear Issue for a human is also a prompt for an agent. For this challenge, log an Issue describing an accessibility problem or chore you wish an AI agent could fix for you.
 
 > **🛠️ Agentic Strategy:** Issues are the prompts that wake up AI. A clear Issue for a human is also a prompt for an agent. For this challenge, log an Issue describing an accessibility problem or chore you wish an AI agent could fix for you.
 
-**Where you are working:** the Issues tab of the [learning-room](https://github.com/Community-Access/learning-room) repository on GitHub.com.
+**Where you are working:** the Issues tab of your Learning Room repository on GitHub.com.
 
-1. Open the [learning-room](https://github.com/Community-Access/learning-room) repository in your browser.
+1. Open your Learning Room repository in your browser.
 2. Navigate to the **Issues** tab (press `G` then `I` to jump there with keyboard shortcuts, or find the "Issues" link in the repository navigation).
 3. Activate the **New issue** button.
 4. If a template picker appears, select **Open a blank issue** (or choose a template if one fits).
@@ -75,9 +75,9 @@ Chapter 4 is the first **issue-based challenge chapter** with short, confidence-
 
 **Goal:** Leave a comment on another student's issue and use an @mention to notify them.
 
-**Where you are working:** the Issues tab of the [learning-room](https://github.com/Community-Access/learning-room) repository on GitHub.com.
+**Where you are working:** the Issues tab of your Learning Room repository on GitHub.com.
 
-1. Open the **Issues** tab in the [learning-room](https://github.com/Community-Access/learning-room) repository.
+1. Open the **Issues** tab in your Learning Room repository.
 2. Find an issue created by a classmate (look for issues from Challenge 4.1, or browse recent open issues).
 3. Open the issue by activating its title link.
 4. Read the issue description to understand what they reported.
@@ -213,7 +213,7 @@ An issue is a discussion thread attached to a repository. Issues are used for:
 
 Every issue has a **number** (`#42`), a **state** (Open or Closed), a **title**, a **description**, and a **comment thread**. Issues are public by default on public repositories.
 
-> **Learning Room connection:** In the [learning-room](https://github.com/Community-Access/learning-room) repo, every challenge from `docs/CHALLENGES.md` becomes an issue. For example, Challenge 1 ("Fix Broken Link") is filed as an issue pointing to `docs/welcome.md`, describing the broken link and linking to the challenge success criteria. When you open a PR to fix it, you reference the issue with `Closes #XX` to automatically close it on merge.
+> **Learning Room connection:** In your Learning Room repo, every challenge from `docs/CHALLENGES.md` becomes an issue. For example, Challenge 1 ("Fix Broken Link") is filed as an issue pointing to `docs/welcome.md`, describing the broken link and linking to the challenge success criteria. When you open a PR to fix it, you reference the issue with `Closes #XX` to automatically close it on merge.
 
 
 ## Navigating to the Issues List

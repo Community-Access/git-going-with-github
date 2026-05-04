@@ -28,7 +28,7 @@ Chapter 8 is a **communication and culture chapter**.
 
 **Goal:** Identify three concrete communication behaviors you will practice during the rest of the workshop.
 
-**Where you are working:** your assigned Chapter 8 challenge issue in the [learning-room](https://github.com/Community-Access/learning-room) repository on GitHub.com.
+**Where you are working:** your assigned Chapter 8 challenge issue in your Learning Room repository on GitHub.com.
 
 1. Read through the chapter content below, paying attention to the sections on GitHub Flow, constructive feedback, and asking for help.
 2. As you read, think about one situation from Day 1 where communication helped (or could have helped) you.

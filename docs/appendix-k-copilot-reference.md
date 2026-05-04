@@ -190,7 +190,7 @@ Copilot Chat has four modes. Select the current mode from the dropdown at the bo
 
 - Chat responses appear in the panel with syntax highlighting -- increase the Chat panel font size via `editor.fontSize` in settings
 - The `@` and `/` trigger characters are small but the autocomplete popup that follows is large and themed to your current color scheme
-- Use Ask mode for reading explanations, Edit mode for controlled changes, and Agent mode for autonomous multi-step tasks
+- Use Ask mode for reading explanations, Agent mode for controlled multi-file changes and autonomous tasks (Edit mode is being deprecated into Agent mode as of VS Code 1.118)
 
 </details>
 
@@ -1034,7 +1034,9 @@ Install in VS Code by clicking the button at `https://aka.ms/awesome-copilot/mcp
 
 ## 14. GitHub Agentic Workflows - Agents in the Cloud
 
-> **Status: Technical Preview** - GitHub Agentic Workflows entered technical preview on **February 13, 2026**. The feature is in early development and may change significantly. Use with careful human supervision. See the [official documentation](https://github.github.com/gh-aw/) and [source repository](https://github.com/github/gh-aw) (open source, MIT).
+> **Status: Technical Preview** - GitHub Agentic Workflows entered technical preview on **February 13, 2026**. As of May 2026 the feature remains in active development and preview; changes to the API and workflow format are ongoing. Use with careful human supervision. See the [official documentation](https://github.github.com/gh-aw/) and [source repository](https://github.com/github/gh-aw) (open source, MIT).
+>
+> **Workshop note:** Facilitators will confirm current availability and any breaking changes at the workshop.
 
 **GitHub Agentic Workflows** run AI coding agents as part of GitHub Actions pipelines - no VS Code, no local setup required. The key differentiator: you write automation goals in **plain Markdown**, and the `gh aw` CLI compiles them into standard GitHub Actions workflows. The AI agent interprets your natural language description and executes the task.
 
@@ -1197,7 +1199,9 @@ gh aw compile .github/workflows/daily-report.md
 
 GitHub Copilot offers access to AI models from multiple providers including OpenAI, Anthropic, Google, and xAI. The model you choose affects response quality, speed, and premium request consumption. Different models excel at different tasks - understanding these trade-offs helps you get better results.
 
-**Models are updated frequently.** This appendix reflects the model landscape as of February 2026. For the latest additions and retirements, see the [GitHub Copilot changelog](https://github.blog/changelog/label/copilot/) and [GitHub's official supported models documentation](https://docs.github.com/en/copilot/reference/ai-models/supported-models).
+**Models are updated frequently.** This appendix reflects the model landscape as of April 2026. For the latest additions and retirements, see the [GitHub Copilot changelog](https://github.blog/changelog/label/copilot/) and [GitHub's official supported models documentation](https://docs.github.com/en/copilot/reference/ai-models/supported-models).
+
+> **Workshop note:** GitHub Copilot plans, billing, and model availability are changing. We will provide specific guidance at the workshop. Check [github.com/settings/copilot](https://github.com/settings/copilot) to verify your current access.
 
 
 ## 2. How to Choose a Model
@@ -1234,6 +1238,7 @@ For complex problems, architecture decisions, multi-file analysis, tricky bugs, 
 | -------  | ----------  | -----------  | ------  |
 | **GPT-5 mini** | OpenAI | Deep reasoning with faster responses. Ideal for interactive sessions and step-by-step code analysis. | Free |
 | **GPT-5.2** | OpenAI | Great at complex reasoning, code analysis, and technical decision-making. | 1× |
+| **GPT-5.5** | OpenAI | Latest OpenAI reasoning model. Generally available as of April 24, 2026. Strong on complex coding tasks and long-context reasoning. | 1× |
 | **Claude Sonnet 4 / 4.5 / 4.6** | Anthropic | More reliable completions and smarter reasoning under pressure. Performance and practicality balanced for coding workflows; strong at complex problem-solving. | 1× |
 | **Claude Opus 4.6** | Anthropic | Anthropic's most powerful model. Best for the most demanding complex problem-solving challenges and sophisticated reasoning. | 3× |
 | **Gemini 2.5 Pro** | Google | Complex code generation, debugging, and research workflows. | 1× |
@@ -1279,6 +1284,7 @@ For tasks that involve images, screenshots, diagrams, or UI mockups - paste an i
 | GPT-5.2 | GA | OpenAI | Pro, Pro+, Business, Enterprise | 1× |
 | GPT-5.2-Codex | GA | OpenAI | Pro, Pro+, Business, Enterprise | 1× |
 | GPT-5.3-Codex | GA | OpenAI | Pro, Pro+, Business, Enterprise | 1× |
+| GPT-5.5 | GA | OpenAI | Pro, Pro+, Business, Enterprise | 1× |
 | Claude Sonnet 4 | GA | Anthropic | Pro, Pro+, Business, Enterprise | 1× |
 | Claude Sonnet 4.5 | GA | Anthropic | Pro, Pro+, Business, Enterprise | 1× |
 | Claude Sonnet 4.6 | GA | Anthropic | Pro, Pro+, Business, Enterprise | 1× |
@@ -1287,7 +1293,7 @@ For tasks that involve images, screenshots, diagrams, or UI mockups - paste an i
 | Claude Opus 4.5 | Preview | Anthropic | Pro+, Business, Enterprise | 3× |
 | Claude Opus 4.6 | GA | Anthropic | Pro+, Business, Enterprise | 3× |
 
-> **Note:** Model availability changes frequently. Check [GitHub's supported models page](https://docs.github.com/en/copilot/reference/ai-models/supported-models) for the current list.
+> **Note:** Model availability changes frequently. Check [GitHub's supported models page](https://docs.github.com/en/copilot/reference/ai-models/supported-models) for the current list. Facilitators will provide current guidance at the workshop.
 
 
 ## 4. Model Availability by Plan
@@ -1300,7 +1306,7 @@ For tasks that involve images, screenshots, diagrams, or UI mockups - paste an i
 | **Copilot Business** | All 0× models | Most | 300 per user (monthly) |
 | **Copilot Enterprise** | All 0× models | All models | Unlimited |
 
-Models marked with a premium multiplier consume premium requests proportionally. For example, Claude Opus 4.6 (3× multiplier) uses 3 premium requests per message. Free models (0× multiplier) never consume premium requests.
+> **Billing is changing.** GitHub Copilot plan details and billing models are actively evolving. Facilitators will provide current guidance at the workshop. Check [github.com/settings/copilot](https://github.com/settings/copilot) to see your current plan and usage.
 
 
 ## 5. Premium Requests and Cost Multipliers
@@ -1362,7 +1368,7 @@ In the Chat panel, the model picker button is near the **bottom** of the chat vi
 - You specifically need a model with certain capabilities (e.g., vision input with Claude Sonnet 4)
 - You're managing premium request quotas and want to control costs
 - You've found a particular model gives better results for your specific workflow or domain
-- You're doing agentic work and want to explicitly use GPT-5.1-Codex-Max or GPT-5.2-Codex
+- You're doing agentic work and want to explicitly select an agent-optimized Codex model (check current availability in the model picker)
 
 To switch back to Auto from a specific model, re-open the model picker and select **Auto** at the top of the list.
 
@@ -1371,13 +1377,14 @@ To switch back to Auto from a specific model, re-open the model picker and selec
 
 GitHub regularly updates the model roster. Older model versions are retired when newer equivalents are available. When a model is retired, Copilot stops sending requests to it and falls back to newer alternatives.
 
-### Already retired (as of February 2026)
+### Already retired (as of April 2026)
 
 - Claude Sonnet 3.5, Claude Sonnet 3.7
 - Gemini 2.0 Flash
 - o1-mini, o3, o3-mini, o4-mini
 - Claude Opus 4.1
 - GPT-5 (base), GPT-5-Codex
+- GPT-5.3-Codex (removed from Student plan model picker, April 2026)
 
 To stay current, watch the [GitHub Copilot changelog](https://github.blog/changelog/label/copilot/) - model additions and retirements are announced there.
 

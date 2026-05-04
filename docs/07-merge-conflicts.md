@@ -32,7 +32,7 @@ Chapter 7 uses **one controlled practice challenge** so students can learn confl
 
 > **🛠️ Agentic Strategy:** Sometimes an AI agent will confidently generate code that conflicts with human-written code. Resolving merge conflicts is not just a hurdle for human teamwork—it is exactly how you supervise, correct, and collaborate safely with an AI.
 
-**Where you are working:** the [learning-room](https://github.com/Community-Access/learning-room) repository on GitHub.com (web editor) or in VS Code if you cloned locally.
+**Where you are working:** your Learning Room repository on GitHub.com (web editor) or in VS Code if you cloned locally.
 
 **Before you start:** Open your **assigned Chapter 7 challenge issue** (the one titled "Chapter 7.1: Resolve Conflict Markers (@yourname)"). The issue description tells you which practice file contains the conflict markers.
 

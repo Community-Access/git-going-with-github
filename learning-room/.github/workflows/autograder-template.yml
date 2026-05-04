@@ -28,25 +28,28 @@ jobs:
             ! -name 'challenge-*.yml' \
             ! -name 'bonus-*.yml' \
             ! -name 'config.yml' 2>/dev/null || true)
-          
+
           if [ -z "$TEMPLATES" ]; then
             echo "found=false" >> "$GITHUB_OUTPUT"
             exit 0
           fi
-          
+
           echo "found=true" >> "$GITHUB_OUTPUT"
-          
-          # Check the first custom template for a name field
+
+          # Check the first custom template for a name field.
+          # Normalize a UTF-8 BOM because Windows tooling may add one.
           FIRST=$(echo "$TEMPLATES" | head -1)
           echo "file=$FIRST" >> "$GITHUB_OUTPUT"
-          
-          if grep -q '^name:' "$FIRST"; then
+          CHECK_FILE="/tmp/custom-issue-template.yml"
+          sed '1s/^\xEF\xBB\xBF//' "$FIRST" > "$CHECK_FILE"
+
+          if grep -q '^name:' "$CHECK_FILE"; then
             echo "has_name=true" >> "$GITHUB_OUTPUT"
           else
             echo "has_name=false" >> "$GITHUB_OUTPUT"
           fi
-          
-          if grep -q '^description:' "$FIRST"; then
+
+          if grep -q '^description:' "$CHECK_FILE"; then
             echo "has_desc=true" >> "$GITHUB_OUTPUT"
           else
             echo "has_desc=false" >> "$GITHUB_OUTPUT"
@@ -89,9 +92,13 @@ jobs:
                 'Found `' + file + '` with valid `name` and `description` fields. Well done!'
               ].join('\n');
             }
-            await github.rest.issues.createComment({
-              owner: context.repo.owner,
-              repo: context.repo.repo,
-              issue_number: context.issue.number,
-              body
-            });
+            try {
+              await github.rest.issues.createComment({
+                owner: context.repo.owner,
+                repo: context.repo.repo,
+                issue_number: context.issue.number,
+                body
+              });
+            } catch (error) {
+              console.error('Could not post Challenge 14 result:', error.message);
+            }

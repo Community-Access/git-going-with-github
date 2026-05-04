@@ -12,8 +12,9 @@ Use this checklist after each workshop cohort completes the course.
 ## Within one week
 
 - [ ] Review student feedback from surveys
+- [ ] Move any private registration exports, accommodation notes, grade exports, or follow-up notes to `Community-Access/git-going-student-success`
 - [ ] Archive the classroom (Classroom Settings, Archive)
-- [ ] Close any remaining open issues in the learning-room repository
+- [ ] Close any remaining open issues across student Learning Room repositories (or leave them open if students want to continue practicing post-workshop)
 - [ ] Merge or close any abandoned student PRs with a kind comment
 - [ ] Update the [student roster](.github/data/student-roster.json) in the main repo if students should retain access for ongoing contribution
 

@@ -145,6 +145,7 @@ In any Markdown file, `Ctrl+Shift+O` opens a symbol picker populated by every he
 - Press `Ctrl+M` to toggle Tab focus mode -- when on, `Tab` moves focus between UI elements instead of inserting a tab character
 - Use `Ctrl+G` then type a line number to jump directly to any line; type `10:5` to land at line 10, column 5
 - In the Find widget (`Ctrl+F`), match count is announced as you type (e.g., "3 of 12 matches"); press `F3` / `Shift+F3` to step through results
+- **Keyboard Shortcuts editor (`Ctrl+K Ctrl+S`):** After typing a search query, your screen reader announces "Use Ctrl+Down Arrow to access the searched shortcut details" -- press `Ctrl+Down` to jump from the search input directly to the matching results table. Disable this hint with `accessibility.verbosity.keyboardShortcuts`.
 
 </details>
 
@@ -371,6 +372,22 @@ Type `@` in the chat input to see available participants:
 - Use `@workspace` to ask questions about your specific project context
 
 </details>
+
+### Agent Mode: Question Carousel and Terminal Focus
+
+When Copilot's Agent mode is running a terminal command and needs your input -- such as a password prompt, confirmation, or interactive installer question -- VS Code displays a **question carousel** in the Chat panel. The carousel shows what the terminal is asking and lets you respond without switching focus to the terminal manually.
+
+**Keyboard shortcuts for the question carousel:**
+
+| Shortcut | Action |
+| --- | --- |
+| `Alt+T` | Jump directly from the question carousel back to the terminal |
+| `Tab` | Navigate carousel buttons (Confirm, Dismiss, Focus Terminal) |
+| `Enter` | Activate the focused button |
+
+> **Screen reader tip:** When the question carousel appears, your screen reader announces the question and the available buttons. The Focus Terminal button's ARIA label includes the `Alt+T` keybinding hint so you can hear it is available. Press `Alt+T` to move focus to the terminal and type your answer directly.
+
+**Suppressing carousel hints:** The ARIA label on the carousel includes a navigation hint by default. To suppress this announcement, set `accessibility.verbosity.chatQuestionCarousel` to `false` in Settings.
 
 
 ---

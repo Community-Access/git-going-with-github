@@ -12,10 +12,11 @@ Sponsored by [Community Access](https://community-access.org) in partnership wit
 
 | Detail | Information |
 |---|---|
-| **Dates** | [WORKSHOP_DATE_DAY1] & [WORKSHOP_DATE_DAY2] |
+| **Dates** | May 21, 2026 & May 22, 2026 |
 | **Time** | 12:00 PM - 8:00 PM Eastern (both days) |
 | **Location** | Online via [Zoom](https://zoom.us/) |
 | **Cost** | Free |
+| **Facilitators** | Jeff Bishop and Michael Babcock |
 | **Presented by** | [Community Access](https://community-access.org) |
 | **In partnership with** | [GitHub](https://github.com) |
 
@@ -87,7 +88,7 @@ Your screen reader and keyboard are the only tools you need. Everything happens 
 | **[Navigating Repositories](https://community-access.org/git-going-with-github/docs/02-navigating-repositories.html)** | Explore a real repository - files, branches, commits, contributors |
 | **[Working with Issues](https://community-access.org/git-going-with-github/docs/04-working-with-issues.html)** | Search, file, comment on, and triage issues using [Markdown](https://community-access.org/git-going-with-github/docs/appendix-e-github-flavored-markdown.html) |
 | **[Understanding Pull Requests](https://community-access.org/git-going-with-github/docs/06-working-with-pull-requests.html)** | Read diffs, write inline review comments, approve and merge |
-| **[Your First Contribution Sprint](https://community-access.org/git-going-with-github/docs/07-merge-conflicts.html)** | Make a real contribution to the shared practice repository - with automated bot feedback and human peer review |
+| **[Your First Contribution Sprint](https://community-access.org/git-going-with-github/docs/07-merge-conflicts.html)** | Make a real contribution in your private Learning Room repository - with automated bot feedback and human peer review |
 | **[Community and Culture](https://community-access.org/git-going-with-github/docs/08-open-source-culture.html)** | Open source etiquette, constructive feedback, [managing notifications](https://community-access.org/git-going-with-github/docs/10-notifications-and-day-1-close.html), organizing with [labels](https://community-access.org/git-going-with-github/docs/09-labels-milestones-projects.html) |
 
 You will also work through [GitHub Skills](https://skills.github.com/) modules - interactive, bot-guided courses that run in your own GitHub account. A bot named Mona creates real issues and pull requests for you, verifies your actions, and guides you through each step. It is the same mechanism used by real open source projects.
@@ -191,7 +192,7 @@ Our [Pre-Workshop Setup Guide](https://community-access.org/git-going-with-githu
 
 Registration for GIT Going with GitHub is now closed. Thank you to all who registered!
 
-Already registered? Complete the [**Pre-Workshop Setup Guide**](https://community-access.org/git-going-with-github/docs/00-pre-workshop-setup.html) before March 7 to make sure you are ready for Day 1.
+Already registered? Complete the [**Pre-Workshop Setup Guide**](https://community-access.org/git-going-with-github/docs/00-pre-workshop-setup.html) before Day 1 to make sure you are ready.
 
 
 ## What Makes This Workshop Different
@@ -202,7 +203,7 @@ Every step in this workshop is written three ways - for NVDA, for JAWS, and for 
 
 And the goal is not just "learn GitHub." The goal is to move you from **user** to **maker**. From someone who encounters accessibility barriers to someone who files the issue, proposes the fix, reviews the pull request, and ships the solution. That arc - from observer to contributor to product maker - is what the two days are designed to deliver.
 
-The curriculum includes [17 chapters](https://community-access.org/git-going-with-github/docs/course-guide.html), [26 reference appendices](https://community-access.org/git-going-with-github/docs/course-guide.html), [44 companion podcast episodes](https://community-access.org/git-going-with-github/PODCASTS.html), 24 hands-on exercises, a shared practice repository with automated feedback bots, three [GitHub Skills](https://skills.github.com/) modules with a bot that verifies your work in real time, and a live open source project where your contributions are merged on Day 2.
+The curriculum includes [17 chapters](https://community-access.org/git-going-with-github/docs/course-guide.html), [26 reference appendices](https://community-access.org/git-going-with-github/docs/course-guide.html), companion podcast episodes, private Learning Room repositories with automated feedback bots, three [GitHub Skills](https://skills.github.com/) modules with a bot that verifies your work in real time, and a live open source project where your contributions are merged on Day 2.
 
 All of it is open source. All of it is yours to keep, fork, and share.
 

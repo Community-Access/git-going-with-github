@@ -1,0 +1,1488 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="GIT Going with GitHub - A two-day accessible open source workshop by Community Access">
+  <title>Image Alt Text Agent -- Enhanced Documentation - GIT Going with GitHub</title>
+  <link rel="stylesheet" href="./styles/github-markdown.css">
+  <link rel="stylesheet" href="./styles/highlight.css">
+  <link rel="stylesheet" href="./styles/custom.css">
+  <style>
+    .markdown-body {
+      box-sizing: border-box;
+      min-width: 200px;
+      max-width: 980px;
+      margin: 0 auto;
+      padding: 45px;
+    }
+    @media (max-width: 767px) {
+      .markdown-body {
+        padding: 15px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+  <header class="site-header" role="banner">
+    <div class="site-header-inner">
+      <nav aria-label="Breadcrumb" class="breadcrumb">
+        <a href="./index.html">Home</a> <span aria-hidden="true">›</span> <span aria-current="page">Image Alt Text Agent -- Enhanced Documentation</span>
+      </nav>
+      <div class="header-actions">
+        <a href="https://github.com/Community-Access/git-going-with-github/wiki" class="wiki-link" target="_blank" rel="noopener noreferrer">
+          <svg aria-hidden="true" focusable="false" width="16" height="16" viewBox="0 0 16 16" fill="currentColor">
+            <path d="M1.75 1h8.5c.966 0 1.75.784 1.75 1.75v5.5A1.75 1.75 0 0 1 10.25 10H7.06l-2.573 2.573A1.458 1.458 0 0 1 2 11.543V10h-.25A1.75 1.75 0 0 1 0 8.25v-5.5C0 1.784.784 1 1.75 1ZM1.5 2.75v5.5c0 .138.112.25.25.25h1a.75.75 0 0 1 .75.75v2.19l2.72-2.72a.749.749 0 0 1 .53-.22h3.5a.25.25 0 0 0 .25-.25v-5.5a.25.25 0 0 0-.25-.25h-8.5a.25.25 0 0 0-.25.25Zm13 2a.25.25 0 0 0-.25-.25h-.5a.75.75 0 0 1 0-1.5h.5c.966 0 1.75.784 1.75 1.75v5.5A1.75 1.75 0 0 1 14.25 12H14v1.543a1.457 1.457 0 0 1-2.487 1.03L9.22 12.28a.749.749 0 1 1 1.06-1.06l2.22 2.22v-2.19a.75.75 0 0 1 .75-.75h.25a.25.25 0 0 0 .25-.25v-5.5Z"/>
+          </svg>
+          Wiki
+        </a>
+        <form role="search" class="search-form" action="./search.html" method="get">
+        <label for="site-search" class="search-label">Search docs</label>
+        <input
+          type="search"
+          id="site-search"
+          class="search-input"
+          name="q"
+          placeholder="Search docs…"
+          autocomplete="off"
+          aria-label="Search documentation"
+        >
+        <button type="submit" class="search-button" aria-label="Submit search">
+          <svg aria-hidden="true" focusable="false" width="16" height="16" viewBox="0 0 16 16" fill="currentColor">
+            <path d="M10.68 11.74a6 6 0 0 1-7.922-8.982 6 6 0 0 1 8.982 7.922l3.04 3.04a.749.749 0 0 1-.326 1.275.749.749 0 0 1-.734-.215ZM11.5 7a4.499 4.499 0 1 0-8.997 0A4.499 4.499 0 0 0 11.5 7Z"/>
+          </svg>
+        </button>
+      </form>
+      </div>
+    </div>
+  </header>
+  <main id="main-content" class="markdown-body">
+    <h1 id="image-alt-text-agent----enhanced-documentation">Image Alt Text Agent -- Enhanced Documentation</h1>
+<h2 id="overview">Overview</h2>
+<p>The Image Alt Text agent is an accessibility-focused toolchain that automates the process of analyzing images, generating alternative text, extracting dimensions, building accessible markup, and maintaining an image inventory. It is designed for developers, content authors, and accessibility practitioners who need to produce WCAG-compliant image markup efficiently.</p>
+<p>The agent runs entirely within VS Code via GitHub Copilot custom agents. It works across all workspaces and supports single-image analysis, batch folder scanning, persistent catalog management, confidence scoring, content flagging, responsive image patterns, and accessibility scoring.</p>
+<h3 id="what-changed-in-the-enhanced-version">What Changed in the Enhanced Version</h3>
+<table>
+<thead>
+<tr>
+<th scope="col">Feature</th>
+<th scope="col">Original</th>
+<th scope="col">Enhanced</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Classification output</td>
+<td>4 categories</td>
+<td>4 categories + confidence scoring (high/medium/low)</td>
+</tr>
+<tr>
+<td>Content analysis</td>
+<td>Basic</td>
+<td>Flags: image-of-text, screenshot, logo, icon, meme, chart, diagram, photograph, illustration</td>
+</tr>
+<tr>
+<td>Markup formats</td>
+<td>HTML, Markdown, JSX, Next.js</td>
+<td>+ Responsive srcset, <code>&lt;picture&gt;</code> element, Astro <code>&lt;Image&gt;</code>, hero/above-the-fold mode</td>
+</tr>
+<tr>
+<td>Catalog</td>
+<td>Counts only</td>
+<td>Accessibility scoring (per-image + project-level), action items section, delta mode</td>
+</tr>
+<tr>
+<td>Utility script</td>
+<td>Dimensions + format</td>
+<td>+ EXIF extraction, dominant colors, SVG viewBox parsing, text-content heuristic</td>
+</tr>
+<tr>
+<td>Orchestrator modes</td>
+<td>Standard only</td>
+<td>Standard, Quick, Responsive, Hero</td>
+</tr>
+<tr>
+<td>Pipeline flow</td>
+<td>Linear</td>
+<td>+ Delta mode, low-confidence review gates, handoffs to related agents</td>
+</tr>
+<tr>
+<td>Instruction file</td>
+<td>Basic rules</td>
+<td>+ Responsive image guidance, hero patterns, image-of-text warnings</td>
+</tr>
+</tbody></table>
+<h2 id="table-of-contents">Table of Contents</h2>
+<ul>
+<li><a href="#architecture">Architecture</a></li>
+<li><a href="#components">Components</a><ul>
+<li><a href="#orchestrator-image-alt-text">Orchestrator: image-alt-text</a></li>
+<li><a href="#sub-agent-image-analyzer">Sub-Agent: image-analyzer</a></li>
+<li><a href="#sub-agent-tag-builder">Sub-Agent: tag-builder</a></li>
+<li><a href="#sub-agent-image-cataloger">Sub-Agent: image-cataloger</a></li>
+<li><a href="#utility-script-get_image_infopy">Utility Script: get_image_info.py</a></li>
+<li><a href="#instruction-image-dimensions">Instruction: image-dimensions</a></li>
+<li><a href="#prompt-files">Prompt Files</a></li>
+</ul>
+</li>
+<li><a href="#installation-and-prerequisites">Installation and Prerequisites</a></li>
+<li><a href="#operating-modes">Operating Modes</a></li>
+<li><a href="#usage-guide">Usage Guide</a><ul>
+<li><a href="#single-image-analysis">Single Image Analysis</a></li>
+<li><a href="#batch-folder-processing">Batch Folder Processing</a></li>
+<li><a href="#delta-mode-changed-images-only">Delta Mode (Changed Images Only)</a></li>
+<li><a href="#quick-mode-alt-text-only">Quick Mode (Alt Text Only)</a></li>
+<li><a href="#responsive-mode">Responsive Mode</a></li>
+<li><a href="#hero-mode-above-the-fold">Hero Mode (Above the Fold)</a></li>
+<li><a href="#catalog-management">Catalog Management</a></li>
+<li><a href="#output-format-selection">Output Format Selection</a></li>
+</ul>
+</li>
+<li><a href="#image-classification-reference">Image Classification Reference</a><ul>
+<li><a href="#classification-categories">Classification Categories</a></li>
+<li><a href="#classification-decision-tree">Classification Decision Tree</a></li>
+<li><a href="#confidence-scoring">Confidence Scoring</a></li>
+<li><a href="#content-flags">Content Flags</a></li>
+</ul>
+</li>
+<li><a href="#supported-image-formats">Supported Image Formats</a></li>
+<li><a href="#output-formats">Output Formats</a><ul>
+<li><a href="#html">HTML</a></li>
+<li><a href="#html-figure-with-figcaption">HTML Figure with Figcaption</a></li>
+<li><a href="#hero--above-the-fold-html">Hero / Above-the-Fold HTML</a></li>
+<li><a href="#responsive-html-srcset">Responsive HTML (srcset)</a></li>
+<li><a href="#picture-element">Picture Element</a></li>
+<li><a href="#markdown">Markdown</a></li>
+<li><a href="#jsx-and-react">JSX and React</a></li>
+<li><a href="#nextjs-image-component">Next.js Image Component</a></li>
+<li><a href="#astro-image-component">Astro Image Component</a></li>
+</ul>
+</li>
+<li><a href="#accessibility-scoring">Accessibility Scoring</a><ul>
+<li><a href="#per-image-scoring">Per-Image Scoring</a></li>
+<li><a href="#project-level-scoring">Project-Level Scoring</a></li>
+</ul>
+</li>
+<li><a href="#catalog-file-formats">Catalog File Formats</a><ul>
+<li><a href="#markdown-catalog">Markdown Catalog</a></li>
+<li><a href="#json-catalog">JSON Catalog</a></li>
+<li><a href="#csv-catalog">CSV Catalog</a></li>
+</ul>
+</li>
+<li><a href="#alt-text-quality-standards">Alt Text Quality Standards</a></li>
+<li><a href="#edge-case-handling">Edge Case Handling</a></li>
+<li><a href="#wcag-compliance-reference">WCAG Compliance Reference</a></li>
+<li><a href="#utility-script-reference">Utility Script Reference</a><ul>
+<li><a href="#command-line-interface">Command-Line Interface</a></li>
+<li><a href="#output-fields">Output Fields</a></li>
+<li><a href="#svg-handling">SVG Handling</a></li>
+<li><a href="#exif-data">EXIF Data</a></li>
+<li><a href="#dominant-colors">Dominant Colors</a></li>
+<li><a href="#text-content-heuristic">Text-Content Heuristic</a></li>
+</ul>
+</li>
+<li><a href="#agent-handoffs">Agent Handoffs</a></li>
+<li><a href="#file-manifest">File Manifest</a></li>
+<li><a href="#relationship-to-other-agents">Relationship to Other Agents</a></li>
+<li><a href="#troubleshooting">Troubleshooting</a></li>
+<li><a href="#example-prompts">Example Prompts</a><ul>
+<li><a href="#analysis">Analysis</a></li>
+<li><a href="#markup-generation">Markup Generation</a></li>
+<li><a href="#responsive-and-performance">Responsive and Performance</a></li>
+<li><a href="#batch-processing">Batch Processing</a></li>
+<li><a href="#cataloging">Cataloging</a></li>
+<li><a href="#combined-workflows">Combined Workflows</a></li>
+</ul>
+</li>
+</ul>
+<hr>
+<h2 id="architecture">Architecture</h2>
+<p>The system follows a modular orchestrator/sub-agent pattern. The top-level agent coordinates the pipeline and delegates specialist work to three internal sub-agents. A Python utility script handles dimension extraction independently of the LLM.</p>
+<pre><code class="hljs">User request
+    |
+    v
+@image-alt-<span class="hljs-keyword">text</span> (orchestrator)
+    |
+    |-- <span class="hljs-keyword">Step</span> <span class="hljs-number">1</span>: Validate image file, determine operating mode
+    |-- <span class="hljs-keyword">Step</span> <span class="hljs-number">2</span>: Run get_image_info.py --&gt; dimensions, EXIF, colors, SVG viewBox, <span class="hljs-keyword">text</span> heuristic
+    |-- <span class="hljs-keyword">Step</span> <span class="hljs-number">3</span>: <span class="hljs-keyword">Delegate</span> <span class="hljs-keyword">to</span> @image-analyzer --&gt; classification + alt <span class="hljs-keyword">text</span> + confidence + flags
+    |       |
+    |       +-- <span class="hljs-keyword">If</span> confidence <span class="hljs-built_in">is</span> LOW --&gt; pause <span class="hljs-built_in">and</span> ask user <span class="hljs-keyword">to</span> confirm
+    |
+    |-- <span class="hljs-keyword">Step</span> <span class="hljs-number">4</span>: <span class="hljs-keyword">Delegate</span> <span class="hljs-keyword">to</span> @tag-builder --&gt; markup (HTML/Markdown/JSX/responsive/picture/Astro)
+    |       |
+    |       +-- Apply flag-specific adjustments (image-<span class="hljs-keyword">of</span>-<span class="hljs-keyword">text</span> warning, icon optimization, etc.)
+    |
+    |-- <span class="hljs-keyword">Step</span> <span class="hljs-number">5</span>: <span class="hljs-keyword">Delegate</span> <span class="hljs-keyword">to</span> @image-cataloger --&gt; persist <span class="hljs-keyword">to</span> catalog <span class="hljs-keyword">with</span> scoring
+    |       |
+    |       +-- Calculate per-image <span class="hljs-built_in">and</span> project-level accessibility scores
+    |       +-- Generate action items (low confidence, image-<span class="hljs-keyword">of</span>-<span class="hljs-keyword">text</span>)
+    |
+    |-- <span class="hljs-keyword">Step</span> <span class="hljs-number">6</span>: Present formatted results <span class="hljs-keyword">with</span> confidence <span class="hljs-built_in">and</span> flags
+    |-- <span class="hljs-keyword">Step</span> <span class="hljs-number">7</span>: Offer handoffs <span class="hljs-keyword">to</span> related agents (accessibility-lead, <span class="hljs-keyword">text</span>-quality-reviewer)</code></pre>
+<h3 id="design-principles">Design Principles</h3>
+<ul>
+<li><strong>Single responsibility</strong>: Each sub-agent does exactly one thing. The analyzer does not build tags. The tag builder does not analyze images. The cataloger does not generate alt text.</li>
+<li><strong>Minimal tools</strong>: Sub-agents have only the tool permissions they need. The tag-builder has read-only access. The analyzer has read and execute. The cataloger has read, edit, and search.</li>
+<li><strong>No guessing</strong>: Dimensions are always extracted from the actual image binary via the Python script. Alt text is always generated by examining the image content through a vision-capable model.</li>
+<li><strong>Vision model preferred</strong>: Both the orchestrator and image-analyzer specify a vision-capable model (Claude Sonnet 4.5 or GPT-5) to ensure image content can be examined directly.</li>
+<li><strong>Confidence gates</strong>: When the analyzer returns low confidence, the orchestrator pauses for human confirmation before proceeding.</li>
+<li><strong>Scoring over checklists</strong>: The cataloger calculates a numeric accessibility score rather than just a pass/fail, making it easy to track improvements over time.</li>
+</ul>
+<hr>
+<h2 id="components">Components</h2>
+<h3 id="orchestrator-image-alt-text">Orchestrator: image-alt-text</h3>
+<p><strong>File</strong>: <code>agents/image-alt-text.agent.md</code>
+<strong>Invocation</strong>: <code>@image-alt-text</code> in Copilot Chat</p>
+<p>The orchestrator is the user-facing entry point. It:</p>
+<ol>
+<li>Accepts the user&#39;s request and determines the operating mode (standard, quick, responsive, hero)</li>
+<li>Validates the image file(s) exist and are supported formats</li>
+<li>Runs the Python utility script to extract dimensions and metadata</li>
+<li>Delegates to sub-agents for analysis, markup building, and cataloging</li>
+<li>Handles low-confidence review gates</li>
+<li>Assembles and presents the final results</li>
+<li>Offers handoffs to related accessibility agents</li>
+</ol>
+<p><strong>Tools available</strong>: read, edit, search, execute, agent, todo
+<strong>Sub-agents</strong>: image-analyzer, tag-builder, image-cataloger
+<strong>Model preference</strong>: Claude Sonnet 4.5 (copilot), GPT-5 (copilot)
+<strong>Handoffs</strong>: accessibility-lead, alt-text-headings, text-quality-reviewer</p>
+<h3 id="sub-agent-image-analyzer">Sub-Agent: image-analyzer</h3>
+<p><strong>File</strong>: <code>agents/image-analyzer.agent.md</code>
+<strong>User-invocable</strong>: No (internal helper only)</p>
+<p>The image analyzer examines an image visually using the LLM&#39;s vision capabilities. It classifies the image, generates alt text, scores confidence, and flags special content.</p>
+<p><strong>New capabilities in enhanced version</strong>:</p>
+<ul>
+<li><strong>Confidence scoring</strong>: Each analysis includes a high/medium/low confidence rating</li>
+<li><strong>Content flags</strong>: Detects 11 content types (image-of-text, screenshot, logo, icon, meme, photograph, illustration, chart, diagram, has-text-overlay, none)</li>
+<li><strong>Edge case handling</strong>: Specific rules for screenshots, memes, logos, icons, images-of-text, and SVGs</li>
+<li><strong>Context-aware analysis</strong>: When told where an image appears on the page, adjusts classification accordingly</li>
+<li><strong>Multiple examples</strong>: Built-in examples for each classification + confidence + flag combination</li>
+</ul>
+<p><strong>Tools available</strong>: read, execute
+<strong>Model preference</strong>: Claude Sonnet 4.5 (copilot), GPT-5 (copilot)</p>
+<p><strong>Output format</strong>:</p>
+<pre><code class="hljs">CLASSIFICATION: [informational | functional | decorative | complex]
+SHORT_ALT: [concise alt <span class="hljs-keyword">text</span> <span class="hljs-keyword">or</span> <span class="hljs-literal">empty</span> <span class="hljs-keyword">string</span>]
+LONG_DESCRIPTION: [<span class="hljs-keyword">detailed</span> description <span class="hljs-keyword">or</span> <span class="hljs-string">&quot;N/A&quot;</span>]
+CONFIDENCE: [high | medium | low]
+FLAGS: [<span class="hljs-literal">comma</span>-separated flags <span class="hljs-keyword">or</span> <span class="hljs-string">&quot;none&quot;</span>]
+REASONING: [<span class="hljs-number">1</span><span class="hljs-number">-3</span> <span class="hljs-keyword">sentences</span> explaining <span class="hljs-keyword">the</span> classification, confidence level, <span class="hljs-keyword">and</span> <span class="hljs-keyword">any</span> recommendations]</code></pre>
+<h3 id="sub-agent-tag-builder">Sub-Agent: tag-builder</h3>
+<p><strong>File</strong>: <code>agents/tag-builder.agent.md</code>
+<strong>User-invocable</strong>: No (internal helper only)</p>
+<p>The tag builder takes structured data and produces copy-paste-ready markup. It does not analyze images or generate alt text.</p>
+<p><strong>New capabilities in enhanced version</strong>:</p>
+<ul>
+<li><strong>Responsive srcset</strong>: Generates <code>srcset</code> and <code>sizes</code> attributes with common breakpoints</li>
+<li><strong>Picture element</strong>: Generates <code>&lt;picture&gt;</code> with AVIF/WebP/JPEG format fallbacks</li>
+<li><strong>Astro Image</strong>: Generates Astro <code>&lt;Image&gt;</code> component syntax</li>
+<li><strong>Hero optimization</strong>: Uses <code>loading=&quot;eager&quot;</code>, <code>fetchpriority=&quot;high&quot;</code>, and suggests <code>&lt;link rel=&quot;preload&quot;&gt;</code></li>
+<li><strong>Flag-specific adjustments</strong>: Image-of-text warnings, icon loading optimization, logo link context</li>
+<li><strong>Developer action items</strong>: Comments noting what image variants need to be created</li>
+</ul>
+<p><strong>Tools available</strong>: read (read-only agent)</p>
+<p><strong>Supported output formats</strong>: HTML, Markdown, JSX/React, Next.js Image, Astro Image, responsive srcset, picture element, HTML figure block</p>
+<h3 id="sub-agent-image-cataloger">Sub-Agent: image-cataloger</h3>
+<p><strong>File</strong>: <code>agents/image-cataloger.agent.md</code>
+<strong>User-invocable</strong>: No (internal helper only)</p>
+<p>The image cataloger maintains a persistent file that records accessibility metadata.</p>
+<p><strong>New capabilities in enhanced version</strong>:</p>
+<ul>
+<li><strong>Accessibility scoring</strong>: Per-image scores (0-100) based on alt text, confidence, flags, dimensions</li>
+<li><strong>Project-level score</strong>: Average of all image scores with a rating (Excellent/Good/Needs review/Action required)</li>
+<li><strong>Action items section</strong>: Lists images needing human review (low confidence) and image-of-text warnings</li>
+<li><strong>CSV export</strong>: Third catalog format option alongside Markdown and JSON</li>
+<li><strong>Delta mode</strong>: Only processes new or changed images, reports skipped unchanged images</li>
+<li><strong>Confidence tracking</strong>: Records and displays confidence level per image</li>
+</ul>
+<p><strong>Tools available</strong>: read, edit, search</p>
+<p><strong>Default catalog file</strong>: <code>image-catalog.md</code> in workspace root
+<strong>Alternative formats</strong>: <code>image-catalog.json</code>, <code>image-catalog.csv</code></p>
+<h3 id="utility-script-get_image_infopy">Utility Script: get_image_info.py</h3>
+<p><strong>File</strong>: <code>scripts/get_image_info.py</code>
+<strong>Language</strong>: Python 3
+<strong>Dependency</strong>: Pillow (<code>pip install Pillow</code>)</p>
+<p>A standalone command-line script that extracts image metadata.</p>
+<p><strong>New capabilities in enhanced version</strong>:</p>
+<ul>
+<li><strong>EXIF extraction</strong>: Pulls ImageDescription, camera Make/Model, DateTime, Orientation, GPS, resolution</li>
+<li><strong>Dominant colors</strong>: Extracts top 3 dominant colors as hex values (useful for contrast checking)</li>
+<li><strong>SVG viewBox parsing</strong>: Reads SVG files directly to extract <code>viewBox</code>, explicit <code>width</code>/<code>height</code> attributes</li>
+<li><strong>Text-content heuristic</strong>: Analyzes color distribution to flag likely text-or-graphic images vs photographs</li>
+<li><strong><code>if __name__</code> guard</strong>: Proper Python entry point for import safety</li>
+</ul>
+<h3 id="instruction-image-dimensions">Instruction: image-dimensions</h3>
+<p><strong>File</strong>: <code>instructions/image-dimensions.instructions.md</code>
+<strong>Applies to</strong>: <code>**/*.{html,jsx,tsx,vue,svelte,astro}</code></p>
+<p>An always-on instruction file that automatically activates whenever you work on web files.</p>
+<p><strong>New content in enhanced version</strong>:</p>
+<ul>
+<li><strong>Responsive image rules</strong>: <code>srcset</code>/<code>sizes</code> guidance, <code>&lt;picture&gt;</code> element rules, format fallback requirements</li>
+<li><strong>Hero optimization pattern</strong>: Complete code example for above-the-fold images with <code>fetchpriority</code> and <code>&lt;link rel=&quot;preload&quot;&gt;</code></li>
+<li><strong>Image-of-text warning</strong>: HTML comment template for WCAG 1.4.5</li>
+<li><strong>Expanded avoid list</strong>: Warnings against lazy-loading above-the-fold images and lazy-loading tiny icons</li>
+</ul>
+<h3 id="prompt-files">Prompt Files</h3>
+<p>Three routing prompts that direct work to the appropriate sub-agent:</p>
+<table>
+<thead>
+<tr>
+<th scope="col">File</th>
+<th scope="col">Routes to</th>
+<th scope="col">Enhanced description</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>prompts/image-analyzer.prompt.md</code></td>
+<td>image-analyzer</td>
+<td>Now mentions confidence scoring and content flags</td>
+</tr>
+<tr>
+<td><code>prompts/tag-builder.prompt.md</code></td>
+<td>tag-builder</td>
+<td>Now lists all 8 output formats</td>
+</tr>
+<tr>
+<td><code>prompts/image-cataloger.prompt.md</code></td>
+<td>image-cataloger</td>
+<td>Now mentions scoring and action items</td>
+</tr>
+</tbody></table>
+<hr>
+<h2 id="installation-and-prerequisites">Installation and Prerequisites</h2>
+<h3 id="requirements">Requirements</h3>
+<ol>
+<li><strong>VS Code</strong> with GitHub Copilot Chat extension</li>
+<li><strong>Python 3.8+</strong> available in your PATH</li>
+<li><strong>Pillow</strong> Python library: <code>pip install Pillow</code></li>
+</ol>
+<h3 id="verify-pillow">Verify Pillow</h3>
+<pre><code class="hljs language-bash">python -c <span class="hljs-string">&quot;from PIL import Image; print(&#x27;Pillow OK&#x27;)&quot;</span></code></pre>
+<h3 id="verify-the-utility-script">Verify the utility script</h3>
+<pre><code class="hljs language-bash">python scripts/get_image_info.py --<span class="hljs-built_in">help</span></code></pre>
+<h3 id="to-install-as-user-level-agents">To install as user-level agents</h3>
+<p>Copy the files from this workspace folder to your VS Code user prompts and agents directories:</p>
+<table>
+<thead>
+<tr>
+<th scope="col">Source</th>
+<th scope="col">Destination</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>agents/*.agent.md</code></td>
+<td><code>%APPDATA%/Code/User/prompts/</code></td>
+</tr>
+<tr>
+<td><code>prompts/*.prompt.md</code></td>
+<td><code>%APPDATA%/Code/User/prompts/</code></td>
+</tr>
+<tr>
+<td><code>instructions/*.instructions.md</code></td>
+<td><code>%APPDATA%/Code/User/prompts/</code></td>
+</tr>
+<tr>
+<td><code>scripts/get_image_info.py</code></td>
+<td><code>%USERPROFILE%/.agents/scripts/</code></td>
+</tr>
+</tbody></table>
+<hr>
+<h2 id="operating-modes">Operating Modes</h2>
+<p>The orchestrator supports four operating modes, activated by keywords in the user&#39;s request:</p>
+<table>
+<thead>
+<tr>
+<th scope="col">Mode</th>
+<th scope="col">Trigger Keywords</th>
+<th scope="col">Behavior</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><strong>Standard</strong></td>
+<td>(default)</td>
+<td>Full pipeline: dimensions, analysis, markup, optional catalog</td>
+</tr>
+<tr>
+<td><strong>Quick</strong></td>
+<td>&quot;quick&quot;, &quot;just alt text&quot;, &quot;alt only&quot;</td>
+<td>Returns only classification + alt text. No markup, no catalog.</td>
+</tr>
+<tr>
+<td><strong>Responsive</strong></td>
+<td>&quot;responsive&quot;, &quot;srcset&quot;, &quot;picture element&quot;</td>
+<td>Generates responsive markup with srcset/sizes or picture element</td>
+</tr>
+<tr>
+<td><strong>Hero</strong></td>
+<td>&quot;hero&quot;, &quot;above the fold&quot;, &quot;banner&quot;</td>
+<td>Uses <code>loading=&quot;eager&quot;</code>, <code>fetchpriority=&quot;high&quot;</code>, suggests preload</td>
+</tr>
+</tbody></table>
+<p>Modes can be combined: <code>@image-alt-text responsive hero markup for banner.jpg</code></p>
+<hr>
+<h2 id="usage-guide">Usage Guide</h2>
+<h3 id="single-image-analysis">Single Image Analysis</h3>
+<pre><code class="hljs">@image-alt-text analyze assets/hero-banner.jpg</code></pre>
+<p>The agent returns:</p>
+<pre><code class="hljs"><span class="hljs-comment">## hero-banner.jpg</span>
+
+<span class="hljs-operator">-</span> <span class="hljs-params">Classification:</span> informational (<span class="hljs-params">confidence:</span> high)
+<span class="hljs-operator">-</span> Alt <span class="hljs-params">text:</span> Mountain landscape at sunset <span class="hljs-keyword">with</span> hiking trail <span class="hljs-keyword">in</span> foreground
+<span class="hljs-operator">-</span> <span class="hljs-params">Dimensions:</span> <span class="hljs-number">1920</span> x <span class="hljs-number">1080</span> (<span class="hljs-number">16</span>:<span class="hljs-number">9</span>)
+<span class="hljs-operator">-</span> <span class="hljs-params">Size:</span> <span class="hljs-number">245.3</span> KB
+<span class="hljs-operator">-</span> <span class="hljs-params">Flags:</span> photograph
+
+<span class="hljs-comment">### Ready-to-use markup</span>
+
+<span class="hljs-operator">&lt;</span>img src<span class="hljs-operator">=</span><span class="hljs-string">&quot;assets/hero-banner.jpg&quot;</span> alt<span class="hljs-operator">=</span><span class="hljs-string">&quot;Mountain landscape at sunset with hiking trail in foreground&quot;</span>
+     <span class="hljs-attr">width</span><span class="hljs-operator">=</span><span class="hljs-string">&quot;1920&quot;</span> height<span class="hljs-operator">=</span><span class="hljs-string">&quot;1080&quot;</span> loading<span class="hljs-operator">=</span><span class="hljs-string">&quot;lazy&quot;</span> decoding<span class="hljs-operator">=</span><span class="hljs-string">&quot;async&quot;</span><span class="hljs-operator">&gt;</span></code></pre>
+<h3 id="batch-folder-processing">Batch Folder Processing</h3>
+<pre><code class="hljs">@image-alt-text process all images in /<span class="hljs-keyword">public</span>/images</code></pre>
+<p>The agent creates a todo list with one task per image, processes each, and presents a summary table:</p>
+<pre><code class="hljs">|<span class="hljs-string"> Image </span>|<span class="hljs-string"> Classification </span>|<span class="hljs-string"> Alt Text </span>|<span class="hljs-string"> Confidence </span>|<span class="hljs-string"> Score </span>|
+|<span class="hljs-string">-------</span>|<span class="hljs-string">---------------</span>|<span class="hljs-string">----------</span>|<span class="hljs-string">------------</span>|<span class="hljs-string">-------</span>|
+|<span class="hljs-string"> hero.jpg </span>|<span class="hljs-string"> informational </span>|<span class="hljs-string"> Mountain landscape... </span>|<span class="hljs-string"> high </span>|<span class="hljs-string"> 95 </span>|
+|<span class="hljs-string"> logo.png </span>|<span class="hljs-string"> functional </span>|<span class="hljs-string"> Navigate to home </span>|<span class="hljs-string"> high </span>|<span class="hljs-string"> 100 </span>|
+|<span class="hljs-string"> divider.svg </span>|<span class="hljs-string"> decorative </span>|<span class="hljs-string"> (empty) </span>|<span class="hljs-string"> high </span>|<span class="hljs-string"> 100 </span>|
+|<span class="hljs-string"> chart.png </span>|<span class="hljs-string"> complex </span>|<span class="hljs-string"> Q3 revenue... </span>|<span class="hljs-string"> high </span>|<span class="hljs-string"> 85 </span>|
+|<span class="hljs-string"> banner-text.png </span>|<span class="hljs-string"> informational </span>|<span class="hljs-string"> Spring Sale... </span>|<span class="hljs-string"> medium </span>|<span class="hljs-string"> 60 </span>|
+
+Project Score: 88/100 (Good)
+Needs Review: 1 image (banner-text.png - image-of-text flag)</code></pre>
+<h3 id="delta-mode-changed-images-only">Delta Mode (Changed Images Only)</h3>
+<pre><code class="hljs"><span class="hljs-variable">@image</span><span class="hljs-operator">-</span>alt<span class="hljs-operator">-</span>text <span class="hljs-keyword">update</span> catalog <span class="hljs-keyword">with</span> <span class="hljs-keyword">new</span> images <span class="hljs-keyword">only</span></code></pre>
+<p>Compares against the existing catalog and only processes images that are new or have changed file sizes. Reports:</p>
+<pre><code class="hljs"><span class="hljs-symbol">3 </span><span class="hljs-keyword">new</span>, <span class="hljs-number">1</span> updated, <span class="hljs-number">12</span> unchanged (skipped)</code></pre>
+<h3 id="quick-mode-alt-text-only">Quick Mode (Alt Text Only)</h3>
+<pre><code class="hljs">@image-alt-text quick alt text <span class="hljs-keyword">for</span> screenshot.png</code></pre>
+<p>Returns only:</p>
+<pre><code class="hljs"><span class="hljs-params">Classification:</span> informational (<span class="hljs-params">confidence:</span> high)
+Alt <span class="hljs-params">text:</span> VS Code editor showing Python file <span class="hljs-keyword">with</span> syntax highlighting and terminal output
+<span class="hljs-params">Flags:</span> screenshot</code></pre>
+<h3 id="responsive-mode">Responsive Mode</h3>
+<pre><code class="hljs">@image-alt-text responsive markup <span class="hljs-keyword">for</span> hero-banner.jpg</code></pre>
+<p>Returns:</p>
+<pre><code class="hljs language-html"><span class="hljs-tag">&lt;<span class="hljs-name">img</span>
+  <span class="hljs-attr">src</span>=<span class="hljs-string">&quot;assets/hero-banner.jpg&quot;</span>
+  <span class="hljs-attr">srcset</span>=<span class="hljs-string">&quot;assets/hero-banner-480.jpg 480w, assets/hero-banner-768.jpg 768w, assets/hero-banner-1200.jpg 1200w, assets/hero-banner.jpg 1920w&quot;</span>
+  <span class="hljs-attr">sizes</span>=<span class="hljs-string">&quot;(max-width: 480px) 100vw, (max-width: 768px) 100vw, (max-width: 1200px) 100vw, 1920px&quot;</span>
+  <span class="hljs-attr">alt</span>=<span class="hljs-string">&quot;Mountain landscape at sunset with hiking trail in foreground&quot;</span>
+  <span class="hljs-attr">width</span>=<span class="hljs-string">&quot;1920&quot;</span>
+  <span class="hljs-attr">height</span>=<span class="hljs-string">&quot;1080&quot;</span>
+  <span class="hljs-attr">loading</span>=<span class="hljs-string">&quot;lazy&quot;</span>
+  <span class="hljs-attr">decoding</span>=<span class="hljs-string">&quot;async&quot;</span>&gt;</span>
+<span class="hljs-comment">&lt;!-- Developer: create resized variants at 480px, 768px, and 1200px widths --&gt;</span></code></pre>
+<h3 id="hero-mode-above-the-fold">Hero Mode (Above the Fold)</h3>
+<pre><code class="hljs">@image-alt-text hero markup <span class="hljs-keyword">for</span> banner.webp</code></pre>
+<p>Returns:</p>
+<pre><code class="hljs language-html"><span class="hljs-comment">&lt;!-- Add to &lt;head&gt;: &lt;link rel=&quot;preload&quot; as=&quot;image&quot; href=&quot;assets/banner.webp&quot;&gt; --&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">img</span> <span class="hljs-attr">src</span>=<span class="hljs-string">&quot;assets/banner.webp&quot;</span> <span class="hljs-attr">alt</span>=<span class="hljs-string">&quot;Product launch announcement&quot;</span>
+     <span class="hljs-attr">width</span>=<span class="hljs-string">&quot;1920&quot;</span> <span class="hljs-attr">height</span>=<span class="hljs-string">&quot;600&quot;</span> <span class="hljs-attr">loading</span>=<span class="hljs-string">&quot;eager&quot;</span> <span class="hljs-attr">decoding</span>=<span class="hljs-string">&quot;async&quot;</span> <span class="hljs-attr">fetchpriority</span>=<span class="hljs-string">&quot;high&quot;</span>&gt;</span></code></pre>
+<h3 id="catalog-management">Catalog Management</h3>
+<pre><code class="hljs">@image-alt-text catalog all images in <span class="hljs-keyword">this</span> project</code></pre>
+<p>Creates <code>image-catalog.md</code> with:</p>
+<ul>
+<li>Project-level accessibility score</li>
+<li>Summary counts by classification</li>
+<li>Low-confidence and image-of-text warnings</li>
+<li>Per-image table with alt text, dimensions, confidence, and score</li>
+</ul>
+<h3 id="output-format-selection">Output Format Selection</h3>
+<pre><code class="hljs"><span class="hljs-variable">@image-alt-text</span> generate Markdown image syntax for logo.png
+<span class="hljs-variable">@image-alt-text</span> build a JSX img tag for hero.webp
+<span class="hljs-variable">@image-alt-text</span> create a figure block with figcaption for the chart
+<span class="hljs-variable">@image-alt-text</span> generate Next.js Image component for banner.avif
+<span class="hljs-variable">@image-alt-text</span> Astro Image component for hero.jpg
+<span class="hljs-variable">@image-alt-text</span> picture element with AVIF <span class="hljs-keyword">and</span> WebP for photo.jpg</code></pre>
+<hr>
+<h2 id="image-classification-reference">Image Classification Reference</h2>
+<h3 id="classification-categories">Classification Categories</h3>
+<table>
+<thead>
+<tr>
+<th scope="col">Classification</th>
+<th scope="col">When to Use</th>
+<th scope="col">Alt Text Rule</th>
+<th scope="col">Long Description</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><strong>Informational</strong></td>
+<td>Photos, screenshots, illustrations, diagrams that convey content</td>
+<td>Describe the content and purpose (under 125 chars)</td>
+<td>Optional</td>
+</tr>
+<tr>
+<td><strong>Functional</strong></td>
+<td>Icon buttons, logo links, image-based navigation, interactive controls</td>
+<td>Describe the action or destination, not the image</td>
+<td>Not needed</td>
+</tr>
+<tr>
+<td><strong>Decorative</strong></td>
+<td>Background textures, dividers, aesthetic flourishes, spacer images</td>
+<td>Empty string (<code>alt=&quot;&quot;</code>)</td>
+<td>Not needed</td>
+</tr>
+<tr>
+<td><strong>Complex</strong></td>
+<td>Charts, graphs, infographics, data visualizations, detailed diagrams</td>
+<td>Brief summary (under 125 chars)</td>
+<td>Required -- full text equivalent</td>
+</tr>
+</tbody></table>
+<h3 id="classification-decision-tree">Classification Decision Tree</h3>
+<pre><code class="hljs"><span class="hljs-number">1.</span> Does the image convey information the user needs?
+   |
+   <span class="hljs-type">+-- NO</span> --&gt; DECORATIVE (alt=<span class="hljs-string">&quot;&quot;</span>)
+   |
+   <span class="hljs-type">+-- YES</span>
+       |
+       <span class="hljs-type">2</span>. Is the image interactive (link, button, control)?
+          |
+          <span class="hljs-type">+-- YES</span> --&gt; FUNCTIONAL (alt = action/destination)
+          |
+          <span class="hljs-type">+-- NO</span>
+              |
+              <span class="hljs-type">3</span>. Can the content be fully described <span class="hljs-built_in">in</span> under <span class="hljs-number">125</span> characters?
+                 |
+                 <span class="hljs-type">+-- YES</span> --&gt; INFORMATIONAL (alt = content description)
+                 |
+                 <span class="hljs-type">+-- NO</span> --&gt; COMPLEX (short alt + long description)</code></pre>
+<h3 id="confidence-scoring">Confidence Scoring</h3>
+<table>
+<thead>
+<tr>
+<th scope="col">Level</th>
+<th scope="col">When Assigned</th>
+<th scope="col">Orchestrator Behavior</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><strong>high</strong></td>
+<td>Clear-cut classification, no ambiguity</td>
+<td>Proceeds automatically</td>
+</tr>
+<tr>
+<td><strong>medium</strong></td>
+<td>Reasonable classification but some ambiguity possible</td>
+<td>Proceeds with a note</td>
+</tr>
+<tr>
+<td><strong>low</strong></td>
+<td>Uncertain -- context needed, image is ambiguous</td>
+<td>Pauses and asks user to confirm before proceeding</td>
+</tr>
+</tbody></table>
+<p>Low confidence triggers include:</p>
+<ul>
+<li>Cannot determine if an icon is functional or decorative without page context</li>
+<li>Image could be either informational or decorative depending on surrounding text</li>
+<li>Screenshot content is partially obscured or unclear</li>
+<li>Abstract art that may or may not convey meaning</li>
+</ul>
+<h3 id="content-flags">Content Flags</h3>
+<table>
+<thead>
+<tr>
+<th scope="col">Flag</th>
+<th scope="col">Description</th>
+<th scope="col">Triggered By</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>image-of-text</code></td>
+<td>Image contains rendered text as primary content</td>
+<td>Text rendered as image (WCAG 1.4.5 risk)</td>
+</tr>
+<tr>
+<td><code>has-text-overlay</code></td>
+<td>Image has text overlaid on photo/illustration</td>
+<td>Marketing banners, social media graphics</td>
+</tr>
+<tr>
+<td><code>screenshot</code></td>
+<td>Image is a screenshot of a UI or application</td>
+<td>App screenshots, browser screenshots</td>
+</tr>
+<tr>
+<td><code>logo</code></td>
+<td>Image is a brand logo or wordmark</td>
+<td>Company logos, product logos</td>
+</tr>
+<tr>
+<td><code>icon</code></td>
+<td>Image is a small icon or symbol (typically under 64px)</td>
+<td>UI icons, nav icons</td>
+</tr>
+<tr>
+<td><code>meme</code></td>
+<td>Image is a meme or image macro with text</td>
+<td>Memes, image macros</td>
+</tr>
+<tr>
+<td><code>photograph</code></td>
+<td>Image is a real photograph</td>
+<td>Photos from cameras</td>
+</tr>
+<tr>
+<td><code>illustration</code></td>
+<td>Image is drawn illustration, cartoon, or vector art</td>
+<td>Illustrations, cartoons</td>
+</tr>
+<tr>
+<td><code>chart</code></td>
+<td>Image contains a data visualization</td>
+<td>Bar charts, line charts, pie charts</td>
+</tr>
+<tr>
+<td><code>diagram</code></td>
+<td>Image is a flowchart, architecture diagram, or process diagram</td>
+<td>Technical diagrams</td>
+</tr>
+<tr>
+<td><code>none</code></td>
+<td>No special flags apply</td>
+<td>Simple graphics</td>
+</tr>
+</tbody></table>
+<p>Multiple flags can apply to a single image (e.g., <code>screenshot, has-text-overlay</code>).</p>
+<hr>
+<h2 id="supported-image-formats">Supported Image Formats</h2>
+<table>
+<thead>
+<tr>
+<th scope="col">Format</th>
+<th scope="col">Extension(s)</th>
+<th scope="col">Script Support</th>
+<th scope="col">Notes</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>JPEG</td>
+<td>.jpg, .jpeg</td>
+<td>Full (EXIF, colors, text heuristic)</td>
+<td>Most common photo format</td>
+</tr>
+<tr>
+<td>PNG</td>
+<td>.png</td>
+<td>Full</td>
+<td>Supports transparency</td>
+</tr>
+<tr>
+<td>WebP</td>
+<td>.webp</td>
+<td>Full</td>
+<td>Modern format, smaller file sizes</td>
+</tr>
+<tr>
+<td>GIF</td>
+<td>.gif</td>
+<td>Full</td>
+<td>Animated and static</td>
+</tr>
+<tr>
+<td>AVIF</td>
+<td>.avif</td>
+<td>Full</td>
+<td>Next-gen format, excellent compression</td>
+</tr>
+<tr>
+<td>SVG</td>
+<td>.svg</td>
+<td>viewBox + dimensions parsed from XML</td>
+<td>Vector format, viewBox used for sizing</td>
+</tr>
+<tr>
+<td>BMP</td>
+<td>.bmp</td>
+<td>Full</td>
+<td>Uncompressed bitmap</td>
+</tr>
+<tr>
+<td>TIFF</td>
+<td>.tiff, .tif</td>
+<td>Full</td>
+<td>High-quality, large files</td>
+</tr>
+<tr>
+<td>ICO</td>
+<td>.ico</td>
+<td>Full</td>
+<td>Favicons and small icons</td>
+</tr>
+</tbody></table>
+<hr>
+<h2 id="output-formats">Output Formats</h2>
+<h3 id="html">HTML</h3>
+<p>Standard <code>&lt;img&gt;</code> tag with all accessibility and performance attributes:</p>
+<pre><code class="hljs language-html"><span class="hljs-tag">&lt;<span class="hljs-name">img</span> <span class="hljs-attr">src</span>=<span class="hljs-string">&quot;assets/photo.jpg&quot;</span> <span class="hljs-attr">alt</span>=<span class="hljs-string">&quot;Team celebrating product launch&quot;</span> <span class="hljs-attr">width</span>=<span class="hljs-string">&quot;1200&quot;</span> <span class="hljs-attr">height</span>=<span class="hljs-string">&quot;800&quot;</span> <span class="hljs-attr">loading</span>=<span class="hljs-string">&quot;lazy&quot;</span> <span class="hljs-attr">decoding</span>=<span class="hljs-string">&quot;async&quot;</span>&gt;</span></code></pre>
+<p>For decorative images:</p>
+<pre><code class="hljs language-html"><span class="hljs-tag">&lt;<span class="hljs-name">img</span> <span class="hljs-attr">src</span>=<span class="hljs-string">&quot;assets/bg.jpg&quot;</span> <span class="hljs-attr">alt</span>=<span class="hljs-string">&quot;&quot;</span> <span class="hljs-attr">width</span>=<span class="hljs-string">&quot;1200&quot;</span> <span class="hljs-attr">height</span>=<span class="hljs-string">&quot;800&quot;</span> <span class="hljs-attr">loading</span>=<span class="hljs-string">&quot;lazy&quot;</span> <span class="hljs-attr">decoding</span>=<span class="hljs-string">&quot;async&quot;</span> <span class="hljs-attr">aria-hidden</span>=<span class="hljs-string">&quot;true&quot;</span>&gt;</span></code></pre>
+<h3 id="html-figure-with-figcaption">HTML Figure with Figcaption</h3>
+<p>For complex images requiring a long description:</p>
+<pre><code class="hljs language-html"><span class="hljs-tag">&lt;<span class="hljs-name">figure</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">img</span> <span class="hljs-attr">src</span>=<span class="hljs-string">&quot;assets/chart.png&quot;</span> <span class="hljs-attr">alt</span>=<span class="hljs-string">&quot;Q3 2025 revenue by region&quot;</span> <span class="hljs-attr">width</span>=<span class="hljs-string">&quot;960&quot;</span> <span class="hljs-attr">height</span>=<span class="hljs-string">&quot;540&quot;</span> <span class="hljs-attr">loading</span>=<span class="hljs-string">&quot;lazy&quot;</span> <span class="hljs-attr">decoding</span>=<span class="hljs-string">&quot;async&quot;</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">figcaption</span>&gt;</span>Bar chart showing Q3 2025 revenue. North America: $4.2M (42%), Europe: $2.8M (28%), Asia-Pacific: $1.9M (19%), Other: $1.1M (11%). Total revenue increased 15% over Q2.<span class="hljs-tag">&lt;/<span class="hljs-name">figcaption</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">figure</span>&gt;</span></code></pre>
+<h3 id="hero--above-the-fold-html">Hero / Above-the-Fold HTML</h3>
+<pre><code class="hljs language-html"><span class="hljs-comment">&lt;!-- Add to &lt;head&gt;: &lt;link rel=&quot;preload&quot; as=&quot;image&quot; href=&quot;assets/hero.jpg&quot;&gt; --&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">img</span> <span class="hljs-attr">src</span>=<span class="hljs-string">&quot;assets/hero.jpg&quot;</span> <span class="hljs-attr">alt</span>=<span class="hljs-string">&quot;Mountain landscape at sunset&quot;</span> <span class="hljs-attr">width</span>=<span class="hljs-string">&quot;1920&quot;</span> <span class="hljs-attr">height</span>=<span class="hljs-string">&quot;1080&quot;</span> <span class="hljs-attr">loading</span>=<span class="hljs-string">&quot;eager&quot;</span> <span class="hljs-attr">decoding</span>=<span class="hljs-string">&quot;async&quot;</span> <span class="hljs-attr">fetchpriority</span>=<span class="hljs-string">&quot;high&quot;</span>&gt;</span></code></pre>
+<h3 id="responsive-html-srcset">Responsive HTML (srcset)</h3>
+<pre><code class="hljs language-html"><span class="hljs-tag">&lt;<span class="hljs-name">img</span>
+  <span class="hljs-attr">src</span>=<span class="hljs-string">&quot;assets/photo.jpg&quot;</span>
+  <span class="hljs-attr">srcset</span>=<span class="hljs-string">&quot;assets/photo-480.jpg 480w, assets/photo-768.jpg 768w, assets/photo-1200.jpg 1200w, assets/photo.jpg 1920w&quot;</span>
+  <span class="hljs-attr">sizes</span>=<span class="hljs-string">&quot;(max-width: 480px) 100vw, (max-width: 768px) 100vw, (max-width: 1200px) 100vw, 1920px&quot;</span>
+  <span class="hljs-attr">alt</span>=<span class="hljs-string">&quot;Team celebrating product launch&quot;</span>
+  <span class="hljs-attr">width</span>=<span class="hljs-string">&quot;1920&quot;</span>
+  <span class="hljs-attr">height</span>=<span class="hljs-string">&quot;1080&quot;</span>
+  <span class="hljs-attr">loading</span>=<span class="hljs-string">&quot;lazy&quot;</span>
+  <span class="hljs-attr">decoding</span>=<span class="hljs-string">&quot;async&quot;</span>&gt;</span>
+<span class="hljs-comment">&lt;!-- Developer: create resized variants at 480px, 768px, and 1200px widths --&gt;</span></code></pre>
+<h3 id="picture-element">Picture Element</h3>
+<pre><code class="hljs language-html"><span class="hljs-tag">&lt;<span class="hljs-name">picture</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">source</span> <span class="hljs-attr">srcset</span>=<span class="hljs-string">&quot;assets/photo.avif&quot;</span> <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;image/avif&quot;</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">source</span> <span class="hljs-attr">srcset</span>=<span class="hljs-string">&quot;assets/photo.webp&quot;</span> <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;image/webp&quot;</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">img</span> <span class="hljs-attr">src</span>=<span class="hljs-string">&quot;assets/photo.jpg&quot;</span> <span class="hljs-attr">alt</span>=<span class="hljs-string">&quot;Team celebrating product launch&quot;</span> <span class="hljs-attr">width</span>=<span class="hljs-string">&quot;1920&quot;</span> <span class="hljs-attr">height</span>=<span class="hljs-string">&quot;1080&quot;</span> <span class="hljs-attr">loading</span>=<span class="hljs-string">&quot;lazy&quot;</span> <span class="hljs-attr">decoding</span>=<span class="hljs-string">&quot;async&quot;</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">picture</span>&gt;</span>
+<span class="hljs-comment">&lt;!-- Developer: create AVIF and WebP versions of photo.jpg --&gt;</span></code></pre>
+<h3 id="markdown">Markdown</h3>
+<pre><code class="hljs language-markdown">![<span class="hljs-string">Team celebrating product launch</span>](<span class="hljs-link">assets/photo.jpg</span>)</code></pre>
+<p>For complex images:</p>
+<pre><code class="hljs language-markdown">![<span class="hljs-string">Q3 2025 revenue by region</span>](<span class="hljs-link">assets/chart.png</span>)
+
+Bar chart showing Q3 2025 revenue. North America: $4.2M (42%), Europe: $2.8M (28%), Asia-Pacific: $1.9M (19%), Other: $1.1M (11%). Total revenue increased 15% over Q2.</code></pre>
+<h3 id="jsx-and-react">JSX and React</h3>
+<pre><code class="hljs language-jsx">&lt;img src=<span class="hljs-string">&quot;assets/photo.jpg&quot;</span> alt=<span class="hljs-string">&quot;Team celebrating product launch&quot;</span> width={<span class="hljs-number">1200</span>} height={<span class="hljs-number">800</span>} loading=<span class="hljs-string">&quot;lazy&quot;</span> decoding=<span class="hljs-string">&quot;async&quot;</span> /&gt;</code></pre>
+<h3 id="nextjs-image-component">Next.js Image Component</h3>
+<pre><code class="hljs language-jsx"><span class="hljs-keyword">import</span> <span class="hljs-title class_">Image</span> <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;next/image&#x27;</span>;
+
+<span class="language-xml"><span class="hljs-tag">&lt;<span class="hljs-name">Image</span> <span class="hljs-attr">src</span>=<span class="hljs-string">&quot;assets/photo.jpg&quot;</span> <span class="hljs-attr">alt</span>=<span class="hljs-string">&quot;Team celebrating product launch&quot;</span> <span class="hljs-attr">width</span>=<span class="hljs-string">{1200}</span> <span class="hljs-attr">height</span>=<span class="hljs-string">{800}</span> /&gt;</span></span></code></pre>
+<p>Hero variant:</p>
+<pre><code class="hljs language-jsx">&lt;<span class="hljs-title class_">Image</span> src=<span class="hljs-string">&quot;assets/hero.jpg&quot;</span> alt=<span class="hljs-string">&quot;Mountain landscape&quot;</span> width={<span class="hljs-number">1920</span>} height={<span class="hljs-number">1080</span>} priority /&gt;</code></pre>
+<h3 id="astro-image-component">Astro Image Component</h3>
+<pre><code class="hljs"><span class="hljs-meta">---</span>
+<span class="hljs-string">import</span> { <span class="hljs-string">Image</span> } <span class="hljs-string">from</span> <span class="hljs-string">&#x27;astro:assets&#x27;</span><span class="hljs-string">;</span>
+<span class="hljs-string">import</span> <span class="hljs-string">photo</span> <span class="hljs-string">from</span> <span class="hljs-string">&#x27;assets/photo.jpg&#x27;</span><span class="hljs-string">;</span>
+<span class="hljs-meta">---
+</span>
+<span class="hljs-string">&lt;Image</span> <span class="hljs-string">src={photo}</span> <span class="hljs-string">alt=&quot;Team</span> <span class="hljs-string">celebrating</span> <span class="hljs-string">product</span> <span class="hljs-string">launch&quot;</span> <span class="hljs-string">width={1200}</span> <span class="hljs-string">height={800}</span> <span class="hljs-string">loading=&quot;lazy&quot;</span> <span class="hljs-string">decoding=&quot;async&quot;</span> <span class="hljs-string">/&gt;</span></code></pre>
+<hr>
+<h2 id="accessibility-scoring">Accessibility Scoring</h2>
+<h3 id="per-image-scoring">Per-Image Scoring</h3>
+<p>Each image receives a score out of 100 based on:</p>
+<table>
+<thead>
+<tr>
+<th scope="col">Criterion</th>
+<th scope="col">Points</th>
+<th scope="col">Condition</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Has appropriate alt text</td>
+<td>+40</td>
+<td>Non-empty for non-decorative; empty for decorative</td>
+</tr>
+<tr>
+<td>Confidence is high</td>
+<td>+20</td>
+<td>Analyzer returned &quot;high&quot; confidence</td>
+</tr>
+<tr>
+<td>Confidence is medium</td>
+<td>+10</td>
+<td>Analyzer returned &quot;medium&quot; confidence</td>
+</tr>
+<tr>
+<td>No image-of-text flag</td>
+<td>+15</td>
+<td>Image does NOT have the image-of-text flag</td>
+</tr>
+<tr>
+<td>Has dimensions</td>
+<td>+15</td>
+<td>Width and height are both present</td>
+</tr>
+<tr>
+<td>Classification matches flags</td>
+<td>+10</td>
+<td>e.g., icon+functional, chart+complex</td>
+</tr>
+</tbody></table>
+<p><strong>Rating scale</strong>:</p>
+<table>
+<thead>
+<tr>
+<th scope="col">Score</th>
+<th scope="col">Rating</th>
+<th scope="col">Meaning</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>90-100</td>
+<td>Excellent</td>
+<td>Fully accessible, no action needed</td>
+</tr>
+<tr>
+<td>70-89</td>
+<td>Good</td>
+<td>Accessible with minor improvements possible</td>
+</tr>
+<tr>
+<td>50-69</td>
+<td>Needs review</td>
+<td>Human review recommended</td>
+</tr>
+<tr>
+<td>0-49</td>
+<td>Action required</td>
+<td>Accessibility issues that must be fixed</td>
+</tr>
+</tbody></table>
+<h3 id="project-level-scoring">Project-Level Scoring</h3>
+<p>The project score is the average of all individual image scores. It appears at the top of the catalog file and provides a quick health check for the project&#39;s image accessibility.</p>
+<hr>
+<h2 id="catalog-file-formats">Catalog File Formats</h2>
+<h3 id="markdown-catalog">Markdown Catalog</h3>
+<p>Default file: <code>image-catalog.md</code></p>
+<pre><code class="hljs language-markdown"><span class="hljs-section"># Image Accessibility Catalog</span>
+
+Last updated: 2026-03-08
+
+<span class="hljs-section">## Project Score: 88/100 (Good)</span>
+
+<span class="hljs-section">## Summary</span>
+
+<span class="hljs-bullet">-</span> Total images: 12
+<span class="hljs-bullet">-</span> Informational: 8
+<span class="hljs-bullet">-</span> Functional: 2
+<span class="hljs-bullet">-</span> Decorative: 1
+<span class="hljs-bullet">-</span> Complex: 1
+<span class="hljs-bullet">-</span> Needs review (low confidence): 1
+<span class="hljs-bullet">-</span> Image-of-text warnings: 1
+
+<span class="hljs-section">## Images</span>
+
+| Image | Alt Text | Dims | Format | Size | Class | Confidence | Score |
+|-------|----------|------|--------|------|-------|------------|-------|
+| <span class="hljs-code">`hero.jpg`</span> | Mountain landscape at sunset | 1920x1080 | JPEG | 245 KB | informational | high | 95 |
+| <span class="hljs-code">`logo.png`</span> | Navigate to home page | 200x60 | PNG | 12 KB | functional | high | 100 |
+| <span class="hljs-code">`divider.svg`</span> |  | 1200x2 | SVG | 1 KB | decorative | high | 100 |
+| <span class="hljs-code">`chart.png`</span> | Q3 revenue by region | 960x540 | PNG | 89 KB | complex | high | 85 |
+| <span class="hljs-code">`banner.png`</span> | Spring Sale 50% off | 800x200 | PNG | 45 KB | informational | medium | 60 |
+
+<span class="hljs-section">## Action Items</span>
+
+<span class="hljs-section">### Needs Human Review (Low Confidence)</span>
+
+(none)
+
+<span class="hljs-section">### Image-of-Text Warnings (WCAG 1.4.5)</span>
+
+<span class="hljs-bullet">-</span> <span class="hljs-code">`banner.png`</span> -- Contains rendered text &quot;Spring Sale 50% off&quot;. Consider replacing with HTML text over a background image for better accessibility, searchability, and performance.</code></pre>
+<h3 id="json-catalog">JSON Catalog</h3>
+<p>Alternative file: <code>image-catalog.json</code></p>
+<pre><code class="hljs language-json"><span class="hljs-punctuation">{</span>
+  <span class="hljs-attr">&quot;lastUpdated&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;2026-03-08T12:00:00Z&quot;</span><span class="hljs-punctuation">,</span>
+  <span class="hljs-attr">&quot;projectScore&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-punctuation">{</span>
+    <span class="hljs-attr">&quot;score&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-number">88</span><span class="hljs-punctuation">,</span>
+    <span class="hljs-attr">&quot;rating&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;Good&quot;</span>
+  <span class="hljs-punctuation">}</span><span class="hljs-punctuation">,</span>
+  <span class="hljs-attr">&quot;summary&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-punctuation">{</span>
+    <span class="hljs-attr">&quot;total&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-number">12</span><span class="hljs-punctuation">,</span>
+    <span class="hljs-attr">&quot;informational&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-number">8</span><span class="hljs-punctuation">,</span>
+    <span class="hljs-attr">&quot;functional&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-number">2</span><span class="hljs-punctuation">,</span>
+    <span class="hljs-attr">&quot;decorative&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-number">1</span><span class="hljs-punctuation">,</span>
+    <span class="hljs-attr">&quot;complex&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-number">1</span><span class="hljs-punctuation">,</span>
+    <span class="hljs-attr">&quot;needsReview&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-number">1</span><span class="hljs-punctuation">,</span>
+    <span class="hljs-attr">&quot;imageOfTextWarnings&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-number">1</span>
+  <span class="hljs-punctuation">}</span><span class="hljs-punctuation">,</span>
+  <span class="hljs-attr">&quot;images&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-punctuation">[</span>
+    <span class="hljs-punctuation">{</span>
+      <span class="hljs-attr">&quot;path&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;assets/hero.jpg&quot;</span><span class="hljs-punctuation">,</span>
+      <span class="hljs-attr">&quot;alt&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;Mountain landscape at sunset&quot;</span><span class="hljs-punctuation">,</span>
+      <span class="hljs-attr">&quot;width&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-number">1920</span><span class="hljs-punctuation">,</span>
+      <span class="hljs-attr">&quot;height&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-number">1080</span><span class="hljs-punctuation">,</span>
+      <span class="hljs-attr">&quot;format&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;JPEG&quot;</span><span class="hljs-punctuation">,</span>
+      <span class="hljs-attr">&quot;fileSizeKb&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-number">245.3</span><span class="hljs-punctuation">,</span>
+      <span class="hljs-attr">&quot;classification&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;informational&quot;</span><span class="hljs-punctuation">,</span>
+      <span class="hljs-attr">&quot;confidence&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;high&quot;</span><span class="hljs-punctuation">,</span>
+      <span class="hljs-attr">&quot;flags&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-punctuation">[</span><span class="hljs-string">&quot;photograph&quot;</span><span class="hljs-punctuation">]</span><span class="hljs-punctuation">,</span>
+      <span class="hljs-attr">&quot;score&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-number">95</span>
+    <span class="hljs-punctuation">}</span>
+  <span class="hljs-punctuation">]</span><span class="hljs-punctuation">,</span>
+  <span class="hljs-attr">&quot;actionItems&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-punctuation">{</span>
+    <span class="hljs-attr">&quot;needsReview&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-punctuation">[</span><span class="hljs-punctuation">]</span><span class="hljs-punctuation">,</span>
+    <span class="hljs-attr">&quot;imageOfText&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-punctuation">[</span><span class="hljs-string">&quot;assets/banner.png&quot;</span><span class="hljs-punctuation">]</span>
+  <span class="hljs-punctuation">}</span>
+<span class="hljs-punctuation">}</span></code></pre>
+<h3 id="csv-catalog">CSV Catalog</h3>
+<p>Alternative file: <code>image-catalog.csv</code></p>
+<pre><code class="hljs"><span class="hljs-attribute">Path</span>,Filename,Alt Text,Width,Height,Format,Size KB,Classification,Confidence,Flags,Score
+<span class="hljs-attribute">assets</span>/hero.jpg,hero.jpg,Mountain landscape at sunset,<span class="hljs-number">1920</span>,<span class="hljs-number">1080</span>,JPEG,<span class="hljs-number">245</span>.<span class="hljs-number">3</span>,informational,high,photograph,<span class="hljs-number">95</span>
+<span class="hljs-attribute">assets</span>/logo.png,logo.png,Navigate to home page,<span class="hljs-number">200</span>,<span class="hljs-number">60</span>,PNG,<span class="hljs-number">12</span>.<span class="hljs-number">4</span>,functional,high,logo,<span class="hljs-number">100</span></code></pre>
+<hr>
+<h2 id="alt-text-quality-standards">Alt Text Quality Standards</h2>
+<p>The image-analyzer enforces these 8 quality rules:</p>
+<ol>
+<li><strong>Describe content and purpose, not appearance.</strong> &quot;Graph showing Q3 revenue growth of 15%&quot; not &quot;colorful bar chart with blue and green bars.&quot;</li>
+<li><strong>Avoid redundant prefixes.</strong> Never start with &quot;image of&quot;, &quot;picture of&quot;, &quot;photo of&quot;, &quot;graphic of&quot;, or &quot;icon of&quot;. Screen readers already announce the element as an image.</li>
+<li><strong>Be specific.</strong> &quot;Golden retriever catching a frisbee in a park&quot; not &quot;dog playing.&quot;</li>
+<li><strong>Describe the action for functional images.</strong> A magnifying glass icon used as a search button gets <code>alt=&quot;Search&quot;</code>, not `alt=&quot;magnifying glass.&quot;</li>
+<li><strong>Keep short alt under 125 characters.</strong> Most screen readers handle this length well. Longer content uses the long description mechanism.</li>
+<li><strong>Use sentence case.</strong> Start with a capital letter. No trailing period unless the text contains multiple sentences.</li>
+<li><strong>Empty alt for decorative images.</strong> Use <code>alt=&quot;&quot;</code> (not omitting the attribute, which causes screen readers to read the file name).</li>
+<li><strong>Include text from images-of-text.</strong> If an image contains text, include that exact text in the alt attribute.</li>
+</ol>
+<hr>
+<h2 id="edge-case-handling">Edge Case Handling</h2>
+<p>The enhanced image-analyzer includes specific rules for these edge cases:</p>
+<table>
+<thead>
+<tr>
+<th scope="col">Edge Case</th>
+<th scope="col">Classification</th>
+<th scope="col">Alt Text Approach</th>
+<th scope="col">Flags</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><strong>Screenshots</strong></td>
+<td>informational or complex</td>
+<td>Describe the app, visible UI elements, and key data</td>
+<td><code>screenshot</code></td>
+</tr>
+<tr>
+<td><strong>Memes</strong></td>
+<td>informational</td>
+<td>Describe both the visual and the text</td>
+<td><code>meme</code>, <code>has-text-overlay</code></td>
+</tr>
+<tr>
+<td><strong>Logos (linked)</strong></td>
+<td>functional</td>
+<td>Alt = destination (&quot;Acme Corp home page&quot;)</td>
+<td><code>logo</code></td>
+</tr>
+<tr>
+<td><strong>Logos (standalone)</strong></td>
+<td>informational</td>
+<td>Alt = brand name (&quot;Acme Corp&quot;)</td>
+<td><code>logo</code></td>
+</tr>
+<tr>
+<td><strong>Icons (interactive)</strong></td>
+<td>functional</td>
+<td>Alt = the action (&quot;Search&quot;, &quot;Close&quot;, &quot;Menu&quot;)</td>
+<td><code>icon</code></td>
+</tr>
+<tr>
+<td><strong>Icons (decorative)</strong></td>
+<td>decorative</td>
+<td><code>alt=&quot;&quot;</code> (next to descriptive text)</td>
+<td><code>icon</code></td>
+</tr>
+<tr>
+<td><strong>Images of text</strong></td>
+<td>informational</td>
+<td>Include the full text; recommend replacing with HTML</td>
+<td><code>image-of-text</code></td>
+</tr>
+<tr>
+<td><strong>SVGs</strong></td>
+<td>(any)</td>
+<td>Same rules; note viewBox instead of pixel dimensions</td>
+<td>(varies)</td>
+</tr>
+<tr>
+<td><strong>Charts</strong></td>
+<td>complex</td>
+<td>Short summary + full data table in long description</td>
+<td><code>chart</code></td>
+</tr>
+<tr>
+<td><strong>Diagrams</strong></td>
+<td>complex</td>
+<td>Short summary + flow/relationship description</td>
+<td><code>diagram</code></td>
+</tr>
+</tbody></table>
+<hr>
+<h2 id="wcag-compliance-reference">WCAG Compliance Reference</h2>
+<h3 id="success-criteria-addressed">Success Criteria Addressed</h3>
+<table>
+<thead>
+<tr>
+<th scope="col">Success Criterion</th>
+<th scope="col">Level</th>
+<th scope="col">How This Agent Helps</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>1.1.1 Non-text Content</td>
+<td>A</td>
+<td>Generates alt text for all images; classifies decorative with empty alt</td>
+</tr>
+<tr>
+<td>1.4.5 Images of Text</td>
+<td>AA</td>
+<td>Flags images containing text and recommends HTML text replacement</td>
+</tr>
+<tr>
+<td>1.4.11 Non-text Contrast</td>
+<td>AA</td>
+<td>Extracts dominant colors for contrast checking</td>
+</tr>
+<tr>
+<td>2.4.4 Link Purpose (In Context)</td>
+<td>A</td>
+<td>Generates action-oriented alt for functional/linked images</td>
+</tr>
+<tr>
+<td>4.1.2 Name, Role, Value</td>
+<td>A</td>
+<td>Ensures all interactive images have accessible names</td>
+</tr>
+</tbody></table>
+<h3 id="additional-reinforcement-via-instruction-file">Additional Reinforcement via Instruction File</h3>
+<table>
+<thead>
+<tr>
+<th scope="col">Success Criterion</th>
+<th scope="col">Level</th>
+<th scope="col">How the Instruction Helps</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>1.1.1 Non-text Content</td>
+<td>A</td>
+<td>Always-on reminder to include alt attribute</td>
+</tr>
+<tr>
+<td>1.4.5 Images of Text</td>
+<td>AA</td>
+<td>HTML comment warning template</td>
+</tr>
+<tr>
+<td>2.4.7 Focus Visible</td>
+<td>AA</td>
+<td>Guidance against removing focus outlines on image links</td>
+</tr>
+</tbody></table>
+<hr>
+<h2 id="utility-script-reference">Utility Script Reference</h2>
+<h3 id="command-line-interface">Command-Line Interface</h3>
+<pre><code class="hljs">usage: get_image_info<span class="hljs-selector-class">.py</span> <span class="hljs-selector-attr">[-h]</span> <span class="hljs-selector-attr">[--batch]</span> <span class="hljs-selector-attr">[--json]</span> <span class="hljs-selector-tag">path</span>
+
+Extract <span class="hljs-selector-tag">image</span> metadata <span class="hljs-keyword">for</span> accessibility markup.
+
+positional arguments:
+  <span class="hljs-selector-tag">path</span>        Path to an <span class="hljs-selector-tag">image</span> file or folder
+
+options:
+  -h, <span class="hljs-attr">--help</span>  show this help message and exit
+  <span class="hljs-attr">--batch</span>     Scan <span class="hljs-attribute">all</span> images in folder recursively
+  <span class="hljs-attr">--json</span>      Output as JSON</code></pre>
+<h3 id="output-fields">Output Fields</h3>
+<table>
+<thead>
+<tr>
+<th scope="col">Field</th>
+<th scope="col">Type</th>
+<th scope="col">Description</th>
+<th scope="col">New?</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>path</td>
+<td>string</td>
+<td>Absolute file path</td>
+<td></td>
+</tr>
+<tr>
+<td>filename</td>
+<td>string</td>
+<td>File name only</td>
+<td></td>
+</tr>
+<tr>
+<td>format</td>
+<td>string</td>
+<td>Image format (JPEG, PNG, WEBP, SVG, etc.)</td>
+<td></td>
+</tr>
+<tr>
+<td>width</td>
+<td>integer</td>
+<td>Pixel width</td>
+<td></td>
+</tr>
+<tr>
+<td>height</td>
+<td>integer</td>
+<td>Pixel height</td>
+<td></td>
+</tr>
+<tr>
+<td>aspect_ratio</td>
+<td>string</td>
+<td>Simplified ratio (e.g., &quot;16:9&quot;)</td>
+<td></td>
+</tr>
+<tr>
+<td>file_size_bytes</td>
+<td>integer</td>
+<td>Raw file size</td>
+<td></td>
+</tr>
+<tr>
+<td>file_size_kb</td>
+<td>float</td>
+<td>File size in kilobytes (1 decimal)</td>
+<td></td>
+</tr>
+<tr>
+<td>mode</td>
+<td>string</td>
+<td>Color mode (RGB, RGBA, L, P, vector)</td>
+<td></td>
+</tr>
+<tr>
+<td>exif</td>
+<td>object</td>
+<td>EXIF tag key-value pairs (if present)</td>
+<td>Yes</td>
+</tr>
+<tr>
+<td>dominant_colors</td>
+<td>string[]</td>
+<td>Top 3 hex color values (e.g., &quot;#2b5797&quot;)</td>
+<td>Yes</td>
+</tr>
+<tr>
+<td>text_heuristic</td>
+<td>string</td>
+<td>&quot;likely-text-or-graphic&quot;, &quot;possible-text-or-graphic&quot;, or &quot;likely-photograph&quot;</td>
+<td>Yes</td>
+</tr>
+<tr>
+<td>viewBox</td>
+<td>string</td>
+<td>SVG viewBox attribute value</td>
+<td>Yes</td>
+</tr>
+<tr>
+<td>svg_width</td>
+<td>string</td>
+<td>SVG explicit width attribute</td>
+<td>Yes</td>
+</tr>
+<tr>
+<td>svg_height</td>
+<td>string</td>
+<td>SVG explicit height attribute</td>
+<td>Yes</td>
+</tr>
+</tbody></table>
+<h3 id="svg-handling">SVG Handling</h3>
+<p>SVGs are parsed directly from XML rather than opened with Pillow. The script extracts:</p>
+<ul>
+<li><code>viewBox</code> attribute (used to calculate dimensions and aspect ratio)</li>
+<li>Explicit <code>width</code> and <code>height</code> attributes on the <code>&lt;svg&gt;</code> element</li>
+<li>File size</li>
+</ul>
+<p>If no <code>viewBox</code> is present, width and height report as 0 and aspect_ratio as &quot;N/A&quot;.</p>
+<h3 id="exif-data">EXIF Data</h3>
+<p>The script extracts these EXIF tags when present:</p>
+<table>
+<thead>
+<tr>
+<th scope="col">Tag</th>
+<th scope="col">Useful For</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>ImageDescription</td>
+<td>Pre-existing description the author embedded</td>
+</tr>
+<tr>
+<td>Make / Model</td>
+<td>Camera info (for photo credits or context)</td>
+</tr>
+<tr>
+<td>DateTime / DateTimeOriginal</td>
+<td>When the photo was taken</td>
+</tr>
+<tr>
+<td>Orientation</td>
+<td>Whether the image needs rotation</td>
+</tr>
+<tr>
+<td>GPSInfo</td>
+<td>Location data (for geographic context in alt text)</td>
+</tr>
+<tr>
+<td>XResolution / YResolution</td>
+<td>Print resolution</td>
+</tr>
+</tbody></table>
+<h3 id="dominant-colors">Dominant Colors</h3>
+<p>The top 3 most frequent colors are extracted by:</p>
+<ol>
+<li>Resizing the image to a 50x50 thumbnail (for speed)</li>
+<li>Converting to RGB (compositing RGBA on white background)</li>
+<li>Counting color frequencies</li>
+<li>Returning the top 3 as hex strings</li>
+</ol>
+<p>This is useful for:</p>
+<ul>
+<li>Quick contrast checking against background colors</li>
+<li>Identifying images that are primarily one color (possibly text/graphic)</li>
+<li>Documenting brand colors in logos</li>
+</ul>
+<h3 id="text-content-heuristic">Text-Content Heuristic</h3>
+<p>The script analyzes color distribution to estimate whether an image contains text/graphics or is a photograph:</p>
+<table>
+<thead>
+<tr>
+<th scope="col">Value</th>
+<th scope="col">Color Ratio</th>
+<th scope="col">Unique Colors</th>
+<th scope="col">Interpretation</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>likely-text-or-graphic</code></td>
+<td>&lt; 5%</td>
+<td>&lt; 50</td>
+<td>Very few colors, probably text or simple graphic</td>
+</tr>
+<tr>
+<td><code>possible-text-or-graphic</code></td>
+<td>&lt; 15%</td>
+<td>any</td>
+<td>Moderate color variety, could be either</td>
+</tr>
+<tr>
+<td><code>likely-photograph</code></td>
+<td>&gt;= 15%</td>
+<td>any</td>
+<td>Many colors, likely a photo</td>
+</tr>
+</tbody></table>
+<p>This heuristic is a hint, not a definitive classification. The image-analyzer makes the final determination using vision.</p>
+<hr>
+<h2 id="agent-handoffs">Agent Handoffs</h2>
+<p>After completing image analysis, the orchestrator offers handoffs to complementary agents:</p>
+<table>
+<thead>
+<tr>
+<th scope="col">Handoff</th>
+<th scope="col">Target Agent</th>
+<th scope="col">When Offered</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Full Web Audit</td>
+<td><code>accessibility-lead</code></td>
+<td>When working on a web page with images</td>
+</tr>
+<tr>
+<td>Review Existing Alt Text</td>
+<td><code>alt-text-headings</code></td>
+<td>After processing images that already had alt text</td>
+</tr>
+<tr>
+<td>Check Text Quality</td>
+<td><code>text-quality-reviewer</code></td>
+<td>When image-of-text flags or low confidence results are found</td>
+</tr>
+</tbody></table>
+<p>Handoffs are defined in the orchestrator&#39;s YAML frontmatter and appear as suggested actions after analysis completes.</p>
+<hr>
+<h2 id="file-manifest">File Manifest</h2>
+<table>
+<thead>
+<tr>
+<th scope="col">File</th>
+<th scope="col">Location</th>
+<th scope="col">Type</th>
+<th scope="col">Purpose</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>image-alt-text.agent.md</code></td>
+<td>agents/</td>
+<td>Agent (orchestrator)</td>
+<td>User-facing entry point, coordinates pipeline</td>
+</tr>
+<tr>
+<td><code>image-analyzer.agent.md</code></td>
+<td>agents/</td>
+<td>Agent (sub-agent)</td>
+<td>Vision analysis, classification, alt text, confidence, flags</td>
+</tr>
+<tr>
+<td><code>tag-builder.agent.md</code></td>
+<td>agents/</td>
+<td>Agent (sub-agent)</td>
+<td>HTML/Markdown/JSX/responsive/picture markup assembly</td>
+</tr>
+<tr>
+<td><code>image-cataloger.agent.md</code></td>
+<td>agents/</td>
+<td>Agent (sub-agent)</td>
+<td>Catalog management with scoring and action items</td>
+</tr>
+<tr>
+<td><code>image-analyzer.prompt.md</code></td>
+<td>prompts/</td>
+<td>Prompt</td>
+<td>Routing prompt for image-analyzer</td>
+</tr>
+<tr>
+<td><code>tag-builder.prompt.md</code></td>
+<td>prompts/</td>
+<td>Prompt</td>
+<td>Routing prompt for tag-builder</td>
+</tr>
+<tr>
+<td><code>image-cataloger.prompt.md</code></td>
+<td>prompts/</td>
+<td>Prompt</td>
+<td>Routing prompt for image-cataloger</td>
+</tr>
+<tr>
+<td><code>image-dimensions.instructions.md</code></td>
+<td>instructions/</td>
+<td>Instruction</td>
+<td>Always-on reminder for accessible img attributes</td>
+</tr>
+<tr>
+<td><code>get_image_info.py</code></td>
+<td>scripts/</td>
+<td>Python script</td>
+<td>Dimension, EXIF, color, SVG, and text heuristic extraction</td>
+</tr>
+<tr>
+<td><code>IMAGE-ALT-TEXT-DOCS.md</code></td>
+<td>(root)</td>
+<td>Documentation</td>
+<td>This file</td>
+</tr>
+</tbody></table>
+<hr>
+<h2 id="relationship-to-other-agents">Relationship to Other Agents</h2>
+<table>
+<thead>
+<tr>
+<th scope="col">Agent</th>
+<th scope="col">Relationship</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><strong>Alt Text and Headings</strong> (<code>alt-text-headings</code>)</td>
+<td>Reviews alt text quality in existing web pages. Image-alt-text generates alt text from scratch for new images. Complementary: generate then review.</td>
+</tr>
+<tr>
+<td><strong>Accessibility Lead</strong> (<code>accessibility-lead</code>)</td>
+<td>Full WCAG audit orchestrator. Can delegate image-specific work to image-alt-text. Handoff target after image processing.</td>
+</tr>
+<tr>
+<td><strong>Text Quality Reviewer</strong> (<code>text-quality-reviewer</code>)</td>
+<td>Detects low-quality alt text (template variables, placeholder text) in existing code. Complementary post-processing check. Handoff target.</td>
+</tr>
+<tr>
+<td><strong>Web Accessibility Wizard</strong> (<code>web-accessibility-wizard</code>)</td>
+<td>Full web audit wizard. Image-alt-text handles the image-specific slice of that workflow.</td>
+</tr>
+<tr>
+<td><strong>Contrast Master</strong> (<code>contrast-master</code>)</td>
+<td>The dominant colors extracted by the utility script can feed into contrast checking.</td>
+</tr>
+<tr>
+<td><strong>Design System Auditor</strong> (<code>design-system-auditor</code>)</td>
+<td>Token-level analysis. Image-alt-text handles instance-level image markup.</td>
+</tr>
+</tbody></table>
+<hr>
+<h2 id="troubleshooting">Troubleshooting</h2>
+<h3 id="pillow-is-not-installed">Pillow is not installed</h3>
+<p><strong>Symptom</strong>: The utility script prints &quot;Error: Pillow is required&quot; and exits.
+<strong>Fix</strong>: <code>pip install Pillow</code></p>
+<h3 id="script-cannot-find-the-image">Script cannot find the image</h3>
+<p><strong>Symptom</strong>: JSON output contains <code>&quot;error&quot;: &quot;File not found&quot;</code>.
+<strong>Fix</strong>: Check the file path. Use absolute paths or paths relative to where you run the command.</p>
+<h3 id="svg-dimensions-are-0x0">SVG dimensions are 0x0</h3>
+<p><strong>Symptom</strong>: An SVG reports width=0, height=0.
+<strong>Fix</strong>: The SVG likely has no <code>viewBox</code> attribute. Open the SVG source and add an explicit <code>viewBox</code>. Or specify <code>width</code> and <code>height</code> manually in your markup.</p>
+<h3 id="agent-does-not-appear-in-copilot-chat">Agent does not appear in Copilot chat</h3>
+<p><strong>Symptom</strong>: <code>@image-alt-text</code> does not appear in the picker.
+<strong>Fix</strong>: Confirm the agent file is in your VS Code user prompts folder (<code>%APPDATA%/Code/User/prompts/</code>). Restart VS Code.</p>
+<h3 id="sub-agents-appear-in-the-picker">Sub-agents appear in the picker</h3>
+<p><strong>Symptom</strong>: <code>image-analyzer</code>, <code>tag-builder</code>, or <code>image-cataloger</code> show up in the agent list.
+<strong>Fix</strong>: Verify each has <code>user-invocable: false</code> in its YAML frontmatter.</p>
+<h3 id="model-does-not-support-vision">Model does not support vision</h3>
+<p><strong>Symptom</strong>: The analyzer cannot examine image content and returns generic results.
+<strong>Fix</strong>: Select a vision-capable model (Claude Sonnet 4.5, GPT-5) in the Copilot model picker.</p>
+<h3 id="low-confidence-on-every-image">Low confidence on every image</h3>
+<p><strong>Symptom</strong>: The analyzer returns &quot;low&quot; confidence for images that seem straightforward.
+<strong>Fix</strong>: Provide page context when asking (&quot;this icon is a search button in the nav bar&quot;). Context helps the analyzer classify correctly.</p>
+<h3 id="batch-scan-finds-no-images">Batch scan finds no images</h3>
+<p><strong>Symptom</strong>: &quot;No supported images found&quot; error.
+<strong>Fix</strong>: Confirm the folder contains files with supported extensions. The script scans recursively, so subdirectories are included. Check for unusual extensions (e.g., <code>.jpeg2000</code> is not supported).</p>
+<h3 id="exif-data-is-empty">EXIF data is empty</h3>
+<p><strong>Symptom</strong>: The <code>exif</code> field is missing from script output.
+<strong>Fix</strong>: Not all images contain EXIF data. PNGs, SVGs, and WebPs typically do not. JPEGs from cameras usually do. This is expected behavior.</p>
+<h3 id="text-heuristic-gives-wrong-result">Text heuristic gives wrong result</h3>
+<p><strong>Symptom</strong>: A photograph is flagged as &quot;likely-text-or-graphic&quot; or vice versa.
+<strong>Fix</strong>: The heuristic is a rough estimate based on color distribution. It is not authoritative. The image-analyzer makes the final determination using actual image examination via the vision model.</p>
+<hr>
+<h2 id="example-prompts">Example Prompts</h2>
+<h3 id="analysis">Analysis</h3>
+<pre><code class="hljs"><span class="hljs-variable">@image-alt-text</span> analyze the hero image at public/hero-banner.jpg
+<span class="hljs-variable">@image-alt-text</span> what kind of image is assets/icon-search.svg -- functional or decorative?
+<span class="hljs-variable">@image-alt-text</span> describe this chart image <span class="hljs-keyword">and</span> provide a full text equivalent
+<span class="hljs-variable">@image-alt-text</span> analyze screenshot.png -- it&#x27;s from the settings page of our app
+<span class="hljs-variable">@image-alt-text</span> classify all icons in /assets/icons -- they&#x27;re used as navigation buttons</code></pre>
+<h3 id="markup-generation">Markup Generation</h3>
+<pre><code class="hljs"><span class="hljs-variable">@image-alt-text</span> generate an img tag for logo.png
+<span class="hljs-variable">@image-alt-text</span> build Markdown image syntax for all screenshots in /docs/images
+<span class="hljs-variable">@image-alt-text</span> create a figure block with figcaption for the revenue chart
+<span class="hljs-variable">@image-alt-text</span> generate Next.js Image components for all images in /public
+<span class="hljs-variable">@image-alt-text</span> Astro Image component for hero.jpg</code></pre>
+<h3 id="responsive-and-performance">Responsive and Performance</h3>
+<pre><code class="hljs"><span class="hljs-variable">@image-alt-text</span> responsive srcset markup for hero-banner.jpg
+<span class="hljs-variable">@image-alt-text</span> picture element with AVIF <span class="hljs-keyword">and</span> WebP fallback for photo.jpg
+<span class="hljs-variable">@image-alt-text</span> hero above-the-fold markup for banner.webp with preload tag
+<span class="hljs-variable">@image-alt-text</span> responsive hero markup for landing-page-hero.avif</code></pre>
+<h3 id="batch-processing">Batch Processing</h3>
+<pre><code class="hljs"><span class="hljs-variable">@image-alt-text</span> process all images in the /assets folder
+<span class="hljs-variable">@image-alt-text</span> scan /public/images <span class="hljs-keyword">and</span> generate img tags for each one
+<span class="hljs-variable">@image-alt-text</span> analyze every image in this project
+<span class="hljs-variable">@image-alt-text</span> quick alt text for all images in /docs/screenshots
+<span class="hljs-variable">@image-alt-text</span> update -- only process new images since last catalog</code></pre>
+<h3 id="cataloging">Cataloging</h3>
+<pre><code class="hljs"><span class="hljs-variable">@image-alt-text</span> catalog all images in this project
+<span class="hljs-variable">@image-alt-text</span> update the image catalog with new images in /assets/v2
+<span class="hljs-variable">@image-alt-text</span> create a JSON image catalog for the /public folder
+<span class="hljs-variable">@image-alt-text</span> export the catalog as CSV
+<span class="hljs-variable">@image-alt-text</span> show me the current project accessibility score
+<span class="hljs-variable">@image-alt-text</span> what images need human review?</code></pre>
+<h3 id="combined-workflows">Combined Workflows</h3>
+<pre><code class="hljs"><span class="hljs-variable">@image-alt-text</span> analyze all images in /assets, generate HTML tags, <span class="hljs-keyword">and</span> save a catalog
+<span class="hljs-variable">@image-alt-text</span> batch process /public/images with JSX output <span class="hljs-keyword">and</span> update the catalog
+<span class="hljs-variable">@image-alt-text</span> responsive hero markup for all images in /public/heroes, then catalog them
+<span class="hljs-variable">@image-alt-text</span> quick analysis of /assets, then hand off to accessibility-lead for full audit</code></pre>
+
+  </main>
+  <footer role="contentinfo" class="site-footer">
+    <p><strong>GIT Going with GitHub</strong> - A workshop by <a href="https://community-access.org">Community Access</a></p>
+    <p><a href="https://github.com/community-access/git-going-with-github">View on GitHub</a> · <a href="https://community-access.org">community-access.org</a></p>
+  </footer>
+  </body>
+</html>

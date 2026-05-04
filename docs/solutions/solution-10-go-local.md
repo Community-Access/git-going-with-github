@@ -6,7 +6,7 @@ This shows the local Git workflow from clone through push.
 
 ```bash
 # Clone the repository
-git clone https://github.com/Community-Access/learning-room.git
+git clone https://github.com/<workshop-org>/learning-room-<your-username>.git
 cd learning-room
 
 # Create a branch

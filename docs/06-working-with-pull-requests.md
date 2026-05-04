@@ -53,7 +53,7 @@ Chapter 6 is the first **PR-validated chapter** where students convert issue wor
 
 **Goal:** Edit one of the practice files and save your change on a new branch.
 
-**Where you are working:** the [learning-room](https://github.com/Community-Access/learning-room) repository on GitHub.com, using the web editor.
+**Where you are working:** your Learning Room repository on GitHub.com, using the web editor.
 
 **Before you start:** Open your **assigned Chapter 6.1 challenge issue** (the one titled "Chapter 6.1: Create One Small Branch Change (@yourname)"). The issue description tells you which file to edit and what to fix.
 
@@ -69,7 +69,7 @@ The following table summarizes the practice files in the learning-room, what eac
 
 **Steps using the web editor:**
 
-1. In the [learning-room](https://github.com/Community-Access/learning-room) repository, navigate to the file specified in your issue. Use the file tree or the "Go to file" button (`T` keyboard shortcut).
+1. In your Learning Room repository, navigate to the file specified in your issue. Use the file tree or the "Go to file" button (`T` keyboard shortcut).
 2. Open the file and activate the **pencil icon** (Edit this file) button.
    - Screen reader users (NVDA/JAWS): Press `B` to navigate buttons, find "Edit this file," and press `Enter`.
    - VoiceOver users: Press `VO+U`, open Buttons rotor, find "Edit this file," and press `VO+Space`.
@@ -250,6 +250,8 @@ A PR shows:
 
 
 ## Navigating to Pull Requests
+
+> **Global pull requests dashboard:** GitHub now shows a global pull requests page at [github.com/pulls](https://github.com/pulls) listing all open PRs across every repository you have access to. This is now the **default landing page** when you click "Pull requests" in the top navigation bar (the one above the repository content, not inside a repository). You can opt out in your GitHub settings if you prefer the old behavior. Screen reader path: top navigation region > "Pull requests" link > Enter (or navigate to github.com/pulls directly).
 
 <details>
 <summary>Visual / mouse users</summary>

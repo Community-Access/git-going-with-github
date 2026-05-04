@@ -1,4 +1,4 @@
-# The Learning Room: Shared Practice Repository
+# The Learning Room: Your Personal Practice Repository
 >
 > **Listen to Episode 4:** [The Learning Room](../PODCASTS.md) - a conversational audio overview of this chapter. Listen before reading to preview the concepts, or after to reinforce what you learned.
 
@@ -8,7 +8,84 @@
 
 ## What Is the Learning Room?
 
-The **Learning Room** is a single, shared GitHub repository where all workshop participants collaborate together. It is not your personal fork. It is not your individual repository. It is one repo with many students, many branches, and many pull requests.
+The **Learning Room** is your **own private GitHub repository** for the workshop. When you accept the GitHub Classroom assignment in Block 0, GitHub copies the [`Community-Access/learning-room-template`](https://github.com/Community-Access/learning-room-template) repository into the workshop classroom organization as `<workshop-org>/learning-room-<your-username>`. That copy is yours to use for the workshop - you have write access, your own branches, your own pull requests, and your own automated feedback from Aria the PR validation bot.
+
+You do **not** work directly in `Community-Access/learning-room-template`. Think of the template as the clean master copy facilitators maintain. Your work happens in the private Learning Room repository created for you by GitHub Classroom.
+
+Throughout this chapter and the rest of Day 1, "your Learning Room repository" or "your Learning Room repo" refers to this private copy. Every student gets one, and every copy starts from the same template files. You will not see other students' work in your repo, and they will not see yours - but everyone is doing the same challenges in parallel. Peer-simulation issues and pull requests inside your repo provide realistic collaboration practice, and facilitators may also pair students for real peer review when access is intentionally provided.
+
+You do **not** need to create a GitHub organization or change repository permission settings. The workshop organization, template repository, Classroom assignment, and GitHub Actions permissions are managed by the facilitators.
+
+
+## Why a Per-Student Repo?
+
+GitHub Classroom gives each participant their own repository for three reasons:
+
+- **Safety** -- you can experiment, break things, and recover without affecting anyone else
+- **Authenticity** -- you practice real repository work: issues, branches, pull requests, checks, reviews, and merging
+- **Pace** -- you progress through the 9 Day 1 challenges as fast or as slow as you need; nobody is waiting on you and you are not blocking anybody else
+
+Real open source projects are shared spaces, and you will absolutely contribute to one on Day 2 (`accessibility-agents`) and through the Bonus C challenge. The Learning Room exists so you can build the muscle memory for issue, branch, PR, review, merge in a space where every mistake is a learning opportunity, not a public problem.
+
+
+## Step-by-Step: Accept Your Classroom Assignment and Open Your Repo
+
+This is the very first hands-on step of Day 1. By the end of this walkthrough you will have your own Learning Room repository on GitHub and your first challenge issue waiting for you. The whole flow takes about five minutes.
+
+> **What you need before you start:**
+>
+> - A GitHub account you are signed into in your browser ([Pre-Workshop Setup, Step 1](00-pre-workshop-setup.md#step-1---create-your-github-account))
+> - The **Day 1 Classroom assignment link** -- the facilitator pastes this link in the workshop chat at the start of Block 0. It looks like `https://classroom.github.com/a/<random-id>`. If you do not have it, ask in chat or DM the facilitator.
+
+### 1. Open the assignment link
+
+1. In the same browser where you are signed into GitHub, open the Day 1 assignment link the facilitator shared.
+2. The page that loads is hosted on `classroom.github.com`. Your screen reader announces a heading with the assignment name (for example, "Git Going with GitHub -- Day 1").
+3. If the page asks you to authorize **GitHub Classroom** to access your GitHub account, activate **Authorize GitHub Classroom**. This is a one-time step.
+
+### 2. Identify yourself (if asked)
+
+GitHub Classroom may ask you to pick your name from a roster so the facilitators can match your GitHub username to the registration list.
+
+1. If a roster page appears, navigate the list with arrow keys or use Find-in-Page (`Ctrl+F` / `Cmd+F`) to search for your name.
+2. Activate the link or button next to your name.
+3. If you do not see your name on the roster, activate the **Skip to the next step** link and tell the facilitator in chat. They will reconcile the roster after your repo is created.
+
+### 3. Accept the assignment
+
+1. You now see a screen with a button that says **Accept this assignment** (or just **Accept the assignment**). Activate it.
+2. The page changes to a status screen that says something like "You are ready to go!" with a refresh option. GitHub Classroom is now copying the `learning-room-template` repository into the workshop classroom organization and granting you access to your private copy. This usually takes 10-30 seconds.
+3. Activate the **Refresh** link (or reload the page with `F5`) every 15 seconds or so until you see a link to your new repository. The link looks like `https://github.com/<workshop-org>/learning-room-<your-username>`.
+
+> **Screen reader tip:** The status page does not auto-announce when the repo is ready. Use Browse mode and press `K` to step through links until you hear your repository link, or refresh the page until it appears.
+
+### 4. Open your new repository
+
+1. Activate the link to your repository. You land on the standard GitHub repo page for `<workshop-org>/learning-room-<your-username>`.
+2. Verify three things on this page:
+   - The **repo name** in the heading matches `learning-room-<your-username>`.
+   - The **About** sidebar (or repo description) confirms this is a private workshop copy.
+   - You see folders like `docs/`, `.github/`, and files like `README.md`. These came from the template.
+3. Bookmark this page. You will return here for every Day 1 challenge.
+
+### 5. Find your first challenge issue
+
+When your Learning Room repo is ready, **Challenge 1** appears as a GitHub issue in your repo. The facilitators prepare this by running the Student Progression Bot after students accept the Classroom assignment. The next challenges unlock one at a time as you close the previous ones.
+
+1. From your repository page, navigate to the **Issues** tab. Keyboard shortcut: press `G` then `I`.
+2. You should see at least one open issue with a title like **"Challenge 1: Your First Issue"** authored by `aria-bot` (or `github-actions[bot]`).
+3. Open Challenge 1. Read the issue body -- it tells you what to do, where to find evidence, and how to submit completion.
+
+> **If Challenge 1 is missing after 2 minutes:** Refresh the Issues tab once. If it still does not appear:
+>
+> 1. Open the **Actions** tab and check whether the **Student Progression Bot** workflow ran successfully.
+> 2. If it failed or never ran, post a message in the workshop chat with the link to your repo. The facilitator can trigger `student-progression.yml` or create Challenge 1 from the issue template.
+
+### 6. Confirm Aria can talk to you
+
+The PR validation bot, **Aria**, posts educational feedback whenever you open a pull request. To confirm Aria is wired up, open the **Actions** tab in your repo and look for a workflow named **pr-validation-bot** (or **Aria PR Validation**). The workflow should appear in the list even before you have opened a PR. You do not need to run anything yet -- you just want to confirm it exists.
+
+You are now done with Block 0. Continue with the chapter below to learn how the Learning Room is organized, then jump to [Chapter 5](05-working-with-issues.md) to start Challenge 1.
 
 
 ## Workshop Recommendation (Chapter 3)
@@ -17,96 +94,84 @@ Chapter 3 is a **system orientation chapter**.
 
 - **Challenge count:** none
 - **Automation check:** none
-- **Why:** this chapter explains the shared workflow and prepares students for issue-based challenges in Chapters 4 and 5.
+- **Why:** this chapter explains how your repo is set up and prepares you for the issue-based challenges that start in Chapter 5.
 
 ### Readiness Checkpoint
 
-Before starting Chapter 4 challenges, students should be able to:
+Before starting Chapter 5 challenges, you should be able to:
 
-1. Find `learning-room/docs/CHALLENGES.md`.
-2. Explain issue -> branch -> PR -> review -> merge.
-3. Identify where bot feedback appears on PRs.
-
-#### Description
-
-The learning-room is a single shared repository. It has a protected main branch, and each student opens pull requests against it. For example: Student A's PR #12 is open and assigned to Student B for review, Student B's PR #13 is assigned to Student C, Student C's PR #14 is assigned to Student A, and Student A's earlier PR #11 has already been merged. More PRs appear as students contribute.
-
-### Why one shared repo?
-
-- **Realistic** - Open source projects are shared spaces
-- **Community** - You see each other's work and learn from each other
-- **Peer review** - You review the people sitting next to you
-- **Automation** - The bot serves one repo, coordinating all contributions
+1. Find `docs/CHALLENGES.md` in your Learning Room repository.
+2. Explain the flow: issue -> branch -> PR -> review -> merge.
+3. Identify where Aria bot feedback appears on a PR (the Conversation tab).
 
 
-## Two Tracks, One Repository
+## Two Tracks That Reinforce Each Other
 
-Throughout Day 1, you work on **two parallel learning tracks**:
+Throughout Day 1 you work on **two parallel learning tracks**, both in your own account:
 
-### Track 1: GitHub Skills Modules (Your Account)
+### Track 1: GitHub Skills Modules (Optional Self-Paced Practice)
 
 - **[Introduction to GitHub](https://github.com/skills/introduction-to-github)** - Create branch, open PR, merge
 - **[Communicate Using Markdown](https://github.com/skills/communicate-using-markdown)** - Write headings, links, code, tables
 - **[Review Pull Requests](https://github.com/skills/review-pull-requests)** - Comment, approve, suggest changes
 
-**Scope:** Your personal account (private to you unless you make it public)  
-**Bot:** Mona (GitHub's automated learning bot) guides each step  
-**Pace:** Self-directed, you complete at your own speed  
-**Purpose:** Hands-on practice of individual skills
+**Scope:** Your personal account, optional and self-paced
+**Bot:** Mona (GitHub's automated learning bot) guides each step
+**Purpose:** Hands-on practice of individual skills, complementary to the workshop
 
-### Track 2: Learning Room Contribution Sprint (Shared)
+### Track 2: Your Learning Room Repository (Required Workshop Track)
 
-- **Block 5:** Your first real contribution (you and 5-20 other students contributing simultaneously)
-- **Block 6:** Community tools (labels, milestones, notifications)
+- **Blocks 1-4 (Day 1 morning/afternoon):** Challenges 1-7 -- find your way, file an issue, branch, commit, open a PR, survive a merge conflict
+- **Block 5 (Day 1 evening):** Challenges 8-9 -- culture and merge day
+- **Block 6 (Day 1 evening):** Community tools (labels, milestones, notifications)
 
-**Scope:** The shared [learning-room](https://github.com/Community-Access/learning-room) repository (one repo, visible to everyone)  
-**Bot:** The Learning Room automation bot validates PRs and tracks progress  
-**Pace:** Structured by facilitator; synchronized with workshop schedule  
-**Purpose:** Collaborative practice of the full workflow (issue → branch → PR → review → merge)
+**Scope:** Your private Learning Room repository (created from `learning-room-template` via Classroom)
+**Bot:** **Aria** -- a PR validation bot that posts educational feedback on every push, plus a Student Progression bot that auto-creates the next challenge issue when you close the current one
+**Purpose:** End-to-end practice of the full workflow in a real repository where you have full control
 
-#### The Two Tracks Reinforce Each Other
+#### How the Two Tracks Compare
 
-| Step | Skills Module (individual) | Learning Room (group) |
+| Step | GitHub Skills (optional) | Your Learning Room (required) |
 | --- | --- | --- |
-| 1 | Create a branch | Create a branch (together) |
-| 2 | Open a PR | Open a PR (see others' too) |
-| 3 | Get instant bot feedback | Get bot feedback + human review |
-| 4 | Mona verifies your step | Human peer reviewer approves |
-| 5 | Next step unlocked | Ready to merge |
+| 1 | Create a branch in a Skills repo | Create a branch in your Learning Room |
+| 2 | Open a PR | Open a PR |
+| 3 | Get instant bot feedback from Mona | Get instant bot feedback from Aria |
+| 4 | Mona verifies your step | Aria validates structure; you self-merge or peer-review |
+| 5 | Next Skills step unlocked | Closing the issue auto-unlocks the next challenge |
 
-### Learning Cards: Two Tracks, One Repository
+### Learning Cards: Two Tracks, One Account
 
 <details>
 <summary>Screen reader users</summary>
 
 - GitHub Skills modules run in your personal account; press `G I` from any Skills repo to see the issue thread where Mona posts instructions
-- The Learning Room is at a different URL; bookmark both repos and use `Alt+D` (address bar) to confirm which one you are in
-- Mona's bot comments in Skills modules appear as issue comments; press `3` to jump between them in the discussion thread
+- Your Learning Room repository lives at a different URL inside the workshop organization; bookmark it and use `Alt+D` (address bar) to confirm which repo you are in
+- Aria's bot comments on your PRs appear as PR conversation comments; press `3` on the PR page to jump between them
 
 </details>
 
 <details>
 <summary>Low vision users</summary>
 
-- GitHub Skills repos have a distinct green banner at the top of the README that says "Start course"; the Learning Room has no such banner
-- Check the repository name in the top-left header to confirm which track you are working in (Skills repo vs. learning-room)
-- Mona's avatar (the GitHub octocat logo) appears next to bot comments; your human reviewer's avatar appears next to peer review comments in the Learning Room
+- GitHub Skills repos have a distinct green banner at the top of the README that says "Start course"; your Learning Room repo has no such banner
+- Check the repository name in the top-left header to confirm which track you are working in (Skills repo vs. your Learning Room)
+- Aria's avatar appears next to bot comments; your human reviewer's avatar appears next to peer review comments
 
 </details>
 
 <details>
 <summary>Sighted users</summary>
 
-- Skills modules appear as separate repos under your account page (github.com/your-username); the Learning Room appears under the organization (github.com/Community-Access/learning-room)
-- Mona's comments in Skills modules have a distinct grey bot badge next to the username
+- Skills modules appear as separate repos under your account page (github.com/your-username); your Learning Room appears under the workshop organization assigned by your facilitators
+- Aria's comments have a distinct grey bot badge next to the username, just like Mona's
 - Keep both repos open in separate browser tabs so you can switch between tracks during the workshop
 
 </details>
 
 
-## Learning Room Folder Structure
+## Your Learning Room Folder Structure
 
-The learning-room repository contains these files and folders:
+Every Learning Room repository (yours and every other participant's) starts as an exact copy of `learning-room-template` and contains these files and folders:
 
 - **README.md** -- Getting started guide
 - **.github/**
@@ -115,7 +180,8 @@ The learning-room repository contains these files and folders:
   - **SETUP_AND_MAINTENANCE.md** -- Maintenance reference
   - **workflows/** -- 3 automation workflows
     - learning-room-pr-bot.yml (PR validation)
-    - skills-progression.yml (progress tracking)
+    - student-progression.yml (challenge delivery)
+    - skills-progression.yml (achievement tracking)
     - student-grouping.yml (peer pairing)
   - **scripts/**
     - validate-pr.js (validation logic)
@@ -132,50 +198,53 @@ The learning-room repository contains these files and folders:
 
 ## Your Practice Branch
 
-When you join the workshop, the facilitator creates a **personal practice branch** for you in the Learning Room repository. This branch is automatically created using your GitHub username with `-practice` appended:
+In your own Learning Room repository, **you decide what branches to create**. The Day 1 challenge sequence asks you to work on a single feature branch named after yourself:
 
-> **Branch naming convention:** `username-practice` (all lowercase)
+> **Branch naming convention for Day 1:** `learn/<your-github-username>` (all lowercase)
 
 **Examples:**
-- If your GitHub username is `payown`, your practice branch is `payown-practice`
-- If your username is `BudgieMom`, your practice branch is `budgiemom-practice`
-- If your username is `Weijun-Zhang-1996`, your practice branch is `weijun-zhang-1996-practice`
+- If your GitHub username is `payown`, your branch is `learn/payown`
+- If your username is `BudgieMom`, your branch is `learn/budgiemom`
+- If your username is `Weijun-Zhang-1996`, your branch is `learn/weijun-zhang-1996`
 
-### Why you have a practice branch
+### Why you create a separate branch
 
-- **Protected main branch** - The `main` branch in the Learning Room is protected and requires pull requests for all changes
-- **Your workspace** - Your practice branch is where you commit and push changes before opening a PR
-- **No conflicts** - Each student has their own branch, so you will never accidentally overwrite someone else's work
-- **Realistic workflow** - This mirrors how real open source projects work - contributors create feature branches and submit pull requests
+- **Protected main branch** - The `main` branch in your Learning Room is protected; changes have to land via pull request even though you own the repo. This mirrors how mature open source projects work.
+- **Your workspace** - Your `learn/<username>` branch is where you commit and push changes before opening a PR
+- **Clean history** - Keeping experiments off `main` until they are reviewed (by you, by Aria, or by a peer) keeps your project history easy to read
+- **Realistic workflow** - Contributors to real open source projects always create feature branches before opening a PR. You are practicing exactly that pattern.
 
-### How to use your practice branch
+### How to use your branch
 
-1. When you clone the Learning Room repository locally (Chapter 11), switch to your practice branch:
-   ```bash
-   git checkout username-practice
-   ```
-2. Make your changes, commit them to your practice branch
-3. Push your practice branch to GitHub
-4. Open a pull request from your practice branch → `main`
+The Day 1 challenges (4 onward) walk you through creating and using your branch on GitHub.com. Once you start working locally in Chapter 14, the same branch is what you check out:
+
+```bash
+git checkout learn/<your-github-username>
+```
+
+1. Create the branch on GitHub.com (Challenge 4) or locally with `git checkout -b learn/<username>` from `main`
+2. Make your changes and commit them to the branch
+3. Push the branch to GitHub if you created it locally
+4. Open a pull request from `learn/<username>` -> `main` (Challenge 6)
 
 > **Which branch do I use and when?**
 >
 > | Chapter | Branch needed? | What to use |
 > |---------|---------------|-------------|
-> | Chapter 4 (Issues) | No | Work happens in issue threads directly. No branch or file editing required. |
-> | Chapter 6 (PRs, web editor) | Yes, auto-created | GitHub creates a branch when you click "Propose changes." Name it `fix/yourname-issueXX`. |
-> | Chapter 6 (PRs, local clone) | Yes, create manually | `git checkout -b fix/yourname-issueXX` from `main`. |
-> | Chapter 11+ (Local Git) | Yes | Use your `username-practice` branch or create `fix/yourname-issueXX` branches from `main`. |
+> | Chapter 5 (Issues) | No | Work happens in issue threads directly. No branch or file editing required. |
+> | Chapter 6 (PRs, web editor) | Yes | Create `learn/<username>` from `main` (Challenge 4) and edit on it. |
+> | Chapter 6 (PRs, local clone) | Yes, create manually | `git checkout -b learn/<username>` from `main`. |
+> | Chapter 14+ (Local Git) | Yes | Reuse `learn/<username>`, or create additional `fix/<short-description>` branches from `main` for new work. |
 >
-> **Summary:** Chapter 4 needs no branch. Chapters 6-7 use short-lived `fix/` branches. Your `username-practice` branch becomes essential starting in Chapter 11 when you work locally with Git and VS Code.
+> **Summary:** Chapter 5 needs no branch. Chapters 6-7 use the same `learn/<username>` branch. Day 2 reuses that branch and adds short-lived `fix/` branches when you tackle additional issues.
 
 ### Learning Cards: Your Practice Branch
 
 <details>
 <summary>Screen reader users</summary>
 
-- To switch branches on GitHub.com, press `W` (in Focus Mode) to open the branch selector, type your username, and press `Enter` when your branch appears
-- In VS Code's terminal, type `git checkout username-practice` (replacing "username" with your GitHub username in lowercase)
+- To switch branches on GitHub.com, press `W` (in Focus Mode) to open the branch selector, type your branch name (`learn/<username>`), and press `Enter` when it appears
+- In VS Code's terminal, type `git checkout learn/<your-github-username>` (lowercase)
 - Press `Ctrl+Shift+G` in VS Code to open Source Control; the current branch name is announced at the top of the panel
 
 </details>
@@ -183,8 +252,8 @@ When you join the workshop, the facilitator creates a **personal practice branch
 <details>
 <summary>Low vision users</summary>
 
-- The branch selector button shows the current branch name (e.g., "main") above the file table; click it and type your username to filter to your practice branch
-- After switching branches, the branch name updates in the selector button; verify it reads your username, not "main"
+- The branch selector button shows the current branch name (e.g., "main") above the file table; click it and type "learn" to filter to your branch
+- After switching branches, the branch name updates in the selector button; verify it reads `learn/<username>`, not "main"
 - In VS Code, the current branch name appears in the bottom-left corner of the Status Bar in small text; zoom in or check Source Control panel header for a larger display
 
 </details>
@@ -193,7 +262,7 @@ When you join the workshop, the facilitator creates a **personal practice branch
 <summary>Sighted users</summary>
 
 - The branch selector is the dropdown button above the file table showing the current branch name with a down-arrow icon
-- Your practice branch follows the pattern `username-practice` (all lowercase); type your username in the dropdown search to find it quickly
+- Your branch follows the pattern `learn/<username>` (all lowercase); type "learn" in the dropdown search to find it quickly
 - In VS Code, the current branch is shown in the bottom-left of the Status Bar; click it to switch branches via a dropdown
 
 </details>
@@ -338,46 +407,36 @@ Five bonus challenges (A through E) are available for students who finish faster
 - Applies labels (documentation, accessibility, needs-review)
 - Creates commit status check visible in PR checks
 
-**Visibility:** The bot comment appears in the PR. All students can read it.
+**Visibility:** The bot comment appears in your PR. You see it; the facilitators see it; nobody else does unless they have been added as a collaborator on your repo.
 
-### Step 3: Peer Reviewer Is Assigned
+### Step 3: Peer Review (Facilitator-Arranged)
 
-#### Pairing Bot (`.github/workflows/student-grouping.yml`)
+The `learning-room-template` ships with a peer-pairing workflow (`.github/workflows/student-grouping.yml`) that was designed for a single shared repo. Under the GitHub Classroom model used in this workshop, **peer review is arranged by the facilitators rather than auto-assigned**, because each student's repo is private.
 
-- Automatically selects a reviewer (uses `least_reviews` strategy - balances workload)
-- Requests review via GitHub API
-- Posts assignment comment explaining what to look for
-- **Example:**
+When Challenge 3 ("Join the Conversation") or Challenge 8 ("Culture") asks for peer review:
 
-  ```text
-  ## Peer Review Assigned
-
-  Hi @studentA! Your PR has been automatically paired with @studentC for peer review.
-
-  ### For @studentC:
-  This is a great opportunity to practice code review skills! Here's what to look for:
-  - Did all three [TODO] sections get completed in welcome.md?
-  - Does the new content match the style of existing sections?
-  - Is the heading hierarchy correct (H1 → H2)?
-  - Does the bot report pass all required checks?
-  ```
+1. The facilitators (Jeff and Michael) pair you with another participant.
+2. They add each of you as a collaborator on the other's Learning Room repo.
+3. Each of you receives a notification: "You have been added as a collaborator."
+4. You can now read the other person's PRs, leave comments, request changes, and approve.
+5. After the challenge is complete, the collaborator access remains until the workshop ends -- you can keep helping each other as you work through the rest of Day 1.
 
 #### Visibility
 
-- Student A sees their assigned reviewer
-- Student C receives a notification: "review requested"
-- All students see the assignment comment in the PR thread
+- You see PRs in the repos you have been added to (yours plus any peers you have been paired with)
+- Notifications show review requests in your GitHub Notifications inbox
+- Other participants in the cohort cannot see your repo unless they are paired with you
 
 ### Step 4: Reviewer Reads and Comments
 
-#### Student C (the assigned reviewer reviewing the welcome.md changes)
+#### Your assigned peer reviewer (when one is paired with you)
 
 1. Receives notification: "PR review requested"
-2. Navigates to the PR in the Learning Room repo
+2. Navigates to the PR in your Learning Room repo (they have collaborator access)
 3. Reads:
    - PR title: "Complete [TODO] sections in welcome.md"
    - PR description: lists which sections were completed
-   - Bot feedback: checks that all `[TODO]` markers are removed, heading hierarchy is valid
+   - Aria's feedback: checks that all `[TODO]` markers are removed, heading hierarchy is valid
    - The actual file changes (Files Changed tab): sees the diff showing old `[TODO]` markers replaced with new content
 4. Leaves review comments:
    - Inline comment on the "Who Can Contribute?" paragraph: "Great addition - I especially like the point about AT users bringing valuable perspective."
@@ -386,15 +445,15 @@ Five bonus challenges (A through E) are available for students who finish faster
 
 #### Visibility
 
-- Student A (PR author) gets notification: "Your PR has a new review"
-- All students see the review comments in the PR thread
-- Student C's review shows in the Reviewers sidebar
+- You (the PR author) get a notification: "Your PR has a new review"
+- The reviewer's comments appear in your PR thread
+- Their name shows in the Reviewers sidebar of your PR
 
 ### Step 5: Author Responds and Updates
 
-#### Student A (PR author)
+#### You (PR author)
 
-1. Reads the bot feedback and human review
+1. Read Aria's feedback and any human review
 2. Talks to the reviewer if something is unclear
 3. Makes changes based on feedback
 4. Pushes new commits to the same branch
@@ -402,29 +461,29 @@ Five bonus challenges (A through E) are available for students who finish faster
 
 #### Visibility
 
-- Bot re-validates on each new commit
-- All students see updated activity in the PR
-- Timeline shows iteration happening
+- Aria re-validates on each new commit and updates its comment
+- Your reviewer sees the updated activity in the PR
+- The PR timeline shows iteration happening
 
 ### Step 6: Merge and Celebration
 
-#### When Reviewer Approves
+#### When the review is approved (or you decide to self-merge)
 
-- Student A merges the PR (button becomes available)
+- You merge the PR (button becomes available)
 - PR closes, shows "merged"
 
-#### Bot Posts Celebration
+#### Progression Bot Posts the Next Challenge
 
-- Skills progression bot tracks the merge
-- Posts achievement comment (badge earned, level up tracking)
-- Updates student roster progress
-- Shows milestone celebration if applicable
+- The Student Progression bot detects the merged PR and the closed challenge issue
+- Posts a celebration comment (challenge badge earned)
+- Auto-creates the next challenge issue in your repo so you can keep moving
+- Updates the progress tracking file
 
 #### Visibility
 
-- All students see the merged PR
-- Achievement comment is public
-- Progress reflected in Learning Paths documentation
+- You see the merged PR and the new challenge issue
+- Your peer reviewer (if you have one) is notified the PR was merged
+- Other participants only see this if they have been paired with you
 
 ### Learning Cards: How PR Sharing Works
 
@@ -456,18 +515,17 @@ Five bonus challenges (A through E) are available for students who finish faster
 </details>
 
 
-## What All Students See
+## What You and Your Peers See
 
 | What | Where | Who Sees It |
 | ------  | -------  | -----------  |
-| All open PRs | Pull Requests tab | Everyone |
-| PR description & changes | PR page | Everyone |
-| Bot feedback | PR comments | Everyone |
-| Peer review comments | PR comments | Everyone |
-| Reviewer assignments | PR sidebar "Reviewers" | Everyone |
-| Merge celebrations | PR comments | Everyone |
-| Your review request | Your notification inbox | You + PR author |
-| You assigned as reviewer | Your review requests filter | You + PR author |
+| Your open PRs | Pull Requests tab in your repo | You, the facilitators, and any peers added as collaborators |
+| PR description & changes | PR page in your repo | Same as above |
+| Aria's bot feedback | PR comments | Same as above |
+| Peer review comments | PR comments | Same as above |
+| Reviewer assignments | PR sidebar "Reviewers" | Same as above |
+| Progression bot's next-challenge issue | Issues tab in your repo | Same as above |
+| Your review requests for someone else's PR | Your notification inbox | You and the PR author you were paired with |
 
 
 ## The Learning Automation System
@@ -502,7 +560,7 @@ When you open a PR in the Learning Room, you get **three types of feedback**:
 
 ## Study Groups (Optional)
 
-If your facilitator creates study groups, you'll be assigned with 2-3 other students:
+If your facilitators create study groups, you will be paired with 2-3 other participants and added as collaborators on each other's Learning Room repos:
 
 1. **Group Issue Thread** - Private communication space for your group
 2. **Shared Review Responsibility** - You review each other's work
@@ -522,31 +580,33 @@ This is your collaboration space!
 ```
 
 
-## Key Differences: Skills Module vs. Learning Room
+## Key Differences: Skills Module vs. Your Learning Room
 
-| Aspect | GitHub Skills (Your Account) | Learning Room (Shared) |
+| Aspect | GitHub Skills (Your Account) | Your Learning Room (Classroom) |
 | --------  | ---  | ---  |
-| **Repo** | Your personal copy | One shared repo |
-| **Bot** | Mona (GitHub) | Learning Room automation bot |
-| **Reviewer** | Mona (auto) | Human peer (auto-assigned) |
-| **Visibility** | Private (unless you make public) | Public to all workshop students |
-| **Pace** | Self-directed | Synchronized with workshop |
-| **Purpose** | Individual skill building | Collaborative, real-world practice |
-| **Feedback** | Instant, next-step only | Both bot + human, comprehensive |
-| **Completion** | Badge on your profile | Progress appears in Learning Paths |
-| **Community** | You alone | All students together |
+| **Repo** | Your personal copy of a Skills repo | Your private copy of `learning-room-template` |
+| **Bot** | Mona (GitHub) | Aria (PR validation) and the Student Progression bot |
+| **Reviewer** | Mona (auto) | You (self-merge) or a peer paired by your facilitator |
+| **Visibility** | Private to you (unless you make it public) | Private to you and the workshop organization |
+| **Pace** | Self-directed | Self-paced, anchored by the workshop schedule |
+| **Purpose** | Individual skill building | End-to-end practice of the full real-world workflow |
+| **Feedback** | Instant, next-step only | Bot feedback on every push plus optional peer review |
+| **Completion** | Badge on your profile | Closing the issue auto-creates the next challenge |
+| **Community** | You alone | You, with facilitator-arranged peer pairings when challenges call for it |
 
 
-## Tips for PR Sharing
+## Tips for Reviewing a Peer's PR
+
+When the facilitators pair you with another participant for Challenge 3 or Challenge 8, you will be added as a collaborator on their Learning Room repo. Here is how to find the PRs they want you to look at.
 
 ### Finding PRs to Review
 
 <details>
 <summary>Visual / mouse users</summary>
 
-1. Go to `github.com/[org]/learning-room`
+1. Go to your peer's Learning Room repo (the URL the facilitators sent you, or open it from your GitHub Notifications inbox)
 2. Click the **Pull Requests** tab
-3. Click the **Filters** dropdown → "Review requested" → your username
+3. Click the **Filters** dropdown -> "Review requested" -> your username
 4. Click any PR title to open it
 
 </details>
@@ -555,9 +615,9 @@ This is your collaboration space!
 <summary>Screen reader users (NVDA / JAWS)</summary>
 
 ```text
-1. Go to github.com/[org]/learning-room
-2. Press D → "Repository navigation"
-3. Press K → navigate to "Pull Requests" tab
+1. Go to your peer's Learning Room repo
+2. Press D -> "Repository navigation"
+3. Press K -> navigate to "Pull Requests" tab
 4. Filter: Press F, type "review-requested:@me"
 5. Press H repeatedly to navigate PR titles
 6. Press Enter to open a PR
@@ -569,9 +629,9 @@ This is your collaboration space!
 <summary>Screen reader users (VoiceOver - macOS)</summary>
 
 ```text
-1. Go to github.com/[org]/learning-room
-2. VO+U → Landmarks → "Repository navigation"
-3. Quick Nav K → navigate to "Pull Requests" tab → VO+Space
+1. Go to your peer's Learning Room repo
+2. VO+U -> Landmarks -> "Repository navigation"
+3. Quick Nav K -> navigate to "Pull Requests" tab -> VO+Space
 4. Filter: Quick Nav F, type "review-requested:@me", press Return
 5. Quick Nav H (or VO+Cmd+H) to navigate PR titles
 6. VO+Space to open a PR
@@ -750,52 +810,55 @@ Files Changed Tab (what actually changed):
 </details>
 
 
-## FAQ: PR Sharing in Learning Room
+## FAQ: Pull Requests in Your Learning Room
 
 ### "Can I see other students' PRs?"
 
-**Yes!** All PRs in the shared repo are visible. This is intentional - you learn by seeing how others approach problems.
+Not inside their Learning Room repos -- those are private to each student. **You can see other participants' work in two ways:**
+
+- During Challenge 3 ("Join the Conversation") and Challenge 8 ("Culture"), the facilitators pair you with classmates and add you as a collaborator on each other's repos so you can review.
+- During Day 2 (and the Bonus C challenge), everyone contributes to the public `accessibility-agents` repo, where every PR is visible to everyone.
 
 ### "What if I don't agree with my assigned reviewer?"
 
-You can request additional reviewers manually. The bot's assignment is a convenience, not a mandate. Click "Reviewers" → select someone else.
+When the facilitators pair you for peer review, the pairing is a starting point, not a mandate. You can request additional reviewers manually. Click "Reviewers" -> select someone else, or ask the facilitators to pair you differently.
 
-### "Will my PR get lost with everyone's open at once?"
+### "Will my PR get lost when everyone is working at once?"
 
-No. Each PR has its own conversation thread. The bot update is yours alone. Your reviewer is specifically assigned.
+No. Your repo is your own; you only see your own PRs. Aria's feedback is on your PR alone, and any peer reviewer is specifically assigned to you.
 
 ### "Can I comment on someone else's PR?"
 
-Yes! Anyone can comment on public PRs. If you see something helpful, jump in. This is real open source.
+When the facilitators pair you for review, yes -- you will be added as a collaborator and can comment, approve, and request changes on their PR. On the public `accessibility-agents` repo, anyone can comment on any open PR.
 
 ### "What if my reviewer doesn't respond?"
 
-Mention them directly: "@name, any thoughts on the changes I pushed?" or ask your facilitator for help.
+Mention them directly in a PR comment: "@name, any thoughts on the changes I pushed?" Or ask a facilitator to follow up.
 
 ### "Can I work with a friend?"
 
-Your study group will be created by facilitator, but you likely know your reviewers from the workshop. It's okay to chat between sessions.
+The facilitators arrange peer pairings, but if you know someone else in the cohort and you want to review each other's work, ask either Jeff or Michael to add you to each other's repos.
 
 ### "How long does review take?"
 
-Typically 15-60 minutes during the workshop. If a reviewer is slow, your facilitator can help or assign someone else.
+When pairings happen during a workshop block, typically 15-60 minutes. If a reviewer is slow, the facilitators can step in or assign someone else.
 
 ### "What if bot feedback is wrong?"
 
-Comment explaining why. Request human review. The bot isn't perfect - that's why you have humans too.
+Comment on the PR explaining why. Aria is intentionally educational, not punitive -- if you disagree with a check, the facilitators can override it. Aria is not perfect, which is exactly why human review still matters.
 
 ### "Do I need to complete every challenge?"
 
-No! The Learning Room has challenges for all skill levels. You can pick what interests you, complete at your pace, and continue after the workshop.
+No. The Learning Room has challenges for all skill levels. You can pick what interests you, complete at your pace, and continue after the workshop -- your repo stays yours.
 
 
 ## If You Get Stuck
 
 | Problem | What to do |
 |---|---|
-| Cannot find your practice branch | In the branch selector, type your GitHub username (lowercase). If the branch does not appear, ask a facilitator to create it. |
-| Push rejected to main branch | Main is protected. You need to push to your practice branch: `git checkout username-practice` then push again. |
-| Cannot see other students' PRs | Check the Pull Requests tab filter is set to "All" (not "Created by you"). |
+| Cannot find your `learn/<username>` branch | If you have not created it yet, follow Challenge 4. If you created it but cannot see it, refresh the branch selector or run `git fetch origin` from a local clone. |
+| Push rejected to main branch | Main is protected. You need to push to your `learn/<username>` branch: `git checkout learn/<your-username>` then push again. |
+| I want to see another student's PR | Ask a facilitator -- when peer review is part of a challenge, they will add you as a collaborator on the other student's repo. |
 | Practice file has no TODO markers | Verify you are on the correct branch. Run `git branch` to see your current branch. The main branch may have already been updated. |
 | Accidentally committed to main | Do not panic. See the failsafe instructions in [Chapter 13](13-how-git-works.md#10-if-you-get-stuck) or ask a facilitator. |
 | Everything else | Post a comment on your challenge issue describing what happened. That always counts as participation. |

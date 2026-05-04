@@ -511,7 +511,7 @@ jobs:
 
 #### Steps
 
-1. Navigate to the [learning-room](https://github.com/Community-Access/learning-room) repository on GitHub
+1. Navigate to your Learning Room repository on GitHub
 2. Go to the **Actions tab** (in the Repository navigation landmark)
 3. Use `3` (NVDA/JAWS) or the Headings rotor (VoiceOver) to navigate the list of workflow runs
 4. Open the most recent run

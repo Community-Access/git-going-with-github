@@ -650,6 +650,30 @@ applyTo: ".github/ISSUE_TEMPLATE/**/*.{yml,yaml}"
 ### Creating an Instructions File
 
 #### Command Palette method
+### Writing Effective Instructions
+
+Guidance from GitHub's accessibility team on writing instructions that Copilot actually follows:
+
+**Do:**
+
+- **Use normative language.** Write `MUST`, `MUST NOT`, `SHOULD`, `SHOULD NOT`, and `MAY` for rules. LLMs respond well to these terms because they reduce ambiguity -- the same words used in WCAG. Example: `Keyboard shortcuts MUST NOT override browser or OS shortcuts.`
+- **Use lists and checklists.** Structured lists provide guardrails that keep Copilot on track. Format accessibility requirements as a checklist so no criterion is overlooked.
+- **Specify your versions and standards.** `This application MUST conform to WCAG 2.2 Level AA` is more useful than a general reference to accessibility. Include your design system's component names and flag deprecated components explicitly: `DeprecatedButton MUST NOT be used; use NewAccessibleButton instead.`
+- **Focus on what Copilot doesn't already know.** Instructions should add net-new information -- your team's conventions, exceptions, and priorities -- not restate what Copilot was trained on.
+- **Keep instructions concise.** Overly long instructions reduce model performance. Summarize the most important rules rather than listing every possible case.
+
+**Don't:**
+
+- **Don't paste full guidelines.** Copilot is already trained on WCAG, ARIA, and HTML standards. Copying large sections of a spec into instructions wastes context and rarely improves output. Focus on your team's specific deviations and priorities instead.
+- **Don't reference external links.** By design, Copilot does not fetch URLs in custom instructions (a deliberate privacy and security protection). A link is useful as a human reference but has no effect on Copilot's behavior. Write the relevant rules directly into the instructions text.
+- **Don't reference private repositories.** Copilot cannot access private repo content from within another repository's instructions. Write the guidance inline.
+- **Use role-based prompting carefully.** Assigning a persona (`You are the lead accessibility expert...`) can be effective, but any persona can carry assumptions from training data. If you use role prompting, be specific about skills and responsibilities, stay neutral, and use professional functional language.
+
+**Share your instructions:** The [github/awesome-copilot](https://github.com/github/awesome-copilot) repository collects community-contributed instructions files. Before submitting, review your file to confirm it contains no sensitive or confidential information.
+
+### Creating an Instructions File
+
+#### Command Palette method
 
 1. `Ctrl+Shift+P` → "Chat: New Instructions File"
 2. Choose Workspace or User Profile scope

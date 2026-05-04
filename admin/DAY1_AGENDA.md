@@ -8,7 +8,7 @@
 
 ## Your Classroom Repository
 
-When you accept the Day 1 assignment link, GitHub creates a private copy of the template repository in your own account. Your repo comes pre-configured with:
+When you accept the Day 1 assignment link, GitHub creates a private copy of the template repository for you in the workshop classroom organization. You do not work directly in the template repository. Your private Learning Room repo comes pre-configured with:
 
 - **Aria bot** -- an automated assistant that validates your pull requests and provides educational feedback within 30 seconds
 - **Challenge progression** -- when you close one challenge issue, the next one opens automatically
@@ -16,7 +16,7 @@ When you accept the Day 1 assignment link, GitHub creates a private copy of the 
 - **21 challenge templates** (Challenges 1-9 today, 10-16 + bonus on Day 2)
 
 **How Aria works:**
-1. You open Challenge 1 as your first issue (created automatically when you accept the assignment)
+1. You open Challenge 1 as your first issue after facilitators seed it for your private repo
 2. You work through the instructions and submit your evidence
 3. When you close the issue, the progression system creates Challenge 2
 4. When you open a pull request, Aria comments within 30 seconds with structured validation feedback
@@ -27,21 +27,21 @@ When you accept the Day 1 assignment link, GitHub creates a private copy of the 
 
 ## At a Glance
 
-| Block | Time | Topic | Challenges |
-|-------|------|-------|-----------|
-| 0 | 9:00 AM | Welcome, setup verification, and accept Classroom assignment | -- |
-| 1 | 9:30 AM | Screen reader orientation to GitHub | Challenge 1: Find Your Way |
-| 2 | 10:10 AM | Navigating repositories, issues, and conversations | Challenges 2-3 |
-| -- | 11:00 AM | **Break** | -- |
-| 3 | 11:15 AM | Branching, editing, and committing | Challenges 4-5 |
-| 4 | 12:10 PM | Pull requests, review, and merge conflicts | Challenges 6-7 |
-| -- | 1:00 PM | **Lunch** | -- |
-| 5 | 2:00 PM | Culture, triage, and merge day | Challenges 8-9 |
-| -- | 3:00 PM | **Break** | -- |
-| 6 | 3:15 PM | Community: communication, labels, and notifications | -- |
-| -- | 4:30 PM | Wrap-up and reflections | -- |
+| Block | Time (Eastern) | Topic | Challenges |
+|-------|----------------|-------|-----------|
+| 0 | 12:00 PM | Welcome, setup verification, and accept Classroom assignment | -- |
+| 1 | 12:30 PM | Screen reader orientation to GitHub | Challenge 1: Find Your Way |
+| 2 | 1:10 PM | Navigating repositories, issues, and conversations | Challenges 2-3 |
+| -- | 2:00 PM | **Break** | -- |
+| 3 | 2:15 PM | Branching, editing, and committing | Challenges 4-5 |
+| 4 | 3:10 PM | Pull requests, review, and merge conflicts | Challenges 6-7 |
+| -- | 4:00 PM | **Dinner break** | -- |
+| 5 | 5:00 PM | Culture, triage, and merge day | Challenges 8-9 |
+| -- | 6:00 PM | **Break** | -- |
+| 6 | 6:15 PM | Community: communication, labels, and notifications | -- |
+| -- | 7:30 PM | Wrap-up and reflections | -- |
 
-**Total:** ~7.5 hours of structured time
+**Total:** ~7.5 hours of structured time (12:00 PM - 8:00 PM Eastern)
 
 
 ## Pre-Day Checklist
@@ -49,12 +49,19 @@ When you accept the Day 1 assignment link, GitHub creates a private copy of the 
 Before entering the room (or joining the call), participants should have completed everything in [Pre-Workshop Setup](../docs/00-pre-workshop-setup.md). The facilitator will do a quick verification at the start.
 
 
-## Block 0 - Welcome and Orientation (9:00 AM, 30 min)
+## Block 0 - Welcome and Orientation (12:00 PM, 30 min)
 
 ### Date and Location
 
-**[WORKSHOP_DATE_DAY1]** | 9:00 AM - 5:00 PM
-**[WORKSHOP_DATE_DAY2]** | 9:00 AM - 5:00 PM
+**Day 1: May 21, 2026** | 12:00 PM - 8:00 PM Eastern
+**Day 2: May 22, 2026** | 12:00 PM - 8:00 PM Eastern
+
+### Facilitators
+
+- **Jeff Bishop** -- lead facilitator, maintainer of [Accessibility Agents](https://github.com/community-access/accessibility-agents)
+- **Michael Babcock** -- co-facilitator
+
+Both Jeff and Michael run all sessions together. "The facilitator" or "your facilitator" in this agenda refers to whichever of the two is leading a given moment; either can step in for the other on any task.
 
 ### Purpose
 
@@ -75,7 +82,8 @@ Make participants comfortable, set expectations, verify setups, and create a psy
 - Can everyone access GitHub Issues and Pull Requests? (see Step 4 in [Pre-Workshop Setup](../docs/00-pre-workshop-setup.md))
 
 **Accept the Classroom assignment (10 min):**
-The facilitator shares the Day 1 assignment link. Each participant:
+The facilitator shares the Day 1 assignment link. Each participant follows the [Step-by-Step: Accept Your Classroom Assignment and Open Your Repo](../docs/04-the-learning-room.md#step-by-step-accept-your-classroom-assignment-and-open-your-repo) walkthrough in Chapter 4. The short version:
+
 1. Opens the assignment link in their browser
 2. Accepts the assignment -- GitHub creates a private repo in the workshop organization
 3. Waits ~30 seconds for the repo to finish creating
@@ -88,7 +96,7 @@ The facilitator shares the Day 1 assignment link. Each participant:
 - Each participant: your name, your screen reader and OS, what brings you here
 
 
-## Block 1 - Screen Reader Orientation to GitHub (9:30 AM, 40 min)
+## Block 1 - Screen Reader Orientation to GitHub (12:30 PM, 40 min)
 
 ### Purpose
 
@@ -153,7 +161,7 @@ When you finish, submit your evidence in the challenge issue and close it. Withi
 [Screen Reader Cheat Sheet](../docs/appendix-b-screen-reader-cheatsheet.md)
 
 
-## Block 2 - Issues and Conversations (10:10 AM, 50 min)
+## Block 2 - Issues and Conversations (1:10 PM, 50 min)
 
 ### Purpose
 
@@ -203,12 +211,12 @@ After submitting your evidence, close Challenge 3. Challenge 4 opens.
 [Working with Issues](../docs/05-working-with-issues.md) | [Glossary](../docs/appendix-a-glossary.md)
 
 
-## Break (11:00 AM, 15 min)
+## Break (2:00 PM, 15 min)
 
 Encourage participants to stand, stretch, and rest their ears. Screen reader listening is cognitively demanding work.
 
 
-## Block 3 - Branching, Editing, and Committing (11:15 AM, 55 min)
+## Block 3 - Branching, Editing, and Committing (2:15 PM, 55 min)
 
 ### Purpose
 
@@ -273,7 +281,7 @@ If you are still working on a challenge, use this time to finish.
 [Working with Pull Requests](../docs/06-working-with-pull-requests.md)
 
 
-## Block 4 - Pull Requests, Review, and Merge Conflicts (12:10 PM, 50 min)
+## Block 4 - Pull Requests, Review, and Merge Conflicts (3:10 PM, 50 min)
 
 ### Purpose
 
@@ -327,13 +335,13 @@ Your PR shows a message that it has conflicts. The "Merge pull request" button i
 
 **What conflict markers look like:**
 
-`
+```text
 <<<<<<< HEAD
 The version currently on the target branch
 =======
 Your version from your branch
 >>>>>>> learn/your-username
-`
+```
 
 **How to resolve:**
 1. Select "Resolve conflicts" in your PR (or edit the file directly on your branch)
@@ -363,10 +371,10 @@ Before lunch, practice navigating the PR you just opened:
 [Working with Pull Requests](../docs/06-working-with-pull-requests.md) | [Merge Conflicts](../docs/07-merge-conflicts.md)
 
 
-## Lunch (1:00 PM, 60 min)
+## Dinner Break (4:00 PM, 60 min)
 
 
-## Block 5 - Culture, Triage, and Merge Day (2:00 PM, 60 min)
+## Block 5 - Culture, Triage, and Merge Day (5:00 PM, 60 min)
 
 ### Purpose
 
@@ -422,12 +430,12 @@ If you finished Challenges 8-9, find a classmate who is still working:
 If everyone is done, browse the bonus challenges (A through E) for extra practice.
 
 
-## Break (3:00 PM, 15 min)
+## Break (6:00 PM, 15 min)
 
 Stand, stretch, and rest your ears. The final block is discussion-centered and lower intensity.
 
 
-## Block 6 - Community: Communication, Labels, and Notifications (3:15 PM, 75 min)
+## Block 6 - Community: Communication, Labels, and Notifications (6:15 PM, 75 min)
 
 ### Purpose
 
@@ -513,7 +521,7 @@ Practice applying labels to a challenge issue in your repo. If you have complete
 4. Change your repository Watch settings to "Participating and @mentions only"
 
 
-## Wrap-Up (4:30 PM, 30 min)
+## Wrap-Up (7:30 PM, 30 min)
 
 ### What You Built Today (10 min)
 
@@ -587,6 +595,8 @@ Ensure the template repo (`learning-room-template` or equivalent) has all automa
 
 **Classroom assignment:**
 Create the Day 1 assignment ("You Belong Here") in GitHub Classroom linked to the template repo. Set it to individual assignment, private repos.
+
+Students do not need an organization, owner access, or repository settings access. They only need a GitHub account and access to the private repository GitHub Classroom creates for them. Facilitators configure organization-level Actions permissions before the cohort.
 
 **Pre-create the merge conflict trigger:**
 For Challenge 7, you need to edit `docs/welcome.md` on `main` in each student's repo AFTER they have committed to their branch but BEFORE they try to merge. Plan the timing:

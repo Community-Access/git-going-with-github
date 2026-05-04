@@ -1,5 +1,12 @@
 # Facilitator Guide and Workshop Timeline
 
+## Facilitator Team
+
+- **Jeff Bishop** -- lead facilitator, maintainer of [Accessibility Agents](https://github.com/community-access/accessibility-agents)
+- **Michael Babcock** -- co-facilitator
+
+Both facilitators run all sessions together. "The facilitator" or "your facilitator" in this guide refers to whichever of the two is leading a given moment; either can step in for the other on any task in this guide.
+
 ## Overview
 
 This is a **two-day workshop** designed for blind and low-vision students learning GitHub through hands-on collaboration. Each day runs approximately 8 hours with structured sessions and flexible working time.

@@ -8,10 +8,11 @@ Thank you to everyone who registered! We are excited to learn together.
 
 | | |
 |---|---|
-| **Dates** | [WORKSHOP_DATE_DAY1] and [WORKSHOP_DATE_DAY2] |
+| **Dates** | May 21, 2026 and May 22, 2026 |
 | **Time** | 12:00 PM - 8:00 PM Eastern (both days) |
 | **Location** | Online via [Zoom](https://zoom.us/) |
 | **Cost** | Free |
+| **Facilitators** | Jeff Bishop and Michael Babcock |
 
 
 **Already registered?** Complete the [**Pre-Workshop Setup Guide**](https://community-access.org/git-going-with-github/docs/00-pre-workshop-setup.html) before the workshop. It walks you through GitHub account setup, screen reader configuration, [VS Code](https://code.visualstudio.com/), and [GitHub Copilot](https://github.com/features/copilot) - with instructions for NVDA, JAWS, and VoiceOver.

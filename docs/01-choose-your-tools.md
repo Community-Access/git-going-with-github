@@ -406,18 +406,18 @@ This exercise takes approximately five minutes. It verifies your tool is working
 
 ### The task
 
-Open the workshop's learning-room repository and find the README file.
+Open the public workshop curriculum repository and find the README file.
 
 ### Path 1: GitHub.com
 
-1. Go to [github.com/Community-Access/learning-room](https://github.com/Community-Access/learning-room).
+1. Go to [github.com/Community-Access/git-going-with-github](https://github.com/Community-Access/git-going-with-github).
 2. The README is displayed below the file list on the repository's home page.
 3. Screen reader users: press `H` to navigate headings. The README's first heading announces the repository name.
 4. You are done when you can read the first paragraph of the README.
 
 ### Path 2: github.dev
 
-1. Go to [github.dev/Community-Access/learning-room](https://github.dev/Community-Access/learning-room).
+1. Go to [github.dev/Community-Access/git-going-with-github](https://github.dev/Community-Access/git-going-with-github).
 2. The file explorer opens on the left. Press `Ctrl+Shift+E` (or `Cmd+Shift+E`) to focus it.
 3. Navigate to `README.md` and press `Enter` to open it in a tab.
 4. You are done when the file content appears in the editor.
@@ -427,7 +427,7 @@ Open the workshop's learning-room repository and find the README file.
 1. Open VS Code.
 2. Open the command palette: `Ctrl+Shift+P` (or `Cmd+Shift+P`).
 3. Type "Git: Clone" and press `Enter`.
-4. Paste the URL: `https://github.com/Community-Access/learning-room.git`
+4. Paste the URL: `https://github.com/Community-Access/git-going-with-github.git`
 5. Choose a folder to clone into and wait for the download.
 6. When it finishes, VS Code offers to open the repository. Accept.
 7. Open the file explorer (`Ctrl+Shift+E`) and select `README.md`.
@@ -437,7 +437,7 @@ Open the workshop's learning-room repository and find the README file.
 
 1. Open GitHub Desktop.
 2. Go to File, then Clone repository (or press `Ctrl+Shift+O`).
-3. Paste the URL: `https://github.com/Community-Access/learning-room.git`
+3. Paste the URL: `https://github.com/Community-Access/git-going-with-github.git`
 4. Choose a local path and click Clone.
 5. Once cloned, the repository appears in GitHub Desktop. Click "Open in Visual Studio Code" (or your preferred editor) to read the README.
 
@@ -447,7 +447,7 @@ Open the workshop's learning-room repository and find the README file.
 2. Run:
 
 ```bash
-gh repo clone Community-Access/learning-room
+gh repo clone Community-Access/git-going-with-github
 cd learning-room
 ```
 

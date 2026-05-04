@@ -28,42 +28,44 @@ jobs:
         run: |
           # Find new/modified .md files in agents/ or community-agents/
           AGENTS=$(find agents community-agents -name '*.md' 2>/dev/null || true)
-          
+
           if [ -z "$AGENTS" ]; then
             echo "found=false" >> "$GITHUB_OUTPUT"
             exit 0
           fi
-          
+
           echo "found=true" >> "$GITHUB_OUTPUT"
           FIRST=$(echo "$AGENTS" | head -1)
           echo "file=$FIRST" >> "$GITHUB_OUTPUT"
-          
+          CHECK_FILE="/tmp/capstone-agent.md"
+          sed '1s/^\xEF\xBB\xBF//' "$FIRST" > "$CHECK_FILE"
+
           ERRORS=""
-          
+
           # Check YAML frontmatter exists (starts with ---)
-          if head -1 "$FIRST" | grep -q '^---'; then
+          if head -1 "$CHECK_FILE" | grep -q '^---'; then
             echo "has_frontmatter=true" >> "$GITHUB_OUTPUT"
           else
             echo "has_frontmatter=false" >> "$GITHUB_OUTPUT"
             ERRORS="missing YAML frontmatter"
           fi
-          
+
           # Check for responsibilities section
-          if grep -qi '## responsibilities\|## what this agent does' "$FIRST"; then
+          if grep -qi '## responsibilities\|## what this agent does' "$CHECK_FILE"; then
             echo "has_responsibilities=true" >> "$GITHUB_OUTPUT"
           else
             echo "has_responsibilities=false" >> "$GITHUB_OUTPUT"
             ERRORS="$ERRORS${ERRORS:+, }missing responsibilities section"
           fi
-          
+
           # Check for guardrails section
-          if grep -qi '## guardrails\|## limitations\|## boundaries' "$FIRST"; then
+          if grep -qi '## guardrails\|## limitations\|## boundaries' "$CHECK_FILE"; then
             echo "has_guardrails=true" >> "$GITHUB_OUTPUT"
           else
             echo "has_guardrails=false" >> "$GITHUB_OUTPUT"
             ERRORS="$ERRORS${ERRORS:+, }missing guardrails section"
           fi
-          
+
           echo "errors=$ERRORS" >> "$GITHUB_OUTPUT"
 
       - name: Post result
@@ -103,9 +105,13 @@ jobs:
                 'Excellent capstone work!'
               ].join('\n');
             }
-            await github.rest.issues.createComment({
-              owner: context.repo.owner,
-              repo: context.repo.repo,
-              issue_number: context.issue.number,
-              body
-            });
+            try {
+              await github.rest.issues.createComment({
+                owner: context.repo.owner,
+                repo: context.repo.repo,
+                issue_number: context.issue.number,
+                body
+              });
+            } catch (error) {
+              console.error('Could not post Challenge 16 result:', error.message);
+            }

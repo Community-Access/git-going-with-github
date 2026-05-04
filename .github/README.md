@@ -41,7 +41,8 @@ The Classroom model equivalents live in [learning-room/.github/workflows/](../le
 | Workflow | Purpose |
 |----------|---------|
 | `pr-validation-bot.yml` | Aria bot -- validates PRs and provides educational feedback |
-| `skills-progression.yml` | Unlocks the next challenge issue when a student closes the current one |
+| `student-progression.yml` | Creates Challenge 1 or Challenge 10 when triggered, then unlocks the next challenge issue when a student closes the current one |
+| `skills-progression.yml` | Posts achievement and progress feedback |
 | `autograder-conflicts.yml` | Validates merge conflict resolution (Challenge 07) |
 | `autograder-local-commit.yml` | Validates local Git commit (Challenge 10) |
 | `autograder-template.yml` | Validates issue template creation (Challenge 14) |

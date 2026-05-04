@@ -28,6 +28,8 @@
 ## Workshop Recommendation (Chapter 13)
 
 > ** Free to Use:** GitHub Copilot Free tier is included with all GitHub accounts at no cost. This workshop uses only the free tier. If you're on an organization with GitHub Enterprise, you may have Copilot Pro included—either way, you're covered.
+>
+> **Billing guidance for this workshop:** GitHub Copilot plans and billing are changing. We will provide specific guidance at the workshop, as this is a continuing moving target and is subject to change as we approach the event. If you are unsure whether your account has Copilot access, check [github.com/settings/copilot](https://github.com/settings/copilot) or ask a facilitator before the workshop begins.
 
 Chapter 13 introduces **GitHub Copilot** for AI-assisted documentation and writing.
 
@@ -38,23 +40,25 @@ Chapter 13 introduces **GitHub Copilot** for AI-assisted documentation and writi
 
 ### Chapter 13 Challenge Set
 
-1. **Install GitHub Copilot and sign in** - add the Copilot Chat extension and authenticate.
+1. **Sign in to GitHub Copilot** - authenticate with GitHub (VS Code 1.116+ has Copilot built in; no extension install needed).
 2. **Ask Copilot to explain a codebase** - clone the sci-fi themes repo and use Copilot Chat to understand it.
 3. **Ask Copilot to create something new** - prompt Copilot to generate a custom theme and apply it.
 
-### Challenge 13.1 Step-by-Step: Install and Sign In
+### Challenge 13.1 Step-by-Step: Sign In to Copilot
 
-**Goal:** Install the GitHub Copilot Chat extension and verify it responds to prompts.
+**Goal:** Sign in to GitHub Copilot and verify it responds to prompts.
 
-**Where you are working:** VS Code desktop with the [learning-room](https://github.com/Community-Access/learning-room) repository open.
+**Where you are working:** VS Code desktop with your Learning Room repository open.
 
 **Estimated time:** 3-5 minutes.
 
-1. Open the Extensions sidebar: `Ctrl+Shift+X` (Mac: `Cmd+Shift+X`).
-2. Type `GitHub Copilot` in the search box and press `Enter`.
-3. Find **GitHub Copilot** (publisher: GitHub) in the results. Activate **Install**.
-4. VS Code may also install **GitHub Copilot Chat** automatically. If not, search for it separately and install it.
-5. After installation, VS Code prompts you to sign in. Activate **Sign in to GitHub** and complete the OAuth flow in your browser.
+> **VS Code 1.116 and later:** GitHub Copilot is built into VS Code and no extension installation is needed. Skip steps 1-4 below if you are on VS Code 1.116 or later -- Copilot is already present. If VS Code prompts you to sign in on first launch, follow the browser OAuth flow and then proceed to step 5.
+
+1. *(Older VS Code only)* Open the Extensions sidebar: `Ctrl+Shift+X` (Mac: `Cmd+Shift+X`).
+2. *(Older VS Code only)* Type `GitHub Copilot` in the search box and press `Enter`.
+3. *(Older VS Code only)* Find **GitHub Copilot** (publisher: GitHub) in the results. Activate **Install**.
+4. *(Older VS Code only)* VS Code may also install **GitHub Copilot Chat** automatically. If not, search for it separately and install it.
+5. Sign in when prompted: activate **Sign in to GitHub** and complete the OAuth flow in your browser.
 6. Verify Copilot is active: open Copilot Chat with `Ctrl+Shift+I` (Mac: `Cmd+Shift+I`). Type `Hello, are you working?` and press `Enter`. Copilot should respond.
 
 **Screen reader tip:** The Copilot Chat panel opens as a sidebar. Your screen reader announces responses as they stream in. Press `Alt+F2` (Accessible View) to read the full response in a plain text buffer if streaming is hard to follow.
@@ -188,7 +192,11 @@ GitHub Copilot is an AI pair programmer that suggests code and text completions 
 
 **For this workshop:** Copilot helps with Markdown documentation, issue triage, PR descriptions, and commit messages - not just code.
 
+**Copilot as a git co-author:** Starting with VS Code 1.118, GitHub Copilot is automatically added as a co-author in your Git commit messages when Copilot assists with your work. You will see a `Co-authored-by: GitHub Copilot <copilot@github.com>` trailer appended to commits. This is on by default and can be disabled via Settings: search `github.copilot.git.generateCommitMessage` and set `coAuthoredBy` to `off` if you prefer not to include it.
+
 **Copilot Free tier:** Available for all GitHub users. Provides access to inline suggestions and Copilot Chat with usage limits. No payment required for this workshop.
+
+> **Note on billing changes:** GitHub Copilot plans and billing are actively evolving. We will provide specific guidance at the workshop. Check [github.com/settings/copilot](https://github.com/settings/copilot) to verify your current access level before the event.
 
 **Screen reader support:** Copilot is fully accessible with screen readers. Suggestions are announced via ARIA live regions, and Accessible View provides complete access to Chat responses.
 
@@ -238,6 +246,8 @@ After installation:
 - Completions and multi-line suggestions
 - Copilot Chat
 - Limited monthly usage (usually sufficient for documentation work)
+
+> **Billing note:** GitHub Copilot plan details are evolving. Facilitators will provide current guidance at the workshop. To check your access status now, visit [github.com/settings/copilot](https://github.com/settings/copilot).
 
 
 ## 3. Inline Suggestions - Ghost Text Completions
@@ -295,6 +305,17 @@ Press `Alt+F2` (Mac: `Option+F2`) to open the suggestion in **Accessible View** 
 | Open full suggestion list | `Ctrl+Enter` | `Cmd+Enter` |
 | Open suggestion in Accessible View | `Alt+F2` | `Option+F2` |
 | Insert suggestion from Accessible View at cursor | `Ctrl+/` | `Cmd+/` |
+
+#### Navigating the full Suggestions Panel (`Ctrl+Enter`)
+
+Pressing `Ctrl+Enter` opens a separate side-by-side tab showing up to 10 alternative suggestions. For screen reader users:
+
+- Switch to your screen reader's **browse/virtual mode** when the panel opens (NVDA: `Insert+Space` to toggle off Application mode; JAWS: this may happen automatically)
+- Use **heading keys** (`H` in NVDA/JAWS browse mode) to navigate between each suggestion -- each suggestion is announced as a heading
+- Each suggestion is followed by an **Accept** button -- navigate to it with `Tab` or `B` (button key) and press `Enter` to insert it at your cursor position
+- Press `Escape` or close the tab to dismiss without accepting
+
+> **Tip:** `Alt+F2` on a single suggestion is usually faster. Use `Ctrl+Enter` when you want to compare multiple alternatives before committing.
 
 #### Accepting word-by-word (`Ctrl+Right Arrow` / Mac: `Cmd+Right Arrow`) is particularly useful when
 
@@ -520,11 +541,11 @@ Copilot gives you access to AI models from OpenAI, Anthropic (Claude), Google (G
 #### Quick guidance
 
 - **Free-tier users:** GPT-4.1 and GPT-5 mini are available at no cost and handle most everyday tasks well
-- **Need deep reasoning/debugging?** Try Claude Sonnet 4.6 or GPT-5.2 (1× premium requests)
-- **Running Agent mode?** GPT-5.1-Codex-Max or GPT-5.2-Codex are optimized for autonomous tasks
-- **High cost to avoid unless needed:** Claude Opus 4.6 (3× cost) - powerful but reserve for the most demanding work
+- **Need deep reasoning/debugging?** Try Claude Sonnet 4.6 or GPT-5.5 (1x premium requests)
+- **Running Agent mode?** GPT-5.5 or Claude Sonnet 4.6 work well for autonomous multi-step tasks
+- **High cost to avoid unless needed:** Claude Opus 4.6 (3x cost) - powerful but reserve for the most demanding work
 
-For the complete model comparison, strengths, weaknesses, and plan availability, see [Appendix X: GitHub Copilot AI Models Reference](appendix-k-copilot-reference.md).
+> **Model availability changes frequently.** Facilitators will provide current guidance at the workshop. For the complete model reference including plan availability, see [Appendix K: GitHub Copilot Reference](appendix-k-copilot-reference.md).
 
 <details>
 <summary>Low vision users - finding the mode and model controls</summary>
@@ -689,6 +710,8 @@ Useful built-in actions include:
 
 
 ## 5. Copilot Edits — Making Multi-File Changes
+
+> **Edit mode is being deprecated.** As of VS Code 1.118 (April 2026), the separate **Edit** chat mode is being merged into **Agent mode**. Agent mode now supports the same working-set diff workflow that Edit mode provided. If you do not see an "Edit" mode option in your Chat panel, use Agent mode instead - the workflow is nearly identical. The deprecation is rolling out gradually; facilitators will confirm current behavior at the workshop.
 
 Copilot Edits is the **Edit** chat mode. Instead of just answering questions, Copilot proposes actual file changes — shown as a diff — across multiple files at once. You review every change before anything is saved.
 
@@ -1413,12 +1436,12 @@ These shortcuts work on GitHub.com in your browser, not inside VS Code. Students
 
 ### Video Tutorials (Screen Reader Demonstrations)
 
-GitHub's accessibility team has published screen reader walkthroughs for each major Copilot feature:
+GitHub's accessibility team has published screen reader walkthroughs for each major Copilot feature. These are sourced from the official [GitHub Accessibility guide for Copilot in VS Code](https://accessibility.github.com/documentation/guide/github-copilot-vsc/):
 
-- [Inline suggestions with a screen reader](https://www.youtube.com/watch?v=SaqemiAR1yk) - accepting, rejecting, and reviewing ghost text suggestions with NVDA
-- [Inline chat with a screen reader](https://www.youtube.com/watch?v=wJfiVSaq7HA) - using `Ctrl+I` to edit code in place with screen reader feedback
-- [Chat view with a screen reader](https://www.youtube.com/watch?v=4pGMzWqFnSQ) - navigating the Chat panel, reading responses, and using Accessible View
-- [Built-in actions with a screen reader](https://www.youtube.com/watch?v=GalGp3kMPKY) - running Copilot commands from the Command Palette
+- [Inline suggestions with a screen reader](https://www.youtube.com/watch?v=nRsshE54bjk) - accepting, rejecting, and reviewing ghost text suggestions with NVDA
+- [Inline chat with a screen reader](https://www.youtube.com/watch?v=jgON0bve74w) - using `Ctrl+I` to edit code in place with screen reader feedback
+- [Chat view with a screen reader](https://www.youtube.com/watch?v=uVGLQeZWXao) - navigating the Chat panel, reading responses, and using Accessible View
+- [Built-in actions with a screen reader](https://www.youtube.com/watch?v=J0DGD2IWypg) - running Copilot commands from the Command Palette
 
 > **Tip:** These videos show NVDA with VS Code on Windows. The workflows apply to JAWS and VoiceOver with minor shortcut differences noted in each section above.
 

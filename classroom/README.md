@@ -7,10 +7,12 @@
 Each student gets their own **private repository** created by GitHub Classroom from the `learning-room-template`. Inside that repo, three automation systems guide the student through all 21 challenges without facilitator intervention:
 
 1. **Aria** (the PR Validation Bot) -- welcomes first-time contributors, validates PR structure, responds to `@aria-bot` help requests, and provides real-time feedback on every push
-2. **Student Progression Bot** -- when a student closes a challenge issue, the bot automatically creates the next challenge issue with full instructions, step-by-step guidance, and troubleshooting tips
+2. **Student Progression Bot** -- creates the first challenge when triggered by a facilitator script, then creates the next challenge issue whenever a student closes the current challenge issue
 3. **Autograders** -- automated tests that verify objective evidence of challenge completion (branch exists, conflict markers removed, template file valid, agent file structured correctly)
 
-No shared repository. No manual issue provisioning. No scripts to run. The facilitator's deployment work is creating the classroom and two assignments in the GitHub Classroom web UI. The template handles everything else.
+No shared student repository. Students do not clone the template or configure permissions. The facilitator's deployment work is creating the classroom and two assignments in the GitHub Classroom web UI, then running the seeding scripts after each student repo is created.
+
+Students only need a GitHub account. They do **not** need to create an organization, become members of `Community-Access`, or change GitHub Actions settings. Organization and repository workflow permissions are facilitator responsibilities.
 
 ### Architecture
 
@@ -29,8 +31,8 @@ Community-Access/learning-room-template (template repo)
     |       Issue templates (16 core + 5 bonus)   -- Challenge definitions
     |       Feedback PR (created by Classroom)     -- Facilitator async comments
     |
-    +--> Student flow:
-    |       Accept invite --> repo created --> Challenge 1 issue appears
+   +--> Student flow:
+   |       Accept invite --> repo created --> facilitator seeds Challenge 1
     |       --> complete challenge --> close issue --> next challenge unlocked
     |       --> repeat through all challenges
     |
@@ -59,6 +61,7 @@ Day-2-only participants skip Assignment 1 entirely. They verify readiness using 
 | [grading-guide.md](grading-guide.md) | Facilitator rubric for all 21 challenges |
 | [roster-template.csv](roster-template.csv) | Starter CSV for importing student roster |
 | [student-progression.yml](student-progression.yml) | Reference copy of the progression bot workflow |
+| [HUMAN_TEST_MATRIX.md](HUMAN_TEST_MATRIX.md) | End-to-end human walkthrough for all 16 core and 5 bonus challenges |
 | [teardown-checklist.md](teardown-checklist.md) | Post-workshop cleanup steps |
 
 ---
@@ -115,7 +118,7 @@ student-a,Alice Student,alice@example.com
 
 ## Step 3: Create Assignment 1 -- You Belong Here (Day 1)
 
-This assignment covers Challenges 1 through 9. When a student accepts the invite link, GitHub Classroom creates their private repo from the template. The Student Progression Bot creates Challenge 1 automatically. As the student closes each challenge issue, the bot unlocks the next one.
+This assignment covers Challenges 1 through 9. When a student accepts the invite link, GitHub Classroom creates their private repo from the template. After acceptance, facilitators run `scripts/classroom/Seed-LearningRoomChallenge.ps1` to trigger the Student Progression Bot and create Challenge 1. As the student closes each challenge issue, the bot unlocks the next one.
 
 **Day-2-only participants skip this assignment entirely.**
 
@@ -141,7 +144,7 @@ Then complete the remaining fields:
 
 1. Student clicks the invite link
 2. GitHub Classroom creates their private repo (30-60 seconds)
-3. Challenge 1 issue appears automatically (Find Your Way Around)
+3. Facilitator seeds Challenge 1 (Find Your Way Around) using `student-progression.yml`
 4. Student completes the challenge, posts evidence, closes the issue
 5. Progression Bot creates Challenge 2 issue with full instructions
 6. Student repeats through Challenge 9 (Merge Day)
@@ -178,7 +181,7 @@ Then complete the remaining fields:
 
 1. Student clicks the Day 2 invite link
 2. GitHub Classroom creates a new private repo for Day 2
-3. Challenge 10 issue appears automatically (Go Local)
+3. Facilitator seeds Challenge 10 (Go Local) using `student-progression.yml`
 4. Student clones the repo, works locally, pushes, and closes the issue
 5. Progression Bot unlocks Challenges 11 through 16 sequentially
 6. Challenge 16 (Capstone) has the student fork the accessibility-agents repo and open a cross-fork PR
@@ -223,7 +226,7 @@ Run this verification with a test account before the workshop. Do not skip this 
 - [ ] Accept the Day 1 invite with a test GitHub account
 - [ ] Verify a student repository was created under the classroom org
 - [ ] Verify the learning-room template files are present (`docs/welcome.md`, `docs/keyboard-shortcuts.md`, `docs/setup-guide.md`)
-- [ ] Verify Challenge 1 issue was created automatically by the Progression Bot
+- [ ] Verify Challenge 1 issue was created by the Progression Bot after running `Seed-LearningRoomChallenge.ps1`
 - [ ] Open a test PR with a trivial change
 - [ ] Verify Aria (PR validation bot) comments within 60 seconds
 - [ ] Verify autograding runs and reports a score
@@ -233,6 +236,36 @@ Run this verification with a test account before the workshop. Do not skip this 
 - [ ] Verify Challenge 10 issue appears in the Day 2 repo
 - [ ] Repeat the PR test for the Day 2 repository
 - [ ] Delete the test student repositories when done
+
+### Seeding the first challenge
+
+After a student accepts the assignment, seed the first challenge from this repository:
+
+```powershell
+scripts/classroom/Seed-LearningRoomChallenge.ps1 -Repository Community-Access-Classroom/learning-room-studentname -Challenge 1 -Assignee studentname
+```
+
+For Day 2, use `-Challenge 10`.
+
+### Seeding peer simulation
+
+Because each GitHub Classroom repository is private, students cannot automatically see a classmate's issues or pull requests. To preserve realistic collaboration without exposing private student repos, seed peer-simulation artifacts into each student's repository:
+
+```powershell
+scripts/classroom/Seed-PeerSimulation.ps1 -Repository Community-Access-Classroom/learning-room-studentname -StudentUsername studentname
+```
+
+This creates two peer-simulation issues and one peer-simulation pull request. Challenges that ask students to comment, react, review, compare, or practice peer collaboration can use those seeded artifacts. If facilitators intentionally provision real buddy access, students may use real buddy repositories instead.
+
+### Triggering merge conflict practice
+
+Challenge 7 needs a real conflict. After the student has edited `docs/welcome.md` on their challenge branch and opened a pull request, run:
+
+```powershell
+scripts/classroom/Start-MergeConflictChallenge.ps1 -Repository Community-Access-Classroom/learning-room-studentname -StudentBranch learn/studentname
+```
+
+The script changes the same TODO area on `main`, which should cause the student's pull request to report a merge conflict if they edited that TODO on their branch.
 
 ### Autograding verification
 

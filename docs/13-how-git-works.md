@@ -258,7 +258,7 @@ So far, we have talked about one repository. In practice, you work with two copi
 
 ### The remote repository
 
-The remote repository is the one on GitHub.com. It is called `origin` by convention. When you see a repository URL like `github.com/Community-Access/learning-room`, that is the remote.
+The remote repository is the one on GitHub.com. It is called `origin` by convention. When you see a repository URL like `github.com/Community-Access/git-going-with-github`, that is the remote.
 
 The remote is the shared copy. Everyone on the team can see it. Pull requests happen here. Issues live here. It is the source of truth for the project.
 

@@ -1,0 +1,2744 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="GIT Going with GitHub - A two-day accessible open source workshop by Community Access">
+  <title>Code Review: PRs, Diffs, and Constructive Feedback - GIT Going with GitHub</title>
+  <link rel="stylesheet" href="./styles/github-markdown.css">
+  <link rel="stylesheet" href="./styles/highlight.css">
+  <link rel="stylesheet" href="./styles/custom.css">
+  <style>
+    .markdown-body {
+      box-sizing: border-box;
+      min-width: 200px;
+      max-width: 980px;
+      margin: 0 auto;
+      padding: 45px;
+    }
+    @media (max-width: 767px) {
+      .markdown-body {
+        padding: 15px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+  <header class="site-header" role="banner">
+    <div class="site-header-inner">
+      <nav aria-label="Breadcrumb" class="breadcrumb">
+        <a href="./index.html">Home</a> <span aria-hidden="true">›</span> <span aria-current="page">Code Review: PRs, Diffs, and Constructive Feedback</span>
+      </nav>
+      <div class="header-actions">
+        <a href="https://github.com/Community-Access/git-going-with-github/wiki" class="wiki-link" target="_blank" rel="noopener noreferrer">
+          <svg aria-hidden="true" focusable="false" width="16" height="16" viewBox="0 0 16 16" fill="currentColor">
+            <path d="M1.75 1h8.5c.966 0 1.75.784 1.75 1.75v5.5A1.75 1.75 0 0 1 10.25 10H7.06l-2.573 2.573A1.458 1.458 0 0 1 2 11.543V10h-.25A1.75 1.75 0 0 1 0 8.25v-5.5C0 1.784.784 1 1.75 1ZM1.5 2.75v5.5c0 .138.112.25.25.25h1a.75.75 0 0 1 .75.75v2.19l2.72-2.72a.749.749 0 0 1 .53-.22h3.5a.25.25 0 0 0 .25-.25v-5.5a.25.25 0 0 0-.25-.25h-8.5a.25.25 0 0 0-.25.25Zm13 2a.25.25 0 0 0-.25-.25h-.5a.75.75 0 0 1 0-1.5h.5c.966 0 1.75.784 1.75 1.75v5.5A1.75 1.75 0 0 1 14.25 12H14v1.543a1.457 1.457 0 0 1-2.487 1.03L9.22 12.28a.749.749 0 1 1 1.06-1.06l2.22 2.22v-2.19a.75.75 0 0 1 .75-.75h.25a.25.25 0 0 0 .25-.25v-5.5Z"/>
+          </svg>
+          Wiki
+        </a>
+        <form role="search" class="search-form" action="./search.html" method="get">
+        <label for="site-search" class="search-label">Search docs</label>
+        <input
+          type="search"
+          id="site-search"
+          class="search-input"
+          name="q"
+          placeholder="Search docs…"
+          autocomplete="off"
+          aria-label="Search documentation"
+        >
+        <button type="submit" class="search-button" aria-label="Submit search">
+          <svg aria-hidden="true" focusable="false" width="16" height="16" viewBox="0 0 16 16" fill="currentColor">
+            <path d="M10.68 11.74a6 6 0 0 1-7.922-8.982 6 6 0 0 1 8.982 7.922l3.04 3.04a.749.749 0 0 1-.326 1.275.749.749 0 0 1-.734-.215ZM11.5 7a4.499 4.499 0 1 0-8.997 0A4.499 4.499 0 0 0 11.5 7Z"/>
+          </svg>
+        </button>
+      </form>
+      </div>
+    </div>
+  </header>
+  <main id="main-content" class="markdown-body">
+    <h1 id="code-review-prs-diffs-and-constructive-feedback">Code Review: PRs, Diffs, and Constructive Feedback</h1>
+<blockquote>
+<p><strong>Related appendices:</strong> <a href="appendix-g-vscode-reference.html">Appendix G: VS Code Reference</a> | <a href="appendix-c-markdown-reference.html">Appendix C: Markdown Reference</a>
+<strong>Authoritative sources:</strong> <a href="https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/reviewing-changes-in-pull-requests">GitHub Docs: Reviewing changes in pull requests</a> | <a href="https://accessibility.github.com/documentation/guide/pull-requests/">GitHub Accessibility Guide: Pull Request Reviews</a></p>
+</blockquote>
+<blockquote>
+<p><strong>Day 2, Block 2 Material</strong></p>
+<p>This chapter unifies PR management, accessible code review, and the reviewer&#39;s craft into one chapter. Part 1 covers the GitHub Pull Requests extension in VS Code. Part 2 covers accessible code review with diffs and inline comments. Part 3 (to be written in Phase 3) adds the reviewer&#39;s judgment framework.</p>
+</blockquote>
+<hr>
+<h2 id="part-1-the-github-pull-requests-extension">Part 1: The GitHub Pull Requests Extension</h2>
+<blockquote>
+<p><strong>See also:</strong> <a href="appendix-g-vscode-reference.html">Appendix G: VS Code Reference</a> for the complete list of GitHub Pull Requests extension keyboard shortcuts.</p>
+</blockquote>
+<blockquote>
+<p><strong>Listen to Episode 13:</strong> <a href="../PODCASTS.html">The GitHub Pull Requests Extension</a> - a conversational audio overview of this chapter. Listen before reading to preview the concepts, or after to reinforce what you learned.</p>
+</blockquote>
+<h2 id="managing-pull-requests-from-vs-code">Managing Pull Requests from VS Code</h2>
+<blockquote>
+<p><strong>Day 2, Block 2 Material</strong></p>
+<p>This guide covers the GitHub Pull Requests and Issues extension: viewing open PRs, checking out PR branches for local testing, reviewing PRs with screen reader-accessible tools, creating PRs directly from VS Code, using PR templates, and syncing PR status with GitHub.</p>
+<p><strong>Prerequisites:</strong> <a href="06-working-with-pull-requests.html">Working with Pull Requests</a>, <a href="14-git-in-practice.html">Git &amp; Source Control in VS Code</a></p>
+<p><strong>Mac keyboard shortcuts:</strong> Throughout this chapter, all <code>Ctrl+</code> shortcuts use <code>Cmd+</code> on Mac, and <code>Alt+</code> shortcuts use <code>Option+</code> on Mac. For example: <code>Ctrl+Shift+P</code> → <code>Cmd+Shift+P</code>, <code>Ctrl+Shift+G</code> → <code>Cmd+Shift+G</code>, <code>Alt+F2</code> → <code>Option+F2</code>. Context menus (<code>Shift+F10</code> on Windows) use <code>Ctrl+Return</code> on Mac.</p>
+</blockquote>
+<h2 id="workshop-recommendation-chapter-12">Workshop Recommendation (Chapter 12)</h2>
+<p>Chapter 12 introduces the <strong>GitHub Pull Requests extension</strong> for managing PRs directly from VS Code.</p>
+<ul>
+<li><strong>Challenge count:</strong> 2 guided challenges</li>
+<li><strong>Automation check:</strong> none (extension installation and review state are account-local)</li>
+<li><strong>Evidence:</strong> issue comment with confirmation of actions completed</li>
+<li><strong>Pattern:</strong> install, check out, review, comment</li>
+</ul>
+<h3 id="chapter-12-challenge-set">Chapter 12 Challenge Set</h3>
+<ol>
+<li><strong>Install the GitHub Pull Requests extension</strong> - add the extension to VS Code and sign in with your GitHub account.</li>
+<li><strong>Check out a PR and post a review comment</strong> - download a PR branch locally, read the diff, and post one constructive review comment.</li>
+</ol>
+<h3 id="challenge-121-step-by-step-install-the-extension">Challenge 12.1 Step-by-Step: Install the Extension</h3>
+<p><strong>Goal:</strong> Install the GitHub Pull Requests and Issues extension and authenticate with your GitHub account.</p>
+<p><strong>Where you are working:</strong> VS Code desktop with your Learning Room repository open.</p>
+<p><strong>Estimated time:</strong> 3-5 minutes.</p>
+<ol>
+<li>Open the Extensions sidebar: <code>Ctrl+Shift+X</code> (Mac: <code>Cmd+Shift+X</code>).</li>
+<li>Your screen reader announces &quot;Extensions: Marketplace.&quot; The search box has focus.</li>
+<li>Type <code>GitHub Pull Requests</code> in the search box and press <code>Enter</code>.</li>
+<li>Navigate down the results list. Select <strong>GitHub Pull Requests</strong> (publisher: GitHub).</li>
+<li>Activate the <strong>Install</strong> button. VS Code installs the extension and may show a notification.</li>
+<li>After installation, VS Code prompts you to sign in. Activate <strong>Sign in to GitHub</strong>.</li>
+<li>A browser window opens for GitHub OAuth. Approve the authorization and return to VS Code.</li>
+<li>Verify: open the Explorer sidebar (<code>Ctrl+Shift+E</code>). You should now see a <strong>GitHub</strong> section in the sidebar showing Pull Requests and Issues.</li>
+</ol>
+<p><strong>Screen reader tip:</strong> After step 5, if the install notification disappears before you can read it, open Command Palette (<code>Ctrl+Shift+P</code>) and run <code>Notifications: Focus Notification Toast</code>.</p>
+<p><strong>You are done when:</strong> The GitHub section appears in your Explorer sidebar and shows pull requests from your Learning Room repository.</p>
+<h3 id="challenge-122-step-by-step-check-out-a-pr-and-post-a-comment">Challenge 12.2 Step-by-Step: Check Out a PR and Post a Comment</h3>
+<p><strong>Goal:</strong> Check out someone else&#39;s PR branch locally, read the diff in VS Code, and post one constructive review comment.</p>
+<p><strong>Where you are working:</strong> VS Code with the GitHub Pull Requests extension installed.</p>
+<p><strong>Estimated time:</strong> 10-15 minutes.</p>
+<ol>
+<li>Open the Command Palette: <code>Ctrl+Shift+P</code> (Mac: <code>Cmd+Shift+P</code>).</li>
+<li>Type <code>GitHub Pull Requests: Focus on Pull Requests View</code> and select it. The Pull Requests panel opens.</li>
+<li>Navigate the list of open PRs. Find one that is <strong>not yours</strong> (a classmate&#39;s PR from Chapter 6, 7, or 11).</li>
+<li>With the PR focused, press <code>Enter</code> or activate <strong>Checkout</strong> from the context menu (<code>Shift+F10</code> on Windows). VS Code switches to that PR&#39;s branch.</li>
+<li>Open the Command Palette again and run <code>GitHub Pull Requests: Open Changed Files</code>. This shows the list of files the PR changed.</li>
+<li>Open one changed file. VS Code opens the <strong>Diff Editor</strong> showing old content on the left and new content on the right.</li>
+<li>Navigate the diff with the <strong>Accessible Diff Viewer</strong>: press <code>F7</code> to move to the next change, <code>Shift+F7</code> for the previous change. Your screen reader announces each change (added lines, removed lines).</li>
+<li>Find one specific thing to comment on: a typo, an unclear sentence, a missing step, or something the author did well.</li>
+<li>To add an inline comment: position your cursor on the line you want to comment on, then open Command Palette and run <code>GitHub Pull Requests: Add Comment</code>. Type your constructive comment and activate <strong>Add Comment</strong>.</li>
+<li>If the inline comment method is difficult, navigate to the PR on GitHub.com instead and add your comment in the <strong>Files changed</strong> tab.</li>
+</ol>
+<p><strong>If checkout is blocked by permissions:</strong> You can still complete this challenge in read-only mode. Skip step 4 and instead open the PR on GitHub.com. Use the <strong>Files changed</strong> tab to read the diff and post your comment there.</p>
+<p><strong>Screen reader tip:</strong> In the Diff Editor, <code>F7</code> (Accessible Diff Viewer) is the most reliable way to navigate changes. It reads each hunk as a single block, which is much easier than navigating line by line.</p>
+<p><strong>You are done when:</strong> You have posted at least one constructive review comment on someone else&#39;s PR.</p>
+<h3 id="completing-chapter-12-submit-your-evidence">Completing Chapter 12: Submit Your Evidence</h3>
+<p>Open your <strong>assigned Chapter 12 challenge issue</strong> and post a completion comment:</p>
+<pre><code class="hljs language-text">Chapter 12 completed:
+- Extension installed: yes / no
+- Signed in to GitHub: yes / no
+- PR reviewed: #[PR number by classmate]
+- Comment posted: yes (inline / on GitHub.com)
+- My comment was about: [one-sentence summary]</code></pre>
+<p>Close your Chapter 12 challenge issues when done.</p>
+<h3 id="expected-outcomes">Expected Outcomes</h3>
+<ul>
+<li>Student can install and authenticate the GitHub PR extension.</li>
+<li>Student can check out a PR branch in VS Code (or view it on GitHub.com).</li>
+<li>Student can navigate diffs using the Accessible Diff Viewer (<code>F7</code>).</li>
+<li>Student can post constructive, specific feedback on a classmate&#39;s work.</li>
+</ul>
+<h3 id="if-you-get-stuck">If You Get Stuck</h3>
+<ol>
+<li>Extension does not install? Reload VS Code: <code>Ctrl+Shift+P</code>, then run <code>Developer: Reload Window</code>.</li>
+<li>OAuth sign-in fails? Verify your GitHub account is active in the browser first, close VS Code, reopen, and retry.</li>
+<li>PR list is empty? Switch to &quot;All Open&quot; view in the GitHub Pull Requests panel.</li>
+<li>Checkout fails? Confirm you have write access to the repository. If not, use the read-only GitHub.com fallback.</li>
+<li>Diff Editor is hard to navigate? Press <code>F7</code> for the Accessible Diff Viewer mode, which is purpose-built for screen readers.</li>
+<li>Cannot find the Add Comment command? Use Command Palette and search for <code>GitHub Pull Requests: Add Comment</code>.</li>
+<li>Ask facilitator to help verify the GitHub PR panel and model one review comment.</li>
+<li>Finished but not sure you did it right? Compare your work against the <a href="solutions/solution-11-day2-pr.html">Challenge 11 reference solution</a>.</li>
+</ol>
+<blockquote>
+<p><strong>Continue learning:</strong> The GitHub Skills course <a href="https://github.com/skills/review-pull-requests">Review Pull Requests</a> practices approving, requesting changes, and using suggestions in an interactive format. See <a href="appendix-z-github-skills.html">Appendix Z</a> for the full catalog.</p>
+</blockquote>
+<h3 id="learning-moment">Learning Moment</h3>
+<p>PR tooling multiplies your impact. Reviewing others&#39; work refines your own standards and builds community trust. The comment you just wrote helps another student learn - and you learn by articulating what makes documentation clear.</p>
+<h3 id="learning-pattern-used-in-this-chapter">Learning Pattern Used in This Chapter</h3>
+<ol>
+<li>Install and configure the tool before starting the task.</li>
+<li>Practice on someone else&#39;s work first (reviewing is safer than authoring).</li>
+<li>Use accessibility tools (<code>F7</code> Accessible Diff Viewer) to navigate efficiently.</li>
+<li>Write specific, constructive feedback (not just &quot;looks good&quot;).</li>
+</ol>
+<h2 id="table-of-contents">Table of Contents</h2>
+<ol>
+<li><a href="#1-installing-the-github-pull-requests-extension">Installing the GitHub Pull Requests Extension</a></li>
+<li><a href="#2-viewing-pull-requests">Viewing Pull Requests</a></li>
+<li><a href="#3-checking-out-a-pull-request-branch">Checking Out a Pull Request Branch</a></li>
+<li><a href="#4-reviewing-pull-requests-in-vs-code">Reviewing Pull Requests in VS Code</a></li>
+<li><a href="#5-creating-a-pull-request-from-vs-code">Creating a Pull Request from VS Code</a></li>
+<li><a href="#6-pull-request-description-templates">Pull Request Description Templates</a></li>
+<li><a href="#7-commenting-and-requesting-changes">Commenting and Requesting Changes</a></li>
+<li><a href="#8-merging-pull-requests">Merging Pull Requests</a></li>
+</ol>
+<h2 id="1-installing-the-github-pull-requests-extension">1. Installing the GitHub Pull Requests Extension</h2>
+<p>The GitHub Pull Requests and Issues extension integrates GitHub&#39;s PR workflow directly into VS Code - no browser tab switching required.</p>
+<h3 id="installation-steps">Installation Steps</h3>
+<h4 id="method-1-extensions-sidebar">Method 1: Extensions Sidebar</h4>
+<ol>
+<li>Open Extensions sidebar: <code>Ctrl+Shift+X</code> (Mac: <code>Cmd+Shift+X</code>)</li>
+<li>Type &quot;GitHub Pull Requests&quot; in the search box</li>
+<li>Find &quot;GitHub Pull Requests and Issues&quot; (publisher: GitHub)</li>
+<li>Navigate to the extension in the results list</li>
+<li>Press <code>Enter</code> to open the extension detail page</li>
+<li><code>Tab</code> to &quot;Install&quot; button → press <code>Enter</code></li>
+</ol>
+<h4 id="method-2-command-palette">Method 2: Command Palette</h4>
+<ol>
+<li><code>Ctrl+Shift+P</code></li>
+<li>Type &quot;install extensions&quot;</li>
+<li>Select &quot;Extensions: Install Extensions&quot;</li>
+<li>Search for &quot;GitHub Pull Requests&quot;</li>
+<li>Install &quot;GitHub Pull Requests and Issues&quot;</li>
+</ol>
+<p><strong>Screen reader note:</strong> The Extensions sidebar is a tree view. Use <code>Up/Down Arrow</code> to navigate, <code>Enter</code> to open an extension&#39;s detail page.</p>
+<h3 id="signing-in-to-github">Signing In to GitHub</h3>
+<p>After installation, VS Code prompts you to sign in:</p>
+<ol>
+<li>A notification appears: &quot;Sign in to GitHub to use Pull Requests&quot;</li>
+<li>Navigate to the notification (<code>Alt+N</code> / Mac: <code>Option+N</code>, or status bar navigation)</li>
+<li>Select &quot;Sign in&quot;</li>
+<li>VS Code opens your browser for GitHub OAuth authentication</li>
+<li>Authorize VS Code in the browser</li>
+<li>Return to VS Code - you&#39;re now signed in</li>
+</ol>
+<h4 id="verify-sign-in">Verify sign-in</h4>
+<ul>
+<li>Open Command Palette: <code>Ctrl+Shift+P</code> (Mac: <code>Cmd+Shift+P</code>)</li>
+<li>Type &quot;GitHub Pull Requests: Sign in&quot;</li>
+<li>If already signed in, the option shows &quot;Sign out&quot; instead</li>
+</ul>
+<h3 id="what-the-extension-adds">What the Extension Adds</h3>
+<p>After installation, you gain:</p>
+<ul>
+<li><strong>GitHub view in the Activity Bar</strong> (sidebar icon that looks like the GitHub logo)</li>
+<li><strong>Pull Requests and Issues tree</strong> in the Explorer</li>
+<li><strong>PR creation commands</strong> in the Command Palette</li>
+<li><strong>Inline PR review features</strong> in the editor</li>
+<li><strong>Issue linking</strong> when writing commit messages</li>
+</ul>
+<h3 id="learning-cards-installing-the-pr-extension">Learning Cards: Installing the PR Extension</h3>
+<details>
+<summary>Screen reader users</summary>
+
+<ul>
+<li>Open Extensions with <code>Ctrl+Shift+X</code>, type &quot;GitHub Pull Requests&quot; -- your screen reader announces each result; press <code>Enter</code> on the correct one then <code>Tab</code> to &quot;Install&quot;</li>
+<li>After installation, verify sign-in via Command Palette (<code>Ctrl+Shift+P</code>): type &quot;GitHub Pull Requests: Sign in&quot; -- if already signed in, it shows &quot;Sign out&quot; instead</li>
+<li>The GitHub view appears as a new icon in the Activity Bar; press <code>F6</code> to cycle between panels until you hear &quot;GitHub&quot;</li>
+</ul>
+</details>
+
+<details>
+<summary>Low vision users</summary>
+
+<ul>
+<li>A new GitHub logo icon appears in the Activity Bar (left sidebar) after installation -- it is the Octocat silhouette</li>
+<li>After signing in, the notification bar at the bottom confirms authentication with your username</li>
+<li>Increase sidebar width by dragging its edge so PR titles are not truncated at high zoom levels</li>
+</ul>
+</details>
+
+<details>
+<summary>Sighted users</summary>
+
+<ul>
+<li>Look for the GitHub Octocat icon in the Activity Bar after installation -- click it to open the Pull Requests and Issues panel</li>
+<li>A blue notification badge appears on the icon when there are new PRs to review</li>
+<li>The Explorer sidebar also gains a &quot;GitHub Pull Requests&quot; section that you can expand or collapse</li>
+</ul>
+</details>
+
+
+<h2 id="2-viewing-pull-requests">2. Viewing Pull Requests</h2>
+<h3 id="opening-the-github-pull-requests-panel">Opening the GitHub Pull Requests Panel</h3>
+<h4 id="method-1-activity-bar">Method 1: Activity Bar</h4>
+<details>
+<summary>Visual / mouse users</summary>
+
+<p>Click the <strong>GitHub logo icon</strong> in the Activity Bar (the vertical strip of icons on the far left). It&#39;s usually the 5th or 6th icon. The GitHub Pull Requests panel opens.</p>
+</details>
+
+<details>
+<summary>Screen reader users (NVDA / JAWS / VoiceOver)</summary>
+
+<ol>
+<li>The Activity Bar is not always reachable by <code>Tab</code> from the editor</li>
+<li>Use <code>Ctrl+Shift+P</code> (Mac: <code>Cmd+Shift+P</code>) → type &quot;GitHub Pull Requests: View Pull Request&quot; or &quot;Focus on Pull Requests View&quot; → press <code>Enter</code></li>
+<li>Alternatively press <code>Ctrl+Shift+G</code> (Mac: <code>Cmd+Shift+G</code>) to open Source Control, then <code>Tab</code> until you reach the Activity Bar icon strip</li>
+</ol>
+<p>The GitHub view opens, showing:</p>
+<ul>
+<li>&quot;Pull Requests&quot;</li>
+<li>&quot;Issues&quot;</li>
+</ul>
+</details>
+
+<details>
+<summary>Web alternative (github.com)</summary>
+
+<p>View pull requests directly on GitHub without VS Code:</p>
+<ol>
+<li>Navigate to the repository on GitHub.com</li>
+<li>Click the <strong>Pull requests</strong> tab</li>
+<li>Click any PR title to view its conversation, commits, and changed files</li>
+<li>Use the <strong>Files changed</strong> tab to review diffs</li>
+</ol>
+<p>See <a href="06-working-with-pull-requests.html">Working with Pull Requests</a> for the full web-based PR workflow.</p>
+</details>
+
+<details>
+<summary>GitHub CLI (gh) alternative</summary>
+
+<p>View PRs from your terminal:</p>
+<pre><code class="hljs language-bash"><span class="hljs-comment"># List open PRs</span>
+gh <span class="hljs-built_in">pr</span> list
+
+<span class="hljs-comment"># View a specific PR</span>
+gh <span class="hljs-built_in">pr</span> view 42
+
+<span class="hljs-comment"># Open a PR in your browser</span>
+gh <span class="hljs-built_in">pr</span> view 42 --web
+
+<span class="hljs-comment"># Filter PRs waiting for your review</span>
+gh <span class="hljs-built_in">pr</span> list --search <span class="hljs-string">&quot;review-requested:@me&quot;</span></code></pre>
+</details>
+
+<h2 id="method-2-explorer-section">Method 2: Explorer Section</h2>
+<ol>
+<li>Open Explorer: <code>Ctrl+Shift+E</code> (Mac: <code>Cmd+Shift+E</code>)</li>
+<li>Navigate with <code>Arrow</code> keys to find the &quot;GitHub Pull Requests&quot; section</li>
+<li>Expand it with <code>Right Arrow</code></li>
+</ol>
+<h3 id="pull-request-tree-structure">Pull Request Tree Structure</h3>
+<h4 id="description">Description</h4>
+<p>The GitHub Pull Requests panel has two top-level sections. &quot;My Pull Requests&quot; contains four filters: Assigned to Me, Created by Me, Waiting for my Review, and All Open. The repository section shows Local Pull Request Branches (checked out locally), All Open Pull Requests, and All Closed Pull Requests.</p>
+<h4 id="screen-reader-announcement-example">Screen reader announcement example</h4>
+<p>&quot;Pull Request #42: Add Timeline Guide, opened by jeffb, 2 days ago, 3 files changed&quot;</p>
+<h3 id="filtering-pr-lists">Filtering PR Lists</h3>
+<h4 id="by-status">By status</h4>
+<ul>
+<li>&quot;All Open&quot; - every open PR</li>
+<li>&quot;Assigned to Me&quot; - PRs where you&#39;re an assignee</li>
+<li>&quot;Waiting for my Review&quot; - PRs where you&#39;re requested as reviewer</li>
+<li>&quot;Draft&quot; - PRs marked as work-in-progress</li>
+</ul>
+<h4 id="by-repository">By repository</h4>
+<p>The tree organizes PRs by repository. Expand a repo to see its PRs.</p>
+<h3 id="viewing-pr-details">Viewing PR Details</h3>
+<ol>
+<li>Navigate to a PR in the tree</li>
+<li>Press <code>Enter</code></li>
+</ol>
+<p>A PR detail view opens in the editor area showing:</p>
+<ul>
+<li>PR title and number</li>
+<li>Author and creation date</li>
+<li>Status (Open, Merged, Closed)</li>
+<li>Description (full Markdown with inline rendering)</li>
+<li>Reviewers and their status (Approved, Requested Changes, Pending)</li>
+<li>Checks (CI status: passing, failing, pending)</li>
+<li>Files changed (clickable list)</li>
+<li>Comments timeline</li>
+</ul>
+<h4 id="screen-reader-experience">Screen reader experience</h4>
+<ul>
+<li>The detail view is Markdown-rendered HTML</li>
+<li>Use standard screen reader reading commands (<code>Arrow</code> keys in NVDA/JAWS virtual mode)</li>
+<li>Headings mark each section (&quot;Description&quot;, &quot;Reviewers&quot;, &quot;Files Changed&quot;, &quot;Comments&quot;)</li>
+<li>Links are clickable with <code>Enter</code></li>
+</ul>
+<h2 id="3-checking-out-a-pull-request-branch">3. Checking Out a Pull Request Branch</h2>
+<p><strong>Checking out a PR</strong> means downloading its branch to your local machine so you can test it, review it interactively, or add commits to it.</p>
+<h3 id="why-check-out-a-pr">Why Check Out a PR</h3>
+<ul>
+<li><strong>Test functionality:</strong> Run the code locally to verify it works</li>
+<li><strong>Review with full context:</strong> See the changes in your editor with full file access</li>
+<li><strong>Make suggestions:</strong> Add commits to someone else&#39;s PR (if you have write access)</li>
+<li><strong>Verify accessibility:</strong> Test with your screen reader to ensure changes don&#39;t break navigation</li>
+</ul>
+<h3 id="how-to-check-out-a-pr">How to Check Out a PR</h3>
+<h4 id="method-1-from-the-pr-detail-view">Method 1: From the PR Detail View</h4>
+<ol>
+<li>Open a PR (see Section 2)</li>
+<li>In the PR detail view, navigate to &quot;Checkout&quot; button</li>
+<li>Press <code>Enter</code></li>
+</ol>
+<p>VS Code:</p>
+<ul>
+<li>Downloads the branch</li>
+<li>Switches your local repository to that branch</li>
+<li>Opens the changed files in the editor</li>
+</ul>
+<h4 id="method-2-from-the-pr-tree">Method 2: From the PR Tree</h4>
+<ol>
+<li>Navigate to the PR in the GitHub Pull Requests tree</li>
+<li>Press <code>Shift+F10</code> (Mac: <code>Ctrl+Return</code>) to open context menu</li>
+<li>Select &quot;Checkout Pull Request&quot;</li>
+</ol>
+<h4 id="method-3-command-palette">Method 3: Command Palette</h4>
+<ol>
+<li><code>Ctrl+Shift+P</code> (Mac: <code>Cmd+Shift+P</code>)</li>
+<li>Type &quot;GitHub Pull Requests: Checkout&quot;</li>
+<li>Select &quot;GitHub Pull Requests: Checkout Pull Request&quot;</li>
+<li>Choose the PR from the list</li>
+</ol>
+<p><strong>Screen reader note:</strong> After checkout, the bottom-left status bar shows the branch name (example: &quot;jeffb/add-timeline-guide&quot;). Your local files now match that branch.</p>
+<h3 id="returning-to-your-original-branch">Returning to Your Original Branch</h3>
+<p>After reviewing:</p>
+<ol>
+<li><code>Ctrl+Shift+P</code> (Mac: <code>Cmd+Shift+P</code>)</li>
+<li>Type &quot;git checkout&quot;</li>
+<li>Select &quot;Git: Checkout to...&quot;</li>
+<li>Choose your original branch (usually <code>main</code> or your feature branch)</li>
+</ol>
+<h3 id="learning-cards-checking-out-a-pr">Learning Cards: Checking Out a PR</h3>
+<details>
+<summary>Screen reader users</summary>
+
+<ul>
+<li>After checkout, press <code>F6</code> to navigate to the Status Bar and hear the branch name (e.g., &quot;jeffb/fix-alt-text&quot;) confirming you are on the PR branch</li>
+<li>Use <code>Ctrl+Shift+P</code> then &quot;Git: Checkout to&quot; to switch back to your original branch when done reviewing</li>
+<li>The PR detail view is Markdown-rendered HTML -- navigate with <code>h</code> (heading), <code>t</code> (table), and arrow keys in your screen reader&#39;s virtual mode</li>
+</ul>
+</details>
+
+<details>
+<summary>Low vision users</summary>
+
+<ul>
+<li>The Status Bar in the bottom-left changes to show the PR branch name, confirming the checkout succeeded</li>
+<li>Files changed by the PR are highlighted in the Explorer sidebar with colored badges (M for modified, A for added)</li>
+<li>Use <code>Ctrl+=</code> to zoom the editor if diff annotations are hard to read</li>
+</ul>
+</details>
+
+<details>
+<summary>Sighted users</summary>
+
+<ul>
+<li>After checkout, the branch name in the bottom-left Status Bar changes to the PR branch name</li>
+<li>Changed files appear in the Source Control panel with status badges so you can quickly see what was modified</li>
+<li>Right-click a file in the PR file list to open a side-by-side diff view</li>
+</ul>
+</details>
+
+
+<h2 id="4-reviewing-pull-requests-in-vs-code">4. Reviewing Pull Requests in VS Code</h2>
+<p>Once you&#39;ve checked out a PR (or opened it in the detail view), you can review its changes fully within VS Code.</p>
+<h3 id="reading-the-files-changed-list">Reading the Files Changed List</h3>
+<h4 id="in-the-pr-detail-view">In the PR detail view</h4>
+<ol>
+<li>Scroll down to &quot;Files Changed&quot; section</li>
+<li>Each file is a link</li>
+<li>Navigate with <code>Arrow</code> keys</li>
+<li>Press <code>Enter</code> on a file to open its diff view</li>
+</ol>
+<h4 id="screen-reader-announcement">Screen reader announcement</h4>
+<p>&quot;docs/11-vscode-interface.md, 42 additions, 3 deletions&quot;</p>
+<h3 id="understanding-the-diff-view">Understanding the Diff View</h3>
+<p>When you open a file from &quot;Files Changed&quot;:</p>
+<h4 id="split-view-mode-default">Split view mode (default)</h4>
+<ul>
+<li>Left side: original file (before changes)</li>
+<li>Right side: modified file (after changes)</li>
+<li>Changed lines highlighted (added = green, removed = red)</li>
+</ul>
+<h4 id="inline-view-mode">Inline view mode</h4>
+<ul>
+<li>Single editor</li>
+<li>Removed lines shown with <code>-</code> prefix</li>
+<li>Added lines shown with <code>+</code> prefix</li>
+</ul>
+<h4 id="to-toggle-between-views">To toggle between views</h4>
+<ul>
+<li>Command Palette: <code>Ctrl+Shift+P</code> (Mac: <code>Cmd+Shift+P</code>) → &quot;Diff: Toggle Inline View&quot;</li>
+</ul>
+<h3 id="screen-reader-diff-review-with-accessible-diff-viewer">Screen Reader Diff Review with Accessible Diff Viewer</h3>
+<h4 id="recommended-workflow-for-screen-reader-users">Recommended workflow for screen reader users</h4>
+<ol>
+<li>Open a changed file from the PR detail view</li>
+<li>Press <code>F7</code> to jump to the first diff hunk</li>
+<li>Press <code>Alt+F2</code> (Mac: <code>Option+F2</code>) to open Accessible View</li>
+<li>Read the hunk content:<ul>
+<li>Unchanged lines (for context)</li>
+<li>Removed lines (prefixed with <code>-</code>)</li>
+<li>Added lines (prefixed with <code>+</code>)</li>
+</ul>
+</li>
+<li>Press <code>Escape</code> to close Accessible View</li>
+<li>Press <code>F7</code> to jump to the next hunk</li>
+<li>Repeat until all hunks reviewed</li>
+</ol>
+<h4 id="example-accessible-diff-output">Example Accessible Diff output</h4>
+<pre><code class="hljs language-text">Hunk 1 of 3 - lines 12 to 18
+  Unchanged: ## VS Code Setup
+- Removed: This guide covers VS Code basics.
++ Added: This guide covers VS Code basics and accessibility features.
+  Unchanged:
+  Unchanged: **Prerequisites:** Day 1 completion</code></pre>
+<h4 id="this-structured-reading-is-far-superior-to-navigating-the-visual-diff-manually">This structured reading is far superior to navigating the visual diff manually</h4>
+<blockquote>
+<p><strong>VS Code October 2025 update:</strong> Deleted lines (shown with the <code>-</code> prefix) are now fully selectable and copyable in the diff editor. Previously, deleted code could only be read, not selected. This is useful when you want to copy a deleted function signature, old variable name, or removed text for reference while writing your review comment.</p>
+</blockquote>
+<h3 id="flagging-issues-during-review">Flagging Issues During Review</h3>
+<p>As you review, note any problems:</p>
+<ol>
+<li>Navigate to the specific line in the diff</li>
+<li>Press <code>Shift+F10</code> (Mac: <code>Ctrl+Return</code>) for context menu</li>
+<li>Select &quot;Add Comment&quot;</li>
+<li>Type your comment in the input that appears</li>
+<li>Choose &quot;Single Comment&quot; or &quot;Start Review&quot;</li>
+</ol>
+<p><strong>Single Comment</strong> posts immediately.<br><strong>Start Review</strong> saves your comments as a draft until you submit the full review (see Section 7).</p>
+<h3 id="learning-cards-reviewing-pull-requests-in-vs-code">Learning Cards: Reviewing Pull Requests in VS Code</h3>
+<p><strong>Screen reader users:</strong></p>
+<ul>
+<li>Press <code>F7</code> to enter the Accessible Diff Viewer and hear each hunk announced as &quot;Change N of M&quot; with clear &quot;Removed:&quot; and &quot;Added:&quot; labels -- this is far more reliable than navigating the raw split diff line by line</li>
+<li>After reviewing a hunk, press <code>Escape</code> to return to the diff editor, then <code>Shift+F10</code> on the target line and select &quot;Add Comment&quot; to place inline feedback exactly where the issue is</li>
+<li>Use <code>Alt+F2</code> (Accessible View) on any hunk for a plain-text rendering you can read with arrow keys at your own pace</li>
+</ul>
+<p><strong>Low-vision users:</strong></p>
+<ul>
+<li>Switch from split diff to inline diff (<code>Ctrl+Shift+P</code> then &quot;Toggle Inline View&quot;) to keep all changes in a single column -- much easier at high zoom than scanning two narrow panes</li>
+<li>Press <code>F7</code> / <code>Shift+F7</code> to jump between hunks; each hunk gains a visible focus outline that tracks your position so you do not lose your place at high magnification</li>
+<li>Added lines show a green gutter bar and removed lines a red gutter bar; in High Contrast themes these become bold solid borders visible at any zoom level</li>
+</ul>
+<p><strong>Sighted users:</strong></p>
+<ul>
+<li>Scan the left gutter for green (added) and red (removed) bars to spot changes quickly, then click the <code>+</code> icon on any line to start an inline comment</li>
+<li>Use the minimap on the right edge of the diff editor to see the distribution of changes across the file and click directly on coloured blocks to jump there</li>
+<li>Right-click a file in the PR file list and choose &quot;Open Changes&quot; for a side-by-side diff, or &quot;Open File&quot; to see the final state without diff annotations</li>
+</ul>
+<h2 id="5-creating-a-pull-request-from-vs-code">5. Creating a Pull Request from VS Code</h2>
+<h3 id="tool-cards-create-a-pull-request-from-your-editor">Tool Cards: Create a Pull Request (from your editor)</h3>
+<p><strong>VS Code Desktop (primary for Day 2):</strong></p>
+<ol>
+<li><code>Ctrl+Shift+P</code> &gt; <strong>GitHub Pull Requests: Create Pull Request</strong>.</li>
+<li>Fill in the title, description, and base branch.</li>
+<li>Click <strong>Create</strong>.</li>
+</ol>
+<p><strong>github.com (browser):</strong></p>
+<ol>
+<li>Push your branch, then click the <strong>Compare &amp; pull request</strong> banner on the repo page.</li>
+<li>Fill in the form and click <strong>Create pull request</strong>.</li>
+</ol>
+<p><strong>GitHub Desktop:</strong></p>
+<ol>
+<li>After pushing, click <strong>Create Pull Request</strong> -- this opens gitub.com with the form pre-filled.</li>
+</ol>
+<p><strong>Git CLI / GitHub CLI:</strong></p>
+<pre><code class="hljs language-bash">git push -u origin your-branch
+gh <span class="hljs-built_in">pr</span> create --title <span class="hljs-string">&quot;Title&quot;</span> --body <span class="hljs-string">&quot;Description&quot;</span></code></pre>
+<p>After you&#39;ve pushed commits to a feature branch, you can create a PR without leaving VS Code.</p>
+<h3 id="prerequisites">Prerequisites</h3>
+<ol>
+<li>You&#39;ve created a branch (see <a href="14-git-in-practice.html#3-branch-management">Git &amp; Source Control: Branch Management</a>)</li>
+<li>You&#39;ve made commits</li>
+<li>You&#39;ve pushed the branch to GitHub (<code>Ctrl+Shift+P</code> / Mac: <code>Cmd+Shift+P</code> → &quot;Git: Push&quot;)</li>
+</ol>
+<h3 id="creating-the-pr">Creating the PR</h3>
+<h4 id="method-1-command-palette-recommended">Method 1: Command Palette (Recommended)</h4>
+<ol>
+<li><code>Ctrl+Shift+P</code> (Mac: <code>Cmd+Shift+P</code>)</li>
+<li>Type &quot;GitHub Pull Requests: Create&quot;</li>
+<li>Select &quot;GitHub Pull Requests: Create Pull Request&quot;</li>
+<li>A form opens in the editor</li>
+</ol>
+<h4 id="method-2-source-control-panel">Method 2: Source Control Panel</h4>
+<ol>
+<li>Open Source Control: <code>Ctrl+Shift+G</code> (Mac: <code>Cmd+Shift+G</code>)</li>
+<li>After pushing, a &quot;Create Pull Request&quot; button appears</li>
+<li>Press <code>Enter</code> on that button</li>
+</ol>
+<h4 id="method-3-github-panel">Method 3: GitHub Panel</h4>
+<ol>
+<li>Open GitHub view (Activity Bar → GitHub icon)</li>
+<li>Right-click your branch in the tree</li>
+<li>Select &quot;Create Pull Request&quot;</li>
+</ol>
+<h3 id="filling-out-the-pr-form">Filling Out the PR Form</h3>
+<p>The form has these fields:</p>
+<h4 id="title-required">Title (required)</h4>
+<ul>
+<li>Auto-filled with your most recent commit message</li>
+<li>Edit to make it descriptive (example: &quot;Add Timeline View documentation&quot;)</li>
+</ul>
+<h4 id="description-optional-but-recommended">Description (optional but recommended)</h4>
+<ul>
+<li>Explain what changed and why</li>
+<li>Reference the issue you&#39;re fixing: &quot;Fixes #42&quot;</li>
+<li>If a PR template exists, VS Code loads it here (see Section 6)</li>
+<li><strong>Copilot-assisted description:</strong> An AI sparkle icon in the description toolbar lets you generate a description from your commits. When a PR template exists, Copilot fills in the template sections intelligently rather than replacing the template - it populates the checklist items and description sections with content derived from your changes.</li>
+</ul>
+<h4 id="base-branch-target">Base branch (target)</h4>
+<ul>
+<li>Usually <code>main</code> or <code>develop</code></li>
+<li>This is the branch your changes will merge into</li>
+</ul>
+<h4 id="compare-branch-source">Compare branch (source)</h4>
+<ul>
+<li>Your feature branch (auto-selected)</li>
+<li>This is the branch with your changes</li>
+</ul>
+<h4 id="reviewers-optional">Reviewers (optional)</h4>
+<ul>
+<li>Select people to review your PR</li>
+<li>Navigate the list with <code>Arrow</code> keys</li>
+</ul>
+<h4 id="labels-optional">Labels (optional)</h4>
+<ul>
+<li>Add labels like <code>documentation</code>, <code>accessibility</code>, <code>good-first-issue</code></li>
+</ul>
+<h4 id="milestone-optional">Milestone (optional)</h4>
+<ul>
+<li>Link the PR to a project milestone</li>
+</ul>
+<h4 id="draft-pr-checkbox">Draft PR checkbox</h4>
+<ul>
+<li>Check this if the PR is not ready for review yet</li>
+<li>Unchecked = &quot;Ready for review&quot;</li>
+</ul>
+<h4 id="screen-reader-navigation">Screen reader navigation</h4>
+<ul>
+<li>All fields are standard form inputs</li>
+<li><code>Tab</code> to move between fields</li>
+<li>Use <code>Arrow</code> keys in dropdowns (reviewers, labels, milestones)</li>
+</ul>
+<h3 id="submitting-the-pr">Submitting the PR</h3>
+<ol>
+<li>Review all fields</li>
+<li><code>Tab</code> to &quot;Create&quot; button</li>
+<li>Press <code>Enter</code></li>
+</ol>
+<p>VS Code creates the PR on GitHub and shows a success message. The PR link appears in the notification - click it to open the PR on GitHub, or open it in the GitHub Pull Requests panel.</p>
+<details>
+<summary>Web alternative (github.com) - creating a PR</summary>
+
+<p>Create a PR from your browser after pushing your branch:</p>
+<ol>
+<li>Navigate to the repository on GitHub</li>
+<li>If you recently pushed, a yellow banner &quot;Compare &amp; pull request&quot; appears - click it</li>
+<li>Otherwise: click <strong>Pull requests</strong> tab, then <strong>New pull request</strong>, then select your branch</li>
+<li>Fill in the title and description</li>
+<li>Click <strong>Create pull request</strong></li>
+</ol>
+<p>See <a href="06-working-with-pull-requests.html#opening-a-pull-request">Working with Pull Requests - Opening a PR</a> for detailed screen reader steps.</p>
+</details>
+
+<details>
+<summary>GitHub CLI (gh) alternative - creating a PR</summary>
+
+<pre><code class="hljs language-bash"><span class="hljs-comment"># Interactive: prompts for title, body, base branch</span>
+gh <span class="hljs-built_in">pr</span> create
+
+<span class="hljs-comment"># Inline: provide details directly</span>
+gh <span class="hljs-built_in">pr</span> create --title <span class="hljs-string">&quot;Add Timeline View documentation&quot;</span> --body <span class="hljs-string">&quot;Fixes #42&quot;</span>
+
+<span class="hljs-comment"># Create as draft</span>
+gh <span class="hljs-built_in">pr</span> create --draft
+
+<span class="hljs-comment"># Open the form in your browser</span>
+gh <span class="hljs-built_in">pr</span> create --web</code></pre>
+</details>
+
+<h3 id="learning-cards-creating-a-pull-request">Learning Cards: Creating a Pull Request</h3>
+<details>
+<summary>Screen reader users</summary>
+
+<ul>
+<li>Press <code>Ctrl+Shift+P</code> then type &quot;GitHub Pull Requests: Create&quot; -- the PR creation form opens with title, description, base branch, and reviewer fields navigable with <code>Tab</code></li>
+<li>The description field supports full Markdown -- use <code>Ctrl+F</code> to find and replace <code>&lt;!-- comment --&gt;</code> placeholders in templates</li>
+<li>After creating, your screen reader announces the new PR number; the PR detail view opens automatically</li>
+</ul>
+</details>
+
+<details>
+<summary>Low vision users</summary>
+
+<ul>
+<li>The PR creation form appears as a new editor tab with clearly labeled input fields for title, description, base branch, and reviewers</li>
+<li>Use <code>Ctrl+=</code> to zoom the form if the input fields are small; the form reflows to accommodate larger text</li>
+<li>The base branch dropdown is near the top of the form -- verify it shows <code>main</code> (or your target branch) before submitting</li>
+</ul>
+</details>
+
+<details>
+<summary>Sighted users</summary>
+
+<ul>
+<li>Click the &quot;Create Pull Request&quot; button in the Source Control panel header (appears when you have unpushed changes on a feature branch)</li>
+<li>The PR form shows a preview pane for your Markdown description so you can verify formatting before submitting</li>
+<li>Use the reviewer picker to search for and add specific GitHub users to request reviews</li>
+</ul>
+</details>
+
+
+<h2 id="6-pull-request-description-templates">6. Pull Request Description Templates</h2>
+<p>Many repositories include a <strong>PR template</strong> - a Markdown file that pre-fills the PR description with a checklist or structure.</p>
+<h3 id="where-templates-are-stored">Where Templates Are Stored</h3>
+<p>Common locations:</p>
+<ul>
+<li><code>.github/pull_request_template.md</code> (root)</li>
+<li><code>.github/PULL_REQUEST_TEMPLATE.md</code></li>
+<li><code>.github/PULL_REQUEST_TEMPLATE/</code> (folder with multiple templates)</li>
+<li><code>docs/pull_request_template.md</code></li>
+</ul>
+<p>When you create a PR in VS Code, the extension automatically loads the template into the description field.</p>
+<h3 id="example-pr-template">Example PR Template</h3>
+<pre><code class="hljs language-markdown"><span class="hljs-section">## Description</span>
+&lt;!-- Briefly describe what this PR changes and why --&gt;
+
+<span class="hljs-section">## Related Issue</span>
+&lt;!-- Link to the issue this PR fixes: Fixes #123 --&gt;
+
+<span class="hljs-section">## Type of Change</span>
+<span class="hljs-bullet">-</span> [ ] Bug fix
+<span class="hljs-bullet">-</span> [ ] New feature
+<span class="hljs-bullet">-</span> [ ] Documentation update
+<span class="hljs-bullet">-</span> [ ] Accessibility improvement
+
+<span class="hljs-section">## Testing</span>
+&lt;!-- How did you test these changes? --&gt;
+
+<span class="hljs-section">## Checklist</span>
+<span class="hljs-bullet">-</span> [ ] My code follows the project&#x27;s style guidelines
+<span class="hljs-bullet">-</span> [ ] I have tested with a screen reader (NVDA, JAWS, or VoiceOver)
+<span class="hljs-bullet">-</span> [ ] I have updated the documentation
+<span class="hljs-bullet">-</span> [ ] All new and existing tests pass
+<span class="hljs-bullet">-</span> [ ] I have linked this PR to the related issue
+
+<span class="hljs-section">## Screenshots (if applicable)</span>
+&lt;!-- Add screenshots or screen recordings --&gt;</code></pre>
+<h3 id="filling-out-a-template">Filling Out a Template</h3>
+<h4 id="screen-reader-workflow">Screen reader workflow</h4>
+<ol>
+<li>Create PR (Method 1-3 from Section 5)</li>
+<li>The description field is pre-filled with the template</li>
+<li>Navigate through the template with <code>Arrow</code> keys</li>
+<li>Replace each <code>&lt;!-- comment --&gt;</code> with your content</li>
+<li>Check checkboxes by typing <code>x</code> between the brackets: <code>- [x]</code></li>
+</ol>
+<p><strong>Keyboard tip:</strong> Use <code>Ctrl+F</code> (Mac: <code>Cmd+F</code>) to jump to each <code>&lt;!--</code> placeholder, fill it in, then <code>F3</code> to jump to the next one.</p>
+<h2 id="7-commenting-and-requesting-changes">7. Commenting and Requesting Changes</h2>
+<p>When reviewing a PR, you can:</p>
+<ul>
+<li>Leave inline comments on specific lines</li>
+<li>Request changes before the PR can be merged</li>
+<li>Approve the PR</li>
+<li>Submit general feedback</li>
+</ul>
+<h3 id="adding-an-inline-comment">Adding an Inline Comment</h3>
+<ol>
+<li>Open a file from the PR&#39;s &quot;Files Changed&quot; list</li>
+<li>Navigate to the line you want to comment on</li>
+<li>Press <code>Shift+F10</code> (Mac: <code>Ctrl+Return</code>) to open context menu</li>
+<li>Select &quot;Add Comment&quot;</li>
+<li>Type your comment</li>
+<li>Choose &quot;Add Single Comment&quot; (posts immediately) or &quot;Start Review&quot; (saves as a draft)</li>
+</ol>
+<h4 id="comment-format-tips">Comment format tips</h4>
+<ul>
+<li>Be specific: &quot;This heading should be H3, not H2&quot;</li>
+<li>Provide context: &quot;Screen readers announce this as &#39;list with 1 item&#39; - should be a paragraph instead&quot;</li>
+<li>Suggest a fix: &quot;Consider rewording to: &#39;Click the button to save&#39;&quot;</li>
+</ul>
+<h3 id="starting-a-review">Starting a Review</h3>
+<h4 id="if-you-have-multiple-comments-to-make-use-quotstart-reviewquot">If you have multiple comments to make, use &quot;Start Review&quot;</h4>
+<ol>
+<li>Add your first inline comment → select &quot;Start Review&quot;</li>
+<li>Continue adding comments to other lines</li>
+<li>All comments are saved as drafts (not visible to others yet)</li>
+</ol>
+<h3 id="submitting-your-review">Submitting Your Review</h3>
+<p>When you&#39;ve reviewed all files:</p>
+<ol>
+<li><code>Ctrl+Shift+P</code> (Mac: <code>Cmd+Shift+P</code>)</li>
+<li>Type &quot;GitHub Pull Requests: Submit Review&quot;</li>
+<li>Select &quot;GitHub Pull Requests: Finish Review&quot;</li>
+<li>Choose review type:<ul>
+<li><strong>Comment</strong> - general feedback, no approval decision</li>
+<li><strong>Approve</strong> - PR looks good, ready to merge</li>
+<li><strong>Request Changes</strong> - issues must be fixed before merging</li>
+</ul>
+</li>
+<li>Optionally add a summary comment</li>
+<li>Press <code>Enter</code> to submit</li>
+</ol>
+<p><strong>Screen reader note:</strong> The review type selector is a radio button group. Use <code>Arrow</code> keys to choose, <code>Enter</code> to confirm.</p>
+<h3 id="what-happens-after-submission">What Happens After Submission</h3>
+<ul>
+<li>All your draft comments post to GitHub</li>
+<li>The PR author receives a notification</li>
+<li>Your review status appears on the PR (Approved / Changes Requested / Commented)</li>
+<li>If you requested changes, the PR cannot merge until you approve it</li>
+</ul>
+<details>
+<summary>Web alternative (github.com) - reviewing</summary>
+
+<p>Review PRs directly on GitHub.com:</p>
+<ol>
+<li>Open the PR and click the <strong>Files changed</strong> tab</li>
+<li>Read through each file&#39;s diff</li>
+<li>Click the blue <strong>+</strong> button on any line to add an inline comment</li>
+<li>Choose <strong>Start a review</strong> to batch comments</li>
+<li>Click <strong>Review changes</strong> (top right) to select Comment / Approve / Request changes</li>
+<li>Click <strong>Submit review</strong></li>
+</ol>
+<p>See <a href="15-code-review.html">Accessible Code Review</a> for detailed screen reader steps.</p>
+</details>
+
+<details>
+<summary>GitHub CLI (gh) alternative - reviewing</summary>
+
+<pre><code class="hljs language-bash"><span class="hljs-comment"># View the PR diff in your terminal</span>
+gh <span class="hljs-built_in">pr</span> diff 42
+
+<span class="hljs-comment"># Approve</span>
+gh <span class="hljs-built_in">pr</span> review 42 --approve --body <span class="hljs-string">&quot;Looks good.&quot;</span>
+
+<span class="hljs-comment"># Request changes</span>
+gh <span class="hljs-built_in">pr</span> review 42 --request-changes --body <span class="hljs-string">&quot;Heading hierarchy needs fixing.&quot;</span>
+
+<span class="hljs-comment"># Comment-only (no verdict)</span>
+gh <span class="hljs-built_in">pr</span> review 42 --comment --body <span class="hljs-string">&quot;A few suggestions.&quot;</span></code></pre>
+<p><strong>Note:</strong> For inline comments on specific lines, use the web interface or VS Code.</p>
+</details>
+
+<h3 id="learning-cards-commenting-and-requesting-changes">Learning Cards: Commenting and Requesting Changes</h3>
+<details>
+<summary>Screen reader users</summary>
+
+<ul>
+<li>In a diff view, navigate to a line and press <code>Shift+F10</code> for the context menu, then select &quot;Add Comment&quot; to leave inline feedback</li>
+<li>Choose &quot;Start Review&quot; instead of &quot;Single Comment&quot; to batch multiple comments before submitting them all at once</li>
+<li>When submitting a review, use <code>Ctrl+Shift+P</code> then &quot;GitHub Pull Requests: Submit Review&quot; and choose Approve, Request Changes, or Comment</li>
+</ul>
+</details>
+
+<details>
+<summary>Low vision users</summary>
+
+<ul>
+<li>Inline comments appear as expandable banners within the diff view -- look for the text input box that opens below the target line</li>
+<li>The review submission dialog has radio buttons for Approve, Request Changes, and Comment with clear labels</li>
+<li>Increase diff view font size with <code>Ctrl+=</code> so line numbers and change annotations are easier to read</li>
+</ul>
+</details>
+
+<details>
+<summary>Sighted users</summary>
+
+<ul>
+<li>Hover over the line gutter in a diff view to see a blue <code>+</code> icon -- click it to start an inline comment on that line</li>
+<li>A yellow banner appears for pending review comments; green for approved comments</li>
+<li>The &quot;Submit Review&quot; button in the PR detail view shows the count of pending comments ready to send</li>
+</ul>
+</details>
+
+
+<h2 id="8-merging-pull-requests">8. Merging Pull Requests</h2>
+<p><strong>Who can merge:</strong> Repository maintainers, or contributors with write access.</p>
+<h3 id="prerequisites-for-merging">Prerequisites for Merging</h3>
+<p>Before merging, verify:</p>
+<ol>
+<li>All required reviews are approved</li>
+<li>All CI checks pass (green checkmarks)</li>
+<li>No merge conflicts exist</li>
+<li>Branch is up to date with base branch (main)</li>
+</ol>
+<p><strong>Changing the base branch:</strong> If the PR was opened against the wrong base branch, you can change it from the PR detail view in VS Code. Scroll to the base branch field in the PR detail view and activate the dropdown to select a different target branch. This saves opening the PR on GitHub.com.</p>
+<p><strong>Converting to/from draft:</strong> You can also convert a ready PR back to a draft (or mark a draft as ready for review) directly from the PR detail view. Scroll to the Status section and use the context menu on the PR title or the &quot;...&quot; more actions button.</p>
+<h3 id="merging-from-vs-code">Merging from VS Code</h3>
+<h4 id="method-1-pr-detail-view">Method 1: PR Detail View</h4>
+<ol>
+<li>Open the PR in VS Code</li>
+<li>Scroll to the bottom of the PR detail view</li>
+<li>Find &quot;Merge Pull Request&quot; button</li>
+<li>Press <code>Enter</code></li>
+<li>Choose merge type (see below)</li>
+<li>Confirm</li>
+</ol>
+<h4 id="method-2-command-palette">Method 2: Command Palette</h4>
+<ol>
+<li><code>Ctrl+Shift+P</code> (Mac: <code>Cmd+Shift+P</code>)</li>
+<li>Type &quot;GitHub Pull Requests: Merge&quot;</li>
+<li>Select &quot;GitHub Pull Requests: Merge Pull Request&quot;</li>
+<li>Choose the PR from the list</li>
+<li>Select merge type</li>
+<li>Confirm</li>
+</ol>
+<h3 id="merge-types">Merge Types</h3>
+<table>
+<thead>
+<tr>
+<th scope="col">Type</th>
+<th scope="col">What It Does</th>
+<th scope="col">When to Use</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><strong>Merge Commit</strong></td>
+<td>Creates a merge commit preserving all branch commits</td>
+<td>Default for most projects; preserves full history</td>
+</tr>
+<tr>
+<td><strong>Squash and Merge</strong></td>
+<td>Combines all commits into one before merging</td>
+<td>Cleans up messy commit history; common for feature branches</td>
+</tr>
+<tr>
+<td><strong>Rebase and Merge</strong></td>
+<td>Replays commits onto base branch without a merge commit</td>
+<td>Creates linear history; requires clean commit messages</td>
+</tr>
+</tbody></table>
+<p><strong>Screen reader note:</strong> The merge type selector is a dropdown or radio group. Navigate with <code>Arrow</code> keys, confirm with <code>Enter</code>.</p>
+<h4 id="which-merge-type-to-use">Which merge type to use</h4>
+<ul>
+<li>Check the repository&#39;s CONTRIBUTING.md for guidance</li>
+<li>If unsure, use <strong>Merge Commit</strong> (the default and safest option)</li>
+</ul>
+<h3 id="after-merging">After Merging</h3>
+<ol>
+<li>The PR closes automatically</li>
+<li>The feature branch can be deleted (VS Code prompts: &quot;Delete branch?&quot;)</li>
+<li>Recommended: switch back to <code>main</code> and pull the merged changes</li>
+</ol>
+<h4 id="switching-to-main-and-pulling">Switching to main and pulling</h4>
+<pre><code class="hljs language-text">Ctrl+Shift+P → &quot;Git: Checkout to...&quot; → select &quot;main&quot;
+Ctrl+Shift+P → &quot;Git: Pull&quot;</code></pre>
+<p><em>(Mac users: use <code>Cmd+Shift+P</code> instead of <code>Ctrl+Shift+P</code>)</em></p>
+<h3 id="deleting-the-feature-branch">Deleting the Feature Branch</h3>
+<p>After merging, the feature branch is no longer needed:</p>
+<ol>
+<li><code>Ctrl+Shift+P</code> (Mac: <code>Cmd+Shift+P</code>)</li>
+<li>Type &quot;git delete branch&quot;</li>
+<li>Select &quot;Git: Delete Branch...&quot;</li>
+<li>Choose the merged branch</li>
+</ol>
+<p>This deletes the branch locally. To delete it on GitHub too:</p>
+<details>
+<summary>Web alternative (github.com) - merging</summary>
+
+<p>Merge a PR directly on GitHub.com:</p>
+<ol>
+<li>Open the PR&#39;s <strong>Conversation</strong> tab</li>
+<li>Scroll to the merge button at the bottom</li>
+<li>Click the dropdown arrow to choose a merge strategy (Squash, Rebase, or Merge commit)</li>
+<li>Click <strong>Merge pull request</strong>, then <strong>Confirm merge</strong></li>
+<li>Click <strong>Delete branch</strong> to clean up</li>
+</ol>
+</details>
+
+<details>
+<summary>GitHub CLI (gh) alternative - merging</summary>
+
+<pre><code class="hljs language-bash"><span class="hljs-comment"># Merge with default strategy</span>
+gh <span class="hljs-built_in">pr</span> merge 42
+
+<span class="hljs-comment"># Squash and merge, then delete the branch</span>
+gh <span class="hljs-built_in">pr</span> merge 42 --squash --delete-branch
+
+<span class="hljs-comment"># Enable auto-merge (merges when checks pass)</span>
+gh <span class="hljs-built_in">pr</span> merge 42 --auto --squash</code></pre>
+</details>
+
+<ol>
+<li><code>Ctrl+Shift+P</code> (Mac: <code>Cmd+Shift+P</code>)</li>
+<li>Type &quot;git push&quot;</li>
+<li>Select &quot;Git: Push (delete remote branch)&quot;</li>
+</ol>
+<h3 id="learning-cards-merging-pull-requests">Learning Cards: Merging Pull Requests</h3>
+<p><strong>Screen reader users:</strong></p>
+<ul>
+<li>The merge type selector (Merge Commit, Squash, Rebase) is announced as a dropdown or radio group -- use <code>Arrow</code> keys to move between options and <code>Enter</code> to confirm; if unsure, choose Merge Commit (the default and safest option)</li>
+<li>After merging, VS Code prompts &quot;Delete branch?&quot; as a notification -- press <code>Alt+N</code> to focus the notification and <code>Enter</code> to confirm, then run <code>Ctrl+Shift+P</code> then &quot;Git: Checkout to&quot; and select <code>main</code> to return to your default branch</li>
+<li>Confirm the merge succeeded by pressing <code>F6</code> to reach the Status Bar and verifying it now reads <code>main</code> instead of the feature branch name</li>
+</ul>
+<p><strong>Low-vision users:</strong></p>
+<ul>
+<li>The merge button at the bottom of the PR detail view includes a dropdown arrow for selecting merge type -- at high zoom, widen the editor pane so the button label and dropdown are not truncated</li>
+<li>After merging, the PR detail view header changes from &quot;Open&quot; (green badge) to &quot;Merged&quot; (purple badge) -- verify this colour/label change before deleting the branch</li>
+<li>When switching back to <code>main</code>, the branch name in the bottom-left Status Bar updates immediately -- confirm it reads <code>main</code> before pulling new changes with <code>Ctrl+Shift+P</code> then &quot;Git: Pull&quot;</li>
+</ul>
+<p><strong>Sighted users:</strong></p>
+<ul>
+<li>Click the dropdown arrow next to the green &quot;Merge&quot; button to choose between Merge Commit, Squash and Merge, or Rebase and Merge -- the dropdown shows a brief description of each strategy</li>
+<li>After merging, a &quot;Delete branch&quot; prompt appears as a blue link in the PR detail view; click it to clean up locally, then check the PR on GitHub.com where a similar button deletes the remote branch</li>
+<li>Pull merged changes immediately: click the sync icon in the Status Bar (circular arrows) or run <code>Ctrl+Shift+P</code> then &quot;Git: Pull&quot; to bring your local <code>main</code> up to date</li>
+</ul>
+<h2 id="keyboard-shortcuts---github-pull-requests-extension">Keyboard Shortcuts - GitHub Pull Requests Extension</h2>
+<table>
+<thead>
+<tr>
+<th scope="col">Action</th>
+<th scope="col">Windows</th>
+<th scope="col">Mac</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Open GitHub view</td>
+<td>Activity Bar → GitHub icon → <code>Enter</code></td>
+<td>Activity Bar → GitHub icon → <code>Enter</code></td>
+</tr>
+<tr>
+<td>Create Pull Request</td>
+<td><code>Ctrl+Shift+P</code> → &quot;GitHub Pull Requests: Create&quot;</td>
+<td><code>Cmd+Shift+P</code> → &quot;GitHub Pull Requests: Create&quot;</td>
+</tr>
+<tr>
+<td>Checkout PR</td>
+<td><code>Ctrl+Shift+P</code> → &quot;GitHub Pull Requests: Checkout&quot;</td>
+<td><code>Cmd+Shift+P</code> → &quot;GitHub Pull Requests: Checkout&quot;</td>
+</tr>
+<tr>
+<td>Submit Review</td>
+<td><code>Ctrl+Shift+P</code> → &quot;GitHub Pull Requests: Finish Review&quot;</td>
+<td><code>Cmd+Shift+P</code> → &quot;GitHub Pull Requests: Finish Review&quot;</td>
+</tr>
+<tr>
+<td>Merge PR</td>
+<td><code>Ctrl+Shift+P</code> → &quot;GitHub Pull Requests: Merge&quot;</td>
+<td><code>Cmd+Shift+P</code> → &quot;GitHub Pull Requests: Merge&quot;</td>
+</tr>
+<tr>
+<td>Add inline comment</td>
+<td><code>Shift+F10</code> (in diff view) → &quot;Add Comment&quot;</td>
+<td><code>Ctrl+Return</code> (in diff view) → &quot;Add Comment&quot;</td>
+</tr>
+<tr>
+<td>Navigate diff hunks</td>
+<td><code>F7</code> (next), <code>Shift+F7</code> (previous)</td>
+<td><code>F7</code> (next), <code>Shift+F7</code> (previous)</td>
+</tr>
+<tr>
+<td>Accessible Diff Viewer</td>
+<td><code>Alt+F2</code> (in diff view)</td>
+<td><code>Option+F2</code> (in diff view)</td>
+</tr>
+</tbody></table>
+<h2 id="troubleshooting">Troubleshooting</h2>
+<h3 id="quotno-pull-requests-foundquot">&quot;No pull requests found&quot;</h3>
+<p><strong>Issue:</strong> The GitHub Pull Requests panel is empty.</p>
+<h4 id="solutions">Solutions</h4>
+<ol>
+<li>Verify you&#39;re signed in: <code>Ctrl+Shift+P</code> (Mac: <code>Cmd+Shift+P</code>) → &quot;GitHub Pull Requests: Sign in&quot;</li>
+<li>Check you have a folder open containing a Git repository</li>
+<li>Refresh the panel: <code>Ctrl+Shift+P</code> (Mac: <code>Cmd+Shift+P</code>) → &quot;GitHub Pull Requests: Refresh Pull Requests List&quot;</li>
+</ol>
+<h3 id="quotcould-not-create-pull-requestquot">&quot;Could not create pull request&quot;</h3>
+<p><strong>Issue:</strong> PR creation fails.</p>
+<h4 id="solutions">Solutions</h4>
+<ol>
+<li>Verify you&#39;ve pushed your branch: <code>Ctrl+Shift+P</code> (Mac: <code>Cmd+Shift+P</code>) → &quot;Git: Push&quot;</li>
+<li>Check you have write access to the repository</li>
+<li>Ensure your branch is ahead of the base branch (has new commits)</li>
+</ol>
+<h3 id="quotauthentication-failedquot">&quot;Authentication failed&quot;</h3>
+<p><strong>Issue:</strong> VS Code can&#39;t connect to GitHub.</p>
+<h4 id="solutions">Solutions</h4>
+<ol>
+<li>Sign out and sign back in: <code>Ctrl+Shift+P</code> (Mac: <code>Cmd+Shift+P</code>) → &quot;GitHub Pull Requests: Sign out&quot; → then sign in again</li>
+<li>Check your GitHub Personal Access Token (see <a href="appendix-d-git-authentication.html">Appendix D: Git Authentication</a>)</li>
+<li>Verify network connection</li>
+</ol>
+<h2 id="try-it-review-a-pr-from-vs-code">Try It: Review a PR from VS Code</h2>
+<p><strong>Time:</strong> 3 minutes | <strong>What you need:</strong> VS Code with GitHub Pull Requests extension installed and signed in</p>
+<ol>
+<li><strong>Open the PR view</strong> - Press <code>Ctrl+Shift+P</code> → type <code>Pull Requests: Focus on GitHub Pull Requests View</code> → <code>Enter</code>.</li>
+<li><strong>Find a PR</strong> - Navigate the tree with arrow keys. Expand a PR to see its changed files.</li>
+<li><strong>Open a diff</strong> - Press <code>Enter</code> on a changed file. The diff editor opens.</li>
+<li><strong>Use the Accessible Diff Viewer</strong> - Press <code>F7</code> to jump to the first change. Your screen reader announces what was added or removed. Press <code>F7</code> again to move to the next change.</li>
+<li><strong>Leave a comment</strong> - Position your cursor on a line you want to comment on, then press <code>Ctrl+Shift+P</code> → <code>Pull Request: Add Comment on Current Diff Line</code>. Type a brief, constructive comment and submit.</li>
+</ol>
+<p><strong>You&#39;re done.</strong> You just reviewed a pull request entirely from VS Code.</p>
+<blockquote>
+<p><strong>What success feels like:</strong> You read a diff, heard the changes announced by your screen reader, and left feedback - all without opening a browser. This is how many developers review code every day.</p>
+</blockquote>
+<p><em>Next: <a href="16-github-copilot.html">GitHub Copilot</a></em><br><em>Back: <a href="14-git-in-practice.html">Git &amp; Source Control in VS Code</a></em><br><em>Related: <a href="06-working-with-pull-requests.html">Working with Pull Requests</a> | <a href="17-issue-templates.html">Issue Templates</a></em></p>
+<hr>
+<h2 id="part-2-accessible-code-review">Part 2: Accessible Code Review</h2>
+<blockquote>
+<p><strong>Listen to Episode 15:</strong> <a href="../PODCASTS.html">Accessible Code Review</a> - a conversational audio overview of this chapter. Listen before reading to preview the concepts, or after to reinforce what you learned.</p>
+</blockquote>
+<h2 id="conducting-pull-request-reviews-with-a-screen-reader">Conducting Pull Request Reviews with a Screen Reader</h2>
+<blockquote>
+<p>This guide is focused entirely on the <strong>reviewer experience</strong> - navigating diffs, reading changes, leaving comments, and submitting a review - using only your keyboard and screen reader. For the full pull request lifecycle (opening PRs, merge options, conflict resolution), see <a href="06-working-with-pull-requests.html">Working with Pull Requests</a>.</p>
+<p><strong>Learning Room connection:</strong> The exercises in this chapter use files from the Learning Room repository. You will review PRs that modify <code>docs/keyboard-shortcuts.md</code> (shortcut tables with intentional errors), <code>docs/setup-guide.md</code> (broken links and incomplete steps), and <code>docs/welcome.md</code> (<code>[TODO]</code> sections to complete). These are the same files you work on during the Day 1 contribution sprint.</p>
+</blockquote>
+<h2 id="workshop-recommendation-chapter-14">Workshop Recommendation (Chapter 14)</h2>
+<p>Chapter 14 is the <strong>code review chapter</strong> focused on practicing constructive feedback.</p>
+<ul>
+<li><strong>Challenge count:</strong> 2 guided challenges</li>
+<li><strong>Automation check:</strong> none (review quality is subjective and human-focused)</li>
+<li><strong>Evidence:</strong> issue comment with summary of review and feedback posted</li>
+<li><strong>Pattern:</strong> navigate diff, comment on specifics, submit verdict</li>
+</ul>
+<h3 id="chapter-14-challenge-set">Chapter 14 Challenge Set</h3>
+<ol>
+<li><strong>Review a practice PR and leave 2-3 inline comments</strong> - read the diff line by line, find specific items to comment on, and post constructive feedback.</li>
+<li><strong>Submit a formal review verdict</strong> - complete your review by choosing approve, request changes, or comment only.</li>
+</ol>
+<h3 id="challenge-141-step-by-step-review-a-pr-and-leave-inline-comments">Challenge 14.1 Step-by-Step: Review a PR and Leave Inline Comments</h3>
+<p><strong>Goal:</strong> Navigate a PR diff using screen reader-friendly tools and post 2-3 specific, constructive inline comments.</p>
+<p><strong>Where you are working:</strong> GitHub.com (Files changed tab of a PR) or VS Code with the GitHub Pull Requests extension.</p>
+<p><strong>Estimated time:</strong> 15-20 minutes.</p>
+<ol>
+<li>Open your Learning Room repository on GitHub.com and navigate to the <strong>Pull requests</strong> tab.</li>
+<li>Find a classmate&#39;s open PR (from Chapter 6, 7, or 11). Open it.</li>
+<li>Activate the <strong>Files changed</strong> tab. This shows the diff - lines added in green, lines removed in red.</li>
+<li>Navigate the diff:<ul>
+<li><strong>On GitHub.com:</strong> Use heading navigation to jump between files (<code>H</code> in NVDA). Each file header is a heading. Within a file, use arrow keys to move line by line.</li>
+<li><strong>In VS Code:</strong> Press <code>F7</code> to open the Accessible Diff Viewer (see Chapter 12). Use <code>F7</code>/<code>Shift+F7</code> to move between changes.</li>
+</ul>
+</li>
+<li>Read through the changes carefully. Look for:<ul>
+<li>Typos or grammar issues</li>
+<li>Unclear headings or link text</li>
+<li>Missing steps in instructions</li>
+<li>Accessibility concerns (missing alt text, unclear structure)</li>
+<li>Things the author did well (note these too)</li>
+</ul>
+</li>
+<li>To leave an inline comment on GitHub.com: activate the <code>+</code> button that appears to the left of a line number when you hover or Tab to it. (Screen reader users: this button may be announced as &quot;Add a comment to this line.&quot;) Type your comment in the text box that opens.</li>
+<li>Post 2-3 inline comments. Each comment should be:<ul>
+<li><strong>Specific:</strong> reference the exact line or phrase</li>
+<li><strong>Constructive:</strong> suggest an improvement or explain why something works well</li>
+<li><strong>Kind:</strong> frame suggestions as questions or &quot;consider&quot; statements</li>
+</ul>
+</li>
+<li>Examples of good inline comments:<ul>
+<li>&quot;Line 12: &#39;Click here&#39; should be more descriptive. Consider: &#39;Open the notification settings page&#39;&quot;</li>
+<li>&quot;Nice clear heading structure - the reader can scan this section quickly.&quot;</li>
+<li>&quot;Step 3 says &#39;do the thing&#39; - could you add which menu or keyboard shortcut to use?&quot;</li>
+</ul>
+</li>
+</ol>
+<p><strong>Screen reader tip:</strong> On GitHub.com, the Files Changed tab uses a table-like layout. Each row is a line of the diff. The <code>+</code> button for commenting may not be visible until you Tab through the row controls. If you cannot find it, use the &quot;Review changes&quot; button at the top to add a general comment instead.</p>
+<p><strong>You are done when:</strong> You have posted 2-3 inline comments on a classmate&#39;s PR.</p>
+<h3 id="challenge-142-step-by-step-submit-a-formal-review-verdict">Challenge 14.2 Step-by-Step: Submit a Formal Review Verdict</h3>
+<p><strong>Goal:</strong> Complete your review by selecting a verdict that tells the author what action to take next.</p>
+<p><strong>Where you are working:</strong> GitHub.com (the same PR you reviewed in 14.1).</p>
+<ol>
+<li>After posting your inline comments, scroll to the top of the <strong>Files changed</strong> tab.</li>
+<li>Activate the <strong>Review changes</strong> button (at the top-right of the files changed area, or use heading navigation).</li>
+<li>A dropdown opens with three options:<ul>
+<li><strong>Comment</strong> - general feedback, no explicit approval or rejection</li>
+<li><strong>Approve</strong> - you think the PR is ready to merge</li>
+<li><strong>Request changes</strong> - you found something that should be fixed before merging</li>
+</ul>
+</li>
+<li>Choose the verdict that matches your review:<ul>
+<li>If the PR has clear documentation with only minor suggestions, choose <strong>Approve</strong>.</li>
+<li>If you found issues that would confuse readers, choose <strong>Request changes</strong> and explain what needs fixing in the summary.</li>
+<li>If you are unsure, choose <strong>Comment</strong> - this is always a safe option.</li>
+</ul>
+</li>
+<li>Write a brief summary in the review body (1-2 sentences). Example: &quot;Clear improvement to the shortcut table. Two minor suggestions for link text clarity.&quot;</li>
+<li>Activate <strong>Submit review</strong>.</li>
+</ol>
+<p><strong>You are done when:</strong> Your review verdict appears on the PR&#39;s conversation tab as a green (approved), red (changes requested), or gray (comment) review badge.</p>
+<h3 id="completing-chapter-14-submit-your-evidence">Completing Chapter 14: Submit Your Evidence</h3>
+<p>Open your <strong>assigned Chapter 14 challenge issue</strong> and post a completion comment:</p>
+<pre><code class="hljs language-text">Chapter 14 completed:
+- PR reviewed: #[PR number]
+- Inline comments posted: [number, e.g., 3]
+- Review verdict: [Approve / Request Changes / Comment]
+- One thing I learned from reviewing: [one sentence]</code></pre>
+<p>Close your Chapter 14 challenge issues when done.</p>
+<h3 id="expected-outcomes">Expected Outcomes</h3>
+<ul>
+<li>Student can navigate PR diffs with a screen reader.</li>
+<li>Student can post inline comments on specific lines of a diff.</li>
+<li>Student can write constructive, specific feedback that helps the author improve.</li>
+<li>Student can submit a formal review verdict.</li>
+</ul>
+<h3 id="if-you-get-stuck">If You Get Stuck</h3>
+<ol>
+<li>Files Changed tab will not open? Reload the PR page and retry. Make sure you are on the PR page, not the issue page.</li>
+<li>Cannot find the inline comment button? Tab through the line controls in the diff. The button may be announced as &quot;Add a comment&quot; or have a <code>+</code> label. If you cannot find it, use the &quot;Review changes&quot; button at the top to add a general comment instead.</li>
+<li>Not sure what to comment on? Focus on clarity: is every heading descriptive? Is every link meaningful? Are steps complete? Are keyboard shortcuts correct?</li>
+<li>Review verdict button not working? Make sure you have at least one comment or have written summary text. Try reloading the page.</li>
+<li>Submitting the review fails? Check that you are not in draft mode and have at least read access to the repo.</li>
+<li>Ask facilitator to model one inline comment and one verdict submission.</li>
+<li>Finished but not sure you did it right? Compare your work against the <a href="solutions/solution-12-review.html">Challenge 12 reference solution</a>.</li>
+</ol>
+<blockquote>
+<p><strong>Continue learning:</strong> The GitHub Skills courses <a href="https://github.com/skills/review-pull-requests">Review Pull Requests</a> and <a href="https://github.com/skills/copilot-codereview">Code Review with GitHub Copilot</a> cover review workflows and AI-assisted code review. See <a href="appendix-z-github-skills.html">Appendix Z</a> for the full catalog.</p>
+</blockquote>
+<h3 id="learning-moment">Learning Moment</h3>
+<p>Constructive review is a gift. Specific, kind feedback helps authors improve and builds trust in the community. Every comment you write is practice for the professional code review you will do on real projects.</p>
+<h3 id="learning-pattern-used-in-this-chapter">Learning Pattern Used in This Chapter</h3>
+<ol>
+<li>Read the full diff before commenting (understand the author&#39;s intent first).</li>
+<li>Find specific items to comment on (lines, phrases, missing steps).</li>
+<li>Write comments that help, not just criticize (suggest improvements, note what works).</li>
+<li>Choose a verdict that matches the substance of your feedback.</li>
+<li>Summarize your overall impression in 1-2 sentences.</li>
+</ol>
+<h2 id="prerequisites-checklist">Prerequisites Checklist</h2>
+<h3 id="before-starting-this-chapter-verify-you-have-completed">Before starting this chapter, verify you have completed</h3>
+<ul>
+<li><input type="checkbox" disabled> <input aria-label="Chapter 6:" disabled="" type="checkbox"> Chapter 6: <a href="06-working-with-pull-requests.html">Working with Pull Requests</a> - Understand PR structure, diffs, and comment workflows</li>
+<li><input type="checkbox" disabled> <input aria-label="Chapter 13:" disabled="" type="checkbox"> Chapter 13: <a href="16-github-copilot.html">GitHub Copilot</a> - VS Code installed and configured</li>
+<li><input type="checkbox" disabled> <input aria-label="Screen Reader Setup - NVDA, JAWS, or VoiceOver installed and ready to use" disabled="" type="checkbox"> Screen Reader Setup - NVDA, JAWS, or VoiceOver installed and ready to use</li>
+<li><input type="checkbox" disabled> <input aria-label="Access to at least one pull request to review (your own fork or a practice repo)" disabled="" type="checkbox"> Access to at least one pull request to review (your own fork or a practice repo)</li>
+</ul>
+<p><strong>Estimated time for this chapter:</strong> 1 hour (including exercises)</p>
+<h2 id="two-environments-for-code-review">Two Environments for Code Review</h2>
+<p>You can review pull requests in two places - each with different strengths:</p>
+<table>
+<thead>
+<tr>
+<th scope="col">Environment</th>
+<th scope="col">Best For</th>
+<th scope="col">Key Accessibility Feature</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>GitHub web (browser)</td>
+<td>Quick reviews, inline comments on any machine</td>
+<td>New Files Changed Experience + keyboard navigation</td>
+</tr>
+<tr>
+<td>VS Code</td>
+<td>Deep reviews, large diffs, local context</td>
+<td>Accessible Diff Viewer (<code>F7</code>)</td>
+</tr>
+</tbody></table>
+<p>Both environments give you full keyboard and screen reader access. Your choice depends on context, not accessibility.</p>
+<h3 id="about-learning-cards-in-this-chapter">About Learning Cards in This Chapter</h3>
+<p>Each review step includes expandable learning cards for different interaction styles. Open the one that matches how you work:</p>
+<p>The following table describes each learning card type and who it is for.</p>
+<table>
+<thead>
+<tr>
+<th scope="col">Card</th>
+<th scope="col">Who it is for</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><strong>Visual / mouse users</strong></td>
+<td>Sighted users navigating with a mouse or trackpad</td>
+</tr>
+<tr>
+<td><strong>Low vision users</strong></td>
+<td>Users working with zoom (200%+), magnification, high contrast themes, or large cursors</td>
+</tr>
+<tr>
+<td><strong>Screen reader users (NVDA / JAWS)</strong></td>
+<td>Windows users navigating with NVDA or JAWS</td>
+</tr>
+<tr>
+<td><strong>Screen reader users (VoiceOver)</strong></td>
+<td>macOS users navigating with VoiceOver</td>
+</tr>
+<tr>
+<td><strong>CLI (gh)</strong></td>
+<td>Terminal review commands - predictable text output</td>
+</tr>
+</tbody></table>
+<details>
+<summary>GitHub CLI (gh) alternative - review from your terminal</summary>
+
+<p>The GitHub CLI offers a third path for reviewing PRs - especially useful for reading diffs and submitting verdicts:</p>
+<pre><code class="hljs language-bash"><span class="hljs-comment"># View the full PR diff in your terminal</span>
+gh <span class="hljs-built_in">pr</span> diff 42
+
+<span class="hljs-comment"># View PR details (description, status, checks)</span>
+gh <span class="hljs-built_in">pr</span> view 42
+
+<span class="hljs-comment"># Checkout the PR branch locally for testing</span>
+gh <span class="hljs-built_in">pr</span> checkout 42
+
+<span class="hljs-comment"># Approve the PR</span>
+gh <span class="hljs-built_in">pr</span> review 42 --approve --body <span class="hljs-string">&quot;Heading hierarchy looks correct. LGTM.&quot;</span>
+
+<span class="hljs-comment"># Request changes</span>
+gh <span class="hljs-built_in">pr</span> review 42 --request-changes --body <span class="hljs-string">&quot;The alt text on line 34 needs to describe the image.&quot;</span>
+
+<span class="hljs-comment"># Leave a comment-only review</span>
+gh <span class="hljs-built_in">pr</span> review 42 --comment --body <span class="hljs-string">&quot;A few observations - see details below.&quot;</span></code></pre>
+<p><strong>Best for:</strong> Quickly reading diffs, approving/rejecting PRs, and checking out branches for local testing. For inline comments on specific lines, use the web interface or VS Code.</p>
+</details>
+
+
+<h2 id="part-1---reviewing-on-githubcom">Part 1 - Reviewing on GitHub.com</h2>
+<h3 id="good-news-modern-interface-is-default">Good News: Modern Interface is Default</h3>
+<p>As of January 2026, GitHub&#39;s improved Files Changed experience is enabled by default. The instructions below assume you have the modern interface (which you do).</p>
+<p>If the interface seems different from what&#39;s described here, clear your browser cache and reload the page.</p>
+<h3 id="step-1-reach-the-files-changed-tab">Step 1: Reach the Files Changed Tab</h3>
+<p>From any pull request page:</p>
+<details>
+<summary>Visual / mouse users</summary>
+
+<p>Click the <strong>Files changed</strong> tab at the top of the PR page. The tab label shows the number of changed files (e.g., &quot;Files changed 4&quot;).</p>
+</details>
+
+<details>
+<summary>Low vision users (zoom, high contrast)</summary>
+
+<ol>
+<li>The PR tabs (Conversation, Commits, Checks, Files changed) are across the top of the PR page. At high zoom they may wrap to multiple lines.</li>
+<li>The <strong>Files changed</strong> tab includes a badge with the number of changed files. This badge uses text (not colour alone) so it is visible in all themes.</li>
+<li>After clicking Files changed, the diff page loads. At high zoom, the file tree panel on the left may collapse automatically. Click the <strong>file tree toggle</strong> (a small panel icon) or press <code>T</code> to toggle it back.</li>
+<li>Added lines use a green background; removed lines use red. In high contrast browser settings (Windows: Settings &gt; Accessibility &gt; Contrast themes), these colours map to strong border indicators.</li>
+<li>Use <code>Ctrl++</code> to zoom the browser if the diff text is too small, and <code>Ctrl+-</code> to zoom out.</li>
+</ol>
+</details>
+
+<details>
+<summary>Screen reader users (NVDA / JAWS)</summary>
+
+<pre><code class="hljs language-text">Press D → navigate to &quot;Pull request navigation tabs&quot; landmark
+Press → or Tab → find &quot;Files changed&quot; link → Enter</code></pre>
+<p>The tab label announces the number of changed files: <em>&quot;Files changed, 4 files changed&quot;</em></p>
+</details>
+
+<details>
+<summary>Screen reader users (VoiceOver - macOS)</summary>
+
+<pre><code class="hljs language-text">VO+U → Landmarks → navigate to &quot;Pull request navigation tabs&quot;
+VO+Right or Quick Nav K → find &quot;Files changed&quot; link → VO+Space</code></pre>
+<p>VoiceOver announces the number of changed files: <em>&quot;Files changed, 4 files changed&quot;</em></p>
+</details>
+
+
+<h3 id="step-2-use-the-file-tree-to-orient-yourself">Step 2: Use the File Tree to Orient Yourself</h3>
+<p>The file tree panel lists every changed file. Before reading any diff, scan this list to understand the scope of the PR.</p>
+<details>
+<summary>Visual / mouse users</summary>
+
+<p>The file tree is the left panel on the Files Changed page. Each file shows its name and a <code>+N / -N</code> badge (lines added/removed). Click any filename to scroll directly to its diff.</p>
+</details>
+
+<details>
+<summary>Screen reader users (NVDA / JAWS)</summary>
+
+<pre><code class="hljs language-text">Press D → navigate to &quot;File tree&quot; region
+Press ↓ to move through files
+Each file reads: &quot;[filename] - [N additions, N deletions]&quot;
+Press Enter on a file to scroll its diff into view</code></pre>
+</details>
+
+<details>
+<summary>Screen reader users (VoiceOver - macOS)</summary>
+
+<pre><code class="hljs language-text">VO+U → Landmarks → navigate to &quot;File tree&quot; region
+VO+Down to move through files
+Each file reads: &quot;[filename] - [N additions, N deletions]&quot;
+VO+Space on a file to scroll its diff into view</code></pre>
+</details>
+
+<h4 id="what-to-listen-for--look-for">What to listen for / look for</h4>
+<ul>
+<li>How many files changed?</li>
+<li>Which areas of the codebase are affected?</li>
+<li>Are there unexpected files (generated files, lock files, configuration changes)?</li>
+</ul>
+<details>
+<summary>Low vision users (zoom, high contrast)</summary>
+
+<ol>
+<li>The file tree shows each filename with a colour-coded bar indicating lines added (green) and removed (red). In high contrast mode, these bars may be less visible - the <code>+N / -N</code> text badge next to each file is the reliable indicator.</li>
+<li>At high zoom, long file paths truncate. Hover over a truncated name to see the full path in a tooltip.</li>
+<li>If the file tree panel is too narrow at high zoom, drag its right edge to widen it, or toggle it off and use heading navigation (<code>H</code> key) to move between file diffs.</li>
+</ol>
+</details>
+
+
+<h3 id="step-3-navigate-between-file-diffs">Step 3: Navigate Between File Diffs</h3>
+<p>Each changed file in the main area is an <code>h3</code> heading containing the filename.</p>
+<details>
+<summary>Visual / mouse users</summary>
+
+<p>Scroll through the page or click a filename in the file tree on the left. Collapsed files can be expanded by clicking the file header.</p>
+</details>
+
+<details>
+<summary>Screen reader users (NVDA / JAWS)</summary>
+
+<pre><code class="hljs language-text">Press 3 to jump file-by-file through the diff
+Listen for: &quot;learning-room/docs/keyboard-shortcuts.md - collapsed&quot; or &quot;expanded&quot;
+Press Enter or Space to expand a collapsed file</code></pre>
+<p>If a diff is very long, the file tree is usually faster than pressing <code>3</code> repeatedly.</p>
+</details>
+
+<details>
+<summary>Screen reader users (VoiceOver - macOS)</summary>
+
+<pre><code class="hljs language-text">Quick Nav H or VO+Cmd+H to jump file-by-file through the diff
+Listen for: &quot;learning-room/docs/keyboard-shortcuts.md - collapsed&quot; or &quot;expanded&quot;
+VO+Space to expand a collapsed file</code></pre>
+<p>If a diff is very long, the file tree is usually faster than using heading navigation.</p>
+</details>
+
+
+<h3 id="step-4-read-a-diff">Step 4: Read a Diff</h3>
+<p>Each file&#39;s diff is a table. Every row is one line of code.</p>
+<details>
+<summary>Visual / mouse users</summary>
+
+<ul>
+<li><strong>Green highlighted lines</strong> (with a <code>+</code>) = lines added</li>
+<li><strong>Red highlighted lines</strong> (with a <code>-</code>) = lines removed</li>
+<li><strong>Plain/white lines</strong> = unchanged context</li>
+<li>Use <code>Ctrl+F</code> to search within the page for specific text in the diff</li>
+</ul>
+</details>
+
+<details>
+<summary>Low vision users (zoom, high contrast)</summary>
+
+<ol>
+<li><strong>Colour is not the only indicator.</strong> Every added line has a <code>+</code> character in the gutter; every removed line has a <code>-</code>. These text characters are reliable regardless of colour settings.</li>
+<li>At high zoom, long lines of code wrap. The <code>+</code>/<code>-</code> gutter character stays at the beginning of the first line, so look left to determine the change type.</li>
+<li>Use <code>Ctrl+F</code> (browser find) to search for specific text across the entire diff page.</li>
+<li>If the diff is split view (side by side), it may be very wide at high zoom. Switch to <strong>unified diff</strong> mode: click the gear icon in the Files Changed toolbar and select &quot;Unified&quot; - this shows old and new in a single column.</li>
+<li>High contrast themes in Windows (Settings &gt; Accessibility &gt; Contrast themes) make the <code>+</code>/<code>-</code> lines use bold border patterns instead of subtle colour shading.</li>
+</ol>
+</details>
+
+<details>
+<summary>Screen reader users - NVDA</summary>
+
+<pre><code class="hljs">Press T <span class="hljs-built_in">to</span> jump <span class="hljs-built_in">to</span> <span class="hljs-keyword">the</span> diff table <span class="hljs-keyword">then</span> Insert+Space (Focus Mode)
+Press Down Arrow <span class="hljs-built_in">to</span> move through <span class="hljs-keyword">lines</span> <span class="hljs-literal">one</span> <span class="hljs-keyword">at</span> <span class="hljs-keyword">a</span> <span class="hljs-built_in">time</span>
+Press Ctrl+Alt+Right Arrow <span class="hljs-built_in">to</span> <span class="hljs-built_in">read</span> across columns: <span class="hljs-built_in">line</span> <span class="hljs-built_in">number</span>, change type, code content</code></pre>
+</details>
+
+<details>
+<summary>Screen reader users - JAWS</summary>
+
+<pre><code class="hljs">Press T <span class="hljs-keyword">to</span> jump <span class="hljs-keyword">to</span> the diff <span class="hljs-keyword">table</span> <span class="hljs-keyword">then</span> <span class="hljs-keyword">Insert</span>+Z (Virtual PC <span class="hljs-keyword">Cursor</span> <span class="hljs-keyword">off</span>)
+Press Down Arrow <span class="hljs-keyword">to</span> <span class="hljs-keyword">move</span> through lines
+Press Ctrl+Alt+Right Arrow <span class="hljs-keyword">for</span> <span class="hljs-keyword">column</span>-<span class="hljs-keyword">by</span>-<span class="hljs-keyword">column</span> reading</code></pre>
+</details>
+
+<details>
+<summary>Screen reader users - VoiceOver (macOS)</summary>
+
+<pre><code class="hljs">Press T or VO+U then Tables then <span class="hljs-selector-tag">select</span> the diff <span class="hljs-selector-tag">table</span>
+VO+Shift+Down Arrow <span class="hljs-selector-tag">to</span> enter the <span class="hljs-selector-tag">table</span>
+VO+<span class="hljs-attribute">Right</span>/<span class="hljs-attribute">Left</span> <span class="hljs-selector-tag">to</span> navigate <span class="hljs-attribute">columns</span>, VO+Up/Down <span class="hljs-selector-tag">to</span> navigate rows</code></pre>
+</details>
+
+<h4 id="what-each-line-announces--shows">What each line announces / shows</h4>
+<ul>
+<li>Added lines: <code>&quot;+ [code content]&quot;</code> - or announced as &quot;inserted&quot;</li>
+<li>Removed lines: <code>&quot;- [code content]&quot;</code> - or announced as &quot;deleted&quot;</li>
+<li>Context lines: code without a <code>+</code> or <code>-</code></li>
+</ul>
+<p><strong>Tip:</strong> If the code on a line is very long, the screen reader will read the full line. For minified or generated files, consider collapsing the file in the tree and skipping it.</p>
+<h3 id="step-5-place-an-inline-comment">Step 5: Place an Inline Comment</h3>
+<p>When you have a specific observation about a particular line, place an inline comment directly on it.</p>
+<details>
+<summary>Visual / mouse users</summary>
+
+<ol>
+<li>Hover your mouse over a line in the diff - a <strong>blue <code>+</code></strong> (comment) button appears on the left</li>
+<li>Click it to open the inline comment box</li>
+<li>Type your comment</li>
+<li>Click <strong>&quot;Start a review&quot;</strong> (not &quot;Add single comment&quot; - see note below)</li>
+</ol>
+</details>
+
+<details>
+<summary>Screen reader users (NVDA / JAWS)</summary>
+
+<pre><code class="hljs language-text">Step 1: Navigate to the target line in the diff table (see Step 4)
+Step 2: While focused on that line, press Tab → look for a comment button
+Step 3: Alternatively: press B to navigate buttons → look for &quot;Add a comment to this line&quot;
+Step 4: Press Enter to open the inline comment box
+Step 5: Insert+Space (NVDA) or Insert+Z (JAWS) → switch to Focus Mode
+Step 6: Type your comment
+Step 7: Tab to &quot;Start a review&quot; button (not &quot;Add single comment&quot; - see note below)
+Step 8: Press Enter</code></pre>
+</details>
+
+<details>
+<summary>Screen reader users (VoiceOver - macOS)</summary>
+
+<pre><code class="hljs language-text">Step 1: Navigate to the target line in the diff table (see Step 4)
+Step 2: While focused on that line, Tab → look for a comment button
+Step 3: Alternatively: Quick Nav B → look for &quot;Add a comment to this line&quot;
+Step 4: VO+Space to open the inline comment box
+Step 5: VO+Shift+Down to interact with the text area
+Step 6: Type your comment
+Step 7: VO+Shift+Up to stop interacting → Tab to &quot;Start a review&quot; button
+Step 8: VO+Space</code></pre>
+</details>
+
+<blockquote>
+<p><strong>Why &quot;Start a review&quot; instead of &quot;Add single comment&quot;:</strong> A single comment posts immediately and sends a notification for each one. &quot;Start a review&quot; batches all your comments and sends one notification when you submit - far less disruptive for the author.</p>
+</blockquote>
+<h4 id="placing-a-multi-line-comment">Placing a multi-line comment</h4>
+<details>
+<summary>Visual / mouse users</summary>
+
+<p>Click and drag across multiple line numbers in the diff gutter to select a range. A comment button appears for the selected range.</p>
+</details>
+
+<details>
+<summary>Screen reader users (NVDA / JAWS)</summary>
+
+<pre><code class="hljs language-text">Step 1: Navigate to the first line of the range
+Step 2: Press Shift+↓ to extend selection to additional lines
+Step 3: A comment button appears for the selected range
+Step 4: Proceed as above</code></pre>
+</details>
+
+<details>
+<summary>Screen reader users (VoiceOver - macOS)</summary>
+
+<pre><code class="hljs language-text">Step 1: Navigate to the first line of the range
+Step 2: Shift+↓ to extend selection to additional lines
+Step 3: A comment button appears for the selected range
+Step 4: VO+Space to activate, then proceed as above</code></pre>
+</details>
+
+
+<h3 id="step-6-read-existing-comments-and-threads">Step 6: Read Existing Comments and Threads</h3>
+<p>Inline comments from other reviewers appear as <code>h3</code> headings within the diff table. Each thread shows: reviewer username, comment body, replies, a &quot;Reply&quot; link and resolution button.</p>
+<details>
+<summary>Visual / mouse users</summary>
+
+<p>Comments appear inline within the diff as collapsible cards. Click <strong>&quot;Reply…&quot;</strong> to add to a thread. Click <strong>&quot;Resolve conversation&quot;</strong> to mark a thread done (requires write access).</p>
+</details>
+
+<details>
+<summary>Screen reader users (NVDA / JAWS)</summary>
+
+<p>Navigate them with <code>3</code> (jump to <code>h3</code> headings in the diff).</p>
+<p>To add to a thread:</p>
+<pre><code class="hljs language-text">Step 1: Navigate to the thread heading (3)
+Step 2: Tab to &quot;Reply…&quot; link
+Step 3: Enter → text area appears → Focus Mode → type reply
+Step 4: Ctrl+Enter to submit the reply</code></pre>
+<p>To mark a thread as resolved (if you have write access):</p>
+<pre><code class="hljs language-text">Tab to the &quot;Resolve conversation&quot; button → Enter</code></pre>
+</details>
+
+<details>
+<summary>Screen reader users (VoiceOver - macOS)</summary>
+
+<p>Navigate with Quick Nav <code>H</code> or <code>VO+Cmd+H</code> (jump to headings in the diff).</p>
+<p>To add to a thread:</p>
+<pre><code class="hljs language-text">Step 1: Quick Nav H to navigate to the thread heading
+Step 2: Tab to &quot;Reply…&quot; link
+Step 3: VO+Space → text area appears → VO+Shift+Down → type reply
+Step 4: Cmd+Return to submit the reply</code></pre>
+<p>To mark a thread as resolved (if you have write access):</p>
+<pre><code class="hljs language-text">Tab to the &quot;Resolve conversation&quot; button → VO+Space</code></pre>
+</details>
+
+
+<h3 id="step-7-submit-your-review">Step 7: Submit Your Review</h3>
+<p>After adding all inline comments:</p>
+<details>
+<summary>Visual / mouse users</summary>
+
+<ol>
+<li>Click the <strong>&quot;Review changes&quot;</strong> button (top-right of the Files Changed page or bottom of the PR)</li>
+<li>A dialog opens with a summary text area and three radio buttons: Comment / Approve / Request changes</li>
+<li>Optionally type an overall summary in the text area</li>
+<li>Select your verdict</li>
+<li>Click <strong>&quot;Submit review&quot;</strong></li>
+</ol>
+</details>
+
+<details>
+<summary>Screen reader users (NVDA / JAWS)</summary>
+
+<pre><code class="hljs language-text">Step 1: Press D → navigate to &quot;Pull request navigation tabs&quot;
+Step 2: Press ← to return to the Conversation tab → Enter
+Step 3: Scroll to the bottom (End key, or ↓ repeatedly)
+Step 4: Alternatively: press B repeatedly → find &quot;Review changes&quot; button
+Step 5: Press Enter to open the review summary dialog
+Step 6: Focus Mode → type your overall comment
+Step 7: Tab to the radio button group → ↑/↓ to select a verdict
+Step 8: Tab to &quot;Submit review&quot; button → Enter</code></pre>
+</details>
+
+<details>
+<summary>Screen reader users (VoiceOver - macOS)</summary>
+
+<pre><code class="hljs language-text">Step 1: VO+U → Landmarks → navigate to &quot;Pull request navigation tabs&quot;
+Step 2: VO+Left to return to the Conversation tab → VO+Space
+Step 3: VO+End or VO+Down to reach the bottom of the page
+Step 4: Alternatively: Quick Nav B → find &quot;Review changes&quot; button
+Step 5: VO+Space to open the review summary dialog
+Step 6: VO+Shift+Down → type your overall comment
+Step 7: VO+Shift+Up → Tab to the radio button group → VO+Left/Right to select a verdict
+Step 8: Tab to &quot;Submit review&quot; button → VO+Space</code></pre>
+</details>
+
+<h4 id="verdicts-and-their-meaning">Verdicts and their meaning</h4>
+<table>
+<thead>
+<tr>
+<th scope="col">Verdict</th>
+<th scope="col">When to use</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Comment</td>
+<td>You have observations but no strong position; does not block merge</td>
+</tr>
+<tr>
+<td>Approve</td>
+<td>You&#39;ve reviewed and are satisfied; signals readiness to merge</td>
+</tr>
+<tr>
+<td>Request changes</td>
+<td>Changes are needed before this should merge; blocks merge</td>
+</tr>
+</tbody></table>
+<h3 id="step-8-re-request-review-for-authors">Step 8: Re-request Review (for Authors)</h3>
+<p>After you address review comments on your own PR:</p>
+<details>
+<summary>Visual / mouse users</summary>
+
+<p>Look in the right sidebar for the <strong>Reviewers</strong> section. Click the <strong>re-request icon</strong> (circular arrows) next to the reviewer&#39;s name to notify them that you&#39;ve pushed changes.</p>
+</details>
+
+<details>
+<summary>Screen reader users (NVDA / JAWS)</summary>
+
+<pre><code class="hljs language-text">Step 1: From your PR&#x27;s Conversation tab, find the reviewer&#x27;s name in the sidebar (3 → &quot;Reviewers&quot; heading)
+Step 2: Activate the refresh/re-request icon next to their name
+Step 3: This re-notifies the reviewer that you&#x27;ve made changes</code></pre>
+</details>
+
+<details>
+<summary>Screen reader users (VoiceOver - macOS)</summary>
+
+<pre><code class="hljs language-text">Step 1: From your PR&#x27;s Conversation tab, Quick Nav H or VO+Cmd+H to find the &quot;Reviewers&quot; heading in the sidebar
+Step 2: Tab or Quick Nav B to find the re-request icon (&quot;Re-request review&quot;) next to the reviewer&#x27;s name
+Step 3: VO+Space to activate - this re-notifies the reviewer that you&#x27;ve made changes</code></pre>
+</details>
+
+<h3 id="learning-cards-reviewing-on-githubcom">Learning Cards: Reviewing on GitHub.com</h3>
+<p><strong>Screen reader users:</strong></p>
+<ul>
+<li>In the Files Changed tab, press <code>T</code> to jump to the diff table, then use Focus Mode (<code>Insert+Space</code> in NVDA, <code>Insert+Z</code> in JAWS) and <code>Down Arrow</code> to read line by line -- each added line starts with <code>+</code> and each removed line with <code>-</code></li>
+<li>To place an inline comment, navigate to the target line and press <code>Tab</code> or <code>B</code> to find the &quot;Add a comment to this line&quot; button; after typing your comment, choose &quot;Start a review&quot; (not &quot;Add single comment&quot;) to batch all feedback into one notification</li>
+<li>Submit your full review by pressing <code>B</code> repeatedly to find the &quot;Review changes&quot; button; the dialog contains a radio group (Comment / Approve / Request changes) navigable with <code>Arrow</code> keys, then <code>Tab</code> to &quot;Submit review&quot;</li>
+</ul>
+<p><strong>Low-vision users:</strong></p>
+<ul>
+<li>Switch from split diff to unified diff (gear icon in the Files Changed toolbar then select &quot;Unified&quot;) to show old and new code in a single column -- much easier to follow at high zoom than two side-by-side panes</li>
+<li>The blue <code>+</code> comment button appears in the line gutter on hover; at high zoom it may be small -- use <code>Ctrl++</code> to increase browser zoom and look just left of the line number column</li>
+<li>The &quot;Review changes&quot; dialog uses clearly labeled radio buttons for the three verdict types; each label includes a brief description, and the currently selected option has a filled circle indicator visible in all themes</li>
+</ul>
+<p><strong>Sighted users:</strong></p>
+<ul>
+<li>Use the file tree on the left side of the Files Changed page to jump between files; each file shows a coloured bar indicating the ratio of additions (green) to deletions (red) so you can prioritize large changes</li>
+<li>Hover on any line in the diff gutter to reveal the blue <code>+</code> icon for inline comments; click and drag across multiple line numbers to comment on a range of lines at once</li>
+<li>After adding all inline comments, click the green &quot;Review changes&quot; button at the top right, write a summary sentence, select your verdict, and click &quot;Submit review&quot; to post everything in one batch</li>
+</ul>
+<h2 id="part-2---reviewing-in-vs-code-with-the-accessible-diff-viewer">Part 2 - Reviewing in VS Code with the Accessible Diff Viewer</h2>
+<p>When you check out a branch locally, VS Code&#39;s diff editor offers the <strong>Accessible Diff Viewer</strong> - a purpose-built, line-by-line reading mode designed specifically for screen readers.</p>
+<h3 id="opening-a-diff-in-vs-code">Opening a Diff in VS Code</h3>
+<p>If you have the GitHub Pull Requests extension:</p>
+<ol>
+<li>Open the GitHub Pull Requests view (Explorer sidebar or Ctrl+Shift+P → &quot;GitHub Pull Requests: View Pull Request&quot;)</li>
+<li>Find the PR and open it - changed files appear in the file tree</li>
+<li>Navigate to any file in the tree and press <code>Enter</code> to open its diff view</li>
+</ol>
+<p>Without the extension, any <code>git diff</code> operation also opens the diff editor.</p>
+<h3 id="learning-cards-vs-code-code-review">Learning Cards: VS Code Code Review</h3>
+<details>
+<summary>Low vision users (zoom, high contrast)</summary>
+
+<p>VS Code&#39;s diff editor works well at high zoom:</p>
+<ol>
+<li><strong>Split view vs. inline:</strong> By default, VS Code shows diffs in a split (side-by-side) view. At high zoom this can be very cramped. Switch to inline mode: <code>Ctrl+Shift+P</code> then type &quot;Toggle Inline View&quot; in any diff editor. Inline mode shows old and new code in a single column.</li>
+<li><strong>Colour indicators:</strong> Added lines have a green gutter bar; removed lines have a red gutter bar. In high contrast themes, these use heavy solid borders that are visible even at extreme zoom levels.</li>
+<li><strong>Change navigation:</strong> Press <code>F7</code> to jump to the next change and <code>Shift+F7</code> for the previous. Each change is highlighted with a visible focus box that moves with your position - much easier than scrolling at high zoom.</li>
+<li><strong>Minimap in diff view:</strong> The minimap (right edge) shows an overview of changes as coloured blocks. At high zoom the minimap may be too small to be useful - disable it via Settings if it adds visual noise.</li>
+<li><strong>Font size for diffs:</strong> Diff editors use your configured editor font size (<code>editor.fontSize</code>). Increase this in Settings (<code>Ctrl+,</code>) if the diff text is too small at your zoom level.</li>
+<li><strong>Comment highlight:</strong> When you add a comment through the GitHub PR extension, the commented line gets a distinct background. In high contrast themes this is a solid colour band.</li>
+</ol>
+</details>
+
+<details>
+<summary>Screen reader users (NVDA / JAWS on Windows)</summary>
+
+<h4 id="opening-the-pr-for-review">Opening the PR for review</h4>
+<ol>
+<li>Press <code>Ctrl+Shift+P</code>, type &quot;GitHub Pull Requests: View Pull Request&quot;</li>
+<li>The PR tree appears in the sidebar - navigate with <code>Down Arrow</code></li>
+<li>Each changed file is announced with its name and change summary</li>
+<li>Press <code>Enter</code> on a file to open its diff editor</li>
+<li>The diff editor opens with the standard VS Code diff layout</li>
+</ol>
+<h4 id="using-the-accessible-diff-viewer">Using the Accessible Diff Viewer</h4>
+<ol>
+<li>In the diff editor, press <code>F7</code> to open the Accessible Diff Viewer</li>
+<li>NVDA announces: &quot;Changed lines X to Y in filename, Change 1 of N&quot;</li>
+<li>The viewer shows each change with &quot;Removed:&quot; and &quot;Added:&quot; labels</li>
+<li>Press <code>F7</code> to move to the next change, <code>Shift+F7</code> for previous</li>
+<li>Press <code>Escape</code> when done to close the viewer</li>
+</ol>
+<h4 id="placing-a-comment">Placing a comment</h4>
+<ol>
+<li>Navigate to the line you want to comment on in the diff</li>
+<li>Press <code>Ctrl+Shift+P</code>, type &quot;GitHub Pull Requests: Add Comment&quot;</li>
+<li>A text area opens below the line - NVDA announces the input focus</li>
+<li>Type your comment</li>
+<li>Press <code>Tab</code> to the Submit button, then <code>Enter</code></li>
+</ol>
+</details>
+
+<details>
+<summary>Screen reader users (VoiceOver on macOS)</summary>
+
+<h4 id="opening-the-pr">Opening the PR</h4>
+<ol>
+<li>Press <code>Cmd+Shift+P</code>, type &quot;GitHub Pull Requests: View Pull Request&quot;</li>
+<li>Navigate the PR tree with <code>VO+Down Arrow</code></li>
+<li>Press <code>Return</code> on a file to open its diff</li>
+</ol>
+<h4 id="accessible-diff-viewer">Accessible Diff Viewer</h4>
+<ol>
+<li>Press <code>F7</code> in the diff editor</li>
+<li>VoiceOver announces each change with clear &quot;Removed&quot; and &quot;Added&quot; labels</li>
+<li>Navigate with <code>F7</code>/<code>Shift+F7</code></li>
+<li>Press <code>Escape</code> to close</li>
+</ol>
+<h4 id="comment-placement">Comment placement</h4>
+<ol>
+<li>Press <code>Cmd+Shift+P</code>, type &quot;GitHub Pull Requests: Add Comment&quot;</li>
+<li><code>VO+Shift+Down Arrow</code> to interact with the comment text area</li>
+<li>Type your comment</li>
+<li><code>VO+Shift+Up Arrow</code> to stop interacting, then <code>Tab</code> to Submit</li>
+</ol>
+</details>
+
+<h3 id="using-the-accessible-diff-viewer-f7">Using the Accessible Diff Viewer (<code>F7</code>)</h3>
+<p>From any open diff editor:</p>
+<pre><code class="hljs language-text">Press F7 → Accessible Diff Viewer opens as a panel below the diff</code></pre>
+<p>The Accessible Diff Viewer reads each change as a structured block:</p>
+<pre><code class="hljs language-text">&quot;Changed lines 14 to 14 in docs/keyboard-shortcuts.md
+[Change 1 of 3]
+
+Removed:
+    #### NVDA Single-Key Navigation
+
+Added:
+    ### NVDA Single-Key Navigation&quot;</code></pre>
+<p>This example is from a real Learning Room scenario: a contributor fixing the heading hierarchy in <code>docs/keyboard-shortcuts.md</code> by changing a level-4 heading to level-3, which is exactly what you look for when reviewing Challenge 2 PRs.</p>
+<h4 id="navigation">Navigation</h4>
+<ul>
+<li><code>F7</code> - jump to next change (next hunk)</li>
+<li><code>Shift+F7</code> - jump to previous change</li>
+<li><code>Alt+F2</code> - open VS Code&#39;s Accessible View for additional context on the current item</li>
+<li><code>Escape</code> - close the Accessible Diff Viewer</li>
+</ul>
+<h4 id="what-makes-this-better-than-the-raw-diff-editor">What makes this better than the raw diff editor</h4>
+<ul>
+<li>Each change is announced as a discrete unit with clear &quot;Removed:&quot; and &quot;Added:&quot; labels</li>
+<li>You hear the change number of total changes (&quot;Change 3 of 12&quot;)</li>
+<li>No table navigation required - purpose-built for sequential listening</li>
+<li>Works with all three major screen readers without any special configuration</li>
+</ul>
+<h3 id="placing-comments-in-vs-code-github-pr-extension">Placing Comments in VS Code (GitHub PR Extension)</h3>
+<p>From the diff editor with the GitHub PR extension:</p>
+<pre><code class="hljs language-text">Step 1: In the diff gutter, navigate to the line you want to comment on
+Step 2: Ctrl+Shift+P → &quot;GitHub Pull Requests: Add Comment&quot;
+Step 3: Or press Shift+F10 (Windows) or Control+Return (macOS) on the line → context menu → &quot;GitHub Pull Requests: Add Comment&quot;
+Step 4: A text area opens - type your comment
+Step 5: Submit from the inline UI</code></pre>
+<p>Comments placed in VS Code sync to GitHub - they appear in the PR&#39;s Files Changed tab and the author receives the same notification.</p>
+<h2 id="code-review-structure-and-content">Code Review Structure and Content</h2>
+<h3 id="the-anatomy-of-a-useful-review-comment">The Anatomy of a Useful Review Comment</h3>
+<p>A comment that helps the author is:</p>
+<ol>
+<li><strong>Specific</strong> - link to the exact line and name the pattern you see</li>
+<li><strong>Educational</strong> - say <em>why</em> something matters, not just what to change</li>
+<li><strong>Graduated</strong> - signal whether this is blocking, or a preference</li>
+</ol>
+<h4 id="blocking-example-reviewing-a-pr-for-docskeyboard-shortcutsmd">Blocking example (reviewing a PR for <code>docs/keyboard-shortcuts.md</code>)</h4>
+<blockquote>
+<p>&quot;The heading on line 34 uses <code>####</code> (level 4) directly after <code>##</code> (level 2), skipping heading level 3. Screen reader users who navigate by heading level will miss any content between those two levels. Please change <code>####</code> to <code>###</code> before this merges.&quot;</p>
+</blockquote>
+<h4 id="non-blocking-nit-example-reviewing-a-pr-for-docswelcomemd">Non-blocking (nit) example (reviewing a PR for <code>docs/welcome.md</code>)</h4>
+<blockquote>
+<p>&quot;nit: The link text in the &#39;Getting Help&#39; section reads &#39;click here for more information.&#39; Screen reader users who navigate links out of context will hear only &#39;click here&#39; with no destination. Consider &#39;See the accessibility setup guide&#39; instead. Not blocking.&quot;</p>
+</blockquote>
+<h4 id="question-example-reviewing-a-pr-for-docssetup-guidemd">Question example (reviewing a PR for <code>docs/setup-guide.md</code>)</h4>
+<blockquote>
+<p>&quot;The PR description says this fixes broken links in the setup guide, but the link on line 12 still points to <code>/docs/old-setup</code>. Am I reading the diff correctly, or was this link intentionally left? Happy to re-review once I understand.&quot;</p>
+</blockquote>
+<h3 id="prefixes-that-set-expectations">Prefixes That Set Expectations</h3>
+<p>Using shorthand prefixes helps authors parse many comments quickly:</p>
+<table>
+<thead>
+<tr>
+<th scope="col">Prefix</th>
+<th scope="col">Meaning</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>nit:</code></td>
+<td>Non-blocking stylistic preference</td>
+</tr>
+<tr>
+<td><code>question:</code></td>
+<td>Genuine question; not blocking</td>
+</tr>
+<tr>
+<td><code>suggestion:</code></td>
+<td>Alternative to consider; take it or leave it</td>
+</tr>
+<tr>
+<td><code>important:</code></td>
+<td>Should be addressed; may block</td>
+</tr>
+<tr>
+<td><code>blocking:</code></td>
+<td>Must be addressed before merge</td>
+</tr>
+<tr>
+<td><code>praise:</code></td>
+<td>Positive callout - works well, good pattern</td>
+</tr>
+</tbody></table>
+<h3 id="how-many-comments-is-too-many">How Many Comments Is Too Many?</h3>
+<p>There is no hard limit, but quantity without prioritization is noise. If you have 15 comments, make clear which 2-3 are blocking. Authors can then focus energy on what matters most and address preferences in follow-up PRs.</p>
+<h2 id="keyboard-reference">Keyboard Reference</h2>
+<h3 id="github-web-review">GitHub Web Review</h3>
+<table>
+<thead>
+<tr>
+<th scope="col">Action</th>
+<th scope="col">Key</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Navigate to Files Changed tab</td>
+<td><code>D</code> → PR tabs landmark → <code>→</code> → <code>Enter</code></td>
+</tr>
+<tr>
+<td>Jump between file diffs</td>
+<td><code>3</code></td>
+</tr>
+<tr>
+<td>Navigate diff lines (NVDA/JAWS)</td>
+<td>Focus Mode + <code>↓</code></td>
+</tr>
+<tr>
+<td>Read across diff columns</td>
+<td><code>Ctrl+Alt+→</code></td>
+</tr>
+<tr>
+<td>Open inline comment box</td>
+<td>Line focused → <code>B</code> → comment button</td>
+</tr>
+<tr>
+<td>Submit entire review</td>
+<td><code>D</code> → Conversation → <code>B</code> → &quot;Review changes&quot;</td>
+</tr>
+<tr>
+<td>Navigate existing threads</td>
+<td><code>3</code></td>
+</tr>
+<tr>
+<td>Reply to a thread</td>
+<td><code>3</code> → thread → <code>Tab</code> → &quot;Reply&quot; → <code>Enter</code></td>
+</tr>
+</tbody></table>
+<h3 id="vs-code-accessible-diff-viewer">VS Code Accessible Diff Viewer</h3>
+<table>
+<thead>
+<tr>
+<th scope="col">Action</th>
+<th scope="col">Key</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Open Accessible Diff Viewer</td>
+<td><code>F7</code></td>
+</tr>
+<tr>
+<td>Next change (hunk)</td>
+<td><code>F7</code></td>
+</tr>
+<tr>
+<td>Previous change (hunk)</td>
+<td><code>Shift+F7</code></td>
+</tr>
+<tr>
+<td>Open Accessible View</td>
+<td><code>Alt+F2</code></td>
+</tr>
+<tr>
+<td>Accessible Help (any widget)</td>
+<td><code>Alt+H</code></td>
+</tr>
+<tr>
+<td>Close Accessible Diff Viewer</td>
+<td><code>Escape</code></td>
+</tr>
+</tbody></table>
+<h2 id="common-review-scenarios">Common Review Scenarios</h2>
+<h3 id="quoti-want-to-verify-the-pr-only-changes-what-it-claimsquot">&quot;I want to verify the PR only changes what it claims&quot;</h3>
+<p><strong>Example:</strong> A PR says &quot;Challenge 2: Add NVDA shortcut&quot; but the file tree shows changes to both <code>docs/keyboard-shortcuts.md</code> and <code>docs/welcome.md</code>.</p>
+<pre><code class="hljs language-text">1. File tree → count the files, read the names
+2. 3 → navigate each file heading → listen to the stats line (N additions, N deletions)
+3. For keyboard-shortcuts.md: T → Focus Mode → ↓ through lines → verify the new shortcut row
+4. For welcome.md: check if the change is related → if unrelated, leave a comment on the first line</code></pre>
+<h3 id="quoti-want-to-find-all-changes-to-one-specific-sectionquot">&quot;I want to find all changes to one specific section&quot;</h3>
+<p><strong>Example:</strong> A PR for Challenge 3 modified <code>docs/welcome.md</code>. You want to verify the <code>[TODO]</code> in the &quot;Who Can Contribute?&quot; section was filled in correctly.</p>
+<pre><code class="hljs language-text">1. In VS Code: open docs/welcome.md → Ctrl+G → jump to the &quot;Who Can Contribute?&quot; section
+2. F7 → Accessible Diff Viewer → listen for changes near that heading
+3. Or on GitHub: file tree → expand welcome.md → T → navigate the diff table to the [TODO] line</code></pre>
+<h3 id="quoti-agreed-but-then-the-author-made-more-changes---did-anything-new-appearquot">&quot;I agreed but then the author made more changes - did anything new appear?&quot;</h3>
+<pre><code class="hljs language-text">1. Go to the Commits tab (D → PR tabs → &quot;Commits&quot; → Enter)
+2. 3 to navigate commits - find any commits after your last review
+3. Press `Enter` on the commit to see only what changed in that push (not the full diff)</code></pre>
+<h3 id="quota-reviewer-left-a-comment-i-don39t-understandquot">&quot;A reviewer left a comment I don&#39;t understand&quot;</h3>
+<pre><code class="hljs language-text">1. Read the full thread (3 → navigate to the thread heading)
+2. Tab to the &quot;Reply&quot; button
+3. Ask: &quot;Can you clarify what change you&#x27;re suggesting? I want to understand before I act on this.&quot;
+4. Or: reference a specific line in your reply using the line number</code></pre>
+<h2 id="exercises">Exercises</h2>
+<p>These exercises use the files in <code>learning-room/docs/</code> in this repository. All examples involve documentation changes - no code required.</p>
+<h3 id="exercise-a---complete-a-web-review">Exercise A - Complete a Web Review</h3>
+<p><strong>Scenario:</strong> A contributor has submitted a pull request titled &quot;Add screen reader tips to the setup guide.&quot; The PR modifies <code>learning-room/docs/setup-guide.md</code>. Your job is to review it before it merges.</p>
+<p><strong>What You&#39;ll Learn:</strong> How to use screen reader heading navigation to spot accessibility issues in a GitHub PR diff.</p>
+<h4 id="step-1-navigate-to-the-pull-request">Step 1: Navigate to the Pull Request</h4>
+<h5 id="what-to-do">What to do</h5>
+<ol>
+<li>Open GitHub in your browser and navigate to the workshop repository (<code>github.com/[your-fork]/[workshop-repo]</code> or <code>community-access/accessibility-agents</code>)</li>
+<li>Click the <strong>Pull Requests</strong> tab (top navigation)</li>
+<li>Look for a PR titled &quot;Add screen reader tips to the setup guide&quot; - click it to open</li>
+<li>You should now see the PR page with sections: Conversation, Commits, Files Changed</li>
+</ol>
+<h5 id="how-to-know-you39re-in-the-right-place">How to know you&#39;re in the right place</h5>
+<ul>
+<li>The PR title is visible at the top</li>
+<li>You see a description box with text about what this PR does</li>
+<li>You see tabs labeled &quot;Conversation,&quot; &quot;Commits,&quot; &quot;Files Changed&quot;</li>
+</ul>
+<h5 id="if-you-can39t-find-the-pr">If you can&#39;t find the PR</h5>
+<ul>
+<li>Use <code>Ctrl+F</code> to search the PR list for &quot;screen reader tips&quot;</li>
+<li>Or ask in the workshop Slack - someone can share the exact URL</li>
+</ul>
+<h4 id="step-2-read-the-pr-description">Step 2: Read the PR Description</h4>
+<h5 id="what-to-do">What to do</h5>
+<ol>
+<li>You are currently on the <strong>Conversation</strong> tab</li>
+<li>Read the PR description (the text immediately under the PR title)</li>
+<li>Look for: &quot;What does this PR change?&quot; and &quot;Why does it change it?&quot;</li>
+<li><strong>With screen reader:</strong> Navigate to the description with <code>D</code> (NVDA) or press <code>Ctrl+Option+Up</code> (VoiceOver) to find main landmarks, then read the content region</li>
+</ol>
+<h5 id="what-to-look-for">What to look for</h5>
+<ul>
+<li>Does the PR author explain what file changed? (should mention <code>setup-guide.md</code>)</li>
+<li>Does it explain why? (should mention &quot;improve accessibility&quot; or &quot;add tips&quot;)</li>
+<li>Is it clear enough that a reviewer can understand the goal without reading the diff?</li>
+</ul>
+<h5 id="what-success-looks-like">What success looks like</h5>
+<ul>
+<li>You can answer: &quot;This PR adds [specific content] to [specific file] because [clear reason]&quot;</li>
+<li>Example: &quot;This PR adds screen reader usage tips to the setup guide because new users need accessibility guidance&quot;</li>
+</ul>
+<h4 id="step-3-navigate-to-quotfiles-changedquot">Step 3: Navigate to &quot;Files Changed&quot;</h4>
+<h5 id="what-to-do">What to do</h5>
+<ol>
+<li>Click the <strong>Files Changed</strong> tab (top of the PR page, to the right of &quot;Commits&quot;)</li>
+<li>You are now viewing the diff</li>
+<li><strong>With keyboard (all screen readers):</strong> Press <code>T</code> to jump to the diff table. The page focuses on the file comparison area.</li>
+</ol>
+<h5 id="what-you-should-see">What you should see</h5>
+<ul>
+<li>A section showing the file name <code>setup-guide.md</code> with a small badge showing &quot;+20 −0&quot; (20 lines added, 0 lines removed)</li>
+<li>Below it, the diff with removed lines (preceded by <code>−</code>) and added lines (preceded by <code>+</code>)</li>
+</ul>
+<h5 id="if-you-see-multiple-files">If you see multiple files</h5>
+<ul>
+<li>Scroll up to see if there are other files. For this exercise, only <code>setup-guide.md</code> should be changed.</li>
+<li>If you see other files, confirm they are not modified (the badge should show &quot;+0 −0&quot; or no changes)</li>
+</ul>
+<h4 id="step-4-activate-focus-mode-for-better-diff-reading">Step 4: Activate Focus Mode for Better Diff Reading</h4>
+<h5 id="what-to-do">What to do</h5>
+<ol>
+<li>Look for a button labeled &quot;Focus Mode&quot; or an icon (usually at the top right of the diff area)</li>
+<li><strong>With keyboard:</strong> Press <code>F</code> to toggle Focus Mode (may need to be in the diff area first)</li>
+<li><strong>With mouse:</strong> Click the Focus Mode button/icon</li>
+</ol>
+<h5 id="what-happens-in-focus-mode">What happens in Focus Mode</h5>
+<ul>
+<li>The page simplifies: sidebars disappear</li>
+<li>Only the diff is visible - easier for screen reader navigation and less cognitive load</li>
+<li>The diff is now the main content area</li>
+</ul>
+<h5 id="with-screen-reader-once-in-focus-mode">With screen reader (once in Focus Mode)</h5>
+<ul>
+<li>NVDA/JAWS: Press <code>T</code> to jump to the diff table</li>
+<li>VoiceOver: Navigate with <code>VO+Right Arrow</code> to find the table/content region</li>
+<li>Read through the changes: <code>↓</code> arrow moves to each line</li>
+</ul>
+<h4 id="step-5-find-the-heading-hierarchy-issue">Step 5: Find the Heading Hierarchy Issue</h4>
+<h5 id="what-to-do">What to do</h5>
+<ol>
+<li><strong>Read through the entire diff</strong> line by line. Pay special attention to lines starting with <code>#</code></li>
+<li>You are looking for: a line with <code>####</code> (four hashes, heading level 4) that comes <em>directly after</em> a <code>##</code> (two hashes, heading level 2)</li>
+<li>When you find it, <strong>note the exact line number</strong> shown in the diff</li>
+</ol>
+<h5 id="example-of-what-you39re-looking-for">Example of what you&#39;re looking for</h5>
+<pre><code class="hljs language-text">  ## Setup Basics          ← Heading level 2
+  ...several lines...
+  #### Advanced Tips       ← Heading level 4 (skipped level 3!)</code></pre>
+<h5 id="why-this-matters">Why this matters</h5>
+<ul>
+<li>Screen reader users navigate documents by heading level: <code>1</code> → <code>2</code> → <code>3</code> → <code>4</code></li>
+<li>A skip from <code>##</code> to <code>####</code> breaks that navigation</li>
+<li>When a user presses &quot;jump to heading level 3,&quot; they&#39;ll find none, wondering if content is missing</li>
+</ul>
+<h5 id="what-success-looks-like">What success looks like</h5>
+<ul>
+<li>You found the line with <code>####</code> that violates hierarchy</li>
+<li>You can say the line number and what heading text appears there</li>
+<li>You understand <em>why</em> this is an accessibility problem</li>
+</ul>
+<h4 id="step-6-place-a-blocking-review-comment-on-the-heading">Step 6: Place a Blocking Review Comment on the Heading</h4>
+<h5 id="what-to-do">What to do</h5>
+<ol>
+<li>Find the diff line with the problematic <code>####</code> heading</li>
+<li><strong>Hover your mouse over the line number</strong> on the left side of that line (or if using keyboard, navigate to that line in the table)</li>
+<li>A button should appear (or press the Add Comment hotkey - usually <code>C</code> in GitHub)</li>
+<li>Click it or press <code>Enter</code> to open a comment box</li>
+</ol>
+<h5 id="in-the-comment-box">In the comment box</h5>
+<ol>
+<li>Type: <code>blocking:</code> (tells reviewers this stops the PR from merging)</li>
+<li><p>Press Space, then explain:</p>
+<pre><code class="hljs language-text">Heading hierarchy violation. This heading uses #### (level 4) directly 
+after ## (level 2), skipping level 3. Screen reader users navigating 
+by heading level will miss this section. Change to ### (level 3).</code></pre>
+</li>
+<li>Click the <strong>Comment</strong> button (or press <code>Ctrl+Enter</code> for keyboard submit)</li>
+</ol>
+<h5 id="what-happens-next">What happens next</h5>
+<ul>
+<li>Your comment appears in the thread under that line</li>
+<li>The PR author sees it and can make the fix</li>
+</ul>
+<h5 id="if-the-comment-button-doesn39t-appear">If the comment button doesn&#39;t appear</h5>
+<ul>
+<li>Make sure you&#39;re hovering over the <em>line number</em> area (left side of the line)</li>
+<li>Try refreshing the page and trying again</li>
+<li>Or use the &quot;Add a reply&quot; field at the bottom of the PR and mention the line number manually</li>
+</ul>
+<h4 id="step-7-find-the-link-text-issue">Step 7: Find the Link Text Issue</h4>
+<h5 id="what-to-do">What to do</h5>
+<ol>
+<li><strong>Continue reading the diff</strong> (from where you left off)</li>
+<li>Look for a line containing link text that reads <code>&quot;click here&quot;</code> or <code>&quot;click here for more information&quot;</code></li>
+<li><strong>Note the line number</strong></li>
+</ol>
+<h5 id="why-this-matters">Why this matters</h5>
+<ul>
+<li>Screen reader users can ask their reader to &quot;list all links on this page&quot; - they hear only the link text</li>
+<li>If the text is &quot;click here,&quot; they have no context about where it goes</li>
+<li>Descriptive link text is WCAG 2.4.4 (Link Purpose)</li>
+</ul>
+<h5 id="what-success-looks-like">What success looks like</h5>
+<ul>
+<li>You found a link with non-descriptive text</li>
+<li>You can explain why &quot;click here&quot; is bad and what would be better</li>
+</ul>
+<h4 id="step-8-place-a-comment-on-the-link">Step 8: Place a Comment on the Link</h4>
+<h5 id="what-to-do">What to do</h5>
+<ol>
+<li>Find the line in the diff with the problematic link</li>
+<li>Hover over the line number and click to open a comment box (or press <code>C</code>)</li>
+<li><p>Type:</p>
+<pre><code class="hljs language-text">nit: Link text &quot;click here&quot; is not descriptive. Screen reader users 
+who list links won&#x27;t know the context. Suggest: &quot;Read the accessibility 
+checklist&quot; or another descriptive phrase.</code></pre>
+</li>
+<li>Click <strong>Comment</strong> or press <code>Ctrl+Enter</code></li>
+</ol>
+<p><strong>Note:</strong> <code>nit:</code> means &quot;nice-to-have improvement&quot; (not blocking, but good to fix)</p>
+<h4 id="step-9-submit-your-review">Step 9: Submit Your Review</h4>
+<h5 id="what-to-do">What to do</h5>
+<ol>
+<li>Look for a button labeled <strong>&quot;Review changes&quot;</strong> (usually at the top right of the page or bottom of comments)</li>
+<li>Click it (or navigate with keyboard and press <code>Enter</code>)</li>
+<li>A dialog appears with options:<ul>
+<li><strong>Comment</strong> - provide feedback but don&#39;t block (for minor notes)</li>
+<li><strong>Approve</strong> - the PR is ready to merge</li>
+<li><strong>Request changes</strong> - this PR cannot merge until changes are made</li>
+</ul>
+</li>
+</ol>
+<h5 id="for-this-exercise">For this exercise</h5>
+<ol>
+<li>Select <strong>&quot;Request changes&quot;</strong> (you found two things to fix)</li>
+<li>In the summary field, write: <code>Found 2 accessibility issues that must be fixed before merging.</code></li>
+<li>Click <strong>&quot;Submit review&quot;</strong></li>
+</ol>
+<h5 id="what-happens">What happens</h5>
+<ul>
+<li>Your review is submitted</li>
+<li>The PR author gets a notification</li>
+<li>The PR shows your review with the two comments</li>
+<li>GitHub blocks merging until the author responds to or fixes the changes</li>
+</ul>
+<h5 id="what-success-looks-like">What success looks like</h5>
+<ul>
+<li>You see your review appear on the PR page</li>
+<li>It shows 2 comments you made</li>
+<li>The PR status shows &quot;Changes requested&quot;</li>
+</ul>
+<h4 id="reflect-on-this-exercise">Reflect on This Exercise</h4>
+<p>After submitting, answer:</p>
+<ol>
+<li><strong>Did heading-level navigation help?</strong> When you were looking for the <code>####</code> issue, was it easier to navigate by heading level (<code>1</code>-<code>6</code>) than to scan every line?</li>
+<li><strong>Would you have caught this without the exercise prompt?</strong> If you were a real reviewer not specifically looking for heading issues, would the diff have been obvious?</li>
+<li><strong>Why does screen reader navigation matter?</strong> In one sentence, explain why a screen reader user&#39;s ability to jump through heading levels is important for this document.</li>
+</ol>
+<p>Keep your answers - you&#39;ll need them for Chapter 16&#39;s Accessibility Agents exercise to compare manual review with agent-assisted review.</p>
+<h3 id="exercise-b---use-the-vs-code-accessible-diff-viewer">Exercise B - Use the VS Code Accessible Diff Viewer</h3>
+<p><strong>Scenario:</strong> Review the same pull request from Exercise A, this time entirely in VS Code. You&#39;ll compare the browser experience with the VS Code experience.</p>
+<p><strong>What You&#39;ll Learn:</strong> How the VS Code Accessible Diff Viewer announces changes differently than the browser diff, and when each environment is most useful.</p>
+<h4 id="prerequisites">Prerequisites</h4>
+<p>Before starting:</p>
+<ul>
+<li>VS Code must be installed on your machine</li>
+<li>The GitHub Pull Requests extension must be installed (see <a href="15-code-review.html">Chapter 12</a> for installation)</li>
+<li>You must be signed into GitHub from VS Code (use <code>Ctrl+Shift+P</code> → &quot;GitHub: Sign in&quot;)</li>
+</ul>
+<h4 id="step-1-open-the-github-pull-requests-extension">Step 1: Open the GitHub Pull Requests Extension</h4>
+<h5 id="what-to-do">What to do</h5>
+<ol>
+<li>Open VS Code</li>
+<li><strong>With keyboard (all screen readers):</strong> Press <code>Ctrl+Shift+X</code> to open the Extensions sidebar<ul>
+<li><strong>With mouse:</strong> Click the Extensions icon on the left sidebar (looks like four squares)</li>
+</ul>
+</li>
+<li>Search for &quot;GitHub Pull Requests&quot;</li>
+<li>If it&#39;s not installed, click <strong>Install</strong></li>
+<li>If it is installed, click <strong>GitHub Pull Requests</strong> to view its details</li>
+</ol>
+<h5 id="what-you-should-see">What you should see</h5>
+<ul>
+<li>The extension is listed as active</li>
+<li>It mentions: &quot;Review and manage GitHub pull requests and issues&quot;</li>
+</ul>
+<h4 id="step-2-open-the-pull-requests-sidebar">Step 2: Open the Pull Requests Sidebar</h4>
+<h5 id="what-to-do">What to do</h5>
+<ol>
+<li>Look for a <strong>GitHub-themed icon</strong> on the left sidebar (circle with octocat logo) - click it<ul>
+<li><strong>With keyboard:</strong> The icon may not be keyboard-reachable directly; instead go to Step 3</li>
+</ul>
+</li>
+<li>A sidebar appears showing open pull requests on repositories you have access to</li>
+<li><strong>Find the PR titled &quot;Add screen reader tips to the setup guide&quot;</strong> - it should appear in a list</li>
+<li>Click it to open</li>
+</ol>
+<h5 id="what-happens">What happens</h5>
+<ul>
+<li>VS Code opens a new editor tab for this PR</li>
+<li>Below the PR title, you see a &quot;Changes&quot; section listing modified files</li>
+<li>You should see <code>setup-guide.md</code> in the changes list</li>
+</ul>
+<h5 id="if-you-can39t-find-the-pr">If you can&#39;t find the PR</h5>
+<ul>
+<li>Use <code>Ctrl+Shift+P</code> → search <code>GitHub Pull Requests: Open Pull Request</code></li>
+<li>Paste the PR URL: <code>https://github.com/[owner]/[repo]/pull/[number]</code></li>
+<li>Press Enter</li>
+</ul>
+<h4 id="step-3-view-the-file-changes">Step 3: View the File Changes</h4>
+<h5 id="what-to-do">What to do</h5>
+<ol>
+<li>In the <strong>Changes</strong> section, locate <code>setup-guide.md</code></li>
+<li>Click on the filename to open it</li>
+</ol>
+<h5 id="what-happens">What happens</h5>
+<ul>
+<li>A diff editor opens showing two columns:<ul>
+<li><strong>Left:</strong> the original file (before changes)</li>
+<li><strong>Right:</strong> the new file (after changes)</li>
+</ul>
+</li>
+<li>Different colors show added (green), removed (red), and modified (blue) lines</li>
+<li>The file name appears at the top: <code>setup-guide.md</code></li>
+</ul>
+<h5 id="with-screen-reader">With screen reader</h5>
+<ul>
+<li>NVDA/JAWS: The editor announces &quot;Diff Editor - setup-guide.md&quot;</li>
+<li>Use <code>Ctrl+Home</code> to jump to the start of the diff</li>
+<li>Use <code>Ctrl+End</code> to jump to the end</li>
+</ul>
+<h4 id="step-4-access-the-accessible-diff-viewer">Step 4: Access the Accessible Diff Viewer</h4>
+<h5 id="what-to-do">What to do</h5>
+<ol>
+<li><strong>With keyboard:</strong> Press <code>F7</code> to open the Accessible Diff Viewer<ul>
+<li><strong>With mouse:</strong> Look for a button or menu option labeled &quot;Accessible View&quot; or &quot;Open Accessible Diff&quot;</li>
+<li>If no button is visible, try <code>Alt+F2</code> (VS Code Accessible View toggle)</li>
+</ul>
+</li>
+</ol>
+<h5 id="what-happens">What happens</h5>
+<ul>
+<li>A new panel opens at the bottom of VS Code</li>
+<li>The panel announces each change one at a time</li>
+<li>Changes appear in text format with labels: &quot;Added: &quot; and &quot;Removed: &quot;</li>
+<li>The panel is read-only (you read the changes, you don&#39;t edit here)</li>
+</ul>
+<h5 id="if-the-accessible-diff-viewer-doesn39t-open">If the Accessible Diff Viewer doesn&#39;t open</h5>
+<ul>
+<li>Make sure the diff editor is active (click in the diff area first)</li>
+<li>Try <code>Ctrl+Shift+P</code> → search <code>Open Accessible Diff</code></li>
+<li>If available, select it</li>
+</ul>
+<h4 id="step-5-listen-to-and-understand-the-first-change">Step 5: Listen to and Understand the First Change</h4>
+<h5 id="what-to-do">What to do</h5>
+<ol>
+<li>The first change is automatically announced when you open the Accessible Diff Viewer</li>
+<li><strong>Let your screen reader read it completely</strong> - don&#39;t interrupt</li>
+<li><p>Write down the exact text announced:</p>
+<pre><code class="hljs language-text">Removed: [write what the viewer said]
+Added: [write what the viewer said]</code></pre>
+</li>
+<li>Press the <strong>Down arrow</strong> to move to the next change</li>
+</ol>
+<h5 id="what-to-expect-example">What to expect (example)</h5>
+<pre><code class="hljs language-text">Removed: ## Old Heading
+Added: ## New Heading with More Details</code></pre>
+<h5 id="with-screen-reader">With screen reader</h5>
+<ul>
+<li>NVDA/JAWS: The Accessible Diff Viewer announces &quot;Removed:&quot; and &quot;Added:&quot; labels, followed by the line content</li>
+<li>VoiceOver: The announcement may be similar; listen for &quot;removed&quot; and &quot;added&quot; keywords</li>
+</ul>
+<h4 id="step-6-find-the-heading-hierarchy-issue">Step 6: Find the Heading Hierarchy Issue</h4>
+<h5 id="what-to-do">What to do</h5>
+<ol>
+<li>Continue pressing <strong>Down arrow</strong> to move through changes</li>
+<li>Listen carefully for a change involving headings (lines starting with <code>#</code>)</li>
+<li>Specifically, listen for: &quot;Added: ####&quot; (four hashes)</li>
+<li><p>When you hear this, <strong>stop and write it down:</strong></p>
+<pre><code class="hljs language-text">Line number: [if available]
+Removed: [what was removed, if anything]
+Added: [the four-hash heading]
+Context: [is there a ## heading just before this?]</code></pre>
+</li>
+</ol>
+<h5 id="why-listen-for-this">Why listen for this?</h5>
+<ul>
+<li>Four hashes (<code>####</code>) indicate a level 4 heading</li>
+<li>In the diff, you&#39;re looking for it appearing after a level 2 heading (<code>##</code>)</li>
+<li>This creates the hierarchy skip you caught in Exercise A</li>
+</ul>
+<h5 id="what-success-looks-like">What success looks like</h5>
+<ul>
+<li>You found the explanation in the Accessible Diff Viewer&#39;s format</li>
+<li>You can explain: &quot;The added line with <code>####</code> directly follows a <code>##</code>, skipping level 3&quot;</li>
+<li>The Accessible Diff Viewer made this <em>pattern</em> clearer than scanning raw <code>+</code> characters</li>
+</ul>
+<h4 id="step-7-locate-the-heading-line-and-add-an-inline-comment">Step 7: Locate the Heading Line and Add an Inline Comment</h4>
+<h5 id="what-to-do">What to do</h5>
+<ol>
+<li>Once you identified the problematic heading in the Accessible Diff Viewer, <strong>close the Accessible Diff Viewer</strong> (press <code>F7</code> again or <code>Alt+F2</code>)</li>
+<li>You&#39;re back in the regular Diff Editor</li>
+<li><strong>Find the line with the problematic <code>####</code> heading:</strong><ul>
+<li>Use <code>Ctrl+F</code> to open Find</li>
+<li>Search for <code>####</code> to locate it quickly</li>
+<li>Press <code>Enter</code> to jump to it</li>
+</ul>
+</li>
+<li>Close Find (<code>Escape</code>)</li>
+<li>Place your cursor on that line</li>
+<li><strong>Right-click</strong> and select &quot;Add Comment&quot; or press the <strong>Comment icon</strong> that appears on the left margin<ul>
+<li><strong>With keyboard:</strong> The comment button may appear on the current line; navigate to it and press <code>Enter</code></li>
+</ul>
+</li>
+</ol>
+<h5 id="what-happens">What happens</h5>
+<ul>
+<li>A comment box opens</li>
+<li>You can type your comment</li>
+</ul>
+<h4 id="step-8-write-your-accessible-diff-comment">Step 8: Write Your Accessible Diff Comment</h4>
+<h5 id="what-to-do">What to do</h5>
+<ol>
+<li><p>In the comment box, type:</p>
+<pre><code class="hljs language-text">blocking: Heading hierarchy violation. The Accessible Diff Viewer 
+clearly showed this #### heading appearing directly after ##, skipping 
+level 3. Screen reader users navigating by heading level will miss this 
+content. Change to ###.</code></pre>
+</li>
+<li>Press <code>Ctrl+Enter</code> or click <strong>Comment</strong> to submit</li>
+</ol>
+<h5 id="why-mention-the-accessible-diff-viewer">Why mention the Accessible Diff Viewer?</h5>
+<ul>
+<li>It shows that the tool <em>itself</em> helps you see the issue</li>
+<li>It documents how you caught the problem (useful for learning)</li>
+</ul>
+<h4 id="step-9-create-a-github-pull-request-comment">Step 9: Create a GitHub Pull Request Comment</h4>
+<h5 id="special-section-comparing-tools">Special Section: Comparing Tools</h5>
+<p>Now you&#39;ve reviewed the same PR in:</p>
+<ol>
+<li><strong>Browser (Exercise A):</strong> You spot-checked line numbers manually</li>
+<li><strong>VS Code (Exercise B):</strong> The Diff Editor plus Accessible Diff Viewer announced changes</li>
+</ol>
+<h5 id="what-to-do">What to do</h5>
+<ol>
+<li>Go to GitHub in your browser and open the same PR</li>
+<li>Scroll to the bottom and leave a comment in the Conversation tab:</li>
+</ol>
+<pre><code class="hljs language-text">I&#x27;ve now reviewed this PR in both the browser and VS Code. Here&#x27;s 
+what I found:
+
+**Browser review:** I had to manually navigate with heading commands 
+and scan for the skip visually. Found 2 issues.
+
+**VS Code + Accessible Diff Viewer:** The Accessible Diff Viewer 
+announced changes in a linear format, making it easier to follow 
+the story of what changed without scanning back and forth.
+
+**My conclusion:** [Choose one]
+- The browser method was clearer for me
+- VS Code was clearer for me
+- Both have strengths; I&#x27;d use each for different purposes
+  - Browser best for: [specific reason]
+  - VS Code best for: [specific reason]</code></pre>
+<ol>
+<li>Click <strong>Comment</strong></li>
+</ol>
+<h4 id="reflect-on-this-exercise">Reflect on This Exercise</h4>
+<p>After completing Steps 1-9, answer:</p>
+<ol>
+<li><strong>Announcement clarity:</strong> Did the &quot;Added:&quot; and &quot;Removed:&quot; labels from the Accessible Diff Viewer help you follow changes faster than reading <code>+</code> and <code>−</code> prefixes in the browser?</li>
+<li><strong>Navigation pattern:</strong> Which tool required less back-and-forth clicking/tabbing to understand each change?</li>
+<li><strong>When would you use each?</strong> In one sentence: describe a type of PR where you&#39;d prefer to use each tool.</li>
+</ol>
+<p><strong>Record your answers.</strong> In Chapter 16, you&#39;ll compare these manual reviews with the <code>@pr-review</code> agent&#39;s suggested changes.</p>
+<h3 id="exercise-c---compare-and-reflect">Exercise C - Compare and Reflect</h3>
+<p><strong>Your Mission:</strong> Synthesize what you learned from the manual code reviews (Exercises A &amp; B) and document your findings.</p>
+<p><strong>What You&#39;ll Learn:</strong> Which tools work best for different scenarios, and how your manual review skills prepare you to use AI agents effectively.</p>
+<h4 id="step-1-gather-your-data">Step 1: Gather Your Data</h4>
+<p>Before writing your reflection, collect all the information you gathered:</p>
+<h5 id="from-exercise-a-browser-review">From Exercise A (Browser Review)</h5>
+<ul>
+<li>Which line number had the heading hierarchy skip?</li>
+<li>Which line number had the link text issue?</li>
+<li>How many steps did it take to find each issue?</li>
+<li>Did you use screen reader commands or visual scanning more?</li>
+</ul>
+<h5 id="from-exercise-b-vs-code-review">From Exercise B (VS Code Review)</h5>
+<ul>
+<li>What did the Accessible Diff Viewer announce for the heading change?</li>
+<li>Was the announcement clearer than the browser&#39;s <code>+</code> and <code>−</code> format?</li>
+<li>Did you need to switch between the Accessible Diff Viewer and the regular editor?</li>
+<li>How many steps to find the problem?</li>
+</ul>
+<p><strong>Write these down</strong> (in a text editor, on paper, or mentally) - you&#39;ll reference them in Steps 2-4.</p>
+<h4 id="step-2-navigate-to-the-pr-and-leave-your-reflection-comment">Step 2: Navigate to the PR and Leave Your Reflection Comment</h4>
+<h5 id="what-to-do">What to do</h5>
+<ol>
+<li>Go to GitHub in your browser</li>
+<li>Open the same PR (&quot;Add screen reader tips to the setup guide&quot;)</li>
+<li>Scroll to the <strong>Conversation</strong> tab</li>
+<li>Scroll all the way down to the comment box at the bottom (labeled &quot;Leave a comment&quot; or &quot;Add a comment&quot;)</li>
+<li>Click in the comment box</li>
+</ol>
+<h5 id="what-you-should-see">What you should see</h5>
+<ul>
+<li>A text editing area with formatting options (Bold, Italic, Link, etc.)</li>
+<li>A <strong>Comment</strong> button below the text area</li>
+</ul>
+<h4 id="step-3-write-your-comparison">Step 3: Write Your Comparison</h4>
+<h5 id="what-to-do">What to do</h5>
+<p>Type your response to these three questions. Be specific - reference exact tools, steps, and what you discovered:</p>
+<h5 id="question-1-environment-preference">Question 1: Environment Preference</h5>
+<pre><code class="hljs language-text">After reviewing this PR in both environments, my preferred tool was:
+[Browser / VS Code / Both equally]
+
+Why: [1-2 sentences explaining your choice]
+
+Example: &quot;I preferred VS Code because the Accessible Diff Viewer 
+separated changes into &#x27;Added:&#x27; and &#x27;Removed:&#x27;, making it obvious 
+what the new content was. In the browser, I had to mentally filter 
+the + and − characters.&quot;</code></pre>
+<h5 id="question-2-strengths-of-each-environment">Question 2: Strengths of Each Environment</h5>
+<pre><code class="hljs language-text">Browser made this easier: [One specific task, e.g., &quot;Finding the PR URL&quot;] 
+because [Why]
+
+VS Code made this easier: [One specific task, e.g., &quot;Following the diff linearly&quot;] 
+because [Why]
+
+Example Browser: &quot;Finding context about *why* the change was made, 
+because all the discussion is in one place&quot;
+
+Example VS Code: &quot;The Accessible Diff Viewer announcing changes sequentially 
+meant I didn&#x27;t miss anything by accidentally scrolling past it&quot;</code></pre>
+<h5 id="question-3-real-world-impact">Question 3: Real-World Impact</h5>
+<pre><code class="hljs language-text">For someone reading the published document (not the diff), the heading 
+skip matters because: [1-2 sentences]
+
+Example: &quot;A screen reader user pressing the &#x27;3&#x27; key to navigate to level-3 
+headings will find none, and might think the document skipped a section. 
+This breaks the information hierarchy.&quot;</code></pre>
+<h5 id="full-template-to-copy-into-the-comment-box">Full template to copy into the comment box</h5>
+<pre><code class="hljs language-text">## Code Review Reflection - Browser vs VS Code
+
+After reviewing this PR using both the browser and VS Code environments, 
+here&#x27;s what I found:
+
+### Environment Preference
+
+My preferred tool was: **[Browser / VS Code]**
+
+Why: [1-2 sentences]
+
+### Specific Strengths
+
+#### Browser made this easier
+- Task: [specific thing]
+- Why: [explanation]
+
+#### VS Code made this easier
+- Task: [specific thing]
+- Why: [explanation]
+
+### Real-World Impact
+
+The heading hierarchy skip in the published document matters because: 
+[1-2 sentences about why screen reader users would be affected]</code></pre>
+<h4 id="step-4-review-your-comment">Step 4: Review Your Comment</h4>
+<h5 id="what-to-do">What to do</h5>
+<ol>
+<li>Before submitting, <strong>re-read your comment</strong> using your screen reader or by reading aloud</li>
+<li>Ask yourself:<ul>
+<li>Is it clear which tool I preferred?</li>
+<li>Did I explain <em>why</em> with concrete examples?</li>
+<li>Am I describing the real-world impact accurately?</li>
+<li>Would someone else reading this understand how I caught the issue?</li>
+</ul>
+</li>
+<li>Make any corrections needed</li>
+<li><strong>Do not submit yet</strong> - continue to Step 5</li>
+</ol>
+<h4 id="step-5-submit-your-reflection">Step 5: Submit Your Reflection</h4>
+<h5 id="what-to-do">What to do</h5>
+<ol>
+<li>Locate the <strong>Comment</strong> button at the bottom right of the comment box</li>
+<li><strong>With keyboard:</strong> Press <code>Tab</code> until the Comment button is focused, then <code>Enter</code></li>
+<li><strong>With mouse:</strong> Click the <strong>Comment</strong> button</li>
+<li>Your comment is submitted and appears on the PR page</li>
+</ol>
+<h5 id="what-happens">What happens</h5>
+<ul>
+<li>Your comment is now visible on the PR</li>
+<li>Other reviewers can see your comparison</li>
+<li>You have completed the three-part exercise series</li>
+</ul>
+<h5 id="what-success-looks-like">What success looks like</h5>
+<ul>
+<li>Your comment appears on the PR thread</li>
+<li>It includes all three reflections</li>
+<li>The PR author and other reviewers can see your thought process</li>
+</ul>
+<h4 id="step-6-checkpoint---validate-your-learning">Step 6: Checkpoint - Validate Your Learning</h4>
+<p>Before moving forward, verify you understand:</p>
+<ol>
+<li><p><strong>Heading Hierarchy:</strong> Can you explain in one sentence why a <code>##</code> → <code>####</code> skip breaks screen reader navigation?</p>
+<ul>
+<li><em>Expected answer:</em> Something like &quot;Screen readers let users navigate by heading level (pressing 3 jumps to H3), so skipping a level makes users think content is missing.&quot;</li>
+</ul>
+</li>
+<li><p><strong>Tool Strengths:</strong> For each tool you used, name one task it made easier.</p>
+<ul>
+<li><em>Expected answer:</em> e.g., &quot;Browser: finding context in discussions. VS Code: linear reading of changes.&quot;</li>
+</ul>
+</li>
+<li><p><strong>Real-World Testing:</strong> How would you test the heading issue in the <em>published</em> document (not the PR diff)?</p>
+<ul>
+<li><em>Expected answer:</em> Something like &quot;Open the document in a browser, use screen reader heading navigation, and confirm I can reach all levels (H2, H3, H4).&quot;</li>
+</ul>
+</li>
+</ol>
+<p>If you can answer all three, you&#39;re ready for the next chapter.</p>
+<h2 id="part-3---using-github-copilot-to-understand-code-changes">Part 3 - Using GitHub Copilot to Understand Code Changes</h2>
+<p>Reviewing code is about understanding <em>what changed</em>, <em>why it changed</em>, and <em>whether the change is safe and correct</em>. GitHub Copilot can help you gather and understand information about code changes - especially when diffs are large, complex, or involve unfamiliar frameworks.</p>
+<h3 id="when-to-use-copilot-during-code-review">When to Use Copilot During Code Review</h3>
+<p>Copilot is most useful for answering these questions:</p>
+<ol>
+<li><strong>&quot;What does this code do?&quot;</strong> - you&#39;re reading unfamiliar syntax or a framework you don&#39;t know well</li>
+<li><strong>&quot;Why might this change break something?&quot;</strong> - you need to understand dependencies or side effects</li>
+<li><strong>&quot;Is this pattern safe?&quot;</strong> - you want to verify that the approach follows best practices</li>
+<li><strong>&quot;What would be a better way to write this?&quot;</strong> - you&#39;re looking for alternatives to suggest</li>
+<li><strong>&quot;Does this match the PR&#39;s description?&quot;</strong> - the change seems to do more (or less) than claimed</li>
+</ol>
+<h3 id="how-to-use-copilot-during-review">How to Use Copilot During Review</h3>
+<h4 id="in-vs-code-with-an-open-diff">In VS Code with an Open Diff</h4>
+<ol>
+<li>Open the PR using the GitHub Pull Requests extension (see Part 2)</li>
+<li>Open the diff for any file</li>
+<li><strong>Select</strong> a block of code that confuses you (highlight it)</li>
+<li>Open Copilot Chat: <code>Ctrl+Shift+I</code></li>
+<li>Type: <code>Explain what this code does</code> or <code>Why might this change affect [other file]?</code></li>
+<li>Copilot reads the selected code and answers in the chat</li>
+</ol>
+<h4 id="example-exchange">Example Exchange</h4>
+<pre><code class="hljs language-text">You (selected code):
+  -  const oldParser = require(&#x27;./old-parser.js&#x27;);
+  +  const newParser = require(&#x27;fast-parser&#x27;);
+
+You ask Copilot:
+  &quot;Why would switching from require(&#x27;./old-parser.js&#x27;) to require(&#x27;fast-parser&#x27;) be risky?&quot;
+
+Copilot might respond:
+  &quot;The modules have different APIs. If the code calls oldParser.parseXML() 
+  and newParser doesn&#x27;t have that method, the diff would break existing code. 
+  Check if the call sites were also updated in this PR.&quot;
+
+You then:
+  - Search the diff for calls to parseXML() to verify they were updated
+  - Or leave a comment: &quot;Did we confirm all oldParser.parseXML() calls were 
+    updated to use the new parser&#x27;s API?&quot;</code></pre>
+<h4 id="on-githubcom-web-interface">On GitHub.com (Web Interface)</h4>
+<ol>
+<li>Open the PR&#39;s Files Changed tab</li>
+<li>Focus on a line or section you want to understand better</li>
+<li>In VS Code Copilot Chat (not in the browser - Copilot Chat doesn&#39;t work directly in browser diffs yet)</li>
+<li>Copy the confusing code, paste it into chat, and ask Copilot to explain</li>
+</ol>
+<p><strong>Another option:</strong> Use the GitHub Copilot inline suggestions on GitHub.com:</p>
+<ul>
+<li>Some GitHub PRs show Copilot insights directly in the diff (as of early 2026)</li>
+<li>If you see a lightbulb  icon, click it to see Copilot&#39;s suggestion about that line</li>
+</ul>
+<h3 id="copilot-limitations-during-review-critical-to-know">Copilot Limitations During Review (Critical to Know)</h3>
+<p>Copilot cannot:</p>
+<ul>
+<li><strong>See the whole project</strong> - it sees only what you show it (the selected diff, not the context of the entire codebase)</li>
+<li><strong>Verify correctness</strong> - it can explain what code does, but not whether it&#39;s correct for your specific use case</li>
+<li><strong>Understand intent</strong> - it reads the code, not the author&#39;s mind or the PR description</li>
+<li><strong>Catch all risks</strong> - it can spot common patterns, but not edge cases unique to your project</li>
+</ul>
+<p><strong>This is why manual review is essential:</strong> You have context (project history, team decisions, user impact) that Copilot does not. Use Copilot to <em>understand</em>, then use your judgment to <em>decide</em>.</p>
+<h3 id="best-practices">Best Practices</h3>
+<ol>
+<li><strong>Read the diff manually first</strong> - you spot the big picture before asking Copilot details</li>
+<li><strong>Ask Copilot specific questions</strong> - not &quot;review this code&quot; but &quot;does this regex handle Unicode?&quot;</li>
+<li><strong>Fact-check Copilot&#39;s answers</strong> - it can be confidently wrong, especially about frameworks or domains it has less training data for</li>
+<li><strong>Combine Copilot with manual analysis</strong> - ask Copilot to explain, then verify by checking the PR description or looking for related files</li>
+<li><strong>Use Copilot to draft comments</strong> - type <code>Draft a comment about [issue] for this PR</code> and edit Copilot&#39;s suggestion to match your tone</li>
+</ol>
+<h3 id="what-comes-next">What Comes Next</h3>
+<p>Your manual code review skills - identifying heading issues, catching link text problems, understanding screen reader navigation, gathering information with Copilot - are the <strong>foundation</strong> for understanding automated review.</p>
+<p>In <strong>Chapter 16 (Accessibility Agents)</strong>, you&#39;ll meet a full team of agents designed to <strong>amplify</strong> these skills:</p>
+<h2 id="part-4-the-reviewer39s-craft">Part 4: The Reviewer&#39;s Craft</h2>
+<p>Parts 1 through 3 taught you the mechanics -- how to read diffs, leave comments, and use Copilot to understand unfamiliar code. This part covers something equally important: <strong>how to think like a reviewer</strong>. Good reviews are not about finding faults. They are about helping the author ship better work while learning something yourself.</p>
+<h3 id="what-to-look-for-in-a-review">What to Look for in a Review</h3>
+<p>Every PR is different, but most reviews benefit from scanning across these five categories:</p>
+<table>
+<thead>
+<tr>
+<th scope="col">Category</th>
+<th scope="col">What you&#39;re checking</th>
+<th scope="col">Example question</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><strong>Clarity</strong></td>
+<td>Readable code, clear naming, consistent style</td>
+<td>&quot;Would another contributor understand this variable name six months from now?&quot;</td>
+</tr>
+<tr>
+<td><strong>Accuracy</strong></td>
+<td>The code does what the PR description says it does</td>
+<td>&quot;The description says this fixes the heading hierarchy -- does it actually change the heading level?&quot;</td>
+</tr>
+<tr>
+<td><strong>Scope</strong></td>
+<td>The change stays within the PR&#39;s stated goal</td>
+<td>&quot;This PR says it updates alt text, but it also refactors the navigation bar -- should that be a separate PR?&quot;</td>
+</tr>
+<tr>
+<td><strong>Regressions</strong></td>
+<td>The change does not break existing behavior</td>
+<td>&quot;This function used to return a list. Now it returns a single item. Will callers still work?&quot;</td>
+</tr>
+<tr>
+<td><strong>Accessibility</strong></td>
+<td>Screen reader support, keyboard navigation, WCAG basics</td>
+<td>&quot;Does this new button have an accessible label? Can a keyboard-only user reach it?&quot;</td>
+</tr>
+</tbody></table>
+<p>You do not need to check every category exhaustively on every PR. Skim the list, focus on whatever stands out, and flag anything you are unsure about as a question rather than a demand.</p>
+<blockquote>
+<p><strong>Screen reader tip:</strong> When reading a diff in VS Code, you can jump between changed hunks with <code>Alt+F5</code> (next change) and <code>Shift+Alt+F5</code> (previous change). This helps you scan for scope creep -- changes that appear in files you did not expect.</p>
+</blockquote>
+<h3 id="the-three-review-actions">The Three Review Actions</h3>
+<p>When you submit a review on GitHub, you choose one of three actions. Picking the right one matters because it signals your intent to the author and to anyone else watching the PR.</p>
+<p><strong>Approve</strong> -- Use this when everything looks good, or when only trivial nits remain (typos, minor style preferences). An approval tells the author: &quot;I&#39;ve read this and I&#39;m satisfied it can merge.&quot;</p>
+<p><strong>Request Changes</strong> -- Use this when something <strong>must</strong> be fixed before merge. Bugs, security issues, broken tests, accessibility regressions, or changes that do not match the PR&#39;s description all qualify. A request-changes review blocks the PR (in many team configurations) until you re-review.</p>
+<p><strong>Comment</strong> -- Use this when you have questions, suggestions, or discussion points that do <strong>not</strong> block the merge. Comments are for learning, brainstorming, and optional improvements. If you are not sure whether something is a blocker, use Comment and explain your uncertainty in the text.</p>
+<p><strong>Decision tree:</strong></p>
+<ol>
+<li>Did you find a bug, security issue, or broken test? -- <strong>Request Changes</strong></li>
+<li>Does the code do something different from what the description says? -- <strong>Request Changes</strong></li>
+<li>Does everything work, with maybe a few style nits? -- <strong>Approve</strong> (mention the nits in a comment)</li>
+<li>Do you have questions or optional suggestions? -- <strong>Comment</strong></li>
+</ol>
+<h3 id="writing-constructive-feedback">Writing Constructive Feedback</h3>
+<p>The way you phrase feedback determines whether the author feels supported or attacked. A few principles go a long way:</p>
+<p><strong>Lead with what works.</strong> Before pointing out problems, acknowledge something the author did well. &quot;The new heading structure looks great -- much easier to follow&quot; takes five seconds to write and sets a collaborative tone.</p>
+<p><strong>Be specific about what to change.</strong> &quot;This doesn&#39;t look right&quot; is frustrating. &quot;Line 42 uses an <code>h4</code> immediately after an <code>h2</code>, which skips a heading level -- screen readers announce this as a navigation error&quot; gives the author everything they need to fix it.</p>
+<p><strong>Explain why, not just what.</strong> &quot;Change this to <code>h3</code>&quot; is an instruction. &quot;Change this to <code>h3</code> because screen readers use heading levels to build a page outline, and skipping from <code>h2</code> to <code>h4</code> creates a gap in that outline&quot; teaches the author something they will remember next time.</p>
+<p><strong>Offer alternatives, not just criticism.</strong> Instead of &quot;this naming is confusing,&quot; try &quot;consider renaming <code>processData</code> to <code>parseUserInput</code> -- it would make the function&#39;s purpose clearer at the call site.&quot;</p>
+<p><strong>Use soft language for suggestions, direct language for requirements.</strong> &quot;Consider using a <code>&lt;button&gt;</code> here instead of a <code>&lt;div&gt;</code> -- it gives you keyboard support for free&quot; is a suggestion. &quot;This <code>onclick</code> handler on a <code>&lt;div&gt;</code> must be changed to a <code>&lt;button&gt;</code> or given <code>role=&#39;button&#39;</code> and a <code>keydown</code> handler -- without that, keyboard users cannot activate it&quot; is a requirement. Match your tone to the severity.</p>
+<h3 id="the-reviewer39s-checklist">The Reviewer&#39;s Checklist</h3>
+<p>Run through this list mentally (or copy it into your notes) for every PR you review:</p>
+<ul>
+<li><input type="checkbox" disabled> <input aria-label="I read the PR description before reading the code" disabled="" type="checkbox"> I read the PR description before reading the code</li>
+<li><input type="checkbox" disabled> <input aria-label="The code does what the description says it does" disabled="" type="checkbox"> The code does what the description says it does</li>
+<li><input type="checkbox" disabled> <input aria-label="The change does not include unrelated modifications" disabled="" type="checkbox"> The change does not include unrelated modifications</li>
+<li><input type="checkbox" disabled> <input aria-label="Variable and function names are clear" disabled="" type="checkbox"> Variable and function names are clear</li>
+<li><input type="checkbox" disabled> <input aria-label="I checked for accessibility: labels, headings, keyboard reach, contrast" disabled="" type="checkbox"> I checked for accessibility: labels, headings, keyboard reach, contrast</li>
+<li><input type="checkbox" disabled> <input aria-label="I verified no existing behavior is broken by the change" disabled="" type="checkbox"> I verified no existing behavior is broken by the change</li>
+<li><input type="checkbox" disabled> <input aria-label="I left at least one positive comment" disabled="" type="checkbox"> I left at least one positive comment</li>
+<li><input type="checkbox" disabled> <input aria-label="I chose the right review action (Approve, Request Changes, or Comment)" disabled="" type="checkbox"> I chose the right review action (Approve, Request Changes, or Comment)</li>
+<li><input type="checkbox" disabled> <input aria-label="My feedback explains" disabled="" type="checkbox"> My feedback explains <strong>why</strong>, not just <strong>what</strong></li>
+</ul>
+<h3 id="reviewing-as-a-learning-tool">Reviewing as a Learning Tool</h3>
+<p>Reviewing is not just a gate to keep bad code out. It is one of the fastest ways to grow as a developer.</p>
+<p><strong>Reading other people&#39;s code teaches you patterns.</strong> Every PR you review exposes you to a different way of solving a problem. Over time, you build a mental library of approaches -- some you will adopt, some you will avoid, all of which make you a stronger contributor. See <a href="08-open-source-culture.html">Chapter 8</a> for more on learning through open source participation.</p>
+<p><strong>Giving feedback forces you to articulate your understanding.</strong> When you write &quot;this heading skip will confuse screen reader users,&quot; you are not just helping the author -- you are reinforcing your own knowledge. If you struggle to explain why something is wrong, that struggle is a signal that you have more to learn about the topic. Follow that signal.</p>
+<p><strong>Reviewing builds trust.</strong> When you leave thoughtful, respectful reviews, authors start seeking your input. That trust turns into collaboration, mentorship, and eventually the kind of team culture where everyone improves together. See <a href="06-working-with-pull-requests.html">Chapter 6</a> for how PRs fit into collaborative workflows.</p>
+<blockquote>
+<p><strong>Screen reader tip:</strong> After submitting a review, GitHub returns you to the PR&#39;s Conversation tab. Press <code>h</code> in GitHub&#39;s keyboard shortcuts to jump by heading and confirm your review appears in the timeline.</p>
+</blockquote>
+<h3 id="learning-cards-the-reviewer39s-craft">Learning Cards: The Reviewer&#39;s Craft</h3>
+<details>
+<summary>Screen reader users</summary>
+
+<ul>
+<li>Jump between changed hunks in a diff with <code>Alt+F5</code> (next change) and <code>Shift+Alt+F5</code> (previous change) to scan for scope creep efficiently</li>
+<li>Use <code>Alt+F2</code> (Accessible View) on a Copilot-generated review summary to read the full text with arrow keys before posting</li>
+<li>When leaving feedback, mention specific line numbers (&quot;Line 42 skips from h2 to h4&quot;) so the author can navigate directly with <code>Ctrl+G</code></li>
+</ul>
+</details>
+
+<details>
+<summary>Low vision users</summary>
+
+<ul>
+<li>The three review actions (Approve, Request Changes, Comment) are shown as clearly labeled radio buttons in the review submission form</li>
+<li>Use the reviewer checklist in this section as a mental framework -- copy it into your notes and check items off as you review each PR</li>
+<li>The diff view uses green and red backgrounds for added/removed lines; pair with a High Contrast theme if these colors are hard to distinguish</li>
+</ul>
+</details>
+
+<details>
+<summary>Sighted users</summary>
+
+<ul>
+<li>The Files Changed tab on GitHub.com shows a progress bar indicating how many files you have viewed -- aim for 100% before submitting</li>
+<li>Green checkmarks next to file names mean you have already viewed that file; gray dots mean unreviewed</li>
+<li>Use the &quot;Viewed&quot; checkbox on each file to track your progress through large PRs</li>
+</ul>
+</details>
+
+
+<h2 id="day-2-teaser-the-full-accessibility-agents-review-ecosystem">Day 2 Teaser: The Full Accessibility Agents Review Ecosystem</h2>
+<p>You now have the manual skills. Chapter 16 shows you how to leverage 50+ specialized agents to make your reviews faster, more consistent, and more thorough - while staying in full control of what you post.</p>
+<h3 id="the-agents-that-help-with-code-review">The Agents That Help With Code Review</h3>
+<p><strong>Pull Request Review Agents:</strong></p>
+<ul>
+<li><strong><code>@pr-review</code></strong> - Generates a full-draft PR review with line-numbered diff maps, risk assessment, before/after snapshots, and suggested inline comments. You edit and post it under your name.</li>
+<li><strong><code>@pr-author-checklist</code></strong> - Before you even submit your PR, use this to verify you haven&#39;t missed setup steps, accessibility checks, or documentation</li>
+<li><strong><code>@insiders-a11y-tracker</code></strong> - Monitors your PR for accessibility-sensitive changes: WCAG violations, heading hierarchy issues, link text quality, keyboard navigation impacts</li>
+</ul>
+<p><strong>Code Understanding Agents:</strong></p>
+<ul>
+<li><strong><code>@developer-hub</code></strong> - Orchestrates explanations for unfamiliar code, patterns, or frameworks you&#39;re reviewing</li>
+<li><strong><code>@python-specialist</code></strong> - If your PR contains Python code, this agent explains patterns, spots accessibility issues, and suggests improvements</li>
+<li><strong><code>@wxpython-specialist</code></strong> - For desktop GUI code, helps verify accessible widget patterns and focus management</li>
+</ul>
+<p><strong>Accessibility Review Agents</strong> (when code affects UI/UX):</p>
+<ul>
+<li><strong><code>@keyboard-navigator</code></strong> - Reviews changes to keyboard handling, tab order, focus management</li>
+<li><strong><code>@aria-specialist</code></strong> - Verifies ARIA attributes, roles, states in interactive components</li>
+<li><strong><code>@contrast-master</code></strong> - Checks color changes for WCAG AA contrast compliance</li>
+<li><strong><code>@alt-text-headings</code></strong> - Reviews changes to alt text, heading hierarchy, document structure</li>
+</ul>
+<p><strong>Comment &amp; Communication Agents:</strong></p>
+<ul>
+<li><strong><code>@text-quality-reviewer</code></strong> - Verifies alt text, aria-labels, and button names are descriptive and typo-free</li>
+<li><strong><code>@link-checker</code></strong> - Flags ambiguous link text like &quot;click here&quot; or &quot;read more&quot;</li>
+</ul>
+<h3 id="how-it-works">How It Works</h3>
+<ol>
+<li><strong>Review manually first</strong> (you just did this with Exercises A, B, C)</li>
+<li><strong>Run an agent</strong> - <code>@pr-review review PR #14</code> generates a draft in seconds</li>
+<li><strong>Edit the agent&#39;s draft</strong> - you add context, remove noise, correct errors</li>
+<li><strong>Post your review</strong> - it now has both AI efficiency and your human judgment</li>
+<li><strong>The agent tracks impact</strong> - <code>@insiders-a11y-tracker</code> monitors whether your accessibility feedback was addressed</li>
+</ol>
+<h3 id="the-principle-skill-first-agent-second">The Principle: Skill First, Agent Second</h3>
+<p>Why do this manually before using agents? Because:</p>
+<ul>
+<li>You <strong>understand</strong> what the agent is doing (you did it manually)</li>
+<li>You <strong>evaluate</strong> the agent&#39;s output critically (you know what right looks like)</li>
+<li>You <strong>add judgment</strong> the agent lacks (context, intent, team decisions)</li>
+<li>You <strong>verify</strong> the agent didn&#39;t miss anything important</li>
+</ul>
+<p><strong>Manual reviews teach you what to look for. Agents help you look for it faster.</strong></p>
+<h3 id="a-real-example-the-flow">A Real Example: The Flow</h3>
+<p><strong>Manual Review (your work in part 1-2):</strong></p>
+<ul>
+<li>Read diff, identify heading hierarchy skip</li>
+<li>Write comment explaining why it matters</li>
+<li>Submit your verdict</li>
+</ul>
+<p><strong>Agent-Assisted Review (what you&#39;ll do in Chapter 16):</strong></p>
+<ol>
+<li>Run: <code>@pr-review review PR #14</code> </li>
+<li>Agent generates a draft review covering the heading skip, link text, and 5 other issues</li>
+<li>You read the draft and notice: &quot;the agent&#39;s explanation of the heading skip is good, but it missed that the link text on line 23 is still vague. Let me add that.&quot;</li>
+<li>You post the agent&#39;s review + your additions</li>
+<li>Next time you review a similar PR, the agent works faster because it learned from your feedback</li>
+</ol>
+<p><strong>Accessibility Agents are trained on 55 different agent patterns - each built by people who manually reviewed code first, saw repetitive patterns, and automated them.</strong> The agents you&#39;ll use in Chapter 16 exist because expert reviewers looked at 100+ PRs and said &quot;this error comes up in nearly every PR - let me build an agent to catch it automatically.&quot;</p>
+<p>Your manual skills + agent efficiency = <strong>leverage.</strong></p>
+<blockquote>
+<p><strong>What&#39;s coming later today (Chapter 16):</strong></p>
+<p>At the end of the day, Chapter 16 introduces the full 55-agent ecosystem - specialized agents for:</p>
+<ul>
+<li>GitHub workflow automation (<code>@daily-briefing</code>, <code>@issue-tracker</code>, <code>@analytics</code>)</li>
+<li>Web accessibility auditing (<code>@web-accessibility-wizard</code>, <code>@contrast-master</code>, <code>@keyboard-navigator</code>)</li>
+<li>Document scanning (<code>@word-accessibility</code>, <code>@pdf-accessibility</code>, <code>@markdown-a11y-assistant</code>)</li>
+<li>Framework-specific accessibility (<code>@react-specialist</code>, <code>@vue-specialist</code>, <code>@wxpython-specialist</code>)</li>
+<li>And 35+ more, organized into three teams across five platforms</li>
+</ul>
+<p><strong>The ecosystem is designed to grow.</strong> Agents 56, 57, 58... will be built by contributors like you who saw a gap and filled it.</p>
+</blockquote>
+<hr>
+<p><em>Next: <a href="16-github-copilot.html">Chapter 16: GitHub Copilot</a></em><br><em>Back: <a href="14-git-in-practice.html">Chapter 14: Git in Practice</a></em><br><em>Related appendices: <a href="appendix-g-vscode-reference.html">Appendix G: VS Code Reference</a></em></p>
+
+  </main>
+  <footer role="contentinfo" class="site-footer">
+    <p><strong>GIT Going with GitHub</strong> - A workshop by <a href="https://community-access.org">Community Access</a></p>
+    <p><a href="https://github.com/community-access/git-going-with-github">View on GitHub</a> · <a href="https://community-access.org">community-access.org</a></p>
+  </footer>
+  </body>
+</html>

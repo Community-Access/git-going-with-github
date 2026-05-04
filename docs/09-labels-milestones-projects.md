@@ -31,9 +31,9 @@ Chapter 9 is a **guided triage chapter** focused on organization skills.
 > **🛠️ Agentic Strategy:** Labels and issue states are how we wake up Agents. In the Day 2 Capstone, you can design an agent that only activates when an Issue gets a specific label (like \
 eeds-review\ or \ccessibility-check\).
 
-**Where you are working:** your assigned Chapter 9 challenge issue in the [learning-room](https://github.com/Community-Access/learning-room) repository on GitHub.com, plus one other open issue you will triage.
+**Where you are working:** your assigned Chapter 9 challenge issue in your Learning Room repository on GitHub.com, plus one other open issue you will triage.
 
-1. Open the **Issues** tab in the [learning-room](https://github.com/Community-Access/learning-room) repository.
+1. Open the **Issues** tab in your Learning Room repository.
 2. Find any **open issue** that does not already have labels applied (or pick one your facilitator assigns).
 3. Read the issue title and full description carefully. Note:
    - What type of work is it? (documentation fix, bug report, accessibility improvement, new content)
@@ -636,7 +636,7 @@ Or from within a project:
 
 ## Practical Organization Strategy for the Hackathon
 
-Here is a recommended structure for the [learning-room](https://github.com/Community-Access/learning-room) sandbox project:
+Here is a recommended structure for your Learning Room sandbox project:
 
 ### Labels to create
 

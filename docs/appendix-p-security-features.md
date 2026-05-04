@@ -1,4 +1,4 @@
-# Appendix P: GitHub Security Features
+﻿# Appendix P: GitHub Security Features
 >
 > **Listen to Episode 29:** [GitHub Security Features](../PODCASTS.md) - a conversational audio overview of this chapter. Listen before reading to preview the concepts, or after to reinforce what you learned.
 
@@ -8,25 +8,25 @@
 
 ## Dependabot, Secret Scanning, Code Scanning, and Private Advisories
 
-> **Who this is for:** Anyone contributing to open source repositories needs to understand how GitHub protects code and what security alerts mean. This appendix explains the GitHub Security tab, how to interpret and respond to alerts, and how to responsibly report vulnerabilities - including in `community-access/accessibility-agents`.
+> **Who this is for:** Anyone contributing to open source repositories needs to understand how GitHub protects code and what security alerts mean. This appendix explains the GitHub Security and quality tab, how to interpret and respond to alerts, and how to responsibly report vulnerabilities - including in `community-access/accessibility-agents`.
 
 
 ## Quick Navigation
 
-1. [The Security Tab - What It Contains](#1-the-security-tab---what-it-contains)
+1. [The Security and quality tab - What It Contains](#1-the-security-and-quality-tab---what-it-contains)
 2. [Dependabot - Automated Dependency Updates](#2-dependabot---automated-dependency-updates)
 3. [Secret Scanning - Preventing Credential Leaks](#3-secret-scanning---preventing-credential-leaks)
 4. [Code Scanning and CodeQL](#4-code-scanning-and-codeql)
 5. [Private Vulnerability Reporting](#5-private-vulnerability-reporting)
 6. [The SECURITY.md File](#6-the-securitymd-file)
 7. [Software Bill of Materials (SBOM)](#7-software-bill-of-materials-sbom)
-8. [Screen Reader Navigation of the Security Tab](#8-screen-reader-navigation-of-the-security-tab)
+8. [Screen Reader Navigation of the Security and quality tab](#8-screen-reader-navigation-of-the-security-and-quality-tab)
 9. [Security and Accessibility Agents](#9-security-and-accessibility-agents)
 
 
-## 1. The Security Tab - What It Contains
+## 1. The Security and quality tab - What It Contains
 
-Every GitHub repository has a **Security tab** in its navigation bar. What you see there depends on whether you are a contributor with elevated access or a public viewer.
+Every GitHub repository has a **Security and quality tab** in its navigation bar. What you see there depends on whether you are a contributor with elevated access or a public viewer.
 
 ### Public viewers see
 
@@ -41,7 +41,7 @@ Every GitHub repository has a **Security tab** in its navigation bar. What you s
 - Security advisories
 - The ability to manage security settings
 
-### Screen Reader Path to the Security Tab
+### Screen Reader Path to the Security and quality tab
 
 ```text
 On any repository page:
@@ -49,31 +49,31 @@ Tab navigation → secondary nav region → "Security" link → Enter
 Or: G then S (GitHub keyboard shortcut - enable Focus Mode first)
 ```
 
-### Learning Cards: The Security Tab
+### Learning Cards: The Security and quality tab
 
 <details>
 <summary>Screen reader users</summary>
 
-- Use G then S (GitHub keyboard shortcut) to jump directly to the Security tab from any repo page — much faster than Tab-navigating the full nav bar
-- The Security tab content varies by your access level — public viewers see only the security policy and vulnerability reporting form; contributors with write access see alerts
-- Dependabot alerts, secret scanning alerts, and code scanning alerts are each a separate link inside the Security tab — use K to navigate between them
+- Use G then S (GitHub keyboard shortcut) to jump directly to the Security and quality tab from any repo page — much faster than Tab-navigating the full nav bar
+- The Security and quality tab content varies by your access level — public viewers see only the security policy and vulnerability reporting form; contributors with write access see alerts
+- Dependabot alerts, secret scanning alerts, and code scanning alerts are each a separate link inside the Security and quality tab — use K to navigate between them
 
 </details>
 
 <details>
 <summary>Low vision users</summary>
 
-- The Security tab link sits in the repository's top navigation bar alongside Code, Issues, PRs, and Actions — zoom in if the tab labels are small
+- The Security and quality tab link sits in the repository's top navigation bar alongside Code, Issues, PRs, and Actions — zoom in if the tab labels are small
 - Alert severity badges (Critical, High, Medium, Low) use colored labels — each badge also includes the severity word, so color is not the only indicator
-- If the Security tab shows "No alerts," that is good news — look for the green shield icon next to the tab name as confirmation
+- If the Security and quality tab shows "No alerts," that is good news — look for the green shield icon next to the tab name as confirmation
 
 </details>
 
 <details>
 <summary>Sighted users</summary>
 
-- Find the Security tab in the repository navigation bar — it shows a shield icon and may display a count badge if alerts exist
-- Inside the Security tab, the left sidebar lists Dependabot, Secret scanning, and Code scanning as separate pages — click each to see its alert list
+- Find the Security and quality tab in the repository navigation bar — it shows a shield icon and may display a count badge if alerts exist
+- Inside the Security and quality tab, the left sidebar lists Dependabot, Secret scanning, and Code scanning as separate pages — click each to see its alert list
 - A green shield on the repo home page (or no security count badge) means zero open security alerts
 
 </details>
@@ -196,7 +196,7 @@ For public repositories, GitHub scans all existing commits and creates alerts fo
 
 - If your `git push` is blocked with "GH013: Repository rule violations found," the terminal output lists the exact file, line number, and secret type — read the error lines carefully
 - After removing the secret from your code, use environment variables instead (`process.env.GITHUB_TOKEN`) — your screen reader will confirm the variable name in the code
-- Secret scanning alerts appear under Security tab, Secret scanning — navigate with T to reach the alert table, then arrow keys to read each row
+- Secret scanning alerts appear under Security and quality tab, Secret scanning — navigate with T to reach the alert table, then arrow keys to read each row
 
 </details>
 
@@ -204,7 +204,7 @@ For public repositories, GitHub scans all existing commits and creates alerts fo
 <summary>Low vision users</summary>
 
 - Push Protection error messages appear in your terminal with red text — increase terminal font size to read the file path, line number, and secret type clearly
-- The secret scanning alert list in the Security tab uses a table layout — zoom in to read the Secret type and Location columns
+- The secret scanning alert list in the Security and quality tab uses a table layout — zoom in to read the Secret type and Location columns
 - Environment variable names in code (like `process.env.GITHUB_TOKEN`) are easier to spot when syntax highlighting is enabled in your editor theme
 
 </details>
@@ -213,7 +213,7 @@ For public repositories, GitHub scans all existing commits and creates alerts fo
 <summary>Sighted users</summary>
 
 - Push Protection errors show a red banner in your terminal with the exact commit, file, and line containing the secret — look for the "secret:" label
-- In the Security tab, secret scanning alerts are listed with a yellow or red severity icon — click any alert to see the exposed credential's location and revocation status
+- In the Security and quality tab, secret scanning alerts are listed with a yellow or red severity icon — click any alert to see the exposed credential's location and revocation status
 - The code examples in this section show the BAD vs. GOOD pattern — never hardcode tokens; always use environment variables as shown
 
 </details>
@@ -252,7 +252,7 @@ Details:
 
 ### Where to Find Code Scanning Alerts
 
-Security tab → Code scanning → filter by severity, rule, or file.
+Security and quality tab → Code scanning → filter by severity, rule, or file.
 
 
 ## 5. Private Vulnerability Reporting
@@ -263,7 +263,7 @@ GitHub provides **Private Vulnerability Reporting** - a disclosure form that sen
 
 ### How to Submit a Private Report
 
-1. Navigate to the repository's **Security tab**
+1. Navigate to the repository's **Security and quality tab**
 2. Select **"Report a vulnerability"** (this button only appears if the maintainer has enabled private reporting)
 3. Fill in the form:
    - **Title:** Short description of the vulnerability
@@ -309,13 +309,13 @@ A `SECURITY.md` file at the repository root defines the project's security polic
 
 From the repository:
 
-1. Security tab → Policies section → "Security policy" link
+1. Security and quality tab → Policies section → "Security policy" link
 2. Or directly: `https://github.com/owner/repo/security/policy`
 
 Screen reader path:
 
 ```text
-Security tab → H → "Policy" heading → Link: "Security policy" → Enter
+Security and quality tab → H → "Policy" heading → Link: "Security policy" → Enter
 ```
 
 
@@ -337,9 +337,9 @@ This export is useful when:
 - You want to identify license compatibility for a commercial product
 
 
-## 8. Screen Reader Navigation of the Security Tab
+## 8. Screen Reader Navigation of the Security and quality tab
 
-### Reaching the Security Tab
+### Reaching the Security and quality tab
 
 ```text
 From any repo page:
@@ -350,7 +350,7 @@ Or: Focus Mode → G then S (GitHub shortcut)
 ### Navigating Dependabot Alerts
 
 ```text
-Security tab → select "Dependabot alerts" link
+Security and quality tab → select "Dependabot alerts" link
 Alert list is a table: T (NVDA/JAWS Browse Mode) → navigate rows
 Each row: Tab to expand → Enter to open full alert details
 Inside an alert:
@@ -362,7 +362,7 @@ Inside an alert:
 ### Navigating Code Scanning Alerts
 
 ```text
-Security tab → select "Code scanning" link
+Security and quality tab → select "Code scanning" link
 Alert list: T to find the table → ↑/↓ to navigate rows
 Open an alert: Enter
 Inside the alert:
@@ -375,7 +375,7 @@ Inside the alert:
 ### The Private Vulnerability Reporting Form
 
 ```text
-Security tab → "Report a vulnerability" button → Enter
+Security and quality tab → "Report a vulnerability" button → Enter
 Form fields: F or E → cycle through: Title, Description, Severity (select), Versions, CVSS
 Describe field: NVDA+Space → Focus Mode → type → NVDA+Space to leave
 Submit: Tab → "Submit report" button → Enter
@@ -384,7 +384,7 @@ Submit: Tab → "Submit report" button → Enter
 
 ## 9. Security and Accessibility Agents
 
-Accessibility Agents' `/security-dashboard` slash command gives you a quick security overview without visiting the Security tab in the browser:
+Accessibility Agents' `/security-dashboard` slash command gives you a quick security overview without visiting the Security and quality tab in the browser:
 
 ```text
 /security-dashboard

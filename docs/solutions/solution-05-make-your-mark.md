@@ -15,7 +15,7 @@ This shows an example edit and commit. Your changes will be different.
 **After:**
 
 ```markdown
-See the [workshop schedule](https://github.com/Community-Access/learning-room/blob/main/SCHEDULE.md) for session times.
+See the [workshop schedule](https://github.com/Community-Access/git-going-with-github/blob/main/admin/DAY1_AGENDA.md) for session times.
 ```
 
 ## Example commit message

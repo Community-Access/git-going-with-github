@@ -2,6 +2,8 @@
 
 ## Git Going with GitHub - Audio Series
 
+> **Architecture update (May 2026):** Some episodes (notably Episode 4: The Learning Room) were recorded under the original "single shared learning-room repository" model. The workshop has since moved to a **GitHub Classroom** model where each participant gets their own private copy of `learning-room-template`. The high-level concepts (PR-driven practice, automated bot feedback, peer review) are still accurate. The bot is now called Aria, and your Learning Room repo is private to you. Refer to the live chapters in `docs/` for the current architecture; the audio remains a useful conceptual overview.
+
 Listen to companion audio episodes for every chapter and appendix in this workshop. Each episode is a conversational overview between hosts Alex and Jamie that previews or reviews the key concepts - perfect for learning on the go or reducing screen reader fatigue. Every episode includes a full transcript below the player.
 
 **Subscribe:** Add the [podcast RSS feed](https://community-access.org/git-going-with-github/podcasts/feed.xml) to your preferred podcast app - Apple Podcasts, Spotify, Overcast, or any RSS reader.

@@ -1,7 +1,7 @@
 # Day 2 Agenda
 ## From Contributor to Product Maker - Igniting the Forge
 
-**Date:** [WORKSHOP_DATE_DAY2] | 9:00 AM - 5:00 PM
+**Date:** May 22, 2026 | 12:00 PM - 8:00 PM Eastern
 
 > **The premise of Day 2:** Whether you built your GitHub skills yesterday in Day 1 or you are joining today with existing GitHub experience, the foundation is the same: you know how to navigate repositories, file issues, open pull requests, and review someone else's work. Those skills are yours now.
 >
@@ -434,7 +434,7 @@ Before opening the PR, run through this with your screen reader:
 5. Fill in the title and description
 6. Submit
 
-**What happens next:** The maintainer (Jeff, your facilitator) reviews the PR. If it meets the contribution standards, it gets merged. Your name goes into the commit history of a live, public, accessibility-focused open source project - permanently.
+**What happens next:** The maintainer (Jeff Bishop, one of your facilitators) reviews the PR. If it meets the contribution standards, it gets merged. Your name goes into the commit history of a live, public, accessibility-focused open source project - permanently.
 
 ### Forge Partner Review
 While your PR is awaiting review, review a forge partner's PR:

@@ -13,13 +13,13 @@ function buildValidationReportBody(results, timestampIso) {
   };
 
   const status = safeResults.passed
-    ? "🎉 **Hooray! Validation Passed**"
-    : "⚠️ **Let's fix a few things**";
+    ? "**Validation Passed** [PASS]"
+    : "**Validation Needs Attention** [ACTION REQUIRED]";
 
-  let body = `Hi! I'm Aria. Here is my review of your pull request:\n\n### Report Status\n${status}\n\n`;
+  let body = `Hi! I am Aria. Here is my review of your pull request:\n\n### Report Status\n${status}\n\n`;
 
   if (safeResults.passed) {
-    body += `> **➡️ Great job! You unlocked the next level.**\n> Head back to the [Course Guide](../../docs/course-guide.md) to see what chapter is next!\n\n`;
+    body += `> Great job. Your pull request has the structure reviewers expect.\n> When your challenge issue is complete, close it to unlock the next challenge.\n\n`;
   }
 
   body += "### Required Checks\n\n";
@@ -68,7 +68,7 @@ function buildValidationReportBody(results, timestampIso) {
   });
 
   body += "\n---\n";
-  body += `*Automated validation by Aria, your Workshop Agent. Last updated: ${ts}*\n`;
+  body += `*Automated validation by Learning Room Bot. Aria generated this review. Last updated: ${ts}*\n`;
   body += "*Questions? Check [PR Guidelines](../../docs/06-working-with-pull-requests.md) or mention @facilitator*";
   return body;
 }

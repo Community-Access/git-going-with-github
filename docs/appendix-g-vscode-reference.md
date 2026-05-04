@@ -631,10 +631,12 @@ Control how much information VS Code announces:
 
 | Setting | Values | Default | Controls |
 | ---------  | --------  | ---------  | ----------  |
+| `accessibility.verbosity.chatQuestionCarousel` | `true`, `false` | `true` | ARIA hint in the Agent mode question carousel telling you about `Alt+T` (Focus Terminal) |
 | `accessibility.verbosity.diffEditor` | `verbose`, `minimal`, `off` | `verbose` | Diff viewer context announcements |
 | `accessibility.verbosity.editor` | `verbose`, `minimal`, `off` | `verbose` | General editor announcements |
 | `accessibility.verbosity.hover` | `verbose`, `minimal`, `off` | `verbose` | Hover popup announcements |
 | `accessibility.verbosity.inlineCompletions` | `verbose`, `minimal`, `off` | `verbose` | Copilot suggestion announcements |
+| `accessibility.verbosity.keyboardShortcuts` | `true`, `false` | `true` | Screen reader navigation hint in the Keyboard Shortcuts search results |
 | `accessibility.verbosity.terminal` | `verbose`, `minimal`, `off` | `verbose` | Terminal operation announcements |
 
 **`verbose`:** Announces full context and details  

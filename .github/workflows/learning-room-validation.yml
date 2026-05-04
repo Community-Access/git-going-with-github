@@ -4,7 +4,7 @@ on:
   pull_request:
     branches: [main]
     paths:
-      - 'learning-room/**'
+      - "learning-room/**"
 
 permissions:
   contents: read
@@ -13,20 +13,20 @@ permissions:
 jobs:
   validate_learning_room:
     runs-on: ubuntu-latest
-    
+
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
-      
+
       - name: Set up Python
         uses: actions/setup-python@v5
         with:
-          python-version: '3.11'
-      
+          python-version: "3.11"
+
       - name: Install dependencies
         run: |
           pip install requests
-      
+
       - name: Validate Markdown syntax
         id: markdown
         run: |
@@ -35,26 +35,26 @@ jobs:
           else
             echo "markdownlint not found, skipping syntax check"
           fi
-      
+
       - name: Check for broken links
         id: links
         run: |
           python learning-room/.github/scripts/check_links.py learning-room/ || true
-      
+
       - name: Validate accessibility
         id: accessibility
         run: |
           python learning-room/.github/scripts/check_accessibility.py learning-room/ || true
-      
+
       - name: Post feedback comment
         if: always()
         uses: actions/github-script@v7
         with:
           script: |
             const fs = require('fs');
-            
+
             let feedback = { errors: [], warnings: [] };
-            
+
             // Try to read validation results if they exist
             try {
               if (fs.existsSync('validation-results.json')) {
@@ -66,35 +66,35 @@ jobs:
               console.error('Error reading validation results:', error);
               feedback = { errors: [], warnings: [] };
             }
-            
+
             let comment = `## Learning Room Validation Report\n\n`;
-            
+
             if (feedback.errors.length === 0 && feedback.warnings.length === 0) {
-              comment += `✅ **Great work!** Your changes look good!\n\n`;
+              comment += `**Great work.** Your changes look good.\n\n`;
             } else {
               if (feedback.errors.length > 0) {
-                comment += `### ❌ Required Fixes\n`;
+                comment += `### Required Fixes\n`;
                 feedback.errors.forEach(err => {
                   const helpUrl = err.help_url || '../../docs/appendix-c-markdown-reference.md';
                   comment += `- **${err.file}**: ${err.message}\n`;
-                  comment += `  [→ Learn more](${helpUrl})\n\n`;
+                  comment += `  [Learn more](${helpUrl})\n\n`;
                 });
               }
               
               if (feedback.warnings.length > 0) {
-                comment += `### ⚠️ Suggestions\n`;
+                comment += `### Suggestions\n`;
                 feedback.warnings.forEach(warn => {
                   comment += `- **${warn.file}**: ${warn.message}\n`;
                 });
                 comment += `\n`;
               }
             }
-            
-            comment += `### 📚 Resources\n`;
+
+            comment += `### Resources\n`;
             comment += `- [Markdown Guide](../../docs/appendix-c-markdown-reference.md)\n`;
             comment += `- [Accessibility Standards](../../docs/appendix-m-accessibility-standards.md)\n`;
             comment += `- [Open Source Culture](../../docs/08-open-source-culture.md)\n`;
-            
+
             try {
               await github.rest.issues.createComment({
                 issue_number: context.issue.number,

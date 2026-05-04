@@ -30,11 +30,11 @@ For this workshop, Chapter 10 is a **guided practice chapter**, not a graded aut
 
 **Goal:** Set up a useful notification workflow so you can keep up with reviews, mentions, and assignments without inbox overload.
 
-**Where you are working:** the GitHub.com notifications page and the [learning-room](https://github.com/Community-Access/learning-room) repository settings.
+**Where you are working:** the GitHub.com notifications page and your Learning Room repository settings.
 
 **Estimated time:** 5-8 minutes.
 
-1. Open the [learning-room](https://github.com/Community-Access/learning-room) repository on GitHub.com.
+1. Open your Learning Room repository on GitHub.com.
 2. Find the **Watch** button near the top-right of the repository page (next to Star and Fork).
 3. Activate the **Watch** dropdown and select **Participating and @mentions**. This means you only get notified when someone @mentions you or you are directly participating in a thread.
 4. Open the notifications inbox by navigating to `https://github.com/notifications` (or activate the bell icon in the GitHub header).

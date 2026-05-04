@@ -10,7 +10,8 @@ The Learning Room uses GitHub Actions workflows to provide real-time feedback to
 |----------|---------|----------|
 | `pr-validation-bot.yml` | Aria bot -- welcomes first-timers, validates PR structure | PR opened/edited/reviewed |
 | `content-validation.yml` | Checks links, Markdown, accessibility | PR opened/edited |
-| `skills-progression.yml` | Unlocks next challenge issue in sequence | Issue closed |
+| `student-progression.yml` | Creates the first challenge and unlocks the next challenge issue in sequence | Workflow dispatch, issue closed |
+| `skills-progression.yml` | Posts achievement and progress feedback | PR merged |
 | `autograder-conflicts.yml` | Validates merge conflict resolution (Ch07) | PR opened/edited |
 | `autograder-local-commit.yml` | Validates local Git commit (Ch10) | Push to branch |
 | `autograder-template.yml` | Validates issue template creation (Ch14) | Issues created |
@@ -27,6 +28,7 @@ learning-room/
 │   ├── workflows/                 # GitHub Actions workflows
 │   │   ├── pr-validation-bot.yml
 │   │   ├── content-validation.yml
+│   │   ├── student-progression.yml
 │   │   └── skills-progression.yml
 │   └── scripts/                   # Support scripts
 │       ├── validate-pr.js         # PR validation logic
@@ -52,7 +54,8 @@ learning-room/
 3. **Workflows run automatically:**
    - `pr-validation-bot`: Validates structure, welcomes first-timers
    - `content-validation`: Checks links, markdown, accessibility
-   - `skills-progression`: (Only runs on merge) Awards badges
+  - `student-progression`: Creates the next challenge when an issue closes
+  - `skills-progression`: Awards badges when a PR merges
 
 4. **Student receives feedback** in PR comments within ~30 seconds
 

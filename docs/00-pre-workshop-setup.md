@@ -883,6 +883,12 @@ GIT & VS CODE (required before the workshop)
 [ ] Pull Requests panel opens (Ctrl+Shift+P → "Focus on Pull Requests View")
 ```
 
+### What Happens at the Start of Day 1
+
+You do **not** need to claim a workshop repository before Day 1 -- that is the very first hands-on step we do together in Block 0. When the workshop opens, the facilitator will paste a **GitHub Classroom assignment link** in the chat. Accepting that link creates your own private Learning Room repository in the workshop organization and seeds it with Challenge 1.
+
+The full guided walkthrough lives in [Chapter 4: Step-by-Step: Accept Your Classroom Assignment and Open Your Repo](04-the-learning-room.md#step-by-step-accept-your-classroom-assignment-and-open-your-repo). Skim it the night before if you want to know what to expect; we will walk through it live in Block 0.
+
 
 ## Other GitHub Access Methods (Reference Only)
 

@@ -11,21 +11,21 @@ function getAutoResponse(commentBody, author) {
   // Help request
   if (comment.includes('@bot help') || comment.includes('need help') || comment.includes('i\'m stuck')) {
     return [
-      `Hi @${safeAuthor}! 👋`,
+      `Hi @${safeAuthor}!`,
       '',
       '**Here are some helpful resources:**',
       '',
-      '📖 **Guides:**',
+      '**Guides:**',
       '- [Setup Guide](../docs/setup-guide.md)',
       '- [Keyboard Shortcuts](../docs/keyboard-shortcuts.md)',
       '- [Challenge Hub](../docs/CHALLENGES.md)',
       '',
-      '💬 **Common Questions:**',
+      '**Common Questions:**',
       '- **"How do I update my PR?"** Just make changes on your branch and push again.',
       '- **"Why is the bot asking for X?"** Check the learning resources for explanations.',
       '- **"I disagree with the bot"** No problem! Mention @facilitator and explain your reasoning.',
       '',
-      '❓ **Still stuck?** Mention `@facilitator` in a comment and they\'ll help you out!',
+      '**Still stuck?** Mention `@facilitator` in a comment and they will help you.',
       '',
       '---',
       '*Learning Room Bot*'
@@ -35,7 +35,7 @@ function getAutoResponse(commentBody, author) {
   // Merge conflict help  
   if (comment.includes('merge conflict') || comment.includes('conflict')) {
     return [
-      `Hi @${safeAuthor}! Merge conflicts can be tricky, but you\'ve got this! 💪`,
+      `Hi @${safeAuthor}! Merge conflicts can be tricky, but this is a normal part of collaborative development.`,
       '',
       '**Quick steps to fix your conflict:**',
       '',
@@ -60,7 +60,7 @@ function getAutoResponse(commentBody, author) {
       comment.includes('request a review') ||
       comment.includes('assign reviewer')) {
     return [
-      `Hi @${safeAuthor}! Great question! Here\'s how to request a review:`,
+      `Hi @${safeAuthor}! To request a review, use the reviewer controls on your pull request. Here is how:`,
       '',
       '**In the GitHub UI:**',
       '1. On your PR page, find the **"Reviewers"** section (right sidebar)',
@@ -82,7 +82,7 @@ function getAutoResponse(commentBody, author) {
   // Challenge/assignment help
   if (comment.includes('what\'s next') || comment.includes('next challenge') || comment.includes('what should i work on')) {
     return [
-      `Hi @${safeAuthor}! Great momentum! 🔥`,
+      `Hi @${safeAuthor}! Great momentum.`,
       '',
       '**Here\'s where to find your next challenge:**',
       '',
@@ -104,7 +104,7 @@ function getAutoResponse(commentBody, author) {
   // Claim challenge request
   if (comment.includes('like to work on') || comment.includes('claim') || comment.includes('assign me')) {
     return [
-      `Hi @${safeAuthor}! Awesome! Let\'s get you started! 🚀`,
+      `Hi @${safeAuthor}! Excellent. Let us get you started.`,
       '',
       '**Here\'s what to do next:**',
       '',

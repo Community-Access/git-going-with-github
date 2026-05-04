@@ -14,12 +14,13 @@ License: CC BY 4.0 | [Site](https://community-access.org/git-going-with-github/)
 | **Registration** | Closed - thank you to all who registered! |
 | **Discussions** | [Join the conversation](https://github.com/community-access/git-going-with-github/discussions) |
 | **Support** | [File an issue](https://github.com/community-access/git-going-with-github/issues) |
-| **Dates** | [WORKSHOP_DATE_DAY1] & [WORKSHOP_DATE_DAY2] |
+| **Dates** | May 21, 2026 & May 22, 2026 |
+| **Facilitators** | Jeff Bishop and Michael Babcock |
 
 
 > **The Central Project: Accessibility Agents**
 >
-> This workshop is built around a real, live open source project: **[Accessibility Agents](https://github.com/community-access/accessibility-agents)** - 55 AI agents across 3 teams and 5 platforms for accessible, agentic repository management. It was built by your facilitator and is MIT-licensed.
+> This workshop is built around a real, live open source project: **[Accessibility Agents](https://github.com/community-access/accessibility-agents)** - 55 AI agents across 3 teams and 5 platforms for accessible, agentic repository management. It was built by your facilitator Jeff Bishop and is MIT-licensed.
 >
 > You will fork it, understand it, contribute to it, and personalize it. By the end of Day 2, your name is in its commit history.
 >
@@ -280,5 +281,5 @@ And by the end of Day 2, you will not just be a learner. You will be a product m
 All workshop documentation is licensed under [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/) - you are free to share and adapt with attribution.
 
 
-*Last reviewed: March 2026*
+*Last reviewed: May 2026*
 *A [Community Access](https://community-access.org) initiative.*

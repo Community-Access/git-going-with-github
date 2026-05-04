@@ -139,7 +139,14 @@ You are an accessibility specialist focused on image alt text quality in markdow
 | Field | Required | Description |
 |---|---|---|
 | `name` | Yes | Display name for the agent (title case, spaces allowed) |
-| `description` | Yes | One-sentence description of what the agent does |
+| `description` | Yes | One-sentence description of what the agent does -- also drives **automatic invocation**: Copilot matches this text against your request and delegates to the agent without you selecting it manually |
+
+> **Write a strong description.** Vague descriptions result in missed automatic routing.
+>
+> - Weak: `Helps with accessibility`
+> - Strong: `Checks markdown files for accessibility issues, fixes descriptive links and heading hierarchy, and flags alt text for human review`
+>
+> The more specific the description, the more reliably Copilot invokes the right agent for the right task.
 
 ### Writing the instructions body
 

@@ -29,7 +29,7 @@ Or use the Source Control sidebar: click the branch name in the bottom-left stat
 ## With GitHub CLI
 
 ```
-gh repo clone Community-Access/learning-room
+gh repo clone <workshop-org>/learning-room-<your-username>
 cd learning-room
 git checkout -b fix/welcome-todo
 ```

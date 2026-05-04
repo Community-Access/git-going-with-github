@@ -650,7 +650,29 @@ gh copilot explain "git bisect start"
 gh copilot explain "find . -name '*.md' -mtime -7"
 ```
 
-Copilot CLI shows the suggested command, explains what it does, and asks whether to run it — perfect for learning while doing.
+Copilot CLI shows the suggested command, explains what it does, and asks whether to run it - perfect for learning while doing.
+
+### Auto model selection
+
+As of early 2026, `gh copilot` uses **auto model selection** by default - it picks the best available model for your request without you needing to specify one. You can still request a specific model using the `--model` flag if you prefer:
+
+```bash
+# Let Copilot choose automatically (default)
+gh copilot suggest "create a pull request from my current branch"
+
+# Request a specific model
+gh copilot suggest --model gpt-5 "create a pull request from my current branch"
+```
+
+### Telemetry opt-out
+
+As of gh CLI 2.70 (April 2026), `gh` collects anonymized usage telemetry by default to improve the product. To opt out:
+
+```bash
+gh config set telemetry disabled
+```
+
+Or set the environment variable `GH_NO_UPDATE_NOTIFIER=1` to suppress update notifications only.
 
 > **See also:** [Appendix AA: Advanced Git Operations, Section 11](appendix-e-advanced-git.md#11-using-github-copilot-for-git-operations) for more Copilot CLI examples with git operations.
 

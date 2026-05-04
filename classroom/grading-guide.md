@@ -20,6 +20,13 @@ The autograding JSON files define automated tests that run on student PRs. These
 
 Automated checks handle the objective criteria. Facilitator judgment handles everything else.
 
+**What is auto-checked today** (see [autograding-day1.json](autograding-day1.json) and [autograding-day2.json](autograding-day2.json)):
+
+- Day 1: Challenges **2, 5, 6, 7** (issue filed, commit on branch, PR with `Closes/Fixes/Resolves`, no conflict markers)
+- Day 2: Challenges **10, 14, 16** (local commit on branch, custom issue template with `name`/`description`, agent file with frontmatter and required sections)
+
+The `(auto)` tag in the per-challenge tables below marks rows where the autograder will post pass/fail results as a PR comment. All other rows require facilitator review.
+
 ## Per-Challenge Grading
 
 ### Day 1 Challenges (01-09)
@@ -27,12 +34,12 @@ Automated checks handle the objective criteria. Facilitator judgment handles eve
 | # | Challenge | Evidence | Complete if... |
 |---|---|---|---|
 | 01 | Scavenger Hunt | Issue comment listing findings | Student explored multiple tabs and found key files |
-| 02 | First Issue | Open issue | Title is clear and body has context |
-| 03 | Join the Conversation | Comment thread with @mention | At least one substantive reply to another student |
+| 02 | First Issue (auto) | Open issue | Title is clear and body has context |
+| 03 | Join the Conversation | Comment thread with @mention | At least one substantive reply to the peer-simulation issue or a real buddy issue if access is provisioned |
 | 04 | Branch Out | Branch exists | Any branch with any name exists |
-| 05 | Make Your Mark | Commit on branch | File was edited and commit message is descriptive |
-| 06 | First PR | Open or merged PR | PR has title + description + `Closes #N` |
-| 07 | Merge Conflict | Clean file in PR | No conflict markers remain |
+| 05 | Make Your Mark (auto) | Commit on branch | File was edited and commit message is descriptive |
+| 06 | First PR (auto) | Open or merged PR | PR has title + description + `Closes #N` |
+| 07 | Merge Conflict (auto) | Clean file in PR | No conflict markers remain |
 | 08 | Culture | Comment or issue body with reflection | Shows genuine engagement with governance files |
 | 09 | Merge Day | Merged PR | At least one PR was reviewed and merged |
 
@@ -40,20 +47,20 @@ Automated checks handle the objective criteria. Facilitator judgment handles eve
 
 | # | Challenge | Evidence | Complete if... |
 |---|---|---|---|
-| 10 | Go Local | Branch pushed from local clone | Git log shows local commits |
+| 10 | Go Local (auto) | Branch pushed from local clone | Git log shows local commits |
 | 11 | Day 2 PR | PR from locally-pushed branch | PR exists with description |
-| 12 | Code Review | Review comment on buddy's PR | At least one specific, constructive comment |
+| 12 | Code Review | Review comment on the peer-simulation PR or a real buddy PR if access is provisioned | At least one specific, constructive comment |
 | 13 | Copilot | Evidence of Copilot interaction | Shows both Copilot output AND student evaluation |
-| 14 | Issue Template | YAML file in `.github/ISSUE_TEMPLATE/` | Has `name` and `description` fields |
+| 14 | Issue Template (auto) | YAML file in `.github/ISSUE_TEMPLATE/` | Has `name` and `description` fields |
 | 15 | Agents | Exploration notes in issue or PR | Examined at least one agent's instructions |
-| 16 | Capstone | Agent file with PR to accessibility-agents | Has frontmatter, responsibilities, guardrails |
+| 16 | Capstone (auto) | Agent file with PR to accessibility-agents, plus peer-simulation or real peer review evidence | Has frontmatter, responsibilities, guardrails |
 
 ### Bonus Challenges (A-E)
 
 | # | Challenge | Evidence | Complete if... |
 |---|---|---|---|
 | A | Accessibility Audit | Issue or PR with findings | Identified at least 2 real accessibility issues |
-| B | Mentor a Peer | Thread showing guidance | Helped another student resolve a challenge |
+| B | Mentor a Peer | Thread showing guidance | Helped another student resolve a challenge, or provided high-quality guidance on a peer-simulation issue if real peer access is unavailable |
 | C | Cross-Repo Contribution | PR to accessibility-agents or git-going repo | PR submitted to a repo outside the learning room |
 | D | Custom Workflow | Workflow file or documentation | Created or documented a reusable workflow |
 | E | Documentation Champion | Doc improvements in any repo | Improved existing documentation with a merged PR |

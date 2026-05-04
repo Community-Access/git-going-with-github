@@ -75,9 +75,13 @@ jobs:
                 'No conflict markers found and the file has substantive content. Well done!'
               ].join('\n');
             }
-            await github.rest.issues.createComment({
-              owner: context.repo.owner,
-              repo: context.repo.repo,
-              issue_number: context.issue.number,
-              body
-            });
+            try {
+              await github.rest.issues.createComment({
+                owner: context.repo.owner,
+                repo: context.repo.repo,
+                issue_number: context.issue.number,
+                body
+              });
+            } catch (error) {
+              console.error('Could not post Challenge 7 result:', error.message);
+            }

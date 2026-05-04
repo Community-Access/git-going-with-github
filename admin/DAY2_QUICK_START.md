@@ -56,7 +56,9 @@ Install these before the session:
 
 ### Accept the Day 2 Classroom Assignment
 
-Your facilitator will share the Day 2 assignment link. Click it to create your own private repository. Once created, clone it locally:
+Your facilitator will share the Day 2 assignment link. Click it to create your own private repository. The acceptance flow on Day 2 is identical to Day 1; if this is your first time accepting a GitHub Classroom assignment, follow the [Step-by-Step: Accept Your Classroom Assignment and Open Your Repo](../docs/04-the-learning-room.md#step-by-step-accept-your-classroom-assignment-and-open-your-repo) walkthrough in Chapter 4.
+
+Once your Day 2 repo is created, clone it locally:
 
 ```bash
 cd ~/Documents

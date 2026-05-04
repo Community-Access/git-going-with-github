@@ -1,6 +1,6 @@
 name: Skills Progression Tracker
-# Tracks student progress, unlocks challenges, awards badges
-# Runs when PRs are merged to celebrate achievements and motivate learning
+# Tracks merged pull requests and posts encouraging achievement feedback.
+# Challenge issue delivery is handled by student-progression.yml.
 
 on:
   pull_request:
@@ -10,12 +10,12 @@ on:
   workflow_dispatch:
     inputs:
       student_username:
-        description: 'Student GitHub username'
+        description: "Student GitHub username"
         required: false
       action:
-        description: 'Action (check_progress, assign_next, reset)'
+        description: "Action (check_progress, assign_next, reset)"
         required: false
-        default: 'check_progress'
+        default: "check_progress"
 
 permissions:
   contents: read
@@ -27,7 +27,7 @@ jobs:
     name: Award Badge & Track Progress
     runs-on: ubuntu-latest
     if: github.event.pull_request.merged == true || github.event_name == 'workflow_dispatch'
-    
+
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
@@ -35,7 +35,7 @@ jobs:
       - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
-          node-version: '20'
+          node-version: "20"
 
       - name: Award achievement badge
         uses: actions/github-script@v7
@@ -76,25 +76,25 @@ jobs:
               
               if (labels.includes('skill: markdown')) {
                 skillType = 'markdown-master';
-                badgeName = '📝 Markdown Master';
+                badgeName = 'Markdown Master';
                 skillDescription = 'You mastered proper markdown syntax and document structure!';
               } else if (labels.includes('skill: accessibility')) {
                 skillType = 'accessibility-advocate';
-                badgeName = '♿ Accessibility Advocate';
+                badgeName = 'Accessibility Advocate';
                 skillDescription = 'You made content more accessible for everyone!';
               } else if (labels.includes('skill: review')) {
                 skillType = 'code-reviewer';
-                badgeName = '👀 Code Reviewer';
+                badgeName = 'Code Reviewer';
                 skillDescription = 'You provided constructive, helpful feedback!';
               } else if (labels.includes('skill: collaboration')) {
                 skillType = 'team-player';
-                badgeName = '🤝 Team Player';
+                badgeName = 'Team Player';
                 skillDescription = 'You collaborated effectively with your peers!';
               }
               
               // Build achievement comment
               const achievementBody = [
-                '## Achievement Unlocked! 🏆',
+                '## Achievement Unlocked',
                 '',
                 `**${badgeName}** — ${skillDescription}`,
                 '',
@@ -106,11 +106,10 @@ jobs:
                 '',
                 '### What\'s Next?',
                 '',
-                '✅ Check your [Learning Path](../docs/LEARNING_PATHS.md) for the next challenge',
-                '📖 Review available [Challenges](docs/CHALLENGES.md)',
-                '💬 Comment if you want to claim the next issue',
+                'Close the matching challenge issue if you have not already done so.',
+                'The Student Progression Bot creates the next challenge issue when the current challenge issue closes.',
                 '',
-                '**Keep going! You\'re building real open source experience.** 🚀',
+                '**Keep going. You are building real open source experience.**',
                 '',
                 '---',
                 '*Progress tracked by the Learning Room Skills Engine*'
@@ -126,14 +125,14 @@ jobs:
               
               // Close the linked issue with a celebration comment
               const issueClosingComment = [
-                `## Issue Resolved ✅`,
+                `## Issue Resolved`,
                 '',
                 `Great work @${student}! Your PR #${prNumber} has been merged.`,
                 '',
                 'Next steps:',
-                '1. Celebrate your achievement! 🎉',
-                '2. Check the [Learning Paths](../docs/LEARNING_PATHS.md) for your next challenge',
-                '3. Claim the next issue with a comment'
+                '1. Confirm your challenge issue is closed.',
+                '2. Wait for the Student Progression Bot to create the next challenge.',
+                '3. Ask a facilitator if the next issue does not appear within one minute.'
               ].join('\n');
               
               await github.rest.issues.createComment({
@@ -157,70 +156,4 @@ jobs:
               
             } catch (error) {
               console.error('Error awarding achievement:', error);
-            }
-
-  unlock-next-challenge:
-    name: Check for Next Challenge
-    runs-on: ubuntu-latest
-    if: github.event.pull_request.merged == true
-    
-    steps:
-      - name: Checkout code
-        uses: actions/checkout@v4
-
-      - name: Setup Python
-        uses: actions/setup-python@v5
-        with:
-          python-version: '3.11'
-
-      - name: Find next available challenge
-        uses: actions/github-script@v7
-        with:
-          script: |
-            try {
-              const student = context.payload.pull_request.user.login;
-              
-              // Get all open issues unassigned or not yet claimed by this student
-              const { data: openChallenges } = await github.rest.issues.listForRepo({
-                owner: context.repo.owner,
-                repo: context.repo.repo,
-                state: 'open',
-                labels: 'challenge'
-              });
-              
-              if (openChallenges.length === 0) {
-                console.log('No more challenges available');
-                return;
-              }
-              
-              // Find first challenge not assigned to this student
-              const nextChallenge = openChallenges.find(issue => {
-                const assignees = (issue.assignees || []).map(a => a.login);
-                return !assignees.includes(student);
-              });
-              
-              if (nextChallenge) {
-                const suggestionComment = [
-                  `Hi @${student}! 👋`,
-                  '',
-                  'Congratulations on completing your last challenge! **You\'re on a roll!** 🎉',
-                  '',
-                  `### Next Challenge Available:`,
-                  `[${nextChallenge.title}](${nextChallenge.html_url})`,
-                  '',
-                  'Would you like to claim it? Comment below with:',
-                  '> I\'d like to work on this challenge!',
-                  '',
-                  'Questions? Ask in the issue comments - that\'s what they\'re for!',
-                  '',
-                  '---',
-                  '*Learning Room Skills Engine*'
-                ].join('\n');
-                
-                // Post suggestion as reply in the PR
-                // (This helps students see the next challenge right away)
-                console.log('Next challenge found:', nextChallenge.number);
-              }
-            } catch (error) {
-              console.error('Error finding next challenge:', error);
             }
