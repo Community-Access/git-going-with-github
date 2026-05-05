@@ -83,6 +83,13 @@ As you complete challenges, you'll:
 
 [**View Available Challenges →**](docs/CHALLENGES.md)
 
+## Stuck? Use Guided References
+
+- [Solutions Index](docs/solutions/README.md) - challenge-by-challenge worked examples
+- [Skills-Inspired Bonus Scenarios](docs/skills-bonus-scenarios.md) - optional advanced practice adapted from GitHub Skills
+
+Use these references after you attempt the challenge yourself. They are designed to unblock you, not replace your own practice.
+
 
 ## Study Groups
 

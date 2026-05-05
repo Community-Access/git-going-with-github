@@ -597,7 +597,17 @@ function New-BonusIssue {
 
 function Write-Report {
     if (-not $ReportPath) {
-        $safeName = $script:Repository.Replace('/', '-')
+        $safeName = if ($script:Repository) { $script:Repository.Replace('/', '-') } else { 'unknown-repo' }
+        if ($safeName -like 'learning-room-e2e-*') {
+            $safeName = $safeName.Substring('learning-room-e2e-'.Length)
+        }
+        $invalidCharsPattern = [regex]::Escape(([string]::Join('', [IO.Path]::GetInvalidFileNameChars())))
+        $safeName = [regex]::Replace($safeName, "[$invalidCharsPattern]", '-')
+        $safeName = $safeName.Trim('-')
+        if (-not $safeName) {
+            $safeName = 'report'
+        }
+
         $ReportPath = Join-Path (Get-Location) "learning-room-e2e-$safeName.json"
     }
 

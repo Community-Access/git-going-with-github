@@ -10,6 +10,10 @@ on:
   issue_comment:
     types: [created]
 
+concurrency:
+  group: pr-validation-${{ github.event.pull_request.number || github.event.issue.number || github.run_id }}
+  cancel-in-progress: true
+
 permissions:
   contents: read
   pull-requests: write
@@ -20,6 +24,7 @@ jobs:
   welcome-first-timer:
     name: Welcome First-Time Contributor
     runs-on: ubuntu-latest
+    timeout-minutes: 10
     if: github.event_name == 'pull_request' && github.event.action == 'opened'
 
     steps:
@@ -86,6 +91,7 @@ jobs:
   validate-pr:
     name: Validate PR & Provide Feedback
     runs-on: ubuntu-latest
+    timeout-minutes: 15
     if: github.event_name == 'pull_request'
 
     steps:
@@ -241,7 +247,26 @@ jobs:
   comment-responder:
     name: Respond to Help Requests
     runs-on: ubuntu-latest
-    if: github.event_name == 'issue_comment'
+    timeout-minutes: 10
+    if: >-
+      github.event_name == 'issue_comment' &&
+      github.event.comment.user.type != 'Bot' &&
+      (
+        contains(github.event.comment.body, '@bot help') ||
+        contains(github.event.comment.body, '@aria-bot') ||
+        contains(github.event.comment.body, 'need help') ||
+        contains(github.event.comment.body, 'Need help') ||
+        contains(github.event.comment.body, 'merge conflict') ||
+        contains(github.event.comment.body, 'Merge conflict') ||
+        contains(github.event.comment.body, 'request review') ||
+        contains(github.event.comment.body, 'Request review') ||
+        contains(github.event.comment.body, 'next challenge') ||
+        contains(github.event.comment.body, 'Next challenge') ||
+        contains(github.event.comment.body, 'assign me') ||
+        contains(github.event.comment.body, 'Assign me') ||
+        contains(github.event.comment.body, 'claim') ||
+        contains(github.event.comment.body, 'Claim')
+      )
 
     steps:
       - name: Checkout code
@@ -253,7 +278,12 @@ jobs:
           node-version: "20"
 
       - name: Install dependencies
-        run: npm ci
+        run: |
+          if [ -f package-lock.json ]; then
+            npm ci
+          else
+            npm install
+          fi
 
       - name: Respond to comment
         uses: actions/github-script@v7

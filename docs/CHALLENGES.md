@@ -323,6 +323,12 @@ Use GitHub Desktop or GitHub.com to explore repository history as a visual timel
 **Compare your work:** [View a completed example](https://github.com/Community-Access/git-going-with-github/blob/main/docs/solutions/solution-bonus-e.md)
 </details>
 
+## Skills-Inspired Optional Scenarios
+
+For advanced students who finish early, use the curated optional scenarios in [learning-room/docs/skills-bonus-scenarios.md](../learning-room/docs/skills-bonus-scenarios.md).
+
+These scenarios adapt selected GitHub Skills exercises into this workshop environment without changing the official 21-challenge progression.
+
 ---
 
 ## If you get stuck
@@ -333,3 +339,4 @@ Every challenge issue includes an "If you get stuck" table with common problems 
 - Ask your facilitator
 - Read the relevant chapter in the [curriculum](https://github.com/Community-Access/git-going-with-github/tree/main/docs)
 - Check the [solution file](https://github.com/Community-Access/git-going-with-github/tree/main/docs/solutions) for your challenge
+- Use the student-facing [Learning Room solutions index](../learning-room/docs/solutions/README.md) for quick challenge-by-challenge references

@@ -17,6 +17,10 @@ on:
         required: false
         default: "check_progress"
 
+concurrency:
+  group: skills-progression-${{ github.event.pull_request.number || github.event.issue.number || github.run_id }}
+  cancel-in-progress: true
+
 permissions:
   contents: read
   pull-requests: write
@@ -26,6 +30,7 @@ jobs:
   track-completion:
     name: Award Badge & Track Progress
     runs-on: ubuntu-latest
+    timeout-minutes: 10
     if: github.event.pull_request.merged == true || github.event_name == 'workflow_dispatch'
 
     steps:

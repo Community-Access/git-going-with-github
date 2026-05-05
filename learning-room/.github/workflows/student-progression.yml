@@ -13,6 +13,10 @@ on:
         description: "GitHub username to assign. Leave blank to use the workflow actor."
         required: false
 
+concurrency:
+  group: student-progression-${{ github.event.issue.number || github.run_id }}
+  cancel-in-progress: true
+
 permissions:
   contents: read
   issues: write
@@ -21,6 +25,7 @@ jobs:
   create-next-challenge:
     name: Create Next Challenge Issue
     runs-on: ubuntu-latest
+    timeout-minutes: 10
     if: github.event_name == 'workflow_dispatch' || startsWith(github.event.issue.title, 'Challenge ')
 
     steps:
