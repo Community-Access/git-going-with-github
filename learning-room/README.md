@@ -21,7 +21,7 @@ Everything in this repository is designed for learning. The files in `docs/` hav
 
 ## How to Contribute
 
-1. Open the canonical challenge list: `docs/CHALLENGES.md`
+1. Open the canonical challenge list: `../docs/CHALLENGES.md`
 2. Find your assigned issue (Issues tab → filter by "Assignee: me" or search your username in issue title)
 3. Claim the issue with a comment: `I'd like to try this!`
 4. Read the issue description - it tells you which file to edit and what to fix
@@ -36,7 +36,7 @@ Everything in this repository is designed for learning. The files in `docs/` hav
 13. Merge when approved (the issue closes automatically)
 14. Add a final issue comment with what you learned and your merged PR link
 
-See the [workshop documentation](../../docs/) for full step-by-step guidance.
+See the [workshop documentation](../docs/) for full step-by-step guidance.
 
 
 ## About the Automation Bot
@@ -81,7 +81,8 @@ As you complete challenges, you'll:
 - **Earn badges** for specific achievements (Branch Builder, PR Pioneer, Conflict Resolver, and more)
 - **Celebrate milestones** (first challenge, Day 1 complete, all challenges complete)
 
-[**View Available Challenges →**](docs/CHALLENGES.md)
+[**View Available Challenges →**](../docs/CHALLENGES.md)
+[**Follow the Full Course Roadmap →**](docs/course-roadmap.md)
 
 ## Stuck? Use Guided References
 
