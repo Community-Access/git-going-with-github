@@ -4,10 +4,10 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="description" content="GIT Going with GitHub - A two-day accessible open source workshop by Community Access">
-  <title>Facilitator Guide & Workshop Timeline - GIT Going with GitHub</title>
-  <link rel="stylesheet" href="../styles/github-markdown.css">
-  <link rel="stylesheet" href="../styles/highlight.css">
-  <link rel="stylesheet" href="../styles/custom.css">
+  <title>Facilitator Guide and Workshop Timeline - GIT Going with GitHub</title>
+  <link rel="stylesheet" href="./styles/github-markdown.css">
+  <link rel="stylesheet" href="./styles/highlight.css">
+  <link rel="stylesheet" href="./styles/custom.css">
   <style>
     .markdown-body {
       box-sizing: border-box;
@@ -28,7 +28,7 @@
   <header class="site-header" role="banner">
     <div class="site-header-inner">
       <nav aria-label="Breadcrumb" class="breadcrumb">
-        <a href="../index.html">Home</a> <span aria-hidden="true">›</span> <span aria-current="page">Facilitator Guide & Workshop Timeline</span>
+        <a href="./index.html">Home</a> <span aria-hidden="true">›</span> <span aria-current="page">Facilitator Guide and Workshop Timeline</span>
       </nav>
       <div class="header-actions">
         <a href="https://github.com/Community-Access/git-going-with-github/wiki" class="wiki-link" target="_blank" rel="noopener noreferrer">
@@ -37,7 +37,7 @@
           </svg>
           Wiki
         </a>
-        <form role="search" class="search-form" action="../search.html" method="get">
+        <form role="search" class="search-form" action="./search.html" method="get">
         <label for="site-search" class="search-label">Search docs</label>
         <input
           type="search"
@@ -58,59 +58,73 @@
     </div>
   </header>
   <main id="main-content" class="markdown-body">
-    <h1 id="facilitator-guide-amp-workshop-timeline">Facilitator Guide &amp; Workshop Timeline</h1>
+    <h1 id="facilitator-guide-and-workshop-timeline">Facilitator Guide and Workshop Timeline</h1>
+<h2 id="facilitator-team">Facilitator Team</h2>
+<ul>
+<li><strong>Jeff Bishop</strong> -- lead facilitator, maintainer of <a href="https://github.com/community-access/accessibility-agents">Accessibility Agents</a></li>
+<li><strong>Michael Babcock</strong> -- co-facilitator</li>
+</ul>
+<p>Both facilitators run all sessions together. &quot;The facilitator&quot; or &quot;your facilitator&quot; in this guide refers to whichever of the two is leading a given moment; either can step in for the other on any task in this guide.</p>
 <h2 id="overview">Overview</h2>
-<p>This workshop runs <strong>Saturday, March 8-9, 2026</strong> from <strong>12pm-8pm ET</strong> both days.</p>
-<p><strong>Participants:</strong> 66 blind and low-vision students<br><strong>Format:</strong> Hybrid (streaming + learning room)<br><strong>Main Goal:</strong> Get every student to merge their first pull request</p>
-<h2 id="before-the-workshop-friday-march-7">Before the Workshop (Friday, March 7)</h2>
+<p>This is a <strong>two-day workshop</strong> designed for blind and low-vision students learning GitHub through hands-on collaboration. Each day runs approximately 8 hours with structured sessions and flexible working time.</p>
+<p><strong>Format:</strong> Hybrid (streaming + individual GitHub Classroom repos)
+<strong>Main Goal:</strong> Get every student to merge their first pull request</p>
+<blockquote>
+<p><strong>Deployment note:</strong> For setup instructions, see <a href="../classroom/README.html">classroom/README.md</a>.
+Each student receives their own private repository through GitHub Classroom.
+The Aria bot and student-progression workflow handle challenge delivery and feedback automatically.</p>
+</blockquote>
+<h2 id="before-the-workshop-day-before">Before the Workshop (Day Before)</h2>
 <h3 id="facilitator-checklist">Facilitator Checklist</h3>
 <ul>
-<li><input type="checkbox" disabled> <input aria-label="Verify all 66 student branches exist" disabled="" type="checkbox"> Verify all 66 student branches exist</li>
-<li><input type="checkbox" disabled> <input aria-label="Test assignment issues load without errors" disabled="" type="checkbox"> Test assignment issues load without errors</li>
-<li><input type="checkbox" disabled> <input aria-label="Confirm peers are assigned for cross-review" disabled="" type="checkbox"> Confirm peers are assigned for cross-review</li>
-<li><input type="checkbox" disabled> <input aria-label="Test bot validation workflow on practice PR" disabled="" type="checkbox"> Test bot validation workflow on practice PR</li>
-<li><input type="checkbox" disabled> <input aria-label="Share link to" disabled="" type="checkbox"> Share link to <a href="https://us06web.zoom.us/meeting/register/YdAAvwzAQUCYpPpNtAlG3g">Zoom registration</a></li>
-<li><input type="checkbox" disabled> <input aria-label="Send reminder email with:" disabled="" type="checkbox"> Send reminder email with:<ul>
-<li>Zoom link + audio-only option</li>
-<li>Pre-workshop setup reminder</li>
+<li><input type="checkbox" disabled> <input aria-label="Verify GitHub Classroom roster is complete (all students accepted invite links)" disabled="" type="checkbox"> Verify GitHub Classroom roster is complete (all students accepted invite links)</li>
+<li><input type="checkbox" disabled> <input aria-label="Confirm both assignments are published and invite links work" disabled="" type="checkbox"> Confirm both assignments are published and invite links work</li>
+<li><input type="checkbox" disabled> <input aria-label="Test Aria bot validation by submitting a practice PR in a test repo" disabled="" type="checkbox"> Test Aria bot validation by submitting a practice PR in a test repo</li>
+<li><input type="checkbox" disabled> <input aria-label="Verify student-progression workflow triggers correctly (close Challenge 1, see Challenge 2 appear)" disabled="" type="checkbox"> Verify student-progression workflow triggers correctly (close Challenge 1, see Challenge 2 appear)</li>
+<li><input type="checkbox" disabled> <input aria-label="Share meeting link and reminder email with:" disabled="" type="checkbox"> Share meeting link and reminder email with:<ul>
+<li>Video call link + audio-only option</li>
+<li>Pre-workshop setup reminder (see <a href="../docs/00-pre-workshop-setup.html">docs/00-pre-workshop-setup.md</a>)</li>
 <li>FAQ: &quot;What if I get stuck?&quot;</li>
 <li>Office hours/emergency contact info</li>
 </ul>
 </li>
 </ul>
 <h3 id="verify-infrastructure">Verify Infrastructure</h3>
-<pre><code class="hljs language-bash"><span class="hljs-comment"># Check all branches exist</span>
-git branch | Select-String <span class="hljs-string">&quot;student/&quot;</span> | Measure-Object
-
-<span class="hljs-comment"># Verify roster is updated</span>
-python -c <span class="hljs-string">&quot;import json; print(f\&quot;Total students: {len(json.load(open(&#x27;.github/data/student-roster.json&#x27;))[&#x27;students&#x27;])}\&quot;)&quot;</span>
-
-<span class="hljs-comment"># Test one assignment issue creation (run on practice student)</span>
-gh issue create --title <span class="hljs-string">&quot;[TEST] Sample Assignment&quot;</span> --body <span class="hljs-string">&quot;Test issue&quot;</span> --assignee <span class="hljs-variable">$YOUR_USERNAME</span></code></pre>
-<h2 id="day-1-saturday-march-8-12pm-8pm-et">Day 1: Saturday, March 8, 12pm-8pm ET</h2>
-<h3 id="1200-pm---100-pm-welcome-amp-github-orientation-60-min">12:00 PM - 1:00 PM: Welcome &amp; GitHub Orientation (60 min)</h3>
+<p>Use the <strong>GitHub Classroom dashboard</strong> to confirm:</p>
+<ol>
+<li>All students have accepted their assignment invite links</li>
+<li>Each student&#39;s private repo was created successfully</li>
+<li>Challenge 1 issue exists in each student repo (auto-created on acceptance)</li>
+</ol>
+<p>Test the automation by opening a PR in one student repo and confirming:</p>
+<ul>
+<li>Aria bot comments with feedback within 30 seconds</li>
+<li>Closing Challenge 1 issue triggers Challenge 2 to appear</li>
+</ul>
+<h2 id="day-1-github-orientation-and-first-pull-request">Day 1: GitHub Orientation and First Pull Request</h2>
+<h3 id="hour-1-welcome-and-github-orientation-60-min">Hour 1: Welcome and GitHub Orientation (60 min)</h3>
 <p><strong>Facilitator Role:</strong></p>
 <ul>
 <li>Create welcoming opening acknowledging everyone&#39;s accessibility needs</li>
 <li>Explain why GitHub matters for blind/low-vision inclusion</li>
 <li>Demonstrate: &quot;I&#39;m going to open the repo right now and you&#39;ll follow along&quot;</li>
-<li>Q&amp;A in chat - answer every question</li>
+<li>Q&amp;A in chat -- answer every question</li>
 </ul>
 <p><strong>What Students Do:</strong></p>
 <ul>
-<li>Join Zoom with screen reader</li>
+<li>Join the video call with screen reader</li>
 <li>Open GitHub in their browser</li>
-<li>Navigate to <code>/learning-room/</code> folder</li>
-<li>Confirm they can see their assignment issue</li>
+<li>Navigate to their private repo (created by GitHub Classroom)</li>
+<li>Confirm they can see their first challenge issue</li>
 </ul>
 <p><strong>Resources to Have Ready:</strong></p>
 <ul>
 <li>Screen reader cheatsheet (Appendix B)</li>
-<li>Common GitHub.com keyboard shortcuts printed</li>
-<li>Zoom chat moderator who watches for questions</li>
+<li>Common GitHub.com keyboard shortcuts</li>
+<li>Chat moderator who watches for questions</li>
 </ul>
-<p><strong>Success Metric:</strong> All 66 students in Zoom report &quot;I found my issue&quot;</p>
-<h3 id="100-pm---130-pm-demo---your-first-pr-30-min">1:00 PM - 1:30 PM: Demo - Your First PR (30 min)</h3>
+<p><strong>Success Metric:</strong> All students report &quot;I found my issue&quot;</p>
+<h3 id="hour-2-demo----your-first-pr-30-min">Hour 2: Demo -- Your First PR (30 min)</h3>
 <p><strong>You (facilitator) will:</strong></p>
 <ol>
 <li>Show a completed example on screen with narration</li>
@@ -118,50 +132,50 @@ gh issue create --title <span class="hljs-string">&quot;[TEST] Sample Assignment
 <li>&quot;First, I click the edit pencil&quot;</li>
 <li>&quot;I see the markdown editor open&quot;</li>
 <li>&quot;I make my change here&quot;</li>
-<li>&quot;I scroll down and create a new branch: <code>fix/demo-001</code>&quot;</li>
+<li>&quot;I scroll down and create a new branch&quot;</li>
 <li>&quot;Now I click &#39;Propose changes&#39; button&quot;</li>
-<li>&quot;GitHub shows me the PR preview - notice the bot already right here checking my work&quot;</li>
+<li>&quot;GitHub shows me the PR preview -- notice the Aria bot already right here checking my work&quot;</li>
 <li>&quot;I fill in the PR template fields&quot;</li>
 <li>&quot;I click &#39;Create Pull Request&#39;&quot;</li>
-<li>&quot;The bot comments within 30 seconds with feedback&quot;</li>
+<li>&quot;Aria comments within 30 seconds with feedback&quot;</li>
 <li>&quot;I address the feedback and push an update commit&quot;</li>
 <li>&quot;I request review by typing @peer_username&quot;</li>
 <li>&quot;My peer reviews and I get approval&quot;</li>
 <li>&quot;I click merge button&quot;</li>
-<li>** Done! My PR is merged!**</li>
+<li>&quot;Done! My PR is merged!&quot;</li>
 </ul>
 </li>
 </ol>
 <p><strong>This is the workflow EVERY student will repeat.</strong> Make it crystal clear.</p>
 <p><strong>Success Metric:</strong> Students report &quot;I see how this works&quot; in chat</p>
-<h3 id="130-pm---600-pm-silent-working-session-270-min">1:30 PM - 6:00 PM: Silent Working Session (270 min)</h3>
-<p><strong>Students work independently on their assignment issues.</strong></p>
-<p>This is THE MAIN ENGAGEMENT. They&#39;re making their first real contribution.</p>
+<h3 id="hours-2-6-working-session-approx-45-hours">Hours 2-6: Working Session (approx. 4.5 hours)</h3>
+<p><strong>Students work independently on challenges in their own repos.</strong></p>
+<p>This is THE MAIN ENGAGEMENT. They&#39;re making their first real contribution. When a student closes a challenge issue, the student-progression workflow automatically opens the next one.</p>
 <p><strong>Facilitator Role:</strong></p>
 <ul>
-<li>Monitor Discussions and PR comments for questions</li>
+<li>Monitor the GitHub Classroom dashboard for student progress</li>
+<li>Check individual student repos for PR comments and questions</li>
 <li>Respond quickly to blockers</li>
 <li>Celebrate each merged PR in chat</li>
-<li>Track progress in <a href="./progress-tracker.json">progress tracker</a></li>
 </ul>
 <p><strong>Expected Cadence:</strong></p>
 <ul>
-<li><strong>1:30-2:30 PM</strong> - Students opening issues, starting edits (expect 15-20 PRs)</li>
-<li><strong>2:30-3:30 PM</strong> - Bot feedback flowing, students making fixes (25-30 PRs)</li>
-<li><strong>3:30-5:00 PM</strong> - Reviews happening, merges happening (30-35 PRs)</li>
-<li><strong>5:00-6:00 PM</strong> - Stragglers finishing, peer reviews catching up</li>
+<li><strong>First hour</strong> -- Students opening issues, starting edits (expect early PRs from fast movers)</li>
+<li><strong>Second hour</strong> -- Aria bot feedback flowing, students making fixes</li>
+<li><strong>Third hour</strong> -- Reviews happening, merges happening, progression bot unlocking new challenges</li>
+<li><strong>Fourth hour</strong> -- Stragglers finishing, peer reviews catching up</li>
 </ul>
 <p><strong>Facilitator Interventions:</strong></p>
-<p>If student hasn&#39;t opened a PR by 2:30 PM:</p>
+<p>If a student hasn&#39;t opened a PR after the first hour:</p>
 <ul>
-<li>Message them: &quot;Hey @student! Need help? Here&#39;s the link to your issue: [issue #XX]&quot;</li>
-<li>Keep it low-pressure - some will take longer</li>
+<li>Message them: &quot;Hey @student! Need help getting started? Check your Issues tab for your current challenge.&quot;</li>
+<li>Keep it low-pressure -- some students will take longer</li>
 </ul>
-<p>If bot gives critical feedback:</p>
+<p>If Aria gives critical feedback:</p>
 <ul>
-<li>Explain in Discussions what the bot meant</li>
+<li>Explain what the bot meant in plain language</li>
 <li>Show the fix clearly</li>
-<li>Make sure student isn&#39;t discouraged</li>
+<li>Make sure the student isn&#39;t discouraged</li>
 </ul>
 <p>If a peer review isn&#39;t happening:</p>
 <ul>
@@ -169,10 +183,9 @@ gh issue create --title <span class="hljs-string">&quot;[TEST] Sample Assignment
 <li>Or ask another student: &quot;Can you review this PR?&quot;</li>
 <li>Priority is getting to merge, not strict peer review</li>
 </ul>
-<p><strong>Celebrate Merges:</strong></p>
-<pre><code class="hljs"> Huge congrats @username! Your first PR <span class="hljs-keyword">is</span> MERGED! 
-You<span class="hljs-symbol">&#x27;re</span> officially a contributor <span class="hljs-keyword">to</span> an <span class="hljs-keyword">open</span> source project!</code></pre>
-<h3 id="600-pm---630-pm-qampa-amp-reflection-30-min">6:00 PM - 6:30 PM: Q&amp;A &amp; Reflection (30 min)</h3>
+<p><strong>Celebrate Merges:</strong>
+Post in the chat or discussion when a student merges their first PR. Public recognition matters.</p>
+<h3 id="hour-7-qampa-and-reflection-30-min">Hour 7: Q&amp;A and Reflection (30 min)</h3>
 <p><strong>Prompt for Discussion:</strong></p>
 <blockquote>
 <p>&quot;Tell us in chat: What was one thing you learned today about GitHub?&quot;</p>
@@ -187,28 +200,32 @@ You<span class="hljs-symbol">&#x27;re</span> officially a contributor <span clas
 <p><strong>Send them home with:</strong></p>
 <ul>
 <li>Tomorrow&#39;s agenda</li>
-<li>Sneak peek at what&#39;s next</li>
+<li>Sneak peek at what&#39;s next (VS Code, local Git, advanced challenges)</li>
 <li>Encouragement!</li>
 </ul>
-<h3 id="630-pm---800-pm-office-hours-optional">6:30 PM - 8:00 PM: Office Hours (Optional)</h3>
+<h3 id="hour-8-office-hours-optional">Hour 8: Office Hours (Optional)</h3>
 <ul>
 <li>Available for 1:1 troubleshooting</li>
 <li>Help students finish PRs</li>
 <li>Answer &quot;How do I...?&quot; questions about GitHub</li>
 <li>Document common questions for tomorrow&#39;s content</li>
 </ul>
-<h2 id="day-2-sunday-march-9-12pm-8pm-et">Day 2: Sunday, March 9, 12pm-8pm ET</h2>
-<h3 id="1200-pm---1230-pm-recap-amp-wins-30-min">12:00 PM - 12:30 PM: Recap &amp; Wins (30 min)</h3>
+<h2 id="day-2-deeper-skills-and-celebration">Day 2: Deeper Skills and Celebration</h2>
+<h3 id="hour-1-recap-and-wins-30-min">Hour 1: Recap and Wins (30 min)</h3>
 <p><strong>Facilitator:</strong></p>
 <ul>
-<li>Show stats: &quot;66 students, X PRs merged on Day 1&quot;</li>
+<li>Show stats from the GitHub Classroom dashboard: &quot;X students, Y PRs merged on Day 1&quot;</li>
 <li>Acknowledge students who got stuck but persisted</li>
-<li>Introduce next challenge level for students ready to go further</li>
+<li>Introduce the Day 2 assignment (students accept the second invite link)</li>
 </ul>
-<h3 id="1230-pm---130-pm-deep-dive---code-review-60-min">12:30 PM - 1:30 PM: Deep Dive - Code Review (60 min)</h3>
+<blockquote>
+<p>Students accept the Day 2 assignment invite link now.
+The student-progression workflow begins delivering Challenge 10 onwards.</p>
+</blockquote>
+<h3 id="hour-2-deep-dive----code-review-60-min">Hour 2: Deep Dive -- Code Review (60 min)</h3>
 <p><strong>Teach:</strong></p>
 <ul>
-<li>How to review someone else&#39;s PR  </li>
+<li>How to review someone else&#39;s PR</li>
 <li>What good feedback looks like</li>
 <li>How to incorporate feedback gracefully</li>
 <li>Real-world code review practices</li>
@@ -219,79 +236,72 @@ You<span class="hljs-symbol">&#x27;re</span> officially a contributor <span clas
 <li>Start with example feedback you provide</li>
 <li>Let them practice the async review process</li>
 </ul>
-<h3 id="130-pm---600-pm-skill-building-challenges-270-min">1:30 PM - 6:00 PM: Skill-Building Challenges (270 min)</h3>
-<p><strong>Now students work on progressively harder challenges:</strong></p>
+<h3 id="hours-3-7-skill-building-challenges-approx-45-hours">Hours 3-7: Skill-Building Challenges (approx. 4.5 hours)</h3>
+<p><strong>Students work through progressively harder challenges delivered by the progression bot:</strong></p>
 <table>
 <thead>
 <tr>
-<th scope="col">Skill Level</th>
-<th scope="col">Students</th>
+<th scope="col">Track</th>
 <th scope="col">Challenges</th>
 <th scope="col">Topics</th>
 </tr>
 </thead>
 <tbody><tr>
-<td>Beginner (joined yesterday)</td>
-<td>~40</td>
-<td>Challenge 2-3</td>
-<td>Content writing, link validation</td>
+<td>Core Day 2</td>
+<td>10-13</td>
+<td>VS Code, Git basics, local commits, code review</td>
 </tr>
 <tr>
-<td>Intermediate (feeling confident)</td>
-<td>~20</td>
-<td>Branch: <code>day2-practice</code></td>
-<td>Comparing diffs, merge conflicts</td>
+<td>Advanced</td>
+<td>14-16</td>
+<td>Issue templates, fork-and-contribute, capstone agent</td>
 </tr>
 <tr>
-<td>Advanced (want more)</td>
-<td>~6</td>
-<td>Custom projects</td>
-<td>Taking on real issues</td>
+<td>Bonus</td>
+<td>bonus-a through bonus-e</td>
+<td>Advanced search, branch protection, GitHub CLI, cloud editors</td>
 </tr>
 </tbody></table>
-<p><strong>Bot Enhances:</strong></p>
+<p>Challenges unlock automatically as students close issues. Faster students will reach bonus challenges; slower students may still be working through core content. Both paces are valid.</p>
+<p><strong>Aria Bot Enhances:</strong></p>
 <ul>
-<li>Accessibility feedback becomes more detailed</li>
+<li>Accessibility feedback becomes more detailed on later challenges</li>
 <li>Highlights larger patterns (&quot;You capitalized but others use lowercase&quot;)</li>
-<li>Suggests improvements not just fixes</li>
+<li>Suggests improvements, not just fixes</li>
 </ul>
 <p><strong>Facilitator Role:</strong></p>
 <ul>
-<li>Track who&#39;s moving between skill levels</li>
-<li>Give stretch challenges to advanced students</li>
-<li>Help intermediate students with conflict resolution</li>
+<li>Use the Classroom dashboard to track who&#39;s advancing through challenges</li>
+<li>Give encouragement to students on later challenges</li>
+<li>Help students with merge conflict resolution (Challenge 7 / autograder)</li>
 <li>Keep the energy positive</li>
 </ul>
-<h3 id="600-pm---700-pm-final-qampa-amp-celebration-60-min">6:00 PM - 7:00 PM: Final Q&amp;A &amp; Celebration (60 min)</h3>
-<p><strong>Metrics to share:</strong></p>
-<pre><code class="hljs"> <span class="hljs-attribute">WORKSHOP RESULTS</span><span class="hljs-punctuation">:</span>
-<span class="hljs-bullet">-</span> <span class="hljs-string">66 students registered</span>
-<span class="hljs-bullet">-</span> <span class="hljs-string">X PRs merged (track real number)</span>
-<span class="hljs-bullet">-</span> <span class="hljs-string">X students got 2+ merges</span>
-<span class="hljs-bullet">-</span> <span class="hljs-string">X students completed code review cycle</span>
-<span class="hljs-bullet">-</span> <span class="hljs-string">100% accessibility - screen readers worked flawlessly</span>
-
- <span class="hljs-attribute">Impact</span><span class="hljs-punctuation">:</span>
-<span class="hljs-bullet">-</span> <span class="hljs-string">X open source contributions submitted</span>
-<span class="hljs-bullet">-</span> <span class="hljs-string">X participants added to 66 projects&#x27; contributor lists</span>
-<span class="hljs-bullet">-</span> <span class="hljs-string">X% of students felt encouraged to contribute again</span></code></pre>
+<h3 id="hour-7-final-qampa-and-celebration-60-min">Hour 7: Final Q&amp;A and Celebration (60 min)</h3>
+<p><strong>Metrics to share (pull from Classroom dashboard):</strong></p>
+<ul>
+<li>Total students enrolled</li>
+<li>PRs merged (track real number)</li>
+<li>Students who completed multiple challenges</li>
+<li>Students who completed the code review cycle</li>
+<li>Accessibility wins -- screen readers worked throughout</li>
+</ul>
 <p><strong>Next Steps:</strong></p>
 <ul>
-<li>Point them to contributing.md in their favorite open source projects</li>
+<li>Point them to CONTRIBUTING.md in their favorite open source projects</li>
 <li>Share list of &quot;good first issue&quot; finding techniques</li>
-<li>Give them the RESOURCES appendix</li>
+<li>Give them the resources appendices</li>
 <li>Offer alumni community channel</li>
 </ul>
-<h3 id="700-pm---800-pm-informal-hangout-60-min">7:00 PM - 8:00 PM: Informal Hangout (60 min)</h3>
+<h3 id="hour-8-informal-hangout-60-min">Hour 8: Informal Hangout (60 min)</h3>
 <ul>
-<li>Students &quot;hang out&quot; on Zoom</li>
+<li>Students hang out on the call</li>
 <li>Chat with peers and facilitators</li>
 <li>Ask follow-up questions</li>
 <li>Exchange GitHub usernames</li>
 </ul>
 <h2 id="facilitator-role-critical-points">Facilitator Role Critical Points</h2>
 <h3 id="communication-style">Communication Style</h3>
-<p> <strong>DO:</strong></p>
+<p><strong>DO:</strong></p>
 <ul>
 <li>Use simple language: &quot;Click the pencil icon to edit&quot;</li>
 <li>Narrate exactly what you&#39;re doing: &quot;I&#39;m clicking... now I&#39;m typing...&quot;</li>
@@ -299,7 +309,7 @@ You<span class="hljs-symbol">&#x27;re</span> officially a contributor <span clas
 <li>Celebrate effort not just success: &quot;Nice work thinking through that!&quot;</li>
 <li>Answer the same question multiple times patiently</li>
 </ul>
-<p> <strong>DON&#39;T:</strong></p>
+<p><strong>DON&#39;T:</strong></p>
 <ul>
 <li>Use &quot;obviously&quot; or assume prior knowledge</li>
 <li>Assume everyone is on the same screen area</li>
@@ -360,7 +370,7 @@ You<span class="hljs-symbol">&#x27;re</span> officially a contributor <span clas
 <li>Have them reset password via GitHub</li>
 <li>Or create temporary escalation issue for them to move forward</li>
 </ul>
-<h3 id="zoom-connectivity-issues">Zoom connectivity issues</h3>
+<h3 id="video-call-connectivity-issues">Video call connectivity issues</h3>
 <ul>
 <li>Have phone dial-in number as backup</li>
 <li>Offer to continue in Discussions if needed</li>

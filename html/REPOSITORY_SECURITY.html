@@ -60,10 +60,9 @@
   <main id="main-content" class="markdown-body">
     <h1 id="repository-security-amp-access-guidelines">Repository Security &amp; Access Guidelines</h1>
 <h2 id="overview">Overview</h2>
-<p>This repository is configured for a 2-day workshop with 67 blind/low-vision students.
-Safety, accessibility, and reliability are the top priorities.</p>
+<p>This repository hosts the curriculum and facilitator materials for the Git Going with GitHub workshop. Student work happens in <strong>individual private repositories</strong> created by GitHub Classroom, not in this repository. This document covers the security model for both the curriculum repository and the student repositories.</p>
 <h2 id="access-control">Access Control</h2>
-<h3 id="who-can-access-what">Who Can Access What</h3>
+<h3 id="curriculum-repository-git-going-with-github">Curriculum Repository (git-going-with-github)</h3>
 <table>
 <thead>
 <tr>
@@ -71,334 +70,337 @@ Safety, accessibility, and reliability are the top priorities.</p>
 <th scope="col">Repository</th>
 <th scope="col">Issues</th>
 <th scope="col">PRs</th>
-<th scope="col">Assignments</th>
+<th scope="col">Settings</th>
 </tr>
 </thead>
 <tbody><tr>
-<td>Students</td>
-<td>Read (public)</td>
-<td>Create &amp; Comment</td>
-<td>Create &amp; Merge</td>
-<td>Can work on</td>
-</tr>
-<tr>
 <td>Facilitators</td>
-<td>Full Access</td>
-<td>Full Access</td>
-<td>Review &amp; Merge</td>
-<td>Assign issues</td>
+<td>Full access</td>
+<td>Full access</td>
+<td>Review and merge</td>
+<td>Admin</td>
 </tr>
 <tr>
-<td>Org Members</td>
+<td>Contributors</td>
 <td>Read</td>
-<td>Comment</td>
-<td>Review</td>
-<td>N/A</td>
+<td>Create and comment</td>
+<td>Create</td>
+<td>None</td>
 </tr>
 <tr>
 <td>Public</td>
 <td>Read</td>
-<td>N/A</td>
-<td>N/A</td>
-<td>N/A</td>
+<td>View</td>
+<td>View</td>
+<td>None</td>
 </tr>
 </tbody></table>
-<h3 id="organization-invitations">Organization Invitations</h3>
-<p>Students are invited to the <code>Community-Access</code> organization as <strong>Members</strong> with:</p>
-<ul>
-<li><strong>Role</strong>: Member (not Admin or Owner)</li>
-<li><strong>Repository Access</strong>: Read/Write to git-going-with-github</li>
-<li><strong>No permissions</strong> to access organization settings or other repos</li>
-<li><strong>Team assignment</strong>: Optional - for grouping during reviews</li>
-</ul>
-<h3 id="joining-the-organization">Joining the Organization</h3>
-<p><strong>Process:</strong></p>
-<ol>
-<li>Student receives GitHub organization invitation via email</li>
-<li>Email comes from: <a href="mailto:noreply@github.com">noreply@github.com</a> with subject &quot;You&#39;ve been invited...&quot;</li>
-<li>Student clicks invitation link (valid for 7 days)</li>
-<li>GitHub shows org approval page - student clicks &quot;Join&quot;</li>
-<li>Student is now able to:<ul>
-<li>See assignment issues</li>
-<li>Push to their <code>student/[username]</code> branch</li>
-<li>Create and merge pull requests</li>
-<li>View other students&#39; branches</li>
-</ul>
-</li>
-</ol>
-<p><strong>Troubleshooting:</strong></p>
-<ul>
-<li>Invitation expired? Re-send from org settings</li>
-<li>Can&#39;t see issues marked &quot;assigned&quot;? Check org membership at:
-<a href="https://github.com/orgs/Community-Access/members">https://github.com/orgs/Community-Access/members</a></li>
-<li>Branch push rejected? Verify you are a member of the org</li>
-</ul>
+<p>This repository is public. It contains no secrets, student data, or sensitive configuration. All curriculum content is openly licensed.</p>
+<h3 id="student-repositories-created-by-github-classroom">Student Repositories (created by GitHub Classroom)</h3>
+<table>
+<thead>
+<tr>
+<th scope="col">Role</th>
+<th scope="col">Repository</th>
+<th scope="col">Issues</th>
+<th scope="col">PRs</th>
+<th scope="col">Settings</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Student (owner)</td>
+<td>Read/Write</td>
+<td>Full access</td>
+<td>Create and merge</td>
+<td>Limited (no Actions config)</td>
+</tr>
+<tr>
+<td>Facilitators</td>
+<td>Full access via Classroom</td>
+<td>Full access</td>
+<td>Review and comment</td>
+<td>Admin</td>
+</tr>
+<tr>
+<td>Other students</td>
+<td>No access</td>
+<td>No access</td>
+<td>No access</td>
+<td>No access</td>
+</tr>
+</tbody></table>
+<p>Student repositories are <strong>private by default</strong>. Each student can only see their own repo. Facilitators see all student repos through the GitHub Classroom dashboard.</p>
+<h3 id="organization-membership">Organization Membership</h3>
+<p>Students do <strong>not</strong> need to be members of the Community-Access organization. GitHub Classroom handles all access automatically when a student accepts an assignment invite link. The student is granted access to their individual repo without any org-level permissions.</p>
+<p>Facilitators <strong>do</strong> need organization-level access to manage the classroom. See the Facilitator Access section below.</p>
 <h2 id="branch-protection">Branch Protection</h2>
-<h3 id="main-branch-main">Main Branch (<code>main</code>)</h3>
+<h3 id="curriculum-repository-main-branch">Curriculum Repository (main branch)</h3>
 <p><strong>Protection Rules:</strong></p>
 <ul>
-<li>Require pull request reviews: YES (1 approval minimum)</li>
-<li>Require status checks to pass: YES (GitHub Actions validation)</li>
-<li>Require branches to be up to date: NO (to avoid merge conflicts)</li>
-<li>Allow auto-merge: NO (manual merge only for safety)</li>
-<li>Allow force pushes: NO (protect history)</li>
-<li>Allow deletions: NO (protect branch)</li>
+<li>Require pull request reviews: Yes (1 approval minimum)</li>
+<li>Require status checks to pass: Yes (GitHub Actions validation)</li>
+<li>Require branches to be up to date: No (to avoid unnecessary merge conflicts)</li>
+<li>Allow auto-merge: No (manual merge only for safety)</li>
+<li>Allow force pushes: No (protect history)</li>
+<li>Allow deletions: No (protect branch)</li>
 </ul>
-<h3 id="student-branches-student">Student Branches (<code>student/*</code>)</h3>
-<p><strong>Protection Rules:</strong></p>
+<h3 id="student-repositories">Student Repositories</h3>
+<p>Student repos are created from the <code>learning-room-template</code>. Branch protection in student repos is intentionally minimal:</p>
 <ul>
-<li>Creation allowed: Students can create at any time</li>
-<li>Force push allowed: NO (protect work)</li>
-<li>Deletion allowed: Only by admins (prevent data loss)</li>
-<li>Protected from accidental overwrites</li>
+<li>Students can create branches freely (required for challenges)</li>
+<li>Students can merge their own PRs (required for the learning flow)</li>
+<li>No force push protection (students are learning; mistakes are part of the process)</li>
+<li>GitHub Actions workflows run with read/write permissions (required for Aria and the Progression Bot)</li>
 </ul>
-<h3 id="action-student-cannot-break-main">Action: Student Cannot Break Main</h3>
-<p>Even if a student force-pushes to their branch, they cannot:</p>
+<h3 id="what-students-cannot-do">What Students Cannot Do</h3>
+<p>Even within their own repo, students cannot:</p>
 <ul>
-<li>Delete their branch</li>
-<li>Corrupt the main branch</li>
-<li>Block other students</li>
-<li>Undo someone else&#39;s work</li>
+<li>Access GitHub Actions secrets at the organization level</li>
+<li>Modify workflow files that run with elevated permissions</li>
+<li>Access other students&#39; repositories</li>
+<li>View the classroom admin settings</li>
 </ul>
 <h2 id="permission-model">Permission Model</h2>
 <h3 id="least-privilege">Least Privilege</h3>
-<p>Students have exactly the permissions they need:</p>
+<p>The GitHub Classroom model enforces least privilege by design:</p>
 <ul>
-<li>NOT admins of org/repo</li>
-<li>NOT access to secrets or CI/CD settings</li>
-<li>NOT access to other repos in org</li>
-<li>NOT access to billing or org management</li>
-<li>CAN create branches, issues, and PRs</li>
-<li>CAN push to their own student branch</li>
-<li>CAN review other students&#39; PRs</li>
-<li>CAN merge PRs (with protection checks)</li>
+<li>Students are <strong>not</strong> organization members</li>
+<li>Students have <strong>no</strong> access to the curriculum repository&#39;s settings</li>
+<li>Students have <strong>no</strong> access to other students&#39; repos</li>
+<li>Students have <strong>no</strong> access to CI/CD secrets or org-level configuration</li>
+<li>Students <strong>can</strong> create branches, issues, and PRs in their own repo</li>
+<li>Students <strong>can</strong> push to any branch in their own repo</li>
+<li>Students <strong>can</strong> merge PRs in their own repo (with autograder checks reporting status)</li>
 </ul>
 <h2 id="facilitator-access">Facilitator Access</h2>
-<h3 id="facilitators-must-be-organization-owners">Facilitators MUST be Organization Owners</h3>
-<p>Facilitators need:</p>
+<h3 id="required-access-level">Required Access Level</h3>
+<p>Facilitators must be <strong>Owners</strong> or <strong>Admins</strong> of the Community-Access organization to:</p>
 <ul>
-<li>Create/edit issues</li>
-<li>Assign issues to students</li>
-<li>Merge pull requests</li>
-<li>Review and comment on PRs</li>
-<li>Monitor workshop progress</li>
+<li>Create and manage GitHub Classroom assignments</li>
+<li>View all student repositories through the classroom dashboard</li>
+<li>Comment on student PRs via the feedback pull request</li>
+<li>Monitor autograding results</li>
+<li>Troubleshoot workflow failures in student repos</li>
 </ul>
-<h3 id="setup">Setup</h3>
-<p>Run these commands (one per facilitator username):</p>
-<pre><code class="hljs language-bash">gh api /orgs/Community-Access/members/[username] -X PUT -f role=admin
+<h3 id="adding-a-facilitator">Adding a Facilitator</h3>
+<pre><code class="hljs language-bash"><span class="hljs-comment"># Add a facilitator as an org admin</span>
+gh api /orgs/Community-Access/memberships/USERNAME -X PUT -f role=admin
 
-<span class="hljs-comment"># Verify</span>
-gh api /orgs/Community-Access/members/[username] --jq .role
-<span class="hljs-comment"># Should return: &quot;admin&quot;</span></code></pre>
+<span class="hljs-comment"># Verify the role</span>
+gh api /orgs/Community-Access/memberships/USERNAME --jq .role
+<span class="hljs-comment"># Expected output: &quot;admin&quot;</span></code></pre>
+<h3 id="removing-a-facilitator-after-the-workshop">Removing a Facilitator After the Workshop</h3>
+<pre><code class="hljs language-bash"><span class="hljs-comment"># Downgrade to member (retains read access) or remove entirely</span>
+gh api /orgs/Community-Access/memberships/USERNAME -X DELETE</code></pre>
 <h2 id="github-actions-security">GitHub Actions Security</h2>
-<h3 id="workflows">Workflows</h3>
-<p><strong>Learning Room PR Validation</strong> (learning-room-validation.yml)</p>
+<h3 id="workflows-in-student-repositories">Workflows in Student Repositories</h3>
+<p>The template repository includes these workflows, which are copied into every student repo:</p>
+<table>
+<thead>
+<tr>
+<th scope="col">Workflow</th>
+<th scope="col">Trigger</th>
+<th scope="col">Permissions</th>
+<th scope="col">What It Does</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>pr-validation-bot.yml</code></td>
+<td>PR opened/updated</td>
+<td>Read/Write</td>
+<td>Aria validates PR structure and posts feedback</td>
+</tr>
+<tr>
+<td><code>student-progression.yml</code></td>
+<td>Issue closed</td>
+<td>Read/Write</td>
+<td>Creates the next challenge issue</td>
+</tr>
+<tr>
+<td><code>autograder-conflicts.yml</code></td>
+<td>Push</td>
+<td>Read</td>
+<td>Checks for conflict markers</td>
+</tr>
+<tr>
+<td><code>autograder-local-commit.yml</code></td>
+<td>Push</td>
+<td>Read</td>
+<td>Verifies local commit evidence</td>
+</tr>
+<tr>
+<td><code>autograder-template.yml</code></td>
+<td>Push</td>
+<td>Read</td>
+<td>Validates YAML template</td>
+</tr>
+<tr>
+<td><code>autograder-capstone.yml</code></td>
+<td>Push</td>
+<td>Read</td>
+<td>Validates agent file structure</td>
+</tr>
+</tbody></table>
+<p><strong>Safety guarantees:</strong></p>
 <ul>
-<li>Triggers: On PR to <code>main</code> modifying <code>learning-room/**</code></li>
-<li>Permissions: Read-only access to repo</li>
-<li>Actions: Validates markdown, links, accessibility</li>
-<li>Output: Single comment on PR with feedback</li>
-<li>Safety: Cannot modify code or create commits</li>
+<li>Workflows use only <code>GITHUB_TOKEN</code> (scoped to the individual student repo)</li>
+<li>No external API keys or webhook secrets are stored</li>
+<li>Workflows cannot access other repositories or organization-level resources</li>
+<li>Workflow code is visible to the student (transparency)</li>
 </ul>
-<h3 id="secrets">Secrets</h3>
-<p><strong>No sensitive secrets stored in repo</strong></p>
-<p>Repository does not contain:</p>
+<h3 id="curriculum-repository-workflows">Curriculum Repository Workflows</h3>
+<p>The curriculum repo uses standard CI workflows for building HTML/EPUB output. These workflows:</p>
 <ul>
-<li>GitHub tokens</li>
-<li>API keys</li>
-<li>Webhook secrets</li>
-<li>SSH keys</li>
-<li>Passwords</li>
+<li>Run on PRs to <code>main</code> only</li>
+<li>Have read-only permissions</li>
+<li>Do not deploy to production automatically</li>
+<li>Cannot modify student repositories</li>
 </ul>
-<p><strong>Safe to</strong>: Public repos, student access, teaching</p>
 <h2 id="data-privacy">Data Privacy</h2>
 <h3 id="what-data-is-stored">What Data Is Stored</h3>
-<p>In the repository:</p>
+<p><strong>In the curriculum repository:</strong></p>
 <ul>
-<li>Student usernames (GitHub public)</li>
-<li>Roster file with pronouns, timezone, interests</li>
-<li>Branch names (<code>student/[username]</code>)</li>
-<li>Commit history (who wrote what)</li>
-<li>PR/issue history (who said what)</li>
+<li>No student data. This repo contains only curriculum content and facilitator guides.</li>
+</ul>
+<p><strong>In the private student-success repository:</strong></p>
+<ul>
+<li>Private cohort operations data belongs in <code>Community-Access/git-going-student-success</code></li>
+<li>This includes registration exports, facilitator notes, accommodation follow-up, grade exports, and student-success follow-up records</li>
+<li>Do not store credentials, API keys, or tokens there; use an approved secret manager for secrets</li>
+</ul>
+<p><strong>In GitHub Classroom:</strong></p>
+<ul>
+<li>Student GitHub usernames (public information)</li>
+<li>Roster data (identifier, optional name, optional email) -- visible only to classroom admins</li>
+<li>Assignment acceptance timestamps</li>
+<li>Autograding scores</li>
+</ul>
+<p><strong>In student repositories:</strong></p>
+<ul>
+<li>Commit history (who wrote what, when)</li>
+<li>Issue and PR comments (visible only to the student and facilitators)</li>
+<li>Branch names</li>
 </ul>
 <h3 id="what-data-is-not-stored">What Data Is NOT Stored</h3>
-<p>Protected from accidental exposure:</p>
 <ul>
-<li>Real names (optional, in roster under &quot;name&quot; field)</li>
+<li>Real names (optional in roster; not required)</li>
 <li>Home addresses</li>
 <li>Phone numbers</li>
-<li>Email addresses (GitHub enterprise feature only)</li>
+<li>Email addresses (only if added to roster by the facilitator)</li>
 <li>Payment information</li>
-<li>Health information beyond &quot;uses screen reader&quot;</li>
+<li>Health information beyond what students voluntarily disclose</li>
 </ul>
-<h3 id="access-to-roster">Access to Roster</h3>
-<p>File: <code>.github/data/student-roster.json</code></p>
+<h3 id="data-retention">Data Retention</h3>
+<p>Student repositories persist after the workshop unless explicitly deleted. Facilitators can:</p>
 <ul>
-<li>Visible in: Repository code</li>
-<li>Accessible to: All org members</li>
-<li>Sensitivity: LOW (only public GitHub usernames + opt-in profile)</li>
-<li>Safe to: Share roster with facilitators, teaching staff</li>
+<li>Archive the classroom (makes repos read-only; preserves them as portfolio pieces)</li>
+<li>Delete student repos through the classroom settings</li>
+<li>Export grades before archiving</li>
 </ul>
+<p>See <a href="classroom/teardown-checklist.html">teardown-checklist.md</a> for the complete post-workshop cleanup process. Preserve private student-success records in <code>Community-Access/git-going-student-success</code> before deleting local exports or archiving Classroom data.</p>
 <h2 id="safety-checks">Safety Checks</h2>
-<h3 id="before-workshop-friday-march-7">Before Workshop (Friday, March 7)</h3>
-<p><strong>Repository Readiness:</strong></p>
+<h3 id="before-the-workshop">Before the Workshop</h3>
+<p><strong>Deployment verification:</strong> Complete the verification checklist in the <a href="classroom/README.html#step-6-verify-everything-works">Workshop Deployment Guide</a>. This confirms:</p>
 <ul>
-<li>All 67 student branches created</li>
-<li>Main branch protection enabled</li>
-<li>GitHub Actions workflows enabled</li>
-<li>Facilitators added as org admins</li>
-<li>Students invited to org (pending their acceptance)</li>
-<li>Assignment issues created successfully</li>
-<li>Peer reviewer assignments generated</li>
+<li>Student repos are created correctly from the template</li>
+<li>Aria responds to PRs within 60 seconds</li>
+<li>The Progression Bot creates challenge issues on issue close</li>
+<li>Autograding runs and reports results</li>
+<li>The feedback PR is created by Classroom</li>
 </ul>
-<p><strong>Access Verification:</strong></p>
+<p><strong>Facilitator access:</strong> Confirm all facilitators can:</p>
 <ul>
-<li>Facilitators can create and edit issues</li>
-<li>Facilitators can review and merge PRs</li>
-<li>Student branch access configured</li>
-<li>GitHub Actions workflows run on test PR</li>
+<li>View the classroom dashboard</li>
+<li>Open student repos from the dashboard</li>
+<li>Comment on student issues and PRs</li>
 </ul>
-<p><strong>Accessibility Check:</strong></p>
-<ul>
-<li>Facilitator guide readable with screen reader</li>
-<li>Assignment issues accessible</li>
-<li>PR templates accessible</li>
-</ul>
-<h3 id="during-workshop-saturday-march-8-9">During Workshop (Saturday, March 8-9)</h3>
+<h3 id="during-the-workshop">During the Workshop</h3>
 <p><strong>Monitoring:</strong></p>
 <ul>
-<li>GitHub status page monitored (<a href="https://www.githubstatus.com/">https://www.githubstatus.com/</a>)</li>
-<li>Facilitators watch for API errors</li>
-<li>Quick help docs ready for common issues</li>
-<li>Fallback: Manual issue assignment if API down</li>
+<li>GitHub status page: <a href="https://www.githubstatus.com/">https://www.githubstatus.com/</a></li>
+<li>Classroom dashboard for student progress and autograding results</li>
+<li>Student repos&#39; Actions tabs for workflow failures</li>
 </ul>
 <p><strong>Incident Response:</strong></p>
-<ul>
-<li>If bot fails: Facilitators post feedback manually</li>
-<li>If merge fails: Facilitator manually merges</li>
-<li>If branch access denied: Check org membership</li>
-<li>If PR template missing: Check .github/PULL_REQUEST_TEMPLATE directory</li>
-</ul>
-<h2 id="daily-operations">Daily Operations</h2>
-<h3 id="day-1-saturday-march-8-12pm-8pm-et">Day 1 (Saturday, March 8, 12pm-8pm ET)</h3>
-<ol>
-<li><p><strong>Orientation (12pm-1pm)</strong></p>
-<ul>
-<li>Explain org membership and issue assignment</li>
-<li>Demo: How to find your issue</li>
-<li>Demo: How to create a PR</li>
-</ul>
-</li>
-<li><p><strong>Working Session (1pm-6pm)</strong></p>
-<ul>
-<li>Students work on assignments</li>
-<li>Facilitators monitor for issues</li>
-<li>Check: Issues appearing in Issues tab</li>
-<li>Check: GitHub Actions bot responding to PRs</li>
-</ul>
-</li>
-<li><p><strong>Q&amp;A/Office Hours (6pm-8pm)</strong></p>
-<ul>
-<li>Troubleshoot individual issues</li>
-<li>Answer technical questions</li>
-<li>Review example PRs</li>
-</ul>
-</li>
-</ol>
-<h3 id="day-2-sunday-march-9-12pm-8pm-et">Day 2 (Sunday, March 9, 12pm-8pm ET)</h3>
-<ol>
-<li><p><strong>Recap (12pm-1pm)</strong></p>
-<ul>
-<li>Review progress from Day 1</li>
-<li>Discuss common issues</li>
-</ul>
-</li>
-<li><p><strong>Code Review Training (1pm-3pm)</strong></p>
-<ul>
-<li>Teach students how to review PRs</li>
-<li>Use facilitators&#39; repos as examples</li>
-<li>Practice peer reviews</li>
-</ul>
-</li>
-<li><p><strong>Skill Challenges (3pm-6pm)</strong></p>
-<ul>
-<li>Advanced challenges for fast finishers</li>
-<li>Small group deep dives</li>
-<li>Accessibility focus discussions</li>
-</ul>
-</li>
-<li><p><strong>Celebration (6pm-8pm)</strong></p>
-<ul>
-<li>Showcase completed work</li>
-<li>Q&amp;A</li>
-<li>Next steps &amp; resources</li>
-</ul>
-</li>
-</ol>
+<table>
+<thead>
+<tr>
+<th scope="col">Incident</th>
+<th scope="col">Response</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>GitHub is down</td>
+<td>Continue teaching fundamentals offline; resume when GitHub is back</td>
+</tr>
+<tr>
+<td>Aria stops responding</td>
+<td>Check Actions tab; facilitators post feedback manually until resolved</td>
+</tr>
+<tr>
+<td>Autograding fails</td>
+<td>Check workflow logs; use it as a teaching moment about CI/CD</td>
+</tr>
+<tr>
+<td>Student cannot accept invite</td>
+<td>Verify GitHub account exists and is signed in; check roster match</td>
+</tr>
+<tr>
+<td>Progression Bot skips a challenge</td>
+<td>Check Actions tab for errors; manually create the missed issue</td>
+</tr>
+</tbody></table>
 <h2 id="rollback-amp-emergency">Rollback &amp; Emergency</h2>
 <h3 id="if-something-goes-wrong">If Something Goes Wrong</h3>
-<p><strong>GitHub Down:</strong></p>
+<p><strong>GitHub outage:</strong></p>
 <ul>
 <li>Monitor: <a href="https://www.githubstatus.com/">https://www.githubstatus.com/</a></li>
 <li>Fallback: Continue teaching fundamentals offline</li>
-<li>Recovery: Resume when GitHub is back</li>
+<li>Recovery: Resume when GitHub is back; student repos persist through outages</li>
 </ul>
-<p><strong>Organization Issues:</strong></p>
+<p><strong>Student accidentally deletes a workflow file:</strong></p>
 <ul>
-<li>If students can&#39;t join org, invite them to repo collaborators instead</li>
-<li>Command: <code>gh repo add-member -p pull [username]</code></li>
-<li>Result: Same access, different method</li>
+<li>Restore the file from the template repository</li>
+<li>Commit directly to the student&#39;s <code>main</code> branch</li>
+<li>The workflow resumes on the next trigger</li>
 </ul>
-<p><strong>Bot Not Working:</strong></p>
+<p><strong>Need to revert a student&#39;s work:</strong></p>
 <ul>
-<li>Facilitators post feedback manually</li>
-<li>Include: Link to learning-room-validation.yml for transparency</li>
-<li>Continue: Workflow still valid, just faster with automation</li>
+<li>Use <code>git revert</code> (do not force push -- protect learning history)</li>
+<li>Guide the student through the revert as a teaching moment</li>
 </ul>
-<p><strong>Need to Revert Something:</strong></p>
+<p><strong>Student repo is corrupted:</strong></p>
 <ul>
-<li>Merge conflict: Facilitator helps student resolve</li>
-<li>Bad commit: Use <code>git revert</code> (don&#39;t force push)</li>
-<li>Deleted branch: Can restore from GitHub&#39;s trash (within 90 days)</li>
+<li>Have the student accept the invite link again (Classroom creates a fresh repo if the original is deleted)</li>
+<li>Or restore files manually from the template</li>
 </ul>
 <h2 id="compliance-amp-audit">Compliance &amp; Audit</h2>
-<h3 id="what39s-logged">What&#39;s Logged</h3>
-<p>GitHub logs:</p>
+<h3 id="what-is-logged">What Is Logged</h3>
+<p>GitHub automatically logs:</p>
 <ul>
 <li>All push events (who, what, when)</li>
 <li>All PR activity (created, reviewed, merged)</li>
 <li>All issue activity (created, commented, closed)</li>
-<li>All member activities (access, permissions changes)</li>
+<li>Workflow runs and results</li>
 </ul>
-<p>These are available in:</p>
+<p>These logs are available in:</p>
 <ul>
-<li>Repository settings &gt; Code security and analysis</li>
-<li>Organization settings &gt; Audit log</li>
+<li>Each repository&#39;s Actions tab (workflow history)</li>
+<li>Organization settings &gt; Audit log (admin actions)</li>
+<li>GitHub Classroom dashboard (assignment and grading data)</li>
 </ul>
-<h3 id="what39s-audited">What&#39;s Audited</h3>
-<p>For safety:</p>
+<h3 id="audit-priorities">Audit Priorities</h3>
 <ul>
-<li>No one pushed to <code>main</code> directly (all via PR)</li>
-<li>All PRs have at least 1 review (from protection rules)</li>
-<li>No one with admin access without reason</li>
-<li>GitHub Actions workflows only do what&#39;s documented</li>
-</ul>
-<h3 id="for-teaching">For Teaching</h3>
-<p>We can show students:</p>
-<ul>
-<li>Their commit history on their branch</li>
-<li>Their PR reviews on other students&#39; PRs</li>
-<li>How the GitHub Actions bot validated their work</li>
-<li>Example of a properly merged PR</li>
+<li>All curriculum changes go through PR review (enforced by branch protection)</li>
+<li>No direct pushes to <code>main</code> in the curriculum repository</li>
+<li>Student repos use automation only through <code>GITHUB_TOKEN</code> (no external credentials)</li>
+<li>Facilitator access is scoped to the workshop duration and removed afterward</li>
 </ul>
 <h2 id="contact-amp-support">Contact &amp; Support</h2>
-<p><strong>Workshop Coordinator:</strong> [Facilitator Name]
-<strong>Emergency Contact:</strong> [Phone/Email]
-<strong>GitHub Organization:</strong> <a href="https://github.com/Community-Access">https://github.com/Community-Access</a>
-<strong>Repository:</strong> <a href="https://github.com/Community-Access/git-going-with-github">https://github.com/Community-Access/git-going-with-github</a>
-<strong>Learning Room:</strong> /learning-room/README.md</p>
-<p><strong>Facilitator Private Slack:</strong> [Link to channel]
-<strong>Student Support Channel:</strong> [Zoom link for office hours]</p>
+<p><strong>GitHub Organization:</strong> <a href="https://github.com/Community-Access">https://github.com/Community-Access</a>
+<strong>Curriculum Repository:</strong> <a href="https://github.com/Community-Access/git-going-with-github">https://github.com/Community-Access/git-going-with-github</a>
+<strong>GitHub Classroom:</strong> <a href="https://classroom.github.com">https://classroom.github.com</a>
+<strong>GitHub Status:</strong> <a href="https://www.githubstatus.com/">https://www.githubstatus.com/</a></p>
 
   </main>
   <footer role="contentinfo" class="site-footer">

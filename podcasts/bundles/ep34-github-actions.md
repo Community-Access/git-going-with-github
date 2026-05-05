@@ -550,4 +550,4 @@ When you are ready to go deeper, these are the best places to start:
 
 
 *Back: [GitHub Concepts and Glossary](appendix-a-glossary.md)*
-*Related: [Day 1 Agenda](../DAY1_AGENDA.md) | [Day 2 Agenda](../DAY2_AGENDA.md)*
+*Related: [Day 1 Agenda](admin/DAY1_AGENDA.md) | [Day 2 Agenda](admin/DAY2_AGENDA.md)*

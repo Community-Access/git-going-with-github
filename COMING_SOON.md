@@ -4,7 +4,7 @@
 
 ### A Two-Day Workshop by [Community Access](https://community-access.org)
 
-The full workshop curriculum, lesson materials, and reference guides are currently being finalized. They will be published here before the workshop begins on March 7, 2026.
+The full workshop curriculum, lesson materials, and reference guides are currently being finalized. They will be published here before the workshop begins.
 
 
 ### In the Meantime

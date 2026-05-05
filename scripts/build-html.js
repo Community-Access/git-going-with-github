@@ -262,8 +262,8 @@ function findMarkdownFiles(dir, fileList = []) {
     const stat = fs.statSync(filePath);
     
     if (stat.isDirectory()) {
-      // Skip node_modules, .git, and html output directory
-      if (!['node_modules', '.git', '.github', 'html'].includes(file)) {
+      // Skip generated, private, and editor-history directories.
+      if (!['node_modules', '.git', '.github', '.history', 'html'].includes(file)) {
         findMarkdownFiles(filePath, fileList);
       }
     } else if (file.endsWith('.md')) {

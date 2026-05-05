@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="GIT Going with GitHub - A two-day accessible open source workshop by Community Access">
+  <title>image-dimensions.instructions - GIT Going with GitHub</title>
+  <link rel="stylesheet" href="./styles/github-markdown.css">
+  <link rel="stylesheet" href="./styles/highlight.css">
+  <link rel="stylesheet" href="./styles/custom.css">
+  <style>
+    .markdown-body {
+      box-sizing: border-box;
+      min-width: 200px;
+      max-width: 980px;
+      margin: 0 auto;
+      padding: 45px;
+    }
+    @media (max-width: 767px) {
+      .markdown-body {
+        padding: 15px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+  <header class="site-header" role="banner">
+    <div class="site-header-inner">
+      <nav aria-label="Breadcrumb" class="breadcrumb">
+        <a href="./index.html">Home</a> <span aria-hidden="true">›</span> <span aria-current="page">image-dimensions.instructions</span>
+      </nav>
+      <div class="header-actions">
+        <a href="https://github.com/Community-Access/git-going-with-github/wiki" class="wiki-link" target="_blank" rel="noopener noreferrer">
+          <svg aria-hidden="true" focusable="false" width="16" height="16" viewBox="0 0 16 16" fill="currentColor">
+            <path d="M1.75 1h8.5c.966 0 1.75.784 1.75 1.75v5.5A1.75 1.75 0 0 1 10.25 10H7.06l-2.573 2.573A1.458 1.458 0 0 1 2 11.543V10h-.25A1.75 1.75 0 0 1 0 8.25v-5.5C0 1.784.784 1 1.75 1ZM1.5 2.75v5.5c0 .138.112.25.25.25h1a.75.75 0 0 1 .75.75v2.19l2.72-2.72a.749.749 0 0 1 .53-.22h3.5a.25.25 0 0 0 .25-.25v-5.5a.25.25 0 0 0-.25-.25h-8.5a.25.25 0 0 0-.25.25Zm13 2a.25.25 0 0 0-.25-.25h-.5a.75.75 0 0 1 0-1.5h.5c.966 0 1.75.784 1.75 1.75v5.5A1.75 1.75 0 0 1 14.25 12H14v1.543a1.457 1.457 0 0 1-2.487 1.03L9.22 12.28a.749.749 0 1 1 1.06-1.06l2.22 2.22v-2.19a.75.75 0 0 1 .75-.75h.25a.25.25 0 0 0 .25-.25v-5.5Z"/>
+          </svg>
+          Wiki
+        </a>
+        <form role="search" class="search-form" action="./search.html" method="get">
+        <label for="site-search" class="search-label">Search docs</label>
+        <input
+          type="search"
+          id="site-search"
+          class="search-input"
+          name="q"
+          placeholder="Search docs…"
+          autocomplete="off"
+          aria-label="Search documentation"
+        >
+        <button type="submit" class="search-button" aria-label="Submit search">
+          <svg aria-hidden="true" focusable="false" width="16" height="16" viewBox="0 0 16 16" fill="currentColor">
+            <path d="M10.68 11.74a6 6 0 0 1-7.922-8.982 6 6 0 0 1 8.982 7.922l3.04 3.04a.749.749 0 0 1-.326 1.275.749.749 0 0 1-.734-.215ZM11.5 7a4.499 4.499 0 1 0-8.997 0A4.499 4.499 0 0 0 11.5 7Z"/>
+          </svg>
+        </button>
+      </form>
+      </div>
+    </div>
+  </header>
+  <main id="main-content" class="markdown-body">
+    <hr>
+<h2 id="description-quotenforces-accessible-image-markup-in-web-files-covers-alt-text-widthheight-lazy-loading-responsive-images-srcset-picture-elements-and-performance-attributes-applies-to-html-jsx-tsx-vue-svelte-and-astro-filesquot
+applyto-quothtmljsxtsxvuesvelteastroquot">description: &quot;Enforces accessible image markup in web files. Covers alt text, width/height, lazy loading, responsive images, srcset, picture elements, and performance attributes. Applies to HTML, JSX, TSX, Vue, Svelte, and Astro files.&quot;
+applyTo: &quot;**/*.{html,jsx,tsx,vue,svelte,astro}&quot;</h2>
+<h2 id="accessible-image-markup-requirements">Accessible Image Markup Requirements</h2>
+<p>When writing or reviewing <code>&lt;img&gt;</code> tags in this project, always follow these rules:</p>
+<h3 id="required-attributes">Required attributes</h3>
+<ol>
+<li><strong><code>alt</code></strong> - Always present. Use descriptive text for informational images, action text for functional images, or empty string (<code>alt=&quot;&quot;</code>) for decorative images.</li>
+<li><strong><code>width</code> and <code>height</code></strong> - Always include both to prevent Cumulative Layout Shift (CLS). Use the image&#39;s intrinsic pixel dimensions.</li>
+<li><strong><code>loading=&quot;lazy&quot;</code></strong> - Include on all images below the fold. Omit or use <code>loading=&quot;eager&quot;</code> for above-the-fold hero images.</li>
+</ol>
+<h3 id="recommended-attributes">Recommended attributes</h3>
+<ol start="4">
+<li><strong><code>decoding=&quot;async&quot;</code></strong> - Improves rendering performance.</li>
+<li><strong><code>aria-hidden=&quot;true&quot;</code></strong> - Add alongside <code>alt=&quot;&quot;</code> for purely decorative images.</li>
+<li><strong><code>fetchpriority=&quot;high&quot;</code></strong> - Add on hero/above-the-fold images alongside <code>loading=&quot;eager&quot;</code>.</li>
+</ol>
+<h3 id="responsive-images">Responsive images</h3>
+<ol start="7">
+<li><strong><code>srcset</code> and <code>sizes</code></strong> - When serving multiple image sizes, always include both. The <code>sizes</code> attribute tells the browser which size to download before layout is computed.</li>
+<li><strong><code>&lt;picture&gt;</code> element</strong> - Use for art direction (different crops at different breakpoints) or format switching (AVIF/WebP with JPEG fallback). The <code>&lt;img&gt;</code> inside <code>&lt;picture&gt;</code> must still have <code>alt</code>, <code>width</code>, and <code>height</code>.</li>
+<li><strong>Format fallbacks</strong> - When using modern formats (AVIF, WebP), always provide a JPEG/PNG fallback as the <code>&lt;img&gt;</code> src inside <code>&lt;picture&gt;</code>.</li>
+</ol>
+<h3 id="performance-for-hero-images">Performance for hero images</h3>
+<p>For above-the-fold images:</p>
+<pre><code class="hljs language-html"><span class="hljs-tag">&lt;<span class="hljs-name">img</span> <span class="hljs-attr">src</span>=<span class="hljs-string">&quot;hero.jpg&quot;</span> <span class="hljs-attr">alt</span>=<span class="hljs-string">&quot;...&quot;</span> <span class="hljs-attr">width</span>=<span class="hljs-string">&quot;1920&quot;</span> <span class="hljs-attr">height</span>=<span class="hljs-string">&quot;1080&quot;</span> <span class="hljs-attr">loading</span>=<span class="hljs-string">&quot;eager&quot;</span> <span class="hljs-attr">decoding</span>=<span class="hljs-string">&quot;async&quot;</span> <span class="hljs-attr">fetchpriority</span>=<span class="hljs-string">&quot;high&quot;</span>&gt;</span></code></pre>
+<p>And in the <code>&lt;head&gt;</code>:</p>
+<pre><code class="hljs language-html"><span class="hljs-tag">&lt;<span class="hljs-name">link</span> <span class="hljs-attr">rel</span>=<span class="hljs-string">&quot;preload&quot;</span> <span class="hljs-attr">as</span>=<span class="hljs-string">&quot;image&quot;</span> <span class="hljs-attr">href</span>=<span class="hljs-string">&quot;hero.jpg&quot;</span>&gt;</span></code></pre>
+<h3 id="things-to-avoid">Things to avoid</h3>
+<ul>
+<li>Never use <code>title</code> on images unless specifically required (creates noisy tooltips for screen readers)</li>
+<li>Never start alt text with &quot;image of&quot;, &quot;picture of&quot;, or &quot;photo of&quot; (the screen reader already announces it as an image)</li>
+<li>Never leave <code>alt</code> undefined or missing entirely (this causes screen readers to read the file name)</li>
+<li>Never use CSS background images for content that conveys meaning (they have no alt text mechanism)</li>
+<li>Never omit <code>loading=&quot;lazy&quot;</code> on below-the-fold images (wastes bandwidth and slows page load)</li>
+<li>Never use <code>loading=&quot;lazy&quot;</code> on above-the-fold images (delays the largest contentful paint)</li>
+<li>Never use <code>loading=&quot;lazy&quot;</code> on tiny icons under 64px (the lazy loading overhead exceeds any savings)</li>
+</ul>
+<h3 id="image-of-text-warning">Image-of-text warning</h3>
+<p>If an image contains text as its primary content, add a warning comment and consider replacing with actual HTML text:</p>
+<pre><code class="hljs language-html"><span class="hljs-comment">&lt;!-- WARNING: WCAG 1.4.5 - Consider replacing this image-of-text with actual HTML text --&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">img</span> <span class="hljs-attr">src</span>=<span class="hljs-string">&quot;banner-text.png&quot;</span> <span class="hljs-attr">alt</span>=<span class="hljs-string">&quot;Spring Sale - 50% off all items&quot;</span> <span class="hljs-attr">width</span>=<span class="hljs-string">&quot;800&quot;</span> <span class="hljs-attr">height</span>=<span class="hljs-string">&quot;200&quot;</span> <span class="hljs-attr">loading</span>=<span class="hljs-string">&quot;lazy&quot;</span> <span class="hljs-attr">decoding</span>=<span class="hljs-string">&quot;async&quot;</span>&gt;</span></code></pre>
+<h3 id="dimension-extraction">Dimension extraction</h3>
+<p>To get accurate dimensions, run the utility script:</p>
+<pre><code class="hljs language-bash">python ~/.agents/scripts/get_image_info.py path/to/image.jpg --json</code></pre>
+<p>Or for a whole folder:</p>
+<pre><code class="hljs language-bash">python ~/.agents/scripts/get_image_info.py path/to/images/ --batch --json</code></pre>
+<p>The script also extracts EXIF data, dominant colors, SVG viewBox, and a text-content heuristic.</p>
+
+  </main>
+  <footer role="contentinfo" class="site-footer">
+    <p><strong>GIT Going with GitHub</strong> - A workshop by <a href="https://community-access.org">Community Access</a></p>
+    <p><a href="https://github.com/community-access/git-going-with-github">View on GitHub</a> · <a href="https://community-access.org">community-access.org</a></p>
+  </footer>
+  </body>
+</html>

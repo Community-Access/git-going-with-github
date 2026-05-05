@@ -1,0 +1,1399 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="GIT Going with GitHub - A two-day accessible open source workshop by Community Access">
+  <title>VS Code: Interface and Setup - GIT Going with GitHub</title>
+  <link rel="stylesheet" href="./styles/github-markdown.css">
+  <link rel="stylesheet" href="./styles/highlight.css">
+  <link rel="stylesheet" href="./styles/custom.css">
+  <style>
+    .markdown-body {
+      box-sizing: border-box;
+      min-width: 200px;
+      max-width: 980px;
+      margin: 0 auto;
+      padding: 45px;
+    }
+    @media (max-width: 767px) {
+      .markdown-body {
+        padding: 15px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+  <header class="site-header" role="banner">
+    <div class="site-header-inner">
+      <nav aria-label="Breadcrumb" class="breadcrumb">
+        <a href="./index.html">Home</a> <span aria-hidden="true">›</span> <span aria-current="page">VS Code: Interface and Setup</span>
+      </nav>
+      <div class="header-actions">
+        <a href="https://github.com/Community-Access/git-going-with-github/wiki" class="wiki-link" target="_blank" rel="noopener noreferrer">
+          <svg aria-hidden="true" focusable="false" width="16" height="16" viewBox="0 0 16 16" fill="currentColor">
+            <path d="M1.75 1h8.5c.966 0 1.75.784 1.75 1.75v5.5A1.75 1.75 0 0 1 10.25 10H7.06l-2.573 2.573A1.458 1.458 0 0 1 2 11.543V10h-.25A1.75 1.75 0 0 1 0 8.25v-5.5C0 1.784.784 1 1.75 1ZM1.5 2.75v5.5c0 .138.112.25.25.25h1a.75.75 0 0 1 .75.75v2.19l2.72-2.72a.749.749 0 0 1 .53-.22h3.5a.25.25 0 0 0 .25-.25v-5.5a.25.25 0 0 0-.25-.25h-8.5a.25.25 0 0 0-.25.25Zm13 2a.25.25 0 0 0-.25-.25h-.5a.75.75 0 0 1 0-1.5h.5c.966 0 1.75.784 1.75 1.75v5.5A1.75 1.75 0 0 1 14.25 12H14v1.543a1.457 1.457 0 0 1-2.487 1.03L9.22 12.28a.749.749 0 1 1 1.06-1.06l2.22 2.22v-2.19a.75.75 0 0 1 .75-.75h.25a.25.25 0 0 0 .25-.25v-5.5Z"/>
+          </svg>
+          Wiki
+        </a>
+        <form role="search" class="search-form" action="./search.html" method="get">
+        <label for="site-search" class="search-label">Search docs</label>
+        <input
+          type="search"
+          id="site-search"
+          class="search-input"
+          name="q"
+          placeholder="Search docs…"
+          autocomplete="off"
+          aria-label="Search documentation"
+        >
+        <button type="submit" class="search-button" aria-label="Submit search">
+          <svg aria-hidden="true" focusable="false" width="16" height="16" viewBox="0 0 16 16" fill="currentColor">
+            <path d="M10.68 11.74a6 6 0 0 1-7.922-8.982 6 6 0 0 1 8.982 7.922l3.04 3.04a.749.749 0 0 1-.326 1.275.749.749 0 0 1-.734-.215ZM11.5 7a4.499 4.499 0 1 0-8.997 0A4.499 4.499 0 0 0 11.5 7Z"/>
+          </svg>
+        </button>
+      </form>
+      </div>
+    </div>
+  </header>
+  <main id="main-content" class="markdown-body">
+    <h1 id="vs-code-interface-and-setup">VS Code: Interface and Setup</h1>
+<blockquote>
+<p><strong>Listen to Episode 11:</strong> <a href="../PODCASTS.html">VS Code Setup and Accessibility</a> - a conversational audio overview covering both this chapter and <a href="12-vscode-accessibility.html">Chapter 12</a>.</p>
+</blockquote>
+<blockquote>
+<p><strong>Related appendices:</strong> <a href="appendix-g-vscode-reference.html">Appendix G: VS Code Reference</a> | <a href="appendix-b-screen-reader-cheatsheet.html">Appendix B: Screen Reader Cheat Sheet</a>
+<strong>Authoritative sources:</strong> <a href="https://code.visualstudio.com/docs/getstarted/userinterface">VS Code Docs: User Interface</a> | <a href="https://code.visualstudio.com/docs/editor/accessibility">VS Code Docs: Accessibility</a></p>
+</blockquote>
+<h2 id="your-accessible-development-environment---the-foundation">Your Accessible Development Environment - The Foundation</h2>
+<blockquote>
+<p><strong>Day 2, Block 1 Material</strong></p>
+<p>This chapter covers the VS Code interface: launching VS Code, signing in to GitHub, verifying Copilot is active, configuring screen reader mode, and navigating the Activity Bar, Status Bar, menus, settings, and keyboard shortcuts.</p>
+<p>For accessibility deep-dive topics (keyboard navigation, Problems panel, Terminal, Copilot Chat, Accessible Help/View/Diff, Accessibility Signals, and VS Code Speech), see <a href="12-vscode-accessibility.html">Chapter 12: VS Code Accessibility Deep Dive</a>.</p>
+<p><strong>Prerequisites:</strong> Complete Day 1 walkthrough of GitHub&#39;s browser interface before working through VS Code material.</p>
+</blockquote>
+<h2 id="workshop-recommendation-chapter-5">Workshop Recommendation (Chapter 5)</h2>
+<p>For this workshop, Chapter 5 is a <strong>guided setup chapter</strong> with a lightweight completion challenge.</p>
+<ul>
+<li><strong>Challenge count:</strong> 1 guided walkthrough</li>
+<li><strong>Automation check:</strong> none - setup state is local/account-level and cannot be validated by the Learning Room PR bot</li>
+<li><strong>Evidence:</strong> structured completion comment on your assigned challenge issue</li>
+<li><strong>Pattern:</strong> open, configure, navigate, verify</li>
+</ul>
+<h3 id="chapter-5-challenge-set">Chapter 5 Challenge Set</h3>
+<ol>
+<li><strong>VS Code accessibility baseline</strong> - open VS Code (github.dev or desktop), enable screen reader mode, sign in to GitHub, verify Copilot status, and navigate core surfaces.</li>
+</ol>
+<h3 id="challenge-51-step-by-step-vs-code-accessibility-baseline">Challenge 5.1 Step-by-Step: VS Code Accessibility Baseline</h3>
+<p><strong>Goal:</strong> Confirm you can access VS Code (github.dev or desktop), enable screen reader support, sign in to GitHub, check Copilot status, and perform core navigation.</p>
+<p><strong>Where you are working:</strong> github.dev (VS Code in the browser) or desktop VS Code if you installed it in Block 0.</p>
+<p><strong>Estimated time:</strong> 10-15 minutes.</p>
+<ol>
+<li>Open your Learning Room repository on GitHub.com.</li>
+<li>Press <code>.</code> (the period key) on your keyboard. This launches <strong>github.dev</strong> - a full VS Code editor running in your browser. Wait a few seconds for it to load.</li>
+<li>Enable screen reader mode:<ul>
+<li><strong>Windows (NVDA/JAWS):</strong> Press <code>Shift+Alt+F1</code>. You should hear an announcement confirming screen reader mode is on.</li>
+<li><strong>Mac (VoiceOver):</strong> Screen reader mode is usually already optimized. If navigation feels wrong, open Command Palette (<code>Cmd+Shift+P</code>) and run <code>Toggle Screen Reader Accessibility Mode</code>.</li>
+</ul>
+</li>
+<li>Open the <strong>Explorer</strong> panel with <code>Ctrl+Shift+E</code> (Mac: <code>Cmd+Shift+E</code>). Your screen reader should announce the file tree.</li>
+<li>Navigate to and open <code>README.md</code> from the file tree. Use arrow keys to move through files and <code>Enter</code> to open.</li>
+<li>Open the <strong>outline/symbols</strong> view with <code>Ctrl+Shift+O</code> (Mac: <code>Cmd+Shift+O</code>). This shows all headings and sections in the current file - a key navigation tool for screen reader users.</li>
+<li>Open the <strong>Command Palette</strong> with <code>Ctrl+Shift+P</code> (Mac: <code>Cmd+Shift+P</code>). Type any command name (for example, <code>Toggle Word Wrap</code>) and press <code>Enter</code> to run it. Press <code>Escape</code> to close without running.</li>
+<li>Check the <strong>Accounts</strong> button in the Activity Bar (bottom-left of the sidebar). If you are signed in, your screen reader announces your GitHub username. If not, activate it and sign in with GitHub.</li>
+<li>Check the <strong>Status Bar</strong> at the bottom of the window. Tab or arrow through it to find GitHub Copilot status. If Copilot is active, you hear an indicator showing it is ready.</li>
+</ol>
+<p><strong>You are done when:</strong> You have successfully opened github.dev, enabled screen reader mode, signed in to GitHub, confirmed Copilot status, opened a file, viewed its outline, and run a command from the Command Palette.</p>
+<h3 id="completing-chapter-5-submit-your-evidence">Completing Chapter 5: Submit Your Evidence</h3>
+<p>Return to GitHub.com, open your <strong>assigned Chapter 5 challenge issue</strong>, and post a completion comment:</p>
+<pre><code class="hljs language-text">Chapter 5 completed:
+- Opened github.dev: yes / no
+- Screen reader mode enabled: yes / no
+- Signed in to GitHub: yes / no
+- Copilot status checked: yes / no
+- Opened file in Explorer: yes / no
+- Opened outline/symbols: yes / no
+- Opened Command Palette: yes / no</code></pre>
+<p>If any step was &quot;no,&quot; add a note explaining where you got stuck so the facilitator can help. Close your Chapter 5 challenge issue when done.</p>
+<h3 id="expected-outcomes">Expected Outcomes</h3>
+<ul>
+<li>Student can launch and navigate github.dev or desktop VS Code.</li>
+<li>Student can enable screen reader mode and hear navigation announcements.</li>
+<li>Student has signed in to GitHub and can see their account status.</li>
+<li>Student has verified GitHub Copilot is active (or knows it requires desktop VS Code).</li>
+<li>Student can open core navigation surfaces (Explorer, Outline, Command Palette).</li>
+<li>Student is ready for VS Code-based contribution chapters (6-16).</li>
+</ul>
+<h3 id="if-you-get-stuck">If You Get Stuck</h3>
+<ol>
+<li>Nothing happens when you press <code>.</code>? Make sure you are on the repository&#39;s main page (not inside an issue or PR). The <code>.</code> shortcut only works on repository code pages.</li>
+<li>Screen reader mode toggle did not announce anything? Open Command Palette (<code>Ctrl+Shift+P</code>) and type <code>Screen Reader</code> to find the toggle manually.</li>
+<li>Explorer panel is empty? VS Code may still be loading the repository. Wait 5-10 seconds and press <code>Ctrl+Shift+E</code> again.</li>
+<li>On Mac with VoiceOver, navigation feels wrong? Run <code>Toggle Screen Reader Accessibility Mode</code> from Command Palette. VoiceOver sometimes needs the explicit toggle.</li>
+<li>Cannot find the Accounts button? Open Command Palette and type <code>Accounts</code> to manage sign-in from there.</li>
+<li>Copilot not showing in the status bar? github.dev does not support Copilot - you need desktop VS Code or a Codespace.</li>
+<li>Shortcut not working? Use Command Palette as a fallback for any action - type what you want to do and VS Code will find the command.</li>
+<li>Ask facilitator for a side-by-side demo and repeat the same steps.</li>
+</ol>
+<h3 id="learning-moment">Learning Moment</h3>
+<p>Tool setup is part of contribution skill. A stable, accessible editor reduces stress and increases contribution quality. The surfaces you just tested - github.dev launch, screen reader mode, GitHub sign-in, Copilot status, Explorer, Outline, and Command Palette - are the foundation for everything in Day 2.</p>
+<h3 id="learning-pattern-used-in-this-chapter">Learning Pattern Used in This Chapter</h3>
+<ol>
+<li>Open the tool in the simplest way possible (<code>.</code> key for github.dev).</li>
+<li>Sign in and verify your identity and tools are ready (Accounts, Copilot).</li>
+<li>Configure accessibility before doing any work (screen reader mode first).</li>
+<li>Verify each navigation surface works with your assistive technology.</li>
+<li>Record what worked and what didn&#39;t (evidence comment).</li>
+</ol>
+<h2 id="table-of-contents">Table of Contents</h2>
+<ol>
+<li><a href="#1-why-vs-code-for-open-source-contribution">Why VS Code for Open Source Contribution</a></li>
+<li><a href="#2-the-bridge-githubdev---vs-code-in-your-browser">The Bridge: github.dev - VS Code in Your Browser</a></li>
+<li><a href="#3-screen-reader-mode-in-vs-code">Screen Reader Mode in VS Code</a></li>
+<li><a href="#4-the-vs-code-interface-tour">The VS Code Interface Tour</a></li>
+<li><a href="#5-the-accounts-button-and-github-sign-in">The Accounts Button and GitHub Sign-In</a></li>
+<li><a href="#6-verifying-github-copilot-status">Verifying GitHub Copilot Status</a></li>
+<li><a href="#7-the-status-bar">The Status Bar</a></li>
+<li><a href="#8-the-menu-bar">The Menu Bar</a></li>
+<li><a href="#9-settings-sync">Settings Sync</a><ul>
+<li><a href="#profiles">Profiles</a></li>
+</ul>
+</li>
+<li><a href="#10-the-settings-editor">The Settings Editor</a></li>
+<li><a href="#11-the-keyboard-shortcuts-editor">The Keyboard Shortcuts Editor</a></li>
+<li><a href="#12-essential-keyboard-navigation-and-findfilter">Essential Keyboard Navigation and Find/Filter</a></li>
+<li><a href="#13-the-problems-panel">The Problems Panel</a></li>
+<li><a href="#14-the-terminal">The Terminal</a></li>
+<li><a href="#15-copilot-chat-window">Copilot Chat Window</a></li>
+<li><a href="#16-accessible-help-accessible-view-and-accessible-diff">Accessible Help, Accessible View, and Accessible Diff</a></li>
+<li><a href="#17-accessibility-signals">Accessibility Signals</a></li>
+<li><a href="#18-vs-code-speech---voice-input-and-output">VS Code Speech - Voice Input and Output</a></li>
+<li><a href="#19-git-operations-inside-vs-code">Git Operations Inside VS Code</a></li>
+</ol>
+<hr>
+<h2 id="1-why-vs-code-for-open-source-contribution">1. Why VS Code for Open Source Contribution</h2>
+<p>GitHub&#39;s browser interface is excellent for reviewing, discussing, and triaging. VS Code is where you create. The difference:</p>
+<table>
+<thead>
+<tr>
+<th scope="col">Task</th>
+<th scope="col">Browser</th>
+<th scope="col">VS Code</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Navigate a repository</td>
+<td>Excellent</td>
+<td>Explorer sidebar</td>
+</tr>
+<tr>
+<td>Read issues and PRs</td>
+<td>Excellent</td>
+<td>GitHub PR extension</td>
+</tr>
+<tr>
+<td>Comment on a PR</td>
+<td>Excellent</td>
+<td>GitHub PR extension</td>
+</tr>
+<tr>
+<td>Edit a file</td>
+<td>Web editor</td>
+<td>Full text editor with Copilot</td>
+</tr>
+<tr>
+<td>Review a diff</td>
+<td>Files Changed tab</td>
+<td>Three-way merge view with navigation</td>
+</tr>
+<tr>
+<td>Get AI help while writing</td>
+<td>Not available</td>
+<td>Copilot inline + Chat</td>
+</tr>
+<tr>
+<td>Run Accessibility Agents</td>
+<td>Not available</td>
+<td>Copilot Chat with agent files</td>
+</tr>
+<tr>
+<td>See errors in your contribution</td>
+<td>After push</td>
+<td>Real-time as you type</td>
+</tr>
+</tbody></table>
+<p>For Markdown contributions (which is most of what <a href="https://github.com/Community-Access/accessibility-agents">accessibility-agents</a> needs), VS Code gives you Copilot assistance, live preview, and the same Git workflow - with less tab switching and with agents available on every file you open.</p>
+<h3 id="learning-cards-why-vs-code">Learning Cards: Why VS Code</h3>
+<details>
+<summary>Screen reader users</summary>
+
+<ul>
+<li>VS Code announces errors, warnings, and suggestions via ARIA live regions -- you hear problems as you type instead of after pushing to GitHub</li>
+<li>Press <code>Ctrl+Shift+P</code> (Mac: <code>Cmd+Shift+P</code>) to open the Command Palette and access every VS Code feature without a mouse</li>
+<li>The Explorer sidebar (<code>Ctrl+Shift+E</code>) gives you the same file tree as GitHub.com but with keyboard-driven editing one <code>Enter</code> away</li>
+</ul>
+</details>
+
+<details>
+<summary>Low vision users</summary>
+
+<ul>
+<li>VS Code supports zoom levels up to 500%: press <code>Ctrl+=</code> (Mac: <code>Cmd+=</code>) to increase and <code>Ctrl+-</code> (Mac: <code>Cmd+-</code>) to decrease</li>
+<li>High Contrast themes are built in -- open Command Palette and type &quot;Color Theme&quot; to switch</li>
+<li>Inline error squiggles use both color and underline style so they remain visible at any zoom level or contrast setting</li>
+</ul>
+</details>
+
+<details>
+<summary>Sighted users</summary>
+
+<ul>
+<li>The Activity Bar on the left shows icons for Explorer, Search, Source Control, Extensions, and more -- each lights up when active</li>
+<li>Real-time red/yellow squiggles under errors and warnings appear as you type, replacing the GitHub &quot;push and wait&quot; cycle</li>
+<li>Copilot suggestions appear as dimmed ghost text to the right of your cursor</li>
+</ul>
+</details>
+
+
+<hr>
+<h2 id="2-the-bridge-githubdev---vs-code-in-your-browser">2. The Bridge: github.dev - VS Code in Your Browser</h2>
+<h3 id="before-you-install-anything-try-vs-code-right-now-in-your-browser">Before you install anything: try VS Code right now in your browser</h3>
+<p>GitHub provides a web-based version of VS Code called <strong>github.dev</strong>. It runs entirely in your browser with zero installation. The keyboard shortcuts, screen reader mode, and editor experience are identical to the desktop app.</p>
+<h3 id="how-to-access-githubdev">How to Access github.dev</h3>
+<h4 id="method-1-the-period-key-shortcut-fastest">Method 1: The Period Key Shortcut (Fastest)</h4>
+<p>From any GitHub repository page:</p>
+<ol>
+<li>Press <code>.</code> (period key - just the period, no modifier keys)</li>
+<li>The page transforms into VS Code</li>
+<li>You are now editing in github.dev</li>
+<li>The URL changes to <code>github.dev/owner/repo</code></li>
+<li>Screen reader mode works exactly as it does in desktop VS Code (toggle with <code>Shift+Alt+F1</code>)</li>
+</ol>
+<h4 id="where-it-works">Where it works</h4>
+<ul>
+<li>Repository home pages</li>
+<li>File view pages</li>
+<li>Pull request pages</li>
+<li>Any branch or commit view</li>
+</ul>
+<p><strong>Screen reader note:</strong> The period key shortcut is a single keypress - no modifier keys. It is GitHub&#39;s universal &quot;open this in VS Code&quot; command.</p>
+<p><strong>Alternative: Press <code>&gt;</code> (Shift+Period)</strong> to open github.dev in a <strong>new tab</strong>. This preserves your GitHub page and is the preferred method when you want to keep both interfaces open.</p>
+<h4 id="method-2-direct-url">Method 2: Direct URL</h4>
+<p>Change the domain in any GitHub URL:</p>
+<ul>
+<li><code>github.com/owner/repo</code> becomes <code>github.dev/owner/repo</code></li>
+<li>Works for any branch, file, or commit URL</li>
+</ul>
+<h4 id="method-3-from-the-repository-page">Method 3: From the Repository Page</h4>
+<details>
+<summary>Visual / mouse users</summary>
+
+<ol>
+<li>Click the green <strong>Code</strong> button on any repository page</li>
+<li>In the dropdown, click <strong>Open with github.dev</strong></li>
+</ol>
+</details>
+
+<details>
+<summary>Screen reader users (NVDA / JAWS / VoiceOver)</summary>
+
+<ol>
+<li>Navigate to the Code button (press <code>B</code> or <code>Tab</code> until you hear &quot;Code, button&quot; or similar)</li>
+<li>Press <code>Enter</code> to open the dropdown menu</li>
+<li>Press <code>Down Arrow</code> to reach &quot;Open with github.dev&quot;</li>
+<li>Press <code>Enter</code></li>
+</ol>
+</details>
+
+
+<h3 id="what-you-get-in-githubdev">What You Get in github.dev</h3>
+<p>Everything in the list below works <strong>exactly like desktop VS Code</strong>:</p>
+<ul>
+<li><strong>Full text editor with syntax highlighting</strong></li>
+<li><strong>All VS Code keyboard shortcuts</strong> (see <a href="#11-the-keyboard-shortcuts-editor">Section 11: Keyboard Shortcuts Editor</a> and <a href="appendix-g-vscode-reference.html#5-complete-keyboard-shortcuts">Appendix M</a>)</li>
+<li><strong>Screen reader mode</strong> (<code>Shift+Alt+F1</code> to activate - Mac: <code>Shift+Option+F1</code>)</li>
+<li><strong>File Explorer</strong> (<code>Ctrl+Shift+E</code> - Mac: <code>Cmd+Shift+E</code>) - browse the entire repository</li>
+<li><strong>Search across files</strong> (<code>Ctrl+Shift+F</code> - Mac: <code>Cmd+Shift+F</code>)</li>
+<li><strong>Source Control (Git)</strong> (<code>Ctrl+Shift+G</code> - Mac: <code>Cmd+Shift+G</code>) - stage, commit, push changes</li>
+<li><strong>Markdown preview</strong> (<code>Ctrl+Shift+V</code> - Mac: <code>Cmd+Shift+V</code>)</li>
+<li><strong>Command Palette</strong> (<code>Ctrl+Shift+P</code> - Mac: <code>Cmd+Shift+P</code>) - access every VS Code command</li>
+<li><strong>Go to File</strong> (<code>Ctrl+P</code> - Mac: <code>Cmd+P</code>) - instant file picker</li>
+<li><strong>Go to Symbol</strong> (<code>Ctrl+Shift+O</code> - Mac: <code>Cmd+Shift+O</code>) - navigate by headings in Markdown</li>
+<li><strong>Multiple editor tabs and split view</strong></li>
+<li><strong>Settings sync</strong> - if you sign in, your VS Code settings apply here too</li>
+</ul>
+<h3 id="what-githubdev-does-not-have">What github.dev Does NOT Have</h3>
+<ul>
+<li><strong>No terminal</strong> - cannot run shell commands, npm, git CLI</li>
+<li><strong>No GitHub Copilot</strong> - Copilot requires the desktop app or a Codespace</li>
+<li><strong>No Accessibility Agents</strong> - agents rely on extensions that need desktop VS Code</li>
+<li><strong>No extension installation</strong> - extensions are disabled in github.dev</li>
+<li><strong>No debugger</strong> - debugging requires a local environment</li>
+<li><strong>No live server or preview</strong> - except Markdown preview, which does work</li>
+</ul>
+<p>These limitations are why <strong>desktop VS Code exists</strong>. github.dev is for quick edits and reading code. Desktop is for Copilot, agents, terminal workflows, and full development.</p>
+<h3 id="why-githubdev-matters-for-this-workshop">Why github.dev Matters for This Workshop</h3>
+<p><strong>It is the bridge.</strong> You spend Day 1 in the GitHub browser interface. You spend Day 2 in desktop VS Code. github.dev sits in between:</p>
+<ul>
+<li>Same keyboard shortcuts as desktop VS Code (you learn them once)</li>
+<li>Same screen reader mode (you configure it once)</li>
+<li>Same file navigation patterns (Explorer, <code>Ctrl+P</code> / Mac: <code>Cmd+P</code>, <code>Ctrl+Shift+O</code> / Mac: <code>Cmd+Shift+O</code>)</li>
+<li>But accessible instantly from any GitHub page with one keystroke</li>
+</ul>
+<h4 id="use-githubdev-when">Use github.dev when</h4>
+<ul>
+<li>You want to edit a file quickly without switching apps</li>
+<li>You are on a machine where you cannot install software</li>
+<li>You want to browse code with VS Code navigation (symbols, search, split view)</li>
+<li>You are reviewing a PR and want to see the full file context</li>
+</ul>
+<h4 id="use-desktop-vs-code-when">Use desktop VS Code when</h4>
+<ul>
+<li>You need Copilot inline suggestions</li>
+<li>You want to run Accessibility Agents</li>
+<li>You are making multi-file changes that benefit from AI assistance</li>
+<li>You need a terminal for git commands or running scripts</li>
+</ul>
+<h3 id="screen-reader-experience-in-githubdev">Screen Reader Experience in github.dev</h3>
+<h4 id="activate-screen-reader-mode-immediately">Activate screen reader mode immediately</h4>
+<ol>
+<li>Press <code>.</code> on any GitHub repository to open github.dev</li>
+<li>Press <code>Shift+Alt+F1</code> (Mac: <code>Shift+Option+F1</code>) to enable screen reader mode</li>
+<li>VS Code announces &quot;Screen reader optimized&quot;</li>
+</ol>
+<h4 id="what-changes">What changes</h4>
+<ul>
+<li>Focus behavior adjusts for keyboard navigation</li>
+<li>Code suggestions are announced via ARIA live regions</li>
+<li>Error messages are announced when you navigate to them</li>
+<li>Inline decorations are suppressed to reduce noise</li>
+</ul>
+<h4 id="navigation">Navigation</h4>
+<ul>
+<li>Use <code>Ctrl+Shift+E</code> to open the Explorer (file tree)</li>
+<li>Use <code>Up/Down Arrow</code> to navigate files</li>
+<li>Press <code>Enter</code> on a file to open it in the editor</li>
+<li>The editor behaves like a standard text area - your screen reader&#39;s reading commands work normally</li>
+</ul>
+<h4 id="nvdajaws-users">NVDA/JAWS users</h4>
+<ul>
+<li>You remain in Browse/Virtual mode for the overall interface</li>
+<li>When focus enters the editor text area, you are automatically in Forms/Focus mode</li>
+<li>All standard cursor movement works: <code>Home</code>, <code>End</code>, <code>Ctrl+Home</code>, <code>Ctrl+End</code>, <code>Ctrl+F</code> to find</li>
+</ul>
+<h4 id="voiceover-users">VoiceOver users</h4>
+<ul>
+<li>Quick Nav OFF when inside the editor (<code>Left Arrow + Right Arrow</code> to toggle)</li>
+<li>Use <code>VO+Shift+Down</code> to interact with the editor area</li>
+<li>Standard text navigation (<code>Control+A</code> for line start, <code>Control+E</code> for line end, etc.)</li>
+</ul>
+<h3 id="learning-cards-githubdev">Learning Cards: github.dev</h3>
+<details>
+<summary>Screen reader users</summary>
+
+<ul>
+<li>Press <code>.</code> (period, no modifiers) on any GitHub repository page to open github.dev instantly -- your screen reader announces the VS Code interface loading</li>
+<li>Immediately press <code>Shift+Alt+F1</code> (Mac: <code>Shift+Option+F1</code>) to enable screen reader mode after github.dev loads</li>
+<li>Use <code>Ctrl+Shift+O</code> (Mac: <code>Cmd+Shift+O</code>) to navigate by headings in Markdown files -- this is the fastest way to scan a document</li>
+</ul>
+</details>
+
+<details>
+<summary>Low vision users</summary>
+
+<ul>
+<li>github.dev inherits your browser zoom level -- use <code>Ctrl+=</code> (Mac: <code>Cmd+=</code>) to enlarge the entire editor before you start working</li>
+<li>Switch to a High Contrast theme via Command Palette (<code>Ctrl+Shift+P</code> then type &quot;Color Theme&quot;) -- this persists for the session</li>
+<li>The minimap on the right edge of the editor shows a zoomed-out preview of your file; disable it in Settings if it is distracting at high zoom</li>
+</ul>
+</details>
+
+<details>
+<summary>Sighted users</summary>
+
+<ul>
+<li>Look for the URL changing from <code>github.com</code> to <code>github.dev</code> to confirm you are in the web editor</li>
+<li>The Activity Bar on the left and the Status Bar at the bottom look identical to desktop VS Code</li>
+<li>Use <code>Ctrl+P</code> (Mac: <code>Cmd+P</code>) to open the quick file picker -- start typing a filename and select from the dropdown</li>
+</ul>
+</details>
+
+
+<h3 id="try-it-right-now">Try It Right Now</h3>
+<p>Before reading the rest of this guide:</p>
+<ol>
+<li>Open your Learning Room repository in your browser</li>
+<li>Press <code>.</code> (period key)</li>
+<li>github.dev opens</li>
+<li>Press <code>Shift+Alt+F1</code> (Mac: <code>Shift+Option+F1</code>) to enable screen reader mode</li>
+<li>Press <code>Ctrl+Shift+E</code> (Mac: <code>Cmd+Shift+E</code>) to open the Explorer</li>
+<li>Navigate to <code>README.md</code> and press <code>Enter</code></li>
+<li>Press <code>Ctrl+Home</code> (Mac: <code>Cmd+Up</code>) to go to the top of the file</li>
+<li>Press <code>Ctrl+Shift+O</code> (Mac: <code>Cmd+Shift+O</code>) to see the outline (all headings)</li>
+<li>Close the tab when done</li>
+</ol>
+<p><strong>You just used VS Code.</strong> The desktop version in the rest of this guide is the same experience - with Copilot, agents, and a terminal added.</p>
+<hr>
+<h2 id="3-screen-reader-mode-in-vs-code">3. Screen Reader Mode in VS Code</h2>
+<blockquote>
+<p><strong>See also:</strong> <a href="12-vscode-accessibility.html">Chapter 12: VS Code Accessibility</a> goes deeper into accessibility features, Accessible View, and signal customization.</p>
+</blockquote>
+<blockquote>
+<p><strong>Who needs this section?</strong> If you use NVDA, JAWS, VoiceOver, or another screen reader, read this section before continuing. If you are not using a screen reader, you can skip to <a href="#4-the-vs-code-interface-tour">Section 4</a> - VS Code works fully without enabling this mode.</p>
+</blockquote>
+<p>VS Code has built-in accessibility support designed for screen reader users. It changes how focus moves, how announcements work, and how navigation behaves.</p>
+<h3 id="activating-screen-reader-mode">Activating Screen Reader Mode</h3>
+<table>
+<thead>
+<tr>
+<th scope="col">Method</th>
+<th scope="col">Steps</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Keyboard shortcut</td>
+<td><code>Shift+Alt+F1</code> (Windows) / <code>Shift+Option+F1</code> (Mac)</td>
+</tr>
+<tr>
+<td>Command Palette</td>
+<td><code>Ctrl+Shift+P</code> (Windows) / <code>Cmd+Shift+P</code> (Mac) then type &quot;screen reader&quot; then select &quot;Toggle Screen Reader Accessibility Mode&quot;</td>
+</tr>
+<tr>
+<td>Auto-detection</td>
+<td>VS Code detects NVDA and JAWS automatically on Windows; VoiceOver on macOS</td>
+</tr>
+</tbody></table>
+<h4 id="verify-it-is-active">Verify it is active</h4>
+<p>Open Settings (<code>Ctrl+,</code> - Mac: <code>Cmd+,</code>) then search for <code>accessibility support</code> then confirm it shows <code>on</code> (not <code>auto</code>).</p>
+<h3 id="what-changes-in-screen-reader-mode">What Changes in Screen Reader Mode</h3>
+<table>
+<thead>
+<tr>
+<th scope="col">Area</th>
+<th scope="col">Normal Mode</th>
+<th scope="col">Screen Reader Mode</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Suggestions list</td>
+<td>Popup overlay</td>
+<td>Announced via ARIA live region</td>
+</tr>
+<tr>
+<td>Diff navigation</td>
+<td>Visual highlighting</td>
+<td>Announces &quot;Added&quot; / &quot;Removed&quot; before line content</td>
+</tr>
+<tr>
+<td>Error indicators</td>
+<td>Red underlines</td>
+<td>Announced on focus</td>
+</tr>
+<tr>
+<td>Inline decorations</td>
+<td>Displayed visually</td>
+<td>Suppressed to reduce noise</td>
+</tr>
+<tr>
+<td>Tab completion</td>
+<td>Visual ghost text</td>
+<td>Announced as suggestion</td>
+</tr>
+</tbody></table>
+<h3 id="nvda-specific-settings-for-vs-code">NVDA-Specific Settings for VS Code</h3>
+<p>VS Code uses a web-based renderer. Configure NVDA for best results:</p>
+<ol>
+<li>Open NVDA Menu then Preferences then Settings then Browse Mode</li>
+<li>Set &quot;Maximum length of text on a single line&quot; to <code>10000</code> (prevents truncation in long lines)</li>
+<li>Under Object Presentation: set &quot;Report tooltip delay&quot; to <code>off</code></li>
+<li>Recommended: use <strong>NVDA + Google Chrome</strong> for the integrated browser panels</li>
+</ol>
+<h3 id="jaws-specific-settings-for-vs-code">JAWS-Specific Settings for VS Code</h3>
+<ol>
+<li>JAWS should detect VS Code automatically and switch to PC Cursor mode for the editor</li>
+<li>If the editor feels unresponsive, press <code>Insert+Z</code> to toggle virtual cursor off</li>
+<li>For the integrated terminal: use <code>Insert+Z</code> to enter forms/PC mode, then interact with the terminal</li>
+</ol>
+<h3 id="voiceover-specific-settings-for-vs-code-macos">VoiceOver-Specific Settings for VS Code (macOS)</h3>
+<ol>
+<li>Open VS Code then <code>Shift+Alt+F1</code> (Mac: <code>Shift+Option+F1</code>) to confirm screen reader mode</li>
+<li>In VoiceOver Utility: Verbosity then set &quot;Punctuation&quot; to &quot;All&quot; for reading code</li>
+<li>Use Quick Nav OFF (<code>Left+Right Arrow</code>) when inside the editor - standard cursor navigation is more predictable</li>
+<li>Use <code>VO+Shift+Down</code> to interact with the editor, <code>VO+Shift+Up</code> to stop interacting</li>
+</ol>
+<h3 id="learning-cards-screen-reader-mode">Learning Cards: Screen Reader Mode</h3>
+<details>
+<summary>Screen reader users</summary>
+
+<ul>
+<li>Toggle screen reader mode with <code>Shift+Alt+F1</code> (Mac: <code>Shift+Option+F1</code>) -- VS Code announces &quot;Screen reader optimized&quot; when activated</li>
+<li>Set <code>editor.accessibilitySupport</code> to <code>&quot;on&quot;</code> (not <code>&quot;auto&quot;</code>) in Settings (<code>Ctrl+,</code>) for consistent behavior across sessions</li>
+<li>NVDA users: set &quot;Maximum length of text on a single line&quot; to 10000 in Browse Mode settings to prevent long code lines from being truncated</li>
+</ul>
+</details>
+
+<details>
+<summary>Low vision users</summary>
+
+<ul>
+<li>Screen reader mode suppresses inline decorations that can clutter the display -- enable it even if you use a magnifier for a cleaner view</li>
+<li>Pair screen reader mode with a High Contrast theme (<code>Ctrl+Shift+P</code> then &quot;Color Theme&quot;) for maximum readability</li>
+<li>Use <code>Ctrl+=</code> / <code>Ctrl+-</code> (Mac: <code>Cmd+=</code> / <code>Cmd+-</code>) to adjust font size independently of your OS zoom settings</li>
+</ul>
+</details>
+
+<details>
+<summary>Sighted users</summary>
+
+<ul>
+<li>Screen reader mode is invisible to sighted users -- you will not notice any visual changes if you toggle it on</li>
+<li>If you are pair-programming with a screen reader user, enable it so the experience is consistent for both of you</li>
+<li>The mode changes how suggestions are announced but does not remove any visual features you rely on</li>
+</ul>
+</details>
+
+
+<hr>
+<h2 id="4-the-vs-code-interface-tour">4. The VS Code Interface Tour</h2>
+<p>Before diving into individual features, here is how VS Code is organized. Every area is reachable by keyboard.</p>
+<h3 id="the-five-major-regions">The Five Major Regions</h3>
+<pre><code class="hljs language-text">+----------------------------------------------------------+
+|  Menu Bar (File, Edit, View, Go, Run, Terminal, Help)    |
++------+---------------------------------------------------+
+|      |                                                    |
+| A    |  Editor Area                                       |
+| c    |  (your files open here)                            |
+| t    |                                                    |
+| i    |                                                    |
+| v    |                                                    |
+| i    +---------------------------------------------------+
+| t    |                                                    |
+| y    |  Panel (Terminal, Problems, Output, Debug Console) |
+|      |                                                    |
+| B    +---------------------------------------------------+
+| a    |  Status Bar (line, column, language, Git branch,   |
+| r    |   Copilot status, encoding, notifications)         |
++------+---------------------------------------------------+</code></pre>
+<p><strong>Text description of the layout above:</strong> VS Code has five major regions arranged in a grid. The <strong>Menu Bar</strong> spans the full width across the top. Below it, the <strong>Activity Bar</strong> runs vertically along the left edge (it contains icons for Explorer, Source Control, Search, Extensions, and more). The <strong>Sidebar</strong> appears to the right of the Activity Bar and shows content for the selected activity (file tree, search results, etc.). The <strong>Editor Area</strong> fills the large central region where your files open. Below the Editor Area, the <strong>Panel</strong> stretches across the bottom and contains the Terminal, Problems, Output, and Debug Console tabs. Finally, the <strong>Status Bar</strong> runs along the very bottom showing line number, column, language mode, Git branch, Copilot status, encoding, and notifications.</p>
+<h3 id="navigating-between-regions">Navigating Between Regions</h3>
+<table>
+<thead>
+<tr>
+<th scope="col">Region</th>
+<th scope="col">Keyboard Shortcut</th>
+<th scope="col">What You Hear (Screen Reader)</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Activity Bar icons</td>
+<td><code>Ctrl+Shift+E</code> / <code>G</code> / <code>F</code> / <code>X</code> / etc.</td>
+<td>&quot;Explorer&quot;, &quot;Source Control&quot;, etc.</td>
+</tr>
+<tr>
+<td>Sidebar content</td>
+<td>Follows activity bar selection</td>
+<td>Tree view or list content</td>
+</tr>
+<tr>
+<td>Editor area</td>
+<td><code>Ctrl+1</code> (first editor group)</td>
+<td>File name and cursor position</td>
+</tr>
+<tr>
+<td>Panel</td>
+<td><code>Ctrl+Backtick</code> (terminal) or <code>Ctrl+Shift+M</code> (problems)</td>
+<td>Panel name announcement</td>
+</tr>
+<tr>
+<td>Status Bar</td>
+<td><code>F6</code> cycles through regions</td>
+<td>Status bar items read left to right</td>
+</tr>
+</tbody></table>
+<p><strong>Key insight:</strong> Press <code>F6</code> repeatedly to cycle focus through the major regions: Sidebar, Editor, Panel, Status Bar, and back. This is the universal &quot;where am I, take me somewhere else&quot; key in VS Code.</p>
+<h3 id="learning-cards-finding-your-way-around-vs-code">Learning Cards: Finding Your Way Around VS Code</h3>
+<details>
+<summary>Screen reader users (NVDA / JAWS / VoiceOver)</summary>
+
+<ul>
+<li><strong>F6</strong> is your best friend - it cycles through regions and your screen reader announces each one</li>
+<li><strong>Ctrl+Shift+P</strong> (Command Palette) is your safety net - type any action name and VS Code finds it</li>
+<li><strong>Alt+H</strong> (Accessible Help) tells you what shortcuts work in your current context</li>
+<li>Use <strong>Ctrl+Shift+E</strong> for Explorer, <strong>Ctrl+Shift+G</strong> for Source Control, <strong>Ctrl+Shift+F</strong> for Search</li>
+<li>The editor text area acts like a standard text field - all your screen reader reading commands work</li>
+</ul>
+</details>
+
+<details>
+<summary>Low vision users</summary>
+
+<ul>
+<li><strong>Ctrl+=</strong> / <strong>Ctrl+-</strong> to zoom the entire VS Code window (all UI elements scale)</li>
+<li><strong>Ctrl+,</strong> then search <code>editor.fontSize</code> to set a comfortable default editor font size</li>
+<li><strong>Ctrl+,</strong> then search <code>window.zoomLevel</code> to set a persistent zoom level</li>
+<li>High Contrast themes: <strong>Ctrl+K Ctrl+T</strong> then choose &quot;High Contrast&quot; or &quot;High Contrast Light&quot;</li>
+<li><strong>Ctrl+,</strong> then search <code>minimap</code> - set <code>editor.minimap.enabled</code> to <code>false</code> to remove the small code overview that may be hard to see</li>
+<li><strong>Ctrl+B</strong> toggles the sidebar to give the editor more space</li>
+</ul>
+</details>
+
+<details>
+<summary>Sighted users</summary>
+
+<ul>
+<li>Click icons in the Activity Bar (left edge) to switch sidebar views</li>
+<li>The bottom Panel shows Terminal, Problems, Output, and Debug Console</li>
+<li>Drag panel borders to resize regions or double-click to collapse them</li>
+<li><strong>Ctrl+B</strong> toggles the sidebar for a wider editor area</li>
+<li><strong>Ctrl+J</strong> toggles the bottom Panel</li>
+<li><strong>Ctrl+Shift+P</strong> opens the Command Palette - the universal search for any action</li>
+</ul>
+</details>
+
+
+<hr>
+<h2 id="5-the-accounts-button-and-github-sign-in">5. The Accounts Button and GitHub Sign-In</h2>
+<blockquote>
+<p><strong>See also:</strong> <a href="14-git-in-practice.html">Chapter 14: Git in Practice</a> covers the full Git workflow in VS Code including the Source Control panel.</p>
+</blockquote>
+<p>The <strong>Accounts</strong> button sits at the bottom of the Activity Bar (the vertical icon strip on the left side of VS Code). It manages your authentication with GitHub, Microsoft, and other services.</p>
+<h3 id="why-sign-in-matters">Why Sign In Matters</h3>
+<ul>
+<li><strong>GitHub Copilot</strong> requires an active GitHub sign-in to function</li>
+<li><strong>Settings Sync</strong> requires sign-in to synchronize your preferences across machines</li>
+<li><strong>GitHub Pull Requests extension</strong> needs authentication to create and review PRs from VS Code</li>
+<li>Your GitHub identity appears in commits you make from VS Code</li>
+</ul>
+<h3 id="signing-in">Signing In</h3>
+<h4 id="from-the-accounts-button">From the Accounts Button</h4>
+<ol>
+<li>Press <code>F6</code> until you hear the Activity Bar, then arrow down to the <strong>Accounts</strong> button (it is at the very bottom of the bar)</li>
+<li>Press <code>Enter</code> to open the Accounts menu</li>
+<li>Select <strong>&quot;Sign in with GitHub to use GitHub Copilot&quot;</strong> (or a similar prompt)</li>
+<li>A browser window opens for GitHub OAuth authorization</li>
+<li>Authorize VS Code, then return to the editor</li>
+<li>Your screen reader announces your GitHub username in the Accounts button</li>
+</ol>
+<h4 id="from-the-command-palette">From the Command Palette</h4>
+<ol>
+<li>Press <code>Ctrl+Shift+P</code> then type <code>sign in</code></li>
+<li>Select <strong>&quot;GitHub: Sign In&quot;</strong></li>
+<li>Complete the browser OAuth flow and return to VS Code</li>
+</ol>
+<h3 id="verifying-you-are-signed-in">Verifying You Are Signed In</h3>
+<ul>
+<li><strong>Accounts button:</strong> Press <code>F6</code> to reach the Activity Bar, arrow down to Accounts. A screen reader announces your username.</li>
+<li><strong>Command Palette:</strong> <code>Ctrl+Shift+P</code> then type <code>GitHub Copilot: Status</code>. If Copilot shows ready, you are signed in.</li>
+<li><strong>Status Bar:</strong> Look for (or hear) the Copilot icon in the status bar at the bottom of the window.</li>
+</ul>
+<h3 id="learning-cards-github-sign-in">Learning Cards: GitHub Sign-In</h3>
+<details>
+<summary>Screen reader users</summary>
+
+<ul>
+<li>Press <code>F6</code> to cycle to the Activity Bar, then <code>Down Arrow</code> to the bottom to find the Accounts button</li>
+<li>After signing in, the Accounts button label changes from &quot;Accounts&quot; to your GitHub username</li>
+<li>If browser OAuth does not redirect back automatically, check for a &quot;paste this code&quot; dialog in VS Code - type the code displayed in your browser</li>
+</ul>
+</details>
+
+<details>
+<summary>Low vision users</summary>
+
+<ul>
+<li>The Accounts icon is the person silhouette at the bottom of the leftmost icon column</li>
+<li>After sign-in, a small dot or badge appears on the icon indicating active session</li>
+<li>If the icon is hard to see, use <strong>Ctrl+Shift+P</strong> and type <code>Accounts</code> to manage sign-in from the Command Palette</li>
+</ul>
+</details>
+
+<details>
+<summary>Sighted users</summary>
+
+<ul>
+<li>Click the person icon at the bottom of the Activity Bar</li>
+<li>A dropdown menu shows your sign-in status and available accounts</li>
+<li>After sign-in, the icon changes to show your GitHub avatar</li>
+</ul>
+</details>
+
+
+<hr>
+<h2 id="6-verifying-github-copilot-status">6. Verifying GitHub Copilot Status</h2>
+<p>GitHub Copilot is your AI pair programmer. Before starting any contribution work, confirm it is active and responding.</p>
+<h3 id="where-to-check-copilot-status">Where to Check Copilot Status</h3>
+<h4 id="status-bar-indicator">Status Bar Indicator</h4>
+<p>The Copilot icon appears in the <strong>Status Bar</strong> at the bottom-right of the VS Code window.</p>
+<table>
+<thead>
+<tr>
+<th scope="col">Icon State</th>
+<th scope="col">Meaning</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Copilot icon (normal)</td>
+<td>Copilot is active and ready</td>
+</tr>
+<tr>
+<td>Copilot icon with warning triangle</td>
+<td>Copilot has a configuration issue</td>
+</tr>
+<tr>
+<td>Copilot icon with slash-through</td>
+<td>Copilot is disabled for this file type</td>
+</tr>
+<tr>
+<td>No Copilot icon</td>
+<td>Extension not installed or not signed in</td>
+</tr>
+</tbody></table>
+<h4 id="command-palette-check">Command Palette Check</h4>
+<ol>
+<li>Press <code>Ctrl+Shift+P</code></li>
+<li>Type <code>GitHub Copilot: Status</code></li>
+<li>The output shows whether Copilot is signed in, active, or has errors</li>
+</ol>
+<h4 id="quick-test">Quick Test</h4>
+<ol>
+<li>Open any <code>.md</code> file in the editor</li>
+<li>Start typing a sentence (for example, <code>## Getting Started with</code>)</li>
+<li>If Copilot is active, a gray ghost-text suggestion appears after a brief pause</li>
+<li>Press <code>Tab</code> to accept or <code>Escape</code> to dismiss</li>
+</ol>
+<h3 id="troubleshooting-copilot">Troubleshooting Copilot</h3>
+<table>
+<thead>
+<tr>
+<th scope="col">Problem</th>
+<th scope="col">Solution</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>No Copilot icon in status bar</td>
+<td>On VS Code 1.116+, Copilot is built-in -- sign in to GitHub (<code>Ctrl+Shift+P</code> then <code>GitHub: Sign in</code>). On older VS Code: <code>Ctrl+Shift+X</code> then search <code>GitHub Copilot</code> then install</td>
+</tr>
+<tr>
+<td>Icon shows warning</td>
+<td>Open Output panel (<code>Ctrl+Shift+U</code>), select &quot;GitHub Copilot&quot; from the dropdown, read the error</td>
+</tr>
+<tr>
+<td>&quot;Not signed in&quot;</td>
+<td>Sign in to GitHub (Section 5 above)</td>
+</tr>
+<tr>
+<td>Copilot not suggesting</td>
+<td>Check that Copilot is not disabled for the file type: <code>Ctrl+Shift+P</code> then <code>GitHub Copilot: Toggle</code></td>
+</tr>
+<tr>
+<td>Works on desktop but not github.dev</td>
+<td>Expected behavior. github.dev does not support Copilot. Use desktop VS Code or a Codespace.</td>
+</tr>
+</tbody></table>
+<h3 id="learning-cards-copilot-status">Learning Cards: Copilot Status</h3>
+<details>
+<summary>Screen reader users</summary>
+
+<ul>
+<li>The Copilot status bar item is announced when you Tab through the status bar</li>
+<li>After sign-in, press <code>Ctrl+Shift+P</code> then type <code>Copilot Status</code> - the announcement tells you the full state</li>
+<li>When Copilot generates a suggestion, NVDA and JAWS announce it as ghost text; press <code>Tab</code> to accept</li>
+<li>Press <code>Alt+F2</code> (Accessible View) to read the full Copilot suggestion in a clean text view</li>
+</ul>
+</details>
+
+<details>
+<summary>Low vision users</summary>
+
+<ul>
+<li>The Copilot icon is a small two-petal/sparkle icon near the right side of the Status Bar</li>
+<li>Copilot suggestions appear as dimmed gray text ahead of your cursor - increase editor contrast or zoom level if they are hard to see</li>
+<li>Use a High Contrast theme for clearer distinction between your text and Copilot ghost text</li>
+</ul>
+</details>
+
+<details>
+<summary>Sighted users</summary>
+
+<ul>
+<li>Look for the Copilot sparkle icon in the bottom-right Status Bar</li>
+<li>Gray ghost text after your cursor means Copilot is generating a suggestion</li>
+<li>Click the Copilot icon for a quick status menu showing enabled/disabled state</li>
+</ul>
+</details>
+
+
+<hr>
+<h2 id="7-the-status-bar">7. The Status Bar</h2>
+<p>The <strong>Status Bar</strong> is the thin strip at the bottom of the VS Code window. It provides real-time information about your workspace, file, and active tools.</p>
+<h3 id="what-the-status-bar-contains-left-to-right">What the Status Bar Contains (Left to Right)</h3>
+<table>
+<thead>
+<tr>
+<th scope="col">Item</th>
+<th scope="col">What It Shows</th>
+<th scope="col">How to Interact</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Git branch</td>
+<td>Current branch name (e.g., <code>main</code>)</td>
+<td>Click or press to switch branches</td>
+</tr>
+<tr>
+<td>Sync status</td>
+<td>Pending push/pull count</td>
+<td>Click to sync (push/pull)</td>
+</tr>
+<tr>
+<td>Errors and warnings</td>
+<td>Error/warning count in workspace</td>
+<td>Click opens Problems panel (<code>Ctrl+Shift+M</code>)</td>
+</tr>
+<tr>
+<td>Line and column</td>
+<td>Cursor position (e.g., <code>Ln 42, Col 8</code>)</td>
+<td>Click opens Go to Line (<code>Ctrl+G</code>)</td>
+</tr>
+<tr>
+<td>Indentation</td>
+<td>Spaces or tabs and count</td>
+<td>Click to change indent settings</td>
+</tr>
+<tr>
+<td>Encoding</td>
+<td>File encoding (e.g., <code>UTF-8</code>)</td>
+<td>Click to change encoding</td>
+</tr>
+<tr>
+<td>End of line</td>
+<td><code>LF</code> or <code>CRLF</code></td>
+<td>Click to change line endings</td>
+</tr>
+<tr>
+<td>Language mode</td>
+<td>File type (e.g., <code>Markdown</code>)</td>
+<td>Click to change language</td>
+</tr>
+<tr>
+<td>Copilot status</td>
+<td>GitHub Copilot state</td>
+<td>Click for Copilot menu</td>
+</tr>
+<tr>
+<td>Notification bell</td>
+<td>Unread notifications</td>
+<td>Click to view notifications</td>
+</tr>
+</tbody></table>
+<h3 id="navigating-the-status-bar-with-a-keyboard">Navigating the Status Bar with a Keyboard</h3>
+<ol>
+<li>Press <code>F6</code> until your screen reader announces the Status Bar</li>
+<li>Use <code>Tab</code> to move between items from left to right</li>
+<li>Press <code>Enter</code> on any item to activate it (open a picker, toggle a setting, etc.)</li>
+<li>Press <code>Escape</code> to return to the editor</li>
+</ol>
+<h3 id="learning-cards-status-bar">Learning Cards: Status Bar</h3>
+<details>
+<summary>Screen reader users</summary>
+
+<ul>
+<li>Press <code>F6</code> repeatedly until you hear &quot;Status Bar&quot; - then <code>Tab</code> through items</li>
+<li>Each item is announced with its current value (e.g., &quot;Ln 42, Col 8&quot; or &quot;main branch&quot;)</li>
+<li>The errors/warnings item announces the count - press <code>Enter</code> to jump to the Problems panel</li>
+<li>After reviewing, press <code>Escape</code> then <code>Ctrl+1</code> to return to the editor</li>
+</ul>
+</details>
+
+<details>
+<summary>Low vision users</summary>
+
+<ul>
+<li>The Status Bar text is small by default - use <code>Ctrl+=</code> to zoom the entire window</li>
+<li>Different-colored sections help identify areas: left side (Git/sync), center (position), right side (Copilot/language)</li>
+<li>Status Bar background color changes in certain contexts (e.g., debugging turns it orange, no folder is purple)</li>
+</ul>
+</details>
+
+<details>
+<summary>Sighted users</summary>
+
+<ul>
+<li>Click any Status Bar item to interact with it</li>
+<li>The colored background indicates context: blue (normal workspace), purple (no folder open), orange (debugging)</li>
+<li>Hover over items for tooltips with additional detail</li>
+</ul>
+</details>
+
+
+<hr>
+<h2 id="8-the-menu-bar">8. The Menu Bar</h2>
+<p>The <strong>Menu Bar</strong> runs along the top of the VS Code window and provides structured access to every command category.</p>
+<h3 id="menu-bar-structure">Menu Bar Structure</h3>
+<table>
+<thead>
+<tr>
+<th scope="col">Menu</th>
+<th scope="col">Key Contents</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><strong>File</strong></td>
+<td>New File, Open Folder, Save, Auto Save, Preferences (Settings, Keyboard Shortcuts, Extensions)</td>
+</tr>
+<tr>
+<td><strong>Edit</strong></td>
+<td>Undo, Redo, Cut, Copy, Paste, Find, Replace</td>
+</tr>
+<tr>
+<td><strong>Selection</strong></td>
+<td>Select All, Expand Selection, Add Cursor</td>
+</tr>
+<tr>
+<td><strong>View</strong></td>
+<td>Explorer, Search, Source Control, Extensions, Terminal, Problems, Command Palette, Appearance (zoom, sidebar, panel toggles)</td>
+</tr>
+<tr>
+<td><strong>Go</strong></td>
+<td>Go to File, Go to Symbol, Go to Line, Go to Definition, Back/Forward navigation</td>
+</tr>
+<tr>
+<td><strong>Run</strong></td>
+<td>Start Debugging, Run Without Debugging, Add Configuration</td>
+</tr>
+<tr>
+<td><strong>Terminal</strong></td>
+<td>New Terminal, Split Terminal, Run Active File, Run Selected Text</td>
+</tr>
+<tr>
+<td><strong>Help</strong></td>
+<td>Welcome, Documentation, Keyboard Shortcuts Reference, Accessibility Help</td>
+</tr>
+</tbody></table>
+<h3 id="accessing-the-menu-bar">Accessing the Menu Bar</h3>
+<table>
+<thead>
+<tr>
+<th scope="col">Method</th>
+<th scope="col">Steps</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Keyboard (Windows/Linux)</td>
+<td>Press <code>Alt</code> or <code>F10</code> to focus the menu bar, then use arrow keys</td>
+</tr>
+<tr>
+<td>Keyboard (Mac)</td>
+<td><code>Ctrl+F2</code> or use the system menu bar</td>
+</tr>
+<tr>
+<td>Command Palette</td>
+<td><code>Ctrl+Shift+P</code> gives access to all the same commands without the menu</td>
+</tr>
+</tbody></table>
+<h3 id="learning-cards-menu-bar">Learning Cards: Menu Bar</h3>
+<details>
+<summary>Screen reader users</summary>
+
+<ul>
+<li>Press <code>F10</code> (or <code>Alt</code>) to enter the Menu Bar. Your screen reader announces &quot;File&quot; menu</li>
+<li>Use <code>Left/Right Arrow</code> to move between menus (File, Edit, View, Go, Run, Terminal, Help)</li>
+<li>Press <code>Enter</code> or <code>Down Arrow</code> to open a menu and browse items</li>
+<li>Each menu item includes its keyboard shortcut in the announcement (e.g., &quot;New File, Ctrl+N&quot;)</li>
+<li>Press <code>Escape</code> to close and return to the editor</li>
+</ul>
+</details>
+
+<details>
+<summary>Low vision users</summary>
+
+<ul>
+<li>The Menu Bar respects your zoom level - increase window zoom for larger text</li>
+<li>Menu items show keyboard shortcuts on the right side of each entry</li>
+<li>Use the Help menu to access &quot;Keyboard Shortcuts Reference&quot; for a printable cheat sheet</li>
+</ul>
+</details>
+
+<details>
+<summary>Sighted users</summary>
+
+<ul>
+<li>Click any menu name to open its dropdown</li>
+<li>Keyboard shortcuts are displayed to the right of each menu item</li>
+<li>The View menu controls which panels and sidebars are visible</li>
+</ul>
+</details>
+
+
+<hr>
+<h2 id="9-settings-sync">9. Settings Sync</h2>
+<p><strong>Settings Sync</strong> synchronizes your VS Code configuration across multiple machines and between desktop VS Code and github.dev. When you sign in and enable sync, your settings, keyboard shortcuts, extensions, UI state, and profiles travel with you.</p>
+<h3 id="what-gets-synced">What Gets Synced</h3>
+<table>
+<thead>
+<tr>
+<th scope="col">Category</th>
+<th scope="col">Examples</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Settings</td>
+<td><code>editor.fontSize</code>, <code>editor.accessibilitySupport</code>, color theme, zoom level</td>
+</tr>
+<tr>
+<td>Keyboard Shortcuts</td>
+<td>All custom keybindings</td>
+</tr>
+<tr>
+<td>Extensions</td>
+<td>Installed extensions list</td>
+</tr>
+<tr>
+<td>UI State</td>
+<td>Sidebar position, panel visibility, recent files</td>
+</tr>
+<tr>
+<td>Profiles</td>
+<td>Named collections of settings for different workflows</td>
+</tr>
+</tbody></table>
+<h3 id="enabling-settings-sync">Enabling Settings Sync</h3>
+<ol>
+<li>Open the <strong>Accounts</strong> button (Activity Bar, bottom-left) or press <code>Ctrl+Shift+P</code> then type <code>Settings Sync: Turn On</code></li>
+<li>Sign in with your GitHub account (or Microsoft account)</li>
+<li>Select which categories to sync (recommended: sync everything)</li>
+<li>VS Code syncs immediately and on every subsequent change</li>
+</ol>
+<h3 id="conflict-resolution">Conflict Resolution</h3>
+<p>If settings differ between machines, VS Code shows a merge editor where you choose which version to keep. This is similar to a Git merge conflict but for settings.</p>
+<h3 id="learning-cards-settings-sync">Learning Cards: Settings Sync</h3>
+<details>
+<summary>Screen reader users</summary>
+
+<ul>
+<li>After enabling sync, all your accessibility settings (screen reader mode, accessibility signals, minimap disabled) apply on every machine</li>
+<li>Changes sync automatically in the background - no manual action needed after initial setup</li>
+<li>If a conflict occurs, VS Code opens a merge editor that is navigable with standard diff commands (F7 / Shift+F7)</li>
+</ul>
+</details>
+
+<details>
+<summary>Low vision users</summary>
+
+<ul>
+<li>Your zoom level, font size, and High Contrast theme sync across machines</li>
+<li>After initial setup on one machine, every other VS Code instance immediately gets the same visual configuration</li>
+<li>Use Profiles to maintain separate configurations (e.g., &quot;Presentation&quot; profile with extra-large fonts)</li>
+</ul>
+</details>
+
+<details>
+<summary>Sighted users</summary>
+
+<ul>
+<li>The sync status appears as a circular arrow icon in the Activity Bar (bottom-left, near Accounts)</li>
+<li>Conflicts and sync status are shown via notification banners</li>
+<li>Use <code>Ctrl+Shift+P</code> then &quot;Settings Sync: Show Synced Data&quot; to review what was synchronized</li>
+</ul>
+</details>
+
+<h3 id="profiles">Profiles</h3>
+<p>VS Code <strong>Profiles</strong> let you create named collections of settings, extensions, keyboard shortcuts, snippets, tasks, and UI state. Each profile is independent - switching profiles changes your entire VS Code configuration instantly. This is useful when you work in different contexts (workshop vs. daily development) or need to present with different display settings.</p>
+<h4 id="creating-a-profile">Creating a Profile</h4>
+<table>
+<thead>
+<tr>
+<th scope="col">Method</th>
+<th scope="col">Steps</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Command Palette</td>
+<td><code>Ctrl+Shift+P</code> then type <code>Profiles: Create Profile</code></td>
+</tr>
+<tr>
+<td>Gear menu</td>
+<td>Click the gear icon (bottom-left of Activity Bar) then <code>Profiles</code> then <code>Create Profile</code></td>
+</tr>
+</tbody></table>
+<p>When creating a profile, you choose what to include:</p>
+<ul>
+<li><strong>Settings</strong> - editor preferences, accessibility options, theme</li>
+<li><strong>Keyboard Shortcuts</strong> - all custom keybindings</li>
+<li><strong>Extensions</strong> - which extensions are installed and enabled</li>
+<li><strong>Snippets</strong> - code snippet definitions</li>
+<li><strong>Tasks</strong> - task runner configurations</li>
+<li><strong>UI State</strong> - sidebar position, panel layout, view visibility</li>
+</ul>
+<p>You can start from the current configuration, an empty profile, or an existing profile template.</p>
+<h4 id="switching-profiles">Switching Profiles</h4>
+<table>
+<thead>
+<tr>
+<th scope="col">Method</th>
+<th scope="col">Steps</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Command Palette</td>
+<td><code>Ctrl+Shift+P</code> then type <code>Profiles: Switch Profile</code></td>
+</tr>
+<tr>
+<td>Gear menu</td>
+<td>Click the gear icon then <code>Profiles</code> then select a profile name</td>
+</tr>
+<tr>
+<td>Status Bar</td>
+<td>The current profile name appears in the Status Bar when you are not using the Default profile - click it to switch</td>
+</tr>
+</tbody></table>
+<p>The active profile name appears in the VS Code title bar and Status Bar so you always know which configuration is active.</p>
+<h4 id="workshop-profile-recommendations">Workshop Profile Recommendations</h4>
+<p>Create these profiles before the workshop:</p>
+<table>
+<thead>
+<tr>
+<th scope="col">Profile Name</th>
+<th scope="col">Purpose</th>
+<th scope="col">Key Settings</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><strong>Workshop</strong></td>
+<td>Accessibility-optimized for this event</td>
+<td>Screen reader mode on, accessibility signals enabled, minimap off, word wrap on (see the <a href="#recommended-workshop-profile">Recommended Workshop Profile</a> settings in Section 17)</td>
+</tr>
+<tr>
+<td><strong>Presentation</strong></td>
+<td>Large fonts for demos or shared screens</td>
+<td><code>editor.fontSize: 24</code>, <code>terminal.integrated.fontSize: 20</code>, <code>window.zoomLevel: 2</code>, High Contrast theme</td>
+</tr>
+<tr>
+<td><strong>Default</strong></td>
+<td>Your everyday development settings</td>
+<td>Whatever you normally use</td>
+</tr>
+</tbody></table>
+<h4 id="exporting-and-sharing-profiles">Exporting and Sharing Profiles</h4>
+<p>Profiles can be exported and shared:</p>
+<ol>
+<li><code>Ctrl+Shift+P</code> then type <code>Profiles: Export Profile</code></li>
+<li>Choose what to include (settings, extensions, etc.)</li>
+<li>Export as a <strong>GitHub gist</strong> (shareable link) or a <strong>local file</strong></li>
+<li>Share the link or file with others</li>
+</ol>
+<p>To import: <code>Ctrl+Shift+P</code> then <code>Profiles: Import Profile</code> and paste the gist URL or select the file.</p>
+<p><strong>Workshop tip:</strong> Facilitators can export a pre-configured Workshop profile as a GitHub gist and share the link. Students import it in one step and immediately have all accessibility settings configured.</p>
+<h4 id="profiles-and-settings-sync">Profiles and Settings Sync</h4>
+<p>Profiles sync across machines through Settings Sync. When you create a profile on one machine and have Settings Sync enabled, the profile appears on every other machine where you are signed in. Each profile syncs independently - changes to one profile do not affect others.</p>
+<h4 id="learning-cards-profiles">Learning Cards: Profiles</h4>
+<details>
+<summary>Screen reader users</summary>
+
+<ul>
+<li>The Command Palette is the fastest way to switch profiles: <code>Ctrl+Shift+P</code> then type <code>Switch Profile</code></li>
+<li>Your screen reader announces the profile name when you switch - listen for the confirmation</li>
+<li>Create a <strong>Workshop</strong> profile with <code>editor.accessibilitySupport: &quot;on&quot;</code> and all your accessibility signals configured, so you can switch to it instantly at the start of each session</li>
+<li>The Default profile is always available as a fallback</li>
+</ul>
+</details>
+
+<details>
+<summary>Low vision users</summary>
+
+<ul>
+<li>Create a <strong>Presentation</strong> profile with large fonts, high zoom, and a High Contrast theme for pair programming or demos</li>
+<li>Switching profiles changes everything at once - no need to adjust multiple settings individually</li>
+<li>The current profile name in the title bar confirms which configuration is active</li>
+</ul>
+</details>
+
+<details>
+<summary>Sighted users</summary>
+
+<ul>
+<li>The gear icon in the Activity Bar (bottom-left) provides quick access to profile management</li>
+<li>Profile names appear in the title bar so you always know your current context</li>
+<li>Export your team&#39;s recommended profile as a GitHub gist for easy onboarding</li>
+</ul>
+</details>
+
+
+<hr>
+<h2 id="10-the-settings-editor">10. The Settings Editor</h2>
+<p>The Settings Editor is where you customize VS Code. There are two views: the graphical settings UI and the raw <code>settings.json</code> file.</p>
+<h3 id="opening-the-settings-editor">Opening the Settings Editor</h3>
+<table>
+<thead>
+<tr>
+<th scope="col">Method</th>
+<th scope="col">Shortcut</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Graphical Settings UI</td>
+<td><code>Ctrl+,</code> (Mac: <code>Cmd+,</code>)</td>
+</tr>
+<tr>
+<td>JSON Settings file</td>
+<td><code>Ctrl+Shift+P</code> then type &quot;Open User Settings (JSON)&quot;</td>
+</tr>
+</tbody></table>
+<h3 id="navigating-the-settings-editor">Navigating the Settings Editor</h3>
+<p>The graphical Settings UI has a <strong>search box</strong> at the top. Type any keyword and the settings list filters instantly.</p>
+<h4 id="special-search-filters">Special Search Filters</h4>
+<table>
+<thead>
+<tr>
+<th scope="col">Filter</th>
+<th scope="col">What It Shows</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>@modified</code></td>
+<td>Only settings you have changed from their defaults</td>
+</tr>
+<tr>
+<td><code>@tag:accessibility</code></td>
+<td>All accessibility-related settings</td>
+</tr>
+<tr>
+<td><code>@tag:advanced</code></td>
+<td>Advanced, less commonly used settings</td>
+</tr>
+<tr>
+<td><code>@tag:experimental</code></td>
+<td>Experimental features not yet enabled by default</td>
+</tr>
+<tr>
+<td><code>@ext:github.copilot</code></td>
+<td>Settings for the GitHub Copilot extension</td>
+</tr>
+</tbody></table>
+<h3 id="key-accessibility-settings-to-configure">Key Accessibility Settings to Configure</h3>
+<pre><code class="hljs language-json"><span class="hljs-punctuation">{</span>
+  <span class="hljs-attr">&quot;editor.accessibilitySupport&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;on&quot;</span><span class="hljs-punctuation">,</span>
+  <span class="hljs-attr">&quot;editor.minimap.enabled&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-literal"><span class="hljs-keyword">false</span></span><span class="hljs-punctuation">,</span>
+  <span class="hljs-attr">&quot;editor.wordWrap&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;on&quot;</span><span class="hljs-punctuation">,</span>
+  <span class="hljs-attr">&quot;editor.renderWhitespace&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;none&quot;</span><span class="hljs-punctuation">,</span>
+  <span class="hljs-attr">&quot;editor.fontSize&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-number">16</span><span class="hljs-punctuation">,</span>
+  <span class="hljs-attr">&quot;accessibility.signals.lineHasError&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;on&quot;</span><span class="hljs-punctuation">,</span>
+  <span class="hljs-attr">&quot;accessibility.signals.taskCompleted&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;on&quot;</span><span class="hljs-punctuation">,</span>
+  <span class="hljs-attr">&quot;accessibility.signals.chatResponseReceived&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;on&quot;</span>
+<span class="hljs-punctuation">}</span></code></pre>
+<h3 id="learning-cards-settings-editor">Learning Cards: Settings Editor</h3>
+<details>
+<summary>Screen reader users</summary>
+
+<ul>
+<li>Press <code>Ctrl+,</code> to open Settings. Focus lands in the search box - start typing immediately</li>
+<li>Type <code>@tag:accessibility</code> to see all accessibility settings grouped together</li>
+<li>Each setting is a form control (checkbox, dropdown, or text input) - use standard form navigation</li>
+<li>For direct JSON editing: <code>Ctrl+Shift+P</code> then &quot;Open User Settings (JSON)&quot; - this gives you a standard text editor</li>
+</ul>
+</details>
+
+<details>
+<summary>Low vision users</summary>
+
+<ul>
+<li>Search for <code>editor.fontSize</code> to set your preferred font size for the code editor</li>
+<li>Search for <code>window.zoomLevel</code> to set the overall window zoom (affects all UI)</li>
+<li>Search for <code>theme</code> to switch to High Contrast or High Contrast Light themes</li>
+<li>The gear icon has a checkmark for modified settings, making it easy to spot what you have changed</li>
+</ul>
+</details>
+
+<details>
+<summary>Sighted users</summary>
+
+<ul>
+<li>Click the gear icon in the bottom-left corner, then select &quot;Settings&quot;</li>
+<li>Use the search box to filter thousands of settings down to what you need</li>
+<li>The &quot;Modified&quot; indicator (blue bar) shows which settings you have customized</li>
+<li>Use the tabs at the top to switch between User settings (global) and Workspace settings (per-project)</li>
+</ul>
+</details>
+
+
+<hr>
+<h2 id="11-the-keyboard-shortcuts-editor">11. The Keyboard Shortcuts Editor</h2>
+<p>The Keyboard Shortcuts Editor lets you view, search, and customize every keyboard shortcut in VS Code.</p>
+<h3 id="opening-the-keyboard-shortcuts-editor">Opening the Keyboard Shortcuts Editor</h3>
+<table>
+<thead>
+<tr>
+<th scope="col">Method</th>
+<th scope="col">Shortcut</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Graphical editor</td>
+<td><code>Ctrl+K Ctrl+S</code></td>
+</tr>
+<tr>
+<td>JSON editor</td>
+<td><code>Ctrl+Shift+P</code> then type &quot;Open Keyboard Shortcuts (JSON)&quot;</td>
+</tr>
+<tr>
+<td>From Menu Bar</td>
+<td>File then Preferences then Keyboard Shortcuts</td>
+</tr>
+</tbody></table>
+<h3 id="searching-for-shortcuts">Searching for Shortcuts</h3>
+<p>The editor has a search box that supports:</p>
+<ul>
+<li><strong>Command name:</strong> Type <code>toggle terminal</code> to find the terminal toggle shortcut</li>
+<li><strong>Keystroke recording:</strong> Click the keyboard icon (or press the record keys button) to record a key combination and find what it does</li>
+<li><strong>When clause:</strong> Find shortcuts that only apply in specific contexts</li>
+</ul>
+<h3 id="customizing-a-shortcut">Customizing a Shortcut</h3>
+<ol>
+<li>Find the command in the list</li>
+<li>Double-click the keybinding column (or press <code>Enter</code> on the row, then <code>Enter</code> again on the keybinding)</li>
+<li>Press your desired key combination</li>
+<li>Press <code>Enter</code> to confirm</li>
+</ol>
+<h3 id="learning-cards-keyboard-shortcuts-editor">Learning Cards: Keyboard Shortcuts Editor</h3>
+<details>
+<summary>Screen reader users</summary>
+
+<ul>
+<li>Press <code>Ctrl+K Ctrl+S</code> to open the Keyboard Shortcuts Editor. Focus lands in the search box.</li>
+<li>The results list is a table. Each row announces: Command name, Keybinding, When clause, and Source.</li>
+<li>Navigate rows with <code>Up/Down Arrow</code>. Press <code>Enter</code> to edit a keybinding.</li>
+<li>Tip: search for <code>accessibility</code> to find all accessibility-related shortcuts at once.</li>
+</ul>
+</details>
+
+<details>
+<summary>Low vision users</summary>
+
+<ul>
+<li>The shortcut editor is a searchable, sortable table - zoom in as needed</li>
+<li>The Source column shows whether a shortcut is from Default, User, or an Extension</li>
+<li>Use the record keys feature to check what any key combination currently does</li>
+</ul>
+</details>
+
+<details>
+<summary>Sighted users</summary>
+
+<ul>
+<li>Press <code>Ctrl+K Ctrl+S</code> to open the visual editor</li>
+<li>Click the keyboard icon in the search bar to record a keystroke and find its binding</li>
+<li>Right-click any row for options to change, remove, or reset a keybinding</li>
+</ul>
+</details>
+
+<hr>
+<p><em>Next: <a href="12-vscode-accessibility.html">Chapter 12: VS Code Accessibility</a></em><br><em>Back: <a href="10-notifications-and-day-1-close.html">Chapter 10: Notifications and Day 1 Close</a></em><br><em>Related appendices: <a href="appendix-g-vscode-reference.html">Appendix G: VS Code Reference</a> | <a href="appendix-b-screen-reader-cheatsheet.html">Appendix B: Screen Reader Cheat Sheet</a></em></p>
+
+  </main>
+  <footer role="contentinfo" class="site-footer">
+    <p><strong>GIT Going with GitHub</strong> - A workshop by <a href="https://community-access.org">Community Access</a></p>
+    <p><a href="https://github.com/community-access/git-going-with-github">View on GitHub</a> · <a href="https://community-access.org">community-access.org</a></p>
+  </footer>
+  </body>
+</html>

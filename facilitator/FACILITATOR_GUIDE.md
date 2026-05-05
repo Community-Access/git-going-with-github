@@ -1,248 +1,261 @@
-# Facilitator Guide & Workshop Timeline
+# Facilitator Guide and Workshop Timeline
+
+## Facilitator Team
+
+- **Jeff Bishop** -- lead facilitator, maintainer of [Accessibility Agents](https://github.com/community-access/accessibility-agents)
+- **Michael Babcock** -- co-facilitator
+
+Both facilitators run all sessions together. "The facilitator" or "your facilitator" in this guide refers to whichever of the two is leading a given moment; either can step in for the other on any task in this guide.
 
 ## Overview
 
-This workshop runs **Saturday, March 8-9, 2026** from **12pm-8pm ET** both days.
+This is a **two-day workshop** designed for blind and low-vision students learning GitHub through hands-on collaboration. Each day runs approximately 8 hours with structured sessions and flexible working time.
 
-**Participants:** 66 blind and low-vision students  
-**Format:** Hybrid (streaming + learning room)  
+**Format:** Hybrid (streaming + individual GitHub Classroom repos)
 **Main Goal:** Get every student to merge their first pull request
 
+> **Deployment note:** For setup instructions, see [classroom/README.md](../classroom/README.md).
+> Each student receives their own private repository through GitHub Classroom.
+> The Aria bot and student-progression workflow handle challenge delivery and feedback automatically.
 
-## Before the Workshop (Friday, March 7)
+## Before the Workshop (Day Before)
 
 ### Facilitator Checklist
 
-- [ ] Verify all 66 student branches exist
-- [ ] Test assignment issues load without errors
-- [ ] Confirm peers are assigned for cross-review
-- [ ] Test bot validation workflow on practice PR
-- [ ] Share link to [Zoom registration](https://us06web.zoom.us/meeting/register/YdAAvwzAQUCYpPpNtAlG3g)
-- [ ] Send reminder email with:
-  - Zoom link + audio-only option
-  - Pre-workshop setup reminder
+- [ ] Verify GitHub Classroom roster is complete (all students accepted invite links)
+- [ ] Confirm both assignments are published and invite links work
+- [ ] Test Aria bot validation by submitting a practice PR in a test repo
+- [ ] Verify student-progression workflow triggers correctly (close Challenge 1, see Challenge 2 appear)
+- [ ] Share meeting link and reminder email with:
+  - Video call link + audio-only option
+  - Pre-workshop setup reminder (see [docs/00-pre-workshop-setup.md](../docs/00-pre-workshop-setup.md))
   - FAQ: "What if I get stuck?"
   - Office hours/emergency contact info
 
 ### Verify Infrastructure
 
-```bash
-# Check all branches exist
-git branch | Select-String "student/" | Measure-Object
+Use the **GitHub Classroom dashboard** to confirm:
 
-# Verify roster is updated
-python -c "import json; print(f\"Total students: {len(json.load(open('.github/data/student-roster.json'))['students'])}\")"
+1. All students have accepted their assignment invite links
+2. Each student's private repo was created successfully
+3. Challenge 1 issue exists in each student repo (auto-created on acceptance)
 
-# Test one assignment issue creation (run on practice student)
-gh issue create --title "[TEST] Sample Assignment" --body "Test issue" --assignee $YOUR_USERNAME
-```
+Test the automation by opening a PR in one student repo and confirming:
 
+- Aria bot comments with feedback within 30 seconds
+- Closing Challenge 1 issue triggers Challenge 2 to appear
 
-## Day 1: Saturday, March 8, 12pm-8pm ET
+## Day 1: GitHub Orientation and First Pull Request
 
-### 12:00 PM - 1:00 PM: Welcome & GitHub Orientation (60 min)
+### Hour 1: Welcome and GitHub Orientation (60 min)
 
 **Facilitator Role:**
+
 - Create welcoming opening acknowledging everyone's accessibility needs
 - Explain why GitHub matters for blind/low-vision inclusion
 - Demonstrate: "I'm going to open the repo right now and you'll follow along"
-- Q&A in chat - answer every question
+- Q&A in chat -- answer every question
 
 **What Students Do:**
-- Join Zoom with screen reader
+
+- Join the video call with screen reader
 - Open GitHub in their browser
-- Navigate to `/learning-room/` folder
-- Confirm they can see their assignment issue
+- Navigate to their private repo (created by GitHub Classroom)
+- Confirm they can see their first challenge issue
 
 **Resources to Have Ready:**
+
 - Screen reader cheatsheet (Appendix B)
-- Common GitHub.com keyboard shortcuts printed
-- Zoom chat moderator who watches for questions
+- Common GitHub.com keyboard shortcuts
+- Chat moderator who watches for questions
 
-**Success Metric:** All 66 students in Zoom report "I found my issue"
+**Success Metric:** All students report "I found my issue"
 
-
-### 1:00 PM - 1:30 PM: Demo - Your First PR (30 min)
+### Hour 2: Demo -- Your First PR (30 min)
 
 **You (facilitator) will:**
+
 1. Show a completed example on screen with narration
 2. Walk through EVERY step:
    - "First, I click the edit pencil"
    - "I see the markdown editor open"
    - "I make my change here"
-   - "I scroll down and create a new branch: `fix/demo-001`"
+   - "I scroll down and create a new branch"
    - "Now I click 'Propose changes' button"
-   - "GitHub shows me the PR preview - notice the bot already right here checking my work"
+   - "GitHub shows me the PR preview -- notice the Aria bot already right here checking my work"
    - "I fill in the PR template fields"
    - "I click 'Create Pull Request'"
-   - "The bot comments within 30 seconds with feedback"
+   - "Aria comments within 30 seconds with feedback"
    - "I address the feedback and push an update commit"
    - "I request review by typing @peer_username"
    - "My peer reviews and I get approval"
    - "I click merge button"
-   - ** Done! My PR is merged!**
+   - "Done! My PR is merged!"
 
 **This is the workflow EVERY student will repeat.** Make it crystal clear.
 
 **Success Metric:** Students report "I see how this works" in chat
 
+### Hours 2-6: Working Session (approx. 4.5 hours)
 
-### 1:30 PM - 6:00 PM: Silent Working Session (270 min)
+**Students work independently on challenges in their own repos.**
 
-**Students work independently on their assignment issues.**
-
-This is THE MAIN ENGAGEMENT. They're making their first real contribution.
+This is THE MAIN ENGAGEMENT. They're making their first real contribution. When a student closes a challenge issue, the student-progression workflow automatically opens the next one.
 
 **Facilitator Role:**
-- Monitor Discussions and PR comments for questions
+
+- Monitor the GitHub Classroom dashboard for student progress
+- Check individual student repos for PR comments and questions
 - Respond quickly to blockers
 - Celebrate each merged PR in chat
-- Track progress in [progress tracker](./progress-tracker.json)
 
 **Expected Cadence:**
-- **1:30-2:30 PM** - Students opening issues, starting edits (expect 15-20 PRs)
-- **2:30-3:30 PM** - Bot feedback flowing, students making fixes (25-30 PRs)
-- **3:30-5:00 PM** - Reviews happening, merges happening (30-35 PRs)
-- **5:00-6:00 PM** - Stragglers finishing, peer reviews catching up
+
+- **First hour** -- Students opening issues, starting edits (expect early PRs from fast movers)
+- **Second hour** -- Aria bot feedback flowing, students making fixes
+- **Third hour** -- Reviews happening, merges happening, progression bot unlocking new challenges
+- **Fourth hour** -- Stragglers finishing, peer reviews catching up
 
 **Facilitator Interventions:**
 
-If student hasn't opened a PR by 2:30 PM:
-- Message them: "Hey @student! Need help? Here's the link to your issue: [issue #XX]"
-- Keep it low-pressure - some will take longer
+If a student hasn't opened a PR after the first hour:
 
-If bot gives critical feedback:
-- Explain in Discussions what the bot meant
+- Message them: "Hey @student! Need help getting started? Check your Issues tab for your current challenge."
+- Keep it low-pressure -- some students will take longer
+
+If Aria gives critical feedback:
+
+- Explain what the bot meant in plain language
 - Show the fix clearly
-- Make sure student isn't discouraged
+- Make sure the student isn't discouraged
 
 If a peer review isn't happening:
+
 - Offer to do a facilitator review instead
 - Or ask another student: "Can you review this PR?"
 - Priority is getting to merge, not strict peer review
 
 **Celebrate Merges:**
-```
- Huge congrats @username! Your first PR is MERGED! 
-You're officially a contributor to an open source project!
-```
+Post in the chat or discussion when a student merges their first PR. Public recognition matters.
 
-
-### 6:00 PM - 6:30 PM: Q&A & Reflection (30 min)
+### Hour 7: Q&A and Reflection (30 min)
 
 **Prompt for Discussion:**
 
 > "Tell us in chat: What was one thing you learned today about GitHub?"
 
 **Be ready to:**
+
 - Answer "I got an error..." questions
 - Help troubleshoot remaining issues
 - Give credit to peer reviewers
 - Mark students who didn't finish but are close as "follow-up needed"
 
 **Send them home with:**
+
 - Tomorrow's agenda
-- Sneak peek at what's next
+- Sneak peek at what's next (VS Code, local Git, advanced challenges)
 - Encouragement!
 
-
-### 6:30 PM - 8:00 PM: Office Hours (Optional)
+### Hour 8: Office Hours (Optional)
 
 - Available for 1:1 troubleshooting
 - Help students finish PRs
 - Answer "How do I...?" questions about GitHub
 - Document common questions for tomorrow's content
 
+## Day 2: Deeper Skills and Celebration
 
-## Day 2: Sunday, March 9, 12pm-8pm ET
-
-### 12:00 PM - 12:30 PM: Recap & Wins (30 min)
+### Hour 1: Recap and Wins (30 min)
 
 **Facilitator:**
-- Show stats: "66 students, X PRs merged on Day 1"
+
+- Show stats from the GitHub Classroom dashboard: "X students, Y PRs merged on Day 1"
 - Acknowledge students who got stuck but persisted
-- Introduce next challenge level for students ready to go further
+- Introduce the Day 2 assignment (students accept the second invite link)
 
+> Students accept the Day 2 assignment invite link now.
+> The student-progression workflow begins delivering Challenge 10 onwards.
 
-### 12:30 PM - 1:30 PM: Deep Dive - Code Review (60 min)
+### Hour 2: Deep Dive -- Code Review (60 min)
 
 **Teach:**
-- How to review someone else's PR  
+
+- How to review someone else's PR
 - What good feedback looks like
 - How to incorporate feedback gracefully
 - Real-world code review practices
 
 **Paired Activity:**
+
 - Have students review each other's Day 1 PRs
 - Start with example feedback you provide
 - Let them practice the async review process
 
+### Hours 3-7: Skill-Building Challenges (approx. 4.5 hours)
 
-### 1:30 PM - 6:00 PM: Skill-Building Challenges (270 min)
+**Students work through progressively harder challenges delivered by the progression bot:**
 
-**Now students work on progressively harder challenges:**
+| Track | Challenges | Topics |
+|-------|-----------|--------|
+| Core Day 2 | 10-13 | VS Code, Git basics, local commits, code review |
+| Advanced | 14-16 | Issue templates, fork-and-contribute, capstone agent |
+| Bonus | bonus-a through bonus-e | Advanced search, branch protection, GitHub CLI, cloud editors |
 
-| Skill Level | Students | Challenges | Topics |
-|------------|----------|-----------|--------|
-| Beginner (joined yesterday) | ~40 | Challenge 2-3 | Content writing, link validation |
-| Intermediate (feeling confident) | ~20 | Branch: `day2-practice` | Comparing diffs, merge conflicts |
-| Advanced (want more) | ~6 | Custom projects | Taking on real issues |
+Challenges unlock automatically as students close issues. Faster students will reach bonus challenges; slower students may still be working through core content. Both paces are valid.
 
-**Bot Enhances:**
-- Accessibility feedback becomes more detailed
+**Aria Bot Enhances:**
+
+- Accessibility feedback becomes more detailed on later challenges
 - Highlights larger patterns ("You capitalized but others use lowercase")
-- Suggests improvements not just fixes
+- Suggests improvements, not just fixes
 
 **Facilitator Role:**
-- Track who's moving between skill levels
-- Give stretch challenges to advanced students
-- Help intermediate students with conflict resolution
+
+- Use the Classroom dashboard to track who's advancing through challenges
+- Give encouragement to students on later challenges
+- Help students with merge conflict resolution (Challenge 7 / autograder)
 - Keep the energy positive
 
+### Hour 7: Final Q&A and Celebration (60 min)
 
-### 6:00 PM - 7:00 PM: Final Q&A & Celebration (60 min)
+**Metrics to share (pull from Classroom dashboard):**
 
-**Metrics to share:**
-```
- WORKSHOP RESULTS:
-- 66 students registered
-- X PRs merged (track real number)
-- X students got 2+ merges
-- X students completed code review cycle
-- 100% accessibility - screen readers worked flawlessly
+- Total students enrolled
 
- Impact:
-- X open source contributions submitted
-- X participants added to 66 projects' contributor lists
-- X% of students felt encouraged to contribute again
-```
+- PRs merged (track real number)
+- Students who completed multiple challenges
+- Students who completed the code review cycle
+- Accessibility wins -- screen readers worked throughout
 
 **Next Steps:**
-- Point them to contributing.md in their favorite open source projects
+
+- Point them to CONTRIBUTING.md in their favorite open source projects
 - Share list of "good first issue" finding techniques
-- Give them the RESOURCES appendix
+- Give them the resources appendices
 - Offer alumni community channel
 
-### 7:00 PM - 8:00 PM: Informal Hangout (60 min)
+### Hour 8: Informal Hangout (60 min)
 
-- Students "hang out" on Zoom
+- Students hang out on the call
 - Chat with peers and facilitators
 - Ask follow-up questions
 - Exchange GitHub usernames
-
 
 ## Facilitator Role Critical Points
 
 ### Communication Style
 
- **DO:**
+**DO:**
+
 - Use simple language: "Click the pencil icon to edit"
 - Narrate exactly what you're doing: "I'm clicking... now I'm typing..."
 - Normalize mistakes: "Oops I forgot something - let me fix it"
 - Celebrate effort not just success: "Nice work thinking through that!"
 - Answer the same question multiple times patiently
 
- **DON'T:**
+**DON'T:**
+
 - Use "obviously" or assume prior knowledge
 - Assume everyone is on the same screen area
 - Rush through demos
@@ -268,25 +281,27 @@ You're officially a contributor to an open source project!
 4. **Document what worked** - Feedback for next workshop
 5. **Tag students in commit credit** - Add to CONTRIBUTORS file
 
-
 ## Emergency Protocols
 
 ### Bot stops responding to PRs
+
 - Check GitHub Actions status page
 - Manually review PRs and comment with feedback format bot would use
 - Post in Discussions: "Facing technical issue, we'll handle this manually"
 
 ### Student GitHub account locked
+
 - Have them reset password via GitHub
 - Or create temporary escalation issue for them to move forward
 
-### Zoom connectivity issues
+### Video call connectivity issues
+
 - Have phone dial-in number as backup
 - Offer to continue in Discussions if needed
 - Record session for students who lose connection
 
 ### Workshop needs to end early
+
 - Stop at natural break point
 - Students can continue async after
 - No one forced offline mid-PR
-

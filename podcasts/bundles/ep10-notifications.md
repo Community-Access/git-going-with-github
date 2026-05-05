@@ -444,6 +444,6 @@ Go to [github.com/notifications](https://github.com/notifications) and practice:
 > *Your notification discipline today becomes the standard the agent enforces at scale tomorrow.*
 
 
-*Next: [Day 2 Agenda](../DAY2_AGENDA.md)*
+*Next: [Day 2 Agenda](admin/DAY2_AGENDA.md)*
 *Back: [Labels, Milestones, and Projects](09-labels-milestones-projects.md)*
 *Related: [Culture & Etiquette](08-culture-etiquette.md) | [Working with Issues](04-working-with-issues.md)*

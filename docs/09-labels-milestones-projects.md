@@ -2,6 +2,10 @@
 >
 > **Listen to Episode 9:** [Labels, Milestones, and Projects](../PODCASTS.md) - a conversational audio overview of this chapter. Listen before reading to preview the concepts, or after to reinforce what you learned.
 
+> **Related appendices:** [Appendix R: Projects Deep Dive](appendix-r-projects-deep-dive.md) | [Appendix A: Glossary](appendix-a-glossary.md)
+> **Authoritative sources:** [GitHub Docs: About labels](https://docs.github.com/en/issues/using-labels-and-milestones-to-track-work/managing-labels) | [GitHub Docs: About milestones](https://docs.github.com/en/issues/using-labels-and-milestones-to-track-work/about-milestones) | [GitHub Docs: About Projects](https://docs.github.com/en/issues/planning-and-tracking-with-projects/learning-about-projects/about-projects)
+
+
 ## Organizing Work and Cross-Referencing on GitHub
 
 > Labels, milestones, and projects are the organizational layer of GitHub. They turn a chaotic list of issues into a structured, navigable, prioritized body of work.
@@ -24,9 +28,12 @@ Chapter 9 is a **guided triage chapter** focused on organization skills.
 
 **Goal:** Read the details of a Learning Room issue and post a structured triage recommendation that a maintainer could act on immediately.
 
-**Where you are working:** your assigned Chapter 9 challenge issue in the [learning-room](https://github.com/Community-Access/learning-room) repository on GitHub.com, plus one other open issue you will triage.
+> **🛠️ Agentic Strategy:** Labels and issue states are how we wake up Agents. In the Day 2 Capstone, you can design an agent that only activates when an Issue gets a specific label (like \
+eeds-review\ or \ccessibility-check\).
 
-1. Open the **Issues** tab in the [learning-room](https://github.com/Community-Access/learning-room) repository.
+**Where you are working:** your assigned Chapter 9 challenge issue in your Learning Room repository on GitHub.com, plus one other open issue you will triage.
+
+1. Open the **Issues** tab in your Learning Room repository.
 2. Find any **open issue** that does not already have labels applied (or pick one your facilitator assigns).
 3. Read the issue title and full description carefully. Note:
    - What type of work is it? (documentation fix, bug report, accessibility improvement, new content)
@@ -72,7 +79,7 @@ Your triage recommendation comment is your evidence. Close your Chapter 9 challe
 
 Triage is about clarity, not authority. You do not need maintainer permissions to help organize work. A clear recommendation saves maintainers time and speeds up collaboration. This is a skill used daily in open source.
 
-> **Continue learning:** The GitHub Skills course [Introduction to Repository Management](https://github.com/skills/introduction-to-repository-management) covers labels, milestones, and contributor settings in an interactive, self-paced format. See [Appendix Z](appendix-z-github-skills-catalog.md) for the full catalog.
+> **Continue learning:** The GitHub Skills course [Introduction to Repository Management](https://github.com/skills/introduction-to-repository-management) covers labels, milestones, and contributor settings in an interactive, self-paced format. See [Appendix Z](appendix-z-github-skills.md) for the full catalog.
 
 ### Learning Pattern Used in This Chapter
 
@@ -151,6 +158,29 @@ gh label list --json name,description
 </details>
 
 ### Applying a Label to an Issue or PR
+
+### Tool Cards: Apply a Label
+
+**github.com (browser):**
+1. Open the issue or PR.
+2. In the right sidebar, click the gear icon next to **Labels**.
+3. Select labels from the dropdown, then click outside to apply.
+
+**github.dev (web editor):**
+Not available -- labels are managed on the issue/PR page, not in the code editor.
+
+**VS Code Desktop (GitHub Pull Requests extension):**
+1. Open the issue in the **GitHub** sidebar panel.
+2. Click the label area to add or remove labels.
+
+**GitHub Desktop:**
+Not directly supported. Use **Repository > View on GitHub** to manage labels in the browser.
+
+**Git CLI / GitHub CLI:**
+```bash
+gh issue edit 42 --add-label "accessibility,good first issue"
+gh pr edit 15 --add-label "documentation"
+```
 
 From an open issue or PR:
 
@@ -283,6 +313,35 @@ gh label create "in progress" --description "Being actively worked on" --color "
 
 **Accessibility note for color:** Labels have color, but they also have a text name and description - the color is supplementary information. Screen readers announce the label name, not the color, so labels are fully accessible.
 
+### Learning Cards: Labels
+
+<details>
+<summary>Screen reader users</summary>
+
+- On the Issues list, labels are announced alongside each issue title: "Label: bug" or "Labels: accessibility, good first issue"
+- Press `L` on an open issue (Focus Mode) to open the label picker directly; type to filter, `Down Arrow` to navigate, `Enter` to select
+- When filtering issues by label, type `is:open label:accessibility` in the search bar and press `Enter`; the list updates to show only matching issues
+
+</details>
+
+<details>
+<summary>Low vision users</summary>
+
+- Labels appear as colored rounded rectangles next to issue titles in the list; in Windows High Contrast mode, labels use system border colors with readable text
+- The Label dropdown from the sidebar gear icon is searchable: type the first few letters of a label name to filter the long list
+- On the Labels management page (Issues tab, then Labels link), each label row shows its color swatch, name, and description in a table-like layout
+
+</details>
+
+<details>
+<summary>Sighted users</summary>
+
+- Labels appear as small colored pills next to issue titles in the Issues list; hover over a label to see its description in a tooltip
+- Click the gear icon next to Labels in the issue sidebar to open a searchable dropdown; a checkmark appears next to selected labels
+- The filter bar shows active label filters as text (e.g., `label:accessibility`); remove a filter by clicking the X next to it or clearing the search text
+
+</details>
+
 
 ## Milestones
 
@@ -384,6 +443,35 @@ Requires write access:
 
 Screen readers handle date pickers inconsistently - typing the date is most reliable across browsers.
 
+### Learning Cards: Milestones
+
+<details>
+<summary>Screen reader users</summary>
+
+- On the Milestones page, each milestone is an H3 heading link; it announces the title, progress ("3 of 8 issues closed"), and due date
+- Press `Enter` on a milestone heading to open it; the detail page lists all assigned issues, navigable with `3` for titles or `I` for list items
+- To assign an issue to a milestone, navigate to the sidebar "Milestone" heading (`H`), activate the gear button, then use `Up/Down Arrow` to select
+
+</details>
+
+<details>
+<summary>Low vision users</summary>
+
+- Each milestone row shows a progress bar (green fill) and a fraction like "3 / 8" next to the title; the bar is visible at any zoom level
+- The due date appears as grey text to the right of the progress bar; at high zoom it may wrap below the title
+- The due date field when creating a milestone accepts typed input in YYYY-MM-DD format, which is more reliable than using the date picker at high magnification
+
+</details>
+
+<details>
+<summary>Sighted users</summary>
+
+- Milestones are listed on the Milestones page (accessible from the Issues tab, via the "Milestones" link in the toolbar)
+- Each milestone shows a green progress bar, an issue count (e.g., "3 of 8"), an optional due date, and a description
+- When viewing an issue, the assigned milestone appears in the right sidebar; click the milestone name to see all issues in that milestone
+
+</details>
+
 
 ## Cross-References
 
@@ -426,8 +514,39 @@ The `Closes #42` keyword must appear in:
 
 It does **not** fire from comments on the PR. If you write "Closes #42" in a comment, it creates a reference but does not auto-close the issue on merge.
 
+### Learning Cards: Cross-References
+
+<details>
+<summary>Screen reader users</summary>
+
+- Type `#` in any comment box (Focus Mode) to trigger a live-search dropdown of issues and PRs; press `Down Arrow` to navigate, `Enter` to insert the reference
+- Type `@` followed by a username to trigger user autocomplete; press `Down Arrow` and `Enter` to insert the mention
+- After a PR merges with `Closes #42` in the description, navigate to issue 42 and press `3` to find the "Closed by #XX" cross-reference comment
+
+</details>
+
+<details>
+<summary>Low vision users</summary>
+
+- Cross-reference links (`#42`, `@username`) render as blue clickable text in comments; they are distinct from surrounding text at any zoom level
+- GitHub adds automatic back-links when you reference an issue or PR; look for them as timeline events (small text between comments) on the referenced item
+- The `Closes #42` keyword in a PR description renders as a clickable link to the issue, with a small icon showing the issue's current state
+
+</details>
+
+<details>
+<summary>Sighted users</summary>
+
+- Typing `#` in a comment box opens a dropdown showing matching issues and PRs with their number, title, and open/closed state
+- Cross-references create bidirectional links: issue 42 gets a timeline event "Referenced in PR #25" and the PR shows "Closes #42" as a clickable link
+- Use `Closes #42`, `Fixes #42`, or `Resolves #42` in the PR description body (not in comments) to trigger automatic issue closure on merge
+
+</details>
+
 
 ## GitHub Projects
+
+> **See also:** [Appendix R: Projects Deep Dive](appendix-r-projects-deep-dive.md) covers advanced project board configuration, custom fields, and automation.
 
 ### What Is a GitHub Project?
 
@@ -485,10 +604,39 @@ Or from within a project:
 2. Type `#` to search for existing issues
 3. Select the issue → it's added to the project
 
+### Learning Cards: GitHub Projects
+
+<details>
+<summary>Screen reader users</summary>
+
+- In Table view, press `T` to jump to the project table, then use `Ctrl+Alt+Down Arrow` for rows and `Ctrl+Alt+Right Arrow` for columns (Title, Status, Priority, Assignee)
+- In Board view, press `D` to navigate between column landmarks (Todo, In Progress, Done), then `3` to jump between card titles within a column
+- Press `Enter` on any card or table row to open the issue/PR detail panel without leaving the project view
+
+</details>
+
+<details>
+<summary>Low vision users</summary>
+
+- Board view shows issues as cards in vertical columns (Todo, In Progress, Done); each card displays the title, assignee avatar, and labels
+- Table view is wider and has more columns; at high zoom, use horizontal scrolling to see columns like Priority and Assignee
+- The view selector button (Table/Board/Roadmap) is near the top of the project page; it uses icon buttons that have text labels on hover
+
+</details>
+
+<details>
+<summary>Sighted users</summary>
+
+- Switch between Table, Board, and Roadmap views using the view selector buttons at the top of the project page
+- Board view: drag and drop cards between columns, or click the Status field on a card to change it without dragging
+- Table view: click column headers to sort, use the "+" button to add custom fields (Priority, Estimate, etc.), and click a row to open the issue detail panel
+
+</details>
+
 
 ## Practical Organization Strategy for the Hackathon
 
-Here is a recommended structure for the [learning-room](https://github.com/Community-Access/learning-room) sandbox project:
+Here is a recommended structure for your Learning Room sandbox project:
 
 ### Labels to create
 
@@ -547,6 +695,14 @@ Go to the Learning Room repository and do two things:
 > *Labeling today is not overhead. It is configuring the input layer that every agent downstream depends on.*
 
 
-*Next: [Notifications](10-notifications.md)*
-*Back: [Culture and Etiquette](08-culture-etiquette.md)*
-*Related: [Working with Issues](04-working-with-issues.md) | [Day 1 Agenda](../DAY1_AGENDA.md)*
+> ➡️ **Next Step:** Move on to [Chapter 10: Notifications](10-notifications-and-day-1-close.md) to finish Day 1!
+
+---
+
+
+*Next: [Chapter 10: Notifications and Day 1 Close](10-notifications-and-day-1-close.md)*  
+*Back: [Chapter 08: Open Source Culture](08-open-source-culture.md)*  
+*Related appendices: [Appendix R: Projects Deep Dive](appendix-r-projects-deep-dive.md)*
+
+
+

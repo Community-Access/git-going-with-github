@@ -1,0 +1,619 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="GIT Going with GitHub - A two-day accessible open source workshop by Community Access">
+  <title>Fork and Contribute: The Open Source Workflow - GIT Going with GitHub</title>
+  <link rel="stylesheet" href="./styles/github-markdown.css">
+  <link rel="stylesheet" href="./styles/highlight.css">
+  <link rel="stylesheet" href="./styles/custom.css">
+  <style>
+    .markdown-body {
+      box-sizing: border-box;
+      min-width: 200px;
+      max-width: 980px;
+      margin: 0 auto;
+      padding: 45px;
+    }
+    @media (max-width: 767px) {
+      .markdown-body {
+        padding: 15px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+  <header class="site-header" role="banner">
+    <div class="site-header-inner">
+      <nav aria-label="Breadcrumb" class="breadcrumb">
+        <a href="./index.html">Home</a> <span aria-hidden="true">›</span> <span aria-current="page">Fork and Contribute: The Open Source Workflow</span>
+      </nav>
+      <div class="header-actions">
+        <a href="https://github.com/Community-Access/git-going-with-github/wiki" class="wiki-link" target="_blank" rel="noopener noreferrer">
+          <svg aria-hidden="true" focusable="false" width="16" height="16" viewBox="0 0 16 16" fill="currentColor">
+            <path d="M1.75 1h8.5c.966 0 1.75.784 1.75 1.75v5.5A1.75 1.75 0 0 1 10.25 10H7.06l-2.573 2.573A1.458 1.458 0 0 1 2 11.543V10h-.25A1.75 1.75 0 0 1 0 8.25v-5.5C0 1.784.784 1 1.75 1ZM1.5 2.75v5.5c0 .138.112.25.25.25h1a.75.75 0 0 1 .75.75v2.19l2.72-2.72a.749.749 0 0 1 .53-.22h3.5a.25.25 0 0 0 .25-.25v-5.5a.25.25 0 0 0-.25-.25h-8.5a.25.25 0 0 0-.25.25Zm13 2a.25.25 0 0 0-.25-.25h-.5a.75.75 0 0 1 0-1.5h.5c.966 0 1.75.784 1.75 1.75v5.5A1.75 1.75 0 0 1 14.25 12H14v1.543a1.457 1.457 0 0 1-2.487 1.03L9.22 12.28a.749.749 0 1 1 1.06-1.06l2.22 2.22v-2.19a.75.75 0 0 1 .75-.75h.25a.25.25 0 0 0 .25-.25v-5.5Z"/>
+          </svg>
+          Wiki
+        </a>
+        <form role="search" class="search-form" action="./search.html" method="get">
+        <label for="site-search" class="search-label">Search docs</label>
+        <input
+          type="search"
+          id="site-search"
+          class="search-input"
+          name="q"
+          placeholder="Search docs…"
+          autocomplete="off"
+          aria-label="Search documentation"
+        >
+        <button type="submit" class="search-button" aria-label="Submit search">
+          <svg aria-hidden="true" focusable="false" width="16" height="16" viewBox="0 0 16 16" fill="currentColor">
+            <path d="M10.68 11.74a6 6 0 0 1-7.922-8.982 6 6 0 0 1 8.982 7.922l3.04 3.04a.749.749 0 0 1-.326 1.275.749.749 0 0 1-.734-.215ZM11.5 7a4.499 4.499 0 1 0-8.997 0A4.499 4.499 0 0 0 11.5 7Z"/>
+          </svg>
+        </button>
+      </form>
+      </div>
+    </div>
+  </header>
+  <main id="main-content" class="markdown-body">
+    <h1 id="fork-and-contribute-the-open-source-workflow">Fork and Contribute: The Open Source Workflow</h1>
+<blockquote>
+<p><strong>Related appendices:</strong> <a href="appendix-e-advanced-git.html">Appendix E: Advanced Git</a> | <a href="appendix-o-branch-protection.html">Appendix O: Branch Protection</a> | <a href="appendix-d-git-authentication.html">Appendix D: Git Authentication</a>
+<strong>Authoritative sources:</strong> <a href="https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/working-with-forks/fork-a-repo">GitHub Docs: Fork a repo</a> | <a href="https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/working-with-forks/syncing-a-fork">GitHub Docs: Syncing a fork</a> | <a href="https://opensource.guide/how-to-contribute/">Open Source Guides: How to Contribute</a></p>
+</blockquote>
+<blockquote>
+<p><strong>Day 2, Block 3 Material</strong></p>
+<p>This chapter teaches the complete fork-based contribution workflow from start to finish. You will fork a real repository, create a feature branch, make changes, push to your fork, and open a pull request against the upstream repository. This is the workflow used by millions of open source contributors every day, and it is the foundation for the capstone project in <a href="20-build-your-agent.html">Chapter 20</a>.</p>
+</blockquote>
+<h2 id="table-of-contents">Table of Contents</h2>
+<ol>
+<li><a href="#1-what-is-a-fork">What Is a Fork?</a></li>
+<li><a href="#2-fork-vs-clone-vs-branch">Fork vs Clone vs Branch</a></li>
+<li><a href="#3-step-1-fork-the-repository">Step 1: Fork the Repository</a></li>
+<li><a href="#4-step-2-clone-your-fork-locally">Step 2: Clone Your Fork Locally</a></li>
+<li><a href="#5-step-3-add-the-upstream-remote">Step 3: Add the Upstream Remote</a></li>
+<li><a href="#6-step-4-create-a-feature-branch">Step 4: Create a Feature Branch</a></li>
+<li><a href="#7-step-5-make-your-changes">Step 5: Make Your Changes</a></li>
+<li><a href="#8-step-6-push-to-your-fork">Step 6: Push to Your Fork</a></li>
+<li><a href="#9-step-7-open-a-pull-request">Step 7: Open a Pull Request</a></li>
+<li><a href="#10-step-8-respond-to-review-feedback">Step 8: Respond to Review Feedback</a></li>
+<li><a href="#11-keeping-your-fork-in-sync">Keeping Your Fork in Sync</a></li>
+<li><a href="#12-the-fork-workflow-checklist">The Fork Workflow Checklist</a></li>
+<li><a href="#13-if-you-get-stuck">If You Get Stuck</a></li>
+</ol>
+<hr>
+<blockquote>
+<p><strong>Challenge 16: Build Your Agent (Capstone)</strong> uses this fork-based workflow end to end. Practice it here so the capstone feels familiar.</p>
+</blockquote>
+<h2 id="1-what-is-a-fork">1. What Is a Fork?</h2>
+<blockquote>
+<p><strong>See also:</strong> <a href="08-open-source-culture.html">Chapter 08: Open Source Culture</a> for the cultural context of forking and contributing.</p>
+</blockquote>
+<p>A fork is your personal copy of someone else&#39;s repository on GitHub. When you fork a repository, GitHub creates a full copy under your account. You own the fork -- you can push to it, create branches on it, and modify it freely without affecting the original.</p>
+<p>The original repository is called the <strong>upstream</strong> repository. Your fork is linked to the upstream, which means you can open pull requests from your fork back to the original.</p>
+<h3 id="why-forks-exist">Why forks exist</h3>
+<p>Forks solve a permissions problem. Most open source projects do not give every contributor write access to the main repository. Instead:</p>
+<ol>
+<li>You fork the project (creates your copy)</li>
+<li>You make changes on your copy</li>
+<li>You open a pull request asking the maintainers to merge your changes</li>
+</ol>
+<p>This way anyone can contribute without the maintainers giving out write access.</p>
+<blockquote>
+<p><strong>The Day 1 connection:</strong> On Day 1, you worked in the learning-room repository where you had write access. You created branches directly on the repository. In the open source world, you usually do not have write access to the upstream repository, so you fork first and branch on your fork.</p>
+</blockquote>
+<hr>
+<h2 id="2-fork-vs-clone-vs-branch">2. Fork vs Clone vs Branch</h2>
+<p>These three concepts are related but different. Understanding the distinctions prevents confusion.</p>
+<table>
+<thead>
+<tr>
+<th scope="col">Concept</th>
+<th scope="col">Where it lives</th>
+<th scope="col">What it creates</th>
+<th scope="col">When to use it</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><strong>Fork</strong></td>
+<td>GitHub.com (your account)</td>
+<td>A copy of the entire repository under your GitHub account</td>
+<td>When you want to contribute to a repo you do not own</td>
+</tr>
+<tr>
+<td><strong>Clone</strong></td>
+<td>Your computer</td>
+<td>A local copy of any repository (yours or someone else&#39;s)</td>
+<td>When you want to work locally</td>
+</tr>
+<tr>
+<td><strong>Branch</strong></td>
+<td>Inside any repository (local or remote)</td>
+<td>A named pointer to a specific commit</td>
+<td>When you want to isolate a change within a repository</td>
+</tr>
+</tbody></table>
+<h3 id="how-they-work-together">How they work together</h3>
+<p>In the fork workflow, you use all three:</p>
+<ol>
+<li><strong>Fork</strong> the upstream repository to create your copy on GitHub</li>
+<li><strong>Clone</strong> your fork to your computer</li>
+<li><strong>Create a branch</strong> on your local clone for your specific change</li>
+<li>Push the branch to your fork and open a PR to the upstream</li>
+</ol>
+<pre><code class="hljs language-text">Upstream repo (GitHub)      Your fork (GitHub)        Your computer (local)
++-------------------+       +-------------------+      +-------------------+
+| Community-Access/ |  fork | your-username/    | clone|                   |
+| accessibility-    | ----&gt; | accessibility-    | ---&gt; | accessibility-    |
+| agents            |       | agents            |      | agents            |
++-------------------+       +-------------------+      +-------------------+
+        ^                          ^                           |
+        |                          |                           |
+        +--- PR (fork to upstream) +--- git push              |
+                                                      edit, stage, commit</code></pre>
+<blockquote>
+<p><strong>Screen reader note:</strong> The text diagram above shows three boxes arranged left to right. The upstream repo on GitHub is on the left. Your fork on GitHub is in the middle. Your local computer is on the right. A fork arrow goes from left to middle. A clone arrow goes from middle to right. Editing happens on the right. Git push goes from right to middle. A PR goes from middle to left.</p>
+</blockquote>
+<h3 id="learning-cards-fork-vs-clone-vs-branch">Learning Cards: Fork vs Clone vs Branch</h3>
+<details>
+<summary>Screen reader users</summary>
+
+<ul>
+<li>Run <code>git remote -v</code> in the terminal to hear your configured remotes -- <code>origin</code> is your fork, <code>upstream</code> is the original repository</li>
+<li>The Status Bar in VS Code shows the current branch name -- press <code>F6</code> to navigate there and confirm you are on a feature branch, not <code>main</code></li>
+<li>Use <code>Ctrl+Shift+P</code> then &quot;Git: Checkout to&quot; to switch between branches; your screen reader announces each branch name in the picker</li>
+</ul>
+</details>
+
+<details>
+<summary>Low vision users</summary>
+
+<ul>
+<li>Your fork URL includes your username (e.g., <code>github.com/your-name/repo</code>) making it visually distinct from the upstream URL</li>
+<li>In VS Code, the branch name in the bottom-left Status Bar confirms which branch you are working on -- zoom with <code>Ctrl+=</code> if it is too small</li>
+<li>The Source Control panel heading shows the repository name to help you verify you are working in the correct clone</li>
+</ul>
+</details>
+
+<details>
+<summary>Sighted users</summary>
+
+<ul>
+<li>On GitHub.com, forked repos show a &quot;forked from&quot; label under the repository name at the top of the page</li>
+<li>The fork icon (a branching arrow) appears next to forked repository names in your GitHub profile</li>
+<li>In VS Code, the bottom-left branch name and the Source Control panel header confirm your current branch and repository</li>
+</ul>
+</details>
+
+<hr>
+<h2 id="3-step-1-fork-the-repository">3. Step 1: Fork the Repository</h2>
+<h3 id="tool-cards-fork-and-clone-a-repository">Tool Cards: Fork and Clone a Repository</h3>
+<p><strong>github.com (browser):</strong></p>
+<ol>
+<li>Click <strong>Fork</strong> on the repository page &gt; <strong>Create fork</strong>.</li>
+<li>Clone: click the green <strong>Code</strong> button &gt; copy URL &gt; paste into your local tool.</li>
+</ol>
+<p><strong>VS Code Desktop:</strong></p>
+<ol>
+<li>Fork on github.com first (browser required for forking).</li>
+<li><code>Ctrl+Shift+P</code> &gt; <strong>Git: Clone</strong> &gt; paste your fork&#39;s URL.</li>
+</ol>
+<p><strong>GitHub Desktop:</strong></p>
+<ol>
+<li>Fork on github.com first.</li>
+<li><strong>File &gt; Clone Repository</strong> &gt; select your fork from the GitHub.com tab.</li>
+</ol>
+<p><strong>GitHub CLI (one command):</strong></p>
+<pre><code class="hljs language-bash">gh repo fork Community-Access/accessibility-agents --<span class="hljs-built_in">clone</span>
+<span class="hljs-built_in">cd</span> accessibility-agents</code></pre>
+<p>For this workshop, you will fork the <a href="https://github.com/Community-Access/accessibility-agents">Community-Access/accessibility-agents</a> repository.</p>
+<h3 id="on-githubcom">On GitHub.com</h3>
+<ol>
+<li>Go to <a href="https://github.com/Community-Access/accessibility-agents">github.com/Community-Access/accessibility-agents</a>.</li>
+<li>Find the <strong>Fork</strong> button in the upper-right area of the page.<ul>
+<li><strong>Screen reader users (NVDA/JAWS):</strong> Press <code>B</code> to cycle through buttons. The Fork button is near the top of the page, after the Watch and Star buttons.</li>
+<li><strong>VoiceOver users:</strong> Use <code>VO+U</code> to open the Buttons rotor and navigate to &quot;Fork.&quot;</li>
+</ul>
+</li>
+<li>GitHub shows a &quot;Create a new fork&quot; page. The defaults are correct:<ul>
+<li><strong>Owner:</strong> your username</li>
+<li><strong>Repository name:</strong> <code>accessibility-agents</code></li>
+<li><strong>Copy the main branch only:</strong> checked (leave this checked)</li>
+</ul>
+</li>
+<li>Activate <strong>Create fork</strong>.</li>
+<li>GitHub redirects you to your fork: <code>github.com/your-username/accessibility-agents</code>.</li>
+</ol>
+<p>You now have your own copy. The original repository at <code>Community-Access/accessibility-agents</code> is untouched.</p>
+<h3 id="using-github-cli">Using GitHub CLI</h3>
+<pre><code class="hljs language-bash">gh repo fork Community-Access/accessibility-agents --<span class="hljs-built_in">clone</span>=<span class="hljs-literal">false</span></code></pre>
+<p>This creates the fork on GitHub without cloning it locally. We will clone in the next step.</p>
+<hr>
+<h2 id="4-step-2-clone-your-fork-locally">4. Step 2: Clone Your Fork Locally</h2>
+<p>Now download your fork to your computer so you can work on it.</p>
+<h3 id="using-vs-code">Using VS Code</h3>
+<ol>
+<li>Open VS Code.</li>
+<li>Open the command palette: <code>Ctrl+Shift+P</code> (or <code>Cmd+Shift+P</code>).</li>
+<li>Type &quot;Git: Clone&quot; and press <code>Enter</code>.</li>
+<li>Paste your fork URL: <code>https://github.com/your-username/accessibility-agents.git</code> (replace <code>your-username</code> with your GitHub username).</li>
+<li>Choose a folder (for example, <code>Documents</code>) and confirm.</li>
+<li>When the clone finishes, VS Code offers to open the repository. Accept.</li>
+</ol>
+<h3 id="using-the-terminal">Using the terminal</h3>
+<pre><code class="hljs language-bash">git <span class="hljs-built_in">clone</span> https://github.com/your-username/accessibility-agents.git
+<span class="hljs-built_in">cd</span> accessibility-agents</code></pre>
+<h3 id="using-github-desktop">Using GitHub Desktop</h3>
+<ol>
+<li>Open GitHub Desktop.</li>
+<li>Go to File, then Clone repository.</li>
+<li>Select the <strong>GitHub.com</strong> tab and find <code>your-username/accessibility-agents</code>.</li>
+<li>Choose a local path and click Clone.</li>
+</ol>
+<h3 id="using-github-cli">Using GitHub CLI</h3>
+<pre><code class="hljs language-bash">gh repo <span class="hljs-built_in">clone</span> your-username/accessibility-agents
+<span class="hljs-built_in">cd</span> accessibility-agents</code></pre>
+<p>After cloning, your local repository has one remote called <code>origin</code> that points to your fork.</p>
+<h3 id="learning-cards-cloning-your-fork">Learning Cards: Cloning Your Fork</h3>
+<details>
+<summary>Screen reader users</summary>
+
+<ul>
+<li>Use <code>Ctrl+Shift+P</code> then &quot;Git: Clone&quot; and paste your fork URL -- VS Code announces progress and opens the repository when done</li>
+<li>After cloning, press <code>Ctrl+Shift+E</code> to open the Explorer and verify the file tree loaded correctly</li>
+<li>Run <code>git remote -v</code> in the terminal (<code>Ctrl+\``) to confirm </code>origin` points to your fork URL</li>
+</ul>
+</details>
+
+<details>
+<summary>Low vision users</summary>
+
+<ul>
+<li>After cloning, the Explorer sidebar populates with the repository files -- increase sidebar width by dragging its edge for better readability</li>
+<li>The VS Code title bar shows the repository folder name, confirming which project is open</li>
+<li>Use <code>Ctrl+P</code> to quick-open any file by name if the file tree is hard to navigate at high zoom</li>
+</ul>
+</details>
+
+<details>
+<summary>Sighted users</summary>
+
+<ul>
+<li>After cloning, the Explorer sidebar shows the full file tree; the title bar displays the folder name</li>
+<li>Look for the blue &quot;Open Folder&quot; notification or the repository name in the bottom Status Bar to confirm the clone succeeded</li>
+<li>The Source Control panel (<code>Ctrl+Shift+G</code>) should show the repository with <code>main</code> as the current branch</li>
+</ul>
+</details>
+
+<hr>
+<h2 id="5-step-3-add-the-upstream-remote">5. Step 3: Add the Upstream Remote</h2>
+<blockquote>
+<p><strong>See also:</strong> <a href="appendix-e-advanced-git.html">Appendix E: Advanced Git</a> for advanced remote and upstream management.</p>
+</blockquote>
+<p>Your clone knows about your fork (<code>origin</code>). It does not know about the original repository. You need to add it as a second remote called <code>upstream</code>.</p>
+<h3 id="why-this-matters">Why this matters</h3>
+<p>Without the upstream remote, you cannot:</p>
+<ul>
+<li>Pull new changes that other contributors make to the original repository</li>
+<li>Keep your fork up to date</li>
+<li>Verify your changes work with the latest code</li>
+</ul>
+<h3 id="add-the-upstream-remote">Add the upstream remote</h3>
+<pre><code class="hljs language-bash">git remote add upstream https://github.com/Community-Access/accessibility-agents.git</code></pre>
+<h3 id="verify-your-remotes">Verify your remotes</h3>
+<pre><code class="hljs language-bash">git remote -v</code></pre>
+<p>You should see:</p>
+<pre><code class="hljs language-text">origin    https://github.com/your-username/accessibility-agents.git (fetch)
+origin    https://github.com/your-username/accessibility-agents.git (push)
+upstream  https://github.com/Community-Access/accessibility-agents.git (fetch)
+upstream  https://github.com/Community-Access/accessibility-agents.git (push)</code></pre>
+<p>Two remotes: <code>origin</code> (your fork) and <code>upstream</code> (the original).</p>
+<blockquote>
+<p><strong>In VS Code:</strong> You can also add the remote using the command palette. Press <code>Ctrl+Shift+P</code>, type &quot;Git: Add Remote,&quot; enter <code>upstream</code> as the name, and paste the upstream URL.</p>
+</blockquote>
+<hr>
+<h2 id="6-step-4-create-a-feature-branch">6. Step 4: Create a Feature Branch</h2>
+<p>Never work directly on the <code>main</code> branch of your fork. Always create a feature branch for each change. This keeps <code>main</code> clean and in sync with the upstream.</p>
+<h3 id="create-and-switch-to-a-new-branch">Create and switch to a new branch</h3>
+<pre><code class="hljs language-bash">git checkout -b agents/your-username-my-agent</code></pre>
+<p>The branch name <code>agents/your-username-my-agent</code> follows the workshop convention for Day 2 capstone branches. Replace <code>your-username</code> with your GitHub username and <code>my-agent</code> with a short name for your agent.</p>
+<h3 id="in-vs-code">In VS Code</h3>
+<ol>
+<li>Click the branch name in the bottom-left status bar (or press <code>Ctrl+Shift+P</code> and type &quot;Git: Create Branch&quot;).</li>
+<li>Type the branch name: <code>agents/your-username-my-agent</code>.</li>
+<li>Press <code>Enter</code>. VS Code creates the branch and switches to it.</li>
+</ol>
+<h3 id="in-github-desktop">In GitHub Desktop</h3>
+<ol>
+<li>Click the <strong>Current Branch</strong> dropdown.</li>
+<li>Click <strong>New Branch</strong>.</li>
+<li>Type the branch name and click <strong>Create Branch</strong>.</li>
+</ol>
+<h3 id="verify-you-are-on-the-new-branch">Verify you are on the new branch</h3>
+<pre><code class="hljs language-bash">git branch</code></pre>
+<p>The current branch has an asterisk (<code>*</code>) next to it.</p>
+<hr>
+<h2 id="7-step-5-make-your-changes">7. Step 5: Make Your Changes</h2>
+<p>Now you are on your feature branch and ready to work. For the capstone, you will create an agent file. For other contributions, you might edit documentation, fix a bug, or add a feature.</p>
+<h3 id="general-principles-for-contributing">General principles for contributing</h3>
+<ul>
+<li><strong>Keep changes focused.</strong> One branch, one purpose. If you want to make two unrelated changes, use two branches and two pull requests.</li>
+<li><strong>Follow the project&#39;s conventions.</strong> Look at existing files for patterns in naming, formatting, and structure.</li>
+<li><strong>Write meaningful commit messages.</strong> Describe what you changed and why. &quot;Fix typo in README&quot; is clear. &quot;Update files&quot; is not.</li>
+</ul>
+<h3 id="stage-and-commit-your-changes">Stage and commit your changes</h3>
+<p>After editing:</p>
+<pre><code class="hljs language-bash">git add your-file.md
+git commit -m <span class="hljs-string">&quot;Add my-agent accessibility agent&quot;</span></code></pre>
+<p>Or stage all changed files:</p>
+<pre><code class="hljs language-bash">git add .
+git commit -m <span class="hljs-string">&quot;Add my-agent accessibility agent&quot;</span></code></pre>
+<h3 id="in-vs-code">In VS Code</h3>
+<ol>
+<li>Open the Source Control panel: <code>Ctrl+Shift+G</code> (or <code>Cmd+Shift+G</code>).</li>
+<li>Changed files appear under &quot;Changes.&quot; Click the <code>+</code> icon next to each file to stage it, or click <code>+</code> on the &quot;Changes&quot; header to stage all.<ul>
+<li><strong>Screen reader users:</strong> Navigate to the Source Control view. Each changed file is listed. Press <code>Enter</code> on a file to see the diff. Use the inline actions to stage.</li>
+</ul>
+</li>
+<li>Type your commit message in the text field at the top.</li>
+<li>Press <code>Ctrl+Enter</code> (or <code>Cmd+Enter</code>) to commit.</li>
+</ol>
+<h3 id="multiple-commits-are-fine">Multiple commits are fine</h3>
+<p>You do not need to make all your changes in a single commit. In fact, smaller commits are better because they are easier to review and easier to revert if something goes wrong.</p>
+<hr>
+<h2 id="8-step-6-push-to-your-fork">8. Step 6: Push to Your Fork</h2>
+<p>Your commits are saved locally. Now push them to your fork on GitHub.</p>
+<h3 id="first-push-new-branch">First push (new branch)</h3>
+<pre><code class="hljs language-bash">git push -u origin agents/your-username-my-agent</code></pre>
+<p>The <code>-u</code> flag sets up tracking so future pushes from this branch go to the right place automatically.</p>
+<h3 id="subsequent-pushes">Subsequent pushes</h3>
+<pre><code class="hljs language-bash">git push</code></pre>
+<h3 id="in-vs-code">In VS Code</h3>
+<p>After committing, the Source Control panel shows a <strong>Sync Changes</strong> button (or a cloud icon with an up arrow). Click it to push.</p>
+<p>Alternatively, use the command palette: <code>Ctrl+Shift+P</code>, type &quot;Git: Push.&quot;</p>
+<h3 id="in-github-desktop">In GitHub Desktop</h3>
+<p>After committing, click the <strong>Push origin</strong> button in the top bar.</p>
+<h3 id="verify-on-github">Verify on GitHub</h3>
+<p>After pushing, visit your fork on GitHub: <code>github.com/your-username/accessibility-agents</code>. You should see a banner saying &quot;your-username-my-agent had recent pushes&quot; with a <strong>Compare and pull request</strong> button.</p>
+<hr>
+<h2 id="9-step-7-open-a-pull-request">9. Step 7: Open a Pull Request</h2>
+<p>A pull request asks the upstream maintainers to merge your branch into their repository.</p>
+<h3 id="from-the-githubcom-banner">From the GitHub.com banner</h3>
+<ol>
+<li>After pushing, GitHub shows a yellow banner on your fork with a <strong>Compare and pull request</strong> button. Click it.</li>
+<li>GitHub opens the &quot;Open a pull request&quot; page. Verify:<ul>
+<li><strong>Base repository:</strong> <code>Community-Access/accessibility-agents</code></li>
+<li><strong>Base branch:</strong> <code>main</code></li>
+<li><strong>Head repository:</strong> <code>your-username/accessibility-agents</code></li>
+<li><strong>Compare branch:</strong> <code>agents/your-username-my-agent</code></li>
+</ul>
+</li>
+<li>Write a descriptive title. Example: &quot;Add document-contrast-checker agent.&quot;</li>
+<li>In the body, explain:<ul>
+<li>What your change does</li>
+<li>Why it is useful</li>
+<li>Any testing you did</li>
+<li>Reference any related issues with <code>Closes #XX</code> if applicable</li>
+</ul>
+</li>
+<li>If the project has a PR template, fill in all the required sections.</li>
+<li>Activate <strong>Create pull request</strong>.</li>
+</ol>
+<h3 id="from-the-pull-requests-tab">From the Pull Requests tab</h3>
+<ol>
+<li>Go to the upstream repository: <a href="https://github.com/Community-Access/accessibility-agents">github.com/Community-Access/accessibility-agents</a>.</li>
+<li>Click the <strong>Pull requests</strong> tab.</li>
+<li>Click <strong>New pull request</strong>.</li>
+<li>Click <strong>compare across forks</strong>.</li>
+<li>Set the head repository to your fork and the compare branch to your feature branch.</li>
+<li>Click <strong>Create pull request</strong> and fill in the details.</li>
+</ol>
+<h3 id="using-github-cli">Using GitHub CLI</h3>
+<pre><code class="hljs language-bash">gh <span class="hljs-built_in">pr</span> create --repo Community-Access/accessibility-agents --title <span class="hljs-string">&quot;Add document-contrast-checker agent&quot;</span> --body <span class="hljs-string">&quot;Description of what the agent does and why it is useful.&quot;</span></code></pre>
+<blockquote>
+<p><strong>Screen reader tip:</strong> The PR creation form is a standard web form. Navigate with <code>Tab</code> to move between fields. The title field and body field are <code>&lt;input&gt;</code> and <code>&lt;textarea&gt;</code> elements. The base and compare dropdowns use ARIA listbox patterns.</p>
+</blockquote>
+<h3 id="learning-cards-opening-a-pull-request">Learning Cards: Opening a Pull Request</h3>
+<details>
+<summary>Screen reader users</summary>
+
+<ul>
+<li>The PR form has a title input and a body textarea -- <code>Tab</code> between them; your screen reader announces field labels</li>
+<li>The base and compare branch dropdowns use ARIA listbox patterns -- press <code>Down Arrow</code> to open and select branches</li>
+<li>After submitting, GitHub navigates to the new PR page; press <code>h</code> to jump by headings and find the &quot;Files changed&quot; section</li>
+</ul>
+</details>
+
+<details>
+<summary>Low vision users</summary>
+
+<ul>
+<li>The &quot;Compare and pull request&quot; yellow banner appears at the top of your fork page after pushing -- it is a large, visible button</li>
+<li>Use browser zoom (<code>Ctrl+=</code>) to enlarge the PR creation form if the text inputs are too small</li>
+<li>The base and head repository/branch selectors appear near the top of the form -- verify these before submitting</li>
+</ul>
+</details>
+
+<details>
+<summary>Sighted users</summary>
+
+<ul>
+<li>After pushing, look for the yellow &quot;Compare and pull request&quot; banner at the top of your fork&#39;s GitHub page</li>
+<li>Verify the base repository and branch (upstream/main) and head repository (your fork) are correct in the dropdown selectors</li>
+<li>The PR creation form preview tab shows how your Markdown description will render -- check it before submitting</li>
+</ul>
+</details>
+
+<hr>
+<h2 id="10-step-8-respond-to-review-feedback">10. Step 8: Respond to Review Feedback</h2>
+<p>After you open a pull request, maintainers and peers will review your changes. They may:</p>
+<ul>
+<li><strong>Approve</strong> - your PR is ready to merge</li>
+<li><strong>Request changes</strong> - you need to update your PR</li>
+<li><strong>Comment</strong> - ask questions or suggest improvements without formally requesting changes</li>
+</ul>
+<h3 id="how-to-respond-to-requested-changes">How to respond to requested changes</h3>
+<ol>
+<li>Read each review comment carefully. Understand what the reviewer is asking.</li>
+<li>Make the requested changes in your local clone.</li>
+<li>Stage, commit, and push:</li>
+</ol>
+<pre><code class="hljs language-bash">git add modified-file.md
+git commit -m <span class="hljs-string">&quot;Address review feedback: improve guardrails section&quot;</span>
+git push</code></pre>
+<ol start="4">
+<li>Your new commits automatically appear in the open pull request. The reviewer is notified.</li>
+<li>Reply to each review comment explaining what you changed, or ask clarifying questions if the feedback is unclear.</li>
+</ol>
+<h3 id="review-etiquette">Review etiquette</h3>
+<ul>
+<li><strong>Thank the reviewer.</strong> They spent time reading your code.</li>
+<li><strong>Address every comment.</strong> Even if you disagree, explain your reasoning.</li>
+<li><strong>Do not take feedback personally.</strong> Review is about the code, not about you.</li>
+<li><strong>Ask questions.</strong> If you do not understand a comment, ask. Reviewers expect questions from new contributors.</li>
+</ul>
+<blockquote>
+<p><strong>The Day 1 connection:</strong> You practiced code review in <a href="15-code-review.html">Chapter 15</a>. The same principles apply here, but now you are on the other side -- receiving feedback instead of giving it.</p>
+</blockquote>
+<hr>
+<h2 id="11-keeping-your-fork-in-sync">11. Keeping Your Fork in Sync</h2>
+<p>Over time, other people&#39;s changes get merged into the upstream repository. Your fork does not update automatically. You need to sync it.</p>
+<h3 id="sync-from-the-command-line">Sync from the command line</h3>
+<pre><code class="hljs language-bash"><span class="hljs-comment"># Make sure you are on main</span>
+git checkout main
+
+<span class="hljs-comment"># Download the latest changes from upstream</span>
+git fetch upstream
+
+<span class="hljs-comment"># Merge upstream changes into your local main</span>
+git merge upstream/main
+
+<span class="hljs-comment"># Push the updated main to your fork</span>
+git push origin main</code></pre>
+<h3 id="sync-from-githubcom">Sync from GitHub.com</h3>
+<ol>
+<li>Go to your fork on GitHub.</li>
+<li>If your fork is behind the upstream, GitHub shows a banner: &quot;This branch is X commits behind Community-Access:main.&quot;</li>
+<li>Click <strong>Sync fork</strong>, then <strong>Update branch</strong>.</li>
+</ol>
+<h3 id="sync-from-github-cli">Sync from GitHub CLI</h3>
+<pre><code class="hljs language-bash">gh repo <span class="hljs-built_in">sync</span> your-username/accessibility-agents</code></pre>
+<h3 id="when-to-sync">When to sync</h3>
+<ul>
+<li><strong>Before starting new work:</strong> Always sync before creating a new feature branch. This ensures your branch starts from the latest code.</li>
+<li><strong>Before opening a PR:</strong> Sync and merge <code>main</code> into your feature branch to check for conflicts before asking for review.</li>
+<li><strong>Periodically:</strong> If you are working on a long-running branch, sync weekly to avoid large conflicts.</li>
+</ul>
+<h3 id="learning-cards-keeping-your-fork-in-sync">Learning Cards: Keeping Your Fork in Sync</h3>
+<details>
+<summary>Screen reader users</summary>
+
+<ul>
+<li>Run <code>git fetch upstream</code> then <code>git merge upstream/main</code> in the terminal -- listen for &quot;Already up to date&quot; or a merge summary announcing new commits</li>
+<li>Use <code>git status</code> after syncing to confirm your local <code>main</code> is not behind the upstream</li>
+<li>On GitHub.com, the &quot;Sync fork&quot; button is near the top of your fork page; press <code>Tab</code> to reach it and <code>Enter</code> to activate</li>
+</ul>
+</details>
+
+<details>
+<summary>Low vision users</summary>
+
+<ul>
+<li>On GitHub.com, the &quot;Sync fork&quot; button appears below the repository description with a dropdown showing how many commits behind you are</li>
+<li>After syncing, the Status Bar in VS Code shows no up/down arrows next to the branch name, confirming you are in sync</li>
+<li>If a merge conflict occurs during sync, VS Code highlights conflicts with colored backgrounds (green = yours, blue = upstream)</li>
+</ul>
+</details>
+
+<details>
+<summary>Sighted users</summary>
+
+<ul>
+<li>On GitHub.com, look for the &quot;Sync fork&quot; button below the green Code button -- it shows &quot;N commits behind&quot; if your fork is out of date</li>
+<li>Click &quot;Update branch&quot; in the dropdown to sync your fork with one click</li>
+<li>In VS Code, the sync icon (circular arrows) next to the branch name in the Status Bar performs fetch + merge in one action</li>
+</ul>
+</details>
+
+<hr>
+<h2 id="12-the-fork-workflow-checklist">12. The Fork Workflow Checklist</h2>
+<p>Use this checklist every time you contribute to a repository you do not own:</p>
+<ul>
+<li><input type="checkbox" disabled> <input aria-label="Fork the repository on GitHub" disabled="" type="checkbox"> Fork the repository on GitHub</li>
+<li><input type="checkbox" disabled> <input aria-label="Clone your fork locally" disabled="" type="checkbox"> Clone your fork locally</li>
+<li><input type="checkbox" disabled> <input aria-label="Add the upstream remote (" disabled="" type="checkbox"> Add the upstream remote (<code>git remote add upstream URL</code>)</li>
+<li><input type="checkbox" disabled> <input aria-label="Create a feature branch (" disabled="" type="checkbox"> Create a feature branch (<code>git checkout -b branch-name</code>)</li>
+<li><input type="checkbox" disabled> <input aria-label="Make your changes, stage, and commit" disabled="" type="checkbox"> Make your changes, stage, and commit</li>
+<li><input type="checkbox" disabled> <input aria-label="Push your branch to your fork (" disabled="" type="checkbox"> Push your branch to your fork (<code>git push -u origin branch-name</code>)</li>
+<li><input type="checkbox" disabled> <input aria-label="Open a pull request from your fork to the upstream" disabled="" type="checkbox"> Open a pull request from your fork to the upstream</li>
+<li><input type="checkbox" disabled> <input aria-label="Respond to review feedback with additional commits" disabled="" type="checkbox"> Respond to review feedback with additional commits</li>
+<li><input type="checkbox" disabled> <input aria-label="After merge, sync your fork (" disabled="" type="checkbox"> After merge, sync your fork (<code>git fetch upstream &amp;&amp; git merge upstream/main</code>)</li>
+<li><input type="checkbox" disabled> <input aria-label="Delete the feature branch (locally and on your fork)" disabled="" type="checkbox"> Delete the feature branch (locally and on your fork)</li>
+</ul>
+<h3 id="cleaning-up-after-merge">Cleaning up after merge</h3>
+<p>After your PR is merged, delete the feature branch:</p>
+<pre><code class="hljs language-bash"><span class="hljs-comment"># Delete the local branch</span>
+git checkout main
+git branch -d agents/your-username-my-agent
+
+<span class="hljs-comment"># Delete the remote branch on your fork</span>
+git push origin --delete agents/your-username-my-agent</code></pre>
+<p>GitHub also offers a &quot;Delete branch&quot; button on the merged PR page.</p>
+<hr>
+<h2 id="13-if-you-get-stuck">13. If You Get Stuck</h2>
+<table>
+<thead>
+<tr>
+<th scope="col">Problem</th>
+<th scope="col">What to do</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Fork button is grayed out</td>
+<td>You may not be signed in. Sign in to GitHub.com first.</td>
+</tr>
+<tr>
+<td>Clone fails with permission error</td>
+<td>Make sure you are cloning your fork (your-username/repo), not the upstream. You do not have write access to the upstream.</td>
+</tr>
+<tr>
+<td><code>git remote -v</code> shows only origin</td>
+<td>Run <code>git remote add upstream URL</code> from Section 5.</td>
+</tr>
+<tr>
+<td>Push fails with &quot;permission denied&quot;</td>
+<td>You are probably trying to push to the upstream instead of your fork. Check <code>git remote -v</code> and push to <code>origin</code>.</td>
+</tr>
+<tr>
+<td>PR shows conflicts with main</td>
+<td>Sync your fork (Section 11), merge main into your branch, resolve conflicts, push again.</td>
+</tr>
+<tr>
+<td>Reviewer requested changes but I do not understand</td>
+<td>Reply to the review comment with a question. Reviewers expect questions from new contributors.</td>
+</tr>
+<tr>
+<td>&quot;Repository not found&quot; when cloning</td>
+<td>Double-check the URL. Make sure the fork exists under your account.</td>
+</tr>
+<tr>
+<td>Accidentally committed to main instead of a branch</td>
+<td>Check <a href="appendix-e-advanced-git.html">Appendix E</a> for how to move commits to a new branch.</td>
+</tr>
+<tr>
+<td>I finished but I am not sure I did it right</td>
+<td>Compare your work against the <a href="solutions/solution-15-agents.html">Challenge 15 reference solution</a> (for agent discovery) or the <a href="solutions/solution-16-capstone.html">Challenge 16 reference solution</a> (for the capstone). Your version does not need to match exactly.</td>
+</tr>
+</tbody></table>
+<hr>
+<p><em>Next: <a href="19-accessibility-agents.html">Chapter 19: Accessibility Agents</a></em><br><em>Back: <a href="17-issue-templates.html">Chapter 17: Issue Templates</a></em><br><em>Related appendices: <a href="appendix-e-advanced-git.html">Appendix E: Advanced Git</a> | <a href="appendix-o-branch-protection.html">Appendix O: Branch Protection</a></em></p>
+
+  </main>
+  <footer role="contentinfo" class="site-footer">
+    <p><strong>GIT Going with GitHub</strong> - A workshop by <a href="https://community-access.org">Community Access</a></p>
+    <p><a href="https://github.com/community-access/git-going-with-github">View on GitHub</a> · <a href="https://community-access.org">community-access.org</a></p>
+  </footer>
+  </body>
+</html>

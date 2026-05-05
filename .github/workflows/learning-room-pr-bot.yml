@@ -5,11 +5,13 @@ on:
   pull_request:
     types: [opened, edited, synchronize, reopened]
     paths:
-      - 'learning-room/**'
+      - "learning-room/**"
   pull_request_review:
     types: [submitted]
   issue_comment:
     types: [created]
+  issues:
+    types: [opened]
 
 permissions:
   contents: read
@@ -18,11 +20,55 @@ permissions:
   statuses: write
 
 jobs:
+  welcome-issue-timer:
+    name: Welcome to Your First Issue
+    runs-on: ubuntu-latest
+    if: github.event_name == 'issues' && github.event.action == 'opened'
+    steps:
+      - name: Greet First Issue
+        uses: actions/github-script@v7
+        with:
+          script: |
+            try {
+              const { data: issues } = await github.rest.issues.listForRepo({
+                owner: context.repo.owner,
+                repo: context.repo.repo,
+                state: 'all',
+                creator: context.payload.issue.user.login
+              });
+              
+              // Only count actual issues (exclude PRs which are also treated as issues in the API sometimes, though creator filter helps)
+              const firstIssue = issues.filter(i => !i.pull_request).length === 1;
+
+              if (firstIssue) {
+                const welcomeBody = [
+                  '## Workspace Agent Aria: Welcome to Your First Issue',
+                  '',
+                  'Hi @' + context.payload.issue.user.login + '! I am Aria. Great job successfully opening an Issue!',
+                  '',
+                  'Remember, a good Issue for a human is also a perfect **prompt** for an AI. By carefully describing the problem here, you are already practicing how to command your custom Capstone Agent tomorrow!',
+                  '',
+                  'Keep up the great work!',
+                  '---',
+                  '*This is an automated message from Aria, your Workshop Agent.*'
+                ].join('\n');
+
+                await github.rest.issues.createComment({
+                  owner: context.repo.owner,
+                  repo: context.repo.repo,
+                  issue_number: context.payload.issue.number,
+                  body: welcomeBody
+                });
+              }
+            } catch (error) {
+              console.error('Error verifying first issue:', error);
+            }
+
   welcome-first-timer:
     name: Welcome First-Time Contributors
     runs-on: ubuntu-latest
     if: github.event_name == 'pull_request' && github.event.action == 'opened'
-    
+
     steps:
       - name: Check if first-time contributor
         uses: actions/github-script@v7
@@ -60,7 +106,7 @@ jobs:
                   '**Remember:** Every experienced contributor started exactly where you are now. Questions are welcome!',
                   '',
                   '---',
-                  '*This is an automated message from the Learning Room Bot. Need help? Mention @facilitator in a comment.*'
+                  '*This is an automated message from the Aria the Workshop Agent. Need help? Mention @facilitator in a comment.*'
                 ].join('\n');
 
                 await github.rest.issues.createComment({
@@ -86,7 +132,7 @@ jobs:
     name: Validate PR Requirements
     runs-on: ubuntu-latest
     if: github.event_name == 'pull_request'
-    
+
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
@@ -96,7 +142,7 @@ jobs:
       - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
-          node-version: '20'
+          node-version: "20"
 
       - name: Install dependencies
         run: npm ci
@@ -121,7 +167,7 @@ jobs:
             const fs = require('fs');
             const { buildValidationReportBody } = require('./.github/scripts/validation-report.js');
             let results;
-            
+
             try {
               if (!fs.existsSync('validation-results.json')) {
                 console.log('Warning: validation-results.json not found, creating default response');
@@ -155,19 +201,19 @@ jobs:
             }
 
             const body = buildValidationReportBody(results);
-            
+
             // Find and update existing bot comment, or create new one
             const { data: comments } = await github.rest.issues.listComments({
               owner: context.repo.owner,
               repo: context.repo.repo,
               issue_number: context.payload.pull_request.number
             });
-            
+
             const botComment = comments.find(comment => 
               comment.user.type === 'Bot' && 
               comment.body.includes('PR Validation Report')
             );
-            
+
             if (botComment) {
               await github.rest.issues.updateComment({
                 owner: context.repo.owner,
@@ -183,7 +229,7 @@ jobs:
                 body: body
               });
             }
-            
+
             // Apply labels
             const labels = ['documentation'];
             if (!results.passed) {
@@ -192,7 +238,7 @@ jobs:
             if (results.accessibility.some(a => a.type === 'error')) {
               labels.push('accessibility');
             }
-            
+
             await github.rest.issues.addLabels({
               owner: context.repo.owner,
               repo: context.repo.repo,
@@ -211,12 +257,12 @@ jobs:
               return;
             }
             const results = JSON.parse(fs.readFileSync('validation-results.json', 'utf8'));
-            
+
             const state = results.passed ? 'success' : 'failure';
             const description = results.passed 
               ? 'All validation checks passed!' 
               : 'Some validation checks need attention';
-            
+
             await github.rest.repos.createCommitStatus({
               owner: context.repo.owner,
               repo: context.repo.repo,
@@ -224,14 +270,14 @@ jobs:
               state: state,
               target_url: `https://github.com/${context.repo.owner}/${context.repo.repo}/pull/${context.payload.pull_request.number}#issuecomment`,
               description: description,
-              context: 'Learning Room Bot / Validation'
+              context: 'Aria the Workshop Agent / Validation'
             });
 
   celebrate-review:
     name: Celebrate Peer Review
     runs-on: ubuntu-latest
     if: github.event_name == 'pull_request_review' && github.event.review.state == 'approved'
-    
+
     steps:
       - name: Congratulate reviewer
         uses: actions/github-script@v7
@@ -247,7 +293,7 @@ jobs:
               '@' + context.payload.pull_request.user.login + ' \u2014 your PR has been approved! A facilitator will merge it soon.',
               '',
               '---',
-              '*Learning Room Bot celebrates your collaboration*'
+              '*Aria the Workshop Agent celebrates your collaboration*'
             ].join('\n');
 
             await github.rest.issues.createComment({
@@ -260,8 +306,8 @@ jobs:
   respond-to-questions:
     name: Respond to Common Questions
     runs-on: ubuntu-latest
-    if: github.event_name == 'issue_comment' && github.event.issue.pull_request
-    
+    if: github.event_name == 'issue_comment'
+
     steps:
       - name: Auto-respond to keywords
         uses: actions/github-script@v7
@@ -270,17 +316,17 @@ jobs:
             const { getAutoResponse } = require('./.github/scripts/comment-responder.js');
             const comment = context.payload.comment.body.toLowerCase();
             const author = context.payload.comment.user.login;
-            
+
             // Don't respond to bots
             if (context.payload.comment.user.type === 'Bot') return;
-            
+
             const response = getAutoResponse(comment, author);
-            
+
             if (response) {
               await github.rest.issues.createComment({
                 owner: context.repo.owner,
                 repo: context.repo.repo,
                 issue_number: context.payload.issue.number,
-                body: response + '\n\n---\n*Auto-response from Learning Room Bot*'
+                body: response + '\n\n---\n*Auto-response from Aria 🤖, your friendly Workshop Agent*'
               });
             }

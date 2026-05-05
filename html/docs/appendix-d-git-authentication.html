@@ -5,9 +5,9 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="description" content="GIT Going with GitHub - A two-day accessible open source workshop by Community Access">
   <title>Appendix D: Git Authentication - GIT Going with GitHub</title>
-  <link rel="stylesheet" href="../styles/github-markdown.css">
-  <link rel="stylesheet" href="../styles/highlight.css">
-  <link rel="stylesheet" href="../styles/custom.css">
+  <link rel="stylesheet" href="./styles/github-markdown.css">
+  <link rel="stylesheet" href="./styles/highlight.css">
+  <link rel="stylesheet" href="./styles/custom.css">
   <style>
     .markdown-body {
       box-sizing: border-box;
@@ -28,7 +28,7 @@
   <header class="site-header" role="banner">
     <div class="site-header-inner">
       <nav aria-label="Breadcrumb" class="breadcrumb">
-        <a href="../index.html">Home</a> <span aria-hidden="true">›</span> <span aria-current="page">Appendix D: Git Authentication</span>
+        <a href="./index.html">Home</a> <span aria-hidden="true">›</span> <span aria-current="page">Appendix D: Git Authentication</span>
       </nav>
       <div class="header-actions">
         <a href="https://github.com/Community-Access/git-going-with-github/wiki" class="wiki-link" target="_blank" rel="noopener noreferrer">
@@ -37,7 +37,7 @@
           </svg>
           Wiki
         </a>
-        <form role="search" class="search-form" action="../search.html" method="get">
+        <form role="search" class="search-form" action="./search.html" method="get">
         <label for="site-search" class="search-label">Search docs</label>
         <input
           type="search"
@@ -62,10 +62,46 @@
 <blockquote>
 <p><strong>Listen to Episode 21:</strong> <a href="../PODCASTS.html">Git Authentication</a> - a conversational audio overview of this chapter. Listen before reading to preview the concepts, or after to reinforce what you learned.</p>
 </blockquote>
+<blockquote>
+<p><strong>Reference companion to:</strong> <a href="00-pre-workshop-setup.html">Chapter 00: Pre-Workshop Setup</a> | Also relevant: <a href="14-git-in-practice.html">Chapter 14</a></p>
+<p><strong>Authoritative source:</strong> <a href="https://docs.github.com/en/get-started/getting-started-with-git/set-up-git#authenticating-with-github-from-git">GitHub Docs: Authenticating with GitHub from Git</a></p>
+</blockquote>
 <h2 id="ssh-keys-amp-personal-access-tokens">SSH Keys &amp; Personal Access Tokens</h2>
 <blockquote>
 <p><strong>Audience:</strong> This appendix is for contributors who need to configure Git authentication for push access. If you&#39;re working entirely through the GitHub web interface or GitHub Desktop, you can skip this. If you&#39;re using VS Code with Git command line, this becomes relevant when you want to push commits to your fork.</p>
 </blockquote>
+<h3 id="learning-cards-using-this-authentication-reference">Learning Cards: Using This Authentication Reference</h3>
+<details>
+<summary>Screen reader users</summary>
+
+<ul>
+<li>This appendix has two main paths: Personal Access Token (recommended) and SSH Keys -- jump to your chosen method via heading navigation</li>
+<li>Step-by-step instructions are numbered lists -- your screen reader announces &quot;1 of 8,&quot; etc. to track progress</li>
+<li>The Troubleshooting section near the bottom covers the error messages you are most likely to encounter</li>
+</ul>
+</details>
+
+<details>
+<summary>Low vision users</summary>
+
+<ul>
+<li>Command-line examples are in code blocks with high contrast -- increase zoom to read them comfortably</li>
+<li>Each method (PAT vs SSH) is a separate section with its own step-by-step flow</li>
+<li>The &quot;Do not&quot; lists use bold text to highlight security warnings</li>
+</ul>
+</details>
+
+<details>
+<summary>Sighted users</summary>
+
+<ul>
+<li>Start at &quot;Two Authentication Methods&quot; for a pros/cons comparison, then follow the section for your choice</li>
+<li>Code blocks show the exact commands to copy -- use the copy button in the top-right corner on GitHub</li>
+<li>The Troubleshooting section at the bottom is organized by error message</li>
+</ul>
+</details>
+
+
 <h2 id="when-you-need-authentication">When You Need Authentication</h2>
 <p>GitHub requires authentication when you:</p>
 <ul>
@@ -195,6 +231,38 @@ https://github.com/owner/repo.git</code></pre>
 <pre><code class="hljs language-bash">git remote set-url origin git@github.com:your-username/repo.git</code></pre>
 <h3 id="switch-to-https">Switch to HTTPS</h3>
 <pre><code class="hljs language-bash">git remote set-url origin https://github.com/your-username/repo.git</code></pre>
+<h3 id="learning-cards-troubleshooting-authentication">Learning Cards: Troubleshooting Authentication</h3>
+<details>
+<summary>Screen reader users</summary>
+
+<ul>
+<li>Each troubleshooting entry starts with the error message in quotes as an h3 heading -- press 3 to jump between errors</li>
+<li>Solutions include terminal commands in code blocks -- switch to Focus Mode before copying them</li>
+<li>If your error is not listed here, search the GitHub Docs authentication troubleshooting page</li>
+</ul>
+</details>
+
+<details>
+<summary>Low vision users</summary>
+
+<ul>
+<li>Error messages are displayed as bold h3 headings for easy visual scanning</li>
+<li>Solution steps are numbered and include code blocks you can copy directly</li>
+<li>If terminal output is hard to read, paste commands into VS Code&#39;s integrated terminal which respects your theme settings</li>
+</ul>
+</details>
+
+<details>
+<summary>Sighted users</summary>
+
+<ul>
+<li>Scan the h3 headings to find your exact error message</li>
+<li>Each solution starts with the most common fix first -- try that before the alternatives</li>
+<li>The &quot;Security Best Practices&quot; section below is worth skimming after you resolve your issue</li>
+</ul>
+</details>
+
+
 <h2 id="troubleshooting">Troubleshooting</h2>
 <h3 id="quotauthentication-failedquot-when-pushing">&quot;Authentication failed&quot; when pushing</h3>
 <p><strong>Problem:</strong> Your token expired or is incorrect.</p>
@@ -293,7 +361,8 @@ git config --global commit.gpgsign <span class="hljs-literal">true</span></code>
 <li>Use it when VS Code or Git asks for a password</li>
 </ol>
 <p>SSH keys are great for long-term use, but PATs are faster to set up and more accessible for screen reader users during a time-constrained workshop.</p>
-<p><em>Return to: <a href="00-pre-workshop-setup.html">Pre-Workshop Setup</a> | <a href="appendix-u-resources.html">Resources</a></em></p>
+<hr>
+<p><em>Next: <a href="appendix-e-advanced-git.html">Appendix E: Advanced Git</a></em><br><em>Back: <a href="appendix-c-markdown-reference.html">Appendix C: Markdown Reference</a></em><br><em>Teaching chapter: <a href="00-pre-workshop-setup.html">Chapter 00: Pre-Workshop Setup</a></em></p>
 
   </main>
   <footer role="contentinfo" class="site-footer">

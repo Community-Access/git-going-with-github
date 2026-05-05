@@ -527,7 +527,7 @@ Go to the Learning Room repository and do two things:
 
 *Next: [Notifications](10-notifications.md)*
 *Back: [Culture and Etiquette](08-culture-etiquette.md)*
-*Related: [Working with Issues](04-working-with-issues.md) | [Day 1 Agenda](../DAY1_AGENDA.md)*
+*Related: [Working with Issues](04-working-with-issues.md) | [Day 1 Agenda](admin/DAY1_AGENDA.md)*
 
 
 

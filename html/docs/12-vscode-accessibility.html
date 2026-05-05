@@ -1,0 +1,1931 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="GIT Going with GitHub - A two-day accessible open source workshop by Community Access">
+  <title>VS Code: Accessibility Deep Dive - GIT Going with GitHub</title>
+  <link rel="stylesheet" href="./styles/github-markdown.css">
+  <link rel="stylesheet" href="./styles/highlight.css">
+  <link rel="stylesheet" href="./styles/custom.css">
+  <style>
+    .markdown-body {
+      box-sizing: border-box;
+      min-width: 200px;
+      max-width: 980px;
+      margin: 0 auto;
+      padding: 45px;
+    }
+    @media (max-width: 767px) {
+      .markdown-body {
+        padding: 15px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+  <header class="site-header" role="banner">
+    <div class="site-header-inner">
+      <nav aria-label="Breadcrumb" class="breadcrumb">
+        <a href="./index.html">Home</a> <span aria-hidden="true">›</span> <span aria-current="page">VS Code: Accessibility Deep Dive</span>
+      </nav>
+      <div class="header-actions">
+        <a href="https://github.com/Community-Access/git-going-with-github/wiki" class="wiki-link" target="_blank" rel="noopener noreferrer">
+          <svg aria-hidden="true" focusable="false" width="16" height="16" viewBox="0 0 16 16" fill="currentColor">
+            <path d="M1.75 1h8.5c.966 0 1.75.784 1.75 1.75v5.5A1.75 1.75 0 0 1 10.25 10H7.06l-2.573 2.573A1.458 1.458 0 0 1 2 11.543V10h-.25A1.75 1.75 0 0 1 0 8.25v-5.5C0 1.784.784 1 1.75 1ZM1.5 2.75v5.5c0 .138.112.25.25.25h1a.75.75 0 0 1 .75.75v2.19l2.72-2.72a.749.749 0 0 1 .53-.22h3.5a.25.25 0 0 0 .25-.25v-5.5a.25.25 0 0 0-.25-.25h-8.5a.25.25 0 0 0-.25.25Zm13 2a.25.25 0 0 0-.25-.25h-.5a.75.75 0 0 1 0-1.5h.5c.966 0 1.75.784 1.75 1.75v5.5A1.75 1.75 0 0 1 14.25 12H14v1.543a1.457 1.457 0 0 1-2.487 1.03L9.22 12.28a.749.749 0 1 1 1.06-1.06l2.22 2.22v-2.19a.75.75 0 0 1 .75-.75h.25a.25.25 0 0 0 .25-.25v-5.5Z"/>
+          </svg>
+          Wiki
+        </a>
+        <form role="search" class="search-form" action="./search.html" method="get">
+        <label for="site-search" class="search-label">Search docs</label>
+        <input
+          type="search"
+          id="site-search"
+          class="search-input"
+          name="q"
+          placeholder="Search docs…"
+          autocomplete="off"
+          aria-label="Search documentation"
+        >
+        <button type="submit" class="search-button" aria-label="Submit search">
+          <svg aria-hidden="true" focusable="false" width="16" height="16" viewBox="0 0 16 16" fill="currentColor">
+            <path d="M10.68 11.74a6 6 0 0 1-7.922-8.982 6 6 0 0 1 8.982 7.922l3.04 3.04a.749.749 0 0 1-.326 1.275.749.749 0 0 1-.734-.215ZM11.5 7a4.499 4.499 0 1 0-8.997 0A4.499 4.499 0 0 0 11.5 7Z"/>
+          </svg>
+        </button>
+      </form>
+      </div>
+    </div>
+  </header>
+  <main id="main-content" class="markdown-body">
+    <h1 id="vs-code-accessibility-deep-dive">VS Code: Accessibility Deep Dive</h1>
+<blockquote>
+<p><strong>Listen to Episode 11:</strong> <a href="../PODCASTS.html">VS Code Setup and Accessibility</a> - a conversational audio overview covering both <a href="11-vscode-interface.html">Chapter 11</a> and this chapter.</p>
+</blockquote>
+<blockquote>
+<p><strong>Related appendices:</strong> <a href="appendix-g-vscode-reference.html">Appendix G: VS Code Reference</a> | <a href="appendix-b-screen-reader-cheatsheet.html">Appendix B: Screen Reader Cheat Sheet</a>
+<strong>Authoritative sources:</strong> <a href="https://code.visualstudio.com/docs/editor/accessibility">VS Code Docs: Accessibility</a> | <a href="https://accessibility.github.com/documentation/guide/github-copilot-vsc/">GitHub Accessibility: GitHub Copilot in VS Code</a></p>
+</blockquote>
+<h2 id="accessibility-features-for-power-users">Accessibility Features for Power Users</h2>
+<blockquote>
+<p><strong>Challenge 10: Go Local</strong> depends on the accessibility features covered in this chapter. Configure these settings before your first local commit.</p>
+</blockquote>
+<blockquote>
+<p><strong>Day 2, Block 1 Material (continued)</strong></p>
+<p>This chapter covers the accessibility features that make VS Code productive for screen reader users, keyboard-only users, and low-vision users: essential keyboard navigation, the Problems panel, the Terminal, Copilot Chat, Accessible Help/View/Diff, Accessibility Signals, and VS Code Speech.</p>
+<p>For VS Code interface basics (setup, sign-in, Activity Bar, Settings, keyboard shortcuts), see <a href="11-vscode-interface.html">Chapter 11: VS Code Interface and Setup</a>.</p>
+</blockquote>
+<h2 id="table-of-contents">Table of Contents</h2>
+<ol start="12">
+<li><a href="#12-essential-keyboard-navigation-and-findfilter">Essential Keyboard Navigation and Find/Filter</a></li>
+<li><a href="#13-the-problems-panel">The Problems Panel</a></li>
+<li><a href="#14-the-terminal">The Terminal</a></li>
+<li><a href="#15-copilot-chat-window">Copilot Chat Window</a></li>
+<li><a href="#16-accessible-help-accessible-view-and-accessible-diff">Accessible Help, Accessible View, and Accessible Diff</a></li>
+<li><a href="#17-accessibility-signals">Accessibility Signals</a></li>
+<li><a href="#18-vs-code-speech---voice-input-and-output">VS Code Speech - Voice Input and Output</a></li>
+<li><a href="#19-markdown-authoring-in-vs-code">Markdown Authoring in VS Code</a></li>
+<li><a href="#if-you-get-stuck">If You Get Stuck</a></li>
+</ol>
+<h2 id="12-essential-keyboard-navigation-and-findfilter">12. Essential Keyboard Navigation and Find/Filter</h2>
+<h3 id="panels-and-areas">Panels and Areas</h3>
+<blockquote>
+<p><strong>Mac users:</strong> Substitute <code>Cmd</code> for <code>Ctrl</code> and <code>Option</code> for <code>Alt</code> in all shortcuts below.</p>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th scope="col">Area</th>
+<th scope="col">Shortcut (Windows)</th>
+<th scope="col">What Gets Focus</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Explorer (file tree)</td>
+<td><code>Ctrl+Shift+E</code></td>
+<td>Folder/file list</td>
+</tr>
+<tr>
+<td>Search</td>
+<td><code>Ctrl+Shift+F</code></td>
+<td>Search input</td>
+</tr>
+<tr>
+<td>Source Control (Git)</td>
+<td><code>Ctrl+Shift+G</code></td>
+<td>Changes list</td>
+</tr>
+<tr>
+<td>Extensions</td>
+<td><code>Ctrl+Shift+X</code></td>
+<td>Extensions list</td>
+</tr>
+<tr>
+<td>Terminal</td>
+<td><code>Ctrl+`</code></td>
+<td>Terminal input</td>
+</tr>
+<tr>
+<td>Copilot Chat</td>
+<td><code>Ctrl+Shift+I</code></td>
+<td>Chat input</td>
+</tr>
+<tr>
+<td>Command Palette</td>
+<td><code>Ctrl+Shift+P</code></td>
+<td>Command search input</td>
+</tr>
+<tr>
+<td>Editor</td>
+<td><code>Ctrl+1</code></td>
+<td>Active editor file</td>
+</tr>
+<tr>
+<td>Problems panel</td>
+<td><code>Ctrl+Shift+M</code></td>
+<td>List of all errors and warnings</td>
+</tr>
+</tbody></table>
+<h3 id="within-the-editor">Within the Editor</h3>
+<table>
+<thead>
+<tr>
+<th scope="col">Action</th>
+<th scope="col">Shortcut</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Go to beginning of file</td>
+<td><code>Ctrl+Home</code></td>
+</tr>
+<tr>
+<td>Go to end of file</td>
+<td><code>Ctrl+End</code></td>
+</tr>
+<tr>
+<td>Go to line N</td>
+<td><code>Ctrl+G</code> then type line number</td>
+</tr>
+<tr>
+<td>Go to line and column</td>
+<td><code>Ctrl+G</code> then type <code>N:C</code> (e.g., <code>10:5</code>)</td>
+</tr>
+<tr>
+<td>Go to symbol (heading in Markdown)</td>
+<td><code>Ctrl+Shift+O</code></td>
+</tr>
+<tr>
+<td>Go to definition</td>
+<td><code>F12</code></td>
+</tr>
+<tr>
+<td>Find in file</td>
+<td><code>Ctrl+F</code></td>
+</tr>
+<tr>
+<td>Next find result</td>
+<td><code>F3</code></td>
+</tr>
+<tr>
+<td>Previous find result</td>
+<td><code>Shift+F3</code></td>
+</tr>
+<tr>
+<td>Next error or warning</td>
+<td><code>F8</code></td>
+</tr>
+<tr>
+<td>Previous error or warning</td>
+<td><code>Shift+F8</code></td>
+</tr>
+<tr>
+<td>Open file by name</td>
+<td><code>Ctrl+P</code> then type filename</td>
+</tr>
+<tr>
+<td>Toggle word wrap</td>
+<td><code>Alt+Z</code></td>
+</tr>
+<tr>
+<td>Toggle Tab focus mode</td>
+<td><code>Ctrl+M</code> (makes Tab move focus instead of indenting)</td>
+</tr>
+<tr>
+<td>Increase/decrease font size</td>
+<td><code>Ctrl+=</code> / <code>Ctrl+-</code></td>
+</tr>
+<tr>
+<td>Breadcrumb navigation</td>
+<td><code>Ctrl+Shift+;</code> then arrow keys to navigate path segments</td>
+</tr>
+</tbody></table>
+<h3 id="find-in-current-file-ctrlf">Find in Current File (<code>Ctrl+F</code>)</h3>
+<p>When the Find widget opens, three toggle buttons refine what matches:</p>
+<table>
+<thead>
+<tr>
+<th scope="col">Toggle</th>
+<th scope="col">Shortcut</th>
+<th scope="col">What It Does</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Match Case</td>
+<td><code>Alt+C</code></td>
+<td>Limits results to exact uppercase/lowercase</td>
+</tr>
+<tr>
+<td>Match Whole Word</td>
+<td><code>Alt+W</code></td>
+<td>Matches full words only, not substrings</td>
+</tr>
+<tr>
+<td>Use Regular Expression</td>
+<td><code>Alt+R</code></td>
+<td>Enables regex patterns in the search box</td>
+</tr>
+</tbody></table>
+<h4 id="screen-reader-interactions-inside-the-find-widget">Screen reader interactions inside the Find widget</h4>
+<ul>
+<li>Toggles are announced as checkboxes - press <code>Space</code> to toggle each one</li>
+<li>Match count is announced as you type (example: <code>3 of 12 matches</code>)</li>
+<li><code>F3</code> / <code>Shift+F3</code> move through matches while the widget stays open</li>
+<li><code>Escape</code> closes the widget and returns focus to your last cursor position</li>
+</ul>
+<p><strong>Replace (<code>Ctrl+H</code>):</strong> Opens the Find widget with a second input for the replacement text.</p>
+<ul>
+<li><code>Ctrl+Shift+1</code> - replace the current match</li>
+<li><code>Ctrl+Alt+Enter</code> - replace all matches at once</li>
+</ul>
+<h3 id="global-search-across-the-workspace-ctrlshiftf">Global Search Across the Workspace (<code>Ctrl+Shift+F</code>)</h3>
+<p>The global Search panel has a rich filtering system - all keyboard-accessible:</p>
+<table>
+<thead>
+<tr>
+<th scope="col">Action</th>
+<th scope="col">How</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Open global search</td>
+<td><code>Ctrl+Shift+F</code></td>
+</tr>
+<tr>
+<td>Search input</td>
+<td>Focus lands here automatically - type your query</td>
+</tr>
+<tr>
+<td>Toggle case / word / regex</td>
+<td><code>Alt+C</code>, <code>Alt+W</code>, <code>Alt+R</code> (same as Find)</td>
+</tr>
+<tr>
+<td>Include files filter</td>
+<td><code>Tab</code> to &quot;files to include&quot; field then type glob patterns</td>
+</tr>
+<tr>
+<td>Exclude files filter</td>
+<td><code>Tab</code> to &quot;files to exclude&quot; field then type glob patterns</td>
+</tr>
+<tr>
+<td>Collapse all results</td>
+<td><code>Ctrl+Shift+J</code></td>
+</tr>
+<tr>
+<td>Open a result</td>
+<td>Navigate the result tree with <code>Up/Down Arrow</code> then <code>Enter</code> to open</td>
+</tr>
+</tbody></table>
+<h4 id="glob-pattern-examples-for-this-workshop">Glob pattern examples for this workshop</h4>
+<pre><code class="hljs language-text">docs/*.md          - all Markdown files in the docs folder
+*.agent.md         - all agent definition files
+.github/**         - everything inside the .github folder
+!node_modules/**   - exclude node_modules folder</code></pre>
+<h3 id="type-to-filter-in-tree-views">Type-to-Filter in Tree Views</h3>
+<p>In the <strong>Explorer</strong> file tree and the <strong>Source Control</strong> changes list, type characters to narrow visible items:</p>
+<ol>
+<li>Focus the Explorer (<code>Ctrl+Shift+E</code>)</li>
+<li>Start typing a filename - a filter input appears at the bottom of the tree</li>
+<li>The tree instantly narrows to matching files</li>
+<li>Press <code>Escape</code> to clear the filter and restore full view</li>
+</ol>
+<h3 id="go-to-symbol-with-inline-filtering-ctrlshifto">Go to Symbol with Inline Filtering (<code>Ctrl+Shift+O</code>)</h3>
+<p>In any Markdown file, <code>Ctrl+Shift+O</code> opens a symbol picker populated by every heading. Type to narrow the list, then press <code>Enter</code> to jump.</p>
+<h3 id="explorer-file-tree-navigation">Explorer (File Tree) Navigation</h3>
+<table>
+<thead>
+<tr>
+<th scope="col">Action</th>
+<th scope="col">Key</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Navigate items</td>
+<td><code>Up/Down Arrow</code></td>
+</tr>
+<tr>
+<td>Expand folder</td>
+<td><code>Right Arrow</code></td>
+</tr>
+<tr>
+<td>Collapse folder</td>
+<td><code>Left Arrow</code></td>
+</tr>
+<tr>
+<td>Open file</td>
+<td><code>Enter</code></td>
+</tr>
+<tr>
+<td>Rename file</td>
+<td><code>F2</code></td>
+</tr>
+<tr>
+<td>Delete file</td>
+<td><code>Delete</code></td>
+</tr>
+<tr>
+<td>New file</td>
+<td><code>Ctrl+N</code> (then save with <code>Ctrl+S</code>)</td>
+</tr>
+</tbody></table>
+<h3 id="learning-cards-keyboard-navigation-and-find">Learning Cards: Keyboard Navigation and Find</h3>
+<details>
+<summary>Screen reader users</summary>
+
+<ul>
+<li>Press <code>Ctrl+M</code> to toggle Tab focus mode -- when on, <code>Tab</code> moves focus between UI elements instead of inserting a tab character</li>
+<li>Use <code>Ctrl+G</code> then type a line number to jump directly to any line; type <code>10:5</code> to land at line 10, column 5</li>
+<li>In the Find widget (<code>Ctrl+F</code>), match count is announced as you type (e.g., &quot;3 of 12 matches&quot;); press <code>F3</code> / <code>Shift+F3</code> to step through results</li>
+<li><strong>Keyboard Shortcuts editor (<code>Ctrl+K Ctrl+S</code>):</strong> After typing a search query, your screen reader announces &quot;Use Ctrl+Down Arrow to access the searched shortcut details&quot; -- press <code>Ctrl+Down</code> to jump from the search input directly to the matching results table. Disable this hint with <code>accessibility.verbosity.keyboardShortcuts</code>.</li>
+</ul>
+</details>
+
+<details>
+<summary>Low vision users</summary>
+
+<ul>
+<li>Press <code>Alt+Z</code> to toggle word wrap so long lines stay visible without horizontal scrolling at high zoom</li>
+<li>Increase font size with <code>Ctrl+=</code> (Mac: <code>Cmd+=</code>) independently of your OS magnification for sharper text rendering</li>
+<li>The Find widget highlights all matches in the scrollbar gutter with colored ticks -- look for the bright orange markers</li>
+</ul>
+</details>
+
+<details>
+<summary>Sighted users</summary>
+
+<ul>
+<li>The breadcrumb bar above the editor (<code>Ctrl+Shift+;</code>) shows your file path and symbol hierarchy -- click any segment to navigate</li>
+<li><code>Ctrl+P</code> opens the Quick Open file picker with fuzzy matching -- type a few letters of any filename to jump there instantly</li>
+<li>Use <code>Ctrl+Shift+O</code> in Markdown files to see all headings as a navigable symbol list</li>
+</ul>
+</details>
+
+
+<hr>
+<h2 id="13-the-problems-panel">13. The Problems Panel</h2>
+<p>The <strong>Problems panel</strong> (<code>Ctrl+Shift+M</code>) shows all errors, warnings, and informational messages from linters, compilers, and extensions for every open file in your workspace.</p>
+<h3 id="opening-the-problems-panel">Opening the Problems Panel</h3>
+<ul>
+<li><strong>Keyboard:</strong> <code>Ctrl+Shift+M</code></li>
+<li><strong>Status Bar:</strong> Click the errors/warnings count (bottom-left of window)</li>
+<li><strong>Menu Bar:</strong> View then Problems</li>
+<li><strong>From the editor:</strong> Press <code>F8</code> to jump to the next problem (cycles through errors in the current file)</li>
+</ul>
+<h3 id="navigating-problems">Navigating Problems</h3>
+<table>
+<thead>
+<tr>
+<th scope="col">Action</th>
+<th scope="col">Shortcut</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Open Problems panel</td>
+<td><code>Ctrl+Shift+M</code></td>
+</tr>
+<tr>
+<td>Next problem in editor</td>
+<td><code>F8</code></td>
+</tr>
+<tr>
+<td>Previous problem in editor</td>
+<td><code>Shift+F8</code></td>
+</tr>
+<tr>
+<td>Filter problems</td>
+<td>Type in the filter box at the top of the panel</td>
+</tr>
+<tr>
+<td>Jump to problem source</td>
+<td><code>Enter</code> on a problem row</td>
+</tr>
+</tbody></table>
+<h3 id="understanding-problem-entries">Understanding Problem Entries</h3>
+<p>Each entry shows:</p>
+<ul>
+<li><strong>Severity icon:</strong> Error (red circle with X), Warning (yellow triangle), Info (blue circle with i)</li>
+<li><strong>Message:</strong> Description of the problem</li>
+<li><strong>Source:</strong> Which tool reported it (e.g., &quot;markdownlint&quot;, &quot;eslint&quot;, &quot;Pylance&quot;)</li>
+<li><strong>File and line:</strong> Where the problem is located</li>
+</ul>
+<h3 id="learning-cards-problems-panel">Learning Cards: Problems Panel</h3>
+<details>
+<summary>Screen reader users</summary>
+
+<ul>
+<li>Press <code>Ctrl+Shift+M</code> to focus the Problems panel. Your screen reader announces the total count.</li>
+<li>Each problem is read as: severity, message, source, file name, and line number</li>
+<li>Press <code>Enter</code> on any problem to jump directly to that line in the editor</li>
+<li>Use <code>F8</code> / <code>Shift+F8</code> from inside the editor to cycle through problems without opening the panel</li>
+<li>The status bar errors/warnings count updates in real time and is announced when you Tab to it</li>
+</ul>
+</details>
+
+<details>
+<summary>Low vision users</summary>
+
+<ul>
+<li>Problems are color-coded: red for errors, yellow for warnings, blue for info</li>
+<li>The errors/warnings count in the Status Bar gives a quick overview</li>
+<li>Click any problem to jump to the exact file and line</li>
+<li>Filter the panel by typing keywords to reduce visual noise</li>
+</ul>
+</details>
+
+<details>
+<summary>Sighted users</summary>
+
+<ul>
+<li>The Problems panel is in the bottom Panel area alongside Terminal and Output</li>
+<li>Red squiggly underlines in the editor correspond to problems in this panel</li>
+<li>Click any problem to navigate to its location</li>
+<li>Use the filter and severity toggles to focus on what matters</li>
+</ul>
+</details>
+
+
+<hr>
+<h2 id="14-the-terminal">14. The Terminal</h2>
+<p>VS Code includes a fully featured integrated terminal. You can run shell commands, Git operations, and scripts without leaving the editor.</p>
+<h3 id="opening-and-managing-terminals">Opening and Managing Terminals</h3>
+<table>
+<thead>
+<tr>
+<th scope="col">Action</th>
+<th scope="col">Shortcut</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Toggle terminal</td>
+<td><code>Ctrl+`</code> (backtick)</td>
+</tr>
+<tr>
+<td>New terminal</td>
+<td><code>Ctrl+Shift+`</code></td>
+</tr>
+<tr>
+<td>Split terminal</td>
+<td><code>Ctrl+Shift+5</code></td>
+</tr>
+<tr>
+<td>Next terminal</td>
+<td>Focus terminal then <code>Ctrl+PageDown</code></td>
+</tr>
+<tr>
+<td>Previous terminal</td>
+<td>Focus terminal then <code>Ctrl+PageUp</code></td>
+</tr>
+<tr>
+<td>Kill terminal</td>
+<td>Type <code>exit</code> or use the trash icon</td>
+</tr>
+</tbody></table>
+<h3 id="terminal-shell-integration">Terminal Shell Integration</h3>
+<p>VS Code&#39;s shell integration enhances the terminal with:</p>
+<ul>
+<li><strong>Command decoration marks</strong> - visual indicators showing where each command started and whether it succeeded or failed</li>
+<li><strong>Run recent command</strong> (<code>Ctrl+R</code> in terminal) - VS Code&#39;s quick pick of your recent commands, searchable by name</li>
+<li><strong>Terminal IntelliSense</strong> (<code>Ctrl+Space</code>) - completion suggestions for shell commands, file paths, and arguments</li>
+</ul>
+<p>Enable Terminal IntelliSense: Settings (<code>Ctrl+,</code>) then search <code>terminal.integrated.suggest.enabled</code> then set to <code>on</code>.</p>
+<h3 id="terminal-accessibility">Terminal Accessibility</h3>
+<table>
+<thead>
+<tr>
+<th scope="col">Feature</th>
+<th scope="col">How to Access</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Accessible Help in terminal</td>
+<td><code>Alt+H</code> while terminal is focused</td>
+</tr>
+<tr>
+<td>Navigate terminal output lines</td>
+<td><code>Alt+Ctrl+PageUp</code> / <code>Alt+Ctrl+PageDown</code></td>
+</tr>
+<tr>
+<td>Select terminal output</td>
+<td><code>Shift+Arrow keys</code> while in the terminal</td>
+</tr>
+<tr>
+<td>Minimum contrast ratio</td>
+<td>Settings then search <code>terminal.integrated.minimumContrastRatio</code> (default: 4.5 for WCAG AA)</td>
+</tr>
+</tbody></table>
+<h3 id="learning-cards-terminal">Learning Cards: Terminal</h3>
+<details>
+<summary>Screen reader users</summary>
+
+<ul>
+<li>Press <code>Ctrl+`</code> to toggle the terminal. Your screen reader announces &quot;Terminal&quot; and the shell prompt.</li>
+<li>The terminal acts like a standard text input - type commands and press <code>Enter</code></li>
+<li>Press <code>Alt+H</code> while in the terminal for a full list of terminal-specific keyboard shortcuts</li>
+<li>Use <code>Ctrl+R</code> to open the &quot;Run Recent Command&quot; picker - a searchable list of your recent commands</li>
+<li>Terminal Navigation Mode: Commands for moving between lines help when reviewing output with a screen reader.</li>
+</ul>
+</details>
+
+<details>
+<summary>Low vision users</summary>
+
+<ul>
+<li>VS Code enforces a minimum contrast ratio (4.5:1 by default) for terminal text</li>
+<li>Increase terminal font size: Settings then search <code>terminal.integrated.fontSize</code></li>
+<li>Terminal themes inherit from your VS Code color theme - High Contrast themes apply here too</li>
+<li>Use <code>Ctrl+=</code> / <code>Ctrl+-</code> to zoom the entire window including the terminal</li>
+</ul>
+</details>
+
+<details>
+<summary>Sighted users</summary>
+
+<ul>
+<li>The terminal appears in the bottom Panel - drag the top border to resize</li>
+<li>Click the <code>+</code> icon to create new terminals, the split icon to split, the trash icon to close</li>
+<li>Right-click in the terminal for copy/paste and other context menu options</li>
+<li>Multiple terminal tabs let you keep different shells open simultaneously</li>
+</ul>
+</details>
+
+
+<hr>
+<h2 id="15-copilot-chat-window">15. Copilot Chat Window</h2>
+<p>The <strong>Copilot Chat</strong> window (<code>Ctrl+Shift+I</code>) is your conversational AI assistant within VS Code. It can answer questions, generate code, explain code, fix problems, and help with documentation.</p>
+<h3 id="opening-copilot-chat">Opening Copilot Chat</h3>
+<table>
+<thead>
+<tr>
+<th scope="col">Method</th>
+<th scope="col">Shortcut</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Chat view (sidebar)</td>
+<td><code>Ctrl+Shift+I</code></td>
+</tr>
+<tr>
+<td>Inline chat (in editor)</td>
+<td><code>Ctrl+I</code></td>
+</tr>
+<tr>
+<td>Quick chat (floating)</td>
+<td><code>Ctrl+Shift+Alt+L</code></td>
+</tr>
+<tr>
+<td>Command Palette</td>
+<td><code>Ctrl+Shift+P</code> then type <code>Chat: Open</code></td>
+</tr>
+</tbody></table>
+<h3 id="chat-modes">Chat Modes</h3>
+<table>
+<thead>
+<tr>
+<th scope="col">Mode</th>
+<th scope="col">What It Does</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><strong>Ask</strong></td>
+<td>Question-answer mode - explain code, answer questions, generate snippets</td>
+</tr>
+<tr>
+<td><strong>Edit</strong></td>
+<td>Multi-file editing mode - Copilot proposes edits across your workspace</td>
+</tr>
+<tr>
+<td><strong>Agent</strong></td>
+<td>Autonomous mode - Copilot can run terminal commands, create files, and perform complex tasks</td>
+</tr>
+</tbody></table>
+<p>Switch modes using the mode picker at the top of the Chat view, or use keyboard shortcuts:</p>
+<ul>
+<li><code>workbench.action.chat.openAsk</code> - Ask mode</li>
+<li><code>workbench.action.chat.openEdit</code> - Edit mode</li>
+<li><code>workbench.action.chat.openAgent</code> - Agent mode</li>
+</ul>
+<h3 id="using-chat-participants">Using Chat Participants</h3>
+<p>Type <code>@</code> in the chat input to see available participants:</p>
+<ul>
+<li><strong>@workspace</strong> - Ask questions about your entire codebase</li>
+<li><strong>@vscode</strong> - Ask about VS Code settings and features</li>
+<li><strong>@terminal</strong> - Run commands or explain terminal output</li>
+</ul>
+<h3 id="learning-cards-copilot-chat">Learning Cards: Copilot Chat</h3>
+<details>
+<summary>Screen reader users</summary>
+
+<ul>
+<li>Press <code>Ctrl+Shift+I</code> to open Chat. Focus lands in the text input - start typing your question.</li>
+<li>After submitting, wait for the response to complete (audio cue plays if <code>accessibility.signals.chatResponseReceived</code> is on)</li>
+<li>Press <code>Alt+F2</code> (Accessible View) to read the complete response in a clean, navigable text view</li>
+<li>Navigate response content with <code>Up/Down Arrow</code> in the Accessible View</li>
+<li>Press <code>Escape</code> to return to the chat input for follow-up questions</li>
+</ul>
+</details>
+
+<details>
+<summary>Low vision users</summary>
+
+<ul>
+<li>The Chat view appears in the sidebar and respects your zoom level and font settings</li>
+<li>Copilot responses include syntax-highlighted code blocks</li>
+<li>Use <code>Ctrl+I</code> for inline chat that appears right where your cursor is in the editor</li>
+<li>Resize the Chat panel by dragging its border for a comfortable reading width</li>
+</ul>
+</details>
+
+<details>
+<summary>Sighted users</summary>
+
+<ul>
+<li>Click the Copilot icon in the sidebar or use <code>Ctrl+Shift+I</code></li>
+<li>Code blocks in responses have a &quot;Copy&quot; button and an &quot;Insert at Cursor&quot; button</li>
+<li>The mode picker at the top lets you switch between Ask, Edit, and Agent modes</li>
+<li>Use <code>@workspace</code> to ask questions about your specific project context</li>
+</ul>
+</details>
+
+<h3 id="agent-mode-question-carousel-and-terminal-focus">Agent Mode: Question Carousel and Terminal Focus</h3>
+<p>When Copilot&#39;s Agent mode is running a terminal command and needs your input -- such as a password prompt, confirmation, or interactive installer question -- VS Code displays a <strong>question carousel</strong> in the Chat panel. The carousel shows what the terminal is asking and lets you respond without switching focus to the terminal manually.</p>
+<p><strong>Keyboard shortcuts for the question carousel:</strong></p>
+<table>
+<thead>
+<tr>
+<th scope="col">Shortcut</th>
+<th scope="col">Action</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>Alt+T</code></td>
+<td>Jump directly from the question carousel back to the terminal</td>
+</tr>
+<tr>
+<td><code>Tab</code></td>
+<td>Navigate carousel buttons (Confirm, Dismiss, Focus Terminal)</td>
+</tr>
+<tr>
+<td><code>Enter</code></td>
+<td>Activate the focused button</td>
+</tr>
+</tbody></table>
+<blockquote>
+<p><strong>Screen reader tip:</strong> When the question carousel appears, your screen reader announces the question and the available buttons. The Focus Terminal button&#39;s ARIA label includes the <code>Alt+T</code> keybinding hint so you can hear it is available. Press <code>Alt+T</code> to move focus to the terminal and type your answer directly.</p>
+</blockquote>
+<p><strong>Suppressing carousel hints:</strong> The ARIA label on the carousel includes a navigation hint by default. To suppress this announcement, set <code>accessibility.verbosity.chatQuestionCarousel</code> to <code>false</code> in Settings.</p>
+<hr>
+<h2 id="16-accessible-help-accessible-view-and-accessible-diff">16. Accessible Help, Accessible View, and Accessible Diff</h2>
+<blockquote>
+<p><strong>See also:</strong> <a href="appendix-g-vscode-reference.html">Appendix G: VS Code Reference</a> has a complete keyboard shortcut reference for all VS Code accessibility features.</p>
+</blockquote>
+<p>VS Code has a family of purpose-built accessibility features that give screen reader users complete, structured access to content that is otherwise conveyed visually or through dynamic regions. These three are the most important to know before working with Copilot and diffs.</p>
+<h3 id="161-accessible-help---context-aware-keyboard-guide">16.1 Accessible Help - Context-Aware Keyboard Guide</h3>
+<p>Every interactive area of VS Code - the editor, the terminal, the diff view, the Copilot Chat panel - has its own keyboard commands. <strong>Accessible Help</strong> surfaces those commands in a plain-text, fully readable dialog, tailored to exactly where your focus is right now.</p>
+<h4 id="how-to-open-accessible-help">How to open Accessible Help</h4>
+<table>
+<thead>
+<tr>
+<th scope="col">Context</th>
+<th scope="col">Shortcut</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Inside the editor</td>
+<td><code>Alt+H</code></td>
+</tr>
+<tr>
+<td>Inside the terminal</td>
+<td><code>Alt+H</code></td>
+</tr>
+<tr>
+<td>Inside a diff view</td>
+<td><code>Alt+H</code></td>
+</tr>
+<tr>
+<td>Inside Copilot Chat</td>
+<td><code>Alt+H</code></td>
+</tr>
+<tr>
+<td>Any VS Code widget</td>
+<td><code>Alt+H</code></td>
+</tr>
+</tbody></table>
+<p>The dialog is announced with a heading and a complete list of keyboard shortcuts for that specific widget. Navigate with <code>Up/Down Arrow</code>. Press <code>Escape</code> to dismiss and return focus to where you were.</p>
+<p><strong>Why this matters:</strong> You do not need to memorize every shortcut in every panel. Open Accessible Help in any unfamiliar area and VS Code will tell you exactly what you can do there. It is the built-in answer to &quot;what can I press from here?&quot;</p>
+<h4 id="example-output-when-pressing-alth-in-the-editor">Example output when pressing <code>Alt+H</code> in the editor</h4>
+<pre><code class="hljs language-text">Accessible Help: Editor
+
+Press F8 to jump to the next error or warning.
+Press Shift+F8 to jump to the previous error or warning.
+Press Ctrl+Shift+M to open the Problems panel.
+Press F12 to go to a definition.
+Press Alt+F12 to peek a definition inline.
+Press Ctrl+Shift+O to go to a symbol in this file.
+Press Alt+F2 to open the Accessible View.
+Press Alt+H to view this help content again.</code></pre>
+<p>Use Accessible Help as your first action whenever you land somewhere new in VS Code.</p>
+<h3 id="162-accessible-view---reading-dynamic-and-streamed-content">16.2 Accessible View - Reading Dynamic and Streamed Content</h3>
+<p><strong>Accessible View</strong> (<code>Alt+F2</code>) gives screen reader users a clean, static, fully readable version of content that is otherwise presented dynamically, in tooltips, or in streaming form.</p>
+<h4 id="how-to-open-accessible-view">How to open Accessible View</h4>
+<table>
+<thead>
+<tr>
+<th scope="col">Shortcut</th>
+<th scope="col">When to Use</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>Alt+F2</code></td>
+<td>Open Accessible View for the currently focused element</td>
+</tr>
+<tr>
+<td><code>Escape</code></td>
+<td>Close Accessible View and return to the editor</td>
+</tr>
+</tbody></table>
+<h4 id="what-accessible-view-provides">What Accessible View provides</h4>
+<table>
+<thead>
+<tr>
+<th scope="col">Content Type</th>
+<th scope="col">Without Accessible View</th>
+<th scope="col">With Accessible View (<code>Alt+F2</code>)</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Copilot Chat response</td>
+<td>Fragmented - announced as tokens stream in</td>
+<td>Full complete response, read sequentially with Arrow keys</td>
+</tr>
+<tr>
+<td>Inline Copilot suggestion</td>
+<td>Ghost text - may not be announced</td>
+<td>Announced as &quot;Suggestion: [full text]&quot;</td>
+</tr>
+<tr>
+<td>Hover documentation</td>
+<td>Popup tooltip - announced only briefly</td>
+<td>Full content, fully navigable with Arrow keys</td>
+</tr>
+<tr>
+<td>Error / warning details</td>
+<td>On-focus message only</td>
+<td>Full error text, error code, and suggested fix</td>
+</tr>
+<tr>
+<td>Terminal output</td>
+<td>May be truncated by live region limits</td>
+<td>Full output in review mode with scroll</td>
+</tr>
+<tr>
+<td>Notification banners</td>
+<td>Announced once and dismissed</td>
+<td>Persistent readable content until you close it</td>
+</tr>
+</tbody></table>
+<h4 id="recommended-workflow-for-copilot-chat">Recommended workflow for Copilot Chat</h4>
+<ol>
+<li>Type your prompt in the Chat input</li>
+<li>Wait for the response to finish (NVDA: live region announcements stop; JAWS: typing indicator disappears; VoiceOver: busy state clears)</li>
+<li>Press <code>Alt+F2</code> - Accessible View opens with the complete response</li>
+<li>Navigate with <code>Up/Down Arrow</code> through the response</li>
+<li>Press <code>Escape</code> to return to the chat input</li>
+</ol>
+<h4 id="recommended-workflow-for-hover-documentation">Recommended workflow for hover documentation</h4>
+<ol>
+<li>Navigate to a symbol or link with keyboard</li>
+<li>Press <code>Ctrl+K I</code> to trigger hover programmatically (no mouse needed)</li>
+<li>Press <code>Alt+F2</code> to open Accessible View with the full hover content</li>
+<li>Press <code>Escape</code> to dismiss</li>
+</ol>
+<h3 id="163-accessible-diff-viewer---reading-changes-without-visual-scanning">16.3 Accessible Diff Viewer - Reading Changes Without Visual Scanning</h3>
+<p>When you open a file diff - in Source Control, in the GitHub PR extension, or during a merge conflict - VS Code normally shows it as a side-by-side or inline visual view. For screen reader users, tracking which lines changed and how can be difficult without a structured reading mode.</p>
+<p><strong>The Accessible Diff Viewer</strong> presents the same diff as a plain, navigable list of changed lines - organized by hunk, labeled by change type (added, removed, unchanged), with the line number announced for each line.</p>
+<h4 id="how-to-open-the-accessible-diff-viewer">How to open the Accessible Diff Viewer</h4>
+<table>
+<thead>
+<tr>
+<th scope="col">Shortcut</th>
+<th scope="col">What Happens</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>F7</code></td>
+<td>Move to the next diff hunk (from within the diff editor)</td>
+</tr>
+<tr>
+<td><code>Shift+F7</code></td>
+<td>Move to the previous diff hunk</td>
+</tr>
+<tr>
+<td>Command Palette</td>
+<td><code>Ctrl+Shift+P</code> then type &quot;Open Accessible Diff Viewer&quot;</td>
+</tr>
+</tbody></table>
+<h4 id="what-the-accessible-diff-viewer-announces">What the Accessible Diff Viewer announces</h4>
+<p>For each hunk (a block of related changes), the viewer announces:</p>
+<ul>
+<li>The hunk number and total hunk count (<code>Hunk 2 of 5</code>)</li>
+<li>The line range affected</li>
+<li>Each line, prefixed with its change type:</li>
+</ul>
+<pre><code class="hljs language-text">Hunk 1 of 3 - lines 12 to 18
+  Unchanged: ## Screen Reader Cheat Sheet
+- Line removed: &gt; Quick reference for NVDA users.
++ Line added: &gt; Quick reference for NVDA, JAWS, and VoiceOver users.
+  Unchanged:
+  Unchanged: Use this document during the workshop.</code></pre>
+<p>This gives you the complete picture of what changed, in reading order, without visual diff scanning.</p>
+<h4 id="practical-uses-during-this-workshop">Practical uses during this workshop</h4>
+<ul>
+<li><strong>Before approving a PR:</strong> Open the diff then <code>F7</code> to enter the first hunk then navigate each change then <code>F7</code> for next hunk then repeat until all hunks reviewed</li>
+<li><strong>During a merge conflict:</strong> The conflict markers (<code>&lt;&lt;&lt;&lt;&lt;&lt;&lt;</code>, <code>=======</code>, <code>&gt;&gt;&gt;&gt;&gt;&gt;&gt;</code>) appear as lines in the viewer - you can read both conflicting versions before deciding which to keep</li>
+<li><strong>After Copilot generates an edit:</strong> Open the diff (<code>Ctrl+Shift+G</code> then navigate to the changed file then <code>Enter</code>) then review exactly what Copilot changed vs. what was there before</li>
+</ul>
+<h4 id="audio-cues-for-diffs">Audio cues for diffs</h4>
+<p>With <code>accessibility.signals.diffLineInserted</code> and <code>accessibility.signals.diffLineDeleted</code> both set to <code>on</code> in Settings, VS Code plays a distinct tone when your cursor moves over an added line (higher pitched) or a removed line (lower pitched). You receive change-type information through sound before the line text is announced.</p>
+<h3 id="learning-cards-accessible-help-view-and-diff">Learning Cards: Accessible Help, View, and Diff</h3>
+<details>
+<summary>Screen reader users</summary>
+
+<ul>
+<li>Press <code>Alt+H</code> in any VS Code panel to open Accessible Help -- it lists every keyboard shortcut available in your current context</li>
+<li>Press <code>Alt+F2</code> to open Accessible View for Copilot responses, hover documentation, or terminal output -- read the full content with arrow keys</li>
+<li>In a diff view, press <code>F7</code> to enter the Accessible Diff Viewer and step through changes hunk by hunk with line-level change-type announcements</li>
+</ul>
+</details>
+
+<details>
+<summary>Low vision users</summary>
+
+<ul>
+<li>Accessible View (<code>Alt+F2</code>) renders Copilot responses as plain text in a scrollable pane -- easier to read at high zoom than the streaming chat panel</li>
+<li>In diff views, enable <code>accessibility.signals.diffLineInserted</code> for an audible cue on added lines so you do not rely solely on color</li>
+<li>The Accessible Diff Viewer text uses the same font size as your editor -- zoom settings apply automatically</li>
+</ul>
+</details>
+
+<details>
+<summary>Sighted users</summary>
+
+<ul>
+<li>The diff editor shows added lines in green and removed lines in red, with a gutter icon indicating the change type</li>
+<li>Click the inline &quot;Copy&quot; or &quot;Insert at Cursor&quot; buttons on code blocks in Copilot Chat responses for quick use</li>
+<li>Use the minimap colored regions on the right to spot clusters of changes in long diffs at a glance</li>
+</ul>
+</details>
+
+
+<hr>
+<h2 id="17-accessibility-signals">17. Accessibility Signals</h2>
+<p>VS Code communicates editor state through <strong>Accessibility Signals</strong> -- non-verbal cues that tell you what is happening as you move through code, run commands, and interact with Copilot. Signals replaced the older &quot;Audio Cues&quot; system (deprecated since VS Code 1.85) and are significantly more powerful.</p>
+<blockquote>
+<p><strong>Official documentation:</strong> <a href="https://code.visualstudio.com/docs/configure/accessibility/accessibility#_accessibility-signals">VS Code Accessibility -- Accessibility Signals</a></p>
+</blockquote>
+<h3 id="how-signals-work-the-dual-channel-architecture">How Signals Work: The Dual-Channel Architecture</h3>
+<p>Every accessibility signal has <strong>two independent channels</strong> that you control separately:</p>
+<table>
+<thead>
+<tr>
+<th scope="col">Channel</th>
+<th scope="col">What It Does</th>
+<th scope="col">Who Benefits</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><strong>Sound</strong></td>
+<td>Plays a short audio tone</td>
+<td>Everyone -- sighted users, low vision users, and screen reader users all benefit from audio feedback</td>
+</tr>
+<tr>
+<td><strong>Announcement</strong></td>
+<td>Sends a status message that screen readers and braille displays announce</td>
+<td>Primarily screen reader and braille users</td>
+</tr>
+</tbody></table>
+<p>Each channel accepts one of these values:</p>
+<table>
+<thead>
+<tr>
+<th scope="col">Value</th>
+<th scope="col">Meaning</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>&quot;on&quot;</code></td>
+<td>Always enabled regardless of screen reader state</td>
+</tr>
+<tr>
+<td><code>&quot;off&quot;</code></td>
+<td>Always disabled</td>
+</tr>
+<tr>
+<td><code>&quot;auto&quot;</code></td>
+<td>Enabled only when VS Code detects a screen reader (default for most announcement channels)</td>
+</tr>
+<tr>
+<td><code>&quot;userGesture&quot;</code></td>
+<td>Enabled only when the user explicitly triggers the action (used by Save and Format signals to avoid noise from auto-save)</td>
+</tr>
+</tbody></table>
+<p>This means you can enable sounds for everyone while keeping announcements on <code>auto</code> so they only fire when a screen reader is attached. Or you can turn on announcements without sounds. Full independent control.</p>
+<h3 id="discovering-signals-the-two-essential-commands">Discovering Signals: The Two Essential Commands</h3>
+<p>VS Code provides two commands that let you <strong>browse every available signal, hear what each one sounds like, and toggle them on or off</strong> without editing settings.json:</p>
+<table>
+<thead>
+<tr>
+<th scope="col">Command (Command Palette <code>Ctrl+Shift+P</code>)</th>
+<th scope="col">What It Does</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><strong>Help: List Signal Sounds</strong></td>
+<td>Opens a picker listing every signal sound. As you arrow through the list, each sound plays so you can hear it. Press <code>Enter</code> to toggle the selected signal on or off.</td>
+</tr>
+<tr>
+<td><strong>Help: List Signal Announcements</strong></td>
+<td>Same experience for announcement messages. Arrow through the list to hear the announcement text read by your screen reader, then toggle.</td>
+</tr>
+</tbody></table>
+<p>These are the fastest way to configure signals. You do not need to memorize setting names.</p>
+<details>
+<summary>Screen reader users</summary>
+
+<p>The <strong>Help: List Signal Announcements</strong> command is especially valuable. It lists every announcement message VS Code can send to your screen reader. Arrow through the list -- your screen reader reads each announcement label. Press <code>Enter</code> to toggle. This is faster than searching through Settings and ensures you hear the exact phrasing VS Code will use.</p>
+</details>
+
+<details>
+<summary>Low vision users</summary>
+
+<p>Even if you do not use a screen reader, signal sounds add a valuable audio layer. When you land on an error line, a distinct error tone plays before you even read the squiggly underline. When a terminal command finishes, a completion chime saves you from watching the terminal. Open <strong>Help: List Signal Sounds</strong> to preview and enable the ones that help your workflow.</p>
+</details>
+
+<details>
+<summary>Sighted users</summary>
+
+<p>Signal sounds are not just for accessibility -- they improve any workflow. Enable <code>taskCompleted</code> and <code>taskFailed</code> to know when builds finish while you are reading documentation in another tab. Enable <code>chatResponseReceived</code> to hear when Copilot finishes generating while you work in a different file. Open <strong>Help: List Signal Sounds</strong> to hear what each one sounds like.</p>
+</details>
+
+<h3 id="volume-control">Volume Control</h3>
+<p>Control signal volume independently from your system volume:</p>
+<table>
+<thead>
+<tr>
+<th scope="col">Setting</th>
+<th scope="col">Range</th>
+<th scope="col">Default</th>
+<th scope="col">Purpose</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>accessibility.signalOptions.volume</code></td>
+<td>0 -- 100</td>
+<td>50</td>
+<td>Master volume for all accessibility signal sounds</td>
+</tr>
+</tbody></table>
+<p>Set this in Settings (<code>Ctrl+,</code>) by searching &quot;signal volume&quot; or add it to <code>settings.json</code>:</p>
+<pre><code class="hljs language-json"><span class="hljs-punctuation">{</span>
+  <span class="hljs-attr">&quot;accessibility.signalOptions.volume&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-number">70</span>
+<span class="hljs-punctuation">}</span></code></pre>
+<h3 id="complete-signal-reference">Complete Signal Reference</h3>
+<p>VS Code registers <strong>30+ accessibility signals</strong> organized into categories. The tables below list every signal, its setting key, the sound it plays, and whether it supports announcements.</p>
+<h4 id="editor-signals">Editor Signals</h4>
+<p>These fire when your cursor moves to a line or position with a specific marker:</p>
+<table>
+<thead>
+<tr>
+<th scope="col">Setting Key</th>
+<th scope="col">Fires When</th>
+<th scope="col">Sound</th>
+<th scope="col">Announcement</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>accessibility.signals.lineHasError</code></td>
+<td>Cursor moves to a line containing an error</td>
+<td>Error tone</td>
+<td>&quot;Error on Line&quot;</td>
+</tr>
+<tr>
+<td><code>accessibility.signals.lineHasWarning</code></td>
+<td>Cursor moves to a line containing a warning</td>
+<td>Warning tone (lower pitch)</td>
+<td>&quot;Warning on Line&quot;</td>
+</tr>
+<tr>
+<td><code>accessibility.signals.positionHasError</code></td>
+<td>Cursor moves to the exact position of an error</td>
+<td>Error tone</td>
+<td>&quot;Error&quot;</td>
+</tr>
+<tr>
+<td><code>accessibility.signals.positionHasWarning</code></td>
+<td>Cursor moves to the exact position of a warning</td>
+<td>Warning tone</td>
+<td>&quot;Warning&quot;</td>
+</tr>
+<tr>
+<td><code>accessibility.signals.lineHasFoldedArea</code></td>
+<td>Cursor moves to a line with a collapsed/folded region</td>
+<td>Folded area tone</td>
+<td>&quot;Folded&quot;</td>
+</tr>
+<tr>
+<td><code>accessibility.signals.lineHasBreakpoint</code></td>
+<td>Cursor moves to a line with a breakpoint</td>
+<td>Break tone</td>
+<td>&quot;Breakpoint&quot;</td>
+</tr>
+<tr>
+<td><code>accessibility.signals.lineHasInlineSuggestion</code></td>
+<td>Cursor moves to a line with a Copilot ghost text suggestion</td>
+<td>Quick fix tone</td>
+<td>--</td>
+</tr>
+<tr>
+<td><code>accessibility.signals.nextEditSuggestion</code></td>
+<td>Next Edit Suggestion appears on the line</td>
+<td>Next edit tone</td>
+<td>&quot;Next Edit Suggestion&quot;</td>
+</tr>
+<tr>
+<td><code>accessibility.signals.noInlayHints</code></td>
+<td>Cursor is on a line with no inlay hints</td>
+<td>Error tone</td>
+<td>&quot;No Inlay Hints&quot;</td>
+</tr>
+</tbody></table>
+<blockquote>
+<p><strong>Line vs Position signals:</strong> The <code>lineHasError</code> signal fires once when your cursor enters the line. The <code>positionHasError</code> signal fires when the cursor reaches the exact character where the error starts. Both can be enabled simultaneously for layered feedback.</p>
+</blockquote>
+<h4 id="diff-signals">Diff Signals</h4>
+<p>These fire when navigating changes in the diff editor or reviewing pull requests:</p>
+<table>
+<thead>
+<tr>
+<th scope="col">Setting Key</th>
+<th scope="col">Fires When</th>
+<th scope="col">Sound</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>accessibility.signals.diffLineInserted</code></td>
+<td>Cursor moves over an added (green) line</td>
+<td>Inserted tone (higher pitch)</td>
+</tr>
+<tr>
+<td><code>accessibility.signals.diffLineDeleted</code></td>
+<td>Cursor moves over a removed (red) line</td>
+<td>Deleted tone (lower pitch)</td>
+</tr>
+<tr>
+<td><code>accessibility.signals.diffLineModified</code></td>
+<td>Cursor moves over a modified line</td>
+<td>Modified tone</td>
+</tr>
+</tbody></table>
+<p>These are critical for pull request review. You hear the type of change before reading the content.</p>
+<h4 id="terminal-signals">Terminal Signals</h4>
+<table>
+<thead>
+<tr>
+<th scope="col">Setting Key</th>
+<th scope="col">Fires When</th>
+<th scope="col">Sound</th>
+<th scope="col">Announcement</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>accessibility.signals.terminalBell</code></td>
+<td>Terminal sends a bell character</td>
+<td>Bell tone</td>
+<td>--</td>
+</tr>
+<tr>
+<td><code>accessibility.signals.terminalQuickFix</code></td>
+<td>Terminal detects a quick fix suggestion</td>
+<td>Quick fix tone</td>
+<td>&quot;Quick Fix&quot;</td>
+</tr>
+<tr>
+<td><code>accessibility.signals.terminalCommandSucceeded</code></td>
+<td>A terminal command exits successfully</td>
+<td>Command succeeded tone</td>
+<td>--</td>
+</tr>
+<tr>
+<td><code>accessibility.signals.taskCompleted</code></td>
+<td>A VS Code Task finishes successfully</td>
+<td>Task completed tone</td>
+<td>--</td>
+</tr>
+<tr>
+<td><code>accessibility.signals.taskFailed</code></td>
+<td>A VS Code Task exits with an error</td>
+<td>Task failed tone</td>
+<td>--</td>
+</tr>
+</tbody></table>
+<blockquote>
+<p><strong>Workshop tip:</strong> Enable <code>taskCompleted</code> and <code>taskFailed</code> immediately. When you run <code>git push</code> or <code>npm test</code> in the terminal, you hear whether it succeeded without switching back to the terminal panel.</p>
+</blockquote>
+<h4 id="chat-and-copilot-signals">Chat and Copilot Signals</h4>
+<table>
+<thead>
+<tr>
+<th scope="col">Setting Key</th>
+<th scope="col">Fires When</th>
+<th scope="col">Sound</th>
+<th scope="col">Announcement</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>accessibility.signals.chatRequestSent</code></td>
+<td>You send a message to Copilot Chat</td>
+<td>Request sent tone</td>
+<td>--</td>
+</tr>
+<tr>
+<td><code>accessibility.signals.chatResponsePending</code></td>
+<td>Copilot is generating a response (loops)</td>
+<td>Progress tone</td>
+<td>--</td>
+</tr>
+<tr>
+<td><code>accessibility.signals.chatResponseReceived</code></td>
+<td>Copilot finishes generating</td>
+<td>One of 4 random response tones</td>
+<td>--</td>
+</tr>
+<tr>
+<td><code>accessibility.signals.chatEditModifiedFile</code></td>
+<td>Copilot Edits modifies a file in your workspace</td>
+<td>Modified file tone</td>
+<td>--</td>
+</tr>
+<tr>
+<td><code>accessibility.signals.chatUserActionRequired</code></td>
+<td>Copilot needs you to take an action (accept/reject)</td>
+<td>Action required tone</td>
+<td>--</td>
+</tr>
+<tr>
+<td><code>accessibility.signals.editsKept</code></td>
+<td>You accept Copilot&#39;s suggested edits</td>
+<td>Edits kept tone</td>
+<td>--</td>
+</tr>
+<tr>
+<td><code>accessibility.signals.editsUndone</code></td>
+<td>You reject/undo Copilot&#39;s suggested edits</td>
+<td>Edits undone tone</td>
+<td>--</td>
+</tr>
+</tbody></table>
+<blockquote>
+<p><strong>Why four response sounds?</strong> <code>chatResponseReceived</code> plays a randomly chosen variant each time (responseReceived1 through responseReceived4). This prevents habituation -- your brain stays alert to the signal instead of filtering it out after hearing the same sound repeatedly. This is an intentional accessibility design pattern.</p>
+</blockquote>
+<h4 id="debug-signals">Debug Signals</h4>
+<table>
+<thead>
+<tr>
+<th scope="col">Setting Key</th>
+<th scope="col">Fires When</th>
+<th scope="col">Sound</th>
+<th scope="col">Announcement</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>accessibility.signals.onDebugBreak</code></td>
+<td>Debugger stops on a breakpoint</td>
+<td>Break tone</td>
+<td>&quot;Breakpoint&quot;</td>
+</tr>
+</tbody></table>
+<h4 id="editor-action-signals">Editor Action Signals</h4>
+<p>These fire on user-triggered actions and use the <code>&quot;userGesture&quot;</code> value to distinguish manual saves from auto-saves:</p>
+<table>
+<thead>
+<tr>
+<th scope="col">Setting Key</th>
+<th scope="col">Fires When</th>
+<th scope="col">Sound</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>accessibility.signals.save</code></td>
+<td>File is saved</td>
+<td>Save tone</td>
+</tr>
+<tr>
+<td><code>accessibility.signals.format</code></td>
+<td>File is formatted</td>
+<td>Format tone</td>
+</tr>
+<tr>
+<td><code>accessibility.signals.clear</code></td>
+<td>Terminal or output is cleared</td>
+<td>Clear tone</td>
+</tr>
+</tbody></table>
+<p>Set these to <code>&quot;userGesture&quot;</code> rather than <code>&quot;on&quot;</code> if auto-save is enabled, to avoid a sound on every keystroke pause:</p>
+<pre><code class="hljs language-json"><span class="hljs-punctuation">{</span>
+  <span class="hljs-attr">&quot;accessibility.signals.save&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-punctuation">{</span>
+    <span class="hljs-attr">&quot;sound&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;userGesture&quot;</span><span class="hljs-punctuation">,</span>
+    <span class="hljs-attr">&quot;announcement&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;off&quot;</span>
+  <span class="hljs-punctuation">}</span>
+<span class="hljs-punctuation">}</span></code></pre>
+<h4 id="voice-signals">Voice Signals</h4>
+<table>
+<thead>
+<tr>
+<th scope="col">Setting Key</th>
+<th scope="col">Fires When</th>
+<th scope="col">Sound</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>accessibility.signals.voiceRecordingStarted</code></td>
+<td>Voice dictation begins</td>
+<td>Recording started tone</td>
+</tr>
+<tr>
+<td><code>accessibility.signals.voiceRecordingStopped</code></td>
+<td>Voice dictation ends</td>
+<td>Recording stopped tone</td>
+</tr>
+</tbody></table>
+<h4 id="code-action-signals">Code Action Signals</h4>
+<table>
+<thead>
+<tr>
+<th scope="col">Setting Key</th>
+<th scope="col">Fires When</th>
+<th scope="col">Sound</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>accessibility.signals.codeActionTriggered</code></td>
+<td>A code action (quick fix, refactor) is triggered</td>
+<td>Code action triggered tone</td>
+</tr>
+<tr>
+<td><code>accessibility.signals.codeActionApplied</code></td>
+<td>A code action is applied to the code</td>
+<td>Code action applied tone</td>
+</tr>
+</tbody></table>
+<h3 id="debounce-settings-for-position-signals">Debounce Settings for Position Signals</h3>
+<p>When you hold an arrow key and your cursor moves rapidly through lines, position-based signals (error/warning at position) could fire dozens of times per second. VS Code debounces these by default:</p>
+<table>
+<thead>
+<tr>
+<th scope="col">Setting</th>
+<th scope="col">Default</th>
+<th scope="col">Purpose</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>accessibility.signalOptions.debouncePositionChanges</code></td>
+<td><code>true</code></td>
+<td>Enable position signal debouncing</td>
+</tr>
+<tr>
+<td><code>accessibility.signalOptions.experimental.delays.errorAtPosition</code></td>
+<td><code>{ sound: 300, announcement: 3000 }</code></td>
+<td>Millisecond delay before error-at-position fires</td>
+</tr>
+<tr>
+<td><code>accessibility.signalOptions.experimental.delays.warningAtPosition</code></td>
+<td><code>{ sound: 300, announcement: 3000 }</code></td>
+<td>Millisecond delay before warning-at-position fires</td>
+</tr>
+<tr>
+<td><code>accessibility.signalOptions.experimental.delays.general</code></td>
+<td><code>{ sound: 300, announcement: 3000 }</code></td>
+<td>Default delay for all other position-based signals</td>
+</tr>
+</tbody></table>
+<p>The announcement delay is intentionally longer (3 seconds) because screen reader interruptions are more disruptive than brief sounds.</p>
+<h3 id="recommended-workshop-profile">Recommended Workshop Profile</h3>
+<p>Add this to your VS Code <code>settings.json</code> (<code>Ctrl+Shift+P</code> then &quot;Preferences: Open User Settings (JSON)&quot;):</p>
+<pre><code class="hljs language-json"><span class="hljs-punctuation">{</span>
+  <span class="hljs-attr">&quot;editor.accessibilitySupport&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;on&quot;</span><span class="hljs-punctuation">,</span>
+
+  <span class="hljs-attr">&quot;accessibility.signalOptions.volume&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-number">70</span><span class="hljs-punctuation">,</span>
+
+  <span class="hljs-attr">&quot;accessibility.signals.lineHasError&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-punctuation">{</span>
+    <span class="hljs-attr">&quot;sound&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;on&quot;</span><span class="hljs-punctuation">,</span>
+    <span class="hljs-attr">&quot;announcement&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;auto&quot;</span>
+  <span class="hljs-punctuation">}</span><span class="hljs-punctuation">,</span>
+  <span class="hljs-attr">&quot;accessibility.signals.lineHasWarning&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-punctuation">{</span>
+    <span class="hljs-attr">&quot;sound&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;on&quot;</span><span class="hljs-punctuation">,</span>
+    <span class="hljs-attr">&quot;announcement&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;auto&quot;</span>
+  <span class="hljs-punctuation">}</span><span class="hljs-punctuation">,</span>
+  <span class="hljs-attr">&quot;accessibility.signals.lineHasFoldedArea&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-punctuation">{</span>
+    <span class="hljs-attr">&quot;sound&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;on&quot;</span><span class="hljs-punctuation">,</span>
+    <span class="hljs-attr">&quot;announcement&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;auto&quot;</span>
+  <span class="hljs-punctuation">}</span><span class="hljs-punctuation">,</span>
+  <span class="hljs-attr">&quot;accessibility.signals.lineHasBreakpoint&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-punctuation">{</span>
+    <span class="hljs-attr">&quot;sound&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;on&quot;</span><span class="hljs-punctuation">,</span>
+    <span class="hljs-attr">&quot;announcement&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;auto&quot;</span>
+  <span class="hljs-punctuation">}</span><span class="hljs-punctuation">,</span>
+  <span class="hljs-attr">&quot;accessibility.signals.taskCompleted&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-punctuation">{</span>
+    <span class="hljs-attr">&quot;sound&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;on&quot;</span><span class="hljs-punctuation">,</span>
+    <span class="hljs-attr">&quot;announcement&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;auto&quot;</span>
+  <span class="hljs-punctuation">}</span><span class="hljs-punctuation">,</span>
+  <span class="hljs-attr">&quot;accessibility.signals.taskFailed&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-punctuation">{</span>
+    <span class="hljs-attr">&quot;sound&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;on&quot;</span><span class="hljs-punctuation">,</span>
+    <span class="hljs-attr">&quot;announcement&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;auto&quot;</span>
+  <span class="hljs-punctuation">}</span><span class="hljs-punctuation">,</span>
+  <span class="hljs-attr">&quot;accessibility.signals.terminalCommandSucceeded&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-punctuation">{</span>
+    <span class="hljs-attr">&quot;sound&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;on&quot;</span><span class="hljs-punctuation">,</span>
+    <span class="hljs-attr">&quot;announcement&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;off&quot;</span>
+  <span class="hljs-punctuation">}</span><span class="hljs-punctuation">,</span>
+  <span class="hljs-attr">&quot;accessibility.signals.chatResponseReceived&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-punctuation">{</span>
+    <span class="hljs-attr">&quot;sound&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;on&quot;</span><span class="hljs-punctuation">,</span>
+    <span class="hljs-attr">&quot;announcement&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;auto&quot;</span>
+  <span class="hljs-punctuation">}</span><span class="hljs-punctuation">,</span>
+  <span class="hljs-attr">&quot;accessibility.signals.diffLineInserted&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-punctuation">{</span>
+    <span class="hljs-attr">&quot;sound&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;on&quot;</span><span class="hljs-punctuation">,</span>
+    <span class="hljs-attr">&quot;announcement&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;off&quot;</span>
+  <span class="hljs-punctuation">}</span><span class="hljs-punctuation">,</span>
+  <span class="hljs-attr">&quot;accessibility.signals.diffLineDeleted&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-punctuation">{</span>
+    <span class="hljs-attr">&quot;sound&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;on&quot;</span><span class="hljs-punctuation">,</span>
+    <span class="hljs-attr">&quot;announcement&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;off&quot;</span>
+  <span class="hljs-punctuation">}</span><span class="hljs-punctuation">,</span>
+  <span class="hljs-attr">&quot;accessibility.signals.save&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-punctuation">{</span>
+    <span class="hljs-attr">&quot;sound&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;userGesture&quot;</span><span class="hljs-punctuation">,</span>
+    <span class="hljs-attr">&quot;announcement&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;off&quot;</span>
+  <span class="hljs-punctuation">}</span><span class="hljs-punctuation">,</span>
+
+  <span class="hljs-attr">&quot;editor.minimap.enabled&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-literal"><span class="hljs-keyword">false</span></span><span class="hljs-punctuation">,</span>
+  <span class="hljs-attr">&quot;editor.renderWhitespace&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;none&quot;</span><span class="hljs-punctuation">,</span>
+  <span class="hljs-attr">&quot;editor.wordWrap&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;on&quot;</span>
+<span class="hljs-punctuation">}</span></code></pre>
+<p>This profile enables core sounds for everyone and sets announcements to <code>auto</code> so they activate only when a screen reader is detected. The <code>save</code> signal uses <code>userGesture</code> to avoid noise from auto-save. Diff signals are sound-only because rapid line navigation with announcements would overwhelm a screen reader.</p>
+<details>
+<summary>Screen reader users</summary>
+
+<p>Focus on announcements more than sounds. Set the signals you care about most to <code>&quot;announcement&quot;: &quot;on&quot;</code> (not just <code>&quot;auto&quot;</code>) to guarantee they fire even if VS Code does not detect your screen reader. The most valuable announcements for this workshop are:</p>
+<ul>
+<li><code>lineHasError</code> -- &quot;Error on Line&quot; as you navigate code</li>
+<li><code>taskCompleted</code> / <code>taskFailed</code> -- know when git operations finish</li>
+<li><code>chatResponseReceived</code> -- know when Copilot is done responding</li>
+<li><code>lineHasBreakpoint</code> -- confirm breakpoint placement during debugging</li>
+</ul>
+<p>Use <strong>Help: List Signal Announcements</strong> (<code>Ctrl+Shift+P</code> then type &quot;List Signal Announcements&quot;) to hear and toggle each one.</p>
+</details>
+
+<details>
+<summary>Low vision users</summary>
+
+<p>Sounds give you status confirmation without needing to find and read small visual indicators. The most impactful signals:</p>
+<ul>
+<li><code>lineHasError</code> + <code>lineHasWarning</code> -- hear errors as you navigate instead of scanning for red/yellow squiggles</li>
+<li><code>diffLineInserted</code> + <code>diffLineDeleted</code> -- hear change types in pull request diffs before reading the color coding</li>
+<li><code>taskCompleted</code> + <code>taskFailed</code> -- audio confirmation when terminal commands finish</li>
+<li><code>chatResponseReceived</code> -- know when Copilot is done while you read other content</li>
+</ul>
+<p>Raise the volume with <code>accessibility.signalOptions.volume</code> (try 80 or 90) if your system volume competes with screen magnification software audio.</p>
+</details>
+
+<details>
+<summary>Sighted users</summary>
+
+<p>Do not skip this section because you can see the screen. Signal sounds make you faster:</p>
+<ul>
+<li><strong>Build notifications:</strong> Enable <code>taskCompleted</code> and <code>taskFailed</code>. Start a build, switch to writing code, hear the chime when it finishes.</li>
+<li><strong>Copilot flow:</strong> Enable <code>chatResponseReceived</code>. Ask Copilot a question, continue editing, hear the response tone.</li>
+<li><strong>Error awareness:</strong> Enable <code>lineHasError</code>. As you type, you hear immediately when you introduce a syntax error without glancing at the Problems panel.</li>
+<li><strong>Code review:</strong> Enable diff signals. Arrow through a PR diff and hear inserted/deleted/modified tones. Your eyes stay on the code while your ears track the change type.</li>
+</ul>
+<p>Start with <strong>Help: List Signal Sounds</strong> to preview each tone and build your personal selection.</p>
+</details>
+
+<h3 id="migrating-from-legacy-audio-cues">Migrating from Legacy Audio Cues</h3>
+<p>If you previously configured the older <code>audioCues.*</code> settings (deprecated since VS Code 1.85), VS Code automatically maps them to the new <code>accessibility.signals.*</code> namespace. However, the new settings offer the dual sound/announcement structure that the old settings did not have. Review your configured signals using <strong>Help: List Signal Sounds</strong> and <strong>Help: List Signal Announcements</strong> to take advantage of the new independent controls.</p>
+<p><strong>Note:</strong> <code>minimap.enabled: false</code> in the recommended profile removes the visual minimap that adds no value for screen reader users and can cause some accessibility tools to announce additional regions.</p>
+<h3 id="learning-cards-accessibility-signals">Learning Cards: Accessibility Signals</h3>
+<details>
+<summary>Screen reader users</summary>
+
+<ul>
+<li>Run <code>Help: List Signal Sounds</code> from the Command Palette (<code>Ctrl+Shift+P</code>) to preview every available signal tone and decide which to enable</li>
+<li>Enable <code>accessibility.signals.lineHasError</code> so you hear an immediate tone when your cursor lands on a line with an error -- no need to open the Problems panel</li>
+<li>Set signals to <code>&quot;announcement&quot;</code> channel if you prefer spoken labels (e.g., &quot;error on line&quot;) over tones</li>
+</ul>
+</details>
+
+<details>
+<summary>Low vision users</summary>
+
+<ul>
+<li>Signals provide a second channel of awareness -- hearing a &quot;task completed&quot; chime means you can keep your magnifier focused on your editor instead of watching the terminal</li>
+<li>Enable <code>accessibility.signals.chatResponseReceived</code> to get an audible notification when Copilot finishes generating a response</li>
+<li>Pair error signals with High Contrast themes so both color and sound reinforce error locations</li>
+</ul>
+</details>
+
+<details>
+<summary>Sighted users</summary>
+
+<ul>
+<li>Accessibility signals are opt-in -- open Settings (<code>Ctrl+,</code>) and search <code>accessibility.signals</code> to see all available signals with toggle switches</li>
+<li>Enable diff line signals (<code>diffLineInserted</code>, <code>diffLineDeleted</code>) for an extra audio channel during code review</li>
+<li>The Status Bar shows a speaker icon when signals are active; click it for quick access to signal settings</li>
+</ul>
+</details>
+
+
+<hr>
+<h2 id="18-vs-code-speech---voice-input-and-output">18. VS Code Speech - Voice Input and Output</h2>
+<p>The VS Code Speech extension adds speech-to-text and text-to-speech capabilities to VS Code. All voice processing happens locally on your machine - no audio data is sent to any online service. This makes it useful for dictation, talking to Copilot Chat, and having Chat responses read aloud.</p>
+<h3 id="installing-vs-code-speech">Installing VS Code Speech</h3>
+<ol>
+<li>Open Extensions: <code>Ctrl+Shift+X</code> (Mac: <code>Cmd+Shift+X</code>)</li>
+<li>Search for <strong>VS Code Speech</strong></li>
+<li>Find <strong>VS Code Speech</strong> (publisher: Microsoft, identifier: <code>ms-vscode.vscode-speech</code>)</li>
+<li>Press <code>Enter</code> to open the extension detail page, then <code>Tab</code> to &quot;Install&quot; and press <code>Enter</code></li>
+</ol>
+<p>After installation, a microphone icon appears in all Chat input fields and new voice commands become available in the Command Palette.</p>
+<blockquote>
+<p><strong>Microphone permissions:</strong> On macOS, go to System Settings, Privacy and Security, Microphone, and confirm Visual Studio Code is enabled. On Windows, go to Settings, Privacy and security, Microphone, and confirm that &quot;Let desktop apps access your microphone&quot; is on. Without this permission, voice input fails silently.</p>
+</blockquote>
+<h3 id="editor-dictation---type-with-your-voice">Editor Dictation - Type with Your Voice</h3>
+<p>Editor dictation lets you speak and have your words appear as text wherever your cursor is. This works in the code editor, the SCM commit input box, and the comments field when reviewing pull requests.</p>
+<table>
+<thead>
+<tr>
+<th scope="col">Action</th>
+<th scope="col">Windows/Linux</th>
+<th scope="col">macOS</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Start dictation</td>
+<td><code>Ctrl+Alt+V</code></td>
+<td><code>Cmd+Alt+V</code></td>
+</tr>
+<tr>
+<td>Stop dictation</td>
+<td><code>Escape</code></td>
+<td><code>Escape</code></td>
+</tr>
+<tr>
+<td>Walky-talky mode</td>
+<td>Press and hold <code>Ctrl+Alt+V</code>, speak, release to stop</td>
+<td>Press and hold <code>Cmd+Alt+V</code>, speak, release to stop</td>
+</tr>
+</tbody></table>
+<p>When dictation is active, a small microphone icon appears at the cursor position. Speak naturally and your words are transcribed into text. Press <code>Escape</code> to stop.</p>
+<p><strong>Walky-talky mode:</strong> Press and hold the keyboard shortcut instead of tapping it. Voice recognition stays active as long as you hold the keys. When you release, dictation stops automatically. This is the fastest way to dictate a short phrase.</p>
+<details>
+<summary>Screen reader users (NVDA / JAWS / VoiceOver)</summary>
+
+<ul>
+<li>When dictation starts, the accessibility signal <code>voiceRecordingStarted</code> plays (if configured in section 17). Your screen reader may also announce &quot;Recording started.&quot;</li>
+<li>Dictated text appears at the cursor position and is announced by your screen reader as it is inserted, just like typed text.</li>
+<li>Press <code>Escape</code> to stop. The <code>voiceRecordingStopped</code> signal plays.</li>
+<li>If you do not hear dictated text being announced, check that your screen reader is in focus mode (NVDA: <code>Insert+Space</code> to toggle) so it reads editor changes.</li>
+</ul>
+</details>
+
+<details>
+<summary>Low vision users</summary>
+
+<ul>
+<li>The microphone icon that appears at the cursor is small. At 200%+ zoom it may be hard to spot, but dictation works regardless of whether you see the icon.</li>
+<li>Dictated text appears at your configured editor font size with full contrast - no ghost text or gray previews.</li>
+<li><strong>Check status bar:</strong> When dictation is active, the status bar shows a recording indicator. Press <code>F6</code> to cycle to the status bar and confirm.</li>
+</ul>
+</details>
+
+<h3 id="voice-in-copilot-chat---talk-to-copilot">Voice in Copilot Chat - Talk to Copilot</h3>
+<p>Instead of typing prompts, you can speak them. This works in the Chat panel, inline chat, and quick chat.</p>
+<table>
+<thead>
+<tr>
+<th scope="col">Action</th>
+<th scope="col">Windows/Linux</th>
+<th scope="col">macOS</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Start voice chat (auto-selects best location)</td>
+<td><code>Ctrl+I</code></td>
+<td><code>Cmd+I</code></td>
+</tr>
+<tr>
+<td>Start voice in Chat panel specifically</td>
+<td>Command Palette: &quot;Chat: Voice Chat in Chat View&quot;</td>
+<td>Same</td>
+</tr>
+<tr>
+<td>Start inline voice chat</td>
+<td>Command Palette: &quot;Chat: Inline Voice Chat&quot;</td>
+<td>Same</td>
+</tr>
+<tr>
+<td>Start quick voice chat</td>
+<td>Command Palette: &quot;Chat: Quick Voice Chat&quot;</td>
+<td>Same</td>
+</tr>
+</tbody></table>
+<p>When voice chat is active, a microphone icon appears in the chat input field. Speak your prompt naturally. When you pause, the prompt is automatically submitted.</p>
+<blockquote>
+<p><strong>Automatic submission:</strong> By default, VS Code submits your voice prompt after a pause. You can adjust the wait time with the <code>accessibility.voice.speechTimeout</code> setting (in milliseconds), or set it to <code>0</code> to disable auto-submit entirely so you can review before sending.</p>
+</blockquote>
+<p><strong>Walky-talky mode in chat:</strong> Press and hold <code>Ctrl+I</code> (Mac: <code>Cmd+I</code>). Speak your prompt. When you release the keys, voice recognition stops and the prompt is submitted automatically.</p>
+<details>
+<summary>Screen reader users (NVDA / JAWS / VoiceOver)</summary>
+
+<ul>
+<li><code>Ctrl+I</code> with Speech installed starts voice input. If the Chat view is not focused, it opens the Chat view. If you are in the editor, it opens inline chat.</li>
+<li>Speak your prompt instead of typing. Your screen reader announces the transcribed text as it appears in the input field.</li>
+<li>When the response arrives, press <code>Alt+F2</code> (Accessible View) to read it at your own pace, just as you would with a typed prompt.</li>
+<li>The automatic submission after a pause may catch you off guard. If you need more time to compose a multi-sentence prompt, set <code>accessibility.voice.speechTimeout</code> to <code>0</code> and submit manually with <code>Ctrl+Enter</code>.</li>
+</ul>
+</details>
+
+<h3 id="text-to-speech---listen-to-chat-responses">Text-to-Speech - Listen to Chat Responses</h3>
+<p>VS Code Speech can read Copilot Chat responses aloud. Each chat response shows a speaker icon you can activate to hear that specific response.</p>
+<h4 id="automatic-read-aloud-after-voice-input">Automatic read-aloud after voice input</h4>
+<p>Enable this setting to have every Chat response automatically spoken aloud when you used voice to ask the question:</p>
+<pre><code class="hljs language-json"><span class="hljs-punctuation">{</span>
+  <span class="hljs-attr">&quot;accessibility.voice.autoSynthesize&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-literal"><span class="hljs-keyword">true</span></span>
+<span class="hljs-punctuation">}</span></code></pre>
+<p>When auto-synthesize is on:</p>
+<ol>
+<li>You speak a question using voice chat</li>
+<li>Copilot responds in text</li>
+<li>The response is automatically read aloud</li>
+<li>To stop playback mid-sentence, press <code>Escape</code> or activate the stop icon</li>
+</ol>
+<h4 id="manual-read-aloud-for-any-response">Manual read-aloud for any response</h4>
+<p>Even without <code>autoSynthesize</code>, every Chat response has a speaker icon. Activate it to hear that specific response read aloud. This works for responses from typed prompts too, not just voice prompts.</p>
+<details>
+<summary>Screen reader users (NVDA / JAWS / VoiceOver)</summary>
+
+<ul>
+<li>Text-to-speech uses a separate audio channel from your screen reader. Both may speak at the same time, which can be confusing.</li>
+<li><strong>Recommended approach:</strong> If you use a screen reader, you may prefer to keep <code>autoSynthesize</code> off and use Accessible View (<code>Alt+F2</code>) to read responses yourself. The text-to-speech voice is more useful for sighted users who want a hands-free experience.</li>
+<li>If you do want to try text-to-speech alongside your screen reader, reduce your screen reader volume or temporarily mute it while Copilot speaks.</li>
+</ul>
+</details>
+
+<h3 id="quothey-codequot---hands-free-activation">&quot;Hey Code&quot; - Hands-Free Activation</h3>
+<p>You can configure VS Code to listen continuously for the wake phrase &quot;Hey Code&quot; to start a voice chat session without touching the keyboard.</p>
+<p>Enable it in Settings:</p>
+<pre><code class="hljs language-json"><span class="hljs-punctuation">{</span>
+  <span class="hljs-attr">&quot;accessibility.voice.keywordActivation&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;chatInView&quot;</span>
+<span class="hljs-punctuation">}</span></code></pre>
+<table>
+<thead>
+<tr>
+<th scope="col">Setting value</th>
+<th scope="col">What happens when you say &quot;Hey Code&quot;</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>&quot;off&quot;</code></td>
+<td>Disabled (default)</td>
+</tr>
+<tr>
+<td><code>&quot;chatInView&quot;</code></td>
+<td>Opens voice chat in the Chat view</td>
+</tr>
+<tr>
+<td><code>&quot;quickChat&quot;</code></td>
+<td>Opens voice quick chat (floating)</td>
+</tr>
+<tr>
+<td><code>&quot;inlineChat&quot;</code></td>
+<td>Opens voice inline chat in the editor</td>
+</tr>
+<tr>
+<td><code>&quot;chatInContext&quot;</code></td>
+<td>Opens voice chat in whichever chat location is most relevant</td>
+</tr>
+</tbody></table>
+<p>When &quot;Hey Code&quot; listening is active, a microphone icon appears in the status bar to show that VS Code is listening for the wake phrase.</p>
+<blockquote>
+<p><strong>Privacy note:</strong> Even with &quot;Hey Code&quot; enabled, all processing is local. No audio leaves your machine. The extension listens for the wake phrase only and starts transcription only after detecting it.</p>
+</blockquote>
+<h3 id="language-configuration">Language Configuration</h3>
+<p>VS Code Speech supports 26 languages. By default it matches your VS Code display language. To change it:</p>
+<pre><code class="hljs language-json"><span class="hljs-punctuation">{</span>
+  <span class="hljs-attr">&quot;accessibility.voice.speechLanguage&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;en-US&quot;</span>
+<span class="hljs-punctuation">}</span></code></pre>
+<p>When you start speech recognition for the first time with a new language, VS Code may install an additional language extension automatically.</p>
+<h3 id="all-voice-settings-reference">All Voice Settings Reference</h3>
+<table>
+<thead>
+<tr>
+<th scope="col">Setting</th>
+<th scope="col">Default</th>
+<th scope="col">Purpose</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>accessibility.voice.speechLanguage</code></td>
+<td><code>&quot;auto&quot;</code></td>
+<td>Language for speech recognition and synthesis. <code>&quot;auto&quot;</code> uses your VS Code display language.</td>
+</tr>
+<tr>
+<td><code>accessibility.voice.speechTimeout</code></td>
+<td><code>1250</code></td>
+<td>Milliseconds of silence before auto-submitting a voice chat prompt. Set to <code>0</code> to disable auto-submit.</td>
+</tr>
+<tr>
+<td><code>accessibility.voice.autoSynthesize</code></td>
+<td><code>false</code></td>
+<td>Automatically read Chat responses aloud when voice was used as input.</td>
+</tr>
+<tr>
+<td><code>accessibility.voice.keywordActivation</code></td>
+<td><code>&quot;off&quot;</code></td>
+<td>Enable &quot;Hey Code&quot; wake phrase. Values: <code>&quot;off&quot;</code>, <code>&quot;chatInView&quot;</code>, <code>&quot;quickChat&quot;</code>, <code>&quot;inlineChat&quot;</code>, <code>&quot;chatInContext&quot;</code>.</td>
+</tr>
+</tbody></table>
+<h3 id="all-voice-commands-reference">All Voice Commands Reference</h3>
+<table>
+<thead>
+<tr>
+<th scope="col">Command</th>
+<th scope="col">Default shortcut</th>
+<th scope="col">What it does</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Voice: Start Dictation in Editor</td>
+<td><code>Ctrl+Alt+V</code> (Mac: <code>Cmd+Alt+V</code>)</td>
+<td>Begin dictating text at the cursor</td>
+</tr>
+<tr>
+<td>Voice: Stop Dictation in Editor</td>
+<td><code>Escape</code></td>
+<td>Stop dictation</td>
+</tr>
+<tr>
+<td>Chat: Start Voice Chat</td>
+<td><code>Ctrl+I</code> (Mac: <code>Cmd+I</code>)</td>
+<td>Start voice input in the most appropriate chat location</td>
+</tr>
+<tr>
+<td>Chat: Voice Chat in Chat View</td>
+<td>None</td>
+<td>Start voice chat specifically in the Chat panel</td>
+</tr>
+<tr>
+<td>Chat: Inline Voice Chat</td>
+<td>None</td>
+<td>Start voice chat inline in the editor</td>
+</tr>
+<tr>
+<td>Chat: Quick Voice Chat</td>
+<td>None</td>
+<td>Start voice chat in the floating quick chat</td>
+</tr>
+<tr>
+<td>Chat: Stop Listening and Submit</td>
+<td>None</td>
+<td>End voice input and submit the prompt</td>
+</tr>
+<tr>
+<td>Chat: Read Aloud</td>
+<td>None</td>
+<td>Read a specific chat response using text-to-speech</td>
+</tr>
+<tr>
+<td>Chat: Stop Reading Aloud</td>
+<td><code>Escape</code></td>
+<td>Stop text-to-speech playback</td>
+</tr>
+</tbody></table>
+<h3 id="custom-keybindings-for-voice">Custom Keybindings for Voice</h3>
+<p>You can assign your own shortcuts for voice commands. Open the Keyboard Shortcuts editor (<code>Ctrl+K Ctrl+S</code>) and search for &quot;voice&quot; or &quot;dictation&quot;. Example custom keybinding in <code>keybindings.json</code>:</p>
+<pre><code class="hljs language-json"><span class="hljs-punctuation">[</span>
+  <span class="hljs-punctuation">{</span>
+    <span class="hljs-attr">&quot;key&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;ctrl+u&quot;</span><span class="hljs-punctuation">,</span>
+    <span class="hljs-attr">&quot;command&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;workbench.action.chat.startVoiceChat&quot;</span><span class="hljs-punctuation">,</span>
+    <span class="hljs-attr">&quot;when&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;!voiceChatInProgress&quot;</span>
+  <span class="hljs-punctuation">}</span><span class="hljs-punctuation">,</span>
+  <span class="hljs-punctuation">{</span>
+    <span class="hljs-attr">&quot;key&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;ctrl+u&quot;</span><span class="hljs-punctuation">,</span>
+    <span class="hljs-attr">&quot;command&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;workbench.action.chat.stopListeningAndSubmit&quot;</span><span class="hljs-punctuation">,</span>
+    <span class="hljs-attr">&quot;when&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;voiceChatInProgress&quot;</span>
+  <span class="hljs-punctuation">}</span><span class="hljs-punctuation">,</span>
+  <span class="hljs-punctuation">{</span>
+    <span class="hljs-attr">&quot;key&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;ctrl+d&quot;</span><span class="hljs-punctuation">,</span>
+    <span class="hljs-attr">&quot;command&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;workbench.action.editorDictation.start&quot;</span><span class="hljs-punctuation">,</span>
+    <span class="hljs-attr">&quot;when&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;!editorDictation.inProgress&quot;</span>
+  <span class="hljs-punctuation">}</span><span class="hljs-punctuation">,</span>
+  <span class="hljs-punctuation">{</span>
+    <span class="hljs-attr">&quot;key&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;ctrl+d&quot;</span><span class="hljs-punctuation">,</span>
+    <span class="hljs-attr">&quot;command&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;workbench.action.editorDictation.stop&quot;</span><span class="hljs-punctuation">,</span>
+    <span class="hljs-attr">&quot;when&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;editorDictation.inProgress&quot;</span>
+  <span class="hljs-punctuation">}</span>
+<span class="hljs-punctuation">]</span></code></pre>
+<p>The <code>when</code> clauses ensure the same key toggles the feature on and off.</p>
+<h3 id="supported-platforms">Supported Platforms</h3>
+<table>
+<thead>
+<tr>
+<th scope="col">Platform</th>
+<th scope="col">Architecture</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Windows</td>
+<td>x64, ARM</td>
+</tr>
+<tr>
+<td>macOS</td>
+<td>x64 (Intel), ARM (Apple Silicon)</td>
+</tr>
+<tr>
+<td>Linux</td>
+<td>x64, ARM32, ARM64 (Ubuntu 20.04/22.04/24.04, Debian 11/12, RHEL 8, CentOS 8)</td>
+</tr>
+</tbody></table>
+<p>On Linux, the extension requires the ALSA shared library (<code>libasound</code>). Install it with <code>sudo apt install libasound2</code> on Debian/Ubuntu if it is not already present.</p>
+<hr>
+<h2 id="19-markdown-authoring-in-vs-code">19. Markdown Authoring in VS Code</h2>
+<p>You write Markdown in nearly every challenge of this workshop -- issue descriptions, pull request bodies, README updates, and agent files. VS Code has built-in tools and extensions that make Markdown authoring faster, catch formatting mistakes before you commit, and work well with screen readers and keyboard navigation.</p>
+<h3 id="markdown-preview">Markdown Preview</h3>
+<p>VS Code includes a live Markdown preview so you can see rendered output alongside your source.</p>
+<ul>
+<li><strong>Side-by-side preview:</strong> Press <code>Ctrl+K V</code> (Mac: <code>Cmd+K V</code>) to open a preview pane to the right of your editor. As you type, the preview updates automatically.</li>
+<li><strong>Full preview:</strong> Press <code>Ctrl+Shift+V</code> (Mac: <code>Cmd+Shift+V</code>) to replace the editor tab with a rendered preview. Press the same shortcut again to return to the source.</li>
+<li><strong>Scroll sync:</strong> The preview scrolls in sync with the editor by default. If you scroll in the source, the preview follows.</li>
+</ul>
+<blockquote>
+<p><strong>Screen reader tip:</strong> The preview pane renders HTML, so your screen reader announces headings, links, and list items using their semantic roles. This is a quick way to verify that your heading hierarchy is correct -- listen for &quot;heading level 2,&quot; &quot;heading level 3,&quot; and so on. Switch between the editor and preview panes with <code>Ctrl+1</code> and <code>Ctrl+2</code>.</p>
+</blockquote>
+<h3 id="the-markdownlint-extension">The markdownlint Extension</h3>
+<p>The <strong>markdownlint</strong> extension (identifier: <code>DavidAnson.vscode-markdownlint</code>) catches common Markdown mistakes as you type, the same way a spell checker catches typos.</p>
+<p><strong>What it catches:</strong></p>
+<ul>
+<li>Heading levels that skip (jumping from <code>##</code> to <code>####</code>)</li>
+<li>Missing blank lines before and after headings, lists, and code blocks</li>
+<li>Inconsistent list markers (mixing <code>-</code> and <code>*</code>)</li>
+<li>Trailing spaces and hard tabs</li>
+<li>Bare URLs that should be wrapped in angle brackets or link syntax</li>
+</ul>
+<p><strong>Installing markdownlint:</strong></p>
+<ol>
+<li>Open Extensions: <code>Ctrl+Shift+X</code> (Mac: <code>Cmd+Shift+X</code>)</li>
+<li>Search for <strong>markdownlint</strong></li>
+<li>Install the one by <strong>David Anson</strong></li>
+</ol>
+<p>Once installed, problems appear as wavy underlines in the editor and as entries in the Problems panel (<code>Ctrl+Shift+M</code>). Each entry includes the rule number (such as MD022 or MD032) and a short description.</p>
+<p><strong>Configuring rules:</strong> If a rule does not fit your project, create a <code>.markdownlint.json</code> file in the repository root:</p>
+<pre><code class="hljs language-json"><span class="hljs-punctuation">{</span>
+  <span class="hljs-attr">&quot;MD013&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-literal"><span class="hljs-keyword">false</span></span><span class="hljs-punctuation">,</span>
+  <span class="hljs-attr">&quot;MD033&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-literal"><span class="hljs-keyword">false</span></span>
+<span class="hljs-punctuation">}</span></code></pre>
+<p>This disables the line-length rule (MD013) and the inline-HTML rule (MD033). The extension picks up the file automatically.</p>
+<blockquote>
+<p><strong>Screen reader tip:</strong> Press <code>Ctrl+Shift+M</code> to open the Problems panel, then use <code>Up</code> and <code>Down</code> arrows to browse warnings. Press <code>Enter</code> on a warning to jump directly to the offending line in the editor. Your screen reader announces the rule number and description for each item.</p>
+</blockquote>
+<h3 id="outline-view-for-headings">Outline View for Headings</h3>
+<p>The Outline view shows the heading structure of your Markdown file as a navigable tree -- think of it as a table of contents you can jump through.</p>
+<ul>
+<li><strong>Open Outline:</strong> Press <code>Ctrl+Shift+O</code> (Mac: <code>Cmd+Shift+O</code>) to open the Go to Symbol quick-pick, which lists every heading in the file. Type to filter, then press <code>Enter</code> to jump.</li>
+<li><strong>Outline panel:</strong> The Outline view also appears in the Explorer sidebar. Press <code>Ctrl+Shift+E</code> to open Explorer, then <code>Tab</code> until you reach the Outline section.</li>
+<li><strong>Breadcrumbs:</strong> The breadcrumb bar at the top of the editor shows your current heading context. Press <code>Ctrl+Shift+.</code> to focus breadcrumbs and navigate between headings.</li>
+</ul>
+<blockquote>
+<p><strong>Screen reader tip:</strong> The Go to Symbol list (<code>Ctrl+Shift+O</code>) announces each heading with its level -- for example, &quot;H2 Installation&quot; or &quot;H3 Configuring rules.&quot; This is the fastest way to verify your document structure without scrolling through the entire file.</p>
+</blockquote>
+<h3 id="copilot-markdown-assistance">Copilot Markdown Assistance</h3>
+<p>If you have GitHub Copilot enabled (see <a href="16-github-copilot.html">Chapter 16</a>), it can help with Markdown authoring directly in the editor.</p>
+<ul>
+<li><strong>Generate tables:</strong> Type a comment like <code>&lt;!-- table comparing Git commands --&gt;</code> and Copilot suggests a formatted Markdown table. Press <code>Tab</code> to accept.</li>
+<li><strong>Fix formatting:</strong> Select a block of text, open inline chat (<code>Ctrl+I</code>), and type &quot;fix the Markdown formatting.&quot; Copilot restructures headings, adds missing blank lines, and corrects list indentation.</li>
+<li><strong>Suggest alt text:</strong> Select an image link like <code>![](screenshot.png)</code>, open inline chat, and ask &quot;suggest alt text for this image.&quot; Copilot proposes a description based on the filename and surrounding context.</li>
+<li><strong>Complete link syntax:</strong> Start typing <code>[link text](</code> and Copilot often autocompletes the URL from your recent files or repository structure.</li>
+</ul>
+<p>These features save time when you are writing issue descriptions or pull request bodies during the workshop challenges.</p>
+<h3 id="markdown-keyboard-shortcuts">Markdown Keyboard Shortcuts</h3>
+<table>
+<thead>
+<tr>
+<th scope="col">Action</th>
+<th scope="col">Windows / Linux</th>
+<th scope="col">macOS</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Toggle Markdown preview (full)</td>
+<td><code>Ctrl+Shift+V</code></td>
+<td><code>Cmd+Shift+V</code></td>
+</tr>
+<tr>
+<td>Open preview to the side</td>
+<td><code>Ctrl+K V</code></td>
+<td><code>Cmd+K V</code></td>
+</tr>
+<tr>
+<td>Go to heading (symbol)</td>
+<td><code>Ctrl+Shift+O</code></td>
+<td><code>Cmd+Shift+O</code></td>
+</tr>
+<tr>
+<td>Open Problems panel</td>
+<td><code>Ctrl+Shift+M</code></td>
+<td><code>Cmd+Shift+M</code></td>
+</tr>
+<tr>
+<td>Toggle bold</td>
+<td><code>Ctrl+B</code></td>
+<td><code>Cmd+B</code></td>
+</tr>
+<tr>
+<td>Toggle italic</td>
+<td><code>Ctrl+I</code> (when text is selected)</td>
+<td><code>Cmd+I</code> (when text is selected)</td>
+</tr>
+<tr>
+<td>Open inline chat (Copilot)</td>
+<td><code>Ctrl+I</code> (when nothing is selected)</td>
+<td><code>Cmd+I</code></td>
+</tr>
+<tr>
+<td>Focus breadcrumbs</td>
+<td><code>Ctrl+Shift+.</code></td>
+<td><code>Cmd+Shift+.</code></td>
+</tr>
+</tbody></table>
+<h3 id="why-this-matters-for-the-workshop">Why This Matters for the Workshop</h3>
+<p>Students write Markdown in every single challenge -- from the very first issue you file in <a href="05-working-with-issues.html">Chapter 5</a> to the agent file you create in <a href="20-build-your-agent.html">Chapter 20</a>. Markdown is also how you write pull request descriptions (<a href="06-working-with-pull-requests.html">Chapter 6</a>) and README files.</p>
+<p>Getting comfortable with preview, linting, and navigation tools means fewer formatting mistakes, faster editing, and more confidence that your content looks right before you submit it. The markdownlint extension is especially valuable because it catches problems that are invisible when you are reading raw Markdown in a screen reader -- like a skipped heading level or a missing blank line that breaks a list.</p>
+<p>Install markdownlint now. Open a Markdown file. Press <code>Ctrl+Shift+M</code> to check for warnings. Fix one. That small habit pays off in every challenge ahead.</p>
+<h2 id="if-you-get-stuck">If You Get Stuck</h2>
+<table>
+<thead>
+<tr>
+<th scope="col">Problem</th>
+<th scope="col">What to do</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Screen Reader Mode not working</td>
+<td>Press <code>Shift+Alt+F1</code> or open Command Palette &gt; &quot;Toggle Screen Reader Mode&quot;. Restart VS Code if needed.</td>
+</tr>
+<tr>
+<td>Terminal does not announce output</td>
+<td>Press <code>Ctrl+Shift+A</code> to open Accessible Terminal Buffer. Or use <strong>Accessible View</strong> (<code>Shift+Alt+F2</code>) while the terminal is focused.</td>
+</tr>
+<tr>
+<td>Copilot Chat not responding</td>
+<td>Verify you are signed in to GitHub (check Accounts button in Activity Bar). Check that Copilot is enabled in your account settings.</td>
+</tr>
+<tr>
+<td>Problems panel shows no errors</td>
+<td>Open a file first. Some linters only activate when the file type is recognized. Check that extensions (e.g., markdownlint) are installed and enabled.</td>
+</tr>
+<tr>
+<td>Keyboard shortcut does not work</td>
+<td>The shortcut may be remapped. Open Keyboard Shortcuts (<code>Ctrl+K Ctrl+S</code>) and search for the action to find or reset the binding.</td>
+</tr>
+<tr>
+<td>Accessibility Signals not playing</td>
+<td>Go to Settings &gt; search &quot;accessibility signal&quot; &gt; verify the signals you want are set to &quot;on&quot; or &quot;auto&quot;. Check your system audio volume.</td>
+</tr>
+<tr>
+<td>Everything else</td>
+<td>Open Command Palette &gt; &quot;Developer: Toggle Developer Tools&quot; to check the console for errors. Post what you find on your challenge issue.</td>
+</tr>
+</tbody></table>
+<hr>
+<p><em>Next: <a href="13-how-git-works.html">Chapter 13: How Git Works</a></em><br><em>Back: <a href="11-vscode-interface.html">Chapter 11: VS Code Interface</a></em><br><em>Related appendices: <a href="appendix-g-vscode-reference.html">Appendix G: VS Code Reference</a></em></p>
+
+  </main>
+  <footer role="contentinfo" class="site-footer">
+    <p><strong>GIT Going with GitHub</strong> - A workshop by <a href="https://community-access.org">Community Access</a></p>
+    <p><a href="https://github.com/community-access/git-going-with-github">View on GitHub</a> · <a href="https://community-access.org">community-access.org</a></p>
+  </footer>
+  </body>
+</html>

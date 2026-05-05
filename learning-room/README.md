@@ -21,7 +21,7 @@ Everything in this repository is designed for learning. The files in `docs/` hav
 
 ## How to Contribute
 
-1. Open the canonical challenge list: `learning-room/docs/CHALLENGES.md`
+1. Open the canonical challenge list: `docs/CHALLENGES.md`
 2. Find your assigned issue (Issues tab → filter by "Assignee: me" or search your username in issue title)
 3. Claim the issue with a comment: `I'd like to try this!`
 4. Read the issue description - it tells you which file to edit and what to fix
@@ -70,20 +70,25 @@ The bot isn't always right! If you believe feedback is incorrect:
 2. Request human review
 3. Facilitators can override bot checks
 
-[**Read the full Automation Guide →**](AUTOMATION.md)
+[**Read the Student Guide →**](.github/STUDENT_GUIDE.md)
 
 
 ## Skills & Progression
 
 As you complete challenges, you'll:
-- **Track progress** through skill levels (Beginner → Intermediate → Advanced → Expert)
-- **Unlock new challenges** when you reach milestones (based on merged PRs)
-- **Earn badges** for specific achievements (Markdown Master Accessibility Advocate, etc.)
-- **Celebrate milestones** (1st, 5th, 10th PR merges)
+- **Track progress** through skill levels (Explorer, Contributor, Collaborator, Operator, Reviewer, Agent Navigator)
+- **Unlock new challenges** when you reach milestones
+- **Earn badges** for specific achievements (Branch Builder, PR Pioneer, Conflict Resolver, and more)
+- **Celebrate milestones** (first challenge, Day 1 complete, all challenges complete)
 
-[**View Learning Paths →**](../.github/docs/LEARNING_PATHS.md)  
-[**View Available Challenges →**](docs/CHALLENGES.md)  
-[**View Group Challenges →**](docs/GROUP_CHALLENGES.md)
+[**View Available Challenges →**](docs/CHALLENGES.md)
+
+## Stuck? Use Guided References
+
+- [Solutions Index](docs/solutions/README.md) - challenge-by-challenge worked examples
+- [Skills-Inspired Bonus Scenarios](docs/skills-bonus-scenarios.md) - optional advanced practice adapted from GitHub Skills
+
+Use these references after you attempt the challenge yourself. They are designed to unblock you, not replace your own practice.
 
 
 ## Study Groups

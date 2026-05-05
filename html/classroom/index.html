@@ -1,0 +1,678 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="GIT Going with GitHub - A two-day accessible open source workshop by Community Access">
+  <title>Workshop Deployment Guide - GIT Going with GitHub</title>
+  <link rel="stylesheet" href="./styles/github-markdown.css">
+  <link rel="stylesheet" href="./styles/highlight.css">
+  <link rel="stylesheet" href="./styles/custom.css">
+  <style>
+    .markdown-body {
+      box-sizing: border-box;
+      min-width: 200px;
+      max-width: 980px;
+      margin: 0 auto;
+      padding: 45px;
+    }
+    @media (max-width: 767px) {
+      .markdown-body {
+        padding: 15px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+  <header class="site-header" role="banner">
+    <div class="site-header-inner">
+      <nav aria-label="Breadcrumb" class="breadcrumb">
+        <a href="./index.html">Home</a> <span aria-hidden="true">›</span> <span aria-current="page">Workshop Deployment Guide</span>
+      </nav>
+      <div class="header-actions">
+        <a href="https://github.com/Community-Access/git-going-with-github/wiki" class="wiki-link" target="_blank" rel="noopener noreferrer">
+          <svg aria-hidden="true" focusable="false" width="16" height="16" viewBox="0 0 16 16" fill="currentColor">
+            <path d="M1.75 1h8.5c.966 0 1.75.784 1.75 1.75v5.5A1.75 1.75 0 0 1 10.25 10H7.06l-2.573 2.573A1.458 1.458 0 0 1 2 11.543V10h-.25A1.75 1.75 0 0 1 0 8.25v-5.5C0 1.784.784 1 1.75 1ZM1.5 2.75v5.5c0 .138.112.25.25.25h1a.75.75 0 0 1 .75.75v2.19l2.72-2.72a.749.749 0 0 1 .53-.22h3.5a.25.25 0 0 0 .25-.25v-5.5a.25.25 0 0 0-.25-.25h-8.5a.25.25 0 0 0-.25.25Zm13 2a.25.25 0 0 0-.25-.25h-.5a.75.75 0 0 1 0-1.5h.5c.966 0 1.75.784 1.75 1.75v5.5A1.75 1.75 0 0 1 14.25 12H14v1.543a1.457 1.457 0 0 1-2.487 1.03L9.22 12.28a.749.749 0 1 1 1.06-1.06l2.22 2.22v-2.19a.75.75 0 0 1 .75-.75h.25a.25.25 0 0 0 .25-.25v-5.5Z"/>
+          </svg>
+          Wiki
+        </a>
+        <form role="search" class="search-form" action="./search.html" method="get">
+        <label for="site-search" class="search-label">Search docs</label>
+        <input
+          type="search"
+          id="site-search"
+          class="search-input"
+          name="q"
+          placeholder="Search docs…"
+          autocomplete="off"
+          aria-label="Search documentation"
+        >
+        <button type="submit" class="search-button" aria-label="Submit search">
+          <svg aria-hidden="true" focusable="false" width="16" height="16" viewBox="0 0 16 16" fill="currentColor">
+            <path d="M10.68 11.74a6 6 0 0 1-7.922-8.982 6 6 0 0 1 8.982 7.922l3.04 3.04a.749.749 0 0 1-.326 1.275.749.749 0 0 1-.734-.215ZM11.5 7a4.499 4.499 0 1 0-8.997 0A4.499 4.499 0 0 0 11.5 7Z"/>
+          </svg>
+        </button>
+      </form>
+      </div>
+    </div>
+  </header>
+  <main id="main-content" class="markdown-body">
+    <h1 id="workshop-deployment-guide">Workshop Deployment Guide</h1>
+<blockquote>
+<p>Single, end-to-end guide for deploying a new Git Going with GitHub workshop cohort. Covers everything from creating the classroom through post-workshop teardown. This is the only deployment document you need.</p>
+</blockquote>
+<h2 id="how-the-workshop-works">How the Workshop Works</h2>
+<p>Each student gets their own <strong>private repository</strong> created by GitHub Classroom from the <code>learning-room-template</code>. Inside that repo, three automation systems guide the student through all 21 challenges without facilitator intervention:</p>
+<ol>
+<li><strong>Aria</strong> (the PR Validation Bot) -- welcomes first-time contributors, validates PR structure, responds to <code>@aria-bot</code> help requests, and provides real-time feedback on every push</li>
+<li><strong>Student Progression Bot</strong> -- creates the first challenge when triggered by a facilitator script, then creates the next challenge issue whenever a student closes the current challenge issue</li>
+<li><strong>Autograders</strong> -- automated tests that verify objective evidence of challenge completion (branch exists, conflict markers removed, template file valid, agent file structured correctly)</li>
+</ol>
+<p>No shared student repository. Students do not clone the template or configure permissions. The facilitator&#39;s deployment work is creating the classroom and two assignments in the GitHub Classroom web UI, then running the seeding scripts after each student repo is created.</p>
+<p>Students only need a GitHub account. They do <strong>not</strong> need to create an organization, become members of <code>Community-Access</code>, or change GitHub Actions settings. Organization and repository workflow permissions are facilitator responsibilities.</p>
+<h3 id="architecture">Architecture</h3>
+<pre><code class="hljs language-text">Community-Access/learning-room-template (template repo)
+    |
+    +--&gt; GitHub Classroom creates one private repo per student
+    |       learning-room-student-a
+    |       learning-room-student-b
+    |       ...
+    |
+    +--&gt; Each student repo contains:
+    |       Aria (pr-validation-bot.yml)          -- PR feedback and help responses
+    |       Student Progression Bot               -- Unlocks challenges sequentially
+    |       Autograders                            -- Validates specific challenges
+    |       Issue templates (16 core + 5 bonus)   -- Challenge definitions
+    |       Feedback PR (created by Classroom)     -- Facilitator async comments
+    |
+   +--&gt; Student flow:
+   |       Accept invite --&gt; repo created --&gt; facilitator seeds Challenge 1
+    |       --&gt; complete challenge --&gt; close issue --&gt; next challenge unlocked
+    |       --&gt; repeat through all challenges
+    |
+    +--&gt; Capstone (Challenge 16):
+            Student forks Community-Access/accessibility-agents
+            Opens cross-fork PR (validated by autograder-capstone.yml)</code></pre>
+<h3 id="two-participation-paths">Two Participation Paths</h3>
+<table>
+<thead>
+<tr>
+<th scope="col">Path</th>
+<th scope="col">Who it is for</th>
+<th scope="col">Assignment</th>
+<th scope="col">Entry point</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><strong>Day 1 + Day 2</strong></td>
+<td>Participants starting from scratch</td>
+<td>Assignment 1 (Day 1) then Assignment 2 (Day 2)</td>
+<td><a href="../admin/DAY1_AGENDA.html">Day 1 Agenda</a></td>
+</tr>
+<tr>
+<td><strong>Day 2 only</strong></td>
+<td>Participants with GitHub fundamentals</td>
+<td>Assignment 2 only</td>
+<td><a href="../admin/DAY2_QUICK_START.html">Day 2 Quick Start</a> then <a href="../admin/DAY2_AGENDA.html">Day 2 Agenda</a></td>
+</tr>
+</tbody></table>
+<p>Day-2-only participants skip Assignment 1 entirely. They verify readiness using the <a href="../admin/DAY2_QUICK_START.html">Day 2 Quick Start</a> self-assessment, then accept only the Day 2 invite link.</p>
+<h3 id="what-is-in-this-directory">What Is in This Directory</h3>
+<table>
+<thead>
+<tr>
+<th scope="col">File</th>
+<th scope="col">Purpose</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><a href="assignment-day1-you-belong-here.html">assignment-day1-you-belong-here.md</a></td>
+<td>Assignment description for Day 1 (paste into Classroom UI)</td>
+</tr>
+<tr>
+<td><a href="assignment-day2-you-can-build-this.html">assignment-day2-you-can-build-this.md</a></td>
+<td>Assignment description for Day 2 (paste into Classroom UI)</td>
+</tr>
+<tr>
+<td><a href="autograding-day1.json">autograding-day1.json</a></td>
+<td>Test definitions for Day 1 autograder</td>
+</tr>
+<tr>
+<td><a href="autograding-day2.json">autograding-day2.json</a></td>
+<td>Test definitions for Day 2 autograder</td>
+</tr>
+<tr>
+<td><a href="grading-guide.html">grading-guide.md</a></td>
+<td>Facilitator rubric for all 21 challenges</td>
+</tr>
+<tr>
+<td><a href="roster-template.csv">roster-template.csv</a></td>
+<td>Starter CSV for importing student roster</td>
+</tr>
+<tr>
+<td><a href="student-progression.yml">student-progression.yml</a></td>
+<td>Reference copy of the progression bot workflow</td>
+</tr>
+<tr>
+<td><a href="HUMAN_TEST_MATRIX.html">HUMAN_TEST_MATRIX.md</a></td>
+<td>End-to-end human walkthrough for all 16 core and 5 bonus challenges</td>
+</tr>
+<tr>
+<td><a href="teardown-checklist.html">teardown-checklist.md</a></td>
+<td>Post-workshop cleanup steps</td>
+</tr>
+</tbody></table>
+<hr>
+<h2 id="prerequisites">Prerequisites</h2>
+<p>Before starting, confirm the following:</p>
+<ul>
+<li><input type="checkbox" disabled> <input aria-label="You have" disabled="" type="checkbox"> You have <strong>Owner</strong> or <strong>Admin</strong> access to the Community-Access GitHub organization</li>
+<li><input type="checkbox" disabled> <input aria-label="Your facilitator GitHub account has a verified email address" disabled="" type="checkbox"> Your facilitator GitHub account has a verified email address</li>
+<li><input type="checkbox" disabled> <input aria-label="The" disabled="" type="checkbox"> The <code>Community-Access/learning-room-template</code> repository exists and is public (or the classroom org has read access)</li>
+<li><input type="checkbox" disabled> <input aria-label="The template repo has GitHub Actions enabled with" disabled="" type="checkbox"> The template repo has GitHub Actions enabled with <strong>Read and write</strong> permissions for <code>GITHUB_TOKEN</code> (Settings &gt; Actions &gt; General) -- Aria needs this to post comments</li>
+<li><input type="checkbox" disabled> <input aria-label="&quot;Allow GitHub Actions to create and approve pull requests&quot; is checked in the template repo" disabled="" type="checkbox"> &quot;Allow GitHub Actions to create and approve pull requests&quot; is checked in the template repo</li>
+<li><input type="checkbox" disabled> <input aria-label="You have the student list (GitHub usernames required; real names optional)" disabled="" type="checkbox"> You have the student list (GitHub usernames required; real names optional)</li>
+<li><input type="checkbox" disabled> <input aria-label="You have confirmed dates for Day 1 and Day 2" disabled="" type="checkbox"> You have confirmed dates for Day 1 and Day 2</li>
+</ul>
+<hr>
+<h2 id="step-1-create-the-classroom">Step 1: Create the Classroom</h2>
+<ol>
+<li>Go to <a href="https://classroom.github.com">classroom.github.com</a> and sign in with your facilitator account</li>
+<li>Click <strong>New classroom</strong></li>
+<li>Select the <strong>Community-Access</strong> organization (if you do not see it, accept the GitHub Classroom invitation from your org admin)</li>
+<li>Name the classroom using this pattern: <code>Git Going - [Cohort Name] - [Month Year]</code><ul>
+<li>Example: <code>Git Going - Spring Cohort - March 2026</code></li>
+<li>Example: <code>Git Going - Seattle Accessibility Bootcamp - June 2026</code></li>
+</ul>
+</li>
+<li><strong>Skip the TA / co-teacher setup</strong> -- facilitators use organization-level permissions instead</li>
+<li>Click <strong>Create classroom</strong></li>
+</ol>
+<hr>
+<h2 id="step-2-import-the-student-roster">Step 2: Import the Student Roster</h2>
+<p>The roster links GitHub usernames to student identities so facilitators can track progress on the classroom dashboard.</p>
+<ol>
+<li>Open the classroom you just created</li>
+<li>Go to <strong>Settings</strong> (gear icon) then <strong>Roster Management</strong></li>
+<li>Click <strong>Import from CSV</strong></li>
+<li>Upload a completed version of <a href="roster-template.csv">roster-template.csv</a>:</li>
+</ol>
+<pre><code class="hljs">identifier,name,email
+octocat,The Octocat,<span class="hljs-symbol">octocat@</span>example.com
+student-a,Alice Student,<span class="hljs-symbol">alice@</span>example.com</code></pre>
+<ul>
+<li>The <code>identifier</code> column <strong>must</strong> match the student&#39;s exact GitHub username</li>
+<li><code>name</code> and <code>email</code> are optional but helpful for facilitator reference</li>
+<li>Students not on the roster can still accept; they appear as &quot;unidentified&quot;</li>
+<li>Verify all expected students appear in the roster list</li>
+<li>Students can be added later -- the roster is not locked</li>
+</ul>
+<hr>
+<h2 id="step-3-create-assignment-1----you-belong-here-day-1">Step 3: Create Assignment 1 -- You Belong Here (Day 1)</h2>
+<p>This assignment covers Challenges 1 through 9. When a student accepts the invite link, GitHub Classroom creates their private repo from the template. After acceptance, facilitators run <code>scripts/classroom/Seed-LearningRoomChallenge.ps1</code> to trigger the Student Progression Bot and create Challenge 1. As the student closes each challenge issue, the bot unlocks the next one.</p>
+<p><strong>Day-2-only participants skip this assignment entirely.</strong></p>
+<p>From the classroom dashboard, click <strong>New assignment</strong> and fill in the assignment settings:</p>
+<table>
+<thead>
+<tr>
+<th scope="col">Setting</th>
+<th scope="col">Value</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><strong>Title</strong></td>
+<td>You Belong Here</td>
+</tr>
+<tr>
+<td><strong>Type</strong></td>
+<td>Individual</td>
+</tr>
+<tr>
+<td><strong>Visibility</strong></td>
+<td>Private (student repos visible only to the student and facilitators)</td>
+</tr>
+<tr>
+<td><strong>Template repository</strong></td>
+<td><code>Community-Access/learning-room-template</code></td>
+</tr>
+<tr>
+<td><strong>Grant students admin access</strong></td>
+<td>No</td>
+</tr>
+<tr>
+<td><strong>Enable feedback pull requests</strong></td>
+<td>Yes</td>
+</tr>
+<tr>
+<td><strong>Deadline</strong></td>
+<td>End of Day 1 (deadline is soft -- late work is still accepted)</td>
+</tr>
+</tbody></table>
+<p>Then complete the remaining fields:</p>
+<ol>
+<li><strong>Assignment description:</strong> Open <a href="assignment-day1-you-belong-here.html">assignment-day1-you-belong-here.md</a>, copy everything below the HTML metadata comment, and paste it into the description field</li>
+<li><strong>Autograding tests:</strong> Open <a href="autograding-day1.json">autograding-day1.json</a> and add each test entry manually -- for each test in the JSON array, click <strong>Add test</strong>, set the <strong>Test name</strong>, <strong>Run command</strong>, <strong>Comparison</strong>, and <strong>Points</strong> to match the JSON values, and set timeout to 60 seconds per test unless otherwise specified</li>
+<li>Click <strong>Create assignment</strong> -- this generates your Day 1 invite link</li>
+</ol>
+<h3 id="what-the-student-experiences-day-1">What the student experiences (Day 1)</h3>
+<ol>
+<li>Student clicks the invite link</li>
+<li>GitHub Classroom creates their private repo (30-60 seconds)</li>
+<li>Facilitator seeds Challenge 1 (Find Your Way Around) using <code>student-progression.yml</code></li>
+<li>Student completes the challenge, posts evidence, closes the issue</li>
+<li>Progression Bot creates Challenge 2 issue with full instructions</li>
+<li>Student repeats through Challenge 9 (Merge Day)</li>
+<li>Aria provides real-time feedback on every PR along the way</li>
+<li>Autograders validate Challenges 4, 5, 6, 7, and 9 automatically</li>
+</ol>
+<hr>
+<h2 id="step-4-create-assignment-2----you-can-build-this-day-2">Step 4: Create Assignment 2 -- You Can Build This (Day 2)</h2>
+<p>This assignment covers Challenges 10 through 16 plus the 5 bonus challenges. <strong>Both full-workshop and Day-2-only participants accept this assignment.</strong></p>
+<p>Day-2-only participants will not have completed Assignment 1, but Assignment 2 does not depend on Assignment 1 artifacts.</p>
+<p>Click <strong>New assignment</strong> again and fill in the settings:</p>
+<table>
+<thead>
+<tr>
+<th scope="col">Setting</th>
+<th scope="col">Value</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><strong>Title</strong></td>
+<td>You Can Build This</td>
+</tr>
+<tr>
+<td><strong>Type</strong></td>
+<td>Individual</td>
+</tr>
+<tr>
+<td><strong>Visibility</strong></td>
+<td>Private</td>
+</tr>
+<tr>
+<td><strong>Template repository</strong></td>
+<td><code>Community-Access/learning-room-template</code></td>
+</tr>
+<tr>
+<td><strong>Grant students admin access</strong></td>
+<td>No</td>
+</tr>
+<tr>
+<td><strong>Enable feedback pull requests</strong></td>
+<td>Yes</td>
+</tr>
+<tr>
+<td><strong>Deadline</strong></td>
+<td>One week after Day 2 (gives students time for the capstone and bonus challenges)</td>
+</tr>
+</tbody></table>
+<p>Then complete the remaining fields:</p>
+<ol>
+<li><strong>Assignment description:</strong> Use <a href="assignment-day2-you-can-build-this.html">assignment-day2-you-can-build-this.md</a></li>
+<li><strong>Autograding tests:</strong> Use <a href="autograding-day2.json">autograding-day2.json</a></li>
+<li>Click <strong>Create assignment</strong> -- this generates your Day 2 invite link</li>
+</ol>
+<h3 id="what-the-student-experiences-day-2">What the student experiences (Day 2)</h3>
+<ol>
+<li>Student clicks the Day 2 invite link</li>
+<li>GitHub Classroom creates a new private repo for Day 2</li>
+<li>Facilitator seeds Challenge 10 (Go Local) using <code>student-progression.yml</code></li>
+<li>Student clones the repo, works locally, pushes, and closes the issue</li>
+<li>Progression Bot unlocks Challenges 11 through 16 sequentially</li>
+<li>Challenge 16 (Capstone) has the student fork the accessibility-agents repo and open a cross-fork PR</li>
+<li>Bonus challenges (A through E) are available via issue templates for students who finish early</li>
+</ol>
+<hr>
+<h2 id="step-5-share-invite-links">Step 5: Share Invite Links</h2>
+<p>Each assignment generates a unique invite URL.</p>
+<h3 id="where-to-add-the-links">Where to add the links</h3>
+<ol>
+<li>Copy the <strong>Day 1 invite URL</strong> from the assignment page</li>
+<li>In the <code>git-going-with-github</code> repository, open <code>DAY1_AGENDA.md</code> and replace the <code>[INVITE_LINK]</code> placeholder</li>
+<li>Copy the <strong>Day 2 invite URL</strong></li>
+<li>Open <code>DAY2_AGENDA.md</code> and replace its <code>[INVITE_LINK]</code> placeholder</li>
+<li>Optionally, email the invite links directly to students before the workshop</li>
+</ol>
+<h3 id="what-students-see-when-they-click">What students see when they click</h3>
+<ol>
+<li>GitHub shows a &quot;Join classroom&quot; page if they are not already on the roster</li>
+<li>If on the roster, they see &quot;Accept this assignment&quot;</li>
+<li>After accepting, GitHub creates their private repo within 30-60 seconds</li>
+<li>The student&#39;s repository URL follows the pattern: <code>github.com/Community-Access-Classroom/learning-room-[username]</code></li>
+</ol>
+<h3 id="which-links-to-send">Which links to send</h3>
+<table>
+<thead>
+<tr>
+<th scope="col">Participant type</th>
+<th scope="col">Send Day 1 link</th>
+<th scope="col">Send Day 2 link</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Full workshop (Day 1 + Day 2)</td>
+<td>Yes</td>
+<td>Yes</td>
+</tr>
+<tr>
+<td>Day-2-only</td>
+<td>No</td>
+<td>Yes</td>
+</tr>
+</tbody></table>
+<hr>
+<h2 id="step-6-verify-everything-works">Step 6: Verify Everything Works</h2>
+<p>Run this verification with a test account before the workshop. Do not skip this step.</p>
+<h3 id="verification-checklist">Verification checklist</h3>
+<ul>
+<li><input type="checkbox" disabled> <input aria-label="Accept the Day 1 invite with a test GitHub account" disabled="" type="checkbox"> Accept the Day 1 invite with a test GitHub account</li>
+<li><input type="checkbox" disabled> <input aria-label="Verify a student repository was created under the classroom org" disabled="" type="checkbox"> Verify a student repository was created under the classroom org</li>
+<li><input type="checkbox" disabled> <input aria-label="Verify the learning-room template files are present (" disabled="" type="checkbox"> Verify the learning-room template files are present (<code>docs/welcome.md</code>, <code>docs/keyboard-shortcuts.md</code>, <code>docs/setup-guide.md</code>)</li>
+<li><input type="checkbox" disabled> <input aria-label="Verify Challenge 1 issue was created by the Progression Bot after running" disabled="" type="checkbox"> Verify Challenge 1 issue was created by the Progression Bot after running <code>Seed-LearningRoomChallenge.ps1</code></li>
+<li><input type="checkbox" disabled> <input aria-label="Open a test PR with a trivial change" disabled="" type="checkbox"> Open a test PR with a trivial change</li>
+<li><input type="checkbox" disabled> <input aria-label="Verify Aria (PR validation bot) comments within 60 seconds" disabled="" type="checkbox"> Verify Aria (PR validation bot) comments within 60 seconds</li>
+<li><input type="checkbox" disabled> <input aria-label="Verify autograding runs and reports a score" disabled="" type="checkbox"> Verify autograding runs and reports a score</li>
+<li><input type="checkbox" disabled> <input aria-label="Verify a feedback pull request was created by Classroom" disabled="" type="checkbox"> Verify a feedback pull request was created by Classroom</li>
+<li><input type="checkbox" disabled> <input aria-label="Close Challenge 1 and verify Challenge 2 is created by the Progression Bot" disabled="" type="checkbox"> Close Challenge 1 and verify Challenge 2 is created by the Progression Bot</li>
+<li><input type="checkbox" disabled> <input aria-label="Accept the Day 2 invite with the same test account" disabled="" type="checkbox"> Accept the Day 2 invite with the same test account</li>
+<li><input type="checkbox" disabled> <input aria-label="Verify Challenge 10 issue appears in the Day 2 repo" disabled="" type="checkbox"> Verify Challenge 10 issue appears in the Day 2 repo</li>
+<li><input type="checkbox" disabled> <input aria-label="Repeat the PR test for the Day 2 repository" disabled="" type="checkbox"> Repeat the PR test for the Day 2 repository</li>
+<li><input type="checkbox" disabled> <input aria-label="Delete the test student repositories when done" disabled="" type="checkbox"> Delete the test student repositories when done</li>
+</ul>
+<h3 id="seeding-the-first-challenge">Seeding the first challenge</h3>
+<p>After a student accepts the assignment, seed the first challenge from this repository:</p>
+<pre><code class="hljs language-powershell">scripts/classroom/Seed<span class="hljs-literal">-LearningRoomChallenge</span>.ps1 <span class="hljs-literal">-Repository</span> Community<span class="hljs-literal">-Access-Classroom</span>/learning<span class="hljs-literal">-room-studentname</span> <span class="hljs-literal">-Challenge</span> <span class="hljs-number">1</span> <span class="hljs-literal">-Assignee</span> studentname</code></pre>
+<p>For Day 2, use <code>-Challenge 10</code>.</p>
+<h3 id="seeding-peer-simulation">Seeding peer simulation</h3>
+<p>Because each GitHub Classroom repository is private, students cannot automatically see a classmate&#39;s issues or pull requests. To preserve realistic collaboration without exposing private student repos, seed peer-simulation artifacts into each student&#39;s repository:</p>
+<pre><code class="hljs language-powershell">scripts/classroom/Seed<span class="hljs-literal">-PeerSimulation</span>.ps1 <span class="hljs-literal">-Repository</span> Community<span class="hljs-literal">-Access-Classroom</span>/learning<span class="hljs-literal">-room-studentname</span> <span class="hljs-literal">-StudentUsername</span> studentname</code></pre>
+<p>This creates two peer-simulation issues and one peer-simulation pull request. Challenges that ask students to comment, react, review, compare, or practice peer collaboration can use those seeded artifacts. If facilitators intentionally provision real buddy access, students may use real buddy repositories instead.</p>
+<h3 id="triggering-merge-conflict-practice">Triggering merge conflict practice</h3>
+<p>Challenge 7 needs a real conflict. After the student has edited <code>docs/welcome.md</code> on their challenge branch and opened a pull request, run:</p>
+<pre><code class="hljs language-powershell">scripts/classroom/<span class="hljs-built_in">Start-MergeConflictChallenge</span>.ps1 <span class="hljs-literal">-Repository</span> Community<span class="hljs-literal">-Access-Classroom</span>/learning<span class="hljs-literal">-room-studentname</span> <span class="hljs-literal">-StudentBranch</span> learn/studentname</code></pre>
+<p>The script changes the same TODO area on <code>main</code>, which should cause the student&#39;s pull request to report a merge conflict if they edited that TODO on their branch.</p>
+<h3 id="autograding-verification">Autograding verification</h3>
+<p>To test specific autograding checks:</p>
+<ol>
+<li>In the test student repo, create a branch and make a change that should pass a check</li>
+<li>Open a PR</li>
+<li>Go to the <strong>Actions</strong> tab and verify the autograding workflow ran</li>
+<li>Check the workflow output -- each test should report pass or fail correctly</li>
+<li>Try a change that should fail a check and verify it catches the problem</li>
+</ol>
+<h3 id="aria-verification">Aria verification</h3>
+<ol>
+<li>Open a PR without a <code>Closes #XX</code> reference</li>
+<li>Verify Aria posts a comment asking for an issue link</li>
+<li>Comment <code>@aria-bot I have a merge conflict, can you explain this?</code></li>
+<li>Verify the comment responder replies with guidance</li>
+</ol>
+<hr>
+<h2 id="step-7-day-of-workshop-facilitation">Step 7: Day-of-Workshop Facilitation</h2>
+<h3 id="before-students-arrive">Before students arrive</h3>
+<ul>
+<li><input type="checkbox" disabled> <input aria-label="Verify the classroom dashboard loads at" disabled="" type="checkbox"> Verify the classroom dashboard loads at <a href="https://classroom.github.com">classroom.github.com</a></li>
+<li><input type="checkbox" disabled> <input aria-label="Have both invite links ready to share (on-screen, in chat, or printed on cards)" disabled="" type="checkbox"> Have both invite links ready to share (on-screen, in chat, or printed on cards)</li>
+<li><input type="checkbox" disabled> <input aria-label="Open the" disabled="" type="checkbox"> Open the <a href="grading-guide.html">grading-guide.md</a> for reference during the day</li>
+<li><input type="checkbox" disabled> <input aria-label="Have the" disabled="" type="checkbox"> Have the <a href="../docs/CHALLENGES.html">Challenge Hub</a> open in a browser tab</li>
+</ul>
+<h3 id="during-the-workshop">During the workshop</h3>
+<p><strong>Monitor the classroom dashboard:</strong> It shows accepted assignments, recent commits, and autograding results in real time.</p>
+<p><strong>Common student issues and fixes:</strong></p>
+<table>
+<thead>
+<tr>
+<th scope="col">Issue</th>
+<th scope="col">What to Do</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>&quot;I cannot find the invite link&quot;</td>
+<td>Reshare the link; post it in the workshop chat channel</td>
+</tr>
+<tr>
+<td>&quot;My next challenge did not appear&quot;</td>
+<td>The student may not have closed the previous issue; check their Issues tab</td>
+</tr>
+<tr>
+<td>&quot;Autograding says I failed&quot;</td>
+<td>Check the workflow output; often a formatting issue; use it as a teaching moment</td>
+</tr>
+<tr>
+<td>&quot;I do not see the feedback PR&quot;</td>
+<td>It appears after the first push; have them make any commit and push</td>
+</tr>
+<tr>
+<td>&quot;Aria did not comment on my PR&quot;</td>
+<td>Check the Actions tab in the student repo; workflows may need to be enabled</td>
+</tr>
+<tr>
+<td>&quot;Assignment not showing my work&quot;</td>
+<td>Student may have pushed to the wrong branch; check their repo&#39;s branches</td>
+</tr>
+</tbody></table>
+<h3 id="using-the-feedback-pr">Using the feedback PR</h3>
+<p>The feedback pull request is Classroom&#39;s built-in channel for async facilitator comments:</p>
+<ol>
+<li>Open a student&#39;s repository from the classroom dashboard</li>
+<li>Go to the <strong>Pull Requests</strong> tab</li>
+<li>Open the feedback PR (titled &quot;Feedback&quot;)</li>
+<li>Leave comments, encouragement, and guidance here</li>
+<li>Students receive email notifications for your comments</li>
+</ol>
+<hr>
+<h2 id="how-challenges-flow-through-the-system">How Challenges Flow Through the System</h2>
+<h3 id="challenge-progression">Challenge progression</h3>
+<p>The Student Progression Bot manages the entire challenge sequence. Each student works through challenges independently in their own repo:</p>
+<h4 id="day-1-assignment-1-challenges-1-9">Day 1 (Assignment 1): Challenges 1-9</h4>
+<table>
+<thead>
+<tr>
+<th scope="col">Challenge</th>
+<th scope="col">Title</th>
+<th scope="col">How it completes</th>
+<th scope="col">Aria validates</th>
+<th scope="col">Autograded</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>1</td>
+<td>Find Your Way Around</td>
+<td>Close issue</td>
+<td>--</td>
+<td>--</td>
+</tr>
+<tr>
+<td>2</td>
+<td>File Your First Issue</td>
+<td>Close issue</td>
+<td>--</td>
+<td>--</td>
+</tr>
+<tr>
+<td>3</td>
+<td>Join the Conversation</td>
+<td>Close issue</td>
+<td>--</td>
+<td>--</td>
+</tr>
+<tr>
+<td>4</td>
+<td>Branch Out</td>
+<td>Close issue</td>
+<td>--</td>
+<td>Yes (branch exists)</td>
+</tr>
+<tr>
+<td>5</td>
+<td>Make Your Mark</td>
+<td>Close issue</td>
+<td>--</td>
+<td>Yes (file edited)</td>
+</tr>
+<tr>
+<td>6</td>
+<td>Your First Pull Request</td>
+<td>Close issue</td>
+<td>Yes (PR structure)</td>
+<td>Yes (issue reference)</td>
+</tr>
+<tr>
+<td>7</td>
+<td>Resolve a Merge Conflict</td>
+<td>Close issue</td>
+<td>Yes (PR feedback)</td>
+<td>Yes (no conflict markers)</td>
+</tr>
+<tr>
+<td>8</td>
+<td>Open Source Culture</td>
+<td>Close issue</td>
+<td>--</td>
+<td>--</td>
+</tr>
+<tr>
+<td>9</td>
+<td>Merge Day</td>
+<td>Close issue</td>
+<td>Yes (merge)</td>
+<td>Yes (PR merged)</td>
+</tr>
+</tbody></table>
+<h4 id="day-2-assignment-2-challenges-10-16--bonus">Day 2 (Assignment 2): Challenges 10-16 + Bonus</h4>
+<table>
+<thead>
+<tr>
+<th scope="col">Challenge</th>
+<th scope="col">Title</th>
+<th scope="col">How it completes</th>
+<th scope="col">Aria validates</th>
+<th scope="col">Autograded</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>10</td>
+<td>Go Local</td>
+<td>Close issue</td>
+<td>--</td>
+<td>Yes (local commit)</td>
+</tr>
+<tr>
+<td>11</td>
+<td>Open a Day 2 PR</td>
+<td>Close issue</td>
+<td>Yes (PR structure)</td>
+<td>Yes (local push)</td>
+</tr>
+<tr>
+<td>12</td>
+<td>Review Like a Pro</td>
+<td>Close issue</td>
+<td>--</td>
+<td>Yes (review comment)</td>
+</tr>
+<tr>
+<td>13</td>
+<td>AI as Your Copilot</td>
+<td>Close issue</td>
+<td>--</td>
+<td>--</td>
+</tr>
+<tr>
+<td>14</td>
+<td>Template Remix</td>
+<td>Close issue</td>
+<td>--</td>
+<td>Yes (YAML valid)</td>
+</tr>
+<tr>
+<td>15</td>
+<td>Meet the Agents</td>
+<td>Close issue</td>
+<td>--</td>
+<td>--</td>
+</tr>
+<tr>
+<td>16</td>
+<td>Build Your Agent (Capstone)</td>
+<td>Close issue</td>
+<td>--</td>
+<td>Yes (agent file)</td>
+</tr>
+<tr>
+<td>A-E</td>
+<td>Bonus challenges</td>
+<td>Close issue</td>
+<td>--</td>
+<td>--</td>
+</tr>
+</tbody></table>
+<h3 id="challenges-that-cannot-be-automated">Challenges that cannot be automated</h3>
+<p>Challenges 1, 2, 3, 8, 13, and 15 are evaluated manually using the <a href="grading-guide.html">grading-guide.md</a>. The Progression Bot still unlocks the next challenge when the student closes the issue -- the facilitator reviews evidence in the issue comments.</p>
+<hr>
+<h2 id="post-workshop">Post-Workshop</h2>
+<p>Follow the <a href="teardown-checklist.html">teardown-checklist.md</a> for complete post-workshop steps. The key actions:</p>
+<ol>
+<li><strong>Export grades</strong> from the classroom dashboard</li>
+<li><strong>Archive the classroom</strong> in the Classroom UI (this preserves student repos as read-only portfolio pieces)</li>
+<li><strong>Review feedback</strong> and update facilitation notes for next cohort</li>
+</ol>
+<hr>
+<h2 id="customization-options">Customization Options</h2>
+<h3 id="adjusting-deadlines">Adjusting deadlines</h3>
+<p>Edit the assignment deadline in the Classroom UI at any time. Students who already accepted will see the updated deadline.</p>
+<h3 id="adding-or-removing-autograding-tests">Adding or removing autograding tests</h3>
+<p>Modify tests in the Classroom UI:</p>
+<ol>
+<li>Open the assignment</li>
+<li>Scroll to <strong>Autograding</strong></li>
+<li>Add, edit, or remove individual tests</li>
+<li>Changes apply to all future student pushes (not retroactively)</li>
+</ol>
+<h3 id="changing-point-values">Changing point values</h3>
+<p>The point values in the JSON files are suggestions. Adjust them in the Classroom UI to match your grading approach. The <a href="grading-guide.html">grading-guide.md</a> has recommended completion thresholds.</p>
+<h3 id="disabling-autograding">Disabling autograding</h3>
+<p>If you prefer manual-only grading, skip adding the autograding tests when creating the assignment. Aria and the Progression Bot still work independently of autograding.</p>
+<hr>
+<h2 id="legacy-notes">Legacy Notes</h2>
+<p>Previous versions of this workshop used a shared &quot;multi-player sandbox&quot; repository model where a facilitator manually provisioned challenge issues for each student using PowerShell scripts (<code>create_all_challenges.ps1</code> and <code>create_student_issues.ps1</code>). That approach required:</p>
+<ul>
+<li>Creating a per-cohort <code>learning-room-[cohort]</code> repository from the template</li>
+<li>Inviting all students to the GitHub organization</li>
+<li>Running batch scripts to create challenge issues per student via the GitHub API (the scripts split chapters into sub-challenges like 04.1, 04.2, 04.3, totaling 26 issues per student)</li>
+<li>Updating curriculum links with find-and-replace across all Markdown files</li>
+</ul>
+<p>The current model replaces all of that with GitHub Classroom. Each student gets their own private repo automatically when they accept the invite link, and the Student Progression Bot handles challenge delivery. The legacy scripts are preserved in the repository&#39;s Git history for reference but are no longer needed for deployment.</p>
+<p>Key decisions preserved from the legacy scripts:</p>
+<ul>
+<li>The scripts defined 26 sub-challenges across chapters 4-16, which the current system consolidates into 16 core challenges + 5 bonus challenges (21 total)</li>
+<li>Challenges used two submission types: issue comment (evidence-based) and PR with <code>Closes #XX</code> (code-based)</li>
+<li>The script was idempotent -- safe to rerun for late-joining students</li>
+<li>Labels followed the pattern: <code>challenge</code>, <code>challenge: [level]</code>, <code>skill: [tag]</code>, <code>day: [1 or 2]</code></li>
+</ul>
+<h2 id="after-the-workshop">After the Workshop</h2>
+<p>See <a href="teardown-checklist.html">teardown-checklist.md</a> for the complete post-workshop cleanup process, including:</p>
+<ul>
+<li>Exporting grades from the classroom dashboard</li>
+<li>Archiving the classroom</li>
+<li>Cleaning up student repositories</li>
+<li>Documenting facilitator notes for the next cohort</li>
+</ul>
+<h2 id="reference-links">Reference Links</h2>
+<ul>
+<li><a href="https://docs.github.com/en/education/manage-coursework-with-github-classroom">GitHub Classroom documentation</a></li>
+<li><a href="https://docs.github.com/en/education/manage-coursework-with-github-classroom/teach-with-github-classroom/use-autograding">Autograding documentation</a></li>
+<li><a href="../facilitator/FACILITATOR_GUIDE.html">Facilitator Guide</a> -- workshop-level facilitation reference</li>
+<li><a href="../docs/CHALLENGES.html">Challenge Hub</a> -- all 21 challenges with instructions</li>
+<li><a href="../docs/solutions/">Solutions Directory</a> -- reference solutions for facilitator use</li>
+<li><a href="grading-guide.html">Grading Guide</a> -- per-challenge rubric and completion levels</li>
+</ul>
+
+  </main>
+  <footer role="contentinfo" class="site-footer">
+    <p><strong>GIT Going with GitHub</strong> - A workshop by <a href="https://community-access.org">Community Access</a></p>
+    <p><a href="https://github.com/community-access/git-going-with-github">View on GitHub</a> · <a href="https://community-access.org">community-access.org</a></p>
+  </footer>
+  </body>
+</html>

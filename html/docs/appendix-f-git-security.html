@@ -1,0 +1,556 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="GIT Going with GitHub - A two-day accessible open source workshop by Community Access">
+  <title>Appendix F: Git Security for Contributors - GIT Going with GitHub</title>
+  <link rel="stylesheet" href="./styles/github-markdown.css">
+  <link rel="stylesheet" href="./styles/highlight.css">
+  <link rel="stylesheet" href="./styles/custom.css">
+  <style>
+    .markdown-body {
+      box-sizing: border-box;
+      min-width: 200px;
+      max-width: 980px;
+      margin: 0 auto;
+      padding: 45px;
+    }
+    @media (max-width: 767px) {
+      .markdown-body {
+        padding: 15px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+  <header class="site-header" role="banner">
+    <div class="site-header-inner">
+      <nav aria-label="Breadcrumb" class="breadcrumb">
+        <a href="./index.html">Home</a> <span aria-hidden="true">›</span> <span aria-current="page">Appendix F: Git Security for Contributors</span>
+      </nav>
+      <div class="header-actions">
+        <a href="https://github.com/Community-Access/git-going-with-github/wiki" class="wiki-link" target="_blank" rel="noopener noreferrer">
+          <svg aria-hidden="true" focusable="false" width="16" height="16" viewBox="0 0 16 16" fill="currentColor">
+            <path d="M1.75 1h8.5c.966 0 1.75.784 1.75 1.75v5.5A1.75 1.75 0 0 1 10.25 10H7.06l-2.573 2.573A1.458 1.458 0 0 1 2 11.543V10h-.25A1.75 1.75 0 0 1 0 8.25v-5.5C0 1.784.784 1 1.75 1ZM1.5 2.75v5.5c0 .138.112.25.25.25h1a.75.75 0 0 1 .75.75v2.19l2.72-2.72a.749.749 0 0 1 .53-.22h3.5a.25.25 0 0 0 .25-.25v-5.5a.25.25 0 0 0-.25-.25h-8.5a.25.25 0 0 0-.25.25Zm13 2a.25.25 0 0 0-.25-.25h-.5a.75.75 0 0 1 0-1.5h.5c.966 0 1.75.784 1.75 1.75v5.5A1.75 1.75 0 0 1 14.25 12H14v1.543a1.457 1.457 0 0 1-2.487 1.03L9.22 12.28a.749.749 0 1 1 1.06-1.06l2.22 2.22v-2.19a.75.75 0 0 1 .75-.75h.25a.25.25 0 0 0 .25-.25v-5.5Z"/>
+          </svg>
+          Wiki
+        </a>
+        <form role="search" class="search-form" action="./search.html" method="get">
+        <label for="site-search" class="search-label">Search docs</label>
+        <input
+          type="search"
+          id="site-search"
+          class="search-input"
+          name="q"
+          placeholder="Search docs…"
+          autocomplete="off"
+          aria-label="Search documentation"
+        >
+        <button type="submit" class="search-button" aria-label="Submit search">
+          <svg aria-hidden="true" focusable="false" width="16" height="16" viewBox="0 0 16 16" fill="currentColor">
+            <path d="M10.68 11.74a6 6 0 0 1-7.922-8.982 6 6 0 0 1 8.982 7.922l3.04 3.04a.749.749 0 0 1-.326 1.275.749.749 0 0 1-.734-.215ZM11.5 7a4.499 4.499 0 1 0-8.997 0A4.499 4.499 0 0 0 11.5 7Z"/>
+          </svg>
+        </button>
+      </form>
+      </div>
+    </div>
+  </header>
+  <main id="main-content" class="markdown-body">
+    <h1 id="appendix-f-git-security-for-contributors">Appendix F: Git Security for Contributors</h1>
+<blockquote>
+<p><strong>Episode coming soon:</strong> Git Security for Contributors - a conversational audio overview of this appendix. Listen before reading to preview the concepts, or after to reinforce what you learned.</p>
+</blockquote>
+<blockquote>
+<p><strong>Reference companion to:</strong> <a href="08-open-source-culture.html">Chapter 08: Open Source Culture</a> | Also relevant: <a href="14-git-in-practice.html">Chapter 14</a></p>
+<p><strong>Authoritative source:</strong> <a href="https://docs.github.com/en/code-security">GitHub Docs: Code security</a></p>
+</blockquote>
+<h2 id="keeping-secrets-out-of-your-repository">Keeping Secrets Out of Your Repository</h2>
+<blockquote>
+<p><strong>Who this is for:</strong> Anyone committing code or documentation to a repository. You don&#39;t need to be a security expert — this appendix covers the practical habits that protect you and the projects you contribute to. Most security incidents in open source aren&#39;t caused by attacks; they&#39;re caused by accidents. A token committed by mistake, a password left in a config file, a <code>.env</code> file that slipped through.</p>
+<p>The good news: a few simple habits prevent almost all of them.</p>
+</blockquote>
+<hr>
+<h2 id="table-of-contents">Table of Contents</h2>
+<ol>
+<li><a href="#1-why-this-matters--what-happens-when-secrets-leak">Why This Matters — What Happens When Secrets Leak</a></li>
+<li><a href="#2-the-gitignore-file--your-first-line-of-defense">The .gitignore File — Your First Line of Defense</a></li>
+<li><a href="#3-environment-variables--the-right-way-to-store-secrets">Environment Variables — The Right Way to Store Secrets</a></li>
+<li><a href="#4-review-before-you-commit">Review Before You Commit</a></li>
+<li><a href="#5-pre-commit-hooks--automated-secret-detection">Pre-Commit Hooks — Automated Secret Detection</a></li>
+<li><a href="#6-i-accidentally-committed-a-secret--what-now">I Accidentally Committed a Secret — What Now?</a></li>
+<li><a href="#7-githubs-built-in-push-protection">GitHub&#39;s Built-In Push Protection</a></li>
+<li><a href="#8-secure-credential-storage">Secure Credential Storage</a></li>
+<li><a href="#9-security-checklist-for-contributors">Security Checklist for Contributors</a></li>
+</ol>
+<h3 id="learning-cards-using-this-security-reference">Learning Cards: Using This Security Reference</h3>
+<details>
+<summary>Screen reader users</summary>
+
+<ul>
+<li>Sections are ordered from understanding (section 1) to prevention (2-5) to recovery (6-7) to daily habits (8-9)</li>
+<li>Code blocks contain exact gitignore patterns and terminal commands -- switch to Focus Mode before copying</li>
+<li>The Security Checklist (section 9) is a task list you can use before every push</li>
+</ul>
+</details>
+
+<details>
+<summary>Low vision users</summary>
+
+<ul>
+<li>Code examples for .gitignore patterns and terminal commands are in high-contrast code blocks</li>
+<li>Warning callouts use bold text -- scan for bold to find the most critical safety notes</li>
+<li>The Security Checklist at the bottom uses checkbox formatting for easy visual tracking</li>
+</ul>
+</details>
+
+<details>
+<summary>Sighted users</summary>
+
+<ul>
+<li>Read section 1 for motivation, then jump to the section matching your current need</li>
+<li>The .gitignore templates in section 2 are copy-paste ready for most project types</li>
+<li>Skip to the Security Checklist (section 9) for a pre-push routine you can follow every time</li>
+</ul>
+</details>
+
+<hr>
+<h2 id="1-why-this-matters--what-happens-when-secrets-leak">1. Why This Matters — What Happens When Secrets Leak</h2>
+<p>When a secret (API key, token, password, private key) is committed to a public GitHub repository — even for a few seconds before you delete it — it&#39;s effectively compromised.</p>
+<p><strong>Why &quot;I&#39;ll just delete it right away&quot; isn&#39;t enough:</strong></p>
+<ul>
+<li>Bots scan GitHub continuously and harvest secrets within seconds of a push</li>
+<li>The secret lives in your git history even after you delete the file</li>
+<li>GitHub forks capture history — once forked, you can&#39;t fully erase it</li>
+<li>Search engines may index the content before you remove it</li>
+</ul>
+<p><strong>Real-world consequences:</strong></p>
+<ul>
+<li>An AWS key leaked to a public repo can result in thousands of dollars of compute charges within hours</li>
+<li>A GitHub PAT can be used to access private repositories, delete code, or impersonate you</li>
+<li>A Stripe API key can be used to make fraudulent charges against your account</li>
+</ul>
+<p><strong>The good news:</strong> GitHub automatically revokes its own tokens (PATs, GitHub App tokens) when it detects them in a commit. But third-party services (AWS, Stripe, Twilio, etc.) require you to rotate the secret manually — and fast.</p>
+<hr>
+<h2 id="2-the-gitignore-file--your-first-line-of-defense">2. The .gitignore File — Your First Line of Defense</h2>
+<p>A <code>.gitignore</code> file tells Git which files to never track. Files listed in <code>.gitignore</code> won&#39;t show up in <code>git status</code>, won&#39;t be staged by <code>git add</code>, and won&#39;t be committed.</p>
+<h3 id="what-belongs-in-gitignore">What belongs in .gitignore</h3>
+<h4 id="secrets-and-credentials">Secrets and credentials</h4>
+<pre><code class="hljs"><span class="hljs-comment"># Environment files (contain API keys, database passwords, etc.)</span>
+<span class="hljs-string">.env</span>
+<span class="hljs-string">.env.local</span>
+<span class="hljs-string">.env.</span>*<span class="hljs-string">.local</span>
+<span class="hljs-string">.env.development</span>
+<span class="hljs-string">.env.production</span>
+*<span class="hljs-string">.env</span>
+
+<span class="hljs-comment"># Key files</span>
+*<span class="hljs-string">.pem</span>
+*<span class="hljs-string">.key</span>
+*<span class="hljs-string">.p12</span>
+*<span class="hljs-string">.pfx</span>
+id_rsa
+id_ed25519
+
+<span class="hljs-comment"># Credential files</span>
+credentials.json
+secrets.json
+config/secrets.yml
+<span class="hljs-string">.aws/credentials</span></code></pre>
+<h4 id="editor-and-os-clutter">Editor and OS clutter</h4>
+<pre><code class="hljs"><span class="hljs-comment"># macOS</span>
+<span class="hljs-string">.DS_Store</span>
+<span class="hljs-string">.AppleDouble</span>
+
+<span class="hljs-comment"># Windows</span>
+Thumbs.db
+desktop.ini
+
+<span class="hljs-comment"># VS Code (optional — some teams commit these)</span>
+<span class="hljs-string">.vscode/settings.json</span>
+
+<span class="hljs-comment"># JetBrains IDEs</span>
+<span class="hljs-string">.idea/</span></code></pre>
+<h4 id="build-output-and-dependencies">Build output and dependencies</h4>
+<pre><code class="hljs"><span class="hljs-comment"># Node</span>
+node_modules<span class="hljs-symbol">/</span>
+dist<span class="hljs-symbol">/</span>
+build<span class="hljs-symbol">/</span>
+
+<span class="hljs-comment"># Python</span>
+__pycache__<span class="hljs-symbol">/</span>
+<span class="hljs-operator">*</span>.pyc
+.venv<span class="hljs-symbol">/</span>
+venv<span class="hljs-symbol">/</span>
+
+<span class="hljs-comment"># General</span>
+<span class="hljs-operator">*</span>.log
+<span class="hljs-operator">*</span>.tmp
+<span class="hljs-operator">*</span>.cache</code></pre>
+<h3 id="checking-if-a-file-is-already-tracked">Checking if a file is already tracked</h3>
+<p><code>.gitignore</code> only prevents <strong>untracked</strong> files from being added. If Git is already tracking a file, <code>.gitignore</code> won&#39;t stop it from being committed in the future.</p>
+<pre><code class="hljs language-bash"><span class="hljs-comment"># Check if a specific file is tracked</span>
+git ls-files .<span class="hljs-built_in">env</span>
+
+<span class="hljs-comment"># If it returns the filename, it&#x27;s being tracked — you need to untrack it</span>
+git <span class="hljs-built_in">rm</span> --cached .<span class="hljs-built_in">env</span>
+<span class="hljs-comment"># Then add it to .gitignore and commit</span></code></pre>
+<h3 id="global-gitignore--apply-to-every-repo-on-your-machine">Global .gitignore — apply to every repo on your machine</h3>
+<p>You can create a global <code>.gitignore</code> that applies to all repositories on your computer — useful for OS-specific and editor-specific files you never want to commit anywhere.</p>
+<pre><code class="hljs language-bash"><span class="hljs-comment"># Create a global gitignore file</span>
+<span class="hljs-built_in">touch</span> ~/.gitignore_global
+
+<span class="hljs-comment"># Tell Git to use it</span>
+git config --global core.excludesfile ~/.gitignore_global</code></pre>
+<p>Add your editor and OS files to <code>~/.gitignore_global</code> so you never have to add them to individual repos.</p>
+<h3 id="github39s-gitignore-templates">GitHub&#39;s .gitignore templates</h3>
+<p>When creating a new repository on GitHub, you can choose a <code>.gitignore</code> template for your language — GitHub pre-fills it with the most common patterns for that ecosystem. Find all templates at <a href="https://github.com/github/gitignore">github.com/github/gitignore</a>.</p>
+<p>For an existing project:</p>
+<pre><code class="hljs language-bash"><span class="hljs-comment"># Download a template (e.g., for Node.js)</span>
+curl https://raw.githubusercontent.com/github/gitignore/main/Node.gitignore &gt;&gt; .gitignore</code></pre>
+<hr>
+<h2 id="3-environment-variables--the-right-way-to-store-secrets">3. Environment Variables — The Right Way to Store Secrets</h2>
+<p>Instead of hardcoding secrets in your files, store them in environment variables that live outside of your repository.</p>
+<h3 id="the-pattern">The pattern</h3>
+<pre><code class="hljs language-bash"><span class="hljs-comment"># ❌ Never do this (hardcoded secret in code)</span>
+API_KEY = <span class="hljs-string">&quot;sk-abc123yoursecretkeyhere&quot;</span>
+
+<span class="hljs-comment"># ✅ Do this instead (read from environment)</span>
+API_KEY = os.environ.get(<span class="hljs-string">&quot;API_KEY&quot;</span>)      <span class="hljs-comment"># Python</span>
+const apiKey = process.env.API_KEY;      // JavaScript</code></pre>
+<h3 id="using-a-env-file-locally">Using a .env file locally</h3>
+<p>A <code>.env</code> file stores your local environment variables. It&#39;s convenient and universally supported — and it must be in your <code>.gitignore</code>.</p>
+<pre><code class="hljs language-bash"><span class="hljs-comment"># .env (NEVER commit this file)</span>
+GITHUB_TOKEN=ghp_yourtokenhere
+DATABASE_URL=postgres://user:password@localhost/mydb
+STRIPE_SECRET_KEY=sk_test_yourkeyhere</code></pre>
+<p>Load it in your code with a library like <code>dotenv</code> (JavaScript) or <code>python-dotenv</code> (Python). The <code>.env</code> file stays on your machine; the code that reads it goes into the repository.</p>
+<h3 id="sharing-secrets-with-your-team-safely">Sharing secrets with your team safely</h3>
+<p>Never send secrets in Slack, email, or GitHub comments. Use:</p>
+<ul>
+<li><strong>GitHub Actions Secrets</strong> — for CI/CD pipelines: Settings → Secrets and variables → Actions</li>
+<li><strong>A password manager with sharing</strong> (1Password Teams, Bitwarden) — for team credentials</li>
+<li><strong>A secrets manager</strong> (AWS Secrets Manager, HashiCorp Vault) — for production systems</li>
+</ul>
+<h3 id="example-using-github-actions-secrets">Example: Using GitHub Actions Secrets</h3>
+<pre><code class="hljs language-yaml"><span class="hljs-comment"># .github/workflows/deploy.yml</span>
+<span class="hljs-attr">jobs:</span>
+  <span class="hljs-attr">deploy:</span>
+    <span class="hljs-attr">runs-on:</span> <span class="hljs-string">ubuntu-latest</span>
+    <span class="hljs-attr">steps:</span>
+      <span class="hljs-bullet">-</span> <span class="hljs-attr">name:</span> <span class="hljs-string">Deploy</span>
+        <span class="hljs-attr">env:</span>
+          <span class="hljs-attr">API_KEY:</span> <span class="hljs-string">${{</span> <span class="hljs-string">secrets.API_KEY</span> <span class="hljs-string">}}</span>   <span class="hljs-comment"># Pulled from GitHub Secrets, never in code</span>
+        <span class="hljs-attr">run:</span> <span class="hljs-string">./deploy.sh</span></code></pre>
+<hr>
+<h2 id="4-review-before-you-commit">4. Review Before You Commit</h2>
+<p>The most effective habit is simply reviewing what you&#39;re about to commit before you commit it.</p>
+<h3 id="git-diff---staged--see-exactly-what39s-going-in">git diff --staged — see exactly what&#39;s going in</h3>
+<pre><code class="hljs language-bash"><span class="hljs-comment"># Review all staged changes before committing</span>
+git diff --staged
+
+<span class="hljs-comment"># Review a specific file</span>
+git diff --staged docs/config.md</code></pre>
+<p>Read through the diff looking for:</p>
+<ul>
+<li>Any hardcoded passwords, tokens, or API keys</li>
+<li><code>.env</code> or credential files that snuck in</li>
+<li>Any TODO comments that reference sensitive information</li>
+</ul>
+<h3 id="avoid-git-add--blindly">Avoid <code>git add .</code> blindly</h3>
+<p><code>git add .</code> stages everything in your working directory — including files you didn&#39;t mean to add.</p>
+<pre><code class="hljs language-bash"><span class="hljs-comment"># ❌ Risky — stages everything without review</span>
+git add .
+
+<span class="hljs-comment"># ✅ Better — stage specific files you know are clean</span>
+git add src/auth.js docs/README.md
+
+<span class="hljs-comment"># ✅ Or stage interactively — review each file before adding</span>
+git add -p</code></pre>
+<p><code>git add -p</code> (patch mode) walks you through each change chunk by chunk and asks whether to stage it. It&#39;s slower but gives you full control.</p>
+<h3 id="check-what39s-staged-before-committing">Check what&#39;s staged before committing</h3>
+<pre><code class="hljs language-bash"><span class="hljs-comment"># See which files are staged (and which aren&#x27;t)</span>
+git status
+
+<span class="hljs-comment"># See the full diff of staged changes</span>
+git diff --staged</code></pre>
+<blockquote>
+<p><strong>GitHub Copilot can help:</strong> After staging your changes, open Copilot Chat and ask: <em>&quot;Review my staged changes for any accidentally included secrets, API keys, or credentials.&quot;</em> Paste the output of <code>git diff --staged</code> into the chat.</p>
+</blockquote>
+<hr>
+<h2 id="5-pre-commit-hooks--automated-secret-detection">5. Pre-Commit Hooks — Automated Secret Detection</h2>
+<p>A pre-commit hook is a script that runs automatically every time you try to commit. If the script detects a problem (like a potential secret), it blocks the commit and tells you what it found.</p>
+<p>Think of it as a safety net that catches things you might have missed during review.</p>
+<h3 id="option-a-detect-secrets-recommended-python-based">Option A: detect-secrets (recommended, Python-based)</h3>
+<p><code>detect-secrets</code> scans for over 20 types of secrets and integrates well with existing repos.</p>
+<pre><code class="hljs language-bash"><span class="hljs-comment"># Install</span>
+pip install detect-secrets
+
+<span class="hljs-comment"># Create a baseline (scan your existing code — mark known non-secrets as safe)</span>
+detect-secrets scan &gt; .secrets.baseline
+
+<span class="hljs-comment"># Install the pre-commit hook</span>
+detect-secrets hook
+
+<span class="hljs-comment"># Test it manually</span>
+detect-secrets scan</code></pre>
+<p>After setup, any commit containing a potential secret is blocked with a clear message showing which file and line triggered the alert.</p>
+<h3 id="option-b-gitleaks-go-based-zero-dependencies">Option B: gitleaks (Go-based, zero dependencies)</h3>
+<pre><code class="hljs language-bash"><span class="hljs-comment"># Install on macOS</span>
+brew install gitleaks
+
+<span class="hljs-comment"># Install on Windows</span>
+winget install gitleaks
+
+<span class="hljs-comment"># Scan your entire repo history for secrets</span>
+gitleaks detect --<span class="hljs-built_in">source</span> . --verbose
+
+<span class="hljs-comment"># Scan staged changes only (what you&#x27;re about to commit)</span>
+gitleaks protect --staged
+
+<span class="hljs-comment"># Add as a pre-commit hook manually</span>
+<span class="hljs-comment"># Add this to .git/hooks/pre-commit:</span>
+gitleaks protect --staged -v</code></pre>
+<h3 id="option-c-pre-commit-framework-manages-multiple-hooks">Option C: pre-commit framework (manages multiple hooks)</h3>
+<p>The <code>pre-commit</code> framework lets you install and manage hooks from a YAML config file, making it easy to share hook config across your team.</p>
+<pre><code class="hljs language-bash"><span class="hljs-comment"># Install</span>
+pip install pre-commit
+
+<span class="hljs-comment"># Create .pre-commit-config.yaml in your repo root:</span></code></pre>
+<pre><code class="hljs language-yaml"><span class="hljs-comment"># .pre-commit-config.yaml</span>
+<span class="hljs-attr">repos:</span>
+  <span class="hljs-bullet">-</span> <span class="hljs-attr">repo:</span> <span class="hljs-string">https://github.com/Yelp/detect-secrets</span>
+    <span class="hljs-attr">rev:</span> <span class="hljs-string">v1.4.0</span>
+    <span class="hljs-attr">hooks:</span>
+      <span class="hljs-bullet">-</span> <span class="hljs-attr">id:</span> <span class="hljs-string">detect-secrets</span>
+
+  <span class="hljs-bullet">-</span> <span class="hljs-attr">repo:</span> <span class="hljs-string">https://github.com/gitleaks/gitleaks</span>
+    <span class="hljs-attr">rev:</span> <span class="hljs-string">v8.18.0</span>
+    <span class="hljs-attr">hooks:</span>
+      <span class="hljs-bullet">-</span> <span class="hljs-attr">id:</span> <span class="hljs-string">gitleaks</span></code></pre>
+<pre><code class="hljs language-bash"><span class="hljs-comment"># Install the hooks</span>
+pre-commit install
+
+<span class="hljs-comment"># Run manually against all files</span>
+pre-commit run --all-files</code></pre>
+<blockquote>
+<p><strong>Note:</strong> Pre-commit hooks live in <code>.git/hooks/</code> and are local to your machine — they&#39;re not committed to the repo automatically. To share hook config with your team, commit the <code>.pre-commit-config.yaml</code> file and ask everyone to run <code>pre-commit install</code>.</p>
+</blockquote>
+<hr>
+<h2 id="6-i-accidentally-committed-a-secret--what-now">6. I Accidentally Committed a Secret — What Now?</h2>
+<p>Stay calm and act quickly. Follow these steps in order.</p>
+<h3 id="step-1-rotate-the-secret-immediately">Step 1: Rotate the secret immediately</h3>
+<p>Before anything else — go to wherever that secret is managed and revoke or rotate it. It may already be compromised, so neutralizing it is more important than removing it from git history.</p>
+<table>
+<thead>
+<tr>
+<th scope="col">Secret type</th>
+<th scope="col">Where to rotate</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>GitHub PAT</td>
+<td><a href="https://github.com/settings/tokens">github.com/settings/tokens</a> → Delete and regenerate</td>
+</tr>
+<tr>
+<td>SSH key</td>
+<td><a href="https://github.com/settings/keys">github.com/settings/keys</a> → Delete and generate new</td>
+</tr>
+<tr>
+<td>AWS key</td>
+<td>AWS IAM Console → Deactivate and create new</td>
+</tr>
+<tr>
+<td>Stripe key</td>
+<td>Stripe Dashboard → Developers → API Keys → Roll key</td>
+</tr>
+<tr>
+<td>Any other API key</td>
+<td>Check the service&#39;s dashboard for key management</td>
+</tr>
+</tbody></table>
+<p><strong>GitHub automatically revokes its own tokens</strong> when secret scanning detects them. Other services do not.</p>
+<h3 id="step-2-was-it-pushed-to-a-public-repo">Step 2: Was it pushed to a public repo?</h3>
+<p><strong>If it was pushed (remote has the secret):</strong></p>
+<p>The secret is potentially already compromised — assume it was harvested. Rotation is critical. Then remove it from history:</p>
+<p><strong>If it was only committed locally (not pushed):</strong></p>
+<p>You can fix it cleanly before anyone sees it:</p>
+<pre><code class="hljs language-bash"><span class="hljs-comment"># Undo the last commit, keep your changes staged (safest)</span>
+git reset --soft HEAD~1
+
+<span class="hljs-comment"># Now remove the secret from the file, re-add, and re-commit</span>
+<span class="hljs-comment"># (Edit the file to remove the secret)</span>
+git add -p   <span class="hljs-comment"># Review what you stage</span>
+git commit -m <span class="hljs-string">&quot;Your original commit message without the secret&quot;</span></code></pre>
+<h3 id="step-3-remove-the-secret-from-git-history">Step 3: Remove the secret from git history</h3>
+<blockquote>
+<p><strong>This only matters if the commit was pushed.</strong> If it was local-only and you used <code>git reset --soft</code> above, you&#39;re done.</p>
+</blockquote>
+<h4 id="method-a-git-filter-repo-recommended--built-in-modern">Method A: git filter-repo (recommended — built-in, modern)</h4>
+<pre><code class="hljs language-bash"><span class="hljs-comment"># Install git-filter-repo</span>
+pip install git-filter-repo
+
+<span class="hljs-comment"># Remove a specific file from all history</span>
+git filter-repo --path secrets.json --invert-paths
+
+<span class="hljs-comment"># Replace a specific string (the secret value) throughout all history</span>
+git filter-repo --replace-text &lt;(<span class="hljs-built_in">echo</span> <span class="hljs-string">&quot;ghp_actualtoken==&gt;REMOVED&quot;</span>)</code></pre>
+<h4 id="method-b-bfg-repo-cleaner-fast-java-based">Method B: BFG Repo-Cleaner (fast, Java-based)</h4>
+<pre><code class="hljs language-bash"><span class="hljs-comment"># Download BFG</span>
+<span class="hljs-comment"># From https://rtyley.github.io/bfg-repo-cleaner/</span>
+
+<span class="hljs-comment"># Remove a file from all history</span>
+java -jar bfg.jar --delete-files secrets.json
+
+<span class="hljs-comment"># Replace secret strings</span>
+<span class="hljs-comment"># Create a file called passwords.txt with the secret on each line</span>
+java -jar bfg.jar --replace-text passwords.txt</code></pre>
+<h3 id="step-4-force-push-the-cleaned-history">Step 4: Force push the cleaned history</h3>
+<p>After rewriting history, you must force push:</p>
+<pre><code class="hljs language-bash">git push --force-with-lease origin main</code></pre>
+<blockquote>
+<p><strong>Coordinate with your team first.</strong> Anyone who has cloned or pulled the repo will need to re-clone or rebase after a force push. Send a heads-up before doing this on a shared repo.</p>
+</blockquote>
+<h3 id="step-5-tell-github-to-rescan">Step 5: Tell GitHub to rescan</h3>
+<p>After removing the secret from history, go to <strong>Security → Secret scanning</strong> in your repository and mark any open alerts as resolved.</p>
+<h3 id="quick-decision-flowchart">Quick decision flowchart</h3>
+<pre><code class="hljs">Secret <span class="hljs-keyword">committed</span>
+      │
+      ├─ Still <span class="hljs-keyword">local</span> <span class="hljs-keyword">only</span> (<span class="hljs-keyword">not</span> pushed)?
+      │     └─ git <span class="hljs-keyword">reset</span> <span class="hljs-comment">--soft HEAD~1 → remove secret → recommit ✅</span>
+      │
+      └─ Already pushed?
+            ├─ Rotate the secret FIRST (assume compromised)
+            ├─ Remove <span class="hljs-keyword">from</span> history <span class="hljs-keyword">with</span> git <span class="hljs-keyword">filter</span>-repo <span class="hljs-keyword">or</span> BFG
+            └─ Force push + <span class="hljs-keyword">notify</span> team</code></pre>
+<hr>
+<h2 id="7-github39s-built-in-push-protection">7. GitHub&#39;s Built-In Push Protection</h2>
+<p>GitHub automatically scans pushes for known secret patterns before they reach the remote. If it detects a secret, the push is blocked.</p>
+<pre><code class="hljs language-text">remote: Push cannot contain secrets.
+remote:
+remote:   Secret detected: GitHub Personal Access Token
+remote:   File: config/settings.py, Line: 14
+remote:
+remote:   To bypass (if this is a false positive):
+remote:   https://github.com/owner/repo/security/secret-scanning/unblock-secret/TOKEN</code></pre>
+<h3 id="what-push-protection-covers">What push protection covers</h3>
+<p>GitHub knows the patterns for hundreds of secret types including:</p>
+<ul>
+<li>GitHub tokens (PATs, GitHub App tokens, OAuth tokens)</li>
+<li>AWS access keys</li>
+<li>Azure credentials</li>
+<li>Google Cloud keys</li>
+<li>Stripe, Twilio, Slack, and dozens more API keys</li>
+</ul>
+<h3 id="if-push-protection-blocks-you">If push protection blocks you</h3>
+<ol>
+<li><strong>Confirm it&#39;s actually a secret</strong> — check the file and line mentioned</li>
+<li><strong>If it&#39;s a real secret:</strong> Remove it from the file, amend your commit, and push again</li>
+<li><strong>If it&#39;s a false positive:</strong> Use the bypass URL GitHub provides to push with an explanation</li>
+</ol>
+<h3 id="checking-your-repo39s-push-protection-status">Checking your repo&#39;s push protection status</h3>
+<p>As a contributor you can see push protection in action when a push is blocked. Maintainers configure it in <strong>Settings → Code security → Push protection</strong>.</p>
+<blockquote>
+<p><strong>For full detail on GitHub&#39;s security scanning features:</strong> See <a href="appendix-p-security-features.html">Appendix L: GitHub Security Features</a>.</p>
+</blockquote>
+<hr>
+<h2 id="8-secure-credential-storage">8. Secure Credential Storage</h2>
+<h3 id="never-store-credentials-in-plaintext">Never store credentials in plaintext</h3>
+<p>❌ Don&#39;t do these:</p>
+<pre><code class="hljs language-bash"><span class="hljs-comment"># Storing a token in a plain text file</span>
+<span class="hljs-built_in">echo</span> <span class="hljs-string">&quot;ghp_mytoken&quot;</span> &gt; ~/token.txt
+
+<span class="hljs-comment"># Hardcoding in a script</span>
+<span class="hljs-built_in">export</span> GITHUB_TOKEN=<span class="hljs-string">&quot;ghp_mytoken&quot;</span>  <span class="hljs-comment"># in a .bashrc or .zshrc that&#x27;s committed</span>
+
+<span class="hljs-comment"># In a git config</span>
+git config --global url.<span class="hljs-string">&quot;https://myusername:ghp_mytoken@github.com&quot;</span>.insteadOf <span class="hljs-string">&quot;https://github.com&quot;</span></code></pre>
+<p>✅ Do this instead — use the OS credential store:</p>
+<pre><code class="hljs language-bash"><span class="hljs-comment"># macOS — use Keychain</span>
+git config --global credential.helper osxkeychain
+
+<span class="hljs-comment"># Windows — use Credential Manager (set automatically by Git for Windows)</span>
+git config --global credential.helper wincred
+
+<span class="hljs-comment"># Linux — use the libsecret store (requires installation)</span>
+git config --global credential.helper /usr/share/doc/git/contrib/credential/libsecret/git-credential-libsecret</code></pre>
+<p>With a credential helper set, Git asks for your credentials once and stores them securely in the OS keychain — not in any file.</p>
+<h3 id="using-a-password-manager">Using a password manager</h3>
+<p>Store your GitHub PAT, SSH key passphrase, and other credentials in a password manager (1Password, Bitwarden, KeePass). Most support browser extensions, CLI access, and automatic lock after inactivity.</p>
+<h3 id="checking-what-credential-helper-is-set">Checking what credential helper is set</h3>
+<pre><code class="hljs language-bash">git config --global credential.helper</code></pre>
+<p>If this returns nothing, your credentials may be stored in plaintext. Set a credential helper as above.</p>
+<h3 id="learning-cards-security-checklist">Learning Cards: Security Checklist</h3>
+<details>
+<summary>Screen reader users</summary>
+
+<ul>
+<li>The checklist below uses Markdown task list formatting -- each item is announced as &quot;checkbox not checked&quot;</li>
+<li>Items are grouped into three categories: Before Committing, Before Pushing, and Repository Setup</li>
+<li>Read through the list once to learn the habits, then use it as a pre-push routine</li>
+</ul>
+</details>
+
+<details>
+<summary>Low vision users</summary>
+
+<ul>
+<li>Checkboxes create a clear visual pattern for scanning -- each line starts with a square box</li>
+<li>Three groups are separated by h3 headings: Before Committing, Before Pushing, Repository Setup</li>
+<li>Consider copying this checklist into a personal note and checking items off for each project</li>
+</ul>
+</details>
+
+<details>
+<summary>Sighted users</summary>
+
+<ul>
+<li>This is a printable pre-push checklist -- bookmark it or copy it into your project&#39;s CONTRIBUTING.md</li>
+<li>Three sections cover the complete workflow: staging, pushing, and one-time repository setup</li>
+<li>The most critical items are the first two in &quot;Before Committing&quot; -- git diff review and selective git add</li>
+</ul>
+</details>
+
+<hr>
+<h2 id="9-security-checklist-for-contributors">9. Security Checklist for Contributors</h2>
+<p>Use this before every push to a public repository.</p>
+<h3 id="before-committing">Before committing</h3>
+<ul>
+<li><input type="checkbox" disabled> <input aria-label="I reviewed" disabled="" type="checkbox"> I reviewed <code>git diff --staged</code> and didn&#39;t see any tokens, passwords, or keys</li>
+<li><input type="checkbox" disabled> <input aria-label="I used" disabled="" type="checkbox"> I used <code>git add &lt;specific files&gt;</code> or <code>git add -p</code> rather than <code>git add .</code></li>
+<li><input type="checkbox" disabled> <input aria-label="Any" disabled="" type="checkbox"> Any <code>.env</code> files or credential files are listed in <code>.gitignore</code></li>
+<li><input type="checkbox" disabled> <input aria-label="Config files with real values are in" disabled="" type="checkbox"> Config files with real values are in <code>.gitignore</code>; only example/template files are committed</li>
+</ul>
+<h3 id="before-pushing">Before pushing</h3>
+<ul>
+<li><input type="checkbox" disabled> <input aria-label="" disabled="" type="checkbox"> <code>git log --oneline -5</code> — all commits look expected</li>
+<li><input type="checkbox" disabled> <input aria-label="No commits with messages like &quot;remove secret&quot; or &quot;oops&quot; that suggest a secret was added and removed (the secret is still in history)" disabled="" type="checkbox"> No commits with messages like &quot;remove secret&quot; or &quot;oops&quot; that suggest a secret was added and removed (the secret is still in history)</li>
+</ul>
+<h3 id="repository-setup-one-time">Repository setup (one time)</h3>
+<ul>
+<li><input type="checkbox" disabled> <input aria-label="" disabled="" type="checkbox"> <code>.gitignore</code> includes <code>.env</code>, <code>*.key</code>, <code>*.pem</code>, and relevant patterns for your stack</li>
+<li><input type="checkbox" disabled> <input aria-label="Global" disabled="" type="checkbox"> Global <code>.gitignore</code> (<code>~/.gitignore_global</code>) covers editor/OS files</li>
+<li><input type="checkbox" disabled> <input aria-label="Git credential helper is configured to use the OS keychain" disabled="" type="checkbox"> Git credential helper is configured to use the OS keychain</li>
+<li><input type="checkbox" disabled> <input aria-label="(Optional) A pre-commit hook is installed to scan for secrets automatically" disabled="" type="checkbox"> (Optional) A pre-commit hook is installed to scan for secrets automatically</li>
+</ul>
+<h3 id="if-you39re-a-maintainer">If you&#39;re a maintainer</h3>
+<ul>
+<li><input type="checkbox" disabled> <input aria-label="Branch protection is enabled on" disabled="" type="checkbox"> Branch protection is enabled on <code>main</code> with required reviews and status checks</li>
+<li><input type="checkbox" disabled> <input aria-label="Secret scanning is enabled (Settings → Code security → Secret scanning)" disabled="" type="checkbox"> Secret scanning is enabled (Settings → Code security → Secret scanning)</li>
+<li><input type="checkbox" disabled> <input aria-label="Push protection is enabled for the repository" disabled="" type="checkbox"> Push protection is enabled for the repository</li>
+<li><input type="checkbox" disabled> <input aria-label="A" disabled="" type="checkbox"> A <code>SECURITY.md</code> file exists with instructions for reporting vulnerabilities</li>
+</ul>
+<blockquote>
+<p><strong>See also:</strong> <a href="appendix-p-security-features.html">Appendix L: GitHub Security Features</a> for the GitHub platform security tools (Dependabot, secret scanning alerts, code scanning). <a href="appendix-d-git-authentication.html">Appendix D: Git Authentication</a> for SSH keys, PATs, and commit signing.</p>
+</blockquote>
+<hr>
+<p><em>Next: <a href="appendix-g-vscode-reference.html">Appendix G: VS Code Reference</a></em><br><em>Back: <a href="appendix-e-advanced-git.html">Appendix E: Advanced Git</a></em><br><em>Teaching chapter: <a href="08-open-source-culture.html">Chapter 08: Open Source Culture</a></em></p>
+
+  </main>
+  <footer role="contentinfo" class="site-footer">
+    <p><strong>GIT Going with GitHub</strong> - A workshop by <a href="https://community-access.org">Community Access</a></p>
+    <p><a href="https://github.com/community-access/git-going-with-github">View on GitHub</a> · <a href="https://community-access.org">community-access.org</a></p>
+  </footer>
+  </body>
+</html>

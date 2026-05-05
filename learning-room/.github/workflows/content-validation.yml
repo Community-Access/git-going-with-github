@@ -6,55 +6,65 @@ on:
   pull_request:
     types: [opened, edited, synchronize, reopened]
 
+concurrency:
+  group: content-validation-${{ github.event.pull_request.number || github.run_id }}
+  cancel-in-progress: true
+
 jobs:
   validate-content:
     runs-on: ubuntu-latest
-    
+    timeout-minutes: 15
+
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
-      
+
       - name: Set up Python
         uses: actions/setup-python@v5
         with:
-          python-version: '3.11'
-      
+          python-version: "3.11"
+
       - name: Set up Node.js
         uses: actions/setup-node@v4
         with:
-          node-version: '20'
-      
+          node-version: "20"
+
       - name: Install Python dependencies
         run: |
           pip install requests markupsafe
-      
+
       - name: Install Node dependencies
-        run: npm ci
-      
+        run: |
+          if [ -f package-lock.json ]; then
+            npm ci
+          else
+            npm install
+          fi
+
       - name: Check for broken links
         id: links
         run: |
           python .github/scripts/check_links.py . || true
-      
+
       - name: Validate markdown structure
         id: markdown
         run: |
           python .github/scripts/check_markdown.py . || true
-      
+
       - name: Validate accessibility
         id: accessibility
         run: |
           python .github/scripts/check_accessibility.py . || true
-      
+
       - name: Post validation feedback
         if: always()
         uses: actions/github-script@v7
         with:
           script: |
             const fs = require('fs');
-            
+
             let feedback = { errors: [], warnings: [], accessibility: [] };
-            
+
             try {
               if (fs.existsSync('validation-feedback.json')) {
                 const newFeedback = JSON.parse(fs.readFileSync('validation-feedback.json', 'utf8'));
@@ -63,18 +73,18 @@ jobs:
             } catch (error) {
               console.error('Error reading validation feedback:', error);
             }
-            
-            let comment = `## 📋 Content Validation Report\n\n`;
-            
+
+            let comment = `## Content Validation Report\n\n`;
+
             const hasErrors = feedback.errors && feedback.errors.length > 0;
             const hasWarnings = feedback.warnings && feedback.warnings.length > 0;
             const hasA11y = feedback.accessibility && feedback.accessibility.length > 0;
-            
+
             if (!hasErrors && !hasWarnings && !hasA11y) {
-              comment += `✅ **All checks passed!** Your content looks great!\n\n`;
+              comment += `**All checks passed.** Your content looks ready for review.\n\n`;
             } else {
               if (hasErrors) {
-                comment += `### ❌ Required Fixes\n\n`;
+                comment += `### Required Fixes\n\n`;
                 feedback.errors.forEach(err => {
                   comment += `- **${err.file}** (Line ${err.line || '?'}):\n`;
                   comment += `  ${err.message}\n`;
@@ -86,7 +96,7 @@ jobs:
               }
               
               if (hasWarnings) {
-                comment += `### ⚠️ Suggestions\n\n`;
+                comment += `### Suggestions\n\n`;
                 feedback.warnings.forEach(warn => {
                   comment += `- **${warn.file}**:\n`;
                   comment += `  ${warn.message}\n`;
@@ -95,7 +105,7 @@ jobs:
               }
               
               if (hasA11y) {
-                comment += `### ♿ Accessibility\n\n`;
+                comment += `### Accessibility\n\n`;
                 feedback.accessibility.forEach(item => {
                   comment += `- **${item.title}** (\`${item.file}\` Line ${item.line || '?'})\n`;
                   comment += `  ${item.message}\n`;
@@ -106,14 +116,14 @@ jobs:
                 });
               }
             }
-            
-            comment += `### 📚 Learning Resources\n\n`;
-            comment += `- [GitHub Flavored Markdown](../docs/04-markdown-reference.md)\n`;
-            comment += `- [Accessibility Standards](../docs/05-accessibility-reference.md)\n`;
-            comment += `- [Content Guidelines](../docs/06-content-guidelines.md)\n\n`;
+
+            comment += `### Learning Resources\n\n`;
+            comment += `- [Markdown Reference](https://github.com/Community-Access/git-going-with-github/blob/main/docs/appendix-c-markdown-reference.md)\n`;
+            comment += `- [Accessibility Standards](https://github.com/Community-Access/git-going-with-github/blob/main/docs/appendix-m-accessibility-standards.md)\n`;
+            comment += `- [Working with Pull Requests](https://github.com/Community-Access/git-going-with-github/blob/main/docs/06-working-with-pull-requests.md)\n\n`;
             comment += `---\n`;
             comment += `*Automated validation by Learning Room. Questions? Check the guides or mention @facilitator.*`;
-            
+
             try {
               const { data: comments } = await github.rest.issues.listComments({
                 owner: context.repo.owner,

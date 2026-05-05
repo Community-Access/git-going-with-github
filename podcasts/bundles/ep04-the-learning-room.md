@@ -1,5 +1,7 @@
 # Git Going with GitHub - Audio Series
 
+> **Architecture update (May 2026):** The audio for this episode was recorded under the original "single shared learning-room repository" model. The workshop has since moved to a **GitHub Classroom** model where each participant gets their **own private** copy of `learning-room-template`. The high-level concepts in this episode (PR-driven practice, automated bot feedback, peer review) are still accurate, but specific references to a single shared repository have been replaced. For the current architecture, read [Chapter 4: The Learning Room](../../docs/04-the-learning-room.md). The bot is now called Aria, and your Learning Room repo is private to you.
+
 ## Episode 4: The Learning Room
 
 **Series:** Git Going with GitHub
@@ -638,4 +640,4 @@ This is not hypothetical. This is not simulation. This is real.
 
 *Next: [Working with Issues](04-working-with-issues.md)*
 *Back: [Navigating Repositories](02-navigating-repositories.md)*
-*Reference: [Automation Guide](../learning-room/AUTOMATION.md) | [Available Challenges](../learning-room/docs/CHALLENGES.md)*
+*Reference: [Automation Guide](../learning-room/AUTOMATION.md) | [Available Challenges](../docs/CHALLENGES.md)*

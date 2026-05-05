@@ -2,6 +2,10 @@
 >
 > **Listen to Episode 7:** [Merge Conflicts Are Not Scary](../PODCASTS.md) - a conversational audio overview of this chapter. Listen before reading to preview the concepts, or after to reinforce what you learned.
 
+> **Related appendices:** [Appendix E: Advanced Git](appendix-e-advanced-git.md) | [Appendix G: VS Code Reference](appendix-g-vscode-reference.md)
+> **Authoritative sources:** [GitHub Docs: Resolving merge conflicts](https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/addressing-merge-conflicts/resolving-a-merge-conflict-on-github) | [Git SCM: Basic Merge Conflicts](https://git-scm.com/book/en/v2/Git-Branching-Basic-Branching-and-Merging#_basic_merge_conflicts)
+
+
 ## Understanding, Preventing, and Resolving Conflicts
 
 > Merge conflicts sound intimidating but are a normal, manageable part of collaborative development. This guide explains what conflicts are, how to read conflict markers, and how to resolve them - step by step.
@@ -26,7 +30,9 @@ Chapter 7 uses **one controlled practice challenge** so students can learn confl
 
 **Goal:** Identify the three types of conflict markers in a practice file, decide which content to keep, remove the markers, and submit a clean PR.
 
-**Where you are working:** the [learning-room](https://github.com/Community-Access/learning-room) repository on GitHub.com (web editor) or in VS Code if you cloned locally.
+> **🛠️ Agentic Strategy:** Sometimes an AI agent will confidently generate code that conflicts with human-written code. Resolving merge conflicts is not just a hurdle for human teamwork—it is exactly how you supervise, correct, and collaborate safely with an AI.
+
+**Where you are working:** your Learning Room repository on GitHub.com (web editor) or in VS Code if you cloned locally.
 
 **Before you start:** Open your **assigned Chapter 7 challenge issue** (the one titled "Chapter 7.1: Resolve Conflict Markers (@yourname)"). The issue description tells you which practice file contains the conflict markers.
 
@@ -77,6 +83,7 @@ Chapter 7 completed:
 3. Accidentally deleted too much? Undo with `Ctrl+Z` and start the section over.
 4. PR bot says content is wrong? Double-check that zero marker lines remain - search for `<<<<<<<`, `=======`, and `>>>>>>>`.
 5. Ask facilitator to sanity-check your final content before opening the PR.
+6. Finished but not sure you did it right? Compare your work against the [Challenge 7 reference solution](solutions/solution-07-merge-conflict.md).
 
 ### Learning Moment
 
@@ -111,7 +118,7 @@ The following table describes the five learning card types used in this chapter.
 <details>
 <summary>If you cloned the learning-room in Block 0 and prefer resolving conflicts locally</summary>
 
-The GitHub web conflict editor works well and is the primary method taught in this chapter. If you cloned the Learning Room in Block 0 and prefer working in your terminal, here is how to resolve conflicts locally. This is the same workflow covered in depth in [Chapter 11: Git and Source Control](11-git-source-control.md).
+The GitHub web conflict editor works well and is the primary method taught in this chapter. If you cloned the Learning Room in Block 0 and prefer working in your terminal, here is how to resolve conflicts locally. This is the same workflow covered in depth in [Chapter 11: Git and Source Control](14-git-in-practice.md).
 
 **Step 1 - Sync main and merge into your branch:**
 
@@ -252,6 +259,35 @@ The most effective contributors make many small PRs rather than one giant one.
 
 Open your PR as a draft while still working. Others can see what you're changing and avoid overlapping work. Convert to "Ready for review" when done.
 
+### Learning Cards: How to Prevent Conflicts
+
+<details>
+<summary>Screen reader users</summary>
+
+- Before starting work, run `git pull origin main` in VS Code's terminal (`` Ctrl+` ``) to sync your branch; this prevents conflicts from stale branches
+- On GitHub, check the PR's merge status section by pressing `D` toward the bottom of the Conversation tab; "This branch has conflicts" warns you before you waste review time
+- Use issue comments to announce which files you are editing; press `D` to the "Add a comment" landmark on the issue and type your coordination message
+
+</details>
+
+<details>
+<summary>Low vision users</summary>
+
+- The "Update branch" button on a PR appears near the merge section at the bottom of the Conversation tab; it has a white-on-green style when available
+- When multiple students are editing the same file, GitHub shows a yellow conflict banner; zoom in on the merge area to check for it before requesting review
+- Draft PRs show a grey "Draft" badge in the PR list; opening drafts early gives teammates visibility into which files you are changing
+
+</details>
+
+<details>
+<summary>Sighted users</summary>
+
+- Keep your PR small: a 5-file PR merges quickly and rarely conflicts; a 50-file PR almost certainly will
+- The "Update branch" button appears on PRs that are behind the base branch; click it to merge the latest changes from main into your branch
+- Draft PRs are shown with a grey "Draft" label in the PR list view; open them early so teammates can see your in-progress file changes
+
+</details>
+
 
 ## Advanced Prevention: Understanding Fast-Forward Merges
 
@@ -285,6 +321,37 @@ If you never have conflicts, it might mean:
 
 
 ## Spotting a Conflict on GitHub
+
+### Tool Cards: Resolve a Merge Conflict
+
+**github.com (browser):**
+1. On the PR page, click **Resolve conflicts** if the button is available.
+2. Edit the file in the web editor to remove conflict markers.
+3. Click **Mark as resolved**, then **Commit merge**.
+
+**github.dev (web editor):**
+1. Open the PR's branch by pressing `.` on the repository page.
+2. Open the conflicting file -- conflict markers are highlighted in the editor.
+3. Edit to resolve, commit via Source Control panel.
+
+**VS Code Desktop:**
+1. Pull the latest changes: `git pull origin main`.
+2. VS Code highlights conflicts with **Accept Current / Accept Incoming / Accept Both** buttons.
+3. Click your choice, save, stage, and commit.
+
+**GitHub Desktop:**
+1. **Branch > Update from main** (or the merge prompt banner).
+2. GitHub Desktop opens your editor with conflict markers highlighted.
+3. Resolve in the editor, return to GitHub Desktop, and click **Commit merge**.
+
+**Git CLI (terminal):**
+```bash
+git merge main
+# Edit conflicting files to remove <<<<<<< / ======= / >>>>>>>
+git add resolved-file.md
+git commit -m "resolve merge conflict"
+```
+
 
 When a PR has a merge conflict, you will see this message on the Conversation tab, near the merge section:
 
@@ -374,6 +441,35 @@ The content coming from the OTHER branch (or main)
 2. Keep their version: add only `Insert+F7`
 3. Keep both rows: add both shortcuts to the table (often the right answer when two students added different valid shortcuts)
 
+### Learning Cards: Conflict Markers
+
+<details>
+<summary>Screen reader users</summary>
+
+- Conflict markers are three lines: `<<<<<<< HEAD`, `=======`, and `>>>>>>> branch-name`; your screen reader may spell out each `<`, `=`, and `>` character individually
+- Everything between `<<<<<<< HEAD` and `=======` is YOUR version; everything between `=======` and `>>>>>>>` is the INCOMING version
+- After resolving, search the file for `<<<<` using `Ctrl+F` to verify no markers remain; any leftover markers will break the file
+
+</details>
+
+<details>
+<summary>Low vision users</summary>
+
+- In GitHub's conflict editor, each version is highlighted with a different background color (typically green for yours, blue for incoming); high-contrast themes use bolder system colors
+- The three marker lines (`<<<`, `===`, `>>>`) span the full width of the editor; look for rows that contain only repeated symbols
+- After resolving, zoom in on the edited area and confirm the marker lines are completely deleted, not just partially removed
+
+</details>
+
+<details>
+<summary>Sighted users</summary>
+
+- Conflict markers appear as three distinctive lines of repeated symbols: `<<<<<<<`, `=======`, and `>>>>>>>`; they visually bracket the two conflicting versions
+- The `HEAD` label after `<<<<<<<` means "your current branch"; the branch name after `>>>>>>>` identifies where the incoming change came from
+- After editing, delete all three marker lines plus the version you do not want; the remaining content should read naturally as valid code or Markdown
+
+</details>
+
 
 ## Resolving Conflicts on GitHub (Web Editor)
 
@@ -457,10 +553,41 @@ When the conflict editor opens, your screen reader will announce a text editor. 
 
 *(Note: screen readers may spell out the `<` and `>` characters letter by letter - this is normal)*
 
+### Learning Cards: Resolving Conflicts on GitHub
+
+<details>
+<summary>Screen reader users</summary>
+
+- After clicking "Resolve conflicts," GitHub opens a text editor; switch to Focus Mode (`NVDA+Space`) and use `Down Arrow` to read line by line through the conflict markers
+- After editing, press `Tab` to find the "Mark as resolved" button (top-right of the file); then `Tab` again to "Commit merge" after all files are resolved
+- Use `NVDA+F7` to open the Elements List and find the file navigator if there are multiple conflicted files
+
+</details>
+
+<details>
+<summary>Low vision users</summary>
+
+- The conflict editor is a monospace text editor that may require horizontal scrolling at high zoom; use `Shift+Scroll` for wide lines
+- The file list panel on the left shows all conflicted files; at high zoom it may collapse to a toggle icon in the top-left corner
+- The "Mark as resolved" button is in the top-right of each file's editor; at 200%+ zoom you may need to scroll right to find it
+
+</details>
+
+<details>
+<summary>Sighted users</summary>
+
+- The conflict editor highlights your version and the incoming version with different background colors, with the `=======` divider between them
+- A file list on the left side lets you jump between conflicted files; a checkmark appears next to each file after you click "Mark as resolved"
+- After all files show checkmarks, the green "Commit merge" button becomes available at the top of the editor
+
+</details>
+
 
 ## Resolving Conflicts in VS Code (Day 2)
 
-VS Code has excellent merge conflict tooling with full screen reader support. This is covered in depth in [Git & Source Control in VS Code](11-git-source-control.md), but here is an overview:
+> **See also:** [Appendix E: Advanced Git](appendix-e-advanced-git.md) covers rebase, cherry-pick, and other advanced conflict resolution strategies.
+
+VS Code has excellent merge conflict tooling with full screen reader support. This is covered in depth in [Git & Source Control in VS Code](14-git-in-practice.md), but here is an overview:
 
 ### VS Code shows conflicts as
 
@@ -559,6 +686,35 @@ If a conflict is severe (the branch diverged a lot from main):
 4. Open a new PR
 
 This is legitimate - not a failure.
+
+### Learning Cards: When You Feel Stuck
+
+<details>
+<summary>Screen reader users</summary>
+
+- Leave a PR comment asking for help: press `D` to the "Add a comment" landmark, type your question including the filename and your confusion, then `Ctrl+Enter` to submit
+- Use `@username` to tag the PR author or a maintainer so they receive a notification; type `@` and GitHub autocompletes usernames
+- If you need to abandon and start fresh, close the PR (Tab to "Close pull request" button), create a new branch from main, and re-apply only your intended changes
+
+</details>
+
+<details>
+<summary>Low vision users</summary>
+
+- When stuck, scroll to the comment box at the bottom of the PR's Conversation tab and describe which file and which lines are confusing
+- The "Close pull request" button is at the bottom of the Conversation tab next to the comment box; closing a conflicted PR is a valid strategy, not a failure
+- After starting a new branch, verify you are on the latest main by checking the branch selector in the top-left of the Code tab
+
+</details>
+
+<details>
+<summary>Sighted users</summary>
+
+- Post a comment on the PR with a screenshot or code snippet showing the conflict you cannot resolve; tag the author with `@username`
+- The "Close pull request" button is a red-outlined button at the bottom of the Conversation tab; use it to close and start fresh if the conflict is severe
+- When starting over, use the branch dropdown on the Code tab to verify you branched from the latest `main` before re-applying your changes
+
+</details>
 
 
 ## Reading a Conflict Message from Git (Command Line Reference)
@@ -691,6 +847,14 @@ Answer these three questions:
 > *Understanding conflict markers is not a stepping stone to letting AI handle conflicts. It is the skill that tells you when AI got it wrong.*
 
 
-*Next: [Culture and Etiquette](08-culture-etiquette.md)*
-*Back: [Working with Pull Requests](06-working-with-pull-requests.md)*
-*Related: [Git & Source Control in VS Code](11-git-source-control.md)*
+> ➡️ **Challenge Time:** Check the [Challenge Hub](CHALLENGES.md) for **Challenge 7: Survive a Merge Conflict**. Follow the steps to resolve it, then move to [Chapter 08: Open Source Culture](08-open-source-culture.md).
+
+---
+
+
+*Next: [Chapter 08: Open Source Culture](08-open-source-culture.md)*  
+*Back: [Chapter 06: Working with Pull Requests](06-working-with-pull-requests.md)*  
+*Related appendices: [Appendix E: Advanced Git](appendix-e-advanced-git.md)*
+
+
+

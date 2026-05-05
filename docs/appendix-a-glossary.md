@@ -2,9 +2,42 @@
 >
 > **Listen to Episode 18:** [Glossary of Terms](../PODCASTS.md) - a conversational audio overview of this chapter. Listen before reading to preview the concepts, or after to reinforce what you learned.
 
+> **Reference companion to:** [Chapter 02: Understanding GitHub](02-understanding-github.md) | Also relevant: all chapters
+>
+> **Authoritative source:** [GitHub Docs: Glossary](https://docs.github.com/en/get-started/learning-about-github/github-glossary)
+
 ## Every Term You Need for Open Source Contribution
 
 > This glossary is your reference for the entire two-day workshop. When you hear a term you don't recognize - check here first. Terms are grouped by category and also sorted alphabetically at the end.
+
+### Learning Cards: Navigating the Glossary
+
+<details>
+<summary>Screen reader users</summary>
+
+- Press H to jump between term headings (h3 level) within each category section
+- Use the Elements List (NVDA+F7 or Insert+F6) to see all terms at once and type a few letters to filter
+- Jump to "Alphabetical Quick Reference" at the bottom for a flat A-Z lookup table
+
+</details>
+
+<details>
+<summary>Low vision users</summary>
+
+- Each term is a bold h3 heading -- increase zoom and scan headings to browse terms quickly
+- The alphabetical table at the bottom works well at high zoom since each row is self-contained
+- Use Ctrl+F in your browser to search for any term by name
+
+</details>
+
+<details>
+<summary>Sighted users</summary>
+
+- Terms are grouped by category (Parts 1-6) -- scan the bold headings to find the right group
+- Scroll to the bottom for the alphabetical quick reference table if you know the term name
+- Use Ctrl+F to jump directly to any term on the page
+
+</details>
 
 
 ## Part 1: The Building Blocks
@@ -520,7 +553,7 @@ A tag marks a specific commit as significant - usually a version release like `v
 
 GitHub Actions is an automation platform built into GitHub. Workflows are automated scripts (written in YAML) that run in response to events - like a PR being opened or code being pushed. CI/CD stands for Continuous Integration / Continuous Deployment.
 
-In practice: when you open a PR, you will often see automated checks run (tests, linting, accessibility checks). These are GitHub Actions. See [GitHub Actions & Workflows](appendix-q-github-actions-workflows.md) for a full explanation.
+In practice: when you open a PR, you will often see automated checks run (tests, linting, accessibility checks). These are GitHub Actions. See [GitHub Actions & Workflows](appendix-q-actions-workflows.md) for a full explanation.
 
 
 ### Status Check
@@ -551,7 +584,7 @@ Your GitHub profile is your public identity. It shows your name, bio, location, 
 
 ### GitHub Copilot
 
-GitHub Copilot is an AI-powered coding assistant. It suggests code, documentation, and commit messages. In this workshop, we use Copilot to help write issue descriptions, PR descriptions, documentation, and code. See [GitHub Copilot](13-github-copilot.md) for the full walkthrough.
+GitHub Copilot is an AI-powered coding assistant. It suggests code, documentation, and commit messages. In this workshop, we use Copilot to help write issue descriptions, PR descriptions, documentation, and code. See [GitHub Copilot](16-github-copilot.md) for the full walkthrough.
 
 
 ## Part 6: Community Files
@@ -568,6 +601,35 @@ Every healthy open source project has these files in the root of the repository:
 | `CHANGELOG.md` | History of notable changes by version |
 | `.github/ISSUE_TEMPLATE/` | Templates for bug reports, feature requests, etc. |
 | `.github/PULL_REQUEST_TEMPLATE.md` | Template for PR descriptions |
+
+### Learning Cards: Alphabetical Quick Reference
+
+<details>
+<summary>Screen reader users</summary>
+
+- Press T to jump to the table, then use Ctrl+Alt+Arrow keys to navigate rows and columns
+- Each row has two cells: Term and Definition -- column headers are announced on first entry
+- For longer definitions, the table keeps them concise; see the full entry above for details
+
+</details>
+
+<details>
+<summary>Low vision users</summary>
+
+- This table is designed for quick lookups -- each row fits on a single line at most zoom levels
+- If the table wraps awkwardly, try reducing zoom slightly or switching to a wider window
+- Bold term names in the left column create a visible scan line
+
+</details>
+
+<details>
+<summary>Sighted users</summary>
+
+- Scan the left column alphabetically to find your term quickly
+- Definitions here are one-liners -- look up the full entry in Parts 1-6 above for examples and commands
+- Use Ctrl+F and type the term name to jump directly to it
+
+</details>
 
 
 ## Alphabetical Quick Reference
@@ -631,7 +693,8 @@ Every healthy open source project has these files in the root of the repository:
 | Triage | Reviewing and categorizing new issues |
 | Upstream | The original repo you forked from |
 
+---
 
-*Appendix B - look up any term here at any point during the workshop.*
-*Return to: [Day 1 Agenda](../DAY1_AGENDA.md) | [Understanding GitHub's Web Structure](01-understanding-github-web-structure.md)*
-*See also: [Screen Reader Cheat Sheet](appendix-b-screen-reader-cheatsheet.md)*
+*Next: [Appendix B: Screen Reader Cheat Sheet](appendix-b-screen-reader-cheatsheet.md)*  
+*Teaching chapter: [Chapter 02: Understanding GitHub](02-understanding-github.md)*
+

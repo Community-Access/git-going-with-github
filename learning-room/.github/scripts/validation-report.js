@@ -14,16 +14,16 @@ function buildValidationReportBody(results, timestampIso) {
   };
 
   const status = safeResults.passed
-    ? "✅ **Validation Passed**"
-    : "⚠️ **Validation Needs Attention**";
+    ? "**Validation Passed** [PASS]"
+    : "**Validation Needs Attention** [ACTION REQUIRED]";
 
   let body = `## PR Validation Report\n\n${status}\n\n`;
 
   if ((safeResults.required || []).length > 0) {
-    body += "### ✓ Required Checks\n\n";
+    body += "### Required Checks\n\n";
     (safeResults.required || []).forEach(check => {
-      const icon = check.passed ? '✅' : '❌';
-      body += `${icon} **${check.name}**\n`;
+      const state = check.passed ? '[PASS]' : '[ACTION REQUIRED]';
+      body += `- **${check.name}** ${state}\n`;
       if (!check.passed) {
         body += `   ${check.message}\n`;
         if (check.help) {
@@ -35,7 +35,7 @@ function buildValidationReportBody(results, timestampIso) {
   }
 
   if ((safeResults.suggestions || []).length > 0) {
-    body += "### 💡 Suggestions for Improvement\n\n";
+    body += "### Suggestions for Improvement\n\n";
     body += "*These are optional but will make your contribution even better:*\n\n";
     safeResults.suggestions.forEach(suggestion => {
       body += `- **${suggestion.title}:** ${suggestion.message}\n`;
@@ -47,10 +47,10 @@ function buildValidationReportBody(results, timestampIso) {
   }
 
   if ((safeResults.accessibility || []).length > 0) {
-    body += "### ♿ Accessibility Analysis\n\n";
+    body += "### Accessibility Analysis\n\n";
     safeResults.accessibility.forEach(item => {
-      const icon = item.type === 'error' ? '❌' : '⚠️';
-      body += `${icon} **${item.title}**\n`;
+      const state = item.type === 'error' ? '[ACTION REQUIRED]' : '[REVIEW]';
+      body += `- **${item.title}** ${state}\n`;
       body += `   ${item.message}\n`;
       if (item.file) {
         body += `   \`${item.file}\`${item.line ? ` (line ${item.line})` : ""}\n`;
@@ -62,14 +62,14 @@ function buildValidationReportBody(results, timestampIso) {
     });
   }
 
-  body += "### 📚 Learning Resources\n\n";
+  body += "### Learning Resources\n\n";
   body += "Based on your changes, these guides might help:\n\n";
   (safeResults.resources || []).forEach(resource => {
     body += `- [${resource.title}](${resource.url})\n`;
   });
 
   body += "\n---\n";
-  body += `*Automated validation by Learning Room Bot. Last updated: ${ts}*\n`;
+  body += `*Automated validation by Learning Room Bot. Aria generated this review. Last updated: ${ts}*\n`;
   body += "*Questions? Check the guides or mention @facilitator in a comment.*";
   
   return body;

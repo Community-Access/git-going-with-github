@@ -1,0 +1,62 @@
+[
+  {
+    "test_name": "Challenge 10: Local Commit on Branch",
+    "setup": "",
+    "run": "git log --oneline origin/main..HEAD 2>/dev/null | head -1 | grep -q '.' || git branch -r --list 'origin/*' | grep -v main | head -1 | xargs -I{} git log --oneline origin/main..{} | head -1 | grep -q '.'",
+    "input": "",
+    "expected_output": "",
+    "comparison": "exact",
+    "timeout": 10,
+    "points": 15
+  },
+  {
+    "test_name": "Challenge 14: Custom Issue Template Exists",
+    "setup": "",
+    "run": "find .github/ISSUE_TEMPLATE -name '*.yml' ! -name 'challenge-*.yml' ! -name 'bonus-*.yml' ! -name 'config.yml' 2>/dev/null | head -1 | grep -q '.'",
+    "input": "",
+    "expected_output": "",
+    "comparison": "exact",
+    "timeout": 10,
+    "points": 15
+  },
+  {
+    "test_name": "Challenge 14: Template Has Required Fields",
+    "setup": "",
+    "run": "TEMPLATE=$(find .github/ISSUE_TEMPLATE -name '*.yml' ! -name 'challenge-*.yml' ! -name 'bonus-*.yml' ! -name 'config.yml' 2>/dev/null | head -1); grep -q '^name:' \"$TEMPLATE\" && grep -q '^description:' \"$TEMPLATE\"",
+    "input": "",
+    "expected_output": "",
+    "comparison": "exact",
+    "timeout": 10,
+    "points": 10
+  },
+  {
+    "test_name": "Challenge 16: Agent File Exists",
+    "setup": "",
+    "run": "find agents community-agents -name '*.md' 2>/dev/null | head -1 | grep -q '.'",
+    "input": "",
+    "expected_output": "",
+    "comparison": "exact",
+    "timeout": 10,
+    "points": 10
+  },
+  {
+    "test_name": "Challenge 16: Agent Has Frontmatter",
+    "setup": "",
+    "run": "AGENT=$(find agents community-agents -name '*.md' 2>/dev/null | head -1); head -1 \"$AGENT\" | grep -q '^---'",
+    "input": "",
+    "expected_output": "",
+    "comparison": "exact",
+    "timeout": 10,
+    "points": 10
+  },
+  {
+    "test_name": "Challenge 16: Agent Has Responsibilities and Guardrails",
+    "setup": "",
+    "run": "AGENT=$(find agents community-agents -name '*.md' 2>/dev/null | head -1); grep -qi '## responsibilities\\|## what this agent does' \"$AGENT\" && grep -qi '## guardrails\\|## limitations\\|## boundaries' \"$AGENT\"",
+    "input": "",
+    "expected_output": "",
+    "comparison": "exact",
+    "timeout": 10,
+    "points": 15
+  }
+]

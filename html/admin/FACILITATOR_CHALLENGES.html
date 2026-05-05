@@ -1,0 +1,382 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="GIT Going with GitHub - A two-day accessible open source workshop by Community Access">
+  <title>Facilitator Operations Guide - GIT Going with GitHub</title>
+  <link rel="stylesheet" href="./styles/github-markdown.css">
+  <link rel="stylesheet" href="./styles/highlight.css">
+  <link rel="stylesheet" href="./styles/custom.css">
+  <style>
+    .markdown-body {
+      box-sizing: border-box;
+      min-width: 200px;
+      max-width: 980px;
+      margin: 0 auto;
+      padding: 45px;
+    }
+    @media (max-width: 767px) {
+      .markdown-body {
+        padding: 15px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+  <header class="site-header" role="banner">
+    <div class="site-header-inner">
+      <nav aria-label="Breadcrumb" class="breadcrumb">
+        <a href="./index.html">Home</a> <span aria-hidden="true">›</span> <span aria-current="page">Facilitator Operations Guide</span>
+      </nav>
+      <div class="header-actions">
+        <a href="https://github.com/Community-Access/git-going-with-github/wiki" class="wiki-link" target="_blank" rel="noopener noreferrer">
+          <svg aria-hidden="true" focusable="false" width="16" height="16" viewBox="0 0 16 16" fill="currentColor">
+            <path d="M1.75 1h8.5c.966 0 1.75.784 1.75 1.75v5.5A1.75 1.75 0 0 1 10.25 10H7.06l-2.573 2.573A1.458 1.458 0 0 1 2 11.543V10h-.25A1.75 1.75 0 0 1 0 8.25v-5.5C0 1.784.784 1 1.75 1ZM1.5 2.75v5.5c0 .138.112.25.25.25h1a.75.75 0 0 1 .75.75v2.19l2.72-2.72a.749.749 0 0 1 .53-.22h3.5a.25.25 0 0 0 .25-.25v-5.5a.25.25 0 0 0-.25-.25h-8.5a.25.25 0 0 0-.25.25Zm13 2a.25.25 0 0 0-.25-.25h-.5a.75.75 0 0 1 0-1.5h.5c.966 0 1.75.784 1.75 1.75v5.5A1.75 1.75 0 0 1 14.25 12H14v1.543a1.457 1.457 0 0 1-2.487 1.03L9.22 12.28a.749.749 0 1 1 1.06-1.06l2.22 2.22v-2.19a.75.75 0 0 1 .75-.75h.25a.25.25 0 0 0 .25-.25v-5.5Z"/>
+          </svg>
+          Wiki
+        </a>
+        <form role="search" class="search-form" action="./search.html" method="get">
+        <label for="site-search" class="search-label">Search docs</label>
+        <input
+          type="search"
+          id="site-search"
+          class="search-input"
+          name="q"
+          placeholder="Search docs…"
+          autocomplete="off"
+          aria-label="Search documentation"
+        >
+        <button type="submit" class="search-button" aria-label="Submit search">
+          <svg aria-hidden="true" focusable="false" width="16" height="16" viewBox="0 0 16 16" fill="currentColor">
+            <path d="M10.68 11.74a6 6 0 0 1-7.922-8.982 6 6 0 0 1 8.982 7.922l3.04 3.04a.749.749 0 0 1-.326 1.275.749.749 0 0 1-.734-.215ZM11.5 7a4.499 4.499 0 1 0-8.997 0A4.499 4.499 0 0 0 11.5 7Z"/>
+          </svg>
+        </button>
+      </form>
+      </div>
+    </div>
+  </header>
+  <main id="main-content" class="markdown-body">
+    <h1 id="facilitator-operations-guide">Facilitator Operations Guide</h1>
+<p>How to monitor, support, and troubleshoot the workshop challenge system during a live cohort. For deployment and classroom setup, see the <a href="../classroom/README.html">Workshop Deployment Guide</a>.</p>
+<h2 id="how-the-challenge-system-works">How the Challenge System Works</h2>
+<p>Each student gets a <strong>private repository</strong> from GitHub Classroom. Inside that repo, three automation systems run independently:</p>
+<table>
+<thead>
+<tr>
+<th scope="col">System</th>
+<th scope="col">What it does</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><strong>Student Progression Bot</strong></td>
+<td>Creates the next challenge issue when the student closes the current one</td>
+</tr>
+<tr>
+<td><strong>Aria (PR Validation Bot)</strong></td>
+<td>Validates PR structure, welcomes first-timers, responds to <code>@aria-bot</code> help</td>
+</tr>
+<tr>
+<td><strong>Autograders</strong></td>
+<td>Runs automated tests on specific challenges to verify completion evidence</td>
+</tr>
+</tbody></table>
+<p>Challenges are sequential. A student cannot see Challenge 5 until they close Challenge 4. This keeps students focused and prevents overwhelm.</p>
+<h2 id="monitoring-student-progress">Monitoring Student Progress</h2>
+<h3 id="github-classroom-dashboard">GitHub Classroom Dashboard</h3>
+<p>The primary monitoring tool is the classroom dashboard at <a href="https://classroom.github.com">classroom.github.com</a>:</p>
+<ul>
+<li><strong>Accepted assignments</strong> -- how many students have started</li>
+<li><strong>Recent commits</strong> -- who is actively working</li>
+<li><strong>Autograding results</strong> -- pass/fail per student per test</li>
+</ul>
+<h3 id="checking-individual-students">Checking Individual Students</h3>
+<p>To inspect a specific student&#39;s repo, open it from the classroom dashboard or navigate directly:</p>
+<pre><code class="hljs language-bash"><span class="hljs-comment"># Open the student&#x27;s repo from the classroom org</span>
+<span class="hljs-comment"># Pattern: Community-Access-Classroom/learning-room-[username]</span>
+
+<span class="hljs-comment"># List open challenge issues in a student&#x27;s repo</span>
+gh issue list --repo Community-Access-Classroom/learning-room-studentname --state open
+
+<span class="hljs-comment"># List closed (completed) challenges</span>
+gh issue list --repo Community-Access-Classroom/learning-room-studentname --state closed</code></pre>
+<h3 id="identifying-students-who-are-stuck">Identifying Students Who Are Stuck</h3>
+<p>Look for these signals on the classroom dashboard:</p>
+<ul>
+<li>Student accepted the assignment but has zero commits (may need help getting started)</li>
+<li>Student has not closed an issue in over an hour (may be stuck on a challenge)</li>
+<li>Autograding shows repeated failures (may need guidance on what the test expects)</li>
+</ul>
+<h2 id="responding-to-help-requests">Responding to Help Requests</h2>
+<h3 id="when-a-student-says-quoti-am-stuckquot">When a Student Says &quot;I am stuck&quot;</h3>
+<ol>
+<li>Open their repo from the classroom dashboard</li>
+<li>Check which challenge issue is open -- that is where they are stuck</li>
+<li>Read the challenge instructions in the issue body (every challenge includes a &quot;If You Get Stuck&quot; section)</li>
+<li>Comment on their issue: &quot;Let me help. Try [specific step] next. Let me know how it goes.&quot;</li>
+</ol>
+<p>The issue becomes a support thread. Every comment builds evidence of learning.</p>
+<h3 id="when-a-student-uses-aria-bot">When a Student Uses @aria-bot</h3>
+<p>Students can comment <code>@aria-bot</code> followed by a question on any PR. Aria responds automatically with guidance. If Aria&#39;s response is insufficient:</p>
+<ol>
+<li>Read Aria&#39;s reply to understand what it already covered</li>
+<li>Add your own comment with more specific guidance</li>
+<li>No need to disable Aria -- your comment supplements the bot&#39;s response</li>
+</ol>
+<h3 id="priority-intervention-triggers">Priority Intervention Triggers</h3>
+<p>Act immediately when you see:</p>
+<ul>
+<li>A student closes 3+ issues within 2 minutes (they may be closing without completing -- check for evidence)</li>
+<li>A student has zero activity for over 90 minutes after accepting (they may be lost)</li>
+<li>Aria posts an error or does not respond to a PR within 60 seconds (workflow may be disabled)</li>
+</ul>
+<h2 id="validating-challenges">Validating Challenges</h2>
+<h3 id="challenges-with-automatic-validation">Challenges with Automatic Validation</h3>
+<p>These challenges have autograding tests that verify completion:</p>
+<table>
+<thead>
+<tr>
+<th scope="col">Challenge</th>
+<th scope="col">What the autograder checks</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>4 - Branch Out</td>
+<td>Branch exists with correct naming</td>
+</tr>
+<tr>
+<td>5 - Make Your Mark</td>
+<td>File was edited on the branch</td>
+</tr>
+<tr>
+<td>6 - Your First Pull Request</td>
+<td>PR references an issue with <code>Closes #</code></td>
+</tr>
+<tr>
+<td>7 - Resolve a Merge Conflict</td>
+<td>No conflict markers remain in the file</td>
+</tr>
+<tr>
+<td>9 - Merge Day</td>
+<td>PR was merged successfully</td>
+</tr>
+<tr>
+<td>10 - Go Local</td>
+<td>Local commit was pushed to GitHub</td>
+</tr>
+<tr>
+<td>11 - Open a Day 2 PR</td>
+<td>Push from local to remote succeeded</td>
+</tr>
+<tr>
+<td>12 - Review Like a Pro</td>
+<td>Review comment exists on a PR</td>
+</tr>
+<tr>
+<td>14 - Template Remix</td>
+<td>YAML file passes validation</td>
+</tr>
+<tr>
+<td>16 - Build Your Agent (Capstone)</td>
+<td>Agent file is present and structured correctly</td>
+</tr>
+</tbody></table>
+<h3 id="challenges-that-require-manual-review">Challenges That Require Manual Review</h3>
+<p>Challenges 1, 2, 3, 8, 13, and 15 do not have autograders. The Progression Bot still unlocks the next challenge when the student closes the issue. Facilitators review the evidence in the issue comments using the <a href="../classroom/grading-guide.html">grading guide</a>.</p>
+<p>What to look for:</p>
+<ol>
+<li>Clear evidence the student completed the task (screenshot description, pasted output, or linked artifact)</li>
+<li>Correct application of the concept (not just clicking through)</li>
+<li>Genuine engagement (not copy-pasting the example verbatim)</li>
+</ol>
+<p>Comment on the issue: &quot;Great work! Your [specific thing] shows you understand [concept].&quot;</p>
+<h2 id="troubleshooting">Troubleshooting</h2>
+<h3 id="progression-bot-did-not-create-the-next-challenge">Progression Bot Did Not Create the Next Challenge</h3>
+<p><strong>Symptoms:</strong> Student closes an issue but no new issue appears.</p>
+<p><strong>Possible causes:</strong></p>
+<ul>
+<li>The student edited the issue title (the bot matches on title pattern)</li>
+<li>GitHub Actions is disabled in the student&#39;s repo</li>
+<li>The workflow file was deleted or corrupted during a student&#39;s edit</li>
+</ul>
+<p><strong>Fix:</strong></p>
+<ol>
+<li>Check the Actions tab in the student&#39;s repo for workflow run errors</li>
+<li>If the workflow did not trigger, verify <code>.github/workflows/student-progression.yml</code> exists</li>
+<li>If the file is missing, the student may have accidentally deleted it -- restore from the template</li>
+<li>As a last resort, manually create the next challenge issue using the issue template</li>
+</ol>
+<h3 id="aria-did-not-comment-on-a-pr">Aria Did Not Comment on a PR</h3>
+<p><strong>Symptoms:</strong> Student opens a PR but Aria does not respond.</p>
+<p><strong>Possible causes:</strong></p>
+<ul>
+<li>Workflow permissions: the repo may need <code>GITHUB_TOKEN</code> write access</li>
+<li>The PR validation workflow is not enabled</li>
+<li>The student opened the PR against a branch other than <code>main</code></li>
+</ul>
+<p><strong>Fix:</strong></p>
+<ol>
+<li>Go to the student&#39;s repo &gt; Settings &gt; Actions &gt; General</li>
+<li>Verify &quot;Read and write permissions&quot; is selected for workflow permissions</li>
+<li>Check the Actions tab for the <code>pr-validation-bot</code> workflow -- did it trigger?</li>
+<li>If it triggered but failed, read the error log for specifics</li>
+</ol>
+<h3 id="autograding-reports-a-failure-the-student-believes-is-wrong">Autograding Reports a Failure the Student Believes Is Wrong</h3>
+<p><strong>Symptoms:</strong> Student completed the challenge correctly but the autograder fails.</p>
+<p><strong>Fix:</strong></p>
+<ol>
+<li>Open the student&#39;s repo &gt; Actions tab &gt; most recent autograding run</li>
+<li>Read the test output to see what specifically failed</li>
+<li>Common false failures:<ul>
+<li>File is in the wrong directory (student created it in repo root instead of <code>docs/</code>)</li>
+<li>Branch name does not match expected pattern (case sensitivity)</li>
+<li>YAML has a formatting error the student cannot see</li>
+</ul>
+</li>
+<li>Guide the student to fix the specific issue</li>
+<li>The autograder reruns automatically on the next push</li>
+</ol>
+<h3 id="student-cannot-accept-the-invite-link">Student Cannot Accept the Invite Link</h3>
+<p><strong>Symptoms:</strong> Student clicks the invite but gets an error or cannot see the assignment.</p>
+<p><strong>Fix:</strong></p>
+<ol>
+<li>Verify the student has a GitHub account and is signed in</li>
+<li>If using a roster, confirm the student&#39;s GitHub username matches the roster entry exactly</li>
+<li>Try having the student open the link in an incognito/private window to rule out caching</li>
+<li>If persistent, add the student to the roster manually from the classroom settings</li>
+</ol>
+<h2 id="challenge-metadata">Challenge Metadata</h2>
+<h3 id="labels">Labels</h3>
+<p>The Progression Bot applies these labels to each challenge issue it creates:</p>
+<table>
+<thead>
+<tr>
+<th scope="col">Label</th>
+<th scope="col">Purpose</th>
+<th scope="col">Example values</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>challenge</code></td>
+<td>Identifies the issue as a workshop challenge</td>
+<td>Always applied</td>
+</tr>
+<tr>
+<td>Level</td>
+<td>Difficulty tier</td>
+<td><code>challenge: beginner</code>, <code>challenge: intermediate</code></td>
+</tr>
+<tr>
+<td>Skill</td>
+<td>Topic category</td>
+<td><code>skill: github-issues</code>, <code>skill: pull-requests</code>, <code>skill: git-source-control</code></td>
+</tr>
+<tr>
+<td>Day</td>
+<td>Workshop day</td>
+<td><code>day: 1</code> (Challenges 1-9), <code>day: 2</code> (Challenges 10-16)</td>
+</tr>
+</tbody></table>
+<h3 id="issue-title-convention">Issue Title Convention</h3>
+<pre><code class="hljs">Challenge <span class="hljs-comment">[NUMBER]</span>: <span class="hljs-comment">[Title]</span></code></pre>
+<p>Examples:</p>
+<pre><code class="hljs">Challenge <span class="hljs-number">1</span>: Find Your Way Around
+Challenge <span class="hljs-number">7</span>: Resolve a Merge <span class="hljs-keyword">Conflict</span>
+Challenge <span class="hljs-number">16</span>: Build Your Agent</code></pre>
+<p>The Progression Bot uses these exact titles. Do not rename challenge issues in student repos or the bot will not recognize them for sequencing.</p>
+<h2 id="automation-file-references">Automation File References</h2>
+<p>All automation files live in the student&#39;s repo (copied from the template):</p>
+<table>
+<thead>
+<tr>
+<th scope="col">File</th>
+<th scope="col">Purpose</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>.github/workflows/student-progression.yml</code></td>
+<td>Progression Bot -- creates next challenge on issue close</td>
+</tr>
+<tr>
+<td><code>.github/workflows/pr-validation-bot.yml</code></td>
+<td>Aria -- PR feedback and <code>@aria-bot</code> responses</td>
+</tr>
+<tr>
+<td><code>.github/scripts/comment-responder.js</code></td>
+<td>Aria&#39;s response logic for <code>@aria-bot</code> mentions</td>
+</tr>
+<tr>
+<td><code>.github/workflows/autograder-conflicts.yml</code></td>
+<td>Validates Challenge 7 (merge conflicts)</td>
+</tr>
+<tr>
+<td><code>.github/workflows/autograder-local-commit.yml</code></td>
+<td>Validates Challenge 10 (local commit)</td>
+</tr>
+<tr>
+<td><code>.github/workflows/autograder-template.yml</code></td>
+<td>Validates Challenge 14 (YAML template)</td>
+</tr>
+<tr>
+<td><code>.github/workflows/autograder-capstone.yml</code></td>
+<td>Validates Challenge 16 (agent file)</td>
+</tr>
+</tbody></table>
+<h2 id="success-metrics">Success Metrics</h2>
+<h3 id="track-during-the-workshop">Track During the Workshop</h3>
+<p><strong>Participation:</strong></p>
+<ul>
+<li>Assignments accepted (visible on classroom dashboard)</li>
+<li>Challenges completed per student (count of closed issues)</li>
+<li>Autograding pass rate (percentage of tests that pass on first push)</li>
+</ul>
+<p><strong>Quality:</strong></p>
+<ul>
+<li>Comments per challenge issue (discussion depth)</li>
+<li>PR review engagement (are students reviewing each other&#39;s work?)</li>
+<li>Merge rate (percentage of PRs merged without facilitator intervention)</li>
+</ul>
+<p><strong>Support Load:</strong></p>
+<ul>
+<li>Number of students requiring direct facilitator help per hour</li>
+<li>Autograding failures per hour (if high, may indicate unclear challenge instructions)</li>
+<li>Aria response failures (if any, indicates workflow configuration issue)</li>
+</ul>
+<h2 id="faq">FAQ</h2>
+<h3 id="quota-student-says-they-completed-a-challenge-but-the-next-one-did-not-appearquot">&quot;A student says they completed a challenge but the next one did not appear&quot;</h3>
+<p>Check whether they actually <strong>closed</strong> the issue. Students sometimes comment &quot;done&quot; without clicking Close. Guide them to close the issue, and the Progression Bot will create the next challenge within seconds.</p>
+<h3 id="quotcan-students-skip-challengesquot">&quot;Can students skip challenges?&quot;</h3>
+<p>Not by default. The Progression Bot creates challenges sequentially. If a student demonstrates mastery and you want to skip them ahead, manually create the next challenge issue using the appropriate issue template.</p>
+<h3 id="quota-student-accidentally-deleted-a-workflow-filequot">&quot;A student accidentally deleted a workflow file&quot;</h3>
+<p>Restore it from the template. The easiest method:</p>
+<ol>
+<li>Open the <code>Community-Access/learning-room-template</code> repo</li>
+<li>Navigate to the missing file</li>
+<li>Copy its contents</li>
+<li>In the student&#39;s repo, create the file at the same path</li>
+<li>Commit directly to <code>main</code></li>
+</ol>
+<h3 id="quothow-do-i-know-if-the-autograder-is-too-strictquot">&quot;How do I know if the autograder is too strict?&quot;</h3>
+<p>Track the first-attempt pass rate on the classroom dashboard. If fewer than 50% of students pass a specific test on their first try, the test criteria may need adjustment. Update the test in the Classroom assignment settings -- changes apply to all future pushes.</p>
+<h3 id="quotcan-i-add-more-challenges-mid-workshopquot">&quot;Can I add more challenges mid-workshop?&quot;</h3>
+<p>Yes. Add new issue templates to the <code>learning-room-template</code> repo and update the Progression Bot&#39;s challenge sequence in <code>student-progression.yml</code>. New challenges will only appear for students who have not yet passed the insertion point.</p>
+<h2 id="pre-workshop-checklist">Pre-Workshop Checklist</h2>
+<ul>
+<li><input type="checkbox" disabled> <input aria-label="Classroom created and assignments configured (see" disabled="" type="checkbox"> Classroom created and assignments configured (see <a href="../classroom/README.html">Workshop Deployment Guide</a>)</li>
+<li><input type="checkbox" disabled> <input aria-label="Roster imported with all expected student usernames" disabled="" type="checkbox"> Roster imported with all expected student usernames</li>
+<li><input type="checkbox" disabled> <input aria-label="Verification completed with a test account (Progression Bot, Aria, and autograding all confirmed working)" disabled="" type="checkbox"> Verification completed with a test account (Progression Bot, Aria, and autograding all confirmed working)</li>
+<li><input type="checkbox" disabled> <input aria-label="Classroom dashboard loads and shows the assignments" disabled="" type="checkbox"> Classroom dashboard loads and shows the assignments</li>
+<li><input type="checkbox" disabled> <input aria-label="Facilitators have the classroom dashboard bookmarked" disabled="" type="checkbox"> Facilitators have the classroom dashboard bookmarked</li>
+<li><input type="checkbox" disabled> <input aria-label="" disabled="" type="checkbox"> <a href="../classroom/grading-guide.html">Grading guide</a> reviewed by all facilitators</li>
+<li><input type="checkbox" disabled> <input aria-label="Invite links ready to share (posted in agenda documents and available for chat/email)" disabled="" type="checkbox"> Invite links ready to share (posted in agenda documents and available for chat/email)</li>
+<li><input type="checkbox" disabled> <input aria-label="One facilitator has completed a full challenge end-to-end as a test run" disabled="" type="checkbox"> One facilitator has completed a full challenge end-to-end as a test run</li>
+</ul>
+
+  </main>
+  <footer role="contentinfo" class="site-footer">
+    <p><strong>GIT Going with GitHub</strong> - A workshop by <a href="https://community-access.org">Community Access</a></p>
+    <p><a href="https://github.com/community-access/git-going-with-github">View on GitHub</a> · <a href="https://community-access.org">community-access.org</a></p>
+  </footer>
+  </body>
+</html>
