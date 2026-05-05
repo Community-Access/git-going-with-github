@@ -334,7 +334,8 @@ Here's the support path:
 - [Pull Requests (Chapter 06)](https://github.com/Community-Access/git-going-with-github/blob/main/docs/06-working-with-pull-requests.md)
 - [Markdown Reference (Appendix C)](https://github.com/Community-Access/git-going-with-github/blob/main/docs/appendix-c-markdown-reference.md)
 - [Accessibility Standards (Appendix M)](https://github.com/Community-Access/git-going-with-github/blob/main/docs/appendix-m-accessibility-standards.md)
-- [Challenge Hub](../docs/CHALLENGES.md)
+- [Challenge Hub](../../docs/CHALLENGES.md)
+- [Course Roadmap](../docs/course-roadmap.md)
 - [GitHub Help](https://docs.github.com/en)
 
 

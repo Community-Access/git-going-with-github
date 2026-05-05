@@ -10,6 +10,10 @@ const humanMatrixPath = path.join(repoRoot, 'classroom/HUMAN_TEST_MATRIX.md');
 const facilitatorGuidePath = path.join(repoRoot, 'facilitator/FACILITATOR_GUIDE.md');
 const learningRoomSolutionsIndexPath = path.join(repoRoot, 'learning-room/docs/solutions/README.md');
 const skillsBonusScenariosPath = path.join(repoRoot, 'learning-room/docs/skills-bonus-scenarios.md');
+const learningRoomRoadmapPath = path.join(repoRoot, 'learning-room/docs/course-roadmap.md');
+const learningRoomReadmePath = path.join(repoRoot, 'learning-room/README.md');
+const studentGuidePath = path.join(repoRoot, 'learning-room/.github/STUDENT_GUIDE.md');
+const startHereTemplatePath = path.join(repoRoot, 'learning-room/.github/ISSUE_TEMPLATE/start-here-roadmap.yml');
 
 function getChallengeTemplateFiles() {
   return fs
@@ -148,6 +152,71 @@ test('skills-inspired bonus scenarios doc includes source attribution', () => {
       content,
       new RegExp(escapeRegex(sourceUrl)),
       `skills-bonus-scenarios.md missing source URL: ${sourceUrl}`
+    );
+  });
+});
+
+test('course roadmap exists and includes full student path guidance', () => {
+  assert.equal(fs.existsSync(learningRoomRoadmapPath), true, 'Missing learning-room/docs/course-roadmap.md');
+
+  const content = fs.readFileSync(learningRoomRoadmapPath, 'utf8');
+  const requiredSnippets = [
+    '## Day 1 Path (Challenges 1-9)',
+    '## Day 2 Path (Challenges 10-16)',
+    '## Bonus Path (A-E)',
+    'Challenge 16: Build Your Agent (Capstone)',
+    'Challenge Hub'
+  ];
+
+  requiredSnippets.forEach(snippet => {
+    assert.match(
+      content,
+      new RegExp(escapeRegex(snippet)),
+      `course-roadmap.md missing expected content: ${snippet}`
+    );
+  });
+});
+
+test('learning-room entry points link to the course roadmap', () => {
+  const readme = fs.readFileSync(learningRoomReadmePath, 'utf8');
+  const studentGuide = fs.readFileSync(studentGuidePath, 'utf8');
+
+  assert.match(
+    readme,
+    /\[\*\*Follow the Full Course Roadmap →\*\*\]\(docs\/course-roadmap\.md\)/,
+    'learning-room/README.md should link to course roadmap'
+  );
+
+  assert.match(
+    readme,
+    /\[\*\*View Available Challenges →\*\*\]\(\.\.\/docs\/CHALLENGES\.md\)/,
+    'learning-room/README.md should link to canonical challenge hub path'
+  );
+
+  assert.match(
+    studentGuide,
+    /\[Course Roadmap\]\(\.\.\/docs\/course-roadmap\.md\)/,
+    'learning-room/.github/STUDENT_GUIDE.md should link to course roadmap'
+  );
+});
+
+test('start-here issue template exists and points to roadmap resources', () => {
+  assert.equal(fs.existsSync(startHereTemplatePath), true, 'Missing learning-room/.github/ISSUE_TEMPLATE/start-here-roadmap.yml');
+
+  const content = fs.readFileSync(startHereTemplatePath, 'utf8');
+  const requiredReferences = [
+    'Start Here: Student Course Roadmap',
+    'https://github.com/Community-Access/git-going-with-github/blob/main/learning-room/docs/course-roadmap.md',
+    'https://github.com/Community-Access/git-going-with-github/blob/main/docs/CHALLENGES.md',
+    'https://github.com/Community-Access/git-going-with-github/blob/main/learning-room/docs/solutions/README.md',
+    'https://github.com/Community-Access/git-going-with-github/blob/main/learning-room/.github/STUDENT_GUIDE.md'
+  ];
+
+  requiredReferences.forEach(text => {
+    assert.match(
+      content,
+      new RegExp(escapeRegex(text)),
+      `start-here-roadmap.yml missing required reference: ${text}`
     );
   });
 });
