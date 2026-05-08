@@ -14,6 +14,7 @@ This folder contains all administrative and facilitator documentation for runnin
 - **[FACILITATOR_OPERATIONS.md](FACILITATOR_OPERATIONS.md)** - Hour-by-hour procedures during workshop
 - **[FACILITATOR_CLASSROOM_TROUBLESHOOTING.md](FACILITATOR_CLASSROOM_TROUBLESHOOTING.md)** - Problem-solving guide
 - **[../GO-LIVE-QA-GUIDE.md](../GO-LIVE-QA-GUIDE.md)** - Final release-readiness guide and end-to-end test checklist
+- **[LEARNING-ROOM-E2E-QA-RUNBOOK.md](LEARNING-ROOM-E2E-QA-RUNBOOK.md)** - Single step-by-step QA runbook from registration to full student completion (podcast excluded)
 
 ### Supporting Guides
 - **[FACILITATOR_CHALLENGES.md](FACILITATOR_CHALLENGES.md)** - Managing the challenge system
@@ -46,6 +47,8 @@ This folder contains all administrative and facilitator documentation for runnin
 - **[ACCESSIBILITY_TESTING.md](ACCESSIBILITY_TESTING.md)** - Testing workshop for accessibility
 - **[VALIDATION_AUDIT.md](VALIDATION_AUDIT.md)** - Validating everything works
 - **[classroom/README.md](classroom/README.md)** - Copy-paste classroom setup pack (assignments, autograding, seeding)
+- **[LEARNING-ROOM-E2E-QA-RUNBOOK.md](LEARNING-ROOM-E2E-QA-RUNBOOK.md)** - Full registration-through-challenges QA execution path for one operator
+- **[qa-readiness/README.md](qa-readiness/README.md)** - Local unit-test readiness evidence pack (non-podcast)
 - **[../GO-LIVE-QA-GUIDE.md](../GO-LIVE-QA-GUIDE.md)** - Complete pre-cohort QA gate for content, workflows, Classroom, podcasts, and human testing
 
 ---

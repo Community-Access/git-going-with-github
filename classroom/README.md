@@ -4,6 +4,10 @@
 
 > Before sharing invite links with students, complete the [Go-Live QA Guide](../GO-LIVE-QA-GUIDE.md). It is the final release gate for content, workflows, Classroom setup, podcasts, accessibility, and human test coverage.
 
+> If you need one practical execution script from registration through full student challenge completion (podcast work excluded), use [admin/LEARNING-ROOM-E2E-QA-RUNBOOK.md](../admin/LEARNING-ROOM-E2E-QA-RUNBOOK.md).
+
+> Before creating assignments, sync and validate the latest template deployment using `scripts/classroom/Prepare-LearningRoomTemplate.ps1` and `scripts/classroom/Test-LearningRoomTemplate.ps1`.
+
 ## How the Workshop Works
 
 Each student gets their own **private repository** created by GitHub Classroom from the `learning-room-template`. Inside that repo, three automation systems guide the student through all 21 challenges without facilitator intervention:
@@ -66,6 +70,7 @@ Day-2-only participants skip Assignment 1 entirely. They verify readiness using 
 | [HUMAN_TEST_MATRIX.md](HUMAN_TEST_MATRIX.md) | End-to-end human walkthrough for all 16 core and 5 bonus challenges |
 | [teardown-checklist.md](teardown-checklist.md) | Post-workshop cleanup steps |
 | [../GO-LIVE-QA-GUIDE.md](../GO-LIVE-QA-GUIDE.md) | Final release-readiness guide and checklist |
+| [../admin/LEARNING-ROOM-E2E-QA-RUNBOOK.md](../admin/LEARNING-ROOM-E2E-QA-RUNBOOK.md) | Single operator runbook from registration to student completion (podcast excluded) |
 
 ---
 
