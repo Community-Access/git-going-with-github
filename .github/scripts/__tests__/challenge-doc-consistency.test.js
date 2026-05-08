@@ -117,11 +117,25 @@ test('generated podcast scripts avoid stale boilerplate', () => {
     'Episode coming soon'
   ];
 
-  const scriptFiles = fs.readdirSync(podcastScriptsDir).filter(name => name.endsWith('.txt'));
+  function collectTxtFiles(dir) {
+    const results = [];
+    for (const entry of fs.readdirSync(dir, { withFileTypes: true })) {
+      const fullPath = path.join(dir, entry.name);
+      if (entry.isDirectory()) {
+        results.push(...collectTxtFiles(fullPath));
+      } else if (entry.name.endsWith('.txt')) {
+        results.push(fullPath);
+      }
+    }
+    return results;
+  }
+
+  const scriptFiles = collectTxtFiles(podcastScriptsDir);
   assert.ok(scriptFiles.length > 0, 'podcasts/scripts should contain generated script files');
 
-  scriptFiles.forEach(fileName => {
-    const script = fs.readFileSync(path.join(podcastScriptsDir, fileName), 'utf8');
+  scriptFiles.forEach(filePath => {
+    const script = fs.readFileSync(filePath, 'utf8');
+    const fileName = path.relative(podcastScriptsDir, filePath);
     bannedFragments.forEach(fragment => {
       assert.equal(
         script.includes(fragment),
