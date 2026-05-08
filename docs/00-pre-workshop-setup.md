@@ -1,6 +1,6 @@
 # Pre-Workshop Setup - GIT Going with GitHub
 >
-> **Listen to Episode 1:** [Pre-Workshop Setup](../PODCASTS.md) - a conversational audio overview of this chapter. Listen before reading to preview the concepts, or after to reinforce what you learned.
+> **Listen to Episode 1:** [Pre-Workshop Setup](../admin/PODCASTS.md) - a conversational audio overview of this chapter. Listen before reading to preview the concepts, or after to reinforce what you learned.
 
 > **Related appendices:** [Appendix D: Git Authentication](appendix-d-git-authentication.md) | [Appendix Y: Workshop Materials](appendix-y-workshop-materials.md) | [Appendix Z: GitHub Skills](appendix-z-github-skills.md)
 > **Authoritative sources:** [GitHub Docs: Create an account](https://docs.github.com/en/get-started/start-your-journey/creating-an-account-on-github) | [GitHub Docs: Set up Git](https://docs.github.com/en/get-started/getting-started-with-git/set-up-git)
@@ -11,6 +11,8 @@
 > **A [Community Access](https://community-access.org) workshop.**
 >
 > **Please complete this guide at least one day before the workshop.** If you run into any issues, [file an issue](https://github.com/community-access/git-going-with-github/issues) so we can help - we want Day 1 to start with everyone ready to go, not troubleshooting.
+
+If you want the most guided starting path, begin with [Get Going with GitHub](get-going.md). It explains how GitHub Classroom, your Learning Room repository, Challenge 1, evidence prompts, and tool choice all fit together before you start setup.
 
 ## Table of Contents
 
@@ -973,7 +975,7 @@ If you cannot complete any step in this guide before the workshop:
 You will not be left behind. Every setup issue we can solve before Day 1 means more time for learning on the day.
 
 
-> ➡️ **Next Step:** You are all set up! Move on to [Chapter 01: Choose Your Tools](01-choose-your-tools.md).
+> **Next Step:** You are all set up! Move on to [Chapter 01: Choose Your Tools](01-choose-your-tools.md).
 
 ---
 

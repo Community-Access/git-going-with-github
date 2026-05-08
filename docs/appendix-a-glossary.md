@@ -1,6 +1,6 @@
 # Appendix A: GitHub Concepts & Glossary
 >
-> **Listen to Episode 18:** [Glossary of Terms](../PODCASTS.md) - a conversational audio overview of this chapter. Listen before reading to preview the concepts, or after to reinforce what you learned.
+> **Listen to Episode 18:** [Glossary of Terms](../admin/PODCASTS.md) - a conversational audio overview of this chapter. Listen before reading to preview the concepts, or after to reinforce what you learned.
 
 > **Reference companion to:** [Chapter 02: Understanding GitHub](02-understanding-github.md) | Also relevant: all chapters
 >

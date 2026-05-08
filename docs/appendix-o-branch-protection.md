@@ -1,6 +1,6 @@
 # Appendix O: Branch Protection Rules and Repository Rulesets
 >
-> **Listen to Episode 28:** [Branch Protection and Rulesets](../PODCASTS.md) - a conversational audio overview of this chapter. Listen before reading to preview the concepts, or after to reinforce what you learned.
+> **Listen to Episode 28:** [Branch Protection and Rulesets](../admin/PODCASTS.md) - a conversational audio overview of this chapter. Listen before reading to preview the concepts, or after to reinforce what you learned.
 
 > **Reference companion to:** [Chapter 08: Open Source Culture](08-open-source-culture.md) | Also relevant: [Chapter 14](14-git-in-practice.md)
 >

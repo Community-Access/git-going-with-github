@@ -267,7 +267,7 @@ Think of Git as having three layers: your **working files** (what you can see in
 | `--mixed` (default) | History + staging | Kept | Unstaged (back to working files) |
 | `--hard` | Everything | **Discarded** | **Discarded** |
 
-> **`--hard` is the dangerous one.** It permanently discards your uncommitted changes. If you're not sure, use `--soft` or `--mixed` — they never lose work. And if you do accidentally use `--hard`, check `git reflog` immediately (see [Chapter 11, Section 10b](14-git-in-practice.md#10b-emergency-recovery---git-reflog)).
+> **`--hard` is the dangerous one.** It permanently discards your uncommitted changes. If you're not sure, use `--soft` or `--mixed` - they never lose work. And if you do accidentally use `--hard`, check `git reflog` immediately (see [Chapter 14, Section 10b](14-git-in-practice.md#10b-emergency-recovery---git-reflog)).
 
 ### VS Code — Undoing the Last Commit
 
@@ -929,7 +929,7 @@ gh copilot suggest "find which commit broke the login tests"
 
 Copilot CLI explains the command before running it and asks for confirmation — great for learning while doing.
 
-> **See also:** [Chapter 13: GitHub Copilot](16-github-copilot.md) for the full guide to Copilot Chat, inline suggestions, and effective prompting. [Appendix W: Copilot Reference](appendix-k-copilot-reference.md) for the complete command and participant reference.
+> **See also:** [Chapter 16: GitHub Copilot](16-github-copilot.md) for the full guide to Copilot Chat, inline suggestions, and effective prompting. [Appendix K: Copilot Reference](appendix-k-copilot-reference.md) for the complete command and participant reference.
 
 ---
 

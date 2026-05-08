@@ -1,6 +1,6 @@
 # Labels, Milestones, and Projects
 >
-> **Listen to Episode 9:** [Labels, Milestones, and Projects](../PODCASTS.md) - a conversational audio overview of this chapter. Listen before reading to preview the concepts, or after to reinforce what you learned.
+> **Listen to Episode 9:** [Labels, Milestones, and Projects](../admin/PODCASTS.md) - a conversational audio overview of this chapter. Listen before reading to preview the concepts, or after to reinforce what you learned.
 
 > **Related appendices:** [Appendix R: Projects Deep Dive](appendix-r-projects-deep-dive.md) | [Appendix A: Glossary](appendix-a-glossary.md)
 > **Authoritative sources:** [GitHub Docs: About labels](https://docs.github.com/en/issues/using-labels-and-milestones-to-track-work/managing-labels) | [GitHub Docs: About milestones](https://docs.github.com/en/issues/using-labels-and-milestones-to-track-work/about-milestones) | [GitHub Docs: About Projects](https://docs.github.com/en/issues/planning-and-tracking-with-projects/learning-about-projects/about-projects)
@@ -28,8 +28,7 @@ Chapter 9 is a **guided triage chapter** focused on organization skills.
 
 **Goal:** Read the details of a Learning Room issue and post a structured triage recommendation that a maintainer could act on immediately.
 
-> **🛠️ Agentic Strategy:** Labels and issue states are how we wake up Agents. In the Day 2 Capstone, you can design an agent that only activates when an Issue gets a specific label (like \
-eeds-review\ or \ccessibility-check\).
+> **Agentic strategy:** Labels and issue states are how we wake up agents. In the Day 2 capstone, you can design an agent that only activates when an issue gets a specific label, such as `needs-review` or `accessibility-check`.
 
 **Where you are working:** your assigned Chapter 9 challenge issue in your Learning Room repository on GitHub.com, plus one other open issue you will triage.
 
@@ -695,7 +694,7 @@ Go to the Learning Room repository and do two things:
 > *Labeling today is not overhead. It is configuring the input layer that every agent downstream depends on.*
 
 
-> ➡️ **Next Step:** Move on to [Chapter 10: Notifications](10-notifications-and-day-1-close.md) to finish Day 1!
+> **Next Step:** Move on to [Chapter 10: Notifications](10-notifications-and-day-1-close.md) to finish Day 1.
 
 ---
 

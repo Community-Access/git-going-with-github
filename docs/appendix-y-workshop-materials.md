@@ -1,6 +1,6 @@
 # Appendix Y: Accessing and Downloading Workshop Materials
 >
-> **Listen to Episode 42:** [Accessing Workshop Materials](../PODCASTS.md) - a conversational audio overview of this chapter. Listen before reading to preview the concepts, or after to reinforce what you learned.
+> **Listen to Episode 42:** [Accessing Workshop Materials](../admin/PODCASTS.md) - a conversational audio overview of this chapter. Listen before reading to preview the concepts, or after to reinforce what you learned.
 
 > **Reference companion to:** [Chapter 00: Pre-Workshop Setup](00-pre-workshop-setup.md)
 >

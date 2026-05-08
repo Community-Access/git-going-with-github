@@ -1,0 +1,268 @@
+[ALEX]
+Welcome to Git Going with GitHub, episode 28: Branch Protection and Rulesets. I am Alex. Today we are going to make Branch Protection and Rulesets something you can explain, practice, and recover from when the interface surprises you.
+
+[JAMIE]
+And I am Jamie. I will be the voice of the learner who is willing to ask, what is this for, where am I, and how do I know I did it right?
+
+[PAUSE]
+
+[ALEX]
+The big idea today: Required reviews, status checks, rulesets, and diagnosing blocked merges. We will name the concept, explain why it matters, practice the move, and point out the checks that tell you the work is real.
+
+[JAMIE]
+So the episode should work even if someone has not read the chapter yet.
+
+[ALEX]
+Exactly. The transcript has to stand on its own. It can point toward practice, but it should teach the concept right here in the conversation.
+
+[PAUSE]
+
+[JAMIE]
+Okay, set the room for us. What are we walking into?
+
+[ALEX]
+Start with How Merging Rules Work and Why Your PR May Be Blocked: Who this is for: Contributors who have submitted a PR and are wondering why it cannot be merged yet, as well as workshop facilitators who configure branch protection for practice repositories.
+
+[ALEX]
+A solid pull request habit is to separate three questions: what changed, why it changed, and what still needs review. That keeps the conversation useful instead of noisy.
+
+[JAMIE]
+How would you walk the room through that step by step?
+
+[ALEX]
+Start with Quick Navigation. There is something to understand, something to try, and something that proves the try worked.
+
+[ALEX]
+First, what Branch Protection Does. Then, common Branch Protection Rules. After that, repository Rulesets - The Modern Approach. Finally, why Your PR Cannot Be Merged - Diagnosis Guide. Treat it like a recipe: do not add the next ingredient until the previous one is actually in the bowl.
+
+[JAMIE]
+What does the learner do first, second, and then after that?
+
+[ALEX]
+First, navigating the Merge Box with a Screen Reader. Then, status Checks - What They Are and What They Mean. After that, who Can Configure Branch Protection. Finally, workshop Repository Configuration Reference. It is a checklist, but a meaningful one: every item creates evidence that the next step is safe.
+
+[ALEX]
+A solid navigation habit is to prove where you are before activating controls. Headings, landmarks, and the address bar are not trivia; they are your map.
+
+[JAMIE]
+What is the one idea that makes the next few steps less mysterious?
+
+[ALEX]
+This is where 1. What Branch Protection Does becomes real: a branch protection rule is a set of requirements that must be satisfied before a PR can be merged into a specific branch (typically main). That matters in practice: Think of branch protection as the quality gate for a repository's primary branch.
+
+[ALEX]
+That shows up in the workshop in a few specific ways. Require that code is reviewed before it enters the default branch. Require that automated tests pass before merging. Prevent direct pushes to main without a PR. Ensure the branch is up-to-date before merging.
+
+[PAUSE]
+
+[ALEX]
+Now bring the learner back to the room. Start with Learning Cards: What Branch Protection Does. There is something to understand, something to try, and something that proves the try worked.
+
+[ALEX]
+For a learner, the useful signals are these. The merge box at the bottom of every PR page is where branch protection surfaces its requirements -- press End to jump to the bottom, then use H to find the merge heading. Each requirement is announced as a status line: "1 review required," "Some checks haven't completed yet," etc. -- listen for these before attempting to merge. If the Merge button says "disabled" or "grayed out," branch protection is blocking -- the status lines immediately above explain exactly what is needed. The merge box uses green (ready), yellow (pending), and red (blocked) indicators -- zoom in on the merge area to read the text labels next to each colored icon. The "Update branch" button appears as a secondary button above the merge button when your PR is behind main -- it can be easy to miss at high zoom. Required checks show checkmark or X icons that are small at default size -- browser zoom to 150%+ makes the pass/fail status easier to distinguish.
+
+[JAMIE]
+What would you say to someone who is already bracing for this to be too much?
+
+[ALEX]
+The reason Required Reviews matters is that the maintainer requires a minimum number of approving reviews before the PR can be merged. That gives the learner a simple foothold: example: "Require 1 approving review".
+
+[ALEX]
+The parts worth keeping in working memory are these. Your PR shows a "1 review required" notice in the merge box. If a reviewer requests changes, their approval is revoked - you need at least one new approval after your latest push. After you push new commits, re-request review from the original reviewer.
+
+[ALEX]
+That matters because of the next idea. Start with Required Status Checks: Automated workflows (GitHub Actions or third-party CI) must complete successfully before merging is allowed. Think of it like entering a new building: first you find the lobby, then the room, then the door you actually need.
+
+[ALEX]
+The useful habit is simple: orient first, act second, verify third. That pause before acting is part of the work.
+
+[PAUSE]
+
+[JAMIE]
+If I am listening before the workshop starts, what should settle in my mind first?
+
+[ALEX]
+Here is the plain-English version of Example checks you may see. What "Required" means: The merge button is grayed out (or shows an error) until all required checks show a green checkmark. Put another way, a failing or pending check blocks the merge.
+
+[ALEX]
+Here is what that changes in practice. ci / build - compiles the code. ci / test - runs the test suite. lint - code style checks. accessibility-check - automated accessibility scanning.
+
+[ALEX]
+This is where the talk moves from concept to action. This is where Require Branches to Be Up to Date becomes real: before merging, your PR branch must include all changes from main. That matters in practice: This prevents merge conflicts from being introduced silently.
+
+[ALEX]
+The room should hear these as checkpoints. The merge box shows: "This branch is out of date with the base branch". Button: "Update branch" - merges current main into your branch. Alternative: Rebase your branch (only if the maintainer permits rebase merges).
+
+[ALEX]
+A solid Git habit is to know which branch you are on, what changed, and what confirmation you expect before you run the next command.
+
+[JAMIE]
+Where do you want a learner to place their attention here?
+
+[ALEX]
+Keep the learner anchored in Require Signed Commits. All commits in the PR must have a Verified badge (see Appendix D: Git Authentication). This is the part to say slowly: If your commits are unverified, the PR cannot be merged until you re-commit with signing enabled.
+
+[PAUSE]
+
+[ALEX]
+Before the learner moves on. The reason Require Linear History matters is that only squash merges or rebase merges are permitted - no merge commits. That gives the learner a simple foothold: this keeps the commit history linear and readable. The interface gets friendlier when it stops being a wall of controls and starts being a set of named places.
+
+[JAMIE]
+Give me the version that sounds like an instructor, not a manual.
+
+[ALEX]
+Start with Lock Branch: A locked branch cannot receive any merges - it is effectively read-only. The next useful detail is this: This is sometimes used for archived repositories or during release freezes.
+
+[ALEX]
+Hold that next to this. Here is the plain-English version of 3. Repository Rulesets - The Modern Approach. Repository Rulesets (introduced in late 2023) are the next generation of branch protection. Put another way, they extend branch protection rules.
+
+[ALEX]
+The practical anchors are these. Organization-level rules - apply across all repos in an org from one place. Bypass lists - specific users or roles can be exempted from rules (e.g., release bots). Target multiple branches - one ruleset can target a pattern like release/ or v. Violation insights - audit log of when rules were bypassed and by whom.
+
+[PAUSE]
+
+[JAMIE]
+Let's pause on Rulesets vs. Branch Protection Rules. What should a learner take away from it?
+
+[ALEX]
+This is where Rulesets vs. Branch Protection Rules becomes real: most repositories you encounter still use classic branch protection rules. That matters in practice: Rulesets will become more common as maintainers migrate.
+
+[JAMIE]
+How do you keep commands from becoming magic words?
+
+[ALEX]
+Keep the learner anchored in Finding and Reading Rulesets. If you want to understand why certain rules apply to a branch. This is the part to say slowly: Alternatively, PR merge box messages describe which rules are blocking - you don't need admin access to understand what's required. A good GitHub workflow is like a well-run meeting: everyone knows the topic, the next action, and who has the floor.
+
+[ALEX]
+Treat examples as spoken recipes, not decorations. You may hear something like Repository → Insights tab → Rulesets (if you have access - contributors usually don't); Or: Repository → Settings → Rules → Rulesets (admin only). Read the command, understand what it changes, then run it only when the repository state matches the lesson.
+
+[JAMIE]
+Let's pause on 4. Why Your PR Cannot Be Merged - Diagnosis Guide. What should a learner take away from it?
+
+[ALEX]
+The reason 4. Why Your PR Cannot Be Merged - Diagnosis Guide matters is that when you open a PR and the merge button is grayed out or shows an error, the merge box tells you exactly what needs to happen.
+
+[PAUSE]
+
+[ALEX]
+Here is the practical turn. Start with "X review required / X reviews required": What it means: The required number of approvals hasn't been reached yet.
+
+[JAMIE]
+Turn that into a path someone can follow.
+
+[ALEX]
+Start with What to do. There is something to understand, something to try, and something that proves the try worked.
+
+[ALEX]
+First, request review from a codeowner or maintainer (right sidebar → Reviewers → request). Then, check if any reviews exist but requested changes - those count against you. After that, wait for the reviewer to submit their review. Finally, respond to requested changes by pushing new commits, then re-requesting review. Treat it like a recipe: do not add the next ingredient until the previous one is actually in the bowl.
+
+[ALEX]
+Keep the thread going. This is where "Some checks haven't completed yet" or "Some checks were not successful" becomes real: what it means: A required status check is pending or failing. The workshop is closer to rehearsal than lecture. You hear the move, try the move, and then check what changed.
+
+[PAUSE]
+
+[JAMIE]
+What is the ordered workflow?
+
+[ALEX]
+Keep the learner anchored in What to do. If checks pass on main but fail on your PR: The issue is specific to your changes. This is the part to say slowly: If checks are stuck "in progress" for over 30 minutes: The workflow runner may have an issue - contact the maintainer.
+
+[ALEX]
+First, scroll down to the merge box - expand "Show all checks". Then, find the failing check → click "Details" to see the full log. After that, fix the underlying issue (test failure, lint error, build error) in your branch. Finally, push new commits - checks re-run automatically. It is like walking a hallway with named doors: read the sign, enter the right room, then confirm where you landed.
+
+[JAMIE]
+Give me the sequence, because order matters here.
+
+[ALEX]
+First, wait for checks to complete (typically 1-5 minutes for most CI). The rhythm is simple: orient, act, verify, then continue.
+
+[ALEX]
+Another way to ground it. The reason "This branch is out of date with the base branch" matters is that what it means: New commits were pushed to main after you created your PR branch. That gives the learner a simple foothold: the maintainer requires everything to be current.
+
+[JAMIE]
+Let's pause on What to do. What should a learner take away from it?
+
+[ALEX]
+A few details make that real. Click "Update branch" in the merge box - GitHub does a merge commit from main into your branch. Or locally: git fetch upstream && git rebase upstream/main then force-push (only if you are comfortable with rebase).
+
+[PAUSE]
+
+[ALEX]
+This is the part worth saying out loud. Here is the plain-English version of "Commits must have verified signatures". What it means: Branch protection requires signed commits (see Appendix D: Git Authentication). It is like learning a transit route. The names of the stops matter because they tell you whether you are still going the right direction.
+
+[JAMIE]
+Before we leave What to do, what is the practical point?
+
+[ALEX]
+First, enable commit signing locally before making more commits. Then, for existing unsigned commits, you need to rebase-rewrite them - this is advanced; ask the maintainer if there is a workaround. It is a checklist, but a meaningful one: every item creates evidence that the next step is safe.
+
+[ALEX]
+The next layer is this. Keep the learner anchored in "Merging is blocked". What it means: A ruleset or branch protection has explicitly blocked merging for a reason not covered by other messages. This is the part to say slowly: Check the PR for a pinned comment from the mergeable status check or a GitHub Actions check that posts a comment explaining the block.
+
+[PAUSE]
+
+[JAMIE]
+Let's pause on Learning Cards: Why Your PR Cannot Be Merged. What should a learner take away from it?
+
+[ALEX]
+Start with Learning Cards: Why Your PR Cannot Be Merged. There is something to understand, something to try, and something that proves the try worked.
+
+[ALEX]
+On the ground, that means a few things. Navigate to the merge box (End key, then H key to find "Merge" heading) and read each status line with arrow keys -- the messages tell you exactly what action to take. When a check fails, Tab to the "Details" link next to the failing check name and press Enter to open the log -- use Ctrl+F to search for "error" or "failed". After pushing a fix, the checks re-run automatically -- return to the PR page and listen for the status to change from "pending" to "passed". Failed checks show a red X icon that can be tiny -- zoom to 150%+ and look for the word "failing" or "failed" next to each check name. The "Update branch" button (for out-of-date PRs) is a secondary action that blends in at low zoom -- look for it directly above the main merge button. The Details link next to each check opens a log page with monospace text -- increase your editor or browser font size before reading long CI logs.
+
+[ALEX]
+That connects to another useful point. Start with 5. Navigating the Merge Box with a Screen Reader: The merge box lives at the bottom of every PR page. The next useful detail is this: With a screen reader, navigating to it efficiently is important. Think of it like entering a new building: first you find the lobby, then the room, then the door you actually need.
+
+[JAMIE]
+Let's pause on Reading Check Details. What should a learner take away from it?
+
+[ALEX]
+Here is the plain-English version of Reading Check Details. The check log is a text-heavy page in a pre-formatted block.
+
+[PAUSE]
+
+[ALEX]
+Keep the teaching thread moving. This is where 6. Status Checks - What They Are and What They Mean becomes real: status checks come from two sources.
+
+[JAMIE]
+Let's pause on GitHub Actions Status Checks. What should a learner take away from it?
+
+[ALEX]
+Keep the learner anchored in GitHub Actions Status Checks. Defined in.github/workflows/.yml in the repository. This is the part to say slowly: Each job: in a workflow file becomes a status check.
+
+[ALEX]
+Keep the teaching thread moving. The reason Third-Party Status Checks matters is that services like Netlify, Vercel, Codecov, and Snyk post status checks via the GitHub API. That gives the learner a simple foothold: the learner will recognize them by their app name prefix (e.g., netlify/deploy-preview - Deploy Preview ready). The interface gets friendlier when it stops being a wall of controls and starts being a set of named places.
+
+[PAUSE]
+
+[JAMIE]
+Let's pause on 7. Who Can Configure Branch Protection. What should a learner take away from it?
+
+[ALEX]
+Start with 7. Who Can Configure Branch Protection: As a workshop participant, you are typically a contributor to the main community-access/accessibility-agents repo and an admin of your own fork. The next useful detail is this: On your fork, you can configure branch protection however you like - including disabling it entirely for practice purposes.
+
+[ALEX]
+Keep the teaching thread moving. Here is the plain-English version of 8. Workshop Repository Configuration Reference. The community-access/accessibility-agents repository uses the following branch protection configuration on main. Put another way, your personal fork of accessibility-agents has no branch protection by default.
+
+[JAMIE]
+Let's pause on Related Resources. What should a learner take away from it?
+
+[ALEX]
+This is where Related Resources becomes real: next: Appendix P: Security Features Back: Appendix N: Advanced Search Teaching chapter: Chapter 08: Open Source Culture.
+
+[ALEX]
+These are the details that keep the idea from floating away. Appendix D - Git Authentication and Commit Signing. Appendix Q - GitHub Actions Workflows. Appendix L - GitHub Security Features.
+
+[PAUSE]
+
+[JAMIE]
+What should people carry with them after this?
+
+[ALEX]
+Carry the map. Know what page or tool you are in, know which action you are taking, and know what confirmation should follow. If the confirmation is missing, pause. That pause is not wasted time; it is professional judgment.
+
+[JAMIE]
+That is a better way to say it than just follow the steps.
+
+[ALEX]
+Right. Steps matter, but understanding wins. That is episode 28. Next in the series is episode 29, where we keep building the same contributor muscles.

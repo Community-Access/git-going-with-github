@@ -1,6 +1,6 @@
 # Appendix L: Accessibility Agents Reference
 >
-> **Listen to Episode 39:** [Accessibility Agents - Complete Reference](../PODCASTS.md) - a conversational audio overview of this chapter. Listen before reading to preview the concepts, or after to reinforce what you learned.
+> **Listen to Episode 39:** [Accessibility Agents - Complete Reference](../admin/PODCASTS.md) - a conversational audio overview of this chapter. Listen before reading to preview the concepts, or after to reinforce what you learned.
 
 > **Reference companion to:** [Chapter 19: Accessibility Agents](19-accessibility-agents.md) | Also relevant: [Chapter 20](20-build-your-agent.md)
 >
@@ -8,7 +8,7 @@
 
 ## Complete Reference - Agents, Slash Commands, Instructions, Configuration Levels, and All File Formats
 
-> This is your comprehensive reference for Accessibility Agents and the full VS Code Copilot customization system. The ecosystem includes **55 agents** across **3 teams** and **5 platforms**, plus 54+ slash commands, 17 skills, and 6 instruction files. For the lesson, see [Chapter 16: Accessibility Agents](19-accessibility-agents.md). For Copilot keyboard shortcuts and Chat features, see [Appendix W: GitHub Copilot Reference](appendix-k-copilot-reference.md).
+> This is your comprehensive reference for Accessibility Agents and the full VS Code Copilot customization system. The ecosystem includes **55 agents** across **3 teams** and **5 platforms**, plus 54+ slash commands, 17 skills, and 6 instruction files. For the lesson, see [Chapter 19: Accessibility Agents](19-accessibility-agents.md). For Copilot keyboard shortcuts and Chat features, see [Appendix K: GitHub Copilot Reference](appendix-k-copilot-reference.md).
 
 
 ## Table of Contents
@@ -1318,7 +1318,7 @@ This shows: which files were found, which were loaded, which have errors, and fr
 
 ## 14. Further Reading
 
-For the broader ecosystem - the community plugin marketplace, MCP server integrations, and running agents in the cloud via GitHub Actions - see [Appendix W: GitHub Copilot & Agentic Reference](appendix-k-copilot-reference.md).
+For the broader ecosystem - the community plugin marketplace, MCP server integrations, and running agents in the cloud via GitHub Actions - see [Appendix K: GitHub Copilot and Agentic Reference](appendix-k-copilot-reference.md).
 
 ### Official accessibility.github.com Guides
 

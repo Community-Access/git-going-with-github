@@ -14,14 +14,14 @@ You can review, edit, and refine the content here. Once finalized, Challenge 1 s
 **Title:** Challenge 1: Find Your Way Around
 
 **Body:**
- **Welcome to Git Going with GitHub!**
+**Welcome to Git Going with GitHub!**
 
 We are thrilled to have you here. This repository is your safe, private learning environment for Day 1. Let's start by getting comfortable with your surroundings. 
 
- **Your Goal:**
+**Your Goal:**
 Explore the main areas of a GitHub repository and locate where the files live.
 
- **Step-by-Step:**
+**Step-by-Step:**
 
 <details>
 <summary><b>Web Browser</b></summary>
@@ -54,14 +54,14 @@ Explore the main areas of a GitHub repository and locate where the files live.
 
 </details>
 
- **Expected Outcome:**
+**Expected Outcome:**
 You have familiarized yourself with the repository layout and understand where to locate project files.
 
-️ **Troubleshooting (If you get stuck):**
+**Troubleshooting (If you get stuck):**
 - **Feel lost?** Use your browser's "Go Back" function or select the repository name at the top left to return to the main page.
-- **Need more context?** Review [Chapter 2: Understanding GitHub](https://github.com/Community-Access/git-going-with-github/blob/main/docs/02-understanding-github.md).
+-**Need more context?** Review [Chapter 2: Understanding GitHub](https://github.com/Community-Access/git-going-with-github/blob/main/docs/02-understanding-github.md).
 
- **To Unlock Challenge 2:**
+**To Unlock Challenge 2:**
 To complete this step, leave a comment below saying "Hello World!" and then activate the **Close issue** button at the bottom of this page. Our Student Progression Bot will instantly open your next challenge!
 
 ---
@@ -71,14 +71,14 @@ To complete this step, leave a comment below saying "Hello World!" and then acti
 **Title:** Challenge 2: File Your First Issue
 
 **Body:**
- **Magical! You have completed Challenge 1!**
+**Magical! You have completed Challenge 1!**
 
 Welcome to your next step in the journey. Now that you have navigated the repository, it is time to practice communicating with your team using GitHub Issues. Issues are like a shared to-do list where teams discuss ideas, bugs, and tasks.
 
- **Your Goal:**
+**Your Goal:**
 File a new issue describing something you noticed in the repository. It can be a typo, an idea for improvement, or just a friendly greeting!
 
- **Step-by-Step:**
+**Step-by-Step:**
 
 <details>
 <summary><b>Web Browser</b></summary>
@@ -95,7 +95,7 @@ File a new issue describing something you noticed in the repository. It can be a
 <summary><b>Visual Studio Code</b></summary>
 
 1. Open the **GitHub Pull Requests and Issues** view (`Ctrl+Shift+G` or `Cmd+Shift+G` on Mac).
-2. Open the **Issues** creation form: Use the arrow keys to focus the **Issues** header and select the **Stage Changes** button (plus icon), or use the command palette (`Ctrl+Shift+P` or `Cmd+Shift+P` on Mac) and search for **"GitHub Issues: Create Issue..."**.
+2. Open the **Issues** creation form: Use the arrow keys to focus the **Issues** header and select the **Stage Changes ** button (plus icon), or use the command palette (`Ctrl+Shift+P` or `Cmd+Shift+P` on Mac) and search for **"GitHub Issues: Create Issue..."**.
 3. Choose the current repository if prompted.
 4. Enter a descriptive title in the prompt bar.
 5. For the description, a scratchpad file will open. Type your thought there and save it to submit.
@@ -107,22 +107,22 @@ File a new issue describing something you noticed in the repository. It can be a
 
 1. Run the interactive issue creator: `gh issue create`.
 2. Follow the prompts:
-   - **What would you like to do?**: Choose **"Create a new issue"**.
-   - **Title**: Enter a clear title (e.g., "Idea: Add a welcome banner").
-   - **Body**: Select **"Write with editor"** or **"Input text"** and type your sentence.
-   - **What's next?**: Select **"Submit"**.
+   -**What would you like to do?**: Choose **"Create a new issue"**.
+   -**Title **: Enter a clear title (e.g., "Idea: Add a welcome banner").
+   -**Body **: Select **"Write with editor"** or **"Input text"** and type your sentence.
+   -**What's next?**: Select **"Submit"**.
 
 </details>
 
- **Expected Outcome:**
-The page will update to display your newly created issue with a unique number (like `#2`). Take a deep breath—you just started a conversation in open source!
+**Expected Outcome:**
+The page will update to display your newly created issue with a unique number (like `#2`). Take a deep breath - you just started a conversation in open source!
 
-️ **Troubleshooting (If you get stuck):**
+**Troubleshooting (If you get stuck):**
 - **Cannot find the New Issue button?** Ensure you are in the "Issues" tab, rather than Pull Requests or Actions.
-- **Unsure what to write?** Simply type "Hello World! This is my first issue."
-- **Need more context?** Review [Chapter 5: Working with Issues](https://github.com/Community-Access/git-going-with-github/blob/main/docs/05-working-with-issues.md).
+-**Unsure what to write?** Simply type "Hello World! This is my first issue."
+-**Need more context?** Review [Chapter 5: Working with Issues](https://github.com/Community-Access/git-going-with-github/blob/main/docs/05-working-with-issues.md).
 
- **To Unlock Challenge 3:**
+**To Unlock Challenge 3:**
 When you are finished, return to **this** issue (Challenge 2) and activate the **Close issue** button at the bottom of the page. The bot will automatically unlock your next adventure!
 
 ---
@@ -132,14 +132,14 @@ When you are finished, return to **this** issue (Challenge 2) and activate the *
 **Title:** Challenge 3: Join the Conversation
 
 **Body:**
- **Excellent work! Challenge 2 is complete.**
+**Excellent work! Challenge 2 is complete.**
 
 Communication in open source is all about collaboration. Sometimes you need to draw someone's attention to a specific issue. We accomplish this using `@mentions`.
 
- **Your Goal:**
+**Your Goal:**
 Mention Aria, your Workshop Agent, in a comment to ask for a workspace check.
 
- **Step-by-Step:**
+**Step-by-Step:**
 
 <details>
 <summary><b>Web Browser</b></summary>
@@ -172,14 +172,14 @@ Mention Aria, your Workshop Agent, in a comment to ask for a workspace check.
 
 </details>
 
- **Expected Outcome:**
+**Expected Outcome:**
 Your comment will appear in the issue history, and Aria will receive a notification to review your progress.
 
-️ **Troubleshooting:**
+**Troubleshooting:**
 - **The menu did not appear?** Aria might be busy! Just type `@aria-bot` manually and post the comment.
-- **Want more details?** Review [Chapter 5: Working with Issues](https://github.com/Community-Access/git-going-with-github/blob/main/docs/05-working-with-issues.md).
+-**Want more details?** Review [Chapter 5: Working with Issues](https://github.com/Community-Access/git-going-with-github/blob/main/docs/05-working-with-issues.md).
 
- **To Unlock Challenge 4:**
+**To Unlock Challenge 4:**
 Post a link to your comment (or the issue you commented on) right here, and then activate **Close issue**. Your next task awaits!
 
 ---
@@ -189,20 +189,20 @@ Post a link to your comment (or the issue you commented on) right here, and then
 **Title:** Challenge 4: Branch Out
 
 **Body:**
- **You are a communication pro! Let us get into the code.**
+**You are a communication pro! Let us get into the code.**
 
 In Git, a "branch" is a safe space to work on your ideas without affecting the main project. Think of it as a parallel universe where you can experiment! Aria is watching for new branches to help you along.
 
- **Your Goal:**
+**Your Goal:**
 Create a feature branch where you can safely make changes.
 
- **Step-by-Step:**
+**Step-by-Step:**
 
 <details>
 <summary><b>Web Browser</b></summary>
 
 1. Navigate to the **Code** tab.
-2. Locate the branch selector button (it currently indicates **main**).
+2. Locate the branch selector button (it currently indicates**main**).
 3. Access the dropdown and type a new name for your branch in the search box (e.g., `feature/my-first-edit`).
 4. Select the option that says **Create branch: [your-branch-name] from 'main'**.
 
@@ -212,8 +212,8 @@ Create a feature branch where you can safely make changes.
 <summary><b>Visual Studio Code</b></summary>
 
 1. Open the **Source Control** view (`Ctrl+Shift+G` or `Cmd+Shift+G` on Mac).
-2. Use the arrow keys to focus the **Branch Name** indicator in the Status Bar (bottom left) or open the **More Actions (...)** menu.
-3. Choose **Branch** → **Create Branch...**.
+2. Use the arrow keys to focus the **Branch Name ** indicator in the Status Bar (bottom left) or open the **More Actions (...)** menu.
+3. Choose **Branch ** ->**Create Branch...**.
 4. Type your branch name: `feature/my-first-edit`.
 
 </details>
@@ -227,15 +227,15 @@ Create a feature branch where you can safely make changes.
 
 </details>
 
- **Expected Outcome:**
+**Expected Outcome:**
 The page will refresh, and the branch selector will now display your new branch name instead of `main`. Aria will detect your new branch and is ready for your first commit!
 
-️ **Troubleshooting:**
+**Troubleshooting:**
 - **Forgot the name?** Don't worry, Aria can see all your branches.
-- **Branch name invalid?** Branch names cannot contain spaces. Use hyphens or underscores instead!
-- **Need more guidance?** Review [Chapter 4: The Learning Room](https://github.com/Community-Access/git-going-with-github/blob/main/docs/04-the-learning-room.md).
+-**Branch name invalid?** Branch names cannot contain spaces. Use hyphens or underscores instead!
+-**Need more guidance?** Review [Chapter 4: The Learning Room](https://github.com/Community-Access/git-going-with-github/blob/main/docs/04-the-learning-room.md).
 
- **To Unlock Challenge 5:**
+**To Unlock Challenge 5:**
 Reply to this issue with your new branch name, and then activate **Close issue**!
 
 ---
@@ -245,14 +245,14 @@ Reply to this issue with your new branch name, and then activate **Close issue**
 **Title:** Challenge 5: Make Your Mark
 
 **Body:**
- **Branch created! You are ready to make your mark.**
+**Branch created! You are ready to make your mark.**
 
 Now that you have a safe branch, it is time to edit a file and save your changes. Saving changes in Git is called making a "commit." Aria can help review your commit messages for clarity!
 
- **Your Goal:**
+**Your Goal:**
 Edit a file in your repository and make a commit with a clear message. Ask Aria what she thinks of your message!
 
- **Step-by-Step:**
+**Step-by-Step:**
 
 <details>
 <summary><b>Web Browser</b></summary>
@@ -260,7 +260,7 @@ Edit a file in your repository and make a commit with a clear message. Ask Aria 
 1. Verify you are on the branch you just created (check the branch selector).
 2. Select a file you wish to edit (for example, the `README.md` file).
 3. Access the **Edit this file** button (pencil icon) to enter the editor.
-4. Make a small text change—add your name, fix a typo, or add a greeting.
+4. Make a small text change - add your name, fix a typo, or add a greeting.
 5. Provide a short, descriptive commit message in the summary box (e.g., "Add my name to the README").
 6. Save your changes by selecting the **Commit changes** button.
 
@@ -272,10 +272,10 @@ Edit a file in your repository and make a commit with a clear message. Ask Aria 
 1. Verify you are on the new branch (check the Status Bar).
 2. Open the `README.md` file (or another of your choice) from the Explorer.
 3. Make a change in the editor and save the file (`Ctrl+S` or `Cmd+S` on Mac).
-4. Stage your changes (this prepares them for your commit): Use the **Source Control** view (`Ctrl+Shift+G` or `Cmd+Shift+G` on Mac). Use the arrow keys to focus your file and select the **Stage Changes** icon (plus sign), or use the Command Palette (`Ctrl+Shift+P` or `Cmd+Shift+P` on Mac) and search for **"Git: Stage Changes"**.
+4. Stage your changes (this prepares them for your commit): Use the **Source Control ** view (`Ctrl+Shift+G` or `Cmd+Shift+G` on Mac). Use the arrow keys to focus your file and select the **Stage Changes ** icon (plus sign), or use the Command Palette (`Ctrl+Shift+P` or `Cmd+Shift+P` on Mac) and search for **"Git: Stage Changes"**.
 5. Type your commit message in the message field (e.g., "Add my name to the README").
-6. Finalize your commit: Select the **Commit** button, use `Ctrl+Enter` (`Cmd+Enter` on Mac), or use the Command Palette (`Ctrl+Shift+P` or `Cmd+Shift+P` on Mac) and search for **"Git: Commit"**.
-7. Send your work to GitHub: Select the **Sync Changes** or **Publish Branch** button in the Source Control view, or use the Command Palette and search for **"Git: Push"**.
+6. Finalize your commit: Select the **Commit ** button, use `Ctrl+Enter` (`Cmd+Enter` on Mac), or use the Command Palette (`Ctrl+Shift+P` or `Cmd+Shift+P` on Mac) and search for **"Git: Commit"**.
+7. Send your work to GitHub: Select the **Sync Changes ** or **Publish Branch ** button in the Source Control view, or use the Command Palette and search for **"Git: Push"**.
 
 </details>
 
@@ -289,14 +289,14 @@ Edit a file in your repository and make a commit with a clear message. Ask Aria 
 
 </details>
 
- **Expected Outcome:**
+**Expected Outcome:**
 Your changes are securely saved! If you want feedback on your message, mention `@aria-bot` in your next comment.
 
-️ **Troubleshooting:**
+**Troubleshooting:**
 - **Accidentally saved to the wrong branch?** Ask Aria or a facilitator for help.
-- **Want to read more?** [Chapter 4: The Learning Room](https://github.com/Community-Access/git-going-with-github/blob/main/docs/04-the-learning-room.md).
+-**Want to read more?** [Chapter 4: The Learning Room](https://github.com/Community-Access/git-going-with-github/blob/main/docs/04-the-learning-room.md).
 
- **To Unlock Challenge 6:**
+**To Unlock Challenge 6:**
 Leave a comment here saying "Committed!" and then activate **Close issue** to move on!
 
 ---
@@ -306,14 +306,14 @@ Leave a comment here saying "Committed!" and then activate **Close issue** to mo
 **Title:** Challenge 6: Your First Pull Request
 
 **Body:**
- **Changes securely committed! Time to share them with the world.**
+**Changes securely committed! Time to share them with the world.**
 
 A Pull Request (PR) is how you ask to merge your work. Aria will perform an automated "Aria Review" as soon as you open it!
 
- **Your Goal:**
+**Your Goal:**
 Open a Pull Request and let Aria run her first set of automated accessibility checks.
 
- **Step-by-Step:**
+**Step-by-Step:**
 
 <details>
 <summary><b>Web Browser</b></summary>
@@ -331,7 +331,7 @@ Open a Pull Request and let Aria run her first set of automated accessibility ch
 
 1. Open the **GitHub Pull Requests and Issues** view (`Ctrl+Shift+G` or `Cmd+Shift+G` on Mac).
 2. Use the arrow keys to focus the **Pull Requests** header and select the **Stage Changes** button (plus icon).
-3. Choose the **Compare Branch** (e.g., `feature/my-first-edit`) and the **Base Branch** (`main`).
+3. Choose the **Compare Branch ** (e.g., `feature/my-first-edit`) and the **Base Branch** (`main`).
 4. Type your PR title (e.g., "Add my name to the README").
 5. In the description field, include `Closes #1` to link it to your issue.
 6. Select **Create** or use `Ctrl+Enter` (`Cmd+Enter` on Mac).
@@ -343,21 +343,21 @@ Open a Pull Request and let Aria run her first set of automated accessibility ch
 
 1. Run the interactive PR creator: `gh pr create`.
 2. Follow the prompts:
-   - **Title**: Enter a clear title (e.g., "Add my name to the README").
-   - **Body**: Select **"Write with editor"** and include `Closes #1` in your description.
-   - **What's next?**: Select **"Submit"**.
+   -**Title **: Enter a clear title (e.g., "Add my name to the README").
+   -**Body **: Select **"Write with editor"** and include `Closes #1` in your description.
+   -**What's next?**: Select **"Submit"**.
 
 </details>
 
- **Expected Outcome:**
+**Expected Outcome:**
 Your PR is live! Within seconds, look for a comment from **Aria the Workshop Agent**. She will provide a "Validation Report" on your changes.
 
-️ **Troubleshooting:**
+**Troubleshooting:**
 - **Aria didn't respond?** Check the "Checks" tab at the top of the PR to see if her automation is running.
-- **Validation failed?** Read Aria's report! She usually provides specific tips on how to fix accessibility issues.
-- **Learn more about PRs:** [Chapter 6: Working with Pull Requests](https://github.com/Community-Access/git-going-with-github/blob/main/docs/06-working-with-pull-requests.md).
+-**Validation failed?** Read Aria's report! She usually provides specific tips on how to fix accessibility issues.
+-**Learn more about PRs: ** [Chapter 6: Working with Pull Requests](https://github.com/Community-Access/git-going-with-github/blob/main/docs/06-working-with-pull-requests.md).
 
- **To Unlock Challenge 7:**
+**To Unlock Challenge 7:**
 Post a link to your Pull Request right here, then activate **Close issue**!
 
 ---
@@ -367,14 +367,14 @@ Post a link to your Pull Request right here, then activate **Close issue**!
 **Title:** Challenge 7: Resolve a Merge Conflict
 
 **Body:**
- **Pull Request successfully opened! You are doing amazing.**
+**Pull Request successfully opened! You are doing amazing.**
 
-Sometimes, two people edit the same line. This is a "Merge Conflict." Aria is an expert at explaining these—just ask her if you get stuck!
+Sometimes, two people edit the same line. This is a "Merge Conflict." Aria is an expert at explaining these - just ask her if you get stuck!
 
- **Your Goal:**
+**Your Goal:**
 Resolve a conflict if one appears, or ask Aria to explain how conflicts work.
 
- **Step-by-Step:**
+**Step-by-Step:**
 
 <details>
 <summary><b>Web Browser</b></summary>
@@ -382,7 +382,7 @@ Resolve a conflict if one appears, or ask Aria to explain how conflicts work.
 1. If your PR has a conflict, select the **Resolve conflicts** button.
 2. Look for the markers: `<<<<<<<`, `=======`, and `>>>>>>>`. 
 3. Edit the text to your preferred version and remove the markers.
-4. Finalize the resolution by selecting **Mark as resolved** and **Commit merge**.
+4. Finalize the resolution by selecting **Mark as resolved ** and **Commit merge**.
 
 </details>
 
@@ -409,16 +409,16 @@ Resolve a conflict if one appears, or ask Aria to explain how conflicts work.
 
 </details>
 
- **Not sure what to do?** Drop a comment: `@aria-bot I have a merge conflict, can you explain this?`
+**Not sure what to do?** Drop a comment: `@aria-bot I have a merge conflict, can you explain this?`
 
- **Expected Outcome:**
+**Expected Outcome:**
 The conflict warning will disappear. If you asked Aria for help, she'll reply with a step-by-step guide to conflict resolution.
 
-️ **Troubleshooting:**
+**Troubleshooting:**
 - **No conflict?** You're lucky! But still ask Aria: `@aria-bot explain merge conflict` to learn for next time.
-- **Need a deep dive?** Read [Chapter 7: Merge Conflicts](https://github.com/Community-Access/git-going-with-github/blob/main/docs/07-merge-conflicts.md).
+-**Need a deep dive?** Read [Chapter 7: Merge Conflicts](https://github.com/Community-Access/git-going-with-github/blob/main/docs/07-merge-conflicts.md).
 
- **To Unlock Challenge 8:**
+**To Unlock Challenge 8:**
 Leave a comment here explaining how Aria helped you understand conflicts, then activate **Close issue**!
 
 ---
@@ -428,26 +428,26 @@ Leave a comment here explaining how Aria helped you understand conflicts, then a
 **Title:** Challenge 8: Open Source Culture
 
 **Body:**
-️ **Conflicts handled! You are unstoppable.**
+**Conflicts handled! You are unstoppable.**
 
 Writing code is only a small part of open source. The rest relies on communication, empathy, and culture. We want to build an environment where everyone feels they belong.
 
- **Your Goal:**
+**Your Goal:**
 Reflect on community norms, healthy collaboration, and inclusive contribution practices.
 
- **Step-by-Step:**
+**Step-by-Step:**
 1. Take a few minutes to review [Chapter 8: Open Source Culture](https://github.com/Community-Access/git-going-with-github/blob/main/docs/08-open-source-culture.md).
 2. Consider a time a project or group made you feel welcomed, or what you would do to make others feel welcome.
 3. Write a short reflection about how good communication impacts software development teams.
 
- **Expected Outcome:**
+**Expected Outcome:**
 A stronger appreciation for the humans behind the screens, and an understanding of how tone in PRs and reviews makes all the difference.
 
-️ **Troubleshooting:**
+**Troubleshooting:**
 - **Unsure what to write?** Just share one sentence about what "assuming best intent" means to you.
-- **Feeling stuck?** Discuss it with your buddy!
+-**Feeling stuck?** Discuss it with your buddy!
 
- **To Unlock Challenge 9:**
+**To Unlock Challenge 9:**
 Record your reflection as a comment right here, and then activate **Close issue**. The final step is next!
 
 ---
@@ -457,14 +457,14 @@ Record your reflection as a comment right here, and then activate **Close issue*
 **Title:** Challenge 9: Merge Day
 
 **Body:**
- **Thank you for taking the time to reflect! We are in the home stretch.**
+**Thank you for taking the time to reflect! We are in the home stretch.**
 
 You have communicated, branched, committed, and resolved. Now it is the moment of truth. It is time to merge your changes into the main project!
 
- **Your Goal:**
+**Your Goal:**
 Get your Pull Request reviewed, approved, and merged! Aria will be cheering you on at the finish line.
 
- **Step-by-Step:**
+**Step-by-Step:**
 
 <details>
 <summary><b>Web Browser</b></summary>
@@ -482,8 +482,8 @@ Get your Pull Request reviewed, approved, and merged! Aria will be cheering you 
 
 1. Open the **Pull Requests** view.
 2. Use the arrow keys to choose your PR from the list.
-3. Open the **More Actions (...)** menu or select the **Merge** button at the top of the PR overview.
-4. Choose the merge strategy (e.g., **Create Merge Commit** or **Squash and Merge**).
+3. Open the **More Actions (...) ** menu or select the **Merge** button at the top of the PR overview.
+4. Choose the merge strategy (e.g.,**Create Merge Commit** or **Squash and Merge**).
 5. Finalize the merge by selecting **Confirm Merge**.
 6. Select **Delete Branch** if prompted to keep the repository clean.
 
@@ -494,22 +494,22 @@ Get your Pull Request reviewed, approved, and merged! Aria will be cheering you 
 
 1. Identify your PR number or use the current branch: `gh pr list`.
 2. Run the merge command: `gh pr merge [pr-number]`.
-3. Select your merge strategy when prompted (e.g., **Merge commit**).
+3. Select your merge strategy when prompted (e.g.,**Merge commit**).
 4. Choose **Yes** when asked if you want to delete the local and remote branches.
 
 </details>
 
- **Expected Outcome:**
+**Expected Outcome:**
 Your Pull Request will display a "Merged" status indicator. Aria might leave a final celebratory comment on your repository! 
 
-️ **Troubleshooting:**
+**Troubleshooting:**
 - **The merge button is disabled?** Aria or other automated checks might still be running. Wait for the green checkmarks!
-- **Want to know more about wrapping up?** Check out [Chapter 10: Notifications and Day 1 Close](https://github.com/Community-Access/git-going-with-github/blob/main/docs/10-notifications-and-day-1-close.md).
+-**Want to know more about wrapping up?** Check out [Chapter 10: Notifications and Day 1 Close](https://github.com/Community-Access/git-going-with-github/blob/main/docs/10-notifications-and-day-1-close.md).
 
- **To Finish Day 1:**
+**To Finish Day 1:**
 Leave a comment here saying "MERGED!" and then activate **Close issue**.
 
- **Congratulations!** Aria is proud of you. You have completely finished Day 1. Rest, hydrate, and prepare for a fantastic Day 2!
+**Congratulations!** Aria is proud of you. You have completely finished Day 1. Rest, hydrate, and prepare for a fantastic Day 2!
 
 ---
 
@@ -522,14 +522,14 @@ Leave a comment here saying "MERGED!" and then activate **Close issue**.
 **Title:** Challenge 10: Go Local
 
 **Body:**
- **Welcome Back! Day 2 begins now.**
+**Welcome Back! Day 2 begins now.**
 
 Day 2 moves from the browser to your local machine. We are introducing real-world development workflows using Git!
 
- **Your Goal:**
+**Your Goal:**
 Clone your repository to your local machine, create a branch, make a change, and push it back up to GitHub.
 
- **Step-by-Step:**
+**Step-by-Step:**
 
 <details>
 <summary><b>Visual Studio Code</b></summary>
@@ -540,7 +540,7 @@ Clone your repository to your local machine, create a branch, make a change, and
 4. Paste the URL and choose a folder on your computer. Select **Open** in the new window.
 5. Create a new branch: Use the arrow keys to focus the branch name in the Status Bar (bottom left) or use the Command Palette (`Ctrl+Shift+P` or `Cmd+Shift+P` on Mac) and search for **"Git: Create Branch..."**.
 6. Edit a file, save it (`Ctrl+S` or `Cmd+S` on Mac), and open the **Source Control** view (`Ctrl+Shift+G` or `Cmd+Shift+G` on Mac).
-7. Stage your changes: Use the arrow keys to focus your file and select the **Stage Changes** icon (plus sign), type a message, and select **Commit** (`Ctrl+Enter` or `Cmd+Enter` on Mac).
+7. Stage your changes: Use the arrow keys to focus your file and select the **Stage Changes ** icon (plus sign), type a message, and select **Commit** (`Ctrl+Enter` or `Cmd+Enter` on Mac).
 8. Choose **Publish Branch** to send it to GitHub.
 
 </details>
@@ -560,9 +560,9 @@ Clone your repository to your local machine, create a branch, make a change, and
 <details>
 <summary><b>GitHub Desktop</b></summary>
 
-1. Copy the repository URL and select **File** → **Clone repository...** in GitHub Desktop.
-2. Select the **URL** tab, paste the link, and choose your local path. Select **Clone**.
-3. Select the **Current Branch** menu and choose **New Branch** → name it `feature/day2-local-edit`.
+1. Copy the repository URL and select **File ** ->**Clone repository...** in GitHub Desktop.
+2. Select the **URL ** tab, paste the link, and choose your local path. Select **Clone**.
+3. Select the **Current Branch ** menu and choose **New Branch** -> name it `feature/day2-local-edit`.
 4. Open the file in your preferred editor, make a change, and save.
 5. Return to GitHub Desktop. Your changes will be listed on the left.
 6. Provide a summary in the bottom-left box and select **Commit to [branch-name]**.
@@ -570,15 +570,15 @@ Clone your repository to your local machine, create a branch, make a change, and
 
 </details>
 
- **Expected Outcome:**
+**Expected Outcome:**
 Your changes made on your computer are securely backed up on GitHub. You will be able to see your new branch listed in the repository's branch selector on the website.
 
-️ **Troubleshooting:**
+**Troubleshooting:**
 - **Having trouble cloning?** Ensure you copied the correct HTTPS or SSH URL from the repository.
-- **Push rejected?** Make sure you committed your changes first.
-- **Need a walkthrough?** Review [Chapter 14: Git in Practice](https://github.com/Community-Access/git-going-with-github/blob/main/docs/14-git-in-practice.md).
+-**Push rejected?** Make sure you committed your changes first.
+-**Need a walkthrough?** Review [Chapter 14: Git in Practice](https://github.com/Community-Access/git-going-with-github/blob/main/docs/14-git-in-practice.md).
 
- **To Unlock Challenge 11:**
+**To Unlock Challenge 11:**
 Reply to this issue with a joyful message that you pushed your code, and then activate **Close issue**!
 
 ---
@@ -588,14 +588,14 @@ Reply to this issue with a joyful message that you pushed your code, and then ac
 **Title:** Challenge 11: Day 2 Pull Request
 
 **Body:**
- **Excellent work connecting your local environment!**
+**Excellent work connecting your local environment!**
 
 Now that your local branch is safely on GitHub, it is time to propose merging those changes into the main project. Aria will be waiting to validate your work!
 
- **Your Goal:**
+**Your Goal:**
 Open a Pull Request from your local branch and wait for Aria's automated validation report.
 
- **Step-by-Step:**
+**Step-by-Step:**
 
 <details>
 <summary><b>Web Browser</b></summary>
@@ -611,8 +611,8 @@ Open a Pull Request from your local branch and wait for Aria's automated validat
 <summary><b>Visual Studio Code</b></summary>
 
 1. Open the **GitHub Pull Requests and Issues** view (`Ctrl+Shift+G` or `Cmd+Shift+G` on Mac).
-2. Select the **Stage Changes** button (plus icon) next to the **Pull Requests** header.
-3. Choose the **Compare Branch** (e.g., `feature/day2-local-edit`) and the **Base Branch** (`main`).
+2. Select the **Stage Changes ** button (plus icon) next to the **Pull Requests** header.
+3. Choose the **Compare Branch ** (e.g., `feature/day2-local-edit`) and the **Base Branch** (`main`).
 4. Type your PR title (e.g., "Day 2 local edit").
 5. In the description field, type a sentence or two summarizing your change.
 6. Select **Create** or use `Ctrl+Enter` (`Cmd+Enter` on Mac).
@@ -624,18 +624,18 @@ Open a Pull Request from your local branch and wait for Aria's automated validat
 
 1. Run the interactive PR creator: `gh pr create`.
 2. Follow the prompts:
-   - **Title**: Enter a clear title (e.g., "Day 2 local edit").
-   - **Body**: Select **"Write with editor"** and summarize your changes.
-   - **What's next?**: Select **"Submit"**.
+   -**Title **: Enter a clear title (e.g., "Day 2 local edit").
+   -**Body **: Select **"Write with editor"** and summarize your changes.
+   -**What's next?**: Select **"Submit"**.
 
 </details>
 
- **Expected Outcome:**
+**Expected Outcome:**
 Your Pull Request is live! Aria will run her automated checks and post a validation report right in the conversation.
 
-️ **Troubleshooting:**
+**Troubleshooting:**
 - **Cannot find your branch?** Verify that the "push" command completed successfully locally.
-- **Aria is silent?** Check the "Checks" tab to see if the workflow is running.
+-**Aria is silent?** Check the "Checks" tab to see if the workflow is running.
 Post a link to your new Pull Request right here, then activate **Close issue**!
 
 ---
@@ -645,14 +645,14 @@ Post a link to your new Pull Request right here, then activate **Close issue**!
 **Title:** Challenge 12: Code Review
 
 **Body:**
- **You are doing fantastic! Let's examine peer feedback.**
+**You are doing fantastic! Let's examine peer feedback.**
 
 Reviewing code is where the most learning happens in open source. It is about asking questions, offering suggestions, and assuming best intent.
 
- **Your Goal:**
+**Your Goal:**
 Review a classmate's Pull Request and provide specific, constructive feedback. Aria will celebrate your collaborative spirit!
 
- **Step-by-Step:**
+**Step-by-Step:**
 
 <details>
 <summary><b>Web Browser</b></summary>
@@ -686,14 +686,14 @@ Review a classmate's Pull Request and provide specific, constructive feedback. A
 
 </details>
 
- **Expected Outcome:**
+**Expected Outcome:**
 Your feedback appears on their PR! Aria will post a celebration message once your review is approved.
 
-️ **Troubleshooting:**
+**Troubleshooting:**
 - **No classmate PRs to review?** Ask a facilitator for a sample PR to practice on.
-- **Want to learn how to frame feedback?** Review [Chapter 15: Code Review](https://github.com/Community-Access/git-going-with-github/blob/main/docs/15-code-review.md).
+-**Want to learn how to frame feedback?** Review [Chapter 15: Code Review](https://github.com/Community-Access/git-going-with-github/blob/main/docs/15-code-review.md).
 
- **To Unlock Challenge 13:**
+**To Unlock Challenge 13:**
 Leave a comment here confirming you left a review, and then activate **Close issue**!
 
 ---
@@ -703,14 +703,14 @@ Leave a comment here confirming you left a review, and then activate **Close iss
 **Title:** Challenge 13: Copilot as Collaborator
 
 **Body:**
- **Time to introduce AI into your workflow!**
+**Time to introduce AI into your workflow!**
 
-GitHub Copilot is your AI pair programmer—much like Aria, it’s here to help you build great things. Today, we’ll use it to improve documentation.
+GitHub Copilot is your AI pair programmer - much like Aria, it’s here to help you build great things. Today, we’ll use it to improve documentation.
 
- **Your Goal:**
+**Your Goal:**
 Use GitHub Copilot to suggest improvements and have Aria review the result!
 
- **Step-by-Step:**
+**Step-by-Step:**
 
 <details>
 <summary><b>Visual Studio Code (Primary Method)</b></summary>
@@ -744,14 +744,14 @@ Use GitHub Copilot to suggest improvements and have Aria review the result!
 
 </details>
 
- **Expected Outcome:**
+**Expected Outcome:**
 You have successfully utilized AI to enhance your output while staying the "human-in-the-loop."
 
-️ **Troubleshooting:**
+**Troubleshooting:**
 - **Copilot not responding?** Ensure you are signed into GitHub in VS Code.
-- **Want prompt ideas?** Review [Chapter 16: GitHub Copilot](https://github.com/Community-Access/git-going-with-github/blob/main/docs/16-github-copilot.md).
+-**Want prompt ideas?** Review [Chapter 16: GitHub Copilot](https://github.com/Community-Access/git-going-with-github/blob/main/docs/16-github-copilot.md).
 
- **To Unlock Challenge 14:**
+**To Unlock Challenge 14:**
 Share what prompt you used here, then activate **Close issue**!
 
 ---
@@ -761,19 +761,19 @@ Share what prompt you used here, then activate **Close issue**!
 **Title:** Challenge 14: Design an Issue Template
 
 **Body:**
- **Templates make everyone's life easier!**
+**Templates make everyone's life easier!**
 
 Projects use Issue Templates to ensure contributors provide the right information from the start. Let's build a custom one using YAML.
 
- **Your Goal:**
+**Your Goal:**
 Create a custom YAML issue template in your repository.
 
- **Step-by-Step:**
+**Step-by-Step:**
 
 <details>
 <summary><b>Web Browser</b></summary>
 
-1. In your repository, navigate to the `.github/ISSUE_TEMPLATE` directory. (If it doesn't exist, create it by choosing **Add file** → **Create new file** and typing the full path).
+1. In your repository, navigate to the `.github/ISSUE_TEMPLATE` directory. (If it doesn't exist, create it by choosing **Add file** ->**Create new file** and typing the full path).
 2. Name your new file `custom-template.yml`.
 3. Add the required YAML frontmatter (like `name`, `description`, and `title`).
 4. Commit your new file directly to a new branch and open a Pull Request.
@@ -802,15 +802,15 @@ Create a custom YAML issue template in your repository.
 
 </details>
 
- **Expected Outcome:**
+**Expected Outcome:**
 An automated check will verify your template contains the required 
 ame and description fields. Once merged, future contributors will see this template as an option when creating a new issue!
 
-️ **Troubleshooting:**
+**Troubleshooting:**
 - **Autograder failed?** Double check your YAML spacing and indentation.
-- **Need a YAML template example?** Review [Chapter 17: Issue Templates](https://github.com/Community-Access/git-going-with-github/blob/main/docs/17-issue-templates.md).
+-**Need a YAML template example?** Review [Chapter 17: Issue Templates](https://github.com/Community-Access/git-going-with-github/blob/main/docs/17-issue-templates.md).
 
- **To Unlock Challenge 15:**
+**To Unlock Challenge 15:**
 Post a link to your Issue Template PR here, then activate **Close issue**!
 
 ---
@@ -820,26 +820,26 @@ Post a link to your Issue Template PR here, then activate **Close issue**!
 **Title:** Challenge 15: Discover Accessibility Agents
 
 **Body:**
- **We are moving into our capstone project space!**
+**We are moving into our capstone project space!**
 
 Accessibility Agents like Aria are automated tools that assist visually impaired users or check for compliance. Today, you'll meet more of Aria's peers!
 
- **Your Goal:**
+**Your Goal:**
 Explore the main `accessibility-agents` repository. Ask Aria if you have questions about any particular agent!
 
- **Step-by-Step:**
+**Step-by-Step:**
 1. Navigate to the [Community-Access/accessibility-agents](https://github.com/Community-Access/accessibility-agents) repository.
 2. Read the `README.md` to understand how Aria and her colleagues work.
 3. Explore an existing agent folder to see its structure.
 
- **Expected Outcome:**
+**Expected Outcome:**
 You'll understand the agent architecture. If you're confused, mention `@aria-bot` with: "How does the agent schema work?"
 
-️ **Troubleshooting:**
+**Troubleshooting:**
 - **Lost?** Ask Aria for help.
-- **Want architectural context?** Review [Chapter 19: Accessibility Agents](https://github.com/Community-Access/git-going-with-github/blob/main/docs/19-accessibility-agents.md).
+-**Want architectural context?** Review [Chapter 19: Accessibility Agents](https://github.com/Community-Access/git-going-with-github/blob/main/docs/19-accessibility-agents.md).
 
- **To Unlock Challenge 16:**
+**To Unlock Challenge 16:**
 Type the name of the agent you explored right here, then activate **Close issue**!
 
 ---
@@ -849,14 +849,14 @@ Type the name of the agent you explored right here, then activate **Close issue*
 **Title:** Challenge 16: Build Your Own Agent (Capstone)
 
 **Body:**
- **Welcome to your Capstone Challenge!**
+**Welcome to your Capstone Challenge!**
 
 It is time to put everything you have learned together. You are going to build a new colleague for Aria!
 
- **Your Goal:**
+**Your Goal:**
 Fork the `accessibility-agents` repository, design an original agent, and submit your PR for Aria's final review.
 
- **Step-by-Step:**
+**Step-by-Step:**
 
 <details>
 <summary><b>Web Browser + Codespaces (Quickest)</b></summary>
@@ -892,14 +892,14 @@ Fork the `accessibility-agents` repository, design an original agent, and submit
 
 </details>
 
- **Expected Outcome:**
+**Expected Outcome:**
 Aria will validate your agent's structure. Once approved, your new agent will join the `Community-Access` collection!
 
-️ **Troubleshooting:**
+**Troubleshooting:**
 - **Workflow issues?** See [Chapter 18: Fork and Contribute](https://github.com/Community-Access/git-going-with-github/blob/main/docs/18-fork-and-contribute.md).
-- **Need the agent schema?** See [Chapter 20: Build Your Own Agent](https://github.com/Community-Access/git-going-with-github/blob/main/docs/20-build-your-agent.md).
+-**Need the agent schema?** See [Chapter 20: Build Your Own Agent](https://github.com/Community-Access/git-going-with-github/blob/main/docs/20-build-your-agent.md).
 
- **To Complete the Workshop:**
+**To Complete the Workshop:**
 Post the link to your Capstone PR here, then activate **Close issue**. 
 
- **CONGRATULATIONS!** Aria is thrilled to have a new teammate. You have completed the Git Going with GitHub workshop!
+**CONGRATULATIONS!** Aria is thrilled to have a new teammate. You have completed the Git Going with GitHub workshop!

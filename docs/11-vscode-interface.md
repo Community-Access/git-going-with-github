@@ -1,6 +1,6 @@
 # VS Code: Interface and Setup
 
-> **Listen to Episode 11:** [VS Code Setup and Accessibility](../PODCASTS.md) - a conversational audio overview covering both this chapter and [Chapter 12](12-vscode-accessibility.md).
+> **Listen to Episode 11:** [VS Code Setup and Accessibility](../admin/PODCASTS.md) - a conversational audio overview covering both this chapter and [Chapter 12](12-vscode-accessibility.md).
 
 > **Related appendices:** [Appendix G: VS Code Reference](appendix-g-vscode-reference.md) | [Appendix B: Screen Reader Cheat Sheet](appendix-b-screen-reader-cheatsheet.md)
 > **Authoritative sources:** [VS Code Docs: User Interface](https://code.visualstudio.com/docs/getstarted/userinterface) | [VS Code Docs: Accessibility](https://code.visualstudio.com/docs/editor/accessibility)
@@ -16,20 +16,20 @@
 >
 > **Prerequisites:** Complete Day 1 walkthrough of GitHub's browser interface before working through VS Code material.
 
-## Workshop Recommendation (Chapter 5)
+## Workshop Recommendation (Chapter 11)
 
-For this workshop, Chapter 5 is a **guided setup chapter** with a lightweight completion challenge.
+For this workshop, Chapter 11 is a **guided setup chapter** with a lightweight completion practice.
 
 - **Challenge count:** 1 guided walkthrough
 - **Automation check:** none - setup state is local/account-level and cannot be validated by the Learning Room PR bot
 - **Evidence:** structured completion comment on your assigned challenge issue
 - **Pattern:** open, configure, navigate, verify
 
-### Chapter 5 Challenge Set
+### Chapter 11 Practice Set
 
 1. **VS Code accessibility baseline** - open VS Code (github.dev or desktop), enable screen reader mode, sign in to GitHub, verify Copilot status, and navigate core surfaces.
 
-### Challenge 5.1 Step-by-Step: VS Code Accessibility Baseline
+### Practice 11.1 Step-by-Step: VS Code Accessibility Baseline
 
 **Goal:** Confirm you can access VS Code (github.dev or desktop), enable screen reader support, sign in to GitHub, check Copilot status, and perform core navigation.
 
@@ -51,12 +51,12 @@ For this workshop, Chapter 5 is a **guided setup chapter** with a lightweight co
 
 **You are done when:** You have successfully opened github.dev, enabled screen reader mode, signed in to GitHub, confirmed Copilot status, opened a file, viewed its outline, and run a command from the Command Palette.
 
-### Completing Chapter 5: Submit Your Evidence
+### Completing Chapter 11: Submit Your Evidence
 
-Return to GitHub.com, open your **assigned Chapter 5 challenge issue**, and post a completion comment:
+Return to GitHub.com, open the assigned setup or Day 2 readiness issue, and post a completion comment:
 
 ```text
-Chapter 5 completed:
+Chapter 11 completed:
 - Opened github.dev: yes / no
 - Screen reader mode enabled: yes / no
 - Signed in to GitHub: yes / no
@@ -66,7 +66,7 @@ Chapter 5 completed:
 - Opened Command Palette: yes / no
 ```
 
-If any step was "no," add a note explaining where you got stuck so the facilitator can help. Close your Chapter 5 challenge issue when done.
+If any step was "no," add a note explaining where you got stuck so the facilitator can help. Close the assigned setup or readiness issue when done.
 
 ### Expected Outcomes
 

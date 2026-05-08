@@ -4,8 +4,8 @@ This package uses Piper (ONNX neural TTS) to synthesize podcast episodes
 from script files under podcasts/scripts/. Audio output goes to podcasts/audio/.
 
 Voices:
-  Alex (male)  — en_US-hfc_male-medium
-  Jamie (female) — en_US-hfc_female-medium
+  Alex (male)  — en_US-ryan-high
+  Jamie (female) — en_US-lessac-high
 
 Usage:
   python -m podcasts.tts.generate_all       # Generate all episodes

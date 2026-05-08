@@ -1,7 +1,7 @@
 # Day 2 Agenda
 ## From Contributor to Product Maker - Igniting the Forge
 
-**Date:** May 22, 2026 | 12:00 PM - 8:00 PM Eastern
+**Date:** May 22, 2026 | 9:00 AM - 5:00 PM Pacific
 
 > **The premise of Day 2:** Whether you built your GitHub skills yesterday in Day 1 or you are joining today with existing GitHub experience, the foundation is the same: you know how to navigate repositories, file issues, open pull requests, and review someone else's work. Those skills are yours now.
 >
@@ -10,6 +10,16 @@
 > You will leave with your name in the commit history of a real open source project and a set of tools you can use on any GitHub repository you ever work on.
 >
 > **Joining on Day 2 without attending Day 1?** See the [Day 2 Quick Start](DAY2_QUICK_START.md) guide to verify your setup and self-assess your readiness.
+
+
+## Coverage Promise
+
+Day 2 is designed as a live contribution day with a self-paced continuation path. The complete Day 2 curriculum contains more material than the live schedule can cover, especially because participants will move at different speeds through setup, Git, Copilot, and project work.
+
+- **Live core:** Participants should leave able to work locally in VS Code, use Git with a branch and pull request, use Copilot as a reviewed writing partner, inspect accessibility agents, and identify one concrete contribution path.
+- **Live support if time allows:** Custom issue templates, full agent creation, cross-fork upstream pull requests, GitHub Agentic Workflows, and Spec Kit planning.
+- **Async follow-up:** Challenges 14-16, full capstone work, and upstream PR polish can continue after the event through the same repositories and Slack channel.
+- **Remote-ready delivery:** Remote participants need the repository links, Slack channel, CART/ASL access where available, and written checkpoints before each lab. Facilitators should state when a block is demo-only, hands-on, or async-safe.
 
 
 ## Prerequisites for Day 2
@@ -29,23 +39,25 @@ Day 2 requires the following skills and setup. If you attended Day 1, you have a
 
 ## At a Glance
 
-| Time | Block | Theme |
-|------|-------|-------|
-| 9:00-9:30 | Block 0 - Welcome and Orientation | Onboard all participants, verify setup, set goals |
-| 9:30-10:30 | Block 1 - VS Code Setup | Screen reader mode, Accessibility Agents as workspace, navigation |
-| 10:30-10:45 | Break | - |
-| 10:45-12:00 | Block 2 - Deep Contribution | Copilot Chat, inline suggestions, richer PR work |
-| 12:00-13:00 | Lunch | - |
-| 13:00-14:00 | Block 3 - Activate the Agents | First live agent commands - after earning them |
-| 14:00-15:00 | Block 4 - Agentic Workflows | Cloud agents, GitHub Actions, the full reach |
-| 15:00-15:15 | Break | - |
-| 15:15-16:15 | Block 5 - Ship Your Contribution | Real PR upstream to `community-access/accessibility-agents` |
-| 16:15-17:00 | Block 6 - Spec Kit: Design the Future | Group speccing session - what comes next |
-| 17:00-17:30 | Wrap-Up | Names in history, reflections, next steps |
+The following table summarizes the Pacific-time live agenda and marks which material is core, stretch, or async-friendly.
+
+| Time (Pacific) | Block | Theme | Coverage |
+|----------------|-------|-------|----------|
+| 9:00-9:30 AM | Block 0 - Welcome and Orientation | Onboard participants, verify setup, set goals | Required live |
+| 9:30-10:30 AM | Block 1 - VS Code and Local Git Setup | Screen reader mode, local clone, branch, commit, push | Required live |
+| 10:30-10:45 AM | Break | Rest and facilitator triage | Required break |
+| 10:45 AM-12:00 PM | Block 2 - Deep Contribution with Copilot | Copilot Chat, inline suggestions, contribution drafting | Required live |
+| 12:00-1:00 PM | Lunch | Food, rest, informal support | Required break |
+| 1:00-2:00 PM | Block 3 - Activate the Agents | Agent discovery, validation, and human review | Required live |
+| 2:00-2:15 PM | Break | Rest and facilitator triage | Required break |
+| 2:15-3:00 PM | Block 4 - Agentic Workflows | Cloud agents, Actions, and broader automation | Stretch or demo |
+| 3:00-4:15 PM | Block 5 - Ship Your Contribution | Supported project work and PR preparation | Required lab |
+| 4:15-4:40 PM | Block 6 - Spec Kit: Design the Future | Group speccing and future ideas | Stretch or async |
+| 4:40-5:00 PM | Wrap-Up | Demos, reflections, and continued contribution paths | Required live |
 
 
 ## Block 0 - Welcome and Orientation
-**9:00-9:30**
+**9:00-9:30 AM Pacific**
 
 ### Purpose
 Bring everyone to the same starting line -- whether they attended Day 1 or are joining fresh today. Celebrate what was shipped yesterday, onboard new participants, and set the Day 2 mindset: you are not a learner today - you are a product maker.
@@ -70,13 +82,13 @@ Each participant states one contribution goal for the day. Examples:
 - *"I want to improve the screen reader output of the `@daily-briefing` report."*
 - *"I want to write documentation for the `@insiders-a11y-tracker` agent."*
 
-Write it down. You will check it against reality at 5pm.
+Write it down. You will check it against reality during wrap-up.
 
 
 ## Block 1 - VS Code Setup
-**9:30-10:30**
+**9:30-10:30 AM Pacific**
 
-> This block builds on [VS Code: Setup & Accessibility Basics](docs/11-vscode-interface.md), [Git & Source Control in VS Code](docs/14-git-in-practice.md), and [GitHub Pull Requests Extension](docs/15-code-review.md) for full reference.
+> This block builds on [VS Code: Setup & Accessibility Basics](../docs/11-vscode-interface.md), [Git & Source Control in VS Code](../docs/14-git-in-practice.md), and [GitHub Pull Requests Extension](../docs/15-code-review.md) for full reference.
 
 ### Purpose
 Move from browser-based GitHub to VS Code as your contribution environment. Set up screen reader mode. Open `accessibility-agents` as a workspace. Understand what you are looking at before any agent runs.
@@ -163,7 +175,7 @@ Press `Ctrl+Shift+I` to open the Chat panel.
 
 
 ## Block 2 - Deep Contribution with Copilot
-**10:45-12:00**
+**10:45 AM-12:00 PM Pacific**
 
 ### Copilot Orientation (15 min)
 
@@ -234,7 +246,7 @@ Before leaving for lunch, check your progress:
 
 
 ## Block 3 - Activate the Agents
-**13:00-14:00**
+**1:00-2:00 PM Pacific**
 
 > **This block is the payoff.** You earned it yesterday. You understand what GitHub is, how repositories work, what issues and pull requests are, and how notifications flow. Now you watch an agent do the work you know how to verify.
 >
@@ -291,7 +303,7 @@ Participants answer from their Day 1 knowledge. Then the command runs. Then the 
 **Critical exercise:** Compare the agent's suggested comments to what you wrote manually in your Day 1 review.
 - Did the agent catch things you missed?
 - Did the agent miss context you knew from the issue thread?
-- Is the agent's tone aligned with the community standards from [Culture and Etiquette](docs/08-open-source-culture.md)?
+- Is the agent's tone aligned with the community standards from [Culture and Etiquette](../docs/08-open-source-culture.md)?
 
 Edit the agent's output before posting any of it. Your name goes on it.
 
@@ -310,9 +322,11 @@ The agents are running. Step away from the screen for five minutes. Screen reade
 
 
 ## Block 4 - GitHub Agentic Workflows
-**14:00-15:00**
+**2:15-3:00 PM Pacific**
 
-> **Reference:** [GitHub Actions and Workflows](docs/appendix-q-actions-workflows.md) - read the "Day 2 Bridge" section at the bottom before this block.
+This block is stretch material. If participants need more time to draft, commit, or push their contribution, convert this block into supported lab time and assign the workflow overview as async reading.
+
+> **Reference:** [GitHub Actions and Workflows](../docs/appendix-q-actions-workflows.md) - read the "Day 2 Bridge" section at the bottom before this block.
 
 ### The Cloud Extension: What Agentic Workflows Are
 
@@ -385,7 +399,7 @@ Do not close the issue. Do not merge anything. Do not modify any files.
 
 
 ## Block 5 - Ship Your Contribution
-**15:15-16:15**
+**3:00-4:15 PM Pacific**
 
 ### Purpose
 Polish and submit your real pull request upstream to `community-access/accessibility-agents`. Not to your fork - to the original. This is the moment the product maker mindset becomes tangible.
@@ -445,7 +459,9 @@ While your PR is awaiting review, review a forge partner's PR:
 
 
 ## Block 6 - Spec Kit: Design the Future
-**16:15-17:00**
+**4:15-4:40 PM Pacific**
+
+This block is optional when the contribution lab needs more time. For remote cohorts, it can become an async discussion thread where participants propose agent or project ideas after the live session.
 
 > **What is Spec-Driven Development?** It is the practice of writing the *intent* of a feature before anyone builds it. The specification becomes the source of truth - AI uses it to plan tasks, contributors use it to stay aligned, and the community uses it to evaluate whether the feature actually delivered what was intended.
 
@@ -477,7 +493,7 @@ Speak your requirements aloud. The facilitator types them. Copilot helps convert
 
 
 ## Wrap-Up
-**17:00-17:30**
+**4:40-5:00 PM Pacific**
 
 ### The Moment: Find Your Name in History
 
@@ -544,6 +560,6 @@ Day 2 has two peaks:
 Do not rush the wrap-up. The moment of seeing your name in a public commit history is one of the most meaningful things a first-time open source contributor experiences.
 
 
-*Previous: [Notifications ←](docs/10-notifications-and-day-1-close.md)*
-*Next: [VS Code: Setup & Accessibility Basics](docs/11-vscode-interface.md)*
-*Related: [Day 1 Agenda](DAY1_AGENDA.md) | [GitHub Actions & Workflows](docs/appendix-q-actions-workflows.md) | [Resources](docs/appendix-x-resources.md)*
+*Previous: [Notifications ←](../docs/10-notifications-and-day-1-close.md)*
+*Next: [VS Code: Setup & Accessibility Basics](../docs/11-vscode-interface.md)*
+*Related: [Day 1 Agenda](DAY1_AGENDA.md) | [GitHub Actions & Workflows](../docs/appendix-q-actions-workflows.md) | [Resources](../docs/appendix-x-resources.md)*

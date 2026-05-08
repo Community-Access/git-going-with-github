@@ -62,6 +62,9 @@
 <blockquote>
 <p>Single, end-to-end guide for deploying a new Git Going with GitHub workshop cohort. Covers everything from creating the classroom through post-workshop teardown. This is the only deployment document you need.</p>
 </blockquote>
+<blockquote>
+<p>Before sharing invite links with students, complete the <a href="../GO-LIVE-QA-GUIDE.html">Go-Live QA Guide</a>. It is the final release gate for content, workflows, Classroom setup, podcasts, accessibility, and human test coverage.</p>
+</blockquote>
 <h2 id="how-the-workshop-works">How the Workshop Works</h2>
 <p>Each student gets their own <strong>private repository</strong> created by GitHub Classroom from the <code>learning-room-template</code>. Inside that repo, three automation systems guide the student through all 21 challenges without facilitator intervention:</p>
 <ol>
@@ -162,19 +165,31 @@
 <td><a href="teardown-checklist.html">teardown-checklist.md</a></td>
 <td>Post-workshop cleanup steps</td>
 </tr>
+<tr>
+<td><a href="../GO-LIVE-QA-GUIDE.html">../GO-LIVE-QA-GUIDE.md</a></td>
+<td>Final release-readiness guide and checklist</td>
+</tr>
 </tbody></table>
 <hr>
 <h2 id="prerequisites">Prerequisites</h2>
 <p>Before starting, confirm the following:</p>
 <ul>
-<li><input type="checkbox" disabled> <input aria-label="You have" disabled="" type="checkbox"> You have <strong>Owner</strong> or <strong>Admin</strong> access to the Community-Access GitHub organization</li>
-<li><input type="checkbox" disabled> <input aria-label="Your facilitator GitHub account has a verified email address" disabled="" type="checkbox"> Your facilitator GitHub account has a verified email address</li>
-<li><input type="checkbox" disabled> <input aria-label="The" disabled="" type="checkbox"> The <code>Community-Access/learning-room-template</code> repository exists and is public (or the classroom org has read access)</li>
-<li><input type="checkbox" disabled> <input aria-label="The template repo has GitHub Actions enabled with" disabled="" type="checkbox"> The template repo has GitHub Actions enabled with <strong>Read and write</strong> permissions for <code>GITHUB_TOKEN</code> (Settings &gt; Actions &gt; General) -- Aria needs this to post comments</li>
-<li><input type="checkbox" disabled> <input aria-label="&quot;Allow GitHub Actions to create and approve pull requests&quot; is checked in the template repo" disabled="" type="checkbox"> &quot;Allow GitHub Actions to create and approve pull requests&quot; is checked in the template repo</li>
-<li><input type="checkbox" disabled> <input aria-label="You have the student list (GitHub usernames required; real names optional)" disabled="" type="checkbox"> You have the student list (GitHub usernames required; real names optional)</li>
-<li><input type="checkbox" disabled> <input aria-label="You have confirmed dates for Day 1 and Day 2" disabled="" type="checkbox"> You have confirmed dates for Day 1 and Day 2</li>
+<li><input aria-label="You have" disabled="" type="checkbox"> You have <strong>Owner</strong> or <strong>Admin</strong> access to the Community-Access GitHub organization</li>
+<li><input aria-label="Your facilitator GitHub account has a verified email address" disabled="" type="checkbox"> Your facilitator GitHub account has a verified email address</li>
+<li><input aria-label="The" disabled="" type="checkbox"> The <code>Community-Access/learning-room-template</code> repository exists and is public (or the classroom org has read access)</li>
+<li><input aria-label="The template repo has GitHub Actions enabled with" disabled="" type="checkbox"> The template repo has GitHub Actions enabled with <strong>Read and write</strong> permissions for <code>GITHUB_TOKEN</code> (Settings &gt; Actions &gt; General) -- Aria needs this to post comments</li>
+<li><input aria-label="&quot;Allow GitHub Actions to create and approve pull requests&quot; is checked in the template repo" disabled="" type="checkbox"> &quot;Allow GitHub Actions to create and approve pull requests&quot; is checked in the template repo</li>
+<li><input aria-label="You have the student list (GitHub usernames required; real names optional)" disabled="" type="checkbox"> You have the student list (GitHub usernames required; real names optional)</li>
+<li><input aria-label="You have confirmed dates for Day 1 and Day 2" disabled="" type="checkbox"> You have confirmed dates for Day 1 and Day 2</li>
 </ul>
+<h3 id="role-separation-for-testing">Role separation for testing</h3>
+<p>Use separate accounts for facilitator and student testing.</p>
+<ul>
+<li>Keep your facilitator account (for example, <code>accesswatch</code>) as classroom admin/instructor only</li>
+<li>Use a dedicated test-student account to accept invite links and complete challenge flow</li>
+<li>Avoid using the facilitator account as a student for validation runs - admin permissions can hide real student experience issues</li>
+</ul>
+<p>This keeps grading data clean, avoids permission edge cases, and gives you an accurate end-to-end student test.</p>
 <hr>
 <h2 id="step-1-create-the-classroom">Step 1: Create the Classroom</h2>
 <ol>
@@ -366,19 +381,19 @@ student-a,Alice Student,<span class="hljs-symbol">alice@</span>example.com</code
 <p>Run this verification with a test account before the workshop. Do not skip this step.</p>
 <h3 id="verification-checklist">Verification checklist</h3>
 <ul>
-<li><input type="checkbox" disabled> <input aria-label="Accept the Day 1 invite with a test GitHub account" disabled="" type="checkbox"> Accept the Day 1 invite with a test GitHub account</li>
-<li><input type="checkbox" disabled> <input aria-label="Verify a student repository was created under the classroom org" disabled="" type="checkbox"> Verify a student repository was created under the classroom org</li>
-<li><input type="checkbox" disabled> <input aria-label="Verify the learning-room template files are present (" disabled="" type="checkbox"> Verify the learning-room template files are present (<code>docs/welcome.md</code>, <code>docs/keyboard-shortcuts.md</code>, <code>docs/setup-guide.md</code>)</li>
-<li><input type="checkbox" disabled> <input aria-label="Verify Challenge 1 issue was created by the Progression Bot after running" disabled="" type="checkbox"> Verify Challenge 1 issue was created by the Progression Bot after running <code>Seed-LearningRoomChallenge.ps1</code></li>
-<li><input type="checkbox" disabled> <input aria-label="Open a test PR with a trivial change" disabled="" type="checkbox"> Open a test PR with a trivial change</li>
-<li><input type="checkbox" disabled> <input aria-label="Verify Aria (PR validation bot) comments within 60 seconds" disabled="" type="checkbox"> Verify Aria (PR validation bot) comments within 60 seconds</li>
-<li><input type="checkbox" disabled> <input aria-label="Verify autograding runs and reports a score" disabled="" type="checkbox"> Verify autograding runs and reports a score</li>
-<li><input type="checkbox" disabled> <input aria-label="Verify a feedback pull request was created by Classroom" disabled="" type="checkbox"> Verify a feedback pull request was created by Classroom</li>
-<li><input type="checkbox" disabled> <input aria-label="Close Challenge 1 and verify Challenge 2 is created by the Progression Bot" disabled="" type="checkbox"> Close Challenge 1 and verify Challenge 2 is created by the Progression Bot</li>
-<li><input type="checkbox" disabled> <input aria-label="Accept the Day 2 invite with the same test account" disabled="" type="checkbox"> Accept the Day 2 invite with the same test account</li>
-<li><input type="checkbox" disabled> <input aria-label="Verify Challenge 10 issue appears in the Day 2 repo" disabled="" type="checkbox"> Verify Challenge 10 issue appears in the Day 2 repo</li>
-<li><input type="checkbox" disabled> <input aria-label="Repeat the PR test for the Day 2 repository" disabled="" type="checkbox"> Repeat the PR test for the Day 2 repository</li>
-<li><input type="checkbox" disabled> <input aria-label="Delete the test student repositories when done" disabled="" type="checkbox"> Delete the test student repositories when done</li>
+<li><input aria-label="Accept the Day 1 invite with a test GitHub account" disabled="" type="checkbox"> Accept the Day 1 invite with a test GitHub account</li>
+<li><input aria-label="Verify a student repository was created under the classroom org" disabled="" type="checkbox"> Verify a student repository was created under the classroom org</li>
+<li><input aria-label="Verify the learning-room template files are present (" disabled="" type="checkbox"> Verify the learning-room template files are present (<code>docs/welcome.md</code>, <code>docs/keyboard-shortcuts.md</code>, <code>docs/setup-guide.md</code>)</li>
+<li><input aria-label="Verify Challenge 1 issue was created by the Progression Bot after running" disabled="" type="checkbox"> Verify Challenge 1 issue was created by the Progression Bot after running <code>Seed-LearningRoomChallenge.ps1</code></li>
+<li><input aria-label="Open a test PR with a trivial change" disabled="" type="checkbox"> Open a test PR with a trivial change</li>
+<li><input aria-label="Verify Aria (PR validation bot) comments within 60 seconds" disabled="" type="checkbox"> Verify Aria (PR validation bot) comments within 60 seconds</li>
+<li><input aria-label="Verify autograding runs and reports a score" disabled="" type="checkbox"> Verify autograding runs and reports a score</li>
+<li><input aria-label="Verify a feedback pull request was created by Classroom" disabled="" type="checkbox"> Verify a feedback pull request was created by Classroom</li>
+<li><input aria-label="Close Challenge 1 and verify Challenge 2 is created by the Progression Bot" disabled="" type="checkbox"> Close Challenge 1 and verify Challenge 2 is created by the Progression Bot</li>
+<li><input aria-label="Accept the Day 2 invite with the same test account" disabled="" type="checkbox"> Accept the Day 2 invite with the same test account</li>
+<li><input aria-label="Verify Challenge 10 issue appears in the Day 2 repo" disabled="" type="checkbox"> Verify Challenge 10 issue appears in the Day 2 repo</li>
+<li><input aria-label="Repeat the PR test for the Day 2 repository" disabled="" type="checkbox"> Repeat the PR test for the Day 2 repository</li>
+<li><input aria-label="Delete the test student repositories when done" disabled="" type="checkbox"> Delete the test student repositories when done</li>
 </ul>
 <h3 id="seeding-the-first-challenge">Seeding the first challenge</h3>
 <p>After a student accepts the assignment, seed the first challenge from this repository:</p>
@@ -412,10 +427,10 @@ student-a,Alice Student,<span class="hljs-symbol">alice@</span>example.com</code
 <h2 id="step-7-day-of-workshop-facilitation">Step 7: Day-of-Workshop Facilitation</h2>
 <h3 id="before-students-arrive">Before students arrive</h3>
 <ul>
-<li><input type="checkbox" disabled> <input aria-label="Verify the classroom dashboard loads at" disabled="" type="checkbox"> Verify the classroom dashboard loads at <a href="https://classroom.github.com">classroom.github.com</a></li>
-<li><input type="checkbox" disabled> <input aria-label="Have both invite links ready to share (on-screen, in chat, or printed on cards)" disabled="" type="checkbox"> Have both invite links ready to share (on-screen, in chat, or printed on cards)</li>
-<li><input type="checkbox" disabled> <input aria-label="Open the" disabled="" type="checkbox"> Open the <a href="grading-guide.html">grading-guide.md</a> for reference during the day</li>
-<li><input type="checkbox" disabled> <input aria-label="Have the" disabled="" type="checkbox"> Have the <a href="../docs/CHALLENGES.html">Challenge Hub</a> open in a browser tab</li>
+<li><input aria-label="Verify the classroom dashboard loads at" disabled="" type="checkbox"> Verify the classroom dashboard loads at <a href="https://classroom.github.com">classroom.github.com</a></li>
+<li><input aria-label="Have both invite links ready to share (on-screen, in chat, or printed on cards)" disabled="" type="checkbox"> Have both invite links ready to share (on-screen, in chat, or printed on cards)</li>
+<li><input aria-label="Open the" disabled="" type="checkbox"> Open the <a href="grading-guide.html">grading-guide.md</a> for reference during the day</li>
+<li><input aria-label="Have the" disabled="" type="checkbox"> Have the <a href="../docs/CHALLENGES.html">Challenge Hub</a> open in a browser tab</li>
 </ul>
 <h3 id="during-the-workshop">During the workshop</h3>
 <p><strong>Monitor the classroom dashboard:</strong> It shows accepted assignments, recent commits, and autograding results in real time.</p>
@@ -513,21 +528,21 @@ student-a,Alice Student,<span class="hljs-symbol">alice@</span>example.com</code
 </tr>
 <tr>
 <td>6</td>
-<td>Your First Pull Request</td>
+<td>Open Your First Pull Request</td>
 <td>Close issue</td>
 <td>Yes (PR structure)</td>
 <td>Yes (issue reference)</td>
 </tr>
 <tr>
 <td>7</td>
-<td>Resolve a Merge Conflict</td>
+<td>Survive a Merge Conflict</td>
 <td>Close issue</td>
 <td>Yes (PR feedback)</td>
 <td>Yes (no conflict markers)</td>
 </tr>
 <tr>
 <td>8</td>
-<td>Open Source Culture</td>
+<td>The Culture Layer</td>
 <td>Close issue</td>
 <td>--</td>
 <td>--</td>
@@ -674,5 +689,6 @@ student-a,Alice Student,<span class="hljs-symbol">alice@</span>example.com</code
     <p><strong>GIT Going with GitHub</strong> - A workshop by <a href="https://community-access.org">Community Access</a></p>
     <p><a href="https://github.com/community-access/git-going-with-github">View on GitHub</a> · <a href="https://community-access.org">community-access.org</a></p>
   </footer>
+
   </body>
 </html>

@@ -41,25 +41,25 @@ GitHub Desktop covers the everyday Git workflow that most contributors use on mo
 
 ### What it supports
 
-- ✅ Clone repositories from GitHub
-- ✅ Create, switch, and delete branches
-- ✅ Stage files (and individual lines/hunks within files)
-- ✅ Write commit messages and commit
-- ✅ Push and pull from GitHub
-- ✅ Open pull requests (launches GitHub.com in your browser)
-- ✅ Resolve merge conflicts with a visual editor
-- ✅ View commit history and diffs
-- ✅ Cherry-pick commits between branches
-- ✅ Stash and restore uncommitted changes
-- ✅ Undo commits and discard changes
+- Supported: Clone repositories from GitHub
+- Supported: Create, switch, and delete branches
+- Supported: Stage files (and individual lines/hunks within files)
+- Supported: Write commit messages and commit
+- Supported: Push and pull from GitHub
+- Supported: Open pull requests (launches GitHub.com in your browser)
+- Supported: Resolve merge conflicts with a visual editor
+- Supported: View commit history and diffs
+- Supported: Cherry-pick commits between branches
+- Supported: Stash and restore uncommitted changes
+- Supported: Undo commits and discard changes
 
 ### What it does not support (use Git CLI or VS Code terminal instead)
 
-- ❌ Interactive rebase (`git rebase -i`)
-- ❌ `git bisect`
-- ❌ `git clean`
-- ❌ Creating annotated tags
-- ❌ Commit signing (GPG/SSH)
+- Not supported in the GitHub Desktop UI: Interactive rebase (`git rebase -i`)
+- Not supported in the GitHub Desktop UI: `git bisect`
+- Not supported in the GitHub Desktop UI: `git clean`
+- Not supported in the GitHub Desktop UI: Creating annotated tags
+- Not supported in the GitHub Desktop UI: Commit signing (GPG/SSH)
 
 For these operations, open the repository in your terminal directly from GitHub Desktop — **Repository → Open in Terminal** or **Repository → Open in Command Prompt** puts you in the right directory instantly.
 
@@ -452,7 +452,7 @@ Stash saves your uncommitted changes temporarily so you can switch branches or p
 2. Go to **Branch → Pop Stash**
 3. Your changes come back
 
-> **Note:** GitHub Desktop supports one stash at a time per branch. For multiple stashes, use the Git CLI: `git stash list`, `git stash apply stash@{1}`. See [Chapter 11, Section 10](14-git-in-practice.md#10-stash-management) for the full stash guide.
+> **Note:** GitHub Desktop supports one stash at a time per branch. For multiple stashes, use the Git CLI: `git stash list`, `git stash apply stash@{1}`. See [Chapter 14, Section 10](14-git-in-practice.md#10-stash-management) for the full stash guide.
 
 ---
 

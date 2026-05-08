@@ -1,17 +1,16 @@
 # Challenge Hub
 
-Welcome to the Challenge Hub -- your guide to all 16 core challenges and 5 bonus challenges.
+Welcome to the Challenge Hub - your guide to all 16 core challenges and 5 bonus challenges.
 
-## How challenges work
+The challenges are the practice path for the course. Each one asks you to do a small piece of real GitHub work, leave evidence of what you did, and then close the issue so the next challenge can open. The goal is not speed. The goal is to build a contributor rhythm you can trust: orient yourself, make the move, verify the result, and ask for help with clear facts when something feels off.
 
-1. Go to the **Issues** tab of this repository.
-2. Find issues assigned to you (filter by your username).
-3. Each issue has step-by-step instructions, evidence prompts, and buddy checks.
-4. Complete the challenge, post your evidence as a comment, and close the issue.
+## How Challenges Work
 
-**Curriculum chapters:** Every challenge links to chapters in the [curriculum repository](https://github.com/Community-Access/git-going-with-github/tree/main/docs) where you can read the full material.
+Start in your private Learning Room repository, not in the public curriculum repository. Open the **Issues** tab, find the challenge issue assigned to you, and read the issue body before acting. Each issue explains the task, the evidence prompt, and any buddy check or automated check that applies.
 
----
+When a challenge asks for evidence, post it as a comment on that challenge issue. Evidence can be a link, a short reflection, the name of a branch, a pull request number, or a note about what you tried and what happened. After you post the evidence, close the challenge issue. The Student Progression Bot uses that closed issue as the signal to open the next challenge.
+
+Every challenge below includes a reference solution. Treat those files as worked examples, not answer keys. Your exact branch name, issue number, wording, or file count may differ. What matters is whether you practiced the skill and can explain the result.
 
 ## Day 1: You Belong Here (Challenges 1-9)
 
@@ -20,15 +19,18 @@ Welcome to the Challenge Hub -- your guide to all 16 core challenges and 5 bonus
 
 **Chapters:** Ch02-04 | **Evidence:** Comment
 
-Navigate the learning-room repository like a scavenger hunt. Find the tabs, explore the file tree, read the README, and locate key files.
+This first challenge is about orientation. Before you edit anything, you learn how a repository is organized: where the Code tab lives, where Issues live, how the file tree behaves, and how the README gives a project its front door.
 
 **What to do:**
-- Find the Code tab and count files in the root
-- Open the Issues tab and find an open issue
-- Navigate to `docs/welcome.md` and read the first paragraph
-- Find the repository description and the README
 
-**Compare your work:** When you are done, you can [view a completed example](https://github.com/Community-Access/git-going-with-github/blob/main/docs/solutions/solution-01-scavenger-hunt.md) to see how your approach compares. Different is fine. The learning objective is what matters.
+- Find the Code tab and count the files or folders in the repository root
+- Open the Issues tab and identify at least one issue or confirm the tab exists
+- Navigate to `docs/welcome.md` and read the opening paragraph
+- Find the repository description and the rendered README
+
+**Evidence to post:** Describe what you found and name one navigation shortcut or screen reader technique that helped.
+
+Compare your result with the [Challenge 1 solution reference](https://github.com/Community-Access/git-going-with-github/blob/main/docs/solutions/solution-01-scavenger-hunt.md) when you want a second view of the same exploration path.
 </details>
 
 <details>
@@ -36,14 +38,17 @@ Navigate the learning-room repository like a scavenger hunt. Find the tabs, expl
 
 **Chapter:** Ch05 | **Evidence:** Comment
 
-Find a TODO comment in `docs/welcome.md` and file an issue describing the problem with a clear title and description.
+Issues are how maintainers turn observations into trackable work. In this challenge, you find a small TODO in the Learning Room and write an issue that another person could understand without being in the room with you.
 
 **What to do:**
-- Open `docs/welcome.md` and search for `TODO`
-- Create a new issue with a descriptive title
-- Explain what needs to change, where, and why
 
-**Compare your work:** When you are done, you can [view a completed example](https://github.com/Community-Access/git-going-with-github/blob/main/docs/solutions/solution-02-first-issue.md) to see how your approach compares. Different is fine. The learning objective is what matters.
+- Open `docs/welcome.md` and search for `TODO`
+- Create a new issue with a specific title
+- Explain what needs to change, where it is, and why the change would help
+
+**Evidence to post:** Link to the issue you created and include one sentence about why your title is clear.
+
+If you want to compare tone and structure, read the [Challenge 2 solution reference](https://github.com/Community-Access/git-going-with-github/blob/main/docs/solutions/solution-02-first-issue.md).
 </details>
 
 <details>
@@ -51,14 +56,17 @@ Find a TODO comment in `docs/welcome.md` and file an issue describing the proble
 
 **Chapter:** Ch05 | **Evidence:** Comment
 
-Comment on a buddy's issue using @mentions and reactions.
+Open source is conversation as much as code. This challenge teaches you how to participate in an issue thread with an @mention, a reaction, and a comment that moves the work forward.
 
 **What to do:**
-- Find your buddy's Challenge 2 issue
-- Leave a meaningful comment with an @mention
-- Add a reaction to their original issue
 
-**Compare your work:** When you are done, you can [view a completed example](https://github.com/Community-Access/git-going-with-github/blob/main/docs/solutions/solution-03-conversation.md) to see how your approach compares. Different is fine. The learning objective is what matters.
+- Find your buddy's Challenge 2 issue or a facilitator-provided peer simulation issue
+- Leave a meaningful comment with an @mention
+- Add a reaction to the original issue or a helpful comment
+
+**Evidence to post:** Link to your comment and describe what made it useful, kind, or specific.
+
+The [Challenge 3 solution reference](https://github.com/Community-Access/git-going-with-github/blob/main/docs/solutions/solution-03-conversation.md) shows one way to make a short comment feel genuinely collaborative.
 </details>
 
 <details>
@@ -66,13 +74,17 @@ Comment on a buddy's issue using @mentions and reactions.
 
 **Chapter:** Ch06 | **Evidence:** Comment
 
-Create a personal branch named `learn/YOUR-USERNAME` for your Day 1 work.
+A branch is a safe workspace. It lets you try a change without rewriting the main version of the project. In this challenge, you create your own branch and confirm that you know where your work will happen.
 
 **What to do:**
-- Find the branch dropdown on the Code tab
-- Type `learn/YOUR-USERNAME` and create the branch from main
 
-**Compare your work:** When you are done, you can [view a completed example](https://github.com/Community-Access/git-going-with-github/blob/main/docs/solutions/solution-04-branch-out.md) to see how your approach compares. Different is fine. The learning objective is what matters.
+- Find the branch selector on the Code tab
+- Create a branch named `learn/YOUR-USERNAME` from `main`
+- Confirm the branch selector now names your branch
+
+**Evidence to post:** Write the branch name you created and how you confirmed you were on it.
+
+Use the [Challenge 4 solution reference](https://github.com/Community-Access/git-going-with-github/blob/main/docs/solutions/solution-04-branch-out.md) if you want to check your branch mental model.
 </details>
 
 <details>
@@ -80,29 +92,35 @@ Create a personal branch named `learn/YOUR-USERNAME` for your Day 1 work.
 
 **Chapter:** Ch06 | **Evidence:** Comment
 
-Edit `docs/welcome.md` on your branch to fix the TODO, then commit with a meaningful message.
+This is your first small content change. You edit a file, replace a TODO with real text, and commit the change with a message that explains what happened.
 
 **What to do:**
-- Switch to your `learn/YOUR-USERNAME` branch
-- Edit `docs/welcome.md` to replace the TODO with real content
-- Write a commit message that explains what you changed and why
 
-**Compare your work:** When you are done, you can [view a completed example](https://github.com/Community-Access/git-going-with-github/blob/main/docs/solutions/solution-05-make-your-mark.md) to see how your approach compares. Different is fine. The learning objective is what matters.
+- Switch to your `learn/YOUR-USERNAME` branch
+- Edit `docs/welcome.md` to replace the TODO with useful content
+- Write a commit message that explains the change in plain language
+
+**Evidence to post:** Share your commit message and the file you edited.
+
+For a worked example of a focused commit, compare with the [Challenge 5 solution reference](https://github.com/Community-Access/git-going-with-github/blob/main/docs/solutions/solution-05-make-your-mark.md).
 </details>
 
 <details>
-<summary>Challenge 6: Open Your First PR</summary>
+<summary>Challenge 6: Open Your First Pull Request</summary>
 
 **Chapter:** Ch06 | **Evidence:** Comment
 
-Open a pull request from your branch to main, linking it to your issue with `Closes #XX`.
+A pull request is the conversation around a proposed change. It lets others review your branch before it becomes part of `main`. This challenge connects your branch, your issue, and your explanation into one contribution.
 
 **What to do:**
+
 - Go to Pull requests > New pull request
-- Set base to `main`, compare to `learn/YOUR-USERNAME`
+- Set the base branch to `main` and the compare branch to `learn/YOUR-USERNAME`
 - Write a clear title and include `Closes #XX` in the description
 
-**Compare your work:** When you are done, you can [view a completed example](https://github.com/Community-Access/git-going-with-github/blob/main/docs/solutions/solution-06-first-pr.md) to see how your approach compares. Different is fine. The learning objective is what matters.
+**Evidence to post:** Link to the pull request and name the issue it closes.
+
+The [Challenge 6 solution reference](https://github.com/Community-Access/git-going-with-github/blob/main/docs/solutions/solution-06-first-pr.md) shows how the title, body, and closing keyword work together.
 </details>
 
 <details>
@@ -110,17 +128,18 @@ Open a pull request from your branch to main, linking it to your issue with `Clo
 
 **Chapter:** Ch07 | **Evidence:** Comment | **Autograded**
 
-Resolve a facilitator-triggered merge conflict by removing conflict markers and keeping the right content.
+Merge conflicts happen when Git cannot safely combine two edits by itself. The point of this challenge is to read the conflict markers calmly, choose the final wording, delete the marker lines, and prove the file is clean.
 
 **What to do:**
+
 - Wait for the facilitator to trigger the conflict
-- Find conflict markers (`<<<<<<<`, `=======`, `>>>>>>>`) in the file
-- Decide which content to keep and delete all marker lines
-- Commit the resolution
+- Find the marker lines: `<<<<<<<`, `=======`, and `>>>>>>>`
+- Decide which content to keep, or combine both sides into one clear version
+- Delete all marker lines and commit the resolution
 
-The autograder checks that no conflict markers remain.
+**Evidence to post:** Explain which content you kept and why. The autograder checks that no conflict markers remain.
 
-**Compare your work:** When you are done, you can [view a completed example](https://github.com/Community-Access/git-going-with-github/blob/main/docs/solutions/solution-07-merge-conflict.md) to see how your approach compares. Different is fine. The learning objective is what matters.
+The [Challenge 7 solution reference](https://github.com/Community-Access/git-going-with-github/blob/main/docs/solutions/solution-07-merge-conflict.md) is useful if the marker structure still feels unfamiliar.
 </details>
 
 <details>
@@ -128,14 +147,17 @@ The autograder checks that no conflict markers remain.
 
 **Chapter:** Ch08 | **Evidence:** Comment
 
-Reflect on open source culture and triage an issue with labels.
+Technical work lands better when the communication is respectful and specific. This reflection challenge asks you to name the collaboration habits you want to practice before you move deeper into reviews and capstone work.
 
 **What to do:**
-- Answer a reflection question about your workshop experience
-- Add a label to an open issue that describes its type
-- Leave a comment explaining your triage decision
 
-**Compare your work:** When you are done, you can [view a completed example](https://github.com/Community-Access/git-going-with-github/blob/main/docs/solutions/solution-08-culture.md) to see how your approach compares. Different is fine. The learning objective is what matters.
+- Answer the reflection prompt in your challenge issue
+- Add or recommend a label for an open issue, if the issue asks for triage practice
+- Leave a comment explaining the reasoning behind your communication or triage choice
+
+**Evidence to post:** Write three concrete collaboration behaviors you will use in the rest of the workshop.
+
+The [Challenge 8 solution reference](https://github.com/Community-Access/git-going-with-github/blob/main/docs/solutions/solution-08-culture.md) gives examples of specific, actionable reflection language.
 </details>
 
 <details>
@@ -143,18 +165,19 @@ Reflect on open source culture and triage an issue with labels.
 
 **Chapter:** Ch10 | **Evidence:** Comment
 
-Get your Day 1 PR merged, verify your changes on main, and celebrate.
+Merge Day closes the Day 1 loop. You verify that your pull request is ready, merge it when approved, confirm the change landed on `main`, and notice how the linked issue closes.
 
 **What to do:**
+
 - Verify your PR has no conflicts and a meaningful commit message
-- Merge your PR (or wait for the facilitator to approve)
-- Confirm your changes appear on the main branch
-- Check that your linked issue was automatically closed
+- Merge your PR, or wait for a facilitator to approve and merge it
+- Confirm your changes appear on the `main` branch
+- Check that the linked issue closed automatically
 
-**Compare your work:** When you are done, you can [view a completed example](https://github.com/Community-Access/git-going-with-github/blob/main/docs/solutions/solution-09-merge-day.md) to see how your approach compares. Different is fine. The learning objective is what matters.
+**Evidence to post:** Share the merged PR link and the issue number that closed.
+
+Before moving on, scan the [Challenge 9 solution reference](https://github.com/Community-Access/git-going-with-github/blob/main/docs/solutions/solution-09-merge-day.md) to make sure you caught both the merge and verification steps.
 </details>
-
----
 
 ## Day 2: You Can Build This (Challenges 10-16)
 
@@ -163,17 +186,18 @@ Get your Day 1 PR merged, verify your changes on main, and celebrate.
 
 **Chapters:** Ch11-14 | **Evidence:** Comment | **Autograded**
 
-Clone the repo, create a feature branch, edit, commit, and push from your local tool.
+Day 2 moves the same contribution workflow onto your computer. You clone your Learning Room repository, create a branch locally, edit a file, commit, and push the branch back to GitHub.
 
 **What to do:**
-- Clone the repository to your computer (VS Code, GitHub Desktop, or CLI)
+
+- Clone your Learning Room repository to your computer with VS Code, GitHub Desktop, or the command line
 - Create a branch named `fix/YOUR-USERNAME`
 - Edit a file in `docs/`
-- Commit and push to GitHub
+- Commit and push the branch to GitHub
 
-The autograder verifies a commit on a non-default branch.
+**Evidence to post:** Share your branch name and a short note about how you confirmed the push reached GitHub. The autograder verifies a commit on a non-default branch.
 
-**Compare your work:** When you are done, you can [view a completed example](https://github.com/Community-Access/git-going-with-github/blob/main/docs/solutions/solution-10-go-local.md) to see how your approach compares. Different is fine. The learning objective is what matters.
+The [Challenge 10 solution reference](https://github.com/Community-Access/git-going-with-github/blob/main/docs/solutions/solution-10-go-local.md) shows the local workflow as one complete loop.
 </details>
 
 <details>
@@ -181,14 +205,17 @@ The autograder verifies a commit on a non-default branch.
 
 **Chapters:** Ch14-15 | **Evidence:** Comment
 
-Open a PR from your locally-pushed branch. Notice the workflow pattern is the same as Day 1.
+This challenge proves that the pull request pattern is the same whether the edit started in the browser or on your computer. You push a local branch, open a PR, and explain the change for reviewers.
 
 **What to do:**
-- Open a PR from `fix/YOUR-USERNAME` to `main`
-- Write a clear title and description
-- Recognize: the pull request step is identical whether you edit online or locally
 
-**Compare your work:** When you are done, you can [view a completed example](https://github.com/Community-Access/git-going-with-github/blob/main/docs/solutions/solution-11-day2-pr.md) to see how your approach compares. Different is fine. The learning objective is what matters.
+- Open a PR from `fix/YOUR-USERNAME` to `main`
+- Write a title and description that describe the change clearly
+- Notice the familiar shape: branch, compare, title, body, submit
+
+**Evidence to post:** Link to the PR and identify what changed between the branch and `main`.
+
+Use the [Challenge 11 solution reference](https://github.com/Community-Access/git-going-with-github/blob/main/docs/solutions/solution-11-day2-pr.md) to compare the local-to-GitHub handoff.
 </details>
 
 <details>
@@ -196,15 +223,19 @@ Open a PR from your locally-pushed branch. Notice the workflow pattern is the sa
 
 **Chapter:** Ch15 | **Evidence:** Comment
 
-Perform a full code review of your buddy's Day 2 PR.
+Review is where a contribution becomes stronger. Your job is to read a classmate's pull request, leave comments that are specific and kind, and submit a review verdict that matches what you found.
 
 **What to do:**
-- Open your buddy's PR and go to Files changed
-- Leave at least two inline comments (one praise, one suggestion)
-- Use the Suggest changes feature for at least one comment
-- Submit your review with a verdict (Approve, Request changes, or Comment)
 
-**Compare your work:** When you are done, you can [view a completed example](https://github.com/Community-Access/git-going-with-github/blob/main/docs/solutions/solution-12-review.md) to see how your approach compares. Different is fine. The learning objective is what matters.
+- Open your buddy's PR or a facilitator-provided peer simulation PR
+- Go to Files changed and read the diff
+- Leave at least two inline comments: one naming something effective and one suggesting an improvement
+- Use Suggest changes for at least one comment, if the interface supports it
+- Submit your review with Approve, Request changes, or Comment
+
+**Evidence to post:** Link to the review or describe where you left your comments.
+
+The [Challenge 12 solution reference](https://github.com/Community-Access/git-going-with-github/blob/main/docs/solutions/solution-12-review.md) models feedback that teaches without taking over the author's work.
 </details>
 
 <details>
@@ -212,14 +243,17 @@ Perform a full code review of your buddy's Day 2 PR.
 
 **Chapter:** Ch16 | **Evidence:** Comment
 
-Use GitHub Copilot to improve documentation, then critically evaluate the output.
+Copilot can help draft and improve, but you remain responsible for the final result. This challenge asks you to use Copilot as a collaborator, then evaluate what it suggested before accepting anything.
 
 **What to do:**
-- Use Copilot to improve a documentation file
-- Apply the trust-verify-reject framework to each suggestion
-- Document what you accepted, modified, and rejected
 
-**Compare your work:** When you are done, you can [view a completed example](https://github.com/Community-Access/git-going-with-github/blob/main/docs/solutions/solution-13-copilot.md) to see how your approach compares. Different is fine. The learning objective is what matters.
+- Ask Copilot to improve a documentation file
+- Apply the trust, verify, reject framework to each suggestion
+- Keep notes on what you accepted, modified, and rejected
+
+**Evidence to post:** Share the prompt you used and one example of a suggestion you changed or rejected.
+
+The [Challenge 13 solution reference](https://github.com/Community-Access/git-going-with-github/blob/main/docs/solutions/solution-13-copilot.md) shows how to document human judgment around AI output.
 </details>
 
 <details>
@@ -227,17 +261,18 @@ Use GitHub Copilot to improve documentation, then critically evaluate the output
 
 **Chapter:** Ch17 | **Evidence:** Comment | **Autograded**
 
-Create a custom issue template by remixing the registration template.
+Issue templates help contributors give maintainers the information they need on the first try. In this challenge, you create a small YAML issue form and verify that it has the required fields.
 
 **What to do:**
-- Study the sample at `docs/samples/challenge-14-registration-remix-example.yml`
+
+- Study `docs/samples/challenge-14-registration-remix-example.yml`
 - Create a new YAML template in `.github/ISSUE_TEMPLATE/`
-- Include a `name`, `description`, `title`, and at least one form field
-- Commit and push
+- Include `name`, `description`, `title`, and at least one form field
+- Commit and push the template
 
-The autograder verifies a valid YAML template with a `name` field.
+**Evidence to post:** Link to the template change or PR. The autograder verifies that the YAML template exists and includes required metadata.
 
-**Compare your work:** When you are done, you can [view a completed example](https://github.com/Community-Access/git-going-with-github/blob/main/docs/solutions/solution-14-template.md) to see how your approach compares. Different is fine. The learning objective is what matters.
+The [Challenge 14 solution reference](https://github.com/Community-Access/git-going-with-github/blob/main/docs/solutions/solution-14-template.md) can help you check both syntax and contributor usefulness.
 </details>
 
 <details>
@@ -245,15 +280,18 @@ The autograder verifies a valid YAML template with a `name` field.
 
 **Chapter:** Ch19 | **Evidence:** Comment
 
-Discover accessibility agents, run one, and read one agent's instructions.
+Accessibility agents are not magic helpers. They are structured instructions, responsibilities, and guardrails. This challenge asks you to inspect real agents before you build or improve one.
 
 **What to do:**
-- Browse the [accessibility-agents repository](https://github.com/Community-Access/accessibility-agents)
-- Find and name at least 3 different agents
-- Run one agent and describe what happened
-- Read one agent's `.agent.md` file and identify its purpose and guardrails
 
-**Compare your work:** When you are done, you can [view a completed example](https://github.com/Community-Access/git-going-with-github/blob/main/docs/solutions/solution-15-agents.md) to see how your approach compares. Different is fine. The learning objective is what matters.
+- Browse the [Community Access Accessibility Agents repository](https://github.com/Community-Access/accessibility-agents)
+- Find and name at least three different agents
+- Run or inspect one agent and describe what happened
+- Read one `.agent.md` file and identify its purpose and guardrails
+
+**Evidence to post:** Name the agents you found and explain one guardrail that protects learners or users.
+
+The [Challenge 15 solution reference](https://github.com/Community-Access/git-going-with-github/blob/main/docs/solutions/solution-15-agents.md) shows how to turn exploration into a useful agent note.
 </details>
 
 <details>
@@ -261,82 +299,81 @@ Discover accessibility agents, run one, and read one agent's instructions.
 
 **Chapters:** Ch18, Ch20 | **Evidence:** Comment | **Autograded**
 
-Fork the accessibility-agents repo, write your own agent, and open a cross-fork PR.
+The capstone is where you design a small agent of your own and prepare it as a contribution. The important part is not a flashy idea. The important part is a clear purpose, useful responsibilities, and boundaries that keep the agent safe and honest.
 
 **What to do:**
-1. Fork the [accessibility-agents repository](https://github.com/Community-Access/accessibility-agents)
-2. Clone your fork and create a branch `agent/YOUR-USERNAME`
+
+1. Fork the [Community Access Accessibility Agents repository](https://github.com/Community-Access/accessibility-agents)
+2. Clone your fork and create a branch named `agent/YOUR-USERNAME`
 3. Write an `.agent.md` file with YAML frontmatter, responsibilities, and guardrails
 4. Push and open a cross-fork PR to the original repository
-5. Review a classmate's capstone PR
+5. Review a classmate's capstone PR when one is available
 
-Use the [agent file template](docs/samples/agent-file-template.md) and [fork workflow checklist](docs/samples/fork-workflow-checklist.md) for guidance.
+Use the [agent file template](../learning-room/docs/samples/agent-file-template.md) and [fork workflow checklist](../learning-room/docs/samples/fork-workflow-checklist.md) for structure.
 
-The autograder verifies your agent file exists, has valid YAML, and contains required sections.
+**Evidence to post:** Link to your capstone PR or summarize the agent file you created. The autograder verifies required agent structure when the file is represented in the Learning Room.
 
-**Compare your work:** When you are done, you can [view a completed example](https://github.com/Community-Access/git-going-with-github/blob/main/docs/solutions/solution-16-capstone.md) to see how your approach compares. Different is fine. The learning objective is what matters.
+The [Challenge 16 solution reference](https://github.com/Community-Access/git-going-with-github/blob/main/docs/solutions/solution-16-capstone.md) shows a complete agent example with responsibilities and guardrails.
 </details>
-
----
 
 ## Bonus Challenges
 
-For students who finish early and want to keep building.
+Bonus challenges are optional. Use them when you finish the core path early or want more practice with contribution habits that transfer beyond this workshop.
 
 <details>
 <summary>Bonus A: Improve an Existing Agent</summary>
 
-Choose an existing agent, identify an improvement, and open a PR.
+Choose an existing agent, identify a focused improvement, and open a PR that explains why the change matters.
 
-**Compare your work:** [View a completed example](https://github.com/Community-Access/git-going-with-github/blob/main/docs/solutions/solution-bonus-a.md)
+Compare your plan with the [Bonus A solution reference](https://github.com/Community-Access/git-going-with-github/blob/main/docs/solutions/solution-bonus-a.md).
 </details>
 
 <details>
 <summary>Bonus B: Document Your Journey</summary>
 
-Write a structured reflection about your workshop experience using proper Markdown.
+Write a structured reflection about what you learned, what surprised you, and what you want to keep practicing. Use accessible Markdown so another person can read it comfortably.
 
-**Compare your work:** [View a completed example](https://github.com/Community-Access/git-going-with-github/blob/main/docs/solutions/solution-bonus-b.md)
+The [Bonus B solution reference](https://github.com/Community-Access/git-going-with-github/blob/main/docs/solutions/solution-bonus-b.md) offers a reflection structure if you need a starting shape.
 </details>
 
 <details>
 <summary>Bonus C: Create a Group Challenge</summary>
 
-Design a collaborative challenge for 3-5 students that future cohorts can use.
+Design a collaborative challenge for 3-5 students. A good group challenge names the shared goal, the separate roles, the evidence, and how the group knows it is finished.
 
-**Compare your work:** [View a completed example](https://github.com/Community-Access/git-going-with-github/blob/main/docs/solutions/solution-bonus-c.md)
+Review the [Bonus C solution reference](https://github.com/Community-Access/git-going-with-github/blob/main/docs/solutions/solution-bonus-c.md) for one way to describe group work clearly.
 </details>
 
 <details>
 <summary>Bonus D: Notification Mastery</summary>
 
-Configure GitHub notification settings for a productive workflow.
+Configure GitHub notifications so you can find mentions, reviews, and assignments without drowning in every update.
 
-**Compare your work:** [View a completed example](https://github.com/Community-Access/git-going-with-github/blob/main/docs/solutions/solution-bonus-d.md)
+The [Bonus D solution reference](https://github.com/Community-Access/git-going-with-github/blob/main/docs/solutions/solution-bonus-d.md) shows how to describe a personal notification strategy.
 </details>
 
 <details>
 <summary>Bonus E: Explore Git History Visually</summary>
 
-Use GitHub Desktop or GitHub.com to explore repository history as a visual timeline.
+Use GitHub Desktop or GitHub.com to explore repository history. The goal is to explain what changed over time, not merely to find a graph or timeline.
 
-**Compare your work:** [View a completed example](https://github.com/Community-Access/git-going-with-github/blob/main/docs/solutions/solution-bonus-e.md)
+The [Bonus E solution reference](https://github.com/Community-Access/git-going-with-github/blob/main/docs/solutions/solution-bonus-e.md) walks through one history-reading approach.
 </details>
 
 ## Skills-Inspired Optional Scenarios
 
-For advanced students who finish early, use the curated optional scenarios in [learning-room/docs/skills-bonus-scenarios.md](../learning-room/docs/skills-bonus-scenarios.md).
+For advanced students who finish early, use the curated optional scenarios in [Learning Room skills bonus scenarios](../learning-room/docs/skills-bonus-scenarios.md).
 
 These scenarios adapt selected GitHub Skills exercises into this workshop environment without changing the official 21-challenge progression.
 
----
+## If You Get Stuck
 
-## If you get stuck
-
-Every challenge issue includes an "If you get stuck" table with common problems and solutions. You can also:
+Every challenge issue includes an "If you get stuck" section with common problems and recovery paths. Start there, then use these supports:
 
 - Ask your buddy for help
 - Ask your facilitator
-- Read the relevant chapter in the [curriculum](https://github.com/Community-Access/git-going-with-github/tree/main/docs)
-- Check the [solution file](https://github.com/Community-Access/git-going-with-github/tree/main/docs/solutions) for your challenge
-- Use the student-facing [Learning Room solutions index](../learning-room/docs/solutions/README.md) for quick challenge-by-challenge references
+- Read the relevant chapter in the [Git Going with GitHub curriculum](https://github.com/Community-Access/git-going-with-github/tree/main/docs)
+- Check the [solution reference directory](https://github.com/Community-Access/git-going-with-github/tree/main/docs/solutions)
+- Use the [Learning Room solutions index](../learning-room/docs/solutions/README.md) for quick challenge-by-challenge references
+
+When you ask for help, include what you were trying to do, where you were in the repository, what happened, and what you expected. That gives your buddy, facilitator, or bot enough context to help you quickly.

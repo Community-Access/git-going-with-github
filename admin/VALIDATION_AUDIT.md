@@ -4,6 +4,10 @@
 > original curriculum content. Challenge templates and documentation have been
 > updated since this audit. Use this as a reference for the types of issues to
 > look for, not as a current status report.
+>
+> **Current status:** Historical reference only. The May 2026 curriculum uses the
+> Challenge Hub, classroom assignments, and Learning Room templates as the
+> current source of truth.
 
 **Date:** March 5, 2026
 **Scope:** Chapters 4-16 challenge definitions, documentation, templates, and associated files
@@ -771,7 +775,7 @@ All 13 chapters (4-16) have challenge content defined with generally clear instr
    Authentication setup and discovering the PR list in VS Code are learning experiences.
    ```
 
-### Chapter 13: GitHub Copilot
+### Original Chapter 13: GitHub Copilot
 
 **[WARN]** — Subscription prerequisite not clearly flagged; sci-fi theme is engaging but adds scope.
 

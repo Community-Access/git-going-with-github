@@ -1,6 +1,6 @@
 # Notifications
 >
-> **Listen to Episode 10:** [Notifications and Mentions](../PODCASTS.md) - a conversational audio overview of this chapter. Listen before reading to preview the concepts, or after to reinforce what you learned.
+> **Listen to Episode 10:** [Notifications and Mentions](../admin/PODCASTS.md) - a conversational audio overview of this chapter. Listen before reading to preview the concepts, or after to reinforce what you learned.
 
 > **Related appendices:** [Appendix T: Community and Social](appendix-t-community-and-social.md) | [Appendix U: Discussions and Gists](appendix-u-discussions-and-gists.md) | [Appendix V: GitHub Mobile](appendix-v-github-mobile.md)
 > **Authoritative sources:** [GitHub Docs: About notifications](https://docs.github.com/en/account-and-profile/managing-subscriptions-and-notifications-on-github/setting-up-notifications/about-notifications)
@@ -690,7 +690,7 @@ Think about where you started this morning. You may not have known what a reposi
 Day 2 builds on every one of those skills. Nothing gets thrown away. Everything you did today is the foundation for everything that comes next.
 
 
-> ➡️ **End of Day 1:** Congratulations! You have completed **Challenge 9: Merge Day** and finished the browser-based foundation. [Return to the Course Guide](course-guide.md) to prepare for Day 2.
+> **End of Day 1:** Congratulations. You have completed **Challenge 9: Merge Day** and finished the browser-based foundation. [Return to the Course Guide](course-guide.md) to prepare for Day 2.
 
 ---
 

@@ -1,6 +1,6 @@
 # Working with Pull Requests
 >
-> **Listen to Episode 6:** [Working with Pull Requests](../PODCASTS.md) - a conversational audio overview of this chapter. Listen before reading to preview the concepts, or after to reinforce what you learned.
+> **Listen to Episode 6:** [Working with Pull Requests](../admin/PODCASTS.md) - a conversational audio overview of this chapter. Listen before reading to preview the concepts, or after to reinforce what you learned.
 
 > **Related appendices:** [Appendix C: Markdown Reference](appendix-c-markdown-reference.md) | [Appendix B: Screen Reader Cheat Sheet](appendix-b-screen-reader-cheatsheet.md)
 > **Authoritative sources:** [GitHub Docs: About pull requests](https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/about-pull-requests) | [GitHub Accessibility Guide: Pull Requests](https://accessibility.github.com/documentation/guide/pull-requests/)
@@ -47,7 +47,7 @@ Chapter 6 is the first **PR-validated chapter** where students convert issue wor
 > - **Web editor (recommended for beginners):** When you edit a file on GitHub.com and click "Propose changes," GitHub creates a branch for you automatically. Name it `fix/yourname-issueXX` (for example, `fix/maria-issue42`).
 > - **Local Git (if you cloned in Block 0):** Create a feature branch with `git checkout -b fix/yourname-issueXX` from `main`. See the "Local Git Alternative" section below for the full command sequence.
 >
-> **Do NOT use your `username-practice` branch yet.** The practice branch is for Chapter 11 and beyond when you work locally with Git and VS Code. For Chapter 6, use a short-lived feature branch as described above.
+> **Do not reuse your `learn/<username>` branch for this short exercise unless your facilitator tells you to.** Chapter 6 works best with a short-lived feature branch such as `fix/yourname-issueXX`, because it teaches the pull request loop without mixing multiple challenges on one branch.
 
 ### Challenge 6.1 Step-by-Step: Create One Small Branch Change
 
@@ -92,9 +92,7 @@ The following table summarizes the practice files in the learning-room, what eac
 
 **Goal:** Open a pull request
 
-> **🛠️ Agentic Strategy:** AI Agents do not just deploy code directly; they submit Pull Requests. Learning to edit a file, format it in Markdown, and review a PR today prepares you to effectively audit and approve the code your AI generates tomorrow. Make your Markdown clean and structured — AI agents love reading well-formatted Markdown!
-
-> **🛠️ Agentic Strategy:** AI Agents do not just deploy code directly; they submit Pull Requests. Learning to edit a file, format it in Markdown, and review a PR today prepares you to effectively audit and approve the code your AI generates tomorrow. Make your Markdown clean and structured—AI agents love reading well-formatted Markdown! that links to your challenge issue so it closes automatically on merge.
+> **Agentic strategy:** AI agents do not just deploy code directly; they submit pull requests. Learning to edit a file, format it in Markdown, and review a PR today prepares you to audit and approve AI-generated changes tomorrow. Make your Markdown clean and structured, and include the `Closes #XX` line that links to your challenge issue so it closes automatically on merge.
 
 **Where you are working:** the "Open a pull request" page that appeared after Challenge 6.1 (or navigate to Pull Requests tab and select "Compare and pull request").
 
@@ -1624,7 +1622,7 @@ Go to the Learning Room repository's Pull Requests tab and find any open or rece
 > *The agent documents the diff. You bring the context that no diff can contain.*
 
 
-> ➡️ **Challenge Time:** Go to the [Challenge Hub](CHALLENGES.md) and complete **Challenges 4, 5, and 6** to open your first PR. Aria will guide you from there.
+> **Challenge Time:** Go to the [Challenge Hub](CHALLENGES.md) and complete **Challenges 4, 5, and 6** to open your first PR. Aria will guide you from there.
 
 ---
 

@@ -1,0 +1,399 @@
+[ALEX]
+Welcome back to Git Going with GitHub. This is episode 21: Git Authentication. I am Alex, and today we are turning Git Authentication from a list of instructions into a working mental model.
+
+[JAMIE]
+And I am Jamie. I will stop us whenever the instructions sound simple on paper but might feel different with a keyboard and screen reader.
+
+[PAUSE]
+
+[ALEX]
+Personal access tokens, SSH keys, credential storage, and commit signing. That is the surface description. Underneath it, we are building judgment: where to focus, what to ignore, and how to verify the result.
+
+[JAMIE]
+So we are not using the audio as a shortcut around learning. We are using it to make the learning easier to enter.
+
+[ALEX]
+Yes. A good audio lesson gives someone enough context to try the work with confidence, even before they open the written material.
+
+[PAUSE]
+
+[JAMIE]
+Okay, set the room for us. What are we walking into?
+
+[ALEX]
+Start with SSH Keys & Personal Access Tokens: Audience: This appendix is for contributors who need to configure Git authentication for push access. The next useful detail is this: If you're working entirely through the GitHub web interface or GitHub Desktop, you can skip this.
+
+[ALEX]
+The next layer is this. Start with Learning Cards: Using This Authentication Reference. There is something to understand, something to try, and something that proves the try worked.
+
+[ALEX]
+The practical anchors are these. This appendix has two main paths: Personal Access Token (recommended) and SSH Keys -- jump to your chosen method via heading navigation. Step-by-step instructions are numbered lists -- your screen reader announces "1 of 8," etc. to track progress. The Troubleshooting section near the bottom covers the error messages you are most likely to encounter. Command-line examples are in code blocks with high contrast -- increase zoom to read them comfortably. Each method (PAT vs SSH) is a separate section with its own step-by-step flow. The "Do not" lists use bold text to highlight security warnings.
+
+[JAMIE]
+What is the one idea that makes the next few steps less mysterious?
+
+[ALEX]
+This is where When You Need Authentication becomes real: GitHub requires authentication when you.
+
+[ALEX]
+That shows up in the workshop in a few specific ways. Push commits to a repository. Clone a private repository. Access organization repositories with specific permissions. Clone public repositories. View public repositories on GitHub.com. Read issues and pull requests.
+
+[PAUSE]
+
+[ALEX]
+Now bring the learner back to the room. Keep the learner anchored in Personal Access Token (PAT). A Personal Access Token is a password-like string you generate on GitHub and use instead of your account password when Git asks for credentials.
+
+[JAMIE]
+What would you say to someone who is already bracing for this to be too much?
+
+[ALEX]
+Start with Pros. There is something to understand, something to try, and something that proves the try worked.
+
+[ALEX]
+The parts worth keeping in working memory are these. Works on all operating systems. Easy to set up for screen reader users (no command line required). Can be scoped to specific permissions. Easy to revoke if compromised.
+
+[ALEX]
+A solid pull request habit is to separate three questions: what changed, why it changed, and what still needs review. That keeps the conversation useful instead of noisy.
+
+[ALEX]
+That matters because of the next idea. Start with Cons. There is something to understand, something to try, and something that proves the try worked.
+
+[ALEX]
+On the ground, that means a few things. You have to store it securely. Expires after a set time (you must regenerate).
+
+[ALEX]
+The useful habit is simple: orient first, act second, verify third. That pause before acting is part of the work.
+
+[PAUSE]
+
+[JAMIE]
+If I am listening before the workshop starts, what should settle in my mind first?
+
+[ALEX]
+Here is the plain-English version of SSH Keys. You generate a key pair on your computer (public + private), upload the public key to GitHub, and Git uses the private key to prove your identity.
+
+[ALEX]
+This is where the talk moves from concept to action. Start with Pros. There is something to understand, something to try, and something that proves the try worked.
+
+[ALEX]
+The room should hear these as checkpoints. Once set up, works automatically (no password prompts). More secure than tokens. Never expires.
+
+[JAMIE]
+Where do you want a learner to place their attention here?
+
+[ALEX]
+Start with Cons. There is something to understand, something to try, and something that proves the try worked.
+
+[ALEX]
+These are the details that keep the idea from floating away. Requires command-line setup (less accessible for some screen reader users). Slightly more complex initial configuration.
+
+[PAUSE]
+
+[ALEX]
+Before the learner moves on. The reason Creating a Personal Access Token (Recommended for This Workshop) matters is that why this method: It's screen reader accessible through the GitHub web interface, and you can complete it without command-line Git configuration. The interface gets friendlier when it stops being a wall of controls and starts being a set of named places.
+
+[JAMIE]
+Give me the sequence, because order matters here.
+
+[ALEX]
+Start with Step 1: Generate the Token: The token appears as a long string in a text field. The next useful detail is this: Select all (Ctrl+A), copy (Ctrl+C), and paste it into a secure note or password manager.
+
+[ALEX]
+A few details make that real. repo - Full control of private repositories (includes public repo access). workflow - Update GitHub Actions workflows (if you'll work with Actions).
+
+[ALEX]
+First, navigate to github.com/settings/tokens. Then, select "Tokens (classic)" from the left sidebar. After that, activate "Generate new token" → Select "Generate new token (classic)". Finally, give it a descriptive name in the Note field: "Workshop Laptop Token". Think of it as a rail line: each stop confirms you are still on the right route before the next one.
+
+[JAMIE]
+How would you walk the room through that step by step?
+
+[ALEX]
+First, set expiration: 30 days or 60 days (recommended for temporary workshop use). Then, select scopes. After that, scroll down and activate "Generate token". Finally, cRITICAL: Copy the token immediately - you cannot see it again. Treat it like a recipe: do not add the next ingredient until the previous one is actually in the bowl.
+
+[ALEX]
+Hold that next to this. Start with Options. There is something to understand, something to try, and something that proves the try worked.
+
+[ALEX]
+For a learner, the useful signals are these. Password manager (1Password, Bitwarden, LastPass) - best option. Encrypted note in your operating system's secure notes. Plain text file in an encrypted folder (temporary only).
+
+[PAUSE]
+
+[JAMIE]
+Give me the version that sounds like an instructor, not a manual.
+
+[ALEX]
+Start with Do not. There is something to understand, something to try, and something that proves the try worked.
+
+[ALEX]
+Here is what that changes in practice. Paste it into a document you sync to cloud storage unencrypted. Email it to yourself. Save it in a public GitHub file.
+
+[JAMIE]
+How do you keep commands from becoming magic words?
+
+[ALEX]
+Keep the learner anchored in Step 3: Use It. The next time Git asks for your password (when you push, pull from a private repo, or clone a private repo). This is the part to say slowly: Windows Git Credential Manager: Windows will remember this token automatically after your first use. A good GitHub workflow is like a well-run meeting: everyone knows the topic, the next action, and who has the floor.
+
+[ALEX]
+Treat examples as spoken recipes, not decorations. You may hear something like git config --global credential.helper cache. Read the command, understand what it changes, then run it only when the repository state matches the lesson.
+
+[JAMIE]
+Let's pause on Setting Up SSH Keys (Alternative Method). What should a learner take away from it?
+
+[ALEX]
+The reason Setting Up SSH Keys (Alternative Method) matters is that if you prefer SSH and are comfortable with terminal commands.
+
+[PAUSE]
+
+[ALEX]
+Here is the practical turn. Start with Step 1: Check If You Already Have a Key: Look for files named id rsa.pub, id ed25519.pub, or similar. The next useful detail is this: If you see these, you already have a key.
+
+[JAMIE]
+What should they understand before typing anything?
+
+[ALEX]
+Here is the plain-English version of Step 2: Generate a New SSH Key. Git will print output showing where the key was saved. Put another way, it generates two files: id ed25519 (private) and id ed25519.pub (public).
+
+[ALEX]
+That becomes easier when you listen for these cues. Press Enter to accept the default file location. Enter a passphrase (optional but recommended).
+
+[ALEX]
+Treat examples as spoken recipes, not decorations. You may hear something like ssh-keygen -t ed25519 -C "your-email@example.com". Read the command, understand what it changes, then run it only when the repository state matches the lesson.
+
+[JAMIE]
+What does the learner do first, second, and then after that?
+
+[ALEX]
+Start with Step 4: Add to GitHub. There is something to understand, something to try, and something that proves the try worked.
+
+[ALEX]
+First, navigate to github.com/settings/keys. Then, select "New SSH key". After that, key type: Authentication Key. Finally, key: Paste your public key (should start with ssh-ed25519 or ssh-rsa). It is a checklist, but a meaningful one: every item creates evidence that the next step is safe.
+
+[JAMIE]
+Turn that into a path someone can follow.
+
+[ALEX]
+First, select "Add SSH key". Then, confirm with your password or 2FA code. It is like walking a hallway with named doors: read the sign, enter the right room, then confirm where you landed.
+
+[PAUSE]
+
+[JAMIE]
+What is the safe way to learn from that example?
+
+[ALEX]
+Start with Step 5: Test the Connection. There is something to understand, something to try, and something that proves the try worked.
+
+[ALEX]
+Treat examples as spoken recipes, not decorations. You may hear something like ssh -T git@github.com. Read the command, understand what it changes, then run it only when the repository state matches the lesson.
+
+[JAMIE]
+What should happen before anyone copies and runs it?
+
+[ALEX]
+The reason Step 6: Use SSH URLs matters is that when cloning or adding remotes, use SSH URLs instead of HTTPS.
+
+[ALEX]
+Treat examples as spoken recipes, not decorations. You may hear something like SSH format; git@github.com:owner/repo.git; Instead of HTTPS; https://github.com/owner/repo.git. Read the command, understand what it changes, then run it only when the repository state matches the lesson.
+
+[JAMIE]
+Let's pause on Switching Between HTTPS and SSH. What should a learner take away from it?
+
+[ALEX]
+Start with Switching Between HTTPS and SSH: If you cloned with HTTPS but want to use SSH (or vice versa), update the remote.
+
+[PAUSE]
+
+[JAMIE]
+Let's pause on Check your current remote. What should a learner take away from it?
+
+[ALEX]
+Start with Check your current remote. There is something to understand, something to try, and something that proves the try worked.
+
+[ALEX]
+Treat examples as spoken recipes, not decorations. You may hear something like git remote -v. Read the command, understand what it changes, then run it only when the repository state matches the lesson.
+
+[JAMIE]
+Let's pause on Switch to SSH. What should a learner take away from it?
+
+[ALEX]
+Start with Switch to SSH. There is something to understand, something to try, and something that proves the try worked.
+
+[ALEX]
+Treat examples as spoken recipes, not decorations. You may hear something like git remote set-url origin git@github.com:your-username/repo.git. Read the command, understand what it changes, then run it only when the repository state matches the lesson.
+
+[JAMIE]
+Let's pause on Switch to HTTPS. What should a learner take away from it?
+
+[ALEX]
+Start with Switch to HTTPS. There is something to understand, something to try, and something that proves the try worked.
+
+[ALEX]
+Treat examples as spoken recipes, not decorations. You may hear something like git remote set-url origin https://github.com/your-username/repo.git. Read the command, understand what it changes, then run it only when the repository state matches the lesson.
+
+[PAUSE]
+
+[JAMIE]
+What do you want them to do when the plan breaks?
+
+[ALEX]
+Start with Learning Cards: Troubleshooting Authentication. There is something to understand, something to try, and something that proves the try worked.
+
+[ALEX]
+The practical takeaway is this. Each troubleshooting entry starts with the error message in quotes as an h3 heading -- press 3 to jump between errors. Solutions include terminal commands in code blocks -- switch to Focus Mode before copying them. If your error is not listed here, search the GitHub Docs authentication troubleshooting page. Error messages are displayed as bold h3 headings for easy visual scanning. Solution steps are numbered and include code blocks you can copy directly. If terminal output is hard to read, paste commands into VS Code's integrated terminal which respects your theme settings.
+
+[ALEX]
+Keep the thread going. Start with "Authentication failed" when pushing: Problem: Your token expired or is incorrect. Think of it like entering a new building: first you find the lobby, then the room, then the door you actually need.
+
+[JAMIE]
+Let's pause on Solution. What should a learner take away from it?
+
+[ALEX]
+Start with Solution. There is something to understand, something to try, and something that proves the try worked.
+
+[ALEX]
+The practical takeaway is this. Generate a new PAT. Clear your credential cache (Windows: Credential Manager; macOS: Keychain; Linux: git credential-cache exit). Try pushing again - Git will ask for credentials.
+
+[PAUSE]
+
+[ALEX]
+Another way to ground it. This is where "Permission denied (publickey)" becomes real: problem: SSH key not properly set up.
+
+[JAMIE]
+Before we leave Solution, what is the practical point?
+
+[ALEX]
+The practical takeaway is this. Verify your key is added to GitHub: github.com/settings/keys. Check SSH agent is running: ssh-add -l. Add your key to the agent: ssh-add /.ssh/id ed25519.
+
+[ALEX]
+This is the part worth saying out loud. The reason "Host key verification failed" matters is that problem: SSH doesn't recognize GitHub's host key. The interface gets friendlier when it stops being a wall of controls and starts being a set of named places.
+
+[PAUSE]
+
+[JAMIE]
+What is the teaching move inside Solution?
+
+[ALEX]
+Treat examples as spoken recipes, not decorations. You may hear something like ssh-keyscan github.com /.ssh/known hosts. Read the command, understand what it changes, then run it only when the repository state matches the lesson.
+
+[JAMIE]
+What is the ordered workflow?
+
+[ALEX]
+Start with Security Best Practices. There is something to understand, something to try, and something that proves the try worked.
+
+[ALEX]
+First, never share your private key or PAT - treat them like passwords. Then, use scoped PATs - only grant the minimum permissions needed. After that, set expiration dates on PATs - regenerate periodically. Finally, use a passphrase on SSH keys - adds another layer of security. Treat it like a recipe: do not add the next ingredient until the previous one is actually in the bowl.
+
+[JAMIE]
+Let's pause on Security Best Practices. What should a learner take away from it?
+
+[ALEX]
+First, revoke old tokens when you're done with a project or device. Then, don't commit tokens or keys to Git - use.gitignore for config files. It is a checklist, but a meaningful one: every item creates evidence that the next step is safe.
+
+[JAMIE]
+Let's pause on Commit Signing - Verified Badges and Vigilant Mode. What should a learner take away from it?
+
+[ALEX]
+This is where Commit Signing - Verified Badges and Vigilant Mode becomes real: when you push commits to GitHub, each commit shows a small badge: Verified or Unverified. That matters in practice: This badge tells anyone viewing the commit history whether the commit was cryptographically signed - proving it came from you and was not tampered with.
+
+[ALEX]
+A solid Git habit is to know which branch you are on, what changed, and what confirmation you expect before you run the next command.
+
+[PAUSE]
+
+[ALEX]
+That connects to another useful point. Keep the learner anchored in Why It Matters. Open source maintainers increasingly require signed commits before merging. This is the part to say slowly: Some repositories enforce this with branch protection rules. A good GitHub workflow is like a well-run meeting: everyone knows the topic, the next action, and who has the floor.
+
+[JAMIE]
+Let's pause on SSH Signing (simpler - reuses your existing SSH key). What should a learner take away from it?
+
+[ALEX]
+The reason SSH Signing (simpler - reuses your existing SSH key) matters is that if you already have an SSH key set up for authentication, you can use it for signing too. That gives the learner a simple foothold: step 1: Configure Git to use SSH for signing.
+
+[ALEX]
+First, navigate to github.com/settings/ssh. Then, select "New SSH key". After that, change "Key type" to "Signing Key" (not Authentication Key). Finally, paste your public key and save. The rhythm is simple: orient, act, verify, then continue.
+
+[ALEX]
+Treat examples as spoken recipes, not decorations. You may hear something like git config --global gpg.format ssh; git config --global user.signingkey /.ssh/id ed25519.pub; git config --global commit.gpgsign true. Read the command, understand what it changes, then run it only when the repository state matches the lesson.
+
+[JAMIE]
+Let's pause on GPG Signing (traditional method). What should a learner take away from it?
+
+[ALEX]
+Start with GPG Signing (traditional method). There is something to understand, something to try, and something that proves the try worked.
+
+[ALEX]
+Treat examples as spoken recipes, not decorations. You may hear something like gpg --full-generate-key; Choose: RSA and RSA, 4096 bits, never expires; Enter your GitHub email address when prompted. Read the command, understand what it changes, then run it only when the repository state matches the lesson.
+
+[PAUSE]
+
+[JAMIE]
+Let's pause on Step 4: Add to GitHub. What should a learner take away from it?
+
+[ALEX]
+First, navigate to github.com/settings/gpg-keys. Then, select "New GPG key" → paste the exported public key. Treat it like a recipe: do not add the next ingredient until the previous one is actually in the bowl.
+
+[JAMIE]
+Let's pause on Step 5: Configure Git to sign all commits. What should a learner take away from it?
+
+[ALEX]
+Start with Step 5: Configure Git to sign all commits. There is something to understand, something to try, and something that proves the try worked.
+
+[ALEX]
+Treat examples as spoken recipes, not decorations. You may hear something like git config --global user.signingkey YOUR KEY ID; git config --global commit.gpgsign true. Read the command, understand what it changes, then run it only when the repository state matches the lesson.
+
+[JAMIE]
+Let's pause on Vigilant Mode. What should a learner take away from it?
+
+[ALEX]
+Keep the learner anchored in Vigilant Mode. GitHub has an optional setting called Vigilant Mode (in Settings → SSH and GPG Keys → Vigilant mode). This is the part to say slowly: When enabled, GitHub marks all commits from your account as "Unverified" unless they are signed - even commits that were previously shown without a badge.
+
+[PAUSE]
+
+[ALEX]
+Keep the teaching thread moving. Start with Why some maintainers enable Vigilant Mode. There is something to understand, something to try, and something that proves the try worked.
+
+[ALEX]
+The practical takeaway is this. It makes tampered or spoofed commits immediately obvious. It signals that the repository cares about commit provenance.
+
+[JAMIE]
+Let's pause on What you see as a contributor. What should a learner take away from it?
+
+[ALEX]
+Start with What you see as a contributor. There is something to understand, something to try, and something that proves the try worked.
+
+[ALEX]
+The practical takeaway is this. Every unsigned commit you push will show a yellow "Unverified" badge. This is a visual signal - commits can still be pushed, but maintainers may block the merge.
+
+[ALEX]
+Keep the teaching thread moving. Here is the plain-English version of To read verification badges with a screen reader. Workshop recommendation: SSH signing is simpler to set up than GPG and reuses your existing key. Put another way, if you have 10 minutes, configure it before Day 2 - every commit you push to accessibility-agents will show as Verified. It is like learning a transit route. The names of the stops matter because they tell you whether you are still going the right direction.
+
+[ALEX]
+The practical takeaway is this. Navigate to the repository's commit history (Code tab → Commits link). Each commit row contains either "Verified" or "Unverified" as a badge element. NVDA/JAWS: the badge is inside the commit row; use ↓ to read through each row and the badge text is read inline. VoiceOver: use VO+Right through the commit row; the badge is read as a button with the text "Verified" (clicking it shows the certificate).
+
+[ALEX]
+A solid navigation habit is to prove where you are before activating controls. Headings, landmarks, and the address bar are not trivia; they are your map.
+
+[PAUSE]
+
+[JAMIE]
+Let's pause on Recommended approach. What should a learner take away from it?
+
+[ALEX]
+This is where Recommended approach becomes real: sSH keys are great for long-term use, but PATs are faster to set up and more accessible for screen reader users during a time-constrained workshop. That matters in practice: Next: Appendix E: Advanced Git Back: Appendix C: Markdown Reference Teaching chapter: Chapter 00: Pre-Workshop Setup.
+
+[ALEX]
+First, generate a Personal Access Token with 30-day expiration. Then, scope: repo and workflow. After that, store it in your password manager. Finally, use it when VS Code or Git asks for a password. It is a checklist, but a meaningful one: every item creates evidence that the next step is safe.
+
+[PAUSE]
+
+[JAMIE]
+What should people carry with them after this?
+
+[ALEX]
+Carry the map. Know what page or tool you are in, know which action you are taking, and know what confirmation should follow. If the confirmation is missing, pause. That pause is not wasted time; it is professional judgment.
+
+[JAMIE]
+That is a better way to say it than just follow the steps.
+
+[ALEX]
+Right. Steps matter, but understanding wins. That is episode 21. Next in the series is episode 22, where we keep building the same contributor muscles.

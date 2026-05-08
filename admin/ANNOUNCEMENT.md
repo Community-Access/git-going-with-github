@@ -13,14 +13,17 @@ Sponsored by [Community Access](https://community-access.org) in partnership wit
 | Detail | Information |
 |---|---|
 | **Dates** | May 21, 2026 & May 22, 2026 |
-| **Time** | 12:00 PM - 8:00 PM Eastern (both days) |
-| **Location** | Online via [Zoom](https://zoom.us/) |
+| **Time** | 9:00 AM - 5:00 PM Pacific (both days) |
+| **Location** | GitHub headquarters in San Francisco, with remote-ready materials for future cohorts |
 | **Cost** | Free |
 | **Facilitators** | Jeff Bishop and Michael Babcock |
 | **Presented by** | [Community Access](https://community-access.org) |
 | **In partnership with** | [GitHub](https://github.com) |
 
 ### Registration is now closed. Thank you to everyone who registered - let the learning begin!
+
+
+> **Want to join a future cohort?** Use the [**Student Opt-In page**](https://community-access.org/git-going-with-github/REGISTER.html). It feeds directly into our automated registration and waitlist workflow.
 
 
 > **Join the conversation!** Have a question before the workshop? Want to connect with other participants? Head to our [**Discussion Forum**](https://github.com/community-access/git-going-with-github/discussions) - introduce yourself, ask questions, and start building your network before Day 1.
@@ -35,7 +38,7 @@ This is a two-day, hands-on workshop where blind and low vision participants lea
 
 No mouse. No sighted assistance. No pretending.
 
-By the end of Day 2, your name will be in the commit history of a live, public open source project. Not a sandbox. Not a simulation. The real thing.
+By the end of Day 2, you will have practiced the workflow used to contribute to live, public open source projects. Some participants will ship during the event; others will leave with a branch, pull request path, and clear next steps to finish after the live session.
 
 This workshop exists because open source software powers the world - and the people who use assistive technology every day deserve to be the ones shaping it. Not just filing complaints. Building. Reviewing. Shipping.
 
@@ -44,7 +47,7 @@ This workshop exists because open source software powers the world - and the peo
 
 On Day 2, you will work with **[Accessibility Agents](https://community-access.org/accessibility-agents)** - a real, MIT-licensed open source project with 55 AI agents across 3 teams and 5 platforms, built for accessible software development, project management, and community collaboration. Daily briefings, issue triage, PR review, accessibility monitoring, analytics - all driven by AI, all designed for screen reader users.
 
-You will fork it, understand it, improve it, and personalize it. By the end of the workshop, your name is in its commit history.
+You will fork it, understand it, improve it, and personalize it. The live workshop prepares you to contribute, and the continuation path gives you time to polish your work before it is reviewed.
 
 
 ## Who Should Attend?
@@ -191,6 +194,8 @@ Our [Pre-Workshop Setup Guide](https://community-access.org/git-going-with-githu
 ## Registration Closed
 
 Registration for GIT Going with GitHub is now closed. Thank you to all who registered!
+
+If you want to be considered for the next cohort, complete the [Student Opt-In page](https://community-access.org/git-going-with-github/REGISTER.html). The form is processed automatically and supports waitlist handling when needed.
 
 Already registered? Complete the [**Pre-Workshop Setup Guide**](https://community-access.org/git-going-with-github/docs/00-pre-workshop-setup.html) before Day 1 to make sure you are ready.
 

@@ -11,7 +11,7 @@ const searchPages = [];
 
 // Configure marked with syntax highlighting via custom renderer (marked v11+)
 const renderer = new Renderer();
-renderer.code = function(code, infostring, escaped) {
+renderer.code = function (code, infostring, escaped) {
   const lang = (infostring || '').match(/^\S*/)?.[0] || null;
   const language = lang && hljs.getLanguage(lang) ? lang : null;
   let highlighted;
@@ -36,16 +36,19 @@ function headingAnchor(text) {
     .replace(/ /g, '-');        // spaces → hyphens (preserve consecutive hyphens)
 }
 
-renderer.heading = function(text, level) {
+renderer.heading = function (text, level) {
   const id = headingAnchor(text);
   return `<h${level} id="${id}">${text}</h${level}>\n`;
 };
 
 // Unwrap single <p> from list items so screen readers don't announce a
 // separate paragraph element before reading the bullet text (loose list fix)
-renderer.listitem = function(text, task, checked) {
+renderer.listitem = function (text, task, checked) {
   const unwrapped = text.replace(/^<p>([\s\S]*?)<\/p>\n?$/, '$1');
   if (task) {
+    if (/<input\b[^>]*type="checkbox"/.test(unwrapped)) {
+      return `<li>${unwrapped}</li>\n`;
+    }
     const checkbox = `<input type="checkbox"${checked ? ' checked' : ''} disabled> `;
     return `<li>${checkbox}${unwrapped}</li>\n`;
   }
@@ -53,7 +56,7 @@ renderer.listitem = function(text, task, checked) {
 };
 
 // Add scope="col" to all <th> elements for WCAG 1.3.1
-renderer.tablecell = function(content, flags) {
+renderer.tablecell = function (content, flags) {
   const tag = flags.header ? 'th' : 'td';
   const align = flags.align ? ` style="text-align:${flags.align}"` : '';
   const scope = flags.header ? ' scope="col"' : '';
@@ -65,6 +68,19 @@ marked.setOptions({
   gfm: true,
   renderer
 });
+
+function normalizeGeneratedText(text) {
+  return text
+    .replace(/\r\n/g, '\n')
+    .replace(/\r/g, '\n')
+    .replace(/^(={7,})(.*)$/gm, '<span aria-hidden="true"></span>$1$2')
+    .replace(/[ \t]+$/gm, '')
+    .trimEnd() + '\n';
+}
+
+function writeGeneratedFile(filePath, content) {
+  fs.writeFileSync(filePath, normalizeGeneratedText(content), 'utf-8');
+}
 
 // HTML template with accessibility features
 const htmlTemplate = (content, title, relativePath) => {
@@ -107,9 +123,9 @@ const htmlTemplate = (content, title, relativePath) => {
     <div class="site-header-inner">
       <nav aria-label="Breadcrumb" class="breadcrumb">
         ${isHome
-          ? '<span aria-current="page">Home</span>'
-          : `<a href="${prefix}index.html">Home</a> <span aria-hidden="true">›</span> <span aria-current="page">${title}</span>`
-        }
+      ? '<span aria-current="page">Home</span>'
+      : `<a href="${prefix}index.html">Home</a> <span aria-hidden="true">›</span> <span aria-current="page">${title}</span>`
+    }
       </nav>
       <div class="header-actions">
         <a href="https://github.com/Community-Access/git-going-with-github/wiki" class="wiki-link" target="_blank" rel="noopener noreferrer">
@@ -145,6 +161,83 @@ const htmlTemplate = (content, title, relativePath) => {
     <p><strong>GIT Going with GitHub</strong> - A workshop by <a href="https://community-access.org">Community Access</a></p>
     <p><a href="https://github.com/community-access/git-going-with-github">View on GitHub</a> · <a href="https://community-access.org">community-access.org</a></p>
   </footer>
+  ${isRegister ? `<script>
+(function() {
+  // Lightweight gate for temporary cohort control on the public opt-in page.
+  var accessKey = 'gggStudentOptInAccess';
+  var failCountKey = 'gggStudentOptInFailCount';
+  var lockUntilKey = 'gggStudentOptInLockUntil';
+  var maxAttempts = 3;
+  var lockMinutes = 15;
+  var expected = atob('R0dHMjAyNiE=');
+
+  function renderRestricted(message) {
+    document.body.innerHTML = [
+      '<main class="markdown-body" id="main-content">',
+      '<h1>Access restricted</h1>',
+      '<p>This student opt-in page is temporarily password protected.</p>',
+      '<p>' + message + '</p>',
+      '<p>If you need access, contact the workshop facilitators in the discussion forum.</p>',
+      '<p><a href="https://github.com/community-access/git-going-with-github/discussions">Open Discussion Forum</a></p>',
+      '</main>'
+    ].join('');
+  }
+
+  if (sessionStorage.getItem(accessKey) === 'granted') {
+    return;
+  }
+
+  var now = Date.now();
+  var lockUntil = parseInt(localStorage.getItem(lockUntilKey) || '0', 10);
+  if (lockUntil > now) {
+    var minutesRemaining = Math.ceil((lockUntil - now) / 60000);
+    renderRestricted('For security, this page is temporarily locked due to multiple incorrect password attempts. Please try again in about ' + minutesRemaining + ' minute(s).');
+    return;
+  }
+
+  if (lockUntil > 0 && lockUntil <= now) {
+    localStorage.removeItem(lockUntilKey);
+    localStorage.setItem(failCountKey, '0');
+  }
+
+  var failCount = parseInt(localStorage.getItem(failCountKey) || '0', 10);
+  if (isNaN(failCount) || failCount < 0) {
+    failCount = 0;
+  }
+
+  var allowed = false;
+  while (failCount < maxAttempts) {
+    var attemptsRemaining = maxAttempts - failCount;
+    var entered = window.prompt('Welcome. This page is protected for current students.\n\nEnter the student opt-in password (' + attemptsRemaining + ' attempt(s) remaining):');
+    if (entered === null) {
+      break;
+    }
+    if (entered === expected) {
+      sessionStorage.setItem(accessKey, 'granted');
+      localStorage.setItem(failCountKey, '0');
+      localStorage.removeItem(lockUntilKey);
+      allowed = true;
+      break;
+    }
+    failCount += 1;
+    localStorage.setItem(failCountKey, String(failCount));
+    if (failCount < maxAttempts) {
+      var remaining = maxAttempts - failCount;
+      window.alert('That password was not correct. Please try again. Remaining attempts: ' + remaining + '.');
+    }
+  }
+
+  if (!allowed) {
+    if (failCount >= maxAttempts) {
+      var lockUntilTs = Date.now() + (lockMinutes * 60000);
+      localStorage.setItem(lockUntilKey, String(lockUntilTs));
+      renderRestricted('For security, this page is now locked for ' + lockMinutes + ' minutes because too many incorrect passwords were entered.');
+    } else {
+      renderRestricted('No password was entered, so access could not be granted.');
+    }
+  }
+})();
+</script>` : ''}
   ${(isHome || isRegister) ? `<script>
 (function() {
   var url = 'https://api.github.com/search/issues?q=repo:community-access/git-going-with-github+label:registration+is:issue+is:open';
@@ -181,7 +274,7 @@ function convertMarkdownFile(mdPath, outputDir) {
   try {
     const content = fs.readFileSync(mdPath, 'utf-8');
     let htmlContent = marked.parse(content);
-    
+
     // Rewrite internal .md links to .html (href="...md" and href="...md#anchor")
     htmlContent = htmlContent.replace(
       /href="(?!https?:\/\/|mailto:)([^"]*?)\.md(#[^"]*)?"/g,
@@ -202,11 +295,11 @@ function convertMarkdownFile(mdPath, outputDir) {
         return match.replace('<input ', `<input aria-label="${trimmed.replace(/"/g, '&quot;')}" `);
       }
     );
-    
+
     // Determine output path
     const relativePath = path.relative(process.cwd(), mdPath);
     let outputPath = path.join(outputDir, relativePath.replace(/\.md$/, '.html'));
-    
+
     // ANNOUNCEMENT.md becomes the site front page (index.html)
     // README.md at the root becomes README.html (repo documentation)
     if (path.basename(mdPath) === 'ANNOUNCEMENT.md' && path.dirname(relativePath) === '.') {
@@ -216,14 +309,14 @@ function convertMarkdownFile(mdPath, outputDir) {
       const dir = path.dirname(outputPath);
       outputPath = path.join(dir, 'index.html');
     }
-    
+
     // Extract title from first heading or filename
     const titleMatch = content.match(/^#\s+(.+)$/m);
     const title = titleMatch ? titleMatch[1] : path.basename(mdPath, '.md');
-    
+
     // Get relative path for template
     const relativeFromOutput = path.relative(outputDir, outputPath);
-    
+
     // Collect page data for search index (strip HTML tags for plain text)
     const plainText = htmlContent
       .replace(/<[^>]+>/g, ' ')
@@ -238,14 +331,14 @@ function convertMarkdownFile(mdPath, outputDir) {
 
     // Create full HTML
     const html = htmlTemplate(htmlContent, title, relativeFromOutput);
-    
+
     // Ensure output directory exists
     ensureDir(path.dirname(outputPath));
-    
+
     // Write HTML file
-    fs.writeFileSync(outputPath, html, 'utf-8');
+    writeGeneratedFile(outputPath, html);
     console.log(`✓ Converted: ${relativePath} → ${path.relative(process.cwd(), outputPath)}`);
-    
+
     return outputPath;
   } catch (error) {
     console.error(`✗ Error converting ${mdPath}:`, error.message);
@@ -256,21 +349,23 @@ function convertMarkdownFile(mdPath, outputDir) {
 // Find all markdown files
 function findMarkdownFiles(dir, fileList = []) {
   const files = fs.readdirSync(dir);
-  
+
   files.forEach(file => {
     const filePath = path.join(dir, file);
     const stat = fs.statSync(filePath);
-    
+
     if (stat.isDirectory()) {
       // Skip generated, private, and editor-history directories.
-      if (!['node_modules', '.git', '.github', '.history', 'html'].includes(file)) {
+      const relativeDir = path.relative(process.cwd(), filePath).replace(/\\/g, '/');
+      const generatedPodcastDir = relativeDir === 'podcasts/bundles' || relativeDir === 'podcasts/challenge-bundles';
+      if (!generatedPodcastDir && !['node_modules', '.git', '.github', '.history', 'html'].includes(file)) {
         findMarkdownFiles(filePath, fileList);
       }
     } else if (file.endsWith('.md')) {
       fileList.push(filePath);
     }
   });
-  
+
   return fileList;
 }
 
@@ -278,15 +373,15 @@ function findMarkdownFiles(dir, fileList = []) {
 function setupStyles(outputDir) {
   const stylesDir = path.join(outputDir, 'styles');
   ensureDir(stylesDir);
-  
+
   // Copy github-markdown-css
   const githubCss = require.resolve('github-markdown-css');
   fs.copyFileSync(githubCss, path.join(stylesDir, 'github-markdown.css'));
-  
+
   // Copy highlight.js CSS (GitHub theme)
   const highlightCss = path.join(require.resolve('highlight.js'), '../../styles/github.css');
   fs.copyFileSync(highlightCss, path.join(stylesDir, 'highlight.css'));
-  
+
   // Create custom CSS for additional accessibility and styling
   const customCss = `
 /* Site header with search */
@@ -662,15 +757,15 @@ textarea:focus-visible {
   }
 }
 `;
-  
-  fs.writeFileSync(path.join(stylesDir, 'custom.css'), customCss, 'utf-8');
+
+  writeGeneratedFile(path.join(stylesDir, 'custom.css'), customCss);
   console.log('✓ CSS files copied');
 }
 
 // Write search-index.json to the output directory
 function buildSearchIndex(outputDir) {
   const indexPath = path.join(outputDir, 'search-index.json');
-  fs.writeFileSync(indexPath, JSON.stringify(searchPages, null, 2), 'utf-8');
+  writeGeneratedFile(indexPath, JSON.stringify(searchPages, null, 2));
   console.log(`✓ Search index written: ${searchPages.length} pages`);
 }
 
@@ -852,30 +947,30 @@ function buildSearchPage(outputDir) {
 </html>`;
 
   const outPath = path.join(outputDir, 'search.html');
-  fs.writeFileSync(outPath, html, 'utf-8');
+  writeGeneratedFile(outPath, html);
   console.log('✓ search.html generated');
 }
 
 // Build all HTML files
 function buildAll() {
   console.log('Starting HTML build...\n');
-  
+
   const outputDir = path.join(process.cwd(), 'html');
-  
+
   // Setup styles
   setupStyles(outputDir);
-  
+
   // Find and convert all markdown files
   const markdownFiles = findMarkdownFiles(process.cwd());
   console.log(`\nFound ${markdownFiles.length} markdown files\n`);
-  
+
   let convertedCount = 0;
   markdownFiles.forEach(mdPath => {
     if (convertMarkdownFile(mdPath, outputDir)) {
       convertedCount++;
     }
   });
-  
+
   // Write search index JSON
   buildSearchIndex(outputDir);
 
@@ -884,7 +979,7 @@ function buildAll() {
 
   // Copy lunr.min.js
   copyLunr(outputDir);
-  
+
   console.log(`\n✓ Build complete! Converted ${convertedCount}/${markdownFiles.length} files`);
   console.log(`Output directory: ${outputDir}`);
 }
@@ -892,19 +987,19 @@ function buildAll() {
 // Watch mode
 function watchMode() {
   const outputDir = path.join(process.cwd(), 'html');
-  
+
   console.log('Starting watch mode... (Press Ctrl+C to stop)\n');
-  
+
   // Initial build
   buildAll();
-  
+
   // Watch for changes
   const watcher = chokidar.watch('**/*.md', {
     ignored: /(^|[\/\\])\..|(node_modules|html)/,
     persistent: true,
     ignoreInitial: true
   });
-  
+
   watcher
     .on('add', mdPath => {
       console.log(`\nFile added: ${mdPath}`);

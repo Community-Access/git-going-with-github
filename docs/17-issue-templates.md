@@ -1,6 +1,6 @@
 # Issue Templates
 >
-> **Listen to Episode 16:** [Issue Templates](../PODCASTS.md) - a conversational audio overview of this chapter. Listen before reading to preview the concepts, or after to reinforce what you learned.
+> **Listen to Episode 16:** [Issue Templates](../admin/PODCASTS.md) - a conversational audio overview of this chapter. Listen before reading to preview the concepts, or after to reinforce what you learned.
 
 > **Related appendices:** [Appendix Q: GitHub Actions](appendix-q-actions-workflows.md) | [Appendix C: Markdown Reference](appendix-c-markdown-reference.md) | [Appendix N: Advanced Search](appendix-n-advanced-search.md)
 > **Authoritative sources:** [GitHub Docs: About issue and PR templates](https://docs.github.com/en/communities/using-templates-to-encourage-useful-issues-and-pull-requests/about-issue-and-pull-request-templates) | [GitHub Docs: Configuring issue templates](https://docs.github.com/en/communities/using-templates-to-encourage-useful-issues-and-pull-requests/configuring-issue-templates-for-your-repository)
@@ -21,35 +21,35 @@
 - [ ] A text editor with YAML syntax highlighting (VS Code, or any editor showing `.yml` files with color)
 
 **Recommended (but not blocking):**
-- [ ] Chapter 13: [GitHub Copilot](16-github-copilot.md) - Optional but helpful for generating template variations
+- [ ] Chapter 16: [GitHub Copilot](16-github-copilot.md) - Optional but helpful for generating template variations
 - [ ] Chapter 10: [Notifications](10-notifications-and-day-1-close.md) - Basic understanding of workflow triggers
 - [ ] Terminal/Command line basic comfort (useful but you can GitHub web editor if needed)
 
 **What you already have:**
-- [ ] You filled out the **Workshop Registration template** to join this workshop — this is your learning tool for Chapter 15
+- [ ] You filled out the **Workshop Registration template** to join this workshop - this is your learning tool for Chapter 17
 
-**Day 2 Amplifier:** In [Chapter 16 (Accessibility Agents)](19-accessibility-agents.md), you'll use `@template-builder` to automate template creation. Complete this chapter first, then come back to Chapter 16.
+**Day 2 Amplifier:** In [Chapter 19 (Accessibility Agents)](19-accessibility-agents.md), you'll use `@template-builder` to automate template creation. Complete this chapter first, then come back to Chapter 19.
 
 **Estimated time for this chapter:** 2-2.5 hours (including exercises and YAML troubleshooting time)
 
 
-## Workshop Recommendation (Chapter 15)
+## Workshop Recommendation (Chapter 17 / Challenge 14)
 
-Chapter 15 is a **template design and implementation chapter** focused on structuring contributions with a concrete, familiar example.
+Chapter 17 is a **template design and implementation chapter** focused on structuring contributions with a concrete, familiar example. It supports Challenge 14: Template Remix.
 
 - **Challenge count:** 2-3 guided challenges (+ 1 optional)
 - **Automation check:** none (template structure quality is design-focused)
 - **Evidence:** issue comment or PR with template remixed or created
 - **Pattern:** analyze, remix, create, test
 
-### Chapter 15 Challenge Set
+### Challenge 14 Set
 
 1. **Analyze the registration template** - understand how the template you already filled out works.
 2. **Remix the registration template** - adapt it for a new use case (bug report, event, research).
 3. **Create a Markdown template** (optional) - build a Markdown-based template from scratch.
 4. **Test in the template chooser** (optional) - verify your template appears and works.
 
-### Challenge 15.1 Step-by-Step: Analyze the Registration Template
+### Challenge 14.1 Step-by-Step: Analyze the Registration Template
 
 **Goal:** Understand how professional YAML form templates work by examining the one you filled out to register for this workshop.
 
@@ -81,7 +81,7 @@ Chapter 15 is a **template design and implementation chapter** focused on struct
 
 **You are done when:** You can explain the purpose of each field type and why templates reduce back-and-forth questions.
 
-### Challenge 15.2 Step-by-Step: Remix the Registration Template
+### Challenge 14.2 Step-by-Step: Remix the Registration Template
 
 **Goal:** Adapt the registration template for a different use case while keeping the same YAML structure.
 
@@ -91,7 +91,7 @@ Chapter 15 is a **template design and implementation chapter** focused on struct
 
 Use this worked example as a guide:
 - **Source:** [`.github/ISSUE_TEMPLATE/workshop-registration.yml`](../.github/ISSUE_TEMPLATE/workshop-registration.yml)
-- **Remix sample:** [`learning-room/docs/samples/chapter-15-registration-remix-example.yml`](../learning-room/docs/samples/chapter-15-registration-remix-example.yml)
+- **Remix sample:** [`learning-room/docs/samples/challenge-14-registration-remix-example.yml`](../learning-room/docs/samples/challenge-14-registration-remix-example.yml)
 
 What changes and what stays the same:
 - Keep: the YAML skeleton (`name`, `description`, `title`, `labels`, `body`)
@@ -113,7 +113,7 @@ Steps:
 
 **You are done when:** Your remixed template file is committed and the YAML syntax validates without errors.
 
-### Challenge 15.3 (Optional) Step-by-Step: Create a Markdown Template
+### Challenge 14.3 (Optional) Step-by-Step: Create a Markdown Template
 
 **Goal:** Create a Markdown-based template to compare the two template formats.
 
@@ -149,7 +149,7 @@ labels: documentation
 
 **You are done when:** Your Markdown template file is committed with proper frontmatter and section structure.
 
-### Challenge 15.4 (Optional): Test in the Template Chooser
+### Challenge 14.4 (Optional): Test in the Template Chooser
 
 1. Navigate to your test repository on GitHub.com.
 2. Activate **New Issue**.
@@ -158,12 +158,12 @@ labels: documentation
 
 **You are done when:** Your template works and appears in the GitHub template picker.
 
-### Completing Chapter 15: Submit Your Evidence
+### Completing Challenge 14: Submit Your Evidence
 
-Open your **assigned Chapter 15 challenge issue** and post a completion comment:
+Open your **assigned Challenge 14 issue** and post a completion comment:
 
 ```text
-Chapter 15 completed:
+Challenge 14 completed:
 - Analyzed registration template: yes / no
 - Remixed template context: [your chosen context]
 - YAML validates: yes / no
@@ -172,7 +172,7 @@ Chapter 15 completed:
 - Template chooser test: yes / no
 ```
 
-Close your Chapter 15 challenge issues when done.
+Close your Challenge 14 issue when done.
 
 ### Expected Overall Outcomes
 
@@ -186,7 +186,7 @@ Close your Chapter 15 challenge issues when done.
 
 1. Cannot find the registration template? Look in `.github/ISSUE_TEMPLATE/workshop-registration.yml` in the [git-going-with-github](https://github.com/Community-Access/git-going-with-github) repository.
 2. YAML syntax confusing? The registration template is a working example. Copy its structure and edit the field descriptions. YAML is indented key-value pairs with 2 spaces per level.
-3. YAML not parsing? Compare with the remix sample in `learning-room/docs/samples/chapter-15-registration-remix-example.yml` and check indentation.
+3. YAML not parsing? Compare with the remix sample in `learning-room/docs/samples/challenge-14-registration-remix-example.yml` and check indentation.
 4. Template does not appear in the chooser? Verify: filename ends in `.yml` or `.md`, you pushed the commit, and the file is in `.github/ISSUE_TEMPLATE/` folder.
 5. Testing in the template chooser is not working? Reload the Issues page, try a different repository, or ask facilitator for a test repository with write access.
 6. Remix approach feels overwhelming? Start by changing just the field labels and descriptions. Do not change the structure yet.
@@ -1707,7 +1707,7 @@ After submitting, answer:
 
 ##### What to do
 
-1. Go to [Chapter 15, Section 7](17-issue-templates.md#7-building-an-accessibility-bug-report-template) in this curriculum
+1. Go to [Chapter 17, Section 7](17-issue-templates.md#7-building-an-accessibility-bug-report-template) in this curriculum
 2. Find the complete YAML template code block (starting with `name:` and ending with the last field)
 3. **Select all the YAML code** (use `Ctrl+A` on the webpage or manually select)
 4. **Copy it** (`Ctrl+C`)

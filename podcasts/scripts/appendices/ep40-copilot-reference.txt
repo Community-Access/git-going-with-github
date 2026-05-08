@@ -1,0 +1,678 @@
+[ALEX]
+Welcome to Git Going with GitHub, episode 40: GitHub Copilot - Complete Reference. I am Alex. Today we are going to make GitHub Copilot - Complete Reference something you can explain, practice, and recover from when the interface surprises you.
+
+[JAMIE]
+And I am Jamie. I will be the voice of the learner who is willing to ask, what is this for, where am I, and how do I know I did it right?
+
+[PAUSE]
+
+[ALEX]
+The big idea today: All Copilot features, chat participants, slash commands, and MCP servers. We will name the concept, explain why it matters, practice the move, and point out the checks that tell you the work is real.
+
+[JAMIE]
+So the episode should work even if someone has not read the chapter yet.
+
+[ALEX]
+Exactly. The transcript has to stand on its own. It can point toward practice, but it should teach the concept right here in the conversation.
+
+[PAUSE]
+
+[JAMIE]
+Okay, set the room for us. What are we walking into?
+
+[ALEX]
+Start with Keyboard Shortcuts, Chat, Screen Reader Workflow, Plugin Ecosystem, and GitHub Agentic Workflows: Quick-reference card for GitHub Copilot in VS Code and the broader agentic ecosystem - plugins, MCP servers, and cloud-based automation. The next useful detail is this: For the Copilot lesson, see Chapter 16: GitHub Copilot.
+
+[ALEX]
+A solid navigation habit is to prove where you are before activating controls. Headings, landmarks, and the address bar are not trivia; they are your map.
+
+[ALEX]
+The next layer is this. Here is the plain-English version of Inline Suggestions (Ghost Text). Word-by-word acceptance (Ctrl+Right Arrow) is recommended for screen reader users - it lets you review the suggestion incrementally before committing to it. Put another way, accessible View workflow for screen reader users: Press Alt+F2 when a suggestion appears to hear the full text without streaming noise, then press Ctrl+/ to insert it directly from the Accessible View without closing the panel first. It is like learning a transit route. The names of the stops matter because they tell you whether you are still going the right direction.
+
+[JAMIE]
+What is the one idea that makes the next few steps less mysterious?
+
+[ALEX]
+This is where Accessibility becomes real: use Accessible View (Alt+F2) every time Copilot responds. That matters in practice: It provides the complete response in a readable pane - no streaming, no live region noise, proper heading structure.
+
+[PAUSE]
+
+[ALEX]
+Now bring the learner back to the room. Keep the learner anchored in 2. Chat Participants. Type these in the Copilot Chat input to give Copilot context from a specific source.
+
+[JAMIE]
+What should they understand before typing anything?
+
+[ALEX]
+Start with Example prompts. There is something to understand, something to try, and something that proves the try worked.
+
+[ALEX]
+Treat examples as spoken recipes, not decorations. You may hear something like @workspace find all places where heading hierarchy is documented; @github search community-access/accessibility-agents for issues labeled accessibility; @terminal what did the last command output mean? Read the command, understand what it changes, then run it only when the repository state matches the lesson.
+
+[ALEX]
+A solid pull request habit is to separate three questions: what changed, why it changed, and what still needs review. That keeps the conversation useful instead of noisy.
+
+[ALEX]
+That matters because of the next idea. Start with 3. Chat Slash Commands: Type / in Copilot Chat to see the available built-in commands. Think of it like entering a new building: first you find the lobby, then the room, then the door you actually need.
+
+[ALEX]
+The useful habit is simple: orient first, act second, verify third. That pause before acting is part of the work.
+
+[PAUSE]
+
+[JAMIE]
+There are a lot of tools in play. How do we keep that from feeling like a contest?
+
+[ALEX]
+Here is the plain-English version of Workspace management slash commands. These are Copilot's built-in chat slash commands. Put another way, accessibility Agents adds 28 additional workspace-level slash commands from.github/prompts/ - see Appendix L for the full list.
+
+[ALEX]
+This is where the talk moves from concept to action. This is where 4. Chat Modes becomes real: select the current mode from the dropdown at the bottom of the Chat input area. That matters in practice: The mode selector is in the Chat panel toolbar at the bottom.
+
+[JAMIE]
+What stays the same when the tool changes?
+
+[ALEX]
+Start with Learning Cards: Chat Participants, Commands, and Modes. There is something to understand, something to try, and something that proves the try worked.
+
+[ALEX]
+These are the details that keep the idea from floating away. Type @ in Chat to scope context (@workspace, @terminal, @github) -- the autocomplete list is keyboard-navigable with arrow keys. Type / for slash commands (/explain, /fix, /tests) -- each is announced with its description as you arrow through. The mode selector is at the bottom of the Chat panel toolbar; Tab to it, then Space or Enter to open the dropdown. Chat responses appear in the panel with syntax highlighting -- increase the Chat panel font size via editor.fontSize in settings. The @ and / trigger characters are small but the autocomplete popup that follows is large and themed to your current color scheme. Use Ask mode for reading explanations, Agent mode for controlled multi-file changes and autonomous tasks (Edit mode is being deprecated into Agent mode as of VS Code 1.118).
+
+[PAUSE]
+
+[ALEX]
+Before the learner moves on. The reason 5. Custom Instructions - All Levels matters is that GitHub Copilot supports multiple ways to provide custom instructions. That gives the learner a simple foothold: they differ by scope, priority, trigger mechanism, and which tools recognize them. The interface gets friendlier when it stops being a wall of controls and starts being a set of named places.
+
+[JAMIE]
+What would you say to someone who is already bracing for this to be too much?
+
+[ALEX]
+Start with 4A. Always-On Instructions -.github/copilot-instructions.md: What it is: The primary VS Code Copilot instruction file. The next useful detail is this: Content is automatically included in every chat request and inline suggestion context - you never need to invoke it.
+
+[JAMIE]
+How would you walk the room through that step by step?
+
+[ALEX]
+Start with Auto-generate with /init. There is something to understand, something to try, and something that proves the try worked.
+
+[ALEX]
+First, open Copilot Chat. Then, type /init. After that, VS Code analyzes your workspace and generates a tailored copilot-instructions.md. Finally, review and edit the result before committing. Treat it like a recipe: do not add the next ingredient until the previous one is actually in the bowl.
+
+[PAUSE]
+
+[JAMIE]
+How should a learner choose a tool without feeling judged by the choice?
+
+[ALEX]
+This is where 4B. Always-On Instructions - AGENTS.md (Multi-Tool / Monorepo) becomes real: what it is: An open standard instruction file recognized by multiple AI tools - GitHub Copilot, Claude Code, Gemini CLI, and others. That matters in practice: Use this instead of copilot-instructions.md when you want one instruction file that works across all AI coding assistants.
+
+[ALEX]
+That connects to another useful point. Keep the learner anchored in 4C. Always-On Instructions - CLAUDE.md (Cross-Tool Compatibility). What it is: Instructions file originally from Claude Code that VS Code Copilot also recognizes. This is the part to say slowly: When to use: Mixed AI tool environments where Claude Code and VS Code Copilot are both used. A good GitHub workflow is like a well-run meeting: everyone knows the topic, the next action, and who has the floor.
+
+[JAMIE]
+Where do you want a learner to place their attention here?
+
+[ALEX]
+The reason Supported locations matters is that enable/disable: Set chat.useClaudeMdFile: true (default: on). That gives the learner a simple foothold: claude Rules format (for.claude/rules/ and /.claude/rules/).
+
+[PAUSE]
+
+[ALEX]
+Here is the practical turn. Start with 4D. Conditional / Scoped Instructions -.instructions.md: What it is: Instructions that apply only when specific file types or folders are involved in the chat. The next useful detail is this: More targeted than always-on instructions.
+
+[JAMIE]
+Give me the version that sounds like an instructor, not a manual.
+
+[ALEX]
+Start with Create an instructions file. There is something to understand, something to try, and something that proves the try worked.
+
+[ALEX]
+Here is what that changes in practice. Ctrl+Shift+P → "Chat: New Instructions File" → choose scope (Workspace or User). Or create the file manually in.github/instructions/.
+
+[ALEX]
+Keep the thread going. This is where 4E. Organization-Level Instructions (GitHub Enterprise and Teams) becomes real: what it is: Organization administrators define custom instructions that apply to all repositories in the organization. That matters in practice: Every team member automatically gets these instructions added to their Copilot context. The workshop is closer to rehearsal than lecture. You hear the move, try the move, and then check what changed.
+
+[PAUSE]
+
+[JAMIE]
+If I am listening before the workshop starts, what should settle in my mind first?
+
+[ALEX]
+Keep the learner anchored in Requirements. Use for: Organization-wide coding standards, security policies, legal disclaimers (open source license obligations), toolchain conventions.
+
+[ALEX]
+That becomes easier when you listen for these cues. GitHub Enterprise or Teams plan with Copilot enabled. Admin configures instructions in organization settings on GitHub.com. Each user must enable discovery in VS Code.
+
+[ALEX]
+Another way to ground it. The reason 4F. Settings-Based Instructions (Deprecated - Use Files Instead) matters is that these settings-based instructions are deprecated and may be removed in a future VS Code release. That gives the learner a simple foothold: for new work, use copilot-instructions.md or.instructions.md files.
+
+[JAMIE]
+How should someone choose between those options?
+
+[ALEX]
+Start with 4G. Comparison - When to Use Each Approach. There is something to understand, something to try, and something that proves the try worked.
+
+[ALEX]
+Use the comparison to make a decision, not to recite a table. The main contrasts are: Approach means Always-on? means Multi-tool? means Best. copilot-instructions.md means Workspace means VS Code only means Primary project instructions. AGENTS.md means Workspace + monorepo means All AI tools means Multi-tool teams or large monorepos.
+
+[PAUSE]
+
+[ALEX]
+This is the part worth saying out loud. Start with Learning Cards: Custom Instructions. There is something to understand, something to try, and something that proves the try worked.
+
+[ALEX]
+The practical anchors are these. The three-level scope hierarchy (Organization, Workspace, User) means instructions can come from multiple places -- use Chat Diagnostics (gear icon in Chat header) to list every loaded instruction file and its source.github/copilot-instructions.md is always-on and requires no frontmatter -- just write plain Markdown; screen readers read the source file like any other Markdown document.instructions.md files use YAML frontmatter with applyTo globs -- the frontmatter is the first few lines between --- delimiters; arrow through carefully to verify syntax. The Diagnostics panel (Chat gear, then Diagnostics) lists loaded files in a scrollable pane -- increase font size in VS Code settings if the file paths are hard to read. YAML frontmatter is indentation-sensitive -- enable VS Code's indentation guides (editor.guides.indentation) and use a high-contrast theme so the guide lines are visible. The /init command auto-generates copilot-instructions.md from your workspace -- review the generated file in your editor at your preferred zoom before committing.
+
+[JAMIE]
+Let's pause on 6. Accessible View Workflow. What should a learner take away from it?
+
+[ALEX]
+This is where 6. Accessible View Workflow becomes real: Copilot Chat responses stream in token by token, which can fragment screen reader announcements. That matters in practice: Accessible View (Alt+F2) gives you a complete, static, properly structured version of the response.
+
+[JAMIE]
+What should happen before anyone copies and runs it?
+
+[ALEX]
+Keep the learner anchored in Recommended Workflow - Every Copilot Interaction. VS Code December 2025: The Accessible View now streams dynamically. This is the part to say slowly: You can open it immediately after sending a prompt and follow the response as it arrives - no need to wait for the response to finish before pressing Alt+F2.
+
+[ALEX]
+Treat examples as spoken recipes, not decorations. You may hear something like Open Copilot Chat: Ctrl+Shift+I; 2. Type your prompt; 3. Press Ctrl+Enter to send; 4. Press Alt+F2 to open Accessible View (open immediately - no need to wait); 5. Follow as the response streams in the Accessible View in real-time; 6. Read or re-read any part. Read the command, understand what it changes, then run it only when the repository state matches the lesson.
+
+[PAUSE]
+
+[JAMIE]
+Let's pause on NVDA / JAWS. What should a learner take away from it?
+
+[ALEX]
+Start with NVDA / JAWS. There is something to understand, something to try, and something that proves the try worked.
+
+[ALEX]
+The parts worth keeping in working memory are these. Up/Down Arrow - read line by line. Ctrl+Home - jump to start. H - navigate by headings (if response has sections). Escape - close Accessible View, return to Chat.
+
+[ALEX]
+Hold that next to this. Start with VoiceOver. There is something to understand, something to try, and something that proves the try worked.
+
+[ALEX]
+On the ground, that means a few things. VO+Shift+Down - interact with the Accessible View content. Down Arrow - read line by line. VO+Escape - stop interacting. Escape - close Accessible View.
+
+[JAMIE]
+What is the safe way to learn from that example?
+
+[ALEX]
+Here is the plain-English version of Accessible View for Inline Suggestions. When a multi-line ghost text suggestion appears in the editor. Put another way, this is especially important for multi-line suggestions where ghost text is hard to review incrementally.
+
+[ALEX]
+Treat examples as spoken recipes, not decorations. You may hear something like Do not accept immediately; 2. Press Alt+F2; 3. Accessible View shows: "Suggestion: [full text]"; 4. Read the complete suggestion at your own pace; 5. Press Escape to close; 6. Press Tab to accept, or Escape to reject. Read the command, understand what it changes, then run it only when the repository state matches the lesson.
+
+[PAUSE]
+
+[ALEX]
+Keep the teaching thread moving. Start with Accessible View for Code Blocks. There is something to understand, something to try, and something that proves the try worked.
+
+[ALEX]
+The room should hear these as checkpoints. Code blocks appear inside elements in Accessible View. Screen readers announce "code block" or "pre-formatted text" at the start. Each line is on its own line (not run together). Indentation is preserved.
+
+[JAMIE]
+Let's pause on Learning Cards: Accessible View Workflow. What should a learner take away from it?
+
+[ALEX]
+Start with Learning Cards: Accessible View Workflow. There is something to understand, something to try, and something that proves the try worked.
+
+[ALEX]
+A few details make that real. Press Alt+F2 immediately after sending a prompt -- Accessible View now streams dynamically so you can follow along in real time. Navigate Chat responses with Up/Down Arrow; headings, code blocks, and lists are structurally intact in the view. For inline suggestions, press Alt+F2 to read the full ghost text, then Ctrl+/ to insert it directly from the Accessible View. Accessible View renders Chat responses as a static, scrollable pane -- easier to read at high zoom than the streaming Chat panel. Code blocks in Accessible View preserve indentation and syntax -- pair with a high-contrast theme for maximum readability. Ctrl+Home jumps to the start of the response; Ctrl+End to the end -- useful for long multi-section outputs.
+
+[ALEX]
+Keep the teaching thread moving. The reason 7. Configuration Scope Reference matters is that every Copilot customization file lives at one of three scopes. That gives the learner a simple foothold: VS Code combines all matching files from all scopes - it is additive, not winner-takes-all. The interface gets friendlier when it stops being a wall of controls and starts being a set of named places.
+
+[PAUSE]
+
+[JAMIE]
+Let's pause on Workspace (Repository) - Team-Shared. What should a learner take away from it?
+
+[ALEX]
+Start with Workspace (Repository) - Team-Shared: Files committed to your repository. The next useful detail is this: Everyone who clones the repo gets them.
+
+[ALEX]
+Keep the teaching thread moving. Here is the plain-English version of User / Personal - Follows You Across Workspaces. Files in your VS Code profile folder. Put another way, available in every workspace you open.
+
+[JAMIE]
+Let's pause on Organization - GitHub-Configured (Enterprise/Teams). What should a learner take away from it?
+
+[ALEX]
+This is where Organization - GitHub-Configured (Enterprise/Teams) becomes real: configured by administrators in GitHub organization settings. That matters in practice: Automatically applied to all organization members.
+
+[ALEX]
+That shows up in the workshop in a few specific ways. Enable discovery: github.copilot.chat.organizationInstructions.enabled: true. Lowest priority - workspace and user instructions override when there is a conflict.
+
+[PAUSE]
+
+[ALEX]
+Keep the teaching thread moving. Keep the learner anchored in 8. Instruction Priority and Conflicts. When multiple instruction sources give conflicting guidance, VS Code uses this priority order. This is the part to say slowly: This priority applies to conflicts. A good GitHub workflow is like a well-run meeting: everyone knows the topic, the next action, and who has the floor.
+
+[JAMIE]
+Let's pause on How Instructions Are Combined. What should a learner take away from it?
+
+[ALEX]
+The reason How Instructions Are Combined matters is that result: Copilot follows TypeScript strict mode (from workspace), British English (from org), AND the Z-spelling override (from user, which overrides the org instruction on that specific point).
+
+[ALEX]
+For a learner, the useful signals are these. Organization: "Use British English spellings". Workspace: "Use TypeScript strict mode". User: "Use British English spellings - but use Z spellings (organize, not organise) for technical terms".
+
+[ALEX]
+Keep the teaching thread moving. Start with Priority Within the Same Scope: Within a single scope (e.g., workspace), all matching instructions files are combined with no inherent priority. The next useful detail is this: If two workspace-level.instructions.md files contradict each other, the behavior is undefined - avoid conflicting workspace instructions.
+
+[PAUSE]
+
+[JAMIE]
+Let's pause on Create any new customization file. What should a learner take away from it?
+
+[ALEX]
+Here is the plain-English version of Create any new customization file. Ctrl+Shift+P → "Chat: New Instructions File" (or "New Prompt File", "New Agent File").
+
+[ALEX]
+Keep the teaching thread moving. This is where 10. VS Code Settings Reference becomes real: all Copilot customization-related settings. That matters in practice: Set in VS Code Settings (Ctrl+,) or settings.json. The workshop is closer to rehearsal than lecture. You hear the move, try the move, and then check what changed.
+
+[JAMIE]
+Let's pause on Deprecated Task-Specific Instructions. What should a learner take away from it?
+
+[ALEX]
+Keep the learner anchored in Deprecated Task-Specific Instructions. Prefer file-based instructions over these settings for new work. This is the part to say slowly: Each accepts an array with items: { "text": "." } (inline) or { "file": "relative/path" } (from file).
+
+[PAUSE]
+
+[JAMIE]
+What is the ordered workflow?
+
+[ALEX]
+The reason Settings Sync matters is that to sync your personal prompts, instructions, and agents across devices. That gives the learner a simple foothold: your personal.instructions.md,.agent.md, and.prompt.md files will sync to all signed-in VS Code instances.
+
+[ALEX]
+First, ctrl+Shift+P → "Settings Sync: Turn On". Then, ctrl+Shift+P → "Settings Sync: Configure". After that, check "Prompts and Instructions". The rhythm is simple: orient, act, verify, then continue.
+
+[JAMIE]
+Give me the sequence, because order matters here.
+
+[ALEX]
+Start with View All Loaded Customizations: To see which instruction files, agents, prompts, and skills are currently loaded - and check for errors.
+
+[ALEX]
+The practical takeaway is this. All agents found and whether they loaded successfully. All prompt/instruction files and their source (workspace vs user vs organization). All skills and their discovery status. Any parse errors or invalid frontmatter.
+
+[ALEX]
+First, configure Chat Gear: Click the gear () icon in the Copilot Chat header → "Diagnostics". Then, right-click method: Right-click in the Chat view → "Diagnostics". Think of it as a rail line: each stop confirms you are still on the right route before the next one.
+
+[JAMIE]
+What does the learner do first, second, and then after that?
+
+[ALEX]
+Start with copilot-instructions.md not being followed. There is something to understand, something to try, and something that proves the try worked.
+
+[ALEX]
+First, confirm the file is at exactly.github/copilot-instructions.md (relative to workspace root). Then, check the file is plain Markdown with no frontmatter syntax errors. After that, open Diagnostics to confirm it appears in the loaded files list. Finally, some instructions work better with specific phrasing; use imperative mood ("Always use."). Treat it like a recipe: do not add the next ingredient until the previous one is actually in the bowl.
+
+[PAUSE]
+
+[JAMIE]
+Turn that into a path someone can follow.
+
+[ALEX]
+Start with.instructions.md file not loading automatically. There is something to understand, something to try, and something that proves the try worked.
+
+[ALEX]
+First, verify chat.includeApplyingInstructions is not set to false. Then, check the applyTo glob - test with " " temporarily to confirm the file loads at all. After that, confirm the file is in.github/instructions/ or a folder listed in chat.instructionsFilesLocations. Finally, file extension must be.instructions.md exactly - not.md, not.instruction.md. It is a checklist, but a meaningful one: every item creates evidence that the next step is safe.
+
+[JAMIE]
+Let's pause on Custom agent (@agent-name) not appearing. What should a learner take away from it?
+
+[ALEX]
+Start with Custom agent (@agent-name) not appearing. There is something to understand, something to try, and something that proves the try worked.
+
+[ALEX]
+First, file must be named.agent.md and placed in.github/agents/. Then, check YAML frontmatter for syntax errors - use a YAML validator. After that, confirm user-invocable is not set to false (which hides it from the picker). Finally, run Ctrl+Shift+P → "Reload Window" after any changes to agent files. It is like walking a hallway with named doors: read the sign, enter the right room, then confirm where you landed.
+
+[JAMIE]
+Let's pause on Slash command (/command) not appearing. What should a learner take away from it?
+
+[ALEX]
+Start with Slash command (/command) not appearing. There is something to understand, something to try, and something that proves the try worked.
+
+[ALEX]
+First, file must be at.github/prompts/.prompt.md. Then, extension must be.prompt.md exactly. After that, reload VS Code: Ctrl+Shift+P → "Reload Window". The rhythm is simple: orient, act, verify, then continue.
+
+[PAUSE]
+
+[JAMIE]
+Let's pause on Instructions from different files conflicting. What should a learner take away from it?
+
+[ALEX]
+Start with Instructions from different files conflicting. There is something to understand, something to try, and something that proves the try worked.
+
+[ALEX]
+First, open Diagnostics to see all loaded instruction files. Then, remove or edit conflicting instructions - they are not automatically de-duplicated. After that, user-level instructions override workspace instructions for the same topic. Think of it as a rail line: each stop confirms you are still on the right route before the next one.
+
+[JAMIE]
+Let's pause on chat.instructionsFilesLocations not working. What should a learner take away from it?
+
+[ALEX]
+Start with chat.instructionsFilesLocations not working. There is something to understand, something to try, and something that proves the try worked.
+
+[ALEX]
+The practical takeaway is this. Path must be a folder path, not a file path. Use forward slashes or escaped backslashes. Relative paths are relative to the workspace root.
+
+[ALEX]
+Keep the teaching thread moving. This is where 12. Screen Reader Workflow - Official Guide becomes real: source: accessibility.github.com/documentation/guide/github-copilot-vsc/ Contributors: @mlama007, zersiax Community: GitHub Accessibility Discussions.
+
+[PAUSE]
+
+[JAMIE]
+Let's pause on Prerequisites. What should a learner take away from it?
+
+[ALEX]
+Start with Prerequisites. There is something to understand, something to try, and something that proves the try worked.
+
+[ALEX]
+The practical takeaway is this. VS Code with GitHub Copilot Chat extension installed. A GitHub account with Copilot access (Free tier or paid). A screen reader (NVDA recommended for this guide).
+
+[JAMIE]
+Let's pause on Step 1: Enable VS Code Screen Reader Mode. What should a learner take away from it?
+
+[ALEX]
+The reason Step 1: Enable VS Code Screen Reader Mode matters is that when Screen Reader Mode is on, VS Code changes how it announces suggestions (full text instead of streaming), adjusts live regions, and enables accessible navigation patterns throughout the editor. The interface gets friendlier when it stops being a wall of controls and starts being a set of named places.
+
+[ALEX]
+First, press Shift+Alt+F1 to toggle Screen Reader Accessibility Mode. Then, or use Command Palette: Ctrl+Shift+P → "Toggle Screen Reader Accessibility Mode". After that, VS Code announces: "Screen Reader Accessibility Mode enabled". The rhythm is simple: orient, act, verify, then continue.
+
+[JAMIE]
+Let's pause on Step 2: Configure Accessibility Signals (Optional but Recommended). What should a learner take away from it?
+
+[ALEX]
+Start with Step 2: Configure Accessibility Signals (Optional but Recommended): Recommended JSON config for Copilot accessibility signals.
+
+[ALEX]
+First, open Settings: Ctrl+,. Then, search "accessibility signals". After that, enable the Copilot-specific signals. Think of it as a rail line: each stop confirms you are still on the right route before the next one.
+
+[PAUSE]
+
+[ALEX]
+Keep the teaching thread moving. Here is the plain-English version of Step 3: Official Shortcut Table (from accessibility.github.com). This is the complete table of Copilot screen reader shortcuts as published by the GitHub Accessibility team.
+
+[JAMIE]
+How do you keep commands from becoming magic words?
+
+[ALEX]
+This is where The screen reader-optimized workflow for every inline suggestion becomes real: this workflow avoids the streaming announcement problem (where suggestions are read out in fragments as tokens arrive) and gives you full, uninterrupted access to the suggestion text before committing.
+
+[ALEX]
+Treat examples as spoken recipes, not decorations. You may hear something like Type your code or documentation; 2. Copilot generates a suggestion (audio cue sounds if enabled); 3. DO NOT press Tab immediately; 4. Press Alt+F2 - Accessible View opens with the full suggestion text; 5. Read the suggestion at your own pace with Arrow keys. Read the command, understand what it changes, then run it only when the repository state matches the lesson.
+
+[JAMIE]
+Let's pause on Step 5: Recommended Workflow for Chat Responses. What should a learner take away from it?
+
+[ALEX]
+Start with Step 5: Recommended Workflow for Chat Responses. There is something to understand, something to try, and something that proves the try worked.
+
+[ALEX]
+Treat examples as spoken recipes, not decorations. You may hear something like Open Chat: Ctrl+Shift+I; 2. Type your prompt, press Ctrl+Enter to send; 3. Press Alt+F2 - Accessible View opens immediately; the response streams live into it; 4. Navigate with Arrow keys - no streaming noise, follow along in real-time; 5. Headings, code. Read the command, understand what it changes, then run it only when the repository state matches the lesson.
+
+[PAUSE]
+
+[JAMIE]
+Let's pause on Reading the Suggestions Panel (Ctrl+Enter). What should a learner take away from it?
+
+[ALEX]
+The reason Reading the Suggestions Panel (Ctrl+Enter) matters is that pressing Ctrl+Enter opens a Suggestions Panel - a separate editor tab that shows up to 10 alternative suggestions simultaneously. That gives the learner a simple foothold: this is useful when the default suggestion isn't quite right and you want to compare options.
+
+[ALEX]
+Treat examples as spoken recipes, not decorations. You may hear something like Ctrl+Enter - opens "GitHub Copilot" editor tab; 2. Screen Reader Mode is active: navigate with Browse Mode; 3. H key to navigate headings (each suggestion may be under a heading); 4. Press Alt+F2 on a focused suggestion to read it in Accessible View; 5. Tab to. Read the command, understand what it changes, then run it only when the repository state matches the lesson.
+
+[ALEX]
+Keep the teaching thread moving. Start with Learning Cards: Screen Reader Copilot Workflow. There is something to understand, something to try, and something that proves the try worked.
+
+[ALEX]
+The practical takeaway is this. The golden rule: never accept a suggestion with Tab before reviewing it -- press Alt+F2 first, read it, then Ctrl+/ to insert. Enable the four Copilot audio signals (inline suggestion, request sent, response pending, response received) for non-verbal status awareness. Ctrl+Enter opens a Suggestions Panel with up to 10 alternatives -- navigate with H for headings, then Tab to the Accept button. Inline ghost text is typically rendered in a muted color -- if hard to see, rely on the lineHasInlineSuggestion audio signal instead. The Suggestions Panel (Ctrl+Enter) shows alternatives in a full editor tab at your current font size and theme. Chat responses are easier to read in Accessible View than in the streaming panel, especially at high zoom.
+
+[JAMIE]
+Let's pause on 13. awesome-copilot - Plugin Ecosystem. What should a learner take away from it?
+
+[ALEX]
+Here is the plain-English version of 13. awesome-copilot - Plugin Ecosystem. awesome-copilot is a GitHub repository (github/awesome-copilot) - not a VS Code Marketplace extension. Put another way, it is GitHub's curated ecosystem of Copilot plugins, prompts, instructions, agents, skills, and hooks that can be shared and discovered by anyone.
+
+[PAUSE]
+
+[ALEX]
+Keep the teaching thread moving. This is where Repository Structure becomes real: lLM discovery: https://github.github.io/awesome-copilot/llms.txt - a machine-readable index of all available resources. The workshop is closer to rehearsal than lecture. You hear the move, try the move, and then check what changed.
+
+[JAMIE]
+Let's pause on The /plugin Command - Browse and Install from Chat. What should a learner take away from it?
+
+[ALEX]
+Keep the learner anchored in The /plugin Command - Browse and Install from Chat. The easiest way to explore awesome-copilot from VS Code.
+
+[ALEX]
+First, open Copilot Chat (Ctrl+Shift+I). Then, type /plugin and press Enter. After that, Copilot Chat opens an interactive plugin marketplace browser. Finally, browse plugins by category, read descriptions, and install with a single command. It is like walking a hallway with named doors: read the sign, enter the right room, then confirm where you landed.
+
+[JAMIE]
+Let's pause on CLI Plugin Installation. What should a learner take away from it?
+
+[ALEX]
+The reason CLI Plugin Installation matters is that from any terminal with GitHub CLI (gh) installed.
+
+[ALEX]
+Treat examples as spoken recipes, not decorations. You may hear something like Browse the marketplace; gh copilot plugin marketplace list; Add the awesome-copilot collection; gh copilot plugin marketplace add github/awesome-copilot; Install a specific plugin; gh copilot plugin install @awesome-copilot/accessibility-toolkit; List what you. Read the command, understand what it changes, then run it only when the repository state matches the lesson.
+
+[PAUSE]
+
+[JAMIE]
+Let's pause on MCP Server Integration (Docker required). What should a learner take away from it?
+
+[ALEX]
+Start with MCP Server Integration (Docker required): awesome-copilot also ships as an MCP (Model Context Protocol) Server - a Docker-based tool server that extends Copilot with additional capabilities beyond file-based customizations. The next useful detail is this: Install in VS Code by clicking the button at https://aka.ms/awesome-copilot/mcp/vscode, or add manually to settings.json.
+
+[ALEX]
+Treat examples as spoken recipes, not decorations. You may hear something like {; "mcp": {; "servers": {; "awesome-copilot": {; "type": "stdio",; "command": "docker",; "args": [; "run", "-i", "--rm",; "ghcr.io/github/awesome-copilot-mcp:latest"; ]; }; }; }; }. Read the command, understand what it changes, then run it only when the repository state matches the lesson.
+
+[ALEX]
+Keep the teaching thread moving. Here is the plain-English version of 14. GitHub Agentic Workflows - Agents in the Cloud. Status: Technical Preview - GitHub Agentic Workflows entered technical preview on February 13, 2026. Put another way, as of May 2026 the feature remains in active development and preview; changes to the API and workflow format are ongoing. It is like learning a transit route. The names of the stops matter because they tell you whether you are still going the right direction.
+
+[JAMIE]
+Let's pause on What This Enables. What should a learner take away from it?
+
+[ALEX]
+This is where What This Enables becomes real: browse 50+ community-built workflows at Peli's Agent Factory.
+
+[PAUSE]
+
+[ALEX]
+Keep the teaching thread moving. Keep the learner anchored in How It Works. The gh aw CLI (a gh extension) compiles.md workflow files into.lock.yml GitHub Actions workflows. This is the part to say slowly: The AI agent (GitHub Copilot, Claude, or OpenAI Codex) reads your repository context and the natural language instructions, then performs the task using the GitHub MCP Server and other available tools.
+
+[JAMIE]
+Let's pause on Workflow Format - Markdown with Frontmatter. What should a learner take away from it?
+
+[ALEX]
+The reason Workflow Format - Markdown with Frontmatter matters is that unlike standard GitHub Actions (YAML), agentic workflows are Markdown files. That gives the learner a simple foothold: the body is natural language - describe what you want the AI agent to do.
+
+[ALEX]
+Keep the teaching thread moving. Start with Security Model - "Safe Outputs": Workflows run read-only by default with sandboxed execution, network isolation, and SHA-pinned dependencies. The next useful detail is this: Write operations require explicit declaration in safe-outputs - a set of pre-approved, sanitized GitHub operations. Think of it like entering a new building: first you find the lobby, then the room, then the door you actually need.
+
+[PAUSE]
+
+[JAMIE]
+Let's pause on Getting Started with gh aw. What should a learner take away from it?
+
+[ALEX]
+Start with Getting Started with gh aw. There is something to understand, something to try, and something that proves the try worked.
+
+[ALEX]
+Treat examples as spoken recipes, not decorations. You may hear something like Install the CLI extension; gh extension install github/gh-aw; Create a new workflow interactively (from github.com or VS Code also works); gh aw create; Compile your Markdown workflow to a GitHub Actions.lock.yml; gh aw. Read the command, understand what it changes, then run it only when the repository state matches the lesson.
+
+[JAMIE]
+Let's pause on Monitoring Agentic Workflow Runs. What should a learner take away from it?
+
+[ALEX]
+Start with Monitoring Agentic Workflow Runs. There is something to understand, something to try, and something that proves the try worked.
+
+[ALEX]
+First, navigate to the Actions tab of your repository (D → Repository navigation → K to Actions). Then, find the workflow by name (h3 headings, navigate with 3). After that, press Enter to open a specific run. Finally, expand job steps to read the agent output log and any safe-outputs created. It is a checklist, but a meaningful one: every item creates evidence that the next step is safe.
+
+[JAMIE]
+Let's pause on Resources. What should a learner take away from it?
+
+[ALEX]
+Keep the learner anchored in Resources. Relationship to Accessibility Agents: Accessibility Agents agents (.agent.md files) are designed for interactive use inside VS Code. This is the part to say slowly: GitHub Agentic Workflows are a separate, cloud-native system that uses its own Markdown workflow format and the gh aw CLI - they are complementary tools, not the same mechanism.
+
+[PAUSE]
+
+[ALEX]
+Keep the teaching thread moving. Start with Learning Cards: GitHub Agentic Workflows. There is something to understand, something to try, and something that proves the try worked.
+
+[ALEX]
+The practical takeaway is this. Agentic workflow runs appear in the Actions tab of your repository -- navigate to Actions with T (tab bar), then use heading navigation (3) to jump between workflow run entries. Workflow files are Markdown (.md) not YAML -- the frontmatter at the top controls triggers and permissions; the body is natural language instructions the AI agent reads. The safe-outputs frontmatter property lists every write operation the agent is allowed to perform -- review this section carefully since it is the security boundary. The Actions tab lists workflow runs with status icons (green check, red X, yellow circle) -- at high zoom, also look for the text status label next to each run name. Workflow.md files use the same Markdown rendering as any other file in the repo -- edit them in VS Code with your preferred font size and theme. The gh aw compile command generates a.lock.yml file alongside your.md file -- both appear in the file explorer; the.lock.yml is auto-generated and should not be edited manually.
+
+[JAMIE]
+Let's pause on Copilot Models. What should a learner take away from it?
+
+[ALEX]
+Start with Copilot Models. There is something to understand, something to try, and something that proves the try worked.
+
+[ALEX]
+The practical takeaway is this. Overview. How to Choose a Model. Complete Model Reference. Model Availability by Plan. Premium Requests and Cost Multipliers. Switching Models in VS Code.
+
+[ALEX]
+Keep the teaching thread moving. Here is the plain-English version of 1. Overview. GitHub Copilot offers access to AI models from multiple providers including OpenAI, Anthropic, Google, and xAI. Put another way, the model you choose affects response quality, speed, and premium request consumption.
+
+[PAUSE]
+
+[JAMIE]
+Let's pause on 2. How to Choose a Model. What should a learner take away from it?
+
+[ALEX]
+This is where 2. How to Choose a Model becomes real: GitHub Docs organizes models by task. That matters in practice: Match your task to the right model to get the best results without unnecessary premium request cost.
+
+[ALEX]
+Keep the teaching thread moving. Keep the learner anchored in General-Purpose Coding and Writing. For everyday tasks - code completions, explanations, refactoring, writing documentation. A good GitHub workflow is like a well-run meeting: everyone knows the topic, the next action, and who has the floor.
+
+[JAMIE]
+How should someone ask for help in a way that gets them unstuck faster?
+
+[ALEX]
+The reason Fast Help with Simple or Repetitive Tasks matters is that for quick answers, boilerplate generation, renaming, or lightweight explanations where speed matters.
+
+[PAUSE]
+
+[ALEX]
+Keep the teaching thread moving. Start with Deep Reasoning and Debugging: For complex problems, architecture decisions, multi-file analysis, tricky bugs, and understanding unfamiliar codebases.
+
+[JAMIE]
+Let's pause on Agentic Software Development. What should a learner take away from it?
+
+[ALEX]
+Here is the plain-English version of Agentic Software Development. For autonomous coding tasks in Agent mode - when Copilot writes code, runs terminal commands, and iterates without step-by-step guidance from you.
+
+[ALEX]
+Keep the teaching thread moving. This is where Working with Visuals becomes real: for tasks that involve images, screenshots, diagrams, or UI mockups - paste an image directly into the chat input. The workshop is closer to rehearsal than lecture. You hear the move, try the move, and then check what changed.
+
+[PAUSE]
+
+[JAMIE]
+Let's pause on 3. Complete Model Reference. What should a learner take away from it?
+
+[ALEX]
+Keep the learner anchored in 3. Complete Model Reference. Model availability changes frequently. This is the part to say slowly: Check GitHub's supported models page for the current list.
+
+[ALEX]
+Keep the teaching thread moving. The reason 4. Model Availability by Plan matters is that GitHub Copilot plan details and billing models are actively evolving. That gives the learner a simple foothold: facilitators will provide current guidance at the workshop.
+
+[JAMIE]
+Let's pause on Tips for managing premium request usage. What should a learner take away from it?
+
+[ALEX]
+Start with Tips for managing premium request usage. There is something to understand, something to try, and something that proves the try worked.
+
+[ALEX]
+The practical takeaway is this. Use GPT-4.1 or GPT-5 mini (both free) for everyday questions, quick explanations, and simple completions - they're fast and capable. Upgrade to Claude Sonnet or GPT-5.2 (1×) only when the task genuinely requires deeper reasoning. Save Claude Opus (3×) for the most demanding analyses - architecture decisions, complex debugging, sophisticated design review. Use Auto mode (see below) and let Copilot allocate model selection intelligently.
+
+[PAUSE]
+
+[JAMIE]
+Let's pause on In the Chat Panel. What should a learner take away from it?
+
+[ALEX]
+Start with In the Chat Panel. There is something to understand, something to try, and something that proves the try worked.
+
+[ALEX]
+First, open the Chat panel (Ctrl+Shift+I / Cmd+Shift+I). Then, at the bottom of the chat input area, you'll see the current model name as a button (e.g., "Auto" or "Claude Sonnet 4.6"). After that, activate the model picker button - this opens a dropdown list of available models. Finally, arrow through the list and press Enter to select a model. Treat it like a recipe: do not add the next ingredient until the previous one is actually in the bowl.
+
+[JAMIE]
+Before we leave In the Chat Panel, what is the practical point?
+
+[ALEX]
+First, for screen reader users: the chat input will announce the newly selected model after switching. It is a checklist, but a meaningful one: every item creates evidence that the next step is safe.
+
+[JAMIE]
+Let's pause on In an Inline Chat Session. What should a learner take away from it?
+
+[ALEX]
+Start with In an Inline Chat Session. There is something to understand, something to try, and something that proves the try worked.
+
+[ALEX]
+First, open Inline Chat (Ctrl+I / Cmd+I). Then, the model picker appears in the inline chat toolbar. After that, same interaction: activate the model button to switch. It is a checklist, but a meaningful one: every item creates evidence that the next step is safe.
+
+[ALEX]
+Keep the teaching thread moving. Keep the learner anchored in Keyboard Note for Screen Readers. In the Chat panel, the model picker button is near the bottom of the chat view. This is the part to say slowly: If you're having trouble locating it.
+
+[ALEX]
+The practical takeaway is this. Tab through the bottom toolbar of the chat panel. Listen for the model name announced - it appears between the "Attach" button and the send button. Press Space or Enter to open the picker.
+
+[PAUSE]
+
+[JAMIE]
+Let's pause on 7. Auto Model Selection. What should a learner take away from it?
+
+[ALEX]
+The reason 7. Auto Model Selection matters is that auto mode (the default) lets Copilot choose the best model based on the type of request. That gives the learner a simple foothold: it became generally available on December 10, 2025.
+
+[ALEX]
+Keep the teaching thread moving. Start with How Auto works. There is something to understand, something to try, and something that proves the try worked.
+
+[ALEX]
+The practical takeaway is this. For simple questions, Copilot routes to a faster, lighter model. For complex code generation or debugging, Copilot upgrades to a more capable model automatically. For agent tasks, Copilot selects an appropriate Codex model. You can see which model was used after each response.
+
+[JAMIE]
+Let's pause on When to override Auto. What should a learner take away from it?
+
+[ALEX]
+Here is the plain-English version of When to override Auto. To switch back to Auto from a specific model, re-open the model picker and select Auto at the top of the list.
+
+[ALEX]
+The practical takeaway is this. You specifically need a model with certain capabilities (e.g., vision input with Claude Sonnet 4). You're managing premium request quotas and want to control costs. You've found a particular model gives better results for your specific workflow or domain. You're doing agentic work and want to explicitly select an agent-optimized Codex model (check current availability in the model picker).
+
+[PAUSE]
+
+[ALEX]
+Keep the teaching thread moving. This is where 8. Models Retiring Soon becomes real: GitHub regularly updates the model roster. That matters in practice: Older model versions are retired when newer equivalents are available.
+
+[JAMIE]
+Let's pause on Already retired (as of April 2026). What should a learner take away from it?
+
+[ALEX]
+Keep the learner anchored in Already retired (as of April 2026). To stay current, watch the GitHub Copilot changelog - model additions and retirements are announced there.
+
+[ALEX]
+The practical takeaway is this. Claude Sonnet 3.5, Claude Sonnet 3.7. Gemini 2.0 Flash. o1-mini, o3, o3-mini, o4-mini. Claude Opus 4.1. GPT-5 (base), GPT-5-Codex. GPT-5.3-Codex (removed from Student plan model picker, April 2026).
+
+[ALEX]
+Keep the teaching thread moving. The reason Related Resources matters is that next: Appendix L: Agents Reference Back: Appendix J: Codespaces Teaching chapter: Chapter 16: GitHub Copilot. The interface gets friendlier when it stops being a wall of controls and starts being a set of named places.
+
+[PAUSE]
+
+[JAMIE]
+What should people carry with them after this?
+
+[ALEX]
+Carry the map. Know what page or tool you are in, know which action you are taking, and know what confirmation should follow. If the confirmation is missing, pause. That pause is not wasted time; it is professional judgment.
+
+[JAMIE]
+That is a better way to say it than just follow the steps.
+
+[ALEX]
+Right. Steps matter, but understanding wins. That is episode 40. Next in the series is episode 41, where we keep building the same contributor muscles.

@@ -1,6 +1,6 @@
-﻿# Appendix P: GitHub Security Features
+# Appendix P: GitHub Security Features
 >
-> **Listen to Episode 29:** [GitHub Security Features](../PODCASTS.md) - a conversational audio overview of this chapter. Listen before reading to preview the concepts, or after to reinforce what you learned.
+> **Listen to Episode 29:** [GitHub Security Features](../admin/PODCASTS.md) - a conversational audio overview of this chapter. Listen before reading to preview the concepts, or after to reinforce what you learned.
 
 > **Reference companion to:** [Chapter 08: Open Source Culture](08-open-source-culture.md) | Also relevant: [Chapter 17](17-issue-templates.md)
 >

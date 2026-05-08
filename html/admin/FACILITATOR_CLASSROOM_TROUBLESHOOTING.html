@@ -1,0 +1,634 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="GIT Going with GitHub - A two-day accessible open source workshop by Community Access">
+  <title>GitHub Classroom Troubleshooting Guide - GIT Going with GitHub</title>
+  <link rel="stylesheet" href="./styles/github-markdown.css">
+  <link rel="stylesheet" href="./styles/highlight.css">
+  <link rel="stylesheet" href="./styles/custom.css">
+  <style>
+    .markdown-body {
+      box-sizing: border-box;
+      min-width: 200px;
+      max-width: 980px;
+      margin: 0 auto;
+      padding: 45px;
+    }
+    @media (max-width: 767px) {
+      .markdown-body {
+        padding: 15px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+  <header class="site-header" role="banner">
+    <div class="site-header-inner">
+      <nav aria-label="Breadcrumb" class="breadcrumb">
+        <a href="./index.html">Home</a> <span aria-hidden="true">›</span> <span aria-current="page">GitHub Classroom Troubleshooting Guide</span>
+      </nav>
+      <div class="header-actions">
+        <a href="https://github.com/Community-Access/git-going-with-github/wiki" class="wiki-link" target="_blank" rel="noopener noreferrer">
+          <svg aria-hidden="true" focusable="false" width="16" height="16" viewBox="0 0 16 16" fill="currentColor">
+            <path d="M1.75 1h8.5c.966 0 1.75.784 1.75 1.75v5.5A1.75 1.75 0 0 1 10.25 10H7.06l-2.573 2.573A1.458 1.458 0 0 1 2 11.543V10h-.25A1.75 1.75 0 0 1 0 8.25v-5.5C0 1.784.784 1 1.75 1ZM1.5 2.75v5.5c0 .138.112.25.25.25h1a.75.75 0 0 1 .75.75v2.19l2.72-2.72a.749.749 0 0 1 .53-.22h3.5a.25.25 0 0 0 .25-.25v-5.5a.25.25 0 0 0-.25-.25h-8.5a.25.25 0 0 0-.25.25Zm13 2a.25.25 0 0 0-.25-.25h-.5a.75.75 0 0 1 0-1.5h.5c.966 0 1.75.784 1.75 1.75v5.5A1.75 1.75 0 0 1 14.25 12H14v1.543a1.457 1.457 0 0 1-2.487 1.03L9.22 12.28a.749.749 0 1 1 1.06-1.06l2.22 2.22v-2.19a.75.75 0 0 1 .75-.75h.25a.25.25 0 0 0 .25-.25v-5.5Z"/>
+          </svg>
+          Wiki
+        </a>
+        <form role="search" class="search-form" action="./search.html" method="get">
+        <label for="site-search" class="search-label">Search docs</label>
+        <input
+          type="search"
+          id="site-search"
+          class="search-input"
+          name="q"
+          placeholder="Search docs…"
+          autocomplete="off"
+          aria-label="Search documentation"
+        >
+        <button type="submit" class="search-button" aria-label="Submit search">
+          <svg aria-hidden="true" focusable="false" width="16" height="16" viewBox="0 0 16 16" fill="currentColor">
+            <path d="M10.68 11.74a6 6 0 0 1-7.922-8.982 6 6 0 0 1 8.982 7.922l3.04 3.04a.749.749 0 0 1-.326 1.275.749.749 0 0 1-.734-.215ZM11.5 7a4.499 4.499 0 1 0-8.997 0A4.499 4.499 0 0 0 11.5 7Z"/>
+          </svg>
+        </button>
+      </form>
+      </div>
+    </div>
+  </header>
+  <main id="main-content" class="markdown-body">
+    <h1 id="github-classroom-troubleshooting-guide">GitHub Classroom Troubleshooting Guide</h1>
+<h2 id="for-facilitators-managing-student-workflows">For Facilitators Managing Student Workflows</h2>
+<p>This document covers common issues that arise during GitHub Classroom workshops and how to resolve them quickly. Use this alongside <a href="FACILITATOR_GUIDE.html">FACILITATOR_GUIDE.md</a> for general facilitation.</p>
+<hr>
+<h2 id="-emergency-what-to-do-when-everything-stops-working">🚨 Emergency: What to Do When Everything Stops Working</h2>
+<h3 id="bots-stopped-responding">Bots Stopped Responding</h3>
+<p><strong>Symptom:</strong> Students are creating PRs but Aria bot isn&#39;t commenting within 30 seconds.</p>
+<p><strong>Diagnostics:</strong></p>
+<ol>
+<li>Check <a href="https://www.githubstatus.com">GitHub Status</a> — is GitHub Actions down?</li>
+<li>Check your test repo — try creating a PR yourself. Does Aria respond?</li>
+<li>Check the workflow logs in the template repository:<ul>
+<li>Go to your template repo → Actions tab</li>
+<li>Look for recent Aria workflow runs</li>
+<li>Do they show errors or successful completions?</li>
+</ul>
+</li>
+</ol>
+<p><strong>Solutions:</strong></p>
+<table>
+<thead>
+<tr>
+<th scope="col">Issue</th>
+<th scope="col">Fix</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><strong>GitHub Actions is down</strong></td>
+<td>Post in chat: &quot;We&#39;re experiencing a brief delay with our automated feedback. You can still work on challenges — we&#39;ll review PRs manually.&quot; Then skip to &quot;Manual PR Review&quot; below.</td>
+</tr>
+<tr>
+<td><strong>Aria workflow is disabled</strong></td>
+<td>Go to template repo → Actions → Enable Aria workflow → Re-run failed runs</td>
+</tr>
+<tr>
+<td><strong>Aria workflow has an error</strong></td>
+<td>Check the error log. If it&#39;s a configuration issue, fix the workflow file and re-run.</td>
+</tr>
+<tr>
+<td><strong>Aria is working but slow</strong></td>
+<td>Wait a bit longer (sometimes takes 60 seconds). Refresh PR page. If still nothing, manually review.</td>
+</tr>
+</tbody></table>
+<p><strong>Temporary Workaround — Manual PR Review:</strong></p>
+<p>If the bot is down and you need to review PRs:</p>
+<ol>
+<li>Go to student&#39;s PR</li>
+<li>Comment with this template (copy Aria&#39;s format):<pre><code class="hljs language-markdown">Checking your work...
+
+✓ [thing that&#x27;s good]
+✓ [thing that&#x27;s good]
+
+Consider: [suggestion]
+Consider: [suggestion]
+
+Nice work! [personalized comment]</code></pre>
+</li>
+<li>Students continue as normal (they don&#39;t know the difference)</li>
+<li>When bot comes back, future PRs will get automatic feedback</li>
+</ol>
+<h3 id="student-progression-bot-failed">Student Progression Bot Failed</h3>
+<p><strong>Symptom:</strong> Student merged a PR, but the next challenge didn&#39;t appear. They&#39;re stuck waiting for Challenge 2.</p>
+<p><strong>Diagnostics:</strong></p>
+<ol>
+<li>Go to student&#39;s repo → Issues tab</li>
+<li>Check if the old challenge is closed</li>
+<li>Check if the new challenge exists (might be closed too)</li>
+</ol>
+<p><strong>Solutions:</strong></p>
+<table>
+<thead>
+<tr>
+<th scope="col">Symptom</th>
+<th scope="col">Fix</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><strong>Old challenge is open, new challenge doesn&#39;t exist</strong></td>
+<td>Progression bot failed. Manually create the next challenge: Copy the old challenge issue, change the number, and assign to student.</td>
+</tr>
+<tr>
+<td><strong>Both challenges exist but student can&#39;t see new one</strong></td>
+<td>Refresh their browser or have them sign out/in.</td>
+</tr>
+<tr>
+<td><strong>Old challenge never closed</strong></td>
+<td>Manually close it (if student merged PR but it didn&#39;t auto-close). Then manually create the next challenge.</td>
+</tr>
+</tbody></table>
+<h3 id="video-call-is-down">Video Call Is Down</h3>
+<p><strong>Symptom:</strong> Zoom/Teams/Google Meet is disconnected. Students are isolated.</p>
+<p><strong>What to Do:</strong></p>
+<ol>
+<li><strong>Don&#39;t panic</strong> — GitHub Classroom work doesn&#39;t stop without the call</li>
+<li><strong>Create backup</strong>: Send message to any chat channel (email, GitHub Discussions):<blockquote>
+<p>&quot;Video call dropped temporarily. You can keep working on your challenges — we&#39;re working on reconnecting. Use [Discussions/email/Slack] if you need help in the meantime.&quot;</p>
+</blockquote>
+</li>
+<li><strong>Reconnect</strong> — Get the call back up within 5 minutes if possible</li>
+<li><strong>Continue async</strong> — If can&#39;t reconnect, facilitate async through chat/email until next day</li>
+</ol>
+<h3 id="co-facilitator-is-unavailable">Co-Facilitator Is Unavailable</h3>
+<p><strong>Symptom:</strong> You&#39;re alone and need to:</p>
+<ul>
+<li>Monitor dashboard</li>
+<li>Answer chat questions</li>
+<li>Do a demo</li>
+<li>Review PRs</li>
+<li>Manage 20+ students</li>
+</ul>
+<p><strong>Solutions:</strong></p>
+<p><strong>Short-term (next 30 min):</strong></p>
+<ul>
+<li>Shift to async mode: &quot;We&#39;re doing async today. Post questions in chat and I&#39;ll respond promptly.&quot;</li>
+<li>Use recorded demo if you have one</li>
+<li>Focus on responding to questions quickly rather than real-time facilitation</li>
+</ul>
+<p><strong>Mid-term (next few hours):</strong></p>
+<ul>
+<li>Recruit a volunteer:<ul>
+<li>Advanced student</li>
+<li>TA or peer</li>
+<li>Anyone who can watch chat</li>
+<li>Give them these 3 jobs: (1) watch chat for &quot;stuck&quot; messages, (2) ping facilitator with blocking questions, (3) celebrate wins</li>
+</ul>
+</li>
+<li>Put facilitator on mute except for key moments</li>
+</ul>
+<p><strong>Long-term:</strong></p>
+<ul>
+<li>Consider pausing until co-facilitator returns</li>
+<li>Or shift to fully asynchronous (post challenges, respond to questions async)</li>
+</ul>
+<hr>
+<h2 id="-student-level-issues">👤 Student-Level Issues</h2>
+<h3 id="quoti-can39t-find-my-repoquot">&quot;I Can&#39;t Find My Repo&quot;</h3>
+<p><strong>Student is logged in, accepted the assignment, but can&#39;t find their repo.</strong></p>
+<p><strong>First, clarify:</strong> &quot;Can you get to github.com? What do you see?&quot;</p>
+<p><strong>Solution Flowchart:</strong></p>
+<pre><code class="hljs">Q: Are you logged <span class="hljs-keyword">in</span>?
+├─ <span class="hljs-literal">No</span> → Have them log <span class="hljs-keyword">in</span>
+└─ <span class="hljs-literal">Yes</span> → Q: <span class="hljs-keyword">Do</span> you see an organization name <span class="hljs-keyword">in</span> your top-left?
+   ├─ <span class="hljs-literal">No</span> → They accepted but repo creation stalled
+   │   └─ Solution: Go <span class="hljs-keyword">to</span> classroom.github.com, refresh the assignment
+   │      <span class="hljs-keyword">If</span> still <span class="hljs-literal">nothing</span>, manually create repo <span class="hljs-keyword">in</span> organization:
+   │      - Go <span class="hljs-keyword">to</span> org
+   │      - Click <span class="hljs-string">&quot;New repository&quot;</span>
+   │      - Name it: learning-room-[username]
+   │      - Use template
+   │      - Done
+   └─ <span class="hljs-literal">Yes</span> → Q: When you click your<span class="hljs-built_in"> profile </span>(top-right),
+              <span class="hljs-keyword">do</span> you see <span class="hljs-string">&quot;Your repositories&quot;</span>?
+      ├─ <span class="hljs-literal">No</span> → Permissions issue
+      │   └─ Solution: Go <span class="hljs-keyword">to</span> github.com/settings/repositories
+      │     <span class="hljs-built_in"> Filter </span>by organization
+      │      <span class="hljs-built_in">Find</span> your repo <span class="hljs-keyword">in</span> the list
+      └─ <span class="hljs-literal">Yes</span> → They have repos but can<span class="hljs-string">&#x27;t navigate
+          └─ Solution: Direct link:
+             github.com/community-access-classroom/learning-room-[username]
+             Share this link directly</span></code></pre>
+<h3 id="quotthe-issue-isn39t-in-my-repoquot">&quot;The Issue Isn&#39;t In My Repo&quot;</h3>
+<p><strong>Student accepted assignment, but Challenge 1 issue doesn&#39;t exist.</strong></p>
+<p><strong>Causes:</strong></p>
+<ul>
+<li>Template repo doesn&#39;t have Challenge 1 issue</li>
+<li>Issue exists but in wrong place</li>
+<li>Student accepted but issue creation failed</li>
+</ul>
+<p><strong>Fix:</strong></p>
+<ol>
+<li>Check template repo → Issues → Does Challenge 1 exist?<ul>
+<li>If no: Create it in template, then re-create in student repo</li>
+<li>If yes: Go to step 2</li>
+</ul>
+</li>
+<li>Go to student repo → Issues → Is Challenge 1 there?<ul>
+<li>If no: Manually create it by copying from template</li>
+<li>If yes: Problem solved (they might not be looking in the right place)</li>
+</ul>
+</li>
+</ol>
+<p><strong>Manual Creation:</strong></p>
+<ol>
+<li>Student repo → Issues tab</li>
+<li>Click &quot;New issue&quot;</li>
+<li>Copy the Challenge 1 content from the template issue</li>
+<li>Create it</li>
+<li>Tell student: &quot;Refresh your Issues page&quot;</li>
+</ol>
+<h3 id="quoti-don39t-know-what-the-challenge-is-askingquot">&quot;I Don&#39;t Know What the Challenge Is Asking&quot;</h3>
+<p><strong>Student is confused about the task.</strong></p>
+<p><strong>First:</strong> Read the challenge text back to them aloud.</p>
+<p><strong>Then:</strong> Break it down:</p>
+<ul>
+<li>What is it asking me to change? [Tell them]</li>
+<li>Where is that in my repo? [Show them]</li>
+<li>How will I know when I&#39;m done? [Tell them the success criterion]</li>
+</ul>
+<p><strong>Next:</strong> Give them the first tiny step:</p>
+<blockquote>
+<p>&quot;Start by [one specific action]. Do that, then come back and tell me what you see.&quot;</p>
+</blockquote>
+<p><strong>Don&#39;t:</strong> </p>
+<ul>
+<li>Do it for them</li>
+<li>Overwhelm with the whole solution</li>
+<li>Use jargon without explaining</li>
+</ul>
+<h3 id="quotthe-bot39s-feedback-doesn39t-make-sensequot">&quot;The Bot&#39;s Feedback Doesn&#39;t Make Sense&quot;</h3>
+<p><strong>Student is confused by Aria bot comment.</strong></p>
+<p><strong>What the bot might say:</strong></p>
+<pre><code class="hljs"><span class="hljs-symbol">Consider:</span> PR title should follow the pattern <span class="hljs-string">&quot;Challenge X: [description]&quot;</span></code></pre>
+<p><strong>What you say:</strong></p>
+<blockquote>
+<p>&quot;Aria is asking you to change your PR title. Right now it says &#39;[current title]&#39;.
+Change it to &#39;Challenge 1: [something describing the change]&#39;.
+Go back to your PR, click &#39;Edit&#39; on the title, make the change, save.&quot;</p>
+</blockquote>
+<p><strong>Practice Translation:</strong></p>
+<ul>
+<li>Bot: &quot;Markdown formatting issue&quot; → You: &quot;Your description has an extra space somewhere. Check for weird spacing.&quot;</li>
+<li>Bot: &quot;File path incorrect&quot; → You: &quot;You edited the wrong file. Edit [correct filename] instead.&quot;</li>
+<li>Bot: &quot;Branch naming convention&quot; → You: &quot;Your branch name should be [format], not [what they did].&quot;</li>
+</ul>
+<h3 id="quoti-merged-but-challenge-2-didn39t-appearquot">&quot;I Merged But Challenge 2 Didn&#39;t Appear&quot;</h3>
+<p><strong>Student merged PR. Old issue closed. New issue missing.</strong></p>
+<p><strong>Causes:</strong></p>
+<ol>
+<li>Progression bot is running late (just wait)</li>
+<li>Progression bot failed</li>
+<li>Student is looking in wrong place</li>
+</ol>
+<p><strong>Fix:</strong></p>
+<ol>
+<li>Ask: &quot;Refresh your Issues page. Do you see Challenge 2 now?&quot;<ul>
+<li>If yes: Problem solved</li>
+<li>If no: Go to step 2</li>
+</ul>
+</li>
+<li>Manually create Challenge 2:<ul>
+<li>Go to student repo → Issues</li>
+<li>Click &quot;New issue&quot;</li>
+<li>Copy Challenge 2 from template</li>
+<li>Create it</li>
+<li>Tell student: &quot;Refresh and you should see it now&quot;</li>
+</ul>
+</li>
+</ol>
+<h3 id="quoti-keep-getting-an-error-on-pr-submitquot">&quot;I Keep Getting an Error on PR Submit&quot;</h3>
+<p><strong>Student is trying to create PR but gets an error.</strong></p>
+<p><strong>Common errors:</strong></p>
+<table>
+<thead>
+<tr>
+<th scope="col">Error Message</th>
+<th scope="col">Fix</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>&quot;Nothing to commit&quot;</td>
+<td>They didn&#39;t make any changes. Have them edit the file first.</td>
+</tr>
+<tr>
+<td>&quot;Merge conflict&quot;</td>
+<td>This is actually a good learning moment. See &quot;Merge Conflict&quot; section below.</td>
+</tr>
+<tr>
+<td>&quot;Can&#39;t create branch&quot;</td>
+<td>Check branch naming. May need to delete failed branch and try again.</td>
+</tr>
+<tr>
+<td>&quot;Access denied&quot;</td>
+<td>Check repo permissions. Should be able to write to their own repo.</td>
+</tr>
+<tr>
+<td>&quot;File not found&quot;</td>
+<td>They&#39;re trying to edit wrong file. Help them find correct one.</td>
+</tr>
+</tbody></table>
+<p><strong>General troubleshooting:</strong></p>
+<ol>
+<li>Have them refresh the repo</li>
+<li>Have them close/reopen the file they&#39;re editing</li>
+<li>Have them try a simpler edit (just one word) first</li>
+<li>If still broken, escalate to facilitator manual review</li>
+</ol>
+<h3 id="quoti39m-done--what39s-nextquot">&quot;I&#39;m Done — What&#39;s Next?&quot;</h3>
+<p><strong>Student finished a challenge and wants to continue.</strong></p>
+<p><strong>Options:</strong></p>
+<ol>
+<li><p><strong>Start the next challenge automatically:</strong></p>
+<blockquote>
+<p>&quot;Close this challenge issue (click &#39;Close issue&#39; at the bottom) and the bot will create the next challenge for you.&quot;</p>
+</blockquote>
+</li>
+<li><p><strong>Help a peer:</strong></p>
+<blockquote>
+<p>&quot;Great work! Could you review [peer&#39;s] PR? That&#39;s how real developers learn.&quot;</p>
+</blockquote>
+</li>
+<li><p><strong>Explore bonus challenges:</strong></p>
+<blockquote>
+<p>&quot;You can also try some bonus challenges if you want to go deeper.&quot;</p>
+</blockquote>
+</li>
+<li><p><strong>Take a break:</strong></p>
+<blockquote>
+<p>&quot;You&#39;ve done great work. Take a break and come back when you&#39;re ready for the next one.&quot;</p>
+</blockquote>
+</li>
+</ol>
+<hr>
+<h2 id="-specific-technical-scenarios">🔄 Specific Technical Scenarios</h2>
+<h3 id="merge-conflict">Merge Conflict</h3>
+<p><strong>What it is:</strong> Two people edited the same file in incompatible ways. Git doesn&#39;t know which version to use.</p>
+<p><strong>When it happens:</strong> Usually Challenge 7 or later in the workshop.</p>
+<p><strong>Student sees:</strong></p>
+<pre><code class="hljs">This <span class="hljs-keyword">branch </span>has conflicts that must <span class="hljs-keyword">be </span>resolved</code></pre>
+<p><strong>Your response:</strong></p>
+<ol>
+<li>Don&#39;t panic — this is intentional (a learning challenge)</li>
+<li><strong>Don&#39;t try to fix it over chat</strong> — merge conflict resolution is hands-on</li>
+<li>Do one of these:<ul>
+<li><strong>Pair the student with someone who&#39;s done merge conflicts</strong> → They learn from peer</li>
+<li><strong>Offer 1:1 help</strong> → This is worth 20 minutes of your time (real skill)</li>
+<li><strong>Have them post in Discussions</strong> → Someone can walk them through async</li>
+</ul>
+</li>
+</ol>
+<p><strong>Teaching the fix:</strong></p>
+<ol>
+<li>Go to the PR → click &quot;Resolve conflicts&quot;</li>
+<li>GitHub shows the conflicting lines</li>
+<li>The student picks which version is correct (or combines both)</li>
+<li>Student marks conflict as resolved</li>
+<li>Student completes merge</li>
+<li>Done</li>
+</ol>
+<p><strong>Key point:</strong> This is not a failure — this is GitHub&#39;s hardest challenge because conflicts ARE hard in real code.</p>
+<h3 id="autograder-failed">Autograder Failed</h3>
+<p><strong>What it is:</strong> Challenge X has an automated test. Student&#39;s submission failed the test.</p>
+<p><strong>Student sees:</strong></p>
+<pre><code class="hljs">Autograding failed (<span class="hljs-attribute">X</span> failed)</code></pre>
+<p><strong>Your steps:</strong></p>
+<ol>
+<li>Go to student repo → Actions tab</li>
+<li>Find the failed autograding run</li>
+<li>Click it → look at the test output</li>
+<li>Understand what failed</li>
+<li>Explain to student in plain language:<blockquote>
+<p>&quot;The test was checking for [thing]. You have [what they did]. Try [fix].&quot;</p>
+</blockquote>
+</li>
+</ol>
+<p><strong>Common test failures:</strong></p>
+<table>
+<thead>
+<tr>
+<th scope="col">Test</th>
+<th scope="col">Usual Reason for Failure</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>File exists</td>
+<td>File named wrong or in wrong folder</td>
+</tr>
+<tr>
+<td>Content contains X</td>
+<td>Text wasn&#39;t added; student edited wrong file</td>
+</tr>
+<tr>
+<td>Markdown formatting</td>
+<td>Extra spaces or wrong heading level</td>
+</tr>
+<tr>
+<td>Git history</td>
+<td>Wrong number of commits or wrong branch</td>
+</tr>
+</tbody></table>
+<p><strong>Next step:</strong> Have student fix the issue and push a new commit. Autograder re-runs automatically.</p>
+<h3 id="accidental-merge">Accidental Merge</h3>
+<p><strong>What happened:</strong> Two students somehow merged the same file / repo / change.</p>
+<p><strong>Student panics:</strong> &quot;I messed up!&quot;</p>
+<p><strong>Your response:</strong></p>
+<blockquote>
+<p>&quot;This happens in real GitHub all the time. We just undo it.&quot;</p>
+</blockquote>
+<p><strong>How to undo:</strong></p>
+<ol>
+<li>Go to the merged PR</li>
+<li>Look for &quot;Revert this pull request&quot; button</li>
+<li>Click it</li>
+<li>GitHub creates a new PR that reverses the change</li>
+<li>Merge that PR</li>
+<li>Done</li>
+</ol>
+<p><strong>Teaching moment:</strong> Use this to explain why code review matters — this is why you have peers check your work.</p>
+<h3 id="student-lost-their-work">Student Lost Their Work</h3>
+<p><strong>Student says:</strong> &quot;I was working on something and it&#39;s gone now.&quot;</p>
+<p><strong>Possible causes:</strong></p>
+<ol>
+<li>They edited in GitHub web editor (not saved)</li>
+<li>They refreshed before saving</li>
+<li>They closed browser</li>
+<li>They&#39;re looking in wrong repo/branch</li>
+</ol>
+<p><strong>Your investigation:</strong></p>
+<ol>
+<li>&quot;What were you trying to change?&quot; → You explain it</li>
+<li>&quot;Let&#39;s look at your repo&quot; → You check it together</li>
+<li>&quot;Do you see a [branch/PR/draft]?&quot; → Navigate together</li>
+</ol>
+<p><strong>If truly lost:</strong></p>
+<ol>
+<li>&quot;It&#39;s okay, let&#39;s start fresh&quot;</li>
+<li>Help them re-do the work</li>
+<li>This time, save properly by creating PR (not just editing)</li>
+</ol>
+<p><strong>Prevention:</strong> Teach students: &quot;Always create a PR before you finish. That saves your work.&quot;</p>
+<hr>
+<h2 id="-github-platform-issues-not-your-fault">🌐 GitHub Platform Issues (Not Your Fault)</h2>
+<h3 id="githubcom-is-down">GitHub.com Is Down</h3>
+<p><strong>How to know:</strong> You get an error like &quot;502 Bad Gateway&quot; when accessing any GitHub page.</p>
+<p><strong>What to do:</strong></p>
+<ol>
+<li>Check <a href="https://www.githubstatus.com">GitHub Status</a></li>
+<li>Post in chat: &quot;GitHub.com is temporarily down. We&#39;re waiting for it to come back up. Keep your changes safe (don&#39;t refresh).&quot;</li>
+<li>Wait for GitHub to recover</li>
+<li>Resume workshop</li>
+</ol>
+<p><strong>In the meantime:</strong> Students can:</p>
+<ul>
+<li>Read challenge instructions offline</li>
+<li>Plan their approach</li>
+<li>Discuss with peers</li>
+</ul>
+<h3 id="github-actions-is-slowdown">GitHub Actions is Slow/Down</h3>
+<p><strong>Symptom:</strong> PRs are created but Aria bot takes 5+ minutes to respond.</p>
+<p><strong>What&#39;s happening:</strong> GitHub&#39;s infrastructure is overloaded.</p>
+<p><strong>What to do:</strong></p>
+<ul>
+<li>Let students know: &quot;Feedback bot is running a bit slow today. Don&#39;t refresh — it&#39;ll show up in a few minutes.&quot;</li>
+<li>Continue working while waiting</li>
+<li>If it doesn&#39;t show up, manually review (as described earlier)</li>
+</ul>
+<h3 id="organization-is-having-permission-issues">Organization Is Having Permission Issues</h3>
+<p><strong>Symptom:</strong> Students can&#39;t create repos or write to repos.</p>
+<p><strong>Likely cause:</strong> Organization settings changed accidentally.</p>
+<p><strong>Fix:</strong></p>
+<ol>
+<li>Go to Organization Settings</li>
+<li>Check &quot;Member privileges&quot;</li>
+<li>Make sure members can create public/private repos</li>
+<li>Check &quot;Repository creation&quot; is enabled</li>
+</ol>
+<hr>
+<h2 id="-dashboard-amp-monitoring-issues">📊 Dashboard &amp; Monitoring Issues</h2>
+<h3 id="dashboard-shows-wrong-data">Dashboard Shows Wrong Data</h3>
+<p><strong>Symptom:</strong> Classroom dashboard shows &quot;0 PRs merged&quot; but you know students merged things.</p>
+<p><strong>Cause:</strong> Dashboard is cached or lagging behind.</p>
+<p><strong>Fix:</strong></p>
+<ol>
+<li>Refresh the page</li>
+<li>Wait a few minutes (GitHub&#39;s dashboard updates asynchronously)</li>
+<li>Try incognito/private browser (clears cache)</li>
+</ol>
+<h3 id="can39t-access-classroom-dashboard">Can&#39;t Access Classroom Dashboard</h3>
+<p><strong>Causes:</strong></p>
+<ol>
+<li>Not logged in</li>
+<li>Organization didn&#39;t set up Classroom</li>
+<li>Permissions issue</li>
+</ol>
+<p><strong>Fix:</strong></p>
+<ol>
+<li>Go to <a href="https://classroom.github.com">https://classroom.github.com</a></li>
+<li>Click &quot;Sign in&quot;</li>
+<li>Select your organization</li>
+<li>If not listed, go to organization settings and link GitHub Classroom</li>
+</ol>
+<h3 id="missing-students-in-dashboard">Missing Students in Dashboard</h3>
+<p><strong>Symptom:</strong> You know 30 people accepted the assignment, but dashboard shows only 25.</p>
+<p><strong>Cause:</strong> Dashboard is lagging or those people haven&#39;t been processed yet.</p>
+<p><strong>Fix:</strong></p>
+<ol>
+<li>Refresh</li>
+<li>Wait 5 minutes</li>
+<li>Check directly: Go to org → Repositories → Look for new repos manually</li>
+</ol>
+<hr>
+<h2 id="-facilitator-mistakes-amp-recovery">🛠️ Facilitator Mistakes &amp; Recovery</h2>
+<h3 id="you-accidentally-closed-the-wrong-challenge">You Accidentally Closed the Wrong Challenge</h3>
+<p><strong>You:</strong> Closed Challenge 2 in a student&#39;s repo by mistake.</p>
+<p><strong>Recovery:</strong></p>
+<ol>
+<li>Go to the repo</li>
+<li>Find the closed challenge in the Issues tab (closed filter)</li>
+<li>Re-open it</li>
+<li>Apologize to the student: &quot;My mistake — I reopened it. You&#39;re good to go.&quot;</li>
+</ol>
+<h3 id="you-created-duplicate-challenges">You Created Duplicate Challenges</h3>
+<p><strong>Symptom:</strong> Student sees Challenge 2 twice.</p>
+<p><strong>Cause:</strong> Manual creation while bot was also creating it.</p>
+<p><strong>Fix:</strong></p>
+<ol>
+<li>Go to student repo</li>
+<li>Close/delete the duplicate</li>
+<li>Tell student: &quot;Cleaned that up. You should see one Challenge 2 now.&quot;</li>
+</ol>
+<h3 id="you-merged-something-you-shouldn39t-have">You Merged Something You Shouldn&#39;t Have</h3>
+<p><strong>You:</strong> Accepted and merged a PR meant for a student to merge.</p>
+<p><strong>Recovery:</strong></p>
+<ol>
+<li>Revert the PR (see &quot;Accidental Merge&quot; section)</li>
+<li>Apologize: &quot;I shouldn&#39;t have done that — I reverted it. Your merge is what counts.&quot;</li>
+<li>Have student re-merge it (they&#39;ll get the learning)</li>
+</ol>
+<hr>
+<h2 id="-prevention-strategies">🎯 Prevention Strategies</h2>
+<h3 id="before-workshop-even-starts">Before Workshop Even Starts</h3>
+<ul>
+<li><input aria-label="Test everything with your co-facilitator" disabled="" type="checkbox"> Test everything with your co-facilitator</li>
+<li><input aria-label="Try breaking things intentionally to know how to fix them" disabled="" type="checkbox"> Try breaking things intentionally to know how to fix them</li>
+<li><input aria-label="Document the fixes in your notes" disabled="" type="checkbox"> Document the fixes in your notes</li>
+<li><input aria-label="Create a shared &quot;if this then that&quot; troubleshooting doc with your co-facilitator" disabled="" type="checkbox"> Create a shared &quot;if this then that&quot; troubleshooting doc with your co-facilitator</li>
+</ul>
+<h3 id="during-workshop">During Workshop</h3>
+<ul>
+<li><input aria-label="Monitor dashboard constantly (not just when someone asks for help)" disabled="" type="checkbox"> Monitor dashboard constantly (not just when someone asks for help)</li>
+<li><input aria-label="Catch small issues before they become big ones" disabled="" type="checkbox"> Catch small issues before they become big ones</li>
+<li><input aria-label="Celebrate successful workflows (&quot;You&#39;re doing this perfectly!&quot;)" disabled="" type="checkbox"> Celebrate successful workflows (&quot;You&#39;re doing this perfectly!&quot;)</li>
+<li><input aria-label="Keep a running log of issues that came up so you can add to this guide next time" disabled="" type="checkbox"> Keep a running log of issues that came up so you can add to this guide next time</li>
+</ul>
+<h3 id="post-workshop">Post-Workshop</h3>
+<ul>
+<li><input aria-label="What issues came up? Add them to this guide." disabled="" type="checkbox"> What issues came up? Add them to this guide.</li>
+<li><input aria-label="What took longer than expected? Update timelines." disabled="" type="checkbox"> What took longer than expected? Update timelines.</li>
+<li><input aria-label="What automation failed? Document the fix." disabled="" type="checkbox"> What automation failed? Document the fix.</li>
+<li><input aria-label="What did facilitators do well? Keep doing it." disabled="" type="checkbox"> What did facilitators do well? Keep doing it.</li>
+</ul>
+<hr>
+<h2 id="-when-to-escalate">📞 When to Escalate</h2>
+<p><strong>Escalate to:</strong> GitHub Support, your organization admins, or external help when:</p>
+<ul>
+<li><input aria-label="GitHub itself is broken (Actions down, authentication issues, data loss)" disabled="" type="checkbox"> GitHub itself is broken (Actions down, authentication issues, data loss)</li>
+<li><input aria-label="Something is broken in the template repository (not a student issue)" disabled="" type="checkbox"> Something is broken in the template repository (not a student issue)</li>
+<li><input aria-label="You don&#39;t know how to fix it and neither does your co-facilitator" disabled="" type="checkbox"> You don&#39;t know how to fix it and neither does your co-facilitator</li>
+<li><input aria-label="A student&#39;s entire repo is corrupted" disabled="" type="checkbox"> A student&#39;s entire repo is corrupted</li>
+<li><input aria-label="Security issue (someone got access they shouldn&#39;t have)" disabled="" type="checkbox"> Security issue (someone got access they shouldn&#39;t have)</li>
+</ul>
+<p><strong>Don&#39;t escalate for:</strong> Issues described in this guide. You can handle them.</p>
+<hr>
+<h2 id="-you39ve-got-this">💪 You&#39;ve Got This</h2>
+<p>Most issues in this guide have happened to facilitators before. You&#39;re not the first and won&#39;t be the last.</p>
+<p>Key principles:</p>
+<ol>
+<li><strong>Stay calm</strong> — The students are watching. If you&#39;re calm, they&#39;re calm.</li>
+<li><strong>Explain out loud</strong> — &quot;Here&#39;s what I think is happening... let&#39;s check...&quot;</li>
+<li><strong>Don&#39;t pretend to know</strong> — &quot;I&#39;m not sure. Let&#39;s figure this out together.&quot;</li>
+<li><strong>Celebrate the fix</strong> — &quot;And we solved it! That&#39;s what debugging is.&quot;</li>
+<li><strong>Learn for next time</strong> — Note it so you&#39;re faster next time</li>
+</ol>
+<p>Every issue you solve is a story you&#39;ll tell at the next workshop.</p>
+<hr>
+<p><strong>Last Updated:</strong> May 2026 | <strong>Version:</strong> 1.0 | <strong>Maintainer:</strong> Jeff Bishop</p>
+
+  </main>
+  <footer role="contentinfo" class="site-footer">
+    <p><strong>GIT Going with GitHub</strong> - A workshop by <a href="https://community-access.org">Community Access</a></p>
+    <p><a href="https://github.com/community-access/git-going-with-github">View on GitHub</a> · <a href="https://community-access.org">community-access.org</a></p>
+  </footer>
+
+  </body>
+</html>

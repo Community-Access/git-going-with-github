@@ -1,11 +1,11 @@
 # Welcome to the Learning Room
 
-This repository is the shared practice space for the Open Source Assistive Technology Hackathon. It is a real GitHub repository where you will:
+This repository is your private Learning Room for the Git Going with GitHub workshop. GitHub Classroom created it from the Learning Room template so you can practice the full contribution workflow safely. In this repository you will:
 
 - File your first issue
 - Leave your first comment
 - Open your first pull request
-- Review someone else's pull request
+- Review a peer's pull request when facilitators pair you for review
 
 Everything in this repository is designed for learning. The files in `docs/` have intentional issues that you will find and fix during the workshop contribution sprint.
 
@@ -22,7 +22,7 @@ Everything in this repository is designed for learning. The files in `docs/` hav
 ## How to Contribute
 
 1. Open the canonical challenge list: `../docs/CHALLENGES.md`
-2. Find your assigned issue (Issues tab → filter by "Assignee: me" or search your username in issue title)
+2. Find your assigned issue (Issues tab -> filter by "Assignee: me" or search your username in the issue title)
 3. Claim the issue with a comment: `I'd like to try this!`
 4. Read the issue description - it tells you which file to edit and what to fix
 5. Click the file -> the edit pencil button -> make your change
@@ -87,7 +87,7 @@ As you complete challenges, you'll:
 ## Stuck? Use Guided References
 
 - [Solutions Index](docs/solutions/README.md) - challenge-by-challenge worked examples
-- [Skills-Inspired Bonus Scenarios](docs/skills-bonus-scenarios.md) - optional advanced practice adapted from GitHub Skills
+- [Challenge Hub bonus challenges](../docs/CHALLENGES.md#bonus-challenges) - optional advanced practice adapted from GitHub Skills
 
 Use these references after you attempt the challenge yourself. They are designed to unblock you, not replace your own practice.
 

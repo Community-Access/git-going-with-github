@@ -1,0 +1,370 @@
+[
+  {
+    "speaker": "ALEX",
+    "text": "Welcome back to Git Going with GitHub. This is episode 29: GitHub Security Features. I am Alex, and today we are turning GitHub Security Features from a list of instructions into a working mental model."
+  },
+  {
+    "speaker": "JAMIE",
+    "text": "And I am Jamie. I will stop us whenever the instructions sound simple on paper but might feel different with a keyboard and screen reader."
+  },
+  {
+    "speaker": "PAUSE",
+    "text": ""
+  },
+  {
+    "speaker": "ALEX",
+    "text": "Dependabot, secret scanning, code scanning, and private security advisories. That is the surface description. Underneath it, we are building judgment: where to focus, what to ignore, and how to verify the result."
+  },
+  {
+    "speaker": "JAMIE",
+    "text": "So we are not using the audio as a shortcut around learning. We are using it to make the learning easier to enter."
+  },
+  {
+    "speaker": "ALEX",
+    "text": "Yes. A good audio lesson gives someone enough context to try the work with confidence, even before they open the written material."
+  },
+  {
+    "speaker": "PAUSE",
+    "text": ""
+  },
+  {
+    "speaker": "JAMIE",
+    "text": "Okay, set the room for us. What are we walking into?"
+  },
+  {
+    "speaker": "ALEX",
+    "text": "Start with Dependabot, Secret Scanning, Code Scanning, and Private Advisories: Who this is for: Anyone contributing to open source repositories needs to understand how GitHub protects code and what security alerts mean. The next useful detail is this: This appendix explains the GitHub Security and quality tab, how to interpret and respond to alerts, and how to responsibly report vulnerabilities - including in community-access/accessibility-agents."
+  },
+  {
+    "speaker": "ALEX",
+    "text": "A solid pull request habit is to separate three questions: what changed, why it changed, and what still needs review. That keeps the conversation useful instead of noisy."
+  },
+  {
+    "speaker": "JAMIE",
+    "text": "How would you walk the room through that step by step?"
+  },
+  {
+    "speaker": "ALEX",
+    "text": "Start with Quick Navigation. There is something to understand, something to try, and something that proves the try worked."
+  },
+  {
+    "speaker": "ALEX",
+    "text": "First, the Security and quality tab - What It Contains. Then, dependabot - Automated Dependency Updates. After that, secret Scanning - Preventing Credential Leaks. Finally, code Scanning and CodeQL. Treat it like a recipe: do not add the next ingredient until the previous one is actually in the bowl."
+  },
+  {
+    "speaker": "JAMIE",
+    "text": "What does the learner do first, second, and then after that?"
+  },
+  {
+    "speaker": "ALEX",
+    "text": "First, private Vulnerability Reporting. Then, the SECURITY.md File. After that, software Bill of Materials (SBOM). Finally, screen Reader Navigation of the Security and quality tab. It is a checklist, but a meaningful one: every item creates evidence that the next step is safe."
+  },
+  {
+    "speaker": "ALEX",
+    "text": "A solid navigation habit is to prove where you are before activating controls. Headings, landmarks, and the address bar are not trivia; they are your map."
+  },
+  {
+    "speaker": "JAMIE",
+    "text": "What is the one idea that makes the next few steps less mysterious?"
+  },
+  {
+    "speaker": "ALEX",
+    "text": "This is where 1. The Security and quality tab - What It Contains becomes real: every GitHub repository has a Security and quality tab in its navigation bar. That matters in practice: What you see there depends on whether you are a contributor with elevated access or a public viewer."
+  },
+  {
+    "speaker": "PAUSE",
+    "text": ""
+  },
+  {
+    "speaker": "ALEX",
+    "text": "Now bring the learner back to the room. Start with Public viewers see. There is something to understand, something to try, and something that proves the try worked."
+  },
+  {
+    "speaker": "ALEX",
+    "text": "For a learner, the useful signals are these. Security policy (if the repo has a SECURITY.md). The private vulnerability reporting form (if enabled by the maintainer)."
+  },
+  {
+    "speaker": "JAMIE",
+    "text": "What would you say to someone who is already bracing for this to be too much?"
+  },
+  {
+    "speaker": "ALEX",
+    "text": "Start with Contributors with write or admin access see. There is something to understand, something to try, and something that proves the try worked."
+  },
+  {
+    "speaker": "ALEX",
+    "text": "The parts worth keeping in working memory are these. Dependabot alerts. Secret scanning alerts. Code scanning alerts. Security advisories. The ability to manage security settings."
+  },
+  {
+    "speaker": "ALEX",
+    "text": "The useful habit is simple: orient first, act second, verify third. That pause before acting is part of the work."
+  },
+  {
+    "speaker": "ALEX",
+    "text": "That matters because of the next idea. Start with Learning Cards: The Security and quality tab. There is something to understand, something to try, and something that proves the try worked."
+  },
+  {
+    "speaker": "ALEX",
+    "text": "On the ground, that means a few things. Use G then S (GitHub keyboard shortcut) to jump directly to the Security and quality tab from any repo page -- much faster than Tab-navigating the full nav bar. The Security and quality tab content varies by your access level -- public viewers see only the security policy and vulnerability reporting form; contributors with write access see alerts. Dependabot alerts, secret scanning alerts, and code scanning alerts are each a separate link inside the Security and quality tab -- use K to navigate between them. The Security and quality tab link sits in the repository's top navigation bar alongside Code, Issues, PRs, and Actions -- zoom in if the tab labels are small. Alert severity badges (Critical, High, Medium, Low) use colored labels -- each badge also includes the severity word, so color is not the only indicator. If the Security and quality tab shows \"No alerts,\" that is good news -- look for the green shield icon next to the tab name as confirmation."
+  },
+  {
+    "speaker": "PAUSE",
+    "text": ""
+  },
+  {
+    "speaker": "JAMIE",
+    "text": "If I am listening before the workshop starts, what should settle in my mind first?"
+  },
+  {
+    "speaker": "ALEX",
+    "text": "Here is the plain-English version of 2. Dependabot - Automated Dependency Updates. Dependabot is GitHub's automated dependency monitoring and update system."
+  },
+  {
+    "speaker": "ALEX",
+    "text": "This is where the talk moves from concept to action. This is where Dependabot Alerts becomes real: when a known security vulnerability (CVE - Common Vulnerability and Exposure) is discovered in a package your project depends on, GitHub creates a Dependabot alert."
+  },
+  {
+    "speaker": "JAMIE",
+    "text": "Turn that into a path someone can follow."
+  },
+  {
+    "speaker": "ALEX",
+    "text": "Start with What to do as a contributor when you see an alert. There is something to understand, something to try, and something that proves the try worked."
+  },
+  {
+    "speaker": "ALEX",
+    "text": "First, read the advisory to understand the vulnerability scope. Then, check whether the project actually uses the vulnerable code path. After that, the fix is almost always: update the dependency to the fixed version. Finally, dependabot Security Updates may have already opened a PR - check the PRs tab. It is like walking a hallway with named doors: read the sign, enter the right room, then confirm where you landed."
+  },
+  {
+    "speaker": "PAUSE",
+    "text": ""
+  },
+  {
+    "speaker": "ALEX",
+    "text": "Before the learner moves on. The reason Dependabot Security Updates matters is that if enabled, Dependabot automatically opens a PR to update the vulnerable dependency. That gives the learner a simple foothold: as a contributor with access, reviewing and merging these Dependabot PRs is a high-value, low-risk way to contribute. The interface gets friendlier when it stops being a wall of controls and starts being a set of named places."
+  },
+  {
+    "speaker": "JAMIE",
+    "text": "Give me the version that sounds like an instructor, not a manual."
+  },
+  {
+    "speaker": "ALEX",
+    "text": "Start with Dependabot Version Updates: Beyond security fixes, Dependabot can be configured to open PRs keeping all dependencies at their latest versions (not just security fixes). The next useful detail is this: This is configured in.github/dependabot.yml."
+  },
+  {
+    "speaker": "ALEX",
+    "text": "Hold that next to this. Here is the plain-English version of 3. Secret Scanning - Preventing Credential Leaks. Secret scanning detects if you accidentally commit tokens, API keys, passwords, or other credentials to a repository."
+  },
+  {
+    "speaker": "PAUSE",
+    "text": ""
+  },
+  {
+    "speaker": "JAMIE",
+    "text": "Where do you want a learner to place their attention here?"
+  },
+  {
+    "speaker": "ALEX",
+    "text": "This is where Push Protection (Real-Time Prevention) becomes real: push Protection intercepts a git push before it reaches GitHub and blocks it if it detects a known secret pattern."
+  },
+  {
+    "speaker": "JAMIE",
+    "text": "What is the ordered workflow?"
+  },
+  {
+    "speaker": "ALEX",
+    "text": "Keep the learner anchored in What to do. Best practice: Use environment variables for secrets, never hardcode them. A good GitHub workflow is like a well-run meeting: everyone knows the topic, the next action, and who has the floor."
+  },
+  {
+    "speaker": "ALEX",
+    "text": "First, remove the secret from the file immediately. Then, rotate the exposed credential (GitHub will automatically revoke detected GitHub tokens). After that, if it was a false positive, you can bypass with justification - but investigate first. It is like walking a hallway with named doors: read the sign, enter the right room, then confirm where you landed."
+  },
+  {
+    "speaker": "JAMIE",
+    "text": "Let's pause on Secret Scanning Alerts. What should a learner take away from it?"
+  },
+  {
+    "speaker": "ALEX",
+    "text": "The reason Secret Scanning Alerts matters is that for public repositories, GitHub scans all existing commits and creates alerts for any detected secrets. That gives the learner a simple foothold: these appear in Security → Secret scanning."
+  },
+  {
+    "speaker": "PAUSE",
+    "text": ""
+  },
+  {
+    "speaker": "ALEX",
+    "text": "Here is the practical turn. Start with Learning Cards: Secret Scanning. There is something to understand, something to try, and something that proves the try worked."
+  },
+  {
+    "speaker": "ALEX",
+    "text": "Here is what that changes in practice. If your git push is blocked with \"GH013: Repository rule violations found,\" the terminal output lists the exact file, line number, and secret type -- read the error lines carefully. After removing the secret from your code, use environment variables instead (process.env.GITHUB TOKEN) -- your screen reader will confirm the variable name in the code. Secret scanning alerts appear under Security and quality tab, Secret scanning -- navigate with T to reach the alert table, then arrow keys to read each row. Push Protection error messages appear in your terminal with red text -- increase terminal font size to read the file path, line number, and secret type clearly. The secret scanning alert list in the Security and quality tab uses a table layout -- zoom in to read the Secret type and Location columns. Environment variable names in code (like process.env.GITHUB TOKEN) are easier to spot when syntax highlighting is enabled in your editor theme."
+  },
+  {
+    "speaker": "JAMIE",
+    "text": "Let's pause on 4. Code Scanning and CodeQL. What should a learner take away from it?"
+  },
+  {
+    "speaker": "ALEX",
+    "text": "Here is the plain-English version of 4. Code Scanning and CodeQL. Code scanning uses static analysis to find security vulnerabilities in the code itself (not dependencies). Put another way, GitHub's built-in tool is CodeQL, which understands the code's logic and can detect."
+  },
+  {
+    "speaker": "ALEX",
+    "text": "The room should hear these as checkpoints. SQL injection risks. Cross-site scripting (XSS) vulnerabilities. Path traversal issues. Insecure cryptography usage."
+  },
+  {
+    "speaker": "ALEX",
+    "text": "Keep the thread going. This is where Reading a Code Scanning Alert becomes real: as a contributor: Code scanning alerts are excellent, well-scoped contribution opportunities. That matters in practice: Each alert shows you the exact file, line, and the data flow causing the issue. The workshop is closer to rehearsal than lecture. You hear the move, try the move, and then check what changed."
+  },
+  {
+    "speaker": "PAUSE",
+    "text": ""
+  },
+  {
+    "speaker": "JAMIE",
+    "text": "Let's pause on Where to Find Code Scanning Alerts. What should a learner take away from it?"
+  },
+  {
+    "speaker": "ALEX",
+    "text": "Keep the learner anchored in Where to Find Code Scanning Alerts. Security and quality tab → Code scanning → filter by severity, rule, or file."
+  },
+  {
+    "speaker": "ALEX",
+    "text": "Another way to ground it. The reason 5. Private Vulnerability Reporting matters is that when you discover a security vulnerability in a project, never report it as a public issue. That gives the learner a simple foothold: a public issue immediately broadcasts the vulnerability to anyone who could exploit it."
+  },
+  {
+    "speaker": "JAMIE",
+    "text": "Give me the sequence, because order matters here."
+  },
+  {
+    "speaker": "ALEX",
+    "text": "Start with How to Submit a Private Report. There is something to understand, something to try, and something that proves the try worked."
+  },
+  {
+    "speaker": "ALEX",
+    "text": "A few details make that real. Severity: Your assessment. Affected versions: Which versions are vulnerable. CVSS score: Optional - the Common Vulnerability Scoring System rating."
+  },
+  {
+    "speaker": "ALEX",
+    "text": "First, navigate to the repository's Security and quality tab. Then, select \"Report a vulnerability\" (this button only appears if the maintainer has enabled private reporting). After that, fill in the form. Finally, submit - only the maintainers see your report. Think of it as a rail line: each stop confirms you are still on the right route before the next one."
+  },
+  {
+    "speaker": "PAUSE",
+    "text": ""
+  },
+  {
+    "speaker": "JAMIE",
+    "text": "Let's pause on The Responsible Disclosure Process. What should a learner take away from it?"
+  },
+  {
+    "speaker": "ALEX",
+    "text": "Start with The Responsible Disclosure Process. There is something to understand, something to try, and something that proves the try worked."
+  },
+  {
+    "speaker": "ALEX",
+    "text": "First, maintainers acknowledge your report (typically within 1-7 days for active projects). Then, they may ask follow-up questions in the private advisory thread. After that, they develop and test a fix. Finally, they request a CVE (Common Vulnerability and Exposure) number from GitHub. Treat it like a recipe: do not add the next ingredient until the previous one is actually in the bowl."
+  },
+  {
+    "speaker": "JAMIE",
+    "text": "Before we leave The Responsible Disclosure Process, what is the practical point?"
+  },
+  {
+    "speaker": "ALEX",
+    "text": "First, they publish a new release with the fix. Then, they publish a public security advisory - you may be credited as the reporter. After that, the CVE is published publicly (usually 90 days after report or after the fix is released). It is a checklist, but a meaningful one: every item creates evidence that the next step is safe."
+  },
+  {
+    "speaker": "JAMIE",
+    "text": "Let's pause on What If the Maintainer Doesn't Respond? What should a learner take away from it?"
+  },
+  {
+    "speaker": "ALEX",
+    "text": "This is where What If the Maintainer Doesn't Respond? becomes real: if a maintainer doesn't respond within a reasonable time (30-90 days is the standard window)."
+  },
+  {
+    "speaker": "ALEX",
+    "text": "First, send a follow-up in the private advisory thread. Then, contact GitHub directly if the issue is critical (GitHub can assist with coordinated disclosure). After that, follow the project's SECURITY.md for their stated disclosure policy. It is a checklist, but a meaningful one: every item creates evidence that the next step is safe."
+  },
+  {
+    "speaker": "ALEX",
+    "text": "The next layer is this. Keep the learner anchored in 6. The SECURITY.md File. A SECURITY.md file at the repository root defines the project's security policy. This is the part to say slowly: accessibility-agents's security policy: community-access/accessibility-agents has a SECURITY.md that points to GitHub's private advisory form."
+  },
+  {
+    "speaker": "ALEX",
+    "text": "These are the details that keep the idea from floating away. Supported versions: Which versions receive security patches. Reporting instructions: How to report a vulnerability (email, private advisory form, etc.). Response timeline: How quickly maintainers aim to respond. Disclosure policy: When the project will publish a fix publicly."
+  },
+  {
+    "speaker": "PAUSE",
+    "text": ""
+  },
+  {
+    "speaker": "JAMIE",
+    "text": "Let's pause on Navigating to a Repository's SECURITY.md. What should a learner take away from it?"
+  },
+  {
+    "speaker": "ALEX",
+    "text": "Start with Navigating to a Repository's SECURITY.md. There is something to understand, something to try, and something that proves the try worked."
+  },
+  {
+    "speaker": "ALEX",
+    "text": "First, security and quality tab → Policies section → \"Security policy\" link. Then, or directly: https://github.com/owner/repo/security/policy. The rhythm is simple: orient, act, verify, then continue."
+  },
+  {
+    "speaker": "ALEX",
+    "text": "Treat examples as spoken recipes, not decorations. You may hear something like Security and quality tab → H → \"Policy\" heading → Link: \"Security policy\" → Enter. Read the command, understand what it changes, then run it only when the repository state matches the lesson."
+  },
+  {
+    "speaker": "ALEX",
+    "text": "This is the part worth saying out loud. Start with 7. Software Bill of Materials (SBOM): An SBOM is a machine-readable inventory of every component (libraries, packages, dependencies) in a software project. The next useful detail is this: It is increasingly required by enterprise and government organizations for supply chain security compliance. Think of it like entering a new building: first you find the lobby, then the room, then the door you actually need."
+  },
+  {
+    "speaker": "JAMIE",
+    "text": "Let's pause on Exporting an SBOM from GitHub. What should a learner take away from it?"
+  },
+  {
+    "speaker": "ALEX",
+    "text": "Start with Exporting an SBOM from GitHub. There is something to understand, something to try, and something that proves the try worked."
+  },
+  {
+    "speaker": "ALEX",
+    "text": "That becomes easier when you listen for these cues. Your organization requires SBOM documentation before adopting an open source dependency. You're auditing a project's complete dependency chain. You want to identify license compatibility for a commercial product."
+  },
+  {
+    "speaker": "ALEX",
+    "text": "First, navigate to the repository's Insights tab. Then, select \"Dependency graph\". After that, select \"Export SBOM\" button (top right of the Dependency graph page). Finally, GitHub generates a SPDX-format JSON file listing all dependencies with their versions and licenses. Treat it like a recipe: do not add the next ingredient until the previous one is actually in the bowl."
+  },
+  {
+    "speaker": "PAUSE",
+    "text": ""
+  },
+  {
+    "speaker": "ALEX",
+    "text": "That connects to another useful point. This is where 9. Security and Accessibility Agents becomes real: accessibility Agents' /security-dashboard slash command gives you a quick security overview without visiting the Security and quality tab in the browser."
+  },
+  {
+    "speaker": "JAMIE",
+    "text": "Let's pause on Sample output. What should a learner take away from it?"
+  },
+  {
+    "speaker": "ALEX",
+    "text": "Keep the learner anchored in Sample output. Next: Appendix Q: GitHub Actions Back: Appendix O: Branch Protection Teaching chapter: Chapter 08: Open Source Culture."
+  },
+  {
+    "speaker": "PAUSE",
+    "text": ""
+  },
+  {
+    "speaker": "JAMIE",
+    "text": "What should people carry with them after this?"
+  },
+  {
+    "speaker": "ALEX",
+    "text": "Carry the map. Know what page or tool you are in, know which action you are taking, and know what confirmation should follow. If the confirmation is missing, pause. That pause is not wasted time; it is professional judgment."
+  },
+  {
+    "speaker": "JAMIE",
+    "text": "That is a better way to say it than just follow the steps."
+  },
+  {
+    "speaker": "ALEX",
+    "text": "Right. Steps matter, but understanding wins. That is episode 29. Next in the series is episode 30, where we keep building the same contributor muscles."
+  }
+]

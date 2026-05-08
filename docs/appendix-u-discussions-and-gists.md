@@ -12,7 +12,7 @@
 
 
 >
-> **Listen to Episode 24:** [GitHub Discussions](../PODCASTS.md) - a conversational audio overview of this chapter. Listen before reading to preview the concepts, or after to reinforce what you learned.
+> **Listen to Episode 24:** [GitHub Discussions](../admin/PODCASTS.md) - a conversational audio overview of this chapter. Listen before reading to preview the concepts, or after to reinforce what you learned.
 
 ## Forum-Style Conversations Beyond Issues and Pull Requests
 
@@ -319,7 +319,7 @@ This works well for first-response drafts on Q&A threads or community questions 
 ## GitHub Gists
 
 >
-> **Listen to Episode 23:** [GitHub Gists](../PODCASTS.md) - a conversational audio overview of this chapter. Listen before reading to preview the concepts, or after to reinforce what you learned.
+> **Listen to Episode 23:** [GitHub Gists](../admin/PODCASTS.md) - a conversational audio overview of this chapter. Listen before reading to preview the concepts, or after to reinforce what you learned.
 
 ## Shareable Code Snippets and Notes
 

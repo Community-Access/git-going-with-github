@@ -3,6 +3,8 @@
 
 This guide walks you through everything you need to set up before your first GitHub contribution. Complete all steps before the workshop begins.
 
+> **Workshop practice file:** This Learning Room copy intentionally contains a few small issues for students to find and fix during the workshop. Follow your assigned challenge issue before changing any `[TODO]` marker or broken sample link.
+
 
 ## Step 1 - Create a GitHub Account
 
@@ -100,4 +102,4 @@ If you run into setup issues before the workshop:
 - Ask your question in the issue - be specific about what step you are on and what happens when you try it
 
 
-*Note: Links marked [TODO] in this document need to be updated before the workshop. See the facilitator guide for details.*
+*Facilitator note: Links marked `[TODO]` and the sample broken link in this document are intentional practice targets for student issues and pull requests.*

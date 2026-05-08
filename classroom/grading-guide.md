@@ -33,7 +33,7 @@ The `(auto)` tag in the per-challenge tables below marks rows where the autograd
 
 | # | Challenge | Evidence | Complete if... |
 |---|---|---|---|
-| 01 | Scavenger Hunt | Issue comment listing findings | Student explored multiple tabs and found key files |
+| 01 | Find Your Way Around | Issue comment listing findings | Student explored multiple tabs and found key files |
 | 02 | First Issue (auto) | Open issue | Title is clear and body has context |
 | 03 | Join the Conversation | Comment thread with @mention | At least one substantive reply to the peer-simulation issue or a real buddy issue if access is provisioned |
 | 04 | Branch Out | Branch exists | Any branch with any name exists |

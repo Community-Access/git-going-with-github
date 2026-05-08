@@ -1,6 +1,6 @@
 # GitHub Copilot
 >
-> **Listen to Episode 14:** [GitHub Copilot](../PODCASTS.md) - a conversational audio overview of this chapter. Listen before reading to preview the concepts, or after to reinforce what you learned.
+> **Listen to Episode 14:** [GitHub Copilot](../admin/PODCASTS.md) - a conversational audio overview of this chapter. Listen before reading to preview the concepts, or after to reinforce what you learned.
 
 > **Related appendices:** [Appendix K: Copilot Reference](appendix-k-copilot-reference.md) | [Appendix G: VS Code Reference](appendix-g-vscode-reference.md)
 > **Authoritative sources:** [GitHub Docs: About GitHub Copilot](https://docs.github.com/en/copilot/about-github-copilot/what-is-github-copilot) | [GitHub Accessibility: Copilot in VS Code](https://accessibility.github.com/documentation/guide/github-copilot-vsc/) | [VS Code Docs: GitHub Copilot](https://code.visualstudio.com/docs/copilot/overview)
@@ -25,20 +25,20 @@
 > **Mac keyboard shortcuts:** Throughout this chapter, all `Ctrl+` shortcuts use `Cmd+` on Mac, and `Alt+` shortcuts use `Option+` on Mac. Key equivalents: `Ctrl+Shift+I` → `Cmd+Shift+I` (Chat), `Ctrl+I` → `Cmd+I` (inline chat), `Alt+F2` → `Option+F2` (Accessible View), `Ctrl+/` → `Cmd+/` (insert suggestion). See the [Keyboard Shortcuts Reference](#8-keyboard-shortcuts-reference) at the end of this chapter for the complete list.
 
 
-## Workshop Recommendation (Chapter 13)
+## Workshop Recommendation (Chapter 16 / Challenge 13)
 
-> ** Free to Use:** GitHub Copilot Free tier is included with all GitHub accounts at no cost. This workshop uses only the free tier. If you're on an organization with GitHub Enterprise, you may have Copilot Pro included—either way, you're covered.
+> **Free to use:** GitHub Copilot Free tier is included with all GitHub accounts at no cost. This workshop uses only the free tier. If you're on an organization with GitHub Enterprise, you may have Copilot Pro included; either way, you're covered.
 >
 > **Billing guidance for this workshop:** GitHub Copilot plans and billing are changing. We will provide specific guidance at the workshop, as this is a continuing moving target and is subject to change as we approach the event. If you are unsure whether your account has Copilot access, check [github.com/settings/copilot](https://github.com/settings/copilot) or ask a facilitator before the workshop begins.
 
-Chapter 13 introduces **GitHub Copilot** for AI-assisted documentation and writing.
+Chapter 16 introduces **GitHub Copilot** for AI-assisted documentation and writing. It supports Challenge 13: AI as Your Copilot.
 
 - **Challenge count:** 3 guided challenges
 - **Automation check:** none (tool configuration is account-local and account-specific)
 - **Evidence:** issue comment with checklist of completed actions
 - **Pattern:** install, prompt, apply, reflect
 
-### Chapter 13 Challenge Set
+### Challenge 13 Set
 
 1. **Sign in to GitHub Copilot** - authenticate with GitHub (VS Code 1.116+ has Copilot built in; no extension install needed).
 2. **Ask Copilot to explain a codebase** - clone the sci-fi themes repo and use Copilot Chat to understand it.
@@ -105,9 +105,9 @@ Chapter 13 introduces **GitHub Copilot** for AI-assisted documentation and writi
 
 **You are done when:** Your personalized thinking phrases appear when Copilot is processing a response.
 
-### Completing Chapter 13: Submit Your Evidence
+### Completing Challenge 13: Submit Your Evidence
 
-Open your **assigned Chapter 13 challenge issue** and post a completion comment:
+Open your **assigned Challenge 13 issue** and post a completion comment:
 
 ```text
 Chapter 13 completed:
@@ -118,7 +118,7 @@ Chapter 13 completed:
 - My theme universe: [your choice]
 ```
 
-Close your Chapter 13 challenge issues when done.
+Close your Challenge 13 issue when done.
 
 ### Expected Outcomes
 
@@ -902,7 +902,7 @@ Copilot on GitHub.com has context about your repositories, issues, PRs, and code
 When you open a pull request on GitHub.com, Copilot can generate a description for you automatically.
 
 1. Start creating a new pull request: go to your branch and select **"Compare & pull request"**
-2. In the PR form, look for the **✨ sparkle / Copilot icon** next to the description field
+2. In the PR form, look for the **Copilot icon** next to the description field
 3. Click it — Copilot reads your commits and diff and writes a draft description
 4. Review and edit the draft — it typically includes what changed and why
 5. Submit the PR
@@ -923,14 +923,14 @@ Maintainers can use Copilot to review pull requests on GitHub.com. As a contribu
 
 | Feature | GitHub.com | VS Code |
 |---------|-----------|---------|
-| Chat (general questions) | ✅ | ✅ |
-| Repository / issue / PR context | ✅ Built-in | ✅ Via `@github` |
-| Inline code suggestions | ❌ | ✅ |
-| Copilot Edits (multi-file) | ❌ | ✅ |
-| Agent mode | ❌ | ✅ |
-| PR description generation | ✅ | ❌ |
-| Code review comments | ✅ (for maintainers) | ❌ |
-| No install required | ✅ | Requires extension |
+| Chat (general questions) | Yes | Yes |
+| Repository / issue / PR context | Yes, built in | Yes, via `@github` |
+| Inline code suggestions | No | Yes |
+| Copilot Edits (multi-file) | No | Yes |
+| Agent mode | No | Yes |
+| PR description generation | Yes | No |
+| Code review comments | Yes, for maintainers | No |
+| No install required | Yes | Requires extension |
 
 ---
 

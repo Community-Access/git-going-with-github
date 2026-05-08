@@ -1,6 +1,6 @@
 # Appendix S: Releases, Tags, and Repository Insights
 >
-> **Listen to Episode 25:** [Releases, Tags, and Insights](../PODCASTS.md) - a conversational audio overview of this chapter. Listen before reading to preview the concepts, or after to reinforce what you learned.
+> **Listen to Episode 25:** [Releases, Tags, and Insights](../admin/PODCASTS.md) - a conversational audio overview of this chapter. Listen before reading to preview the concepts, or after to reinforce what you learned.
 
 > **Reference companion to:** [Chapter 08: Open Source Culture](08-open-source-culture.md)
 >

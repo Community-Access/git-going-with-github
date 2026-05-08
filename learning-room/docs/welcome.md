@@ -2,6 +2,8 @@
 
 This guide is for people who are new to contributing to open source software. It explains what contribution means, who it is for, and how to get started.
 
+> **Workshop practice file:** This Learning Room copy intentionally includes `[TODO]` sections for students to complete during the contribution challenges. If you are not working on the assigned challenge, leave the placeholders in place.
+
 
 ## What Is Open Source?
 

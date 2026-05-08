@@ -16,21 +16,21 @@ Welcome to Git Going with GitHub! This is your private learning repository for D
 
 ## What You Will Do Today
 
-By the end of Day 1, you will have:
+During the live Day 1 core path, you will practice the skills needed to make your first browser-based GitHub contribution. If the room needs more time, later challenges can continue during open lab time or after the event.
 
-- Navigated a real GitHub repository using your screen reader
-- Filed your first issue describing something you noticed
-- Communicated with teammates using @mentions and comments
-- Created a branch to work in safely
-- Made your first commit to a file
-- Opened a pull request linking your work to an issue
-- Resolved a merge conflict (or learned how)
-- Reflected on open source culture and communication
-- Merged a pull request into the main branch
+- Navigate a real GitHub repository using your screen reader
+- File your first issue describing something you noticed
+- Communicate with teammates using @mentions and comments
+- Create a branch to work in safely
+- Make your first commit to a file
+- Open a pull request linking your work to an issue
+- Learn how merge conflicts work, with live support if time allows
+- Reflect on open source culture and communication, live or asynchronously
+- Merge a pull request into the main branch, or leave with clear next steps to finish it
 
 ## Challenges
 
-Complete these challenges in order. Each one builds on the previous. When you close a challenge issue, the Student Progression Bot automatically opens your next challenge.
+Complete these challenges in order. Each one builds on the previous. When you close a challenge issue, the Student Progression Bot automatically opens your next challenge. The live agenda prioritizes Challenges 1-6; Challenges 7-9 are available as stretch or async follow-up.
 
 | Challenge | What You Do | Chapter |
 |---|---|---|
@@ -39,9 +39,9 @@ Complete these challenges in order. Each one builds on the previous. When you cl
 | 3. Join the Conversation | Mention a teammate or bot using @mentions | [Chapter 5](https://github.com/Community-Access/git-going-with-github/blob/main/docs/05-working-with-issues.md) |
 | 4. Branch Out | Create a feature branch for your work | [Chapter 4](https://github.com/Community-Access/git-going-with-github/blob/main/docs/04-the-learning-room.md) |
 | 5. Make Your Mark | Edit a file and commit with a clear message | [Chapter 4](https://github.com/Community-Access/git-going-with-github/blob/main/docs/04-the-learning-room.md) |
-| 6. Your First Pull Request | Open a PR that references an issue with `Closes #N` | [Chapter 6](https://github.com/Community-Access/git-going-with-github/blob/main/docs/06-working-with-pull-requests.md) |
-| 7. Resolve a Merge Conflict | Understand and fix conflict markers | [Chapter 7](https://github.com/Community-Access/git-going-with-github/blob/main/docs/07-merge-conflicts.md) |
-| 8. Open Source Culture | Reflect on community norms and communication | [Chapter 8](https://github.com/Community-Access/git-going-with-github/blob/main/docs/08-open-source-culture.md) |
+| 6. Open Your First Pull Request | Open a PR that references an issue with `Closes #N` | [Chapter 6](https://github.com/Community-Access/git-going-with-github/blob/main/docs/06-working-with-pull-requests.md) |
+| 7. Survive a Merge Conflict | Understand and fix conflict markers | [Chapter 7](https://github.com/Community-Access/git-going-with-github/blob/main/docs/07-merge-conflicts.md) |
+| 8. The Culture Layer | Reflect on community norms and communication | [Chapter 8](https://github.com/Community-Access/git-going-with-github/blob/main/docs/08-open-source-culture.md) |
 | 9. Merge Day | Get your PR reviewed, approved, and merged | [Chapter 10](https://github.com/Community-Access/git-going-with-github/blob/main/docs/10-notifications-and-day-1-close.md) |
 
 ## Autograded Challenges

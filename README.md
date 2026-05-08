@@ -11,7 +11,7 @@ License: CC BY 4.0 | [Site](https://community-access.org/git-going-with-github/)
 | Detail | Information |
 |---|---|
 | **Workshop site** | [community-access.org/git-going-with-github](https://community-access.org/git-going-with-github/) |
-| **Registration** | Closed - thank you to all who registered! |
+| **Registration** | [Student opt-in and waitlist workflow](https://community-access.org/git-going-with-github/REGISTER.html) |
 | **Discussions** | [Join the conversation](https://github.com/community-access/git-going-with-github/discussions) |
 | **Support** | [File an issue](https://github.com/community-access/git-going-with-github/issues) |
 | **Dates** | May 21, 2026 & May 22, 2026 |
@@ -22,7 +22,7 @@ License: CC BY 4.0 | [Site](https://community-access.org/git-going-with-github/)
 >
 > This workshop is built around a real, live open source project: **[Accessibility Agents](https://github.com/community-access/accessibility-agents)** - 55 AI agents across 3 teams and 5 platforms for accessible, agentic repository management. It was built by your facilitator Jeff Bishop and is MIT-licensed.
 >
-> You will fork it, understand it, contribute to it, and personalize it. By the end of Day 2, your name is in its commit history.
+> You will fork it, understand it, contribute to it, and personalize it. The live workshop prepares you to make a real contribution, and the async continuation path gives you time to polish and submit it well.
 >
 > **Accessibility Agents does not replace what you learn on Day 1. It amplifies it.** The agents only make sense when you already understand the skills they automate. That is why Day 1 comes first - and why every guide in this repository shows you the manual path before it shows you the agent path.
 
@@ -35,7 +35,7 @@ During this two-day workshop, you will learn how to confidently navigate and con
 - **Keyboard-only navigation** - no mouse required
 - **GitHub Copilot** (Day 2) - AI-assisted writing and coding in the browser and in VS Code
 
-By the end of this event, you will have made **real contributions** to a real repository. Not simulated. Not pretend. Real.
+By the end of this event, you will have practiced **real contribution workflows** in a real repository. Some participants will ship during the live event; others will leave with a branch, a pull request path, and clear next steps to finish asynchronously.
 
 
 ## Who Is This For?
@@ -55,7 +55,7 @@ You do **not** need to know how to code to participate and contribute meaningful
 | Day | Focus | What You Will Do |
 |-----|-------|-----------------|
 | **Day 1** | GitHub Foundations | Set up your environment, learn GitHub navigation with your screen reader, file your first issue, open your first pull request |
-| **Day 2** | VS Code + Accessibility Agents | Bridge from the browser to **github.dev** (VS Code in your browser - no install needed), then step into **Visual Studio Code** on the desktop, learn VS Code basics, use GitHub Copilot, activate the Accessibility Agents ecosystem (55 agents, 3 teams, 5 platforms), run agentic workflows in the cloud, and ship a real PR upstream to `community-access/accessibility-agents` |
+| **Day 2** | VS Code + Accessibility Agents | Bridge from the browser to **github.dev** (VS Code in your browser - no install needed), then step into **Visual Studio Code** on the desktop, learn VS Code basics, use GitHub Copilot, activate the Accessibility Agents ecosystem (55 agents, 3 teams, 5 platforms), see agentic workflows in the cloud, and prepare a real upstream contribution path |
 
 ### The Journey Arc
 
@@ -75,24 +75,26 @@ github.dev - VS Code on the web, no install needed
 
 Day 2 - Deepen with VS Code + Accessibility Agents
   Learn VS Code basics → Copilot inline → Copilot Chat
-  @daily-briefing → @issue-tracker → @pr-review → @analytics → ship upstream
+  @daily-briefing → @issue-tracker → @pr-review → @analytics → prepare upstream
 ```
 
 Every skill you build on Day 1 maps directly to an Accessibility Agents command on Day 2. The agent is not a shortcut - it is a multiplier. You have to understand what it is doing to know when it is wrong.
 
-**By the end of Day 2, you will have:**
+**By the end of the Day 2 core path, you will have:**
 - A fork of `accessibility-agents` with your personalized preferences
-- At least one merged PR in a real open source project
-- Your name in the commit history of `community-access/accessibility-agents`
+- A branch or pull request path for a real open source contribution
+- Clear next steps to get your contribution reviewed and merged
 - A working set of 55 AI agents across 3 teams that travel with your fork to any repository you apply them to
 
 
 ## How to Read These Docs
 
-All documentation lives in the `docs/` folder. Read them in order for the full experience, or jump to what you need.
+All documentation lives in the `docs/` folder. If you are new, start with [Get Going with GitHub](docs/get-going.md). It explains the GitHub Classroom assignment link, your private Learning Room repository, the first challenge issue, how evidence works, and how to choose the tool path that fits you.
+
+Facilitators preparing a cohort should use the [Go-Live QA Guide](GO-LIVE-QA-GUIDE.md) as the release gate before sharing Classroom invite links.
 
 
-##  Your Challenges
+## Your Challenges
 
 **16 challenges guide you through the workshop, plus 5 bonus challenges for those who finish early.**
 
@@ -111,7 +113,7 @@ Every chapter has an "If You Get Stuck" section. Every challenge has a [referenc
 
 > **HTML Version Available:** All markdown documentation is automatically converted to HTML format. After cloning the repository, you can browse the `html/` directory for web-formatted versions of every document. See [BUILD.md](BUILD.md) for details.
 
-> **Audio Series Available:** Every chapter and appendix has a companion podcast episode - a conversational two-host overview perfect for previewing concepts or reducing screen reader fatigue. [Browse all 44 episodes](PODCASTS.md) or [subscribe via RSS](https://community-access.org/git-going-with-github/podcasts/feed.xml).
+> **Audio Series Available:** Every chapter and appendix has a companion podcast episode - a conversational two-host overview perfect for previewing concepts or reducing screen reader fatigue. The refreshed catalog now covers 54 companion episodes, with Challenge Coach episodes planned as a separate teaching layer. [Browse the podcast episodes](admin/PODCASTS.md) or [subscribe via RSS](https://community-access.org/git-going-with-github/podcasts/feed.xml).
 
 ### Quick Navigation
 
@@ -121,11 +123,12 @@ Every chapter has an "If You Get Stuck" section. Every challenge has a [referenc
 
 | # | Document | What It Covers |
 |---|----------|----------------|
+| [Start](docs/get-going.md) | **Get Going with GitHub** | GitHub Classroom onboarding, Learning Room first steps, support, and tool choice |
 | [00](docs/00-pre-workshop-setup.md) | **Pre-Workshop Setup** | Everything to install and configure before Day 1 |
 | [01](docs/01-choose-your-tools.md) | **Choose Your Tools** | Screen reader options, tooling decisions, and workflow setup |
 | [02](docs/02-understanding-github.md) | **Understanding GitHub** | How GitHub is organized, page types, landmark structure, and screen reader orientation |
 | [03](docs/03-navigating-repositories.md) | **Navigating Repositories** | Step-by-step repository navigation with your screen reader |
-| [04](docs/04-the-learning-room.md) | **The Learning Room** | Your shared practice space, branching, committing, and PR workflow |
+| [04](docs/04-the-learning-room.md) | **The Learning Room** | Your private practice repository, branching, committing, and PR workflow |
 | [05](docs/05-working-with-issues.md) | **Working with Issues** | Filing, managing, and participating in issues |
 | [06](docs/06-working-with-pull-requests.md) | **Working with Pull Requests** | Creating, reviewing, and merging pull requests |
 | [07](docs/07-merge-conflicts.md) | **Merge Conflicts** | Understanding, preventing, and resolving merge conflicts |
@@ -216,7 +219,7 @@ Every chapter has an "If You Get Stuck" section. Every challenge has a [referenc
 │   ├── roster-template.csv
 │   ├── grading-guide.md
 │   └── teardown-checklist.md
-├── learning-room/                       -- Practice target for contribution exercises
+├── learning-room/                       -- GitHub Classroom template copied into each student's private repo
 │   ├── README.md
 │   └── docs/
 │       ├── welcome.md                   -- Has TODO sections for you to complete

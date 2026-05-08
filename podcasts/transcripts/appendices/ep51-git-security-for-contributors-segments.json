@@ -1,0 +1,438 @@
+[
+  {
+    "speaker": "ALEX",
+    "text": "Welcome to episode 51 of Git Going with GitHub: Git Security for Contributors. I am Alex, and today we are teaching this topic as a conversation you can carry into the workshop, not as a page you have to memorize."
+  },
+  {
+    "speaker": "JAMIE",
+    "text": "And I am Jamie. I will keep pulling the lesson back to real learners, real repositories, and the evidence that proves the work happened."
+  },
+  {
+    "speaker": "PAUSE",
+    "text": ""
+  },
+  {
+    "speaker": "ALEX",
+    "text": "The lesson focus is Secrets,.gitignore, environment variables, push protection, and safe contributor habits. We will treat every step as a teachable decision, because that is what makes the skill portable."
+  },
+  {
+    "speaker": "JAMIE",
+    "text": "So we should explain the why clearly enough that the steps make sense when the learner meets them later."
+  },
+  {
+    "speaker": "ALEX",
+    "text": "That is it. If a listener only has audio right now, they should still get the complete concept and know what evidence would prove success."
+  },
+  {
+    "speaker": "PAUSE",
+    "text": ""
+  },
+  {
+    "speaker": "JAMIE",
+    "text": "Okay, set the room for us. What are we walking into?"
+  },
+  {
+    "speaker": "ALEX",
+    "text": "Start with Keeping Secrets Out of Your Repository: Who this is for: Anyone committing code or documentation to a repository. The next useful detail is this: You don't need to be a security expert -- this appendix covers the practical habits that protect you and the projects you contribute to."
+  },
+  {
+    "speaker": "ALEX",
+    "text": "The next layer is this. Start with Learning Cards: Using This Security Reference. There is something to understand, something to try, and something that proves the try worked."
+  },
+  {
+    "speaker": "ALEX",
+    "text": "The practical anchors are these. Sections are ordered from understanding (section 1) to prevention (2-5) to recovery (6-7) to daily habits (8-9). Code blocks contain exact gitignore patterns and terminal commands -- switch to Focus Mode before copying. The Security Checklist (section 9) is a task list you can use before every push. Code examples for.gitignore patterns and terminal commands are in high-contrast code blocks. Warning callouts use bold text -- scan for bold to find the most critical safety notes. The Security Checklist at the bottom uses checkbox formatting for easy visual tracking."
+  },
+  {
+    "speaker": "JAMIE",
+    "text": "What is the one idea that makes the next few steps less mysterious?"
+  },
+  {
+    "speaker": "ALEX",
+    "text": "This is where 1. Why This Matters -- What Happens When Secrets Leak becomes real: when a secret (API key, token, password, private key) is committed to a public GitHub repository -- even for a few seconds before you delete it -- it's effectively compromised. That matters in practice: Why \"I'll just delete it right away\" isn't enough."
+  },
+  {
+    "speaker": "ALEX",
+    "text": "That shows up in the workshop in a few specific ways. Bots scan GitHub continuously and harvest secrets within seconds of a push. The secret lives in your git history even after you delete the file. GitHub forks capture history -- once forked, you can't fully erase it. Search engines may index the content before you remove it."
+  },
+  {
+    "speaker": "PAUSE",
+    "text": ""
+  },
+  {
+    "speaker": "ALEX",
+    "text": "Now bring the learner back to the room. Keep the learner anchored in 2. The.gitignore File -- Your First Line of Defense. A.gitignore file tells Git which files to never track. This is the part to say slowly: Files listed in.gitignore won't show up in git status, won't be staged by git add, and won't be committed."
+  },
+  {
+    "speaker": "JAMIE",
+    "text": "What should they understand before typing anything?"
+  },
+  {
+    "speaker": "ALEX",
+    "text": "The reason Checking if a file is already tracked matters is that.gitignore only prevents untracked files from being added. That gives the learner a simple foothold: if Git is already tracking a file,.gitignore won't stop it from being committed in the future."
+  },
+  {
+    "speaker": "ALEX",
+    "text": "Treat examples as spoken recipes, not decorations. You may hear something like Check if a specific file is tracked; git ls-files.env; If it returns the filename, it's being tracked -- you need to untrack it; git rm --cached.env; Then add it to.gitignore and commit. Read the command, understand what it changes, then run it only when the repository state matches the lesson."
+  },
+  {
+    "speaker": "ALEX",
+    "text": "The useful habit is simple: orient first, act second, verify third. That pause before acting is part of the work."
+  },
+  {
+    "speaker": "JAMIE",
+    "text": "How do you keep commands from becoming magic words?"
+  },
+  {
+    "speaker": "ALEX",
+    "text": "Start with Global.gitignore -- apply to every repo on your machine: You can create a global.gitignore that applies to all repositories on your computer -- useful for OS-specific and editor-specific files you never want to commit anywhere. The next useful detail is this: Add your editor and OS files to /.gitignore global so you never have to add them to individual repos. Think of it like entering a new building: first you find the lobby, then the room, then the door you actually need."
+  },
+  {
+    "speaker": "ALEX",
+    "text": "Treat examples as spoken recipes, not decorations. You may hear something like Create a global gitignore file; touch /.gitignore global; Tell Git to use it; git config --global core.excludesfile /.gitignore global. Read the command, understand what it changes, then run it only when the repository state matches the lesson."
+  },
+  {
+    "speaker": "PAUSE",
+    "text": ""
+  },
+  {
+    "speaker": "JAMIE",
+    "text": "What is the safe way to learn from that example?"
+  },
+  {
+    "speaker": "ALEX",
+    "text": "Here is the plain-English version of GitHub's.gitignore templates. When creating a new repository on GitHub, you can choose a.gitignore template for your language -- GitHub pre-fills it with the most common patterns for that ecosystem. Put another way, find all templates at github.com/github/gitignore."
+  },
+  {
+    "speaker": "ALEX",
+    "text": "Treat examples as spoken recipes, not decorations. You may hear something like Download a template (e.g., for Node.js); curl https://raw.githubusercontent.com/github/gitignore/main/Node.gitignore.gitignore. Read the command, understand what it changes, then run it only when the repository state matches the lesson."
+  },
+  {
+    "speaker": "ALEX",
+    "text": "This is where the talk moves from concept to action. This is where 3. Environment Variables -- The Right Way to Store Secrets becomes real: instead of hardcoding secrets in your files, store them in environment variables that live outside of your repository."
+  },
+  {
+    "speaker": "JAMIE",
+    "text": "Where do you want a learner to place their attention here?"
+  },
+  {
+    "speaker": "ALEX",
+    "text": "Keep the learner anchored in Using a.env file locally. A.env file stores your local environment variables. This is the part to say slowly: It's convenient and universally supported -- and it must be in your.gitignore."
+  },
+  {
+    "speaker": "PAUSE",
+    "text": ""
+  },
+  {
+    "speaker": "ALEX",
+    "text": "Before the learner moves on. The reason Sharing secrets with your team safely matters is that never send secrets in Slack, email, or GitHub comments. The interface gets friendlier when it stops being a wall of controls and starts being a set of named places."
+  },
+  {
+    "speaker": "ALEX",
+    "text": "That becomes easier when you listen for these cues. GitHub Actions Secrets -- for CI/CD pipelines: Settings → Secrets and variables → Actions. A password manager with sharing (1Password Teams, Bitwarden) -- for team credentials. A secrets manager (AWS Secrets Manager, HashiCorp Vault) -- for production systems."
+  },
+  {
+    "speaker": "JAMIE",
+    "text": "What is the pre-flight check here?"
+  },
+  {
+    "speaker": "ALEX",
+    "text": "Start with 4. Review Before You Commit: The most effective habit is simply reviewing what you're about to commit before you commit it."
+  },
+  {
+    "speaker": "ALEX",
+    "text": "A solid pull request habit is to separate three questions: what changed, why it changed, and what still needs review. That keeps the conversation useful instead of noisy."
+  },
+  {
+    "speaker": "JAMIE",
+    "text": "What should happen before anyone copies and runs it?"
+  },
+  {
+    "speaker": "ALEX",
+    "text": "Start with git diff --staged -- see exactly what's going in. There is something to understand, something to try, and something that proves the try worked."
+  },
+  {
+    "speaker": "ALEX",
+    "text": "For a learner, the useful signals are these. Any hardcoded passwords, tokens, or API keys.env or credential files that snuck in. Any TODO comments that reference sensitive information."
+  },
+  {
+    "speaker": "ALEX",
+    "text": "Treat examples as spoken recipes, not decorations. You may hear something like Review all staged changes before committing; git diff --staged; Review a specific file; git diff --staged docs/config.md. Read the command, understand what it changes, then run it only when the repository state matches the lesson."
+  },
+  {
+    "speaker": "PAUSE",
+    "text": ""
+  },
+  {
+    "speaker": "JAMIE",
+    "text": "Let's pause on Avoid git add. blindly. What should a learner take away from it?"
+  },
+  {
+    "speaker": "ALEX",
+    "text": "This is where Avoid git add. blindly becomes real: stages everything in your working directory -- including files you didn't mean to add. That matters in practice: git add -p (patch mode) walks you through each change chunk by chunk and asks whether to stage it."
+  },
+  {
+    "speaker": "ALEX",
+    "text": "Treat examples as spoken recipes, not decorations. You may hear something like Risky - stages everything without review; git add.; Better - stage specific files you know are clean; git add src/auth.js docs/README.md; Or stage interactively - review each file before adding; git add -p. Read the command, understand what it changes, then run it only when the repository state matches the lesson."
+  },
+  {
+    "speaker": "ALEX",
+    "text": "A solid Git habit is to know which branch you are on, what changed, and what confirmation you expect before you run the next command."
+  },
+  {
+    "speaker": "JAMIE",
+    "text": "Let's pause on Check what's staged before committing. What should a learner take away from it?"
+  },
+  {
+    "speaker": "ALEX",
+    "text": "Keep the learner anchored in Check what's staged before committing. GitHub Copilot can help: After staging your changes, open Copilot Chat and ask: \"Review my staged changes for any accidentally included secrets, API keys, or credentials.\" Paste the output of git diff --staged into the chat. A good GitHub workflow is like a well-run meeting: everyone knows the topic, the next action, and who has the floor."
+  },
+  {
+    "speaker": "ALEX",
+    "text": "Treat examples as spoken recipes, not decorations. You may hear something like See which files are staged (and which aren't); git status; See the full diff of staged changes; git diff --staged. Read the command, understand what it changes, then run it only when the repository state matches the lesson."
+  },
+  {
+    "speaker": "JAMIE",
+    "text": "What would you say to someone who is already bracing for this to be too much?"
+  },
+  {
+    "speaker": "ALEX",
+    "text": "The reason 5. Pre-Commit Hooks -- Automated Secret Detection matters is that a pre-commit hook is a script that runs automatically every time you try to commit. That gives the learner a simple foothold: if the script detects a problem (like a potential secret), it blocks the commit and tells you what it found."
+  },
+  {
+    "speaker": "PAUSE",
+    "text": ""
+  },
+  {
+    "speaker": "ALEX",
+    "text": "Here is the practical turn. Start with Option A: detect-secrets (recommended, Python-based): detect-secrets scans for over 20 types of secrets and integrates well with existing repos. The next useful detail is this: After setup, any commit containing a potential secret is blocked with a clear message showing which file and line triggered the alert."
+  },
+  {
+    "speaker": "JAMIE",
+    "text": "Give me the version that sounds like an instructor, not a manual."
+  },
+  {
+    "speaker": "ALEX",
+    "text": "Here is the plain-English version of Option C: pre-commit framework (manages multiple hooks). The pre-commit framework lets you install and manage hooks from a YAML config file, making it easy to share hook config across your team. Put another way, pre-commit hooks live in.git/hooks/ and are local to your machine -- they're not committed to the repo automatically."
+  },
+  {
+    "speaker": "ALEX",
+    "text": "Keep the thread going. This is where Step 1: Rotate the secret immediately becomes real: before anything else -- go to wherever that secret is managed and revoke or rotate it. That matters in practice: It may already be compromised, so neutralizing it is more important than removing it from git history. The workshop is closer to rehearsal than lecture. You hear the move, try the move, and then check what changed."
+  },
+  {
+    "speaker": "PAUSE",
+    "text": ""
+  },
+  {
+    "speaker": "JAMIE",
+    "text": "Let's pause on Step 2: Was it pushed to a public repo? What should a learner take away from it?"
+  },
+  {
+    "speaker": "ALEX",
+    "text": "Keep the learner anchored in Step 2: Was it pushed to a public repo? If it was pushed (remote has the secret). This is the part to say slowly: The secret is potentially already compromised -- assume it was harvested."
+  },
+  {
+    "speaker": "ALEX",
+    "text": "Treat examples as spoken recipes, not decorations. You may hear something like Undo the last commit, keep your changes staged (safest); git reset --soft HEAD 1; Now remove the secret from the file, re-add, and re-commit; (Edit the file to remove the secret); git add -p Review what you stage; git commit -m \"Your original commit message. Read the command, understand what it changes, then run it only when the repository state matches the lesson."
+  },
+  {
+    "speaker": "ALEX",
+    "text": "Another way to ground it. The reason Step 3: Remove the secret from git history matters is that this only matters if the commit was pushed. That gives the learner a simple foothold: if it was local-only and you used git reset --soft above, you're done."
+  },
+  {
+    "speaker": "JAMIE",
+    "text": "Let's pause on Method A: git filter-repo (recommended -- built-in, modern). What should a learner take away from it?"
+  },
+  {
+    "speaker": "ALEX",
+    "text": "Start with Method A: git filter-repo (recommended -- built-in, modern). There is something to understand, something to try, and something that proves the try worked."
+  },
+  {
+    "speaker": "ALEX",
+    "text": "Treat examples as spoken recipes, not decorations. You may hear something like Install git-filter-repo; pip install git-filter-repo; Remove a specific file from all history; git filter-repo --path secrets.json --invert-paths; Replace a specific string (the secret value) throughout all history; git filter-repo --replace-text REMOVED\"). Read the command, understand what it changes, then run it only when the repository state matches the lesson."
+  },
+  {
+    "speaker": "PAUSE",
+    "text": ""
+  },
+  {
+    "speaker": "JAMIE",
+    "text": "Let's pause on Step 4: Force push the cleaned history. What should a learner take away from it?"
+  },
+  {
+    "speaker": "ALEX",
+    "text": "Here is the plain-English version of Step 4: Force push the cleaned history. After rewriting history, you must force push. Put another way, anyone who has cloned or pulled the repo will need to re-clone or rebase after a force push. It is like learning a transit route. The names of the stops matter because they tell you whether you are still going the right direction."
+  },
+  {
+    "speaker": "ALEX",
+    "text": "Treat examples as spoken recipes, not decorations. You may hear something like git push --force-with-lease origin main. Read the command, understand what it changes, then run it only when the repository state matches the lesson."
+  },
+  {
+    "speaker": "JAMIE",
+    "text": "If I am listening before the workshop starts, what should settle in my mind first?"
+  },
+  {
+    "speaker": "ALEX",
+    "text": "This is where Step 5: Tell GitHub to rescan becomes real: after removing the secret from history, go to Security → Secret scanning in your repository and mark any open alerts as resolved."
+  },
+  {
+    "speaker": "ALEX",
+    "text": "That connects to another useful point. Keep the learner anchored in 7. GitHub's Built-In Push Protection. GitHub automatically scans pushes for known secret patterns before they reach the remote. This is the part to say slowly: If it detects a secret, the push is blocked."
+  },
+  {
+    "speaker": "PAUSE",
+    "text": ""
+  },
+  {
+    "speaker": "JAMIE",
+    "text": "Let's pause on What push protection covers. What should a learner take away from it?"
+  },
+  {
+    "speaker": "ALEX",
+    "text": "The reason What push protection covers matters is that GitHub knows the patterns for hundreds of secret types including."
+  },
+  {
+    "speaker": "ALEX",
+    "text": "The parts worth keeping in working memory are these. GitHub tokens (PATs, GitHub App tokens, OAuth tokens). AWS access keys. Azure credentials. Google Cloud keys. Stripe, Twilio, Slack, and dozens more API keys."
+  },
+  {
+    "speaker": "JAMIE",
+    "text": "Give me the sequence, because order matters here."
+  },
+  {
+    "speaker": "ALEX",
+    "text": "Start with If push protection blocks you. There is something to understand, something to try, and something that proves the try worked."
+  },
+  {
+    "speaker": "ALEX",
+    "text": "First, confirm it's actually a secret -- check the file and line mentioned. Then, if it's a real secret: Remove it from the file, amend your commit, and push again. After that, if it's a false positive: Use the bypass URL GitHub provides to push with an explanation. Think of it as a rail line: each stop confirms you are still on the right route before the next one."
+  },
+  {
+    "speaker": "JAMIE",
+    "text": "Let's pause on Checking your repo's push protection status. What should a learner take away from it?"
+  },
+  {
+    "speaker": "ALEX",
+    "text": "Here is the plain-English version of Checking your repo's push protection status. As a contributor you can see push protection in action when a push is blocked. Put another way, maintainers configure it in Settings → Code security → Push protection."
+  },
+  {
+    "speaker": "PAUSE",
+    "text": ""
+  },
+  {
+    "speaker": "JAMIE",
+    "text": "Let's pause on Never store credentials in plaintext. What should a learner take away from it?"
+  },
+  {
+    "speaker": "ALEX",
+    "text": "This is where Never store credentials in plaintext becomes real: do this instead - use the OS credential store. That matters in practice: With a credential helper set, Git asks for your credentials once and stores them securely in the OS keychain -- not in any file."
+  },
+  {
+    "speaker": "ALEX",
+    "text": "Treat examples as spoken recipes, not decorations. You may hear something like Storing a token in a plain text file; echo \"ghp mytoken\" /token.txt; Hardcoding in a script; export GITHUB TOKEN=\"ghp mytoken\" in a.bashrc or.zshrc that's committed; In a git config; git config --global url.\"https://myusername:ghp mytoken@github.com\".insteadOf. macOS -- use Keychain; git config --global credential.helper osxkeychain; Windows -- use Credential Manager (set automatically by Git for Windows); git config --global credential.helper wincred; Linux -- use the libsecret store (requires installation); git. Read the command, understand what it changes, then run it only when the repository state matches the lesson."
+  },
+  {
+    "speaker": "JAMIE",
+    "text": "Let's pause on Using a password manager. What should a learner take away from it?"
+  },
+  {
+    "speaker": "ALEX",
+    "text": "Keep the learner anchored in Using a password manager. Store your GitHub PAT, SSH key passphrase, and other credentials in a password manager (1Password, Bitwarden, KeePass). This is the part to say slowly: Most support browser extensions, CLI access, and automatic lock after inactivity."
+  },
+  {
+    "speaker": "JAMIE",
+    "text": "Let's pause on Checking what credential helper is set. What should a learner take away from it?"
+  },
+  {
+    "speaker": "ALEX",
+    "text": "The reason Checking what credential helper is set matters is that if this returns nothing, your credentials may be stored in plaintext. The interface gets friendlier when it stops being a wall of controls and starts being a set of named places."
+  },
+  {
+    "speaker": "ALEX",
+    "text": "Treat examples as spoken recipes, not decorations. You may hear something like git config --global credential.helper. Read the command, understand what it changes, then run it only when the repository state matches the lesson."
+  },
+  {
+    "speaker": "PAUSE",
+    "text": ""
+  },
+  {
+    "speaker": "JAMIE",
+    "text": "Let's pause on Learning Cards: Security Checklist. What should a learner take away from it?"
+  },
+  {
+    "speaker": "ALEX",
+    "text": "Start with Learning Cards: Security Checklist. There is something to understand, something to try, and something that proves the try worked."
+  },
+  {
+    "speaker": "ALEX",
+    "text": "A few details make that real. The checklist below uses Markdown task list formatting -- each item is announced as \"checkbox not checked\". Items are grouped into three categories: Before Committing, Before Pushing, and Repository Setup. Read through the list once to learn the habits, then use it as a pre-push routine. Checkboxes create a clear visual pattern for scanning -- each line starts with a square box. Three groups are separated by h3 headings: Before Committing, Before Pushing, Repository Setup. Consider copying this checklist into a personal note and checking items off for each project."
+  },
+  {
+    "speaker": "ALEX",
+    "text": "This is the part worth saying out loud. Here is the plain-English version of 9. Security Checklist for Contributors. Use this before every push to a public repository."
+  },
+  {
+    "speaker": "JAMIE",
+    "text": "What does someone need before they touch the keyboard?"
+  },
+  {
+    "speaker": "ALEX",
+    "text": "Start with Before committing. There is something to understand, something to try, and something that proves the try worked."
+  },
+  {
+    "speaker": "ALEX",
+    "text": "On the ground, that means a few things. [ ] I reviewed git diff --staged and didn't see any tokens, passwords, or keys. [ ] I used git add or git add -p rather than git add. [ ] Any.env files or credential files are listed in.gitignore. [ ] Config files with real values are in.gitignore; only example/template files are committed."
+  },
+  {
+    "speaker": "PAUSE",
+    "text": ""
+  },
+  {
+    "speaker": "ALEX",
+    "text": "Hold that next to this. Start with Before pushing. There is something to understand, something to try, and something that proves the try worked."
+  },
+  {
+    "speaker": "ALEX",
+    "text": "Here is what that changes in practice. [ ] git log --oneline -5 -- all commits look expected. [ ] No commits with messages like \"remove secret\" or \"oops\" that suggest a secret was added and removed (the secret is still in history)."
+  },
+  {
+    "speaker": "JAMIE",
+    "text": "If setup starts to feel like a barrier, how should a learner think about it?"
+  },
+  {
+    "speaker": "ALEX",
+    "text": "Start with Repository setup (one time). There is something to understand, something to try, and something that proves the try worked."
+  },
+  {
+    "speaker": "ALEX",
+    "text": "The room should hear these as checkpoints. [ ].gitignore includes.env,.key,.pem, and relevant patterns for your stack. [ ] Global.gitignore ( /.gitignore global) covers editor/OS files. [ ] Git credential helper is configured to use the OS keychain. [ ] (Optional) A pre-commit hook is installed to scan for secrets automatically."
+  },
+  {
+    "speaker": "ALEX",
+    "text": "That matters because of the next idea. Start with If you're a maintainer: See also: Appendix L: GitHub Security Features for the GitHub platform security tools (Dependabot, secret scanning alerts, code scanning). The next useful detail is this: Appendix D: Git Authentication for SSH keys, PATs, and commit signing."
+  },
+  {
+    "speaker": "ALEX",
+    "text": "These are the details that keep the idea from floating away. [ ] Branch protection is enabled on main with required reviews and status checks. [ ] Secret scanning is enabled (Settings → Code security → Secret scanning). [ ] Push protection is enabled for the repository. [ ] A SECURITY.md file exists with instructions for reporting vulnerabilities."
+  },
+  {
+    "speaker": "PAUSE",
+    "text": ""
+  },
+  {
+    "speaker": "JAMIE",
+    "text": "What should people carry with them after this?"
+  },
+  {
+    "speaker": "ALEX",
+    "text": "Carry the map. Know what page or tool you are in, know which action you are taking, and know what confirmation should follow. If the confirmation is missing, pause. That pause is not wasted time; it is professional judgment."
+  },
+  {
+    "speaker": "JAMIE",
+    "text": "That is a better way to say it than just follow the steps."
+  },
+  {
+    "speaker": "ALEX",
+    "text": "Right. Steps matter, but understanding wins. That is episode 51. Next in the series is episode 52, where we keep building the same contributor muscles."
+  }
+]

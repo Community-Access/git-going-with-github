@@ -1,6 +1,6 @@
 # The Learning Room: Your Personal Practice Repository
 >
-> **Listen to Episode 4:** [The Learning Room](../PODCASTS.md) - a conversational audio overview of this chapter. Listen before reading to preview the concepts, or after to reinforce what you learned.
+> **Listen to Episode 4:** [The Learning Room](../admin/PODCASTS.md) - a conversational audio overview of this chapter. Listen before reading to preview the concepts, or after to reinforce what you learned.
 
 > **Related appendices:** [Appendix A: Glossary](appendix-a-glossary.md) | [Appendix C: Markdown Reference](appendix-c-markdown-reference.md)
 > **Authoritative sources:** [GitHub Docs: About README files](https://docs.github.com/en/repositories/managing-your-repositorys-settings-and-features/customizing-your-repository/about-readmes) | [GitHub Docs: Editing files](https://docs.github.com/en/repositories/working-with-files/managing-files/editing-files)
@@ -73,7 +73,7 @@ GitHub Classroom may ask you to pick your name from a roster so the facilitators
 When your Learning Room repo is ready, **Challenge 1** appears as a GitHub issue in your repo. The facilitators prepare this by running the Student Progression Bot after students accept the Classroom assignment. The next challenges unlock one at a time as you close the previous ones.
 
 1. From your repository page, navigate to the **Issues** tab. Keyboard shortcut: press `G` then `I`.
-2. You should see at least one open issue with a title like **"Challenge 1: Your First Issue"** authored by `aria-bot` (or `github-actions[bot]`).
+2. You should see at least one open issue with a title like **"Challenge 1: Find Your Way Around"** authored by `aria-bot` (or `github-actions[bot]`).
 3. Open Challenge 1. Read the issue body -- it tells you what to do, where to find evidence, and how to submit completion.
 
 > **If Challenge 1 is missing after 2 minutes:** Refresh the Issues tab once. If it still does not appear:
@@ -88,9 +88,9 @@ The PR validation bot, **Aria**, posts educational feedback whenever you open a 
 You are now done with Block 0. Continue with the chapter below to learn how the Learning Room is organized, then jump to [Chapter 5](05-working-with-issues.md) to start Challenge 1.
 
 
-## Workshop Recommendation (Chapter 3)
+## Workshop Recommendation (Chapter 4)
 
-Chapter 3 is a **system orientation chapter**.
+Chapter 4 is a **system orientation chapter**.
 
 - **Challenge count:** none
 - **Automation check:** none
@@ -101,7 +101,7 @@ Chapter 3 is a **system orientation chapter**.
 Before starting Chapter 5 challenges, you should be able to:
 
 1. Find `docs/CHALLENGES.md` in your Learning Room repository.
-2. Explain the flow: issue -> branch -> PR -> review -> merge.
+2. Explain the flow: issue -> branch -> pull request -> review -> merge.
 3. Identify where Aria bot feedback appears on a PR (the Conversation tab).
 
 
@@ -272,23 +272,23 @@ git checkout learn/<your-github-username>
 
 **github.com (browser):**
 1. On the repository page, click the branch selector dropdown (shows "main").
-2. Type your username to filter, then select `username-practice`.
+2. Type `learn` to filter, then select `learn/<username>`.
 
 **github.dev (web editor):**
 1. Click the branch name in the bottom-left status bar.
-2. Select your `username-practice` branch from the list.
+2. Select your `learn/<username>` branch from the list.
 
 **VS Code Desktop:**
 1. Click the branch name in the bottom-left status bar (or press `Ctrl+Shift+P` then type **Git: Checkout to**).
-2. Select `origin/username-practice` from the branch list.
+2. Select `origin/learn/<username>` from the branch list.
 
 **GitHub Desktop:**
 1. Click the **Current Branch** dropdown at the top.
-2. Type your username to filter, then select `username-practice`.
+2. Type `learn` to filter, then select `learn/<username>`.
 
 **Git CLI (terminal):**
 ```bash
-git checkout username-practice
+git checkout learn/<username>
 ```
 
 ---
@@ -881,7 +881,7 @@ You merged your work
 This is not hypothetical. This is not simulation. This is real.
 
 
-> ➡️ **Challenge Time:** Let's practice! Go to the [Challenge Hub](CHALLENGES.md) and complete **Challenge 1: Find Your Way Around**, then return for [Chapter 05: Working with Issues](05-working-with-issues.md).
+> **Challenge Time:** Let's practice. Go to the [Challenge Hub](CHALLENGES.md) and complete **Challenge 1: Find Your Way Around**, then return for [Chapter 05: Working with Issues](05-working-with-issues.md).
 
 ---
 

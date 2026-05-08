@@ -1,6 +1,6 @@
 # Appendix C: Markdown and GitHub Flavored Markdown - Complete Guide
 >
-> **Listen to Episode 22:** [GitHub Flavored Markdown](../PODCASTS.md) - a conversational audio overview of this chapter. Listen before reading to preview the concepts, or after to reinforce what you learned.
+> **Listen to Episode 22:** [GitHub Flavored Markdown](../admin/PODCASTS.md) - a conversational audio overview of this chapter. Listen before reading to preview the concepts, or after to reinforce what you learned.
 
 > **Reference companion to:** [Chapter 06: Working with Pull Requests](06-working-with-pull-requests.md) | Also relevant: [Chapter 12](12-vscode-accessibility.md), [Chapter 17](17-issue-templates.md)
 >
@@ -154,9 +154,9 @@ The following table lists every Day 2 activity where Markdown is used.
 |---|---|
 | Editing files in VS Code | You edit `.md` files directly with Markdown preview (`Ctrl+Shift+V`) |
 | Writing commit messages | While not full Markdown, commit messages follow similar plain-text conventions |
-| Using Copilot Chat (Chapter 13) | Copilot returns responses formatted in Markdown |
-| Creating issue templates (Chapter 15) | Templates use Markdown for the body content |
-| Agent commands and output (Chapter 16) | Agent reports are rendered Markdown |
+| Using Copilot Chat (Chapter 16) | Copilot returns responses formatted in Markdown |
+| Creating issue templates (Chapter 17) | Templates use Markdown for the body content |
+| Agent commands and output (Chapter 19) | Agent reports are rendered Markdown |
 
 ### Learning Room connection
 
