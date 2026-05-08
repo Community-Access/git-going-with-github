@@ -22,30 +22,30 @@ Before starting the challenges below, verify your readiness with the [Day 2 Quic
 
 ## What You Will Do Today
 
-By the end of Day 2, you will have:
+During the live Day 2 core path, you will move from browser-based GitHub to local contribution work in VS Code. Some advanced challenges are intentionally available as stretch or async follow-up so participants and remote cohorts can continue at a sustainable pace.
 
-- Cloned a repository and worked with Git locally
-- Pushed a branch and opened a PR from your local machine
-- Reviewed a classmate's code and given constructive feedback
-- Used GitHub Copilot as a collaborative tool
-- Created a custom issue template
-- Forked a real repository and made a cross-repo contribution
-- Explored accessibility agents and how they work
-- Built your own agent from scratch (capstone)
+- Clone a repository and work with Git locally
+- Push a branch and open a PR from your local machine
+- Review a classmate's code and give constructive feedback
+- Use GitHub Copilot as a collaborative tool
+- Create or review a custom issue template, if time allows
+- Fork a real repository and prepare a cross-repo contribution path
+- Explore accessibility agents and how they work
+- Start your own agent or capstone idea, with a path to finish asynchronously
 
 ## Challenges
 
-Complete these challenges in order. Each one builds on the previous.
+Complete these challenges in order. Each one builds on the previous. The live agenda prioritizes Challenges 10-13 and agent discovery; Challenges 14-16 can be completed during lab time or after the event.
 
 | Challenge | What You Do | Chapter |
 |---|---|---|
 | 10. Go Local | Clone, branch, edit, commit, and push using local Git | [Chapter 14](https://github.com/Community-Access/git-going-with-github/blob/main/docs/14-git-in-practice.md) |
-| 11. Day 2 Pull Request | Open a PR from your locally-pushed branch | [Chapter 15](https://github.com/Community-Access/git-going-with-github/blob/main/docs/15-code-review.md) |
-| 12. Code Review | Review a classmate's PR with specific, constructive feedback | [Chapter 15](https://github.com/Community-Access/git-going-with-github/blob/main/docs/15-code-review.md) |
-| 13. Copilot as Collaborator | Use Copilot to improve documentation and evaluate its output | [Chapter 16](https://github.com/Community-Access/git-going-with-github/blob/main/docs/16-github-copilot.md) |
-| 14. Design an Issue Template | Create a custom YAML issue template | [Chapter 17](https://github.com/Community-Access/git-going-with-github/blob/main/docs/17-issue-templates.md) |
-| 15. Discover Accessibility Agents | Explore and run agents from the accessibility-agents repo | [Chapter 19](https://github.com/Community-Access/git-going-with-github/blob/main/docs/19-accessibility-agents.md) |
-| 16. Build Your Own Agent (Capstone) | Design and submit an original agent with responsibilities and guardrails | [Chapter 20](https://github.com/Community-Access/git-going-with-github/blob/main/docs/20-build-your-agent.md) |
+| 11. Open a Day 2 PR | Open a PR from your locally-pushed branch | [Chapter 15](https://github.com/Community-Access/git-going-with-github/blob/main/docs/15-code-review.md) |
+| 12. Review Like a Pro | Review a classmate's PR with specific, constructive feedback | [Chapter 15](https://github.com/Community-Access/git-going-with-github/blob/main/docs/15-code-review.md) |
+| 13. AI as Your Copilot | Use Copilot to improve documentation and evaluate its output | [Chapter 16](https://github.com/Community-Access/git-going-with-github/blob/main/docs/16-github-copilot.md) |
+| 14. Template Remix | Create a custom YAML issue template | [Chapter 17](https://github.com/Community-Access/git-going-with-github/blob/main/docs/17-issue-templates.md) |
+| 15. Meet the Agents | Explore and run agents from the accessibility-agents repo | [Chapter 19](https://github.com/Community-Access/git-going-with-github/blob/main/docs/19-accessibility-agents.md) |
+| 16. Build Your Agent (Capstone) | Design and submit an original agent with responsibilities and guardrails | [Chapter 20](https://github.com/Community-Access/git-going-with-github/blob/main/docs/20-build-your-agent.md) |
 
 ## Autograded Challenges
 
@@ -59,7 +59,7 @@ The autograder posts feedback as a PR comment. If a check fails, read the feedba
 
 ## Evidence
 
-Each challenge has an issue template in the Learning Room. Open the matching issue, complete the challenge, and post your evidence as described in the issue.
+Each challenge has an issue template in the Learning Room. Open the matching issue, complete the challenge, and post your evidence as described in the issue. Challenges 10, 14, and 16 also have automated checks that post PR feedback when you push or open a pull request; use those bot comments as guidance, then keep your human evidence in the challenge issue.
 
 ## If You Get Stuck
 

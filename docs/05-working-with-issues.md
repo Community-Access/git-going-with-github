@@ -1,6 +1,6 @@
 # Working with Issues
 >
-> **Listen to Episode 5:** [Working with Issues](../PODCASTS.md) - a conversational audio overview of this chapter. Listen before reading to preview the concepts, or after to reinforce what you learned.
+> **Listen to Episode 5:** [Working with Issues](../admin/PODCASTS.md) - a conversational audio overview of this chapter. Listen before reading to preview the concepts, or after to reinforce what you learned.
 
 > **Related appendices:** [Appendix N: Advanced Search](appendix-n-advanced-search.md) | [Appendix V: GitHub Mobile](appendix-v-github-mobile.md) | [Appendix B: Screen Reader Cheat Sheet](appendix-b-screen-reader-cheatsheet.md)
 > **Authoritative sources:** [GitHub Docs: About issues](https://docs.github.com/en/issues/tracking-your-work-with-issues/about-issues) | [GitHub Accessibility Guide: Issues](https://accessibility.github.com/documentation/guide/issues/)
@@ -25,32 +25,30 @@
 > **Browse vs Focus Mode (NVDA):** Toggle between modes with `NVDA+Space` (NVDA key = `Insert` or `Caps Lock`). Use **Browse Mode** (the default) for reading lists, headings, and issue content. Switch to **Focus Mode** when typing in text fields and search boxes. Use `NVDA+F7` at any time to open a list of all headings, links, form fields, buttons, and landmarks on the page - this is your orientation tool.
 
 
-## Workshop Recommendation (Chapter 4)
+## Workshop Recommendation (Chapter 5 / Challenges 2-3)
 
-Chapter 4 is the first **issue-based challenge chapter** with short, confidence-building tasks.
+Chapter 5 is the first **issue-based challenge chapter** with short, confidence-building tasks. It supports Challenge 2 (File Your First Issue) and Challenge 3 (Join the Conversation).
 
-- **Challenge count:** 3
+- **Challenge count:** 2 core challenges plus one optional extension
 - **Time per challenge:** under 10 minutes
 - **Evidence:** issue comments and issue metadata
 - **Pattern:** claim -> act -> confirm
 
-### Chapter 4 Challenge Set
+### Chapter 5 Challenge Set
 
 1. **Create your first issue** - file a new issue with a clear title and description.
 2. **Comment and @mention** - leave a comment on a classmate's issue and tag them with an @mention.
-3. **Add a sub-issue** - break a larger issue into smaller, trackable pieces.
+3. **Optional extension: Add a sub-issue** - break a larger issue into smaller, trackable pieces if your repository has sub-issues enabled.
 
-> **Branch guidance for Chapter 4:** Chapter 4 focuses on issue skills. You do NOT need to create a branch or edit any files for these challenges. All your work happens in GitHub issue threads. File editing and branches start in Chapter 6.
+> **Branch guidance for Chapter 5:** Chapter 5 focuses on issue skills. You do NOT need to create a branch or edit any files for these challenges. All your work happens in GitHub issue threads. File editing and branches start in Chapter 6.
 >
-> **How completion works:** When you finish all three challenges, post a comment on your assigned Chapter 4 challenge issue with links to the issues you created, commented on, and organized. The facilitator reviews your issue activity directly. No pull request is required for Chapter 4.
+> **How completion works:** When you finish the issue challenges, post evidence in your assigned challenge issues with links to the issue you created and the comment you posted. The facilitator reviews your issue activity directly. No pull request is required for Chapter 5.
 
-### Challenge 4.1 Step-by-Step: Create Your First Issue
+### Challenge 2 Step-by-Step: Create Your First Issue
 
 **Goal:** File a new issue in your Learning Room repository with a specific title and a meaningful description.
 
-> **🛠️ Agentic Strategy:** Issues are the prompts that wake up AI. A clear Issue for a human is also a prompt for an agent. For this challenge, log an Issue describing an accessibility problem or chore you wish an AI agent could fix for you.
-
-> **🛠️ Agentic Strategy:** Issues are the prompts that wake up AI. A clear Issue for a human is also a prompt for an agent. For this challenge, log an Issue describing an accessibility problem or chore you wish an AI agent could fix for you.
+> **Agentic strategy:** Issues are the prompts that wake up AI. A clear issue for a human is also a prompt for an agent. For this challenge, log an issue describing an accessibility problem or chore you wish an AI agent could fix for you.
 
 **Where you are working:** the Issues tab of your Learning Room repository on GitHub.com.
 
@@ -1377,7 +1375,7 @@ The maintainer has to ask: What doesn't work? Where did you click? What browser?
 
 The maintainer can reproduce this in under a minute. No follow-up questions needed -- the fix can start immediately.
 
-> **Screen reader tip:** You can use the issue template feature in GitHub to pre-fill these sections automatically. If the repository provides templates, your screen reader will announce each section heading as you Tab through the form. You will set up your own issue templates in [Chapter 9](09-managing-your-project.md).
+> **Screen reader tip:** You can use the issue template feature in GitHub to pre-fill these sections automatically. If the repository provides templates, your screen reader will announce each section heading as you Tab through the form. You will set up your own issue templates in [Chapter 17](17-issue-templates.md).
 
 ### Learning Cards: Writing Effective Issues
 
@@ -1456,7 +1454,7 @@ Go to the Learning Room repository and file a real issue:
 > *Today you are the triage engine. On Day 2, you understand the engine well enough to direct it.*
 
 
-> ➡️ **Challenge Time:** It's time for the real deal. Go to the [Challenge Hub](CHALLENGES.md) and complete **Challenge 2: File Your First Issue** and **Challenge 3: Join the Conversation**. When Aria the bot replies to you, she will tell you when it's time to move to [Chapter 06: Working with Pull Requests](06-working-with-pull-requests.md).
+> **Challenge Time:** It's time for the real deal. Go to the [Challenge Hub](CHALLENGES.md) and complete **Challenge 2: File Your First Issue** and **Challenge 3: Join the Conversation**. When Aria the bot replies to you, she will tell you when it's time to move to [Chapter 06: Working with Pull Requests](06-working-with-pull-requests.md).
 
 ---
 

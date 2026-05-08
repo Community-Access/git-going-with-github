@@ -1,0 +1,2618 @@
+[
+  {
+    "speaker": "ALEX",
+    "text": "Welcome back to Git Going with GitHub. This is episode 13: The GitHub Pull Requests Extension. I am Alex, and today we are turning The GitHub Pull Requests Extension from a list of instructions into a working mental model."
+  },
+  {
+    "speaker": "JAMIE",
+    "text": "And I am Jamie. I will stop us whenever the instructions sound simple on paper but might feel different with a keyboard and screen reader."
+  },
+  {
+    "speaker": "PAUSE",
+    "text": ""
+  },
+  {
+    "speaker": "ALEX",
+    "text": "Viewing, creating, reviewing, and merging PRs from inside VS Code. That is the surface description. Underneath it, we are building judgment: where to focus, what to ignore, and how to verify the result."
+  },
+  {
+    "speaker": "JAMIE",
+    "text": "So we are not using the audio as a shortcut around learning. We are using it to make the learning easier to enter."
+  },
+  {
+    "speaker": "ALEX",
+    "text": "Yes. A good audio lesson gives someone enough context to try the work with confidence, even before they open the written material."
+  },
+  {
+    "speaker": "PAUSE",
+    "text": ""
+  },
+  {
+    "speaker": "JAMIE",
+    "text": "Okay, set the room for us. What are we walking into?"
+  },
+  {
+    "speaker": "ALEX",
+    "text": "Start with The GitHub Pull Requests Extension: See also: Appendix G: VS Code Reference for the complete list of GitHub Pull Requests extension keyboard shortcuts."
+  },
+  {
+    "speaker": "ALEX",
+    "text": "A solid pull request habit is to separate three questions: what changed, why it changed, and what still needs review. That keeps the conversation useful instead of noisy."
+  },
+  {
+    "speaker": "ALEX",
+    "text": "The next layer is this. Here is the plain-English version of Managing Pull Requests from VS Code. Day 2, Block 2 Material This guide covers the GitHub Pull Requests and Issues extension: viewing open PRs, checking out PR branches for local testing, reviewing PRs with screen reader-accessible tools, creating PRs directly from VS Code, using PR templates,. Put another way, prerequisites: Working with Pull Requests, Git & Source Control in VS Code Mac keyboard shortcuts: Throughout this chapter, all Ctrl+ shortcuts use Cmd+ on Mac, and Alt+ shortcuts use Option+ on Mac. It is like learning a transit route. The names of the stops matter because they tell you whether you are still going the right direction."
+  },
+  {
+    "speaker": "JAMIE",
+    "text": "What should feel predictable before the first live session starts?"
+  },
+  {
+    "speaker": "ALEX",
+    "text": "This is where Workshop Recommendation (Chapter 15, Part 1) becomes real: chapter 15, Part 1 introduces the GitHub Pull Requests extension for managing PRs directly from VS Code."
+  },
+  {
+    "speaker": "ALEX",
+    "text": "That shows up in the workshop in a few specific ways. There are 2 guided challenges. Automation check: none (extension installation and review state are account-local). The evidence is issue comment with confirmation of actions completed. The pattern is install, check out, review, comment."
+  },
+  {
+    "speaker": "PAUSE",
+    "text": ""
+  },
+  {
+    "speaker": "JAMIE",
+    "text": "Turn that into a path someone can follow."
+  },
+  {
+    "speaker": "ALEX",
+    "text": "Start with Chapter 15, Part 1 Practice Set. There is something to understand, something to try, and something that proves the try worked."
+  },
+  {
+    "speaker": "ALEX",
+    "text": "First, install the GitHub Pull Requests extension - add the extension to VS Code and sign in with your GitHub account. Then, check out a PR and post a review comment - download a PR branch locally, read the diff, and post one constructive review comment. It is like walking a hallway with named doors: read the sign, enter the right room, then confirm where you landed."
+  },
+  {
+    "speaker": "JAMIE",
+    "text": "What is the ordered workflow?"
+  },
+  {
+    "speaker": "ALEX",
+    "text": "The reason Practice 15.1 Step-by-Step: Install the Extension matters is that install the GitHub Pull Requests and Issues extension and authenticate with your GitHub account. That gives the learner a simple foothold: VS Code desktop with your Learning Room repository open."
+  },
+  {
+    "speaker": "ALEX",
+    "text": "First, open the Extensions sidebar: Ctrl+Shift+X (Mac: Cmd+Shift+X). Then, your screen reader announces \"Extensions: Marketplace.\" The search box has focus. After that, type GitHub Pull Requests in the search box and press Enter. Finally, navigate down the results list. Select GitHub Pull Requests (publisher: GitHub). The rhythm is simple: orient, act, verify, then continue."
+  },
+  {
+    "speaker": "JAMIE",
+    "text": "Give me the sequence, because order matters here."
+  },
+  {
+    "speaker": "ALEX",
+    "text": "First, activate the Install button. VS Code installs the extension and may show a notification. Then, after installation, VS Code prompts you to sign in. Activate Sign in to GitHub. After that, a browser window opens for GitHub OAuth. Approve the authorization and return to VS Code. Finally, verify: open the Explorer sidebar (Ctrl+Shift+E). You should now see a GitHub section in the sidebar showing Pull Requests and Issues. Think of it as a rail line: each stop confirms you are still on the right route before the next one."
+  },
+  {
+    "speaker": "JAMIE",
+    "text": "How would you walk the room through that step by step?"
+  },
+  {
+    "speaker": "ALEX",
+    "text": "Start with Practice 15.2 Step-by-Step: Check Out a PR and Post a Comment: Check out someone else's PR branch locally, read the diff in VS Code, and post one constructive review comment. The next useful detail is this: VS Code with the GitHub Pull Requests extension installed. Think of it like entering a new building: first you find the lobby, then the room, then the door you actually need."
+  },
+  {
+    "speaker": "ALEX",
+    "text": "First, open the Command Palette: Ctrl+Shift+P (Mac: Cmd+Shift+P). Then, type GitHub Pull Requests: Focus on Pull Requests View and select it. The Pull Requests panel opens. After that, navigate the list of open PRs. Find one that is not yours (a classmate's PR from Chapter 6, 7, or 14). Finally, with the PR focused, press Enter or activate Checkout from the context menu (Shift+F10 on Windows). VS Code switches to that PR's branch. Think of it as a rail line: each stop confirms you are still on the right route before the next one."
+  },
+  {
+    "speaker": "JAMIE",
+    "text": "What does the learner do first, second, and then after that?"
+  },
+  {
+    "speaker": "ALEX",
+    "text": "First, open the Command Palette again and run GitHub Pull Requests: Open Changed Files. This shows the list of files the PR changed. Then, open one changed file. VS Code opens the Diff Editor showing old content on the left and new content on the right. After that, navigate the diff with the Accessible Diff Viewer: press F7 to move to the next change, Shift+F7 for the previous change. Your screen reader announces each change (added lines, removed lines). Finally, find one specific thing to comment on: a typo, an unclear sentence, a missing step, or something the author did well. Treat it like a recipe: do not add the next ingredient until the previous one is actually in the bowl."
+  },
+  {
+    "speaker": "PAUSE",
+    "text": ""
+  },
+  {
+    "speaker": "JAMIE",
+    "text": "What should the learner prove to themselves after each small task?"
+  },
+  {
+    "speaker": "ALEX",
+    "text": "Here is the plain-English version of Completing Chapter 15, Part 1: Submit Your Evidence. Open your assigned setup or review practice issue and post a completion comment. Put another way, close your Chapter 12 challenge issues when done."
+  },
+  {
+    "speaker": "ALEX",
+    "text": "The useful habit is simple: orient first, act second, verify third. That pause before acting is part of the work."
+  },
+  {
+    "speaker": "ALEX",
+    "text": "This is where the talk moves from concept to action. Start with Expected Outcomes. There is something to understand, something to try, and something that proves the try worked."
+  },
+  {
+    "speaker": "ALEX",
+    "text": "The room should hear these as checkpoints. Student can install and authenticate the GitHub PR extension. Student can check out a PR branch in VS Code (or view it on GitHub.com). Student can navigate diffs using the Accessible Diff Viewer (F7). Student can post constructive, specific feedback on a classmate's work."
+  },
+  {
+    "speaker": "JAMIE",
+    "text": "Let's pause on If You Get Stuck. What should a learner take away from it?"
+  },
+  {
+    "speaker": "ALEX",
+    "text": "Keep the learner anchored in If You Get Stuck. Continue learning: The GitHub Skills course Review Pull Requests practices approving, requesting changes, and using suggestions in an interactive format. This is the part to say slowly: See Appendix Z for the full catalog."
+  },
+  {
+    "speaker": "ALEX",
+    "text": "First, extension does not install? Reload VS Code: Ctrl+Shift+P, then run Developer: Reload Window. Then, oAuth sign-in fails? Verify your GitHub account is active in the browser first, close VS Code, reopen, and retry. After that, pR list is empty? Switch to \"All Open\" view in the GitHub Pull Requests panel. Finally, checkout fails? Confirm you have write access to the repository. If not, use the read-only GitHub.com fallback. It is like walking a hallway with named doors: read the sign, enter the right room, then confirm where you landed."
+  },
+  {
+    "speaker": "JAMIE",
+    "text": "Before we leave If You Get Stuck, what is the practical point?"
+  },
+  {
+    "speaker": "ALEX",
+    "text": "First, diff Editor is hard to navigate? Press F7 for the Accessible Diff Viewer mode, which is purpose-built for screen readers. Then, cannot find the Add Comment command? Use Command Palette and search for GitHub Pull Requests: Add Comment. After that, ask facilitator to help verify the GitHub PR panel and model one review comment. Finally, finished but not sure you did it right? Compare your work against the Challenge 11 reference solution. The rhythm is simple: orient, act, verify, then continue."
+  },
+  {
+    "speaker": "PAUSE",
+    "text": ""
+  },
+  {
+    "speaker": "ALEX",
+    "text": "Before the learner moves on. The reason Learning Moment matters is that reviewing others' work refines your own standards and builds community trust. That gives the learner a simple foothold: the comment you just wrote helps another student learn - and you learn by articulating what makes documentation clear. The interface gets friendlier when it stops being a wall of controls and starts being a set of named places."
+  },
+  {
+    "speaker": "JAMIE",
+    "text": "Let's pause on Learning Pattern Used in This Chapter. What should a learner take away from it?"
+  },
+  {
+    "speaker": "ALEX",
+    "text": "Start with Learning Pattern Used in This Chapter. There is something to understand, something to try, and something that proves the try worked."
+  },
+  {
+    "speaker": "ALEX",
+    "text": "First, install and configure the tool before starting the task. Then, practice on someone else's work first (reviewing is safer than authoring). After that, use accessibility tools (F7 Accessible Diff Viewer) to navigate efficiently. Finally, write specific, constructive feedback (not just \"looks good\"). Think of it as a rail line: each stop confirms you are still on the right route before the next one."
+  },
+  {
+    "speaker": "ALEX",
+    "text": "Hold that next to this. Here is the plain-English version of 1. Installing the GitHub Pull Requests Extension. The GitHub Pull Requests and Issues extension integrates GitHub's PR workflow directly into VS Code - no browser tab switching required."
+  },
+  {
+    "speaker": "PAUSE",
+    "text": ""
+  },
+  {
+    "speaker": "JAMIE",
+    "text": "Let's pause on Method 1: Extensions Sidebar. What should a learner take away from it?"
+  },
+  {
+    "speaker": "ALEX",
+    "text": "Start with Method 1: Extensions Sidebar. There is something to understand, something to try, and something that proves the try worked."
+  },
+  {
+    "speaker": "ALEX",
+    "text": "First, open Extensions sidebar: Ctrl+Shift+X (Mac: Cmd+Shift+X). Then, type \"GitHub Pull Requests\" in the search box. After that, find \"GitHub Pull Requests and Issues\" (publisher: GitHub). Finally, navigate to the extension in the results list. It is a checklist, but a meaningful one: every item creates evidence that the next step is safe."
+  },
+  {
+    "speaker": "JAMIE",
+    "text": "Before we leave Method 1: Extensions Sidebar, what is the practical point?"
+  },
+  {
+    "speaker": "ALEX",
+    "text": "First, press Enter to open the extension detail page. Then, tab to \"Install\" button → press Enter. It is like walking a hallway with named doors: read the sign, enter the right room, then confirm where you landed."
+  },
+  {
+    "speaker": "JAMIE",
+    "text": "Let's pause on Method 2: Command Palette. What should a learner take away from it?"
+  },
+  {
+    "speaker": "ALEX",
+    "text": "Keep the learner anchored in Method 2: Command Palette. The Extensions sidebar is a tree view. This is the part to say slowly: Use Up/Down Arrow to navigate, Enter to open an extension's detail page. A good GitHub workflow is like a well-run meeting: everyone knows the topic, the next action, and who has the floor."
+  },
+  {
+    "speaker": "ALEX",
+    "text": "First, ctrl+Shift+P. Then, type \"install extensions\". After that, select \"Extensions: Install Extensions\". Finally, search for \"GitHub Pull Requests\". It is like walking a hallway with named doors: read the sign, enter the right room, then confirm where you landed."
+  },
+  {
+    "speaker": "JAMIE",
+    "text": "Before we leave Method 2: Command Palette, what is the practical point?"
+  },
+  {
+    "speaker": "ALEX",
+    "text": "First, install \"GitHub Pull Requests and Issues\". The rhythm is simple: orient, act, verify, then continue."
+  },
+  {
+    "speaker": "JAMIE",
+    "text": "Let's pause on Signing In to GitHub. What should a learner take away from it?"
+  },
+  {
+    "speaker": "ALEX",
+    "text": "The reason Signing In to GitHub matters is that after installation, VS Code prompts you to sign in."
+  },
+  {
+    "speaker": "ALEX",
+    "text": "First, a notification appears: \"Sign in to GitHub to use Pull Requests\". Then, navigate to the notification (Alt+N / Mac: Option+N, or status bar navigation). After that, select \"Sign in\". Finally, VS Code opens your browser for GitHub OAuth authentication. The rhythm is simple: orient, act, verify, then continue."
+  },
+  {
+    "speaker": "JAMIE",
+    "text": "Before we leave Signing In to GitHub, what is the practical point?"
+  },
+  {
+    "speaker": "ALEX",
+    "text": "First, authorize VS Code in the browser. Then, return to VS Code - you're now signed in. Think of it as a rail line: each stop confirms you are still on the right route before the next one."
+  },
+  {
+    "speaker": "PAUSE",
+    "text": ""
+  },
+  {
+    "speaker": "ALEX",
+    "text": "Here is the practical turn. Start with Verify sign-in. There is something to understand, something to try, and something that proves the try worked."
+  },
+  {
+    "speaker": "ALEX",
+    "text": "On the ground, that means a few things. Open Command Palette: Ctrl+Shift+P (Mac: Cmd+Shift+P). Type \"GitHub Pull Requests: Sign in\". If already signed in, the option shows \"Sign out\" instead."
+  },
+  {
+    "speaker": "JAMIE",
+    "text": "What would you say to someone who is already bracing for this to be too much?"
+  },
+  {
+    "speaker": "ALEX",
+    "text": "Start with What the Extension Adds. There is something to understand, something to try, and something that proves the try worked."
+  },
+  {
+    "speaker": "ALEX",
+    "text": "Here is what that changes in practice. GitHub view in the Activity Bar (sidebar icon that looks like the GitHub logo). Pull Requests and Issues tree in the Explorer. PR creation commands in the Command Palette. Inline PR review features in the editor. Issue linking when writing commit messages."
+  },
+  {
+    "speaker": "ALEX",
+    "text": "Keep the thread going. Start with Learning Cards: Installing the PR Extension. There is something to understand, something to try, and something that proves the try worked."
+  },
+  {
+    "speaker": "ALEX",
+    "text": "These are the details that keep the idea from floating away. Open Extensions with Ctrl+Shift+X, type \"GitHub Pull Requests\" -- your screen reader announces each result; press Enter on the correct one then Tab to \"Install\". After installation, verify sign-in via Command Palette (Ctrl+Shift+P): type \"GitHub Pull Requests: Sign in\" -- if already signed in, it shows \"Sign out\" instead. The GitHub view appears as a new icon in the Activity Bar; press F6 to cycle between panels until you hear \"GitHub\". A new GitHub logo icon appears in the Activity Bar (left sidebar) after installation -- it is the Octocat silhouette. After signing in, the notification bar at the bottom confirms authentication with your username. Increase sidebar width by dragging its edge so PR titles are not truncated at high zoom levels."
+  },
+  {
+    "speaker": "PAUSE",
+    "text": ""
+  },
+  {
+    "speaker": "JAMIE",
+    "text": "Let's pause on Method 1: Activity Bar. What should a learner take away from it?"
+  },
+  {
+    "speaker": "ALEX",
+    "text": "Keep the learner anchored in Method 1: Activity Bar. Click the GitHub logo icon in the Activity Bar (the vertical strip of icons on the far left). This is the part to say slowly: The GitHub Pull Requests panel opens."
+  },
+  {
+    "speaker": "ALEX",
+    "text": "That becomes easier when you listen for these cues. \"Pull Requests\". \"Issues\"."
+  },
+  {
+    "speaker": "ALEX",
+    "text": "First, the Activity Bar is not always reachable by Tab from the editor. Then, use Ctrl+Shift+P (Mac: Cmd+Shift+P) → type \"GitHub Pull Requests: View Pull Request\" or \"Focus on Pull Requests View\" → press Enter. After that, alternatively press Ctrl+Shift+G (Mac: Cmd+Shift+G) to open Source Control, then Tab until you reach the Activity Bar icon strip. Finally, navigate to the repository on GitHub.com. It is like walking a hallway with named doors: read the sign, enter the right room, then confirm where you landed."
+  },
+  {
+    "speaker": "JAMIE",
+    "text": "Before we leave Method 1: Activity Bar, what is the practical point?"
+  },
+  {
+    "speaker": "ALEX",
+    "text": "First, click the Pull requests tab. Then, click any PR title to view its conversation, commits, and changed files. After that, use the Files changed tab to review diffs. The rhythm is simple: orient, act, verify, then continue."
+  },
+  {
+    "speaker": "ALEX",
+    "text": "Treat examples as spoken recipes, not decorations. You may hear something like List open PRs; gh pr list; View a specific PR; gh pr view 42; Open a PR in your browser; gh pr view 42 --web; Filter PRs waiting for your review; gh pr list --search \"review-requested:@me\". Read the command, understand what it changes, then run it only when the repository state matches the lesson."
+  },
+  {
+    "speaker": "JAMIE",
+    "text": "Let's pause on Method 2: Explorer Section. What should a learner take away from it?"
+  },
+  {
+    "speaker": "ALEX",
+    "text": "Start with Method 2: Explorer Section. There is something to understand, something to try, and something that proves the try worked."
+  },
+  {
+    "speaker": "ALEX",
+    "text": "First, open Explorer: Ctrl+Shift+E (Mac: Cmd+Shift+E). Then, navigate with Arrow keys to find the \"GitHub Pull Requests\" section. After that, expand it with Right Arrow. The rhythm is simple: orient, act, verify, then continue."
+  },
+  {
+    "speaker": "JAMIE",
+    "text": "What is the one idea that makes the next few steps less mysterious?"
+  },
+  {
+    "speaker": "ALEX",
+    "text": "Start with Description: The GitHub Pull Requests panel has two top-level sections. The next useful detail is this: \"My Pull Requests\" contains four filters: Assigned to Me, Created by Me, Waiting for my Review, and All Open."
+  },
+  {
+    "speaker": "PAUSE",
+    "text": ""
+  },
+  {
+    "speaker": "ALEX",
+    "text": "This is the part worth saying out loud. Here is the plain-English version of Screen reader announcement example. \"Pull Request 42: Add Timeline Guide, opened by jeffb, 2 days ago, 3 files changed\". It is like learning a transit route. The names of the stops matter because they tell you whether you are still going the right direction."
+  },
+  {
+    "speaker": "ALEX",
+    "text": "A solid navigation habit is to prove where you are before activating controls. Headings, landmarks, and the address bar are not trivia; they are your map."
+  },
+  {
+    "speaker": "JAMIE",
+    "text": "Give me the version that sounds like an instructor, not a manual."
+  },
+  {
+    "speaker": "ALEX",
+    "text": "Start with By status. There is something to understand, something to try, and something that proves the try worked."
+  },
+  {
+    "speaker": "ALEX",
+    "text": "For a learner, the useful signals are these. \"All Open\" - every open PR. \"Assigned to Me\" - PRs where you're an assignee. \"Waiting for my Review\" - PRs where you're requested as reviewer. \"Draft\" - PRs marked as work-in-progress."
+  },
+  {
+    "speaker": "ALEX",
+    "text": "That connects to another useful point. Keep the learner anchored in By repository. The tree organizes PRs by repository."
+  },
+  {
+    "speaker": "PAUSE",
+    "text": ""
+  },
+  {
+    "speaker": "JAMIE",
+    "text": "Let's pause on Viewing PR Details. What should a learner take away from it?"
+  },
+  {
+    "speaker": "ALEX",
+    "text": "The reason Viewing PR Details matters is that a PR detail view opens in the editor area showing."
+  },
+  {
+    "speaker": "ALEX",
+    "text": "The parts worth keeping in working memory are these. PR title and number. Author and creation date. Status (Open, Merged, Closed). Description (full Markdown with inline rendering). Reviewers and their status (Approved, Requested Changes, Pending). Checks (CI status: passing, failing, pending)."
+  },
+  {
+    "speaker": "ALEX",
+    "text": "First, navigate to a PR in the tree. Then, press Enter. The rhythm is simple: orient, act, verify, then continue."
+  },
+  {
+    "speaker": "ALEX",
+    "text": "Now bring the learner back to the room. Start with Screen reader experience. There is something to understand, something to try, and something that proves the try worked."
+  },
+  {
+    "speaker": "ALEX",
+    "text": "A few details make that real. The detail view is Markdown-rendered HTML. Use standard screen reader reading commands (Arrow keys in NVDA/JAWS virtual mode). Headings mark each section (\"Description\", \"Reviewers\", \"Files Changed\", \"Comments\"). Links are clickable with Enter."
+  },
+  {
+    "speaker": "JAMIE",
+    "text": "Where do you want a learner to place their attention here?"
+  },
+  {
+    "speaker": "ALEX",
+    "text": "Here is the plain-English version of 3. Checking Out a Pull Request Branch. Checking out a PR means downloading its branch to your local machine so you can test it, review it interactively, or add commits to it."
+  },
+  {
+    "speaker": "PAUSE",
+    "text": ""
+  },
+  {
+    "speaker": "ALEX",
+    "text": "That matters because of the next idea. Start with Why Check Out a PR. There is something to understand, something to try, and something that proves the try worked."
+  },
+  {
+    "speaker": "ALEX",
+    "text": "The practical anchors are these. Test functionality: Run the code locally to verify it works. Review with full context: See the changes in your editor with full file access. Make suggestions: Add commits to someone else's PR (if you have write access). Verify accessibility: Test with your screen reader to ensure changes don't break navigation."
+  },
+  {
+    "speaker": "JAMIE",
+    "text": "Let's pause on Method 1: From the PR Detail View. What should a learner take away from it?"
+  },
+  {
+    "speaker": "ALEX",
+    "text": "Start with Method 1: From the PR Detail View. There is something to understand, something to try, and something that proves the try worked."
+  },
+  {
+    "speaker": "ALEX",
+    "text": "The practical takeaway is this. Downloads the branch. Switches your local repository to that branch. Opens the changed files in the editor."
+  },
+  {
+    "speaker": "ALEX",
+    "text": "First, open a PR (see Section 2). Then, in the PR detail view, navigate to \"Checkout\" button. After that, press Enter. It is like walking a hallway with named doors: read the sign, enter the right room, then confirm where you landed."
+  },
+  {
+    "speaker": "JAMIE",
+    "text": "Let's pause on Method 2: From the PR Tree. What should a learner take away from it?"
+  },
+  {
+    "speaker": "ALEX",
+    "text": "Start with Method 2: From the PR Tree. There is something to understand, something to try, and something that proves the try worked."
+  },
+  {
+    "speaker": "ALEX",
+    "text": "First, navigate to the PR in the GitHub Pull Requests tree. Then, press Shift+F10 (Mac: Ctrl+Return) to open context menu. After that, select \"Checkout Pull Request\". The rhythm is simple: orient, act, verify, then continue."
+  },
+  {
+    "speaker": "PAUSE",
+    "text": ""
+  },
+  {
+    "speaker": "JAMIE",
+    "text": "Let's pause on Method 3: Command Palette. What should a learner take away from it?"
+  },
+  {
+    "speaker": "ALEX",
+    "text": "Start with Method 3: Command Palette: After checkout, the bottom-left status bar shows the branch name (example: \"jeffb/add-timeline-guide\"). The next useful detail is this: Your local files now match that branch."
+  },
+  {
+    "speaker": "ALEX",
+    "text": "First, ctrl+Shift+P (Mac: Cmd+Shift+P). Then, type \"GitHub Pull Requests: Checkout\". After that, select \"GitHub Pull Requests: Checkout Pull Request\". Finally, choose the PR from the list. Think of it as a rail line: each stop confirms you are still on the right route before the next one."
+  },
+  {
+    "speaker": "JAMIE",
+    "text": "Let's pause on Returning to Your Original Branch. What should a learner take away from it?"
+  },
+  {
+    "speaker": "ALEX",
+    "text": "Start with Returning to Your Original Branch. There is something to understand, something to try, and something that proves the try worked."
+  },
+  {
+    "speaker": "ALEX",
+    "text": "First, ctrl+Shift+P (Mac: Cmd+Shift+P). Then, type \"git checkout\". After that, select \"Git: Checkout to.\". Finally, choose your original branch (usually main or your feature branch). Treat it like a recipe: do not add the next ingredient until the previous one is actually in the bowl."
+  },
+  {
+    "speaker": "ALEX",
+    "text": "A solid Git habit is to know which branch you are on, what changed, and what confirmation you expect before you run the next command."
+  },
+  {
+    "speaker": "JAMIE",
+    "text": "If I am listening before the workshop starts, what should settle in my mind first?"
+  },
+  {
+    "speaker": "ALEX",
+    "text": "Start with Learning Cards: Checking Out a PR. There is something to understand, something to try, and something that proves the try worked."
+  },
+  {
+    "speaker": "ALEX",
+    "text": "The practical takeaway is this. After checkout, press F6 to navigate to the Status Bar and hear the branch name (e.g., \"jeffb/fix-alt-text\") confirming you are on the PR branch. Use Ctrl+Shift+P then \"Git: Checkout to\" to switch back to your original branch when done reviewing. The PR detail view is Markdown-rendered HTML -- navigate with h (heading), t (table), and arrow keys in your screen reader's virtual mode. The Status Bar in the bottom-left changes to show the PR branch name, confirming the checkout succeeded. Files changed by the PR are highlighted in the Explorer sidebar with colored badges (M for modified, A for added). Use Ctrl+= to zoom the editor if diff annotations are hard to read."
+  },
+  {
+    "speaker": "PAUSE",
+    "text": ""
+  },
+  {
+    "speaker": "ALEX",
+    "text": "Another way to ground it. Keep the learner anchored in 4. Reviewing Pull Requests in VS Code. Once you've checked out a PR (or opened it in the detail view), you can review its changes fully within VS Code. A good GitHub workflow is like a well-run meeting: everyone knows the topic, the next action, and who has the floor."
+  },
+  {
+    "speaker": "JAMIE",
+    "text": "Let's pause on In the PR detail view. What should a learner take away from it?"
+  },
+  {
+    "speaker": "ALEX",
+    "text": "Start with In the PR detail view. There is something to understand, something to try, and something that proves the try worked."
+  },
+  {
+    "speaker": "ALEX",
+    "text": "First, scroll down to \"Files Changed\" section. Then, each file is a link. After that, navigate with Arrow keys. Finally, press Enter on a file to open its diff view. The rhythm is simple: orient, act, verify, then continue."
+  },
+  {
+    "speaker": "ALEX",
+    "text": "Keep the teaching thread moving. Start with Screen reader announcement: \"docs/11-vscode-interface.md, 42 additions, 3 deletions\"."
+  },
+  {
+    "speaker": "PAUSE",
+    "text": ""
+  },
+  {
+    "speaker": "JAMIE",
+    "text": "Let's pause on Understanding the Diff View. What should a learner take away from it?"
+  },
+  {
+    "speaker": "ALEX",
+    "text": "Here is the plain-English version of Understanding the Diff View. When you open a file from \"Files Changed\"."
+  },
+  {
+    "speaker": "ALEX",
+    "text": "Keep the teaching thread moving. Start with Split view mode (default). There is something to understand, something to try, and something that proves the try worked."
+  },
+  {
+    "speaker": "ALEX",
+    "text": "The practical takeaway is this. Left side: original file (before changes). Right side: modified file (after changes). Changed lines highlighted (added = green, removed = red)."
+  },
+  {
+    "speaker": "JAMIE",
+    "text": "Let's pause on Inline view mode. What should a learner take away from it?"
+  },
+  {
+    "speaker": "ALEX",
+    "text": "Start with Inline view mode. There is something to understand, something to try, and something that proves the try worked."
+  },
+  {
+    "speaker": "ALEX",
+    "text": "The practical takeaway is this. Single editor. Removed lines shown with - prefix. Added lines shown with + prefix."
+  },
+  {
+    "speaker": "PAUSE",
+    "text": ""
+  },
+  {
+    "speaker": "ALEX",
+    "text": "Keep the teaching thread moving. Start with To toggle between views. There is something to understand, something to try, and something that proves the try worked."
+  },
+  {
+    "speaker": "ALEX",
+    "text": "The practical takeaway is this. Command Palette: Ctrl+Shift+P (Mac: Cmd+Shift+P) → \"Diff: Toggle Inline View\"."
+  },
+  {
+    "speaker": "JAMIE",
+    "text": "Let's pause on Recommended workflow for screen reader users. What should a learner take away from it?"
+  },
+  {
+    "speaker": "ALEX",
+    "text": "Start with Recommended workflow for screen reader users. There is something to understand, something to try, and something that proves the try worked."
+  },
+  {
+    "speaker": "ALEX",
+    "text": "The practical takeaway is this. Unchanged lines (for context). Removed lines (prefixed with -). Added lines (prefixed with +)."
+  },
+  {
+    "speaker": "ALEX",
+    "text": "First, open a changed file from the PR detail view. Then, press F7 to jump to the first diff hunk. After that, press Alt+F2 (Mac: Option+F2) to open Accessible View. Finally, read the hunk content. Think of it as a rail line: each stop confirms you are still on the right route before the next one."
+  },
+  {
+    "speaker": "JAMIE",
+    "text": "Before we leave Recommended workflow for screen reader users, what is the practical point?"
+  },
+  {
+    "speaker": "ALEX",
+    "text": "First, press Escape to close Accessible View. Then, press F7 to jump to the next hunk. After that, repeat until all hunks reviewed. Treat it like a recipe: do not add the next ingredient until the previous one is actually in the bowl."
+  },
+  {
+    "speaker": "ALEX",
+    "text": "Keep the teaching thread moving. Here is the plain-English version of This structured reading is far superior to navigating the visual diff manually. VS Code October 2025 update: Deleted lines (shown with the - prefix) are now fully selectable and copyable in the diff editor. Put another way, previously, deleted code could only be read, not selected. It is like learning a transit route. The names of the stops matter because they tell you whether you are still going the right direction."
+  },
+  {
+    "speaker": "PAUSE",
+    "text": ""
+  },
+  {
+    "speaker": "JAMIE",
+    "text": "Let's pause on Flagging Issues During Review. What should a learner take away from it?"
+  },
+  {
+    "speaker": "ALEX",
+    "text": "This is where Flagging Issues During Review becomes real: start Review saves your comments as a draft until you submit the full review (see Section 7)."
+  },
+  {
+    "speaker": "ALEX",
+    "text": "First, navigate to the specific line in the diff. Then, press Shift+F10 (Mac: Ctrl+Return) for context menu. After that, select \"Add Comment\". Finally, type your comment in the input that appears. It is a checklist, but a meaningful one: every item creates evidence that the next step is safe."
+  },
+  {
+    "speaker": "JAMIE",
+    "text": "Before we leave Flagging Issues During Review, what is the practical point?"
+  },
+  {
+    "speaker": "ALEX",
+    "text": "First, choose \"Single Comment\" or \"Start Review\". It is like walking a hallway with named doors: read the sign, enter the right room, then confirm where you landed."
+  },
+  {
+    "speaker": "ALEX",
+    "text": "A solid issue habit is to read the title, the body, and the timeline before acting. You are listening for the requested action, the missing evidence, and the person who needs a response."
+  },
+  {
+    "speaker": "ALEX",
+    "text": "Keep the teaching thread moving. Start with Learning Cards: Reviewing Pull Requests in VS Code. There is something to understand, something to try, and something that proves the try worked."
+  },
+  {
+    "speaker": "ALEX",
+    "text": "The practical takeaway is this. Press F7 to enter the Accessible Diff Viewer and hear each hunk announced as \"Change N of M\" with clear \"Removed:\" and \"Added:\" labels -- this is far more reliable than navigating the raw split diff line by line. After reviewing a hunk, press Escape to return to the diff editor, then Shift+F10 on the target line and select \"Add Comment\" to place inline feedback exactly where the issue is. Use Alt+F2 (Accessible View) on any hunk for a plain-text rendering you can read with arrow keys at your own pace. Switch from split diff to inline diff (Ctrl+Shift+P then \"Toggle Inline View\") to keep all changes in a single column -- much easier at high zoom than scanning two narrow panes. Press F7 / Shift+F7 to jump between hunks; each hunk gains a visible focus outline that tracks your position so you do not lose your place at high magnification. Added lines show a green gutter bar and removed lines a red gutter bar; in High Contrast themes these become bold solid borders visible at any zoom level."
+  },
+  {
+    "speaker": "JAMIE",
+    "text": "Let's pause on Tool Cards: Create a Pull Request (from your editor). What should a learner take away from it?"
+  },
+  {
+    "speaker": "ALEX",
+    "text": "The reason Tool Cards: Create a Pull Request (from your editor) matters is that VS Code Desktop (primary for Day 2). That gives the learner a simple foothold: after you've pushed commits to a feature branch, you can create a PR without leaving VS Code."
+  },
+  {
+    "speaker": "ALEX",
+    "text": "First, ctrl+Shift+P GitHub Pull Requests: Create Pull Request. Then, fill in the title, description, and base branch. After that, click Create. Finally, push your branch, then click the Compare & pull request banner on the repo page. The rhythm is simple: orient, act, verify, then continue."
+  },
+  {
+    "speaker": "JAMIE",
+    "text": "Before we leave Tool Cards: Create a Pull Request (from your editor), what is the practical point?"
+  },
+  {
+    "speaker": "ALEX",
+    "text": "First, fill in the form and click Create pull request. Then, after pushing, click Create Pull Request -- this opens gitub.com with the form pre-filled. Think of it as a rail line: each stop confirms you are still on the right route before the next one."
+  },
+  {
+    "speaker": "ALEX",
+    "text": "Treat examples as spoken recipes, not decorations. You may hear something like git push -u origin your-branch; gh pr create --title \"Title\" --body \"Description\". Read the command, understand what it changes, then run it only when the repository state matches the lesson."
+  },
+  {
+    "speaker": "PAUSE",
+    "text": ""
+  },
+  {
+    "speaker": "JAMIE",
+    "text": "Let's pause on Prerequisites. What should a learner take away from it?"
+  },
+  {
+    "speaker": "ALEX",
+    "text": "Start with Prerequisites. There is something to understand, something to try, and something that proves the try worked."
+  },
+  {
+    "speaker": "ALEX",
+    "text": "First, you've created a branch (see Git & Source Control: Branch Management). Then, you've made commits. After that, you've pushed the branch to GitHub (Ctrl+Shift+P / Mac: Cmd+Shift+P → \"Git: Push\"). Think of it as a rail line: each stop confirms you are still on the right route before the next one."
+  },
+  {
+    "speaker": "JAMIE",
+    "text": "Let's pause on Method 1: Command Palette (Recommended). What should a learner take away from it?"
+  },
+  {
+    "speaker": "ALEX",
+    "text": "Start with Method 1: Command Palette (Recommended). There is something to understand, something to try, and something that proves the try worked."
+  },
+  {
+    "speaker": "ALEX",
+    "text": "First, ctrl+Shift+P (Mac: Cmd+Shift+P). Then, type \"GitHub Pull Requests: Create\". After that, select \"GitHub Pull Requests: Create Pull Request\". Finally, a form opens in the editor. Treat it like a recipe: do not add the next ingredient until the previous one is actually in the bowl."
+  },
+  {
+    "speaker": "JAMIE",
+    "text": "Let's pause on Method 2: Source Control Panel. What should a learner take away from it?"
+  },
+  {
+    "speaker": "ALEX",
+    "text": "Start with Method 2: Source Control Panel. There is something to understand, something to try, and something that proves the try worked."
+  },
+  {
+    "speaker": "ALEX",
+    "text": "First, open Source Control: Ctrl+Shift+G (Mac: Cmd+Shift+G). Then, after pushing, a \"Create Pull Request\" button appears. After that, press Enter on that button. It is a checklist, but a meaningful one: every item creates evidence that the next step is safe."
+  },
+  {
+    "speaker": "PAUSE",
+    "text": ""
+  },
+  {
+    "speaker": "JAMIE",
+    "text": "Let's pause on Method 3: GitHub Panel. What should a learner take away from it?"
+  },
+  {
+    "speaker": "ALEX",
+    "text": "Start with Method 3: GitHub Panel. There is something to understand, something to try, and something that proves the try worked."
+  },
+  {
+    "speaker": "ALEX",
+    "text": "First, open GitHub view (Activity Bar → GitHub icon). Then, right-click your branch in the tree. After that, select \"Create Pull Request\". It is like walking a hallway with named doors: read the sign, enter the right room, then confirm where you landed."
+  },
+  {
+    "speaker": "ALEX",
+    "text": "Keep the teaching thread moving. Start with Title (required). There is something to understand, something to try, and something that proves the try worked."
+  },
+  {
+    "speaker": "ALEX",
+    "text": "The practical takeaway is this. Auto-filled with your most recent commit message. Edit to make it descriptive (example: \"Add Timeline View documentation\")."
+  },
+  {
+    "speaker": "JAMIE",
+    "text": "Let's pause on Description (optional but recommended). What should a learner take away from it?"
+  },
+  {
+    "speaker": "ALEX",
+    "text": "Start with Description (optional but recommended). There is something to understand, something to try, and something that proves the try worked."
+  },
+  {
+    "speaker": "ALEX",
+    "text": "The practical takeaway is this. Explain what changed and why. Reference the issue you're fixing: \"Fixes 42\". If a PR template exists, VS Code loads it here (see Section 6). Copilot-assisted description: An AI sparkle icon in the description toolbar lets you generate a description from your commits. When a PR template exists, Copilot fills in the template sections intelligently rather than replacing the template - it populates."
+  },
+  {
+    "speaker": "PAUSE",
+    "text": ""
+  },
+  {
+    "speaker": "ALEX",
+    "text": "Keep the teaching thread moving. Start with Base branch (target). There is something to understand, something to try, and something that proves the try worked."
+  },
+  {
+    "speaker": "ALEX",
+    "text": "The practical takeaway is this. Usually main or develop. This is the branch your changes will merge into."
+  },
+  {
+    "speaker": "JAMIE",
+    "text": "Let's pause on Compare branch (source). What should a learner take away from it?"
+  },
+  {
+    "speaker": "ALEX",
+    "text": "Start with Compare branch (source). There is something to understand, something to try, and something that proves the try worked."
+  },
+  {
+    "speaker": "ALEX",
+    "text": "The practical takeaway is this. Your feature branch (auto-selected). This is the branch with your changes."
+  },
+  {
+    "speaker": "ALEX",
+    "text": "Keep the teaching thread moving. Start with Reviewers (optional). There is something to understand, something to try, and something that proves the try worked."
+  },
+  {
+    "speaker": "ALEX",
+    "text": "The practical takeaway is this. Select people to review your PR. Navigate the list with Arrow keys."
+  },
+  {
+    "speaker": "PAUSE",
+    "text": ""
+  },
+  {
+    "speaker": "JAMIE",
+    "text": "Let's pause on Labels (optional). What should a learner take away from it?"
+  },
+  {
+    "speaker": "ALEX",
+    "text": "Start with Labels (optional). There is something to understand, something to try, and something that proves the try worked."
+  },
+  {
+    "speaker": "ALEX",
+    "text": "The practical takeaway is this. Add labels like documentation, accessibility, good-first-issue."
+  },
+  {
+    "speaker": "ALEX",
+    "text": "Keep the teaching thread moving. Start with Milestone (optional). There is something to understand, something to try, and something that proves the try worked."
+  },
+  {
+    "speaker": "ALEX",
+    "text": "The practical takeaway is this. Link the PR to a project milestone."
+  },
+  {
+    "speaker": "JAMIE",
+    "text": "Let's pause on Draft PR checkbox. What should a learner take away from it?"
+  },
+  {
+    "speaker": "ALEX",
+    "text": "Start with Draft PR checkbox. There is something to understand, something to try, and something that proves the try worked."
+  },
+  {
+    "speaker": "ALEX",
+    "text": "The practical takeaway is this. Check this if the PR is not ready for review yet. Unchecked = \"Ready for review\"."
+  },
+  {
+    "speaker": "PAUSE",
+    "text": ""
+  },
+  {
+    "speaker": "ALEX",
+    "text": "Keep the teaching thread moving. Start with Screen reader navigation. There is something to understand, something to try, and something that proves the try worked."
+  },
+  {
+    "speaker": "ALEX",
+    "text": "The practical takeaway is this. All fields are standard form inputs. Tab to move between fields. Use Arrow keys in dropdowns (reviewers, labels, milestones)."
+  },
+  {
+    "speaker": "JAMIE",
+    "text": "Let's pause on Submitting the PR. What should a learner take away from it?"
+  },
+  {
+    "speaker": "ALEX",
+    "text": "Keep the learner anchored in Submitting the PR. VS Code creates the PR on GitHub and shows a success message. This is the part to say slowly: The PR link appears in the notification - click it to open the PR on GitHub, or open it in the GitHub Pull Requests panel."
+  },
+  {
+    "speaker": "ALEX",
+    "text": "First, review all fields. Then, tab to \"Create\" button. After that, press Enter. Finally, navigate to the repository on GitHub. It is like walking a hallway with named doors: read the sign, enter the right room, then confirm where you landed."
+  },
+  {
+    "speaker": "JAMIE",
+    "text": "Before we leave Submitting the PR, what is the practical point?"
+  },
+  {
+    "speaker": "ALEX",
+    "text": "First, if you recently pushed, a yellow banner \"Compare & pull request\" appears - click it. Then, otherwise: click Pull requests tab, then New pull request, then select your branch. After that, fill in the title and description. Finally, click Create pull request. The rhythm is simple: orient, act, verify, then continue."
+  },
+  {
+    "speaker": "ALEX",
+    "text": "Treat examples as spoken recipes, not decorations. You may hear something like Interactive: prompts for title, body, base branch; gh pr create; Inline: provide details directly; gh pr create --title \"Add Timeline View documentation\" --body \"Fixes 42\"; Create as draft; gh pr create --draft; Open the form in your browser; gh pr create. Read the command, understand what it changes, then run it only when the repository state matches the lesson."
+  },
+  {
+    "speaker": "ALEX",
+    "text": "Keep the teaching thread moving. Start with Learning Cards: Creating a Pull Request. There is something to understand, something to try, and something that proves the try worked."
+  },
+  {
+    "speaker": "ALEX",
+    "text": "The practical takeaway is this. Press Ctrl+Shift+P then type \"GitHub Pull Requests: Create\" -- the PR creation form opens with title, description, base branch, and reviewer fields navigable with Tab. The description field supports full Markdown -- use Ctrl+F to find and replace `` placeholders in templates. After creating, your screen reader announces the new PR number; the PR detail view opens automatically. The PR creation form appears as a new editor tab with clearly labeled input fields for title, description, base branch, and reviewers. Use Ctrl+= to zoom the form if the input fields are small; the form reflows to accommodate larger text. The base branch dropdown is near the top of the form -- verify it shows main (or your target branch) before submitting."
+  },
+  {
+    "speaker": "PAUSE",
+    "text": ""
+  },
+  {
+    "speaker": "JAMIE",
+    "text": "Let's pause on 6. Pull Request Description Templates. What should a learner take away from it?"
+  },
+  {
+    "speaker": "ALEX",
+    "text": "Start with 6. Pull Request Description Templates: Many repositories include a PR template - a Markdown file that pre-fills the PR description with a checklist or structure."
+  },
+  {
+    "speaker": "ALEX",
+    "text": "Keep the teaching thread moving. Here is the plain-English version of Where Templates Are Stored. When you create a PR in VS Code, the extension automatically loads the template into the description field. It is like learning a transit route. The names of the stops matter because they tell you whether you are still going the right direction."
+  },
+  {
+    "speaker": "ALEX",
+    "text": "The practical takeaway is this.github/pull request template.md (root).github/PULL REQUEST TEMPLATE.md.github/PULL REQUEST TEMPLATE/ (folder with multiple templates). docs/pull request template.md."
+  },
+  {
+    "speaker": "JAMIE",
+    "text": "What is the safe way to learn from that example?"
+  },
+  {
+    "speaker": "ALEX",
+    "text": "Start with Example PR Template. There is something to understand, something to try, and something that proves the try worked."
+  },
+  {
+    "speaker": "ALEX",
+    "text": "Treat examples as spoken recipes, not decorations. You may hear something like Description; Related Issue; Type of Change; - [ ] Bug fix; - [ ] New feature; - [ ] Documentation update; - [ ] Accessibility improvement; Testing; Checklist; - [ ] My code follows the project's style guidelines; - [ ] I have tested with a screen reader (NVDA,. Read the command, understand what it changes, then run it only when the repository state matches the lesson."
+  },
+  {
+    "speaker": "PAUSE",
+    "text": ""
+  },
+  {
+    "speaker": "JAMIE",
+    "text": "Let's pause on Screen reader workflow. What should a learner take away from it?"
+  },
+  {
+    "speaker": "ALEX",
+    "text": "Keep the learner anchored in Screen reader workflow. Keyboard tip: Use Ctrl+F (Mac: Cmd+F) to jump to each <!-- placeholder, fill it in, then F3 to jump to the next one."
+  },
+  {
+    "speaker": "ALEX",
+    "text": "First, create PR (Method 1-3 from Section 5). Then, the description field is pre-filled with the template. After that, navigate through the template with Arrow keys. Finally, replace each `` with your content. It is like walking a hallway with named doors: read the sign, enter the right room, then confirm where you landed."
+  },
+  {
+    "speaker": "JAMIE",
+    "text": "Before we leave Screen reader workflow, what is the practical point?"
+  },
+  {
+    "speaker": "ALEX",
+    "text": "First, check checkboxes by typing x between the brackets: - [x]. The rhythm is simple: orient, act, verify, then continue."
+  },
+  {
+    "speaker": "JAMIE",
+    "text": "Let's pause on 7. Commenting and Requesting Changes. What should a learner take away from it?"
+  },
+  {
+    "speaker": "ALEX",
+    "text": "Start with 7. Commenting and Requesting Changes. There is something to understand, something to try, and something that proves the try worked."
+  },
+  {
+    "speaker": "ALEX",
+    "text": "The practical takeaway is this. Leave inline comments on specific lines. Request changes before the PR can be merged. Approve the PR. Submit general feedback."
+  },
+  {
+    "speaker": "JAMIE",
+    "text": "Let's pause on Adding an Inline Comment. What should a learner take away from it?"
+  },
+  {
+    "speaker": "ALEX",
+    "text": "Start with Adding an Inline Comment. There is something to understand, something to try, and something that proves the try worked."
+  },
+  {
+    "speaker": "ALEX",
+    "text": "First, open a file from the PR's \"Files Changed\" list. Then, navigate to the line you want to comment on. After that, press Shift+F10 (Mac: Ctrl+Return) to open context menu. Finally, select \"Add Comment\". Think of it as a rail line: each stop confirms you are still on the right route before the next one."
+  },
+  {
+    "speaker": "JAMIE",
+    "text": "Before we leave Adding an Inline Comment, what is the practical point?"
+  },
+  {
+    "speaker": "ALEX",
+    "text": "First, type your comment. Then, choose \"Add Single Comment\" (posts immediately) or \"Start Review\" (saves as a draft). Treat it like a recipe: do not add the next ingredient until the previous one is actually in the bowl."
+  },
+  {
+    "speaker": "PAUSE",
+    "text": ""
+  },
+  {
+    "speaker": "JAMIE",
+    "text": "Let's pause on Comment format tips. What should a learner take away from it?"
+  },
+  {
+    "speaker": "ALEX",
+    "text": "Start with Comment format tips. There is something to understand, something to try, and something that proves the try worked."
+  },
+  {
+    "speaker": "ALEX",
+    "text": "The practical takeaway is this. Be specific: \"This heading should be H3, not H2\". Provide context: \"Screen readers announce this as 'list with 1 item' - should be a paragraph instead\". Suggest a fix: \"Consider rewording to: 'Click the button to save'\"."
+  },
+  {
+    "speaker": "JAMIE",
+    "text": "Let's pause on If you have multiple comments to make, use \"Start Review\". What should a learner take away from it?"
+  },
+  {
+    "speaker": "ALEX",
+    "text": "Start with If you have multiple comments to make, use \"Start Review\". There is something to understand, something to try, and something that proves the try worked."
+  },
+  {
+    "speaker": "ALEX",
+    "text": "First, add your first inline comment → select \"Start Review\". Then, continue adding comments to other lines. After that, all comments are saved as drafts (not visible to others yet). It is a checklist, but a meaningful one: every item creates evidence that the next step is safe."
+  },
+  {
+    "speaker": "JAMIE",
+    "text": "Let's pause on Submitting Your Review. What should a learner take away from it?"
+  },
+  {
+    "speaker": "ALEX",
+    "text": "Keep the learner anchored in Submitting Your Review. The review type selector is a radio button group. This is the part to say slowly: Use Arrow keys to choose, Enter to confirm."
+  },
+  {
+    "speaker": "ALEX",
+    "text": "The practical takeaway is this. Comment - general feedback, no approval decision. Approve - PR looks good, ready to merge. Request Changes - issues must be fixed before merging."
+  },
+  {
+    "speaker": "ALEX",
+    "text": "First, ctrl+Shift+P (Mac: Cmd+Shift+P). Then, type \"GitHub Pull Requests: Submit Review\". After that, select \"GitHub Pull Requests: Finish Review\". Finally, choose review type. It is like walking a hallway with named doors: read the sign, enter the right room, then confirm where you landed."
+  },
+  {
+    "speaker": "JAMIE",
+    "text": "Before we leave Submitting Your Review, what is the practical point?"
+  },
+  {
+    "speaker": "ALEX",
+    "text": "First, optionally add a summary comment. Then, press Enter to submit. The rhythm is simple: orient, act, verify, then continue."
+  },
+  {
+    "speaker": "PAUSE",
+    "text": ""
+  },
+  {
+    "speaker": "JAMIE",
+    "text": "Let's pause on What Happens After Submission. What should a learner take away from it?"
+  },
+  {
+    "speaker": "ALEX",
+    "text": "The reason What Happens After Submission matters is that web alternative (github.com) - reviewing. That gives the learner a simple foothold: see Accessible Code Review for detailed screen reader steps. The interface gets friendlier when it stops being a wall of controls and starts being a set of named places."
+  },
+  {
+    "speaker": "ALEX",
+    "text": "The practical takeaway is this. All your draft comments post to GitHub. The PR author receives a notification. Your review status appears on the PR (Approved / Changes Requested / Commented). If you requested changes, the PR cannot merge until you approve it."
+  },
+  {
+    "speaker": "ALEX",
+    "text": "First, open the PR and click the Files changed tab. Then, read through each file's diff. After that, click the blue + button on any line to add an inline comment. Finally, choose Start a review to batch comments. The rhythm is simple: orient, act, verify, then continue."
+  },
+  {
+    "speaker": "JAMIE",
+    "text": "Before we leave What Happens After Submission, what is the practical point?"
+  },
+  {
+    "speaker": "ALEX",
+    "text": "First, click Review changes (top right) to select Comment / Approve / Request changes. Then, click Submit review. Think of it as a rail line: each stop confirms you are still on the right route before the next one."
+  },
+  {
+    "speaker": "ALEX",
+    "text": "Treat examples as spoken recipes, not decorations. You may hear something like View the PR diff in your terminal; gh pr diff 42; Approve; gh pr review 42 --approve --body \"Looks good.\"; Request changes; gh pr review 42 --request-changes --body \"Heading hierarchy needs fixing.\"; Comment-only (no verdict); gh pr review 42 --comment --body. Read the command, understand what it changes, then run it only when the repository state matches the lesson."
+  },
+  {
+    "speaker": "JAMIE",
+    "text": "Let's pause on Learning Cards: Commenting and Requesting Changes. What should a learner take away from it?"
+  },
+  {
+    "speaker": "ALEX",
+    "text": "Start with Learning Cards: Commenting and Requesting Changes. There is something to understand, something to try, and something that proves the try worked."
+  },
+  {
+    "speaker": "ALEX",
+    "text": "The practical takeaway is this. In a diff view, navigate to a line and press Shift+F10 for the context menu, then select \"Add Comment\" to leave inline feedback. Choose \"Start Review\" instead of \"Single Comment\" to batch multiple comments before submitting them all at once. When submitting a review, use Ctrl+Shift+P then \"GitHub Pull Requests: Submit Review\" and choose Approve, Request Changes, or Comment. Inline comments appear as expandable banners within the diff view -- look for the text input box that opens below the target line. The review submission dialog has radio buttons for Approve, Request Changes, and Comment with clear labels. Increase diff view font size with Ctrl+= so line numbers and change annotations are easier to read."
+  },
+  {
+    "speaker": "ALEX",
+    "text": "Keep the teaching thread moving. Here is the plain-English version of 8. Merging Pull Requests. Who can merge: Repository maintainers, or contributors with write access."
+  },
+  {
+    "speaker": "PAUSE",
+    "text": ""
+  },
+  {
+    "speaker": "JAMIE",
+    "text": "Let's pause on Prerequisites for Merging. What should a learner take away from it?"
+  },
+  {
+    "speaker": "ALEX",
+    "text": "This is where Prerequisites for Merging becomes real: changing the base branch: If the PR was opened against the wrong base branch, you can change it from the PR detail view in VS Code. That matters in practice: Scroll to the base branch field in the PR detail view and activate the dropdown to select a different target branch."
+  },
+  {
+    "speaker": "ALEX",
+    "text": "First, all required reviews are approved. Then, all CI checks pass (green checkmarks). After that, no merge conflicts exist. Finally, branch is up to date with base branch (main). It is a checklist, but a meaningful one: every item creates evidence that the next step is safe."
+  },
+  {
+    "speaker": "JAMIE",
+    "text": "Let's pause on Method 1: PR Detail View. What should a learner take away from it?"
+  },
+  {
+    "speaker": "ALEX",
+    "text": "Start with Method 1: PR Detail View. There is something to understand, something to try, and something that proves the try worked."
+  },
+  {
+    "speaker": "ALEX",
+    "text": "First, open the PR in VS Code. Then, scroll to the bottom of the PR detail view. After that, find \"Merge Pull Request\" button. Finally, press Enter. It is like walking a hallway with named doors: read the sign, enter the right room, then confirm where you landed."
+  },
+  {
+    "speaker": "JAMIE",
+    "text": "Before we leave Method 1: PR Detail View, what is the practical point?"
+  },
+  {
+    "speaker": "ALEX",
+    "text": "First, choose merge type (see below). The rhythm is simple: orient, act, verify, then continue."
+  },
+  {
+    "speaker": "JAMIE",
+    "text": "What is the teaching move inside Method 2: Command Palette?"
+  },
+  {
+    "speaker": "ALEX",
+    "text": "Start with Method 2: Command Palette. There is something to understand, something to try, and something that proves the try worked."
+  },
+  {
+    "speaker": "ALEX",
+    "text": "First, ctrl+Shift+P (Mac: Cmd+Shift+P). Then, type \"GitHub Pull Requests: Merge\". After that, select \"GitHub Pull Requests: Merge Pull Request\". Finally, choose the PR from the list. The rhythm is simple: orient, act, verify, then continue."
+  },
+  {
+    "speaker": "JAMIE",
+    "text": "If someone only remembers one thing from Method 2: Command Palette, what should it be?"
+  },
+  {
+    "speaker": "ALEX",
+    "text": "First, select merge type. Think of it as a rail line: each stop confirms you are still on the right route before the next one."
+  },
+  {
+    "speaker": "PAUSE",
+    "text": ""
+  },
+  {
+    "speaker": "ALEX",
+    "text": "Keep the teaching thread moving. Start with Merge Types: The merge type selector is a dropdown or radio group. The next useful detail is this: Navigate with Arrow keys, confirm with Enter."
+  },
+  {
+    "speaker": "JAMIE",
+    "text": "Let's pause on Which merge type to use. What should a learner take away from it?"
+  },
+  {
+    "speaker": "ALEX",
+    "text": "Start with Which merge type to use. There is something to understand, something to try, and something that proves the try worked."
+  },
+  {
+    "speaker": "ALEX",
+    "text": "The practical takeaway is this. Check the repository's CONTRIBUTING.md for guidance. If unsure, use Merge Commit (the default and safest option)."
+  },
+  {
+    "speaker": "JAMIE",
+    "text": "Let's pause on After Merging. What should a learner take away from it?"
+  },
+  {
+    "speaker": "ALEX",
+    "text": "Start with After Merging. There is something to understand, something to try, and something that proves the try worked."
+  },
+  {
+    "speaker": "ALEX",
+    "text": "First, the PR closes automatically. Then, the feature branch can be deleted (VS Code prompts: \"Delete branch?\"). After that, recommended: switch back to main and pull the merged changes. It is a checklist, but a meaningful one: every item creates evidence that the next step is safe."
+  },
+  {
+    "speaker": "PAUSE",
+    "text": ""
+  },
+  {
+    "speaker": "JAMIE",
+    "text": "What should happen before anyone copies and runs it?"
+  },
+  {
+    "speaker": "ALEX",
+    "text": "Keep the learner anchored in Switching to main and pulling. (Mac users: use Cmd+Shift+P instead of Ctrl+Shift+P)."
+  },
+  {
+    "speaker": "ALEX",
+    "text": "Treat examples as spoken recipes, not decorations. You may hear something like Ctrl+Shift+P → \"Git: Checkout to.\" → select \"main\"; Ctrl+Shift+P → \"Git: Pull\". Read the command, understand what it changes, then run it only when the repository state matches the lesson."
+  },
+  {
+    "speaker": "JAMIE",
+    "text": "Let's pause on Deleting the Feature Branch. What should a learner take away from it?"
+  },
+  {
+    "speaker": "ALEX",
+    "text": "The reason Deleting the Feature Branch matters is that after merging, the feature branch is no longer needed. That gives the learner a simple foothold: web alternative (github.com) - merging."
+  },
+  {
+    "speaker": "ALEX",
+    "text": "First, ctrl+Shift+P (Mac: Cmd+Shift+P). Then, type \"git delete branch\". After that, select \"Git: Delete Branch.\". Finally, choose the merged branch. The rhythm is simple: orient, act, verify, then continue."
+  },
+  {
+    "speaker": "JAMIE",
+    "text": "Before we leave Deleting the Feature Branch, what is the practical point?"
+  },
+  {
+    "speaker": "ALEX",
+    "text": "First, open the PR's Conversation tab. Then, scroll to the merge button at the bottom. After that, click the dropdown arrow to choose a merge strategy (Squash, Rebase, or Merge commit). Finally, click Merge pull request, then Confirm merge. Think of it as a rail line: each stop confirms you are still on the right route before the next one."
+  },
+  {
+    "speaker": "ALEX",
+    "text": "Treat examples as spoken recipes, not decorations. You may hear something like Merge with default strategy; gh pr merge 42; Squash and merge, then delete the branch; gh pr merge 42 --squash --delete-branch; Enable auto-merge (merges when checks pass); gh pr merge 42 --auto --squash. Read the command, understand what it changes, then run it only when the repository state matches the lesson."
+  },
+  {
+    "speaker": "JAMIE",
+    "text": "Let's pause on Learning Cards: Merging Pull Requests. What should a learner take away from it?"
+  },
+  {
+    "speaker": "ALEX",
+    "text": "Start with Learning Cards: Merging Pull Requests. There is something to understand, something to try, and something that proves the try worked."
+  },
+  {
+    "speaker": "ALEX",
+    "text": "The practical takeaway is this. The merge type selector (Merge Commit, Squash, Rebase) is announced as a dropdown or radio group -- use Arrow keys to move between options and Enter to confirm; if unsure, choose Merge Commit (the default and safest option). After merging, VS Code prompts \"Delete branch?\" as a notification -- press Alt+N to focus the notification and Enter to confirm, then run Ctrl+Shift+P then \"Git: Checkout to\" and select main to return to your default branch. Confirm the merge succeeded by pressing F6 to reach the Status Bar and verifying it now reads main instead of the feature branch name. The merge button at the bottom of the PR detail view includes a dropdown arrow for selecting merge type -- at high zoom, widen the editor pane so the button label and dropdown are not truncated. After merging, the PR detail view header changes from \"Open\" (green badge) to \"Merged\" (purple badge) -- verify this colour/label change before deleting the branch. When switching back to main, the branch name in the bottom-left Status Bar updates immediately -- confirm it reads main before pulling new changes with Ctrl+Shift+P then \"Git: Pull\"."
+  },
+  {
+    "speaker": "PAUSE",
+    "text": ""
+  },
+  {
+    "speaker": "ALEX",
+    "text": "Keep the teaching thread moving. Here is the plain-English version of \"No pull requests found\". Issue: The GitHub Pull Requests panel is empty. It is like learning a transit route. The names of the stops matter because they tell you whether you are still going the right direction."
+  },
+  {
+    "speaker": "JAMIE",
+    "text": "Let's pause on Solutions. What should a learner take away from it?"
+  },
+  {
+    "speaker": "ALEX",
+    "text": "Start with Solutions. There is something to understand, something to try, and something that proves the try worked."
+  },
+  {
+    "speaker": "ALEX",
+    "text": "First, verify you're signed in: Ctrl+Shift+P (Mac: Cmd+Shift+P) → \"GitHub Pull Requests: Sign in\". Then, check you have a folder open containing a Git repository. After that, refresh the panel: Ctrl+Shift+P (Mac: Cmd+Shift+P) → \"GitHub Pull Requests: Refresh Pull Requests List\". It is a checklist, but a meaningful one: every item creates evidence that the next step is safe."
+  },
+  {
+    "speaker": "JAMIE",
+    "text": "Before we leave Solutions, what is the practical point?"
+  },
+  {
+    "speaker": "ALEX",
+    "text": "First, verify you've pushed your branch: Ctrl+Shift+P (Mac: Cmd+Shift+P) → \"Git: Push\". Then, check you have write access to the repository. After that, ensure your branch is ahead of the base branch (has new commits). It is like walking a hallway with named doors: read the sign, enter the right room, then confirm where you landed."
+  },
+  {
+    "speaker": "PAUSE",
+    "text": ""
+  },
+  {
+    "speaker": "JAMIE",
+    "text": "Let's pause on \"Authentication failed\". What should a learner take away from it?"
+  },
+  {
+    "speaker": "ALEX",
+    "text": "The reason \"Authentication failed\" matters is that issue: VS Code can't connect to GitHub."
+  },
+  {
+    "speaker": "JAMIE",
+    "text": "What is the teaching move inside Solutions?"
+  },
+  {
+    "speaker": "ALEX",
+    "text": "First, sign out and sign back in: Ctrl+Shift+P (Mac: Cmd+Shift+P) → \"GitHub Pull Requests: Sign out\" → then sign in again. Then, check your GitHub Personal Access Token (see Appendix D: Git Authentication). After that, verify network connection. Think of it as a rail line: each stop confirms you are still on the right route before the next one."
+  },
+  {
+    "speaker": "JAMIE",
+    "text": "Let's pause on Try It: Review a PR from VS Code. What should a learner take away from it?"
+  },
+  {
+    "speaker": "ALEX",
+    "text": "Here is the plain-English version of Try It: Review a PR from VS Code. Time: 3 minutes What you need: VS Code with GitHub Pull Requests extension installed and signed in. Put another way, you just reviewed a pull request entirely from VS Code."
+  },
+  {
+    "speaker": "ALEX",
+    "text": "First, open the PR view - Press Ctrl+Shift+P → type Pull Requests: Focus on GitHub Pull Requests View → Enter. Then, find a PR - Navigate the tree with arrow keys. Expand a PR to see its changed files. After that, open a diff - Press Enter on a changed file. The diff editor opens. Finally, use the Accessible Diff Viewer - Press F7 to jump to the first change. Your screen reader announces what was added or removed. Press F7 again to move to the next change. Treat it like a recipe: do not add the next ingredient until the previous one is actually in the bowl."
+  },
+  {
+    "speaker": "JAMIE",
+    "text": "Before we leave Try It: Review a PR from VS Code, what is the practical point?"
+  },
+  {
+    "speaker": "ALEX",
+    "text": "First, leave a comment - Position your cursor on a line you want to comment on, then press Ctrl+Shift+P → Pull Request: Add Comment on Current Diff Line. Type a brief, constructive comment and submit. It is a checklist, but a meaningful one: every item creates evidence that the next step is safe."
+  },
+  {
+    "speaker": "PAUSE",
+    "text": ""
+  },
+  {
+    "speaker": "ALEX",
+    "text": "Keep the teaching thread moving. This is where Conducting Pull Request Reviews with a Screen Reader becomes real: this guide is focused entirely on the reviewer experience - navigating diffs, reading changes, leaving comments, and submitting a review - using only your keyboard and screen reader. That matters in practice: For the full pull request lifecycle (opening PRs, merge options, conflict resolution), see Working with Pull Requests."
+  },
+  {
+    "speaker": "JAMIE",
+    "text": "Where does the workshop stop being a tour and start becoming contribution?"
+  },
+  {
+    "speaker": "ALEX",
+    "text": "Keep the learner anchored in Workshop Recommendation (Chapter 15 / Challenge 12). Chapter 15 is the code review chapter focused on practicing constructive feedback. This is the part to say slowly: It supports Challenge 12: Review Like a Pro."
+  },
+  {
+    "speaker": "ALEX",
+    "text": "The practical takeaway is this. There are 2 guided challenges. Automation check: none (review quality is subjective and human-focused). The evidence is issue comment with summary of review and feedback posted. The pattern is navigate diff, comment on specifics, submit verdict."
+  },
+  {
+    "speaker": "JAMIE",
+    "text": "Let's pause on Challenge 12 Practice Set. What should a learner take away from it?"
+  },
+  {
+    "speaker": "ALEX",
+    "text": "Start with Challenge 12 Practice Set. There is something to understand, something to try, and something that proves the try worked."
+  },
+  {
+    "speaker": "ALEX",
+    "text": "First, review a practice PR and leave 2-3 inline comments - read the diff line by line, find specific items to comment on, and post constructive feedback. Then, submit a formal review verdict - complete your review by choosing approve, request changes, or comment only. The rhythm is simple: orient, act, verify, then continue."
+  },
+  {
+    "speaker": "PAUSE",
+    "text": ""
+  },
+  {
+    "speaker": "JAMIE",
+    "text": "Let's pause on Practice 12.1 Step-by-Step: Review a PR and Leave Inline Comments. What should a learner take away from it?"
+  },
+  {
+    "speaker": "ALEX",
+    "text": "Start with Practice 12.1 Step-by-Step: Review a PR and Leave Inline Comments: Navigate a PR diff using screen reader-friendly tools and post 2-3 specific, constructive inline comments. The next useful detail is this: GitHub.com (Files changed tab of a PR) or VS Code with the GitHub Pull Requests extension."
+  },
+  {
+    "speaker": "ALEX",
+    "text": "The practical takeaway is this. On GitHub.com: Use heading navigation to jump between files (H in NVDA). Each file header is a heading. Within a file, use arrow keys to move line by line. In VS Code: Press F7 to open the Accessible Diff Viewer (see Chapter 15, Part 1). Use F7/Shift+F7 to move between changes. Typos or grammar issues. Unclear headings or link text."
+  },
+  {
+    "speaker": "ALEX",
+    "text": "First, open your Learning Room repository on GitHub.com and navigate to the Pull requests tab. Then, find a classmate's open PR (from Chapter 6, 7, or 14). Open it. After that, activate the Files changed tab. This shows the diff - lines added in green, lines removed in red. Finally, navigate the diff. Think of it as a rail line: each stop confirms you are still on the right route before the next one."
+  },
+  {
+    "speaker": "JAMIE",
+    "text": "Before we leave Practice 12.1 Step-by-Step: Review a PR and Leave Inline Comments, what is the practical point?"
+  },
+  {
+    "speaker": "ALEX",
+    "text": "First, read through the changes carefully. Look. Then, to leave an inline comment on GitHub.com: activate the + button that appears to the left of a line number when you hover or Tab to it. (Screen reader users: this button may be announced as \"Add a comment to this line.\") Type your comment in the text box that. After that, post 2-3 inline comments. Each comment should be. Finally, examples of good inline comments. Treat it like a recipe: do not add the next ingredient until the previous one is actually in the bowl."
+  },
+  {
+    "speaker": "JAMIE",
+    "text": "Let's pause on Practice 12.2 Step-by-Step: Submit a Formal Review Verdict. What should a learner take away from it?"
+  },
+  {
+    "speaker": "ALEX",
+    "text": "Here is the plain-English version of Practice 12.2 Step-by-Step: Submit a Formal Review Verdict. Complete your review by selecting a verdict that tells the author what action to take next. Put another way, GitHub.com (the same PR you reviewed in 14.1)."
+  },
+  {
+    "speaker": "ALEX",
+    "text": "The practical takeaway is this. Comment - general feedback, no explicit approval or rejection. Approve - you think the PR is ready to merge. Request changes - you found something that should be fixed before merging. If the PR has clear documentation with only minor suggestions, choose Approve."
+  },
+  {
+    "speaker": "ALEX",
+    "text": "First, after posting your inline comments, scroll to the top of the Files changed tab. Then, activate the Review changes button (at the top-right of the files changed area, or use heading navigation). After that, a dropdown opens with three options. Finally, choose the verdict that matches your review. Treat it like a recipe: do not add the next ingredient until the previous one is actually in the bowl."
+  },
+  {
+    "speaker": "JAMIE",
+    "text": "Before we leave Practice 12.2 Step-by-Step: Submit a Formal Review Verdict, what is the practical point?"
+  },
+  {
+    "speaker": "ALEX",
+    "text": "First, write a brief summary in the review body (1-2 sentences). Example: \"Clear improvement to the shortcut table. Two minor suggestions for link text clarity.\". Then, activate Submit review. It is a checklist, but a meaningful one: every item creates evidence that the next step is safe."
+  },
+  {
+    "speaker": "JAMIE",
+    "text": "What makes this practice feel low-stakes but still real?"
+  },
+  {
+    "speaker": "ALEX",
+    "text": "This is where Completing Challenge 12: Submit Your Evidence becomes real: open your assigned Challenge 12 issue and post a completion comment. That matters in practice: Close your Challenge 12 issue when done."
+  },
+  {
+    "speaker": "PAUSE",
+    "text": ""
+  },
+  {
+    "speaker": "ALEX",
+    "text": "Keep the teaching thread moving. Start with Expected Outcomes. There is something to understand, something to try, and something that proves the try worked."
+  },
+  {
+    "speaker": "ALEX",
+    "text": "The practical takeaway is this. Student can navigate PR diffs with a screen reader. Student can post inline comments on specific lines of a diff. Student can write constructive, specific feedback that helps the author improve. Student can submit a formal review verdict."
+  },
+  {
+    "speaker": "JAMIE",
+    "text": "What is the teaching move inside If You Get Stuck?"
+  },
+  {
+    "speaker": "ALEX",
+    "text": "The reason If You Get Stuck matters is that continue learning: The GitHub Skills courses Review Pull Requests and Code Review with GitHub Copilot cover review workflows and AI-assisted code review. That gives the learner a simple foothold: see Appendix Z for the full catalog."
+  },
+  {
+    "speaker": "ALEX",
+    "text": "First, files Changed tab will not open? Reload the PR page and retry. Make sure you are on the PR page, not the issue page. Then, cannot find the inline comment button? Tab through the line controls in the diff. The button may be announced as \"Add a comment\" or have a + label. If you cannot find it, use the \"Review changes\" button at the top to add a general comment instead. After that, not sure what to comment on? Focus on clarity: is every heading descriptive? Is every link meaningful? Are steps complete? Are keyboard shortcuts correct? Finally, review verdict button not working? Make sure you have at least one comment or have written summary text. Try reloading the page. The rhythm is simple: orient, act, verify, then continue."
+  },
+  {
+    "speaker": "JAMIE",
+    "text": "If someone only remembers one thing from If You Get Stuck, what should it be?"
+  },
+  {
+    "speaker": "ALEX",
+    "text": "First, submitting the review fails? Check that you are not in draft mode and have at least read access to the repo. Then, ask facilitator to model one inline comment and one verdict submission. After that, finished but not sure you did it right? Compare your work against the Challenge 12 reference solution. Think of it as a rail line: each stop confirms you are still on the right route before the next one."
+  },
+  {
+    "speaker": "ALEX",
+    "text": "Keep the teaching thread moving. Start with Learning Moment: Specific, kind feedback helps authors improve and builds trust in the community. The next useful detail is this: Every comment you write is practice for the professional code review you will do on real projects."
+  },
+  {
+    "speaker": "PAUSE",
+    "text": ""
+  },
+  {
+    "speaker": "JAMIE",
+    "text": "Before we leave Learning Pattern Used in This Chapter, what is the practical point?"
+  },
+  {
+    "speaker": "ALEX",
+    "text": "First, read the full diff before commenting (understand the author's intent first). Then, find specific items to comment on (lines, phrases, missing steps). After that, write comments that help, not just criticize (suggest improvements, note what works). Finally, choose a verdict that matches the substance of your feedback. Treat it like a recipe: do not add the next ingredient until the previous one is actually in the bowl."
+  },
+  {
+    "speaker": "JAMIE",
+    "text": "What is the teaching move inside Learning Pattern Used in This Chapter?"
+  },
+  {
+    "speaker": "ALEX",
+    "text": "First, summarize your overall impression in 1-2 sentences. It is a checklist, but a meaningful one: every item creates evidence that the next step is safe."
+  },
+  {
+    "speaker": "ALEX",
+    "text": "Keep the teaching thread moving. This is where Before starting this chapter, verify you have completed becomes real: estimated time for this chapter: 1 hour (including exercises). The workshop is closer to rehearsal than lecture. You hear the move, try the move, and then check what changed."
+  },
+  {
+    "speaker": "ALEX",
+    "text": "The practical takeaway is this. [ ] Chapter 6: Working with Pull Requests - Understand PR structure, diffs, and comment workflows. [ ] Chapter 13: GitHub Copilot - VS Code installed and configured. [ ] Screen Reader Setup - NVDA, JAWS, or VoiceOver installed and ready to use. [ ] Access to at least one pull request to review (your own fork or a practice repo)."
+  },
+  {
+    "speaker": "JAMIE",
+    "text": "Let's pause on Two Environments for Code Review. What should a learner take away from it?"
+  },
+  {
+    "speaker": "ALEX",
+    "text": "Keep the learner anchored in Two Environments for Code Review. You can review pull requests in two places - each with different strengths. This is the part to say slowly: Both environments give you full keyboard and screen reader access."
+  },
+  {
+    "speaker": "PAUSE",
+    "text": ""
+  },
+  {
+    "speaker": "JAMIE",
+    "text": "What should they understand before typing anything?"
+  },
+  {
+    "speaker": "ALEX",
+    "text": "The reason About Learning Cards in This Chapter matters is that each review step includes expandable learning cards for different interaction styles. That gives the learner a simple foothold: open the one that matches how you work."
+  },
+  {
+    "speaker": "ALEX",
+    "text": "Treat examples as spoken recipes, not decorations. You may hear something like View the full PR diff in your terminal; gh pr diff 42; View PR details (description, status, checks); gh pr view 42; Checkout the PR branch locally for testing; gh pr checkout 42; Approve the PR; gh pr review 42 --approve --body \"Heading hierarchy looks. Read the command, understand what it changes, then run it only when the repository state matches the lesson."
+  },
+  {
+    "speaker": "JAMIE",
+    "text": "Let's pause on Good News: Modern Interface is Default. What should a learner take away from it?"
+  },
+  {
+    "speaker": "ALEX",
+    "text": "Start with Good News: Modern Interface is Default: As of January 2026, GitHub's improved Files Changed experience is enabled by default. The next useful detail is this: The instructions below assume you have the modern interface (which you do)."
+  },
+  {
+    "speaker": "JAMIE",
+    "text": "Let's pause on Step 1: Reach the Files Changed Tab. What should a learner take away from it?"
+  },
+  {
+    "speaker": "ALEX",
+    "text": "Here is the plain-English version of Step 1: Reach the Files Changed Tab. Click the Files changed tab at the top of the PR page. Put another way, the tab label shows the number of changed files (e.g., \"Files changed 4\"). It is like learning a transit route. The names of the stops matter because they tell you whether you are still going the right direction."
+  },
+  {
+    "speaker": "ALEX",
+    "text": "First, the PR tabs (Conversation, Commits, Checks, Files changed) are across the top of the PR page. At high zoom they may wrap to multiple lines. Then, the Files changed tab includes a badge with the number of changed files. This badge uses text (not colour alone) so it is visible in all themes. After that, after clicking Files changed, the diff page loads. At high zoom, the file tree panel on the left may collapse automatically. Click the file tree toggle (a small panel icon) or press T to toggle it back. Finally, added lines use a green background; removed lines use red. In high contrast browser settings (Windows: Settings Accessibility Contrast themes), these colours map to strong border indicators. Treat it like a recipe: do not add the next ingredient until the previous one is actually in the bowl."
+  },
+  {
+    "speaker": "JAMIE",
+    "text": "Before we leave Step 1: Reach the Files Changed Tab, what is the practical point?"
+  },
+  {
+    "speaker": "ALEX",
+    "text": "First, use Ctrl++ to zoom the browser if the diff text is too small, and Ctrl+- to zoom out. It is a checklist, but a meaningful one: every item creates evidence that the next step is safe."
+  },
+  {
+    "speaker": "ALEX",
+    "text": "Treat examples as spoken recipes, not decorations. You may hear something like Press D → navigate to \"Pull request navigation tabs\" landmark; Press → or Tab → find \"Files changed\" link → Enter. Read the command, understand what it changes, then run it only when the repository state matches the lesson."
+  },
+  {
+    "speaker": "PAUSE",
+    "text": ""
+  },
+  {
+    "speaker": "JAMIE",
+    "text": "Let's pause on Step 2: Use the File Tree to Orient Yourself. What should a learner take away from it?"
+  },
+  {
+    "speaker": "ALEX",
+    "text": "This is where Step 2: Use the File Tree to Orient Yourself becomes real: the file tree panel lists every changed file. That matters in practice: Before reading any diff, scan this list to understand the scope of the PR."
+  },
+  {
+    "speaker": "JAMIE",
+    "text": "Let's pause on What to listen for / look for. What should a learner take away from it?"
+  },
+  {
+    "speaker": "ALEX",
+    "text": "Keep the learner anchored in What to listen for / look for. Low vision users (zoom, high contrast)."
+  },
+  {
+    "speaker": "ALEX",
+    "text": "The practical takeaway is this. How many files changed? Which areas of the codebase are affected? Are there unexpected files (generated files, lock files, configuration changes)?"
+  },
+  {
+    "speaker": "ALEX",
+    "text": "First, the file tree shows each filename with a colour-coded bar indicating lines added (green) and removed (red). In high contrast mode, these bars may be less visible - the +N / -N text badge next to each file is the reliable indicator. Then, at high zoom, long file paths truncate. Hover over a truncated name to see the full path in a tooltip. After that, if the file tree panel is too narrow at high zoom, drag its right edge to widen it, or toggle it off and use heading navigation (H key) to move between file diffs. It is like walking a hallway with named doors: read the sign, enter the right room, then confirm where you landed."
+  },
+  {
+    "speaker": "JAMIE",
+    "text": "How do you keep commands from becoming magic words?"
+  },
+  {
+    "speaker": "ALEX",
+    "text": "The reason Step 3: Navigate Between File Diffs matters is that each changed file in the main area is an h3 heading containing the filename. That gives the learner a simple foothold: scroll through the page or click a filename in the file tree on the left."
+  },
+  {
+    "speaker": "ALEX",
+    "text": "Treat examples as spoken recipes, not decorations. You may hear something like Press 3 to jump file-by-file through the diff; Listen for: \"learning-room/docs/keyboard-shortcuts.md - collapsed\" or \"expanded\"; Press Enter or Space to expand a collapsed file. Quick Nav H or VO+Cmd+H to jump file-by-file through the diff; Listen for: \"learning-room/docs/keyboard-shortcuts.md - collapsed\" or \"expanded\"; VO+Space to expand a collapsed file. Read the command, understand what it changes, then run it only when the repository state matches the lesson."
+  },
+  {
+    "speaker": "PAUSE",
+    "text": ""
+  },
+  {
+    "speaker": "JAMIE",
+    "text": "Let's pause on Step 4: Read a Diff. What should a learner take away from it?"
+  },
+  {
+    "speaker": "ALEX",
+    "text": "Start with Step 4: Read a Diff: Low vision users (zoom, high contrast). The next useful detail is this: Screen reader users - VoiceOver (macOS). Think of it like entering a new building: first you find the lobby, then the room, then the door you actually need."
+  },
+  {
+    "speaker": "ALEX",
+    "text": "The practical takeaway is this. Green highlighted lines (with a +) = lines added. Red highlighted lines (with a -) = lines removed. Plain/white lines = unchanged context. Use Ctrl+F to search within the page for specific text in the diff."
+  },
+  {
+    "speaker": "ALEX",
+    "text": "First, colour is not the only indicator. Every added line has a + character in the gutter; every removed line has a -. These text characters are reliable regardless of colour settings. Then, at high zoom, long lines of code wrap. The +/- gutter character stays at the beginning of the first line, so look left to determine the change type. After that, use Ctrl+F (browser find) to search for specific text across the entire diff page. Finally, if the diff is split view (side by side), it may be very wide at high zoom. Switch to unified diff mode: click the gear icon in the Files Changed toolbar and select \"Unified\" - this shows old and new in a single column. Think of it as a rail line: each stop confirms you are still on the right route before the next one."
+  },
+  {
+    "speaker": "JAMIE",
+    "text": "Before we leave Step 4: Read a Diff, what is the practical point?"
+  },
+  {
+    "speaker": "ALEX",
+    "text": "First, high contrast themes in Windows (Settings Accessibility Contrast themes) make the +/- lines use bold border patterns instead of subtle colour shading. Treat it like a recipe: do not add the next ingredient until the previous one is actually in the bowl."
+  },
+  {
+    "speaker": "ALEX",
+    "text": "Treat examples as spoken recipes, not decorations. You may hear something like Press T to jump to the diff table then Insert+Space (Focus Mode); Press Down Arrow to move through lines one at a time; Press Ctrl+Alt+Right Arrow to read across columns: line number, change type, code content. Press T to jump to the diff table then Insert+Z (Virtual PC Cursor off); Press Down Arrow to move through lines; Press Ctrl+Alt+Right Arrow for column-by-column reading. Read the command, understand what it changes, then run it only when the repository state matches the lesson."
+  },
+  {
+    "speaker": "JAMIE",
+    "text": "Let's pause on What each line announces / shows. What should a learner take away from it?"
+  },
+  {
+    "speaker": "ALEX",
+    "text": "Here is the plain-English version of What each line announces / shows. If the code on a line is very long, the screen reader will read the full line. Put another way, for minified or generated files, consider collapsing the file in the tree and skipping it."
+  },
+  {
+    "speaker": "ALEX",
+    "text": "The practical takeaway is this. Added lines: \"+ [code content]\" - or announced as \"inserted\". Removed lines: \"- [code content]\" - or announced as \"deleted\". Context lines: code without a + or -."
+  },
+  {
+    "speaker": "JAMIE",
+    "text": "Let's pause on Step 5: Place an Inline Comment. What should a learner take away from it?"
+  },
+  {
+    "speaker": "ALEX",
+    "text": "This is where Step 5: Place an Inline Comment becomes real: when you have a specific observation about a particular line, place an inline comment directly on it. That matters in practice: Screen reader users (VoiceOver - macOS)."
+  },
+  {
+    "speaker": "ALEX",
+    "text": "First, hover your mouse over a line in the diff - a blue + (comment) button appears on the left. Then, click it to open the inline comment box. After that, type your comment. Finally, click \"Start a review\" (not \"Add single comment\" - see note below). It is a checklist, but a meaningful one: every item creates evidence that the next step is safe."
+  },
+  {
+    "speaker": "PAUSE",
+    "text": ""
+  },
+  {
+    "speaker": "JAMIE",
+    "text": "Let's pause on Placing a multi-line comment. What should a learner take away from it?"
+  },
+  {
+    "speaker": "ALEX",
+    "text": "Keep the learner anchored in Placing a multi-line comment. Click and drag across multiple line numbers in the diff gutter to select a range. This is the part to say slowly: A comment button appears for the selected range."
+  },
+  {
+    "speaker": "JAMIE",
+    "text": "Let's pause on Step 6: Read Existing Comments and Threads. What should a learner take away from it?"
+  },
+  {
+    "speaker": "ALEX",
+    "text": "The reason Step 6: Read Existing Comments and Threads matters is that inline comments from other reviewers appear as h3 headings within the diff table. That gives the learner a simple foothold: each thread shows: reviewer username, comment body, replies, a \"Reply\" link and resolution button. The interface gets friendlier when it stops being a wall of controls and starts being a set of named places."
+  },
+  {
+    "speaker": "ALEX",
+    "text": "Treat examples as spoken recipes, not decorations. You may hear something like Tab to the \"Resolve conversation\" button → Enter. Tab to the \"Resolve conversation\" button → VO+Space. Read the command, understand what it changes, then run it only when the repository state matches the lesson."
+  },
+  {
+    "speaker": "JAMIE",
+    "text": "Let's pause on Step 7: Submit Your Review. What should a learner take away from it?"
+  },
+  {
+    "speaker": "ALEX",
+    "text": "Start with Step 7: Submit Your Review: Screen reader users (VoiceOver - macOS)."
+  },
+  {
+    "speaker": "ALEX",
+    "text": "First, click the \"Review changes\" button (top-right of the Files Changed page or bottom of the PR). Then, a dialog opens with a summary text area and three radio buttons: Comment / Approve / Request changes. After that, optionally type an overall summary in the text area. Finally, select your verdict. Think of it as a rail line: each stop confirms you are still on the right route before the next one."
+  },
+  {
+    "speaker": "JAMIE",
+    "text": "Before we leave Step 7: Submit Your Review, what is the practical point?"
+  },
+  {
+    "speaker": "ALEX",
+    "text": "First, click \"Submit review\". Treat it like a recipe: do not add the next ingredient until the previous one is actually in the bowl."
+  },
+  {
+    "speaker": "PAUSE",
+    "text": ""
+  },
+  {
+    "speaker": "JAMIE",
+    "text": "Let's pause on Step 8: Re-request Review (for Authors). What should a learner take away from it?"
+  },
+  {
+    "speaker": "ALEX",
+    "text": "Here is the plain-English version of Step 8: Re-request Review (for Authors). After you address review comments on your own PR. Put another way, look in the right sidebar for the Reviewers section."
+  },
+  {
+    "speaker": "ALEX",
+    "text": "Treat examples as spoken recipes, not decorations. You may hear something like Step 1: From your PR's Conversation tab, Quick Nav H or VO+Cmd+H to find the \"Reviewers\" heading in the sidebar; Step 2: Tab or Quick Nav B to find the re-request icon (\"Re-request review\") next to the reviewer's name; Step 3: VO+Space to activate - this. Read the command, understand what it changes, then run it only when the repository state matches the lesson."
+  },
+  {
+    "speaker": "JAMIE",
+    "text": "Let's pause on Learning Cards: Reviewing on GitHub.com. What should a learner take away from it?"
+  },
+  {
+    "speaker": "ALEX",
+    "text": "Start with Learning Cards: Reviewing on GitHub.com. There is something to understand, something to try, and something that proves the try worked."
+  },
+  {
+    "speaker": "ALEX",
+    "text": "The practical takeaway is this. In the Files Changed tab, press T to jump to the diff table, then use Focus Mode (Insert+Space in NVDA, Insert+Z in JAWS) and Down Arrow to read line by line -- each added line starts with + and each removed line with -. To place an inline comment, navigate to the target line and press Tab or B to find the \"Add a comment to this line\" button; after typing your comment, choose \"Start a review\" (not \"Add single comment\") to batch all feedback into one notification. Submit your full review by pressing B repeatedly to find the \"Review changes\" button; the dialog contains a radio group (Comment / Approve / Request changes) navigable with Arrow keys, then Tab to \"Submit review\". Switch from split diff to unified diff (gear icon in the Files Changed toolbar then select \"Unified\") to show old and new code in a single column -- much easier to follow at high zoom than two side-by-side panes. The blue + comment button appears in the line gutter on hover; at high zoom it may be small -- use Ctrl++ to increase browser zoom and look just left of the line number column. The \"Review changes\" dialog uses clearly labeled radio buttons for the three verdict types; each label includes a brief description, and the currently selected option has a filled circle indicator visible in all themes."
+  },
+  {
+    "speaker": "ALEX",
+    "text": "Keep the teaching thread moving. Keep the learner anchored in Reviewing in VS Code with the Accessible Diff Viewer. When you check out a branch locally, VS Code's diff editor offers the Accessible Diff Viewer - a purpose-built, line-by-line reading mode designed specifically for screen readers. A good GitHub workflow is like a well-run meeting: everyone knows the topic, the next action, and who has the floor."
+  },
+  {
+    "speaker": "PAUSE",
+    "text": ""
+  },
+  {
+    "speaker": "JAMIE",
+    "text": "Let's pause on Opening a Diff in VS Code. What should a learner take away from it?"
+  },
+  {
+    "speaker": "ALEX",
+    "text": "The reason Opening a Diff in VS Code matters is that if you have the GitHub Pull Requests extension. That gives the learner a simple foothold: without the extension, any git diff operation also opens the diff editor."
+  },
+  {
+    "speaker": "ALEX",
+    "text": "First, open the GitHub Pull Requests view (Explorer sidebar or Ctrl+Shift+P → \"GitHub Pull Requests: View Pull Request\"). Then, find the PR and open it - changed files appear in the file tree. After that, navigate to any file in the tree and press Enter to open its diff view. The rhythm is simple: orient, act, verify, then continue."
+  },
+  {
+    "speaker": "JAMIE",
+    "text": "Let's pause on Learning Cards: VS Code Code Review. What should a learner take away from it?"
+  },
+  {
+    "speaker": "ALEX",
+    "text": "Start with Learning Cards: VS Code Code Review: Low vision users (zoom, high contrast). The next useful detail is this: VS Code's diff editor works well at high zoom."
+  },
+  {
+    "speaker": "ALEX",
+    "text": "First, split view vs. inline: By default, VS Code shows diffs in a split (side-by-side) view. At high zoom this can be very cramped. Switch to inline mode: Ctrl+Shift+P then type \"Toggle Inline View\" in any diff editor. Inline mode shows old and new code in a single. Then, colour indicators: Added lines have a green gutter bar; removed lines have a red gutter bar. In high contrast themes, these use heavy solid borders that are visible even at extreme zoom levels. After that, change navigation: Press F7 to jump to the next change and Shift+F7 for the previous. Each change is highlighted with a visible focus box that moves with your position - much easier than scrolling at high zoom. Finally, minimap in diff view: The minimap (right edge) shows an overview of changes as coloured blocks. At high zoom the minimap may be too small to be useful - disable it via Settings if it adds visual noise. Think of it as a rail line: each stop confirms you are still on the right route before the next one."
+  },
+  {
+    "speaker": "JAMIE",
+    "text": "Before we leave Learning Cards: VS Code Code Review, what is the practical point?"
+  },
+  {
+    "speaker": "ALEX",
+    "text": "First, font size for diffs: Diff editors use your configured editor font size (editor.fontSize). Increase this in Settings (Ctrl+,) if the diff text is too small at your zoom level. Then, comment highlight: When you add a comment through the GitHub PR extension, the commented line gets a distinct background. In high contrast themes this is a solid colour band. Treat it like a recipe: do not add the next ingredient until the previous one is actually in the bowl."
+  },
+  {
+    "speaker": "JAMIE",
+    "text": "Let's pause on Opening the PR for review. What should a learner take away from it?"
+  },
+  {
+    "speaker": "ALEX",
+    "text": "Start with Opening the PR for review. There is something to understand, something to try, and something that proves the try worked."
+  },
+  {
+    "speaker": "ALEX",
+    "text": "First, press Ctrl+Shift+P, type \"GitHub Pull Requests: View Pull Request\". Then, the PR tree appears in the sidebar - navigate with Down Arrow. After that, each changed file is announced with its name and change summary. Finally, press Enter on a file to open its diff editor. Treat it like a recipe: do not add the next ingredient until the previous one is actually in the bowl."
+  },
+  {
+    "speaker": "JAMIE",
+    "text": "Before we leave Opening the PR for review, what is the practical point?"
+  },
+  {
+    "speaker": "ALEX",
+    "text": "First, the diff editor opens with the standard VS Code diff layout. It is a checklist, but a meaningful one: every item creates evidence that the next step is safe."
+  },
+  {
+    "speaker": "PAUSE",
+    "text": ""
+  },
+  {
+    "speaker": "JAMIE",
+    "text": "Let's pause on Using the Accessible Diff Viewer. What should a learner take away from it?"
+  },
+  {
+    "speaker": "ALEX",
+    "text": "Start with Using the Accessible Diff Viewer. There is something to understand, something to try, and something that proves the try worked."
+  },
+  {
+    "speaker": "ALEX",
+    "text": "First, in the diff editor, press F7 to open the Accessible Diff Viewer. Then, NVDA announces: \"Changed lines X to Y in filename, Change 1 of N\". After that, the viewer shows each change with \"Removed:\" and \"Added:\" labels. Finally, press F7 to move to the next change, Shift+F7 for previous. It is a checklist, but a meaningful one: every item creates evidence that the next step is safe."
+  },
+  {
+    "speaker": "JAMIE",
+    "text": "Before we leave Using the Accessible Diff Viewer, what is the practical point?"
+  },
+  {
+    "speaker": "ALEX",
+    "text": "First, press Escape when done to close the viewer. It is like walking a hallway with named doors: read the sign, enter the right room, then confirm where you landed."
+  },
+  {
+    "speaker": "JAMIE",
+    "text": "Let's pause on Placing a comment. What should a learner take away from it?"
+  },
+  {
+    "speaker": "ALEX",
+    "text": "Keep the learner anchored in Placing a comment. Screen reader users (VoiceOver on macOS)."
+  },
+  {
+    "speaker": "ALEX",
+    "text": "First, navigate to the line you want to comment on in the diff. Then, press Ctrl+Shift+P, type \"GitHub Pull Requests: Add Comment\". After that, a text area opens below the line - NVDA announces the input focus. Finally, type your comment. It is like walking a hallway with named doors: read the sign, enter the right room, then confirm where you landed."
+  },
+  {
+    "speaker": "JAMIE",
+    "text": "Before we leave Placing a comment, what is the practical point?"
+  },
+  {
+    "speaker": "ALEX",
+    "text": "First, press Tab to the Submit button, then Enter. The rhythm is simple: orient, act, verify, then continue."
+  },
+  {
+    "speaker": "JAMIE",
+    "text": "Let's pause on Opening the PR. What should a learner take away from it?"
+  },
+  {
+    "speaker": "ALEX",
+    "text": "Start with Opening the PR. There is something to understand, something to try, and something that proves the try worked."
+  },
+  {
+    "speaker": "ALEX",
+    "text": "First, press Cmd+Shift+P, type \"GitHub Pull Requests: View Pull Request\". Then, navigate the PR tree with VO+Down Arrow. After that, press Return on a file to open its diff. The rhythm is simple: orient, act, verify, then continue."
+  },
+  {
+    "speaker": "PAUSE",
+    "text": ""
+  },
+  {
+    "speaker": "JAMIE",
+    "text": "Let's pause on Accessible Diff Viewer. What should a learner take away from it?"
+  },
+  {
+    "speaker": "ALEX",
+    "text": "Start with Accessible Diff Viewer. There is something to understand, something to try, and something that proves the try worked."
+  },
+  {
+    "speaker": "ALEX",
+    "text": "First, press F7 in the diff editor. Then, VoiceOver announces each change with clear \"Removed\" and \"Added\" labels. After that, navigate with F7/Shift+F7. Finally, press Escape to close. Think of it as a rail line: each stop confirms you are still on the right route before the next one."
+  },
+  {
+    "speaker": "JAMIE",
+    "text": "Let's pause on Comment placement. What should a learner take away from it?"
+  },
+  {
+    "speaker": "ALEX",
+    "text": "Start with Comment placement. There is something to understand, something to try, and something that proves the try worked."
+  },
+  {
+    "speaker": "ALEX",
+    "text": "First, press Cmd+Shift+P, type \"GitHub Pull Requests: Add Comment\". Then, vO+Shift+Down Arrow to interact with the comment text area. After that, type your comment. Finally, vO+Shift+Up Arrow to stop interacting, then Tab to Submit. Treat it like a recipe: do not add the next ingredient until the previous one is actually in the bowl."
+  },
+  {
+    "speaker": "JAMIE",
+    "text": "Let's pause on Using the Accessible Diff Viewer (F7). What should a learner take away from it?"
+  },
+  {
+    "speaker": "ALEX",
+    "text": "This is where Using the Accessible Diff Viewer (F7) becomes real: the Accessible Diff Viewer reads each change as a structured block. That matters in practice: This example is from a real Learning Room scenario: a contributor fixing the heading hierarchy in docs/keyboard-shortcuts.md by changing a level-4 heading to level-3, which is exactly what you look for when reviewing Challenge 2 PRs."
+  },
+  {
+    "speaker": "ALEX",
+    "text": "Treat examples as spoken recipes, not decorations. You may hear something like \"Changed lines 14 to 14 in docs/keyboard-shortcuts.md; [Change 1 of 3]; Removed:; NVDA Single-Key Navigation; Added:; NVDA Single-Key Navigation\". Read the command, understand what it changes, then run it only when the repository state matches the lesson."
+  },
+  {
+    "speaker": "PAUSE",
+    "text": ""
+  },
+  {
+    "speaker": "ALEX",
+    "text": "Keep the teaching thread moving. Start with Navigation. There is something to understand, something to try, and something that proves the try worked."
+  },
+  {
+    "speaker": "ALEX",
+    "text": "The practical takeaway is this. F7 - jump to next change (next hunk). Shift+F7 - jump to previous change. Alt+F2 - open VS Code's Accessible View for additional context on the current item. Escape - close the Accessible Diff Viewer."
+  },
+  {
+    "speaker": "JAMIE",
+    "text": "Let's pause on What makes this better than the raw diff editor. What should a learner take away from it?"
+  },
+  {
+    "speaker": "ALEX",
+    "text": "Start with What makes this better than the raw diff editor. There is something to understand, something to try, and something that proves the try worked."
+  },
+  {
+    "speaker": "ALEX",
+    "text": "The practical takeaway is this. Each change is announced as a discrete unit with clear \"Removed:\" and \"Added:\" labels. You hear the change number of total changes (\"Change 3 of 12\"). No table navigation required - purpose-built for sequential listening. Works with all three major screen readers without any special configuration."
+  },
+  {
+    "speaker": "ALEX",
+    "text": "Keep the teaching thread moving. Start with Placing Comments in VS Code (GitHub PR Extension): From the diff editor with the GitHub PR extension. The next useful detail is this: Comments placed in VS Code sync to GitHub - they appear in the PR's Files Changed tab and the author receives the same notification. Think of it like entering a new building: first you find the lobby, then the room, then the door you actually need."
+  },
+  {
+    "speaker": "PAUSE",
+    "text": ""
+  },
+  {
+    "speaker": "JAMIE",
+    "text": "Let's pause on The Anatomy of a Useful Review Comment. What should a learner take away from it?"
+  },
+  {
+    "speaker": "ALEX",
+    "text": "Here is the plain-English version of The Anatomy of a Useful Review Comment. A comment that helps the author is."
+  },
+  {
+    "speaker": "ALEX",
+    "text": "First, specific - link to the exact line and name the pattern you see. Then, educational - say why something matters, not just what to change. After that, graduated - signal whether this is blocking, or a preference. Treat it like a recipe: do not add the next ingredient until the previous one is actually in the bowl."
+  },
+  {
+    "speaker": "ALEX",
+    "text": "Keep the teaching thread moving. This is where Blocking example (reviewing a PR for docs/keyboard-shortcuts.md) becomes real: \"The heading on line 34 uses (level 4) directly after (level 2), skipping heading level 3. That matters in practice: Screen reader users who navigate by heading level will miss any content between those two levels."
+  },
+  {
+    "speaker": "JAMIE",
+    "text": "Let's pause on Non-blocking (nit) example (reviewing a PR for docs/welcome.md). What should a learner take away from it?"
+  },
+  {
+    "speaker": "ALEX",
+    "text": "Keep the learner anchored in Non-blocking (nit) example (reviewing a PR for docs/welcome.md). \"nit: The link text in the 'Getting Help' section reads 'click here for more information.' Screen reader users who navigate links out of context will hear only 'click here' with no destination. This is the part to say slowly: Consider 'See the accessibility setup guide' instead."
+  },
+  {
+    "speaker": "PAUSE",
+    "text": ""
+  },
+  {
+    "speaker": "ALEX",
+    "text": "Keep the teaching thread moving. The reason Question example (reviewing a PR for docs/setup-guide.md) matters is that \"The PR description says this fixes broken links in the setup guide, but the link on line 12 still points to /docs/old-setup. That gives the learner a simple foothold: am I reading the diff correctly, or was this link intentionally left? The interface gets friendlier when it stops being a wall of controls and starts being a set of named places."
+  },
+  {
+    "speaker": "JAMIE",
+    "text": "Let's pause on Prefixes That Set Expectations. What should a learner take away from it?"
+  },
+  {
+    "speaker": "ALEX",
+    "text": "Start with Prefixes That Set Expectations: Using shorthand prefixes helps authors parse many comments quickly."
+  },
+  {
+    "speaker": "ALEX",
+    "text": "Keep the teaching thread moving. Here is the plain-English version of How Many Comments Is Too Many? There is no hard limit, but quantity without prioritization is noise. Put another way, if you have 15 comments, make clear which 2-3 are blocking."
+  },
+  {
+    "speaker": "PAUSE",
+    "text": ""
+  },
+  {
+    "speaker": "JAMIE",
+    "text": "Let's pause on \"I want to verify the PR only changes what it claims\". What should a learner take away from it?"
+  },
+  {
+    "speaker": "ALEX",
+    "text": "This is where \"I want to verify the PR only changes what it claims\" becomes real: example: A PR says \"Challenge 2: Add NVDA shortcut\" but the file tree shows changes to both docs/keyboard-shortcuts.md and docs/welcome.md."
+  },
+  {
+    "speaker": "ALEX",
+    "text": "Keep the teaching thread moving. Keep the learner anchored in \"I want to find all changes to one specific section\". Example: A PR for Challenge 3 modified docs/welcome.md. This is the part to say slowly: You want to verify the [TODO] in the \"Who Can Contribute?\" section was filled in correctly. A good GitHub workflow is like a well-run meeting: everyone knows the topic, the next action, and who has the floor."
+  },
+  {
+    "speaker": "JAMIE",
+    "text": "Why is the evidence prompt part of the teaching, not just grading?"
+  },
+  {
+    "speaker": "ALEX",
+    "text": "The reason Exercises matters is that these exercises use the files in learning-room/docs/ in this repository. That gives the learner a simple foothold: all examples involve documentation changes - no code required."
+  },
+  {
+    "speaker": "PAUSE",
+    "text": ""
+  },
+  {
+    "speaker": "ALEX",
+    "text": "Keep the teaching thread moving. Start with Exercise A - Complete a Web Review: Scenario: A contributor has submitted a pull request titled \"Add screen reader tips to the setup guide.\" The PR modifies learning-room/docs/setup-guide.md. The next useful detail is this: Your job is to review it before it merges."
+  },
+  {
+    "speaker": "JAMIE",
+    "text": "Let's pause on Step 1: Navigate to the Pull Request. What should a learner take away from it?"
+  },
+  {
+    "speaker": "ALEX",
+    "text": "Here is the plain-English version of Step 1: Navigate to the Pull Request. How to know you're in the right place."
+  },
+  {
+    "speaker": "ALEX",
+    "text": "The practical takeaway is this. The PR title is visible at the top. You see a description box with text about what this PR does. You see tabs labeled \"Conversation,\" \"Commits,\" \"Files Changed\". Use Ctrl+F to search the PR list for \"screen reader tips\". Or ask in the workshop Slack - someone can share the exact URL."
+  },
+  {
+    "speaker": "ALEX",
+    "text": "First, open GitHub in your browser and navigate to the workshop repository (github.com/[your-fork]/[workshop-repo] or community-access/accessibility-agents). Then, click the Pull Requests tab (top navigation). After that, look for a PR titled \"Add screen reader tips to the setup guide\" - click it to open. Finally, you should now see the PR page with sections: Conversation, Commits, Files Changed. Treat it like a recipe: do not add the next ingredient until the previous one is actually in the bowl."
+  },
+  {
+    "speaker": "JAMIE",
+    "text": "Let's pause on Step 2: Read the PR Description. What should a learner take away from it?"
+  },
+  {
+    "speaker": "ALEX",
+    "text": "Start with Step 2: Read the PR Description. There is something to understand, something to try, and something that proves the try worked."
+  },
+  {
+    "speaker": "ALEX",
+    "text": "The practical takeaway is this. Does the PR author explain what file changed? (should mention setup-guide.md). Does it explain why? (should mention \"improve accessibility\" or \"add tips\"). Is it clear enough that a reviewer can understand the goal without reading the diff? You can answer: \"This PR adds [specific content] to [specific file] because [clear reason]\". Example: \"This PR adds screen reader usage tips to the setup guide because new users need accessibility guidance\"."
+  },
+  {
+    "speaker": "ALEX",
+    "text": "First, you are currently on the Conversation tab. Then, read the PR description (the text immediately under the PR title). After that, look for: \"What does this PR change?\" and \"Why does it change it?\". Finally, with screen reader: Navigate to the description with D (NVDA) or press Ctrl+Option+Up (VoiceOver) to find main landmarks, then read the content region. It is a checklist, but a meaningful one: every item creates evidence that the next step is safe."
+  },
+  {
+    "speaker": "PAUSE",
+    "text": ""
+  },
+  {
+    "speaker": "JAMIE",
+    "text": "Let's pause on Step 3: Navigate to \"Files Changed\". What should a learner take away from it?"
+  },
+  {
+    "speaker": "ALEX",
+    "text": "Start with Step 3: Navigate to \"Files Changed\". There is something to understand, something to try, and something that proves the try worked."
+  },
+  {
+    "speaker": "ALEX",
+    "text": "The practical takeaway is this. A section showing the file name setup-guide.md with a small badge showing \"+20 −0\" (20 lines added, 0 lines removed). Below it, the diff with removed lines (preceded by −) and added lines (preceded by +). Scroll up to see if there are other files. For this exercise, only setup-guide.md should be changed. If you see other files, confirm they are not modified (the badge should show \"+0 −0\" or no changes)."
+  },
+  {
+    "speaker": "ALEX",
+    "text": "First, click the Files Changed tab (top of the PR page, to the right of \"Commits\"). Then, you are now viewing the diff. After that, with keyboard (all screen readers): Press T to jump to the diff table. The page focuses on the file comparison area. It is like walking a hallway with named doors: read the sign, enter the right room, then confirm where you landed."
+  },
+  {
+    "speaker": "JAMIE",
+    "text": "Let's pause on Step 4: Activate Focus Mode for Better Diff Reading. What should a learner take away from it?"
+  },
+  {
+    "speaker": "ALEX",
+    "text": "The reason Step 4: Activate Focus Mode for Better Diff Reading matters is that with screen reader (once in Focus Mode)."
+  },
+  {
+    "speaker": "ALEX",
+    "text": "The practical takeaway is this. The page simplifies: sidebars disappear. Only the diff is visible - easier for screen reader navigation and less cognitive load. The diff is now the main content area. NVDA/JAWS: Press T to jump to the diff table. VoiceOver: Navigate with VO+Right Arrow to find the table/content region. Read through the changes: ↓ arrow moves to each line."
+  },
+  {
+    "speaker": "ALEX",
+    "text": "First, look for a button labeled \"Focus Mode\" or an icon (usually at the top right of the diff area). Then, with keyboard: Press F to toggle Focus Mode (may need to be in the diff area first). After that, with mouse: Click the Focus Mode button/icon. The rhythm is simple: orient, act, verify, then continue."
+  },
+  {
+    "speaker": "JAMIE",
+    "text": "Let's pause on Step 5: Find the Heading Hierarchy Issue. What should a learner take away from it?"
+  },
+  {
+    "speaker": "ALEX",
+    "text": "Start with Step 5: Find the Heading Hierarchy Issue. There is something to understand, something to try, and something that proves the try worked."
+  },
+  {
+    "speaker": "ALEX",
+    "text": "The practical takeaway is this. Screen reader users navigate documents by heading level: 1 → 2 → 3 → 4. A skip from to breaks that navigation. When a user presses \"jump to heading level 3,\" they'll find none, wondering if content is missing. You found the line with that violates hierarchy. You can say the line number and what heading text appears there. You understand why this is an accessibility problem."
+  },
+  {
+    "speaker": "ALEX",
+    "text": "First, read through the entire diff line by line. Pay special attention to lines starting. Then, you are looking for: a line with (four hashes, heading level 4) that comes directly after a (two hashes, heading level 2). After that, when you find it, note the exact line number shown in the diff. Think of it as a rail line: each stop confirms you are still on the right route before the next one."
+  },
+  {
+    "speaker": "PAUSE",
+    "text": ""
+  },
+  {
+    "speaker": "JAMIE",
+    "text": "Let's pause on Step 6: Place a Blocking Review Comment on the Heading. What should a learner take away from it?"
+  },
+  {
+    "speaker": "ALEX",
+    "text": "Here is the plain-English version of Step 6: Place a Blocking Review Comment on the Heading. If the comment button doesn't appear. It is like learning a transit route. The names of the stops matter because they tell you whether you are still going the right direction."
+  },
+  {
+    "speaker": "ALEX",
+    "text": "The practical takeaway is this. Your comment appears in the thread under that line. The PR author sees it and can make the fix. Make sure you're hovering over the line number area (left side of the line). Try refreshing the page and trying again. Or use the \"Add a reply\" field at the bottom of the PR and mention the line number manually."
+  },
+  {
+    "speaker": "ALEX",
+    "text": "First, find the diff line with the problematic heading. Then, hover your mouse over the line number on the left side of that line (or if using keyboard, navigate to that line in the table). After that, a button should appear (or press the Add Comment hotkey - usually C in GitHub). Finally, click it or press Enter to open a comment box. Treat it like a recipe: do not add the next ingredient until the previous one is actually in the bowl."
+  },
+  {
+    "speaker": "JAMIE",
+    "text": "Before we leave Step 6: Place a Blocking Review Comment on the Heading, what is the practical point?"
+  },
+  {
+    "speaker": "ALEX",
+    "text": "First, press Space, then explain. Then, click the Comment button (or press Ctrl+Enter for keyboard submit). It is a checklist, but a meaningful one: every item creates evidence that the next step is safe."
+  },
+  {
+    "speaker": "JAMIE",
+    "text": "Let's pause on Step 7: Find the Link Text Issue. What should a learner take away from it?"
+  },
+  {
+    "speaker": "ALEX",
+    "text": "Start with Step 7: Find the Link Text Issue. There is something to understand, something to try, and something that proves the try worked."
+  },
+  {
+    "speaker": "ALEX",
+    "text": "The practical takeaway is this. Screen reader users can ask their reader to \"list all links on this page\" - they hear only the link text. If the text is \"click here,\" they have no context about where it goes. Descriptive link text is WCAG 2.4.4 (Link Purpose). You found a link with non-descriptive text. You can explain why \"click here\" is bad and what would be better."
+  },
+  {
+    "speaker": "ALEX",
+    "text": "First, continue reading the diff (from where you left off). Then, look for a line containing link text that reads \"click here\" or \"click here for more information\". After that, note the line number. It is a checklist, but a meaningful one: every item creates evidence that the next step is safe."
+  },
+  {
+    "speaker": "JAMIE",
+    "text": "Let's pause on Step 8: Place a Comment on the Link. What should a learner take away from it?"
+  },
+  {
+    "speaker": "ALEX",
+    "text": "Keep the learner anchored in Step 8: Place a Comment on the Link. nit: means \"nice-to-have improvement\" (not blocking, but good to fix)."
+  },
+  {
+    "speaker": "ALEX",
+    "text": "First, find the line in the diff with the problematic link. Then, hover over the line number and click to open a comment box (or press C). After that, click Comment or press Ctrl+Enter. It is like walking a hallway with named doors: read the sign, enter the right room, then confirm where you landed."
+  },
+  {
+    "speaker": "PAUSE",
+    "text": ""
+  },
+  {
+    "speaker": "JAMIE",
+    "text": "Let's pause on Step 9: Submit Your Review. What should a learner take away from it?"
+  },
+  {
+    "speaker": "ALEX",
+    "text": "Start with Step 9: Submit Your Review. There is something to understand, something to try, and something that proves the try worked."
+  },
+  {
+    "speaker": "ALEX",
+    "text": "The practical takeaway is this. Comment - provide feedback but don't block (for minor notes). Approve - the PR is ready to merge. Request changes - this PR cannot merge until changes are made. Your review is submitted. The PR author gets a notification. The PR shows your review with the two comments."
+  },
+  {
+    "speaker": "ALEX",
+    "text": "First, look for a button labeled \"Review changes\" (usually at the top right of the page or bottom of comments). Then, click it (or navigate with keyboard and press Enter). After that, a dialog appears with options. Finally, select \"Request changes\" (you found two things to fix). The rhythm is simple: orient, act, verify, then continue."
+  },
+  {
+    "speaker": "JAMIE",
+    "text": "Before we leave Step 9: Submit Your Review, what is the practical point?"
+  },
+  {
+    "speaker": "ALEX",
+    "text": "First, in the summary field, write: Found 2 accessibility issues that must be fixed before merging. Then, click \"Submit review\". Think of it as a rail line: each stop confirms you are still on the right route before the next one."
+  },
+  {
+    "speaker": "JAMIE",
+    "text": "Let's pause on Reflect on This Exercise. What should a learner take away from it?"
+  },
+  {
+    "speaker": "ALEX",
+    "text": "Start with Reflect on This Exercise: Keep your answers - you'll need them for Chapter 16's Accessibility Agents exercise to compare manual review with agent-assisted review. Think of it like entering a new building: first you find the lobby, then the room, then the door you actually need."
+  },
+  {
+    "speaker": "ALEX",
+    "text": "First, did heading-level navigation help? When you were looking for the issue, was it easier to navigate by heading level (1-6) than to scan every line? Then, would you have caught this without the exercise prompt? If you were a real reviewer not specifically looking for heading issues, would the diff have been obvious? After that, why does screen reader navigation matter? In one sentence, explain why a screen reader user's ability to jump through heading levels is important for this document. Think of it as a rail line: each stop confirms you are still on the right route before the next one."
+  },
+  {
+    "speaker": "JAMIE",
+    "text": "What stays the same when the tool changes?"
+  },
+  {
+    "speaker": "ALEX",
+    "text": "Here is the plain-English version of Exercise B - Use the VS Code Accessible Diff Viewer. Scenario: Review the same pull request from Exercise A, this time entirely in VS Code. Put another way, you'll compare the browser experience with the VS Code experience."
+  },
+  {
+    "speaker": "PAUSE",
+    "text": ""
+  },
+  {
+    "speaker": "ALEX",
+    "text": "Keep the teaching thread moving. Start with Prerequisites. There is something to understand, something to try, and something that proves the try worked."
+  },
+  {
+    "speaker": "ALEX",
+    "text": "The practical takeaway is this. VS Code must be installed on your machine. The GitHub Pull Requests extension must be installed (see Chapter 12 for installation). You must be signed into GitHub from VS Code (use Ctrl+Shift+P → \"GitHub: Sign in\")."
+  },
+  {
+    "speaker": "JAMIE",
+    "text": "Let's pause on Step 1: Open the GitHub Pull Requests Extension. What should a learner take away from it?"
+  },
+  {
+    "speaker": "ALEX",
+    "text": "Start with Step 1: Open the GitHub Pull Requests Extension. There is something to understand, something to try, and something that proves the try worked."
+  },
+  {
+    "speaker": "ALEX",
+    "text": "The practical takeaway is this. With mouse: Click the Extensions icon on the left sidebar (looks like four squares). The extension is listed as active. It mentions: \"Review and manage GitHub pull requests and issues\"."
+  },
+  {
+    "speaker": "ALEX",
+    "text": "First, open VS Code. Then, with keyboard (all screen readers): Press Ctrl+Shift+X to open the Extensions sidebar. After that, search for \"GitHub Pull Requests\". Finally, if it's not installed, click Install. It is like walking a hallway with named doors: read the sign, enter the right room, then confirm where you landed."
+  },
+  {
+    "speaker": "JAMIE",
+    "text": "Before we leave Step 1: Open the GitHub Pull Requests Extension, what is the practical point?"
+  },
+  {
+    "speaker": "ALEX",
+    "text": "First, if it is installed, click GitHub Pull Requests to view its details. The rhythm is simple: orient, act, verify, then continue."
+  },
+  {
+    "speaker": "JAMIE",
+    "text": "Let's pause on Step 2: Open the Pull Requests Sidebar. What should a learner take away from it?"
+  },
+  {
+    "speaker": "ALEX",
+    "text": "Start with Step 2: Open the Pull Requests Sidebar. There is something to understand, something to try, and something that proves the try worked."
+  },
+  {
+    "speaker": "ALEX",
+    "text": "The practical takeaway is this. With keyboard: The icon may not be keyboard-reachable directly; instead go to Step 3. VS Code opens a new editor tab for this PR. Below the PR title, you see a \"Changes\" section listing modified files. You should see setup-guide.md in the changes list. Use Ctrl+Shift+P → search GitHub Pull Requests: Open Pull Request. Paste the PR URL: https://github.com/[owner]/[repo]/pull/[number]."
+  },
+  {
+    "speaker": "ALEX",
+    "text": "First, look for a GitHub-themed icon on the left sidebar (circle with octocat logo) - click it. Then, a sidebar appears showing open pull requests on repositories you have access to. After that, find the PR titled \"Add screen reader tips to the setup guide\" - it should appear in a list. Finally, click it to open. The rhythm is simple: orient, act, verify, then continue."
+  },
+  {
+    "speaker": "PAUSE",
+    "text": ""
+  },
+  {
+    "speaker": "JAMIE",
+    "text": "Let's pause on Step 3: View the File Changes. What should a learner take away from it?"
+  },
+  {
+    "speaker": "ALEX",
+    "text": "Start with Step 3: View the File Changes. There is something to understand, something to try, and something that proves the try worked."
+  },
+  {
+    "speaker": "ALEX",
+    "text": "The practical takeaway is this. A diff editor opens showing two columns. Left: the original file (before changes). Right: the new file (after changes). Different colors show added (green), removed (red), and modified (blue) lines. The file name appears at the top: setup-guide.md. NVDA/JAWS: The editor announces \"Diff Editor - setup-guide.md\"."
+  },
+  {
+    "speaker": "ALEX",
+    "text": "First, in the Changes section, locate setup-guide.md. Then, click on the filename to open it. Think of it as a rail line: each stop confirms you are still on the right route before the next one."
+  },
+  {
+    "speaker": "JAMIE",
+    "text": "Let's pause on Step 4: Access the Accessible Diff Viewer. What should a learner take away from it?"
+  },
+  {
+    "speaker": "ALEX",
+    "text": "Here is the plain-English version of Step 4: Access the Accessible Diff Viewer. If the Accessible Diff Viewer doesn't open."
+  },
+  {
+    "speaker": "ALEX",
+    "text": "The practical takeaway is this. With mouse: Look for a button or menu option labeled \"Accessible View\" or \"Open Accessible Diff\". If no button is visible, try Alt+F2 (VS Code Accessible View toggle). A new panel opens at the bottom of VS Code. The panel announces each change one at a time. Changes appear in text format with labels: \"Added: \" and \"Removed: \". The panel is read-only (you read the changes, you don't edit here)."
+  },
+  {
+    "speaker": "ALEX",
+    "text": "First, with keyboard: Press F7 to open the Accessible Diff Viewer. Treat it like a recipe: do not add the next ingredient until the previous one is actually in the bowl."
+  },
+  {
+    "speaker": "JAMIE",
+    "text": "Let's pause on Step 5: Listen to and Understand the First Change. What should a learner take away from it?"
+  },
+  {
+    "speaker": "ALEX",
+    "text": "Start with Step 5: Listen to and Understand the First Change. There is something to understand, something to try, and something that proves the try worked."
+  },
+  {
+    "speaker": "ALEX",
+    "text": "The practical takeaway is this. NVDA/JAWS: The Accessible Diff Viewer announces \"Removed:\" and \"Added:\" labels, followed by the line content. VoiceOver: The announcement may be similar; listen for \"removed\" and \"added\" keywords."
+  },
+  {
+    "speaker": "ALEX",
+    "text": "First, the first change is automatically announced when you open the Accessible Diff Viewer. Then, let your screen reader read it completely - don't interrupt. After that, write down the exact text announced. Finally, press the Down arrow to move to the next change. It is a checklist, but a meaningful one: every item creates evidence that the next step is safe."
+  },
+  {
+    "speaker": "PAUSE",
+    "text": ""
+  },
+  {
+    "speaker": "JAMIE",
+    "text": "Let's pause on Step 6: Find the Heading Hierarchy Issue. What should a learner take away from it?"
+  },
+  {
+    "speaker": "ALEX",
+    "text": "Start with Step 6: Find the Heading Hierarchy Issue. There is something to understand, something to try, and something that proves the try worked."
+  },
+  {
+    "speaker": "ALEX",
+    "text": "The practical takeaway is this. Four hashes ( ) indicate a level 4 heading. In the diff, you're looking for it appearing after a level 2 heading ( ). This creates the hierarchy skip you caught in Exercise A. You found the explanation in the Accessible Diff Viewer's format. You can explain: \"The added line with directly follows a, skipping level 3\". The Accessible Diff Viewer made this pattern clearer than scanning raw + characters."
+  },
+  {
+    "speaker": "ALEX",
+    "text": "First, continue pressing Down arrow to move through changes. Then, listen carefully for a change involving headings (lines starting with ). After that, specifically, listen for: \"Added: \" (four hashes). Finally, when you hear this, stop and write it down. It is like walking a hallway with named doors: read the sign, enter the right room, then confirm where you landed."
+  },
+  {
+    "speaker": "JAMIE",
+    "text": "Let's pause on Step 7: Locate the Heading Line and Add an Inline Comment. What should a learner take away from it?"
+  },
+  {
+    "speaker": "ALEX",
+    "text": "Start with Step 7: Locate the Heading Line and Add an Inline Comment. There is something to understand, something to try, and something that proves the try worked."
+  },
+  {
+    "speaker": "ALEX",
+    "text": "The practical takeaway is this. Use Ctrl+F to open Find. Search for to locate it quickly. Press Enter to jump to it. With keyboard: The comment button may appear on the current line; navigate to it and press Enter. A comment box opens. You can type your comment."
+  },
+  {
+    "speaker": "ALEX",
+    "text": "First, once you identified the problematic heading in the Accessible Diff Viewer, close the Accessible Diff Viewer (press F7 again or Alt+F2). Then, you're back in the regular Diff Editor. After that, find the line with the problematic heading. Finally, close Find (Escape). The rhythm is simple: orient, act, verify, then continue."
+  },
+  {
+    "speaker": "JAMIE",
+    "text": "Before we leave Step 7: Locate the Heading Line and Add an Inline Comment, what is the practical point?"
+  },
+  {
+    "speaker": "ALEX",
+    "text": "First, place your cursor on that line. Then, right-click and select \"Add Comment\" or press the Comment icon that appears on the left margin. Think of it as a rail line: each stop confirms you are still on the right route before the next one."
+  },
+  {
+    "speaker": "JAMIE",
+    "text": "Let's pause on Step 8: Write Your Accessible Diff Comment. What should a learner take away from it?"
+  },
+  {
+    "speaker": "ALEX",
+    "text": "Start with Step 8: Write Your Accessible Diff Comment: Why mention the Accessible Diff Viewer?"
+  },
+  {
+    "speaker": "ALEX",
+    "text": "The practical takeaway is this. It shows that the tool itself helps you see the issue. It documents how you caught the problem (useful for learning)."
+  },
+  {
+    "speaker": "ALEX",
+    "text": "First, in the comment box, type. Then, press Ctrl+Enter or click Comment to submit. Think of it as a rail line: each stop confirms you are still on the right route before the next one."
+  },
+  {
+    "speaker": "PAUSE",
+    "text": ""
+  },
+  {
+    "speaker": "JAMIE",
+    "text": "Let's pause on Step 9: Create a GitHub Pull Request Comment. What should a learner take away from it?"
+  },
+  {
+    "speaker": "ALEX",
+    "text": "Here is the plain-English version of Step 9: Create a GitHub Pull Request Comment. Now you've reviewed the same PR in."
+  },
+  {
+    "speaker": "ALEX",
+    "text": "First, browser (Exercise A): You spot-checked line numbers manually. Then, VS Code (Exercise B): The Diff Editor plus Accessible Diff Viewer announced changes. After that, go to GitHub in your browser and open the same PR. Finally, scroll to the bottom and leave a comment in the Conversation tab. Treat it like a recipe: do not add the next ingredient until the previous one is actually in the bowl."
+  },
+  {
+    "speaker": "JAMIE",
+    "text": "Before we leave Step 9: Create a GitHub Pull Request Comment, what is the practical point?"
+  },
+  {
+    "speaker": "ALEX",
+    "text": "First, click Comment. It is a checklist, but a meaningful one: every item creates evidence that the next step is safe."
+  },
+  {
+    "speaker": "JAMIE",
+    "text": "Before we leave Reflect on This Exercise, what is the practical point?"
+  },
+  {
+    "speaker": "ALEX",
+    "text": "This is where Reflect on This Exercise becomes real: after completing Steps 1-9, answer. That matters in practice: In Chapter 16, you'll compare these manual reviews with the @pr-review agent's suggested changes. The workshop is closer to rehearsal than lecture. You hear the move, try the move, and then check what changed."
+  },
+  {
+    "speaker": "ALEX",
+    "text": "First, announcement clarity: Did the \"Added:\" and \"Removed:\" labels from the Accessible Diff Viewer help you follow changes faster than reading + and − prefixes in the browser? Then, navigation pattern: Which tool required less back-and-forth clicking/tabbing to understand each change? After that, when would you use each? In one sentence: describe a type of PR where you'd prefer to use each tool. It is a checklist, but a meaningful one: every item creates evidence that the next step is safe."
+  },
+  {
+    "speaker": "JAMIE",
+    "text": "How do these exercises create confidence instead of pressure?"
+  },
+  {
+    "speaker": "ALEX",
+    "text": "Keep the learner anchored in Exercise C - Compare and Reflect. Your Mission: Synthesize what you learned from the manual code reviews (Exercises A & B) and document your findings. This is the part to say slowly: What You'll Learn: Which tools work best for different scenarios, and how your manual review skills prepare you to use AI agents effectively."
+  },
+  {
+    "speaker": "PAUSE",
+    "text": ""
+  },
+  {
+    "speaker": "ALEX",
+    "text": "Keep the teaching thread moving. The reason Step 1: Gather Your Data matters is that before writing your reflection, collect all the information you gathered. That gives the learner a simple foothold: write these down (in a text editor, on paper, or mentally) - you'll reference them in Steps 2-4."
+  },
+  {
+    "speaker": "ALEX",
+    "text": "The practical takeaway is this. Which line number had the heading hierarchy skip? Which line number had the link text issue? How many steps did it take to find each issue? Did you use screen reader commands or visual scanning more?"
+  },
+  {
+    "speaker": "JAMIE",
+    "text": "Let's pause on Step 2: Navigate to the PR and Leave Your Reflection Comment. What should a learner take away from it?"
+  },
+  {
+    "speaker": "ALEX",
+    "text": "Start with Step 2: Navigate to the PR and Leave Your Reflection Comment. There is something to understand, something to try, and something that proves the try worked."
+  },
+  {
+    "speaker": "ALEX",
+    "text": "The practical takeaway is this. A text editing area with formatting options (Bold, Italic, Link, etc.). A Comment button below the text area."
+  },
+  {
+    "speaker": "ALEX",
+    "text": "First, go to GitHub in your browser. Then, open the same PR (\"Add screen reader tips to the setup guide\"). After that, scroll to the Conversation tab. Finally, scroll all the way down to the comment box at the bottom (labeled \"Leave a comment\" or \"Add a comment\"). Think of it as a rail line: each stop confirms you are still on the right route before the next one."
+  },
+  {
+    "speaker": "JAMIE",
+    "text": "Before we leave Step 2: Navigate to the PR and Leave Your Reflection Comment, what is the practical point?"
+  },
+  {
+    "speaker": "ALEX",
+    "text": "First, click in the comment box. Treat it like a recipe: do not add the next ingredient until the previous one is actually in the bowl."
+  },
+  {
+    "speaker": "ALEX",
+    "text": "Keep the teaching thread moving. Here is the plain-English version of Step 3: Write Your Comparison. Type your response to these three questions. Put another way, be specific - reference exact tools, steps, and what you discovered. It is like learning a transit route. The names of the stops matter because they tell you whether you are still going the right direction."
+  },
+  {
+    "speaker": "PAUSE",
+    "text": ""
+  },
+  {
+    "speaker": "JAMIE",
+    "text": "Let's pause on Step 4: Review Your Comment. What should a learner take away from it?"
+  },
+  {
+    "speaker": "ALEX",
+    "text": "Start with Step 4: Review Your Comment. There is something to understand, something to try, and something that proves the try worked."
+  },
+  {
+    "speaker": "ALEX",
+    "text": "The practical takeaway is this. Is it clear which tool I preferred? Did I explain why with concrete examples? Am I describing the real-world impact accurately? Would someone else reading this understand how I caught the issue?"
+  },
+  {
+    "speaker": "ALEX",
+    "text": "First, before submitting, re-read your comment using your screen reader or by reading aloud. Then, ask yourself. After that, make any corrections needed. Finally, do not submit yet - continue to Step 5. It is a checklist, but a meaningful one: every item creates evidence that the next step is safe."
+  },
+  {
+    "speaker": "JAMIE",
+    "text": "Let's pause on Step 5: Submit Your Reflection. What should a learner take away from it?"
+  },
+  {
+    "speaker": "ALEX",
+    "text": "Start with Step 5: Submit Your Reflection. There is something to understand, something to try, and something that proves the try worked."
+  },
+  {
+    "speaker": "ALEX",
+    "text": "The practical takeaway is this. Your comment is now visible on the PR. Other reviewers can see your comparison. You have completed the three-part exercise series. Your comment appears on the PR thread. It includes all three reflections. The PR author and other reviewers can see your thought process."
+  },
+  {
+    "speaker": "ALEX",
+    "text": "First, locate the Comment button at the bottom right of the comment box. Then, with keyboard: Press Tab until the Comment button is focused, then Enter. After that, with mouse: Click the Comment button. Finally, your comment is submitted and appears on the PR page. It is like walking a hallway with named doors: read the sign, enter the right room, then confirm where you landed."
+  },
+  {
+    "speaker": "JAMIE",
+    "text": "Let's pause on Step 6: Checkpoint - Validate Your Learning. What should a learner take away from it?"
+  },
+  {
+    "speaker": "ALEX",
+    "text": "The reason Step 6: Checkpoint - Validate Your Learning matters is that before moving forward, verify you understand. That gives the learner a simple foothold: if you can answer all three, you're ready for the next chapter."
+  },
+  {
+    "speaker": "ALEX",
+    "text": "The practical takeaway is this. Expected answer: Something like \"Screen readers let users navigate by heading level (pressing 3 jumps to H3), so skipping a level makes users think content is missing.\". Expected answer: e.g., \"Browser: finding context in discussions. VS Code: linear reading of changes.\". Expected answer: Something like \"Open the document in a browser, use screen reader heading navigation, and confirm I can reach all levels (H2, H3, H4).\"."
+  },
+  {
+    "speaker": "ALEX",
+    "text": "First, heading Hierarchy: Can you explain in one sentence why a → skip breaks screen reader navigation? Then, tool Strengths: For each tool you used, name one task it made easier. After that, real-World Testing: How would you test the heading issue in the published document (not the PR diff)? The rhythm is simple: orient, act, verify, then continue."
+  },
+  {
+    "speaker": "PAUSE",
+    "text": ""
+  },
+  {
+    "speaker": "ALEX",
+    "text": "Keep the teaching thread moving. Start with Using GitHub Copilot to Understand Code Changes: Reviewing code is about understanding what changed, why it changed, and whether the change is safe and correct. The next useful detail is this: GitHub Copilot can help you gather and understand information about code changes - especially when diffs are large, complex, or involve unfamiliar frameworks. Think of it like entering a new building: first you find the lobby, then the room, then the door you actually need."
+  },
+  {
+    "speaker": "JAMIE",
+    "text": "Let's pause on When to Use Copilot During Code Review. What should a learner take away from it?"
+  },
+  {
+    "speaker": "ALEX",
+    "text": "Here is the plain-English version of When to Use Copilot During Code Review. Copilot is most useful for answering these questions."
+  },
+  {
+    "speaker": "ALEX",
+    "text": "First, \"What does this code do?\" - you're reading unfamiliar syntax or a framework you don't know well. Then, \"Why might this change break something?\" - you need to understand dependencies or side effects. After that, \"Is this pattern safe?\" - you want to verify that the approach follows best practices. Finally, \"What would be a better way to write this?\" - you're looking for alternatives to suggest. Treat it like a recipe: do not add the next ingredient until the previous one is actually in the bowl."
+  },
+  {
+    "speaker": "JAMIE",
+    "text": "Before we leave When to Use Copilot During Code Review, what is the practical point?"
+  },
+  {
+    "speaker": "ALEX",
+    "text": "First, \"Does this match the PR's description?\" - the change seems to do more (or less) than claimed. It is a checklist, but a meaningful one: every item creates evidence that the next step is safe."
+  },
+  {
+    "speaker": "JAMIE",
+    "text": "Let's pause on In VS Code with an Open Diff. What should a learner take away from it?"
+  },
+  {
+    "speaker": "ALEX",
+    "text": "Start with In VS Code with an Open Diff. There is something to understand, something to try, and something that proves the try worked."
+  },
+  {
+    "speaker": "ALEX",
+    "text": "First, open the PR using the GitHub Pull Requests extension (see Part 2). Then, open the diff for any file. After that, select a block of code that confuses you (highlight it). Finally, open Copilot Chat: Ctrl+Shift+I. It is a checklist, but a meaningful one: every item creates evidence that the next step is safe."
+  },
+  {
+    "speaker": "JAMIE",
+    "text": "Before we leave In VS Code with an Open Diff, what is the practical point?"
+  },
+  {
+    "speaker": "ALEX",
+    "text": "First, Copilot reads the selected code and answers in the chat. It is like walking a hallway with named doors: read the sign, enter the right room, then confirm where you landed."
+  },
+  {
+    "speaker": "PAUSE",
+    "text": ""
+  },
+  {
+    "speaker": "JAMIE",
+    "text": "Let's pause on On GitHub.com (Web Interface). What should a learner take away from it?"
+  },
+  {
+    "speaker": "ALEX",
+    "text": "Keep the learner anchored in On GitHub.com (Web Interface). Another option: Use the GitHub Copilot inline suggestions on GitHub.com."
+  },
+  {
+    "speaker": "ALEX",
+    "text": "The practical takeaway is this. Some GitHub PRs show Copilot insights directly in the diff (as of early 2026). If you see a lightbulb icon, click it to see Copilot's suggestion about that line."
+  },
+  {
+    "speaker": "ALEX",
+    "text": "First, open the PR's Files Changed tab. Then, focus on a line or section you want to understand better. After that, in VS Code Copilot Chat (not in the browser - Copilot Chat doesn't work directly in browser diffs yet). Finally, copy the confusing code, paste it into chat, and ask Copilot to explain. It is like walking a hallway with named doors: read the sign, enter the right room, then confirm where you landed."
+  },
+  {
+    "speaker": "ALEX",
+    "text": "Keep the teaching thread moving. The reason Copilot Limitations During Review (Critical to Know) matters is that this is why manual review is essential: You have context (project history, team decisions, user impact) that Copilot does not. That gives the learner a simple foothold: use Copilot to understand, then use your judgment to decide. The interface gets friendlier when it stops being a wall of controls and starts being a set of named places."
+  },
+  {
+    "speaker": "ALEX",
+    "text": "The practical takeaway is this. See the whole project - it sees only what you show it (the selected diff, not the context of the entire codebase). Verify correctness - it can explain what code does, but not whether it's correct for your specific use case. Understand intent - it reads the code, not the author's mind or the PR description. Catch all risks - it can spot common patterns, but not edge cases unique to your project."
+  },
+  {
+    "speaker": "JAMIE",
+    "text": "Let's pause on Best Practices. What should a learner take away from it?"
+  },
+  {
+    "speaker": "ALEX",
+    "text": "Start with Best Practices. There is something to understand, something to try, and something that proves the try worked."
+  },
+  {
+    "speaker": "ALEX",
+    "text": "First, read the diff manually first - you spot the big picture before asking Copilot details. Then, ask Copilot specific questions - not \"review this code\" but \"does this regex handle Unicode?\". After that, fact-check Copilot's answers - it can be confidently wrong, especially about frameworks or domains it has less training data. Finally, combine Copilot with manual analysis - ask Copilot to explain, then verify by checking the PR description or looking for related files. Think of it as a rail line: each stop confirms you are still on the right route before the next one."
+  },
+  {
+    "speaker": "JAMIE",
+    "text": "Before we leave Best Practices, what is the practical point?"
+  },
+  {
+    "speaker": "ALEX",
+    "text": "First, use Copilot to draft comments - type Draft a comment about [issue] for this PR and edit Copilot's suggestion to match your tone. Treat it like a recipe: do not add the next ingredient until the previous one is actually in the bowl."
+  },
+  {
+    "speaker": "PAUSE",
+    "text": ""
+  },
+  {
+    "speaker": "ALEX",
+    "text": "Keep the teaching thread moving. Here is the plain-English version of What Comes Next. Your manual code review skills - identifying heading issues, catching link text problems, understanding screen reader navigation, gathering information with Copilot - are the foundation for understanding automated review. Put another way, in Chapter 16 (Accessibility Agents), you'll meet a full team of agents designed to amplify these skills."
+  },
+  {
+    "speaker": "JAMIE",
+    "text": "Let's pause on Part 4: The Reviewer's Craft. What should a learner take away from it?"
+  },
+  {
+    "speaker": "ALEX",
+    "text": "This is where The Reviewer's Craft becomes real: parts 1 through 3 taught you the mechanics -- how to read diffs, leave comments, and use Copilot to understand unfamiliar code. That matters in practice: This part covers something equally important: how to think like a reviewer."
+  },
+  {
+    "speaker": "ALEX",
+    "text": "Keep the teaching thread moving. Keep the learner anchored in What to Look for in a Review. Every PR is different, but most reviews benefit from scanning across these five categories. This is the part to say slowly: You do not need to check every category exhaustively on every PR. A good GitHub workflow is like a well-run meeting: everyone knows the topic, the next action, and who has the floor."
+  },
+  {
+    "speaker": "PAUSE",
+    "text": ""
+  },
+  {
+    "speaker": "JAMIE",
+    "text": "Let's pause on The Three Review Actions. What should a learner take away from it?"
+  },
+  {
+    "speaker": "ALEX",
+    "text": "The reason The Three Review Actions matters is that when you submit a review on GitHub, you choose one of three actions. That gives the learner a simple foothold: picking the right one matters because it signals your intent to the author and to anyone else watching the PR."
+  },
+  {
+    "speaker": "ALEX",
+    "text": "First, did you find a bug, security issue, or broken test? -- Request Changes. Then, does the code do something different from what the description says? -- Request Changes. After that, does everything work, with maybe a few style nits? -- Approve (mention the nits in a comment). Finally, do you have questions or optional suggestions? -- Comment. The rhythm is simple: orient, act, verify, then continue."
+  },
+  {
+    "speaker": "ALEX",
+    "text": "Keep the teaching thread moving. Start with Writing Constructive Feedback: The way you phrase feedback determines whether the author feels supported or attacked. The next useful detail is this: Before pointing out problems, acknowledge something the author did well."
+  },
+  {
+    "speaker": "JAMIE",
+    "text": "Let's pause on The Reviewer's Checklist. What should a learner take away from it?"
+  },
+  {
+    "speaker": "ALEX",
+    "text": "Here is the plain-English version of The Reviewer's Checklist. Run through this list mentally (or copy it into your notes) for every PR you review."
+  },
+  {
+    "speaker": "ALEX",
+    "text": "The practical takeaway is this. [ ] I read the PR description before reading the code. [ ] The code does what the description says it does. [ ] The change does not include unrelated modifications. [ ] Variable and function names are clear. [ ] I checked for accessibility: labels, headings, keyboard reach, contrast. [ ] I verified no existing behavior is broken by the change."
+  },
+  {
+    "speaker": "PAUSE",
+    "text": ""
+  },
+  {
+    "speaker": "ALEX",
+    "text": "Keep the teaching thread moving. This is where Reviewing as a Learning Tool becomes real: reviewing is not just a gate to keep bad code out. That matters in practice: It is one of the fastest ways to grow as a developer. The workshop is closer to rehearsal than lecture. You hear the move, try the move, and then check what changed."
+  },
+  {
+    "speaker": "JAMIE",
+    "text": "Let's pause on Learning Cards: The Reviewer's Craft. What should a learner take away from it?"
+  },
+  {
+    "speaker": "ALEX",
+    "text": "Start with Learning Cards: The Reviewer's Craft. There is something to understand, something to try, and something that proves the try worked."
+  },
+  {
+    "speaker": "ALEX",
+    "text": "The practical takeaway is this. Jump between changed hunks in a diff with Alt+F5 (next change) and Shift+Alt+F5 (previous change) to scan for scope creep efficiently. Use Alt+F2 (Accessible View) on a Copilot-generated review summary to read the full text with arrow keys before posting. When leaving feedback, mention specific line numbers (\"Line 42 skips from h2 to h4\") so the author can navigate directly with Ctrl+G. The three review actions (Approve, Request Changes, Comment) are shown as clearly labeled radio buttons in the review submission form. Use the reviewer checklist in this section as a mental framework -- copy it into your notes and check items off as you review each PR. The diff view uses green and red backgrounds for added/removed lines; pair with a High Contrast theme if these colors are hard to distinguish."
+  },
+  {
+    "speaker": "ALEX",
+    "text": "Keep the teaching thread moving. The reason Day 2 Teaser: The Full Accessibility Agents Review Ecosystem matters is that chapter 16 shows you how to leverage 50+ specialized agents to make your reviews faster, more consistent, and more thorough - while staying in full control of what you post."
+  },
+  {
+    "speaker": "PAUSE",
+    "text": ""
+  },
+  {
+    "speaker": "JAMIE",
+    "text": "What do you want them to do when the plan breaks?"
+  },
+  {
+    "speaker": "ALEX",
+    "text": "Start with The Agents That Help With Code Review: Accessibility Review Agents (when code affects UI/UX)."
+  },
+  {
+    "speaker": "ALEX",
+    "text": "The practical takeaway is this. @pr-review - Generates a full-draft PR review with line-numbered diff maps, risk assessment, before/after snapshots, and suggested inline comments. You edit and post it under your name. @pr-author-checklist - Before you even submit your PR, use this to verify you haven't missed setup steps, accessibility checks, or documentation. @insiders-a11y-tracker - Monitors your PR for accessibility-sensitive changes: WCAG violations, heading hierarchy issues, link text quality, keyboard navigation impacts. @developer-hub - Orchestrates explanations for unfamiliar code, patterns, or frameworks you're reviewing. @python-specialist - If your PR contains Python code, this agent explains patterns, spots accessibility issues, and suggests improvements. @wxpython-specialist - For desktop GUI code, helps verify accessible widget patterns and focus management."
+  },
+  {
+    "speaker": "JAMIE",
+    "text": "Let's pause on How It Works. What should a learner take away from it?"
+  },
+  {
+    "speaker": "ALEX",
+    "text": "Start with How It Works. There is something to understand, something to try, and something that proves the try worked."
+  },
+  {
+    "speaker": "ALEX",
+    "text": "First, review manually first (you just did this with Exercises A, B, C). Then, run an agent - @pr-review review PR 14 generates a draft in seconds. After that, edit the agent's draft - you add context, remove noise, correct errors. Finally, post your review - it now has both AI efficiency and your human judgment. Treat it like a recipe: do not add the next ingredient until the previous one is actually in the bowl."
+  },
+  {
+    "speaker": "JAMIE",
+    "text": "Before we leave How It Works, what is the practical point?"
+  },
+  {
+    "speaker": "ALEX",
+    "text": "First, the agent tracks impact - @insiders-a11y-tracker monitors whether your accessibility feedback was addressed. It is a checklist, but a meaningful one: every item creates evidence that the next step is safe."
+  },
+  {
+    "speaker": "JAMIE",
+    "text": "Let's pause on The Principle: Skill First, Agent Second. What should a learner take away from it?"
+  },
+  {
+    "speaker": "ALEX",
+    "text": "This is where The Principle: Skill First, Agent Second becomes real: why do this manually before using agents? That matters in practice: Manual reviews teach you what to look for."
+  },
+  {
+    "speaker": "ALEX",
+    "text": "The practical takeaway is this. You understand what the agent is doing (you did it manually). You evaluate the agent's output critically (you know what right looks like). You add judgment the agent lacks (context, intent, team decisions). You verify the agent didn't miss anything important."
+  },
+  {
+    "speaker": "PAUSE",
+    "text": ""
+  },
+  {
+    "speaker": "JAMIE",
+    "text": "Let's pause on A Real Example: The Flow. What should a learner take away from it?"
+  },
+  {
+    "speaker": "ALEX",
+    "text": "Keep the learner anchored in A Real Example: The Flow. Manual Review (your work in part 1-2). This is the part to say slowly: Agent-Assisted Review (what you'll do in Chapter 19)."
+  },
+  {
+    "speaker": "ALEX",
+    "text": "The practical takeaway is this. Read diff, identify heading hierarchy skip. Write comment explaining why it matters. Submit your verdict."
+  },
+  {
+    "speaker": "ALEX",
+    "text": "First, run: @pr-review review PR 14. Then, agent generates a draft review covering the heading skip, link text, and 5 other issues. After that, you read the draft and notice: \"the agent's explanation of the heading skip is good, but it missed that the link text on line 23 is still vague. Let me add that.\". Finally, you post the agent's review + your additions. It is like walking a hallway with named doors: read the sign, enter the right room, then confirm where you landed."
+  },
+  {
+    "speaker": "JAMIE",
+    "text": "Before we leave A Real Example: The Flow, what is the practical point?"
+  },
+  {
+    "speaker": "ALEX",
+    "text": "First, next time you review a similar PR, the agent works faster because it learned from your feedback. The rhythm is simple: orient, act, verify, then continue."
+  },
+  {
+    "speaker": "PAUSE",
+    "text": ""
+  },
+  {
+    "speaker": "JAMIE",
+    "text": "What should people carry with them after this?"
+  },
+  {
+    "speaker": "ALEX",
+    "text": "Carry the map. Know what page or tool you are in, know which action you are taking, and know what confirmation should follow. If the confirmation is missing, pause. That pause is not wasted time; it is professional judgment."
+  },
+  {
+    "speaker": "JAMIE",
+    "text": "That is a better way to say it than just follow the steps."
+  },
+  {
+    "speaker": "ALEX",
+    "text": "Right. Steps matter, but understanding wins. That is episode 13. Next in the series is episode 14, where we keep building the same contributor muscles."
+  }
+]

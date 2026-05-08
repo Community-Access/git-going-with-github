@@ -2,18 +2,22 @@ const test = require('node:test');
 const assert = require('node:assert/strict');
 const fs = require('node:fs');
 const path = require('node:path');
+const { challenges } = require('../../../podcasts/build-challenge-bundles');
 
 const repoRoot = path.resolve(__dirname, '../../../');
 const templatesDir = path.join(repoRoot, 'learning-room/.github/ISSUE_TEMPLATE');
 const challengeHubPath = path.join(repoRoot, 'docs/CHALLENGES.md');
 const humanMatrixPath = path.join(repoRoot, 'classroom/HUMAN_TEST_MATRIX.md');
-const facilitatorGuidePath = path.join(repoRoot, 'facilitator/FACILITATOR_GUIDE.md');
+const facilitatorGuidePath = path.join(repoRoot, 'admin/FACILITATOR_GUIDE.md');
 const learningRoomSolutionsIndexPath = path.join(repoRoot, 'learning-room/docs/solutions/README.md');
 const skillsBonusScenariosPath = path.join(repoRoot, 'learning-room/docs/skills-bonus-scenarios.md');
 const learningRoomRoadmapPath = path.join(repoRoot, 'learning-room/docs/course-roadmap.md');
 const learningRoomReadmePath = path.join(repoRoot, 'learning-room/README.md');
 const studentGuidePath = path.join(repoRoot, 'learning-room/.github/STUDENT_GUIDE.md');
 const startHereTemplatePath = path.join(repoRoot, 'learning-room/.github/ISSUE_TEMPLATE/start-here-roadmap.yml');
+const assignmentDay1Path = path.join(repoRoot, 'classroom/assignment-day1-you-belong-here.md');
+const assignmentDay2Path = path.join(repoRoot, 'classroom/assignment-day2-you-can-build-this.md');
+const podcastScriptsDir = path.join(repoRoot, 'podcasts/scripts');
 
 function getChallengeTemplateFiles() {
   return fs
@@ -42,6 +46,11 @@ function getCanonicalChallengeTitles() {
 
 function titleVariants(title) {
   const variants = new Set([title]);
+  const challengePrefix = title.match(/^Challenge\s+(\d+):\s+(.+)$/i);
+  if (challengePrefix) {
+    variants.add(challengePrefix[2]);
+    variants.add(`${challengePrefix[1]}. ${challengePrefix[2]}`);
+  }
 
   if (/pull request/i.test(title)) {
     variants.add(title.replace(/pull request/gi, 'PR'));
@@ -64,6 +73,64 @@ function assertContainsAnyTitleVariant(targetText, fileName, title, targetLabel)
   const found = variants.some(variant => new RegExp(escapeRegex(variant)).test(targetText));
   assert.equal(found, true, `${fileName}: title missing from ${targetLabel}`);
 }
+
+function assertCanonicalTitlesInDocument(documentPath, targetLabel, challengeNumberPattern) {
+  const content = fs.readFileSync(documentPath, 'utf8');
+  const titles = getCanonicalChallengeTitles().filter(({ fileName }) => challengeNumberPattern.test(fileName));
+
+  titles.forEach(({ fileName, title }) => {
+    assertContainsAnyTitleVariant(content, fileName, title, targetLabel);
+  });
+}
+
+test('classroom assignment docs use canonical challenge titles', () => {
+  assertCanonicalTitlesInDocument(assignmentDay1Path, 'classroom/assignment-day1-you-belong-here.md', /^challenge-0[1-9]-/);
+  assertCanonicalTitlesInDocument(assignmentDay2Path, 'classroom/assignment-day2-you-can-build-this.md', /^challenge-(1[0-6])-/);
+});
+
+test('challenge coach catalog titles match canonical issue templates', () => {
+  const canonicalByTemplate = new Map(
+    getCanonicalChallengeTitles().map(({ fileName, title }) => [fileName, title.replace(/^Challenge\s+\d+:\s*/, '')])
+  );
+
+  challenges
+    .filter(challenge => /^\d+$/.test(challenge.id))
+    .forEach(challenge => {
+      const templateName = path.basename(challenge.template);
+      assert.equal(
+        challenge.title,
+        canonicalByTemplate.get(templateName),
+        `${templateName}: podcast Challenge Coach title should match canonical template name`
+      );
+    });
+});
+
+test('generated podcast scripts avoid stale boilerplate', () => {
+  if (!fs.existsSync(podcastScriptsDir)) return;
+
+  const bannedFragments = [
+    'as if we are standing together in a classroom',
+    'not just memorizing clicks',
+    'GitHub work is not magic',
+    'Listen before reading to preview the concepts',
+    'preview or review the key concepts',
+    'Episode coming soon'
+  ];
+
+  const scriptFiles = fs.readdirSync(podcastScriptsDir).filter(name => name.endsWith('.txt'));
+  assert.ok(scriptFiles.length > 0, 'podcasts/scripts should contain generated script files');
+
+  scriptFiles.forEach(fileName => {
+    const script = fs.readFileSync(path.join(podcastScriptsDir, fileName), 'utf8');
+    bannedFragments.forEach(fragment => {
+      assert.equal(
+        script.includes(fragment),
+        false,
+        `${fileName}: remove stale generated phrase: ${fragment}`
+      );
+    });
+  });
+});
 
 test('challenge hub contains all canonical challenge and bonus titles', () => {
   const hub = fs.readFileSync(challengeHubPath, 'utf8');
@@ -89,11 +156,12 @@ test('facilitator guide progression map aligns with challenge model', () => {
   const guide = fs.readFileSync(facilitatorGuidePath, 'utf8');
 
   const requiredSnippets = [
-    'close Challenge 1, see Challenge 2 appear',
-    'The student-progression workflow begins delivering Challenge 10 onwards.',
-    '| Core Day 2 | 10-13 |',
-    '| Advanced | 14-16 |',
-    '| Bonus | bonus-a through bonus-e |'
+    "There it is! Challenge 2 just appeared. That's how progression works.",
+    'Challenge 10 is waiting for you.',
+    '| **Core** | 10-13 |',
+    '| **Advanced** | 14-16 |',
+    '| **Bonus** | bonus-a through bonus-e |',
+    'The progression bot unlocks them when challenges are closed.'
   ];
 
   requiredSnippets.forEach(snippet => {

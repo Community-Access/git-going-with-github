@@ -1,0 +1,458 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="GIT Going with GitHub - A two-day accessible open source workshop by Community Access">
+  <title>Git Going with GitHub Go-Live QA Guide - GIT Going with GitHub</title>
+  <link rel="stylesheet" href="./styles/github-markdown.css">
+  <link rel="stylesheet" href="./styles/highlight.css">
+  <link rel="stylesheet" href="./styles/custom.css">
+  <style>
+    .markdown-body {
+      box-sizing: border-box;
+      min-width: 200px;
+      max-width: 980px;
+      margin: 0 auto;
+      padding: 45px;
+    }
+    @media (max-width: 767px) {
+      .markdown-body {
+        padding: 15px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+  <header class="site-header" role="banner">
+    <div class="site-header-inner">
+      <nav aria-label="Breadcrumb" class="breadcrumb">
+        <a href="./index.html">Home</a> <span aria-hidden="true">›</span> <span aria-current="page">Git Going with GitHub Go-Live QA Guide</span>
+      </nav>
+      <div class="header-actions">
+        <a href="https://github.com/Community-Access/git-going-with-github/wiki" class="wiki-link" target="_blank" rel="noopener noreferrer">
+          <svg aria-hidden="true" focusable="false" width="16" height="16" viewBox="0 0 16 16" fill="currentColor">
+            <path d="M1.75 1h8.5c.966 0 1.75.784 1.75 1.75v5.5A1.75 1.75 0 0 1 10.25 10H7.06l-2.573 2.573A1.458 1.458 0 0 1 2 11.543V10h-.25A1.75 1.75 0 0 1 0 8.25v-5.5C0 1.784.784 1 1.75 1ZM1.5 2.75v5.5c0 .138.112.25.25.25h1a.75.75 0 0 1 .75.75v2.19l2.72-2.72a.749.749 0 0 1 .53-.22h3.5a.25.25 0 0 0 .25-.25v-5.5a.25.25 0 0 0-.25-.25h-8.5a.25.25 0 0 0-.25.25Zm13 2a.25.25 0 0 0-.25-.25h-.5a.75.75 0 0 1 0-1.5h.5c.966 0 1.75.784 1.75 1.75v5.5A1.75 1.75 0 0 1 14.25 12H14v1.543a1.457 1.457 0 0 1-2.487 1.03L9.22 12.28a.749.749 0 1 1 1.06-1.06l2.22 2.22v-2.19a.75.75 0 0 1 .75-.75h.25a.25.25 0 0 0 .25-.25v-5.5Z"/>
+          </svg>
+          Wiki
+        </a>
+        <form role="search" class="search-form" action="./search.html" method="get">
+        <label for="site-search" class="search-label">Search docs</label>
+        <input
+          type="search"
+          id="site-search"
+          class="search-input"
+          name="q"
+          placeholder="Search docs…"
+          autocomplete="off"
+          aria-label="Search documentation"
+        >
+        <button type="submit" class="search-button" aria-label="Submit search">
+          <svg aria-hidden="true" focusable="false" width="16" height="16" viewBox="0 0 16 16" fill="currentColor">
+            <path d="M10.68 11.74a6 6 0 0 1-7.922-8.982 6 6 0 0 1 8.982 7.922l3.04 3.04a.749.749 0 0 1-.326 1.275.749.749 0 0 1-.734-.215ZM11.5 7a4.499 4.499 0 1 0-8.997 0A4.499 4.499 0 0 0 11.5 7Z"/>
+          </svg>
+        </button>
+      </form>
+      </div>
+    </div>
+  </header>
+  <main id="main-content" class="markdown-body">
+    <h1 id="git-going-with-github-go-live-qa-guide">Git Going with GitHub Go-Live QA Guide</h1>
+<p>Use this guide before a cohort is opened to learners. It is the release gate for curriculum content, GitHub Classroom deployment, Learning Room automation, podcast materials, accessibility, and human test coverage.</p>
+<p>The goal is simple: a facilitator should be able to create a classroom, seed test repositories, complete every challenge path, validate every generated artifact, and know exactly what remains before students arrive.</p>
+<h2 id="release-decision">Release Decision</h2>
+<p>Do not mark a cohort ready until all required items in this section are complete.</p>
+<ul>
+<li><input aria-label="Automated tests pass locally." disabled="" type="checkbox"> Automated tests pass locally.</li>
+<li><input aria-label="HTML documentation builds from the current Markdown sources." disabled="" type="checkbox"> HTML documentation builds from the current Markdown sources.</li>
+<li><input aria-label="Podcast catalog validation passes." disabled="" type="checkbox"> Podcast catalog validation passes.</li>
+<li><input aria-label="RSS feed validation passes for the current audio state." disabled="" type="checkbox"> RSS feed validation passes for the current audio state.</li>
+<li><input aria-label="Git diff whitespace check has no actual whitespace or conflict-marker errors." disabled="" type="checkbox"> Git diff whitespace check has no actual whitespace or conflict-marker errors.</li>
+<li><input aria-label="Day 1 Classroom assignment has been created from the current Learning Room template." disabled="" type="checkbox"> Day 1 Classroom assignment has been created from the current Learning Room template.</li>
+<li><input aria-label="Day 2 Classroom assignment has been created from the current Learning Room template." disabled="" type="checkbox"> Day 2 Classroom assignment has been created from the current Learning Room template.</li>
+<li><input aria-label="A test student account accepted the Day 1 invite and received a private repository." disabled="" type="checkbox"> A test student account accepted the Day 1 invite and received a private repository.</li>
+<li><input aria-label="A test student account accepted the Day 2 invite and received a private repository." disabled="" type="checkbox"> A test student account accepted the Day 2 invite and received a private repository.</li>
+<li><input aria-label="Challenge 1 can be seeded and completed." disabled="" type="checkbox"> Challenge 1 can be seeded and completed.</li>
+<li><input aria-label="Challenge 10 can be seeded and completed." disabled="" type="checkbox"> Challenge 10 can be seeded and completed.</li>
+<li><input aria-label="Aria posts PR feedback on a test pull request." disabled="" type="checkbox"> Aria posts PR feedback on a test pull request.</li>
+<li><input aria-label="Student Progression Bot creates the next challenge when a challenge issue is closed." disabled="" type="checkbox"> Student Progression Bot creates the next challenge when a challenge issue is closed.</li>
+<li><input aria-label="Autograding runs and reports results in GitHub Classroom." disabled="" type="checkbox"> Autograding runs and reports results in GitHub Classroom.</li>
+<li><input aria-label="Peer simulation artifacts can be seeded and used for review practice." disabled="" type="checkbox"> Peer simulation artifacts can be seeded and used for review practice.</li>
+<li><input aria-label="Human testers completed the Day 1, Day 2, bonus, accessibility, and content-review passes below." disabled="" type="checkbox"> Human testers completed the Day 1, Day 2, bonus, accessibility, and content-review passes below.</li>
+<li><input aria-label="All blocking findings have a fix, owner, or written release exception." disabled="" type="checkbox"> All blocking findings have a fix, owner, or written release exception.</li>
+</ul>
+<h2 id="source-of-truth">Source Of Truth</h2>
+<p>The following table lists each release artifact and the document that controls it.</p>
+<table>
+<thead>
+<tr>
+<th scope="col">Area</th>
+<th scope="col">Source document</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Classroom deployment</td>
+<td><a href="classroom/README.html">classroom/README.md</a></td>
+</tr>
+<tr>
+<td>Classroom copy-paste setup pack</td>
+<td><a href="admin/classroom/README.html">admin/classroom/README.md</a></td>
+</tr>
+<tr>
+<td>Human challenge walkthrough</td>
+<td><a href="classroom/HUMAN_TEST_MATRIX.html">classroom/HUMAN_TEST_MATRIX.md</a></td>
+</tr>
+<tr>
+<td>Facilitator operations</td>
+<td><a href="admin/FACILITATOR_OPERATIONS.html">admin/FACILITATOR_OPERATIONS.md</a></td>
+</tr>
+<tr>
+<td>Facilitator guide</td>
+<td><a href="admin/FACILITATOR_GUIDE.html">admin/FACILITATOR_GUIDE.md</a></td>
+</tr>
+<tr>
+<td>Student challenge hub</td>
+<td><a href="docs/CHALLENGES.html">docs/CHALLENGES.md</a></td>
+</tr>
+<tr>
+<td>Podcast pipeline</td>
+<td><a href="podcasts/README.html">podcasts/README.md</a></td>
+</tr>
+<tr>
+<td>Podcast regeneration runbook</td>
+<td><a href="podcasts/REGENERATION.html">podcasts/REGENERATION.md</a></td>
+</tr>
+<tr>
+<td>Post-workshop cleanup</td>
+<td><a href="classroom/teardown-checklist.html">classroom/teardown-checklist.md</a></td>
+</tr>
+</tbody></table>
+<h2 id="roles">Roles</h2>
+<ul>
+<li><strong>Release owner:</strong> owns the final go or no-go decision.</li>
+<li><strong>Classroom tester:</strong> creates assignments, accepts invites with a test student account, and validates repository creation.</li>
+<li><strong>Automation tester:</strong> checks workflows, seeding scripts, Aria feedback, progression, and autograding.</li>
+<li><strong>Accessibility tester:</strong> tests with NVDA, JAWS, VoiceOver, keyboard-only navigation, zoom, and high contrast where available.</li>
+<li><strong>Curriculum tester:</strong> reads chapters, appendices, challenge templates, solutions, and facilitator instructions for accuracy and consistency.</li>
+<li><strong>Podcast tester:</strong> validates podcast scripts, transcripts, RSS metadata, and audio availability if audio has been generated.</li>
+</ul>
+<p>One person may hold multiple roles, but the release owner should not be the only human tester.</p>
+<h2 id="phase-1-local-repository-health">Phase 1: Local Repository Health</h2>
+<p>Run these commands from the repository root.</p>
+<pre><code class="hljs language-powershell">npm run test:automation
+npm run validate:podcasts
+npm run validate:podcast<span class="hljs-literal">-feed</span>
+npm run build:html
+git <span class="hljs-built_in">diff</span> <span class="hljs-literal">--check</span></code></pre>
+<p>Expected results:</p>
+<ul>
+<li><code>npm run test:automation</code> reports all tests passing.</li>
+<li><code>npm run validate:podcasts</code> reports 54 catalog episodes and passes.</li>
+<li><code>npm run validate:podcast-feed</code> passes. If audio files have not been generated yet, the transcript-only warning is acceptable.</li>
+<li><code>npm run build:html</code> completes without errors.</li>
+<li><code>git diff --check</code> has no trailing-whitespace or conflict-marker errors. On Windows, LF-to-CRLF warnings may appear and are not release blockers by themselves.</li>
+</ul>
+<p>Record the command output summary in the release notes or QA issue.</p>
+<h2 id="phase-2-content-inventory-review">Phase 2: Content Inventory Review</h2>
+<p>Every content file must be reviewed before go-live. Use this checklist to assign coverage.</p>
+<ul>
+<li><input aria-label="Root docs:" disabled="" type="checkbox"> Root docs: <a href="README.html">README.md</a>, <a href="BUILD.html">BUILD.md</a>, <a href="REGISTER.html">REGISTER.md</a>, <a href="CONTRIBUTING.html">CONTRIBUTING.md</a>, <a href="SECURITY.html">SECURITY.md</a>, <a href="REPOSITORY_SECURITY.html">REPOSITORY_SECURITY.md</a>.</li>
+<li><input aria-label="Student onboarding:" disabled="" type="checkbox"> Student onboarding: <a href="docs/get-going.html">docs/get-going.md</a>, <a href="docs/course-guide.html">docs/course-guide.md</a>, and <a href="docs/student-onboarding.html">docs/student-onboarding.md</a>.</li>
+<li><input aria-label="Core chapters:" disabled="" type="checkbox"> Core chapters: <a href="docs/00-pre-workshop-setup.html">docs/00-pre-workshop-setup.md</a> through <a href="docs/21-next-steps.html">docs/21-next-steps.md</a>.</li>
+<li><input aria-label="Appendices:" disabled="" type="checkbox"> Appendices: <a href="docs/appendix-a-glossary.html">docs/appendix-a-glossary.md</a> through <a href="docs/appendix-z-github-skills.html">docs/appendix-z-github-skills.md</a>.</li>
+<li><input aria-label="Challenge hub:" disabled="" type="checkbox"> Challenge hub: <a href="docs/CHALLENGES.html">docs/CHALLENGES.md</a>.</li>
+<li><input aria-label="Challenge solutions: all files in" disabled="" type="checkbox"> Challenge solutions: all files in <a href="docs/solutions/README.html">docs/solutions</a>.</li>
+<li><input aria-label="Learning Room template docs: all Markdown files under" disabled="" type="checkbox"> Learning Room template docs: all Markdown files under <a href="learning-room/README.html">learning-room</a>.</li>
+<li><input aria-label="Issue templates: all files under" disabled="" type="checkbox"> Issue templates: all files under <code>learning-room/.github/ISSUE_TEMPLATE/</code>.</li>
+<li><input aria-label="Student automation guides: all Markdown files under" disabled="" type="checkbox"> Student automation guides: all Markdown files under <code>learning-room/.github/</code>.</li>
+<li><input aria-label="Facilitator guides: all Markdown files under" disabled="" type="checkbox"> Facilitator guides: all Markdown files under <a href="admin/README.html">admin</a> and <a href="admin/classroom/README.html">admin/classroom</a>.</li>
+<li><input aria-label="Classroom setup artifacts: all Markdown, JSON, CSV, and YAML files under" disabled="" type="checkbox"> Classroom setup artifacts: all Markdown, JSON, CSV, and YAML files under <a href="classroom/README.html">classroom</a>.</li>
+<li><input aria-label="Podcast docs, scripts, manifests, transcripts, and generated site metadata under" disabled="" type="checkbox"> Podcast docs, scripts, manifests, transcripts, and generated site metadata under <a href="podcasts/README.html">podcasts</a>.</li>
+<li><input aria-label="Generated HTML under" disabled="" type="checkbox"> Generated HTML under <code>html/</code> after <code>npm run build:html</code>.</li>
+</ul>
+<p>For each file, verify:</p>
+<ul>
+<li><input aria-label="The title matches the current GitHub Classroom model." disabled="" type="checkbox"> The title matches the current GitHub Classroom model.</li>
+<li><input aria-label="The file does not tell students they are working in a single shared repository unless it is explicitly discussing legacy history." disabled="" type="checkbox"> The file does not tell students they are working in a single shared repository unless it is explicitly discussing legacy history.</li>
+<li><input aria-label="Branch names use the current conventions:" disabled="" type="checkbox"> Branch names use the current conventions: <code>learn/&lt;username&gt;</code> for the Day 1 practice branch, or short-lived <code>fix/...</code> branches for focused PR exercises.</li>
+<li><input aria-label="Challenge numbers, titles, and evidence requirements match" disabled="" type="checkbox"> Challenge numbers, titles, and evidence requirements match <a href="docs/CHALLENGES.html">docs/CHALLENGES.md</a>.</li>
+<li><input aria-label="Links resolve or are intentionally broken practice targets in the Learning Room template." disabled="" type="checkbox"> Links resolve or are intentionally broken practice targets in the Learning Room template.</li>
+<li><input aria-label="Instructions are concise enough for a facilitator to read aloud." disabled="" type="checkbox"> Instructions are concise enough for a facilitator to read aloud.</li>
+<li><input aria-label="Screen reader steps avoid visual-only wording when a keyboard or structural path is available." disabled="" type="checkbox"> Screen reader steps avoid visual-only wording when a keyboard or structural path is available.</li>
+<li><input aria-label="Tables have a preceding sentence explaining what they contain." disabled="" type="checkbox"> Tables have a preceding sentence explaining what they contain.</li>
+<li><input aria-label="Diagrams, images, and SVGs have nearby text alternatives in the surrounding documentation." disabled="" type="checkbox"> Diagrams, images, and SVGs have nearby text alternatives in the surrounding documentation.</li>
+</ul>
+<h2 id="phase-3-classroom-deployment-dry-run">Phase 3: Classroom Deployment Dry Run</h2>
+<p>Use a real GitHub Classroom with disposable test accounts. Do not use a facilitator account as the student account.</p>
+<h3 id="organization-and-template-readiness">Organization And Template Readiness</h3>
+<ul>
+<li><input aria-label="Confirm the classroom organization exists and facilitators have owner or admin access." disabled="" type="checkbox"> Confirm the classroom organization exists and facilitators have owner or admin access.</li>
+<li><input aria-label="Confirm" disabled="" type="checkbox"> Confirm <code>Community-Access/learning-room-template</code> exists and is the template repository selected for both assignments.</li>
+<li><input aria-label="Confirm GitHub Actions is enabled for the template repository." disabled="" type="checkbox"> Confirm GitHub Actions is enabled for the template repository.</li>
+<li><input aria-label="Confirm" disabled="" type="checkbox"> Confirm <code>GITHUB_TOKEN</code> has read and write permissions in the template repository settings.</li>
+<li><input aria-label="Confirm Actions can create and approve pull requests if Classroom feedback PRs are used." disabled="" type="checkbox"> Confirm Actions can create and approve pull requests if Classroom feedback PRs are used.</li>
+<li><input aria-label="Confirm the Learning Room template includes" disabled="" type="checkbox"> Confirm the Learning Room template includes <code>.github/workflows/pr-validation-bot.yml</code>.</li>
+<li><input aria-label="Confirm the Learning Room template includes" disabled="" type="checkbox"> Confirm the Learning Room template includes <code>.github/workflows/student-progression.yml</code>.</li>
+<li><input aria-label="Confirm the Learning Room template includes all autograder workflows." disabled="" type="checkbox"> Confirm the Learning Room template includes all autograder workflows.</li>
+<li><input aria-label="Confirm the Learning Room template includes all challenge issue templates and bonus templates." disabled="" type="checkbox"> Confirm the Learning Room template includes all challenge issue templates and bonus templates.</li>
+</ul>
+<h3 id="day-1-assignment">Day 1 Assignment</h3>
+<ul>
+<li><input aria-label="Create the Day 1 assignment using" disabled="" type="checkbox"> Create the Day 1 assignment using <a href="classroom/assignment-day1-you-belong-here.html">classroom/assignment-day1-you-belong-here.md</a>.</li>
+<li><input aria-label="Use private individual repositories." disabled="" type="checkbox"> Use private individual repositories.</li>
+<li><input aria-label="Enable feedback pull requests." disabled="" type="checkbox"> Enable feedback pull requests.</li>
+<li><input aria-label="Add every Day 1 autograding test from" disabled="" type="checkbox"> Add every Day 1 autograding test from <a href="classroom/autograding-day1.json">classroom/autograding-day1.json</a>.</li>
+<li><input aria-label="Save the Day 1 invite link." disabled="" type="checkbox"> Save the Day 1 invite link.</li>
+<li><input aria-label="Accept the invite with a test student account." disabled="" type="checkbox"> Accept the invite with a test student account.</li>
+<li><input aria-label="Confirm the student repository appears in the Classroom dashboard." disabled="" type="checkbox"> Confirm the student repository appears in the Classroom dashboard.</li>
+<li><input aria-label="Confirm the repository name follows the expected pattern." disabled="" type="checkbox"> Confirm the repository name follows the expected pattern.</li>
+<li><input aria-label="Confirm the template files copied correctly." disabled="" type="checkbox"> Confirm the template files copied correctly.</li>
+<li><input aria-label="Seed Challenge 1:" disabled="" type="checkbox"> Seed Challenge 1:</li>
+</ul>
+<pre><code class="hljs language-powershell">scripts/classroom/Seed<span class="hljs-literal">-LearningRoomChallenge</span>.ps1 <span class="hljs-literal">-Repository</span> Community<span class="hljs-literal">-Access-Classroom</span>/learning<span class="hljs-literal">-room-test-student</span> <span class="hljs-literal">-Challenge</span> <span class="hljs-number">1</span> <span class="hljs-literal">-Assignee</span> <span class="hljs-built_in">test-student</span></code></pre>
+<ul>
+<li><input aria-label="Confirm Challenge 1 appears in the student repository." disabled="" type="checkbox"> Confirm Challenge 1 appears in the student repository.</li>
+</ul>
+<h3 id="day-2-assignment">Day 2 Assignment</h3>
+<ul>
+<li><input aria-label="Create the Day 2 assignment using" disabled="" type="checkbox"> Create the Day 2 assignment using <a href="classroom/assignment-day2-you-can-build-this.html">classroom/assignment-day2-you-can-build-this.md</a>.</li>
+<li><input aria-label="Use private individual repositories." disabled="" type="checkbox"> Use private individual repositories.</li>
+<li><input aria-label="Enable feedback pull requests." disabled="" type="checkbox"> Enable feedback pull requests.</li>
+<li><input aria-label="Add every Day 2 autograding test from" disabled="" type="checkbox"> Add every Day 2 autograding test from <a href="classroom/autograding-day2.json">classroom/autograding-day2.json</a>.</li>
+<li><input aria-label="Save the Day 2 invite link." disabled="" type="checkbox"> Save the Day 2 invite link.</li>
+<li><input aria-label="Accept the invite with the test student account." disabled="" type="checkbox"> Accept the invite with the test student account.</li>
+<li><input aria-label="Confirm the Day 2 repository appears in the Classroom dashboard." disabled="" type="checkbox"> Confirm the Day 2 repository appears in the Classroom dashboard.</li>
+<li><input aria-label="Seed Challenge 10:" disabled="" type="checkbox"> Seed Challenge 10:</li>
+</ul>
+<pre><code class="hljs language-powershell">scripts/classroom/Seed<span class="hljs-literal">-LearningRoomChallenge</span>.ps1 <span class="hljs-literal">-Repository</span> Community<span class="hljs-literal">-Access-Classroom</span>/learning<span class="hljs-literal">-room-test-student-day2</span> <span class="hljs-literal">-Challenge</span> <span class="hljs-number">10</span> <span class="hljs-literal">-Assignee</span> <span class="hljs-built_in">test-student</span></code></pre>
+<ul>
+<li><input aria-label="Confirm Challenge 10 appears in the student repository." disabled="" type="checkbox"> Confirm Challenge 10 appears in the student repository.</li>
+</ul>
+<h2 id="phase-4-workflow-and-automation-qa">Phase 4: Workflow And Automation QA</h2>
+<p>Run these checks in disposable student repositories created by GitHub Classroom.</p>
+<h3 id="aria-pr-validation-bot">Aria PR Validation Bot</h3>
+<ul>
+<li><input aria-label="Open a PR with a clear title, body, and" disabled="" type="checkbox"> Open a PR with a clear title, body, and <code>Closes #N</code> reference.</li>
+<li><input aria-label="Confirm the first-time contributor welcome comment appears on the first PR." disabled="" type="checkbox"> Confirm the first-time contributor welcome comment appears on the first PR.</li>
+<li><input aria-label="Confirm the PR Validation Report appears or updates within 60 seconds." disabled="" type="checkbox"> Confirm the PR Validation Report appears or updates within 60 seconds.</li>
+<li><input aria-label="Push another commit and confirm the existing validation comment updates instead of duplicating." disabled="" type="checkbox"> Push another commit and confirm the existing validation comment updates instead of duplicating.</li>
+<li><input aria-label="Add an intentional issue, such as vague link text, and confirm the bot explains the problem." disabled="" type="checkbox"> Add an intentional issue, such as vague link text, and confirm the bot explains the problem.</li>
+<li><input aria-label="Fix the issue and confirm the validation result improves." disabled="" type="checkbox"> Fix the issue and confirm the validation result improves.</li>
+<li><input aria-label="Comment" disabled="" type="checkbox"> Comment <code>@aria-bot help</code> and confirm the help responder answers.</li>
+<li><input aria-label="Comment with" disabled="" type="checkbox"> Comment with <code>merge conflict</code> and confirm the conflict guidance appears.</li>
+<li><input aria-label="Confirm bot-authored comments do not trigger an infinite response loop." disabled="" type="checkbox"> Confirm bot-authored comments do not trigger an infinite response loop.</li>
+</ul>
+<h3 id="student-progression-bot">Student Progression Bot</h3>
+<ul>
+<li><input aria-label="Close Challenge 1 and confirm Challenge 2 appears." disabled="" type="checkbox"> Close Challenge 1 and confirm Challenge 2 appears.</li>
+<li><input aria-label="Continue closing challenges until Challenge 9 appears." disabled="" type="checkbox"> Continue closing challenges until Challenge 9 appears.</li>
+<li><input aria-label="Seed Challenge 10 and confirm the Day 2 sequence starts correctly." disabled="" type="checkbox"> Seed Challenge 10 and confirm the Day 2 sequence starts correctly.</li>
+<li><input aria-label="Close Challenge 10 and confirm Challenge 11 appears." disabled="" type="checkbox"> Close Challenge 10 and confirm Challenge 11 appears.</li>
+<li><input aria-label="Confirm duplicate challenge issues are not created if the workflow reruns." disabled="" type="checkbox"> Confirm duplicate challenge issues are not created if the workflow reruns.</li>
+<li><input aria-label="Confirm the assigned user is correct on each generated challenge." disabled="" type="checkbox"> Confirm the assigned user is correct on each generated challenge.</li>
+<li><input aria-label="Confirm each generated challenge links to the right chapter and solution reference." disabled="" type="checkbox"> Confirm each generated challenge links to the right chapter and solution reference.</li>
+</ul>
+<h3 id="autograders">Autograders</h3>
+<ul>
+<li><input aria-label="Challenge 4 branch test passes when a non-default branch exists." disabled="" type="checkbox"> Challenge 4 branch test passes when a non-default branch exists.</li>
+<li><input aria-label="Challenge 5 commit test passes when the student commits a real file change." disabled="" type="checkbox"> Challenge 5 commit test passes when the student commits a real file change.</li>
+<li><input aria-label="Challenge 6 PR test passes when the PR references the correct issue." disabled="" type="checkbox"> Challenge 6 PR test passes when the PR references the correct issue.</li>
+<li><input aria-label="Challenge 7 conflict test fails while conflict markers remain." disabled="" type="checkbox"> Challenge 7 conflict test fails while conflict markers remain.</li>
+<li><input aria-label="Challenge 7 conflict test passes after conflict markers are removed." disabled="" type="checkbox"> Challenge 7 conflict test passes after conflict markers are removed.</li>
+<li><input aria-label="Challenge 9 merge/readiness checks report useful results." disabled="" type="checkbox"> Challenge 9 merge/readiness checks report useful results.</li>
+<li><input aria-label="Challenge 10 local commit test passes after clone, branch, commit, and push." disabled="" type="checkbox"> Challenge 10 local commit test passes after clone, branch, commit, and push.</li>
+<li><input aria-label="Challenge 14 template test validates a structured issue template." disabled="" type="checkbox"> Challenge 14 template test validates a structured issue template.</li>
+<li><input aria-label="Challenge 16 capstone test validates the required agent contribution evidence." disabled="" type="checkbox"> Challenge 16 capstone test validates the required agent contribution evidence.</li>
+</ul>
+<h3 id="seeding-scripts">Seeding Scripts</h3>
+<ul>
+<li><input aria-label="" disabled="" type="checkbox"> <code>Seed-LearningRoomChallenge.ps1</code> creates the requested starting challenge.</li>
+<li><input aria-label="" disabled="" type="checkbox"> <code>Seed-PeerSimulation.ps1</code> creates the peer simulation issues, branch, file, and PR.</li>
+<li><input aria-label="" disabled="" type="checkbox"> <code>Start-MergeConflictChallenge.ps1</code> creates a real conflict against the student branch.</li>
+<li><input aria-label="" disabled="" type="checkbox"> <code>Test-LearningRoomTemplate.ps1</code> reports the template readiness state.</li>
+<li><input aria-label="Script failures show a clear error message and do not partially hide the problem." disabled="" type="checkbox"> Script failures show a clear error message and do not partially hide the problem.</li>
+</ul>
+<h2 id="phase-5-human-challenge-walkthrough">Phase 5: Human Challenge Walkthrough</h2>
+<p>Use <a href="classroom/HUMAN_TEST_MATRIX.html">classroom/HUMAN_TEST_MATRIX.md</a> as the detailed scenario list. This section is the go-live summary gate.</p>
+<h3 id="day-1-core-path">Day 1 Core Path</h3>
+<ul>
+<li><input aria-label="Challenge 1: Find Your Way Around." disabled="" type="checkbox"> Challenge 1: Find Your Way Around.</li>
+<li><input aria-label="Challenge 2: File Your First Issue." disabled="" type="checkbox"> Challenge 2: File Your First Issue.</li>
+<li><input aria-label="Challenge 3: Join the Conversation." disabled="" type="checkbox"> Challenge 3: Join the Conversation.</li>
+<li><input aria-label="Challenge 4: Branch Out." disabled="" type="checkbox"> Challenge 4: Branch Out.</li>
+<li><input aria-label="Challenge 5: Make Your Mark." disabled="" type="checkbox"> Challenge 5: Make Your Mark.</li>
+<li><input aria-label="Challenge 6: Open Your First Pull Request." disabled="" type="checkbox"> Challenge 6: Open Your First Pull Request.</li>
+<li><input aria-label="Challenge 7: Survive a Merge Conflict." disabled="" type="checkbox"> Challenge 7: Survive a Merge Conflict.</li>
+<li><input aria-label="Challenge 8: The Culture Layer." disabled="" type="checkbox"> Challenge 8: The Culture Layer.</li>
+<li><input aria-label="Challenge 9: Merge Day." disabled="" type="checkbox"> Challenge 9: Merge Day.</li>
+</ul>
+<h3 id="day-2-core-path">Day 2 Core Path</h3>
+<ul>
+<li><input aria-label="Challenge 10: Go Local." disabled="" type="checkbox"> Challenge 10: Go Local.</li>
+<li><input aria-label="Challenge 11: Open a Day 2 PR." disabled="" type="checkbox"> Challenge 11: Open a Day 2 PR.</li>
+<li><input aria-label="Challenge 12: Review Like a Pro." disabled="" type="checkbox"> Challenge 12: Review Like a Pro.</li>
+<li><input aria-label="Challenge 13: AI as Your Copilot." disabled="" type="checkbox"> Challenge 13: AI as Your Copilot.</li>
+<li><input aria-label="Challenge 14: Template Remix." disabled="" type="checkbox"> Challenge 14: Template Remix.</li>
+<li><input aria-label="Challenge 15: Meet the Agents." disabled="" type="checkbox"> Challenge 15: Meet the Agents.</li>
+<li><input aria-label="Challenge 16: Build Your Agent." disabled="" type="checkbox"> Challenge 16: Build Your Agent.</li>
+</ul>
+<h3 id="bonus-path">Bonus Path</h3>
+<ul>
+<li><input aria-label="Bonus A: Improve an Agent." disabled="" type="checkbox"> Bonus A: Improve an Agent.</li>
+<li><input aria-label="Bonus B: Document Your Journey." disabled="" type="checkbox"> Bonus B: Document Your Journey.</li>
+<li><input aria-label="Bonus C: Group Challenge." disabled="" type="checkbox"> Bonus C: Group Challenge.</li>
+<li><input aria-label="Bonus D: Notifications." disabled="" type="checkbox"> Bonus D: Notifications.</li>
+<li><input aria-label="Bonus E: Git History." disabled="" type="checkbox"> Bonus E: Git History.</li>
+</ul>
+<p>For each challenge, record:</p>
+<ul>
+<li><input aria-label="The issue appeared at the expected time." disabled="" type="checkbox"> The issue appeared at the expected time.</li>
+<li><input aria-label="The issue instructions were understandable without facilitator translation." disabled="" type="checkbox"> The issue instructions were understandable without facilitator translation.</li>
+<li><input aria-label="The linked chapter helped complete the task." disabled="" type="checkbox"> The linked chapter helped complete the task.</li>
+<li><input aria-label="The evidence prompt was clear." disabled="" type="checkbox"> The evidence prompt was clear.</li>
+<li><input aria-label="The bot or autograder response was useful." disabled="" type="checkbox"> The bot or autograder response was useful.</li>
+<li><input aria-label="The next challenge unlocked correctly." disabled="" type="checkbox"> The next challenge unlocked correctly.</li>
+<li><input aria-label="The reference solution matched the challenge." disabled="" type="checkbox"> The reference solution matched the challenge.</li>
+</ul>
+<h2 id="phase-6-accessibility-qa">Phase 6: Accessibility QA</h2>
+<p>Run accessibility testing with at least one screen reader and one keyboard-only tester. Use more assistive technology coverage when possible.</p>
+<ul>
+<li><input aria-label="NVDA with Firefox or Chrome: complete Challenge 1, Challenge 6, Challenge 7, and one Day 2 challenge." disabled="" type="checkbox"> NVDA with Firefox or Chrome: complete Challenge 1, Challenge 6, Challenge 7, and one Day 2 challenge.</li>
+<li><input aria-label="JAWS with Chrome or Edge: complete issue creation, PR creation, review, and merge checks." disabled="" type="checkbox"> JAWS with Chrome or Edge: complete issue creation, PR creation, review, and merge checks.</li>
+<li><input aria-label="VoiceOver with Safari or Chrome: accept Classroom invite, navigate repo, edit file, and read PR diff." disabled="" type="checkbox"> VoiceOver with Safari or Chrome: accept Classroom invite, navigate repo, edit file, and read PR diff.</li>
+<li><input aria-label="Keyboard-only: complete invite acceptance, issue creation, PR creation, and review submission without a mouse." disabled="" type="checkbox"> Keyboard-only: complete invite acceptance, issue creation, PR creation, and review submission without a mouse.</li>
+<li><input aria-label="Low vision: verify 200 percent zoom, high contrast, browser zoom, and focus visibility across GitHub, docs, and generated HTML." disabled="" type="checkbox"> Low vision: verify 200 percent zoom, high contrast, browser zoom, and focus visibility across GitHub, docs, and generated HTML.</li>
+<li><input aria-label="Confirm all critical links have descriptive text." disabled="" type="checkbox"> Confirm all critical links have descriptive text.</li>
+<li><input aria-label="Confirm all tables in docs have a preceding explanation." disabled="" type="checkbox"> Confirm all tables in docs have a preceding explanation.</li>
+<li><input aria-label="Confirm images and diagrams have meaningful surrounding text or alt text." disabled="" type="checkbox"> Confirm images and diagrams have meaningful surrounding text or alt text.</li>
+<li><input aria-label="Confirm generated HTML task-list checkboxes are not duplicated." disabled="" type="checkbox"> Confirm generated HTML task-list checkboxes are not duplicated.</li>
+<li><input aria-label="Confirm conflict-marker examples render as examples and do not break Git diff checks." disabled="" type="checkbox"> Confirm conflict-marker examples render as examples and do not break Git diff checks.</li>
+</ul>
+<h2 id="phase-7-podcast-and-audio-qa">Phase 7: Podcast And Audio QA</h2>
+<p>The podcast material is part of the release. Test it even if audio has not been regenerated yet.</p>
+<ul>
+<li><input aria-label="" disabled="" type="checkbox"> <code>npm run validate:podcasts</code> passes.</li>
+<li><input aria-label="" disabled="" type="checkbox"> <code>npm run validate:podcast-feed</code> passes.</li>
+<li><input aria-label="Podcast catalog lists 54 companion episodes." disabled="" type="checkbox"> Podcast catalog lists 54 companion episodes.</li>
+<li><input aria-label="Challenge Coach bundles exist for all 16 core challenges and 5 bonus challenges." disabled="" type="checkbox"> Challenge Coach bundles exist for all 16 core challenges and 5 bonus challenges.</li>
+<li><input aria-label="Each chapter and appendix points to the intended podcast entry." disabled="" type="checkbox"> Each chapter and appendix points to the intended podcast entry.</li>
+<li><input aria-label="Transcript scripts avoid stale shared-repository boilerplate." disabled="" type="checkbox"> Transcript scripts avoid stale shared-repository boilerplate.</li>
+<li><input aria-label="Speaker markers are consistent in generated scripts." disabled="" type="checkbox"> Speaker markers are consistent in generated scripts.</li>
+<li><input aria-label="RSS feed state is documented: transcript-only or audio-ready." disabled="" type="checkbox"> RSS feed state is documented: transcript-only or audio-ready.</li>
+<li><input aria-label="If audio exists, every MP3 enclosure URL resolves." disabled="" type="checkbox"> If audio exists, every MP3 enclosure URL resolves.</li>
+<li><input aria-label="If audio exists, a human tester listens to a sample from Day 1, Day 2, appendices, and Challenge Coach." disabled="" type="checkbox"> If audio exists, a human tester listens to a sample from Day 1, Day 2, appendices, and Challenge Coach.</li>
+<li><input aria-label="Podcast instructions do not contradict the current private Learning Room model." disabled="" type="checkbox"> Podcast instructions do not contradict the current private Learning Room model.</li>
+</ul>
+<h2 id="phase-8-facilitator-dry-run">Phase 8: Facilitator Dry Run</h2>
+<p>Run this as a timed rehearsal before student testing.</p>
+<ul>
+<li><input aria-label="Facilitator can find this guide from" disabled="" type="checkbox"> Facilitator can find this guide from <a href="README.html">README.md</a>, <a href="admin/README.html">admin/README.md</a>, and <a href="classroom/README.html">classroom/README.md</a>.</li>
+<li><input aria-label="Facilitator can explain the architecture in under 2 minutes." disabled="" type="checkbox"> Facilitator can explain the architecture in under 2 minutes.</li>
+<li><input aria-label="Facilitator can create Assignment 1 without guessing any setting." disabled="" type="checkbox"> Facilitator can create Assignment 1 without guessing any setting.</li>
+<li><input aria-label="Facilitator can create Assignment 2 without guessing any setting." disabled="" type="checkbox"> Facilitator can create Assignment 2 without guessing any setting.</li>
+<li><input aria-label="Facilitator can seed Challenge 1 and Challenge 10 from PowerShell." disabled="" type="checkbox"> Facilitator can seed Challenge 1 and Challenge 10 from PowerShell.</li>
+<li><input aria-label="Facilitator can seed peer simulation artifacts." disabled="" type="checkbox"> Facilitator can seed peer simulation artifacts.</li>
+<li><input aria-label="Facilitator can start a merge conflict challenge." disabled="" type="checkbox"> Facilitator can start a merge conflict challenge.</li>
+<li><input aria-label="Facilitator can read Aria feedback and decide whether it is correct." disabled="" type="checkbox"> Facilitator can read Aria feedback and decide whether it is correct.</li>
+<li><input aria-label="Facilitator can override or manually support a student if automation fails." disabled="" type="checkbox"> Facilitator can override or manually support a student if automation fails.</li>
+<li><input aria-label="Facilitator can explain how Day-2-only participants enter the course." disabled="" type="checkbox"> Facilitator can explain how Day-2-only participants enter the course.</li>
+<li><input aria-label="Facilitator can explain what to do when a student joins late." disabled="" type="checkbox"> Facilitator can explain what to do when a student joins late.</li>
+<li><input aria-label="Facilitator can run post-workshop teardown." disabled="" type="checkbox"> Facilitator can run post-workshop teardown.</li>
+</ul>
+<h2 id="issue-severity">Issue Severity</h2>
+<p>The following table defines release-blocking severity levels.</p>
+<table>
+<thead>
+<tr>
+<th scope="col">Severity</th>
+<th scope="col">Meaning</th>
+<th scope="col">Release action</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Blocker</td>
+<td>Prevents assignment creation, repository creation, challenge progression, PR validation, accessibility use, or student safety</td>
+<td>Fix before release</td>
+</tr>
+<tr>
+<td>High</td>
+<td>Causes confusing instructions, broken links in required paths, wrong challenge evidence, or broken generated content</td>
+<td>Fix before release unless release owner approves exception</td>
+</tr>
+<tr>
+<td>Medium</td>
+<td>Causes friction but has a clear workaround</td>
+<td>Fix before or immediately after release</td>
+</tr>
+<tr>
+<td>Low</td>
+<td>Typo, minor wording, or non-blocking polish</td>
+<td>Fix when practical</td>
+</tr>
+</tbody></table>
+<h2 id="qa-evidence-log-template">QA Evidence Log Template</h2>
+<p>Copy this template into a release issue or testing document.</p>
+<pre><code class="hljs language-markdown"><span class="hljs-section">## QA Evidence Log</span>
+
+Release candidate:
+Date:
+Release owner:
+Classroom tester:
+Automation tester:
+Accessibility tester:
+Curriculum tester:
+Podcast tester:
+
+<span class="hljs-section">### Automated Checks</span>
+<span class="hljs-bullet">-</span> npm run test:automation:
+<span class="hljs-bullet">-</span> npm run validate:podcasts:
+<span class="hljs-bullet">-</span> npm run validate:podcast-feed:
+<span class="hljs-bullet">-</span> npm run build:html:
+<span class="hljs-bullet">-</span> git diff --check:
+
+<span class="hljs-section">### Classroom Dry Run</span>
+<span class="hljs-bullet">-</span> Day 1 assignment URL:
+<span class="hljs-bullet">-</span> Day 2 assignment URL:
+<span class="hljs-bullet">-</span> Test student account:
+<span class="hljs-bullet">-</span> Day 1 test repository:
+<span class="hljs-bullet">-</span> Day 2 test repository:
+
+<span class="hljs-section">### Human Walkthrough</span>
+<span class="hljs-bullet">-</span> Day 1 challenges completed:
+<span class="hljs-bullet">-</span> Day 2 challenges completed:
+<span class="hljs-bullet">-</span> Bonus challenges completed:
+<span class="hljs-bullet">-</span> Accessibility coverage:
+<span class="hljs-bullet">-</span> Podcast coverage:
+
+<span class="hljs-section">### Findings</span>
+| ID | Severity | Area | Finding | Owner | Status |
+|---|---|---|---|---|---|
+
+<span class="hljs-section">### Release Decision</span>
+<span class="hljs-bullet">-</span> [ ] Go
+<span class="hljs-bullet">-</span> [ ] No-go
+<span class="hljs-bullet">-</span> Notes:</code></pre>
+<h2 id="final-go-live-checklist">Final Go-Live Checklist</h2>
+<ul>
+<li><input aria-label="All required automated checks passed." disabled="" type="checkbox"> All required automated checks passed.</li>
+<li><input aria-label="All required Classroom dry-run checks passed." disabled="" type="checkbox"> All required Classroom dry-run checks passed.</li>
+<li><input aria-label="Human testers completed Day 1, Day 2, bonus, accessibility, and podcast coverage." disabled="" type="checkbox"> Human testers completed Day 1, Day 2, bonus, accessibility, and podcast coverage.</li>
+<li><input aria-label="No open Blocker findings remain." disabled="" type="checkbox"> No open Blocker findings remain.</li>
+<li><input aria-label="No open High findings remain without written release-owner exception." disabled="" type="checkbox"> No open High findings remain without written release-owner exception.</li>
+<li><input aria-label="Invite links are stored in the facilitator runbook and student communications." disabled="" type="checkbox"> Invite links are stored in the facilitator runbook and student communications.</li>
+<li><input aria-label="Facilitators know how to seed Challenge 1 and Challenge 10." disabled="" type="checkbox"> Facilitators know how to seed Challenge 1 and Challenge 10.</li>
+<li><input aria-label="Facilitators know how to recover when Aria, progression, or autograding fails." disabled="" type="checkbox"> Facilitators know how to recover when Aria, progression, or autograding fails.</li>
+<li><input aria-label="Student-facing instructions match the current GitHub Classroom private-repository model." disabled="" type="checkbox"> Student-facing instructions match the current GitHub Classroom private-repository model.</li>
+<li><input aria-label="Generated HTML and podcast site have been rebuilt from the final sources." disabled="" type="checkbox"> Generated HTML and podcast site have been rebuilt from the final sources.</li>
+<li><input aria-label="Release owner has recorded the final decision." disabled="" type="checkbox"> Release owner has recorded the final decision.</li>
+</ul>
+
+  </main>
+  <footer role="contentinfo" class="site-footer">
+    <p><strong>GIT Going with GitHub</strong> - A workshop by <a href="https://community-access.org">Community Access</a></p>
+    <p><a href="https://github.com/community-access/git-going-with-github">View on GitHub</a> · <a href="https://community-access.org">community-access.org</a></p>
+  </footer>
+
+  </body>
+</html>

@@ -142,11 +142,97 @@ jobs:
               labels: ['waitlist']
             });
 
+      - name: Invite registrant to classroom organization (optional)
+        id: classroom-invite
+        if: >-
+          steps.dup-check.outputs.is_duplicate == 'false' &&
+          steps.capacity-check.outputs.is_full == 'false' &&
+          vars.CLASSROOM_ORG != '' &&
+          secrets.CLASSROOM_ORG_ADMIN_TOKEN != ''
+        uses: actions/github-script@v7
+        env:
+          CLASSROOM_ORG: ${{ vars.CLASSROOM_ORG }}
+        with:
+          github-token: ${{ secrets.CLASSROOM_ORG_ADMIN_TOKEN }}
+          script: |
+            const org = process.env.CLASSROOM_ORG;
+            const username = context.payload.issue.user.login;
+            const userId = context.payload.issue.user.id;
+            let status = 'skipped';
+
+            try {
+              await github.rest.orgs.checkMembershipForUser({ org, username });
+              status = 'already-member';
+              core.info(`${username} is already a member of ${org}`);
+            } catch (error) {
+              if (error.status !== 404) {
+                throw error;
+              }
+
+              const invites = await github.paginate(github.rest.orgs.listPendingInvitations, {
+                org,
+                per_page: 100
+              });
+
+              const hasPendingInvite = invites.some(invite =>
+                (invite.login || '').toLowerCase() === username.toLowerCase()
+              );
+
+              if (hasPendingInvite) {
+                status = 'already-invited';
+                core.info(`${username} already has a pending invite to ${org}`);
+              } else {
+                await github.rest.orgs.createInvitation({
+                  org,
+                  invitee_id: userId,
+                  role: 'direct_member'
+                });
+                status = 'invited';
+                core.info(`Sent org invite for ${username} to ${org}`);
+              }
+            }
+
+            core.setOutput('status', status);
+
       - name: Post welcome comment
         if: steps.dup-check.outputs.is_duplicate == 'false' && steps.capacity-check.outputs.is_full == 'false'
         uses: actions/github-script@v7
+        env:
+          CLASSROOM_ORG: ${{ vars.CLASSROOM_ORG }}
+          DAY1_ASSIGNMENT_URL: ${{ vars.CLASSROOM_DAY1_ASSIGNMENT_URL }}
+          DAY2_ASSIGNMENT_URL: ${{ vars.CLASSROOM_DAY2_ASSIGNMENT_URL }}
+          CLASSROOM_INVITE_STATUS: ${{ steps.classroom-invite.outputs.status }}
         with:
           script: |
+            const org = process.env.CLASSROOM_ORG;
+            const day1 = (process.env.DAY1_ASSIGNMENT_URL || '').trim();
+            const day2 = (process.env.DAY2_ASSIGNMENT_URL || '').trim();
+            const inviteStatus = (process.env.CLASSROOM_INVITE_STATUS || '').trim();
+
+            let classroomSection = '';
+            if (day1 || day2 || inviteStatus) {
+              const lines = ['## Classroom Access'];
+
+              if (inviteStatus === 'invited') {
+                lines.push(`- We sent an organization invitation for \`${org}\`. Please accept it from your GitHub notifications or email.`);
+              } else if (inviteStatus === 'already-invited') {
+                lines.push(`- You already have a pending invitation for \`${org}\`. Please accept it before using assignment links.`);
+              } else if (inviteStatus === 'already-member') {
+                lines.push(`- You are already a member of \`${org}\`.`);
+              }
+
+              if (day1) {
+                lines.push(`- Day 1 assignment link: ${day1}`);
+              }
+              if (day2) {
+                lines.push(`- Day 2 assignment link: ${day2}`);
+              }
+
+              if (lines.length > 1) {
+                classroomSection = `\n\n${lines.join('\n')}`;
+              }
+            }
+
             await github.rest.issues.createComment({
               owner: context.repo.owner,
               repo: context.repo.repo,
@@ -158,6 +244,8 @@ jobs:
             Your registration is confirmed. Please register for the Zoom session here: [Register on Zoom](https://us06web.zoom.us/meeting/register/YdAAvwzAQUCYpPpNtAlG3g)
 
             In the meantime, you can get a head start with the [Pre-Workshop Setup Guide](https://community-access.github.io/git-going-with-github/docs/00-pre-workshop-setup.html).
+
+            ${classroomSection}
 
             If you have any questions, [file an issue](https://github.com/community-access/git-going-with-github/issues) in the workshop repository.
 

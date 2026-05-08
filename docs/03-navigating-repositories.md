@@ -1,6 +1,6 @@
 # Navigating Repositories
 >
-> **Listen to Episode 3:** [Navigating Repositories](../PODCASTS.md) - a conversational audio overview of this chapter. Listen before reading to preview the concepts, or after to reinforce what you learned.
+> **Listen to Episode 3:** [Navigating Repositories](../admin/PODCASTS.md) - a conversational audio overview of this chapter. Listen before reading to preview the concepts, or after to reinforce what you learned.
 
 > **Related appendices:** [Appendix A: Glossary](appendix-a-glossary.md) | [Appendix B: Screen Reader Cheat Sheet](appendix-b-screen-reader-cheatsheet.md)
 > **Authoritative sources:** [GitHub Docs: About repositories](https://docs.github.com/en/repositories/creating-and-managing-repositories/about-repositories) | [GitHub Accessibility Guide: Repositories](https://accessibility.github.com/documentation/guide/repos/)
@@ -13,9 +13,9 @@
 > **Official GitHub Accessibility Guide:** GitHub publishes an NVDA-focused guide for navigating repositories with a screen reader at [Using GitHub Repositories with a Screen Reader](https://accessibility.github.com/documentation/guide/repos/). This chapter covers the same material with additional perspectives (VoiceOver, low vision, CLI) and workshop-specific guidance. Use the official guide as a companion reference.
 
 
-## Workshop Recommendation (Chapter 2)
+## Workshop Recommendation (Chapter 3)
 
-Chapter 2 is a **confidence-building orientation chapter**.
+Chapter 3 is a **confidence-building orientation chapter**.
 
 - **Challenge count:** none
 - **Automation check:** none
@@ -28,7 +28,7 @@ Use this sequence before moving to graded chapters:
 1. Learn the page structure (heading, landmarks, tabs).
 2. Practice orientation (`1`, `D`, heading list).
 3. Confirm readiness with a peer or facilitator.
-4. Move to Chapter 4 for issue-based, traceable challenges.
+4. Move to Chapter 4 for Learning Room orientation, then Chapter 5 for issue-based, traceable challenges.
 
 
 ### About Learning Cards in This Chapter
@@ -840,7 +840,7 @@ Navigate to the [Accessibility Agents repository](https://github.com/community-a
 > *An agent's output only makes sense when you already know what it is describing. You are building that knowledge right now.*
 
 
-> ➡️ **Next Step:** Move on to [Chapter 04: The Learning Room](04-the-learning-room.md) to understand where we'll be practicing our new skills.
+> **Next Step:** Move on to [Chapter 04: The Learning Room](04-the-learning-room.md) to understand where we'll be practicing our new skills.
 
 ---
 

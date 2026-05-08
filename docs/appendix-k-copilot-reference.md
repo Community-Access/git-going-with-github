@@ -12,11 +12,11 @@
 
 
 >
-> **Listen to Episode 40:** [GitHub Copilot - Complete Reference](../PODCASTS.md) - a conversational audio overview of this chapter. Listen before reading to preview the concepts, or after to reinforce what you learned.
+> **Listen to Episode 40:** [GitHub Copilot - Complete Reference](../admin/PODCASTS.md) - a conversational audio overview of this chapter. Listen before reading to preview the concepts, or after to reinforce what you learned.
 
 ## Keyboard Shortcuts, Chat, Screen Reader Workflow, Plugin Ecosystem, and GitHub Agentic Workflows
 
-> Quick-reference card for GitHub Copilot in VS Code and the broader agentic ecosystem - plugins, MCP servers, and cloud-based automation. For the Copilot lesson, see [Chapter 13: GitHub Copilot](16-github-copilot.md). For Accessibility Agents specifically, see [Appendix V: Accessibility Agents Reference](appendix-l-agents-reference.md).
+> Quick-reference card for GitHub Copilot in VS Code and the broader agentic ecosystem - plugins, MCP servers, and cloud-based automation. For the Copilot lesson, see [Chapter 16: GitHub Copilot](16-github-copilot.md). For Accessibility Agents specifically, see [Appendix L: Accessibility Agents Reference](appendix-l-agents-reference.md).
 
 
 ## Table of Contents
@@ -142,7 +142,7 @@ Type `/` in Copilot Chat to see the available built-in commands.
 | `/init` | Analyzes your workspace and auto-generates a `.github/copilot-instructions.md` tailored to your project | `/init` |
 | `/savePrompt` | Saves the current chat conversation as a reusable `.prompt.md` slash command file | After a useful exchange, type `/savePrompt` |
 
-**Note:** These are Copilot's built-in chat slash commands. Accessibility Agents adds 28 additional workspace-level slash commands from `.github/prompts/` - see [Appendix V](appendix-l-agents-reference.md) for the full list.
+**Note:** These are Copilot's built-in chat slash commands. Accessibility Agents adds 28 additional workspace-level slash commands from `.github/prompts/` - see [Appendix L](appendix-l-agents-reference.md) for the full list.
 
 ### Using Slash Commands for Documentation Work
 
@@ -1153,7 +1153,7 @@ gh aw compile .github/workflows/daily-report.md
 | Community feedback & discussion | `github.com/orgs/community/discussions/186451` |
 | Changelog announcement (Feb 13, 2026) | `github.blog/changelog/2026-02-13-github-agentic-workflows-are-now-in-technical-preview` |
 
-> **Relationship to Accessibility Agents:** Accessibility Agents agents (`.agent.md` files) are designed for interactive use inside VS Code. GitHub Agentic Workflows are a separate, cloud-native system that uses its own Markdown workflow format and the `gh aw` CLI - they are complementary tools, not the same mechanism. See [Appendix V](appendix-l-agents-reference.md) for the full Accessibility Agents reference.
+> **Relationship to Accessibility Agents:** Accessibility Agents agents (`.agent.md` files) are designed for interactive use inside VS Code. GitHub Agentic Workflows are a separate, cloud-native system that uses its own Markdown workflow format and the `gh aw` CLI - they are complementary tools, not the same mechanism. See [Appendix L](appendix-l-agents-reference.md) for the full Accessibility Agents reference.
 
 ### Learning Cards: GitHub Agentic Workflows
 
@@ -1174,14 +1174,14 @@ gh aw compile .github/workflows/daily-report.md
 
 
 *Chapter: [GitHub Copilot](16-github-copilot.md)*
-*Related: [Appendix V: Accessibility Agents Reference](appendix-l-agents-reference.md) | [Appendix M: VS Code Accessibility Reference](appendix-g-vscode-reference.md) | [Appendix X: AI Models Reference](appendix-k-copilot-reference.md)*
+*Related: [Appendix L: Accessibility Agents Reference](appendix-l-agents-reference.md) | [Appendix G: VS Code Accessibility Reference](appendix-g-vscode-reference.md) | [Appendix K: AI Models Reference](appendix-k-copilot-reference.md)*
 
 ---
 
 ## Copilot Models
 
 >
-> **Listen to Episode 41:** [Copilot AI Models](../PODCASTS.md) - a conversational audio overview of this chapter. Listen before reading to preview the concepts, or after to reinforce what you learned.
+> **Listen to Episode 41:** [Copilot AI Models](../admin/PODCASTS.md) - a conversational audio overview of this chapter. Listen before reading to preview the concepts, or after to reinforce what you learned.
 
 <!-- TOC -->
 - [Overview](#1-overview)

@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="GIT Going with GitHub - A two-day accessible open source workshop by Community Access">
+  <title>Podcast Regeneration Runbook - GIT Going with GitHub</title>
+  <link rel="stylesheet" href="./styles/github-markdown.css">
+  <link rel="stylesheet" href="./styles/highlight.css">
+  <link rel="stylesheet" href="./styles/custom.css">
+  <style>
+    .markdown-body {
+      box-sizing: border-box;
+      min-width: 200px;
+      max-width: 980px;
+      margin: 0 auto;
+      padding: 45px;
+    }
+    @media (max-width: 767px) {
+      .markdown-body {
+        padding: 15px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+  <header class="site-header" role="banner">
+    <div class="site-header-inner">
+      <nav aria-label="Breadcrumb" class="breadcrumb">
+        <a href="./index.html">Home</a> <span aria-hidden="true">›</span> <span aria-current="page">Podcast Regeneration Runbook</span>
+      </nav>
+      <div class="header-actions">
+        <a href="https://github.com/Community-Access/git-going-with-github/wiki" class="wiki-link" target="_blank" rel="noopener noreferrer">
+          <svg aria-hidden="true" focusable="false" width="16" height="16" viewBox="0 0 16 16" fill="currentColor">
+            <path d="M1.75 1h8.5c.966 0 1.75.784 1.75 1.75v5.5A1.75 1.75 0 0 1 10.25 10H7.06l-2.573 2.573A1.458 1.458 0 0 1 2 11.543V10h-.25A1.75 1.75 0 0 1 0 8.25v-5.5C0 1.784.784 1 1.75 1ZM1.5 2.75v5.5c0 .138.112.25.25.25h1a.75.75 0 0 1 .75.75v2.19l2.72-2.72a.749.749 0 0 1 .53-.22h3.5a.25.25 0 0 0 .25-.25v-5.5a.25.25 0 0 0-.25-.25h-8.5a.25.25 0 0 0-.25.25Zm13 2a.25.25 0 0 0-.25-.25h-.5a.75.75 0 0 1 0-1.5h.5c.966 0 1.75.784 1.75 1.75v5.5A1.75 1.75 0 0 1 14.25 12H14v1.543a1.457 1.457 0 0 1-2.487 1.03L9.22 12.28a.749.749 0 1 1 1.06-1.06l2.22 2.22v-2.19a.75.75 0 0 1 .75-.75h.25a.25.25 0 0 0 .25-.25v-5.5Z"/>
+          </svg>
+          Wiki
+        </a>
+        <form role="search" class="search-form" action="./search.html" method="get">
+        <label for="site-search" class="search-label">Search docs</label>
+        <input
+          type="search"
+          id="site-search"
+          class="search-input"
+          name="q"
+          placeholder="Search docs…"
+          autocomplete="off"
+          aria-label="Search documentation"
+        >
+        <button type="submit" class="search-button" aria-label="Submit search">
+          <svg aria-hidden="true" focusable="false" width="16" height="16" viewBox="0 0 16 16" fill="currentColor">
+            <path d="M10.68 11.74a6 6 0 0 1-7.922-8.982 6 6 0 0 1 8.982 7.922l3.04 3.04a.749.749 0 0 1-.326 1.275.749.749 0 0 1-.734-.215ZM11.5 7a4.499 4.499 0 1 0-8.997 0A4.499 4.499 0 0 0 11.5 7Z"/>
+          </svg>
+        </button>
+      </form>
+      </div>
+    </div>
+  </header>
+  <main id="main-content" class="markdown-body">
+    <h1 id="podcast-regeneration-runbook">Podcast Regeneration Runbook</h1>
+<p>This runbook explains how to rebuild the Git Going with GitHub podcast series after curriculum changes. Use it when chapters, appendices, agendas, or challenges change enough that the existing transcripts no longer match the source material.</p>
+<h2 id="current-strategy">Current Strategy</h2>
+<p>The podcast pipeline has two distinct content layers.</p>
+<ol>
+<li><strong>Companion episodes for chapters and appendices</strong>
+These are conversational overviews. They help learners preview or review concepts before reading the full material.</li>
+<li><strong>Challenge teaching episodes</strong>
+These should teach the challenge in a guided, classroom style. They should explain the skill, model the learner&#39;s thinking, describe what success sounds like with a screen reader, and clarify what evidence the learner submits.</li>
+</ol>
+<p>The chapter and appendix episodes can stay broader and conceptual. The challenge episodes should be more tactical and should follow the Learning Room progression.</p>
+<p>The refreshed companion catalog currently contains 54 episodes. The Challenge Coach layer currently has 21 generated source bundles: 16 core challenges plus 5 bonus challenges.</p>
+<h2 id="style-standard">Style Standard</h2>
+<p>Keep the Alex and Jamie format. The banter is part of the accessibility design because it makes dense technical material easier to process.</p>
+<ul>
+<li><strong>Alex:</strong> Warm expert guide. Explains concepts clearly, corrects misconceptions gently, and connects each task to real open source practice.</li>
+<li><strong>Jamie:</strong> Curious co-host. Asks the questions a learner may hesitate to ask, restates the mental model, adds gentle humor, and names moments that feel confusing.</li>
+<li><strong>Tone:</strong> Conversational, kind, practical, and lightly playful.</li>
+<li><strong>Avoid:</strong> Stage directions, music cues, markdown tables in scripts, visual-only language, and jokes that pull attention away from the task.</li>
+</ul>
+<p>Every generated script must use only these markers on their own lines:</p>
+<pre><code class="hljs language-text">[ALEX]
+[JAMIE]
+[PAUSE]</code></pre>
+<h2 id="new-machine-setup">New Machine Setup</h2>
+<p>Run these commands from the repository root.</p>
+<p>The following commands install the required Node and Python dependencies for bundle generation, site generation, and local Piper TTS audio generation.</p>
+<pre><code class="hljs language-powershell">npm install
+python <span class="hljs-literal">-m</span> pip install <span class="hljs-literal">--upgrade</span> pip
+python <span class="hljs-literal">-m</span> pip install piper<span class="hljs-literal">-tts</span>
+python <span class="hljs-literal">-m</span> podcasts.tts.download_samples</code></pre>
+<p>Confirm the local tools work:</p>
+<pre><code class="hljs language-powershell">npm run validate:podcasts
+npm run build:podcast<span class="hljs-literal">-bundles</span>
+npm run build:podcast<span class="hljs-literal">-challenge-bundles</span>
+npm run generate:podcast<span class="hljs-literal">-transcripts</span>
+python <span class="hljs-literal">-m</span> podcasts.tts.generate_episode ep00<span class="hljs-literal">-welcome</span>
+npm run build:podcast<span class="hljs-literal">-site</span></code></pre>
+<p>Notes for a new machine:</p>
+<ul>
+<li><code>podcasts/tts/models/</code> and <code>podcasts/tts/samples/</code> are intentionally ignored by git and must be downloaded locally.</li>
+<li><code>podcasts/audio/</code> is intentionally ignored by git because audio files are published as GitHub Release assets.</li>
+<li><code>podcasts/bundles/*.md</code> is intentionally ignored by git because chapter and appendix bundles are generated working files.</li>
+<li><code>podcasts/challenge-bundles/*.md</code> is intentionally ignored by git because Challenge Coach bundles are generated working files.</li>
+<li>If <code>python -m piper --help</code> fails, Piper is not installed in the active Python environment.</li>
+</ul>
+<h2 id="regeneration-workflow">Regeneration Workflow</h2>
+<p>Use this workflow after major content changes.</p>
+<ol>
+<li>Validate the catalog:</p>
+<pre><code class="hljs language-powershell">npm run validate:podcasts</code></pre>
+<p>Treat missing source files as blockers. Treat uncovered chapter or appendix warnings as planning work: either add episodes or intentionally leave those files out.</li>
+<li>Regenerate source bundles:</p>
+<pre><code class="hljs language-powershell">npm run build:podcast<span class="hljs-literal">-bundles</span>
+npm run build:podcast<span class="hljs-literal">-challenge-bundles</span></code></pre>
+<p>Bundles are local source packets for transcript generation. They combine production prompts, concept checklists, issue templates, solution references, and source content. They should not be committed.</li>
+<li>Generate fresh draft scripts in <code>podcasts/scripts/</code>.</p>
+<pre><code class="hljs language-powershell">npm run generate:podcast<span class="hljs-literal">-transcripts</span></code></pre>
+<p>This removes old <code>.txt</code> scripts and old <code>*-segments.json</code> transcript files, then creates fresh companion and Challenge Coach draft transcripts from the current catalog metadata, source headings, issue templates, solution references, and challenge mappings.</li>
+<li><p>Review scripts manually before audio.</p>
+<p>Use the matching bundle as source context when editing. The output script is the committed transcript source of truth.</p>
+<p>Check for:</p>
+<ul>
+<li>Current schedule and event model</li>
+<li>Current challenge names and evidence requirements</li>
+<li>Alex/Jamie speaker balance</li>
+<li>No stale repository model language</li>
+<li>No overpromising live completion</li>
+<li>No visual-only instructions</li>
+<li>Pronounceable technical terms</li>
+</ul>
+</li>
+<li><p>Generate audio:</p>
+<pre><code class="hljs language-powershell">python <span class="hljs-literal">-m</span> podcasts.tts.generate_episode ep00<span class="hljs-literal">-welcome</span>
+python <span class="hljs-literal">-m</span> podcasts.tts.generate_all <span class="hljs-literal">--start</span> <span class="hljs-number">0</span> <span class="hljs-literal">--end</span> <span class="hljs-number">10</span></code></pre>
+</li>
+<li><p>Update the podcast page and RSS feed:</p>
+<pre><code class="hljs language-powershell">npm run build:podcast<span class="hljs-literal">-site</span>
+npm run build:html</code></pre>
+</li>
+<li>Upload audio files from <code>podcasts/audio/</code> to the GitHub Release tagged <code>podcasts</code>.</li>
+<li><p>Validate the repository:</p>
+<pre><code class="hljs language-powershell">npm run validate:podcasts
+npm run test:automation
+git <span class="hljs-built_in">diff</span> <span class="hljs-literal">--check</span> <span class="hljs-literal">--</span> . <span class="hljs-string">&#x27;:(exclude)html/**&#x27;</span></code></pre>
+</li>
+</ol>
+<h2 id="challenge-episode-strategy">Challenge Episode Strategy</h2>
+<p>Yes, every challenge should have teaching coverage. The challenge episodes should not merely read issue text aloud. They should coach the learner through the skill.</p>
+<p>Recommended structure for each challenge episode:</p>
+<ol>
+<li><strong>Set the scene:</strong> What skill are we practicing, and where does it fit in the contributor journey?</li>
+<li><strong>Name the anxiety:</strong> What usually feels confusing here?</li>
+<li><strong>Teach the concept:</strong> Explain the underlying GitHub, Git, or Copilot idea before giving steps.</li>
+<li><strong>Walk the task:</strong> Describe the screen reader and keyboard path in plain language.</li>
+<li><strong>Evidence and validation:</strong> Explain what the learner must submit and what Aria or the autograder checks.</li>
+<li><strong>Common mistakes:</strong> Name two or three likely problems and how to recover.</li>
+<li><strong>What success sounds like:</strong> Describe screen reader announcements, page locations, and completion signals.</li>
+<li><strong>Bridge forward:</strong> Explain how this challenge prepares for the next one.</li>
+</ol>
+<p>Recommended challenge series:</p>
+<p>The following table groups challenge episodes by teaching arc.</p>
+<table>
+<thead>
+<tr>
+<th scope="col">Episode group</th>
+<th scope="col">Challenges</th>
+<th scope="col">Teaching purpose</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Day 1 foundation</td>
+<td>1-3</td>
+<td>Repository orientation, issues, comments, and social confidence</td>
+</tr>
+<tr>
+<td>Day 1 contribution</td>
+<td>4-6</td>
+<td>Branches, commits, pull requests, and linked issues</td>
+</tr>
+<tr>
+<td>Day 1 stretch</td>
+<td>7-9</td>
+<td>Merge conflicts, culture, labels, and merge readiness</td>
+</tr>
+<tr>
+<td>Day 2 local workflow</td>
+<td>10-13</td>
+<td>Local Git, PR review, and Copilot as a reviewed collaborator</td>
+</tr>
+<tr>
+<td>Day 2 capstone</td>
+<td>14-16</td>
+<td>Issue templates, agent discovery, and building an agent</td>
+</tr>
+<tr>
+<td>Bonus challenges</td>
+<td>A-E</td>
+<td>Extension work for fast finishers and async learners</td>
+</tr>
+</tbody></table>
+<p>I recommend 21 short challenge episodes instead of cramming all challenges into the chapter episodes:</p>
+<ul>
+<li>16 core challenge episodes, one per challenge</li>
+<li>5 bonus challenge episodes, one per bonus challenge</li>
+</ul>
+<p>Target length should be 5-8 minutes each. These can be more practical than the chapter episodes and should be released as a separate &quot;Challenge Coach&quot; section on the podcast page.</p>
+<h2 id="transcript-source-of-truth">Transcript Source of Truth</h2>
+<p>Use this hierarchy:</p>
+<ol>
+<li><code>podcasts/scripts/*.txt</code> - committed source transcript scripts</li>
+<li><code>podcasts/transcripts/*-segments.json</code> - derived or archival segment representation</li>
+<li><code>PODCASTS.md</code> - generated public transcript/player page</li>
+<li><code>podcasts/feed.xml</code> - generated RSS feed</li>
+<li><code>podcasts/audio/</code> - local audio output, not committed</li>
+<li><code>podcasts/bundles/*.md</code> - local generation inputs, not committed</li>
+</ol>
+<p>When content changes, regenerate scripts first. Audio should never be treated as the source of truth.</p>
+<h2 id="voice-deployment-notes">Voice Deployment Notes</h2>
+<p>The current local voice setup uses Piper.</p>
+<p>The following table lists the default host voice mapping.</p>
+<table>
+<thead>
+<tr>
+<th scope="col">Host</th>
+<th scope="col">Piper model</th>
+<th scope="col">Role</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Alex</td>
+<td><code>en_US-ryan-high.onnx</code></td>
+<td>Lead host and expert guide</td>
+</tr>
+<tr>
+<td>Jamie</td>
+<td><code>en_US-lessac-high.onnx</code></td>
+<td>Curious co-host and learner advocate</td>
+</tr>
+</tbody></table>
+<p>Change the model paths in <code>podcasts/tts/generate_episode.py</code> if you choose different voices. Keep Alex and Jamie distinct enough that listeners can identify the speaker without relying only on the transcript.</p>
+<p>If a technical term is pronounced poorly, add it to <code>podcasts/tts/lexicon.txt</code>, then regenerate the episode.</p>
+<h2 id="recommended-next-tooling">Recommended Next Tooling</h2>
+<p>The current tooling still needs one more major improvement: a script generator that can turn a bundle into a first-draft Alex/Jamie script using the same production prompt every time.</p>
+<p>Recommended command shape:</p>
+<pre><code class="hljs language-powershell">npm run generate:podcast<span class="hljs-literal">-script</span> <span class="hljs-literal">--</span> ep00<span class="hljs-literal">-welcome</span>
+npm run generate:podcast<span class="hljs-literal">-challenge-script</span> <span class="hljs-literal">--</span> challenge<span class="hljs-literal">-01-find-your-way-around</span></code></pre>
+<p>Until that exists, use the bundles as prompt packets and generate scripts manually or with the AI tool of choice, then commit the reviewed <code>.txt</code> scripts.</p>
+
+  </main>
+  <footer role="contentinfo" class="site-footer">
+    <p><strong>GIT Going with GitHub</strong> - A workshop by <a href="https://community-access.org">Community Access</a></p>
+    <p><a href="https://github.com/community-access/git-going-with-github">View on GitHub</a> · <a href="https://community-access.org">community-access.org</a></p>
+  </footer>
+
+  </body>
+</html>

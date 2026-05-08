@@ -213,10 +213,10 @@ curl https://raw.githubusercontent.com/github/gitignore/main/Node.gitignore &gt;
 <h2 id="3-environment-variables--the-right-way-to-store-secrets">3. Environment Variables — The Right Way to Store Secrets</h2>
 <p>Instead of hardcoding secrets in your files, store them in environment variables that live outside of your repository.</p>
 <h3 id="the-pattern">The pattern</h3>
-<pre><code class="hljs language-bash"><span class="hljs-comment"># ❌ Never do this (hardcoded secret in code)</span>
+<pre><code class="hljs language-bash"><span class="hljs-comment"># Never do this (hardcoded secret in code)</span>
 API_KEY = <span class="hljs-string">&quot;sk-abc123yoursecretkeyhere&quot;</span>
 
-<span class="hljs-comment"># ✅ Do this instead (read from environment)</span>
+<span class="hljs-comment"># Do this instead (read from environment)</span>
 API_KEY = os.environ.get(<span class="hljs-string">&quot;API_KEY&quot;</span>)      <span class="hljs-comment"># Python</span>
 const apiKey = process.env.API_KEY;      // JavaScript</code></pre>
 <h3 id="using-a-env-file-locally">Using a .env file locally</h3>
@@ -260,13 +260,13 @@ git diff --staged docs/config.md</code></pre>
 </ul>
 <h3 id="avoid-git-add--blindly">Avoid <code>git add .</code> blindly</h3>
 <p><code>git add .</code> stages everything in your working directory — including files you didn&#39;t mean to add.</p>
-<pre><code class="hljs language-bash"><span class="hljs-comment"># ❌ Risky — stages everything without review</span>
+<pre><code class="hljs language-bash"><span class="hljs-comment"># Risky - stages everything without review</span>
 git add .
 
-<span class="hljs-comment"># ✅ Better — stage specific files you know are clean</span>
+<span class="hljs-comment"># Better - stage specific files you know are clean</span>
 git add src/auth.js docs/README.md
 
-<span class="hljs-comment"># ✅ Or stage interactively — review each file before adding</span>
+<span class="hljs-comment"># Or stage interactively - review each file before adding</span>
 git add -p</code></pre>
 <p><code>git add -p</code> (patch mode) walks you through each change chunk by chunk and asks whether to stage it. It&#39;s slower but gives you full control.</p>
 <h3 id="check-what39s-staged-before-committing">Check what&#39;s staged before committing</h3>
@@ -418,7 +418,7 @@ java -jar bfg.jar --replace-text passwords.txt</code></pre>
 <pre><code class="hljs">Secret <span class="hljs-keyword">committed</span>
       │
       ├─ Still <span class="hljs-keyword">local</span> <span class="hljs-keyword">only</span> (<span class="hljs-keyword">not</span> pushed)?
-      │     └─ git <span class="hljs-keyword">reset</span> <span class="hljs-comment">--soft HEAD~1 → remove secret → recommit ✅</span>
+      │     └─ git <span class="hljs-keyword">reset</span> <span class="hljs-comment">--soft HEAD~1 -&gt; remove secret -&gt; recommit</span>
       │
       └─ Already pushed?
             ├─ Rotate the secret FIRST (assume compromised)
@@ -457,7 +457,7 @@ remote:   https://github.com/owner/repo/security/secret-scanning/unblock-secret/
 <hr>
 <h2 id="8-secure-credential-storage">8. Secure Credential Storage</h2>
 <h3 id="never-store-credentials-in-plaintext">Never store credentials in plaintext</h3>
-<p>❌ Don&#39;t do these:</p>
+<p>Do not do these:</p>
 <pre><code class="hljs language-bash"><span class="hljs-comment"># Storing a token in a plain text file</span>
 <span class="hljs-built_in">echo</span> <span class="hljs-string">&quot;ghp_mytoken&quot;</span> &gt; ~/token.txt
 
@@ -466,7 +466,7 @@ remote:   https://github.com/owner/repo/security/secret-scanning/unblock-secret/
 
 <span class="hljs-comment"># In a git config</span>
 git config --global url.<span class="hljs-string">&quot;https://myusername:ghp_mytoken@github.com&quot;</span>.insteadOf <span class="hljs-string">&quot;https://github.com&quot;</span></code></pre>
-<p>✅ Do this instead — use the OS credential store:</p>
+<p>Do this instead - use the OS credential store:</p>
 <pre><code class="hljs language-bash"><span class="hljs-comment"># macOS — use Keychain</span>
 git config --global credential.helper osxkeychain
 
@@ -517,29 +517,29 @@ git config --global credential.helper /usr/share/doc/git/contrib/credential/libs
 <p>Use this before every push to a public repository.</p>
 <h3 id="before-committing">Before committing</h3>
 <ul>
-<li><input type="checkbox" disabled> <input aria-label="I reviewed" disabled="" type="checkbox"> I reviewed <code>git diff --staged</code> and didn&#39;t see any tokens, passwords, or keys</li>
-<li><input type="checkbox" disabled> <input aria-label="I used" disabled="" type="checkbox"> I used <code>git add &lt;specific files&gt;</code> or <code>git add -p</code> rather than <code>git add .</code></li>
-<li><input type="checkbox" disabled> <input aria-label="Any" disabled="" type="checkbox"> Any <code>.env</code> files or credential files are listed in <code>.gitignore</code></li>
-<li><input type="checkbox" disabled> <input aria-label="Config files with real values are in" disabled="" type="checkbox"> Config files with real values are in <code>.gitignore</code>; only example/template files are committed</li>
+<li><input aria-label="I reviewed" disabled="" type="checkbox"> I reviewed <code>git diff --staged</code> and didn&#39;t see any tokens, passwords, or keys</li>
+<li><input aria-label="I used" disabled="" type="checkbox"> I used <code>git add &lt;specific files&gt;</code> or <code>git add -p</code> rather than <code>git add .</code></li>
+<li><input aria-label="Any" disabled="" type="checkbox"> Any <code>.env</code> files or credential files are listed in <code>.gitignore</code></li>
+<li><input aria-label="Config files with real values are in" disabled="" type="checkbox"> Config files with real values are in <code>.gitignore</code>; only example/template files are committed</li>
 </ul>
 <h3 id="before-pushing">Before pushing</h3>
 <ul>
-<li><input type="checkbox" disabled> <input aria-label="" disabled="" type="checkbox"> <code>git log --oneline -5</code> — all commits look expected</li>
-<li><input type="checkbox" disabled> <input aria-label="No commits with messages like &quot;remove secret&quot; or &quot;oops&quot; that suggest a secret was added and removed (the secret is still in history)" disabled="" type="checkbox"> No commits with messages like &quot;remove secret&quot; or &quot;oops&quot; that suggest a secret was added and removed (the secret is still in history)</li>
+<li><input aria-label="" disabled="" type="checkbox"> <code>git log --oneline -5</code> — all commits look expected</li>
+<li><input aria-label="No commits with messages like &quot;remove secret&quot; or &quot;oops&quot; that suggest a secret was added and removed (the secret is still in history)" disabled="" type="checkbox"> No commits with messages like &quot;remove secret&quot; or &quot;oops&quot; that suggest a secret was added and removed (the secret is still in history)</li>
 </ul>
 <h3 id="repository-setup-one-time">Repository setup (one time)</h3>
 <ul>
-<li><input type="checkbox" disabled> <input aria-label="" disabled="" type="checkbox"> <code>.gitignore</code> includes <code>.env</code>, <code>*.key</code>, <code>*.pem</code>, and relevant patterns for your stack</li>
-<li><input type="checkbox" disabled> <input aria-label="Global" disabled="" type="checkbox"> Global <code>.gitignore</code> (<code>~/.gitignore_global</code>) covers editor/OS files</li>
-<li><input type="checkbox" disabled> <input aria-label="Git credential helper is configured to use the OS keychain" disabled="" type="checkbox"> Git credential helper is configured to use the OS keychain</li>
-<li><input type="checkbox" disabled> <input aria-label="(Optional) A pre-commit hook is installed to scan for secrets automatically" disabled="" type="checkbox"> (Optional) A pre-commit hook is installed to scan for secrets automatically</li>
+<li><input aria-label="" disabled="" type="checkbox"> <code>.gitignore</code> includes <code>.env</code>, <code>*.key</code>, <code>*.pem</code>, and relevant patterns for your stack</li>
+<li><input aria-label="Global" disabled="" type="checkbox"> Global <code>.gitignore</code> (<code>~/.gitignore_global</code>) covers editor/OS files</li>
+<li><input aria-label="Git credential helper is configured to use the OS keychain" disabled="" type="checkbox"> Git credential helper is configured to use the OS keychain</li>
+<li><input aria-label="(Optional) A pre-commit hook is installed to scan for secrets automatically" disabled="" type="checkbox"> (Optional) A pre-commit hook is installed to scan for secrets automatically</li>
 </ul>
 <h3 id="if-you39re-a-maintainer">If you&#39;re a maintainer</h3>
 <ul>
-<li><input type="checkbox" disabled> <input aria-label="Branch protection is enabled on" disabled="" type="checkbox"> Branch protection is enabled on <code>main</code> with required reviews and status checks</li>
-<li><input type="checkbox" disabled> <input aria-label="Secret scanning is enabled (Settings → Code security → Secret scanning)" disabled="" type="checkbox"> Secret scanning is enabled (Settings → Code security → Secret scanning)</li>
-<li><input type="checkbox" disabled> <input aria-label="Push protection is enabled for the repository" disabled="" type="checkbox"> Push protection is enabled for the repository</li>
-<li><input type="checkbox" disabled> <input aria-label="A" disabled="" type="checkbox"> A <code>SECURITY.md</code> file exists with instructions for reporting vulnerabilities</li>
+<li><input aria-label="Branch protection is enabled on" disabled="" type="checkbox"> Branch protection is enabled on <code>main</code> with required reviews and status checks</li>
+<li><input aria-label="Secret scanning is enabled (Settings → Code security → Secret scanning)" disabled="" type="checkbox"> Secret scanning is enabled (Settings → Code security → Secret scanning)</li>
+<li><input aria-label="Push protection is enabled for the repository" disabled="" type="checkbox"> Push protection is enabled for the repository</li>
+<li><input aria-label="A" disabled="" type="checkbox"> A <code>SECURITY.md</code> file exists with instructions for reporting vulnerabilities</li>
 </ul>
 <blockquote>
 <p><strong>See also:</strong> <a href="appendix-p-security-features.html">Appendix L: GitHub Security Features</a> for the GitHub platform security tools (Dependabot, secret scanning alerts, code scanning). <a href="appendix-d-git-authentication.html">Appendix D: Git Authentication</a> for SSH keys, PATs, and commit signing.</p>
@@ -552,5 +552,6 @@ git config --global credential.helper /usr/share/doc/git/contrib/credential/libs
     <p><strong>GIT Going with GitHub</strong> - A workshop by <a href="https://community-access.org">Community Access</a></p>
     <p><a href="https://github.com/community-access/git-going-with-github">View on GitHub</a> · <a href="https://community-access.org">community-access.org</a></p>
   </footer>
+
   </body>
 </html>

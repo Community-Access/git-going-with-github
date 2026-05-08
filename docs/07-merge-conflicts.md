@@ -1,6 +1,6 @@
 # Merge Conflicts
 >
-> **Listen to Episode 7:** [Merge Conflicts Are Not Scary](../PODCASTS.md) - a conversational audio overview of this chapter. Listen before reading to preview the concepts, or after to reinforce what you learned.
+> **Listen to Episode 7:** [Merge Conflicts Are Not Scary](../admin/PODCASTS.md) - a conversational audio overview of this chapter. Listen before reading to preview the concepts, or after to reinforce what you learned.
 
 > **Related appendices:** [Appendix E: Advanced Git](appendix-e-advanced-git.md) | [Appendix G: VS Code Reference](appendix-g-vscode-reference.md)
 > **Authoritative sources:** [GitHub Docs: Resolving merge conflicts](https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/addressing-merge-conflicts/resolving-a-merge-conflict-on-github) | [Git SCM: Basic Merge Conflicts](https://git-scm.com/book/en/v2/Git-Branching-Basic-Branching-and-Merging#_basic_merge_conflicts)
@@ -30,7 +30,7 @@ Chapter 7 uses **one controlled practice challenge** so students can learn confl
 
 **Goal:** Identify the three types of conflict markers in a practice file, decide which content to keep, remove the markers, and submit a clean PR.
 
-> **🛠️ Agentic Strategy:** Sometimes an AI agent will confidently generate code that conflicts with human-written code. Resolving merge conflicts is not just a hurdle for human teamwork—it is exactly how you supervise, correct, and collaborate safely with an AI.
+> **Agentic strategy:** Sometimes an AI agent will confidently generate code that conflicts with human-written code. Resolving merge conflicts is not just a hurdle for human teamwork; it is exactly how you supervise, correct, and collaborate safely with an AI.
 
 **Where you are working:** your Learning Room repository on GitHub.com (web editor) or in VS Code if you cloned locally.
 
@@ -847,7 +847,7 @@ Answer these three questions:
 > *Understanding conflict markers is not a stepping stone to letting AI handle conflicts. It is the skill that tells you when AI got it wrong.*
 
 
-> ➡️ **Challenge Time:** Check the [Challenge Hub](CHALLENGES.md) for **Challenge 7: Survive a Merge Conflict**. Follow the steps to resolve it, then move to [Chapter 08: Open Source Culture](08-open-source-culture.md).
+> **Challenge Time:** Check the [Challenge Hub](CHALLENGES.md) for **Challenge 7: Survive a Merge Conflict**. Follow the steps to resolve it, then move to [Chapter 08: Open Source Culture](08-open-source-culture.md).
 
 ---
 

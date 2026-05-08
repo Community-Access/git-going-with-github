@@ -1,6 +1,6 @@
 # Course Guide
 >
-> **Listen to Episode 0:** [Welcome to Git Going with GitHub](../PODCASTS.md) - a conversational audio overview of this chapter. Listen before reading to preview the concepts, or after to reinforce what you learned.
+> **Listen to Episode 0:** [Welcome to Git Going with GitHub](../admin/PODCASTS.md) - a conversational audio overview of this chapter. Listen before reading to preview the concepts, or after to reinforce what you learned.
 
 ## GitHub Learning Room - Your Complete Workshop Companion
 
@@ -13,15 +13,23 @@
 
 This is a two-day workshop built around one idea: **you will make real contributions to a real open source project.** Not simulated. Not pretend. Real.
 
+### Live Agenda and Self-Paced Curriculum
+
+The live hackathon agenda is intentionally smaller than the full curriculum. Live sessions prioritize the core contribution path, while the complete chapter set remains available for self-paced preparation, catch-up, remote participation, and post-event continuation.
+
+- **Live core:** The facilitator chooses the minimum path needed for participants to make and understand a real contribution.
+- **Async follow-up:** Chapters and challenges not covered live can be completed after the session using the Learning Room, solutions, podcasts, and Slack channel.
+- **Remote participation:** Remote cohorts should use the same checkpoints and evidence prompts, with written instructions available before each live block.
+
 ### The Two Days
 
 #### Day 1 - GitHub Foundations (Browser)
 
-You learn GitHub's web interface using only your keyboard and screen reader. By the end of Day 1, you will have filed issues, opened pull requests, reviewed someone else's work, and resolved a merge conflict - all in the browser.
+You learn GitHub's web interface using only your keyboard and screen reader. The live Day 1 core path gets you through repository navigation, issues, branches, commits, and a first pull request. Review practice, merge conflicts, labels, notifications, and culture exercises remain available as stretch or async follow-up.
 
 #### Day 2 - VS Code + Accessibility Agents (Desktop)
 
-You move to Visual Studio Code, learn GitHub Copilot, and activate the Accessibility Agents ecosystem - 55 AI agents across 3 teams and 5 platforms that amplify every skill you built on Day 1. By the end of Day 2, your name is in the commit history of a real open source accessibility project.
+You move to Visual Studio Code, learn GitHub Copilot, and activate the Accessibility Agents ecosystem - 55 AI agents across 3 teams and 5 platforms that amplify every skill you built on Day 1. The live Day 2 core path prepares you to make a real contribution, and the async continuation path gives you time to polish and submit it well.
 
 ### The Journey Arc
 
@@ -38,13 +46,15 @@ github.dev - VS Code on the web, no install needed
 
 Day 2 - Deepen with VS Code + Accessibility Agents
   VS Code basics → Copilot inline → Copilot Chat
-  @daily-briefing → @issue-tracker → @pr-review → @analytics → ship upstream
+  @daily-briefing → @issue-tracker → @pr-review → @analytics → prepare upstream
 ```
 
 **The key principle:** Learn the manual skill first, then see how it is automated. The agents only make sense when you already understand what they are doing.
 
 
 ## Before You Begin
+
+Start with **[Get Going with GitHub](get-going.md)** if you want the most guided path. It explains how GitHub Classroom creates your private Learning Room repository, how Challenge 1 appears, how evidence prompts work, and how to choose between browser, github.dev, VS Code, GitHub Desktop, and command-line paths.
 
 Complete everything in **[Chapter 00: Pre-Workshop Setup](00-pre-workshop-setup.md)** before Day 1. This chapter walks you through:
 
@@ -61,7 +71,7 @@ Complete everything in **[Chapter 00: Pre-Workshop Setup](00-pre-workshop-setup.
 
 Every chapter and appendix has a companion podcast episode - a conversational two-host overview that previews or reviews the key concepts. Listen before reading a chapter to know what to expect, or after to reinforce what you learned.
 
-- **[Browse all 44 episodes](../PODCASTS.md)** with HTML5 audio players
+- **[Browse the podcast episodes](../admin/PODCASTS.md)** with HTML5 audio players
 - **[Subscribe via RSS](https://community-access.org/git-going-with-github/podcasts/feed.xml)** in your preferred podcast app
 - Episodes are 8-18 minutes each - perfect for commutes, walks, or screen reader breaks
 
@@ -72,6 +82,7 @@ These chapters are designed to be read and practiced in order. Each builds on th
 
 | # | Chapter | What You Will Learn | Time |
 |---|---------|-------------------|------|
+| [Start](get-going.md) | **Get Going with GitHub** | GitHub Classroom onboarding, Learning Room first steps, support, and tool choice | 15 min |
 | [00](00-pre-workshop-setup.md) | **Pre-Workshop Setup** | Install and configure everything before Day 1 | 30 min |
 | [01](01-choose-your-tools.md) | **Choose Your Adventure: A Tool Tour** | Explore the 5 tool environments before you start | 30 min |
 | [02](02-understanding-github.md) | **Understanding GitHub's Web Structure** | How GitHub is organized - page types, headings, landmarks, screen reader orientation | 1 hr |
@@ -84,7 +95,7 @@ These chapters are designed to be read and practiced in order. Each builds on th
 | [09](09-labels-milestones-projects.md) | **Labels, Milestones and Projects** | Organize and cross-reference work | 45 min |
 | [10](10-notifications-and-day-1-close.md) | **Notifications and Day 1 Close** | Manage your inbox, @mentions, and subscriptions; recap Day 1 | 30 min |
 
-**Day 1 Total:** ~8 hours of structured time
+**Day 1 self-paced total:** ~8 hours. The live Day 1 agenda covers the core path in a shorter Pacific-time event day and treats later challenges as stretch or async follow-up.
 
 
 ## Day 2: VS Code + Accessibility Agents
@@ -105,7 +116,7 @@ Day 2 moves you from the browser to the desktop. Every skill maps directly to wh
 | [20](20-build-your-agent.md) | **Build Your Agent: Capstone** | Design, build, and contribute a real accessibility agent | 1.5 hrs |
 | [21](21-next-steps.md) | **What Comes Next** | Graduation, portfolio, continued learning, community | 30 min |
 
-**Day 2 Total:** ~10 hours of structured time
+**Day 2 self-paced total:** ~10 hours. The live Day 2 agenda focuses on VS Code, Git, Copilot, agent discovery, and supported contribution work; deeper capstone material can continue asynchronously.
 
 
 ## Appendices - Reference Material
@@ -203,9 +214,9 @@ If you get stuck at any point during the workshop, these resources are always av
 
 | Resource | What It Is | When to Use It |
 |----------|-----------|---------------|
-| [FAQ](admin/FAQ.md) | Answers to common questions | When you have a question about the workshop, GitHub, or screen readers |
-| [Troubleshooting](../TROUBLESHOOTING.md) | Step-by-step solutions to common problems | When something is not working |
-| [Quick Reference](../QUICK_REFERENCE.md) | Condensed shortcuts and commands | When you need a keyboard shortcut or command fast |
+| [FAQ](../admin/FAQ.md) | Answers to common questions | When you have a question about the workshop, GitHub, or screen readers |
+| [Troubleshooting](../admin/TROUBLESHOOTING.md) | Step-by-step solutions to common problems | When something is not working |
+| [Quick Reference](../admin/QUICK_REFERENCE.md) | Condensed shortcuts and commands | When you need a keyboard shortcut or command fast |
 | [Glossary](appendix-a-glossary.md) | Term definitions | When you encounter an unfamiliar word |
 | [Screen Reader Cheat Sheet](appendix-b-screen-reader-cheatsheet.md) | Navigation commands | When you need a screen reader shortcut |
 | [Resources](appendix-x-resources.md) | External links and documentation | When you want to learn more about a topic |
@@ -221,7 +232,7 @@ If you get stuck at any point during the workshop, these resources are always av
 | **Tools** | Browser, screen reader | VS Code, Copilot, Accessibility Agents |
 | **Chapters** | 00-10 (11 chapters) | 11-21 (11 chapters) |
 | **Skills** | Navigate, Issue, PR, Review, Merge | Git, Copilot, Agents, Fork, Capstone |
-| **Outcome** | You can use GitHub independently | Your name is in a real project's commit history |
+| **Outcome** | You can use GitHub independently | You have a real contribution path and review process |
 | **Time** | ~8 hours | ~10 hours |
 
 

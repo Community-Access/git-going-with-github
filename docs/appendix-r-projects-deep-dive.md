@@ -1,6 +1,6 @@
 # Appendix R: GitHub Projects Deep Dive
 >
-> **Listen to Episode 26:** [GitHub Projects Deep Dive](../PODCASTS.md) - a conversational audio overview of this chapter. Listen before reading to preview the concepts, or after to reinforce what you learned.
+> **Listen to Episode 26:** [GitHub Projects Deep Dive](../admin/PODCASTS.md) - a conversational audio overview of this chapter. Listen before reading to preview the concepts, or after to reinforce what you learned.
 
 > **Reference companion to:** [Chapter 09: Labels, Milestones, and Projects](09-labels-milestones-projects.md)
 >

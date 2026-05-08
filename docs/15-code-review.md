@@ -6,7 +6,7 @@
 
 > **Day 2, Block 2 Material**
 >
-> This chapter unifies PR management, accessible code review, and the reviewer's craft into one chapter. Part 1 covers the GitHub Pull Requests extension in VS Code. Part 2 covers accessible code review with diffs and inline comments. Part 3 (to be written in Phase 3) adds the reviewer's judgment framework.
+> This chapter unifies PR management, accessible code review, and the reviewer's craft into one chapter. Part 1 covers the GitHub Pull Requests extension in VS Code. Part 2 covers accessible code review with diffs and inline comments. Part 3 adds the reviewer's judgment framework.
 
 ---
 
@@ -15,7 +15,7 @@
 > **See also:** [Appendix G: VS Code Reference](appendix-g-vscode-reference.md) for the complete list of GitHub Pull Requests extension keyboard shortcuts.
 
 >
-> **Listen to Episode 13:** [The GitHub Pull Requests Extension](../PODCASTS.md) - a conversational audio overview of this chapter. Listen before reading to preview the concepts, or after to reinforce what you learned.
+> **Listen to Episode 13:** [The GitHub Pull Requests Extension](../admin/PODCASTS.md) - a conversational audio overview of this chapter. Listen before reading to preview the concepts, or after to reinforce what you learned.
 
 ## Managing Pull Requests from VS Code
 
@@ -28,21 +28,21 @@
 > **Mac keyboard shortcuts:** Throughout this chapter, all `Ctrl+` shortcuts use `Cmd+` on Mac, and `Alt+` shortcuts use `Option+` on Mac. For example: `Ctrl+Shift+P` → `Cmd+Shift+P`, `Ctrl+Shift+G` → `Cmd+Shift+G`, `Alt+F2` → `Option+F2`. Context menus (`Shift+F10` on Windows) use `Ctrl+Return` on Mac.
 
 
-## Workshop Recommendation (Chapter 12)
+## Workshop Recommendation (Chapter 15, Part 1)
 
-Chapter 12 introduces the **GitHub Pull Requests extension** for managing PRs directly from VS Code.
+Chapter 15, Part 1 introduces the **GitHub Pull Requests extension** for managing PRs directly from VS Code.
 
 - **Challenge count:** 2 guided challenges
 - **Automation check:** none (extension installation and review state are account-local)
 - **Evidence:** issue comment with confirmation of actions completed
 - **Pattern:** install, check out, review, comment
 
-### Chapter 12 Challenge Set
+### Chapter 15, Part 1 Practice Set
 
 1. **Install the GitHub Pull Requests extension** - add the extension to VS Code and sign in with your GitHub account.
 2. **Check out a PR and post a review comment** - download a PR branch locally, read the diff, and post one constructive review comment.
 
-### Challenge 12.1 Step-by-Step: Install the Extension
+### Practice 15.1 Step-by-Step: Install the Extension
 
 **Goal:** Install the GitHub Pull Requests and Issues extension and authenticate with your GitHub account.
 
@@ -63,7 +63,7 @@ Chapter 12 introduces the **GitHub Pull Requests extension** for managing PRs di
 
 **You are done when:** The GitHub section appears in your Explorer sidebar and shows pull requests from your Learning Room repository.
 
-### Challenge 12.2 Step-by-Step: Check Out a PR and Post a Comment
+### Practice 15.2 Step-by-Step: Check Out a PR and Post a Comment
 
 **Goal:** Check out someone else's PR branch locally, read the diff in VS Code, and post one constructive review comment.
 
@@ -73,7 +73,7 @@ Chapter 12 introduces the **GitHub Pull Requests extension** for managing PRs di
 
 1. Open the Command Palette: `Ctrl+Shift+P` (Mac: `Cmd+Shift+P`).
 2. Type `GitHub Pull Requests: Focus on Pull Requests View` and select it. The Pull Requests panel opens.
-3. Navigate the list of open PRs. Find one that is **not yours** (a classmate's PR from Chapter 6, 7, or 11).
+3. Navigate the list of open PRs. Find one that is **not yours** (a classmate's PR from Chapter 6, 7, or 14).
 4. With the PR focused, press `Enter` or activate **Checkout** from the context menu (`Shift+F10` on Windows). VS Code switches to that PR's branch.
 5. Open the Command Palette again and run `GitHub Pull Requests: Open Changed Files`. This shows the list of files the PR changed.
 6. Open one changed file. VS Code opens the **Diff Editor** showing old content on the left and new content on the right.
@@ -88,12 +88,12 @@ Chapter 12 introduces the **GitHub Pull Requests extension** for managing PRs di
 
 **You are done when:** You have posted at least one constructive review comment on someone else's PR.
 
-### Completing Chapter 12: Submit Your Evidence
+### Completing Chapter 15, Part 1: Submit Your Evidence
 
-Open your **assigned Chapter 12 challenge issue** and post a completion comment:
+Open your assigned setup or review practice issue and post a completion comment:
 
 ```text
-Chapter 12 completed:
+Chapter 15 Part 1 completed:
 - Extension installed: yes / no
 - Signed in to GitHub: yes / no
 - PR reviewed: #[PR number by classmate]
@@ -1072,7 +1072,7 @@ gh pr merge 42 --auto --squash
 
 ## Part 2: Accessible Code Review
 >
-> **Listen to Episode 15:** [Accessible Code Review](../PODCASTS.md) - a conversational audio overview of this chapter. Listen before reading to preview the concepts, or after to reinforce what you learned.
+> **Listen to Episode 15:** [Accessible Code Review](../admin/PODCASTS.md) - a conversational audio overview of this chapter. Listen before reading to preview the concepts, or after to reinforce what you learned.
 
 ## Conducting Pull Request Reviews with a Screen Reader
 
@@ -1081,21 +1081,21 @@ gh pr merge 42 --auto --squash
 > **Learning Room connection:** The exercises in this chapter use files from the Learning Room repository. You will review PRs that modify `docs/keyboard-shortcuts.md` (shortcut tables with intentional errors), `docs/setup-guide.md` (broken links and incomplete steps), and `docs/welcome.md` (`[TODO]` sections to complete). These are the same files you work on during the Day 1 contribution sprint.
 
 
-## Workshop Recommendation (Chapter 14)
+## Workshop Recommendation (Chapter 15 / Challenge 12)
 
-Chapter 14 is the **code review chapter** focused on practicing constructive feedback.
+Chapter 15 is the **code review chapter** focused on practicing constructive feedback. It supports Challenge 12: Review Like a Pro.
 
 - **Challenge count:** 2 guided challenges
 - **Automation check:** none (review quality is subjective and human-focused)
 - **Evidence:** issue comment with summary of review and feedback posted
 - **Pattern:** navigate diff, comment on specifics, submit verdict
 
-### Chapter 14 Challenge Set
+### Challenge 12 Practice Set
 
 1. **Review a practice PR and leave 2-3 inline comments** - read the diff line by line, find specific items to comment on, and post constructive feedback.
 2. **Submit a formal review verdict** - complete your review by choosing approve, request changes, or comment only.
 
-### Challenge 14.1 Step-by-Step: Review a PR and Leave Inline Comments
+### Practice 12.1 Step-by-Step: Review a PR and Leave Inline Comments
 
 **Goal:** Navigate a PR diff using screen reader-friendly tools and post 2-3 specific, constructive inline comments.
 
@@ -1104,11 +1104,11 @@ Chapter 14 is the **code review chapter** focused on practicing constructive fee
 **Estimated time:** 15-20 minutes.
 
 1. Open your Learning Room repository on GitHub.com and navigate to the **Pull requests** tab.
-2. Find a classmate's open PR (from Chapter 6, 7, or 11). Open it.
+2. Find a classmate's open PR (from Chapter 6, 7, or 14). Open it.
 3. Activate the **Files changed** tab. This shows the diff - lines added in green, lines removed in red.
 4. Navigate the diff:
    - **On GitHub.com:** Use heading navigation to jump between files (`H` in NVDA). Each file header is a heading. Within a file, use arrow keys to move line by line.
-   - **In VS Code:** Press `F7` to open the Accessible Diff Viewer (see Chapter 12). Use `F7`/`Shift+F7` to move between changes.
+   - **In VS Code:** Press `F7` to open the Accessible Diff Viewer (see Chapter 15, Part 1). Use `F7`/`Shift+F7` to move between changes.
 5. Read through the changes carefully. Look for:
    - Typos or grammar issues
    - Unclear headings or link text
@@ -1129,7 +1129,7 @@ Chapter 14 is the **code review chapter** focused on practicing constructive fee
 
 **You are done when:** You have posted 2-3 inline comments on a classmate's PR.
 
-### Challenge 14.2 Step-by-Step: Submit a Formal Review Verdict
+### Practice 12.2 Step-by-Step: Submit a Formal Review Verdict
 
 **Goal:** Complete your review by selecting a verdict that tells the author what action to take next.
 
@@ -1150,19 +1150,19 @@ Chapter 14 is the **code review chapter** focused on practicing constructive fee
 
 **You are done when:** Your review verdict appears on the PR's conversation tab as a green (approved), red (changes requested), or gray (comment) review badge.
 
-### Completing Chapter 14: Submit Your Evidence
+### Completing Challenge 12: Submit Your Evidence
 
-Open your **assigned Chapter 14 challenge issue** and post a completion comment:
+Open your **assigned Challenge 12 issue** and post a completion comment:
 
 ```text
-Chapter 14 completed:
+Challenge 12 completed:
 - PR reviewed: #[PR number]
 - Inline comments posted: [number, e.g., 3]
 - Review verdict: [Approve / Request Changes / Comment]
 - One thing I learned from reviewing: [one sentence]
 ```
 
-Close your Chapter 14 challenge issues when done.
+Close your Challenge 12 issue when done.
 
 ### Expected Outcomes
 
@@ -2871,7 +2871,7 @@ Why do this manually before using agents? Because:
 - Write comment explaining why it matters
 - Submit your verdict
 
-**Agent-Assisted Review (what you'll do in Chapter 16):**
+**Agent-Assisted Review (what you'll do in Chapter 19):**
 1. Run: `@pr-review review PR #14` 
 2. Agent generates a draft review covering the heading skip, link text, and 5 other issues
 3. You read the draft and notice: "the agent's explanation of the heading skip is good, but it missed that the link text on line 23 is still vague. Let me add that."
@@ -2883,7 +2883,7 @@ Why do this manually before using agents? Because:
 Your manual skills + agent efficiency = **leverage.**
 
 
-> **What's coming later today (Chapter 16):**
+> **What's coming later today (Chapter 19):**
 >
 > At the end of the day, Chapter 16 introduces the full 55-agent ecosystem - specialized agents for:
 > - GitHub workflow automation (`@daily-briefing`, `@issue-tracker`, `@analytics`)

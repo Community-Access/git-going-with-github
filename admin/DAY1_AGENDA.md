@@ -3,7 +3,17 @@
 
 > **Day 1 Focus:** The GitHub web interface -- navigating repositories, filing and responding to issues, understanding pull requests, and contributing through the browser using only your keyboard and screen reader.
 >
-> **How learning works today:** Each participant has their own private repository, created automatically when you accept the Classroom assignment. Inside that repo, an automation system called Aria guides you through a series of challenges delivered as GitHub Issues. When you complete one challenge and close the issue, Aria unlocks the next. You work at your own pace through Challenges 1-9 during the structured blocks below, with facilitator guidance and peer collaboration throughout.
+> **How learning works today:** Each participant has their own private repository, created automatically when you accept the Classroom assignment. Inside that repo, an automation system called Aria guides you through a series of challenges delivered as GitHub Issues. The live session prioritizes the core path through repository navigation, issues, branches, commits, and a first pull request. The remaining challenges stay available for async completion during open lab time or after the event.
+
+
+## Coverage Promise
+
+This agenda is a live facilitation plan, not a requirement that every chapter and challenge be completed in the room. The full curriculum contains more material than a shortened live day can responsibly cover.
+
+- **Live core:** Participants should leave able to navigate a repository, file and discuss issues, create a branch, edit a file, commit, and open a pull request.
+- **Live support if time allows:** Merge conflicts, review practice, labels, milestones, notifications, and culture exercises.
+- **Async follow-up:** Challenges 7-9 and the reference chapters remain available after the live session. Facilitators can use open lab time for catch-up instead of moving the whole room forward.
+- **Remote-ready delivery:** Remote participants should receive the same Classroom links, Slack channel, CART/ASL access where available, and written checkpoints. Every block should include a clear "you are done when" checkpoint so people can pause and resume later.
 
 
 ## Your Classroom Repository
@@ -27,21 +37,25 @@ When you accept the Day 1 assignment link, GitHub creates a private copy of the 
 
 ## At a Glance
 
-| Block | Time (Eastern) | Topic | Challenges |
-|-------|----------------|-------|-----------|
-| 0 | 12:00 PM | Welcome, setup verification, and accept Classroom assignment | -- |
-| 1 | 12:30 PM | Screen reader orientation to GitHub | Challenge 1: Find Your Way |
-| 2 | 1:10 PM | Navigating repositories, issues, and conversations | Challenges 2-3 |
-| -- | 2:00 PM | **Break** | -- |
-| 3 | 2:15 PM | Branching, editing, and committing | Challenges 4-5 |
-| 4 | 3:10 PM | Pull requests, review, and merge conflicts | Challenges 6-7 |
-| -- | 4:00 PM | **Dinner break** | -- |
-| 5 | 5:00 PM | Culture, triage, and merge day | Challenges 8-9 |
-| -- | 6:00 PM | **Break** | -- |
-| 6 | 6:15 PM | Community: communication, labels, and notifications | -- |
-| -- | 7:30 PM | Wrap-up and reflections | -- |
+The following table summarizes the Pacific-time live agenda and identifies which blocks are required live coverage versus stretch or async material.
 
-**Total:** ~7.5 hours of structured time (12:00 PM - 8:00 PM Eastern)
+| Time (Pacific) | Block | Topic | Coverage |
+|----------------|-------|-------|----------|
+| 9:00-9:30 AM | Event welcome | Check-in, breakfast, access services, and orientation | Required live |
+| 9:30-10:00 AM | Keynote | Making real change through real learning | Required live |
+| 10:00-10:15 AM | Opening remarks | Event goals, agenda, and participation norms | Required live |
+| 10:15-10:45 AM | Block 0 | Learning Room setup and Classroom assignment acceptance | Required live |
+| 10:45-11:20 AM | Block 1 | Screen reader orientation to GitHub | Required live: Challenge 1 |
+| 11:20 AM-12:00 PM | Block 2 | Issues and conversations | Required live: Challenges 2-3 |
+| 12:00-1:00 PM | Lunch | Food, rest, informal support | Required break |
+| 1:00-1:50 PM | Block 3 | Branching, editing, and committing | Required live: Challenges 4-5 |
+| 1:50-2:45 PM | Block 4 | Pull requests and review basics | Required live: Challenge 6; Challenge 7 if time allows |
+| 2:45-3:00 PM | Break | Rest and facilitator triage | Required break |
+| 3:00-4:00 PM | Block 5 | Contribution lab and merge-conflict support | Live support: finish Challenges 4-7 |
+| 4:00-4:30 PM | Block 6 | Culture, triage, labels, and notifications | Async or stretch: Challenges 8-9 |
+| 4:30-5:00 PM | Wrap-up | Reflection, next steps, remote catch-up path | Required live |
+
+**Total:** 8 hours of event time (9:00 AM - 5:00 PM Pacific), with about 5 hours of hands-on GitHub instruction after keynote, opening remarks, lunch, and breaks.
 
 
 ## Pre-Day Checklist
@@ -49,12 +63,12 @@ When you accept the Day 1 assignment link, GitHub creates a private copy of the 
 Before entering the room (or joining the call), participants should have completed everything in [Pre-Workshop Setup](../docs/00-pre-workshop-setup.md). The facilitator will do a quick verification at the start.
 
 
-## Block 0 - Welcome and Orientation (12:00 PM, 30 min)
+## Block 0 - Learning Room Setup and Orientation (10:15 AM, 30 min)
 
 ### Date and Location
 
-**Day 1: May 21, 2026** | 12:00 PM - 8:00 PM Eastern
-**Day 2: May 22, 2026** | 12:00 PM - 8:00 PM Eastern
+**Day 1: May 21, 2026** | 9:00 AM - 5:00 PM Pacific
+**Day 2: May 22, 2026** | 9:00 AM - 5:00 PM Pacific
 
 ### Facilitators
 
@@ -96,7 +110,7 @@ The facilitator shares the Day 1 assignment link. Each participant follows the [
 - Each participant: your name, your screen reader and OS, what brings you here
 
 
-## Block 1 - Screen Reader Orientation to GitHub (12:30 PM, 40 min)
+## Block 1 - Screen Reader Orientation to GitHub (10:45 AM, 35 min)
 
 ### Purpose
 
@@ -161,7 +175,7 @@ When you finish, submit your evidence in the challenge issue and close it. Withi
 [Screen Reader Cheat Sheet](../docs/appendix-b-screen-reader-cheatsheet.md)
 
 
-## Block 2 - Issues and Conversations (1:10 PM, 50 min)
+## Block 2 - Issues and Conversations (11:20 AM, 40 min)
 
 ### Purpose
 
@@ -211,12 +225,12 @@ After submitting your evidence, close Challenge 3. Challenge 4 opens.
 [Working with Issues](../docs/05-working-with-issues.md) | [Glossary](../docs/appendix-a-glossary.md)
 
 
-## Break (2:00 PM, 15 min)
+## Lunch (12:00 PM, 60 min)
 
 Encourage participants to stand, stretch, and rest their ears. Screen reader listening is cognitively demanding work.
 
 
-## Block 3 - Branching, Editing, and Committing (2:15 PM, 55 min)
+## Block 3 - Branching, Editing, and Committing (1:00 PM, 50 min)
 
 ### Purpose
 
@@ -281,7 +295,7 @@ If you are still working on a challenge, use this time to finish.
 [Working with Pull Requests](../docs/06-working-with-pull-requests.md)
 
 
-## Block 4 - Pull Requests, Review, and Merge Conflicts (3:10 PM, 50 min)
+## Block 4 - Pull Requests, Review, and Merge Conflicts (1:50 PM, 55 min)
 
 ### Purpose
 
@@ -358,7 +372,7 @@ Submit your evidence and close Challenge 7. Challenge 8 appears.
 
 ### Part C - Navigating a PR with Your Screen Reader (10 min)
 
-Before lunch, practice navigating the PR you just opened:
+Before the afternoon break, practice navigating the PR you just opened:
 
 1. **Conversation tab:** Read the PR title, description, and Aria's comment
 2. **Commits tab:** How many commits? Navigate the list
@@ -371,10 +385,12 @@ Before lunch, practice navigating the PR you just opened:
 [Working with Pull Requests](../docs/06-working-with-pull-requests.md) | [Merge Conflicts](../docs/07-merge-conflicts.md)
 
 
-## Dinner Break (4:00 PM, 60 min)
+## Break (2:45 PM, 15 min)
 
 
-## Block 5 - Culture, Triage, and Merge Day (5:00 PM, 60 min)
+## Block 5 - Contribution Lab and Merge-Conflict Support (3:00 PM, 60 min)
+
+Use this block as supported lab time first. If most participants have already opened a pull request, move into culture, triage, and merge-day practice. If not, keep facilitators focused on helping participants finish Challenges 4-7.
 
 ### Purpose
 
@@ -416,7 +432,7 @@ Challenge 9 is the Day 1 capstone: get your PR merged.
 4. After the merge, go to the Code tab and verify your changes appear on `main`
 5. Check that your linked issue was automatically closed
 
-> **Magic Moment:** Navigate to the Code tab. Your changes are on `main`. The issue you filed is closed. Your name is in the commit history. This is how every open source contribution works -- everywhere, on every project, forever.
+> **Magic Moment:** If your PR merged today, navigate to the Code tab. Your changes are on `main`. The issue you filed is closed. Your name is in the commit history. If your PR is still in progress, you have the same path in front of you: finish the review, merge when ready, and the result is real.
 
 Submit your evidence and close Challenge 9.
 
@@ -430,12 +446,9 @@ If you finished Challenges 8-9, find a classmate who is still working:
 If everyone is done, browse the bonus challenges (A through E) for extra practice.
 
 
-## Break (6:00 PM, 15 min)
+## Block 6 - Community: Communication, Labels, and Notifications (4:00 PM, 30 min)
 
-Stand, stretch, and rest your ears. The final block is discussion-centered and lower intensity.
-
-
-## Block 6 - Community: Communication, Labels, and Notifications (6:15 PM, 75 min)
+This block is stretch content for live delivery. If participants are still finishing pull requests, use this time as supported lab time and assign the culture, triage, labels, and notifications material as async follow-up.
 
 ### Purpose
 
@@ -521,7 +534,7 @@ Practice applying labels to a challenge issue in your repo. If you have complete
 4. Change your repository Watch settings to "Participating and @mentions only"
 
 
-## Wrap-Up (7:30 PM, 30 min)
+## Wrap-Up (4:30 PM, 30 min)
 
 ### What You Built Today (10 min)
 

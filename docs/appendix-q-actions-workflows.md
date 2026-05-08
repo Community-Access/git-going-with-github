@@ -1,6 +1,6 @@
 # Appendix Q: GitHub Actions and Workflows
 >
-> **Listen to Episode 34:** [GitHub Actions and Workflows](../PODCASTS.md) - a conversational audio overview of this chapter. Listen before reading to preview the concepts, or after to reinforce what you learned.
+> **Listen to Episode 34:** [GitHub Actions and Workflows](../admin/PODCASTS.md) - a conversational audio overview of this chapter. Listen before reading to preview the concepts, or after to reinforce what you learned.
 
 > **Reference companion to:** [Chapter 17: Issue Templates](17-issue-templates.md) | Also relevant: [Chapter 19](19-accessibility-agents.md)
 >

@@ -1,8 +1,8 @@
 #!/usr/bin/env python3
 """Batch-generate all podcast episodes using local Piper ONNX models.
 
-Iterates every ep*.txt script in podcasts/scripts/ and writes WAVs
-to podcasts/audio/.
+Iterates every ep*.txt and cc-*.txt script in podcasts/scripts/ and writes
+final episode files to podcasts/audio/ according to voice-config.ini.
 
 Usage:
   python -m podcasts.tts.generate_all
@@ -13,7 +13,45 @@ import subprocess
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parent.parent          # podcasts/
+REPO_ROOT = ROOT.parent
 SCRIPTS_DIR = ROOT / 'scripts'
+
+if str(REPO_ROOT) not in sys.path:
+    sys.path.insert(0, str(REPO_ROOT))
+
+
+def script_index(path: Path) -> int | None:
+    """Return the numeric index for epNN or cc-NN scripts, else None."""
+    stem = path.stem
+    if stem.startswith('ep'):
+        try:
+            return int(stem.split('-', 1)[0].replace('ep', ''))
+        except ValueError:
+            return None
+    if stem.startswith('cc-'):
+        parts = stem.split('-', 2)
+        if len(parts) > 1 and parts[1].isdigit():
+            return int(parts[1])
+    return None
+
+
+def script_sort_key(path: Path) -> tuple[int, int, str]:
+    stem = path.stem
+    if stem.startswith('ep'):
+        return (0, script_index(path) or 0, stem)
+    if stem.startswith('cc-'):
+        index = script_index(path)
+        return (1, index if index is not None else 999, stem)
+    return (2, 999, stem)
+
+
+def script_group(path: Path) -> str:
+    parent = path.parent.name.lower()
+    if parent in {'chapters', 'challenges', 'appendices'}:
+        return parent
+    if path.stem.startswith('cc-'):
+        return 'challenges'
+    return 'chapters'
 
 
 def main():
@@ -21,28 +59,46 @@ def main():
     parser = argparse.ArgumentParser(description='Batch-generate all podcast episodes')
     parser.add_argument('--start', type=int, default=0, help='First episode number (inclusive)')
     parser.add_argument('--end', type=int, default=999, help='Last episode number (inclusive)')
+    parser.add_argument('--group', choices=['all', 'chapters', 'challenges', 'appendices'], default='all',
+                        help='Limit generation to a script category')
     args = parser.parse_args()
 
-    scripts = sorted(SCRIPTS_DIR.glob('ep*.txt'))
+    scripts: list[Path] = sorted(
+        [
+            path
+            for path in SCRIPTS_DIR.rglob('*.txt')
+            if path.is_file() and (path.stem.startswith('ep') or path.stem.startswith('cc-'))
+        ],
+        key=script_sort_key,
+    )
     if not scripts:
         print(f'No episode scripts found in {SCRIPTS_DIR}')
         sys.exit(1)
 
-    # Filter to requested range
-    def ep_num(p: Path) -> int:
-        try:
-            return int(p.stem.split('-')[0].replace('ep', ''))
-        except ValueError:
-            return -1
+    # Filter numbered episode and challenge scripts to the requested range.
+    # Bonus challenge scripts remain included only for the default full run.
+    filtered_scripts: list[Path] = []
+    for script in scripts:
+        index = script_index(script)
+        if index is None:
+            if args.start == 0 and args.end == 999:
+                filtered_scripts.append(script)
+            continue
+        if args.start <= index <= args.end and (args.group == 'all' or script_group(script) == args.group):
+            filtered_scripts.append(script)
 
-    scripts = [s for s in scripts if args.start <= ep_num(s) <= args.end]
-    print(f'Found {len(scripts)} scripts to process (ep{args.start:02d}–ep{args.end:02d})')
+    scripts = filtered_scripts
+    if not scripts:
+        print(f'No matching scripts found in {SCRIPTS_DIR} for range {args.start}..{args.end}')
+        sys.exit(1)
+
+    print(f'Found {len(scripts)} scripts to process (range {args.start:02d}-{args.end:02d})')
 
     # Import the single-episode generator from our own package
     from podcasts.tts.generate_episode import generate_episode
 
     success = 0
-    failed = []
+    failed: list[str] = []
     for s in scripts:
         try:
             result = generate_episode(s)

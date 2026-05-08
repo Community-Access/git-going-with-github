@@ -2,6 +2,8 @@
 
 > Single, end-to-end guide for deploying a new Git Going with GitHub workshop cohort. Covers everything from creating the classroom through post-workshop teardown. This is the only deployment document you need.
 
+> Before sharing invite links with students, complete the [Go-Live QA Guide](../GO-LIVE-QA-GUIDE.md). It is the final release gate for content, workflows, Classroom setup, podcasts, accessibility, and human test coverage.
+
 ## How the Workshop Works
 
 Each student gets their own **private repository** created by GitHub Classroom from the `learning-room-template`. Inside that repo, three automation systems guide the student through all 21 challenges without facilitator intervention:
@@ -63,6 +65,7 @@ Day-2-only participants skip Assignment 1 entirely. They verify readiness using 
 | [student-progression.yml](student-progression.yml) | Reference copy of the progression bot workflow |
 | [HUMAN_TEST_MATRIX.md](HUMAN_TEST_MATRIX.md) | End-to-end human walkthrough for all 16 core and 5 bonus challenges |
 | [teardown-checklist.md](teardown-checklist.md) | Post-workshop cleanup steps |
+| [../GO-LIVE-QA-GUIDE.md](../GO-LIVE-QA-GUIDE.md) | Final release-readiness guide and checklist |
 
 ---
 
@@ -77,6 +80,16 @@ Before starting, confirm the following:
 - [ ] "Allow GitHub Actions to create and approve pull requests" is checked in the template repo
 - [ ] You have the student list (GitHub usernames required; real names optional)
 - [ ] You have confirmed dates for Day 1 and Day 2
+
+### Role separation for testing
+
+Use separate accounts for facilitator and student testing.
+
+- Keep your facilitator account (for example, `accesswatch`) as classroom admin/instructor only
+- Use a dedicated test-student account to accept invite links and complete challenge flow
+- Avoid using the facilitator account as a student for validation runs - admin permissions can hide real student experience issues
+
+This keeps grading data clean, avoids permission edge cases, and gives you an accurate end-to-end student test.
 
 ---
 
@@ -337,9 +350,9 @@ The Student Progression Bot manages the entire challenge sequence. Each student 
 | 3 | Join the Conversation | Close issue | -- | -- |
 | 4 | Branch Out | Close issue | -- | Yes (branch exists) |
 | 5 | Make Your Mark | Close issue | -- | Yes (file edited) |
-| 6 | Your First Pull Request | Close issue | Yes (PR structure) | Yes (issue reference) |
-| 7 | Resolve a Merge Conflict | Close issue | Yes (PR feedback) | Yes (no conflict markers) |
-| 8 | Open Source Culture | Close issue | -- | -- |
+| 6 | Open Your First Pull Request | Close issue | Yes (PR structure) | Yes (issue reference) |
+| 7 | Survive a Merge Conflict | Close issue | Yes (PR feedback) | Yes (no conflict markers) |
+| 8 | The Culture Layer | Close issue | -- | -- |
 | 9 | Merge Day | Close issue | Yes (merge) | Yes (PR merged) |
 
 #### Day 2 (Assignment 2): Challenges 10-16 + Bonus

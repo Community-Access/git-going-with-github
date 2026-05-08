@@ -191,10 +191,10 @@ Instead of hardcoding secrets in your files, store them in environment variables
 ### The pattern
 
 ```bash
-# ❌ Never do this (hardcoded secret in code)
+# Never do this (hardcoded secret in code)
 API_KEY = "sk-abc123yoursecretkeyhere"
 
-# ✅ Do this instead (read from environment)
+# Do this instead (read from environment)
 API_KEY = os.environ.get("API_KEY")      # Python
 const apiKey = process.env.API_KEY;      // JavaScript
 ```
@@ -260,13 +260,13 @@ Read through the diff looking for:
 `git add .` stages everything in your working directory — including files you didn't mean to add.
 
 ```bash
-# ❌ Risky — stages everything without review
+# Risky - stages everything without review
 git add .
 
-# ✅ Better — stage specific files you know are clean
+# Better - stage specific files you know are clean
 git add src/auth.js docs/README.md
 
-# ✅ Or stage interactively — review each file before adding
+# Or stage interactively - review each file before adding
 git add -p
 ```
 
@@ -458,7 +458,7 @@ After removing the secret from history, go to **Security → Secret scanning** i
 Secret committed
       │
       ├─ Still local only (not pushed)?
-      │     └─ git reset --soft HEAD~1 → remove secret → recommit ✅
+      │     └─ git reset --soft HEAD~1 -> remove secret -> recommit
       │
       └─ Already pushed?
             ├─ Rotate the secret FIRST (assume compromised)
@@ -509,7 +509,7 @@ As a contributor you can see push protection in action when a push is blocked. M
 
 ### Never store credentials in plaintext
 
-❌ Don't do these:
+Do not do these:
 ```bash
 # Storing a token in a plain text file
 echo "ghp_mytoken" > ~/token.txt
@@ -521,7 +521,7 @@ export GITHUB_TOKEN="ghp_mytoken"  # in a .bashrc or .zshrc that's committed
 git config --global url."https://myusername:ghp_mytoken@github.com".insteadOf "https://github.com"
 ```
 
-✅ Do this instead — use the OS credential store:
+Do this instead - use the OS credential store:
 
 ```bash
 # macOS — use Keychain

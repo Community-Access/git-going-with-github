@@ -1,6 +1,6 @@
 # Understanding GitHub's Web Structure
 >
-> **Listen to Episode 2:** [Understanding GitHub on the Web](../PODCASTS.md) - a conversational audio overview of this chapter. Listen before reading to preview the concepts, or after to reinforce what you learned.
+> **Listen to Episode 2:** [Understanding GitHub on the Web](../admin/PODCASTS.md) - a conversational audio overview of this chapter. Listen before reading to preview the concepts, or after to reinforce what you learned.
 
 > **Related appendices:** [Appendix A: Glossary](appendix-a-glossary.md) | [Appendix B: Screen Reader Cheat Sheet](appendix-b-screen-reader-cheatsheet.md)
 > **Authoritative sources:** [GitHub Docs: About GitHub](https://docs.github.com/en/get-started/start-your-journey/about-github-and-git) | [GitHub Accessibility Documentation](https://accessibility.github.com/documentation)
@@ -644,7 +644,7 @@ Open any GitHub repository - try [github.com/community-access/accessibility-agen
 > Once you have this mental model solid, the Accessibility Agents make more sense. The `@daily-briefing` agent reads your GitHub notifications and presents a structured report - but the report structure mirrors the landmark structure of GitHub itself: global activity, then per-repo activity, then per-issue and per-PR detail. The agent describes the same building you have already walked through manually.
 
 
-> ➡️ **Next Step:** Move on to [Chapter 03: Navigating Repositories](03-navigating-repositories.md).
+> **Next Step:** Move on to [Chapter 03: Navigating Repositories](03-navigating-repositories.md).
 
 ---
 

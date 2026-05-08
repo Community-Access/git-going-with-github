@@ -1,0 +1,1565 @@
+[ALEX]
+Welcome to Git Going with GitHub, episode 12: Git and Source Control in VS Code. I am Alex. Today we are going to make Git and Source Control in VS Code something you can explain, practice, and recover from when the interface surprises you.
+
+[JAMIE]
+And I am Jamie. I will be the voice of the learner who is willing to ask, what is this for, where am I, and how do I know I did it right?
+
+[PAUSE]
+
+[ALEX]
+The big idea today: Cloning, branching, staging, committing, pushing, and pulling from VS Code. We will name the concept, explain why it matters, practice the move, and point out the checks that tell you the work is real.
+
+[JAMIE]
+So the episode should work even if someone has not read the chapter yet.
+
+[ALEX]
+Exactly. The transcript has to stand on its own. It can point toward practice, but it should teach the concept right here in the conversation.
+
+[PAUSE]
+
+[JAMIE]
+Okay, set the room for us. What are we walking into?
+
+[ALEX]
+Start with Managing Repositories, Branches, and Changes Accessibly: Day 2, Block 1-2 Material This guide covers all Git operations in VS Code: cloning repositories, navigating the Source Control panel with screen readers, branch management, staging changes (including individual lines), push/pull operations, viewing file. The next useful detail is this: Prerequisites: VS Code Setup & Accessibility Basics, Working with Pull Requests, Merge Conflicts Mac keyboard shortcuts: Throughout this chapter, all Ctrl+ shortcuts use Cmd+ on Mac, and Alt+ shortcuts use Option+.
+
+[ALEX]
+A solid Git habit is to know which branch you are on, what changed, and what confirmation you expect before you run the next command.
+
+[ALEX]
+The next layer is this. Here is the plain-English version of Workshop Recommendation (Chapter 14 / Challenge 10). Chapter 14 is the first local Git workflow chapter with hands-on repository management. Put another way, it supports Challenge 10: Go Local. It is like learning a transit route. The names of the stops matter because they tell you whether you are still going the right direction.
+
+[ALEX]
+The practical anchors are these. There are 3. Each challenge should take under 10 minutes each. The evidence is PR metadata, branch names, and committed changes. The pattern is clone, branch, edit, commit, push, PR.
+
+[JAMIE]
+What does the learner do first, second, and then after that?
+
+[ALEX]
+Start with Challenge 10 Practice Set. There is something to understand, something to try, and something that proves the try worked.
+
+[ALEX]
+First, clone your Learning Room repository - clone your private Learning Room repo to your local machine using VS Code. Then, create a branch and make one commit - check out (or create) your learn/ branch, edit a file, stage, write a clear commit message, and commit locally. After that, push and open a linked PR - push your branch and open a PR in your Learning Room repo that references your Challenge 10 or Day 2 PR issue. It is a checklist, but a meaningful one: every item creates evidence that the next step is safe.
+
+[ALEX]
+A solid pull request habit is to separate three questions: what changed, why it changed, and what still needs review. That keeps the conversation useful instead of noisy.
+
+[PAUSE]
+
+[JAMIE]
+Turn that into a path someone can follow.
+
+[ALEX]
+Keep the learner anchored in Practice 10.1 Step-by-Step: Clone Your Learning Room Repository. Get a local copy of your Learning Room repository on your machine using VS Code. This is the part to say slowly: VS Code desktop (or github.dev if you cannot install desktop VS Code).
+
+[ALEX]
+First, open VS Code. If no folder is open, you should see the Welcome tab. Then, open the Command Palette: Ctrl+Shift+P (Mac: Cmd+Shift+P). After that, type git clone and select Git: Clone. Finally, VS Code asks for a repository URL. Paste your Learning Room repo URL (it looks like https://github.com/the workshop organization/learning-room-your username.git). You can copy this from the green Code button on your repo's GitHub page. It is like walking a hallway with named doors: read the sign, enter the right room, then confirm where you landed.
+
+[JAMIE]
+What is the ordered workflow?
+
+[ALEX]
+First, press Enter. Then, a file browser dialog opens asking where to save the clone. Choose a folder you can find easily (for example, Documents or Desktop). Press Select as Repository Destination. After that, VS Code clones the repository. When it finishes, a notification appears asking "Would you like to open the cloned repository?" Activate Open. Finally, verify the clone worked: press Ctrl+Shift+E (Mac: Cmd+Shift+E) to open Explorer. Your screen reader should announce the file tree with files like README.md and the docs/ folder. The rhythm is simple: orient, act, verify, then continue.
+
+[JAMIE]
+Give me the sequence, because order matters here.
+
+[ALEX]
+The reason Practice 10.2 Step-by-Step: Create a Branch and Commit matters is that see also: Chapter 13: How Git Works explains the three areas (working directory, staging, repository) that make commits meaningful. That gives the learner a simple foothold: check out (or create) a properly named branch, edit a file, stage the change, and commit with a clear message.
+
+[ALEX]
+First, open the Command Palette: Ctrl+Shift+P (Mac: Cmd+Shift+P). Then, if your learn/ branch already exists on the remote (because you created it during Day 1), type git checkout and select Git: Checkout to., then pick learn/your username. If the branch does not exist yet, type git create branch and select Git: Create Branch. After that, the status bar at the bottom of VS Code now shows your branch name instead of main. Your screen reader announces the branch name when you focus the status bar. Finally, open the Explorer (Ctrl+Shift+E) and navigate to the docs/ folder. Open any file mentioned in your Challenge 10 issue (for example, docs/welcome.md). The rhythm is simple: orient, act, verify, then continue.
+
+[JAMIE]
+How would you walk the room through that step by step?
+
+[ALEX]
+First, make one small, meaningful edit. For example, add a new sentence, fix a typo, or improve a description. Save the file with Ctrl+S (Mac: Cmd+S). Then, open the Source Control panel: Ctrl+Shift+G (Mac: Cmd+Shift+G). Your screen reader announces "Source Control" and shows your changed file under "Changes.". After that, navigate to your changed file in the Changes list. Press Enter or activate the + (Stage Changes) button next to the filename. The file moves from "Changes" to "Staged Changes.". Finally, move focus to the Message input box at the top of the Source Control panel. Type a clear commit message, for example: docs: improve welcome.md introduction. Think of it as a rail line: each stop confirms you are still on the right route before the next one.
+
+[JAMIE]
+Let's pause on Practice 10.3 Step-by-Step: Push and Open a Linked PR. What should a learner take away from it?
+
+[ALEX]
+Start with Practice 10.3 Step-by-Step: Push and Open a Linked PR: Push your branch to GitHub and open a PR in your Learning Room repo that references your challenge issue. The next useful detail is this: VS Code (for the push) and GitHub.com (for the PR). Think of it like entering a new building: first you find the lobby, then the room, then the door you actually need.
+
+[ALEX]
+First, open the Command Palette: Ctrl+Shift+P (Mac: Cmd+Shift+P). Then, type git push and select Git: Push. If VS Code asks to publish the branch (because it is new), confirm by selecting OK or Publish Branch. After that, wait for the push to complete. VS Code shows a progress notification. When done, the sync indicator in the status bar should show no pending changes. Finally, open your browser and navigate to your Learning Room repository on GitHub. Think of it as a rail line: each stop confirms you are still on the right route before the next one.
+
+[JAMIE]
+Before we leave Practice 10.3 Step-by-Step: Push and Open a Linked PR, what is the practical point?
+
+[ALEX]
+First, GitHub usually shows a yellow banner: "yourname recently pushed to learn/yourname." Activate the Compare & pull request button in that banner. Then, if you do not see the banner, activate the Pull requests tab, then activate New pull request. Set the base branch to main and the compare branch to your learn/your username branch. After that, in the PR title, write a descriptive title (for example: "docs: improve welcome.md introduction"). Finally, in the PR description, type Closes XX (replace XX with your Challenge 10 or Day 2 PR issue number). Because the issue lives in the same repo as the PR, you only need the short XX form. Treat it like a recipe: do not add the next ingredient until the previous one is actually in the bowl.
+
+[PAUSE]
+
+[JAMIE]
+What should the learner prove to themselves after each small task?
+
+[ALEX]
+Here is the plain-English version of Completing Challenge 10: Submit Your Evidence. Open your assigned Challenge 10 issue in your Learning Room repo and post a completion comment. Put another way, close your Challenge 10 issue when your branch is pushed and the PR is open.
+
+[ALEX]
+The useful habit is simple: orient first, act second, verify third. That pause before acting is part of the work.
+
+[ALEX]
+This is where the talk moves from concept to action. Start with Expected Outcomes. There is something to understand, something to try, and something that proves the try worked.
+
+[ALEX]
+The room should hear these as checkpoints. Student can clone a repository using VS Code Command Palette. Student can create or check out a named branch following the workshop naming convention. Student can navigate the Source Control panel, stage files, and commit with a descriptive message. Student can push a branch and open a PR with same-repo issue linking.
+
+[JAMIE]
+Let's pause on If You Get Stuck. What should a learner take away from it?
+
+[ALEX]
+Keep the learner anchored in If You Get Stuck. Continue learning: The GitHub Skills course Introduction to Git walks through commits, branches, and merges in an interactive, self-paced format. This is the part to say slowly: See Appendix Z for the full catalog.
+
+[ALEX]
+First, command Palette does not open? Confirm you are in VS Code (not the browser) and press Ctrl+Shift+P (Mac: Cmd+Shift+P). Then, source Control panel is empty? You may not have saved your file yet. Press Ctrl+S to save, then check again. After that, push fails with authentication error? Open Command Palette, run Git: Fetch to test your connection. If it fails, run GitHub: Sign In from Command Palette. Finally, branch name wrong? Open Command Palette, run Git: Rename Branch. to fix it before pushing. It is like walking a hallway with named doors: read the sign, enter the right room, then confirm where you landed.
+
+[JAMIE]
+Before we leave If You Get Stuck, what is the practical point?
+
+[ALEX]
+First, cannot find the "Compare & pull request" banner on GitHub? Navigate to Pull requests tab and create the PR manually (step 6 above). Then, closes XX not linking? Make sure the format is exactly Closes XX with a single space and no extra characters. The keyword is case-insensitive but must be one of Closes, Fixes, or Resolves. After that, ask facilitator to verify your clone location, branch name, and help with one push. Finally, finished but not sure you did it right? Compare your work against the Challenge 10 reference solution. The rhythm is simple: orient, act, verify, then continue.
+
+[PAUSE]
+
+[ALEX]
+Before the learner moves on. The reason Learning Moment matters is that local Git operations give you full control and immediate feedback. That gives the learner a simple foothold: you can see your changes, review them, and fix mistakes before they reach GitHub. The interface gets friendlier when it stops being a wall of controls and starts being a set of named places.
+
+[JAMIE]
+Let's pause on Learning Pattern Used in This Chapter. What should a learner take away from it?
+
+[ALEX]
+Start with Learning Pattern Used in This Chapter. There is something to understand, something to try, and something that proves the try worked.
+
+[ALEX]
+First, clone once to get a local copy of the project. Then, branch before editing (never work directly on main). After that, make small, focused edits with clear commit messages. Finally, push and open a PR that links to an issue for traceability. Think of it as a rail line: each stop confirms you are still on the right route before the next one.
+
+[JAMIE]
+Before we leave Learning Pattern Used in This Chapter, what is the practical point?
+
+[ALEX]
+First, verify each step before moving to the next. Treat it like a recipe: do not add the next ingredient until the previous one is actually in the bowl.
+
+[ALEX]
+Hold that next to this. Here is the plain-English version of About Learning Cards. Throughout this chapter, each major operation includes learning cards - expandable sections showing how to accomplish the same task from multiple perspectives. Put another way, open the card that matches how you work.
+
+[PAUSE]
+
+[JAMIE]
+Let's pause on Tool Cards: Clone a Repository (Day 2). What should a learner take away from it?
+
+[ALEX]
+This is where Tool Cards: Clone a Repository (Day 2) becomes real: VS Code Desktop (primary for Day 2). That matters in practice: github.dev (web editor): No clone needed.
+
+[ALEX]
+First, ctrl+Shift+P Git: Clone paste the HTTPS URL choose a folder Open. Then, file Clone Repository paste URL or select from your account Clone. It is a checklist, but a meaningful one: every item creates evidence that the next step is safe.
+
+[ALEX]
+Treat examples as spoken recipes, not decorations. You may hear something like git clone https://github.com/owner/repo.git && cd repo. gh repo clone owner/repo && cd repo. Read the command, understand what it changes, then run it only when the repository state matches the lesson.
+
+[JAMIE]
+Let's pause on Method 1: Command Palette (Recommended for Screen Readers). What should a learner take away from it?
+
+[ALEX]
+Start with Method 1: Command Palette (Recommended for Screen Readers). There is something to understand, something to try, and something that proves the try worked.
+
+[ALEX]
+First, open Command Palette: Ctrl+Shift+P (Mac: Cmd+Shift+P). Then, type "git clone". After that, select "Git: Clone". Finally, paste the repository URL (example: https://github.com/community-access/accessibility-agents.git). It is like walking a hallway with named doors: read the sign, enter the right room, then confirm where you landed.
+
+[JAMIE]
+Before we leave Method 1: Command Palette (Recommended for Screen Readers), what is the practical point?
+
+[ALEX]
+First, press Enter. Then, choose a local folder where the repository should be cloned. After that, VS Code asks: "Would you like to open the cloned repository?" - select "Open". The rhythm is simple: orient, act, verify, then continue.
+
+[ALEX]
+A solid navigation habit is to prove where you are before activating controls. Headings, landmarks, and the address bar are not trivia; they are your map.
+
+[JAMIE]
+What is the one idea that makes the next few steps less mysterious?
+
+[ALEX]
+Start with Screen reader navigation. There is something to understand, something to try, and something that proves the try worked.
+
+[ALEX]
+The parts worth keeping in working memory are these. The Command Palette is a searchable list - type to filter, Up/Down Arrow to navigate results. The folder picker is a standard file dialog - navigate with Arrow keys, Enter to select.
+
+[PAUSE]
+
+[JAMIE]
+Let's pause on Method 2: Start Page Clone Button. What should a learner take away from it?
+
+[ALEX]
+Start with Method 2: Start Page Clone Button: The Start page is keyboard-accessible. The next useful detail is this: Tab to navigate between "New File," "Open Folder," and "Clone Repository" buttons.
+
+[ALEX]
+First, open VS Code (no folder open). Then, the Start page appears. After that, navigate to "Clone Git Repository" button - press Enter. Finally, paste repository URL → Enter. Think of it as a rail line: each stop confirms you are still on the right route before the next one.
+
+[JAMIE]
+Before we leave Method 2: Start Page Clone Button, what is the practical point?
+
+[ALEX]
+First, choose destination folder. Then, open when prompted. Treat it like a recipe: do not add the next ingredient until the previous one is actually in the bowl.
+
+[JAMIE]
+Let's pause on Method 3: From GitHub.com. What should a learner take away from it?
+
+[ALEX]
+Start with Method 3: From GitHub.com. There is something to understand, something to try, and something that proves the try worked.
+
+[ALEX]
+First, on any GitHub repository page, click the green "Code" button. Then, copy the HTTPS URL (recommended) or SSH URL. After that, open VS Code → Ctrl+Shift+P (Mac: Cmd+Shift+P) → "Git: Clone". Finally, paste URL → Enter. Treat it like a recipe: do not add the next ingredient until the previous one is actually in the bowl.
+
+[JAMIE]
+Before we leave Method 3: From GitHub.com, what is the practical point?
+
+[ALEX]
+First, choose destination → Open. It is a checklist, but a meaningful one: every item creates evidence that the next step is safe.
+
+[JAMIE]
+Let's pause on Learning Cards: Cloning a Repository. What should a learner take away from it?
+
+[ALEX]
+This is where Learning Cards: Cloning a Repository becomes real: low vision users (zoom, high contrast). That matters in practice: Cloning works the same as the Command Palette method above. The workshop is closer to rehearsal than lecture. You hear the move, try the move, and then check what changed.
+
+[ALEX]
+First, the Command Palette (Ctrl+Shift+P) appears at the top-center of VS Code and scales with your zoom level - it remains visible even at 200%+ zoom. Then, when the folder picker dialog opens, it may extend beyond your visible area at high zoom. Use Alt+Up Arrow to navigate up in the folder tree and Enter to select. The dialog title bar shows your current location. After that, after cloning, the Explorer panel (Ctrl+Shift+E) shows the file tree. At high zoom, use Ctrl+- to temporarily reduce zoom if the tree is hard to scan, then Ctrl+= to restore. Finally, if you use a high contrast theme (Settings: Ctrl+, then search "color theme"), file status colours in the Explorer (green for added, yellow for modified) may be subtle. Enable Editor Decorator Colors or rely on the Source Control panel (Ctrl+Shift+G) where. It is a checklist, but a meaningful one: every item creates evidence that the next step is safe.
+
+[JAMIE]
+Before we leave Learning Cards: Cloning a Repository, what is the practical point?
+
+[ALEX]
+First, navigate to the repository on GitHub.com. Then, press. (period) to open github.dev - a browser-based VS Code editor. After that, the full repository opens in an editor with file tree, search, and editing. Finally, changes are committed directly to GitHub from the browser. It is like walking a hallway with named doors: read the sign, enter the right room, then confirm where you landed.
+
+[ALEX]
+Treat examples as spoken recipes, not decorations. You may hear something like Standard Git clone; git clone https://github.com/Community-Access/vscode-sci-fi-themes.git; cd vscode-sci-fi-themes; GitHub CLI clone (shorter syntax, handles auth automatically); gh repo clone Community-Access/vscode-sci-fi-themes; cd vscode-sci-fi-themes. Read the command, understand what it changes, then run it only when the repository state matches the lesson.
+
+[PAUSE]
+
+[JAMIE]
+Why is the evidence prompt part of the teaching, not just grading?
+
+[ALEX]
+Keep the learner anchored in Try It Now: Clone the Sci-Fi Themes Repo. To make your first clone meaningful and fun, try cloning the VS Code Sci-Fi Thinking Phrases repository. This is the part to say slowly: Repository URL: https://github.com/community-access/vscode-sci-fi-themes.git.
+
+[ALEX]
+These are the details that keep the idea from floating away. Star Trek -- Engage warp drive and run diagnostics. The Hitchhiker's Guide -- Consult the Infinite Improbability Drive. Star Wars -- Read the ripples in the Force.
+
+[ALEX]
+Another way to ground it. Start with Why Clone This? There is something to understand, something to try, and something that proves the try worked.
+
+[ALEX]
+That becomes easier when you listen for these cues. It's a real, working repository with multiple files to explore. You'll see a practical use of cloning (customizing your personal VS Code setup). After cloning, you can pick a theme and apply it to your settings.json. When you open Copilot Chat, you'll see your custom phrases appear!
+
+[JAMIE]
+Let's pause on Quick Start. What should a learner take away from it?
+
+[ALEX]
+Start with Quick Start: See CLONE-THIS-REPO.md in that repo for full instructions. The next useful detail is this: If you prefer not to clone locally, you can work entirely on GitHub.com.
+
+[ALEX]
+First, clone: Ctrl+Shift+P → "Git: Clone" → paste URL above → Enter. Then, choose a destination folder and open when prompted. After that, navigate to the themes/ folder and pick a.json file (star-trek, hitchhikers, or star-wars). Finally, copy the chat.agent.thinking.phrases setting into your VS Code settings.json. Think of it as a rail line: each stop confirms you are still on the right route before the next one.
+
+[JAMIE]
+Before we leave Quick Start, what is the practical point?
+
+[ALEX]
+First, reload VS Code: Ctrl+Shift+P → "Developer: Reload Window". Then, open Copilot Chat (Ctrl+Shift+I) and ask a question--watch your custom phrases appear! After that, navigate to the repository on GitHub. Finally, click any file to view it, then click the pencil icon (Edit) to modify it directly in the browser. Treat it like a recipe: do not add the next ingredient until the previous one is actually in the bowl.
+
+[ALEX]
+Treat examples as spoken recipes, not decorations. You may hear something like Clone using owner/name (no URL needed); gh repo clone community-access/vscode-sci-fi-themes; Clone and cd into the folder; gh repo clone community-access/vscode-sci-fi-themes && cd vscode-sci-fi-themes; Open the cloned repo in VS Code; gh repo clone. Read the command, understand what it changes, then run it only when the repository state matches the lesson.
+
+[PAUSE]
+
+[ALEX]
+This is the part worth saying out loud. Here is the plain-English version of 2. The Source Control Panel - Complete Walkthrough. The Source Control panel (Ctrl+Shift+G - Mac: Cmd+Shift+G) is where all Git operations happen in VS Code. Put another way, this section provides a complete screen reader walkthrough of every interactive element. It is like learning a transit route. The names of the stops matter because they tell you whether you are still going the right direction.
+
+[JAMIE]
+What would you say to someone who is already bracing for this to be too much?
+
+[ALEX]
+This is where Opening the Source Control Panel becomes real: shortcut: Ctrl+Shift+G (Mac: Cmd+Shift+G).
+
+[ALEX]
+That connects to another useful point. Start with What opens. There is something to understand, something to try, and something that proves the try worked.
+
+[ALEX]
+For a learner, the useful signals are these. A sidebar panel on the left side of VS Code. Focus lands on the first interactive element (usually the commit message input or the first changed file).
+
+[PAUSE]
+
+[JAMIE]
+Let's pause on Panel structure from top to bottom. What should a learner take away from it?
+
+[ALEX]
+Start with Panel structure from top to bottom. There is something to understand, something to try, and something that proves the try worked.
+
+[ALEX]
+On the ground, that means a few things. Branch name displayed (example: "main" or "feature/add-documentation"). View/More Actions button (three dots menu). Type your commit message here. Announced as "Source Control Input, edit, multi-line". Shortcut: Ctrl+Enter (Mac: Cmd+Enter) when focused in the message input. Lists all modified files not yet staged.
+
+[ALEX]
+First, source Control title bar (heading level 2). Then, commit message input (multi-line text field). After that, commit button (or "Publish Branch" if this is a new branch). Finally, changes section (collapsible tree). The rhythm is simple: orient, act, verify, then continue.
+
+[JAMIE]
+Before we leave Panel structure from top to bottom, what is the practical point?
+
+[ALEX]
+First, staged Changes section (collapsible tree). Then, merge Changes section (appears only during a merge). Think of it as a rail line: each stop confirms you are still on the right route before the next one.
+
+[ALEX]
+Now bring the learner back to the room. Start with NVDA/JAWS. There is something to understand, something to try, and something that proves the try worked.
+
+[ALEX]
+Here is what that changes in practice. The panel is a web-based tree view. Use Up/Down Arrow to navigate between items. Use Right Arrow to expand a section (Changes, Staged Changes). Use Left Arrow to collapse a section. Use Enter to open a file diff. Use Space to stage/unstage a file (when focused on a file item).
+
+[JAMIE]
+Where do you want a learner to place their attention here?
+
+[ALEX]
+Here is the plain-English version of VoiceOver. Key point: The Source Control panel is not a standard file tree. Put another way, it's a specialized Git status view.
+
+[ALEX]
+A few details make that real. Navigate with VO+Arrow keys. VO+Space to activate (open diff or stage/unstage). The panel is announced as a "group" containing lists.
+
+[PAUSE]
+
+[ALEX]
+That matters because of the next idea. This is where What Each File Shows becomes real: when a file appears in the Changes or Staged Changes list, VS Code shows a status letter. That matters in practice: Screen reader announcement: "docs/GUIDE.md, Modified" or "README.md, Added".
+
+[JAMIE]
+Give me the version that sounds like an instructor, not a manual.
+
+[ALEX]
+Keep the learner anchored in Context Menu Actions (Right-Click or Shift+F10). When focused on any file in the Source Control panel. This is the part to say slowly: Use Shift+F10 to open the context menu.
+
+[JAMIE]
+Let's pause on Learning Cards: Source Control Panel. What should a learner take away from it?
+
+[ALEX]
+The reason Learning Cards: Source Control Panel matters is that low vision users (zoom, high contrast). That gives the learner a simple foothold: the Source Control panel adapts well to zoom and high contrast settings. The interface gets friendlier when it stops being a wall of controls and starts being a set of named places.
+
+[ALEX]
+First, at high zoom (200%+): The panel may narrow. File names truncate but the status letter (M, A, D) remains visible at the end of each row. Hover over truncated names to see the full path in a tooltip. Then, high contrast themes: Status colours are reinforced by the status letter (M/A/D/R/U/C), so you do not rely on colour alone. To switch to a high contrast theme: Ctrl+Shift+P then type "Preferences: Color Theme" and select "High Contrast" or "High Contrast. After that, the commit message input is a multi-line text area. At high zoom it may appear narrow - it expands vertically as you type. Use Ctrl+Enter to commit from anywhere in the input (not Enter, which adds a new line). Finally, diff views opened from the panel use red/green highlighting. In high contrast themes these use distinct border patterns instead of subtle colour shading. Press F7 to jump between change hunks rather than scrolling through large diffs visually. The rhythm is simple: orient, act, verify, then continue.
+
+[JAMIE]
+Before we leave Learning Cards: Source Control Panel, what is the practical point?
+
+[ALEX]
+First, minimap: If the minimap (the narrow code preview strip on the right edge of the editor) is distracting at high zoom, disable it: Settings (Ctrl+,) then search "minimap enabled" and uncheck it. Think of it as a rail line: each stop confirms you are still on the right route before the next one.
+
+[ALEX]
+Treat examples as spoken recipes, not decorations. You may hear something like See all modified, staged, and untracked files; git status; Short format (one letter per file, compact); git status -s; See what is staged (ready to commit); git diff --cached --name-only; See what is modified but not staged; git diff --name-only; See both. Read the command, understand what it changes, then run it only when the repository state matches the lesson.
+
+[PAUSE]
+
+[JAMIE]
+If I am listening before the workshop starts, what should settle in my mind first?
+
+[ALEX]
+Start with 3. Branch Management: Branches are how you organize work in Git. The next useful detail is this: Every repository starts with a main or master branch.
+
+[JAMIE]
+Let's pause on Where it's shown. What should a learner take away from it?
+
+[ALEX]
+Start with Where it's shown. There is something to understand, something to try, and something that proves the try worked.
+
+[ALEX]
+First, bottom-left corner of VS Code (status bar) - visual users see it immediately. Then, source Control panel title bar. After that, command Palette: Ctrl+Shift+P (Mac: Cmd+Shift+P) → "Git: Show Git Output". Treat it like a recipe: do not add the next ingredient until the previous one is actually in the bowl.
+
+[JAMIE]
+Let's pause on Keyboard access to status bar. What should a learner take away from it?
+
+[ALEX]
+This is where Keyboard access to status bar becomes real: visual users: You can also click the branch name in the bottom-left status bar to open the branch picker directly.
+
+[ALEX]
+That shows up in the workshop in a few specific ways. The status bar is not in the standard keyboard navigation flow. Use the Command Palette for branch operations instead.
+
+[PAUSE]
+
+[JAMIE]
+Let's pause on Command Palette method (recommended). What should a learner take away from it?
+
+[ALEX]
+Start with Command Palette method (recommended). There is something to understand, something to try, and something that proves the try worked.
+
+[ALEX]
+The practical takeaway is this. Creates the branch. Switches to it automatically. Your working files stay exactly as they were.
+
+[ALEX]
+First, ctrl+Shift+P (Mac: Cmd+Shift+P). Then, type "git create branch". After that, select "Git: Create Branch.". Finally, type the new branch name (example: feature/improve-docs). It is like walking a hallway with named doors: read the sign, enter the right room, then confirm where you landed.
+
+[JAMIE]
+Before we leave Command Palette method (recommended), what is the practical point?
+
+[ALEX]
+First, press Enter. The rhythm is simple: orient, act, verify, then continue.
+
+[JAMIE]
+Let's pause on Naming conventions. What should a learner take away from it?
+
+[ALEX]
+The reason Naming conventions matters is that web alternative (github.com) - branch management. That gives the learner a simple foothold: create and switch branches without leaving your browser.
+
+[ALEX]
+The practical takeaway is this. Use lowercase with hyphens: feature/add-timeline-guide. Avoid spaces and special characters. Be descriptive: fix/heading-hierarchy not fix1.
+
+[ALEX]
+First, on the repository page, click the branch dropdown (shows "main" by default). Then, type a new branch name in the search field. After that, click "Create branch: your-branch-name from main". Finally, GitHub switches to the new branch immediately. The rhythm is simple: orient, act, verify, then continue.
+
+[JAMIE]
+Before we leave Naming conventions, what is the practical point?
+
+[ALEX]
+First, any file edits you make in the browser will be on this branch. Think of it as a rail line: each stop confirms you are still on the right route before the next one.
+
+[ALEX]
+Treat examples as spoken recipes, not decorations. You may hear something like Create and switch to a new branch; git checkout -b feature/improve-docs; List all branches; git branch -a; Switch to an existing branch; git checkout main; Delete a branch (after merging); git branch -d feature/improve-docs. Read the command, understand what it changes, then run it only when the repository state matches the lesson.
+
+[JAMIE]
+Let's pause on Command Palette method. What should a learner take away from it?
+
+[ALEX]
+Start with Command Palette method: Screen reader announcement: "Branch: main" or "Branch: feature/add-timeline-guide".
+
+[ALEX]
+First, ctrl+Shift+P (Mac: Cmd+Shift+P). Then, type "git checkout". After that, select "Git: Checkout to.". Finally, a list of all branches appears. Think of it as a rail line: each stop confirms you are still on the right route before the next one.
+
+[JAMIE]
+Before we leave Command Palette method, what is the practical point?
+
+[ALEX]
+First, up/Down Arrow to navigate. Then, enter to switch. Treat it like a recipe: do not add the next ingredient until the previous one is actually in the bowl.
+
+[PAUSE]
+
+[JAMIE]
+Let's pause on What happens when you switch. What should a learner take away from it?
+
+[ALEX]
+Start with What happens when you switch. There is something to understand, something to try, and something that proves the try worked.
+
+[ALEX]
+The practical takeaway is this. VS Code saves your current files. Loads the files from the other branch. If you have uncommitted changes, Git may block the switch (see "Stashing" in Section 10).
+
+[JAMIE]
+Let's pause on After your PR is merged, you can delete the branch. What should a learner take away from it?
+
+[ALEX]
+This is where After your PR is merged, you can delete the branch becomes real: you cannot delete the branch you're currently on. The workshop is closer to rehearsal than lecture. You hear the move, try the move, and then check what changed.
+
+[ALEX]
+First, ctrl+Shift+P (Mac: Cmd+Shift+P). Then, type "git delete branch". After that, select "Git: Delete Branch.". Finally, choose the branch to delete from the list. It is a checklist, but a meaningful one: every item creates evidence that the next step is safe.
+
+[JAMIE]
+What is the safe way to learn from that example?
+
+[ALEX]
+Keep the learner anchored in Viewing All Branches. Command: Ctrl+Shift+P → "Git: Show Git Output" → Branch list appears. This is the part to say slowly: Alternative: Use the integrated terminal.
+
+[ALEX]
+Treat examples as spoken recipes, not decorations. You may hear something like git branch Local branches only; git branch -a All branches (including remote). Read the command, understand what it changes, then run it only when the repository state matches the lesson.
+
+[PAUSE]
+
+[JAMIE]
+Let's pause on Learning Cards: Branch Management. What should a learner take away from it?
+
+[ALEX]
+The reason Learning Cards: Branch Management matters is that low vision users (zoom, high contrast). That gives the learner a simple foothold: screen reader users (NVDA / JAWS on Windows).
+
+[ALEX]
+First, branch name in the status bar: The current branch name appears in the bottom-left corner of VS Code. At high zoom, the status bar may be partially off-screen. Use Ctrl+Shift+P then type "Git: Checkout to." to see and switch branches from the Command Palette. Then, branch picker list: When you open the branch picker from the Command Palette, the list shows all available branches. At high zoom, long branch names may truncate. Type the first few characters to filter the list - the filter is instant. After that, visual branch indicators in the Explorer: Modified files on a branch show a coloured dot in the Explorer panel. In high contrast themes, these dots use distinct shapes or borders. The Source Control panel (Ctrl+Shift+G) is more reliable for seeing which files. The rhythm is simple: orient, act, verify, then continue.
+
+[JAMIE]
+Let's pause on Creating a branch. What should a learner take away from it?
+
+[ALEX]
+Start with Creating a branch. There is something to understand, something to try, and something that proves the try worked.
+
+[ALEX]
+First, press Ctrl+Shift+P to open the Command Palette. Then, type "git create branch" - NVDA/JAWS announces results as you type. After that, press Enter on "Git: Create Branch.". Finally, the input focus moves to a text field - type your branch name (e.g., feature/add-docs). Think of it as a rail line: each stop confirms you are still on the right route before the next one.
+
+[JAMIE]
+Before we leave Creating a branch, what is the practical point?
+
+[ALEX]
+First, press Enter - VS Code creates and switches to the branch. Then, NVDA/JAWS announces the new branch name in the status bar notification. Treat it like a recipe: do not add the next ingredient until the previous one is actually in the bowl.
+
+[JAMIE]
+Let's pause on Switching branches. What should a learner take away from it?
+
+[ALEX]
+Start with Switching branches. There is something to understand, something to try, and something that proves the try worked.
+
+[ALEX]
+First, press Ctrl+Shift+P, type "git checkout". Then, select "Git: Checkout to.". After that, a list of branches appears - navigate with Up/Down Arrow. Finally, each item is announced as the branch name (e.g., "main", "feature/add-docs"). Treat it like a recipe: do not add the next ingredient until the previous one is actually in the bowl.
+
+[JAMIE]
+Before we leave Switching branches, what is the practical point?
+
+[ALEX]
+First, press Enter to switch. Then, VS Code reloads files for that branch - you hear a status bar update. It is a checklist, but a meaningful one: every item creates evidence that the next step is safe.
+
+[PAUSE]
+
+[JAMIE]
+Let's pause on Deleting a branch. What should a learner take away from it?
+
+[ALEX]
+This is where Deleting a branch becomes real: screen reader users (VoiceOver on macOS).
+
+[ALEX]
+First, switch to a different branch first (you cannot delete the branch you are on). Then, press Ctrl+Shift+P, type "git delete branch". After that, select "Git: Delete Branch.". Finally, navigate the list to find the branch to delete, press Enter. It is a checklist, but a meaningful one: every item creates evidence that the next step is safe.
+
+[JAMIE]
+What is the teaching move inside Creating a branch?
+
+[ALEX]
+First, press Cmd+Shift+P to open the Command Palette. Then, type "git create branch" - VoiceOver announces filtered results. After that, press Return on "Git: Create Branch.". Finally, type the branch name in the input field. It is like walking a hallway with named doors: read the sign, enter the right room, then confirm where you landed.
+
+[JAMIE]
+If someone only remembers one thing from Creating a branch, what should it be?
+
+[ALEX]
+First, press Return to create and switch. The rhythm is simple: orient, act, verify, then continue.
+
+[JAMIE]
+What is the teaching move inside Switching branches?
+
+[ALEX]
+First, press Cmd+Shift+P, type "git checkout". Then, select "Git: Checkout to.". After that, use VO+Down Arrow to navigate the branch list. Finally, press Return to switch. The rhythm is simple: orient, act, verify, then continue.
+
+[PAUSE]
+
+[JAMIE]
+Let's pause on Getting the current branch name. What should a learner take away from it?
+
+[ALEX]
+Start with Getting the current branch name: Create and switch branches without leaving your browser. The next useful detail is this: Manage branches from your terminal. Think of it like entering a new building: first you find the lobby, then the room, then the door you actually need.
+
+[ALEX]
+First, press VO+M to move to the menu bar, then VO+Right Arrow to the status bar area. Then, or use the Command Palette: Cmd+Shift+P then type "Git: Show Git Output" - the output pane includes the current branch. After that, on the repository page, find the branch dropdown button (shows "main" by default) - it is above the file table. Finally, click or activate the dropdown. Think of it as a rail line: each stop confirms you are still on the right route before the next one.
+
+[JAMIE]
+Before we leave Getting the current branch name, what is the practical point?
+
+[ALEX]
+First, type a new branch name in the search field. Then, click "Create branch: your-branch-name from main" when it appears. After that, GitHub switches to the new branch immediately. Finally, any file edits in the browser will be on this branch. Treat it like a recipe: do not add the next ingredient until the previous one is actually in the bowl.
+
+[ALEX]
+Treat examples as spoken recipes, not decorations. You may hear something like Create and switch to a new branch; git checkout -b feature/improve-docs; Or use the newer 'switch' command; git switch -c feature/improve-docs; List local branches (current branch marked with ); git branch; List all branches including remote-tracking; git. Create a branch linked to an issue (auto-names from issue title); gh issue develop 42 --checkout; List remote branches; gh api repos/{owner}/{repo}/branches --jq '.[].name'. Read the command, understand what it changes, then run it only when the repository state matches the lesson.
+
+[JAMIE]
+Let's pause on 4. Staging Changes - Files, Lines, and Chunks. What should a learner take away from it?
+
+[ALEX]
+Here is the plain-English version of 4. Staging Changes - Files, Lines, and Chunks. This lets you commit only part of your work, leaving the rest for a later commit.
+
+[ALEX]
+First, stage the changes you want to include. Then, commit those staged changes. Treat it like a recipe: do not add the next ingredient until the previous one is actually in the bowl.
+
+[JAMIE]
+Let's pause on Staging an Entire File. What should a learner take away from it?
+
+[ALEX]
+This is where Staging an Entire File becomes real: low vision users (zoom, high contrast). That matters in practice: Screen reader users (NVDA / JAWS / VoiceOver).
+
+[ALEX]
+The practical takeaway is this. Right-click any file in the Changes list to get a full-size context menu with "Stage Changes", "Discard Changes", and other options. Or use Ctrl+Shift+P then type "Git: Stage Changes" to stage the currently open file.
+
+[ALEX]
+First, open Source Control: Ctrl+Shift+G (Mac: Cmd+Shift+G). Then, hover over a file in the "Changes" list - a + icon appears to its right. After that, click the + to stage that file. Finally, or right-click a file → "Stage Changes". It is a checklist, but a meaningful one: every item creates evidence that the next step is safe.
+
+[JAMIE]
+Before we leave Staging an Entire File, what is the practical point?
+
+[ALEX]
+First, at high zoom, the + (stage), undo (discard), and open file icons may be small. Instead of hovering. Then, the file moves from "Changes" to "Staged Changes" - both section headings include a count (e.g., "Changes 2", "Staged Changes 1") so you can confirm the move without relying on colour alone. After that, in high contrast themes, staged files show a distinct background or border in the Staged Changes section. Finally, navigate to the file in the "Changes" list. It is like walking a hallway with named doors: read the sign, enter the right room, then confirm where you landed.
+
+[PAUSE]
+
+[JAMIE]
+Let's pause on Alternative (keyboard shortcut). What should a learner take away from it?
+
+[ALEX]
+Start with Alternative (keyboard shortcut). There is something to understand, something to try, and something that proves the try worked.
+
+[ALEX]
+The practical takeaway is this. Focus the file → press Space.
+
+[ALEX]
+Keep the thread going. Start with Alternative (context menu). There is something to understand, something to try, and something that proves the try worked.
+
+[ALEX]
+The practical takeaway is this. Focus the file → press Shift+F10 (Mac: Ctrl+Return) → select "Stage Changes".
+
+[JAMIE]
+Let's pause on What happens. What should a learner take away from it?
+
+[ALEX]
+Start with What happens. There is something to understand, something to try, and something that proves the try worked.
+
+[ALEX]
+The practical takeaway is this. The file moves from "Changes" → "Staged Changes". A green "A" or "M" indicator appears.
+
+[PAUSE]
+
+[JAMIE]
+Let's pause on Staging Multiple Files at Once. What should a learner take away from it?
+
+[ALEX]
+Here is the plain-English version of Staging Multiple Files at Once. All modified files move to "Staged Changes.".
+
+[ALEX]
+First, ctrl+Shift+G (Mac: Cmd+Shift+G) to open Source Control. Then, navigate to the "Changes" section heading. After that, press Shift+F10 (Mac: Ctrl+Return) to open context menu on the section itself. Finally, select "Stage All Changes". Treat it like a recipe: do not add the next ingredient until the previous one is actually in the bowl.
+
+[JAMIE]
+Let's pause on Staging Individual Lines or Chunks. What should a learner take away from it?
+
+[ALEX]
+This is where Staging Individual Lines or Chunks becomes real: this is one of Git's most powerful features: You can stage only specific lines of a file, leaving other changes unstaged.
+
+[JAMIE]
+Let's pause on Workflow. What should a learner take away from it?
+
+[ALEX]
+Keep the learner anchored in Workflow. Result: Only those lines are staged. This is the part to say slowly: The rest of the file remains in "Changes.". A good GitHub workflow is like a well-run meeting: everyone knows the topic, the next action, and who has the floor.
+
+[ALEX]
+First, open Source Control: Ctrl+Shift+G (Mac: Cmd+Shift+G). Then, navigate to a file in "Changes". After that, press Enter to open the diff view. Finally, the diff shows your changes side-by-side or inline. It is like walking a hallway with named doors: read the sign, enter the right room, then confirm where you landed.
+
+[JAMIE]
+Before we leave Workflow, what is the practical point?
+
+[ALEX]
+First, navigate to a changed line (use Arrow keys or F7 for next hunk). Then, press Shift+F10 (Mac: Ctrl+Return) to open context menu. After that, select "Stage Selected Lines". The rhythm is simple: orient, act, verify, then continue.
+
+[PAUSE]
+
+[JAMIE]
+Let's pause on Use case for this workshop. What should a learner take away from it?
+
+[ALEX]
+The reason Use case for this workshop matters is that in the diff view, press Alt+H to see Accessible Help for diff-specific keyboard shortcuts. That gives the learner a simple foothold: web alternative (github.com) - editing files.
+
+[ALEX]
+The practical takeaway is this. You fixed a typo and added a new section in the same file. You want to commit the typo fix separately from the new content. Stage only the typo fix lines, commit them with message "fix: typo in heading". Then stage the new section, commit with message "docs: add Timeline View guide".
+
+[ALEX]
+First, click the pencil icon on any file to open the web editor. Then, make your changes. After that, click "Commit changes" - GitHub creates the commit directly. Finally, choose to commit to the current branch or create a new branch and PR. The rhythm is simple: orient, act, verify, then continue.
+
+[ALEX]
+Treat examples as spoken recipes, not decorations. You may hear something like Stage a specific file; git add docs/GUIDE.md; Stage all changes; git add.; Stage specific lines interactively; git add -p docs/GUIDE.md; Git shows each change hunk and asks: stage this? (y/n/s/e); Unstage a file; git restore --staged docs/GUIDE.md; Check what. Read the command, understand what it changes, then run it only when the repository state matches the lesson.
+
+[JAMIE]
+Let's pause on Reverse the process. What should a learner take away from it?
+
+[ALEX]
+Start with Reverse the process. There is something to understand, something to try, and something that proves the try worked.
+
+[ALEX]
+First, focus the file in "Staged Changes". Then, press Ctrl+Enter (Mac: Cmd+Enter) or Space. After that, file moves back to "Changes". Think of it as a rail line: each stop confirms you are still on the right route before the next one.
+
+[JAMIE]
+Let's pause on Learning Cards: Staging Changes. What should a learner take away from it?
+
+[ALEX]
+Start with Learning Cards: Staging Changes. There is something to understand, something to try, and something that proves the try worked.
+
+[ALEX]
+The practical takeaway is this. In Source Control (Ctrl+Shift+G), press + or Space on a file to stage it -- your screen reader announces the file moving from "Changes" to "Staged Changes". To stage individual lines, open the file diff (Enter on the file), select lines with Shift+Up/Down, then use Command Palette: "Git: Stage Selected Ranges". Press Ctrl+Z in the Source Control panel to unstage the last staged file if you staged the wrong one. Staged files appear under a separate "Staged Changes" heading with a green + icon -- look for the section break in the Source Control panel. The inline diff view highlights added lines in green and removed lines in red; use Ctrl+= to zoom if the colors are hard to distinguish. Right-click a file in the Source Control panel for a context menu with "Stage Changes", "Discard Changes", and "Open File" options.
+
+[PAUSE]
+
+[JAMIE]
+Let's pause on Standard process. What should a learner take away from it?
+
+[ALEX]
+Start with Standard process. There is something to understand, something to try, and something that proves the try worked.
+
+[ALEX]
+First, open Source Control: Ctrl+Shift+G (Mac: Cmd+Shift+G). Then, stage changes (see Section 4). After that, focus the commit message input (usually Tab or Shift+Tab to reach it). Finally, type your commit message. It is a checklist, but a meaningful one: every item creates evidence that the next step is safe.
+
+[JAMIE]
+Before we leave Standard process, what is the practical point?
+
+[ALEX]
+First, press Ctrl+Enter (Mac: Cmd+Enter) to commit. It is like walking a hallway with named doors: read the sign, enter the right room, then confirm where you landed.
+
+[JAMIE]
+Let's pause on Learning Cards: Committing. What should a learner take away from it?
+
+[ALEX]
+Keep the learner anchored in Learning Cards: Committing. Low vision users (zoom, high contrast).
+
+[ALEX]
+First, open Source Control (Ctrl+Shift+G). Then, stage your files (click the + icon next to each file, or click Stage All Changes above the Changes section header). After that, click in the "Message" text area at the top of the Source Control panel. Finally, type your commit message. It is like walking a hallway with named doors: read the sign, enter the right room, then confirm where you landed.
+
+[JAMIE]
+Before we leave Learning Cards: Committing, what is the practical point?
+
+[ALEX]
+First, click the Commit button (checkmark icon) or press Ctrl+Enter. Then, if nothing is staged, VS Code asks if you want to stage all changes and commit directly - click "Yes" if that is what you want. After that, the commit message input is at the top of the Source Control panel. At high zoom it may appear as a narrow rectangle - it expands vertically as you type. Finally, the Commit button may show only as a small checkmark icon at high zoom. Use Ctrl+Enter from inside the message input instead - this is more reliable than finding the button visually. The rhythm is simple: orient, act, verify, then continue.
+
+[ALEX]
+Here is the practical turn. Start with NVDA/JAWS. There is something to understand, something to try, and something that proves the try worked.
+
+[ALEX]
+The practical takeaway is this. The commit input is announced as "Source Control Input, edit, multi-line". You're automatically in Forms Mode - just start typing. The input expands as you type (supports multi-line messages). Press Ctrl+Enter (Mac: Cmd+Enter) to commit (not Enter, which adds a new line).
+
+[PAUSE]
+
+[JAMIE]
+Let's pause on VoiceOver. What should a learner take away from it?
+
+[ALEX]
+Start with VoiceOver. There is something to understand, something to try, and something that proves the try worked.
+
+[ALEX]
+The practical takeaway is this. VO+Tab to navigate to the input. VO+Shift+Down to interact. Type your message. Ctrl+Enter to commit. VO+Shift+Up to stop interacting.
+
+[ALEX]
+Keep the teaching thread moving. Here is the plain-English version of Writing Good Commit Messages. See Culture & Etiquette: Writing Good Commit Messages for format guidance. It is like learning a transit route. The names of the stops matter because they tell you whether you are still going the right direction.
+
+[JAMIE]
+What should happen before anyone copies and runs it?
+
+[ALEX]
+This is where Format becomes real: common types: feat:, fix:, docs:, style:, refactor:, test:, chore.
+
+[ALEX]
+The practical takeaway is this. First line: type + colon + short summary (50 characters max). Blank line. Optional body: detailed explanation. Optional footer: "Fixes 123" to link to issue.
+
+[ALEX]
+Treat examples as spoken recipes, not decorations. You may hear something like Commit staged changes with a message; git commit -m "fix: correct heading hierarchy in GUIDE.md"; Commit with a multi-line message (opens your editor); git commit; Stage all tracked files and commit in one step; git commit -am "docs: update screen reader. Read the command, understand what it changes, then run it only when the repository state matches the lesson.
+
+[PAUSE]
+
+[ALEX]
+Keep the teaching thread moving. Start with What Happens After Commit. There is something to understand, something to try, and something that proves the try worked.
+
+[ALEX]
+The practical takeaway is this. The "Staged Changes" section clears. Your changes are now part of Git history. The commit exists locally only - you must push to send it to GitHub (see Section 6).
+
+[JAMIE]
+Let's pause on 6. Push and Pull Operations. What should a learner take away from it?
+
+[ALEX]
+The reason 6. Push and Pull Operations matters is that push sends your local commits to GitHub. That gives the learner a simple foothold: pull downloads new commits from GitHub to your local repository.
+
+[JAMIE]
+Let's pause on After committing locally. What should a learner take away from it?
+
+[ALEX]
+Start with After committing locally. There is something to understand, something to try, and something that proves the try worked.
+
+[ALEX]
+First, open Source Control: Ctrl+Shift+G (Mac: Cmd+Shift+G). Then, look for the "Publish Branch" button (if this is a new branch) or "Sync Changes" button. After that, press Enter on that button. Think of it as a rail line: each stop confirms you are still on the right route before the next one.
+
+[PAUSE]
+
+[JAMIE]
+Let's pause on Alternative: Command Palette. What should a learner take away from it?
+
+[ALEX]
+Start with Alternative: Command Palette. There is something to understand, something to try, and something that proves the try worked.
+
+[ALEX]
+First, ctrl+Shift+P (Mac: Cmd+Shift+P). Then, type "git push". After that, select "Git: Push". Finally, VS Code pushes your commits to GitHub. Treat it like a recipe: do not add the next ingredient until the previous one is actually in the bowl.
+
+[JAMIE]
+Let's pause on Learning Cards: Push and Pull. What should a learner take away from it?
+
+[ALEX]
+This is where Learning Cards: Push and Pull becomes real: low vision users (zoom, high contrast). That matters in practice: Screen reader users (NVDA / JAWS on Windows).
+
+[ALEX]
+First, the Sync/Publish button appears in the Source Control panel header area. At high zoom it may display as a small cloud icon with an arrow. If you cannot find it, use the Command Palette (Ctrl+Shift+P then type "Git: Push") - this is always reliable. Then, progress indication: While pushing, VS Code shows a spinning icon in the status bar (bottom-left). At high zoom this may be off-screen. After pushing, run Ctrl+Shift+P then "Git: Show Git Output" to read the push log as scrollable text. After that, pull indicators: When your branch is behind the remote, the status bar shows a down-arrow with a number (e.g., "↓2" means 2 commits to pull). At high zoom, the Command Palette approach (Ctrl+Shift+P then "Git: Pull") avoids needing to read the status bar. Finally, auto-fetch: Enable auto-fetch (Settings: search "git autofetch") so VS Code checks for remote changes every few minutes. This prevents surprise conflicts when you push. It is a checklist, but a meaningful one: every item creates evidence that the next step is safe.
+
+[JAMIE]
+Let's pause on Pushing. What should a learner take away from it?
+
+[ALEX]
+Start with Pushing. There is something to understand, something to try, and something that proves the try worked.
+
+[ALEX]
+First, after committing, press Ctrl+Shift+P, type "git push", select "Git: Push". Then, NVDA/JAWS announces "Pushing." in the status bar. After that, on success, a notification appears: "Successfully pushed" - if using NVDA, check NVDA+N to read recent notifications. Finally, for a new branch (first push), use "Git: Publish Branch" instead - this sets up the upstream tracking. It is like walking a hallway with named doors: read the sign, enter the right room, then confirm where you landed.
+
+[PAUSE]
+
+[JAMIE]
+Let's pause on Pulling. What should a learner take away from it?
+
+[ALEX]
+Start with Pulling. There is something to understand, something to try, and something that proves the try worked.
+
+[ALEX]
+First, press Ctrl+Shift+P, type "git pull", select "Git: Pull". Then, NVDA/JAWS announces "Pulling." then the status changes. After that, if there are conflicts, the Source Control panel shows a "Merge Changes" section - navigate there with Ctrl+Shift+G then Down Arrow. The rhythm is simple: orient, act, verify, then continue.
+
+[JAMIE]
+Let's pause on Checking sync status. What should a learner take away from it?
+
+[ALEX]
+Start with Checking sync status: Screen reader users (VoiceOver on macOS).
+
+[ALEX]
+First, press Ctrl+Shift+P, type "Git: Show Git Output". Then, the output pane opens with push/pull log messages in plain text. After that, use Up/Down Arrow to read line by line. Think of it as a rail line: each stop confirms you are still on the right route before the next one.
+
+[JAMIE]
+Before we leave Pushing, what is the practical point?
+
+[ALEX]
+First, press Cmd+Shift+P, type "git push", select "Git: Push". Then, VoiceOver announces progress from the status bar. After that, on success, a notification toast appears - press VO+F3 to read the latest notification. Treat it like a recipe: do not add the next ingredient until the previous one is actually in the bowl.
+
+[PAUSE]
+
+[JAMIE]
+Before we leave Pulling, what is the practical point?
+
+[ALEX]
+First, press Cmd+Shift+P, type "git pull", select "Git: Pull". Then, VoiceOver announces when the pull completes. After that, if conflicts exist, navigate to Source Control (Cmd+Shift+G) and review the Merge Changes section. It is a checklist, but a meaningful one: every item creates evidence that the next step is safe.
+
+[JAMIE]
+How do you keep commands from becoming magic words?
+
+[ALEX]
+Keep the learner anchored in Screen reader feedback. Git CLI alternative - push and pull. This is the part to say slowly: Web alternative (github.com) - push and pull. A good GitHub workflow is like a well-run meeting: everyone knows the topic, the next action, and who has the floor.
+
+[ALEX]
+The practical takeaway is this. NVDA/JAWS: Status bar announces "Pushing." then "Pushed successfully" or an error message. Check the Source Control panel for any error messages (they appear as banner notifications).
+
+[ALEX]
+Treat examples as spoken recipes, not decorations. You may hear something like Push commits to GitHub; git push; Push a new branch for the first time; git push -u origin feature/improve-docs; Pull changes from GitHub; git pull; Fetch without merging (see what changed first); git fetch; git log HEAD.origin/main --oneline. Read the command, understand what it changes, then run it only when the repository state matches the lesson.
+
+[JAMIE]
+Let's pause on What to do if push fails. What should a learner take away from it?
+
+[ALEX]
+Start with What to do if push fails. There is something to understand, something to try, and something that proves the try worked.
+
+[ALEX]
+The practical takeaway is this. Error: "No upstream branch" → You need to publish the branch first (Command Palette → "Git: Publish Branch"). Error: "Permission denied" → Check your authentication (see Appendix D: Git Authentication). Error: "Rejected - non-fast-forward" → Someone else pushed changes; you need to pull first.
+
+[PAUSE]
+
+[ALEX]
+Keep the teaching thread moving. Start with When to pull. There is something to understand, something to try, and something that proves the try worked.
+
+[ALEX]
+The practical takeaway is this. Before you start work each day. When GitHub shows your branch is behind the remote. When preparing to merge a PR.
+
+[JAMIE]
+Let's pause on How to pull. What should a learner take away from it?
+
+[ALEX]
+Here is the plain-English version of How to pull. If there are conflicts: See Section 9.
+
+[ALEX]
+First, ctrl+Shift+P (Mac: Cmd+Shift+P). Then, type "git pull". After that, select "Git: Pull". Finally, VS Code fetches and merges remote changes. Treat it like a recipe: do not add the next ingredient until the previous one is actually in the bowl.
+
+[ALEX]
+Keep the teaching thread moving. Start with Auto-fetch setting. There is something to understand, something to try, and something that proves the try worked.
+
+[ALEX]
+The practical takeaway is this. VS Code can check for remote changes automatically every few minutes. Enable: Settings (Ctrl+, - Mac: Cmd+,) → search "git autofetch" → set to true.
+
+[PAUSE]
+
+[JAMIE]
+Let's pause on Syncing Your Fork with the Upstream Repository. What should a learner take away from it?
+
+[ALEX]
+Keep the learner anchored in Syncing Your Fork with the Upstream Repository. When you fork a repository and the original (upstream) repository receives new commits, your fork gets out of date. This is the part to say slowly: Keeping your fork current prevents merge conflicts and ensures you're working with the latest code.
+
+[JAMIE]
+Let's pause on The GitHub "Sync fork" Button (Quickest Method). What should a learner take away from it?
+
+[ALEX]
+The reason The GitHub "Sync fork" Button (Quickest Method) matters is that for straightforward updates, GitHub has a built-in sync button.
+
+[ALEX]
+First, navigate to your fork on GitHub. Then, on the repository page, look for the "This branch is N commits behind owner/repo:main" notice. After that, activate the "Sync fork" button next to it. Finally, GitHub automatically merges upstream changes into your fork's default branch. The rhythm is simple: orient, act, verify, then continue.
+
+[JAMIE]
+Before we leave The GitHub "Sync fork" Button (Quickest Method), what is the practical point?
+
+[ALEX]
+First, then pull those changes to your local clone: Git: Pull from the Command Palette. Think of it as a rail line: each stop confirms you are still on the right route before the next one.
+
+[JAMIE]
+Let's pause on Screen reader path. What should a learner take away from it?
+
+[ALEX]
+Start with Screen reader path: Limitation: The GitHub sync button only syncs the default branch. The next useful detail is this: For other branches, use the git method below.
+
+[PAUSE]
+
+[JAMIE]
+What should they understand before typing anything?
+
+[ALEX]
+Here is the plain-English version of Adding the Upstream Remote (One-Time Setup). To sync locally using git, you first configure the upstream remote. Put another way, this only needs to be done once per clone. It is like learning a transit route. The names of the stops matter because they tell you whether you are still going the right direction.
+
+[ALEX]
+Treat examples as spoken recipes, not decorations. You may hear something like Step 1: Open the terminal in VS Code: Ctrl+` (backtick); Step 2: Check your current remotes:; git remote -v; → You should see "origin" pointing to YOUR fork; Step 3: Add the upstream remote:; git remote add upstream. Read the command, understand what it changes, then run it only when the repository state matches the lesson.
+
+[JAMIE]
+Let's pause on Example for Accessibility Agents. What should a learner take away from it?
+
+[ALEX]
+Start with Example for Accessibility Agents. There is something to understand, something to try, and something that proves the try worked.
+
+[ALEX]
+Treat examples as spoken recipes, not decorations. You may hear something like git remote add upstream https://github.com/community-access/accessibility-agents.git. Read the command, understand what it changes, then run it only when the repository state matches the lesson.
+
+[JAMIE]
+Let's pause on Fetching and Merging Upstream Changes. What should a learner take away from it?
+
+[ALEX]
+Keep the learner anchored in Fetching and Merging Upstream Changes. Once your upstream remote is configured.
+
+[ALEX]
+Treat examples as spoken recipes, not decorations. You may hear something like Fetch all updates from upstream (does not change your files yet); git fetch upstream; 2. Make sure you are on your default branch; git checkout main; 3. Merge upstream changes into your local branch; git merge upstream/main; 4. Push the updated branch to your. Read the command, understand what it changes, then run it only when the repository state matches the lesson.
+
+[PAUSE]
+
+[JAMIE]
+Let's pause on When Conflicts Occur During Sync. What should a learner take away from it?
+
+[ALEX]
+The reason When Conflicts Occur During Sync matters is that see also: Chapter 07: Merge Conflicts for a dedicated walkthrough of conflict resolution. That gives the learner a simple foothold: if you've made changes to the same files the upstream has changed, merge conflicts can occur during sync.
+
+[ALEX]
+Keep the teaching thread moving. Start with 7. Discarding Changes: Discarding = permanently deleting your local edits. The next useful detail is this: The file reverts to the state of the last commit. Think of it like entering a new building: first you find the lobby, then the room, then the door you actually need.
+
+[JAMIE]
+Let's pause on When to Discard. What should a learner take away from it?
+
+[ALEX]
+Start with When to Discard. There is something to understand, something to try, and something that proves the try worked.
+
+[ALEX]
+The practical takeaway is this. You made experimental changes and they didn't work. You want to start over from the last commit. You accidentally edited the wrong file.
+
+[PAUSE]
+
+[JAMIE]
+Let's pause on Single file. What should a learner take away from it?
+
+[ALEX]
+Start with Single file. There is something to understand, something to try, and something that proves the try worked.
+
+[ALEX]
+First, open Source Control: Ctrl+Shift+G. Then, navigate to the file in "Changes". After that, press Shift+F10 for context menu. Finally, select "Discard Changes". It is a checklist, but a meaningful one: every item creates evidence that the next step is safe.
+
+[JAMIE]
+Before we leave Single file, what is the practical point?
+
+[ALEX]
+First, confirm in the warning dialog (VS Code will ask "Are you sure?"). It is like walking a hallway with named doors: read the sign, enter the right room, then confirm where you landed.
+
+[JAMIE]
+Let's pause on All changes. What should a learner take away from it?
+
+[ALEX]
+Keep the learner anchored in All changes. Screen reader warning: VS Code shows a modal confirmation dialog. This is the part to say slowly: Navigate with Tab, select "Discard" or "Cancel" with Enter.
+
+[ALEX]
+First, ctrl+Shift+G. Then, navigate to the "Changes" section heading. After that, shift+F10 for context menu. Finally, select "Discard All Changes". It is like walking a hallway with named doors: read the sign, enter the right room, then confirm where you landed.
+
+[JAMIE]
+Before we leave All changes, what is the practical point?
+
+[ALEX]
+First, confirm (this affects every modified file). The rhythm is simple: orient, act, verify, then continue.
+
+[JAMIE]
+Let's pause on Learning Cards: Discarding Changes. What should a learner take away from it?
+
+[ALEX]
+The reason Learning Cards: Discarding Changes matters is that low vision users (zoom, high contrast). That gives the learner a simple foothold: screen reader users (NVDA / JAWS on Windows). The interface gets friendlier when it stops being a wall of controls and starts being a set of named places.
+
+[ALEX]
+First, the discard icon (an undo arrow) appears when hovering over a file in the Changes list. At high zoom, right-click the file instead to get a full-size context menu with "Discard Changes.". Then, the confirmation dialog that appears is a modal - it dims the background. In high contrast themes, the dialog has a clear border. The "Discard" button is typically the focused (primary) button. After that, for "Discard All Changes", right-click the "Changes" section heading to get the context menu. Finally, after discarding, the file disappears from the Changes list. Check the file count in the section heading to confirm (e.g., "Changes 2" becomes "Changes 1"). The rhythm is simple: orient, act, verify, then continue.
+
+[PAUSE]
+
+[JAMIE]
+What is the teaching move inside Single file?
+
+[ALEX]
+First, press Ctrl+Shift+G to open Source Control. Then, navigate to the file in the Changes section with Down Arrow. After that, press Shift+F10 to open the context menu. Finally, navigate to "Discard Changes" with Down Arrow, press Enter. Think of it as a rail line: each stop confirms you are still on the right route before the next one.
+
+[JAMIE]
+If someone only remembers one thing from Single file, what should it be?
+
+[ALEX]
+First, a confirmation dialog appears - NVDA announces "Are you sure you want to discard changes" or similar. Then, press Tab to navigate between "Discard" and "Cancel", press Enter on your choice. Treat it like a recipe: do not add the next ingredient until the previous one is actually in the bowl.
+
+[JAMIE]
+Let's pause on All files. What should a learner take away from it?
+
+[ALEX]
+Here is the plain-English version of All files. Screen reader users (VoiceOver on macOS). Put another way, discard changes from your terminal.
+
+[ALEX]
+First, navigate to the "Changes" section heading (announced as "Changes, expanded, N items"). Then, press Shift+F10, select "Discard All Changes". After that, confirm in the dialog. Finally, press Cmd+Shift+G to open Source Control. Treat it like a recipe: do not add the next ingredient until the previous one is actually in the bowl.
+
+[JAMIE]
+Before we leave All files, what is the practical point?
+
+[ALEX]
+First, use VO+Arrow keys to navigate to the file. Then, press VO+Shift+M to open the context menu (or Ctrl+Return). After that, navigate to "Discard Changes", press VO+Space. Finally, in the confirmation dialog, use VO+Right Arrow to reach the buttons, VO+Space to activate. It is a checklist, but a meaningful one: every item creates evidence that the next step is safe.
+
+[ALEX]
+Treat examples as spoken recipes, not decorations. You may hear something like Discard changes to a specific file (restore to last commit); git restore docs/GUIDE.md; Discard all unstaged changes; git restore.; Discard staged changes (unstage first, then restore); git restore --staged docs/GUIDE.md; git restore docs/GUIDE.md; Nuclear. Read the command, understand what it changes, then run it only when the repository state matches the lesson.
+
+[JAMIE]
+Let's pause on Safer Alternative: Stash Instead of Discard. What should a learner take away from it?
+
+[ALEX]
+This is where Safer Alternative: Stash Instead of Discard becomes real: if you're not sure whether you'll need these changes later, use stash (Section 10) instead of discard. That matters in practice: Stash saves your changes temporarily without committing them.
+
+[PAUSE]
+
+[ALEX]
+Keep the teaching thread moving. Keep the learner anchored in Deleting a File from the Repository (Git Delete / git rm). Git Delete removes a file from both your working directory AND Git's tracking. This is the part to say slowly: This is different from discarding changes - it permanently removes the file from the repository history going forward. A good GitHub workflow is like a well-run meeting: everyone knows the topic, the next action, and who has the floor.
+
+[JAMIE]
+Let's pause on How to use. What should a learner take away from it?
+
+[ALEX]
+The reason How to use matters is that the file is staged for deletion - you still need to commit to record the removal.
+
+[ALEX]
+First, open the file you want to remove in the editor. Then, ctrl+Shift+P (Mac: Cmd+Shift+P). After that, type "Git: Delete". Finally, confirm the deletion. The rhythm is simple: orient, act, verify, then continue.
+
+[ALEX]
+Keep the teaching thread moving. Start with When to use Git Delete vs. just deleting the file. There is something to understand, something to try, and something that proves the try worked.
+
+[ALEX]
+The practical takeaway is this. Simply deleting a file from Explorer leaves it as an "untracked deletion" in Git. Using Git: Delete (git rm) stages the deletion in one step. Use git rm when you want to track the file removal as part of your next commit.
+
+[PAUSE]
+
+[JAMIE]
+Let's pause on Learning Cards: Deleting a File from the Repository. What should a learner take away from it?
+
+[ALEX]
+Here is the plain-English version of Learning Cards: Deleting a File from the Repository. Alternatively: Ctrl+Shift+P then "Git: Delete" removes the file and stages the deletion in one step. Put another way, low vision users (zoom, high contrast).
+
+[ALEX]
+First, right-click the file in the Explorer panel (Ctrl+Shift+E). Then, select "Delete" to delete from your file system. After that, the file appears in Source Control (Ctrl+Shift+G) under Changes with a "D" (deleted) status. Finally, stage and commit the deletion to record it in Git. Treat it like a recipe: do not add the next ingredient until the previous one is actually in the bowl.
+
+[JAMIE]
+Before we leave Learning Cards: Deleting a File from the Repository, what is the practical point?
+
+[ALEX]
+First, the easiest approach at high zoom is Ctrl+Shift+P then type "Git: Delete" - this works on the currently open file and avoids finding small context menu targets. Then, after deletion, confirm in Source Control (Ctrl+Shift+G) - the file appears with a "D" status letter. The "D" is text, not colour-only, so it works in all themes. After that, stage and commit as normal. Finally, open the file you want to remove in the editor. It is a checklist, but a meaningful one: every item creates evidence that the next step is safe.
+
+[ALEX]
+Treat examples as spoken recipes, not decorations. You may hear something like Remove a file and stage the deletion in one step; git rm docs/old-file.md; Remove a file but keep it locally (stop tracking only); git rm --cached docs/old-file.md; Remove an entire directory; git rm -r old-folder/; Commit the deletion; git commit -m "chore. Read the command, understand what it changes, then run it only when the repository state matches the lesson.
+
+[ALEX]
+Keep the teaching thread moving. This is where 8. Timeline View - File History and Blame becomes real: the Timeline view shows the Git history of the currently open file: every commit that touched this file, who made it, and when. The workshop is closer to rehearsal than lecture. You hear the move, try the move, and then check what changed.
+
+[JAMIE]
+Let's pause on Method 1: Explorer Sidebar. What should a learner take away from it?
+
+[ALEX]
+Start with Method 1: Explorer Sidebar. There is something to understand, something to try, and something that proves the try worked.
+
+[ALEX]
+First, open Explorer: Ctrl+Shift+E. Then, at the bottom of the Explorer, there's a "Timeline" section. After that, tab or Arrow to navigate into Timeline. Finally, the list shows all commits affecting the currently open file. It is like walking a hallway with named doors: read the sign, enter the right room, then confirm where you landed.
+
+[PAUSE]
+
+[JAMIE]
+Let's pause on Method 2: Command Palette. What should a learner take away from it?
+
+[ALEX]
+Start with Method 2: Command Palette. There is something to understand, something to try, and something that proves the try worked.
+
+[ALEX]
+First, open a file in the editor. Then, ctrl+Shift+P. After that, type "timeline". Finally, select "View: Show Timeline". The rhythm is simple: orient, act, verify, then continue.
+
+[JAMIE]
+Let's pause on What Timeline Shows. What should a learner take away from it?
+
+[ALEX]
+Start with What Timeline Shows: Screen reader announcement: "docs: add Timeline Guide, Jeff, 2 days ago".
+
+[ALEX]
+The practical takeaway is this. Commit message (first line). Author name. Relative time (example: "3 days ago" or "2 hours ago"). Commit hash (short form, like a3f2b9c).
+
+[JAMIE]
+Let's pause on Viewing a Commit's Changes. What should a learner take away from it?
+
+[ALEX]
+Here is the plain-English version of Viewing a Commit's Changes. This is incredibly useful for understanding. It is like learning a transit route. The names of the stops matter because they tell you whether you are still going the right direction.
+
+[ALEX]
+The practical takeaway is this. When a particular line was added. Why a section was removed. What the file looked like at any point in history.
+
+[ALEX]
+First, navigate to a commit in the Timeline list. Then, press Enter. After that, a diff view opens showing what changed in that specific commit. Treat it like a recipe: do not add the next ingredient until the previous one is actually in the bowl.
+
+[PAUSE]
+
+[JAMIE]
+Let's pause on Git Blame - Line-by-Line History. What should a learner take away from it?
+
+[ALEX]
+This is where Git Blame - Line-by-Line History becomes real: Git Blame shows who last modified each line of the file.
+
+[JAMIE]
+Let's pause on How to access. What should a learner take away from it?
+
+[ALEX]
+Start with How to access. There is something to understand, something to try, and something that proves the try worked.
+
+[ALEX]
+First, open a file in the editor. Then, ctrl+Shift+P. After that, type "git blame". Finally, select "Git: Toggle Blame". It is like walking a hallway with named doors: read the sign, enter the right room, then confirm where you landed.
+
+[JAMIE]
+Let's pause on What appears. What should a learner take away from it?
+
+[ALEX]
+Start with What appears. There is something to understand, something to try, and something that proves the try worked.
+
+[ALEX]
+The practical takeaway is this. Inline annotations next to every line (visually). Hover over a line to see commit details.
+
+[PAUSE]
+
+[ALEX]
+Keep the teaching thread moving. Start with For screen reader users: Useful blame settings (add to.vscode/settings.json or user Settings). Think of it like entering a new building: first you find the lobby, then the room, then the door you actually need.
+
+[ALEX]
+The practical takeaway is this. The inline blame annotations can add noise. Use Timeline view instead to see recent changes to the whole file. Use Ctrl+F to search the Timeline list for a specific author or date.
+
+[JAMIE]
+Let's pause on Learning Cards: Timeline and History. What should a learner take away from it?
+
+[ALEX]
+Here is the plain-English version of Learning Cards: Timeline and History. Low vision users (zoom, high contrast). Put another way, screen reader users (NVDA / JAWS on Windows).
+
+[ALEX]
+First, timeline panel location: It is at the bottom of the Explorer sidebar (Ctrl+Shift+E). At high zoom you may need to scroll down in the Explorer to find it. If the Timeline section is collapsed, click the Timeline heading to expand it. Then, reading commit entries: Each entry shows the commit message, author, and time. At high zoom, long commit messages may truncate. Click any entry to open the diff view, which shows the full message in the editor tab title. After that, diff view at high zoom: Red/green highlighting shows removed/added lines. In high contrast themes, changes use distinct borders or backgrounds. Press F7 to jump through changes with a visible highlight that is easier to track than scrolling. Finally, Git Blame at high zoom: The inline blame annotations are small grey text at the end of each line. At high zoom they may overlap with code. Use Timeline view instead for a more readable list of who changed what. Treat it like a recipe: do not add the next ingredient until the previous one is actually in the bowl.
+
+[JAMIE]
+Let's pause on Opening Timeline. What should a learner take away from it?
+
+[ALEX]
+Start with Opening Timeline. There is something to understand, something to try, and something that proves the try worked.
+
+[ALEX]
+First, press Ctrl+Shift+E to open Explorer. Then, press Tab repeatedly or Down Arrow to navigate past the file tree to the "Timeline" section. After that, press Right Arrow to expand it if collapsed. Finally, navigate commit entries with Up/Down Arrow. It is a checklist, but a meaningful one: every item creates evidence that the next step is safe.
+
+[JAMIE]
+Before we leave Opening Timeline, what is the practical point?
+
+[ALEX]
+First, each entry is announced as: "commit message, author, time" (e.g., "docs: add Timeline Guide, Jeff, 2 days ago"). Then, press Enter on any entry to open its diff view. It is like walking a hallway with named doors: read the sign, enter the right room, then confirm where you landed.
+
+[PAUSE]
+
+[JAMIE]
+Let's pause on Reading a diff with screen reader. What should a learner take away from it?
+
+[ALEX]
+Start with Reading a diff with screen reader. There is something to understand, something to try, and something that proves the try worked.
+
+[ALEX]
+First, in the diff view, press Alt+F2 to open the Accessible Diff Viewer. Then, the Accessible Diff Viewer presents changes as a text list: each line shows + (added), - (removed), or unchanged. After that, navigate with Up/Down Arrow to read each line. Finally, press Escape to close the Accessible Diff Viewer. It is like walking a hallway with named doors: read the sign, enter the right room, then confirm where you landed.
+
+[JAMIE]
+Let's pause on Git Blame. What should a learner take away from it?
+
+[ALEX]
+The reason Git Blame matters is that screen reader users (VoiceOver on macOS). The interface gets friendlier when it stops being a wall of controls and starts being a set of named places.
+
+[ALEX]
+First, open a file, press Ctrl+Shift+P, type "Git: Toggle Blame". Then, blame annotations appear inline - NVDA reads them when navigating lines. After that, to reduce noise, disable blame (repeat the toggle command) and use Timeline instead. The rhythm is simple: orient, act, verify, then continue.
+
+[JAMIE]
+What is the teaching move inside Opening Timeline?
+
+[ALEX]
+First, press Cmd+Shift+E to open Explorer. Then, use VO+Down Arrow to navigate below the file tree to the Timeline section. After that, press VO+Space to expand if collapsed. Finally, navigate entries with VO+Down Arrow. Think of it as a rail line: each stop confirms you are still on the right route before the next one.
+
+[JAMIE]
+If someone only remembers one thing from Opening Timeline, what should it be?
+
+[ALEX]
+First, press VO+Space on a commit to open its diff. Treat it like a recipe: do not add the next ingredient until the previous one is actually in the bowl.
+
+[PAUSE]
+
+[JAMIE]
+Let's pause on Accessible Diff Viewer. What should a learner take away from it?
+
+[ALEX]
+Here is the plain-English version of Accessible Diff Viewer. Screen reader advantage: git log --oneline and git blame produce clean, columnar text output. Put another way, read line by line with arrow keys in the terminal.
+
+[ALEX]
+First, in any diff view, press Option+F2 to open the Accessible Diff Viewer. Then, read changes line by line with VO+Down Arrow. After that, press Escape to close. Treat it like a recipe: do not add the next ingredient until the previous one is actually in the bowl.
+
+[ALEX]
+Treat examples as spoken recipes, not decorations. You may hear something like View commit history for the entire repo; git log --oneline; View history for a specific file; git log --oneline docs/GUIDE.md; View history with what changed in each commit; git log -p docs/GUIDE.md; View who last changed each line (blame); git blame. View recent commits from the web; gh api repos/{owner}/{repo}/commits --jq '.[0:5].[].commit.message'; View PR history; gh pr list --state all --limit 10. Read the command, understand what it changes, then run it only when the repository state matches the lesson.
+
+[JAMIE]
+What should someone listen for when a lesson offers more than one tool path?
+
+[ALEX]
+This is where 9. Resolving Merge Conflicts in VS Code becomes real: merge conflicts happen when two people edit the same lines of a file. That matters in practice: Git can't decide which version to keep, so it asks you to choose.
+
+[ALEX]
+Keep the teaching thread moving. Keep the learner anchored in How VS Code Displays Conflicts. When you open a file with conflicts, you see something like. This is the part to say slowly: VS Code adds buttons above each conflict (visually). A good GitHub workflow is like a well-run meeting: everyone knows the topic, the next action, and who has the floor.
+
+[ALEX]
+The practical takeaway is this. "Accept Current Change" (keeps HEAD version). "Accept Incoming Change" (keeps the other branch's version). "Accept Both Changes" (keeps both, one after the other). "Compare Changes" (opens side-by-side diff).
+
+[PAUSE]
+
+[JAMIE]
+Let's pause on Screen Reader Workflow for Resolving Conflicts. What should a learner take away from it?
+
+[ALEX]
+The reason Screen Reader Workflow for Resolving Conflicts matters is that the buttons are NOT accessible via keyboard.
+
+[ALEX]
+The practical takeaway is this. <<<<<<< marks the start. ======= separates the two versions. marks the end. The section between <<<<<<< and ======= is your current branch (HEAD). The section between ======= and is the incoming branch (the branch you're merging). Delete the conflict markers ( ).
+
+[ALEX]
+First, identify the conflict markers. Then, read both versions. After that, decide what to keep. Finally, stage the resolved file. The rhythm is simple: orient, act, verify, then continue.
+
+[JAMIE]
+Before we leave Screen Reader Workflow for Resolving Conflicts, what is the practical point?
+
+[ALEX]
+First, commit the merge. Think of it as a rail line: each stop confirms you are still on the right route before the next one.
+
+[JAMIE]
+Let's pause on Using Accessible Diff for Conflict Review. What should a learner take away from it?
+
+[ALEX]
+Start with Using Accessible Diff for Conflict Review: Better approach: Use the Accessible Diff Viewer (F7) to navigate conflict hunks systematically.
+
+[ALEX]
+First, open the conflicted file. Then, press F7 to jump to the first conflict hunk. After that, press Alt+F2 to open Accessible View. Finally, read both versions clearly. Think of it as a rail line: each stop confirms you are still on the right route before the next one.
+
+[JAMIE]
+Before we leave Using Accessible Diff for Conflict Review, what is the practical point?
+
+[ALEX]
+First, press Escape to return to editor. Then, manually edit to resolve. After that, press F7 to jump to the next conflict. Finally, repeat until all conflicts resolved. Treat it like a recipe: do not add the next ingredient until the previous one is actually in the bowl.
+
+[JAMIE]
+Let's pause on Aborting a Merge. What should a learner take away from it?
+
+[ALEX]
+Here is the plain-English version of Aborting a Merge. If you want to cancel the merge and go back to before you started. Put another way, everything returns to the pre-merge state.
+
+[ALEX]
+First, ctrl+Shift+P. Then, type "git abort". After that, select "Git: Abort Merge". Treat it like a recipe: do not add the next ingredient until the previous one is actually in the bowl.
+
+[PAUSE]
+
+[ALEX]
+Keep the teaching thread moving. Start with Learning Cards: Resolving Merge Conflicts. There is something to understand, something to try, and something that proves the try worked.
+
+[ALEX]
+The practical takeaway is this. Press F7 in a conflict file to enter the Accessible Diff Viewer and step through conflicts hunk by hunk with announced change types. Conflict markers ( ) are read aloud as you arrow through lines -- listen for these to identify conflict boundaries. After resolving all markers, stage the file with Ctrl+Shift+G then navigate to it and press +, then commit to complete the merge. VS Code highlights conflict regions with colored backgrounds: green for "Current Change" (yours) and blue for "Incoming Change" (theirs). The inline action buttons ("Accept Current", "Accept Incoming", "Accept Both") appear above each conflict -- they are visible at high zoom levels. Use Ctrl+Shift+M to check the Problems panel for any remaining conflict markers you may have missed.
+
+[JAMIE]
+Let's pause on 10. Stash Management. What should a learner take away from it?
+
+[ALEX]
+Keep the learner anchored in 10. Stash Management. Stash temporarily saves your uncommitted changes so you can switch branches or pull updates without committing half-finished work.
+
+[ALEX]
+Keep the teaching thread moving. Start with When to Use Stash. There is something to understand, something to try, and something that proves the try worked.
+
+[ALEX]
+The practical takeaway is this. You need to switch branches but have uncommitted changes. You want to pull updates from GitHub but have local edits. You want to save experimental work without committing it.
+
+[PAUSE]
+
+[JAMIE]
+Let's pause on Method 1: Command Palette. What should a learner take away from it?
+
+[ALEX]
+Start with Method 1: Command Palette. There is something to understand, something to try, and something that proves the try worked.
+
+[ALEX]
+First, ctrl+Shift+P. Then, type "git stash". After that, select "Git: Stash". Finally, optionally type a stash message (helps you remember what's in it). Think of it as a rail line: each stop confirms you are still on the right route before the next one.
+
+[ALEX]
+Keep the teaching thread moving. Start with What happens. There is something to understand, something to try, and something that proves the try worked.
+
+[ALEX]
+The practical takeaway is this. Your uncommitted changes disappear from the editor. The files revert to the last commit. Your changes are saved in a hidden Git stash. You can now switch branches or pull safely.
+
+[JAMIE]
+Let's pause on Command Palette. What should a learner take away from it?
+
+[ALEX]
+Start with Command Palette. There is something to understand, something to try, and something that proves the try worked.
+
+[ALEX]
+First, ctrl+Shift+P. Then, type "git stash list". After that, select "Git: Show Stash". It is a checklist, but a meaningful one: every item creates evidence that the next step is safe.
+
+[PAUSE]
+
+[JAMIE]
+Let's pause on Alternative: Integrated Terminal. What should a learner take away from it?
+
+[ALEX]
+Start with Alternative: Integrated Terminal. There is something to understand, something to try, and something that proves the try worked.
+
+[ALEX]
+Treat examples as spoken recipes, not decorations. You may hear something like git stash list. Read the command, understand what it changes, then run it only when the repository state matches the lesson.
+
+[JAMIE]
+Let's pause on To restore your stashed changes. What should a learner take away from it?
+
+[ALEX]
+Start with To restore your stashed changes. There is something to understand, something to try, and something that proves the try worked.
+
+[ALEX]
+First, ctrl+Shift+P. Then, type "git stash apply". After that, select "Git: Apply Latest Stash". The rhythm is simple: orient, act, verify, then continue.
+
+[JAMIE]
+Let's pause on Or to apply a specific stash. What should a learner take away from it?
+
+[ALEX]
+Start with Or to apply a specific stash. There is something to understand, something to try, and something that proves the try worked.
+
+[ALEX]
+First, ctrl+Shift+P. Then, type "git stash pop". After that, select "Git: Pop Stash.". Finally, choose which stash from the list. Think of it as a rail line: each stop confirms you are still on the right route before the next one.
+
+[PAUSE]
+
+[JAMIE]
+Let's pause on Difference between Apply and Pop. What should a learner take away from it?
+
+[ALEX]
+Start with Difference between Apply and Pop. There is something to understand, something to try, and something that proves the try worked.
+
+[ALEX]
+The practical takeaway is this. Apply: restores changes and keeps the stash (you can apply it again later). Pop: restores changes and deletes the stash.
+
+[JAMIE]
+Let's pause on Dropping a Stash. What should a learner take away from it?
+
+[ALEX]
+This is where Dropping a Stash becomes real: if you no longer need what's in a stash.
+
+[ALEX]
+First, ctrl+Shift+P. Then, type "git stash drop". After that, select "Git: Drop Stash.". Finally, choose which stash to delete. It is a checklist, but a meaningful one: every item creates evidence that the next step is safe.
+
+[JAMIE]
+Let's pause on Learning Cards: Stash Management. What should a learner take away from it?
+
+[ALEX]
+Keep the learner anchored in Learning Cards: Stash Management. If the Stashes section is not visible, use the Command Palette: Ctrl+Shift+P then type "git stash" to access all stash commands. This is the part to say slowly: Low vision users (zoom, high contrast).
+
+[ALEX]
+First, open Source Control: Ctrl+Shift+G. Then, in the Source Control panel, there may be a "Stashes" section below Staged Changes (visible when stashes exist). After that, click a stash to see what it contains. Finally, right-click a stash to Apply, Pop, or Drop it. It is like walking a hallway with named doors: read the sign, enter the right room, then confirm where you landed.
+
+[JAMIE]
+Before we leave Learning Cards: Stash Management, what is the practical point?
+
+[ALEX]
+First, the Stashes section in the Source Control panel may be below the fold at high zoom. Scroll down in the panel, or use the Command Palette (Ctrl+Shift+P then "git stash") which is always accessible regardless of zoom level. Then, stash names in the Command Palette list are full text (e.g., "stash@{0}: WIP on feature/docs: add Timeline guide") and respect your font size settings. After that, after applying a stash, your files reappear in the Changes section of Source Control. Check the file count to confirm. The rhythm is simple: orient, act, verify, then continue.
+
+[PAUSE]
+
+[JAMIE]
+Let's pause on Creating a stash. What should a learner take away from it?
+
+[ALEX]
+Start with Creating a stash. There is something to understand, something to try, and something that proves the try worked.
+
+[ALEX]
+First, press Ctrl+Shift+P, type "git stash". Then, select "Git: Stash" - NVDA announces the result. After that, an input appears asking for a stash message - type something descriptive (e.g., "WIP: documentation changes for Timeline section"). Finally, press Enter - your changes disappear from Source Control and are saved in the stash. The rhythm is simple: orient, act, verify, then continue.
+
+[JAMIE]
+Before we leave Creating a stash, what is the practical point?
+
+[ALEX]
+First, NVDA announces the Source Control panel update (file counts drop to 0). Think of it as a rail line: each stop confirms you are still on the right route before the next one.
+
+[JAMIE]
+Let's pause on Applying a stash. What should a learner take away from it?
+
+[ALEX]
+Start with Applying a stash. There is something to understand, something to try, and something that proves the try worked.
+
+[ALEX]
+First, press Ctrl+Shift+P, type "git stash pop". Then, select "Git: Pop Stash.". After that, a list of stashes appears - navigate with Up/Down Arrow. Finally, each item is announced with the stash message you wrote. Think of it as a rail line: each stop confirms you are still on the right route before the next one.
+
+[JAMIE]
+Before we leave Applying a stash, what is the practical point?
+
+[ALEX]
+First, press Enter to apply and delete the stash. Then, your changes reappear in the Changes section. Treat it like a recipe: do not add the next ingredient until the previous one is actually in the bowl.
+
+[JAMIE]
+Let's pause on Viewing stashes. What should a learner take away from it?
+
+[ALEX]
+Here is the plain-English version of Viewing stashes. Screen reader users (VoiceOver on macOS). Put another way, GitHub.com does not have a stash feature.
+
+[ALEX]
+First, press Ctrl+Shift+P, type "git stash list". Then, or in the terminal: type git stash list and read the output line by line. After that, press Cmd+Shift+P, type "git stash". Finally, select "Git: Stash" and provide a message. Treat it like a recipe: do not add the next ingredient until the previous one is actually in the bowl.
+
+[JAMIE]
+Before we leave Viewing stashes, what is the practical point?
+
+[ALEX]
+First, press Return. Then, to apply: Cmd+Shift+P, type "git stash pop", select from the list with VO+Down Arrow, press Return. After that, create a draft commit on a temporary branch. Finally, or use GitHub Codespaces (which runs a full VS Code environment in the browser and supports git stash in the terminal). It is a checklist, but a meaningful one: every item creates evidence that the next step is safe.
+
+[ALEX]
+Treat examples as spoken recipes, not decorations. You may hear something like Stash all uncommitted changes with a message; git stash push -m "WIP: documentation changes"; Stash including untracked (new) files; git stash push -u -m "WIP: including new files"; List all stashes; git stash list; Show what a specific stash contains; git. Read the command, understand what it changes, then run it only when the repository state matches the lesson.
+
+[PAUSE]
+
+[JAMIE]
+What do you want them to do when the plan breaks?
+
+[ALEX]
+This is where 10b. Emergency Recovery - git reflog becomes real: git reflog is the safety net you reach for when something goes seriously wrong: an accidental hard reset, a lost branch, a rebase that destroyed commits you needed. That matters in practice: It is the most underused recovery tool in Git.
+
+[JAMIE]
+What decision is this helping them make?
+
+[ALEX]
+Start with When to Use Reflog. There is something to understand, something to try, and something that proves the try worked.
+
+[ALEX]
+Use the comparison to make a decision, not to recite a table. The main contrasts are: Scenario means What happened means Reflog solution. Deleted a branch by mistake means git branch -D feature/x means Find the last commit SHA from reflog → recreate branch. git reset --hard lost commits means Moved HEAD to older commit means Find the SHA before the reset → reset back to it.
+
+[JAMIE]
+Let's pause on Reading the Reflog in VS Code Terminal. What should a learner take away from it?
+
+[ALEX]
+The reason Reading the Reflog in VS Code Terminal matters is that run this in the integrated terminal (Ctrl+Backtick). That gives the learner a simple foothold: the output is plain text - read line by line with ↓.
+
+[ALEX]
+Treat examples as spoken recipes, not decorations. You may hear something like git reflog. Read the command, understand what it changes, then run it only when the repository state matches the lesson.
+
+[PAUSE]
+
+[JAMIE]
+Let's pause on If you need to restore a commit that has been lost. What should a learner take away from it?
+
+[ALEX]
+Start with If you need to restore a commit that has been lost: Use git branch over git reset --hard when recovering - creating a branch is non-destructive; you keep both the current state and the recovered state, then decide which to keep.
+
+[ALEX]
+Treat examples as spoken recipes, not decorations. You may hear something like Step 1 - Find the last good commit SHA in reflog; git reflog; Step 2 - Preview what that commit looked like; git show abc1234; Step 3a - Create a new branch at that point (safest); git branch recovery/my-lost-work abc1234; Step 3b - OR reset the current branch. Read the command, understand what it changes, then run it only when the repository state matches the lesson.
+
+[JAMIE]
+Let's pause on Recovering a Deleted Branch. What should a learner take away from it?
+
+[ALEX]
+Start with Recovering a Deleted Branch. There is something to understand, something to try, and something that proves the try worked.
+
+[ALEX]
+Treat examples as spoken recipes, not decorations. You may hear something like Find the last commit on the deleted branch; git reflog grep 'feature/deleted-branch-name'; Recreate the branch at that SHA; git checkout -b feature/deleted-branch-name abc1234. Read the command, understand what it changes, then run it only when the repository state matches the lesson.
+
+[ALEX]
+Keep the teaching thread moving. This is where Why Reflog Is Local-Only becomes real: reflog records are stored in your local.git/ directory and are not pushed to GitHub. That matters in practice: If your entire local clone is destroyed (hard drive failure, rm -rf), reflog cannot help - but GitHub retains the pushed commits in the remote history. The workshop is closer to rehearsal than lecture. You hear the move, try the move, and then check what changed.
+
+[PAUSE]
+
+[JAMIE]
+How should someone ask for help in a way that gets them unstuck faster?
+
+[ALEX]
+Start with Learning Cards: Emergency Recovery. There is something to understand, something to try, and something that proves the try worked.
+
+[ALEX]
+The practical takeaway is this. Run git reflog --oneline in the terminal and arrow through the output -- each line announces a HEAD movement with its SHA and action description. Copy the SHA you want to recover to by selecting it in the terminal (Shift+Arrow) then pressing Ctrl+C, then run git checkout -b recovery. Reflog entries are kept for 90 days -- you have time to recover, so do not panic. git reflog output is columnar text: SHA on the left, action description on the right -- increase terminal font size with Ctrl+= for readability. Each reflog entry starts with HEAD@{N} where N is the number of steps back -- lower numbers are more recent. Use git log --oneline --graph after recovery to visually confirm the branch history looks correct.
+
+[ALEX]
+Keep the teaching thread moving. The reason 11. Alternative Git Interfaces matters is that VS Code's Source Control panel is one way to use Git. That gives the learner a simple foothold: these alternatives exist for different workflows.
+
+[JAMIE]
+What stays the same when the tool changes?
+
+[ALEX]
+Start with GitHub Desktop. There is something to understand, something to try, and something that proves the try worked.
+
+[ALEX]
+The practical takeaway is this. Graphical Git client. Download: desktop.github.com. Strengths: Visual diff review, simpler branch management for beginners. Screen reader support: Partial - keyboard navigation works for core flows but some visual-only elements exist.
+
+[PAUSE]
+
+[ALEX]
+Keep the teaching thread moving. Start with GitHub CLI (gh). There is something to understand, something to try, and something that proves the try worked.
+
+[ALEX]
+The practical takeaway is this. Command-line interface for GitHub operations. Install: winget install GitHub.cli (Windows) or brew install gh (macOS). Strengths: Fast, scriptable, plain-text output (predictable for screen readers).
+
+[JAMIE]
+Let's pause on Common commands. What should a learner take away from it?
+
+[ALEX]
+This is where Common commands becomes real: see Culture & Etiquette for more gh examples.
+
+[ALEX]
+Treat examples as spoken recipes, not decorations. You may hear something like gh repo clone owner/repo Clone a repository; gh issue list List issues; gh pr create Create a PR interactively; gh pr list List your PRs; gh pr view 14 Read PR 14. Read the command, understand what it changes, then run it only when the repository state matches the lesson.
+
+[ALEX]
+Keep the teaching thread moving. Start with Git CLI (Terminal). There is something to understand, something to try, and something that proves the try worked.
+
+[ALEX]
+The practical takeaway is this. The standard Git command-line interface. Included with VS Code (integrated terminal: Ctrl+Backtick).
+
+[PAUSE]
+
+[JAMIE]
+Before we leave Common commands, what is the practical point?
+
+[ALEX]
+The reason Common commands matters is that terminal output is plain text - more predictable than GUI elements for some operations.
+
+[ALEX]
+Treat examples as spoken recipes, not decorations. You may hear something like git status Show modified files; git add. Stage all changes; git commit -m "message" Commit with message; git push Push to GitHub; git pull Pull from GitHub; git log View commit history. Read the command, understand what it changes, then run it only when the repository state matches the lesson.
+
+[JAMIE]
+Let's pause on Try It: Clone, Branch, Commit. What should a learner take away from it?
+
+[ALEX]
+Start with Try It: Clone, Branch, Commit: Time: 5 minutes What you need: VS Code with Git configured. The next useful detail is this: Do the complete Git workflow once, start to finish. Think of it like entering a new building: first you find the lobby, then the room, then the door you actually need.
+
+[ALEX]
+First, clone - Press Ctrl+Shift+P, type Git: Clone, press Enter. Paste https://github.com/Community-Access/vscode-sci-fi-themes.git and choose a folder. VS Code opens the repo. Then, create a branch - Click the branch name in the status bar (bottom left) or press Ctrl+Shift+P → Git: Create Branch. Name it chapter11/your-name. After that, make a change - Open a theme file in the themes/ folder (for example, star-trek-settings.json). Add a new thinking phrase to the array. Finally, stage - Press Ctrl+Shift+G to open Source Control. Navigate to your changed file and press Enter to stage it (or use the + button). Think of it as a rail line: each stop confirms you are still on the right route before the next one.
+
+[JAMIE]
+Before we leave Try It: Clone, Branch, Commit, what is the practical point?
+
+[ALEX]
+First, commit - Tab to the message input, type feat: add new thinking phrase, press Ctrl+Enter. Then, push - Press Ctrl+Shift+P → Git: Push. Treat it like a recipe: do not add the next ingredient until the previous one is actually in the bowl.
+
+[PAUSE]
+
+[JAMIE]
+What should people carry with them after this?
+
+[ALEX]
+Carry the map. Know what page or tool you are in, know which action you are taking, and know what confirmation should follow. If the confirmation is missing, pause. That pause is not wasted time; it is professional judgment.
+
+[JAMIE]
+That is a better way to say it than just follow the steps.
+
+[ALEX]
+Right. Steps matter, but understanding wins. That is episode 12. Next in the series is episode 13, where we keep building the same contributor muscles.

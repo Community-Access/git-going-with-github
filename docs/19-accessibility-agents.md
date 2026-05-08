@@ -1,6 +1,6 @@
 # Accessibility Agents
 >
-> **Listen to Episode 17:** [Accessibility Agents](../PODCASTS.md) - a conversational audio overview of this chapter. Listen before reading to preview the concepts, or after to reinforce what you learned.
+> **Listen to Episode 17:** [Accessibility Agents](../admin/PODCASTS.md) - a conversational audio overview of this chapter. Listen before reading to preview the concepts, or after to reinforce what you learned.
 
 > **Related appendices:** [Appendix L: Agents Reference](appendix-l-agents-reference.md) | [Appendix K: Copilot Reference](appendix-k-copilot-reference.md)
 > **Authoritative sources:** [GitHub Docs: Using extensions with Copilot](https://docs.github.com/en/copilot/using-github-copilot/using-extensions-to-integrate-external-tools-with-copilot-chat) | [VS Code Docs: Chat participants](https://code.visualstudio.com/docs/copilot/copilot-chat#_chat-participants)
@@ -26,7 +26,7 @@
 ### Core Prerequisites (Required for All Agents)
 
 - [ ] Chapter 0: [Pre-Workshop Setup](00-pre-workshop-setup.md) - Git, VS Code, and GitHub account
-- [ ] Chapter 13: [GitHub Copilot](16-github-copilot.md) - GitHub Copilot Chat installed and working
+- [ ] Chapter 16: [GitHub Copilot](16-github-copilot.md) - GitHub Copilot Chat installed and working
 - [ ] GitHub Copilot access (Copilot Free tier is enough for this workshop)
 - [ ] `.github/agents/` folder exists in your repository (or will create custom agents)
 
@@ -47,9 +47,9 @@ This is not an exhaustive list - it illustrates the principle. Before running an
 **Estimated time for this chapter:** 1.5 hours (including exercises)
 
 
-## Workshop Recommendation (Chapter 16)
+## Workshop Recommendation (Chapter 19 / Challenge 15)
 
-Chapter 16 is the **agent exploration and hands-on validation chapter** - where students match agents to skills they already have and learn how to trust, evaluate, and improve AI-powered workflow automation.
+Chapter 19 is the **agent exploration and hands-on validation chapter** - where students match agents to skills they already have and learn how to trust, evaluate, and improve AI-powered workflow automation. It supports Challenge 15: Meet the Agents.
 
 - **Challenge count:** 3 guided + 1-2 optional contribution challenges
 - **Automation check:** none (agent output requires human judgment before use)
@@ -57,7 +57,7 @@ Chapter 16 is the **agent exploration and hands-on validation chapter** - where 
 - **Pattern:** explore, validate, read internals, optionally contribute
 - **Key principle:** Skill First, Agent Second - **every agent requires manual prerequisite skills**
 
-### Chapter 16 Challenge Set
+### Challenge 15 Set
 
 1. **Agent Discovery Mapping** - identify 3-5 agents that match skills you already have from Day 1.
 2. **Agent Skill Validation** - run one agent and evaluate its output against your manual experience.
@@ -65,11 +65,11 @@ Chapter 16 is the **agent exploration and hands-on validation chapter** - where 
 4. **Improve an Existing Agent** (optional hackathon) - find a gap in an agent's instructions and fix it via PR.
 5. **Propose a New Agent** (optional hackathon) - file an issue proposing an agent for an uncovered workflow.
 
-### Challenge 16.1 Step-by-Step: Agent Discovery Mapping
+### Challenge 15.1 Step-by-Step: Agent Discovery Mapping
 
 **Goal:** Map your Day 1 manual skills to specific agents in the ecosystem so you know which agents you are ready to use.
 
-**Where you are working:** GitHub.com - the [accessibility-agents](https://github.com/Community-Access/accessibility-agents) repository and your assigned Chapter 16 challenge issue.
+**Where you are working:** GitHub.com - the [accessibility-agents](https://github.com/Community-Access/accessibility-agents) repository and your assigned Challenge 15 issue.
 
 **Estimated time:** 20 minutes.
 
@@ -85,11 +85,11 @@ If 55 agents feels too broad, start with this beginner sequence:
    - Example: You filed issues manually (Ch 4) - you can use `@issue-tracker`
    - Example: You reviewed a PR with diffs (Ch 6/14) - you can use `@pr-review`
    - Example: You checked colors for contrast - you can use `@contrast-master`
-5. Open your **assigned Chapter 16.1 challenge issue**.
+5. Open your **assigned Challenge 15 issue**.
 6. Post a discovery mapping comment using this format:
 
 ```text
-Chapter 16.1 - Agent Discovery Mapping:
+Challenge 15.1 - Agent Discovery Mapping:
 
 Agent 1: @[agent-name]
 I am ready because I have already: [specific skill from Day 1]
@@ -103,7 +103,7 @@ I am ready because I have already: [specific skill from Day 1]
 
 **You are done when:** Your discovery mapping comment is posted with at least 3 agent-to-skill matches.
 
-### Challenge 16.2 Step-by-Step: Agent Skill Validation
+### Challenge 15.2 Step-by-Step: Agent Skill Validation
 
 **Goal:** Run one agent, read its output, and evaluate whether it matches your manual experience.
 
@@ -119,10 +119,10 @@ I am ready because I have already: [specific skill from Day 1]
    - `@issue-tracker find open issues labeled good-first-issue in accessibility-agents`
    - `@pr-review show open PRs in accessibility-agents`
 5. Read the agent's output carefully. Take a moment to think about what you expected.
-6. Open your **assigned Chapter 16.2 challenge issue** and post an evaluation comment:
+6. Open your **assigned Challenge 15 issue** and post an evaluation comment:
 
 ```text
-Chapter 16.2 - Agent Validation:
+Challenge 15.2 - Agent Validation:
 
 Agent used: @[agent-name]
 Prompt: [exact prompt you used]
@@ -139,7 +139,7 @@ Did the agent miss anything important that you would catch?
 
 **You are done when:** Your evaluation comment is posted with all three questions answered.
 
-### Challenge 16.3 Step-by-Step: Agent Instructions Deep Dive
+### Challenge 15.3 Step-by-Step: Agent Instructions Deep Dive
 
 **Goal:** Read one agent's source file to understand what instructions it follows, what tools it can use, and what mistakes it could make.
 
@@ -154,10 +154,10 @@ Did the agent miss anything important that you would catch?
    - What tools does it have access to? (tool permissions)
    - What constraints or guardrails are in the instructions?
 4. Think critically: could this agent make a mistake? What kind?
-5. Open your **assigned Chapter 16.3 challenge issue** and post your analysis:
+5. Open your **assigned Challenge 15 issue** and post your analysis:
 
 ```text
-Chapter 16.3 - Agent Internals:
+Challenge 15.3 - Agent Internals:
 
 Agent file: [filename]
 Purpose: [one sentence]
@@ -168,24 +168,24 @@ Could it make a mistake? [your answer and what kind]
 
 **You are done when:** Your analysis comment is posted.
 
-### Optional Challenges 16.4-16.5 (Hackathon)
+### Optional Extensions 15.4-15.5 (Hackathon)
 
-**Challenge 16.4: Improve an Existing Agent** (45 min)
+**Extension 15.4: Improve an Existing Agent** (45 min)
 - Find an agent whose instructions have a gap (use Section 6 suggestions or file an issue).
 - Fork the repo, edit the agent's `.agent.md` file.
 - Get a facilitator review.
 - Open a PR with your improvement.
 - Evidence: your merged PR.
 
-**Challenge 16.5: Propose a New Agent** (60 min)
+**Extension 15.5: Propose a New Agent** (60 min)
 - Identify a workflow not yet covered by any of the 55 agents.
 - File an issue describing what the agent should do and why it matters.
 - Include 3 example prompts people would use.
 - Evidence: your issue with facilitator/maintainer discussion.
 
-### Completing Chapter 16: Submit Your Evidence
+### Completing Challenge 15: Submit Your Evidence
 
-Your evidence is the individual challenge issue comments (16.1, 16.2, 16.3). Close each challenge issue as you complete it. For optional challenges, your PR or proposal issue is the evidence.
+Your evidence is the Challenge 15 issue comments for 15.1, 15.2, and 15.3. For optional extensions, your PR or proposal issue is the evidence.
 
 ### Expected Outcomes
 
@@ -1216,7 +1216,7 @@ The repository includes 54+ slash commands defined as `.prompt.md` files in `.gi
 
 ### Workshop Slash Command Quick Reference
 
-The commands listed below are the ones most relevant to this workshop. The full repository contains 54+ commands covering accessibility auditing, document scanning, framework-specific checks, and more. See [Appendix V](appendix-l-agents-reference.md) for the complete list.
+The commands listed below are the ones most relevant to this workshop. The full repository contains 54+ commands covering accessibility auditing, document scanning, framework-specific checks, and more. See [Appendix L](appendix-l-agents-reference.md) for the complete list.
 
 ```text
 
@@ -2204,7 +2204,7 @@ These commands work without invoking a full agent - type them directly in Copilo
 - **`/draft-release v2.0`** - Generate release notes from merged PRs
 - **`/onboard-repo`** - First-time scan of a repo with health assessment and recommended actions
 
-The full list of 54+ commands is in [Appendix V](appendix-l-agents-reference.md), and [Episode 39](../PODCASTS.md) walks through all of them with examples.
+The full list of 54+ commands is in [Appendix L](appendix-l-agents-reference.md), and [Episode 39](../admin/PODCASTS.md) walks through all of them with examples.
 
 ### Running Agents Beyond VS Code
 
@@ -2242,7 +2242,7 @@ No VS Code required. No local machine required. The workflow runs whether or not
 
 ### Go Deeper
 
-For full documentation on every agent, all 54+ slash commands, customization formats, and troubleshooting, see [Appendix V: Accessibility Agents Reference](appendix-l-agents-reference.md). For the audio version, listen to [Episode 39: Accessibility Agents - Complete Reference](../PODCASTS.md).
+For full documentation on every agent, all 54+ slash commands, customization formats, and troubleshooting, see [Appendix L: Accessibility Agents Reference](appendix-l-agents-reference.md). For the audio version, listen to [Episode 39: Accessibility Agents - Complete Reference](../admin/PODCASTS.md).
 
 #### Example: Auto-triage accessibility issues
 

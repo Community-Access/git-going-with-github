@@ -19,6 +19,55 @@ const path = require('path');
 const DOCS_DIR = path.join(__dirname, '..', 'docs');
 const BUNDLES_DIR = path.join(__dirname, 'bundles');
 
+// Historical episode scripts were created before the curriculum was renumbered.
+// Keep those episode records usable by resolving old source names to the
+// current files when building fresh source bundles.
+const SOURCE_ALIASES = {
+  '01-understanding-github-web-structure.md': '02-understanding-github.md',
+  '02-navigating-repositories.md': '03-navigating-repositories.md',
+  '03-the-learning-room.md': '04-the-learning-room.md',
+  '04-working-with-issues.md': '05-working-with-issues.md',
+  '05-working-with-pull-requests.md': '06-working-with-pull-requests.md',
+  '06-merge-conflicts.md': '07-merge-conflicts.md',
+  '07-culture-etiquette.md': '08-open-source-culture.md',
+  '08-labels-milestones-projects.md': '09-labels-milestones-projects.md',
+  '09-notifications.md': '10-notifications-and-day-1-close.md',
+  '10-vscode-basics.md': '11-vscode-interface.md',
+  '11-git-source-control.md': '14-git-in-practice.md',
+  '12-github-pull-requests-extension.md': '15-code-review.md',
+  '13-github-copilot.md': '16-github-copilot.md',
+  '14-accessible-code-review.md': '15-code-review.md',
+  '15-issue-templates.md': '17-issue-templates.md',
+  '16-accessibility-agents.md': '19-accessibility-agents.md',
+  'appendix-c-accessibility-standards.md': 'appendix-m-accessibility-standards.md',
+  'appendix-e-github-flavored-markdown.md': 'appendix-c-markdown-reference.md',
+  'appendix-f-github-gists.md': 'appendix-u-discussions-and-gists.md',
+  'appendix-g-github-discussions.md': 'appendix-u-discussions-and-gists.md',
+  'appendix-h-releases-tags-insights.md': 'appendix-s-releases-tags-insights.md',
+  'appendix-i-github-projects.md': 'appendix-r-projects-deep-dive.md',
+  'appendix-j-advanced-search.md': 'appendix-n-advanced-search.md',
+  'appendix-k-branch-protection-rulesets.md': 'appendix-o-branch-protection.md',
+  'appendix-l-github-security-features.md': 'appendix-p-security-features.md',
+  'appendix-m-vscode-accessibility-reference.md': 'appendix-g-vscode-reference.md',
+  'appendix-n-github-codespaces.md': 'appendix-j-cloud-editors.md',
+  'appendix-o-github-mobile.md': 'appendix-v-github-mobile.md',
+  'appendix-p-github-pages.md': 'appendix-w-github-pages.md',
+  'appendix-q-github-actions-workflows.md': 'appendix-q-actions-workflows.md',
+  'appendix-r-github-profile-sponsors-wikis.md': 'appendix-t-community-and-social.md',
+  'appendix-s-github-organizations-templates.md': 'appendix-t-community-and-social.md',
+  'appendix-t-contributing-to-open-source.md': '08-open-source-culture.md',
+  'appendix-u-resources.md': 'appendix-x-resources.md',
+  'appendix-v-accessibility-agents-reference.md': 'appendix-l-agents-reference.md',
+  'appendix-w-github-copilot-reference.md': 'appendix-k-copilot-reference.md',
+  'appendix-x-copilot-models.md': 'appendix-k-copilot-reference.md',
+  'appendix-y-accessing-workshop-materials.md': 'appendix-y-workshop-materials.md',
+  'appendix-z-github-skills-catalog.md': 'appendix-z-github-skills.md'
+};
+
+function resolveSourceName(sourceName) {
+  return SOURCE_ALIASES[sourceName] || sourceName;
+}
+
 // ---------------------------------------------------------------------------
 // Series-wide prompt template
 // ---------------------------------------------------------------------------
@@ -79,6 +128,8 @@ The audience is blind and low-vision developers attending a two-day workshop on 
 **Tone and style:**
 
 - Welcoming and encouraging - many listeners are encountering these concepts for the first time
+- Preserve the Alex and Jamie banter style: Alex is the warm expert guide, Jamie is curious, funny, and willing to ask the questions learners may be afraid to ask
+- Keep the humor kind and grounded in the learning moment; jokes should clarify the concept, not distract from it
 - Use spatial and structural descriptions, not visual references
 - Say "navigate to" or "move to the section called" instead of "look for" or "you will see"
 - Define technical terms on first use - do not assume familiarity with programming jargon
@@ -88,6 +139,16 @@ The audience is blind and low-vision developers attending a two-day workshop on 
 - Keep the conversation natural - two hosts discussing the topic, not reading a script
 - Include at least one real-world analogy per major concept
 - End with a brief summary of key takeaways and what comes next
+- When onboarding or classroom setup is relevant, explicitly explain the gentle path: GitHub Classroom link, private Learning Room repository, Challenge 1 issue, evidence prompt, bot feedback, and where to ask for help
+- Emphasize tool choice without ranking learners: browser, github.dev, VS Code, GitHub Desktop, and command line are paths into the same workflow
+
+**Required script format:**
+
+- Use only these speaker markers on their own lines: [ALEX], [JAMIE], and [PAUSE]
+- Do not include stage directions, music cues, markdown tables, bullet lists, citations, or headings in the final script
+- Keep each speaker turn short enough for TTS, usually one to three spoken paragraphs
+- Jamie should regularly restate the learner's mental model: "So what I am hearing is..."
+- For challenge or exercise material, teach the skill first, then explain the evidence the learner must submit
 
 **Episode focus:**
 
@@ -101,7 +162,7 @@ ${conceptSection}${prereqSection}${xrefSection}### Primary Source Material
 }
 
 // ---------------------------------------------------------------------------
-// Episode catalog - 44 episodes (0-43)
+// Episode catalog
 // Each episode has:
 //   sources:       Primary chapter markdown files
 //   crossRefs:     Supplementary docs appended for context (label + file)
@@ -120,7 +181,7 @@ const episodes = [
     title: 'Welcome to Git Going with GitHub',
     description: 'A tour of the workshop structure, the two-day arc, and what you will accomplish.',
     duration: '10-12 min',
-    sources: ['course-guide.md'],
+    sources: ['course-guide.md', 'get-going.md'],
     crossRefs: [
       { label: 'Glossary - key terms preview', file: 'appendix-a-glossary.md' }
     ],
@@ -1394,6 +1455,212 @@ const episodes = [
 - Prerequisites and difficulty levels for each module
 - How to integrate GitHub Skills into your continued learning
 - Recommended paths for different goals: contributor, maintainer, DevOps`
+  },
+  {
+    number: 44,
+    slug: 'choose-your-tools',
+    title: 'Choose Your Tools',
+    description: 'A guided tour of browser GitHub, github.dev, VS Code, GitHub Desktop, and the CLI.',
+    duration: '10-12 min',
+    sources: ['01-choose-your-tools.md'],
+    concepts: [
+      'Why the workshop teaches multiple tool paths instead of one right way',
+      'Browser GitHub as the Day 1 foundation',
+      'github.dev as the bridge from browser to editor',
+      'VS Code as the full Day 2 workspace',
+      'GitHub Desktop and CLI as optional alternate paths',
+      'How screen reader users choose tools based on task, comfort, and access needs'
+    ],
+    focus: `- Comparing the five tool environments in plain language
+- Choosing the right tool for the task and access need
+- Reducing anxiety by making tool choice explicit`
+  },
+  {
+    number: 45,
+    slug: 'vscode-accessibility-deep-dive',
+    title: 'VS Code Accessibility Deep Dive',
+    description: 'Keyboard navigation, accessible views, terminal access, signals, speech, and Copilot accessibility in VS Code.',
+    duration: '12-15 min',
+    sources: ['12-vscode-accessibility.md'],
+    crossRefs: [
+      { label: 'VS Code accessibility reference', file: 'appendix-g-vscode-reference.md' }
+    ],
+    concepts: [
+      'Accessible View and Accessible Help in VS Code',
+      'Navigating panels, problems, terminal output, and diffs',
+      'Accessibility signals and when audio cues help',
+      'Speech and dictation features',
+      'Reading Copilot responses accessibly',
+      'Recovering focus when VS Code feels noisy or confusing'
+    ],
+    focus: `- Going beyond initial VS Code setup into daily accessible workflows
+- Reading generated content and terminal output confidently
+- Making VS Code calmer and more predictable for screen reader use`
+  },
+  {
+    number: 46,
+    slug: 'how-git-works',
+    title: 'How Git Works: The Mental Model',
+    description: 'Commits, branches, staging, local versus remote, push, pull, fetch, and why conflicts happen.',
+    duration: '12-15 min',
+    sources: ['13-how-git-works.md'],
+    crossRefs: [
+      { label: 'Git authentication reference', file: 'appendix-d-git-authentication.md' }
+    ],
+    concepts: [
+      'The working tree, staging area, local repository, and remote repository',
+      'What a commit stores and why commits are snapshots',
+      'Branches as movable labels for lines of work',
+      'Push, pull, fetch, and clone as directions of movement',
+      'Why merge conflicts happen',
+      'How the mental model makes VS Code source control less mysterious'
+    ],
+    focus: `- Building the mental model before asking learners to run Git commands
+- Explaining local versus remote clearly
+- Connecting Git concepts to Day 2 challenge work`
+  },
+  {
+    number: 47,
+    slug: 'fork-and-contribute',
+    title: 'Fork and Contribute',
+    description: 'The complete fork-based open source contribution workflow from fork to upstream pull request.',
+    duration: '12-15 min',
+    sources: ['18-fork-and-contribute.md'],
+    crossRefs: [
+      { label: 'Open source culture and etiquette', file: '08-open-source-culture.md' }
+    ],
+    concepts: [
+      'Why forks exist and how they differ from branches and clones',
+      'Origin versus upstream remotes',
+      'Keeping a fork synchronized',
+      'Opening a pull request from a fork to the original repository',
+      'How maintainers review fork-based contributions',
+      'Common permission and remote URL mistakes'
+    ],
+    focus: `- Turning classroom PR skills into real open source contribution
+- Explaining fork, clone, branch, upstream, and origin without hand-waving
+- Preparing learners for Accessibility Agents contribution work`
+  },
+  {
+    number: 48,
+    slug: 'build-your-agent-capstone',
+    title: 'Build Your Agent: Capstone',
+    description: 'Designing, writing, testing, and contributing a custom accessibility agent.',
+    duration: '12-15 min',
+    sources: ['20-build-your-agent.md'],
+    crossRefs: [
+      { label: 'Accessibility Agents overview', file: '19-accessibility-agents.md' },
+      { label: 'Accessibility Agents reference', file: 'appendix-l-agents-reference.md' }
+    ],
+    concepts: [
+      'Choosing an agent idea with a real user need',
+      'Writing responsibilities, boundaries, and guardrails',
+      'Designing accessible agent output',
+      'Testing an agent prompt with realistic examples',
+      'Preparing the capstone pull request',
+      'How the capstone can continue asynchronously after the live event'
+    ],
+    focus: `- Coaching the capstone as design work, not just file creation
+- Keeping human judgment central when building agents
+- Helping learners finish asynchronously if needed`
+  },
+  {
+    number: 49,
+    slug: 'next-steps',
+    title: 'What Comes Next',
+    description: 'How to continue learning, contributing, and building confidence after the workshop.',
+    duration: '8-10 min',
+    sources: ['21-next-steps.md'],
+    crossRefs: [
+      { label: 'Resources and links', file: 'appendix-x-resources.md' },
+      { label: 'GitHub Skills catalog', file: 'appendix-z-github-skills.md' }
+    ],
+    concepts: [
+      'How to keep practicing without the live workshop structure',
+      'Finding approachable issues and communities',
+      'Turning workshop evidence into a portfolio story',
+      'Continuing with GitHub Skills and Community Access resources',
+      'Building a sustainable open source habit'
+    ],
+    focus: `- Helping learners leave with momentum
+- Giving concrete next steps for continued contribution
+- Normalizing slow, steady practice after the event`
+  },
+  {
+    number: 50,
+    slug: 'advanced-git-operations',
+    title: 'Advanced Git Operations',
+    description: 'Cherry-pick, rebase, revert, reset, tags, bisect, clean, and other Git recovery tools.',
+    duration: '12-15 min',
+    sources: ['appendix-e-advanced-git.md'],
+    concepts: [
+      'When advanced Git commands are useful and when to avoid them',
+      'Revert versus reset as safer recovery language',
+      'Cherry-pick for moving one commit',
+      'Rebase and why history rewriting requires care',
+      'Tags, bisect, reflog, and clean as reference tools',
+      'Safety habits before running destructive commands'
+    ],
+    focus: `- Presenting advanced Git as a reference, not a Day 1 requirement
+- Emphasizing safe recovery and coordination
+- Helping screen reader users understand command output before acting`
+  },
+  {
+    number: 51,
+    slug: 'git-security-for-contributors',
+    title: 'Git Security for Contributors',
+    description: 'Secrets, .gitignore, environment variables, push protection, and safe contributor habits.',
+    duration: '10-12 min',
+    sources: ['appendix-f-git-security.md'],
+    concepts: [
+      'What counts as a secret and why secrets in Git are serious',
+      'Using .gitignore to prevent accidental commits',
+      'Environment variables and local configuration files',
+      'GitHub secret scanning and push protection',
+      'What to do if a secret is committed',
+      'Security habits for new open source contributors'
+    ],
+    focus: `- Teaching security as contributor care
+- Making secret prevention practical and non-scary
+- Explaining recovery steps clearly if something leaks`
+  },
+  {
+    number: 52,
+    slug: 'github-desktop',
+    title: 'GitHub Desktop',
+    description: 'Using GitHub Desktop as an accessible alternative for cloning, branching, committing, and syncing.',
+    duration: '10-12 min',
+    sources: ['appendix-h-github-desktop.md'],
+    concepts: [
+      'Where GitHub Desktop fits among browser, VS Code, and CLI workflows',
+      'Cloning repositories with GitHub Desktop',
+      'Creating branches, reviewing changes, committing, and pushing',
+      'Opening pull requests from GitHub Desktop',
+      'Screen reader considerations and limitations',
+      'When to switch to VS Code or the browser'
+    ],
+    focus: `- Giving learners an alternate local workflow
+- Explaining GitHub Desktop without treating it as lesser
+- Naming accessibility tradeoffs honestly`
+  },
+  {
+    number: 53,
+    slug: 'github-cli-reference',
+    title: 'GitHub CLI Reference',
+    description: 'Using the GitHub CLI for issues, pull requests, authentication, and automation-friendly workflows.',
+    duration: '10-12 min',
+    sources: ['appendix-i-github-cli.md'],
+    concepts: [
+      'What the GitHub CLI is and when it helps',
+      'Authentication with gh auth login',
+      'Listing and viewing issues and pull requests',
+      'Creating pull requests from the terminal',
+      'Screen reader-friendly command output practices',
+      'When CLI workflows are faster than web navigation'
+    ],
+    focus: `- Introducing the CLI as an optional power tool
+- Keeping command-line examples approachable
+- Connecting CLI output to screen reader review habits`
   }
 ];
 
@@ -1423,13 +1690,17 @@ function buildBundles() {
     let missingSource = false;
 
     for (const src of ep.sources) {
-      const srcPath = path.join(DOCS_DIR, src);
+      const resolvedSrc = resolveSourceName(src);
+      const srcPath = path.join(DOCS_DIR, resolvedSrc);
       if (!fs.existsSync(srcPath)) {
-        console.error(`  Missing source: ${src} (Episode ${ep.number}: ${ep.title})`);
+        console.error(`  Missing source: ${src} -> ${resolvedSrc} (Episode ${ep.number}: ${ep.title})`);
         missingSource = true;
         continue;
       }
       if (sourceContent) sourceContent += '\n\n---\n\n';
+      if (resolvedSrc !== src) {
+        sourceContent += `<!-- Source alias resolved from ${src} to ${resolvedSrc}. -->\n\n`;
+      }
       sourceContent += fs.readFileSync(srcPath, 'utf-8');
     }
 
@@ -1443,12 +1714,16 @@ function buildBundles() {
     let xrefContent = '';
     if (ep.crossRefs && ep.crossRefs.length > 0) {
       for (const xref of ep.crossRefs) {
-        const xrefPath = path.join(DOCS_DIR, xref.file);
+        const resolvedXref = resolveSourceName(xref.file);
+        const xrefPath = path.join(DOCS_DIR, resolvedXref);
         if (!fs.existsSync(xrefPath)) {
-          console.warn(`  Warning: cross-ref missing: ${xref.file} (Episode ${ep.number})`);
+          console.warn(`  Warning: cross-ref missing: ${xref.file} -> ${resolvedXref} (Episode ${ep.number})`);
           continue;
         }
         xrefContent += `\n\n---\n\n### Supplementary: ${xref.label}\n\n`;
+        if (resolvedXref !== xref.file) {
+          xrefContent += `<!-- Cross-reference alias resolved from ${xref.file} to ${resolvedXref}. -->\n\n`;
+        }
         xrefContent += fs.readFileSync(xrefPath, 'utf-8');
       }
     }
@@ -1475,7 +1750,7 @@ function buildBundles() {
       title: ep.title,
       description: ep.description || '',
       duration: ep.duration || '10-15 min',
-      sources: ep.sources,
+      sources: ep.sources.map(resolveSourceName),
       bundle: `ep${pad}-${ep.slug}.md`,
       audio: `ep${pad}-${ep.slug}.mp3`,
       status: 'bundle-ready'
@@ -1486,7 +1761,7 @@ function buildBundles() {
 }
 
 // Export episodes for other scripts
-module.exports = { episodes };
+module.exports = { episodes, resolveSourceName, SOURCE_ALIASES };
 
 // Run when called directly
 if (require.main === module) {

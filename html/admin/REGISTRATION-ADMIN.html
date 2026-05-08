@@ -59,12 +59,80 @@
   </header>
   <main id="main-content" class="markdown-body">
     <h1 id="registration-administration-guide">Registration Administration Guide</h1>
-<p>This document explains how the registration system works and how to manage it. <strong>This file is not committed to the repository.</strong></p>
+<p>This document explains how the registration system works and how to manage it, including optional API-based classroom invitation automation.</p>
+<p>If you just need implementation steps, start with <a href="REGISTRATION-QUICKSTART.html">REGISTRATION-QUICKSTART.md</a>.</p>
 <h2 id="how-registration-tracking-works">How Registration Tracking Works</h2>
 <h3 id="registration-count-website">Registration Count (Website)</h3>
 <p>The registration page at <code>REGISTER.html</code> queries the GitHub Search API in real time every time a visitor loads the page. It counts open issues with the <code>registration</code> label. No CSV or local data is involved.</p>
 <h3 id="capacity-check-workflow">Capacity Check (Workflow)</h3>
 <p>When someone submits a registration issue, the GitHub Actions workflow queries all issues labeled <code>registration</code> and counts unique GitHub usernames. If the count is at or above 75, the registrant is placed on the waitlist instead.</p>
+<h3 id="optional-classroom-api-automation">Optional Classroom API Automation</h3>
+<p>When configured, the registration workflow can also:</p>
+<ul>
+<li>Check whether the registrant is already in the classroom organization</li>
+<li>Send an organization invitation if needed</li>
+<li>Include Day 1 and Day 2 GitHub Classroom assignment links in the welcome comment</li>
+</ul>
+<p>Important: This does not bypass GitHub Classroom acceptance. Students still must click the assignment link and accept.</p>
+<h2 id="full-api-setup-classroom-automation">Full API Setup (Classroom Automation)</h2>
+<p>Use these steps to enable end-to-end registration plus classroom invitation flow.</p>
+<h3 id="1-create-an-admin-token-for-organization-invites">1. Create an admin token for organization invites</h3>
+<p>Create a GitHub personal access token for a facilitator/admin account with permission to manage organization invitations.</p>
+<p>Recommended minimum permissions:</p>
+<ul>
+<li>Organization administration permissions sufficient to create invitations</li>
+<li>Repository read access for this repository</li>
+</ul>
+<p>Store this token securely. Do not commit it to the repository.</p>
+<h3 id="2-add-repository-secret">2. Add repository secret</h3>
+<p>In repository settings, add this secret:</p>
+<ul>
+<li><code>CLASSROOM_ORG_ADMIN_TOKEN</code> = token from Step 1</li>
+</ul>
+<h3 id="3-add-repository-variables">3. Add repository variables</h3>
+<p>In repository settings, add these variables:</p>
+<ul>
+<li><code>CLASSROOM_ORG</code> = your classroom org name (example: <code>Community-Access-Classroom</code>)</li>
+<li><code>CLASSROOM_DAY1_ASSIGNMENT_URL</code> = Day 1 Classroom invite URL</li>
+<li><code>CLASSROOM_DAY2_ASSIGNMENT_URL</code> = Day 2 Classroom invite URL</li>
+</ul>
+<p>If you omit these variables/secrets, registration still works; only the classroom automation steps are skipped.</p>
+<h3 id="4-confirm-workflow-behavior">4. Confirm workflow behavior</h3>
+<p>After setup, successful non-duplicate registrations should produce:</p>
+<ol>
+<li>Standard registration confirmation logic (registration label and capacity handling)</li>
+<li>Organization invite status handling:<ul>
+<li><code>invited</code> (new invite sent)</li>
+<li><code>already-invited</code> (pending invite exists)</li>
+<li><code>already-member</code> (user already in org)</li>
+</ul>
+</li>
+<li>Welcome comment including classroom assignment links (if configured)</li>
+</ol>
+<h3 id="5-end-to-end-test-checklist">5. End-to-end test checklist</h3>
+<p>Run this once before opening registration publicly:</p>
+<ol>
+<li>Submit a test registration issue from a non-member test account.</li>
+<li>Verify an org invitation is sent.</li>
+<li>Verify Day 1/Day 2 assignment links appear in the welcome comment.</li>
+<li>Accept org invite from the test account.</li>
+<li>Accept Day 1 assignment link from the test account.</li>
+<li>Confirm private classroom repo is created.</li>
+<li>Submit a second registration from the same account and confirm duplicate handling.</li>
+</ol>
+<h3 id="6-operational-notes">6. Operational notes</h3>
+<ul>
+<li>The automation runs only when capacity is available and the registration is not a duplicate.</li>
+<li>Waitlisted users are not invited automatically by this workflow.</li>
+<li>Assignment acceptance remains student-driven in GitHub Classroom.</li>
+</ul>
+<h3 id="7-rollback-plan">7. Rollback plan</h3>
+<p>If invitation automation causes issues:</p>
+<ol>
+<li>Remove <code>CLASSROOM_ORG_ADMIN_TOKEN</code> secret (fastest stop switch), or</li>
+<li>Clear <code>CLASSROOM_ORG</code> variable.</li>
+</ol>
+<p>Registration confirmations and CSV export continue to function without classroom API steps.</p>
 <h3 id="csv-export">CSV Export</h3>
 <p>The CSV is a convenience export for reviewing registrations in spreadsheet form. It is regenerated from scratch (from the issues) every time someone registers or when the workflow is manually triggered. The issues are the source of truth, not the CSV.</p>
 <p>The CSV is uploaded as a <strong>workflow artifact</strong> (retained for 90 days) and is only accessible to repository collaborators. It is not committed to the repository.</p>
@@ -93,6 +161,8 @@ gh run download &lt;run<span class="hljs-literal">-id</span>&gt; <span class="hl
 <ul>
 <li>Posts a welcome comment confirming registration</li>
 <li>Adds the <code>registration</code> label</li>
+<li>Optionally sends a classroom organization invitation</li>
+<li>Optionally includes Day 1 and Day 2 assignment links in the welcome comment</li>
 <li>Exports updated CSV as a workflow artifact</li>
 </ul>
 <h3 id="2-duplicate-registration">2. Duplicate Registration</h3>
@@ -139,6 +209,7 @@ gh run download &lt;run<span class="hljs-literal">-id</span>&gt; <span class="hl
 <li>Registration issues themselves are publicly visible since this is a public repository</li>
 <li>The <code>.gitignore</code> file excludes <code>.github/data/</code> to prevent accidental commits of registration data</li>
 <li>Private student-success exports and facilitator follow-up notes belong in the private <code>Community-Access/git-going-student-success</code> repository, not in this public curriculum repository</li>
+<li>The classroom roster sync file (<code>.github/data/student-roster.json</code>) intentionally stores non-PII operational data only</li>
 </ul>
 
   </main>
@@ -146,5 +217,6 @@ gh run download &lt;run<span class="hljs-literal">-id</span>&gt; <span class="hl
     <p><strong>GIT Going with GitHub</strong> - A workshop by <a href="https://community-access.org">Community Access</a></p>
     <p><a href="https://github.com/community-access/git-going-with-github">View on GitHub</a> · <a href="https://community-access.org">community-access.org</a></p>
   </footer>
+
   </body>
 </html>

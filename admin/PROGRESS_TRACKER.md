@@ -157,7 +157,42 @@
 **Status:** Not started  In progress  Complete
 
 
-## Chapter 11: Git & Source Control in VS Code
+## Chapter 11: VS Code Interface and Setup
+**Time:** 45 minutes  |  **What You'll Do:** Launch VS Code, sign in, enable screen reader mode, and orient to core surfaces
+
+- [ ] Read `docs/11-vscode-interface.md`
+- [ ] Know how to: Open github.dev or desktop VS Code from a repository
+- [ ] Used: Explorer, Command Palette, Outline, and Status Bar
+- [ ] Verified: GitHub sign-in and Copilot status
+- [ ] Configured: Screen reader mode and basic navigation preferences
+
+**Status:** Not started  In progress  Complete
+
+
+## Chapter 12: VS Code Accessibility Deep Dive
+**Time:** 45 minutes  |  **What You'll Do:** Configure VS Code accessibility features for daily contribution work
+
+- [ ] Read `docs/12-vscode-accessibility.md`
+- [ ] Know how to: Use Accessible View, Accessible Help, and Accessible Diff Viewer
+- [ ] Configured: Audio cues or accessibility signals as needed
+- [ ] Understand: Problems panel, Terminal, and Markdown authoring accessibility
+- [ ] Practice: Navigated a diff or diagnostic output with the keyboard
+
+**Status:** Not started  In progress  Complete
+
+
+## Chapter 13: How Git Works
+**Time:** 30 minutes  |  **What You'll Do:** Build the mental model for commits, branches, remotes, and conflicts
+
+- [ ] Read `docs/13-how-git-works.md`
+- [ ] Understand: Working tree, staging area, local repository, and remote repository
+- [ ] Know how to: Explain branch, commit, push, pull, fetch, and merge
+- [ ] Understand: Why merge conflicts happen
+
+**Status:** Not started  In progress  Complete
+
+
+## Chapter 14: Git in Practice
 **Time:** 1 hour  |  **What You'll Do:** Master Git operations within VS Code
 
 - [ ] Read `docs/14-git-in-practice.md`
@@ -169,37 +204,14 @@
 **Status:** Not started  In progress  Complete
 
 
-## Chapter 12: GitHub Pull Requests Extension
-**Time:** 45 minutes  |  **What You'll Do:** Review and create PRs from VS Code
-
-- [ ] Read `docs/15-code-review.md`
-- [ ] Installed: GitHub Pull Requests and Issues extension
-- [ ] Know how to: View, review, and create PRs in VS Code
-- [ ] Understand: Inline code review workflow
-- [ ] Practice: Commented on a PR from within VS Code
-
-**Status:** Not started  In progress  Complete
-
-
-## Chapter 13: GitHub Copilot
-**Time:** 1 hour  |  **What You'll Do:** Use AI-assisted coding and chat
-
-- [ ] Read `docs/16-github-copilot.md`
-- [ ] Installed: GitHub Copilot and Copilot Chat extensions
-- [ ] Verified: Copilot Chat works (`Ctrl+Shift+I`)
-- [ ] Know how to: Use inline suggestions, chat, and custom instructions
-- [ ] Understand: Chat participants, agents, and model selection
-
-**Status:** Not started  In progress  Complete
-
-
-## Chapter 14: Accessible Code Review
-**Time:** 1.5 hours + Exercises  |  **What You'll Do:** Review code accessibly
+## Chapter 15: Code Review
+**Time:** 1.5 hours + Exercises  |  **What You'll Do:** Review pull requests accessibly and constructively
 
 ### Reading & Concepts
 - [ ] Read `docs/15-code-review.md`
+- [ ] Installed: GitHub Pull Requests and Issues extension
+- [ ] Know how to: View, review, and create PRs in VS Code
 - [ ] Understand: Accessible code review principles
-- [ ] Know the difference: Manual review vs. Copilot review
 - [ ] Familiar with: VS Code Accessible Diff Viewer (F7)
 
 ### Exercises
@@ -211,7 +223,19 @@
 **Exercises Completed:** A  B  C  All
 
 
-## Chapter 15: Issue Templates
+## Chapter 16: GitHub Copilot
+**Time:** 1 hour  |  **What You'll Do:** Use AI-assisted coding and chat
+
+- [ ] Read `docs/16-github-copilot.md`
+- [ ] Installed: GitHub Copilot and Copilot Chat extensions
+- [ ] Verified: Copilot Chat works (`Ctrl+Shift+I`)
+- [ ] Know how to: Use inline suggestions, chat, and custom instructions
+- [ ] Understand: Chat participants, agents, and model selection
+
+**Status:** Not started  In progress  Complete
+
+
+## Chapter 17: Issue Templates
 **Time:** 1.5 hours + Exercises  |  **What You'll Do:** Create accessible issue templates
 
 ### Reading & Concepts
@@ -230,11 +254,11 @@
 **Exercises Completed:** A  B  C  D  All
 
 
-## Chapter 16: Accessibility Agents
+## Chapter 19: Accessibility Agents
 **Time:** 1.5 hours + Exercises  |  **What You'll Do:** Automate with Copilot agents
 
 ### Agents to Explore
-Browse the ecosystem and try agents that match your skills (read Chapter 16 for the full landscape):
+Browse the ecosystem and try agents that match your skills (read Chapter 19 for the full landscape):
 - [ ] **GitHub Workflow agents** - `@daily-briefing`, `@issue-tracker`, `@pr-review`, `@analytics`, `@insiders-a11y-tracker`, `@template-builder`
 - [ ] **Accessibility agents** - `@web-accessibility-wizard`, `@contrast-master`, `@keyboard-navigator`, `@markdown-a11y-assistant`
 - [ ] **Developer Tools agents** - `@python-specialist`, `@desktop-a11y-specialist`, `@a11y-tool-builder`

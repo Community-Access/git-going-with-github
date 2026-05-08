@@ -1,6 +1,6 @@
 # Appendix B: Screen Reader Cheat Sheet
 >
-> **Listen to Episode 19:** [Screen Reader Cheat Sheet](../PODCASTS.md) - a conversational audio overview of this chapter. Listen before reading to preview the concepts, or after to reinforce what you learned.
+> **Listen to Episode 19:** [Screen Reader Cheat Sheet](../admin/PODCASTS.md) - a conversational audio overview of this chapter. Listen before reading to preview the concepts, or after to reinforce what you learned.
 
 > **Reference companion to:** [Chapter 02: Understanding GitHub](02-understanding-github.md) | Also relevant: [Chapter 03](03-navigating-repositories.md), [Chapter 11](11-vscode-interface.md)
 >
@@ -708,7 +708,7 @@ This cheat sheet covers GitHub web navigation and screen reader commands. Additi
 | Topic | Location |
 | -------  | ----------  |
 | VS Code keyboard navigation and accessibility | [Appendix M - VS Code Accessibility Reference](appendix-g-vscode-reference.md) |
-| GitHub Copilot Chat and inline suggestions | [Appendix W - GitHub Copilot Reference](appendix-k-copilot-reference.md) |
+| GitHub Copilot Chat and inline suggestions | [Appendix K - GitHub Copilot Reference](appendix-k-copilot-reference.md) |
 | VS Code setup and configuration shortcuts | [Chapter 5 - VS Code Basics](11-vscode-interface.md) |
 | GitHub Copilot activation and model switching | [Chapter 13 - GitHub Copilot](16-github-copilot.md) |
 

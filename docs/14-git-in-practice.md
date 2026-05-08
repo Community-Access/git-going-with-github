@@ -1,6 +1,6 @@
 # Git & Source Control in VS Code
 >
-> **Listen to Episode 12:** [Git and Source Control in VS Code](../PODCASTS.md) - a conversational audio overview of this chapter. Listen before reading to preview the concepts, or after to reinforce what you learned.
+> **Listen to Episode 12:** [Git and Source Control in VS Code](../admin/PODCASTS.md) - a conversational audio overview of this chapter. Listen before reading to preview the concepts, or after to reinforce what you learned.
 
 > **Related appendices:** [Appendix E: Advanced Git](appendix-e-advanced-git.md) | [Appendix D: Git Authentication](appendix-d-git-authentication.md) | [Appendix H: GitHub Desktop](appendix-h-github-desktop.md)
 > **Authoritative sources:** [VS Code Docs: Source Control](https://code.visualstudio.com/docs/sourcecontrol/overview) | [GitHub Docs: Using Git](https://docs.github.com/en/get-started/using-git)
@@ -17,22 +17,22 @@
 > **Mac keyboard shortcuts:** Throughout this chapter, all `Ctrl+` shortcuts use `Cmd+` on Mac, and `Alt+` shortcuts use `Option+`. Common equivalents: `Ctrl+Shift+G` → `Cmd+Shift+G`, `Ctrl+Shift+P` → `Cmd+Shift+P`, `Ctrl+Enter` → `Cmd+Enter`, `Ctrl+S` → `Cmd+S`.
 
 
-## Workshop Recommendation (Chapter 11)
+## Workshop Recommendation (Chapter 14 / Challenge 10)
 
-Chapter 11 is the first **local Git workflow chapter** with hands-on repository management.
+Chapter 14 is the first **local Git workflow chapter** with hands-on repository management. It supports Challenge 10: Go Local.
 
 - **Challenge count:** 3
 - **Time per challenge:** under 10 minutes each
 - **Evidence:** PR metadata, branch names, and committed changes
 - **Pattern:** clone, branch, edit, commit, push, PR
 
-### Chapter 11 Challenge Set
+### Challenge 10 Practice Set
 
 1. **Clone your Learning Room repository** - clone your private Learning Room repo to your local machine using VS Code.
 2. **Create a branch and make one commit** - check out (or create) your `learn/<username>` branch, edit a file, stage, write a clear commit message, and commit locally.
-3. **Push and open a linked PR** - push your branch and open a PR in your Learning Room repo that references your Chapter 11 challenge issue.
+3. **Push and open a linked PR** - push your branch and open a PR in your Learning Room repo that references your Challenge 10 or Day 2 PR issue.
 
-### Challenge 11.1 Step-by-Step: Clone Your Learning Room Repository
+### Practice 10.1 Step-by-Step: Clone Your Learning Room Repository
 
 **Goal:** Get a local copy of your Learning Room repository on your machine using VS Code.
 
@@ -74,7 +74,7 @@ You do **not** need a GitHub organization or organization-level permissions to c
 >
 > The `*` marks your current branch. Lines starting with `remotes/origin/` are branches on GitHub that you can check out locally with `git checkout learn/yourname` or `git switch learn/yourname`.
 
-### Challenge 11.2 Step-by-Step: Create a Branch and Commit
+### Practice 10.2 Step-by-Step: Create a Branch and Commit
 
 > **See also:** [Chapter 13: How Git Works](13-how-git-works.md) explains the three areas (working directory, staging, repository) that make commits meaningful.
 
@@ -85,7 +85,7 @@ You do **not** need a GitHub organization or organization-level permissions to c
 1. Open the Command Palette: `Ctrl+Shift+P` (Mac: `Cmd+Shift+P`).
 2. If your `learn/<username>` branch already exists on the remote (because you created it during Day 1), type `git checkout` and select **Git: Checkout to...**, then pick `learn/<your-username>`. If the branch does not exist yet, type `git create branch` and select **Git: Create Branch...** and enter `learn/<your-username>`.
 3. The status bar at the bottom of VS Code now shows your branch name instead of `main`. Your screen reader announces the branch name when you focus the status bar.
-4. Open the Explorer (`Ctrl+Shift+E`) and navigate to the `docs/` folder. Open any file mentioned in your Chapter 11 challenge issue (for example, `docs/welcome.md`).
+4. Open the Explorer (`Ctrl+Shift+E`) and navigate to the `docs/` folder. Open any file mentioned in your Challenge 10 issue (for example, `docs/welcome.md`).
 5. Make one small, meaningful edit. For example, add a new sentence, fix a typo, or improve a description. Save the file with `Ctrl+S` (Mac: `Cmd+S`).
 6. Open the Source Control panel: `Ctrl+Shift+G` (Mac: `Cmd+Shift+G`). Your screen reader announces "Source Control" and shows your changed file under "Changes."
 7. Navigate to your changed file in the Changes list. Press `Enter` or activate the `+` (Stage Changes) button next to the filename. The file moves from "Changes" to "Staged Changes."
@@ -96,7 +96,7 @@ You do **not** need a GitHub organization or organization-level permissions to c
 
 **You are done when:** Your commit appears in the Source Control panel's history (no more staged or unstaged changes visible) and the status bar still shows your branch name.
 
-### Challenge 11.3 Step-by-Step: Push and Open a Linked PR
+### Practice 10.3 Step-by-Step: Push and Open a Linked PR
 
 **Goal:** Push your branch to GitHub and open a PR in your Learning Room repo that references your challenge issue.
 
@@ -109,7 +109,7 @@ You do **not** need a GitHub organization or organization-level permissions to c
 5. GitHub usually shows a yellow banner: "yourname recently pushed to learn/yourname." Activate the **Compare & pull request** button in that banner.
 6. If you do not see the banner, activate the **Pull requests** tab, then activate **New pull request**. Set the base branch to `main` and the compare branch to your `learn/<your-username>` branch.
 7. In the PR title, write a descriptive title (for example: "docs: improve welcome.md introduction").
-8. In the PR description, type `Closes #XX` (replace `XX` with your Chapter 11 challenge issue number). Because the issue lives in the same repo as the PR, you only need the short `#XX` form.
+8. In the PR description, type `Closes #XX` (replace `XX` with your Challenge 10 or Day 2 PR issue number). Because the issue lives in the same repo as the PR, you only need the short `#XX` form.
 9. Activate the **Create pull request** button.
 
 **Screen reader tip:** The "Compare & pull request" banner is a standard link element near the top of the repository page. If your screen reader does not find it, use the heading navigation to jump to the Pull Requests tab instead.
@@ -118,12 +118,12 @@ You do **not** need a GitHub organization or organization-level permissions to c
 
 **You are done when:** Your PR appears on the Pull requests tab of your Learning Room repo, shows your branch name, and the description contains the `Closes #XX` reference to your challenge issue.
 
-### Completing Chapter 11: Submit Your Evidence
+### Completing Challenge 10: Submit Your Evidence
 
-Open your **assigned Chapter 11.3 challenge issue** in your Learning Room repo and post a completion comment:
+Open your **assigned Challenge 10 issue** in your Learning Room repo and post a completion comment:
 
 ```text
-Chapter 11 completed:
+Challenge 10 completed:
 - Repository cloned: <my Learning Room repo>
 - Branch name: learn/<yourname>
 - Commit message: [your commit message]
@@ -131,7 +131,7 @@ Chapter 11 completed:
 - PR links to issue: yes (Closes #XX in description)
 ```
 
-Close your Chapter 11 challenge issues (11.1, 11.2, 11.3) when your PR is open.
+Close your Challenge 10 issue when your branch is pushed and the PR is open.
 
 ### Expected Outcomes
 

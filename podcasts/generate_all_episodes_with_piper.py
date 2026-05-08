@@ -20,8 +20,8 @@ MODELS_DIR = OUT_DIR / 'coqui_samples' / 'piper_models_en_us'
 PAUSE_SECONDS = 1.5
 INTER_SPEAKER_S = 0.6
 
-MALE_MODEL = MODELS_DIR / 'en_US-hfc_male-medium.onnx'
-FEMALE_MODEL = MODELS_DIR / 'en_US-hfc_female-medium.onnx'
+MALE_MODEL = MODELS_DIR / 'en_US-ryan-high.onnx'
+FEMALE_MODEL = MODELS_DIR / 'en_US-lessac-high.onnx'
 
 def parse_script(text):
     segments = []
@@ -149,7 +149,10 @@ def process_script(script_path: Path):
     return True
 
 def main():
-    scripts = sorted(SCRIPTS_DIR.glob('ep*.txt'))
+    scripts = sorted(
+        path for path in SCRIPTS_DIR.rglob('*.txt')
+        if path.is_file() and path.stem.startswith('ep')
+    )
     if not scripts:
         print('No episode scripts found in', SCRIPTS_DIR)
         sys.exit(1)

@@ -82,7 +82,7 @@ You do not need to complete those modules or practice files. If you already have
 
 ## What Happens When You Arrive
 
-Day 2 Block 0 (9:00-9:30) includes time for Day-2-only participants to:
+Day 2 Block 0 (9:00-9:30 AM Pacific) includes time for Day-2-only participants to:
 
 1. Introduce yourself to the group
 2. Verify your setup with a facilitator

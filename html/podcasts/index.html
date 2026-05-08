@@ -59,35 +59,42 @@
   </header>
   <main id="main-content" class="markdown-body">
     <h1 id="podcast-audio-pipeline">Podcast Audio Pipeline</h1>
-<p>This directory contains the complete pipeline for producing the Git Going with GitHub companion audio series: 44 episodes of two-host conversational content designed for blind and low-vision developers.</p>
+<p>This directory contains the complete pipeline for producing the Git Going with GitHub companion audio series: 54 companion episodes of two-host conversational content designed for blind and low-vision developers, plus generated source bundles for 21 Challenge Coach episodes.</p>
 <h2 id="pipeline-overview">Pipeline Overview</h2>
-<pre><code class="hljs">build-bundles.js     Generate <span class="hljs-keyword">source</span> bundles <span class="hljs-keyword">from</span> chapter content
+<pre><code class="hljs">build-bundles.js     Generate source bundles from chapter content
         |
-        v
-  bundles<span class="hljs-comment">/*.md       One bundle per episode (production prompt + source material)
+        <span class="hljs-type">v</span>
+  bundles/*.md       One bundle per episode (production prompt + source material)
         |
-        v
-  scripts/*.txt      Conversational scripts with [ALEX]/[JAMIE]/[PAUSE] markers
+        <span class="hljs-type">v</span>
+  scripts/*.txt      Conversational scripts <span class="hljs-built_in">with</span> [ALEX]/[JAMIE]/[PAUSE] markers
         |
-        v
-  tts/               Local Piper neural TTS (ONNX models, pronunciation lexicon)
+        <span class="hljs-type">v</span>
+  tts/               <span class="hljs-keyword">Local</span> Piper neural TTS (ONNX models, pronunciation lexicon)
         |
-        v
-  audio/*.wav        Final WAV files (gitignored - hosted on GitHub Releases)
+        <span class="hljs-type">v</span>
+      audio/*.(wav|<span class="hljs-type">mp3</span>)  Final episode files (gitignored - hosted on GitHub Releases)
         |
-        v
-generate-site.js     Build PODCASTS.md player page and RSS feed from manifest</span></code></pre>
+        <span class="hljs-type">v</span>
+generate-site.js     Build PODCASTS.md player page and RSS feed from manifest</code></pre>
 <p>Audio is generated locally using <a href="https://github.com/rhasspy/piper">Piper</a> neural text-to-speech. No cloud APIs, no API keys, no billing. Runs entirely on your machine.</p>
+<p>Use the <code>podcasts/tts/</code> pipeline as the current audio path. The older <code>podcasts/generate_all_episodes_with_piper.py</code> script uses a different model layout and is not the active build path.</p>
+<p>Final episode output format is configurable through <code>podcasts/tts/voice-config.ini</code> (<code>episode_audio_format = wav|mp3|both</code>). MP3 generation requires <code>ffmpeg</code> on your PATH.</p>
 <h2 id="directory-structure">Directory Structure</h2>
 <pre><code class="hljs">podcasts/
   README<span class="hljs-selector-class">.md</span>             This guide
   build-bundles<span class="hljs-selector-class">.js</span>      Generates <span class="hljs-selector-tag">source</span> bundles + manifest<span class="hljs-selector-class">.json</span>
+      build-challenge-bundles<span class="hljs-selector-class">.js</span>
+                                                                        Generates Challenge Coach <span class="hljs-selector-tag">source</span> bundles
+      generate-draft-transcripts<span class="hljs-selector-class">.js</span>
+                                                                        Generates reviewable Alex/Jamie transcript scripts
   generate-site<span class="hljs-selector-class">.js</span>      Generates PODCASTS<span class="hljs-selector-class">.md</span> and feed<span class="hljs-selector-class">.xml</span> from manifest<span class="hljs-selector-class">.json</span>
   manifest<span class="hljs-selector-class">.json</span>         Episode manifest (metadata, status tracking)
-  feed<span class="hljs-selector-class">.xml</span>              RSS <span class="hljs-number">2.0</span> podcast feed (auto-generated)
-  bundles/              <span class="hljs-number">44</span> generated episode <span class="hljs-selector-tag">source</span> bundles
+      feed<span class="hljs-selector-class">.xml</span>              RSS <span class="hljs-number">2.0</span> podcast feed (auto-generated)
+      bundles/              Generated episode <span class="hljs-selector-tag">source</span> bundles (gitignored)
+      challenge-bundles/    Generated challenge coach <span class="hljs-selector-tag">source</span> bundles (gitignored)
   scripts/              Two-host scripts (committed, reviewable)
-  audio/                WAV files after generation (not <span class="hljs-keyword">in</span> git)
+      audio/                Episode WAV/MP3 files after generation (not <span class="hljs-keyword">in</span> git)
   tts/                  Python TTS package
     __init__<span class="hljs-selector-class">.py</span>         Package init
     generate_episode<span class="hljs-selector-class">.py</span> Single episode generator
@@ -102,20 +109,29 @@ generate-site.js     Build PODCASTS.md player page and RSS feed from manifest</s
 <li>Piper TTS: <code>pip install piper-tts</code></li>
 <li>Node.js 18 or later (for bundle/site generation only)</li>
 </ul>
+<p>For full regeneration guidance after curriculum changes, see <a href="REGENERATION.html">Podcast Regeneration Runbook</a>.</p>
 <h2 id="quick-start">Quick Start</h2>
 <h3 id="1-install-piper">1. Install Piper</h3>
 <pre><code class="hljs language-bash">pip install piper-tts</code></pre>
 <h3 id="2-download-voice-models-if-not-already-present">2. Download voice models (if not already present)</h3>
 <pre><code class="hljs language-bash">python -m podcasts.tts.download_samples</code></pre>
 <p>This downloads en_US Piper ONNX models to <code>podcasts/tts/models/</code>.</p>
-<h3 id="3-generate-all-episodes">3. Generate all episodes</h3>
+<h3 id="3-validate-the-catalog-and-generate-fresh-local-bundles">3. Validate the catalog and generate fresh local bundles</h3>
+<pre><code class="hljs language-bash">npm run validate:podcasts
+npm run build:podcast-bundles
+npm run build:podcast-challenge-bundles
+npm run generate:podcast-transcripts</code></pre>
+<p><code>podcasts/bundles/*.md</code> files are generated prompt packets. They are intentionally ignored by git and should be regenerated when needed.
+<code>podcasts/challenge-bundles/*.md</code> files are the same kind of generated prompt packet, but scoped to individual Challenge Coach episodes.</p>
+<h3 id="4-generate-all-episodes">4. Generate all episodes</h3>
 <pre><code class="hljs language-bash">python -m podcasts.tts.generate_all</code></pre>
+<p>This batch command processes the full committed script set: all <code>ep*.txt</code> companion episodes plus all <code>cc-*.txt</code> Challenge Coach and bonus episodes.</p>
 <p>Or generate a single episode:</p>
 <pre><code class="hljs language-bash">python -m podcasts.tts.generate_episode ep00-welcome
 python -m podcasts.tts.generate_episode ep05-pull-requests</code></pre>
 <p>Or a range:</p>
 <pre><code class="hljs language-bash">python -m podcasts.tts.generate_all --start 0 --end 10</code></pre>
-<h3 id="4-build-player-page-and-rss-feed">4. Build player page and RSS feed</h3>
+<h3 id="5-build-player-page-and-rss-feed">5. Build player page and RSS feed</h3>
 <pre><code class="hljs language-bash">npm run build:podcast-site</code></pre>
 <h2 id="voice-configuration">Voice Configuration</h2>
 <p>The default voices are:</p>
@@ -130,19 +146,23 @@ python -m podcasts.tts.generate_episode ep05-pull-requests</code></pre>
 </thead>
 <tbody><tr>
 <td>Alex</td>
-<td>en_US-hfc_male-medium</td>
+<td>en_US-ryan-high</td>
 <td>Lead host, experienced, warm</td>
-<td>Male, measured delivery</td>
+<td>Male, polished delivery with stronger presence</td>
 </tr>
 <tr>
 <td>Jamie</td>
-<td>en_US-hfc_female-medium</td>
+<td>en_US-lessac-high</td>
 <td>Co-host, curious, energetic</td>
-<td>Female, asks great questions</td>
+<td>Female, clear and natural delivery</td>
 </tr>
 </tbody></table>
 <p>26 en_US voice models are included. Listen to samples in <code>podcasts/tts/samples/</code> to try different voices.</p>
 <p>To change voices, edit the <code>MALE_MODEL</code> and <code>FEMALE_MODEL</code> paths in <code>podcasts/tts/generate_episode.py</code>.</p>
+<p>Pitch can be configured independently per host in <code>podcasts/tts/voice-config.ini</code>:</p>
+<pre><code class="hljs language-ini"><span class="hljs-attr">male_pitch_semitones</span> = -<span class="hljs-number">1.0</span>
+<span class="hljs-attr">female_pitch_semitones</span> = <span class="hljs-number">0.8</span></code></pre>
+<p>For backwards compatibility, <code>pitch_semitones</code> is still accepted and applies the same shift to both voices.</p>
 <h2 id="pronunciation-lexicon">Pronunciation Lexicon</h2>
 <p>The file <code>podcasts/tts/lexicon.txt</code> contains pronunciation overrides for technical terms, acronyms, and jargon. The lexicon is applied as text substitution before Piper synthesizes each segment.</p>
 <p>Format: one entry per line, tab-separated <code>WORD&lt;tab&gt;REPLACEMENT</code>. Lines starting with <code>#</code> are comments.</p>
@@ -166,12 +186,32 @@ python -m podcasts.tts.generate_episode ep05-pull-requests</code></pre>
 </tr>
 </thead>
 <tbody><tr>
+<td><code>npm run validate:podcasts</code></td>
+<td>Validate episode catalog source mappings and stale generated bundle tracking</td>
+</tr>
+<tr>
 <td><code>npm run build:podcast-bundles</code></td>
 <td>Generate source bundles from chapters</td>
 </tr>
 <tr>
+<td><code>npm run build:podcast-challenge-bundles</code></td>
+<td>Generate source bundles for Challenge Coach episodes</td>
+</tr>
+<tr>
+<td><code>npm run generate:podcast-transcripts</code></td>
+<td>Replace old scripts with fresh reviewable Alex/Jamie draft transcripts</td>
+</tr>
+<tr>
+<td><code>npm run build:podcast-transcripts</code></td>
+<td>Run validation, regenerate bundles, regenerate transcripts, and rebuild podcast page/feed</td>
+</tr>
+<tr>
 <td><code>npm run build:podcast-audio</code></td>
-<td>Generate audio with local Piper TTS</td>
+<td>Generate audio for all companion, Challenge Coach, and bonus scripts with local Piper TTS</td>
+</tr>
+<tr>
+<td><code>npm run build:podcast-transcripts-and-audio</code></td>
+<td>Run full transcript pipeline, generate audio, and rebuild podcast page/feed</td>
 </tr>
 <tr>
 <td><code>npm run build:podcast-site</code></td>
@@ -198,12 +238,15 @@ python -m podcasts.tts.generate_episode ep05-pull-requests</code></pre>
 <h2 id="updating-episodes">Updating Episodes</h2>
 <p>When chapter content changes:</p>
 <ol>
-<li><code>npm run build:podcast-bundles</code> to regenerate bundles</li>
-<li>Edit the script in <code>podcasts/scripts/</code> if the content changed</li>
+<li><code>npm run validate:podcasts</code> to catch missing source mappings and coverage gaps</li>
+<li><code>npm run build:podcast-bundles</code> to regenerate local chapter and appendix bundles</li>
+<li><code>npm run build:podcast-challenge-bundles</code> to regenerate local challenge bundles</li>
+<li><code>npm run generate:podcast-transcripts</code> to replace old scripts with fresh reviewable drafts</li>
+<li>Review and edit the scripts in <code>podcasts/scripts/</code></li>
 <li><code>python -m podcasts.tts.generate_episode &lt;slug&gt;</code> to regenerate audio</li>
 <li><code>npm run build:podcast-site</code> to update the player page and RSS feed</li>
 <li>Upload new audio to the GitHub Release</li>
-<li>Commit and push</li>
+<li>Commit reviewed scripts, metadata, generated site/feed files, and source changes</li>
 </ol>
 <h2 id="troubleshooting">Troubleshooting</h2>
 <h3 id="piper-command-not-found">Piper command not found</h3>
@@ -214,56 +257,52 @@ python -m piper --<span class="hljs-built_in">help</span></code></pre>
 <p>Download models first:</p>
 <pre><code class="hljs language-bash">python -m podcasts.tts.download_samples</code></pre>
 <p>Or download specific models manually:</p>
-<pre><code class="hljs language-bash">python -m piper.download_voices en_US-hfc_male-medium --download-dir podcasts/tts/models
-python -m piper.download_voices en_US-hfc_female-medium --download-dir podcasts/tts/models</code></pre>
+<pre><code class="hljs language-bash">python -m piper.download_voices en_US-ryan-high --download-dir podcasts/tts/models
+python -m piper.download_voices en_US-lessac-high --download-dir podcasts/tts/models</code></pre>
 <h3 id="mispronounced-word">Mispronounced word</h3>
 <p>Add an entry to <code>podcasts/tts/lexicon.txt</code> with the correct pronunciation and regenerate the episode.</p>
-<h3 id="quotrate-limitedquot-messages">&quot;Rate limited&quot; messages</h3>
-<p>Both APIs have generous free-tier limits. If you hit rate limits:</p>
-<ul>
-<li>The scripts automatically retry with exponential backoff</li>
-<li>Process smaller batches: <code>node podcasts/generate-audio.js 0 10</code></li>
-</ul>
 <h3 id="script-quality-issues">Script quality issues</h3>
-<p>If Gemini produces scripts that miss concepts or have formatting issues:</p>
+<p>If generated scripts miss concepts or have formatting issues:</p>
 <ul>
-<li>Try a different model: <code>$env:GEMINI_MODEL = &quot;gemini-2.0-pro&quot;</code></li>
+<li>Regenerate <code>podcasts/bundles/*.md</code> from the current source material</li>
 <li>Edit the script manually in <code>podcasts/scripts/</code> before generating audio</li>
-<li>Re-run with <code>--force</code> for that episode</li>
+<li>Check that the final script uses only <code>[ALEX]</code>, <code>[JAMIE]</code>, and <code>[PAUSE]</code> markers</li>
+<li>Keep the Alex/Jamie banter style while making the teaching accurate</li>
 </ul>
 <h3 id="audio-sounds-robotic-or-unnatural">Audio sounds robotic or unnatural</h3>
 <ul>
-<li>Confirm Journey voices are selected: <code>--list-voices</code></li>
-<li>Try a slower rate: <code>$env:TTS_RATE = &quot;0.90&quot;</code></li>
-<li>Journey voices sound best at rates between 0.85 and 1.0</li>
+<li>Try a different Piper voice model from <code>podcasts/tts/models/</code></li>
+<li>Adjust <code>LENGTH_SCALE</code> in <code>podcasts/tts/generate_episode.py</code> for slower or faster delivery</li>
+<li>Add pronunciation fixes to <code>podcasts/tts/lexicon.txt</code></li>
 </ul>
 <h2 id="cost-summary">Cost Summary</h2>
 <table>
 <thead>
 <tr>
 <th scope="col">Step</th>
-<th scope="col">API</th>
+<th scope="col">Tool</th>
 <th scope="col">Cost</th>
-<th scope="col">Total for 44 episodes</th>
 </tr>
 </thead>
 <tbody><tr>
-<td>Script generation</td>
-<td>Gemini 2.0 Flash</td>
-<td>Free tier (15 RPM)</td>
-<td>$0.00</td>
+<td>Bundle generation</td>
+<td>Local Node.js script</td>
+<td>Free</td>
+</tr>
+<tr>
+<td>Script drafting</td>
+<td>Manual or AI-assisted, reviewed before commit</td>
+<td>Depends on chosen tool</td>
 </tr>
 <tr>
 <td>Audio synthesis</td>
-<td>Cloud TTS Journey</td>
-<td>$0.03 / 1M chars</td>
-<td>approximately $0.02-0.05</td>
+<td>Local Piper TTS</td>
+<td>Free</td>
 </tr>
 <tr>
-<td><strong>Total</strong></td>
-<td></td>
-<td></td>
-<td><strong>Under $0.10</strong></td>
+<td>Site and RSS generation</td>
+<td>Local Node.js script</td>
+<td>Free</td>
 </tr>
 </tbody></table>
 
@@ -272,5 +311,6 @@ python -m piper.download_voices en_US-hfc_female-medium --download-dir podcasts/
     <p><strong>GIT Going with GitHub</strong> - A workshop by <a href="https://community-access.org">Community Access</a></p>
     <p><a href="https://github.com/community-access/git-going-with-github">View on GitHub</a> · <a href="https://community-access.org">community-access.org</a></p>
   </footer>
+
   </body>
 </html>
