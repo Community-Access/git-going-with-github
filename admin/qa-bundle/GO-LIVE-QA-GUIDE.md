@@ -2,8 +2,6 @@
 
 Use this guide before a cohort is opened to learners. It is the release gate for curriculum content, GitHub Classroom deployment, Learning Room automation, podcast materials, accessibility, and human test coverage.
 
-For end-to-end execution details, use [admin/LEARNING-ROOM-E2E-QA-RUNBOOK.md](admin/LEARNING-ROOM-E2E-QA-RUNBOOK.md) as the operator procedure. This guide is the release gate summary; the runbook is the required execution playbook.
-
 The goal is simple: a facilitator should be able to create a classroom, seed test repositories, complete every challenge path, validate every generated artifact, and know exactly what remains before students arrive.
 
 ## Release Decision
@@ -34,19 +32,8 @@ Do not mark a cohort ready until all required items in this section are complete
 - [ ] Human testers completed the Day 1, Day 2, bonus, accessibility, and content-review passes below.
 - [ ] Challenge tracking log includes explicit status and evidence for Challenges 1-16 and Bonus A-E.
 - [ ] Challenge reliability matrix includes happy path, failure path, and recovery evidence for each challenge family.
-- [ ] Runbook Phase 8 required checklist is complete in [admin/LEARNING-ROOM-E2E-QA-RUNBOOK.md](admin/LEARNING-ROOM-E2E-QA-RUNBOOK.md).
-- [ ] Student recovery Level 2 restore test is completed and evidenced with branch and PR links.
 - [ ] All in-scope automation workflows and facilitator scripts were validated with expected behavior and evidence.
-- [ ] Local non-podcast readiness evidence is recorded in [admin/qa-readiness](admin/qa-readiness/README.md).
 - [ ] All blocking findings have a fix, owner, or written release exception.
-
-No-go conditions:
-
-- Any Blocker finding remains open.
-- Any required runbook Phase 8 gate is incomplete without explicit release-owner exception.
-- Student progression, PR validation, or required autograder behavior is not reproducible in a test student repository.
-- Template freshness proof is missing or shows drift from the latest merged template sync.
-- Required QA evidence links are missing for release-signoff claims.
 
 ## Source Of Truth
 
@@ -97,8 +84,6 @@ Expected results:
 - `git diff --check` has no trailing-whitespace or conflict-marker errors. On Windows, LF-to-CRLF warnings may appear and are not release blockers by themselves.
 
 Record the command output summary in the release notes or QA issue.
-
-Required evidence destination for local readiness: [admin/qa-readiness/UNIT-TEST-RESULTS-2026-05-08.md](admin/qa-readiness/UNIT-TEST-RESULTS-2026-05-08.md) or an equivalent dated report in the same folder.
 
 ## Phase 2: Content Inventory Review
 
