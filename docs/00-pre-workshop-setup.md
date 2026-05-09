@@ -1,3 +1,7 @@
+
+**Table: Screen reader options for workshop setup**
+
+**Table: Accessibility improvements for screen reader users**
 # Pre-Workshop Setup - GIT Going with GitHub
 >
 > **Listen to Episode 1:** [Pre-Workshop Setup](../admin/PODCASTS.md) - a conversational audio overview of this chapter. Listen before reading to preview the concepts, or after to reinforce what you learned.

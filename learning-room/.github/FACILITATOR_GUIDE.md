@@ -1,3 +1,5 @@
+
+**Table: Common facilitator questions and responses**
 # Learning Room Automation - Facilitator Quick Reference
 
 ## What Students See

@@ -1,3 +1,6 @@
+
+**Table: Learning Room folder and file purposes**
+**Table: Host voice and character mapping for VibeVoice podcast**
 # Welcome to the Learning Room
 
 This repository is your private Learning Room for the Git Going with GitHub workshop. GitHub Classroom created it from the Learning Room template so you can practice the full contribution workflow safely. In this repository you will:

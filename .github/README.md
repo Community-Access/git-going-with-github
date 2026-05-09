@@ -1,3 +1,11 @@
+
+**Table: Main repository workflows**
+
+**Table: Learning Room workflow equivalents**
+
+**Table: Main repository scripts and their purposes**
+
+**Table: Data files in the repository**
 # Repository Automation
 
 This directory contains workflows, scripts, and data for two purposes:

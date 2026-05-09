@@ -97,90 +97,174 @@
 <h2>Required Accounts, Access, and Tools</h2>
 <p>Complete this section before Phase 1.</p>
 <ul>
-<li>Facilitator admin account with Owner or Admin access to the workshop organization and classroom organization.</li>
-<li>Dedicated non-admin test student account for acceptance and full challenge walkthrough.</li>
-<li>Access to <a href="https://classroom.github.com">classroom.github.com</a>.</li>
-<li>Access to repository settings for secrets and variables.</li>
+<li>Facilitator admin account (<code>accesswatch</code>) with Owner access to both <code>Community-Access</code> and <code>Community-Access-Classroom</code>.</li>
+<li>Dedicated non-admin test student account for acceptance and full challenge walkthrough. This must be a separate GitHub account that is not an owner or member of either organization.</li>
+<li>Access to <a href="https://classroom.github.com">classroom.github.com</a> while signed in as <code>accesswatch</code>.</li>
+<li>Access to repository settings for <code>Community-Access/git-going-with-github</code> (secrets and variables).</li>
 <li>Local clone of this repository with PowerShell available.</li>
-<li>GitHub CLI (<code>gh</code>) installed and authenticated for optional verification commands.</li>
+<li>GitHub CLI (<code>gh</code>) installed and authenticated as <code>accesswatch</code> for optional verification commands.</li>
 </ul>
 <h3>Critical Precondition Gates (No-Go if any fail)</h3>
 <p>Complete all items below before any cohort launch actions.</p>
 <ul>
-<li><input disabled="" type="checkbox"> Facilitator account can access both organizations involved in operations:<ul>
-<li><input disabled="" type="checkbox"> <code>Community-Access</code></li>
-<li><input disabled="" type="checkbox"> <code>Community-Access-Classroom</code> (or your classroom org)</li>
+<li><input disabled="" type="checkbox"> Facilitator account <code>accesswatch</code> can access both organizations:<ul>
+<li><input disabled="" type="checkbox"> <code>Community-Access</code> (the workshop and code repository organization)</li>
+<li><input disabled="" type="checkbox"> <code>Community-Access-Classroom</code> (the GitHub Classroom organization where student repos are created)</li>
 </ul>
 </li>
-<li><input disabled="" type="checkbox"> Facilitator account has verified email and can create/edit Classroom assignments.</li>
+<li><input disabled="" type="checkbox"> <code>accesswatch</code> has a verified email address on its GitHub account and can create and edit Classroom assignments at <a href="https://classroom.github.com">classroom.github.com</a>.</li>
 <li><input disabled="" type="checkbox"> Dedicated non-admin test student account exists and can accept invites.</li>
-<li><input disabled="" type="checkbox"> <code>gh auth status</code> succeeds for facilitator account in local terminal.</li>
-<li><input disabled="" type="checkbox"> Template repository exists and is set as template repo:<ul>
-<li><input disabled="" type="checkbox"> <code>Community-Access/learning-room-template</code></li>
+<li><input checked="" disabled="" type="checkbox"> <code>gh auth status</code> succeeds for <code>accesswatch</code> in local terminal.</li>
+<li><input checked="" disabled="" type="checkbox"> Template repository exists and is set as template repo:<ul>
+<li><input checked="" disabled="" type="checkbox"> <code>Community-Access/learning-room-template</code></li>
 </ul>
 </li>
-<li><input disabled="" type="checkbox"> Template repository Actions settings allow required automation behavior:<ul>
-<li><input disabled="" type="checkbox"> Actions enabled</li>
-<li><input disabled="" type="checkbox"> <code>GITHUB_TOKEN</code> default workflow permissions include write where required</li>
-<li><input disabled="" type="checkbox"> <code>Allow GitHub Actions to create and approve pull requests</code> enabled</li>
+<li><input checked="" disabled="" type="checkbox"> Template repository Actions settings allow required automation behavior:<ul>
+<li><input checked="" disabled="" type="checkbox"> Actions enabled</li>
+<li><input checked="" disabled="" type="checkbox"> <code>GITHUB_TOKEN</code> default workflow permissions include write where required</li>
+<li><input checked="" disabled="" type="checkbox"> <code>Allow GitHub Actions to create and approve pull requests</code> enabled</li>
 </ul>
 </li>
 <li><input disabled="" type="checkbox"> Registration automation settings are correct when using registration-to-classroom handoff:<ul>
-<li><input disabled="" type="checkbox"> Secret: <code>CLASSROOM_ORG_ADMIN_TOKEN</code></li>
-<li><input disabled="" type="checkbox"> Variables: <code>CLASSROOM_ORG</code>, <code>CLASSROOM_DAY1_ASSIGNMENT_URL</code>, <code>CLASSROOM_DAY2_ASSIGNMENT_URL</code></li>
+<li><input disabled="" type="checkbox"> Secret <code>CLASSROOM_ORG_ADMIN_TOKEN</code> is set in <code>Community-Access/git-going-with-github</code></li>
+<li><input disabled="" type="checkbox"> Variables <code>CLASSROOM_ORG</code>, <code>CLASSROOM_DAY1_ASSIGNMENT_URL</code>, <code>CLASSROOM_DAY2_ASSIGNMENT_URL</code> are set in <code>Community-Access/git-going-with-github</code></li>
 </ul>
 </li>
-<li><input disabled="" type="checkbox"> Registration entry configuration exists and is valid:<ul>
-<li><input disabled="" type="checkbox"> Issue form template <code>workshop-registration.yml</code> exists</li>
-<li><input disabled="" type="checkbox"> Required labels exist: <code>registration</code>, <code>duplicate</code>, <code>waitlist</code></li>
+<li><input checked="" disabled="" type="checkbox"> Registration entry configuration exists and is valid:<ul>
+<li><input checked="" disabled="" type="checkbox"> Issue form template <code>workshop-registration.yml</code> exists</li>
+<li><input checked="" disabled="" type="checkbox"> Required labels exist: <code>registration</code>, <code>duplicate</code>, <code>waitlist</code></li>
 </ul>
 </li>
-<li><input disabled="" type="checkbox"> Facilitator can open <code>classroom.github.com</code>, view target classroom org, and create assignments.</li>
+<li><input disabled="" type="checkbox"> While signed in as <code>accesswatch</code>, opening <a href="https://classroom.github.com">classroom.github.com</a> shows the <code>Community-Access-Classroom</code> classroom organization.</li>
 </ul>
 <p>If any precondition fails, stop and resolve before proceeding.</p>
 <h3>Exact Setup Steps for Keys, Permissions, Settings, and Template Currency</h3>
 <p>Use this section when you need literal setup steps (not only validation checks).</p>
 <h4>A. Confirm facilitator account and organization access</h4>
+<p>You are performing all steps below as <code>accesswatch</code>. If you are currently signed in to GitHub as a different account, sign out first and sign in as <code>accesswatch</code> before continuing.</p>
 <ol>
-<li>Sign in as the facilitator account on github.com.</li>
-<li>Open your profile menu, then Your organizations.</li>
-<li>Confirm both organizations are visible and accessible:<ul>
-<li><code>Community-Access</code></li>
-<li><code>Community-Access-Classroom</code> (or your classroom org)</li>
+<li>Go to <a href="https://github.com">github.com</a> and confirm the top-right avatar shows <code>accesswatch</code>.</li>
+<li>Open the avatar menu, then select <strong>Your organizations</strong>.</li>
+<li>Confirm both of the following organizations appear in the list:<ul>
+<li><code>Community-Access</code> -- the main workshop repository organization</li>
+<li><code>Community-Access-Classroom</code> -- the GitHub Classroom organization where student repos are created</li>
+<li>If either is missing, do not proceed. Contact the org owner to ensure <code>accesswatch</code> has Owner-level membership in both.</li>
 </ul>
 </li>
-<li>Open both org pages and confirm you can view repositories and settings areas you are expected to manage.</li>
-<li>Optional CLI verification from repository root:</li>
+<li>Click into <code>Community-Access</code> and open the <strong>Settings</strong> tab. Confirm you can see the full settings sidebar (Members, Actions, Secrets, etc.). If Settings is not visible, <code>accesswatch</code> does not have Owner access and you cannot proceed.</li>
+<li>Click into <code>Community-Access-Classroom</code> and open its <strong>Settings</strong> tab. Confirm the same.</li>
+<li>Optional CLI verification from the local repository root:</li>
 </ol>
 <pre><code class="language-powershell">gh auth status -h github.com
 gh repo view Community-Access/git-going-with-github
 gh repo view Community-Access/learning-room-template
 </code></pre>
+<p>Expected output: each <code>gh repo view</code> command should return repository metadata without an error. If you see &quot;Could not resolve to a Repository&quot;, <code>accesswatch</code> does not have the required access.</p>
 <p>Why this matters:</p>
 <ul>
-<li>All downstream setup fails if the facilitator identity is not correctly scoped.</li>
+<li>All downstream setup steps operate against <code>Community-Access/git-going-with-github</code> and <code>Community-Access-Classroom</code>. If the account does not have Owner access to both, secrets, variables, and classroom automation cannot be configured.</li>
 </ul>
-<h4>B. Configure registration automation key and variables</h4>
-<p>Repository target: <code>Community-Access/git-going-with-github</code></p>
+<h4>A.1 Create GitHub Classroom assignments</h4>
+<p>Do this before section B. You need both assignment URLs in hand before you can fill in the repository variables.</p>
+<p>You must be signed in to GitHub as <code>accesswatch</code> for the following steps.</p>
 <ol>
-<li>Open repository Settings.</li>
-<li>Open Secrets and variables, then Actions.</li>
-<li>Open the Secrets tab and create or update secret:<ul>
-<li><code>CLASSROOM_ORG_ADMIN_TOKEN</code></li>
+<li>Go to <a href="https://classroom.github.com">classroom.github.com</a>.</li>
+<li>You will see a list of classrooms. Select the classroom named for this cohort that is linked to the <code>Community-Access-Classroom</code> organization. The organization name appears below the classroom name on the card.<ul>
+<li>If no classroom exists yet, select <strong>New classroom</strong>, then choose <code>Community-Access-Classroom</code> as the organization. Name the classroom using the format <code>Git Going - [Cohort Name] - [Month Year]</code> (for example, <code>Git Going - May 2026</code>).</li>
 </ul>
 </li>
-<li>Open the Variables tab and create or update variables:<ul>
-<li><code>CLASSROOM_ORG</code></li>
-<li><code>CLASSROOM_DAY1_ASSIGNMENT_URL</code></li>
-<li><code>CLASSROOM_DAY2_ASSIGNMENT_URL</code></li>
+<li>Inside the classroom, select <strong>New assignment</strong>.</li>
+<li>Create the Day 1 assignment:<ul>
+<li><strong>Title</strong>: <code>You Belong Here</code></li>
+<li><strong>Individual or group</strong>: Individual</li>
+<li><strong>Repository visibility</strong>: Private</li>
+<li><strong>Template repository</strong>: <code>Community-Access/learning-room-template</code> (search for it by name in the template field)</li>
+<li><strong>Grant students admin access</strong>: No</li>
+<li><strong>Enable feedback pull requests</strong>: Yes</li>
+<li>Paste the Day 1 assignment description from <a href="../classroom/assignment-day1-you-belong-here.md">classroom/assignment-day1-you-belong-here.md</a></li>
+<li>Add autograding from <a href="classroom/autograding-setup.md">admin/classroom/autograding-setup.md</a> -- Day 1 requires exactly 4 tests totaling 50 points</li>
+<li>Select <strong>Create assignment</strong></li>
 </ul>
 </li>
-<li>Re-open each entry and confirm values have no leading or trailing spaces.</li>
-<li>Run one registration test and confirm welcome comment contains assignment links when variables are set.</li>
+<li>After saving, the assignment page shows an invite link at the top labeled something like <strong>Invite link</strong>. It will be in the format <code>https://classroom.github.com/a/&lt;short-code&gt;</code>. Copy this full URL and paste it somewhere safe (for example, a scratch notepad). This is your <code>CLASSROOM_DAY1_ASSIGNMENT_URL</code>.</li>
+<li>Repeat for the Day 2 assignment:<ul>
+<li><strong>Title</strong>: <code>You Can Build This</code></li>
+<li>Same base settings as Day 1</li>
+<li>Paste description from <a href="../classroom/assignment-day2-you-can-build-this.md">classroom/assignment-day2-you-can-build-this.md</a></li>
+<li>Add Day 2 autograding: exactly 6 tests totaling 75 points</li>
+<li>Copy the resulting invite URL. This is your <code>CLASSROOM_DAY2_ASSIGNMENT_URL</code>.</li>
+</ul>
+</li>
+<li>Keep both URLs available. You will paste them into repository variables in section B step 4.</li>
 </ol>
 <p>Why this matters:</p>
 <ul>
-<li>These values drive invite and assignment-link injection in registration responses.</li>
+<li>The repository variables <code>CLASSROOM_DAY1_ASSIGNMENT_URL</code> and <code>CLASSROOM_DAY2_ASSIGNMENT_URL</code> cannot be filled in until the assignments exist and their invite URLs are known. The short code in the URL is unique to each assignment and is not predictable in advance.</li>
+</ul>
+<h4>B. Configure registration automation key and variables</h4>
+<p>Repository target: <code>Community-Access/git-going-with-github</code></p>
+<p>You must be signed in as <code>accesswatch</code> for all steps in this section.</p>
+<p><strong>Step B.1 -- Generate the personal access token (PAT)</strong></p>
+<p>The <code>CLASSROOM_ORG_ADMIN_TOKEN</code> secret must be a GitHub personal access token generated by <code>accesswatch</code> (or another Owner-level account for <code>Community-Access-Classroom</code>). This token is what allows the registration workflow to invite students to the <code>Community-Access-Classroom</code> organization automatically.</p>
+<ol>
+<li>While signed in as <code>accesswatch</code>, go to <a href="https://github.com/settings/tokens">github.com/settings/tokens</a>.</li>
+<li>Select <strong>Generate new token</strong>, then select <strong>Generate new token (classic)</strong>.<ul>
+<li>Do not use fine-grained tokens for this purpose. The <code>admin:org</code> scope is only available on classic tokens.</li>
+</ul>
+</li>
+<li>In the <strong>Note</strong> field enter a descriptive name such as <code>Community-Access registration automation</code>.</li>
+<li>In the <strong>Expiration</strong> field, set a date that covers your cohort timeline plus a buffer (for example, 90 days).</li>
+<li>Under <strong>Select scopes</strong>, check <code>admin:org</code>. This is the only scope required. It gives the token permission to list and create organization invitations for <code>Community-Access-Classroom</code>.</li>
+<li>Scroll to the bottom and select <strong>Generate token</strong>.</li>
+<li>GitHub will display the token exactly once immediately after generation. It begins with <code>ghp_</code>. Copy it now and paste it somewhere safe (a local scratch notepad, not a repository file). You will not be able to view it again.</li>
+<li>Do not close the token page until you have completed section B.2 and confirmed the secret was saved.</li>
+</ol>
+<p><strong>Step B.2 -- Add the token as a repository secret</strong></p>
+<ol>
+<li>Go to <a href="https://github.com/Community-Access/git-going-with-github/settings/secrets/actions">github.com/Community-Access/git-going-with-github/settings/secrets/actions</a>.</li>
+<li>Select <strong>New repository secret</strong>.</li>
+<li>In the <strong>Name</strong> field, enter exactly: <code>CLASSROOM_ORG_ADMIN_TOKEN</code><ul>
+<li>Capitalization and underscores must match exactly.</li>
+</ul>
+</li>
+<li>In the <strong>Secret</strong> field, paste the token you copied in step B.1.</li>
+<li>Select <strong>Add secret</strong>.</li>
+<li>Re-open the secret entry and confirm the name shows <code>CLASSROOM_ORG_ADMIN_TOKEN</code>. GitHub does not display the value again, but confirming the name is correct is sufficient.</li>
+</ol>
+<p><strong>Step B.3 -- Add the repository variables</strong></p>
+<ol>
+<li><p>At the same settings page, select the <strong>Variables</strong> tab (next to Secrets).</p>
+</li>
+<li><p>Select <strong>New repository variable</strong> for each of the following. Add them one at a time.</p>
+<p>Variable 1:</p>
+<ul>
+<li><strong>Name</strong>: <code>CLASSROOM_ORG</code></li>
+<li><strong>Value</strong>: <code>Community-Access-Classroom</code></li>
+<li>This is the exact GitHub organization name where students are invited. The capitalization and hyphens must match exactly.</li>
+</ul>
+<p>Variable 2:</p>
+<ul>
+<li><strong>Name</strong>: <code>CLASSROOM_DAY1_ASSIGNMENT_URL</code></li>
+<li><strong>Value</strong>: paste the Day 1 invite URL you copied in section A.1 step 5 (format: <code>https://classroom.github.com/a/&lt;short-code&gt;</code>)</li>
+</ul>
+<p>Variable 3:</p>
+<ul>
+<li><strong>Name</strong>: <code>CLASSROOM_DAY2_ASSIGNMENT_URL</code></li>
+<li><strong>Value</strong>: paste the Day 2 invite URL you copied in section A.1 step 6 (format: <code>https://classroom.github.com/a/&lt;short-code&gt;</code>)</li>
+</ul>
+</li>
+<li><p>After adding all three, re-open each variable entry and confirm:</p>
+<ul>
+<li>The name is exactly as listed above (no typos, no extra characters).</li>
+<li>The value has no leading or trailing spaces. Paste into a plain text editor first if you are unsure, and trim whitespace before re-pasting.</li>
+</ul>
+</li>
+<li><p>Run one registration test and confirm welcome comment contains assignment links.</p>
+</li>
+</ol>
+<p>Why this matters:</p>
+<ul>
+<li>These values drive invite and assignment-link injection in registration responses. A single typo in the org name or a trailing space in a variable value will silently break automation without a clear error message.</li>
 </ul>
 <h4>C. Configure template repository Actions permissions</h4>
 <p>Repository target: <code>Community-Access/learning-room-template</code></p>
@@ -498,15 +582,28 @@ git diff --check
 </ul>
 <h3>Step 0.2 Deploy optional registration-to-classroom automation settings</h3>
 <p>Goal: enable automatic org invite and assignment-link injection in registration confirmation comments.</p>
-<ol>
-<li>In repository settings, configure secret:<ul>
-<li><code>CLASSROOM_ORG_ADMIN_TOKEN</code></li>
+<p>The fastest path is <code>Initialize-WorkshopSetup.ps1</code>, which sets the secret, all three variables, verifies labels, and runs template prep in a single command. See the setup script section below.</p>
+<p><strong>Using the setup script (recommended):</strong></p>
+<pre><code class="language-powershell">scripts/classroom/Initialize-WorkshopSetup.ps1 -AdminPAT ghp_yourTokenHere
+</code></pre>
+<p>The script will:</p>
+<ul>
+<li>Prompt you if the PAT is missing or invalid</li>
+<li>Resolve Day 1 and Day 2 assignment URLs automatically from the GitHub Classroom API (if assignments exist in the <code>GIT Going with Github</code> classroom)</li>
+<li>Set <code>CLASSROOM_ORG_ADMIN_TOKEN</code> secret and all three variables in <code>Community-Access/git-going-with-github</code></li>
+<li>Verify all three required labels exist, creating any that are missing</li>
+<li>Confirm read-back values have no leading or trailing spaces</li>
+<li>Run <code>Prepare-LearningRoomTemplate.ps1</code> and <code>Test-LearningRoomTemplate.ps1</code> unless skipped</li>
 </ul>
-</li>
-<li>In repository settings, configure variables:<ul>
-<li><code>CLASSROOM_ORG</code></li>
-<li><code>CLASSROOM_DAY1_ASSIGNMENT_URL</code></li>
-<li><code>CLASSROOM_DAY2_ASSIGNMENT_URL</code></li>
+<p><strong>If running manually instead:</strong></p>
+<ol>
+<li>Generate a classic PAT with <code>admin:org</code> scope at <a href="https://github.com/settings/tokens">github.com/settings/tokens</a> (see section B of the setup steps above for exact steps).</li>
+<li>Go to <a href="https://github.com/Community-Access/git-going-with-github/settings/secrets/actions">github.com/Community-Access/git-going-with-github/settings/secrets/actions</a>.</li>
+<li>Create secret <code>CLASSROOM_ORG_ADMIN_TOKEN</code> with the PAT value.</li>
+<li>On the Variables tab, create:<ul>
+<li><code>CLASSROOM_ORG</code> = <code>Community-Access-Classroom</code></li>
+<li><code>CLASSROOM_DAY1_ASSIGNMENT_URL</code> = invite URL from assignment A.1 step 5</li>
+<li><code>CLASSROOM_DAY2_ASSIGNMENT_URL</code> = invite URL from assignment A.1 step 6</li>
 </ul>
 </li>
 <li>Re-open each value and verify no leading or trailing spaces.</li>
@@ -514,20 +611,33 @@ git diff --check
 <p>Pass criteria:</p>
 <ul>
 <li>Secret and variables are present with correct values.</li>
+<li><code>Initialize-WorkshopSetup.ps1</code> reported no failures, or manual verification confirms all values.</li>
 <li>Configuration aligns with <a href="REGISTRATION-ADMIN.md">REGISTRATION-ADMIN.md</a>.</li>
 </ul>
 <h3>Step 0.3 Registration deployment smoke check</h3>
-<p>Goal: validate deployed registration system can execute at least one full workflow run.</p>
+<p>Goal: validate the deployed registration system and site are working before manual QA begins.</p>
+<p>Use <code>Test-RegistrationPage.ps1</code> to run this check. The script validates the Pages site, the REGISTER page, the issue form template, required labels, and workflow state. With <code>-RunLiveTest</code> it also submits a real test registration issue, waits for the workflow, and verifies the welcome comment.</p>
+<p><strong>Static checks only (site, config, labels, workflow state):</strong></p>
+<pre><code class="language-powershell">scripts/classroom/Test-RegistrationPage.ps1
+</code></pre>
+<p><strong>Full live end-to-end test including issue submission:</strong></p>
+<pre><code class="language-powershell">scripts/classroom/Test-RegistrationPage.ps1 -RunLiveTest
+</code></pre>
+<p>What the script checks:</p>
 <ol>
-<li>Submit one test registration issue from a non-admin test account.</li>
-<li>Confirm <code>Registration - Welcome &amp; CSV Export</code> workflow completes.</li>
-<li>Confirm welcome comment posts and <code>registration</code> label is applied.</li>
-<li>If classroom automation is configured, confirm org invite status and assignment links appear.</li>
+<li>HTTP GET to <code>https://community-access.org/git-going-with-github/</code> returns 200.</li>
+<li>HTTP GET to <code>https://community-access.org/git-going-with-github/REGISTER</code> returns 200 and contains expected content.</li>
+<li><code>workshop-registration.yml</code> exists in <code>.github/ISSUE_TEMPLATE/</code>.</li>
+<li>Labels <code>registration</code>, <code>duplicate</code>, and <code>waitlist</code> exist.</li>
+<li><code>registration.yml</code> workflow is active and has a recent successful run.</li>
+<li>(Live test only) Test issue is submitted, workflow completes, welcome comment posts with assignment links, <code>registration</code> label is applied.</li>
 </ol>
+<p>Cleanup limitation: the test issue is closed and locked by the script. It <strong>cannot be deleted via the GitHub API</strong>. If deletion is needed, a repository admin must delete it manually from the Issues tab after this run.</p>
 <p>Pass criteria:</p>
 <ul>
-<li>Registration workflow executes successfully end to end.</li>
-<li>Output comment/labels match deployed configuration.</li>
+<li><code>Test-RegistrationPage.ps1</code> exits with no failures.</li>
+<li>Live test (if run) confirms workflow executes end to end.</li>
+<li>Output comment and labels match deployed configuration.</li>
 </ul>
 <h2>Phase 1 - Registration System QA (Admin Side)</h2>
 <h3>Step 1. Verify public registration entry path</h3>
@@ -544,22 +654,16 @@ git diff --check
 <li>Public visibility warning is present.</li>
 </ul>
 <h3>Step 2. Configure registration automation for classroom handoff</h3>
-<p>Use <a href="REGISTRATION-QUICKSTART.md">REGISTRATION-QUICKSTART.md</a> for fast entry and <a href="REGISTRATION-ADMIN.md">REGISTRATION-ADMIN.md</a> for full details.</p>
-<ol>
-<li>Create or verify an admin token that can manage organization invitations.</li>
-<li>In repository settings, add secret <code>CLASSROOM_ORG_ADMIN_TOKEN</code>.</li>
-<li>In repository settings, set variables:<ul>
-<li><code>CLASSROOM_ORG</code></li>
-<li><code>CLASSROOM_DAY1_ASSIGNMENT_URL</code></li>
-<li><code>CLASSROOM_DAY2_ASSIGNMENT_URL</code></li>
-</ul>
-</li>
-<li>Save and re-open each setting to confirm there are no leading or trailing spaces.</li>
-</ol>
+<p>If <code>Initialize-WorkshopSetup.ps1</code> was run successfully in Phase 0, this step is already complete. Re-verify with:</p>
+<pre><code class="language-powershell">gh secret list -R Community-Access/git-going-with-github
+gh variable list -R Community-Access/git-going-with-github
+</code></pre>
+<p>Expected output: <code>CLASSROOM_ORG_ADMIN_TOKEN</code> appears in secrets, and <code>CLASSROOM_ORG</code>, <code>CLASSROOM_DAY1_ASSIGNMENT_URL</code>, <code>CLASSROOM_DAY2_ASSIGNMENT_URL</code> appear in variables.</p>
+<p>If any are missing, run <code>Initialize-WorkshopSetup.ps1</code> again or follow the manual steps in section B of the setup instructions. For full reference, see <a href="REGISTRATION-QUICKSTART.md">REGISTRATION-QUICKSTART.md</a> and <a href="REGISTRATION-ADMIN.md">REGISTRATION-ADMIN.md</a>.</p>
 <p>Pass criteria:</p>
 <ul>
-<li>Secret exists and is scoped correctly.</li>
-<li>All 3 variables exist and values are correct.</li>
+<li><code>CLASSROOM_ORG_ADMIN_TOKEN</code> secret is present.</li>
+<li>All 3 variables are present with correct values and no leading or trailing spaces.</li>
 </ul>
 <h3>Step 3. Execute registration happy-path test</h3>
 <p>Use the non-admin test student account.</p>
@@ -696,67 +800,90 @@ git diff --check
 <p>Use full end-to-end mode when preparing major cohort launches or after significant automation updates.</p>
 <h2>Phase 3 - Classroom Deployment QA (Admin Side)</h2>
 <h3>Step 10. Create classroom and import roster</h3>
-<p>Use <a href="../classroom/README.md">classroom/README.md</a> Steps 1 and 2.</p>
+<p>GitHub Classroom assignment creation has <strong>no write API</strong>. All classroom creation and assignment setup must be done through the browser at <a href="https://classroom.github.com">classroom.github.com</a> while signed in as <code>accesswatch</code>.</p>
+<p>Note: a classroom already exists for this repository (<code>GIT Going with Github</code>, classroom id 322783, linked to <code>Community-Access-Classroom</code>). Unless starting a completely new classroom, skip classroom creation and go directly to assignment creation in Steps 11 and 12.</p>
+<p><strong>If you do need a new classroom:</strong></p>
 <ol>
-<li>Create a new classroom in <code>Community-Access</code>.</li>
-<li>Name it using <code>Git Going - [Cohort Name] - [Month Year]</code>.</li>
-<li>Import roster using <a href="../classroom/roster-template.csv">classroom/roster-template.csv</a>.</li>
-<li>Confirm test student appears in roster.</li>
+<li>Go to <a href="https://classroom.github.com">classroom.github.com</a> as <code>accesswatch</code>.</li>
+<li>Select <strong>New classroom</strong> and choose <code>Community-Access-Classroom</code> as the organization.</li>
+<li>Name it <code>Git Going - [Cohort Name] - [Month Year]</code> (for example, <code>Git Going - May 2026</code>).</li>
+<li>Import roster from <a href="../classroom/roster-template.csv">classroom/roster-template.csv</a> on the Roster tab.</li>
+<li>Add <code>accesswatch-student</code> to the roster as the test student.</li>
 </ol>
+<p><strong>To verify the existing classroom is accessible:</strong></p>
+<pre><code class="language-powershell">gh api /classrooms --jq &#39;.[] | {id, name, url}&#39;
+</code></pre>
 <p>Pass criteria:</p>
 <ul>
-<li>Classroom exists and is accessible to facilitators.</li>
-<li>Roster import succeeds with expected usernames.</li>
+<li>Classroom exists in <code>Community-Access-Classroom</code> and is accessible to <code>accesswatch</code>.</li>
+<li>Roster includes <code>accesswatch-student</code> (or the designated test student username).</li>
 </ul>
 <h3>Step 11. Create Day 1 assignment exactly</h3>
-<p>Use <a href="../classroom/assignment-day1-you-belong-here.md">classroom/assignment-day1-you-belong-here.md</a> and <a href="classroom/day1-assignment-copy-paste.md">admin/classroom/day1-assignment-copy-paste.md</a>.</p>
+<p>See section A.1 of the setup steps above for full navigation instructions.</p>
+<p>Use <a href="../classroom/assignment-day1-you-belong-here.md">classroom/assignment-day1-you-belong-here.md</a> and <a href="classroom/day1-assignment-copy-paste.md">admin/classroom/day1-assignment-copy-paste.md</a> for the exact title, description, and autograding entries.</p>
+<p><strong>To check if the Day 1 assignment already exists:</strong></p>
+<pre><code class="language-powershell">gh api /classrooms/322783/assignments --jq &#39;.[] | {id, title, invite_link}&#39;
+</code></pre>
+<p>If the assignment exists and its <code>invite_link</code> is already in the <code>CLASSROOM_DAY1_ASSIGNMENT_URL</code> variable, skip to Step 12.</p>
+<p><strong>If creating from scratch:</strong></p>
 <ol>
-<li>Create assignment with title <code>You Belong Here</code>.</li>
-<li>Set type <code>Individual</code>.</li>
-<li>Set visibility <code>Private</code>.</li>
-<li>Select template <code>Community-Access/learning-room-template</code>.</li>
-<li>Set <code>Grant students admin access</code> to <code>No</code>.</li>
-<li>Set <code>Enable feedback pull requests</code> to <code>Yes</code>.</li>
-<li>Paste Day 1 assignment description content.</li>
-<li>Add Day 1 autograding entries from <a href="classroom/autograding-setup.md">admin/classroom/autograding-setup.md</a>.</li>
-<li>Confirm Day 1 has 4 tests and total 50 points.</li>
-<li>Save assignment and copy invite link.</li>
+<li>Go to <a href="https://classroom.github.com">classroom.github.com</a> as <code>accesswatch</code> and open the <code>GIT Going with Github</code> classroom.</li>
+<li>Select <strong>New assignment</strong>.</li>
+<li>Title: <code>You Belong Here</code> (exact match required)</li>
+<li>Type: Individual, Visibility: Private</li>
+<li>Template: <code>Community-Access/learning-room-template</code></li>
+<li>Grant students admin access: No</li>
+<li>Enable feedback pull requests: Yes</li>
+<li>Paste description from <a href="../classroom/assignment-day1-you-belong-here.md">classroom/assignment-day1-you-belong-here.md</a></li>
+<li>Add autograding from <a href="classroom/autograding-setup.md">admin/classroom/autograding-setup.md</a> -- Day 1 requires exactly 4 tests totaling 50 points</li>
+<li>Save and copy the invite URL from the assignment page</li>
+<li>If <code>Initialize-WorkshopSetup.ps1</code> has not been run yet, paste the URL into <code>CLASSROOM_DAY1_ASSIGNMENT_URL</code>. If it has been run, re-run it to pick up the new URL automatically.</li>
 </ol>
 <p>Pass criteria:</p>
 <ul>
-<li>Day 1 settings match source files exactly.</li>
-<li>Test count and points are correct.</li>
-<li>Feedback pull request is enabled and visible in assignment configuration.</li>
+<li>Day 1 assignment exists with title <code>You Belong Here</code>.</li>
+<li>Test count is 4, total points is 50.</li>
+<li>Feedback pull request is enabled.</li>
+<li><code>CLASSROOM_DAY1_ASSIGNMENT_URL</code> variable matches the assignment invite link.</li>
 </ul>
 <h3>Step 12. Create Day 2 assignment exactly</h3>
-<p>Use <a href="../classroom/assignment-day2-you-can-build-this.md">classroom/assignment-day2-you-can-build-this.md</a> and <a href="classroom/day2-assignment-copy-paste.md">admin/classroom/day2-assignment-copy-paste.md</a>.</p>
+<p>Same process as Step 11. Check first whether it already exists:</p>
+<pre><code class="language-powershell">gh api /classrooms/322783/assignments --jq &#39;.[] | {id, title, invite_link}&#39;
+</code></pre>
+<p>If the assignment exists and its <code>invite_link</code> is already in <code>CLASSROOM_DAY2_ASSIGNMENT_URL</code>, skip ahead.</p>
+<p><strong>If creating from scratch:</strong></p>
 <ol>
-<li>Create assignment with title <code>You Can Build This</code>.</li>
-<li>Apply same base settings as Day 1 (individual, private, no admin access, feedback PR enabled).</li>
-<li>Paste Day 2 assignment description content.</li>
-<li>Add Day 2 autograding entries from <a href="classroom/autograding-setup.md">admin/classroom/autograding-setup.md</a>.</li>
-<li>Confirm Day 2 has 6 tests and total 75 points.</li>
-<li>Save assignment and copy invite link.</li>
+<li>In the <code>GIT Going with Github</code> classroom, select <strong>New assignment</strong>.</li>
+<li>Title: <code>You Can Build This</code> (exact match required)</li>
+<li>Apply same base settings as Day 1 (individual, private, no admin access, feedback PR enabled)</li>
+<li>Template: <code>Community-Access/learning-room-template</code></li>
+<li>Paste description from <a href="../classroom/assignment-day2-you-can-build-this.md">classroom/assignment-day2-you-can-build-this.md</a></li>
+<li>Add Day 2 autograding from <a href="classroom/autograding-setup.md">admin/classroom/autograding-setup.md</a> -- 6 tests totaling 75 points</li>
+<li>Save and copy the invite URL</li>
+<li>Update <code>CLASSROOM_DAY2_ASSIGNMENT_URL</code> or re-run <code>Initialize-WorkshopSetup.ps1</code> to pick it up automatically</li>
 </ol>
 <p>Pass criteria:</p>
 <ul>
-<li>Day 2 settings match source files exactly.</li>
-<li>Test count and points are correct.</li>
-<li>Feedback pull request is enabled and visible in assignment configuration.</li>
+<li>Day 2 assignment exists with title <code>You Can Build This</code>.</li>
+<li>Test count is 6, total points is 75.</li>
+<li>Feedback pull request is enabled.</li>
+<li><code>CLASSROOM_DAY2_ASSIGNMENT_URL</code> variable matches the assignment invite link.</li>
 </ul>
 <h3>Step 13. Connect assignment URLs back to registration automation</h3>
-<ol>
-<li>Add or update repository variables:<ul>
-<li><code>CLASSROOM_DAY1_ASSIGNMENT_URL</code></li>
-<li><code>CLASSROOM_DAY2_ASSIGNMENT_URL</code></li>
-</ul>
-</li>
-<li>Re-run one registration test issue (new test account or controlled case).</li>
-<li>Confirm both links appear in welcome comment.</li>
-</ol>
+<p>If <code>Initialize-WorkshopSetup.ps1</code> was run after the assignments were created, the variables are already set. Verify with:</p>
+<pre><code class="language-powershell">gh variable list -R Community-Access/git-going-with-github
+</code></pre>
+<p>If either URL variable is missing or stale, re-run the setup script. It will resolve URLs directly from the Classroom API:</p>
+<pre><code class="language-powershell">scripts/classroom/Initialize-WorkshopSetup.ps1 -AdminPAT ghp_yourTokenHere -SkipTemplatePrepare -SkipTemplateValidate
+</code></pre>
+<p>Then re-run the registration live test to confirm both URLs appear in the welcome comment:</p>
+<pre><code class="language-powershell">scripts/classroom/Test-RegistrationPage.ps1 -RunLiveTest
+</code></pre>
 <p>Pass criteria:</p>
 <ul>
-<li>Registration confirmation comment now includes both assignment URLs.</li>
+<li><code>CLASSROOM_DAY1_ASSIGNMENT_URL</code> and <code>CLASSROOM_DAY2_ASSIGNMENT_URL</code> are set and match assignment invite links.</li>
+<li>Registration confirmation comment includes both assignment URLs.</li>
+<li><code>Test-RegistrationPage.ps1 -RunLiveTest</code> exits with no failures.</li>
 </ul>
 <h2>Phase 4 - Test Student Acceptance and Seeding (Bridge from Admin to Student)</h2>
 <h3>Step 14. Test student accepts Day 1 and Day 2 invites</h3>
@@ -774,17 +901,28 @@ git diff --check
 <li>Two private repos are created and visible in classroom dashboard.</li>
 </ul>
 <h3>Step 15. Seed initial challenges and peer simulation</h3>
-<p>Run commands from repository root.</p>
-<pre><code class="language-powershell">scripts/classroom/Seed-LearningRoomChallenge.ps1 -Repository Community-Access-Classroom/learning-room-test-student-day1 -Challenge 1 -Assignee test-student
-scripts/classroom/Seed-PeerSimulation.ps1 -Repository Community-Access-Classroom/learning-room-test-student-day1 -StudentUsername test-student
-scripts/classroom/Seed-LearningRoomChallenge.ps1 -Repository Community-Access-Classroom/learning-room-test-student-day2 -Challenge 10 -Assignee test-student
-scripts/classroom/Seed-PeerSimulation.ps1 -Repository Community-Access-Classroom/learning-room-test-student-day2 -StudentUsername test-student
+<p>The test student account is <code>accesswatch-student</code>. GitHub Classroom generates repository names from the assignment slug and the student username. For the default assignment titles, the repository names will be:</p>
+<ul>
+<li>Day 1: <code>Community-Access-Classroom/you-belong-here-accesswatch-student</code></li>
+<li>Day 2: <code>Community-Access-Classroom/you-can-build-this-accesswatch-student</code></li>
+</ul>
+<p>Confirm the exact repository names first:</p>
+<pre><code class="language-powershell">gh repo list Community-Access-Classroom --json name --jq &#39;.[].name&#39; | Select-String accesswatch-student
 </code></pre>
-<p>If you use different repository names, replace values accordingly.</p>
+<p>Then seed (replace repository slugs with the confirmed names if different):</p>
+<pre><code class="language-powershell">$day1 = &#39;Community-Access-Classroom/you-belong-here-accesswatch-student&#39;
+$day2 = &#39;Community-Access-Classroom/you-can-build-this-accesswatch-student&#39;
+
+scripts/classroom/Seed-LearningRoomChallenge.ps1 -Repository $day1 -Challenge 1 -Assignee accesswatch-student
+scripts/classroom/Seed-PeerSimulation.ps1 -Repository $day1 -StudentUsername accesswatch-student
+scripts/classroom/Seed-LearningRoomChallenge.ps1 -Repository $day2 -Challenge 10 -Assignee accesswatch-student
+scripts/classroom/Seed-PeerSimulation.ps1 -Repository $day2 -StudentUsername accesswatch-student
+</code></pre>
+<p>Alternatively, if <code>Initialize-WorkshopSetup.ps1</code> is run after <code>accesswatch-student</code> has accepted both invites, it will detect the repos and seed them automatically.</p>
 <p>Pass criteria:</p>
 <ul>
-<li>Challenge 1 appears in Day 1 repo.</li>
-<li>Challenge 10 appears in Day 2 repo.</li>
+<li>Challenge 1 issue appears in Day 1 repo assigned to <code>accesswatch-student</code>.</li>
+<li>Challenge 10 issue appears in Day 2 repo assigned to <code>accesswatch-student</code>.</li>
 <li>Peer simulation issues and PR exist in both repos.</li>
 </ul>
 <h2>Phase 5 - Curriculum Content QA (Walk every required chapter and appendix)</h2>
@@ -1885,6 +2023,141 @@ Release Decision:
 <h2>What This Runbook Replaces</h2>
 <p>This runbook is the operator-facing execution path that unifies registration, deployment, and end-to-end challenge QA.</p>
 <p>It does not replace source documents. It sequences them into one practical checklist so a single facilitator can execute and validate the full system without context switching across multiple folders.</p>
+<h2>Script Reference</h2>
+<p>The following scripts in <code>scripts/classroom/</code> are used by this runbook. Run each with <code>-?</code> or read the <code>.SYNOPSIS</code> block for full parameter documentation.</p>
+<table>
+<thead>
+<tr>
+<th>Script</th>
+<th>Purpose</th>
+<th>Automated</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>Initialize-WorkshopSetup.ps1</code></td>
+<td>Set PAT secret, variables, labels; sync and validate template; seed test student challenges</td>
+<td>All steps except PAT generation (browser required)</td>
+</tr>
+<tr>
+<td><code>Archive-CohortData.ps1</code></td>
+<td>Export cohort issues, roster, and discussions to <code>git-going-student-success</code>; reset source repo</td>
+<td>Export and archive are automated; roster reset may require PR due branch rules</td>
+</tr>
+<tr>
+<td><code>Delete-RegistrationIssues.ps1</code></td>
+<td>Delete registration/duplicate/waitlist issues via GraphQL mutation</td>
+<td>Fully automated when user has repo admin and <code>repo</code> token scope</td>
+</tr>
+<tr>
+<td><code>Delete-RegistrationIssues-v2.js</code></td>
+<td>Experimental Playwright UI deleter for issue cleanup</td>
+<td>Partially automated; UI selector fragility makes this fallback-only</td>
+</tr>
+<tr>
+<td><code>Test-RegistrationPage.ps1</code></td>
+<td>Validate Pages site, REGISTER page, issue form, labels, workflow, and live registration flow</td>
+<td>All steps; test issue cleanup is close+lock only (see below)</td>
+</tr>
+<tr>
+<td><code>Prepare-LearningRoomTemplate.ps1</code></td>
+<td>Sync <code>learning-room/</code> source into <code>Community-Access/learning-room-template</code></td>
+<td>Fully automated</td>
+</tr>
+<tr>
+<td><code>Test-LearningRoomTemplate.ps1</code></td>
+<td>Create smoke repo from template, validate file inventory and workflow dispatch</td>
+<td>Fully automated</td>
+</tr>
+<tr>
+<td><code>Seed-LearningRoomChallenge.ps1</code></td>
+<td>Seed a specific challenge issue in a student repository</td>
+<td>Fully automated</td>
+</tr>
+<tr>
+<td><code>Seed-PeerSimulation.ps1</code></td>
+<td>Seed peer simulation issues and PR in a student repository</td>
+<td>Fully automated</td>
+</tr>
+<tr>
+<td><code>Restore-LearningRoomFiles.ps1</code></td>
+<td>Restore baseline files into a student repo via recovery branch and PR</td>
+<td>Fully automated</td>
+</tr>
+<tr>
+<td><code>Invoke-LearningRoomEndToEndTest.ps1</code></td>
+<td>Full end-to-end scripted QA harness</td>
+<td>Fully automated</td>
+</tr>
+</tbody></table>
+<h2>GitHub API Limitations</h2>
+<p>The following actions cannot be performed via any GitHub API and require manual browser-based action. These are hard platform constraints, not gaps in the scripts.</p>
+<table>
+<thead>
+<tr>
+<th>Action</th>
+<th>Why it cannot be automated</th>
+<th>Manual path</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Creating a Classroom assignment</td>
+<td>No write endpoint exists in the GitHub Classroom REST API (confirmed: only GET endpoints are documented and available)</td>
+<td><a href="https://classroom.github.com">classroom.github.com</a> as <code>accesswatch</code></td>
+</tr>
+<tr>
+<td>Deleting issues via REST API</td>
+<td>GitHub REST API has no DELETE endpoint for issues</td>
+<td>Use <code>scripts/classroom/Delete-RegistrationIssues.ps1</code> (GraphQL mutation path), or UI fallback</td>
+</tr>
+<tr>
+<td>Deleting or moving discussions</td>
+<td>GraphQL discussion mutations do not include delete or move operations</td>
+<td>Discussions tab in GitHub UI -&gt; each thread -&gt; &quot;...&quot; -&gt; Delete</td>
+</tr>
+<tr>
+<td>Generating a personal access token</td>
+<td>PAT generation requires browser authentication by design</td>
+<td><a href="https://github.com/settings/tokens">github.com/settings/tokens</a> as <code>accesswatch</code></td>
+</tr>
+</tbody></table>
+<h2>Pre-Cohort Cleanup Procedure</h2>
+<p>Run this procedure after each cohort completes, before starting QA for the next cohort.</p>
+<h3>Archive previous cohort data</h3>
+<pre><code class="language-powershell"># Replace the slug with the cohort being archived (format: YYYY-MM-description)
+scripts/classroom/Archive-CohortData.ps1 -CohortSlug 2026-03-march-cohort
+</code></pre>
+<p>What this does:</p>
+<ol>
+<li>Exports all registration/duplicate/waitlist issues (with comments) to JSON and CSV.</li>
+<li>Exports the current <code>student-roster.json</code>.</li>
+<li>Exports discussions to JSON.</li>
+<li>Pushes the archive to <code>Community-Access/git-going-student-success</code> under <code>admin/cohorts/&lt;CohortSlug&gt;/</code>.</li>
+<li>Closes and locks all registration issues in the source repository.</li>
+<li>Resets <code>student-roster.json</code> to the blank template.</li>
+</ol>
+<p>Use <code>-WhatIf</code> to preview without making changes:</p>
+<pre><code class="language-powershell">scripts/classroom/Archive-CohortData.ps1 -CohortSlug 2026-03-march-cohort -WhatIf
+</code></pre>
+<p>After the script completes, two manual cleanup steps are required (API limitation):</p>
+<ol>
+<li><strong>Delete registration issues</strong> -- use the GraphQL cleanup script (recommended):</li>
+</ol>
+<pre><code class="language-powershell">scripts/classroom/Delete-RegistrationIssues.ps1
+</code></pre>
+<ol start="2">
+<li><strong>Delete discussions</strong> -- discussions still require manual deletion:
+<code>https://github.com/Community-Access/git-going-with-github/discussions</code></li>
+</ol>
+<p>Archive destination: <code>https://github.com/Community-Access/git-going-student-success/tree/main/admin/cohorts/&lt;CohortSlug&gt;/</code></p>
+<h3>Current Progress Snapshot (2026-05-08)</h3>
+<ul>
+<li><input checked="" disabled="" type="checkbox"> Registration issues archived to <code>git-going-student-success</code>.</li>
+<li><input checked="" disabled="" type="checkbox"> Registration issues deleted from source repository (count now 0).</li>
+<li><input checked="" disabled="" type="checkbox"> Discussions deleted from source repository (count now 0).</li>
+<li><input checked="" disabled="" type="checkbox"> Learning Room template sync PR merged: <code>Community-Access/learning-room-template#11</code>.</li>
+<li><input disabled="" type="checkbox"> Registration secret and variable values set for next cohort (<code>CLASSROOM_ORG_ADMIN_TOKEN</code>, <code>CLASSROOM_ORG</code>, <code>CLASSROOM_DAY1_ASSIGNMENT_URL</code>, <code>CLASSROOM_DAY2_ASSIGNMENT_URL</code>).</li>
+<li><input disabled="" type="checkbox"> Day 1 and Day 2 classroom assignments created for next cohort.</li>
+</ul>
 
 </body>
 </html>

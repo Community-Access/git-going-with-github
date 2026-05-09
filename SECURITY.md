@@ -4,6 +4,9 @@
 
 This repository contains **educational curriculum and documentation only** - no production software, application servers, or APIs. There are no versioned software releases to patch.
 
+
+**Table: Supported content types and their source**
+
 | Content | Supported |
 |---------|-----------|
 | Curriculum documentation (docs/) | Current main branch |

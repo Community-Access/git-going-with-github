@@ -1,3 +1,5 @@
+
+**Table: Keyboard shortcut for focusing search in different screen readers**
 # Contributing to This Workshop Repository
 
 Thank you for helping improve this workshop. Whether you are a participant who found a typo, someone who wants to add a new exercise, or an educator adapting these materials for your own community - your contribution is meaningful and welcome.
