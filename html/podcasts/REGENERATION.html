@@ -61,14 +61,14 @@
     <h1 id="podcast-regeneration-runbook">Podcast Regeneration Runbook</h1>
 <p>This runbook explains how to rebuild the Git Going with GitHub podcast series after curriculum changes. Use it when chapters, appendices, agendas, or challenges change enough that the existing transcripts no longer match the source material.</p>
 <h2 id="current-strategy">Current Strategy</h2>
-<p>The podcast pipeline has two distinct content layers.</p>
+<p>The podcast pipeline has two content layers that are published as one listening path.</p>
 <ol>
 <li><strong>Companion episodes for chapters and appendices</strong>
 These are conversational overviews. They help learners preview or review concepts before reading the full material.</li>
 <li><strong>Challenge teaching episodes</strong>
 These should teach the challenge in a guided, classroom style. They should explain the skill, model the learner&#39;s thinking, describe what success sounds like with a screen reader, and clarify what evidence the learner submits.</li>
 </ol>
-<p>The chapter and appendix episodes can stay broader and conceptual. The challenge episodes should be more tactical and should follow the Learning Room progression.</p>
+<p>The chapter and appendix episodes can stay broader and conceptual. The challenge episodes should be more tactical and should follow the Learning Room progression. The final public order is controlled by <code>podcasts/listening-order.json</code>, which places each challenge near the chapters that prepare learners for it.</p>
 <p>The refreshed companion catalog currently contains 54 episodes. The Challenge Coach layer currently has 21 generated source bundles: 16 core challenges plus 5 bonus challenges.</p>
 <h2 id="style-standard">Style Standard</h2>
 <p>Keep the Alex and Jamie format. The banter is part of the accessibility design because it makes dense technical material easier to process.</p>
@@ -131,8 +131,8 @@ npm run build:podcast<span class="hljs-literal">-challenge-bundles</span></code>
 </ul>
 </li>
 <li><p>Generate audio:</p>
-<pre><code class="hljs language-powershell">python <span class="hljs-literal">-m</span> podcasts.tts.generate_episode ep00<span class="hljs-literal">-welcome</span>
-python <span class="hljs-literal">-m</span> podcasts.tts.generate_all <span class="hljs-literal">--start</span> <span class="hljs-number">0</span> <span class="hljs-literal">--end</span> <span class="hljs-number">10</span></code></pre>
+<pre><code class="hljs language-powershell">python <span class="hljs-literal">-m</span> podcasts.tts.generate_all_kokoro <span class="hljs-literal">--start</span> <span class="hljs-number">0</span> <span class="hljs-literal">--end</span> <span class="hljs-number">0</span> <span class="hljs-literal">--force</span> <span class="hljs-literal">--audio-format</span> mp3
+python <span class="hljs-literal">-m</span> podcasts.tts.generate_all_kokoro <span class="hljs-literal">--start</span> <span class="hljs-number">0</span> <span class="hljs-literal">--end</span> <span class="hljs-number">10</span> <span class="hljs-literal">--audio-format</span> mp3</code></pre>
 </li>
 <li><p>Update the podcast page and RSS feed:</p>
 <pre><code class="hljs language-powershell">npm run build:podcast<span class="hljs-literal">-site</span>
@@ -204,7 +204,7 @@ git <span class="hljs-built_in">diff</span> <span class="hljs-literal">--check</
 <li>16 core challenge episodes, one per challenge</li>
 <li>5 bonus challenge episodes, one per bonus challenge</li>
 </ul>
-<p>Target length should be 5-8 minutes each. These can be more practical than the chapter episodes and should be released as a separate &quot;Challenge Coach&quot; section on the podcast page.</p>
+<p>Target length should be 5-8 minutes each. These can be more practical than the chapter episodes and should be interleaved with the companion lessons on the podcast page and in RSS.</p>
 <h2 id="transcript-source-of-truth">Transcript Source of Truth</h2>
 <p>Use this hierarchy:</p>
 <ol>

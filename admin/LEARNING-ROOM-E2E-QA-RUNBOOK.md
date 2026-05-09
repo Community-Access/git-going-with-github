@@ -49,6 +49,7 @@ Out of scope:
 | Student starting path | [docs/get-going.md](../docs/get-going.md) |
 | Grading criteria | [classroom/grading-guide.md](../classroom/grading-guide.md) |
 | Release gate baseline | [GO-LIVE-QA-GUIDE.md](../GO-LIVE-QA-GUIDE.md) |
+| Support hub operations | [SUPPORT_HUB_OPERATIONS.md](SUPPORT_HUB_OPERATIONS.md) |
 
 **Table: QA validation checkpoints for registration and classroom automation**
 **Table: Student journey checkpoints and expected artifacts**
@@ -518,6 +519,19 @@ Pass criteria:
 - Registration link opens correctly.
 - Registration issue title is prefilled with `[REGISTER]`.
 - Public visibility warning is present.
+- Support links point to `Community-Access/git-going-open-support` issues/discussions.
+
+### Step 1.1 Verify support hub onboarding path
+
+1. Open `Community-Access/git-going-open-support` and confirm Issues and Discussions are enabled.
+2. Confirm at least one pinned onboarding discussion or Start Here guidance exists.
+3. Open a test support issue using a template and confirm labels apply correctly.
+
+Pass criteria:
+
+- Support hub is reachable and public.
+- Onboarding path is discoverable for students.
+- Template-driven support issue flow works.
 
 ### Step 2. Configure registration automation for classroom handoff
 
@@ -1545,6 +1559,7 @@ The following scripts in `scripts/classroom/` are used by this runbook. Run each
 | `Seed-PeerSimulation.ps1` | Seed peer simulation issues and PR in a student repository | Fully automated |
 | `Restore-LearningRoomFiles.ps1` | Restore baseline files into a student repo via recovery branch and PR | Fully automated |
 | `Invoke-LearningRoomEndToEndTest.ps1` | Full end-to-end scripted QA harness | Fully automated |
+| `Reset-SupportHubEnvironment.ps1` | Rebuild support hub repository labels, settings, and baseline support automation | Fully automated |
 
 ## GitHub API Limitations
 

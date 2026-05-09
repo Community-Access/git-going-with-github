@@ -1,0 +1,603 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="GIT Going with GitHub - A two-day accessible open source workshop by Community Access">
+  <title>How Git Works: The Mental Model - GIT Going with GitHub</title>
+  <link rel="stylesheet" href="./styles/github-markdown.css">
+  <link rel="stylesheet" href="./styles/highlight.css">
+  <link rel="stylesheet" href="./styles/custom.css">
+  <style>
+    .markdown-body {
+      box-sizing: border-box;
+      min-width: 200px;
+      max-width: 980px;
+      margin: 0 auto;
+      padding: 45px;
+    }
+    @media (max-width: 767px) {
+      .markdown-body {
+        padding: 15px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+  <header class="site-header" role="banner">
+    <div class="site-header-inner">
+      <nav aria-label="Breadcrumb" class="breadcrumb">
+        <a href="./index.html">Home</a> <span aria-hidden="true">›</span> <span aria-current="page">How Git Works: The Mental Model</span>
+      </nav>
+      <div class="header-actions">
+        <a href="https://github.com/Community-Access/git-going-with-github/wiki" class="wiki-link" target="_blank" rel="noopener noreferrer">
+          <svg aria-hidden="true" focusable="false" width="16" height="16" viewBox="0 0 16 16" fill="currentColor">
+            <path d="M1.75 1h8.5c.966 0 1.75.784 1.75 1.75v5.5A1.75 1.75 0 0 1 10.25 10H7.06l-2.573 2.573A1.458 1.458 0 0 1 2 11.543V10h-.25A1.75 1.75 0 0 1 0 8.25v-5.5C0 1.784.784 1 1.75 1ZM1.5 2.75v5.5c0 .138.112.25.25.25h1a.75.75 0 0 1 .75.75v2.19l2.72-2.72a.749.749 0 0 1 .53-.22h3.5a.25.25 0 0 0 .25-.25v-5.5a.25.25 0 0 0-.25-.25h-8.5a.25.25 0 0 0-.25.25Zm13 2a.25.25 0 0 0-.25-.25h-.5a.75.75 0 0 1 0-1.5h.5c.966 0 1.75.784 1.75 1.75v5.5A1.75 1.75 0 0 1 14.25 12H14v1.543a1.457 1.457 0 0 1-2.487 1.03L9.22 12.28a.749.749 0 1 1 1.06-1.06l2.22 2.22v-2.19a.75.75 0 0 1 .75-.75h.25a.25.25 0 0 0 .25-.25v-5.5Z"/>
+          </svg>
+          Wiki
+        </a>
+        <form role="search" class="search-form" action="./search.html" method="get">
+        <label for="site-search" class="search-label">Search docs</label>
+        <input
+          type="search"
+          id="site-search"
+          class="search-input"
+          name="q"
+          placeholder="Search docs…"
+          autocomplete="off"
+          aria-label="Search documentation"
+        >
+        <button type="submit" class="search-button" aria-label="Submit search">
+          <svg aria-hidden="true" focusable="false" width="16" height="16" viewBox="0 0 16 16" fill="currentColor">
+            <path d="M10.68 11.74a6 6 0 0 1-7.922-8.982 6 6 0 0 1 8.982 7.922l3.04 3.04a.749.749 0 0 1-.326 1.275.749.749 0 0 1-.734-.215ZM11.5 7a4.499 4.499 0 1 0-8.997 0A4.499 4.499 0 0 0 11.5 7Z"/>
+          </svg>
+        </button>
+      </form>
+      </div>
+    </div>
+  </header>
+  <main id="main-content" class="markdown-body">
+    <h1 id="how-git-works-the-mental-model">How Git Works: The Mental Model</h1>
+<blockquote>
+<p><strong>Related appendices:</strong> <a href="appendix-e-advanced-git.html">Appendix E: Advanced Git</a> | <a href="appendix-d-git-authentication.html">Appendix D: Git Authentication</a> | <a href="appendix-f-git-security.html">Appendix F: Git Security</a>
+<strong>Authoritative sources:</strong> <a href="https://git-scm.com/book/en/v2/Getting-Started-What-is-Git%3F">Git SCM: Git Basics</a> | <a href="https://git-scm.com/book/en/v2/Git-Branching-Branches-in-a-Nutshell">Git SCM: Branching in a Nutshell</a> | <a href="https://docs.github.com/en/get-started/using-git/about-git">GitHub Docs: About Git</a></p>
+</blockquote>
+<blockquote>
+<p><strong>Day 2, Block 1 Material</strong></p>
+<p>Before you start running Git commands, you need a mental model of what Git actually does. This chapter builds that model from the ground up: what a commit is, what a branch is, how local and remote repositories relate, and why merge conflicts happen. Every operation in <a href="14-git-in-practice.html">Chapter 14</a> will make more sense after reading this.</p>
+</blockquote>
+<h2 id="table-of-contents">Table of Contents</h2>
+<ol>
+<li><a href="#1-why-a-mental-model-matters">Why a Mental Model Matters</a></li>
+<li><a href="#2-the-three-areas-working-directory-staging-area-repository">The Three Areas: Working Directory, Staging Area, Repository</a></li>
+<li><a href="#3-what-is-a-commit">What Is a Commit?</a></li>
+<li><a href="#4-what-is-a-branch">What Is a Branch?</a></li>
+<li><a href="#5-local-vs-remote">Local vs Remote</a></li>
+<li><a href="#6-push-pull-and-fetch">Push, Pull, and Fetch</a></li>
+<li><a href="#7-why-merge-conflicts-happen">Why Merge Conflicts Happen</a></li>
+<li><a href="#8-the-git-timeline">The Git Timeline</a></li>
+<li><a href="#9-putting-it-all-together">Putting It All Together</a></li>
+<li><a href="#10-if-you-get-stuck">If You Get Stuck</a></li>
+</ol>
+<hr>
+<blockquote>
+<p><strong>Challenges 10-16</strong> all depend on the mental model built in this chapter. Understanding the three areas, branches, and push/pull makes every Day 2 Git command predictable.</p>
+</blockquote>
+<h2 id="1-why-a-mental-model-matters">1. Why a Mental Model Matters</h2>
+<p>On Day 1, you edited files on GitHub.com using the web editor. GitHub handled Git for you behind the scenes -- creating commits, managing branches, and tracking changes. You did not need to think about how it worked because the web interface made it invisible.</p>
+<p>On Day 2, you will do the same operations locally: clone a repository to your computer, create branches, make commits, and push changes back to GitHub. The commands themselves are not hard. But without understanding what they do, you will hit a wall the first time something goes wrong -- and you will not know how to fix it.</p>
+<p>This chapter gives you that understanding. It is not a list of commands (that is <a href="14-git-in-practice.html">Chapter 14</a>). It is the mental model that makes the commands make sense.</p>
+<blockquote>
+<p><strong>Authoritative source:</strong> The concepts in this chapter are grounded in the <a href="https://git-scm.com/book/en/v2">Pro Git book</a> by Scott Chacon and Ben Straub, which is the official Git documentation&#39;s recommended resource. It is free to read online.</p>
+</blockquote>
+<hr>
+<h2 id="2-the-three-areas-working-directory-staging-area-repository">2. The Three Areas: Working Directory, Staging Area, Repository</h2>
+<p>Git organizes your work into three areas. Understanding these three areas is the single most important concept in this chapter.</p>
+<h3 id="working-directory">Working directory</h3>
+<p>The working directory is the folder on your computer where the files live. When you open a project in VS Code, everything you see in the file explorer is the working directory. These are real files on your disk that you can edit, rename, and delete.</p>
+<p>When you change a file in the working directory, Git notices. But Git does not automatically record the change. You have to tell Git which changes you want to keep.</p>
+<h3 id="staging-area-also-called-the-index">Staging area (also called the index)</h3>
+<p>The staging area is a holding zone. When you are happy with a change in the working directory, you add it to the staging area. This is like saying: &quot;I want this change to be part of my next save point.&quot;</p>
+<p>You can add some files to the staging area and leave others out. This lets you make a commit (save point) that includes only the changes that belong together.</p>
+<h3 id="repository-the-git-folder">Repository (the .git folder)</h3>
+<p>The repository is Git&#39;s permanent record. When you commit, Git takes everything in the staging area and stores it as a snapshot -- a permanent record of what those files looked like at that moment. The repository is stored in a hidden <code>.git</code> folder inside your project directory.</p>
+<h3 id="how-the-three-areas-connect">How the three areas connect</h3>
+<p>The flow is always the same:</p>
+<ol>
+<li><strong>Edit</strong> files in the working directory</li>
+<li><strong>Stage</strong> the changes you want to keep (add to the staging area)</li>
+<li><strong>Commit</strong> the staged changes (save to the repository)</li>
+</ol>
+<p>In Git commands, this looks like:</p>
+<pre><code class="hljs language-text">edit a file        --&gt;   git add file.md       --&gt;   git commit -m &quot;description&quot;
+(working directory)      (staging area)              (repository)</code></pre>
+<blockquote>
+<p><strong>Screen reader note:</strong> Many visual Git tutorials use diagrams with arrows to show this flow. The text description above and the three-step sequence are the same information without requiring a visual representation.</p>
+</blockquote>
+<h3 id="an-analogy-packing-a-box">An analogy: packing a box</h3>
+<p>Think of it like packing a box to mail:</p>
+<ul>
+<li>The <strong>working directory</strong> is your desk with papers and items scattered on it</li>
+<li>The <strong>staging area</strong> is the open box on the floor -- you put items into it as you decide what to ship</li>
+<li>The <strong>commit</strong> is sealing the box, labeling it, and putting it on the shelf -- once sealed, its contents are recorded permanently</li>
+</ul>
+<p>You can put items in and take them out of the box (stage and unstage) as many times as you want before sealing it (committing).</p>
+<h3 id="learning-cards-the-three-areas">Learning Cards: The Three Areas</h3>
+<details>
+<summary>Screen reader users</summary>
+
+<ul>
+<li>Run <code>git status</code> in the terminal (`Ctrl+``) -- it announces which files are in each area (working directory, staging, committed) with clear labels</li>
+<li>In VS Code Source Control (<code>Ctrl+Shift+G</code>), files are grouped under &quot;Changes&quot; (working directory) and &quot;Staged Changes&quot; (staging area) -- navigate with arrow keys</li>
+<li>Press <code>Enter</code> on any file in the Source Control panel to hear the diff -- added and removed lines are announced with change-type prefixes</li>
+</ul>
+</details>
+
+<details>
+<summary>Low vision users</summary>
+
+<ul>
+<li>In Source Control (<code>Ctrl+Shift+G</code>), staged files appear under a separate &quot;Staged Changes&quot; heading with a green <code>+</code> icon; unstaged files are under &quot;Changes&quot; with an orange <code>M</code> icon</li>
+<li>Use <code>Ctrl+=</code> to increase editor font size if the Source Control file list is hard to read at default zoom</li>
+<li>The gutter indicator (colored bar on the left edge of the editor) shows green for added lines and blue for modified lines</li>
+</ul>
+</details>
+
+<details>
+<summary>Sighted users</summary>
+
+<ul>
+<li>The Source Control badge on the Activity Bar shows a number indicating how many files have changes -- click it to see the full list</li>
+<li>Look for letter badges next to filenames: <code>M</code> (modified), <code>U</code> (untracked), <code>A</code> (added to staging), <code>D</code> (deleted)</li>
+<li>The inline gutter colors in the editor margin (green = added, blue = modified, red = deleted) show changes at a glance without opening Source Control</li>
+</ul>
+</details>
+
+<hr>
+<h2 id="3-what-is-a-commit">3. What Is a Commit?</h2>
+<p>A commit is a snapshot of your project at a specific moment in time. It is not a diff (a list of changes). It records the complete state of every file in the staging area when the commit was made.</p>
+<h3 id="what-a-commit-contains">What a commit contains</h3>
+<p>Every commit has four parts:</p>
+<table>
+<thead>
+<tr>
+<th scope="col">Part</th>
+<th scope="col">What it is</th>
+<th scope="col">Example</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><strong>Snapshot</strong></td>
+<td>The complete state of all staged files</td>
+<td>All the files as they were when you committed</td>
+</tr>
+<tr>
+<td><strong>Message</strong></td>
+<td>A human-readable description of the change</td>
+<td>&quot;Fix broken link in setup guide&quot;</td>
+</tr>
+<tr>
+<td><strong>Author</strong></td>
+<td>Who made the commit (name and email)</td>
+<td>Jane Developer, <a href="mailto:jane@example.com">jane@example.com</a></td>
+</tr>
+<tr>
+<td><strong>Parent pointer</strong></td>
+<td>Which commit came before this one</td>
+<td>A reference to the previous commit&#39;s ID</td>
+</tr>
+</tbody></table>
+<h3 id="commit-ids-hashes">Commit IDs (hashes)</h3>
+<p>Every commit gets a unique identifier -- a 40-character string called a SHA hash. It looks like this:</p>
+<pre><code class="hljs language-text">a1b2c3d4e5f6789012345678901234567890abcd</code></pre>
+<p>In practice, you usually see only the first 7 characters: <code>a1b2c3d</code>. This short form is enough to uniquely identify a commit in most repositories.</p>
+<p>You do not need to memorize these. Git commands accept both the full hash and the short form.</p>
+<h3 id="commits-are-permanent-mostly">Commits are permanent (mostly)</h3>
+<p>Once a commit is made, it is part of the repository&#39;s history. You can make new commits that undo the changes, but the original commit still exists in the timeline. This is what makes Git safe: you can always go back.</p>
+<blockquote>
+<p><strong>The Day 1 connection:</strong> When you edited a file on GitHub.com and clicked &quot;Commit changes,&quot; GitHub created a commit for you. It did the stage-and-commit steps in a single action. On Day 2, you will do these steps separately, which gives you more control.</p>
+</blockquote>
+<h3 id="learning-cards-commits">Learning Cards: Commits</h3>
+<details>
+<summary>Screen reader users</summary>
+
+<ul>
+<li>After committing, run <code>git log --oneline -5</code> in the terminal to hear the last 5 commit hashes and messages read aloud</li>
+<li>In VS Code, press <code>Ctrl+Shift+G</code> then navigate to the commit message input box -- your screen reader announces &quot;Message&quot; -- type your description and press <code>Ctrl+Enter</code> to commit</li>
+<li>The 7-character short hash (e.g., <code>a1b2c3d</code>) is what Git commands accept -- you do not need the full 40 characters</li>
+</ul>
+</details>
+
+<details>
+<summary>Low vision users</summary>
+
+<ul>
+<li>The Source Control commit input box is at the top of the Source Control panel -- increase panel width by dragging the panel edge if the text is truncated</li>
+<li>After committing, the file count badge on the Source Control icon drops to zero, confirming the commit succeeded</li>
+<li>Use Timeline view (<code>Ctrl+Shift+P</code> then &quot;Focus on Timeline View&quot;) to see a chronological list of commits for the current file</li>
+</ul>
+</details>
+
+<details>
+<summary>Sighted users</summary>
+
+<ul>
+<li>The commit message input box sits at the top of the Source Control panel with a checkmark button to commit</li>
+<li>After committing, the &quot;Staged Changes&quot; section disappears and the Activity Bar badge number decreases</li>
+<li>Hover over any commit in the Timeline view to see the full message, author, and timestamp in a tooltip</li>
+</ul>
+</details>
+
+<hr>
+<h2 id="4-what-is-a-branch">4. What Is a Branch?</h2>
+<blockquote>
+<p><strong>See also:</strong> <a href="14-git-in-practice.html">Chapter 14: Git in Practice</a> shows how to create and switch branches hands-on in VS Code.</p>
+</blockquote>
+<p>A branch is a name that points to a specific commit. That is the entire definition. A branch is not a copy of your files. It is not a separate folder. It is a pointer -- a label stuck on one specific commit.</p>
+<h3 id="the-default-branch-main">The default branch: main</h3>
+<p>Every repository has a default branch, usually called <code>main</code>. When you clone a repository, Git checks out the <code>main</code> branch, which means it loads the files from the commit that <code>main</code> points to into your working directory.</p>
+<h3 id="creating-a-branch">Creating a branch</h3>
+<p>When you create a new branch, Git creates a new pointer that starts at the same commit you are currently on. Both branches point to the same commit. No files are copied.</p>
+<pre><code class="hljs language-text">Before creating a branch:
+  main --&gt; commit C
+
+After creating a branch called &quot;fix/typo&quot;:
+  main      --&gt; commit C
+  fix/typo  --&gt; commit C    (same commit, two names)</code></pre>
+<h3 id="making-commits-on-a-branch">Making commits on a branch</h3>
+<p>When you make a new commit while on the <code>fix/typo</code> branch, the <code>fix/typo</code> pointer moves forward to the new commit. The <code>main</code> pointer stays where it was.</p>
+<pre><code class="hljs language-text">  main      --&gt; commit C
+  fix/typo  --&gt; commit D --&gt; commit C</code></pre>
+<p>Now <code>fix/typo</code> is one commit ahead of <code>main</code>. The files on <code>main</code> have not changed. The files on <code>fix/typo</code> include your new edit.</p>
+<h3 id="head-which-branch-are-you-on">HEAD: which branch are you on?</h3>
+<p>Git uses a special pointer called <code>HEAD</code> to track which branch you are currently working on. When you switch branches (checkout), Git moves <code>HEAD</code> to point to the new branch and updates the files in your working directory to match.</p>
+<blockquote>
+<p><strong>The Day 1 connection:</strong> On Day 1, you created a <code>learn/[username]</code> branch on GitHub.com. That branch was a pointer to a specific commit on the repository. When you edited files on that branch, new commits moved the pointer forward. The <code>main</code> branch stayed unchanged until your pull request was merged.</p>
+</blockquote>
+<h3 id="learning-cards-branches">Learning Cards: Branches</h3>
+<details>
+<summary>Screen reader users</summary>
+
+<ul>
+<li>Press <code>Ctrl+Shift+G</code> then <code>Tab</code> to reach the branch name in the Source Control panel -- your screen reader announces the current branch</li>
+<li>The Status Bar at the bottom of VS Code shows the current branch name -- navigate to it with <code>F6</code> to cycle through Status Bar items</li>
+<li>To switch branches, press <code>Ctrl+Shift+P</code> then type &quot;Git: Checkout to&quot; and arrow through the branch list</li>
+</ul>
+</details>
+
+<details>
+<summary>Low vision users</summary>
+
+<ul>
+<li>The current branch name appears in the bottom-left of the Status Bar -- click it to see a dropdown of all branches</li>
+<li>Branch names in the Status Bar use the same font size as the rest of the bar; zoom the entire window with <code>Ctrl+=</code> if it is too small</li>
+<li>In the Source Control panel, the branch name is shown above the commit input -- verify it before committing</li>
+</ul>
+</details>
+
+<details>
+<summary>Sighted users</summary>
+
+<ul>
+<li>Look at the bottom-left corner of VS Code for the branch icon and name (e.g., a git-branch icon followed by <code>main</code>)</li>
+<li>Click the branch name to open a picker showing all local and remote branches -- select one to switch</li>
+<li>The branch icon changes to a sync icon with arrows when your branch is ahead of or behind the remote</li>
+</ul>
+</details>
+
+<hr>
+<h2 id="5-local-vs-remote">5. Local vs Remote</h2>
+<blockquote>
+<p><strong>See also:</strong> <a href="appendix-d-git-authentication.html">Appendix D: Git Authentication</a> covers how to set up credentials so push and pull work without password prompts.</p>
+</blockquote>
+<p>So far, we have talked about one repository. In practice, you work with two copies of the same repository.</p>
+<h3 id="the-remote-repository">The remote repository</h3>
+<p>The remote repository is the one on GitHub.com. It is called <code>origin</code> by convention. When you see a repository URL like <code>github.com/Community-Access/git-going-with-github</code>, that is the remote.</p>
+<p>The remote is the shared copy. Everyone on the team can see it. Pull requests happen here. Issues live here. It is the source of truth for the project.</p>
+<h3 id="the-local-repository">The local repository</h3>
+<p>The local repository is the copy on your computer. When you run <code>git clone</code>, Git downloads the entire repository -- all files, all branches, all history -- to your machine. You now have a complete, independent copy.</p>
+<p>You can make commits locally without any internet connection. Your commits are saved in your local repository. The remote does not know about them until you push.</p>
+<h3 id="how-local-and-remote-stay-in-sync">How local and remote stay in sync</h3>
+<table>
+<thead>
+<tr>
+<th scope="col">Operation</th>
+<th scope="col">Direction</th>
+<th scope="col">What it does</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>git clone</code></td>
+<td>Remote to local</td>
+<td>Creates a new local copy of the entire remote repository</td>
+</tr>
+<tr>
+<td><code>git push</code></td>
+<td>Local to remote</td>
+<td>Sends your local commits to the remote repository</td>
+</tr>
+<tr>
+<td><code>git pull</code></td>
+<td>Remote to local</td>
+<td>Downloads new commits from the remote and merges them into your branch</td>
+</tr>
+<tr>
+<td><code>git fetch</code></td>
+<td>Remote to local</td>
+<td>Downloads new commits from the remote but does not merge them</td>
+</tr>
+</tbody></table>
+<h3 id="the-two-copy-model">The two-copy model</h3>
+<pre><code class="hljs language-text">Your computer (local)              GitHub.com (remote / origin)
++-------------------+              +-------------------+
+| working directory  |   git push   |                   |
+| staging area       |  --------&gt;   |  shared branches  |
+| repository (.git)  |  &lt;--------   |  pull requests    |
++-------------------+   git pull   |  issues           |
+                                    +-------------------+</code></pre>
+<blockquote>
+<p><strong>Screen reader note:</strong> The text diagram above shows two boxes side by side connected by arrows. The left box is labeled &quot;Your computer (local)&quot; and contains working directory, staging area, and repository. The right box is labeled &quot;GitHub.com (remote / origin)&quot; and contains shared branches, pull requests, and issues. Arrows show <code>git push</code> going from left to right and <code>git pull</code> going from right to left.</p>
+</blockquote>
+<h3 id="learning-cards-local-vs-remote">Learning Cards: Local vs Remote</h3>
+<details>
+<summary>Screen reader users</summary>
+
+<ul>
+<li>Run <code>git remote -v</code> in the terminal to hear which remote URLs are configured -- typically <code>origin</code> pointing to your GitHub repository</li>
+<li>After <code>git push</code>, your screen reader announces the output including the branch name and commit count sent -- listen for &quot;Everything up-to-date&quot; if nothing new to push</li>
+<li>Run <code>git status</code> to hear whether your local branch is ahead of, behind, or in sync with the remote tracking branch</li>
+</ul>
+</details>
+
+<details>
+<summary>Low vision users</summary>
+
+<ul>
+<li>The Status Bar sync indicator (bottom-left, next to the branch name) shows up/down arrow counts: up-arrows = commits to push, down-arrows = commits to pull</li>
+<li>Click the sync icon in the Status Bar to push and pull in one action -- the arrows disappear when local and remote are in sync</li>
+<li>The Source Control panel heading shows the repository name and branch so you can confirm which remote you are working with</li>
+</ul>
+</details>
+
+<details>
+<summary>Sighted users</summary>
+
+<ul>
+<li>Look for the cloud icon or sync arrows next to the branch name in the Status Bar to see push/pull status at a glance</li>
+<li>A number next to the up arrow means you have unpushed commits; next to the down arrow means the remote has commits you have not pulled</li>
+<li>The Source Control panel shows a &quot;Publish Branch&quot; button when you have a local branch that does not yet exist on the remote</li>
+</ul>
+</details>
+
+<hr>
+<h2 id="6-push-pull-and-fetch">6. Push, Pull, and Fetch</h2>
+<p>These three operations keep your local and remote repositories synchronized.</p>
+<h3 id="push-share-your-work">Push: share your work</h3>
+<p><code>git push</code> sends your local commits to the remote. After pushing, anyone who looks at the repository on GitHub.com will see your changes.</p>
+<p>Push only sends commits on the current branch. If you are on the <code>fix/typo</code> branch and push, only <code>fix/typo</code> commits go to the remote. Other branches are untouched.</p>
+<pre><code class="hljs language-bash">git push origin fix/typo</code></pre>
+<p>If this is the first push for a new branch, use:</p>
+<pre><code class="hljs language-bash">git push -u origin fix/typo</code></pre>
+<p>The <code>-u</code> flag sets up tracking so that future pushes from this branch go to the right place without specifying the remote and branch name.</p>
+<h3 id="pull-get-other-people39s-work">Pull: get other people&#39;s work</h3>
+<p><code>git pull</code> downloads new commits from the remote and immediately merges them into your current branch. This is how you get changes that other people (or you on another computer) have pushed.</p>
+<pre><code class="hljs language-bash">git pull origin main</code></pre>
+<p>Pull is actually two operations combined: fetch (download) + merge (integrate). Most of the time this works automatically. When it cannot merge automatically, you get a merge conflict (see Section 7).</p>
+<h3 id="fetch-check-for-updates-without-merging">Fetch: check for updates without merging</h3>
+<p><code>git fetch</code> downloads new commits from the remote but does not change your working directory or current branch. It just updates your local knowledge of what the remote looks like.</p>
+<p>This is useful when you want to see if there are new changes before deciding to merge them.</p>
+<pre><code class="hljs language-bash">git fetch origin</code></pre>
+<p>After fetching, you can compare your branch with the remote&#39;s version:</p>
+<pre><code class="hljs language-bash">git <span class="hljs-built_in">log</span> main..origin/main --oneline</code></pre>
+<p>This shows you what commits exist on the remote&#39;s <code>main</code> that you do not have locally.</p>
+<hr>
+<h2 id="7-why-merge-conflicts-happen">7. Why Merge Conflicts Happen</h2>
+<p>A merge conflict happens when Git cannot automatically combine two sets of changes. This is not an error. It is Git asking you for help.</p>
+<h3 id="when-conflicts-occur">When conflicts occur</h3>
+<p>Conflicts happen when two branches modify the same lines in the same file. Git knows how to merge changes to different files, and even different parts of the same file. But when two branches change the same line differently, Git cannot decide which version to keep.</p>
+<h3 id="what-a-conflict-looks-like">What a conflict looks like</h3>
+<p>When a conflict occurs, Git marks the conflicting section in the file with special markers:</p>
+<pre><code class="hljs language-text">&lt;&lt;&lt;&lt;&lt;&lt;&lt; HEAD
+This is the text from your current branch.
+<span aria-hidden="true"></span>=======
+This is the text from the branch you are merging in.
+&gt;&gt;&gt;&gt;&gt;&gt;&gt; fix/typo</code></pre>
+<table>
+<thead>
+<tr>
+<th scope="col">Marker</th>
+<th scope="col">Meaning</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>&lt;&lt;&lt;&lt;&lt;&lt;&lt; HEAD</code></td>
+<td>Start of your current branch&#39;s version</td>
+</tr>
+<tr>
+<td><code>=======</code></td>
+<td>Divider between the two versions</td>
+</tr>
+<tr>
+<td><code>&gt;&gt;&gt;&gt;&gt;&gt;&gt; fix/typo</code></td>
+<td>End of the incoming branch&#39;s version</td>
+</tr>
+</tbody></table>
+<h3 id="how-to-resolve-a-conflict">How to resolve a conflict</h3>
+<ol>
+<li>Open the file with the conflict markers</li>
+<li>Read both versions and decide which text to keep (or write a new version that combines both)</li>
+<li>Delete the conflict markers (<code>&lt;&lt;&lt;&lt;&lt;&lt;&lt;</code>, <code>=======</code>, <code>&gt;&gt;&gt;&gt;&gt;&gt;&gt;</code>)</li>
+<li>Save the file</li>
+<li>Stage and commit the resolved file</li>
+</ol>
+<blockquote>
+<p><strong>The Day 1 connection:</strong> In <a href="07-merge-conflicts.html">Chapter 7</a>, you resolved a merge conflict on GitHub.com using the web editor. The same markers appeared there. On Day 2, you will resolve conflicts in VS Code, where the editor highlights the markers and offers buttons to accept one side or the other.</p>
+</blockquote>
+<h3 id="why-conflicts-are-normal">Why conflicts are normal</h3>
+<p>Conflicts are not mistakes. They happen in every project where more than one person works at the same time. The fact that Git stops and asks is a safety feature -- it prevents data loss by never silently choosing one version over another.</p>
+<h3 id="learning-cards-merge-conflicts">Learning Cards: Merge Conflicts</h3>
+<details>
+<summary>Screen reader users</summary>
+
+<ul>
+<li>When a conflict occurs, VS Code announces &quot;Merge conflict&quot; and the file appears in Source Control under &quot;Merge Changes&quot; -- navigate with arrow keys</li>
+<li>Use <code>F7</code> in the diff viewer to step through conflict hunks; each hunk announces the line range and both versions of the conflicting text</li>
+<li>After resolving, stage the file (<code>Ctrl+Shift+G</code>, navigate to the file, press <code>+</code>) then commit to complete the merge</li>
+</ul>
+</details>
+
+<details>
+<summary>Low vision users</summary>
+
+<ul>
+<li>Conflict markers (<code>&lt;&lt;&lt;&lt;&lt;&lt;&lt;</code>, <code>=======</code>, <code>&gt;&gt;&gt;&gt;&gt;&gt;&gt;</code>) appear as highlighted blocks in the editor -- look for colored backgrounds (green for current, blue for incoming)</li>
+<li>VS Code places &quot;Accept Current Change&quot;, &quot;Accept Incoming Change&quot;, and &quot;Accept Both&quot; buttons inline above each conflict -- they are large enough to click at high zoom</li>
+<li>Increase editor zoom with <code>Ctrl+=</code> to make the conflict marker labels easier to read</li>
+</ul>
+</details>
+
+<details>
+<summary>Sighted users</summary>
+
+<ul>
+<li>Conflict regions are highlighted with distinct background colors: green for your changes (Current), blue for incoming changes</li>
+<li>Click &quot;Accept Current Change&quot;, &quot;Accept Incoming Change&quot;, or &quot;Accept Both Changes&quot; above each conflict block to resolve with one click</li>
+<li>The Source Control badge shows a merge icon when you are in a merge state -- commit after all conflicts are resolved to complete the merge</li>
+</ul>
+</details>
+
+<hr>
+<h2 id="8-the-git-timeline">8. The Git Timeline</h2>
+<p>Every commit has a parent pointer (except the very first commit). This creates a chain -- a timeline of the project&#39;s history.</p>
+<h3 id="reading-the-timeline">Reading the timeline</h3>
+<p>The timeline reads backward: the most recent commit points to the one before it, which points to the one before that, all the way back to the first commit.</p>
+<pre><code class="hljs language-text">first commit &lt;-- second commit &lt;-- third commit &lt;-- fourth commit (main)</code></pre>
+<p>When you run <code>git log</code>, Git follows these pointers from the current commit backward and shows you each commit&#39;s message, author, date, and hash.</p>
+<h3 id="branching-creates-parallel-timelines">Branching creates parallel timelines</h3>
+<p>When two branches diverge (both have commits that the other does not), the timeline splits into two parallel paths:</p>
+<pre><code class="hljs language-text">                  +-- commit E -- commit F (fix/typo)
+                 /
+commit A -- commit B -- commit C -- commit D (main)</code></pre>
+<p>Both branches share commits A and B (their common history). After the split point, each branch has its own commits.</p>
+<h3 id="merging-reconnects-timelines">Merging reconnects timelines</h3>
+<p>When you merge <code>fix/typo</code> into <code>main</code>, Git creates a new merge commit that has two parents: the latest commit on <code>main</code> and the latest commit on <code>fix/typo</code>. The two timelines join back together.</p>
+<pre><code class="hljs language-text">                  +-- commit E -- commit F (fix/typo)
+                 /                          \
+commit A -- B -- C -- D -------- merge commit G (main)</code></pre>
+<p>After merging, <code>main</code> contains all the changes from both branches.</p>
+<blockquote>
+<p><strong>Screen reader note:</strong> The text diagrams in this section show commit history as a horizontal chain reading left to right. Branch points are shown with <code>+--</code> and merge points are shown with <code>\</code>. The key information is: branches diverge from a common ancestor commit and merge back together with a merge commit.</p>
+</blockquote>
+<hr>
+<h2 id="9-putting-it-all-together">9. Putting It All Together</h2>
+<p>Here is the complete workflow that you will practice in <a href="14-git-in-practice.html">Chapter 14</a>, translated through the mental model:</p>
+<table>
+<thead>
+<tr>
+<th scope="col">Step</th>
+<th scope="col">What you do</th>
+<th scope="col">What Git does</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Clone the repo</td>
+<td><code>git clone URL</code></td>
+<td>Copies the entire remote repository to your computer</td>
+</tr>
+<tr>
+<td>Create a branch</td>
+<td><code>git checkout -b fix/typo</code></td>
+<td>Creates a new pointer at your current commit and switches HEAD to it</td>
+</tr>
+<tr>
+<td>Edit a file</td>
+<td>Open and modify the file</td>
+<td>Git detects the change in the working directory</td>
+</tr>
+<tr>
+<td>Stage the change</td>
+<td><code>git add file.md</code></td>
+<td>Moves the change from the working directory to the staging area</td>
+</tr>
+<tr>
+<td>Commit</td>
+<td><code>git commit -m &quot;Fix typo&quot;</code></td>
+<td>Takes a snapshot of the staging area and stores it in the repository</td>
+</tr>
+<tr>
+<td>Push</td>
+<td><code>git push -u origin fix/typo</code></td>
+<td>Sends your commit to the remote repository on GitHub</td>
+</tr>
+<tr>
+<td>Open a PR</td>
+<td>On GitHub.com</td>
+<td>Proposes merging your branch into main</td>
+</tr>
+<tr>
+<td>Merge</td>
+<td>PR merged on GitHub.com</td>
+<td>Creates a merge commit that joins your branch back into main</td>
+</tr>
+<tr>
+<td>Pull</td>
+<td><code>git pull origin main</code></td>
+<td>Downloads the merge commit to your local copy</td>
+</tr>
+</tbody></table>
+<p>Everything in this table maps directly to the three areas (Section 2), the two copies (Section 5), and the timeline (Section 8).</p>
+<h3 id="quick-mental-model-checklist">Quick mental model checklist</h3>
+<p>Before running a Git command, ask yourself:</p>
+<ul>
+<li><strong>Where am I?</strong> Which branch is HEAD on? (<code>git status</code> tells you)</li>
+<li><strong>What has changed?</strong> Are there modifications in the working directory? Staged changes? (<code>git status</code> tells you)</li>
+<li><strong>Which direction?</strong> Am I pushing (local to remote) or pulling (remote to local)?</li>
+<li><strong>What could conflict?</strong> Has anyone else changed the same files on the same branch?</li>
+</ul>
+<p>If you can answer these four questions, you can troubleshoot almost any Git situation.</p>
+<hr>
+<h2 id="10-if-you-get-stuck">10. If You Get Stuck</h2>
+<table>
+<thead>
+<tr>
+<th scope="col">Situation</th>
+<th scope="col">What to do</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>&quot;I do not understand which area my file is in&quot;</td>
+<td>Run <code>git status</code>. It lists files in each area with clear labels (modified, staged, untracked).</td>
+</tr>
+<tr>
+<td>&quot;I committed to the wrong branch&quot;</td>
+<td>Do not panic. The commit is safe. See <a href="appendix-e-advanced-git.html">Appendix E</a> for how to move commits between branches.</td>
+</tr>
+<tr>
+<td>&quot;I pushed something I did not mean to push&quot;</td>
+<td>The remote now has your commit. You can revert it with a new commit. Never force-push on a shared branch without coordination.</td>
+</tr>
+<tr>
+<td>&quot;I have merge conflict markers and do not know what to do&quot;</td>
+<td>Go to <a href="07-merge-conflicts.html">Chapter 7</a> for step-by-step resolution. The key rule: delete all markers, keep the text you want, stage, and commit.</td>
+</tr>
+<tr>
+<td>&quot;Git says my branch is behind the remote&quot;</td>
+<td>Run <code>git pull</code> to download the new commits. If there are conflicts, resolve them.</td>
+</tr>
+<tr>
+<td>&quot;I do not understand the error message&quot;</td>
+<td>Copy the exact error text and search for it. The <a href="https://git-scm.com/book/en/v2">Pro Git book troubleshooting section</a> and <a href="https://stackoverflow.com/questions/tagged/git">Stack Overflow</a> both have clear explanations.</td>
+</tr>
+</tbody></table>
+<hr>
+<p><em>Next: <a href="14-git-in-practice.html">Chapter 14: Git in Practice</a></em><br><em>Back: <a href="12-vscode-accessibility.html">Chapter 12: VS Code Accessibility</a></em><br><em>Related appendices: <a href="appendix-e-advanced-git.html">Appendix E: Advanced Git</a> | <a href="appendix-d-git-authentication.html">Appendix D: Git Authentication</a></em></p>
+
+  </main>
+  <footer role="contentinfo" class="site-footer">
+    <p><strong>GIT Going with GitHub</strong> - A workshop by <a href="https://community-access.org">Community Access</a></p>
+    <p><a href="https://github.com/community-access/git-going-with-github">View on GitHub</a> · <a href="https://community-access.org">community-access.org</a></p>
+  </footer>
+
+  </body>
+</html>

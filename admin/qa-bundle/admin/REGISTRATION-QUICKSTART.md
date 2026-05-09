@@ -65,6 +65,14 @@ If anything behaves unexpectedly, disable classroom API automation without stopp
 
 The registration workflow will continue standard confirmation, capacity checks, and CSV export.
 
+## Full Support Reset (When Needed)
+
+If support environment drift is detected, rebuild support hub baseline:
+
+```powershell
+scripts/classroom/Reset-SupportHubEnvironment.ps1
+```
+
 ## Day-Of Operations
 
 1. Keep [REGISTRATION-ADMIN.md](REGISTRATION-ADMIN.md) open.

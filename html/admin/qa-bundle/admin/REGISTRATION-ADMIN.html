@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="GIT Going with GitHub - A two-day accessible open source workshop by Community Access">
+  <title>Registration Administration Guide - GIT Going with GitHub</title>
+  <link rel="stylesheet" href="./styles/github-markdown.css">
+  <link rel="stylesheet" href="./styles/highlight.css">
+  <link rel="stylesheet" href="./styles/custom.css">
+  <style>
+    .markdown-body {
+      box-sizing: border-box;
+      min-width: 200px;
+      max-width: 980px;
+      margin: 0 auto;
+      padding: 45px;
+    }
+    @media (max-width: 767px) {
+      .markdown-body {
+        padding: 15px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+  <header class="site-header" role="banner">
+    <div class="site-header-inner">
+      <nav aria-label="Breadcrumb" class="breadcrumb">
+        <a href="./index.html">Home</a> <span aria-hidden="true">›</span> <span aria-current="page">Registration Administration Guide</span>
+      </nav>
+      <div class="header-actions">
+        <a href="https://github.com/Community-Access/git-going-with-github/wiki" class="wiki-link" target="_blank" rel="noopener noreferrer">
+          <svg aria-hidden="true" focusable="false" width="16" height="16" viewBox="0 0 16 16" fill="currentColor">
+            <path d="M1.75 1h8.5c.966 0 1.75.784 1.75 1.75v5.5A1.75 1.75 0 0 1 10.25 10H7.06l-2.573 2.573A1.458 1.458 0 0 1 2 11.543V10h-.25A1.75 1.75 0 0 1 0 8.25v-5.5C0 1.784.784 1 1.75 1ZM1.5 2.75v5.5c0 .138.112.25.25.25h1a.75.75 0 0 1 .75.75v2.19l2.72-2.72a.749.749 0 0 1 .53-.22h3.5a.25.25 0 0 0 .25-.25v-5.5a.25.25 0 0 0-.25-.25h-8.5a.25.25 0 0 0-.25.25Zm13 2a.25.25 0 0 0-.25-.25h-.5a.75.75 0 0 1 0-1.5h.5c.966 0 1.75.784 1.75 1.75v5.5A1.75 1.75 0 0 1 14.25 12H14v1.543a1.457 1.457 0 0 1-2.487 1.03L9.22 12.28a.749.749 0 1 1 1.06-1.06l2.22 2.22v-2.19a.75.75 0 0 1 .75-.75h.25a.25.25 0 0 0 .25-.25v-5.5Z"/>
+          </svg>
+          Wiki
+        </a>
+        <form role="search" class="search-form" action="./search.html" method="get">
+        <label for="site-search" class="search-label">Search docs</label>
+        <input
+          type="search"
+          id="site-search"
+          class="search-input"
+          name="q"
+          placeholder="Search docs…"
+          autocomplete="off"
+          aria-label="Search documentation"
+        >
+        <button type="submit" class="search-button" aria-label="Submit search">
+          <svg aria-hidden="true" focusable="false" width="16" height="16" viewBox="0 0 16 16" fill="currentColor">
+            <path d="M10.68 11.74a6 6 0 0 1-7.922-8.982 6 6 0 0 1 8.982 7.922l3.04 3.04a.749.749 0 0 1-.326 1.275.749.749 0 0 1-.734-.215ZM11.5 7a4.499 4.499 0 1 0-8.997 0A4.499 4.499 0 0 0 11.5 7Z"/>
+          </svg>
+        </button>
+      </form>
+      </div>
+    </div>
+  </header>
+  <main id="main-content" class="markdown-body">
+    <h1 id="registration-administration-guide">Registration Administration Guide</h1>
+<p>This document explains how the registration system works and how to manage it, including optional API-based classroom invitation automation.</p>
+<p>If you just need implementation steps, start with <a href="REGISTRATION-QUICKSTART.html">REGISTRATION-QUICKSTART.md</a>.</p>
+<h2 id="how-registration-tracking-works">How Registration Tracking Works</h2>
+<h3 id="registration-count-website">Registration Count (Website)</h3>
+<p>The registration page at <code>REGISTER.html</code> queries the GitHub Search API in real time every time a visitor loads the page. It counts open issues with the <code>registration</code> label. No CSV or local data is involved.</p>
+<h3 id="capacity-check-workflow">Capacity Check (Workflow)</h3>
+<p>When someone submits a registration issue, the GitHub Actions workflow queries all issues labeled <code>registration</code> and counts unique GitHub usernames. If the count is at or above 75, the registrant is placed on the waitlist instead.</p>
+<h3 id="optional-classroom-api-automation">Optional Classroom API Automation</h3>
+<p>When configured, the registration workflow can also:</p>
+<ul>
+<li>Check whether the registrant is already in the classroom organization</li>
+<li>Send an organization invitation if needed</li>
+<li>Include Day 1 and Day 2 GitHub Classroom assignment links in the welcome comment</li>
+</ul>
+<p>Important: This does not bypass GitHub Classroom acceptance. Students still must click the assignment link and accept.</p>
+<h2 id="full-api-setup-classroom-automation">Full API Setup (Classroom Automation)</h2>
+<p>Use these steps to enable end-to-end registration plus classroom invitation flow.</p>
+<h3 id="1-create-an-admin-token-for-organization-invites">1. Create an admin token for organization invites</h3>
+<p>Create a GitHub personal access token for a facilitator/admin account with permission to manage organization invitations.</p>
+<p>Recommended minimum permissions:</p>
+<ul>
+<li>Organization administration permissions sufficient to create invitations</li>
+<li>Repository read access for this repository</li>
+</ul>
+<p>Store this token securely. Do not commit it to the repository.</p>
+<h3 id="2-add-repository-secret">2. Add repository secret</h3>
+<p>In repository settings, add this secret:</p>
+<ul>
+<li><code>CLASSROOM_ORG_ADMIN_TOKEN</code> = token from Step 1</li>
+</ul>
+<h3 id="3-add-repository-variables">3. Add repository variables</h3>
+<p>In repository settings, add these variables:</p>
+<ul>
+<li><code>CLASSROOM_ORG</code> = your classroom org name (example: <code>Community-Access-Classroom</code>)</li>
+<li><code>CLASSROOM_DAY1_ASSIGNMENT_URL</code> = Day 1 Classroom invite URL</li>
+<li><code>CLASSROOM_DAY2_ASSIGNMENT_URL</code> = Day 2 Classroom invite URL</li>
+</ul>
+<p>If you omit these variables/secrets, registration still works; only the classroom automation steps are skipped.</p>
+<h3 id="4-confirm-workflow-behavior">4. Confirm workflow behavior</h3>
+<p>After setup, successful non-duplicate registrations should produce:</p>
+<ol>
+<li>Standard registration confirmation logic (registration label and capacity handling)</li>
+<li>Organization invite status handling:<ul>
+<li><code>invited</code> (new invite sent)</li>
+<li><code>already-invited</code> (pending invite exists)</li>
+<li><code>already-member</code> (user already in org)</li>
+</ul>
+</li>
+<li>Welcome comment including classroom assignment links (if configured)</li>
+</ol>
+<h3 id="5-end-to-end-test-checklist">5. End-to-end test checklist</h3>
+<p>Run this once before opening registration publicly:</p>
+<ol>
+<li>Submit a test registration issue from a non-member test account.</li>
+<li>Verify an org invitation is sent.</li>
+<li>Verify Day 1/Day 2 assignment links appear in the welcome comment.</li>
+<li>Accept org invite from the test account.</li>
+<li>Accept Day 1 assignment link from the test account.</li>
+<li>Confirm private classroom repo is created.</li>
+<li>Submit a second registration from the same account and confirm duplicate handling.</li>
+</ol>
+<h3 id="6-operational-notes">6. Operational notes</h3>
+<ul>
+<li>The automation runs only when capacity is available and the registration is not a duplicate.</li>
+<li>Waitlisted users are not invited automatically by this workflow.</li>
+<li>Assignment acceptance remains student-driven in GitHub Classroom.</li>
+</ul>
+<h3 id="7-rollback-plan">7. Rollback plan</h3>
+<p>If invitation automation causes issues:</p>
+<ol>
+<li>Remove <code>CLASSROOM_ORG_ADMIN_TOKEN</code> secret (fastest stop switch), or</li>
+<li>Clear <code>CLASSROOM_ORG</code> variable.</li>
+</ol>
+<p>Registration confirmations and CSV export continue to function without classroom API steps.</p>
+<h3 id="csv-export">CSV Export</h3>
+<p>The CSV is a convenience export for reviewing registrations in spreadsheet form. It is regenerated from scratch (from the issues) every time someone registers or when the workflow is manually triggered. The issues are the source of truth, not the CSV.</p>
+<p>The CSV is uploaded as a <strong>workflow artifact</strong> (retained for 90 days) and is only accessible to repository collaborators. It is not committed to the repository.</p>
+<h2 id="downloading-the-csv">Downloading the CSV</h2>
+<h3 id="using-the-github-cli">Using the GitHub CLI</h3>
+<p>Download the latest registration CSV:</p>
+<pre><code class="hljs language-powershell">gh run download <span class="hljs-literal">--name</span> registrations <span class="hljs-literal">--dir</span> ./registrations <span class="hljs-literal">-R</span> community<span class="hljs-literal">-access</span>/git<span class="hljs-literal">-going-with-github</span></code></pre>
+<p>List recent workflow runs first to pick a specific one:</p>
+<pre><code class="hljs language-powershell">gh run list <span class="hljs-literal">--workflow</span>=registration.yml <span class="hljs-literal">-R</span> community<span class="hljs-literal">-access</span>/git<span class="hljs-literal">-going-with-github</span>
+gh run download &lt;run<span class="hljs-literal">-id</span>&gt; <span class="hljs-literal">--name</span> registrations <span class="hljs-literal">--dir</span> ./registrations <span class="hljs-literal">-R</span> community<span class="hljs-literal">-access</span>/git<span class="hljs-literal">-going-with-github</span></code></pre>
+<h3 id="using-the-github-web-ui">Using the GitHub Web UI</h3>
+<ol>
+<li>Go to the repository on GitHub</li>
+<li>Click the <strong>Actions</strong> tab</li>
+<li>Click a <strong>Registration - Welcome &amp; CSV Export</strong> workflow run</li>
+<li>Scroll down to the <strong>Artifacts</strong> section</li>
+<li>Click <strong>registrations</strong> to download the CSV</li>
+</ol>
+<h2 id="regenerating-the-csv-on-demand">Regenerating the CSV On Demand</h2>
+<p>To rebuild the CSV from all current registration issues (e.g., right before the workshop):</p>
+<pre><code class="hljs language-powershell">gh workflow run registration.yml <span class="hljs-literal">-R</span> community<span class="hljs-literal">-access</span>/git<span class="hljs-literal">-going-with-github</span></code></pre>
+<p>This triggers the <code>workflow_dispatch</code> event, which rebuilds the CSV from all registration issues and uploads a fresh artifact.</p>
+<h2 id="registration-scenarios">Registration Scenarios</h2>
+<p>The workflow handles three scenarios when someone submits a registration issue:</p>
+<h3 id="1-new-registration-spots-available">1. New Registration (Spots Available)</h3>
+<ul>
+<li>Posts a welcome comment confirming registration</li>
+<li>Adds the <code>registration</code> label</li>
+<li>Optionally sends a classroom organization invitation</li>
+<li>Optionally includes Day 1 and Day 2 assignment links in the welcome comment</li>
+<li>Exports updated CSV as a workflow artifact</li>
+</ul>
+<h3 id="2-duplicate-registration">2. Duplicate Registration</h3>
+<ul>
+<li>Detects the user already has a prior registration issue</li>
+<li>Posts a friendly message pointing to their original issue</li>
+<li>Labels the issue <code>duplicate</code> and closes it</li>
+</ul>
+<h3 id="3-registration-full-75-registrants">3. Registration Full (75+ Registrants)</h3>
+<ul>
+<li>Posts a message explaining registration is full</li>
+<li>Labels the issue <code>waitlist</code> (keeps it open for future notification)</li>
+<li>The registration page automatically switches to waitlist mode via JavaScript</li>
+</ul>
+<h2 id="labels-used">Labels Used</h2>
+<table>
+<thead>
+<tr>
+<th scope="col">Label</th>
+<th scope="col">Color</th>
+<th scope="col">Purpose</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>registration</code></td>
+<td>Default</td>
+<td>Applied to confirmed registrations</td>
+</tr>
+<tr>
+<td><code>duplicate</code></td>
+<td>Gray (#cfd3d7)</td>
+<td>Applied to duplicate registration attempts</td>
+</tr>
+<tr>
+<td><code>waitlist</code></td>
+<td>Yellow (#FBCA04)</td>
+<td>Applied when capacity is full</td>
+</tr>
+</tbody></table>
+<h2 id="privacy-notes">Privacy Notes</h2>
+<ul>
+<li>The CSV contains personal information (names, emails) and is stored only as a workflow artifact, not in the repository</li>
+<li>A previous version of the CSV was committed to git history at commit <code>559ca5f</code>. It remains accessible through git history but is no longer present in the current branch</li>
+<li>Registration issues themselves are publicly visible since this is a public repository</li>
+<li>The <code>.gitignore</code> file excludes <code>.github/data/</code> to prevent accidental commits of registration data</li>
+<li>Private student-success exports and facilitator follow-up notes belong in the private <code>Community-Access/git-going-student-success</code> repository, not in this public curriculum repository</li>
+<li>The classroom roster sync file (<code>.github/data/student-roster.json</code>) intentionally stores non-PII operational data only</li>
+</ul>
+
+  </main>
+  <footer role="contentinfo" class="site-footer">
+    <p><strong>GIT Going with GitHub</strong> - A workshop by <a href="https://community-access.org">Community Access</a></p>
+    <p><a href="https://github.com/community-access/git-going-with-github">View on GitHub</a> · <a href="https://community-access.org">community-access.org</a></p>
+  </footer>
+
+  </body>
+</html>

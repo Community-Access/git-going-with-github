@@ -48,6 +48,7 @@ The following table lists the source files this runbook consolidates.
 | Student starting path | [docs/get-going.md](../docs/get-going.md) |
 | Grading criteria | [classroom/grading-guide.md](../classroom/grading-guide.md) |
 | Release gate baseline | [GO-LIVE-QA-GUIDE.md](../GO-LIVE-QA-GUIDE.md) |
+| Support hub operations | [SUPPORT_HUB_OPERATIONS.md](SUPPORT_HUB_OPERATIONS.md) |
 
 ## Required Accounts, Access, and Tools
 
@@ -82,6 +83,10 @@ Complete all items below before any cohort launch actions.
 - [x] Registration entry configuration exists and is valid:
    - [x] Issue form template `workshop-registration.yml` exists
    - [x] Required labels exist: `registration`, `duplicate`, `waitlist`
+- [ ] Support hub is ready for student onboarding:
+   - [ ] `Community-Access/git-going-open-support` is public and reachable
+   - [ ] Issues and Discussions are enabled
+   - [ ] Support labels and templates are present
 - [ ] While signed in as `accesswatch`, opening [classroom.github.com](https://classroom.github.com) shows the `Community-Access-Classroom` classroom organization.
 
 If any precondition fails, stop and resolve before proceeding.
@@ -511,6 +516,19 @@ Pass criteria:
 - Registration link opens correctly.
 - Registration issue title is prefilled with `[REGISTER]`.
 - Public visibility warning is present.
+- Support links point to `Community-Access/git-going-open-support` issues/discussions.
+
+### Step 1.1 Verify support hub onboarding path
+
+1. Open `Community-Access/git-going-open-support` and confirm Issues and Discussions are enabled.
+2. Confirm pinned Start Here onboarding guidance exists in Discussions.
+3. Open a test support issue using a template and confirm triage labels apply.
+
+Pass criteria:
+
+- Support hub is reachable and public.
+- Onboarding path is discoverable for students.
+- Template-driven support issue flow works.
 
 ### Step 2. Configure registration automation for classroom handoff
 
@@ -1538,6 +1556,7 @@ The following scripts in `scripts/classroom/` are used by this runbook. Run each
 | `Seed-PeerSimulation.ps1` | Seed peer simulation issues and PR in a student repository | Fully automated |
 | `Restore-LearningRoomFiles.ps1` | Restore baseline files into a student repo via recovery branch and PR | Fully automated |
 | `Invoke-LearningRoomEndToEndTest.ps1` | Full end-to-end scripted QA harness | Fully automated |
+| `Reset-SupportHubEnvironment.ps1` | Rebuild support hub repository labels, settings, and baseline support automation | Fully automated |
 
 ## GitHub API Limitations
 

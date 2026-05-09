@@ -11,6 +11,21 @@ This guide defines how we run the open, post-workshop support repository for GIT
 
 This repository does not replace curriculum source repositories. It routes support traffic away from curriculum maintenance and keeps student support visible and searchable.
 
+## Student Onboarding Model (Rich Path)
+
+Use this onboarding flow for every new cohort:
+
+1. Share Support Hub URL in registration confirmation and Day 2 close-out.
+2. Ask students to read pinned Start Here content in Discussions.
+3. Ask students to post one introduction in Discussions and one support request using templates if blocked.
+4. Point students to labels and categories so they can self-route requests.
+
+Onboarding success criteria:
+
+- Students can explain the difference between support issues and discussions.
+- Students can open a support issue with reproducible steps.
+- Students can find and follow a resolved discussion thread.
+
 ## What Belongs In Support Hub
 
 Use Support Hub for:
@@ -79,3 +94,19 @@ Routing:
 - [ ] Facilitator guides reference Support Hub as the alumni channel.
 - [ ] `docs/21-next-steps.md` points learners to Support Hub.
 - [ ] Go-live checklist includes Support Hub readiness.
+- [ ] Podcast scripts/transcripts reference Support Hub as the default help path.
+
+## Reset And Rebuild (From Scratch)
+
+If the support environment drifts or needs a hard reset, run:
+
+```powershell
+scripts/classroom/Reset-SupportHubEnvironment.ps1
+```
+
+This script re-applies repository baseline setup:
+
+- Repository existence and visibility
+- Issues and Discussions enabled
+- Support label taxonomy
+- Baseline support files and bot workflows

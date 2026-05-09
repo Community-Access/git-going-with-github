@@ -1,6 +1,6 @@
 # GIT Going with GitHub
 
-[License: CC BY 4.0](https://creativecommons.org/licenses/by/4.0/) | [View Site](https://community-access.org/git-going-with-github/) | [Full Curriculum](https://community-access.org/git-going-with-github/docs/course-guide.html) | [Discussion Forum](https://github.com/community-access/git-going-with-github/discussions)
+[License: CC BY 4.0](https://creativecommons.org/licenses/by/4.0/) | [View Site](https://community-access.org/git-going-with-github/) | [Full Curriculum](https://community-access.org/git-going-with-github/docs/course-guide.html) | [Support Hub](https://github.com/Community-Access/git-going-open-support)
 
 ## You Belong in Open Source. Let Us Show You the Door.
 
@@ -26,7 +26,7 @@ Sponsored by [Community Access](https://community-access.org) in partnership wit
 > **Want to join a future cohort?** Use the [**Student Opt-In page**](https://community-access.org/git-going-with-github/REGISTER.html). It feeds directly into our automated registration and waitlist workflow.
 
 
-> **Join the conversation!** Have a question before the workshop? Want to connect with other participants? Head to our [**Discussion Forum**](https://github.com/community-access/git-going-with-github/discussions) - introduce yourself, ask questions, and start building your network before Day 1.
+> **Join the conversation!** Have a question before the workshop? Want to connect with other participants? Head to our [**Support Hub Discussions**](https://github.com/Community-Access/git-going-open-support/discussions) - introduce yourself, ask questions, and start building your network before Day 1.
 
 
 > **Already registered?** Complete the [**Pre-Workshop Setup Guide**](https://community-access.org/git-going-with-github/docs/00-pre-workshop-setup.html) before the workshop. It walks you through every step - GitHub account, screen reader configuration, [VS Code](https://code.visualstudio.com/), and [GitHub Copilot](https://github.com/features/copilot) - with instructions for NVDA, JAWS, and VoiceOver. Get set up early so Day 1 starts with learning, not troubleshooting.
@@ -236,8 +236,8 @@ No. The workshop, all software, and all materials are free.
 
 ## Questions?
 
-- **Discussion Forum:** [Join the conversation](https://github.com/community-access/git-going-with-github/discussions) - ask questions, connect with fellow participants, and share ideas
-- **File an issue:** [workshop repository](https://github.com/community-access/git-going-with-github/issues) - yes, even before the workshop starts. That counts as practice.
+- **Support Hub Discussions:** [Join the conversation](https://github.com/Community-Access/git-going-open-support/discussions) - ask questions, connect with fellow participants, and share ideas
+- **File a support issue:** [support repository](https://github.com/Community-Access/git-going-open-support/issues) - yes, even before the workshop starts. That counts as practice.
 - **Community:** [GitHub Accessibility Discussions](https://github.com/orgs/community/discussions/categories/accessibility)
 
 

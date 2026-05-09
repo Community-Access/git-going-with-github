@@ -1,0 +1,1901 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="GIT Going with GitHub - A two-day accessible open source workshop by Community Access">
+  <title>Appendix G: VS Code Accessibility Reference - GIT Going with GitHub</title>
+  <link rel="stylesheet" href="./styles/github-markdown.css">
+  <link rel="stylesheet" href="./styles/highlight.css">
+  <link rel="stylesheet" href="./styles/custom.css">
+  <style>
+    .markdown-body {
+      box-sizing: border-box;
+      min-width: 200px;
+      max-width: 980px;
+      margin: 0 auto;
+      padding: 45px;
+    }
+    @media (max-width: 767px) {
+      .markdown-body {
+        padding: 15px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+  <header class="site-header" role="banner">
+    <div class="site-header-inner">
+      <nav aria-label="Breadcrumb" class="breadcrumb">
+        <a href="./index.html">Home</a> <span aria-hidden="true">›</span> <span aria-current="page">Appendix G: VS Code Accessibility Reference</span>
+      </nav>
+      <div class="header-actions">
+        <a href="https://github.com/Community-Access/git-going-with-github/wiki" class="wiki-link" target="_blank" rel="noopener noreferrer">
+          <svg aria-hidden="true" focusable="false" width="16" height="16" viewBox="0 0 16 16" fill="currentColor">
+            <path d="M1.75 1h8.5c.966 0 1.75.784 1.75 1.75v5.5A1.75 1.75 0 0 1 10.25 10H7.06l-2.573 2.573A1.458 1.458 0 0 1 2 11.543V10h-.25A1.75 1.75 0 0 1 0 8.25v-5.5C0 1.784.784 1 1.75 1ZM1.5 2.75v5.5c0 .138.112.25.25.25h1a.75.75 0 0 1 .75.75v2.19l2.72-2.72a.749.749 0 0 1 .53-.22h3.5a.25.25 0 0 0 .25-.25v-5.5a.25.25 0 0 0-.25-.25h-8.5a.25.25 0 0 0-.25.25Zm13 2a.25.25 0 0 0-.25-.25h-.5a.75.75 0 0 1 0-1.5h.5c.966 0 1.75.784 1.75 1.75v5.5A1.75 1.75 0 0 1 14.25 12H14v1.543a1.457 1.457 0 0 1-2.487 1.03L9.22 12.28a.749.749 0 1 1 1.06-1.06l2.22 2.22v-2.19a.75.75 0 0 1 .75-.75h.25a.25.25 0 0 0 .25-.25v-5.5Z"/>
+          </svg>
+          Wiki
+        </a>
+        <form role="search" class="search-form" action="./search.html" method="get">
+        <label for="site-search" class="search-label">Search docs</label>
+        <input
+          type="search"
+          id="site-search"
+          class="search-input"
+          name="q"
+          placeholder="Search docs…"
+          autocomplete="off"
+          aria-label="Search documentation"
+        >
+        <button type="submit" class="search-button" aria-label="Submit search">
+          <svg aria-hidden="true" focusable="false" width="16" height="16" viewBox="0 0 16 16" fill="currentColor">
+            <path d="M10.68 11.74a6 6 0 0 1-7.922-8.982 6 6 0 0 1 8.982 7.922l3.04 3.04a.749.749 0 0 1-.326 1.275.749.749 0 0 1-.734-.215ZM11.5 7a4.499 4.499 0 1 0-8.997 0A4.499 4.499 0 0 0 11.5 7Z"/>
+          </svg>
+        </button>
+      </form>
+      </div>
+    </div>
+  </header>
+  <main id="main-content" class="markdown-body">
+    <h1 id="appendix-g-vs-code-accessibility-reference">Appendix G: VS Code Accessibility Reference</h1>
+<blockquote>
+<p><strong>Listen to Episode 30:</strong> <a href="../admin/PODCASTS.html">VS Code Accessibility Reference</a> - a conversational audio overview of this chapter. Listen before reading to preview the concepts, or after to reinforce what you learned.</p>
+</blockquote>
+<blockquote>
+<p><strong>Reference companion to:</strong> <a href="11-vscode-interface.html">Chapter 11: VS Code Interface</a> | Also relevant: <a href="12-vscode-accessibility.html">Chapter 12</a></p>
+<p><strong>Authoritative source:</strong> <a href="https://code.visualstudio.com/docs/editor/accessibility">VS Code Docs: Accessibility</a></p>
+</blockquote>
+<h2 id="complete-technical-reference-for-screen-reader-users">Complete Technical Reference for Screen Reader Users</h2>
+<blockquote>
+<p><strong>Purpose:</strong> This appendix provides comprehensive technical documentation for all VS Code accessibility features, settings, and keyboard shortcuts. The main chapters cover essentials; this appendix is your complete reference manual.</p>
+<p><strong>Referenced by:</strong> <a href="11-vscode-interface.html">VS Code Setup &amp; Accessibility Basics</a>, <a href="16-github-copilot.html">GitHub Copilot</a></p>
+</blockquote>
+<h3 id="learning-cards-vs-code-accessibility-reference-overview">Learning Cards: VS Code Accessibility Reference Overview</h3>
+<details>
+<summary>Screen reader users</summary>
+
+<ul>
+<li>This appendix is your lookup manual -- use <code>Ctrl+G</code> (Go to Line) or <code>Ctrl+Shift+O</code> (Go to Symbol) to jump directly to a setting name</li>
+<li>Every table is structured with headers; use <code>T</code> in browse mode to jump between tables, then arrow through rows</li>
+<li>Bookmark this file in VS Code (<code>Ctrl+K Ctrl+K</code>) so you can return instantly when you need a setting path</li>
+</ul>
+</details>
+
+<details>
+<summary>Low vision users</summary>
+
+<ul>
+<li>Increase editor font size (<code>Ctrl+=</code>) before scanning the long settings tables -- column values are easier to compare at larger sizes</li>
+<li>Use the Minimap (if sighted enough) or breadcrumbs bar to orient within this large reference file</li>
+<li>High-contrast themes make the table grid lines and code spans easier to distinguish from body text</li>
+</ul>
+</details>
+
+<details>
+<summary>Sighted users</summary>
+
+<ul>
+<li>The Table of Contents links jump directly to each section -- click any link to scroll there instantly</li>
+<li>Use <code>Ctrl+Shift+O</code> to open the outline view and see all 7 sections as a navigable list</li>
+<li>The settings tables use consistent columns (Setting Path, Values, Default, Description) -- scan the Default column to see what changes from your current setup</li>
+</ul>
+</details>
+
+
+<h2 id="table-of-contents">Table of Contents</h2>
+<ol>
+<li><a href="#1-complete-accessibility-settings-reference">Complete Accessibility Settings Reference</a></li>
+<li><a href="#2-audio-cues---all-options">Audio Cues - All Options</a></li>
+<li><a href="#3-accessible-diff-viewer---complete-guide">Accessible Diff Viewer - Complete Guide</a></li>
+<li><a href="#4-screen-reader-specific-configurations">Screen Reader-Specific Configurations</a></li>
+<li><a href="#5-complete-keyboard-shortcuts">Complete Keyboard Shortcuts</a></li>
+<li><a href="#6-accessibility-signals-types-and-customization">Accessibility Signals Types and Customization</a></li>
+<li><a href="#7-settingsjson-configuration-examples">Settings.json Configuration Examples</a></li>
+</ol>
+<h2 id="1-complete-accessibility-settings-reference">1. Complete Accessibility Settings Reference</h2>
+<p>All settings can be accessed via Settings UI (<code>Ctrl+,</code>) or by editing <code>settings.json</code> directly (<code>Ctrl+Shift+P</code> → &quot;Open User Settings JSON&quot;).</p>
+<h3 id="core-accessibility-settings">Core Accessibility Settings</h3>
+<table>
+<thead>
+<tr>
+<th scope="col">Setting Path</th>
+<th scope="col">Values</th>
+<th scope="col">Default</th>
+<th scope="col">Description</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>editor.accessibilitySupport</code></td>
+<td><code>auto</code>, <code>on</code>, <code>off</code></td>
+<td><code>auto</code></td>
+<td>Enables screen reader optimizations. <code>auto</code> detects NVDA/JAWS/VoiceOver. Set to <code>on</code> to force.</td>
+</tr>
+<tr>
+<td><code>editor.accessibilityPageSize</code></td>
+<td>number (lines)</td>
+<td><code>10</code></td>
+<td>Number of lines to read when using Page Up/Down in screen reader mode</td>
+</tr>
+<tr>
+<td><code>editor.guides.bracketPairs</code></td>
+<td>boolean</td>
+<td><code>false</code></td>
+<td>Shows bracket pair guides. Disable for screen readers (visual only).</td>
+</tr>
+<tr>
+<td><code>editor.guides.bracketPairsHorizontal</code></td>
+<td>boolean</td>
+<td><code>false</code></td>
+<td>Shows horizontal bracket guides. Disable for screen readers.</td>
+</tr>
+<tr>
+<td><code>editor.guides.highlightActiveBracketPair</code></td>
+<td>boolean</td>
+<td><code>true</code></td>
+<td>Highlights matching brackets. Not announced by screen readers.</td>
+</tr>
+<tr>
+<td><code>editor.guides.highlightActiveIndentation</code></td>
+<td>boolean</td>
+<td><code>true</code></td>
+<td>Highlights active indentation. Visual only.</td>
+</tr>
+<tr>
+<td><code>editor.guides.indentation</code></td>
+<td>boolean</td>
+<td><code>true</code></td>
+<td>Shows indentation guides. Not useful for screen readers.</td>
+</tr>
+<tr>
+<td><code>editor.hover.enabled</code></td>
+<td>boolean</td>
+<td><code>true</code></td>
+<td>Enables hover popups. Use <code>Alt+F2</code> (Accessible View) to read hover content.</td>
+</tr>
+<tr>
+<td><code>editor.minimap.enabled</code></td>
+<td>boolean</td>
+<td><code>true</code></td>
+<td>Shows visual minimap. <strong>Recommended:</strong> Set to <code>false</code> for screen readers.</td>
+</tr>
+<tr>
+<td><code>editor.occurrencesHighlight</code></td>
+<td>boolean</td>
+<td><code>true</code></td>
+<td>Highlights occurrences of selected text. Visual only.</td>
+</tr>
+<tr>
+<td><code>editor.renderWhitespace</code></td>
+<td><code>none</code>, <code>boundary</code>, <code>selection</code>, <code>trailing</code>, <code>all</code></td>
+<td><code>selection</code></td>
+<td>Shows whitespace characters. <strong>Recommended:</strong> <code>none</code> for screen readers.</td>
+</tr>
+<tr>
+<td><code>editor.wordWrap</code></td>
+<td><code>off</code>, <code>on</code>, <code>wordWrapColumn</code>, <code>bounded</code></td>
+<td><code>off</code></td>
+<td>Wraps long lines. <strong>Recommended:</strong> <code>on</code> for screen readers.</td>
+</tr>
+<tr>
+<td><code>workbench.editor.enablePreview</code></td>
+<td>boolean</td>
+<td><code>true</code></td>
+<td>Opens files in preview mode (single tab). Set to <code>false</code> to always open in new tab.</td>
+</tr>
+</tbody></table>
+<h3 id="diff-and-merge-settings">Diff and Merge Settings</h3>
+<table>
+<thead>
+<tr>
+<th scope="col">Setting Path</th>
+<th scope="col">Values</th>
+<th scope="col">Default</th>
+<th scope="col">Description</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>diffEditor.codeLens</code></td>
+<td>boolean</td>
+<td><code>false</code></td>
+<td>Shows CodeLens in diff view. Visual only.</td>
+</tr>
+<tr>
+<td><code>diffEditor.diffAlgorithm</code></td>
+<td><code>legacy</code>, <code>advanced</code></td>
+<td><code>advanced</code></td>
+<td>Diff calculation method. <code>advanced</code> produces better hunks for screen readers.</td>
+</tr>
+<tr>
+<td><code>diffEditor.ignoreTrimWhitespace</code></td>
+<td>boolean</td>
+<td><code>true</code></td>
+<td>Ignores whitespace changes in diffs. <strong>Recommended:</strong> <code>true</code> to reduce noise.</td>
+</tr>
+<tr>
+<td><code>diffEditor.renderSideBySide</code></td>
+<td>boolean</td>
+<td><code>true</code></td>
+<td>Shows diffs side-by-side. Set to <code>false</code> for inline view (easier for screen readers).</td>
+</tr>
+<tr>
+<td><code>diffEditor.wordWrap</code></td>
+<td><code>off</code>, <code>on</code>, <code>inherit</code></td>
+<td><code>inherit</code></td>
+<td>Word wrap in diff view. <code>on</code> recommended for long lines.</td>
+</tr>
+<tr>
+<td><code>merge-conflict.decorators.enabled</code></td>
+<td>boolean</td>
+<td><code>true</code></td>
+<td>Shows merge conflict decorators. Use Accessible Diff instead (<code>F7</code>).</td>
+</tr>
+</tbody></table>
+<h3 id="terminal-settings">Terminal Settings</h3>
+<table>
+<thead>
+<tr>
+<th scope="col">Setting Path</th>
+<th scope="col">Values</th>
+<th scope="col">Default</th>
+<th scope="col">Description</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>terminal.integrated.accessibleViewFocusesTerminal</code></td>
+<td>boolean</td>
+<td><code>true</code></td>
+<td>Returns focus to terminal after closing Accessible View.</td>
+</tr>
+<tr>
+<td><code>terminal.integrated.accessibleViewPreserveCursorPosition</code></td>
+<td>boolean</td>
+<td><code>false</code></td>
+<td>Preserves cursor position when opening Accessible View.</td>
+</tr>
+<tr>
+<td><code>terminal.integrated.enableBell</code></td>
+<td>boolean</td>
+<td><code>false</code></td>
+<td>Enables terminal bell sound. <strong>Recommended:</strong> <code>true</code> for audio feedback.</td>
+</tr>
+<tr>
+<td><code>terminal.integrated.screenReaderMode</code></td>
+<td><code>auto</code>, <code>on</code>, <code>off</code></td>
+<td><code>auto</code></td>
+<td>Optimizes terminal for screen readers.</td>
+</tr>
+</tbody></table>
+<h3 id="notification-settings">Notification Settings</h3>
+<table>
+<thead>
+<tr>
+<th scope="col">Setting Path</th>
+<th scope="col">Values</th>
+<th scope="col">Default</th>
+<th scope="col">Description</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>accessibility.verbosity.comments</code></td>
+<td>boolean</td>
+<td><code>true</code></td>
+<td>Announces comment threads in code.</td>
+</tr>
+<tr>
+<td><code>accessibility.verbosity.diff-editor</code></td>
+<td>boolean</td>
+<td><code>true</code></td>
+<td>Announces diff editor context.</td>
+</tr>
+<tr>
+<td><code>accessibility.verbosity.editor</code></td>
+<td>boolean</td>
+<td><code>true</code></td>
+<td>Announces editor operations.</td>
+</tr>
+<tr>
+<td><code>accessibility.verbosity.hover</code></td>
+<td>boolean</td>
+<td><code>true</code></td>
+<td>Announces hover content. Use <code>Alt+F2</code> for full reading.</td>
+</tr>
+<tr>
+<td><code>accessibility.verbosity.inline-chat</code></td>
+<td>boolean</td>
+<td><code>true</code></td>
+<td>Announces inline chat responses.</td>
+</tr>
+<tr>
+<td><code>accessibility.verbosity.inline-completions</code></td>
+<td>boolean</td>
+<td><code>true</code></td>
+<td>Announces Copilot suggestions.</td>
+</tr>
+<tr>
+<td><code>accessibility.verbosity.keybindings-editor</code></td>
+<td>boolean</td>
+<td><code>true</code></td>
+<td>Announces keybindings editor context.</td>
+</tr>
+<tr>
+<td><code>accessibility.verbosity.notebook</code></td>
+<td>boolean</td>
+<td><code>true</code></td>
+<td>Announces notebook cell operations.</td>
+</tr>
+<tr>
+<td><code>accessibility.verbosity.panel-chat</code></td>
+<td>boolean</td>
+<td><code>true</code></td>
+<td>Announces Copilot Chat panel responses.</td>
+</tr>
+<tr>
+<td><code>accessibility.verbosity.settings-editor</code></td>
+<td>boolean</td>
+<td><code>true</code></td>
+<td>Announces settings editor context.</td>
+</tr>
+<tr>
+<td><code>accessibility.verbosity.terminal</code></td>
+<td>boolean</td>
+<td><code>true</code></td>
+<td>Announces terminal operations.</td>
+</tr>
+</tbody></table>
+<h2 id="2-audio-cues---all-options">2. Audio Cues - All Options</h2>
+<p>Audio cues provide non-verbal feedback through sound. Each cue can be configured independently.</p>
+<h3 id="accessing-audio-cue-settings">Accessing Audio Cue Settings</h3>
+<p><strong>Settings UI:</strong> <code>Ctrl+,</code> → search &quot;audio cue&quot;</p>
+<p><strong>Settings.json:</strong> Edit directly (see Section 7)</p>
+<h3 id="audio-cue-values">Audio Cue Values</h3>
+<table>
+<thead>
+<tr>
+<th scope="col">Value</th>
+<th scope="col">Behavior</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>auto</code></td>
+<td>Play sound in screen reader mode only</td>
+</tr>
+<tr>
+<td><code>on</code></td>
+<td>Always play sound</td>
+</tr>
+<tr>
+<td><code>off</code></td>
+<td>Never play sound</td>
+</tr>
+</tbody></table>
+<h3 id="complete-accessibility-signals-list">Complete Accessibility Signals List</h3>
+<table>
+<thead>
+<tr>
+<th scope="col">Setting</th>
+<th scope="col">When It Plays</th>
+<th scope="col">Recommended</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>accessibility.signals.clear</code></td>
+<td>When clearing the terminal or output</td>
+<td><code>on</code></td>
+</tr>
+<tr>
+<td><code>accessibility.signals.chatRequestSent</code></td>
+<td>When sending a Copilot Chat prompt</td>
+<td><code>on</code></td>
+</tr>
+<tr>
+<td><code>accessibility.signals.chatResponsePending</code></td>
+<td>While Copilot is generating a response</td>
+<td><code>auto</code></td>
+</tr>
+<tr>
+<td><code>accessibility.signals.chatResponseReceived</code></td>
+<td>When Copilot finishes responding</td>
+<td><code>on</code></td>
+</tr>
+<tr>
+<td><code>accessibility.signals.debugBreakpoint</code></td>
+<td>When hitting a breakpoint in debugger</td>
+<td><code>on</code></td>
+</tr>
+<tr>
+<td><code>accessibility.signals.diffLineDeleted</code></td>
+<td>When navigating over a deleted line in diff</td>
+<td><code>on</code></td>
+</tr>
+<tr>
+<td><code>accessibility.signals.diffLineInserted</code></td>
+<td>When navigating over an added line in diff</td>
+<td><code>on</code></td>
+</tr>
+<tr>
+<td><code>accessibility.signals.diffLineModified</code></td>
+<td>When navigating over a modified line in diff</td>
+<td><code>on</code></td>
+</tr>
+<tr>
+<td><code>accessibility.signals.format</code></td>
+<td>When auto-formatting completes</td>
+<td><code>auto</code></td>
+</tr>
+<tr>
+<td><code>accessibility.signals.lineHasBreakpoint</code></td>
+<td>When cursor is on a line with a breakpoint</td>
+<td><code>auto</code></td>
+</tr>
+<tr>
+<td><code>accessibility.signals.lineHasError</code></td>
+<td>When cursor is on a line with an error</td>
+<td><code>on</code></td>
+</tr>
+<tr>
+<td><code>accessibility.signals.lineHasFoldedArea</code></td>
+<td>When cursor is on a line with collapsed code</td>
+<td><code>auto</code></td>
+</tr>
+<tr>
+<td><code>accessibility.signals.lineHasInlineSuggestion</code></td>
+<td>When an inline suggestion appears</td>
+<td><code>on</code></td>
+</tr>
+<tr>
+<td><code>accessibility.signals.lineHasWarning</code></td>
+<td>When cursor is on a line with a warning</td>
+<td><code>auto</code></td>
+</tr>
+<tr>
+<td><code>accessibility.signals.noInlayHints</code></td>
+<td>When inlay hints are not available</td>
+<td><code>off</code></td>
+</tr>
+<tr>
+<td><code>accessibility.signals.notebookCellCompleted</code></td>
+<td>When a notebook cell finishes executing</td>
+<td><code>on</code></td>
+</tr>
+<tr>
+<td><code>accessibility.signals.notebookCellFailed</code></td>
+<td>When a notebook cell fails</td>
+<td><code>on</code></td>
+</tr>
+<tr>
+<td><code>accessibility.signals.onDebugBreak</code></td>
+<td>When debugger pauses execution</td>
+<td><code>on</code></td>
+</tr>
+<tr>
+<td><code>accessibility.signals.save</code></td>
+<td>When saving a file</td>
+<td><code>auto</code></td>
+</tr>
+<tr>
+<td><code>accessibility.signals.taskCompleted</code></td>
+<td>When a terminal task completes successfully</td>
+<td><code>on</code></td>
+</tr>
+<tr>
+<td><code>accessibility.signals.taskFailed</code></td>
+<td>When a terminal task fails</td>
+<td><code>on</code></td>
+</tr>
+<tr>
+<td><code>accessibility.signals.terminalBell</code></td>
+<td>When terminal bell rings</td>
+<td><code>on</code></td>
+</tr>
+<tr>
+<td><code>accessibility.signals.terminalCommandFailed</code></td>
+<td>When a terminal command exits with error</td>
+<td><code>on</code></td>
+</tr>
+<tr>
+<td><code>accessibility.signals.terminalQuickFix</code></td>
+<td>When a terminal quick fix is available</td>
+<td><code>auto</code></td>
+</tr>
+<tr>
+<td><code>accessibility.signals.voiceRecordingStarted</code></td>
+<td>When voice input begins</td>
+<td><code>on</code></td>
+</tr>
+<tr>
+<td><code>accessibility.signals.voiceRecordingStopped</code></td>
+<td>When voice input ends</td>
+<td><code>on</code></td>
+</tr>
+<tr>
+<td><code>accessibility.signals.volume</code></td>
+<td>Volume level (0-100)</td>
+<td><code>70</code></td>
+</tr>
+</tbody></table>
+<h3 id="customizing-signal-sounds">Customizing Signal Sounds</h3>
+<p><strong>Advanced feature:</strong> You can replace default sounds with custom audio files.</p>
+<ol>
+<li><code>Ctrl+Shift+P</code> → &quot;Preferences: Open User Settings (JSON)&quot;</li>
+<li>Add custom sound paths:</li>
+</ol>
+<pre><code class="hljs language-json"><span class="hljs-punctuation">{</span>
+  <span class="hljs-attr">&quot;accessibility.signals.lineHasError.sound&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;file:///C:/Users/YourName/sounds/error.wav&quot;</span><span class="hljs-punctuation">,</span>
+  <span class="hljs-attr">&quot;accessibility.signals.taskCompleted.sound&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;file:///C:/Users/YourName/sounds/success.wav&quot;</span><span class="hljs-punctuation">,</span>
+  <span class="hljs-attr">&quot;accessibility.signals.diffLineInserted.sound&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;file:///C:/Users/YourName/sounds/added.wav&quot;</span>
+<span class="hljs-punctuation">}</span></code></pre>
+<h4 id="sound-file-requirements">Sound file requirements</h4>
+<ul>
+<li>Format: WAV, MP3, or OGG</li>
+<li>Duration: Keep under 2 seconds</li>
+<li>Volume: Normalize to avoid clipping</li>
+</ul>
+<h2 id="3-accessible-diff-viewer---complete-guide">3. Accessible Diff Viewer - Complete Guide</h2>
+<p>The Accessible Diff Viewer presents file diffs as a structured, line-by-line list instead of a visual side-by-side view.</p>
+<h3 id="when-to-use-accessible-diff-viewer">When to Use Accessible Diff Viewer</h3>
+<ul>
+<li>Reviewing pull request changes</li>
+<li>Resolving merge conflicts</li>
+<li>Comparing file versions (Timeline view)</li>
+<li>Reviewing Copilot-generated edits</li>
+<li>Any time you need to understand what changed in a file</li>
+</ul>
+<h3 id="opening-accessible-diff-viewer">Opening Accessible Diff Viewer</h3>
+<table>
+<thead>
+<tr>
+<th scope="col">Method</th>
+<th scope="col">Steps</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Keyboard (in diff editor)</td>
+<td>Press <code>F7</code> to jump to first hunk, <code>Alt+F2</code> to open Accessible View</td>
+</tr>
+<tr>
+<td>Command Palette</td>
+<td><code>Ctrl+Shift+P</code> → &quot;Open Accessible Diff Viewer&quot;</td>
+</tr>
+<tr>
+<td>Automatic</td>
+<td>Some contexts open it automatically in screen reader mode</td>
+</tr>
+</tbody></table>
+<h3 id="diff-viewer-structure">Diff Viewer Structure</h3>
+<h4 id="top-level-structure">Top-level structure</h4>
+<h5 id="description">Description</h5>
+<p>The Accessible Diff Viewer starts with a header showing the file path and change summary. It then shows each hunk (changed section) in order. Each hunk contains: the hunk location (line range), unchanged context lines, the modified, added, or removed lines with their prefix, and more context lines. After all hunks, a footer shows the totals for additions and deletions.</p>
+<h4 id="line-prefixes">Line prefixes</h4>
+<table>
+<thead>
+<tr>
+<th scope="col">Prefix</th>
+<th scope="col">Meaning</th>
+<th scope="col">Screen Reader Announcement</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>(no prefix)</td>
+<td>Unchanged line (context)</td>
+<td>&quot;Unchanged: [line content]&quot;</td>
+</tr>
+<tr>
+<td><code>+</code></td>
+<td>Added line</td>
+<td>&quot;Added: [line content]&quot; or &quot;Line added: [content]&quot;</td>
+</tr>
+<tr>
+<td><code>-</code></td>
+<td>Removed line</td>
+<td>&quot;Removed: [line content]&quot; or &quot;Line removed: [content]&quot;</td>
+</tr>
+<tr>
+<td><code>|~</code></td>
+<td>Modified line (original)</td>
+<td>&quot;Modified from: [old content]&quot;</td>
+</tr>
+<tr>
+<td><code>|+</code></td>
+<td>Modified line (new version)</td>
+<td>&quot;Modified to: [new content]&quot;</td>
+</tr>
+</tbody></table>
+<h3 id="navigating-hunks">Navigating Hunks</h3>
+<h4 id="hunk--a-block-of-related-changes">Hunk = a block of related changes</h4>
+<table>
+<thead>
+<tr>
+<th scope="col">Action</th>
+<th scope="col">Keyboard</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Jump to next hunk</td>
+<td><code>F7</code></td>
+</tr>
+<tr>
+<td>Jump to previous hunk</td>
+<td><code>Shift+F7</code></td>
+</tr>
+<tr>
+<td>Jump to next change</td>
+<td><code>F8</code> (in some contexts)</td>
+</tr>
+<tr>
+<td>Jump to previous change</td>
+<td><code>Shift+F8</code></td>
+</tr>
+</tbody></table>
+<h3 id="screen-reader-specific-navigation">Screen Reader-Specific Navigation</h3>
+<h4 id="nvdajaws">NVDA/JAWS</h4>
+<ol>
+<li>Open diff: <code>Enter</code> on file in Source Control, or <code>F7</code> in an open diff</li>
+<li><code>Alt+F2</code> to open Accessible Diff Viewer</li>
+<li>Navigate with <code>Up/Down Arrow</code> (line by line)</li>
+<li>Use <code>H</code> key to jump between hunks (each hunk has a heading)</li>
+<li><code>Escape</code> to close and return to editor</li>
+</ol>
+<h4 id="voiceover">VoiceOver</h4>
+<ol>
+<li><code>VO+Arrow</code> to navigate to diff file → <code>VO+Space</code> to open</li>
+<li><code>Option+F2</code> for Accessible Diff Viewer</li>
+<li><code>VO+Arrow</code> keys to navigate lines</li>
+<li><code>VO+Command+H</code> to jump between hunk headings</li>
+<li><code>Escape</code> to close</li>
+</ol>
+<h3 id="understanding-context-lines">Understanding Context Lines</h3>
+<p>The diff shows 3 unchanged lines before and after each change for context. These are announced as &quot;Unchanged: [content]&quot;.</p>
+<h4 id="example">Example</h4>
+<pre><code class="hljs language-text">Hunk 1 of 3 - lines 42-48
+
+  Unchanged: ## Screen Reader Setup
+  Unchanged:
+- Removed: This guide covers NVDA only.
++ Added: This guide covers NVDA, JAWS, and VoiceOver.
+  Unchanged:
+  Unchanged: ### Installing NVDA</code></pre>
+<p>The unchanged lines help you understand where in the file the change occurred.</p>
+<h3 id="inline-diff-view-vs-side-by-side">Inline Diff View vs Side-by-Side</h3>
+<h4 id="inline-view-recommended-for-screen-readers">Inline view (recommended for screen readers)</h4>
+<ul>
+<li>All changes in a single editor</li>
+<li>Removed lines followed by added lines</li>
+<li>Easier to navigate with screen reader reading commands</li>
+</ul>
+<h4 id="side-by-side-view-default-visual">Side-by-side view (default, visual)</h4>
+<ul>
+<li>Left panel: original file</li>
+<li>Right panel: modified file</li>
+<li>Requires navigating between panels</li>
+</ul>
+<h4 id="to-switch-to-inline-view">To switch to inline view</h4>
+<ol>
+<li>Open Settings: <code>Ctrl+,</code></li>
+<li>Search: &quot;diffEditor.renderSideBySide&quot;</li>
+<li>Uncheck the box (or set to <code>false</code> in settings.json)</li>
+</ol>
+<h3 id="learning-cards-accessible-diff-viewer">Learning Cards: Accessible Diff Viewer</h3>
+<details>
+<summary>Screen reader users</summary>
+
+<ul>
+<li>Press <code>F7</code> in any diff editor to jump to the first changed hunk -- then <code>F7</code> / <code>Shift+F7</code> to move between hunks</li>
+<li>Use <code>Alt+F2</code> (Accessible View) to read the full diff in a structured, non-streaming pane with proper line prefixes</li>
+<li>Switch to inline diff view (<code>diffEditor.renderSideBySide: false</code>) so all changes appear in one editor instead of two panels</li>
+</ul>
+</details>
+
+<details>
+<summary>Low vision users</summary>
+
+<ul>
+<li>Inline diff view places removed and added lines back-to-back with color-coded backgrounds -- increase font size for easier scanning</li>
+<li>Enable <code>accessibility.signals.diffLineInserted</code> and <code>diffLineDeleted</code> for audio feedback as you arrow through changed lines</li>
+<li>Zoom the diff editor independently with <code>Ctrl+=</code> if the surrounding UI is already at a comfortable size</li>
+</ul>
+</details>
+
+<details>
+<summary>Sighted users</summary>
+
+<ul>
+<li>Green-highlighted lines are additions; red-highlighted lines are deletions -- look for the <code>+</code> and <code>-</code> gutters on the left</li>
+<li>Use the minimap sidebar to spot clusters of changes in a long diff without scrolling</li>
+<li>Click the hunk arrows in the gutter to jump directly to the next block of changes</li>
+</ul>
+</details>
+
+
+<h2 id="4-screen-reader-specific-configurations">4. Screen Reader-Specific Configurations</h2>
+<h3 id="nvda-configuration-for-vs-code">NVDA Configuration for VS Code</h3>
+<h4 id="recommended-nvda-settings">Recommended NVDA settings</h4>
+<ol>
+<li><p><strong>Browse Mode settings:</strong></p>
+<ul>
+<li>NVDA Menu → Preferences → Settings → Browse Mode</li>
+<li>&quot;Maximum length of text on a single line&quot;: <code>10000</code></li>
+<li>&quot;Automatic focus mode for focus changes&quot;: <strong>Checked</strong></li>
+<li>&quot;Automatic focus mode for caret movement&quot;: <strong>Unchecked</strong></li>
+</ul>
+</li>
+<li><p><strong>Object Presentation:</strong></p>
+<ul>
+<li>&quot;Report tooltips&quot;: <strong>Unchecked</strong> (reduces interruptions; use <code>Alt+F2</code> instead)</li>
+<li>&quot;Report notifications&quot;: <strong>Checked</strong></li>
+<li>&quot;Report object descriptions&quot;: <strong>Checked</strong></li>
+</ul>
+</li>
+<li><p><strong>Speech settings:</strong></p>
+<ul>
+<li>&quot;Punctuation/symbol level&quot;: <strong>Some</strong> or <strong>Most</strong> (for code reading)</li>
+<li>&quot;Automatic language switching&quot;: <strong>Checked</strong> (useful for multilingual docs)</li>
+</ul>
+</li>
+<li><p><strong>Input Composition:</strong></p>
+<ul>
+<li>&quot;Announce candidates during IME text composition&quot;: <strong>Checked</strong></li>
+</ul>
+</li>
+</ol>
+<h4 id="nvda-add-ons-for-vs-code">NVDA add-ons for VS Code</h4>
+<ul>
+<li><strong>Focus Highlight</strong> - shows focus location visually (helpful for sighted trainers)</li>
+<li><strong>IndentNav</strong> - navigate by indentation level (useful for Python, YAML)</li>
+</ul>
+<h4 id="vs-code-specific-nvda-commands">VS Code-specific NVDA commands</h4>
+<table>
+<thead>
+<tr>
+<th scope="col">Action</th>
+<th scope="col">NVDA Command</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Read from cursor</td>
+<td><code>Insert+Down Arrow</code></td>
+</tr>
+<tr>
+<td>Read all</td>
+<td><code>Insert+Down Arrow</code> (twice)</td>
+</tr>
+<tr>
+<td>Stop speech</td>
+<td><code>Control</code></td>
+</tr>
+<tr>
+<td>Say all in focus mode</td>
+<td><code>NVDA+Shift+Down Arrow</code></td>
+</tr>
+<tr>
+<td>Move to containing browse mode document</td>
+<td><code>NVDA+Control+Space</code></td>
+</tr>
+</tbody></table>
+<h3 id="jaws-configuration-for-vs-code">JAWS Configuration for VS Code</h3>
+<h4 id="recommended-jaws-settings">Recommended JAWS settings</h4>
+<ol>
+<li><p><strong>Settings Center → HTML/PDF/Accessibility:</strong></p>
+<ul>
+<li>&quot;Auto Forms Mode&quot;: <strong>Checked</strong></li>
+<li>&quot;ARIA Live Region Verbosity&quot;: <strong>Polite</strong> or <strong>Assertive</strong> (depending on preference)</li>
+<li>&quot;Report tooltip text&quot;: <strong>Unchecked</strong> (use <code>Alt+F2</code> instead)</li>
+</ul>
+</li>
+<li><p><strong>Settings Center → Reading:</strong></p>
+<ul>
+<li>&quot;Punctuation Level&quot;: <strong>Most</strong> (for code)</li>
+<li>&quot;Speak Long Lines Continuously&quot;: <strong>Yes</strong></li>
+</ul>
+</li>
+<li><p><strong>Settings Center → Text Processing:</strong></p>
+<ul>
+<li>&quot;Blank Line Announcement&quot;: <strong>Tone</strong> (less verbose than speech)</li>
+</ul>
+</li>
+</ol>
+<h4 id="jaws-scripts-for-vs-code">JAWS scripts for VS Code</h4>
+<p>Custom JAWS scripts exist for VS Code. Check: <a href="https://github.com/search?q=jaws+vscode+scripts">jaws-vscode-scripts (GitHub)</a> for community-maintained scripts.</p>
+<h4 id="vs-code-specific-jaws-commands">VS Code-specific JAWS commands</h4>
+<table>
+<thead>
+<tr>
+<th scope="col">Action</th>
+<th scope="col">JAWS Command</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Say current line</td>
+<td><code>Insert+Up Arrow</code></td>
+</tr>
+<tr>
+<td>Read from cursor</td>
+<td><code>Insert+Page Down</code></td>
+</tr>
+<tr>
+<td>Read to end</td>
+<td><code>Insert+Page Down</code> (twice)</td>
+</tr>
+<tr>
+<td>Toggle virtual cursor</td>
+<td><code>Insert+Z</code></td>
+</tr>
+<tr>
+<td>List links</td>
+<td><code>Insert+F7</code></td>
+</tr>
+<tr>
+<td>List headings</td>
+<td><code>Insert+F6</code></td>
+</tr>
+</tbody></table>
+<h3 id="voiceover-configuration-for-vs-code-macos">VoiceOver Configuration for VS Code (macOS)</h3>
+<h4 id="recommended-voiceover-utility-settings">Recommended VoiceOver Utility settings</h4>
+<ol>
+<li><p><strong>Verbosity → Text:</strong></p>
+<ul>
+<li>&quot;Punctuation&quot;: <strong>All</strong> (for code and Markdown)</li>
+<li>&quot;Capitalization&quot;: <strong>Speak cap</strong> (useful for acronyms and code)</li>
+<li>&quot;Reading Units&quot;: Set to <strong>sentenceboundary</strong> for prose, <strong>word</strong> for code</li>
+</ul>
+</li>
+<li><p><strong>Verbosity → Announcements:</strong></p>
+<ul>
+<li>&quot;Content Changes&quot;: <strong>On</strong> (for live regions like Copilot Chat)</li>
+<li>&quot;Status Messages&quot;: <strong>On</strong></li>
+</ul>
+</li>
+<li><p><strong>Navigation:</strong></p>
+<ul>
+<li>&quot;Quick Nav&quot;: <strong>OFF</strong> when inside editor (use <code>Left+Right Arrow</code> to toggle)</li>
+<li>&quot;Auto-interact with elements&quot;: <strong>Off</strong> (manual control preferred)</li>
+</ul>
+</li>
+<li><p><strong>Sound:</strong></p>
+<ul>
+<li>&quot;Enable positional audio&quot;: <strong>On</strong> (helps orient focus location)</li>
+<li>&quot;Mute sound effects&quot;: <strong>Off</strong> (audio cues are helpful)</li>
+</ul>
+</li>
+</ol>
+<h4 id="vs-code-specific-voiceover-commands">VS Code-specific VoiceOver commands</h4>
+<table>
+<thead>
+<tr>
+<th scope="col">Action</th>
+<th scope="col">VoiceOver Command</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Read from cursor</td>
+<td><code>VO+A</code></td>
+</tr>
+<tr>
+<td>Read all</td>
+<td><code>VO+Shift+Down Arrow</code> (in text area)</td>
+</tr>
+<tr>
+<td>Stop reading</td>
+<td><code>Control</code></td>
+</tr>
+<tr>
+<td>Interact with element</td>
+<td><code>VO+Shift+Down Arrow</code></td>
+</tr>
+<tr>
+<td>Stop interacting</td>
+<td><code>VO+Shift+Up Arrow</code></td>
+</tr>
+<tr>
+<td>Jump to heading</td>
+<td><code>VO+Command+H</code></td>
+</tr>
+<tr>
+<td>Open rotor</td>
+<td><code>VO+U</code></td>
+</tr>
+<tr>
+<td>Navigate rotor</td>
+<td><code>Left/Right Arrow</code>, then <code>Up/Down Arrow</code></td>
+</tr>
+</tbody></table>
+<h4 id="quick-nav-navigation-when-enabled">Quick Nav navigation (when enabled)</h4>
+<table>
+<thead>
+<tr>
+<th scope="col">Command</th>
+<th scope="col">Action</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>H</code></td>
+<td>Next heading</td>
+</tr>
+<tr>
+<td><code>Shift+H</code></td>
+<td>Previous heading</td>
+</tr>
+<tr>
+<td><code>L</code></td>
+<td>Next link</td>
+</tr>
+<tr>
+<td><code>T</code></td>
+<td>Next table</td>
+</tr>
+<tr>
+<td><code>B</code></td>
+<td>Next button</td>
+</tr>
+<tr>
+<td><code>F</code></td>
+<td>Next form control</td>
+</tr>
+</tbody></table>
+<p><strong>Note:</strong> Quick Nav should be OFF when editing text (conflicts with text navigation).</p>
+<h2 id="5-complete-keyboard-shortcuts">5. Complete Keyboard Shortcuts</h2>
+<blockquote>
+<p>For screen reader navigation shortcuts when using GitHub in a browser (NVDA, JAWS, VoiceOver), see <a href="appendix-b-screen-reader-cheatsheet.html">Appendix B - Screen Reader Cheat Sheet</a>.</p>
+</blockquote>
+<h3 id="global-navigation">Global Navigation</h3>
+<table>
+<thead>
+<tr>
+<th scope="col">Action</th>
+<th scope="col">Windows/Linux</th>
+<th scope="col">macOS</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Command Palette</td>
+<td><code>Ctrl+Shift+P</code></td>
+<td><code>Cmd+Shift+P</code></td>
+</tr>
+<tr>
+<td>Quick Open (Go to File)</td>
+<td><code>Ctrl+P</code></td>
+<td><code>Cmd+P</code></td>
+</tr>
+<tr>
+<td>Settings</td>
+<td><code>Ctrl+,</code></td>
+<td><code>Cmd+,</code></td>
+</tr>
+<tr>
+<td>Keyboard Shortcuts</td>
+<td><code>Ctrl+K Ctrl+S</code></td>
+<td><code>Cmd+K Cmd+S</code></td>
+</tr>
+<tr>
+<td>Toggle Sidebar</td>
+<td><code>Ctrl+B</code></td>
+<td><code>Cmd+B</code></td>
+</tr>
+<tr>
+<td>Toggle Panel (terminal/output)</td>
+<td><code>Ctrl+J</code></td>
+<td><code>Cmd+J</code></td>
+</tr>
+<tr>
+<td>Toggle Full Screen</td>
+<td><code>F11</code></td>
+<td><code>Ctrl+Cmd+F</code></td>
+</tr>
+<tr>
+<td>Zen Mode</td>
+<td><code>Ctrl+K Z</code></td>
+<td><code>Cmd+K Z</code></td>
+</tr>
+<tr>
+<td>Close Window</td>
+<td><code>Ctrl+W</code></td>
+<td><code>Cmd+W</code></td>
+</tr>
+<tr>
+<td>New Window</td>
+<td><code>Ctrl+Shift+N</code></td>
+<td><code>Cmd+Shift+N</code></td>
+</tr>
+</tbody></table>
+<h3 id="sidebar-panels">Sidebar Panels</h3>
+<table>
+<thead>
+<tr>
+<th scope="col">Action</th>
+<th scope="col">Windows/Linux</th>
+<th scope="col">macOS</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Explorer</td>
+<td><code>Ctrl+Shift+E</code></td>
+<td><code>Cmd+Shift+E</code></td>
+</tr>
+<tr>
+<td>Search</td>
+<td><code>Ctrl+Shift+F</code></td>
+<td><code>Cmd+Shift+F</code></td>
+</tr>
+<tr>
+<td>Source Control</td>
+<td><code>Ctrl+Shift+G</code></td>
+<td><code>Cmd+Shift+G</code></td>
+</tr>
+<tr>
+<td>Run and Debug</td>
+<td><code>Ctrl+Shift+D</code></td>
+<td><code>Cmd+Shift+D</code></td>
+</tr>
+<tr>
+<td>Extensions</td>
+<td><code>Ctrl+Shift+X</code></td>
+<td><code>Cmd+Shift+X</code></td>
+</tr>
+</tbody></table>
+<h3 id="editor---file-operations">Editor - File Operations</h3>
+<table>
+<thead>
+<tr>
+<th scope="col">Action</th>
+<th scope="col">Windows/Linux</th>
+<th scope="col">macOS</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>New File</td>
+<td><code>Ctrl+N</code></td>
+<td><code>Cmd+N</code></td>
+</tr>
+<tr>
+<td>Open File</td>
+<td><code>Ctrl+O</code></td>
+<td><code>Cmd+O</code></td>
+</tr>
+<tr>
+<td>Save</td>
+<td><code>Ctrl+S</code></td>
+<td><code>Cmd+S</code></td>
+</tr>
+<tr>
+<td>Save As</td>
+<td><code>Ctrl+Shift+S</code></td>
+<td><code>Cmd+Shift+S</code></td>
+</tr>
+<tr>
+<td>Save All</td>
+<td><code>Ctrl+K S</code></td>
+<td><code>Cmd+Option+S</code></td>
+</tr>
+<tr>
+<td>Close Editor</td>
+<td><code>Ctrl+W</code></td>
+<td><code>Cmd+W</code></td>
+</tr>
+<tr>
+<td>Close All Editors</td>
+<td><code>Ctrl+K W</code></td>
+<td><code>Cmd+K W</code></td>
+</tr>
+<tr>
+<td>Reopen Closed Editor</td>
+<td><code>Ctrl+Shift+T</code></td>
+<td><code>Cmd+Shift+T</code></td>
+</tr>
+<tr>
+<td>Switch Between Editors</td>
+<td><code>Ctrl+Tab</code></td>
+<td><code>Ctrl+Tab</code></td>
+</tr>
+<tr>
+<td>Focus First Editor</td>
+<td><code>Ctrl+1</code></td>
+<td><code>Cmd+1</code></td>
+</tr>
+<tr>
+<td>Focus Second Editor</td>
+<td><code>Ctrl+2</code></td>
+<td><code>Cmd+2</code></td>
+</tr>
+<tr>
+<td>Split Editor</td>
+<td><code>Ctrl+\</code></td>
+<td><code>Cmd+\</code></td>
+</tr>
+</tbody></table>
+<h3 id="editor---navigation">Editor - Navigation</h3>
+<table>
+<thead>
+<tr>
+<th scope="col">Action</th>
+<th scope="col">Windows/Linux</th>
+<th scope="col">macOS</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Go to Line</td>
+<td><code>Ctrl+G</code></td>
+<td><code>Ctrl+G</code></td>
+</tr>
+<tr>
+<td>Go to Symbol</td>
+<td><code>Ctrl+Shift+O</code></td>
+<td><code>Cmd+Shift+O</code></td>
+</tr>
+<tr>
+<td>Go to Definition</td>
+<td><code>F12</code></td>
+<td><code>F12</code></td>
+</tr>
+<tr>
+<td>Peek Definition</td>
+<td><code>Alt+F12</code></td>
+<td><code>Option+F12</code></td>
+</tr>
+<tr>
+<td>Go to References</td>
+<td><code>Shift+F12</code></td>
+<td><code>Shift+F12</code></td>
+</tr>
+<tr>
+<td>Go Back (navigate history)</td>
+<td><code>Alt+Left</code></td>
+<td><code>Ctrl+-</code></td>
+</tr>
+<tr>
+<td>Go Forward</td>
+<td><code>Alt+Right</code></td>
+<td><code>Ctrl+Shift+-</code></td>
+</tr>
+<tr>
+<td>Scroll Up</td>
+<td><code>Ctrl+Up</code></td>
+<td><code>Cmd+Up</code></td>
+</tr>
+<tr>
+<td>Scroll Down</td>
+<td><code>Ctrl+Down</code></td>
+<td><code>Cmd+Down</code></td>
+</tr>
+<tr>
+<td>Move to Top of File</td>
+<td><code>Ctrl+Home</code></td>
+<td><code>Cmd+Home</code> or <code>Cmd+Up</code></td>
+</tr>
+<tr>
+<td>Move to Bottom of File</td>
+<td><code>Ctrl+End</code></td>
+<td><code>Cmd+End</code> or <code>Cmd+Down</code></td>
+</tr>
+<tr>
+<td>Move to Beginning of Line</td>
+<td><code>Home</code></td>
+<td><code>Cmd+Left</code></td>
+</tr>
+<tr>
+<td>Move to End of Line</td>
+<td><code>End</code></td>
+<td><code>Cmd+Right</code></td>
+</tr>
+<tr>
+<td>Expand Selection</td>
+<td><code>Shift+Alt+Right</code></td>
+<td><code>Shift+Option+Right</code></td>
+</tr>
+<tr>
+<td>Shrink Selection</td>
+<td><code>Shift+Alt+Left</code></td>
+<td><code>Shift+Option+Left</code></td>
+</tr>
+</tbody></table>
+<h3 id="editor---editing">Editor - Editing</h3>
+<table>
+<thead>
+<tr>
+<th scope="col">Action</th>
+<th scope="col">Windows/Linux</th>
+<th scope="col">macOS</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Cut Line</td>
+<td><code>Ctrl+X</code></td>
+<td><code>Cmd+X</code></td>
+</tr>
+<tr>
+<td>Copy Line</td>
+<td><code>Ctrl+C</code></td>
+<td><code>Cmd+C</code></td>
+</tr>
+<tr>
+<td>Paste</td>
+<td><code>Ctrl+V</code></td>
+<td><code>Cmd+V</code></td>
+</tr>
+<tr>
+<td>Undo</td>
+<td><code>Ctrl+Z</code></td>
+<td><code>Cmd+Z</code></td>
+</tr>
+<tr>
+<td>Redo</td>
+<td><code>Ctrl+Shift+Z</code> or <code>Ctrl+Y</code></td>
+<td><code>Cmd+Shift+Z</code></td>
+</tr>
+<tr>
+<td>Delete Line</td>
+<td><code>Ctrl+Shift+K</code></td>
+<td><code>Cmd+Shift+K</code></td>
+</tr>
+<tr>
+<td>Insert Line Below</td>
+<td><code>Ctrl+Enter</code></td>
+<td><code>Cmd+Enter</code></td>
+</tr>
+<tr>
+<td>Insert Line Above</td>
+<td><code>Ctrl+Shift+Enter</code></td>
+<td><code>Cmd+Shift+Enter</code></td>
+</tr>
+<tr>
+<td>Move Line Up</td>
+<td><code>Alt+Up</code></td>
+<td><code>Option+Up</code></td>
+</tr>
+<tr>
+<td>Move Line Down</td>
+<td><code>Alt+Down</code></td>
+<td><code>Option+Down</code></td>
+</tr>
+<tr>
+<td>Copy Line Up</td>
+<td><code>Shift+Alt+Up</code></td>
+<td><code>Shift+Option+Up</code></td>
+</tr>
+<tr>
+<td>Copy Line Down</td>
+<td><code>Shift+Alt+Down</code></td>
+<td><code>Shift+Option+Down</code></td>
+</tr>
+<tr>
+<td>Join Lines</td>
+<td><code>Ctrl+J</code></td>
+<td><code>Cmd+J</code></td>
+</tr>
+<tr>
+<td>Toggle Line Comment</td>
+<td><code>Ctrl+/</code></td>
+<td><code>Cmd+/</code></td>
+</tr>
+<tr>
+<td>Toggle Block Comment</td>
+<td><code>Shift+Alt+A</code></td>
+<td><code>Shift+Option+A</code></td>
+</tr>
+<tr>
+<td>Format Document</td>
+<td><code>Shift+Alt+F</code></td>
+<td><code>Shift+Option+F</code></td>
+</tr>
+<tr>
+<td>Format Selection</td>
+<td><code>Ctrl+K Ctrl+F</code></td>
+<td><code>Cmd+K Cmd+F</code></td>
+</tr>
+</tbody></table>
+<h3 id="editor---find-and-replace">Editor - Find and Replace</h3>
+<table>
+<thead>
+<tr>
+<th scope="col">Action</th>
+<th scope="col">Windows/Linux</th>
+<th scope="col">macOS</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Find</td>
+<td><code>Ctrl+F</code></td>
+<td><code>Cmd+F</code></td>
+</tr>
+<tr>
+<td>Replace</td>
+<td><code>Ctrl+H</code></td>
+<td><code>Cmd+H</code></td>
+</tr>
+<tr>
+<td>Find Next</td>
+<td><code>F3</code> or <code>Enter</code></td>
+<td><code>Cmd+G</code> or <code>Enter</code></td>
+</tr>
+<tr>
+<td>Find Previous</td>
+<td><code>Shift+F3</code></td>
+<td><code>Cmd+Shift+G</code></td>
+</tr>
+<tr>
+<td>Select All Occurrences</td>
+<td><code>Ctrl+Shift+L</code></td>
+<td><code>Cmd+Shift+L</code></td>
+</tr>
+<tr>
+<td>Add Selection to Next Find Match</td>
+<td><code>Ctrl+D</code></td>
+<td><code>Cmd+D</code></td>
+</tr>
+<tr>
+<td>Toggle Match Case</td>
+<td><code>Alt+C</code></td>
+<td><code>Option+C</code></td>
+</tr>
+<tr>
+<td>Toggle Whole Word</td>
+<td><code>Alt+W</code></td>
+<td><code>Option+W</code></td>
+</tr>
+<tr>
+<td>Toggle Regex</td>
+<td><code>Alt+R</code></td>
+<td><code>Option+R</code></td>
+</tr>
+</tbody></table>
+<h3 id="editor---multi-cursor">Editor - Multi-Cursor</h3>
+<table>
+<thead>
+<tr>
+<th scope="col">Action</th>
+<th scope="col">Windows/Linux</th>
+<th scope="col">macOS</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Add Cursor Above</td>
+<td><code>Ctrl+Alt+Up</code></td>
+<td><code>Cmd+Option+Up</code></td>
+</tr>
+<tr>
+<td>Add Cursor Below</td>
+<td><code>Ctrl+Alt+Down</code></td>
+<td><code>Cmd+Option+Down</code></td>
+</tr>
+<tr>
+<td>Add Cursor to Line Ends</td>
+<td><code>Shift+Alt+I</code></td>
+<td><code>Shift+Option+I</code></td>
+</tr>
+<tr>
+<td>Undo Last Cursor Operation</td>
+<td><code>Ctrl+U</code></td>
+<td><code>Cmd+U</code></td>
+</tr>
+</tbody></table>
+<h3 id="terminal">Terminal</h3>
+<table>
+<thead>
+<tr>
+<th scope="col">Action</th>
+<th scope="col">Windows/Linux</th>
+<th scope="col">macOS</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Toggle Terminal</td>
+<td><code>Ctrl+Backtick</code></td>
+<td><code>Ctrl+Backtick</code></td>
+</tr>
+<tr>
+<td>Create New Terminal</td>
+<td><code>Ctrl+Shift+Backtick</code></td>
+<td><code>Ctrl+Shift+Backtick</code></td>
+</tr>
+<tr>
+<td>Focus Terminal</td>
+<td><code>Ctrl+Backtick</code></td>
+<td><code>Ctrl+Backtick</code></td>
+</tr>
+<tr>
+<td>Kill Terminal</td>
+<td><code>Ctrl+Shift+K</code> (in terminal)</td>
+<td><code>Cmd+Shift+K</code></td>
+</tr>
+<tr>
+<td>Scroll Up in Terminal</td>
+<td><code>Ctrl+Shift+Up</code></td>
+<td><code>Cmd+Shift+Up</code></td>
+</tr>
+<tr>
+<td>Scroll Down in Terminal</td>
+<td><code>Ctrl+Shift+Down</code></td>
+<td><code>Cmd+Shift+Down</code></td>
+</tr>
+</tbody></table>
+<h3 id="source-control-git">Source Control (Git)</h3>
+<table>
+<thead>
+<tr>
+<th scope="col">Action</th>
+<th scope="col">Windows/Linux</th>
+<th scope="col">macOS</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Open Source Control</td>
+<td><code>Ctrl+Shift+G</code></td>
+<td><code>Cmd+Shift+G</code></td>
+</tr>
+<tr>
+<td>Commit (in message field)</td>
+<td><code>Ctrl+Enter</code></td>
+<td><code>Cmd+Enter</code></td>
+</tr>
+<tr>
+<td>Stage File</td>
+<td><code>Ctrl+Enter</code> (on file)</td>
+<td><code>Cmd+Enter</code></td>
+</tr>
+<tr>
+<td>Refresh Source Control</td>
+<td><code>Ctrl+R</code> (in SC panel)</td>
+<td><code>Cmd+R</code></td>
+</tr>
+</tbody></table>
+<h3 id="diff-viewer">Diff Viewer</h3>
+<table>
+<thead>
+<tr>
+<th scope="col">Action</th>
+<th scope="col">Windows/Linux</th>
+<th scope="col">macOS</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Next Diff Hunk</td>
+<td><code>F7</code></td>
+<td><code>F7</code></td>
+</tr>
+<tr>
+<td>Previous Diff Hunk</td>
+<td><code>Shift+F7</code></td>
+<td><code>Shift+F7</code></td>
+</tr>
+<tr>
+<td>Open Accessible Diff Viewer</td>
+<td><code>Alt+F2</code></td>
+<td><code>Option+F2</code></td>
+</tr>
+</tbody></table>
+<h3 id="copilot">Copilot</h3>
+<table>
+<thead>
+<tr>
+<th scope="col">Action</th>
+<th scope="col">Windows/Linux</th>
+<th scope="col">macOS</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Accept Suggestion</td>
+<td><code>Tab</code></td>
+<td><code>Tab</code></td>
+</tr>
+<tr>
+<td>Reject Suggestion</td>
+<td><code>Escape</code></td>
+<td><code>Escape</code></td>
+</tr>
+<tr>
+<td>Accept Word</td>
+<td><code>Ctrl+Right</code></td>
+<td><code>Cmd+Right</code></td>
+</tr>
+<tr>
+<td>Next Suggestion</td>
+<td><code>Alt+]</code></td>
+<td><code>Option+]</code></td>
+</tr>
+<tr>
+<td>Previous Suggestion</td>
+<td><code>Alt+[</code></td>
+<td><code>Option+[</code></td>
+</tr>
+<tr>
+<td>Open Suggestions List</td>
+<td><code>Ctrl+Enter</code></td>
+<td><code>Cmd+Enter</code></td>
+</tr>
+<tr>
+<td>Open Suggestion in Accessible View</td>
+<td><code>Alt+F2</code></td>
+<td><code>Option+F2</code></td>
+</tr>
+<tr>
+<td>Insert Suggestion from Accessible View</td>
+<td><code>Ctrl+/</code></td>
+<td><code>Cmd+/</code></td>
+</tr>
+<tr>
+<td>Open Copilot Chat</td>
+<td><code>Ctrl+Shift+I</code></td>
+<td><code>Cmd+Shift+I</code></td>
+</tr>
+<tr>
+<td>Inline Chat</td>
+<td><code>Ctrl+I</code></td>
+<td><code>Cmd+I</code></td>
+</tr>
+<tr>
+<td>Quick Chat</td>
+<td><code>Ctrl+Shift+Alt+I</code></td>
+<td><code>Cmd+Shift+Ctrl+I</code></td>
+</tr>
+</tbody></table>
+<h3 id="accessibility-features">Accessibility Features</h3>
+<table>
+<thead>
+<tr>
+<th scope="col">Action</th>
+<th scope="col">Windows/Linux</th>
+<th scope="col">macOS</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Toggle Screen Reader Mode</td>
+<td><code>Shift+Alt+F1</code></td>
+<td><code>Shift+Option+F1</code></td>
+</tr>
+<tr>
+<td>Accessible Help</td>
+<td><code>Alt+H</code></td>
+<td><code>Option+H</code></td>
+</tr>
+<tr>
+<td>Accessible View</td>
+<td><code>Alt+F2</code></td>
+<td><code>Option+F2</code></td>
+</tr>
+<tr>
+<td>Announce Cursor Position</td>
+<td><code>Ctrl+Alt+Shift+G</code></td>
+<td><code>Cmd+Option+Shift+G</code></td>
+</tr>
+<tr>
+<td>Open Accessibility Help</td>
+<td><code>Ctrl+Shift+P</code> → &quot;Help: Accessibility Help&quot;</td>
+<td>Same</td>
+</tr>
+</tbody></table>
+<h3 id="problems-panel">Problems Panel</h3>
+<table>
+<thead>
+<tr>
+<th scope="col">Action</th>
+<th scope="col">Windows/Linux</th>
+<th scope="col">macOS</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Show Problems</td>
+<td><code>Ctrl+Shift+M</code></td>
+<td><code>Cmd+Shift+M</code></td>
+</tr>
+<tr>
+<td>Go to Next Error/Warning</td>
+<td><code>F8</code></td>
+<td><code>F8</code></td>
+</tr>
+<tr>
+<td>Go to Previous Error/Warning</td>
+<td><code>Shift+F8</code></td>
+<td><code>Shift+F8</code></td>
+</tr>
+</tbody></table>
+<h3 id="markdown-preview">Markdown Preview</h3>
+<table>
+<thead>
+<tr>
+<th scope="col">Action</th>
+<th scope="col">Windows/Linux</th>
+<th scope="col">macOS</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Toggle Preview</td>
+<td><code>Ctrl+Shift+V</code></td>
+<td><code>Cmd+Shift+V</code></td>
+</tr>
+<tr>
+<td>Open Preview to Side</td>
+<td><code>Ctrl+K V</code></td>
+<td><code>Cmd+K V</code></td>
+</tr>
+</tbody></table>
+<h2 id="6-accessibility-signals-types-and-customization">6. Accessibility Signals Types and Customization</h2>
+<p>Accessibility signals are events that trigger announcements or audio cues. Beyond audio cues, VS Code has verbal announcements for various events.</p>
+<h3 id="announcement-verbosity-settings">Announcement Verbosity Settings</h3>
+<p>Control how much information VS Code announces:</p>
+<table>
+<thead>
+<tr>
+<th scope="col">Setting</th>
+<th scope="col">Values</th>
+<th scope="col">Default</th>
+<th scope="col">Controls</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>accessibility.verbosity.chatQuestionCarousel</code></td>
+<td><code>true</code>, <code>false</code></td>
+<td><code>true</code></td>
+<td>ARIA hint in the Agent mode question carousel telling you about <code>Alt+T</code> (Focus Terminal)</td>
+</tr>
+<tr>
+<td><code>accessibility.verbosity.diffEditor</code></td>
+<td><code>verbose</code>, <code>minimal</code>, <code>off</code></td>
+<td><code>verbose</code></td>
+<td>Diff viewer context announcements</td>
+</tr>
+<tr>
+<td><code>accessibility.verbosity.editor</code></td>
+<td><code>verbose</code>, <code>minimal</code>, <code>off</code></td>
+<td><code>verbose</code></td>
+<td>General editor announcements</td>
+</tr>
+<tr>
+<td><code>accessibility.verbosity.hover</code></td>
+<td><code>verbose</code>, <code>minimal</code>, <code>off</code></td>
+<td><code>verbose</code></td>
+<td>Hover popup announcements</td>
+</tr>
+<tr>
+<td><code>accessibility.verbosity.inlineCompletions</code></td>
+<td><code>verbose</code>, <code>minimal</code>, <code>off</code></td>
+<td><code>verbose</code></td>
+<td>Copilot suggestion announcements</td>
+</tr>
+<tr>
+<td><code>accessibility.verbosity.keyboardShortcuts</code></td>
+<td><code>true</code>, <code>false</code></td>
+<td><code>true</code></td>
+<td>Screen reader navigation hint in the Keyboard Shortcuts search results</td>
+</tr>
+<tr>
+<td><code>accessibility.verbosity.terminal</code></td>
+<td><code>verbose</code>, <code>minimal</code>, <code>off</code></td>
+<td><code>verbose</code></td>
+<td>Terminal operation announcements</td>
+</tr>
+</tbody></table>
+<p><strong><code>verbose</code>:</strong> Announces full context and details<br><strong><code>minimal</code>:</strong> Announces only essential information<br><strong><code>off</code>:</strong> No automatic announcements (use Accessible View manually)</p>
+<h3 id="custom-announcement-timing">Custom Announcement Timing</h3>
+<p>Control when and how often announcements occur:</p>
+<table>
+<thead>
+<tr>
+<th scope="col">Setting</th>
+<th scope="col">Values</th>
+<th scope="col">Default</th>
+<th scope="col">Description</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>accessibility.signals.debouncePositionChanges</code></td>
+<td>number (ms)</td>
+<td><code>500</code></td>
+<td>Delay before announcing position changes (prevents spam during rapid navigation)</td>
+</tr>
+<tr>
+<td><code>accessibility.signals.onDidChangeFocus</code></td>
+<td>boolean</td>
+<td><code>true</code></td>
+<td>Announce focus changes</td>
+</tr>
+<tr>
+<td><code>accessibility.signals.onDidChangeModelContent</code></td>
+<td>boolean</td>
+<td><code>false</code></td>
+<td>Announce content changes (very verbose)</td>
+</tr>
+</tbody></table>
+<h3 id="signal-priorities">Signal Priorities</h3>
+<p>When multiple signals occur simultaneously, VS Code prioritizes them:</p>
+<ol>
+<li><strong>Errors</strong> (highest priority) - always announced</li>
+<li><strong>Warnings</strong> - announced after errors</li>
+<li><strong>Completions</strong> - announced if no errors/warnings</li>
+<li><strong>Focus changes</strong> - announced last</li>
+</ol>
+<p>This prevents overlapping announcements.</p>
+<h3 id="learning-cards-accessibility-signals">Learning Cards: Accessibility Signals</h3>
+<details>
+<summary>Screen reader users</summary>
+
+<ul>
+<li>Start with <code>auto</code> for most signals -- they play only when screen reader mode is active, keeping things quiet otherwise</li>
+<li>The <code>lineHasError</code> and <code>taskFailed</code> signals are the highest-value audio cues; enable these first</li>
+<li>Use <code>accessibility.signals.volume</code> (0-100) to balance signal volume against your screen reader speech</li>
+</ul>
+</details>
+
+<details>
+<summary>Low vision users</summary>
+
+<ul>
+<li>Audio cues supplement visual indicators you might miss -- enable <code>lineHasWarning</code> and <code>lineHasError</code> for sounds on the current line</li>
+<li>The <code>save</code> and <code>format</code> signals confirm file operations completed without needing to check the status bar visually</li>
+<li>Pair audio cues with high-contrast gutter icons for a dual-channel (sight + sound) feedback loop</li>
+</ul>
+</details>
+
+<details>
+<summary>Sighted users</summary>
+
+<ul>
+<li>Audio cues can speed up your workflow even with full vision -- the <code>taskCompleted</code> chime saves you from watching terminal output</li>
+<li>Search &quot;accessibility.signals&quot; in Settings UI to see all toggles in one filtered view with checkboxes</li>
+<li>Custom sound files (WAV/MP3, under 2 seconds) can replace defaults if you want distinctive tones per event</li>
+</ul>
+</details>
+
+
+<h2 id="7-settingsjson-configuration-examples">7. Settings.json Configuration Examples</h2>
+<p>The configuration examples below are JSON blocks you paste into your <code>settings.json</code> file. To apply a complete set at once, consider using <strong>VS Code Profiles</strong> -- named configuration bundles that let you switch your entire setup instantly. See <a href="11-vscode-interface.html#profiles">Chapter 11, Section 9: Profiles</a> for how to create, switch, export, and share profiles.</p>
+<h3 id="minimal-screen-reader-profile">Minimal Screen Reader Profile</h3>
+<h4 id="for-users-who-prefer-minimal-announcements-and-use-accessible-view-manually">For users who prefer minimal announcements and use Accessible View manually</h4>
+<pre><code class="hljs language-json"><span class="hljs-punctuation">{</span>
+  <span class="hljs-attr">&quot;editor.accessibilitySupport&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;on&quot;</span><span class="hljs-punctuation">,</span>
+  <span class="hljs-attr">&quot;editor.minimap.enabled&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-literal"><span class="hljs-keyword">false</span></span><span class="hljs-punctuation">,</span>
+  <span class="hljs-attr">&quot;editor.renderWhitespace&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;none&quot;</span><span class="hljs-punctuation">,</span>
+  <span class="hljs-attr">&quot;editor.wordWrap&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;on&quot;</span><span class="hljs-punctuation">,</span>
+  <span class="hljs-attr">&quot;diffEditor.renderSideBySide&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-literal"><span class="hljs-keyword">false</span></span><span class="hljs-punctuation">,</span>
+  <span class="hljs-attr">&quot;accessibility.verbosity.diffEditor&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;minimal&quot;</span><span class="hljs-punctuation">,</span>
+  <span class="hljs-attr">&quot;accessibility.verbosity.editor&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;minimal&quot;</span><span class="hljs-punctuation">,</span>
+  <span class="hljs-attr">&quot;accessibility.verbosity.hover&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;minimal&quot;</span><span class="hljs-punctuation">,</span>
+  <span class="hljs-attr">&quot;accessibility.verbosity.inlineCompletions&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;minimal&quot;</span><span class="hljs-punctuation">,</span>
+  <span class="hljs-attr">&quot;accessibility.signals.lineHasError&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;on&quot;</span><span class="hljs-punctuation">,</span>
+  <span class="hljs-attr">&quot;accessibility.signals.taskCompleted&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;on&quot;</span><span class="hljs-punctuation">,</span>
+  <span class="hljs-attr">&quot;accessibility.signals.taskFailed&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;on&quot;</span>
+<span class="hljs-punctuation">}</span></code></pre>
+<h3 id="maximum-feedback-profile">Maximum Feedback Profile</h3>
+<h4 id="for-users-who-want-all-audio-and-verbal-announcements">For users who want all audio and verbal announcements</h4>
+<pre><code class="hljs language-json"><span class="hljs-punctuation">{</span>
+  <span class="hljs-attr">&quot;editor.accessibilitySupport&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;on&quot;</span><span class="hljs-punctuation">,</span>
+  <span class="hljs-attr">&quot;editor.minimap.enabled&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-literal"><span class="hljs-keyword">false</span></span><span class="hljs-punctuation">,</span>
+  <span class="hljs-attr">&quot;editor.renderWhitespace&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;none&quot;</span><span class="hljs-punctuation">,</span>
+  <span class="hljs-attr">&quot;editor.wordWrap&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;on&quot;</span><span class="hljs-punctuation">,</span>
+  <span class="hljs-attr">&quot;diffEditor.renderSideBySide&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-literal"><span class="hljs-keyword">false</span></span><span class="hljs-punctuation">,</span>
+  <span class="hljs-attr">&quot;accessibility.verbosity.diffEditor&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;verbose&quot;</span><span class="hljs-punctuation">,</span>
+  <span class="hljs-attr">&quot;accessibility.verbosity.editor&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;verbose&quot;</span><span class="hljs-punctuation">,</span>
+  <span class="hljs-attr">&quot;accessibility.verbosity.hover&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;verbose&quot;</span><span class="hljs-punctuation">,</span>
+  <span class="hljs-attr">&quot;accessibility.verbosity.inlineCompletions&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;verbose&quot;</span><span class="hljs-punctuation">,</span>
+  <span class="hljs-attr">&quot;accessibility.verbosity.terminal&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;verbose&quot;</span><span class="hljs-punctuation">,</span>
+  <span class="hljs-attr">&quot;accessibility.signals.lineHasError&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;on&quot;</span><span class="hljs-punctuation">,</span>
+  <span class="hljs-attr">&quot;accessibility.signals.lineHasWarning&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;on&quot;</span><span class="hljs-punctuation">,</span>
+  <span class="hljs-attr">&quot;accessibility.signals.taskCompleted&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;on&quot;</span><span class="hljs-punctuation">,</span>
+  <span class="hljs-attr">&quot;accessibility.signals.taskFailed&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;on&quot;</span><span class="hljs-punctuation">,</span>
+  <span class="hljs-attr">&quot;accessibility.signals.diffLineInserted&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;on&quot;</span><span class="hljs-punctuation">,</span>
+  <span class="hljs-attr">&quot;accessibility.signals.diffLineDeleted&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;on&quot;</span><span class="hljs-punctuation">,</span>
+  <span class="hljs-attr">&quot;accessibility.signals.chatResponseReceived&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;on&quot;</span><span class="hljs-punctuation">,</span>
+  <span class="hljs-attr">&quot;accessibility.signals.chatResponsePending&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;on&quot;</span><span class="hljs-punctuation">,</span>
+  <span class="hljs-attr">&quot;accessibility.signals.save&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;on&quot;</span><span class="hljs-punctuation">,</span>
+  <span class="hljs-attr">&quot;accessibility.signals.clear&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;on&quot;</span><span class="hljs-punctuation">,</span>
+  <span class="hljs-attr">&quot;accessibility.signals.format&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;on&quot;</span><span class="hljs-punctuation">,</span>
+  <span class="hljs-attr">&quot;accessibility.signals.terminalBell&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;on&quot;</span><span class="hljs-punctuation">,</span>
+  <span class="hljs-attr">&quot;accessibility.signals.terminalCommandFailed&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;on&quot;</span><span class="hljs-punctuation">,</span>
+  <span class="hljs-attr">&quot;terminal.integrated.enableBell&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-literal"><span class="hljs-keyword">true</span></span>
+<span class="hljs-punctuation">}</span></code></pre>
+<h3 id="copilot-optimized-profile">Copilot-Optimized Profile</h3>
+<h4 id="for-users-working-heavily-with-github-copilot">For users working heavily with GitHub Copilot</h4>
+<pre><code class="hljs language-json"><span class="hljs-punctuation">{</span>
+  <span class="hljs-attr">&quot;editor.accessibilitySupport&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;on&quot;</span><span class="hljs-punctuation">,</span>
+  <span class="hljs-attr">&quot;editor.minimap.enabled&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-literal"><span class="hljs-keyword">false</span></span><span class="hljs-punctuation">,</span>
+  <span class="hljs-attr">&quot;editor.wordWrap&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;on&quot;</span><span class="hljs-punctuation">,</span>
+  <span class="hljs-attr">&quot;accessibility.verbosity.inlineCompletions&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;minimal&quot;</span><span class="hljs-punctuation">,</span>
+  <span class="hljs-attr">&quot;accessibility.verbosity.panelChat&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;minimal&quot;</span><span class="hljs-punctuation">,</span>
+  <span class="hljs-attr">&quot;accessibility.signals.lineHasInlineSuggestion&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;on&quot;</span><span class="hljs-punctuation">,</span>
+  <span class="hljs-attr">&quot;accessibility.signals.chatResponsePending&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;on&quot;</span><span class="hljs-punctuation">,</span>
+  <span class="hljs-attr">&quot;accessibility.signals.chatResponseReceived&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;on&quot;</span><span class="hljs-punctuation">,</span>
+  <span class="hljs-attr">&quot;accessibility.signals.chatRequestSent&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;on&quot;</span><span class="hljs-punctuation">,</span>
+  <span class="hljs-attr">&quot;github.copilot.enable&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-punctuation">{</span>
+    <span class="hljs-attr">&quot;*&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-literal"><span class="hljs-keyword">true</span></span><span class="hljs-punctuation">,</span>
+    <span class="hljs-attr">&quot;yaml&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-literal"><span class="hljs-keyword">true</span></span><span class="hljs-punctuation">,</span>
+    <span class="hljs-attr">&quot;plaintext&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-literal"><span class="hljs-keyword">false</span></span><span class="hljs-punctuation">,</span>
+    <span class="hljs-attr">&quot;markdown&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-literal"><span class="hljs-keyword">true</span></span>
+  <span class="hljs-punctuation">}</span>
+<span class="hljs-punctuation">}</span></code></pre>
+<p><strong>Note:</strong> The <code>github.copilot.enable</code> object controls which file types get Copilot suggestions.</p>
+<h3 id="gitdiff-optimized-profile">Git/Diff-Optimized Profile</h3>
+<h4 id="for-users-doing-heavy-pr-review-and-diff-work">For users doing heavy PR review and diff work</h4>
+<pre><code class="hljs language-json"><span class="hljs-punctuation">{</span>
+  <span class="hljs-attr">&quot;editor.accessibilitySupport&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;on&quot;</span><span class="hljs-punctuation">,</span>
+  <span class="hljs-attr">&quot;diffEditor.renderSideBySide&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-literal"><span class="hljs-keyword">false</span></span><span class="hljs-punctuation">,</span>
+  <span class="hljs-attr">&quot;diffEditor.ignoreTrimWhitespace&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-literal"><span class="hljs-keyword">true</span></span><span class="hljs-punctuation">,</span>
+  <span class="hljs-attr">&quot;diffEditor.wordWrap&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;on&quot;</span><span class="hljs-punctuation">,</span>
+  <span class="hljs-attr">&quot;diffEditor.diffAlgorithm&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;advanced&quot;</span><span class="hljs-punctuation">,</span>
+  <span class="hljs-attr">&quot;accessibility.verbosity.diffEditor&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;verbose&quot;</span><span class="hljs-punctuation">,</span>
+  <span class="hljs-attr">&quot;accessibility.signals.diffLineInserted&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;on&quot;</span><span class="hljs-punctuation">,</span>
+  <span class="hljs-attr">&quot;accessibility.signals.diffLineDeleted&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;on&quot;</span><span class="hljs-punctuation">,</span>
+  <span class="hljs-attr">&quot;accessibility.signals.diffLineModified&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;on&quot;</span><span class="hljs-punctuation">,</span>
+  <span class="hljs-attr">&quot;scm.diffDecorations&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;gutter&quot;</span><span class="hljs-punctuation">,</span>
+  <span class="hljs-attr">&quot;scm.diffDecorationsGutterWidth&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-number">2</span>
+<span class="hljs-punctuation">}</span></code></pre>
+<h3 id="performance-optimized-profile">Performance-Optimized Profile</h3>
+<h4 id="for-users-on-slower-machines-or-with-large-repositories">For users on slower machines or with large repositories</h4>
+<pre><code class="hljs language-json"><span class="hljs-punctuation">{</span>
+  <span class="hljs-attr">&quot;editor.accessibilitySupport&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;on&quot;</span><span class="hljs-punctuation">,</span>
+  <span class="hljs-attr">&quot;editor.minimap.enabled&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-literal"><span class="hljs-keyword">false</span></span><span class="hljs-punctuation">,</span>
+  <span class="hljs-attr">&quot;editor.renderWhitespace&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;none&quot;</span><span class="hljs-punctuation">,</span>
+  <span class="hljs-attr">&quot;editor.guides.indentation&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-literal"><span class="hljs-keyword">false</span></span><span class="hljs-punctuation">,</span>
+  <span class="hljs-attr">&quot;editor.guides.bracketPairs&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-literal"><span class="hljs-keyword">false</span></span><span class="hljs-punctuation">,</span>
+  <span class="hljs-attr">&quot;editor.occurrencesHighlight&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-literal"><span class="hljs-keyword">false</span></span><span class="hljs-punctuation">,</span>
+  <span class="hljs-attr">&quot;editor.selectionHighlight&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-literal"><span class="hljs-keyword">false</span></span><span class="hljs-punctuation">,</span>
+  <span class="hljs-attr">&quot;editor.hover.enabled&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-literal"><span class="hljs-keyword">true</span></span><span class="hljs-punctuation">,</span>
+  <span class="hljs-attr">&quot;editor.hover.delay&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-number">1000</span><span class="hljs-punctuation">,</span>
+  <span class="hljs-attr">&quot;files.exclude&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-punctuation">{</span>
+    <span class="hljs-attr">&quot;**/.git&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-literal"><span class="hljs-keyword">true</span></span><span class="hljs-punctuation">,</span>
+    <span class="hljs-attr">&quot;**/.svn&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-literal"><span class="hljs-keyword">true</span></span><span class="hljs-punctuation">,</span>
+    <span class="hljs-attr">&quot;**/.hg&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-literal"><span class="hljs-keyword">true</span></span><span class="hljs-punctuation">,</span>
+    <span class="hljs-attr">&quot;**/CVS&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-literal"><span class="hljs-keyword">true</span></span><span class="hljs-punctuation">,</span>
+    <span class="hljs-attr">&quot;**/.DS_Store&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-literal"><span class="hljs-keyword">true</span></span><span class="hljs-punctuation">,</span>
+    <span class="hljs-attr">&quot;**/node_modules&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-literal"><span class="hljs-keyword">true</span></span><span class="hljs-punctuation">,</span>
+    <span class="hljs-attr">&quot;**/.vscode&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-literal"><span class="hljs-keyword">false</span></span>
+  <span class="hljs-punctuation">}</span><span class="hljs-punctuation">,</span>
+  <span class="hljs-attr">&quot;search.exclude&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-punctuation">{</span>
+    <span class="hljs-attr">&quot;**/node_modules&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-literal"><span class="hljs-keyword">true</span></span><span class="hljs-punctuation">,</span>
+    <span class="hljs-attr">&quot;**/bower_components&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-literal"><span class="hljs-keyword">true</span></span><span class="hljs-punctuation">,</span>
+    <span class="hljs-attr">&quot;**/*.code-search&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-literal"><span class="hljs-keyword">true</span></span>
+  <span class="hljs-punctuation">}</span>
+<span class="hljs-punctuation">}</span></code></pre>
+<h2 id="quick-copy-complete-recommended-settings">Quick Copy: Complete Recommended Settings</h2>
+<h3 id="paste-this-into-your-settingsjson-for-a-balanced-screen-reader-profile">Paste this into your <code>settings.json</code> for a balanced screen reader profile</h3>
+<pre><code class="hljs language-json"><span class="hljs-punctuation">{</span>
+  <span class="hljs-attr">&quot;editor.accessibilitySupport&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;on&quot;</span><span class="hljs-punctuation">,</span>
+  <span class="hljs-attr">&quot;editor.minimap.enabled&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-literal"><span class="hljs-keyword">false</span></span><span class="hljs-punctuation">,</span>
+  <span class="hljs-attr">&quot;editor.renderWhitespace&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;none&quot;</span><span class="hljs-punctuation">,</span>
+  <span class="hljs-attr">&quot;editor.wordWrap&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;on&quot;</span><span class="hljs-punctuation">,</span>
+  <span class="hljs-attr">&quot;diffEditor.renderSideBySide&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-literal"><span class="hljs-keyword">false</span></span><span class="hljs-punctuation">,</span>
+  <span class="hljs-attr">&quot;diffEditor.ignoreTrimWhitespace&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-literal"><span class="hljs-keyword">true</span></span><span class="hljs-punctuation">,</span>
+  <span class="hljs-attr">&quot;diffEditor.wordWrap&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;on&quot;</span><span class="hljs-punctuation">,</span>
+  <span class="hljs-attr">&quot;accessibility.verbosity.diffEditor&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;verbose&quot;</span><span class="hljs-punctuation">,</span>
+  <span class="hljs-attr">&quot;accessibility.verbosity.editor&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;verbose&quot;</span><span class="hljs-punctuation">,</span>
+  <span class="hljs-attr">&quot;accessibility.verbosity.hover&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;verbose&quot;</span><span class="hljs-punctuation">,</span>
+  <span class="hljs-attr">&quot;accessibility.verbosity.inlineCompletions&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;minimal&quot;</span><span class="hljs-punctuation">,</span>
+  <span class="hljs-attr">&quot;accessibility.verbosity.panelChat&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;minimal&quot;</span><span class="hljs-punctuation">,</span>
+  <span class="hljs-attr">&quot;accessibility.signals.lineHasError&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;on&quot;</span><span class="hljs-punctuation">,</span>
+  <span class="hljs-attr">&quot;accessibility.signals.lineHasWarning&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;auto&quot;</span><span class="hljs-punctuation">,</span>
+  <span class="hljs-attr">&quot;accessibility.signals.taskCompleted&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;on&quot;</span><span class="hljs-punctuation">,</span>
+  <span class="hljs-attr">&quot;accessibility.signals.taskFailed&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;on&quot;</span><span class="hljs-punctuation">,</span>
+  <span class="hljs-attr">&quot;accessibility.signals.diffLineInserted&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;on&quot;</span><span class="hljs-punctuation">,</span>
+  <span class="hljs-attr">&quot;accessibility.signals.diffLineDeleted&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;on&quot;</span><span class="hljs-punctuation">,</span>
+  <span class="hljs-attr">&quot;accessibility.signals.chatResponseReceived&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;on&quot;</span><span class="hljs-punctuation">,</span>
+  <span class="hljs-attr">&quot;terminal.integrated.enableBell&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-literal"><span class="hljs-keyword">true</span></span><span class="hljs-punctuation">,</span>
+  <span class="hljs-attr">&quot;workbench.editor.enablePreview&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-literal"><span class="hljs-keyword">false</span></span>
+<span class="hljs-punctuation">}</span></code></pre>
+<hr>
+<p><em>Next: <a href="appendix-h-github-desktop.html">Appendix H: GitHub Desktop</a></em><br><em>Back: <a href="appendix-f-git-security.html">Appendix F: Git Security</a></em><br><em>Teaching chapter: <a href="11-vscode-interface.html">Chapter 11: VS Code Interface</a></em></p>
+
+  </main>
+  <footer role="contentinfo" class="site-footer">
+    <p><strong>GIT Going with GitHub</strong> - A workshop by <a href="https://community-access.org">Community Access</a></p>
+    <p><a href="https://github.com/community-access/git-going-with-github">View on GitHub</a> · <a href="https://community-access.org">community-access.org</a></p>
+  </footer>
+
+  </body>
+</html>

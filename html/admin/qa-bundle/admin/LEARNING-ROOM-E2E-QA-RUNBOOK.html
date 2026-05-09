@@ -1,0 +1,2234 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="GIT Going with GitHub - A two-day accessible open source workshop by Community Access">
+  <title>Learning Room End-to-End QA Runbook (Registration to Student Completion) - GIT Going with GitHub</title>
+  <link rel="stylesheet" href="./styles/github-markdown.css">
+  <link rel="stylesheet" href="./styles/highlight.css">
+  <link rel="stylesheet" href="./styles/custom.css">
+  <style>
+    .markdown-body {
+      box-sizing: border-box;
+      min-width: 200px;
+      max-width: 980px;
+      margin: 0 auto;
+      padding: 45px;
+    }
+    @media (max-width: 767px) {
+      .markdown-body {
+        padding: 15px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+  <header class="site-header" role="banner">
+    <div class="site-header-inner">
+      <nav aria-label="Breadcrumb" class="breadcrumb">
+        <a href="./index.html">Home</a> <span aria-hidden="true">›</span> <span aria-current="page">Learning Room End-to-End QA Runbook (Registration to Student Completion)</span>
+      </nav>
+      <div class="header-actions">
+        <a href="https://github.com/Community-Access/git-going-with-github/wiki" class="wiki-link" target="_blank" rel="noopener noreferrer">
+          <svg aria-hidden="true" focusable="false" width="16" height="16" viewBox="0 0 16 16" fill="currentColor">
+            <path d="M1.75 1h8.5c.966 0 1.75.784 1.75 1.75v5.5A1.75 1.75 0 0 1 10.25 10H7.06l-2.573 2.573A1.458 1.458 0 0 1 2 11.543V10h-.25A1.75 1.75 0 0 1 0 8.25v-5.5C0 1.784.784 1 1.75 1ZM1.5 2.75v5.5c0 .138.112.25.25.25h1a.75.75 0 0 1 .75.75v2.19l2.72-2.72a.749.749 0 0 1 .53-.22h3.5a.25.25 0 0 0 .25-.25v-5.5a.25.25 0 0 0-.25-.25h-8.5a.25.25 0 0 0-.25.25Zm13 2a.25.25 0 0 0-.25-.25h-.5a.75.75 0 0 1 0-1.5h.5c.966 0 1.75.784 1.75 1.75v5.5A1.75 1.75 0 0 1 14.25 12H14v1.543a1.457 1.457 0 0 1-2.487 1.03L9.22 12.28a.749.749 0 1 1 1.06-1.06l2.22 2.22v-2.19a.75.75 0 0 1 .75-.75h.25a.25.25 0 0 0 .25-.25v-5.5Z"/>
+          </svg>
+          Wiki
+        </a>
+        <form role="search" class="search-form" action="./search.html" method="get">
+        <label for="site-search" class="search-label">Search docs</label>
+        <input
+          type="search"
+          id="site-search"
+          class="search-input"
+          name="q"
+          placeholder="Search docs…"
+          autocomplete="off"
+          aria-label="Search documentation"
+        >
+        <button type="submit" class="search-button" aria-label="Submit search">
+          <svg aria-hidden="true" focusable="false" width="16" height="16" viewBox="0 0 16 16" fill="currentColor">
+            <path d="M10.68 11.74a6 6 0 0 1-7.922-8.982 6 6 0 0 1 8.982 7.922l3.04 3.04a.749.749 0 0 1-.326 1.275.749.749 0 0 1-.734-.215ZM11.5 7a4.499 4.499 0 1 0-8.997 0A4.499 4.499 0 0 0 11.5 7Z"/>
+          </svg>
+        </button>
+      </form>
+      </div>
+    </div>
+  </header>
+  <main id="main-content" class="markdown-body">
+    <h1 id="learning-room-end-to-end-qa-runbook-registration-to-student-completion">Learning Room End-to-End QA Runbook (Registration to Student Completion)</h1>
+<p>Use this runbook when you want one operational checklist that covers the full workflow:</p>
+<ol>
+<li>Registration intake and validation.</li>
+<li>GitHub Classroom deployment and assignment setup.</li>
+<li>Test account acceptance and repository seeding.</li>
+<li>Full student walkthrough of every challenge path.</li>
+<li>Release sign-off evidence for go-live.</li>
+</ol>
+<p>This runbook intentionally excludes podcast validation work.</p>
+<p>Everything else is in scope: registration flow, classroom deployment, assignment configuration, template readiness, student progression, PR validation, content validation, skills progression, autograder behavior, challenge completion tracking, and chapter-by-chapter curriculum review.</p>
+<h2 id="scope-and-audience">Scope and Audience</h2>
+<p>This runbook is for facilitators, QA leads, and admins who need to verify the complete workshop flow from administrator setup to student completion.</p>
+<h3 id="scope-boundaries">Scope Boundaries</h3>
+<p>In scope:</p>
+<ul>
+<li>Registration workflow behavior and classroom invitation handoff.</li>
+<li>Classroom assignment creation and autograding configuration.</li>
+<li>Learning Room automation workflows and facilitator scripts.</li>
+<li>Full curriculum walkthrough (chapters and appendices).</li>
+<li>Student challenge journey (1-16) and bonus challenge tracking (A-E).</li>
+<li>QA evidence capture, defect logging, and release sign-off.</li>
+</ul>
+<p>Out of scope:</p>
+<ul>
+<li>Podcast generation, podcast validation, and RSS audio feed checks.</li>
+</ul>
+<h2 id="canonical-source-files-used-by-this-runbook">Canonical Source Files Used by This Runbook</h2>
+<p>The following table lists the source files this runbook consolidates.</p>
+<table>
+<thead>
+<tr>
+<th scope="col">Area</th>
+<th scope="col">Source file</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Registration entry page</td>
+<td><a href="../REGISTER.html">REGISTER.md</a></td>
+</tr>
+<tr>
+<td>Registration automation admin</td>
+<td><a href="REGISTRATION-ADMIN.html">REGISTRATION-ADMIN.md</a></td>
+</tr>
+<tr>
+<td>Registration automation quickstart</td>
+<td><a href="REGISTRATION-QUICKSTART.html">REGISTRATION-QUICKSTART.md</a></td>
+</tr>
+<tr>
+<td>Registration workflow logic</td>
+<td><a href="../.github/workflows/registration.yml">.github/workflows/registration.yml</a></td>
+</tr>
+<tr>
+<td>Classroom deployment</td>
+<td><a href="../classroom/README.html">classroom/README.md</a></td>
+</tr>
+<tr>
+<td>Assignment copy and autograding setup</td>
+<td><a href="classroom/README.html">admin/classroom/README.md</a></td>
+</tr>
+<tr>
+<td>Human challenge walkthrough</td>
+<td><a href="../classroom/HUMAN_TEST_MATRIX.html">classroom/HUMAN_TEST_MATRIX.md</a></td>
+</tr>
+<tr>
+<td>Challenge definitions</td>
+<td><a href="../docs/CHALLENGES.html">docs/CHALLENGES.md</a></td>
+</tr>
+<tr>
+<td>Student starting path</td>
+<td><a href="../docs/get-going.html">docs/get-going.md</a></td>
+</tr>
+<tr>
+<td>Grading criteria</td>
+<td><a href="../classroom/grading-guide.html">classroom/grading-guide.md</a></td>
+</tr>
+<tr>
+<td>Release gate baseline</td>
+<td><a href="../GO-LIVE-QA-GUIDE.html">GO-LIVE-QA-GUIDE.md</a></td>
+</tr>
+<tr>
+<td>Support hub operations</td>
+<td><a href="SUPPORT_HUB_OPERATIONS.html">SUPPORT_HUB_OPERATIONS.md</a></td>
+</tr>
+</tbody></table>
+<h2 id="required-accounts-access-and-tools">Required Accounts, Access, and Tools</h2>
+<p>Complete this section before Phase 1.</p>
+<ul>
+<li>Facilitator admin account (<code>accesswatch</code>) with Owner access to both <code>Community-Access</code> and <code>Community-Access-Classroom</code>.</li>
+<li>Dedicated non-admin test student account for acceptance and full challenge walkthrough. This must be a separate GitHub account that is not an owner or member of either organization.</li>
+<li>Access to <a href="https://classroom.github.com">classroom.github.com</a> while signed in as <code>accesswatch</code>.</li>
+<li>Access to repository settings for <code>Community-Access/git-going-with-github</code> (secrets and variables).</li>
+<li>Local clone of this repository with PowerShell available.</li>
+<li>GitHub CLI (<code>gh</code>) installed and authenticated as <code>accesswatch</code> for optional verification commands.</li>
+</ul>
+<h3 id="critical-precondition-gates-no-go-if-any-fail">Critical Precondition Gates (No-Go if any fail)</h3>
+<p>Complete all items below before any cohort launch actions.</p>
+<ul>
+<li><input aria-label="Facilitator account" disabled="" type="checkbox"> Facilitator account <code>accesswatch</code> can access both organizations:<ul>
+<li><input aria-label="" disabled="" type="checkbox"> <code>Community-Access</code> (the workshop and code repository organization)</li>
+<li><input aria-label="" disabled="" type="checkbox"> <code>Community-Access-Classroom</code> (the GitHub Classroom organization where student repos are created)</li>
+</ul>
+</li>
+<li><input aria-label="" disabled="" type="checkbox"> <code>accesswatch</code> has a verified email address on its GitHub account and can create and edit Classroom assignments at <a href="https://classroom.github.com">classroom.github.com</a>.</li>
+<li><input aria-label="Dedicated non-admin test student account exists and can accept invites." disabled="" type="checkbox"> Dedicated non-admin test student account exists and can accept invites.</li>
+<li><input checked="" disabled="" type="checkbox"> <code>gh auth status</code> succeeds for <code>accesswatch</code> in local terminal.</li>
+<li><input checked="" disabled="" type="checkbox"> Template repository exists and is set as template repo:<ul>
+<li><input checked="" disabled="" type="checkbox"> <code>Community-Access/learning-room-template</code></li>
+</ul>
+</li>
+<li><input checked="" disabled="" type="checkbox"> Template repository Actions settings allow required automation behavior:<ul>
+<li><input checked="" disabled="" type="checkbox"> Actions enabled</li>
+<li><input checked="" disabled="" type="checkbox"> <code>GITHUB_TOKEN</code> default workflow permissions include write where required</li>
+<li><input checked="" disabled="" type="checkbox"> <code>Allow GitHub Actions to create and approve pull requests</code> enabled</li>
+</ul>
+</li>
+<li><input aria-label="Registration automation settings are correct when using registration-to-classroom handoff:" disabled="" type="checkbox"> Registration automation settings are correct when using registration-to-classroom handoff:<ul>
+<li><input aria-label="Secret" disabled="" type="checkbox"> Secret <code>CLASSROOM_ORG_ADMIN_TOKEN</code> is set in <code>Community-Access/git-going-with-github</code></li>
+<li><input aria-label="Variables" disabled="" type="checkbox"> Variables <code>CLASSROOM_ORG</code>, <code>CLASSROOM_DAY1_ASSIGNMENT_URL</code>, <code>CLASSROOM_DAY2_ASSIGNMENT_URL</code> are set in <code>Community-Access/git-going-with-github</code></li>
+</ul>
+</li>
+<li><input checked="" disabled="" type="checkbox"> Registration entry configuration exists and is valid:<ul>
+<li><input checked="" disabled="" type="checkbox"> Issue form template <code>workshop-registration.yml</code> exists</li>
+<li><input checked="" disabled="" type="checkbox"> Required labels exist: <code>registration</code>, <code>duplicate</code>, <code>waitlist</code></li>
+</ul>
+</li>
+<li><input aria-label="Support hub is ready for student onboarding:" disabled="" type="checkbox"> Support hub is ready for student onboarding:<ul>
+<li><input aria-label="" disabled="" type="checkbox"> <code>Community-Access/git-going-open-support</code> is public and reachable</li>
+<li><input aria-label="Issues and Discussions are enabled" disabled="" type="checkbox"> Issues and Discussions are enabled</li>
+<li><input aria-label="Support labels and templates are present" disabled="" type="checkbox"> Support labels and templates are present</li>
+</ul>
+</li>
+<li><input aria-label="While signed in as" disabled="" type="checkbox"> While signed in as <code>accesswatch</code>, opening <a href="https://classroom.github.com">classroom.github.com</a> shows the <code>Community-Access-Classroom</code> classroom organization.</li>
+</ul>
+<p>If any precondition fails, stop and resolve before proceeding.</p>
+<h3 id="exact-setup-steps-for-keys-permissions-settings-and-template-currency">Exact Setup Steps for Keys, Permissions, Settings, and Template Currency</h3>
+<p>Use this section when you need literal setup steps (not only validation checks).</p>
+<h4 id="a-confirm-facilitator-account-and-organization-access">A. Confirm facilitator account and organization access</h4>
+<p>You are performing all steps below as <code>accesswatch</code>. If you are currently signed in to GitHub as a different account, sign out first and sign in as <code>accesswatch</code> before continuing.</p>
+<ol>
+<li>Go to <a href="https://github.com">github.com</a> and confirm the top-right avatar shows <code>accesswatch</code>.</li>
+<li>Open the avatar menu, then select <strong>Your organizations</strong>.</li>
+<li>Confirm both of the following organizations appear in the list:<ul>
+<li><code>Community-Access</code> -- the main workshop repository organization</li>
+<li><code>Community-Access-Classroom</code> -- the GitHub Classroom organization where student repos are created</li>
+<li>If either is missing, do not proceed. Contact the org owner to ensure <code>accesswatch</code> has Owner-level membership in both.</li>
+</ul>
+</li>
+<li>Click into <code>Community-Access</code> and open the <strong>Settings</strong> tab. Confirm you can see the full settings sidebar (Members, Actions, Secrets, etc.). If Settings is not visible, <code>accesswatch</code> does not have Owner access and you cannot proceed.</li>
+<li>Click into <code>Community-Access-Classroom</code> and open its <strong>Settings</strong> tab. Confirm the same.</li>
+<li>Optional CLI verification from the local repository root:</li>
+</ol>
+<pre><code class="hljs language-powershell">gh auth status <span class="hljs-literal">-h</span> github.com
+gh repo view Community<span class="hljs-literal">-Access</span>/git<span class="hljs-literal">-going-with-github</span>
+gh repo view Community<span class="hljs-literal">-Access</span>/learning<span class="hljs-literal">-room-template</span></code></pre>
+<p>Expected output: each <code>gh repo view</code> command should return repository metadata without an error. If you see &quot;Could not resolve to a Repository&quot;, <code>accesswatch</code> does not have the required access.</p>
+<p>Why this matters:</p>
+<ul>
+<li>All downstream setup steps operate against <code>Community-Access/git-going-with-github</code> and <code>Community-Access-Classroom</code>. If the account does not have Owner access to both, secrets, variables, and classroom automation cannot be configured.</li>
+</ul>
+<h4 id="a1-create-github-classroom-assignments">A.1 Create GitHub Classroom assignments</h4>
+<p>Do this before section B. You need both assignment URLs in hand before you can fill in the repository variables.</p>
+<p>You must be signed in to GitHub as <code>accesswatch</code> for the following steps.</p>
+<ol>
+<li>Go to <a href="https://classroom.github.com">classroom.github.com</a>.</li>
+<li>You will see a list of classrooms. Select the classroom named for this cohort that is linked to the <code>Community-Access-Classroom</code> organization. The organization name appears below the classroom name on the card.<ul>
+<li>If no classroom exists yet, select <strong>New classroom</strong>, then choose <code>Community-Access-Classroom</code> as the organization. Name the classroom using the format <code>Git Going - [Cohort Name] - [Month Year]</code> (for example, <code>Git Going - May 2026</code>).</li>
+</ul>
+</li>
+<li>Inside the classroom, select <strong>New assignment</strong>.</li>
+<li>Create the Day 1 assignment:<ul>
+<li><strong>Title</strong>: <code>You Belong Here</code></li>
+<li><strong>Individual or group</strong>: Individual</li>
+<li><strong>Repository visibility</strong>: Private</li>
+<li><strong>Template repository</strong>: <code>Community-Access/learning-room-template</code> (search for it by name in the template field)</li>
+<li><strong>Grant students admin access</strong>: No</li>
+<li><strong>Enable feedback pull requests</strong>: Yes</li>
+<li>Paste the Day 1 assignment description from <a href="../classroom/assignment-day1-you-belong-here.html">classroom/assignment-day1-you-belong-here.md</a></li>
+<li>Add autograding from <a href="classroom/autograding-setup.html">admin/classroom/autograding-setup.md</a> -- Day 1 requires exactly 4 tests totaling 50 points</li>
+<li>Select <strong>Create assignment</strong></li>
+</ul>
+</li>
+<li>After saving, the assignment page shows an invite link at the top labeled something like <strong>Invite link</strong>. It will be in the format <code>https://classroom.github.com/a/&lt;short-code&gt;</code>. Copy this full URL and paste it somewhere safe (for example, a scratch notepad). This is your <code>CLASSROOM_DAY1_ASSIGNMENT_URL</code>.</li>
+<li>Repeat for the Day 2 assignment:<ul>
+<li><strong>Title</strong>: <code>You Can Build This</code></li>
+<li>Same base settings as Day 1</li>
+<li>Paste description from <a href="../classroom/assignment-day2-you-can-build-this.html">classroom/assignment-day2-you-can-build-this.md</a></li>
+<li>Add Day 2 autograding: exactly 6 tests totaling 75 points</li>
+<li>Copy the resulting invite URL. This is your <code>CLASSROOM_DAY2_ASSIGNMENT_URL</code>.</li>
+</ul>
+</li>
+<li>Keep both URLs available. You will paste them into repository variables in section B step 4.</li>
+</ol>
+<p>Why this matters:</p>
+<ul>
+<li>The repository variables <code>CLASSROOM_DAY1_ASSIGNMENT_URL</code> and <code>CLASSROOM_DAY2_ASSIGNMENT_URL</code> cannot be filled in until the assignments exist and their invite URLs are known. The short code in the URL is unique to each assignment and is not predictable in advance.</li>
+</ul>
+<h4 id="b-configure-registration-automation-key-and-variables">B. Configure registration automation key and variables</h4>
+<p>Repository target: <code>Community-Access/git-going-with-github</code></p>
+<p>You must be signed in as <code>accesswatch</code> for all steps in this section.</p>
+<p><strong>Step B.1 -- Generate the personal access token (PAT)</strong></p>
+<p>The <code>CLASSROOM_ORG_ADMIN_TOKEN</code> secret must be a GitHub personal access token generated by <code>accesswatch</code> (or another Owner-level account for <code>Community-Access-Classroom</code>). This token is what allows the registration workflow to invite students to the <code>Community-Access-Classroom</code> organization automatically.</p>
+<ol>
+<li>While signed in as <code>accesswatch</code>, go to <a href="https://github.com/settings/tokens">github.com/settings/tokens</a>.</li>
+<li>Select <strong>Generate new token</strong>, then select <strong>Generate new token (classic)</strong>.<ul>
+<li>Do not use fine-grained tokens for this purpose. The <code>admin:org</code> scope is only available on classic tokens.</li>
+</ul>
+</li>
+<li>In the <strong>Note</strong> field enter a descriptive name such as <code>Community-Access registration automation</code>.</li>
+<li>In the <strong>Expiration</strong> field, set a date that covers your cohort timeline plus a buffer (for example, 90 days).</li>
+<li>Under <strong>Select scopes</strong>, check <code>admin:org</code>. This is the only scope required. It gives the token permission to list and create organization invitations for <code>Community-Access-Classroom</code>.</li>
+<li>Scroll to the bottom and select <strong>Generate token</strong>.</li>
+<li>GitHub will display the token exactly once immediately after generation. It begins with <code>ghp_</code>. Copy it now and paste it somewhere safe (a local scratch notepad, not a repository file). You will not be able to view it again.</li>
+<li>Do not close the token page until you have completed section B.2 and confirmed the secret was saved.</li>
+</ol>
+<p><strong>Step B.2 -- Add the token as a repository secret</strong></p>
+<ol>
+<li>Go to <a href="https://github.com/Community-Access/git-going-with-github/settings/secrets/actions">github.com/Community-Access/git-going-with-github/settings/secrets/actions</a>.</li>
+<li>Select <strong>New repository secret</strong>.</li>
+<li>In the <strong>Name</strong> field, enter exactly: <code>CLASSROOM_ORG_ADMIN_TOKEN</code><ul>
+<li>Capitalization and underscores must match exactly.</li>
+</ul>
+</li>
+<li>In the <strong>Secret</strong> field, paste the token you copied in step B.1.</li>
+<li>Select <strong>Add secret</strong>.</li>
+<li>Re-open the secret entry and confirm the name shows <code>CLASSROOM_ORG_ADMIN_TOKEN</code>. GitHub does not display the value again, but confirming the name is correct is sufficient.</li>
+</ol>
+<p><strong>Step B.3 -- Add the repository variables</strong></p>
+<ol>
+<li>At the same settings page, select the <strong>Variables</strong> tab (next to Secrets).</li>
+<li><p>Select <strong>New repository variable</strong> for each of the following. Add them one at a time.</p>
+<p>Variable 1:</p>
+<ul>
+<li><strong>Name</strong>: <code>CLASSROOM_ORG</code></li>
+<li><strong>Value</strong>: <code>Community-Access-Classroom</code></li>
+<li>This is the exact GitHub organization name where students are invited. The capitalization and hyphens must match exactly.</li>
+</ul>
+<p>Variable 2:</p>
+<ul>
+<li><strong>Name</strong>: <code>CLASSROOM_DAY1_ASSIGNMENT_URL</code></li>
+<li><strong>Value</strong>: paste the Day 1 invite URL you copied in section A.1 step 5 (format: <code>https://classroom.github.com/a/&lt;short-code&gt;</code>)</li>
+</ul>
+<p>Variable 3:</p>
+<ul>
+<li><strong>Name</strong>: <code>CLASSROOM_DAY2_ASSIGNMENT_URL</code></li>
+<li><strong>Value</strong>: paste the Day 2 invite URL you copied in section A.1 step 6 (format: <code>https://classroom.github.com/a/&lt;short-code&gt;</code>)</li>
+</ul>
+</li>
+<li><p>After adding all three, re-open each variable entry and confirm:</p>
+<ul>
+<li>The name is exactly as listed above (no typos, no extra characters).</li>
+<li>The value has no leading or trailing spaces. Paste into a plain text editor first if you are unsure, and trim whitespace before re-pasting.</li>
+</ul>
+</li>
+<li>Run one registration test and confirm welcome comment contains assignment links.</li>
+</ol>
+<p>Why this matters:</p>
+<ul>
+<li>These values drive invite and assignment-link injection in registration responses. A single typo in the org name or a trailing space in a variable value will silently break automation without a clear error message.</li>
+</ul>
+<h4 id="c-configure-template-repository-actions-permissions">C. Configure template repository Actions permissions</h4>
+<p>Repository target: <code>Community-Access/learning-room-template</code></p>
+<ol>
+<li>Open repository Settings.</li>
+<li>Open Actions, then General.</li>
+<li>In Actions permissions, ensure Actions are enabled for the repository.</li>
+<li>In Workflow permissions, set <code>GITHUB_TOKEN</code> to Read and write permissions.</li>
+<li>Enable Allow GitHub Actions to create and approve pull requests.</li>
+<li>Save changes.</li>
+</ol>
+<p>Why this matters:</p>
+<ul>
+<li>Template automation and bot workflows require write-capable workflow token behavior.</li>
+</ul>
+<h4 id="d-confirm-the-repository-is-a-template-and-hosted-in-community-access">D. Confirm the repository is a template and hosted in Community-Access</h4>
+<ol>
+<li>Open <code>Community-Access/learning-room-template</code>.</li>
+<li>Open Settings, then General.</li>
+<li>Confirm the repository is marked as a template repository.</li>
+<li>Confirm default branch is <code>main</code>.</li>
+</ol>
+<p>Why this matters:</p>
+<ul>
+<li>Classroom assignment creation depends on the repository being available as a template.</li>
+</ul>
+<h4 id="e-confirm-the-latest-learning-room-content-is-deployed-to-community-access-template">E. Confirm the latest learning-room content is deployed to Community-Access template</h4>
+<ol>
+<li>From repository root, run:</li>
+</ol>
+<pre><code class="hljs language-powershell">scripts/classroom/Prepare<span class="hljs-literal">-LearningRoomTemplate</span>.ps1 <span class="hljs-literal">-Owner</span> Community<span class="hljs-literal">-Access</span> <span class="hljs-literal">-TemplateRepo</span> learning<span class="hljs-literal">-room-template</span></code></pre>
+<ol start="2">
+<li>If the script reports changes, open and merge the generated sync pull request in <code>Community-Access/learning-room-template</code>.</li>
+<li>If the script reports no changes, capture that output as evidence.</li>
+<li>Verify merged PR (or no-change output) in QA notes.</li>
+</ol>
+<p>Why this matters:</p>
+<ul>
+<li>This is the control point that proves Community-Access template content is current.</li>
+</ul>
+<h4 id="f-prove-freshness-from-a-new-template-generated-repository">F. Prove freshness from a new template-generated repository</h4>
+<ol>
+<li>Run:</li>
+</ol>
+<pre><code class="hljs language-powershell">scripts/classroom/<span class="hljs-built_in">Test-LearningRoomTemplate</span>.ps1 <span class="hljs-literal">-Owner</span> Community<span class="hljs-literal">-Access</span> <span class="hljs-literal">-TemplateRepo</span> learning<span class="hljs-literal">-room-template</span> <span class="hljs-literal">-KeepSmokeRepo</span></code></pre>
+<ol start="2">
+<li>Open the retained smoke repository.</li>
+<li>Compare at least three files changed in the most recent template sync PR:<ul>
+<li>one workflow file</li>
+<li>one issue template file</li>
+<li>one docs or script file</li>
+</ul>
+</li>
+<li>Confirm file content in smoke repo matches merged sync PR content.</li>
+<li>Record comparison links and outcome in QA notes.</li>
+</ol>
+<p>Why this matters:</p>
+<ul>
+<li>This proves newly created student repositories inherit the latest template state, not stale content.</li>
+</ul>
+<h2 id="test-artifacts-you-will-produce">Test Artifacts You Will Produce</h2>
+<p>Collect the following evidence while running QA.</p>
+<ul>
+<li>Screenshots of registration confirmation and waitlist behavior.</li>
+<li>Screenshot of Day 1 and Day 2 assignment configuration pages.</li>
+<li>Screenshot of Day 1 and Day 2 autograding test lists with correct counts.</li>
+<li>Link to Learning Room template sync PR (or explicit no-change output) before cohort launch.</li>
+<li>Evidence of template smoke validation from a repo created from <code>Community-Access/learning-room-template</code>.</li>
+<li>Links to test student Day 1 and Day 2 repositories.</li>
+<li>Screenshot or link proving Challenge 1 and Challenge 10 seeding succeeded.</li>
+<li>Links to PRs used to validate Aria and autograders.</li>
+<li>Evidence that progression creates the next issue after close.</li>
+<li>Completed chapter-by-chapter walkthrough tracker for all required docs files.</li>
+<li>Completed challenge tracker for Challenges 1 to 16 and Bonus A to E.</li>
+<li>Final sign-off checklist with pass/fail and owner notes.</li>
+</ul>
+<h3 id="artifact-capture-procedure-required">Artifact Capture Procedure (Required)</h3>
+<p>Use this procedure for every artifact in this section:</p>
+<ol>
+<li>Capture evidence immediately after the validation action completes.</li>
+<li>Name the evidence with timestamp, phase, and short description.</li>
+<li>Store URL-based evidence whenever possible; use screenshots when URL evidence is not available.</li>
+<li>Add one-line context in QA notes describing what the evidence proves.</li>
+<li>If evidence cannot be captured, log a defect and do not mark the related gate complete.</li>
+</ol>
+<p>Why this matters:</p>
+<ul>
+<li>Sign-off quality depends on auditable evidence, not memory or verbal confirmation.</li>
+</ul>
+<h2 id="runbook-execution-standard-applies-to-every-phase">Runbook Execution Standard (Applies to Every Phase)</h2>
+<p>Follow this standard across the entire runbook.</p>
+<ol>
+<li>Read the phase goal and pass criteria before performing actions.</li>
+<li>Execute steps in order unless the runbook explicitly permits parallel execution.</li>
+<li>After each major step, capture evidence and log result as Pass, Fail, or Blocked.</li>
+<li>When a step fails, stop, execute troubleshooting guidance, and document outcome before continuing.</li>
+<li>Do not mark a phase complete until all pass criteria are satisfied or formally risk-accepted.</li>
+</ol>
+<p>Why this matters:</p>
+<ul>
+<li>Consistent execution prevents partial validation and improves handoff reliability between operators.</li>
+</ul>
+<h2 id="qa-validation-contract-what-where-when-how-expected-experience">QA Validation Contract (What, Where, When, How, Expected Experience)</h2>
+<p>Use this section as the operational standard for every phase.</p>
+<table>
+<thead>
+<tr>
+<th scope="col">What to validate</th>
+<th scope="col">Where to validate</th>
+<th scope="col">When expected</th>
+<th scope="col">How to validate</th>
+<th scope="col">Expected experience</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Registration issue form opens with prefilled title</td>
+<td>Public registration page and GitHub issue form</td>
+<td>Immediately after selecting registration link</td>
+<td>Open the registration form link from <a href="../REGISTER.html">REGISTER.md</a></td>
+<td>Form opens with <code>[REGISTER]</code> prefilled and correct template fields</td>
+</tr>
+<tr>
+<td>Registration labels and form template are present</td>
+<td>Repository issues/labels and <code>.github/ISSUE_TEMPLATE</code></td>
+<td>Before first registration test</td>
+<td>Verify labels and <code>workshop-registration.yml</code> exist</td>
+<td>Registration workflow can label and process issues without setup errors</td>
+</tr>
+<tr>
+<td>Registration confirmation behavior</td>
+<td>Registration issue thread and Actions run for <code>registration.yml</code></td>
+<td>Within 1-3 minutes of issue submission</td>
+<td>Submit test registration and inspect comment and labels</td>
+<td>Welcome comment appears, <code>registration</code> label applied, no manual intervention required</td>
+</tr>
+<tr>
+<td>Classroom invite link injection in confirmation</td>
+<td>Same registration issue welcome comment</td>
+<td>Same workflow run as registration confirmation</td>
+<td>Confirm assignment URL variables are configured and inspect comment body</td>
+<td>Day 1 and Day 2 links appear exactly once and are clickable</td>
+</tr>
+<tr>
+<td>Duplicate registration handling</td>
+<td>Duplicate registration issue</td>
+<td>Within 1-3 minutes of duplicate submission</td>
+<td>Submit second registration from same account</td>
+<td>Issue auto-closed, <code>duplicate</code> label applied, link to original issue included</td>
+</tr>
+<tr>
+<td>Waitlist behavior</td>
+<td>Registration issue and labels</td>
+<td>Within 1-3 minutes when capacity threshold is met</td>
+<td>Validate in safe staging path or controlled test</td>
+<td>Waitlist message appears and <code>waitlist</code> label applied</td>
+</tr>
+<tr>
+<td>Classroom assignment creation</td>
+<td>GitHub Classroom UI</td>
+<td>During deployment phase before student testing</td>
+<td>Configure Day 1 and Day 2 using source docs</td>
+<td>Assignment fields match source of truth and are published</td>
+</tr>
+<tr>
+<td>Student repo creation after acceptance</td>
+<td>Classroom dashboard and student account repositories</td>
+<td>30-60 seconds after invite acceptance</td>
+<td>Accept Day 1 and Day 2 invite URLs with test student account</td>
+<td>Separate private repos are created and visible to facilitator and test student</td>
+</tr>
+<tr>
+<td>Challenge seeding</td>
+<td>Test student repository Issues tab</td>
+<td>Within 30-90 seconds after seeding script run</td>
+<td>Run seeding scripts and refresh Issues</td>
+<td>Correct starting challenge appears and is assigned correctly</td>
+</tr>
+<tr>
+<td>PR validation feedback (Aria)</td>
+<td>Test student pull request comments and Actions</td>
+<td>Within approximately 60 seconds after PR open/update</td>
+<td>Open PR and push another commit</td>
+<td>Single bot comment appears and updates rather than duplicating</td>
+</tr>
+<tr>
+<td>Content validation feedback</td>
+<td>Test student PR checks/comments and Actions</td>
+<td>Within approximately 60 seconds after PR open/update</td>
+<td>Include link/markdown/accessibility issues and inspect output</td>
+<td>Required fixes and suggestions are clear and tied to changed files</td>
+</tr>
+<tr>
+<td>Progression behavior</td>
+<td>Test student Issues tab and Actions for student progression</td>
+<td>After each challenge issue closure</td>
+<td>Close challenge issue sequentially</td>
+<td>Next challenge opens automatically with correct number/title</td>
+</tr>
+<tr>
+<td>Skills progression behavior</td>
+<td>PR merged event and resulting comment/workflow output</td>
+<td>After PR merge</td>
+<td>Merge test PR and inspect workflow output</td>
+<td>Achievement/progress feedback posts without workflow failure</td>
+</tr>
+<tr>
+<td>Autograder behavior</td>
+<td>Classroom grading panel, PR checks, and Actions logs</td>
+<td>On relevant challenge events</td>
+<td>Trigger known pass and known fail for each autograded challenge</td>
+<td>Failing scenarios are understandable and pass after correct fix</td>
+</tr>
+<tr>
+<td>Chapter content consistency</td>
+<td>Markdown files under <a href="../docs/README.html">docs</a></td>
+<td>During curriculum review phase before sign-off</td>
+<td>Execute full chapter and appendix checklist</td>
+<td>All required docs reviewed and discrepancies logged</td>
+</tr>
+<tr>
+<td>Challenge coverage completeness</td>
+<td>Challenge tracking table in this runbook</td>
+<td>During student journey execution</td>
+<td>Fill all rows for 1-16 and A-E</td>
+<td>No challenge row is left blank or untracked</td>
+</tr>
+</tbody></table>
+<h2 id="reading-order-for-operators">Reading Order for Operators</h2>
+<p>Read these files in this exact order before executing the runbook.</p>
+<ol>
+<li><a href="REGISTRATION-QUICKSTART.html">REGISTRATION-QUICKSTART.md</a></li>
+<li><a href="REGISTRATION-ADMIN.html">REGISTRATION-ADMIN.md</a></li>
+<li><a href="../classroom/README.html">classroom/README.md</a></li>
+<li><a href="classroom/autograding-setup.html">admin/classroom/autograding-setup.md</a></li>
+<li><a href="../classroom/HUMAN_TEST_MATRIX.html">classroom/HUMAN_TEST_MATRIX.md</a></li>
+<li><a href="../docs/CHALLENGES.html">docs/CHALLENGES.md</a></li>
+</ol>
+<p>Reading completion rule:</p>
+<ol>
+<li>Do not begin Phase 0 until all files above are opened and skimmed for current cohort context.</li>
+<li>Log &quot;reading complete&quot; with timestamp in QA notes.</li>
+</ol>
+<p>Why this matters:</p>
+<ul>
+<li>Most setup errors come from skipping source-of-truth docs before execution.</li>
+</ul>
+<h2 id="pre-flight-local-validation-non-podcast">Pre-Flight Local Validation (Non-Podcast)</h2>
+<p>Run these from repository root before live environment QA.</p>
+<pre><code class="hljs language-powershell">npm run test:automation
+npm run build:html
+git <span class="hljs-built_in">diff</span> <span class="hljs-literal">--check</span></code></pre>
+<p>Pass criteria:</p>
+<ul>
+<li>Automation tests pass.</li>
+<li>HTML build completes.</li>
+<li>No unresolved conflict markers or whitespace check failures.</li>
+</ul>
+<h3 id="local-unit-test-evidence-requirements">Local unit-test evidence requirements</h3>
+<p>Record and publish local test evidence under <a href="qa-readiness/README.html">admin/qa-readiness</a>.</p>
+<p>Minimum evidence:</p>
+<ul>
+<li>Test command used.</li>
+<li>Total tests, pass count, fail count.</li>
+<li>Any failing tests and remediation actions.</li>
+<li>Residual risk statement for hosted GitHub behavior not proven by local tests.</li>
+</ul>
+<p>Recommended report format:</p>
+<ul>
+<li><a href="qa-readiness/UNIT-TEST-RESULTS-2026-05-08.html">admin/qa-readiness/UNIT-TEST-RESULTS-2026-05-08.md</a></li>
+</ul>
+<p>No-go rule:</p>
+<ul>
+<li>If local readiness tests fail, do not proceed to template deployment or classroom assignment setup.</li>
+</ul>
+<p>Execution procedure:</p>
+<ol>
+<li>Run commands in listed order from repository root.</li>
+<li>Capture terminal output snippets for each command.</li>
+<li>If any command fails, record failure cause and remediation attempt.</li>
+<li>Re-run failed command after remediation and capture final outcome.</li>
+</ol>
+<p>Why this matters:</p>
+<ul>
+<li>Pre-flight catches local defects before they become live Classroom failures.</li>
+</ul>
+<h2 id="phase-0---registration-system-deployment-gate-admin-side">Phase 0 - Registration System Deployment Gate (Admin Side)</h2>
+<p>This phase is mandatory. Do not run registration QA tests until deployment/configuration is complete.</p>
+<h3 id="step-01-deploy-registration-issue-form-and-workflow-prerequisites">Step 0.1 Deploy registration issue form and workflow prerequisites</h3>
+<p>Goal: ensure the registration intake system is deployed and configured for this course cohort.</p>
+<ol>
+<li>Confirm registration issue form template exists and is current:<ul>
+<li><code>.github/ISSUE_TEMPLATE/workshop-registration.yml</code></li>
+</ul>
+</li>
+<li>Confirm registration workflow exists and is enabled:<ul>
+<li><code>.github/workflows/registration.yml</code></li>
+</ul>
+</li>
+<li>Confirm required labels exist in repository:<ul>
+<li><code>registration</code></li>
+<li><code>duplicate</code></li>
+<li><code>waitlist</code></li>
+</ul>
+</li>
+<li>Confirm repository Actions are enabled for this repository.</li>
+</ol>
+<p>Pass criteria:</p>
+<ul>
+<li>Issue form template is present and selectable from &quot;New issue&quot;.</li>
+<li>Registration workflow is enabled and visible in Actions.</li>
+<li>Required labels exist and are usable.</li>
+</ul>
+<h3 id="step-02-deploy-optional-registration-to-classroom-automation-settings">Step 0.2 Deploy optional registration-to-classroom automation settings</h3>
+<p>Goal: enable automatic org invite and assignment-link injection in registration confirmation comments.</p>
+<p>The fastest path is <code>Initialize-WorkshopSetup.ps1</code>, which sets the secret, all three variables, verifies labels, and runs template prep in a single command. See the setup script section below.</p>
+<p><strong>Using the setup script (recommended):</strong></p>
+<pre><code class="hljs language-powershell">scripts/classroom/<span class="hljs-built_in">Initialize-WorkshopSetup</span>.ps1 <span class="hljs-literal">-AdminPAT</span> ghp_yourTokenHere</code></pre>
+<p>The script will:</p>
+<ul>
+<li>Prompt you if the PAT is missing or invalid</li>
+<li>Resolve Day 1 and Day 2 assignment URLs automatically from the GitHub Classroom API (if assignments exist in the <code>GIT Going with Github</code> classroom)</li>
+<li>Set <code>CLASSROOM_ORG_ADMIN_TOKEN</code> secret and all three variables in <code>Community-Access/git-going-with-github</code></li>
+<li>Verify all three required labels exist, creating any that are missing</li>
+<li>Confirm read-back values have no leading or trailing spaces</li>
+<li>Run <code>Prepare-LearningRoomTemplate.ps1</code> and <code>Test-LearningRoomTemplate.ps1</code> unless skipped</li>
+</ul>
+<p><strong>If running manually instead:</strong></p>
+<ol>
+<li>Generate a classic PAT with <code>admin:org</code> scope at <a href="https://github.com/settings/tokens">github.com/settings/tokens</a> (see section B of the setup steps above for exact steps).</li>
+<li>Go to <a href="https://github.com/Community-Access/git-going-with-github/settings/secrets/actions">github.com/Community-Access/git-going-with-github/settings/secrets/actions</a>.</li>
+<li>Create secret <code>CLASSROOM_ORG_ADMIN_TOKEN</code> with the PAT value.</li>
+<li>On the Variables tab, create:<ul>
+<li><code>CLASSROOM_ORG</code> = <code>Community-Access-Classroom</code></li>
+<li><code>CLASSROOM_DAY1_ASSIGNMENT_URL</code> = invite URL from assignment A.1 step 5</li>
+<li><code>CLASSROOM_DAY2_ASSIGNMENT_URL</code> = invite URL from assignment A.1 step 6</li>
+</ul>
+</li>
+<li>Re-open each value and verify no leading or trailing spaces.</li>
+</ol>
+<p>Pass criteria:</p>
+<ul>
+<li>Secret and variables are present with correct values.</li>
+<li><code>Initialize-WorkshopSetup.ps1</code> reported no failures, or manual verification confirms all values.</li>
+<li>Configuration aligns with <a href="REGISTRATION-ADMIN.html">REGISTRATION-ADMIN.md</a>.</li>
+</ul>
+<h3 id="step-03-registration-deployment-smoke-check">Step 0.3 Registration deployment smoke check</h3>
+<p>Goal: validate the deployed registration system and site are working before manual QA begins.</p>
+<p>Use <code>Test-RegistrationPage.ps1</code> to run this check. The script validates the Pages site, the REGISTER page, the issue form template, required labels, and workflow state. With <code>-RunLiveTest</code> it also submits a real test registration issue, waits for the workflow, and verifies the welcome comment.</p>
+<p><strong>Static checks only (site, config, labels, workflow state):</strong></p>
+<pre><code class="hljs language-powershell">scripts/classroom/<span class="hljs-built_in">Test-RegistrationPage</span>.ps1</code></pre>
+<p><strong>Full live end-to-end test including issue submission:</strong></p>
+<pre><code class="hljs language-powershell">scripts/classroom/<span class="hljs-built_in">Test-RegistrationPage</span>.ps1 <span class="hljs-literal">-RunLiveTest</span></code></pre>
+<p>What the script checks:</p>
+<ol>
+<li>HTTP GET to <code>https://community-access.org/git-going-with-github/</code> returns 200.</li>
+<li>HTTP GET to <code>https://community-access.org/git-going-with-github/REGISTER</code> returns 200 and contains expected content.</li>
+<li><code>workshop-registration.yml</code> exists in <code>.github/ISSUE_TEMPLATE/</code>.</li>
+<li>Labels <code>registration</code>, <code>duplicate</code>, and <code>waitlist</code> exist.</li>
+<li><code>registration.yml</code> workflow is active and has a recent successful run.</li>
+<li>(Live test only) Test issue is submitted, workflow completes, welcome comment posts with assignment links, <code>registration</code> label is applied.</li>
+</ol>
+<p>Cleanup limitation: the test issue is closed and locked by the script. It <strong>cannot be deleted via the GitHub API</strong>. If deletion is needed, a repository admin must delete it manually from the Issues tab after this run.</p>
+<p>Pass criteria:</p>
+<ul>
+<li><code>Test-RegistrationPage.ps1</code> exits with no failures.</li>
+<li>Live test (if run) confirms workflow executes end to end.</li>
+<li>Output comment and labels match deployed configuration.</li>
+</ul>
+<h2 id="phase-1---registration-system-qa-admin-side">Phase 1 - Registration System QA (Admin Side)</h2>
+<h3 id="step-1-verify-public-registration-entry-path">Step 1. Verify public registration entry path</h3>
+<ol>
+<li>Open <a href="../REGISTER.html">REGISTER.md</a> and confirm the registration link points to the issue form template with <code>workshop-registration.yml</code>.</li>
+<li>Open the rendered registration page and activate the registration form link.</li>
+<li>Confirm the issue form opens with <code>[REGISTER]</code> in the title.</li>
+<li>Confirm the page communicates that registration issues are public.</li>
+</ol>
+<p>Pass criteria:</p>
+<ul>
+<li>Registration link opens correctly.</li>
+<li>Registration issue title is prefilled with <code>[REGISTER]</code>.</li>
+<li>Public visibility warning is present.</li>
+<li>Support links point to <code>Community-Access/git-going-open-support</code> issues/discussions.</li>
+</ul>
+<h3 id="step-11-verify-support-hub-onboarding-path">Step 1.1 Verify support hub onboarding path</h3>
+<ol>
+<li>Open <code>Community-Access/git-going-open-support</code> and confirm Issues and Discussions are enabled.</li>
+<li>Confirm pinned Start Here onboarding guidance exists in Discussions.</li>
+<li>Open a test support issue using a template and confirm triage labels apply.</li>
+</ol>
+<p>Pass criteria:</p>
+<ul>
+<li>Support hub is reachable and public.</li>
+<li>Onboarding path is discoverable for students.</li>
+<li>Template-driven support issue flow works.</li>
+</ul>
+<h3 id="step-2-configure-registration-automation-for-classroom-handoff">Step 2. Configure registration automation for classroom handoff</h3>
+<p>If <code>Initialize-WorkshopSetup.ps1</code> was run successfully in Phase 0, this step is already complete. Re-verify with:</p>
+<pre><code class="hljs language-powershell">gh secret list <span class="hljs-literal">-R</span> Community<span class="hljs-literal">-Access</span>/git<span class="hljs-literal">-going-with-github</span>
+gh variable list <span class="hljs-literal">-R</span> Community<span class="hljs-literal">-Access</span>/git<span class="hljs-literal">-going-with-github</span></code></pre>
+<p>Expected output: <code>CLASSROOM_ORG_ADMIN_TOKEN</code> appears in secrets, and <code>CLASSROOM_ORG</code>, <code>CLASSROOM_DAY1_ASSIGNMENT_URL</code>, <code>CLASSROOM_DAY2_ASSIGNMENT_URL</code> appear in variables.</p>
+<p>If any are missing, run <code>Initialize-WorkshopSetup.ps1</code> again or follow the manual steps in section B of the setup instructions. For full reference, see <a href="REGISTRATION-QUICKSTART.html">REGISTRATION-QUICKSTART.md</a> and <a href="REGISTRATION-ADMIN.html">REGISTRATION-ADMIN.md</a>.</p>
+<p>Pass criteria:</p>
+<ul>
+<li><code>CLASSROOM_ORG_ADMIN_TOKEN</code> secret is present.</li>
+<li>All 3 variables are present with correct values and no leading or trailing spaces.</li>
+</ul>
+<h3 id="step-3-execute-registration-happy-path-test">Step 3. Execute registration happy-path test</h3>
+<p>Use the non-admin test student account.</p>
+<ol>
+<li>Submit the registration issue form once.</li>
+<li>Wait for <code>Registration - Welcome &amp; CSV Export</code> workflow to complete.</li>
+<li>Confirm the issue receives a welcome comment.</li>
+<li>Confirm the welcome comment includes:<ul>
+<li>Zoom registration information.</li>
+<li>Day 1 and Day 2 assignment links (if variables are set).</li>
+<li>Organization invitation status when classroom org automation is active.</li>
+</ul>
+</li>
+<li>Confirm <code>registration</code> label is applied.</li>
+</ol>
+<p>Pass criteria:</p>
+<ul>
+<li>Workflow succeeds.</li>
+<li>Comment content is complete and accurate.</li>
+<li><code>registration</code> label exists on the issue.</li>
+</ul>
+<h3 id="step-4-execute-duplicate-and-waitlist-tests">Step 4. Execute duplicate and waitlist tests</h3>
+<ol>
+<li>Submit a second registration issue from the same test account.</li>
+<li>Confirm workflow marks the issue duplicate and closes it with guidance to the original issue.</li>
+<li>For waitlist behavior, use a controlled test strategy:<ul>
+<li>Preferred: run in a staging copy where capacity can be reached safely.</li>
+<li>Alternative: dry-run logic review from <a href="../.github/workflows/registration.yml">.github/workflows/registration.yml</a> and verify conditions with maintainers.</li>
+</ul>
+</li>
+<li>Confirm waitlist message and <code>waitlist</code> label behavior in the chosen test environment.</li>
+</ol>
+<p>Pass criteria:</p>
+<ul>
+<li>Duplicate submission closes with duplicate guidance.</li>
+<li>Waitlist path and label behavior are validated.</li>
+</ul>
+<h3 id="step-5-verify-csv-export-and-roster-sync-outputs">Step 5. Verify CSV export and roster sync outputs</h3>
+<ol>
+<li>Open the workflow run artifacts and download <code>registration-data</code>.</li>
+<li>Confirm CSV includes expected columns and test user row.</li>
+<li>Verify <code>.github/data/student-roster.json</code> is updated by workflow with non-PII operational fields.</li>
+<li>Optionally trigger manual rebuild:</li>
+</ol>
+<pre><code class="hljs language-powershell">gh workflow run registration.yml <span class="hljs-literal">-R</span> community<span class="hljs-literal">-access</span>/git<span class="hljs-literal">-going-with-github</span></code></pre>
+<p>Pass criteria:</p>
+<ul>
+<li>CSV artifact is present and parseable.</li>
+<li>Roster sync commit appears only when data changed.</li>
+</ul>
+<h2 id="phase-2---learning-room-template-deployment-gate-admin-side">Phase 2 - Learning Room Template Deployment Gate (Admin Side)</h2>
+<p>This phase is mandatory. Do not create Classroom assignments until this gate is complete.</p>
+<h3 id="step-6-sync-local-learning-room-source-into-github-template-repository">Step 6. Sync local Learning Room source into GitHub template repository</h3>
+<p>Goal: ensure <code>Community-Access/learning-room-template</code> reflects the latest source from <code>learning-room/</code>.</p>
+<p>Run from repository root:</p>
+<pre><code class="hljs language-powershell">scripts/classroom/Prepare<span class="hljs-literal">-LearningRoomTemplate</span>.ps1 <span class="hljs-literal">-Owner</span> Community<span class="hljs-literal">-Access</span> <span class="hljs-literal">-TemplateRepo</span> learning<span class="hljs-literal">-room-template</span></code></pre>
+<p>What to expect:</p>
+<ol>
+<li>Script verifies GitHub CLI auth.</li>
+<li>Script ensures template repository settings (template mode and Actions permissions where allowed).</li>
+<li>Script creates a sync branch and PR if changes exist.</li>
+<li>If no changes exist, script reports no template changes to commit.</li>
+</ol>
+<p>Where to verify:</p>
+<ul>
+<li><code>Community-Access/learning-room-template</code> pull requests list.</li>
+<li>Template repository Actions/settings page.</li>
+</ul>
+<p>Pass criteria:</p>
+<ul>
+<li>Template sync PR exists and is merged to <code>main</code>, or script reports no changes required.</li>
+<li>Template repository remains configured as a template repository.</li>
+<li>Template repository default branch is <code>main</code> and visible in repository settings.</li>
+</ul>
+<h3 id="step-7-validate-published-template-with-smoke-repository">Step 7. Validate published template with smoke repository</h3>
+<p>Goal: prove that new repos created from the template include required workflows/templates and can trigger challenge progression.</p>
+<p>Run from repository root:</p>
+<pre><code class="hljs language-powershell">scripts/classroom/<span class="hljs-built_in">Test-LearningRoomTemplate</span>.ps1 <span class="hljs-literal">-Owner</span> Community<span class="hljs-literal">-Access</span> <span class="hljs-literal">-TemplateRepo</span> learning<span class="hljs-literal">-room-template</span></code></pre>
+<p>What to expect:</p>
+<ol>
+<li>Script creates a temporary private smoke repo from the template.</li>
+<li>Script checks key files exist (student progression workflow, challenge template, progression script).</li>
+<li>Script triggers Challenge 1 workflow dispatch.</li>
+<li>Script deletes smoke repo unless <code>-KeepSmokeRepo</code> is specified.</li>
+</ol>
+<p>Where to verify:</p>
+<ul>
+<li>Smoke repo creation/deletion in GitHub repos list.</li>
+<li>Workflow run history and issue creation in smoke repo when retained.</li>
+</ul>
+<p>Pass criteria:</p>
+<ul>
+<li>Smoke repo creation succeeds from template.</li>
+<li>Required files exist in smoke repo.</li>
+<li>Challenge 1 workflow dispatch succeeds.</li>
+<li>Smoke repo validates workflow inventory:<ul>
+<li><code>pr-validation-bot.yml</code></li>
+<li><code>content-validation.yml</code></li>
+<li><code>student-progression.yml</code></li>
+<li><code>skills-progression.yml</code></li>
+<li><code>autograder-conflicts.yml</code></li>
+<li><code>autograder-local-commit.yml</code></li>
+<li><code>autograder-template.yml</code></li>
+<li><code>autograder-capstone.yml</code></li>
+</ul>
+</li>
+</ul>
+<h3 id="step-8-prove-template-freshness-latest-release-content-is-live">Step 8. Prove template freshness (latest release content is live)</h3>
+<p>Goal: confirm that newly created repositories are generated from the latest deployed template content, not stale template state.</p>
+<ol>
+<li>Keep the smoke repository (<code>-KeepSmokeRepo</code>) or create another temporary smoke repo from template.</li>
+<li>Open the merged template sync PR from Step 6.</li>
+<li>Select at least 3 files changed in that PR, including at least:<ul>
+<li>one workflow file,</li>
+<li>one issue template file,</li>
+<li>one docs or script file.</li>
+</ul>
+</li>
+<li>Verify those exact file changes are present in the smoke repository.</li>
+<li>Record evidence links in your QA notes.</li>
+</ol>
+<p>Pass criteria:</p>
+<ul>
+<li>Evidence shows smoke repo content matches the latest merged template sync changes.</li>
+<li>No stale-file mismatch is found.</li>
+</ul>
+<h3 id="step-9-optional-comprehensive-harness-check">Step 9. Optional comprehensive harness check</h3>
+<p>For deeper verification, run:</p>
+<pre><code class="hljs language-powershell">scripts/classroom/<span class="hljs-built_in">Invoke-LearningRoomEndToEndTest</span>.ps1 <span class="hljs-literal">-SelfTest</span></code></pre>
+<p>Use full end-to-end mode when preparing major cohort launches or after significant automation updates.</p>
+<h2 id="phase-3---classroom-deployment-qa-admin-side">Phase 3 - Classroom Deployment QA (Admin Side)</h2>
+<h3 id="step-10-create-classroom-and-import-roster">Step 10. Create classroom and import roster</h3>
+<p>GitHub Classroom assignment creation has <strong>no write API</strong>. All classroom creation and assignment setup must be done through the browser at <a href="https://classroom.github.com">classroom.github.com</a> while signed in as <code>accesswatch</code>.</p>
+<p>Note: a classroom already exists for this repository (<code>GIT Going with Github</code>, classroom id 322783, linked to <code>Community-Access-Classroom</code>). Unless starting a completely new classroom, skip classroom creation and go directly to assignment creation in Steps 11 and 12.</p>
+<p><strong>If you do need a new classroom:</strong></p>
+<ol>
+<li>Go to <a href="https://classroom.github.com">classroom.github.com</a> as <code>accesswatch</code>.</li>
+<li>Select <strong>New classroom</strong> and choose <code>Community-Access-Classroom</code> as the organization.</li>
+<li>Name it <code>Git Going - [Cohort Name] - [Month Year]</code> (for example, <code>Git Going - May 2026</code>).</li>
+<li>Import roster from <a href="../classroom/roster-template.csv">classroom/roster-template.csv</a> on the Roster tab.</li>
+<li>Add <code>accesswatch-student</code> to the roster as the test student.</li>
+</ol>
+<p><strong>To verify the existing classroom is accessible:</strong></p>
+<pre><code class="hljs language-powershell">gh api /classrooms <span class="hljs-literal">--jq</span> <span class="hljs-string">&#x27;.[] | {id, name, url}&#x27;</span></code></pre>
+<p>Pass criteria:</p>
+<ul>
+<li>Classroom exists in <code>Community-Access-Classroom</code> and is accessible to <code>accesswatch</code>.</li>
+<li>Roster includes <code>accesswatch-student</code> (or the designated test student username).</li>
+</ul>
+<h3 id="step-11-create-day-1-assignment-exactly">Step 11. Create Day 1 assignment exactly</h3>
+<p>See section A.1 of the setup steps above for full navigation instructions.</p>
+<p>Use <a href="../classroom/assignment-day1-you-belong-here.html">classroom/assignment-day1-you-belong-here.md</a> and <a href="classroom/day1-assignment-copy-paste.html">admin/classroom/day1-assignment-copy-paste.md</a> for the exact title, description, and autograding entries.</p>
+<p><strong>To check if the Day 1 assignment already exists:</strong></p>
+<pre><code class="hljs language-powershell">gh api /classrooms/<span class="hljs-number">322783</span>/assignments <span class="hljs-literal">--jq</span> <span class="hljs-string">&#x27;.[] | {id, title, invite_link}&#x27;</span></code></pre>
+<p>If the assignment exists and its <code>invite_link</code> is already in the <code>CLASSROOM_DAY1_ASSIGNMENT_URL</code> variable, skip to Step 12.</p>
+<p><strong>If creating from scratch:</strong></p>
+<ol>
+<li>Go to <a href="https://classroom.github.com">classroom.github.com</a> as <code>accesswatch</code> and open the <code>GIT Going with Github</code> classroom.</li>
+<li>Select <strong>New assignment</strong>.</li>
+<li>Title: <code>You Belong Here</code> (exact match required)</li>
+<li>Type: Individual, Visibility: Private</li>
+<li>Template: <code>Community-Access/learning-room-template</code></li>
+<li>Grant students admin access: No</li>
+<li>Enable feedback pull requests: Yes</li>
+<li>Paste description from <a href="../classroom/assignment-day1-you-belong-here.html">classroom/assignment-day1-you-belong-here.md</a></li>
+<li>Add autograding from <a href="classroom/autograding-setup.html">admin/classroom/autograding-setup.md</a> -- Day 1 requires exactly 4 tests totaling 50 points</li>
+<li>Save and copy the invite URL from the assignment page</li>
+<li>If <code>Initialize-WorkshopSetup.ps1</code> has not been run yet, paste the URL into <code>CLASSROOM_DAY1_ASSIGNMENT_URL</code>. If it has been run, re-run it to pick up the new URL automatically.</li>
+</ol>
+<p>Pass criteria:</p>
+<ul>
+<li>Day 1 assignment exists with title <code>You Belong Here</code>.</li>
+<li>Test count is 4, total points is 50.</li>
+<li>Feedback pull request is enabled.</li>
+<li><code>CLASSROOM_DAY1_ASSIGNMENT_URL</code> variable matches the assignment invite link.</li>
+</ul>
+<h3 id="step-12-create-day-2-assignment-exactly">Step 12. Create Day 2 assignment exactly</h3>
+<p>Same process as Step 11. Check first whether it already exists:</p>
+<pre><code class="hljs language-powershell">gh api /classrooms/<span class="hljs-number">322783</span>/assignments <span class="hljs-literal">--jq</span> <span class="hljs-string">&#x27;.[] | {id, title, invite_link}&#x27;</span></code></pre>
+<p>If the assignment exists and its <code>invite_link</code> is already in <code>CLASSROOM_DAY2_ASSIGNMENT_URL</code>, skip ahead.</p>
+<p><strong>If creating from scratch:</strong></p>
+<ol>
+<li>In the <code>GIT Going with Github</code> classroom, select <strong>New assignment</strong>.</li>
+<li>Title: <code>You Can Build This</code> (exact match required)</li>
+<li>Apply same base settings as Day 1 (individual, private, no admin access, feedback PR enabled)</li>
+<li>Template: <code>Community-Access/learning-room-template</code></li>
+<li>Paste description from <a href="../classroom/assignment-day2-you-can-build-this.html">classroom/assignment-day2-you-can-build-this.md</a></li>
+<li>Add Day 2 autograding from <a href="classroom/autograding-setup.html">admin/classroom/autograding-setup.md</a> -- 6 tests totaling 75 points</li>
+<li>Save and copy the invite URL</li>
+<li>Update <code>CLASSROOM_DAY2_ASSIGNMENT_URL</code> or re-run <code>Initialize-WorkshopSetup.ps1</code> to pick it up automatically</li>
+</ol>
+<p>Pass criteria:</p>
+<ul>
+<li>Day 2 assignment exists with title <code>You Can Build This</code>.</li>
+<li>Test count is 6, total points is 75.</li>
+<li>Feedback pull request is enabled.</li>
+<li><code>CLASSROOM_DAY2_ASSIGNMENT_URL</code> variable matches the assignment invite link.</li>
+</ul>
+<h3 id="step-13-connect-assignment-urls-back-to-registration-automation">Step 13. Connect assignment URLs back to registration automation</h3>
+<p>If <code>Initialize-WorkshopSetup.ps1</code> was run after the assignments were created, the variables are already set. Verify with:</p>
+<pre><code class="hljs language-powershell">gh variable list <span class="hljs-literal">-R</span> Community<span class="hljs-literal">-Access</span>/git<span class="hljs-literal">-going-with-github</span></code></pre>
+<p>If either URL variable is missing or stale, re-run the setup script. It will resolve URLs directly from the Classroom API:</p>
+<pre><code class="hljs language-powershell">scripts/classroom/<span class="hljs-built_in">Initialize-WorkshopSetup</span>.ps1 <span class="hljs-literal">-AdminPAT</span> ghp_yourTokenHere <span class="hljs-literal">-SkipTemplatePrepare</span> <span class="hljs-literal">-SkipTemplateValidate</span></code></pre>
+<p>Then re-run the registration live test to confirm both URLs appear in the welcome comment:</p>
+<pre><code class="hljs language-powershell">scripts/classroom/<span class="hljs-built_in">Test-RegistrationPage</span>.ps1 <span class="hljs-literal">-RunLiveTest</span></code></pre>
+<p>Pass criteria:</p>
+<ul>
+<li><code>CLASSROOM_DAY1_ASSIGNMENT_URL</code> and <code>CLASSROOM_DAY2_ASSIGNMENT_URL</code> are set and match assignment invite links.</li>
+<li>Registration confirmation comment includes both assignment URLs.</li>
+<li><code>Test-RegistrationPage.ps1 -RunLiveTest</code> exits with no failures.</li>
+</ul>
+<h2 id="phase-4---test-student-acceptance-and-seeding-bridge-from-admin-to-student">Phase 4 - Test Student Acceptance and Seeding (Bridge from Admin to Student)</h2>
+<h3 id="step-14-test-student-accepts-day-1-and-day-2-invites">Step 14. Test student accepts Day 1 and Day 2 invites</h3>
+<p>Use the test student account.</p>
+<ol>
+<li>Open Day 1 invite URL.</li>
+<li>Accept assignment and wait for repo creation.</li>
+<li>Record Day 1 test repo URL.</li>
+<li>Open Day 2 invite URL.</li>
+<li>Accept assignment and wait for repo creation.</li>
+<li>Record Day 2 test repo URL.</li>
+</ol>
+<p>Pass criteria:</p>
+<ul>
+<li>Two private repos are created and visible in classroom dashboard.</li>
+</ul>
+<h3 id="step-15-seed-initial-challenges-and-peer-simulation">Step 15. Seed initial challenges and peer simulation</h3>
+<p>The test student account is <code>accesswatch-student</code>. GitHub Classroom generates repository names from the assignment slug and the student username. For the default assignment titles, the repository names will be:</p>
+<ul>
+<li>Day 1: <code>Community-Access-Classroom/you-belong-here-accesswatch-student</code></li>
+<li>Day 2: <code>Community-Access-Classroom/you-can-build-this-accesswatch-student</code></li>
+</ul>
+<p>Confirm the exact repository names first:</p>
+<pre><code class="hljs language-powershell">gh repo list Community<span class="hljs-literal">-Access-Classroom</span> <span class="hljs-literal">--json</span> name <span class="hljs-literal">--jq</span> <span class="hljs-string">&#x27;.[].name&#x27;</span> | <span class="hljs-built_in">Select-String</span> access<span class="hljs-built_in">watch-student</span></code></pre>
+<p>Then seed (replace repository slugs with the confirmed names if different):</p>
+<pre><code class="hljs language-powershell"><span class="hljs-variable">$day1</span> = <span class="hljs-string">&#x27;Community-Access-Classroom/you-belong-here-accesswatch-student&#x27;</span>
+<span class="hljs-variable">$day2</span> = <span class="hljs-string">&#x27;Community-Access-Classroom/you-can-build-this-accesswatch-student&#x27;</span>
+
+scripts/classroom/Seed<span class="hljs-literal">-LearningRoomChallenge</span>.ps1 <span class="hljs-literal">-Repository</span> <span class="hljs-variable">$day1</span> <span class="hljs-literal">-Challenge</span> <span class="hljs-number">1</span> <span class="hljs-literal">-Assignee</span> access<span class="hljs-built_in">watch-student</span>
+scripts/classroom/Seed<span class="hljs-literal">-PeerSimulation</span>.ps1 <span class="hljs-literal">-Repository</span> <span class="hljs-variable">$day1</span> <span class="hljs-literal">-StudentUsername</span> access<span class="hljs-built_in">watch-student</span>
+scripts/classroom/Seed<span class="hljs-literal">-LearningRoomChallenge</span>.ps1 <span class="hljs-literal">-Repository</span> <span class="hljs-variable">$day2</span> <span class="hljs-literal">-Challenge</span> <span class="hljs-number">10</span> <span class="hljs-literal">-Assignee</span> access<span class="hljs-built_in">watch-student</span>
+scripts/classroom/Seed<span class="hljs-literal">-PeerSimulation</span>.ps1 <span class="hljs-literal">-Repository</span> <span class="hljs-variable">$day2</span> <span class="hljs-literal">-StudentUsername</span> access<span class="hljs-built_in">watch-student</span></code></pre>
+<p>Alternatively, if <code>Initialize-WorkshopSetup.ps1</code> is run after <code>accesswatch-student</code> has accepted both invites, it will detect the repos and seed them automatically.</p>
+<p>Pass criteria:</p>
+<ul>
+<li>Challenge 1 issue appears in Day 1 repo assigned to <code>accesswatch-student</code>.</li>
+<li>Challenge 10 issue appears in Day 2 repo assigned to <code>accesswatch-student</code>.</li>
+<li>Peer simulation issues and PR exist in both repos.</li>
+</ul>
+<h2 id="phase-5---curriculum-content-qa-walk-every-required-chapter-and-appendix">Phase 5 - Curriculum Content QA (Walk every required chapter and appendix)</h2>
+<p>This phase is required. Do not skip this phase even if challenge automation is passing.</p>
+<h3 id="step-16-execute-full-chapter-and-appendix-walkthrough">Step 16. Execute full chapter and appendix walkthrough</h3>
+<p>For each file listed below, open it and verify:</p>
+<ol>
+<li>Instructions are accurate for the current Classroom model.</li>
+<li>Links resolve or are intentionally marked as practice targets.</li>
+<li>Accessibility language is actionable and not visual-only.</li>
+<li>Challenge references align with <a href="../docs/CHALLENGES.html">docs/CHALLENGES.md</a>.</li>
+</ol>
+<p>Use this per-file verification routine before checking each box:</p>
+<ol>
+<li>Open the file and read it once top to bottom without editing.</li>
+<li>Re-read while validating the 4 checks above and capture any defects in your QA notes.</li>
+<li>If no defect is found, mark the checkbox complete immediately.</li>
+<li>If a defect is found, leave checkbox open until defect is logged with owner and due date.</li>
+</ol>
+<p>Why this matters:</p>
+<ul>
+<li>This prevents &quot;skim and check&quot; behavior that misses broken learner paths.</li>
+<li>It ensures every completed checkbox represents a defensible QA review, not just a visual pass.</li>
+</ul>
+<p>Track completion using this checklist.</p>
+<p>Core learner docs:</p>
+<ul>
+<li><input aria-label="" disabled="" type="checkbox"> <a href="../docs/get-going.html">docs/get-going.md</a></li>
+<li><input aria-label="" disabled="" type="checkbox"> <a href="../docs/course-guide.html">docs/course-guide.md</a></li>
+<li><input aria-label="" disabled="" type="checkbox"> <a href="../docs/student-onboarding.html">docs/student-onboarding.md</a></li>
+<li><input aria-label="" disabled="" type="checkbox"> <a href="../docs/CHALLENGES.html">docs/CHALLENGES.md</a></li>
+</ul>
+<p>Core chapters:</p>
+<ul>
+<li><input aria-label="" disabled="" type="checkbox"> <a href="../docs/00-pre-workshop-setup.html">docs/00-pre-workshop-setup.md</a></li>
+<li><input aria-label="" disabled="" type="checkbox"> <a href="../docs/01-choose-your-tools.html">docs/01-choose-your-tools.md</a></li>
+<li><input aria-label="" disabled="" type="checkbox"> <a href="../docs/02-understanding-github.html">docs/02-understanding-github.md</a></li>
+<li><input aria-label="" disabled="" type="checkbox"> <a href="../docs/03-navigating-repositories.html">docs/03-navigating-repositories.md</a></li>
+<li><input aria-label="" disabled="" type="checkbox"> <a href="../docs/04-the-learning-room.html">docs/04-the-learning-room.md</a></li>
+<li><input aria-label="" disabled="" type="checkbox"> <a href="../docs/05-working-with-issues.html">docs/05-working-with-issues.md</a></li>
+<li><input aria-label="" disabled="" type="checkbox"> <a href="../docs/06-working-with-pull-requests.html">docs/06-working-with-pull-requests.md</a></li>
+<li><input aria-label="" disabled="" type="checkbox"> <a href="../docs/07-merge-conflicts.html">docs/07-merge-conflicts.md</a></li>
+<li><input aria-label="" disabled="" type="checkbox"> <a href="../docs/08-open-source-culture.html">docs/08-open-source-culture.md</a></li>
+<li><input aria-label="" disabled="" type="checkbox"> <a href="../docs/09-labels-milestones-projects.html">docs/09-labels-milestones-projects.md</a></li>
+<li><input aria-label="" disabled="" type="checkbox"> <a href="../docs/10-notifications-and-day-1-close.html">docs/10-notifications-and-day-1-close.md</a></li>
+<li><input aria-label="" disabled="" type="checkbox"> <a href="../docs/11-vscode-interface.html">docs/11-vscode-interface.md</a></li>
+<li><input aria-label="" disabled="" type="checkbox"> <a href="../docs/12-vscode-accessibility.html">docs/12-vscode-accessibility.md</a></li>
+<li><input aria-label="" disabled="" type="checkbox"> <a href="../docs/13-how-git-works.html">docs/13-how-git-works.md</a></li>
+<li><input aria-label="" disabled="" type="checkbox"> <a href="../docs/14-git-in-practice.html">docs/14-git-in-practice.md</a></li>
+<li><input aria-label="" disabled="" type="checkbox"> <a href="../docs/15-code-review.html">docs/15-code-review.md</a></li>
+<li><input aria-label="" disabled="" type="checkbox"> <a href="../docs/16-github-copilot.html">docs/16-github-copilot.md</a></li>
+<li><input aria-label="" disabled="" type="checkbox"> <a href="../docs/17-issue-templates.html">docs/17-issue-templates.md</a></li>
+<li><input aria-label="" disabled="" type="checkbox"> <a href="../docs/18-fork-and-contribute.html">docs/18-fork-and-contribute.md</a></li>
+<li><input aria-label="" disabled="" type="checkbox"> <a href="../docs/19-accessibility-agents.html">docs/19-accessibility-agents.md</a></li>
+<li><input aria-label="" disabled="" type="checkbox"> <a href="../docs/20-build-your-agent.html">docs/20-build-your-agent.md</a></li>
+<li><input aria-label="" disabled="" type="checkbox"> <a href="../docs/21-next-steps.html">docs/21-next-steps.md</a></li>
+</ul>
+<p>Appendices:</p>
+<ul>
+<li><input aria-label="" disabled="" type="checkbox"> <a href="../docs/appendix-a-glossary.html">docs/appendix-a-glossary.md</a></li>
+<li><input aria-label="" disabled="" type="checkbox"> <a href="../docs/appendix-b-screen-reader-cheatsheet.html">docs/appendix-b-screen-reader-cheatsheet.md</a></li>
+<li><input aria-label="" disabled="" type="checkbox"> <a href="../docs/appendix-c-markdown-reference.html">docs/appendix-c-markdown-reference.md</a></li>
+<li><input aria-label="" disabled="" type="checkbox"> <a href="../docs/appendix-d-git-authentication.html">docs/appendix-d-git-authentication.md</a></li>
+<li><input aria-label="" disabled="" type="checkbox"> <a href="../docs/appendix-e-advanced-git.html">docs/appendix-e-advanced-git.md</a></li>
+<li><input aria-label="" disabled="" type="checkbox"> <a href="../docs/appendix-f-git-security.html">docs/appendix-f-git-security.md</a></li>
+<li><input aria-label="" disabled="" type="checkbox"> <a href="../docs/appendix-g-vscode-reference.html">docs/appendix-g-vscode-reference.md</a></li>
+<li><input aria-label="" disabled="" type="checkbox"> <a href="../docs/appendix-h-github-desktop.html">docs/appendix-h-github-desktop.md</a></li>
+<li><input aria-label="" disabled="" type="checkbox"> <a href="../docs/appendix-i-github-cli.html">docs/appendix-i-github-cli.md</a></li>
+<li><input aria-label="" disabled="" type="checkbox"> <a href="../docs/appendix-j-cloud-editors.html">docs/appendix-j-cloud-editors.md</a></li>
+<li><input aria-label="" disabled="" type="checkbox"> <a href="../docs/appendix-k-copilot-reference.html">docs/appendix-k-copilot-reference.md</a></li>
+<li><input aria-label="" disabled="" type="checkbox"> <a href="../docs/appendix-l-agents-reference.html">docs/appendix-l-agents-reference.md</a></li>
+<li><input aria-label="" disabled="" type="checkbox"> <a href="../docs/appendix-m-accessibility-standards.html">docs/appendix-m-accessibility-standards.md</a></li>
+<li><input aria-label="" disabled="" type="checkbox"> <a href="../docs/appendix-n-advanced-search.html">docs/appendix-n-advanced-search.md</a></li>
+<li><input aria-label="" disabled="" type="checkbox"> <a href="../docs/appendix-o-branch-protection.html">docs/appendix-o-branch-protection.md</a></li>
+<li><input aria-label="" disabled="" type="checkbox"> <a href="../docs/appendix-p-security-features.html">docs/appendix-p-security-features.md</a></li>
+<li><input aria-label="" disabled="" type="checkbox"> <a href="../docs/appendix-q-actions-workflows.html">docs/appendix-q-actions-workflows.md</a></li>
+<li><input aria-label="" disabled="" type="checkbox"> <a href="../docs/appendix-r-projects-deep-dive.html">docs/appendix-r-projects-deep-dive.md</a></li>
+<li><input aria-label="" disabled="" type="checkbox"> <a href="../docs/appendix-s-releases-tags-insights.html">docs/appendix-s-releases-tags-insights.md</a></li>
+<li><input aria-label="" disabled="" type="checkbox"> <a href="../docs/appendix-t-community-and-social.html">docs/appendix-t-community-and-social.md</a></li>
+<li><input aria-label="" disabled="" type="checkbox"> <a href="../docs/appendix-u-discussions-and-gists.html">docs/appendix-u-discussions-and-gists.md</a></li>
+<li><input aria-label="" disabled="" type="checkbox"> <a href="../docs/appendix-v-github-mobile.html">docs/appendix-v-github-mobile.md</a></li>
+<li><input aria-label="" disabled="" type="checkbox"> <a href="../docs/appendix-w-github-pages.html">docs/appendix-w-github-pages.md</a></li>
+<li><input aria-label="" disabled="" type="checkbox"> <a href="../docs/appendix-x-resources.html">docs/appendix-x-resources.md</a></li>
+<li><input aria-label="" disabled="" type="checkbox"> <a href="../docs/appendix-y-workshop-materials.html">docs/appendix-y-workshop-materials.md</a></li>
+<li><input aria-label="" disabled="" type="checkbox"> <a href="../docs/appendix-z-github-skills.html">docs/appendix-z-github-skills.md</a></li>
+</ul>
+<p>Phase 4 pass criteria:</p>
+<ul>
+<li>Every listed file has been reviewed and marked complete.</li>
+<li>Any doc defects are logged with owner and due date.</li>
+</ul>
+<h3 id="step-17-validate-supporting-content-outside-chapters">Step 17. Validate supporting content outside chapters</h3>
+<p>Review the following content surfaces because they directly affect learner and facilitator experience.</p>
+<p>Use this verification routine for each section below (Root docs, Classroom docs, Learning Room automation docs):</p>
+<ol>
+<li>Open all files in the section and compare wording for the same workflow concepts.</li>
+<li>Confirm setup steps, command names, and expected outcomes match current automation behavior.</li>
+<li>Confirm links between docs resolve and point to the intended destination.</li>
+<li>Mark each file checkbox only after you either confirm consistency or log a specific defect.</li>
+</ol>
+<p>Why this matters:</p>
+<ul>
+<li>Learners and facilitators often use these supporting docs first; contradictions here cause avoidable support load.</li>
+<li>Cross-document consistency reduces failed setup attempts during live cohorts.</li>
+<li><p><input aria-label="Root docs alignment:" disabled="" type="checkbox">
+Root docs alignment:</p>
+<ul>
+<li><input aria-label="" disabled="" type="checkbox"> <a href="../README.html">README.md</a></li>
+<li><input aria-label="" disabled="" type="checkbox"> <a href="../BUILD.html">BUILD.md</a></li>
+<li><input aria-label="" disabled="" type="checkbox"> <a href="../REGISTER.html">REGISTER.md</a></li>
+<li><input aria-label="" disabled="" type="checkbox"> <a href="../CONTRIBUTING.html">CONTRIBUTING.md</a></li>
+<li><input aria-label="" disabled="" type="checkbox"> <a href="../SECURITY.html">SECURITY.md</a></li>
+<li><input aria-label="" disabled="" type="checkbox"> <a href="../REPOSITORY_SECURITY.html">REPOSITORY_SECURITY.md</a></li>
+</ul>
+</li>
+<li><p><input aria-label="Classroom deployment docs:" disabled="" type="checkbox">
+Classroom deployment docs:</p>
+<ul>
+<li><input aria-label="" disabled="" type="checkbox"> <a href="../classroom/README.html">classroom/README.md</a></li>
+<li><input aria-label="" disabled="" type="checkbox"> <a href="../classroom/HUMAN_TEST_MATRIX.html">classroom/HUMAN_TEST_MATRIX.md</a></li>
+<li><input aria-label="" disabled="" type="checkbox"> <a href="../classroom/grading-guide.html">classroom/grading-guide.md</a></li>
+</ul>
+</li>
+<li><p><input aria-label="Learning Room automation docs:" disabled="" type="checkbox">
+Learning Room automation docs:</p>
+<ul>
+<li><input aria-label="" disabled="" type="checkbox"> <a href="../learning-room/.github/STUDENT_GUIDE.html">learning-room/.github/STUDENT_GUIDE.md</a></li>
+<li><input aria-label="" disabled="" type="checkbox"> <a href="../learning-room/.github/FACILITATOR_GUIDE.html">learning-room/.github/FACILITATOR_GUIDE.md</a></li>
+<li><input aria-label="" disabled="" type="checkbox"> <a href="../learning-room/.github/SETUP_AND_MAINTENANCE.html">learning-room/.github/SETUP_AND_MAINTENANCE.md</a></li>
+<li><input aria-label="" disabled="" type="checkbox"> <a href="../learning-room/.github/DEPLOYMENT_VALIDATION.html">learning-room/.github/DEPLOYMENT_VALIDATION.md</a></li>
+</ul>
+</li>
+</ul>
+<p>Pass criteria:</p>
+<ul>
+<li>Supporting docs are consistent with chapter guidance and current automation behavior.</li>
+<li>Any cross-document contradictions are logged as defects.</li>
+</ul>
+<h2 id="phase-6---student-journey-qa-walk-every-path-as-a-student">Phase 6 - Student Journey QA (Walk every path as a student)</h2>
+<p>Use <a href="../classroom/HUMAN_TEST_MATRIX.html">classroom/HUMAN_TEST_MATRIX.md</a> as your execution baseline and record evidence for each challenge.</p>
+<p>Phase execution rule:</p>
+<ol>
+<li>Run student journey checks in challenge order unless explicitly validating a failure-mode branch.</li>
+<li>For each challenge, capture issue URL, evidence comment URL, and workflow/check outcome.</li>
+<li>Update the Challenge Tracking Log row immediately after each challenge completes.</li>
+<li>If progression fails, stop sequence and resolve before moving to next challenge.</li>
+</ol>
+<p>Why this matters:</p>
+<ul>
+<li>Ordered execution is required to validate progression automation and student experience continuity.</li>
+</ul>
+<h3 id="student-pre-read-sequence-before-challenge-execution">Student pre-read sequence before challenge execution</h3>
+<p>Have the tester read in this order:</p>
+<ol>
+<li><a href="../docs/get-going.html">docs/get-going.md</a></li>
+<li><a href="../docs/00-pre-workshop-setup.html">docs/00-pre-workshop-setup.md</a></li>
+<li><a href="../docs/04-the-learning-room.html">docs/04-the-learning-room.md</a></li>
+<li><a href="../docs/CHALLENGES.html">docs/CHALLENGES.md</a></li>
+</ol>
+<h3 id="day-1-challenge-walkthrough-challenges-1-to-9">Day 1 challenge walkthrough (Challenges 1 to 9)</h3>
+<p>For each challenge issue, perform this pattern:</p>
+<ol>
+<li>Open challenge issue.</li>
+<li>Complete required actions.</li>
+<li>Post evidence comment.</li>
+<li>Close issue.</li>
+<li>Confirm next challenge issue appears.</li>
+</ol>
+<p>Challenge-specific checks:</p>
+<ol>
+<li>Challenge 1: verify orientation tasks and next challenge creation.</li>
+<li>Challenge 2: create a clear issue from <code>docs/welcome.md</code> TODO.</li>
+<li>Challenge 3: comment on peer simulation issue and include mention.</li>
+<li>Challenge 4: create <code>learn/&lt;username&gt;</code> branch.</li>
+<li>Challenge 5: commit real content change with descriptive message.</li>
+<li>Challenge 6: open PR with <code>Closes #N</code> and validate Aria response.</li>
+<li>Challenge 7: run conflict seeding and resolve conflict markers.</li>
+<li>Challenge 8: submit culture reflection evidence.</li>
+<li>Challenge 9: merge PR and confirm linked issue closes.</li>
+</ol>
+<p>Run merge conflict setup when Challenge 7 is reached:</p>
+<pre><code class="hljs language-powershell">scripts/classroom/<span class="hljs-built_in">Start-MergeConflictChallenge</span>.ps1 <span class="hljs-literal">-Repository</span> Community<span class="hljs-literal">-Access-Classroom</span>/learning<span class="hljs-literal">-room-test-student-day1</span> <span class="hljs-literal">-StudentBranch</span> learn/<span class="hljs-built_in">test-student</span></code></pre>
+<p>Day 1 pass criteria:</p>
+<ul>
+<li>Progression works across all nine challenges.</li>
+<li>Aria feedback appears on test PRs.</li>
+<li>Challenge 7 conflict-marker checks fail before fix and pass after fix.</li>
+</ul>
+<h3 id="day-2-challenge-walkthrough-challenges-10-to-16">Day 2 challenge walkthrough (Challenges 10 to 16)</h3>
+<p>Use the same five-step issue pattern for each challenge.</p>
+<p>Challenge-specific checks:</p>
+<ol>
+<li>Challenge 10: clone locally, branch, edit, commit, push, and verify local commit workflow.</li>
+<li>Challenge 11: open PR from Day 2 local branch and verify feedback.</li>
+<li>Challenge 12: complete structured review on peer simulation PR.</li>
+<li>Challenge 13: capture Copilot suggestion and student judgment.</li>
+<li>Challenge 14: create custom non-challenge issue template with required fields and verify workflow.</li>
+<li>Challenge 15: inspect accessibility agents and capture findings.</li>
+<li>Challenge 16: fork <code>Community-Access/accessibility-agents</code>, create agent file with frontmatter, responsibilities, and guardrails, then open cross-fork PR.</li>
+</ol>
+<p>Day 2 pass criteria:</p>
+<ul>
+<li>Progression works from 10 through 16.</li>
+<li>Autograders for 10, 14, and 16 provide useful pass/fail feedback.</li>
+<li>Capstone evidence is complete and reviewable.</li>
+</ul>
+<h3 id="student-visible-expected-state-map-required-cross-check">Student-visible expected state map (required cross-check)</h3>
+<p>Use this section to confirm what students should see, where they should see it, and what artifacts should exist after each stage.</p>
+<table>
+<thead>
+<tr>
+<th scope="col">Stage</th>
+<th scope="col">Where student looks</th>
+<th scope="col">What student should see</th>
+<th scope="col">Expected artifacts</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>After assignment acceptance</td>
+<td>Repository home and Issues tab</td>
+<td>Private Learning Room repository created from template</td>
+<td>Starter docs (<code>docs/welcome.md</code>, <code>docs/keyboard-shortcuts.md</code>, <code>docs/setup-guide.md</code>), workflows, issue templates</td>
+</tr>
+<tr>
+<td>After initial seeding</td>
+<td>Issues tab</td>
+<td>Correct starting challenge issue appears (<code>Challenge 1</code> or <code>Challenge 10</code>)</td>
+<td>Assigned challenge issue with clear instructions and evidence prompt</td>
+</tr>
+<tr>
+<td>During Day 1 PR flow (Ch 4-6)</td>
+<td>Branch selector, Pull requests, Actions</td>
+<td>Student branch exists, PR open, bot feedback appears</td>
+<td>Branch <code>learn/&lt;username&gt;</code> or equivalent, PR with <code>Closes #N</code>, Aria validation comment</td>
+</tr>
+<tr>
+<td>During merge conflict (Ch 7)</td>
+<td>PR conversation/files, Checks tab</td>
+<td>Conflict state visible, then resolved</td>
+<td>Conflict markers present pre-fix, removed post-fix, conflict check transitions to pass</td>
+</tr>
+<tr>
+<td>During Day 2 local flow (Ch 10-11)</td>
+<td>Local clone and remote PR</td>
+<td>Local commit/push reflected in PR and checks</td>
+<td>Non-default-branch commit visible in history and checks</td>
+</tr>
+<tr>
+<td>During template challenge (Ch 14)</td>
+<td>File tree and PR checks</td>
+<td>Custom template exists and passes required-field checks</td>
+<td>New <code>.github/ISSUE_TEMPLATE/*.yml</code> file with <code>name</code> and <code>description</code></td>
+</tr>
+<tr>
+<td>During capstone (Ch 16)</td>
+<td>Fork repo and capstone PR</td>
+<td>Cross-fork contribution path works with required structure</td>
+<td>Agent file with frontmatter, responsibilities, guardrails; PR evidence</td>
+</tr>
+<tr>
+<td>Bonus path</td>
+<td>Issue templates and evidence comments</td>
+<td>Bonus templates are available and usable</td>
+<td>Bonus issue evidence and status recorded in tracker</td>
+</tr>
+</tbody></table>
+<p>Pass criteria:</p>
+<ul>
+<li>Student-visible state is confirmed at each stage above.</li>
+<li>Any mismatch between expected and observed student experience is logged as a defect.</li>
+</ul>
+<h3 id="bonus-path-walkthrough-a-to-e">Bonus path walkthrough (A to E)</h3>
+<p>Bonus challenges are optional for students, but QA tracking is required for every bonus challenge.</p>
+<ol>
+<li>Open each bonus template.</li>
+<li>Confirm instructions are understandable and actionable.</li>
+<li>Track completion status for each bonus challenge A to E.</li>
+<li>If a bonus challenge is not fully executed, record why and what validated the path.</li>
+</ol>
+<p>Pass criteria:</p>
+<ul>
+<li>All bonus challenges A to E have explicit status and notes.</li>
+<li>No bonus challenge is left untracked.</li>
+</ul>
+<h3 id="challenge-tracking-log-required">Challenge Tracking Log (Required)</h3>
+<p>Use this tracker while executing Phase 5. Every row must be completed.</p>
+<p>Row completion standard:</p>
+<ol>
+<li>Status must be one of Pass, Fail, or Deferred.</li>
+<li>Evidence link must point to issue, PR, workflow run, or equivalent proof.</li>
+<li>Notes must include remediation or deferral rationale when status is not Pass.</li>
+</ol>
+<p>Why this matters:</p>
+<ul>
+<li>Complete row data is required for defensible release decisions and post-run audits.</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th scope="col">Challenge</th>
+<th scope="col">Title</th>
+<th scope="col">Status (Pass/Fail/Deferred)</th>
+<th scope="col">Evidence link</th>
+<th scope="col">Notes</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>1</td>
+<td>Find Your Way Around</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>2</td>
+<td>File Your First Issue</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>3</td>
+<td>Join the Conversation</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>4</td>
+<td>Branch Out</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>5</td>
+<td>Make Your Mark</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>6</td>
+<td>Open Your First Pull Request</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>7</td>
+<td>Survive a Merge Conflict</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>8</td>
+<td>The Culture Layer</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>9</td>
+<td>Merge Day</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>10</td>
+<td>Go Local</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>11</td>
+<td>Open a Day 2 PR</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>12</td>
+<td>Review Like a Pro</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>13</td>
+<td>AI as Your Copilot</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>14</td>
+<td>Template Remix</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>15</td>
+<td>Meet the Agents</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>16</td>
+<td>Build Your Agent (Capstone)</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>Bonus A</td>
+<td>Improve an Existing Agent</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>Bonus B</td>
+<td>Document Your Journey</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>Bonus C</td>
+<td>Create a Group Challenge</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>Bonus D</td>
+<td>Notification Mastery</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>Bonus E</td>
+<td>Explore Git History Visually</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+</tbody></table>
+<h3 id="challenge-reliability-and-failure-mode-coverage-required">Challenge Reliability and Failure-Mode Coverage (Required)</h3>
+<p>Do not mark the challenge system reliable until this section is completed.</p>
+<h4 id="reliability-test-personas">Reliability test personas</h4>
+<p>Run challenge validation with at least these personas:</p>
+<ul>
+<li>Persona A: Day 1 + Day 2 student path (full path through 1-16).</li>
+<li>Persona B: Day-2-only student path (starts at Challenge 10).</li>
+</ul>
+<h4 id="required-variation-categories">Required variation categories</h4>
+<p>For each applicable challenge, test and document all categories below:</p>
+<ol>
+<li>Happy path completion.</li>
+<li>Common student error path.</li>
+<li>Recovery path after feedback.</li>
+<li>Automation latency/idempotency behavior (reruns, duplicate events, delayed comments).</li>
+</ol>
+<h4 id="variation-matrix-by-challenge-family">Variation matrix by challenge family</h4>
+<table>
+<thead>
+<tr>
+<th scope="col">Challenge family</th>
+<th scope="col">Minimum failure/variation scenarios to test</th>
+<th scope="col">Pass criteria</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>1-3 orientation and issue flow</td>
+<td>Missing evidence comment, evidence posted in wrong issue, issue closed without evidence, delayed bot response on mention</td>
+<td>Student can recover without facilitator-only intervention; instructions remain clear</td>
+</tr>
+<tr>
+<td>4-6 branch/commit/PR flow</td>
+<td>Wrong branch, commit to main, PR missing <code>Closes #N</code>, weak PR body, duplicate PR attempts</td>
+<td>Bot/autograder guidance is actionable and student can fix to pass</td>
+</tr>
+<tr>
+<td>7 conflict flow</td>
+<td>Conflict markers left in file, partial resolution, wrong file resolved, reintroducing markers on next commit</td>
+<td>Fails when unresolved, passes after true resolution, feedback explains next step</td>
+</tr>
+<tr>
+<td>8-9 culture/merge flow</td>
+<td>Reflection too vague, merge blocked by checks, PR approved but not mergeable, issue not auto-closing</td>
+<td>Student can complete with clear guidance and accurate merge outcome</td>
+</tr>
+<tr>
+<td>10-11 local workflow</td>
+<td>Local auth failure, push to wrong remote/branch, no new commit, PR from wrong base</td>
+<td>Failure mode is discoverable and recoverable with provided guidance</td>
+</tr>
+<tr>
+<td>12 review workflow</td>
+<td>Review left as comment only, no actionable feedback, review submitted on wrong PR</td>
+<td>Challenge guidance clarifies expectations and evidence remains evaluable</td>
+</tr>
+<tr>
+<td>13 Copilot evidence</td>
+<td>Missing prompt/evaluation details, copied output without judgment, evidence too shallow</td>
+<td>Student can revise evidence and meet evaluation criteria</td>
+</tr>
+<tr>
+<td>14 template workflow</td>
+<td>Template file wrong folder/name, missing <code>name</code>, missing <code>description</code>, invalid YAML</td>
+<td>Autograder fails correctly and passes only after true fix</td>
+</tr>
+<tr>
+<td>15 agent exploration</td>
+<td>Superficial exploration notes, wrong repo referenced, no evidence of actual inspection</td>
+<td>Challenge remains completable with clear evidence requirements</td>
+</tr>
+<tr>
+<td>16 capstone</td>
+<td>Missing frontmatter, missing responsibilities/guardrails, PR to wrong repo, incomplete cross-fork setup</td>
+<td>Autograder/checklist catches gaps and student can recover to complete</td>
+</tr>
+<tr>
+<td>Bonus A-E</td>
+<td>Student starts bonus without prerequisites, partial completion, alternate evidence format</td>
+<td>Each bonus has documented pass/fail/deferred outcome and rationale</td>
+</tr>
+</tbody></table>
+<h4 id="cross-cutting-failure-modes-must-be-tested-at-least-once">Cross-cutting failure modes (must be tested at least once)</h4>
+<ul>
+<li>Bot comment delay greater than expected window.</li>
+<li>Workflow rerun without creating duplicate progression issues.</li>
+<li>Student posts evidence in wrong place then corrects it.</li>
+<li>Autograder false-negative suspicion escalated and resolved with facilitator override process.</li>
+<li>Permission/access prompt encountered and resolved (student and facilitator perspectives).</li>
+</ul>
+<h4 id="reliability-gate-pass-criteria">Reliability gate pass criteria</h4>
+<ul>
+<li>Every challenge (1-16 and Bonus A-E) has at least one documented happy path and one documented variation/failure scenario.</li>
+<li>Recovery steps are validated, not assumed.</li>
+<li>No critical failure path requires hidden facilitator knowledge outside documented guidance.</li>
+</ul>
+<h3 id="student-recovery-and-reset-playbook-required">Student recovery and reset playbook (required)</h3>
+<p>If a student repository is corrupted, use this escalation path.</p>
+<h4 id="level-1-student-self-recovery-preferred">Level 1: Student self-recovery (preferred)</h4>
+<ol>
+<li>Re-open challenge instructions and compare against required target file.</li>
+<li>Use PR diff to undo accidental changes.</li>
+<li>Restore missing text from template references in challenge guidance.</li>
+<li>Push a corrective commit and re-run checks.</li>
+</ol>
+<p>Use when:</p>
+<ul>
+<li>Student changed only small sections in expected challenge files.</li>
+</ul>
+<h4 id="level-2-facilitator-assisted-file-restore-safe-branchpr">Level 2: Facilitator-assisted file restore (safe branch+PR)</h4>
+<p>Use the recovery script to restore baseline files from <code>Community-Access/learning-room-template</code> into a student repo on a recovery branch.</p>
+<p>Script:</p>
+<pre><code class="hljs language-powershell">scripts/classroom/<span class="hljs-built_in">Restore-LearningRoomFiles</span>.ps1 <span class="hljs-literal">-StudentRepository</span> Community<span class="hljs-literal">-Access-Classroom</span>/learning<span class="hljs-literal">-room-studentname</span> <span class="hljs-literal">-Profile</span> core<span class="hljs-literal">-day1</span> <span class="hljs-literal">-OpenPullRequest</span></code></pre>
+<p>Profiles:</p>
+<ul>
+<li><code>core-day1</code> restores Day 1 starter docs.</li>
+<li><code>core-day2</code> restores Day 2 sample docs.</li>
+<li><code>automation-core</code> restores workflow files.</li>
+<li><code>all-core</code> restores all above.</li>
+<li><code>custom</code> restores explicit paths provided via <code>-Paths</code>.</li>
+</ul>
+<p>Use when:</p>
+<ul>
+<li>A challenge file, sample file, or workflow file was accidentally overwritten or deleted.</li>
+</ul>
+<h4 id="level-3-repository-re-provision-fallback">Level 3: Repository re-provision fallback</h4>
+<p>If corruption is broad and recovery branch approach is not sufficient:</p>
+<ol>
+<li>Export evidence links needed for grading history.</li>
+<li>Remove student assignment entry in Classroom (if policy allows).</li>
+<li>Re-invite student to assignment to generate a fresh repository.</li>
+<li>Re-seed appropriate challenge and peer simulation artifacts.</li>
+<li>Document mapping from old repo to replacement repo in facilitator notes.</li>
+</ol>
+<p>Use when:</p>
+<ul>
+<li>Student repo is not reasonably recoverable with targeted file restores.</li>
+</ul>
+<h4 id="recovery-gate-pass-criteria">Recovery gate pass criteria</h4>
+<ul>
+<li>At least one Level 2 recovery test is completed in QA and documented.</li>
+<li>Facilitators can perform targeted restore without editing files manually in GitHub UI.</li>
+<li>Recovery actions preserve auditability through branch/PR evidence.</li>
+</ul>
+<h2 id="phase-7---workflow-and-automation-validation-matrix">Phase 7 - Workflow and Automation Validation Matrix</h2>
+<p>Use this matrix as your quick final automation check.</p>
+<p>Matrix execution procedure:</p>
+<ol>
+<li>Work row by row.</li>
+<li>Trigger or locate the required event for each component.</li>
+<li>Verify expected behavior in the stated location.</li>
+<li>Record one evidence link per row.</li>
+<li>Mark row complete only when observed behavior matches expected experience.</li>
+</ol>
+<p>Why this matters:</p>
+<ul>
+<li>The matrix is the final integration proof that automation is functioning as designed.</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th scope="col">Automation component</th>
+<th scope="col">What to verify</th>
+<th scope="col">Where to verify</th>
+<th scope="col">Trigger timing</th>
+<th scope="col">Expected experience</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>registration.yml</code> welcome job</td>
+<td>New registration handling</td>
+<td>Registration issue comment + labels + Actions run</td>
+<td>On issue open with <code>[REGISTER]</code></td>
+<td>Welcome comment posted, registration label applied, no manual intervention</td>
+</tr>
+<tr>
+<td><code>registration.yml</code> duplicate logic</td>
+<td>Duplicate handling</td>
+<td>Duplicate issue thread + labels + closed state</td>
+<td>On second submission by same user</td>
+<td>Duplicate message references original and issue auto-closes</td>
+</tr>
+<tr>
+<td><code>registration.yml</code> waitlist logic</td>
+<td>Capacity full behavior</td>
+<td>Registration issue comment + <code>waitlist</code> label</td>
+<td>When threshold reached in controlled test</td>
+<td>Waitlist message and label applied</td>
+</tr>
+<tr>
+<td><code>registration.yml</code> CSV export</td>
+<td>Registration data artifact</td>
+<td>Actions artifacts</td>
+<td>Every registration run or manual dispatch</td>
+<td><code>registration-data</code> artifact is available and current</td>
+</tr>
+<tr>
+<td><code>registration.yml</code> roster sync</td>
+<td>Non-PII roster update</td>
+<td><a href="../.github/data/student-roster.json">.github/data/student-roster.json</a> and workflow commit</td>
+<td>Every registration run or manual dispatch</td>
+<td>Roster updates only when changed and no PII stored</td>
+</tr>
+<tr>
+<td><code>pr-validation-bot.yml</code></td>
+<td>PR structure and guidance checks</td>
+<td>PR comments + Actions</td>
+<td>PR open/edit/sync/review events</td>
+<td>Validation comment appears and updates in place</td>
+</tr>
+<tr>
+<td><code>content-validation.yml</code></td>
+<td>Link/markdown/accessibility checks</td>
+<td>PR checks/comments + Actions logs</td>
+<td>PR open/edit/sync</td>
+<td>Clear actionable findings tied to changed files</td>
+</tr>
+<tr>
+<td><code>student-progression.yml</code></td>
+<td>Challenge unlock sequence</td>
+<td>Issues tab + Actions logs</td>
+<td>Issue close and workflow dispatch</td>
+<td>Next challenge issue appears with correct sequence</td>
+</tr>
+<tr>
+<td><code>skills-progression.yml</code></td>
+<td>Skill/achievement feedback</td>
+<td>PR comments + Actions</td>
+<td>PR merge</td>
+<td>Achievement/progress feedback posts without failure</td>
+</tr>
+<tr>
+<td><code>autograder-conflicts.yml</code></td>
+<td>Conflict marker detection for Ch07</td>
+<td>Actions checks + PR status</td>
+<td>PR open/edit for conflict scenario</td>
+<td>Fails before fix, passes after marker removal</td>
+</tr>
+<tr>
+<td><code>autograder-local-commit.yml</code></td>
+<td>Local commit validation for Ch10</td>
+<td>Actions checks + PR/status output</td>
+<td>Push/PR for Ch10 scenario</td>
+<td>Detects non-default-branch commit</td>
+</tr>
+<tr>
+<td><code>autograder-template.yml</code></td>
+<td>Issue template validation for Ch14</td>
+<td>Actions checks + PR/status output</td>
+<td>Template challenge workflow trigger</td>
+<td>Fails missing fields, passes with <code>name</code> and <code>description</code></td>
+</tr>
+<tr>
+<td><code>autograder-capstone.yml</code></td>
+<td>Agent structure validation for Ch16</td>
+<td>Actions checks + PR/status output</td>
+<td>Capstone PR events</td>
+<td>Validates frontmatter, responsibilities, and guardrails</td>
+</tr>
+<tr>
+<td><code>Seed-LearningRoomChallenge.ps1</code></td>
+<td>Challenge seed operation</td>
+<td>Issues tab + workflow run history</td>
+<td>On script execution</td>
+<td>Target challenge appears and assignment is correct</td>
+</tr>
+<tr>
+<td><code>Seed-PeerSimulation.ps1</code></td>
+<td>Peer simulation artifacts</td>
+<td>Issues + PR list + branch list</td>
+<td>On script execution</td>
+<td>Peer simulation issues and PR appear as expected</td>
+</tr>
+<tr>
+<td><code>Start-MergeConflictChallenge.ps1</code></td>
+<td>Merge conflict scenario creation</td>
+<td>Student PR conflict state + checks</td>
+<td>On script execution during Ch07</td>
+<td>Conflict becomes visible and resolvable</td>
+</tr>
+<tr>
+<td><code>Test-LearningRoomTemplate.ps1</code></td>
+<td>Template readiness scan</td>
+<td>Script output + remediation notes</td>
+<td>Before assignment publish and after updates</td>
+<td>Reports readiness state and clear gaps</td>
+</tr>
+<tr>
+<td><code>Prepare-LearningRoomTemplate.ps1</code></td>
+<td>Template preparation operations</td>
+<td>Script output + repository checks</td>
+<td>Before go-live if prep needed</td>
+<td>Required template prep completes without hidden failures</td>
+</tr>
+<tr>
+<td><code>Invoke-LearningRoomEndToEndTest.ps1</code></td>
+<td>Full-scripted QA helper path</td>
+<td>Script output and referenced artifacts</td>
+<td>Optional preflight or regression validation</td>
+<td>End-to-end script executes expected checks</td>
+</tr>
+<tr>
+<td><code>Add-AutograderSafeguards.ps1</code> and <code>Fix-AutograderComments.ps1</code></td>
+<td>Autograder hardening utilities</td>
+<td>Script output + workflow behavior</td>
+<td>As needed during defects/fixes</td>
+<td>Safeguards/comments behavior aligns with expected feedback quality</td>
+</tr>
+</tbody></table>
+<h2 id="phase-8---final-sign-off-podcast-excluded-release-gate">Phase 8 - Final Sign-Off (Podcast-Excluded Release Gate)</h2>
+<p>Use this checklist for final decision. For every item, complete the listed verification steps and record evidence before checking the box.</p>
+<ul>
+<li><p><input aria-label="Registration intake path tested from public page to welcome comment.
+ Verification steps:" disabled="" type="checkbox">
+Registration intake path tested from public page to welcome comment.
+ Verification steps:</p>
+<ol>
+<li>Execute Phase 1 Step 1 and Step 3 with a test registration.</li>
+<li>Capture the public entry point, issue creation, and final welcome comment evidence.</li>
+<li>Confirm labels and comment content match expected behavior in the QA Validation Contract.
+ Why this matters: this proves the first learner touchpoint works end to end.</li>
+</ol>
+</li>
+<li><p><input aria-label="Registration duplicate handling validated.
+ Verification steps:" disabled="" type="checkbox">
+Registration duplicate handling validated.
+ Verification steps:</p>
+<ol>
+<li>Execute Phase 1 Step 4 duplicate scenario.</li>
+<li>Confirm duplicate issue closes automatically and references the original.</li>
+<li>Record issue links and labels in QA notes.
+ Why this matters: duplicate control prevents noisy intake and manual cleanup overhead.</li>
+</ol>
+</li>
+<li><p><input aria-label="Registration CSV and roster sync validated.
+ Verification steps:" disabled="" type="checkbox">
+Registration CSV and roster sync validated.
+ Verification steps:</p>
+<ol>
+<li>Execute Phase 1 Step 5.</li>
+<li>Download <code>registration-data</code> artifact and verify the expected test row.</li>
+<li>Confirm roster sync updates only when underlying data changes.
+ Why this matters: operations teams depend on accurate roster exports for cohort management.</li>
+</ol>
+</li>
+<li><p><input aria-label="Learning Room template sync to GitHub template repository validated.
+ Verification steps:" disabled="" type="checkbox">
+Learning Room template sync to GitHub template repository validated.
+ Verification steps:</p>
+<ol>
+<li>Execute Phase 2 Step 6.</li>
+<li>Confirm sync PR merged (or no-change outcome) and template repo settings remain correct.</li>
+<li>Record PR link or no-change script output.
+ Why this matters: stale template state breaks downstream assignments even when source repo is correct.</li>
+</ol>
+</li>
+<li><p><input aria-label="Template smoke repository validation completed from latest template state.
+ Verification steps:" disabled="" type="checkbox">
+Template smoke repository validation completed from latest template state.
+ Verification steps:</p>
+<ol>
+<li>Execute Phase 2 Step 7.</li>
+<li>Confirm smoke repo creation, required file inventory, and seed dispatch behavior.</li>
+<li>Record script output and retained evidence links.
+ Why this matters: this is the fastest proof that template consumers get runnable automation.</li>
+</ol>
+</li>
+<li><p><input aria-label="Template freshness proof completed against latest merged sync PR.
+ Verification steps:" disabled="" type="checkbox">
+Template freshness proof completed against latest merged sync PR.
+ Verification steps:</p>
+<ol>
+<li>Execute Phase 2 Step 8.</li>
+<li>Compare at least three changed files from sync PR to smoke repo content.</li>
+<li>Log exact file comparisons in QA notes.
+ Why this matters: confirms new cohorts are not launched from outdated template snapshots.</li>
+</ol>
+</li>
+<li><p><input aria-label="Day 1 assignment configured and validated.
+ Verification steps:" disabled="" type="checkbox">
+Day 1 assignment configured and validated.
+ Verification steps:</p>
+<ol>
+<li>Execute Phase 3 Step 11.</li>
+<li>Verify assignment settings, description, autograder count, and points.</li>
+<li>Store screenshot of final assignment configuration page.
+ Why this matters: Day 1 misconfiguration creates immediate learner friction and grading drift.</li>
+</ol>
+</li>
+<li><p><input aria-label="Day 2 assignment configured and validated.
+ Verification steps:" disabled="" type="checkbox">
+Day 2 assignment configured and validated.
+ Verification steps:</p>
+<ol>
+<li>Execute Phase 3 Step 12.</li>
+<li>Verify assignment settings, description, autograder count, and points.</li>
+<li>Store screenshot of final assignment configuration page.
+ Why this matters: Day 2 challenge flow and capstone checks depend on exact assignment setup.</li>
+</ol>
+</li>
+<li><p><input aria-label="Registration form template and required labels validated.
+ Verification steps:" disabled="" type="checkbox">
+Registration form template and required labels validated.
+ Verification steps:</p>
+<ol>
+<li>Execute Phase 0 Step 0.1 and re-check before sign-off.</li>
+<li>Confirm <code>workshop-registration.yml</code> is current and selectable.</li>
+<li>Confirm labels <code>registration</code>, <code>duplicate</code>, and <code>waitlist</code> exist and are active.
+ Why this matters: the registration workflow cannot route correctly without these baseline objects.</li>
+</ol>
+</li>
+<li><p><input aria-label="Test student accepted both assignments and repos created.
+ Verification steps:" disabled="" type="checkbox">
+Test student accepted both assignments and repos created.
+ Verification steps:</p>
+<ol>
+<li>Execute Phase 4 Step 14.</li>
+<li>Confirm two private repos are created for Day 1 and Day 2.</li>
+<li>Record both repository URLs in completion notes.
+ Why this matters: acceptance and repo provisioning are required before challenge QA can begin.</li>
+</ol>
+</li>
+<li><p><input aria-label="Full chapter and appendix walkthrough completed and tracked.
+ Verification steps:" disabled="" type="checkbox">
+Full chapter and appendix walkthrough completed and tracked.
+ Verification steps:</p>
+<ol>
+<li>Execute Phase 5 Step 16 using the per-file verification routine.</li>
+<li>Ensure every required chapter and appendix checkbox is either complete or tied to a logged defect.</li>
+<li>Confirm no file in the required list is left unreviewed.
+ Why this matters: curriculum defects can invalidate otherwise healthy automation.</li>
+</ol>
+</li>
+<li><p><input aria-label="Supporting non-chapter content walkthrough completed and tracked.
+ Verification steps:" disabled="" type="checkbox">
+Supporting non-chapter content walkthrough completed and tracked.
+ Verification steps:</p>
+<ol>
+<li>Execute Phase 5 Step 17 using the section verification routine.</li>
+<li>Resolve or log all cross-document inconsistencies.</li>
+<li>Confirm all supporting-doc checkboxes are complete or defect-linked.
+ Why this matters: learners rely on these docs during setup and troubleshooting.</li>
+</ol>
+</li>
+<li><p><input aria-label="Challenge 1 and Challenge 10 seeding validated.
+ Verification steps:" disabled="" type="checkbox">
+Challenge 1 and Challenge 10 seeding validated.
+ Verification steps:</p>
+<ol>
+<li>Execute Phase 4 Step 15.</li>
+<li>Confirm seeded issues appear in Day 1 and Day 2 test repos.</li>
+<li>Capture issue links for both seeded starting points.
+ Why this matters: seeding failures block both student journey entry paths.</li>
+</ol>
+</li>
+<li><p><input aria-label="Full Day 1 student path (1 to 9) completed.
+ Verification steps:" disabled="" type="checkbox">
+Full Day 1 student path (1 to 9) completed.
+ Verification steps:</p>
+<ol>
+<li>Execute Phase 6 Day 1 walkthrough across Challenges 1-9.</li>
+<li>Confirm progression behavior after each issue closure.</li>
+<li>Fill Day 1 rows in Challenge Tracking Log with evidence links.
+ Why this matters: Day 1 is the foundational workflow and must be dependable for all learners.</li>
+</ol>
+</li>
+<li><p><input aria-label="Full Day 2 student path (10 to 16) completed.
+ Verification steps:" disabled="" type="checkbox">
+Full Day 2 student path (10 to 16) completed.
+ Verification steps:</p>
+<ol>
+<li>Execute Phase 6 Day 2 walkthrough across Challenges 10-16.</li>
+<li>Confirm Day 2 autograder behavior for 10, 14, and 16.</li>
+<li>Fill Day 2 rows in Challenge Tracking Log with evidence links.
+ Why this matters: Day 2 validates local workflow, review quality, and capstone readiness.</li>
+</ol>
+</li>
+<li><p><input aria-label="All bonus challenges A to E tracked with status and evidence or deferral reason.
+ Verification steps:" disabled="" type="checkbox">
+All bonus challenges A to E tracked with status and evidence or deferral reason.
+ Verification steps:</p>
+<ol>
+<li>Execute Phase 6 Bonus path walkthrough.</li>
+<li>Mark each bonus row Pass, Fail, or Deferred with rationale.</li>
+<li>Attach evidence link or deferral reason for all five bonus items.
+ Why this matters: optional learner paths still require QA accountability.</li>
+</ol>
+</li>
+<li><p><input aria-label="Challenge reliability and failure-mode coverage completed for all challenge families.
+ Verification steps:" disabled="" type="checkbox">
+Challenge reliability and failure-mode coverage completed for all challenge families.
+ Verification steps:</p>
+<ol>
+<li>Execute the full Challenge Reliability and Failure-Mode Coverage section.</li>
+<li>Validate at least one happy path and one variation path per challenge family.</li>
+<li>Confirm recovery behavior is tested, not assumed.
+ Why this matters: production reliability is defined by recovery from failure paths, not only happy-path success.</li>
+</ol>
+</li>
+<li><p><input aria-label="Student-visible expected state map was verified at each stage.
+ Verification steps:" disabled="" type="checkbox">
+Student-visible expected state map was verified at each stage.
+ Verification steps:</p>
+<ol>
+<li>Execute the Student-visible expected state map cross-check.</li>
+<li>Compare observed state to each stage row in the table.</li>
+<li>Log any mismatch as a defect before sign-off.
+ Why this matters: this verifies the learner experience directly, not just backend workflow success.</li>
+</ol>
+</li>
+<li><p><input aria-label="Recovery/reset playbook validated with at least one Level 2 restore test.
+ Verification steps:" disabled="" type="checkbox">
+Recovery/reset playbook validated with at least one Level 2 restore test.
+ Verification steps:</p>
+<ol>
+<li>Execute Student recovery and reset playbook Level 2 flow.</li>
+<li>Confirm restored files are proposed through branch and PR evidence.</li>
+<li>Record restore test repository, branch, and PR links.
+ Why this matters: facilitators need a proven restoration path during live delivery incidents.</li>
+</ol>
+</li>
+<li><p><input aria-label="Aria, progression, and autograder workflows validated with evidence.
+ Verification steps:" disabled="" type="checkbox">
+Aria, progression, and autograder workflows validated with evidence.
+ Verification steps:</p>
+<ol>
+<li>Execute checks in the Workflow and Automation Validation Matrix for <code>pr-validation-bot.yml</code>, <code>student-progression.yml</code>, and all autograder workflows.</li>
+<li>Capture one pass and one actionable-fail evidence sample where applicable.</li>
+<li>Confirm feedback is clear enough for student self-recovery.
+ Why this matters: these workflows are the core automated coaching and grading systems.</li>
+</ol>
+</li>
+<li><p><input aria-label="Open defects documented with owner and due date.
+ Verification steps:" disabled="" type="checkbox">
+Open defects documented with owner and due date.
+ Verification steps:</p>
+<ol>
+<li>Review QA notes for all unresolved findings.</li>
+<li>Ensure each defect has severity, owner, and due date.</li>
+<li>Confirm blocker defects are explicitly marked for release decision.
+ Why this matters: unresolved defects without ownership are operational risk hidden as &quot;known issues.&quot;</li>
+</ol>
+</li>
+<li><p><input aria-label="Release owner signs go or no-go decision.
+ Verification steps:" disabled="" type="checkbox">
+Release owner signs go or no-go decision.
+ Verification steps:</p>
+<ol>
+<li>Confirm all required checklist items above are complete or have explicit risk acceptance.</li>
+<li>Populate Completion Output Template with final links and outcomes.</li>
+<li>Capture release owner decision (Go or No-Go) with approver name and date.
+ Why this matters: formal accountability prevents ambiguous launch decisions.</li>
+</ol>
+</li>
+</ul>
+<h2 id="troubleshooting-and-rollback-quick-actions">Troubleshooting and Rollback Quick Actions</h2>
+<p>Use this section when a blocker appears during QA.</p>
+<ol>
+<li><p>Registration invite automation issue:</p>
+<ul>
+<li>Step 1: Confirm <code>CLASSROOM_ORG_ADMIN_TOKEN</code> and <code>CLASSROOM_ORG</code> values are present and correctly scoped.</li>
+<li>Step 2: If automation is still failing, disable org invite automation by clearing <code>CLASSROOM_ORG</code>.</li>
+<li>Step 3: Continue registration flow with manual classroom invite process.</li>
+<li>Verify: registration workflow still posts welcome response and assignment links as configured.</li>
+</ul>
+</li>
+<li><p>Seeding failure:</p>
+<ul>
+<li>Step 1: Re-run seeding script with explicit repository slug and assignee.</li>
+<li>Step 2: Confirm target repo exists and Actions are enabled.</li>
+<li>Step 3: Confirm template workflow inventory includes seeding dependencies.</li>
+<li>Verify: expected challenge issue appears and is assigned correctly.</li>
+</ul>
+</li>
+<li><p>Progression not creating next issue:</p>
+<ul>
+<li>Step 1: Confirm current challenge issue was closed, not left open with comment only.</li>
+<li>Step 2: Confirm <code>student-progression.yml</code> exists in target repository and has successful run history.</li>
+<li>Step 3: Re-dispatch progression workflow if needed.</li>
+<li>Verify: next challenge issue appears with correct numbering.</li>
+</ul>
+</li>
+<li><p>Autograder mismatch:</p>
+<ul>
+<li>Step 1: Re-check exact autograder command/settings definitions in <a href="classroom/autograding-setup.html">admin/classroom/autograding-setup.md</a>.</li>
+<li>Step 2: Trigger known-fail and known-pass scenarios for the affected autograder.</li>
+<li>Step 3: Compare observed output with expected rubric behavior.</li>
+<li>Verify: fail messages are actionable and pass state is reachable with correct student behavior.</li>
+</ul>
+</li>
+</ol>
+<p>Escalation rule:</p>
+<ol>
+<li>If blocker persists after one remediation cycle, log defect with owner and ETA.</li>
+<li>Continue with unaffected phases only when blocker impact is clearly isolated.</li>
+</ol>
+<p>Why this matters:</p>
+<ul>
+<li>Fast, repeatable recovery protects cohort timelines and prevents hidden release risk.</li>
+</ul>
+<h2 id="completion-output-template-copy-into-qa-issue">Completion Output Template (Copy into QA Issue)</h2>
+<p>Before publishing the completion output:</p>
+<ol>
+<li>Confirm all required Phase 8 checklist items are complete or explicitly risk-accepted.</li>
+<li>Ensure every section below includes links, not placeholders.</li>
+<li>Attach defect list with owner and due date for any unresolved findings.</li>
+<li>Capture final approver and decision timestamp.</li>
+</ol>
+<p>Why this matters:</p>
+<ul>
+<li>This output is the release audit record and must be independently reviewable.</li>
+</ul>
+<pre><code class="hljs language-text">Runbook Version: admin/LEARNING-ROOM-E2E-QA-RUNBOOK.md
+Date:
+QA Owner:
+Facilitator Account:
+Test Student Account:
+
+Registration QA:
+- Happy path:
+- Duplicate path:
+- Waitlist path:
+- CSV export:
+- Roster sync:
+
+Classroom QA:
+- Day 1 assignment URL:
+- Day 2 assignment URL:
+- Day 1 repo URL:
+- Day 2 repo URL:
+
+Challenge QA:
+- Chapter walkthrough complete (00-21 + Appendix A-Z):
+- Supporting non-chapter content walkthrough complete:
+- Day 1 complete (1-9):
+- Day 2 complete (10-16):
+- Challenge reliability/failure-mode coverage complete:
+- Student-visible expected state map verified:
+- Recovery Level 2 restore test completed:
+- Bonus A status:
+- Bonus B status:
+- Bonus C status:
+- Bonus D status:
+- Bonus E status:
+
+Automation QA:
+- Registration workflow:
+- Registration form/label setup:
+- Aria:
+- Content validation:
+- Progression:
+- Skills progression:
+- Autograders:
+- Seeding scripts:
+
+Open Defects:
+- [ID] Severity | Owner | ETA
+
+Release Decision:
+- Go / No-Go
+- Approver:</code></pre>
+<h2 id="what-this-runbook-replaces">What This Runbook Replaces</h2>
+<p>This runbook is the operator-facing execution path that unifies registration, deployment, and end-to-end challenge QA.</p>
+<p>It does not replace source documents. It sequences them into one practical checklist so a single facilitator can execute and validate the full system without context switching across multiple folders.</p>
+<h2 id="script-reference">Script Reference</h2>
+<p>The following scripts in <code>scripts/classroom/</code> are used by this runbook. Run each with <code>-?</code> or read the <code>.SYNOPSIS</code> block for full parameter documentation.</p>
+<table>
+<thead>
+<tr>
+<th scope="col">Script</th>
+<th scope="col">Purpose</th>
+<th scope="col">Automated</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>Initialize-WorkshopSetup.ps1</code></td>
+<td>Set PAT secret, variables, labels; sync and validate template; seed test student challenges</td>
+<td>All steps except PAT generation (browser required)</td>
+</tr>
+<tr>
+<td><code>Archive-CohortData.ps1</code></td>
+<td>Export cohort issues, roster, and discussions to <code>git-going-student-success</code>; reset source repo</td>
+<td>Export and archive are automated; roster reset may require PR due branch rules</td>
+</tr>
+<tr>
+<td><code>Delete-RegistrationIssues.ps1</code></td>
+<td>Delete registration/duplicate/waitlist issues via GraphQL mutation</td>
+<td>Fully automated when user has repo admin and <code>repo</code> token scope</td>
+</tr>
+<tr>
+<td><code>Delete-RegistrationIssues-v2.js</code></td>
+<td>Experimental Playwright UI deleter for issue cleanup</td>
+<td>Partially automated; UI selector fragility makes this fallback-only</td>
+</tr>
+<tr>
+<td><code>Test-RegistrationPage.ps1</code></td>
+<td>Validate Pages site, REGISTER page, issue form, labels, workflow, and live registration flow</td>
+<td>All steps; test issue cleanup is close+lock only (see below)</td>
+</tr>
+<tr>
+<td><code>Prepare-LearningRoomTemplate.ps1</code></td>
+<td>Sync <code>learning-room/</code> source into <code>Community-Access/learning-room-template</code></td>
+<td>Fully automated</td>
+</tr>
+<tr>
+<td><code>Test-LearningRoomTemplate.ps1</code></td>
+<td>Create smoke repo from template, validate file inventory and workflow dispatch</td>
+<td>Fully automated</td>
+</tr>
+<tr>
+<td><code>Seed-LearningRoomChallenge.ps1</code></td>
+<td>Seed a specific challenge issue in a student repository</td>
+<td>Fully automated</td>
+</tr>
+<tr>
+<td><code>Seed-PeerSimulation.ps1</code></td>
+<td>Seed peer simulation issues and PR in a student repository</td>
+<td>Fully automated</td>
+</tr>
+<tr>
+<td><code>Restore-LearningRoomFiles.ps1</code></td>
+<td>Restore baseline files into a student repo via recovery branch and PR</td>
+<td>Fully automated</td>
+</tr>
+<tr>
+<td><code>Invoke-LearningRoomEndToEndTest.ps1</code></td>
+<td>Full end-to-end scripted QA harness</td>
+<td>Fully automated</td>
+</tr>
+<tr>
+<td><code>Reset-SupportHubEnvironment.ps1</code></td>
+<td>Rebuild support hub repository labels, settings, and baseline support automation</td>
+<td>Fully automated</td>
+</tr>
+</tbody></table>
+<h2 id="github-api-limitations">GitHub API Limitations</h2>
+<p>The following actions cannot be performed via any GitHub API and require manual browser-based action. These are hard platform constraints, not gaps in the scripts.</p>
+<table>
+<thead>
+<tr>
+<th scope="col">Action</th>
+<th scope="col">Why it cannot be automated</th>
+<th scope="col">Manual path</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Creating a Classroom assignment</td>
+<td>No write endpoint exists in the GitHub Classroom REST API (confirmed: only GET endpoints are documented and available)</td>
+<td><a href="https://classroom.github.com">classroom.github.com</a> as <code>accesswatch</code></td>
+</tr>
+<tr>
+<td>Deleting issues via REST API</td>
+<td>GitHub REST API has no DELETE endpoint for issues</td>
+<td>Use <code>scripts/classroom/Delete-RegistrationIssues.ps1</code> (GraphQL mutation path), or UI fallback</td>
+</tr>
+<tr>
+<td>Deleting or moving discussions</td>
+<td>GraphQL discussion mutations do not include delete or move operations</td>
+<td>Discussions tab in GitHub UI -&gt; each thread -&gt; &quot;...&quot; -&gt; Delete</td>
+</tr>
+<tr>
+<td>Generating a personal access token</td>
+<td>PAT generation requires browser authentication by design</td>
+<td><a href="https://github.com/settings/tokens">github.com/settings/tokens</a> as <code>accesswatch</code></td>
+</tr>
+</tbody></table>
+<h2 id="pre-cohort-cleanup-procedure">Pre-Cohort Cleanup Procedure</h2>
+<p>Run this procedure after each cohort completes, before starting QA for the next cohort.</p>
+<h3 id="archive-previous-cohort-data">Archive previous cohort data</h3>
+<pre><code class="hljs language-powershell"><span class="hljs-comment"># Replace the slug with the cohort being archived (format: YYYY-MM-description)</span>
+scripts/classroom/Archive<span class="hljs-literal">-CohortData</span>.ps1 <span class="hljs-literal">-CohortSlug</span> <span class="hljs-number">2026</span><span class="hljs-literal">-03-march-cohort</span></code></pre>
+<p>What this does:</p>
+<ol>
+<li>Exports all registration/duplicate/waitlist issues (with comments) to JSON and CSV.</li>
+<li>Exports the current <code>student-roster.json</code>.</li>
+<li>Exports discussions to JSON.</li>
+<li>Pushes the archive to <code>Community-Access/git-going-student-success</code> under <code>admin/cohorts/&lt;CohortSlug&gt;/</code>.</li>
+<li>Closes and locks all registration issues in the source repository.</li>
+<li>Resets <code>student-roster.json</code> to the blank template.</li>
+</ol>
+<p>Use <code>-WhatIf</code> to preview without making changes:</p>
+<pre><code class="hljs language-powershell">scripts/classroom/Archive<span class="hljs-literal">-CohortData</span>.ps1 <span class="hljs-literal">-CohortSlug</span> <span class="hljs-number">2026</span><span class="hljs-literal">-03-march-cohort</span> <span class="hljs-literal">-WhatIf</span></code></pre>
+<p>After the script completes, two manual cleanup steps are required (API limitation):</p>
+<ol>
+<li><strong>Delete registration issues</strong> -- use the GraphQL cleanup script (recommended):</li>
+</ol>
+<pre><code class="hljs language-powershell">scripts/classroom/Delete<span class="hljs-literal">-RegistrationIssues</span>.ps1</code></pre>
+<ol start="2">
+<li><strong>Delete discussions</strong> -- discussions still require manual deletion:
+<code>https://github.com/Community-Access/git-going-with-github/discussions</code></li>
+</ol>
+<p>Archive destination: <code>https://github.com/Community-Access/git-going-student-success/tree/main/admin/cohorts/&lt;CohortSlug&gt;/</code></p>
+<h3 id="current-progress-snapshot-2026-05-08">Current Progress Snapshot (2026-05-08)</h3>
+<ul>
+<li><input checked="" disabled="" type="checkbox"> Registration issues archived to <code>git-going-student-success</code>.</li>
+<li><input checked="" disabled="" type="checkbox"> Registration issues deleted from source repository (count now 0).</li>
+<li><input checked="" disabled="" type="checkbox"> Discussions deleted from source repository (count now 0).</li>
+<li><input checked="" disabled="" type="checkbox"> Learning Room template sync PR merged: <code>Community-Access/learning-room-template#11</code>.</li>
+<li><input aria-label="Registration secret and variable values set for next cohort (" disabled="" type="checkbox"> Registration secret and variable values set for next cohort (<code>CLASSROOM_ORG_ADMIN_TOKEN</code>, <code>CLASSROOM_ORG</code>, <code>CLASSROOM_DAY1_ASSIGNMENT_URL</code>, <code>CLASSROOM_DAY2_ASSIGNMENT_URL</code>).</li>
+<li><input aria-label="Day 1 and Day 2 classroom assignments created for next cohort." disabled="" type="checkbox"> Day 1 and Day 2 classroom assignments created for next cohort.</li>
+</ul>
+
+  </main>
+  <footer role="contentinfo" class="site-footer">
+    <p><strong>GIT Going with GitHub</strong> - A workshop by <a href="https://community-access.org">Community Access</a></p>
+    <p><a href="https://github.com/community-access/git-going-with-github">View on GitHub</a> · <a href="https://community-access.org">community-access.org</a></p>
+  </footer>
+
+  </body>
+</html>

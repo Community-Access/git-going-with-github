@@ -39,7 +39,7 @@ This page is a fast, self-serve opt-in workflow. Students can opt in directly fr
 
 1. Check your issue for the automated confirmation or waitlist comment.
 2. Complete the [Pre-Workshop Setup Guide](https://community-access.org/git-going-with-github/docs/00-pre-workshop-setup.html).
-3. Introduce yourself in the [Discussion Forum](https://github.com/community-access/git-going-with-github/discussions).
+3. Introduce yourself in [Support Hub Discussions](https://github.com/Community-Access/git-going-open-support/discussions).
 
 ## Need help?
 

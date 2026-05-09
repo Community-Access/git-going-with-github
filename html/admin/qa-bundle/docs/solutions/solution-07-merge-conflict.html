@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="GIT Going with GitHub - A two-day accessible open source workshop by Community Access">
+  <title>Solution Reference: Challenge 7 -- Resolve a Merge Conflict - GIT Going with GitHub</title>
+  <link rel="stylesheet" href="./styles/github-markdown.css">
+  <link rel="stylesheet" href="./styles/highlight.css">
+  <link rel="stylesheet" href="./styles/custom.css">
+  <style>
+    .markdown-body {
+      box-sizing: border-box;
+      min-width: 200px;
+      max-width: 980px;
+      margin: 0 auto;
+      padding: 45px;
+    }
+    @media (max-width: 767px) {
+      .markdown-body {
+        padding: 15px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+  <header class="site-header" role="banner">
+    <div class="site-header-inner">
+      <nav aria-label="Breadcrumb" class="breadcrumb">
+        <a href="./index.html">Home</a> <span aria-hidden="true">›</span> <span aria-current="page">Solution Reference: Challenge 7 -- Resolve a Merge Conflict</span>
+      </nav>
+      <div class="header-actions">
+        <a href="https://github.com/Community-Access/git-going-with-github/wiki" class="wiki-link" target="_blank" rel="noopener noreferrer">
+          <svg aria-hidden="true" focusable="false" width="16" height="16" viewBox="0 0 16 16" fill="currentColor">
+            <path d="M1.75 1h8.5c.966 0 1.75.784 1.75 1.75v5.5A1.75 1.75 0 0 1 10.25 10H7.06l-2.573 2.573A1.458 1.458 0 0 1 2 11.543V10h-.25A1.75 1.75 0 0 1 0 8.25v-5.5C0 1.784.784 1 1.75 1ZM1.5 2.75v5.5c0 .138.112.25.25.25h1a.75.75 0 0 1 .75.75v2.19l2.72-2.72a.749.749 0 0 1 .53-.22h3.5a.25.25 0 0 0 .25-.25v-5.5a.25.25 0 0 0-.25-.25h-8.5a.25.25 0 0 0-.25.25Zm13 2a.25.25 0 0 0-.25-.25h-.5a.75.75 0 0 1 0-1.5h.5c.966 0 1.75.784 1.75 1.75v5.5A1.75 1.75 0 0 1 14.25 12H14v1.543a1.457 1.457 0 0 1-2.487 1.03L9.22 12.28a.749.749 0 1 1 1.06-1.06l2.22 2.22v-2.19a.75.75 0 0 1 .75-.75h.25a.25.25 0 0 0 .25-.25v-5.5Z"/>
+          </svg>
+          Wiki
+        </a>
+        <form role="search" class="search-form" action="./search.html" method="get">
+        <label for="site-search" class="search-label">Search docs</label>
+        <input
+          type="search"
+          id="site-search"
+          class="search-input"
+          name="q"
+          placeholder="Search docs…"
+          autocomplete="off"
+          aria-label="Search documentation"
+        >
+        <button type="submit" class="search-button" aria-label="Submit search">
+          <svg aria-hidden="true" focusable="false" width="16" height="16" viewBox="0 0 16 16" fill="currentColor">
+            <path d="M10.68 11.74a6 6 0 0 1-7.922-8.982 6 6 0 0 1 8.982 7.922l3.04 3.04a.749.749 0 0 1-.326 1.275.749.749 0 0 1-.734-.215ZM11.5 7a4.499 4.499 0 1 0-8.997 0A4.499 4.499 0 0 0 11.5 7Z"/>
+          </svg>
+        </button>
+      </form>
+      </div>
+    </div>
+  </header>
+  <main id="main-content" class="markdown-body">
+    <h1 id="solution-reference-challenge-7----resolve-a-merge-conflict">Solution Reference: Challenge 7 -- Resolve a Merge Conflict</h1>
+<p>This shows what conflict markers look like and how to resolve them.</p>
+<h2 id="what-conflict-markers-look-like">What conflict markers look like</h2>
+<p>When Git cannot automatically merge two changes to the same lines, it inserts markers:</p>
+<pre><code class="hljs">&lt;&lt;&lt;&lt;&lt;&lt;&lt; HEAD
+<span class="hljs-section">Welcome to the Learning Room! This is the main branch version.
+<span aria-hidden="true"></span>=======</span>
+Welcome to the Learning Room! This is my improved version with more detail.
+&gt;&gt;&gt;&gt;&gt;&gt;&gt; fix/welcome-update</code></pre>
+<h3 id="the-three-sections">The three sections</h3>
+<ul>
+<li><strong>Between <code>&lt;&lt;&lt;&lt;&lt;&lt;&lt; HEAD</code> and <code>=======</code></strong>: The version on the branch you are merging INTO (usually main)</li>
+<li><strong>Between <code>=======</code> and <code>&gt;&gt;&gt;&gt;&gt;&gt;&gt;</code></strong>: The version on YOUR branch</li>
+<li><strong>The marker lines themselves</strong>: Must be deleted -- they are not content</li>
+</ul>
+<h2 id="example-resolution">Example resolution</h2>
+<p><strong>Before (with conflict markers):</strong></p>
+<pre><code class="hljs">&lt;&lt;&lt;&lt;&lt;&lt;&lt; HEAD
+<span class="hljs-section">Welcome to the Learning Room! This is the main branch version.
+<span aria-hidden="true"></span>=======</span>
+Welcome to the Learning Room! This is my improved version with more detail.
+&gt;&gt;&gt;&gt;&gt;&gt;&gt; fix/welcome-update</code></pre>
+<p><strong>After (resolved):</strong></p>
+<pre><code class="hljs">Welcome <span class="hljs-keyword">to</span> <span class="hljs-keyword">the</span> Learning Room! This <span class="hljs-keyword">is</span> <span class="hljs-keyword">my</span> improved <span class="hljs-built_in">version</span> <span class="hljs-keyword">with</span> more detail.</code></pre>
+<h3 id="decision-process">Decision process</h3>
+<p>You chose one of three options:</p>
+<ol>
+<li><strong>Keep yours:</strong> Delete the HEAD section and all markers, keep your changes</li>
+<li><strong>Keep theirs:</strong> Delete your section and all markers, keep the HEAD version</li>
+<li><strong>Combine both:</strong> Write new text that incorporates ideas from both versions, delete all markers</li>
+</ol>
+<p>All three are valid. The choice depends on which version is better for the project.</p>
+<h2 id="on-githubcom">On github.com</h2>
+<p>GitHub offers a conflict editor directly in the browser:</p>
+<ol>
+<li>Click &quot;Resolve conflicts&quot; on the PR page</li>
+<li>The editor highlights conflicting sections</li>
+<li>Edit the file to remove markers and keep the content you want</li>
+<li>Click &quot;Mark as resolved&quot; then &quot;Commit merge&quot;</li>
+</ol>
+<h2 id="in-vs-code">In VS Code</h2>
+<p>VS Code highlights conflicts and offers clickable options above each conflict:</p>
+<ul>
+<li>&quot;Accept Current Change&quot; (HEAD version)</li>
+<li>&quot;Accept Incoming Change&quot; (your version)</li>
+<li>&quot;Accept Both Changes&quot; (keeps both, you edit after)</li>
+</ul>
+<h2 id="what-matters">What matters</h2>
+<p>The learning objective is understanding that conflicts are normal and resolvable. If you removed all conflict markers and the file makes sense, you completed this challenge.</p>
+
+  </main>
+  <footer role="contentinfo" class="site-footer">
+    <p><strong>GIT Going with GitHub</strong> - A workshop by <a href="https://community-access.org">Community Access</a></p>
+    <p><a href="https://github.com/community-access/git-going-with-github">View on GitHub</a> · <a href="https://community-access.org">community-access.org</a></p>
+  </footer>
+
+  </body>
+</html>

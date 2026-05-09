@@ -1,0 +1,724 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="GIT Going with GitHub - A two-day accessible open source workshop by Community Access">
+  <title>Build Your Agent: The Capstone Project - GIT Going with GitHub</title>
+  <link rel="stylesheet" href="./styles/github-markdown.css">
+  <link rel="stylesheet" href="./styles/highlight.css">
+  <link rel="stylesheet" href="./styles/custom.css">
+  <style>
+    .markdown-body {
+      box-sizing: border-box;
+      min-width: 200px;
+      max-width: 980px;
+      margin: 0 auto;
+      padding: 45px;
+    }
+    @media (max-width: 767px) {
+      .markdown-body {
+        padding: 15px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+  <header class="site-header" role="banner">
+    <div class="site-header-inner">
+      <nav aria-label="Breadcrumb" class="breadcrumb">
+        <a href="./index.html">Home</a> <span aria-hidden="true">›</span> <span aria-current="page">Build Your Agent: The Capstone Project</span>
+      </nav>
+      <div class="header-actions">
+        <a href="https://github.com/Community-Access/git-going-with-github/wiki" class="wiki-link" target="_blank" rel="noopener noreferrer">
+          <svg aria-hidden="true" focusable="false" width="16" height="16" viewBox="0 0 16 16" fill="currentColor">
+            <path d="M1.75 1h8.5c.966 0 1.75.784 1.75 1.75v5.5A1.75 1.75 0 0 1 10.25 10H7.06l-2.573 2.573A1.458 1.458 0 0 1 2 11.543V10h-.25A1.75 1.75 0 0 1 0 8.25v-5.5C0 1.784.784 1 1.75 1ZM1.5 2.75v5.5c0 .138.112.25.25.25h1a.75.75 0 0 1 .75.75v2.19l2.72-2.72a.749.749 0 0 1 .53-.22h3.5a.25.25 0 0 0 .25-.25v-5.5a.25.25 0 0 0-.25-.25h-8.5a.25.25 0 0 0-.25.25Zm13 2a.25.25 0 0 0-.25-.25h-.5a.75.75 0 0 1 0-1.5h.5c.966 0 1.75.784 1.75 1.75v5.5A1.75 1.75 0 0 1 14.25 12H14v1.543a1.457 1.457 0 0 1-2.487 1.03L9.22 12.28a.749.749 0 1 1 1.06-1.06l2.22 2.22v-2.19a.75.75 0 0 1 .75-.75h.25a.25.25 0 0 0 .25-.25v-5.5Z"/>
+          </svg>
+          Wiki
+        </a>
+        <form role="search" class="search-form" action="./search.html" method="get">
+        <label for="site-search" class="search-label">Search docs</label>
+        <input
+          type="search"
+          id="site-search"
+          class="search-input"
+          name="q"
+          placeholder="Search docs…"
+          autocomplete="off"
+          aria-label="Search documentation"
+        >
+        <button type="submit" class="search-button" aria-label="Submit search">
+          <svg aria-hidden="true" focusable="false" width="16" height="16" viewBox="0 0 16 16" fill="currentColor">
+            <path d="M10.68 11.74a6 6 0 0 1-7.922-8.982 6 6 0 0 1 8.982 7.922l3.04 3.04a.749.749 0 0 1-.326 1.275.749.749 0 0 1-.734-.215ZM11.5 7a4.499 4.499 0 1 0-8.997 0A4.499 4.499 0 0 0 11.5 7Z"/>
+          </svg>
+        </button>
+      </form>
+      </div>
+    </div>
+  </header>
+  <main id="main-content" class="markdown-body">
+    <h1 id="build-your-agent-the-capstone-project">Build Your Agent: The Capstone Project</h1>
+<blockquote>
+<p><strong>Related appendices:</strong> <a href="appendix-l-agents-reference.html">Appendix L: Agents Reference</a> | <a href="appendix-k-copilot-reference.html">Appendix K: Copilot Reference</a> | <a href="appendix-c-markdown-reference.html">Appendix C: Markdown Reference</a>
+<strong>Authoritative sources:</strong> <a href="https://code.visualstudio.com/docs/copilot/copilot-chat#_chat-participants">VS Code Docs: Chat participants</a> | <a href="https://docs.github.com/en/copilot/using-github-copilot/using-extensions-to-integrate-external-tools-with-copilot-chat">GitHub Docs: About GitHub Copilot agents</a></p>
+</blockquote>
+<blockquote>
+<p><strong>Day 2, Block 4 Material (Capstone)</strong></p>
+<p>Everything you have learned comes together here. You will design, build, and contribute an accessibility agent to the <a href="https://github.com/Community-Access/accessibility-agents">Community-Access/accessibility-agents</a> repository. This is a real contribution to a real project -- your agent will join the roster of 55+ agents serving 3 accessibility teams across 5 platforms.</p>
+</blockquote>
+<h2 id="table-of-contents">Table of Contents</h2>
+<ol>
+<li><a href="#1-the-capstone-challenge">The Capstone Challenge</a></li>
+<li><a href="#2-phase-1-choose-your-agents-mission">Phase 1: Choose Your Agent&#39;s Mission</a></li>
+<li><a href="#3-phase-2-write-the-agent-file">Phase 2: Write the Agent File</a></li>
+<li><a href="#4-phase-3-define-responsibilities-and-guardrails">Phase 3: Define Responsibilities and Guardrails</a></li>
+<li><a href="#5-phase-4-test-your-agent-locally">Phase 4: Test Your Agent Locally</a></li>
+<li><a href="#6-phase-5-open-your-pull-request">Phase 5: Open Your Pull Request</a></li>
+<li><a href="#7-phase-6-respond-to-review">Phase 6: Respond to Review</a></li>
+<li><a href="#8-capstone-rubric">Capstone Rubric</a></li>
+<li><a href="#9-example-agents-for-inspiration">Example Agents for Inspiration</a></li>
+<li><a href="#10-if-you-get-stuck">If You Get Stuck</a></li>
+</ol>
+<hr>
+<blockquote>
+<p><strong>Challenge 16: Build Your Agent (Capstone).</strong> This is the culminating challenge of the workshop. You will fork, write, test, and contribute an accessibility agent.</p>
+</blockquote>
+<h2 id="1-the-capstone-challenge">1. The Capstone Challenge</h2>
+<p>The capstone is Challenge 16 -- the final challenge of the workshop. You will:</p>
+<ol>
+<li>Choose a mission for a new accessibility agent (or improve an existing one)</li>
+<li>Write an agent file with valid YAML frontmatter</li>
+<li>Define clear responsibilities and guardrails</li>
+<li>Test the agent locally with GitHub Copilot</li>
+<li>Open a pull request from your fork to the upstream repository</li>
+<li>Respond to peer review feedback</li>
+</ol>
+<p>This is not a simulation. Your pull request goes to a real repository. If your agent meets the quality bar, it will be merged and available to real users.</p>
+<h3 id="what-you-need-before-starting">What you need before starting</h3>
+<ul>
+<li><input aria-label="You have forked and cloned the accessibility-agents repository (" disabled="" type="checkbox"> You have forked and cloned the accessibility-agents repository (<a href="18-fork-and-contribute.html">Chapter 18</a>)</li>
+<li><input aria-label="You have a feature branch created:" disabled="" type="checkbox"> You have a feature branch created: <code>agents/your-username-agent-name</code></li>
+<li><input aria-label="You understand how to push to your fork and open a PR (" disabled="" type="checkbox"> You understand how to push to your fork and open a PR (<a href="18-fork-and-contribute.html">Chapter 18</a>)</li>
+<li><input aria-label="You have GitHub Copilot or Copilot Free active (" disabled="" type="checkbox"> You have GitHub Copilot or Copilot Free active (<a href="16-github-copilot.html">Chapter 16</a>)</li>
+<li><input aria-label="You have explored the existing agents in" disabled="" type="checkbox"> You have explored the existing agents in <a href="19-accessibility-agents.html">Chapter 19</a></li>
+</ul>
+<h3 id="time-estimate">Time estimate</h3>
+<p>Most students complete the capstone in 60 to 90 minutes. The phases are designed so you can get a working agent in 30 minutes and spend the remaining time improving it.</p>
+<hr>
+<h2 id="2-phase-1-choose-your-agent39s-mission">2. Phase 1: Choose Your Agent&#39;s Mission</h2>
+<blockquote>
+<p><strong>See also:</strong> <a href="19-accessibility-agents.html">Chapter 19: Accessibility Agents</a> introduces the agent ecosystem and shows existing agents for inspiration.</p>
+</blockquote>
+<h3 id="what-makes-a-good-agent-mission">What makes a good agent mission</h3>
+<p>A good agent solves a specific, recurring problem. It does not try to do everything. Consider these questions:</p>
+<ul>
+<li><strong>What task do you repeat?</strong> Think about workflow steps from Day 1 and Day 2 that felt repetitive.</li>
+<li><strong>What would a specialist know?</strong> An agent works best when it has deep knowledge of a focused area.</li>
+<li><strong>What gap exists?</strong> Look at the existing agents in <a href="19-accessibility-agents.html">Chapter 19</a>. Is there a workflow that no agent covers?</li>
+</ul>
+<h3 id="mission-categories-to-consider">Mission categories to consider</h3>
+<table>
+<thead>
+<tr>
+<th scope="col">Category</th>
+<th scope="col">Example missions</th>
+<th scope="col">Existing agents in this space</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Accessibility auditing</td>
+<td>Audit color contrast in CSS variables, check form labels, validate heading hierarchy</td>
+<td>contrast-master, forms-specialist, alt-text-headings</td>
+</tr>
+<tr>
+<td>Document accessibility</td>
+<td>Check PDF reading order, audit Excel sheet names, validate Word heading structure</td>
+<td>pdf-accessibility, excel-accessibility, word-accessibility</td>
+</tr>
+<tr>
+<td>GitHub workflow</td>
+<td>Summarize notifications, track stale issues, generate release notes</td>
+<td>daily-briefing, issue-tracker, analytics</td>
+</tr>
+<tr>
+<td>Developer tools</td>
+<td>Validate agent files, lint markdown for accessibility, check keyboard navigation</td>
+<td>testing-coach, link-checker, markdown-a11y-assistant</td>
+</tr>
+<tr>
+<td>Education</td>
+<td>Explain a WCAG criterion, generate quiz questions, summarize a chapter</td>
+<td>wcag-guide</td>
+</tr>
+</tbody></table>
+<h3 id="write-your-mission-statement">Write your mission statement</h3>
+<p>Before writing any code, write a one-sentence mission statement:</p>
+<blockquote>
+<p>&quot;My agent helps [who] by [doing what] when [in what situation].&quot;</p>
+</blockquote>
+<p>Example: &quot;My agent helps documentation authors by checking that all images in a markdown file have meaningful alt text when they open a file for review.&quot;</p>
+<p>Write this statement in your challenge issue comment so your buddy and facilitator can give early feedback.</p>
+<hr>
+<h2 id="3-phase-2-write-the-agent-file">3. Phase 2: Write the Agent File</h2>
+<p>An agent file is a Markdown file with YAML frontmatter that defines the agent&#39;s identity, and a body that contains the agent&#39;s instructions. Agent files live in the <code>.github/agents/</code> directory (for GitHub Copilot agents) or in team-specific directories in the accessibility-agents repository.</p>
+<h3 id="file-location-and-naming">File location and naming</h3>
+<p>Create your agent file at:</p>
+<pre><code class="hljs language-text">.github/agents/your-agent-name.md</code></pre>
+<p>Use lowercase with hyphens. Example: <code>.github/agents/alt-text-validator.md</code></p>
+<h3 id="the-agent-file-structure">The agent file structure</h3>
+<p>Every agent file has two parts:</p>
+<ol>
+<li><strong>YAML frontmatter</strong> -- metadata between <code>---</code> markers at the top of the file</li>
+<li><strong>Instructions body</strong> -- Markdown content that tells the agent how to behave</li>
+</ol>
+<h3 id="minimal-agent-file-template">Minimal agent file template</h3>
+<pre><code class="hljs language-markdown">---
+name: &quot;Alt Text Validator&quot;
+<span class="hljs-section">description: &quot;Checks that all images in markdown files have meaningful, non-placeholder alt text.&quot;
+---</span>
+
+<span class="hljs-section"># Alt Text Validator</span>
+
+You are an accessibility specialist focused on image alt text quality in markdown documentation.
+
+<span class="hljs-section">## Responsibilities</span>
+
+<span class="hljs-bullet">-</span> Scan markdown files for images missing alt text
+<span class="hljs-bullet">-</span> Identify placeholder alt text like &quot;image&quot;, &quot;screenshot&quot;, &quot;photo&quot;, or empty strings
+<span class="hljs-bullet">-</span> Suggest specific, descriptive alt text based on the image context
+<span class="hljs-bullet">-</span> Flag decorative images that should use empty alt text (<span class="hljs-code">`alt=&quot;&quot;`</span>)
+
+<span class="hljs-section">## Guardrails</span>
+
+<span class="hljs-bullet">-</span> Never modify files without explicit user approval
+<span class="hljs-bullet">-</span> Always explain why alt text needs improvement before suggesting a replacement
+<span class="hljs-bullet">-</span> Do not generate alt text for images you cannot see -- ask the user to describe the image
+<span class="hljs-bullet">-</span> Limit scope to the files the user asks about -- do not scan the entire repository unprompted</code></pre>
+<h3 id="yaml-frontmatter-fields">YAML frontmatter fields</h3>
+<table>
+<thead>
+<tr>
+<th scope="col">Field</th>
+<th scope="col">Required</th>
+<th scope="col">Description</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>name</code></td>
+<td>Yes</td>
+<td>Display name for the agent (title case, spaces allowed)</td>
+</tr>
+<tr>
+<td><code>description</code></td>
+<td>Yes</td>
+<td>One-sentence description of what the agent does -- also drives <strong>automatic invocation</strong>: Copilot matches this text against your request and delegates to the agent without you selecting it manually</td>
+</tr>
+</tbody></table>
+<blockquote>
+<p><strong>Write a strong description.</strong> Vague descriptions result in missed automatic routing.</p>
+<ul>
+<li>Weak: <code>Helps with accessibility</code></li>
+<li>Strong: <code>Checks markdown files for accessibility issues, fixes descriptive links and heading hierarchy, and flags alt text for human review</code></li>
+</ul>
+<p>The more specific the description, the more reliably Copilot invokes the right agent for the right task.</p>
+</blockquote>
+<h3 id="writing-the-instructions-body">Writing the instructions body</h3>
+<p>The instructions body tells the agent how to behave. Write it as if you are briefing a new team member on their first day:</p>
+<ul>
+<li><strong>Start with identity.</strong> &quot;You are a [role] focused on [area].&quot;</li>
+<li><strong>List responsibilities.</strong> What specific tasks does this agent handle?</li>
+<li><strong>Set guardrails.</strong> What should the agent never do? What are its limits?</li>
+<li><strong>Provide examples.</strong> Show what good output looks like.</li>
+</ul>
+<blockquote>
+<p><strong>Screen reader note:</strong> The agent file is plain Markdown. There are no special tools needed to write it. Use any text editor.</p>
+</blockquote>
+<h3 id="learning-cards-writing-the-agent-file">Learning Cards: Writing the Agent File</h3>
+<details>
+<summary>Screen reader users</summary>
+
+<ul>
+<li>Create your agent file with <code>Ctrl+N</code>, then <code>Ctrl+S</code> and save to <code>.github/agents/your-agent-name.md</code> -- the Explorer navigates to the folder automatically</li>
+<li>Use <code>Ctrl+Shift+O</code> to navigate between YAML frontmatter fields and Markdown headings (Responsibilities, Guardrails) in your agent file</li>
+<li>The YAML frontmatter is between <code>---</code> markers at the top -- your screen reader announces these as horizontal rules</li>
+</ul>
+</details>
+
+<details>
+<summary>Low vision users</summary>
+
+<ul>
+<li>Agent files are standard Markdown -- open Markdown Preview (<code>Ctrl+Shift+V</code>) side by side to verify formatting as you write</li>
+<li>The YAML frontmatter at the top uses <code>name:</code> and <code>description:</code> fields -- keep these on separate lines for readability at high zoom</li>
+<li>Use a consistent heading hierarchy (# for title, ## for sections) so the Outline view (<code>Ctrl+Shift+O</code>) shows a clean structure</li>
+</ul>
+</details>
+
+<details>
+<summary>Sighted users</summary>
+
+<ul>
+<li>Agent files follow a standard pattern: YAML frontmatter at the top, then identity statement, responsibilities, guardrails, and examples</li>
+<li>Use the Outline view (<code>Ctrl+Shift+O</code>) to see your agent file&#39;s structure at a glance and navigate between sections</li>
+<li>Copy the template from this chapter as a starting point -- replace the placeholder content with your agent&#39;s specific instructions</li>
+</ul>
+</details>
+
+<hr>
+<h2 id="4-phase-3-define-responsibilities-and-guardrails">4. Phase 3: Define Responsibilities and Guardrails</h2>
+<p>Responsibilities and guardrails are the most important parts of your agent&#39;s instructions. The autograder checks that both sections exist.</p>
+<h3 id="writing-responsibilities">Writing responsibilities</h3>
+<p>Responsibilities define what the agent does. Be specific and actionable:</p>
+<p><strong>Good responsibilities (specific):</strong></p>
+<ul>
+<li>Scan HTML files for <code>&lt;img&gt;</code> tags missing the <code>alt</code> attribute</li>
+<li>Check that all <code>&lt;button&gt;</code> elements have visible text or an <code>aria-label</code></li>
+<li>Verify heading levels do not skip (e.g., <code>h1</code> to <code>h3</code> without <code>h2</code>)</li>
+</ul>
+<p><strong>Weak responsibilities (vague):</strong></p>
+<ul>
+<li>Help with accessibility</li>
+<li>Check code</li>
+<li>Find problems</li>
+</ul>
+<p>Each responsibility should describe one discrete action the agent can take.</p>
+<h3 id="writing-guardrails">Writing guardrails</h3>
+<p>Guardrails define what the agent must not do. They prevent the agent from overstepping, giving harmful advice, or acting without permission:</p>
+<p><strong>Good guardrails:</strong></p>
+<ul>
+<li>Never auto-fix code without asking the user first</li>
+<li>Do not provide medical, legal, or financial advice when discussing accessibility compliance</li>
+<li>Limit reviews to the files the user specifies -- do not scan the entire repository</li>
+<li>If a finding is uncertain, say so explicitly rather than presenting it as definitive</li>
+<li>Do not remove existing accessibility attributes unless they are demonstrably incorrect</li>
+</ul>
+<p><strong>Why guardrails matter:</strong> An agent without guardrails will confidently do things it should not. A contrast checker that silently changes your CSS colors is dangerous. A document reviewer that deletes &quot;unnecessary&quot; alt text is destructive. Guardrails are how you make an agent safe.</p>
+<h3 id="learning-cards-responsibilities-and-guardrails">Learning Cards: Responsibilities and Guardrails</h3>
+<details>
+<summary>Screen reader users</summary>
+
+<ul>
+<li>Use <code>## Responsibilities</code> and <code>## Guardrails</code> as exact heading names -- the autograder searches for these strings</li>
+<li>Each responsibility should start with a verb (Scan, Check, Verify, Flag) -- this makes them concrete and testable</li>
+<li>Guardrails should start with &quot;Never&quot; or &quot;Do not&quot; to set clear boundaries your screen reader identifies as restrictions when reviewing the file</li>
+</ul>
+</details>
+
+<details>
+<summary>Low vision users</summary>
+
+<ul>
+<li>Format responsibilities as a bulleted list (starting with <code>-</code>) for easy scanning at high zoom -- one responsibility per bullet</li>
+<li>Keep each guardrail to a single line so it remains visible without horizontal scrolling at your zoom level</li>
+<li>Use bold text for emphasis on critical guardrails (e.g., <strong>Never modify files without approval</strong>) to improve visual scanning</li>
+</ul>
+</details>
+
+<details>
+<summary>Sighted users</summary>
+
+<ul>
+<li>The autograder checks for &quot;Responsibilities&quot; and &quot;Guardrails&quot; headings -- use exactly these words as <code>## </code> headings</li>
+<li>Aim for 4-6 responsibilities and 3-5 guardrails -- too few makes the agent vague, too many makes it rigid</li>
+<li>Compare your responsibilities against the example agents in Section 9 to calibrate specificity</li>
+</ul>
+</details>
+
+<hr>
+<h2 id="5-phase-4-test-your-agent-locally">5. Phase 4: Test Your Agent Locally</h2>
+<blockquote>
+<p><strong>See also:</strong> <a href="18-fork-and-contribute.html">Chapter 18: Fork and Contribute</a> covers the fork-and-PR workflow you will use to submit your agent.</p>
+</blockquote>
+<p>Before opening a pull request, test your agent to verify it works.</p>
+<h3 id="testing-with-github-copilot-chat">Testing with GitHub Copilot Chat</h3>
+<ol>
+<li>Open VS Code with the accessibility-agents repository.</li>
+<li>Ensure your agent file is saved in <code>.github/agents/</code>.</li>
+<li>Open GitHub Copilot Chat (<code>Ctrl+Shift+I</code> or <code>Cmd+Shift+I</code>).</li>
+<li>Invoke your agent by name: <code>@your-agent-name check this file for accessibility issues</code></li>
+<li>Observe the response. Does the agent:<ul>
+<li>Understand its mission?</li>
+<li>Follow its responsibilities?</li>
+<li>Respect its guardrails?</li>
+</ul>
+</li>
+</ol>
+<h3 id="testing-checklist">Testing checklist</h3>
+<ul>
+<li><input aria-label="The agent responds when invoked by name" disabled="" type="checkbox"> The agent responds when invoked by name</li>
+<li><input aria-label="The agent stays within its defined responsibilities" disabled="" type="checkbox"> The agent stays within its defined responsibilities</li>
+<li><input aria-label="The agent does not violate any guardrails" disabled="" type="checkbox"> The agent does not violate any guardrails</li>
+<li><input aria-label="The agent&#39;s output is useful and specific" disabled="" type="checkbox"> The agent&#39;s output is useful and specific</li>
+<li><input aria-label="The agent handles edge cases gracefully (empty files, no issues found)" disabled="" type="checkbox"> The agent handles edge cases gracefully (empty files, no issues found)</li>
+</ul>
+<h3 id="iterating-on-your-agent">Iterating on your agent</h3>
+<p>If the agent does not behave as expected:</p>
+<ol>
+<li>Read its instructions carefully. Is anything ambiguous?</li>
+<li>Add more specific instructions or examples.</li>
+<li>Test again with the same prompt.</li>
+<li>Repeat until the behavior matches your intent.</li>
+</ol>
+<p>Most students iterate 2-3 times before they are satisfied.</p>
+<h3 id="learning-cards-testing-your-agent">Learning Cards: Testing Your Agent</h3>
+<details>
+<summary>Screen reader users</summary>
+
+<ul>
+<li>Open Copilot Chat (<code>Ctrl+Shift+I</code>) and type <code>@your-agent-name</code> followed by a test prompt -- your screen reader announces the response as it streams</li>
+<li>Press <code>Alt+F2</code> after the response finishes to read the full output in Accessible View with arrow keys</li>
+<li>If the agent does not respond as expected, edit the <code>.agent.md</code> file and ask again -- Copilot picks up changes immediately</li>
+</ul>
+</details>
+
+<details>
+<summary>Low vision users</summary>
+
+<ul>
+<li>Agent responses appear in the Copilot Chat panel -- widen the panel by dragging its left edge for better readability</li>
+<li>Test with a simple prompt first (e.g., &quot;review this file&quot;) and read the full response before trying complex requests</li>
+<li>Use Accessible View (<code>Alt+F2</code>) to read responses at your preferred editor font size instead of the Chat panel&#39;s default</li>
+</ul>
+</details>
+
+<details>
+<summary>Sighted users</summary>
+
+<ul>
+<li>Type <code>@agent-name</code> in Copilot Chat followed by your test prompt -- look for the agent name in the response header confirming it was invoked</li>
+<li>Check that the response follows your Responsibilities section and does not violate any Guardrails</li>
+<li>Iterate by editing the agent file and re-testing until the output matches your expectations</li>
+</ul>
+</details>
+
+<hr>
+<h2 id="6-phase-5-open-your-pull-request">6. Phase 5: Open Your Pull Request</h2>
+<h3 id="tool-cards-open-your-capstone-pr">Tool Cards: Open Your Capstone PR</h3>
+<p><strong>VS Code Desktop (primary for Day 2):</strong></p>
+<ol>
+<li>Push your branch: <code>Ctrl+Shift+P</code> &gt; <strong>Git: Push</strong>.</li>
+<li><code>Ctrl+Shift+P</code> &gt; <strong>GitHub Pull Requests: Create Pull Request</strong>.</li>
+<li>Set base repo to <code>Community-Access/accessibility-agents</code>, fill in the title and description.</li>
+</ol>
+<p><strong>github.com (browser):</strong></p>
+<ol>
+<li>Navigate to your fork on GitHub.</li>
+<li>Click <strong>Contribute &gt; Open pull request</strong>.</li>
+<li>Verify the base is <code>Community-Access/accessibility-agents:main</code> and the compare is your branch.</li>
+</ol>
+<p><strong>GitHub CLI:</strong></p>
+<pre><code class="hljs language-bash">git push -u origin your-branch
+gh <span class="hljs-built_in">pr</span> create --repo Community-Access/accessibility-agents</code></pre>
+<p>You have a working agent file. Now contribute it.</p>
+<h3 id="pre-pr-checklist">Pre-PR checklist</h3>
+<p>Before opening your PR, verify:</p>
+<ul>
+<li><input aria-label="Your agent file has valid YAML frontmatter (name and description fields)" disabled="" type="checkbox"> Your agent file has valid YAML frontmatter (name and description fields)</li>
+<li><input aria-label="Your agent file has a Responsibilities section" disabled="" type="checkbox"> Your agent file has a Responsibilities section</li>
+<li><input aria-label="Your agent file has a Guardrails section" disabled="" type="checkbox"> Your agent file has a Guardrails section</li>
+<li><input aria-label="The file is in the correct directory" disabled="" type="checkbox"> The file is in the correct directory</li>
+<li><input aria-label="You have committed and pushed to your fork" disabled="" type="checkbox"> You have committed and pushed to your fork</li>
+</ul>
+<h3 id="open-the-pr">Open the PR</h3>
+<p>Follow the pull request steps from <a href="18-fork-and-contribute.html#9-step-7-open-a-pull-request">Chapter 18, Step 7</a>:</p>
+<ol>
+<li>Push your branch: <code>git push -u origin agents/your-username-agent-name</code></li>
+<li>Go to the upstream repository on GitHub.com.</li>
+<li>Click the banner or go to Pull Requests and click <strong>New pull request</strong>, then <strong>compare across forks</strong>.</li>
+<li>Select your fork and branch.</li>
+<li>Write a PR title: &quot;Add [agent-name] accessibility agent&quot;</li>
+<li>In the PR body, include:<ul>
+<li>Your mission statement from Phase 1</li>
+<li>What the agent does (summary of responsibilities)</li>
+<li>Any design decisions you made</li>
+<li>How you tested it</li>
+</ul>
+</li>
+<li>Create the pull request.</li>
+</ol>
+<h3 id="the-autograder">The autograder</h3>
+<p>The repository has an autograding workflow that runs on every pull request. It checks:</p>
+<table>
+<thead>
+<tr>
+<th scope="col">Check</th>
+<th scope="col">What it verifies</th>
+<th scope="col">Points</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Agent file exists</td>
+<td>A <code>.md</code> file exists in the agents directory</td>
+<td>10</td>
+</tr>
+<tr>
+<td>YAML frontmatter is valid</td>
+<td>The file starts with <code>---</code>, contains <code>name</code> and <code>description</code>, and ends with <code>---</code></td>
+<td>15</td>
+</tr>
+<tr>
+<td>Responsibilities section</td>
+<td>The file contains a heading or section titled &quot;Responsibilities&quot;</td>
+<td>15</td>
+</tr>
+<tr>
+<td>Guardrails section</td>
+<td>The file contains a heading or section titled &quot;Guardrails&quot;</td>
+<td>20</td>
+</tr>
+<tr>
+<td><strong>Total</strong></td>
+<td></td>
+<td><strong>60</strong></td>
+</tr>
+</tbody></table>
+<p>The autograder posts results as a comment on your PR. If any checks fail, read the comment, fix the issue, commit, and push. The autograder re-runs automatically.</p>
+<h3 id="learning-cards-opening-your-pull-request">Learning Cards: Opening Your Pull Request</h3>
+<details>
+<summary>Screen reader users</summary>
+
+<ul>
+<li>The autograder comment appears in the PR timeline -- navigate to Comments on GitHub.com with <code>h</code> (heading navigation) to find the results</li>
+<li>Each autograder check is listed with a pass/fail status and point value -- listen for &quot;10/10&quot; or &quot;0/15&quot; to identify which checks need attention</li>
+<li>If a check fails, read the failure message, fix the issue locally, commit, push, and the autograder re-runs automatically</li>
+</ul>
+</details>
+
+<details>
+<summary>Low vision users</summary>
+
+<ul>
+<li>The autograder results appear as a comment with a table showing checks, points, and pass/fail status -- zoom with <code>Ctrl+=</code> to read the details</li>
+<li>Green checkmarks indicate passing checks; red X marks indicate failures -- pair with High Contrast theme for clearest visibility</li>
+<li>Your PR description should include your mission statement, responsibilities summary, and testing notes</li>
+</ul>
+</details>
+
+<details>
+<summary>Sighted users</summary>
+
+<ul>
+<li>The autograder comment on your PR shows a table with four checks and a total score out of 60</li>
+<li>Green checkmarks = passing, red X = failing -- fix failures and push to trigger a re-run</li>
+<li>Include your mission statement, agent summary, and test results in the PR description for reviewers</li>
+</ul>
+</details>
+
+<hr>
+<h2 id="7-phase-6-respond-to-review">7. Phase 6: Respond to Review</h2>
+<p>After the autograder passes, a peer reviewer (your buddy or another student) and a facilitator will review your agent.</p>
+<h3 id="what-reviewers-look-for">What reviewers look for</h3>
+<ul>
+<li><strong>Clarity:</strong> Are the instructions easy to understand?</li>
+<li><strong>Specificity:</strong> Are responsibilities concrete and actionable?</li>
+<li><strong>Safety:</strong> Are guardrails sufficient to prevent harmful behavior?</li>
+<li><strong>Usefulness:</strong> Would this agent actually help someone?</li>
+<li><strong>Scope:</strong> Does the agent try to do too much or too little?</li>
+</ul>
+<h3 id="responding-to-feedback">Responding to feedback</h3>
+<p>This is the same process from <a href="18-fork-and-contribute.html#10-step-8-respond-to-review-feedback">Chapter 18, Step 8</a>:</p>
+<ol>
+<li>Read each review comment.</li>
+<li>Make changes locally.</li>
+<li>Commit and push. The PR updates automatically.</li>
+<li>Reply to each comment explaining your changes.</li>
+</ol>
+<h3 id="when-your-pr-is-merged">When your PR is merged</h3>
+<p>Congratulations. Your agent is now part of the accessibility-agents ecosystem. It is available to anyone who uses the repository. This is a real open source contribution, and it demonstrates:</p>
+<ul>
+<li>You can navigate the fork workflow end to end</li>
+<li>You can write clear, structured technical documentation</li>
+<li>You understand accessibility concepts well enough to teach an AI agent about them</li>
+<li>You can respond constructively to code review</li>
+</ul>
+<hr>
+<h2 id="8-capstone-rubric">8. Capstone Rubric</h2>
+<p>The capstone is worth 60 autograded points plus peer review. Here is the complete rubric:</p>
+<h3 id="autograded-60-points">Autograded (60 points)</h3>
+<table>
+<thead>
+<tr>
+<th scope="col">Criterion</th>
+<th scope="col">Points</th>
+<th scope="col">What the autograder checks</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Agent file exists</td>
+<td>10</td>
+<td>A Markdown file exists in the agents directory</td>
+</tr>
+<tr>
+<td>Valid YAML frontmatter</td>
+<td>15</td>
+<td>File has <code>---</code> delimiters, <code>name</code> field, <code>description</code> field</td>
+</tr>
+<tr>
+<td>Responsibilities defined</td>
+<td>15</td>
+<td>A section with the heading &quot;Responsibilities&quot; exists and contains content</td>
+</tr>
+<tr>
+<td>Guardrails defined</td>
+<td>20</td>
+<td>A section with the heading &quot;Guardrails&quot; exists and contains content</td>
+</tr>
+</tbody></table>
+<h3 id="peer-review-qualitative">Peer review (qualitative)</h3>
+<table>
+<thead>
+<tr>
+<th scope="col">Criterion</th>
+<th scope="col">What reviewers assess</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Mission clarity</td>
+<td>Can a reader understand what the agent does in 10 seconds?</td>
+</tr>
+<tr>
+<td>Instruction quality</td>
+<td>Are instructions specific enough that the agent behaves consistently?</td>
+</tr>
+<tr>
+<td>Guardrail coverage</td>
+<td>Do the guardrails prevent the most obvious failure modes?</td>
+</tr>
+<tr>
+<td>Contribution standards</td>
+<td>Does the PR follow the project&#39;s conventions and include a good description?</td>
+</tr>
+</tbody></table>
+<h3 id="what-quotmeets-expectationsquot-looks-like">What &quot;meets expectations&quot; looks like</h3>
+<p>A capstone that meets expectations has:</p>
+<ul>
+<li>A focused mission (not &quot;help with accessibility&quot; -- something specific)</li>
+<li>At least 3 concrete responsibilities</li>
+<li>At least 3 meaningful guardrails</li>
+<li>A PR description that explains the agent&#39;s purpose</li>
+<li>All autograder checks passing</li>
+</ul>
+<h3 id="what-quotexceeds-expectationsquot-looks-like">What &quot;exceeds expectations&quot; looks like</h3>
+<p>A capstone that exceeds expectations also has:</p>
+<ul>
+<li>Examples of expected input and output in the agent instructions</li>
+<li>A section describing the agent&#39;s limitations</li>
+<li>Evidence of testing (screenshots or transcripts in the PR description)</li>
+<li>Thoughtful responses to review feedback</li>
+</ul>
+<hr>
+<h2 id="9-example-agents-for-inspiration">9. Example Agents for Inspiration</h2>
+<p>These examples show the range of valid agent designs. Your agent does not need to be this long, but it should be this clear.</p>
+<h3 id="example-1-heading-hierarchy-checker">Example 1: Heading Hierarchy Checker</h3>
+<p><strong>Mission:</strong> Validates that HTML and Markdown documents follow a correct heading hierarchy (no skipped levels).</p>
+<p><strong>Responsibilities:</strong></p>
+<ul>
+<li>Scan files for heading elements (<code>h1</code> through <code>h6</code> in HTML, <code>#</code> through <code>######</code> in Markdown)</li>
+<li>Report any instance where a heading level is skipped (e.g., <code>h2</code> followed by <code>h4</code>)</li>
+<li>Suggest the correct heading level for each violation</li>
+<li>Check that there is exactly one <code>h1</code> per page</li>
+</ul>
+<p><strong>Guardrails:</strong></p>
+<ul>
+<li>Do not modify files -- only report findings</li>
+<li>Do not change heading text, only heading levels</li>
+<li>If a heading structure decision is ambiguous, present both options and let the user decide</li>
+</ul>
+<h3 id="example-2-pr-description-quality-gate">Example 2: PR Description Quality Gate</h3>
+<p><strong>Mission:</strong> Reviews pull request descriptions to ensure they contain enough context for reviewers.</p>
+<p><strong>Responsibilities:</strong></p>
+<ul>
+<li>Check that the PR description is at least 50 characters</li>
+<li>Verify the description references an issue with <code>Closes #XX</code> or <code>Fixes #XX</code></li>
+<li>Check for a summary of changes made</li>
+<li>Verify the description explains why the change was made, not just what was changed</li>
+</ul>
+<p><strong>Guardrails:</strong></p>
+<ul>
+<li>Never approve or block a PR based solely on description quality</li>
+<li>Do not rewrite the description for the author -- suggest improvements</li>
+<li>Respect that different projects have different template requirements</li>
+</ul>
+<h3 id="example-3-keyboard-navigation-auditor">Example 3: Keyboard Navigation Auditor</h3>
+<p><strong>Mission:</strong> Checks web components for keyboard accessibility compliance.</p>
+<p><strong>Responsibilities:</strong></p>
+<ul>
+<li>Verify all interactive elements are reachable via Tab key</li>
+<li>Check that custom components have appropriate <code>tabindex</code> values</li>
+<li>Validate that focus order follows visual layout</li>
+<li>Detect keyboard traps (elements that receive focus but cannot release it via keyboard)</li>
+</ul>
+<p><strong>Guardrails:</strong></p>
+<ul>
+<li>Do not modify component code without user approval</li>
+<li>Flag potential issues with confidence levels (certain, likely, possible)</li>
+<li>Acknowledge that some keyboard patterns depend on runtime behavior that cannot be verified from source code alone</li>
+</ul>
+<hr>
+<h2 id="10-if-you-get-stuck">10. If You Get Stuck</h2>
+<table>
+<thead>
+<tr>
+<th scope="col">Problem</th>
+<th scope="col">What to do</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Cannot think of an agent idea</td>
+<td>Look at the existing agents in <a href="19-accessibility-agents.html">Chapter 19</a>. What adjacent task is not covered?</td>
+</tr>
+<tr>
+<td>YAML frontmatter is invalid</td>
+<td>Check that you have <code>---</code> on its own line at the start and end. Verify <code>name</code> and <code>description</code> are quoted strings.</td>
+</tr>
+<tr>
+<td>Autograder says &quot;Responsibilities section not found&quot;</td>
+<td>Make sure you have a Markdown heading that says exactly <code>## Responsibilities</code>.</td>
+</tr>
+<tr>
+<td>Autograder says &quot;Guardrails section not found&quot;</td>
+<td>Make sure you have a Markdown heading that says exactly <code>## Guardrails</code>.</td>
+</tr>
+<tr>
+<td>Agent does not respond in Copilot Chat</td>
+<td>Verify the file is saved in <code>.github/agents/</code> and has a <code>.md</code> extension. Restart Copilot Chat.</td>
+</tr>
+<tr>
+<td>Agent ignores its guardrails</td>
+<td>Add more explicit instructions. Instead of &quot;be careful,&quot; say &quot;Never do X under any circumstances.&quot;</td>
+</tr>
+<tr>
+<td>PR fails to open across forks</td>
+<td>Verify you are comparing your fork&#39;s branch against the upstream&#39;s <code>main</code>. See <a href="18-fork-and-contribute.html#9-step-7-open-a-pull-request">Chapter 18, Step 7</a>.</td>
+</tr>
+<tr>
+<td>Reviewer feedback feels overwhelming</td>
+<td>Address one comment at a time. Start with the smallest change. Reply to each comment individually.</td>
+</tr>
+<tr>
+<td>I finished but I am not sure I did it right</td>
+<td>Compare your work against the <a href="solutions/solution-16-capstone.html">Challenge 16 reference solution</a>. If your agent file has valid frontmatter, responsibilities, and guardrails, you succeeded.</td>
+</tr>
+</tbody></table>
+<h3 id="the-universal-safety-net">The universal safety net</h3>
+<p>If everything else fails, post this on your challenge issue:</p>
+<blockquote>
+<p>I attempted Challenge 16 and here is what happened:</p>
+<p><strong>What I tried:</strong> [specific actions]
+<strong>What I expected:</strong> [what should have happened]
+<strong>What actually happened:</strong> [error or unexpected result]
+<strong>What I learned:</strong> [even from failure, what do I understand now?]</p>
+</blockquote>
+<p>This is always accepted. A student who explains a failure thoughtfully has learned more than one who followed the happy path without thinking.</p>
+<hr>
+<p><em>Next: <a href="21-next-steps.html">Chapter 21: Next Steps</a></em><br><em>Back: <a href="19-accessibility-agents.html">Chapter 19: Accessibility Agents</a></em><br><em>Related appendices: <a href="appendix-l-agents-reference.html">Appendix L: Agents Reference</a> | <a href="appendix-k-copilot-reference.html">Appendix K: Copilot Reference</a></em></p>
+
+  </main>
+  <footer role="contentinfo" class="site-footer">
+    <p><strong>GIT Going with GitHub</strong> - A workshop by <a href="https://community-access.org">Community Access</a></p>
+    <p><a href="https://github.com/community-access/git-going-with-github">View on GitHub</a> · <a href="https://community-access.org">community-access.org</a></p>
+  </footer>
+
+  </body>
+</html>

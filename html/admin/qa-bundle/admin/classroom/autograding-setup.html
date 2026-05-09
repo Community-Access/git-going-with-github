@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="GIT Going with GitHub - A two-day accessible open source workshop by Community Access">
+  <title>Autograding Setup and Verification - GIT Going with GitHub</title>
+  <link rel="stylesheet" href="./styles/github-markdown.css">
+  <link rel="stylesheet" href="./styles/highlight.css">
+  <link rel="stylesheet" href="./styles/custom.css">
+  <style>
+    .markdown-body {
+      box-sizing: border-box;
+      min-width: 200px;
+      max-width: 980px;
+      margin: 0 auto;
+      padding: 45px;
+    }
+    @media (max-width: 767px) {
+      .markdown-body {
+        padding: 15px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+  <header class="site-header" role="banner">
+    <div class="site-header-inner">
+      <nav aria-label="Breadcrumb" class="breadcrumb">
+        <a href="./index.html">Home</a> <span aria-hidden="true">›</span> <span aria-current="page">Autograding Setup and Verification</span>
+      </nav>
+      <div class="header-actions">
+        <a href="https://github.com/Community-Access/git-going-with-github/wiki" class="wiki-link" target="_blank" rel="noopener noreferrer">
+          <svg aria-hidden="true" focusable="false" width="16" height="16" viewBox="0 0 16 16" fill="currentColor">
+            <path d="M1.75 1h8.5c.966 0 1.75.784 1.75 1.75v5.5A1.75 1.75 0 0 1 10.25 10H7.06l-2.573 2.573A1.458 1.458 0 0 1 2 11.543V10h-.25A1.75 1.75 0 0 1 0 8.25v-5.5C0 1.784.784 1 1.75 1ZM1.5 2.75v5.5c0 .138.112.25.25.25h1a.75.75 0 0 1 .75.75v2.19l2.72-2.72a.749.749 0 0 1 .53-.22h3.5a.25.25 0 0 0 .25-.25v-5.5a.25.25 0 0 0-.25-.25h-8.5a.25.25 0 0 0-.25.25Zm13 2a.25.25 0 0 0-.25-.25h-.5a.75.75 0 0 1 0-1.5h.5c.966 0 1.75.784 1.75 1.75v5.5A1.75 1.75 0 0 1 14.25 12H14v1.543a1.457 1.457 0 0 1-2.487 1.03L9.22 12.28a.749.749 0 1 1 1.06-1.06l2.22 2.22v-2.19a.75.75 0 0 1 .75-.75h.25a.25.25 0 0 0 .25-.25v-5.5Z"/>
+          </svg>
+          Wiki
+        </a>
+        <form role="search" class="search-form" action="./search.html" method="get">
+        <label for="site-search" class="search-label">Search docs</label>
+        <input
+          type="search"
+          id="site-search"
+          class="search-input"
+          name="q"
+          placeholder="Search docs…"
+          autocomplete="off"
+          aria-label="Search documentation"
+        >
+        <button type="submit" class="search-button" aria-label="Submit search">
+          <svg aria-hidden="true" focusable="false" width="16" height="16" viewBox="0 0 16 16" fill="currentColor">
+            <path d="M10.68 11.74a6 6 0 0 1-7.922-8.982 6 6 0 0 1 8.982 7.922l3.04 3.04a.749.749 0 0 1-.326 1.275.749.749 0 0 1-.734-.215ZM11.5 7a4.499 4.499 0 1 0-8.997 0A4.499 4.499 0 0 0 11.5 7Z"/>
+          </svg>
+        </button>
+      </form>
+      </div>
+    </div>
+  </header>
+  <main id="main-content" class="markdown-body">
+    <h1 id="autograding-setup-and-verification">Autograding Setup and Verification</h1>
+<p>This guide makes Classroom autograding setup repeatable and reliable for facilitators.</p>
+<h2 id="scope">Scope</h2>
+<ul>
+<li>Day 1 tests come from <code>classroom/autograding-day1.json</code></li>
+<li>Day 2 tests come from <code>classroom/autograding-day2.json</code></li>
+<li>All entries below are copy-accurate from those files</li>
+</ul>
+<h2 id="ui-entry-rules-use-for-every-test">UI Entry Rules (Use for Every Test)</h2>
+<p>For each test you add in Classroom:</p>
+<ul>
+<li>Set <strong>Test name</strong> exactly as shown below</li>
+<li>Set <strong>Run command</strong> exactly as shown below</li>
+<li>Set <strong>Comparison</strong> to <code>exact</code></li>
+<li>Leave <strong>Setup</strong>, <strong>Input</strong>, and <strong>Expected output</strong> empty unless noted</li>
+<li>Set <strong>Timeout</strong> and <strong>Points</strong> exactly as shown below</li>
+</ul>
+<p>Do not paste raw JSON into the UI. Add tests one by one.</p>
+<h2 id="day-1-autograding-tests">Day 1 Autograding Tests</h2>
+<h3 id="test-1">Test 1</h3>
+<ul>
+<li>Test name: <code>Challenge 2: Issue Filed</code></li>
+<li>Run command:</li>
+</ul>
+<pre><code class="hljs language-bash">gh issue list --repo <span class="hljs-variable">$GITHUB_REPOSITORY</span> --author <span class="hljs-variable">$GITHUB_ACTOR</span> --state all --json number --jq <span class="hljs-string">&#x27;length&#x27;</span> | xargs <span class="hljs-built_in">test</span> 0 -lt</code></pre>
+<ul>
+<li>Comparison: <code>exact</code></li>
+<li>Timeout: <code>10</code></li>
+<li>Points: <code>10</code></li>
+</ul>
+<h3 id="test-2">Test 2</h3>
+<ul>
+<li>Test name: <code>Challenge 5: Commit Exists</code></li>
+<li>Run command:</li>
+</ul>
+<pre><code class="hljs language-bash">git <span class="hljs-built_in">log</span> --oneline --all --author=<span class="hljs-variable">$GITHUB_ACTOR</span> | <span class="hljs-built_in">head</span> -1 | grep -q <span class="hljs-string">&#x27;.&#x27;</span></code></pre>
+<ul>
+<li>Comparison: <code>exact</code></li>
+<li>Timeout: <code>10</code></li>
+<li>Points: <code>10</code></li>
+</ul>
+<h3 id="test-3">Test 3</h3>
+<ul>
+<li>Test name: <code>Challenge 6: PR with Issue Link</code></li>
+<li>Run command:</li>
+</ul>
+<pre><code class="hljs language-bash">gh <span class="hljs-built_in">pr</span> list --repo <span class="hljs-variable">$GITHUB_REPOSITORY</span> --author <span class="hljs-variable">$GITHUB_ACTOR</span> --state all --json body --jq <span class="hljs-string">&#x27;.[0].body&#x27;</span> | grep -iq <span class="hljs-string">&#x27;closes\|fixes\|resolves&#x27;</span></code></pre>
+<ul>
+<li>Comparison: <code>exact</code></li>
+<li>Timeout: <code>10</code></li>
+<li>Points: <code>15</code></li>
+</ul>
+<h3 id="test-4">Test 4</h3>
+<ul>
+<li>Test name: <code>Challenge 7: No Conflict Markers</code></li>
+<li>Run command:</li>
+</ul>
+<pre><code class="hljs language-bash">! grep -rn <span class="hljs-string">&#x27;&lt;&lt;&lt;&lt;&lt;&lt;&lt; \|======= \|&gt;&gt;&gt;&gt;&gt;&gt;&gt; &#x27;</span> docs/ 2&gt;/dev/null</code></pre>
+<ul>
+<li>Comparison: <code>exact</code></li>
+<li>Timeout: <code>10</code></li>
+<li>Points: <code>15</code></li>
+</ul>
+<h2 id="day-2-autograding-tests">Day 2 Autograding Tests</h2>
+<h3 id="test-1">Test 1</h3>
+<ul>
+<li>Test name: <code>Challenge 10: Go Local - Commit on Branch</code></li>
+<li>Run command:</li>
+</ul>
+<pre><code class="hljs language-bash">git <span class="hljs-built_in">log</span> --oneline origin/main..HEAD 2&gt;/dev/null | <span class="hljs-built_in">head</span> -1 | grep -q <span class="hljs-string">&#x27;.&#x27;</span> || git branch -r --list <span class="hljs-string">&#x27;origin/*&#x27;</span> | grep -v main | <span class="hljs-built_in">head</span> -1 | xargs -I{} git <span class="hljs-built_in">log</span> --oneline origin/main..{} | <span class="hljs-built_in">head</span> -1 | grep -q <span class="hljs-string">&#x27;.&#x27;</span></code></pre>
+<ul>
+<li>Comparison: <code>exact</code></li>
+<li>Timeout: <code>10</code></li>
+<li>Points: <code>15</code></li>
+</ul>
+<h3 id="test-2">Test 2</h3>
+<ul>
+<li>Test name: <code>Challenge 14: Template Remix - Custom Issue Template Exists</code></li>
+<li>Run command:</li>
+</ul>
+<pre><code class="hljs language-bash">find .github/ISSUE_TEMPLATE -name <span class="hljs-string">&#x27;*.yml&#x27;</span> ! -name <span class="hljs-string">&#x27;challenge-*.yml&#x27;</span> ! -name <span class="hljs-string">&#x27;bonus-*.yml&#x27;</span> ! -name <span class="hljs-string">&#x27;config.yml&#x27;</span> 2&gt;/dev/null | <span class="hljs-built_in">head</span> -1 | grep -q <span class="hljs-string">&#x27;.&#x27;</span></code></pre>
+<ul>
+<li>Comparison: <code>exact</code></li>
+<li>Timeout: <code>10</code></li>
+<li>Points: <code>15</code></li>
+</ul>
+<h3 id="test-3">Test 3</h3>
+<ul>
+<li>Test name: <code>Challenge 14: Template Remix - Template Has Required Fields</code></li>
+<li>Run command:</li>
+</ul>
+<pre><code class="hljs language-bash">TEMPLATE=$(find .github/ISSUE_TEMPLATE -name <span class="hljs-string">&#x27;*.yml&#x27;</span> ! -name <span class="hljs-string">&#x27;challenge-*.yml&#x27;</span> ! -name <span class="hljs-string">&#x27;bonus-*.yml&#x27;</span> ! -name <span class="hljs-string">&#x27;config.yml&#x27;</span> 2&gt;/dev/null | <span class="hljs-built_in">head</span> -1); grep -q <span class="hljs-string">&#x27;^name:&#x27;</span> <span class="hljs-string">&quot;<span class="hljs-variable">$TEMPLATE</span>&quot;</span> &amp;&amp; grep -q <span class="hljs-string">&#x27;^description:&#x27;</span> <span class="hljs-string">&quot;<span class="hljs-variable">$TEMPLATE</span>&quot;</span></code></pre>
+<ul>
+<li>Comparison: <code>exact</code></li>
+<li>Timeout: <code>10</code></li>
+<li>Points: <code>10</code></li>
+</ul>
+<h3 id="test-4">Test 4</h3>
+<ul>
+<li>Test name: <code>Challenge 16: Build Your Agent - Agent File Exists</code></li>
+<li>Run command:</li>
+</ul>
+<pre><code class="hljs language-bash">find agents community-agents -name <span class="hljs-string">&#x27;*.md&#x27;</span> 2&gt;/dev/null | <span class="hljs-built_in">head</span> -1 | grep -q <span class="hljs-string">&#x27;.&#x27;</span></code></pre>
+<ul>
+<li>Comparison: <code>exact</code></li>
+<li>Timeout: <code>10</code></li>
+<li>Points: <code>10</code></li>
+</ul>
+<h3 id="test-5">Test 5</h3>
+<ul>
+<li>Test name: <code>Challenge 16: Build Your Agent - Agent Has Frontmatter</code></li>
+<li>Run command:</li>
+</ul>
+<pre><code class="hljs language-bash">AGENT=$(find agents community-agents -name <span class="hljs-string">&#x27;*.md&#x27;</span> 2&gt;/dev/null | <span class="hljs-built_in">head</span> -1); <span class="hljs-built_in">head</span> -1 <span class="hljs-string">&quot;<span class="hljs-variable">$AGENT</span>&quot;</span> | grep -q <span class="hljs-string">&#x27;^---&#x27;</span></code></pre>
+<ul>
+<li>Comparison: <code>exact</code></li>
+<li>Timeout: <code>10</code></li>
+<li>Points: <code>10</code></li>
+</ul>
+<h3 id="test-6">Test 6</h3>
+<ul>
+<li>Test name: <code>Challenge 16: Build Your Agent - Agent Has Responsibilities and Guardrails</code></li>
+<li>Run command:</li>
+</ul>
+<pre><code class="hljs language-bash">AGENT=$(find agents community-agents -name <span class="hljs-string">&#x27;*.md&#x27;</span> 2&gt;/dev/null | <span class="hljs-built_in">head</span> -1); grep -qi <span class="hljs-string">&#x27;## responsibilities\|## what this agent does&#x27;</span> <span class="hljs-string">&quot;<span class="hljs-variable">$AGENT</span>&quot;</span> &amp;&amp; grep -qi <span class="hljs-string">&#x27;## guardrails\|## limitations\|## boundaries&#x27;</span> <span class="hljs-string">&quot;<span class="hljs-variable">$AGENT</span>&quot;</span></code></pre>
+<ul>
+<li>Comparison: <code>exact</code></li>
+<li>Timeout: <code>10</code></li>
+<li>Points: <code>15</code></li>
+</ul>
+<h2 id="hardening-checklist-before-cohort-start">Hardening Checklist Before Cohort Start</h2>
+<ol>
+<li>Add all tests and save assignment.</li>
+<li>Confirm test count:<ul>
+<li>Day 1 has 4 tests</li>
+<li>Day 2 has 6 tests</li>
+</ul>
+</li>
+<li>Confirm point totals:<ul>
+<li>Day 1 total = 50</li>
+<li>Day 2 total = 75</li>
+</ul>
+</li>
+<li>Use a test student account to accept each assignment.</li>
+<li>Trigger one known pass on each assignment.</li>
+<li>Trigger one known fail on each assignment and confirm feedback appears.</li>
+<li>Confirm rerun passes after fix.</li>
+<li>Capture one screenshot of pass and one of fail for facilitator reference.</li>
+</ol>
+<h2 id="fast-validation-scenarios">Fast Validation Scenarios</h2>
+<h3 id="day-1-quick-checks">Day 1 quick checks</h3>
+<ul>
+<li>Pass check: open an issue, make a commit, open a PR with <code>Closes #&lt;issue-number&gt;</code>, ensure no conflict markers remain in <code>docs/</code>.</li>
+<li>Fail check: open a PR without <code>Closes</code>, <code>Fixes</code>, or <code>Resolves</code> in the body.</li>
+</ul>
+<h3 id="day-2-quick-checks">Day 2 quick checks</h3>
+<ul>
+<li>Pass check: create one non-main commit, add a custom issue template with <code>name:</code> and <code>description:</code>, add an agent markdown file with frontmatter and required sections.</li>
+<li>Fail check: create an agent file without a <code>## Responsibilities</code> section.</li>
+</ul>
+<h2 id="troubleshooting">Troubleshooting</h2>
+<h3 id="test-stays-red-after-student-fix">Test stays red after student fix</h3>
+<ol>
+<li>Confirm student pushed a new commit to the same PR branch.</li>
+<li>Open PR checks and inspect the failing command output.</li>
+<li>Verify required text is in the file body, not only in issue comments.</li>
+</ol>
+<h3 id="challenge-14-tests-fail-unexpectedly">Challenge 14 tests fail unexpectedly</h3>
+<ul>
+<li>Verify template filename is <code>.yml</code>.</li>
+<li>Verify it is under <code>.github/ISSUE_TEMPLATE</code>.</li>
+<li>Verify filename does not match <code>challenge-*.yml</code>, <code>bonus-*.yml</code>, or <code>config.yml</code>.</li>
+</ul>
+<h3 id="challenge-16-section-check-fails">Challenge 16 section check fails</h3>
+<ul>
+<li>Ensure headings use markdown heading syntax (for example <code>## Responsibilities</code>).</li>
+<li>Ensure guardrail heading uses one accepted form:<ul>
+<li><code>## Guardrails</code></li>
+<li><code>## Limitations</code></li>
+<li><code>## Boundaries</code></li>
+</ul>
+</li>
+</ul>
+<h2 id="keep-this-guide-synced">Keep This Guide Synced</h2>
+<p>If autograding JSON changes, update this file in the same pull request:</p>
+<ul>
+<li><code>classroom/autograding-day1.json</code></li>
+<li><code>classroom/autograding-day2.json</code></li>
+</ul>
+
+  </main>
+  <footer role="contentinfo" class="site-footer">
+    <p><strong>GIT Going with GitHub</strong> - A workshop by <a href="https://community-access.org">Community Access</a></p>
+    <p><a href="https://github.com/community-access/git-going-with-github">View on GitHub</a> · <a href="https://community-access.org">community-access.org</a></p>
+  </footer>
+
+  </body>
+</html>
