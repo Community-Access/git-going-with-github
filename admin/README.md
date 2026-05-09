@@ -19,6 +19,7 @@ This folder contains all administrative and facilitator documentation for runnin
 ### Supporting Guides
 - **[FACILITATOR_CHALLENGES.md](FACILITATOR_CHALLENGES.md)** - Managing the challenge system
 - **[FACILITATOR_ASSESSMENT.md](FACILITATOR_ASSESSMENT.md)** - Assessment and grading rubric
+- **[SUPPORT_HUB_OPERATIONS.md](SUPPORT_HUB_OPERATIONS.md)** - Post-workshop support hub governance and triage model
 
 ---
 

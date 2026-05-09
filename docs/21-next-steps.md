@@ -215,7 +215,7 @@ Each course takes 15 to 60 minutes.
 ### Community Access
 
 - [Community Access on GitHub](https://github.com/Community-Access) -- The organization behind this workshop. Watch the repositories for updates.
-- Workshop facilitators are available for questions after the event. Post on the learning-room repository or the git-going-with-github repository.
+- For post-workshop questions, troubleshooting, and alumni conversation, use the open support hub: [Community-Access/git-going-open-support](https://github.com/Community-Access/git-going-open-support).
 
 ### Open source contribution
 
@@ -284,7 +284,7 @@ You have already practiced every step of this workflow. This is the real thing.
 | Git error you have not seen before | Copy the exact error text and search for it. [Pro Git](https://git-scm.com/book/en/v2) and Stack Overflow's [git tag](https://stackoverflow.com/questions/tagged/git) cover nearly every scenario. |
 | VS Code extension not working | Check the extension's page in the marketplace for known issues. Try disabling and re-enabling it. |
 | Want to contribute but do not know where to start | Search for `good first issue` labels on projects that interest you. See [Section 4: Continued Learning Roadmap](#4-continued-learning-roadmap). |
-| Need help from the community | Post in [GitHub Community Accessibility Discussions](https://github.com/orgs/community/discussions/categories/accessibility) or file an issue in the workshop repo. |
+| Need help from the community | Post in [Support Hub Discussions](https://github.com/Community-Access/git-going-open-support/discussions) or file a [support issue](https://github.com/Community-Access/git-going-open-support/issues). |
 
 
 ## 8. Final Words

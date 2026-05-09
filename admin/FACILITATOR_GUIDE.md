@@ -591,7 +591,7 @@ Give students concrete next steps:
 > "Here's what we suggest next:
 > 1. **Contribute to open source** — Find a repo you love and look for 'good first issue'
 > 2. **Use what you learned** — GitHub is real infrastructure; keep using it
-> 3. **Join our alumni community** — [Slack/Discord/channel] — ask questions, share wins
+> 3. **Join our alumni community** — [Community-Access/git-going-open-support](https://github.com/Community-Access/git-going-open-support) — ask questions, share wins
 > 4. **Build something** — Use GitHub as your project portfolio"
 
 #### Share Resources
@@ -599,7 +599,7 @@ Give students concrete next steps:
 Point to:
 - [CONTRIBUTING.md](../CONTRIBUTING.md) — How to contribute to open source
 - [docs/](../docs/) — All the reference guides
-- Alumni community link
+- Support Hub: [Community-Access/git-going-open-support](https://github.com/Community-Access/git-going-open-support)
 - Your contact info for questions
 
 #### Thank You Note
@@ -644,12 +644,13 @@ Point to:
   - What accessibility issues appeared?
   - What challenges took longer than expected?
 - [ ] Invite students to alumni community
-  - Slack / Discord / GitHub Discussions channel
+  - Support Hub: https://github.com/Community-Access/git-going-open-support
   - Encourage them to stay in touch and help future students
 
 ### Weeks 2+
 
 - [ ] Monitor alumni community
+  - Watch new issues/discussions in Support Hub and respond within 24 to 48 hours
   - Answer questions
   - Celebrate project shares
   - Offer 1:1 mentorship if interested
@@ -684,7 +685,7 @@ Point to:
 
 **"My internet cut out / I lost the call"**
 → GitHub Classroom doesn't require the call — work continues
-→ Post updates in GitHub Discussions or email
+→ Post updates in Support Hub Discussions or email
 → Students can continue async
 
 For more, see [FACILITATOR_CLASSROOM_TROUBLESHOOTING.md](FACILITATOR_CLASSROOM_TROUBLESHOOTING.md)
@@ -742,7 +743,7 @@ Subject: Your GitHub Workshop Starts Tomorrow!
 >
 > **Keep learning:**
 > - Check out [CONTRIBUTING.md](../CONTRIBUTING.md) for contributing to open source
-> - Join our alumni community: [LINK]
+> - Join our alumni community: https://github.com/Community-Access/git-going-open-support
 > - Email if you have any GitHub questions — we're here
 >
 > Great work, and keep building!

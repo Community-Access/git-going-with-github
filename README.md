@@ -13,7 +13,8 @@ License: CC BY 4.0 | [Site](https://community-access.org/git-going-with-github/)
 | **Workshop site** | [community-access.org/git-going-with-github](https://community-access.org/git-going-with-github/) |
 | **Registration** | [Student opt-in and waitlist workflow](https://community-access.org/git-going-with-github/REGISTER.html) |
 | **Discussions** | [Join the conversation](https://github.com/community-access/git-going-with-github/discussions) |
-| **Support** | [File an issue](https://github.com/community-access/git-going-with-github/issues) |
+| **Support hub** | [Community-Access/git-going-open-support](https://github.com/Community-Access/git-going-open-support) |
+| **Curriculum issues** | [File an issue in this repository](https://github.com/community-access/git-going-with-github/issues) |
 | **Dates** | May 21, 2026 & May 22, 2026 |
 | **Facilitators** | Jeff Bishop and Michael Babcock |
 
@@ -92,6 +93,14 @@ Every skill you build on Day 1 maps directly to an Accessibility Agents command 
 All documentation lives in the `docs/` folder. If you are new, start with [Get Going with GitHub](docs/get-going.md). It explains the GitHub Classroom assignment link, your private Learning Room repository, the first challenge issue, how evidence works, and how to choose the tool path that fits you.
 
 Facilitators preparing a cohort should use the [Go-Live QA Guide](GO-LIVE-QA-GUIDE.md) as the release gate before sharing Classroom invite links.
+
+## Post-Workshop Support
+
+After the workshop, use the open support repository for questions, troubleshooting, and alumni discussion:
+
+- [Community-Access/git-going-open-support](https://github.com/Community-Access/git-going-open-support)
+
+Use this repository for curriculum and platform changes only.
 
 
 ## Your Challenges
