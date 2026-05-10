@@ -1,0 +1,99 @@
+name: Autograder Failure Watchdog
+# Last-resort safety net for classroom reliability.
+# Fires after any autograder workflow completes with conclusion=failure.
+# If the in-job error handler already posted a comment, this is a no-op.
+# If not (e.g. the runner was abandoned before the fallback step ran),
+# this posts a friendly message to the student's PR so they never see silence.
+
+on:
+  workflow_run:
+    workflows:
+      - "Challenge 7: Merge Conflict Resolution Check"
+      - "Challenge 10: Local Commit Check"
+      - "Challenge 14: Issue Template Validation"
+      - "Challenge 16: Capstone Agent File Validation"
+    types: [completed]
+
+permissions:
+  pull-requests: write
+
+jobs:
+  notify-on-failure:
+    name: Post friendly notice if job failed silently
+    runs-on: ubuntu-latest
+    # Only act on hard failures, not cancellations (concurrency group cancels are expected).
+    if: github.event.workflow_run.conclusion == 'failure'
+
+    steps:
+      - name: Find PR and post notice if needed
+        uses: actions/github-script@v7
+        with:
+          script: |
+            const run = context.payload.workflow_run;
+            const workflowName = run.name;
+            const headBranch   = run.head_branch;
+            const runCreatedAt = new Date(run.created_at);
+
+            const { data: prs } = await github.rest.pulls.list({
+              owner: context.repo.owner,
+              repo:  context.repo.repo,
+              state: 'open',
+              head:  `${context.repo.owner}:${headBranch}`
+            });
+
+            if (prs.length === 0) {
+              console.log('No open PR found for branch:', headBranch);
+              return;
+            }
+
+            const pr = prs[0];
+
+            const { data: comments } = await github.rest.issues.listComments({
+              owner:        context.repo.owner,
+              repo:         context.repo.repo,
+              issue_number: pr.number
+            });
+
+            const challengeMarkers = [
+              '## Challenge 7:',
+              '## Challenge 10:',
+              '## Challenge 14:',
+              '## Challenge 16:'
+            ];
+
+            const alreadyPosted = comments.some(c =>
+              c.user.type === 'Bot' &&
+              new Date(c.updated_at) > runCreatedAt &&
+              challengeMarkers.some(m => c.body.includes(m))
+            );
+
+            if (alreadyPosted) {
+              console.log('Result already posted by in-job handler -- watchdog is a no-op.');
+              return;
+            }
+
+            const m = workflowName.match(/Challenge (\d+)/);
+            const num = m ? m[1] : '?';
+
+            const body = [
+              `## Challenge ${num}: Check could not complete`,
+              '',
+              `The automated check ran into an unexpected problem on our end. Your work is not affected.`,
+              '',
+              'Keep going and let your facilitator know, or leave a comment mentioning @facilitator.',
+              '',
+              '---',
+              '*Automated message from Learning Room Bot.*'
+            ].join('\n');
+
+            try {
+              await github.rest.issues.createComment({
+                owner:        context.repo.owner,
+                repo:         context.repo.repo,
+                issue_number: pr.number,
+                body
+              });
+              console.log(`Watchdog posted notice on PR #${pr.number}`);
+            } catch (err) {
+              console.error('Watchdog could not post notice:', err.message);
+            }

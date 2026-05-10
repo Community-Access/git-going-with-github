@@ -11,6 +11,10 @@ permissions:
   contents: read
   pull-requests: write
 
+concurrency:
+  group: ${{ github.workflow }}-${{ github.event.pull_request.number }}
+  cancel-in-progress: true
+
 jobs:
   check-template:
     name: Verify Custom Issue Template
@@ -28,28 +32,25 @@ jobs:
             ! -name 'challenge-*.yml' \
             ! -name 'bonus-*.yml' \
             ! -name 'config.yml' 2>/dev/null || true)
-
+          
           if [ -z "$TEMPLATES" ]; then
             echo "found=false" >> "$GITHUB_OUTPUT"
             exit 0
           fi
-
+          
           echo "found=true" >> "$GITHUB_OUTPUT"
-
-          # Check the first custom template for a name field.
-          # Normalize a UTF-8 BOM because Windows tooling may add one.
+          
+          # Check the first custom template for a name field
           FIRST=$(echo "$TEMPLATES" | head -1)
           echo "file=$FIRST" >> "$GITHUB_OUTPUT"
-          CHECK_FILE="/tmp/custom-issue-template.yml"
-          sed '1s/^\xEF\xBB\xBF//' "$FIRST" > "$CHECK_FILE"
-
-          if grep -q '^name:' "$CHECK_FILE"; then
+          
+          if grep -q '^name:' "$FIRST"; then
             echo "has_name=true" >> "$GITHUB_OUTPUT"
           else
             echo "has_name=false" >> "$GITHUB_OUTPUT"
           fi
-
-          if grep -q '^description:' "$CHECK_FILE"; then
+          
+          if grep -q '^description:' "$FIRST"; then
             echo "has_desc=true" >> "$GITHUB_OUTPUT"
           else
             echo "has_desc=false" >> "$GITHUB_OUTPUT"
@@ -92,13 +93,70 @@ jobs:
                 'Found `' + file + '` with valid `name` and `description` fields. Well done!'
               ].join('\n');
             }
+            const MARKER = '## Challenge 14:';
             try {
-              await github.rest.issues.createComment({
+              const { data: comments } = await github.rest.issues.listComments({
                 owner: context.repo.owner,
                 repo: context.repo.repo,
-                issue_number: context.issue.number,
-                body
+                issue_number: context.issue.number
               });
+              const existing = comments.find(c => c.user.type === 'Bot' && c.body.includes(MARKER));
+              if (existing) {
+                await github.rest.issues.updateComment({
+                  owner: context.repo.owner,
+                  repo: context.repo.repo,
+                  comment_id: existing.id,
+                  body
+                });
+              } else {
+                await github.rest.issues.createComment({
+                  owner: context.repo.owner,
+                  repo: context.repo.repo,
+                  issue_number: context.issue.number,
+                  body
+                });
+              }
             } catch (error) {
               console.error('Could not post Challenge 14 result:', error.message);
+            }
+
+      - name: Post workflow error notice
+        if: failure()
+        uses: actions/github-script@v7
+        with:
+          script: |
+            const MARKER = '## Challenge 14:';
+            const body = [
+              '## Challenge 14: Check could not complete',
+              '',
+              'The automated issue template check ran into an unexpected error. Your work is not affected.',
+              'Keep going and ask your facilitator, or mention @facilitator in a comment.',
+              '',
+              '---',
+              '*Automated message from Learning Room Bot.*'
+            ].join('\n');
+            try {
+              const { data: comments } = await github.rest.issues.listComments({
+                owner: context.repo.owner,
+                repo: context.repo.repo,
+                issue_number: context.issue.number
+              });
+              const existing = comments.find(c => c.user.type === 'Bot' && c.body.includes(MARKER));
+              if (existing) {
+                await github.rest.issues.updateComment({
+                  owner: context.repo.owner,
+                  repo: context.repo.repo,
+                  comment_id: existing.id,
+                  body
+                });
+              } else {
+                await github.rest.issues.createComment({
+                  owner: context.repo.owner,
+                  repo: context.repo.repo,
+                  issue_number: context.issue.number,
+                  body
+                });
+              }
+            } catch (err) {
+              console.error('Could not post error notice:', err.message);
             }
