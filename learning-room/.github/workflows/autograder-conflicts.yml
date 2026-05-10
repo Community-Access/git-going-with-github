@@ -11,6 +11,10 @@ permissions:
   contents: read
   pull-requests: write
 
+concurrency:
+  group: ${{ github.workflow }}-${{ github.event.pull_request.number }}
+  cancel-in-progress: true
+
 jobs:
   check-conflict-markers:
     name: Verify Conflict Resolution
@@ -75,13 +79,70 @@ jobs:
                 'No conflict markers found and the file has substantive content. Well done!'
               ].join('\n');
             }
+            const MARKER = '## Challenge 7:';
             try {
-              await github.rest.issues.createComment({
+              const { data: comments } = await github.rest.issues.listComments({
                 owner: context.repo.owner,
                 repo: context.repo.repo,
-                issue_number: context.issue.number,
-                body
+                issue_number: context.issue.number
               });
+              const existing = comments.find(c => c.user.type === 'Bot' && c.body.includes(MARKER));
+              if (existing) {
+                await github.rest.issues.updateComment({
+                  owner: context.repo.owner,
+                  repo: context.repo.repo,
+                  comment_id: existing.id,
+                  body
+                });
+              } else {
+                await github.rest.issues.createComment({
+                  owner: context.repo.owner,
+                  repo: context.repo.repo,
+                  issue_number: context.issue.number,
+                  body
+                });
+              }
             } catch (error) {
               console.error('Could not post Challenge 7 result:', error.message);
+            }
+
+      - name: Post workflow error notice
+        if: failure()
+        uses: actions/github-script@v7
+        with:
+          script: |
+            const MARKER = '## Challenge 7:';
+            const body = [
+              '## Challenge 7: Check could not complete',
+              '',
+              'The automated conflict marker check ran into an unexpected error. Your work is not affected.',
+              'Keep going and ask your facilitator, or mention @facilitator in a comment.',
+              '',
+              '---',
+              '*Automated message from Learning Room Bot.*'
+            ].join('\n');
+            try {
+              const { data: comments } = await github.rest.issues.listComments({
+                owner: context.repo.owner,
+                repo: context.repo.repo,
+                issue_number: context.issue.number
+              });
+              const existing = comments.find(c => c.user.type === 'Bot' && c.body.includes(MARKER));
+              if (existing) {
+                await github.rest.issues.updateComment({
+                  owner: context.repo.owner,
+                  repo: context.repo.repo,
+                  comment_id: existing.id,
+                  body
+                });
+              } else {
+                await github.rest.issues.createComment({
+                  owner: context.repo.owner,
+                  repo: context.repo.repo,
+                  issue_number: context.issue.number,
+                  body
+                });
+              }
+            } catch (err) {
+              console.error('Could not post error notice:', err.message);
             }
