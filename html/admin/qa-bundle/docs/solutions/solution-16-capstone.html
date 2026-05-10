@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="GIT Going with GitHub - A two-day accessible open source workshop by Community Access">
+  <title>Solution Reference: Challenge 16 -- Build Your Own Agent (Capstone) - GIT Going with GitHub</title>
+  <link rel="stylesheet" href="./styles/github-markdown.css">
+  <link rel="stylesheet" href="./styles/highlight.css">
+  <link rel="stylesheet" href="./styles/custom.css">
+  <style>
+    .markdown-body {
+      box-sizing: border-box;
+      min-width: 200px;
+      max-width: 980px;
+      margin: 0 auto;
+      padding: 45px;
+    }
+    @media (max-width: 767px) {
+      .markdown-body {
+        padding: 15px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+  <header class="site-header" role="banner">
+    <div class="site-header-inner">
+      <nav aria-label="Breadcrumb" class="breadcrumb">
+        <a href="./index.html">Home</a> <span aria-hidden="true">›</span> <span aria-current="page">Solution Reference: Challenge 16 -- Build Your Own Agent (Capstone)</span>
+      </nav>
+      <div class="header-actions">
+        <a href="https://github.com/Community-Access/git-going-with-github/wiki" class="wiki-link" target="_blank" rel="noopener noreferrer">
+          <svg aria-hidden="true" focusable="false" width="16" height="16" viewBox="0 0 16 16" fill="currentColor">
+            <path d="M1.75 1h8.5c.966 0 1.75.784 1.75 1.75v5.5A1.75 1.75 0 0 1 10.25 10H7.06l-2.573 2.573A1.458 1.458 0 0 1 2 11.543V10h-.25A1.75 1.75 0 0 1 0 8.25v-5.5C0 1.784.784 1 1.75 1ZM1.5 2.75v5.5c0 .138.112.25.25.25h1a.75.75 0 0 1 .75.75v2.19l2.72-2.72a.749.749 0 0 1 .53-.22h3.5a.25.25 0 0 0 .25-.25v-5.5a.25.25 0 0 0-.25-.25h-8.5a.25.25 0 0 0-.25.25Zm13 2a.25.25 0 0 0-.25-.25h-.5a.75.75 0 0 1 0-1.5h.5c.966 0 1.75.784 1.75 1.75v5.5A1.75 1.75 0 0 1 14.25 12H14v1.543a1.457 1.457 0 0 1-2.487 1.03L9.22 12.28a.749.749 0 1 1 1.06-1.06l2.22 2.22v-2.19a.75.75 0 0 1 .75-.75h.25a.25.25 0 0 0 .25-.25v-5.5Z"/>
+          </svg>
+          Wiki
+        </a>
+        <form role="search" class="search-form" action="./search.html" method="get">
+        <label for="site-search" class="search-label">Search docs</label>
+        <input
+          type="search"
+          id="site-search"
+          class="search-input"
+          name="q"
+          placeholder="Search docs…"
+          autocomplete="off"
+          aria-label="Search documentation"
+        >
+        <button type="submit" class="search-button" aria-label="Submit search">
+          <svg aria-hidden="true" focusable="false" width="16" height="16" viewBox="0 0 16 16" fill="currentColor">
+            <path d="M10.68 11.74a6 6 0 0 1-7.922-8.982 6 6 0 0 1 8.982 7.922l3.04 3.04a.749.749 0 0 1-.326 1.275.749.749 0 0 1-.734-.215ZM11.5 7a4.499 4.499 0 1 0-8.997 0A4.499 4.499 0 0 0 11.5 7Z"/>
+          </svg>
+        </button>
+      </form>
+      </div>
+    </div>
+  </header>
+  <main id="main-content" class="markdown-body">
+    <h1 id="solution-reference-challenge-16----build-your-own-agent-capstone">Solution Reference: Challenge 16 -- Build Your Own Agent (Capstone)</h1>
+<p>This shows a complete agent file with annotations.</p>
+<h2 id="example-agent-file">Example agent file</h2>
+<p><strong>File:</strong> <code>community-agents/workshop-buddy.agent.md</code></p>
+<pre><code class="hljs language-markdown">---
+<span class="hljs-section"># YAML frontmatter -- metadata about the agent</span>
+name: Workshop Buddy
+description: A friendly guide that helps students navigate the Git Going with GitHub workshop
+<span class="hljs-section">tools: []
+---</span>
+
+<span class="hljs-section"># Workshop Buddy</span>
+
+<span class="hljs-section">## Responsibilities</span>
+
+&lt;!-- This section defines what the agent is designed to do --&gt;
+
+<span class="hljs-bullet">-</span> Answer questions about workshop challenges and point students to the right chapter
+<span class="hljs-bullet">-</span> Explain Git and GitHub concepts in beginner-friendly language
+<span class="hljs-bullet">-</span> Suggest next steps when a student is stuck on a challenge
+<span class="hljs-bullet">-</span> Remind students about accessibility best practices in their contributions
+
+<span class="hljs-section">## Guardrails</span>
+
+&lt;!-- This section defines what the agent should NOT do --&gt;
+
+<span class="hljs-bullet">-</span> Do not complete challenges for the student -- guide, do not solve
+<span class="hljs-bullet">-</span> Do not make changes to repository files directly
+<span class="hljs-bullet">-</span> Do not provide answers to challenge evidence prompts
+<span class="hljs-bullet">-</span> Do not access external services or APIs
+<span class="hljs-bullet">-</span> If asked about topics outside the workshop scope, say so honestly and suggest other resources
+
+<span class="hljs-section">## Example interactions</span>
+
+<span class="hljs-strong">**Student asks:**</span> &quot;I am stuck on Challenge 7. What are conflict markers?&quot;
+
+<span class="hljs-strong">**Agent responds:**</span> Conflict markers are lines Git adds when it cannot automatically
+merge two changes. They look like <span class="hljs-code">`&lt;&lt;&lt;&lt;&lt;&lt;&lt; HEAD`</span>, <span class="hljs-code">`=======`</span>, and <span class="hljs-code">`&gt;&gt;&gt;&gt;&gt;&gt;&gt;`</span>. You need
+to decide which version to keep and delete the marker lines. See Chapter 7 for a
+walkthrough.
+
+<span class="hljs-strong">**Student asks:**</span> &quot;Write my PR description for me.&quot;
+
+<span class="hljs-strong">**Agent responds:**</span> I cannot write your PR description because that is the evidence
+for Challenge 6. But I can help you think about what to include. What did you change,
+and why? Start with those two sentences and you have a strong description.</code></pre>
+<h2 id="pr-description-for-the-capstone">PR description for the capstone</h2>
+<pre><code class="hljs language-markdown"><span class="hljs-section">## New agent: Workshop Buddy</span>
+
+This agent helps students navigate the Git Going with GitHub workshop by answering
+questions about challenges, explaining Git concepts, and suggesting next steps.
+
+<span class="hljs-section">### Design decisions</span>
+
+<span class="hljs-bullet">-</span> <span class="hljs-strong">**Guide, do not solve:**</span> The guardrails prevent the agent from completing challenges,
+  because the learning happens in the doing
+<span class="hljs-bullet">-</span> <span class="hljs-strong">**Scoped to the workshop:**</span> The agent is honest about its boundaries rather than
+  guessing at topics it was not designed for
+<span class="hljs-bullet">-</span> <span class="hljs-strong">**Accessibility aware:**</span> Reminders about inclusive contribution practices are part
+  of the agent&#x27;s responsibilities
+
+<span class="hljs-section">### Checklist</span>
+
+<span class="hljs-bullet">-</span> [x] YAML frontmatter with name and description
+<span class="hljs-bullet">-</span> [x] Responsibilities section
+<span class="hljs-bullet">-</span> [x] Guardrails section
+<span class="hljs-bullet">-</span> [x] Example interactions showing both helpfulness and boundaries</code></pre>
+<h2 id="alternate-valid-agents">Alternate valid agents</h2>
+<p>Any agent concept works. Other examples students have built:</p>
+<ul>
+<li>An agent that reviews Markdown formatting</li>
+<li>An agent that checks issue titles for clarity</li>
+<li>An agent that recommends which Git command to use</li>
+<li>An agent that explains error messages</li>
+</ul>
+<h2 id="what-matters">What matters</h2>
+<p>The learning objective is understanding that AI agents are defined by their responsibilities AND their guardrails. If your agent file has valid YAML frontmatter, a clear purpose, and explicit boundaries, you completed this challenge. The creativity of the concept is a bonus, not a requirement.</p>
+
+  </main>
+  <footer role="contentinfo" class="site-footer">
+    <p><strong>GIT Going with GitHub</strong> - A workshop by <a href="https://community-access.org">Community Access</a></p>
+    <p><a href="https://github.com/community-access/git-going-with-github">View on GitHub</a> · <a href="https://community-access.org">community-access.org</a></p>
+  </footer>
+
+  </body>
+</html>

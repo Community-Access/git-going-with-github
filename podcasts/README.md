@@ -1,3 +1,9 @@
+
+**Table: Host voice and character mapping for VibeVoice podcast**
+
+**Table: Podcast build and validation commands**
+
+**Table: Podcast bundle generation steps and costs**
 # Podcast Audio Pipeline
 
 This directory contains the complete pipeline for producing the Git Going with GitHub audio series: 54 companion episodes of two-host conversational content designed for blind and low-vision developers, plus 21 Challenge Coach episodes placed near the chapters they support.

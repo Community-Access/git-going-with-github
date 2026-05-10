@@ -386,6 +386,7 @@ Follow the [teardown-checklist.md](teardown-checklist.md) for complete post-work
 1. **Export grades** from the classroom dashboard
 2. **Archive the classroom** in the Classroom UI (this preserves student repos as read-only portfolio pieces)
 3. **Review feedback** and update facilitation notes for next cohort
+4. **Route ongoing learner support** to [Community-Access/support](https://github.com/Community-Access/support)
 
 ---
 
@@ -449,3 +450,4 @@ See [teardown-checklist.md](teardown-checklist.md) for the complete post-worksho
 - [Challenge Hub](../docs/CHALLENGES.md) -- all 21 challenges with instructions
 - [Solutions Directory](../docs/solutions/) -- reference solutions for facilitator use
 - [Grading Guide](grading-guide.md) -- per-challenge rubric and completion levels
+- [Support Hub Operations](../admin/SUPPORT_HUB_OPERATIONS.md) -- operating model for async support after the workshop

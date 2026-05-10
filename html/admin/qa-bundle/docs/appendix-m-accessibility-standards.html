@@ -1,0 +1,656 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="GIT Going with GitHub - A two-day accessible open source workshop by Community Access">
+  <title>Appendix M: Accessibility Standards Reference - GIT Going with GitHub</title>
+  <link rel="stylesheet" href="./styles/github-markdown.css">
+  <link rel="stylesheet" href="./styles/highlight.css">
+  <link rel="stylesheet" href="./styles/custom.css">
+  <style>
+    .markdown-body {
+      box-sizing: border-box;
+      min-width: 200px;
+      max-width: 980px;
+      margin: 0 auto;
+      padding: 45px;
+    }
+    @media (max-width: 767px) {
+      .markdown-body {
+        padding: 15px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+  <header class="site-header" role="banner">
+    <div class="site-header-inner">
+      <nav aria-label="Breadcrumb" class="breadcrumb">
+        <a href="./index.html">Home</a> <span aria-hidden="true">›</span> <span aria-current="page">Appendix M: Accessibility Standards Reference</span>
+      </nav>
+      <div class="header-actions">
+        <a href="https://github.com/Community-Access/git-going-with-github/wiki" class="wiki-link" target="_blank" rel="noopener noreferrer">
+          <svg aria-hidden="true" focusable="false" width="16" height="16" viewBox="0 0 16 16" fill="currentColor">
+            <path d="M1.75 1h8.5c.966 0 1.75.784 1.75 1.75v5.5A1.75 1.75 0 0 1 10.25 10H7.06l-2.573 2.573A1.458 1.458 0 0 1 2 11.543V10h-.25A1.75 1.75 0 0 1 0 8.25v-5.5C0 1.784.784 1 1.75 1ZM1.5 2.75v5.5c0 .138.112.25.25.25h1a.75.75 0 0 1 .75.75v2.19l2.72-2.72a.749.749 0 0 1 .53-.22h3.5a.25.25 0 0 0 .25-.25v-5.5a.25.25 0 0 0-.25-.25h-8.5a.25.25 0 0 0-.25.25Zm13 2a.25.25 0 0 0-.25-.25h-.5a.75.75 0 0 1 0-1.5h.5c.966 0 1.75.784 1.75 1.75v5.5A1.75 1.75 0 0 1 14.25 12H14v1.543a1.457 1.457 0 0 1-2.487 1.03L9.22 12.28a.749.749 0 1 1 1.06-1.06l2.22 2.22v-2.19a.75.75 0 0 1 .75-.75h.25a.25.25 0 0 0 .25-.25v-5.5Z"/>
+          </svg>
+          Wiki
+        </a>
+        <form role="search" class="search-form" action="./search.html" method="get">
+        <label for="site-search" class="search-label">Search docs</label>
+        <input
+          type="search"
+          id="site-search"
+          class="search-input"
+          name="q"
+          placeholder="Search docs…"
+          autocomplete="off"
+          aria-label="Search documentation"
+        >
+        <button type="submit" class="search-button" aria-label="Submit search">
+          <svg aria-hidden="true" focusable="false" width="16" height="16" viewBox="0 0 16 16" fill="currentColor">
+            <path d="M10.68 11.74a6 6 0 0 1-7.922-8.982 6 6 0 0 1 8.982 7.922l3.04 3.04a.749.749 0 0 1-.326 1.275.749.749 0 0 1-.734-.215ZM11.5 7a4.499 4.499 0 1 0-8.997 0A4.499 4.499 0 0 0 11.5 7Z"/>
+          </svg>
+        </button>
+      </form>
+      </div>
+    </div>
+  </header>
+  <main id="main-content" class="markdown-body">
+    <h1 id="appendix-m-accessibility-standards-reference">Appendix M: Accessibility Standards Reference</h1>
+<blockquote>
+<p><strong>Listen to Episode 20:</strong> <a href="../admin/PODCASTS.html">Accessibility Standards Reference</a> - a conversational audio overview of this chapter. Listen before reading to preview the concepts, or after to reinforce what you learned.</p>
+</blockquote>
+<blockquote>
+<p><strong>Reference companion to:</strong> <a href="08-open-source-culture.html">Chapter 08: Open Source Culture</a> | Also relevant: <a href="12-vscode-accessibility.html">Chapter 12</a></p>
+<p><strong>Authoritative source:</strong> <a href="https://www.w3.org/TR/WCAG22/">W3C WCAG 2.2</a> | <a href="https://www.w3.org/TR/wai-aria-1.2/">WAI-ARIA 1.2</a></p>
+</blockquote>
+<h2 id="wcag-aria-and-what-they-mean-for-your-contributions">WCAG, ARIA, and What They Mean for Your Contributions</h2>
+<blockquote>
+<p>This appendix gives you a working understanding of the accessibility standards that govern the web, GitHub&#39;s interface, and the projects you will contribute to. You do not need to memorize these - use this as a lookup when a PR review mentions a specific standard or success criterion.</p>
+</blockquote>
+<h2 id="table-of-contents">Table of Contents</h2>
+<ol>
+<li><a href="#1-wcag-22---the-four-principles">WCAG 2.2 - The Four Principles</a></li>
+<li><a href="#2-conformance-levels-a-aa-aaa">Conformance Levels: A, AA, AAA</a></li>
+<li><a href="#3-key-success-criteria-for-web-contributions">Key Success Criteria for Web Contributions</a></li>
+<li><a href="#4-aria---roles-states-and-properties">ARIA - Roles, States, and Properties</a></li>
+<li><a href="#5-aria-landmark-roles">ARIA Landmark Roles</a></li>
+<li><a href="#6-common-aria-patterns">Common ARIA Patterns</a></li>
+<li><a href="#7-how-standards-apply-to-github-contributions">How Standards Apply to GitHub Contributions</a></li>
+<li><a href="#8-testing-against-standards">Testing Against Standards</a></li>
+<li><a href="#9-quick-reference-what-to-check-in-a-pr">Quick Reference: What to Check in a PR</a></li>
+<li><a href="#10-official-references">Official References</a></li>
+</ol>
+<h2 id="1-wcag-22---the-four-principles">1. WCAG 2.2 - The Four Principles</h2>
+<p>WCAG (Web Content Accessibility Guidelines) is organized around four principles, often abbreviated <strong>POUR</strong>:</p>
+<table>
+<thead>
+<tr>
+<th scope="col">Principle</th>
+<th scope="col">Meaning</th>
+<th scope="col">Example Failure</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><strong>Perceivable</strong></td>
+<td>Information must be presentable to users in ways they can perceive</td>
+<td>An image with no alt text - a screen reader user gets nothing</td>
+</tr>
+<tr>
+<td><strong>Operable</strong></td>
+<td>UI components and navigation must be operable</td>
+<td>A button that only works on hover - keyboard users cannot activate it</td>
+</tr>
+<tr>
+<td><strong>Understandable</strong></td>
+<td>Information and operation must be understandable</td>
+<td>An error message that says &quot;Invalid input&quot; with no explanation of what is wrong</td>
+</tr>
+<tr>
+<td><strong>Robust</strong></td>
+<td>Content must be robust enough to be interpreted by assistive technologies</td>
+<td>Custom JavaScript widgets with no ARIA roles - screen readers cannot determine what they are</td>
+</tr>
+</tbody></table>
+<p>Every WCAG success criterion belongs to one of these four principles.</p>
+<h3 id="learning-cards-wcag-overview">Learning Cards: WCAG Overview</h3>
+<details>
+<summary>Screen reader users</summary>
+
+<ul>
+<li>WCAG is organized around four principles: Perceivable, Operable, Understandable, Robust (POUR) — use this mnemonic when reviewing any PR</li>
+<li>Most projects target WCAG 2.2 AA — when a reviewer cites a criterion number like 1.4.3, search the tables in Section 3 of this appendix</li>
+<li>The WCAG Quick Reference (Section 10) is a filterable web page — use your screen reader&#39;s find command to jump to any criterion number</li>
+</ul>
+</details>
+
+<details>
+<summary>Low vision users</summary>
+
+<ul>
+<li>The tables in this appendix use pipe-delimited Markdown — increase your editor font size or use a Markdown preview for cleaner column alignment</li>
+<li>WCAG 1.4.3 (contrast) and 1.4.11 (non-text contrast) are the criteria most relevant to your daily experience — bookmark them</li>
+<li>When checking contrast ratios, use the WebAIM Contrast Checker link in Section 10 with your browser zoom set to your preferred level</li>
+</ul>
+</details>
+
+<details>
+<summary>Sighted users</summary>
+
+<ul>
+<li>The POUR table in this section is your one-glance cheat sheet — scan the Example Failure column to see what each principle looks like when violated</li>
+<li>Conformance level badges (A, AA, AAA) appear in the Level column of the Section 3 tables — AA rows are your primary targets</li>
+<li>Bookmark the ARIA Authoring Practices Guide link in Section 10 for live interactive pattern demos</li>
+</ul>
+</details>
+
+
+<h2 id="2-conformance-levels-a-aa-aaa">2. Conformance Levels: A, AA, AAA</h2>
+<table>
+<thead>
+<tr>
+<th scope="col">Level</th>
+<th scope="col">Requirement</th>
+<th scope="col">Who targets this</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><strong>A</strong></td>
+<td>Minimum accessibility - the baseline that removes the most severe barriers</td>
+<td>Required by most accessibility laws</td>
+</tr>
+<tr>
+<td><strong>AA</strong></td>
+<td>Enhanced accessibility - removes significant barriers</td>
+<td>Required by WCAG 2.2 compliance targets, most government and enterprise standards, GitHub&#39;s own accessibility commitment</td>
+</tr>
+<tr>
+<td><strong>AAA</strong></td>
+<td>Highest level - removes remaining barriers for the most niche cases</td>
+<td>Not universally required; applied where feasible</td>
+</tr>
+</tbody></table>
+<p>Most open source projects, and GitHub itself, target <strong>WCAG 2.2 AA</strong> compliance. When you file an accessibility bug or review a PR, AA is the standard to reference.</p>
+<h2 id="3-key-success-criteria-for-web-contributions">3. Key Success Criteria for Web Contributions</h2>
+<p>These are the criteria you will most commonly encounter when contributing to web projects or reviewing GitHub interface changes.</p>
+<h3 id="perceivable">Perceivable</h3>
+<table>
+<thead>
+<tr>
+<th scope="col">Criterion</th>
+<th scope="col">Level</th>
+<th scope="col">What It Requires</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><strong>1.1.1 Non-text Content</strong></td>
+<td>A</td>
+<td>All images, icons, and non-text content have a text alternative (<code>alt</code> attribute, <code>aria-label</code>, etc.)</td>
+</tr>
+<tr>
+<td><strong>1.3.1 Info and Relationships</strong></td>
+<td>A</td>
+<td>Structure conveyed visually (headings, lists, tables) is also conveyed programmatically</td>
+</tr>
+<tr>
+<td><strong>1.3.2 Meaningful Sequence</strong></td>
+<td>A</td>
+<td>Reading order makes sense when CSS is removed</td>
+</tr>
+<tr>
+<td><strong>1.3.3 Sensory Characteristics</strong></td>
+<td>A</td>
+<td>Instructions do not rely solely on shape, color, or position (&quot;click the green button&quot; fails this)</td>
+</tr>
+<tr>
+<td><strong>1.4.1 Use of Color</strong></td>
+<td>A</td>
+<td>Color is not the only means of conveying information</td>
+</tr>
+<tr>
+<td><strong>1.4.3 Contrast (Minimum)</strong></td>
+<td>AA</td>
+<td>Text has at least 4.5:1 contrast ratio against its background (3:1 for large text)</td>
+</tr>
+<tr>
+<td><strong>1.4.4 Resize Text</strong></td>
+<td>AA</td>
+<td>Text can be resized up to 200% without loss of content or function</td>
+</tr>
+<tr>
+<td><strong>1.4.10 Reflow</strong></td>
+<td>AA</td>
+<td>Content reflows at 400% zoom without horizontal scrolling</td>
+</tr>
+<tr>
+<td><strong>1.4.11 Non-text Contrast</strong></td>
+<td>AA</td>
+<td>UI components and graphical objects have at least 3:1 contrast</td>
+</tr>
+</tbody></table>
+<h3 id="operable">Operable</h3>
+<table>
+<thead>
+<tr>
+<th scope="col">Criterion</th>
+<th scope="col">Level</th>
+<th scope="col">What It Requires</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><strong>2.1.1 Keyboard</strong></td>
+<td>A</td>
+<td>All functionality is available via keyboard</td>
+</tr>
+<tr>
+<td><strong>2.1.2 No Keyboard Trap</strong></td>
+<td>A</td>
+<td>Keyboard focus can always be moved away from any component</td>
+</tr>
+<tr>
+<td><strong>2.4.1 Bypass Blocks</strong></td>
+<td>A</td>
+<td>A mechanism to skip repeated navigation (skip link)</td>
+</tr>
+<tr>
+<td><strong>2.4.2 Page Titled</strong></td>
+<td>A</td>
+<td>Pages have descriptive titles</td>
+</tr>
+<tr>
+<td><strong>2.4.3 Focus Order</strong></td>
+<td>A</td>
+<td>Focus follows a logical sequence</td>
+</tr>
+<tr>
+<td><strong>2.4.4 Link Purpose</strong></td>
+<td>A</td>
+<td>Link text describes the destination (&quot;Read more about issues&quot; not just &quot;Read more&quot;)</td>
+</tr>
+<tr>
+<td><strong>2.4.6 Headings and Labels</strong></td>
+<td>AA</td>
+<td>Headings and labels describe their topic or purpose</td>
+</tr>
+<tr>
+<td><strong>2.4.7 Focus Visible</strong></td>
+<td>AA</td>
+<td>Keyboard focus indicator is visible</td>
+</tr>
+<tr>
+<td><strong>2.4.11 Focus Appearance</strong></td>
+<td>AA <em>(2.2 new)</em></td>
+<td>Focus indicator meets minimum size and contrast</td>
+</tr>
+<tr>
+<td><strong>2.5.3 Label in Name</strong></td>
+<td>A</td>
+<td>For controls with visible labels, the accessible name contains the visible text</td>
+</tr>
+</tbody></table>
+<h3 id="understandable">Understandable</h3>
+<table>
+<thead>
+<tr>
+<th scope="col">Criterion</th>
+<th scope="col">Level</th>
+<th scope="col">What It Requires</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><strong>3.1.1 Language of Page</strong></td>
+<td>A</td>
+<td>The default language is identified in the HTML (<code>lang</code> attribute)</td>
+</tr>
+<tr>
+<td><strong>3.2.1 On Focus</strong></td>
+<td>A</td>
+<td>Receiving focus does not trigger unexpected context changes</td>
+</tr>
+<tr>
+<td><strong>3.2.2 On Input</strong></td>
+<td>A</td>
+<td>Changing a setting does not cause unexpected changes unless the user is warned</td>
+</tr>
+<tr>
+<td><strong>3.3.1 Error Identification</strong></td>
+<td>A</td>
+<td>Input errors are identified and described in text</td>
+</tr>
+<tr>
+<td><strong>3.3.2 Labels or Instructions</strong></td>
+<td>A</td>
+<td>Labels or instructions are provided when user input is required</td>
+</tr>
+<tr>
+<td><strong>3.3.3 Error Suggestion</strong></td>
+<td>AA</td>
+<td>When an error is detected, suggestions for correction are provided</td>
+</tr>
+</tbody></table>
+<h3 id="robust">Robust</h3>
+<table>
+<thead>
+<tr>
+<th scope="col">Criterion</th>
+<th scope="col">Level</th>
+<th scope="col">What It Requires</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><strong>4.1.1 Parsing</strong></td>
+<td>A</td>
+<td>HTML/markup does not have errors that break AT interpretation</td>
+</tr>
+<tr>
+<td><strong>4.1.2 Name, Role, Value</strong></td>
+<td>A</td>
+<td>All UI components have accessible names, roles, and states that can be programmatically determined</td>
+</tr>
+<tr>
+<td><strong>4.1.3 Status Messages</strong></td>
+<td>AA</td>
+<td>Status messages (e.g. &quot;item added to cart&quot;) are announced without receiving focus</td>
+</tr>
+</tbody></table>
+<h2 id="4-aria---roles-states-and-properties">4. ARIA - Roles, States, and Properties</h2>
+<p>WAI-ARIA (Accessible Rich Internet Applications) fills the gap between what HTML natively expresses and what complex interactive widgets require.</p>
+<h3 id="three-categories">Three categories</h3>
+<table>
+<thead>
+<tr>
+<th scope="col">Category</th>
+<th scope="col">Purpose</th>
+<th scope="col">Examples</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><strong>Roles</strong></td>
+<td>What the element <em>is</em></td>
+<td><code>role=&quot;button&quot;</code>, <code>role=&quot;dialog&quot;</code>, <code>role=&quot;tab&quot;</code></td>
+</tr>
+<tr>
+<td><strong>States</strong></td>
+<td>Current condition (can change)</td>
+<td><code>aria-expanded=&quot;false&quot;</code>, <code>aria-checked=&quot;true&quot;</code>, <code>aria-disabled=&quot;true&quot;</code></td>
+</tr>
+<tr>
+<td><strong>Properties</strong></td>
+<td>Stable characteristics</td>
+<td><code>aria-label=&quot;Close dialog&quot;</code>, <code>aria-required=&quot;true&quot;</code>, <code>aria-describedby=&quot;hint-text&quot;</code></td>
+</tr>
+</tbody></table>
+<h3 id="important-rules">Important rules</h3>
+<ol>
+<li><strong>Don&#39;t use ARIA if native HTML suffices.</strong> A <code>&lt;button&gt;</code> is already a button - adding <code>role=&quot;button&quot;</code> to a <code>&lt;div&gt;</code> is only needed when HTML semantics cannot be used.</li>
+<li><strong>All interactive ARIA widgets must be keyboard operable.</strong> Adding <code>role=&quot;button&quot;</code> means you must also handle <code>Enter</code> and <code>Space</code> keypresses in JavaScript.</li>
+<li><strong>ARIA only affects the accessibility tree.</strong> It does not add visual styling or behavior - it only changes what assistive technologies announce.</li>
+</ol>
+<h2 id="5-aria-landmark-roles">5. ARIA Landmark Roles</h2>
+<p>Landmarks let screen reader users jump directly to major sections of a page. GitHub uses these extensively; screen reader users navigate between them with <code>D</code> (NVDA/JAWS) or the Rotor (VoiceOver).</p>
+<table>
+<thead>
+<tr>
+<th scope="col">Role</th>
+<th scope="col">HTML Equivalent</th>
+<th scope="col">Purpose</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>banner</code></td>
+<td><code>&lt;header&gt;</code></td>
+<td>Site-wide header</td>
+</tr>
+<tr>
+<td><code>navigation</code></td>
+<td><code>&lt;nav&gt;</code></td>
+<td>Navigation links</td>
+</tr>
+<tr>
+<td><code>main</code></td>
+<td><code>&lt;main&gt;</code></td>
+<td>Primary page content</td>
+</tr>
+<tr>
+<td><code>complementary</code></td>
+<td><code>&lt;aside&gt;</code></td>
+<td>Supporting content</td>
+</tr>
+<tr>
+<td><code>contentinfo</code></td>
+<td><code>&lt;footer&gt;</code></td>
+<td>Footer with copyright, links</td>
+</tr>
+<tr>
+<td><code>search</code></td>
+<td><code>&lt;search&gt;</code></td>
+<td>Search functionality</td>
+</tr>
+<tr>
+<td><code>form</code></td>
+<td><code>&lt;form&gt;</code> (with accessible name)</td>
+<td>A significant form region</td>
+</tr>
+<tr>
+<td><code>region</code></td>
+<td><code>&lt;section&gt;</code> (with accessible name)</td>
+<td>A generic landmark with a label</td>
+</tr>
+</tbody></table>
+<p>When multiple landmarks of the same type appear on a page, each should have a unique <code>aria-label</code> so screen readers can distinguish them. GitHub&#39;s Issues list page, for example, has multiple <code>navigation</code> regions each with distinct labels.</p>
+<h2 id="6-common-aria-patterns">6. Common ARIA Patterns</h2>
+<h3 id="accessible-button-when-ltbuttongt-cannot-be-used">Accessible Button (when <code>&lt;button&gt;</code> cannot be used)</h3>
+<pre><code class="hljs language-html"><span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">role</span>=<span class="hljs-string">&quot;button&quot;</span> <span class="hljs-attr">tabindex</span>=<span class="hljs-string">&quot;0&quot;</span> <span class="hljs-attr">aria-pressed</span>=<span class="hljs-string">&quot;false&quot;</span> <span class="hljs-attr">onclick</span>=<span class="hljs-string">&quot;toggle()&quot;</span> <span class="hljs-attr">onkeydown</span>=<span class="hljs-string">&quot;handleKey(event)&quot;</span>&gt;</span>
+  Toggle
+<span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span></code></pre>
+<h3 id="accessible-form-field-with-error">Accessible Form Field with Error</h3>
+<pre><code class="hljs language-html"><span class="hljs-tag">&lt;<span class="hljs-name">label</span> <span class="hljs-attr">for</span>=<span class="hljs-string">&quot;username&quot;</span>&gt;</span>Username<span class="hljs-tag">&lt;/<span class="hljs-name">label</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">input</span> <span class="hljs-attr">id</span>=<span class="hljs-string">&quot;username&quot;</span> <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;text&quot;</span> <span class="hljs-attr">aria-describedby</span>=<span class="hljs-string">&quot;username-error&quot;</span> <span class="hljs-attr">aria-invalid</span>=<span class="hljs-string">&quot;true&quot;</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">span</span> <span class="hljs-attr">id</span>=<span class="hljs-string">&quot;username-error&quot;</span> <span class="hljs-attr">role</span>=<span class="hljs-string">&quot;alert&quot;</span>&gt;</span>Username cannot be empty<span class="hljs-tag">&lt;/<span class="hljs-name">span</span>&gt;</span></code></pre>
+<h3 id="live-region-status-announcements">Live Region (status announcements)</h3>
+<pre><code class="hljs language-html"><span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">aria-live</span>=<span class="hljs-string">&quot;polite&quot;</span> <span class="hljs-attr">aria-atomic</span>=<span class="hljs-string">&quot;true&quot;</span>&gt;</span>
+  <span class="hljs-comment">&lt;!-- Content inserted here is announced automatically --&gt;</span>
+  3 results found
+<span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span></code></pre>
+<p>Use <code>aria-live=&quot;assertive&quot;</code> only for urgent interruptions (errors). Use <code>&quot;polite&quot;</code> for non-urgent status updates.</p>
+<h3 id="expandable-section">Expandable Section</h3>
+<pre><code class="hljs language-html"><span class="hljs-tag">&lt;<span class="hljs-name">button</span> <span class="hljs-attr">aria-expanded</span>=<span class="hljs-string">&quot;false&quot;</span> <span class="hljs-attr">aria-controls</span>=<span class="hljs-string">&quot;details-panel&quot;</span>&gt;</span>
+  Show details
+<span class="hljs-tag">&lt;/<span class="hljs-name">button</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">id</span>=<span class="hljs-string">&quot;details-panel&quot;</span> <span class="hljs-attr">hidden</span>&gt;</span>
+  ...content...
+<span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span></code></pre>
+<p>When expanded: set <code>aria-expanded=&quot;true&quot;</code> and remove the <code>hidden</code> attribute.</p>
+<h2 id="7-how-standards-apply-to-github-contributions">7. How Standards Apply to GitHub Contributions</h2>
+<p>When you contribute to an open source project on GitHub, you will encounter accessibility in several contexts:</p>
+<h3 id="filing-an-accessibility-bug">Filing an Accessibility Bug</h3>
+<p>Reference the specific WCAG criterion. This makes the bug actionable:</p>
+<blockquote>
+<p><strong>Bad:</strong> &quot;The button isn&#39;t accessible.&quot;<br><strong>Good:</strong> &quot;The &#39;Subscribe&#39; button has no visible focus indicator, failing WCAG 2.4.7 Focus Visible (Level AA). When navigating by keyboard, there is no visual indication of where focus is.&quot;</p>
+</blockquote>
+<h3 id="reviewing-a-pr-for-accessibility">Reviewing a PR for Accessibility</h3>
+<p>Checklist for any PR that touches HTML or UI:</p>
+<ul>
+<li>Do new images have <code>alt</code> attributes?</li>
+<li>Do new interactive elements work with keyboard only?</li>
+<li>Do new form fields have associated <code>&lt;label&gt;</code> elements?</li>
+<li>Are any new color-only indicators present?</li>
+<li>Does new dynamic content use <code>aria-live</code> if it updates without a page load?</li>
+</ul>
+<h3 id="writing-accessible-documentation">Writing Accessible Documentation</h3>
+<p>Documentation in Markdown is converted to HTML. Accessible Markdown:</p>
+<ul>
+<li>Use heading levels in order (don&#39;t skip from H1 to H3)</li>
+<li>Write descriptive link text (not &quot;click here&quot;)</li>
+<li>Add alt text to images: <code>![Bar chart showing 40% improvement in task completion](chart.png)</code></li>
+<li>Use actual lists (<code>-</code> or <code>1.</code>) rather than faking them with symbols</li>
+</ul>
+<h2 id="8-testing-against-standards">8. Testing Against Standards</h2>
+<h3 id="automated-tools-catch-30-40-of-issues">Automated Tools (catch ~30-40% of issues)</h3>
+<table>
+<thead>
+<tr>
+<th scope="col">Tool</th>
+<th scope="col">Use</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><a href="https://www.deque.com/axe/">axe DevTools</a></td>
+<td>Browser extension - run on any page, get WCAG violations with criterion references</td>
+</tr>
+<tr>
+<td><a href="https://wave.webaim.org/">WAVE</a></td>
+<td>Browser extension or web service - visual overlay showing issues</td>
+</tr>
+<tr>
+<td><a href="https://developer.chrome.com/docs/lighthouse/">Lighthouse</a></td>
+<td>Built into Chrome DevTools - accessibility audit with scores</td>
+</tr>
+<tr>
+<td><a href="https://www.ibm.com/able/toolkit/tools/">IBM Equal Access Checker</a></td>
+<td>Enterprise-grade browser extension</td>
+</tr>
+</tbody></table>
+<h3 id="manual-testing-catches-the-rest">Manual Testing (catches the rest)</h3>
+<ol>
+<li><strong>Keyboard-only navigation</strong> - unplug your mouse; can you do everything?</li>
+<li><strong>Screen reader walkthrough</strong> - navigate the feature with NVDA, JAWS, or VoiceOver</li>
+<li><strong>200% zoom</strong> - does content reflow without horizontal scrolling?</li>
+<li><strong>High contrast mode</strong> - Windows High Contrast or macOS Increase Contrast; are all elements still visible?</li>
+<li><strong>Disable CSS</strong> - does the content still make sense in reading order?</li>
+</ol>
+<h3 id="learning-cards-testing-against-standards">Learning Cards: Testing Against Standards</h3>
+<details>
+<summary>Screen reader users</summary>
+
+<ul>
+<li>You are the manual test — automated tools catch only 30-40% of issues; your screen reader walkthrough catches the rest</li>
+<li>Install the axe DevTools browser extension (Section 8 table) and run it on any page; results are announced as a list of violations with WCAG criterion references</li>
+<li>When doing a keyboard-only navigation test, press Tab repeatedly and listen — every interactive element should announce its name and role</li>
+</ul>
+</details>
+
+<details>
+<summary>Low vision users</summary>
+
+<ul>
+<li>The 200% zoom test (item 3) mirrors your daily experience — if content breaks at 200%, file a bug citing WCAG 1.4.4 Resize Text</li>
+<li>Windows High Contrast mode test (item 4) is one click: Settings, Accessibility, Contrast themes — switch and check that all UI elements remain visible</li>
+<li>The WAVE browser extension overlays icons on the page showing errors and warnings — zoom in to read the small annotation labels</li>
+</ul>
+</details>
+
+<details>
+<summary>Sighted users</summary>
+
+<ul>
+<li>The Lighthouse accessibility audit (Chrome DevTools, Ctrl+Shift+I, Lighthouse tab) gives a 0-100 score — aim for 90+ on any page you contribute to</li>
+<li>For the keyboard-only test, unplug your mouse and try completing every action — watch for the blue focus ring moving logically through the page</li>
+<li>The automated vs. manual split (30-40% / 60-70%) means green CI checks do not guarantee accessibility — always pair tool output with a quick manual review</li>
+</ul>
+</details>
+
+
+<h2 id="9-quick-reference-what-to-check-in-a-pr">9. Quick Reference: What to Check in a PR</h2>
+<table>
+<thead>
+<tr>
+<th scope="col">Check</th>
+<th scope="col">WCAG Criterion</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>New images have alt text</td>
+<td>1.1.1</td>
+</tr>
+<tr>
+<td>Heading levels are in order</td>
+<td>1.3.1</td>
+</tr>
+<tr>
+<td>Links have descriptive text</td>
+<td>2.4.4</td>
+</tr>
+<tr>
+<td>Interactive elements are keyboard accessible</td>
+<td>2.1.1</td>
+</tr>
+<tr>
+<td>Focus is visible on all interactive elements</td>
+<td>2.4.7</td>
+</tr>
+<tr>
+<td>Form fields have labels</td>
+<td>1.3.1, 3.3.2</td>
+</tr>
+<tr>
+<td>Error messages are descriptive</td>
+<td>3.3.1, 3.3.3</td>
+</tr>
+<tr>
+<td>Color is not the only indicator</td>
+<td>1.4.1</td>
+</tr>
+<tr>
+<td>Dynamic content updates use aria-live</td>
+<td>4.1.3</td>
+</tr>
+<tr>
+<td>New UI components have name, role, value</td>
+<td>4.1.2</td>
+</tr>
+</tbody></table>
+<h2 id="10-official-references">10. Official References</h2>
+<table>
+<thead>
+<tr>
+<th scope="col">Resource</th>
+<th scope="col">URL</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>WCAG 2.2 Full Specification</td>
+<td><a href="https://www.w3.org/TR/WCAG22/">w3.org/TR/WCAG22</a></td>
+</tr>
+<tr>
+<td>WCAG 2.2 Quick Reference</td>
+<td><a href="https://www.w3.org/WAI/WCAG22/quickref/">w3.org/WAI/WCAG22/quickref</a></td>
+</tr>
+<tr>
+<td>Understanding WCAG 2.2</td>
+<td><a href="https://www.w3.org/WAI/WCAG22/Understanding/">w3.org/WAI/WCAG22/Understanding</a></td>
+</tr>
+<tr>
+<td>WAI-ARIA 1.2 Specification</td>
+<td><a href="https://www.w3.org/TR/wai-aria-1.2/">w3.org/TR/wai-aria-1.2</a></td>
+</tr>
+<tr>
+<td>ARIA Authoring Practices Guide</td>
+<td><a href="https://www.w3.org/WAI/ARIA/apg/">w3.org/WAI/ARIA/apg</a></td>
+</tr>
+<tr>
+<td>WebAIM Contrast Checker</td>
+<td><a href="https://webaim.org/resources/contrastchecker/">webaim.org/resources/contrastchecker</a></td>
+</tr>
+<tr>
+<td>MDN Accessibility</td>
+<td><a href="https://developer.mozilla.org/en-US/docs/Web/Accessibility">developer.mozilla.org/en-US/docs/Web/Accessibility</a></td>
+</tr>
+<tr>
+<td>GitHub Accessibility</td>
+<td><a href="https://accessibility.github.com">accessibility.github.com</a></td>
+</tr>
+</tbody></table>
+<hr>
+<p><em>Next: <a href="appendix-n-advanced-search.html">Appendix N: Advanced Search</a></em><br><em>Back: <a href="appendix-l-agents-reference.html">Appendix L: Agents Reference</a></em><br><em>Teaching chapter: <a href="08-open-source-culture.html">Chapter 08: Open Source Culture</a></em></p>
+
+  </main>
+  <footer role="contentinfo" class="site-footer">
+    <p><strong>GIT Going with GitHub</strong> - A workshop by <a href="https://community-access.org">Community Access</a></p>
+    <p><a href="https://github.com/community-access/git-going-with-github">View on GitHub</a> · <a href="https://community-access.org">community-access.org</a></p>
+  </footer>
+
+  </body>
+</html>

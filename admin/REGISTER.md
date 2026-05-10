@@ -1,6 +1,6 @@
 # Student Opt-In
 
-[Back to Home](https://community-access.org/git-going-with-github/) | [Discussion Forum](https://github.com/community-access/git-going-with-github/discussions) | [Pre-Workshop Setup Guide](https://community-access.org/git-going-with-github/docs/00-pre-workshop-setup.html)
+[Back to Home](https://community-access.org/git-going-with-github/) | [Support Hub](https://github.com/Community-Access/support) | [Pre-Workshop Setup Guide](https://community-access.org/git-going-with-github/docs/00-pre-workshop-setup.html)
 
 ## Join the next GIT Going with GitHub cohort
 
@@ -39,13 +39,13 @@ This page is a fast, self-serve opt-in workflow. Students can opt in directly fr
 
 1. Check your issue for the automated confirmation or waitlist comment.
 2. Complete the [Pre-Workshop Setup Guide](https://community-access.org/git-going-with-github/docs/00-pre-workshop-setup.html).
-3. Introduce yourself in the [Discussion Forum](https://github.com/community-access/git-going-with-github/discussions).
+3. Introduce yourself in [Support Hub Discussions](https://github.com/Community-Access/support/discussions).
 
 ## Need help?
 
 Questions or access issues are welcome.
 
-- [File an issue](https://github.com/community-access/git-going-with-github/issues)
-- [Join the Discussion Forum](https://github.com/community-access/git-going-with-github/discussions)
+- [File a support issue](https://github.com/Community-Access/support/issues)
+- [Join Support Hub Discussions](https://github.com/Community-Access/support/discussions)
 
 *A [Community Access](https://community-access.org) initiative.*

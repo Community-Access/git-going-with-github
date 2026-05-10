@@ -14,6 +14,8 @@ Do not mark a cohort ready until all required items in this section are complete
 - [ ] RSS feed validation passes for the current audio state.
 - [ ] Git diff whitespace check has no actual whitespace or conflict-marker errors.
 - [ ] Registration deployment gate completed (issue form template, workflow enablement, required labels, and optional classroom automation settings).
+- [ ] Support Hub is provisioned and publicly accessible at `Community-Access/support`.
+- [ ] Registration confirmation and help pathways route support requests to Support Hub issues/discussions.
 - [ ] Registration issue form template and labels are configured (`workshop-registration.yml`, `registration`, `duplicate`, `waitlist`).
 - [ ] Learning Room source has been synced to `Community-Access/learning-room-template` and merged to `main` (or validated as no-change).
 - [ ] Template smoke validation from `Community-Access/learning-room-template` succeeded before assignment publishing.
@@ -47,6 +49,7 @@ The following table lists each release artifact and the document that controls i
 | Human challenge walkthrough | [classroom/HUMAN_TEST_MATRIX.md](classroom/HUMAN_TEST_MATRIX.md) |
 | Facilitator operations | [admin/FACILITATOR_OPERATIONS.md](admin/FACILITATOR_OPERATIONS.md) |
 | Facilitator guide | [admin/FACILITATOR_GUIDE.md](admin/FACILITATOR_GUIDE.md) |
+| Support hub operations | [admin/SUPPORT_HUB_OPERATIONS.md](admin/SUPPORT_HUB_OPERATIONS.md) |
 | Student challenge hub | [docs/CHALLENGES.md](docs/CHALLENGES.md) |
 | Podcast pipeline | [podcasts/README.md](podcasts/README.md) |
 | Podcast regeneration runbook | [podcasts/REGENERATION.md](podcasts/REGENERATION.md) |

@@ -80,6 +80,7 @@ The Classroom model equivalents live in [learning-room/.github/workflows/](../le
 ## Quick Links
 
 - [Workshop Deployment Guide](../classroom/README.md) -- full setup using GitHub Classroom
+- [Support Hub](https://github.com/Community-Access/support) -- post-workshop support and async Q&A
 - [Template Repository Content](../learning-room/.github/) -- automation that runs in each student's repo
 - [Student Guide](../learning-room/.github/STUDENT_GUIDE.md) -- how students interact with Aria bot
 - [Challenge Progression Config](data/challenge-progression.json) -- level and badge definitions

@@ -1,0 +1,526 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="GIT Going with GitHub - A two-day accessible open source workshop by Community Access">
+  <title>Appendix J: GitHub Codespaces - GIT Going with GitHub</title>
+  <link rel="stylesheet" href="./styles/github-markdown.css">
+  <link rel="stylesheet" href="./styles/highlight.css">
+  <link rel="stylesheet" href="./styles/custom.css">
+  <style>
+    .markdown-body {
+      box-sizing: border-box;
+      min-width: 200px;
+      max-width: 980px;
+      margin: 0 auto;
+      padding: 45px;
+    }
+    @media (max-width: 767px) {
+      .markdown-body {
+        padding: 15px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+  <header class="site-header" role="banner">
+    <div class="site-header-inner">
+      <nav aria-label="Breadcrumb" class="breadcrumb">
+        <a href="./index.html">Home</a> <span aria-hidden="true">›</span> <span aria-current="page">Appendix J: GitHub Codespaces</span>
+      </nav>
+      <div class="header-actions">
+        <a href="https://github.com/Community-Access/git-going-with-github/wiki" class="wiki-link" target="_blank" rel="noopener noreferrer">
+          <svg aria-hidden="true" focusable="false" width="16" height="16" viewBox="0 0 16 16" fill="currentColor">
+            <path d="M1.75 1h8.5c.966 0 1.75.784 1.75 1.75v5.5A1.75 1.75 0 0 1 10.25 10H7.06l-2.573 2.573A1.458 1.458 0 0 1 2 11.543V10h-.25A1.75 1.75 0 0 1 0 8.25v-5.5C0 1.784.784 1 1.75 1ZM1.5 2.75v5.5c0 .138.112.25.25.25h1a.75.75 0 0 1 .75.75v2.19l2.72-2.72a.749.749 0 0 1 .53-.22h3.5a.25.25 0 0 0 .25-.25v-5.5a.25.25 0 0 0-.25-.25h-8.5a.25.25 0 0 0-.25.25Zm13 2a.25.25 0 0 0-.25-.25h-.5a.75.75 0 0 1 0-1.5h.5c.966 0 1.75.784 1.75 1.75v5.5A1.75 1.75 0 0 1 14.25 12H14v1.543a1.457 1.457 0 0 1-2.487 1.03L9.22 12.28a.749.749 0 1 1 1.06-1.06l2.22 2.22v-2.19a.75.75 0 0 1 .75-.75h.25a.25.25 0 0 0 .25-.25v-5.5Z"/>
+          </svg>
+          Wiki
+        </a>
+        <form role="search" class="search-form" action="./search.html" method="get">
+        <label for="site-search" class="search-label">Search docs</label>
+        <input
+          type="search"
+          id="site-search"
+          class="search-input"
+          name="q"
+          placeholder="Search docs…"
+          autocomplete="off"
+          aria-label="Search documentation"
+        >
+        <button type="submit" class="search-button" aria-label="Submit search">
+          <svg aria-hidden="true" focusable="false" width="16" height="16" viewBox="0 0 16 16" fill="currentColor">
+            <path d="M10.68 11.74a6 6 0 0 1-7.922-8.982 6 6 0 0 1 8.982 7.922l3.04 3.04a.749.749 0 0 1-.326 1.275.749.749 0 0 1-.734-.215ZM11.5 7a4.499 4.499 0 1 0-8.997 0A4.499 4.499 0 0 0 11.5 7Z"/>
+          </svg>
+        </button>
+      </form>
+      </div>
+    </div>
+  </header>
+  <main id="main-content" class="markdown-body">
+    <h1 id="appendix-j-github-codespaces">Appendix J: GitHub Codespaces</h1>
+<blockquote>
+<p><strong>Listen to Episode 31:</strong> <a href="../admin/PODCASTS.html">GitHub Codespaces</a> - a conversational audio overview of this chapter. Listen before reading to preview the concepts, or after to reinforce what you learned.</p>
+</blockquote>
+<blockquote>
+<p><strong>Reference companion to:</strong> <a href="01-choose-your-tools.html">Chapter 01: Choose Your Tools</a> | Also relevant: <a href="11-vscode-interface.html">Chapter 11</a></p>
+<p><strong>Authoritative source:</strong> <a href="https://docs.github.com/en/codespaces">GitHub Docs: Codespaces</a></p>
+</blockquote>
+<h2 id="cloud-development-environments---accessibility-guide">Cloud Development Environments - Accessibility Guide</h2>
+<blockquote>
+<p>GitHub Codespaces gives you a full VS Code development environment in your browser or connected to your local VS Code, running on a cloud machine. For screen reader users, this means a consistent, pre-configured environment with no local setup required.</p>
+</blockquote>
+<h2 id="table-of-contents">Table of Contents</h2>
+<ol>
+<li><a href="#1-what-is-github-codespaces">What Is GitHub Codespaces?</a></li>
+<li><a href="#2-creating-a-codespace">Creating a Codespace</a></li>
+<li><a href="#3-codespace-environments">Codespace Environments</a></li>
+<li><a href="#4-accessibility-in-codespaces">Accessibility in Codespaces</a></li>
+<li><a href="#5-screen-reader-configuration">Screen Reader Configuration</a></li>
+<li><a href="#6-keyboard-shortcuts-in-codespaces">Keyboard Shortcuts in Codespaces</a></li>
+<li><a href="#7-managing-your-codespaces">Managing Your Codespaces</a></li>
+<li><a href="#8-dotfiles-and-persistent-configuration">Dotfiles and Persistent Configuration</a></li>
+<li><a href="#9-codespaces-vs-githubdev">Codespaces vs GitHub.dev</a></li>
+<li><a href="#10-common-issues-and-workarounds">Common Issues and Workarounds</a></li>
+</ol>
+<h2 id="1-what-is-github-codespaces">1. What Is GitHub Codespaces?</h2>
+<p>A Codespace is a cloud-hosted development environment. When you open one, GitHub provisions a virtual machine, clones your repository into it, and connects it to a VS Code interface - either in your browser or via your local VS Code Desktop.</p>
+<h3 id="why-this-matters-for-accessibility">Why this matters for accessibility</h3>
+<ul>
+<li>No local installation of tools, compilers, or language runtimes required</li>
+<li>Your screen reader and OS settings stay on your machine; only the editor runs in the cloud</li>
+<li>VS Code&#39;s full accessibility features (audio cues, screen reader optimized mode, diff viewer) are available</li>
+<li>The environment is identical for every workshop participant - facilitators can reproduce issues reliably</li>
+</ul>
+<p><strong>Free tier:</strong> GitHub provides a monthly free allowance of Codespace hours for personal accounts. Workshop usage typically falls well within the free tier.</p>
+<h3 id="learning-cards-cloud-editors-overview">Learning Cards: Cloud Editors Overview</h3>
+<details>
+<summary>Screen reader users</summary>
+
+<ul>
+<li>Codespaces gives you a full VS Code interface with terminal access -- your screen reader and OS settings stay on your local machine</li>
+<li>The browser-based editor activates screen reader optimized mode automatically if your OS signals a screen reader is running</li>
+<li>Connect a Codespace to your local VS Code Desktop (via the Codespaces extension) for the most familiar screen reader experience</li>
+</ul>
+</details>
+
+<details>
+<summary>Low vision users</summary>
+
+<ul>
+<li>Settings Sync carries your font size, theme, and zoom preferences from local VS Code into Codespaces automatically</li>
+<li>The browser-based editor supports <code>Ctrl+=</code> / <code>Ctrl+-</code> zoom just like desktop VS Code</li>
+<li>Use a high-contrast VS Code theme -- it applies identically in the cloud editor</li>
+</ul>
+</details>
+
+<details>
+<summary>Sighted users</summary>
+
+<ul>
+<li>Press <code>.</code> on any GitHub repository page to open it instantly in github.dev (browser editor, no terminal)</li>
+<li>Codespaces provisions a full VM with terminal -- use it when you need to run code, not just edit</li>
+<li>The default 2-core machine is sufficient for workshop exercises; upgrade only for heavy builds</li>
+</ul>
+</details>
+
+
+<h2 id="2-creating-a-codespace">2. Creating a Codespace</h2>
+<h3 id="from-a-repository-page">From a Repository Page</h3>
+<ol>
+<li>Navigate to the repository on GitHub</li>
+<li>Press the <strong>Code</strong> button (keyboard shortcut: there is no direct shortcut - Tab to the button)</li>
+<li>In the panel that opens, choose the <strong>Codespaces</strong> tab</li>
+<li>Activate <strong>Create codespace on main</strong> (or your branch name)</li>
+<li>The Codespace opens in a new browser tab after provisioning (typically 30-60 seconds)</li>
+</ol>
+<h3 id="from-the-codespaces-dashboard">From the Codespaces Dashboard</h3>
+<ol>
+<li>Go to <a href="https://github.com/codespaces">github.com/codespaces</a></li>
+<li>Activate <strong>New codespace</strong></li>
+<li>Use the search field to find your repository</li>
+<li>Choose a branch, machine type, and region</li>
+<li>Activate <strong>Create codespace</strong></li>
+</ol>
+<h3 id="machine-types">Machine Types</h3>
+<table>
+<thead>
+<tr>
+<th scope="col">Type</th>
+<th scope="col">CPU</th>
+<th scope="col">RAM</th>
+<th scope="col">Best for</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>2-core</td>
+<td>2 vCPU</td>
+<td>8 GB</td>
+<td>General development, documentation</td>
+</tr>
+<tr>
+<td>4-core</td>
+<td>4 vCPU</td>
+<td>16 GB</td>
+<td>Builds, tests, moderate workloads</td>
+</tr>
+<tr>
+<td>8-core</td>
+<td>8 vCPU</td>
+<td>32 GB</td>
+<td>Heavy builds, multiple services</td>
+</tr>
+</tbody></table>
+<p>For workshop exercises, the default 2-core machine is sufficient.</p>
+<h2 id="3-codespace-environments">3. Codespace Environments</h2>
+<h3 id="browser-vs-code-for-the-web">Browser (VS Code for the Web)</h3>
+<p>The Codespace opens directly in your browser as a fully functional VS Code interface.</p>
+<ul>
+<li>Works in Chrome, Edge, Firefox, and Safari</li>
+<li>Screen reader support varies slightly by browser - Chrome and Edge have the most consistent behavior with NVDA and JAWS</li>
+<li>No installation needed</li>
+<li>Some VS Code extensions are not available in the browser version</li>
+</ul>
+<h3 id="local-vs-code-desktop">Local VS Code Desktop</h3>
+<p>If you prefer your local VS Code setup with your extensions and settings:</p>
+<ol>
+<li>Install the <a href="https://marketplace.visualstudio.com/items?itemName=GitHub.codespaces">GitHub Codespaces extension</a> in VS Code</li>
+<li>Sign in to GitHub in VS Code</li>
+<li>Open the Command Palette (<code>Ctrl+Shift+P</code> / <code>Cmd+Shift+P</code>)</li>
+<li>Run <strong>Codespaces: Connect to Codespace</strong></li>
+<li>Select an existing Codespace or create a new one</li>
+</ol>
+<p>When connected via local VS Code, your screen reader interacts with your local VS Code installation - all your familiar settings apply.</p>
+<h2 id="4-accessibility-in-codespaces">4. Accessibility in Codespaces</h2>
+<h3 id="screen-reader-optimized-mode">Screen Reader Optimized Mode</h3>
+<p>When VS Code detects a screen reader, it automatically activates <strong>Screen Reader Optimized</strong> mode. You can verify or toggle it manually:</p>
+<ol>
+<li>Open the Command Palette (<code>Ctrl+Shift+P</code>)</li>
+<li>Search for <strong>Toggle Screen Reader Accessibility Mode</strong></li>
+<li>Press Enter to activate</li>
+</ol>
+<p>In this mode:</p>
+<ul>
+<li>The editor reads content line by line instead of character by character</li>
+<li>Diff views are rendered as accessible text comparisons</li>
+<li>Inline suggestions from Copilot are announced on a keypress rather than automatically</li>
+</ul>
+<h3 id="audio-cues">Audio Cues</h3>
+<p>VS Code in Codespaces supports the same audio cues as the desktop version:</p>
+<table>
+<thead>
+<tr>
+<th scope="col">Event</th>
+<th scope="col">Default Audio Cue</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Error on current line</td>
+<td>Tone</td>
+</tr>
+<tr>
+<td>Warning on current line</td>
+<td>Tone</td>
+</tr>
+<tr>
+<td>Breakpoint hit</td>
+<td>Tone</td>
+</tr>
+<tr>
+<td>Task completed</td>
+<td>Chime</td>
+</tr>
+<tr>
+<td>Copilot suggestion available</td>
+<td>Tone</td>
+</tr>
+</tbody></table>
+<p>Enable audio cues via Settings → search for &quot;audio cues&quot; or run <strong>Help: List Audio Cues</strong> from the Command Palette.</p>
+<h3 id="terminal-accessibility">Terminal Accessibility</h3>
+<p>The integrated terminal in a Codespace is a standard terminal:</p>
+<ul>
+<li>Screen readers read terminal output in NVDA and JAWS using their document/browse mode after output arrives</li>
+<li>In NVDA: Switch to Browse Mode to read static terminal output, then back to Focus Mode to type</li>
+<li>VS Code also has <strong>Accessible View</strong> (<code>Alt+F2</code> when cursor is in the terminal) which renders terminal output in a navigable buffer</li>
+</ul>
+<h3 id="learning-cards-codespace-accessibility">Learning Cards: Codespace Accessibility</h3>
+<details>
+<summary>Screen reader users</summary>
+
+<ul>
+<li>Screen Reader Optimized mode activates automatically -- verify with Command Palette <code>Ctrl+Shift+P</code> then &quot;Toggle Screen Reader Accessibility Mode&quot;</li>
+<li>Audio cues (error, warning, task completed, Copilot suggestion) work identically in Codespaces and desktop VS Code</li>
+<li>In NVDA, switch to Browse Mode to read terminal output, then Focus Mode to type -- same pattern as local VS Code</li>
+</ul>
+</details>
+
+<details>
+<summary>Low vision users</summary>
+
+<ul>
+<li>All VS Code zoom and theme settings apply in the browser-based Codespace -- <code>Ctrl+=</code> increases editor font size</li>
+<li>Audio cues for errors and Copilot suggestions supplement visual indicators you might miss at lower zoom levels</li>
+<li>Chrome and Edge provide the most consistent rendering of the Codespace UI at high zoom and magnification levels</li>
+</ul>
+</details>
+
+<details>
+<summary>Sighted users</summary>
+
+<ul>
+<li>The Codespace browser tab looks and feels like desktop VS Code -- same layout, same panels, same shortcuts</li>
+<li>Look for the green &quot;Codespaces&quot; badge in the bottom-left corner to confirm you are connected to a cloud environment</li>
+<li>If an extension is unavailable in the browser, connect the Codespace to local VS Code Desktop for full extension support</li>
+</ul>
+</details>
+
+
+<h2 id="5-screen-reader-configuration">5. Screen Reader Configuration</h2>
+<h3 id="nvda">NVDA</h3>
+<p>No special NVDA profile is required for Codespaces in the browser. The same settings recommended in <a href="appendix-b-screen-reader-cheatsheet.html">Appendix B</a> apply:</p>
+<ul>
+<li>Ensure Browse Mode is on for reading, Focus Mode for typing</li>
+<li>Set maximum line length to 10000 in NVDA Settings → Browse Mode</li>
+<li>In Chrome or Edge, NVDA&#39;s Browse Mode detection is generally reliable</li>
+</ul>
+<h3 id="jaws">JAWS</h3>
+<ul>
+<li>Use Virtual Cursor for reading page content</li>
+<li>Switch to PC Cursor (Insert+Z or Num Pad Plus) when inside the editor and writing code</li>
+<li>JAWS works best with the Codespace in Chrome or Edge</li>
+</ul>
+<h3 id="voiceover-macos">VoiceOver (macOS)</h3>
+<ul>
+<li>Use Quick Nav (Left+Right arrows) for moving through the VS Code interface</li>
+<li>The Rotor (VO+U) surfaces VS Code&#39;s landmark regions</li>
+<li>If text in the editor is not reading fluently, ensure Screen Reader Optimized mode is active (see above)</li>
+</ul>
+<h2 id="6-keyboard-shortcuts-in-codespaces">6. Keyboard Shortcuts in Codespaces</h2>
+<p>Codespaces uses standard VS Code keyboard shortcuts. The most important ones for workshop exercises:</p>
+<h3 id="navigation">Navigation</h3>
+<table>
+<thead>
+<tr>
+<th scope="col">Shortcut</th>
+<th scope="col">Action</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Ctrl+Shift+P</td>
+<td>Command Palette</td>
+</tr>
+<tr>
+<td>Ctrl+P</td>
+<td>Quick Open (search files by name)</td>
+</tr>
+<tr>
+<td>Ctrl+`</td>
+<td>Toggle integrated terminal</td>
+</tr>
+<tr>
+<td>Ctrl+Shift+E</td>
+<td>Explorer panel</td>
+</tr>
+<tr>
+<td>Ctrl+Shift+G</td>
+<td>Source Control panel</td>
+</tr>
+<tr>
+<td>Ctrl+Shift+X</td>
+<td>Extensions panel</td>
+</tr>
+<tr>
+<td>Ctrl+B</td>
+<td>Toggle sidebar</td>
+</tr>
+</tbody></table>
+<h3 id="editor">Editor</h3>
+<table>
+<thead>
+<tr>
+<th scope="col">Shortcut</th>
+<th scope="col">Action</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Ctrl+Shift+K</td>
+<td>Delete line</td>
+</tr>
+<tr>
+<td>Alt+↑ / Alt+↓</td>
+<td>Move line up/down</td>
+</tr>
+<tr>
+<td>Ctrl+/</td>
+<td>Toggle line comment</td>
+</tr>
+<tr>
+<td>Ctrl+G</td>
+<td>Go to line number</td>
+</tr>
+<tr>
+<td>F8</td>
+<td>Next error or warning</td>
+</tr>
+<tr>
+<td>Shift+F8</td>
+<td>Previous error or warning</td>
+</tr>
+<tr>
+<td>Alt+F2</td>
+<td>Accessible View (terminal, notifications, Copilot output)</td>
+</tr>
+</tbody></table>
+<h3 id="source-control">Source Control</h3>
+<table>
+<thead>
+<tr>
+<th scope="col">Shortcut</th>
+<th scope="col">Action</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Ctrl+Shift+G</td>
+<td>Open Source Control panel</td>
+</tr>
+<tr>
+<td>Ctrl+Enter</td>
+<td>Commit (when focus is on message field)</td>
+</tr>
+</tbody></table>
+<h2 id="7-managing-your-codespaces">7. Managing Your Codespaces</h2>
+<h3 id="stopping-a-codespace">Stopping a Codespace</h3>
+<p>Codespaces automatically stop after a period of inactivity (default: 30 minutes). To stop manually:</p>
+<ol>
+<li>Go to <a href="https://github.com/codespaces">github.com/codespaces</a></li>
+<li>Find your Codespace in the list</li>
+<li>Activate the <strong>…</strong> menu next to it</li>
+<li>Choose <strong>Stop codespace</strong></li>
+</ol>
+<p>Stopped Codespaces retain your files and changes. They do not use compute hours while stopped.</p>
+<h3 id="deleting-a-codespace">Deleting a Codespace</h3>
+<ol>
+<li>Go to <a href="https://github.com/codespaces">github.com/codespaces</a></li>
+<li>Activate the <strong>…</strong> menu next to the Codespace</li>
+<li>Choose <strong>Delete</strong></li>
+</ol>
+<blockquote>
+<p><strong>Note:</strong> Deleting a Codespace removes any uncommitted or unpushed changes permanently. Always commit and push your work before deleting.</p>
+</blockquote>
+<h3 id="resuming-a-codespace">Resuming a Codespace</h3>
+<ol>
+<li>Go to <a href="https://github.com/codespaces">github.com/codespaces</a></li>
+<li>Find your stopped Codespace</li>
+<li>Activate <strong>Open in …</strong> to resume it in the browser or in VS Code Desktop</li>
+</ol>
+<h2 id="8-dotfiles-and-persistent-configuration">8. Dotfiles and Persistent Configuration</h2>
+<p>If you have a repository named <code>dotfiles</code> on your GitHub account, Codespaces will automatically apply it when provisioning new environments. This is useful for:</p>
+<ul>
+<li>Setting your preferred shell (bash, zsh, fish)</li>
+<li>Adding shell aliases and functions</li>
+<li>Pre-installing command-line tools</li>
+</ul>
+<p>To set up dotfiles: create a repository named <code>dotfiles</code> and add an <code>install.sh</code> script. Codespaces will run it automatically.</p>
+<p>VS Code settings (themes, font size, keybindings) can be synchronized to Codespaces via <strong>Settings Sync</strong> (sign in with your GitHub account in VS Code settings).</p>
+<h2 id="9-codespaces-vs-githubdev">9. Codespaces vs GitHub.dev</h2>
+<table>
+<thead>
+<tr>
+<th scope="col">Feature</th>
+<th scope="col">GitHub Codespaces</th>
+<th scope="col">GitHub.dev</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Access</td>
+<td>github.com/codespaces or press <code>.</code> then choose Codespaces</td>
+<td>Press <code>.</code> on any repository</td>
+</tr>
+<tr>
+<td>Terminal</td>
+<td>Yes - full terminal</td>
+<td>No terminal</td>
+</tr>
+<tr>
+<td>Extensions</td>
+<td>Most VS Code extensions</td>
+<td>Web-compatible extensions only</td>
+</tr>
+<tr>
+<td>Run code</td>
+<td>Yes</td>
+<td>No</td>
+</tr>
+<tr>
+<td>Cost</td>
+<td>Free tier, then usage-based</td>
+<td>Free</td>
+</tr>
+<tr>
+<td>Screen reader support</td>
+<td>Full VS Code + terminal</td>
+<td>Full VS Code (no terminal)</td>
+</tr>
+<tr>
+<td>Best for</td>
+<td>Active development, running tests</td>
+<td>Quick edits, reading code</td>
+</tr>
+</tbody></table>
+<p>For workshop exercises that involve running scripts or tests, use Codespaces. For quickly browsing or editing a file, GitHub.dev is faster to open.</p>
+<h3 id="learning-cards-choosing-your-cloud-editor">Learning Cards: Choosing Your Cloud Editor</h3>
+<details>
+<summary>Screen reader users</summary>
+
+<ul>
+<li>GitHub.dev has no terminal -- choose Codespaces when you need to run commands, and github.dev for quick file edits</li>
+<li>Both editors support screen reader mode, but Codespaces gives you the full terminal Accessible View (<code>Alt+F2</code>) that github.dev lacks</li>
+<li>Press <code>.</code> on any repo page for github.dev; use the Codespaces dashboard at github.com/codespaces for a full environment</li>
+</ul>
+</details>
+
+<details>
+<summary>Low vision users</summary>
+
+<ul>
+<li>GitHub.dev loads instantly with your synced VS Code theme -- good for quick high-contrast reading of source files</li>
+<li>Codespaces takes 30-60 seconds to provision but gives you terminal, builds, and the same zoom/theme settings</li>
+<li>Both editors scale with browser zoom (<code>Ctrl+=</code>) in addition to VS Code&#39;s own font-size settings</li>
+</ul>
+</details>
+
+<details>
+<summary>Sighted users</summary>
+
+<ul>
+<li>Use github.dev (press <code>.</code>) for quick drive-by edits -- it opens immediately with no provisioning wait</li>
+<li>Use Codespaces when you need to run scripts, install dependencies, or test your changes before committing</li>
+<li>The comparison table above summarizes every difference -- refer back to it when deciding which to open</li>
+</ul>
+</details>
+
+
+<h2 id="10-common-issues-and-workarounds">10. Common Issues and Workarounds</h2>
+<h3 id="the-codespace-takes-a-long-time-to-open">The Codespace takes a long time to open</h3>
+<p>Provisioning a new Codespace can take up to 90 seconds. If it hangs beyond that, refresh the browser tab and try again. Resuming an existing Codespace is much faster (5-10 seconds).</p>
+<h3 id="screen-reader-stops-reading-after-i-switch-to-the-terminal">Screen reader stops reading after I switch to the terminal</h3>
+<p>Switch to Browse Mode (NVDA: Insert+Space; JAWS: Insert+Z) to read the terminal output, then return to Focus Mode to type your next command.</p>
+<h3 id="audio-cues-are-not-working-in-the-browser">Audio cues are not working in the browser</h3>
+<p>Some browsers mute audio by default for new tabs. Check your browser&#39;s site permissions to ensure audio is allowed for github.dev or the Codespace URL.</p>
+<h3 id="extensions-i-rely-on-locally-are-not-available">Extensions I rely on locally are not available</h3>
+<p>Some extensions are not compatible with the browser-based VS Code. Connect to the Codespace via VS Code Desktop instead (see <a href="#3-codespace-environments">Section 3</a>) to access your full extension library.</p>
+<h3 id="i-accidentally-deleted-my-codespace-before-pushing">I accidentally deleted my Codespace before pushing</h3>
+<p>If the branch exists on GitHub, you can create a new Codespace from it. Uncommitted changes in a deleted Codespace cannot be recovered.</p>
+<h3 id="my-changes-are-not-showing-in-github-after-committing">My changes are not showing in GitHub after committing</h3>
+<p>You may have committed but not pushed. In the Source Control panel, look for the <strong>Sync Changes</strong> or <strong>Push</strong> button. Run <code>git push</code> in the terminal if needed.</p>
+<hr>
+<p><em>Next: <a href="appendix-k-copilot-reference.html">Appendix K: Copilot Reference</a></em><br><em>Back: <a href="appendix-i-github-cli.html">Appendix I: GitHub CLI Reference</a></em><br><em>Teaching chapter: <a href="01-choose-your-tools.html">Chapter 01: Choose Your Tools</a></em></p>
+
+  </main>
+  <footer role="contentinfo" class="site-footer">
+    <p><strong>GIT Going with GitHub</strong> - A workshop by <a href="https://community-access.org">Community Access</a></p>
+    <p><a href="https://github.com/community-access/git-going-with-github">View on GitHub</a> · <a href="https://community-access.org">community-access.org</a></p>
+  </footer>
+
+  </body>
+</html>

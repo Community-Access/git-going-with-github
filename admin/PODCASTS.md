@@ -106,7 +106,7 @@ Based on: [Course Guide](docs/course-guide.md)
 
 **Jamie:** What do you want them to do when the plan breaks?
 
-**Alex:** This is where Getting Help becomes real: if you get stuck at any point during the workshop, these resources are always available. That matters in practice: Open an issue on this repository describing what you tried, what happened, and what you expected.
+**Alex:** This is where Getting Help becomes real: if you get stuck at any point during the workshop, these resources are always available. That matters in practice: Use the support hub at https://github.com/Community-Access/support and open a support issue describing what you tried, what happened, and what you expected.
 
 **Alex:** That connects to another useful point. Keep the learner anchored in Workshop at a Glance. Start with Chapter 00: Pre-Workshop Setup. A good GitHub workflow is like a well-run meeting: everyone knows the topic, the next action, and who has the floor.
 
@@ -1103,7 +1103,7 @@ Based on: [Chapter 0: Pre-Workshop Setup](docs/00-pre-workshop-setup.md)
 
 **Alex:** Start with Getting Help Before the Event: If you cannot complete any step in this guide before the workshop. The next useful detail is this: Every setup issue we can solve before Day 1 means more time for learning on the day.
 
-**Alex:** First, file an issue - community-access/git-going-with-github - we will help you get set up. Then, file an issue in this repository - describe exactly what step you are on and what is not working. After that, join the GitHub Accessibility Discussions - GitHub Community Accessibility Discussions - the community is helpful and welcoming. Think of it as a rail line: each stop confirms you are still on the right route before the next one.
+**Alex:** First, open a setup support issue in Community-Access/support/issues so maintainers can triage quickly. Then, join Community-Access/support/discussions and read the pinned Start Here guidance before posting follow-up questions. After that, if you need broader platform input, join GitHub Community Accessibility Discussions. Think of it as a rail line: each stop confirms you are still on the right route before the next one.
 
 ---
 

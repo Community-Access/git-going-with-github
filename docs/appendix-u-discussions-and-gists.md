@@ -18,6 +18,20 @@
 
 > GitHub Discussions is a built-in community forum for repositories and organizations. It's where open-ended conversations live - questions, ideas, announcements, polls, and community Q&A - separate from the action-oriented world of issues and pull requests.
 
+### Support Hub Onboarding (Recommended For Workshop Alumni)
+
+For ongoing support after the workshop, use:
+
+- Support hub home: [Community-Access/support](https://github.com/Community-Access/support)
+- Q&A and community discussion: [Support Hub Discussions](https://github.com/Community-Access/support/discussions)
+- Trackable support requests: [Support Hub Issues](https://github.com/Community-Access/support/issues)
+
+Suggested first steps for students:
+
+1. Read the pinned Start Here resources in Discussions.
+2. Search existing discussions before opening a new support thread.
+3. Use issue templates for setup blockers or accessibility blockers so maintainers can help faster.
+
 ### Learning Cards: GitHub Discussions
 
 <details>
