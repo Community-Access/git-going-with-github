@@ -2,12 +2,19 @@
 param(
     [string]$Owner = 'Community-Access',
     [string]$TemplateRepo = 'learning-room-template',
-    [string]$SourcePath = (Join-Path $PSScriptRoot '..\..\learning-room'),
+    [string]$SourcePath = '',
     [string]$BranchName = '',
-    [switch]$NoPush
+    [switch]$NoPush,
+    [switch]$SkipSourceValidation
 )
 
 $ErrorActionPreference = 'Stop'
+
+$scriptDir = if ($PSScriptRoot) { $PSScriptRoot } else { Split-Path -Parent $MyInvocation.MyCommand.Path }
+
+if (-not $SourcePath) {
+    $SourcePath = Join-Path $scriptDir '..\..\learning-room'
+}
 
 function Invoke-CheckedCommand {
     param([string]$FilePath, [string[]]$Arguments)
@@ -23,6 +30,19 @@ $workRoot = Join-Path ([IO.Path]::GetTempPath()) ("learning-room-template-sync-"
 $clonePath = Join-Path $workRoot $TemplateRepo
 if (-not $BranchName) {
     $BranchName = 'sync/learning-room-template-' + (Get-Date -Format 'yyyyMMddHHmmss')
+}
+
+if (-not $SkipSourceValidation) {
+    $validatorPath = Join-Path $scriptDir 'Validate-LearningRoomTemplateSource.ps1'
+    if (-not (Test-Path -LiteralPath $validatorPath -PathType Leaf)) {
+        throw "Source validator script was not found: $validatorPath"
+    }
+
+    Write-Host "Validating Learning Room source before sync..."
+    & $validatorPath -SourcePath $source.Path
+}
+else {
+    Write-Warning "SkipSourceValidation was set. Proceeding without source sanity checks."
 }
 
 Write-Host "Checking GitHub CLI authentication..."
@@ -56,6 +76,22 @@ try {
 
     Push-Location $clonePath
     try {
+        $gitEmail = (git config user.email 2>$null)
+        $gitName = (git config user.name 2>$null)
+        if (-not $gitEmail -or -not $gitName) {
+            $login = (& gh api /user --jq '.login' 2>$null)
+            if (-not $login) {
+                $login = 'github-actions'
+            }
+            $fallbackEmail = "$login@users.noreply.github.com"
+            if (-not $gitName) {
+                Invoke-CheckedCommand git @('config', 'user.name', $login)
+            }
+            if (-not $gitEmail) {
+                Invoke-CheckedCommand git @('config', 'user.email', $fallbackEmail)
+            }
+        }
+
         Invoke-CheckedCommand git @('add', '-A')
         $status = git status --short
         if (-not $status) {
@@ -73,8 +109,14 @@ try {
 
         Invoke-CheckedCommand git @('commit', '-m', 'chore: sync learning room template')
         Invoke-CheckedCommand git @('push', '--force', '-u', 'origin', "HEAD:$BranchName")
-        $existingPr = & gh pr view $BranchName -R $fullRepo --json url --jq .url 2>$null
-        if ($LASTEXITCODE -eq 0 -and $existingPr) {
+        $existingPr = $null
+        try {
+            $existingPr = & gh pr view $BranchName -R $fullRepo --json url --jq .url 2>$null
+        }
+        catch {
+            $existingPr = $null
+        }
+        if ($existingPr) {
             Write-Host "Updated existing pull request: $existingPr"
         }
         else {

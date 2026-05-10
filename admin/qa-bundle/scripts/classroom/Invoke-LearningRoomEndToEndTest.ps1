@@ -36,6 +36,11 @@ param(
 )
 
 $ErrorActionPreference = 'Stop'
+# Prevent PowerShell from converting native stderr output into terminating errors.
+# Git and gh often emit progress text on stderr even when commands succeed.
+if (Get-Variable -Name PSNativeCommandUseErrorActionPreference -ErrorAction SilentlyContinue) {
+    $PSNativeCommandUseErrorActionPreference = $false
+}
 
 $script:Results = [System.Collections.Generic.List[object]]::new()
 $script:CreatedRepository = $false
@@ -149,7 +154,10 @@ function Invoke-CheckedCommand {
     # Generic command execution with special transient-retry support for gh commands.
     for ($attempt = 1; $attempt -le $Retries; $attempt++) {
         if ($FilePath -eq 'gh') {
+            $oldErrorActionPreference = $ErrorActionPreference
+            $ErrorActionPreference = 'Continue'
             $output = & gh @Arguments 2>&1
+            $ErrorActionPreference = $oldErrorActionPreference
             $exitCode = $LASTEXITCODE
             $text = ($output | Out-String).Trim()
 
@@ -191,7 +199,10 @@ function Invoke-GhJson {
     )
 
     for ($attempt = 1; $attempt -le $Retries; $attempt++) {
+        $oldErrorActionPreference = $ErrorActionPreference
+        $ErrorActionPreference = 'Continue'
         $output = & gh @Arguments 2>&1
+        $ErrorActionPreference = $oldErrorActionPreference
         $exitCode = $LASTEXITCODE
         $text = ($output | Out-String).Trim()
 

@@ -1,3 +1,5 @@
+
+**Table: What the bot does and how it helps students**
 # How the Learning Room Automation Works - Student Guide
 
 ## What Is This Automation?
