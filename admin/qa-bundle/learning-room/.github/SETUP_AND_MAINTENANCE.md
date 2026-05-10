@@ -1,3 +1,7 @@
+
+**Table: Workflow automation in the Learning Room**
+
+**Table: Troubleshooting common issues in Learning Room automation**
 # Learning Room Automation Setup & Maintenance Guide
 
 ## Overview

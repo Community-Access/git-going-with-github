@@ -33,7 +33,8 @@ Out of scope:
 
 ## Canonical Source Files Used by This Runbook
 
-The following table lists the source files this runbook consolidates.
+
+**Table: Source files consolidated by this runbook**
 
 | Area | Source file |
 |---|---|
@@ -49,6 +50,12 @@ The following table lists the source files this runbook consolidates.
 | Grading criteria | [classroom/grading-guide.md](../classroom/grading-guide.md) |
 | Release gate baseline | [GO-LIVE-QA-GUIDE.md](../GO-LIVE-QA-GUIDE.md) |
 | Support hub operations | [SUPPORT_HUB_OPERATIONS.md](SUPPORT_HUB_OPERATIONS.md) |
+
+**Table: QA validation checkpoints for registration and classroom automation**
+**Table: Student journey checkpoints and expected artifacts**
+**Table: Label color and purpose for registration automation**
+**Table: Screen reader options for workshop setup**
+**Table: Accessibility improvements for screen reader users**
 
 ## Required Accounts, Access, and Tools
 
@@ -83,10 +90,6 @@ Complete all items below before any cohort launch actions.
 - [x] Registration entry configuration exists and is valid:
    - [x] Issue form template `workshop-registration.yml` exists
    - [x] Required labels exist: `registration`, `duplicate`, `waitlist`
-- [ ] Support hub is ready for student onboarding:
-   - [ ] `Community-Access/support` is public and reachable
-   - [ ] Issues and Discussions are enabled
-   - [ ] Support labels and templates are present
 - [ ] While signed in as `accesswatch`, opening [classroom.github.com](https://classroom.github.com) shows the `Community-Access-Classroom` classroom organization.
 
 If any precondition fails, stop and resolve before proceeding.
@@ -521,8 +524,8 @@ Pass criteria:
 ### Step 1.1 Verify support hub onboarding path
 
 1. Open `Community-Access/support` and confirm Issues and Discussions are enabled.
-2. Confirm pinned Start Here onboarding guidance exists in Discussions.
-3. Open a test support issue using a template and confirm triage labels apply.
+2. Confirm at least one pinned onboarding discussion or Start Here guidance exists.
+3. Open a test support issue using a template and confirm labels apply correctly.
 
 Pass criteria:
 

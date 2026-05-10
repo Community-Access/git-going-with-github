@@ -1,3 +1,7 @@
+
+**Table: Screen reader options for workshop setup**
+
+**Table: Accessibility improvements for screen reader users**
 # Pre-Workshop Setup - GIT Going with GitHub
 >
 > **Listen to Episode 1:** [Pre-Workshop Setup](../admin/PODCASTS.md) - a conversational audio overview of this chapter. Listen before reading to preview the concepts, or after to reinforce what you learned.
@@ -175,7 +179,7 @@ That is it. No tokens to generate, no keys to create, no strings to paste. If yo
 
 For this workshop, participants need a GitHub account with 2FA enabled. The browser-based sign-in described above handles all Git authentication automatically - no additional setup is required beyond having a working GitHub account.
 
-If you run into any authentication issues before the workshop, contact the workshop organizers at the email or issue link in this guide so we can help.
+If you run into any authentication issues before the workshop, open a support issue at [Community-Access/support/issues](https://github.com/Community-Access/support/issues) or contact the workshop organizers directly.
 
 ### Learning Cards: Create Your GitHub Account
 
