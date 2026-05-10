@@ -13,7 +13,7 @@ License: CC BY 4.0 | [Site](https://community-access.org/git-going-with-github/)
 | **Workshop site** | [community-access.org/git-going-with-github](https://community-access.org/git-going-with-github/) |
 | **Registration** | [Student opt-in and waitlist workflow](https://community-access.org/git-going-with-github/REGISTER.html) |
 | **Discussions** | [Join the conversation](https://github.com/community-access/git-going-with-github/discussions) |
-| **Support hub** | [Community-Access/git-going-open-support](https://github.com/Community-Access/git-going-open-support) |
+| **Support hub** | [Community-Access/support](https://github.com/Community-Access/support) |
 | **Curriculum issues** | [File an issue in this repository](https://github.com/community-access/git-going-with-github/issues) |
 | **Dates** | May 21, 2026 & May 22, 2026 |
 | **Facilitators** | Jeff Bishop and Michael Babcock |
@@ -98,7 +98,7 @@ Facilitators preparing a cohort should use the [Go-Live QA Guide](GO-LIVE-QA-GUI
 
 After the workshop, use the open support repository for questions, troubleshooting, and alumni discussion:
 
-- [Community-Access/git-going-open-support](https://github.com/Community-Access/git-going-open-support)
+- [Community-Access/support](https://github.com/Community-Access/support)
 
 Use this repository for curriculum and platform changes only.
 

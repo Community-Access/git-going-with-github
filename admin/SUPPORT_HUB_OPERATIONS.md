@@ -4,8 +4,8 @@ This guide defines how we run the open, post-workshop support repository for GIT
 
 ## Canonical Support Repository
 
-- Repository name: `Community-Access/git-going-open-support`
-- Repository URL: <https://github.com/Community-Access/git-going-open-support>
+- Repository name: `Community-Access/support`
+- Repository URL: <https://github.com/Community-Access/support>
 - Repository visibility: Public
 - Primary purpose: post-workshop support, async Q&A, troubleshooting, and alumni collaboration
 

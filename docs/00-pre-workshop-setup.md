@@ -14,7 +14,7 @@
 
 > **A [Community Access](https://community-access.org) workshop.**
 >
-> **Please complete this guide at least one day before the workshop.** If you run into any issues, use the support hub at [Community-Access/git-going-open-support](https://github.com/Community-Access/git-going-open-support) so we can help - we want Day 1 to start with everyone ready to go, not troubleshooting.
+> **Please complete this guide at least one day before the workshop.** If you run into any issues, use the support hub at [Community-Access/support](https://github.com/Community-Access/support) so we can help - we want Day 1 to start with everyone ready to go, not troubleshooting.
 
 If you want the most guided starting path, begin with [Get Going with GitHub](get-going.md). It explains how GitHub Classroom, your Learning Room repository, Challenge 1, evidence prompts, and tool choice all fit together before you start setup.
 
@@ -179,7 +179,7 @@ That is it. No tokens to generate, no keys to create, no strings to paste. If yo
 
 For this workshop, participants need a GitHub account with 2FA enabled. The browser-based sign-in described above handles all Git authentication automatically - no additional setup is required beyond having a working GitHub account.
 
-If you run into any authentication issues before the workshop, open a support issue at [Community-Access/git-going-open-support/issues](https://github.com/Community-Access/git-going-open-support/issues) or contact the workshop organizers directly.
+If you run into any authentication issues before the workshop, open a support issue at [Community-Access/support/issues](https://github.com/Community-Access/support/issues) or contact the workshop organizers directly.
 
 ### Learning Cards: Create Your GitHub Account
 
@@ -965,15 +965,15 @@ We are not covering Git commands in this workshop. If you want to learn Git, the
 | VS Code does not detect screen reader | Press `Shift+Alt+F1` (Windows) or run "Toggle Screen Reader Mode" from the Command Palette. |
 | Copilot does not respond in Agent mode | Verify you are signed in to GitHub in VS Code. Check that Copilot is enabled in your GitHub account settings. |
 | Cannot install VS Code extensions | Check your internet connection. Try installing from the terminal: `code --install-extension GitHub.vscode-pull-request-github`. |
-| Everything else | File a support issue at [Community-Access/git-going-open-support/issues](https://github.com/Community-Access/git-going-open-support/issues) describing what step you are on and what happened. We will help. |
+| Everything else | File a support issue at [Community-Access/support/issues](https://github.com/Community-Access/support/issues) describing what step you are on and what happened. We will help. |
 
 
 ## Getting Help Before the Event
 
 If you cannot complete any step in this guide before the workshop:
 
-1. **File a setup support issue** - [Community-Access/git-going-open-support/issues](https://github.com/Community-Access/git-going-open-support/issues) - we will help you get set up
-2. **Join Support Hub Discussions** - [Community-Access/git-going-open-support/discussions](https://github.com/Community-Access/git-going-open-support/discussions) - read pinned Start Here guidance and ask follow-up questions
+1. **File a setup support issue** - [Community-Access/support/issues](https://github.com/Community-Access/support/issues) - we will help you get set up
+2. **Join Support Hub Discussions** - [Community-Access/support/discussions](https://github.com/Community-Access/support/discussions) - read pinned Start Here guidance and ask follow-up questions
 3. **Join the GitHub Accessibility Discussions** - [GitHub Community Accessibility Discussions](https://github.com/orgs/community/discussions/categories/accessibility) - the community is helpful and welcoming
 
 You will not be left behind. Every setup issue we can solve before Day 1 means more time for learning on the day.

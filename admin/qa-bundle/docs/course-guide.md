@@ -221,7 +221,7 @@ If you get stuck at any point during the workshop, these resources are always av
 | [Screen Reader Cheat Sheet](appendix-b-screen-reader-cheatsheet.md) | Navigation commands | When you need a screen reader shortcut |
 | [Resources](appendix-x-resources.md) | External links and documentation | When you want to learn more about a topic |
 
-**Still stuck?** Open a support issue at https://github.com/Community-Access/git-going-open-support/issues describing what you tried, what happened, and what you expected. Include your screen reader and operating system.
+**Still stuck?** Open a support issue at https://github.com/Community-Access/support/issues describing what you tried, what happened, and what you expected. Include your screen reader and operating system.
 
 
 ## Workshop at a Glance

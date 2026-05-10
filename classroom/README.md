@@ -386,7 +386,7 @@ Follow the [teardown-checklist.md](teardown-checklist.md) for complete post-work
 1. **Export grades** from the classroom dashboard
 2. **Archive the classroom** in the Classroom UI (this preserves student repos as read-only portfolio pieces)
 3. **Review feedback** and update facilitation notes for next cohort
-4. **Route ongoing learner support** to [Community-Access/git-going-open-support](https://github.com/Community-Access/git-going-open-support)
+4. **Route ongoing learner support** to [Community-Access/support](https://github.com/Community-Access/support)
 
 ---
 

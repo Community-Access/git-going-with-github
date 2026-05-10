@@ -84,7 +84,7 @@ Complete all items below before any cohort launch actions.
    - [x] Issue form template `workshop-registration.yml` exists
    - [x] Required labels exist: `registration`, `duplicate`, `waitlist`
 - [ ] Support hub is ready for student onboarding:
-   - [ ] `Community-Access/git-going-open-support` is public and reachable
+   - [ ] `Community-Access/support` is public and reachable
    - [ ] Issues and Discussions are enabled
    - [ ] Support labels and templates are present
 - [ ] While signed in as `accesswatch`, opening [classroom.github.com](https://classroom.github.com) shows the `Community-Access-Classroom` classroom organization.
@@ -516,11 +516,11 @@ Pass criteria:
 - Registration link opens correctly.
 - Registration issue title is prefilled with `[REGISTER]`.
 - Public visibility warning is present.
-- Support links point to `Community-Access/git-going-open-support` issues/discussions.
+- Support links point to `Community-Access/support` issues/discussions.
 
 ### Step 1.1 Verify support hub onboarding path
 
-1. Open `Community-Access/git-going-open-support` and confirm Issues and Discussions are enabled.
+1. Open `Community-Access/support` and confirm Issues and Discussions are enabled.
 2. Confirm pinned Start Here onboarding guidance exists in Discussions.
 3. Open a test support issue using a template and confirm triage labels apply.
 

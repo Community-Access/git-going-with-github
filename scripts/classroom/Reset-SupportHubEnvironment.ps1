@@ -4,7 +4,7 @@
 
 .DESCRIPTION
     This script provisions and/or repairs the support repository
-    `Community-Access/git-going-open-support` to a known-good baseline.
+    `Community-Access/support` to a known-good baseline.
 
     Actions performed:
     1. Ensures the repository exists (creates it if missing)
@@ -31,7 +31,7 @@
 [CmdletBinding(SupportsShouldProcess)]
 param(
     [string]$Owner = 'Community-Access',
-    [string]$RepoName = 'git-going-open-support',
+    [string]$RepoName = 'support',
     [switch]$Public
 )
 
@@ -110,23 +110,32 @@ try {
         New-Item -ItemType Directory -Path '.github/workflows' -Force | Out-Null
 
         $readme = @"
-# Git Going Open Support
+    # Community Access Support Hub
 
-Open support hub for GIT Going with GitHub learners and alumni.
+    Open support hub for GIT Going with GitHub learners, alumni, and contributors.
 
-## Start Here
+    ## Start Here
 
-- Open an issue if you are blocked.
-- Use Discussions for community Q&A.
-- Search first, then post with clear details.
-"@
+    - Read the pinned Discussions welcome thread and posting guidance.
+    - Open an issue if you are blocked and need tracked troubleshooting.
+    - Use Discussions for Q&A, study groups, and follow-up learning.
+    - Search first, then post with clear reproduction details and expected behavior.
+
+    ## Linked Repositories
+
+    - Curriculum and workshop source: https://github.com/Community-Access/git-going-with-github
+    - Accessibility Agents project: https://github.com/Community-Access/accessibility-agents
+    - Support issues: https://github.com/Community-Access/support/issues
+    - Support discussions: https://github.com/Community-Access/support/discussions
+    "@
         [IO.File]::WriteAllText((Join-Path $clonePath 'README.md'), $readme, [Text.UTF8Encoding]::new($false))
 
         $contrib = @"
-# Contributing To Git Going Open Support
+    # Contributing To Community Access Support
 
 Use this repository for support operations, troubleshooting, and learner Q&A.
 Route curriculum source changes to Community-Access/git-going-with-github.
+    Route Accessibility Agents feature/code changes to Community-Access/accessibility-agents.
 "@
         [IO.File]::WriteAllText((Join-Path $clonePath 'CONTRIBUTING.md'), $contrib, [Text.UTF8Encoding]::new($false))
 
@@ -134,7 +143,7 @@ Route curriculum source changes to Community-Access/git-going-with-github.
 blank_issues_enabled: true
 contact_links:
   - name: Support Hub Discussions (Q&A)
-    url: https://github.com/Community-Access/git-going-open-support/discussions
+    url: https://github.com/Community-Access/support/discussions
     about: Use Discussions for async mentoring and community Q&A.
 "@
         [IO.File]::WriteAllText((Join-Path $clonePath '.github/ISSUE_TEMPLATE/config.yml'), $issueConfig, [Text.UTF8Encoding]::new($false))

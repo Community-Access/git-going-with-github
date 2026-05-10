@@ -14,7 +14,7 @@ Do not mark a cohort ready until all required items in this section are complete
 - [ ] RSS feed validation passes for the current audio state.
 - [ ] Git diff whitespace check has no actual whitespace or conflict-marker errors.
 - [ ] Registration deployment gate completed (issue form template, workflow enablement, required labels, and optional classroom automation settings).
-- [ ] Support Hub is provisioned and publicly accessible at `Community-Access/git-going-open-support`.
+- [ ] Support Hub is provisioned and publicly accessible at `Community-Access/support`.
 - [ ] Registration confirmation and help pathways route support requests to Support Hub issues/discussions.
 - [ ] Registration issue form template and labels are configured (`workshop-registration.yml`, `registration`, `duplicate`, `waitlist`).
 - [ ] Learning Room source has been synced to `Community-Access/learning-room-template` and merged to `main` (or validated as no-change).

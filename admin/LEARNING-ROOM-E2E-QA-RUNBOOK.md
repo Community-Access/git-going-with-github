@@ -519,11 +519,11 @@ Pass criteria:
 - Registration link opens correctly.
 - Registration issue title is prefilled with `[REGISTER]`.
 - Public visibility warning is present.
-- Support links point to `Community-Access/git-going-open-support` issues/discussions.
+- Support links point to `Community-Access/support` issues/discussions.
 
 ### Step 1.1 Verify support hub onboarding path
 
-1. Open `Community-Access/git-going-open-support` and confirm Issues and Discussions are enabled.
+1. Open `Community-Access/support` and confirm Issues and Discussions are enabled.
 2. Confirm at least one pinned onboarding discussion or Start Here guidance exists.
 3. Open a test support issue using a template and confirm labels apply correctly.
 

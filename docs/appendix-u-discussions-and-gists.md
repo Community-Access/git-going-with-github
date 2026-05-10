@@ -22,9 +22,9 @@
 
 For ongoing support after the workshop, use:
 
-- Support hub home: [Community-Access/git-going-open-support](https://github.com/Community-Access/git-going-open-support)
-- Q&A and community discussion: [Support Hub Discussions](https://github.com/Community-Access/git-going-open-support/discussions)
-- Trackable support requests: [Support Hub Issues](https://github.com/Community-Access/git-going-open-support/issues)
+- Support hub home: [Community-Access/support](https://github.com/Community-Access/support)
+- Q&A and community discussion: [Support Hub Discussions](https://github.com/Community-Access/support/discussions)
+- Trackable support requests: [Support Hub Issues](https://github.com/Community-Access/support/issues)
 
 Suggested first steps for students:
 
