@@ -1,211 +1,48 @@
-# Autograding Setup and Verification
+# Autograding Setup -- Not Required
 
-This guide makes Classroom autograding setup repeatable and reliable for facilitators.
+> **Status: deprecated as of May 2026.** You do **not** need to configure any test cases in the GitHub Classroom autograding UI for this workshop. Skip that step entirely when creating Day 1 and Day 2 assignments.
 
-## Scope
+## Why this changed
 
-- Day 1 tests come from `classroom/autograding-day1.json`
-- Day 2 tests come from `classroom/autograding-day2.json`
-- All entries below are copy-accurate from those files
+GitHub Classroom's "test cases" panel intermittently fails to save edits (the modal closes with no error and the test list comes back empty). Rather than fight a broken UI on every cohort, every autograded check has been re-implemented as a normal GitHub Actions workflow inside `Community-Access/learning-room-template`. Those workflows are copied into each student repo automatically when GitHub Classroom creates the repo from the template -- no Classroom configuration required.
 
-## UI Entry Rules (Use for Every Test)
+## Where the checks live now
 
-For each test you add in Classroom:
+Each check below runs as its own workflow in the student repo. Results are posted as a single PR or issue comment that updates in place on each push.
 
-- Set **Test name** exactly as shown below
-- Set **Run command** exactly as shown below
-- Set **Comparison** to `exact`
-- Leave **Setup**, **Input**, and **Expected output** empty unless noted
-- Set **Timeout** and **Points** exactly as shown below
+### Day 1 checks
 
-Do not paste raw JSON into the UI. Add tests one by one.
+| Challenge | What it verifies | Workflow file |
+|---|---|---|
+| 2: Issue Filed | Student has opened at least one issue in their repo | `.github/workflows/autograder-issue-filed.yml` |
+| 5: Commit on a branch | At least one commit on a non-default branch | `.github/workflows/autograder-branch-commit.yml` |
+| 6: PR links to an issue | PR body contains `Closes`, `Fixes`, or `Resolves #N` | `.github/workflows/autograder-pr-link.yml` |
+| 7: No conflict markers | No `<<<<<<<`, `=======`, or `>>>>>>>` markers in `docs/` | `.github/workflows/autograder-conflicts.yml` |
 
-## Day 1 Autograding Tests
+### Day 2 checks
 
-### Test 1
+| Challenge | What it verifies | Workflow file |
+|---|---|---|
+| 10: Local commit | At least one commit on a non-default branch | `.github/workflows/autograder-local-commit.yml` |
+| 14: Custom issue template | A non-challenge YAML template under `.github/ISSUE_TEMPLATE/` with `name:` and `description:` fields | `.github/workflows/autograder-template.yml` |
+| 16: Capstone agent file | Agent markdown file with frontmatter, responsibilities, and guardrails | `.github/workflows/autograder-capstone.yml` |
 
-- Test name: `Challenge 2: Issue Filed`
-- Run command:
+A separate workflow, `.github/workflows/autograder-watchdog.yml`, listens for `workflow_run` completion of every autograder above. If one of them ends with `conclusion: failure` and no challenge-result comment has been posted on the open PR for that branch, the watchdog posts a single fallback notice telling the student the check could not complete and to ping a facilitator. If the in-job error handler already posted a comment, the watchdog is a no-op. This is a safety net only -- the seven primary workflows remain the source of truth for pass/fail.
 
-```bash
-gh issue list --repo $GITHUB_REPOSITORY --author $GITHUB_ACTOR --state all --json number --jq 'length' | xargs test 0 -lt
-```
+## What to do during cohort setup
 
-- Comparison: `exact`
-- Timeout: `10`
-- Points: `10`
+When creating Day 1 and Day 2 assignments in GitHub Classroom:
 
-### Test 2
+1. Paste the assignment description as usual.
+2. **Skip the autograding tests section.** Leave it empty. Do not click `Add test`.
+3. Save the assignment and copy the invite URL.
 
-- Test name: `Challenge 5: Commit Exists`
-- Run command:
+That is the entire change. Everything else in `live-facilitation-flow.md` still applies.
 
-```bash
-git log --oneline --all --author=$GITHUB_ACTOR | head -1 | grep -q '.'
-```
+## Verifying the checks work
 
-- Comparison: `exact`
-- Timeout: `10`
-- Points: `10`
+Before sharing invite links, use a test student account to verify each workflow posts its comment. The procedure is in `live-facilitation-flow.md` (Phase 3: Verify Autograder Workflows).
 
-### Test 3
+## Historical reference
 
-- Test name: `Challenge 6: PR with Issue Link`
-- Run command:
-
-```bash
-gh pr list --repo $GITHUB_REPOSITORY --author $GITHUB_ACTOR --state all --json body --jq '.[0].body' | grep -iq 'closes\|fixes\|resolves'
-```
-
-- Comparison: `exact`
-- Timeout: `10`
-- Points: `15`
-
-### Test 4
-
-- Test name: `Challenge 7: No Conflict Markers`
-- Run command:
-
-```bash
-! grep -rn '<<<<<<< \|======= \|>>>>>>> ' docs/ 2>/dev/null
-```
-
-- Comparison: `exact`
-- Timeout: `10`
-- Points: `15`
-
-## Day 2 Autograding Tests
-
-### Test 1
-
-- Test name: `Challenge 10: Go Local - Commit on Branch`
-- Run command:
-
-```bash
-git log --oneline origin/main..HEAD 2>/dev/null | head -1 | grep -q '.' || git branch -r --list 'origin/*' | grep -v main | head -1 | xargs -I{} git log --oneline origin/main..{} | head -1 | grep -q '.'
-```
-
-- Comparison: `exact`
-- Timeout: `10`
-- Points: `15`
-
-### Test 2
-
-- Test name: `Challenge 14: Template Remix - Custom Issue Template Exists`
-- Run command:
-
-```bash
-find .github/ISSUE_TEMPLATE -name '*.yml' ! -name 'challenge-*.yml' ! -name 'bonus-*.yml' ! -name 'config.yml' 2>/dev/null | head -1 | grep -q '.'
-```
-
-- Comparison: `exact`
-- Timeout: `10`
-- Points: `15`
-
-### Test 3
-
-- Test name: `Challenge 14: Template Remix - Template Has Required Fields`
-- Run command:
-
-```bash
-TEMPLATE=$(find .github/ISSUE_TEMPLATE -name '*.yml' ! -name 'challenge-*.yml' ! -name 'bonus-*.yml' ! -name 'config.yml' 2>/dev/null | head -1); grep -q '^name:' "$TEMPLATE" && grep -q '^description:' "$TEMPLATE"
-```
-
-- Comparison: `exact`
-- Timeout: `10`
-- Points: `10`
-
-### Test 4
-
-- Test name: `Challenge 16: Build Your Agent - Agent File Exists`
-- Run command:
-
-```bash
-find agents community-agents -name '*.md' 2>/dev/null | head -1 | grep -q '.'
-```
-
-- Comparison: `exact`
-- Timeout: `10`
-- Points: `10`
-
-### Test 5
-
-- Test name: `Challenge 16: Build Your Agent - Agent Has Frontmatter`
-- Run command:
-
-```bash
-AGENT=$(find agents community-agents -name '*.md' 2>/dev/null | head -1); head -1 "$AGENT" | grep -q '^---'
-```
-
-- Comparison: `exact`
-- Timeout: `10`
-- Points: `10`
-
-### Test 6
-
-- Test name: `Challenge 16: Build Your Agent - Agent Has Responsibilities and Guardrails`
-- Run command:
-
-```bash
-AGENT=$(find agents community-agents -name '*.md' 2>/dev/null | head -1); grep -qi '## responsibilities\|## what this agent does' "$AGENT" && grep -qi '## guardrails\|## limitations\|## boundaries' "$AGENT"
-```
-
-- Comparison: `exact`
-- Timeout: `10`
-- Points: `15`
-
-## Hardening Checklist Before Cohort Start
-
-1. Add all tests and save assignment.
-2. Confirm test count:
-   - Day 1 has 4 tests
-   - Day 2 has 6 tests
-3. Confirm point totals:
-   - Day 1 total = 50
-   - Day 2 total = 75
-4. Use a test student account to accept each assignment.
-5. Trigger one known pass on each assignment.
-6. Trigger one known fail on each assignment and confirm feedback appears.
-7. Confirm rerun passes after fix.
-8. Capture one screenshot of pass and one of fail for facilitator reference.
-
-## Fast Validation Scenarios
-
-### Day 1 quick checks
-
-- Pass check: open an issue, make a commit, open a PR with `Closes #<issue-number>`, ensure no conflict markers remain in `docs/`.
-- Fail check: open a PR without `Closes`, `Fixes`, or `Resolves` in the body.
-
-### Day 2 quick checks
-
-- Pass check: create one non-main commit, add a custom issue template with `name:` and `description:`, add an agent markdown file with frontmatter and required sections.
-- Fail check: create an agent file without a `## Responsibilities` section.
-
-## Troubleshooting
-
-### Test stays red after student fix
-
-1. Confirm student pushed a new commit to the same PR branch.
-2. Open PR checks and inspect the failing command output.
-3. Verify required text is in the file body, not only in issue comments.
-
-### Challenge 14 tests fail unexpectedly
-
-- Verify template filename is `.yml`.
-- Verify it is under `.github/ISSUE_TEMPLATE`.
-- Verify filename does not match `challenge-*.yml`, `bonus-*.yml`, or `config.yml`.
-
-### Challenge 16 section check fails
-
-- Ensure headings use markdown heading syntax (for example `## Responsibilities`).
-- Ensure guardrail heading uses one accepted form:
-  - `## Guardrails`
-  - `## Limitations`
-  - `## Boundaries`
-
-## Keep This Guide Synced
-
-If autograding JSON changes, update this file in the same pull request:
-
-- `classroom/autograding-day1.json`
-- `classroom/autograding-day2.json`
+The Classroom test-case definitions that used to live in `classroom/autograding-day1.json` and `classroom/autograding-day2.json` were deleted in May 2026 along with this workflow migration. The autograder workflow files (`learning-room/.github/workflows/autograder-*.yml`) are the only remaining source of truth for what each check verifies. Git history retains the old JSONs if you ever need to read them.

@@ -223,8 +223,6 @@ Every chapter has an "If You Get Stuck" section. Every challenge has a [referenc
 │   ├── README.md                        -- Workshop Deployment Guide (unified setup for new cohorts)
 │   ├── assignment-day1-you-belong-here.md
 │   ├── assignment-day2-you-can-build-this.md
-│   ├── autograding-day1.json
-│   ├── autograding-day2.json
 │   ├── roster-template.csv
 │   ├── grading-guide.md
 │   └── teardown-checklist.md

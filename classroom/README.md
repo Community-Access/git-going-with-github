@@ -62,8 +62,6 @@ Day-2-only participants skip Assignment 1 entirely. They verify readiness using 
 |---|---|
 | [assignment-day1-you-belong-here.md](assignment-day1-you-belong-here.md) | Assignment description for Day 1 (paste into Classroom UI) |
 | [assignment-day2-you-can-build-this.md](assignment-day2-you-can-build-this.md) | Assignment description for Day 2 (paste into Classroom UI) |
-| [autograding-day1.json](autograding-day1.json) | Test definitions for Day 1 autograder |
-| [autograding-day2.json](autograding-day2.json) | Test definitions for Day 2 autograder |
 | [grading-guide.md](grading-guide.md) | Facilitator rubric for all 21 challenges |
 | [roster-template.csv](roster-template.csv) | Starter CSV for importing student roster |
 | [student-progression.yml](student-progression.yml) | Reference copy of the progression bot workflow |
@@ -155,7 +153,7 @@ From the classroom dashboard, click **New assignment** and fill in the assignmen
 Then complete the remaining fields:
 
 1. **Assignment description:** Open [assignment-day1-you-belong-here.md](assignment-day1-you-belong-here.md), copy everything below the HTML metadata comment, and paste it into the description field
-2. **Autograding tests:** Open [autograding-day1.json](autograding-day1.json) and add each test entry manually -- for each test in the JSON array, click **Add test**, set the **Test name**, **Run command**, **Comparison**, and **Points** to match the JSON values, and set timeout to 60 seconds per test unless otherwise specified
+2. **Autograding tests:** Leave this section empty. Day 1 autograded checks (Challenges 2, 5, 6, 7) run as GitHub Actions workflows inside the template repo, so no Classroom test cases are required. See [admin/classroom/autograding-setup.md](../admin/classroom/autograding-setup.md) for the full list of workflows.
 3. Click **Create assignment** -- this generates your Day 1 invite link
 
 ### What the student experiences (Day 1)
@@ -192,7 +190,7 @@ Click **New assignment** again and fill in the settings:
 Then complete the remaining fields:
 
 1. **Assignment description:** Use [assignment-day2-you-can-build-this.md](assignment-day2-you-can-build-this.md)
-2. **Autograding tests:** Use [autograding-day2.json](autograding-day2.json)
+2. **Autograding tests:** Leave this section empty. Day 2 autograded checks (Challenges 10, 14, 16) run as GitHub Actions workflows inside the template repo. See [admin/classroom/autograding-setup.md](../admin/classroom/autograding-setup.md).
 3. Click **Create assignment** -- this generates your Day 2 invite link
 
 ### What the student experiences (Day 2)
@@ -285,15 +283,15 @@ scripts/classroom/Start-MergeConflictChallenge.ps1 -Repository Community-Access-
 
 The script changes the same TODO area on `main`, which should cause the student's pull request to report a merge conflict if they edited that TODO on their branch.
 
-### Autograding verification
+### Autograder workflow verification
 
-To test specific autograding checks:
+All autograded checks now run as GitHub Actions workflows inside each student repo (not as Classroom test cases). To verify they work:
 
 1. In the test student repo, create a branch and make a change that should pass a check
 2. Open a PR
-3. Go to the **Actions** tab and verify the autograding workflow ran
-4. Check the workflow output -- each test should report pass or fail correctly
-5. Try a change that should fail a check and verify it catches the problem
+3. Go to the **Actions** tab and verify the relevant `autograder-*` workflow ran
+4. On the PR (or relevant issue) confirm a comment was posted reporting pass or fail
+5. Push a change that should fail a check and verify the comment updates in place
 
 ### Aria verification
 
@@ -323,7 +321,7 @@ To test specific autograding checks:
 |---|---|
 | "I cannot find the invite link" | Reshare the link; post it in the workshop chat channel |
 | "My next challenge did not appear" | The student may not have closed the previous issue; check their Issues tab |
-| "Autograding says I failed" | Check the workflow output; often a formatting issue; use it as a teaching moment |
+| "The autograder bot says I failed" | Open the Actions tab in the student repo and read the failing `autograder-*` workflow log; the bot comment links to the run |
 | "I do not see the feedback PR" | It appears after the first push; have them make any commit and push |
 | "Aria did not comment on my PR" | Check the Actions tab in the student repo; workflows may need to be enabled |
 | "Assignment not showing my work" | Student may have pushed to the wrong branch; check their repo's branches |

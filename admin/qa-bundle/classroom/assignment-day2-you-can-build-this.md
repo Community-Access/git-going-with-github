@@ -6,7 +6,7 @@ Grant admin access: No
 Deadline: [Set per cohort - one week after Day 2]
 Group assignment: No (individual)
 Enable feedback pull requests: Yes
-Autograding: See autograding-day2.json
+Autograding: None to configure in the Classroom UI. Automated checks run as GitHub Actions workflows inside the template repo. See admin/classroom/autograding-setup.md.
 Supported editor: VS Code (required for Day 2), GitHub Desktop, CLI
 -->
 
@@ -47,15 +47,15 @@ Complete these challenges in order. Each one builds on the previous. The live ag
 | 15. Meet the Agents | Explore and run agents from the accessibility-agents repo | [Chapter 19](https://github.com/Community-Access/git-going-with-github/blob/main/docs/19-accessibility-agents.md) |
 | 16. Build Your Agent (Capstone) | Design and submit an original agent with responsibilities and guardrails | [Chapter 20](https://github.com/Community-Access/git-going-with-github/blob/main/docs/20-build-your-agent.md) |
 
-## Autograded Challenges
+## Automated Checks
 
-Challenges 10, 14, and 16 have automated checks that run when you open a PR:
+Challenges 10, 14, and 16 have automated checks that run as GitHub Actions inside your repo:
 
 - **Challenge 10:** Verifies at least one commit exists on a non-default branch
 - **Challenge 14:** Verifies your YAML template has required `name` and `description` fields
 - **Challenge 16:** Verifies your agent file has valid frontmatter, responsibilities, and guardrails
 
-The autograder posts feedback as a PR comment. If a check fails, read the feedback and push an update.
+Each check posts a single comment on the relevant pull request and updates it whenever you push a new change. If a check fails, read the comment and push an update.
 
 ## Evidence
 

@@ -16,22 +16,25 @@ Do not mark a cohort ready until all required items in this section are complete
 - [ ] RSS feed validation passes for the current audio state.
 - [ ] Git diff whitespace check has no actual whitespace or conflict-marker errors.
 - [ ] Registration deployment gate completed (issue form template, workflow enablement, required labels, and optional classroom automation settings).
+- [ ] Registration comment flow is assignment-link based (no org invite dependency).
 - [ ] Support Hub is provisioned and publicly accessible at `Community-Access/support`.
 - [ ] Registration confirmation and help pathways route support requests to Support Hub issues/discussions.
 - [ ] Registration issue form template and labels are configured (`workshop-registration.yml`, `registration`, `duplicate`, `waitlist`).
 - [ ] Learning Room source has been synced to `Community-Access/learning-room-template` and merged to `main` (or validated as no-change).
 - [ ] Template smoke validation from `Community-Access/learning-room-template` succeeded before assignment publishing.
 - [ ] Template freshness proof confirms smoke repo content matches latest merged template sync changes.
-- [ ] Smoke repo confirms all required workflow files are present (PR validation, content validation, progression, skills progression, and all autograders).
+- [ ] Smoke repo confirms all required workflow files are present (PR validation, content validation, progression, skills progression, and all autograder workflows: `autograder-issue-filed.yml`, `autograder-branch-commit.yml`, `autograder-pr-link.yml`, `autograder-conflicts.yml`, `autograder-local-commit.yml`, `autograder-template.yml`, `autograder-capstone.yml`, `autograder-watchdog.yml`).
 - [ ] Day 1 Classroom assignment has been created from the current Learning Room template.
 - [ ] Day 2 Classroom assignment has been created from the current Learning Room template.
 - [ ] A test student account accepted the Day 1 invite and received a private repository.
 - [ ] A test student account accepted the Day 2 invite and received a private repository.
+- [ ] A test student can reply `ack` in enrollment issue and retain expected workflow state.
+- [ ] A test student can reply `day1-complete` and receive Day 2 release comment.
 - [ ] Challenge 1 can be seeded and completed.
 - [ ] Challenge 10 can be seeded and completed.
 - [ ] Aria posts PR feedback on a test pull request.
 - [ ] Student Progression Bot creates the next challenge when a challenge issue is closed.
-- [ ] Autograding runs and reports results in GitHub Classroom.
+- [ ] Autograder workflows run inside the student repo and post pass/fail comments on the relevant issues and PRs. (Classroom UI test cases are intentionally not configured -- see [admin/classroom/autograding-setup.md](admin/classroom/autograding-setup.md).)
 - [ ] Peer simulation artifacts can be seeded and used for review practice.
 - [ ] Human testers completed the Day 1, Day 2, bonus, accessibility, and content-review passes below.
 - [ ] Challenge tracking log includes explicit status and evidence for Challenges 1-16 and Bonus A-E.
@@ -155,7 +158,7 @@ Use a real GitHub Classroom with disposable test accounts. Do not use a facilita
 - [ ] Create the Day 1 assignment using [classroom/assignment-day1-you-belong-here.md](classroom/assignment-day1-you-belong-here.md).
 - [ ] Use private individual repositories.
 - [ ] Enable feedback pull requests.
-- [ ] Add every Day 1 autograding test from [classroom/autograding-day1.json](classroom/autograding-day1.json).
+- [ ] Leave the Day 1 assignment's autograding tests area empty. Confirm autograder workflows are present in the template repo instead (see [admin/classroom/autograding-setup.md](admin/classroom/autograding-setup.md)).
 - [ ] Save the Day 1 invite link.
 - [ ] Accept the invite with a test student account.
 - [ ] Confirm the student repository appears in the Classroom dashboard.
@@ -174,7 +177,7 @@ scripts/classroom/Seed-LearningRoomChallenge.ps1 -Repository Community-Access-Cl
 - [ ] Create the Day 2 assignment using [classroom/assignment-day2-you-can-build-this.md](classroom/assignment-day2-you-can-build-this.md).
 - [ ] Use private individual repositories.
 - [ ] Enable feedback pull requests.
-- [ ] Add every Day 2 autograding test from [classroom/autograding-day2.json](classroom/autograding-day2.json).
+- [ ] Leave the Day 2 assignment's autograding tests area empty. Confirm autograder workflows are present in the template repo instead (see [admin/classroom/autograding-setup.md](admin/classroom/autograding-setup.md)).
 - [ ] Save the Day 2 invite link.
 - [ ] Accept the invite with the test student account.
 - [ ] Confirm the Day 2 repository appears in the Classroom dashboard.

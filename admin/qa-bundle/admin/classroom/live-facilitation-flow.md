@@ -21,12 +21,20 @@ Use this checklist when setting up a new cohort so you can run the full Classroo
 - [ ] Set deadline for your cohort.
 - [ ] Copy description from `day1-assignment-copy-paste.md` and paste into Classroom.
 
-## Phase 3: Configure Day 1 Autograding
+## Phase 3: Verify Autograder Workflows (no Classroom configuration)
 
-- [ ] Open `autograding-setup.md`.
-- [ ] Add all Day 1 tests exactly as listed.
-- [ ] Verify Day 1 test count is 4.
-- [ ] Verify Day 1 point total is 50.
+Autograded checks are GitHub Actions workflows shipped inside the template repo. **Do not configure any test cases in the Classroom UI** -- leave that section empty when you save the assignment. See [autograding-setup.md](autograding-setup.md) for the full rationale.
+
+- [ ] Confirm `Community-Access/learning-room-template` contains all of the following workflow files under `.github/workflows/`:
+  - [ ] `autograder-issue-filed.yml`
+  - [ ] `autograder-branch-commit.yml`
+  - [ ] `autograder-pr-link.yml`
+  - [ ] `autograder-conflicts.yml`
+  - [ ] `autograder-local-commit.yml`
+  - [ ] `autograder-template.yml`
+  - [ ] `autograder-capstone.yml`
+  - [ ] `autograder-watchdog.yml`
+- [ ] In the Day 1 assignment editor, leave the **Add test** / autograding tests area empty.
 - [ ] Save assignment.
 
 ## Phase 4: Create Day 2 Assignment
@@ -41,12 +49,12 @@ Use this checklist when setting up a new cohort so you can run the full Classroo
 - [ ] Set deadline for your cohort.
 - [ ] Copy description from `day2-assignment-copy-paste.md` and paste into Classroom.
 
-## Phase 5: Configure Day 2 Autograding
+## Phase 5: Verify Day 2 Autograder Workflows (no Classroom configuration)
 
-- [ ] Open `autograding-setup.md`.
-- [ ] Add all Day 2 tests exactly as listed.
-- [ ] Verify Day 2 test count is 6.
-- [ ] Verify Day 2 point total is 75.
+Same model as Phase 3 -- the Day 2 checks (Challenges 10, 14, 16) run from the same template workflows. Do not enter any tests in the Classroom UI.
+
+- [ ] Confirm the Day 2 autograder workflows are present in the template (`autograder-local-commit.yml`, `autograder-template.yml`, `autograder-capstone.yml`).
+- [ ] In the Day 2 assignment editor, leave the **Add test** / autograding tests area empty.
 - [ ] Save assignment.
 
 ## Phase 6: Publish and Share
@@ -83,14 +91,13 @@ scripts/classroom/Seed-PeerSimulation.ps1 -Repository Community-Access-Classroom
 
 - [ ] Confirm challenge issue exists after seeding.
 - [ ] Confirm Student Progression workflow run appears in Actions.
-- [ ] Confirm one autograding failure scenario is detected correctly.
-- [ ] Confirm one fixed rerun passes.
+- [ ] Confirm at least one autograder workflow posts a fail comment for a known-bad state, and a pass comment after the fix is pushed.
 - [ ] Confirm peer simulation artifacts exist (2 issues + 1 PR).
 
 ## Phase 9: Cohort Readiness Sign-Off
 
 - [ ] Day 1 and Day 2 assignments published.
 - [ ] Invite links validated.
-- [ ] Autograding configured and tested.
+- [ ] Autograder workflows verified to post comments in a test student repo.
 - [ ] Seeding scripts verified against a test student repo.
 - [ ] Facilitator notes updated with links and fallback instructions.
