@@ -22,7 +22,7 @@ from pathlib import Path
 from typing import Iterable
 
 try:
-    from mutagen.id3 import CHAP, COMM, CTOC, ID3, TALB, TIT2, TPE1, TPE2, TPUB, TRCK, TXXX, USLT, WOAR, ID3NoHeaderError
+    from mutagen.id3 import CHAP, COMM, CTOC, ID3, TALB, TIT2, TPE1, TPE2, TPUB, TRCK, TXXX, USLT, WOAR, WXXX, ID3NoHeaderError
 except ImportError:  # pragma: no cover - exercised by operator environment
     print(
         "Missing dependency: mutagen. Install it before writing tags: python -m pip install mutagen",
@@ -432,6 +432,7 @@ def apply_tags(mp3_path: Path, target: EpisodeTarget, script_text: str, chapters
     tags.delall("TPUB")
     tags.delall("TRCK")
     tags.delall("WOAR")
+    tags.delall("WXXX")
     tags.delall("USLT")
 
     tags.add(TIT2(encoding=3, text=title))
@@ -441,6 +442,7 @@ def apply_tags(mp3_path: Path, target: EpisodeTarget, script_text: str, chapters
     tags.add(TPUB(encoding=3, text=AUTHOR))
     tags.add(TRCK(encoding=3, text=str(target.number)))
     tags.add(WOAR(url=AUTHOR_URL))
+    tags.add(WXXX(encoding=3, desc="Author website", url=AUTHOR_URL))
     tags.add(TXXX(encoding=3, desc="Author website", text=AUTHOR_URL))
     tags.add(TXXX(encoding=3, desc="Contact email", text=CONTACT_EMAIL))
     tags.add(TXXX(encoding=3, desc="Episode description", text=description))
