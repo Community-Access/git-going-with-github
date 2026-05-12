@@ -12,7 +12,7 @@ The podcast pipeline has two content layers that are published as one listening 
 2. **Challenge teaching episodes**
    These should teach the challenge in a guided, classroom style. They should explain the skill, model the learner's thinking, describe what success sounds like with a screen reader, and clarify what evidence the learner submits.
 
-The chapter and appendix episodes can stay broader and conceptual. The challenge episodes should be more tactical and should follow the Learning Room progression. The final public order is controlled by `podcasts/listening-order.json`, which places each challenge near the chapters that prepare learners for it.
+The chapter and appendix episodes can stay broader and conceptual. The challenge episodes should be more tactical and should follow the Learning Room progression. The final public order is controlled by `podcasts/config/listening-order.json`, which places each challenge near the chapters that prepare learners for it. The feed builder, inventory checker, metadata tagger, and audio generators all use that same order.
 
 The refreshed companion catalog currently contains 54 episodes. The Challenge Coach layer currently has 21 generated source bundles: 16 core challenges plus 5 bonus challenges.
 
@@ -37,13 +37,13 @@ Every generated script must use only these markers on their own lines:
 
 Run these commands from the repository root.
 
-The following commands install the required Node and Python dependencies for bundle generation, site generation, and local Piper TTS audio generation.
+The following commands install the required Node and Python dependencies for bundle generation, site generation, and local Kokoro TTS audio generation.
 
 ```powershell
 npm install
 python -m pip install --upgrade pip
-python -m pip install piper-tts
-python -m podcasts.tts.download_samples
+python -m pip install kokoro-onnx soundfile numpy mutagen
+python -m podcasts.tts.download_kokoro_samples --english-high-quality-only
 ```
 
 Confirm the local tools work:
@@ -53,7 +53,6 @@ npm run validate:podcasts
 npm run build:podcast-bundles
 npm run build:podcast-challenge-bundles
 npm run generate:podcast-transcripts
-python -m podcasts.tts.generate_episode ep00-welcome
 npm run build:podcast-site
 ```
 
@@ -63,7 +62,7 @@ Notes for a new machine:
 - `podcasts/audio/` is intentionally ignored by git because audio files are published as GitHub Release assets.
 - `podcasts/bundles/*.md` is intentionally ignored by git because chapter and appendix bundles are generated working files.
 - `podcasts/challenge-bundles/*.md` is intentionally ignored by git because Challenge Coach bundles are generated working files.
-- If `python -m piper --help` fails, Piper is not installed in the active Python environment.
+- The Piper path remains available for fallback or comparison, but Kokoro is the production audio path.
 
 ## Regeneration Workflow
 
@@ -75,7 +74,7 @@ Use this workflow after major content changes.
    npm run validate:podcasts
    ```
 
-   Treat missing source files as blockers. Treat uncovered chapter or appendix warnings as planning work: either add episodes or intentionally leave those files out.
+   Treat missing source files and missing listening-order entries as blockers. Treat uncovered chapter or appendix warnings as planning work: either add episodes or intentionally leave those files out.
 
 2. Regenerate source bundles:
 
@@ -110,9 +109,17 @@ Use this workflow after major content changes.
 
 5. Generate audio:
 
+   Preview the queue first. This does not load Kokoro models or create audio:
+
    ```powershell
-   python -m podcasts.tts.generate_all_kokoro --start 0 --end 0 --force --audio-format mp3
-   python -m podcasts.tts.generate_all_kokoro --start 0 --end 10 --audio-format mp3
+   npm run podcast:audio:queue
+   ```
+
+   Then synthesize the selected batch:
+
+   ```powershell
+   python -m podcasts.tts.generate_audio --start 0 --end 0 --force --audio-format mp3
+   python -m podcasts.tts.generate_audio --start 0 --end 10 --audio-format mp3
    ```
 
 6. Update the podcast page and RSS feed:

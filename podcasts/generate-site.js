@@ -18,13 +18,13 @@
 const fs = require('fs');
 const path = require('path');
 const { challenges } = require('./build-challenge-bundles');
+const listeningPlan = require('./lib/listening-plan');
 
 const ROOT = path.join(__dirname, '..');
 const MANIFEST_PATH = path.join(__dirname, 'manifest.json');
 const SCRIPTS_DIR = path.join(__dirname, 'scripts');
 const AUDIO_DIR = path.join(__dirname, 'audio');
 const CHAPTERS_DIR = path.join(__dirname, 'chapters');
-const LISTENING_ORDER_PATH = path.join(__dirname, 'listening-order.json');
 const PODCASTS_MD = path.join(ROOT, 'admin', 'PODCASTS.md');
 const FEED_XML = path.join(__dirname, 'feed.xml');
 
@@ -158,103 +158,12 @@ function companionAudioFile(ep) {
   return ep.audio || `ep${pad}-${ep.slug}.mp3`;
 }
 
-function companionSlug(ep) {
-  return path.basename(companionAudioFile(ep), '.mp3');
-}
-
 function challengeAudioFile(challenge) {
   return `cc-${challenge.id}-${challenge.slug}.mp3`;
 }
 
-function challengeSlug(challenge) {
-  return path.basename(challengeAudioFile(challenge), '.mp3');
-}
-
-function loadListeningOrder() {
-  if (!fs.existsSync(LISTENING_ORDER_PATH)) return [];
-  return JSON.parse(fs.readFileSync(LISTENING_ORDER_PATH, 'utf-8'));
-}
-
-function makeCompanionItem(ep, section, sequence) {
-  const audioFile = companionAudioFile(ep);
-  return {
-    kind: 'companion',
-    section,
-    sequence,
-    ep,
-    slug: path.basename(audioFile, '.mp3'),
-    audioFile,
-    title: `Episode ${ep.number}: ${ep.title}`,
-    shortTitle: `Episode ${ep.number}`,
-    description: ep.description,
-  };
-}
-
-function makeChallengeItem(challenge, section, sequence) {
-  const audioFile = challengeAudioFile(challenge);
-  return {
-    kind: 'challenge',
-    section,
-    sequence,
-    challenge,
-    slug: path.basename(audioFile, '.mp3'),
-    audioFile,
-    title: `Challenge ${challenge.id}: ${challenge.title}`,
-    shortTitle: `Challenge ${challenge.id}`,
-    description: challenge.focus,
-  };
-}
-
 function buildListeningItems(manifest) {
-  const companionBySlug = new Map(manifest.map(ep => [companionSlug(ep), ep]));
-  const challengeBySlug = new Map(challenges.map(challenge => [challengeSlug(challenge), challenge]));
-  const used = new Set();
-  const items = [];
-  let section = 'Audio Path';
-
-  for (const entry of loadListeningOrder()) {
-    if (entry.kind === 'section') {
-      section = entry.title || section;
-      continue;
-    }
-
-    const key = `${entry.kind}:${entry.slug}`;
-    if (entry.kind === 'companion') {
-      const ep = companionBySlug.get(entry.slug);
-      if (!ep) {
-        console.warn(`Listening order references unknown companion: ${entry.slug}`);
-        continue;
-      }
-      used.add(key);
-      items.push(makeCompanionItem(ep, section, items.length + 1));
-    } else if (entry.kind === 'challenge') {
-      const challenge = challengeBySlug.get(entry.slug);
-      if (!challenge) {
-        console.warn(`Listening order references unknown challenge: ${entry.slug}`);
-        continue;
-      }
-      used.add(key);
-      items.push(makeChallengeItem(challenge, section, items.length + 1));
-    }
-  }
-
-  section = 'Additional Episodes';
-  for (const ep of manifest) {
-    const key = `companion:${companionSlug(ep)}`;
-    if (!used.has(key)) {
-      used.add(key);
-      items.push(makeCompanionItem(ep, section, items.length + 1));
-    }
-  }
-  for (const challenge of challenges) {
-    const key = `challenge:${challengeSlug(challenge)}`;
-    if (!used.has(key)) {
-      used.add(key);
-      items.push(makeChallengeItem(challenge, section, items.length + 1));
-    }
-  }
-
-  return items;
+  return listeningPlan.buildListeningItems(manifest, challenges);
 }
 
 function chapterElementForSlug(slug) {

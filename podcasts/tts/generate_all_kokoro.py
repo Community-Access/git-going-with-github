@@ -18,9 +18,9 @@ import time
 import traceback
 from pathlib import Path
 
-import numpy as np
-import soundfile as sf
-from kokoro_onnx import Kokoro
+np = None
+sf = None
+Kokoro = None
 
 ROOT = Path(__file__).resolve().parent.parent  # podcasts/
 REPO_ROOT = ROOT.parent
@@ -46,39 +46,25 @@ if str(REPO_ROOT) not in sys.path:
     sys.path.insert(0, str(REPO_ROOT))
 
 from podcasts.tts.generate_episode import apply_lexicon, convert_wav_to_mp3, parse_script, safe_text  # noqa: E402
+from podcasts.listening_plan import ordered_script_paths, script_group, script_index, segment_matches  # noqa: E402
 
 
-def script_index(path: Path) -> int | None:
-    stem = path.stem
-    if stem.startswith("ep"):
-        try:
-            return int(stem.split("-", 1)[0].replace("ep", ""))
-        except ValueError:
-            return None
-    if stem.startswith("cc-"):
-        parts = stem.split("-", 2)
-        if len(parts) > 1 and parts[1].isdigit():
-            return int(parts[1])
-    return None
-
-
-def script_sort_key(path: Path) -> tuple[int, int, str]:
-    stem = path.stem
-    if stem.startswith("ep"):
-        return (0, script_index(path) or 0, stem)
-    if stem.startswith("cc-"):
-        idx = script_index(path)
-        return (1, idx if idx is not None else 999, stem)
-    return (2, 999, stem)
-
-
-def script_group(path: Path) -> str:
-    parent = path.parent.name.lower()
-    if parent in {"chapters", "challenges", "appendices"}:
-        return parent
-    if path.stem.startswith("cc-"):
-        return "challenges"
-    return "chapters"
+def load_kokoro_dependencies() -> None:
+    global np, sf, Kokoro
+    if np is not None and sf is not None and Kokoro is not None:
+        return
+    try:
+        import numpy as numpy_module
+        import soundfile as soundfile_module
+        from kokoro_onnx import Kokoro as KokoroClass
+    except ModuleNotFoundError as ex:
+        raise SystemExit(
+            "Missing Kokoro audio dependency. Install with: "
+            "python -m pip install kokoro-onnx soundfile numpy"
+        ) from ex
+    np = numpy_module
+    sf = soundfile_module
+    Kokoro = KokoroClass
 
 
 def infer_lang(voice: str) -> str:
@@ -209,8 +195,10 @@ def manifest_complete(script_path: Path) -> bool:
         return False
     if len(manifest) != len(segments):
         return False
-    for expected_seq, entry in enumerate(manifest, start=1):
+    for expected_seq, (segment, entry) in enumerate(zip(segments, manifest), start=1):
         if entry.get("seq") != expected_seq:
+            return False
+        if not segment_matches(segment, entry):
             return False
         filename = entry.get("filename")
         if not filename or not (SEGMENTS_DIR / slug / filename).exists():
@@ -388,28 +376,14 @@ def main() -> int:
         default="all",
         help="Limit generation to a script category.",
     )
+    parser.add_argument(
+        "--dry-run",
+        action="store_true",
+        help="Print the listening-order generation queue without loading models or generating audio.",
+    )
     args = parser.parse_args()
 
-    if not MODEL_PATH.exists() or not VOICES_PATH.exists():
-        raise SystemExit(
-            "Kokoro model files are missing. Run: python -m podcasts.tts.download_kokoro_samples"
-        )
-
-    kokoro = Kokoro(str(MODEL_PATH), str(VOICES_PATH))
-    available_voices = set(kokoro.get_voices())
-    if args.male_voice not in available_voices:
-        raise SystemExit(f"Male voice not found: {args.male_voice}")
-    if args.female_voice not in available_voices:
-        raise SystemExit(f"Female voice not found: {args.female_voice}")
-
-    scripts = sorted(
-        [
-            path
-            for path in SCRIPTS_DIR.rglob("*.txt")
-            if path.is_file() and (path.stem.startswith("ep") or path.stem.startswith("cc-"))
-        ],
-        key=script_sort_key,
-    )
+    scripts = ordered_script_paths(SCRIPTS_DIR)
 
     def in_selected_range(path: Path) -> bool:
         idx = script_index(path)
@@ -427,6 +401,25 @@ def main() -> int:
     if not selected:
         print("No episode scripts matched the selected range")
         return 1
+
+    if args.dry_run:
+        print(f"Generation queue ({len(selected)} scripts, group={args.group}, order=listening):")
+        for index, script in enumerate(selected, start=1):
+            print(f"{index:02d}. {script.stem} ({script_group(script)})")
+        return 0
+
+    if not MODEL_PATH.exists() or not VOICES_PATH.exists():
+        raise SystemExit(
+            "Kokoro model files are missing. Run: python -m podcasts.tts.download_kokoro_samples"
+        )
+
+    load_kokoro_dependencies()
+    kokoro = Kokoro(str(MODEL_PATH), str(VOICES_PATH))
+    available_voices = set(kokoro.get_voices())
+    if args.male_voice not in available_voices:
+        raise SystemExit(f"Male voice not found: {args.male_voice}")
+    if args.female_voice not in available_voices:
+        raise SystemExit(f"Female voice not found: {args.female_voice}")
 
     print(
         f"Generating {len(selected)} episodes"

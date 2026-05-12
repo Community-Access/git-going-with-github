@@ -32,7 +32,6 @@ except Exception:  # pragma: no cover
 ROOT = Path(__file__).resolve().parent
 REPO_ROOT = ROOT.parent
 MANIFEST_PATH = ROOT / "manifest.json"
-LISTENING_ORDER_PATH = ROOT / "listening-order.json"
 CHALLENGE_CATALOG_PATH = ROOT / "build-challenge-bundles.js"
 SCRIPTS_DIR = ROOT / "scripts"
 TRANSCRIPTS_DIR = ROOT / "transcripts"
@@ -46,6 +45,9 @@ if str(REPO_ROOT) not in sys.path:
     sys.path.insert(0, str(REPO_ROOT))
 
 from podcasts.tts.generate_episode import parse_script  # noqa: E402
+from podcasts.listening_plan import build_listening_targets, listening_order_path  # noqa: E402
+
+LISTENING_ORDER_PATH = listening_order_path()
 
 
 @dataclass(frozen=True)
@@ -126,67 +128,7 @@ def companion_group(episode: dict) -> str:
 
 
 def build_targets(include_appendices: bool) -> list[Target]:
-    manifest = load_manifest()
-    challenges = load_challenges()
-
-    companions_by_slug: dict[str, Target] = {}
-    for episode in manifest:
-        number = int(episode["number"])
-        ep_slug = str(episode["slug"])
-        audio_name = episode.get("audio") or f"ep{number:02d}-{ep_slug}.mp3"
-        audio_slug = Path(audio_name).stem
-        group = companion_group(episode)
-        companions_by_slug[audio_slug] = Target(
-            kind="companion",
-            group=group,
-            slug=audio_slug,
-            title=f"Episode {number}: {episode['title']}",
-            script_name=f"ep{number:02d}-{ep_slug}.txt",
-            transcript_name=f"ep{number:02d}-{ep_slug}-segments.json",
-            audio_name=audio_name,
-        )
-
-    challenges_by_slug: dict[str, Target] = {}
-    for audio_slug, challenge in challenges.items():
-        title = f"Challenge {challenge['id']}: {challenge['title']}"
-        file_stub = f"cc-{challenge['id']}-{challenge['slug']}"
-        challenges_by_slug[audio_slug] = Target(
-            kind="challenge",
-            group="challenges",
-            slug=file_stub,
-            title=title,
-            script_name=f"{file_stub}.txt",
-            transcript_name=f"{file_stub}-segments.json",
-            audio_name=f"{file_stub}.mp3",
-        )
-
-    targets: list[Target] = []
-    used: set[str] = set()
-    for entry in load_listening_order():
-        kind = entry.get("kind")
-        slug = entry.get("slug")
-        if not slug or kind == "section":
-            continue
-        if kind == "companion":
-            target = companions_by_slug.get(slug)
-            if not target:
-                continue
-            if target.group == "appendices" and not include_appendices:
-                continue
-        elif kind == "challenge":
-            target = challenges_by_slug.get(slug)
-            if not target:
-                continue
-        else:
-            continue
-
-        key = f"{target.kind}:{target.slug}"
-        if key in used:
-            continue
-        used.add(key)
-        targets.append(target)
-
-    return targets
+    return build_listening_targets(include_appendices=include_appendices)
 
 
 def compare_segments(script_segments: list[dict], other_segments: list[dict]) -> list[str]:

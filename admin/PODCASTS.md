@@ -26,12 +26,7 @@ A tour of the workshop structure, the two-day arc, and what you will accomplish.
 
 Based on: [Course Guide](docs/course-guide.md)
 
-<audio controls preload="none">
-  <source src="https://github.com/Community-Access/git-going-with-github/releases/download/podcasts/ep00-welcome.mp3" type="audio/mpeg">
-  Your browser does not support the audio element. <a href="https://github.com/Community-Access/git-going-with-github/releases/download/podcasts/ep00-welcome.mp3">Download Episode 0 (MP3)</a>
-</audio>
-
-[Download Episode 0 (MP3)](https://github.com/Community-Access/git-going-with-github/releases/download/podcasts/ep00-welcome.mp3)
+Audio and transcript are being regenerated for this episode.
 
 <details>
 <summary>Read Transcript - Episode 0: Welcome to Git Going with GitHub</summary>
@@ -643,12 +638,7 @@ Creating your GitHub account, installing Git and VS Code, configuring your scree
 
 Based on: [Chapter 0: Pre-Workshop Setup](docs/00-pre-workshop-setup.md)
 
-<audio controls preload="none">
-  <source src="https://github.com/Community-Access/git-going-with-github/releases/download/podcasts/ep01-pre-workshop-setup.mp3" type="audio/mpeg">
-  Your browser does not support the audio element. <a href="https://github.com/Community-Access/git-going-with-github/releases/download/podcasts/ep01-pre-workshop-setup.mp3">Download Episode 1 (MP3)</a>
-</audio>
-
-[Download Episode 1 (MP3)](https://github.com/Community-Access/git-going-with-github/releases/download/podcasts/ep01-pre-workshop-setup.mp3)
+Audio and transcript are being regenerated for this episode.
 
 <details>
 <summary>Read Transcript - Episode 1: Pre-Workshop Setup</summary>
@@ -1514,12 +1504,7 @@ How GitHub organizes its web pages, heading structure, landmarks, and keyboard s
 
 Based on: [Chapter 2: Understanding GitHub on the Web](docs/02-understanding-github.md)
 
-<audio controls preload="none">
-  <source src="https://github.com/Community-Access/git-going-with-github/releases/download/podcasts/ep02-github-web-structure.mp3" type="audio/mpeg">
-  Your browser does not support the audio element. <a href="https://github.com/Community-Access/git-going-with-github/releases/download/podcasts/ep02-github-web-structure.mp3">Download Episode 2 (MP3)</a>
-</audio>
-
-[Download Episode 2 (MP3)](https://github.com/Community-Access/git-going-with-github/releases/download/podcasts/ep02-github-web-structure.mp3)
+Audio and transcript are being regenerated for this episode.
 
 <details>
 <summary>Read Transcript - Episode 2: Understanding GitHub on the Web</summary>
@@ -2055,12 +2040,7 @@ Exploring a repository: tabs, files, README, branches, and commit history.
 
 Based on: [Chapter 3: Navigating Repositories](docs/03-navigating-repositories.md)
 
-<audio controls preload="none">
-  <source src="https://github.com/Community-Access/git-going-with-github/releases/download/podcasts/ep03-navigating-repositories.mp3" type="audio/mpeg">
-  Your browser does not support the audio element. <a href="https://github.com/Community-Access/git-going-with-github/releases/download/podcasts/ep03-navigating-repositories.mp3">Download Episode 3 (MP3)</a>
-</audio>
-
-[Download Episode 3 (MP3)](https://github.com/Community-Access/git-going-with-github/releases/download/podcasts/ep03-navigating-repositories.mp3)
+Audio and transcript are being regenerated for this episode.
 
 <details>
 <summary>Read Transcript - Episode 3: Navigating Repositories</summary>
@@ -2483,12 +2463,7 @@ Your shared practice environment: challenges, PR workflow, bot feedback, peer re
 
 Based on: [Chapter 4: The Learning Room](docs/04-the-learning-room.md)
 
-<audio controls preload="none">
-  <source src="https://github.com/Community-Access/git-going-with-github/releases/download/podcasts/ep04-the-learning-room.mp3" type="audio/mpeg">
-  Your browser does not support the audio element. <a href="https://github.com/Community-Access/git-going-with-github/releases/download/podcasts/ep04-the-learning-room.mp3">Download Episode 4 (MP3)</a>
-</audio>
-
-[Download Episode 4 (MP3)](https://github.com/Community-Access/git-going-with-github/releases/download/podcasts/ep04-the-learning-room.mp3)
+Audio and transcript are being regenerated for this episode.
 
 <details>
 <summary>Read Transcript - Episode 4: The Learning Room</summary>
@@ -3984,12 +3959,7 @@ Filing, searching, filtering, commenting on, and managing GitHub issues.
 
 Based on: [Chapter 5: Working with Issues](docs/05-working-with-issues.md)
 
-<audio controls preload="none">
-  <source src="https://github.com/Community-Access/git-going-with-github/releases/download/podcasts/ep05-working-with-issues.mp3" type="audio/mpeg">
-  Your browser does not support the audio element. <a href="https://github.com/Community-Access/git-going-with-github/releases/download/podcasts/ep05-working-with-issues.mp3">Download Episode 5 (MP3)</a>
-</audio>
-
-[Download Episode 5 (MP3)](https://github.com/Community-Access/git-going-with-github/releases/download/podcasts/ep05-working-with-issues.mp3)
+Audio and transcript are being regenerated for this episode.
 
 <details>
 <summary>Read Transcript - Episode 5: Working with Issues</summary>
@@ -7991,12 +7961,7 @@ Creating, reviewing, commenting on, and merging pull requests.
 
 Based on: [Chapter 6: Working with Pull Requests](docs/06-working-with-pull-requests.md)
 
-<audio controls preload="none">
-  <source src="https://github.com/Community-Access/git-going-with-github/releases/download/podcasts/ep06-working-with-pull-requests.mp3" type="audio/mpeg">
-  Your browser does not support the audio element. <a href="https://github.com/Community-Access/git-going-with-github/releases/download/podcasts/ep06-working-with-pull-requests.mp3">Download Episode 6 (MP3)</a>
-</audio>
-
-[Download Episode 6 (MP3)](https://github.com/Community-Access/git-going-with-github/releases/download/podcasts/ep06-working-with-pull-requests.mp3)
+Audio and transcript are being regenerated for this episode.
 
 <details>
 <summary>Read Transcript - Episode 6: Working with Pull Requests</summary>
@@ -11370,12 +11335,7 @@ Why conflicts happen, how to read conflict markers, and resolving them confident
 
 Based on: [Chapter 7: Merge Conflicts Are Not Scary](docs/07-merge-conflicts.md)
 
-<audio controls preload="none">
-  <source src="https://github.com/Community-Access/git-going-with-github/releases/download/podcasts/ep07-merge-conflicts.mp3" type="audio/mpeg">
-  Your browser does not support the audio element. <a href="https://github.com/Community-Access/git-going-with-github/releases/download/podcasts/ep07-merge-conflicts.mp3">Download Episode 7 (MP3)</a>
-</audio>
-
-[Download Episode 7 (MP3)](https://github.com/Community-Access/git-going-with-github/releases/download/podcasts/ep07-merge-conflicts.mp3)
+Audio and transcript are being regenerated for this episode.
 
 <details>
 <summary>Read Transcript - Episode 7: Merge Conflicts Are Not Scary</summary>
@@ -12097,12 +12057,7 @@ Communication norms, code review etiquette, inclusive language, and asking quest
 
 Based on: [Chapter 8: Open Source Culture and Etiquette](docs/08-open-source-culture.md)
 
-<audio controls preload="none">
-  <source src="https://github.com/Community-Access/git-going-with-github/releases/download/podcasts/ep08-culture-and-etiquette.mp3" type="audio/mpeg">
-  Your browser does not support the audio element. <a href="https://github.com/Community-Access/git-going-with-github/releases/download/podcasts/ep08-culture-and-etiquette.mp3">Download Episode 8 (MP3)</a>
-</audio>
-
-[Download Episode 8 (MP3)](https://github.com/Community-Access/git-going-with-github/releases/download/podcasts/ep08-culture-and-etiquette.mp3)
+Audio and transcript are being regenerated for this episode.
 
 <details>
 <summary>Read Transcript - Episode 8: Open Source Culture and Etiquette</summary>
@@ -13672,12 +13627,7 @@ Organizing and tracking work with labels, milestones, and GitHub Projects.
 
 Based on: [Chapter 9: Labels, Milestones, and Projects](docs/09-labels-milestones-projects.md)
 
-<audio controls preload="none">
-  <source src="https://github.com/Community-Access/git-going-with-github/releases/download/podcasts/ep09-labels-milestones-projects.mp3" type="audio/mpeg">
-  Your browser does not support the audio element. <a href="https://github.com/Community-Access/git-going-with-github/releases/download/podcasts/ep09-labels-milestones-projects.mp3">Download Episode 9 (MP3)</a>
-</audio>
-
-[Download Episode 9 (MP3)](https://github.com/Community-Access/git-going-with-github/releases/download/podcasts/ep09-labels-milestones-projects.mp3)
+Audio and transcript are being regenerated for this episode.
 
 <details>
 <summary>Read Transcript - Episode 9: Labels, Milestones, and Projects</summary>
@@ -14448,12 +14398,7 @@ Managing your notification inbox, @mentions, and strategies for avoiding overloa
 
 Based on: [Chapter 10: Notifications and Mentions](docs/10-notifications-and-day-1-close.md)
 
-<audio controls preload="none">
-  <source src="https://github.com/Community-Access/git-going-with-github/releases/download/podcasts/ep10-notifications.mp3" type="audio/mpeg">
-  Your browser does not support the audio element. <a href="https://github.com/Community-Access/git-going-with-github/releases/download/podcasts/ep10-notifications.mp3">Download Episode 10 (MP3)</a>
-</audio>
-
-[Download Episode 10 (MP3)](https://github.com/Community-Access/git-going-with-github/releases/download/podcasts/ep10-notifications.mp3)
+Audio and transcript are being regenerated for this episode.
 
 <details>
 <summary>Read Transcript - Episode 10: Notifications and Mentions</summary>
@@ -16056,12 +16001,7 @@ Screen reader mode, Command Palette, sidebar navigation, and accessibility setti
 
 Based on: [Chapter 11: VS Code Setup and Accessibility](docs/11-vscode-interface.md)
 
-<audio controls preload="none">
-  <source src="https://github.com/Community-Access/git-going-with-github/releases/download/podcasts/ep11-vscode-basics.mp3" type="audio/mpeg">
-  Your browser does not support the audio element. <a href="https://github.com/Community-Access/git-going-with-github/releases/download/podcasts/ep11-vscode-basics.mp3">Download Episode 11 (MP3)</a>
-</audio>
-
-[Download Episode 11 (MP3)](https://github.com/Community-Access/git-going-with-github/releases/download/podcasts/ep11-vscode-basics.mp3)
+Audio and transcript are being regenerated for this episode.
 
 <details>
 <summary>Read Transcript - Episode 11: VS Code Setup and Accessibility</summary>
@@ -17523,12 +17463,7 @@ Cloning, branching, staging, committing, pushing, and pulling from VS Code.
 
 Based on: [Chapter 14: Git and Source Control in VS Code](docs/14-git-in-practice.md)
 
-<audio controls preload="none">
-  <source src="https://github.com/Community-Access/git-going-with-github/releases/download/podcasts/ep12-git-source-control.mp3" type="audio/mpeg">
-  Your browser does not support the audio element. <a href="https://github.com/Community-Access/git-going-with-github/releases/download/podcasts/ep12-git-source-control.mp3">Download Episode 12 (MP3)</a>
-</audio>
-
-[Download Episode 12 (MP3)](https://github.com/Community-Access/git-going-with-github/releases/download/podcasts/ep12-git-source-control.mp3)
+Audio and transcript are being regenerated for this episode.
 
 <details>
 <summary>Read Transcript - Episode 12: Git and Source Control in VS Code</summary>
@@ -20731,12 +20666,7 @@ Viewing, creating, reviewing, and merging PRs from inside VS Code.
 
 Based on: [Chapter 15: The GitHub Pull Requests Extension](docs/15-code-review.md)
 
-<audio controls preload="none">
-  <source src="https://github.com/Community-Access/git-going-with-github/releases/download/podcasts/ep13-github-prs-extension.mp3" type="audio/mpeg">
-  Your browser does not support the audio element. <a href="https://github.com/Community-Access/git-going-with-github/releases/download/podcasts/ep13-github-prs-extension.mp3">Download Episode 13 (MP3)</a>
-</audio>
-
-[Download Episode 13 (MP3)](https://github.com/Community-Access/git-going-with-github/releases/download/podcasts/ep13-github-prs-extension.mp3)
+Audio and transcript are being regenerated for this episode.
 
 <details>
 <summary>Read Transcript - Episode 13: The GitHub Pull Requests Extension</summary>
@@ -27848,12 +27778,7 @@ Inline suggestions, Copilot Chat, prompting strategies, and custom instructions.
 
 Based on: [Chapter 16: GitHub Copilot](docs/16-github-copilot.md)
 
-<audio controls preload="none">
-  <source src="https://github.com/Community-Access/git-going-with-github/releases/download/podcasts/ep14-github-copilot.mp3" type="audio/mpeg">
-  Your browser does not support the audio element. <a href="https://github.com/Community-Access/git-going-with-github/releases/download/podcasts/ep14-github-copilot.mp3">Download Episode 14 (MP3)</a>
-</audio>
-
-[Download Episode 14 (MP3)](https://github.com/Community-Access/git-going-with-github/releases/download/podcasts/ep14-github-copilot.mp3)
+Audio and transcript are being regenerated for this episode.
 
 <details>
 <summary>Read Transcript - Episode 14: GitHub Copilot</summary>
@@ -40106,12 +40031,7 @@ Dependabot, secret scanning, code scanning, and private security advisories.
 
 Based on: [Appendix P: GitHub Security Features](docs/appendix-p-security-features.md)
 
-<audio controls preload="none">
-  <source src="https://github.com/Community-Access/git-going-with-github/releases/download/podcasts/ep29-security-features.mp3" type="audio/mpeg">
-  Your browser does not support the audio element. <a href="https://github.com/Community-Access/git-going-with-github/releases/download/podcasts/ep29-security-features.mp3">Download Episode 29 (MP3)</a>
-</audio>
-
-[Download Episode 29 (MP3)](https://github.com/Community-Access/git-going-with-github/releases/download/podcasts/ep29-security-features.mp3)
+Audio and transcript are being regenerated for this episode.
 
 <details>
 <summary>Read Transcript - Episode 29: GitHub Security Features</summary>
@@ -40336,12 +40256,7 @@ Complete accessibility settings, audio signals, diff viewer, and screen reader c
 
 Based on: [Appendix G: VS Code Accessibility Reference](docs/appendix-g-vscode-reference.md)
 
-<audio controls preload="none">
-  <source src="https://github.com/Community-Access/git-going-with-github/releases/download/podcasts/ep30-vscode-accessibility-reference.mp3" type="audio/mpeg">
-  Your browser does not support the audio element. <a href="https://github.com/Community-Access/git-going-with-github/releases/download/podcasts/ep30-vscode-accessibility-reference.mp3">Download Episode 30 (MP3)</a>
-</audio>
-
-[Download Episode 30 (MP3)](https://github.com/Community-Access/git-going-with-github/releases/download/podcasts/ep30-vscode-accessibility-reference.mp3)
+Audio and transcript are being regenerated for this episode.
 
 <details>
 <summary>Read Transcript - Episode 30: VS Code Accessibility Reference</summary>
@@ -40590,12 +40505,7 @@ Cloud dev environments, accessibility setup, and screen reader usage.
 
 Based on: [Appendix J: GitHub Codespaces](docs/appendix-j-cloud-editors.md)
 
-<audio controls preload="none">
-  <source src="https://github.com/Community-Access/git-going-with-github/releases/download/podcasts/ep31-github-codespaces.mp3" type="audio/mpeg">
-  Your browser does not support the audio element. <a href="https://github.com/Community-Access/git-going-with-github/releases/download/podcasts/ep31-github-codespaces.mp3">Download Episode 31 (MP3)</a>
-</audio>
-
-[Download Episode 31 (MP3)](https://github.com/Community-Access/git-going-with-github/releases/download/podcasts/ep31-github-codespaces.mp3)
+Audio and transcript are being regenerated for this episode.
 
 <details>
 <summary>Read Transcript - Episode 31: GitHub Codespaces</summary>
@@ -40828,12 +40738,7 @@ VoiceOver and TalkBack guide for iOS and Android GitHub apps.
 
 Based on: [Appendix V: GitHub Mobile](docs/appendix-v-github-mobile.md)
 
-<audio controls preload="none">
-  <source src="https://github.com/Community-Access/git-going-with-github/releases/download/podcasts/ep32-github-mobile.mp3" type="audio/mpeg">
-  Your browser does not support the audio element. <a href="https://github.com/Community-Access/git-going-with-github/releases/download/podcasts/ep32-github-mobile.mp3">Download Episode 32 (MP3)</a>
-</audio>
-
-[Download Episode 32 (MP3)](https://github.com/Community-Access/git-going-with-github/releases/download/podcasts/ep32-github-mobile.mp3)
+Audio and transcript are being regenerated for this episode.
 
 <details>
 <summary>Read Transcript - Episode 32: GitHub Mobile</summary>
@@ -41036,12 +40941,7 @@ Free static site hosting, custom domains, HTTPS, and accessibility.
 
 Based on: [Appendix W: Publishing with GitHub Pages](docs/appendix-w-github-pages.md)
 
-<audio controls preload="none">
-  <source src="https://github.com/Community-Access/git-going-with-github/releases/download/podcasts/ep33-github-pages.mp3" type="audio/mpeg">
-  Your browser does not support the audio element. <a href="https://github.com/Community-Access/git-going-with-github/releases/download/podcasts/ep33-github-pages.mp3">Download Episode 33 (MP3)</a>
-</audio>
-
-[Download Episode 33 (MP3)](https://github.com/Community-Access/git-going-with-github/releases/download/podcasts/ep33-github-pages.mp3)
+Audio and transcript are being regenerated for this episode.
 
 <details>
 <summary>Read Transcript - Episode 33: Publishing with GitHub Pages</summary>
@@ -41280,12 +41180,7 @@ Workflow YAML structure, CI/CD, automation, and the Actions marketplace.
 
 Based on: [Appendix Q: GitHub Actions and Workflows](docs/appendix-q-actions-workflows.md)
 
-<audio controls preload="none">
-  <source src="https://github.com/Community-Access/git-going-with-github/releases/download/podcasts/ep34-github-actions.mp3" type="audio/mpeg">
-  Your browser does not support the audio element. <a href="https://github.com/Community-Access/git-going-with-github/releases/download/podcasts/ep34-github-actions.mp3">Download Episode 34 (MP3)</a>
-</audio>
-
-[Download Episode 34 (MP3)](https://github.com/Community-Access/git-going-with-github/releases/download/podcasts/ep34-github-actions.mp3)
+Audio and transcript are being regenerated for this episode.
 
 <details>
 <summary>Read Transcript - Episode 34: GitHub Actions and Workflows</summary>

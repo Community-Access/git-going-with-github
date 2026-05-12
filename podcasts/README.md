@@ -1,9 +1,3 @@
-
-**Table: Host voice and character mapping for VibeVoice podcast**
-
-**Table: Podcast build and validation commands**
-
-**Table: Podcast bundle generation steps and costs**
 # Podcast Audio Pipeline
 
 This directory contains the complete pipeline for producing the Git Going with GitHub audio series: 54 companion episodes of two-host conversational content designed for blind and low-vision developers, plus 21 Challenge Coach episodes placed near the chapters they support.
@@ -31,9 +25,15 @@ generate-site.js     Build PODCASTS.md player page and RSS feed from manifest
 
 Audio is generated locally using ONNX text-to-speech models. No cloud APIs, no API keys, no billing. Runs entirely on your machine.
 
-Use the Kokoro batch generator as the production audio path. The Piper generator remains available as `npm run build:podcast-audio:piper` for fallback or comparison.
+Use the unified audio command as the front door. It defaults to Kokoro, the production audio path. Piper remains available only when explicitly selected for fallback or comparison. See [Piper Fallback TTS](tts/PIPER.md) for setup, scope, and validation guidance.
 
-`podcasts/listening-order.json` controls the public listening path. It interleaves companion lessons, Challenge Coach episodes, and reference episodes so podcast apps and the generated player page present the workshop as one end-to-end experience.
+```bash
+python -m podcasts.tts.generate_audio --audio-format mp3
+python -m podcasts.tts.generate_audio --engine kokoro --audio-format mp3
+python -m podcasts.tts.generate_audio --engine piper --audio-format mp3
+```
+
+`podcasts/config/listening-order.json` controls the public listening path. It interleaves companion lessons, Challenge Coach episodes, and reference episodes so podcast apps and the generated player page present the workshop as one end-to-end experience. The audio generators and inventory tools use the same order, so generation queues match the learner path.
 
 Final episode output format is configurable through `podcasts/tts/voice-config.ini` (`episode_audio_format = wav|mp3|both`). MP3 generation requires `ffmpeg` on your PATH.
 
@@ -41,31 +41,34 @@ After all MP3 files and segment manifests are generated, run the metadata pass t
 
 ## Directory Structure
 
-```
+The following tree separates source files, generated artifacts, local caches, and legacy helpers.
+
+```text
 podcasts/
-  README.md             This guide
-  build-bundles.js      Generates source bundles + manifest.json
-      build-challenge-bundles.js
-                                                                        Generates Challenge Coach source bundles
-      generate-draft-transcripts.js
-                                                                        Generates reviewable Alex/Jamie transcript scripts
-  generate-site.js      Generates PODCASTS.md and feed.xml from manifest.json
-  manifest.json         Episode manifest (metadata, status tracking)
-      feed.xml              RSS 2.0 podcast feed (auto-generated)
-      bundles/              Generated episode source bundles (gitignored)
-      challenge-bundles/    Generated challenge coach source bundles (gitignored)
-  scripts/              Two-host scripts (committed, reviewable)
-      audio/                Episode WAV/MP3 files after generation (not in git)
-  tts/                  Python TTS package
-    __init__.py         Package init
-    generate_episode.py Legacy Piper single episode generator
-    generate_all.py     Legacy Piper batch generator
-    generate_all_kokoro.py Kokoro batch generator for all episodes
-    download_kokoro_samples.py Kokoro model downloader
-    download_samples.py Legacy Piper voice sample downloader
-    lexicon.txt         Pronunciation dictionary for technical terms
-    models/             Kokoro and legacy Piper ONNX voice models
-    samples/            Voice sample WAVs
+  README.md                         This guide
+  REGENERATION.md                   Full regeneration runbook
+  config/listening-order.json       Canonical public listening path
+  lib/listening-plan.js             Shared JavaScript listening-order resolver
+  listening_plan.py                 Shared Python listening-order resolver
+  build-bundles.js                  Companion episode catalog and bundle generator
+  build-challenge-bundles.js        Challenge Coach catalog and bundle generator
+  generate-draft-transcripts.js     Reviewable Alex/Jamie script generator
+  generate-site.js                  Generates admin/PODCASTS.md and feed.xml
+  validate-catalog.js               Validates source coverage
+  validate-listening-order.js       Validates the complete public listening path
+  validate-feed.js                  Validates RSS structure and enclosures
+  verify_audio_inventory.py         Validates scripts, transcripts, manifests, and MP3s
+  tag-audio-metadata.py             Writes ID3 metadata and chapter markers
+  manifest.json                     Companion episode metadata
+  feed.xml                          Generated RSS feed
+  bundles/                          Generated companion prompt packets
+  challenge-bundles/                Generated Challenge Coach prompt packets
+  scripts/                          Committed transcript source scripts
+  transcripts/                      Derived segment JSON transcripts
+  audio/                            Local audio output and segment cache, not committed
+  logs/                             Local generation and inventory reports
+  tools/legacy/                     Older diagnostic and one-off helpers
+  tts/                              Production and fallback TTS package
 ```
 
 ## Prerequisites
@@ -109,8 +112,16 @@ npm run generate:podcast-transcripts
 
 ### 4. Generate all episodes
 
+Preview the listening-order generation queue without loading models or creating audio:
+
 ```bash
-python -m podcasts.tts.generate_all_kokoro --audio-format mp3
+npm run podcast:audio:queue
+```
+
+Then generate audio when you are ready:
+
+```bash
+python -m podcasts.tts.generate_audio --audio-format mp3
 ```
 
 This batch command processes the full committed script set: all `ep*.txt` companion episodes plus all `cc-*.txt` Challenge Coach and bonus episodes.
@@ -118,14 +129,14 @@ This batch command processes the full committed script set: all `ep*.txt` compan
 Or generate a single episode:
 
 ```bash
-python -m podcasts.tts.generate_all_kokoro --start 0 --end 0 --force --audio-format mp3
-python -m podcasts.tts.generate_all_kokoro --start 5 --end 5 --force --audio-format mp3
+python -m podcasts.tts.generate_audio --start 0 --end 0 --force --audio-format mp3
+python -m podcasts.tts.generate_audio --start 5 --end 5 --force --audio-format mp3
 ```
 
 Or a range:
 
 ```bash
-python -m podcasts.tts.generate_all_kokoro --start 0 --end 10 --audio-format mp3
+python -m podcasts.tts.generate_audio --start 0 --end 10 --audio-format mp3
 ```
 
 ### 5. Build player page and RSS feed
@@ -145,7 +156,7 @@ The default voices are:
 
 Listen to samples in `podcasts/tts/samples/` to try different voices.
 
-To change voices, pass `--male-voice` and `--female-voice` to `python -m podcasts.tts.generate_all_kokoro`.
+To change Kokoro voices, pass `--male-voice` and `--female-voice` through the unified command: `python -m podcasts.tts.generate_audio --engine kokoro --male-voice am_liam --female-voice af_jessica`.
 
 Pitch can be configured independently per host in `podcasts/tts/voice-config.ini`:
 
@@ -184,9 +195,11 @@ bundle-ready  -->  script-ready  -->  audio-ready  -->  published
 
 ## All npm Scripts
 
+The following table lists the supported podcast build and validation commands.
+
 | Command | What It Does |
 |---------|-------------|
-| `npm run validate:podcasts` | Validate episode catalog source mappings and stale generated bundle tracking |
+| `npm run validate:podcasts` | Validate episode catalog source mappings and the complete listening order |
 | `npm run build:podcast-bundles` | Generate source bundles from chapters |
 | `npm run build:podcast-challenge-bundles` | Generate source bundles for Challenge Coach episodes |
 | `npm run generate:podcast-transcripts` | Replace old scripts with fresh reviewable Alex/Jamie draft transcripts |
@@ -194,6 +207,7 @@ bundle-ready  -->  script-ready  -->  audio-ready  -->  published
 | `npm run build:podcast-audio` | Generate MP3 audio for all companion, Challenge Coach, and bonus scripts with local Kokoro TTS |
 | `npm run build:podcast-audio:piper` | Generate audio with the legacy local Piper TTS path |
 | `npm run build:podcast-audio:kokoro` | Generate MP3 audio with the Kokoro TTS path |
+| `npm run podcast:audio:queue` | Print the listening-order audio generation queue without creating MP3 files |
 | `npm run build:podcast-transcripts-and-audio` | Run full transcript pipeline, generate audio, and rebuild podcast page/feed |
 | `npm run build:podcast-site` | Build player page and RSS feed |
 | `npm run podcast:metadata:check` | Dry-run validation that all 75 MP3s and matching scripts are present before tagging |

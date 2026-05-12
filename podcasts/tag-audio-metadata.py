@@ -33,7 +33,7 @@ except ImportError:  # pragma: no cover - exercised by operator environment
 ROOT = Path(__file__).resolve().parent
 REPO_ROOT = ROOT.parent
 MANIFEST_PATH = ROOT / "manifest.json"
-LISTENING_ORDER_PATH = ROOT / "listening-order.json"
+LISTENING_ORDER_PATH = ROOT / "config" / "listening-order.json"
 SCRIPTS_DIR = ROOT / "scripts"
 AUDIO_DIR = ROOT / "audio"
 DEFAULT_KOKORO_AUDIO_DIR = AUDIO_DIR / "kokoro-am_liam-af_jessica"

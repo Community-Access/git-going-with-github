@@ -1,8 +1,8 @@
 #!/usr/bin/env python3
-"""Batch-generate all podcast episodes using local Piper ONNX models.
+"""Batch-generate podcast episodes using local Piper ONNX models.
 
-Iterates every ep*.txt and cc-*.txt script in podcasts/scripts/ and writes
-final episode files to podcasts/audio/ according to voice-config.ini.
+Piper is a maintained fallback/comparison engine. Kokoro is the production
+default through podcasts.tts.generate_audio.
 
 Usage:
   python -m podcasts.tts.generate_all
@@ -19,58 +19,25 @@ SCRIPTS_DIR = ROOT / 'scripts'
 if str(REPO_ROOT) not in sys.path:
     sys.path.insert(0, str(REPO_ROOT))
 
-
-def script_index(path: Path) -> int | None:
-    """Return the numeric index for epNN or cc-NN scripts, else None."""
-    stem = path.stem
-    if stem.startswith('ep'):
-        try:
-            return int(stem.split('-', 1)[0].replace('ep', ''))
-        except ValueError:
-            return None
-    if stem.startswith('cc-'):
-        parts = stem.split('-', 2)
-        if len(parts) > 1 and parts[1].isdigit():
-            return int(parts[1])
-    return None
-
-
-def script_sort_key(path: Path) -> tuple[int, int, str]:
-    stem = path.stem
-    if stem.startswith('ep'):
-        return (0, script_index(path) or 0, stem)
-    if stem.startswith('cc-'):
-        index = script_index(path)
-        return (1, index if index is not None else 999, stem)
-    return (2, 999, stem)
-
-
-def script_group(path: Path) -> str:
-    parent = path.parent.name.lower()
-    if parent in {'chapters', 'challenges', 'appendices'}:
-        return parent
-    if path.stem.startswith('cc-'):
-        return 'challenges'
-    return 'chapters'
-
+from podcasts.listening_plan import ordered_script_paths, script_group, script_index  # noqa: E402
 
 def main():
     import argparse
-    parser = argparse.ArgumentParser(description='Batch-generate all podcast episodes')
+    parser = argparse.ArgumentParser(description='Batch-generate podcast episodes with Piper')
     parser.add_argument('--start', type=int, default=0, help='First episode number (inclusive)')
     parser.add_argument('--end', type=int, default=999, help='Last episode number (inclusive)')
     parser.add_argument('--group', choices=['all', 'chapters', 'challenges', 'appendices'], default='all',
                         help='Limit generation to a script category')
+    parser.add_argument('--audio-format', choices=['wav', 'mp3', 'both'], default=None,
+                        help='Episode output format override for Piper')
+    parser.add_argument('--config', type=Path, help='Piper voice config INI file')
+    parser.add_argument('--male-model', help='Alex Piper model filename')
+    parser.add_argument('--female-model', help='Jamie Piper model filename')
+    parser.add_argument('--dry-run', action='store_true', help='Print the listening-order queue without audio synthesis')
+    parser.add_argument('--force', action='store_true', help='Accepted for CLI parity; Piper regenerates selected output')
     args = parser.parse_args()
 
-    scripts: list[Path] = sorted(
-        [
-            path
-            for path in SCRIPTS_DIR.rglob('*.txt')
-            if path.is_file() and (path.stem.startswith('ep') or path.stem.startswith('cc-'))
-        ],
-        key=script_sort_key,
-    )
+    scripts: list[Path] = ordered_script_paths(SCRIPTS_DIR)
     if not scripts:
         print(f'No episode scripts found in {SCRIPTS_DIR}')
         sys.exit(1)
@@ -92,10 +59,25 @@ def main():
         print(f'No matching scripts found in {SCRIPTS_DIR} for range {args.start}..{args.end}')
         sys.exit(1)
 
+    if args.dry_run:
+        print(f'Piper generation queue ({len(scripts)} scripts, group={args.group}, order=listening):')
+        for index, script in enumerate(scripts, start=1):
+            print(f'{index:02d}. {script.stem} ({script_group(script)})')
+        return
+
     print(f'Found {len(scripts)} scripts to process (range {args.start:02d}-{args.end:02d})')
 
     # Import the single-episode generator from our own package
-    from podcasts.tts.generate_episode import generate_episode
+    from podcasts.tts.generate_episode import configure_runtime, generate_episode
+
+    configure_runtime(
+        config_path=args.config,
+        cli_overrides={
+            'episode_audio_format': args.audio_format,
+            'male_model': args.male_model,
+            'female_model': args.female_model,
+        },
+    )
 
     success = 0
     failed: list[str] = []
