@@ -647,7 +647,7 @@ In high-contrast themes, these colors map to system theme colors that remain dis
 6. Stage the resolved file: `Ctrl+Shift+G` → find the file → **Stage changes**
 7. Commit the merge
 
-**GitHub Copilot can help:** With the cursor in a conflict region, open Copilot Chat (`Ctrl+Shift+I`) and type: "Resolve this merge conflict - keep meaningful changes from both sides." Copilot will suggest a resolution that you can review and accept.
+**GitHub Copilot can help:** With the cursor in a conflict region, open Copilot Chat (`Ctrl+Alt+I`, or **Chat: Open Chat** from the Command Palette if your keymap differs) and type: "Resolve this merge conflict - keep meaningful changes from both sides." Copilot will suggest a resolution that you can review and accept.
 
 </details>
 
@@ -662,7 +662,7 @@ In high-contrast themes, these colors map to system theme colors that remain dis
 6. Stage the resolved file: `Cmd+Shift+G` → find the file → **Stage changes**
 7. Commit the merge
 
-**GitHub Copilot can help:** With the cursor in a conflict region, open Copilot Chat (`Cmd+Option+I`) and type: "Resolve this merge conflict - keep meaningful changes from both sides." Copilot will suggest a resolution that you can review and accept.
+**GitHub Copilot can help:** With the cursor in a conflict region, open Copilot Chat with **Chat: Open Chat** from the Command Palette, or use your configured Chat shortcut, and type: "Resolve this merge conflict - keep meaningful changes from both sides." Copilot will suggest a resolution that you can review and accept.
 
 </details>
 
@@ -840,7 +840,7 @@ Answer these three questions:
 >
 > Once you have mastered manual conflict resolution:
 >
-> - **In VS Code** - Copilot Chat (`Ctrl+Shift+I`) can explain a conflict in plain language - *"Person A renamed the button to 'Submit Form'; Person B renamed it to 'Send Message'. Which intent should take priority?"* - but you decide what survives
+> - **In VS Code** - Copilot Chat (`Ctrl+Alt+I`, or **Chat: Open Chat** from the Command Palette if your keymap differs) can explain a conflict in plain language - *"Person A renamed the button to 'Submit Form'; Person B renamed it to 'Send Message'. Which intent should take priority?"* - but you decide what survives
 > - **In your repo** - Accessibility Agents' `@pr-review` can identify high-risk overlapping changes before a conflict occurs, flagging when two contributors are editing the same file area and giving you time to coordinate before it escalates
 > - **In the cloud** - GitHub Agentic Workflows can detect stale PRs diverging from `main` and automatically notify contributors with a suggested rebase checklist - preventing the conflict before it is ever introduced
 >

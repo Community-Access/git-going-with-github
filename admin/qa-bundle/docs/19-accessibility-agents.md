@@ -26,7 +26,7 @@
 ### Core Prerequisites (Required for All Agents)
 
 - [ ] Chapter 0: [Pre-Workshop Setup](00-pre-workshop-setup.md) - Git, VS Code, and GitHub account
-- [ ] Chapter 16: [GitHub Copilot](16-github-copilot.md) - GitHub Copilot Chat installed and working
+- [ ] Chapter 16: [GitHub Copilot](16-github-copilot.md) - built-in Copilot features enabled and working in VS Code
 - [ ] GitHub Copilot access (Copilot Free tier is enough for this workshop)
 - [ ] `.github/agents/` folder exists in your repository (or will create custom agents)
 
@@ -112,7 +112,7 @@ I am ready because I have already: [specific skill from Day 1]
 **Estimated time:** 30 minutes.
 
 1. Clone your fork of [accessibility-agents](https://github.com/Community-Access/accessibility-agents) to VS Code (or open it in github.dev).
-2. Open Copilot Chat: `Ctrl+Shift+I` (Mac: `Cmd+Shift+I`).
+2. Open Copilot Chat: `Ctrl+Alt+I`, or run **Chat: Open Chat** from the Command Palette if your keymap differs.
 3. Choose one agent from your discovery list. If unsure, start with `@daily-briefing` or `@issue-tracker`.
 4. Run it with a simple prompt. Examples:
    - `@daily-briefing morning briefing`
@@ -199,7 +199,7 @@ Your evidence is the Challenge 15 issue comments for 15.1, 15.2, and 15.3. For o
 
 1. Cannot find an agent that matches your skills? Start with `@daily-briefing` or `@issue-tracker` - those build directly on Chapter 2-5 material. If you have not done those manual steps yet, go back to those chapters first.
 2. Agent output does not make sense? That is the right response. Paste the output in an issue comment along with your confusion. That is valuable feedback - the agent may need better instructions or guardrails.
-3. Cannot access the agents in Copilot Chat? Verify: Is Copilot Chat extension installed (not just base Copilot)? Are you signed in to GitHub in VS Code? Does `.github/agents/` folder exist in your cloned repository?
+3. Cannot access the agents in Copilot Chat? Verify: Are built-in AI features enabled in VS Code? Are you signed in to GitHub in VS Code with Copilot access? Does `.github/agents/` folder exist in your cloned repository?
 4. Repository will not clone? Use the terminal: `git clone https://github.com/[your-username]/accessibility-agents.git` then open the folder in VS Code.
 5. Ask facilitator to show them what agent you wanted to run, what output you got, and what you expected.
 6. Finished but not sure you did it right? Compare your work against the [Challenge 15 reference solution](solutions/solution-15-agents.md).
@@ -344,14 +344,14 @@ For the workshop, you will also fork and clone the repository so you can make co
    ```
 
 3. **Open in VS Code**: navigate to the folder and run `code .` (or File, then Open Folder)
-4. **Open Copilot Chat**: `Ctrl+Shift+I`
+4. **Open Copilot Chat**: `Ctrl+Alt+I`, or run **Chat: Open Chat** from the Command Palette if your keymap differs
 5. **Test**: type `@daily-briefing morning briefing` and press `Enter`
 
 **No API keys. No configuration files. The installer handles everything.** If Copilot Chat works, the agents work.
 
 ### Prerequisites
 
-- GitHub Copilot Chat extension installed (see [GitHub Copilot: Installation](16-github-copilot.md#2-installing-github-copilot))
+- Built-in GitHub Copilot features enabled in current VS Code (see [GitHub Copilot setup](16-github-copilot.md#2-setting-up-github-copilot))
 - Signed in to GitHub via VS Code
 - A workspace open containing `.github/agents/` folder with `.agent.md` files
 
@@ -1437,7 +1437,7 @@ This tiered approach - automate what can be objectively evaluated, flag what nee
 
 #### From VS Code
 
-1. Open Copilot Chat (`Ctrl+Shift+I` / `Cmd+Shift+I` on macOS)
+1. Open Copilot Chat (`Ctrl+Alt+I`) or run **Chat: Open Chat** from the Command Palette
 2. In the Chat input toolbar, select the **Set Agent** button
 3. Select your custom agent from the agent picker
 4. Type your request - the agent executes in your local workspace
@@ -1520,7 +1520,7 @@ You've built templates manually (Chapters 15-16) and seen them in action. Now se
 
 ###### What to do
 
-1. **Keyboard shortcut:** Press `Ctrl+Shift+I` (Windows/Linux) or `Cmd+Shift+I` (macOS)
+1. **Keyboard shortcut:** Press `Ctrl+Alt+I`, or run **Chat: Open Chat** from the Command Palette if your keymap differs
    - **Alternative:** Use menu: **View** → **Copilot Chat**
 2. A chat panel opens on the right side of VS Code
 3. At the top, you see "Copilot Chat" and probably a text input at the bottom saying "Ask Copilot..."
@@ -1532,7 +1532,7 @@ You've built templates manually (Chapters 15-16) and seen them in action. Now se
 
 ###### If Copilot Chat doesn't open
 
-- Make sure GitHub Copilot Chat extension is installed (Extensions sidebar → search "GitHub Copilot Chat")
+- Make sure built-in AI features are enabled in VS Code and that you are signed in with an account that has Copilot access
 - Make sure you're signed into GitHub (top right of VS Code)
 - Restart VS Code if neither of the above is the problem
 
@@ -1908,7 +1908,7 @@ A security vulnerability report template ready for your project's use.
 
 ###### What to do
 
-1. Open Copilot Chat again: `Ctrl+Shift+I`
+1. Open Copilot Chat again: `Ctrl+Alt+I`, or run **Chat: Open Chat** from the Command Palette
 2. Type: `@template-builder create security template`
 3. Press `Enter`
 4. The agent should now ask vulnerability-specific questions:
@@ -2378,7 +2378,7 @@ Run this command? (Y/n)
 
 | Action | Shortcut |
 | --------  | ----------  |
-| Open Copilot Chat | `Ctrl+Shift+I` |
+| Open Copilot Chat | `Ctrl+Alt+I` or **Chat: Open Chat** from the Command Palette |
 | Invoke agent | Type `@agent-name` in Chat |
 | Use slash command | Type `/command` in Chat |
 | Accessible View | `Alt+F2` |

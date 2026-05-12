@@ -4,7 +4,7 @@
 >
 > **Authoritative source:** [GitHub Docs: Copilot](https://docs.github.com/en/copilot)
 
-> This appendix consolidates Copilot reference tables (formerly Appendix W) and Copilot model information (formerly Appendix X) into one complete reference.
+> This appendix consolidates Copilot reference tables and Copilot model-selection guidance into one complete reference.
 
 ---
 
@@ -60,7 +60,7 @@
 
 | Action | Windows / Linux | macOS |
 | --------  | ----------------  | -------  |
-| Open Chat panel | `Ctrl+Shift+I` | `Cmd+Shift+I` |
+| Open Chat panel | `Ctrl+Alt+I` | Use **Chat: Open Chat** from the Command Palette if your keymap differs |
 | Open inline chat (in-file, at cursor) | `Ctrl+I` | `Cmd+I` |
 | Open Quick Chat (floating dialog) | `Ctrl+Shift+Alt+I` | `Cmd+Shift+Ctrl+I` |
 | Send message | `Ctrl+Enter` | `Cmd+Enter` |
@@ -171,7 +171,7 @@ Copilot Chat has four modes. Select the current mode from the dropdown at the bo
 
 **Screen reader note:** The mode selector is in the Chat panel toolbar at the bottom. Tab through the bottom of the Chat view to find it. The current mode name is its accessible label. Press `Space` or `Enter` to open the dropdown.
 
-**Model selection** is a separate control, also at the bottom of the Chat input. See [Appendix X: AI Models Reference](appendix-k-copilot-reference.md) for a complete guide to choosing models.
+**Model selection** is a separate control, also at the bottom of the Chat input. See [Appendix K: GitHub Copilot Reference](appendix-k-copilot-reference.md) for a complete guide to choosing models.
 
 
 ### Learning Cards: Chat Participants, Commands, and Modes
@@ -458,7 +458,7 @@ Copilot Chat responses stream in token by token, which can fragment screen reade
 ### Recommended Workflow - Every Copilot Interaction
 
 ```text
-1. Open Copilot Chat: Ctrl+Shift+I
+1. Open Copilot Chat: `Ctrl+Alt+I`, or run **Chat: Open Chat** from the Command Palette if your keymap differs
 2. Type your prompt
 3. Press Ctrl+Enter to send
 4. Press Alt+F2 to open Accessible View (open immediately - no need to wait)
@@ -754,7 +754,7 @@ The Diagnostics panel shows:
 
 | What | Windows / Linux | macOS |
 | ------  | ----------------  | -------  |
-| Chat panel | `Ctrl+Shift+I` | `Cmd+Shift+I` |
+| Chat panel | `Ctrl+Alt+I` | Use **Chat: Open Chat** from the Command Palette if your keymap differs |
 | Inline chat (in file) | `Ctrl+I` | `Cmd+I` |
 | Quick Chat (floating) | `Ctrl+Shift+Alt+I` | `Cmd+Shift+Ctrl+I` |
 
@@ -799,7 +799,7 @@ The Diagnostics panel shows:
 
 ### Prerequisites
 
-- VS Code with **GitHub Copilot Chat** extension installed
+- Current VS Code with built-in AI features enabled, or an older managed VS Code build where Copilot has been enabled by your administrator
 - A GitHub account with Copilot access (Free tier or paid)
 - A screen reader (NVDA recommended for this guide)
 
@@ -849,7 +849,7 @@ This is the complete table of Copilot screen reader shortcuts as published by th
 | Opens suggestion in Accessible View panel | `Alt+F2` |
 | Inserts suggestion from Accessible View at cursor | `Ctrl+/` |
 | Opens Inline Chat (in-file, at cursor) | `Ctrl+I` |
-| Opens dedicated Chat view | `Ctrl+Shift+I` |
+| Opens dedicated Chat view | `Ctrl+Alt+I` or **Chat: Open Chat** from the Command Palette |
 
 ### Step 4: Recommended Workflow for Inline Suggestions
 
@@ -872,7 +872,7 @@ This workflow avoids the streaming announcement problem (where suggestions are r
 ### Step 5: Recommended Workflow for Chat Responses
 
 ```text
-1. Open Chat: Ctrl+Shift+I
+1. Open Chat: `Ctrl+Alt+I`, or run **Chat: Open Chat** from the Command Palette if your keymap differs
 2. Type your prompt, press Ctrl+Enter to send
 3. Press Alt+F2 - Accessible View opens immediately; the response streams live into it
 4. Navigate with Arrow keys - no streaming noise, follow along in real-time
@@ -960,7 +960,7 @@ Pressing `Ctrl+Enter` opens a **Suggestions Panel** - a separate editor tab that
 
 The easiest way to explore awesome-copilot from VS Code:
 
-1. Open Copilot Chat (`Ctrl+Shift+I`)
+1. Open Copilot Chat (`Ctrl+Alt+I`) or run **Chat: Open Chat** from the Command Palette
 2. Type `/plugin` and press `Enter`
 3. Copilot Chat opens an interactive plugin marketplace browser
 4. Browse plugins by category, read descriptions, and install with a single command
@@ -1186,10 +1186,10 @@ gh aw compile .github/workflows/daily-report.md
 <!-- TOC -->
 - [Overview](#1-overview)
 - [How to Choose a Model](#2-how-to-choose-a-model)
-- [Complete Model Reference](#3-complete-model-reference)
+- [Current Model and Billing Sources](#3-current-model-and-billing-sources)
 - [Model Availability by Plan](#4-model-availability-by-plan)
-- [Premium Requests and Cost Multipliers](#5-premium-requests-and-cost-multipliers)
-- [Switching Models in VS Code](#6-switching-models-in-vs-code)
+- [GitHub AI Credits and Usage](#5-github-ai-credits-and-usage)
+- [Switching Models in VS Code](#6-switching-models-in-vscode)
 - [Auto Model Selection](#7-auto-model-selection)
 - [Models Retiring Soon](#8-models-retiring-soon)
 <!-- /TOC -->
@@ -1197,142 +1197,96 @@ gh aw compile .github/workflows/daily-report.md
 
 ## 1. Overview
 
-GitHub Copilot offers access to AI models from multiple providers including OpenAI, Anthropic, Google, and xAI. The model you choose affects response quality, speed, and premium request consumption. Different models excel at different tasks - understanding these trade-offs helps you get better results.
+GitHub Copilot offers access to AI models from multiple providers including OpenAI, Anthropic, Google, and others. The model you choose affects response quality, speed, and usage cost. Different models excel at different tasks - understanding these trade-offs helps you get better results.
 
-**Models are updated frequently.** This appendix reflects the model landscape as of April 2026. For the latest additions and retirements, see the [GitHub Copilot changelog](https://github.blog/changelog/label/copilot/) and [GitHub's official supported models documentation](https://docs.github.com/en/copilot/reference/ai-models/supported-models).
+**Models are updated frequently.** This appendix no longer keeps a static model roster because the April-May 2026 changelog includes multiple additions, removals, and deprecations. For the latest additions and retirements, see the [GitHub Copilot changelog](https://github.blog/changelog/2026/?label=copilot) and [GitHub's official supported models documentation](https://docs.github.com/en/copilot/reference/ai-models/supported-models).
 
-> **Workshop note:** GitHub Copilot plans, billing, and model availability are changing. We will provide specific guidance at the workshop. Check [github.com/settings/copilot](https://github.com/settings/copilot) to verify your current access.
+> **Workshop note, verified May 12, 2026:** GitHub Copilot is moving to usage-based billing on June 1, 2026. Check [GitHub Copilot settings](https://github.com/settings/copilot), the [GitHub Copilot plans page](https://github.com/features/copilot/plans), and the [usage-based billing documentation](https://docs.github.com/en/copilot/concepts/billing/usage-based-billing-for-individuals) before the workshop.
 
 
 ## 2. How to Choose a Model
 
-GitHub Docs organizes models by task. Match your task to the right model to get the best results without unnecessary premium request cost.
+GitHub Docs organizes models by task. Match your task to the right level of capability instead of memorizing a model name.
 
-### General-Purpose Coding and Writing
+### Everyday coding and writing
 
-For everyday tasks - code completions, explanations, refactoring, writing documentation.
+Use the default or Auto selection for short explanations, Markdown drafting, commit messages, PR descriptions, and small refactors. For this workshop, this is the safest starting point.
 
-| Model | Provider | Strengths | Cost |
-| -------  | ----------  | -----------  | ------  |
-| **GPT-4.1** | OpenAI | Fast, accurate code completions and explanations. Reliable default for most tasks. | Free |
-| **GPT-5 mini** | OpenAI | Reliable for most coding and writing tasks. Fast and accurate across languages and frameworks. Also supports image input. | Free |
-| **GPT-5.1-Codex** | OpenAI | Higher-quality code on complex engineering tasks like features, tests, debugging, refactors, and reviews - without requiring lengthy prompts. | 1× |
-| **Grok Code Fast 1** | xAI | Specialized for coding. Performs well on code generation and debugging across multiple languages. | 0.25× |
-| **Raptor mini** | OpenAI (fine-tuned) | Specialized for fast, accurate inline suggestions and explanations. Optimized for completions. | Free |
+### Fast help with simple or repetitive tasks
 
-### Fast Help with Simple or Repetitive Tasks
+Use lighter models for quick answers, boilerplate, simple rewrites, and short command explanations. This helps preserve included usage when billing is usage-based.
 
-For quick answers, boilerplate generation, renaming, or lightweight explanations where speed matters.
+### Deep reasoning and debugging
 
-| Model | Provider | Strengths | Cost |
-| -------  | ----------  | -----------  | ------  |
-| **Claude Haiku 4.5** | Anthropic | Balances fast responses with quality output. Ideal for small tasks and lightweight code explanations. | 0.33× |
-| **Gemini 3 Flash** | Google | Fast, reliable answers to lightweight coding questions. | 0.33× |
-| **GPT-5.1-Codex-Mini** | OpenAI | Fast reasoning variant; quick answers on coding tasks. | 0.33× |
+Use more capable models for architecture questions, unfamiliar codebases, multi-file reasoning, and difficult debugging. These interactions typically consume more usage because they process more context and generate longer responses.
 
-### Deep Reasoning and Debugging
+### Agentic software development
 
-For complex problems, architecture decisions, multi-file analysis, tricky bugs, and understanding unfamiliar codebases.
+Agent mode, Copilot CLI, Copilot cloud agent, and third-party coding agents can make multiple model calls within one task. Use them for scoped, valuable work rather than casual exploration, especially when working under a limited plan.
 
-| Model | Provider | Strengths | Cost |
-| -------  | ----------  | -----------  | ------  |
-| **GPT-5 mini** | OpenAI | Deep reasoning with faster responses. Ideal for interactive sessions and step-by-step code analysis. | Free |
-| **GPT-5.2** | OpenAI | Great at complex reasoning, code analysis, and technical decision-making. | 1× |
-| **GPT-5.5** | OpenAI | Latest OpenAI reasoning model. Generally available as of April 24, 2026. Strong on complex coding tasks and long-context reasoning. | 1× |
-| **Claude Sonnet 4 / 4.5 / 4.6** | Anthropic | More reliable completions and smarter reasoning under pressure. Performance and practicality balanced for coding workflows; strong at complex problem-solving. | 1× |
-| **Claude Opus 4.6** | Anthropic | Anthropic's most powerful model. Best for the most demanding complex problem-solving challenges and sophisticated reasoning. | 3× |
-| **Gemini 2.5 Pro** | Google | Complex code generation, debugging, and research workflows. | 1× |
-| **Gemini 3 Pro** | Google | Advanced reasoning across long contexts and scientific or technical analysis. Supports vision/image input. | 1× |
-| **Goldeneye** | OpenAI (fine-tuned) | Complex problem-solving and sophisticated reasoning. Available for code completions and Copilot Free users only. | 1× |
+### Working with visuals
 
-### Agentic Software Development
-
-For autonomous coding tasks in Agent mode - when Copilot writes code, runs terminal commands, and iterates without step-by-step guidance from you.
-
-| Model | Provider | Strengths | Cost |
-| -------  | ----------  | -----------  | ------  |
-| **GPT-5.1-Codex-Max** | OpenAI | Best for agentic tasks. Recommended when using Copilot in Agent mode. | 1× |
-| **GPT-5.2-Codex** | OpenAI | Best for agentic tasks. Strong autonomous reasoning and multi-step execution. | 1× |
-| **GPT-5.3-Codex** | OpenAI | Newest Codex variant. Powerful agentic capabilities. | 1× |
-
-### Working with Visuals
-
-For tasks that involve images, screenshots, diagrams, or UI mockups - paste an image directly into the chat input.
-
-| Model | Supports Images |
-| -------  | ----------------  |
-| GPT-5 mini | Yes |
-| Claude Sonnet 4 / 4.5 / 4.6 | Yes |
-| Gemini 3 Pro | Yes |
+Some models support image input. Check the model picker and the official supported-models documentation before planning an exercise that depends on screenshots or image analysis.
 
 
-## 3. Complete Model Reference
+## 3. Current Model and Billing Sources
 
-| Model | Status | Provider | Plans | Multiplier |
-| -------  | --------  | ----------  | -------  | -----------  |
-| GPT-4.1 | GA | OpenAI | Free, Pro, Pro+, Business, Enterprise | 0 (free) |
-| GPT-5 mini | GA | OpenAI | Free, Pro, Pro+, Business, Enterprise | 0 (free) |
-| Raptor mini | Preview | OpenAI (fine-tuned) | Free, Pro | 0 (free) |
-| Goldeneye | GA | OpenAI (fine-tuned) | All plans (completions only) | 1× |
-| Grok Code Fast 1 | GA | xAI | Pro, Pro+, Business, Enterprise | 0.25× |
-| Claude Haiku 4.5 | GA | Anthropic | Pro, Pro+, Business, Enterprise | 0.33× |
-| Gemini 3 Flash | GA | Google | Pro, Pro+, Business, Enterprise | 0.33× |
-| GPT-5.1-Codex-Mini | GA | OpenAI | Pro, Pro+, Business, Enterprise | 0.33× |
-| GPT-5.1-Codex | GA | OpenAI | Pro, Pro+, Business, Enterprise | 1× |
-| GPT-5.1-Codex-Max | GA | OpenAI | Pro, Pro+, Business, Enterprise | 1× |
-| GPT-5.1 | GA | OpenAI | Pro, Pro+, Business, Enterprise | 1× |
-| GPT-5.2 | GA | OpenAI | Pro, Pro+, Business, Enterprise | 1× |
-| GPT-5.2-Codex | GA | OpenAI | Pro, Pro+, Business, Enterprise | 1× |
-| GPT-5.3-Codex | GA | OpenAI | Pro, Pro+, Business, Enterprise | 1× |
-| GPT-5.5 | GA | OpenAI | Pro, Pro+, Business, Enterprise | 1× |
-| Claude Sonnet 4 | GA | Anthropic | Pro, Pro+, Business, Enterprise | 1× |
-| Claude Sonnet 4.5 | GA | Anthropic | Pro, Pro+, Business, Enterprise | 1× |
-| Claude Sonnet 4.6 | GA | Anthropic | Pro, Pro+, Business, Enterprise | 1× |
-| Gemini 2.5 Pro | GA | Google | Pro, Pro+, Business, Enterprise | 1× |
-| Gemini 3 Pro | Preview | Google | Pro, Pro+, Business, Enterprise | 1× |
-| Claude Opus 4.5 | Preview | Anthropic | Pro+, Business, Enterprise | 3× |
-| Claude Opus 4.6 | GA | Anthropic | Pro+, Business, Enterprise | 3× |
+The following table lists the official sources to use instead of static model tables in this curriculum.
 
-> **Note:** Model availability changes frequently. Check [GitHub's supported models page](https://docs.github.com/en/copilot/reference/ai-models/supported-models) for the current list. Facilitators will provide current guidance at the workshop.
+| Need | Current source |
+| --- | --- |
+| Supported model list | [GitHub supported Copilot models documentation](https://docs.github.com/en/copilot/reference/ai-models/supported-models) |
+| Model additions and retirements | [GitHub Copilot changelog](https://github.blog/changelog/2026/?label=copilot) |
+| Current Copilot plans | [GitHub Copilot plans page](https://github.com/features/copilot/plans) |
+| Usage-based billing details | [Usage-based billing for individuals](https://docs.github.com/en/copilot/concepts/billing/usage-based-billing-for-individuals) |
+| Billing transition announcement | [GitHub Copilot usage-based billing announcement](https://github.blog/news-insights/company-news/github-copilot-is-moving-to-usage-based-billing/) |
+
+### Source-backed facts verified May 12, 2026
+
+- GitHub Copilot moves to usage-based billing on June 1, 2026.
+- Premium request units are being replaced by GitHub AI Credits.
+- One GitHub AI Credit equals $0.01 USD in the usage-based billing documentation.
+- Copilot Chat, Copilot CLI, Copilot cloud agent, Copilot Spaces, Spark, and third-party coding agents consume AI Credits.
+- Code completions and next edit suggestions are not billed in AI Credits for paid plans.
+- Copilot code review is expected to consume GitHub Actions minutes in addition to GitHub AI Credits starting June 1, 2026.
+- Model availability changes frequently, and multiple models were deprecated or retired in the April-May 2026 changelog.
 
 
 ## 4. Model Availability by Plan
 
-| Plan | Free Models Included | Paid Models Available | Monthly Premium Requests |
-| ------  | ---------------------  | ----------------------  | --------------------------  |
-| **Copilot Free** | GPT-4.1, GPT-5 mini, Raptor mini | None | 50 (monthly) |
-| **Copilot Pro** | All 0× models | Most (Pro+ models excluded) | 300 (monthly) |
-| **Copilot Pro+** | All 0× models | All models | Unlimited |
-| **Copilot Business** | All 0× models | Most | 300 per user (monthly) |
-| **Copilot Enterprise** | All 0× models | All models | Unlimited |
+Plan names, included usage, and model access can change by date, account type, organization policy, region, and rollout. Do not copy plan limits from this appendix into learner instructions.
 
-> **Billing is changing.** GitHub Copilot plan details and billing models are actively evolving. Facilitators will provide current guidance at the workshop. Check [github.com/settings/copilot](https://github.com/settings/copilot) to see your current plan and usage.
+### Workshop-safe plan guidance
+
+- **Copilot Free** can support short, focused workshop prompts, but it has monthly limits.
+- **Verified students** may have access to GitHub Copilot Student plan benefits.
+- **Organization and enterprise users** may have Copilot access managed by an administrator.
+- **Paid plans** include more usage and broader feature access, but the billing unit changes to GitHub AI Credits on June 1, 2026.
+- **Annual individual plans** may follow transition rules that differ from monthly plans.
+
+Check [GitHub Copilot settings](https://github.com/settings/copilot) for your account and the [GitHub Copilot plans page](https://github.com/features/copilot/plans) for current public plan details.
 
 
-## 5. Premium Requests and Cost Multipliers
+## 5. GitHub AI Credits and Usage
 
-| Multiplier | Impact | Example Models |
-| -----------  | --------  | ----------------  |
-| **0 (free)** | Never consumes premium requests | GPT-4.1, GPT-5 mini, Raptor mini |
-| **0.25×** | Very low cost | Grok Code Fast 1 |
-| **0.33×** | Low cost | Claude Haiku 4.5, Gemini 3 Flash, GPT-5.1-Codex-Mini |
-| **1×** | Standard | Claude Sonnet 4/4.5/4.6, GPT-5.1-Codex, GPT-5.2, Gemini 2.5 Pro, Codex variants |
-| **3×** | High cost | Claude Opus 4.5, Claude Opus 4.6 |
+Usage-based billing measures Copilot usage with GitHub AI Credits. The cost of an interaction depends on the selected model and the tokens used for input, output, and cached context.
 
-### Tips for managing premium request usage
+### Tips for managing usage
 
-- Use **GPT-4.1** or **GPT-5 mini** (both free) for everyday questions, quick explanations, and simple completions - they're fast and capable
-- Upgrade to **Claude Sonnet** or **GPT-5.2** (1×) only when the task genuinely requires deeper reasoning
-- Save **Claude Opus** (3×) for the most demanding analyses - architecture decisions, complex debugging, sophisticated design review
-- Use **Auto** mode (see below) and let Copilot allocate model selection intelligently
+- Use **Auto** model selection unless the facilitator gives a specific reason to choose a model.
+- Keep workshop prompts focused and short.
+- Ask one clear question at a time when using Copilot Free or any limited plan.
+- Use agentic features for meaningful multi-step tasks, not casual exploration.
+- Review model badges, model picker details, and usage dashboards when they are available in your account.
+- Prefer code completions and next edit suggestions for simple local edits because paid-plan documentation says those are not billed in AI Credits.
 
 
 ## 6. Switching Models in VS Code
 
 ### In the Chat Panel
 
-1. Open the **Chat** panel (`Ctrl+Shift+I` / `Cmd+Shift+I`)
-2. At the bottom of the chat input area, you'll see the current model name as a button (e.g., "Auto" or "Claude Sonnet 4.6")
+1. Open the **Chat** panel (`Ctrl+Alt+I`) or run **Chat: Open Chat** from the Command Palette
+2. At the bottom of the chat input area, you'll see the current model name as a button, often **Auto** or a specific model name
 3. Activate the model picker button - this opens a dropdown list of available models
 4. Arrow through the list and press `Enter` to select a model
 5. For screen reader users: the chat input will announce the newly selected model after switching
@@ -1354,19 +1308,19 @@ In the Chat panel, the model picker button is near the **bottom** of the chat vi
 
 ## 7. Auto Model Selection
 
-**Auto mode** (the default) lets Copilot choose the best model based on the type of request. It became generally available on December 10, 2025.
+**Auto mode** lets Copilot choose the best model based on the type of request.
 
 ### How Auto works
 
 - For simple questions, Copilot routes to a faster, lighter model
 - For complex code generation or debugging, Copilot upgrades to a more capable model automatically
 - For agent tasks, Copilot selects an appropriate Codex model
-- You can see which model was used after each response
+- You may be able to see which model was used after each response. VS Code 1.119 and later can show model details and multipliers for some Copilot CLI and agent responses.
 
 ### When to override Auto
 
-- You specifically need a model with certain capabilities (e.g., vision input with Claude Sonnet 4)
-- You're managing premium request quotas and want to control costs
+- You specifically need a model with certain capabilities, such as image input
+- You're managing usage and want to control costs
 - You've found a particular model gives better results for your specific workflow or domain
 - You're doing agentic work and want to explicitly select an agent-optimized Codex model (check current availability in the model picker)
 
@@ -1375,18 +1329,13 @@ To switch back to Auto from a specific model, re-open the model picker and selec
 
 ## 8. Models Retiring Soon
 
-GitHub regularly updates the model roster. Older model versions are retired when newer equivalents are available. When a model is retired, Copilot stops sending requests to it and falls back to newer alternatives.
+GitHub regularly updates the model roster. Older model versions are retired when newer equivalents are available. When a model is retired, Copilot stops sending requests to it and routes to available alternatives.
 
-### Already retired (as of April 2026)
+### Recent retirement signals
 
-- Claude Sonnet 3.5, Claude Sonnet 3.7
-- Gemini 2.0 Flash
-- o1-mini, o3, o3-mini, o4-mini
-- Claude Opus 4.1
-- GPT-5 (base), GPT-5-Codex
-- GPT-5.3-Codex (removed from Student plan model picker, April 2026)
+The April-May 2026 GitHub Copilot changelog included retirements and deprecations for several model families. Treat any named model in workshop materials as a temporary example, not a guarantee.
 
-To stay current, watch the [GitHub Copilot changelog](https://github.blog/changelog/label/copilot/) - model additions and retirements are announced there.
+To stay current, watch the [GitHub Copilot changelog](https://github.blog/changelog/2026/?label=copilot) - model additions and retirements are announced there.
 
 
 ## Related Resources

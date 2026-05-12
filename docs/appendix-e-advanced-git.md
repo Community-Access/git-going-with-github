@@ -143,7 +143,7 @@ git cherry-pick --abort
 
 > **Screen reader tip:** When a cherry-pick stops due to a conflict, run `git status` in the terminal — it announces exactly which files need attention. The conflict markers are plain text and read naturally line by line.
 
-> **GitHub Copilot can help:** Before cherry-picking a commit you're not sure about, open Copilot Chat (`Ctrl+Shift+I`) and ask: *"What does commit a1b2c3d do? Should I cherry-pick it onto my branch?"* Paste the `git show a1b2c3d` output into the chat for context. After cherry-picking, if a conflict opens, Copilot can suggest a resolution — see [Section 11](#11-using-github-copilot-for-git-operations) for prompts.
+> **GitHub Copilot can help:** Before cherry-picking a commit you're not sure about, open Copilot Chat (`Ctrl+Alt+I`, or **Chat: Open Chat** from the Command Palette if your keymap differs) and ask: *"What does commit a1b2c3d do? Should I cherry-pick it onto my branch?"* Paste the `git show a1b2c3d` output into the chat for context. After cherry-picking, if a conflict opens, Copilot can suggest a resolution - see [Section 11](#11-using-github-copilot-for-git-operations) for prompts.
 
 ---
 
@@ -838,7 +838,7 @@ Navigate to **Settings → Branches** in the repository. (You need admin access 
 
 GitHub Copilot isn't just for writing code — it's genuinely useful for Git operations, especially when you're doing something unfamiliar, hit a conflict, or need to understand what a command did. Here's how to use it across the advanced operations in this appendix.
 
-> **Opening Copilot Chat in VS Code:** Press `Ctrl+Shift+I` (Windows/Linux) or `Cmd+Option+I` (macOS), or click the Copilot Chat icon in the sidebar. Screen reader users: the chat input is a text field — type your prompt and press `Enter`.
+> **Opening Copilot Chat in VS Code:** Press `Ctrl+Alt+I`, run **Chat: Open Chat** from the Command Palette, or activate the Copilot Chat icon in the sidebar. Screen reader users: the chat input is a text field - type your prompt and press `Enter`.
 
 ### Resolving Merge Conflicts
 

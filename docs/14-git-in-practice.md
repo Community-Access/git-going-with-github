@@ -348,7 +348,7 @@ This repo contains custom loading phrases for GitHub Copilot Chat from three sci
 3. Navigate to the `themes/` folder and pick a `.json` file (star-trek, hitchhikers, or star-wars)
 4. Copy the `chat.agent.thinking.phrases` setting into your VS Code `settings.json`
 5. Reload VS Code: `Ctrl+Shift+P` → "Developer: Reload Window"
-6. Open Copilot Chat (`Ctrl+Shift+I`) and ask a question—watch your custom phrases appear!
+6. Open Copilot Chat (`Ctrl+Alt+I`, or **Chat: Open Chat** from the Command Palette if your keymap differs) and ask a question - watch your custom phrases appear!
 
 See `CLONE-THIS-REPO.md` in that repo for full instructions.
 

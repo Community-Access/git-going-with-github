@@ -8,6 +8,8 @@
 >
 > **Note:** Workshop content is being actively refined for the May 2026 cohort. Students should expect updates to materials leading up to and during the course.
 
+> **Important: tools and websites change.** GitHub.com, GitHub Classroom, VS Code, GitHub Copilot, github.dev, browser extensions, and agent experiences are living products. We do our best to keep this curriculum current and source-backed, but labels, page order, shortcuts, preview features, model availability, and account-policy behavior can shift. If the documentation and your screen differ, use the exploration pattern taught in Chapters 2 and 3: orient by URL, page title, H1, landmarks, tab names, button labels, keyboard help, and the VS Code Command Palette. Then report the mismatch so the documentation can be corrected.
+
 
 ## How This Course Works
 
@@ -41,6 +43,7 @@ Day 1 - Learn the skill in the browser
 
 github.dev - VS Code on the web, no install needed
   Same keyboard shortcuts · Same screen reader mode · Edit files · Open PRs
+  Limits: no local terminal or debugger, only web-compatible extensions, and not the full desktop agent workflow
 
      ↓  (you've earned the desktop - now it makes sense)
 

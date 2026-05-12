@@ -18,6 +18,8 @@
 
 If you want the most guided starting path, begin with [Get Going with GitHub](get-going.md). It explains how GitHub Classroom, your Learning Room repository, Challenge 1, evidence prompts, and tool choice all fit together before you start setup.
 
+> **Expect change across tools.** GitHub.com, GitHub Classroom, VS Code, GitHub Copilot, github.dev, browsers, extensions, and agent tools change regularly. The setup steps below are maintained against official sources, but exact labels, order, prompts, and availability can vary by account, organization policy, browser, operating system, and rollout. If something differs, pause, use headings/landmarks/labels or the VS Code Command Palette to explore, and ask for help with the exact page or prompt where you got stuck.
+
 ## Table of Contents
 
 1. [What You Will Need](#what-you-will-need)
@@ -756,7 +758,7 @@ GitHub Copilot is automatically included with Visual Studio Code. There is no ex
 
 1. Make sure Screen Reader Mode is enabled (see above)
 2. Make sure you are signed into GitHub in your web browser
-3. Press `Ctrl+Shift+I` to open Agent mode
+3. Press `Ctrl+Alt+I`, or run **Chat: Open Chat** from the Command Palette if your keymap differs, to open the Chat view
    - Your screen reader should announce the chat input field
 4. Type: `Hello` and press `Enter`
 5. VS Code will automatically sign you into GitHub Copilot using your browser session - no manual sign-in command is needed
@@ -815,7 +817,7 @@ For this workshop, Free tier is sufficient. If you want unlimited access, paid p
 
 - In the Extensions panel (`Ctrl+Shift+X`), type your search, press `Tab` to enter the results list, then `Down Arrow` through results; each announces the extension name and publisher
 - Verify the publisher is "GitHub" before installing; after arrowing to a result, press `Tab` once to hear the publisher name announced
-- To confirm Copilot is active, press `Ctrl+Shift+I` to open Agent mode; your screen reader should announce the chat input field within two seconds
+- To confirm Copilot is active, press `Ctrl+Alt+I`, or run **Chat: Open Chat** from the Command Palette if your keymap differs; your screen reader should announce the chat input field within two seconds
 
 </details>
 
@@ -833,7 +835,7 @@ For this workshop, Free tier is sufficient. If you want unlimited access, paid p
 
 - Look for the blue verified badge (checkmark) next to "GitHub" in the publisher field to confirm you have the official extension
 - After installing the Pull Requests extension, a new GitHub icon appears in the Activity Bar on the left; click it to see open PRs for the current repo
-- The Copilot chat panel opens on the right side when you press `Ctrl+Shift+I`; the sparkle icon in the editor gutter means Copilot has an inline suggestion
+- The Copilot chat panel opens when you press `Ctrl+Alt+I` or run **Chat: Open Chat** from the Command Palette; the sparkle icon in the editor gutter means Copilot has an inline suggestion
 
 </details>
 
@@ -887,7 +889,7 @@ GIT & VS CODE (required before the workshop)
 [ ] Visual Studio Code installed
 [ ] Screen Reader Mode enabled in VS Code (Shift+Alt+F1 or Command Palette)
 [ ] Signed into GitHub in your web browser
-[ ] GitHub Copilot responds in Agent mode (Ctrl+Shift+I, type Hello, get a response)
+[ ] GitHub Copilot responds in Chat view (`Ctrl+Alt+I` or **Chat: Open Chat**, type Hello, get a response)
 [ ] GitHub Pull Requests extension installed (publisher: GitHub)
 [ ] Pull Requests panel opens (Ctrl+Shift+P → "Focus on Pull Requests View")
 ```

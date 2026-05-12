@@ -57,9 +57,11 @@ Level 3: A Repository - where all the work happens
 
 No matter where you navigate on GitHub, the same global navigation bar is at the top of every page. Understanding its landmark structure means you always have a fixed orientation point.
 
+> **Dependable walkthrough principle:** GitHub changes visual placement, density, wrapping, and feature rollout over time. Treat position words such as "top-right," "left side," "first," and "below" as orientation hints only. For reliable teaching, anchor each step on the stable thing a learner can verify: URL pattern, page title, H1 heading, landmark name, tab name, keyboard shortcut, command name, or button text.
+
 ### The Global Navigation Bar (always present)
 
-Visually, the top bar contains (left to right):
+Visually, the top bar commonly contains the following controls. The order and compactness can change with viewport width, account state, and product rollout:
 
 | Element | What It Is | How to Reach It |
 | ---  | ---  | ---  |

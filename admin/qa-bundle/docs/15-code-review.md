@@ -2643,7 +2643,7 @@ Copilot is most useful for answering these questions:
 1. Open the PR using the GitHub Pull Requests extension (see Part 2)
 2. Open the diff for any file
 3. **Select** a block of code that confuses you (highlight it)
-4. Open Copilot Chat: `Ctrl+Shift+I`
+4. Open Copilot Chat: `Ctrl+Alt+I`, or run **Chat: Open Chat** from the Command Palette if your keymap differs
 5. Type: `Explain what this code does` or `Why might this change affect [other file]?`
 6. Copilot reads the selected code and answers in the chat
 

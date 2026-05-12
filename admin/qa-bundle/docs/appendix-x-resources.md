@@ -84,7 +84,7 @@ https://github.com/[your-username]/accessibility-agents
 
 1. Clone your fork: `git clone https://github.com/[your-username]/accessibility-agents.git`
 2. Open in VS Code: `cd accessibility-agents && code .`
-3. Open Copilot Chat: `Ctrl+Shift+I`
+3. Open Copilot Chat: `Ctrl+Alt+I`, or run **Chat: Open Chat** from the Command Palette if your keymap differs
 4. Type: `@daily-briefing morning briefing`
 
 ### Personalizing Your Fork

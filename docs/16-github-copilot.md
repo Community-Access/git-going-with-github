@@ -22,7 +22,7 @@
 >
 > **Prerequisites:** [VS Code Setup & Accessibility Basics](11-vscode-interface.md), [Git & Source Control in VS Code](14-git-in-practice.md)
 >
-> **Mac keyboard shortcuts:** Throughout this chapter, all `Ctrl+` shortcuts use `Cmd+` on Mac, and `Alt+` shortcuts use `Option+` on Mac. Key equivalents: `Ctrl+Shift+I` → `Cmd+Shift+I` (Chat), `Ctrl+I` → `Cmd+I` (inline chat), `Alt+F2` → `Option+F2` (Accessible View), `Ctrl+/` → `Cmd+/` (insert suggestion). See the [Keyboard Shortcuts Reference](#8-keyboard-shortcuts-reference) at the end of this chapter for the complete list.
+> **Keyboard shortcuts:** Current VS Code docs list `Ctrl+Alt+I` as the default shortcut for the Chat view and `Ctrl+I` for inline chat. Keymaps can vary by OS, browser, profile, and assistive technology setup, so every shortcut in this chapter has a command-palette fallback. If a shortcut does not work, open the Command Palette and run **Chat: Open Chat** or **Inline Chat: Start in Editor**.
 
 
 ## Workshop Recommendation (Chapter 16 / Challenge 13)
@@ -36,7 +36,7 @@ Chapter 16 introduces **GitHub Copilot** for AI-assisted documentation and writi
 - **Challenge count:** 3 guided challenges
 - **Automation check:** none (tool configuration is account-local and account-specific)
 - **Evidence:** issue comment with checklist of completed actions
-- **Pattern:** install, prompt, apply, reflect
+- **Pattern:** sign in, prompt, apply, reflect
 
 ### Challenge 13 Set
 
@@ -52,14 +52,13 @@ Chapter 16 introduces **GitHub Copilot** for AI-assisted documentation and writi
 
 **Estimated time:** 3-5 minutes.
 
-> **Current VS Code guidance, verified May 12, 2026:** Recent VS Code builds surface Copilot and Chat directly, but your account still needs Copilot access and your organization may manage AI features. If Copilot is already present, skip the extension search and sign in when prompted. If Copilot is missing, use the Extensions view to install GitHub Copilot Chat.
+> **Current VS Code guidance, verified May 12, 2026:** Recent VS Code builds include built-in AI features and surface Copilot and Chat directly. You normally do not install a separate GitHub Copilot Chat extension on a current VS Code build. Your account still needs Copilot access, and your organization may disable or manage AI features. If Copilot is missing, update VS Code first, then use the Copilot status item or Command Palette to enable AI features and sign in.
 
-1. *(Older VS Code only)* Open the Extensions sidebar: `Ctrl+Shift+X` (Mac: `Cmd+Shift+X`).
-2. *(Older VS Code only)* Type `GitHub Copilot` in the search box and press `Enter`.
-3. *(Older VS Code only)* Find **GitHub Copilot** (publisher: GitHub) in the results. Activate **Install**.
-4. *(Older VS Code only)* VS Code may also install **GitHub Copilot Chat** automatically. If not, search for it separately and install it.
-5. Sign in when prompted: activate **Sign in to GitHub** and complete the OAuth flow in your browser.
-6. Verify Copilot is active: open Copilot Chat with `Ctrl+Shift+I` (Mac: `Cmd+Shift+I`). Type `Hello, are you working?` and press `Enter`. Copilot should respond.
+1. Update VS Code to the current stable release if possible.
+2. In the Status Bar, open the Copilot status item and choose **Use AI Features** or **Set up Copilot** if prompted.
+3. Choose your sign-in method and complete the GitHub OAuth flow in your browser.
+4. If your Copilot subscription is tied to GitHub Enterprise, choose the GitHub Enterprise sign-in path and provide the enterprise URL when prompted.
+5. Verify Copilot is active: open the Chat view with `Ctrl+Alt+I`, or run **Chat: Open Chat** from the Command Palette. Type `Hello, are you working?` and press `Enter`. Copilot should respond.
 
 **Screen reader tip:** The Copilot Chat panel opens as a sidebar. Your screen reader announces responses as they stream in. Press `Alt+F2` (Accessible View) to read the full response in a plain text buffer if streaming is hard to follow.
 
@@ -76,7 +75,7 @@ Chapter 16 introduces **GitHub Copilot** for AI-assisted documentation and writi
 1. Open the Command Palette: `Ctrl+Shift+P` (Mac: `Cmd+Shift+P`).
 2. Run `Git: Clone` and paste: `https://github.com/community-access/vscode-sci-fi-themes.git`
 3. Open the cloned repository when VS Code prompts.
-4. Open Copilot Chat: `Ctrl+Shift+I` (Mac: `Cmd+Shift+I`).
+4. Open Copilot Chat: `Ctrl+Alt+I`, or run **Chat: Open Chat** from the Command Palette if your keymap differs.
 5. Ask Copilot: "What does the `chat.agent.thinking.phrases` setting do in VS Code?"
 6. Read the response. Use `Alt+F2` (Accessible View) if needed to read the full text.
 7. Ask a follow-up: "How do I apply one of these themes to my settings.json?"
@@ -92,7 +91,7 @@ Chapter 16 introduces **GitHub Copilot** for AI-assisted documentation and writi
 
 **Estimated time:** 10-15 minutes.
 
-1. Open Copilot Chat: `Ctrl+Shift+I` (Mac: `Cmd+Shift+I`).
+1. Open Copilot Chat: `Ctrl+Alt+I`, or run **Chat: Open Chat** from the Command Palette if your keymap differs.
 2. Type a creative prompt: "Create a custom GitHub Copilot thinking phrases theme for [your favorite universe - Dune, Marvel, Studio Ghibli, Star Trek, etc.]"
 3. Read Copilot's generated theme. It should include an array of themed phrases.
 4. Copy the generated content: select all text in the Copilot response, then `Ctrl+C` (Mac: `Cmd+C`).
@@ -111,7 +110,7 @@ Open your **assigned Challenge 13 issue** and post a completion comment:
 
 ```text
 Chapter 13 completed:
-- Copilot installed and signed in: yes / no
+- Copilot enabled and signed in: yes / no
 - Asked Copilot to explain a setting: yes / no
 - Applied a setting from Copilot's suggestion: yes / no
 - Created a custom theme: yes / no
@@ -122,16 +121,16 @@ Close your Challenge 13 issue when done.
 
 ### Expected Outcomes
 
-- Student can install and authenticate GitHub Copilot Chat.
+- Student can enable built-in Copilot features in current VS Code and authenticate with GitHub.
 - Student can ask Copilot effective questions about code and settings.
 - Student can use Copilot's output to customize their development environment.
 - Student understands Copilot as a tool to explain and create, not just autocomplete.
 
 ### If You Get Stuck
 
-1. Extension installation fails? Reload VS Code: `Ctrl+Shift+P`, then `Developer: Reload Window`.
+1. Copilot controls are missing? Update VS Code first, then reload VS Code: `Ctrl+Shift+P`, then `Developer: Reload Window`.
 2. OAuth sign-in fails? Verify your GitHub account is active in the browser first, close VS Code and retry.
-3. Chat panel does not open? Try `Ctrl+Shift+I` (Mac: `Cmd+Shift+I`). If still nothing, check that the Copilot Chat extension is installed (not just the base Copilot extension).
+3. Chat panel does not open? Try `Ctrl+Alt+I`, then use the Command Palette to run **Chat: Open Chat**. If still nothing, confirm AI features are enabled and you are signed in.
 4. Copilot seems unresponsive? Click the model selector at the bottom of Chat panel and confirm you are signed in.
 5. Cannot copy from Copilot response? Use `Alt+F2` (Accessible View) to get the text in a copyable buffer.
 6. Ask facilitator to verify Copilot is activated and show you one example prompt.
@@ -145,7 +144,7 @@ AI assistance amplifies clarity. Using Copilot as a brainstorming partner helps 
 
 ### Learning Pattern Used in This Chapter
 
-1. Install the tool and verify it works before starting the task.
+1. Enable the built-in tool and verify it works before starting the task.
 2. Use the tool to explore and understand (ask questions, read responses).
 3. Use the tool to create something new (generate, customize, apply).
 4. Reflect on when the tool helped and when your own judgment was better.
@@ -166,7 +165,7 @@ Throughout this chapter, look for expandable "learning cards" that show how to a
 ## Table of Contents
 
 1. [What is GitHub Copilot](#1-what-is-github-copilot)
-2. [Installing GitHub Copilot](#2-installing-github-copilot)
+2. [Setting Up GitHub Copilot](#2-setting-up-github-copilot)
 3. [Inline Suggestions - Ghost Text Completions](#3-inline-suggestions---ghost-text-completions)
 4. [GitHub Copilot Chat - Conversational Assistance](#4-github-copilot-chat---conversational-assistance)
 5. [Copilot Edits — Making Multi-File Changes](#5-copilot-edits--making-multi-file-changes)
@@ -203,28 +202,29 @@ GitHub Copilot is an AI pair programmer that suggests code and text completions 
 > **Screen reader optimized mode:** Press `Shift+Alt+F1` (Mac: `Shift+Option+F1`) to toggle VS Code's screen reader optimized mode. This adjusts how Copilot suggestions are announced, disables ghost text that cannot be read by screen readers, and routes all suggestion content through Accessible View. If your screen reader is detected at startup, VS Code enables this mode automatically. You can also set it manually in Settings: `editor.accessibilitySupport: "on"`.
 
 
-## 2. Installing GitHub Copilot
+## 2. Setting Up GitHub Copilot
 
-### Installation Steps
+### Current VS Code Setup Steps
 
-1. Open Extensions sidebar: `Ctrl+Shift+X` (Mac: `Cmd+Shift+X`)
-2. Search for "GitHub Copilot Chat"
-3. Find **GitHub Copilot Chat** (publisher: GitHub)
-4. Press `Enter` to open the extension detail page
-5. `Tab` to "Install" button → press `Enter`
-6. Wait for installation to complete
+Current VS Code builds include built-in AI features. Start with setup and sign-in, not extension installation.
 
-**Extension availability:** Current VS Code builds may already show Copilot and Chat entry points after sign-in. If Copilot is not available, install **GitHub Copilot Chat** from the Extensions view and reload VS Code. Your GitHub account still needs Copilot access for the features to respond.
+1. Open VS Code desktop and update to the current stable release if prompted.
+2. In the Status Bar, activate the Copilot status item.
+3. Choose **Use AI Features**, **Set up Copilot**, or **Sign in to use Copilot** when prompted.
+4. Complete the GitHub sign-in flow in your browser.
+5. Return to VS Code and verify that the Chat view opens.
+
+**Older or managed environments:** If you are on an older pinned VS Code build, or an enterprise-managed image, Copilot may still appear as an extension-managed feature. Ask a facilitator before installing anything manually. Organization policy can also hide or disable AI features.
 
 ### Signing In
 
-After installation:
+During setup:
 
 1. VS Code prompts: "Sign in to use GitHub Copilot"
 2. Navigate to the notification or click the Copilot icon in the status bar
 3. Select "Sign in to GitHub"
 4. Your browser opens for GitHub authentication
-5. Authorize the Copilot extension
+5. Authorize Copilot access
 6. Return to VS Code
 
 #### Verify activation
@@ -456,7 +456,7 @@ Copilot Chat is a full conversation interface where you ask questions, request e
 
 ### Opening Copilot Chat
 
-**Primary panel:** `Ctrl+Shift+I` (Mac: `Cmd+Shift+I`)
+**Primary panel:** `Ctrl+Alt+I` in current VS Code docs. If that shortcut conflicts with your keymap, run **Chat: Open Chat** from the Command Palette.
 
 Opens the Chat panel on the right side of VS Code.
 
@@ -656,7 +656,7 @@ Type `/` in Copilot Chat to see available commands:
 #### Example
 
 1. Select a block of complex Markdown
-2. Open Chat: `Ctrl+Shift+I` (Mac: `Cmd+Shift+I`)
+2. Open Chat: `Ctrl+Alt+I`, or run **Chat: Open Chat** from the Command Palette if your keymap differs
 3. Type `/explain`
 4. Copilot explains the structure and purpose
 
@@ -685,7 +685,7 @@ Useful built-in actions include:
 <details>
 <summary>Screen reader users</summary>
 
-- Open Copilot Chat with `Ctrl+Shift+I` (Mac: `Cmd+Shift+I`) -- focus lands in the chat input box, ready for your question
+- Open Copilot Chat with `Ctrl+Alt+I`, or run **Chat: Open Chat** from the Command Palette if your keymap differs; focus lands in the chat input box, ready for your question
 - After the response finishes streaming, press `Alt+F2` to open Accessible View and read the complete response with arrow keys, one paragraph at a time
 - Use `@workspace` before your question to give Copilot context about your entire project (e.g., "@workspace what files reference heading levels?")
 
@@ -703,7 +703,7 @@ Useful built-in actions include:
 <details>
 <summary>Sighted users</summary>
 
-- Click the Copilot icon in the Activity Bar sidebar or use `Ctrl+Shift+I` to open the Chat panel
+- Click the Copilot icon in the Activity Bar sidebar, use `Ctrl+Alt+I`, or run **Chat: Open Chat** from the Command Palette to open the Chat panel
 - The mode picker dropdown at the top of Chat lets you switch between Ask, Edit, and Agent modes
 - Code blocks in responses have hover-revealed buttons: Copy, Insert at Cursor, and Run in Terminal
 
@@ -724,7 +724,7 @@ Copilot Edits is the **Edit** chat mode. Instead of just answering questions, Co
 
 ### How to use Copilot Edits
 
-1. Open Copilot Chat: `Ctrl+Shift+I` (Mac: `Cmd+Shift+I`)
+1. Open Copilot Chat: `Ctrl+Alt+I`, or run **Chat: Open Chat** from the Command Palette if your keymap differs
 2. At the bottom of the Chat panel, click the **mode dropdown** and select **Edit**
 3. Add files to your **working set** — these are the files Copilot is allowed to edit:
    - Click **"Add Files..."** above the chat input, or
@@ -794,7 +794,7 @@ Agent mode is the most autonomous way to use Copilot. You describe a goal and Co
 
 ### How to use Agent mode
 
-1. Open Copilot Chat: `Ctrl+Shift+I` (Mac: `Cmd+Shift+I`)
+1. Open Copilot Chat: `Ctrl+Alt+I`, or run **Chat: Open Chat** from the Command Palette if your keymap differs
 2. Select **Agent** from the mode dropdown at the bottom of the Chat panel
 3. Type your goal: *"Add a Table of Contents to every Markdown file in the docs/ folder"* or *"Find all TODO comments in this project and create a GitHub issue for each one"*
 4. Copilot begins working - it shows each step it's taking and asks for approval before running terminal commands
@@ -1399,7 +1399,7 @@ When Copilot suggests code or Markdown:
 
 | Action | Windows/Linux | macOS |
 | --------  | ---------------  | -------  |
-| Open Chat panel | `Ctrl+Shift+I` | `Cmd+Shift+I` |
+| Open Chat panel | `Ctrl+Alt+I` | Use **Chat: Open Chat** from the Command Palette if your keymap differs |
 | Inline chat (in-file) | `Ctrl+I` | `Cmd+I` |
 | Quick chat (floating) | `Ctrl+Shift+Alt+I` | `Cmd+Shift+Ctrl+I` |
 | Send message | `Ctrl+Enter` | `Cmd+Enter` |
@@ -1624,9 +1624,9 @@ For more on working with AI tools responsibly, see [Chapter 20](20-build-your-ag
 
 ## Try It: Your First Copilot Conversation
 
-**Time:** 3 minutes | **What you need:** VS Code with Copilot Chat extension installed
+**Time:** 3 minutes | **What you need:** Current VS Code with built-in AI features enabled and a GitHub account with Copilot access
 
-1. **Open Copilot Chat** - Press `Ctrl+Shift+I` (Mac: `Cmd+Shift+I`). Your screen reader announces the chat panel.
+1. **Open Copilot Chat** - Press `Ctrl+Alt+I`, or run **Chat: Open Chat** from the Command Palette if your keymap differs. Your screen reader announces the chat panel.
 2. **Ask a question** - Type: `What does the CONTRIBUTING.md file in this repository say about how to submit a pull request?` Press `Enter`.
 3. **Read the response** - Press `Ctrl+Shift+A` to open the Accessible View if your screen reader doesn't read the response automatically. The response appears as plain text you can arrow through.
 4. **Try a follow-up** - Type: `Summarize that in 3 bullet points` and press `Enter`. Copilot remembers the context from your first question.

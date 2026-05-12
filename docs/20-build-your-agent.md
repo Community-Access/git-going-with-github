@@ -267,7 +267,7 @@ Before opening a pull request, test your agent to verify it works.
 
 1. Open VS Code with the accessibility-agents repository.
 2. Ensure your agent file is saved in `.github/agents/`.
-3. Open GitHub Copilot Chat (`Ctrl+Shift+I` or `Cmd+Shift+I`).
+3. Open GitHub Copilot Chat (`Ctrl+Alt+I`) or run **Chat: Open Chat** from the Command Palette.
 4. Invoke your agent by name: `@your-agent-name check this file for accessibility issues`
 5. Observe the response. Does the agent:
    - Understand its mission?
@@ -298,7 +298,7 @@ Most students iterate 2-3 times before they are satisfied.
 <details>
 <summary>Screen reader users</summary>
 
-- Open Copilot Chat (`Ctrl+Shift+I`) and type `@your-agent-name` followed by a test prompt -- your screen reader announces the response as it streams
+- Open Copilot Chat (`Ctrl+Alt+I`) or run **Chat: Open Chat** from the Command Palette, then type `@your-agent-name` followed by a test prompt -- your screen reader announces the response as it streams
 - Press `Alt+F2` after the response finishes to read the full output in Accessible View with arrow keys
 - If the agent does not respond as expected, edit the `.agent.md` file and ask again -- Copilot picks up changes immediately
 

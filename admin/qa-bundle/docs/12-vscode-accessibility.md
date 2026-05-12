@@ -41,7 +41,7 @@
 | Source Control (Git) | `Ctrl+Shift+G` | Changes list |
 | Extensions | `Ctrl+Shift+X` | Extensions list |
 | Terminal | `` Ctrl+` `` | Terminal input |
-| Copilot Chat | `Ctrl+Shift+I` | Chat input |
+| Copilot Chat | `Ctrl+Alt+I` or **Chat: Open Chat** | Chat input |
 | Command Palette | `Ctrl+Shift+P` | Command search input |
 | Editor | `Ctrl+1` | Active editor file |
 | Problems panel | `Ctrl+Shift+M` | List of all errors and warnings |
@@ -308,13 +308,13 @@ Enable Terminal IntelliSense: Settings (`Ctrl+,`) then search `terminal.integrat
 
 ## 15. Copilot Chat Window
 
-The **Copilot Chat** window (`Ctrl+Shift+I`) is your conversational AI assistant within VS Code. It can answer questions, generate code, explain code, fix problems, and help with documentation.
+The **Copilot Chat** window (`Ctrl+Alt+I`, or **Chat: Open Chat** from the Command Palette if your keymap differs) is your conversational AI assistant within VS Code. It can answer questions, generate code, explain code, fix problems, and help with documentation.
 
 ### Opening Copilot Chat
 
 | Method | Shortcut |
 | --- | --- |
-| Chat view (sidebar) | `Ctrl+Shift+I` |
+| Chat view (sidebar) | `Ctrl+Alt+I` or **Chat: Open Chat** |
 | Inline chat (in editor) | `Ctrl+I` |
 | Quick chat (floating) | `Ctrl+Shift+Alt+L` |
 | Command Palette | `Ctrl+Shift+P` then type `Chat: Open` |
@@ -345,7 +345,7 @@ Type `@` in the chat input to see available participants:
 <details>
 <summary>Screen reader users</summary>
 
-- Press `Ctrl+Shift+I` to open Chat. Focus lands in the text input - start typing your question.
+- Press `Ctrl+Alt+I`, or run **Chat: Open Chat** from the Command Palette, to open Chat. Focus lands in the text input - start typing your question.
 - After submitting, wait for the response to complete (audio cue plays if `accessibility.signals.chatResponseReceived` is on)
 - Press `Alt+F2` (Accessible View) to read the complete response in a clean, navigable text view
 - Navigate response content with `Up/Down Arrow` in the Accessible View
@@ -366,7 +366,7 @@ Type `@` in the chat input to see available participants:
 <details>
 <summary>Sighted users</summary>
 
-- Click the Copilot icon in the sidebar or use `Ctrl+Shift+I`
+- Click the Copilot icon in the sidebar, use `Ctrl+Alt+I`, or run **Chat: Open Chat** from the Command Palette
 - Code blocks in responses have a "Copy" button and an "Insert at Cursor" button
 - The mode picker at the top lets you switch between Ask, Edit, and Agent modes
 - Use `@workspace` to ask questions about your specific project context

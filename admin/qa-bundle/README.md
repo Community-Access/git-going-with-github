@@ -8,6 +8,8 @@ License: CC BY 4.0 | [Site](https://community-access.org/git-going-with-github/)
 >
 > **About Community Access:** [Community Access](https://community-access.org) is a community of blind and low vision technology professionals. Visit [community-access.org](https://community-access.org) to learn more.
 
+> **Tools change. Exploration is part of the skill.** GitHub.com, GitHub Classroom, VS Code, GitHub Copilot, github.dev, browser extensions, and agent experiences change continuously. We do our best to keep this documentation current, source-backed, and tested, but a label may move, a feature may graduate from preview, or an account policy may change what you hear. When something differs, pause and use the exploration skills taught here: check the page title and URL, move by headings and landmarks, find the named tab or button, use the Command Palette or keyboard shortcut help, and compare with the official docs linked in each chapter. If the documented path is wrong, file a curriculum issue so we can update it for everyone.
+
 | Detail | Information |
 |---|---|
 | **Workshop site** | [community-access.org/git-going-with-github](https://community-access.org/git-going-with-github/) |
@@ -70,7 +72,7 @@ Day 1 - Learn the skill in the browser
 
 github.dev - VS Code on the web, no install needed
   Same keyboard shortcuts · Same screen reader mode · Edit files · Open PRs
-  What it cannot do: no terminal, no Copilot agents, no local extensions
+  Limits: no local terminal or debugger, only web-compatible extensions, and not the full desktop agent workflow
 
      ↓  (you've earned the desktop - now it makes sense)
 

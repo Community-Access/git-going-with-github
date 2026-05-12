@@ -11,6 +11,7 @@ Use this runbook to validate scenario accuracy before making learner-facing edit
 3. Use only official sources listed in [external-change-register.md](external-change-register.md) for product facts.
 4. Capture exact UI labels, prompts, and final outcomes in notes.
 5. Do not rely on screenshots alone. Record text that a screen reader or keyboard user can verify.
+6. Flag walkthrough steps that depend on visual order or position when a stable locator exists. Prefer URL pattern, page title, H1 heading, landmark name, tab name, keyboard shortcut, command name, or button text.
 
 ## Verification Record Template
 
@@ -65,3 +66,4 @@ The following table lists the automated checks currently available in this repos
 3. For Copilot, record whether behavior depends on plan, organization policy, model availability, or rollout.
 4. For Classroom, record whether a step requires organization owner, classroom admin, or repository maintainer permissions.
 5. For billing and pricing, always include date verified and link to the official page.
+6. For GitHub.com layout checks, record whether the documented step depends on visual order. If layout order changes but the named control, tab, landmark, or shortcut still works, rewrite the step around the stable locator.

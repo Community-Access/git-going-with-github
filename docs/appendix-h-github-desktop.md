@@ -381,7 +381,7 @@ When you pull from GitHub or merge a branch and there are conflicts, GitHub Desk
 2. Switch back to GitHub Desktop — the file moves from "Conflicting" to "Resolved"
 3. Once all conflicts are resolved, select **"Continue merge"**
 
-> **GitHub Copilot can help:** Open the conflicting file in VS Code alongside GitHub Desktop. Place your cursor inside a conflict region and open Copilot Chat (`Ctrl+Shift+I`): *"Resolve this merge conflict — keep meaningful changes from both sides."* Copilot suggests a resolution; you review and save.
+> **GitHub Copilot can help:** Open the conflicting file in VS Code alongside GitHub Desktop. Place your cursor inside a conflict region and open Copilot Chat (`Ctrl+Alt+I`, or **Chat: Open Chat** from the Command Palette if your keymap differs): *"Resolve this merge conflict - keep meaningful changes from both sides."* Copilot suggests a resolution; you review and save.
 
 > **Screen reader tip:** The conflicts dialog lists files as a navigable list. Each file entry includes the action buttons ("Open in editor", "Use mine", "Use theirs"). Navigate with `Tab` between the file entries and buttons.
 

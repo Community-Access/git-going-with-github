@@ -51,7 +51,9 @@ When you navigate to a GitHub repository (e.g., `https://github.com/owner/repo-n
 
 ### Description
 
-The repository home page is organized from top to bottom as follows. The Navigation bar (GitHub global nav) contains the avatar menu, Notifications, and search. Below that is the Repository header showing "owner / repo-name" as the H1 heading, plus Star, Watch, and Fork buttons. Next are the Repository navigation tabs (a landmark) with Code (active), Issues, Pull requests, Actions, and more. The main content area is split into two columns: on the left is the File tree / code panel with the branch selector, Files table (navigable as a table), and last commit message; on the right is the Sidebar with the About section, topics, and releases. Below both columns is the rendered README.md in a separate landmark region.
+GitHub can change visual placement based on viewport width, account features, repository settings, and product rollout. The dependable structure is the set of named regions and controls: the global navigation, the repository H1 heading, the **Repository navigation** landmark, the **Code** tab, the branch selector, the file list, optional repository sidebar information, and the rendered `README.md` when present.
+
+On a wide desktop layout, these often appear in a familiar order: global navigation, repository header, repository tabs, file/code panel, optional sidebar, and rendered README. Teach that order as a map, not as a guarantee. When the visual order differs, use headings, landmarks, tab names, and keyboard shortcuts to re-orient.
 
 
 ## Landing on a Repository - What to Expect

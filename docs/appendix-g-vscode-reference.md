@@ -591,7 +591,7 @@ Custom JAWS scripts exist for VS Code. Check: [jaws-vscode-scripts (GitHub)](htt
 | Open Suggestions List | `Ctrl+Enter` | `Cmd+Enter` |
 | Open Suggestion in Accessible View | `Alt+F2` | `Option+F2` |
 | Insert Suggestion from Accessible View | `Ctrl+/` | `Cmd+/` |
-| Open Copilot Chat | `Ctrl+Shift+I` | `Cmd+Shift+I` |
+| Open Copilot Chat | `Ctrl+Alt+I` or **Chat: Open Chat** | Use **Chat: Open Chat** from the Command Palette if your keymap differs |
 | Inline Chat | `Ctrl+I` | `Cmd+I` |
 | Quick Chat | `Ctrl+Shift+Alt+I` | `Cmd+Shift+Ctrl+I` |
 

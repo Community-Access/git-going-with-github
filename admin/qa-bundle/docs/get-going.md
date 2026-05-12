@@ -16,6 +16,20 @@ This workshop is designed so you are never left guessing what comes next. You wi
 
 The goal is not to rush. The goal is to build confidence one checkable step at a time.
 
+## When Tools or Pages Change
+
+GitHub.com, GitHub Classroom, VS Code, GitHub Copilot, github.dev, browser extensions, and agent tools change often. This course is actively maintained, and we use official sources and live checks wherever possible, but your screen may not always match the exact wording in a step.
+
+When that happens, do not assume you are failing. Use the same exploration skills the workshop teaches:
+
+1. Check the URL and browser tab title.
+2. Move by headings, landmarks, tabs, and button names instead of relying only on visual order.
+3. Open keyboard shortcut help (`?` on GitHub) or the VS Code Command Palette when a shortcut or control differs.
+4. Read the surrounding labels before activating a control.
+5. Ask a facilitator or file a curriculum issue with the page link, the step that differed, and what you heard or observed.
+
+The durable skill is not memorizing one layout. The durable skill is learning how to orient, verify, and continue when a tool changes.
+
 ## Step 1 - Know Your Starting Place
 
 Before Day 1 starts, complete [Chapter 00: Pre-Workshop Setup](00-pre-workshop-setup.md). That chapter helps you create or verify your GitHub account, configure accessibility settings, choose a browser, install Git and VS Code, and confirm your screen reader setup.

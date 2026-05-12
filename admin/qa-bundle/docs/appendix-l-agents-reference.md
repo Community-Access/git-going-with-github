@@ -118,7 +118,7 @@ Accessibility Agents includes 55 agents organized into three specialized teams, 
 <details>
 <summary>Screen reader users</summary>
 
-- Invoke any agent by typing `@agent-name` in Copilot Chat (`Ctrl+Shift+I`) -- the autocomplete list is keyboard-navigable with arrow keys
+- Invoke any agent by typing `@agent-name` in Copilot Chat (`Ctrl+Alt+I` or **Chat: Open Chat**) -- the autocomplete list is keyboard-navigable with arrow keys
 - The 55 agents are organized into 3 teams (Accessibility, GitHub Workflow, Developer Tools) -- use `H` in the team tables to jump between headings
 - Agent responses appear in the Chat panel; press `Alt+F2` (Accessible View) for a structured, non-streaming version
 
@@ -145,7 +145,7 @@ Accessibility Agents includes 55 agents organized into three specialized teams, 
 
 ## 2. GitHub Workflow Agents - Quick Reference
 
-The GitHub Workflow team includes 12 agents that automate common repository operations. These are good starting points if you have completed the Day 1 skills - but explore any agent in the ecosystem that matches your workflow.\n\nInvoke any agent by typing `@agent-name` in Copilot Chat (`Ctrl+Shift+I`).
+The GitHub Workflow team includes 12 agents that automate common repository operations. These are good starting points if you have completed the Day 1 skills - but explore any agent in the ecosystem that matches your workflow.\n\nInvoke any agent by typing `@agent-name` in Copilot Chat (`Ctrl+Alt+I` or **Chat: Open Chat**).
 
 
 ### `@daily-briefing` - Morning Briefing
@@ -1304,7 +1304,7 @@ This shows: which files were found, which were loaded, which have errors, and fr
 
 | Action | Shortcut |
 | --------  | ----------  |
-| Open Copilot Chat | `Ctrl+Shift+I` |
+| Open Copilot Chat | `Ctrl+Alt+I` or **Chat: Open Chat** from the Command Palette |
 | Invoke an agent | Type `@agent-name` in Chat |
 | Use a slash command | Type `/command-name` in Chat |
 | Open Accessible View (Chat response or inline suggestion) | `Alt+F2` |

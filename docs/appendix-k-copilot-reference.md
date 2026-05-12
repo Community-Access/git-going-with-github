@@ -60,7 +60,7 @@
 
 | Action | Windows / Linux | macOS |
 | --------  | ----------------  | -------  |
-| Open Chat panel | `Ctrl+Shift+I` | `Cmd+Shift+I` |
+| Open Chat panel | `Ctrl+Alt+I` | Use **Chat: Open Chat** from the Command Palette if your keymap differs |
 | Open inline chat (in-file, at cursor) | `Ctrl+I` | `Cmd+I` |
 | Open Quick Chat (floating dialog) | `Ctrl+Shift+Alt+I` | `Cmd+Shift+Ctrl+I` |
 | Send message | `Ctrl+Enter` | `Cmd+Enter` |
@@ -458,7 +458,7 @@ Copilot Chat responses stream in token by token, which can fragment screen reade
 ### Recommended Workflow - Every Copilot Interaction
 
 ```text
-1. Open Copilot Chat: Ctrl+Shift+I
+1. Open Copilot Chat: `Ctrl+Alt+I`, or run **Chat: Open Chat** from the Command Palette if your keymap differs
 2. Type your prompt
 3. Press Ctrl+Enter to send
 4. Press Alt+F2 to open Accessible View (open immediately - no need to wait)
@@ -754,7 +754,7 @@ The Diagnostics panel shows:
 
 | What | Windows / Linux | macOS |
 | ------  | ----------------  | -------  |
-| Chat panel | `Ctrl+Shift+I` | `Cmd+Shift+I` |
+| Chat panel | `Ctrl+Alt+I` | Use **Chat: Open Chat** from the Command Palette if your keymap differs |
 | Inline chat (in file) | `Ctrl+I` | `Cmd+I` |
 | Quick Chat (floating) | `Ctrl+Shift+Alt+I` | `Cmd+Shift+Ctrl+I` |
 
@@ -799,7 +799,7 @@ The Diagnostics panel shows:
 
 ### Prerequisites
 
-- VS Code with **GitHub Copilot Chat** extension installed
+- Current VS Code with built-in AI features enabled, or an older managed VS Code build where Copilot has been enabled by your administrator
 - A GitHub account with Copilot access (Free tier or paid)
 - A screen reader (NVDA recommended for this guide)
 
@@ -849,7 +849,7 @@ This is the complete table of Copilot screen reader shortcuts as published by th
 | Opens suggestion in Accessible View panel | `Alt+F2` |
 | Inserts suggestion from Accessible View at cursor | `Ctrl+/` |
 | Opens Inline Chat (in-file, at cursor) | `Ctrl+I` |
-| Opens dedicated Chat view | `Ctrl+Shift+I` |
+| Opens dedicated Chat view | `Ctrl+Alt+I` or **Chat: Open Chat** from the Command Palette |
 
 ### Step 4: Recommended Workflow for Inline Suggestions
 
@@ -872,7 +872,7 @@ This workflow avoids the streaming announcement problem (where suggestions are r
 ### Step 5: Recommended Workflow for Chat Responses
 
 ```text
-1. Open Chat: Ctrl+Shift+I
+1. Open Chat: `Ctrl+Alt+I`, or run **Chat: Open Chat** from the Command Palette if your keymap differs
 2. Type your prompt, press Ctrl+Enter to send
 3. Press Alt+F2 - Accessible View opens immediately; the response streams live into it
 4. Navigate with Arrow keys - no streaming noise, follow along in real-time
@@ -960,7 +960,7 @@ Pressing `Ctrl+Enter` opens a **Suggestions Panel** - a separate editor tab that
 
 The easiest way to explore awesome-copilot from VS Code:
 
-1. Open Copilot Chat (`Ctrl+Shift+I`)
+1. Open Copilot Chat (`Ctrl+Alt+I`) or run **Chat: Open Chat** from the Command Palette
 2. Type `/plugin` and press `Enter`
 3. Copilot Chat opens an interactive plugin marketplace browser
 4. Browse plugins by category, read descriptions, and install with a single command
@@ -1285,7 +1285,7 @@ Usage-based billing measures Copilot usage with GitHub AI Credits. The cost of a
 
 ### In the Chat Panel
 
-1. Open the **Chat** panel (`Ctrl+Shift+I` / `Cmd+Shift+I`)
+1. Open the **Chat** panel (`Ctrl+Alt+I`) or run **Chat: Open Chat** from the Command Palette
 2. At the bottom of the chat input area, you'll see the current model name as a button, often **Auto** or a specific model name
 3. Activate the model picker button - this opens a dropdown list of available models
 4. Arrow through the list and press `Enter` to select a model
