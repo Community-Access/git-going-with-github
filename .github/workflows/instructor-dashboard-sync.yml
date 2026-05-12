@@ -20,9 +20,8 @@ jobs:
           ADMIN_REPO: ${{ vars.PRIVATE_STUDENT_DATA_REPO }}
           DASHBOARD_TOKEN: ${{ secrets.INSTRUCTOR_DASHBOARD_TOKEN }}
         with:
+          github-token: ${{ secrets.INSTRUCTOR_DASHBOARD_TOKEN != '' && secrets.INSTRUCTOR_DASHBOARD_TOKEN || github.token }}
           script: |
-            const { getOctokit } = require('@actions/github');
-
             const adminRepoPath = (process.env.ADMIN_REPO || '').trim();
             const dashboardToken = (process.env.DASHBOARD_TOKEN || '').trim();
             const threshold = Number(process.env.STUCK_THRESHOLD_MINUTES || '20');
@@ -38,7 +37,7 @@ jobs:
             }
 
             const [adminOwner, adminRepo] = adminRepoPath.split('/');
-            const dashboardOctokit = getOctokit(dashboardToken);
+            const dashboardOctokit = github;
 
             const enrollmentIssues = await dashboardOctokit.paginate(dashboardOctokit.rest.issues.listForRepo, {
               owner: context.repo.owner,
