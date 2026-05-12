@@ -10,6 +10,512 @@ permissions:
   issues: write
 
 jobs:
+  classroom-enrollment:
+    name: Classroom Enrollment - Fast Path
+    runs-on: ubuntu-latest
+    if: >-
+      github.event_name == 'issues' &&
+      github.event.action == 'opened' &&
+      contains(github.event.issue.title, '[ENROLL]')
+    steps:
+      - name: Check for duplicate classroom enrollment
+        id: dup-check
+        uses: actions/github-script@v7
+        with:
+          script: |
+            const username = context.payload.issue.user.login;
+            const currentIssueNumber = context.issue.number;
+
+            const existingIssues = await github.paginate(github.rest.issues.listForRepo, {
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              labels: 'classroom-enrollment',
+              state: 'all',
+              per_page: 100
+            });
+
+            const priorEnrollment = existingIssues.find(
+              issue => issue.user.login === username && issue.number !== currentIssueNumber
+            );
+
+            if (priorEnrollment) {
+              core.setOutput('is_duplicate', 'true');
+              core.setOutput('original_issue', priorEnrollment.number.toString());
+            } else {
+              core.setOutput('is_duplicate', 'false');
+            }
+
+      - name: Handle duplicate classroom enrollment
+        if: steps.dup-check.outputs.is_duplicate == 'true'
+        uses: actions/github-script@v7
+        env:
+          ORIGINAL_ISSUE: ${{ steps.dup-check.outputs.original_issue }}
+          DAY1_ASSIGNMENT_URL: ${{ vars.CLASSROOM_DAY1_ASSIGNMENT_URL }}
+          CLASSROOM_JOIN_URL: ${{ vars.CLASSROOM_JOIN_URL }}
+        with:
+          script: |
+            const links = [];
+            const day1 = (process.env.DAY1_ASSIGNMENT_URL || '').trim();
+            const join = (process.env.CLASSROOM_JOIN_URL || '').trim();
+            if (join) links.push(`- Classroom join link: ${join}`);
+            if (day1) links.push(`- Day 1 assignment link: ${day1}`);
+
+            const quickLinksSection = links.length
+              ? `\n\n## Quick links\n${links.join('\n')}`
+              : '';
+            const duplicateBodyLines = [
+              '## You are already enrolled',
+              '',
+              `Hi @${context.payload.issue.user.login}, it looks like you already submitted enrollment in #${process.env.ORIGINAL_ISSUE}.`,
+              '',
+              `No action needed. Your original enrollment remains active.${quickLinksSection}`,
+              '',
+              '## Day 2 release',
+              '- Day 2 links are released after Day 1 milestone completion.',
+              '',
+              '## Where to see replies',
+              '- GitHub notification bell',
+              '- Email notifications for this issue thread'
+            ];
+
+            await github.rest.issues.createComment({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              issue_number: context.issue.number,
+              body: duplicateBodyLines.join('\n')
+            });
+
+            await github.rest.issues.addLabels({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              issue_number: context.issue.number,
+              labels: ['duplicate']
+            });
+
+            await github.rest.issues.update({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              issue_number: context.issue.number,
+              state: 'closed',
+              state_reason: 'not_planned'
+            });
+
+      - name: Guardrail - validate private storage configuration
+        id: storage-guardrail
+        if: steps.dup-check.outputs.is_duplicate == 'false'
+        uses: actions/github-script@v7
+        env:
+          PRIVATE_STUDENT_DATA_REPO: ${{ vars.PRIVATE_STUDENT_DATA_REPO }}
+          PRIVATE_STUDENT_DATA_TOKEN: ${{ secrets.PRIVATE_STUDENT_DATA_TOKEN }}
+        with:
+          script: |
+            const targetRepo = (process.env.PRIVATE_STUDENT_DATA_REPO || '').trim();
+            const token = (process.env.PRIVATE_STUDENT_DATA_TOKEN || '').trim();
+
+            const hasRepo = targetRepo.includes('/');
+            const hasToken = token.length > 0;
+            const configured = hasRepo && hasToken;
+
+            core.setOutput('configured', configured ? 'true' : 'false');
+            if (!configured) {
+              const missing = [];
+              if (!hasRepo) missing.push('PRIVATE_STUDENT_DATA_REPO (owner/repo)');
+              if (!hasToken) missing.push('PRIVATE_STUDENT_DATA_TOKEN');
+              core.setOutput('missing', missing.join(', '));
+            }
+
+      - name: Handle missing private storage config
+        if: >-
+          steps.dup-check.outputs.is_duplicate == 'false' &&
+          steps.storage-guardrail.outputs.configured == 'false'
+        uses: actions/github-script@v7
+        env:
+          MISSING_CONFIG: ${{ steps.storage-guardrail.outputs.missing }}
+        with:
+          script: |
+            await github.rest.issues.update({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              issue_number: context.issue.number,
+              body: [
+                '## Enrollment submission (redacted)',
+                '',
+                '- Status: blocked (admin configuration required)',
+                `- Submitted by: @${context.payload.issue.user.login}`,
+                `- Processed at: ${new Date().toISOString()}`
+              ].join('\n')
+            });
+
+            await github.rest.issues.createComment({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              issue_number: context.issue.number,
+              body: [
+                '## Enrollment is temporarily unavailable',
+                '',
+                'Our secure intake backend is not fully configured yet.',
+                `Missing configuration: ${process.env.MISSING_CONFIG || 'unknown'}`,
+                '',
+                'A facilitator has been notified. Please try again soon.'
+              ].join('\n')
+            });
+
+            await github.rest.issues.addLabels({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              issue_number: context.issue.number,
+              labels: ['admin-config-required']
+            });
+
+            await github.rest.issues.update({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              issue_number: context.issue.number,
+              state: 'closed',
+              state_reason: 'not_planned'
+            });
+
+      - name: Fail workflow when private storage config is missing
+        if: >-
+          steps.dup-check.outputs.is_duplicate == 'false' &&
+          steps.storage-guardrail.outputs.configured == 'false'
+        run: |
+          echo "Required private storage configuration is missing."
+          exit 1
+
+      - name: Parse enrollment fields
+        id: parse
+        if: >-
+          steps.dup-check.outputs.is_duplicate == 'false' &&
+          steps.storage-guardrail.outputs.configured == 'true'
+        uses: actions/github-script@v7
+        with:
+          script: |
+            function parseField(body, fieldName) {
+              if (!body) return '';
+              const regex = new RegExp(`### ${fieldName}\\s*\\n+([\\s\\S]*?)(?=\\n### |$)`, 'i');
+              const match = body.match(regex);
+              if (!match) return '';
+              const value = match[1].trim();
+              if (value === '_No response_') return '';
+              return value;
+            }
+
+            const body = context.payload.issue.body || '';
+            const fullName = parseField(body, 'Full Name');
+            const email = parseField(body, 'Email Address');
+            const githubUsername = parseField(body, 'GitHub Username').replace(/^@+/, '').trim();
+
+            core.setOutput('full_name', fullName);
+            core.setOutput('email', email);
+            core.setOutput('github_username', githubUsername);
+
+            const missing = [];
+            if (!fullName) missing.push('Full Name');
+            if (!email) missing.push('Email Address');
+            if (!githubUsername) missing.push('GitHub Username');
+
+            if (missing.length) {
+              core.setOutput('is_valid', 'false');
+              core.setOutput('missing_fields', missing.join(', '));
+            } else {
+              core.setOutput('is_valid', 'true');
+            }
+
+      - name: Handle missing required values
+        if: >-
+          steps.dup-check.outputs.is_duplicate == 'false' &&
+          steps.storage-guardrail.outputs.configured == 'true' &&
+          steps.parse.outputs.is_valid == 'false'
+        uses: actions/github-script@v7
+        env:
+          MISSING_FIELDS: ${{ steps.parse.outputs.missing_fields }}
+        with:
+          script: |
+            const missingBodyLines = [
+              '## We need a quick update before enrollment',
+              '',
+              `Hi @${context.payload.issue.user.login}, we could not process enrollment because some required values were missing: ${process.env.MISSING_FIELDS}.`,
+              '',
+              'Please edit this issue and add the missing information, then comment `ready` so a facilitator can retry.'
+            ];
+
+            await github.rest.issues.createComment({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              issue_number: context.issue.number,
+              body: missingBodyLines.join('\n')
+            });
+
+            await github.rest.issues.addLabels({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              issue_number: context.issue.number,
+              labels: ['needs-info']
+            });
+
+      - name: Store full intake in private student repo (optional)
+        if: >-
+          steps.dup-check.outputs.is_duplicate == 'false' &&
+          steps.storage-guardrail.outputs.configured == 'true' &&
+          steps.parse.outputs.is_valid == 'true' &&
+          vars.PRIVATE_STUDENT_DATA_REPO != ''
+        uses: actions/github-script@v7
+        env:
+          TARGET_REPO: ${{ vars.PRIVATE_STUDENT_DATA_REPO }}
+          FULL_NAME: ${{ steps.parse.outputs.full_name }}
+          EMAIL: ${{ steps.parse.outputs.email }}
+          FORM_GITHUB_USERNAME: ${{ steps.parse.outputs.github_username }}
+        with:
+          github-token: ${{ secrets.PRIVATE_STUDENT_DATA_TOKEN }}
+          script: |
+            const target = (process.env.TARGET_REPO || '').trim();
+            if (!target.includes('/')) {
+              core.setOutput('stored', 'false');
+              core.setOutput('reason', 'invalid-target-repo');
+              return;
+            }
+
+            const [owner, repo] = target.split('/');
+            const intakeLines = [
+              '## Classroom Enrollment Intake',
+              '',
+              `- Public issue: https://github.com/${context.repo.owner}/${context.repo.repo}/issues/${context.issue.number}`,
+              `- Submitted by: @${context.payload.issue.user.login}`,
+              `- Full Name: ${process.env.FULL_NAME || ''}`,
+              `- Email Address: ${process.env.EMAIL || ''}`,
+              `- GitHub Username (form): ${process.env.FORM_GITHUB_USERNAME || ''}`,
+              `- GitHub Experience: ${(context.payload.issue.body || '').match(/### Experience with GitHub\s*\n+([\s\S]*?)(?=\n### |$)/i)?.[1]?.trim() || ''}`,
+              `- VS Code Experience: ${(context.payload.issue.body || '').match(/### Experience with Visual Studio Code\s*\n+([\s\S]*?)(?=\n### |$)/i)?.[1]?.trim() || ''}`,
+              `- Course Goals: ${(context.payload.issue.body || '').match(/### What do you hope to get out of this course\?\s*\n+([\s\S]*?)(?=\n### |$)/i)?.[1]?.trim() || ''}`,
+              '',
+              `- Captured at: ${new Date().toISOString()}`
+            ];
+
+            try {
+              await github.rest.issues.create({
+                owner,
+                repo,
+                title: `[ENROLL-INTAKE] ${process.env.FULL_NAME || context.payload.issue.user.login}`,
+                body: intakeLines.join('\n'),
+                labels: ['intake', 'classroom-enrollment']
+              });
+            } catch (error) {
+              if (error.status === 422) {
+                await github.rest.issues.create({
+                  owner,
+                  repo,
+                  title: `[ENROLL-INTAKE] ${process.env.FULL_NAME || context.payload.issue.user.login}`,
+                  body: intakeLines.join('\n')
+                });
+              } else {
+                throw error;
+              }
+            }
+
+            core.setOutput('stored', 'true');
+
+      - name: Redact public enrollment issue body after successful validation
+        if: >-
+          steps.dup-check.outputs.is_duplicate == 'false' &&
+          steps.storage-guardrail.outputs.configured == 'true' &&
+          steps.parse.outputs.is_valid == 'true'
+        uses: actions/github-script@v7
+        with:
+          script: |
+            await github.rest.issues.update({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              issue_number: context.issue.number,
+              body: [
+                '## Enrollment submission (redacted)',
+                '',
+                '- Status: accepted for processing',
+                `- Submitted by: @${context.payload.issue.user.login}`,
+                `- Processed at: ${new Date().toISOString()}`
+              ].join('\n')
+            });
+
+      - name: Invite learner to classroom organization (optional)
+        id: classroom-invite
+        if: >-
+          steps.dup-check.outputs.is_duplicate == 'false' &&
+          steps.storage-guardrail.outputs.configured == 'true' &&
+          steps.parse.outputs.is_valid == 'true' &&
+          vars.CLASSROOM_ORG != ''
+        uses: actions/github-script@v7
+        env:
+          CLASSROOM_ORG: ${{ vars.CLASSROOM_ORG }}
+        with:
+          github-token: ${{ secrets.CLASSROOM_ORG_ADMIN_TOKEN }}
+          script: |
+            const org = process.env.CLASSROOM_ORG;
+            const username = context.payload.issue.user.login;
+            const userId = context.payload.issue.user.id;
+            let status = 'skipped';
+
+            try {
+              await github.rest.orgs.checkMembershipForUser({ org, username });
+              status = 'already-member';
+            } catch (error) {
+              if (error.status !== 404) {
+                throw error;
+              }
+
+              const invites = await github.paginate(github.rest.orgs.listPendingInvitations, {
+                org,
+                per_page: 100
+              });
+
+              const hasPendingInvite = invites.some(invite =>
+                (invite.login || '').toLowerCase() === username.toLowerCase()
+              );
+
+              if (hasPendingInvite) {
+                status = 'already-invited';
+              } else {
+                await github.rest.orgs.createInvitation({
+                  org,
+                  invitee_id: userId,
+                  role: 'direct_member'
+                });
+                status = 'invited';
+              }
+            }
+
+            core.setOutput('status', status);
+
+      - name: Post beginner-friendly success comment
+        if: >-
+          steps.dup-check.outputs.is_duplicate == 'false' &&
+          steps.storage-guardrail.outputs.configured == 'true' &&
+          steps.parse.outputs.is_valid == 'true'
+        uses: actions/github-script@v7
+        env:
+          CLASSROOM_ORG: ${{ vars.CLASSROOM_ORG }}
+          CLASSROOM_JOIN_URL: ${{ vars.CLASSROOM_JOIN_URL }}
+          DAY1_ASSIGNMENT_URL: ${{ vars.CLASSROOM_DAY1_ASSIGNMENT_URL }}
+          CLASSROOM_INVITE_STATUS: ${{ steps.classroom-invite.outputs.status }}
+        with:
+          script: |
+            const org = (process.env.CLASSROOM_ORG || '').trim();
+            const join = (process.env.CLASSROOM_JOIN_URL || '').trim();
+            const day1 = (process.env.DAY1_ASSIGNMENT_URL || '').trim();
+            const inviteStatus = (process.env.CLASSROOM_INVITE_STATUS || '').trim();
+
+            const onboarding = [];
+            if (join) onboarding.push(`- Join classroom: ${join}`);
+            if (day1) onboarding.push(`- Day 1 assignment: ${day1}`);
+
+            const orgStatusLines = [];
+            if (inviteStatus === 'invited') {
+              orgStatusLines.push(`- We sent an organization invitation for \`${org}\`. Please accept it from your GitHub notifications or email.`);
+            } else if (inviteStatus === 'already-invited') {
+              orgStatusLines.push(`- You already have a pending invitation for \`${org}\`. Please accept it before using assignment links.`);
+            } else if (inviteStatus === 'already-member') {
+              orgStatusLines.push(`- You are already a member of \`${org}\`.`);
+            }
+
+            const noLinksFallback = onboarding.length
+              ? ''
+              : '\n- Your enrollment was received. A facilitator will share your classroom link shortly.';
+
+            const orgStatusSection = orgStatusLines.length
+              ? `## Organization access\n${orgStatusLines.join('\n')}\n\n`
+              : '';
+            const successBodyLines = [
+              '## You are enrolled. Welcome!',
+              '',
+              `Hi @${context.payload.issue.user.login}, great job submitting your first step.`,
+              '',
+              '## Next steps',
+              `${onboarding.join('\n')}${noLinksFallback}`,
+              '',
+              '## Day 2 release',
+              '- Day 2 links are released automatically after Day 1 milestone completion.',
+              '',
+              '## Where to see replies',
+              '- GitHub notification bell',
+              '- Email notifications for this issue thread',
+              '',
+              'Please reply `ack` on this issue after you confirm your Day 1 link works.',
+              '',
+              `${orgStatusSection}If you get stuck at any step, open support:`,
+              '- https://github.com/Community-Access/support/issues',
+              '',
+              'You belong here.'
+            ];
+
+            await github.rest.issues.createComment({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              issue_number: context.issue.number,
+              body: successBodyLines.join('\n')
+            });
+
+      - name: Add enrolled label
+        if: >-
+          steps.dup-check.outputs.is_duplicate == 'false' &&
+          steps.storage-guardrail.outputs.configured == 'true' &&
+          steps.parse.outputs.is_valid == 'true'
+        uses: actions/github-script@v7
+        with:
+          script: |
+            await github.rest.issues.addLabels({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              issue_number: context.issue.number,
+              labels: ['enrolled']
+            });
+
+      - name: Add proficiency-based labels for facilitator triage
+        if: >-
+          steps.dup-check.outputs.is_duplicate == 'false' &&
+          steps.storage-guardrail.outputs.configured == 'true' &&
+          steps.parse.outputs.is_valid == 'true'
+        uses: actions/github-script@v7
+        with:
+          script: |
+            function extractProficiencyLabel(body, field) {
+              const regex = new RegExp(`### ${field}\\s*\\n+([\\s\\S]*?)(?=\\n### |$)`, 'i');
+              const match = body.match(regex);
+              if (!match) return 'unknown';
+              const value = match[1].trim();
+              if (value.includes('New') || value.includes('just')) return 'proficiency-beginner';
+              if (value.includes('Some') || value.includes('learning')) return 'proficiency-intermediate';
+              if (value.includes('Confident') || value.includes('regularly')) return 'proficiency-advanced';
+              return 'proficiency-unassessed';
+            }
+
+            const body = context.payload.issue.body || '';
+            const gitHubLabel = extractProficiencyLabel(body, 'Experience with GitHub');
+            const vscodeLabel = extractProficiencyLabel(body, 'Experience with Visual Studio Code');
+
+            const labelsToAdd = [gitHubLabel, vscodeLabel];
+
+            await github.rest.issues.addLabels({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              issue_number: context.issue.number,
+              labels: labelsToAdd
+            });
+
+      - name: Close enrollment issue
+        if: >-
+          steps.dup-check.outputs.is_duplicate == 'false' &&
+          steps.storage-guardrail.outputs.configured == 'true' &&
+          steps.parse.outputs.is_valid == 'true'
+        uses: actions/github-script@v7
+        with:
+          script: |
+            await github.rest.issues.update({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              issue_number: context.issue.number,
+              state: 'closed',
+              state_reason: 'completed'
+            });
+
   welcome:
     name: Welcome New Registrant
     runs-on: ubuntu-latest
@@ -89,8 +595,6 @@ jobs:
         uses: actions/github-script@v7
         with:
           script: |
-            const MAX_CAPACITY = 75;
-
             // Count unique registered users (excluding this issue)
             const existingIssues = await github.paginate(github.rest.issues.listForRepo, {
               owner: context.repo.owner,
@@ -110,12 +614,8 @@ jobs:
 
             const currentCount = uniqueUsers.size;
             core.setOutput('count', currentCount);
-
-            if (currentCount >= MAX_CAPACITY) {
-              core.setOutput('is_full', 'true');
-            } else {
-              core.setOutput('is_full', 'false');
-            }
+            // Registration is currently unlimited.
+            core.setOutput('is_full', 'false');
 
       - name: Handle registration full
         if: steps.dup-check.outputs.is_duplicate == 'false' && steps.capacity-check.outputs.is_full == 'true'
@@ -199,17 +699,15 @@ jobs:
         env:
           CLASSROOM_ORG: ${{ vars.CLASSROOM_ORG }}
           DAY1_ASSIGNMENT_URL: ${{ vars.CLASSROOM_DAY1_ASSIGNMENT_URL }}
-          DAY2_ASSIGNMENT_URL: ${{ vars.CLASSROOM_DAY2_ASSIGNMENT_URL }}
           CLASSROOM_INVITE_STATUS: ${{ steps.classroom-invite.outputs.status }}
         with:
           script: |
             const org = process.env.CLASSROOM_ORG;
             const day1 = (process.env.DAY1_ASSIGNMENT_URL || '').trim();
-            const day2 = (process.env.DAY2_ASSIGNMENT_URL || '').trim();
             const inviteStatus = (process.env.CLASSROOM_INVITE_STATUS || '').trim();
 
             let classroomSection = '';
-            if (day1 || day2 || inviteStatus) {
+            if (day1 || inviteStatus) {
               const lines = ['## Classroom Access'];
 
               if (inviteStatus === 'invited') {
@@ -223,9 +721,7 @@ jobs:
               if (day1) {
                 lines.push(`- Day 1 assignment link: ${day1}`);
               }
-              if (day2) {
-                lines.push(`- Day 2 assignment link: ${day2}`);
-              }
+              lines.push('- Day 2 assignment link is released after Day 1 milestone completion.');
 
               if (lines.length > 1) {
                 classroomSection = `\n\n${lines.join('\n')}`;
@@ -245,6 +741,10 @@ jobs:
             In the meantime, you can get a head start with the [Pre-Workshop Setup Guide](https://community-access.github.io/git-going-with-github/docs/00-pre-workshop-setup.html).
 
             ${classroomSection}
+
+            ## Where replies appear
+            - GitHub notification bell
+            - Email notifications for this issue thread
 
             If you have any questions, use the support hub:
             - Issues: https://github.com/Community-Access/support/issues
@@ -273,10 +773,11 @@ jobs:
     name: Export Registrations to CSV
     runs-on: ubuntu-latest
     if: >-
-      (github.event_name == 'workflow_dispatch') ||
+      ((github.event_name == 'workflow_dispatch') ||
       (github.event_name == 'issues' &&
       github.event.action == 'opened' &&
-      contains(github.event.issue.title, '[REGISTER]'))
+      contains(github.event.issue.title, '[REGISTER]'))) &&
+      vars.ENABLE_PUBLIC_REGISTRATION_EXPORT == 'true'
     steps:
       - name: Generate CSV from registration issues
         uses: actions/github-script@v7
@@ -390,6 +891,91 @@ jobs:
         with:
           name: registration-data
           path: .github/data/registration-data.csv
+          retention-days: 90
+
+  export-classroom-intake:
+    name: Export Classroom Intake to CSV
+    runs-on: ubuntu-latest
+    if: >-
+      ((github.event_name == 'workflow_dispatch') ||
+      (github.event_name == 'issues' &&
+      github.event.action == 'opened' &&
+      contains(github.event.issue.title, '[ENROLL]'))) &&
+      vars.ENABLE_PUBLIC_CLASSROOM_INTAKE_EXPORT == 'true'
+    steps:
+      - name: Generate CSV from classroom enrollment issues
+        uses: actions/github-script@v7
+        with:
+          script: |
+            const fs = require('fs');
+
+            const issues = await github.paginate(github.rest.issues.listForRepo, {
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              labels: 'classroom-enrollment',
+              state: 'all',
+              per_page: 100
+            });
+
+            function parseField(body, fieldName) {
+              if (!body) return '';
+              const regex = new RegExp(`### ${fieldName}\\s*\\n+([\\s\\S]*?)(?=\\n### |$)`, 'i');
+              const match = body.match(regex);
+              if (!match) return '';
+              let value = match[1].trim();
+              if (value === '_No response_') return '';
+              if (value.includes(',') || value.includes('"') || value.includes('\n')) {
+                value = '"' + value.replace(/"/g, '""') + '"';
+              }
+              return value;
+            }
+
+            const headers = [
+              'IssueNumber',
+              'State',
+              'CreatedAt',
+              'SubmittedByGitHubLogin',
+              'FullName',
+              'EmailAddress',
+              'GitHubUsername',
+              'GitHubExperience',
+              'VSCodeExperience',
+              'CourseGoals'
+            ];
+
+            let csv = headers.join(',') + '\n';
+            const seen = new Set();
+            const sortedIssues = issues.sort((a, b) => new Date(a.created_at) - new Date(b.created_at));
+
+            for (const issue of sortedIssues) {
+              const login = issue.user.login;
+              if (seen.has(login)) continue;
+              seen.add(login);
+
+              const row = [
+                issue.number,
+                issue.state.toUpperCase(),
+                issue.created_at.split('T')[0],
+                login,
+                parseField(issue.body, 'Full Name'),
+                parseField(issue.body, 'Email Address'),
+                parseField(issue.body, 'GitHub Username'),
+                parseField(issue.body, 'Experience with GitHub'),
+                parseField(issue.body, 'Experience with Visual Studio Code'),
+                parseField(issue.body, 'What do you hope to get out of this course?')
+              ];
+              csv += row.join(',') + '\n';
+            }
+
+            fs.mkdirSync('.github/data', { recursive: true });
+            fs.writeFileSync('.github/data/classroom-intake.csv', csv, 'utf-8');
+            console.log(`Exported ${seen.size} unique classroom enrollment issue(s) from ${issues.length} total issue(s)`);
+
+      - name: Upload classroom intake CSV as artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: classroom-intake-data
+          path: .github/data/classroom-intake.csv
           retention-days: 90
 
   sync-roster:

@@ -1,0 +1,129 @@
+name: Day 2 Release Gate
+
+on:
+  schedule:
+    - cron: '*/20 * * * *'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  issues: write
+
+jobs:
+  release-day2-links:
+    name: Release Day 2 Links After Day 1 Milestones
+    runs-on: ubuntu-latest
+    if: vars.CLASSROOM_ORG != '' && vars.CLASSROOM_DAY2_ASSIGNMENT_URL != ''
+    steps:
+      - name: Evaluate Day 1 completion and release Day 2 link
+        uses: actions/github-script@v7
+        env:
+          CLASSROOM_ORG: ${{ vars.CLASSROOM_ORG }}
+          DAY2_ASSIGNMENT_URL: ${{ vars.CLASSROOM_DAY2_ASSIGNMENT_URL }}
+          CLASSROOM_TOKEN: ${{ secrets.CLASSROOM_ORG_ADMIN_TOKEN }}
+        with:
+          script: |
+            const { getOctokit } = require('@actions/github');
+
+            const org = (process.env.CLASSROOM_ORG || '').trim();
+            const day2Url = (process.env.DAY2_ASSIGNMENT_URL || '').trim();
+            const classroomToken = (process.env.CLASSROOM_TOKEN || '').trim();
+
+            if (!org || !day2Url || !classroomToken) {
+              core.info('Missing required configuration for Day 2 release gate.');
+              return;
+            }
+
+            const classroom = getOctokit(classroomToken);
+
+            const enrollmentIssues = await github.paginate(github.rest.issues.listForRepo, {
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              labels: 'classroom-enrollment,enrolled',
+              state: 'all',
+              per_page: 100
+            });
+
+            const repos = await classroom.paginate(classroom.rest.repos.listForOrg, {
+              org,
+              type: 'private',
+              per_page: 100
+            });
+
+            function findStudentRepo(username) {
+              const normalized = username.toLowerCase();
+              const exact = repos.find(r => r.name.toLowerCase() === `learning-room-${normalized}`);
+              if (exact) return exact;
+              return repos.find(r => r.name.toLowerCase().includes(normalized));
+            }
+
+            for (const enrollment of enrollmentIssues) {
+              const alreadyReleased = enrollment.labels.some(l => l.name === 'day2-released');
+              if (alreadyReleased) {
+                continue;
+              }
+
+              const student = enrollment.user.login;
+              const studentRepo = findStudentRepo(student);
+              if (!studentRepo) {
+                core.info(`No student repo found for @${student} in ${org}.`);
+                continue;
+              }
+
+              let day1Complete = false;
+              try {
+                const closedIssues = await classroom.paginate(classroom.rest.issues.listForRepo, {
+                  owner: org,
+                  repo: studentRepo.name,
+                  state: 'closed',
+                  per_page: 100
+                });
+
+                day1Complete = closedIssues.some(issue => !issue.pull_request && /^Challenge\s+9\b/i.test(issue.title || ''));
+              } catch (error) {
+                core.warning(`Failed to inspect ${org}/${studentRepo.name}: ${error.message}`);
+                continue;
+              }
+
+              if (!day1Complete) {
+                continue;
+              }
+
+              const comments = await github.paginate(github.rest.issues.listComments, {
+                owner: context.repo.owner,
+                repo: context.repo.repo,
+                issue_number: enrollment.number,
+                per_page: 100
+              });
+
+              const hasReleaseComment = comments.some(c => (c.body || '').includes('<!-- day2-release-bot -->'));
+              if (!hasReleaseComment) {
+                const body = [
+                  '<!-- day2-release-bot -->',
+                  '## Day 2 is unlocked',
+                  '',
+                  `Hi @${student}, you completed the Day 1 milestone.`,
+                  '',
+                  `- Day 2 assignment: ${day2Url}`,
+                  '',
+                  'If you do not see this in GitHub notifications, check your email notifications for this issue thread.'
+                ].join('\n');
+
+                await github.rest.issues.createComment({
+                  owner: context.repo.owner,
+                  repo: context.repo.repo,
+                  issue_number: enrollment.number,
+                  body
+                });
+              }
+
+              const labelsToAdd = ['day2-eligible', 'day2-released'];
+              await github.rest.issues.addLabels({
+                owner: context.repo.owner,
+                repo: context.repo.repo,
+                issue_number: enrollment.number,
+                labels: labelsToAdd
+              });
+
+              core.info(`Released Day 2 for @${student}.`);
+            }
