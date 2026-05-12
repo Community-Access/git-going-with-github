@@ -699,15 +699,17 @@ jobs:
         env:
           CLASSROOM_ORG: ${{ vars.CLASSROOM_ORG }}
           DAY1_ASSIGNMENT_URL: ${{ vars.CLASSROOM_DAY1_ASSIGNMENT_URL }}
+          DAY2_ASSIGNMENT_URL: ${{ vars.CLASSROOM_DAY2_ASSIGNMENT_URL }}
           CLASSROOM_INVITE_STATUS: ${{ steps.classroom-invite.outputs.status }}
         with:
           script: |
             const org = process.env.CLASSROOM_ORG;
             const day1 = (process.env.DAY1_ASSIGNMENT_URL || '').trim();
+            const day2 = (process.env.DAY2_ASSIGNMENT_URL || '').trim();
             const inviteStatus = (process.env.CLASSROOM_INVITE_STATUS || '').trim();
 
             let classroomSection = '';
-            if (day1 || inviteStatus) {
+            if (day1 || day2 || inviteStatus) {
               const lines = ['## Classroom Access'];
 
               if (inviteStatus === 'invited') {
@@ -721,7 +723,11 @@ jobs:
               if (day1) {
                 lines.push(`- Day 1 assignment link: ${day1}`);
               }
-              lines.push('- Day 2 assignment link is released after Day 1 milestone completion.');
+              if (day2) {
+                lines.push(`- Day 2 assignment link: ${day2}`);
+              } else {
+                lines.push('- Day 2 assignment link is released after Day 1 milestone completion.');
+              }
 
               if (lines.length > 1) {
                 classroomSection = `\n\n${lines.join('\n')}`;
