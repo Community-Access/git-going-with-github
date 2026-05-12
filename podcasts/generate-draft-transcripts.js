@@ -171,10 +171,11 @@ function compactPoint(text, maxLength = 260) {
     .trim();
 
   if (/^(type|id|attributes|validations|required|label|description|placeholder|value|options|body|name|title|chapters?):\s*/i.test(cleaned)) return '';
+  if (/\b(to|including|such as):?$/i.test(cleaned)) return '';
   if (!cleaned || cleaned.length < 8) return '';
   if (cleaned.length <= maxLength) return cleaned;
   const boundary = cleaned.lastIndexOf(' ', maxLength);
-  return `${cleaned.slice(0, boundary > 80 ? boundary : maxLength).trim()}.`;
+  return `${cleaned.slice(0, boundary > 80 ? boundary : maxLength).trim()}...`;
 }
 
 function isTableHeaderRow(cells) {
@@ -435,15 +436,21 @@ const practicePrompts = [
 
 const detailBridges = [
   'A few details make that real.',
-  'The practical anchors are these.',
+  'Here are the anchors worth keeping.',
   'That shows up in the workshop in a few specific ways.',
-  'For a learner, the useful signals are these.',
+  'For a learner, the useful signals are concrete.',
   'The parts worth keeping in working memory are these.',
   'On the ground, that means a few things.',
   'Here is what that changes in practice.',
   'The room should hear these as checkpoints.',
   'These are the details that keep the idea from floating away.',
-  'That becomes easier when you listen for these cues.'
+  'That becomes easier when you listen for these cues.',
+  'If someone is taking notes, this is the short list.',
+  'Here is the part that makes the next action easier.',
+  'These are the pieces that turn the idea into a usable move.',
+  'Listen for the small confirmations in this list.',
+  'The useful version is not abstract; it sounds like this.',
+  'This is where the lesson becomes something you can check.'
 ];
 
 const continuationBridges = [
@@ -457,7 +464,13 @@ const continuationBridges = [
   'This is where the talk moves from concept to action.',
   'Another way to ground it.',
   'Before the learner moves on.',
-  'This is the part worth saying out loud.'
+  'This is the part worth saying out loud.',
+  'Now slow down for the part people usually miss.',
+  'Put that beside the next piece.',
+  'Here is the moment where the page starts to make sense.',
+  'Now shift from knowing the term to using it.',
+  'The next point gives the learner a handle.',
+  'This is where confidence starts to build.'
 ];
 
 const sequencePrompts = [
@@ -468,12 +481,15 @@ const sequencePrompts = [
   'What is the ordered workflow?'
 ];
 
-const sequenceMetaphors = [
-  'Think of it as a rail line: each stop confirms you are still on the right route before the next one.',
-  'Treat it like a recipe: do not add the next ingredient until the previous one is actually in the bowl.',
-  'It is a checklist, but a meaningful one: every item creates evidence that the next step is safe.',
-  'It is like walking a hallway with named doors: read the sign, enter the right room, then confirm where you landed.',
-  'The rhythm is simple: orient, act, verify, then continue.'
+const sequenceClosers = [
+  'Pause after each step and listen for the confirmation before moving on.',
+  'The point is not speed; the point is never losing your place.',
+  'Each step should leave a trace you can name.',
+  'If one step does not match what you hear, stop there and re-orient.',
+  'That is the rhythm: orient, act, verify, continue.',
+  'That small check between steps is what makes the workflow reliable.',
+  'The sequence works because every action has a confirmation.',
+  'Keep it that plain: know where you are, make the move, check the result.'
 ];
 
 const tablePrompts = [
@@ -490,15 +506,37 @@ const codePrompts = [
   'What should happen before anyone copies and runs it?'
 ];
 
-const analogies = [
-  'Think of it like entering a new building: first you find the lobby, then the room, then the door you actually need.',
-  'It is like learning a transit route. The names of the stops matter because they tell you whether you are still going the right direction.',
-  'The workshop is closer to rehearsal than lecture. You hear the move, try the move, and then check what changed.',
-  'A good GitHub workflow is like a well-run meeting: everyone knows the topic, the next action, and who has the floor.',
-  'The interface gets friendlier when it stops being a wall of controls and starts being a set of named places.'
+const humanCheckPrompts = [
+  'That is the part I would want someone to say out loud while they work.',
+  'So the learner is not behind if they stop there and check the page.',
+  'That feels much more doable when you say it as one move.',
+  'I like that because it gives people permission to slow down.',
+  'That is the kind of detail that keeps a screen reader user oriented.',
+  'So this is less about memorizing and more about noticing.',
+  'That is a useful checkpoint before anyone starts pressing keys.',
+  'Now it sounds like a workflow instead of a wall of instructions.'
 ];
 
-const genericClosingPoint = 'The useful habit is simple: orient first, act second, verify third. That pause before acting is part of the work.';
+const humanCheckResponses = [
+  'Exactly. A learner should always know what they are trying to prove before they take the next action.',
+  'Yes. Pausing to verify is not a detour; it is how you keep control of the workflow.',
+  'Right. The magic is not speed. The magic is knowing what changed and why it matters.',
+  'That is the goal. We want the page to feel explorable, not fragile.',
+  'Yes. The named thing - the heading, tab, field, branch, or button - is the handhold.',
+  'Right. Once the learner can name the move, the interface becomes much less intimidating.',
+  'Exactly. Checkpoints turn uncertainty into information.',
+  'That is where confidence comes from: not from never getting lost, but from knowing how to recover.'
+];
+
+const analogies = [
+  'The workshop is closer to rehearsal than lecture. You hear the move, try the move, and then check what changed.',
+  'A good GitHub workflow is like a well-run meeting: everyone knows the topic, the next action, and who has the floor.',
+  'The interface gets easier when it becomes a set of named places instead of a wall of controls.',
+  'The durable skill is not memorizing one screen. It is knowing how to find your footing when the screen changes.',
+  'That is the difference between following directions and owning the workflow.'
+];
+
+const genericClosingPoint = 'The useful habit is simple: orient, act, verify, then continue. That pause between action and trust is part of the work.';
 
 function buildClosingTeachingPoint(title) {
   const lower = title.toLowerCase();
@@ -519,7 +557,7 @@ function removeDanglingLeadIn(text) {
   return text
     .replace(/\bExamples?:$/i, '')
     .replace(/\bInclude:$/i, '')
-    .replace(/\b(because|so|and|or|with|for|by):?$/i, '')
+    .replace(/\b(because|so|and|or|with|for|by|to|including|such as):?$/i, '')
     .replace(/\s+:/g, ':')
     .replace(/\s+\.$/, '.')
     .trim();
@@ -530,11 +568,16 @@ function reframePoint(point, sectionTitle, index) {
   const cleaned = normalizeTeachingPoint(point);
 
   const frames = [
-    `Start with ${subject}: ${cleaned}`,
-    `Here is the plain-English version of ${subject}. ${cleaned}`,
-    `This is where ${subject} becomes real: ${lowerFirst(cleaned)}`,
-    `Keep the learner anchored in ${subject}. ${cleaned}`,
-    `The reason ${subject} matters is that ${lowerFirst(cleaned)}`
+    `${subject}: ${cleaned}`,
+    `Here is the learner-facing version. ${cleaned}`,
+    `This is the move inside ${subject}: ${lowerFirst(cleaned)}`,
+    `Anchor this part on ${subject}. ${cleaned}`,
+    `The reason this matters is simple: ${lowerFirst(cleaned)}`,
+    `Do not treat ${subject} as decoration. ${cleaned}`,
+    `If the interface shifts, ${subject} is still useful because ${lowerFirst(cleaned)}`,
+    `Put ${subject} into plain language. ${cleaned}`,
+    `The teaching point here is not the label; it is the move. ${cleaned}`,
+    `This part earns its place because ${lowerFirst(cleaned)}`
   ];
 
   const sentence = frames[index % frames.length];
@@ -563,11 +606,16 @@ function normalizeTeachingPoint(point) {
 function reframeSupport(point, index) {
   const cleaned = normalizeTeachingPoint(point);
   const frames = [
-    `That gives the learner a simple foothold: ${lowerFirst(cleaned)}`,
-    `The next useful detail is this: ${cleaned}`,
+    `That gives the learner a foothold: ${lowerFirst(cleaned)}`,
+    `The next useful detail is concrete: ${cleaned}`,
     `Put another way, ${lowerFirst(cleaned)}`,
     `That matters in practice: ${cleaned}`,
-    `This is the part to say slowly: ${cleaned}`
+    `This is the part to say slowly: ${cleaned}`,
+    `The listener should be able to check this: ${cleaned}`,
+    `That is not trivia. ${cleaned}`,
+    `For someone navigating by keyboard or screen reader, this detail matters: ${cleaned}`,
+    `The useful version is: ${cleaned}`,
+    `That is the difference between guessing and knowing: ${cleaned}`
   ];
   const sentence = frames[index % frames.length];
   return /[.!?]$/.test(sentence) ? sentence : `${sentence}.`;
@@ -782,7 +830,7 @@ function getJamiePrompt(section, index, state, hasSteps, hasTableRows, hasCodeBl
 function speakCoreIdea(section, paragraphs, index) {
   if (!paragraphs.length) {
     const subject = cleanedTitle(section.title) || 'this part of the course';
-    return `Start with ${subject}. There is something to understand, something to try, and something that proves the try worked.`;
+    return `${subject} has three jobs: name the idea, give the learner a move, and show what counts as evidence.`;
   }
 
   const lead = reframePoint(paragraphs[0], section.title, index);
@@ -798,18 +846,36 @@ function speakDetails(groups, index, state) {
     detailBridges,
     index,
     state.usedDetailBridges,
-    'The practical takeaway is this.'
+    'Here is the part to remember.'
   );
   return `${bridge} ${naturalList(groups)}.`;
 }
 
 function speakSteps(group, index) {
-  const parts = group.map(removeDanglingLeadIn).filter(Boolean);
-  const first = parts[0] ? `First, ${lowerFirst(parts[0])}` : '';
-  const second = parts[1] ? `Then, ${lowerFirst(parts[1])}` : '';
-  const third = parts[2] ? `After that, ${lowerFirst(parts[2])}` : '';
-  const fourth = parts[3] ? `Finally, ${lowerFirst(parts[3])}` : '';
-  return `${[first, second, third, fourth].filter(Boolean).join('. ')}. ${sequenceMetaphors[index % sequenceMetaphors.length]}`;
+  const parts = group.map(removeDanglingLeadIn).map(stripTerminalPunctuation).filter(Boolean);
+  const style = index % 5;
+  let sequence = '';
+
+  if (style === 0) {
+    const first = parts[0] ? `First, ${lowerFirst(parts[0])}` : '';
+    const second = parts[1] ? `Then, ${lowerFirst(parts[1])}` : '';
+    const third = parts[2] ? `After that, ${lowerFirst(parts[2])}` : '';
+    const fourth = parts[3] ? `Finally, ${lowerFirst(parts[3])}` : '';
+    sequence = [first, second, third, fourth].filter(Boolean).join('. ');
+  } else if (style === 1) {
+    const labels = ['Start here:', 'Then:', 'Next:', 'Last:'];
+    sequence = parts.map((part, partIndex) => `${labels[partIndex] || 'Then:'} ${part}`).join('. ');
+  } else if (style === 2) {
+    sequence = `Walk it in order: ${joinTeachingList(parts)}`;
+  } else if (style === 3) {
+    sequence = `Think of this as ${parts.length} checks: ${joinTeachingList(parts)}`;
+  } else {
+    const labels = ['Step one is', 'Step two is', 'Step three is', 'Step four is'];
+    sequence = `The path is straightforward once it is named. ${parts.map((part, partIndex) => `${labels[partIndex] || 'Then'} ${lowerFirst(part)}`).join('. ')}`;
+  }
+
+  const punctuated = /[.!?]$/.test(sequence) ? sequence : `${sequence}.`;
+  return `${punctuated} ${sequenceClosers[index % sequenceClosers.length]}`;
 }
 
 function createTeachingState() {
@@ -822,6 +888,7 @@ function createTeachingState() {
     usedJamiePrompts: new Set(),
     usedContinuationBridges: new Set(),
     usedDetailBridges: new Set(),
+    usedHumanChecks: new Set(),
     usedSegments: new Set()
   };
 }
@@ -886,6 +953,16 @@ function teachSection(lines, section, index, state) {
 
   if (codeBlocks.length) {
     pushSpoken(lines, state, 'ALEX', `Treat examples as spoken recipes, not decorations. You may hear something like ${naturalList(codeBlocks)}. Read the command, understand what it changes, then run it only when the repository state matches the lesson.`);
+  }
+
+  if (index > 0 && index % 5 === 2) {
+    const prompt = humanCheckPrompts[index % humanCheckPrompts.length];
+    const response = humanCheckResponses[index % humanCheckResponses.length];
+    if (!state.usedHumanChecks.has(prompt)) {
+      state.usedHumanChecks.add(prompt);
+      pushSpoken(lines, state, 'JAMIE', prompt);
+      pushSpoken(lines, state, 'ALEX', response);
+    }
   }
 
   state.sectionCountSinceGeneric += 1;

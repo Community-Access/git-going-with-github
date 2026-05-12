@@ -155,7 +155,7 @@ Open these at any time during the workshop. They are not part of the chapter seq
 | [H](appendix-h-github-desktop.md) | **GitHub Desktop** | Visual Git client - clone, branch, stage, commit, push, cherry-pick, conflict resolution |
 | [I](appendix-i-github-cli.md) | **GitHub CLI Reference** | Installing, auth, repos, issues, PRs, releases, search, aliases, extensions, Copilot CLI |
 | [J](appendix-j-cloud-editors.md) | **Cloud Editors (Codespaces and github.dev)** | Cloud development environments, accessibility setup, screen reader usage |
-| [K](appendix-k-copilot-reference.md) | **Copilot Reference** | Features, chat participants, slash commands, MCP servers, model comparison |
+| [K](appendix-k-copilot-reference.md) | **Copilot Reference** | Features, chat participants, slash commands, MCP servers, billing, and model-selection guidance |
 | [L](appendix-l-agents-reference.md) | **Accessibility Agents Reference** | 55 agents, 3 teams, 5 platforms, slash commands, workspace configuration |
 
 ### GitHub Platform (M-S)

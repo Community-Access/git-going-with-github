@@ -21,48 +21,54 @@ Right. We are building a rhythm: orient yourself, take one intentional action, t
 Okay, set the room for us. What are we walking into?
 
 [ALEX]
-Start with Going Deeper with Git: Who this is for: You have completed Chapter 11 (Git & Source Control) and feel comfortable with the basics -- cloning, branching, committing, pushing, and pulling. The next useful detail is this: This appendix covers the next tier of Git skills that come up constantly in real open source contribution: cherry-picking fixes across branches, cleaning up messy commit history before a PR, safely undoing mistakes, and understanding why your push sometimes.
+Going Deeper with Git: Who this is for: You have completed Chapter 11 (Git & Source Control) and feel comfortable with the basics -- cloning, branching, committing, pushing, and pulling. The next useful detail is concrete: This appendix covers the next tier of Git skills that come up constantly in real open source contribution: cherry-picking fixes across branches, cleaning up messy commit history before a PR, safely undoing mistakes, and understanding why your push sometimes.
 
 [ALEX]
 A solid Git habit is to know which branch you are on, what changed, and what confirmation you expect before you run the next command.
 
 [ALEX]
-The next layer is this. Start with Learning Cards: Using This Advanced Git Reference. There is something to understand, something to try, and something that proves the try worked.
+The next layer is this. Learning Cards: Using This Advanced Git Reference has three jobs: name the idea, give the learner a move, and show what counts as evidence.
 
 [ALEX]
-The practical anchors are these. Each operation is a numbered h2 section with three sub-paths: VS Code, GitHub CLI, and Git CLI. Use H to jump between operations and 3 to jump between the tool-specific sub-headings within each. The Table of Contents above has anchor links -- activate any link to jump directly to that operation. Command examples are in labeled code blocks -- increase zoom and each command fits on one line. Every section follows the same structure: what it is, when to use it, then tool-specific steps. The Quick Reference table near the bottom gives a one-row-per-operation summary for fast lookup.
+Here are the anchors worth keeping. Each operation is a numbered h2 section with three sub-paths: VS Code, GitHub CLI, and Git CLI. Use H to jump between operations and 3 to jump between the tool-specific sub-headings within each. The Table of Contents above has anchor links -- activate any link to jump directly to that operation. Command examples are in labeled code blocks -- increase zoom and each command fits on one line. Every section follows the same structure: what it is, when to use it, then tool-specific steps. The Quick Reference table near the bottom gives a one-row-per-operation summary for fast lookup.
 
 [JAMIE]
 What is the one idea that makes the next few steps less mysterious?
 
 [ALEX]
-This is where 1. Cherry-Pick -- Grabbing a Specific Commit becomes real: what it is: Cherry-pick lets you take a single commit from any branch and apply it to your current branch. That matters in practice: Think of it like copy-pasting a specific change -- without bringing the entire branch along with it.
+This is the move inside 1. Cherry-Pick -- Grabbing a Specific Commit: what it is: Cherry-pick lets you take a single commit from any branch and apply it to your current branch. That matters in practice: Think of it like copy-pasting a specific change -- without bringing the entire branch along with it.
 
 [ALEX]
 That shows up in the workshop in a few specific ways. You fixed a bug on a feature branch, but main also needs that fix right now. A teammate landed a commit on their branch and you need just that one change. You accidentally committed to the wrong branch and need to move that commit somewhere else.
 
+[JAMIE]
+That feels much more doable when you say it as one move.
+
+[ALEX]
+Right. The magic is not speed. The magic is knowing what changed and why it matters.
+
 [PAUSE]
 
 [ALEX]
-Now bring the learner back to the room. Keep the learner anchored in Finding the Commit SHA. Before cherry-picking, you need the commit's SHA (the unique ID for that commit).
+Now bring the learner back to the room. Anchor this part on Finding the Commit SHA. Before cherry-picking, you need the commit's SHA (the unique ID for that commit).
 
 [JAMIE]
 What is the ordered workflow?
 
 [ALEX]
-Start with VS Code. There is something to understand, something to try, and something that proves the try worked.
+VS Code has three jobs: name the idea, give the learner a move, and show what counts as evidence.
 
 [ALEX]
-First, open the Timeline panel: Click View → Open View → Timeline (or press Ctrl+Shift+P and type "Timeline"). Then, switch to the branch that has the commit you want, browse the Timeline, and copy the commit SHA shown in the details panel. The rhythm is simple: orient, act, verify, then continue.
+The path is straightforward once it is named. Step one is open the Timeline panel: Click View → Open View → Timeline (or press Ctrl+Shift+P and type "Timeline"). Step two is switch to the branch that has the commit you want, browse the Timeline, and copy the commit SHA shown in the details panel. That is the rhythm: orient, act, verify, continue.
 
 [ALEX]
-The useful habit is simple: orient first, act second, verify third. That pause before acting is part of the work.
+The useful habit is simple: orient, act, verify, then continue. That pause between action and trust is part of the work.
 
 [JAMIE]
 How do you keep commands from becoming magic words?
 
 [ALEX]
-Start with Git CLI: The short SHA is the first 7 characters (a1b2c3d). Think of it like entering a new building: first you find the lobby, then the room, then the door you actually need.
+Do not treat Git CLI as decoration. The short SHA is the first 7 characters (a1b2c3d). The workshop is closer to rehearsal than lecture. You hear the move, try the move, and then check what changed.
 
 [ALEX]
 Treat examples as spoken recipes, not decorations. You may hear something like See commits on another branch without switching to it; git log feature/bug-fix --oneline; Output:; a1b2c3d Fix null pointer error in auth module; e4f5g6h Add unit tests for login. Read the command, understand what it changes, then run it only when the repository state matches the lesson.
@@ -73,25 +79,31 @@ Treat examples as spoken recipes, not decorations. You may hear something like S
 How would you walk the room through that step by step?
 
 [ALEX]
-Start with VS Code (Command Palette). There is something to understand, something to try, and something that proves the try worked.
+VS Code (Command Palette) has three jobs: name the idea, give the learner a move, and show what counts as evidence.
 
 [ALEX]
-First, press Ctrl+Shift+P (or Cmd+Shift+P on macOS). Then, type "cherry" and select "Git: Cherry Pick.". After that, paste or type the commit SHA. Finally, press Enter -- VS Code applies the commit to your current branch. Treat it like a recipe: do not add the next ingredient until the previous one is actually in the bowl.
+Start here: Press Ctrl+Shift+P (or Cmd+Shift+P on macOS). Then: Type "cherry" and select "Git: Cherry Pick.". Next: Paste or type the commit SHA. Last: Press Enter -- VS Code applies the commit to your current branch. The sequence works because every action has a confirmation.
 
 [JAMIE]
 What should happen before anyone copies and runs it?
 
 [ALEX]
-This is where GitHub CLI becomes real: the GitHub CLI doesn't have a direct cherry-pick command (it's a local Git operation), but you can use it to find the SHA first.
+Put GitHub CLI into plain language. The GitHub CLI doesn't have a direct cherry-pick command (it's a local Git operation), but you can use it to find the SHA first.
 
 [ALEX]
 Treat examples as spoken recipes, not decorations. You may hear something like List commits on a branch via gh to find the one you want; gh api repos/{owner}/{repo}/commits?sha=feature/bug-fix --jq '.[].sha,.[].commit.message' head -20; Then cherry-pick using git; git cherry-pick a1b2c3d. Read the command, understand what it changes, then run it only when the repository state matches the lesson.
 
 [JAMIE]
+Now it sounds like a workflow instead of a wall of instructions.
+
+[ALEX]
+That is where confidence comes from: not from never getting lost, but from knowing how to recover.
+
+[JAMIE]
 What should they understand before typing anything?
 
 [ALEX]
-Start with Git CLI. There is something to understand, something to try, and something that proves the try worked.
+Git CLI has three jobs: name the idea, give the learner a move, and show what counts as evidence.
 
 [ALEX]
 Treat examples as spoken recipes, not decorations. You may hear something like Apply a single commit; git cherry-pick a1b2c3d; Apply a range of commits (from older to newer, exclusive of first); git cherry-pick a1b2c3d.e4f5g6h; Apply without automatically committing (lets you review changes first); git cherry-pick --no-commit a1b2c3d. Read the command, understand what it changes, then run it only when the repository state matches the lesson.
@@ -102,10 +114,10 @@ Treat examples as spoken recipes, not decorations. You may hear something like A
 Give me the sequence, because order matters here.
 
 [ALEX]
-The reason If There's a Conflict matters is that cherry-pick can hit conflicts just like a merge. That gives the learner a simple foothold: when a cherry-pick stops due to a conflict, run git status in the terminal -- it announces exactly which files need attention. The interface gets friendlier when it stops being a wall of controls and starts being a set of named places.
+This part earns its place because cherry-pick can hit conflicts just like a merge. That gives the learner a foothold: when a cherry-pick stops due to a conflict, run git status in the terminal -- it announces exactly which files need attention. That is the difference between following directions and owning the workflow.
 
 [ALEX]
-First, Git pauses and marks the conflicting files (same <<<<<<< HEAD markers as merge conflicts). Then, resolve the conflicts in VS Code's conflict editor (see Chapter 7: Merge Conflicts). After that, stage the resolved files. Finally, then either. The rhythm is simple: orient, act, verify, then continue.
+The path is straightforward once it is named. Step one is Git pauses and marks the conflicting files (same <<<<<<< HEAD markers as merge conflicts). Step two is resolve the conflicts in VS Code's conflict editor (see Chapter 7: Merge Conflicts). Step three is stage the resolved files. Step four is then either. The point is not speed; the point is never losing your place.
 
 [ALEX]
 Treat examples as spoken recipes, not decorations. You may hear something like Continue the cherry-pick after resolving; git cherry-pick --continue; Or cancel it entirely and go back to where you started; git cherry-pick --abort. Read the command, understand what it changes, then run it only when the repository state matches the lesson.
@@ -114,19 +126,19 @@ Treat examples as spoken recipes, not decorations. You may hear something like C
 What would you say to someone who is already bracing for this to be too much?
 
 [ALEX]
-Start with 2. Interactive Rebase -- Cleaning Up Your History: What it is: Interactive rebase (git rebase -i) is like a time machine for your commits. The next useful detail is this: Before you open a PR, you can reorder commits, combine several small commits into one clean commit, rewrite commit messages, or remove commits that were just experiments.
+2. Interactive Rebase -- Cleaning Up Your History: What it is: Interactive rebase (git rebase -i) is like a time machine for your commits. The next useful detail is concrete: Before you open a PR, you can reorder commits, combine several small commits into one clean commit, rewrite commit messages, or remove commits that were just experiments.
 
 [ALEX]
-A few details make that real. You made 8 "WIP" commits while working and want to combine them into 1 clean commit for your PR. You want to reword a commit message to better describe what changed. You accidentally committed a debug file and want to remove that commit entirely.
+If someone is taking notes, this is the short list. You made 8 "WIP" commits while working and want to combine them into 1 clean commit for your PR. You want to reword a commit message to better describe what changed. You accidentally committed a debug file and want to remove that commit entirely.
 
 [JAMIE]
 What does the learner do first, second, and then after that?
 
 [ALEX]
-Here is the plain-English version of VS Code. VS Code has basic rebase support via the Command Palette, but for full interactive rebase you'll want the terminal. Put another way, after that, git rebase -i will open the commit list in VS Code itself -- much more screen-reader-friendly.
+Here is the learner-facing version. VS Code has basic rebase support via the Command Palette, but for full interactive rebase you'll want the terminal. Put another way, after that, git rebase -i will open the commit list in VS Code itself -- much more screen-reader-friendly.
 
 [ALEX]
-First, open the Integrated Terminal: Ctrl+Backtick. Then, run the command below to rebase the last N commits (replace N with how many commits you want to edit). After that, your default editor opens with a list of your commits. If it opens in vim, type i to enter insert mode, make your edits, then press Esc followed by:wq to save. If you'd prefer VS Code as the editor. Treat it like a recipe: do not add the next ingredient until the previous one is actually in the bowl.
+Start here: Open the Integrated Terminal: Ctrl+Backtick. Then: Run the command below to rebase the last N commits (replace N with how many commits you want to edit). Next: Your default editor opens with a list of your commits. If it opens in vim, type i to enter insert mode, make your edits, then press Esc followed by:wq to save. If you'd prefer VS Code as the editor. If one step does not match what you hear, stop there and re-orient.
 
 [ALEX]
 Treat examples as spoken recipes, not decorations. You may hear something like git rebase -i HEAD 3; This opens your last 3 commits for editing. git config --global core.editor "code --wait". Read the command, understand what it changes, then run it only when the repository state matches the lesson.
@@ -137,39 +149,51 @@ Treat examples as spoken recipes, not decorations. You may hear something like g
 What is the safe way to learn from that example?
 
 [ALEX]
-Start with Git CLI (Terminal). There is something to understand, something to try, and something that proves the try worked.
+Git CLI (Terminal) has three jobs: name the idea, give the learner a move, and show what counts as evidence.
 
 [ALEX]
 Treat examples as spoken recipes, not decorations. You may hear something like Rebase the last 3 commits; git rebase -i HEAD 3; Or rebase everything since you branched from main; git rebase -i main. Read the command, understand what it changes, then run it only when the repository state matches the lesson.
 
+[JAMIE]
+That is the kind of detail that keeps a screen reader user oriented.
+
 [ALEX]
-That connects to another useful point. Keep the learner anchored in The Commit List -- What You're Looking At. When the editor opens, you see something like this. This is the part to say slowly: Each line starts with a command word. A good GitHub workflow is like a well-run meeting: everyone knows the topic, the next action, and who has the floor.
+Yes. The named thing - the heading, tab, field, branch, or button - is the handhold.
+
+[ALEX]
+Here is the moment where the page starts to make sense. Anchor this part on The Commit List -- What You're Looking At. When the editor opens, you see something like this. This is the part to say slowly: Each line starts with a command word. The durable skill is not memorizing one screen. It is knowing how to find your footing when the screen changes.
 
 [JAMIE]
 Where do you want a learner to place their attention here?
 
 [ALEX]
-The reason Example: Squashing 3 Commits Into 1 matters is that Git opens a second editor for you to write the combined commit message. That gives the learner a simple foothold: write a clean summary and save -- done.
+The reason this matters is simple: Git opens a second editor for you to write the combined commit message. The listener should be able to check this: Write a clean summary and save -- done.
 
 [PAUSE]
 
 [ALEX]
-Here is the practical turn. Start with Example: Rewriting a Commit Message: Git opens the commit message for a1b2c3d for you to edit. The next useful detail is this: Write the new message, save -- done.
+The next point gives the learner a handle. Do not treat Example: Rewriting a Commit Message as decoration. Git opens the commit message for a1b2c3d for you to edit. That is not trivia. Write the new message, save -- done.
 
 [JAMIE]
 Let's pause on If Something Goes Wrong. What should a learner take away from it?
 
 [ALEX]
-Here is the plain-English version of If Something Goes Wrong. Run git rebase -i with VS Code as your editor (git config --global core.editor "code --wait") -- the commit list opens in a VS Code tab that your screen reader can navigate normally with arrow keys. Put another way, GitHub Copilot can help: Not sure how to word a squashed commit message?
+If the interface shifts, If Something Goes Wrong is still useful because run git rebase -i with VS Code as your editor (git config --global core.editor "code --wait") -- the commit list opens in a VS Code tab that your screen reader can navigate normally with arrow keys. For someone navigating by keyboard or screen reader, this detail matters: GitHub Copilot can help: Not sure how to word a squashed commit message?
 
 [ALEX]
 Treat examples as spoken recipes, not decorations. You may hear something like Abort the rebase and go back to where you started; git rebase --abort; If you're mid-rebase and hit a conflict, resolve it then continue; git rebase --continue. Read the command, understand what it changes, then run it only when the repository state matches the lesson.
 
 [ALEX]
-Keep the thread going. This is where 3. git reset -- Undoing at Different Depths becomes real: what it is: git reset moves the tip of your current branch backward to a previous commit. That matters in practice: The three modes (--soft, --mixed, --hard) control what happens to the changes that were in those commits. The workshop is closer to rehearsal than lecture. You hear the move, try the move, and then check what changed.
+Hold that next to this. Put 3. git reset -- Undoing at Different Depths into plain language. What it is: git reset moves the tip of your current branch backward to a previous commit. The useful version is: The three modes (--soft, --mixed, --hard) control what happens to the changes that were in those commits. The interface gets easier when it becomes a set of named places instead of a wall of controls.
 
 [ALEX]
-The room should hear these as checkpoints. You committed too early and want to add more changes to that commit. You staged the wrong files and want to unstage them. You want to completely throw away the last few commits and start fresh.
+For a learner, the useful signals are concrete. You committed too early and want to add more changes to that commit. You staged the wrong files and want to unstage them. You want to completely throw away the last few commits and start fresh.
+
+[JAMIE]
+So the learner is not behind if they stop there and check the page.
+
+[ALEX]
+Yes. Pausing to verify is not a detour; it is how you keep control of the workflow.
 
 [ALEX]
 A solid pull request habit is to separate three questions: what changed, why it changed, and what still needs review. That keeps the conversation useful instead of noisy.
@@ -180,22 +204,22 @@ A solid pull request habit is to separate three questions: what changed, why it 
 If I am listening before the workshop starts, what should settle in my mind first?
 
 [ALEX]
-Keep the learner anchored in The Three Modes. Think of Git as having three layers: your working files (what you can see in the editor), the staging area (what git add puts there), and the commit history. This is the part to say slowly: It permanently discards your uncommitted changes.
+The teaching point here is not the label; it is the move. Think of Git as having three layers: your working files (what you can see in the editor), the staging area (what git add puts there), and the commit history. That is the difference between guessing and knowing: It permanently discards your uncommitted changes.
 
 [JAMIE]
 Turn that into a path someone can follow.
 
 [ALEX]
-The reason Using the Source Control panel matters is that this is equivalent to git reset --soft HEAD 1 -- your changes come back as staged files, nothing is lost.
+This part earns its place because this is equivalent to git reset --soft HEAD 1 -- your changes come back as staged files, nothing is lost.
 
 [ALEX]
-First, open Source Control: Ctrl+Shift+G. Then, click the "." (More Actions) menu at the top of the panel. After that, select "Commit → Undo Last Commit". The rhythm is simple: orient, act, verify, then continue.
+The path is straightforward once it is named. Step one is open Source Control: Ctrl+Shift+G. Step two is click the "." (More Actions) menu at the top of the panel. Step three is select "Commit → Undo Last Commit". If one step does not match what you hear, stop there and re-orient.
 
 [JAMIE]
 Let's pause on Using the Command Palette. What should a learner take away from it?
 
 [ALEX]
-Start with Using the Command Palette. There is something to understand, something to try, and something that proves the try worked.
+Using the Command Palette has three jobs: name the idea, give the learner a move, and show what counts as evidence.
 
 [ALEX]
 Treat examples as spoken recipes, not decorations. You may hear something like Ctrl+Shift+P → type "git undo" → select "Git: Undo Last Commit". Read the command, understand what it changes, then run it only when the repository state matches the lesson.
@@ -212,10 +236,16 @@ Treat examples as spoken recipes, not decorations. You may hear something like U
 Give me the version that sounds like an instructor, not a manual.
 
 [ALEX]
-This is where Unstaging a File (Without Undoing the Commit) becomes real: if you just want to remove a file from the staging area without touching commit history.
+This is the move inside Unstaging a File (Without Undoing the Commit): if you just want to remove a file from the staging area without touching commit history.
+
+[JAMIE]
+That is a useful checkpoint before anyone starts pressing keys.
 
 [ALEX]
-That matters because of the next idea. Keep the learner anchored in VS Code. In the Source Control panel, click the minus (--) icon next to a staged file, or right-click it and select "Unstage Changes".
+Exactly. Checkpoints turn uncertainty into information.
+
+[ALEX]
+Keep the thread going. Anchor this part on VS Code. In the Source Control panel, click the minus (--) icon next to a staged file, or right-click it and select "Unstage Changes".
 
 [PAUSE]
 
@@ -226,16 +256,16 @@ Before we leave Git CLI, what is the practical point?
 Treat examples as spoken recipes, not decorations. You may hear something like Unstage a specific file; git restore --staged docs/README.md; Unstage everything; git restore --staged. Read the command, understand what it changes, then run it only when the repository state matches the lesson.
 
 [ALEX]
-This is where the talk moves from concept to action. Start with 4. git revert -- The Safe Undo for Shared Branches: What it is: git revert creates a new commit that undoes the changes from a previous commit. The next useful detail is this: Unlike git reset, it does not rewrite history -- it adds to it. Think of it like entering a new building: first you find the lobby, then the room, then the door you actually need.
+Another way to ground it. Do not treat 4. git revert -- The Safe Undo for Shared Branches as decoration. What it is: git revert creates a new commit that undoes the changes from a previous commit. That is not trivia. Unlike git reset, it does not rewrite history -- it adds to it. The workshop is closer to rehearsal than lecture. You hear the move, try the move, and then check what changed.
 
 [ALEX]
-On the ground, that means a few things. A commit made it to main and it broke something -- you need to roll it back without force-pushing. You want to undo a change but keep a record that the undo happened. You're working on a protected branch where force-push is disabled.
+That becomes easier when you listen for these cues. A commit made it to main and it broke something -- you need to roll it back without force-pushing. You want to undo a change but keep a record that the undo happened. You're working on a protected branch where force-push is disabled.
 
 [JAMIE]
 Let's pause on VS Code. What should a learner take away from it?
 
 [ALEX]
-First, open the Timeline panel and navigate to the commit you want to undo. Then, right-click the commit and select "Revert Commit". After that, VS Code creates a new commit with message Revert "your original message" -- review it and push. Treat it like a recipe: do not add the next ingredient until the previous one is actually in the bowl.
+Start here: Open the Timeline panel and navigate to the commit you want to undo. Then: Right-click the commit and select "Revert Commit". Next: VS Code creates a new commit with message Revert "your original message" -- review it and push. Each step should leave a trace you can name.
 
 [PAUSE]
 
@@ -246,19 +276,25 @@ What is the teaching move inside Git CLI?
 Treat examples as spoken recipes, not decorations. You may hear something like Revert a specific commit (opens editor to confirm the message); git revert a1b2c3d; Revert without opening the editor (uses default message); git revert --no-edit a1b2c3d; Stage the revert but don't commit yet (lets you edit the message manually); git revert. Read the command, understand what it changes, then run it only when the repository state matches the lesson.
 
 [JAMIE]
+I like that because it gives people permission to slow down.
+
+[ALEX]
+That is the goal. We want the page to feel explorable, not fragile.
+
+[JAMIE]
 How should someone choose between those options?
 
 [ALEX]
-Keep the learner anchored in When to Use revert vs reset. GitHub Copilot can help: Not sure whether to use reset or revert? This is the part to say slowly: Describe your situation to Copilot Chat: "I pushed a commit to main that broke the login page.
+The teaching point here is not the label; it is the move. GitHub Copilot can help: Not sure whether to use reset or revert? That is the difference between guessing and knowing: Describe your situation to Copilot Chat: "I pushed a commit to main that broke the login page.
 
 [ALEX]
 Use the comparison to make a decision, not to recite a table. The main contrasts are: Commit is only local (not pushed) means git reset -- cleaner, no extra commit. Commit is on a shared branch (main, dev) means git revert -- preserves history, safe for others. Branch has protection rules (no force push) means git revert -- the only option.
 
 [ALEX]
-Another way to ground it. The reason 5. Tags -- Marking Important Moments matters is that what it is: A tag is a permanent label you attach to a specific commit -- usually to mark a release version like v1.0.0. That gives the learner a simple foothold: unlike a branch (which moves as you commit), a tag always points to the exact same commit forever. The interface gets friendlier when it stops being a wall of controls and starts being a set of named places.
+Put that beside the next piece. This part earns its place because what it is: A tag is a permanent label you attach to a specific commit -- usually to mark a release version like v1.0.0. That gives the learner a foothold: unlike a branch (which moves as you commit), a tag always points to the exact same commit forever. That is the difference between following directions and owning the workflow.
 
 [ALEX]
-That becomes easier when you listen for these cues. Releasing a new version of a project. Marking a stable checkpoint before starting a big refactor. Documenting when a major feature shipped.
+Listen for the small confirmations in this list. Releasing a new version of a project. Marking a stable checkpoint before starting a big refactor. Documenting when a major feature shipped.
 
 [PAUSE]
 
@@ -266,7 +302,7 @@ That becomes easier when you listen for these cues. Releasing a new version of a
 Let's pause on VS Code (Command Palette). What should a learner take away from it?
 
 [ALEX]
-Start with VS Code (Command Palette): Type the tag name (e.g., v1.2.0) and optionally a message.
+VS Code (Command Palette): Type the tag name (e.g., v1.2.0) and optionally a message.
 
 [ALEX]
 Treat examples as spoken recipes, not decorations. You may hear something like Ctrl+Shift+P → type "git tag" → select "Git: Create Tag". Read the command, understand what it changes, then run it only when the repository state matches the lesson.
@@ -275,7 +311,7 @@ Treat examples as spoken recipes, not decorations. You may hear something like C
 Let's pause on GitHub CLI. What should a learner take away from it?
 
 [ALEX]
-Start with GitHub CLI. There is something to understand, something to try, and something that proves the try worked.
+GitHub CLI has three jobs: name the idea, give the learner a move, and show what counts as evidence.
 
 [ALEX]
 Treat examples as spoken recipes, not decorations. You may hear something like Create a tag and push it to GitHub in one step (using the API); gh release create v1.2.0 --title "Version 1.2.0" --notes "Bug fixes and accessibility improvements"; This creates both a GitHub Release and the underlying tag. Read the command, understand what it changes, then run it only when the repository state matches the lesson.
@@ -286,13 +322,19 @@ If someone only remembers one thing from Git CLI, what should it be?
 [ALEX]
 Treat examples as spoken recipes, not decorations. You may hear something like Create a lightweight tag at the current commit; git tag v1.2.0; Create an annotated tag (recommended for releases); git tag -a v1.2.0 -m "Release version 1.2.0 - bug fixes and accessibility improvements"; Tag a specific past commit; git tag -a v1.1.5 a1b2c3d. Read the command, understand what it changes, then run it only when the repository state matches the lesson.
 
+[JAMIE]
+That is the part I would want someone to say out loud while they work.
+
+[ALEX]
+Exactly. A learner should always know what they are trying to prove before they take the next action.
+
 [PAUSE]
 
 [JAMIE]
 Let's pause on Pushing Tags to GitHub. What should a learner take away from it?
 
 [ALEX]
-Keep the learner anchored in Pushing Tags to GitHub. Tags are not pushed automatically when you run git push. A good GitHub workflow is like a well-run meeting: everyone knows the topic, the next action, and who has the floor.
+Anchor this part on Pushing Tags to GitHub. Tags are not pushed automatically when you run git push. The durable skill is not memorizing one screen. It is knowing how to find your footing when the screen changes.
 
 [ALEX]
 Treat examples as spoken recipes, not decorations. You may hear something like Push a specific tag; git push origin v1.2.0; Push all local tags at once; git push origin --tags. Read the command, understand what it changes, then run it only when the repository state matches the lesson.
@@ -301,7 +343,7 @@ Treat examples as spoken recipes, not decorations. You may hear something like P
 Let's pause on Deleting a Tag. What should a learner take away from it?
 
 [ALEX]
-Start with Deleting a Tag. There is something to understand, something to try, and something that proves the try worked.
+Deleting a Tag has three jobs: name the idea, give the learner a move, and show what counts as evidence.
 
 [ALEX]
 Treat examples as spoken recipes, not decorations. You may hear something like Delete a local tag; git tag -d v1.2.0; Delete the tag on GitHub (remote); git push origin --delete v1.2.0. Read the command, understand what it changes, then run it only when the repository state matches the lesson.
@@ -310,7 +352,7 @@ Treat examples as spoken recipes, not decorations. You may hear something like D
 Let's pause on 6. Detached HEAD -- What It Is and How to Get Out. What should a learner take away from it?
 
 [ALEX]
-Start with 6. Detached HEAD -- What It Is and How to Get Out: What it is: Normally, you're working on a branch -- Git tracks your commits and moves the branch forward as you commit. The next useful detail is this: A "detached HEAD" happens when you check out a specific commit SHA (or a tag) directly instead of a branch.
+Do not treat 6. Detached HEAD -- What It Is and How to Get Out as decoration. What it is: Normally, you're working on a branch -- Git tracks your commits and moves the branch forward as you commit. That is not trivia. A "detached HEAD" happens when you check out a specific commit SHA (or a tag) directly instead of a branch.
 
 [ALEX]
 Treat examples as spoken recipes, not decorations. You may hear something like git checkout a1b2c3d Check out a specific commit; git checkout v1.0.0 Check out a tag. Read the command, understand what it changes, then run it only when the repository state matches the lesson.
@@ -321,7 +363,7 @@ Treat examples as spoken recipes, not decorations. You may hear something like g
 Let's pause on If you just want to go back to your branch. What should a learner take away from it?
 
 [ALEX]
-Start with If you just want to go back to your branch. There is something to understand, something to try, and something that proves the try worked.
+If you just want to go back to your branch has three jobs: name the idea, give the learner a move, and show what counts as evidence.
 
 [ALEX]
 Treat examples as spoken recipes, not decorations. You may hear something like git checkout main; or whatever branch you were on; git switch main. Read the command, understand what it changes, then run it only when the repository state matches the lesson.
@@ -330,33 +372,39 @@ Treat examples as spoken recipes, not decorations. You may hear something like g
 Let's pause on If you made commits in detached HEAD and want to keep them. What should a learner take away from it?
 
 [ALEX]
-Start with If you made commits in detached HEAD and want to keep them. There is something to understand, something to try, and something that proves the try worked.
+If you made commits in detached HEAD and want to keep them has three jobs: name the idea, give the learner a move, and show what counts as evidence.
 
 [ALEX]
 Treat examples as spoken recipes, not decorations. You may hear something like Create a new branch at the current (detached) position to save your work; git checkout -b my-experiment; Now you're on a real branch and those commits are safe. Read the command, understand what it changes, then run it only when the repository state matches the lesson.
 
 [JAMIE]
+So this is less about memorizing and more about noticing.
+
+[ALEX]
+Right. Once the learner can name the move, the interface becomes much less intimidating.
+
+[JAMIE]
 What stays the same when the tool changes?
 
 [ALEX]
-Keep the learner anchored in VS Code. VS Code shows the current branch name in the bottom-left status bar. This is the part to say slowly: If you're in detached HEAD, it shows something like (HEAD detached at a1b2c3d) instead of a branch name.
+The teaching point here is not the label; it is the move. VS Code shows the current branch name in the bottom-left status bar. That is the difference between guessing and knowing: If you're in detached HEAD, it shows something like (HEAD detached at a1b2c3d) instead of a branch name.
 
 [PAUSE]
 
 [ALEX]
-Before the learner moves on. The reason 7. Force Pushing Safely matters is that what it is: After you rebase or amend commits that have already been pushed, the remote branch has a different history than your local branch. That gives the learner a simple foothold: a regular git push will fail because Git sees them as diverged.
+That matters because of the next idea. This part earns its place because what it is: After you rebase or amend commits that have already been pushed, the remote branch has a different history than your local branch. That gives the learner a foothold: a regular git push will fail because Git sees them as diverged.
 
 [JAMIE]
 Let's pause on --force-with-lease vs --force. What should a learner take away from it?
 
 [ALEX]
-Start with --force-with-lease vs --force: Always use --force-with-lease instead of --force.
+--force-with-lease vs --force: Always use --force-with-lease instead of --force.
 
 [ALEX]
-This is the part worth saying out loud. Start with When You'd Use It. There is something to understand, something to try, and something that proves the try worked.
+This is where the talk moves from concept to action. When You'd Use It has three jobs: name the idea, give the learner a move, and show what counts as evidence.
 
 [ALEX]
-For a learner, the useful signals are these. You rebased a feature branch to squash commits before a PR review. You amended the last commit with git commit --amend after already pushing. A reviewer asked you to rebase onto main and you've now done.
+Here is the part that makes the next action easier. You rebased a feature branch to squash commits before a PR review. You amended the last commit with git commit --amend after already pushing. A reviewer asked you to rebase onto main and you've now done.
 
 [PAUSE]
 
@@ -364,7 +412,7 @@ For a learner, the useful signals are these. You rebased a feature branch to squ
 Before we leave VS Code, what is the practical point?
 
 [ALEX]
-This is where VS Code becomes real: VS Code doesn't have a "force push" button in the UI -- this is intentional to prevent accidents.
+This is the move inside VS Code: VS Code doesn't have a "force push" button in the UI -- this is intentional to prevent accidents.
 
 [ALEX]
 Treat examples as spoken recipes, not decorations. You may hear something like Ctrl+Backtick → then type the command below. Read the command, understand what it changes, then run it only when the repository state matches the lesson.
@@ -387,7 +435,7 @@ Treat examples as spoken recipes, not decorations. You may hear something like S
 Let's pause on The Typical Rebase + Force Push Workflow. What should a learner take away from it?
 
 [ALEX]
-Start with The Typical Rebase + Force Push Workflow. There is something to understand, something to try, and something that proves the try worked.
+The Typical Rebase + Force Push Workflow has three jobs: name the idea, give the learner a move, and show what counts as evidence.
 
 [ALEX]
 Treat examples as spoken recipes, not decorations. You may hear something like You're on your feature branch -- rebase onto main to get latest changes; git fetch origin; git rebase origin/main; 2. Resolve any conflicts, then continue; git rebase --continue; 3. Force push your rebased branch (origin already has the old version); git push. Read the command, understand what it changes, then run it only when the repository state matches the lesson.
@@ -396,16 +444,16 @@ Treat examples as spoken recipes, not decorations. You may hear something like Y
 Let's pause on 8. git bisect -- Finding the Commit That Broke Things. What should a learner take away from it?
 
 [ALEX]
-Here is the plain-English version of 8. git bisect -- Finding the Commit That Broke Things. What it is: git bisect performs a binary search through your commit history to find exactly which commit introduced a bug. Put another way, instead of checking 100 commits one by one, Git cuts the search in half each time -- usually finding the culprit in 7-10 steps.
+If the interface shifts, 8. git bisect -- Finding the Commit That Broke Things is still useful because what it is: git bisect performs a binary search through your commit history to find exactly which commit introduced a bug. For someone navigating by keyboard or screen reader, this detail matters: Instead of checking 100 commits one by one, Git cuts the search in half each time -- usually finding the culprit in 7-10 steps.
 
 [ALEX]
-Here is what that changes in practice. "This was working last week, now it's broken -- what changed?". You need to find the exact commit so you can revert or fix it. A test that used to pass now fails and you don't know why.
+The useful version is not abstract; it sounds like this. "This was working last week, now it's broken -- what changed?". You need to find the exact commit so you can revert or fix it. A test that used to pass now fails and you don't know why.
 
 [JAMIE]
 Let's pause on Starting a Bisect Session. What should a learner take away from it?
 
 [ALEX]
-This is where Starting a Bisect Session becomes real: Git now checks out a commit in the middle of your history. That matters in practice: Test your code -- does the bug exist here?
+Put Starting a Bisect Session into plain language. Git now checks out a commit in the middle of your history. The useful version is: Test your code -- does the bug exist here?
 
 [ALEX]
 Treat examples as spoken recipes, not decorations. You may hear something like Start bisect mode; git bisect start; 2. Mark the current commit as bad (broken); git bisect bad; 3. Mark a commit you know was good (working); Use a tag, SHA, or branch name from before the problem started; git bisect good v1.0.0; or; git bisect good a1b2c3d. If the bug IS present at this commit; git bisect bad; If the bug is NOT present at this commit; git bisect good. Read the command, understand what it changes, then run it only when the repository state matches the lesson.
@@ -416,7 +464,7 @@ Treat examples as spoken recipes, not decorations. You may hear something like S
 Let's pause on Finishing. What should a learner take away from it?
 
 [ALEX]
-Start with Finishing. There is something to understand, something to try, and something that proves the try worked.
+Finishing has three jobs: name the idea, give the learner a move, and show what counts as evidence.
 
 [ALEX]
 Treat examples as spoken recipes, not decorations. You may hear something like End the bisect session and return to your original branch; git bisect reset. Read the command, understand what it changes, then run it only when the repository state matches the lesson.
@@ -425,7 +473,7 @@ Treat examples as spoken recipes, not decorations. You may hear something like E
 Let's pause on Automating Bisect with a Test Script. What should a learner take away from it?
 
 [ALEX]
-The reason Automating Bisect with a Test Script matters is that if you have a test command that exits with code 0 on success and non-zero on failure, Git can run bisect automatically. That gives the learner a simple foothold: bisect output is plain text -- each step tells you exactly where it checked out and how many steps remain. The interface gets friendlier when it stops being a wall of controls and starts being a set of named places.
+This part earns its place because if you have a test command that exits with code 0 on success and non-zero on failure, Git can run bisect automatically. That gives the learner a foothold: bisect output is plain text -- each step tells you exactly where it checked out and how many steps remain. That is the difference between following directions and owning the workflow.
 
 [ALEX]
 Treat examples as spoken recipes, not decorations. You may hear something like git bisect start; git bisect bad HEAD; git bisect good v1.0.0; Run automatically -- git runs your test script at each step; git bisect run npm test; or; git bisect run python -m pytest tests/test auth.py. Read the command, understand what it changes, then run it only when the repository state matches the lesson.
@@ -434,7 +482,7 @@ Treat examples as spoken recipes, not decorations. You may hear something like g
 Let's pause on 9. git clean -- Clearing Out Untracked Files. What should a learner take away from it?
 
 [ALEX]
-Start with 9. git clean -- Clearing Out Untracked Files: What it is: git clean removes untracked files and directories from your working directory -- files that Git doesn't know about yet (not staged, not committed, not in.gitignore). The next useful detail is this: This is useful when you have build artifacts, generated files, or experimental files cluttering your project.
+9. git clean -- Clearing Out Untracked Files: What it is: git clean removes untracked files and directories from your working directory -- files that Git doesn't know about yet (not staged, not committed, not in.gitignore). The next useful detail is concrete: This is useful when you have build artifacts, generated files, or experimental files cluttering your project.
 
 [ALEX]
 The parts worth keeping in working memory are these. After a build that left temporary files everywhere. You want a completely fresh state matching the last commit. Clearing out generated files before running a clean build.
@@ -445,7 +493,7 @@ The parts worth keeping in working memory are these. After a build that left tem
 Let's pause on Always Dry-Run First. What should a learner take away from it?
 
 [ALEX]
-Start with Always Dry-Run First. There is something to understand, something to try, and something that proves the try worked.
+Always Dry-Run First has three jobs: name the idea, give the learner a move, and show what counts as evidence.
 
 [ALEX]
 Treat examples as spoken recipes, not decorations. You may hear something like See what WOULD be deleted without actually deleting anything; git clean -n; or equivalently; git clean --dry-run. Read the command, understand what it changes, then run it only when the repository state matches the lesson.
@@ -454,10 +502,10 @@ Treat examples as spoken recipes, not decorations. You may hear something like S
 What is the teaching move inside VS Code?
 
 [ALEX]
-This is where VS Code becomes real: VS Code's Source Control panel shows untracked files in the "Changes" section. That matters in practice: For bulk removal, use the terminal (see Git CLI below).
+This is the move inside VS Code: VS Code's Source Control panel shows untracked files in the "Changes" section. That matters in practice: For bulk removal, use the terminal (see Git CLI below).
 
 [ALEX]
-First, open Source Control: Ctrl+Shift+G. Then, right-click an untracked file. After that, select "Discard Changes" -- this removes new untracked files. It is a checklist, but a meaningful one: every item creates evidence that the next step is safe.
+Walk it in order: Open Source Control: Ctrl+Shift+G; Right-click an untracked file; and Select "Discard Changes" -- this removes new untracked files. That is the rhythm: orient, act, verify, continue.
 
 [JAMIE]
 Let's pause on Git CLI. What should a learner take away from it?
@@ -471,13 +519,13 @@ Treat examples as spoken recipes, not decorations. You may hear something like D
 Let's pause on 10. Branch Protection -- Why Your Push or Merge May Be Blocked. What should a learner take away from it?
 
 [ALEX]
-The reason 10. Branch Protection -- Why Your Push or Merge May Be Blocked matters is that what it is: Branch protection rules are settings a repository administrator applies to specific branches (usually main or release branches). That gives the learner a simple foothold: they prevent direct pushes, require pull requests, require approvals before merging, and enforce status checks passing.
+The reason this matters is simple: what it is: Branch protection rules are settings a repository administrator applies to specific branches (usually main or release branches). The listener should be able to check this: They prevent direct pushes, require pull requests, require approvals before merging, and enforce status checks passing.
 
 [JAMIE]
 Let's pause on The Correct Flow for Protected Branches. What should a learner take away from it?
 
 [ALEX]
-Start with The Correct Flow for Protected Branches. There is something to understand, something to try, and something that proves the try worked.
+The Correct Flow for Protected Branches has three jobs: name the idea, give the learner a move, and show what counts as evidence.
 
 [ALEX]
 Treat examples as spoken recipes, not decorations. You may hear something like Never push directly to main -- always work on a branch; git checkout -b feature/my-change; 2. Make your changes, commit them; git add.; git commit -m "Add screen reader support to navigation"; 3. Push your branch (not main); git push origin feature/my-change. Read the command, understand what it changes, then run it only when the repository state matches the lesson.
@@ -486,7 +534,7 @@ Treat examples as spoken recipes, not decorations. You may hear something like N
 Let's pause on Updating a Branch That's Out of Date. What should a learner take away from it?
 
 [ALEX]
-Here is the plain-English version of Updating a Branch That's Out of Date. When GitHub says your branch is out of date with main.
+If the interface shifts, Updating a Branch That's Out of Date is still useful because when GitHub says your branch is out of date with main.
 
 [PAUSE]
 
@@ -494,7 +542,7 @@ Here is the plain-English version of Updating a Branch That's Out of Date. When 
 If someone only remembers one thing from VS Code, what should it be?
 
 [ALEX]
-First, open Source Control → Ctrl+Shift+P. Then, type "merge" → select "Git: Merge Branch.". After that, choose origin/main from the list. Finally, resolve any conflicts, then push again. It is a checklist, but a meaningful one: every item creates evidence that the next step is safe.
+Walk it in order: Open Source Control → Ctrl+Shift+P; Type "merge" → select "Git: Merge Branch."; Choose origin/main from the list; and Resolve any conflicts, then push again. The point is not speed; the point is never losing your place.
 
 [JAMIE]
 Let's pause on Git CLI. What should a learner take away from it?
@@ -517,36 +565,36 @@ If someone only remembers one thing from GitHub CLI, what should it be?
 Treat examples as spoken recipes, not decorations. You may hear something like View branch protection rules for main; gh api repos/{owner}/{repo}/branches/main/protection --jq '{; required reviews.required pull request reviews.required approving review count,; require status checks.required status checks.contexts,; enforce. Read the command, understand what it changes, then run it only when the repository state matches the lesson.
 
 [ALEX]
-Hold that next to this. Here is the plain-English version of On GitHub.com. Navigate to Settings → Branches in the repository. Put another way, (You need admin access to see the full config; contributors can see the effect through blocked PRs and the merge box status.). It is like learning a transit route. The names of the stops matter because they tell you whether you are still going the right direction.
+This is the part worth saying out loud. Here is the learner-facing version. Navigate to Settings → Branches in the repository. Put another way, (You need admin access to see the full config; contributors can see the effect through blocked PRs and the merge box status.). A good GitHub workflow is like a well-run meeting: everyone knows the topic, the next action, and who has the floor.
 
 [JAMIE]
 Let's pause on Learning Cards: Quick Reference Table. What should a learner take away from it?
 
 [ALEX]
-Start with Learning Cards: Quick Reference Table. There is something to understand, something to try, and something that proves the try worked.
+Learning Cards: Quick Reference Table has three jobs: name the idea, give the learner a move, and show what counts as evidence.
 
 [ALEX]
-These are the details that keep the idea from floating away. This table has four columns: Task, VS Code, Git CLI, and GitHub CLI -- column headers are announced on entry. Use Ctrl+Alt+Arrow keys to navigate cells; the Task column on the left identifies each row. Cells with a dash (--) mean that tool does not support the operation -- move right to try another column. At high zoom the table may scroll horizontally -- use Shift+scroll or arrow keys to see all four columns. The Task column is always the leftmost -- anchor your reading from there. Consider copying this table into a text file or spreadsheet for easier viewing at your preferred zoom.
+This is where the lesson becomes something you can check. This table has four columns: Task, VS Code, Git CLI, and GitHub CLI -- column headers are announced on entry. Use Ctrl+Alt+Arrow keys to navigate cells; the Task column on the left identifies each row. Cells with a dash (--) mean that tool does not support the operation -- move right to try another column. At high zoom the table may scroll horizontally -- use Shift+scroll or arrow keys to see all four columns. The Task column is always the leftmost -- anchor your reading from there. Consider copying this table into a text file or spreadsheet for easier viewing at your preferred zoom.
 
 [PAUSE]
 
 [ALEX]
-Keep the teaching thread moving. Keep the learner anchored in 11. Using GitHub Copilot for Git Operations. GitHub Copilot isn't just for writing code -- it's genuinely useful for Git operations, especially when you're doing something unfamiliar, hit a conflict, or need to understand what a command did. This is the part to say slowly: Here's how to use it across the advanced operations in this appendix.
+Now shift from knowing the term to using it. Anchor this part on 11. Using GitHub Copilot for Git Operations. GitHub Copilot isn't just for writing code -- it's genuinely useful for Git operations, especially when you're doing something unfamiliar, hit a conflict, or need to understand what a command did. This is the part to say slowly: Here's how to use it across the advanced operations in this appendix.
 
 [JAMIE]
 Let's pause on Resolving Merge Conflicts. What should a learner take away from it?
 
 [ALEX]
-The reason Resolving Merge Conflicts matters is that when a cherry-pick, rebase, or branch merge stops due to a conflict, VS Code highlights the conflict regions. That gives the learner a simple foothold: place your cursor inside a conflict block and ask Copilot.
+The reason this matters is simple: when a cherry-pick, rebase, or branch merge stops due to a conflict, VS Code highlights the conflict regions. The listener should be able to check this: Place your cursor inside a conflict block and ask Copilot.
 
 [ALEX]
-The practical takeaway is this. "Resolve this merge conflict. Keep meaningful changes from both sides.". "Explain what each side of this conflict is trying to do.". "Which version of this change should I keep, and why?".
+A few details make that real. "Resolve this merge conflict. Keep meaningful changes from both sides.". "Explain what each side of this conflict is trying to do.". "Which version of this change should I keep, and why?".
 
 [ALEX]
-Keep the teaching thread moving. Start with Writing Better Commit Messages: Copilot is excellent at turning "WIP: stuff" into a clear, conventional commit message. The next useful detail is this: Open Copilot Chat after staging your changes and try. Think of it like entering a new building: first you find the lobby, then the room, then the door you actually need.
+This is where confidence starts to build. Do not treat Writing Better Commit Messages as decoration. Copilot is excellent at turning "WIP: stuff" into a clear, conventional commit message. That is not trivia. Open Copilot Chat after staging your changes and try. The workshop is closer to rehearsal than lecture. You hear the move, try the move, and then check what changed.
 
 [ALEX]
-The practical takeaway is this. "Write a conventional commit message for these changes." (Copilot can see open files). "I changed the navigation component to add keyboard focus indicators. Write a commit message.". "Here are my last 5 WIP commit messages: [paste them]. Write one clean message that summarizes all of them.".
+On the ground, that means a few things. "Write a conventional commit message for these changes." (Copilot can see open files). "I changed the navigation component to add keyboard focus indicators. Write a commit message.". "Here are my last 5 WIP commit messages: [paste them]. Write one clean message that summarizes all of them.".
 
 [PAUSE]
 
@@ -554,39 +602,39 @@ The practical takeaway is this. "Write a conventional commit message for these c
 Let's pause on Understanding Confusing Git Output. What should a learner take away from it?
 
 [ALEX]
-Here is the plain-English version of Understanding Confusing Git Output. Git's error messages and status output can be cryptic. Put another way, paste them directly into Copilot Chat.
+If the interface shifts, Understanding Confusing Git Output is still useful because Git's error messages and status output can be cryptic. For someone navigating by keyboard or screen reader, this detail matters: Paste them directly into Copilot Chat.
 
 [ALEX]
-The practical takeaway is this. "I got this git error message: [paste it]. What does it mean and how do I fix it?". "My git status output looks like this: [paste it]. What happened and what should I do next?". "I accidentally ran git reset --hard. What are my options for recovering my changes?".
+Here is what that changes in practice. "I got this git error message: [paste it]. What does it mean and how do I fix it?". "My git status output looks like this: [paste it]. What happened and what should I do next?". "I accidentally ran git reset --hard. What are my options for recovering my changes?".
 
 [ALEX]
-Keep the teaching thread moving. This is where Choosing the Right Command becomes real: when you're not sure which git command to reach for, describe what you want to do.
+That connects to another useful point. Put Choosing the Right Command into plain language. When you're not sure which git command to reach for, describe what you want to do.
 
 [ALEX]
-The practical takeaway is this. "I committed a fix on my feature branch but main also needs it urgently. What's the right git command to use?" → Copilot will suggest cherry-pick. "I have 6 messy commits on my PR branch before I open the PR. How do I clean them up?" → Interactive rebase with squash. "I pushed a commit that broke CI and I need to undo it without force-pushing." → git revert. "My PR branch hasn't been updated from main in two weeks. How do I bring it up to date?" → fetch + rebase or merge.
+The room should hear these as checkpoints. "I committed a fix on my feature branch but main also needs it urgently. What's the right git command to use?" → Copilot will suggest cherry-pick. "I have 6 messy commits on my PR branch before I open the PR. How do I clean them up?" → Interactive rebase with squash. "I pushed a commit that broke CI and I need to undo it without force-pushing." → git revert. "My PR branch hasn't been updated from main in two weeks. How do I bring it up to date?" → fetch + rebase or merge.
 
 [JAMIE]
 Let's pause on Debugging a Failing Bisect. What should a learner take away from it?
 
 [ALEX]
-Keep the learner anchored in Debugging a Failing Bisect. When git bisect lands on a commit and you're not sure what to test.
+The teaching point here is not the label; it is the move. When git bisect lands on a commit and you're not sure what to test.
 
 [ALEX]
-The practical takeaway is this. "I'm running git bisect to find a bug. Git just checked out commit a1b2c3d. Here's the diff: [paste git show a1b2c3d]. What changed in this commit and what should I test?".
+These are the details that keep the idea from floating away. "I'm running git bisect to find a bug. Git just checked out commit a1b2c3d. Here's the diff: [paste git show a1b2c3d]. What changed in this commit and what should I test?".
 
 [PAUSE]
 
 [ALEX]
-Keep the teaching thread moving. The reason Getting Help With Branch Protection Errors matters is that paste the full error message from a rejected push into Copilot. The interface gets friendlier when it stops being a wall of controls and starts being a set of named places.
+Here is the practical turn. This part earns its place because paste the full error message from a rejected push into Copilot. That is the difference between following directions and owning the workflow.
 
 [ALEX]
-The practical takeaway is this. "I got this error when pushing to my repository: [paste error]. What does it mean and what do I do?". "My PR can't merge because of a required status check. Here's the check output: [paste it]. What's wrong?".
+These are the pieces that turn the idea into a usable move. "I got this error when pushing to my repository: [paste error]. What does it mean and what do I do?". "My PR can't merge because of a required status check. Here's the check output: [paste it]. What's wrong?".
 
 [JAMIE]
 Let's pause on GitHub Copilot CLI -- Git Command Suggestions. What should a learner take away from it?
 
 [ALEX]
-Start with GitHub Copilot CLI -- Git Command Suggestions: If you have the GitHub CLI with Copilot extension installed, you can ask for git commands directly in the terminal. The next useful detail is this: Copilot CLI explains the command before running it and asks for confirmation -- great for learning while doing.
+GitHub Copilot CLI -- Git Command Suggestions: If you have the GitHub CLI with Copilot extension installed, you can ask for git commands directly in the terminal. The next useful detail is concrete: Copilot CLI explains the command before running it and asks for confirmation -- great for learning while doing.
 
 [ALEX]
 Treat examples as spoken recipes, not decorations. You may hear something like Ask Copilot to suggest a git command for what you want to do; gh copilot suggest "squash my last 4 commits into one"; gh copilot suggest "undo my last commit but keep the changes"; gh copilot suggest "find which commit broke the login tests". Read the command, understand what it changes, then run it only when the repository state matches the lesson.

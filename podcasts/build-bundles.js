@@ -653,7 +653,7 @@ const episodes = [
     sources: ['13-github-copilot.md'],
     crossRefs: [
       { label: 'Copilot Reference - features, participants, commands', file: 'appendix-w-github-copilot-reference.md' },
-      { label: 'Copilot AI Models - model comparison', file: 'appendix-x-copilot-models.md' }
+      { label: 'Copilot Billing and Models - usage, credits, and selection guidance', file: 'appendix-x-copilot-models.md' }
     ],
     prerequisites: [
       { ep: 11, concept: 'VS Code basics and the editor interface' }
@@ -1390,25 +1390,25 @@ const episodes = [
   {
     number: 41,
     slug: 'copilot-models',
-    title: 'Copilot AI Models',
-    description: 'Model comparison, strengths, plan availability, and selection guidance.',
+    title: 'Copilot Billing and Models',
+    description: 'Usage-based billing, GitHub AI Credits, model volatility, and durable model-selection guidance.',
     duration: '10-12 min',
     sources: ['appendix-x-copilot-models.md'],
     concepts: [
-      'The AI models currently available in GitHub Copilot',
-      'Model characteristics: speed, quality, context window size',
-      'When to use a fast model versus a powerful model',
-      'Plan availability: Free, Pro, Business, Enterprise',
-      'How to switch models in VS Code',
-      'How model selection affects inline suggestions versus chat',
-      'Model strengths by task type: code generation, explanation, review',
-      'Future model evolution and what to expect'
+      'GitHub Copilot usage-based billing and GitHub AI Credits',
+      'Which Copilot experiences consume credits and which do not',
+      'Why model names, limits, and availability change over time',
+      'How to check current access in GitHub Copilot settings',
+      'How to choose a model by task rather than memorizing a fixed list',
+      'How model selection affects chat, agents, and review workflows',
+      'How organization policy can affect model access',
+      'How to document model claims with dates and official sources'
     ],
-    focus: `- The AI models available in GitHub Copilot
-- Comparing models: speed, quality, context window, strengths
-- Which model to choose for different tasks
-- Plan availability and model access
-- How model selection affects suggestions and chat responses`
+    focus: `- Usage-based billing and GitHub AI Credits
+- Which Copilot features consume credits
+- Why model availability changes over time
+- Choosing models by task and account policy
+- Keeping model and billing claims source-backed`
   },
   {
     number: 42,

@@ -898,7 +898,7 @@ The documentation set is in the `docs/` folder of this learning repository (sepa
 | **Appendix U:** Resources (this file) | [docs/appendix-x-resources.md](appendix-x-resources.md) |
 | **Appendix V:** Accessibility Agents Reference | [docs/appendix-l-agents-reference.md](appendix-l-agents-reference.md) |
 | **Appendix W:** GitHub Copilot Reference | [docs/appendix-k-copilot-reference.md](appendix-k-copilot-reference.md) |
-| **Appendix X:** GitHub Copilot AI Models | [docs/appendix-k-copilot-reference.md](appendix-k-copilot-reference.md) |
+| **Appendix X:** GitHub Copilot Billing and Models | [docs/appendix-k-copilot-reference.md](appendix-k-copilot-reference.md) |
 
 ---
 

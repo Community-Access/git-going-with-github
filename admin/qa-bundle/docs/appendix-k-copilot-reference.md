@@ -1181,7 +1181,7 @@ gh aw compile .github/workflows/daily-report.md
 ## Copilot Models
 
 >
-> **Listen to Episode 41:** [Copilot AI Models](../admin/PODCASTS.md) - a conversational audio overview of this chapter. Listen before reading to preview the concepts, or after to reinforce what you learned.
+> **Listen to Episode 41:** [Copilot Billing and Models](../admin/PODCASTS.md) - a conversational audio overview of this chapter. Listen before reading to preview the concepts, or after to reinforce what you learned.
 
 <!-- TOC -->
 - [Overview](#1-overview)
