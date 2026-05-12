@@ -12,7 +12,7 @@
  * --------------
  * 1. Assignment descriptor files (Day 1 and Day 2) -- presence and required
  *    sections
- * 2. Autograding JSON files -- valid JSON, required test fields, non-zero
+ * 2. Autograder workflows -- every required check workflow exists and
  *    points, realistic timeouts
  * 3. Student Progression Bot workflow -- exists in template, correct triggers,
  *    required permissions
@@ -20,7 +20,7 @@
  * 5. Classroom README deployment guide -- key sections present and accurate
  * 6. Template repo readiness -- all files that GitHub Classroom copies are
  *    present in learning-room/
- * 7. Cross-document consistency -- challenge titles in autograding JSON match
+ * 7. Cross-document consistency -- challenge titles in autograder workflows match
  *    those in the assignment descriptor and challenge templates
  * 8. Actions permissions -- workflow files in the template all declare the
  *    required write permissions for Aria and the Progression Bot
@@ -42,8 +42,6 @@ const scriptsDir = path.join(repoRoot, 'scripts/classroom');
 
 const day1DescriptorPath = path.join(classroomDir, 'assignment-day1-you-belong-here.md');
 const day2DescriptorPath = path.join(classroomDir, 'assignment-day2-you-can-build-this.md');
-const autogradingDay1Path = path.join(classroomDir, 'autograding-day1.json');
-const autogradingDay2Path = path.join(classroomDir, 'autograding-day2.json');
 const classroomReadmePath = path.join(classroomDir, 'README.md');
 const teardownPath = path.join(classroomDir, 'teardown-checklist.md');
 const gradingGuidePath = path.join(classroomDir, 'grading-guide.md');
@@ -80,8 +78,6 @@ test('all required classroom deployment files exist', () => {
   const required = [
     [day1DescriptorPath, 'assignment-day1-you-belong-here.md'],
     [day2DescriptorPath, 'assignment-day2-you-can-build-this.md'],
-    [autogradingDay1Path, 'autograding-day1.json'],
-    [autogradingDay2Path, 'autograding-day2.json'],
     [classroomReadmePath, 'classroom/README.md'],
     [teardownPath, 'teardown-checklist.md'],
     [gradingGuidePath, 'grading-guide.md'],
@@ -117,104 +113,63 @@ test('all seeding scripts referenced in classroom README exist', () => {
 });
 
 // ---------------------------------------------------------------------------
-// 2. Autograding JSON -- structure and field completeness
+// 2. Autograder workflows -- the workflow files Classroom-style checks now
+//    live in. Each Day 1 / Day 2 check is its own GitHub Actions workflow
+//    inside the learning-room template (see admin/classroom/autograding-setup.md).
 // ---------------------------------------------------------------------------
 
-function validateAutogradingJson(filePath, label, expectedMinTests) {
-  assertFileExists(filePath, label);
-  const tests = readJson(filePath);
+const autograderWorkflowsDir = path.join(learningRoom, '.github/workflows');
 
-  assert.ok(Array.isArray(tests), `${label}: must be a JSON array`);
-  assert.ok(
-    tests.length >= expectedMinTests,
-    `${label}: expected at least ${expectedMinTests} tests, found ${tests.length}`
-  );
+const day1AutograderWorkflows = [
+  { challenge: 2, file: 'autograder-issue-filed.yml' },
+  { challenge: 5, file: 'autograder-branch-commit.yml' },
+  { challenge: 6, file: 'autograder-pr-link.yml' },
+  { challenge: 7, file: 'autograder-conflicts.yml' },
+];
 
-  const requiredFields = ['test_name', 'run', 'comparison', 'timeout', 'points'];
-  tests.forEach((entry, i) => {
-    requiredFields.forEach(field => {
-      assert.ok(
-        Object.prototype.hasOwnProperty.call(entry, field),
-        `${label}[${i}]: missing required field "${field}" in test "${entry.test_name || i}"`
-      );
-    });
+const day2AutograderWorkflows = [
+  { challenge: 10, file: 'autograder-local-commit.yml' },
+  { challenge: 14, file: 'autograder-template.yml' },
+  { challenge: 16, file: 'autograder-capstone.yml' },
+];
 
-    assert.ok(
-      typeof entry.points === 'number' && entry.points > 0,
-      `${label}[${i}]: "points" must be a positive number in "${entry.test_name}"`
-    );
-
-    assert.ok(
-      typeof entry.timeout === 'number' && entry.timeout >= 5 && entry.timeout <= 300,
-      `${label}[${i}]: "timeout" must be between 5 and 300 seconds in "${entry.test_name}"`
-    );
-
-    assert.ok(
-      typeof entry.run === 'string' && entry.run.trim().length > 0,
-      `${label}[${i}]: "run" must be a non-empty string in "${entry.test_name}"`
-    );
-
-    assert.ok(
-      ['exact', 'included', 'regex', 'not included'].includes(entry.comparison),
-      `${label}[${i}]: "comparison" must be one of: exact, included, regex, "not included" in "${entry.test_name}"`
-    );
+test('Day 1 autograder workflows exist for challenges 2, 5, 6, and 7', () => {
+  day1AutograderWorkflows.forEach(({ challenge, file }) => {
+    const wfPath = path.join(autograderWorkflowsDir, file);
+    assertFileExists(wfPath, `Day 1 autograder workflow for challenge ${challenge}: ${file}`);
   });
-}
-
-test('autograding-day1.json is valid and complete', () => {
-  validateAutogradingJson(autogradingDay1Path, 'autograding-day1.json', 3);
 });
 
-test('autograding-day2.json is valid and complete', () => {
-  validateAutogradingJson(autogradingDay2Path, 'autograding-day2.json', 3);
+test('Day 2 autograder workflows exist for challenges 10, 14, and 16', () => {
+  day2AutograderWorkflows.forEach(({ challenge, file }) => {
+    const wfPath = path.join(autograderWorkflowsDir, file);
+    assertFileExists(wfPath, `Day 2 autograder workflow for challenge ${challenge}: ${file}`);
+  });
 });
 
-test('autograding test names are unique within each file', () => {
-  [autogradingDay1Path, autogradingDay2Path].forEach(filePath => {
-    const tests = readJson(filePath);
-    const names = tests.map(t => t.test_name);
-    const unique = new Set(names);
-    assert.equal(
-      unique.size,
-      names.length,
-      `Duplicate test names in ${path.basename(filePath)}: ${names.filter((n, i) => names.indexOf(n) !== i).join(', ')}`
+test('each autograder workflow posts a marker-based comment naming its challenge', () => {
+  [...day1AutograderWorkflows, ...day2AutograderWorkflows].forEach(({ challenge, file }) => {
+    const content = readText(path.join(autograderWorkflowsDir, file));
+    const markerPattern = new RegExp(`## Challenge ${challenge}:`);
+    assert.match(
+      content,
+      markerPattern,
+      `${file}: must post a comment with marker "## Challenge ${challenge}:" so the watchdog and update-in-place logic can identify it`
     );
   });
 });
 
-test('autograding day 1 covers challenges 4 5 6 and 7 at minimum', () => {
-  const tests = readJson(autogradingDay1Path);
-  const names = tests.map(t => (t.test_name || '').toLowerCase());
-  const required = [
-    ['challenge 4', 'challenge 5', 'commit'],   // branch or commit evidence
-    ['challenge 5', 'commit', 'branch'],
-    ['challenge 6', 'closes', 'issue link', 'pr'],
-    ['challenge 7', 'conflict marker', 'conflict'],
-  ];
+test('autograder watchdog listens for every primary autograder workflow', () => {
+  const watchdogPath = path.join(autograderWorkflowsDir, 'autograder-watchdog.yml');
+  assertFileExists(watchdogPath, 'autograder-watchdog.yml');
+  const content = readText(watchdogPath);
 
-  required.forEach(variants => {
-    const found = names.some(n => variants.some(v => n.includes(v)));
-    assert.ok(
-      found,
-      `autograding-day1.json should cover one of: ${variants.join(' / ')}`
-    );
-  });
-});
-
-test('autograding day 2 covers challenges 10 through 16 at minimum', () => {
-  const tests = readJson(autogradingDay2Path);
-  const names = tests.map(t => (t.test_name || '').toLowerCase());
-  const required = [
-    ['challenge 10', 'local commit', 'go local'],
-    ['challenge 14', 'template', 'yaml'],
-    ['challenge 16', 'capstone', 'agent'],
-  ];
-
-  required.forEach(variants => {
-    const found = names.some(n => variants.some(v => n.includes(v)));
-    assert.ok(
-      found,
-      `autograding-day2.json should cover one of: ${variants.join(' / ')}`
+  [...day1AutograderWorkflows, ...day2AutograderWorkflows].forEach(({ challenge }) => {
+    const markerPattern = new RegExp(`## Challenge ${challenge}:`);
+    assert.match(
+      content,
+      markerPattern,
+      `autograder-watchdog.yml: must reference the "## Challenge ${challenge}:" marker so the fallback notice can detect missing comments`
     );
   });
 });
@@ -407,8 +362,12 @@ test('learning-room template contains all files GitHub Classroom will copy to st
     '.github/workflows/content-validation.yml',
     '.github/workflows/autograder-capstone.yml',
     '.github/workflows/autograder-conflicts.yml',
+    '.github/workflows/autograder-issue-filed.yml',
+    '.github/workflows/autograder-branch-commit.yml',
+    '.github/workflows/autograder-pr-link.yml',
     '.github/workflows/autograder-local-commit.yml',
     '.github/workflows/autograder-template.yml',
+    '.github/workflows/autograder-watchdog.yml',
     '.github/scripts/challenge-progression.js',
     '.github/scripts/validate-pr.js',
     '.github/scripts/validation-report.js',
