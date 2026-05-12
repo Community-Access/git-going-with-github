@@ -254,9 +254,9 @@ Everything in the list below works **exactly like desktop VS Code**:
 ### What github.dev Does NOT Have
 
 - **No terminal** - cannot run shell commands, npm, git CLI
-- **No GitHub Copilot** - Copilot requires the desktop app or a Codespace
+- **Limited Copilot and agent support** - use desktop VS Code or Codespaces for the workshop's full Copilot, agent, terminal, and browser-agent exercises
 - **No Accessibility Agents** - agents rely on extensions that need desktop VS Code
-- **No extension installation** - extensions are disabled in github.dev
+- **Limited extension installation** - only web-compatible extensions can run in github.dev; extensions that need a local runtime, terminal, or desktop APIs require desktop VS Code or Codespaces
 - **No debugger** - debugging requires a local environment
 - **No live server or preview** - except Markdown preview, which does work
 

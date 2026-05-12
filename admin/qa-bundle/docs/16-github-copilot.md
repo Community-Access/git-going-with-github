@@ -3,7 +3,7 @@
 > **Listen to Episode 14:** [GitHub Copilot](../admin/PODCASTS.md) - a conversational audio overview of this chapter. Listen before reading to preview the concepts, or after to reinforce what you learned.
 
 > **Related appendices:** [Appendix K: Copilot Reference](appendix-k-copilot-reference.md) | [Appendix G: VS Code Reference](appendix-g-vscode-reference.md)
-> **Authoritative sources:** [GitHub Docs: About GitHub Copilot](https://docs.github.com/en/copilot/about-github-copilot/what-is-github-copilot) | [GitHub Accessibility: Copilot in VS Code](https://accessibility.github.com/documentation/guide/github-copilot-vsc/) | [VS Code Docs: GitHub Copilot](https://code.visualstudio.com/docs/copilot/overview)
+> **Authoritative sources:** [GitHub Docs: About GitHub Copilot](https://docs.github.com/en/copilot/about-github-copilot/what-is-github-copilot) | [GitHub Accessibility: Copilot in VS Code](https://accessibility.github.com/documentation/guide/github-copilot-vsc/) | [VS Code Docs: GitHub Copilot](https://code.visualstudio.com/docs/copilot/overview) | [GitHub Copilot plans](https://github.com/features/copilot/plans) | [Usage-based billing for individuals](https://docs.github.com/en/copilot/concepts/billing/usage-based-billing-for-individuals)
 
 
 ## AI-Powered Code Assistance in VS Code
@@ -27,9 +27,9 @@
 
 ## Workshop Recommendation (Chapter 16 / Challenge 13)
 
-> **Free to use:** GitHub Copilot Free tier is included with all GitHub accounts at no cost. This workshop uses only the free tier. If you're on an organization with GitHub Enterprise, you may have Copilot Pro included; either way, you're covered.
+> **Access note, verified May 12, 2026:** GitHub Copilot Free is available to individual developers with monthly limits, and verified students may have access to the GitHub Copilot Student plan. Organization or enterprise access depends on your administrator's policy. This workshop is designed to work within limited Copilot access when learners keep prompts short and use Copilot for focused documentation tasks.
 >
-> **Billing guidance for this workshop:** GitHub Copilot plans and billing are changing. We will provide specific guidance at the workshop, as this is a continuing moving target and is subject to change as we approach the event. If you are unsure whether your account has Copilot access, check [github.com/settings/copilot](https://github.com/settings/copilot) or ask a facilitator before the workshop begins.
+> **Billing guidance for this workshop:** GitHub Copilot is moving to usage-based billing on June 1, 2026. Chat, CLI, cloud agent, Spaces, Spark, and third-party coding agents consume GitHub AI Credits. Code completions and next edit suggestions are not billed in AI Credits for paid plans. If you are unsure whether your account has Copilot access, check [GitHub Copilot settings](https://github.com/settings/copilot), review the [GitHub Copilot plans page](https://github.com/features/copilot/plans), or ask a facilitator before the workshop begins.
 
 Chapter 16 introduces **GitHub Copilot** for AI-assisted documentation and writing. It supports Challenge 13: AI as Your Copilot.
 
@@ -40,7 +40,7 @@ Chapter 16 introduces **GitHub Copilot** for AI-assisted documentation and writi
 
 ### Challenge 13 Set
 
-1. **Sign in to GitHub Copilot** - authenticate with GitHub (VS Code 1.116+ has Copilot built in; no extension install needed).
+1. **Sign in to GitHub Copilot** - authenticate with GitHub and confirm your account has Copilot access.
 2. **Ask Copilot to explain a codebase** - clone the sci-fi themes repo and use Copilot Chat to understand it.
 3. **Ask Copilot to create something new** - prompt Copilot to generate a custom theme and apply it.
 
@@ -52,7 +52,7 @@ Chapter 16 introduces **GitHub Copilot** for AI-assisted documentation and writi
 
 **Estimated time:** 3-5 minutes.
 
-> **VS Code 1.116 and later:** GitHub Copilot is built into VS Code and no extension installation is needed. Skip steps 1-4 below if you are on VS Code 1.116 or later -- Copilot is already present. If VS Code prompts you to sign in on first launch, follow the browser OAuth flow and then proceed to step 5.
+> **Current VS Code guidance, verified May 12, 2026:** Recent VS Code builds surface Copilot and Chat directly, but your account still needs Copilot access and your organization may manage AI features. If Copilot is already present, skip the extension search and sign in when prompted. If Copilot is missing, use the Extensions view to install GitHub Copilot Chat.
 
 1. *(Older VS Code only)* Open the Extensions sidebar: `Ctrl+Shift+X` (Mac: `Cmd+Shift+X`).
 2. *(Older VS Code only)* Type `GitHub Copilot` in the search box and press `Enter`.
@@ -194,9 +194,9 @@ GitHub Copilot is an AI pair programmer that suggests code and text completions 
 
 **Copilot as a git co-author:** Starting with VS Code 1.118, GitHub Copilot is automatically added as a co-author in your Git commit messages when Copilot assists with your work. You will see a `Co-authored-by: GitHub Copilot <copilot@github.com>` trailer appended to commits. This is on by default and can be disabled via Settings: search `github.copilot.git.generateCommitMessage` and set `coAuthoredBy` to `off` if you prefer not to include it.
 
-**Copilot Free tier:** Available for all GitHub users. Provides access to inline suggestions and Copilot Chat with usage limits. No payment required for this workshop.
+**Copilot Free:** Available to individual developers with monthly limits. It can be enough for this workshop if you use short, focused prompts and avoid long agentic sessions. Organization policies, regional restrictions, or account settings can still affect access.
 
-> **Note on billing changes:** GitHub Copilot plans and billing are actively evolving. We will provide specific guidance at the workshop. Check [github.com/settings/copilot](https://github.com/settings/copilot) to verify your current access level before the event.
+> **Note on billing changes:** GitHub Copilot usage-based billing starts June 1, 2026. GitHub AI Credits are consumed by model token usage for chat and agentic features. Verify your current access and usage on the [GitHub Copilot settings page](https://github.com/settings/copilot) before the event.
 
 **Screen reader support:** Copilot is fully accessible with screen readers. Suggestions are announced via ARIA live regions, and Accessible View provides complete access to Chat responses.
 
@@ -214,7 +214,7 @@ GitHub Copilot is an AI pair programmer that suggests code and text completions 
 5. `Tab` to "Install" button → press `Enter`
 6. Wait for installation to complete
 
-**One extension, all features:** GitHub Copilot Chat is now the single all-in-one extension. It provides inline code suggestions, the Chat panel (`Ctrl+Shift+I` / Mac: `Cmd+Shift+I`), inline chat (`Ctrl+I` / Mac: `Cmd+I`), and all agent features. The older separate "GitHub Copilot" extension has been deprecated.
+**Extension availability:** Current VS Code builds may already show Copilot and Chat entry points after sign-in. If Copilot is not available, install **GitHub Copilot Chat** from the Extensions view and reload VS Code. Your GitHub account still needs Copilot access for the features to respond.
 
 ### Signing In
 
@@ -241,13 +241,13 @@ After installation:
 2. Type "Copilot: Check Status"
 3. Select it to see your subscription tier (Free, Pro, Enterprise)
 
-#### Free tier includes
+#### Current access notes
 
-- Completions and multi-line suggestions
-- Copilot Chat
-- Limited monthly usage (usually sufficient for documentation work)
+- Copilot Free includes limited monthly chat or agent-mode requests and limited completions.
+- Paid plans include more usage and broader feature access, but billing is changing to GitHub AI Credits on June 1, 2026.
+- Organization and enterprise administrators can manage whether Copilot features are available.
 
-> **Billing note:** GitHub Copilot plan details are evolving. Facilitators will provide current guidance at the workshop. To check your access status now, visit [github.com/settings/copilot](https://github.com/settings/copilot).
+> **Billing note:** GitHub Copilot plan details, model availability, and usage allowances change frequently. Facilitators will provide current guidance at the workshop. To check your access status now, visit [GitHub Copilot settings](https://github.com/settings/copilot).
 
 
 ## 3. Inline Suggestions - Ghost Text Completions
@@ -513,12 +513,12 @@ Copilot returns a plain-language explanation.
 
 ### Chat Modes
 
-Copilot Chat has four modes, selected from a dropdown at the bottom of the Chat input area. Each mode changes how Copilot interprets your request and what it can do.
+Copilot Chat has multiple modes, selected from a dropdown at the bottom of the Chat input area. Mode availability can change by VS Code version and rollout. Each mode changes how Copilot interprets your request and what it can do.
 
 | Mode | How It Works | Best For |
 | ------  | -------------  | ----------  |
 | **Ask** (default) | Conversational Q&A - Copilot explains, suggests, and answers but does not edit files directly | Questions, explanations, understanding unfamiliar code, reviewing content |
-| **Edit** | You define a "working set" of files; Copilot proposes edits and shows a diff you approve or reject - nothing changes without your confirmation | Targeted, multi-file changes where you want full control |
+| **Edit** | You define a "working set" of files; Copilot proposes edits and shows a diff you approve or reject. Edit mode is being deprecated into Agent mode, so use Agent mode if Edit is not shown | Targeted, multi-file changes where you want full control |
 | **Agent** | Copilot works autonomously - it decides which files to open, reads and writes code, and runs terminal commands to complete the task | Larger tasks where you want Copilot to drive end-to-end |
 | **Plan** | Copilot produces a step-by-step implementation plan before writing any code; you review and approve the plan first | Complex features where you want to validate the approach before any changes are made |
 
@@ -534,18 +534,19 @@ Copilot Chat has four modes, selected from a dropdown at the bottom of the Chat 
 
 ### Choosing a Model
 
-Copilot gives you access to AI models from OpenAI, Anthropic (Claude), Google (Gemini), xAI (Grok), and others. The **model picker** is a button at the bottom of the Chat input area, next to the mode selector, showing the current model name (e.g., "Auto" or "Claude Sonnet 4.6").
+Copilot gives you access to AI models from OpenAI, Anthropic, Google, and others. The **model picker** is a button at the bottom of the Chat input area, next to the mode selector, showing the current model selection, such as **Auto** or a model name available to your account.
 
 **When "Auto" is selected** (the default), Copilot automatically chooses the best model for each request - lighter models for quick questions, more capable models for complex reasoning. Auto mode has been generally available since December 2025. You can override it whenever you want a specific model.
 
 #### Quick guidance
 
-- **Free-tier users:** GPT-4.1 and GPT-5 mini are available at no cost and handle most everyday tasks well
-- **Need deep reasoning/debugging?** Try Claude Sonnet 4.6 or GPT-5.5 (1x premium requests)
-- **Running Agent mode?** GPT-5.5 or Claude Sonnet 4.6 work well for autonomous multi-step tasks
-- **High cost to avoid unless needed:** Claude Opus 4.6 (3x cost) - powerful but reserve for the most demanding work
+- Start with **Auto** model selection unless the workshop facilitator asks you to choose a specific model.
+- Use lightweight or default models for short explanations, documentation drafts, and quick questions.
+- Use more capable models only when the task genuinely needs deeper reasoning, long context, or agentic work.
+- Watch the model badge or picker when available. VS Code 1.119 and later can show model details and usage multipliers for some agent responses.
+- Do not rely on a saved model name from this guide. Model availability changes by plan, organization policy, geography, and rollout.
 
-> **Model availability changes frequently.** Facilitators will provide current guidance at the workshop. For the complete model reference including plan availability, see [Appendix K: GitHub Copilot Reference](appendix-k-copilot-reference.md).
+> **Model availability changes frequently.** Facilitators will provide current guidance at the workshop. For current sources and model-selection principles, see [Appendix K: GitHub Copilot Reference](appendix-k-copilot-reference.md).
 
 <details>
 <summary>Low vision users - finding the mode and model controls</summary>
@@ -782,30 +783,34 @@ Copilot Edits is the **Edit** chat mode. Instead of just answering questions, Co
 
 > **See also:** [Chapter 19: Accessibility Agents](19-accessibility-agents.md) and [Chapter 20: Build Your Agent](20-build-your-agent.md) for creating your own Copilot agent.
 
-Agent mode is the most autonomous way to use Copilot. You describe a goal and Copilot figures out what files to open, what changes to make, and what commands to run — asking for your approval when it needs to run something that has side effects.
+Agent mode is the most autonomous way to use Copilot. You describe a goal and Copilot figures out what files to open, what changes to make, and what commands to run - asking for your approval when it needs to run something that has side effects.
 
 **When to use it:**
 - Scaffolding a new feature from scratch
 - Running a complex multi-step task that involves several files and commands
 - Tasks where you're not sure which files need to change
 
-> **Agent mode is powerful — and that's worth being thoughtful about.** It can open, read, and edit files across your whole workspace and run terminal commands. Review its actions as it works, especially before approving terminal commands. Start with well-scoped tasks until you're comfortable with how it behaves.
+> **Agent mode is powerful, and that is worth being thoughtful about.** It can open, read, and edit files across your whole workspace and run terminal commands. Review its actions as it works, especially before approving terminal commands. Start with well-scoped tasks until you're comfortable with how it behaves.
 
 ### How to use Agent mode
 
 1. Open Copilot Chat: `Ctrl+Shift+I` (Mac: `Cmd+Shift+I`)
 2. Select **Agent** from the mode dropdown at the bottom of the Chat panel
 3. Type your goal: *"Add a Table of Contents to every Markdown file in the docs/ folder"* or *"Find all TODO comments in this project and create a GitHub issue for each one"*
-4. Copilot begins working — it shows each step it's taking and asks for approval before running terminal commands
+4. Copilot begins working - it shows each step it's taking and asks for approval before running terminal commands
 5. Watch the progress in the Chat panel; review any proposed changes in the editor
+
+> **Integrated browser sharing:** An agent does not automatically have access to VS Code's integrated browser. In VS Code 1.119 and later, you can explicitly attach browser tabs as context, and an agent may ask you to approve sharing an existing tab. Share only the page needed for the task, and use the browser sharing control to stop sharing when you are done.
 
 ### Approving terminal commands
 
 When Agent mode wants to run a shell command (like `npm run build` or `git commit`), it pauses and shows you the command before running it.
 
-- **Allow** — run this command once
-- **Allow Always** — always allow this command type without asking again (use carefully)
-- **Cancel** — stop and don't run it
+- **Allow** - run this command once
+- **Allow Always** - always allow this command type without asking again (use carefully)
+- **Cancel** - stop and don't run it
+
+> **Trust and security note:** Some approval prompts depend on organization-managed settings. VS Code 1.119 added an `allowNetwork` sandbox mode and reduces repeated approvals for temp-folder writes after you allow all commands in a session. If your prompts differ from this guide, follow your organization's policy and ask a facilitator before approving broad permissions.
 
 > **Screen reader tip:** When Copilot pauses for approval, focus moves to the approval dialog in the Chat panel. Your screen reader announces the command Copilot wants to run and the approval options. Tab to your choice and press `Enter`.
 
@@ -879,7 +884,7 @@ You don't need VS Code to use Copilot. GitHub.com has Copilot built directly int
 3. Click it (or press `?` then select Copilot from the command palette) to open the chat panel
 4. Type your question and press `Enter`
 
-Copilot on GitHub.com has context about your repositories, issues, PRs, and code — you can reference them directly.
+Copilot on GitHub.com has context about your repositories, issues, PRs, and code - you can reference them directly.
 
 ### What you can ask Copilot on GitHub.com
 
@@ -913,7 +918,9 @@ When you open a pull request on GitHub.com, Copilot can generate a description f
 
 ### Copilot for Code Review on GitHub.com
 
-Maintainers can use Copilot to review pull requests on GitHub.com. As a contributor, you may see **Copilot-authored review comments** on your PR — they look like regular review comments but are labelled "Copilot".
+Maintainers can use Copilot to review pull requests on GitHub.com. As a contributor, you may see **Copilot-authored review comments** on your PR - they look like regular review comments but are labelled "Copilot".
+
+> **Cost note, verified May 12, 2026:** Starting June 1, 2026, Copilot code review is expected to consume GitHub Actions minutes in addition to GitHub AI Credits. Facilitators and maintainers should check current billing settings before enabling Copilot review broadly for a cohort.
 
 - Copilot review comments work just like human review comments — respond, resolve, or address them
 - They flag things like potential bugs, style inconsistencies, or missing edge cases
@@ -927,7 +934,7 @@ Maintainers can use Copilot to review pull requests on GitHub.com. As a contribu
 | Repository / issue / PR context | Yes, built in | Yes, via `@github` |
 | Inline code suggestions | No | Yes |
 | Copilot Edits (multi-file) | No | Yes |
-| Agent mode | No | Yes |
+| Agent mode | Cloud agent sessions may be available for eligible accounts and repositories | Yes, local Agent mode in VS Code |
 | PR description generation | Yes | No |
 | Code review comments | Yes, for maintainers | No |
 | No install required | Yes | Requires extension |
@@ -948,7 +955,7 @@ Maintainers can use Copilot to review pull requests on GitHub.com. As a contribu
 
 **Sighted users:**
 - Look for the Copilot sparkle icon in the top-right header area of any GitHub.com page to open chat; on PR pages, a second sparkle button appears next to the description field
-- GitHub.com Copilot is completely separate from VS Code Copilot -- your prompts, history, and extensions do not carry over between the two environments
+- GitHub.com Copilot and VS Code Copilot are separate surfaces. Some account state and agent sessions may connect across surfaces, but prompts, local workspace context, and extensions do not automatically carry over
 - Use the Copilot chat on GitHub.com for quick questions about repos, issues, and PRs without needing to clone anything locally
 
 ---

@@ -85,17 +85,18 @@ File a new issue describing something you noticed in the repository. It can be a
 
 1. Navigate to the **Issues** tab near the top of your repository page.
 2. Select the **New issue** button.
-3. Provide a clear and descriptive **Title** for your issue (e.g., "Idea: Add a welcome banner").
-4. In the **Add a description** text area, write a sentence or two explaining your thought.
-5. Create the issue by selecting the **Submit new issue** button.
+3. If a template picker appears, choose the matching template by selecting **Get started**, or select **Open a blank issue** if no template fits.
+4. Provide a clear and descriptive **Title** for your issue (e.g., "Idea: Add a welcome banner").
+5. In the comment body field, write a sentence or two explaining your thought.
+6. Create the issue by selecting the **Submit new issue** button.
 
 </details>
 
 <details>
 <summary><b>Visual Studio Code</b></summary>
 
-1. Open the **GitHub Pull Requests and Issues** view (`Ctrl+Shift+G` or `Cmd+Shift+G` on Mac).
-2. Open the **Issues** creation form: Use the arrow keys to focus the **Issues** header and select the **Stage Changes ** button (plus icon), or use the command palette (`Ctrl+Shift+P` or `Cmd+Shift+P` on Mac) and search for **"GitHub Issues: Create Issue..."**.
+1. Open the **GitHub Pull Requests and Issues** view from the Activity Bar, or open the Command Palette (`Ctrl+Shift+P` or `Cmd+Shift+P` on Mac).
+2. Open the issue creation form by selecting the `+` button in the **Issues** view, or run **GitHub Issues: Create Issue** from the Command Palette.
 3. Choose the current repository if prompted.
 4. Enter a descriptive title in the prompt bar.
 5. For the description, a scratchpad file will open. Type your thought there and save it to submit.
@@ -329,12 +330,12 @@ Open a Pull Request and let Aria run her first set of automated accessibility ch
 <details>
 <summary><b>Visual Studio Code</b></summary>
 
-1. Open the **GitHub Pull Requests and Issues** view (`Ctrl+Shift+G` or `Cmd+Shift+G` on Mac).
-2. Use the arrow keys to focus the **Pull Requests** header and select the **Stage Changes** button (plus icon).
+1. Open the **GitHub Pull Requests and Issues** view from the Activity Bar, or open the Command Palette (`Ctrl+Shift+P` or `Cmd+Shift+P` on Mac).
+2. Run **GitHub Pull Requests: Create Pull Request**, or select the **Create Pull Request** button in the Pull Requests view.
 3. Choose the **Compare Branch ** (e.g., `feature/my-first-edit`) and the **Base Branch** (`main`).
 4. Type your PR title (e.g., "Add my name to the README").
 5. In the description field, include `Closes #1` to link it to your issue.
-6. Select **Create** or use `Ctrl+Enter` (`Cmd+Enter` on Mac).
+6. Select **Create** or use the keyboard shortcut announced by the create view.
 
 </details>
 
@@ -610,12 +611,12 @@ Open a Pull Request from your local branch and wait for Aria's automated validat
 <details>
 <summary><b>Visual Studio Code</b></summary>
 
-1. Open the **GitHub Pull Requests and Issues** view (`Ctrl+Shift+G` or `Cmd+Shift+G` on Mac).
-2. Select the **Stage Changes ** button (plus icon) next to the **Pull Requests** header.
+1. Open the **GitHub Pull Requests and Issues** view from the Activity Bar, or open the Command Palette (`Ctrl+Shift+P` or `Cmd+Shift+P` on Mac).
+2. Run **GitHub Pull Requests: Create Pull Request**, or select the **Create Pull Request** button in the Pull Requests view.
 3. Choose the **Compare Branch ** (e.g., `feature/day2-local-edit`) and the **Base Branch** (`main`).
 4. Type your PR title (e.g., "Day 2 local edit").
 5. In the description field, type a sentence or two summarizing your change.
-6. Select **Create** or use `Ctrl+Enter` (`Cmd+Enter` on Mac).
+6. Select **Create** or use the keyboard shortcut announced by the create view.
 
 </details>
 
@@ -728,8 +729,8 @@ Use GitHub Copilot to suggest improvements and have Aria review the result!
 <summary><b>Web Browser (Copilot in the Browser)</b></summary>
 
 1. Navigate to the file you want to edit.
-2. Access the **Edit this file** (pencil icon).
-3. Select the **Copilot** icon (sparkles) in the editor toolbar.
+2. Access the **Edit this file** control. In the current GitHub UI, this may be under the edit button or a **More edit options** menu.
+3. If a **Copilot** or **Copilot actions** button appears in the editor toolbar, activate it. If it does not appear for your account, use the Visual Studio Code primary method above.
 4. Input your prompt: "Suggest improvements to make this file more welcoming for new contributors."
 5. Review and **Insert** the suggestion.
 

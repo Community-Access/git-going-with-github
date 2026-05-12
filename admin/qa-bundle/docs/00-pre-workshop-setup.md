@@ -375,13 +375,13 @@ A profile picture is strongly recommended because it humanizes your contribution
 
 ## Step 4 - Check GitHub Feature Preview Settings
 
-GitHub continuously rolls out improvements to its interface. Some enhancements start as opt-in Feature Previews before becoming the standard experience. Three features matter most for screen reader users working through this workshop:
+GitHub continuously rolls out improvements to its interface. Some enhancements start as opt-in Feature Previews before becoming the standard experience. Three areas matter most for screen reader users working through this workshop:
 
 - **New Issues Experience** - improves heading hierarchy, ARIA landmark structure, and live-region announcements on the Issues pages
 - **New Files Changed Experience** - adds proper landmark structure, an accessible file tree, and better keyboard navigation to the Files Changed tab in Pull Requests
 - **GitHub Command Palette** - a keyboard-first command launcher (`Ctrl+K` on Windows, `Cmd+K` on macOS) that lets you navigate to any repository, issue, PR, file, or page by typing its name. Faster than clicking through menus and fully accessible with screen readers
 
-Both have been broadly rolled out and may already be active on your account. Check before the workshop begins.
+The issue and pull request experiences have been broadly rolled out and may already be active on your account. Check before the workshop begins.
 
 ### How to Check and Enable Feature Previews
 
@@ -447,8 +447,8 @@ If you open Feature Preview and neither **"New Issues Experience"** nor **"New F
 
 | Feature | What it improves for screen reader users |
 | ---------  | ------------------------------------------  |
-| **New Issues Experience** | Issues list uses proper `<ul>` list structure. Issue titles are h3 headings. ARIA live regions announce filter result updates. Toolbar uses arrow key navigation. Close issue via `Ctrl+Shift+Enter` from the comment box. |
-| **New Files Changed Experience** | Files Changed tab includes a navigable file tree region. Diffs are structured as tables with row/column navigation. Filter changed files field is reachable with `E`. Inline comment mode activates with `Enter` on a focused diff line. |
+| **New Issues Experience** | Issues list uses proper `<ul>` list structure. Issue titles are h3 headings. ARIA live regions announce filter result updates. Toolbar uses arrow key navigation. Comment fields can be submitted with `Ctrl+Enter` on Windows/Linux or `Cmd+Enter` on macOS. |
+| **New Files Changed Experience** | Files Changed tab includes a navigable file tree region. Diffs are structured for keyboard navigation. The current GitHub shortcut table lists `T` for moving to the **Filter changed files** field. Inline comment controls are available from focused diff lines. |
 | **GitHub Command Palette** | Press `Ctrl+K` (Windows) or `Cmd+K` (macOS) from any GitHub page to open a command palette. Type to search for repositories, issues, PRs, files, settings, or actions. Results appear in a list navigable with `Arrow` keys. Press `Enter` to go. Screen readers announce each result as you arrow through the list. Scope the search with prefixes: `#` for issues/PRs, `!` for projects, `>` for commands, `/` for files. |
 
 > **Why this matters:** Without these features enabled, the keyboard and screen reader workflows described throughout this workshop will not match what you see on screen. Enabling them before you begin ensures everything works as documented.

@@ -190,7 +190,7 @@ Every chapter has an "If You Get Stuck" section. Every challenge has a [referenc
 | [U](docs/appendix-x-resources.md) | **Resources** | Every link, tool, and reference from this event |
 | [V](docs/appendix-l-agents-reference.md) | **Accessibility Agents Reference** | 55 agents, 3 teams, 5 platforms, slash commands, and workspace configuration |
 | [W](docs/appendix-k-copilot-reference.md) | **GitHub Copilot Reference** | Copilot features, chat participants, slash commands, MCP servers, and agentic ecosystem |
-| [X](docs/appendix-k-copilot-reference.md) | **GitHub Copilot AI Models** | Model comparison, strengths, plan availability, and selection guidance |
+| [X](docs/appendix-k-copilot-reference.md) | **GitHub Copilot Billing and Models** | Source-backed guidance for current Copilot billing, GitHub AI Credits, model volatility, and selection principles |
 | [Y](docs/appendix-y-workshop-materials.md) | **Accessing and Downloading Workshop Materials** | GitHub Pages, GitHub.com, cloning, ZIP download, offline reading, folder guide |
 | [Z](docs/appendix-z-github-skills.md) | **GitHub Skills - Complete Course Catalog** | All 36 GitHub Skills modules organized into six learning paths, with links, prerequisites, and integration guidance |
 > **Each guide from Lesson 03 onward includes a "Day 2 Amplifier" callout** that shows how Accessibility Agents extends that skill across three scopes: your VS Code editor → your repository (travels with every fork) → the cloud (GitHub Agentic Workflows running without VS Code). **Learn the manual skill first (Chapter 14), then see how it's automated (Chapter 16).**

@@ -69,14 +69,14 @@ Chapter 5 is the first **issue-based challenge chapter** with short, confidence-
 
 **You are done when:** Your new issue appears in the Issues list with your username as the author, a clear title, and a detailed description.
 
-### Challenge 4.2 Step-by-Step: Comment and @Mention
+### Challenge 3 Step-by-Step: Comment and @Mention
 
 **Goal:** Leave a comment on another student's issue and use an @mention to notify them.
 
 **Where you are working:** the Issues tab of your Learning Room repository on GitHub.com.
 
 1. Open the **Issues** tab in your Learning Room repository.
-2. Find an issue created by a classmate (look for issues from Challenge 4.1, or browse recent open issues).
+2. Find an issue created by a classmate (look for recent open issues, or use a facilitator-provided peer-simulation issue).
 3. Open the issue by activating its title link.
 4. Read the issue description to understand what they reported.
 5. Scroll to the comment box at the bottom of the issue.
@@ -90,15 +90,15 @@ Chapter 5 is the first **issue-based challenge chapter** with short, confidence-
 
 **You are done when:** Your comment appears in the thread and includes an @mention (the username renders as a clickable link).
 
-### Challenge 4.3 Step-by-Step: Add a Sub-Issue
+### Optional Extension Step-by-Step: Add a Sub-Issue
 
 **Goal:** Break a larger issue into smaller, trackable pieces using GitHub's sub-issue feature.
 
-**Where you are working:** the issue you created in Challenge 4.1 (or any open issue you have permission to edit).
+**Where you are working:** the issue you created in Challenge 2 (or any open issue you have permission to edit).
 
 > **What are sub-issues?** Sub-issues let you decompose a big task into smaller steps, each tracked independently. The parent issue shows a progress bar as sub-issues are completed. This is how teams organize real work - a single "Fix accessibility in welcome.md" issue might have sub-issues for each specific fix.
 
-1. Open the issue you created in Challenge 4.1.
+1. Open the issue you created in Challenge 2.
 2. Look for the **Sub-issues** section in the issue sidebar (right side on desktop). If you do not see it, look for an **Add sub-issue** button or the **Create sub-issue** option below the issue description.
 3. Activate **Add sub-issue** and choose **Create new sub-issue**.
 4. Give the sub-issue a clear title that describes one specific piece of the parent issue. For example, if the parent is "Fix accessibility in welcome.md":
@@ -109,18 +109,18 @@ Chapter 5 is the first **issue-based challenge chapter** with short, confidence-
 
 **You are done when:** Your parent issue shows at least one sub-issue in the Sub-issues section.
 
-### Completing Chapter 4: Submit Your Evidence
+### Completing Chapter 5: Submit Your Evidence
 
-When you have finished all three challenges, go to your **assigned Chapter 4 challenge issue** (the one titled "Chapter 4.1: Create Your First Issue (@yourusername)" or similar) and post a comment with your evidence:
+When you have finished the Chapter 5 issue challenges, go to your **assigned Challenge 2 or Challenge 3 issue** and post a comment with your evidence:
 
 ```text
-Chapter 4 completed:
-- Challenge 4.1: Created issue #[number]
-- Challenge 4.2: Commented with @mention on issue #[number]
-- Challenge 4.3: Added sub-issue to issue #[number]
+Chapter 5 completed:
+- Challenge 2: Created issue #[number]
+- Challenge 3: Commented with @mention on issue #[number]
+- Optional: Added sub-issue to issue #[number]
 ```
 
-Replace `[number]` with the actual issue numbers. Then close your Chapter 4 challenge issues. The facilitator will review your issue activity.
+Replace `[number]` with the actual issue numbers. Then close your assigned challenge issues. The facilitator will review your issue activity.
 
 ### Expected Outcomes
 
