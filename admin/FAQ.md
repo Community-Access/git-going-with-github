@@ -115,7 +115,7 @@ Full instructions: [Chapter 0 (Pre-Workshop Setup)](docs/00-pre-workshop-setup.m
 - **VoiceOver:** Safari is the most compatible browser on macOS.
 
 ### Q: Do I need a paid GitHub account?
-**A:** No. A free GitHub account is sufficient for everything in this workshop, including creating repositories, filing issues, opening pull requests, and participating in discussions. GitHub Copilot has a free tier with limited usage, but a paid subscription (~$10/month) provides full access for Day 2 content.
+**A:** No. A free GitHub account is sufficient for the GitHub fundamentals in this workshop, including creating repositories, filing issues, opening pull requests, and participating in discussions. Day 2 Copilot activities require Copilot access. GitHub Copilot Free has limited usage, and paid plans, included usage, and billing behavior are changing as GitHub moves to usage-based billing on June 1, 2026. Check the [GitHub Copilot plans page](https://github.com/features/copilot/plans) before the workshop.
 
 ### Q: Can I use a Chromebook or tablet?
 **A:** Day 1 (browser-based) works on any device with a modern browser and a keyboard. Day 2 requires Visual Studio Code, which runs on Windows, macOS, and Linux desktops. If you have a Chromebook, consider [GitHub Codespaces](docs/appendix-j-cloud-editors.md) as an alternative to a local VS Code install.
@@ -599,10 +599,7 @@ Within each view, use `Tab`, `Arrow keys`, and `Enter` to navigate.
 See [Chapter 13 (GitHub Copilot)](docs/16-github-copilot.md).
 
 ### Q: Do I need a paid subscription to use Copilot?
-**A:** GitHub Copilot now offers a free tier with limited usage. For full access including chat and agents, you need:
-- **Copilot Individual:** ~$10/month or $100/year
-- **Copilot Business/Enterprise:** Through your organization
-- **Students/Educators:** Free access at https://education.github.com/
+**A:** GitHub Copilot offers a free plan with limited monthly usage, and verified students may have access to the GitHub Copilot Student plan. Paid individual and organization plans include additional usage and features, but plan details are changing with the June 1, 2026 move to usage-based billing and GitHub AI Credits. Use the [GitHub Copilot plans page](https://github.com/features/copilot/plans) and [GitHub Education for students](https://education.github.com/) for current availability.
 
 ### Q: How do I open Copilot Chat?
 **A:** Press `Ctrl+Shift+I`. The Chat panel opens as a sidebar. Type your question and press Enter. Use `Alt+F2` (Accessible View) to read Copilot's response with your screen reader.
@@ -628,13 +625,13 @@ See [Chapter 13 (GitHub Copilot)](docs/16-github-copilot.md).
 - `/doc` - Generate documentation
 - Custom commands from Accessibility Agents (28 available)
 
-Full reference: [Appendix W (GitHub Copilot Reference)](docs/appendix-k-copilot-reference.md)
+Full reference: [Appendix K (GitHub Copilot Reference)](docs/appendix-k-copilot-reference.md)
 
 ### Q: Copilot Chat is not responding or freezing. What do I do?
 **A:** See [TROUBLESHOOTING.md](TROUBLESHOOTING.md) → "Copilot Chat freezes or stops responding." Quick fix: Close the chat panel, reopen with `Ctrl+Shift+I`. Check your internet connection and Copilot subscription status.
 
 ### Q: Can I choose which AI model Copilot uses?
-**A:** Yes. In Copilot Chat, click the model selector (announced by your screen reader near the input field) to choose from available models. Different models have different strengths. See [Appendix X (Copilot AI Models)](docs/appendix-k-copilot-reference.md).
+**A:** Yes. In Copilot Chat, activate the model selector near the input field to choose from models available to your account. Model availability changes frequently and may depend on your plan, organization policy, geography, and rollout. See [Appendix K (GitHub Copilot Reference)](docs/appendix-k-copilot-reference.md).
 
 
 ## Accessibility Agents

@@ -34,7 +34,7 @@ Complete every item before Day 2 starts. If you attended Day 1, these are alread
 - [ ] **GitHub Accessibility Settings** configured: hovercards disabled, keyboard shortcuts enabled ([github.com/settings/accessibility](https://github.com/settings/accessibility))
 - [ ] **Git** installed on your machine ([download](https://git-scm.com/downloads))
 - [ ] **Visual Studio Code** installed ([download](https://code.visualstudio.com/))
-- [ ] **GitHub Copilot** available in VS Code (Copilot Free is available to all GitHub users)
+- [ ] **GitHub Copilot** available in VS Code (Copilot Free has monthly limits, and organization policies can affect access)
 - [ ] **Screen reader** running and tested with your browser
 
 ### Git Identity
@@ -51,8 +51,7 @@ git config --global user.email "your-github-email@example.com"
 Install these before the session:
 
 - **GitHub Pull Requests and Issues** (required)
-- **GitHub Copilot** (required -- included with VS Code)
-- **GitHub Copilot Chat** (required -- included with VS Code)
+- **GitHub Copilot Chat** or current built-in Copilot entry points in VS Code (required for Copilot exercises; sign in and verify your account has access)
 
 ### Accept the Day 2 Classroom Assignment
 
