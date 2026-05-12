@@ -59,7 +59,23 @@ try {
     Wait-ForRepositoryContent -Repository $smoke
 
     Write-Host "Checking expected template files..."
-    Invoke-CheckedCommand gh @('api', "repos/$smoke/contents/.github/workflows/student-progression.yml")
+    $requiredWorkflows = @(
+        'pr-validation-bot.yml',
+        'content-validation.yml',
+        'student-progression.yml',
+        'skills-progression.yml',
+        'autograder-issue-filed.yml',
+        'autograder-branch-commit.yml',
+        'autograder-pr-link.yml',
+        'autograder-conflicts.yml',
+        'autograder-local-commit.yml',
+        'autograder-template.yml',
+        'autograder-capstone.yml',
+        'autograder-watchdog.yml'
+    )
+    foreach ($wf in $requiredWorkflows) {
+        Invoke-CheckedCommand gh @('api', "repos/$smoke/contents/.github/workflows/$wf")
+    }
     Invoke-CheckedCommand gh @('api', "repos/$smoke/contents/.github/ISSUE_TEMPLATE/challenge-01-find-your-way.yml")
     Invoke-CheckedCommand gh @('api', "repos/$smoke/contents/.github/scripts/challenge-progression.js")
 

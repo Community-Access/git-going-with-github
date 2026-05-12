@@ -59,39 +59,20 @@
   </header>
   <main id="main-content" class="markdown-body">
     <h1 id="registration-automation-quickstart-facilitator">Registration Automation Quickstart (Facilitator)</h1>
-<p>Use this when you need to enable registration plus classroom API automation quickly.</p>
+<p>Use this when you need to enable registration with assignment-link automation quickly.</p>
 <p>For full background and troubleshooting, use <a href="REGISTRATION-ADMIN.html">REGISTRATION-ADMIN.md</a>.</p>
 <h2 id="5-minute-setup">5-Minute Setup</h2>
 <ol>
-<li>Create an admin token from a facilitator account with organization invitation permissions.</li>
-<li>In repository settings, add secret:<ul>
-<li><code>CLASSROOM_ORG_ADMIN_TOKEN</code></li>
-</ul>
-</li>
 <li>In repository settings, add variables:<ul>
-<li><code>CLASSROOM_ORG</code></li>
 <li><code>CLASSROOM_DAY1_ASSIGNMENT_URL</code></li>
 <li><code>CLASSROOM_DAY2_ASSIGNMENT_URL</code></li>
 </ul>
 </li>
 <li>Save all values.</li>
-<li>Submit one test registration issue from a non-member test account.</li>
+<li>Submit one test registration issue from a test account.</li>
 </ol>
 <h2 id="copypaste-settings-template">Copy/Paste Settings Template</h2>
 <p>Use this checklist while entering repository settings values.</p>
-<h3 id="repository-secret">Repository Secret</h3>
-<table>
-<thead>
-<tr>
-<th scope="col">Name</th>
-<th scope="col">Value to paste</th>
-</tr>
-</thead>
-<tbody><tr>
-<td>CLASSROOM_ORG_ADMIN_TOKEN</td>
-<td>PASTE_ADMIN_TOKEN_HERE</td>
-</tr>
-</tbody></table>
 <h3 id="repository-variables">Repository Variables</h3>
 <table>
 <thead>
@@ -101,10 +82,6 @@
 </tr>
 </thead>
 <tbody><tr>
-<td>CLASSROOM_ORG</td>
-<td>Community-Access-Classroom</td>
-</tr>
-<tr>
 <td>CLASSROOM_DAY1_ASSIGNMENT_URL</td>
 <td><a href="https://classroom.github.com/a/REPLACE_DAY1_ID">https://classroom.github.com/a/REPLACE_DAY1_ID</a></td>
 </tr>
@@ -117,28 +94,26 @@
 <ul>
 <li>Confirm there are no extra spaces before or after values.</li>
 <li>Confirm both assignment URLs open correctly in a logged-in browser.</li>
-<li>Confirm the org name matches exactly, including capitalization.</li>
 </ul>
 <h2 id="expected-result-happy-path">Expected Result (Happy Path)</h2>
 <p>After the test issue is opened and capacity is available:</p>
 <ol>
 <li>Registration confirmation comment is posted.</li>
-<li>Organization invite is sent (or detected as already pending/member).</li>
 <li>Day 1 and Day 2 assignment links appear in the confirmation comment.</li>
 <li><code>registration</code> label is applied.</li>
 </ol>
 <h2 id="fast-verification-checklist">Fast Verification Checklist</h2>
 <ul>
-<li><input aria-label="Test user received or already had organization invite" disabled="" type="checkbox"> Test user received or already had organization invite</li>
 <li><input aria-label="Confirmation comment includes assignment links" disabled="" type="checkbox"> Confirmation comment includes assignment links</li>
 <li><input aria-label="Duplicate submission closes automatically with duplicate message" disabled="" type="checkbox"> Duplicate submission closes automatically with duplicate message</li>
 <li><input aria-label="Waitlist behavior still works when capacity is full" disabled="" type="checkbox"> Waitlist behavior still works when capacity is full</li>
+<li><input aria-label="Student can reply" disabled="" type="checkbox"> Student can reply <code>ack</code>, then <code>day1-complete</code>, and receive Day 2 release comment</li>
 </ul>
 <h2 id="rollback-immediate">Rollback (Immediate)</h2>
-<p>If anything behaves unexpectedly, disable classroom API automation without stopping registration:</p>
+<p>If anything behaves unexpectedly, disable assignment-link posting without stopping registration:</p>
 <ol>
-<li>Remove repository secret <code>CLASSROOM_ORG_ADMIN_TOKEN</code>, or</li>
-<li>Clear repository variable <code>CLASSROOM_ORG</code></li>
+<li>Clear <code>CLASSROOM_DAY1_ASSIGNMENT_URL</code>, or</li>
+<li>Clear <code>CLASSROOM_DAY2_ASSIGNMENT_URL</code></li>
 </ol>
 <p>The registration workflow will continue standard confirmation, capacity checks, and CSV export.</p>
 <h2 id="full-support-reset-when-needed">Full Support Reset (When Needed)</h2>
@@ -149,7 +124,7 @@
 <li>Keep <a href="REGISTRATION-ADMIN.html">REGISTRATION-ADMIN.md</a> open.</li>
 <li>Watch Actions runs for <code>registration.yml</code> after each new registration.</li>
 <li>Spot-check one confirmation comment every few runs.</li>
-<li>If failures appear, use rollback and continue manual classroom invite flow.</li>
+<li>If failures appear, use rollback and continue manual assignment link sharing.</li>
 </ol>
 <h2 id="privacy-reminder">Privacy Reminder</h2>
 <ul>

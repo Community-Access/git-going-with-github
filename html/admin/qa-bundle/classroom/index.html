@@ -144,14 +144,6 @@
 <td>Assignment description for Day 2 (paste into Classroom UI)</td>
 </tr>
 <tr>
-<td><a href="autograding-day1.json">autograding-day1.json</a></td>
-<td>Test definitions for Day 1 autograder</td>
-</tr>
-<tr>
-<td><a href="autograding-day2.json">autograding-day2.json</a></td>
-<td>Test definitions for Day 2 autograder</td>
-</tr>
-<tr>
 <td><a href="grading-guide.html">grading-guide.md</a></td>
 <td>Facilitator rubric for all 21 challenges</td>
 </tr>
@@ -277,7 +269,7 @@ student-a,Alice Student,<span class="hljs-symbol">alice@</span>example.com</code
 <p>Then complete the remaining fields:</p>
 <ol>
 <li><strong>Assignment description:</strong> Open <a href="assignment-day1-you-belong-here.html">assignment-day1-you-belong-here.md</a>, copy everything below the HTML metadata comment, and paste it into the description field</li>
-<li><strong>Autograding tests:</strong> Open <a href="autograding-day1.json">autograding-day1.json</a> and add each test entry manually -- for each test in the JSON array, click <strong>Add test</strong>, set the <strong>Test name</strong>, <strong>Run command</strong>, <strong>Comparison</strong>, and <strong>Points</strong> to match the JSON values, and set timeout to 60 seconds per test unless otherwise specified</li>
+<li><strong>Autograding tests:</strong> Leave this section empty. Day 1 autograded checks (Challenges 2, 5, 6, 7) run as GitHub Actions workflows inside the template repo, so no Classroom test cases are required. See <a href="../admin/classroom/autograding-setup.html">admin/classroom/autograding-setup.md</a> for the full list of workflows.</li>
 <li>Click <strong>Create assignment</strong> -- this generates your Day 1 invite link</li>
 </ol>
 <h3 id="what-the-student-experiences-day-1">What the student experiences (Day 1)</h3>
@@ -335,7 +327,7 @@ student-a,Alice Student,<span class="hljs-symbol">alice@</span>example.com</code
 <p>Then complete the remaining fields:</p>
 <ol>
 <li><strong>Assignment description:</strong> Use <a href="assignment-day2-you-can-build-this.html">assignment-day2-you-can-build-this.md</a></li>
-<li><strong>Autograding tests:</strong> Use <a href="autograding-day2.json">autograding-day2.json</a></li>
+<li><strong>Autograding tests:</strong> Leave this section empty. Day 2 autograded checks (Challenges 10, 14, 16) run as GitHub Actions workflows inside the template repo. See <a href="../admin/classroom/autograding-setup.html">admin/classroom/autograding-setup.md</a>.</li>
 <li>Click <strong>Create assignment</strong> -- this generates your Day 2 invite link</li>
 </ol>
 <h3 id="what-the-student-experiences-day-2">What the student experiences (Day 2)</h3>
@@ -417,14 +409,14 @@ student-a,Alice Student,<span class="hljs-symbol">alice@</span>example.com</code
 <p>Challenge 7 needs a real conflict. After the student has edited <code>docs/welcome.md</code> on their challenge branch and opened a pull request, run:</p>
 <pre><code class="hljs language-powershell">scripts/classroom/<span class="hljs-built_in">Start-MergeConflictChallenge</span>.ps1 <span class="hljs-literal">-Repository</span> Community<span class="hljs-literal">-Access-Classroom</span>/learning<span class="hljs-literal">-room-studentname</span> <span class="hljs-literal">-StudentBranch</span> learn/studentname</code></pre>
 <p>The script changes the same TODO area on <code>main</code>, which should cause the student&#39;s pull request to report a merge conflict if they edited that TODO on their branch.</p>
-<h3 id="autograding-verification">Autograding verification</h3>
-<p>To test specific autograding checks:</p>
+<h3 id="autograder-workflow-verification">Autograder workflow verification</h3>
+<p>All autograded checks now run as GitHub Actions workflows inside each student repo (not as Classroom test cases). To verify they work:</p>
 <ol>
 <li>In the test student repo, create a branch and make a change that should pass a check</li>
 <li>Open a PR</li>
-<li>Go to the <strong>Actions</strong> tab and verify the autograding workflow ran</li>
-<li>Check the workflow output -- each test should report pass or fail correctly</li>
-<li>Try a change that should fail a check and verify it catches the problem</li>
+<li>Go to the <strong>Actions</strong> tab and verify the relevant <code>autograder-*</code> workflow ran</li>
+<li>On the PR (or relevant issue) confirm a comment was posted reporting pass or fail</li>
+<li>Push a change that should fail a check and verify the comment updates in place</li>
 </ol>
 <h3 id="aria-verification">Aria verification</h3>
 <ol>
@@ -461,8 +453,8 @@ student-a,Alice Student,<span class="hljs-symbol">alice@</span>example.com</code
 <td>The student may not have closed the previous issue; check their Issues tab</td>
 </tr>
 <tr>
-<td>&quot;Autograding says I failed&quot;</td>
-<td>Check the workflow output; often a formatting issue; use it as a teaching moment</td>
+<td>&quot;The autograder bot says I failed&quot;</td>
+<td>Open the Actions tab in the student repo and read the failing <code>autograder-*</code> workflow log; the bot comment links to the run</td>
 </tr>
 <tr>
 <td>&quot;I do not see the feedback PR&quot;</td>

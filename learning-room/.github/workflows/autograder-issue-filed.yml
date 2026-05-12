@@ -1,0 +1,115 @@
+name: "Challenge 2: Issue Filed Check"
+# Validates that the student has filed at least one issue in their Learning Room.
+# Replaces the GitHub Classroom autograding "test case" for Challenge 2 so the
+# check still runs even when the Classroom UI cannot save test cases.
+
+on:
+  issues:
+    types: [opened]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  issues: write
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.event.issue.number || github.run_id }}
+  cancel-in-progress: true
+
+jobs:
+  acknowledge-issue:
+    name: Acknowledge first issue
+    runs-on: ubuntu-latest
+    # Only react when the author is the student (not a bot or facilitator pre-seeded issue).
+    if: github.event_name == 'workflow_dispatch' || (github.event.issue.user.login == github.actor && github.event.issue.user.type == 'User')
+
+    steps:
+      - name: Count issues authored by this student
+        id: count
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          COUNT=$(gh issue list \
+            --repo "$GITHUB_REPOSITORY" \
+            --author "$GITHUB_ACTOR" \
+            --state all \
+            --json number \
+            --jq 'length')
+          echo "count=$COUNT" >> "$GITHUB_OUTPUT"
+
+      - name: Post acknowledgement
+        if: github.event_name == 'issues'
+        uses: actions/github-script@v7
+        with:
+          script: |
+            const count = parseInt('${{ steps.count.outputs.count }}', 10);
+            const isFirst = count === 1;
+            const body = isFirst
+              ? [
+                  '## Challenge 2: First issue filed!',
+                  '',
+                  'Nice work -- this is the first issue you have opened in your Learning Room. ',
+                  'Filing issues is how contributors describe work that needs to happen.',
+                  '',
+                  'Next up: try @mentioning a teammate or `@aria-bot` in a comment (Challenge 3), ',
+                  'then move on to branching and committing.',
+                  '',
+                  'See [Chapter 5: Working with Issues](https://github.com/Community-Access/git-going-with-github/blob/main/docs/05-working-with-issues.md).'
+                ].join('\n')
+              : [
+                  '## Challenge 2: Another issue filed',
+                  '',
+                  'You have now filed ' + count + ' issues in this Learning Room. Keep going!'
+                ].join('\n');
+            const MARKER = '## Challenge 2:';
+            try {
+              const { data: comments } = await github.rest.issues.listComments({
+                owner: context.repo.owner,
+                repo: context.repo.repo,
+                issue_number: context.issue.number
+              });
+              const existing = comments.find(c => c.user.type === 'Bot' && c.body.includes(MARKER));
+              if (existing) {
+                await github.rest.issues.updateComment({
+                  owner: context.repo.owner,
+                  repo: context.repo.repo,
+                  comment_id: existing.id,
+                  body
+                });
+              } else {
+                await github.rest.issues.createComment({
+                  owner: context.repo.owner,
+                  repo: context.repo.repo,
+                  issue_number: context.issue.number,
+                  body
+                });
+              }
+            } catch (error) {
+              console.error('Could not post Challenge 2 acknowledgement:', error.message);
+            }
+
+      - name: Post workflow error notice
+        if: failure() && github.event_name == 'issues'
+        uses: actions/github-script@v7
+        with:
+          script: |
+            const MARKER = '## Challenge 2:';
+            const body = [
+              '## Challenge 2: Check could not complete',
+              '',
+              'The automated issue check ran into an unexpected error. Your work is not affected.',
+              'Keep going and ask your facilitator, or mention @facilitator in a comment.',
+              '',
+              '---',
+              '*Automated message from Learning Room Bot.*'
+            ].join('\n');
+            try {
+              await github.rest.issues.createComment({
+                owner: context.repo.owner,
+                repo: context.repo.repo,
+                issue_number: context.issue.number,
+                body
+              });
+            } catch (err) {
+              console.error('Could not post error notice:', err.message);
+            }

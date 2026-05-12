@@ -1,0 +1,133 @@
+name: "Challenge 6: PR Linked to Issue Check"
+# Validates that the student's PR body contains a closing keyword
+# (Closes/Fixes/Resolves) so the PR is linked to an issue.
+# Replaces the GitHub Classroom autograding "test case" for Challenge 6 so the
+# check still runs even when the Classroom UI cannot save test cases.
+
+on:
+  pull_request:
+    types: [opened, edited, synchronize, reopened]
+    branches:
+      - main
+
+permissions:
+  contents: read
+  pull-requests: write
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.event.pull_request.number }}
+  cancel-in-progress: true
+
+jobs:
+  check-pr-link:
+    name: Verify PR closes an issue
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Inspect PR body
+        id: check
+        uses: actions/github-script@v7
+        with:
+          script: |
+            const body = context.payload.pull_request.body || '';
+            // Match GitHub's accepted closing keywords (case-insensitive),
+            // followed by a #N reference. Avoid matching the word inside other words.
+            const pattern = /\b(closes|closed|close|fixes|fixed|fix|resolves|resolved|resolve)\b\s*#\d+/i;
+            const linked = pattern.test(body);
+            core.setOutput('linked', linked ? 'true' : 'false');
+            core.setOutput('empty', body.trim().length === 0 ? 'true' : 'false');
+
+      - name: Post result
+        if: always()
+        uses: actions/github-script@v7
+        with:
+          script: |
+            const linked = '${{ steps.check.outputs.linked }}' === 'true';
+            const empty = '${{ steps.check.outputs.empty }}' === 'true';
+            let body;
+            if (linked) {
+              body = [
+                '## Challenge 6: PR linked to an issue!',
+                '',
+                'Your PR description includes a closing keyword (`Closes`, `Fixes`, or `Resolves`) ',
+                'followed by an issue number. When this PR merges, GitHub will close that issue automatically.',
+                '',
+                'This is the habit professional contributors use on every PR.'
+              ].join('\n');
+            } else if (empty) {
+              body = [
+                '## Challenge 6: PR description is empty',
+                '',
+                'Add a description to this PR that includes `Closes #N` (where `N` is your challenge issue number). ',
+                'You can edit the PR description from the PR page.',
+                '',
+                'See [Chapter 6: Working with Pull Requests](https://github.com/Community-Access/git-going-with-github/blob/main/docs/06-working-with-pull-requests.md).'
+              ].join('\n');
+            } else {
+              body = [
+                '## Challenge 6: No issue link found',
+                '',
+                'Your PR description does not contain a closing keyword followed by an issue number. ',
+                'Edit the description to include one of:',
+                '',
+                '- `Closes #N`',
+                '- `Fixes #N`',
+                '- `Resolves #N`',
+                '',
+                'where `N` is the number of the issue this PR completes.',
+                '',
+                'See [Chapter 6: Working with Pull Requests](https://github.com/Community-Access/git-going-with-github/blob/main/docs/06-working-with-pull-requests.md).'
+              ].join('\n');
+            }
+            const MARKER = '## Challenge 6:';
+            try {
+              const { data: comments } = await github.rest.issues.listComments({
+                owner: context.repo.owner,
+                repo: context.repo.repo,
+                issue_number: context.issue.number
+              });
+              const existing = comments.find(c => c.user.type === 'Bot' && c.body.includes(MARKER));
+              if (existing) {
+                await github.rest.issues.updateComment({
+                  owner: context.repo.owner,
+                  repo: context.repo.repo,
+                  comment_id: existing.id,
+                  body
+                });
+              } else {
+                await github.rest.issues.createComment({
+                  owner: context.repo.owner,
+                  repo: context.repo.repo,
+                  issue_number: context.issue.number,
+                  body
+                });
+              }
+            } catch (error) {
+              console.error('Could not post Challenge 6 result:', error.message);
+            }
+
+      - name: Post workflow error notice
+        if: failure()
+        uses: actions/github-script@v7
+        with:
+          script: |
+            const MARKER = '## Challenge 6:';
+            const body = [
+              '## Challenge 6: Check could not complete',
+              '',
+              'The automated PR-link check ran into an unexpected error. Your work is not affected.',
+              'Keep going and ask your facilitator, or mention @facilitator in a comment.',
+              '',
+              '---',
+              '*Automated message from Learning Room Bot.*'
+            ].join('\n');
+            try {
+              await github.rest.issues.createComment({
+                owner: context.repo.owner,
+                repo: context.repo.repo,
+                issue_number: context.issue.number,
+                body
+              });
+            } catch (err) {
+              console.error('Could not post error notice:', err.message);
+            }

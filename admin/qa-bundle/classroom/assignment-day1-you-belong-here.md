@@ -6,7 +6,7 @@ Grant admin access: No
 Deadline: [Set per cohort - one week after Day 1]
 Group assignment: No (individual)
 Enable feedback pull requests: Yes
-Autograding: See autograding-day1.json
+Autograding: None to configure in the Classroom UI. Automated checks run as GitHub Actions workflows inside the template repo. See admin/classroom/autograding-setup.md.
 Supported editor: Browser, GitHub Desktop, CLI
 -->
 
@@ -44,16 +44,16 @@ Complete these challenges in order. Each one builds on the previous. When you cl
 | 8. The Culture Layer | Reflect on community norms and communication | [Chapter 8](https://github.com/Community-Access/git-going-with-github/blob/main/docs/08-open-source-culture.md) |
 | 9. Merge Day | Get your PR reviewed, approved, and merged | [Chapter 10](https://github.com/Community-Access/git-going-with-github/blob/main/docs/10-notifications-and-day-1-close.md) |
 
-## Autograded Challenges
+## Automated Checks
 
-Challenges 2, 5, 6, and 7 have automated checks that run when you push or open a PR:
+Challenges 2, 5, 6, and 7 have automated checks that run as GitHub Actions inside your repo:
 
 - **Challenge 2:** Verifies you have filed at least one issue
 - **Challenge 5:** Verifies at least one commit exists on a non-default branch
 - **Challenge 6:** Verifies your PR body contains `Closes`, `Fixes`, or `Resolves`
 - **Challenge 7:** Verifies no merge conflict markers remain in `docs/`
 
-The autograder posts feedback as a PR comment. If a check fails, read the feedback and push an update.
+Each check posts a single comment on the relevant issue or pull request and updates it whenever you push a new change. If a check fails, read the comment and push an update.
 
 ## Evidence
 

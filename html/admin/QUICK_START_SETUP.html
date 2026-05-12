@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="description" content="GIT Going with GitHub - A two-day accessible open source workshop by Community Access">
-  <title>Classroom Copy-Paste Pack - GIT Going with GitHub</title>
+  <title>Quick Start: Assignment-Link Registration Setup - GIT Going with GitHub</title>
   <link rel="stylesheet" href="./styles/github-markdown.css">
   <link rel="stylesheet" href="./styles/highlight.css">
   <link rel="stylesheet" href="./styles/custom.css">
@@ -28,7 +28,7 @@
   <header class="site-header" role="banner">
     <div class="site-header-inner">
       <nav aria-label="Breadcrumb" class="breadcrumb">
-        <a href="./index.html">Home</a> <span aria-hidden="true">›</span> <span aria-current="page">Classroom Copy-Paste Pack</span>
+        <a href="./index.html">Home</a> <span aria-hidden="true">›</span> <span aria-current="page">Quick Start: Assignment-Link Registration Setup</span>
       </nav>
       <div class="header-actions">
         <a href="https://github.com/Community-Access/git-going-with-github/wiki" class="wiki-link" target="_blank" rel="noopener noreferrer">
@@ -58,35 +58,84 @@
     </div>
   </header>
   <main id="main-content" class="markdown-body">
-    <h1 id="classroom-copy-paste-pack">Classroom Copy-Paste Pack</h1>
-<p>This folder is a facilitator-focused copy-paste pack for GitHub Classroom setup.</p>
-<p>Use these files when you need to quickly configure assignments without jumping between multiple folders.</p>
-<h2 id="what-is-included">What Is Included</h2>
+    <h1 id="quick-start-assignment-link-registration-setup">Quick Start: Assignment-Link Registration Setup</h1>
+<p>This quick start configures registration automation for the current student interaction model.</p>
+<h2 id="prerequisites">Prerequisites</h2>
 <ul>
-<li><code>day1-assignment-copy-paste.md</code> - Day 1 assignment body ready to paste into Classroom.</li>
-<li><code>day2-assignment-copy-paste.md</code> - Day 2 assignment body ready to paste into Classroom.</li>
-<li><code>autograding-setup.md</code> - <strong>Deprecated.</strong> Explains that autograding now runs as workflows in the template repo and that no Classroom UI test cases are needed.</li>
-<li><code>seeding-ops.md</code> - Post-acceptance scripts to seed challenges and peer simulation content.</li>
-<li><code>live-facilitation-flow.md</code> - Single-run checklist for creating assignments, verifying autograder workflows, publishing, seeding, and validating.</li>
+<li>Classroom assignments exist in GitHub Classroom.</li>
+<li>You have admin access to <code>Community-Access/git-going-with-github</code>.</li>
+<li>You can copy Day 1 and Day 2 assignment invite links.</li>
 </ul>
-<h2 id="recommended-setup-order">Recommended Setup Order</h2>
+<h2 id="step-1-copy-assignment-invite-links">Step 1: Copy Assignment Invite Links</h2>
+<p>From <code>https://classroom.github.com</code>:</p>
 <ol>
-<li>Create the Classroom and import roster from <code>classroom/README.md</code>.</li>
-<li>Create Day 1 assignment and paste content from <code>day1-assignment-copy-paste.md</code>. Leave the autograding tests area empty.</li>
-<li>Create Day 2 assignment and paste content from <code>day2-assignment-copy-paste.md</code>. Leave the autograding tests area empty.</li>
-<li>Confirm the autograder workflows are present in <code>Community-Access/learning-room-template</code> (see <code>autograding-setup.md</code> for the full list).</li>
-<li>After each student accepts, run seeding commands from <code>seeding-ops.md</code>.</li>
-<li>Use <code>live-facilitation-flow.md</code> during setup day to execute the full flow without missing steps.</li>
+<li>Open Day 1 assignment and copy invite link.</li>
+<li>Open Day 2 assignment and copy invite link.</li>
 </ol>
-<h2 id="source-of-truth">Source of Truth</h2>
-<p>This pack is derived from:</p>
+<p>Expected format:</p>
 <ul>
-<li><code>classroom/assignment-day1-you-belong-here.md</code></li>
-<li><code>classroom/assignment-day2-you-can-build-this.md</code></li>
-<li><code>learning-room/.github/workflows/autograder-*.yml</code> (the workflows that replaced Classroom test cases)</li>
-<li><code>scripts/classroom/*.ps1</code></li>
+<li><code>https://classroom.github.com/a/&lt;short-code&gt;</code></li>
 </ul>
-<p>If those source files change, update this folder to keep the copy-paste flow accurate.</p>
+<h2 id="step-2-configure-repository-variables">Step 2: Configure Repository Variables</h2>
+<p>Go to <code>https://github.com/Community-Access/git-going-with-github/settings/variables/actions</code>.</p>
+<p>Create or update:</p>
+<table>
+<thead>
+<tr>
+<th scope="col">Name</th>
+<th scope="col">Value</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>CLASSROOM_DAY1_ASSIGNMENT_URL</code></td>
+<td>Day 1 invite link</td>
+</tr>
+<tr>
+<td><code>CLASSROOM_DAY2_ASSIGNMENT_URL</code></td>
+<td>Day 2 invite link</td>
+</tr>
+</tbody></table>
+<h2 id="step-3-validate-registration-flow">Step 3: Validate Registration Flow</h2>
+<ol>
+<li>Open a test enrollment issue.</li>
+<li>Confirm welcome comment includes Day 1 link.</li>
+<li>Reply <code>ack</code> from test student account.</li>
+<li>Reply <code>day1-complete</code> from test student account.</li>
+<li>Confirm Day 2 release comment appears.</li>
+</ol>
+<h2 id="expected-results">Expected Results</h2>
+<ul>
+<li>Enrollment issue is processed successfully.</li>
+<li>No org-invite dependency exists.</li>
+<li>Day 2 release is driven by issue signal (<code>day1-complete</code> or <code>day2-eligible</code>).</li>
+</ul>
+<h2 id="troubleshooting">Troubleshooting</h2>
+<table>
+<thead>
+<tr>
+<th scope="col">Problem</th>
+<th scope="col">Fix</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Day 1 link missing</td>
+<td>Verify <code>CLASSROOM_DAY1_ASSIGNMENT_URL</code> is set with no extra spaces</td>
+</tr>
+<tr>
+<td>Day 2 release did not trigger</td>
+<td>Add <code>day1-complete</code> comment or apply <code>day2-eligible</code> label</td>
+</tr>
+<tr>
+<td>Wrong assignment opened</td>
+<td>Re-copy invite links and update variables</td>
+</tr>
+</tbody></table>
+<h2 id="operational-notes">Operational Notes</h2>
+<ul>
+<li>Student org membership is not part of this flow.</li>
+<li>Assignment acceptance remains student-driven in GitHub Classroom.</li>
+<li>Private intake and dashboard workflows continue to run independently.</li>
+</ul>
 
   </main>
   <footer role="contentinfo" class="site-footer">

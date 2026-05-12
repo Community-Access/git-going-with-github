@@ -12,7 +12,7 @@ This is a learning workshop, not a competitive course. The grading system measur
 
 ## Automated Checks
 
-The autograding JSON files define automated tests that run on student PRs. These check for:
+Automated checks run as GitHub Actions workflows shipped inside each student repo (from `Community-Access/learning-room-template`). They check for:
 
 - Existence of files, branches, and commits
 - Presence of required fields in templates
@@ -20,12 +20,12 @@ The autograding JSON files define automated tests that run on student PRs. These
 
 Automated checks handle the objective criteria. Facilitator judgment handles everything else.
 
-**What is auto-checked today** (see [autograding-day1.json](autograding-day1.json) and [autograding-day2.json](autograding-day2.json)):
+**What is auto-checked today** (see workflow files under `.github/workflows/autograder-*.yml` in the template repo, and [admin/classroom/autograding-setup.md](../admin/classroom/autograding-setup.md) for the full mapping):
 
 - Day 1: Challenges **2, 5, 6, 7** (issue filed, commit on branch, PR with `Closes/Fixes/Resolves`, no conflict markers)
 - Day 2: Challenges **10, 14, 16** (local commit on branch, custom issue template with `name`/`description`, agent file with frontmatter and required sections)
 
-The `(auto)` tag in the per-challenge tables below marks rows where the autograder will post pass/fail results as a PR comment. All other rows require facilitator review.
+The `(auto)` tag in the per-challenge tables below marks rows where an autograder workflow will post pass/fail results as an issue or PR comment. All other rows require facilitator review.
 
 ## Per-Challenge Grading
 
