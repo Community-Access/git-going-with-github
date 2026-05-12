@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="description" content="GIT Going with GitHub - A two-day accessible open source workshop by Community Access">
-  <title>Classroom Copy-Paste Pack - GIT Going with GitHub</title>
+  <title>Registration + Classroom Integration Summary - GIT Going with GitHub</title>
   <link rel="stylesheet" href="./styles/github-markdown.css">
   <link rel="stylesheet" href="./styles/highlight.css">
   <link rel="stylesheet" href="./styles/custom.css">
@@ -28,7 +28,7 @@
   <header class="site-header" role="banner">
     <div class="site-header-inner">
       <nav aria-label="Breadcrumb" class="breadcrumb">
-        <a href="./index.html">Home</a> <span aria-hidden="true">›</span> <span aria-current="page">Classroom Copy-Paste Pack</span>
+        <a href="./index.html">Home</a> <span aria-hidden="true">›</span> <span aria-current="page">Registration + Classroom Integration Summary</span>
       </nav>
       <div class="header-actions">
         <a href="https://github.com/Community-Access/git-going-with-github/wiki" class="wiki-link" target="_blank" rel="noopener noreferrer">
@@ -58,35 +58,74 @@
     </div>
   </header>
   <main id="main-content" class="markdown-body">
-    <h1 id="classroom-copy-paste-pack">Classroom Copy-Paste Pack</h1>
-<p>This folder is a facilitator-focused copy-paste pack for GitHub Classroom setup.</p>
-<p>Use these files when you need to quickly configure assignments without jumping between multiple folders.</p>
-<h2 id="what-is-included">What Is Included</h2>
-<ul>
-<li><code>day1-assignment-copy-paste.md</code> - Day 1 assignment body ready to paste into Classroom.</li>
-<li><code>day2-assignment-copy-paste.md</code> - Day 2 assignment body ready to paste into Classroom.</li>
-<li><code>autograding-setup.md</code> - <strong>Deprecated.</strong> Explains that autograding now runs as workflows in the template repo and that no Classroom UI test cases are needed.</li>
-<li><code>seeding-ops.md</code> - Post-acceptance scripts to seed challenges and peer simulation content.</li>
-<li><code>live-facilitation-flow.md</code> - Single-run checklist for creating assignments, verifying autograder workflows, publishing, seeding, and validating.</li>
-</ul>
-<h2 id="recommended-setup-order">Recommended Setup Order</h2>
+    <h1 id="registration--classroom-integration-summary">Registration + Classroom Integration Summary</h1>
+<p>Date: 2026-05-12</p>
+<h2 id="active-model">Active Model</h2>
+<p>The repository now uses assignment-link automation without organization invitation automation.</p>
+<h3 id="student-interaction-sequence">Student interaction sequence</h3>
 <ol>
-<li>Create the Classroom and import roster from <code>classroom/README.md</code>.</li>
-<li>Create Day 1 assignment and paste content from <code>day1-assignment-copy-paste.md</code>. Leave the autograding tests area empty.</li>
-<li>Create Day 2 assignment and paste content from <code>day2-assignment-copy-paste.md</code>. Leave the autograding tests area empty.</li>
-<li>Confirm the autograder workflows are present in <code>Community-Access/learning-room-template</code> (see <code>autograding-setup.md</code> for the full list).</li>
-<li>After each student accepts, run seeding commands from <code>seeding-ops.md</code>.</li>
-<li>Use <code>live-facilitation-flow.md</code> during setup day to execute the full flow without missing steps.</li>
+<li>Student submits enrollment issue.</li>
+<li>Workflow validates and posts Day 1 assignment link.</li>
+<li>Student replies <code>ack</code> after confirming access.</li>
+<li>Student replies <code>day1-complete</code> (or facilitator applies <code>day2-eligible</code>).</li>
+<li>Day 2 release workflow posts Day 2 assignment link.</li>
 </ol>
-<h2 id="source-of-truth">Source of Truth</h2>
-<p>This pack is derived from:</p>
+<h2 id="configuration-required">Configuration Required</h2>
+<h3 id="variables">Variables</h3>
 <ul>
-<li><code>classroom/assignment-day1-you-belong-here.md</code></li>
-<li><code>classroom/assignment-day2-you-can-build-this.md</code></li>
-<li><code>learning-room/.github/workflows/autograder-*.yml</code> (the workflows that replaced Classroom test cases)</li>
-<li><code>scripts/classroom/*.ps1</code></li>
+<li><code>CLASSROOM_DAY1_ASSIGNMENT_URL</code></li>
+<li><code>CLASSROOM_DAY2_ASSIGNMENT_URL</code></li>
+<li><code>PRIVATE_STUDENT_DATA_REPO</code></li>
+<li><code>ENABLE_PUBLIC_CLASSROOM_INTAKE_EXPORT</code></li>
+<li><code>ENABLE_PUBLIC_REGISTRATION_EXPORT</code></li>
 </ul>
-<p>If those source files change, update this folder to keep the copy-paste flow accurate.</p>
+<h3 id="secrets">Secrets</h3>
+<ul>
+<li><code>PRIVATE_STUDENT_DATA_TOKEN</code></li>
+<li><code>INSTRUCTOR_DASHBOARD_TOKEN</code> (for dashboard sync)</li>
+</ul>
+<h2 id="workflow-changes">Workflow Changes</h2>
+<ul>
+<li><p><code>registration.yml</code></p>
+<ul>
+<li>Removed org invite dependency.</li>
+<li>Removed classroom join variable dependency.</li>
+<li>Keeps duplicate/waitlist behavior.</li>
+<li>Keeps assignment-link posting.</li>
+</ul>
+</li>
+<li><p><code>day2-release.yml</code></p>
+<ul>
+<li>Uses issue signals (<code>day1-complete</code> or <code>day2-eligible</code>) to release Day 2.</li>
+<li>No org API dependency.</li>
+</ul>
+</li>
+<li><p><code>instructor-dashboard-sync.yml</code></p>
+<ul>
+<li>Uses enrollment issue labels/comments for status snapshots.</li>
+<li>No classroom org scan dependency.</li>
+</ul>
+</li>
+</ul>
+<h2 id="qa-and-testing-updates">QA and Testing Updates</h2>
+<p>Updated documents:</p>
+<ul>
+<li><code>GO-LIVE-QA-GUIDE.md</code></li>
+<li><code>admin/LEARNING-ROOM-E2E-QA-RUNBOOK.md</code></li>
+<li><code>admin/ENROLLMENT_SETUP_CHECKLIST.md</code></li>
+<li><code>admin/REGISTRATION-QUICKSTART.md</code></li>
+<li><code>admin/REGISTRATION-ADMIN.md</code></li>
+<li><code>admin/QUICK_START_SETUP.md</code></li>
+<li><code>admin/CLASSROOM_INTEGRATION_GUIDE.md</code></li>
+</ul>
+<h2 id="readiness-checklist">Readiness Checklist</h2>
+<ul>
+<li>Day 1 link variable set and validated.</li>
+<li>Day 2 link variable set and validated.</li>
+<li>Student test confirms <code>ack</code> and <code>day1-complete</code> path.</li>
+<li>Day 2 release comment verified.</li>
+<li>Dashboard sync workflow produces student status issues in admin repo.</li>
+</ul>
 
   </main>
   <footer role="contentinfo" class="site-footer">

@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="description" content="GIT Going with GitHub - A two-day accessible open source workshop by Community Access">
-  <title>Registration Administration Guide - GIT Going with GitHub</title>
+  <title>GitHub Classroom Integration Architecture - GIT Going with GitHub</title>
   <link rel="stylesheet" href="./styles/github-markdown.css">
   <link rel="stylesheet" href="./styles/highlight.css">
   <link rel="stylesheet" href="./styles/custom.css">
@@ -28,7 +28,7 @@
   <header class="site-header" role="banner">
     <div class="site-header-inner">
       <nav aria-label="Breadcrumb" class="breadcrumb">
-        <a href="./index.html">Home</a> <span aria-hidden="true">›</span> <span aria-current="page">Registration Administration Guide</span>
+        <a href="./index.html">Home</a> <span aria-hidden="true">›</span> <span aria-current="page">GitHub Classroom Integration Architecture</span>
       </nav>
       <div class="header-actions">
         <a href="https://github.com/Community-Access/git-going-with-github/wiki" class="wiki-link" target="_blank" rel="noopener noreferrer">
@@ -58,73 +58,75 @@
     </div>
   </header>
   <main id="main-content" class="markdown-body">
-    <h1 id="registration-administration-guide">Registration Administration Guide</h1>
-<p>This document explains how registration automation works in the current assignment-link model.</p>
-<p>If you only need setup steps, use <a href="REGISTRATION-QUICKSTART.html">REGISTRATION-QUICKSTART.md</a>.</p>
-<h2 id="current-model">Current Model</h2>
-<p>Registration automation in this repository does not require organization invitations.</p>
-<p>What the workflow does:</p>
+    <h1 id="github-classroom-integration-architecture">GitHub Classroom Integration Architecture</h1>
+<p>This document describes the current production architecture for registration and classroom handoff.</p>
+<h2 id="design-goals">Design Goals</h2>
 <ul>
-<li>Validates registration or enrollment submissions.</li>
+<li>Keep enrollment automation in a public repository without exposing private intake details.</li>
+<li>Avoid organization invitation dependencies.</li>
+<li>Use deterministic issue signals for Day 2 release and dashboard status.</li>
+</ul>
+<h2 id="high-level-flow">High-Level Flow</h2>
+<ol>
+<li>Student opens enrollment or registration issue.</li>
+<li><code>registration.yml</code> validates submission and posts assignment links.</li>
+<li>Student replies <code>ack</code> after Day 1 link verification.</li>
+<li>Student replies <code>day1-complete</code> after Day 1 milestone.</li>
+<li><code>day2-release.yml</code> posts Day 2 assignment link when completion signal is present.</li>
+<li><code>instructor-dashboard-sync.yml</code> writes status snapshots to private admin repo issues.</li>
+</ol>
+<h2 id="core-workflows">Core Workflows</h2>
+<h3 id="registrationyml"><code>registration.yml</code></h3>
+<ul>
 <li>Handles duplicate and waitlist behavior.</li>
-<li>Posts Day 1 and Day 2 assignment links when variables are configured.</li>
-<li>Uses student issue comments as milestone signals:<ul>
-<li><code>ack</code> confirms Day 1 link access.</li>
-<li><code>day1-complete</code> signals Day 2 release eligibility.</li>
+<li>Stores detailed intake in private repo when configured.</li>
+<li>Redacts public issue body for privacy.</li>
+<li>Posts Day 1 and Day 2 links from repository variables.</li>
+</ul>
+<h3 id="day2-releaseyml"><code>day2-release.yml</code></h3>
+<ul>
+<li>Runs on schedule and manual dispatch.</li>
+<li>Reads enrollment issues with <code>enrolled</code> label.</li>
+<li>Releases Day 2 when either condition is true:<ul>
+<li>Label <code>day2-eligible</code> or <code>day1-complete</code> is present.</li>
+<li>Student comment contains <code>day1-complete</code>.</li>
 </ul>
 </li>
 </ul>
-<h2 id="required-repository-variables">Required Repository Variables</h2>
-<p>Set these in <code>Community-Access/git-going-with-github</code>:</p>
+<h3 id="instructor-dashboard-syncyml"><code>instructor-dashboard-sync.yml</code></h3>
+<ul>
+<li>Reads enrollment issues and comments from this repo.</li>
+<li>Computes status categories:<ul>
+<li><code>awaiting-ack</code></li>
+<li><code>active-day1</code></li>
+<li><code>day1-complete</code></li>
+<li><code>day2-released</code></li>
+<li><code>needs-info</code></li>
+</ul>
+</li>
+<li>Upserts one dashboard issue per student in the private admin repo.</li>
+</ul>
+<h2 id="configuration-surface">Configuration Surface</h2>
+<h3 id="variables">Variables</h3>
 <ul>
 <li><code>CLASSROOM_DAY1_ASSIGNMENT_URL</code></li>
 <li><code>CLASSROOM_DAY2_ASSIGNMENT_URL</code></li>
-</ul>
-<p>Optional operational variables:</p>
-<ul>
-<li><code>ENABLE_PUBLIC_REGISTRATION_EXPORT</code></li>
-<li><code>ENABLE_PUBLIC_CLASSROOM_INTAKE_EXPORT</code></li>
 <li><code>PRIVATE_STUDENT_DATA_REPO</code></li>
+<li><code>ENABLE_PUBLIC_CLASSROOM_INTAKE_EXPORT</code></li>
+<li><code>ENABLE_PUBLIC_REGISTRATION_EXPORT</code></li>
 </ul>
-<p>Required secrets for private data and dashboard workflows are unrelated to org invites:</p>
+<h3 id="secrets">Secrets</h3>
 <ul>
 <li><code>PRIVATE_STUDENT_DATA_TOKEN</code></li>
-<li><code>INSTRUCTOR_DASHBOARD_TOKEN</code> (if using dashboard sync)</li>
+<li><code>INSTRUCTOR_DASHBOARD_TOKEN</code> (dashboard sync)</li>
 </ul>
-<h2 id="end-to-end-verification">End-To-End Verification</h2>
-<p>Run this checklist before go-live:</p>
-<ol>
-<li>Submit a test enrollment issue from a test student account.</li>
-<li>Confirm welcome comment includes Day 1 link.</li>
-<li>Reply <code>ack</code> as the test student.</li>
-<li>Reply <code>day1-complete</code> as the test student.</li>
-<li>Confirm <code>Day 2 is unlocked</code> comment appears.</li>
-<li>Confirm labels are applied as expected: <code>enrolled</code>, <code>day2-eligible</code>, <code>day2-released</code>.</li>
-<li>Submit a duplicate registration and confirm duplicate-close behavior.</li>
-</ol>
-<h2 id="rollback">Rollback</h2>
-<p>If assignment posting is incorrect, keep registration running and temporarily disable links:</p>
-<ol>
-<li>Clear <code>CLASSROOM_DAY1_ASSIGNMENT_URL</code>, or</li>
-<li>Clear <code>CLASSROOM_DAY2_ASSIGNMENT_URL</code>.</li>
-</ol>
-<p>Registration, duplicate handling, waitlist behavior, and private intake storage will continue.</p>
 <h2 id="student-interaction-contract">Student Interaction Contract</h2>
-<p>Students should be told to follow this sequence:</p>
-<ol>
-<li>Submit enrollment issue.</li>
-<li>Open Day 1 assignment link from the bot comment.</li>
-<li>Reply <code>ack</code> after verifying access.</li>
-<li>Reply <code>day1-complete</code> when Day 1 milestone is done.</li>
-<li>Open Day 2 assignment link from the release comment.</li>
-</ol>
-<h2 id="privacy-notes">Privacy Notes</h2>
+<p>Required student replies:</p>
 <ul>
-<li>Registration issues are public in this repository.</li>
-<li>Public issue bodies are redacted for enrollment fast-path.</li>
-<li>Full intake details are stored in the private administration repository.</li>
-<li>CSV exports are artifact-based and controlled by explicit flags.</li>
+<li><code>ack</code> after opening Day 1 assignment.</li>
+<li><code>day1-complete</code> after Day 1 milestone completion.</li>
 </ul>
+<p>These text signals are intentionally simple so facilitators can test and recover quickly.</p>
 
   </main>
   <footer role="contentinfo" class="site-footer">

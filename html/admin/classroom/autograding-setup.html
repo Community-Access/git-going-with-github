@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="description" content="GIT Going with GitHub - A two-day accessible open source workshop by Community Access">
-  <title>Autograding Setup and Verification - GIT Going with GitHub</title>
+  <title>Autograding Setup -- Not Required - GIT Going with GitHub</title>
   <link rel="stylesheet" href="./styles/github-markdown.css">
   <link rel="stylesheet" href="./styles/highlight.css">
   <link rel="stylesheet" href="./styles/custom.css">
@@ -28,7 +28,7 @@
   <header class="site-header" role="banner">
     <div class="site-header-inner">
       <nav aria-label="Breadcrumb" class="breadcrumb">
-        <a href="./index.html">Home</a> <span aria-hidden="true">›</span> <span aria-current="page">Autograding Setup and Verification</span>
+        <a href="./index.html">Home</a> <span aria-hidden="true">›</span> <span aria-current="page">Autograding Setup -- Not Required</span>
       </nav>
       <div class="header-actions">
         <a href="https://github.com/Community-Access/git-going-with-github/wiki" class="wiki-link" target="_blank" rel="noopener noreferrer">
@@ -58,195 +58,82 @@
     </div>
   </header>
   <main id="main-content" class="markdown-body">
-    <h1 id="autograding-setup-and-verification">Autograding Setup and Verification</h1>
-<p>This guide makes Classroom autograding setup repeatable and reliable for facilitators.</p>
-<h2 id="scope">Scope</h2>
-<ul>
-<li>Day 1 tests come from <code>classroom/autograding-day1.json</code></li>
-<li>Day 2 tests come from <code>classroom/autograding-day2.json</code></li>
-<li>All entries below are copy-accurate from those files</li>
-</ul>
-<h2 id="ui-entry-rules-use-for-every-test">UI Entry Rules (Use for Every Test)</h2>
-<p>For each test you add in Classroom:</p>
-<ul>
-<li>Set <strong>Test name</strong> exactly as shown below</li>
-<li>Set <strong>Run command</strong> exactly as shown below</li>
-<li>Set <strong>Comparison</strong> to <code>exact</code></li>
-<li>Leave <strong>Setup</strong>, <strong>Input</strong>, and <strong>Expected output</strong> empty unless noted</li>
-<li>Set <strong>Timeout</strong> and <strong>Points</strong> exactly as shown below</li>
-</ul>
-<p>Do not paste raw JSON into the UI. Add tests one by one.</p>
-<h2 id="day-1-autograding-tests">Day 1 Autograding Tests</h2>
-<h3 id="test-1">Test 1</h3>
-<ul>
-<li>Test name: <code>Challenge 2: Issue Filed</code></li>
-<li>Run command:</li>
-</ul>
-<pre><code class="hljs language-bash">gh issue list --repo <span class="hljs-variable">$GITHUB_REPOSITORY</span> --author <span class="hljs-variable">$GITHUB_ACTOR</span> --state all --json number --jq <span class="hljs-string">&#x27;length&#x27;</span> | xargs <span class="hljs-built_in">test</span> 0 -lt</code></pre>
-<ul>
-<li>Comparison: <code>exact</code></li>
-<li>Timeout: <code>10</code></li>
-<li>Points: <code>10</code></li>
-</ul>
-<h3 id="test-2">Test 2</h3>
-<ul>
-<li>Test name: <code>Challenge 5: Commit Exists</code></li>
-<li>Run command:</li>
-</ul>
-<pre><code class="hljs language-bash">git <span class="hljs-built_in">log</span> --oneline --all --author=<span class="hljs-variable">$GITHUB_ACTOR</span> | <span class="hljs-built_in">head</span> -1 | grep -q <span class="hljs-string">&#x27;.&#x27;</span></code></pre>
-<ul>
-<li>Comparison: <code>exact</code></li>
-<li>Timeout: <code>10</code></li>
-<li>Points: <code>10</code></li>
-</ul>
-<h3 id="test-3">Test 3</h3>
-<ul>
-<li>Test name: <code>Challenge 6: PR with Issue Link</code></li>
-<li>Run command:</li>
-</ul>
-<pre><code class="hljs language-bash">gh <span class="hljs-built_in">pr</span> list --repo <span class="hljs-variable">$GITHUB_REPOSITORY</span> --author <span class="hljs-variable">$GITHUB_ACTOR</span> --state all --json body --jq <span class="hljs-string">&#x27;.[0].body&#x27;</span> | grep -iq <span class="hljs-string">&#x27;closes\|fixes\|resolves&#x27;</span></code></pre>
-<ul>
-<li>Comparison: <code>exact</code></li>
-<li>Timeout: <code>10</code></li>
-<li>Points: <code>15</code></li>
-</ul>
-<h3 id="test-4">Test 4</h3>
-<ul>
-<li>Test name: <code>Challenge 7: No Conflict Markers</code></li>
-<li>Run command:</li>
-</ul>
-<pre><code class="hljs language-bash">! grep -rn <span class="hljs-string">&#x27;&lt;&lt;&lt;&lt;&lt;&lt;&lt; \|======= \|&gt;&gt;&gt;&gt;&gt;&gt;&gt; &#x27;</span> docs/ 2&gt;/dev/null</code></pre>
-<ul>
-<li>Comparison: <code>exact</code></li>
-<li>Timeout: <code>10</code></li>
-<li>Points: <code>15</code></li>
-</ul>
-<h2 id="day-2-autograding-tests">Day 2 Autograding Tests</h2>
-<h3 id="test-1">Test 1</h3>
-<ul>
-<li>Test name: <code>Challenge 10: Go Local - Commit on Branch</code></li>
-<li>Run command:</li>
-</ul>
-<pre><code class="hljs language-bash">git <span class="hljs-built_in">log</span> --oneline origin/main..HEAD 2&gt;/dev/null | <span class="hljs-built_in">head</span> -1 | grep -q <span class="hljs-string">&#x27;.&#x27;</span> || git branch -r --list <span class="hljs-string">&#x27;origin/*&#x27;</span> | grep -v main | <span class="hljs-built_in">head</span> -1 | xargs -I{} git <span class="hljs-built_in">log</span> --oneline origin/main..{} | <span class="hljs-built_in">head</span> -1 | grep -q <span class="hljs-string">&#x27;.&#x27;</span></code></pre>
-<ul>
-<li>Comparison: <code>exact</code></li>
-<li>Timeout: <code>10</code></li>
-<li>Points: <code>15</code></li>
-</ul>
-<h3 id="test-2">Test 2</h3>
-<ul>
-<li>Test name: <code>Challenge 14: Template Remix - Custom Issue Template Exists</code></li>
-<li>Run command:</li>
-</ul>
-<pre><code class="hljs language-bash">find .github/ISSUE_TEMPLATE -name <span class="hljs-string">&#x27;*.yml&#x27;</span> ! -name <span class="hljs-string">&#x27;challenge-*.yml&#x27;</span> ! -name <span class="hljs-string">&#x27;bonus-*.yml&#x27;</span> ! -name <span class="hljs-string">&#x27;config.yml&#x27;</span> 2&gt;/dev/null | <span class="hljs-built_in">head</span> -1 | grep -q <span class="hljs-string">&#x27;.&#x27;</span></code></pre>
-<ul>
-<li>Comparison: <code>exact</code></li>
-<li>Timeout: <code>10</code></li>
-<li>Points: <code>15</code></li>
-</ul>
-<h3 id="test-3">Test 3</h3>
-<ul>
-<li>Test name: <code>Challenge 14: Template Remix - Template Has Required Fields</code></li>
-<li>Run command:</li>
-</ul>
-<pre><code class="hljs language-bash">TEMPLATE=$(find .github/ISSUE_TEMPLATE -name <span class="hljs-string">&#x27;*.yml&#x27;</span> ! -name <span class="hljs-string">&#x27;challenge-*.yml&#x27;</span> ! -name <span class="hljs-string">&#x27;bonus-*.yml&#x27;</span> ! -name <span class="hljs-string">&#x27;config.yml&#x27;</span> 2&gt;/dev/null | <span class="hljs-built_in">head</span> -1); grep -q <span class="hljs-string">&#x27;^name:&#x27;</span> <span class="hljs-string">&quot;<span class="hljs-variable">$TEMPLATE</span>&quot;</span> &amp;&amp; grep -q <span class="hljs-string">&#x27;^description:&#x27;</span> <span class="hljs-string">&quot;<span class="hljs-variable">$TEMPLATE</span>&quot;</span></code></pre>
-<ul>
-<li>Comparison: <code>exact</code></li>
-<li>Timeout: <code>10</code></li>
-<li>Points: <code>10</code></li>
-</ul>
-<h3 id="test-4">Test 4</h3>
-<ul>
-<li>Test name: <code>Challenge 16: Build Your Agent - Agent File Exists</code></li>
-<li>Run command:</li>
-</ul>
-<pre><code class="hljs language-bash">find agents community-agents -name <span class="hljs-string">&#x27;*.md&#x27;</span> 2&gt;/dev/null | <span class="hljs-built_in">head</span> -1 | grep -q <span class="hljs-string">&#x27;.&#x27;</span></code></pre>
-<ul>
-<li>Comparison: <code>exact</code></li>
-<li>Timeout: <code>10</code></li>
-<li>Points: <code>10</code></li>
-</ul>
-<h3 id="test-5">Test 5</h3>
-<ul>
-<li>Test name: <code>Challenge 16: Build Your Agent - Agent Has Frontmatter</code></li>
-<li>Run command:</li>
-</ul>
-<pre><code class="hljs language-bash">AGENT=$(find agents community-agents -name <span class="hljs-string">&#x27;*.md&#x27;</span> 2&gt;/dev/null | <span class="hljs-built_in">head</span> -1); <span class="hljs-built_in">head</span> -1 <span class="hljs-string">&quot;<span class="hljs-variable">$AGENT</span>&quot;</span> | grep -q <span class="hljs-string">&#x27;^---&#x27;</span></code></pre>
-<ul>
-<li>Comparison: <code>exact</code></li>
-<li>Timeout: <code>10</code></li>
-<li>Points: <code>10</code></li>
-</ul>
-<h3 id="test-6">Test 6</h3>
-<ul>
-<li>Test name: <code>Challenge 16: Build Your Agent - Agent Has Responsibilities and Guardrails</code></li>
-<li>Run command:</li>
-</ul>
-<pre><code class="hljs language-bash">AGENT=$(find agents community-agents -name <span class="hljs-string">&#x27;*.md&#x27;</span> 2&gt;/dev/null | <span class="hljs-built_in">head</span> -1); grep -qi <span class="hljs-string">&#x27;## responsibilities\|## what this agent does&#x27;</span> <span class="hljs-string">&quot;<span class="hljs-variable">$AGENT</span>&quot;</span> &amp;&amp; grep -qi <span class="hljs-string">&#x27;## guardrails\|## limitations\|## boundaries&#x27;</span> <span class="hljs-string">&quot;<span class="hljs-variable">$AGENT</span>&quot;</span></code></pre>
-<ul>
-<li>Comparison: <code>exact</code></li>
-<li>Timeout: <code>10</code></li>
-<li>Points: <code>15</code></li>
-</ul>
-<h2 id="hardening-checklist-before-cohort-start">Hardening Checklist Before Cohort Start</h2>
+    <h1 id="autograding-setup----not-required">Autograding Setup -- Not Required</h1>
+<blockquote>
+<p><strong>Status: deprecated as of May 2026.</strong> You do <strong>not</strong> need to configure any test cases in the GitHub Classroom autograding UI for this workshop. Skip that step entirely when creating Day 1 and Day 2 assignments.</p>
+</blockquote>
+<h2 id="why-this-changed">Why this changed</h2>
+<p>GitHub Classroom&#39;s &quot;test cases&quot; panel intermittently fails to save edits (the modal closes with no error and the test list comes back empty). Rather than fight a broken UI on every cohort, every autograded check has been re-implemented as a normal GitHub Actions workflow inside <code>Community-Access/learning-room-template</code>. Those workflows are copied into each student repo automatically when GitHub Classroom creates the repo from the template -- no Classroom configuration required.</p>
+<h2 id="where-the-checks-live-now">Where the checks live now</h2>
+<p>Each check below runs as its own workflow in the student repo. Results are posted as a single PR or issue comment that updates in place on each push.</p>
+<h3 id="day-1-checks">Day 1 checks</h3>
+<table>
+<thead>
+<tr>
+<th scope="col">Challenge</th>
+<th scope="col">What it verifies</th>
+<th scope="col">Workflow file</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>2: Issue Filed</td>
+<td>Student has opened at least one issue in their repo</td>
+<td><code>.github/workflows/autograder-issue-filed.yml</code></td>
+</tr>
+<tr>
+<td>5: Commit on a branch</td>
+<td>At least one commit on a non-default branch</td>
+<td><code>.github/workflows/autograder-branch-commit.yml</code></td>
+</tr>
+<tr>
+<td>6: PR links to an issue</td>
+<td>PR body contains <code>Closes</code>, <code>Fixes</code>, or <code>Resolves #N</code></td>
+<td><code>.github/workflows/autograder-pr-link.yml</code></td>
+</tr>
+<tr>
+<td>7: No conflict markers</td>
+<td>No <code>&lt;&lt;&lt;&lt;&lt;&lt;&lt;</code>, <code>=======</code>, or <code>&gt;&gt;&gt;&gt;&gt;&gt;&gt;</code> markers in <code>docs/</code></td>
+<td><code>.github/workflows/autograder-conflicts.yml</code></td>
+</tr>
+</tbody></table>
+<h3 id="day-2-checks">Day 2 checks</h3>
+<table>
+<thead>
+<tr>
+<th scope="col">Challenge</th>
+<th scope="col">What it verifies</th>
+<th scope="col">Workflow file</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>10: Local commit</td>
+<td>At least one commit on a non-default branch</td>
+<td><code>.github/workflows/autograder-local-commit.yml</code></td>
+</tr>
+<tr>
+<td>14: Custom issue template</td>
+<td>A non-challenge YAML template under <code>.github/ISSUE_TEMPLATE/</code> with <code>name:</code> and <code>description:</code> fields</td>
+<td><code>.github/workflows/autograder-template.yml</code></td>
+</tr>
+<tr>
+<td>16: Capstone agent file</td>
+<td>Agent markdown file with frontmatter, responsibilities, and guardrails</td>
+<td><code>.github/workflows/autograder-capstone.yml</code></td>
+</tr>
+</tbody></table>
+<p>A separate workflow, <code>.github/workflows/autograder-watchdog.yml</code>, listens for <code>workflow_run</code> completion of every autograder above. If one of them ends with <code>conclusion: failure</code> and no challenge-result comment has been posted on the open PR for that branch, the watchdog posts a single fallback notice telling the student the check could not complete and to ping a facilitator. If the in-job error handler already posted a comment, the watchdog is a no-op. This is a safety net only -- the seven primary workflows remain the source of truth for pass/fail.</p>
+<h2 id="what-to-do-during-cohort-setup">What to do during cohort setup</h2>
+<p>When creating Day 1 and Day 2 assignments in GitHub Classroom:</p>
 <ol>
-<li>Add all tests and save assignment.</li>
-<li>Confirm test count:<ul>
-<li>Day 1 has 4 tests</li>
-<li>Day 2 has 6 tests</li>
-</ul>
-</li>
-<li>Confirm point totals:<ul>
-<li>Day 1 total = 50</li>
-<li>Day 2 total = 75</li>
-</ul>
-</li>
-<li>Use a test student account to accept each assignment.</li>
-<li>Trigger one known pass on each assignment.</li>
-<li>Trigger one known fail on each assignment and confirm feedback appears.</li>
-<li>Confirm rerun passes after fix.</li>
-<li>Capture one screenshot of pass and one of fail for facilitator reference.</li>
+<li>Paste the assignment description as usual.</li>
+<li><strong>Skip the autograding tests section.</strong> Leave it empty. Do not click <code>Add test</code>.</li>
+<li>Save the assignment and copy the invite URL.</li>
 </ol>
-<h2 id="fast-validation-scenarios">Fast Validation Scenarios</h2>
-<h3 id="day-1-quick-checks">Day 1 quick checks</h3>
-<ul>
-<li>Pass check: open an issue, make a commit, open a PR with <code>Closes #&lt;issue-number&gt;</code>, ensure no conflict markers remain in <code>docs/</code>.</li>
-<li>Fail check: open a PR without <code>Closes</code>, <code>Fixes</code>, or <code>Resolves</code> in the body.</li>
-</ul>
-<h3 id="day-2-quick-checks">Day 2 quick checks</h3>
-<ul>
-<li>Pass check: create one non-main commit, add a custom issue template with <code>name:</code> and <code>description:</code>, add an agent markdown file with frontmatter and required sections.</li>
-<li>Fail check: create an agent file without a <code>## Responsibilities</code> section.</li>
-</ul>
-<h2 id="troubleshooting">Troubleshooting</h2>
-<h3 id="test-stays-red-after-student-fix">Test stays red after student fix</h3>
-<ol>
-<li>Confirm student pushed a new commit to the same PR branch.</li>
-<li>Open PR checks and inspect the failing command output.</li>
-<li>Verify required text is in the file body, not only in issue comments.</li>
-</ol>
-<h3 id="challenge-14-tests-fail-unexpectedly">Challenge 14 tests fail unexpectedly</h3>
-<ul>
-<li>Verify template filename is <code>.yml</code>.</li>
-<li>Verify it is under <code>.github/ISSUE_TEMPLATE</code>.</li>
-<li>Verify filename does not match <code>challenge-*.yml</code>, <code>bonus-*.yml</code>, or <code>config.yml</code>.</li>
-</ul>
-<h3 id="challenge-16-section-check-fails">Challenge 16 section check fails</h3>
-<ul>
-<li>Ensure headings use markdown heading syntax (for example <code>## Responsibilities</code>).</li>
-<li>Ensure guardrail heading uses one accepted form:<ul>
-<li><code>## Guardrails</code></li>
-<li><code>## Limitations</code></li>
-<li><code>## Boundaries</code></li>
-</ul>
-</li>
-</ul>
-<h2 id="keep-this-guide-synced">Keep This Guide Synced</h2>
-<p>If autograding JSON changes, update this file in the same pull request:</p>
-<ul>
-<li><code>classroom/autograding-day1.json</code></li>
-<li><code>classroom/autograding-day2.json</code></li>
-</ul>
+<p>That is the entire change. Everything else in <code>live-facilitation-flow.md</code> still applies.</p>
+<h2 id="verifying-the-checks-work">Verifying the checks work</h2>
+<p>Before sharing invite links, use a test student account to verify each workflow posts its comment. The procedure is in <code>live-facilitation-flow.md</code> (Phase 3: Verify Autograder Workflows).</p>
+<h2 id="historical-reference">Historical reference</h2>
+<p>The Classroom test-case definitions that used to live in <code>classroom/autograding-day1.json</code> and <code>classroom/autograding-day2.json</code> were deleted in May 2026 along with this workflow migration. The autograder workflow files (<code>learning-room/.github/workflows/autograder-*.yml</code>) are the only remaining source of truth for what each check verifies. Git history retains the old JSONs if you ever need to read them.</p>
 
   </main>
   <footer role="contentinfo" class="site-footer">
