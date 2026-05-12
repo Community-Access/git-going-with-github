@@ -17,10 +17,9 @@ test('registration workflow contains required label and duplicate/waitlist flows
         "labels: ['duplicate']",
         "labels: ['waitlist']",
         "labels: ['registration']",
-        'CLASSROOM_ORG_ADMIN_TOKEN',
         'CLASSROOM_DAY1_ASSIGNMENT_URL',
         'CLASSROOM_DAY2_ASSIGNMENT_URL',
-        'createInvitation',
+        'Please reply `ack` on this issue after you confirm your Day 1 link works.',
         'Upload CSV as artifact',
         'Sync Student Roster (No PII)',
     ];

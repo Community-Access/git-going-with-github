@@ -12,12 +12,11 @@ jobs:
   sync-dashboard:
     name: Sync Instructor Dashboard Issues
     runs-on: ubuntu-latest
-    if: vars.CLASSROOM_ORG != '' && vars.PRIVATE_STUDENT_DATA_REPO != ''
+    if: vars.PRIVATE_STUDENT_DATA_REPO != ''
     steps:
       - name: Aggregate student progress and sync private dashboard issues
         uses: actions/github-script@v7
         env:
-          CLASSROOM_ORG: ${{ vars.CLASSROOM_ORG }}
           ADMIN_REPO: ${{ vars.PRIVATE_STUDENT_DATA_REPO }}
           STUCK_THRESHOLD_MINUTES: ${{ vars.DASHBOARD_STUCK_THRESHOLD_MINUTES }}
           DASHBOARD_TOKEN: ${{ secrets.INSTRUCTOR_DASHBOARD_TOKEN }}
@@ -25,12 +24,11 @@ jobs:
           script: |
             const { getOctokit } = require('@actions/github');
 
-            const org = (process.env.CLASSROOM_ORG || '').trim();
             const adminRepoPath = (process.env.ADMIN_REPO || '').trim();
             const dashboardToken = (process.env.DASHBOARD_TOKEN || '').trim();
             const threshold = Number(process.env.STUCK_THRESHOLD_MINUTES || '20');
 
-            if (!org || !adminRepoPath || !dashboardToken) {
+            if (!adminRepoPath || !dashboardToken) {
               core.info('Missing required configuration for instructor dashboard sync.');
               return;
             }
@@ -51,21 +49,6 @@ jobs:
               per_page: 100
             });
 
-            const classroomRepos = await octokit.paginate(octokit.rest.repos.listForOrg, {
-              org,
-              type: 'private',
-              per_page: 100
-            });
-
-            const now = Date.now();
-
-            function findStudentRepo(username) {
-              const normalized = username.toLowerCase();
-              const exact = classroomRepos.find(r => r.name.toLowerCase() === `learning-room-${normalized}`);
-              if (exact) return exact;
-              return classroomRepos.find(r => r.name.toLowerCase().includes(normalized));
-            }
-
             async function upsertDashboardIssue(student, payload) {
               const title = `[DASHBOARD] @${student}`;
               const marker = `<!-- dashboard-student:${student} -->`;
@@ -74,11 +57,10 @@ jobs:
                 `## Student: @${student}`,
                 '',
                 `- Status: ${payload.status}`,
-                `- Repo: ${payload.repoName || 'not-found'}`,
-                `- Current challenge: ${payload.currentChallenge}`,
-                `- Day 1 complete: ${payload.day1Complete ? 'yes' : 'no'}`,
-                `- Needs review: ${payload.needsReview ? 'yes' : 'no'}`,
-                `- Stuck (>= ${threshold} min): ${payload.stuck ? 'yes' : 'no'}`,
+                `- Day 1 acknowledged: ${payload.acknowledged ? 'yes' : 'no'}`,
+                `- Day 1 complete signal: ${payload.day1Complete ? 'yes' : 'no'}`,
+                `- Day 2 released: ${payload.day2Released ? 'yes' : 'no'}`,
+                `- Needs facilitator action: ${payload.needsAction ? 'yes' : 'no'}`,
                 `- Last activity: ${payload.lastActivity || 'unknown'}`,
                 '',
                 `- Snapshot time: ${new Date().toISOString()}`
@@ -90,9 +72,9 @@ jobs:
               });
 
               const labels = ['dashboard-student', `dashboard-status-${payload.status}`];
-              if (payload.needsReview) labels.push('dashboard-needs-review');
-              if (payload.stuck) labels.push('dashboard-stuck');
+              if (payload.needsAction) labels.push('dashboard-needs-action');
               if (payload.day1Complete) labels.push('dashboard-day1-complete');
+              if (payload.day2Released) labels.push('dashboard-day2-released');
 
               if (search.data.total_count > 0) {
                 const issueNumber = search.data.items[0].number;
@@ -137,121 +119,75 @@ jobs:
 
             for (const enrollment of enrollmentIssues) {
               const student = enrollment.user.login;
-              const repo = findStudentRepo(student);
-
-              if (!repo) {
-                await upsertDashboardIssue(student, {
-                  status: 'repo-missing',
-                  repoName: '',
-                  currentChallenge: 'not-started',
-                  day1Complete: false,
-                  needsReview: false,
-                  stuck: false,
-                  lastActivity: ''
-                });
-                continue;
-              }
-
-              let lastActivity = repo.pushed_at || '';
-              let currentChallenge = 'unknown';
+              let lastActivity = enrollment.updated_at || '';
               let day1Complete = false;
-              let needsReview = false;
-              let stuck = false;
-              let status = 'active';
+              let acknowledged = false;
+              let day2Released = enrollment.labels.some(l => l.name === 'day2-released');
+              let needsAction = false;
+              let status = 'awaiting-ack';
 
               try {
-                const [openPrs, openIssues, closedIssues] = await Promise.all([
-                  octokit.paginate(octokit.rest.pulls.list, {
-                    owner: org,
-                    repo: repo.name,
-                    state: 'open',
-                    per_page: 100
-                  }),
-                  octokit.paginate(octokit.rest.issues.listForRepo, {
-                    owner: org,
-                    repo: repo.name,
-                    state: 'open',
-                    per_page: 100
-                  }),
-                  octokit.paginate(octokit.rest.issues.listForRepo, {
-                    owner: org,
-                    repo: repo.name,
-                    state: 'closed',
-                    per_page: 100
-                  })
-                ]);
+                const comments = await octokit.paginate(octokit.rest.issues.listComments, {
+                  owner: context.repo.owner,
+                  repo: context.repo.repo,
+                  issue_number: enrollment.number,
+                  per_page: 100
+                });
 
-                const challengeIssuesOpen = openIssues
-                  .filter(i => !i.pull_request && /^Challenge\s+\d+/i.test(i.title || ''));
+                const sortedComments = comments
+                  .map(c => ({ body: c.body || '', user: c.user?.login || '', created_at: c.created_at || '' }))
+                  .sort((a, b) => new Date(a.created_at) - new Date(b.created_at));
 
-                const challengeIssuesClosed = closedIssues
-                  .filter(i => !i.pull_request && /^Challenge\s+\d+/i.test(i.title || ''));
+                acknowledged = sortedComments.some(c =>
+                  c.user.toLowerCase() === student.toLowerCase() && /\back\b/i.test(c.body)
+                );
 
-                const openMatch = challengeIssuesOpen
-                  .map(i => ({ n: Number((i.title.match(/Challenge\s+(\d+)/i) || [])[1] || 0), updated_at: i.updated_at }))
-                  .filter(i => i.n > 0)
-                  .sort((a, b) => a.n - b.n);
+                day1Complete =
+                  enrollment.labels.some(l => l.name === 'day1-complete' || l.name === 'day2-eligible') ||
+                  sortedComments.some(c =>
+                    c.user.toLowerCase() === student.toLowerCase() &&
+                    /\bday\s*1\s*complete\b|\bday1-complete\b/i.test(c.body)
+                  );
 
-                const closedMatch = challengeIssuesClosed
-                  .map(i => Number((i.title.match(/Challenge\s+(\d+)/i) || [])[1] || 0))
-                  .filter(n => n > 0)
-                  .sort((a, b) => b - a);
+                day2Released = day2Released || enrollment.labels.some(l => l.name === 'day2-released');
 
-                if (openMatch.length > 0) {
-                  currentChallenge = String(openMatch[0].n);
-                  const latestOpenUpdated = new Date(openMatch[openMatch.length - 1].updated_at).getTime();
-                  const minutesSinceOpenUpdate = (now - latestOpenUpdated) / 60000;
-                  if (minutesSinceOpenUpdate >= threshold) {
-                    stuck = true;
-                  }
-                } else if (closedMatch.length > 0) {
-                  currentChallenge = `next:${closedMatch[0] + 1}`;
-                } else {
-                  currentChallenge = '1';
-                }
-
-                day1Complete = challengeIssuesClosed.some(i => /^Challenge\s+9\b/i.test(i.title || ''));
-
-                if (openPrs.length > 0) {
-                  const oldestPrMinutes = openPrs
-                    .map(pr => (now - new Date(pr.created_at).getTime()) / 60000)
-                    .sort((a, b) => b - a)[0];
-                  if (oldestPrMinutes >= threshold) {
-                    needsReview = true;
-                  }
-                }
-
-                const timestamps = [
-                  repo.pushed_at,
-                  ...openPrs.map(pr => pr.updated_at),
-                  ...challengeIssuesOpen.map(i => i.updated_at),
-                  ...challengeIssuesClosed.slice(0, 3).map(i => i.updated_at)
-                ].filter(Boolean).map(ts => new Date(ts).getTime());
-
-                if (timestamps.length > 0) {
-                  const latest = Math.max(...timestamps);
-                  lastActivity = new Date(latest).toISOString();
-                }
-
-                if (stuck) {
-                  status = 'stuck';
+                if (enrollment.labels.some(l => l.name === 'needs-info')) {
+                  status = 'needs-info';
+                  needsAction = true;
+                } else if (day2Released) {
+                  status = 'day2-released';
                 } else if (day1Complete) {
                   status = 'day1-complete';
+                } else if (acknowledged) {
+                  status = 'active-day1';
                 } else {
-                  status = 'active';
+                  status = 'awaiting-ack';
+                  needsAction = true;
+                }
+
+                const lastComment = sortedComments[sortedComments.length - 1];
+                if (lastComment?.created_at) {
+                  const last = new Date(lastComment.created_at).getTime();
+                  if (!Number.isNaN(last)) {
+                    const mins = (Date.now() - last) / 60000;
+                    if (status === 'active-day1' && mins >= threshold) {
+                      needsAction = true;
+                    }
+                    lastActivity = new Date(last).toISOString();
+                  }
                 }
               } catch (error) {
                 core.warning(`Failed to build snapshot for @${student}: ${error.message}`);
                 status = 'error';
+                needsAction = true;
               }
 
               await upsertDashboardIssue(student, {
                 status,
-                repoName: `${org}/${repo.name}`,
-                currentChallenge,
+                acknowledged,
                 day1Complete,
-                needsReview,
-                stuck,
+                day2Released,
+                needsAction,
                 lastActivity
               });
             }
