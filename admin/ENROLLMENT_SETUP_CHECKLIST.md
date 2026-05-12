@@ -2,22 +2,20 @@
 
 Use this checklist to complete the GitHub Classroom integration setup for a new cohort.
 
-## Pre-Enrollment: GitHub Organization Setup
+## Pre-Enrollment: GitHub Classroom Setup
 
-- [ ] Create new classroom organization (naming convention: `git-going-classroom-cohort-YYYY-MM`)
+- [ ] Confirm classroom access in GitHub Classroom
   - URL: https://classroom.github.com
-  - Add co-facilitators as owners
-  - Enable branch protection rules (optional, recommended for assignment repos)
+  - Verify facilitators can manage assignments
 
 - [ ] Create GitHub Classroom assignments:
   - [ ] Day 1 assignment (e.g., "Day 1: You Belong Here")
   - [ ] Day 2 assignment (e.g., "Day 2: You Can Build This")
   - Get the assignment invitation link from Classroom UI for each
 
-- [ ] Set up teams (optional, for pair programming):
-  - [ ] Team: `mentors`
-  - [ ] Team: `learners`
-  - Add assignment requirements to team permissions
+- [ ] Decide your Day 1 completion signal for Day 2 release:
+  - [ ] Label-based (`day1-complete` or `day2-eligible`)
+  - [ ] Student comment-based (`day1-complete` in enrollment issue)
 
 ## GitHub Repository Configuration
 
@@ -25,21 +23,13 @@ Use this checklist to complete the GitHub Classroom integration setup for a new 
 
 In [Community-Access/git-going-with-github Settings → Variables](https://github.com/Community-Access/git-going-with-github/settings/variables):
 
-- [ ] `CLASSROOM_ORG`
-  - Value: `git-going-classroom-cohort-YYYY-MM`
-  - Purpose: Organization name for student invitations
-
-- [ ] `CLASSROOM_JOIN_URL` (optional)
-  - Value: Organization join link from Classroom
-  - Purpose: Posted to students; skipped if not set
-
 - [ ] `CLASSROOM_DAY1_ASSIGNMENT_URL`
   - Value: Day 1 Classroom assignment invitation link
   - Purpose: Posted to students after enrollment; required for Day 1 start
 
 - [ ] `CLASSROOM_DAY2_ASSIGNMENT_URL`
   - Value: Day 2 Classroom assignment invitation link
-  - Purpose: Posted to students; optional but recommended
+  - Purpose: Posted to students after Day 1 completion confirmation
 
 - [ ] `PRIVATE_STUDENT_DATA_REPO`
   - Value: `Community-Access/git-going-with-github-administration`
@@ -56,13 +46,6 @@ In [Community-Access/git-going-with-github Settings → Variables](https://githu
 ### Repository Secrets
 
 In [Community-Access/git-going-with-github Settings → Secrets](https://github.com/Community-Access/git-going-with-github/settings/secrets/actions):
-
-- [ ] `CLASSROOM_ORG_ADMIN_TOKEN`
-  - Create: Personal access token (fine-grained)
-  - Scopes: Organization members (read/write)
-  - Resource: Your `git-going-classroom-cohort-YYYY-MM` org
-  - Validity: 1-3 months (typical for cohort duration)
-  - Action: Update when creating new cohort
 
 - [ ] `PRIVATE_STUDENT_DATA_TOKEN`
   - Status: Already set ✓ (created at initial setup)
@@ -101,11 +84,8 @@ In [Community-Access/git-going-with-github-administration](https://github.com/Co
 
 ## Workshop Day 0: Final Prep
 
-- [ ] Verify all org invitations sent (automation does this automatically)
-  - Check: https://github.com/orgs/git-going-classroom-cohort-YYYY-MM/people?tab=outside-collaborators
-  - Pending invitations should show here
-
-- [ ] Verify assignment links accessible to org members
+- [ ] Verify Day 1 assignment link is posted in enrollment confirmation comments
+- [ ] Verify `ack` and `day1-complete` guidance is visible to students in comments
 
 - [ ] Share facilitator resources:
   - Classroom Integration Guide: [CLASSROOM_INTEGRATION_GUIDE.md](./CLASSROOM_INTEGRATION_GUIDE.md)
@@ -147,7 +127,7 @@ In [Community-Access/git-going-with-github-administration](https://github.com/Co
 | Problem | Cause | Solution |
 |---------|-------|----------|
 | "Enrollment is temporarily unavailable" | Missing secrets/variables | Check this checklist; verify all vars/secrets set |
-| Student didn't get org invite | Token expired or missing | Create fresh `CLASSROOM_ORG_ADMIN_TOKEN` secret |
+| Student cannot access assignment | Invite link mismatch or not signed in | Re-copy assignment invite URL from Classroom and update variable |
 | Can't see private intakes | Permission denied | Verify you're an org member of admin repo |
 | Proficiency labels not appearing | Workflow skipped | Check enrollment issue for errors; re-submit |
 | Assignments not posting to students | Missing assignment URL variables | Verify `CLASSROOM_DAY1_ASSIGNMENT_URL` is set |

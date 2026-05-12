@@ -1,6 +1,6 @@
 # GitHub Classroom Integration Guide
 
-This guide helps facilitators connect student enrollment data with GitHub Classroom assignments and team management.
+This guide helps facilitators connect student enrollment data with GitHub Classroom assignments and dashboard triage.
 
 ## Quick Start: Syncing Students to Classroom
 
@@ -16,23 +16,10 @@ Set these variables in the git-going-with-github repository settings:
 
 | Variable | Example | Purpose |
 |----------|---------|---------|
-| `CLASSROOM_ORG` | `git-going-classroom-cohort-2` | Organization where students will be invited |
-| `CLASSROOM_JOIN_URL` | `https://classroom.github.com/a/...` | Classroom org join link (optional, posted to students) |
 | `CLASSROOM_DAY1_ASSIGNMENT_URL` | GitHub Classroom Day 1 assignment link | Posted to students after enrollment |
-| `CLASSROOM_DAY2_ASSIGNMENT_URL` | GitHub Classroom Day 2 assignment link | Posted to students after enrollment |
-| `CLASSROOM_ORG_ADMIN_TOKEN` | Fine-grained token (see below) | Used to invite students to org |
+| `CLASSROOM_DAY2_ASSIGNMENT_URL` | GitHub Classroom Day 2 assignment link | Posted after Day 1 completion signal |
 
-### 3. Create a Fine-Grained Token
-
-1. Go to Personal Access Tokens: https://github.com/settings/personal-access-tokens/new
-2. Name: `Classroom Enrollment Integration`
-3. Resource owner: Select your `git-going-classroom-cohort-*` organization
-4. Permissions:
-   - Organization: Members Read/Write (to send invitations)
-5. Create and copy the token value
-6. Add to repository as secret: `CLASSROOM_ORG_ADMIN_TOKEN`
-
-### 4. Proficiency-Based Triage
+### 3. Proficiency-Based Triage
 
 When students enroll, the workflow automatically adds proficiency labels:
 
@@ -40,7 +27,7 @@ When students enroll, the workflow automatically adds proficiency labels:
 - `proficiency-intermediate` — Some experience
 - `proficiency-advanced` — Confident users
 
-### 5. Viewing Enrollment Data
+### 4. Viewing Enrollment Data
 
 - **Public issues**: Redacted for privacy. See [git-going-with-github/issues](https://github.com/Community-Access/git-going-with-github/issues)
 - **Private intake**: Full details stored in [git-going-with-github-administration](https://github.com/Community-Access/git-going-with-github-administration)
@@ -51,8 +38,8 @@ When students enroll, the workflow automatically adds proficiency labels:
 
 ### Day 0: Enrollment Opens
 - Students submit enrollment form
-- Workflow validates, redacts public issue, posts success comment with classroom link
-- Student receives org invitation
+- Workflow validates, redacts public issue, posts success comment with Day 1 assignment link
+- Student replies `ack` after confirming Day 1 access
 
 ### Day 0-1: Facilitator Triage
 - Open [enrollment issues with proficiency labels](https://github.com/Community-Access/git-going-with-github/issues?q=label%3Aproficiency-beginner+OR+label%3Aproficiency-intermediate+OR+label%3Aproficiency-advanced)
@@ -63,8 +50,8 @@ When students enroll, the workflow automatically adds proficiency labels:
 - Create teams in classroom org (if using pair programming):
   - Team: `mentors` (advanced proficiency students)
   - Team: `learners` (mixed proficiency for support)
-- Students accept org invitation from their GitHub notifications
 - Students access Day 1 assignment via the link posted in their enrollment issue
+- Students reply `day1-complete` in the enrollment issue when they complete Day 1 milestone
 
 ### Day 1-2: Track Progress
 - Monitor assignment submissions in GitHub Classroom
@@ -72,7 +59,7 @@ When students enroll, the workflow automatically adds proficiency labels:
 - Re-reach out via [Support Hub Issues](https://github.com/Community-Access/support/issues)
 
 ### Day 2: Advanced Assignment
-- Link to Day 2 assignment is posted in student enrollment comments (if configured)
+- Day 2 assignment link is posted automatically after `day1-complete` signal (label or student comment)
 - Day 2 focuses on pair programming, code review, and open-source contribution
 
 ## Troubleshooting
@@ -81,9 +68,9 @@ When students enroll, the workflow automatically adds proficiency labels:
 - **Cause**: `PRIVATE_STUDENT_DATA_REPO` or `PRIVATE_STUDENT_DATA_TOKEN` not configured
 - **Fix**: Follow section 2 (Configure Repository Integration) above
 
-### Student didn't receive org invitation
-- **Cause**: `CLASSROOM_ORG_ADMIN_TOKEN` is missing or expired
-- **Fix**: Create a new fine-grained token (section 3) and update the secret
+### Student did not receive Day 2 release
+- **Cause**: No Day 1 completion signal found
+- **Fix**: Add `day1-complete` comment in enrollment issue or apply `day2-eligible` label
 
 ### Can't find enrollment details
 - **Location**: Private repo → [git-going-with-github-administration/issues](https://github.com/Community-Access/git-going-with-github-administration/issues)
