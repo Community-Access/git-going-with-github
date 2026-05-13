@@ -22,6 +22,93 @@ const SCRIPTS_DIR = path.join(__dirname, 'scripts');
 const TRANSCRIPTS_DIR = path.join(__dirname, 'transcripts');
 const SCRIPT_GROUP_DIRS = ['chapters', 'challenges', 'appendices'];
 
+function parseArgs(argv) {
+  const args = {
+    slug: null,
+    start: null,
+    end: null,
+    group: 'all'
+  };
+
+  for (let index = 0; index < argv.length; index += 1) {
+    const token = argv[index];
+    const value = argv[index + 1] && !argv[index + 1].startsWith('--') ? argv[++index] : null;
+    if (token === '--slug' && value) args.slug = value;
+    else if (token === '--start' && value) args.start = Number.parseInt(value, 10);
+    else if (token === '--end' && value) args.end = Number.parseInt(value, 10);
+    else if (token === '--group' && value) args.group = value;
+  }
+
+  return args;
+}
+
+function shouldIncludeRange(number, args) {
+  if (typeof number !== 'number') return true;
+  if (Number.isInteger(args.start) && number < args.start) return false;
+  if (Number.isInteger(args.end) && number > args.end) return false;
+  return true;
+}
+
+function selectedScriptGroups(args) {
+  if (args.group === 'all') return new Set(SCRIPT_GROUP_DIRS);
+  return new Set([args.group]);
+}
+
+function shouldGenerateCompanion(episode, args) {
+  const group = scriptGroupForCompanion(episode);
+  if (!selectedScriptGroups(args).has(group)) return false;
+  if (args.slug) {
+    const episodeSlug = `ep${String(episode.number).padStart(2, '0')}-${episode.slug}`;
+    return args.slug === episodeSlug;
+  }
+  return shouldIncludeRange(episode.number, args);
+}
+
+function shouldGenerateChallenge(challenge, args) {
+  if (!selectedScriptGroups(args).has('challenges')) return false;
+  const challengeSlug = `cc-${challenge.id}-${challenge.slug}`;
+  if (args.slug) return args.slug === challengeSlug;
+  const numericId = Number.parseInt(challenge.id, 10);
+  if (Number.isNaN(numericId)) return args.start == null && args.end == null;
+  return shouldIncludeRange(numericId, args);
+}
+
+function removeScriptArtifacts(baseDir, fileName) {
+  let removed = 0;
+  for (const entry of SCRIPT_GROUP_DIRS) {
+    const target = path.join(baseDir, entry, fileName);
+    if (fs.existsSync(target)) {
+      fs.unlinkSync(target);
+      removed += 1;
+    }
+  }
+  const directTarget = path.join(baseDir, fileName);
+  if (fs.existsSync(directTarget)) {
+    fs.unlinkSync(directTarget);
+    removed += 1;
+  }
+  return removed;
+}
+
+function removeSelectedOutputs(selectedFiles) {
+  let removedScripts = 0;
+  let removedSegments = 0;
+  let removedChapters = 0;
+  for (const fileName of selectedFiles) {
+    removedScripts += removeScriptArtifacts(SCRIPTS_DIR, fileName);
+    removedSegments += removeScriptArtifacts(TRANSCRIPTS_DIR, fileName.replace(/\.txt$/, '-segments.json'));
+    removedChapters += removeScriptArtifacts(TRANSCRIPTS_DIR, fileName.replace(/\.txt$/, '-chapters.json'));
+  }
+  return { removedScripts, removedSegments, removedChapters };
+}
+
+function trimChapterTitle(text, maxLength = 64) {
+  const normalized = cleanText(text).replace(/^[:\-\s]+/, '').trim();
+  if (normalized.length <= maxLength) return normalized;
+  const boundary = normalized.lastIndexOf(' ', maxLength - 1);
+  return `${normalized.slice(0, boundary > 24 ? boundary : maxLength - 1).trim()}...`;
+}
+
 function ensureDir(dir) {
   fs.mkdirSync(dir, { recursive: true });
 }
@@ -103,6 +190,138 @@ function pause() {
   return '[PAUSE]\n';
 }
 
+function createScriptBuilder() {
+  return {
+    lines: [],
+    segmentCount: 0,
+    chapters: []
+  };
+}
+
+function addSpokenLine(builder, speaker, text) {
+  builder.lines.push(marker(speaker, text));
+  builder.segmentCount += 1;
+}
+
+function addPauseLine(builder) {
+  builder.lines.push(pause());
+  builder.segmentCount += 1;
+}
+
+function addChapterCue(builder, title) {
+  const cleaned = trimChapterTitle(title || '');
+  if (!cleaned) return;
+  const previous = builder.chapters[builder.chapters.length - 1];
+  if (previous && previous.segmentIndex === builder.segmentCount) {
+    previous.title = cleaned;
+    return;
+  }
+  builder.chapters.push({ title: cleaned, segmentIndex: builder.segmentCount });
+}
+
+function normalizeChapterPlan(chapters) {
+  const blockedTitles = /^(learning cards?:|step-by-step$|on the issues list page$|on an open issue$|title field$|description \/ body field$|quick navigation$|useful filter queries$|what happened$|what i expected$|how to reproduce$|environment$|assigning labels from the sidebar$)/i;
+  const genericTitles = /^(challenge roadmap|what success looks like|recovery moves|the learning pattern|cli alternative|search and filter issues|link issues together|write better issues|file your first issue)$/i;
+  const normalized = [];
+
+  for (const chapter of chapters) {
+    const title = trimChapterTitle(chapter.title || '');
+    if (!title || blockedTitles.test(title)) continue;
+    if (genericTitles.test(title)) continue;
+    const previous = normalized[normalized.length - 1];
+    if (previous && previous.title === title) continue;
+    if (previous && previous.segmentIndex === chapter.segmentIndex) {
+      previous.title = title;
+      continue;
+    }
+    normalized.push({ title, segmentIndex: chapter.segmentIndex });
+  }
+
+  return normalized;
+}
+
+function chapterTitleForSection(section) {
+  const title = cleanedTitle(section.title);
+  if (!title) return '';
+
+  const mappings = [
+    [/^filing, managing, and participating in github issues$/i, 'Issues as Collaboration'],
+    [/^workshop recommendation/i, 'Challenge Roadmap'],
+    [/^chapter \d+ challenge set$/i, 'Challenge Roadmap'],
+    [/^challenge \d+ step-by-step:\s*(.+)$/i, (_, label) => trimChapterTitle(label)],
+    [/^optional extension step-by-step:\s*(.+)$/i, (_, label) => trimChapterTitle(label)],
+    [/^completing chapter \d+:\s*submit your evidence$/i, 'Submit Your Evidence'],
+    [/^expected outcomes$/i, 'What Success Looks Like'],
+    [/^if you get stuck$/i, 'Recovery Moves'],
+    [/^learning moment$/i, 'Why Issues Matter'],
+    [/^learning pattern used in this chapter$/i, 'The Learning Pattern'],
+    [/^about learning cards in this chapter$/i, 'Choose Your Learning Path'],
+    [/^local git alternative:/i, 'CLI Alternative'],
+    [/^what is a github issue\??$/i, 'Anatomy of a GitHub Issue'],
+    [/^navigating to the issues list$/i, 'Finding the Issues List'],
+    [/^the issues list page$/i, 'Reading the Issues List'],
+    [/^from a repository page$/i, 'Open the Issues Tab'],
+    [/^direct url$/i, 'Jump Straight to Issues'],
+    [/^page structure$/i, 'Page Structure'],
+    [/^how to read the issue list$/i, 'Read an Issue Row'],
+    [/^filtering and searching issues$/i, 'Search and Filter Issues'],
+    [/^using the search\/filter bar$/i, 'Filter Bar Basics'],
+    [/^open vs closed filter$/i, 'Open or Closed'],
+    [/^reading an issue$/i, 'Read the Full Issue'],
+    [/^landing on an issue page$/i, 'Issue Page Layout'],
+    [/^reading the issue description$/i, 'Read the Description'],
+    [/^reading comments and activity$/i, 'Comments and Activity'],
+    [/^leaving a comment$/i, 'Commenting and Replies'],
+    [/^markdown formatting while typing$/i, 'Format While You Type'],
+    [/^github shortcuts for the issues pages$/i, 'Useful Shortcuts'],
+    [/^filing a new issue$/i, 'File a New Issue'],
+    [/^navigating to new issue$/i, 'Open the New Issue Form'],
+    [/^filling out the issue form$/i, 'Write the Issue Well'],
+    [/^submitting the issue$/i, 'Submit the Issue'],
+    [/^cross-referencing issues$/i, 'Link Issues Together'],
+    [/^accessibility-specific issue writing tips$/i, 'Accessibility Issue Tips'],
+    [/^writing effective issues$/i, 'Write Better Issues'],
+    [/^try it:\s*(.+)$/i, (_, label) => trimChapterTitle(label)],
+    [/^the "good first issue" label - your entry point$/i, 'Good First Issue'],
+    [/^sub-issues - parent and child relationships$/i, 'Sub-Issue Relationships']
+  ];
+
+  for (const [pattern, replacement] of mappings) {
+    const match = title.match(pattern);
+    if (!match) continue;
+    return trimChapterTitle(typeof replacement === 'function' ? replacement(...match) : replacement);
+  }
+
+  return trimChapterTitle(title);
+}
+
+function openingChapterTitleForEpisode(episode) {
+  return trimChapterTitle(`${episode.title}: Overview`);
+}
+
+function closingChapterTitleForEpisode(episode) {
+  return trimChapterTitle(`${episode.title}: Wrap-Up`);
+}
+
+function openingChapterTitleForChallenge(challenge) {
+  return trimChapterTitle(`Challenge ${challenge.id}: ${challenge.title}`);
+}
+
+function closingChapterTitleForChallenge(challenge) {
+  return trimChapterTitle(`${challenge.title}: Final Checkpoint`);
+}
+
+function shouldStartStructuredChapter(section) {
+  const title = cleanedTitle(section.title);
+  if (!title) return false;
+  if (/^learning cards?:/i.test(title)) return false;
+  if (/^(step-by-step|on the issues list page|on an open issue|useful filter queries|what happened|what i expected|how to reproduce|environment|quick navigation|markdown formatting while typing|title field|description \/ body field|assigning labels from the sidebar)$/i.test(title)) {
+    return false;
+  }
+  if (section.level <= 2) return true;
+  return /challenge \d+ step-by-step|optional extension step-by-step|expected outcomes|if you get stuck|learning moment|learning pattern used in this chapter|local git alternative|what is a github issue|navigating to the issues list|the issues list page|filtering and searching issues|reading an issue|leaving a comment|filing a new issue|cross-referencing issues|accessibility-specific issue writing tips|writing effective issues|the "good first issue" label - your entry point|try it:/i.test(title);
+}
+
 function scriptToSegments(script) {
   const segments = [];
   let currentSpeaker = null;
@@ -135,7 +354,7 @@ function scriptToSegments(script) {
   return segments;
 }
 
-function writeScriptAndSegments(fileName, script, group) {
+function writeScriptAndSegments(fileName, script, group, chapterPlan = []) {
   qualityCheckScript(fileName, script);
 
   const scriptDir = path.join(SCRIPTS_DIR, group);
@@ -149,6 +368,20 @@ function writeScriptAndSegments(fileName, script, group) {
   const segmentName = fileName.replace(/\.txt$/, '-segments.json');
   const segmentPath = path.join(transcriptDir, segmentName);
   fs.writeFileSync(segmentPath, JSON.stringify(scriptToSegments(script), null, 2) + '\n', 'utf8');
+
+  const normalizedPlan = normalizeChapterPlan(chapterPlan);
+  if (normalizedPlan.length) {
+    const chapterName = fileName.replace(/\.txt$/, '-chapters.json');
+    const chapterPath = path.join(transcriptDir, chapterName);
+    fs.writeFileSync(chapterPath, JSON.stringify({
+      version: 1,
+      slug: path.basename(fileName, '.txt'),
+      chapters: normalizedPlan.map(chapter => ({
+        title: chapter.title,
+        startSegmentIndex: chapter.segmentIndex
+      }))
+    }, null, 2) + '\n', 'utf8');
+  }
 }
 
 function splitSentences(text) {
@@ -893,7 +1126,7 @@ function createTeachingState() {
   };
 }
 
-function pushSpoken(lines, state, speaker, text) {
+function pushSpoken(builder, state, speaker, text) {
   const cleaned = cleanText(text);
   if (!cleaned) return false;
   if (cleaned.length >= 80) {
@@ -901,11 +1134,11 @@ function pushSpoken(lines, state, speaker, text) {
     if (state.usedSegments.has(key)) return false;
     state.usedSegments.add(key);
   }
-  lines.push(marker(speaker, cleaned));
+  addSpokenLine(builder, speaker, cleaned);
   return true;
 }
 
-function teachSection(lines, section, index, state) {
+function teachSection(builder, section, index, state) {
   const paragraphs = uniqueItems(section.paragraphs, 4);
   const bullets = uniqueItems(section.bullets, 8);
   const steps = uniqueItems(section.steps, 8);
@@ -923,8 +1156,8 @@ function teachSection(lines, section, index, state) {
     || index % 2 === 0;
 
   if (shouldInviteJamie) {
-    pushSpoken(lines, state, 'JAMIE', getJamiePrompt(section, index, state, steps.length > 0, tableRows.length > 0, codeBlocks.length > 0));
-    pushSpoken(lines, state, 'ALEX', speakCoreIdea(section, paragraphs, index));
+    pushSpoken(builder, state, 'JAMIE', getJamiePrompt(section, index, state, steps.length > 0, tableRows.length > 0, codeBlocks.length > 0));
+    pushSpoken(builder, state, 'ALEX', speakCoreIdea(section, paragraphs, index));
   } else {
     const bridge = choosePhrase(
       continuationBridges,
@@ -932,27 +1165,27 @@ function teachSection(lines, section, index, state) {
       state.usedContinuationBridges,
       'Keep the teaching thread moving.'
     );
-    pushSpoken(lines, state, 'ALEX', `${bridge} ${speakCoreIdea(section, paragraphs, index)}`);
+    pushSpoken(builder, state, 'ALEX', `${bridge} ${speakCoreIdea(section, paragraphs, index)}`);
   }
 
   if (bullets.length) {
     const detailLimit = paragraphs.length >= 2 ? 4 : 6;
-    pushSpoken(lines, state, 'ALEX', speakDetails(bullets.slice(0, detailLimit), index, state));
+    pushSpoken(builder, state, 'ALEX', speakDetails(bullets.slice(0, detailLimit), index, state));
   }
 
   if (steps.length) {
     for (const [groupIndex, group] of chunk(steps, 4).entries()) {
-      if (groupIndex > 0) pushSpoken(lines, state, 'JAMIE', choosePrompt(sequencePrompts, index + groupIndex, state, section.title));
-      pushSpoken(lines, state, 'ALEX', speakSteps(group, index + groupIndex));
+      if (groupIndex > 0) pushSpoken(builder, state, 'JAMIE', choosePrompt(sequencePrompts, index + groupIndex, state, section.title));
+      pushSpoken(builder, state, 'ALEX', speakSteps(group, index + groupIndex));
     }
   }
 
   if (tableRows.length) {
-    pushSpoken(lines, state, 'ALEX', `Use the comparison to make a decision, not to recite a table. The main contrasts are: ${naturalList(tableRows)}.`);
+    pushSpoken(builder, state, 'ALEX', `Use the comparison to make a decision, not to recite a table. The main contrasts are: ${naturalList(tableRows)}.`);
   }
 
   if (codeBlocks.length) {
-    pushSpoken(lines, state, 'ALEX', `Treat examples as spoken recipes, not decorations. You may hear something like ${naturalList(codeBlocks)}. Read the command, understand what it changes, then run it only when the repository state matches the lesson.`);
+    pushSpoken(builder, state, 'ALEX', `Treat examples as spoken recipes, not decorations. You may hear something like ${naturalList(codeBlocks)}. Read the command, understand what it changes, then run it only when the repository state matches the lesson.`);
   }
 
   if (index > 0 && index % 5 === 2) {
@@ -960,13 +1193,13 @@ function teachSection(lines, section, index, state) {
     const response = humanCheckResponses[index % humanCheckResponses.length];
     if (!state.usedHumanChecks.has(prompt)) {
       state.usedHumanChecks.add(prompt);
-      pushSpoken(lines, state, 'JAMIE', prompt);
-      pushSpoken(lines, state, 'ALEX', response);
+      pushSpoken(builder, state, 'JAMIE', prompt);
+      pushSpoken(builder, state, 'ALEX', response);
     }
   }
 
   state.sectionCountSinceGeneric += 1;
-  addClosingPoint(lines, section, state);
+  addClosingPoint(builder.lines, section, state);
 }
 
 function buildCompanionScript(episode, total) {
@@ -976,29 +1209,32 @@ function buildCompanionScript(episode, total) {
     .filter(entry => entry.content);
 
   const sections = sourceDocs.flatMap(doc => extractTeachingSections(doc.content));
-  const lines = [];
+  const builder = createScriptBuilder();
+  addChapterCue(builder, openingChapterTitleForEpisode(episode));
 
-  lines.push(marker('ALEX', openingForEpisode(episode)));
-  lines.push(marker('JAMIE', jamieOpeningForEpisode(episode)));
-  lines.push(pause());
+  addSpokenLine(builder, 'ALEX', openingForEpisode(episode));
+  addSpokenLine(builder, 'JAMIE', jamieOpeningForEpisode(episode));
+  addPauseLine(builder);
 
-  lines.push(marker('ALEX', setupTeachingFrame(episode)));
-  lines.push(marker('JAMIE', jamieFrameResponse(episode)));
-  lines.push(marker('ALEX', alexFrameResponse(episode)));
-  lines.push(pause());
+  addSpokenLine(builder, 'ALEX', setupTeachingFrame(episode));
+  addSpokenLine(builder, 'JAMIE', jamieFrameResponse(episode));
+  addSpokenLine(builder, 'ALEX', alexFrameResponse(episode));
+  addPauseLine(builder);
 
   const state = createTeachingState();
   sections.forEach((section, index) => {
-    teachSection(lines, section, index, state);
-    if ((index + 1) % 3 === 0 || index === sections.length - 1) lines.push(pause());
+    if (shouldStartStructuredChapter(section)) addChapterCue(builder, chapterTitleForSection(section));
+    teachSection(builder, section, index, state);
+    if ((index + 1) % 3 === 0 || index === sections.length - 1) addPauseLine(builder);
   });
 
-  lines.push(marker('JAMIE', 'What should people carry with them after this?'));
-  lines.push(marker('ALEX', 'Carry the map. Know what page or tool you are in, know which action you are taking, and know what confirmation should follow. If the confirmation is missing, pause. That pause is not wasted time; it is professional judgment.'));
-  lines.push(marker('JAMIE', 'That is a better way to say it than just follow the steps.'));
-  lines.push(marker('ALEX', `Right. Steps matter, but understanding wins. That is episode ${episode.number}. Next in the series is ${episode.number + 1 < total ? `episode ${episode.number + 1}` : 'the next learning block'}, where we keep building the same contributor muscles.`));
+  addChapterCue(builder, closingChapterTitleForEpisode(episode));
+  addSpokenLine(builder, 'JAMIE', 'What should people carry with them after this?');
+  addSpokenLine(builder, 'ALEX', 'Carry the map. Know what page or tool you are in, know which action you are taking, and know what confirmation should follow. If the confirmation is missing, pause. That pause is not wasted time; it is professional judgment.');
+  addSpokenLine(builder, 'JAMIE', 'That is a better way to say it than just follow the steps.');
+  addSpokenLine(builder, 'ALEX', `Right. Steps matter, but understanding wins. That is episode ${episode.number}. Next in the series is ${episode.number + 1 < total ? `episode ${episode.number + 1}` : 'the next learning block'}, where we keep building the same contributor muscles.`);
 
-  return { fileName: `ep${pad}-${episode.slug}.txt`, script: lines.join('\n') };
+  return { fileName: `ep${pad}-${episode.slug}.txt`, script: builder.lines.join('\n'), chapterPlan: builder.chapters };
 }
 
 function buildChallengeScript(challenge) {
@@ -1009,32 +1245,36 @@ function buildChallengeScript(challenge) {
   ].filter(source => source.content);
 
   const sections = sources.flatMap(source => extractTeachingSections(source.content));
-  const lines = [];
+  const builder = createScriptBuilder();
+  addChapterCue(builder, openingChapterTitleForChallenge(challenge));
 
-  lines.push(marker('ALEX', openingForChallenge(challenge)));
-  lines.push(marker('JAMIE', jamieOpeningForChallenge(challenge)));
-  lines.push(pause());
+  addSpokenLine(builder, 'ALEX', openingForChallenge(challenge));
+  addSpokenLine(builder, 'JAMIE', jamieOpeningForChallenge(challenge));
+  addPauseLine(builder);
 
-  lines.push(marker('ALEX', challengeTeachingFrame(challenge)));
-  lines.push(marker('JAMIE', jamieChallengeFrameResponse(challenge)));
-  lines.push(marker('ALEX', alexChallengeFrameResponse(challenge)));
-  lines.push(pause());
+  addSpokenLine(builder, 'ALEX', challengeTeachingFrame(challenge));
+  addSpokenLine(builder, 'JAMIE', jamieChallengeFrameResponse(challenge));
+  addSpokenLine(builder, 'ALEX', alexChallengeFrameResponse(challenge));
+  addPauseLine(builder);
 
   const state = createTeachingState();
   sections.forEach((section, index) => {
-    teachSection(lines, section, index, state);
-    if ((index + 1) % 3 === 0 || index === sections.length - 1) lines.push(pause());
+    if (shouldStartStructuredChapter(section)) addChapterCue(builder, chapterTitleForSection(section));
+    teachSection(builder, section, index, state);
+    if ((index + 1) % 3 === 0 || index === sections.length - 1) addPauseLine(builder);
   });
 
-  lines.push(marker('JAMIE', 'What is the final checkpoint?'));
-  lines.push(marker('ALEX', 'You should be able to point to the evidence, explain the action, and describe what you would do next if this were a real open source project. If you can teach the move back, you have learned it.'));
-  lines.push(marker('JAMIE', 'And if they get stuck?'));
-  lines.push(marker('ALEX', 'Read the latest message, not the loudest worry. Check the issue, the branch, the pull request, the status check, or the bot comment. Then ask for help with those facts in hand. That is how professionals collaborate.'));
+  addChapterCue(builder, closingChapterTitleForChallenge(challenge));
+  addSpokenLine(builder, 'JAMIE', 'What is the final checkpoint?');
+  addSpokenLine(builder, 'ALEX', 'You should be able to point to the evidence, explain the action, and describe what you would do next if this were a real open source project. If you can teach the move back, you have learned it.');
+  addSpokenLine(builder, 'JAMIE', 'And if they get stuck?');
+  addSpokenLine(builder, 'ALEX', 'Read the latest message, not the loudest worry. Check the issue, the branch, the pull request, the status check, or the bot comment. Then ask for help with those facts in hand. That is how professionals collaborate.');
 
-  return { fileName: `cc-${challenge.id}-${challenge.slug}.txt`, script: lines.join('\n') };
+  return { fileName: `cc-${challenge.id}-${challenge.slug}.txt`, script: builder.lines.join('\n'), chapterPlan: builder.chapters };
 }
 
 function main() {
+  const args = parseArgs(process.argv.slice(2));
   ensureDir(SCRIPTS_DIR);
   ensureDir(TRANSCRIPTS_DIR);
   for (const group of SCRIPT_GROUP_DIRS) {
@@ -1042,28 +1282,55 @@ function main() {
     ensureDir(path.join(TRANSCRIPTS_DIR, group));
   }
 
-  const removedScripts = removeFiles(SCRIPTS_DIR, name => name.endsWith('.txt'));
-  const removedSegments = removeFiles(TRANSCRIPTS_DIR, name => name.endsWith('-segments.json'));
+  const selectedEpisodes = episodes.filter(episode => shouldGenerateCompanion(episode, args));
+  const selectedChallenges = challenges.filter(challenge => shouldGenerateChallenge(challenge, args));
+  const selectedFiles = [
+    ...selectedEpisodes.map(episode => `ep${String(episode.number).padStart(2, '0')}-${episode.slug}.txt`),
+    ...selectedChallenges.map(challenge => `cc-${challenge.id}-${challenge.slug}.txt`)
+  ];
+
+  if (!selectedFiles.length) {
+    console.error('No transcript targets matched the requested selection.');
+    process.exitCode = 1;
+    return;
+  }
+
+  const selectiveRun = Boolean(args.slug || Number.isInteger(args.start) || Number.isInteger(args.end) || args.group !== 'all');
+  const { removedScripts, removedSegments, removedChapters } = selectiveRun
+    ? removeSelectedOutputs(selectedFiles)
+    : {
+        removedScripts: removeFiles(SCRIPTS_DIR, name => name.endsWith('.txt')),
+        removedSegments: removeFiles(TRANSCRIPTS_DIR, name => name.endsWith('-segments.json')),
+        removedChapters: removeFiles(TRANSCRIPTS_DIR, name => name.endsWith('-chapters.json'))
+      };
 
   let companionCount = 0;
-  for (const episode of episodes) {
-    const { fileName, script } = buildCompanionScript(episode, episodes.length);
-    writeScriptAndSegments(fileName, script, scriptGroupForCompanion(episode));
+  for (const episode of selectedEpisodes) {
+    const { fileName, script, chapterPlan } = buildCompanionScript(episode, episodes.length);
+    writeScriptAndSegments(fileName, script, scriptGroupForCompanion(episode), chapterPlan);
     companionCount += 1;
   }
 
   let challengeCount = 0;
-  for (const challenge of challenges) {
-    const { fileName, script } = buildChallengeScript(challenge);
-    writeScriptAndSegments(fileName, script, 'challenges');
+  for (const challenge of selectedChallenges) {
+    const { fileName, script, chapterPlan } = buildChallengeScript(challenge);
+    writeScriptAndSegments(fileName, script, 'challenges', chapterPlan);
     challengeCount += 1;
   }
 
+  console.log(`Selection mode: ${selectiveRun ? 'partial' : 'full rebuild'}`);
+  if (args.slug) console.log(`Slug filter: ${args.slug}`);
+  if (Number.isInteger(args.start) || Number.isInteger(args.end)) {
+    console.log(`Range filter: ${Number.isInteger(args.start) ? args.start : 'start'}..${Number.isInteger(args.end) ? args.end : 'end'}`);
+  }
+  if (args.group !== 'all') console.log(`Group filter: ${args.group}`);
   console.log(`Removed old script files: ${removedScripts}`);
   console.log(`Removed old segment transcript files: ${removedSegments}`);
+  console.log(`Removed old chapter plan files: ${removedChapters}`);
   console.log(`Generated professional teaching scripts: ${companionCount}`);
   console.log(`Generated challenge coach scripts: ${challengeCount}`);
   console.log(`Generated segment JSON files: ${companionCount + challengeCount}`);
+  console.log(`Generated chapter plan JSON files: ${companionCount + challengeCount}`);
   console.log('Scripts ready for voice synthesis.');
 }
 

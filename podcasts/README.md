@@ -14,6 +14,9 @@ build-bundles.js     Generate source bundles from chapter content
   scripts/*.txt      Conversational scripts with [ALEX]/[JAMIE]/[PAUSE] markers
         |
         v
+  transcripts/*-chapters.json  Ordered chapter plans by segment index
+        |
+        v
   tts/               Local neural TTS (ONNX models, pronunciation lexicon)
         |
         v
@@ -64,9 +67,11 @@ podcasts/
   bundles/                          Generated companion prompt packets
   challenge-bundles/                Generated Challenge Coach prompt packets
   scripts/                          Committed transcript source scripts
-  transcripts/                      Derived segment JSON transcripts
+      transcripts/                      Derived segment JSON transcripts and chapter plans
+      chapters/                         Podcasting 2.0 chapter JSON sidecars written during metadata tagging
   audio/                            Local audio output and segment cache, not committed
   logs/                             Local generation and inventory reports
+      tools/agentic-pilot/              One-episode packet builder and transcript evaluation helpers
   tools/legacy/                     Older diagnostic and one-off helpers
   tts/                              Production and fallback TTS package
 ```
@@ -109,6 +114,22 @@ npm run generate:podcast-transcripts
 
 `podcasts/bundles/*.md` files are generated prompt packets. They are intentionally ignored by git and should be regenerated when needed.
 `podcasts/challenge-bundles/*.md` files are the same kind of generated prompt packet, but scoped to individual Challenge Coach episodes.
+
+Transcript generation now writes three artifacts for each episode or challenge:
+
+- the transcript source in `podcasts/scripts/`
+- the segment manifest in `podcasts/transcripts/*-segments.json`
+- the ordered chapter plan in `podcasts/transcripts/*-chapters.json`
+
+The chapter plan is sequential, not time-based. It stores chapter titles with segment indexes. Later, the metadata pass converts those ordered boundaries into timed ID3 chapter markers and Podcasting 2.0 chapter sidecars after audio generation.
+
+You can also regenerate a subset instead of rebuilding all 75 scripts:
+
+```bash
+npm run generate:podcast-transcript -- --slug ep05-working-with-issues
+npm run generate:podcast-transcript -- --start 1 --end 4 --group challenges
+npm run generate:podcast-transcript -- --start 20 --end 25 --group appendices
+```
 
 ### 4. Generate all episodes
 
@@ -203,6 +224,11 @@ The following table lists the supported podcast build and validation commands.
 | `npm run build:podcast-bundles` | Generate source bundles from chapters |
 | `npm run build:podcast-challenge-bundles` | Generate source bundles for Challenge Coach episodes |
 | `npm run generate:podcast-transcripts` | Replace old scripts with fresh reviewable Alex/Jamie draft transcripts |
+| `npm run generate:podcast-transcript -- --slug <slug>` | Regenerate one selected transcript or a filtered range using `--start`, `--end`, and `--group` |
+| `npm run podcast:agentic:packet -- --slug <slug>` | Build a single episode source packet for GPT-5.4 rewrite and review workflows |
+| `npm run podcast:agentic:promote -- --slug <slug>` | Promote an accepted GPT-5.4 pilot transcript into the live script path and refresh its segment JSON |
+| `npm run podcast:chapters:normalize` | Normalize generated chapter-plan sidecars to remove weak or overly generic titles |
+| `npm run podcast:chapters:audit` | Audit all generated chapter-plan sidecars and report title quality across the full catalog |
 | `npm run build:podcast-transcripts` | Run validation, regenerate bundles, regenerate transcripts, and rebuild podcast page/feed |
 | `npm run build:podcast-audio` | Generate MP3 audio for all companion, Challenge Coach, and bonus scripts with local Kokoro TTS |
 | `npm run build:podcast-audio:piper` | Generate audio with the legacy local Piper TTS path |
@@ -254,10 +280,25 @@ The metadata tool writes the following ID3 fields to each MP3:
 - Author website: [Community Access website](http://www.community-access.org)
 - Description: episode description or challenge focus
 - Episode script: the matching `podcasts/scripts/*.txt` source embedded as both a custom text frame and an unsynchronized lyrics frame
-- Smart chapters: ID3 chapter frames derived from `podcasts/audio/segments/<episode>/manifest.json`
+- Smart chapters: ID3 chapter frames derived from `podcasts/audio/segments/<episode>/manifest.json`, preferring transcript-authored chapter plans from `podcasts/transcripts/*-chapters.json` when available
 - Chapter sidecars: Podcasting 2.0 JSON files in `podcasts/chapters/`, linked from RSS as `podcast:chapters`
 
-Chapter markers are pause-aware. The tool starts with the opening segment, prefers natural boundaries after `[PAUSE]`, avoids very short chapters, and forces a new marker when a section grows too long. Chapter titles are generated from the next spoken segment with small heuristics for questions, "big idea" openings, practice anchors, and why-it-matters sections.
+Chapter markers now have a two-stage flow:
+
+1. Transcript generation writes ordered chapter plans using segment indexes, while the lesson structure is still available.
+2. Metadata tagging converts those segment indexes into timed chapter markers after audio generation.
+
+If no transcript-authored chapter plan exists, the metadata tool falls back to the older pause-aware heuristic. That fallback starts with the opening segment, prefers natural boundaries after `[PAUSE]`, avoids very short chapters, and forces a new marker when a section grows too long.
+
+For one-episode GPT-5.4 pilot work, see `podcasts/tools/agentic-pilot/README.md`.
+
+For a full-catalog refresh, the recommended sequence is:
+
+```bash
+npm run generate:podcast-transcripts
+npm run podcast:chapters:normalize
+npm run podcast:chapters:audit
+```
 
 Run the dry-run check first:
 

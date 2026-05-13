@@ -39,6 +39,7 @@ AUDIO_DIR = ROOT / "audio"
 DEFAULT_KOKORO_AUDIO_DIR = AUDIO_DIR / "kokoro-am_liam-af_jessica"
 SEGMENTS_DIR = AUDIO_DIR / "segments"
 CHAPTERS_DIR = ROOT / "chapters"
+TRANSCRIPTS_DIR = ROOT / "transcripts"
 CHALLENGE_BUNDLES_PATH = ROOT / "build-challenge-bundles.js"
 
 SERIES_TITLE = "Git Going with GitHub - Audio Series"
@@ -252,6 +253,19 @@ def load_segment_manifest(target: EpisodeTarget) -> list[dict]:
     return json.loads(manifest_path.read_text(encoding="utf-8"))
 
 
+def chapter_plan_path(target: EpisodeTarget) -> Path | None:
+    matches = sorted(path for path in TRANSCRIPTS_DIR.rglob(f"{target.slug}-chapters.json") if path.is_file())
+    return matches[0] if matches else None
+
+
+def load_chapter_plan(target: EpisodeTarget) -> list[dict]:
+    plan_path = chapter_plan_path(target)
+    if not plan_path:
+        return []
+    payload = json.loads(plan_path.read_text(encoding="utf-8"))
+    return payload.get("chapters", []) if isinstance(payload, dict) else []
+
+
 def missing_segment_files(target: EpisodeTarget, entries: list[dict]) -> list[str]:
     segment_dir = SEGMENTS_DIR / target.slug
     missing: list[str] = []
@@ -309,6 +323,55 @@ def chapter_boundary_after_pause(entries: list[dict], index: int) -> bool:
     if index <= 0 or index >= len(entries):
         return False
     return str(entries[index - 1].get("speaker", "")).upper() == "PAUSE"
+
+
+def derive_chapters_from_plan(entries: list[dict], plan_entries: list[dict]) -> list[ChapterMarker]:
+    if not entries or not plan_entries:
+        return []
+
+    offsets: list[int] = []
+    current_ms = 0
+    for entry in entries:
+      offsets.append(current_ms)
+      current_ms += round((float(entry.get("duration") or 0)) * 1000)
+
+    total_ms = max(current_ms, 1)
+    starts: list[tuple[int, str]] = []
+    seen_indices: set[int] = set()
+
+    for plan_entry in plan_entries:
+        try:
+            segment_index = int(plan_entry.get("startSegmentIndex"))
+        except (TypeError, ValueError):
+            continue
+        if segment_index < 0 or segment_index >= len(entries) or segment_index in seen_indices:
+            continue
+        title = trim_title(str(plan_entry.get("title") or f"Part {len(starts) + 1}"))
+        starts.append((offsets[segment_index], title))
+        seen_indices.add(segment_index)
+
+    if not starts:
+        return []
+
+    starts.sort(key=lambda item: item[0])
+    if starts[0][0] != 0:
+        starts.insert(0, (0, "Opening"))
+
+    chapters: list[ChapterMarker] = []
+    for index, (start_ms, title) in enumerate(starts):
+        end_ms = starts[index + 1][0] if index + 1 < len(starts) else total_ms
+        if end_ms <= start_ms:
+            continue
+        chapters.append(
+            ChapterMarker(
+                element_id=f"chp{index + 1:03d}",
+                title=trim_title(title),
+                start_ms=start_ms,
+                end_ms=end_ms,
+                text="",
+            )
+        )
+    return chapters
 
 
 def derive_chapters(target: EpisodeTarget, entries: list[dict]) -> list[ChapterMarker]:
@@ -536,7 +599,8 @@ def main() -> int:
             missing_segment_manifests.append(str(segment_manifest_path(target).relative_to(REPO_ROOT)))
             continue
         missing_segments.extend(missing_segment_files(target, segment_entries))
-        chapters = derive_chapters(target, segment_entries)
+        planned_chapters = load_chapter_plan(target)
+        chapters = derive_chapters_from_plan(segment_entries, planned_chapters) or derive_chapters(target, segment_entries)
         ready.append((target, mp3_path, script_text, chapters))
 
     expected_count = args.expected_count
