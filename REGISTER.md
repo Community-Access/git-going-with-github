@@ -16,7 +16,7 @@ If you are new to GitHub or new to our workshop flow, start here.
 
 > [**Start Beginner Enrollment Form**](https://github.com/community-access/git-going-with-github/issues/new?template=classroom-enrollment.yml&title=%5BENROLL%5D+GIT+Going+with+GitHub+Classroom)
 
-This does not replace legacy registration. Both flows remain available.
+If you are not sure which form to use, start with the beginner enrollment form. It gives you the smoothest first-time setup experience.
 
 | | |
 |---|---|
@@ -25,7 +25,7 @@ This does not replace legacy registration. Both flows remain available.
 | **Cost** | Free |
 | **Form** | GitHub issue form with automated confirmation and beginner fast path |
 
-## Quick opt-in workflow
+## Standard student opt-in form
 
 1. Sign in to your [GitHub account](https://github.com/login).
 2. Open the registration issue form.
@@ -33,7 +33,7 @@ This does not replace legacy registration. Both flows remain available.
 
 > [**Start Student Opt-In Form**](https://github.com/community-access/git-going-with-github/issues/new?template=workshop-registration.yml&title=%5BREGISTER%5D+GIT+Going+with+GitHub)
 
-Legacy path (existing flow): this option remains unchanged and continues to work.
+Use this form if you have already registered before, or if a facilitator asked you to use the standard path.
 
 ## What happens automatically
 
@@ -67,7 +67,7 @@ Use this map to verify facts for each major section in this file.
 
 - **Join the next GIT Going with GitHub cohort:** [GitHub Docs, home](https://docs.github.com/en), [GitHub Changelog](https://github.blog/changelog/), [GitHub Discussions docs](https://docs.github.com/en/discussions), [GitHub Gists docs](https://docs.github.com/en/get-started/writing-on-github/editing-and-sharing-content-with-gists), [About Git](https://docs.github.com/en/get-started/using-git/about-git)
 - **New student fast path (recommended):** [GitHub Docs, home](https://docs.github.com/en), [GitHub Changelog](https://github.blog/changelog/), [GitHub Discussions docs](https://docs.github.com/en/discussions), [GitHub Gists docs](https://docs.github.com/en/get-started/writing-on-github/editing-and-sharing-content-with-gists)
-- **Quick opt-in workflow:** [GitHub Docs, home](https://docs.github.com/en), [GitHub Changelog](https://github.blog/changelog/), [GitHub Discussions docs](https://docs.github.com/en/discussions), [GitHub Gists docs](https://docs.github.com/en/get-started/writing-on-github/editing-and-sharing-content-with-gists), [Workflow syntax for GitHub Actions](https://docs.github.com/en/actions/reference/workflows-and-actions/workflow-syntax)
+- **Standard student opt-in form:** [GitHub Docs, home](https://docs.github.com/en), [GitHub Changelog](https://github.blog/changelog/), [GitHub Discussions docs](https://docs.github.com/en/discussions), [GitHub Gists docs](https://docs.github.com/en/get-started/writing-on-github/editing-and-sharing-content-with-gists), [Workflow syntax for GitHub Actions](https://docs.github.com/en/actions/reference/workflows-and-actions/workflow-syntax)
 - **What happens automatically:** [GitHub Docs, home](https://docs.github.com/en), [GitHub Changelog](https://github.blog/changelog/), [GitHub Discussions docs](https://docs.github.com/en/discussions), [GitHub Gists docs](https://docs.github.com/en/get-started/writing-on-github/editing-and-sharing-content-with-gists)
 - **Important note:** [GitHub Docs, home](https://docs.github.com/en), [GitHub Changelog](https://github.blog/changelog/), [GitHub Discussions docs](https://docs.github.com/en/discussions), [GitHub Gists docs](https://docs.github.com/en/get-started/writing-on-github/editing-and-sharing-content-with-gists)
 - **Need help?:** [GitHub Docs, home](https://docs.github.com/en), [GitHub Changelog](https://github.blog/changelog/), [GitHub Discussions docs](https://docs.github.com/en/discussions), [GitHub Gists docs](https://docs.github.com/en/get-started/writing-on-github/editing-and-sharing-content-with-gists)
