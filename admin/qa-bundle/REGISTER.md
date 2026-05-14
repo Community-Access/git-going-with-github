@@ -1,4 +1,4 @@
-# Student Opt-In
+# The Adventure Gate: Student Opt-In
 
 [Back to Home](https://community-access.org/git-going-with-github/) | [Support Hub](https://github.com/Community-Access/support) | [Pre-Workshop Setup Guide](https://community-access.org/git-going-with-github/docs/00-pre-workshop-setup.html)
 
@@ -15,9 +15,13 @@ Welcome, traveler. This is the opening gate to your agentic learning adventure i
 
 ## A magical welcome
 
-Imagine a friendly guide at the gate saying: "This is your first quest. Start by opening the enrollment form."
+Your guide for this journey is the Gandalf role in our course team: a wise helper who sets the mission, keeps everyone moving, and helps you recover quickly when Git gets confusing.
 
-You only need one path to join this class.
+In class, expect short quests, clear checkpoints, and practical support from mentors and automation agents.
+
+Beyond class, your guide continues through the Support Hub, progression bots, and challenge feedback so you can keep building with confidence.
+
+You only need one path to begin.
 
 ## One path to begin
 
