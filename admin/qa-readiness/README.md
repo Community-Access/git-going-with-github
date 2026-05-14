@@ -38,6 +38,7 @@ Current test harness executes all Node tests in `.github/scripts/__tests__/*.tes
 See:
 
 - [UNIT-TEST-RESULTS-2026-05-08.md](UNIT-TEST-RESULTS-2026-05-08.md)
+- [TEMPLATE-SYNC-SMOKE-2026-05-14.md](TEMPLATE-SYNC-SMOKE-2026-05-14.md)
 
 ## Interpreting Confidence
 
