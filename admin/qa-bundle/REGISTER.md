@@ -15,7 +15,7 @@ Welcome, traveler. This is the opening gate to your agentic learning adventure i
 
 ## A magical welcome
 
-Imagine a friendly guide at the gate saying: "You shall not pass... without clicking the enrollment form."
+Imagine a friendly guide at the gate saying: "This is your first quest. Start by opening the enrollment form."
 
 You only need one path to join this class.
 
@@ -65,3 +65,4 @@ Use this map to verify facts for each major section in this file.
 - **What happens automatically:** [GitHub Docs, home](https://docs.github.com/en), [GitHub Changelog](https://github.blog/changelog/), [GitHub Discussions docs](https://docs.github.com/en/discussions), [GitHub Gists docs](https://docs.github.com/en/get-started/writing-on-github/editing-and-sharing-content-with-gists)
 - **Important note:** [GitHub Docs, home](https://docs.github.com/en), [GitHub Changelog](https://github.blog/changelog/), [GitHub Discussions docs](https://docs.github.com/en/discussions), [GitHub Gists docs](https://docs.github.com/en/get-started/writing-on-github/editing-and-sharing-content-with-gists)
 - **Need help?:** [GitHub Docs, home](https://docs.github.com/en), [GitHub Changelog](https://github.blog/changelog/), [GitHub Discussions docs](https://docs.github.com/en/discussions), [GitHub Gists docs](https://docs.github.com/en/get-started/writing-on-github/editing-and-sharing-content-with-gists)
+
