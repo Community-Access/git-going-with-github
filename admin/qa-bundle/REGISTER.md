@@ -4,7 +4,7 @@
 
 ## Join the next GIT Going with GitHub cohort
 
-Welcome, traveler. This is the opening gate to your agentic learning adventure in Git and GitHub.
+Welcome, brave traveler. A friendly wizard stands at this gate to welcome you to your Git and GitHub adventure.
 
 | | |
 |---|---|
@@ -15,7 +15,7 @@ Welcome, traveler. This is the opening gate to your agentic learning adventure i
 
 ## A magical welcome
 
-Your guide for this journey is our Wizard Mentor role: a wise helper who sets the mission, keeps everyone moving, and helps you recover quickly when Git gets confusing.
+Think of this guide as your staff-carrying mentor on the road: here to set clear expectations, light the way through tricky moments, and keep your courage up when the path feels new.
 
 In class, expect short quests, clear checkpoints, and practical support from mentors and automation agents.
 
