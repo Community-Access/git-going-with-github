@@ -32,6 +32,19 @@ You only need one path to begin.
 
 > [**Begin the Adventure**](https://github.com/community-access/git-going-with-github/issues/new?template=classroom-enrollment.yml&title=%5BENROLL%5D+GIT+Going+with+GitHub+Classroom)
 
+## How to fill the form (wizard tips)
+
+Use this quick spellbook so your form is accepted on the first try:
+
+1. **Full Name:** enter the name you want facilitators to call you (example: `Jane Doe`).
+2. **Email Address:** use the best address for workshop updates (example: `jane.doe@example.com`).
+3. **GitHub Username:** enter your handle without `@` (example: `janedoe`).
+4. **Experience dropdowns:** pick the option that feels true today. There is no wrong level.
+5. **Course goals:** write 1 to 3 short sentences about what you want to learn.
+6. **Final check:** confirm everything looks right, then click **Submit new issue** once.
+
+If your goals box is blank, try this starter line: `I want to feel confident using Git and GitHub in real projects.`
+
 ## What happens automatically
 
 - Duplicate submissions are handled automatically.
@@ -66,6 +79,7 @@ Use this map to verify facts for each major section in this file.
 - **Join the next GIT Going with GitHub cohort:** [GitHub Docs, home](https://docs.github.com/en), [GitHub Changelog](https://github.blog/changelog/), [GitHub Discussions docs](https://docs.github.com/en/discussions), [GitHub Gists docs](https://docs.github.com/en/get-started/writing-on-github/editing-and-sharing-content-with-gists), [About Git](https://docs.github.com/en/get-started/using-git/about-git)
 - **A magical welcome:** [GitHub Docs, home](https://docs.github.com/en), [GitHub Changelog](https://github.blog/changelog/), [GitHub Discussions docs](https://docs.github.com/en/discussions), [GitHub Gists docs](https://docs.github.com/en/get-started/writing-on-github/editing-and-sharing-content-with-gists)
 - **One path to begin:** [GitHub Docs, home](https://docs.github.com/en), [GitHub Changelog](https://github.blog/changelog/), [GitHub Discussions docs](https://docs.github.com/en/discussions), [GitHub Gists docs](https://docs.github.com/en/get-started/writing-on-github/editing-and-sharing-content-with-gists), [Workflow syntax for GitHub Actions](https://docs.github.com/en/actions/reference/workflows-and-actions/workflow-syntax)
+- **How to fill the form (wizard tips):** [GitHub Docs, home](https://docs.github.com/en), [GitHub Changelog](https://github.blog/changelog/), [GitHub Discussions docs](https://docs.github.com/en/discussions), [GitHub Gists docs](https://docs.github.com/en/get-started/writing-on-github/editing-and-sharing-content-with-gists), [Issue forms syntax for GitHub](https://docs.github.com/en/enterprise-cloud@latest/communities/using-templates-to-encourage-useful-issues-and-pull-requests/syntax-for-issue-forms)
 - **What happens automatically:** [GitHub Docs, home](https://docs.github.com/en), [GitHub Changelog](https://github.blog/changelog/), [GitHub Discussions docs](https://docs.github.com/en/discussions), [GitHub Gists docs](https://docs.github.com/en/get-started/writing-on-github/editing-and-sharing-content-with-gists)
 - **Important note:** [GitHub Docs, home](https://docs.github.com/en), [GitHub Changelog](https://github.blog/changelog/), [GitHub Discussions docs](https://docs.github.com/en/discussions), [GitHub Gists docs](https://docs.github.com/en/get-started/writing-on-github/editing-and-sharing-content-with-gists)
 - **Need help?:** [GitHub Docs, home](https://docs.github.com/en), [GitHub Changelog](https://github.blog/changelog/), [GitHub Discussions docs](https://docs.github.com/en/discussions), [GitHub Gists docs](https://docs.github.com/en/get-started/writing-on-github/editing-and-sharing-content-with-gists)
