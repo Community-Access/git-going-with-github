@@ -7,9 +7,9 @@ function getAutoResponse(commentBody, author) {
   const comment = (commentBody || '').toLowerCase();
   const safeAuthor = author || 'contributor';
 
-  if (comment.includes('@aria-bot') || comment.includes('@bot help') || comment.includes('need help')) {
+  if (comment.includes('@aria-bot') || comment.includes('@gandalf-bot') || comment.includes('@bot help') || comment.includes('need help')) {
     return [
-      `Hi @${safeAuthor}! I am Aria, your workshop agent. I see you are looking for help. That is exactly what I am here for. Here are some resources to get you unstuck:`,
+      `Hi @${safeAuthor}! I am Gandalf, your workshop agent. I bring a little magic to make this interaction experience clear, useful, and fun. I see you are looking for help, and that is exactly what I am here for. Here are some resources to get you unstuck:`,
       '',
       '**Guides:**',
       '- [Working with Pull Requests](../../docs/05-working-with-pull-requests.md)',
@@ -25,9 +25,9 @@ function getAutoResponse(commentBody, author) {
     ].join('\n');
   }
 
-  if (comment.includes('merge conflict') || (comment.includes('@aria-bot') && comment.includes('conflict'))) {
+  if (comment.includes('merge conflict') || ((comment.includes('@aria-bot') || comment.includes('@gandalf-bot')) && comment.includes('conflict'))) {
     return [
-      `Hi @${safeAuthor}! I am Aria. I see you want to learn about merge conflicts. They can seem intimidating at first, but resolving them is a normal developer skill. Let us walk through it together.`,
+      `Hi @${safeAuthor}! I am Gandalf. I see you want to learn about merge conflicts. They can seem intimidating at first, but resolving them is a normal developer skill. Let us walk through it together.`,
       '',
       '**Quick steps to resolve:**',
       '',
@@ -44,9 +44,9 @@ function getAutoResponse(commentBody, author) {
     ].join('\n');
   }
 
-  if (comment.includes('@aria-bot') && (comment.includes('check') || comment.includes('review'))) {
+  if ((comment.includes('@aria-bot') || comment.includes('@gandalf-bot')) && (comment.includes('check') || comment.includes('review'))) {
     return [
-      `Hi @${safeAuthor}! Aria here. I see you want me to check your work.`,
+      `Hi @${safeAuthor}! Gandalf here. I see you want me to check your work.`,
       '',
       '- **If you are on an Issue:** Great job practice @mentions! Next, head to Challenge 4 to start branching.',
       '- **If you are on a Pull Request:** I am already scanning your changes! Look for my "Validation Report" above. If you do not see it, wait a few seconds and refresh.',
@@ -57,7 +57,7 @@ function getAutoResponse(commentBody, author) {
 
   if (comment.includes('how do i') && comment.includes('request review')) {
     return [
-      `Hi @${safeAuthor}! Aria here. To request a review, use the reviewer controls on your pull request. Here is exactly how to do it:`,
+      `Hi @${safeAuthor}! Gandalf here. To request a review, use the reviewer controls on your pull request. Here is exactly how to do it:`,
       '',
       '1. On your PR page, find the "Reviewers" section in the right sidebar',
       '2. Click the gear icon next to "Reviewers"',

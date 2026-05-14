@@ -16,7 +16,7 @@ function buildValidationReportBody(results, timestampIso) {
     ? "**Validation Passed** [PASS]"
     : "**Validation Needs Attention** [ACTION REQUIRED]";
 
-  let body = `Hi! I am Aria. Here is my review of your pull request:\n\n### Report Status\n${status}\n\n`;
+  let body = `Hi! I am Gandalf, your workshop agent. I bring a little magic to make this interaction clear, helpful, and fun. Here is my review of your pull request:\n\n### Report Status\n${status}\n\n`;
 
   if (safeResults.passed) {
     body += `> Great job. Your pull request has the structure reviewers expect.\n> When your challenge issue is complete, close it to unlock the next challenge.\n\n`;
@@ -68,7 +68,7 @@ function buildValidationReportBody(results, timestampIso) {
   });
 
   body += "\n---\n";
-  body += `*Automated validation by Learning Room Bot. Aria generated this review. Last updated: ${ts}*\n`;
+  body += `*Automated validation by Learning Room Bot. Gandalf generated this review. Last updated: ${ts}*\n`;
   body += "*Questions? Check [PR Guidelines](../../docs/06-working-with-pull-requests.md) or mention @facilitator*";
   return body;
 }

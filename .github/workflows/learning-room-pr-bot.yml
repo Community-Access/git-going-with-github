@@ -42,15 +42,17 @@ jobs:
 
               if (firstIssue) {
                 const welcomeBody = [
-                  '## Workspace Agent Aria: Welcome to Your First Issue',
+                  '## Workspace Agent Gandalf: Welcome to Your First Issue',
                   '',
-                  'Hi @' + context.payload.issue.user.login + '! I am Aria. Great job successfully opening an Issue!',
+                  'Hi @' + context.payload.issue.user.login + '! I am Gandalf. Great job successfully opening an Issue!',
+                  '',
+                  'I am here to bring a little magic to the interaction experience and keep this learning journey fun while you build real skills.',
                   '',
                   'Remember, a good Issue for a human is also a perfect **prompt** for an AI. By carefully describing the problem here, you are already practicing how to command your custom Capstone Agent tomorrow!',
                   '',
                   'Keep up the great work!',
                   '---',
-                  '*This is an automated message from Aria, your Workshop Agent.*'
+                  '*This is an automated message from Gandalf, your Workshop Agent.*'
                 ].join('\n');
 
                 await github.rest.issues.createComment({
@@ -106,7 +108,7 @@ jobs:
                   '**Remember:** Every experienced contributor started exactly where you are now. Questions are welcome!',
                   '',
                   '---',
-                  '*This is an automated message from the Aria the Workshop Agent. Need help? Mention @facilitator in a comment.*'
+                  '*This is an automated message from Gandalf the Workshop Agent. Need help? Mention @facilitator in a comment.*'
                 ].join('\n');
 
                 await github.rest.issues.createComment({
@@ -270,7 +272,7 @@ jobs:
               state: state,
               target_url: `https://github.com/${context.repo.owner}/${context.repo.repo}/pull/${context.payload.pull_request.number}#issuecomment`,
               description: description,
-              context: 'Aria the Workshop Agent / Validation'
+              context: 'Gandalf the Workshop Agent / Validation'
             });
 
   celebrate-review:
@@ -293,7 +295,7 @@ jobs:
               '@' + context.payload.pull_request.user.login + ' \u2014 your PR has been approved! A facilitator will merge it soon.',
               '',
               '---',
-              '*Aria the Workshop Agent celebrates your collaboration*'
+              '*Gandalf the Workshop Agent celebrates your collaboration*'
             ].join('\n');
 
             await github.rest.issues.createComment({
@@ -327,6 +329,6 @@ jobs:
                 owner: context.repo.owner,
                 repo: context.repo.repo,
                 issue_number: context.payload.issue.number,
-                body: response + '\n\n---\n*Auto-response from Aria 🤖, your friendly Workshop Agent*'
+                body: response + '\n\n---\n*Auto-response from Gandalf, your friendly Workshop Agent*'
               });
             }
