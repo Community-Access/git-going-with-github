@@ -1,0 +1,345 @@
+[ALEX]
+This is Git Going with GitHub, episode 18: Glossary of Terms. I’m Alex. Today is about making the vocabulary feel usable, not intimidating.
+
+[JAMIE]
+I’m Jamie. I’m here for the practical side: what the word means, what action it points to, and how to tell you’re on track.
+
+[PAUSE]
+
+[ALEX]
+We’re covering one big goal: a comprehensive glossary for Git, GitHub, open source, and accessibility terms. The win is not memorizing every definition. The win is knowing where to look and what move each term suggests.
+
+[JAMIE]
+So first understanding, then action, then checking the result.
+
+[ALEX]
+Exactly. That rhythm keeps people steady: notice the term, do one thing, then confirm what changed.
+
+[PAUSE]
+
+[JAMIE]
+Set the stage for the learner. What are they walking into?
+
+[ALEX]
+Every Term You Need for Open Source Contribution: this is the reference point for the workshop. If a word shows up and feels unfamiliar, come back here first.
+
+[ALEX]
+And the learning cards matter too. Learning Cards: Navigating the Glossary is built to do three things: name the idea, give a usable move, and show what proof looks like.
+
+[ALEX]
+A few navigation tips make the glossary much easier to use. Headings help you jump between sections, the table of contents gives you structure, and the alphabetical quick reference is there for fast lookup. If you use a screen reader, heading navigation and search are your best friends. If you’re zoomed in, the alphabetized table can be easier to scan because each entry stays compact.
+
+[JAMIE]
+What’s the first concept that makes the rest feel less abstract?
+
+[ALEX]
+Start with repository, or repo. A repository is the home for a project’s files and history. It contains the code, docs, folders, and every saved change. That’s the basic container everything else hangs off of.
+
+[JAMIE]
+That already sounds more manageable than “a bunch of Git stuff.”
+
+[ALEX]
+That’s the point. The vocabulary becomes useful when it points to a concrete place.
+
+[PAUSE]
+
+[ALEX]
+Next is organization, often shortened to org. On GitHub, an organization is a shared account used by a team or project. Open source work often lives there instead of under one person’s personal account.
+
+[JAMIE]
+What’s the learner supposed to notice about forks and sharing?
+
+[ALEX]
+A fork is your own copy of someone else’s repository under your account. It’s a personal workspace. If you fork a project, you still keep the link back to the original project, but now you can make changes safely in your own copy.
+
+[ALEX]
+That leads into remote. A remote is a repository hosted somewhere else, usually on GitHub, that your local repo knows how to talk to. A local repository lives on your computer. A remote lives online. When people say “local” and “remote,” they’re just naming where the repository exists.
+
+[ALEX]
+If you want to see your remotes, a common command is git remote -v. If you want to add one, you might use git remote add upstream https://github.com/original-owner/repo.git. Treat commands like examples, not magic words: understand the job first, then run them.
+
+[JAMIE]
+And origin?
+
+[ALEX]
+Origin is the default name Git gives to the remote you cloned from. If you clone your fork, origin usually points to your fork on GitHub. If you add the original project too, that one is often called upstream. Origin is your starting point. Upstream is the source you’re syncing from.
+
+[PAUSE]
+
+[ALEX]
+Before any of that, .gitignore matters. It’s a file in the root of the repo that tells Git what to leave alone. Git won’t track ignored files or try to commit them.
+
+[JAMIE]
+Why do people use it so often?
+
+[ALEX]
+Because it keeps the repository clean. It’s how you avoid committing temporary files, build output, local config, secrets, IDE settings, and other things that shouldn’t travel with the project.
+
+[ALEX]
+A simple example might ignore things like dist/, build/, node_modules/, .env, or editor folders like .vscode and .idea. One important detail: .gitignore only helps with untracked files. If Git is already tracking a file, you have to remove it from tracking first.
+
+[ALEX]
+That’s when a command like git rm --cached filename can come up. Again, don’t copy blindly. Read it, understand what state it changes, then use it when the lesson calls for it.
+
+[PAUSE]
+
+[JAMIE]
+How does clone fit into all this?
+
+[ALEX]
+Clone means copying a repository from GitHub to your computer so you can work on it locally. When you clone, you get the files and the history. A common example is git clone https://github.com/your-username/repo-name.git.
+
+[ALEX]
+That’s also a good moment to remember accessibility basics: clear labels, predictable headings, and visible focus help everyone, especially screen reader users and keyboard users. A landmark is a major page region like navigation, main content, or footer. Heading structure gives that content a map. Focus is where your keyboard is currently active. Tab order is the order you move through interactive elements when you press Tab. ARIA is extra markup that helps expose meaning to assistive tech when native HTML isn’t enough.
+
+[JAMIE]
+That’s the kind of thing that keeps a learner oriented.
+
+[ALEX]
+Exactly. A named thing is easier to trust than a vague shape on the screen.
+
+[ALEX]
+Now branch. A branch is a separate line of work inside a repository. The main branch, often called main or sometimes master in older projects, usually holds the stable version.
+
+[ALEX]
+Common branch names are usually descriptive. You’ll see names like feature/new-button, fix/login-bug, docs/update-readme, or develop in projects that use it. The name should help you guess the purpose.
+
+[JAMIE]
+So branches are about making change without wrecking the main line.
+
+[ALEX]
+Right. They’re a way to work without stepping on the stable path.
+
+[PAUSE]
+
+[ALEX]
+Commit is next. A commit is a saved snapshot of changes at a specific moment. It has a message, an author, a timestamp, and a SHA or hash, which is the unique identifier for that snapshot. SHA is usually spoken like “sha” or “ess-aych-ay,” depending on the group.
+
+[ALEX]
+Good commit messages are usually in the imperative mood: “Fix typo in README,” not “Fixed typo” or “Fixing typo.” That makes the history easier to read.
+
+[JAMIE]
+What should they look for inside a commit?
+
+[ALEX]
+The message, the hash, the author, the time, and the actual file changes. A commit is a story about what changed and why.
+
+[ALEX]
+A diff helps you read that story. A diff, short for difference, shows what changed between two versions of a file. Added lines usually show up in green with a plus sign. Removed lines show up with a minus sign.
+
+[ALEX]
+That’s also where terms like HEAD show up. HEAD is Git’s way of saying “where you are right now” in the repository history. If you’re on a branch, HEAD usually points there. If you’re in a detached HEAD state, HEAD points directly to a commit instead of a branch.
+
+[JAMIE]
+What causes detached HEAD?
+
+[ALEX]
+Usually checking out a specific commit, tag, or old history snapshot. It means you can inspect or experiment, but new commits won’t belong to a branch unless you create one. The fix is usually to create a branch or switch back to a branch before continuing.
+
+[PAUSE]
+
+[JAMIE]
+Let’s move into collaboration. What’s an issue?
+
+[ALEX]
+An issue is a discussion item in a GitHub repository. People use it for bugs, features, questions, and ideas. It has a number, a title, a body, and often labels, assignees, milestones, and comments.
+
+[ALEX]
+That’s where terms like triage show up too. Triage means sorting, prioritizing, and routing issues or pull requests so the right work gets attention. A maintainer or collaborator may triage by adding labels, assigning people, or deciding what happens next.
+
+[JAMIE]
+What’s the next step after someone opens a change?
+
+[ALEX]
+Usually a pull request, or PR. A pull request is a proposal to merge changes from one branch into another. If you hear “PR,” it’s usually pronounced “pee-ar.” It’s the place where the change gets reviewed before it becomes part of the target branch.
+
+[ALEX]
+A good PR usually shows the diff, explains the reason for the change, names the source branch and target branch, and invites review. A draft pull request is one that isn’t ready yet. It says, “I’m working, but don’t merge this now.”
+
+[JAMIE]
+And review?
+
+[ALEX]
+Code review is when one or more people look at the PR and give feedback before merging. A review might comment, approve, or request changes. A comment is just a note. Approve says the change looks good. Request changes says the author still needs to address something important.
+
+[ALEX]
+That leads into merge. Merging combines changes from one branch into another. When a PR is accepted, a maintainer or collaborator may merge it into the target branch.
+
+[ALEX]
+Sometimes merge conflict comes up. A merge conflict happens when two branches change the same part of the same file in incompatible ways. Git can’t choose automatically, so it pauses and asks you to resolve it manually.
+
+[JAMIE]
+So conflict doesn’t mean failure, just a decision point.
+
+[ALEX]
+Exactly. It means Git needs help.
+
+[PAUSE]
+
+[ALEX]
+A few more collaboration terms help the whole workflow make sense. Upstream is the original repository you forked from. Downstream is the direction changes flow after they leave that source and land in a fork, a branch, or another dependency chain. Origin is your default remote. Remote means a repository elsewhere. Local means on your machine.
+
+[JAMIE]
+What about labels, milestones, and projects?
+
+[ALEX]
+A label is a tag used to categorize an issue or PR, like bug, enhancement, or good first issue. A milestone groups work toward a bigger goal, usually a release or time frame. GitHub Projects is a planning board that helps organize tasks, status, and progress across issues and PRs.
+
+[ALEX]
+Those terms are about coordination. They help the team answer: what is this, who owns it, and when should it happen?
+
+[PAUSE]
+
+[JAMIE]
+Let’s shift to people and roles.
+
+[ALEX]
+A maintainer is someone who helps run the project and make final calls. A contributor is anyone who helps by submitting code, docs, fixes, or feedback. A collaborator is someone with access to help work directly in the repository. Triage, as we said, is the sorting and directing work that keeps the queue healthy.
+
+[ALEX]
+Those roles aren’t about status symbols. They’re about responsibility and access.
+
+[JAMIE]
+What about the common shorthand people throw around?
+
+[ALEX]
+You’ll hear repo, PR, CI, CD, OSS for open source software, and maybe SHA. CI means continuous integration. CD usually means continuous delivery or continuous deployment. People also say “upstream” and “downstream” a lot, and those are just direction words for where changes come from and where they go.
+
+[PAUSE]
+
+[ALEX]
+Now into the technical GitHub concepts. Fetch and pull are close, but not the same. Fetch downloads new data from a remote without changing your current branch. Pull does fetch plus merge, so it brings the changes into your working branch right away.
+
+[JAMIE]
+When is fetch the safer choice?
+
+[ALEX]
+When you want to see what changed first. When you want to compare histories before mixing anything in. Fetch gives you information without moving your branch.
+
+[ALEX]
+And when do you pull?
+
+[JAMIE]
+When you’re ready to bring those changes into your branch.
+
+[ALEX]
+Exactly. Pull is the more direct move when you’re ready to combine the work.
+
+[PAUSE]
+
+[ALEX]
+Stash is another useful term. Stash means temporarily saving unfinished changes so you can switch tasks without committing them. It’s like putting work on a side shelf.
+
+[ALEX]
+A common workflow is: make a few changes, stash them, switch branches, do the urgent thing, then pop the stash and continue. The point is to keep your working tree clean without losing progress.
+
+[JAMIE]
+What about rebase?
+
+[ALEX]
+Rebase rewrites a branch so its commits appear on top of another base commit. It can make history cleaner and linear, but it changes commit identity. That’s why you use it carefully.
+
+[ALEX]
+The difference between merge and rebase is worth naming. Merge preserves both lines of history. Rebase replays commits onto a new base. Use merge when you want to preserve the exact branching story. Use rebase when you want a straight, tidy history and you know what you’re doing.
+
+[ALEX]
+Do not rebase shared public history unless your team has agreed to it. That’s the big warning. Rewriting commits other people already use can cause confusion.
+
+[JAMIE]
+And cherry-pick?
+
+[ALEX]
+Cherry-pick means taking one specific commit from one branch and applying it to another branch. It’s useful when you need one fix without bringing over the whole branch. It’s precise, but like rebase, it changes history in a way you should understand before using it.
+
+[PAUSE]
+
+[ALEX]
+Force push is another one people hear early. A force push rewrites the remote branch to match your local branch, even if it overwrites history.
+
+[JAMIE]
+When is that okay?
+
+[ALEX]
+Only in limited cases, like when you’re working on your own branch and you’ve intentionally rewritten history with rebase or cleanup.
+
+[ALEX]
+When is it never okay? When you might overwrite someone else’s shared work without warning. The safer option is --force-with-lease, which checks that the remote hasn’t changed unexpectedly before pushing.
+
+[ALEX]
+That’s why a rebase sometimes leads to a force push. If you rewrote your commits locally, the remote history no longer matches, so you need a controlled update to publish the new branch shape.
+
+[JAMIE]
+And push versus pull?
+
+[ALEX]
+Push sends your local commits to the remote. Pull brings remote changes down to you. Clone creates a fresh local copy. Fetch updates your local knowledge without merging. Those four words are the core movement terms.
+
+[PAUSE]
+
+[ALEX]
+A couple more technical terms round this out. Status check is the result of an automated test or workflow run on a PR. Maintainers often require checks to pass before merging. You’ll usually see a green check when all is well, a red X when something fails, and a yellow or running state while the checks are still in progress.
+
+[JAMIE]
+So the check isn’t just decoration either.
+
+[ALEX]
+No, it’s part of the gate.
+
+[ALEX]
+GitHub Actions is the automation system built into GitHub. A workflow is an automated set of steps, usually written in YAML, that runs on events like pushes or pull requests. CI/CD is the broader practice of automating tests, builds, and delivery.
+
+[ALEX]
+Webhook is another useful term. A webhook is a notification GitHub sends to another service when something happens, like a push or an opened PR. It’s how tools outside GitHub stay in sync.
+
+[PAUSE]
+
+[JAMIE]
+Let’s bring in the accessibility glossary too.
+
+[ALEX]
+Sure. A screen reader is software that reads on-screen content aloud or turns it into braille. A landmark is a major region on the page, like main or navigation. A heading gives structure and helps people jump around content. ARIA stands for Accessible Rich Internet Applications, and it’s a set of attributes that can improve how assistive tech understands interface elements.
+
+[ALEX]
+Focus is the current active point for keyboard interaction. Tab order is the sequence you move through when pressing Tab. Good tab order should match the visual and logical flow of the page. If it doesn’t, keyboard users get lost fast.
+
+[JAMIE]
+So the lesson there is: structure matters.
+
+[ALEX]
+Exactly. Structure is part of accessibility, not just decoration.
+
+[PAUSE]
+
+[ALEX]
+Now for agent terms. Copilot is GitHub’s AI assistant, usually spoken as “co-pilot.” An agent is a tool or assistant that can take actions on your behalf, often by following instructions and working through tasks.
+
+[JAMIE]
+What about slash commands?
+
+[ALEX]
+A slash command is a command you type with a leading slash, often in chat or agent interfaces, to ask for a specific action. A prompt is the input or request you give the model or agent. An instruction file is a file that tells the agent how to behave in a project, what rules to follow, and what context matters.
+
+[ALEX]
+Those terms are about shaping behavior. Prompt says what you want. Instruction file says how the assistant should work. Copilot and agents are there to help, but the human still needs to steer.
+
+[PAUSE]
+
+[JAMIE]
+Let’s finish with a few last terms people run into all the time.
+
+[ALEX]
+README is the starting point for a project’s overview. LICENSE tells people how they may use the code. CONTRIBUTING explains how to help. A branch name, a commit hash, a PR number, and an issue number are all identifiers that help you find the exact thing you mean.
+
+[ALEX]
+And remember the pronunciation help when words feel fuzzy. Repo is “ree-poh.” Org is “org.” PR is “pee-ar.” SHA is usually “sha.” Copilot is “co-pilot.” CI/CD is “see-eye, see-dee.” The goal is confidence, not perfection.
+
+[PAUSE]
+
+[ALEX]
+Carry the map: know where you are, know which action you’re taking, and know what confirmation should come next. If the confirmation is missing, stop and check. That pause is part of working well.
+
+[JAMIE]
+That’s a better finish than just “follow the steps.”
+
+[ALEX]
+Right. Steps matter, but understanding is what makes the steps reusable. That’s episode 18.

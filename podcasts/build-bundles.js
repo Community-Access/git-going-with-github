@@ -1566,11 +1566,35 @@ const episodes = [
   },
   {
     number: 49,
-    slug: 'next-steps',
+    slug: 'github-accessibility-and-open-source',
+    title: 'GitHub Accessibility and Open Source at Scale',
+    description: 'Connecting capstone work to GitHub\'s accessibility program and open source at scale.',
+    duration: '8-10 min',
+    sources: ['21-github-accessibility-and-open-source.md'],
+    crossRefs: [
+      { label: 'What Comes Next - the final lesson', file: '22-what-comes-next.md' }
+    ],
+    concepts: [
+      'GitHub\'s mission: accelerating human progress through developer collaboration',
+      'Why accessibility is part of belonging in open source',
+      'Four strategic accessibility priorities: employees, developers, customers, open source',
+      'GitHub Fundamentals and accessibility accountability',
+      'GitHub Accessibility Scanner and accessibility-focused Copilot instructions',
+      'GitHub\'s pledge to improve accessibility in open source at scale',
+      'Connecting capstone evidence habits to real-world accessibility work'
+    ],
+    focus: `- Connecting capstone work to the larger GitHub accessibility ecosystem
+- Framing accessibility as product quality and contributor belonging
+- Preparing learners to apply capstone skills in open source
+- Transitioning to optional reference materials`
+  },
+  {
+    number: 79,
+    slug: 'what-comes-next',
     title: 'What Comes Next',
     description: 'How to continue learning, contributing, and building confidence after the workshop.',
     duration: '8-10 min',
-    sources: ['21-next-steps.md'],
+    sources: ['22-what-comes-next.md'],
     crossRefs: [
       { label: 'Resources and links', file: 'appendix-x-resources.md' },
       { label: 'GitHub Skills catalog', file: 'appendix-z-github-skills.md' }
@@ -1585,6 +1609,30 @@ const episodes = [
     focus: `- Helping learners leave with momentum
 - Giving concrete next steps for continued contribution
 - Normalizing slow, steady practice after the event`
+  },
+  {
+    number: 49,
+    slug: 'github-accessibility-and-open-source',
+    title: 'GitHub Accessibility and Open Source at Scale',
+    description: 'Connecting capstone work to GitHub\'s accessibility program and open source at scale.',
+    duration: '8-10 min',
+    sources: ['21-github-accessibility-and-open-source.md'],
+    crossRefs: [
+      { label: 'What Comes Next - the final lesson', file: '22-what-comes-next.md' }
+    ],
+    concepts: [
+      'GitHub\'s mission: accelerating human progress through developer collaboration',
+      'Why accessibility is part of belonging in open source',
+      'Four strategic accessibility priorities: employees, developers, customers, open source',
+      'GitHub Fundamentals and accessibility accountability',
+      'GitHub Accessibility Scanner and accessibility-focused Copilot instructions',
+      'GitHub\'s pledge to improve accessibility in open source at scale',
+      'Connecting capstone evidence habits to real-world accessibility work'
+    ],
+    focus: `- Connecting capstone work to the larger GitHub accessibility ecosystem
+- Framing accessibility as product quality and contributor belonging
+- Preparing learners to apply capstone skills in open source
+- Transitioning to optional reference materials`
   },
   {
     number: 50,
@@ -1661,6 +1709,94 @@ const episodes = [
     focus: `- Introducing the CLI as an optional power tool
 - Keeping command-line examples approachable
 - Connecting CLI output to screen reader review habits`
+  },
+  {
+    number: 54,
+    slug: 'agent-installation-setup',
+    title: 'Agent Installation and Setup',
+    description: 'Installing accessibility agents, configuring for your environment, and verifying the setup.',
+    duration: '10-12 min',
+    sources: ['appendix-aa-agent-installation-setup.md'],
+    concepts: [
+      'What agents are and where they fit in your development workflow',
+      'Installation prerequisites: VS Code, GitHub account, internet connection',
+      'Step-by-step installation for different platforms',
+      'Signing in and authenticating with GitHub',
+      'Verifying the installation succeeded',
+      'Configuring accessibility settings for agents',
+      'Troubleshooting common installation issues',
+      'Getting help when setup does not work'
+    ],
+    focus: `- Making agent setup approachable and low-friction
+- Covering platform-specific variations honestly
+- Emphasizing accessibility configuration
+- Providing clear troubleshooting paths`
+  },
+  {
+    number: 55,
+    slug: 'advanced-agent-patterns',
+    title: 'Advanced Agent Patterns',
+    description: 'Using agents for code review, pair programming, CI/CD integration, and team workflows.',
+    duration: '12-15 min',
+    sources: ['appendix-ab-advanced-agent-patterns.md'],
+    concepts: [
+      'What patterns mean in agent context: repeatable, coordinated workflows',
+      'Code review with agent assistance: agent scan then human review',
+      'Real-time pair programming with agents as a third voice',
+      'Creating and sharing team agent prompts and preferences',
+      'Integrating agents into CI/CD pipelines',
+      'Building custom agent configurations for your team',
+      'Accessibility patterns for agent-assisted workflows',
+      'Logging and learning from agent suggestions',
+      'When to rely on agent suggestions and when to override them'
+    ],
+    focus: `- Moving from single agent queries to sustained workflows
+- Emphasizing human agency and verification
+- Building team practices around agent usage
+- Making accessibility central, not an afterthought`
+  },
+  {
+    number: 56,
+    slug: 'document-developer-tools',
+    title: 'Document Developer Tools',
+    description: 'Managing documentation with version control, collaboration, accessibility, and developer workflows.',
+    duration: '10-12 min',
+    sources: ['appendix-ac-document-developer-tools.md'],
+    concepts: [
+      'Why documents belong in version control alongside code',
+      'Markdown as the foundation for Git-tracked documentation',
+      'Using collaborative editors (Google Docs, Live Share) for drafting',
+      'Checking documents for accessibility: images, contrast, structure',
+      'Tools for different document formats: Word, PDF, HTML, Markdown',
+      'Integrating document workflows with GitHub',
+      'Building documentation CI checks for accessibility and rendering',
+      'Keeping documentation current as code changes'
+    ],
+    focus: `- Positioning documents as code with the same quality standards
+- Making accessible documentation the default, not an afterthought
+- Connecting documentation changes to repository workflow`
+  },
+  {
+    number: 79,
+    slug: 'what-comes-next',
+    title: 'What Comes Next',
+    description: 'How to continue learning, contributing, and building confidence after the workshop.',
+    duration: '8-10 min',
+    sources: ['22-what-comes-next.md'],
+    crossRefs: [
+      { label: 'Resources and links', file: 'appendix-x-resources.md' },
+      { label: 'GitHub Skills catalog', file: 'appendix-z-github-skills.md' }
+    ],
+    concepts: [
+      'How to keep practicing without the live workshop structure',
+      'Finding approachable issues and communities',
+      'Turning workshop evidence into a portfolio story',
+      'Continuing with GitHub Skills and Community Access resources',
+      'Building a sustainable open source habit'
+    ],
+    focus: `- Helping learners leave with momentum
+- Giving concrete next steps for continued contribution
+- Normalizing slow, steady practice after the event`
   }
 ];
 

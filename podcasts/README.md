@@ -225,8 +225,10 @@ The following table lists the supported podcast build and validation commands.
 | `npm run build:podcast-challenge-bundles` | Generate source bundles for Challenge Coach episodes |
 | `npm run generate:podcast-transcripts` | Replace old scripts with fresh reviewable Alex/Jamie draft transcripts |
 | `npm run generate:podcast-transcript -- --slug <slug>` | Regenerate one selected transcript or a filtered range using `--start`, `--end`, and `--group` |
-| `npm run podcast:agentic:packet -- --slug <slug>` | Build a single episode source packet for GPT-5.4 rewrite and review workflows |
-| `npm run podcast:agentic:promote -- --slug <slug>` | Promote an accepted GPT-5.4 pilot transcript into the live script path and refresh its segment JSON |
+| `npm run podcast:agentic:packet -- --slug <slug>` | Build a single episode source packet for rewrite and review workflows |
+| `npm run podcast:agentic:stage -- --slug <slug> --input <file>` | Save a retryable candidate rewrite under `logs/agentic-pilots/candidates/<slug>/attempt-###.txt` |
+| `npm run podcast:agentic:catalog` | Run full-catalog coverage/style/repetition evaluation with per-episode reports |
+| `npm run podcast:agentic:promote -- --slug <slug>` | Promote an accepted candidate transcript into the live script path only when all gates pass |
 | `npm run podcast:chapters:normalize` | Normalize generated chapter-plan sidecars to remove weak or overly generic titles |
 | `npm run podcast:chapters:audit` | Audit all generated chapter-plan sidecars and report title quality across the full catalog |
 | `npm run build:podcast-transcripts` | Run validation, regenerate bundles, regenerate transcripts, and rebuild podcast page/feed |
@@ -290,7 +292,7 @@ Chapter markers now have a two-stage flow:
 
 If no transcript-authored chapter plan exists, the metadata tool falls back to the older pause-aware heuristic. That fallback starts with the opening segment, prefers natural boundaries after `[PAUSE]`, avoids very short chapters, and forces a new marker when a section grows too long.
 
-For one-episode GPT-5.4 pilot work, see `podcasts/tools/agentic-pilot/README.md`.
+For one-episode agentic pilot work (automatic model selection), see `podcasts/tools/agentic-pilot/README.md`.
 
 For a full-catalog refresh, the recommended sequence is:
 

@@ -1,0 +1,201 @@
+[ALEX]
+Welcome to episode 55 of Git Going with GitHub: Advanced Agent Patterns. I am Alex, and today we are teaching this topic as a conversation you can carry into the workshop, not as a page you have to memorize.
+
+[JAMIE]
+And I am Jamie. I will keep pulling the lesson back to real learners, real repositories, and the evidence that proves the work happened.
+
+[PAUSE]
+
+[ALEX]
+The lesson focus is Using agents for code review, pair programming, CI/CD integration, and team workflows. We will treat every step as a teachable decision, because that is what makes the skill portable and the workflow feel smooth.
+
+[JAMIE]
+So we should explain the why clearly enough that the steps make sense when the learner meets them later and still feel doable.
+
+[ALEX]
+That is it. If a listener only has audio right now, they should still get the complete concept and know what evidence would prove success.
+
+[PAUSE]
+
+[JAMIE]
+Okay, set the room for us. What are we walking into?
+
+[ALEX]
+Architecture, Skills, Hooks, and Advanced Patterns for AI Agents: This appendix covers how to build sophisticated agent workflows using subagent delegation, lifecycle hooks, reusable skills, and browser automation tools. The next useful detail is concrete: These patterns scale beyond single-agent use to orchestrate complex accessibility audits and remediation workflows.
+
+[ALEX]
+The next layer is this. Here is the learner-facing version. An agent is a standalone AI system (like @aria-specialist) that understands one domain (ARIA patterns). Put another way, a subagent is an agent invoked by another agent to delegate work. A good GitHub workflow is like a well-run meeting: everyone knows the topic, the next action, and who has the floor.
+
+[JAMIE]
+What is the one idea that makes the next few steps less mysterious?
+
+[ALEX]
+This is the move inside How to Use Subagents: in your agent's instructions or a custom prompt, invoke subagents with the runSubagent() function. That matters in practice: // Pseudo-code - how agents invoke subagents const results = await runSubagent({ agentName: '@aria-specialist', prompt: 'Check this component for ARIA compliance: ', description: 'ARIA pattern review' });.
+
+[JAMIE]
+That feels much more doable when you say it as one move.
+
+[ALEX]
+Right. The magic is not speed. The magic is knowing what changed and why it matters.
+
+[PAUSE]
+
+[ALEX]
+Now bring the learner back to the room. Anchor this part on Invoke Skills. When you need to audit a webpage, use the web-scanning skill. This is the part to say slowly: "Scan the following URL for accessibility issues and generate a severity score.".
+
+[ALEX]
+For a learner, the useful signals are concrete. URL: https://example.com. Severity model: WCAG 2.2 AA. Output: JSON report.
+
+[JAMIE]
+What would you say to someone who is already bracing for this to be too much?
+
+[ALEX]
+The reason this matters is simple: what problem does this skill solve?
+
+[ALEX]
+The useful habit is simple: orient, act, verify, then continue. That pause between action and trust is part of the work.
+
+[ALEX]
+That matters because of the next idea. Inputs has three jobs: name the idea, give the learner a move, and show what counts as evidence.
+
+[ALEX]
+On the ground, that means a few things. URL or file path. Configuration (optional).
+
+[PAUSE]
+
+[JAMIE]
+How would you walk the room through that step by step?
+
+[ALEX]
+Workflow has three jobs: name the idea, give the learner a move, and show what counts as evidence.
+
+[ALEX]
+Start here: Parse input. Then: Execute steps. Next: Collect results. Last: Format output. The sequence works because every action has a confirmation.
+
+[ALEX]
+This is where the talk moves from concept to action. Output has three jobs: name the idea, give the learner a move, and show what counts as evidence.
+
+[ALEX]
+The room should hear these as checkpoints. Report format (JSON, Markdown, CSV). Example output.
+
+[JAMIE]
+Now it sounds like a workflow instead of a wall of instructions.
+
+[ALEX]
+That is where confidence comes from: not from never getting lost, but from knowing how to recover.
+
+[JAMIE]
+Where do you want a learner to place their attention here?
+
+[ALEX]
+The teaching point here is not the label; it is the move. { "name": "aria-proactive-check", "event": "on-file-edit", "pattern": "src/ /.jsx", "agent": "@aria-specialist", "condition": "true", "action": "highlight-violations", "severity": "warning" }. That is the difference between guessing and knowing: { "name": "accessibility-commit-gate", "event": "on-commit", "pattern": " / ", "agent": "@web-accessibility-wizard", "condition": "severity = 'error'", "action": "block-save", "message": "Critical accessibility issues detected.
+
+[ALEX]
+These are the details that keep the idea from floating away. Links to related agents. Links to external docs.
+
+[PAUSE]
+
+[JAMIE]
+What is the ordered workflow?
+
+[ALEX]
+This part earns its place because when the user provides a URL, use the scan-page tool. This is where the workflow starts to feel magical, because the result becomes visible and explainable: Example: User: Audit https://example.com for accessibility issues Agent. That is the difference between following directions and owning the workflow.
+
+[ALEX]
+That becomes easier when you listen for these cues. Calls scan-page("https://example.com"). Receives findings JSON. Groups by category and severity. Reports top 10 issues.
+
+[ALEX]
+The path is straightforward once it is named. Step one is call scan-page(url) to get accessibility findings. Step two is filter findings by severity. Step three is group by category (ARIA, contrast, keyboard, etc.). Step four is present results in a prioritized table. The point is not speed; the point is never losing your place.
+
+[JAMIE]
+Give me the sequence, because order matters here.
+
+[ALEX]
+Smart Audit Based on Page Content: // Pseudo-code: Test a multi-step form const browser = await playwright.launch(); const page = await browser.newPage();. That gives the learner a foothold: await page.goto('https://example.com/form'); await page.fill(' name', 'Jane Doe'); await page.fill(' email', 'jane@example.com'); await page.click('button:has-text("Submit")');.
+
+[ALEX]
+If someone is taking notes, this is the short list. Recommend structure fixes (use @alt-text-headings). Recommend ARIA review (use @aria-specialist). Recommend behavioral testing (use @testing-coach). Severity: 12 errors, 8 warnings.
+
+[ALEX]
+First, call get-page-outline(url) to understand structure. Then, if heading hierarchy is broken. After that, if many interactive components detected. Finally, if dynamic content detected. Each step should leave a trace you can name.
+
+[ALEX]
+Treat examples as spoken recipes, not decorations. You may hear something like Browser Tool Limitations and Workarounds; Limitation Workaround; ------------ -----------; Cannot test with actual screen readers Use @testing-coach guidance instead; CLI offers NVDA integration; JavaScript-heavy pages may be incomplete Increase wait time. Read the command, understand what it changes, then run it only when the repository state matches the lesson.
+
+[JAMIE]
+What does the learner do first, second, and then after that?
+
+[ALEX]
+Here is the learner-facing version. Invoke all specialist agents in parallel. The next useful detail is concrete: Output: Numbered PR suggestions, 1 fix per commit message.
+
+[ALEX]
+Here is the part that makes the next action easier. Have you used NVDA before? What platform (Windows/Mac/Linux)? What component type (form/menu/modal)? Step 1: Learn Tab order basics (video link).
+
+[ALEX]
+Start here: Gather all findings simultaneously (not sequentially). Then: Deduplicate issues across agents. Next: Sort by severity. Last: Present top 10 blocking issues first. If one step does not match what you hear, stop there and re-orient.
+
+[JAMIE]
+Turn that into a path someone can follow.
+
+[ALEX]
+Walk it in order: Link to detailed fix guidance per agent; Missing alt text (3 images); Poor color contrast (5 elements); and Missing form labels (2 inputs). That is the rhythm: orient, act, verify, continue.
+
+[PAUSE]
+
+[JAMIE]
+If I am listening before the workshop starts, what should settle in my mind first?
+
+[ALEX]
+This is the move inside Purpose: codify internal accessibility standards and patterns used across all projects.
+
+[JAMIE]
+That is the kind of detail that keeps a screen reader user oriented.
+
+[ALEX]
+Yes. The named thing - the heading, tab, field, branch, or button - is the handhold.
+
+[JAMIE]
+Let's pause on Patterns Included. What should a learner take away from it?
+
+[ALEX]
+Patterns Included has three jobs: name the idea, give the learner a move, and show what counts as evidence.
+
+[ALEX]
+Think of this as 4 checks: Form validation messaging; Accessible modal templates; Color palette compliance; and Data table best practices. That small check between steps is what makes the workflow reliable.
+
+[JAMIE]
+Give me the version that sounds like an instructor, not a manual.
+
+[ALEX]
+Inputs has three jobs: name the idea, give the learner a move, and show what counts as evidence.
+
+[ALEX]
+The useful version is not abstract; it sounds like this. HTML snippet or component name. Pattern ID (e.g., "form-validation-v2").
+
+[PAUSE]
+
+[ALEX]
+The next point gives the learner a handle. Output has three jobs: name the idea, give the learner a move, and show what counts as evidence.
+
+[ALEX]
+This is where the lesson becomes something you can check. Remediation code. Compliance checklist. Testing steps.
+
+[JAMIE]
+Let's pause on Usage. What should a learner take away from it?
+
+[ALEX]
+If the interface shifts, Usage is still useful because @custom-agent check-pattern "form-validation-v2" [HTML]. That is not trivia. { "name": "continuous-accessibility-eval", "event": "on-schedule", "schedule": "0 0 0", "pattern": "src/ / ", "agent": "@accessibility-lead", "action": "create-eval-report", "track": { "metrics": ["page-score", "error-count", "warning-count"], "baseline".
+
+[PAUSE]
+
+[JAMIE]
+What should people carry with them after this?
+
+[ALEX]
+Carry the map. Know what page or tool you are in, know which action you are taking, and know what confirmation should follow. If the confirmation is missing, pause. That pause is not wasted time; it is professional judgment, and it is how complex workflows start to feel magical instead of stressful.
+
+[JAMIE]
+That is a better way to say it than just follow the steps.
+
+[ALEX]
+Right. Steps matter, but understanding wins. That is episode 55. Next in the series is episode 56, where we keep building the same contributor muscles.

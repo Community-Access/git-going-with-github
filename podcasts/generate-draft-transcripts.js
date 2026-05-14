@@ -848,7 +848,8 @@ function reframeSupport(point, index) {
     `That is not trivia. ${cleaned}`,
     `For someone navigating by keyboard or screen reader, this detail matters: ${cleaned}`,
     `The useful version is: ${cleaned}`,
-    `That is the difference between guessing and knowing: ${cleaned}`
+    `That is the difference between guessing and knowing: ${cleaned}`,
+    `This is where the workflow starts to feel magical, because the result becomes visible and explainable: ${cleaned}`
   ];
   const sentence = frames[index % frames.length];
   return /[.!?]$/.test(sentence) ? sentence : `${sentence}.`;
@@ -857,9 +858,9 @@ function reframeSupport(point, index) {
 function openingForEpisode(episode) {
   const topic = /^welcome/i.test(episode.title) ? 'the shape of the workshop' : cleanedTitle(episode.title);
   const openings = [
-    `Welcome to Git Going with GitHub, episode ${episode.number}: ${episode.title}. I am Alex. Today we are going to make ${topic} something you can explain, practice, and recover from when the interface surprises you.`,
-    `Welcome back to Git Going with GitHub. This is episode ${episode.number}: ${episode.title}. I am Alex, and today we are turning ${topic} from a list of instructions into a working mental model.`,
-    `This is Git Going with GitHub, episode ${episode.number}: ${episode.title}. I am Alex. By the end of this episode, ${topic} should feel less like a wall of GitHub words and more like a set of moves you can trust.`,
+    `Welcome to Git Going with GitHub, episode ${episode.number}: ${episode.title}. I am Alex. Today we are going to make ${topic} feel magical in practice: clear, teachable, and recoverable when the interface surprises you.`,
+    `Welcome back to Git Going with GitHub. This is episode ${episode.number}: ${episode.title}. I am Alex, and today we are turning ${topic} from a list of instructions into a working mental model that actually feels alive.`,
+    `This is Git Going with GitHub, episode ${episode.number}: ${episode.title}. I am Alex. By the end of this episode, ${topic} should feel less like a wall of GitHub words and more like a set of moves with visible momentum.`,
     `Welcome to episode ${episode.number} of Git Going with GitHub: ${episode.title}. I am Alex, and today we are teaching this topic as a conversation you can carry into the workshop, not as a page you have to memorize.`
   ];
   return openings[episode.number % openings.length];
@@ -868,7 +869,7 @@ function openingForEpisode(episode) {
 function jamieOpeningForEpisode(episode) {
   const openings = [
     'And I am Jamie. I will be the voice of the learner who is willing to ask, what is this for, where am I, and how do I know I did it right?',
-    'And I am Jamie. I will stop us whenever the instructions sound simple on paper but might feel different with a keyboard and screen reader.',
+    'And I am Jamie. I will stop us whenever the instructions sound simple on paper but feel less magical at the keyboard with a screen reader.',
     'And I am Jamie. I am here for the practical questions: what should I listen for, what can go wrong, and what is the next calm move?',
     'And I am Jamie. I will keep pulling the lesson back to real learners, real repositories, and the evidence that proves the work happened.'
   ];
@@ -877,10 +878,10 @@ function jamieOpeningForEpisode(episode) {
 
 function setupTeachingFrame(episode) {
   const frames = [
-    `The big idea today: ${episode.description}. We will name the concept, explain why it matters, practice the move, and point out the checks that tell you the work is real.`,
+    `The big idea today: ${episode.description}. We will name the concept, explain why it matters, practice the move, and point out the checks that make the outcome feel almost magical because it is verifiable.`,
     `${episode.description}. That is the surface description. Underneath it, we are building judgment: where to focus, what to ignore, and how to verify the result.`,
     `Today we are working on this: ${episode.description}. I want the learner to leave with a mental map, not just a remembered path through buttons.`,
-    `The lesson focus is ${episode.description}. We will treat every step as a teachable decision, because that is what makes the skill portable.`
+    `The lesson focus is ${episode.description}. We will treat every step as a teachable decision, because that is what makes the skill portable and the workflow feel smooth.`
   ];
   return frames[episode.number % frames.length];
 }
@@ -888,9 +889,9 @@ function setupTeachingFrame(episode) {
 function jamieFrameResponse(episode) {
   const responses = [
     'So the episode should work even if someone has not read the chapter yet.',
-    'So we are not using the audio as a shortcut around learning. We are using it to make the learning easier to enter.',
+    'So we are not using the audio as a shortcut around learning. We are using it to make the learning easier to enter and easier to remember.',
     'So the goal is understanding first, then action, then confirmation.',
-    'So we should explain the why clearly enough that the steps make sense when the learner meets them later.'
+    'So we should explain the why clearly enough that the steps make sense when the learner meets them later and still feel doable.'
   ];
   return responses[episode.number % responses.length];
 }
@@ -899,7 +900,7 @@ function alexFrameResponse(episode) {
   const responses = [
     'Exactly. The transcript has to stand on its own. It can point toward practice, but it should teach the concept right here in the conversation.',
     'Yes. A good audio lesson gives someone enough context to try the work with confidence, even before they open the written material.',
-    'Right. We are building a rhythm: orient yourself, take one intentional action, then verify what changed before moving on.',
+    'Right. We are building a rhythm: orient yourself, take one intentional action, then verify what changed before moving on. That rhythm is where the magic lives.',
     'That is it. If a listener only has audio right now, they should still get the complete concept and know what evidence would prove success.'
   ];
   return responses[episode.number % responses.length];
@@ -913,10 +914,10 @@ function challengeIndex(challenge) {
 function openingForChallenge(challenge) {
   const index = challengeIndex(challenge);
   const openings = [
-    `Welcome to Challenge Coach: ${challenge.title}. I am Alex. Before you do the task, we are going to make the skill feel concrete enough to practice.`,
+    `Welcome to Challenge Coach: ${challenge.title}. I am Alex. Before you do the task, we are going to make the skill feel concrete enough to practice and memorable enough to reuse.`,
     `This is Challenge Coach for ${challenge.title}. I am Alex, and we are going to teach the move before asking you to prove it.`,
     `Welcome back to Challenge Coach. Today we are taking on ${challenge.title}, one careful step at a time.`,
-    `You are listening to Challenge Coach: ${challenge.title}. I am Alex, and this is the calm walkthrough before the hands-on work.`
+    `You are listening to Challenge Coach: ${challenge.title}. I am Alex, and this is the calm walkthrough before the hands-on work so the task feels less mysterious.`
   ];
   return openings[index % openings.length];
 }
@@ -937,8 +938,8 @@ function challengeTeachingFrame(challenge) {
   const frames = [
     `The skill focus is ${challenge.focus}. This is rehearsal for real contribution, so the evidence matters because it proves the move happened.`,
     `${challenge.focus}. That is the task layer. The teaching layer is understanding why the move belongs in a contributor workflow.`,
-    `In this challenge, the learner is practicing ${lowerFirst(challenge.focus)} The point is not to rush. The point is to leave a clear trace of good work.`,
-    `The focus is ${challenge.focus}. We will explain the concept, the action, the evidence, and the most common recovery path.`
+    `In this challenge, the learner is practicing ${lowerFirst(challenge.focus)} The point is not to rush. The point is to leave a clear trace of good work that feels almost effortless once you know the pattern.`,
+    `The focus is ${challenge.focus}. We will explain the concept, the action, the evidence, and the most common recovery path so nothing feels like guesswork.`
   ];
   return frames[index % frames.length];
 }
@@ -1230,7 +1231,7 @@ function buildCompanionScript(episode, total) {
 
   addChapterCue(builder, closingChapterTitleForEpisode(episode));
   addSpokenLine(builder, 'JAMIE', 'What should people carry with them after this?');
-  addSpokenLine(builder, 'ALEX', 'Carry the map. Know what page or tool you are in, know which action you are taking, and know what confirmation should follow. If the confirmation is missing, pause. That pause is not wasted time; it is professional judgment.');
+  addSpokenLine(builder, 'ALEX', 'Carry the map. Know what page or tool you are in, know which action you are taking, and know what confirmation should follow. If the confirmation is missing, pause. That pause is not wasted time; it is professional judgment, and it is how complex workflows start to feel magical instead of stressful.');
   addSpokenLine(builder, 'JAMIE', 'That is a better way to say it than just follow the steps.');
   addSpokenLine(builder, 'ALEX', `Right. Steps matter, but understanding wins. That is episode ${episode.number}. Next in the series is ${episode.number + 1 < total ? `episode ${episode.number + 1}` : 'the next learning block'}, where we keep building the same contributor muscles.`);
 
@@ -1266,7 +1267,7 @@ function buildChallengeScript(challenge) {
 
   addChapterCue(builder, closingChapterTitleForChallenge(challenge));
   addSpokenLine(builder, 'JAMIE', 'What is the final checkpoint?');
-  addSpokenLine(builder, 'ALEX', 'You should be able to point to the evidence, explain the action, and describe what you would do next if this were a real open source project. If you can teach the move back, you have learned it.');
+  addSpokenLine(builder, 'ALEX', 'You should be able to point to the evidence, explain the action, and describe what you would do next if this were a real open source project. If you can teach the move back, you have learned it, and the challenge starts to feel much less intimidating.');
   addSpokenLine(builder, 'JAMIE', 'And if they get stuck?');
   addSpokenLine(builder, 'ALEX', 'Read the latest message, not the loudest worry. Check the issue, the branch, the pull request, the status check, or the bot comment. Then ask for help with those facts in hand. That is how professionals collaborate.');
 

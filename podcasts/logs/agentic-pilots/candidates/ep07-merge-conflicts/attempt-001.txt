@@ -1,0 +1,452 @@
+[ALEX]
+Episode 7 is where merge conflicts stop sounding scary and start sounding familiar. Today we are talking about why conflicts happen, how to read the markers Git leaves behind, and how to resolve them without guessing.
+
+[JAMIE]
+And we will keep it grounded in the workshop flow: what the learner sees, what they do next, and what counts as proof they handled it well.
+
+[PAUSE]
+
+[ALEX]
+Understanding, Preventing, and Resolving Conflicts: that is the center of this chapter. Merge conflicts are normal in collaborative work, not a sign that someone failed. This chapter teaches the basic pattern: spot the conflict, read it, decide what belongs, and clean it up.
+
+[JAMIE]
+So the goal is not to memorize a warning screen. It is to learn a repeatable move.
+
+[ALEX]
+Exactly. If someone only hears this as audio, they should still know the core idea: two people changed the same lines, Git could not choose automatically, and the human has to decide.
+
+[PAUSE]
+
+[JAMIE]
+Set up the workshop version for me.
+
+[ALEX]
+Workshop Recommendation, Chapter 7: this chapter works best as a guided practice set. Chapter 7 Challenge Set gives learners one controlled conflict to resolve so they can build confidence without being overwhelmed by a huge real-world merge.
+
+[JAMIE]
+That sounds safer than throwing them into a messy branch on day one.
+
+[ALEX]
+That is the point. Challenge 7.1, Step-by-Step: Resolve Conflict Markers, asks them to open a practice file, read the markers, choose the right content, remove the conflict lines, and submit the result in a linked pull request.
+
+[PAUSE]
+
+[JAMIE]
+What should they expect to prove when they are done?
+
+[ALEX]
+Completing Chapter 7: Submit Your Evidence means the learner can show a clean PR, a short comment on the challenge issue, and a file with no conflict markers left behind.
+
+[JAMIE]
+And if they get stuck?
+
+[ALEX]
+If You Get Stuck is part of the lesson too. Asking for help is always okay. In fact, knowing when to ask is part of being a good collaborator, not a weakness.
+
+[PAUSE]
+
+[ALEX]
+Expected Outcomes are simple. By the end, the learner should be able to identify conflict markers, explain which side is theirs and which side came from the other branch, resolve the conflict in the GitHub web editor, or resolve it locally with git, and then confirm the result with git status and a clean commit.
+
+[JAMIE]
+That feels concrete enough to learn from and reuse later.
+
+[ALEX]
+That is the learning moment: conflicts are just collaboration showing up in the code. They happen because more than one person cares about the same lines.
+
+[PAUSE]
+
+[JAMIE]
+What pattern are we teaching here?
+
+[ALEX]
+Learning Pattern Used in This Chapter: first observe the conflict, then make a deliberate choice, then verify the file is clean, then submit evidence. That same pattern shows up everywhere in Git work.
+
+[JAMIE]
+So the pattern matters more than the exact screen.
+
+[ALEX]
+Right. The screen changes. The pattern stays.
+
+[PAUSE]
+
+[JAMIE]
+And the learning cards?
+
+[ALEX]
+About Learning Cards in This Chapter: they are small guidance blocks that give different kinds of support depending on what the learner is doing. Some cards help them prevent conflicts, some help them read markers, and some help when they are stuck.
+
+[JAMIE]
+So not every card is for every moment.
+
+[ALEX]
+Exactly. They are there to keep the learner oriented, not to overload them.
+
+[PAUSE]
+
+[ALEX]
+Local Git Alternative: Resolving Conflicts from Your Terminal is the other path. If the learner cloned the repository, they can resolve the conflict locally instead of in the browser. The basic flow is to merge, inspect the conflict, edit the file, then stage and commit the resolution.
+
+[JAMIE]
+That gives them a second route without changing the core idea.
+
+[ALEX]
+Yes. Whether they use the web editor or the command line, they are still reading the same conflict and making the same decision.
+
+[PAUSE]
+
+[JAMIE]
+Now give me the plain definition.
+
+[ALEX]
+What Is a Merge Conflict? It happens when Git sees two different changes to the same lines in the same file and cannot safely combine them on its own.
+
+[JAMIE]
+So it is not random.
+
+[ALEX]
+Not random at all. It is Git protecting the work by pausing and asking a human to choose.
+
+[PAUSE]
+
+[JAMIE]
+Why does that happen so often in real projects?
+
+[ALEX]
+Why Conflicts Happen: two branches drift apart, people edit the same paragraph, or several learners update the same section of a shared file. Think of it like two people editing the same paragraph in a shared document at the same time.
+
+[JAMIE]
+That analogy helps. It is not that anyone broke the document. They just overlapped.
+
+[ALEX]
+Exactly. Conflicts are a normal side effect of teamwork.
+
+[PAUSE]
+
+[JAMIE]
+How do we keep them from piling up?
+
+[ALEX]
+How to Prevent Conflicts, Prevention is Easier Than Resolution: keep branches short-lived, sync with main frequently, communicate with your team, avoid mass reformatting, pull before you push, work in separate files when possible, keep pull requests small, and use draft PRs for early visibility.
+
+[JAMIE]
+That is a long list, but each item is practical.
+
+[ALEX]
+And each one lowers the chance that two people will hit the same lines at the same time.
+
+[PAUSE]
+
+[ALEX]
+1. Keep your branches short-lived. The longer a branch sits, the more likely the rest of the project has moved on. Small, quick branches are easier to merge.
+
+[ALEX]
+2. Sync with main frequently. Pull or rebase often enough that your branch does not drift far from the current work.
+
+[ALEX]
+3. Communicate with your team. If you know which files or sections you are touching, say so early.
+
+[ALEX]
+4. Avoid mass reformatting. Big formatting-only changes can create avoidable conflicts for everyone else.
+
+[ALEX]
+5. Pull before you push. That keeps surprises smaller and pushes conflict detection closer to where the work happened.
+
+[ALEX]
+6. Work on separate files when possible. If different people own different files, they are less likely to collide.
+
+[ALEX]
+7. Keep PRs small. Smaller pull requests are easier to review and less likely to overlap in risky ways.
+
+[ALEX]
+8. Use Draft PRs for early visibility. A draft gives the team a chance to notice overlap before the branch is too far along.
+
+[JAMIE]
+That list turns prevention into habits instead of theory.
+
+[ALEX]
+That is why it works.
+
+[PAUSE]
+
+[JAMIE]
+What about fast-forward merges?
+
+[ALEX]
+Advanced Prevention: Understanding Fast-Forward Merges. A fast-forward merge can happen when the branch history is simple and no separate lines of work have diverged in a way that needs a merge commit. The useful takeaway is that keeping work tidy makes merging easier.
+
+[JAMIE]
+So cleaner history can reduce friction later.
+
+[ALEX]
+Exactly. Good branch hygiene helps Git stay automatic when it can.
+
+[PAUSE]
+
+[JAMIE]
+Can conflicts ever be a good thing?
+
+[ALEX]
+Yes. When Conflicts Are Actually Good: a conflict can be a useful signal that two changes deserve a human review. It can reveal overlap, force a decision, and prevent accidental overwrites.
+
+[JAMIE]
+So the conflict is a checkpoint, not a disaster.
+
+[ALEX]
+That is the right way to think about it.
+
+[PAUSE]
+
+[JAMIE]
+How would a learner spot one on GitHub?
+
+[ALEX]
+Spotting a Conflict on GitHub: when a pull request cannot merge cleanly, GitHub shows the warning and offers tools to resolve it if the conflict is small enough.
+
+[JAMIE]
+So the platform does not hide the problem.
+
+[ALEX]
+No, it makes the problem visible so it can be handled.
+
+[PAUSE]
+
+[ALEX]
+Tool Cards: Resolve a Merge Conflict are the practical reminders. They point learners toward the GitHub conflict editor or the terminal workflow, depending on what they are using.
+
+[JAMIE]
+So the card is a cue, not a lecture.
+
+[ALEX]
+Right. It is there to prompt the next move.
+
+[PAUSE]
+
+[JAMIE]
+Walk me through the markers.
+
+[ALEX]
+Conflict Markers - What They Mean: Git marks the file with three lines that frame the disagreement. The top section is your version, the middle divider separates the two sides, and the bottom section is their version.
+
+[JAMIE]
+What are the exact markers?
+
+[ALEX]
+The common pattern is `<<<<<<< HEAD`, then the content from your version, then `=======`, then the incoming content, and finally `>>>>>>> branch-name`.
+
+[PAUSE]
+
+[ALEX]
+Breakdown: `<<<<<<< HEAD` marks the start of the conflict, `=======` separates the two versions, and `>>>>>>> branch-name` marks the end and tells you which branch brought in the other change.
+
+[JAMIE]
+So the markers are a map, not just noise.
+
+[ALEX]
+Exactly. They show where the disagreement starts and ends.
+
+[PAUSE]
+
+[ALEX]
+Example in a real file helps. Imagine `docs/keyboard-shortcuts.md` already has a table row for a shortcut, and two people add different text to that same row.
+
+[JAMIE]
+That is the kind of place where a conflict is easy to imagine.
+
+[ALEX]
+Original file (`docs/keyboard-shortcuts.md`) before conflict: the table row is clean. After two students both added a shortcut to the same table row: the row now has both versions wrapped in conflict markers. Resolution options: keep your version, keep their version, or combine the useful parts of both into one clean row.
+
+[PAUSE]
+
+[JAMIE]
+How do we teach them to read it?
+
+[ALEX]
+The easiest way is to say it plainly: the text above `=======` is your version, and the text below `=======` is their version. In other words, you are comparing your change to the incoming change.
+
+[JAMIE]
+That makes the choice easier to see.
+
+[ALEX]
+And once they can see the choice, the fear usually drops.
+
+[PAUSE]
+
+[JAMIE]
+What happens in the GitHub web editor?
+
+[ALEX]
+Resolving Conflicts on GitHub, Web Editor: GitHub can open a simple conflict editor for small conflicts. The learner reads both sides, chooses what to keep, deletes the marker lines, and saves the file.
+
+[JAMIE]
+Step by step, what should they do?
+
+[ALEX]
+GitHub Conflict Editor, step by step: open the conflicted pull request, choose the file marked as conflicted, inspect the two versions, edit the file until only the intended content remains, remove every marker line, and commit the resolution back to the branch.
+
+[PAUSE]
+
+[ALEX]
+What it looks like in the editor is usually a split or highlighted view with the conflict areas clearly labeled. The key is to read the content, not just chase the buttons.
+
+[JAMIE]
+That keeps the learner focused on the decision instead of the interface.
+
+[ALEX]
+Exactly.
+
+[PAUSE]
+
+[JAMIE]
+What should the learning cards say here?
+
+[ALEX]
+Learning Cards: Resolving Conflicts on GitHub remind the learner to compare both sides carefully, choose intentionally, and confirm that the file is clean before submitting.
+
+[JAMIE]
+That is simple and usable.
+
+[ALEX]
+Good cards do that: they reduce the number of hidden steps.
+
+[PAUSE]
+
+[JAMIE]
+What if they are using VS Code?
+
+[ALEX]
+Resolving Conflicts in VS Code, Day 2: VS Code shows conflicts inline and gives clear actions for accepting one side, the other side, or both.
+
+[JAMIE]
+What do those actions look like?
+
+[ALEX]
+VS Code shows conflict actions like accept current change, accept incoming change, accept both changes, or compare changes. The important habit is to read the text first and click second.
+
+[PAUSE]
+
+[ALEX]
+That is why the workflow stays teachable. The tool gives choices, but the learner still has to understand what the choices mean.
+
+[JAMIE]
+So the tool supports judgment instead of replacing it.
+
+[ALEX]
+Exactly.
+
+[PAUSE]
+
+[JAMIE]
+Now the stuck moment.
+
+[ALEX]
+When You Feel Stuck is part of real Git work. Ask for help if you need it. If the conflict feels bigger than expected, that is normal.
+
+[JAMIE]
+How should someone ask?
+
+[ALEX]
+Ask for help - it is normal: tell a teammate what file you are in, what the two versions seem to be saying, and where you are unsure. Clear questions get faster answers.
+
+[PAUSE]
+
+[ALEX]
+Abandon and start fresh, the nuclear option, is also valid when the branch has drifted too far. Sometimes the cleanest move is to start over from the latest main and reapply only the changes you intended.
+
+[JAMIE]
+That sounds dramatic, but also reasonable.
+
+[ALEX]
+It is reasonable. It is not failure. It is just the right tool for the size of the problem.
+
+[PAUSE]
+
+[JAMIE]
+What should the learner remember if they freeze up?
+
+[ALEX]
+Learning Cards: When You Feel Stuck. The card should remind them to ask for help, check the latest main branch, and use a fresh branch if the current one has become too tangled.
+
+[JAMIE]
+So there is always a next move.
+
+[ALEX]
+Always.
+
+[PAUSE]
+
+[JAMIE]
+Give me the command-line reference.
+
+[ALEX]
+Reading a Conflict Message from Git, Command Line Reference: when a merge or pull finds a conflict, Git tells you which files need attention. The normal sequence is to start the merge, inspect the status, edit the file, stage the fix, and commit the resolution.
+
+[JAMIE]
+Can you name the workflow in order?
+
+[ALEX]
+Yes: run `git merge` or `git pull`, check `git status`, open the conflicted file, remove the markers and keep the intended content, then run `git add` and `git commit` to finish the merge resolution.
+
+[PAUSE]
+
+[ALEX]
+For extra inspection from the terminal, `gh pr checks` helps you see whether the pull request is healthy, and `gh pr diff` helps you inspect the changes and understand where the conflict came from.
+
+[JAMIE]
+So the terminal can still be the place where you confirm what happened.
+
+[ALEX]
+Exactly. The command line does not remove the conflict, but it gives you clear ways to inspect it.
+
+[PAUSE]
+
+[JAMIE]
+What if someone wants the shortest possible practice run?
+
+[ALEX]
+Try It: Read a Conflict, Without Fear. Start by opening a simple conflict example, then identify your version, identify their version, decide which content should stay, and leave the markers out of the final file.
+
+[JAMIE]
+This is the first test of whether the idea landed.
+
+[ALEX]
+And it should feel manageable. The first conflict resolution is usually the hardest, because the markers are unfamiliar. After that, the pattern becomes recognizable.
+
+[PAUSE]
+
+[JAMIE]
+What should they say to themselves while they work?
+
+[ALEX]
+Read one side, read the other side, choose deliberately, and verify the markers are gone. That is the whole rhythm.
+
+[JAMIE]
+That is a lot calmer than treating it like a puzzle box.
+
+[ALEX]
+That calm is the goal.
+
+[PAUSE]
+
+[JAMIE]
+How do we close the chapter?
+
+[ALEX]
+Summary Checklist: know what a merge conflict is, know why it happens, know how to read `<<<<<<< HEAD`, `=======`, and `>>>>>>> branch-name`, know how to resolve it in GitHub or with git on the command line, and know how to prevent the next one with better branch habits.
+
+[JAMIE]
+And if they get stuck?
+
+[ALEX]
+Ask for help. That is always allowed.
+
+[PAUSE]
+
+[ALEX]
+Authoritative Sources and the Section-Level Source Map are there so learners can trace the ideas back to the official docs and the chapter sections that introduced them.
+
+[JAMIE]
+So the lesson stays connected to the source material.
+
+[ALEX]
+Exactly. This episode is about confidence as much as content. Your first conflict resolution is the hardest one, and after that, it starts to feel routine.

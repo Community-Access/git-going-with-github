@@ -1,7 +1,7 @@
 [
   {
     "speaker": "ALEX",
-    "text": "Welcome to Git Going with GitHub, episode 28: Branch Protection and Rulesets. I am Alex. Today we are going to make Branch Protection and Rulesets something you can explain, practice, and recover from when the interface surprises you."
+    "text": "Welcome to Git Going with GitHub, episode 28: Branch Protection and Rulesets. I am Alex. Today we are going to make Branch Protection and Rulesets feel magical in practice: clear, teachable, and recoverable when the interface surprises you."
   },
   {
     "speaker": "JAMIE",
@@ -13,7 +13,7 @@
   },
   {
     "speaker": "ALEX",
-    "text": "The big idea today: Required reviews, status checks, rulesets, and diagnosing blocked merges. We will name the concept, explain why it matters, practice the move, and point out the checks that tell you the work is real."
+    "text": "The big idea today: Required reviews, status checks, rulesets, and diagnosing blocked merges. We will name the concept, explain why it matters, practice the move, and point out the checks that make the outcome feel almost magical because it is verifiable."
   },
   {
     "speaker": "JAMIE",
@@ -45,31 +45,43 @@
   },
   {
     "speaker": "ALEX",
-    "text": "Quick Navigation."
+    "text": "Quick Navigation has three jobs: name the idea, give the learner a move, and show what counts as evidence."
   },
   {
     "speaker": "ALEX",
-    "text": "Start here: What Branch Protection Does. Then: Common Branch Protection Rules. Next: Repository Rulesets - The Modern Approach. Last: Why Your PR Cannot Be Merged - Diagnosis Guide."
+    "text": "Start here: What Branch Protection Does. Then: Common Branch Protection Rules. Next: Repository Rulesets - The Modern Approach. Last: Why Your PR Cannot Be Merged - Diagnosis Guide. The point is not speed; the point is never losing your place."
+  },
+  {
+    "speaker": "JAMIE",
+    "text": "What does the learner do first, second, and then after that?"
   },
   {
     "speaker": "ALEX",
-    "text": "Navigating the Merge Box with a Screen Reader; Status Checks - What They Are and What They Mean; Who Can Configure Branch Protection; and Workshop Repository Configuration Reference."
+    "text": "Walk it in order: Navigating the Merge Box with a Screen Reader; Status Checks - What They Are and What They Mean; Who Can Configure Branch Protection; and Workshop Repository Configuration Reference. Each step should leave a trace you can name."
   },
   {
     "speaker": "ALEX",
     "text": "A solid navigation habit is to prove where you are before activating controls. Headings, landmarks, and the address bar are not trivia; they are your map."
   },
   {
-    "speaker": "ALEX",
-    "text": "a branch protection rule is a set of requirements that must be satisfied before a PR can be merged into a specific branch (typically main). Think of branch protection as the quality gate for a repository's primary branch."
+    "speaker": "JAMIE",
+    "text": "What is the one idea that makes the next few steps less mysterious?"
   },
   {
     "speaker": "ALEX",
-    "text": "Require that code is reviewed before it enters the default branch. Require that automated tests pass before merging. Prevent direct pushes to main without a PR. Ensure the branch is up-to-date before merging."
+    "text": "This is the move inside 1. What Branch Protection Does: a branch protection rule is a set of requirements that must be satisfied before a PR can be merged into a specific branch (typically main). That matters in practice: Think of branch protection as the quality gate for a repository's primary branch."
   },
   {
     "speaker": "ALEX",
-    "text": "Right."
+    "text": "That shows up in the workshop in a few specific ways. Require that code is reviewed before it enters the default branch. Require that automated tests pass before merging. Prevent direct pushes to main without a PR. Ensure the branch is up-to-date before merging."
+  },
+  {
+    "speaker": "JAMIE",
+    "text": "That feels much more doable when you say it as one move."
+  },
+  {
+    "speaker": "ALEX",
+    "text": "Right. The magic is not speed. The magic is knowing what changed and why it matters."
   },
   {
     "speaker": "PAUSE",
@@ -77,7 +89,7 @@
   },
   {
     "speaker": "ALEX",
-    "text": "Learning Cards: What Branch Protection Does."
+    "text": "Now bring the learner back to the room. Learning Cards: What Branch Protection Does has three jobs: name the idea, give the learner a move, and show what counts as evidence."
   },
   {
     "speaker": "ALEX",
@@ -89,19 +101,19 @@
   },
   {
     "speaker": "ALEX",
-    "text": "The maintainer requires a minimum number of approving reviews before the PR can be merged. Example: \"Require 1 approving review\"."
+    "text": "The reason this matters is simple: the maintainer requires a minimum number of approving reviews before the PR can be merged. The listener should be able to check this: Example: \"Require 1 approving review\"."
   },
   {
     "speaker": "ALEX",
-    "text": "Your PR shows a \"1 review required\" notice in the merge box. If a reviewer requests changes, their approval is revoked - you need at least one new approval after your latest push. After you push new commits, re-request review from the original reviewer."
+    "text": "The parts worth keeping in working memory are these. Your PR shows a \"1 review required\" notice in the merge box. If a reviewer requests changes, their approval is revoked - you need at least one new approval after your latest push. After you push new commits, re-request review from the original reviewer."
   },
   {
     "speaker": "ALEX",
-    "text": "That matters because of the next idea. Do not treat Required Status Checks as decoration. Automated workflows (GitHub Actions or third-party CI) must complete successfully before merging is allowed."
+    "text": "That matters because of the next idea. Do not treat Required Status Checks as decoration. Automated workflows (GitHub Actions or third-party CI) must complete successfully before merging is allowed. The workshop is closer to rehearsal than lecture. You hear the move, try the move, and then check what changed."
   },
   {
     "speaker": "ALEX",
-    "text": "That pause between action and trust is part of the work."
+    "text": "The useful habit is simple: orient, act, verify, then continue. That pause between action and trust is part of the work."
   },
   {
     "speaker": "PAUSE",
@@ -113,19 +125,27 @@
   },
   {
     "speaker": "ALEX",
-    "text": "what \"Required\" means: The merge button is grayed out (or shows an error) until all required checks show a green checkmark. A failing or pending check blocks the merge."
+    "text": "If the interface shifts, Example checks you may see is still useful because what \"Required\" means: The merge button is grayed out (or shows an error) until all required checks show a green checkmark. For someone navigating by keyboard or screen reader, this detail matters: A failing or pending check blocks the merge."
   },
   {
     "speaker": "ALEX",
-    "text": "ci / build - compiles the code. ci / test - runs the test suite. lint - code style checks. accessibility-check - automated accessibility scanning."
+    "text": "Here is what that changes in practice. ci / build - compiles the code. ci / test - runs the test suite. lint - code style checks. accessibility-check - automated accessibility scanning."
   },
   {
     "speaker": "ALEX",
-    "text": "Put Require Branches to Be Up to Date into plain language. Before merging, your PR branch must include all changes from main. The useful version is: This prevents merge conflicts from being introduced silently."
+    "text": "This is where the talk moves from concept to action. Put Require Branches to Be Up to Date into plain language. Before merging, your PR branch must include all changes from main. The useful version is: This prevents merge conflicts from being introduced silently."
   },
   {
     "speaker": "ALEX",
-    "text": "The merge box shows: \"This branch is out of date with the base branch\". Button: \"Update branch\" - merges current main into your branch. Alternative: Rebase your branch (only if the maintainer permits rebase merges)."
+    "text": "The room should hear these as checkpoints. The merge box shows: \"This branch is out of date with the base branch\". Button: \"Update branch\" - merges current main into your branch. Alternative: Rebase your branch (only if the maintainer permits rebase merges)."
+  },
+  {
+    "speaker": "JAMIE",
+    "text": "Now it sounds like a workflow instead of a wall of instructions."
+  },
+  {
+    "speaker": "ALEX",
+    "text": "That is where confidence comes from: not from never getting lost, but from knowing how to recover."
   },
   {
     "speaker": "ALEX",
@@ -137,7 +157,7 @@
   },
   {
     "speaker": "ALEX",
-    "text": "All commits in the PR must have a Verified badge (see Appendix D: Git Authentication). If your commits are unverified, the PR cannot be merged until you re-commit with signing enabled."
+    "text": "The teaching point here is not the label; it is the move. All commits in the PR must have a Verified badge (see Appendix D: Git Authentication). That is the difference between guessing and knowing: If your commits are unverified, the PR cannot be merged until you re-commit with signing enabled."
   },
   {
     "speaker": "PAUSE",
@@ -145,7 +165,7 @@
   },
   {
     "speaker": "ALEX",
-    "text": "Before the learner moves on. Only squash merges or rebase merges are permitted - no merge commits. This keeps the commit history linear and readable."
+    "text": "Before the learner moves on. This part earns its place because only squash merges or rebase merges are permitted - no merge commits. This is where the workflow starts to feel magical, because the result becomes visible and explainable: This keeps the commit history linear and readable. That is the difference between following directions and owning the workflow."
   },
   {
     "speaker": "JAMIE",
@@ -153,11 +173,11 @@
   },
   {
     "speaker": "ALEX",
-    "text": "Lock Branch: A locked branch cannot receive any merges - it is effectively read-only. This is sometimes used for archived repositories or during release freezes."
+    "text": "Lock Branch: A locked branch cannot receive any merges - it is effectively read-only. That gives the learner a foothold: this is sometimes used for archived repositories or during release freezes."
   },
   {
     "speaker": "ALEX",
-    "text": "Repository Rulesets (introduced in late 2023) are the next generation of branch protection. They extend branch protection rules."
+    "text": "Now slow down for the part people usually miss. Here is the learner-facing version. Repository Rulesets (introduced in late 2023) are the next generation of branch protection. The next useful detail is concrete: They extend branch protection rules."
   },
   {
     "speaker": "ALEX",
@@ -173,7 +193,7 @@
   },
   {
     "speaker": "ALEX",
-    "text": "most repositories you encounter still use classic branch protection rules. Rulesets will become more common as maintainers migrate."
+    "text": "This is the move inside Rulesets vs. Branch Protection Rules: most repositories you encounter still use classic branch protection rules. Put another way, rulesets will become more common as maintainers migrate."
   },
   {
     "speaker": "JAMIE",
@@ -189,7 +209,7 @@
   },
   {
     "speaker": "ALEX",
-    "text": "If you want to understand why certain rules apply to a branch. This is the part to say slowly: Alternatively, PR merge box messages describe which rules are blocking - you don't need admin access to understand what's required. The durable skill is not memorizing one screen. It is knowing how to find your footing when the screen changes."
+    "text": "Anchor this part on Finding and Reading Rulesets. If you want to understand why certain rules apply to a branch. That matters in practice: Alternatively, PR merge box messages describe which rules are blocking - you don't need admin access to understand what's required. The durable skill is not memorizing one screen. It is knowing how to find your footing when the screen changes."
   },
   {
     "speaker": "ALEX",
@@ -201,7 +221,7 @@
   },
   {
     "speaker": "ALEX",
-    "text": "When you open a PR and the merge button is grayed out or shows an error, the merge box tells you exactly what needs to happen."
+    "text": "The reason this matters is simple: when you open a PR and the merge button is grayed out or shows an error, the merge box tells you exactly what needs to happen."
   },
   {
     "speaker": "PAUSE",
@@ -212,12 +232,16 @@
     "text": "The next point gives the learner a handle. Do not treat \"X review required / X reviews required\" as decoration. What it means: The required number of approvals hasn't been reached yet."
   },
   {
-    "speaker": "ALEX",
-    "text": "What to do."
+    "speaker": "JAMIE",
+    "text": "Turn that into a path someone can follow."
   },
   {
     "speaker": "ALEX",
-    "text": "Start here: Request review from a codeowner or maintainer (right sidebar → Reviewers → request). Then: Check if any reviews exist but requested changes - those count against you. Next: Wait for the reviewer to submit their review. Last: Respond to requested changes by pushing new commits, then re-requesting review."
+    "text": "What to do has three jobs: name the idea, give the learner a move, and show what counts as evidence."
+  },
+  {
+    "speaker": "ALEX",
+    "text": "Start here: Request review from a codeowner or maintainer (right sidebar → Reviewers → request). Then: Check if any reviews exist but requested changes - those count against you. Next: Wait for the reviewer to submit their review. Last: Respond to requested changes by pushing new commits, then re-requesting review. Pause after each step and listen for the confirmation before moving on."
   },
   {
     "speaker": "ALEX",
@@ -236,20 +260,28 @@
     "text": ""
   },
   {
-    "speaker": "ALEX",
-    "text": "If checks pass on main but fail on your PR: The issue is specific to your changes. If checks are stuck \"in progress\" for over 30 minutes: The workflow runner may have an issue - contact the maintainer."
+    "speaker": "JAMIE",
+    "text": "What is the ordered workflow?"
   },
   {
     "speaker": "ALEX",
-    "text": "Think of this as 4 checks: Scroll down to the merge box - expand \"Show all checks\"; Find the failing check → click \"Details\" to see the full log; Fix the underlying issue (test failure, lint error, build error) in your branch; and Push new commits - checks re-run automatically."
+    "text": "The teaching point here is not the label; it is the move. If checks pass on main but fail on your PR: The issue is specific to your changes. The useful version is: If checks are stuck \"in progress\" for over 30 minutes: The workflow runner may have an issue - contact the maintainer."
   },
   {
     "speaker": "ALEX",
-    "text": "Step one is wait for checks to complete (typically 1-5 minutes for most CI)."
+    "text": "Think of this as 4 checks: Scroll down to the merge box - expand \"Show all checks\"; Find the failing check → click \"Details\" to see the full log; Fix the underlying issue (test failure, lint error, build error) in your branch; and Push new commits - checks re-run automatically. Each step should leave a trace you can name."
+  },
+  {
+    "speaker": "JAMIE",
+    "text": "Give me the sequence, because order matters here."
   },
   {
     "speaker": "ALEX",
-    "text": "That connects to another useful point. What it means: New commits were pushed to main after you created your PR branch. The maintainer requires everything to be current."
+    "text": "The path is straightforward once it is named. Step one is wait for checks to complete (typically 1-5 minutes for most CI). If one step does not match what you hear, stop there and re-orient."
+  },
+  {
+    "speaker": "ALEX",
+    "text": "That connects to another useful point. This part earns its place because what it means: New commits were pushed to main after you created your PR branch. That is the difference between guessing and knowing: The maintainer requires everything to be current."
   },
   {
     "speaker": "JAMIE",
@@ -265,7 +297,7 @@
   },
   {
     "speaker": "ALEX",
-    "text": "Here is the practical turn. What it means: Branch protection requires signed commits (see Appendix D: Git Authentication)."
+    "text": "Here is the practical turn. Here is the learner-facing version. What it means: Branch protection requires signed commits (see Appendix D: Git Authentication). A good GitHub workflow is like a well-run meeting: everyone knows the topic, the next action, and who has the floor."
   },
   {
     "speaker": "JAMIE",
@@ -273,7 +305,7 @@
   },
   {
     "speaker": "ALEX",
-    "text": "Enable commit signing locally before making more commits; and For existing unsigned commits, you need to rebase-rewrite them - this is advanced; ask the maintainer if there is a workaround. The sequence works because every action has a confirmation."
+    "text": "Walk it in order: Enable commit signing locally before making more commits; and For existing unsigned commits, you need to rebase-rewrite them - this is advanced; ask the maintainer if there is a workaround. The sequence works because every action has a confirmation."
   },
   {
     "speaker": "JAMIE",
@@ -285,7 +317,7 @@
   },
   {
     "speaker": "ALEX",
-    "text": "Keep the thread going. What it means: A ruleset or branch protection has explicitly blocked merging for a reason not covered by other messages. This is the part to say slowly: Check the PR for a pinned comment from the mergeable status check or a GitHub Actions check that posts a comment explaining the block."
+    "text": "Keep the thread going. Anchor this part on \"Merging is blocked\". What it means: A ruleset or branch protection has explicitly blocked merging for a reason not covered by other messages. Put another way, check the PR for a pinned comment from the mergeable status check or a GitHub Actions check that posts a comment explaining the block."
   },
   {
     "speaker": "PAUSE",
@@ -297,7 +329,7 @@
   },
   {
     "speaker": "ALEX",
-    "text": "Learning Cards: Why Your PR Cannot Be Merged."
+    "text": "Learning Cards: Why Your PR Cannot Be Merged has three jobs: name the idea, give the learner a move, and show what counts as evidence."
   },
   {
     "speaker": "ALEX",
@@ -305,7 +337,7 @@
   },
   {
     "speaker": "ALEX",
-    "text": "Another way to ground it. Do not treat 5. Navigating the Merge Box with a Screen Reader as decoration. The merge box lives at the bottom of every PR page. With a screen reader, navigating to it efficiently is important."
+    "text": "Another way to ground it. Do not treat 5. Navigating the Merge Box with a Screen Reader as decoration. The merge box lives at the bottom of every PR page. This is the part to say slowly: With a screen reader, navigating to it efficiently is important. The workshop is closer to rehearsal than lecture. You hear the move, try the move, and then check what changed."
   },
   {
     "speaker": "JAMIE",
@@ -313,7 +345,7 @@
   },
   {
     "speaker": "ALEX",
-    "text": "the check log is a text-heavy page in a pre-formatted block."
+    "text": "If the interface shifts, Reading Check Details is still useful because the check log is a text-heavy page in a pre-formatted block."
   },
   {
     "speaker": "PAUSE",
@@ -337,11 +369,11 @@
   },
   {
     "speaker": "ALEX",
-    "text": "Defined in.github/workflows/.yml in the repository. Each job: in a workflow file becomes a status check."
+    "text": "The teaching point here is not the label; it is the move. Defined in.github/workflows/.yml in the repository. For someone navigating by keyboard or screen reader, this detail matters: Each job: in a workflow file becomes a status check."
   },
   {
     "speaker": "ALEX",
-    "text": "Put that beside the next piece. Services like Netlify, Vercel, Codecov, and Snyk post status checks via the GitHub API. The learner will recognize them by their app name prefix (e.g., netlify/deploy-preview - Deploy Preview ready)."
+    "text": "Put that beside the next piece. This part earns its place because services like Netlify, Vercel, Codecov, and Snyk post status checks via the GitHub API. The useful version is: the learner will recognize them by their app name prefix (e.g., netlify/deploy-preview - Deploy Preview ready). That is the difference between following directions and owning the workflow."
   },
   {
     "speaker": "PAUSE",
@@ -353,11 +385,11 @@
   },
   {
     "speaker": "ALEX",
-    "text": "7. Who Can Configure Branch Protection: As a workshop participant, you are typically a contributor to the main community-access/accessibility-agents repo and an admin of your own fork. On your fork, you can configure branch protection however you like - including disabling it entirely for practice purposes."
+    "text": "7. Who Can Configure Branch Protection: As a workshop participant, you are typically a contributor to the main community-access/accessibility-agents repo and an admin of your own fork. That is the difference between guessing and knowing: On your fork, you can configure branch protection however you like - including disabling it entirely for practice purposes."
   },
   {
     "speaker": "ALEX",
-    "text": "Now shift from knowing the term to using it. The community-access/accessibility-agents repository uses the following branch protection configuration on main. Your personal fork of accessibility-agents has no branch protection by default."
+    "text": "Now shift from knowing the term to using it. Here is the learner-facing version. The community-access/accessibility-agents repository uses the following branch protection configuration on main. This is where the workflow starts to feel magical, because the result becomes visible and explainable: Your personal fork of accessibility-agents has no branch protection by default."
   },
   {
     "speaker": "JAMIE",
@@ -365,7 +397,7 @@
   },
   {
     "speaker": "ALEX",
-    "text": "next: Appendix P: Security Features Back: Appendix N: Advanced Search Teaching chapter: Chapter 08: Open Source Culture."
+    "text": "This is the move inside Related Resources: next: Appendix P: Security Features Back: Appendix N: Advanced Search Teaching chapter: Chapter 08: Open Source Culture."
   },
   {
     "speaker": "ALEX",
@@ -384,12 +416,24 @@
     "text": ""
   },
   {
+    "speaker": "ALEX",
+    "text": "This is where confidence starts to build. Anchor this part on Section-Level Source Map. Use this map to verify facts for each major section in this file. The durable skill is not memorizing one screen. It is knowing how to find your footing when the screen changes."
+  },
+  {
+    "speaker": "ALEX",
+    "text": "Here are the anchors worth keeping. How Merging Rules Work and Why Your PR May Be Blocked: GitHub Docs, home, GitHub Changelog, GitHub Projects docs, Labels docs, Milestones docs. Quick Navigation: GitHub Docs, home, GitHub Changelog, GitHub Projects docs, Labels docs, Milestones docs. What Branch Protection Does: GitHub Docs, home, GitHub Changelog, GitHub Projects docs, Labels docs, Milestones docs. Common Branch Protection Rules: GitHub Docs, home, GitHub Changelog, GitHub Projects docs, Labels docs, Milestones docs. Repository Rulesets - The Modern Approach: GitHub Docs, home, GitHub Changelog, GitHub Projects docs, Labels docs, Milestones docs. Why Your PR Cannot Be Merged - Diagnosis Guide: GitHub Docs, home, GitHub Changelog, GitHub Projects docs, Labels docs, Milestones docs."
+  },
+  {
+    "speaker": "PAUSE",
+    "text": ""
+  },
+  {
     "speaker": "JAMIE",
     "text": "What should people carry with them after this?"
   },
   {
     "speaker": "ALEX",
-    "text": "Carry the map. Know what page or tool you are in, know which action you are taking, and know what confirmation should follow. If the confirmation is missing, pause. That pause is not wasted time; it is professional judgment."
+    "text": "Carry the map. Know what page or tool you are in, know which action you are taking, and know what confirmation should follow. If the confirmation is missing, pause. That pause is not wasted time; it is professional judgment, and it is how complex workflows start to feel magical instead of stressful."
   },
   {
     "speaker": "JAMIE",

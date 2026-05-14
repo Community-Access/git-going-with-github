@@ -1,0 +1,168 @@
+[ALEX]
+Episode 18 is our glossary deep dive: Git terms, GitHub terms, open source roles, accessibility language, and agent vocabulary that shows up in modern workflows.
+
+[JAMIE]
+Perfect. I want this in learner mode: what a term means, when it matters, and what to do next without panic.
+
+[PAUSE]
+
+[ALEX]
+Anchor section one as **Every Term You Need for Open Source Contribution**. Think of it as a workshop map, not a dictionary you memorize.
+
+[JAMIE]
+And we also have **Learning Cards: Navigating the Glossary**, right?
+
+[ALEX]
+Exactly. Each card does three things: define the term, give one concrete move, and show evidence you can check. For navigation, jump by heading, open your screen reader elements list, or use find-in-page for quick lookup.
+
+[PAUSE]
+
+[ALEX]
+Now **Part 1: The Building Blocks**.
+**Repository (Repo):** the project container with files and full history.
+**Organization (Org):** a shared GitHub account where teams and projects live.
+**Fork:** your copy of someone else’s repo in your account.
+**Clone:** copy a repo to your local machine.
+**Push** sends local commits up to a remote; **pull** brings remote changes down.
+
+[JAMIE]
+So local versus remote is the core mental model.
+
+[ALEX]
+Right. **Remote** is any hosted repo connection. **Origin** is usually your default remote after clone. **Upstream** is the original project you forked from. **Downstream** is your fork or derivative receiving upstream changes.
+And yes, keep the words straight: **local** is your computer, **remote** is hosted.
+
+[JAMIE]
+Can we include the two practical remote moments?
+
+[ALEX]
+Yes:
+**To see your remotes:** `git remote -v`
+**To add a remote:** `git remote add upstream <url>`
+
+[PAUSE]
+
+[ALEX]
+Next, **.gitignore**. It tells Git what not to track.
+**Why use .gitignore?** avoid noise, avoid secrets, avoid generated files.
+**Example `.gitignore`:** `.env`, `node_modules/`, `dist/`, `.DS_Store`, `Thumbs.db`.
+If a file is already tracked, remove it from tracking before ignore rules apply.
+
+[JAMIE]
+Then branches and commits?
+
+[ALEX]
+Yes. **Branch** is an independent line of work.
+**Common branch names:** `main`, `develop`, `feature/...`, `fix/...`, `docs/...`.
+**Commit** is a saved snapshot plus message.
+**Diff** is the before/after view of changes.
+
+[PAUSE]
+
+[ALEX]
+Now **Part 2: Collaboration Workflow**.
+**Issue:** track bugs, ideas, and tasks.
+**Pull Request (PR):** propose merging changes from one branch to another.
+PRs can be **draft** when work is not ready for final review.
+**Code Review:** feedback loop before merge.
+**Merge:** combine approved changes.
+**Merge Conflict:** same area changed in incompatible ways; needs manual resolution.
+
+[JAMIE]
+And governance terms?
+
+[ALEX]
+**Label** categorizes issues and PRs.
+**Milestone** groups work toward a target.
+**Project (GitHub Projects)** tracks work across issues and PRs in boards/views.
+**Status check** is automated validation on a PR, often required before merge.
+
+[PAUSE]
+
+[ALEX]
+**Part 3: People and Roles**.
+**Maintainer:** sets direction and final decisions.
+**Contributor:** submits code, docs, tests, ideas.
+**Triage:** classifies and routes incoming issues.
+**Collaborator:** has elevated repo permissions to help maintain flow.
+
+[JAMIE]
+Good. That keeps responsibility visible, not personal.
+
+[PAUSE]
+
+[ALEX]
+**Part 4: Common Abbreviations and Slang** includes terms like LGTM, WIP, nit, and +1. Useful shorthand, but clarity beats cleverness in public threads.
+
+[JAMIE]
+Let’s do pronunciation guidance before the advanced section.
+
+[ALEX]
+Great call.
+**Git** uses a hard G, like “gift.”
+**Repo** is commonly “reh-poh.”
+**ARIA** is usually “AR-ee-uh.”
+**SHA** is usually “shah.”
+
+[PAUSE]
+
+[ALEX]
+Now **Part 5: Technical GitHub Concepts**.
+**HEAD:** your current checkout pointer.
+**Detached HEAD:** HEAD points to a commit, not a branch.
+**Why it happens:** checkout of raw commit/tag.
+**What this means:** commits can become hard to find from branch history.
+**How to fix it:** create/switch to a branch and continue there.
+
+[JAMIE]
+Include stash and rebase with practical boundaries.
+
+[ALEX]
+Absolutely.
+**Stash:** temporarily save uncommitted changes.
+**Common workflow:** stash, switch, pull/fix, return, apply stash.
+**Stash commands:** `git stash`, `git stash list`, `git stash pop`, `git stash apply`.
+
+**Rebase** rewrites commit base for a cleaner linear history.
+**Merge** preserves branch history; **rebase** rewrites it.
+**When to use rebase:** clean local commits before PR.
+**When NOT to rebase:** shared public branch others depend on.
+**Basic rebase workflow:** fetch, rebase onto target, resolve conflicts, continue.
+
+[JAMIE]
+And the safety section: cherry-pick, fetch vs pull, force push, hash IDs.
+
+[ALEX]
+Yes.
+**Cherry-pick:** apply one specific commit to another branch.
+**When to use:** targeted fixes without merging whole branch.
+
+**Fetch vs Pull:**
+Use **fetch** to inspect updates safely first.
+Use **pull** when you’re ready to integrate immediately.
+
+**Force Push:** history rewrite on remote.
+**When force push is okay:** your own feature branch with team awareness.
+**When force push is NEVER okay:** protected/shared branches like `main`.
+**Safer alternative:** `--force-with-lease`.
+**Why force push is needed after rebase:** commit IDs changed, so remote history must be updated intentionally.
+
+**SHA / Hash:** unique commit fingerprint, often shortened in UI.
+
+[PAUSE]
+
+[JAMIE]
+Before we close, add accessibility and agent terms in one pass.
+
+[ALEX]
+Accessibility first:
+**Screen reader, landmark, heading, ARIA, focus, tab order** are not side topics; they define whether people can navigate and complete contribution tasks.
+
+Agent vocabulary next:
+**Copilot** is the AI assistant, an **agent** is an automated helper for scoped tasks, a **slash command** triggers structured actions, a **prompt** is the request text, and an **instruction file** sets persistent behavior rules.
+
+[JAMIE]
+That lands well: same workflow, clearer language.
+
+[ALEX]
+Exactly. Name the place, choose one deliberate action, and confirm the result. That is how glossary terms turn into reliable contribution habits.

@@ -10,15 +10,24 @@ const STOPWORDS = new Set([
 ]);
 
 const NOISE_HEADINGS = /^(listen to episode|related appendices|authoritative sources)$/i;
+const ALLOWED_MARKERS = new Set(['ALEX', 'JAMIE', 'PAUSE']);
+const DEFAULT_GATES = {
+  minSpeakerWordShare: 0.3,
+  maxSpeakerWordShare: 0.7,
+  maxConsecutiveTurns: 4,
+  maxRepeatedTemplateCount: 2
+};
 
 function parseArgs(argv) {
-  const args = {};
+  const args = { source: [], concept: [] };
   for (let index = 0; index < argv.length; index += 1) {
     const token = argv[index];
     if (!token.startsWith('--')) continue;
     const key = token.slice(2);
     const value = argv[index + 1] && !argv[index + 1].startsWith('--') ? argv[++index] : true;
-    args[key] = value;
+    if (key === 'source') args.source.push(value);
+    else if (key === 'concept') args.concept.push(value);
+    else args[key] = value;
   }
   return args;
 }
@@ -36,7 +45,7 @@ function readRequired(filePath) {
 }
 
 function cleanText(text) {
-  return text
+  return String(text || '')
     .replace(/\r/g, '')
     .replace(/[\u2018\u2019]/g, "'")
     .replace(/[\u201c\u201d]/g, '"')
@@ -46,7 +55,7 @@ function cleanText(text) {
 }
 
 function stripMarkdown(text) {
-  return cleanText(text
+  return cleanText(String(text || '')
     .replace(/```[\s\S]*?```/g, ' ')
     .replace(/`([^`]+)`/g, '$1')
     .replace(/!\[[^\]]*\]\([^)]*\)/g, ' ')
@@ -57,7 +66,7 @@ function stripMarkdown(text) {
 
 function extractHeadings(markdown) {
   const headings = [];
-  for (const line of markdown.replace(/\r/g, '').split('\n')) {
+  for (const line of String(markdown || '').replace(/\r/g, '').split('\n')) {
     const match = line.match(/^(#{2,4})\s+(.+)$/);
     if (!match) continue;
     const title = stripMarkdown(match[2]);
@@ -65,6 +74,15 @@ function extractHeadings(markdown) {
     headings.push({ level: match[1].length, title });
   }
   return headings;
+}
+
+function normalizeConceptList(value) {
+  if (!value) return [];
+  if (Array.isArray(value)) return value.map(item => String(item || '').trim()).filter(Boolean);
+  return String(value)
+    .split(/\r?\n|[;]+/)
+    .map(item => item.replace(/^\s*[-*]\s*/, '').trim())
+    .filter(Boolean);
 }
 
 function tokenize(text) {
@@ -75,9 +93,9 @@ function tokenize(text) {
     .filter(token => token.length >= 3 && !STOPWORDS.has(token));
 }
 
-function coverageForHeading(transcriptLower, heading) {
-  const exact = transcriptLower.includes(heading.title.toLowerCase());
-  const keywords = [...new Set(tokenize(heading.title))];
+function coverageForConcept(transcriptLower, conceptTitle) {
+  const exact = transcriptLower.includes(String(conceptTitle).toLowerCase());
+  const keywords = [...new Set(tokenize(conceptTitle))];
   if (keywords.length === 0) {
     return { status: exact ? 'covered' : 'unknown', ratio: exact ? 1 : 0, keywords: [] };
   }
@@ -95,10 +113,20 @@ function coverageForHeading(transcriptLower, heading) {
   return { status, ratio, keywords };
 }
 
+function summarizeCoverage(items) {
+  return {
+    covered: items.filter(item => item.status === 'covered').length,
+    partial: items.filter(item => item.status === 'partial').length,
+    missing: items.filter(item => item.status === 'missing').length,
+    total: items.length
+  };
+}
+
 function parseTranscript(script) {
-  const lines = script.replace(/\r/g, '').split('\n');
+  const lines = String(script || '').replace(/\r/g, '').split('\n');
   const segments = [];
   const invalidMarkers = [];
+  const markerPlacementIssues = [];
   let currentSpeaker = null;
   let currentLines = [];
 
@@ -115,7 +143,7 @@ function parseTranscript(script) {
     const markerMatch = trimmed.match(/^\[(.+)\]$/);
     if (markerMatch) {
       const marker = markerMatch[1];
-      if (!['ALEX', 'JAMIE', 'PAUSE'].includes(marker)) {
+      if (!ALLOWED_MARKERS.has(marker)) {
         invalidMarkers.push({ line: index + 1, marker: trimmed });
         continue;
       }
@@ -128,11 +156,14 @@ function parseTranscript(script) {
       }
       continue;
     }
+    if (!currentSpeaker) {
+      markerPlacementIssues.push({ line: index + 1, content: trimmed.slice(0, 120) });
+    }
     currentLines.push(trimmed);
   }
 
   flush();
-  return { segments, invalidMarkers };
+  return { segments, invalidMarkers, markerPlacementIssues };
 }
 
 function summarizeSegments(segments) {
@@ -146,11 +177,37 @@ function summarizeSegments(segments) {
   return perSpeaker;
 }
 
+function firstSentence(text) {
+  if (!text) return '';
+  const sentence = text.split(/(?<=[.!?])\s+/)[0] || text;
+  return cleanText(sentence).toLowerCase();
+}
+
+function lastSentence(text) {
+  if (!text) return '';
+  const sentences = cleanText(text).split(/(?<=[.!?])\s+/);
+  return (sentences[sentences.length - 1] || '').toLowerCase();
+}
+
+function collectRepeats(values, minLength = 25, maxItems = 10) {
+  const counts = new Map();
+  for (const value of values) {
+    const normalized = cleanText(String(value || '')).toLowerCase();
+    if (normalized.length < minLength) continue;
+    counts.set(normalized, (counts.get(normalized) || 0) + 1);
+  }
+  return [...counts.entries()]
+    .filter(([, count]) => count > 1)
+    .sort((left, right) => right[1] - left[1])
+    .slice(0, maxItems)
+    .map(([text, count]) => ({ text, count }));
+}
+
 function findRepeatedStarts(segments) {
   const counts = new Map();
   for (const segment of segments) {
     if (segment.speaker === 'PAUSE' || !segment.text) continue;
-    const start = segment.text.split(/(?<=[.!?])\s+/)[0].toLowerCase().slice(0, 90);
+    const start = firstSentence(segment.text).slice(0, 90);
     if (start.length < 25) continue;
     counts.set(start, (counts.get(start) || 0) + 1);
   }
@@ -161,49 +218,335 @@ function findRepeatedStarts(segments) {
     .map(([text, count]) => ({ count, text }));
 }
 
+function findRepeatedLongSegments(segments, minLength = 120) {
+  const counts = new Map();
+  for (const segment of segments) {
+    if (segment.speaker === 'PAUSE' || !segment.text) continue;
+    const normalized = cleanText(segment.text).toLowerCase();
+    if (normalized.length < minLength) continue;
+    counts.set(normalized, (counts.get(normalized) || 0) + 1);
+  }
+  return [...counts.entries()]
+    .filter(([, count]) => count > 1)
+    .sort((left, right) => right[1] - left[1])
+    .slice(0, 20)
+    .map(([text, count]) => ({ count, text }));
+}
+
+function findRepeatedLongLines(script) {
+  const longLines = String(script || '')
+    .replace(/\r/g, '')
+    .split('\n')
+    .map(line => cleanText(line))
+    .filter(line => line.length >= 80 && !/^\[(ALEX|JAMIE|PAUSE)\]$/i.test(line));
+  return collectRepeats(longLines, 80, 15);
+}
+
+function openerPattern(segments) {
+  const opener = segments.find(segment => segment.speaker !== 'PAUSE' && segment.text);
+  if (!opener) return { label: 'none', text: '' };
+  const sentence = firstSentence(opener.text);
+  const patterns = [
+    { label: 'welcome-to', regex: /^welcome to\b/ },
+    { label: 'welcome-back', regex: /^welcome back\b/ },
+    { label: 'this-is', regex: /^this is\b/ },
+    { label: 'you-are-listening', regex: /^you are listening\b/ },
+    { label: 'episode-number', regex: /^episode \d+/ },
+    { label: 'generic-question', regex: /^(what|how|why)\b/ }
+  ];
+  const match = patterns.find(item => item.regex.test(sentence));
+  return { label: match ? match.label : 'custom', text: sentence.slice(0, 120) };
+}
+
+function findStockLineHits(transcriptLower) {
+  const stockPatterns = [
+    /that is episode \d+/g,
+    /carry the map/g,
+    /orient, act, verify/g,
+    /and i am jamie/g,
+    /what should people carry with them after this/g,
+    /that is a better way to say it than just follow the steps/g
+  ];
+  const hits = [];
+  for (const pattern of stockPatterns) {
+    const found = transcriptLower.match(pattern);
+    if (found && found.length) hits.push({ pattern: String(pattern), count: found.length });
+  }
+  return hits;
+}
+
+function analyzeDialogueBalance(segments, summary) {
+  const spokenSegments = segments.filter(segment => segment.speaker !== 'PAUSE');
+  const totalSpokenWords = summary.ALEX.words + summary.JAMIE.words;
+  const alexShare = totalSpokenWords ? summary.ALEX.words / totalSpokenWords : 0;
+  const jamieShare = totalSpokenWords ? summary.JAMIE.words / totalSpokenWords : 0;
+
+  let maxConsecutiveTurns = 0;
+  let currentSpeaker = null;
+  let currentRun = 0;
+  const monologueRuns = [];
+
+  for (const segment of spokenSegments) {
+    if (segment.speaker === currentSpeaker) currentRun += 1;
+    else {
+      currentSpeaker = segment.speaker;
+      currentRun = 1;
+    }
+    if (currentRun > maxConsecutiveTurns) maxConsecutiveTurns = currentRun;
+    if (currentRun > DEFAULT_GATES.maxConsecutiveTurns) {
+      monologueRuns.push({
+        speaker: currentSpeaker,
+        consecutiveTurns: currentRun,
+        sample: segment.text.slice(0, 140)
+      });
+    }
+  }
+
+  return {
+    totalSpokenWords,
+    alexWordShare: Number(alexShare.toFixed(4)),
+    jamieWordShare: Number(jamieShare.toFixed(4)),
+    maxConsecutiveTurns,
+    monologueRuns
+  };
+}
+
+function resolveSources(args) {
+  if (args.packet) {
+    const packetPath = ensureAbsolute(args.packet);
+    const packet = JSON.parse(readRequired(packetPath));
+    const packetSources = (packet.sourceFiles || []).map(source => {
+      const sourcePath = ensureAbsolute(source.path);
+      const exists = fs.existsSync(sourcePath);
+      return {
+        sourcePath,
+        sourceLabel: source.label || path.basename(sourcePath),
+        exists,
+        content: exists ? readRequired(sourcePath) : '',
+        concepts: normalizeConceptList(source.concepts)
+      };
+    });
+    return {
+      packetPath,
+      packet,
+      sources: packetSources,
+      concepts: normalizeConceptList(packet.concepts)
+    };
+  }
+
+  const sources = (args.source || []).map(sourcePath => {
+    const absolute = ensureAbsolute(sourcePath);
+    const exists = fs.existsSync(absolute);
+    return {
+      sourcePath: absolute,
+      sourceLabel: path.basename(absolute),
+      exists,
+      content: exists ? readRequired(absolute) : '',
+      concepts: []
+    };
+  });
+
+  return {
+    packetPath: null,
+    packet: null,
+    sources,
+    concepts: normalizeConceptList(args.concept)
+  };
+}
+
+function evaluateTranscript(options) {
+  const transcriptLower = options.transcript.toLowerCase();
+  const sourceCoverage = [];
+  const allHeadingCoverage = [];
+  const aggregatedConcepts = [];
+  const missingSourceFiles = [];
+
+  for (const source of options.sources) {
+    if (!source.exists) {
+      missingSourceFiles.push(source.sourcePath);
+      sourceCoverage.push({
+        sourcePath: source.sourcePath,
+        sourceLabel: source.sourceLabel,
+        exists: false,
+        headingCoverage: [],
+        coverageSummary: { covered: 0, partial: 0, missing: 0, total: 0 }
+      });
+      continue;
+    }
+
+    const headings = extractHeadings(source.content);
+    const headingCoverage = headings.map(heading => ({
+      level: heading.level,
+      title: heading.title,
+      ...coverageForConcept(transcriptLower, heading.title)
+    }));
+    const coverageSummary = summarizeCoverage(headingCoverage);
+    sourceCoverage.push({
+      sourcePath: source.sourcePath,
+      sourceLabel: source.sourceLabel,
+      exists: true,
+      headingsAnalyzed: headings.length,
+      coverageSummary,
+      headingCoverage
+    });
+    allHeadingCoverage.push(...headingCoverage.map(item => ({ ...item, sourcePath: source.sourcePath })));
+    aggregatedConcepts.push(...(source.concepts || []));
+  }
+
+  const catalogConcepts = [...new Set([...(options.concepts || []), ...aggregatedConcepts])];
+  const conceptCoverage = catalogConcepts.map(concept => ({
+    concept,
+    ...coverageForConcept(transcriptLower, concept)
+  }));
+
+  const headingCoverageSummary = summarizeCoverage(allHeadingCoverage);
+  const conceptCoverageSummary = summarizeCoverage(conceptCoverage);
+  const { segments, invalidMarkers, markerPlacementIssues } = parseTranscript(options.transcript);
+  const segmentSummary = summarizeSegments(segments);
+  const dialogueBalance = analyzeDialogueBalance(segments, segmentSummary);
+  const repeatedStarts = findRepeatedStarts(segments);
+  const repeatedLongSegments = findRepeatedLongSegments(segments);
+  const repeatedLongLines = findRepeatedLongLines(options.transcript);
+  const spokenSegments = segments.filter(segment => segment.speaker !== 'PAUSE' && segment.text);
+  const repeatedOpeners = collectRepeats(
+    spokenSegments.slice(0, Math.min(10, spokenSegments.length)).map(segment => firstSentence(segment.text)),
+    20,
+    10
+  );
+  const repeatedClosers = collectRepeats(
+    spokenSegments.slice(-Math.min(10, spokenSegments.length)).map(segment => lastSentence(segment.text)),
+    20,
+    10
+  );
+  const markerFormatPass = invalidMarkers.length === 0 && markerPlacementIssues.length === 0;
+  const dialogueBalancePass = dialogueBalance.alexWordShare >= DEFAULT_GATES.minSpeakerWordShare
+    && dialogueBalance.alexWordShare <= DEFAULT_GATES.maxSpeakerWordShare
+    && dialogueBalance.jamieWordShare >= DEFAULT_GATES.minSpeakerWordShare
+    && dialogueBalance.jamieWordShare <= DEFAULT_GATES.maxSpeakerWordShare
+    && dialogueBalance.maxConsecutiveTurns <= DEFAULT_GATES.maxConsecutiveTurns;
+  const repetitionPass = repeatedLongLines.length === 0
+    && repeatedOpeners.every(item => item.count <= DEFAULT_GATES.maxRepeatedTemplateCount)
+    && repeatedClosers.every(item => item.count <= DEFAULT_GATES.maxRepeatedTemplateCount)
+    && repeatedStarts.every(item => item.count <= DEFAULT_GATES.maxRepeatedTemplateCount);
+  const coveragePass = missingSourceFiles.length === 0
+    && headingCoverageSummary.missing === 0
+    && conceptCoverageSummary.missing === 0;
+  const gates = {
+    coveragePass,
+    stylePass: markerFormatPass && dialogueBalancePass,
+    repetitionPass
+  };
+  gates.pass = gates.coveragePass && gates.stylePass && gates.repetitionPass;
+  gates.failureReasons = [];
+  if (!gates.coveragePass) gates.failureReasons.push('coverage');
+  if (!gates.stylePass) gates.failureReasons.push('style');
+  if (!gates.repetitionPass) gates.failureReasons.push('repetition');
+
+  return {
+    generatedAt: new Date().toISOString(),
+    transcriptPath: options.transcriptPath,
+    transcriptWords: options.transcript.split(/\s+/).filter(Boolean).length,
+    transcriptCharacters: options.transcript.length,
+    sourcesAnalyzed: sourceCoverage.length,
+    missingSourceFiles,
+    sourceCoverage,
+    headingCoverageSummary,
+    conceptCoverageSummary,
+    conceptCoverage,
+    invalidMarkers,
+    markerPlacementIssues,
+    segmentSummary,
+    dialogueBalance,
+    repeatedStarts,
+    repeatedOpeners,
+    repeatedClosers,
+    repeatedLongSegments,
+    repeatedLongLines,
+    openerPattern: openerPattern(segments),
+    stockLineHits: findStockLineHits(transcriptLower),
+    gates
+  };
+}
+
+function analyzeTranscript({ sourcePath, transcriptPath, source, transcript }) {
+  const report = evaluateTranscript({
+    transcriptPath,
+    transcript,
+    sources: [{
+      sourcePath,
+      sourceLabel: path.basename(sourcePath),
+      exists: true,
+      content: source,
+      concepts: []
+    }],
+    concepts: []
+  });
+
+  return {
+    generatedAt: report.generatedAt,
+    sourcePath,
+    transcriptPath,
+    transcriptWords: report.transcriptWords,
+    transcriptCharacters: report.transcriptCharacters,
+    headingsAnalyzed: report.headingCoverageSummary.total,
+    coverageSummary: report.headingCoverageSummary,
+    invalidMarkers: report.invalidMarkers,
+    segmentSummary: report.segmentSummary,
+    repeatedStarts: report.repeatedStarts,
+    repeatedLongSegments: report.repeatedLongSegments,
+    openerPattern: report.openerPattern,
+    stockLineHits: report.stockLineHits,
+    headingCoverage: report.sourceCoverage[0] ? report.sourceCoverage[0].headingCoverage : [],
+    gates: report.gates
+  };
+}
+
+function evaluateQualityGates(report, args) {
+  const maxMissing = Number.isFinite(Number(args['max-missing'])) ? Number(args['max-missing']) : Number.POSITIVE_INFINITY;
+  const maxRepeatedStarts = Number.isFinite(Number(args['max-repeated-starts'])) ? Number(args['max-repeated-starts']) : Number.POSITIVE_INFINITY;
+  const maxRepeatedLong = Number.isFinite(Number(args['max-repeated-long'])) ? Number(args['max-repeated-long']) : Number.POSITIVE_INFINITY;
+  const maxStockHits = Number.isFinite(Number(args['max-stock-hits'])) ? Number(args['max-stock-hits']) : Number.POSITIVE_INFINITY;
+
+  const failures = [];
+  if ((report.invalidMarkers || []).length > 0) failures.push(`Invalid markers: ${report.invalidMarkers.length}`);
+  if ((report.coverageSummary || report.headingCoverageSummary || { missing: 0 }).missing > maxMissing) failures.push(`Missing concepts/headings ${(report.coverageSummary || report.headingCoverageSummary).missing} > ${maxMissing}`);
+  if ((report.repeatedStarts || []).length > maxRepeatedStarts) failures.push(`Repeated starts ${report.repeatedStarts.length} > ${maxRepeatedStarts}`);
+  if ((report.repeatedLongSegments || []).length > maxRepeatedLong) failures.push(`Repeated long segments ${report.repeatedLongSegments.length} > ${maxRepeatedLong}`);
+  const stockHitCount = (report.stockLineHits || []).reduce((sum, item) => sum + item.count, 0);
+  if (stockHitCount > maxStockHits) failures.push(`Stock line hits ${stockHitCount} > ${maxStockHits}`);
+
+  return {
+    pass: failures.length === 0,
+    failures,
+    thresholds: { maxMissing, maxRepeatedStarts, maxRepeatedLong, maxStockHits }
+  };
+}
+
+function usage() {
+  return 'Usage: node podcasts/tools/agentic-pilot/evaluate-transcript.js --transcript <script> (--packet <packet-json> | --source <markdown> [--source <markdown> ...]) [--concept <text>] [--out <json>]';
+}
+
 function main() {
   const args = parseArgs(process.argv.slice(2));
-  if (!args.source || !args.transcript) {
-    console.error('Usage: node podcasts/tools/agentic-pilot/evaluate-transcript.js --source <markdown> --transcript <script> [--out <json>]');
+  if (!args.transcript || ((!args.source || args.source.length === 0) && !args.packet)) {
+    console.error(usage());
     process.exit(1);
   }
 
-  const sourcePath = ensureAbsolute(args.source);
   const transcriptPath = ensureAbsolute(args.transcript);
-  const source = readRequired(sourcePath);
   const transcript = readRequired(transcriptPath);
-
-  const headings = extractHeadings(source);
-  const transcriptLower = transcript.toLowerCase();
-  const headingCoverage = headings.map(heading => ({
-    level: heading.level,
-    title: heading.title,
-    ...coverageForHeading(transcriptLower, heading)
-  }));
-
-  const coverageSummary = {
-    covered: headingCoverage.filter(item => item.status === 'covered').length,
-    partial: headingCoverage.filter(item => item.status === 'partial').length,
-    missing: headingCoverage.filter(item => item.status === 'missing').length,
-    total: headingCoverage.length
-  };
-
-  const { segments, invalidMarkers } = parseTranscript(transcript);
-  const words = transcript.split(/\s+/).filter(Boolean).length;
-
-  const report = {
-    generatedAt: new Date().toISOString(),
-    sourcePath,
+  const sourceConfig = resolveSources(args);
+  const report = evaluateTranscript({
+    transcript,
     transcriptPath,
-    transcriptWords: words,
-    transcriptCharacters: transcript.length,
-    headingsAnalyzed: headings.length,
-    coverageSummary,
-    invalidMarkers,
-    segmentSummary: summarizeSegments(segments),
-    repeatedStarts: findRepeatedStarts(segments),
-    headingCoverage
-  };
+    sources: sourceConfig.sources,
+    concepts: sourceConfig.concepts
+  });
+  report.qualityGates = evaluateQualityGates(report, args);
+  if (sourceConfig.packetPath) {
+    report.packetPath = sourceConfig.packetPath;
+    report.packetSlug = sourceConfig.packet && sourceConfig.packet.slug;
+  }
 
   const json = JSON.stringify(report, null, 2) + '\n';
   if (args.out) {
@@ -219,3 +562,16 @@ function main() {
 if (require.main === module) {
   main();
 }
+
+module.exports = {
+  extractHeadings,
+  parseTranscript,
+  analyzeTranscript,
+  evaluateQualityGates,
+  evaluateTranscript,
+  resolveSources,
+  normalizeConceptList,
+  findRepeatedStarts,
+  findRepeatedLongSegments,
+  openerPattern
+};

@@ -66,6 +66,7 @@ function findTarget(slug) {
         slug,
         title: `Episode ${episode.number}: ${episode.title}`,
         description: episode.description || '',
+        concepts: Array.isArray(episode.concepts) ? episode.concepts : [],
         sourceFiles: (episode.sources || []).map(source => path.join(DOCS_DIR, resolveSourceName(source)))
       };
     }
@@ -79,6 +80,7 @@ function findTarget(slug) {
         slug,
         title: `Challenge ${challenge.id}: ${challenge.title}`,
         description: challenge.focus || '',
+        concepts: [challenge.focus || '', `Challenge title: ${challenge.title}`].filter(Boolean),
         sourceFiles: [
           path.join(ROOT, challenge.template),
           path.join(ROOT, challenge.solution),
@@ -106,13 +108,12 @@ function main() {
 
   const transcriptPath = transcriptPathForSlug(args.slug);
   const chapterPlanPath = segmentPlanPathForSlug(args.slug);
-  const sources = target.sourceFiles
-    .filter(filePath => fs.existsSync(filePath))
-    .map(filePath => ({
-      path: filePath,
-      headings: collectHeadings(readIfExists(filePath)),
-      content: readIfExists(filePath)
-    }));
+  const sources = target.sourceFiles.map(filePath => ({
+    exists: fs.existsSync(filePath),
+    path: filePath,
+    headings: collectHeadings(readIfExists(filePath)),
+    content: readIfExists(filePath)
+  }));
 
   const packet = {
     generatedAt: new Date().toISOString(),
@@ -120,11 +121,13 @@ function main() {
     slug: target.slug,
     title: target.title,
     description: target.description,
+    concepts: target.concepts,
     transcriptPath,
     chapterPlanPath,
     transcriptText: readIfExists(transcriptPath),
     chapterPlanText: readIfExists(chapterPlanPath),
     sourceFiles: sources.map(source => ({
+      exists: source.exists,
       path: source.path,
       headings: source.headings,
       content: source.content

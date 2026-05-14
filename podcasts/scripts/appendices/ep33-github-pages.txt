@@ -1,8 +1,8 @@
 [ALEX]
-Welcome back to Git Going with GitHub. This is episode 33: Publishing with GitHub Pages. I am Alex, and today we are turning Publishing with GitHub Pages from a list of instructions into a working mental model.
+Welcome back to Git Going with GitHub. This is episode 33: Publishing with GitHub Pages. I am Alex, and today we are turning Publishing with GitHub Pages from a list of instructions into a working mental model that actually feels alive.
 
 [JAMIE]
-And I am Jamie. I will stop us whenever the instructions sound simple on paper but might feel different with a keyboard and screen reader.
+And I am Jamie. I will stop us whenever the instructions sound simple on paper but feel less magical at the keyboard with a screen reader.
 
 [PAUSE]
 
@@ -10,7 +10,7 @@ And I am Jamie. I will stop us whenever the instructions sound simple on paper b
 Free static site hosting, custom domains, HTTPS, and accessibility. That is the surface description. Underneath it, we are building judgment: where to focus, what to ignore, and how to verify the result.
 
 [JAMIE]
-So we are not using the audio as a shortcut around learning. We are using it to make the learning easier to enter.
+So we are not using the audio as a shortcut around learning. We are using it to make the learning easier to enter and easier to remember.
 
 [ALEX]
 Yes. A good audio lesson gives someone enough context to try the work with confidence, even before they open the written material.
@@ -21,45 +21,57 @@ Yes. A good audio lesson gives someone enough context to try the work with confi
 Okay, set the room for us. What are we walking into?
 
 [ALEX]
-How to Deploy a Static Website Directly from Your Repository: GitHub Pages lets you publish a static website straight from a GitHub repository - no server, no hosting bill, no deployment pipeline required for simple sites. This appendix explains how to enable it, what it can publish, and how to ensure the published site meets the same accessibility standards as your source code.
+How to Deploy a Static Website Directly from Your Repository: GitHub Pages lets you publish a static website straight from a GitHub repository - no server, no hosting bill, no deployment pipeline required for simple sites. The next useful detail is concrete: This appendix explains how to enable it, what it can publish, and how to ensure the published site meets the same accessibility standards as your source code.
 
 [ALEX]
-Learning Cards: GitHub Pages Overview.
+The next layer is this. Learning Cards: GitHub Pages Overview has three jobs: name the idea, give the learner a move, and show what counts as evidence.
 
 [ALEX]
 Here are the anchors worth keeping. The Pages settings are under Settings (gear icon in repository navigation) then "Pages" in the left sidebar under the "Code and automation" group heading. Branch and folder selectors in the Pages settings are standard select elements -- navigate with arrow keys to choose your publishing source. After deployment, the published URL appears as a link at the top of the Pages settings page. GitHub Pages settings use the same layout as other repository settings -- look for the "Pages" link in the left sidebar after clicking Settings. The deployment status indicator shows a green checkmark for successful deployments and a red X for failures. Published sites inherit no special styling from GitHub -- ensure your site's CSS provides adequate contrast and font sizing.
 
-[ALEX]
-GitHub Pages is a static site hosting service built into GitHub. It serves files directly from a branch or folder in your repository at a URL of the form.
+[JAMIE]
+What is the one idea that makes the next few steps less mysterious?
 
 [ALEX]
-Right.
+This is the move inside 1. What GitHub Pages Is: GitHub Pages is a static site hosting service built into GitHub. That matters in practice: It serves files directly from a branch or folder in your repository at a URL of the form.
+
+[JAMIE]
+That feels much more doable when you say it as one move.
+
+[ALEX]
+Right. The magic is not speed. The magic is knowing what changed and why it matters.
 
 [PAUSE]
 
 [ALEX]
-What it is good for.
+Now bring the learner back to the room. What it is good for has three jobs: name the idea, give the learner a move, and show what counts as evidence.
 
 [ALEX]
 For a learner, the useful signals are concrete. Documentation sites. Workshop materials (like this project). Project landing pages. Personal portfolios. Simple blogs via Jekyll.
 
-[ALEX]
-GitHub will build and deploy within a minute or two. The URL appears at the top of the Pages settings once the first deployment succeeds.
+[JAMIE]
+What is the ordered workflow?
 
 [ALEX]
-Deploy from a branch - serve files directly from a branch/folder. GitHub Actions - use a workflow to build and deploy. Select the branch (e.g. main or master). Select the folder: / (root) or /docs.
+The reason this matters is simple: GitHub will build and deploy within a minute or two. The listener should be able to check this: The URL appears at the top of the Pages settings once the first deployment succeeds.
 
 [ALEX]
-Step one is go to the repository on GitHub.com. Step two is click Settings (the gear icon in the top navigation). Step three is in the left sidebar, scroll to Code and automation and click Pages. Step four is under Build and deployment, choose your publishing source.
+The parts worth keeping in working memory are these. Deploy from a branch - serve files directly from a branch/folder. GitHub Actions - use a workflow to build and deploy. Select the branch (e.g. main or master). Select the folder: / (root) or /docs.
+
+[ALEX]
+The path is straightforward once it is named. Step one is go to the repository on GitHub.com. Step two is click Settings (the gear icon in the top navigation). Step three is in the left sidebar, scroll to Code and automation and click Pages. Step four is under Build and deployment, choose your publishing source. That is the rhythm: orient, act, verify, continue.
+
+[JAMIE]
+Give me the sequence, because order matters here.
 
 [ALEX]
 First, if using "Deploy from a branch". Then, click Save. That small check between steps is what makes the workflow reliable.
 
 [ALEX]
-That pause between action and trust is part of the work.
+The useful habit is simple: orient, act, verify, then continue. That pause between action and trust is part of the work.
 
 [ALEX]
-That matters because of the next idea. Screen reader navigation for the Pages settings page.
+That matters because of the next idea. Screen reader navigation for the Pages settings page has three jobs: name the idea, give the learner a move, and show what counts as evidence.
 
 [ALEX]
 On the ground, that means a few things. The Settings tab is a link in the repository's top navigation bar. It has the accessible name "Settings". The Pages option in the left sidebar is a link under the "Code and automation" group heading. The branch and folder dropdowns are standard elements - navigate with arrow keys.
@@ -73,25 +85,34 @@ A solid navigation habit is to prove where you are before activating controls. H
 If I am listening before the workshop starts, what should settle in my mind first?
 
 [ALEX]
-GitHub reads files directly from a branch. Best practice: Use /docs to isolate the published content from source files, especially for projects with build pipelines where the output lives in a specific folder.
+If the interface shifts, Deploy from a branch is still useful because GitHub reads files directly from a branch. For someone navigating by keyboard or screen reader, this detail matters: Best practice: Use /docs to isolate the published content from source files, especially for projects with build pipelines where the output lives in a specific folder.
 
 [ALEX]
 A solid Git habit is to know which branch you are on, what changed, and what confirmation you expect before you run the next command.
+
+[JAMIE]
+What does the learner do first, second, and then after that?
 
 [ALEX]
 Put GitHub Actions into plain language. Use a workflow (YAML file in.github/workflows/) to build your site before publishing. The useful version is: A basic workflow for this project would.
 
 [ALEX]
-Your source is Markdown and you need a build step (e.g. this project's scripts/build-html.js). You are using a static site generator like Jekyll, Hugo, or Eleventy. You want to run accessibility tests in CI before publishing.
+The room should hear these as checkpoints. Your source is Markdown and you need a build step (e.g. this project's scripts/build-html.js). You are using a static site generator like Jekyll, Hugo, or Eleventy. You want to run accessibility tests in CI before publishing.
 
 [ALEX]
-Check out the repository; Run node scripts/build-html.js; and Upload the html/ folder as the Pages artifact. Keep it that plain: know where you are, make the move, check the result.
+Walk it in order: Check out the repository; Run node scripts/build-html.js; and Upload the html/ folder as the Pages artifact. Keep it that plain: know where you are, make the move, check the result.
+
+[JAMIE]
+Now it sounds like a workflow instead of a wall of instructions.
+
+[ALEX]
+That is where confidence comes from: not from never getting lost, but from knowing how to recover.
 
 [JAMIE]
 Where do you want a learner to place their attention here?
 
 [ALEX]
-This project has a pre-built HTML mirror of all Markdown content in the html/ folder, generated by scripts/build-html.js. To publish this as a GitHub Pages site.
+The teaching point here is not the label; it is the move. This project has a pre-built HTML mirror of all Markdown content in the html/ folder, generated by scripts/build-html.js. That is the difference between guessing and knowing: To publish this as a GitHub Pages site.
 
 [ALEX]
 A solid pull request habit is to separate three questions: what changed, why it changed, and what still needs review. That keeps the conversation useful instead of noisy.
@@ -99,7 +120,7 @@ A solid pull request habit is to separate three questions: what changed, why it 
 [PAUSE]
 
 [ALEX]
-Before the learner moves on. Because GitHub Pages only supports / (root) or /docs as folder sources, and this project's output is in html/, you have two options.
+Before the learner moves on. This part earns its place because because GitHub Pages only supports / (root) or /docs as folder sources, and this project's output is in html/, you have two options. That is the difference between following directions and owning the workflow.
 
 [JAMIE]
 What is the safe way to learn from that example?
@@ -114,7 +135,7 @@ Treat examples as spoken recipes, not decorations. You may hear something like C
 What should happen before anyone copies and runs it?
 
 [ALEX]
-If the project does not already use docs/ for Markdown sources, you could rename the output folder. This project uses docs/ for Markdown source files, so this would conflict.
+Here is the learner-facing version. If the project does not already use docs/ for Markdown sources, you could rename the output folder. The next useful detail is concrete: This project uses docs/ for Markdown source files, so this would conflict.
 
 [ALEX]
 Treat examples as spoken recipes, not decorations. You may hear something like Update the build script output path first, then; git mv html/ docs/; git commit -m "Rename html/ to docs/ for GitHub Pages compatibility"; git push. Read the command, understand what it changes, then run it only when the repository state matches the lesson.
@@ -125,7 +146,7 @@ Treat examples as spoken recipes, not decorations. You may hear something like U
 What would you say to someone who is already bracing for this to be too much?
 
 [ALEX]
-GitHub Actions workflow: this workflow triggers on every push to master, rebuilds the HTML, and deploys the html/ folder.
+This is the move inside Option B: GitHub Actions workflow: this workflow triggers on every push to master, rebuilds the HTML, and deploys the html/ folder.
 
 [JAMIE]
 That is the kind of detail that keeps a screen reader user oriented.
@@ -134,33 +155,36 @@ That is the kind of detail that keeps a screen reader user oriented.
 Yes. The named thing - the heading, tab, field, branch, or button - is the handhold.
 
 [ALEX]
-Custom Domains. GitHub Pages supports custom domains (e.g. This is the part to say slowly: learning.community-access.org instead of community-access.github.io/Learning-Room). The durable skill is not memorizing one screen. It is knowing how to find your footing when the screen changes.
+Here is the moment where the page starts to make sense. Anchor this part on 5. Custom Domains. GitHub Pages supports custom domains (e.g. That matters in practice: learning.community-access.org instead of community-access.github.io/Learning-Room). The durable skill is not memorizing one screen. It is knowing how to find your footing when the screen changes.
 
 [JAMIE]
 How would you walk the room through that step by step?
 
 [ALEX]
-Setting up a custom domain.
+Setting up a custom domain has three jobs: name the idea, give the learner a move, and show what counts as evidence.
 
 [ALEX]
-Step one is in repository Settings → Pages, enter your domain in the Custom domain field and click Save. Step two is GitHub creates a CNAME file in the repository root containing your domain name. Step three is at your DNS provider, create the appropriate records. The sequence works because every action has a confirmation.
+The path is straightforward once it is named. Step one is in repository Settings → Pages, enter your domain in the Custom domain field and click Save. Step two is GitHub creates a CNAME file in the repository root containing your domain name. Step three is at your DNS provider, create the appropriate records. The sequence works because every action has a confirmation.
 
 [PAUSE]
 
 [ALEX]
-The next point gives the learner a handle. Do not treat GitHub's current A record IPs for apex domains as decoration. DNS changes can take up to 48 hours to propagate. GitHub Pages checks and verifies the domain automatically once DNS is configured.
+The next point gives the learner a handle. Do not treat GitHub's current A record IPs for apex domains as decoration. DNS changes can take up to 48 hours to propagate. The listener should be able to check this: GitHub Pages checks and verifies the domain automatically once DNS is configured.
 
 [JAMIE]
 Give me the version that sounds like an instructor, not a manual.
 
 [ALEX]
-to prevent domain takeover attacks, GitHub recommends verifying your custom domain in your account or organization settings (Settings → Pages → Add a domain). This prevents others from claiming your domain for their GitHub Pages if you temporarily remove it.
+If the interface shifts, Domain verification is still useful because to prevent domain takeover attacks, GitHub recommends verifying your custom domain in your account or organization settings (Settings → Pages → Add a domain). That is not trivia. This prevents others from claiming your domain for their GitHub Pages if you temporarily remove it.
+
+[JAMIE]
+Turn that into a path someone can follow.
 
 [ALEX]
-Put 6. HTTPS and Security into plain language. GitHub Pages enforces HTTPS automatically for github.io subdomains. The useful version is: Never store secrets, API keys, or private data in a GitHub Pages repository. The interface gets easier when it becomes a set of named places instead of a wall of controls.
+Put 6. HTTPS and Security into plain language. GitHub Pages enforces HTTPS automatically for github.io subdomains. For someone navigating by keyboard or screen reader, this detail matters: Never store secrets, API keys, or private data in a GitHub Pages repository. The interface gets easier when it becomes a set of named places instead of a wall of controls.
 
 [ALEX]
-After DNS propagates, check Enforce HTTPS in Pages settings; GitHub Pages uses Let's Encrypt to provision a certificate automatically; and Enforcing HTTPS redirects all HTTP traffic to HTTPS.
+Walk it in order: After DNS propagates, check Enforce HTTPS in Pages settings; GitHub Pages uses Let's Encrypt to provision a certificate automatically; and Enforcing HTTPS redirects all HTTP traffic to HTTPS. The point is not speed; the point is never losing your place.
 
 [JAMIE]
 So the learner is not behind if they stop there and check the page.
@@ -174,13 +198,13 @@ Yes. Pausing to verify is not a detour; it is how you keep control of the workfl
 Let's pause on 7. Accessibility Considerations for Published Sites. What should a learner take away from it?
 
 [ALEX]
-Publishing a site does not automatically make it accessible. Consider the following for the published HTML output.
+The teaching point here is not the label; it is the move. Publishing a site does not automatically make it accessible. The useful version is: Consider the following for the published HTML output.
 
 [ALEX]
-That connects to another useful point. Learning Cards: Accessibility of Published Sites.
+That connects to another useful point. Learning Cards: Accessibility of Published Sites has three jobs: name the idea, give the learner a move, and show what counts as evidence.
 
 [ALEX]
-Verify that published HTML pages include a skip-to-content link as the first focusable element -- press Tab once after the page loads to check. Confirm the page has a descriptive title element and a single H1 heading -- these are announced first when the page opens. Test that all internal navigation links work and land on the correct heading or section. Run an automated contrast checker (axe, WAVE) on published pages after any CSS changes to confirm text remains readable. Test the published site at 200% browser zoom to verify layouts do not break or hide content. If the site uses a custom theme, verify it works in both forced-colors mode (Windows High Contrast) and standard mode.
+Here is what that changes in practice. Verify that published HTML pages include a skip-to-content link as the first focusable element -- press Tab once after the page loads to check. Confirm the page has a descriptive title element and a single H1 heading -- these are announced first when the page opens. Test that all internal navigation links work and land on the correct heading or section. Run an automated contrast checker (axe, WAVE) on published pages after any CSS changes to confirm text remains readable. Test the published site at 200% browser zoom to verify layouts do not break or hide content. If the site uses a custom theme, verify it works in both forced-colors mode (Windows High Contrast) and standard mode.
 
 [JAMIE]
 Let's pause on Navigation and landmarks. What should a learner take away from it?
@@ -194,13 +218,13 @@ These are the details that keep the idea from floating away. A landmark wrapping
 [PAUSE]
 
 [ALEX]
-Here is the practical turn. For sites with repeated navigation on every page, add a skip link as the first element in.
+Here is the practical turn. Here is the learner-facing version. For sites with repeated navigation on every page, add a skip link as the first element in. A good GitHub workflow is like a well-run meeting: everyone knows the topic, the next action, and who has the floor.
 
 [JAMIE]
 Let's pause on Focus management for single-page navigation. What should a learner take away from it?
 
 [ALEX]
-if the site uses JavaScript to load content without full page reloads, manage focus explicitly when content changes. Move focus to the new or a wrapper with tabindex="-1" after navigation.
+This is the move inside Focus management for single-page navigation: if the site uses JavaScript to load content without full page reloads, manage focus explicitly when content changes. The next useful detail is concrete: Move focus to the new or a wrapper with tabindex="-1" after navigation.
 
 [JAMIE]
 That is a useful checkpoint before anyone starts pressing keys.
@@ -209,7 +233,7 @@ That is a useful checkpoint before anyone starts pressing keys.
 Exactly. Checkpoints turn uncertainty into information.
 
 [ALEX]
-Keep the thread going. All images in published pages should have appropriate alt attributes. This is the part to say slowly: Decorative images should use alt="" (empty, not missing) to be skipped by screen readers.
+Keep the thread going. Anchor this part on Image alt text. All images in published pages should have appropriate alt attributes. Put another way, decorative images should use alt="" (empty, not missing) to be skipped by screen readers.
 
 [PAUSE]
 
@@ -217,19 +241,19 @@ Keep the thread going. All images in published pages should have appropriate alt
 Let's pause on Color contrast. What should a learner take away from it?
 
 [ALEX]
-Run the published pages through an automated checker (axe, WAVE) after changes to the stylesheet to verify contrast ratios remain compliant.
+The reason this matters is simple: run the published pages through an automated checker (axe, WAVE) after changes to the stylesheet to verify contrast ratios remain compliant.
 
 [ALEX]
-Another way to ground it. Do not treat Testing the published site as decoration. After deployment, test the live URL rather than only local files. mixed content, broken relative links, missing files) only appear when served from a web server.
+Another way to ground it. Do not treat Testing the published site as decoration. After deployment, test the live URL rather than only local files. This is the part to say slowly: mixed content, broken relative links, missing files) only appear when served from a web server. The workshop is closer to rehearsal than lecture. You hear the move, try the move, and then check what changed.
 
 [JAMIE]
 Let's pause on Recommended post-deployment checks. What should a learner take away from it?
 
 [ALEX]
-Recommended post-deployment checks.
+Recommended post-deployment checks has three jobs: name the idea, give the learner a move, and show what counts as evidence.
 
 [ALEX]
-Start here: Navigate all pages keyboard-only. Then: Run axe DevTools on the index page and at least one content page. Next: Verify no broken links with a link checker (e.g. W3C Link Checker). Last: Test with a screen reader announcement of the page title.
+Start here: Navigate all pages keyboard-only. Then: Run axe DevTools on the index page and at least one content page. Next: Verify no broken links with a link checker (e.g. W3C Link Checker). Last: Test with a screen reader announcement of the page title. Each step should leave a trace you can name.
 
 [PAUSE]
 
@@ -246,10 +270,10 @@ That is the goal. We want the page to feel explorable, not fragile.
 Let's pause on Adding automated accessibility checks to the workflow. What should a learner take away from it?
 
 [ALEX]
-Extend the workflow to fail the build if accessibility violations are found. This uses the axe-core CLI to scan the built index page.
+The teaching point here is not the label; it is the move. Extend the workflow to fail the build if accessibility violations are found. For someone navigating by keyboard or screen reader, this detail matters: This uses the axe-core CLI to scan the built index page.
 
 [ALEX]
-Put that beside the next piece. Site not updating after a push.
+Put that beside the next piece. Site not updating after a push has three jobs: name the idea, give the learner a move, and show what counts as evidence.
 
 [ALEX]
 Listen for the small confirmations in this list. Check the Actions tab for a failed deploy workflow. Check Settings → Pages - the most recent deployment timestamp should match your push. Hard-refresh the browser (Ctrl+F5 / Cmd+Shift+R) to bypass the cache. DNS TTL caching can delay custom domain updates up to the TTL value (often 1 hour).
@@ -260,10 +284,10 @@ Listen for the small confirmations in this list. Check the Actions tab for a fai
 Let's pause on 404 on all pages except index. What should a learner take away from it?
 
 [ALEX]
-404 on all pages except index: This usually indicates a base URL mismatch. If your site is at https://user.github.io/my-repo/, all relative asset and link paths must account for the /my-repo/ path prefix.
+404 on all pages except index: This usually indicates a base URL mismatch. That is the difference between guessing and knowing: If your site is at https://user.github.io/my-repo/, all relative asset and link paths must account for the /my-repo/ path prefix.
 
 [ALEX]
-Now shift from knowing the term to using it. HTTPS certificate not provisioning.
+Now shift from knowing the term to using it. HTTPS certificate not provisioning has three jobs: name the idea, give the learner a move, and show what counts as evidence.
 
 [ALEX]
 This is where the lesson becomes something you can check. Verify DNS records are correctly set. Ensure the domain is not proxied through a CDN (e.g. Cloudflare orange-cloud) - GitHub Pages needs to see the DNS record directly to provision the cert. Allow up to 24 hours after correct DNS propagation.
@@ -272,7 +296,7 @@ This is where the lesson becomes something you can check. Verify DNS records are
 Let's pause on Screen reader announces wrong page title. What should a learner take away from it?
 
 [ALEX]
-the published element is set during the HTML build step. Update the template in scripts/build-html.js to ensure each page has a unique, descriptive title.
+This is the move inside Screen reader announces wrong page title: the published element is set during the HTML build step. That gives the learner a foothold: update the template in scripts/build-html.js to ensure each page has a unique, descriptive title.
 
 [JAMIE]
 That is the part I would want someone to say out loud while they work.
@@ -282,11 +306,19 @@ Exactly. A learner should always know what they are trying to prove before they 
 
 [PAUSE]
 
+[ALEX]
+This is where confidence starts to build. Anchor this part on Section-Level Source Map. Use this map to verify facts for each major section in this file. The durable skill is not memorizing one screen. It is knowing how to find your footing when the screen changes.
+
+[ALEX]
+That shows up in the workshop in a few specific ways. How to Deploy a Static Website Directly from Your Repository: GitHub Docs, home, GitHub Changelog, GitHub Pages docs, GitHub Pages quickstart, About Git. What GitHub Pages Is: GitHub Docs, home, GitHub Changelog, GitHub Pages docs, GitHub Pages quickstart, About Git. Enabling GitHub Pages for a Repository: GitHub Docs, home, GitHub Changelog, GitHub Pages docs, GitHub Pages quickstart, About Git. Publishing Sources: GitHub Docs, home, GitHub Changelog, GitHub Pages docs, GitHub Pages quickstart. The html/ Folder in This Project: GitHub Docs, home, GitHub Changelog, GitHub Pages docs, GitHub Pages quickstart, GitHub Projects docs. Option A2 - Rename html/ to docs/: GitHub Docs, home, GitHub Changelog, GitHub Pages docs, GitHub Pages quickstart.
+
+[PAUSE]
+
 [JAMIE]
 What should people carry with them after this?
 
 [ALEX]
-Carry the map. Know what page or tool you are in, know which action you are taking, and know what confirmation should follow. If the confirmation is missing, pause. That pause is not wasted time; it is professional judgment.
+Carry the map. Know what page or tool you are in, know which action you are taking, and know what confirmation should follow. If the confirmation is missing, pause. That pause is not wasted time; it is professional judgment, and it is how complex workflows start to feel magical instead of stressful.
 
 [JAMIE]
 That is a better way to say it than just follow the steps.

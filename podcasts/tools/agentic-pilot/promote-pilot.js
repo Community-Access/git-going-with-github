@@ -8,14 +8,16 @@ const PODCASTS_DIR = path.join(ROOT, 'podcasts');
 const SCRIPTS_DIR = path.join(PODCASTS_DIR, 'scripts');
 const TRANSCRIPTS_DIR = path.join(PODCASTS_DIR, 'transcripts');
 const PILOT_DIR = path.join(PODCASTS_DIR, 'logs', 'agentic-pilots');
+const CANDIDATES_DIR = path.join(PILOT_DIR, 'candidates');
 
 function parseArgs(argv) {
-  const args = { slug: null, pilot: null };
+  const args = { slug: null, pilot: null, report: null };
   for (let index = 0; index < argv.length; index += 1) {
     const token = argv[index];
     const value = argv[index + 1] && !argv[index + 1].startsWith('--') ? argv[++index] : null;
     if (token === '--slug' && value) args.slug = value;
     else if (token === '--pilot' && value) args.pilot = value;
+    else if (token === '--report' && value) args.report = value;
   }
   return args;
 }
@@ -25,6 +27,20 @@ function readRequired(filePath) {
     throw new Error(`Missing file: ${filePath}`);
   }
   return fs.readFileSync(filePath, 'utf8');
+}
+
+function readJsonRequired(filePath) {
+  return JSON.parse(readRequired(filePath));
+}
+
+function latestCandidatePath(slug) {
+  const slugDir = path.join(CANDIDATES_DIR, slug);
+  if (!fs.existsSync(slugDir)) return null;
+  const candidates = fs.readdirSync(slugDir)
+    .filter(fileName => /^attempt-\d{3}\.txt$/.test(fileName))
+    .sort();
+  if (!candidates.length) return null;
+  return path.join(slugDir, candidates[candidates.length - 1]);
 }
 
 function findScriptPath(slug) {
@@ -102,13 +118,26 @@ function parseTranscript(script) {
 function main() {
   const args = parseArgs(process.argv.slice(2));
   if (!args.slug) {
-    console.error('Usage: node podcasts/tools/agentic-pilot/promote-pilot.js --slug <slug> [--pilot <path>]');
+    console.error('Usage: node podcasts/tools/agentic-pilot/promote-pilot.js --slug <slug> [--pilot <path>] [--report <path>]');
     process.exit(1);
   }
 
   const pilotPath = args.pilot
     ? (path.isAbsolute(args.pilot) ? args.pilot : path.join(ROOT, args.pilot))
-    : path.join(PILOT_DIR, `${args.slug}-gpt54.txt`);
+    : latestCandidatePath(args.slug);
+  if (!pilotPath) {
+    throw new Error(`No staged candidate transcript found for ${args.slug} in ${CANDIDATES_DIR}`);
+  }
+  const reportPath = args.report
+    ? (path.isAbsolute(args.report) ? args.report : path.join(ROOT, args.report))
+    : `${pilotPath}.report.json`;
+  const report = readJsonRequired(reportPath);
+  if (!report.gates || !report.gates.pass) {
+    throw new Error(`Promotion blocked: quality gates failed for ${args.slug}. Review report: ${reportPath}`);
+  }
+  if (report.transcriptPath && path.resolve(report.transcriptPath) !== path.resolve(pilotPath)) {
+    throw new Error(`Promotion blocked: report transcript does not match pilot file.\nReport: ${report.transcriptPath}\nPilot: ${pilotPath}`);
+  }
 
   const scriptPath = findScriptPath(args.slug);
   const transcriptDir = findTranscriptDirForSlug(args.slug);
@@ -121,6 +150,7 @@ function main() {
   fs.writeFileSync(path.join(transcriptDir, `${args.slug}-segments.json`), JSON.stringify(segments, null, 2) + '\n', 'utf8');
 
   console.log(`Promoted pilot transcript to ${scriptPath}`);
+  console.log(`Validated with report: ${reportPath}`);
   console.log(`Rewrote segments to ${path.join(transcriptDir, `${args.slug}-segments.json`)}`);
   console.log('Chapter plan was left unchanged; regenerate or replace it separately if the pilot changed the teaching structure materially.');
 }

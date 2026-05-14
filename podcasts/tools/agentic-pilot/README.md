@@ -1,6 +1,6 @@
 # Agentic Pilot Workflow
 
-This folder contains the repeatable tooling for running a GPT-5.4-assisted transcript workflow one episode at a time without overwriting the committed podcast scripts until you choose to do so.
+This folder contains repeatable tooling for running an LLM-assisted transcript workflow with automatic model selection, without overwriting committed podcast scripts until quality gates pass.
 
 ## Goal
 
@@ -11,12 +11,13 @@ Use the existing podcast pipeline for source extraction, script structure, segme
 1. Build the podcast source bundles if the curriculum has changed.
 2. Generate or refresh the baseline transcript for one episode or challenge.
 3. Build a source packet for that slug.
-4. Rewrite the transcript with GPT-5.4 using the packet as source of truth.
-5. Save the candidate transcript in `podcasts/logs/agentic-pilots/`.
-6. Evaluate the candidate transcript against the original lesson source.
+4. Rewrite the transcript with Copilot CLI (auto model selection) using the packet as source of truth.
+5. Save the candidate transcript in `podcasts/logs/agentic-pilots/candidates/`.
+6. Evaluate the candidate transcript against all mapped source files for that episode/challenge.
 7. When accepted, promote the transcript into `podcasts/scripts/`.
-8. Audit chapter-plan quality across the catalog and refine weak titles.
-9. Regenerate audio and metadata.
+8. Run catalog-level repetition and coverage summaries.
+9. Audit chapter-plan quality across the catalog and refine weak titles.
+10. Regenerate audio and metadata.
 
 ## Useful Commands
 
@@ -44,16 +45,44 @@ Build the source packet for one slug:
 npm run podcast:agentic:packet -- --slug ep05-working-with-issues
 ```
 
-Evaluate a candidate transcript against the lesson source:
+Rewrite one transcript to a candidate and evaluate quality gates:
+
+```powershell
+npm run podcast:agentic:rewrite -- --slug ep05-working-with-issues
+```
+
+Rewrite and promote one transcript only if quality gates pass:
+
+```powershell
+npm run podcast:agentic:rewrite -- --slug ep05-working-with-issues --promote
+```
+
+Run full listening-order batch (all episodes/items), generate candidates, and promote only passing rewrites:
+
+```powershell
+npm run podcast:agentic:rewrite:batch:promote
+```
+
+Evaluate any transcript against all mapped sources with explicit thresholds:
 
 ```powershell
 node podcasts/tools/agentic-pilot/evaluate-transcript.js \
-  --source docs/05-working-with-issues.md \
-  --transcript podcasts/logs/agentic-pilots/ep05-working-with-issues-gpt54.txt \
-  --out podcasts/logs/agentic-pilots/ep05-working-with-issues-gpt54.report.json
+  --packet podcasts/logs/agentic-pilots/ep05-working-with-issues.packet.json \
+  --transcript podcasts/logs/agentic-pilots/candidates/ep05-working-with-issues/attempt-001.txt \
+  --max-missing 4 \
+  --max-repeated-starts 2 \
+  --max-repeated-long 0 \
+  --max-stock-hits 0 \
+  --out podcasts/logs/agentic-pilots/candidates/ep05-working-with-issues/attempt-001.txt.report.json
 ```
 
-Promote an accepted GPT-5.4 pilot into the live script path and refresh its segment JSON:
+Run a full-catalog pass with per-episode coverage reports:
+
+```powershell
+npm run podcast:agentic:catalog
+```
+
+Promote an accepted candidate into the live script path and refresh its segment JSON:
 
 ```powershell
 npm run podcast:agentic:promote -- --slug ep05-working-with-issues
@@ -81,13 +110,14 @@ Transcript generation now writes three artifacts for each selected script:
 
 The chapter plan is sequential, not time-based. Each entry stores a chapter title plus a `startSegmentIndex`. Later, `podcasts/tag-audio-metadata.py` converts those ordered segment boundaries into timed ID3 chapters and Podcasting 2.0 chapter sidecars after audio generation. This keeps chapter naming in the transcript layer, where the teaching context is still available.
 
-## What Scales Across All 75 Episodes
+## What Scales Across All 79 Listening-Order Items
 
 - selective transcript generation by slug, range, and group
 - reusable source-packet generation
-- reusable transcript evaluation
-- reusable pilot promotion
+- reusable transcript rewrite + evaluation
+- candidate-first promotion flow
+- full-catalog batch rewrite summary with repetition metrics
 - sequential chapter-plan generation for metadata tagging
 - reusable chapter-plan auditing across the full catalog
 
-The only human-in-the-loop step is the GPT-5.4 rewrite itself. Everything around that step is now scriptable and repeatable across the full catalog.
+The rewrite itself is automated through Copilot CLI with automatic model selection. Everything around that step is scriptable and repeatable across the full catalog.

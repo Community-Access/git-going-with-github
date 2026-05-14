@@ -1,5 +1,5 @@
 [ALEX]
-Welcome to Git Going with GitHub, episode 20: Accessibility Standards Reference. I am Alex. Today we are going to make Accessibility Standards Reference something you can explain, practice, and recover from when the interface surprises you.
+Welcome to Git Going with GitHub, episode 20: Accessibility Standards Reference. I am Alex. Today we are going to make Accessibility Standards Reference feel magical in practice: clear, teachable, and recoverable when the interface surprises you.
 
 [JAMIE]
 And I am Jamie. I will be the voice of the learner who is willing to ask, what is this for, where am I, and how do I know I did it right?
@@ -7,7 +7,7 @@ And I am Jamie. I will be the voice of the learner who is willing to ask, what i
 [PAUSE]
 
 [ALEX]
-The big idea today: WCAG 2.2, ARIA roles, and the PR accessibility checklist. We will name the concept, explain why it matters, practice the move, and point out the checks that tell you the work is real.
+The big idea today: WCAG 2.2, ARIA roles, and the PR accessibility checklist. We will name the concept, explain why it matters, practice the move, and point out the checks that make the outcome feel almost magical because it is verifiable.
 
 [JAMIE]
 So the episode should work even if someone has not read the chapter yet.
@@ -21,39 +21,45 @@ Exactly. The transcript has to stand on its own. It can point toward practice, b
 Okay, set the room for us. What are we walking into?
 
 [ALEX]
-WCAG, ARIA, and What They Mean for Your Contributions: This appendix gives you a working understanding of the accessibility standards that govern the web, GitHub's interface, and the projects you will contribute to. You do not need to memorize these - use this as a lookup when a PR review mentions a specific standard or success criterion.
+WCAG, ARIA, and What They Mean for Your Contributions: This appendix gives you a working understanding of the accessibility standards that govern the web, GitHub's interface, and the projects you will contribute to. The next useful detail is concrete: You do not need to memorize these - use this as a lookup when a PR review mentions a specific standard or success criterion.
 
 [ALEX]
-WCAG (Web Content Accessibility Guidelines) is organized around four principles, often abbreviated POUR. Every WCAG success criterion belongs to one of these four principles.
+The next layer is this. Here is the learner-facing version. WCAG (Web Content Accessibility Guidelines) is organized around four principles, often abbreviated POUR. Put another way, every WCAG success criterion belongs to one of these four principles. A good GitHub workflow is like a well-run meeting: everyone knows the topic, the next action, and who has the floor.
 
 [ALEX]
 A solid pull request habit is to separate three questions: what changed, why it changed, and what still needs review. That keeps the conversation useful instead of noisy.
 
-[ALEX]
-Learning Cards: WCAG Overview.
+[JAMIE]
+What is the one idea that makes the next few steps less mysterious?
 
 [ALEX]
-WCAG is organized around four principles: Perceivable, Operable, Understandable, Robust (POUR) -- use this mnemonic when reviewing any PR. Most projects target WCAG 2.2 AA -- when a reviewer cites a criterion number like 1.4.3, search the tables in Section 3 of this appendix. The WCAG Quick Reference (Section 10) is a filterable web page -- use your screen reader's find command to jump to any criterion number. The tables in this appendix use pipe-delimited Markdown -- increase your editor font size or use a Markdown preview for cleaner column alignment. WCAG 1.4.3 (contrast) and 1.4.11 (non-text contrast) are the criteria most relevant to your daily experience -- bookmark them. When checking contrast ratios, use the WebAIM Contrast Checker link in Section 10 with your browser zoom set to your preferred level.
+Learning Cards: WCAG Overview has three jobs: name the idea, give the learner a move, and show what counts as evidence.
 
 [ALEX]
-Right.
+That shows up in the workshop in a few specific ways. WCAG is organized around four principles: Perceivable, Operable, Understandable, Robust (POUR) -- use this mnemonic when reviewing any PR. Most projects target WCAG 2.2 AA -- when a reviewer cites a criterion number like 1.4.3, search the tables in Section 3 of this appendix. The WCAG Quick Reference (Section 10) is a filterable web page -- use your screen reader's find command to jump to any criterion number. The tables in this appendix use pipe-delimited Markdown -- increase your editor font size or use a Markdown preview for cleaner column alignment. WCAG 1.4.3 (contrast) and 1.4.11 (non-text contrast) are the criteria most relevant to your daily experience -- bookmark them. When checking contrast ratios, use the WebAIM Contrast Checker link in Section 10 with your browser zoom set to your preferred level.
+
+[JAMIE]
+That feels much more doable when you say it as one move.
+
+[ALEX]
+Right. The magic is not speed. The magic is knowing what changed and why it matters.
 
 [PAUSE]
 
 [ALEX]
-Conformance Levels: A, AA, AAA. Most open source projects, and GitHub itself, target WCAG 2.2 AA compliance. This is the part to say slowly: When you file an accessibility bug or review a PR, AA is the standard to reference.
+Now bring the learner back to the room. Anchor this part on 2. Conformance Levels: A, AA, AAA. Most open source projects, and GitHub itself, target WCAG 2.2 AA compliance. This is the part to say slowly: When you file an accessibility bug or review a PR, AA is the standard to reference.
 
 [JAMIE]
 What would you say to someone who is already bracing for this to be too much?
 
 [ALEX]
-These are the criteria you will most commonly encounter when contributing to web projects or reviewing GitHub interface changes.
+The reason this matters is simple: these are the criteria you will most commonly encounter when contributing to web projects or reviewing GitHub interface changes.
 
 [ALEX]
-That pause between action and trust is part of the work.
+The useful habit is simple: orient, act, verify, then continue. That pause between action and trust is part of the work.
 
 [ALEX]
-That matters because of the next idea. Do not treat 4. ARIA - Roles, States, and Properties as decoration. WAI-ARIA (Accessible Rich Internet Applications) fills the gap between what HTML natively expresses and what complex interactive widgets require.
+That matters because of the next idea. Do not treat 4. ARIA - Roles, States, and Properties as decoration. WAI-ARIA (Accessible Rich Internet Applications) fills the gap between what HTML natively expresses and what complex interactive widgets require. The workshop is closer to rehearsal than lecture. You hear the move, try the move, and then check what changed.
 
 [PAUSE]
 
@@ -61,13 +67,19 @@ That matters because of the next idea. Do not treat 4. ARIA - Roles, States, and
 How would you walk the room through that step by step?
 
 [ALEX]
-Important rules.
+Important rules has three jobs: name the idea, give the learner a move, and show what counts as evidence.
 
 [ALEX]
 Start here: Don't use ARIA if native HTML suffices. A is already a button - adding role="button" to a is only needed when HTML semantics cannot be used. Then: All interactive ARIA widgets must be keyboard operable. Adding role="button" means you must also handle Enter and Space keypresses in JavaScript. Next: ARIA only affects the accessibility tree. It does not add visual styling or behavior - it only changes what assistive technologies announce. The sequence works because every action has a confirmation.
 
 [ALEX]
-Put 5. ARIA Landmark Roles into plain language. Landmarks let screen reader users jump directly to major sections of a page. The useful version is: GitHub uses these extensively; screen reader users navigate between them with D (NVDA/JAWS) or the Rotor (VoiceOver).
+This is where the talk moves from concept to action. Put 5. ARIA Landmark Roles into plain language. Landmarks let screen reader users jump directly to major sections of a page. The useful version is: GitHub uses these extensively; screen reader users navigate between them with D (NVDA/JAWS) or the Rotor (VoiceOver).
+
+[JAMIE]
+Now it sounds like a workflow instead of a wall of instructions.
+
+[ALEX]
+That is where confidence comes from: not from never getting lost, but from knowing how to recover.
 
 [ALEX]
 A solid navigation habit is to prove where you are before activating controls. Headings, landmarks, and the address bar are not trivia; they are your map.
@@ -76,12 +88,12 @@ A solid navigation habit is to prove where you are before activating controls. H
 Where do you want a learner to place their attention here?
 
 [ALEX]
-Use aria-live="assertive" only for urgent interruptions (errors). Use "polite" for non-urgent status updates.
+The teaching point here is not the label; it is the move. Use aria-live="assertive" only for urgent interruptions (errors). That is the difference between guessing and knowing: Use "polite" for non-urgent status updates.
 
 [PAUSE]
 
 [ALEX]
-Before the learner moves on. When expanded: set aria-expanded="true" and remove the hidden attribute.
+Before the learner moves on. This part earns its place because when expanded: set aria-expanded="true" and remove the hidden attribute. That is the difference between following directions and owning the workflow.
 
 [JAMIE]
 Give me the version that sounds like an instructor, not a manual.
@@ -90,7 +102,7 @@ Give me the version that sounds like an instructor, not a manual.
 7. How Standards Apply to GitHub Contributions: When you contribute to an open source project on GitHub, you will encounter accessibility in several contexts.
 
 [ALEX]
-Reference the specific WCAG criterion. Bad: "The button isn't accessible." Good: "The 'Subscribe' button has no visible focus indicator, failing WCAG 2.4.7 Focus Visible (Level AA).
+Now slow down for the part people usually miss. Here is the learner-facing version. Reference the specific WCAG criterion. The next useful detail is concrete: Bad: "The button isn't accessible." Good: "The 'Subscribe' button has no visible focus indicator, failing WCAG 2.4.7 Focus Visible (Level AA).
 
 [PAUSE]
 
@@ -98,7 +110,7 @@ Reference the specific WCAG criterion. Bad: "The button isn't accessible." Good:
 If I am listening before the workshop starts, what should settle in my mind first?
 
 [ALEX]
-checklist for any PR that touches HTML or UI.
+This is the move inside Reviewing a PR for Accessibility: checklist for any PR that touches HTML or UI.
 
 [ALEX]
 These are the pieces that turn the idea into a usable move. Do new images have alt attributes? Do new interactive elements work with keyboard only? Do new form fields have associated elements? Are any new color-only indicators present? Does new dynamic content use aria-live if it updates without a page load?
@@ -110,16 +122,22 @@ That is the kind of detail that keeps a screen reader user oriented.
 Yes. The named thing - the heading, tab, field, branch, or button - is the handhold.
 
 [ALEX]
-Documentation in Markdown is converted to HTML. The durable skill is not memorizing one screen. It is knowing how to find your footing when the screen changes.
+Here is the moment where the page starts to make sense. Anchor this part on Writing Accessible Documentation. Documentation in Markdown is converted to HTML. The durable skill is not memorizing one screen. It is knowing how to find your footing when the screen changes.
 
 [ALEX]
 Listen for the small confirmations in this list. Use heading levels in order (don't skip from H1 to H3). Write descriptive link text (not "click here"). Add alt text to images. Use actual lists (- or 1.) rather than faking them with symbols.
 
-[ALEX]
-Manual Testing (catches the rest).
+[JAMIE]
+What is the ordered workflow?
 
 [ALEX]
-Step one is keyboard-only navigation - unplug your mouse; can you do everything? Step two is screen reader walkthrough - navigate the feature with NVDA, JAWS, or VoiceOver. Step three is 200% zoom - does content reflow without horizontal scrolling? Step four is high contrast mode - Windows High Contrast or macOS Increase Contrast; are all elements still visible? The sequence works because every action has a confirmation.
+Manual Testing (catches the rest) has three jobs: name the idea, give the learner a move, and show what counts as evidence.
+
+[ALEX]
+The path is straightforward once it is named. Step one is keyboard-only navigation - unplug your mouse; can you do everything? Step two is screen reader walkthrough - navigate the feature with NVDA, JAWS, or VoiceOver. Step three is 200% zoom - does content reflow without horizontal scrolling? Step four is high contrast mode - Windows High Contrast or macOS Increase Contrast; are all elements still visible? The sequence works because every action has a confirmation.
+
+[JAMIE]
+Give me the sequence, because order matters here.
 
 [ALEX]
 First, disable CSS - does the content still make sense in reading order? Keep it that plain: know where you are, make the move, check the result.
@@ -127,7 +145,7 @@ First, disable CSS - does the content still make sense in reading order? Keep it
 [PAUSE]
 
 [ALEX]
-The next point gives the learner a handle. Learning Cards: Testing Against Standards.
+The next point gives the learner a handle. Learning Cards: Testing Against Standards has three jobs: name the idea, give the learner a move, and show what counts as evidence.
 
 [ALEX]
 This is where the lesson becomes something you can check. You are the manual test -- automated tools catch only 30-40% of issues; your screen reader walkthrough catches the rest. Install the axe DevTools browser extension (Section 8 table) and run it on any page; results are announced as a list of violations with WCAG criterion references. When doing a keyboard-only navigation test, press Tab repeatedly and listen -- every interactive element should announce its name and role. The 200% zoom test (item 3) mirrors your daily experience -- if content breaks at 200%, file a bug citing WCAG 1.4.4 Resize Text. Windows High Contrast mode test (item 4) is one click: Settings, Accessibility, Contrast themes -- switch and check that all UI elements remain visible. The WAVE browser extension overlays icons on the page showing errors and warnings -- zoom in to read the small annotation labels.
@@ -136,7 +154,19 @@ This is where the lesson becomes something you can check. You are the manual tes
 Let's pause on 10. Official References. What should a learner take away from it?
 
 [ALEX]
-next: Appendix N: Advanced Search Back: Appendix L: Agents Reference Teaching chapter: Chapter 08: Open Source Culture.
+If the interface shifts, 10. Official References is still useful because next: Appendix N: Advanced Search Back: Appendix L: Agents Reference Teaching chapter: Chapter 08: Open Source Culture.
+
+[ALEX]
+Hold that next to this. Put Section-Level Source Map into plain language. Use this map to verify facts for each major section in this file. The interface gets easier when it becomes a set of named places instead of a wall of controls.
+
+[ALEX]
+Here are the anchors worth keeping. WCAG, ARIA, and What They Mean for Your Contributions: GitHub Docs, home, GitHub Changelog, W3C Web Content Accessibility Guidelines (WCAG) 2 overview, WAI tutorials for accessible design patterns, WAI-ARIA Authoring Practices Guide. WCAG 2.2 - The Four Principles: GitHub Docs, home, GitHub Changelog, W3C Web Content Accessibility Guidelines (WCAG) 2 overview, WAI tutorials for accessible design patterns, WAI-ARIA Authoring Practices Guide. Conformance Levels: A, AA, AAA: GitHub Docs, home, GitHub Changelog, W3C Web Content Accessibility Guidelines (WCAG) 2 overview, WAI tutorials for accessible design patterns, WAI-ARIA Authoring Practices Guide. Key Success Criteria for Web Contributions: GitHub Docs, home, GitHub Changelog, W3C Web Content Accessibility Guidelines (WCAG) 2 overview, WAI tutorials for accessible design patterns, WAI-ARIA Authoring Practices Guide. ARIA - Roles, States, and Properties: GitHub Docs, home, GitHub Changelog, W3C Web Content Accessibility Guidelines (WCAG) 2 overview, WAI tutorials for accessible design patterns, WAI-ARIA Authoring Practices Guide. ARIA Landmark Roles: GitHub Docs, home, GitHub Changelog, W3C Web Content Accessibility Guidelines (WCAG) 2 overview, WAI tutorials for accessible design patterns, WAI-ARIA Authoring Practices Guide.
+
+[JAMIE]
+So the learner is not behind if they stop there and check the page.
+
+[ALEX]
+Yes. Pausing to verify is not a detour; it is how you keep control of the workflow.
 
 [PAUSE]
 
@@ -144,7 +174,7 @@ next: Appendix N: Advanced Search Back: Appendix L: Agents Reference Teaching ch
 What should people carry with them after this?
 
 [ALEX]
-Carry the map. Know what page or tool you are in, know which action you are taking, and know what confirmation should follow. If the confirmation is missing, pause. That pause is not wasted time; it is professional judgment.
+Carry the map. Know what page or tool you are in, know which action you are taking, and know what confirmation should follow. If the confirmation is missing, pause. That pause is not wasted time; it is professional judgment, and it is how complex workflows start to feel magical instead of stressful.
 
 [JAMIE]
 That is a better way to say it than just follow the steps.

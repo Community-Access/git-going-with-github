@@ -1,0 +1,225 @@
+{
+  "generatedAt": "2026-05-14T18:43:03.950Z",
+  "kind": "companion",
+  "slug": "ep27-advanced-search",
+  "title": "Episode 27: Advanced Search",
+  "description": "GitHub search query language, qualifiers, and filtering for issues, PRs, and code.",
+  "concepts": [
+    "The search bar on GitHub: global search versus in-repository search",
+    "Search scopes: repositories, code, issues, pull requests, users, topics",
+    "Qualifier syntax: key:value pairs",
+    "Issue qualifiers: is:open, is:closed, label:, author:, assignee:, milestone:",
+    "PR qualifiers: is:pr, review:approved, draft:true, head:, base:",
+    "Code qualifiers: language:, path:, extension:, org:, repo:",
+    "Date range qualifiers: created:>2025-01-01, updated:<2026-01-01",
+    "Combining qualifiers for precise searches",
+    "Sorting results: sort:created-asc, sort:updated-desc",
+    "Searching from the command line with gh search",
+    "Saved searches and building a personal search library"
+  ],
+  "transcriptPath": "S:\\code\\git-going-with-github\\podcasts\\scripts\\appendices\\ep27-advanced-search.txt",
+  "chapterPlanPath": "S:\\code\\git-going-with-github\\podcasts\\transcripts\\appendices\\ep27-advanced-search-chapters.json",
+  "transcriptText": "[ALEX]\nWelcome to episode 27 of Git Going with GitHub: Advanced Search. I am Alex, and today we are teaching this topic as a conversation you can carry into the workshop, not as a page you have to memorize.\n\n[JAMIE]\nAnd I am Jamie. I will keep pulling the lesson back to real learners, real repositories, and the evidence that proves the work happened.\n\n[PAUSE]\n\n[ALEX]\nThe lesson focus is GitHub search query language, qualifiers, and filtering for issues, PRs, and code. We will treat every step as a teachable decision, because that is what makes the skill portable and the workflow feel smooth.\n\n[JAMIE]\nSo we should explain the why clearly enough that the steps make sense when the learner meets them later and still feel doable.\n\n[ALEX]\nThat is it. If a listener only has audio right now, they should still get the complete concept and know what evidence would prove success.\n\n[PAUSE]\n\n[JAMIE]\nOkay, set the room for us. What are we walking into?\n\n[ALEX]\nFinding Anything Across All of GitHub: GitHub's search engine is powerful and underused. The next useful detail is concrete: For screen reader users in particular, using the search bar with precise query syntax is often faster and more accessible than navigating filter dropdowns and checkbox menus.\n\n[ALEX]\nThe next layer is this. Here is the learner-facing version. GitHub's search is accessible from nearly any page. A good GitHub workflow is like a well-run meeting: everyone knows the topic, the next action, and who has the floor.\n\n[ALEX]\nHere are the anchors worth keeping. Global search bar: At the top of every GitHub page - keyboard shortcut / to focus it from anywhere (press /, then type). Issues/PRs list: Each tab has its own search bar pre-scoped to that repository. Advanced Search UI: github.com/search/advanced - a form with individual fields for each filter. Accessible but verbose; query syntax below is faster.\n\n[JAMIE]\nWhat is the one idea that makes the next few steps less mysterious?\n\n[ALEX]\nLearning Cards: The Search Interface has three jobs: name the idea, give the learner a move, and show what counts as evidence.\n\n[ALEX]\nThat shows up in the workshop in a few specific ways. Press / on any GitHub page to jump straight to the global search bar -- no Tab hunting required. After pressing Enter on a query, results are grouped by type under headings (Code, Issues, PRs, Repositories) -- use H to jump between groups. Query syntax typed directly in the search bar is often faster and more accessible than the Advanced Search form at github.com/search/advanced. The search bar sits at the very top of every GitHub page -- if you lose it at high zoom, press / to refocus instantly. Search results use bold text for matched terms -- increase browser zoom to make the highlighted keywords easier to spot. Pin the Advanced Search page (github.com/search/advanced) as a bookmark for days when you prefer large labeled form fields over compact query syntax.\n\n[JAMIE]\nThat feels much more doable when you say it as one move.\n\n[ALEX]\nRight. The magic is not speed. The magic is knowing what changed and why it matters.\n\n[PAUSE]\n\n[ALEX]\nNow bring the learner back to the room. Anchor this part on 2. Search Scopes. By default, GitHub searches across all of GitHub. This is the part to say slowly: Example: repo:community-access/accessibility-agents in:title keyboard finds issues/PRs whose titles mention \"keyboard\" in the accessibility-agents repo.\n\n[JAMIE]\nWhat would you say to someone who is already bracing for this to be too much?\n\n[ALEX]\nThe reason this matters is simple: GitHub's issue/PR search is at github.com/issues (your issues) or github.com/pulls (your PRs). The listener should be able to check this: The search bar there is pre-scoped to \"repos you have access to involving you.\".\n\n[ALEX]\nA solid issue habit is to read the title, the body, and the timeline before acting. You are listening for the requested action, the missing evidence, and the person who needs a response.\n\n[ALEX]\nThat matters because of the next idea. Learning Cards: Searching Issues and Pull Requests has three jobs: name the idea, give the learner a move, and show what counts as evidence.\n\n[ALEX]\nOn the ground, that means a few things. The is:pr is:open review-requested:@me query is your daily go-to -- it lists every PR waiting for your review without navigating the Pulls tab. Combine assignee:@me with is:open to get your personal task list announced as a simple results list. Use in:title or in:body qualifiers to avoid noisy matches buried in long comment threads. Bookmark the URL after running a search -- the full query is encoded in the address bar so you can reuse it without retyping. The Issues search page (github.com/issues) pre-scopes to your repos -- at high zoom this single-column list is easier to scan than a full global search. Results show labels as colored badges next to each title -- zoom in or hover to read the label text if the color alone is hard to distinguish.\n\n[PAUSE]\n\n[JAMIE]\nIf I am listening before the workshop starts, what should settle in my mind first?\n\n[ALEX]\nIf the interface shifts, 5. Searching Code is still useful because code search operates differently from issue search. For someone navigating by keyboard or screen reader, this detail matters: As of 2024, GitHub uses an improved code search engine (sometimes called \"code search v2\") with better indexing.\n\n[ALEX]\nThe useful habit is simple: orient, act, verify, then continue. That pause between action and trust is part of the work.\n\n[ALEX]\nThis is where the talk moves from concept to action. Put 9. Practical Queries for This Workshop into plain language. Bookmark these for use during the hackathon.\n\n[JAMIE]\nNow it sounds like a workflow instead of a wall of instructions.\n\n[ALEX]\nThat is where confidence comes from: not from never getting lost, but from knowing how to recover.\n\n[ALEX]\nA solid pull request habit is to separate three questions: what changed, why it changed, and what still needs review. That keeps the conversation useful instead of noisy.\n\n[JAMIE]\nTurn that into a path someone can follow.\n\n[ALEX]\nThe teaching point here is not the label; it is the move. GitHub does not have a built-in saved-search feature, but you can.\n\n[ALEX]\nThink of this as 3 checks: Bookmark the URL - every search result page has the query in the URL. Bookmark it in your browser for instant re-run; Pin in notifications - if you're watching a repo, set up notification filters; and Accessibility Agents - use /my-issues and /my-prs for your personal saved-search equivalents without leaving VS Code. Pause after each step and listen for the confirmation before moving on.\n\n[PAUSE]\n\n[ALEX]\nBefore the learner moves on. This part earns its place because next: Appendix O: Branch Protection Back: Appendix M: Accessibility Standards Teaching chapter: Chapter 05: Working with Issues. That is the difference between following directions and owning the workflow.\n\n[JAMIE]\nGive me the version that sounds like an instructor, not a manual.\n\n[ALEX]\nSection-Level Source Map: Use this map to verify facts for each major section in this file.\n\n[ALEX]\nIf someone is taking notes, this is the short list. Finding Anything Across All of GitHub: GitHub Docs, home, GitHub Changelog, GitHub code search syntax, Advanced search docs, About Git. The Search Interface: GitHub Docs, home, GitHub Changelog, GitHub code search syntax, Advanced search docs. Search Scopes: GitHub Docs, home, GitHub Changelog, GitHub code search syntax, Advanced search docs. The Core Query Language: GitHub Docs, home, GitHub Changelog, GitHub code search syntax, Advanced search docs. Searching Issues and Pull Requests: GitHub Docs, home, GitHub Changelog, GitHub code search syntax, Advanced search docs, About Git. Searching Code: GitHub Docs, home, GitHub Changelog, GitHub code search syntax, Advanced search docs.\n\n[PAUSE]\n\n[JAMIE]\nWhat should people carry with them after this?\n\n[ALEX]\nCarry the map. Know what page or tool you are in, know which action you are taking, and know what confirmation should follow. If the confirmation is missing, pause. That pause is not wasted time; it is professional judgment, and it is how complex workflows start to feel magical instead of stressful.\n\n[JAMIE]\nThat is a better way to say it than just follow the steps.\n\n[ALEX]\nRight. Steps matter, but understanding wins. That is episode 27. Next in the series is episode 28, where we keep building the same contributor muscles.\n",
+  "chapterPlanText": "{\n  \"version\": 1,\n  \"slug\": \"ep27-advanced-search\",\n  \"chapters\": [\n    {\n      \"title\": \"Advanced Search: Overview\",\n      \"startSegmentIndex\": 0\n    },\n    {\n      \"title\": \"Finding Anything Across All of GitHub\",\n      \"startSegmentIndex\": 7\n    },\n    {\n      \"title\": \"1. The Search Interface\",\n      \"startSegmentIndex\": 9\n    },\n    {\n      \"title\": \"2. Search Scopes\",\n      \"startSegmentIndex\": 17\n    },\n    {\n      \"title\": \"5. Searching Code\",\n      \"startSegmentIndex\": 23\n    },\n    {\n      \"title\": \"9. Practical Queries for This Workshop\",\n      \"startSegmentIndex\": 25\n    },\n    {\n      \"title\": \"10. Saving and Reusing Searches\",\n      \"startSegmentIndex\": 28\n    },\n    {\n      \"title\": \"Advanced Search: Wrap-Up\",\n      \"startSegmentIndex\": 37\n    }\n  ]\n}\n",
+  "sourceFiles": [
+    {
+      "exists": true,
+      "path": "S:\\code\\git-going-with-github\\docs\\appendix-n-advanced-search.md",
+      "headings": [
+        {
+          "level": 2,
+          "title": "Finding Anything Across All of GitHub"
+        },
+        {
+          "level": 2,
+          "title": "Table of Contents"
+        },
+        {
+          "level": 2,
+          "title": "1. The Search Interface"
+        },
+        {
+          "level": 3,
+          "title": "Keyboard to global search"
+        },
+        {
+          "level": 3,
+          "title": "Learning Cards: The Search Interface"
+        },
+        {
+          "level": 2,
+          "title": "2. Search Scopes"
+        },
+        {
+          "level": 2,
+          "title": "3. The Core Query Language"
+        },
+        {
+          "level": 3,
+          "title": "Boolean Logic"
+        },
+        {
+          "level": 3,
+          "title": "Common Qualifiers"
+        },
+        {
+          "level": 3,
+          "title": "Date Qualifiers"
+        },
+        {
+          "level": 2,
+          "title": "4. Searching Issues and Pull Requests"
+        },
+        {
+          "level": 3,
+          "title": "Going to the Issues search directly"
+        },
+        {
+          "level": 3,
+          "title": "Practical queries"
+        },
+        {
+          "level": 4,
+          "title": "Find all unassigned, open accessibility issues across an org"
+        },
+        {
+          "level": 4,
+          "title": "Find good first issues in any language"
+        },
+        {
+          "level": 4,
+          "title": "Find good first issues in a specific language"
+        },
+        {
+          "level": 4,
+          "title": "Find all PRs you need to review"
+        },
+        {
+          "level": 4,
+          "title": "Find all open PRs where you were mentioned"
+        },
+        {
+          "level": 4,
+          "title": "Find your open issues across all repos"
+        },
+        {
+          "level": 4,
+          "title": "Find issues that are stale (open, not updated in 6+ months)"
+        },
+        {
+          "level": 3,
+          "title": "Learning Cards: Searching Issues and Pull Requests"
+        },
+        {
+          "level": 2,
+          "title": "5. Searching Code"
+        },
+        {
+          "level": 3,
+          "title": "Basic code search"
+        },
+        {
+          "level": 3,
+          "title": "Find uses of a function across a repo"
+        },
+        {
+          "level": 3,
+          "title": "Find a pattern across all repos in an org"
+        },
+        {
+          "level": 3,
+          "title": "Code search qualifiers"
+        },
+        {
+          "level": 2,
+          "title": "6. Searching Commits"
+        },
+        {
+          "level": 3,
+          "title": "Find commits with a keyword in the message"
+        },
+        {
+          "level": 3,
+          "title": "Find commits by a specific author"
+        },
+        {
+          "level": 3,
+          "title": "Find commits in a date range"
+        },
+        {
+          "level": 3,
+          "title": "Find commits that touched a specific file"
+        },
+        {
+          "level": 2,
+          "title": "7. Searching Repositories"
+        },
+        {
+          "level": 3,
+          "title": "Find accessible repos by topic"
+        },
+        {
+          "level": 3,
+          "title": "Find repos with a specific language, sorted by stars"
+        },
+        {
+          "level": 3,
+          "title": "Repository qualifiers"
+        },
+        {
+          "level": 2,
+          "title": "8. Searching Users and Organizations"
+        },
+        {
+          "level": 3,
+          "title": "Find users"
+        },
+        {
+          "level": 3,
+          "title": "Find organizations"
+        },
+        {
+          "level": 2,
+          "title": "9. Practical Queries for This Workshop"
+        },
+        {
+          "level": 3,
+          "title": "Find open contributions you can make right now in accessibility-agents"
+        },
+        {
+          "level": 3,
+          "title": "Check whether your issue is already filed"
+        },
+        {
+          "level": 3,
+          "title": "Find all accessibility-related issues in a project"
+        },
+        {
+          "level": 3,
+          "title": "See all your merged PRs (proof of contribution)"
+        },
+        {
+          "level": 3,
+          "title": "Find recent discussions about a topic"
+        },
+        {
+          "level": 2,
+          "title": "10. Saving and Reusing Searches"
+        },
+        {
+          "level": 3,
+          "title": "Example bookmarkable URL"
+        },
+        {
+          "level": 2,
+          "title": "Authoritative Sources"
+        },
+        {
+          "level": 3,
+          "title": "Section-Level Source Map"
+        }
+      ],
+      "content": "# Appendix N: GitHub Advanced Search\n>\n> **Listen to Episode 27:** [Advanced Search](../admin/PODCASTS.md) - a conversational audio overview of this chapter. Listen before reading to preview the concepts, or after to reinforce what you learned.\n\n> **Reference companion to:** [Chapter 05: Working with Issues](05-working-with-issues.md) | Also relevant: [Chapter 09](09-labels-milestones-projects.md)\n>\n> **Authoritative source:** [GitHub Docs: Searching on GitHub](https://docs.github.com/en/search-github)\n\n## Finding Anything Across All of GitHub\n\n> GitHub's search engine is powerful and underused. For screen reader users in particular, using the search bar with precise query syntax is often *faster and more accessible* than navigating filter dropdowns and checkbox menus. This reference covers the query language so you can filter anything from the keyboard.\n\n## Table of Contents\n\n1. [The Search Interface](#1-the-search-interface)\n2. [Search Scopes](#2-search-scopes)\n3. [The Core Query Language](#3-the-core-query-language)\n4. [Searching Issues and Pull Requests](#4-searching-issues-and-pull-requests)\n5. [Searching Code](#5-searching-code)\n6. [Searching Commits](#6-searching-commits)\n7. [Searching Repositories](#7-searching-repositories)\n8. [Searching Users and Organizations](#8-searching-users-and-organizations)\n9. [Practical Queries for This Workshop](#9-practical-queries-for-this-workshop)\n10. [Saving and Reusing Searches](#10-saving-and-reusing-searches)\n\n## 1. The Search Interface\n\nGitHub's search is accessible from nearly any page:\n\n- **Global search bar:** At the top of every GitHub page - keyboard shortcut `/` to focus it from anywhere (press `/`, then type)\n- **Issues/PRs list:** Each tab has its own search bar pre-scoped to that repository\n- **Advanced Search UI:** `github.com/search/advanced` - a form with individual fields for each filter. Accessible but verbose; query syntax below is faster.\n\n### Keyboard to global search\n\n```text\n/ → Focus the global search bar (works on most GitHub pages)\nType your query → Enter\n→ Results page opens, grouped by type (Code, Issues, PRs, Repositories, etc.)\n```\n\n### Learning Cards: The Search Interface\n\n<details>\n<summary>Screen reader users</summary>\n\n- Press `/` on any GitHub page to jump straight to the global search bar — no Tab hunting required\n- After pressing Enter on a query, results are grouped by type under headings (Code, Issues, PRs, Repositories) — use `H` to jump between groups\n- Query syntax typed directly in the search bar is often faster and more accessible than the Advanced Search form at github.com/search/advanced\n\n</details>\n\n<details>\n<summary>Low vision users</summary>\n\n- The search bar sits at the very top of every GitHub page — if you lose it at high zoom, press `/` to refocus instantly\n- Search results use bold text for matched terms — increase browser zoom to make the highlighted keywords easier to spot\n- Pin the Advanced Search page (github.com/search/advanced) as a bookmark for days when you prefer large labeled form fields over compact query syntax\n\n</details>\n\n<details>\n<summary>Sighted users</summary>\n\n- Look for the search bar in the top navigation bar — it shows a `/` hint icon on the right to remind you of the keyboard shortcut\n- After submitting a query, use the left sidebar type filters (Code, Issues, PRs, etc.) to narrow results visually\n- GitHub highlights matched keywords in yellow within search results — scan for those highlights to evaluate relevance quickly\n\n</details>\n\n## 2. Search Scopes\n\nBy default, GitHub searches across all of GitHub. Scope modifiers restrict results:\n\n| Modifier | Scope |\n| ---  | ---  |\n| `repo:owner/name` | One specific repository |\n| `org:orgname` | All repos in an organization |\n| `user:username` | All repos owned by a user |\n| `in:title` | Only matches in the title field |\n| `in:body` | Only matches in the body field |\n| `in:comments` | Only matches in comments |\n\n**Example:** `repo:community-access/accessibility-agents in:title keyboard` finds issues/PRs whose titles mention \"keyboard\" in the accessibility-agents repo.\n\n## 3. The Core Query Language\n\n### Boolean Logic\n\n| Syntax | Meaning |\n| ---  | ---  |\n| `word1 word2` | Both words (implicit AND) |\n| `word1 OR word2` | Either word |\n| `\"exact phrase\"` | Exact phrase match |\n| `-word` | Exclude this word |\n| `-label:bug` | Exclude items with this label |\n\n### Common Qualifiers\n\n| Qualifier | Meaning |\n| ---  | ---  |\n| `is:open` | Open items only |\n| `is:closed` | Closed items only |\n| `is:merged` | Merged PRs only |\n| `is:unmerged` | Open or closed but not merged PRs |\n| `is:issue` | Issues only |\n| `is:pr` | Pull requests only |\n| `is:draft` | Draft pull requests only |\n| `label:name` | Items with this label |\n| `no:label` | Items with no labels |\n| `assignee:@me` | Assigned to you |\n| `assignee:username` | Assigned to a specific user |\n| `author:@me` | Created by you |\n| `author:username` | Created by a specific user |\n| `mentions:username` | Mentions a specific user |\n| `involves:@me` | You are author, assignee, mentioned, or commented |\n| `milestone:\"Milestone Name\"` | In a specific milestone |\n| `no:milestone` | Not in any milestone |\n| `no:assignee` | Not assigned to anyone |\n| `comments:>5` | More than 5 comments |\n| `reactions:>10` | More than 10 reactions |\n\n### Date Qualifiers\n\n| Qualifier | Meaning |\n| ---  | ---  |\n| `created:>2025-01-01` | Created after a date |\n| `created:<2025-01-01` | Created before a date |\n| `created:2025-01-01..2025-03-31` | Created in a date range |\n| `updated:>2025-06-01` | Updated after a date |\n| `closed:>2025-06-01` | Closed after a date |\n\n## 4. Searching Issues and Pull Requests\n\n### Going to the Issues search directly\n\nGitHub's issue/PR search is at `github.com/issues` (your issues) or `github.com/pulls` (your PRs). The search bar there is pre-scoped to \"repos you have access to involving you.\"\n\n### Practical queries\n\n#### Find all unassigned, open accessibility issues across an org\n\n```text\norg:community-access is:issue is:open label:accessibility no:assignee\n```\n\n#### Find good first issues in any language\n\n```text\nis:issue is:open label:\"good first issue\" no:assignee\n```\n\n#### Find good first issues in a specific language\n\n```text\nis:issue is:open label:\"good first issue\" language:python no:assignee\n```\n\n#### Find all PRs you need to review\n\n```text\nis:pr is:open review-requested:@me\n```\n\n#### Find all open PRs where you were mentioned\n\n```text\nis:pr is:open mentions:@me\n```\n\n#### Find your open issues across all repos\n\n```text\nis:issue is:open author:@me\n```\n\n#### Find issues that are stale (open, not updated in 6+ months)\n\n```text\nis:issue is:open repo:owner/name updated:<2024-08-01\n```\n\n### Learning Cards: Searching Issues and Pull Requests\n\n<details>\n<summary>Screen reader users</summary>\n\n- The `is:pr is:open review-requested:@me` query is your daily go-to — it lists every PR waiting for your review without navigating the Pulls tab\n- Combine `assignee:@me` with `is:open` to get your personal task list announced as a simple results list\n- Use `in:title` or `in:body` qualifiers to avoid noisy matches buried in long comment threads\n\n</details>\n\n<details>\n<summary>Low vision users</summary>\n\n- Bookmark the URL after running a search — the full query is encoded in the address bar so you can reuse it without retyping\n- The Issues search page (github.com/issues) pre-scopes to your repos — at high zoom this single-column list is easier to scan than a full global search\n- Results show labels as colored badges next to each title — zoom in or hover to read the label text if the color alone is hard to distinguish\n\n</details>\n\n<details>\n<summary>Sighted users</summary>\n\n- The left sidebar on the search results page lets you toggle between Issues and PRs with one click — use it to refine without editing your query\n- Look for the green (open), purple (merged), or red (closed) state icons next to each result for quick visual triage\n- Star or bookmark the \"good first issue\" query from Section 4 — it is the fastest way to find your next contribution\n\n</details>\n\n## 5. Searching Code\n\nCode search operates differently from issue search. As of 2024, GitHub uses an improved code search engine (sometimes called \"code search v2\") with better indexing.\n\n### Basic code search\n\n```text\nrepo:owner/name language:javascript aria-label\n```\n\n### Find uses of a function across a repo\n\n```text\nrepo:owner/name symbol:handleKeyDown\n```\n\n### Find a pattern across all repos in an org\n\n```text\norg:community-access aria-hidden=\"true\"\n```\n\n### Code search qualifiers\n\n| Qualifier | Meaning |\n| ---  | ---  |\n| `language:python` | Filter by programming language |\n| `path:src/` | Only files under this path |\n| `filename:config.yml` | Only files with this name |\n| `extension:md` | Only files with this extension |\n| `symbol:functionName` | Search for a specific symbol/function name |\n| `content:\"exact string\"` | Exact string match in file content |\n\n## 6. Searching Commits\n\n### Find commits with a keyword in the message\n\n```text\nrepo:owner/name fix keyboard navigation\n```\n\n### Find commits by a specific author\n\n```text\nrepo:owner/name author:username\n```\n\n### Find commits in a date range\n\n```text\nrepo:owner/name committer-date:2025-01-01..2025-03-31\n```\n\n### Find commits that touched a specific file\n\n```text\nrepo:owner/name path:docs/README.md\n```\n\n## 7. Searching Repositories\n\n### Find accessible repos by topic\n\n```text\ntopic:accessibility stars:>50 is:public\n```\n\n### Find repos with a specific language, sorted by stars\n\n```text\nlanguage:typescript topic:screen-reader sort:stars-desc\n```\n\n### Repository qualifiers\n\n| Qualifier | Meaning |\n| ---  | ---  |\n| `stars:>100` | More than 100 stars |\n| `forks:>10` | More than 10 forks |\n| `is:public` | Public repos only |\n| `is:private` | Private repos only (requires access) |\n| `topic:topicname` | Repos tagged with this topic |\n| `license:mit` | Repos with an MIT license |\n| `size:<1000` | Repos smaller than 1000 KB |\n| `pushed:>2025-01-01` | Repos with recent activity |\n\n## 8. Searching Users and Organizations\n\n### Find users\n\n```text\ntype:user location:Seattle followers:>100\n```\n\n### Find organizations\n\n```text\ntype:org topic:accessibility\n```\n\n## 9. Practical Queries for This Workshop\n\nBookmark these for use during the hackathon:\n\n### Find open contributions you can make right now in accessibility-agents\n\n```text\nrepo:community-access/accessibility-agents is:issue is:open label:\"good first issue\" no:assignee\n```\n\n### Check whether your issue is already filed\n\n```text\nrepo:community-access/accessibility-agents is:issue keyboard navigation\n```\n\n### Find all accessibility-related issues in a project\n\n```text\nrepo:community-access/accessibility-agents is:issue label:accessibility is:open\n```\n\n### See all your merged PRs (proof of contribution)\n\n```text\nis:pr is:merged author:@me\n```\n\n### Find recent discussions about a topic\n\n```text\nrepo:community-access/accessibility-agents in:discussions screen reader\n```\n\n## 10. Saving and Reusing Searches\n\nGitHub does not have a built-in saved-search feature, but you can:\n\n1. **Bookmark the URL** - every search result page has the query in the URL. Bookmark it in your browser for instant re-run.\n2. **Pin in notifications** - if you're watching a repo, set up notification filters\n3. **Accessibility Agents** - use `/my-issues` and `/my-prs` for your personal saved-search equivalents without leaving VS Code\n\n### Example bookmarkable URL\n\n```text\nhttps://github.com/issues?q=is%3Aissue+is%3Aopen+assignee%3A%40me\n```\n\n---\n\n*Next: [Appendix O: Branch Protection](appendix-o-branch-protection.md)*  \n*Back: [Appendix M: Accessibility Standards](appendix-m-accessibility-standards.md)*  \n*Teaching chapter: [Chapter 05: Working with Issues](05-working-with-issues.md)*\n\n## Authoritative Sources\n\nUse these official references when you need the current source of truth for facts in this chapter.\n\n- [GitHub Docs, home](https://docs.github.com/en)\n- [GitHub Changelog](https://github.blog/changelog/)\n- [GitHub code search syntax](https://docs.github.com/en/search-github/github-code-search/understanding-github-code-search-syntax)\n- [Advanced search docs](https://docs.github.com/en/search-github/searching-on-github/searching-on-github)\n\n### Section-Level Source Map\n\nUse this map to verify facts for each major section in this file.\n\n- **Finding Anything Across All of GitHub:** [GitHub Docs, home](https://docs.github.com/en), [GitHub Changelog](https://github.blog/changelog/), [GitHub code search syntax](https://docs.github.com/en/search-github/github-code-search/understanding-github-code-search-syntax), [Advanced search docs](https://docs.github.com/en/search-github/searching-on-github/searching-on-github), [About Git](https://docs.github.com/en/get-started/using-git/about-git)\n- **1. The Search Interface:** [GitHub Docs, home](https://docs.github.com/en), [GitHub Changelog](https://github.blog/changelog/), [GitHub code search syntax](https://docs.github.com/en/search-github/github-code-search/understanding-github-code-search-syntax), [Advanced search docs](https://docs.github.com/en/search-github/searching-on-github/searching-on-github)\n- **2. Search Scopes:** [GitHub Docs, home](https://docs.github.com/en), [GitHub Changelog](https://github.blog/changelog/), [GitHub code search syntax](https://docs.github.com/en/search-github/github-code-search/understanding-github-code-search-syntax), [Advanced search docs](https://docs.github.com/en/search-github/searching-on-github/searching-on-github)\n- **3. The Core Query Language:** [GitHub Docs, home](https://docs.github.com/en), [GitHub Changelog](https://github.blog/changelog/), [GitHub code search syntax](https://docs.github.com/en/search-github/github-code-search/understanding-github-code-search-syntax), [Advanced search docs](https://docs.github.com/en/search-github/searching-on-github/searching-on-github)\n- **4. Searching Issues and Pull Requests:** [GitHub Docs, home](https://docs.github.com/en), [GitHub Changelog](https://github.blog/changelog/), [GitHub code search syntax](https://docs.github.com/en/search-github/github-code-search/understanding-github-code-search-syntax), [Advanced search docs](https://docs.github.com/en/search-github/searching-on-github/searching-on-github), [About Git](https://docs.github.com/en/get-started/using-git/about-git)\n- **5. Searching Code:** [GitHub Docs, home](https://docs.github.com/en), [GitHub Changelog](https://github.blog/changelog/), [GitHub code search syntax](https://docs.github.com/en/search-github/github-code-search/understanding-github-code-search-syntax), [Advanced search docs](https://docs.github.com/en/search-github/searching-on-github/searching-on-github)\n- **6. Searching Commits:** [GitHub Docs, home](https://docs.github.com/en), [GitHub Changelog](https://github.blog/changelog/), [GitHub code search syntax](https://docs.github.com/en/search-github/github-code-search/understanding-github-code-search-syntax), [Advanced search docs](https://docs.github.com/en/search-github/searching-on-github/searching-on-github), [About Git](https://docs.github.com/en/get-started/using-git/about-git)\n- **7. Searching Repositories:** [GitHub Docs, home](https://docs.github.com/en), [GitHub Changelog](https://github.blog/changelog/), [GitHub code search syntax](https://docs.github.com/en/search-github/github-code-search/understanding-github-code-search-syntax), [Advanced search docs](https://docs.github.com/en/search-github/searching-on-github/searching-on-github)\n- **8. Searching Users and Organizations:** [GitHub Docs, home](https://docs.github.com/en), [GitHub Changelog](https://github.blog/changelog/), [GitHub code search syntax](https://docs.github.com/en/search-github/github-code-search/understanding-github-code-search-syntax), [Advanced search docs](https://docs.github.com/en/search-github/searching-on-github/searching-on-github)\n- **9. Practical Queries for This Workshop:** [GitHub Docs, home](https://docs.github.com/en), [GitHub Changelog](https://github.blog/changelog/), [GitHub code search syntax](https://docs.github.com/en/search-github/github-code-search/understanding-github-code-search-syntax), [Advanced search docs](https://docs.github.com/en/search-github/searching-on-github/searching-on-github)\n- **10. Saving and Reusing Searches:** [GitHub Docs, home](https://docs.github.com/en), [GitHub Changelog](https://github.blog/changelog/), [GitHub code search syntax](https://docs.github.com/en/search-github/github-code-search/understanding-github-code-search-syntax), [Advanced search docs](https://docs.github.com/en/search-github/searching-on-github/searching-on-github)\n"
+    }
+  ]
+}
