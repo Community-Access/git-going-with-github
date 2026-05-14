@@ -82,6 +82,24 @@ function writeGeneratedFile(filePath, content) {
   fs.writeFileSync(filePath, normalizeGeneratedText(content), 'utf-8');
 }
 
+function writeRedirectPage(filePath, targetHref) {
+  const redirectHtml = `<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="refresh" content="0; url=${targetHref}">
+  <link rel="canonical" href="${targetHref}">
+  <title>Redirecting...</title>
+</head>
+<body>
+  <p>Redirecting to <a href="${targetHref}">${targetHref}</a>...</p>
+</body>
+</html>`;
+  ensureDir(path.dirname(filePath));
+  writeGeneratedFile(filePath, redirectHtml);
+}
+
 // HTML template with accessibility features
 const htmlTemplate = (content, title, relativePath) => {
   const depth = relativePath.split('/').length - 1;
@@ -299,6 +317,7 @@ function convertMarkdownFile(mdPath, outputDir) {
     // Determine output path
     const relativePath = path.relative(process.cwd(), mdPath);
     let outputPath = path.join(outputDir, relativePath.replace(/\.md$/, '.html'));
+    const isRootRegisterPage = path.basename(mdPath) === 'REGISTER.md' && path.dirname(relativePath) === '.';
 
     // ANNOUNCEMENT.md becomes the site front page (index.html)
     // README.md at the root becomes README.html (repo documentation)
@@ -338,6 +357,15 @@ function convertMarkdownFile(mdPath, outputDir) {
     // Write HTML file
     writeGeneratedFile(outputPath, html);
     console.log(`✓ Converted: ${relativePath} → ${path.relative(process.cwd(), outputPath)}`);
+
+    // Keep lowercase registration URLs working on case-sensitive hosts.
+    if (isRootRegisterPage) {
+      const lowerFileAlias = path.join(outputDir, 'register.html');
+      const lowerDirAlias = path.join(outputDir, 'register', 'index.html');
+      writeRedirectPage(lowerFileAlias, './REGISTER.html');
+      writeRedirectPage(lowerDirAlias, '../REGISTER.html');
+      console.log('✓ Added aliases: register.html, register/index.html');
+    }
 
     return outputPath;
   } catch (error) {
