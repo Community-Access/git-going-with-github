@@ -32,7 +32,7 @@ Do not mark a cohort ready until all required items in this section are complete
 - [ ] A test student can reply `day1-complete` and receive Day 2 release comment.
 - [ ] Challenge 1 can be seeded and completed.
 - [ ] Challenge 10 can be seeded and completed.
-- [ ] Aria posts PR feedback on a test pull request.
+- [ ] Gandalf posts PR feedback on a test pull request.
 - [ ] Student Progression Bot creates the next challenge when a challenge issue is closed.
 - [ ] Autograder workflows run inside the student repo and post pass/fail comments on the relevant issues and PRs. (Classroom UI test cases are intentionally not configured -- see [admin/classroom/autograding-setup.md](admin/classroom/autograding-setup.md).)
 - [ ] Peer simulation artifacts can be seeded and used for review practice.
@@ -76,7 +76,7 @@ The following table lists each release artifact and the document that controls i
 
 - **Release owner:** owns the final go or no-go decision.
 - **Classroom tester:** creates assignments, accepts invites with a test student account, and validates repository creation.
-- **Automation tester:** checks workflows, seeding scripts, Aria feedback, progression, and autograding.
+- **Automation tester:** checks workflows, seeding scripts, Gandalf feedback, progression, and autograding.
 - **Accessibility tester:** tests with NVDA, JAWS, VoiceOver, keyboard-only navigation, zoom, and high contrast where available.
 - **Curriculum tester:** reads chapters, appendices, challenge templates, solutions, and facilitator instructions for accuracy and consistency.
 - **Podcast tester:** validates podcast scripts, transcripts, RSS metadata, and audio availability if audio has been generated.
@@ -193,7 +193,7 @@ scripts/classroom/Seed-LearningRoomChallenge.ps1 -Repository Community-Access-Cl
 
 Run these checks in disposable student repositories created by GitHub Classroom.
 
-### Aria PR Validation Bot
+### Gandalf PR Validation Bot
 
 - [ ] Open a PR with a clear title, body, and `Closes #N` reference.
 - [ ] Confirm the first-time contributor welcome comment appears on the first PR.
@@ -201,7 +201,7 @@ Run these checks in disposable student repositories created by GitHub Classroom.
 - [ ] Push another commit and confirm the existing validation comment updates instead of duplicating.
 - [ ] Add an intentional issue, such as vague link text, and confirm the bot explains the problem.
 - [ ] Fix the issue and confirm the validation result improves.
-- [ ] Comment `@aria-bot help` and confirm the help responder answers.
+- [ ] Comment `@gandalf-bot help` and confirm the help responder answers.
 - [ ] Comment with `merge conflict` and confirm the conflict guidance appears.
 - [ ] Confirm bot-authored comments do not trigger an infinite response loop.
 
@@ -321,7 +321,7 @@ Run this as a timed rehearsal before student testing.
 - [ ] Facilitator can seed Challenge 1 and Challenge 10 from PowerShell.
 - [ ] Facilitator can seed peer simulation artifacts.
 - [ ] Facilitator can start a merge conflict challenge.
-- [ ] Facilitator can read Aria feedback and decide whether it is correct.
+- [ ] Facilitator can read Gandalf feedback and decide whether it is correct.
 - [ ] Facilitator can override or manually support a student if automation fails.
 - [ ] Facilitator can explain how Day-2-only participants enter the course.
 - [ ] Facilitator can explain what to do when a student joins late.
@@ -394,7 +394,7 @@ Podcast tester:
 - [ ] No open High findings remain without written release-owner exception.
 - [ ] Invite links are stored in the facilitator runbook and student communications.
 - [ ] Facilitators know how to seed Challenge 1 and Challenge 10.
-- [ ] Facilitators know how to recover when Aria, progression, or autograding fails.
+- [ ] Facilitators know how to recover when Gandalf, progression, or autograding fails.
 - [ ] Student-facing instructions match the current GitHub Classroom private-repository model.
 - [ ] Generated HTML and podcast site have been rebuilt from the final sources.
 - [ ] Release owner has recorded the final decision.

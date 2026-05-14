@@ -12,7 +12,7 @@
 
 Each student gets their own **private repository** created by GitHub Classroom from the `learning-room-template`. Inside that repo, three automation systems guide the student through all 21 challenges without facilitator intervention:
 
-1. **Aria** (the PR Validation Bot) -- welcomes first-time contributors, validates PR structure, responds to `@aria-bot` help requests, and provides real-time feedback on every push
+1. **Gandalf** (the PR Validation Bot) -- welcomes first-time contributors, validates PR structure, responds to `@gandalf-bot` help requests, and provides real-time feedback on every push
 2. **Student Progression Bot** -- creates the first challenge when triggered by a facilitator script, then creates the next challenge issue whenever a student closes the current challenge issue
 3. **Autograders** -- automated tests that verify objective evidence of challenge completion (branch exists, conflict markers removed, template file valid, agent file structured correctly)
 
@@ -31,7 +31,7 @@ Community-Access/learning-room-template (template repo)
     |       ...
     |
     +--> Each student repo contains:
-    |       Aria (pr-validation-bot.yml)          -- PR feedback and help responses
+    |       Gandalf (pr-validation-bot.yml)          -- PR feedback and help responses
     |       Student Progression Bot               -- Unlocks challenges sequentially
     |       Autograders                            -- Validates specific challenges
     |       Issue templates (16 core + 5 bonus)   -- Challenge definitions
@@ -79,7 +79,7 @@ Before starting, confirm the following:
 - [ ] You have **Owner** or **Admin** access to the Community-Access GitHub organization
 - [ ] Your facilitator GitHub account has a verified email address
 - [ ] The `Community-Access/learning-room-template` repository exists and is public (or the classroom org has read access)
-- [ ] The template repo has GitHub Actions enabled with **Read and write** permissions for `GITHUB_TOKEN` (Settings > Actions > General) -- Aria needs this to post comments
+- [ ] The template repo has GitHub Actions enabled with **Read and write** permissions for `GITHUB_TOKEN` (Settings > Actions > General) -- Gandalf needs this to post comments
 - [ ] "Allow GitHub Actions to create and approve pull requests" is checked in the template repo
 - [ ] You have the student list (GitHub usernames required; real names optional)
 - [ ] You have confirmed dates for Day 1 and Day 2
@@ -164,7 +164,7 @@ Then complete the remaining fields:
 4. Student completes the challenge, posts evidence, closes the issue
 5. Progression Bot creates Challenge 2 issue with full instructions
 6. Student repeats through Challenge 9 (Merge Day)
-7. Aria provides real-time feedback on every PR along the way
+7. Gandalf provides real-time feedback on every PR along the way
 8. Autograders validate Challenges 4, 5, 6, 7, and 9 automatically
 
 ---
@@ -244,7 +244,7 @@ Run this verification with a test account before the workshop. Do not skip this 
 - [ ] Verify the learning-room template files are present (`docs/welcome.md`, `docs/keyboard-shortcuts.md`, `docs/setup-guide.md`)
 - [ ] Verify Challenge 1 issue was created by the Progression Bot after running `Seed-LearningRoomChallenge.ps1`
 - [ ] Open a test PR with a trivial change
-- [ ] Verify Aria (PR validation bot) comments within 60 seconds
+- [ ] Verify Gandalf (PR validation bot) comments within 60 seconds
 - [ ] Verify autograding runs and reports a score
 - [ ] Verify a feedback pull request was created by Classroom
 - [ ] Close Challenge 1 and verify Challenge 2 is created by the Progression Bot
@@ -293,11 +293,11 @@ All autograded checks now run as GitHub Actions workflows inside each student re
 4. On the PR (or relevant issue) confirm a comment was posted reporting pass or fail
 5. Push a change that should fail a check and verify the comment updates in place
 
-### Aria verification
+### Gandalf verification
 
 1. Open a PR without a `Closes #XX` reference
-2. Verify Aria posts a comment asking for an issue link
-3. Comment `@aria-bot I have a merge conflict, can you explain this?`
+2. Verify Gandalf posts a comment asking for an issue link
+3. Comment `@gandalf-bot I have a merge conflict, can you explain this?`
 4. Verify the comment responder replies with guidance
 
 ---
@@ -323,7 +323,7 @@ All autograded checks now run as GitHub Actions workflows inside each student re
 | "My next challenge did not appear" | The student may not have closed the previous issue; check their Issues tab |
 | "The autograder bot says I failed" | Open the Actions tab in the student repo and read the failing `autograder-*` workflow log; the bot comment links to the run |
 | "I do not see the feedback PR" | It appears after the first push; have them make any commit and push |
-| "Aria did not comment on my PR" | Check the Actions tab in the student repo; workflows may need to be enabled |
+| "Gandalf did not comment on my PR" | Check the Actions tab in the student repo; workflows may need to be enabled |
 | "Assignment not showing my work" | Student may have pushed to the wrong branch; check their repo's branches |
 
 ### Using the feedback PR
@@ -346,7 +346,7 @@ The Student Progression Bot manages the entire challenge sequence. Each student 
 
 #### Day 1 (Assignment 1): Challenges 1-9
 
-| Challenge | Title | How it completes | Aria validates | Autograded |
+| Challenge | Title | How it completes | Gandalf validates | Autograded |
 |---|---|---|---|---|
 | 1 | Find Your Way Around | Close issue | -- | -- |
 | 2 | File Your First Issue | Close issue | -- | -- |
@@ -360,7 +360,7 @@ The Student Progression Bot manages the entire challenge sequence. Each student 
 
 #### Day 2 (Assignment 2): Challenges 10-16 + Bonus
 
-| Challenge | Title | How it completes | Aria validates | Autograded |
+| Challenge | Title | How it completes | Gandalf validates | Autograded |
 |---|---|---|---|---|
 | 10 | Go Local | Close issue | -- | Yes (local commit) |
 | 11 | Open a Day 2 PR | Close issue | Yes (PR structure) | Yes (local push) |
@@ -409,7 +409,7 @@ The point values in the JSON files are suggestions. Adjust them in the Classroom
 
 ### Disabling autograding
 
-If you prefer manual-only grading, skip adding the autograding tests when creating the assignment. Aria and the Progression Bot still work independently of autograding.
+If you prefer manual-only grading, skip adding the autograding tests when creating the assignment. Gandalf and the Progression Bot still work independently of autograding.
 
 ---
 

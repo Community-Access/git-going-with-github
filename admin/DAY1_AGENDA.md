@@ -3,7 +3,7 @@
 
 > **Day 1 Focus:** The GitHub web interface -- navigating repositories, filing and responding to issues, understanding pull requests, and contributing through the browser using only your keyboard and screen reader.
 >
-> **How learning works today:** Each participant has their own private repository, created automatically when you accept the Classroom assignment. Inside that repo, an automation system called Aria guides you through a series of challenges delivered as GitHub Issues. The live session prioritizes the core path through repository navigation, issues, branches, commits, and a first pull request. The remaining challenges stay available for async completion during open lab time or after the event.
+> **How learning works today:** Each participant has their own private repository, created automatically when you accept the Classroom assignment. Inside that repo, an automation system called Gandalf guides you through a series of challenges delivered as GitHub Issues. The live session prioritizes the core path through repository navigation, issues, branches, commits, and a first pull request. The remaining challenges stay available for async completion during open lab time or after the event.
 
 ## Coverage Promise
 
@@ -18,16 +18,16 @@ This agenda is a live facilitation plan, not a requirement that every chapter an
 
 When you accept the Day 1 assignment link, GitHub creates a private copy of the template repository for you in the workshop classroom organization. You do not work directly in the template repository. Your private Learning Room repo comes pre-configured with:
 
-- **Aria bot** -- an automated assistant that validates your pull requests and provides educational feedback within 30 seconds
+- **Gandalf bot** -- an automated assistant that validates your pull requests and provides educational feedback within 30 seconds
 - **Challenge progression** -- when you close one challenge issue, the next one opens automatically
 - **Practice files** in `docs/` with intentional issues for you to find and fix
 - **21 challenge templates** (Challenges 1-9 today, 10-16 + bonus on Day 2)
 
-**How Aria works:**
+**How Gandalf works:**
 1. You open Challenge 1 as your first issue after facilitators seed it for your private repo
 2. You work through the instructions and submit your evidence
 3. When you close the issue, the progression system creates Challenge 2
-4. When you open a pull request, Aria comments within 30 seconds with structured validation feedback
+4. When you open a pull request, Gandalf comments within 30 seconds with structured validation feedback
 5. This continues through all 9 Day 1 challenges
 
 **Why this matters:** You are not reading about GitHub. You are doing GitHub, in your own repository, and an automated system is verifying your work and giving you feedback. The mechanics are identical to what happens when you contribute to any real open source project.
@@ -82,7 +82,7 @@ Make participants comfortable, set expectations, verify setups, and create a psy
 - The purpose of this session: building real, usable GitHub skills for open source AT contribution
 - What "contribution" means -- it is not only code. Documentation, accessibility testing, issue triage, and feedback are all valuable contributions.
 - The "ask before you assume" norm -- it is always OK to ask what something means
-- The Classroom model: each participant has their own private repo with Aria bot and challenge progression
+- The Classroom model: each participant has their own private repo with Gandalf bot and challenge progression
 
 **Quick setup verification (10 min):**
 - Can everyone navigate to github.com?
@@ -289,7 +289,7 @@ If you are still working on a challenge, use this time to finish.
 
 ### Purpose
 
-Participants open their first pull request, experience automated feedback from Aria bot, and resolve a facilitator-triggered merge conflict.
+Participants open their first pull request, experience automated feedback from Gandalf bot, and resolve a facilitator-triggered merge conflict.
 
 ### Key Concepts Covered
 
@@ -313,7 +313,7 @@ Challenge 6 asks you to open a PR from your `learn/YOUR-USERNAME` branch to `mai
 6. In the PR description, include `Closes #XX` (replace XX with your Challenge 2 issue number)
 7. Submit the pull request
 
-> **Magic Moment:** Within 30 seconds, Aria bot comments on your PR. Navigate to the Conversation tab and read the comment with your screen reader. Aria checks for:
+> **Magic Moment:** Within 30 seconds, Gandalf bot comments on your PR. Navigate to the Conversation tab and read the comment with your screen reader. Gandalf checks for:
 > - Issue reference (did you include `Closes #XX`?)
 > - Description quality
 > - File location
@@ -323,9 +323,9 @@ Challenge 6 asks you to open a PR from your `learn/YOUR-USERNAME` branch to `mai
 >
 > The feedback explains WHY each issue matters and links to resources. This is automated feedback on your real GitHub action, from an actual GitHub Actions workflow running in your repository.
 
-**If Aria flags issues:**
+**If Gandalf flags issues:**
 1. Address any required checks
-2. Push your changes to the same branch -- Aria re-checks automatically
+2. Push your changes to the same branch -- Gandalf re-checks automatically
 3. The bot is educational, not punitive. Every message tells you what to fix and why.
 
 Submit your evidence and close Challenge 6. Challenge 7 appears.
@@ -364,7 +364,7 @@ Submit your evidence and close Challenge 7. Challenge 8 appears.
 
 Before the afternoon break, practice navigating the PR you just opened:
 
-1. **Conversation tab:** Read the PR title, description, and Aria's comment
+1. **Conversation tab:** Read the PR title, description, and Gandalf's comment
 2. **Commits tab:** How many commits? Navigate the list
 3. **Files Changed tab:** Navigate the diff -- what changed?
 4. **Leave an inline comment:** In Files Changed, find a changed line, find the comment button (`B` for buttons or `Shift+F10` for context menu), type a comment, submit as "Start a review"
@@ -449,7 +449,7 @@ Participants understand the human side of open source: how to communicate well, 
 1. Read `CODE_OF_CONDUCT.md` -- what does it commit to?
 2. Read `CONTRIBUTING.md` -- what does the project ask of contributors?
 3. Navigate to `.github/ISSUE_TEMPLATE/` and open a challenge template. What information does it require and why?
-4. Read the Student Guide (`.github/STUDENT_GUIDE.md`) -- find the "Common Validation Issues and Fixes" section. This explains every Aria bot feedback message you might see.
+4. Read the Student Guide (`.github/STUDENT_GUIDE.md`) -- find the "Common Validation Issues and Fixes" section. This explains every Gandalf bot feedback message you might see.
 
 **Key insight:** These files exist to lower barriers AND set expectations. A project with these files sends a signal of maturity and intention.
 
@@ -536,7 +536,7 @@ Where are you in the challenge sequence?
 | Challenges 7-8 in progress | Finish during tonight's optional time or first thing tomorrow. |
 | Challenge 6 or earlier | Talk to your facilitator about a catch-up plan for tonight. |
 
-Your repository is yours. Aria is waiting. You can work through challenges at your own pace after the session ends.
+Your repository is yours. Gandalf is waiting. You can work through challenges at your own pace after the session ends.
 
 ### Reflection (10 min)
 
@@ -609,13 +609,13 @@ For Challenge 7, you need to edit `docs/welcome.md` on `main` in each student's 
 - **Blocks 2-3:** Challenges 2-5 are the core workflow (issue, branch, edit, commit). If a participant gets stuck on one, help them directly rather than moving on -- these skills build on each other.
 - **Block 4, Part B:** The merge conflict is facilitator-triggered. Time it carefully. If a participant has not opened their PR yet, wait before triggering the conflict.
 - **Block 5:** If participants finish Challenges 8-9 quickly, direct them to bonus challenges or peer review.
-- **Stragglers:** Some participants will not finish all 9 challenges in-session. This is fine -- the repos are theirs and Aria is waiting. They can finish on their own time.
+- **Stragglers:** Some participants will not finish all 9 challenges in-session. This is fine -- the repos are theirs and Gandalf is waiting. They can finish on their own time.
 
 ### The Emotional Arc
 
 Day 1 has three peaks:
-1. **The first Aria response** (Block 1) -- participants see an automated system react to their action
-2. **The first PR feedback** (Block 4) -- Aria comments on their real PR within 30 seconds
+1. **The first Gandalf response** (Block 1) -- participants see an automated system react to their action
+2. **The first PR feedback** (Block 4) -- Gandalf comments on their real PR within 30 seconds
 3. **The merge** (Block 5) -- their changes are on `main` and their issue auto-closed
 
 Do not rush these moments. Give each one time to land.

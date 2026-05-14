@@ -256,7 +256,7 @@ Collect the following evidence while running QA.
 - Evidence of template smoke validation from a repo created from `Community-Access/learning-room-template`.
 - Links to test student Day 1 and Day 2 repositories.
 - Screenshot or link proving Challenge 1 and Challenge 10 seeding succeeded.
-- Links to PRs used to validate Aria and autograders.
+- Links to PRs used to validate Gandalf and autograders.
 - Evidence that progression creates the next issue after close.
 - Completed chapter-by-chapter walkthrough tracker for all required docs files.
 - Completed challenge tracker for Challenges 1 to 16 and Bonus A to E.
@@ -305,7 +305,7 @@ Use this section as the operational standard for every phase.
 | Classroom assignment creation | GitHub Classroom UI | During deployment phase before student testing | Configure Day 1 and Day 2 using source docs | Assignment fields match source of truth and are published |
 | Student repo creation after acceptance | Classroom dashboard and student account repositories | 30-60 seconds after invite acceptance | Accept Day 1 and Day 2 invite URLs with test student account | Separate private repos are created and visible to facilitator and test student |
 | Challenge seeding | Test student repository Issues tab | Within 30-90 seconds after seeding script run | Run seeding scripts and refresh Issues | Correct starting challenge appears and is assigned correctly |
-| PR validation feedback (Aria) | Test student pull request comments and Actions | Within approximately 60 seconds after PR open/update | Open PR and push another commit | Single bot comment appears and updates rather than duplicating |
+| PR validation feedback (Gandalf) | Test student pull request comments and Actions | Within approximately 60 seconds after PR open/update | Open PR and push another commit | Single bot comment appears and updates rather than duplicating |
 | Content validation feedback | Test student PR checks/comments and Actions | Within approximately 60 seconds after PR open/update | Include link/markdown/accessibility issues and inspect output | Required fixes and suggestions are clear and tied to changed files |
 | Progression behavior | Test student Issues tab and Actions for student progression | After each challenge issue closure | Close challenge issue sequentially | Next challenge opens automatically with correct number/title |
 | Skills progression behavior | PR merged event and resulting comment/workflow output | After PR merge | Merge test PR and inspect workflow output | Achievement/progress feedback posts without workflow failure |
@@ -992,7 +992,7 @@ Challenge-specific checks:
 3. Challenge 3: comment on peer simulation issue and include mention.
 4. Challenge 4: create `learn/<username>` branch.
 5. Challenge 5: commit real content change with descriptive message.
-6. Challenge 6: open PR with `Closes #N` and validate Aria response.
+6. Challenge 6: open PR with `Closes #N` and validate Gandalf response.
 7. Challenge 7: run conflict seeding and resolve conflict markers.
 8. Challenge 8: submit culture reflection evidence.
 9. Challenge 9: merge PR and confirm linked issue closes.
@@ -1005,7 +1005,7 @@ scripts/classroom/Start-MergeConflictChallenge.ps1 -Repository Community-Access-
 
 Day 1 pass criteria:
 - Progression works across all nine challenges.
-- Aria feedback appears on test PRs.
+- Gandalf feedback appears on test PRs.
 - Challenge 7 conflict-marker checks fail before fix and pass after fix.
 
 ### Day 2 challenge walkthrough (Challenges 10 to 16)
@@ -1035,7 +1035,7 @@ Use this section to confirm what students should see, where they should see it, 
 |---|---|---|---|
 | After assignment acceptance | Repository home and Issues tab | Private Learning Room repository created from template | Starter docs (`docs/welcome.md`, `docs/keyboard-shortcuts.md`, `docs/setup-guide.md`), workflows, issue templates |
 | After initial seeding | Issues tab | Correct starting challenge issue appears (`Challenge 1` or `Challenge 10`) | Assigned challenge issue with clear instructions and evidence prompt |
-| During Day 1 PR flow (Ch 4-6) | Branch selector, Pull requests, Actions | Student branch exists, PR open, bot feedback appears | Branch `learn/<username>` or equivalent, PR with `Closes #N`, Aria validation comment |
+| During Day 1 PR flow (Ch 4-6) | Branch selector, Pull requests, Actions | Student branch exists, PR open, bot feedback appears | Branch `learn/<username>` or equivalent, PR with `Closes #N`, Gandalf validation comment |
 | During merge conflict (Ch 7) | PR conversation/files, Checks tab | Conflict state visible, then resolved | Conflict markers present pre-fix, removed post-fix, conflict check transitions to pass |
 | During Day 2 local flow (Ch 10-11) | Local clone and remote PR | Local commit/push reflected in PR and checks | Non-default-branch commit visible in history and checks |
 | During template challenge (Ch 14) | File tree and PR checks | Custom template exists and passes required-field checks | New `.github/ISSUE_TEMPLATE/*.yml` file with `name` and `description` |
@@ -1381,7 +1381,7 @@ Use this checklist for final decision. For every item, complete the listed verif
    3. Record restore test repository, branch, and PR links.
    Why this matters: facilitators need a proven restoration path during live delivery incidents.
 
-- [ ] Aria, progression, and autograder workflows validated with evidence.
+- [ ] Gandalf, progression, and autograder workflows validated with evidence.
    Verification steps:
    1. Execute checks in the Workflow and Automation Validation Matrix for `pr-validation-bot.yml`, `student-progression.yml`, and all autograder workflows.
    2. Capture one pass and one actionable-fail evidence sample where applicable.
@@ -1489,7 +1489,7 @@ Challenge QA:
 Automation QA:
 - Registration workflow:
 - Registration form/label setup:
-- Aria:
+- Gandalf:
 - Content validation:
 - Progression:
 - Skills progression:

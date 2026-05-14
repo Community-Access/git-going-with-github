@@ -230,13 +230,13 @@ Wait for confirmations. Help anyone who sees something different.
 > **Step 9: Create PR**
 > I'm clicking the green 'Create pull request' button... done!
 >
-> **Step 10: Wait for Aria**
-> Now watch... Aria bot automatically checks my work...
+> **Step 10: Wait for Gandalf**
+> Now watch... Gandalf bot automatically checks my work...
 > [Wait 30 seconds]
 > There! The bot commented. It's checking if I followed the rules.
 >
 > **Step 11: If I need to fix it**
-> If Aria said I need to change something, I would go back to the PR and push a new commit.
+> If Gandalf said I need to change something, I would go back to the PR and push a new commit.
 > Since my PR is good, I'm ready to ask for a review.
 >
 > **Step 12: Request review**
@@ -291,9 +291,9 @@ Answer a few questions, then:
 - If nothing: "Anyone need help with their first PR?"
 
 **15-30 min:**
-- Aria bot feedback should be flowing
+- Gandalf bot feedback should be flowing
 - Look for confused students
-- In chat: "Anyone see feedback from Aria? Let me know if it's confusing!"
+- In chat: "Anyone see feedback from Gandalf? Let me know if it's confusing!"
 
 **30-60 min:**
 - First merges happening
@@ -376,7 +376,7 @@ Read responses out loud and affirm them:
 > "Anyone still stuck on Challenge 1 and want help?"
 
 Help them:
-- Offer to review their PR if Aria bot isn't responding
+- Offer to review their PR if Gandalf bot isn't responding
 - Give them a nudge in right direction
 - Or schedule 1:1 after call
 
@@ -526,10 +526,10 @@ Same as Day 1, but looking for:
 
 ## Emergency Procedures Reference
 
-### If Aria Bot Stops
+### If Gandalf Bot Stops
 
 1. Check GitHub status
-2. Manually review PRs (use Aria's format)
+2. Manually review PRs (use Gandalf's format)
 3. Post in chat: "Brief delay with feedback bot, manually reviewing"
 
 ### If Student Repo Won't Create

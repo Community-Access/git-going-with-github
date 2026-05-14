@@ -5,7 +5,7 @@ This directory contains workflows, scripts, and data for two purposes:
 1. **Curriculum repository CI/CD** -- workflows that build, test, and deploy this documentation project
 2. **Legacy shared-model automation** -- PR validation and progression workflows from the original shared-repository workshop model
 
-The student-facing automation (Aria bot, student progression, autograders) lives in the **template repository** directory at `learning-room/.github/`. GitHub Classroom copies that template to each student's individual repo. See [classroom/README.md](../classroom/README.md) for the full deployment guide.
+The student-facing automation (Gandalf bot, student progression, autograders) lives in the **template repository** directory at `learning-room/.github/`. GitHub Classroom copies that template to each student's individual repo. See [classroom/README.md](../classroom/README.md) for the full deployment guide.
 
 ---
 
@@ -40,7 +40,7 @@ The Classroom model equivalents live in [learning-room/.github/workflows/](../le
 
 | Workflow | Purpose |
 |----------|---------|
-| `pr-validation-bot.yml` | Aria bot -- validates PRs and provides educational feedback |
+| `pr-validation-bot.yml` | Gandalf bot -- validates PRs and provides educational feedback |
 | `student-progression.yml` | Creates Challenge 1 or Challenge 10 when triggered, then unlocks the next challenge issue when a student closes the current one |
 | `skills-progression.yml` | Posts achievement and progress feedback |
 | `autograder-conflicts.yml` | Validates merge conflict resolution (Challenge 07) |
@@ -56,7 +56,7 @@ The Classroom model equivalents live in [learning-room/.github/workflows/](../le
 | Script | Purpose |
 |--------|---------|
 | `validate-pr.js` | Node.js validation logic called by PR bot workflows |
-| `comment-responder.js` | Responds to `@aria-bot` mentions and help keywords |
+| `comment-responder.js` | Responds to `@gandalf-bot` mentions and help keywords |
 | `validation-report.js` | Generates structured validation reports |
 | `__tests__/` | Test suite for the scripts above |
 
@@ -82,5 +82,5 @@ The Classroom model equivalents live in [learning-room/.github/workflows/](../le
 - [Workshop Deployment Guide](../classroom/README.md) -- full setup using GitHub Classroom
 - [Support Hub](https://github.com/Community-Access/support) -- post-workshop support and async Q&A
 - [Template Repository Content](../learning-room/.github/) -- automation that runs in each student's repo
-- [Student Guide](../learning-room/.github/STUDENT_GUIDE.md) -- how students interact with Aria bot
+- [Student Guide](../learning-room/.github/STUDENT_GUIDE.md) -- how students interact with Gandalf bot
 - [Challenge Progression Config](data/challenge-progression.json) -- level and badge definitions

@@ -64,9 +64,9 @@ Complete these steps as a test student.
 
 3. **Challenge 3: Join the Conversation**
    - Comment on `Peer Simulation: Welcome Link Needs Context`.
-   - Include `@aria-bot` in the comment.
+   - Include `@gandalf-bot` in the comment.
    - Add a reaction.
-   - Verify Aria responds if issue-comment workflow permissions allow it.
+   - Verify Gandalf responds if issue-comment workflow permissions allow it.
    - Close Challenge 3.
    - Verify Challenge 4 appears.
 
@@ -88,7 +88,7 @@ Complete these steps as a test student.
 6. **Challenge 6: Open Your First Pull Request**
    - Open a PR from the feature branch to `main`.
    - Include `Closes #N` for the Challenge 6 issue or the issue being solved.
-   - Verify Aria posts PR feedback.
+   - Verify Gandalf posts PR feedback.
    - Comment on the peer-simulation PR.
    - Close Challenge 6 when ready.
    - Verify Challenge 7 appears.
@@ -133,7 +133,7 @@ Seed Challenge 10 if continuing from Day 1 did not naturally reach it.
 
 11. **Challenge 11: Open a Day 2 PR**
     - Open a PR from the locally pushed branch.
-    - Verify Aria feedback appears.
+    - Verify Gandalf feedback appears.
     - Review the peer-simulation PR title and description.
     - Close Challenge 11.
     - Verify Challenge 12 appears.
@@ -211,7 +211,7 @@ The template is ready only when all of the following are true:
 - Closing Challenge 1 creates Challenge 2.
 - Sequential challenge creation works through at least Challenge 5 in smoke testing.
 - Challenge 7 can create a real conflict after the student's branch edits the same TODO line.
-- Aria PR feedback appears without failing the workflow if GitHub comment APIs are temporarily unavailable.
+- Gandalf PR feedback appears without failing the workflow if GitHub comment APIs are temporarily unavailable.
 - Challenges 10, 14, and 16 autograders run and post useful feedback.
 - Students can complete all peer tasks using seeded simulation artifacts even without cross-repo buddy access.
 

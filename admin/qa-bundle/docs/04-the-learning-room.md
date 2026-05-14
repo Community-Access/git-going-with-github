@@ -7,7 +7,7 @@
 
 ## What Is the Learning Room?
 
-The **Learning Room** is your **own private GitHub repository** for the workshop. When you accept the GitHub Classroom assignment in Block 0, GitHub copies the [`Community-Access/learning-room-template`](https://github.com/Community-Access/learning-room-template) repository into the workshop classroom organization as `<workshop-org>/learning-room-<your-username>`. That copy is yours to use for the workshop - you have write access, your own branches, your own pull requests, and your own automated feedback from Aria the PR validation bot.
+The **Learning Room** is your **own private GitHub repository** for the workshop. When you accept the GitHub Classroom assignment in Block 0, GitHub copies the [`Community-Access/learning-room-template`](https://github.com/Community-Access/learning-room-template) repository into the workshop classroom organization as `<workshop-org>/learning-room-<your-username>`. That copy is yours to use for the workshop - you have write access, your own branches, your own pull requests, and your own automated feedback from Gandalf the PR validation bot.
 
 You do **not** work directly in `Community-Access/learning-room-template`. Think of the template as the clean master copy facilitators maintain. Your work happens in the private Learning Room repository created for you by GitHub Classroom.
 
@@ -78,9 +78,9 @@ When your Learning Room repo is ready, **Challenge 1** appears as a GitHub issue
 > 1. Open the **Actions** tab and check whether the **Student Progression Bot** workflow ran successfully.
 > 2. If it failed or never ran, post a message in the workshop chat with the link to your repo. The facilitator can trigger `student-progression.yml` or create Challenge 1 from the issue template.
 
-### 6. Confirm Aria can talk to you
+### 6. Confirm Gandalf can talk to you
 
-The PR validation bot, **Aria**, posts educational feedback whenever you open a pull request. To confirm Aria is wired up, open the **Actions** tab in your repo and look for a workflow named **pr-validation-bot** (or **Aria PR Validation**). The workflow should appear in the list even before you have opened a PR. You do not need to run anything yet -- you just want to confirm it exists.
+The PR validation bot, **Gandalf**, posts educational feedback whenever you open a pull request. To confirm Gandalf is wired up, open the **Actions** tab in your repo and look for a workflow named **pr-validation-bot** (or **Gandalf PR Validation**). The workflow should appear in the list even before you have opened a PR. You do not need to run anything yet -- you just want to confirm it exists.
 
 You are now done with Block 0. Continue with the chapter below to learn how the Learning Room is organized, then jump to [Chapter 5](05-working-with-issues.md) to start Challenge 1.
 
@@ -98,7 +98,7 @@ Before starting Chapter 5 challenges, you should be able to:
 
 1. Find `docs/CHALLENGES.md` in your Learning Room repository.
 2. Explain the flow: issue -> branch -> pull request -> review -> merge.
-3. Identify where Aria bot feedback appears on a PR (the Conversation tab).
+3. Identify where Gandalf bot feedback appears on a PR (the Conversation tab).
 
 ## Two Tracks That Reinforce Each Other
 
@@ -121,7 +121,7 @@ Throughout Day 1 you work on **two parallel learning tracks**, both in your own 
 - **Block 6 (Day 1 evening):** Community tools (labels, milestones, notifications)
 
 **Scope:** Your private Learning Room repository (created from `learning-room-template` via Classroom)
-**Bot:** **Aria** -- a PR validation bot that posts educational feedback on every push, plus a Student Progression bot that auto-creates the next challenge issue when you close the current one
+**Bot:** **Gandalf** -- a PR validation bot that posts educational feedback on every push, plus a Student Progression bot that auto-creates the next challenge issue when you close the current one
 **Purpose:** End-to-end practice of the full workflow in a real repository where you have full control
 
 #### How the Two Tracks Compare
@@ -130,8 +130,8 @@ Throughout Day 1 you work on **two parallel learning tracks**, both in your own 
 | --- | --- | --- |
 | 1 | Create a branch in a Skills repo | Create a branch in your Learning Room |
 | 2 | Open a PR | Open a PR |
-| 3 | Get instant bot feedback from Mona | Get instant bot feedback from Aria |
-| 4 | Mona verifies your step | Aria validates structure; you self-merge or peer-review |
+| 3 | Get instant bot feedback from Mona | Get instant bot feedback from Gandalf |
+| 4 | Mona verifies your step | Gandalf validates structure; you self-merge or peer-review |
 | 5 | Next Skills step unlocked | Closing the issue auto-unlocks the next challenge |
 
 ### Learning Cards: Two Tracks, One Account
@@ -141,7 +141,7 @@ Throughout Day 1 you work on **two parallel learning tracks**, both in your own 
 
 - GitHub Skills modules run in your personal account; press `G I` from any Skills repo to see the issue thread where Mona posts instructions
 - Your Learning Room repository lives at a different URL inside the workshop organization; bookmark it and use `Alt+D` (address bar) to confirm which repo you are in
-- Aria's bot comments on your PRs appear as PR conversation comments; press `3` on the PR page to jump between them
+- Gandalf's bot comments on your PRs appear as PR conversation comments; press `3` on the PR page to jump between them
 
 </details>
 
@@ -150,7 +150,7 @@ Throughout Day 1 you work on **two parallel learning tracks**, both in your own 
 
 - GitHub Skills repos have a distinct green banner at the top of the README that says "Start course"; your Learning Room repo has no such banner
 - Check the repository name in the top-left header to confirm which track you are working in (Skills repo vs. your Learning Room)
-- Aria's avatar appears next to bot comments; your human reviewer's avatar appears next to peer review comments
+- Gandalf's avatar appears next to bot comments; your human reviewer's avatar appears next to peer review comments
 
 </details>
 
@@ -158,7 +158,7 @@ Throughout Day 1 you work on **two parallel learning tracks**, both in your own 
 <summary>Sighted users</summary>
 
 - Skills modules appear as separate repos under your account page (github.com/your-username); your Learning Room appears under the workshop organization assigned by your facilitators
-- Aria's comments have a distinct grey bot badge next to the username, just like Mona's
+- Gandalf's comments have a distinct grey bot badge next to the username, just like Mona's
 - Keep both repos open in separate browser tabs so you can switch between tracks during the workshop
 
 </details>
@@ -204,7 +204,7 @@ In your own Learning Room repository, **you decide what branches to create**. Th
 
 - **Protected main branch** - The `main` branch in your Learning Room is protected; changes have to land via pull request even though you own the repo. This mirrors how mature open source projects work.
 - **Your workspace** - Your `learn/<username>` branch is where you commit and push changes before opening a PR
-- **Clean history** - Keeping experiments off `main` until they are reviewed (by you, by Aria, or by a peer) keeps your project history easy to read
+- **Clean history** - Keeping experiments off `main` until they are reviewed (by you, by Gandalf, or by a peer) keeps your project history easy to read
 - **Realistic workflow** - Contributors to real open source projects always create feature branches before opening a PR. You are practicing exactly that pattern.
 
 ### How to use your branch
@@ -427,7 +427,7 @@ When Challenge 3 ("Join the Conversation") or Challenge 8 ("Culture") asks for p
 3. Reads:
    - PR title: "Complete [TODO] sections in welcome.md"
    - PR description: lists which sections were completed
-   - Aria's feedback: checks that all `[TODO]` markers are removed, heading hierarchy is valid
+   - Gandalf's feedback: checks that all `[TODO]` markers are removed, heading hierarchy is valid
    - The actual file changes (Files Changed tab): sees the diff showing old `[TODO]` markers replaced with new content
 4. Leaves review comments:
    - Inline comment on the "Who Can Contribute?" paragraph: "Great addition - I especially like the point about AT users bringing valuable perspective."
@@ -444,7 +444,7 @@ When Challenge 3 ("Join the Conversation") or Challenge 8 ("Culture") asks for p
 
 #### You (PR author)
 
-1. Read Aria's feedback and any human review
+1. Read Gandalf's feedback and any human review
 2. Talks to the reviewer if something is unclear
 3. Makes changes based on feedback
 4. Pushes new commits to the same branch
@@ -452,7 +452,7 @@ When Challenge 3 ("Join the Conversation") or Challenge 8 ("Culture") asks for p
 
 #### Visibility
 
-- Aria re-validates on each new commit and updates its comment
+- Gandalf re-validates on each new commit and updates its comment
 - Your reviewer sees the updated activity in the PR
 - The PR timeline shows iteration happening
 
@@ -511,7 +511,7 @@ When Challenge 3 ("Join the Conversation") or Challenge 8 ("Culture") asks for p
 | ------  | -------  | -----------  |
 | Your open PRs | Pull Requests tab in your repo | You, the facilitators, and any peers added as collaborators |
 | PR description & changes | PR page in your repo | Same as above |
-| Aria's bot feedback | PR comments | Same as above |
+| Gandalf's bot feedback | PR comments | Same as above |
 | Peer review comments | PR comments | Same as above |
 | Reviewer assignments | PR sidebar "Reviewers" | Same as above |
 | Progression bot's next-challenge issue | Issues tab in your repo | Same as above |
@@ -572,7 +572,7 @@ This is your collaboration space!
 | Aspect | GitHub Skills (Your Account) | Your Learning Room (Classroom) |
 | --------  | ---  | ---  |
 | **Repo** | Your personal copy of a Skills repo | Your private copy of `learning-room-template` |
-| **Bot** | Mona (GitHub) | Aria (PR validation) and the Student Progression bot |
+| **Bot** | Mona (GitHub) | Gandalf (PR validation) and the Student Progression bot |
 | **Reviewer** | Mona (auto) | You (self-merge) or a peer paired by your facilitator |
 | **Visibility** | Private to you (unless you make it public) | Private to you and the workshop organization |
 | **Pace** | Self-directed | Self-paced, anchored by the workshop schedule |
@@ -810,7 +810,7 @@ When the facilitators pair you for peer review, the pairing is a starting point,
 
 ### "Will my PR get lost when everyone is working at once?"
 
-No. Your repo is your own; you only see your own PRs. Aria's feedback is on your PR alone, and any peer reviewer is specifically assigned to you.
+No. Your repo is your own; you only see your own PRs. Gandalf's feedback is on your PR alone, and any peer reviewer is specifically assigned to you.
 
 ### "Can I comment on someone else's PR?"
 
@@ -830,7 +830,7 @@ When pairings happen during a workshop block, typically 15-60 minutes. If a revi
 
 ### "What if bot feedback is wrong?"
 
-Comment on the PR explaining why. Aria is intentionally educational, not punitive -- if you disagree with a check, the facilitators can override it. Aria is not perfect, which is exactly why human review still matters.
+Comment on the PR explaining why. Gandalf is intentionally educational, not punitive -- if you disagree with a check, the facilitators can override it. Gandalf is not perfect, which is exactly why human review still matters.
 
 ### "Do I need to complete every challenge?"
 

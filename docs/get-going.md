@@ -10,7 +10,7 @@ This workshop is designed so you are never left guessing what comes next. You wi
 - Your own private Learning Room repository
 - Challenge issues that tell you exactly what to do
 - Evidence prompts that tell you what to post when you finish
-- Aria bot feedback on pull requests
+- Gandalf bot feedback on pull requests
 - Reference solutions you can compare against after you try
 - Multiple tool paths, so you can work in the browser, VS Code, GitHub Desktop, or the command line when appropriate
 
@@ -118,7 +118,7 @@ You have several safety nets.
 - Every challenge issue includes instructions and evidence prompts.
 - Every chapter has an **If You Get Stuck** section.
 - Every challenge has a reference solution in [the solutions folder](solutions/).
-- Aria posts feedback on pull requests.
+- Gandalf posts feedback on pull requests.
 - The Student Progression Bot opens the next challenge when you finish the current one.
 - Facilitators and peers are part of the learning system.
 

@@ -161,7 +161,7 @@ async function createChallenge(challengeNumber) {
       '## How to finish this challenge',
       '1. Complete the steps above.',
       '2. Add your evidence as a comment on this issue.',
-      '3. Close this issue when you are done. Aria will open your next challenge.'
+      '3. Close this issue when you are done. Gandalf will open your next challenge.'
     ].join('\n')
   ];
 

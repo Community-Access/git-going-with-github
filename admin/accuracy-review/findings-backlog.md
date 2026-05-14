@@ -14,7 +14,7 @@ The following table lists likely P0 findings that can block or mislead learners 
 | ACC-P0-002 | Copilot code review cost and Actions minutes | EXT-002 | Content may imply Copilot code review is free or only consumes Copilot plan usage | [docs/15-code-review.md](../../docs/15-code-review.md), [docs/16-github-copilot.md](../../docs/16-github-copilot.md), classroom Day 2 content | Add cost caveat and facilitator guidance for June 1, 2026 and later |
 | ACC-P0-003 | GitHub.com issue and PR walkthroughs | GAP-001 | Step labels and tab names may drift from current GitHub.com UI | [docs/05-working-with-issues.md](../../docs/05-working-with-issues.md), [docs/06-working-with-pull-requests.md](../../docs/06-working-with-pull-requests.md), [classroom/challenge-content-review.md](../../classroom/challenge-content-review.md) | Live-validate each click path and patch labels/outcomes |
 | ACC-P0-004 | VS Code agent browser sharing | EXT-011 | Agent workflows may omit required browser-sharing consent and stop-sharing controls | [docs/16-github-copilot.md](../../docs/16-github-copilot.md), [docs/19-accessibility-agents.md](../../docs/19-accessibility-agents.md), VS Code appendices | Add explicit sharing, approval, and privacy steps |
-| ACC-P0-005 | Classroom workflow validation versus autograding | SCN-016 | Learners may confuse GitHub Classroom autograding, Aria comments, workflow checks, and manual grading | [classroom/README.md](../../classroom/README.md), [classroom/grading-guide.md](../../classroom/grading-guide.md), challenge scripts/transcripts | Normalize terminology and make completion evidence match current automation |
+| ACC-P0-005 | Classroom workflow validation versus autograding | SCN-016 | Learners may confuse GitHub Classroom autograding, Gandalf comments, workflow checks, and manual grading | [classroom/README.md](../../classroom/README.md), [classroom/grading-guide.md](../../classroom/grading-guide.md), challenge scripts/transcripts | Normalize terminology and make completion evidence match current automation |
 | ACC-P0-006 | Copilot plan availability for learners | EXT-004, EXT-025 | Content may overpromise Copilot availability or imply all AI features are free because VS Code AI work is being open sourced | [README.md](../../README.md), [docs/16-github-copilot.md](../../docs/16-github-copilot.md), [admin/DAY2_QUICK_START.md](../DAY2_QUICK_START.md) | Add plain prerequisite language: GitHub account and eligible Copilot plan or access path required |
 
 ## P1 Findings To Verify Next
@@ -50,7 +50,7 @@ The following table lists useful search terms from the first scan.
 | Commercial claims | `pricing`, `price`, `paid`, `free plan`, `Pro`, `Business`, `Enterprise`, `trial`, `premium request`, `AI Credits`, `usage-based`, `billing`, `minutes`, `cost` |
 | Copilot and models | `Copilot`, `agent mode`, `cloud agent`, `Copilot CLI`, `model picker`, `model selection`, `Claude`, `Codex`, `GPT`, `BYOK`, `MCP`, `custom instructions`, `skills` |
 | Walkthrough steps | `click`, `select`, `press`, `activate`, `button`, `tab`, `menu`, `dropdown`, `settings`, `Command Palette`, `Ctrl`, `Alt+`, `NVDA`, `JAWS`, `VoiceOver`, `GitHub.com`, `VS Code` |
-| Automation and outcomes | `autograding`, `workflow`, `checks`, `Aria`, `Student Progression Bot`, `validation`, `merge`, `review`, `status`, `output`, `error`, `success` |
+| Automation and outcomes | `autograding`, `workflow`, `checks`, `Gandalf`, `Student Progression Bot`, `validation`, `merge`, `review`, `status`, `output`, `error`, `success` |
 
 ## Authoritative Sources
 

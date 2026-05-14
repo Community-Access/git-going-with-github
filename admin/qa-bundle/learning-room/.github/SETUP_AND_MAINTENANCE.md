@@ -12,7 +12,7 @@ The Learning Room uses GitHub Actions workflows to provide real-time feedback to
 
 | Workflow | Purpose | Triggers |
 |----------|---------|----------|
-| `pr-validation-bot.yml` | Aria bot -- welcomes first-timers, validates PR structure | PR opened/edited/reviewed |
+| `pr-validation-bot.yml` | Gandalf bot -- welcomes first-timers, validates PR structure | PR opened/edited/reviewed |
 | `content-validation.yml` | Checks links, Markdown, accessibility | PR opened/edited |
 | `student-progression.yml` | Creates the first challenge and unlocks the next challenge issue in sequence | Workflow dispatch, issue closed |
 | `skills-progression.yml` | Posts achievement and progress feedback | PR merged |

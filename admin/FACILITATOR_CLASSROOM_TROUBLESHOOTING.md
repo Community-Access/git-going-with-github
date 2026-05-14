@@ -9,14 +9,14 @@ This document covers common issues that arise during GitHub Classroom workshops 
 
 ### Bots Stopped Responding
 
-**Symptom:** Students are creating PRs but Aria bot isn't commenting within 30 seconds.
+**Symptom:** Students are creating PRs but Gandalf bot isn't commenting within 30 seconds.
 
 **Diagnostics:**
 1. Check [GitHub Status](https://www.githubstatus.com) — is GitHub Actions down?
-2. Check your test repo — try creating a PR yourself. Does Aria respond?
+2. Check your test repo — try creating a PR yourself. Does Gandalf respond?
 3. Check the workflow logs in the template repository:
    - Go to your template repo → Actions tab
-   - Look for recent Aria workflow runs
+   - Look for recent Gandalf workflow runs
    - Do they show errors or successful completions?
 
 **Solutions:**
@@ -24,16 +24,16 @@ This document covers common issues that arise during GitHub Classroom workshops 
 | Issue | Fix |
 |-------|---|
 | **GitHub Actions is down** | Post in chat: "We're experiencing a brief delay with our automated feedback. You can still work on challenges — we'll review PRs manually." Then skip to "Manual PR Review" below. |
-| **Aria workflow is disabled** | Go to template repo → Actions → Enable Aria workflow → Re-run failed runs |
-| **Aria workflow has an error** | Check the error log. If it's a configuration issue, fix the workflow file and re-run. |
-| **Aria is working but slow** | Wait a bit longer (sometimes takes 60 seconds). Refresh PR page. If still nothing, manually review. |
+| **Gandalf workflow is disabled** | Go to template repo → Actions → Enable Gandalf workflow → Re-run failed runs |
+| **Gandalf workflow has an error** | Check the error log. If it's a configuration issue, fix the workflow file and re-run. |
+| **Gandalf is working but slow** | Wait a bit longer (sometimes takes 60 seconds). Refresh PR page. If still nothing, manually review. |
 
 **Temporary Workaround — Manual PR Review:**
 
 If the bot is down and you need to review PRs:
 
 1. Go to student's PR
-2. Comment with this template (copy Aria's format):
+2. Comment with this template (copy Gandalf's format):
    ```markdown
    Checking your work...
    
@@ -185,7 +185,7 @@ Q: Are you logged in?
 
 ### "The Bot's Feedback Doesn't Make Sense"
 
-**Student is confused by Aria bot comment.**
+**Student is confused by Gandalf bot comment.**
 
 **What the bot might say:**
 ```
@@ -193,7 +193,7 @@ Consider: PR title should follow the pattern "Challenge X: [description]"
 ```
 
 **What you say:**
-> "Aria is asking you to change your PR title. Right now it says '[current title]'. 
+> "Gandalf is asking you to change your PR title. Right now it says '[current title]'. 
 > Change it to 'Challenge 1: [something describing the change]'. 
 > Go back to your PR, click 'Edit' on the title, make the change, save."
 
@@ -384,7 +384,7 @@ Autograding failed (X failed)
 
 ### GitHub Actions is Slow/Down
 
-**Symptom:** PRs are created but Aria bot takes 5+ minutes to respond.
+**Symptom:** PRs are created but Gandalf bot takes 5+ minutes to respond.
 
 **What's happening:** GitHub's infrastructure is overloaded.
 

@@ -23,7 +23,7 @@ automatically:
 
 | Workflow | Trigger | What It Does |
 |----------|---------|-------------|
-| `pr-validation-bot.yml` | PR opened, edited, reviewed | Aria bot -- welcomes first-timers, validates PR structure, provides educational feedback |
+| `pr-validation-bot.yml` | PR opened, edited, reviewed | Gandalf bot -- welcomes first-timers, validates PR structure, provides educational feedback |
 | `content-validation.yml` | PR opened, edited | Checks links, Markdown structure, and accessibility |
 | `student-progression.yml` | Workflow dispatch, issue closed | Creates the first challenge when triggered and unlocks the next challenge issue in sequence |
 | `skills-progression.yml` | PR merged | Posts achievement and progress feedback |
@@ -38,7 +38,7 @@ automatically:
 |--------|----------|---------|
 | `validate-pr.js` | `pr-validation-bot.yml` | PR requirement checks (issue reference, description, file location) |
 | `validation-report.js` | `content-validation.yml` | Structured feedback formatting |
-| `comment-responder.js` | `pr-validation-bot.yml` | Responds to `@aria-bot` mentions and help keywords |
+| `comment-responder.js` | `pr-validation-bot.yml` | Responds to `@gandalf-bot` mentions and help keywords |
 | `check_links.py` | `content-validation.yml` | Link validation |
 | `check_markdown.py` | `content-validation.yml` | Markdown structure validation |
 | `check_accessibility.py` | `content-validation.yml` | Accessibility checks (headings, alt text, link text) |
@@ -59,7 +59,7 @@ workflow uses to create issues in sequence:
 
 | File | Audience | Purpose |
 |------|----------|---------|
-| `STUDENT_GUIDE.md` | Students | How to interact with Aria bot and read feedback |
+| `STUDENT_GUIDE.md` | Students | How to interact with Gandalf bot and read feedback |
 | `FACILITATOR_GUIDE.md` | Facilitators | Quick reference for bot behavior and facilitator role |
 | `SETUP_AND_MAINTENANCE.md` | Facilitators | Architecture details and customization |
 | `DEPLOYMENT_VALIDATION.md` | Facilitators | Pre-workshop validation checklist |
@@ -83,7 +83,7 @@ The `student-progression.yml` workflow uses the issue template filenames to dete
 ### Changing Bot Messages
 
 Edit the `body:` fields in `pr-validation-bot.yml` workflow comments to
-change Aria bot's tone, language, or resource links.
+change Gandalf bot's tone, language, or resource links.
 
 ### Adding New Challenges
 

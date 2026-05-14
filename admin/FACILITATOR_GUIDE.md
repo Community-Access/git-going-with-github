@@ -26,7 +26,7 @@ This is your comprehensive guide to facilitate a two-day GitHub workshop. It cov
 **Why It Matters:** GitHub is a critical skill for modern tech careers. This workshop makes GitHub accessible through:
 - Hybrid delivery (people can join sync or async)
 - Individual private repos (safe practice space)
-- Automated feedback (Aria bot)
+- Automated feedback (Gandalf bot)
 - Progressive challenges (no overwhelming leaps)
 - Peer community (students help each other)
 
@@ -113,10 +113,10 @@ Save both invite links in a safe place (notes, email yourself, password manager)
 3. GitHub Classroom creates a repo for you
 4. Verify:
    - Challenge 1 issue exists in your repo
-   - Aria bot is configured (check Actions tab)
+   - Gandalf bot is configured (check Actions tab)
    - Student Progression bot can create new issues when you close one
 5. Test creating and merging a PR to ensure:
-   - Aria bot comments within 30 seconds
+   - Gandalf bot comments within 30 seconds
    - Merging closes the issue
    - Next challenge issue appears
 
@@ -134,8 +134,8 @@ If anything is missing, see [Troubleshooting GitHub Classroom Setup](#troublesho
 - They just need a GitHub account
 - If issue persists, check if Classroom link was copied correctly
 
-**"Aria bot isn't commenting on PRs"**
-- Verify Aria bot is installed in your Organization (Settings > GitHub Apps)
+**"Gandalf bot isn't commenting on PRs"**
+- Verify Gandalf bot is installed in your Organization (Settings > GitHub Apps)
 - Check if the Actions workflow is enabled in the template repo
 - Manually test a PR in your test repo
 
@@ -166,7 +166,7 @@ You have two days until the workshop. Use this checklist:
 - [ ] Invite links copied and ready to share
 - [ ] Template repo has Challenge 1 issue (will auto-create for each student)
 - [ ] Your test student repo exists (you accepted invite to test)
-- [ ] Aria bot installed and tested (posted to a PR, bot replied)
+- [ ] Gandalf bot installed and tested (posted to a PR, bot replied)
 - [ ] Student Progression bot works (closed an issue, new challenge appeared)
 - [ ] Both facilitators have admin access to the Classroom
 
@@ -273,8 +273,8 @@ Open a challenge in your test repo and **narrate every single step**:
 > I'm clicking the green 'Create pull request' button [click]
 > Done! The PR is created.
 >
-> **Step 7: Wait for Aria bot feedback**
-> Watch what happens next... Aria bot checks my work automatically.
+> **Step 7: Wait for Gandalf bot feedback**
+> Watch what happens next... Gandalf bot checks my work automatically.
 > [Wait 30 seconds]
 > See? The bot commented with feedback. It's checking if my change follows the rules.
 >
@@ -328,15 +328,15 @@ When you notice something:
    > "Hey @student! How's it going? Found your Challenge 1? If you need a hint, just ask in chat."
 
 2. **Student created a PR** → Check it
-   - Did Aria bot comment?
+   - Did Gandalf bot comment?
    - Does the student understand the feedback?
    - Comment if needed: "Looking good! I see the bot asked you to [X]. Give that a try!"
 
 3. **Student merged a PR** → Celebrate publicly:
    > "🎉 Awesome work @student! You just merged your first pull request! That's huge."
 
-4. **Aria bot gave confusing feedback** → Translate it:
-   > "I see Aria's feedback. Let me explain what it means: [plain language explanation]. Try [specific fix]."
+4. **Gandalf bot gave confusing feedback** → Translate it:
+   > "I see Gandalf's feedback. Let me explain what it means: [plain language explanation]. Try [specific fix]."
 
 5. **Student is stuck and says so** → Help them
    - Look at their repo
@@ -348,7 +348,7 @@ When you notice something:
 | Time | What to Expect |
 |------|---|
 | **Min 1-15** | Students opening PRs on their first challenge |
-| **Min 15-30** | Aria bot feedback flowing; students starting fixes |
+| **Min 15-30** | Gandalf bot feedback flowing; students starting fixes |
 | **Min 30-60** | First reviews happening; students requesting merges |
 | **Min 60-120** | Early merges happening; progression bot creating Challenge 2 |
 | **Min 120-180** | Second wave of PRs; momentum building; some finishing Challenge 2 |
@@ -367,10 +367,10 @@ When you notice something:
 - **Option B:** "Can you review someone else's PR? That helps them and teaches you code review"
 - **Option C:** "Help a peer who's still working. Teaching others is real learning"
 
-**If Aria bot stops responding:**
+**If Gandalf bot stops responding:**
 1. Check [GitHub Actions status page](https://www.githubstatus.com)
 2. If it's down, post in chat: "We're experiencing a brief delay with our feedback bot. We're looking into it."
-3. Manually review PRs and post feedback in Aria's format (see [Troubleshooting](FACILITATOR_CLASSROOM_TROUBLESHOOTING.md))
+3. Manually review PRs and post feedback in Gandalf's format (see [Troubleshooting](FACILITATOR_CLASSROOM_TROUBLESHOOTING.md))
 
 **If two students want to peer review:**
 - Perfect! Encourage it. That's the whole point.
@@ -629,7 +629,7 @@ Point to:
 - [ ] Identify students who are stuck/need follow-up
   - Email them: "You're doing great! Need any help finishing?"
 - [ ] Document any automation failures
-  - If Aria bot or progression bot had issues, log them for your next setup
+  - If Gandalf bot or progression bot had issues, log them for your next setup
 - [ ] Thank your co-facilitator
   - Debrief on what went well and what to improve
 

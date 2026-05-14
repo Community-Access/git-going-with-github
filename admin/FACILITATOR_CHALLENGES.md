@@ -9,7 +9,7 @@ Each student gets a **private repository** from GitHub Classroom. Inside that re
 | System | What it does |
 |---|---|
 | **Student Progression Bot** | Creates the next challenge issue when the student closes the current one |
-| **Aria (PR Validation Bot)** | Validates PR structure, welcomes first-timers, responds to `@aria-bot` help |
+| **Gandalf (PR Validation Bot)** | Validates PR structure, welcomes first-timers, responds to `@gandalf-bot` help |
 | **Autograders** | Runs automated tests on specific challenges to verify completion evidence |
 
 Challenges are sequential. A student cannot see Challenge 5 until they close Challenge 4. This keeps students focused and prevents overwhelm.
@@ -58,13 +58,13 @@ Look for these signals on the classroom dashboard:
 
 The issue becomes a support thread. Every comment builds evidence of learning.
 
-### When a Student Uses @aria-bot
+### When a Student Uses @gandalf-bot
 
-Students can comment `@aria-bot` followed by a question on any PR. Aria responds automatically with guidance. If Aria's response is insufficient:
+Students can comment `@gandalf-bot` followed by a question on any PR. Gandalf responds automatically with guidance. If Gandalf's response is insufficient:
 
-1. Read Aria's reply to understand what it already covered
+1. Read Gandalf's reply to understand what it already covered
 2. Add your own comment with more specific guidance
-3. No need to disable Aria -- your comment supplements the bot's response
+3. No need to disable Gandalf -- your comment supplements the bot's response
 
 ### Priority Intervention Triggers
 
@@ -72,7 +72,7 @@ Act immediately when you see:
 
 - A student closes 3+ issues within 2 minutes (they may be closing without completing -- check for evidence)
 - A student has zero activity for over 90 minutes after accepting (they may be lost)
-- Aria posts an error or does not respond to a PR within 60 seconds (workflow may be disabled)
+- Gandalf posts an error or does not respond to a PR within 60 seconds (workflow may be disabled)
 
 ## Validating Challenges
 
@@ -121,9 +121,9 @@ Comment on the issue: "Great work! Your [specific thing] shows you understand [c
 3. If the file is missing, the student may have accidentally deleted it -- restore from the template
 4. As a last resort, manually create the next challenge issue using the issue template
 
-### Aria Did Not Comment on a PR
+### Gandalf Did Not Comment on a PR
 
-**Symptoms:** Student opens a PR but Aria does not respond.
+**Symptoms:** Student opens a PR but Gandalf does not respond.
 
 **Possible causes:**
 - Workflow permissions: the repo may need `GITHUB_TOKEN` write access
@@ -195,8 +195,8 @@ All automation files live in the student's repo (copied from the template):
 | File | Purpose |
 |---|---|
 | `.github/workflows/student-progression.yml` | Progression Bot -- creates next challenge on issue close |
-| `.github/workflows/pr-validation-bot.yml` | Aria -- PR feedback and `@aria-bot` responses |
-| `.github/scripts/comment-responder.js` | Aria's response logic for `@aria-bot` mentions |
+| `.github/workflows/pr-validation-bot.yml` | Gandalf -- PR feedback and `@gandalf-bot` responses |
+| `.github/scripts/comment-responder.js` | Gandalf's response logic for `@gandalf-bot` mentions |
 | `.github/workflows/autograder-conflicts.yml` | Validates Challenge 7 (merge conflicts) |
 | `.github/workflows/autograder-local-commit.yml` | Validates Challenge 10 (local commit) |
 | `.github/workflows/autograder-template.yml` | Validates Challenge 14 (YAML template) |
@@ -219,7 +219,7 @@ All automation files live in the student's repo (copied from the template):
 **Support Load:**
 - Number of students requiring direct facilitator help per hour
 - Autograding failures per hour (if high, may indicate unclear challenge instructions)
-- Aria response failures (if any, indicates workflow configuration issue)
+- Gandalf response failures (if any, indicates workflow configuration issue)
 
 ## FAQ
 
@@ -253,7 +253,7 @@ Yes. Add new issue templates to the `learning-room-template` repo and update the
 
 - [ ] Classroom created and assignments configured (see [Workshop Deployment Guide](../classroom/README.md))
 - [ ] Roster imported with all expected student usernames
-- [ ] Verification completed with a test account (Progression Bot, Aria, and autograding all confirmed working)
+- [ ] Verification completed with a test account (Progression Bot, Gandalf, and autograding all confirmed working)
 - [ ] Classroom dashboard loads and shows the assignments
 - [ ] Facilitators have the classroom dashboard bookmarked
 - [ ] [Grading guide](../classroom/grading-guide.md) reviewed by all facilitators

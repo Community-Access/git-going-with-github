@@ -149,7 +149,7 @@ Recommended structure for each challenge episode:
 2. **Name the anxiety:** What usually feels confusing here?
 3. **Teach the concept:** Explain the underlying GitHub, Git, or Copilot idea before giving steps.
 4. **Walk the task:** Describe the screen reader and keyboard path in plain language.
-5. **Evidence and validation:** Explain what the learner must submit and what Aria or the autograder checks.
+5. **Evidence and validation:** Explain what the learner must submit and what Gandalf or the autograder checks.
 6. **Common mistakes:** Name two or three likely problems and how to recover.
 7. **What success sounds like:** Describe screen reader announcements, page locations, and completion signals.
 8. **Bridge forward:** Explain how this challenge prepares for the next one.

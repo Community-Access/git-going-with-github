@@ -189,7 +189,7 @@ Audio and transcript are being regenerated for this episode.
 
 **Alex:** This is the move inside Step 7 - Use the Support Built into the Course: if something does not work, do not start over silently. That matters in practice: Read the latest bot message, check the challenge issue, and ask for help with the link to the page where you are stuck.
 
-**Alex:** These are the details that keep the idea from floating away. Every challenge issue includes instructions and evidence prompts. Every chapter has an If You Get Stuck section. Every challenge has a reference solution in the solutions folder. Aria posts feedback on pull requests.
+**Alex:** These are the details that keep the idea from floating away. Every challenge issue includes instructions and evidence prompts. Every chapter has an If You Get Stuck section. Every challenge has a reference solution in the solutions folder. Gandalf posts feedback on pull requests.
 
 **Jamie:** That is a useful checkpoint before anyone starts pressing keys.
 
@@ -2552,7 +2552,7 @@ Audio and transcript are being regenerated for this episode.
 
 **Jamie:** Where do you want a learner to place their attention here?
 
-**Alex:** The teaching point here is not the label; it is the move. The PR validation bot, Aria, posts educational feedback whenever you open a pull request. That is the difference between guessing and knowing: To confirm Aria is wired up, open the Actions tab in your repo and look for a workflow named pr-validation-bot (or Aria PR Validation ).
+**Alex:** The teaching point here is not the label; it is the move. The PR validation bot, Gandalf, posts educational feedback whenever you open a pull request. That is the difference between guessing and knowing: To confirm Gandalf is wired up, open the Actions tab in your repo and look for a workflow named pr-validation-bot (or Gandalf PR Validation ).
 
 ---
 
@@ -2564,7 +2564,7 @@ Audio and transcript are being regenerated for this episode.
 
 **Alex:** Readiness Checkpoint has three jobs: name the idea, give the learner a move, and show what counts as evidence.
 
-**Alex:** First, find docs/CHALLENGES.md in your Learning Room repository. Then, explain the flow: issue - branch - pull request - review - merge. After that, identify where Aria bot feedback appears on a PR (the Conversation tab). Each step should leave a trace you can name.
+**Alex:** First, find docs/CHALLENGES.md in your Learning Room repository. Then, explain the flow: issue - branch - pull request - review - merge. After that, identify where Gandalf bot feedback appears on a PR (the Conversation tab). Each step should leave a trace you can name.
 
 **Alex:** Now slow down for the part people usually miss. Here is the learner-facing version. Throughout Day 1 you work on two parallel learning tracks, both in your own account.
 
@@ -2596,7 +2596,7 @@ Audio and transcript are being regenerated for this episode.
 
 **Alex:** The next point gives the learner a handle. Learning Cards: Two Tracks, One Account has three jobs: name the idea, give the learner a move, and show what counts as evidence.
 
-**Alex:** This is where the lesson becomes something you can check. GitHub Skills modules run in your personal account; press G I from any Skills repo to see the issue thread where Mona posts instructions. Your Learning Room repository lives at a different URL inside the workshop organization; bookmark it and use Alt+D (address bar) to confirm which repo you are in. Aria's bot comments on your PRs appear as PR conversation comments; press 3 on the PR page to jump between them. GitHub Skills repos have a distinct green banner at the top of the README that says "Start course"; your Learning Room repo has no such banner. Check the repository name in the top-left header to confirm which track you are working in (Skills repo vs. your Learning Room). Aria's avatar appears next to bot comments; your human reviewer's avatar appears next to peer review comments.
+**Alex:** This is where the lesson becomes something you can check. GitHub Skills modules run in your personal account; press G I from any Skills repo to see the issue thread where Mona posts instructions. Your Learning Room repository lives at a different URL inside the workshop organization; bookmark it and use Alt+D (address bar) to confirm which repo you are in. Gandalf's bot comments on your PRs appear as PR conversation comments; press 3 on the PR page to jump between them. GitHub Skills repos have a distinct green banner at the top of the README that says "Start course"; your Learning Room repo has no such banner. Check the repository name in the top-left header to confirm which track you are working in (Skills repo vs. your Learning Room). Gandalf's avatar appears next to bot comments; your human reviewer's avatar appears next to peer review comments.
 
 **Jamie:** What would you say to someone who is already bracing for this to be too much?
 
@@ -2618,7 +2618,7 @@ Audio and transcript are being regenerated for this episode.
 
 **Alex:** Why you create a separate branch has three jobs: name the idea, give the learner a move, and show what counts as evidence.
 
-**Alex:** For a learner, the useful signals are concrete. Protected main branch - The main branch in your Learning Room is protected; changes have to land via pull request even though you own the repo. This mirrors how mature open source projects work. Your workspace - Your learn/ branch is where you commit and push changes before opening a PR. Clean history - Keeping experiments off main until they are reviewed (by you, by Aria, or by a peer) keeps your project history easy to read. Realistic workflow - Contributors to real open source projects always create feature branches before opening a PR. You are practicing exactly that pattern.
+**Alex:** For a learner, the useful signals are concrete. Protected main branch - The main branch in your Learning Room is protected; changes have to land via pull request even though you own the repo. This mirrors how mature open source projects work. Your workspace - Your learn/ branch is where you commit and push changes before opening a PR. Clean history - Keeping experiments off main until they are reviewed (by you, by Gandalf, or by a peer) keeps your project history easy to read. Realistic workflow - Contributors to real open source projects always create feature branches before opening a PR. You are practicing exactly that pattern.
 
 **Alex:** A solid Git habit is to know which branch you are on, what changed, and what confirmation you expect before you run the next command.
 
@@ -2738,7 +2738,7 @@ Audio and transcript are being regenerated for this episode.
 
 **Alex:** Your assigned peer reviewer (when one is paired with you) has three jobs: name the idea, give the learner a move, and show what counts as evidence.
 
-**Alex:** These are the details that keep the idea from floating away. PR title: "Complete [TODO] sections in welcome.md". PR description: lists which sections were completed. Aria's feedback: checks that all [TODO] markers are removed, heading hierarchy is valid. The actual file changes (Files Changed tab): sees the diff showing old [TODO] markers replaced with new content. Inline comment on the "Who Can Contribute?" paragraph: "Great addition - I especially like the point about AT users bringing valuable perspective.". Overall comment: "The content reads well and all TODOs are resolved. One suggestion: the 'Finding Something to Work On' section could mention checking if an issue already has an assignee.".
+**Alex:** These are the details that keep the idea from floating away. PR title: "Complete [TODO] sections in welcome.md". PR description: lists which sections were completed. Gandalf's feedback: checks that all [TODO] markers are removed, heading hierarchy is valid. The actual file changes (Files Changed tab): sees the diff showing old [TODO] markers replaced with new content. Inline comment on the "Who Can Contribute?" paragraph: "Great addition - I especially like the point about AT users bringing valuable perspective.". Overall comment: "The content reads well and all TODOs are resolved. One suggestion: the 'Finding Something to Work On' section could mention checking if an issue already has an assignee.".
 
 **Alex:** First, receives notification: "PR review requested". Then, navigates to the PR in your Learning Room repo (they have collaborator access). After that, leaves review comments. Finally, submits review: Approve (or Request Changes if a [TODO] marker was missed). If one step does not match what you hear, stop there and re-orient.
 
@@ -2752,7 +2752,7 @@ Audio and transcript are being regenerated for this episode.
 
 **Alex:** You (PR author) has three jobs: name the idea, give the learner a move, and show what counts as evidence.
 
-**Alex:** Walk it in order: Read Aria's feedback and any human review; Talks to the reviewer if something is unclear; Makes changes based on feedback; and Pushes new commits to the same branch. That small check between steps is what makes the workflow reliable.
+**Alex:** Walk it in order: Read Gandalf's feedback and any human review; Talks to the reviewer if something is unclear; Makes changes based on feedback; and Pushes new commits to the same branch. That small check between steps is what makes the workflow reliable.
 
 **Jamie:** Before we leave You (PR author), what is the practical point?
 
@@ -2764,7 +2764,7 @@ Audio and transcript are being regenerated for this episode.
 
 **Jamie:** What is the teaching move inside Visibility?
 
-**Alex:** Here is the part to remember. Aria re-validates on each new commit and updates its comment. Your reviewer sees the updated activity in the PR. The PR timeline shows iteration happening.
+**Alex:** Here is the part to remember. Gandalf re-validates on each new commit and updates its comment. Your reviewer sees the updated activity in the PR. The PR timeline shows iteration happening.
 
 ---
 
@@ -2822,7 +2822,7 @@ Audio and transcript are being regenerated for this episode.
 
 **Alex:** Key Differences: Skills Module vs. Your Learning Room has three jobs: name the idea, give the learner a move, and show what counts as evidence.
 
-**Alex:** Use the comparison to make a decision, not to recite a table. The main contrasts are: GitHub Skills (Your Account) means Your Learning Room (Classroom). Your personal copy of a Skills repo means Your private copy of learning-room-template. Mona (GitHub) means Aria (PR validation) and the Student Progression bot.
+**Alex:** Use the comparison to make a decision, not to recite a table. The main contrasts are: GitHub Skills (Your Account) means Your Learning Room (Classroom). Your personal copy of a Skills repo means Your private copy of learning-room-template. Mona (GitHub) means Gandalf (PR validation) and the Student Progression bot.
 
 **Alex:** That connects to another useful point. This part earns its place because when the facilitators pair you with another participant for Challenge 3 or Challenge 8, you will be added as a collaborator on their Learning Room repo. That gives the learner a foothold: here is how to find the PRs they want you to look at. That is the difference between following directions and owning the workflow.
 
@@ -2882,7 +2882,7 @@ Audio and transcript are being regenerated for this episode.
 
 ---
 
-**Alex:** Keep the teaching thread moving. Put "Will my PR get lost when everyone is working at once?" into plain language. Your repo is your own; you only see your own PRs. The useful version is: Aria's feedback is on your PR alone, and any peer reviewer is specifically assigned to you. The interface gets easier when it becomes a set of named places instead of a wall of controls.
+**Alex:** Keep the teaching thread moving. Put "Will my PR get lost when everyone is working at once?" into plain language. Your repo is your own; you only see your own PRs. The useful version is: Gandalf's feedback is on your PR alone, and any peer reviewer is specifically assigned to you. The interface gets easier when it becomes a set of named places instead of a wall of controls.
 
 **Jamie:** Let's pause on "Can I comment on someone else's PR?". What should a learner take away from it?
 
@@ -2900,7 +2900,7 @@ Audio and transcript are being regenerated for this episode.
 
 **Jamie:** Let's pause on "What if bot feedback is wrong?". What should a learner take away from it?
 
-**Alex:** This is the move inside "What if bot feedback is wrong?": Aria is intentionally educational, not punitive -- if you disagree with a check, the facilitators can override it. That matters in practice: Aria is not perfect, which is exactly why human review still matters.
+**Alex:** This is the move inside "What if bot feedback is wrong?": Gandalf is intentionally educational, not punitive -- if you disagree with a check, the facilitators can override it. That matters in practice: Gandalf is not perfect, which is exactly why human review still matters.
 
 ---
 
@@ -3613,9 +3613,9 @@ Audio and transcript are being regenerated for this episode.
 
 **Alex:** The path is straightforward once it is named. Step one is from your repository page, navigate to the Issues tab. Keyboard shortcut: press G then I. Step two is you should see at least one open issue with a title like "Challenge 1: Find Your Way Around" authored by aria-bot (or github-actions[bot]). Step three is open Challenge 1. Read the issue body -- it tells you what to do, where to find evidence, and how to submit completion. That small check between steps is what makes the workflow reliable.
 
-**Jamie:** Let's pause on 6. Confirm Aria can talk to you. What should a learner take away from it?
+**Jamie:** Let's pause on 6. Confirm Gandalf can talk to you. What should a learner take away from it?
 
-**Alex:** 6. Confirm Aria can talk to you: The PR validation bot, Aria, posts educational feedback whenever you open a pull request. The next useful detail is concrete: To confirm Aria is wired up, open the Actions tab in your repo and look for a workflow named pr-validation-bot (or Aria PR Validation ).
+**Alex:** 6. Confirm Gandalf can talk to you: The PR validation bot, Gandalf, posts educational feedback whenever you open a pull request. The next useful detail is concrete: To confirm Gandalf is wired up, open the Actions tab in your repo and look for a workflow named pr-validation-bot (or Gandalf PR Validation ).
 
 ---
 
@@ -3627,7 +3627,7 @@ Audio and transcript are being regenerated for this episode.
 
 **Alex:** Readiness Checkpoint has three jobs: name the idea, give the learner a move, and show what counts as evidence.
 
-**Alex:** Walk it in order: Find docs/CHALLENGES.md in your Learning Room repository; Explain the flow: issue - branch - pull request - review - merge; and Identify where Aria bot feedback appears on a PR (the Conversation tab). Pause after each step and listen for the confirmation before moving on.
+**Alex:** Walk it in order: Find docs/CHALLENGES.md in your Learning Room repository; Explain the flow: issue - branch - pull request - review - merge; and Identify where Gandalf bot feedback appears on a PR (the Conversation tab). Pause after each step and listen for the confirmation before moving on.
 
 **Alex:** Keep the teaching thread moving. Anchor this part on Two Tracks That Reinforce Each Other. Throughout Day 1 you work on two parallel learning tracks, both in your own account. The durable skill is not memorizing one screen. It is knowing how to find your footing when the screen changes.
 
@@ -3653,7 +3653,7 @@ Audio and transcript are being regenerated for this episode.
 
 **Alex:** Keep the teaching thread moving. Learning Cards: Two Tracks, One Account has three jobs: name the idea, give the learner a move, and show what counts as evidence.
 
-**Alex:** Here is the part to remember. GitHub Skills modules run in your personal account; press G I from any Skills repo to see the issue thread where Mona posts instructions. Your Learning Room repository lives at a different URL inside the workshop organization; bookmark it and use Alt+D (address bar) to confirm which repo you are in. Aria's bot comments on your PRs appear as PR conversation comments; press 3 on the PR page to jump between them. GitHub Skills repos have a distinct green banner at the top of the README that says "Start course"; your Learning Room repo has no such banner. Check the repository name in the top-left header to confirm which track you are working in (Skills repo vs. your Learning Room). Aria's avatar appears next to bot comments; your human reviewer's avatar appears next to peer review comments.
+**Alex:** Here is the part to remember. GitHub Skills modules run in your personal account; press G I from any Skills repo to see the issue thread where Mona posts instructions. Your Learning Room repository lives at a different URL inside the workshop organization; bookmark it and use Alt+D (address bar) to confirm which repo you are in. Gandalf's bot comments on your PRs appear as PR conversation comments; press 3 on the PR page to jump between them. GitHub Skills repos have a distinct green banner at the top of the README that says "Start course"; your Learning Room repo has no such banner. Check the repository name in the top-left header to confirm which track you are working in (Skills repo vs. your Learning Room). Gandalf's avatar appears next to bot comments; your human reviewer's avatar appears next to peer review comments.
 
 **Jamie:** Let's pause on Your Learning Room Folder Structure. What should a learner take away from it?
 
@@ -3671,7 +3671,7 @@ Audio and transcript are being regenerated for this episode.
 
 **Alex:** Why you create a separate branch has three jobs: name the idea, give the learner a move, and show what counts as evidence.
 
-**Alex:** Here is the part to remember. Protected main branch - The main branch in your Learning Room is protected; changes have to land via pull request even though you own the repo. This mirrors how mature open source projects work. Your workspace - Your learn/ branch is where you commit and push changes before opening a PR. Clean history - Keeping experiments off main until they are reviewed (by you, by Aria, or by a peer) keeps your project history easy to read. Realistic workflow - Contributors to real open source projects always create feature branches before opening a PR. You are practicing exactly that pattern.
+**Alex:** Here is the part to remember. Protected main branch - The main branch in your Learning Room is protected; changes have to land via pull request even though you own the repo. This mirrors how mature open source projects work. Your workspace - Your learn/ branch is where you commit and push changes before opening a PR. Clean history - Keeping experiments off main until they are reviewed (by you, by Gandalf, or by a peer) keeps your project history easy to read. Realistic workflow - Contributors to real open source projects always create feature branches before opening a PR. You are practicing exactly that pattern.
 
 **Jamie:** Let's pause on How to use your branch. What should a learner take away from it?
 
@@ -3775,7 +3775,7 @@ Audio and transcript are being regenerated for this episode.
 
 **Alex:** Your assigned peer reviewer (when one is paired with you) has three jobs: name the idea, give the learner a move, and show what counts as evidence.
 
-**Alex:** Here is the part to remember. PR title: "Complete [TODO] sections in welcome.md". PR description: lists which sections were completed. Aria's feedback: checks that all [TODO] markers are removed, heading hierarchy is valid. The actual file changes (Files Changed tab): sees the diff showing old [TODO] markers replaced with new content. Inline comment on the "Who Can Contribute?" paragraph: "Great addition - I especially like the point about AT users bringing valuable perspective.". Overall comment: "The content reads well and all TODOs are resolved. One suggestion: the 'Finding Something to Work On' section could mention checking if an issue already has an assignee.".
+**Alex:** Here is the part to remember. PR title: "Complete [TODO] sections in welcome.md". PR description: lists which sections were completed. Gandalf's feedback: checks that all [TODO] markers are removed, heading hierarchy is valid. The actual file changes (Files Changed tab): sees the diff showing old [TODO] markers replaced with new content. Inline comment on the "Who Can Contribute?" paragraph: "Great addition - I especially like the point about AT users bringing valuable perspective.". Overall comment: "The content reads well and all TODOs are resolved. One suggestion: the 'Finding Something to Work On' section could mention checking if an issue already has an assignee.".
 
 **Alex:** Walk it in order: Receives notification: "PR review requested"; Navigates to the PR in your Learning Room repo (they have collaborator access); Leaves review comments; and Submits review: Approve (or Request Changes if a [TODO] marker was missed). The point is not speed; the point is never losing your place.
 
@@ -3789,7 +3789,7 @@ Audio and transcript are being regenerated for this episode.
 
 **Alex:** You (PR author) has three jobs: name the idea, give the learner a move, and show what counts as evidence.
 
-**Alex:** The path is straightforward once it is named. Step one is read Aria's feedback and any human review. Step two is talks to the reviewer if something is unclear. Step three is makes changes based on feedback. Step four is pushes new commits to the same branch. If one step does not match what you hear, stop there and re-orient.
+**Alex:** The path is straightforward once it is named. Step one is read Gandalf's feedback and any human review. Step two is talks to the reviewer if something is unclear. Step three is makes changes based on feedback. Step four is pushes new commits to the same branch. If one step does not match what you hear, stop there and re-orient.
 
 **Jamie:** Before we leave You (PR author), what is the practical point?
 
@@ -3797,7 +3797,7 @@ Audio and transcript are being regenerated for this episode.
 
 **Jamie:** What is the teaching move inside Visibility?
 
-**Alex:** Here is the part to remember. Aria re-validates on each new commit and updates its comment. Your reviewer sees the updated activity in the PR. The PR timeline shows iteration happening.
+**Alex:** Here is the part to remember. Gandalf re-validates on each new commit and updates its comment. Your reviewer sees the updated activity in the PR. The PR timeline shows iteration happening.
 
 ---
 
@@ -3855,7 +3855,7 @@ Audio and transcript are being regenerated for this episode.
 
 **Alex:** Key Differences: Skills Module vs. Your Learning Room has three jobs: name the idea, give the learner a move, and show what counts as evidence.
 
-**Alex:** Use the comparison to make a decision, not to recite a table. The main contrasts are: GitHub Skills (Your Account) means Your Learning Room (Classroom). Your personal copy of a Skills repo means Your private copy of learning-room-template. Mona (GitHub) means Aria (PR validation) and the Student Progression bot.
+**Alex:** Use the comparison to make a decision, not to recite a table. The main contrasts are: GitHub Skills (Your Account) means Your Learning Room (Classroom). Your personal copy of a Skills repo means Your private copy of learning-room-template. Mona (GitHub) means Gandalf (PR validation) and the Student Progression bot.
 
 **Alex:** Keep the teaching thread moving. Here is the learner-facing version. When the facilitators pair you with another participant for Challenge 3 or Challenge 8, you will be added as a collaborator on their Learning Room repo. Put another way, here is how to find the PRs they want you to look at.
 
@@ -3915,7 +3915,7 @@ Audio and transcript are being regenerated for this episode.
 
 ---
 
-**Alex:** Keep the teaching thread moving. This part earns its place because your repo is your own; you only see your own PRs. That gives the learner a foothold: Aria's feedback is on your PR alone, and any peer reviewer is specifically assigned to you.
+**Alex:** Keep the teaching thread moving. This part earns its place because your repo is your own; you only see your own PRs. That gives the learner a foothold: Gandalf's feedback is on your PR alone, and any peer reviewer is specifically assigned to you.
 
 **Jamie:** Let's pause on "Can I comment on someone else's PR?". What should a learner take away from it?
 
@@ -3933,7 +3933,7 @@ Audio and transcript are being regenerated for this episode.
 
 **Jamie:** Let's pause on "What if bot feedback is wrong?". What should a learner take away from it?
 
-**Alex:** The reason this matters is simple: Aria is intentionally educational, not punitive -- if you disagree with a check, the facilitators can override it. The listener should be able to check this: Aria is not perfect, which is exactly why human review still matters.
+**Alex:** The reason this matters is simple: Gandalf is intentionally educational, not punitive -- if you disagree with a check, the facilitators can override it. The listener should be able to check this: Gandalf is not perfect, which is exactly why human review still matters.
 
 ---
 
@@ -5166,7 +5166,7 @@ Audio and transcript are being regenerated for this episode.
 
 **Alex:** Here are the anchors worth keeping. Confirm you can reproduce the problem they described. Suggest an approach to fix it. Ask a clarifying question.
 
-**Alex:** Start here: Open the Peer Simulation: Welcome Link Needs Context issue in this repository. If your facilitator gave you access to a real buddy repository, you may use your buddy's Challenge 2 issue instead. Then: Leave a meaningful comment on their issue. Ideas. Next: Use an @mention in your comment. For the simulation, mention @aria-bot. For a real buddy repository, mention your buddy's username. Last: Add a reaction to the original issue. The point is not speed; the point is never losing your place.
+**Alex:** Start here: Open the Peer Simulation: Welcome Link Needs Context issue in this repository. If your facilitator gave you access to a real buddy repository, you may use your buddy's Challenge 2 issue instead. Then: Leave a meaningful comment on their issue. Ideas. Next: Use an @mention in your comment. For the simulation, mention @gandalf-bot. For a real buddy repository, mention your buddy's username. Last: Add a reaction to the original issue. The point is not speed; the point is never losing your place.
 
 **Jamie:** What is the one idea that makes the next few steps less mysterious?
 
@@ -5180,7 +5180,7 @@ Audio and transcript are being regenerated for this episode.
 
 ---
 
-**Alex:** Now bring the learner back to the room. Anchor this part on Peer simulation check. If your facilitator gave you a real buddy, check whether they commented on your issue and reply. This is the part to say slowly: Otherwise, reply to Aria or to your own peer-simulation comment with one follow-up thought.
+**Alex:** Now bring the learner back to the room. Anchor this part on Peer simulation check. If your facilitator gave you a real buddy, check whether they commented on your issue and reply. This is the part to say slowly: Otherwise, reply to Gandalf or to your own peer-simulation comment with one follow-up thought.
 
 **Jamie:** What would you say to someone who is already bracing for this to be too much?
 
@@ -8733,7 +8733,7 @@ Audio and transcript are being regenerated for this episode.
 
 **Jamie:** If I am listening before the workshop starts, what should settle in my mind first?
 
-**Alex:** The teaching point here is not the label; it is the move. The PR validation bot, Aria, posts educational feedback whenever you open a pull request. That is the difference between guessing and knowing: To confirm Aria is wired up, open the Actions tab in your repo and look for a workflow named pr-validation-bot (or Aria PR Validation ).
+**Alex:** The teaching point here is not the label; it is the move. The PR validation bot, Gandalf, posts educational feedback whenever you open a pull request. That is the difference between guessing and knowing: To confirm Gandalf is wired up, open the Actions tab in your repo and look for a workflow named pr-validation-bot (or Gandalf PR Validation ).
 
 **Alex:** That connects to another useful point. This part earns its place because chapter 4 is a system orientation chapter.
 
@@ -8743,7 +8743,7 @@ Audio and transcript are being regenerated for this episode.
 
 **Alex:** Readiness Checkpoint has three jobs: name the idea, give the learner a move, and show what counts as evidence.
 
-**Alex:** First, find docs/CHALLENGES.md in your Learning Room repository. Then, explain the flow: issue - branch - pull request - review - merge. After that, identify where Aria bot feedback appears on a PR (the Conversation tab). That is the rhythm: orient, act, verify, continue.
+**Alex:** First, find docs/CHALLENGES.md in your Learning Room repository. Then, explain the flow: issue - branch - pull request - review - merge. After that, identify where Gandalf bot feedback appears on a PR (the Conversation tab). That is the rhythm: orient, act, verify, continue.
 
 ---
 
@@ -8775,7 +8775,7 @@ Audio and transcript are being regenerated for this episode.
 
 **Alex:** Another way to ground it. Learning Cards: Two Tracks, One Account has three jobs: name the idea, give the learner a move, and show what counts as evidence.
 
-**Alex:** That becomes easier when you listen for these cues. GitHub Skills modules run in your personal account; press G I from any Skills repo to see the issue thread where Mona posts instructions. Your Learning Room repository lives at a different URL inside the workshop organization; bookmark it and use Alt+D (address bar) to confirm which repo you are in. Aria's bot comments on your PRs appear as PR conversation comments; press 3 on the PR page to jump between them. GitHub Skills repos have a distinct green banner at the top of the README that says "Start course"; your Learning Room repo has no such banner. Check the repository name in the top-left header to confirm which track you are working in (Skills repo vs. your Learning Room). Aria's avatar appears next to bot comments; your human reviewer's avatar appears next to peer review comments.
+**Alex:** That becomes easier when you listen for these cues. GitHub Skills modules run in your personal account; press G I from any Skills repo to see the issue thread where Mona posts instructions. Your Learning Room repository lives at a different URL inside the workshop organization; bookmark it and use Alt+D (address bar) to confirm which repo you are in. Gandalf's bot comments on your PRs appear as PR conversation comments; press 3 on the PR page to jump between them. GitHub Skills repos have a distinct green banner at the top of the README that says "Start course"; your Learning Room repo has no such banner. Check the repository name in the top-left header to confirm which track you are working in (Skills repo vs. your Learning Room). Gandalf's avatar appears next to bot comments; your human reviewer's avatar appears next to peer review comments.
 
 **Jamie:** Let's pause on Your Learning Room Folder Structure. What should a learner take away from it?
 
@@ -8797,7 +8797,7 @@ Audio and transcript are being regenerated for this episode.
 
 **Alex:** Why you create a separate branch has three jobs: name the idea, give the learner a move, and show what counts as evidence.
 
-**Alex:** Listen for the small confirmations in this list. Protected main branch - The main branch in your Learning Room is protected; changes have to land via pull request even though you own the repo. This mirrors how mature open source projects work. Your workspace - Your learn/ branch is where you commit and push changes before opening a PR. Clean history - Keeping experiments off main until they are reviewed (by you, by Aria, or by a peer) keeps your project history easy to read. Realistic workflow - Contributors to real open source projects always create feature branches before opening a PR. You are practicing exactly that pattern.
+**Alex:** Listen for the small confirmations in this list. Protected main branch - The main branch in your Learning Room is protected; changes have to land via pull request even though you own the repo. This mirrors how mature open source projects work. Your workspace - Your learn/ branch is where you commit and push changes before opening a PR. Clean history - Keeping experiments off main until they are reviewed (by you, by Gandalf, or by a peer) keeps your project history easy to read. Realistic workflow - Contributors to real open source projects always create feature branches before opening a PR. You are practicing exactly that pattern.
 
 **Jamie:** Let's pause on How to use your branch. What should a learner take away from it?
 
@@ -8913,7 +8913,7 @@ Audio and transcript are being regenerated for this episode.
 
 **Alex:** Your assigned peer reviewer (when one is paired with you) has three jobs: name the idea, give the learner a move, and show what counts as evidence.
 
-**Alex:** Here is the part to remember. PR title: "Complete [TODO] sections in welcome.md". PR description: lists which sections were completed. Aria's feedback: checks that all [TODO] markers are removed, heading hierarchy is valid. The actual file changes (Files Changed tab): sees the diff showing old [TODO] markers replaced with new content. Inline comment on the "Who Can Contribute?" paragraph: "Great addition - I especially like the point about AT users bringing valuable perspective.". Overall comment: "The content reads well and all TODOs are resolved. One suggestion: the 'Finding Something to Work On' section could mention checking if an issue already has an assignee.".
+**Alex:** Here is the part to remember. PR title: "Complete [TODO] sections in welcome.md". PR description: lists which sections were completed. Gandalf's feedback: checks that all [TODO] markers are removed, heading hierarchy is valid. The actual file changes (Files Changed tab): sees the diff showing old [TODO] markers replaced with new content. Inline comment on the "Who Can Contribute?" paragraph: "Great addition - I especially like the point about AT users bringing valuable perspective.". Overall comment: "The content reads well and all TODOs are resolved. One suggestion: the 'Finding Something to Work On' section could mention checking if an issue already has an assignee.".
 
 **Alex:** First, receives notification: "PR review requested". Then, navigates to the PR in your Learning Room repo (they have collaborator access). After that, leaves review comments. Finally, submits review: Approve (or Request Changes if a [TODO] marker was missed). That small check between steps is what makes the workflow reliable.
 
@@ -8925,7 +8925,7 @@ Audio and transcript are being regenerated for this episode.
 
 **Alex:** You (PR author) has three jobs: name the idea, give the learner a move, and show what counts as evidence.
 
-**Alex:** Walk it in order: Read Aria's feedback and any human review; Talks to the reviewer if something is unclear; Makes changes based on feedback; and Pushes new commits to the same branch. Keep it that plain: know where you are, make the move, check the result.
+**Alex:** Walk it in order: Read Gandalf's feedback and any human review; Talks to the reviewer if something is unclear; Makes changes based on feedback; and Pushes new commits to the same branch. Keep it that plain: know where you are, make the move, check the result.
 
 **Jamie:** Before we leave You (PR author), what is the practical point?
 
@@ -8935,7 +8935,7 @@ Audio and transcript are being regenerated for this episode.
 
 **Jamie:** What is the teaching move inside Visibility?
 
-**Alex:** Here is the part to remember. Aria re-validates on each new commit and updates its comment. Your reviewer sees the updated activity in the PR. The PR timeline shows iteration happening.
+**Alex:** Here is the part to remember. Gandalf re-validates on each new commit and updates its comment. Your reviewer sees the updated activity in the PR. The PR timeline shows iteration happening.
 
 **Alex:** The next point gives the learner a handle. When the review is approved (or you decide to self-merge) has three jobs: name the idea, give the learner a move, and show what counts as evidence.
 
@@ -8991,7 +8991,7 @@ Audio and transcript are being regenerated for this episode.
 
 **Alex:** Key Differences: Skills Module vs. Your Learning Room has three jobs: name the idea, give the learner a move, and show what counts as evidence.
 
-**Alex:** Use the comparison to make a decision, not to recite a table. The main contrasts are: GitHub Skills (Your Account) means Your Learning Room (Classroom). Your personal copy of a Skills repo means Your private copy of learning-room-template. Mona (GitHub) means Aria (PR validation) and the Student Progression bot.
+**Alex:** Use the comparison to make a decision, not to recite a table. The main contrasts are: GitHub Skills (Your Account) means Your Learning Room (Classroom). Your personal copy of a Skills repo means Your private copy of learning-room-template. Mona (GitHub) means Gandalf (PR validation) and the Student Progression bot.
 
 **Alex:** Now shift from knowing the term to using it. This part earns its place because when the facilitators pair you with another participant for Challenge 3 or Challenge 8, you will be added as a collaborator on their Learning Room repo. That gives the learner a foothold: here is how to find the PRs they want you to look at.
 
@@ -9051,7 +9051,7 @@ Audio and transcript are being regenerated for this episode.
 
 **Alex:** If the interface shifts, "What if I don't agree with my assigned reviewer?" is still useful because when the facilitators pair you for peer review, the pairing is a starting point, not a mandate. For someone navigating by keyboard or screen reader, this detail matters: You can request additional reviewers manually.
 
-**Alex:** Keep the teaching thread moving. Put "Will my PR get lost when everyone is working at once?" into plain language. Your repo is your own; you only see your own PRs. The useful version is: Aria's feedback is on your PR alone, and any peer reviewer is specifically assigned to you.
+**Alex:** Keep the teaching thread moving. Put "Will my PR get lost when everyone is working at once?" into plain language. Your repo is your own; you only see your own PRs. The useful version is: Gandalf's feedback is on your PR alone, and any peer reviewer is specifically assigned to you.
 
 **Jamie:** Let's pause on "Can I comment on someone else's PR?". What should a learner take away from it?
 
@@ -9071,7 +9071,7 @@ Audio and transcript are being regenerated for this episode.
 
 **Jamie:** Let's pause on "What if bot feedback is wrong?". What should a learner take away from it?
 
-**Alex:** This is the move inside "What if bot feedback is wrong?": Aria is intentionally educational, not punitive -- if you disagree with a check, the facilitators can override it. That matters in practice: Aria is not perfect, which is exactly why human review still matters.
+**Alex:** This is the move inside "What if bot feedback is wrong?": Gandalf is intentionally educational, not punitive -- if you disagree with a check, the facilitators can override it. That matters in practice: Gandalf is not perfect, which is exactly why human review still matters.
 
 **Alex:** Keep the teaching thread moving. Anchor this part on "Do I need to complete every challenge?". The Learning Room has challenges for all skill levels. This is the part to say slowly: You can pick what interests you, complete at your pace, and continue after the workshop -- your repo stays yours. The durable skill is not memorizing one screen. It is knowing how to find your footing when the screen changes.
 
@@ -9764,7 +9764,7 @@ Audio and transcript are being regenerated for this episode.
 
 **Jamie:** If I am listening before the workshop starts, what should settle in my mind first?
 
-**Alex:** If the interface shifts, 6. Confirm Aria can talk to you is still useful because the PR validation bot, Aria, posts educational feedback whenever you open a pull request. For someone navigating by keyboard or screen reader, this detail matters: To confirm Aria is wired up, open the Actions tab in your repo and look for a workflow named pr-validation-bot (or Aria PR Validation ).
+**Alex:** If the interface shifts, 6. Confirm Gandalf can talk to you is still useful because the PR validation bot, Gandalf, posts educational feedback whenever you open a pull request. For someone navigating by keyboard or screen reader, this detail matters: To confirm Gandalf is wired up, open the Actions tab in your repo and look for a workflow named pr-validation-bot (or Gandalf PR Validation ).
 
 **Alex:** Hold that next to this. Put Workshop Recommendation (Chapter 4) into plain language. Chapter 4 is a system orientation chapter. The interface gets easier when it becomes a set of named places instead of a wall of controls.
 
@@ -9780,7 +9780,7 @@ Audio and transcript are being regenerated for this episode.
 
 **Alex:** Readiness Checkpoint has three jobs: name the idea, give the learner a move, and show what counts as evidence.
 
-**Alex:** Think of this as 3 checks: Find docs/CHALLENGES.md in your Learning Room repository; Explain the flow: issue - branch - pull request - review - merge; and Identify where Aria bot feedback appears on a PR (the Conversation tab). Each step should leave a trace you can name.
+**Alex:** Think of this as 3 checks: Find docs/CHALLENGES.md in your Learning Room repository; Explain the flow: issue - branch - pull request - review - merge; and Identify where Gandalf bot feedback appears on a PR (the Conversation tab). Each step should leave a trace you can name.
 
 **Alex:** That connects to another useful point. This part earns its place because throughout Day 1 you work on two parallel learning tracks, both in your own account.
 
@@ -9808,7 +9808,7 @@ Audio and transcript are being regenerated for this episode.
 
 **Alex:** Keep the thread going. Learning Cards: Two Tracks, One Account has three jobs: name the idea, give the learner a move, and show what counts as evidence.
 
-**Alex:** These are the details that keep the idea from floating away. GitHub Skills modules run in your personal account; press G I from any Skills repo to see the issue thread where Mona posts instructions. Your Learning Room repository lives at a different URL inside the workshop organization; bookmark it and use Alt+D (address bar) to confirm which repo you are in. Aria's bot comments on your PRs appear as PR conversation comments; press 3 on the PR page to jump between them. GitHub Skills repos have a distinct green banner at the top of the README that says "Start course"; your Learning Room repo has no such banner. Check the repository name in the top-left header to confirm which track you are working in (Skills repo vs. your Learning Room). Aria's avatar appears next to bot comments; your human reviewer's avatar appears next to peer review comments.
+**Alex:** These are the details that keep the idea from floating away. GitHub Skills modules run in your personal account; press G I from any Skills repo to see the issue thread where Mona posts instructions. Your Learning Room repository lives at a different URL inside the workshop organization; bookmark it and use Alt+D (address bar) to confirm which repo you are in. Gandalf's bot comments on your PRs appear as PR conversation comments; press 3 on the PR page to jump between them. GitHub Skills repos have a distinct green banner at the top of the README that says "Start course"; your Learning Room repo has no such banner. Check the repository name in the top-left header to confirm which track you are working in (Skills repo vs. your Learning Room). Gandalf's avatar appears next to bot comments; your human reviewer's avatar appears next to peer review comments.
 
 ---
 
@@ -9826,7 +9826,7 @@ Audio and transcript are being regenerated for this episode.
 
 **Alex:** Why you create a separate branch has three jobs: name the idea, give the learner a move, and show what counts as evidence.
 
-**Alex:** These are the pieces that turn the idea into a usable move. Protected main branch - The main branch in your Learning Room is protected; changes have to land via pull request even though you own the repo. This mirrors how mature open source projects work. Your workspace - Your learn/ branch is where you commit and push changes before opening a PR. Clean history - Keeping experiments off main until they are reviewed (by you, by Aria, or by a peer) keeps your project history easy to read. Realistic workflow - Contributors to real open source projects always create feature branches before opening a PR. You are practicing exactly that pattern.
+**Alex:** These are the pieces that turn the idea into a usable move. Protected main branch - The main branch in your Learning Room is protected; changes have to land via pull request even though you own the repo. This mirrors how mature open source projects work. Your workspace - Your learn/ branch is where you commit and push changes before opening a PR. Clean history - Keeping experiments off main until they are reviewed (by you, by Gandalf, or by a peer) keeps your project history easy to read. Realistic workflow - Contributors to real open source projects always create feature branches before opening a PR. You are practicing exactly that pattern.
 
 ---
 
@@ -9946,7 +9946,7 @@ Audio and transcript are being regenerated for this episode.
 
 **Alex:** Your assigned peer reviewer (when one is paired with you) has three jobs: name the idea, give the learner a move, and show what counts as evidence.
 
-**Alex:** Here is the part to remember. PR title: "Complete [TODO] sections in welcome.md". PR description: lists which sections were completed. Aria's feedback: checks that all [TODO] markers are removed, heading hierarchy is valid. The actual file changes (Files Changed tab): sees the diff showing old [TODO] markers replaced with new content. Inline comment on the "Who Can Contribute?" paragraph: "Great addition - I especially like the point about AT users bringing valuable perspective.". Overall comment: "The content reads well and all TODOs are resolved. One suggestion: the 'Finding Something to Work On' section could mention checking if an issue already has an assignee.".
+**Alex:** Here is the part to remember. PR title: "Complete [TODO] sections in welcome.md". PR description: lists which sections were completed. Gandalf's feedback: checks that all [TODO] markers are removed, heading hierarchy is valid. The actual file changes (Files Changed tab): sees the diff showing old [TODO] markers replaced with new content. Inline comment on the "Who Can Contribute?" paragraph: "Great addition - I especially like the point about AT users bringing valuable perspective.". Overall comment: "The content reads well and all TODOs are resolved. One suggestion: the 'Finding Something to Work On' section could mention checking if an issue already has an assignee.".
 
 **Alex:** Think of this as 4 checks: Receives notification: "PR review requested"; Navigates to the PR in your Learning Room repo (they have collaborator access); Leaves review comments; and Submits review: Approve (or Request Changes if a [TODO] marker was missed). If one step does not match what you hear, stop there and re-orient.
 
@@ -9960,7 +9960,7 @@ Audio and transcript are being regenerated for this episode.
 
 **Alex:** You (PR author) has three jobs: name the idea, give the learner a move, and show what counts as evidence.
 
-**Alex:** First, read Aria's feedback and any human review. Then, talks to the reviewer if something is unclear. After that, makes changes based on feedback. Finally, pushes new commits to the same branch. That small check between steps is what makes the workflow reliable.
+**Alex:** First, read Gandalf's feedback and any human review. Then, talks to the reviewer if something is unclear. After that, makes changes based on feedback. Finally, pushes new commits to the same branch. That small check between steps is what makes the workflow reliable.
 
 **Jamie:** Before we leave You (PR author), what is the practical point?
 
@@ -9968,7 +9968,7 @@ Audio and transcript are being regenerated for this episode.
 
 **Jamie:** What is the teaching move inside Visibility?
 
-**Alex:** Here is the part to remember. Aria re-validates on each new commit and updates its comment. Your reviewer sees the updated activity in the PR. The PR timeline shows iteration happening.
+**Alex:** Here is the part to remember. Gandalf re-validates on each new commit and updates its comment. Your reviewer sees the updated activity in the PR. The PR timeline shows iteration happening.
 
 **Alex:** Here is the moment where the page starts to make sense. When the review is approved (or you decide to self-merge) has three jobs: name the idea, give the learner a move, and show what counts as evidence.
 
@@ -10024,7 +10024,7 @@ Audio and transcript are being regenerated for this episode.
 
 **Alex:** Key Differences: Skills Module vs. Your Learning Room has three jobs: name the idea, give the learner a move, and show what counts as evidence.
 
-**Alex:** Use the comparison to make a decision, not to recite a table. The main contrasts are: GitHub Skills (Your Account) means Your Learning Room (Classroom). Your personal copy of a Skills repo means Your private copy of learning-room-template. Mona (GitHub) means Aria (PR validation) and the Student Progression bot.
+**Alex:** Use the comparison to make a decision, not to recite a table. The main contrasts are: GitHub Skills (Your Account) means Your Learning Room (Classroom). Your personal copy of a Skills repo means Your private copy of learning-room-template. Mona (GitHub) means Gandalf (PR validation) and the Student Progression bot.
 
 ---
 
@@ -10084,7 +10084,7 @@ Audio and transcript are being regenerated for this episode.
 
 **Alex:** The reason this matters is simple: when the facilitators pair you for peer review, the pairing is a starting point, not a mandate. The listener should be able to check this: You can request additional reviewers manually.
 
-**Alex:** Keep the teaching thread moving. Do not treat "Will my PR get lost when everyone is working at once?" as decoration. Your repo is your own; you only see your own PRs. That is not trivia. Aria's feedback is on your PR alone, and any peer reviewer is specifically assigned to you. The workshop is closer to rehearsal than lecture. You hear the move, try the move, and then check what changed.
+**Alex:** Keep the teaching thread moving. Do not treat "Will my PR get lost when everyone is working at once?" as decoration. Your repo is your own; you only see your own PRs. That is not trivia. Gandalf's feedback is on your PR alone, and any peer reviewer is specifically assigned to you. The workshop is closer to rehearsal than lecture. You hear the move, try the move, and then check what changed.
 
 ---
 
@@ -10104,7 +10104,7 @@ Audio and transcript are being regenerated for this episode.
 
 **Jamie:** Let's pause on "What if bot feedback is wrong?". What should a learner take away from it?
 
-**Alex:** "What if bot feedback is wrong?": Aria is intentionally educational, not punitive -- if you disagree with a check, the facilitators can override it. The next useful detail is concrete: Aria is not perfect, which is exactly why human review still matters.
+**Alex:** "What if bot feedback is wrong?": Gandalf is intentionally educational, not punitive -- if you disagree with a check, the facilitators can override it. The next useful detail is concrete: Gandalf is not perfect, which is exactly why human review still matters.
 
 **Alex:** Keep the teaching thread moving. Here is the learner-facing version. The Learning Room has challenges for all skill levels. Put another way, you can pick what interests you, complete at your pace, and continue after the workshop -- your repo stays yours.
 

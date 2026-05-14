@@ -66,7 +66,7 @@ Every chapter has an "If You Get Stuck" section with specific troubleshooting st
 You can also:
 - Ask your assigned buddy or study group
 - Post a question on the issue thread
-- Mention `@aria-bot` in a comment for a workspace check
+- Mention `@gandalf-bot` in a comment for a workspace check
 - Ask a facilitator for help -- that is what they are here for
 
 ## After Day 1

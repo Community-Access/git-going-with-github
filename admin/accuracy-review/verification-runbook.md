@@ -45,7 +45,7 @@ The following table lists the P0 scenario checks to run first.
 | SCN-010 | Inspect current Copilot plan/billing pages | Plan, AI Credits, billing, and model claims are source-linked and last-verified |
 | SCN-012 | Share an integrated browser tab with an agent in VS Code | Documentation includes explicit sharing, approval prompt, and stop-sharing control |
 | SCN-014 | Create or validate a Classroom assignment path | Classroom setup, roster, student repository, and challenge seeding steps match current UI |
-| SCN-016 | Verify workflow validation and autograding messaging | Terms are consistent across Classroom autograding, workflow comments, Aria feedback, and manual grading |
+| SCN-016 | Verify workflow validation and autograding messaging | Terms are consistent across Classroom autograding, workflow comments, Gandalf feedback, and manual grading |
 
 ## Automated Repository Checks
 

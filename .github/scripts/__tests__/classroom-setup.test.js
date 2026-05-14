@@ -23,7 +23,7 @@
  * 7. Cross-document consistency -- challenge titles in autograder workflows match
  *    those in the assignment descriptor and challenge templates
  * 8. Actions permissions -- workflow files in the template all declare the
- *    required write permissions for Aria and the Progression Bot
+ *    required write permissions for Gandalf and the Progression Bot
  */
 
 const test = require('node:test');
@@ -267,7 +267,7 @@ test('classroom README verification checklist covers all critical smoke-test ste
   const smokeTests = [
     'Accept the Day 1 invite',
     'Challenge 1 issue was created',
-    'Aria',
+    'Gandalf',
     'autograding',
     'feedback pull request',
     'Day 2',
@@ -315,7 +315,7 @@ test('pr-validation-bot.yml declares all required permissions', () => {
     assert.match(
       content,
       pattern,
-      `pr-validation-bot.yml: must declare "${label}" so Aria can post comments`
+      `pr-validation-bot.yml: must declare "${label}" so Gandalf can post comments`
     );
   });
 });

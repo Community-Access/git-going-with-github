@@ -5,6 +5,7 @@
 > **Related appendices:** [Appendix N: Advanced Search](appendix-n-advanced-search.md) | [Appendix V: GitHub Mobile](appendix-v-github-mobile.md) | [Appendix B: Screen Reader Cheat Sheet](appendix-b-screen-reader-cheatsheet.md)
 > **Authoritative sources:** [GitHub Docs: About issues](https://docs.github.com/en/issues/tracking-your-work-with-issues/about-issues) | [GitHub Accessibility Guide: Issues](https://accessibility.github.com/documentation/guide/issues/)
 
+
 ## Filing, Managing, and Participating in GitHub Issues
 
 > Issues are where open source collaboration begins. This guide covers everything from finding the right issue to file a perfect bug report - all with your keyboard and screen reader.
@@ -22,6 +23,7 @@
 > Full step-by-step instructions with per-screen-reader commands are in [Pre-Workshop Setup, Step 4](00-pre-workshop-setup.md#step-4---check-github-feature-preview-settings).
 >
 > **Browse vs Focus Mode (NVDA):** Toggle between modes with `NVDA+Space` (NVDA key = `Insert` or `Caps Lock`). Use **Browse Mode** (the default) for reading lists, headings, and issue content. Switch to **Focus Mode** when typing in text fields and search boxes. Use `NVDA+F7` at any time to open a list of all headings, links, form fields, buttons, and landmarks on the page - this is your orientation tool.
+
 
 ## Workshop Recommendation (Chapter 5 / Challenges 2-3)
 
@@ -146,6 +148,7 @@ Issues are collaborative spaces, not just task lists. An @mention tells someone 
 4. Leave clear evidence in the issue timeline.
 5. Build momentum for file editing and PR work in Chapter 6.
 
+
 ### About Learning Cards in This Chapter
 
 This chapter provides learning cards: expandable blocks that offer perspective-specific guidance for different ways of working. Not every card appears at every step. Open the ones that match how you work.
@@ -159,6 +162,7 @@ The following table describes the five learning card types used in this chapter.
 | NVDA / JAWS (Windows) | Screen reader users on Windows | Keystroke sequences, Focus and Browse mode, landmark navigation |
 | VoiceOver (macOS) | Screen reader users on macOS | VO key sequences, rotor usage, interaction model |
 | CLI (gh) | Terminal users on any platform | GitHub CLI commands for issue management |
+
 
 ## Local Git Alternative: Working from Your Clone
 
@@ -194,6 +198,7 @@ All of these produce the same result as the web interface. The chapter instructi
 
 </details>
 
+
 ## What Is a GitHub Issue?
 
 An issue is a discussion thread attached to a repository. Issues are used for:
@@ -207,6 +212,7 @@ An issue is a discussion thread attached to a repository. Issues are used for:
 Every issue has a **number** (`#42`), a **state** (Open or Closed), a **title**, a **description**, and a **comment thread**. Issues are public by default on public repositories.
 
 > **Learning Room connection:** In your Learning Room repo, every challenge from `docs/CHALLENGES.md` becomes an issue. For example, Challenge 1 ("Fix Broken Link") is filed as an issue pointing to `docs/welcome.md`, describing the broken link and linking to the challenge success criteria. When you open a PR to fix it, you reference the issue with `Closes #XX` to automatically close it on merge.
+
 
 ## Navigating to the Issues List
 
@@ -280,6 +286,7 @@ Navigate directly: `https://github.com/[owner]/[repo]/issues`
 - The Issues tab sits in the repository navigation bar directly below the repo name; the open count badge gives a quick pulse check on project health
 - Memorize the `G I` keyboard shortcut (press G, release, press I) to jump to Issues from anywhere in the repository without scrolling
 - The direct URL pattern works for any repository: swap `[owner]/[repo]` with real values and bookmark your most visited projects
+
 
 ## The Issues List Page
 
@@ -373,6 +380,7 @@ When you navigate to an issue in the list, your screen reader will announce (in 
 - Issue labels appear as colored rounded rectangles inline with the title; hover over a label to see its description
 
 </details>
+
 
 ## Filtering and Searching Issues
 
@@ -488,6 +496,7 @@ The two state links "Open" and "Closed" appear near the top of the issue list. P
 - The Open/Closed toggle near the top of the list preserves your current filter; click Closed to see resolved issues without losing your label or assignee filter
 - Pin your most-used filter as a browser bookmark (the URL updates to reflect the active query) for one-click access
 
+
 ## Reading an Issue
 
 ### Landing on an issue page
@@ -595,6 +604,7 @@ Other timeline events (label added, PR linked, issue closed) appear between comm
 - Timeline events (label changes, assignments, cross-references) appear as small lines between comments with icons indicating the event type
 
 </details>
+
 
 ## Leaving a Comment
 
@@ -737,6 +747,7 @@ For the full shortcut system, see [Screen Reader Cheat Sheet - GitHub Shortcuts 
 - The formatting toolbar above the text area offers bold, italic, code, link, and list buttons; hover for tooltips showing the keyboard shortcut for each
 - Use the `R` shortcut to quote selected text -- it creates a blockquote in your reply, making threaded conversations much easier to follow
 - The Close with comment option (dropdown arrow on the Close button) lets you leave a final note and close the issue in a single action
+
 
 ## Filing a New Issue
 
@@ -947,6 +958,7 @@ gh issue create --title "Your title" --body "Description here"
 gh issue create
 ```
 
+
 ## Cross-Referencing Issues
 
 Linking issues and PRs to each other creates a trail of context that helps everyone understand the project's history.
@@ -994,6 +1006,7 @@ Step 4: Enter to insert the reference
 - Use `Closes #42`, `Fixes #42`, or `Resolves #42` in PR descriptions for auto-closing on merge; `refs #42` creates a reference without auto-close, useful for "related but not solved" links
 - GitHub's autocomplete (`#` then type) searches both issue titles and numbers, so you can find issues by keyword without memorizing numbers
 - Cross-repo references use the format `owner/repo#42` -- useful when your PR in one repository fixes a bug tracked in another
+
 
 ## Sub-Issues - Parent and Child Relationships
 
@@ -1065,6 +1078,7 @@ Every child issue shows a "Parent issue" link near the top of the page (above th
 - Sub-issues appear as a checklist with a progress bar on the parent issue; each child links directly to its own issue page with full discussion and labels
 - Use sub-issues instead of Markdown task-list checkboxes when each item needs its own assignee, labels, or cross-repo tracking -- sub-issues are structured data, not just text
 - Creating a sub-issue from the parent's "Add sub-issue" button auto-links the new issue; you can also link existing issues by searching their number or title
+
 
 ## Managing Issues (for Maintainers and Triagers)
 
@@ -1181,6 +1195,7 @@ Available from the "..." (ellipsis) button at the top of the issue - navigate bu
 - Use the dropdown arrow on the Close button to choose "Close as completed" vs. "Close as not planned" -- this distinction helps with project tracking and search filtering
 - The "..." menu at the top of any issue provides Transfer, Pin, Lock, and Delete options for repository maintainers
 
+
 ## The "good first issue" Label - Your Entry Point
 
 When looking for your first open source contribution:
@@ -1209,6 +1224,7 @@ When looking for your first open source contribution:
 - The "good first issue" label is a GitHub convention recognized across the ecosystem; many projects also use "help wanted" for intermediate tasks
 - Always comment before starting work -- even if unassigned -- to avoid duplicating effort with another contributor who may already be working quietly
 - Read the issue's linked PR history (if any) to see whether previous attempts were made and why they were closed; this saves you from repeating known dead ends
+
 
 ## Accessibility-Specific Issue Writing Tips
 
@@ -1275,6 +1291,7 @@ so the macOS behavior appears correct.
 - Even if you do not use assistive technology, you can file accessibility issues by testing with keyboard-only navigation (Tab, Enter, Escape) and noting where focus is lost or trapped
 - Include the ARIA role or attribute involved if you can identify it from browser DevTools (e.g., "The button has `role=presentation` and no accessible name")
 - Link to the relevant WCAG success criterion when possible (e.g., "Fails WCAG 2.1 SC 1.3.1 Info and Relationships"); this gives maintainers a clear standard to design against
+
 
 ## Writing Effective Issues
 
@@ -1389,6 +1406,7 @@ The maintainer can reproduce this in under a minute. No follow-up questions need
 
 </details>
 
+
 ## Try It: File Your First Issue
 
 **Time:** 3 minutes | **What you need:** Browser, signed in to GitHub
@@ -1422,6 +1440,7 @@ Go to the Learning Room repository and file a real issue:
 - Read a few other students' introduction issues and leave a comment to practice the commenting workflow from the Leaving a Comment section
 - Notice how the issue number (e.g., #150) is auto-assigned and appears in the URL and page title; you will use this number for cross-references later
 
+
 > ### Day 2 Amplifier - Accessibility Agents: `@issue-tracker`
 >
 > **File, read, comment on, and triage real issues manually before using any agent.** If you have not done the triage work yourself - reading descriptions, assigning labels, identifying duplicates - you cannot evaluate whether an agent's priority scoring is correct. The skill must exist before the amplifier is useful.
@@ -1434,43 +1453,16 @@ Go to the Learning Room repository and file a real issue:
 >
 > *Today you are the triage engine. On Day 2, you understand the engine well enough to direct it.*
 
-> **Challenge Time:** It's time for the real deal. Go to the [Challenge Hub](CHALLENGES.md) and complete **Challenge 2: File Your First Issue** and **Challenge 3: Join the Conversation**. When Aria the bot replies to you, she will tell you when it's time to move to [Chapter 06: Working with Pull Requests](06-working-with-pull-requests.md).
+
+> **Challenge Time:** It's time for the real deal. Go to the [Challenge Hub](CHALLENGES.md) and complete **Challenge 2: File Your First Issue** and **Challenge 3: Join the Conversation**. When Gandalf the bot replies to you, it will tell you when it's time to move to [Chapter 06: Working with Pull Requests](06-working-with-pull-requests.md).
 
 ---
+
 
 *Next: [Chapter 06: Working with Pull Requests](06-working-with-pull-requests.md)*  
 *Back: [Chapter 04: The Learning Room](04-the-learning-room.md)*  
 *Related appendices: [Appendix N: Advanced Search](appendix-n-advanced-search.md) | [Appendix V: GitHub Mobile](appendix-v-github-mobile.md)*
 
-## Authoritative Sources
 
-Use these official references when you need the current source of truth for facts in this chapter.
 
-- [GitHub Docs, home](https://docs.github.com/en)
-- [GitHub Changelog](https://github.blog/changelog/)
-- [About Git](https://docs.github.com/en/get-started/using-git/about-git)
-- [GitHub flow](https://docs.github.com/en/get-started/using-github/github-flow)
-- [About pull requests](https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/about-pull-requests)
-- [About issues](https://docs.github.com/en/issues/tracking-your-work-with-issues/about-issues)
-- [Contributing to a project](https://docs.github.com/en/get-started/exploring-projects-on-github/contributing-to-a-project)
 
-### Section-Level Source Map
-
-Use this map to verify facts for each major section in this file.
-
-- **Filing, Managing, and Participating in GitHub Issues:** [GitHub Docs, home](https://docs.github.com/en), [GitHub Changelog](https://github.blog/changelog/), [About Git](https://docs.github.com/en/get-started/using-git/about-git), [GitHub flow](https://docs.github.com/en/get-started/using-github/github-flow), [About pull requests](https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/about-pull-requests)
-- **Workshop Recommendation (Chapter 5 / Challenges 2-3):** [GitHub Docs, home](https://docs.github.com/en), [GitHub Changelog](https://github.blog/changelog/), [About Git](https://docs.github.com/en/get-started/using-git/about-git), [GitHub flow](https://docs.github.com/en/get-started/using-github/github-flow), [About pull requests](https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/about-pull-requests)
-- **Local Git Alternative: Working from Your Clone:** [GitHub Docs, home](https://docs.github.com/en), [GitHub Changelog](https://github.blog/changelog/), [About Git](https://docs.github.com/en/get-started/using-git/about-git), [GitHub flow](https://docs.github.com/en/get-started/using-github/github-flow), [About pull requests](https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/about-pull-requests)
-- **What Is a GitHub Issue?:** [GitHub Docs, home](https://docs.github.com/en), [GitHub Changelog](https://github.blog/changelog/), [About Git](https://docs.github.com/en/get-started/using-git/about-git), [GitHub flow](https://docs.github.com/en/get-started/using-github/github-flow), [About pull requests](https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/about-pull-requests)
-- **Navigating to the Issues List:** [GitHub Docs, home](https://docs.github.com/en), [GitHub Changelog](https://github.blog/changelog/), [About Git](https://docs.github.com/en/get-started/using-git/about-git), [GitHub flow](https://docs.github.com/en/get-started/using-github/github-flow), [About pull requests](https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/about-pull-requests)
-- **The Issues List Page:** [GitHub Docs, home](https://docs.github.com/en), [GitHub Changelog](https://github.blog/changelog/), [About Git](https://docs.github.com/en/get-started/using-git/about-git), [GitHub flow](https://docs.github.com/en/get-started/using-github/github-flow), [About pull requests](https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/about-pull-requests)
-- **Filtering and Searching Issues:** [GitHub Docs, home](https://docs.github.com/en), [GitHub Changelog](https://github.blog/changelog/), [About Git](https://docs.github.com/en/get-started/using-git/about-git), [GitHub flow](https://docs.github.com/en/get-started/using-github/github-flow), [About pull requests](https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/about-pull-requests)
-- **Reading an Issue:** [GitHub Docs, home](https://docs.github.com/en), [GitHub Changelog](https://github.blog/changelog/), [About Git](https://docs.github.com/en/get-started/using-git/about-git), [GitHub flow](https://docs.github.com/en/get-started/using-github/github-flow), [About pull requests](https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/about-pull-requests)
-- **Leaving a Comment:** [GitHub Docs, home](https://docs.github.com/en), [GitHub Changelog](https://github.blog/changelog/), [About Git](https://docs.github.com/en/get-started/using-git/about-git), [GitHub flow](https://docs.github.com/en/get-started/using-github/github-flow), [About pull requests](https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/about-pull-requests)
-- **Filing a New Issue:** [GitHub Docs, home](https://docs.github.com/en), [GitHub Changelog](https://github.blog/changelog/), [About Git](https://docs.github.com/en/get-started/using-git/about-git), [GitHub flow](https://docs.github.com/en/get-started/using-github/github-flow), [About pull requests](https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/about-pull-requests)
-- **Cross-Referencing Issues:** [GitHub Docs, home](https://docs.github.com/en), [GitHub Changelog](https://github.blog/changelog/), [About Git](https://docs.github.com/en/get-started/using-git/about-git), [GitHub flow](https://docs.github.com/en/get-started/using-github/github-flow), [About pull requests](https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/about-pull-requests)
-- **Sub-Issues - Parent and Child Relationships:** [GitHub Docs, home](https://docs.github.com/en), [GitHub Changelog](https://github.blog/changelog/), [About Git](https://docs.github.com/en/get-started/using-git/about-git), [GitHub flow](https://docs.github.com/en/get-started/using-github/github-flow), [About pull requests](https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/about-pull-requests)
-- **Managing Issues (for Maintainers and Triagers):** [GitHub Docs, home](https://docs.github.com/en), [GitHub Changelog](https://github.blog/changelog/), [About Git](https://docs.github.com/en/get-started/using-git/about-git), [GitHub flow](https://docs.github.com/en/get-started/using-github/github-flow), [About pull requests](https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/about-pull-requests)
-- **The "good first issue" Label - Your Entry Point:** [GitHub Docs, home](https://docs.github.com/en), [GitHub Changelog](https://github.blog/changelog/), [About Git](https://docs.github.com/en/get-started/using-git/about-git), [GitHub flow](https://docs.github.com/en/get-started/using-github/github-flow), [About pull requests](https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/about-pull-requests)
-- **Accessibility-Specific Issue Writing Tips:** [GitHub Docs, home](https://docs.github.com/en), [GitHub Changelog](https://github.blog/changelog/), [About Git](https://docs.github.com/en/get-started/using-git/about-git), [GitHub flow](https://docs.github.com/en/get-started/using-github/github-flow), [About pull requests](https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/about-pull-requests)
-- **Writing Effective Issues:** [GitHub Docs, home](https://docs.github.com/en), [GitHub Changelog](https://github.blog/changelog/), [About Git](https://docs.github.com/en/get-started/using-git/about-git), [GitHub flow](https://docs.github.com/en/get-started/using-github/github-flow), [About pull requests](https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/about-pull-requests)

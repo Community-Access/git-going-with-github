@@ -45,7 +45,7 @@ Inside that repository you will find:
 - Challenge issues that guide your work one step at a time
 - Practice documents with intentional problems to fix
 - GitHub Actions that check your work
-- Aria, the workshop bot that gives feedback on pull requests
+- Gandalf, the workshop bot that gives feedback on pull requests
 - Reference files for branches, pull requests, merge conflicts, Copilot, and agents
 
 Other students cannot see your private Learning Room repository. Facilitators can see it through GitHub Classroom so they can help when you get stuck.
@@ -63,7 +63,7 @@ The workshop uses a guided progression:
 5. Close the issue when you are done.
 6. The progression bot opens the next challenge.
 
-Some challenges ask you to open a pull request. When you do, Aria reviews the pull request structure, checks links and accessibility basics, and explains what to fix. This mirrors a real open source workflow: create a branch, make a focused change, open a pull request, get feedback, revise, and merge.
+Some challenges ask you to open a pull request. When you do, Gandalf reviews the pull request structure, checks links and accessibility basics, and explains what to fix. This mirrors a real open source workflow: create a branch, make a focused change, open a pull request, get feedback, revise, and merge.
 
 ## GitHub Skills Modules
 

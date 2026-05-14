@@ -8,7 +8,7 @@ We are excited to welcome you to **Git Going with GitHub**, a two-day Community 
 
 Before Day 1, please complete the [Pre-Workshop Setup Guide](../docs/00-pre-workshop-setup.md). It walks you through creating or checking your GitHub account, configuring accessibility settings, installing Git and Visual Studio Code, and confirming GitHub Copilot access.
 
-You do **not** need to accept a GitHub Classroom assignment yet. We will share the assignment link at the beginning of Day 1 and walk through it together. That link creates your private Learning Room repository, where you will complete guided challenges and receive feedback from Aria, the workshop bot.
+You do **not** need to accept a GitHub Classroom assignment yet. We will share the assignment link at the beginning of Day 1 and walk through it together. That link creates your private Learning Room repository, where you will complete guided challenges and receive feedback from Gandalf, the workshop bot.
 
 You will not clone or change the template repository itself. If a Day 2 challenge asks you to clone a repository, clone the private Learning Room repository created for you by GitHub Classroom. You also do not need a GitHub organization or organization-level permissions; facilitators handle those settings before the workshop.
 

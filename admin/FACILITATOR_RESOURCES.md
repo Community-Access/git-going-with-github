@@ -259,7 +259,7 @@ Before your first workshop, verify:
 - [ ] I've read [FACILITATOR_GUIDE.md](FACILITATOR_GUIDE.md) GitHub Classroom Setup
 - [ ] I've created a test GitHub Classroom
 - [ ] I've accepted my own invite link
-- [ ] Aria bot commented on my test PR
+- [ ] Gandalf bot commented on my test PR
 - [ ] Progression bot created Challenge 2 when I closed Challenge 1
 - [ ] I've read [FACILITATOR_OPERATIONS.md](FACILITATOR_OPERATIONS.md) procedures
 - [ ] I've set up my facilitator workstation per the guide
