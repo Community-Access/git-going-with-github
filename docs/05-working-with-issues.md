@@ -1470,9 +1470,25 @@ Go to the Learning Room repository and file a real issue:
 ---
 
 
-*Next: [Chapter 06: Working with Pull Requests](06-working-with-pull-requests.md)*  
-*Back: [Chapter 04: The Learning Room](04-the-learning-room.md)*  
+*Next: [Chapter 06: Working with Pull Requests](06-working-with-pull-requests.md)*
+*Back: [Chapter 04: The Learning Room](04-the-learning-room.md)*
 *Related appendices: [Appendix N: Advanced Search](appendix-n-advanced-search.md) | [Appendix V: GitHub Mobile](appendix-v-github-mobile.md)*
+
+## Authoritative Sources
+
+Use these official references when you need the current source of truth for facts in this chapter.
+
+- [GitHub Docs, home](https://docs.github.com/en)
+- [GitHub Changelog](https://github.blog/changelog/)
+- [GitHub Docs: About issues](https://docs.github.com/en/issues/tracking-your-work-with-issues/about-issues)
+
+### Section-Level Source Map
+
+Use this map to verify facts for each major section in this file.
+
+- **Filing, Managing, and Participating in GitHub Issues:** [GitHub Docs: About issues](https://docs.github.com/en/issues/tracking-your-work-with-issues/about-issues), [GitHub Docs, home](https://docs.github.com/en)
+- **Challenge and workflow guidance:** [GitHub Docs, home](https://docs.github.com/en), [GitHub Changelog](https://github.blog/changelog/)
+- **CLI issue workflow guidance:** [GitHub Docs, home](https://docs.github.com/en), [GitHub Changelog](https://github.blog/changelog/)
 
 
 

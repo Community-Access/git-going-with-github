@@ -1638,9 +1638,25 @@ Go to the Learning Room repository's Pull Requests tab and find any open or rece
 ---
 
 
-*Next: [Chapter 07: Merge Conflicts](07-merge-conflicts.md)*  
-*Back: [Chapter 05: Working with Issues](05-working-with-issues.md)*  
+*Next: [Chapter 07: Merge Conflicts](07-merge-conflicts.md)*
+*Back: [Chapter 05: Working with Issues](05-working-with-issues.md)*
 *Related appendices: [Appendix C: Markdown Reference](appendix-c-markdown-reference.md) | [Appendix B: Screen Reader Cheat Sheet](appendix-b-screen-reader-cheatsheet.md)*
+
+## Authoritative Sources
+
+Use these official references when you need the current source of truth for facts in this chapter.
+
+- [GitHub Docs, home](https://docs.github.com/en)
+- [GitHub Changelog](https://github.blog/changelog/)
+- [GitHub Docs: About pull requests](https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/about-pull-requests)
+
+### Section-Level Source Map
+
+Use this map to verify facts for each major section in this file.
+
+- **Creating, Reviewing, and Merging Pull Requests:** [GitHub Docs: About pull requests](https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/about-pull-requests), [GitHub Docs, home](https://docs.github.com/en)
+- **Challenge and workflow guidance:** [GitHub Docs, home](https://docs.github.com/en), [GitHub Changelog](https://github.blog/changelog/)
+- **CLI pull request workflow guidance:** [GitHub Docs, home](https://docs.github.com/en), [GitHub Changelog](https://github.blog/changelog/)
 
 
 

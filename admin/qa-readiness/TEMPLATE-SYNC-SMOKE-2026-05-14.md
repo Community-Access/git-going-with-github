@@ -34,3 +34,19 @@ The first smoke attempt failed before merge because `learning-room-template/main
 - Learning Room template sync gate: satisfied.
 - Template smoke validation gate: satisfied.
 - Template freshness proof: satisfied via merged sync PR and successful post-merge smoke test.
+
+## Authoritative Sources
+
+Use these official references when you need the current source of truth for facts in this chapter.
+
+- [GitHub Docs, home](https://docs.github.com/en)
+- [GitHub Changelog](https://github.blog/changelog/)
+- [GitHub Docs: Managing a pull request](https://docs.github.com/en/pull-requests/collaborating-with-pull-requests)
+
+### Section-Level Source Map
+
+Use this map to verify facts for each major section in this file.
+
+- **Execution Context:** [GitHub Docs, home](https://docs.github.com/en), [GitHub Changelog](https://github.blog/changelog/)
+- **Outcome Summary / Evidence:** [GitHub Docs, home](https://docs.github.com/en), [GitHub Docs: Managing a pull request](https://docs.github.com/en/pull-requests/collaborating-with-pull-requests)
+- **Readiness Impact:** [GitHub Docs, home](https://docs.github.com/en), [GitHub Changelog](https://github.blog/changelog/)

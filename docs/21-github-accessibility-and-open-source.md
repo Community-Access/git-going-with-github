@@ -68,3 +68,19 @@ The connection between your capstone skills and GitHub's accessibility prioritie
 You have learned the fundamentals, practiced with feedback, and completed a capstone that demonstrates accessibility-focused contribution. The reference episodes that follow offer deeper dives into optional tools and advanced workflows.
 
 But the real work starts after this workshop. The patterns you learned—finding issues, collaborating, reviewing code, building tools—these are the patterns you will use in real projects, where accessibility matters every single day.
+
+## Authoritative Sources
+
+Use these official references when you need the current source of truth for facts in this chapter.
+
+- [GitHub Docs, home](https://docs.github.com/en)
+- [GitHub Changelog](https://github.blog/changelog/)
+- [GitHub Accessibility](https://accessibility.github.com/)
+
+### Section-Level Source Map
+
+Use this map to verify facts for each major section in this file.
+
+- **GitHub's Strategic Accessibility Priorities:** [GitHub Accessibility](https://accessibility.github.com/), [GitHub Docs, home](https://docs.github.com/en)
+- **What Excellence Looks Like in Practice:** [GitHub Docs, home](https://docs.github.com/en), [GitHub Changelog](https://github.blog/changelog/)
+- **Why This Matters / What Comes Next:** [GitHub Docs, home](https://docs.github.com/en), [GitHub Accessibility](https://accessibility.github.com/)
