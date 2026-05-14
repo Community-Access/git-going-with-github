@@ -15,6 +15,7 @@ Included:
 Excluded:
 
 - Podcast generation and podcast validation workflows.
+- LLM podcast generation execution evidence (tracked in `podcasts/llm-podcast-generator-review/generated/execution/reports/` and `podcasts/llm-podcast-generator-review/docs/setup-and-wiring.md`).
 
 ## Test Entry Point
 

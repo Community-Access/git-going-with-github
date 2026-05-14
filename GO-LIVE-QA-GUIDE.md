@@ -1,6 +1,6 @@
 # Git Going with GitHub Go-Live QA Guide
 
-Use this guide before a cohort is opened to learners. It is the release gate for curriculum content, GitHub Classroom deployment, Learning Room automation, podcast materials, accessibility, and human test coverage.
+Use this guide before a cohort is opened to learners. It is the release gate for curriculum content, GitHub Classroom deployment, Learning Room automation, accessibility, and human test coverage. Podcast and LLM-generation QA is tracked here as non-blocking unless a podcast release is explicitly in scope.
 
 For end-to-end execution details, use [admin/LEARNING-ROOM-E2E-QA-RUNBOOK.md](admin/LEARNING-ROOM-E2E-QA-RUNBOOK.md) as the operator procedure. This guide is the release gate summary; the runbook is the required execution playbook.
 
@@ -12,17 +12,15 @@ Do not mark a cohort ready until all required items in this section are complete
 
 - [ ] Automated tests pass locally.
 - [ ] HTML documentation builds from the current Markdown sources.
-- [ ] Podcast catalog validation passes.
-- [ ] RSS feed validation passes for the current audio state.
+- [ ] Learning Room source has been synced to `Community-Access/learning-room-template` and merged to `main` (or validated as no-change).
+- [ ] Template smoke validation from `Community-Access/learning-room-template` succeeded before assignment publishing.
+- [ ] Template freshness proof confirms smoke repo content matches latest merged template sync changes.
 - [ ] Git diff whitespace check has no actual whitespace or conflict-marker errors.
 - [ ] Registration deployment gate completed (issue form template, workflow enablement, required labels, and optional classroom automation settings).
 - [ ] Registration comment flow is assignment-link based (no org invite dependency).
 - [ ] Support Hub is provisioned and publicly accessible at `Community-Access/support`.
 - [ ] Registration confirmation and help pathways route support requests to Support Hub issues/discussions.
 - [ ] Registration issue form template and labels are configured (`workshop-registration.yml`, `registration`, `duplicate`, `waitlist`).
-- [ ] Learning Room source has been synced to `Community-Access/learning-room-template` and merged to `main` (or validated as no-change).
-- [ ] Template smoke validation from `Community-Access/learning-room-template` succeeded before assignment publishing.
-- [ ] Template freshness proof confirms smoke repo content matches latest merged template sync changes.
 - [ ] Smoke repo confirms all required workflow files are present (PR validation, content validation, progression, skills progression, and all autograder workflows: `autograder-issue-filed.yml`, `autograder-branch-commit.yml`, `autograder-pr-link.yml`, `autograder-conflicts.yml`, `autograder-local-commit.yml`, `autograder-template.yml`, `autograder-capstone.yml`, `autograder-watchdog.yml`).
 - [ ] Day 1 Classroom assignment has been created from the current Learning Room template.
 - [ ] Day 2 Classroom assignment has been created from the current Learning Room template.
@@ -43,6 +41,7 @@ Do not mark a cohort ready until all required items in this section are complete
 - [ ] Student recovery Level 2 restore test is completed and evidenced with branch and PR links.
 - [ ] All in-scope automation workflows and facilitator scripts were validated with expected behavior and evidence.
 - [ ] Local non-podcast readiness evidence is recorded in [admin/qa-readiness](admin/qa-readiness/README.md).
+- [ ] If podcast/LLM generation is part of this release, podcast evidence is recorded; otherwise mark Phase 7 as non-blocking by release-owner decision.
 - [ ] All blocking findings have a fix, owner, or written release exception.
 
 No-go conditions:
@@ -294,10 +293,13 @@ Run accessibility testing with at least one screen reader and one keyboard-only 
 - [ ] Confirm generated HTML task-list checkboxes are not duplicated.
 - [ ] Confirm conflict-marker examples render as examples and do not break Git diff checks.
 
-## Phase 7: Podcast And Audio QA
+## Phase 7: Podcast And Audio QA (Non-blocking for Learning Room go-live)
 
-The podcast material is part of the release. Test it even if audio has not been regenerated yet.
+Use this section when podcast or LLM regeneration is in scope. For Learning Room go-live quality gating, this phase is advisory and does not block release unless release owner marks it in-scope.
 
+- [ ] LLM durable execution report exists for the current generation pass at `podcasts/llm-podcast-generator-review/generated/execution/reports/`.
+- [ ] If OpenRouter was used, durable sync fallback behavior and completion status are documented in the run evidence.
+- [ ] Scripts/transcripts publication summary is recorded with selected, published, and failed counts.
 - [ ] `npm run validate:podcasts` passes.
 - [ ] `npm run validate:podcast-feed` passes.
 - [ ] Podcast catalog lists 54 companion episodes.

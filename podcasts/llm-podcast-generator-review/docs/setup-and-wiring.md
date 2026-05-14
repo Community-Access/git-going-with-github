@@ -295,3 +295,54 @@ Run reports are written to:
 ```text
 podcasts/llm-podcast-generator-review/generated/execution/reports/
 ```
+
+## 12. Time-critical full end-to-end validation (highest-quality pass)
+
+This section is for podcast/LLM pipeline validation. Learning Room template go-live gating remains controlled by `GO-LIVE-QA-GUIDE.md` and `admin/LEARNING-ROOM-E2E-QA-RUNBOOK.md`.
+
+Use this sequence to validate generation, publication, podcast build surfaces, and release checks.
+
+1. Run durable generation from `cmd.exe`:
+
+```bat
+generate-llm-batch-jobs.bat
+```
+
+2. Confirm durable execution completed:
+
+```powershell
+Get-ChildItem "podcasts/llm-podcast-generator-review/generated/execution/reports" -File `
+| Sort-Object LastWriteTime -Descending `
+| Select-Object -First 1 -ExpandProperty FullName
+```
+
+3. Confirm all selected scripts were published:
+
+```powershell
+$summary = Get-Content "podcasts/llm-podcast-generator-review/generated/scripts-only/<run>/summary.json" -Raw | ConvertFrom-Json
+"selected=$($summary.selected) published=$($summary.published) failed=$($summary.failed)"
+```
+
+4. Run repository validation gates:
+
+```powershell
+npm run test:automation
+npm run test:llm-execution
+npm run validate:podcasts
+npm run validate:podcast-feed
+npm run build:podcast-site
+```
+
+5. If audio integration is required for signoff, run a targeted live slug check:
+
+```powershell
+python -m podcasts.tts.generate_audio --start 5 --end 5 --force --audio-format mp3
+python podcasts/tag-audio-metadata.py --slug ep05-working-with-issues --audio-dir podcasts/audio/kokoro-am_liam-af_jessica --expected-count 1 --write
+```
+
+Release-quality completion criteria:
+
+- Latest execution report exists and contains no unresolved blocker failures.
+- Script/transcript publication counts match expected scope.
+- `test:automation`, `test:llm-execution`, `validate:podcasts`, and `validate:podcast-feed` all pass.
+- Podcast site builds from current sources without manual patching.
