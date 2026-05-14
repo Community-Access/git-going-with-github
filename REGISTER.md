@@ -8,7 +8,7 @@ Welcome, traveler. This is the opening gate to your agentic learning adventure i
 
 ## A magical welcome
 
-Your guide for this journey is the Gandalf role in our course team: a wise helper who sets the mission, keeps everyone moving, and helps you recover quickly when Git gets confusing.
+Your guide for this journey is our Wizard Mentor role: a wise helper who sets the mission, keeps everyone moving, and helps you recover quickly when Git gets confusing.
 
 In class, expect short quests, clear checkpoints, and practical support from mentors and automation agents.
 
