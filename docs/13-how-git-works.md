@@ -1,7 +1,7 @@
 # How Git Works: The Mental Model
 
 > **Related appendices:** [Appendix E: Advanced Git](appendix-e-advanced-git.md) | [Appendix D: Git Authentication](appendix-d-git-authentication.md) | [Appendix F: Git Security](appendix-f-git-security.md)
-> **Authoritative sources:** [Git SCM: Git Basics](https://git-scm.com/book/en/v2/Getting-Started-What-is-Git%3F) | [Git SCM: Branching in a Nutshell](https://git-scm.com/book/en/v2/Git-Branching-Branches-in-a-Nutshell) | [GitHub Docs: About Git](https://docs.github.com/en/get-started/using-git/about-git)
+> **Authoritative sources:** [Git SCM: Git Basics](https://git-scm.com/book/en/v2/Getting-Started-What-is-Git%3F) | [Git SCM: Branching in a Nutshell](https://git-scm.com/book/en/v2/Git-Branching-Branches-in-a-Nutshell) | [GitHub Docs: About Git](https://docs.github.com/en/get-started/using-git/about-git) | [GitHub Accessibility Lab: CLI Guide](https://accessibility.github.com/documentation/guide/cli/)
 
 > **Day 2, Block 1 Material**
 >
@@ -23,6 +23,8 @@
 ---
 
 > **Challenges 10-16** all depend on the mental model built in this chapter. Understanding the three areas, branches, and push/pull makes every Day 2 Git command predictable.
+
+> **CLI learning principle:** Build confidence in local Git mechanics first, then connect those mechanics to GitHub workflows with `gh`. This order keeps terminal work understandable and recoverable.
 
 ## 1. Why a Mental Model Matters
 

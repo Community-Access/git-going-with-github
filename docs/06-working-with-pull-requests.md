@@ -3,7 +3,7 @@
 > **Listen to Episode 6:** [Working with Pull Requests](../admin/PODCASTS.md) - a conversational audio overview of this chapter. Listen before reading to preview the concepts, or after to reinforce what you learned.
 
 > **Related appendices:** [Appendix C: Markdown Reference](appendix-c-markdown-reference.md) | [Appendix B: Screen Reader Cheat Sheet](appendix-b-screen-reader-cheatsheet.md)
-> **Authoritative sources:** [GitHub Docs: About pull requests](https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/about-pull-requests) | [GitHub Accessibility Guide: Pull Requests](https://accessibility.github.com/documentation/guide/pull-requests/)
+> **Authoritative sources:** [GitHub Docs: About pull requests](https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/about-pull-requests) | [GitHub Accessibility Guide: Pull Requests](https://accessibility.github.com/documentation/guide/pull-requests/) | [GitHub Accessibility Lab: CLI Guide](https://accessibility.github.com/documentation/guide/cli/)
 
 
 ## Creating, Reviewing, and Merging Pull Requests with a Screen Reader
@@ -41,6 +41,16 @@ Chapter 6 is the first **PR-validated chapter** where students convert issue wor
 1. **Create one small branch change** - edit a practice file on a new branch.
 2. **Open a linked PR** - use the PR template and include `Closes #XX`.
 3. **Pass required checks** - respond to bot feedback until all required checks pass.
+
+### CLI getting-started principles for pull request work
+
+For reliable PR workflows in the terminal:
+
+1. Check current branch before pushing (`git branch --show-current`).
+2. Keep PR scope small (one focused change per branch).
+3. Confirm issue linkage in plain text (`Closes #<number>`).
+4. Validate check status after each push (`gh pr checks`).
+5. Prefer documented command options only (`gh pr --help`).
 
 > **Branch guidance for Chapter 6:** This is the first chapter where you edit files and create branches. Use one of these two paths:
 >
@@ -320,6 +330,7 @@ gh pr view 42 --web
 - Press `D` to jump to the "Repository navigation" landmark, then `K` to reach the "Pull requests" tab link -- this is faster than arrowing through the entire page
 - The tab link announces the open PR count ("Pull requests, 7 open"), giving you a quick triage number without opening the list
 - From any GitHub page, press `G` then `P` (two sequential key presses in Focus Mode) to jump directly to the repository's Pull Requests tab
+- Use terminal-first triage when needed: `gh pr list` then `gh pr view <number>` to review essentials before entering the web diff
 
 **Low-vision users:**
 - The Pull requests tab is in the repository navigation bar near the page top; at 200%+ zoom the tab bar may wrap to a second line, but each tab remains a distinct clickable link
@@ -1630,7 +1641,6 @@ Go to the Learning Room repository's Pull Requests tab and find any open or rece
 *Next: [Chapter 07: Merge Conflicts](07-merge-conflicts.md)*  
 *Back: [Chapter 05: Working with Issues](05-working-with-issues.md)*  
 *Related appendices: [Appendix C: Markdown Reference](appendix-c-markdown-reference.md) | [Appendix B: Screen Reader Cheat Sheet](appendix-b-screen-reader-cheatsheet.md)*
-
 
 
 

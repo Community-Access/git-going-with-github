@@ -1,7 +1,7 @@
 # Choose Your Adventure: A Tool Tour
 
 > **Related appendices:** [Appendix G: VS Code Reference](appendix-g-vscode-reference.md) | [Appendix H: GitHub Desktop](appendix-h-github-desktop.md) | [Appendix I: GitHub CLI](appendix-i-github-cli.md) | [Appendix J: Codespaces](appendix-j-cloud-editors.md)
-> **Authoritative sources:** [VS Code Docs: Setup](https://code.visualstudio.com/docs/setup/setup-overview) | [GitHub Desktop Docs](https://docs.github.com/en/desktop) | [GitHub CLI Manual](https://cli.github.com/manual/)
+> **Authoritative sources:** [VS Code Docs: Setup](https://code.visualstudio.com/docs/setup/setup-overview) | [GitHub Desktop Docs](https://docs.github.com/en/desktop) | [GitHub CLI Manual](https://cli.github.com/manual/) | [GitHub Accessibility Lab: CLI Guide](https://accessibility.github.com/documentation/guide/cli/)
 
 > **Day 1, Opening Material**
 >
@@ -279,6 +279,16 @@ Choose GitHub Desktop if you prefer a visual representation of branches and comm
 **What it is:** A command-line tool called `gh` that brings GitHub features to your terminal. It handles authentication, issue management, pull request workflows, and repository operations -- directly from the command line.
 
 **Installation required.** Install via `winget install GitHub.cli` (Windows), `brew install gh` (macOS), or see [Appendix I](appendix-i-github-cli.md) for full instructions.
+
+### Getting started principles (CLI learning path)
+
+Use this sequence for the most reliable onboarding experience:
+
+1. Start with local Git basics (`git status`, `git add`, `git commit`) before remote workflows.
+2. Add GitHub CLI (`gh`) once local operations feel predictable.
+3. Use plain-text command output as your primary verification layer.
+4. Keep browser workflows available for confirmation and recovery.
+5. Use short command cycles: run one command, confirm output, then continue.
 
 ### What you can do here
 

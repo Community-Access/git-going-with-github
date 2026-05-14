@@ -1,0 +1,58 @@
+# Example commands for the review package (from repo root)
+
+# 1) Set OpenRouter key and preferred models
+$env:OPENROUTER_API_KEY = "sk-or-v1-your-key"
+$env:PODCAST_LLM_MODEL_MINI = "openai/gpt-5.4-mini"
+$env:PODCAST_LLM_MODEL_POLISH = "openai/gpt-5.4"
+
+# 2) Build a packet and prompt only (no API call)
+node podcasts/tools/agentic-pilot/build-source-packet.js --slug ep05-working-with-issues
+node podcasts/llm-podcast-generator-review/src/generate-teaching-transcript.js `
+  --slug ep05-working-with-issues `
+  --packet podcasts/logs/agentic-pilots/ep05-working-with-issues.packet.json `
+  --dry-run
+
+# 3) Generate one mini candidate
+node podcasts/llm-podcast-generator-review/src/generate-teaching-transcript.js `
+  --slug ep05-working-with-issues `
+  --packet podcasts/logs/agentic-pilots/ep05-working-with-issues.packet.json `
+  --model openai/gpt-5.4-mini `
+  --out podcasts/llm-podcast-generator-review/generated/ep05-working-with-issues.mini.candidate.json
+
+# 4) Run mini-first, polish-fallback regression for chapters only
+node podcasts/llm-podcast-generator-review/src/run-regression.js `
+  --group chapters `
+  --limit 3
+
+# 5) Publish passing candidates to metadata-ready artifacts (review output folder)
+node podcasts/llm-podcast-generator-review/src/run-regression.js `
+  --group chapters `
+  --limit 3 `
+  --publish-passing
+
+# 6) Write published artifacts directly to live scripts/transcripts paths
+node podcasts/llm-podcast-generator-review/src/run-regression.js `
+  --group chapters `
+  --limit 3 `
+  --publish-passing `
+  --write-live
+
+# 7) Generate MP3 for one promoted slug and write metadata chapters
+python -m podcasts.tts.generate_audio --group chapters --start 5 --end 5 --force --audio-format mp3
+python podcasts/tag-audio-metadata.py --slug ep05-working-with-issues --audio-dir podcasts/audio/kokoro-am_liam-af_jessica --expected-count 1 --write
+
+# 8) One-step publish + render + tag from candidate JSON
+node podcasts/llm-podcast-generator-review/src/render-and-tag.js `
+  --slug ep05-working-with-issues `
+  --candidate podcasts/llm-podcast-generator-review/generated/regression/<timestamp>/ep05-working-with-issues/mini.candidate.json
+
+# 9) Full scripts-only generation for all 79 items (5.4 only, no audio)
+npm run podcast:llm:scripts-only
+
+# 10) Scripts-only with explicit fallback tuning
+node podcasts/llm-podcast-generator-review/src/generate-scripts-only.js `
+  --group all `
+  --model openai/gpt-5.4 `
+  --retries 3 `
+  --retry-delay-ms 2000 `
+  --max-repair-attempts 4

@@ -121,3 +121,11 @@ The chapter plan is sequential, not time-based. Each entry stores a chapter titl
 - reusable chapter-plan auditing across the full catalog
 
 The rewrite itself is automated through Copilot CLI with automatic model selection. Everything around that step is scriptable and repeatable across the full catalog.
+
+## Future utilization with the review lane
+
+When running the LLM review workflow in `podcasts/llm-podcast-generator-review`:
+
+- Keep per-run prompt artifacts so future prompt tuning has concrete examples.
+- Carry durable findings into `podcasts/llm-podcast-generator-review/docs/lessons-learned.md`.
+- Reuse lessons that describe process and quality controls rather than chapter-specific wording, so guidance remains valid as curriculum content evolves.

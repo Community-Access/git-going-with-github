@@ -5,9 +5,9 @@ This tool intentionally defaults to dry-run mode. Use --write only after all
 expected MP3 files have been generated.
 
 Examples:
-  python podcasts/tag-audio-metadata.py --expected-count 75
-  python podcasts/tag-audio-metadata.py --write --expected-count 75
-  python podcasts/tag-audio-metadata.py --audio-dir podcasts/audio/kokoro-am_liam-af_jessica --write --expected-count 75
+  python podcasts/tag-audio-metadata.py
+  python podcasts/tag-audio-metadata.py --write --expected-count 76
+  python podcasts/tag-audio-metadata.py --slug ep05-working-with-issues --audio-dir podcasts/audio/kokoro-am_liam-af_jessica --write
 """
 
 from __future__ import annotations
@@ -532,8 +532,14 @@ def parse_args() -> argparse.Namespace:
     parser.add_argument(
         "--expected-count",
         type=int,
-        default=75,
-        help="Expected number of MP3 files before writes are allowed.",
+        default=None,
+        help="Expected number of MP3 files before writes are allowed. Defaults to selected target count.",
+    )
+    parser.add_argument(
+        "--slug",
+        action="append",
+        default=[],
+        help="Restrict tagging to one or more slugs (for example: ep05-working-with-issues or cc-02-file-your-first-issue).",
     )
     parser.add_argument(
         "--companions-only",
@@ -577,6 +583,12 @@ def main() -> int:
     audio_dirs = args.audio_dir or [AUDIO_DIR, DEFAULT_KOKORO_AUDIO_DIR]
     audio_dirs = [path if path.is_absolute() else REPO_ROOT / path for path in audio_dirs]
     targets = expected_targets(include_challenges=not args.companions_only)
+    selected_slugs = {slug.strip() for slug in (args.slug or []) if str(slug).strip()}
+    if selected_slugs:
+        targets = [target for target in targets if target.slug in selected_slugs]
+        if not targets:
+            print(f"No metadata targets matched requested slugs: {', '.join(sorted(selected_slugs))}", file=sys.stderr)
+            return 1
     discovered = discover_audio_files(audio_dirs)
 
     missing_audio: list[str] = []
@@ -603,7 +615,7 @@ def main() -> int:
         chapters = derive_chapters_from_plan(segment_entries, planned_chapters) or derive_chapters(target, segment_entries)
         ready.append((target, mp3_path, script_text, chapters))
 
-    expected_count = args.expected_count
+    expected_count = args.expected_count if args.expected_count is not None else len(targets)
     count_ok = len(ready) == expected_count
     complete_ok = not missing_audio and not missing_scripts and not missing_segment_manifests and not missing_segments
     can_write = args.write and (args.allow_missing or (count_ok and complete_ok))

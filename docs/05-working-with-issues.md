@@ -3,7 +3,7 @@
 > **Listen to Episode 5:** [Working with Issues](../admin/PODCASTS.md) - a conversational audio overview of this chapter. Listen before reading to preview the concepts, or after to reinforce what you learned.
 
 > **Related appendices:** [Appendix N: Advanced Search](appendix-n-advanced-search.md) | [Appendix V: GitHub Mobile](appendix-v-github-mobile.md) | [Appendix B: Screen Reader Cheat Sheet](appendix-b-screen-reader-cheatsheet.md)
-> **Authoritative sources:** [GitHub Docs: About issues](https://docs.github.com/en/issues/tracking-your-work-with-issues/about-issues) | [GitHub Accessibility Guide: Issues](https://accessibility.github.com/documentation/guide/issues/)
+> **Authoritative sources:** [GitHub Docs: About issues](https://docs.github.com/en/issues/tracking-your-work-with-issues/about-issues) | [GitHub Accessibility Guide: Issues](https://accessibility.github.com/documentation/guide/issues/) | [GitHub Accessibility Lab: CLI Guide](https://accessibility.github.com/documentation/guide/cli/)
 
 
 ## Filing, Managing, and Participating in GitHub Issues
@@ -33,6 +33,16 @@ Chapter 5 is the first **issue-based challenge chapter** with short, confidence-
 - **Time per challenge:** under 10 minutes
 - **Evidence:** issue comments and issue metadata
 - **Pattern:** claim -> act -> confirm
+
+### CLI getting-started principles for issue work
+
+If you prefer terminal workflows, keep this sequence:
+
+1. Confirm repository context first (`git remote -v` and `gh repo view`).
+2. Read before writing (`gh issue view <number>` before commenting or editing).
+3. Keep comments focused, specific, and actionable.
+4. Verify each action from output (`gh issue list --assignee @me`).
+5. Use only documented options from `gh --help` and the manual.
 
 ### Chapter 5 Challenge Set
 
@@ -276,6 +286,7 @@ Navigate directly: `https://github.com/[owner]/[repo]/issues`
 - Press `D` to jump to the "Repository navigation" landmark, then `K` or `Tab` to find the Issues link -- this is faster than arrowing through the entire page
 - The Issues tab announces its open count ("Issues, 14 open"), giving you an instant sense of project activity without loading the list
 - Use `gh issue list` in the terminal to bypass browser navigation entirely; pipe through `--label` or `--assignee @me` to pre-filter results
+- In Windows Terminal, use mark mode (`Ctrl+Shift+M`) to review long issue output line by line before taking action
 
 **Low-vision users:**
 - The Issues tab count badge may be small at default zoom; at 200%+ the tab text reflows but the count remains visible next to the word "Issues"
@@ -1462,7 +1473,6 @@ Go to the Learning Room repository and file a real issue:
 *Next: [Chapter 06: Working with Pull Requests](06-working-with-pull-requests.md)*  
 *Back: [Chapter 04: The Learning Room](04-the-learning-room.md)*  
 *Related appendices: [Appendix N: Advanced Search](appendix-n-advanced-search.md) | [Appendix V: GitHub Mobile](appendix-v-github-mobile.md)*
-
 
 
 

@@ -188,6 +188,13 @@ Before moving on, scan the [Challenge 9 solution reference](https://github.com/C
 
 Day 2 moves the same contribution workflow onto your computer. You clone your Learning Room repository, create a branch locally, edit a file, commit, and push the branch back to GitHub.
 
+**CLI best practices for this challenge:**
+
+- Run `git status` before and after each step.
+- Confirm branch context with `git branch --show-current`.
+- Verify push destination with `git remote -v`.
+- Use `gh pr create` only after confirming the branch and linked issue text.
+
 **What to do:**
 
 - Clone your Learning Room repository to your computer with VS Code, GitHub Desktop, or the command line
@@ -206,6 +213,12 @@ The [Challenge 10 solution reference](https://github.com/Community-Access/git-go
 **Chapters:** Ch14-15 | **Evidence:** Comment
 
 This challenge proves that the pull request pattern is the same whether the edit started in the browser or on your computer. You push a local branch, open a PR, and explain the change for reviewers.
+
+**CLI best practices for this challenge:**
+
+- Build the PR body in clear plain text first, including `Closes #XX`.
+- Validate PR metadata after creation with `gh pr view`.
+- Check review/check status with `gh pr checks` before requesting review.
 
 **What to do:**
 

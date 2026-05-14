@@ -4,13 +4,21 @@
 
 > **Reference companion to:** [Chapter 01: Choose Your Tools](01-choose-your-tools.md) | Also relevant: [Chapter 14](14-git-in-practice.md)
 >
-> **Authoritative source:** [GitHub CLI Manual](https://cli.github.com/manual/)
+> **Authoritative source:** [GitHub CLI Manual](https://cli.github.com/manual/) | [GitHub Accessibility Lab: CLI Guide](https://accessibility.github.com/documentation/guide/cli/)
 
 ## Your Terminal, Supercharged for GitHub
 
 > **Who this is for:** You want to manage GitHub — issues, pull requests, repos, releases — from your terminal without opening a browser. The GitHub CLI (`gh`) gives you full access to GitHub from the command line, with clean plain-text output that works beautifully with screen readers.
 >
 > `gh` handles the GitHub side of things (issues, PRs, repos, releases). `git` handles the local version control side (commits, branches, history). You use both together.
+
+### Getting started principles for accessible CLI workflows
+
+- Follow a local-to-remote progression: learn `git` basics first, then layer `gh` workflows.
+- Treat terminal output as the source of truth. Confirm each command result before moving on.
+- Prefer short, reversible steps: clone, inspect, branch, edit, commit, push, open PR.
+- Keep one reliable terminal profile and one reliable editor setup rather than constant tool switching.
+- Use browser fallback strategically for verification, not as a replacement for command understanding.
 
 ---
 
@@ -93,6 +101,17 @@ gh auth refresh
 ```
 
 > **Screen reader tip:** `gh auth login` is an interactive prompt — navigate with `Arrow` keys, confirm with `Enter`. All prompts are plain text and read naturally. The browser step opens automatically; switch back to the terminal when the browser confirms success.
+
+> **Command safety guideline:** Use options documented in `gh --help` and the [GitHub CLI manual](https://cli.github.com/manual/). Avoid undocumented or experimental flags in classroom and production workflows.
+
+### Windows Terminal setup pattern
+
+If you are on Windows, configure Windows Terminal once and reuse it:
+
+1. Keep a dedicated shell profile for your Git workflows.
+2. Learn mark mode (`Ctrl+Shift+M`) to review and copy command output line by line.
+3. Use command palette (`Ctrl+Shift+P`) to find terminal actions without memorizing every shortcut.
+4. Keep your font size and contrast settings stable so output remains readable across sessions.
 
 ### Learning Cards: Getting Started with gh
 

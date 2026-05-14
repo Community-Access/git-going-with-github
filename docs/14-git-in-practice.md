@@ -3,7 +3,7 @@
 > **Listen to Episode 12:** [Git and Source Control in VS Code](../admin/PODCASTS.md) - a conversational audio overview of this chapter. Listen before reading to preview the concepts, or after to reinforce what you learned.
 
 > **Related appendices:** [Appendix E: Advanced Git](appendix-e-advanced-git.md) | [Appendix D: Git Authentication](appendix-d-git-authentication.md) | [Appendix H: GitHub Desktop](appendix-h-github-desktop.md)
-> **Authoritative sources:** [VS Code Docs: Source Control](https://code.visualstudio.com/docs/sourcecontrol/overview) | [GitHub Docs: Using Git](https://docs.github.com/en/get-started/using-git)
+> **Authoritative sources:** [VS Code Docs: Source Control](https://code.visualstudio.com/docs/sourcecontrol/overview) | [GitHub Docs: Using Git](https://docs.github.com/en/get-started/using-git) | [GitHub Accessibility Lab: CLI Guide](https://accessibility.github.com/documentation/guide/cli/)
 
 ## Managing Repositories, Branches, and Changes Accessibly
 
@@ -29,6 +29,16 @@ Chapter 14 is the first **local Git workflow chapter** with hands-on repository 
 1. **Clone your Learning Room repository** - clone your private Learning Room repo to your local machine using VS Code.
 2. **Create a branch and make one commit** - check out (or create) your `learn/<username>` branch, edit a file, stage, write a clear commit message, and commit locally.
 3. **Push and open a linked PR** - push your branch and open a PR in your Learning Room repo that references your Challenge 10 or Day 2 PR issue.
+
+### CLI best practices for getting started
+
+Even when you are working in VS Code, these CLI habits improve reliability:
+
+1. Check current state before action: run `git status`.
+2. Keep branch context explicit: run `git branch --show-current`.
+3. Verify remote alignment before pushing: run `git fetch` then `git status`.
+4. Confirm PR linkage in plain text (`Closes #<number>`) before opening or updating the PR.
+5. Avoid undocumented or unverified convenience flags; use stable commands with clear output.
 
 ### Practice 10.1 Step-by-Step: Clone Your Learning Room Repository
 
