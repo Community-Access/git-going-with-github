@@ -5,7 +5,6 @@
 > **Related appendices:** [Appendix A: Glossary](appendix-a-glossary.md) | [Appendix C: Markdown Reference](appendix-c-markdown-reference.md)
 > **Authoritative sources:** [GitHub Docs: About README files](https://docs.github.com/en/repositories/managing-your-repositorys-settings-and-features/customizing-your-repository/about-readmes) | [GitHub Docs: Editing files](https://docs.github.com/en/repositories/working-with-files/managing-files/editing-files)
 
-
 ## What Is the Learning Room?
 
 The **Learning Room** is your **own private GitHub repository** for the workshop. When you accept the GitHub Classroom assignment in Block 0, GitHub copies the [`Community-Access/learning-room-template`](https://github.com/Community-Access/learning-room-template) repository into the workshop classroom organization as `<workshop-org>/learning-room-<your-username>`. That copy is yours to use for the workshop - you have write access, your own branches, your own pull requests, and your own automated feedback from Aria the PR validation bot.
@@ -16,7 +15,6 @@ Throughout this chapter and the rest of Day 1, "your Learning Room repository" o
 
 You do **not** need to create a GitHub organization or change repository permission settings. The workshop organization, template repository, Classroom assignment, and GitHub Actions permissions are managed by the facilitators.
 
-
 ## Why a Per-Student Repo?
 
 GitHub Classroom gives each participant their own repository for three reasons:
@@ -26,7 +24,6 @@ GitHub Classroom gives each participant their own repository for three reasons:
 - **Pace** -- you progress through the 9 Day 1 challenges as fast or as slow as you need; nobody is waiting on you and you are not blocking anybody else
 
 Real open source projects are shared spaces, and you will absolutely contribute to one on Day 2 (`accessibility-agents`) and through the Bonus C challenge. The Learning Room exists so you can build the muscle memory for issue, branch, PR, review, merge in a space where every mistake is a learning opportunity, not a public problem.
-
 
 ## Step-by-Step: Accept Your Classroom Assignment and Open Your Repo
 
@@ -87,7 +84,6 @@ The PR validation bot, **Aria**, posts educational feedback whenever you open a 
 
 You are now done with Block 0. Continue with the chapter below to learn how the Learning Room is organized, then jump to [Chapter 5](05-working-with-issues.md) to start Challenge 1.
 
-
 ## Workshop Recommendation (Chapter 4)
 
 Chapter 4 is a **system orientation chapter**.
@@ -103,7 +99,6 @@ Before starting Chapter 5 challenges, you should be able to:
 1. Find `docs/CHALLENGES.md` in your Learning Room repository.
 2. Explain the flow: issue -> branch -> pull request -> review -> merge.
 3. Identify where Aria bot feedback appears on a PR (the Conversation tab).
-
 
 ## Two Tracks That Reinforce Each Other
 
@@ -168,7 +163,6 @@ Throughout Day 1 you work on **two parallel learning tracks**, both in your own 
 
 </details>
 
-
 ## Your Learning Room Folder Structure
 
 Every Learning Room repository (yours and every other participant's) starts as an exact copy of `learning-room-template` and contains these files and folders:
@@ -194,7 +188,6 @@ Every Learning Room repository (yours and every other participant's) starts as a
   - keyboard-shortcuts.md -- Has intentional errors
   - setup-guide.md -- Has broken links
 - Other files for practice
-
 
 ## Your Practice Branch
 
@@ -266,7 +259,6 @@ git checkout learn/<your-github-username>
 - In VS Code, the current branch is shown in the bottom-left of the Status Bar; click it to switch branches via a dropdown
 
 </details>
-
 
 ### Tool Cards: Switch to Your Practice Branch
 
@@ -362,7 +354,6 @@ Each challenge lists the file(s) to edit, estimated time, skills practiced, and 
 ### Bonus Challenges
 
 Five bonus challenges (A through E) are available for students who finish faster. These include an accessibility audit, mentoring a peer, cross-repository contribution, creating a custom workflow, and documentation improvement.
-
 
 ## How PR Sharing Works
 
@@ -514,7 +505,6 @@ When Challenge 3 ("Join the Conversation") or Challenge 8 ("Culture") asks for p
 
 </details>
 
-
 ## What You and Your Peers See
 
 | What | Where | Who Sees It |
@@ -526,7 +516,6 @@ When Challenge 3 ("Join the Conversation") or Challenge 8 ("Culture") asks for p
 | Reviewer assignments | PR sidebar "Reviewers" | Same as above |
 | Progression bot's next-challenge issue | Issues tab in your repo | Same as above |
 | Your review requests for someone else's PR | Your notification inbox | You and the PR author you were paired with |
-
 
 ## The Learning Automation System
 
@@ -557,7 +546,6 @@ When you open a PR in the Learning Room, you get **three types of feedback**:
 
 **Together:** Instant technical feedback + human mentorship + visible progress
 
-
 ## Study Groups (Optional)
 
 If your facilitators create study groups, you will be paired with 2-3 other participants and added as collaborators on each other's Learning Room repos:
@@ -579,7 +567,6 @@ This is your collaboration space!
 - Celebrate each other's achievements
 ```
 
-
 ## Key Differences: Skills Module vs. Your Learning Room
 
 | Aspect | GitHub Skills (Your Account) | Your Learning Room (Classroom) |
@@ -593,7 +580,6 @@ This is your collaboration space!
 | **Feedback** | Instant, next-step only | Bot feedback on every push plus optional peer review |
 | **Completion** | Badge on your profile | Closing the issue auto-creates the next challenge |
 | **Community** | You alone | You, with facilitator-arranged peer pairings when challenges call for it |
-
 
 ## Tips for Reviewing a Peer's PR
 
@@ -809,7 +795,6 @@ Files Changed Tab (what actually changed):
 
 </details>
 
-
 ## FAQ: Pull Requests in Your Learning Room
 
 ### "Can I see other students' PRs?"
@@ -851,7 +836,6 @@ Comment on the PR explaining why. Aria is intentionally educational, not punitiv
 
 No. The Learning Room has challenges for all skill levels. You can pick what interests you, complete at your pace, and continue after the workshop -- your repo stays yours.
 
-
 ## If You Get Stuck
 
 | Problem | What to do |
@@ -864,7 +848,6 @@ No. The Learning Room has challenges for all skill levels. You can pick what int
 | Everything else | Post a comment on your challenge issue describing what happened. That always counts as participation. |
 | I finished Challenge 4 but I am not sure I did it right | Compare your work against the [Challenge 4 reference solution](solutions/solution-04-branch-out.md). Any branch with any name is a success. |
 | I finished Challenge 5 but I am not sure I did it right | Compare your work against the [Challenge 5 reference solution](solutions/solution-05-make-your-mark.md). Any clear edit with a descriptive commit message is a success. |
-
 
 ## Celebration: You're Contributing
 
@@ -880,13 +863,43 @@ You merged your work
 
 This is not hypothetical. This is not simulation. This is real.
 
-
 > **Challenge Time:** Let's practice. Go to the [Challenge Hub](CHALLENGES.md) and complete **Challenge 1: Find Your Way Around**, then return for [Chapter 05: Working with Issues](05-working-with-issues.md).
 
 ---
-
 
 *Next: [Chapter 05: Working with Issues](05-working-with-issues.md)*  
 *Back: [Chapter 03: Navigating Repositories](03-navigating-repositories.md)*  
 *Related appendices: [Appendix A: Glossary](appendix-a-glossary.md)*
 
+## Authoritative Sources
+
+Use these official references when you need the current source of truth for facts in this chapter.
+
+- [GitHub Docs, home](https://docs.github.com/en)
+- [GitHub Changelog](https://github.blog/changelog/)
+- [About Git](https://docs.github.com/en/get-started/using-git/about-git)
+- [GitHub flow](https://docs.github.com/en/get-started/using-github/github-flow)
+- [About pull requests](https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/about-pull-requests)
+- [About issues](https://docs.github.com/en/issues/tracking-your-work-with-issues/about-issues)
+- [Contributing to a project](https://docs.github.com/en/get-started/exploring-projects-on-github/contributing-to-a-project)
+
+### Section-Level Source Map
+
+Use this map to verify facts for each major section in this file.
+
+- **What Is the Learning Room?:** [GitHub Docs, home](https://docs.github.com/en), [GitHub Changelog](https://github.blog/changelog/), [About Git](https://docs.github.com/en/get-started/using-git/about-git), [GitHub flow](https://docs.github.com/en/get-started/using-github/github-flow), [About pull requests](https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/about-pull-requests)
+- **Why a Per-Student Repo?:** [GitHub Docs, home](https://docs.github.com/en), [GitHub Changelog](https://github.blog/changelog/), [About Git](https://docs.github.com/en/get-started/using-git/about-git), [GitHub flow](https://docs.github.com/en/get-started/using-github/github-flow), [About pull requests](https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/about-pull-requests)
+- **Step-by-Step: Accept Your Classroom Assignment and Open Your Repo:** [GitHub Docs, home](https://docs.github.com/en), [GitHub Changelog](https://github.blog/changelog/), [About Git](https://docs.github.com/en/get-started/using-git/about-git), [GitHub flow](https://docs.github.com/en/get-started/using-github/github-flow), [About pull requests](https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/about-pull-requests)
+- **Workshop Recommendation (Chapter 4):** [GitHub Docs, home](https://docs.github.com/en), [GitHub Changelog](https://github.blog/changelog/), [About Git](https://docs.github.com/en/get-started/using-git/about-git), [GitHub flow](https://docs.github.com/en/get-started/using-github/github-flow), [About pull requests](https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/about-pull-requests)
+- **Two Tracks That Reinforce Each Other:** [GitHub Docs, home](https://docs.github.com/en), [GitHub Changelog](https://github.blog/changelog/), [About Git](https://docs.github.com/en/get-started/using-git/about-git), [GitHub flow](https://docs.github.com/en/get-started/using-github/github-flow), [About pull requests](https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/about-pull-requests)
+- **Your Learning Room Folder Structure:** [GitHub Docs, home](https://docs.github.com/en), [GitHub Changelog](https://github.blog/changelog/), [About Git](https://docs.github.com/en/get-started/using-git/about-git), [GitHub flow](https://docs.github.com/en/get-started/using-github/github-flow), [About pull requests](https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/about-pull-requests)
+- **Your Practice Branch:** [GitHub Docs, home](https://docs.github.com/en), [GitHub Changelog](https://github.blog/changelog/), [About Git](https://docs.github.com/en/get-started/using-git/about-git), [GitHub flow](https://docs.github.com/en/get-started/using-github/github-flow), [About pull requests](https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/about-pull-requests)
+- **The Practice Files: What You Will Work On:** [GitHub Docs, home](https://docs.github.com/en), [GitHub Changelog](https://github.blog/changelog/), [About Git](https://docs.github.com/en/get-started/using-git/about-git), [GitHub flow](https://docs.github.com/en/get-started/using-github/github-flow), [About pull requests](https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/about-pull-requests)
+- **How PR Sharing Works:** [GitHub Docs, home](https://docs.github.com/en), [GitHub Changelog](https://github.blog/changelog/), [About Git](https://docs.github.com/en/get-started/using-git/about-git), [GitHub flow](https://docs.github.com/en/get-started/using-github/github-flow), [About pull requests](https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/about-pull-requests)
+- **What You and Your Peers See:** [GitHub Docs, home](https://docs.github.com/en), [GitHub Changelog](https://github.blog/changelog/), [About Git](https://docs.github.com/en/get-started/using-git/about-git), [GitHub flow](https://docs.github.com/en/get-started/using-github/github-flow), [About pull requests](https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/about-pull-requests)
+- **The Learning Automation System:** [GitHub Docs, home](https://docs.github.com/en), [GitHub Changelog](https://github.blog/changelog/), [About Git](https://docs.github.com/en/get-started/using-git/about-git), [GitHub flow](https://docs.github.com/en/get-started/using-github/github-flow), [About pull requests](https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/about-pull-requests)
+- **Study Groups (Optional):** [GitHub Docs, home](https://docs.github.com/en), [GitHub Changelog](https://github.blog/changelog/), [About Git](https://docs.github.com/en/get-started/using-git/about-git), [GitHub flow](https://docs.github.com/en/get-started/using-github/github-flow), [About pull requests](https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/about-pull-requests)
+- **Key Differences: Skills Module vs. Your Learning Room:** [GitHub Docs, home](https://docs.github.com/en), [GitHub Changelog](https://github.blog/changelog/), [About Git](https://docs.github.com/en/get-started/using-git/about-git), [GitHub flow](https://docs.github.com/en/get-started/using-github/github-flow), [About pull requests](https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/about-pull-requests)
+- **Tips for Reviewing a Peer's PR:** [GitHub Docs, home](https://docs.github.com/en), [GitHub Changelog](https://github.blog/changelog/), [About Git](https://docs.github.com/en/get-started/using-git/about-git), [GitHub flow](https://docs.github.com/en/get-started/using-github/github-flow), [About pull requests](https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/about-pull-requests)
+- **FAQ: Pull Requests in Your Learning Room:** [GitHub Docs, home](https://docs.github.com/en), [GitHub Changelog](https://github.blog/changelog/), [About Git](https://docs.github.com/en/get-started/using-git/about-git), [GitHub flow](https://docs.github.com/en/get-started/using-github/github-flow), [About pull requests](https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/about-pull-requests)
+- **If You Get Stuck:** [GitHub Docs, home](https://docs.github.com/en), [GitHub Changelog](https://github.blog/changelog/), [About Git](https://docs.github.com/en/get-started/using-git/about-git), [GitHub flow](https://docs.github.com/en/get-started/using-github/github-flow), [About pull requests](https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/about-pull-requests)

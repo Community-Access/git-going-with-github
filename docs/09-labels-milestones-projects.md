@@ -5,11 +5,9 @@
 > **Related appendices:** [Appendix R: Projects Deep Dive](appendix-r-projects-deep-dive.md) | [Appendix A: Glossary](appendix-a-glossary.md)
 > **Authoritative sources:** [GitHub Docs: About labels](https://docs.github.com/en/issues/using-labels-and-milestones-to-track-work/managing-labels) | [GitHub Docs: About milestones](https://docs.github.com/en/issues/using-labels-and-milestones-to-track-work/about-milestones) | [GitHub Docs: About Projects](https://docs.github.com/en/issues/planning-and-tracking-with-projects/learning-about-projects/about-projects)
 
-
 ## Organizing Work and Cross-Referencing on GitHub
 
 > Labels, milestones, and projects are the organizational layer of GitHub. They turn a chaotic list of issues into a structured, navigable, prioritized body of work.
-
 
 ## Workshop Recommendation (Chapter 9)
 
@@ -86,7 +84,6 @@ Triage is about clarity, not authority. You do not need maintainer permissions t
 2. Classify work using a consistent vocabulary (labels, milestones).
 3. Explain your reasoning in writing (one-sentence justification).
 4. Build triage instincts that transfer to any open source project.
-
 
 ## Labels
 
@@ -341,7 +338,6 @@ gh label create "in progress" --description "Being actively worked on" --color "
 
 </details>
 
-
 ## Milestones
 
 ### What Are Milestones?
@@ -471,7 +467,6 @@ Screen readers handle date pickers inconsistently - typing the date is most reli
 
 </details>
 
-
 ## Cross-References
 
 Cross-references are links between issues, PRs, and commits. GitHub automatically renders `#42` as a link to issue or PR #42. This creates a web of context so any contributor can trace the history of a decision.
@@ -541,7 +536,6 @@ It does **not** fire from comments on the PR. If you write "Closes #42" in a com
 - Use `Closes #42`, `Fixes #42`, or `Resolves #42` in the PR description body (not in comments) to trigger automatic issue closure on merge
 
 </details>
-
 
 ## GitHub Projects
 
@@ -632,7 +626,6 @@ Or from within a project:
 
 </details>
 
-
 ## Practical Organization Strategy for the Hackathon
 
 Here is a recommended structure for your Learning Room sandbox project:
@@ -666,7 +659,6 @@ Description: All contributions made during Day 1 of the Open Source AT Hackathon
 4. PR merged → issue closes automatically → milestone progress updates
 ```
 
-
 ## Try It: Label and Link
 
 **Time:** 2 minutes | **What you need:** Browser, signed in to GitHub
@@ -680,7 +672,6 @@ Go to the Learning Room repository and do two things:
 
 > **What success feels like:** The label now appears on the issue, and your cross-reference is a clickable link that connects the two issues. That's project management on GitHub - and you did it in under two minutes.
 
-
 > ### Day 2 Amplifier - Accessibility Agents: `@issue-tracker` with Labels
 >
 > **Apply labels and milestones manually in today's exercises before using any agent.** Labels are the language that automation uses to filter, route, and prioritize work. If you have not designed and applied them yourself, you cannot configure them correctly for automated use - and you cannot tell when automation is applying the wrong ones.
@@ -693,15 +684,38 @@ Go to the Learning Room repository and do two things:
 >
 > *Labeling today is not overhead. It is configuring the input layer that every agent downstream depends on.*
 
-
 > **Next Step:** Move on to [Chapter 10: Notifications](10-notifications-and-day-1-close.md) to finish Day 1.
 
 ---
-
 
 *Next: [Chapter 10: Notifications and Day 1 Close](10-notifications-and-day-1-close.md)*  
 *Back: [Chapter 08: Open Source Culture](08-open-source-culture.md)*  
 *Related appendices: [Appendix R: Projects Deep Dive](appendix-r-projects-deep-dive.md)*
 
+## Authoritative Sources
 
+Use these official references when you need the current source of truth for facts in this chapter.
 
+- [GitHub Docs, home](https://docs.github.com/en)
+- [GitHub Changelog](https://github.blog/changelog/)
+- [GitHub Projects docs](https://docs.github.com/en/issues/planning-and-tracking-with-projects/learning-about-projects/about-projects)
+- [Labels docs](https://docs.github.com/en/issues/using-labels-and-milestones-to-track-work/managing-labels)
+- [Milestones docs](https://docs.github.com/en/issues/using-labels-and-milestones-to-track-work/about-milestones)
+- [About Git](https://docs.github.com/en/get-started/using-git/about-git)
+- [GitHub flow](https://docs.github.com/en/get-started/using-github/github-flow)
+- [About pull requests](https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/about-pull-requests)
+- [About issues](https://docs.github.com/en/issues/tracking-your-work-with-issues/about-issues)
+- [Contributing to a project](https://docs.github.com/en/get-started/exploring-projects-on-github/contributing-to-a-project)
+
+### Section-Level Source Map
+
+Use this map to verify facts for each major section in this file.
+
+- **Organizing Work and Cross-Referencing on GitHub:** [GitHub Docs, home](https://docs.github.com/en), [GitHub Changelog](https://github.blog/changelog/), [GitHub Projects docs](https://docs.github.com/en/issues/planning-and-tracking-with-projects/learning-about-projects/about-projects), [Labels docs](https://docs.github.com/en/issues/using-labels-and-milestones-to-track-work/managing-labels), [Milestones docs](https://docs.github.com/en/issues/using-labels-and-milestones-to-track-work/about-milestones)
+- **Workshop Recommendation (Chapter 9):** [GitHub Docs, home](https://docs.github.com/en), [GitHub Changelog](https://github.blog/changelog/), [GitHub Projects docs](https://docs.github.com/en/issues/planning-and-tracking-with-projects/learning-about-projects/about-projects), [Labels docs](https://docs.github.com/en/issues/using-labels-and-milestones-to-track-work/managing-labels), [Milestones docs](https://docs.github.com/en/issues/using-labels-and-milestones-to-track-work/about-milestones)
+- **Labels:** [GitHub Docs, home](https://docs.github.com/en), [GitHub Changelog](https://github.blog/changelog/), [GitHub Projects docs](https://docs.github.com/en/issues/planning-and-tracking-with-projects/learning-about-projects/about-projects), [Labels docs](https://docs.github.com/en/issues/using-labels-and-milestones-to-track-work/managing-labels), [Milestones docs](https://docs.github.com/en/issues/using-labels-and-milestones-to-track-work/about-milestones)
+- **Milestones:** [GitHub Docs, home](https://docs.github.com/en), [GitHub Changelog](https://github.blog/changelog/), [GitHub Projects docs](https://docs.github.com/en/issues/planning-and-tracking-with-projects/learning-about-projects/about-projects), [Labels docs](https://docs.github.com/en/issues/using-labels-and-milestones-to-track-work/managing-labels), [Milestones docs](https://docs.github.com/en/issues/using-labels-and-milestones-to-track-work/about-milestones)
+- **Cross-References:** [GitHub Docs, home](https://docs.github.com/en), [GitHub Changelog](https://github.blog/changelog/), [GitHub Projects docs](https://docs.github.com/en/issues/planning-and-tracking-with-projects/learning-about-projects/about-projects), [Labels docs](https://docs.github.com/en/issues/using-labels-and-milestones-to-track-work/managing-labels), [Milestones docs](https://docs.github.com/en/issues/using-labels-and-milestones-to-track-work/about-milestones)
+- **GitHub Projects:** [GitHub Docs, home](https://docs.github.com/en), [GitHub Changelog](https://github.blog/changelog/), [GitHub Projects docs](https://docs.github.com/en/issues/planning-and-tracking-with-projects/learning-about-projects/about-projects), [Labels docs](https://docs.github.com/en/issues/using-labels-and-milestones-to-track-work/managing-labels), [Milestones docs](https://docs.github.com/en/issues/using-labels-and-milestones-to-track-work/about-milestones)
+- **Practical Organization Strategy for the Hackathon:** [GitHub Docs, home](https://docs.github.com/en), [GitHub Changelog](https://github.blog/changelog/), [GitHub Projects docs](https://docs.github.com/en/issues/planning-and-tracking-with-projects/learning-about-projects/about-projects), [Labels docs](https://docs.github.com/en/issues/using-labels-and-milestones-to-track-work/managing-labels), [Milestones docs](https://docs.github.com/en/issues/using-labels-and-milestones-to-track-work/about-milestones)
+- **Try It: Label and Link:** [GitHub Docs, home](https://docs.github.com/en), [GitHub Changelog](https://github.blog/changelog/), [GitHub Projects docs](https://docs.github.com/en/issues/planning-and-tracking-with-projects/learning-about-projects/about-projects), [Labels docs](https://docs.github.com/en/issues/using-labels-and-milestones-to-track-work/managing-labels), [Milestones docs](https://docs.github.com/en/issues/using-labels-and-milestones-to-track-work/about-milestones)

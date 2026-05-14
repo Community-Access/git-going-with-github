@@ -128,5 +128,23 @@ When submitting pull requests:
 - [highlight.js documentation](https://highlightjs.org/) - Syntax highlighting
 - [GitHub Markdown spec](https://github.github.com/gfm/) - GitHub Flavored Markdown
 
-
 For complete contributor guidelines, see [CONTRIBUTING.md](CONTRIBUTING.md#7-html-documentation-build-system).
+
+## Authoritative Sources
+
+Use these official references when you need the current source of truth for facts in this chapter.
+
+- [GitHub Docs, home](https://docs.github.com/en)
+- [GitHub Changelog](https://github.blog/changelog/)
+
+### Section-Level Source Map
+
+Use this map to verify facts for each major section in this file.
+
+- **Quick Start:** [GitHub Docs, home](https://docs.github.com/en), [GitHub Changelog](https://github.blog/changelog/)
+- **How It Works:** [GitHub Docs, home](https://docs.github.com/en), [GitHub Changelog](https://github.blog/changelog/)
+- **Configuration Files:** [GitHub Docs, home](https://docs.github.com/en), [GitHub Changelog](https://github.blog/changelog/)
+- **Customization:** [GitHub Docs, home](https://docs.github.com/en), [GitHub Changelog](https://github.blog/changelog/)
+- **Troubleshooting:** [GitHub Docs, home](https://docs.github.com/en), [GitHub Changelog](https://github.blog/changelog/)
+- **For Contributors:** [GitHub Docs, home](https://docs.github.com/en), [GitHub Changelog](https://github.blog/changelog/)
+- **Additional Resources:** [GitHub Docs, home](https://docs.github.com/en), [GitHub Changelog](https://github.blog/changelog/)

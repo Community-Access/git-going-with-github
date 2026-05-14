@@ -25,7 +25,6 @@
 - **Progress suggestions** pointing to next challenges
 - **Encouragement** and next steps
 
-
 ## Your Role as Facilitator
 
 You don't need to do what the bot already handles! Focus on:
@@ -58,7 +57,6 @@ You don't need to do what the bot already handles! Focus on:
 - If student disagrees with bot → you can override the decision
 - Link to resources the bot recommended to reinforce learning
 
-
 ## Handling Common Scenarios
 
 ### "The bot said I'm wrong, but I'm right"
@@ -89,7 +87,6 @@ Example comment:
 2. **Needs work** (bot flagged issues) → Comment with guidance
 3. **Advanced** (complex changes) → Schedule deep review
 
-
 ## Customizing Feedback for Your Workshop
 
 ### Update Bot Messages
@@ -119,7 +116,6 @@ badges = {
 }
 ```
 
-
 ## Monitoring Progress
 
 ### Quick Check
@@ -138,7 +134,6 @@ All workflow runs are logged in **Actions** tab. Check there if:
 - Automation seems broken
 - You need to debug why a check failed
 - You want to see performance metrics
-
 
 ## Troubleshooting Issues
 
@@ -172,7 +167,6 @@ If workflow failed, you might need to:
 3. Pair program or pair review
 4. Celebrate when they fix it
 
-
 ## Student Pain Points & Solutions
 
 | Issue | Why It Happens | Your Response |
@@ -182,7 +176,6 @@ If workflow failed, you might need to:
 | "The bot is wrong" | Validation rule is imperfect | Acknowledge + override if appropriate |
 | "I'm a screen reader user, this is hard" | Workflow isn't accessible | Offer alt workflows or helper options |
 
-
 ## Weekly Facilitator Checklist
 
 - [ ] Review open PRs with "needs-review" label (prioritize)
@@ -190,7 +183,6 @@ If workflow failed, you might need to:
 - [ ] Look at Actions tab for any workflow failures
 - [ ] Celebrate merged PRs in a community forum post
 - [ ] Remove blockers preventing students from claiming issues
-
 
 ## Communication Examples
 
@@ -206,7 +198,6 @@ If workflow failed, you might need to:
 ### Celebrating Achievement  
 > You crushed this! Look at that bot badge  Not only did you learn the skill, but you did it *right*. You're ready for the next challenge.
 
-
 ## Key Principles
 
 Remember: **The bot enables human connection, not replaces it.**
@@ -216,7 +207,6 @@ Remember: **The bot enables human connection, not replaces it.**
 - Bot celebrates wins → You celebrate their learning journey
 - Bot sets standards → You uphold them with empathy
 
-
 ## Quick Links
 
 - [Automation Setup and Maintenance](./SETUP_AND_MAINTENANCE.md)
@@ -225,5 +215,27 @@ Remember: **The bot enables human connection, not replaces it.**
 - [Grading Guide](../../classroom/grading-guide.md)
 - [Solutions Directory](../../docs/solutions/)
 
-
 **Questions?** Check the setup guide or reach out in your facilitator channel.
+
+## Authoritative Sources
+
+Use these official references when you need the current source of truth for facts in this chapter.
+
+- [GitHub Docs, home](https://docs.github.com/en)
+- [GitHub Changelog](https://github.blog/changelog/)
+
+### Section-Level Source Map
+
+Use this map to verify facts for each major section in this file.
+
+- **What Students See:** [GitHub Docs, home](https://docs.github.com/en), [GitHub Changelog](https://github.blog/changelog/)
+- **Your Role as Facilitator:** [GitHub Docs, home](https://docs.github.com/en), [GitHub Changelog](https://github.blog/changelog/)
+- **Handling Common Scenarios:** [GitHub Docs, home](https://docs.github.com/en), [GitHub Changelog](https://github.blog/changelog/), [GitHub Mobile docs](https://docs.github.com/en/get-started/using-github/github-mobile), [GitHub Mobile changelog](https://github.blog/changelog/label/client-apps/)
+- **Customizing Feedback for Your Workshop:** [GitHub Docs, home](https://docs.github.com/en), [GitHub Changelog](https://github.blog/changelog/)
+- **Monitoring Progress:** [GitHub Docs, home](https://docs.github.com/en), [GitHub Changelog](https://github.blog/changelog/)
+- **Troubleshooting Issues:** [GitHub Docs, home](https://docs.github.com/en), [GitHub Changelog](https://github.blog/changelog/), [About Git](https://docs.github.com/en/get-started/using-git/about-git), [GitHub flow](https://docs.github.com/en/get-started/using-github/github-flow), [About pull requests](https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/about-pull-requests)
+- **Student Pain Points & Solutions:** [GitHub Docs, home](https://docs.github.com/en), [GitHub Changelog](https://github.blog/changelog/)
+- **Weekly Facilitator Checklist:** [GitHub Docs, home](https://docs.github.com/en), [GitHub Changelog](https://github.blog/changelog/)
+- **Communication Examples:** [GitHub Docs, home](https://docs.github.com/en), [GitHub Changelog](https://github.blog/changelog/)
+- **Key Principles:** [GitHub Docs, home](https://docs.github.com/en), [GitHub Changelog](https://github.blog/changelog/)
+- **Quick Links:** [GitHub Docs, home](https://docs.github.com/en), [GitHub Changelog](https://github.blog/changelog/)

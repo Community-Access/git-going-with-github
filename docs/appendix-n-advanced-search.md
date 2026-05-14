@@ -10,7 +10,6 @@
 
 > GitHub's search engine is powerful and underused. For screen reader users in particular, using the search bar with precise query syntax is often *faster and more accessible* than navigating filter dropdowns and checkbox menus. This reference covers the query language so you can filter anything from the keyboard.
 
-
 ## Table of Contents
 
 1. [The Search Interface](#1-the-search-interface)
@@ -23,7 +22,6 @@
 8. [Searching Users and Organizations](#8-searching-users-and-organizations)
 9. [Practical Queries for This Workshop](#9-practical-queries-for-this-workshop)
 10. [Saving and Reusing Searches](#10-saving-and-reusing-searches)
-
 
 ## 1. The Search Interface
 
@@ -70,7 +68,6 @@ Type your query → Enter
 
 </details>
 
-
 ## 2. Search Scopes
 
 By default, GitHub searches across all of GitHub. Scope modifiers restrict results:
@@ -85,7 +82,6 @@ By default, GitHub searches across all of GitHub. Scope modifiers restrict resul
 | `in:comments` | Only matches in comments |
 
 **Example:** `repo:community-access/accessibility-agents in:title keyboard` finds issues/PRs whose titles mention "keyboard" in the accessibility-agents repo.
-
 
 ## 3. The Core Query Language
 
@@ -133,7 +129,6 @@ By default, GitHub searches across all of GitHub. Scope modifiers restrict resul
 | `created:2025-01-01..2025-03-31` | Created in a date range |
 | `updated:>2025-06-01` | Updated after a date |
 | `closed:>2025-06-01` | Closed after a date |
-
 
 ## 4. Searching Issues and Pull Requests
 
@@ -214,7 +209,6 @@ is:issue is:open repo:owner/name updated:<2024-08-01
 
 </details>
 
-
 ## 5. Searching Code
 
 Code search operates differently from issue search. As of 2024, GitHub uses an improved code search engine (sometimes called "code search v2") with better indexing.
@@ -248,7 +242,6 @@ org:community-access aria-hidden="true"
 | `symbol:functionName` | Search for a specific symbol/function name |
 | `content:"exact string"` | Exact string match in file content |
 
-
 ## 6. Searching Commits
 
 ### Find commits with a keyword in the message
@@ -274,7 +267,6 @@ repo:owner/name committer-date:2025-01-01..2025-03-31
 ```text
 repo:owner/name path:docs/README.md
 ```
-
 
 ## 7. Searching Repositories
 
@@ -303,7 +295,6 @@ language:typescript topic:screen-reader sort:stars-desc
 | `size:<1000` | Repos smaller than 1000 KB |
 | `pushed:>2025-01-01` | Repos with recent activity |
 
-
 ## 8. Searching Users and Organizations
 
 ### Find users
@@ -317,7 +308,6 @@ type:user location:Seattle followers:>100
 ```text
 type:org topic:accessibility
 ```
-
 
 ## 9. Practical Queries for This Workshop
 
@@ -353,7 +343,6 @@ is:pr is:merged author:@me
 repo:community-access/accessibility-agents in:discussions screen reader
 ```
 
-
 ## 10. Saving and Reusing Searches
 
 GitHub does not have a built-in saved-search feature, but you can:
@@ -374,3 +363,27 @@ https://github.com/issues?q=is%3Aissue+is%3Aopen+assignee%3A%40me
 *Back: [Appendix M: Accessibility Standards](appendix-m-accessibility-standards.md)*  
 *Teaching chapter: [Chapter 05: Working with Issues](05-working-with-issues.md)*
 
+## Authoritative Sources
+
+Use these official references when you need the current source of truth for facts in this chapter.
+
+- [GitHub Docs, home](https://docs.github.com/en)
+- [GitHub Changelog](https://github.blog/changelog/)
+- [GitHub code search syntax](https://docs.github.com/en/search-github/github-code-search/understanding-github-code-search-syntax)
+- [Advanced search docs](https://docs.github.com/en/search-github/searching-on-github/searching-on-github)
+
+### Section-Level Source Map
+
+Use this map to verify facts for each major section in this file.
+
+- **Finding Anything Across All of GitHub:** [GitHub Docs, home](https://docs.github.com/en), [GitHub Changelog](https://github.blog/changelog/), [GitHub code search syntax](https://docs.github.com/en/search-github/github-code-search/understanding-github-code-search-syntax), [Advanced search docs](https://docs.github.com/en/search-github/searching-on-github/searching-on-github), [About Git](https://docs.github.com/en/get-started/using-git/about-git)
+- **1. The Search Interface:** [GitHub Docs, home](https://docs.github.com/en), [GitHub Changelog](https://github.blog/changelog/), [GitHub code search syntax](https://docs.github.com/en/search-github/github-code-search/understanding-github-code-search-syntax), [Advanced search docs](https://docs.github.com/en/search-github/searching-on-github/searching-on-github)
+- **2. Search Scopes:** [GitHub Docs, home](https://docs.github.com/en), [GitHub Changelog](https://github.blog/changelog/), [GitHub code search syntax](https://docs.github.com/en/search-github/github-code-search/understanding-github-code-search-syntax), [Advanced search docs](https://docs.github.com/en/search-github/searching-on-github/searching-on-github)
+- **3. The Core Query Language:** [GitHub Docs, home](https://docs.github.com/en), [GitHub Changelog](https://github.blog/changelog/), [GitHub code search syntax](https://docs.github.com/en/search-github/github-code-search/understanding-github-code-search-syntax), [Advanced search docs](https://docs.github.com/en/search-github/searching-on-github/searching-on-github)
+- **4. Searching Issues and Pull Requests:** [GitHub Docs, home](https://docs.github.com/en), [GitHub Changelog](https://github.blog/changelog/), [GitHub code search syntax](https://docs.github.com/en/search-github/github-code-search/understanding-github-code-search-syntax), [Advanced search docs](https://docs.github.com/en/search-github/searching-on-github/searching-on-github), [About Git](https://docs.github.com/en/get-started/using-git/about-git)
+- **5. Searching Code:** [GitHub Docs, home](https://docs.github.com/en), [GitHub Changelog](https://github.blog/changelog/), [GitHub code search syntax](https://docs.github.com/en/search-github/github-code-search/understanding-github-code-search-syntax), [Advanced search docs](https://docs.github.com/en/search-github/searching-on-github/searching-on-github)
+- **6. Searching Commits:** [GitHub Docs, home](https://docs.github.com/en), [GitHub Changelog](https://github.blog/changelog/), [GitHub code search syntax](https://docs.github.com/en/search-github/github-code-search/understanding-github-code-search-syntax), [Advanced search docs](https://docs.github.com/en/search-github/searching-on-github/searching-on-github), [About Git](https://docs.github.com/en/get-started/using-git/about-git)
+- **7. Searching Repositories:** [GitHub Docs, home](https://docs.github.com/en), [GitHub Changelog](https://github.blog/changelog/), [GitHub code search syntax](https://docs.github.com/en/search-github/github-code-search/understanding-github-code-search-syntax), [Advanced search docs](https://docs.github.com/en/search-github/searching-on-github/searching-on-github)
+- **8. Searching Users and Organizations:** [GitHub Docs, home](https://docs.github.com/en), [GitHub Changelog](https://github.blog/changelog/), [GitHub code search syntax](https://docs.github.com/en/search-github/github-code-search/understanding-github-code-search-syntax), [Advanced search docs](https://docs.github.com/en/search-github/searching-on-github/searching-on-github)
+- **9. Practical Queries for This Workshop:** [GitHub Docs, home](https://docs.github.com/en), [GitHub Changelog](https://github.blog/changelog/), [GitHub code search syntax](https://docs.github.com/en/search-github/github-code-search/understanding-github-code-search-syntax), [Advanced search docs](https://docs.github.com/en/search-github/searching-on-github/searching-on-github)
+- **10. Saving and Reusing Searches:** [GitHub Docs, home](https://docs.github.com/en), [GitHub Changelog](https://github.blog/changelog/), [GitHub code search syntax](https://docs.github.com/en/search-github/github-code-search/understanding-github-code-search-syntax), [Advanced search docs](https://docs.github.com/en/search-github/searching-on-github/searching-on-github)

@@ -42,9 +42,9 @@ Community-Access/learning-room-template (template repo)
     |       --> complete challenge --> close issue --> next challenge unlocked
     |       --> repeat through all challenges
     |
-    +--> Capstone (Challenge 16):
-            Student forks Community-Access/accessibility-agents
-            Opens cross-fork PR (validated by autograder-capstone.yml)
+       +--> Capstone (Challenge 16):
+          Student chooses Accessibility Agents, GLOW, or another meaningful project
+          Opens a PR or prepares review-ready contribution evidence
 ```
 
 ### Two Participation Paths
@@ -200,7 +200,7 @@ Then complete the remaining fields:
 3. Facilitator seeds Challenge 10 (Go Local) using `student-progression.yml`
 4. Student clones the repo, works locally, pushes, and closes the issue
 5. Progression Bot unlocks Challenges 11 through 16 sequentially
-6. Challenge 16 (Capstone) has the student fork the accessibility-agents repo and open a cross-fork PR
+6. Challenge 16 (Capstone) has the student choose Accessibility Agents, GLOW, or another meaningful project and prepare a PR, branch, issue, or contribution plan
 7. Bonus challenges (A through E) are available via issue templates for students who finish early
 
 ---
@@ -368,7 +368,7 @@ The Student Progression Bot manages the entire challenge sequence. Each student 
 | 13 | AI as Your Copilot | Close issue | -- | -- |
 | 14 | Template Remix | Close issue | -- | Yes (YAML valid) |
 | 15 | Meet the Agents | Close issue | -- | -- |
-| 16 | Build Your Agent (Capstone) | Close issue | -- | Yes (agent file) |
+| 16 | Capstone Project | Close issue | -- | Yes for Accessibility Agents path; facilitator review for GLOW or another project |
 | A-E | Bonus challenges | Close issue | -- | -- |
 
 ### Challenges that cannot be automated
@@ -449,3 +449,28 @@ See [teardown-checklist.md](teardown-checklist.md) for the complete post-worksho
 - [Solutions Directory](../docs/solutions/) -- reference solutions for facilitator use
 - [Grading Guide](grading-guide.md) -- per-challenge rubric and completion levels
 - [Support Hub Operations](../admin/SUPPORT_HUB_OPERATIONS.md) -- operating model for async support after the workshop
+
+## Authoritative Sources
+
+Use these official references when you need the current source of truth for facts in this chapter.
+
+- [GitHub Docs, home](https://docs.github.com/en)
+- [GitHub Changelog](https://github.blog/changelog/)
+- [About Git](https://docs.github.com/en/get-started/using-git/about-git)
+- [GitHub flow](https://docs.github.com/en/get-started/using-github/github-flow)
+- [About pull requests](https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/about-pull-requests)
+- [About issues](https://docs.github.com/en/issues/tracking-your-work-with-issues/about-issues)
+- [Contributing to a project](https://docs.github.com/en/get-started/exploring-projects-on-github/contributing-to-a-project)
+
+### Section-Level Source Map
+
+Use this map to verify facts for each major section in this file.
+
+- **How the Workshop Works:** [GitHub Docs, home](https://docs.github.com/en), [GitHub Changelog](https://github.blog/changelog/), [About Git](https://docs.github.com/en/get-started/using-git/about-git), [GitHub flow](https://docs.github.com/en/get-started/using-github/github-flow), [About pull requests](https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/about-pull-requests)
+- **Prerequisites:** [GitHub Docs, home](https://docs.github.com/en), [GitHub Changelog](https://github.blog/changelog/), [About Git](https://docs.github.com/en/get-started/using-git/about-git), [GitHub flow](https://docs.github.com/en/get-started/using-github/github-flow), [About pull requests](https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/about-pull-requests)
+- **How Challenges Flow Through the System:** [GitHub Docs, home](https://docs.github.com/en), [GitHub Changelog](https://github.blog/changelog/), [About Git](https://docs.github.com/en/get-started/using-git/about-git), [GitHub flow](https://docs.github.com/en/get-started/using-github/github-flow), [About pull requests](https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/about-pull-requests)
+- **Post-Workshop:** [GitHub Docs, home](https://docs.github.com/en), [GitHub Changelog](https://github.blog/changelog/), [About Git](https://docs.github.com/en/get-started/using-git/about-git), [GitHub flow](https://docs.github.com/en/get-started/using-github/github-flow), [About pull requests](https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/about-pull-requests)
+- **Customization Options:** [GitHub Docs, home](https://docs.github.com/en), [GitHub Changelog](https://github.blog/changelog/), [About Git](https://docs.github.com/en/get-started/using-git/about-git), [GitHub flow](https://docs.github.com/en/get-started/using-github/github-flow), [About pull requests](https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/about-pull-requests)
+- **Legacy Notes:** [GitHub Docs, home](https://docs.github.com/en), [GitHub Changelog](https://github.blog/changelog/), [About Git](https://docs.github.com/en/get-started/using-git/about-git), [GitHub flow](https://docs.github.com/en/get-started/using-github/github-flow), [About pull requests](https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/about-pull-requests)
+- **After the Workshop:** [GitHub Docs, home](https://docs.github.com/en), [GitHub Changelog](https://github.blog/changelog/), [About Git](https://docs.github.com/en/get-started/using-git/about-git), [GitHub flow](https://docs.github.com/en/get-started/using-github/github-flow), [About pull requests](https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/about-pull-requests)
+- **Reference Links:** [GitHub Docs, home](https://docs.github.com/en), [GitHub Changelog](https://github.blog/changelog/), [About Git](https://docs.github.com/en/get-started/using-git/about-git), [GitHub flow](https://docs.github.com/en/get-started/using-github/github-flow), [About pull requests](https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/about-pull-requests)

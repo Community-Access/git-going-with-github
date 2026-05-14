@@ -10,7 +10,6 @@
 
 > **Who this is for:** Contributors who have submitted a PR and are wondering why it cannot be merged yet, as well as workshop facilitators who configure branch protection for practice repositories.
 
-
 ## Quick Navigation
 
 1. [What Branch Protection Does](#1-what-branch-protection-does)
@@ -21,7 +20,6 @@
 6. [Status Checks - What They Are and What They Mean](#6-status-checks---what-they-are-and-what-they-mean)
 7. [Who Can Configure Branch Protection](#7-who-can-configure-branch-protection)
 8. [Workshop Repository Configuration Reference](#8-workshop-repository-configuration-reference)
-
 
 ## 1. What Branch Protection Does
 
@@ -63,7 +61,6 @@ Think of branch protection as the quality gate for a repository's primary branch
 - Click "Show all checks" to expand the full list of status checks if only a summary is visible
 
 </details>
-
 
 ## 2. Common Branch Protection Rules
 
@@ -120,7 +117,6 @@ If you see: "This repository requires a linear history" - the maintainer will sq
 
 A locked branch cannot receive any merges - it is effectively read-only. This is sometimes used for archived repositories or during release freezes.
 
-
 ## 3. Repository Rulesets - The Modern Approach
 
 **Repository Rulesets** (introduced in late 2023) are the next generation of branch protection. They extend branch protection rules with:
@@ -153,7 +149,6 @@ Or: Repository → Settings → Rules → Rulesets (admin only)
 ```
 
 Alternatively, PR merge box messages describe which rules are blocking - you don't need admin access to understand what's required.
-
 
 ## 4. Why Your PR Cannot Be Merged - Diagnosis Guide
 
@@ -237,7 +232,6 @@ When you open a PR and the merge button is grayed out or shows an error, the mer
 
 </details>
 
-
 ## 5. Navigating the Merge Box with a Screen Reader
 
 The merge box lives at the bottom of every PR page. With a screen reader, navigating to it efficiently is important.
@@ -293,7 +287,6 @@ Or: Tab → each step accordion → Enter to expand → ↓ to read log lines
 Log content is usually in a scrollable region: ↓ key scrolls through lines
 ```
 
-
 ## 6. Status Checks - What They Are and What They Mean
 
 Status checks come from two sources:
@@ -327,7 +320,6 @@ Services like Netlify, Vercel, Codecov, and Snyk post status checks via the GitH
 | Grey circle | Skipped | Not relevant for this PR (conditional run) |
 | Neutral | Neutral | Informational - does not block merge |
 
-
 ## 7. Who Can Configure Branch Protection
 
 | Role | Can view requirements | Can modify requirements |
@@ -341,7 +333,6 @@ Services like Netlify, Vercel, Codecov, and Snyk post status checks via the GitH
 | Org admin | Yes | Yes - including org-level rulesets |
 
 As a workshop participant, you are typically a **contributor** to the main `community-access/accessibility-agents` repo and an **admin** of your own fork. On your fork, you can configure branch protection however you like - including disabling it entirely for practice purposes.
-
 
 ## 8. Workshop Repository Configuration Reference
 
@@ -368,7 +359,6 @@ Save changes
 
 Then practice opening a PR on your fork and requesting your workshop partner's review.
 
-
 ## Related Resources
 
 - [Appendix D - Git Authentication and Commit Signing](appendix-d-git-authentication.md)
@@ -381,3 +371,30 @@ Then practice opening a PR on your fork and requesting your workshop partner's r
 *Back: [Appendix N: Advanced Search](appendix-n-advanced-search.md)*  
 *Teaching chapter: [Chapter 08: Open Source Culture](08-open-source-culture.md)*
 
+## Authoritative Sources
+
+Use these official references when you need the current source of truth for facts in this chapter.
+
+- [GitHub Docs, home](https://docs.github.com/en)
+- [GitHub Changelog](https://github.blog/changelog/)
+- [GitHub Projects docs](https://docs.github.com/en/issues/planning-and-tracking-with-projects/learning-about-projects/about-projects)
+- [Labels docs](https://docs.github.com/en/issues/using-labels-and-milestones-to-track-work/managing-labels)
+- [Milestones docs](https://docs.github.com/en/issues/using-labels-and-milestones-to-track-work/about-milestones)
+- [About protected branches](https://docs.github.com/en/repositories/configuring-branches-and-merges-in-your-repository/managing-protected-branches/about-protected-branches)
+- [About rulesets](https://docs.github.com/en/repositories/configuring-branches-and-merges-in-your-repository/managing-rulesets/about-rulesets)
+
+### Section-Level Source Map
+
+Use this map to verify facts for each major section in this file.
+
+- **How Merging Rules Work and Why Your PR May Be Blocked:** [GitHub Docs, home](https://docs.github.com/en), [GitHub Changelog](https://github.blog/changelog/), [GitHub Projects docs](https://docs.github.com/en/issues/planning-and-tracking-with-projects/learning-about-projects/about-projects), [Labels docs](https://docs.github.com/en/issues/using-labels-and-milestones-to-track-work/managing-labels), [Milestones docs](https://docs.github.com/en/issues/using-labels-and-milestones-to-track-work/about-milestones)
+- **Quick Navigation:** [GitHub Docs, home](https://docs.github.com/en), [GitHub Changelog](https://github.blog/changelog/), [GitHub Projects docs](https://docs.github.com/en/issues/planning-and-tracking-with-projects/learning-about-projects/about-projects), [Labels docs](https://docs.github.com/en/issues/using-labels-and-milestones-to-track-work/managing-labels), [Milestones docs](https://docs.github.com/en/issues/using-labels-and-milestones-to-track-work/about-milestones)
+- **1. What Branch Protection Does:** [GitHub Docs, home](https://docs.github.com/en), [GitHub Changelog](https://github.blog/changelog/), [GitHub Projects docs](https://docs.github.com/en/issues/planning-and-tracking-with-projects/learning-about-projects/about-projects), [Labels docs](https://docs.github.com/en/issues/using-labels-and-milestones-to-track-work/managing-labels), [Milestones docs](https://docs.github.com/en/issues/using-labels-and-milestones-to-track-work/about-milestones)
+- **2. Common Branch Protection Rules:** [GitHub Docs, home](https://docs.github.com/en), [GitHub Changelog](https://github.blog/changelog/), [GitHub Projects docs](https://docs.github.com/en/issues/planning-and-tracking-with-projects/learning-about-projects/about-projects), [Labels docs](https://docs.github.com/en/issues/using-labels-and-milestones-to-track-work/managing-labels), [Milestones docs](https://docs.github.com/en/issues/using-labels-and-milestones-to-track-work/about-milestones)
+- **3. Repository Rulesets - The Modern Approach:** [GitHub Docs, home](https://docs.github.com/en), [GitHub Changelog](https://github.blog/changelog/), [GitHub Projects docs](https://docs.github.com/en/issues/planning-and-tracking-with-projects/learning-about-projects/about-projects), [Labels docs](https://docs.github.com/en/issues/using-labels-and-milestones-to-track-work/managing-labels), [Milestones docs](https://docs.github.com/en/issues/using-labels-and-milestones-to-track-work/about-milestones)
+- **4. Why Your PR Cannot Be Merged - Diagnosis Guide:** [GitHub Docs, home](https://docs.github.com/en), [GitHub Changelog](https://github.blog/changelog/), [GitHub Projects docs](https://docs.github.com/en/issues/planning-and-tracking-with-projects/learning-about-projects/about-projects), [Labels docs](https://docs.github.com/en/issues/using-labels-and-milestones-to-track-work/managing-labels), [Milestones docs](https://docs.github.com/en/issues/using-labels-and-milestones-to-track-work/about-milestones)
+- **5. Navigating the Merge Box with a Screen Reader:** [GitHub Docs, home](https://docs.github.com/en), [GitHub Changelog](https://github.blog/changelog/), [GitHub Projects docs](https://docs.github.com/en/issues/planning-and-tracking-with-projects/learning-about-projects/about-projects), [Labels docs](https://docs.github.com/en/issues/using-labels-and-milestones-to-track-work/managing-labels), [Milestones docs](https://docs.github.com/en/issues/using-labels-and-milestones-to-track-work/about-milestones)
+- **6. Status Checks - What They Are and What They Mean:** [GitHub Docs, home](https://docs.github.com/en), [GitHub Changelog](https://github.blog/changelog/), [GitHub Projects docs](https://docs.github.com/en/issues/planning-and-tracking-with-projects/learning-about-projects/about-projects), [Labels docs](https://docs.github.com/en/issues/using-labels-and-milestones-to-track-work/managing-labels), [Milestones docs](https://docs.github.com/en/issues/using-labels-and-milestones-to-track-work/about-milestones)
+- **7. Who Can Configure Branch Protection:** [GitHub Docs, home](https://docs.github.com/en), [GitHub Changelog](https://github.blog/changelog/), [GitHub Projects docs](https://docs.github.com/en/issues/planning-and-tracking-with-projects/learning-about-projects/about-projects), [Labels docs](https://docs.github.com/en/issues/using-labels-and-milestones-to-track-work/managing-labels), [Milestones docs](https://docs.github.com/en/issues/using-labels-and-milestones-to-track-work/about-milestones)
+- **8. Workshop Repository Configuration Reference:** [GitHub Docs, home](https://docs.github.com/en), [GitHub Changelog](https://github.blog/changelog/), [GitHub Projects docs](https://docs.github.com/en/issues/planning-and-tracking-with-projects/learning-about-projects/about-projects), [Labels docs](https://docs.github.com/en/issues/using-labels-and-milestones-to-track-work/managing-labels), [Milestones docs](https://docs.github.com/en/issues/using-labels-and-milestones-to-track-work/about-milestones)
+- **Related Resources:** [GitHub Docs, home](https://docs.github.com/en), [GitHub Changelog](https://github.blog/changelog/), [GitHub Projects docs](https://docs.github.com/en/issues/planning-and-tracking-with-projects/learning-about-projects/about-projects), [Labels docs](https://docs.github.com/en/issues/using-labels-and-milestones-to-track-work/managing-labels), [Milestones docs](https://docs.github.com/en/issues/using-labels-and-milestones-to-track-work/about-milestones)

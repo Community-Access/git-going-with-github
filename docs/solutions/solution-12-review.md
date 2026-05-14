@@ -39,3 +39,19 @@ Using the suggestion feature lets the PR author accept the change with one click
 ## What matters
 
 The learning objective is providing constructive feedback on someone else's work. If you left at least one specific, helpful comment on a buddy's PR, you completed this challenge. The quality of feedback matters more than the quantity.
+
+## Authoritative Sources
+
+Use these official references when you need the current source of truth for facts in this chapter.
+
+- [GitHub Docs, home](https://docs.github.com/en)
+- [GitHub Changelog](https://github.blog/changelog/)
+
+### Section-Level Source Map
+
+Use this map to verify facts for each major section in this file.
+
+- **Example review on a buddy's PR:** [GitHub Docs, home](https://docs.github.com/en), [GitHub Changelog](https://github.blog/changelog/), [About Git](https://docs.github.com/en/get-started/using-git/about-git), [GitHub flow](https://docs.github.com/en/get-started/using-github/github-flow), [About pull requests](https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/about-pull-requests)
+- **Getting Started:** [GitHub Docs, home](https://docs.github.com/en), [GitHub Changelog](https://github.blog/changelog/)
+- **Types of review comments:** [GitHub Docs, home](https://docs.github.com/en), [GitHub Changelog](https://github.blog/changelog/)
+- **What matters:** [GitHub Docs, home](https://docs.github.com/en), [GitHub Changelog](https://github.blog/changelog/)

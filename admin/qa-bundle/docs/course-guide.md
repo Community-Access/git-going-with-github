@@ -10,7 +10,6 @@
 
 > **Important: tools and websites change.** GitHub.com, GitHub Classroom, VS Code, GitHub Copilot, github.dev, browser extensions, and agent experiences are living products. We do our best to keep this curriculum current and source-backed, but labels, page order, shortcuts, preview features, model availability, and account-policy behavior can shift. If the documentation and your screen differ, use the exploration pattern taught in Chapters 2 and 3: orient by URL, page title, H1, landmarks, tab names, button labels, keyboard help, and the VS Code Command Palette. Then report the mismatch so the documentation can be corrected.
 
-
 ## How This Course Works
 
 This is a two-day workshop built around one idea: **you will make real contributions to a real open source project.** Not simulated. Not pretend. Real.
@@ -31,7 +30,7 @@ You learn GitHub's web interface using only your keyboard and screen reader. The
 
 #### Day 2 - VS Code + Accessibility Agents (Desktop)
 
-You move to Visual Studio Code, learn GitHub Copilot, and activate the Accessibility Agents ecosystem - 55 AI agents across 3 teams and 5 platforms that amplify every skill you built on Day 1. The live Day 2 core path prepares you to make a real contribution, and the async continuation path gives you time to polish and submit it well.
+You move to Visual Studio Code, learn GitHub Copilot, and activate the Accessibility Agents ecosystem. The live Day 2 core path prepares you to make a real contribution, and the async continuation path gives you time to polish and submit it well.
 
 ### The Journey Arc
 
@@ -54,7 +53,6 @@ Day 2 - Deepen with VS Code + Accessibility Agents
 
 **The key principle:** Learn the manual skill first, then see how it is automated. The agents only make sense when you already understand what they are doing.
 
-
 ## Before You Begin
 
 Start with **[Get Going with GitHub](get-going.md)** if you want the most guided path. It explains how GitHub Classroom creates your private Learning Room repository, how Challenge 1 appears, how evidence prompts work, and how to choose between browser, github.dev, VS Code, GitHub Desktop, and command-line paths.
@@ -69,7 +67,6 @@ Complete everything in **[Chapter 00: Pre-Workshop Setup](00-pre-workshop-setup.
 
 **Time needed:** About 30 minutes.
 
-
 ## Companion Audio Series
 
 Every chapter and appendix has a companion podcast episode - a conversational two-host overview that previews or reviews the key concepts. Listen before reading a chapter to know what to expect, or after to reinforce what you learned.
@@ -77,7 +74,6 @@ Every chapter and appendix has a companion podcast episode - a conversational tw
 - **[Browse the podcast episodes](../admin/PODCASTS.md)** with HTML5 audio players
 - **[Subscribe via RSS](https://community-access.org/git-going-with-github/podcasts/feed.xml)** in your preferred podcast app
 - Episodes are 8-18 minutes each - perfect for commutes, walks, or screen reader breaks
-
 
 ## Day 1: GitHub Foundations
 
@@ -100,7 +96,6 @@ These chapters are designed to be read and practiced in order. Each builds on th
 
 **Day 1 self-paced total:** ~8 hours. The live Day 1 agenda covers the core path in a shorter Pacific-time event day and treats later challenges as stretch or async follow-up.
 
-
 ## Day 2: VS Code + Accessibility Agents
 
 Day 2 moves you from the browser to the desktop. Every skill maps directly to what you learned on Day 1.
@@ -115,12 +110,11 @@ Day 2 moves you from the browser to the desktop. Every skill maps directly to wh
 | [16](16-github-copilot.md) | **GitHub Copilot** | Inline suggestions, Copilot Chat, effective prompting, custom instructions | 1 hr |
 | [17](17-issue-templates.md) | **Issue Templates** | Create and customize GitHub issue templates with YAML | 1 hr |
 | [18](18-fork-and-contribute.md) | **Fork and Contribute** | The complete fork-based open source contribution workflow | 45 min |
-| [19](19-accessibility-agents.md) | **Accessibility Agents** | 55 agents across 3 teams, 54+ slash commands, contributing to the ecosystem | 1 hr |
-| [20](20-build-your-agent.md) | **Build Your Agent: Capstone** | Design, build, and contribute a real accessibility agent | 1.5 hrs |
+| [19](19-accessibility-agents.md) | **Accessibility Agents** | Agent files, prompts, skills, and contribution paths across the ecosystem | 1 hr |
+| [20](20-build-your-agent.md) | **Capstone Project** | Choose Accessibility Agents, GLOW, or another project and create an impactful agentic contribution | 1.5 hrs |
 | [21](21-next-steps.md) | **What Comes Next** | Graduation, portfolio, continued learning, community | 30 min |
 
 **Day 2 self-paced total:** ~10 hours. The live Day 2 agenda focuses on VS Code, Git, Copilot, agent discovery, and supported contribution work; deeper capstone material can continue asynchronously.
-
 
 ## Appendices - Reference Material
 
@@ -182,7 +176,6 @@ Open these at any time during the workshop. They are not part of the chapter seq
 | [Y](appendix-y-workshop-materials.md) | **Accessing Workshop Materials** | How to download, read offline, and keep updated |
 | [Z](appendix-z-github-skills.md) | **GitHub Skills - Complete Course Catalog** | All 36 modules in six learning paths with links and prerequisites |
 
-
 ## Exercises at a Glance
 
 The workshop includes structured exercises across the curriculum. Every exercise is designed to be completed in 1-5 minutes, is impossible to fail, and follows the same pattern: **Try It** -> **You're done when** -> **What success feels like**.
@@ -210,7 +203,6 @@ The workshop includes structured exercises across the curriculum. Every exercise
 | **Ch 19** | Agent Exercises | Generate, extend, and iterate with accessibility agents |
 | **Ch 20** | Capstone | Design, build, and contribute an accessibility agent |
 
-
 ## Getting Help
 
 If you get stuck at any point during the workshop, these resources are always available:
@@ -226,7 +218,6 @@ If you get stuck at any point during the workshop, these resources are always av
 
 **Still stuck?** Open a support issue at https://github.com/Community-Access/support/issues describing what you tried, what happened, and what you expected. Include your screen reader and operating system.
 
-
 ## Workshop at a Glance
 
 | Aspect | Day 1 | Day 2 |
@@ -238,8 +229,28 @@ If you get stuck at any point during the workshop, these resources are always av
 | **Outcome** | You can use GitHub independently | You have a real contribution path and review process |
 | **Time** | ~8 hours | ~10 hours |
 
-
 *Ready to begin? Start with [Chapter 00: Pre-Workshop Setup](00-pre-workshop-setup.md).*
 
-
 Last updated: May 2026
+
+## Authoritative Sources
+
+Use these official references when you need the current source of truth for facts in this chapter.
+
+- [GitHub Docs, home](https://docs.github.com/en)
+- [GitHub Changelog](https://github.blog/changelog/)
+
+### Section-Level Source Map
+
+Use this map to verify facts for each major section in this file.
+
+- **GitHub Learning Room - Your Complete Workshop Companion:** [GitHub Docs, home](https://docs.github.com/en), [GitHub Changelog](https://github.blog/changelog/), [About Git](https://docs.github.com/en/get-started/using-git/about-git), [GitHub flow](https://docs.github.com/en/get-started/using-github/github-flow), [About pull requests](https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/about-pull-requests)
+- **How This Course Works:** [GitHub Docs, home](https://docs.github.com/en), [GitHub Changelog](https://github.blog/changelog/)
+- **Before You Begin:** [GitHub Docs, home](https://docs.github.com/en), [GitHub Changelog](https://github.blog/changelog/)
+- **Companion Audio Series:** [GitHub Docs, home](https://docs.github.com/en), [GitHub Changelog](https://github.blog/changelog/)
+- **Day 1: GitHub Foundations:** [GitHub Docs, home](https://docs.github.com/en), [GitHub Changelog](https://github.blog/changelog/), [About Git](https://docs.github.com/en/get-started/using-git/about-git), [GitHub flow](https://docs.github.com/en/get-started/using-github/github-flow), [About pull requests](https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/about-pull-requests)
+- **Day 2: VS Code + Accessibility Agents:** [GitHub Docs, home](https://docs.github.com/en), [GitHub Changelog](https://github.blog/changelog/), [GitHub Copilot docs](https://docs.github.com/en/copilot), [Custom instructions support matrix](https://docs.github.com/en/copilot/reference/custom-instructions-support), [About custom agents](https://docs.github.com/en/copilot/concepts/agents/cloud-agent/about-custom-agents)
+- **Appendices - Reference Material:** [GitHub Docs, home](https://docs.github.com/en), [GitHub Changelog](https://github.blog/changelog/)
+- **Exercises at a Glance:** [GitHub Docs, home](https://docs.github.com/en), [GitHub Changelog](https://github.blog/changelog/)
+- **Getting Help:** [GitHub Docs, home](https://docs.github.com/en), [GitHub Changelog](https://github.blog/changelog/)
+- **Workshop at a Glance:** [GitHub Docs, home](https://docs.github.com/en), [GitHub Changelog](https://github.blog/changelog/)

@@ -1,7 +1,6 @@
 # GitHub Learning Curriculum
 ## Executive Summary & Proposal to GitHub
 
-
 ## Project Overview
 
 **Title:** Comprehensive, Accessible GitHub Workshop Curriculum with AI Agent Integration  
@@ -9,7 +8,6 @@
 **Audience:** Developers, open-source contributors, maintainers, and facilitators  
 **Status:** Complete curriculum ready for deployment  
 **Note:** 2 additional agenda files (Day 1 & Day 2) provided for workshop facilitators (not part of learner sequence)  
-
 
 ## Problem Statement
 
@@ -32,7 +30,6 @@ Many organizations need structured, repeatable, accessible training that:
 - **Maintainers** lack templates and automation to scale contributions
 - **Accessibility advocates** have no GitHub-specific guidance
 - **Facilitators** must recreate training materials from scratch
-
 
 ## Solution: Complete Learning Curriculum
 
@@ -87,7 +84,6 @@ Chapters 14-16 teach accessible code review, issue templates, and AI agent autom
 - **Template Builder:** Interactive wizard for guided template creation
 
 **Outcome:** Teams can design accessible workflows and automate GitHub processes with confidence.
-
 
 ## Curriculum Highlights
 
@@ -196,7 +192,6 @@ Result: 5-minute template creation vs. 30 minutes manual YAML editing
 
 **Why:** Users have context-specific help at their fingertips; facilitators have reference guides.
 
-
 ## Pedagogical Approach
 
 ### Three Core Principles
@@ -238,7 +233,6 @@ Accessibility is woven into every chapter.
 - Every exercise includes screen reader instructions
 
 **Why:** Builds inclusive habits from day one; not a retrofit.
-
 
 ## Implementation & Deployment
 
@@ -320,7 +314,6 @@ Root/
 | Customize for organization | 2-3 hrs | Add template examples, GitHub team |
 | **Total** | **9-12 hrs** | Ready to lead 2-day workshop |
 
-
 ## Success Criteria & Metrics
 
 ### Learner Outcomes (Measurable)
@@ -341,7 +334,6 @@ Root/
 - [ ] WCAG 2.1 AA compliance verified for all guided workflows
 - [ ] Keyboard-only functionality tested on all exercises
 - [ ] Color contrast verified (4.5:1 minimum for all text)
-
 
 ## Recommended Next Steps
 
@@ -368,7 +360,6 @@ Root/
 - [ ] Collect learner feedback quarterly
 - [ ] Rotate facilitators for fresh perspectives
 - [ ] Expand to additional topics (GitHub Security, GitHub Actions deep dive, etc.)
-
 
 ## Why GitHub Should Support This
 
@@ -402,7 +393,6 @@ Open curriculum invites contributions:
 - Community suggests improvements and translations
 - Becomes standard reference (like "Pro Git" book)
 
-
 ## Risks & Mitigations
 
 | Risk | Impact | Mitigation |
@@ -411,7 +401,6 @@ Open curriculum invites contributions:
 | Exercises too long for some learners | Dropoff rate increases | Offer "Express" version (50% content); provide time estimates per chapter |
 | Accessibility issues found in testing | Undermines credibility | Establish accessibility testing committee; fix issues before public release |
 | Low engagement/adoption | Low ROI | Partner with GitHub team to promote; integrate with GitHub Skills program |
-
 
 ## Budget & Resources
 
@@ -470,7 +459,6 @@ Open curriculum invites contributions:
 - **Community support:** 3 hrs/week (respond to feedback)
 - **Annual curriculum review:** 20 hrs (comprehensive update)
 
-
 ## Alignment with GitHub Strategic Goals
 
 | GitHub Goal | Curriculum Supports | How |
@@ -480,7 +468,6 @@ Open curriculum invites contributions:
 | Lead in accessibility | Model best practices | WCAG 2.1 AA+, screen reader tested, keyboard-absolute |
 | Reduce support burden | Empower self-service learning | FAQ, Troubleshooting, Quick Reference guides |
 | Build partnerships | Ecosystem integration | Works with VS Code, GitHub CLI, Copilot, Actions |
-
 
 ## Call to Action
 
@@ -492,7 +479,6 @@ This curriculum is **ready for deployment**. The required next step is:
 
 ### Success Metric
 **If this curriculum launches:** We expect 10,000+ learners in year one, 50,000+ by year two.
-
 
 ## Appendices
 
@@ -523,14 +509,40 @@ See `README.md` for full chapter list and quick links.
 - **Accessibility Lead:** [A11y Champion]
 - **GitHub Contact:** [Product Manager]
 
-
 ## Signature & Approval
 
 **Prepared by:** GitHub Learning Curriculum Team  
 **Date:** February 2026  
 **Status:** Ready for Phase 1 Finalization
 
-
 *This proposal demonstrates a complete, accessible, AI-integrated learning system designed to onboard users into GitHub, emphasize inclusive practices, and amplify human expertise with AI agents. We're ready to launch.*
 
 *Questions? Comments? Open an issue on GitHub or contact the curriculum team.*
+
+## Authoritative Sources
+
+Use these official references when you need the current source of truth for facts in this chapter.
+
+- [GitHub Docs, home](https://docs.github.com/en)
+- [GitHub Changelog](https://github.blog/changelog/)
+
+### Section-Level Source Map
+
+Use this map to verify facts for each major section in this file.
+
+- **Executive Summary & Proposal to GitHub:** [GitHub Docs, home](https://docs.github.com/en), [GitHub Changelog](https://github.blog/changelog/), [About Git](https://docs.github.com/en/get-started/using-git/about-git), [GitHub flow](https://docs.github.com/en/get-started/using-github/github-flow), [About pull requests](https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/about-pull-requests)
+- **Project Overview:** [GitHub Docs, home](https://docs.github.com/en), [GitHub Changelog](https://github.blog/changelog/), [GitHub Projects docs](https://docs.github.com/en/issues/planning-and-tracking-with-projects/learning-about-projects/about-projects), [Labels docs](https://docs.github.com/en/issues/using-labels-and-milestones-to-track-work/managing-labels), [Milestones docs](https://docs.github.com/en/issues/using-labels-and-milestones-to-track-work/about-milestones)
+- **Problem Statement:** [GitHub Docs, home](https://docs.github.com/en), [GitHub Changelog](https://github.blog/changelog/)
+- **Solution: Complete Learning Curriculum:** [GitHub Docs, home](https://docs.github.com/en), [GitHub Changelog](https://github.blog/changelog/), [GitHub Skills catalog](https://skills.github.com/), [GitHub Learning Pathways](https://resources.github.com/learn/pathways/)
+- **Curriculum Highlights:** [GitHub Docs, home](https://docs.github.com/en), [GitHub Changelog](https://github.blog/changelog/)
+- **Pedagogical Approach:** [GitHub Docs, home](https://docs.github.com/en), [GitHub Changelog](https://github.blog/changelog/)
+- **Implementation & Deployment:** [GitHub Docs, home](https://docs.github.com/en), [GitHub Changelog](https://github.blog/changelog/)
+- **Success Criteria & Metrics:** [GitHub Docs, home](https://docs.github.com/en), [GitHub Changelog](https://github.blog/changelog/)
+- **Recommended Next Steps:** [GitHub Docs, home](https://docs.github.com/en), [GitHub Changelog](https://github.blog/changelog/)
+- **Why GitHub Should Support This:** [GitHub Docs, home](https://docs.github.com/en), [GitHub Changelog](https://github.blog/changelog/), [About Git](https://docs.github.com/en/get-started/using-git/about-git), [GitHub flow](https://docs.github.com/en/get-started/using-github/github-flow), [About pull requests](https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/about-pull-requests)
+- **Risks & Mitigations:** [GitHub Docs, home](https://docs.github.com/en), [GitHub Changelog](https://github.blog/changelog/)
+- **Budget & Resources:** [GitHub Docs, home](https://docs.github.com/en), [GitHub Changelog](https://github.blog/changelog/)
+- **Alignment with GitHub Strategic Goals:** [GitHub Docs, home](https://docs.github.com/en), [GitHub Changelog](https://github.blog/changelog/), [About Git](https://docs.github.com/en/get-started/using-git/about-git), [GitHub flow](https://docs.github.com/en/get-started/using-github/github-flow), [About pull requests](https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/about-pull-requests)
+- **Call to Action:** [GitHub Docs, home](https://docs.github.com/en), [GitHub Changelog](https://github.blog/changelog/), [Workflow syntax for GitHub Actions](https://docs.github.com/en/actions/reference/workflows-and-actions/workflow-syntax), [Secure use reference for GitHub Actions](https://docs.github.com/en/actions/security-for-github-actions/security-guides/security-hardening-for-github-actions), [GitHub Actions changelog](https://github.blog/changelog/label/actions/)
+- **Appendices:** [GitHub Docs, home](https://docs.github.com/en), [GitHub Changelog](https://github.blog/changelog/)
+- **Signature & Approval:** [GitHub Docs, home](https://docs.github.com/en), [GitHub Changelog](https://github.blog/changelog/)

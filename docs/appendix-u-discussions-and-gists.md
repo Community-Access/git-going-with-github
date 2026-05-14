@@ -10,7 +10,6 @@
 
 ## GitHub Discussions
 
-
 >
 > **Listen to Episode 24:** [GitHub Discussions](../admin/PODCASTS.md) - a conversational audio overview of this chapter. Listen before reading to preview the concepts, or after to reinforce what you learned.
 
@@ -61,7 +60,6 @@ Suggested first steps for students:
 
 </details>
 
-
 ## Table of Contents
 
 1. [Discussions vs. Issues: When to Use Which](#1-discussions-vs-issues-when-to-use-which)
@@ -74,7 +72,6 @@ Suggested first steps for students:
 8. [Screen Reader Navigation Reference](#8-screen-reader-navigation-reference)
 9. [Organization-Level Discussions](#9-organization-level-discussions)
 10. [Accessibility Agents: What's Different Here](#10-accessibility-agents-whats-different-here)
-
 
 ## 1. Discussions vs. Issues: When to Use Which
 
@@ -98,7 +95,6 @@ Suggested first steps for students:
 - **General** - Everything else
 - **Show and Tell** - Community members showing what they built
 
-
 ## 2. Navigating to Discussions
 
 ### From a Repository
@@ -118,7 +114,6 @@ Large organizations can have organization-level Discussions separate from any in
 2. Look for the Discussions tab at the organization level
 3. These are community-wide conversations, not repo-specific
 
-
 ## 3. Discussion Categories
 
 The Discussions home page is organized by category. Each category is a section with its own heading.
@@ -137,7 +132,6 @@ Enter → Open a discussion
 - Pin/announcements section at top
 - Most active discussions
 - Tags (if the repo uses them)
-
 
 ## 4. Creating a Discussion
 
@@ -177,7 +171,6 @@ Tab to "New discussion" button → Enter
 - Categories appear as clickable cards or a list when creating a new discussion -- choose Q&A for questions (allows marking an answer), Ideas for brainstorming, General for everything else
 - The "New discussion" button is prominently placed at the top-right of the Discussions tab -- the form layout is nearly identical to the new issue form
 - Search existing discussions before posting -- use the search bar at the top of the Discussions page to avoid duplicate questions
-
 
 ## 5. Participating in Discussions
 
@@ -219,7 +212,6 @@ Tab to "Reply" button on the specific comment → Enter
 
 Instead of leaving "+1" comments, use the thumbs-up reaction on the original post or replies. Many maintainers sort discussion responses by upvotes to prioritize most-needed answers.
 
-
 ## 6. Marking an Answer
 
 In the **Q&A** category, one reply can be marked as the accepted answer. This is similar to Stack Overflow's "accepted answer" mechanic.
@@ -235,7 +227,6 @@ In the **Q&A** category, one reply can be marked as the accepted answer. This is
 **Why it matters:** Marked answers make Q&A discussions into searchable documentation. Anyone who searches for the same question later immediately sees the correct answer without reading the whole thread.
 
 **To unmark an answer:** Activate "Unmark as answer" on the same reply.
-
 
 ## 7. Polls
 
@@ -258,7 +249,6 @@ Navigate to the poll section
 ```
 
 **Poll results:** After voting, percentages appear next to each option. Screen readers announce the count and percentage per option.
-
 
 ## 8. Screen Reader Navigation Reference
 
@@ -300,7 +290,6 @@ Ctrl+Enter            → Submit a reply (when in text area)
 - VO+Command+L to list all links (useful for navigating many replies quickly)
 - VO+Space on the reply field to enter interaction mode
 
-
 ## 9. Organization-Level Discussions
 
 Some organizations enable Discussions at the organization level, separate from any repository. These work identically to repository discussions but span the whole organization.
@@ -314,7 +303,6 @@ Common uses:
 
 Find them at `github.com/ORGANIZATION/discussions`.
 
-
 ## 10. Accessibility Agents: What's Different Here
 
 Accessibility Agents prompts currently operate on **issues, PRs, and code** - not directly on Discussions. If you want to respond to a discussion using Accessibility Agents:
@@ -324,7 +312,6 @@ Accessibility Agents prompts currently operate on **issues, PRs, and code** - no
 3. Paste the result back into the discussion reply editor
 
 This works well for first-response drafts on Q&A threads or community questions in your area of expertise.
-
 
 *Return to: [Resources](appendix-x-resources.md) | [Glossary](appendix-a-glossary.md)*
 
@@ -368,7 +355,6 @@ This works well for first-response drafts on Q&A threads or community questions 
 
 </details>
 
-
 ## What Is a Gist?
 
 A Gist is a Git repository that holds a single file or a small collection of files. Every Gist:
@@ -382,7 +368,6 @@ A Gist is a Git repository that holds a single file or a small collection of fil
 
 **Secret does not mean private.** Anyone with the URL can view a secret Gist. It's just not listed publicly on your profile.
 
-
 ## When to Use a Gist vs a Repository
 
 | Use a Gist When... | Use a Repository When... |
@@ -392,7 +377,6 @@ A Gist is a Git repository that holds a single file or a small collection of fil
 | Quick notes or documentation | Need issues, PRs, or project management |
 | Sharing logs or error messages | Want CI/CD and automated checks |
 | Small utility scripts | Need multiple branches |
-
 
 ## Creating a Gist
 
@@ -440,7 +424,6 @@ You can add multiple files to a single Gist:
 - The visibility split button at the bottom-right has a dropdown arrow -- click the arrow to choose between public and secret; the default (larger) button creates a public gist
 - Add multiple files to a single gist using the "Add file" link below the editor -- multi-file gists are useful for sharing related configurations or code snippets together
 
-
 ## Editing a Gist
 
 1. Navigate to your Gist's URL
@@ -449,7 +432,6 @@ You can add multiple files to a single Gist:
 4. Select **"Update public gist"** or **"Update secret gist"**
 
 Every edit creates a new revision. Click **"Revisions"** to see the full edit history.
-
 
 ## Embedding a Gist
 
@@ -463,7 +445,6 @@ GitHub renders it as a formatted code block with syntax highlighting and a link 
 
 **Accessibility note:** Embedded Gists are `<iframe>` elements. Screen readers will announce them as "frame" and allow navigation into the content.
 
-
 ## Cloning a Gist
 
 Every Gist is a Git repository. You can clone it:
@@ -474,7 +455,6 @@ git clone https://gist.github.com/username/gist-id.git
 
 Make changes locally, commit, and push just like a normal repo.
 
-
 ## Forking a Gist
 
 You can fork someone else's Gist to create your own copy:
@@ -484,7 +464,6 @@ You can fork someone else's Gist to create your own copy:
 3. GitHub creates a new Gist under your account
 
 **Use case:** Someone shares a useful script, you fork it, and customize it for your needs.
-
 
 ## Finding Your Gists
 
@@ -502,7 +481,6 @@ All your public and secret Gists are listed here. You can:
 - Press `2` or `H` to jump between Gists
 - Each Gist has links: "Edit," "Delete," "Star," "Embed"
 
-
 ## Discovering Public Gists
 
 **Browse trending Gists:** [gist.github.com/discover](https://gist.github.com/discover)
@@ -512,7 +490,6 @@ See popular Gists by language. Great for finding:
 - Useful scripts and utilities
 - Configuration examples
 - Code snippets for learning
-
 
 ## Gist Comments
 
@@ -528,7 +505,6 @@ Public Gists support comments. Anyone with a GitHub account can leave a comment,
 2. `F` to navigate form fields → Find the comment textarea
 3. Type your comment (Markdown supported)
 4. `Ctrl+Enter` or activate "Comment" button
-
 
 ## Security and Privacy
 
@@ -556,7 +532,6 @@ If you accidentally post sensitive data:
 1. Delete the Gist immediately
 2. Revoke/regenerate any exposed credentials
 3. Remember: Forks and clones may still exist
-
 
 ## Example Use Cases
 
@@ -591,7 +566,6 @@ Reference it later or share with workshop participants.
 
 When answering questions, paste your code as a Gist and link to it. Readers get syntax highlighting, version history, and the ability to fork your solution.
 
-
 ## Gists vs GitHub Repositories - Quick Comparison
 
 | Feature | Gist | Repository |
@@ -606,7 +580,6 @@ When answering questions, paste your code as a Gist and link to it. Readers get 
 | Embeddable | Yes | No |
 | Comments | Yes | Yes (on issues/PRs) |
 
-
 ## Deleting a Gist
 
 1. Navigate to the Gist
@@ -620,3 +593,32 @@ When answering questions, paste your code as a Gist and link to it. Readers get 
 *Back: [Appendix T: Community and Social](appendix-t-community-and-social.md)*  
 *Teaching chapter: [Chapter 08: Open Source Culture](08-open-source-culture.md)*
 
+## Authoritative Sources
+
+Use these official references when you need the current source of truth for facts in this chapter.
+
+- [GitHub Docs, home](https://docs.github.com/en)
+- [GitHub Changelog](https://github.blog/changelog/)
+- [GitHub Discussions docs](https://docs.github.com/en/discussions)
+- [GitHub Gists docs](https://docs.github.com/en/get-started/writing-on-github/editing-and-sharing-content-with-gists)
+
+### Section-Level Source Map
+
+Use this map to verify facts for each major section in this file.
+
+- **GitHub Discussions:** [GitHub Docs, home](https://docs.github.com/en), [GitHub Changelog](https://github.blog/changelog/), [GitHub Discussions docs](https://docs.github.com/en/discussions), [GitHub Gists docs](https://docs.github.com/en/get-started/writing-on-github/editing-and-sharing-content-with-gists), [About Git](https://docs.github.com/en/get-started/using-git/about-git)
+- **Forum-Style Conversations Beyond Issues and Pull Requests:** [GitHub Docs, home](https://docs.github.com/en), [GitHub Changelog](https://github.blog/changelog/), [GitHub Discussions docs](https://docs.github.com/en/discussions), [GitHub Gists docs](https://docs.github.com/en/get-started/writing-on-github/editing-and-sharing-content-with-gists), [About Git](https://docs.github.com/en/get-started/using-git/about-git)
+- **1. Discussions vs. Issues: When to Use Which:** [GitHub Docs, home](https://docs.github.com/en), [GitHub Changelog](https://github.blog/changelog/), [GitHub Discussions docs](https://docs.github.com/en/discussions), [GitHub Gists docs](https://docs.github.com/en/get-started/writing-on-github/editing-and-sharing-content-with-gists), [About Git](https://docs.github.com/en/get-started/using-git/about-git)
+- **2. Navigating to Discussions:** [GitHub Docs, home](https://docs.github.com/en), [GitHub Changelog](https://github.blog/changelog/), [GitHub Discussions docs](https://docs.github.com/en/discussions), [GitHub Gists docs](https://docs.github.com/en/get-started/writing-on-github/editing-and-sharing-content-with-gists)
+- **3. Discussion Categories:** [GitHub Docs, home](https://docs.github.com/en), [GitHub Changelog](https://github.blog/changelog/), [GitHub Discussions docs](https://docs.github.com/en/discussions), [GitHub Gists docs](https://docs.github.com/en/get-started/writing-on-github/editing-and-sharing-content-with-gists)
+- **4. Creating a Discussion:** [GitHub Docs, home](https://docs.github.com/en), [GitHub Changelog](https://github.blog/changelog/), [GitHub Discussions docs](https://docs.github.com/en/discussions), [GitHub Gists docs](https://docs.github.com/en/get-started/writing-on-github/editing-and-sharing-content-with-gists)
+- **5. Participating in Discussions:** [GitHub Docs, home](https://docs.github.com/en), [GitHub Changelog](https://github.blog/changelog/), [GitHub Discussions docs](https://docs.github.com/en/discussions), [GitHub Gists docs](https://docs.github.com/en/get-started/writing-on-github/editing-and-sharing-content-with-gists)
+- **6. Marking an Answer:** [GitHub Docs, home](https://docs.github.com/en), [GitHub Changelog](https://github.blog/changelog/), [GitHub Discussions docs](https://docs.github.com/en/discussions), [GitHub Gists docs](https://docs.github.com/en/get-started/writing-on-github/editing-and-sharing-content-with-gists)
+- **7. Polls:** [GitHub Docs, home](https://docs.github.com/en), [GitHub Changelog](https://github.blog/changelog/), [GitHub Discussions docs](https://docs.github.com/en/discussions), [GitHub Gists docs](https://docs.github.com/en/get-started/writing-on-github/editing-and-sharing-content-with-gists)
+- **8. Screen Reader Navigation Reference:** [GitHub Docs, home](https://docs.github.com/en), [GitHub Changelog](https://github.blog/changelog/), [GitHub Discussions docs](https://docs.github.com/en/discussions), [GitHub Gists docs](https://docs.github.com/en/get-started/writing-on-github/editing-and-sharing-content-with-gists), [W3C Web Content Accessibility Guidelines (WCAG) 2 overview](https://www.w3.org/WAI/standards-guidelines/wcag/)
+- **9. Organization-Level Discussions:** [GitHub Docs, home](https://docs.github.com/en), [GitHub Changelog](https://github.blog/changelog/), [GitHub Discussions docs](https://docs.github.com/en/discussions), [GitHub Gists docs](https://docs.github.com/en/get-started/writing-on-github/editing-and-sharing-content-with-gists)
+- **10. Accessibility Agents: What's Different Here:** [GitHub Docs, home](https://docs.github.com/en), [GitHub Changelog](https://github.blog/changelog/), [GitHub Discussions docs](https://docs.github.com/en/discussions), [GitHub Gists docs](https://docs.github.com/en/get-started/writing-on-github/editing-and-sharing-content-with-gists), [GitHub Copilot docs](https://docs.github.com/en/copilot)
+- **GitHub Gists:** [GitHub Docs, home](https://docs.github.com/en), [GitHub Changelog](https://github.blog/changelog/), [GitHub Discussions docs](https://docs.github.com/en/discussions), [GitHub Gists docs](https://docs.github.com/en/get-started/writing-on-github/editing-and-sharing-content-with-gists), [About Git](https://docs.github.com/en/get-started/using-git/about-git)
+- **Shareable Code Snippets and Notes:** [GitHub Docs, home](https://docs.github.com/en), [GitHub Changelog](https://github.blog/changelog/), [GitHub Discussions docs](https://docs.github.com/en/discussions), [GitHub Gists docs](https://docs.github.com/en/get-started/writing-on-github/editing-and-sharing-content-with-gists)
+- **What Is a Gist?:** [GitHub Docs, home](https://docs.github.com/en), [GitHub Changelog](https://github.blog/changelog/), [GitHub Discussions docs](https://docs.github.com/en/discussions), [GitHub Gists docs](https://docs.github.com/en/get-started/writing-on-github/editing-and-sharing-content-with-gists)
+- **When to Use a Gist vs a Repository:** [GitHub Docs, home](https://docs.github.com/en), [GitHub Changelog](https://github.blog/changelog/), [GitHub Discussions docs](https://docs.github.com/en/discussions), [GitHub Gists docs](https://docs.github.com/en/get-started/writing-on-github/editing-and-sharing-content-with-gists), [About Git](https://docs.github.com/en/get-started/using-git/about-git)

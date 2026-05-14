@@ -53,7 +53,7 @@ The `(auto)` tag in the per-challenge tables below marks rows where an autograde
 | 13 | Copilot | Evidence of Copilot interaction | Shows both Copilot output AND student evaluation |
 | 14 | Issue Template (auto) | YAML file in `.github/ISSUE_TEMPLATE/` | Has `name` and `description` fields |
 | 15 | Agents | Exploration notes in issue or PR | Examined at least one agent's instructions |
-| 16 | Capstone (auto) | Agent file with PR to accessibility-agents, plus peer-simulation or real peer review evidence | Has frontmatter, responsibilities, guardrails |
+| 16 | Capstone | PR, branch, issue, or contribution plan for Accessibility Agents, GLOW, or another meaningful repository, plus peer-simulation or real peer review evidence | Has a clear mission, responsibilities, guardrails, and review-ready evidence |
 
 ### Bonus Challenges (A-E)
 
@@ -84,3 +84,25 @@ Bonus challenges are entirely optional and do not affect core completion. Award 
 - **Student helped others but did not finish their own work:** Give credit for completed challenges. Helping others is valuable but does not substitute for personal evidence.
 - **Student worked ahead and completed Day 2 challenges on Day 1:** Fine. Do not penalize initiative.
 - **Student joined on Day 2 without attending Day 1:** Evaluate on Day 2 challenges only. They verified their GitHub fundamentals via the Day 2 Quick Start self-assessment. Do not require Day 1 challenge completion.
+
+## Authoritative Sources
+
+Use these official references when you need the current source of truth for facts in this chapter.
+
+- [GitHub Docs, home](https://docs.github.com/en)
+- [GitHub Changelog](https://github.blog/changelog/)
+- [About Git](https://docs.github.com/en/get-started/using-git/about-git)
+- [GitHub flow](https://docs.github.com/en/get-started/using-github/github-flow)
+- [About pull requests](https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/about-pull-requests)
+- [About issues](https://docs.github.com/en/issues/tracking-your-work-with-issues/about-issues)
+- [Contributing to a project](https://docs.github.com/en/get-started/exploring-projects-on-github/contributing-to-a-project)
+
+### Section-Level Source Map
+
+Use this map to verify facts for each major section in this file.
+
+- **Grading Philosophy:** [GitHub Docs, home](https://docs.github.com/en), [GitHub Changelog](https://github.blog/changelog/), [About Git](https://docs.github.com/en/get-started/using-git/about-git), [GitHub flow](https://docs.github.com/en/get-started/using-github/github-flow), [About pull requests](https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/about-pull-requests)
+- **Automated Checks:** [GitHub Docs, home](https://docs.github.com/en), [GitHub Changelog](https://github.blog/changelog/), [About Git](https://docs.github.com/en/get-started/using-git/about-git), [GitHub flow](https://docs.github.com/en/get-started/using-github/github-flow), [About pull requests](https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/about-pull-requests)
+- **Per-Challenge Grading:** [GitHub Docs, home](https://docs.github.com/en), [GitHub Changelog](https://github.blog/changelog/), [About Git](https://docs.github.com/en/get-started/using-git/about-git), [GitHub flow](https://docs.github.com/en/get-started/using-github/github-flow), [About pull requests](https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/about-pull-requests)
+- **Completion Levels:** [GitHub Docs, home](https://docs.github.com/en), [GitHub Changelog](https://github.blog/changelog/), [About Git](https://docs.github.com/en/get-started/using-git/about-git), [GitHub flow](https://docs.github.com/en/get-started/using-github/github-flow), [About pull requests](https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/about-pull-requests)
+- **Edge Cases:** [GitHub Docs, home](https://docs.github.com/en), [GitHub Changelog](https://github.blog/changelog/), [About Git](https://docs.github.com/en/get-started/using-git/about-git), [GitHub flow](https://docs.github.com/en/get-started/using-github/github-flow), [About pull requests](https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/about-pull-requests)

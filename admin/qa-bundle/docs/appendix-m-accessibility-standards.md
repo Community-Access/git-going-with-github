@@ -10,7 +10,6 @@
 
 > This appendix gives you a working understanding of the accessibility standards that govern the web, GitHub's interface, and the projects you will contribute to. You do not need to memorize these - use this as a lookup when a PR review mentions a specific standard or success criterion.
 
-
 ## Table of Contents
 
 1. [WCAG 2.2 - The Four Principles](#1-wcag-22---the-four-principles)
@@ -23,7 +22,6 @@
 8. [Testing Against Standards](#8-testing-against-standards)
 9. [Quick Reference: What to Check in a PR](#9-quick-reference-what-to-check-in-a-pr)
 10. [Official References](#10-official-references)
-
 
 ## 1. WCAG 2.2 - The Four Principles
 
@@ -67,7 +65,6 @@ Every WCAG success criterion belongs to one of these four principles.
 
 </details>
 
-
 ## 2. Conformance Levels: A, AA, AAA
 
 | Level | Requirement | Who targets this |
@@ -77,7 +74,6 @@ Every WCAG success criterion belongs to one of these four principles.
 | **AAA** | Highest level - removes remaining barriers for the most niche cases | Not universally required; applied where feasible |
 
 Most open source projects, and GitHub itself, target **WCAG 2.2 AA** compliance. When you file an accessibility bug or review a PR, AA is the standard to reference.
-
 
 ## 3. Key Success Criteria for Web Contributions
 
@@ -131,7 +127,6 @@ These are the criteria you will most commonly encounter when contributing to web
 | **4.1.2 Name, Role, Value** | A | All UI components have accessible names, roles, and states that can be programmatically determined |
 | **4.1.3 Status Messages** | AA | Status messages (e.g. "item added to cart") are announced without receiving focus |
 
-
 ## 4. ARIA - Roles, States, and Properties
 
 WAI-ARIA (Accessible Rich Internet Applications) fills the gap between what HTML natively expresses and what complex interactive widgets require.
@@ -150,7 +145,6 @@ WAI-ARIA (Accessible Rich Internet Applications) fills the gap between what HTML
 2. **All interactive ARIA widgets must be keyboard operable.** Adding `role="button"` means you must also handle `Enter` and `Space` keypresses in JavaScript.
 3. **ARIA only affects the accessibility tree.** It does not add visual styling or behavior - it only changes what assistive technologies announce.
 
-
 ## 5. ARIA Landmark Roles
 
 Landmarks let screen reader users jump directly to major sections of a page. GitHub uses these extensively; screen reader users navigate between them with `D` (NVDA/JAWS) or the Rotor (VoiceOver).
@@ -167,7 +161,6 @@ Landmarks let screen reader users jump directly to major sections of a page. Git
 | `region` | `<section>` (with accessible name) | A generic landmark with a label |
 
 When multiple landmarks of the same type appear on a page, each should have a unique `aria-label` so screen readers can distinguish them. GitHub's Issues list page, for example, has multiple `navigation` regions each with distinct labels.
-
 
 ## 6. Common ARIA Patterns
 
@@ -211,7 +204,6 @@ Use `aria-live="assertive"` only for urgent interruptions (errors). Use `"polite
 
 When expanded: set `aria-expanded="true"` and remove the `hidden` attribute.
 
-
 ## 7. How Standards Apply to GitHub Contributions
 
 When you contribute to an open source project on GitHub, you will encounter accessibility in several contexts:
@@ -241,7 +233,6 @@ Documentation in Markdown is converted to HTML. Accessible Markdown:
 - Write descriptive link text (not "click here")
 - Add alt text to images: `![Bar chart showing 40% improvement in task completion](chart.png)`
 - Use actual lists (`-` or `1.`) rather than faking them with symbols
-
 
 ## 8. Testing Against Standards
 
@@ -291,7 +282,6 @@ Documentation in Markdown is converted to HTML. Accessible Markdown:
 
 </details>
 
-
 ## 9. Quick Reference: What to Check in a PR
 
 | Check | WCAG Criterion |
@@ -306,7 +296,6 @@ Documentation in Markdown is converted to HTML. Accessible Markdown:
 | Color is not the only indicator | 1.4.1 |
 | Dynamic content updates use aria-live | 4.1.3 |
 | New UI components have name, role, value | 4.1.2 |
-
 
 ## 10. Official References
 
@@ -327,3 +316,29 @@ Documentation in Markdown is converted to HTML. Accessible Markdown:
 *Back: [Appendix L: Agents Reference](appendix-l-agents-reference.md)*  
 *Teaching chapter: [Chapter 08: Open Source Culture](08-open-source-culture.md)*
 
+## Authoritative Sources
+
+Use these official references when you need the current source of truth for facts in this chapter.
+
+- [GitHub Docs, home](https://docs.github.com/en)
+- [GitHub Changelog](https://github.blog/changelog/)
+- [W3C Web Content Accessibility Guidelines (WCAG) 2 overview](https://www.w3.org/WAI/standards-guidelines/wcag/)
+- [WAI tutorials for accessible design patterns](https://www.w3.org/WAI/tutorials/)
+- [WAI-ARIA Authoring Practices Guide](https://www.w3.org/WAI/ARIA/apg/)
+- [GitHub accessibility statement](https://docs.github.com/en/site-policy/other-site-policies/github-accessibility-statement)
+
+### Section-Level Source Map
+
+Use this map to verify facts for each major section in this file.
+
+- **WCAG, ARIA, and What They Mean for Your Contributions:** [GitHub Docs, home](https://docs.github.com/en), [GitHub Changelog](https://github.blog/changelog/), [W3C Web Content Accessibility Guidelines (WCAG) 2 overview](https://www.w3.org/WAI/standards-guidelines/wcag/), [WAI tutorials for accessible design patterns](https://www.w3.org/WAI/tutorials/), [WAI-ARIA Authoring Practices Guide](https://www.w3.org/WAI/ARIA/apg/)
+- **1. WCAG 2.2 - The Four Principles:** [GitHub Docs, home](https://docs.github.com/en), [GitHub Changelog](https://github.blog/changelog/), [W3C Web Content Accessibility Guidelines (WCAG) 2 overview](https://www.w3.org/WAI/standards-guidelines/wcag/), [WAI tutorials for accessible design patterns](https://www.w3.org/WAI/tutorials/), [WAI-ARIA Authoring Practices Guide](https://www.w3.org/WAI/ARIA/apg/)
+- **2. Conformance Levels: A, AA, AAA:** [GitHub Docs, home](https://docs.github.com/en), [GitHub Changelog](https://github.blog/changelog/), [W3C Web Content Accessibility Guidelines (WCAG) 2 overview](https://www.w3.org/WAI/standards-guidelines/wcag/), [WAI tutorials for accessible design patterns](https://www.w3.org/WAI/tutorials/), [WAI-ARIA Authoring Practices Guide](https://www.w3.org/WAI/ARIA/apg/)
+- **3. Key Success Criteria for Web Contributions:** [GitHub Docs, home](https://docs.github.com/en), [GitHub Changelog](https://github.blog/changelog/), [W3C Web Content Accessibility Guidelines (WCAG) 2 overview](https://www.w3.org/WAI/standards-guidelines/wcag/), [WAI tutorials for accessible design patterns](https://www.w3.org/WAI/tutorials/), [WAI-ARIA Authoring Practices Guide](https://www.w3.org/WAI/ARIA/apg/)
+- **4. ARIA - Roles, States, and Properties:** [GitHub Docs, home](https://docs.github.com/en), [GitHub Changelog](https://github.blog/changelog/), [W3C Web Content Accessibility Guidelines (WCAG) 2 overview](https://www.w3.org/WAI/standards-guidelines/wcag/), [WAI tutorials for accessible design patterns](https://www.w3.org/WAI/tutorials/), [WAI-ARIA Authoring Practices Guide](https://www.w3.org/WAI/ARIA/apg/)
+- **5. ARIA Landmark Roles:** [GitHub Docs, home](https://docs.github.com/en), [GitHub Changelog](https://github.blog/changelog/), [W3C Web Content Accessibility Guidelines (WCAG) 2 overview](https://www.w3.org/WAI/standards-guidelines/wcag/), [WAI tutorials for accessible design patterns](https://www.w3.org/WAI/tutorials/), [WAI-ARIA Authoring Practices Guide](https://www.w3.org/WAI/ARIA/apg/)
+- **6. Common ARIA Patterns:** [GitHub Docs, home](https://docs.github.com/en), [GitHub Changelog](https://github.blog/changelog/), [W3C Web Content Accessibility Guidelines (WCAG) 2 overview](https://www.w3.org/WAI/standards-guidelines/wcag/), [WAI tutorials for accessible design patterns](https://www.w3.org/WAI/tutorials/), [WAI-ARIA Authoring Practices Guide](https://www.w3.org/WAI/ARIA/apg/)
+- **7. How Standards Apply to GitHub Contributions:** [GitHub Docs, home](https://docs.github.com/en), [GitHub Changelog](https://github.blog/changelog/), [W3C Web Content Accessibility Guidelines (WCAG) 2 overview](https://www.w3.org/WAI/standards-guidelines/wcag/), [WAI tutorials for accessible design patterns](https://www.w3.org/WAI/tutorials/), [WAI-ARIA Authoring Practices Guide](https://www.w3.org/WAI/ARIA/apg/)
+- **8. Testing Against Standards:** [GitHub Docs, home](https://docs.github.com/en), [GitHub Changelog](https://github.blog/changelog/), [W3C Web Content Accessibility Guidelines (WCAG) 2 overview](https://www.w3.org/WAI/standards-guidelines/wcag/), [WAI tutorials for accessible design patterns](https://www.w3.org/WAI/tutorials/), [WAI-ARIA Authoring Practices Guide](https://www.w3.org/WAI/ARIA/apg/)
+- **9. Quick Reference: What to Check in a PR:** [GitHub Docs, home](https://docs.github.com/en), [GitHub Changelog](https://github.blog/changelog/), [W3C Web Content Accessibility Guidelines (WCAG) 2 overview](https://www.w3.org/WAI/standards-guidelines/wcag/), [WAI tutorials for accessible design patterns](https://www.w3.org/WAI/tutorials/), [WAI-ARIA Authoring Practices Guide](https://www.w3.org/WAI/ARIA/apg/)
+- **10. Official References:** [GitHub Docs, home](https://docs.github.com/en), [GitHub Changelog](https://github.blog/changelog/), [W3C Web Content Accessibility Guidelines (WCAG) 2 overview](https://www.w3.org/WAI/standards-guidelines/wcag/), [WAI tutorials for accessible design patterns](https://www.w3.org/WAI/tutorials/), [WAI-ARIA Authoring Practices Guide](https://www.w3.org/WAI/ARIA/apg/)

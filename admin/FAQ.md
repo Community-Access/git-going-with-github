@@ -1,6 +1,5 @@
 # FAQ: Frequently Asked Questions
 
-
 ## Table of Contents
 
 - [About This Workshop](#about-this-workshop)
@@ -27,7 +26,6 @@
 - [After the Workshop](#after-the-workshop)
 - [Concepts and Terminology](#concepts-and-terminology)
 - [Still Stuck?](#still-stuck)
-
 
 ## About This Workshop
 
@@ -56,7 +54,6 @@
 ### Q: Where can I find the course outline and table of contents?
 **A:** See the [Course Guide](docs/course-guide.md) for the full table of contents, chapter sequence, timing, and exercises at a glance.
 
-
 ## Is This For Me?
 
 ### Q: I am a complete beginner to GitHub. Where do I start?
@@ -82,7 +79,6 @@
 
 ### Q: I only have a few hours. What is the minimum I should read?
 **A:** Read Chapters 0, 1, 4, and 6. That covers setup, GitHub structure, issues, and pull requests - enough to start contributing to any project.
-
 
 ## Getting Started
 
@@ -119,7 +115,6 @@ Full instructions: [Chapter 0 (Pre-Workshop Setup)](docs/00-pre-workshop-setup.m
 
 ### Q: Can I use a Chromebook or tablet?
 **A:** Day 1 (browser-based) works on any device with a modern browser and a keyboard. Day 2 requires Visual Studio Code, which runs on Windows, macOS, and Linux desktops. If you have a Chromebook, consider [GitHub Codespaces](docs/appendix-j-cloud-editors.md) as an alternative to a local VS Code install.
-
 
 ## Screen Readers and Accessibility
 
@@ -179,7 +174,6 @@ Full reference: [Appendix B (Screen Reader Cheat Sheet)](docs/appendix-b-screen-
 ### Q: How do I know if a page element is interactive?
 **A:** Your screen reader announces the role of each element - "button," "link," "edit text," "checkbox," etc. If it announces "clickable" without a more specific role, it may not be fully accessible. In that case, try `Enter` or `Space` to activate it.
 
-
 ## GitHub Accounts and Authentication
 
 ### Q: I forgot my GitHub password. How do I reset it?
@@ -209,7 +203,6 @@ Security note: We strongly recommend enabling 2FA on your GitHub account. If you
 
 ### Q: My organization uses SSO (Single Sign-On). Does that affect anything?
 **A:** Yes. After authenticating with SSO, you may need to authorize your SSH key or PAT for that organization. Go to https://github.com/settings/tokens → find your token → click "Configure SSO" → authorize for your org.
-
 
 ## Navigating GitHub on the Web
 
@@ -254,7 +247,6 @@ Full reference: [Appendix B (Screen Reader Cheat Sheet)](docs/appendix-b-screen-
 
 Full reference: [Appendix J (Advanced Search)](docs/appendix-n-advanced-search.md)
 
-
 ## Issues
 
 ### Q: What is the difference between an issue and a pull request?
@@ -297,7 +289,6 @@ When the PR is merged, the issue closes automatically.
 
 ### Q: How do I subscribe to or unsubscribe from an issue?
 **A:** On the issue sidebar, find the "Notifications" section. Click "Subscribe" to get notified of all comments, or "Unsubscribe" to stop notifications. You are automatically subscribed to issues you create or comment on.
-
 
 ## Pull Requests
 
@@ -352,7 +343,6 @@ Navigate between tabs using your screen reader's heading navigation or landmark 
 ### Q: Can I edit someone else's PR?
 **A:** Only if the PR author checked "Allow edits from maintainers" and you have write access to the target repository. Otherwise, you can suggest changes in a review comment using the suggestion feature.
 
-
 ## Merge Conflicts
 
 ### Q: What is a merge conflict?
@@ -388,7 +378,6 @@ After resolving: `git add [filename]` → `git commit -m "Resolved merge conflic
 - Communicate with your team about which files you are editing
 - Avoid editing the same lines as someone else
 
-
 ## Branches and Forks
 
 ### Q: What is the difference between a fork and a branch?
@@ -415,7 +404,6 @@ After resolving: `git add [filename]` → `git commit -m "Resolved merge conflic
 **A:** 
 - **On GitHub:** After merging, GitHub shows a "Delete branch" button on the PR page
 - **Locally:** `git branch -d branch-name` (safe delete - only works if merged) or `git branch -D branch-name` (force delete)
-
 
 ## Markdown
 
@@ -463,7 +451,6 @@ The `|` characters create columns. The `---` row separates the header from the b
 ### Q: How do I preview Markdown before submitting?
 **A:** On GitHub, click the "Preview" tab above any text input area. In VS Code, press `Ctrl+Shift+V` to open Markdown preview in a new tab, or `Ctrl+K V` for a side-by-side preview.
 
-
 ## Labels, Milestones, and Projects
 
 ### Q: What are labels for?
@@ -477,7 +464,6 @@ The `|` characters create columns. The `---` row separates the header from the b
 
 ### Q: What is a GitHub Project?
 **A:** A flexible planning tool with boards (Kanban-style columns), tables, and roadmaps. You can add issues and PRs from multiple repositories. See [Appendix I (GitHub Projects Deep Dive)](docs/appendix-r-projects-deep-dive.md).
-
 
 ## Notifications
 
@@ -507,7 +493,6 @@ See [Chapter 10 (Notifications)](docs/10-notifications-and-day-1-close.md).
 - `E` to mark as Done from the list
 - `Shift+I` to mark as Read
 - `Enter` to open the linked issue or PR
-
 
 ## VS Code
 
@@ -556,7 +541,6 @@ Within each view, use `Tab`, `Arrow keys`, and `Enter` to navigate.
 ### Q: What are audio cues (accessibility signals) in VS Code?
 **A:** VS Code can play short sounds for events like errors, warnings, breakpoints, and diff changes. Configure them at Settings → search `accessibility.signals`. Each signal can be set to "on," "off," or "auto" (only when a screen reader is detected). See [Appendix M](docs/appendix-g-vscode-reference.md).
 
-
 ## Git and Source Control in VS Code
 
 ### Q: How do I clone a repository in VS Code?
@@ -587,7 +571,6 @@ Within each view, use `Tab`, `Arrow keys`, and `Enter` to navigate.
 
 ### Q: How do I view a diff in VS Code?
 **A:** In the Source Control panel, click any changed file. VS Code opens a side-by-side diff view. For accessible navigation, press `F7` to open the Accessible Diff Viewer, which reads changes sequentially.
-
 
 ## GitHub Copilot
 
@@ -633,7 +616,6 @@ Full reference: [Appendix K (GitHub Copilot Reference)](docs/appendix-k-copilot-
 ### Q: Can I choose which AI model Copilot uses?
 **A:** Yes. In Copilot Chat, activate the model selector near the input field to choose from models available to your account. Model availability changes frequently and may depend on your plan, organization policy, geography, and rollout. See [Appendix K (GitHub Copilot Reference)](docs/appendix-k-copilot-reference.md).
 
-
 ## Accessibility Agents
 
 ### Q: What is Accessibility Agents?
@@ -662,7 +644,6 @@ See [Appendix V](docs/appendix-l-agents-reference.md) for the complete list of a
 ### Q: Can I create my own agents?
 **A:** Yes. Create a new `.agent.md` file in `.github/agents/` following the existing file format. The file is plain Markdown with YAML frontmatter. See [Appendix V (Accessibility Agents Reference)](docs/appendix-l-agents-reference.md).
 
-
 ## Issue Templates
 
 ### Q: What is an issue template and why should I care?
@@ -682,7 +663,6 @@ See [TROUBLESHOOTING.md](TROUBLESHOOTING.md) → "Template not showing in GitHub
 
 ### Q: Can I use the @template-builder agent to create templates?
 **A:** Yes. The `@template-builder` agent in Copilot Chat walks you through creating templates interactively. It asks questions and generates the YAML for you. See [Chapter 16 (Accessibility Agents)](docs/19-accessibility-agents.md).
-
 
 ## Code Review
 
@@ -716,7 +696,6 @@ Example: "The `alt` attribute on this image is empty. Screen readers will skip i
 - **Approve:** You are satisfied the changes are ready to merge
 - **Request Changes:** You have identified issues that must be fixed before merging
 
-
 ## The Learning Room
 
 ### Q: What is the Learning Room?
@@ -734,7 +713,6 @@ Details in `docs/CHALLENGES.md`.
 
 ### Q: Can I practice in the Learning Room on my own?
 **A:** Yes. Fork the repository, and the individual challenges work in your fork. Group challenges are designed for a live session but you can still practice the technical steps solo.
-
 
 ## Workshop Logistics
 
@@ -755,7 +733,6 @@ Details in `docs/CHALLENGES.md`.
 
 ### Q: What if I have accessibility needs not covered by the workshop setup?
 **A:** Contact the facilitator. This workshop is designed for flexibility - if you need a specific accommodation (higher contrast, different font size, alternative input method, longer break time), ask.
-
 
 ## After the Workshop
 
@@ -788,7 +765,6 @@ Then rebuild the HTML: `npm run build:html`
 
 ### Q: How do I download all the workshop materials for offline reading?
 **A:** See [Appendix Y (Accessing Workshop Materials)](docs/appendix-y-workshop-materials.md) for complete instructions - clone via Git, download as ZIP, or read individual files on GitHub.com.
-
 
 ## Concepts and Terminology
 
@@ -828,7 +804,6 @@ See [Chapter 1](docs/02-understanding-github.md) for detailed explanation.
 ### Q: What is ARIA?
 **A:** **Accessible Rich Internet Applications** - A set of HTML attributes that add accessibility information to web elements. For example, `aria-label` provides a text description for screen readers, and `role` identifies the purpose of an element (button, navigation, main content, etc.).
 
-
 ## Still Stuck?
 
 This FAQ does not cover your question? Try these resources in order:
@@ -841,6 +816,33 @@ This FAQ does not cover your question? Try these resources in order:
 6. **GitHub Issues** - Search existing issues or [open a new one](../../issues)
 7. [**FACILITATOR.md**](FACILITATOR.md) - If you are leading a workshop
 
-
 *Last updated: May 2026*  
 *Have more questions? Open an issue or discussion on GitHub!*
+
+## Authoritative Sources
+
+Use these official references when you need the current source of truth for facts in this chapter.
+
+- [GitHub Docs, home](https://docs.github.com/en)
+- [GitHub Changelog](https://github.blog/changelog/)
+
+### Section-Level Source Map
+
+Use this map to verify facts for each major section in this file.
+
+- **About This Workshop:** [GitHub Docs, home](https://docs.github.com/en), [GitHub Changelog](https://github.blog/changelog/)
+- **Is This For Me?:** [GitHub Docs, home](https://docs.github.com/en), [GitHub Changelog](https://github.blog/changelog/)
+- **Getting Started:** [GitHub Docs, home](https://docs.github.com/en), [GitHub Changelog](https://github.blog/changelog/)
+- **Screen Readers and Accessibility:** [GitHub Docs, home](https://docs.github.com/en), [GitHub Changelog](https://github.blog/changelog/), [W3C Web Content Accessibility Guidelines (WCAG) 2 overview](https://www.w3.org/WAI/standards-guidelines/wcag/), [WAI tutorials for accessible design patterns](https://www.w3.org/WAI/tutorials/), [WAI-ARIA Authoring Practices Guide](https://www.w3.org/WAI/ARIA/apg/)
+- **GitHub Accounts and Authentication:** [GitHub Docs, home](https://docs.github.com/en), [GitHub Changelog](https://github.blog/changelog/), [About Git](https://docs.github.com/en/get-started/using-git/about-git), [GitHub flow](https://docs.github.com/en/get-started/using-github/github-flow), [About pull requests](https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/about-pull-requests)
+- **Navigating GitHub on the Web:** [GitHub Docs, home](https://docs.github.com/en), [GitHub Changelog](https://github.blog/changelog/), [About Git](https://docs.github.com/en/get-started/using-git/about-git), [GitHub flow](https://docs.github.com/en/get-started/using-github/github-flow), [About pull requests](https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/about-pull-requests)
+- **Issues:** [GitHub Docs, home](https://docs.github.com/en), [GitHub Changelog](https://github.blog/changelog/), [About Git](https://docs.github.com/en/get-started/using-git/about-git), [GitHub flow](https://docs.github.com/en/get-started/using-github/github-flow), [About pull requests](https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/about-pull-requests)
+- **Pull Requests:** [GitHub Docs, home](https://docs.github.com/en), [GitHub Changelog](https://github.blog/changelog/), [About Git](https://docs.github.com/en/get-started/using-git/about-git), [GitHub flow](https://docs.github.com/en/get-started/using-github/github-flow), [About pull requests](https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/about-pull-requests)
+- **Merge Conflicts:** [GitHub Docs, home](https://docs.github.com/en), [GitHub Changelog](https://github.blog/changelog/), [About Git](https://docs.github.com/en/get-started/using-git/about-git), [GitHub flow](https://docs.github.com/en/get-started/using-github/github-flow), [About pull requests](https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/about-pull-requests)
+- **Branches and Forks:** [GitHub Docs, home](https://docs.github.com/en), [GitHub Changelog](https://github.blog/changelog/), [About Git](https://docs.github.com/en/get-started/using-git/about-git), [GitHub flow](https://docs.github.com/en/get-started/using-github/github-flow), [About pull requests](https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/about-pull-requests)
+- **Markdown:** [GitHub Docs, home](https://docs.github.com/en), [GitHub Changelog](https://github.blog/changelog/)
+- **Labels, Milestones, and Projects:** [GitHub Docs, home](https://docs.github.com/en), [GitHub Changelog](https://github.blog/changelog/), [GitHub Projects docs](https://docs.github.com/en/issues/planning-and-tracking-with-projects/learning-about-projects/about-projects), [Labels docs](https://docs.github.com/en/issues/using-labels-and-milestones-to-track-work/managing-labels), [Milestones docs](https://docs.github.com/en/issues/using-labels-and-milestones-to-track-work/about-milestones)
+- **Notifications:** [GitHub Docs, home](https://docs.github.com/en), [GitHub Changelog](https://github.blog/changelog/)
+- **VS Code:** [GitHub Docs, home](https://docs.github.com/en), [GitHub Changelog](https://github.blog/changelog/)
+- **Git and Source Control in VS Code:** [GitHub Docs, home](https://docs.github.com/en), [GitHub Changelog](https://github.blog/changelog/), [About Git](https://docs.github.com/en/get-started/using-git/about-git), [GitHub flow](https://docs.github.com/en/get-started/using-github/github-flow), [About pull requests](https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/about-pull-requests)
+- **GitHub Copilot:** [GitHub Docs, home](https://docs.github.com/en), [GitHub Changelog](https://github.blog/changelog/), [GitHub Copilot docs](https://docs.github.com/en/copilot), [Custom instructions support matrix](https://docs.github.com/en/copilot/reference/custom-instructions-support), [About custom agents](https://docs.github.com/en/copilot/concepts/agents/cloud-agent/about-custom-agents)

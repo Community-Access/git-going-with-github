@@ -39,7 +39,6 @@
 
 </details>
 
-
 ## Table of Contents
 
 1. [Browsing Online (GitHub Pages)](#1-browsing-online-github-pages)
@@ -50,7 +49,6 @@
 6. [Offline Reading](#6-offline-reading)
 7. [Keeping Your Copy Updated](#7-keeping-your-copy-updated)
 8. [Which Format Should I Use?](#8-which-format-should-i-use)
-
 
 ## 1. Browsing Online (GitHub Pages)
 
@@ -72,7 +70,6 @@ Your facilitator will share the exact URL. Once you have it:
 
 For details on how GitHub Pages works, see [Appendix P - Publishing with GitHub Pages](appendix-w-github-pages.md).
 
-
 ## 2. Reading on GitHub.com
 
 You can read every file directly on GitHub.com without downloading anything:
@@ -88,7 +85,6 @@ You can read every file directly on GitHub.com without downloading anything:
 - **File content:** Once inside a file, GitHub renders the Markdown. Use `H` to navigate headings
 - **Breadcrumbs:** At the top of each file view, breadcrumb links show the path (e.g., `Learning-Room / docs / 06-working-with-pull-requests.md`). Use these to navigate back
 - **Go to File shortcut:** Press `T` on the repository's main page to open the file finder - type any filename to jump to it
-
 
 ## 3. Downloading Everything
 
@@ -127,7 +123,6 @@ If you do not have Git installed or prefer not to use the command line:
 
 **Note:** A ZIP download is a snapshot. It does not update automatically - see [Section 7](#7-keeping-your-copy-updated) for how to get updates.
 
-
 ## 4. Downloading Individual Files
 
 To download a single file (for example, one chapter or the screen reader cheat sheet):
@@ -145,7 +140,6 @@ To download a single file (for example, one chapter or the screen reader cheat s
 
 If you have already cloned the repo, every file is already on your computer. Open the folder and copy whichever files you need.
 
-
 ## 5. What's in Each Folder
 
 | Folder | Contents | Format |
@@ -158,7 +152,6 @@ If you have already cloned the repo, every file is already on your computer. Ope
 | `.github/` | Issue templates, PR template, Copilot agents, slash commands | YAML and Markdown |
 | `scripts/` | Build script that converts Markdown to HTML | JavaScript |
 | Root (`/`) | README, agendas, facilitator guide, contributing guide, and other project files | Markdown (`.md`) |
-
 
 ## 6. Offline Reading
 
@@ -180,7 +173,6 @@ Open `.md` files in any text editor. They are plain text with lightweight format
 
 - **VS Code with Markdown:** Open the repo folder in VS Code, browse the Explorer, and read files directly in the editor. Use `Ctrl+Shift+V` to open the rendered preview
 - **Browser with HTML:** Open `html/index.html` and navigate from there - this gives the most polished reading experience
-
 
 ## 7. Keeping Your Copy Updated
 
@@ -205,7 +197,6 @@ npm run build:html
 ### If you downloaded a ZIP
 
 Download a fresh ZIP from the repository and replace your local copy. There is no incremental update for ZIP downloads.
-
 
 ## 8. Which Format Should I Use?
 
@@ -253,3 +244,23 @@ Download a fresh ZIP from the repository and replace your local copy. There is n
 *Back: [Appendix X: Resources](appendix-x-resources.md)*  
 *Teaching chapter: [Chapter 00: Pre-Workshop Setup](00-pre-workshop-setup.md)*
 
+## Authoritative Sources
+
+Use these official references when you need the current source of truth for facts in this chapter.
+
+- [GitHub Docs, home](https://docs.github.com/en)
+- [GitHub Changelog](https://github.blog/changelog/)
+
+### Section-Level Source Map
+
+Use this map to verify facts for each major section in this file.
+
+- **How to Get, Read, and Keep These Documents:** [GitHub Docs, home](https://docs.github.com/en), [GitHub Changelog](https://github.blog/changelog/)
+- **1. Browsing Online (GitHub Pages):** [GitHub Docs, home](https://docs.github.com/en), [GitHub Changelog](https://github.blog/changelog/), [About Git](https://docs.github.com/en/get-started/using-git/about-git), [GitHub flow](https://docs.github.com/en/get-started/using-github/github-flow), [About pull requests](https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/about-pull-requests)
+- **2. Reading on GitHub.com:** [GitHub Docs, home](https://docs.github.com/en), [GitHub Changelog](https://github.blog/changelog/), [About Git](https://docs.github.com/en/get-started/using-git/about-git), [GitHub flow](https://docs.github.com/en/get-started/using-github/github-flow), [About pull requests](https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/about-pull-requests)
+- **3. Downloading Everything:** [GitHub Docs, home](https://docs.github.com/en), [GitHub Changelog](https://github.blog/changelog/)
+- **4. Downloading Individual Files:** [GitHub Docs, home](https://docs.github.com/en), [GitHub Changelog](https://github.blog/changelog/)
+- **5. What's in Each Folder:** [GitHub Docs, home](https://docs.github.com/en), [GitHub Changelog](https://github.blog/changelog/)
+- **6. Offline Reading:** [GitHub Docs, home](https://docs.github.com/en), [GitHub Changelog](https://github.blog/changelog/)
+- **7. Keeping Your Copy Updated:** [GitHub Docs, home](https://docs.github.com/en), [GitHub Changelog](https://github.blog/changelog/)
+- **8. Which Format Should I Use?:** [GitHub Docs, home](https://docs.github.com/en), [GitHub Changelog](https://github.blog/changelog/)

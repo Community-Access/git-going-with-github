@@ -2,7 +2,6 @@
 
 How to monitor, support, and troubleshoot the workshop challenge system during a live cohort. For deployment and classroom setup, see the [Workshop Deployment Guide](../classroom/README.md).
 
-
 ## How the Challenge System Works
 
 Each student gets a **private repository** from GitHub Classroom. Inside that repo, three automation systems run independently:
@@ -14,7 +13,6 @@ Each student gets a **private repository** from GitHub Classroom. Inside that re
 | **Autograders** | Runs automated tests on specific challenges to verify completion evidence |
 
 Challenges are sequential. A student cannot see Challenge 5 until they close Challenge 4. This keeps students focused and prevents overwhelm.
-
 
 ## Monitoring Student Progress
 
@@ -49,7 +47,6 @@ Look for these signals on the classroom dashboard:
 - Student has not closed an issue in over an hour (may be stuck on a challenge)
 - Autograding shows repeated failures (may need guidance on what the test expects)
 
-
 ## Responding to Help Requests
 
 ### When a Student Says "I am stuck"
@@ -77,7 +74,6 @@ Act immediately when you see:
 - A student has zero activity for over 90 minutes after accepting (they may be lost)
 - Aria posts an error or does not respond to a PR within 60 seconds (workflow may be disabled)
 
-
 ## Validating Challenges
 
 ### Challenges with Automatic Validation
@@ -95,7 +91,7 @@ These challenges have autograding tests that verify completion:
 | 11 - Open a Day 2 PR | Push from local to remote succeeded |
 | 12 - Review Like a Pro | Review comment exists on a PR |
 | 14 - Template Remix | YAML file passes validation |
-| 16 - Build Your Agent (Capstone) | Agent file is present and structured correctly |
+| 16 - Capstone Project | Mission, responsibilities, guardrails, and review-ready evidence are present |
 
 ### Challenges That Require Manual Review
 
@@ -107,7 +103,6 @@ What to look for:
 3. Genuine engagement (not copy-pasting the example verbatim)
 
 Comment on the issue: "Great work! Your [specific thing] shows you understand [concept]."
-
 
 ## Troubleshooting
 
@@ -165,7 +160,6 @@ Comment on the issue: "Great work! Your [specific thing] shows you understand [c
 3. Try having the student open the link in an incognito/private window to rule out caching
 4. If persistent, add the student to the roster manually from the classroom settings
 
-
 ## Challenge Metadata
 
 ### Labels
@@ -194,7 +188,6 @@ Challenge 16: Build Your Agent
 
 The Progression Bot uses these exact titles. Do not rename challenge issues in student repos or the bot will not recognize them for sequencing.
 
-
 ## Automation File References
 
 All automation files live in the student's repo (copied from the template):
@@ -208,7 +201,6 @@ All automation files live in the student's repo (copied from the template):
 | `.github/workflows/autograder-local-commit.yml` | Validates Challenge 10 (local commit) |
 | `.github/workflows/autograder-template.yml` | Validates Challenge 14 (YAML template) |
 | `.github/workflows/autograder-capstone.yml` | Validates Challenge 16 (agent file) |
-
 
 ## Success Metrics
 
@@ -228,7 +220,6 @@ All automation files live in the student's repo (copied from the template):
 - Number of students requiring direct facilitator help per hour
 - Autograding failures per hour (if high, may indicate unclear challenge instructions)
 - Aria response failures (if any, indicates workflow configuration issue)
-
 
 ## FAQ
 
@@ -258,7 +249,6 @@ Track the first-attempt pass rate on the classroom dashboard. If fewer than 50% 
 
 Yes. Add new issue templates to the `learning-room-template` repo and update the Progression Bot's challenge sequence in `student-progression.yml`. New challenges will only appear for students who have not yet passed the insertion point.
 
-
 ## Pre-Workshop Checklist
 
 - [ ] Classroom created and assignments configured (see [Workshop Deployment Guide](../classroom/README.md))
@@ -270,3 +260,29 @@ Yes. Add new issue templates to the `learning-room-template` repo and update the
 - [ ] Invite links ready to share (posted in agenda documents and available for chat/email)
 - [ ] One facilitator has completed a full challenge end-to-end as a test run
 
+## Authoritative Sources
+
+Use these official references when you need the current source of truth for facts in this chapter.
+
+- [GitHub Docs, home](https://docs.github.com/en)
+- [GitHub Changelog](https://github.blog/changelog/)
+- [About Git](https://docs.github.com/en/get-started/using-git/about-git)
+- [GitHub flow](https://docs.github.com/en/get-started/using-github/github-flow)
+- [About pull requests](https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/about-pull-requests)
+- [About issues](https://docs.github.com/en/issues/tracking-your-work-with-issues/about-issues)
+- [Contributing to a project](https://docs.github.com/en/get-started/exploring-projects-on-github/contributing-to-a-project)
+
+### Section-Level Source Map
+
+Use this map to verify facts for each major section in this file.
+
+- **How the Challenge System Works:** [GitHub Docs, home](https://docs.github.com/en), [GitHub Changelog](https://github.blog/changelog/), [About Git](https://docs.github.com/en/get-started/using-git/about-git), [GitHub flow](https://docs.github.com/en/get-started/using-github/github-flow), [About pull requests](https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/about-pull-requests)
+- **Monitoring Student Progress:** [GitHub Docs, home](https://docs.github.com/en), [GitHub Changelog](https://github.blog/changelog/), [About Git](https://docs.github.com/en/get-started/using-git/about-git), [GitHub flow](https://docs.github.com/en/get-started/using-github/github-flow), [About pull requests](https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/about-pull-requests)
+- **Responding to Help Requests:** [GitHub Docs, home](https://docs.github.com/en), [GitHub Changelog](https://github.blog/changelog/), [About Git](https://docs.github.com/en/get-started/using-git/about-git), [GitHub flow](https://docs.github.com/en/get-started/using-github/github-flow), [About pull requests](https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/about-pull-requests)
+- **Validating Challenges:** [GitHub Docs, home](https://docs.github.com/en), [GitHub Changelog](https://github.blog/changelog/), [About Git](https://docs.github.com/en/get-started/using-git/about-git), [GitHub flow](https://docs.github.com/en/get-started/using-github/github-flow), [About pull requests](https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/about-pull-requests)
+- **Troubleshooting:** [GitHub Docs, home](https://docs.github.com/en), [GitHub Changelog](https://github.blog/changelog/), [About Git](https://docs.github.com/en/get-started/using-git/about-git), [GitHub flow](https://docs.github.com/en/get-started/using-github/github-flow), [About pull requests](https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/about-pull-requests)
+- **Challenge Metadata:** [GitHub Docs, home](https://docs.github.com/en), [GitHub Changelog](https://github.blog/changelog/), [About Git](https://docs.github.com/en/get-started/using-git/about-git), [GitHub flow](https://docs.github.com/en/get-started/using-github/github-flow), [About pull requests](https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/about-pull-requests)
+- **Automation File References:** [GitHub Docs, home](https://docs.github.com/en), [GitHub Changelog](https://github.blog/changelog/), [About Git](https://docs.github.com/en/get-started/using-git/about-git), [GitHub flow](https://docs.github.com/en/get-started/using-github/github-flow), [About pull requests](https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/about-pull-requests)
+- **Success Metrics:** [GitHub Docs, home](https://docs.github.com/en), [GitHub Changelog](https://github.blog/changelog/), [About Git](https://docs.github.com/en/get-started/using-git/about-git), [GitHub flow](https://docs.github.com/en/get-started/using-github/github-flow), [About pull requests](https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/about-pull-requests)
+- **FAQ:** [GitHub Docs, home](https://docs.github.com/en), [GitHub Changelog](https://github.blog/changelog/), [About Git](https://docs.github.com/en/get-started/using-git/about-git), [GitHub flow](https://docs.github.com/en/get-started/using-github/github-flow), [About pull requests](https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/about-pull-requests)
+- **Pre-Workshop Checklist:** [GitHub Docs, home](https://docs.github.com/en), [GitHub Changelog](https://github.blog/changelog/), [About Git](https://docs.github.com/en/get-started/using-git/about-git), [GitHub flow](https://docs.github.com/en/get-started/using-github/github-flow), [About pull requests](https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/about-pull-requests)

@@ -617,3 +617,27 @@ Use this before every push to a public repository.
 *Back: [Appendix E: Advanced Git](appendix-e-advanced-git.md)*  
 *Teaching chapter: [Chapter 08: Open Source Culture](08-open-source-culture.md)*
 
+## Authoritative Sources
+
+Use these official references when you need the current source of truth for facts in this chapter.
+
+- [GitHub Docs, home](https://docs.github.com/en)
+- [GitHub Changelog](https://github.blog/changelog/)
+- [GitHub security features](https://docs.github.com/en/code-security/getting-started/github-security-features)
+- [Dependabot docs](https://docs.github.com/en/code-security/dependabot)
+- [Secret scanning docs](https://docs.github.com/en/code-security/secret-scanning/introduction/about-secret-scanning)
+
+### Section-Level Source Map
+
+Use this map to verify facts for each major section in this file.
+
+- **Keeping Secrets Out of Your Repository:** [GitHub Docs, home](https://docs.github.com/en), [GitHub Changelog](https://github.blog/changelog/), [GitHub security features](https://docs.github.com/en/code-security/getting-started/github-security-features), [Dependabot docs](https://docs.github.com/en/code-security/dependabot), [Secret scanning docs](https://docs.github.com/en/code-security/secret-scanning/introduction/about-secret-scanning)
+- **1. Why This Matters — What Happens When Secrets Leak:** [GitHub Docs, home](https://docs.github.com/en), [GitHub Changelog](https://github.blog/changelog/), [GitHub security features](https://docs.github.com/en/code-security/getting-started/github-security-features), [Dependabot docs](https://docs.github.com/en/code-security/dependabot), [Secret scanning docs](https://docs.github.com/en/code-security/secret-scanning/introduction/about-secret-scanning)
+- **2. The .gitignore File — Your First Line of Defense:** [GitHub Docs, home](https://docs.github.com/en), [GitHub Changelog](https://github.blog/changelog/), [GitHub security features](https://docs.github.com/en/code-security/getting-started/github-security-features), [Dependabot docs](https://docs.github.com/en/code-security/dependabot), [Secret scanning docs](https://docs.github.com/en/code-security/secret-scanning/introduction/about-secret-scanning)
+- **3. Environment Variables — The Right Way to Store Secrets:** [GitHub Docs, home](https://docs.github.com/en), [GitHub Changelog](https://github.blog/changelog/), [GitHub security features](https://docs.github.com/en/code-security/getting-started/github-security-features), [Dependabot docs](https://docs.github.com/en/code-security/dependabot), [Secret scanning docs](https://docs.github.com/en/code-security/secret-scanning/introduction/about-secret-scanning)
+- **4. Review Before You Commit:** [GitHub Docs, home](https://docs.github.com/en), [GitHub Changelog](https://github.blog/changelog/), [GitHub security features](https://docs.github.com/en/code-security/getting-started/github-security-features), [Dependabot docs](https://docs.github.com/en/code-security/dependabot), [Secret scanning docs](https://docs.github.com/en/code-security/secret-scanning/introduction/about-secret-scanning)
+- **5. Pre-Commit Hooks — Automated Secret Detection:** [GitHub Docs, home](https://docs.github.com/en), [GitHub Changelog](https://github.blog/changelog/), [GitHub security features](https://docs.github.com/en/code-security/getting-started/github-security-features), [Dependabot docs](https://docs.github.com/en/code-security/dependabot), [Secret scanning docs](https://docs.github.com/en/code-security/secret-scanning/introduction/about-secret-scanning)
+- **6. I Accidentally Committed a Secret — What Now?:** [GitHub Docs, home](https://docs.github.com/en), [GitHub Changelog](https://github.blog/changelog/), [GitHub security features](https://docs.github.com/en/code-security/getting-started/github-security-features), [Dependabot docs](https://docs.github.com/en/code-security/dependabot), [Secret scanning docs](https://docs.github.com/en/code-security/secret-scanning/introduction/about-secret-scanning)
+- **7. GitHub's Built-In Push Protection:** [GitHub Docs, home](https://docs.github.com/en), [GitHub Changelog](https://github.blog/changelog/), [GitHub security features](https://docs.github.com/en/code-security/getting-started/github-security-features), [Dependabot docs](https://docs.github.com/en/code-security/dependabot), [Secret scanning docs](https://docs.github.com/en/code-security/secret-scanning/introduction/about-secret-scanning)
+- **8. Secure Credential Storage:** [GitHub Docs, home](https://docs.github.com/en), [GitHub Changelog](https://github.blog/changelog/), [GitHub security features](https://docs.github.com/en/code-security/getting-started/github-security-features), [Dependabot docs](https://docs.github.com/en/code-security/dependabot), [Secret scanning docs](https://docs.github.com/en/code-security/secret-scanning/introduction/about-secret-scanning)
+- **9. Security Checklist for Contributors:** [GitHub Docs, home](https://docs.github.com/en), [GitHub Changelog](https://github.blog/changelog/), [GitHub security features](https://docs.github.com/en/code-security/getting-started/github-security-features), [Dependabot docs](https://docs.github.com/en/code-security/dependabot), [Secret scanning docs](https://docs.github.com/en/code-security/secret-scanning/introduction/about-secret-scanning)

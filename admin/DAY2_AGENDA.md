@@ -11,7 +11,6 @@
 >
 > **Joining on Day 2 without attending Day 1?** See the [Day 2 Quick Start](DAY2_QUICK_START.md) guide to verify your setup and self-assess your readiness.
 
-
 ## Coverage Promise
 
 Day 2 is designed as a live contribution day with a self-paced continuation path. The complete Day 2 curriculum contains more material than the live schedule can cover, especially because participants will move at different speeds through setup, Git, Copilot, and project work.
@@ -20,7 +19,6 @@ Day 2 is designed as a live contribution day with a self-paced continuation path
 - **Live support if time allows:** Custom issue templates, full agent creation, cross-fork upstream pull requests, GitHub Agentic Workflows, and Spec Kit planning.
 - **Async follow-up:** Challenges 14-16, full capstone work, and upstream PR polish can continue after the event through the same repositories and Slack channel.
 - **Remote-ready delivery:** Remote participants need the repository links, Slack channel, CART/ASL access where available, and written checkpoints before each lab. Facilitators should state when a block is demo-only, hands-on, or async-safe.
-
 
 ## Prerequisites for Day 2
 
@@ -35,7 +33,6 @@ Day 2 requires the following skills and setup. If you attended Day 1, you have a
 | Git installed and configured | `git config` with your name and email set | [Pre-Workshop Setup](../docs/00-pre-workshop-setup.md) |
 | VS Code installed with extensions | GitHub PR extension, Copilot, Copilot Chat | [Pre-Workshop Setup](../docs/00-pre-workshop-setup.md) |
 | Classroom repo accepted | Accept the Day 2 Classroom assignment link from your facilitator | [Day 2 Quick Start](DAY2_QUICK_START.md) |
-
 
 ## At a Glance
 
@@ -54,7 +51,6 @@ The following table summarizes the Pacific-time live agenda and marks which mate
 | 3:00-4:15 PM | Block 5 - Ship Your Contribution | Supported project work and PR preparation | Required lab |
 | 4:15-4:40 PM | Block 6 - Spec Kit: Design the Future | Group speccing and future ideas | Stretch or async |
 | 4:40-5:00 PM | Wrap-Up | Demos, reflections, and continued contribution paths | Required live |
-
 
 ## Block 0 - Welcome and Orientation
 **9:00-9:30 AM Pacific**
@@ -83,7 +79,6 @@ Each participant states one contribution goal for the day. Examples:
 - *"I want to write documentation for the `@insiders-a11y-tracker` agent."*
 
 Write it down. You will check it against reality during wrap-up.
-
 
 ## Block 1 - VS Code Setup
 **9:30-10:30 AM Pacific**
@@ -173,7 +168,6 @@ Press `Ctrl+Shift+I` to open the Chat panel.
 
 **VoiceOver users:** `VO+Tab` to the chat input. `VO+Shift+Down` to interact with it. `VO+Escape` to stop interacting and navigate the response.
 
-
 ## Block 2 - Deep Contribution with Copilot
 **10:45 AM-12:00 PM Pacific**
 
@@ -244,7 +238,6 @@ Before leaving for lunch, check your progress:
 - **Almost there:** You have identified a file and started drafting but have not committed yet. Use the first 10 minutes after lunch to finalize your commit before the agent demonstrations begin.
 - **Still exploring:** You have not yet identified a file to improve. During lunch, read through the `.github/agents/` files and pick one. When Block 3 starts, the facilitator will demo agents on the repository - watching those demos will help you see where improvements are needed.
 
-
 ## Block 3 - Activate the Agents
 **1:00-2:00 PM Pacific**
 
@@ -273,7 +266,6 @@ The facilitator runs each command live. Participants follow along in their own V
 
 Participants answer from their Day 1 knowledge. Then the command runs. Then the room compares the agent's output to the manual process.
 
-
 ### 1. `@daily-briefing morning briefing`
 
 **What the agent does:** Sweeps every repository you have access to - issues opened in the last 24 hours, PR review requests awaiting you, CI failures on your branches, security alerts, community reactions to your comments - and delivers it as one prioritized document.
@@ -284,7 +276,6 @@ Participants answer from their Day 1 knowledge. Then the command runs. Then the 
 
 **Verify one item:** The agent lists an issue. Navigate to that issue in your browser using the link in the output. Confirm the information matches. This is your quality check - you still know how to verify independently.
 
-
 ### 2. `@issue-tracker find open issues labeled good-first-issue`
 
 **What the agent does:** Searches every repository you have access to for issues labeled `good-first-issue`, scores them by community engagement and release timing, and returns a prioritized list with discussion context.
@@ -292,7 +283,6 @@ Participants answer from their Day 1 knowledge. Then the command runs. Then the 
 **What you already know:** Yesterday you filtered the Issues tab by label. You read issue descriptions. You identified which ones had active discussion. The agent is applying a scoring algorithm to the same information.
 
 **Hands-on:** From the agent's list, pick one issue in a repository you have not contributed to before. Read the full issue - navigate to it in your browser. Is the agent's priority score reasonable? What context does the agent's summary miss?
-
 
 ### 3. `@pr-review review PR #[your PR number]`
 
@@ -307,7 +297,6 @@ Participants answer from their Day 1 knowledge. Then the command runs. Then the 
 
 Edit the agent's output before posting any of it. Your name goes on it.
 
-
 ### 4. `@insiders-a11y-tracker` - Accessibility Change Monitoring
 
 **What the agent does:** Monitors accessibility-relevant changes across your configured repositories - WCAG/ARIA cross-referenced, tracking anything that touches keyboard navigation, ARIA attributes, focus management, color contrast, or screen reader labels.
@@ -319,7 +308,6 @@ This agent is quality assurance for the accessibility quality of your own contri
 ### Stand and Stretch (5 min)
 
 The agents are running. Step away from the screen for five minutes. Screen reader listening for an hour after lunch is demanding. When you return, Block 4 shows you how these same agents run in the cloud - without you pressing a key.
-
 
 ## Block 4 - GitHub Agentic Workflows
 **2:15-3:00 PM Pacific**
@@ -397,7 +385,6 @@ Do not close the issue. Do not merge anything. Do not modify any files.
 | Cloud, runs on any trigger | GitHub Agentic Workflows | GitHub Actions infrastructure |
 | Cloud, scheduled | Agentic Workflow with `schedule:` trigger | GitHub Actions, no human required |
 
-
 ## Block 5 - Ship Your Contribution
 **3:00-4:15 PM Pacific**
 
@@ -457,7 +444,6 @@ While your PR is awaiting review, review a forge partner's PR:
 3. Post your review in the browser (or via GitHub PR extension)
 4. For each comment, ask: *"Is this the kind of feedback I would want to receive?"*
 
-
 ## Block 6 - Spec Kit: Design the Future
 **4:15-4:40 PM Pacific**
 
@@ -490,7 +476,6 @@ Speak your requirements aloud. The facilitator types them. Copilot helps convert
 - Repo: [Spec Kit repository on GitHub](https://github.com/github/spec-kit)
 - Init command: `uvx --from git+https://github.com/github/spec-kit.git specify init accessibility-agents-v2`
 - Slash commands: `/specify` → `/plan` → `/tasks` → implement
-
 
 ## Wrap-Up
 **4:40-5:00 PM Pacific**
@@ -536,7 +521,6 @@ The most important thing you take home is not a tool. It is the ability to look 
 
 Those skills are yours. No one can take them. Every project you ever encounter is now within reach.
 
-
 ## Facilitator Notes - Day 2
 
 ### Pre-Day Setup
@@ -559,7 +543,31 @@ Day 2 has two peaks:
 
 Do not rush the wrap-up. The moment of seeing your name in a public commit history is one of the most meaningful things a first-time open source contributor experiences.
 
-
 *Previous: [Notifications ←](../docs/10-notifications-and-day-1-close.md)*
 *Next: [VS Code: Setup & Accessibility Basics](../docs/11-vscode-interface.md)*
 *Related: [Day 1 Agenda](DAY1_AGENDA.md) | [GitHub Actions & Workflows](../docs/appendix-q-actions-workflows.md) | [Resources](../docs/appendix-x-resources.md)*
+
+## Authoritative Sources
+
+Use these official references when you need the current source of truth for facts in this chapter.
+
+- [GitHub Docs, home](https://docs.github.com/en)
+- [GitHub Changelog](https://github.blog/changelog/)
+
+### Section-Level Source Map
+
+Use this map to verify facts for each major section in this file.
+
+- **From Contributor to Product Maker - Igniting the Forge:** [GitHub Docs, home](https://docs.github.com/en), [GitHub Changelog](https://github.blog/changelog/)
+- **Coverage Promise:** [GitHub Docs, home](https://docs.github.com/en), [GitHub Changelog](https://github.blog/changelog/)
+- **Prerequisites for Day 2:** [GitHub Docs, home](https://docs.github.com/en), [GitHub Changelog](https://github.blog/changelog/), [GitHub Pages docs](https://docs.github.com/en/pages), [GitHub Pages quickstart](https://docs.github.com/en/pages/quickstart)
+- **At a Glance:** [GitHub Docs, home](https://docs.github.com/en), [GitHub Changelog](https://github.blog/changelog/)
+- **Block 0 - Welcome and Orientation:** [GitHub Docs, home](https://docs.github.com/en), [GitHub Changelog](https://github.blog/changelog/)
+- **Block 1 - VS Code Setup:** [GitHub Docs, home](https://docs.github.com/en), [GitHub Changelog](https://github.blog/changelog/)
+- **Block 2 - Deep Contribution with Copilot:** [GitHub Docs, home](https://docs.github.com/en), [GitHub Changelog](https://github.blog/changelog/), [GitHub Copilot docs](https://docs.github.com/en/copilot), [Custom instructions support matrix](https://docs.github.com/en/copilot/reference/custom-instructions-support), [About custom agents](https://docs.github.com/en/copilot/concepts/agents/cloud-agent/about-custom-agents)
+- **Block 3 - Activate the Agents:** [GitHub Docs, home](https://docs.github.com/en), [GitHub Changelog](https://github.blog/changelog/), [GitHub Copilot docs](https://docs.github.com/en/copilot), [Custom instructions support matrix](https://docs.github.com/en/copilot/reference/custom-instructions-support), [About custom agents](https://docs.github.com/en/copilot/concepts/agents/cloud-agent/about-custom-agents)
+- **Block 4 - GitHub Agentic Workflows:** [GitHub Docs, home](https://docs.github.com/en), [GitHub Changelog](https://github.blog/changelog/), [GitHub Copilot docs](https://docs.github.com/en/copilot), [Custom instructions support matrix](https://docs.github.com/en/copilot/reference/custom-instructions-support), [About custom agents](https://docs.github.com/en/copilot/concepts/agents/cloud-agent/about-custom-agents)
+- **Block 5 - Ship Your Contribution:** [GitHub Docs, home](https://docs.github.com/en), [GitHub Changelog](https://github.blog/changelog/)
+- **Block 6 - Spec Kit: Design the Future:** [GitHub Docs, home](https://docs.github.com/en), [GitHub Changelog](https://github.blog/changelog/)
+- **Wrap-Up:** [GitHub Docs, home](https://docs.github.com/en), [GitHub Changelog](https://github.blog/changelog/)
+- **Facilitator Notes - Day 2:** [GitHub Docs, home](https://docs.github.com/en), [GitHub Changelog](https://github.blog/changelog/)

@@ -1,6 +1,6 @@
 # Fork Workflow Checklist
 
-Use this checklist to complete the fork-clone-branch-push-PR workflow for Challenge 16 (Capstone). Check off each step as you complete it.
+Use this checklist to complete the fork-clone-branch-push-PR workflow for Challenge 16 (Capstone). It works for Accessibility Agents, GLOW, or another project where a fork-based pull request is appropriate. Check off each step as you complete it.
 
 ## Phase 1: Fork the repository
 
@@ -39,9 +39,9 @@ Choose your tool:
 
 ## Phase 4: Make your changes
 
-- [ ] Create your agent file in the correct location
-- [ ] Verify the YAML frontmatter is valid (check for `---` delimiters)
-- [ ] Verify you have both Responsibilities and Guardrails sections
+- [ ] Create or update the agent, prompt, instruction, skill, workflow, or documentation file in the correct location
+- [ ] Verify any agent file has valid YAML frontmatter (check for `---` delimiters)
+- [ ] Verify the contribution has a clear mission, responsibilities, and guardrails
 
 ## Phase 5: Commit and push
 
@@ -66,7 +66,7 @@ Choose your tool:
 ## Phase 7: Peer review
 
 - [ ] Find a classmate's capstone PR
-- [ ] Review their agent file
+- [ ] Review their capstone contribution
 - [ ] Leave at least one constructive comment
 - [ ] Submit your review
 
@@ -77,3 +77,26 @@ After completing all phases, verify:
 - [ ] Your fork exists at `github.com/YOUR-USERNAME/repository-name`
 - [ ] Your PR appears in the original repository's Pull requests tab
 - [ ] The autograder has run on your PR (look for status checks)
+
+## Authoritative Sources
+
+Use these official references when you need the current source of truth for facts in this chapter.
+
+- [GitHub Docs, home](https://docs.github.com/en)
+- [GitHub Changelog](https://github.blog/changelog/)
+- [Workflow syntax for GitHub Actions](https://docs.github.com/en/actions/reference/workflows-and-actions/workflow-syntax)
+- [Secure use reference for GitHub Actions](https://docs.github.com/en/actions/security-for-github-actions/security-guides/security-hardening-for-github-actions)
+- [GitHub Actions changelog](https://github.blog/changelog/label/actions/)
+
+### Section-Level Source Map
+
+Use this map to verify facts for each major section in this file.
+
+- **Phase 1: Fork the repository:** [GitHub Docs, home](https://docs.github.com/en), [GitHub Changelog](https://github.blog/changelog/), [Workflow syntax for GitHub Actions](https://docs.github.com/en/actions/reference/workflows-and-actions/workflow-syntax), [Secure use reference for GitHub Actions](https://docs.github.com/en/actions/security-for-github-actions/security-guides/security-hardening-for-github-actions), [GitHub Actions changelog](https://github.blog/changelog/label/actions/)
+- **Phase 2: Clone your fork:** [GitHub Docs, home](https://docs.github.com/en), [GitHub Changelog](https://github.blog/changelog/), [Workflow syntax for GitHub Actions](https://docs.github.com/en/actions/reference/workflows-and-actions/workflow-syntax), [Secure use reference for GitHub Actions](https://docs.github.com/en/actions/security-for-github-actions/security-guides/security-hardening-for-github-actions), [GitHub Actions changelog](https://github.blog/changelog/label/actions/)
+- **Phase 3: Create a branch:** [GitHub Docs, home](https://docs.github.com/en), [GitHub Changelog](https://github.blog/changelog/), [Workflow syntax for GitHub Actions](https://docs.github.com/en/actions/reference/workflows-and-actions/workflow-syntax), [Secure use reference for GitHub Actions](https://docs.github.com/en/actions/security-for-github-actions/security-guides/security-hardening-for-github-actions), [GitHub Actions changelog](https://github.blog/changelog/label/actions/)
+- **Phase 4: Make your changes:** [GitHub Docs, home](https://docs.github.com/en), [GitHub Changelog](https://github.blog/changelog/), [Workflow syntax for GitHub Actions](https://docs.github.com/en/actions/reference/workflows-and-actions/workflow-syntax), [Secure use reference for GitHub Actions](https://docs.github.com/en/actions/security-for-github-actions/security-guides/security-hardening-for-github-actions), [GitHub Actions changelog](https://github.blog/changelog/label/actions/)
+- **Phase 5: Commit and push:** [GitHub Docs, home](https://docs.github.com/en), [GitHub Changelog](https://github.blog/changelog/), [Workflow syntax for GitHub Actions](https://docs.github.com/en/actions/reference/workflows-and-actions/workflow-syntax), [Secure use reference for GitHub Actions](https://docs.github.com/en/actions/security-for-github-actions/security-guides/security-hardening-for-github-actions), [GitHub Actions changelog](https://github.blog/changelog/label/actions/)
+- **Phase 6: Open a cross-fork pull request:** [GitHub Docs, home](https://docs.github.com/en), [GitHub Changelog](https://github.blog/changelog/), [Workflow syntax for GitHub Actions](https://docs.github.com/en/actions/reference/workflows-and-actions/workflow-syntax), [Secure use reference for GitHub Actions](https://docs.github.com/en/actions/security-for-github-actions/security-guides/security-hardening-for-github-actions), [GitHub Actions changelog](https://github.blog/changelog/label/actions/)
+- **Phase 7: Peer review:** [GitHub Docs, home](https://docs.github.com/en), [GitHub Changelog](https://github.blog/changelog/), [Workflow syntax for GitHub Actions](https://docs.github.com/en/actions/reference/workflows-and-actions/workflow-syntax), [Secure use reference for GitHub Actions](https://docs.github.com/en/actions/security-for-github-actions/security-guides/security-hardening-for-github-actions), [GitHub Actions changelog](https://github.blog/changelog/label/actions/)
+- **Verification:** [GitHub Docs, home](https://docs.github.com/en), [GitHub Changelog](https://github.blog/changelog/), [Workflow syntax for GitHub Actions](https://docs.github.com/en/actions/reference/workflows-and-actions/workflow-syntax), [Secure use reference for GitHub Actions](https://docs.github.com/en/actions/security-for-github-actions/security-guides/security-hardening-for-github-actions), [GitHub Actions changelog](https://github.blog/changelog/label/actions/)

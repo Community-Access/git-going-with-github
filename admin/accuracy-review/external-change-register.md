@@ -47,3 +47,19 @@ The following table lists product areas that require live walkthrough checks bec
 | GAP-003 | VS Code GitHub Pull Requests and Issues extension | View labels and plus-button behavior may differ by extension version and account permissions |
 | GAP-004 | Copilot plan screens | Billing migration banners and upgrade pauses are time-sensitive and may change before June 1, 2026 |
 | GAP-005 | VS Code agent browser sharing | Integrated browser sharing prompts require a live VS Code 1.119 or later environment |
+
+## Authoritative Sources
+
+Use these official references when you need the current source of truth for facts in this chapter.
+
+- [GitHub Docs, home](https://docs.github.com/en)
+- [GitHub Changelog](https://github.blog/changelog/)
+- [GitHub Discussions docs](https://docs.github.com/en/discussions)
+- [GitHub Gists docs](https://docs.github.com/en/get-started/writing-on-github/editing-and-sharing-content-with-gists)
+
+### Section-Level Source Map
+
+Use this map to verify facts for each major section in this file.
+
+- **Change Register:** [GitHub Docs, home](https://docs.github.com/en), [GitHub Changelog](https://github.blog/changelog/), [GitHub Discussions docs](https://docs.github.com/en/discussions), [GitHub Gists docs](https://docs.github.com/en/get-started/writing-on-github/editing-and-sharing-content-with-gists)
+- **Research Gaps To Close During Validation:** [GitHub Docs, home](https://docs.github.com/en), [GitHub Changelog](https://github.blog/changelog/), [GitHub Discussions docs](https://docs.github.com/en/discussions), [GitHub Gists docs](https://docs.github.com/en/get-started/writing-on-github/editing-and-sharing-content-with-gists), [GitHub code search syntax](https://docs.github.com/en/search-github/github-code-search/understanding-github-code-search-syntax)

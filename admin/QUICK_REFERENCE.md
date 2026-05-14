@@ -1,7 +1,6 @@
 # Quick Reference Guide
 ## Essential Commands, Shortcuts, and File Locations
 
-
 ## Screen Reader Commands for GitHub
 
 ### NVDA (Windows)
@@ -46,7 +45,6 @@
 | Headings rotor | `VO+U` → `H` (then navigate) |
 | Form controls rotor | `VO+U` → `F` |
 
-
 ## GitHub Navigation Shortcuts (All Browsers)
 
 | Action | Keyboard |
@@ -59,7 +57,6 @@
 | Navigate PR tabs (Conversation/Commits/Files) | `←` / `→` Arrow keys |
 | Focus on search | `S` or `/` |
 | Go to code | `G` then `C` |
-
 
 ## VS Code Keyboard Shortcuts
 
@@ -76,7 +73,6 @@
 | Accessible Diff Viewer | `F7` | `F7` |
 | Accessible View | `Alt+F2` | `Option+F2` |
 | Format document | `Shift+Alt+F` | `Shift+Option+F` |
-
 
 ## Git Commands (Terminal)
 
@@ -111,7 +107,6 @@ git pull origin main                     # Pull latest from your fork
 git pull upstream main                   # Pull latest from upstream
 git fetch upstream                       # Fetch without merging
 ```
-
 
 ## File Locations Reference
 
@@ -151,7 +146,6 @@ docs/
 ├── 19-accessibility-agents.md                    ← Automate with agents
 └── appendix-a-glossary.md               ← Term definitions
 ```
-
 
 ## YAML Template Structure (Quick Template)
 
@@ -205,7 +199,6 @@ body:
           required: true
 ```
 
-
 ## Accessibility Testing Checklist (Quick)
 
 - [ ] All form labels announced by screen reader
@@ -215,7 +208,6 @@ body:
 - [ ] Link text is descriptive (not "click here")
 - [ ] Color not the only way to convey information
 - [ ] Tested on: NVDA JAWS VoiceOver
-
 
 ## Common YAML Errors & Fixes
 
@@ -227,7 +219,6 @@ body:
 | Field not showing | Wrong `type:` or missing `id:` | Verify field has all required properties |
 | Dropdown no options | Missing `options:` list | Add `options:` with indented list |
 
-
 ## Where to Find Help
 
 | Topic | File |
@@ -237,12 +228,33 @@ body:
 | Glossary & terms | `docs/appendix-a-glossary.md` |
 | Screen reader guide | `docs/appendix-b-screen-reader-cheatsheet.md` |
 
-
 ## Accessibility Hotkeys Summary
 
 **NVDA + JAWS (same):** Browse web content with H (headings), T (tables), B (buttons), L (lists)  
 **VoiceOver:** Use VO+U to open rotor, then navigate by category (Headings, Links, Form Controls)  
 **VS Code:** F7 = Accessible Diff, Alt+F2 = Accessible View
 
-
 *Last updated: February 2026 | For latest, see README.md*
+
+## Authoritative Sources
+
+Use these official references when you need the current source of truth for facts in this chapter.
+
+- [GitHub Docs, home](https://docs.github.com/en)
+- [GitHub Changelog](https://github.blog/changelog/)
+
+### Section-Level Source Map
+
+Use this map to verify facts for each major section in this file.
+
+- **Essential Commands, Shortcuts, and File Locations:** [GitHub Docs, home](https://docs.github.com/en), [GitHub Changelog](https://github.blog/changelog/)
+- **Screen Reader Commands for GitHub:** [GitHub Docs, home](https://docs.github.com/en), [GitHub Changelog](https://github.blog/changelog/), [About Git](https://docs.github.com/en/get-started/using-git/about-git), [GitHub flow](https://docs.github.com/en/get-started/using-github/github-flow), [About pull requests](https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/about-pull-requests)
+- **GitHub Navigation Shortcuts (All Browsers):** [GitHub Docs, home](https://docs.github.com/en), [GitHub Changelog](https://github.blog/changelog/), [About Git](https://docs.github.com/en/get-started/using-git/about-git), [GitHub flow](https://docs.github.com/en/get-started/using-github/github-flow), [About pull requests](https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/about-pull-requests)
+- **VS Code Keyboard Shortcuts:** [GitHub Docs, home](https://docs.github.com/en), [GitHub Changelog](https://github.blog/changelog/), [W3C Web Content Accessibility Guidelines (WCAG) 2 overview](https://www.w3.org/WAI/standards-guidelines/wcag/), [WAI tutorials for accessible design patterns](https://www.w3.org/WAI/tutorials/), [WAI-ARIA Authoring Practices Guide](https://www.w3.org/WAI/ARIA/apg/)
+- **Git Commands (Terminal):** [GitHub Docs, home](https://docs.github.com/en), [GitHub Changelog](https://github.blog/changelog/), [About Git](https://docs.github.com/en/get-started/using-git/about-git), [GitHub flow](https://docs.github.com/en/get-started/using-github/github-flow), [About pull requests](https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/about-pull-requests)
+- **File Locations Reference:** [GitHub Docs, home](https://docs.github.com/en), [GitHub Changelog](https://github.blog/changelog/)
+- **YAML Template Structure (Quick Template):** [GitHub Docs, home](https://docs.github.com/en), [GitHub Changelog](https://github.blog/changelog/)
+- **Accessibility Testing Checklist (Quick):** [GitHub Docs, home](https://docs.github.com/en), [GitHub Changelog](https://github.blog/changelog/), [W3C Web Content Accessibility Guidelines (WCAG) 2 overview](https://www.w3.org/WAI/standards-guidelines/wcag/), [WAI tutorials for accessible design patterns](https://www.w3.org/WAI/tutorials/), [WAI-ARIA Authoring Practices Guide](https://www.w3.org/WAI/ARIA/apg/)
+- **Common YAML Errors & Fixes:** [GitHub Docs, home](https://docs.github.com/en), [GitHub Changelog](https://github.blog/changelog/)
+- **Where to Find Help:** [GitHub Docs, home](https://docs.github.com/en), [GitHub Changelog](https://github.blog/changelog/)
+- **Accessibility Hotkeys Summary:** [GitHub Docs, home](https://docs.github.com/en), [GitHub Changelog](https://github.blog/changelog/), [W3C Web Content Accessibility Guidelines (WCAG) 2 overview](https://www.w3.org/WAI/standards-guidelines/wcag/), [WAI tutorials for accessible design patterns](https://www.w3.org/WAI/tutorials/), [WAI-ARIA Authoring Practices Guide](https://www.w3.org/WAI/ARIA/apg/)

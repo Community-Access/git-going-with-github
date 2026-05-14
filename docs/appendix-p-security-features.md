@@ -10,7 +10,6 @@
 
 > **Who this is for:** Anyone contributing to open source repositories needs to understand how GitHub protects code and what security alerts mean. This appendix explains the GitHub Security and quality tab, how to interpret and respond to alerts, and how to responsibly report vulnerabilities - including in `community-access/accessibility-agents`.
 
-
 ## Quick Navigation
 
 1. [The Security and quality tab - What It Contains](#1-the-security-and-quality-tab---what-it-contains)
@@ -22,7 +21,6 @@
 7. [Software Bill of Materials (SBOM)](#7-software-bill-of-materials-sbom)
 8. [Screen Reader Navigation of the Security and quality tab](#8-screen-reader-navigation-of-the-security-and-quality-tab)
 9. [Security and Accessibility Agents](#9-security-and-accessibility-agents)
-
 
 ## 1. The Security and quality tab - What It Contains
 
@@ -77,7 +75,6 @@ Or: G then S (GitHub keyboard shortcut - enable Focus Mode first)
 - A green shield on the repo home page (or no security count badge) means zero open security alerts
 
 </details>
-
 
 ## 2. Dependabot - Automated Dependency Updates
 
@@ -146,7 +143,6 @@ updates:
       interval: "weekly"
     open-pull-requests-limit: 5
 ```
-
 
 ## 3. Secret Scanning - Preventing Credential Leaks
 
@@ -218,7 +214,6 @@ For public repositories, GitHub scans all existing commits and creates alerts fo
 
 </details>
 
-
 ## 4. Code Scanning and CodeQL
 
 Code scanning uses static analysis to find security vulnerabilities in the code itself (not dependencies). GitHub's built-in tool is **CodeQL**, which understands the code's logic and can detect:
@@ -253,7 +248,6 @@ Details:
 ### Where to Find Code Scanning Alerts
 
 Security and quality tab → Code scanning → filter by severity, rule, or file.
-
 
 ## 5. Private Vulnerability Reporting
 
@@ -293,7 +287,6 @@ If a maintainer doesn't respond within a reasonable time (30-90 days is the stan
 2. Contact GitHub directly if the issue is critical (GitHub can assist with coordinated disclosure)
 3. Follow the project's SECURITY.md for their stated disclosure policy
 
-
 ## 6. The SECURITY.md File
 
 A `SECURITY.md` file at the repository root defines the project's security policy. It typically contains:
@@ -318,7 +311,6 @@ Screen reader path:
 Security and quality tab → H → "Policy" heading → Link: "Security policy" → Enter
 ```
 
-
 ## 7. Software Bill of Materials (SBOM)
 
 An SBOM is a machine-readable inventory of every component (libraries, packages, dependencies) in a software project. It is increasingly required by enterprise and government organizations for supply chain security compliance.
@@ -335,7 +327,6 @@ This export is useful when:
 - Your organization requires SBOM documentation before adopting an open source dependency
 - You're auditing a project's complete dependency chain
 - You want to identify license compatibility for a commercial product
-
 
 ## 8. Screen Reader Navigation of the Security and quality tab
 
@@ -381,7 +372,6 @@ Describe field: NVDA+Space → Focus Mode → type → NVDA+Space to leave
 Submit: Tab → "Submit report" button → Enter
 ```
 
-
 ## 9. Security and Accessibility Agents
 
 Accessibility Agents' `/security-dashboard` slash command gives you a quick security overview without visiting the Security and quality tab in the browser:
@@ -420,3 +410,29 @@ Action needed: Review PR #47 (5 minutes - single file change)
 *Back: [Appendix O: Branch Protection](appendix-o-branch-protection.md)*  
 *Teaching chapter: [Chapter 08: Open Source Culture](08-open-source-culture.md)*
 
+## Authoritative Sources
+
+Use these official references when you need the current source of truth for facts in this chapter.
+
+- [GitHub Docs, home](https://docs.github.com/en)
+- [GitHub Changelog](https://github.blog/changelog/)
+- [GitHub security features](https://docs.github.com/en/code-security/getting-started/github-security-features)
+- [Dependabot docs](https://docs.github.com/en/code-security/dependabot)
+- [Secret scanning docs](https://docs.github.com/en/code-security/secret-scanning/introduction/about-secret-scanning)
+
+### Section-Level Source Map
+
+Use this map to verify facts for each major section in this file.
+
+- **Dependabot, Secret Scanning, Code Scanning, and Private Advisories:** [GitHub Docs, home](https://docs.github.com/en), [GitHub Changelog](https://github.blog/changelog/), [GitHub security features](https://docs.github.com/en/code-security/getting-started/github-security-features), [Dependabot docs](https://docs.github.com/en/code-security/dependabot), [Secret scanning docs](https://docs.github.com/en/code-security/secret-scanning/introduction/about-secret-scanning)
+- **Quick Navigation:** [GitHub Docs, home](https://docs.github.com/en), [GitHub Changelog](https://github.blog/changelog/), [GitHub security features](https://docs.github.com/en/code-security/getting-started/github-security-features), [Dependabot docs](https://docs.github.com/en/code-security/dependabot), [Secret scanning docs](https://docs.github.com/en/code-security/secret-scanning/introduction/about-secret-scanning)
+- **1. The Security and quality tab - What It Contains:** [GitHub Docs, home](https://docs.github.com/en), [GitHub Changelog](https://github.blog/changelog/), [GitHub security features](https://docs.github.com/en/code-security/getting-started/github-security-features), [Dependabot docs](https://docs.github.com/en/code-security/dependabot), [Secret scanning docs](https://docs.github.com/en/code-security/secret-scanning/introduction/about-secret-scanning)
+- **2. Dependabot - Automated Dependency Updates:** [GitHub Docs, home](https://docs.github.com/en), [GitHub Changelog](https://github.blog/changelog/), [GitHub security features](https://docs.github.com/en/code-security/getting-started/github-security-features), [Dependabot docs](https://docs.github.com/en/code-security/dependabot), [Secret scanning docs](https://docs.github.com/en/code-security/secret-scanning/introduction/about-secret-scanning)
+- **3. Secret Scanning - Preventing Credential Leaks:** [GitHub Docs, home](https://docs.github.com/en), [GitHub Changelog](https://github.blog/changelog/), [GitHub security features](https://docs.github.com/en/code-security/getting-started/github-security-features), [Dependabot docs](https://docs.github.com/en/code-security/dependabot), [Secret scanning docs](https://docs.github.com/en/code-security/secret-scanning/introduction/about-secret-scanning)
+- **4. Code Scanning and CodeQL:** [GitHub Docs, home](https://docs.github.com/en), [GitHub Changelog](https://github.blog/changelog/), [GitHub security features](https://docs.github.com/en/code-security/getting-started/github-security-features), [Dependabot docs](https://docs.github.com/en/code-security/dependabot), [Secret scanning docs](https://docs.github.com/en/code-security/secret-scanning/introduction/about-secret-scanning)
+- **5. Private Vulnerability Reporting:** [GitHub Docs, home](https://docs.github.com/en), [GitHub Changelog](https://github.blog/changelog/), [GitHub security features](https://docs.github.com/en/code-security/getting-started/github-security-features), [Dependabot docs](https://docs.github.com/en/code-security/dependabot), [Secret scanning docs](https://docs.github.com/en/code-security/secret-scanning/introduction/about-secret-scanning)
+- **6. The SECURITY.md File:** [GitHub Docs, home](https://docs.github.com/en), [GitHub Changelog](https://github.blog/changelog/), [GitHub security features](https://docs.github.com/en/code-security/getting-started/github-security-features), [Dependabot docs](https://docs.github.com/en/code-security/dependabot), [Secret scanning docs](https://docs.github.com/en/code-security/secret-scanning/introduction/about-secret-scanning)
+- **7. Software Bill of Materials (SBOM):** [GitHub Docs, home](https://docs.github.com/en), [GitHub Changelog](https://github.blog/changelog/), [GitHub security features](https://docs.github.com/en/code-security/getting-started/github-security-features), [Dependabot docs](https://docs.github.com/en/code-security/dependabot), [Secret scanning docs](https://docs.github.com/en/code-security/secret-scanning/introduction/about-secret-scanning)
+- **8. Screen Reader Navigation of the Security and quality tab:** [GitHub Docs, home](https://docs.github.com/en), [GitHub Changelog](https://github.blog/changelog/), [GitHub security features](https://docs.github.com/en/code-security/getting-started/github-security-features), [Dependabot docs](https://docs.github.com/en/code-security/dependabot), [Secret scanning docs](https://docs.github.com/en/code-security/secret-scanning/introduction/about-secret-scanning)
+- **9. Security and Accessibility Agents:** [GitHub Docs, home](https://docs.github.com/en), [GitHub Changelog](https://github.blog/changelog/), [GitHub security features](https://docs.github.com/en/code-security/getting-started/github-security-features), [Dependabot docs](https://docs.github.com/en/code-security/dependabot), [Secret scanning docs](https://docs.github.com/en/code-security/secret-scanning/introduction/about-secret-scanning)
+- **Security Dashboard - community-access/accessibility-agents:** [GitHub Docs, home](https://docs.github.com/en), [GitHub Changelog](https://github.blog/changelog/), [GitHub security features](https://docs.github.com/en/code-security/getting-started/github-security-features), [Dependabot docs](https://docs.github.com/en/code-security/dependabot), [Secret scanning docs](https://docs.github.com/en/code-security/secret-scanning/introduction/about-secret-scanning)

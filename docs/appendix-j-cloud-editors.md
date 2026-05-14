@@ -10,7 +10,6 @@
 
 > GitHub Codespaces gives you a full VS Code development environment in your browser or connected to your local VS Code, running on a cloud machine. For screen reader users, this means a consistent, pre-configured environment with no local setup required.
 
-
 ## Table of Contents
 
 1. [What Is GitHub Codespaces?](#1-what-is-github-codespaces)
@@ -24,7 +23,6 @@
 9. [Codespaces vs GitHub.dev](#9-codespaces-vs-githubdev)
 10. [Common Issues and Workarounds](#10-common-issues-and-workarounds)
 
-
 ## 1. What Is GitHub Codespaces?
 
 A Codespace is a cloud-hosted development environment. When you open one, GitHub provisions a virtual machine, clones your repository into it, and connects it to a VS Code interface - either in your browser or via your local VS Code Desktop.
@@ -37,7 +35,6 @@ A Codespace is a cloud-hosted development environment. When you open one, GitHub
 - The environment is identical for every workshop participant - facilitators can reproduce issues reliably
 
 **Free tier:** GitHub provides a monthly free allowance of Codespace hours for personal accounts. Workshop usage typically falls well within the free tier.
-
 
 ### Learning Cards: Cloud Editors Overview
 
@@ -68,7 +65,6 @@ A Codespace is a cloud-hosted development environment. When you open one, GitHub
 
 </details>
 
-
 ## 2. Creating a Codespace
 
 ### From a Repository Page
@@ -97,7 +93,6 @@ A Codespace is a cloud-hosted development environment. When you open one, GitHub
 
 For workshop exercises, the default 2-core machine is sufficient.
 
-
 ## 3. Codespace Environments
 
 ### Browser (VS Code for the Web)
@@ -120,7 +115,6 @@ If you prefer your local VS Code setup with your extensions and settings:
 5. Select an existing Codespace or create a new one
 
 When connected via local VS Code, your screen reader interacts with your local VS Code installation - all your familiar settings apply.
-
 
 ## 4. Accessibility in Codespaces
 
@@ -160,7 +154,6 @@ The integrated terminal in a Codespace is a standard terminal:
 - In NVDA: Switch to Browse Mode to read static terminal output, then back to Focus Mode to type
 - VS Code also has **Accessible View** (`Alt+F2` when cursor is in the terminal) which renders terminal output in a navigable buffer
 
-
 ### Learning Cards: Codespace Accessibility
 
 <details>
@@ -190,7 +183,6 @@ The integrated terminal in a Codespace is a standard terminal:
 
 </details>
 
-
 ## 5. Screen Reader Configuration
 
 ### NVDA
@@ -212,7 +204,6 @@ No special NVDA profile is required for Codespaces in the browser. The same sett
 - Use Quick Nav (Left+Right arrows) for moving through the VS Code interface
 - The Rotor (VO+U) surfaces VS Code's landmark regions
 - If text in the editor is not reading fluently, ensure Screen Reader Optimized mode is active (see above)
-
 
 ## 6. Keyboard Shortcuts in Codespaces
 
@@ -249,7 +240,6 @@ Codespaces uses standard VS Code keyboard shortcuts. The most important ones for
 | Ctrl+Shift+G | Open Source Control panel |
 | Ctrl+Enter | Commit (when focus is on message field) |
 
-
 ## 7. Managing Your Codespaces
 
 ### Stopping a Codespace
@@ -277,7 +267,6 @@ Stopped Codespaces retain your files and changes. They do not use compute hours 
 2. Find your stopped Codespace
 3. Activate **Open in …** to resume it in the browser or in VS Code Desktop
 
-
 ## 8. Dotfiles and Persistent Configuration
 
 If you have a repository named `dotfiles` on your GitHub account, Codespaces will automatically apply it when provisioning new environments. This is useful for:
@@ -289,7 +278,6 @@ If you have a repository named `dotfiles` on your GitHub account, Codespaces wil
 To set up dotfiles: create a repository named `dotfiles` and add an `install.sh` script. Codespaces will run it automatically.
 
 VS Code settings (themes, font size, keybindings) can be synchronized to Codespaces via **Settings Sync** (sign in with your GitHub account in VS Code settings).
-
 
 ## 9. Codespaces vs GitHub.dev
 
@@ -304,7 +292,6 @@ VS Code settings (themes, font size, keybindings) can be synchronized to Codespa
 | Best for | Active development, running tests | Quick edits, reading code |
 
 For workshop exercises that involve running scripts or tests, use Codespaces. For quickly browsing or editing a file, GitHub.dev is faster to open.
-
 
 ### Learning Cards: Choosing Your Cloud Editor
 
@@ -334,7 +321,6 @@ For workshop exercises that involve running scripts or tests, use Codespaces. Fo
 - The comparison table above summarizes every difference -- refer back to it when deciding which to open
 
 </details>
-
 
 ## 10. Common Issues and Workarounds
 
@@ -368,3 +354,28 @@ You may have committed but not pushed. In the Source Control panel, look for the
 *Back: [Appendix I: GitHub CLI Reference](appendix-i-github-cli.md)*  
 *Teaching chapter: [Chapter 01: Choose Your Tools](01-choose-your-tools.md)*
 
+## Authoritative Sources
+
+Use these official references when you need the current source of truth for facts in this chapter.
+
+- [GitHub Docs, home](https://docs.github.com/en)
+- [GitHub Changelog](https://github.blog/changelog/)
+- [VS Code Copilot chat overview](https://code.visualstudio.com/docs/copilot/chat/copilot-chat)
+- [VS Code agent overview](https://code.visualstudio.com/docs/copilot/agents/overview)
+- [VS Code custom instructions](https://code.visualstudio.com/docs/copilot/customization/custom-instructions)
+
+### Section-Level Source Map
+
+Use this map to verify facts for each major section in this file.
+
+- **Cloud Development Environments - Accessibility Guide:** [GitHub Docs, home](https://docs.github.com/en), [GitHub Changelog](https://github.blog/changelog/), [VS Code Copilot chat overview](https://code.visualstudio.com/docs/copilot/chat/copilot-chat), [VS Code agent overview](https://code.visualstudio.com/docs/copilot/agents/overview), [VS Code custom instructions](https://code.visualstudio.com/docs/copilot/customization/custom-instructions)
+- **1. What Is GitHub Codespaces?:** [GitHub Docs, home](https://docs.github.com/en), [GitHub Changelog](https://github.blog/changelog/), [VS Code Copilot chat overview](https://code.visualstudio.com/docs/copilot/chat/copilot-chat), [VS Code agent overview](https://code.visualstudio.com/docs/copilot/agents/overview), [VS Code custom instructions](https://code.visualstudio.com/docs/copilot/customization/custom-instructions)
+- **2. Creating a Codespace:** [GitHub Docs, home](https://docs.github.com/en), [GitHub Changelog](https://github.blog/changelog/), [VS Code Copilot chat overview](https://code.visualstudio.com/docs/copilot/chat/copilot-chat), [VS Code agent overview](https://code.visualstudio.com/docs/copilot/agents/overview), [VS Code custom instructions](https://code.visualstudio.com/docs/copilot/customization/custom-instructions)
+- **3. Codespace Environments:** [GitHub Docs, home](https://docs.github.com/en), [GitHub Changelog](https://github.blog/changelog/), [VS Code Copilot chat overview](https://code.visualstudio.com/docs/copilot/chat/copilot-chat), [VS Code agent overview](https://code.visualstudio.com/docs/copilot/agents/overview), [VS Code custom instructions](https://code.visualstudio.com/docs/copilot/customization/custom-instructions)
+- **4. Accessibility in Codespaces:** [GitHub Docs, home](https://docs.github.com/en), [GitHub Changelog](https://github.blog/changelog/), [VS Code Copilot chat overview](https://code.visualstudio.com/docs/copilot/chat/copilot-chat), [VS Code agent overview](https://code.visualstudio.com/docs/copilot/agents/overview), [VS Code custom instructions](https://code.visualstudio.com/docs/copilot/customization/custom-instructions)
+- **5. Screen Reader Configuration:** [GitHub Docs, home](https://docs.github.com/en), [GitHub Changelog](https://github.blog/changelog/), [VS Code Copilot chat overview](https://code.visualstudio.com/docs/copilot/chat/copilot-chat), [VS Code agent overview](https://code.visualstudio.com/docs/copilot/agents/overview), [VS Code custom instructions](https://code.visualstudio.com/docs/copilot/customization/custom-instructions)
+- **6. Keyboard Shortcuts in Codespaces:** [GitHub Docs, home](https://docs.github.com/en), [GitHub Changelog](https://github.blog/changelog/), [VS Code Copilot chat overview](https://code.visualstudio.com/docs/copilot/chat/copilot-chat), [VS Code agent overview](https://code.visualstudio.com/docs/copilot/agents/overview), [VS Code custom instructions](https://code.visualstudio.com/docs/copilot/customization/custom-instructions)
+- **7. Managing Your Codespaces:** [GitHub Docs, home](https://docs.github.com/en), [GitHub Changelog](https://github.blog/changelog/), [VS Code Copilot chat overview](https://code.visualstudio.com/docs/copilot/chat/copilot-chat), [VS Code agent overview](https://code.visualstudio.com/docs/copilot/agents/overview), [VS Code custom instructions](https://code.visualstudio.com/docs/copilot/customization/custom-instructions)
+- **8. Dotfiles and Persistent Configuration:** [GitHub Docs, home](https://docs.github.com/en), [GitHub Changelog](https://github.blog/changelog/), [VS Code Copilot chat overview](https://code.visualstudio.com/docs/copilot/chat/copilot-chat), [VS Code agent overview](https://code.visualstudio.com/docs/copilot/agents/overview), [VS Code custom instructions](https://code.visualstudio.com/docs/copilot/customization/custom-instructions)
+- **9. Codespaces vs GitHub.dev:** [GitHub Docs, home](https://docs.github.com/en), [GitHub Changelog](https://github.blog/changelog/), [VS Code Copilot chat overview](https://code.visualstudio.com/docs/copilot/chat/copilot-chat), [VS Code agent overview](https://code.visualstudio.com/docs/copilot/agents/overview), [VS Code custom instructions](https://code.visualstudio.com/docs/copilot/customization/custom-instructions)
+- **10. Common Issues and Workarounds:** [GitHub Docs, home](https://docs.github.com/en), [GitHub Changelog](https://github.blog/changelog/), [VS Code Copilot chat overview](https://code.visualstudio.com/docs/copilot/chat/copilot-chat), [VS Code agent overview](https://code.visualstudio.com/docs/copilot/agents/overview), [VS Code custom instructions](https://code.visualstudio.com/docs/copilot/customization/custom-instructions)

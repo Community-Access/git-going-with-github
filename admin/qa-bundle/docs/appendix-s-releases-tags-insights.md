@@ -10,7 +10,6 @@
 
 > Two things help you understand a repository's health and your place in it: **releases** (the versioned snapshots your contributions land in) and **insights** (the activity metrics that show how a project grows). This appendix covers both.
 
-
 ## Table of Contents
 
 ### Part 1 - Releases and Tags
@@ -38,7 +37,6 @@
 10. [Screen Reader Navigation Reference](#18-screen-reader-navigation-reference)
 11. [Accessibility Agents: `/my-stats` and `/team-dashboard`](#19-accessibility-agents-my-stats-and-team-dashboard)
 
-
 ## Part 1 - Releases and Tags
 
 ## 1. What Is a Release?
@@ -56,7 +54,6 @@ For documentation-only or non-software projects, releases are often used to mark
 
 **When your PR gets merged:** Your change becomes part of the code on the default branch. It will be *included* in the next release whenever the maintainer decides to publish one - this might be days, weeks, or months away depending on the project's release cadence.
 
-
 ## 2. Releases vs. Tags vs. Branches
 
 These three concepts are closely related:
@@ -72,7 +69,6 @@ These three concepts are closely related:
 - Every release is backed by a tag
 - A tag without a release is just a version marker in the git history
 - GitHub automatically creates a tag when you create a release
-
 
 ## 3. Navigating Releases on GitHub
 
@@ -142,7 +138,6 @@ K → Navigate links (download assets, compare, tag links)
 
 </details>
 
-
 ## 4. Understanding Version Numbers
 
 Most projects follow **Semantic Versioning** (semver): `MAJOR.MINOR.PATCH`
@@ -175,7 +170,6 @@ PR opened → PR reviewed → PR merged → default branch updated
                           Tag created → Release published → v2.1.1
 ```
 
-
 ## 5. Reading Release Notes
 
 Release notes document what changed. High-quality release notes categorize changes:
@@ -201,7 +195,6 @@ Release notes document what changed. High-quality release notes categorize chang
 ```
 
 **The "Full Changelog" link** at the bottom of many release notes goes to a comparison view showing every merged PR between two tags. This is where you'll see your PR listed by name, with your username credited.
-
 
 ## 6. For Maintainers: Creating a Release
 
@@ -240,7 +233,6 @@ The `/draft-release` command generates structured release notes automatically fr
 - Click "Generate release notes" to auto-populate from merged PRs since the last release -- review and manually categorize the entries (Breaking Changes, Features, Bug Fixes) for a polished result
 - The Assets section at the bottom accepts drag-and-drop file uploads for binaries, installers, or compiled packages
 
-
 ## 7. Draft and Pre-Release States
 
 **Draft release:** Saved but not published. Only visible to repository collaborators. Use drafts to prepare release notes in advance.
@@ -248,7 +240,6 @@ The `/draft-release` command generates structured release notes automatically fr
 **Pre-release:** Published and visible, but not marked "Latest." Users who look for the latest stable version won't be directed to it automatically. Use for alpha/beta/RC versions.
 
 **Latest release:** The most recent non-pre-release, non-draft release. This is what GitHub highlights in the sidebar and what `github.com/owner/repo/releases/latest` redirects to.
-
 
 ## 8. Accessibility Agents: `/draft-release`
 
@@ -289,7 +280,6 @@ The `/draft-release` command automates release note generation from your merged 
 
 > **See also:** The `/release-prep` command runs a complete pre-release checklist (milestone status, open PRs, CI health, security, and then generates release notes) - useful when preparing a release from scratch rather than just generating notes.
 
-
 ## Part 2 - Repository Insights
 
 ## 9. What Is the Insights Tab?
@@ -307,7 +297,6 @@ The Insights tab shows quantitative activity data for a repository. It is primar
 - Real-time data (most views update daily or weekly)
 - Code quality scores
 
-
 ## 10. Navigating to Insights
 
 From any repository:
@@ -324,7 +313,6 @@ T → navigate the repository tab bar
 → Left sidebar has sub-navigation: Pulse, Contributors, Traffic, Commits, etc.
 → K to navigate sidebar links → Enter to open each view
 ```
-
 
 ## 11. Pulse - Recent Activity Summary
 
@@ -380,7 +368,6 @@ K → Navigate all links
 
 </details>
 
-
 ## 12. Contributors - Who Builds the Project
 
 The Contributors view shows a bar chart of commits over time, with each contributor represented by a different color. Below the chart is a sortable table.
@@ -427,7 +414,6 @@ K → Links to each contributor's filtered commit list
 - The table below the chart is sortable by column -- click Commits, Additions, or Deletions to reorder and quickly find the most active contributors
 - Your name appears here after your first merged PR -- bookmark the URL to reference your contribution history when building your developer portfolio
 
-
 ## 13. Traffic - Who Visits the Repo
 
 **Traffic** shows who is viewing and cloning the repository. Available only to repository owners and collaborators with push access.
@@ -445,7 +431,6 @@ K → Links to each contributor's filtered commit list
 
 - If the README is the most-viewed file, documentation improvements have high impact
 - If traffic spiked when a blog post linked the repo, that's a good signal for community growth
-
 
 ## 14. Commits and Code Frequency
 
@@ -465,7 +450,6 @@ K → Links to each contributor's filtered commit list
 
 **Screen reader note for both views:** The charts are visual canvas elements. For a text-based view of commit history, use the Commits tab on the main repository page instead.
 
-
 ## 15. Dependency Graph
 
 The **Dependency Graph** shows:
@@ -482,7 +466,6 @@ The **Dependency Graph** shows:
 
 **Why it matters for security:** The dependency graph feeds Dependabot. If a vulnerability is found in a library, Dependabot uses this graph to identify which repos use the affected version and opens automated PRs to update them. See [Appendix L: GitHub Security Features](appendix-p-security-features.md) for more on Dependabot.
 
-
 ## 16. Network and Forks
 
 The **Network** view shows a graphical branch/fork network - who has forked the repo, what branches exist, and how they diverge.
@@ -490,7 +473,6 @@ The **Network** view shows a graphical branch/fork network - who has forked the 
 **Screen reader note:** The network graph is a canvas visualization not accessible to screen readers. The underlying fork list is accessible separately at `github.com/owner/repo/forks`.
 
 **The forks list** (at `/forks`) is a simple table of who forked the repo - navigable with standard table navigation.
-
 
 ## 17. Community Standards
 
@@ -515,7 +497,6 @@ A fully green checklist signals a well-maintained project. For accessibility-age
 H / 2 → "Community Standards" section heading
 Tab → Each checklist item (links to add missing files)
 ```
-
 
 ## 18. Screen Reader Navigation Reference
 
@@ -584,7 +565,6 @@ I → List items (in Pulse views)
 K → Links to each item
 ```
 
-
 ## 19. Accessibility Agents: `/my-stats` and `/team-dashboard`
 
 Instead of navigating GitHub's chart-heavy Insights UI, Accessibility Agents provides two commands that deliver the same data in text form directly in VS Code.
@@ -630,3 +610,32 @@ Output includes:
 *Back: [Appendix R: Projects Deep Dive](appendix-r-projects-deep-dive.md)*  
 *Teaching chapter: [Chapter 08: Open Source Culture](08-open-source-culture.md)*
 
+## Authoritative Sources
+
+Use these official references when you need the current source of truth for facts in this chapter.
+
+- [GitHub Docs, home](https://docs.github.com/en)
+- [GitHub Changelog](https://github.blog/changelog/)
+- [About releases](https://docs.github.com/en/repositories/releasing-projects-on-github/about-releases)
+- [Managing releases and tags](https://docs.github.com/en/repositories/releasing-projects-on-github/managing-releases-in-a-repository)
+
+### Section-Level Source Map
+
+Use this map to verify facts for each major section in this file.
+
+- **Understanding Versioned Releases and Repository Activity:** [GitHub Docs, home](https://docs.github.com/en), [GitHub Changelog](https://github.blog/changelog/), [About releases](https://docs.github.com/en/repositories/releasing-projects-on-github/about-releases), [Managing releases and tags](https://docs.github.com/en/repositories/releasing-projects-on-github/managing-releases-in-a-repository), [About Git](https://docs.github.com/en/get-started/using-git/about-git)
+- **Part 1 - Releases and Tags:** [GitHub Docs, home](https://docs.github.com/en), [GitHub Changelog](https://github.blog/changelog/), [About releases](https://docs.github.com/en/repositories/releasing-projects-on-github/about-releases), [Managing releases and tags](https://docs.github.com/en/repositories/releasing-projects-on-github/managing-releases-in-a-repository)
+- **1. What Is a Release?:** [GitHub Docs, home](https://docs.github.com/en), [GitHub Changelog](https://github.blog/changelog/), [About releases](https://docs.github.com/en/repositories/releasing-projects-on-github/about-releases), [Managing releases and tags](https://docs.github.com/en/repositories/releasing-projects-on-github/managing-releases-in-a-repository)
+- **2. Releases vs. Tags vs. Branches:** [GitHub Docs, home](https://docs.github.com/en), [GitHub Changelog](https://github.blog/changelog/), [About releases](https://docs.github.com/en/repositories/releasing-projects-on-github/about-releases), [Managing releases and tags](https://docs.github.com/en/repositories/releasing-projects-on-github/managing-releases-in-a-repository), [About Git](https://docs.github.com/en/get-started/using-git/about-git)
+- **3. Navigating Releases on GitHub:** [GitHub Docs, home](https://docs.github.com/en), [GitHub Changelog](https://github.blog/changelog/), [About releases](https://docs.github.com/en/repositories/releasing-projects-on-github/about-releases), [Managing releases and tags](https://docs.github.com/en/repositories/releasing-projects-on-github/managing-releases-in-a-repository), [About Git](https://docs.github.com/en/get-started/using-git/about-git)
+- **4. Understanding Version Numbers:** [GitHub Docs, home](https://docs.github.com/en), [GitHub Changelog](https://github.blog/changelog/), [About releases](https://docs.github.com/en/repositories/releasing-projects-on-github/about-releases), [Managing releases and tags](https://docs.github.com/en/repositories/releasing-projects-on-github/managing-releases-in-a-repository)
+- **5. Reading Release Notes:** [GitHub Docs, home](https://docs.github.com/en), [GitHub Changelog](https://github.blog/changelog/), [About releases](https://docs.github.com/en/repositories/releasing-projects-on-github/about-releases), [Managing releases and tags](https://docs.github.com/en/repositories/releasing-projects-on-github/managing-releases-in-a-repository)
+- **What's New in v2.1.0:** [GitHub Docs, home](https://docs.github.com/en), [GitHub Changelog](https://github.blog/changelog/), [About releases](https://docs.github.com/en/repositories/releasing-projects-on-github/about-releases), [Managing releases and tags](https://docs.github.com/en/repositories/releasing-projects-on-github/managing-releases-in-a-repository)
+- **6. For Maintainers: Creating a Release:** [GitHub Docs, home](https://docs.github.com/en), [GitHub Changelog](https://github.blog/changelog/), [About releases](https://docs.github.com/en/repositories/releasing-projects-on-github/about-releases), [Managing releases and tags](https://docs.github.com/en/repositories/releasing-projects-on-github/managing-releases-in-a-repository)
+- **7. Draft and Pre-Release States:** [GitHub Docs, home](https://docs.github.com/en), [GitHub Changelog](https://github.blog/changelog/), [About releases](https://docs.github.com/en/repositories/releasing-projects-on-github/about-releases), [Managing releases and tags](https://docs.github.com/en/repositories/releasing-projects-on-github/managing-releases-in-a-repository)
+- **8. Accessibility Agents: `/draft-release`:** [GitHub Docs, home](https://docs.github.com/en), [GitHub Changelog](https://github.blog/changelog/), [About releases](https://docs.github.com/en/repositories/releasing-projects-on-github/about-releases), [Managing releases and tags](https://docs.github.com/en/repositories/releasing-projects-on-github/managing-releases-in-a-repository), [GitHub Copilot docs](https://docs.github.com/en/copilot)
+- **v2.1.0:** [GitHub Docs, home](https://docs.github.com/en), [GitHub Changelog](https://github.blog/changelog/), [About releases](https://docs.github.com/en/repositories/releasing-projects-on-github/about-releases), [Managing releases and tags](https://docs.github.com/en/repositories/releasing-projects-on-github/managing-releases-in-a-repository)
+- **Part 2 - Repository Insights:** [GitHub Docs, home](https://docs.github.com/en), [GitHub Changelog](https://github.blog/changelog/), [About releases](https://docs.github.com/en/repositories/releasing-projects-on-github/about-releases), [Managing releases and tags](https://docs.github.com/en/repositories/releasing-projects-on-github/managing-releases-in-a-repository), [About Git](https://docs.github.com/en/get-started/using-git/about-git)
+- **9. What Is the Insights Tab?:** [GitHub Docs, home](https://docs.github.com/en), [GitHub Changelog](https://github.blog/changelog/), [About releases](https://docs.github.com/en/repositories/releasing-projects-on-github/about-releases), [Managing releases and tags](https://docs.github.com/en/repositories/releasing-projects-on-github/managing-releases-in-a-repository)
+- **10. Navigating to Insights:** [GitHub Docs, home](https://docs.github.com/en), [GitHub Changelog](https://github.blog/changelog/), [About releases](https://docs.github.com/en/repositories/releasing-projects-on-github/about-releases), [Managing releases and tags](https://docs.github.com/en/repositories/releasing-projects-on-github/managing-releases-in-a-repository)
+- **11. Pulse - Recent Activity Summary:** [GitHub Docs, home](https://docs.github.com/en), [GitHub Changelog](https://github.blog/changelog/), [About releases](https://docs.github.com/en/repositories/releasing-projects-on-github/about-releases), [Managing releases and tags](https://docs.github.com/en/repositories/releasing-projects-on-github/managing-releases-in-a-repository)

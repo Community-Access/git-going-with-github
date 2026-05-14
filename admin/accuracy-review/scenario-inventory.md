@@ -61,3 +61,18 @@ The following table lists the first files to inspect during P0 remediation.
 | 8 | [classroom/README.md](../../classroom/README.md) | Classroom automation, autograding, progression, and admin paths |
 | 9 | [admin/CLASSROOM_INTEGRATION_GUIDE.md](../CLASSROOM_INTEGRATION_GUIDE.md) | High-risk facilitator setup path |
 | 10 | [learning-room/docs/keyboard-shortcuts.md](../../learning-room/docs/keyboard-shortcuts.md) | Current GitHub keyboard and feature-preview guidance |
+
+## Authoritative Sources
+
+Use these official references when you need the current source of truth for facts in this chapter.
+
+- [GitHub Docs, home](https://docs.github.com/en)
+- [GitHub Changelog](https://github.blog/changelog/)
+
+### Section-Level Source Map
+
+Use this map to verify facts for each major section in this file.
+
+- **Audit Surface Summary:** [GitHub Docs, home](https://docs.github.com/en), [GitHub Changelog](https://github.blog/changelog/)
+- **Critical Scenario Families:** [GitHub Docs, home](https://docs.github.com/en), [GitHub Changelog](https://github.blog/changelog/)
+- **Highest-Risk Files For First Manual Validation:** [GitHub Docs, home](https://docs.github.com/en), [GitHub Changelog](https://github.blog/changelog/)

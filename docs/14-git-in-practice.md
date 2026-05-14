@@ -5,7 +5,6 @@
 > **Related appendices:** [Appendix E: Advanced Git](appendix-e-advanced-git.md) | [Appendix D: Git Authentication](appendix-d-git-authentication.md) | [Appendix H: GitHub Desktop](appendix-h-github-desktop.md)
 > **Authoritative sources:** [VS Code Docs: Source Control](https://code.visualstudio.com/docs/sourcecontrol/overview) | [GitHub Docs: Using Git](https://docs.github.com/en/get-started/using-git)
 
-
 ## Managing Repositories, Branches, and Changes Accessibly
 
 > **Day 2, Block 1-2 Material**
@@ -15,7 +14,6 @@
 > **Prerequisites:** [VS Code Setup & Accessibility Basics](11-vscode-interface.md), [Working with Pull Requests](06-working-with-pull-requests.md), [Merge Conflicts](07-merge-conflicts.md)
 >
 > **Mac keyboard shortcuts:** Throughout this chapter, all `Ctrl+` shortcuts use `Cmd+` on Mac, and `Alt+` shortcuts use `Option+`. Common equivalents: `Ctrl+Shift+G` → `Cmd+Shift+G`, `Ctrl+Shift+P` → `Cmd+Shift+P`, `Ctrl+Enter` → `Cmd+Enter`, `Ctrl+S` → `Cmd+S`.
-
 
 ## Workshop Recommendation (Chapter 14 / Challenge 10)
 
@@ -182,7 +180,6 @@ The following table describes each learning card type and who it is for.
 
 You do not need to read every card. Pick the one or two that match your setup and skip the rest.
 
-
 ## Table of Contents
 
 1. [Cloning a Repository in VS Code](#1-cloning-a-repository-in-vs-code)
@@ -197,7 +194,6 @@ You do not need to read every card. Pick the one or two that match your setup an
 10. [Stash Management](#10-stash-management)
 11. [Emergency Recovery - git reflog](#10b-emergency-recovery---git-reflog)
 12. [Alternative Git Interfaces](#11-alternative-git-interfaces)
-
 
 ## 1. Cloning a Repository in VS Code
 
@@ -384,7 +380,6 @@ gh repo clone community-access/vscode-sci-fi-themes && code vscode-sci-fi-themes
 
 </details>
 
-
 ## 2. The Source Control Panel - Complete Walkthrough
 
 The Source Control panel (`Ctrl+Shift+G` - Mac: `Cmd+Shift+G`) is where all Git operations happen in VS Code. This section provides a complete screen reader walkthrough of every interactive element.
@@ -516,7 +511,6 @@ git diff --cached # staged changes
 **The letters match:** `M` = modified, `A` = added, `D` = deleted, `R` = renamed, `??` = untracked.
 
 </details>
-
 
 ## 3. Branch Management
 
@@ -779,7 +773,6 @@ gh api repos/{owner}/{repo}/branches --jq '.[].name'
 
 </details>
 
-
 ## 4. Staging Changes - Files, Lines, and Chunks
 
 Git has a two-step commit process:
@@ -945,7 +938,6 @@ git status
 
 </details>
 
-
 ## 5. Committing with Screen Readers
 
 ### The Commit Workflow
@@ -1043,7 +1035,6 @@ git commit -am "docs: update screen reader instructions"
 - The "Staged Changes" section clears
 - Your changes are now part of Git history
 - The commit exists locally only - you must **push** to send it to GitHub (see Section 6)
-
 
 ## 6. Push and Pull Operations
 
@@ -1182,7 +1173,6 @@ If your branch is behind `main`, look for the **"Update branch"** button on your
 - VS Code can check for remote changes automatically every few minutes
 - Enable: Settings (`Ctrl+,` - Mac: `Cmd+,`) → search "git autofetch" → set to `true`
 
-
 ## Syncing Your Fork with the Upstream Repository
 
 When you fork a repository and the original (upstream) repository receives new commits, your fork gets out of date. Keeping your fork current prevents merge conflicts and ensures you're working with the latest code.
@@ -1263,7 +1253,6 @@ Ctrl+Shift+P → "Git: Push"
 If you've made changes to the same files the upstream has changed, merge conflicts can occur during sync. The same conflict resolution flow applies - see Section 9 of this chapter.
 
 **Best practice:** Always sync before starting new work on a fork. A quick `git fetch upstream` at the start of each session prevents conflicts from accumulating.
-
 
 ## 7. Discarding Changes
 
@@ -1461,7 +1450,6 @@ git status
 
 </details>
 
-
 ## 8. Timeline View - File History and Blame
 
 The **Timeline view** shows the Git history of the currently open file: every commit that touched this file, who made it, and when.
@@ -1638,7 +1626,6 @@ gh pr list --state all --limit 10
 
 </details>
 
-
 ## 9. Resolving Merge Conflicts in VS Code
 
 Merge conflicts happen when two people edit the same lines of a file. Git can't decide which version to keep, so it asks you to choose.
@@ -1745,7 +1732,6 @@ Everything returns to the pre-merge state.
 - The Source Control panel shows a merge badge when conflicts exist -- it clears after you commit the resolution
 
 </details>
-
 
 ## 10. Stash Management
 
@@ -1928,7 +1914,6 @@ git stash clear
 
 </details>
 
-
 ## 10b. Emergency Recovery - git reflog
 
 `git reflog` is the safety net you reach for when something goes seriously wrong: an accidental hard reset, a lost branch, a rebase that destroyed commits you needed. It is the most underused recovery tool in Git.
@@ -2028,7 +2013,6 @@ Reflog records are stored in your local `.git/` directory and are **not pushed t
 
 </details>
 
-
 ## 11. Alternative Git Interfaces
 
 VS Code's Source Control panel is one way to use Git. These alternatives exist for different workflows.
@@ -2076,7 +2060,6 @@ git log                        # View commit history
 
 **Screen reader tip:** Terminal output is plain text - more predictable than GUI elements for some operations.
 
-
 ## VS Code Keyboard Shortcuts - Git Operations Quick Reference
 
 | Action | Shortcut |
@@ -2093,7 +2076,6 @@ git log                        # View commit history
 | Open Timeline view | `Ctrl+Shift+E` → navigate to Timeline section |
 | Integrated terminal | `Ctrl+Backtick` |
 | Delete file from repo (git rm) | `Ctrl+Shift+P` → "Git: Delete" |
-
 
 ## Try It: Clone, Branch, Commit
 
@@ -2118,3 +2100,35 @@ Do the complete Git workflow once, start to finish:
 *Back: [Chapter 13: How Git Works](13-how-git-works.md)*  
 *Related appendices: [Appendix E: Advanced Git](appendix-e-advanced-git.md) | [Appendix D: Git Authentication](appendix-d-git-authentication.md)*
 
+## Authoritative Sources
+
+Use these official references when you need the current source of truth for facts in this chapter.
+
+- [GitHub Docs, home](https://docs.github.com/en)
+- [GitHub Changelog](https://github.blog/changelog/)
+- [About Git](https://docs.github.com/en/get-started/using-git/about-git)
+- [GitHub flow](https://docs.github.com/en/get-started/using-github/github-flow)
+- [About pull requests](https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/about-pull-requests)
+- [About issues](https://docs.github.com/en/issues/tracking-your-work-with-issues/about-issues)
+- [Contributing to a project](https://docs.github.com/en/get-started/exploring-projects-on-github/contributing-to-a-project)
+
+### Section-Level Source Map
+
+Use this map to verify facts for each major section in this file.
+
+- **Managing Repositories, Branches, and Changes Accessibly:** [GitHub Docs, home](https://docs.github.com/en), [GitHub Changelog](https://github.blog/changelog/), [About Git](https://docs.github.com/en/get-started/using-git/about-git), [GitHub flow](https://docs.github.com/en/get-started/using-github/github-flow), [About pull requests](https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/about-pull-requests)
+- **Workshop Recommendation (Chapter 14 / Challenge 10):** [GitHub Docs, home](https://docs.github.com/en), [GitHub Changelog](https://github.blog/changelog/), [About Git](https://docs.github.com/en/get-started/using-git/about-git), [GitHub flow](https://docs.github.com/en/get-started/using-github/github-flow), [About pull requests](https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/about-pull-requests)
+- **1. Cloning a Repository in VS Code:** [GitHub Docs, home](https://docs.github.com/en), [GitHub Changelog](https://github.blog/changelog/), [About Git](https://docs.github.com/en/get-started/using-git/about-git), [GitHub flow](https://docs.github.com/en/get-started/using-github/github-flow), [About pull requests](https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/about-pull-requests)
+- **2. The Source Control Panel - Complete Walkthrough:** [GitHub Docs, home](https://docs.github.com/en), [GitHub Changelog](https://github.blog/changelog/), [About Git](https://docs.github.com/en/get-started/using-git/about-git), [GitHub flow](https://docs.github.com/en/get-started/using-github/github-flow), [About pull requests](https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/about-pull-requests)
+- **3. Branch Management:** [GitHub Docs, home](https://docs.github.com/en), [GitHub Changelog](https://github.blog/changelog/), [About Git](https://docs.github.com/en/get-started/using-git/about-git), [GitHub flow](https://docs.github.com/en/get-started/using-github/github-flow), [About pull requests](https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/about-pull-requests)
+- **4. Staging Changes - Files, Lines, and Chunks:** [GitHub Docs, home](https://docs.github.com/en), [GitHub Changelog](https://github.blog/changelog/), [About Git](https://docs.github.com/en/get-started/using-git/about-git), [GitHub flow](https://docs.github.com/en/get-started/using-github/github-flow), [About pull requests](https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/about-pull-requests)
+- **5. Committing with Screen Readers:** [GitHub Docs, home](https://docs.github.com/en), [GitHub Changelog](https://github.blog/changelog/), [About Git](https://docs.github.com/en/get-started/using-git/about-git), [GitHub flow](https://docs.github.com/en/get-started/using-github/github-flow), [About pull requests](https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/about-pull-requests)
+- **6. Push and Pull Operations:** [GitHub Docs, home](https://docs.github.com/en), [GitHub Changelog](https://github.blog/changelog/), [About Git](https://docs.github.com/en/get-started/using-git/about-git), [GitHub flow](https://docs.github.com/en/get-started/using-github/github-flow), [About pull requests](https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/about-pull-requests)
+- **What to do if push fails:** [GitHub Docs, home](https://docs.github.com/en), [GitHub Changelog](https://github.blog/changelog/), [About Git](https://docs.github.com/en/get-started/using-git/about-git), [GitHub flow](https://docs.github.com/en/get-started/using-github/github-flow), [About pull requests](https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/about-pull-requests)
+- **Syncing Your Fork with the Upstream Repository:** [GitHub Docs, home](https://docs.github.com/en), [GitHub Changelog](https://github.blog/changelog/), [About Git](https://docs.github.com/en/get-started/using-git/about-git), [GitHub flow](https://docs.github.com/en/get-started/using-github/github-flow), [About pull requests](https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/about-pull-requests)
+- **Via VS Code Command Palette:** [GitHub Docs, home](https://docs.github.com/en), [GitHub Changelog](https://github.blog/changelog/), [About Git](https://docs.github.com/en/get-started/using-git/about-git), [GitHub flow](https://docs.github.com/en/get-started/using-github/github-flow), [About pull requests](https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/about-pull-requests)
+- **7. Discarding Changes:** [GitHub Docs, home](https://docs.github.com/en), [GitHub Changelog](https://github.blog/changelog/), [About Git](https://docs.github.com/en/get-started/using-git/about-git), [GitHub flow](https://docs.github.com/en/get-started/using-github/github-flow), [About pull requests](https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/about-pull-requests)
+- **8. Timeline View - File History and Blame:** [GitHub Docs, home](https://docs.github.com/en), [GitHub Changelog](https://github.blog/changelog/), [About Git](https://docs.github.com/en/get-started/using-git/about-git), [GitHub flow](https://docs.github.com/en/get-started/using-github/github-flow), [About pull requests](https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/about-pull-requests)
+- **9. Resolving Merge Conflicts in VS Code:** [GitHub Docs, home](https://docs.github.com/en), [GitHub Changelog](https://github.blog/changelog/), [About Git](https://docs.github.com/en/get-started/using-git/about-git), [GitHub flow](https://docs.github.com/en/get-started/using-github/github-flow), [About pull requests](https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/about-pull-requests)
+- **Timeline View - File History:** [GitHub Docs, home](https://docs.github.com/en), [GitHub Changelog](https://github.blog/changelog/), [About Git](https://docs.github.com/en/get-started/using-git/about-git), [GitHub flow](https://docs.github.com/en/get-started/using-github/github-flow), [About pull requests](https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/about-pull-requests)
+- **Timeline View - Git History and Blame:** [GitHub Docs, home](https://docs.github.com/en), [GitHub Changelog](https://github.blog/changelog/), [About Git](https://docs.github.com/en/get-started/using-git/about-git), [GitHub flow](https://docs.github.com/en/get-started/using-github/github-flow), [About pull requests](https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/about-pull-requests)

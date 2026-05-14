@@ -10,7 +10,6 @@
 
 ## GitHub Profiles, Sponsors, and Wikis
 
-
 >
 > **Listen to Episode 35:** [Profile, Sponsors, and Wikis](../admin/PODCASTS.md) - a conversational audio overview of this chapter. Listen before reading to preview the concepts, or after to reinforce what you learned.
 
@@ -46,7 +45,6 @@
 - Wiki pages have an auto-generated sidebar listing all pages -- click any page title to navigate directly
 
 </details>
-
 
 ## Profile Customization
 
@@ -134,7 +132,6 @@ I've been using screen readers for 8 years and believe accessible design is bett
 - Set a temporary status message (e.g., "On vacation until March 15")
 - Navigate to your profile → Select the smile icon → Set status
 
-
 ## GitHub Sponsors (Supporting Open Source)
 
 ### What Is GitHub Sponsors?
@@ -178,7 +175,6 @@ Yes! If you maintain an open source project or contribute regularly:
 
 Many accessibility advocates successfully use Sponsors to fund their work improving assistive technology and inclusive design.
 
-
 ## GitHub Wikis
 
 ### What Is a GitHub Wiki?
@@ -219,7 +215,6 @@ Wiki pages automatically appear in a sidebar for navigation.
 - Use proper heading hierarchy (`##`, `###`) for screen reader navigation
 - Link between wiki pages: `[[Page Title]]`
 - **Screen reader caveat:** Wiki pages are a separate Git repository. Any changes pushed directly to the wiki's git remote are not tracked by the main repository's branch protection - meaning no PR review process applies. Treat wikis as community-editable supplementary docs, not your primary critical documentation source.
-
 
 *Return to: [Resources](appendix-x-resources.md) | [Appendix S - Organizations and Templates](appendix-t-community-and-social.md) | [Appendix G - GitHub Discussions](appendix-u-discussions-and-gists.md) | [Appendix T - Contributing to Open Source](08-open-source-culture.md) | [Appendix A - Glossary](appendix-a-glossary.md)*
 
@@ -263,7 +258,6 @@ Wiki pages automatically appear in a sidebar for navigation.
 
 </details>
 
-
 ## Repository Templates
 
 ### Template vs. Fork - Which One?
@@ -302,7 +296,6 @@ Maintainers can mark any repository as a template:
 B → navigate buttons → find "Use this template" → Enter
 ↓ → "Create a new repository" from the dropdown → Enter
 ```
-
 
 ## GitHub Organizations - A Contributor's View
 
@@ -350,7 +343,6 @@ Links → navigate to individual repositories, members, and projects
 
 Organization-level Projects (like the `community-access` project board) appear in the org's Projects tab, not inside any single repository.
 
-
 ## Repository Settings - What Contributors Need to Know
 
 You may not have Settings access to most repositories (that requires maintainer role). But knowing what's there helps you understand why a repository behaves the way it does.
@@ -389,7 +381,6 @@ Topics are keyword tags on a repository (e.g., `accessibility`, `screen-reader`,
 The default branch is the one all PRs target by default. Modern projects use `main`; older projects may use `master` or another name. When you clone and create a branch, you always branch from the repository's default branch.
 
 The default branch name appears in the branch selector at the top of the Code tab.
-
 
 *Return to: [Resources](appendix-x-resources.md) | [Appendix R - GitHub Profile, Sponsors, and Wikis](appendix-t-community-and-social.md) | [Appendix A - Glossary](appendix-a-glossary.md)*
 
@@ -960,3 +951,30 @@ gh api user/subscriptions --jq '.[].full_name'     # List watched repos
 *Back: [Appendix S: Releases and Insights](appendix-s-releases-tags-insights.md)*  
 *Teaching chapter: [Chapter 08: Open Source Culture](08-open-source-culture.md)*
 
+## Authoritative Sources
+
+Use these official references when you need the current source of truth for facts in this chapter.
+
+- [GitHub Docs, home](https://docs.github.com/en)
+- [GitHub Changelog](https://github.blog/changelog/)
+
+### Section-Level Source Map
+
+Use this map to verify facts for each major section in this file.
+
+- **GitHub Profiles, Sponsors, and Wikis:** [GitHub Docs, home](https://docs.github.com/en), [GitHub Changelog](https://github.blog/changelog/), [About Git](https://docs.github.com/en/get-started/using-git/about-git), [GitHub flow](https://docs.github.com/en/get-started/using-github/github-flow), [About pull requests](https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/about-pull-requests)
+- **Building Your Community Presence on GitHub:** [GitHub Docs, home](https://docs.github.com/en), [GitHub Changelog](https://github.blog/changelog/), [About Git](https://docs.github.com/en/get-started/using-git/about-git), [GitHub flow](https://docs.github.com/en/get-started/using-github/github-flow), [About pull requests](https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/about-pull-requests)
+- **Profile Customization:** [GitHub Docs, home](https://docs.github.com/en), [GitHub Changelog](https://github.blog/changelog/)
+- **Current focus:** [GitHub Docs, home](https://docs.github.com/en), [GitHub Changelog](https://github.blog/changelog/)
+- **Skills:** [GitHub Docs, home](https://docs.github.com/en), [GitHub Changelog](https://github.blog/changelog/), [GitHub Skills catalog](https://skills.github.com/), [GitHub Learning Pathways](https://resources.github.com/learn/pathways/)
+- **Get in touch:** [GitHub Docs, home](https://docs.github.com/en), [GitHub Changelog](https://github.blog/changelog/)
+- **Fun fact:** [GitHub Docs, home](https://docs.github.com/en), [GitHub Changelog](https://github.blog/changelog/)
+- **GitHub Sponsors (Supporting Open Source):** [GitHub Docs, home](https://docs.github.com/en), [GitHub Changelog](https://github.blog/changelog/), [About Git](https://docs.github.com/en/get-started/using-git/about-git), [GitHub flow](https://docs.github.com/en/get-started/using-github/github-flow), [About pull requests](https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/about-pull-requests)
+- **GitHub Wikis:** [GitHub Docs, home](https://docs.github.com/en), [GitHub Changelog](https://github.blog/changelog/), [About Git](https://docs.github.com/en/get-started/using-git/about-git), [GitHub flow](https://docs.github.com/en/get-started/using-github/github-flow), [About pull requests](https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/about-pull-requests)
+- **GitHub Organizations and Templates:** [GitHub Docs, home](https://docs.github.com/en), [GitHub Changelog](https://github.blog/changelog/), [About Git](https://docs.github.com/en/get-started/using-git/about-git), [GitHub flow](https://docs.github.com/en/get-started/using-github/github-flow), [About pull requests](https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/about-pull-requests)
+- **A Contributor's Guide to GitHub's Structural Features:** [GitHub Docs, home](https://docs.github.com/en), [GitHub Changelog](https://github.blog/changelog/), [About Git](https://docs.github.com/en/get-started/using-git/about-git), [GitHub flow](https://docs.github.com/en/get-started/using-github/github-flow), [About pull requests](https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/about-pull-requests)
+- **Repository Templates:** [GitHub Docs, home](https://docs.github.com/en), [GitHub Changelog](https://github.blog/changelog/), [About Git](https://docs.github.com/en/get-started/using-git/about-git), [GitHub flow](https://docs.github.com/en/get-started/using-github/github-flow), [About pull requests](https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/about-pull-requests)
+- **GitHub Organizations - A Contributor's View:** [GitHub Docs, home](https://docs.github.com/en), [GitHub Changelog](https://github.blog/changelog/), [About Git](https://docs.github.com/en/get-started/using-git/about-git), [GitHub flow](https://docs.github.com/en/get-started/using-github/github-flow), [About pull requests](https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/about-pull-requests)
+- **Repository Settings - What Contributors Need to Know:** [GitHub Docs, home](https://docs.github.com/en), [GitHub Changelog](https://github.blog/changelog/), [About Git](https://docs.github.com/en/get-started/using-git/about-git), [GitHub flow](https://docs.github.com/en/get-started/using-github/github-flow), [About pull requests](https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/about-pull-requests)
+- **GitHub Social Features:** [GitHub Docs, home](https://docs.github.com/en), [GitHub Changelog](https://github.blog/changelog/), [About Git](https://docs.github.com/en/get-started/using-git/about-git), [GitHub flow](https://docs.github.com/en/get-started/using-github/github-flow), [About pull requests](https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/about-pull-requests)
+- **GitHub Is More Than a Code Host — It's a Community:** [GitHub Docs, home](https://docs.github.com/en), [GitHub Changelog](https://github.blog/changelog/), [About Git](https://docs.github.com/en/get-started/using-git/about-git), [GitHub flow](https://docs.github.com/en/get-started/using-github/github-flow), [About pull requests](https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/about-pull-requests)

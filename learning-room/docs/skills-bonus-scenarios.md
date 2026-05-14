@@ -74,3 +74,21 @@ Suggested task:
 - These scenarios are optional and do not alter the 21 official challenges.
 - Facilitators can assign them to fast finishers as enrichment.
 - Core validation and progression workflows remain unchanged.
+
+## Authoritative Sources
+
+Use these official references when you need the current source of truth for facts in this chapter.
+
+- [GitHub Docs, home](https://docs.github.com/en)
+- [GitHub Changelog](https://github.blog/changelog/)
+- [GitHub Skills catalog](https://skills.github.com/)
+- [GitHub Learning Pathways](https://resources.github.com/learn/pathways/)
+
+### Section-Level Source Map
+
+Use this map to verify facts for each major section in this file.
+
+- **Source Documentation:** [GitHub Docs, home](https://docs.github.com/en), [GitHub Changelog](https://github.blog/changelog/), [GitHub Skills catalog](https://skills.github.com/), [GitHub Learning Pathways](https://resources.github.com/learn/pathways/)
+- **Selection Criteria:** [GitHub Docs, home](https://docs.github.com/en), [GitHub Changelog](https://github.blog/changelog/), [GitHub Skills catalog](https://skills.github.com/), [GitHub Learning Pathways](https://resources.github.com/learn/pathways/)
+- **Consolidated Scenarios:** [GitHub Docs, home](https://docs.github.com/en), [GitHub Changelog](https://github.blog/changelog/), [GitHub Skills catalog](https://skills.github.com/), [GitHub Learning Pathways](https://resources.github.com/learn/pathways/), [GitHub Mobile docs](https://docs.github.com/en/get-started/using-github/github-mobile)
+- **Integration Notes:** [GitHub Docs, home](https://docs.github.com/en), [GitHub Changelog](https://github.blog/changelog/), [GitHub Skills catalog](https://skills.github.com/), [GitHub Learning Pathways](https://resources.github.com/learn/pathways/)

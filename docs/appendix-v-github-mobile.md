@@ -39,7 +39,6 @@
 
 </details>
 
-
 ## Table of Contents
 
 1. [Installing GitHub Mobile](#1-installing-github-mobile)
@@ -52,7 +51,6 @@
 8. [What Mobile Does Well vs. Desktop](#8-what-mobile-does-well-vs-desktop)
 9. [Common Issues and Workarounds](#9-common-issues-and-workarounds)
 
-
 ## 1. Installing GitHub Mobile
 
 | Platform | Download |
@@ -61,7 +59,6 @@
 | Android | [Google Play - GitHub](https://play.google.com/store/apps/details?id=com.github.android) |
 
 After installing, sign in with your GitHub account. Enable notifications when prompted - these are essential for staying on top of PR reviews and issue activity without constantly checking the web.
-
 
 ## 2. Getting Around the App
 
@@ -76,7 +73,6 @@ GitHub Mobile is organized into five main tabs at the bottom of the screen:
 | Profile | Your profile, repositories, stars, and settings |
 
 Navigate between tabs with a single tap (or swipe on iOS with VoiceOver active).
-
 
 ## 3. VoiceOver on iOS
 
@@ -113,7 +109,6 @@ Open the Rotor by rotating two fingers on the screen as if turning a dial. Usefu
 3. Type your comment; VoiceOver announces each character
 4. When done, swipe to the **Comment** button and double tap to submit
 
-
 ## 4. TalkBack on Android
 
 ### Enabling TalkBack
@@ -147,7 +142,6 @@ Tap with three fingers (or swipe down then right) to open the TalkBack menu. Fro
 2. Double tap to enter the field
 3. Use the on-screen keyboard or dictation to type
 4. Locate the **Comment** button and double tap to submit
-
 
 ## 5. Working with Notifications
 
@@ -198,7 +192,6 @@ Use the filter icon at the top right to filter by:
 
 With VoiceOver or TalkBack, the filter controls are accessible form elements. Open the filter panel, navigate to each option, and activate to toggle it.
 
-
 ## 6. Reviewing Pull Requests
 
 Mobile is well suited for quick PR reviews - approving straightforward changes, leaving a comment, or checking CI status while away from your desk.
@@ -226,7 +219,6 @@ VoiceOver and TalkBack announce these as headings. Use heading navigation (Rotor
 
 The Files Changed tab shows a simplified diff - additions and removals are text-only (no table layout). Each changed line is announced as "Added: [content]" or "Removed: [content]", which is generally more accessible than the web diff table on small screens.
 
-
 ## 7. Working with Issues
 
 ### Filing an Issue
@@ -241,7 +233,6 @@ The Files Changed tab shows a simplified diff - additions and removals are text-
 
 - Pull Requests tab → **Created by you** or **Assigned to you** filters
 - For issues: Home feed shows recent activity; or navigate to a specific repository → Issues → filter by Assignee, Label, or Author
-
 
 ## 8. What Mobile Does Well vs. Desktop
 
@@ -258,7 +249,6 @@ The Files Changed tab shows a simplified diff - additions and removals are text-
 | Running Codespace / editing code | Not supported | Supported |
 
 **Best use of GitHub Mobile:** notification triage, quick approvals and comments, catching up on activity between sessions. For writing substantial code, descriptions, or reviewing complex diffs, use the web or VS Code.
-
 
 ## 9. Common Issues and Workarounds
 
@@ -288,3 +278,26 @@ Force close the app and reopen. If the problem persists, sign out and back in vi
 *Back: [Appendix U: Discussions and Gists](appendix-u-discussions-and-gists.md)*  
 *Teaching chapter: [Chapter 05: Working with Issues](05-working-with-issues.md)*
 
+## Authoritative Sources
+
+Use these official references when you need the current source of truth for facts in this chapter.
+
+- [GitHub Docs, home](https://docs.github.com/en)
+- [GitHub Changelog](https://github.blog/changelog/)
+- [GitHub Mobile docs](https://docs.github.com/en/get-started/using-github/github-mobile)
+- [GitHub Mobile changelog](https://github.blog/changelog/label/client-apps/)
+
+### Section-Level Source Map
+
+Use this map to verify facts for each major section in this file.
+
+- **Accessibility Guide for iOS and Android:** [GitHub Docs, home](https://docs.github.com/en), [GitHub Changelog](https://github.blog/changelog/), [GitHub Mobile docs](https://docs.github.com/en/get-started/using-github/github-mobile), [GitHub Mobile changelog](https://github.blog/changelog/label/client-apps/), [W3C Web Content Accessibility Guidelines (WCAG) 2 overview](https://www.w3.org/WAI/standards-guidelines/wcag/)
+- **1. Installing GitHub Mobile:** [GitHub Docs, home](https://docs.github.com/en), [GitHub Changelog](https://github.blog/changelog/), [GitHub Mobile docs](https://docs.github.com/en/get-started/using-github/github-mobile), [GitHub Mobile changelog](https://github.blog/changelog/label/client-apps/), [About Git](https://docs.github.com/en/get-started/using-git/about-git)
+- **2. Getting Around the App:** [GitHub Docs, home](https://docs.github.com/en), [GitHub Changelog](https://github.blog/changelog/), [GitHub Mobile docs](https://docs.github.com/en/get-started/using-github/github-mobile), [GitHub Mobile changelog](https://github.blog/changelog/label/client-apps/)
+- **3. VoiceOver on iOS:** [GitHub Docs, home](https://docs.github.com/en), [GitHub Changelog](https://github.blog/changelog/), [GitHub Mobile docs](https://docs.github.com/en/get-started/using-github/github-mobile), [GitHub Mobile changelog](https://github.blog/changelog/label/client-apps/)
+- **4. TalkBack on Android:** [GitHub Docs, home](https://docs.github.com/en), [GitHub Changelog](https://github.blog/changelog/), [GitHub Mobile docs](https://docs.github.com/en/get-started/using-github/github-mobile), [GitHub Mobile changelog](https://github.blog/changelog/label/client-apps/)
+- **5. Working with Notifications:** [GitHub Docs, home](https://docs.github.com/en), [GitHub Changelog](https://github.blog/changelog/), [GitHub Mobile docs](https://docs.github.com/en/get-started/using-github/github-mobile), [GitHub Mobile changelog](https://github.blog/changelog/label/client-apps/)
+- **6. Reviewing Pull Requests:** [GitHub Docs, home](https://docs.github.com/en), [GitHub Changelog](https://github.blog/changelog/), [GitHub Mobile docs](https://docs.github.com/en/get-started/using-github/github-mobile), [GitHub Mobile changelog](https://github.blog/changelog/label/client-apps/), [About Git](https://docs.github.com/en/get-started/using-git/about-git)
+- **7. Working with Issues:** [GitHub Docs, home](https://docs.github.com/en), [GitHub Changelog](https://github.blog/changelog/), [GitHub Mobile docs](https://docs.github.com/en/get-started/using-github/github-mobile), [GitHub Mobile changelog](https://github.blog/changelog/label/client-apps/), [About Git](https://docs.github.com/en/get-started/using-git/about-git)
+- **8. What Mobile Does Well vs. Desktop:** [GitHub Docs, home](https://docs.github.com/en), [GitHub Changelog](https://github.blog/changelog/), [GitHub Mobile docs](https://docs.github.com/en/get-started/using-github/github-mobile), [GitHub Mobile changelog](https://github.blog/changelog/label/client-apps/)
+- **9. Common Issues and Workarounds:** [GitHub Docs, home](https://docs.github.com/en), [GitHub Changelog](https://github.blog/changelog/), [GitHub Mobile docs](https://docs.github.com/en/get-started/using-github/github-mobile), [GitHub Mobile changelog](https://github.blog/changelog/label/client-apps/), [About Git](https://docs.github.com/en/get-started/using-git/about-git)

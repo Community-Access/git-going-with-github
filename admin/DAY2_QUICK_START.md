@@ -4,7 +4,6 @@
 >
 > **If you are joining the workshop on Day 2** -- whether you already know GitHub fundamentals or are picking up from a different learning path -- this guide will get you ready in 30 minutes.
 
-
 ## Self-Assessment: Are You Ready for Day 2?
 
 Day 2 assumes you can do these five things on GitHub **right now, without help**. If any of them feel unfamiliar, read the linked chapter before the session starts.
@@ -22,7 +21,6 @@ If you answered **Yes** to all five, you are ready. Proceed to the setup checkli
 If you answered **No** to one or two, spend 15-20 minutes reading the linked chapters. They are self-contained and designed for screen reader users.
 
 If you answered **No** to three or more, consider starting with the [Day 1 curriculum](DAY1_AGENDA.md) at your own pace before joining Day 2.
-
 
 ## Setup Checklist
 
@@ -71,13 +69,11 @@ Verify the files are present: `ls` should show `README.md`, `docs/`, and other p
 
 For detailed instructions on any of the above steps, see [Pre-Workshop Setup](../docs/00-pre-workshop-setup.md).
 
-
 ## What You Missed on Day 1 (and Do Not Need to Repeat)
 
 Day 1 participants worked through Challenges 1-9 in their own Classroom repositories, covering repository navigation, issues, branching, commits, pull requests, merge conflicts, and open source culture. These activities taught the same skills listed in the self-assessment above.
 
 You do not need to complete those modules or practice files. If you already have GitHub fundamentals, you have the same foundation.
-
 
 ## What Happens When You Arrive
 
@@ -89,7 +85,6 @@ Day 2 Block 0 (9:00-9:30 AM Pacific) includes time for Day-2-only participants t
 
 After Block 0, everyone works on the same material regardless of which day they joined.
 
-
 ## Key Resources
 
 | Resource | What it covers |
@@ -99,4 +94,20 @@ After Block 0, everyone works on the same material regardless of which day they 
 | [Screen Reader Cheat Sheet](../docs/appendix-b-screen-reader-cheatsheet.md) | NVDA, JAWS, and VoiceOver shortcuts for GitHub and VS Code |
 | [VS Code Interface Guide](../docs/11-vscode-interface.md) | Screen reader mode, navigation, accessibility features |
 | [Glossary](../docs/appendix-a-glossary.md) | Every term used in the workshop, explained |
-    
+
+## Authoritative Sources
+
+Use these official references when you need the current source of truth for facts in this chapter.
+
+- [GitHub Docs, home](https://docs.github.com/en)
+- [GitHub Changelog](https://github.blog/changelog/)
+
+### Section-Level Source Map
+
+Use this map to verify facts for each major section in this file.
+
+- **Self-Assessment: Are You Ready for Day 2?:** [GitHub Docs, home](https://docs.github.com/en), [GitHub Changelog](https://github.blog/changelog/)
+- **Setup Checklist:** [GitHub Docs, home](https://docs.github.com/en), [GitHub Changelog](https://github.blog/changelog/)
+- **What You Missed on Day 1 (and Do Not Need to Repeat):** [GitHub Docs, home](https://docs.github.com/en), [GitHub Changelog](https://github.blog/changelog/)
+- **What Happens When You Arrive:** [GitHub Docs, home](https://docs.github.com/en), [GitHub Changelog](https://github.blog/changelog/)
+- **Key Resources:** [GitHub Docs, home](https://docs.github.com/en), [GitHub Changelog](https://github.blog/changelog/)

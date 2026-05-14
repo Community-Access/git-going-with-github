@@ -51,3 +51,19 @@ The following table lists useful search terms from the first scan.
 | Copilot and models | `Copilot`, `agent mode`, `cloud agent`, `Copilot CLI`, `model picker`, `model selection`, `Claude`, `Codex`, `GPT`, `BYOK`, `MCP`, `custom instructions`, `skills` |
 | Walkthrough steps | `click`, `select`, `press`, `activate`, `button`, `tab`, `menu`, `dropdown`, `settings`, `Command Palette`, `Ctrl`, `Alt+`, `NVDA`, `JAWS`, `VoiceOver`, `GitHub.com`, `VS Code` |
 | Automation and outcomes | `autograding`, `workflow`, `checks`, `Aria`, `Student Progression Bot`, `validation`, `merge`, `review`, `status`, `output`, `error`, `success` |
+
+## Authoritative Sources
+
+Use these official references when you need the current source of truth for facts in this chapter.
+
+- [GitHub Docs, home](https://docs.github.com/en)
+- [GitHub Changelog](https://github.blog/changelog/)
+
+### Section-Level Source Map
+
+Use this map to verify facts for each major section in this file.
+
+- **P0 Findings To Verify First:** [GitHub Docs, home](https://docs.github.com/en), [GitHub Changelog](https://github.blog/changelog/)
+- **P1 Findings To Verify Next:** [GitHub Docs, home](https://docs.github.com/en), [GitHub Changelog](https://github.blog/changelog/)
+- **P2 Findings To Verify During Cleanup:** [GitHub Docs, home](https://docs.github.com/en), [GitHub Changelog](https://github.blog/changelog/)
+- **Search Terms Used:** [GitHub Docs, home](https://docs.github.com/en), [GitHub Changelog](https://github.blog/changelog/), [GitHub code search syntax](https://docs.github.com/en/search-github/github-code-search/understanding-github-code-search-syntax), [Advanced search docs](https://docs.github.com/en/search-github/searching-on-github/searching-on-github)

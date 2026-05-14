@@ -3,7 +3,6 @@
 > **Related appendices:** [Appendix E: Advanced Git](appendix-e-advanced-git.md) | [Appendix O: Branch Protection](appendix-o-branch-protection.md) | [Appendix D: Git Authentication](appendix-d-git-authentication.md)
 > **Authoritative sources:** [GitHub Docs: Fork a repo](https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/working-with-forks/fork-a-repo) | [GitHub Docs: Syncing a fork](https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/working-with-forks/syncing-a-fork) | [Open Source Guides: How to Contribute](https://opensource.guide/how-to-contribute/)
 
-
 > **Day 2, Block 3 Material**
 >
 > This chapter teaches the complete fork-based contribution workflow from start to finish. You will fork a real repository, create a feature branch, make changes, push to your fork, and open a pull request against the upstream repository. This is the workflow used by millions of open source contributors every day, and it is the foundation for the capstone project in [Chapter 20](20-build-your-agent.md).
@@ -26,7 +25,7 @@
 
 ---
 
-> **Challenge 16: Build Your Agent (Capstone)** uses this fork-based workflow end to end. Practice it here so the capstone feels familiar.
+> **Challenge 16: Capstone Project** uses this fork-based workflow when your chosen repository accepts pull requests. Practice it here so the capstone feels familiar.
 
 ## 1. What Is a Fork?
 
@@ -604,3 +603,24 @@ GitHub also offers a "Delete branch" button on the merged PR page.
 *Back: [Chapter 17: Issue Templates](17-issue-templates.md)*  
 *Related appendices: [Appendix E: Advanced Git](appendix-e-advanced-git.md) | [Appendix O: Branch Protection](appendix-o-branch-protection.md)*
 
+## Authoritative Sources
+
+Use these official references when you need the current source of truth for facts in this chapter.
+
+- [GitHub Docs, home](https://docs.github.com/en)
+- [GitHub Changelog](https://github.blog/changelog/)
+- [About Git](https://docs.github.com/en/get-started/using-git/about-git)
+- [GitHub flow](https://docs.github.com/en/get-started/using-github/github-flow)
+- [About pull requests](https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/about-pull-requests)
+- [About issues](https://docs.github.com/en/issues/tracking-your-work-with-issues/about-issues)
+- [Contributing to a project](https://docs.github.com/en/get-started/exploring-projects-on-github/contributing-to-a-project)
+
+### Section-Level Source Map
+
+Use this map to verify facts for each major section in this file.
+
+- **1. What Is a Fork?:** [GitHub Docs, home](https://docs.github.com/en), [GitHub Changelog](https://github.blog/changelog/), [About Git](https://docs.github.com/en/get-started/using-git/about-git), [GitHub flow](https://docs.github.com/en/get-started/using-github/github-flow), [About pull requests](https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/about-pull-requests)
+- **2. Fork vs Clone vs Branch:** [GitHub Docs, home](https://docs.github.com/en), [GitHub Changelog](https://github.blog/changelog/), [About Git](https://docs.github.com/en/get-started/using-git/about-git), [GitHub flow](https://docs.github.com/en/get-started/using-github/github-flow), [About pull requests](https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/about-pull-requests)
+- **11. Keeping Your Fork in Sync:** [GitHub Docs, home](https://docs.github.com/en), [GitHub Changelog](https://github.blog/changelog/), [About Git](https://docs.github.com/en/get-started/using-git/about-git), [GitHub flow](https://docs.github.com/en/get-started/using-github/github-flow), [About pull requests](https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/about-pull-requests)
+- **12. The Fork Workflow Checklist:** [GitHub Docs, home](https://docs.github.com/en), [GitHub Changelog](https://github.blog/changelog/), [About Git](https://docs.github.com/en/get-started/using-git/about-git), [GitHub flow](https://docs.github.com/en/get-started/using-github/github-flow), [About pull requests](https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/about-pull-requests)
+- **13. If You Get Stuck:** [GitHub Docs, home](https://docs.github.com/en), [GitHub Changelog](https://github.blog/changelog/), [About Git](https://docs.github.com/en/get-started/using-git/about-git), [GitHub flow](https://docs.github.com/en/get-started/using-github/github-flow), [About pull requests](https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/about-pull-requests)

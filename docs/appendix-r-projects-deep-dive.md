@@ -10,7 +10,6 @@
 
 > GitHub Projects is GitHub's built-in project management system. It connects issues and pull requests from one or more repositories into a living, filterable view that your whole team can see and act on. This appendix covers everything beyond the basics introduced in [Chapter 9: Labels, Milestones, and Projects](09-labels-milestones-projects.md).
 
-
 ## Table of Contents
 
 1. [Projects v2: What Changed](#1-projects-v2-what-changed)
@@ -25,7 +24,6 @@
 10. [Screen Reader Navigation Reference](#10-screen-reader-navigation-reference)
 11. [Accessibility Agents: `/project-status`](#11-accessibility-agents-project-status)
 12. [Exercises](#12-exercises)
-
 
 ## 1. Projects v2: What Changed
 
@@ -44,7 +42,6 @@ GitHub has two generations of project tooling. The current generation - called *
 **API:** Classic v1 had a limited API. V2 has full GraphQL support.
 
 If you see "Projects (Beta)" references in older documentation, those referred to the early rollout of v2. It is now stable and the default.
-
 
 ## 2. Creating a Project
 
@@ -106,7 +103,6 @@ Projects can be created at the **organization level** (shared across all repos i
 - After creating, you land on an empty project with a prominent "+ Add item" prompt at the bottom of the table or board
 
 </details>
-
 
 ## 3. The Three Layouts in Depth
 
@@ -201,7 +197,6 @@ A horizontal timeline. Items appear as bars spanning their start/due dates. Iter
 
 </details>
 
-
 ## 4. Custom Fields
 
 This is one of Projects v2's most powerful features. You can add fields beyond the GitHub defaults (Title, Assignee, Labels, Milestone, Repository).
@@ -245,7 +240,6 @@ Tab to "+" column header button → Enter
 3. Type value (text/number) or select from dropdown (single select)
 4. `Enter` or `Tab` to confirm
 
-
 ## 5. Adding and Managing Items
 
 ### Add an Existing Issue or PR
@@ -285,7 +279,6 @@ In Table view:
 1. Check the checkbox on each row (first column, `Space` to toggle)
 2. A bulk action bar appears at the top
 3. Options: change Status, assign label, change assignee, archive, delete
-
 
 ## 6. Built-In Automations
 
@@ -332,7 +325,6 @@ For more complex automations, Projects v2 has a full GraphQL API and works with 
 
 See [Appendix Q: GitHub Actions and Workflows](appendix-q-actions-workflows.md) for the foundation, and the [GitHub documentation on automating projects](https://docs.github.com/en/issues/planning-and-tracking-with-projects/automating-your-project) for advanced patterns.
 
-
 ## 7. Iterations (Sprints)
 
 An **iteration** field lets you group work into time-boxed cycles - sprints, weeks, or any cadence you choose.
@@ -359,7 +351,6 @@ From any project:
 1. Select the **Insights** tab (the bar chart icon)
 2. Select **"Current iteration"**
 3. See: items by status, completion rate, items added vs closed over time
-
 
 ## 8. Views and Filters
 
@@ -406,7 +397,6 @@ Multiple sort levels are supported. Primary sort → secondary sort:
 
 - Priority ascending, then due date ascending
 
-
 ## 9. Cross-Repository Projects
 
 A single project can track issues and PRs from **multiple repositories** - including repos in different organizations (if you have access).
@@ -428,7 +418,6 @@ Filter: repo:community-access/accessibility-agents
 ```
 
 **Common use case:** An organization project tracking all accessibility bugs across every repo, labeled `accessibility`, with Auto-add enabled.
-
 
 ## 10. Screen Reader Navigation Reference
 
@@ -490,7 +479,6 @@ Backspace → Remove last filter token
 Escape → Clear focus from filter bar
 ```
 
-
 ## 11. Accessibility Agents: `/project-status`
 
 The **`/project-status`** command from Accessibility Agents gives you a live project board overview directly in VS Code Copilot Chat, without opening a browser.
@@ -534,7 +522,6 @@ After the overview: "Want to see a specific column or check a team member's work
 - During sprint planning: identify stale and blocked items before the next cycle
 - After a weekend: catch up on what moved while you were away
 
-
 ## 12. Exercises
 
 ### Exercise 1: Create a Personal Tracking Project
@@ -566,7 +553,6 @@ After the overview: "Want to see a specific column or check a team member's work
 3. Create a view filtered to `is:issue label:accessibility`
 4. Set up Auto-add: any issue with the `accessibility` label in those repos goes to this project automatically
 
-
 > **From Chapter 9:** For the introductory coverage of Labels, Milestones, and Projects including screen reader basics for getting started, see [Chapter 9: Labels, Milestones, and Projects](09-labels-milestones-projects.md).
 
 ---
@@ -575,3 +561,30 @@ After the overview: "Want to see a specific column or check a team member's work
 *Back: [Appendix Q: GitHub Actions](appendix-q-actions-workflows.md)*  
 *Teaching chapter: [Chapter 09: Labels, Milestones, and Projects](09-labels-milestones-projects.md)*
 
+## Authoritative Sources
+
+Use these official references when you need the current source of truth for facts in this chapter.
+
+- [GitHub Docs, home](https://docs.github.com/en)
+- [GitHub Changelog](https://github.blog/changelog/)
+- [GitHub Projects docs](https://docs.github.com/en/issues/planning-and-tracking-with-projects/learning-about-projects/about-projects)
+- [Labels docs](https://docs.github.com/en/issues/using-labels-and-milestones-to-track-work/managing-labels)
+- [Milestones docs](https://docs.github.com/en/issues/using-labels-and-milestones-to-track-work/about-milestones)
+
+### Section-Level Source Map
+
+Use this map to verify facts for each major section in this file.
+
+- **Boards, Tables, Roadmaps, Automations, and Accessible Navigation:** [GitHub Docs, home](https://docs.github.com/en), [GitHub Changelog](https://github.blog/changelog/), [GitHub Projects docs](https://docs.github.com/en/issues/planning-and-tracking-with-projects/learning-about-projects/about-projects), [Labels docs](https://docs.github.com/en/issues/using-labels-and-milestones-to-track-work/managing-labels), [Milestones docs](https://docs.github.com/en/issues/using-labels-and-milestones-to-track-work/about-milestones)
+- **1. Projects v2: What Changed:** [GitHub Docs, home](https://docs.github.com/en), [GitHub Changelog](https://github.blog/changelog/), [GitHub Projects docs](https://docs.github.com/en/issues/planning-and-tracking-with-projects/learning-about-projects/about-projects), [Labels docs](https://docs.github.com/en/issues/using-labels-and-milestones-to-track-work/managing-labels), [Milestones docs](https://docs.github.com/en/issues/using-labels-and-milestones-to-track-work/about-milestones)
+- **2. Creating a Project:** [GitHub Docs, home](https://docs.github.com/en), [GitHub Changelog](https://github.blog/changelog/), [GitHub Projects docs](https://docs.github.com/en/issues/planning-and-tracking-with-projects/learning-about-projects/about-projects), [Labels docs](https://docs.github.com/en/issues/using-labels-and-milestones-to-track-work/managing-labels), [Milestones docs](https://docs.github.com/en/issues/using-labels-and-milestones-to-track-work/about-milestones)
+- **3. The Three Layouts in Depth:** [GitHub Docs, home](https://docs.github.com/en), [GitHub Changelog](https://github.blog/changelog/), [GitHub Projects docs](https://docs.github.com/en/issues/planning-and-tracking-with-projects/learning-about-projects/about-projects), [Labels docs](https://docs.github.com/en/issues/using-labels-and-milestones-to-track-work/managing-labels), [Milestones docs](https://docs.github.com/en/issues/using-labels-and-milestones-to-track-work/about-milestones)
+- **4. Custom Fields:** [GitHub Docs, home](https://docs.github.com/en), [GitHub Changelog](https://github.blog/changelog/), [GitHub Projects docs](https://docs.github.com/en/issues/planning-and-tracking-with-projects/learning-about-projects/about-projects), [Labels docs](https://docs.github.com/en/issues/using-labels-and-milestones-to-track-work/managing-labels), [Milestones docs](https://docs.github.com/en/issues/using-labels-and-milestones-to-track-work/about-milestones)
+- **5. Adding and Managing Items:** [GitHub Docs, home](https://docs.github.com/en), [GitHub Changelog](https://github.blog/changelog/), [GitHub Projects docs](https://docs.github.com/en/issues/planning-and-tracking-with-projects/learning-about-projects/about-projects), [Labels docs](https://docs.github.com/en/issues/using-labels-and-milestones-to-track-work/managing-labels), [Milestones docs](https://docs.github.com/en/issues/using-labels-and-milestones-to-track-work/about-milestones)
+- **6. Built-In Automations:** [GitHub Docs, home](https://docs.github.com/en), [GitHub Changelog](https://github.blog/changelog/), [GitHub Projects docs](https://docs.github.com/en/issues/planning-and-tracking-with-projects/learning-about-projects/about-projects), [Labels docs](https://docs.github.com/en/issues/using-labels-and-milestones-to-track-work/managing-labels), [Milestones docs](https://docs.github.com/en/issues/using-labels-and-milestones-to-track-work/about-milestones)
+- **7. Iterations (Sprints):** [GitHub Docs, home](https://docs.github.com/en), [GitHub Changelog](https://github.blog/changelog/), [GitHub Projects docs](https://docs.github.com/en/issues/planning-and-tracking-with-projects/learning-about-projects/about-projects), [Labels docs](https://docs.github.com/en/issues/using-labels-and-milestones-to-track-work/managing-labels), [Milestones docs](https://docs.github.com/en/issues/using-labels-and-milestones-to-track-work/about-milestones)
+- **8. Views and Filters:** [GitHub Docs, home](https://docs.github.com/en), [GitHub Changelog](https://github.blog/changelog/), [GitHub Projects docs](https://docs.github.com/en/issues/planning-and-tracking-with-projects/learning-about-projects/about-projects), [Labels docs](https://docs.github.com/en/issues/using-labels-and-milestones-to-track-work/managing-labels), [Milestones docs](https://docs.github.com/en/issues/using-labels-and-milestones-to-track-work/about-milestones)
+- **9. Cross-Repository Projects:** [GitHub Docs, home](https://docs.github.com/en), [GitHub Changelog](https://github.blog/changelog/), [GitHub Projects docs](https://docs.github.com/en/issues/planning-and-tracking-with-projects/learning-about-projects/about-projects), [Labels docs](https://docs.github.com/en/issues/using-labels-and-milestones-to-track-work/managing-labels), [Milestones docs](https://docs.github.com/en/issues/using-labels-and-milestones-to-track-work/about-milestones)
+- **10. Screen Reader Navigation Reference:** [GitHub Docs, home](https://docs.github.com/en), [GitHub Changelog](https://github.blog/changelog/), [GitHub Projects docs](https://docs.github.com/en/issues/planning-and-tracking-with-projects/learning-about-projects/about-projects), [Labels docs](https://docs.github.com/en/issues/using-labels-and-milestones-to-track-work/managing-labels), [Milestones docs](https://docs.github.com/en/issues/using-labels-and-milestones-to-track-work/about-milestones)
+- **11. Accessibility Agents: `/project-status`:** [GitHub Docs, home](https://docs.github.com/en), [GitHub Changelog](https://github.blog/changelog/), [GitHub Projects docs](https://docs.github.com/en/issues/planning-and-tracking-with-projects/learning-about-projects/about-projects), [Labels docs](https://docs.github.com/en/issues/using-labels-and-milestones-to-track-work/managing-labels), [Milestones docs](https://docs.github.com/en/issues/using-labels-and-milestones-to-track-work/about-milestones)
+- **12. Exercises:** [GitHub Docs, home](https://docs.github.com/en), [GitHub Changelog](https://github.blog/changelog/), [GitHub Projects docs](https://docs.github.com/en/issues/planning-and-tracking-with-projects/learning-about-projects/about-projects), [Labels docs](https://docs.github.com/en/issues/using-labels-and-milestones-to-track-work/managing-labels), [Milestones docs](https://docs.github.com/en/issues/using-labels-and-milestones-to-track-work/about-milestones)

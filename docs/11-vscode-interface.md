@@ -5,7 +5,6 @@
 > **Related appendices:** [Appendix G: VS Code Reference](appendix-g-vscode-reference.md) | [Appendix B: Screen Reader Cheat Sheet](appendix-b-screen-reader-cheatsheet.md)
 > **Authoritative sources:** [VS Code Docs: User Interface](https://code.visualstudio.com/docs/getstarted/userinterface) | [VS Code Docs: Accessibility](https://code.visualstudio.com/docs/editor/accessibility)
 
-
 ## Your Accessible Development Environment - The Foundation
 
 > **Day 2, Block 1 Material**
@@ -100,7 +99,6 @@ Tool setup is part of contribution skill. A stable, accessible editor reduces st
 4. Verify each navigation surface works with your assistive technology.
 5. Record what worked and what didn't (evidence comment).
 
-
 ## Table of Contents
 
 1. [Why VS Code for Open Source Contribution](#1-why-vs-code-for-open-source-contribution)
@@ -123,7 +121,6 @@ Tool setup is part of contribution skill. A stable, accessible editor reduces st
 17. [Accessibility Signals](#17-accessibility-signals)
 18. [VS Code Speech - Voice Input and Output](#18-vs-code-speech---voice-input-and-output)
 19. [Git Operations Inside VS Code](#19-git-operations-inside-vs-code)
-
 
 ---
 
@@ -172,7 +169,6 @@ For Markdown contributions (which is most of what [accessibility-agents](https:/
 - Copilot suggestions appear as dimmed ghost text to the right of your cursor
 
 </details>
-
 
 ---
 
@@ -232,7 +228,6 @@ Change the domain in any GitHub URL:
 
 </details>
 
-
 ### What You Get in github.dev
 
 Everything in the list below works **exactly like desktop VS Code**:
@@ -250,7 +245,6 @@ Everything in the list below works **exactly like desktop VS Code**:
 - **Multiple editor tabs and split view**
 - **Settings sync** - if you sign in, your VS Code settings apply here too
 
-
 ### What github.dev Does NOT Have
 
 - **No terminal** - cannot run shell commands, npm, git CLI
@@ -261,7 +255,6 @@ Everything in the list below works **exactly like desktop VS Code**:
 - **No live server or preview** - except Markdown preview, which does work
 
 These limitations are why **desktop VS Code exists**. github.dev is for quick edits and reading code. Desktop is for Copilot, agents, terminal workflows, and full development.
-
 
 ### Why github.dev Matters for This Workshop
 
@@ -285,7 +278,6 @@ These limitations are why **desktop VS Code exists**. github.dev is for quick ed
 - You want to run Accessibility Agents
 - You are making multi-file changes that benefit from AI assistance
 - You need a terminal for git commands or running scripts
-
 
 ### Screen Reader Experience in github.dev
 
@@ -350,7 +342,6 @@ These limitations are why **desktop VS Code exists**. github.dev is for quick ed
 
 </details>
 
-
 ### Try It Right Now
 
 Before reading the rest of this guide:
@@ -366,7 +357,6 @@ Before reading the rest of this guide:
 9. Close the tab when done
 
 **You just used VS Code.** The desktop version in the rest of this guide is the same experience - with Copilot, agents, and a terminal added.
-
 
 ---
 
@@ -451,7 +441,6 @@ VS Code uses a web-based renderer. Configure NVDA for best results:
 
 </details>
 
-
 ---
 
 ## 4. The VS Code Interface Tour
@@ -531,7 +520,6 @@ Before diving into individual features, here is how VS Code is organized. Every 
 
 </details>
 
-
 ---
 
 ## 5. The Accounts Button and GitHub Sign-In
@@ -598,7 +586,6 @@ The **Accounts** button sits at the bottom of the Activity Bar (the vertical ico
 - After sign-in, the icon changes to show your GitHub avatar
 
 </details>
-
 
 ---
 
@@ -672,7 +659,6 @@ The Copilot icon appears in the **Status Bar** at the bottom-right of the VS Cod
 
 </details>
 
-
 ---
 
 ## 7. The Status Bar
@@ -731,7 +717,6 @@ The **Status Bar** is the thin strip at the bottom of the VS Code window. It pro
 
 </details>
 
-
 ---
 
 ## 8. The Menu Bar
@@ -789,7 +774,6 @@ The **Menu Bar** runs along the top of the VS Code window and provides structure
 - The View menu controls which panels and sidebars are visible
 
 </details>
-
 
 ---
 
@@ -936,7 +920,6 @@ Profiles sync across machines through Settings Sync. When you create a profile o
 
 </details>
 
-
 ---
 
 ## 10. The Settings Editor
@@ -1011,7 +994,6 @@ The graphical Settings UI has a **search box** at the top. Type any keyword and 
 
 </details>
 
-
 ---
 
 ## 11. The Keyboard Shortcuts Editor
@@ -1077,3 +1059,35 @@ The editor has a search box that supports:
 *Back: [Chapter 10: Notifications and Day 1 Close](10-notifications-and-day-1-close.md)*  
 *Related appendices: [Appendix G: VS Code Reference](appendix-g-vscode-reference.md) | [Appendix B: Screen Reader Cheat Sheet](appendix-b-screen-reader-cheatsheet.md)*
 
+## Authoritative Sources
+
+Use these official references when you need the current source of truth for facts in this chapter.
+
+- [GitHub Docs, home](https://docs.github.com/en)
+- [GitHub Changelog](https://github.blog/changelog/)
+- [VS Code Copilot chat overview](https://code.visualstudio.com/docs/copilot/chat/copilot-chat)
+- [VS Code agent overview](https://code.visualstudio.com/docs/copilot/agents/overview)
+- [VS Code custom instructions](https://code.visualstudio.com/docs/copilot/customization/custom-instructions)
+- [About Git](https://docs.github.com/en/get-started/using-git/about-git)
+- [GitHub flow](https://docs.github.com/en/get-started/using-github/github-flow)
+- [About pull requests](https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/about-pull-requests)
+- [About issues](https://docs.github.com/en/issues/tracking-your-work-with-issues/about-issues)
+- [Contributing to a project](https://docs.github.com/en/get-started/exploring-projects-on-github/contributing-to-a-project)
+
+### Section-Level Source Map
+
+Use this map to verify facts for each major section in this file.
+
+- **Your Accessible Development Environment - The Foundation:** [GitHub Docs, home](https://docs.github.com/en), [GitHub Changelog](https://github.blog/changelog/), [VS Code Copilot chat overview](https://code.visualstudio.com/docs/copilot/chat/copilot-chat), [VS Code agent overview](https://code.visualstudio.com/docs/copilot/agents/overview), [VS Code custom instructions](https://code.visualstudio.com/docs/copilot/customization/custom-instructions)
+- **Workshop Recommendation (Chapter 11):** [GitHub Docs, home](https://docs.github.com/en), [GitHub Changelog](https://github.blog/changelog/), [VS Code Copilot chat overview](https://code.visualstudio.com/docs/copilot/chat/copilot-chat), [VS Code agent overview](https://code.visualstudio.com/docs/copilot/agents/overview), [VS Code custom instructions](https://code.visualstudio.com/docs/copilot/customization/custom-instructions)
+- **1. Why VS Code for Open Source Contribution:** [GitHub Docs, home](https://docs.github.com/en), [GitHub Changelog](https://github.blog/changelog/), [VS Code Copilot chat overview](https://code.visualstudio.com/docs/copilot/chat/copilot-chat), [VS Code agent overview](https://code.visualstudio.com/docs/copilot/agents/overview), [VS Code custom instructions](https://code.visualstudio.com/docs/copilot/customization/custom-instructions)
+- **2. The Bridge: github.dev - VS Code in Your Browser:** [GitHub Docs, home](https://docs.github.com/en), [GitHub Changelog](https://github.blog/changelog/), [VS Code Copilot chat overview](https://code.visualstudio.com/docs/copilot/chat/copilot-chat), [VS Code agent overview](https://code.visualstudio.com/docs/copilot/agents/overview), [VS Code custom instructions](https://code.visualstudio.com/docs/copilot/customization/custom-instructions)
+- **3. Screen Reader Mode in VS Code:** [GitHub Docs, home](https://docs.github.com/en), [GitHub Changelog](https://github.blog/changelog/), [VS Code Copilot chat overview](https://code.visualstudio.com/docs/copilot/chat/copilot-chat), [VS Code agent overview](https://code.visualstudio.com/docs/copilot/agents/overview), [VS Code custom instructions](https://code.visualstudio.com/docs/copilot/customization/custom-instructions)
+- **4. The VS Code Interface Tour:** [GitHub Docs, home](https://docs.github.com/en), [GitHub Changelog](https://github.blog/changelog/), [VS Code Copilot chat overview](https://code.visualstudio.com/docs/copilot/chat/copilot-chat), [VS Code agent overview](https://code.visualstudio.com/docs/copilot/agents/overview), [VS Code custom instructions](https://code.visualstudio.com/docs/copilot/customization/custom-instructions)
+- **5. The Accounts Button and GitHub Sign-In:** [GitHub Docs, home](https://docs.github.com/en), [GitHub Changelog](https://github.blog/changelog/), [VS Code Copilot chat overview](https://code.visualstudio.com/docs/copilot/chat/copilot-chat), [VS Code agent overview](https://code.visualstudio.com/docs/copilot/agents/overview), [VS Code custom instructions](https://code.visualstudio.com/docs/copilot/customization/custom-instructions)
+- **6. Verifying GitHub Copilot Status:** [GitHub Docs, home](https://docs.github.com/en), [GitHub Changelog](https://github.blog/changelog/), [VS Code Copilot chat overview](https://code.visualstudio.com/docs/copilot/chat/copilot-chat), [VS Code agent overview](https://code.visualstudio.com/docs/copilot/agents/overview), [VS Code custom instructions](https://code.visualstudio.com/docs/copilot/customization/custom-instructions)
+- **7. The Status Bar:** [GitHub Docs, home](https://docs.github.com/en), [GitHub Changelog](https://github.blog/changelog/), [VS Code Copilot chat overview](https://code.visualstudio.com/docs/copilot/chat/copilot-chat), [VS Code agent overview](https://code.visualstudio.com/docs/copilot/agents/overview), [VS Code custom instructions](https://code.visualstudio.com/docs/copilot/customization/custom-instructions)
+- **8. The Menu Bar:** [GitHub Docs, home](https://docs.github.com/en), [GitHub Changelog](https://github.blog/changelog/), [VS Code Copilot chat overview](https://code.visualstudio.com/docs/copilot/chat/copilot-chat), [VS Code agent overview](https://code.visualstudio.com/docs/copilot/agents/overview), [VS Code custom instructions](https://code.visualstudio.com/docs/copilot/customization/custom-instructions)
+- **9. Settings Sync:** [GitHub Docs, home](https://docs.github.com/en), [GitHub Changelog](https://github.blog/changelog/), [VS Code Copilot chat overview](https://code.visualstudio.com/docs/copilot/chat/copilot-chat), [VS Code agent overview](https://code.visualstudio.com/docs/copilot/agents/overview), [VS Code custom instructions](https://code.visualstudio.com/docs/copilot/customization/custom-instructions)
+- **10. The Settings Editor:** [GitHub Docs, home](https://docs.github.com/en), [GitHub Changelog](https://github.blog/changelog/), [VS Code Copilot chat overview](https://code.visualstudio.com/docs/copilot/chat/copilot-chat), [VS Code agent overview](https://code.visualstudio.com/docs/copilot/agents/overview), [VS Code custom instructions](https://code.visualstudio.com/docs/copilot/customization/custom-instructions)
+- **11. The Keyboard Shortcuts Editor:** [GitHub Docs, home](https://docs.github.com/en), [GitHub Changelog](https://github.blog/changelog/), [VS Code Copilot chat overview](https://code.visualstudio.com/docs/copilot/chat/copilot-chat), [VS Code agent overview](https://code.visualstudio.com/docs/copilot/agents/overview), [VS Code custom instructions](https://code.visualstudio.com/docs/copilot/customization/custom-instructions)

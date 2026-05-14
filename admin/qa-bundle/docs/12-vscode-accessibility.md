@@ -5,7 +5,6 @@
 > **Related appendices:** [Appendix G: VS Code Reference](appendix-g-vscode-reference.md) | [Appendix B: Screen Reader Cheat Sheet](appendix-b-screen-reader-cheatsheet.md)
 > **Authoritative sources:** [VS Code Docs: Accessibility](https://code.visualstudio.com/docs/editor/accessibility) | [GitHub Accessibility: GitHub Copilot in VS Code](https://accessibility.github.com/documentation/guide/github-copilot-vsc/)
 
-
 ## Accessibility Features for Power Users
 
 > **Challenge 10: Go Local** depends on the accessibility features covered in this chapter. Configure these settings before your first local commit.
@@ -167,7 +166,6 @@ In any Markdown file, `Ctrl+Shift+O` opens a symbol picker populated by every he
 
 </details>
 
-
 ---
 
 ## 13. The Problems Panel
@@ -232,7 +230,6 @@ Each entry shows:
 - Use the filter and severity toggles to focus on what matters
 
 </details>
-
 
 ---
 
@@ -302,7 +299,6 @@ Enable Terminal IntelliSense: Settings (`Ctrl+,`) then search `terminal.integrat
 - Multiple terminal tabs let you keep different shells open simultaneously
 
 </details>
-
 
 ---
 
@@ -389,7 +385,6 @@ When Copilot's Agent mode is running a terminal command and needs your input -- 
 
 **Suppressing carousel hints:** The ARIA label on the carousel includes a navigation hint by default. To suppress this announcement, set `accessibility.verbosity.chatQuestionCarousel` to `false` in Settings.
 
-
 ---
 
 ## 16. Accessible Help, Accessible View, and Accessible Diff
@@ -397,7 +392,6 @@ When Copilot's Agent mode is running a terminal command and needs your input -- 
 > **See also:** [Appendix G: VS Code Reference](appendix-g-vscode-reference.md) has a complete keyboard shortcut reference for all VS Code accessibility features.
 
 VS Code has a family of purpose-built accessibility features that give screen reader users complete, structured access to content that is otherwise conveyed visually or through dynamic regions. These three are the most important to know before working with Copilot and diffs.
-
 
 ### 16.1 Accessible Help - Context-Aware Keyboard Guide
 
@@ -433,7 +427,6 @@ Press Alt+H to view this help content again.
 ```
 
 Use Accessible Help as your first action whenever you land somewhere new in VS Code.
-
 
 ### 16.2 Accessible View - Reading Dynamic and Streamed Content
 
@@ -471,7 +464,6 @@ Use Accessible Help as your first action whenever you land somewhere new in VS C
 2. Press `Ctrl+K I` to trigger hover programmatically (no mouse needed)
 3. Press `Alt+F2` to open Accessible View with the full hover content
 4. Press `Escape` to dismiss
-
 
 ### 16.3 Accessible Diff Viewer - Reading Changes Without Visual Scanning
 
@@ -544,7 +536,6 @@ With `accessibility.signals.diffLineInserted` and `accessibility.signals.diffLin
 - Use the minimap colored regions on the right to spot clusters of changes in long diffs at a glance
 
 </details>
-
 
 ---
 
@@ -876,7 +867,6 @@ If you previously configured the older `audioCues.*` settings (deprecated since 
 
 </details>
 
-
 ---
 
 ## 18. VS Code Speech - Voice Input and Output
@@ -1088,7 +1078,6 @@ The `when` clauses ensure the same key toggles the feature on and off.
 
 On Linux, the extension requires the ALSA shared library (`libasound`). Install it with `sudo apt install libasound2` on Debian/Ubuntu if it is not already present.
 
-
 ---
 
 ## 19. Markdown Authoring in VS Code
@@ -1180,7 +1169,6 @@ Getting comfortable with preview, linting, and navigation tools means fewer form
 
 Install markdownlint now. Open a Markdown file. Press `Ctrl+Shift+M` to check for warnings. Fix one. That small habit pays off in every challenge ahead.
 
-
 ## If You Get Stuck
 
 | Problem | What to do |
@@ -1199,3 +1187,36 @@ Install markdownlint now. Open a Markdown file. Press `Ctrl+Shift+M` to check fo
 *Back: [Chapter 11: VS Code Interface](11-vscode-interface.md)*  
 *Related appendices: [Appendix G: VS Code Reference](appendix-g-vscode-reference.md)*
 
+## Authoritative Sources
+
+Use these official references when you need the current source of truth for facts in this chapter.
+
+- [GitHub Docs, home](https://docs.github.com/en)
+- [GitHub Changelog](https://github.blog/changelog/)
+- [W3C Web Content Accessibility Guidelines (WCAG) 2 overview](https://www.w3.org/WAI/standards-guidelines/wcag/)
+- [WAI tutorials for accessible design patterns](https://www.w3.org/WAI/tutorials/)
+- [WAI-ARIA Authoring Practices Guide](https://www.w3.org/WAI/ARIA/apg/)
+- [GitHub accessibility statement](https://docs.github.com/en/site-policy/other-site-policies/github-accessibility-statement)
+- [VS Code Copilot chat overview](https://code.visualstudio.com/docs/copilot/chat/copilot-chat)
+- [VS Code agent overview](https://code.visualstudio.com/docs/copilot/agents/overview)
+- [VS Code custom instructions](https://code.visualstudio.com/docs/copilot/customization/custom-instructions)
+- [About Git](https://docs.github.com/en/get-started/using-git/about-git)
+- [GitHub flow](https://docs.github.com/en/get-started/using-github/github-flow)
+- [About pull requests](https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/about-pull-requests)
+- [About issues](https://docs.github.com/en/issues/tracking-your-work-with-issues/about-issues)
+- [Contributing to a project](https://docs.github.com/en/get-started/exploring-projects-on-github/contributing-to-a-project)
+
+### Section-Level Source Map
+
+Use this map to verify facts for each major section in this file.
+
+- **Accessibility Features for Power Users:** [GitHub Docs, home](https://docs.github.com/en), [GitHub Changelog](https://github.blog/changelog/), [W3C Web Content Accessibility Guidelines (WCAG) 2 overview](https://www.w3.org/WAI/standards-guidelines/wcag/), [WAI tutorials for accessible design patterns](https://www.w3.org/WAI/tutorials/), [WAI-ARIA Authoring Practices Guide](https://www.w3.org/WAI/ARIA/apg/)
+- **12. Essential Keyboard Navigation and Find/Filter:** [GitHub Docs, home](https://docs.github.com/en), [GitHub Changelog](https://github.blog/changelog/), [W3C Web Content Accessibility Guidelines (WCAG) 2 overview](https://www.w3.org/WAI/standards-guidelines/wcag/), [WAI tutorials for accessible design patterns](https://www.w3.org/WAI/tutorials/), [WAI-ARIA Authoring Practices Guide](https://www.w3.org/WAI/ARIA/apg/)
+- **13. The Problems Panel:** [GitHub Docs, home](https://docs.github.com/en), [GitHub Changelog](https://github.blog/changelog/), [W3C Web Content Accessibility Guidelines (WCAG) 2 overview](https://www.w3.org/WAI/standards-guidelines/wcag/), [WAI tutorials for accessible design patterns](https://www.w3.org/WAI/tutorials/), [WAI-ARIA Authoring Practices Guide](https://www.w3.org/WAI/ARIA/apg/)
+- **14. The Terminal:** [GitHub Docs, home](https://docs.github.com/en), [GitHub Changelog](https://github.blog/changelog/), [W3C Web Content Accessibility Guidelines (WCAG) 2 overview](https://www.w3.org/WAI/standards-guidelines/wcag/), [WAI tutorials for accessible design patterns](https://www.w3.org/WAI/tutorials/), [WAI-ARIA Authoring Practices Guide](https://www.w3.org/WAI/ARIA/apg/)
+- **15. Copilot Chat Window:** [GitHub Docs, home](https://docs.github.com/en), [GitHub Changelog](https://github.blog/changelog/), [W3C Web Content Accessibility Guidelines (WCAG) 2 overview](https://www.w3.org/WAI/standards-guidelines/wcag/), [WAI tutorials for accessible design patterns](https://www.w3.org/WAI/tutorials/), [WAI-ARIA Authoring Practices Guide](https://www.w3.org/WAI/ARIA/apg/)
+- **16. Accessible Help, Accessible View, and Accessible Diff:** [GitHub Docs, home](https://docs.github.com/en), [GitHub Changelog](https://github.blog/changelog/), [W3C Web Content Accessibility Guidelines (WCAG) 2 overview](https://www.w3.org/WAI/standards-guidelines/wcag/), [WAI tutorials for accessible design patterns](https://www.w3.org/WAI/tutorials/), [WAI-ARIA Authoring Practices Guide](https://www.w3.org/WAI/ARIA/apg/)
+- **17. Accessibility Signals:** [GitHub Docs, home](https://docs.github.com/en), [GitHub Changelog](https://github.blog/changelog/), [W3C Web Content Accessibility Guidelines (WCAG) 2 overview](https://www.w3.org/WAI/standards-guidelines/wcag/), [WAI tutorials for accessible design patterns](https://www.w3.org/WAI/tutorials/), [WAI-ARIA Authoring Practices Guide](https://www.w3.org/WAI/ARIA/apg/)
+- **18. VS Code Speech - Voice Input and Output:** [GitHub Docs, home](https://docs.github.com/en), [GitHub Changelog](https://github.blog/changelog/), [W3C Web Content Accessibility Guidelines (WCAG) 2 overview](https://www.w3.org/WAI/standards-guidelines/wcag/), [WAI tutorials for accessible design patterns](https://www.w3.org/WAI/tutorials/), [WAI-ARIA Authoring Practices Guide](https://www.w3.org/WAI/ARIA/apg/)
+- **19. Markdown Authoring in VS Code:** [GitHub Docs, home](https://docs.github.com/en), [GitHub Changelog](https://github.blog/changelog/), [W3C Web Content Accessibility Guidelines (WCAG) 2 overview](https://www.w3.org/WAI/standards-guidelines/wcag/), [WAI tutorials for accessible design patterns](https://www.w3.org/WAI/tutorials/), [WAI-ARIA Authoring Practices Guide](https://www.w3.org/WAI/ARIA/apg/)
+- **If You Get Stuck:** [GitHub Docs, home](https://docs.github.com/en), [GitHub Changelog](https://github.blog/changelog/), [W3C Web Content Accessibility Guidelines (WCAG) 2 overview](https://www.w3.org/WAI/standards-guidelines/wcag/), [WAI tutorials for accessible design patterns](https://www.w3.org/WAI/tutorials/), [WAI-ARIA Authoring Practices Guide](https://www.w3.org/WAI/ARIA/apg/)

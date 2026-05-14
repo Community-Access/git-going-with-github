@@ -295,23 +295,24 @@ The [Challenge 15 solution reference](https://github.com/Community-Access/git-go
 </details>
 
 <details>
-<summary>Challenge 16: Build Your Agent (Capstone)</summary>
+<summary>Challenge 16: Capstone Project</summary>
 
 **Chapters:** Ch18, Ch20 | **Evidence:** Comment | **Autograded**
 
-The capstone is where you design a small agent of your own and prepare it as a contribution. The important part is not a flashy idea. The important part is a clear purpose, useful responsibilities, and boundaries that keep the agent safe and honest.
+The capstone is where you choose a real repository and prepare an impactful agentic contribution. Accessibility Agents is the default path, GLOW is a strong document-accessibility path, and another project is valid when your contribution would genuinely help that repository. The important part is not a flashy idea. The important part is a clear purpose, useful responsibilities, and boundaries that keep the work safe and honest.
 
 **What to do:**
 
-1. Fork the [Community Access Accessibility Agents repository](https://github.com/Community-Access/accessibility-agents)
-2. Clone your fork and create a branch named `agent/YOUR-USERNAME`
-3. Write an `.agent.md` file with YAML frontmatter, responsibilities, and guardrails
-4. Push and open a cross-fork PR to the original repository
-5. Review a classmate's capstone PR when one is available
+1. Choose your target repository: [Accessibility Agents](https://github.com/Community-Access/accessibility-agents), [GLOW](https://github.com/Community-Access/glow), or another project you can explain.
+2. Write a one-sentence mission statement for the contribution.
+3. Create or improve an agent, prompt, instruction file, skill, workflow, or documentation page.
+4. Include responsibilities and guardrails when the contribution involves an agent or automation.
+5. Push and open a pull request, or prepare a review-ready branch, issue, or contribution plan if you do not have access.
+6. Review a classmate's capstone PR when one is available.
 
 Use the [agent file template](../learning-room/docs/samples/agent-file-template.md) and [fork workflow checklist](../learning-room/docs/samples/fork-workflow-checklist.md) for structure.
 
-**Evidence to post:** Link to your capstone PR or summarize the agent file you created. The autograder verifies required agent structure when the file is represented in the Learning Room.
+**Evidence to post:** Link to your capstone PR, branch, draft issue, or contribution plan. Include the repository you chose, the mission statement, what you changed or proposed, how you tested it, and the responsibilities and guardrails that make it safe.
 
 The [Challenge 16 solution reference](https://github.com/Community-Access/git-going-with-github/blob/main/docs/solutions/solution-16-capstone.md) shows a complete agent example with responsibilities and guardrails.
 </details>
@@ -377,3 +378,26 @@ Every challenge issue includes an "If you get stuck" section with common problem
 - Use the [Learning Room solutions index](../learning-room/docs/solutions/README.md) for quick challenge-by-challenge references
 
 When you ask for help, include what you were trying to do, where you were in the repository, what happened, and what you expected. That gives your buddy, facilitator, or bot enough context to help you quickly.
+
+## Authoritative Sources
+
+Use these official references when you need the current source of truth for facts in this chapter.
+
+- [GitHub Docs, home](https://docs.github.com/en)
+- [GitHub Changelog](https://github.blog/changelog/)
+- [About Git](https://docs.github.com/en/get-started/using-git/about-git)
+- [GitHub flow](https://docs.github.com/en/get-started/using-github/github-flow)
+- [About pull requests](https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/about-pull-requests)
+- [About issues](https://docs.github.com/en/issues/tracking-your-work-with-issues/about-issues)
+- [Contributing to a project](https://docs.github.com/en/get-started/exploring-projects-on-github/contributing-to-a-project)
+
+### Section-Level Source Map
+
+Use this map to verify facts for each major section in this file.
+
+- **How Challenges Work:** [GitHub Docs, home](https://docs.github.com/en), [GitHub Changelog](https://github.blog/changelog/), [About Git](https://docs.github.com/en/get-started/using-git/about-git), [GitHub flow](https://docs.github.com/en/get-started/using-github/github-flow), [About pull requests](https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/about-pull-requests)
+- **Day 1: You Belong Here (Challenges 1-9):** [GitHub Docs, home](https://docs.github.com/en), [GitHub Changelog](https://github.blog/changelog/), [About Git](https://docs.github.com/en/get-started/using-git/about-git), [GitHub flow](https://docs.github.com/en/get-started/using-github/github-flow), [About pull requests](https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/about-pull-requests)
+- **Day 2: You Can Build This (Challenges 10-16):** [GitHub Docs, home](https://docs.github.com/en), [GitHub Changelog](https://github.blog/changelog/), [About Git](https://docs.github.com/en/get-started/using-git/about-git), [GitHub flow](https://docs.github.com/en/get-started/using-github/github-flow), [About pull requests](https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/about-pull-requests)
+- **Bonus Challenges:** [GitHub Docs, home](https://docs.github.com/en), [GitHub Changelog](https://github.blog/changelog/), [About Git](https://docs.github.com/en/get-started/using-git/about-git), [GitHub flow](https://docs.github.com/en/get-started/using-github/github-flow), [About pull requests](https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/about-pull-requests)
+- **Skills-Inspired Optional Scenarios:** [GitHub Docs, home](https://docs.github.com/en), [GitHub Changelog](https://github.blog/changelog/), [About Git](https://docs.github.com/en/get-started/using-git/about-git), [GitHub flow](https://docs.github.com/en/get-started/using-github/github-flow), [About pull requests](https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/about-pull-requests)
+- **If You Get Stuck:** [GitHub Docs, home](https://docs.github.com/en), [GitHub Changelog](https://github.blog/changelog/), [About Git](https://docs.github.com/en/get-started/using-git/about-git), [GitHub flow](https://docs.github.com/en/get-started/using-github/github-flow), [About pull requests](https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/about-pull-requests)

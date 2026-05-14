@@ -3,7 +3,6 @@
 
 This reference lists keyboard shortcuts for navigating GitHub with a screen reader. It covers three screen readers: NVDA, JAWS, and VoiceOver.
 
-
 #### NVDA (Windows)
 
 NVDA is a free, open source screen reader for Windows. Download it from [nvaccess.org](htps://nvaccess.org).
@@ -40,7 +39,6 @@ Use these keys to jump to specific element types on any GitHub page.
 | NVDA+↑ | Read current line |
 | Ctrl | Stop reading |
 
-
 ## JAWS (Windows)
 
 JAWS (Job Access With Speech) is a professional screen reader for Windows made by Freedom Scientific.
@@ -75,7 +73,6 @@ JAWS (Job Access With Speech) is a professional screen reader for Windows made b
 | Insert+↑ | Read current line |
 | Ctrl | Stop reading |
 
-
 ## VoiceOver (macOS)
 
 VoiceOver is the built-in screen reader on macOS. Activate it with Command+F5.
@@ -101,7 +98,6 @@ Element types available in the Rotor: Headings, Links, Form Controls, Tables, La
 | VO+A | Start reading from cursor |
 | Ctrl | Stop reading |
 
-
 ## Screen-Reader-Neutral Shortcuts (All Screen Readers)
 
 These shortcuts work in GitHub regardless of screen reader, because they are browser or operating system shortcuts.
@@ -126,7 +122,6 @@ These shortcuts work in GitHub regardless of screen reader, because they are bro
 | Space | Check/uncheck a checkbox; activate a button |
 | Arrow keys | Navigate within a radio group, tab bar, or menu |
 
-
 ## Common Issues and Workarounds
 
 **NVDA reads the GitHub page too slowly:**
@@ -140,3 +135,20 @@ GitHub issue list filtering updates via JavaScript. If VoiceOver does not announ
 
 **The diff table in Files Changed is hard to read:**
 The improved Files Changed experience has been broadly rolled out and is likely already active for your account. If you are experiencing issues with diff navigation or missing landmarks, verify using your screen reader: activate the **User Menu** button → **"Feature preview"** → look for **"New Files Changed Experience"**. If it appears, the toggle announces **"Pressed"** when enabled - activate it if not. If it no longer appears in the Feature Preview list, it has graduated to the standard interface and is active automatically.
+
+## Authoritative Sources
+
+Use these official references when you need the current source of truth for facts in this chapter.
+
+- [GitHub Docs, home](https://docs.github.com/en)
+- [GitHub Changelog](https://github.blog/changelog/)
+
+### Section-Level Source Map
+
+Use this map to verify facts for each major section in this file.
+
+- **GitHub Navigation with Assistive Technology:** [GitHub Docs, home](https://docs.github.com/en), [GitHub Changelog](https://github.blog/changelog/), [About Git](https://docs.github.com/en/get-started/using-git/about-git), [GitHub flow](https://docs.github.com/en/get-started/using-github/github-flow), [About pull requests](https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/about-pull-requests)
+- **JAWS (Windows):** [GitHub Docs, home](https://docs.github.com/en), [GitHub Changelog](https://github.blog/changelog/)
+- **VoiceOver (macOS):** [GitHub Docs, home](https://docs.github.com/en), [GitHub Changelog](https://github.blog/changelog/)
+- **Screen-Reader-Neutral Shortcuts (All Screen Readers):** [GitHub Docs, home](https://docs.github.com/en), [GitHub Changelog](https://github.blog/changelog/), [W3C Web Content Accessibility Guidelines (WCAG) 2 overview](https://www.w3.org/WAI/standards-guidelines/wcag/), [WAI tutorials for accessible design patterns](https://www.w3.org/WAI/tutorials/), [WAI-ARIA Authoring Practices Guide](https://www.w3.org/WAI/ARIA/apg/)
+- **Common Issues and Workarounds:** [GitHub Docs, home](https://docs.github.com/en), [GitHub Changelog](https://github.blog/changelog/), [About Git](https://docs.github.com/en/get-started/using-git/about-git), [GitHub flow](https://docs.github.com/en/get-started/using-github/github-flow), [About pull requests](https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/about-pull-requests)
