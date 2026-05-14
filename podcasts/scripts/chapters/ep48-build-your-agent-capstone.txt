@@ -17,58 +17,49 @@ Exactly. The transcript has to stand on its own. It can point toward practice, b
 
 [PAUSE]
 
-[JAMIE]
-Give me the sequence, because order matters here.
+[ALEX]
+1. The Capstone Challenge: The capstone is Challenge 16 -- the final challenge of the workshop. Your pull request goes to a real repository.
 
 [ALEX]
-1. The Capstone Challenge: The capstone is Challenge 16 -- the final challenge of the workshop. The next useful detail is concrete: Your pull request goes to a real repository.
-
-[ALEX]
-First, choose a mission for a new accessibility agent (or improve an existing one). Then, write an agent file with valid YAML frontmatter. After that, define clear responsibilities and guardrails. Finally, test the agent locally with GitHub Copilot. Pause after each step and listen for the confirmation before moving on.
+First, choose a mission for a new accessibility agent (or improve an existing one). Then, write an agent file with valid YAML frontmatter. After that, define clear responsibilities and guardrails. Finally, test the agent locally with GitHub Copilot.
 
 [JAMIE]
 How would you walk the room through that step by step?
 
 [ALEX]
-Start here: Open a pull request from your fork to the upstream repository. Then: Respond to peer review feedback. The point is not speed; the point is never losing your place.
+Start here: Open a pull request from your fork to the upstream repository. Then: Respond to peer review feedback.
 
 [ALEX]
-The next layer is this. What you need before starting has three jobs: name the idea, give the learner a move, and show what counts as evidence.
+What you need before starting.
 
 [ALEX]
 Here are the anchors worth keeping. [ ] You have forked and cloned the accessibility-agents repository (Chapter 18). [ ] You have a feature branch created: agents/your-username-agent-name. [ ] You understand how to push to your fork and open a PR (Chapter 18). [ ] You have GitHub Copilot or Copilot Free active (Chapter 16). [ ] You have explored the existing agents in Chapter 19.
 
-[JAMIE]
-What is the one idea that makes the next few steps less mysterious?
+[ALEX]
+most students complete the capstone in 60 to 90 minutes. The phases are designed so you can get a working agent in 30 minutes and spend the remaining time improving it.
 
 [ALEX]
-This is the move inside Time estimate: most students complete the capstone in 60 to 90 minutes. That matters in practice: The phases are designed so you can get a working agent in 30 minutes and spend the remaining time improving it.
-
-[JAMIE]
-That feels much more doable when you say it as one move.
-
-[ALEX]
-Right. The magic is not speed. The magic is knowing what changed and why it matters.
+Right.
 
 [PAUSE]
 
 [ALEX]
-Now bring the learner back to the room. Anchor this part on 2. Phase 1: Choose Your Agent's Mission. See also: Chapter 19: Accessibility Agents introduces the agent ecosystem and shows existing agents for inspiration.
+Phase 1: Choose Your Agent's Mission. See also: Chapter 19: Accessibility Agents introduces the agent ecosystem and shows existing agents for inspiration.
 
 [JAMIE]
 What would you say to someone who is already bracing for this to be too much?
 
 [ALEX]
-The reason this matters is simple: a good agent solves a specific, recurring problem.
+A good agent solves a specific, recurring problem.
 
 [ALEX]
-The parts worth keeping in working memory are these. What task do you repeat? Think about workflow steps from Day 1 and Day 2 that felt repetitive. What would a specialist know? An agent works best when it has deep knowledge of a focused area. What gap exists? Look at the existing agents in Chapter 19. Is there a workflow that no agent covers?
+What task do you repeat? Think about workflow steps from Day 1 and Day 2 that felt repetitive. What would a specialist know? An agent works best when it has deep knowledge of a focused area. What gap exists? Look at the existing agents in Chapter 19. Is there a workflow that no agent covers?
 
 [ALEX]
-The useful habit is simple: orient, act, verify, then continue. That pause between action and trust is part of the work.
+That pause between action and trust is part of the work.
 
 [ALEX]
-That matters because of the next idea. Do not treat Write your mission statement as decoration. Before writing any code, write a one-sentence mission statement. That is not trivia. "My agent helps [who] by [doing what] when [in what situation].". The workshop is closer to rehearsal than lecture. You hear the move, try the move, and then check what changed.
+That matters because of the next idea. Do not treat Write your mission statement as decoration. Before writing any code, write a one-sentence mission statement. "My agent helps [who] by [doing what] when [in what situation].".
 
 [PAUSE]
 
@@ -76,42 +67,33 @@ That matters because of the next idea. Do not treat Write your mission statement
 Okay, set the room for us. What are we walking into?
 
 [ALEX]
-If the interface shifts, 3. Phase 2: Write the Agent File is still useful because an agent file is a Markdown file with YAML frontmatter that defines the agent's identity, and a body that contains the agent's instructions. For someone navigating by keyboard or screen reader, this detail matters: Agent files live in the.github/agents/ directory (for GitHub Copilot agents) or in team-specific directories in the accessibility-agents repository.
+an agent file is a Markdown file with YAML frontmatter that defines the agent's identity, and a body that contains the agent's instructions. Agent files live in the.github/agents/ directory (for GitHub Copilot agents) or in team-specific directories in the accessibility-agents repository.
 
 [ALEX]
-This is where the talk moves from concept to action. Put File location and naming into plain language. Example.github/agents/alt-text-validator.md.
-
-[JAMIE]
-Now it sounds like a workflow instead of a wall of instructions.
+Put File location and naming into plain language. Example.github/agents/alt-text-validator.md.
 
 [ALEX]
-That is where confidence comes from: not from never getting lost, but from knowing how to recover.
-
-[JAMIE]
-Turn that into a path someone can follow.
+The agent file structure.
 
 [ALEX]
-The agent file structure has three jobs: name the idea, give the learner a move, and show what counts as evidence.
-
-[ALEX]
-Think of this as 2 checks: YAML frontmatter -- metadata between --- markers at the top of the file; and Instructions body -- Markdown content that tells the agent how to behave. Pause after each step and listen for the confirmation before moving on.
+Think of this as 2 checks: YAML frontmatter -- metadata between --- markers at the top of the file; and Instructions body -- Markdown content that tells the agent how to behave.
 
 [PAUSE]
 
 [ALEX]
-Before the learner moves on. This part earns its place because vague descriptions result in missed automatic routing. That gives the learner a foothold: weak: Helps with accessibility - Strong: Checks markdown files for accessibility issues, fixes descriptive links and heading hierarchy, and flags alt text for human review The more specific the description, the more reliably Copilot invokes the right agent for. That is the difference between following directions and owning the workflow.
+Before the learner moves on. Vague descriptions result in missed automatic routing. Weak: Helps with accessibility - Strong: Checks markdown files for accessibility issues, fixes descriptive links and heading hierarchy, and flags alt text for human review The more specific the description, the more reliably Copilot invokes the right agent for.
 
 [JAMIE]
 Give me the version that sounds like an instructor, not a manual.
 
 [ALEX]
-Writing the instructions body: The instructions body tells the agent how to behave. The next useful detail is concrete: Write it as if you are briefing a new team member on their first day.
+Writing the instructions body: The instructions body tells the agent how to behave. Write it as if you are briefing a new team member on their first day.
 
 [ALEX]
 If someone is taking notes, this is the short list. Start with identity. "You are a [role] focused on [area].". List responsibilities. What specific tasks does this agent handle? Set guardrails. What should the agent never do? What are its limits? Provide examples. Show what good output looks like.
 
 [ALEX]
-Now slow down for the part people usually miss. Learning Cards: Writing the Agent File has three jobs: name the idea, give the learner a move, and show what counts as evidence.
+Learning Cards: Writing the Agent File.
 
 [ALEX]
 Here is the part that makes the next action easier. Create your agent file with Ctrl+N, then Ctrl+S and save to.github/agents/your-agent-name.md -- the Explorer navigates to the folder automatically. Use Ctrl+Shift+O to navigate between YAML frontmatter fields and Markdown headings (Responsibilities, Guardrails) in your agent file. The YAML frontmatter is between --- markers at the top -- your screen reader announces these as horizontal rules. Agent files are standard Markdown -- open Markdown Preview (Ctrl+Shift+V) side by side to verify formatting as you write. The YAML frontmatter at the top uses name: and description: fields -- keep these on separate lines for readability at high zoom. Use a consistent heading hierarchy ( for title, for sections) so the Outline view (Ctrl+Shift+O) shows a clean structure.
@@ -122,7 +104,7 @@ Here is the part that makes the next action easier. Create your agent file with 
 If I am listening before the workshop starts, what should settle in my mind first?
 
 [ALEX]
-This is the move inside 4. Phase 3: Define Responsibilities and Guardrails: responsibilities and guardrails are the most important parts of your agent's instructions. That matters in practice: The validation workflow checks that both sections exist.
+Define Responsibilities and Guardrails: responsibilities and guardrails are the most important parts of your agent's instructions. The validation workflow checks that both sections exist.
 
 [JAMIE]
 That is the kind of detail that keeps a screen reader user oriented.
@@ -131,7 +113,7 @@ That is the kind of detail that keeps a screen reader user oriented.
 Yes. The named thing - the heading, tab, field, branch, or button - is the handhold.
 
 [ALEX]
-Here is the moment where the page starts to make sense. Anchor this part on Writing responsibilities. Responsibilities define what the agent does. This is the part to say slowly: Each responsibility should describe one discrete action the agent can take. The durable skill is not memorizing one screen. It is knowing how to find your footing when the screen changes.
+Responsibilities define what the agent does. This is the part to say slowly: Each responsibility should describe one discrete action the agent can take. The durable skill is not memorizing one screen. It is knowing how to find your footing when the screen changes.
 
 [ALEX]
 Listen for the small confirmations in this list. Scan HTML files for tags missing the alt attribute. Check that all elements have visible text or an aria-label. Verify heading levels do not skip (e.g., h1 to h3 without h2). Help with accessibility.
@@ -140,7 +122,7 @@ Listen for the small confirmations in this list. Scan HTML files for tags missin
 Where do you want a learner to place their attention here?
 
 [ALEX]
-The reason this matters is simple: guardrails define what the agent must not do. The listener should be able to check this: They prevent the agent from overstepping, giving harmful advice, or acting without permission.
+Guardrails define what the agent must not do. They prevent the agent from overstepping, giving harmful advice, or acting without permission.
 
 [ALEX]
 The useful version is not abstract; it sounds like this. Never auto-fix code without asking the user first. Do not provide medical, legal, or financial advice when discussing accessibility compliance. Limit reviews to the files the user specifies -- do not scan the entire repository. If a finding is uncertain, say so explicitly rather than presenting it as definitive.
@@ -148,7 +130,7 @@ The useful version is not abstract; it sounds like this. Never auto-fix code wit
 [PAUSE]
 
 [ALEX]
-The next point gives the learner a handle. Learning Cards: Responsibilities and Guardrails has three jobs: name the idea, give the learner a move, and show what counts as evidence.
+The next point gives the learner a handle. Learning Cards: Responsibilities and Guardrails.
 
 [ALEX]
 This is where the lesson becomes something you can check. Use Responsibilities and Guardrails as exact heading names -- the validation workflow searches for these strings. Each responsibility should start with a verb (Scan, Check, Verify, Flag) -- this makes them concrete and testable. Guardrails should start with "Never" or "Do not" to set clear boundaries your screen reader identifies as restrictions when reviewing the file. Format responsibilities as a bulleted list (starting with -) for easy scanning at high zoom -- one responsibility per bullet. Keep each guardrail to a single line so it remains visible without horizontal scrolling at your zoom level. Use bold text for emphasis on critical guardrails (e.g., Never modify files without approval ) to improve visual scanning.
@@ -157,25 +139,19 @@ This is where the lesson becomes something you can check. Use Responsibilities a
 Let's pause on 5. Phase 4: Test Your Agent Locally. What should a learner take away from it?
 
 [ALEX]
-If the interface shifts, 5. Phase 4: Test Your Agent Locally is still useful because see also: Chapter 18: Fork and Contribute covers the fork-and-PR workflow you will use to submit your agent. For someone navigating by keyboard or screen reader, this detail matters: Before opening a pull request, test your agent to verify it works.
-
-[JAMIE]
-What does the learner do first, second, and then after that?
+see also: Chapter 18: Fork and Contribute covers the fork-and-PR workflow you will use to submit your agent. Before opening a pull request, test your agent to verify it works.
 
 [ALEX]
-Testing with GitHub Copilot Chat has three jobs: name the idea, give the learner a move, and show what counts as evidence.
+Testing with GitHub Copilot Chat.
 
 [ALEX]
-That shows up in the workshop in a few specific ways. Understand its mission? Follow its responsibilities? Respect its guardrails?
+Understand its mission? Follow its responsibilities? Respect its guardrails?
 
 [ALEX]
-Walk it in order: Open VS Code with the accessibility-agents repository; Ensure your agent file is saved in.github/agents/; Open GitHub Copilot Chat (Ctrl+Alt+I) or run Chat: Open Chat from the Command Palette; and Invoke your agent by name: @your-agent-name check this file for accessibility issues. The point is not speed; the point is never losing your place.
-
-[JAMIE]
-What is the ordered workflow?
+Open VS Code with the accessibility-agents repository; Ensure your agent file is saved in.github/agents/; Open GitHub Copilot Chat (Ctrl+Alt+I) or run Chat: Open Chat from the Command Palette; and Invoke your agent by name: @your-agent-name check this file for accessibility issues.
 
 [ALEX]
-Think of this as 1 checks: Observe the response. Does the agent. Each step should leave a trace you can name.
+Think of this as 1 checks: Observe the response. Does the agent.
 
 [JAMIE]
 So the learner is not behind if they stop there and check the page.
@@ -189,7 +165,7 @@ Yes. Pausing to verify is not a detour; it is how you keep control of the workfl
 Let's pause on Testing checklist. What should a learner take away from it?
 
 [ALEX]
-Testing checklist has three jobs: name the idea, give the learner a move, and show what counts as evidence.
+Testing checklist.
 
 [ALEX]
 For a learner, the useful signals are concrete. [ ] The agent responds when invoked by name. [ ] The agent stays within its defined responsibilities. [ ] The agent does not violate any guardrails. [ ] The agent's output is useful and specific. [ ] The agent handles edge cases gracefully (empty files, no issues found).
@@ -198,16 +174,16 @@ For a learner, the useful signals are concrete. [ ] The agent responds when invo
 Let's pause on Iterating on your agent. What should a learner take away from it?
 
 [ALEX]
-This part earns its place because if the agent does not behave as expected. That gives the learner a foothold: most students iterate 2-3 times before they are satisfied.
+If the agent does not behave as expected. Most students iterate 2-3 times before they are satisfied.
 
 [ALEX]
-The path is straightforward once it is named. Step one is read its instructions carefully. Is anything ambiguous? Step two is add more specific instructions or examples. Step three is test again with the same prompt. Step four is repeat until the behavior matches your intent. If one step does not match what you hear, stop there and re-orient.
+Step one is read its instructions carefully. Is anything ambiguous? Step two is add more specific instructions or examples. Step three is test again with the same prompt. Step four is repeat until the behavior matches your intent.
 
 [JAMIE]
 Let's pause on Learning Cards: Testing Your Agent. What should a learner take away from it?
 
 [ALEX]
-Learning Cards: Testing Your Agent has three jobs: name the idea, give the learner a move, and show what counts as evidence.
+Learning Cards: Testing Your Agent.
 
 [ALEX]
 On the ground, that means a few things. Open Copilot Chat (Ctrl+Alt+I) or run Chat: Open Chat from the Command Palette, then type @your-agent-name followed by a test prompt -- your screen reader announces the response as it streams. Press Alt+F2 after the response finishes to read the full output in Accessible View with arrow keys. If the agent does not respond as expected, edit the.agent.md file and ask again -- Copilot picks up changes immediately. Agent responses appear in the Copilot Chat panel -- widen the panel by dragging its left edge for better readability. Test with a simple prompt first (e.g., "review this file") and read the full response before trying complex requests. Use Accessible View (Alt+F2) to read responses at your preferred editor font size instead of the Chat panel's default.
@@ -218,7 +194,7 @@ On the ground, that means a few things. Open Copilot Chat (Ctrl+Alt+I) or run Ch
 Let's pause on Tool Cards: Open Your Capstone PR. What should a learner take away from it?
 
 [ALEX]
-Here is the learner-facing version. VS Code Desktop (primary for Day 2). A good GitHub workflow is like a well-run meeting: everyone knows the topic, the next action, and who has the floor.
+VS Code Desktop (primary for Day 2).
 
 [ALEX]
 Start here: Push your branch: Ctrl+Shift+P Git: Push. Then: Ctrl+Shift+P GitHub Pull Requests: Create Pull Request. Next: Set base repo to Community-Access/accessibility-agents, fill in the title and description. Last: Navigate to your fork on GitHub. That small check between steps is what makes the workflow reliable.
@@ -227,7 +203,7 @@ Start here: Push your branch: Ctrl+Shift+P Git: Push. Then: Ctrl+Shift+P GitHub 
 Before we leave Tool Cards: Open Your Capstone PR, what is the practical point?
 
 [ALEX]
-Walk it in order: Click Contribute Open pull request; and Verify the base is Community-Access/accessibility-agents:main and the compare is your branch. The sequence works because every action has a confirmation.
+Click Contribute Open pull request; and Verify the base is Community-Access/accessibility-agents:main and the compare is your branch. The sequence works because every action has a confirmation.
 
 [ALEX]
 Treat examples as spoken recipes, not decorations. You may hear something like git push -u origin your-branch; gh pr create --repo Community-Access/accessibility-agents. Read the command, understand what it changes, then run it only when the repository state matches the lesson.
@@ -239,10 +215,10 @@ A solid pull request habit is to separate three questions: what changed, why it 
 Let's pause on Pre-PR checklist. What should a learner take away from it?
 
 [ALEX]
-Pre-PR checklist has three jobs: name the idea, give the learner a move, and show what counts as evidence.
+Pre-PR checklist.
 
 [ALEX]
-Here is what that changes in practice. [ ] Your agent file has valid YAML frontmatter (name and description fields). [ ] Your agent file has a Responsibilities section. [ ] Your agent file has a Guardrails section. [ ] The file is in the correct directory. [ ] You have committed and pushed to your fork.
+[ ] Your agent file has valid YAML frontmatter (name and description fields). [ ] Your agent file has a Responsibilities section. [ ] Your agent file has a Guardrails section. [ ] The file is in the correct directory. [ ] You have committed and pushed to your fork.
 
 [JAMIE]
 That is a useful checkpoint before anyone starts pressing keys.
@@ -254,10 +230,10 @@ Exactly. Checkpoints turn uncertainty into information.
 Let's pause on Open the PR. What should a learner take away from it?
 
 [ALEX]
-Anchor this part on Open the PR. Follow the pull request steps from Chapter 18, Step 7.
+Follow the pull request steps from Chapter 18, Step 7.
 
 [ALEX]
-The room should hear these as checkpoints. Your mission statement from Phase 1. What the agent does (summary of responsibilities). Any design decisions you made. How you tested it.
+Your mission statement from Phase 1. What the agent does (summary of responsibilities). Any design decisions you made. How you tested it.
 
 [ALEX]
 Think of this as 4 checks: Push your branch: git push -u origin agents/your-username-agent-name; Go to the upstream repository on GitHub.com; Click the banner or go to Pull Requests and click New pull request, then compare across forks; and Select your fork and branch. Keep it that plain: know where you are, make the move, check the result.
@@ -266,7 +242,7 @@ Think of this as 4 checks: Push your branch: git push -u origin agents/your-user
 Before we leave Open the PR, what is the practical point?
 
 [ALEX]
-The path is straightforward once it is named. Step one is write a PR title: "Add [agent-name] accessibility agent". Step two is in the PR body,. Step three is create the pull request. Pause after each step and listen for the confirmation before moving on.
+Step one is write a PR title: "Add [agent-name] accessibility agent". Step two is in the PR body,. Step three is create the pull request.
 
 [PAUSE]
 
@@ -274,10 +250,10 @@ The path is straightforward once it is named. Step one is write a PR title: "Add
 Let's pause on The validation workflow. What should a learner take away from it?
 
 [ALEX]
-The reason this matters is simple: the repository has a Challenge 16 validation workflow that runs on every pull request. The listener should be able to check this: Gandalf posts a PR Validation Report as a comment on your PR.
+The repository has a Challenge 16 validation workflow that runs on every pull request. Gandalf posts a PR Validation Report as a comment on your PR.
 
 [ALEX]
-Another way to ground it. Learning Cards: Opening Your Pull Request has three jobs: name the idea, give the learner a move, and show what counts as evidence.
+Another way to ground it. Learning Cards: Opening Your Pull Request.
 
 [ALEX]
 That becomes easier when you listen for these cues. Gandalf's PR Validation Report appears in the PR timeline -- navigate to Comments on GitHub.com with h (heading navigation) to find the results. Each check is listed with pass/fail status. If a check fails, read the failure message, fix the issue locally, commit, push, and the validation re-runs automatically. Validation Report appears as a comment with pass/fail status for each check -- zoom with Ctrl+= to read the details. Green checkmarks indicate passing checks; red X marks indicate failures -- pair with High Contrast theme for clearest visibility. Your PR description should include your mission statement, responsibilities summary, and testing notes.
@@ -286,12 +262,12 @@ That becomes easier when you listen for these cues. Gandalf's PR Validation Repo
 Let's pause on 7. Phase 6: Respond to Review. What should a learner take away from it?
 
 [ALEX]
-If the interface shifts, 7. Phase 6: Respond to Review is still useful because after the validation checks pass, a peer reviewer (your buddy or another student) and a facilitator will review your agent.
+after the validation checks pass, a peer reviewer (your buddy or another student) and a facilitator will review your agent.
 
 [PAUSE]
 
 [ALEX]
-This is the part worth saying out loud. What reviewers look for has three jobs: name the idea, give the learner a move, and show what counts as evidence.
+This is the part worth saying out loud. What reviewers look for.
 
 [ALEX]
 These are the pieces that turn the idea into a usable move. Clarity: Are the instructions easy to understand? Specificity: Are responsibilities concrete and actionable? Safety: Are guardrails sufficient to prevent harmful behavior? Usefulness: Would this agent actually help someone? Scope: Does the agent try to do too much or too little?
@@ -306,13 +282,13 @@ That is the goal. We want the page to feel explorable, not fragile.
 Let's pause on Responding to feedback. What should a learner take away from it?
 
 [ALEX]
-The teaching point here is not the label; it is the move. This is the same process from Chapter 18, Step 8.
+This is the same process from Chapter 18, Step 8.
 
 [ALEX]
-Think of this as 4 checks: Read each review comment; Make changes locally; Commit and push. The PR updates automatically; and Reply to each comment explaining your changes. That is the rhythm: orient, act, verify, continue.
+Think of this as 4 checks: Read each review comment; Make changes locally; Commit and push. The PR updates automatically; and Reply to each comment explaining your changes.
 
 [ALEX]
-Put that beside the next piece. This part earns its place because your agent is now part of the accessibility-agents ecosystem. That gives the learner a foothold: it is available to anyone who uses the repository. That is the difference between following directions and owning the workflow.
+Put that beside the next piece. Your agent is now part of the accessibility-agents ecosystem. It is available to anyone who uses the repository.
 
 [ALEX]
 A few details make that real. You can navigate the fork workflow end to end. You can write clear, structured technical documentation. You understand accessibility concepts well enough to teach an AI agent about them. You can respond constructively to code review.
@@ -326,7 +302,7 @@ Let's pause on 8. Capstone Rubric. What should a learner take away from it?
 8. Capstone Rubric: The capstone is worth validation workflow checks plus peer review.
 
 [ALEX]
-Now shift from knowing the term to using it. Here is the learner-facing version. A capstone that meets expectations has.
+Now shift from knowing the term to using it. A capstone that meets expectations has.
 
 [ALEX]
 These are the details that keep the idea from floating away. A focused mission (not "help with accessibility" -- something specific). At least 3 concrete responsibilities. At least 3 meaningful guardrails. A PR description that explains the agent's purpose. All validation checks passing.
@@ -335,7 +311,7 @@ These are the details that keep the idea from floating away. A focused mission (
 Let's pause on What "exceeds expectations" looks like. What should a learner take away from it?
 
 [ALEX]
-This is the move inside What "exceeds expectations" looks like: a capstone that exceeds expectations also has.
+a capstone that exceeds expectations also has.
 
 [ALEX]
 Here is the part to remember. Examples of expected input and output in the agent instructions. A section describing the agent's limitations. Evidence of testing (screenshots or transcripts in the PR description). Thoughtful responses to review feedback.
@@ -349,13 +325,13 @@ Exactly. A learner should always know what they are trying to prove before they 
 [PAUSE]
 
 [ALEX]
-This is where confidence starts to build. Anchor this part on 9. Example Agents for Inspiration. These examples show the range of valid agent designs. This is the part to say slowly: Your agent does not need to be this long, but it should be this clear. The durable skill is not memorizing one screen. It is knowing how to find your footing when the screen changes.
+This is where confidence starts to build. Example Agents for Inspiration. These examples show the range of valid agent designs. This is the part to say slowly: Your agent does not need to be this long, but it should be this clear. The durable skill is not memorizing one screen. It is knowing how to find your footing when the screen changes.
 
 [JAMIE]
 Let's pause on Example 1: Heading Hierarchy Checker. What should a learner take away from it?
 
 [ALEX]
-The reason this matters is simple: mission: Validates that HTML and Markdown documents follow a correct heading hierarchy (no skipped levels).
+Mission: Validates that HTML and Markdown documents follow a correct heading hierarchy (no skipped levels).
 
 [ALEX]
 Here is the part to remember. Scan files for heading elements (h1 through h6 in HTML, through in Markdown). Report any instance where a heading level is skipped (e.g., h2 followed by h4). Suggest the correct heading level for each violation. Check that there is exactly one h1 per page. Do not modify files -- only report findings. Do not change heading text, only heading levels.
@@ -375,7 +351,7 @@ Here is the part to remember. Check that the PR description is at least 50 chara
 Let's pause on Example 3: Keyboard Navigation Auditor. What should a learner take away from it?
 
 [ALEX]
-If the interface shifts, Example 3: Keyboard Navigation Auditor is still useful because mission: Checks web components for keyboard accessibility compliance.
+mission: Checks web components for keyboard accessibility compliance.
 
 [ALEX]
 Here is the part to remember. Verify all interactive elements are reachable via Tab key. Check that custom components have appropriate tabindex values. Validate that focus order follows visual layout. Detect keyboard traps (elements that receive focus but cannot release it via keyboard). Do not modify component code without user approval. Flag potential issues with confidence levels (certain, likely, possible).

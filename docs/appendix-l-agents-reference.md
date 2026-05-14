@@ -4,7 +4,9 @@
 
 > **Reference companion to:** [Chapter 19: Accessibility Agents](19-accessibility-agents.md) | Also relevant: [Chapter 20](20-build-your-agent.md)
 >
-> **Authoritative source:** [GitHub Docs: Building Copilot extensions](https://docs.github.com/en/copilot/building-copilot-extensions/about-building-copilot-extensions)
+> **Authoritative source:** [GitHub Docs: MCP overview](https://docs.github.com/en/copilot/building-copilot-extensions/about-building-copilot-extensions) | [VS Code: Custom Agents](https://code.visualstudio.com/docs/copilot/customization/custom-agents)
+>
+> **Note:** The "Building Copilot Extensions" docs now redirect to MCP documentation. The GitHub App-based Copilot Extensions model has been superseded by MCP servers as the standard extensibility mechanism. Custom `.agent.md` files remain the primary agent persona format.
 
 ## Complete Reference - Agents, Slash Commands, Instructions, Configuration Levels, and All File Formats
 

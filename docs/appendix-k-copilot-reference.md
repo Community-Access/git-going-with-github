@@ -2,7 +2,7 @@
 
 > **Reference companion to:** [Chapter 16: GitHub Copilot](16-github-copilot.md)
 >
-> **Authoritative sources:** [GitHub Docs: Copilot](https://docs.github.com/en/copilot) | [VS Code Docs: Agents window](https://code.visualstudio.com/docs/copilot/agents/agents-window) | [VS Code 1.120 release notes](https://code.visualstudio.com/updates/v1_120)
+> **Authoritative sources:** [GitHub Docs: Copilot](https://docs.github.com/en/copilot) | [VS Code Docs: Copilot Chat](https://code.visualstudio.com/docs/copilot/chat/copilot-chat) | [VS Code 1.99 release notes (unified Chat view)](https://code.visualstudio.com/updates/v1_99)
 
 > This appendix consolidates Copilot reference tables and Copilot model-selection guidance into one complete reference.
 
@@ -88,7 +88,7 @@ Type these in the Copilot Chat input to give Copilot context from a specific sou
 
 | Participant | What It Does |
 | -------------  | -------------  |
-| `@workspace` | Searches your entire VS Code workspace for relevant context |
+| `@workspace` | Searches your entire VS Code workspace for relevant context. **Superseded by `#codebase`** (works in all modes, not just Ask). Prefer `#codebase` for new prompts. |
 | `@github` | Accesses GitHub.com data - search issues, PRs, code across the platform |
 | `@terminal` | Provides context from the VS Code integrated terminal |
 
@@ -108,7 +108,8 @@ Type these in the Copilot Chat input to give Copilot context from a specific sou
 | ----------  | -----------------  |
 | `#file` | Opens a file picker - attach any file from your workspace |
 | `#selection` | Attaches your currently selected text |
-| `#codebase` | Searches the full codebase for relevant snippets |
+| `#codebase` | Searches the full codebase for relevant snippets (preferred over `@workspace`) |
+| `#githubRepo` | Search any GitHub repo you have access to: `how to implement X #githubRepo org/repo` (added v1.100) |
 | `#terminalLastCommand` | Attaches the last terminal command and its output |
 
 #### Example prompts
@@ -161,14 +162,14 @@ Select a broken YAML template → /fix
 
 ## 4. Chat Modes
 
-Copilot Chat has four modes. Select the current mode from the dropdown at the bottom of the Chat input area.
+Copilot Chat has four modes, unified into a single Chat view since VS Code v1.99 (March 2025). Select the current mode from the dropdown at the bottom of the Chat input area.
 
 | Mode | What It Does | Best For |
 | ------  | -------------  | ----------  |
 | **Ask** | Conversational Q&A. Copilot explains, suggests, and answers but does not directly edit files. | Questions, explanations, discussion, exploring ideas |
 | **Edit** | You define a working set of files; Copilot proposes edits as a diff that you approve or reject. | Targeted, controlled multi-file edits |
-| **Agent** | Copilot works autonomously - it decides which files to touch, reads/writes code, runs terminal commands. | Larger end-to-end tasks |
-| **Plan** | Copilot writes an implementation plan first; no code is written until you approve the plan. (Public preview) | Complex features where you want to validate the approach first |
+| **Agent** | Copilot works autonomously - it decides which files to touch, reads/writes code, runs terminal commands. Uses MCP tools. | Larger end-to-end tasks |
+| **Plan** | Copilot writes an implementation plan first; no code is written until you approve the plan. | Complex features where you want to validate the approach first |
 
 **Screen reader note:** The mode selector is in the Chat panel toolbar at the bottom. Tab through the bottom of the Chat view to find it. The current mode name is its accessible label. Press `Space` or `Enter` to open the dropdown.
 
@@ -190,7 +191,7 @@ Copilot Chat has four modes. Select the current mode from the dropdown at the bo
 
 - Chat responses appear in the panel with syntax highlighting -- increase the Chat panel font size via `editor.fontSize` in settings
 - The `@` and `/` trigger characters are small but the autocomplete popup that follows is large and themed to your current color scheme
-- Use Ask mode for reading explanations, Agent mode for controlled multi-file changes and autonomous tasks (Edit mode is being deprecated into Agent mode as of VS Code 1.118)
+- Use Ask mode for reading explanations, Agent mode for controlled multi-file changes and autonomous tasks. Edit mode is a distinct mode for scoped diff-based edits. All three modes are present in the unified Chat view since VS Code v1.99.
 
 </details>
 
@@ -2006,7 +2007,7 @@ GitHub Copilot offers access to AI models from multiple providers including Open
 
 **Models are updated frequently.** This appendix no longer keeps a static model roster because the April-May 2026 changelog includes multiple additions, removals, and deprecations. For the latest additions and retirements, see the [GitHub Copilot changelog](https://github.blog/changelog/2026/?label=copilot) and [GitHub's official supported models documentation](https://docs.github.com/en/copilot/reference/ai-models/supported-models).
 
-> **Workshop note, verified May 12, 2026:** GitHub Copilot is moving to usage-based billing on June 1, 2026. Check [GitHub Copilot settings](https://github.com/settings/copilot), the [GitHub Copilot plans page](https://github.com/features/copilot/plans), and the [usage-based billing documentation](https://docs.github.com/en/copilot/concepts/billing/usage-based-billing-for-individuals) before the workshop.
+> **Workshop note, verified May 2026:** GitHub Copilot usage-based billing via premium requests launched **June 18, 2025** for paid GitHub.com plans. Starting June 1, 2026, billing transitioned from Premium Request Units (PRUs) to **GitHub AI Credits**. Verify current plan limits at [GitHub Copilot settings](https://github.com/settings/copilot), the [GitHub Copilot plans page](https://github.com/features/copilot/plans), and the [usage-based billing documentation](https://docs.github.com/en/copilot/concepts/billing/usage-based-billing-for-individuals) before the workshop.
 
 ## 2. How to Choose a Model
 
@@ -2044,14 +2045,14 @@ The following table lists the official sources to use instead of static model ta
 | Usage-based billing details | [Usage-based billing for individuals](https://docs.github.com/en/copilot/concepts/billing/usage-based-billing-for-individuals) |
 | Billing transition announcement | [GitHub Copilot usage-based billing announcement](https://github.blog/news-insights/company-news/github-copilot-is-moving-to-usage-based-billing/) |
 
-### Source-backed facts verified May 12, 2026
+### Source-backed facts verified May 2026
 
-- GitHub Copilot moves to usage-based billing on June 1, 2026.
-- Premium request units are being replaced by GitHub AI Credits.
+- GitHub Copilot usage-based billing (premium requests) launched **June 18, 2025** for paid GitHub.com plans.
+- Starting June 1, 2026, Premium Request Units (PRUs) transitioned to GitHub AI Credits.
 - One GitHub AI Credit equals $0.01 USD in the usage-based billing documentation.
 - Copilot Chat, Copilot CLI, Copilot cloud agent, Copilot Spaces, Spark, and third-party coding agents consume AI Credits.
 - Code completions and next edit suggestions are not billed in AI Credits for paid plans.
-- Copilot code review is expected to consume GitHub Actions minutes in addition to GitHub AI Credits starting June 1, 2026.
+- Copilot code review consumes GitHub Actions minutes in addition to GitHub AI Credits.
 - Model availability changes frequently, and multiple models were deprecated or retired in the April-May 2026 changelog.
 
 ## 4. Model Availability by Plan
@@ -2063,7 +2064,7 @@ Plan names, included usage, and model access can change by date, account type, o
 - **Copilot Free** can support short, focused workshop prompts, but it has monthly limits.
 - **Verified students** may have access to GitHub Copilot Student plan benefits.
 - **Organization and enterprise users** may have Copilot access managed by an administrator.
-- **Paid plans** include more usage and broader feature access, but the billing unit changes to GitHub AI Credits on June 1, 2026.
+- **Paid plans** include more usage and broader feature access. GitHub AI Credits are the billing unit since June 1, 2026.
 - **Annual individual plans** may follow transition rules that differ from monthly plans.
 
 Check [GitHub Copilot settings](https://github.com/settings/copilot) for your account and the [GitHub Copilot plans page](https://github.com/features/copilot/plans) for current public plan details.
@@ -2143,7 +2144,7 @@ To stay current, watch the [GitHub Copilot changelog](https://github.blog/change
 
 | Plan | Monthly Cost | Included Usage | Features | Best For |
 |------|--------------|----------------|----------|----------|
-| **Free** | $0 | 50 completions, 2K chat tokens/month | Basic Copilot Chat, inline suggestions, limited chat | Getting started, light workshops |
+| **Free** | $0 | 2,000 inline suggestions, 50 premium requests/month | Basic Copilot Chat, inline suggestions, limited chat | Getting started, light workshops |
 | **Pro** | $10 / month | Unlimited completions, higher chat limits | Full Chat, Copilot CLI, custom instructions | Individual developers |
 | **Pro+** | $39 / month | Unlimited all features | All Pro + agents, Copilot Cloud, Codex models | Complex workflows, agentic development |
 | **Team** | $35 / seat / month (min 2 seats) | Org-managed limits | Team governance, Copilot Spaces, audit logging | Teams and organizations |
@@ -2159,16 +2160,16 @@ To stay current, watch the [GitHub Copilot changelog](https://github.blog/change
 
 | Feature | Limit |
 |---------|-------|
-| Completions (ghost text suggestions) | 50 per month |
-| Chat messages (Copilot Chat) | 2,000 context tokens total per month |
-| Inline Chat (`Ctrl+I`) | Counts against chat limit |
-| Agent requests | Not included - Free plan cannot run agents |
+| Completions (ghost text / inline suggestions) | **2,000 per month** |
+| Premium requests (Copilot Chat, agents, premium features) | **50 per month** |
+| Inline Chat (`Ctrl+I`) | Counts against premium request limit |
+| Copilot cloud agent | Not available on Free plan |
 | Custom instructions | Available, but limited context |
-| Models | Auto selection only; cannot manually choose models |
+| Models | Auto selection only; cannot manually choose premium models |
 
 #### Free Plan Restrictions
 
-- **No agent support:** If your workshop uses agents (e.g., `@web-accessibility-wizard`), Free plan users cannot participate in those exercises
+- **No Copilot cloud agent:** Free plan users cannot use the async cloud agent (GitHub Actions-powered). Local VS Code agent mode may work within the 50 premium request limit.
 - **Chat limits can be reached quickly:** 2K tokens is roughly 3-5 multi-turn chat conversations depending on context size
 - **No Copilot CLI:** Free plan users cannot use the Copilot CLI for command-line assistance
 - **No Copilot Cloud:** Cannot run cloud-based agentic workflows
