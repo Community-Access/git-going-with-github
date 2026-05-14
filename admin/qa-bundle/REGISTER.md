@@ -4,42 +4,36 @@
 
 ## Join the next GIT Going with GitHub cohort
 
-This page provides a fast, self-serve opt-in workflow for students.
+Welcome, traveler. This is the opening gate to your agentic learning adventure in Git and GitHub.
 
 | | |
 |---|---|
 | **Status** | Open for student opt-in |
 | **Current confirmed registrations** | **<span id="registration-count-live">Loading...</span>** |
 | **Cost** | Free |
-| **Form** | GitHub issue form with automated confirmation and beginner fast path |
+| **Form** | Single enrollment form with automated confirmation and guided next steps |
 
-## New student fast path (recommended)
+## A magical welcome
 
-If you are new to GitHub or new to our workshop flow, start here.
+Imagine a friendly guide at the gate saying: "You shall not pass... without clicking the enrollment form."
 
-1. Open the beginner-friendly enrollment form.
-2. Submit the six short questions.
-3. Wait for the automation comment with your classroom join link.
+You only need one path to join this class.
 
-> [**Start Beginner Enrollment Form**](https://github.com/community-access/git-going-with-github/issues/new?template=classroom-enrollment.yml&title=%5BENROLL%5D+GIT+Going+with+GitHub+Classroom)
-
-If you are not sure which form to use, start with the beginner enrollment form. It gives you the smoothest first-time setup experience.
-
-## Standard student opt-in form
+## One path to begin
 
 1. Sign in to your [GitHub account](https://github.com/login).
-2. Open the registration issue form.
-3. Submit the form.
+2. Open the enrollment form.
+3. Answer the six quick prompts.
+4. Submit and wait for the automation comment with your classroom join link.
 
-> [**Start Student Opt-In Form**](https://github.com/community-access/git-going-with-github/issues/new?template=workshop-registration.yml&title=%5BREGISTER%5D+GIT+Going+with+GitHub)
-
-Use this form if you have already registered before, or if a facilitator asked you to use the standard path.
+> [**Begin the Adventure**](https://github.com/community-access/git-going-with-github/issues/new?template=classroom-enrollment.yml&title=%5BENROLL%5D+GIT+Going+with+GitHub+Classroom)
 
 ## What happens automatically
 
 - Duplicate submissions are handled automatically.
 - Registration is currently unlimited.
 - Enrollment submissions are processed and public issue bodies are redacted after automation runs.
+- Classroom and challenge progression automation picks up after enrollment.
 
 ## Important note
 
@@ -66,8 +60,8 @@ Use these official references when you need the current source of truth for fact
 Use this map to verify facts for each major section in this file.
 
 - **Join the next GIT Going with GitHub cohort:** [GitHub Docs, home](https://docs.github.com/en), [GitHub Changelog](https://github.blog/changelog/), [GitHub Discussions docs](https://docs.github.com/en/discussions), [GitHub Gists docs](https://docs.github.com/en/get-started/writing-on-github/editing-and-sharing-content-with-gists), [About Git](https://docs.github.com/en/get-started/using-git/about-git)
-- **New student fast path (recommended):** [GitHub Docs, home](https://docs.github.com/en), [GitHub Changelog](https://github.blog/changelog/), [GitHub Discussions docs](https://docs.github.com/en/discussions), [GitHub Gists docs](https://docs.github.com/en/get-started/writing-on-github/editing-and-sharing-content-with-gists)
-- **Standard student opt-in form:** [GitHub Docs, home](https://docs.github.com/en), [GitHub Changelog](https://github.blog/changelog/), [GitHub Discussions docs](https://docs.github.com/en/discussions), [GitHub Gists docs](https://docs.github.com/en/get-started/writing-on-github/editing-and-sharing-content-with-gists), [Workflow syntax for GitHub Actions](https://docs.github.com/en/actions/reference/workflows-and-actions/workflow-syntax)
+- **A magical welcome:** [GitHub Docs, home](https://docs.github.com/en), [GitHub Changelog](https://github.blog/changelog/), [GitHub Discussions docs](https://docs.github.com/en/discussions), [GitHub Gists docs](https://docs.github.com/en/get-started/writing-on-github/editing-and-sharing-content-with-gists)
+- **One path to begin:** [GitHub Docs, home](https://docs.github.com/en), [GitHub Changelog](https://github.blog/changelog/), [GitHub Discussions docs](https://docs.github.com/en/discussions), [GitHub Gists docs](https://docs.github.com/en/get-started/writing-on-github/editing-and-sharing-content-with-gists), [Workflow syntax for GitHub Actions](https://docs.github.com/en/actions/reference/workflows-and-actions/workflow-syntax)
 - **What happens automatically:** [GitHub Docs, home](https://docs.github.com/en), [GitHub Changelog](https://github.blog/changelog/), [GitHub Discussions docs](https://docs.github.com/en/discussions), [GitHub Gists docs](https://docs.github.com/en/get-started/writing-on-github/editing-and-sharing-content-with-gists)
 - **Important note:** [GitHub Docs, home](https://docs.github.com/en), [GitHub Changelog](https://github.blog/changelog/), [GitHub Discussions docs](https://docs.github.com/en/discussions), [GitHub Gists docs](https://docs.github.com/en/get-started/writing-on-github/editing-and-sharing-content-with-gists)
 - **Need help?:** [GitHub Docs, home](https://docs.github.com/en), [GitHub Changelog](https://github.blog/changelog/), [GitHub Discussions docs](https://docs.github.com/en/discussions), [GitHub Gists docs](https://docs.github.com/en/get-started/writing-on-github/editing-and-sharing-content-with-gists)
