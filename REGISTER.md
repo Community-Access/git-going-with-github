@@ -4,15 +4,15 @@
 
 ## Join the next GIT Going with GitHub cohort
 
-Welcome, brave traveler. A friendly wizard stands at this gate to welcome you to your Git and GitHub adventure.
+Welcome, traveler. I am your Grey Wizard Mentor at the gate, here to welcome you to your Git and GitHub adventure.
 
 ## A magical welcome
 
-Think of this guide as your staff-carrying mentor on the road: here to set clear expectations, light the way through tricky moments, and keep your courage up when the path feels new.
+My role is simple: set expectations, light the path when Git gets foggy, and help you move from uncertain first steps to confident collaboration.
 
-In class, expect short quests, clear checkpoints, and practical support from mentors and automation agents.
+In class, we travel through short quests, clear checkpoints, and practical support from mentors and automation agents.
 
-Beyond class, your guide continues through the Support Hub, progression bots, and challenge feedback so you can keep building with confidence.
+Beyond class, I remain with you through the Support Hub, progression bots, and challenge feedback so your learning continues after the workshop ends.
 
 You only need one path to begin.
 
