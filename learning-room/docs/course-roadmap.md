@@ -48,6 +48,8 @@ Goal: work locally, perform code review, and complete the capstone contribution.
 6. Challenge 15: Meet the Agents
 7. Challenge 16: Capstone Project (Build Your Agent (Capstone))
 
+Challenge 16 alternate title used in current docs: Challenge 16: Build Your Agent (Capstone)
+
 Expected Day 2 outcome:
 
 - You can run a local Git workflow end to end.
