@@ -52,3 +52,21 @@ gh issue list -R Community-Access-Classroom/learning-room-studentname --state al
 - Check workflow logs in Actions.
 - Re-run the same seeding command.
 - If still blocked, create challenge issue manually from the matching template.
+
+## Authoritative Sources
+
+Use these official references when you need the current source of truth for facts in this chapter.
+
+- [GitHub Docs, home](https://docs.github.com/en)
+- [GitHub Changelog](https://github.blog/changelog/)
+
+### Section-Level Source Map
+
+Use this map to verify facts for each major section in this file.
+
+- **Prerequisites:** [GitHub Docs, home](https://docs.github.com/en), [GitHub Changelog](https://github.blog/changelog/), [GitHub Pages docs](https://docs.github.com/en/pages), [GitHub Pages quickstart](https://docs.github.com/en/pages/quickstart)
+- **Seed Day 1 First Challenge:** [GitHub Docs, home](https://docs.github.com/en), [GitHub Changelog](https://github.blog/changelog/)
+- **Seed Day 2 First Challenge:** [GitHub Docs, home](https://docs.github.com/en), [GitHub Changelog](https://github.blog/changelog/)
+- **Seed Peer Simulation Artifacts:** [GitHub Docs, home](https://docs.github.com/en), [GitHub Changelog](https://github.blog/changelog/)
+- **Verify Seeding Worked:** [GitHub Docs, home](https://docs.github.com/en), [GitHub Changelog](https://github.blog/changelog/)
+- **Common Failure Cases:** [GitHub Docs, home](https://docs.github.com/en), [GitHub Changelog](https://github.blog/changelog/)

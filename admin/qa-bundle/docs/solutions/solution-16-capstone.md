@@ -1,6 +1,6 @@
-# Solution Reference: Challenge 16 -- Build Your Own Agent (Capstone)
+# Solution Reference: Challenge 16 -- Capstone Project
 
-This shows a complete agent file with annotations.
+This shows one complete capstone path with annotations. Accessibility Agents is the default example because the autograder can validate agent file structure there. GLOW or another repository can also meet the challenge when the evidence shows a clear mission, responsibilities, guardrails, and review-ready work.
 
 ## Example agent file
 
@@ -51,7 +51,7 @@ for Challenge 6. But I can help you think about what to include. What did you ch
 and why? Start with those two sentences and you have a strong description.
 ```
 
-## PR description for the capstone
+## PR description for the Accessibility Agents path
 
 ```markdown
 ## New agent: Workshop Buddy
@@ -76,15 +76,35 @@ questions about challenges, explaining Git concepts, and suggesting next steps.
 - [x] Example interactions showing both helpfulness and boundaries
 ```
 
-## Alternate valid agents
+## Alternate valid capstone paths
 
-Any agent concept works. Other examples students have built:
+Any focused, useful contribution can work. Other examples include:
 
-- An agent that reviews Markdown formatting
-- An agent that checks issue titles for clarity
-- An agent that recommends which Git command to use
-- An agent that explains error messages
+- A GLOW agent that helps contributors choose between Audit, Fix, Template, Export, and Convert workflows
+- A GLOW prompt that reviews release notes for user-facing accessibility impact
+- Custom instructions that prevent inaccessible UI patterns in a project you maintain
+- A documentation update that explains how to test a repository with keyboard, screen reader, and high contrast workflows
+- A draft issue proposing a future agent, with mission, responsibilities, guardrails, and test plan
 
 ## What matters
 
-The learning objective is understanding that AI agents are defined by their responsibilities AND their guardrails. If your agent file has valid YAML frontmatter, a clear purpose, and explicit boundaries, you completed this challenge. The creativity of the concept is a bonus, not a requirement.
+The learning objective is understanding that agentic work is defined by purpose, responsibilities, and guardrails. If your evidence identifies a real repository, explains who the contribution helps, defines concrete responsibilities, names boundaries, and is ready for review, you completed this challenge. The creativity of the concept is a bonus, not a requirement.
+
+## Authoritative Sources
+
+Use these official references when you need the current source of truth for facts in this chapter.
+
+- [GitHub Docs, home](https://docs.github.com/en)
+- [GitHub Changelog](https://github.blog/changelog/)
+
+### Section-Level Source Map
+
+Use this map to verify facts for each major section in this file.
+
+- **Example agent file:** [GitHub Docs, home](https://docs.github.com/en), [GitHub Changelog](https://github.blog/changelog/), [GitHub Copilot docs](https://docs.github.com/en/copilot), [Custom instructions support matrix](https://docs.github.com/en/copilot/reference/custom-instructions-support), [About custom agents](https://docs.github.com/en/copilot/concepts/agents/cloud-agent/about-custom-agents)
+- **Guardrails:** [GitHub Docs, home](https://docs.github.com/en), [GitHub Changelog](https://github.blog/changelog/)
+- **Example interactions:** [GitHub Docs, home](https://docs.github.com/en), [GitHub Changelog](https://github.blog/changelog/), [Workflow syntax for GitHub Actions](https://docs.github.com/en/actions/reference/workflows-and-actions/workflow-syntax), [Secure use reference for GitHub Actions](https://docs.github.com/en/actions/security-for-github-actions/security-guides/security-hardening-for-github-actions), [GitHub Actions changelog](https://github.blog/changelog/label/actions/)
+- **PR description for the Accessibility Agents path:** [GitHub Docs, home](https://docs.github.com/en), [GitHub Changelog](https://github.blog/changelog/), [GitHub Copilot docs](https://docs.github.com/en/copilot), [Custom instructions support matrix](https://docs.github.com/en/copilot/reference/custom-instructions-support), [About custom agents](https://docs.github.com/en/copilot/concepts/agents/cloud-agent/about-custom-agents)
+- **New agent: Workshop Buddy:** [GitHub Docs, home](https://docs.github.com/en), [GitHub Changelog](https://github.blog/changelog/), [GitHub Copilot docs](https://docs.github.com/en/copilot), [Custom instructions support matrix](https://docs.github.com/en/copilot/reference/custom-instructions-support), [About custom agents](https://docs.github.com/en/copilot/concepts/agents/cloud-agent/about-custom-agents)
+- **Alternate valid capstone paths:** [GitHub Docs, home](https://docs.github.com/en), [GitHub Changelog](https://github.blog/changelog/)
+- **What matters:** [GitHub Docs, home](https://docs.github.com/en), [GitHub Changelog](https://github.blog/changelog/)

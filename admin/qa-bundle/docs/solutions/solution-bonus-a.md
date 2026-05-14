@@ -32,3 +32,17 @@ This shows an example improvement PR for an existing accessibility agent.
 ## What matters
 
 The learning objective is contributing to an existing project by understanding its conventions and making a targeted improvement. If you identified a real gap and proposed a specific, well-reasoned change, you completed this bonus.
+
+## Authoritative Sources
+
+Use these official references when you need the current source of truth for facts in this chapter.
+
+- [GitHub Docs, home](https://docs.github.com/en)
+- [GitHub Changelog](https://github.blog/changelog/)
+
+### Section-Level Source Map
+
+Use this map to verify facts for each major section in this file.
+
+- **Example improvement:** [GitHub Docs, home](https://docs.github.com/en), [GitHub Changelog](https://github.blog/changelog/)
+- **What matters:** [GitHub Docs, home](https://docs.github.com/en), [GitHub Changelog](https://github.blog/changelog/)

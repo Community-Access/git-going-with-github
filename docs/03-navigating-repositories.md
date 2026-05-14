@@ -5,13 +5,11 @@
 > **Related appendices:** [Appendix A: Glossary](appendix-a-glossary.md) | [Appendix B: Screen Reader Cheat Sheet](appendix-b-screen-reader-cheatsheet.md)
 > **Authoritative sources:** [GitHub Docs: About repositories](https://docs.github.com/en/repositories/creating-and-managing-repositories/about-repositories) | [GitHub Accessibility Guide: Repositories](https://accessibility.github.com/documentation/guide/repos/)
 
-
 ## A Screen Reader Guide to GitHub Repositories
 
 > This guide covers everything you need to explore a GitHub repository using your keyboard and screen reader. No mouse required.
 
 > **Official GitHub Accessibility Guide:** GitHub publishes an NVDA-focused guide for navigating repositories with a screen reader at [Using GitHub Repositories with a Screen Reader](https://accessibility.github.com/documentation/guide/repos/). This chapter covers the same material with additional perspectives (VoiceOver, low vision, CLI) and workshop-specific guidance. Use the official guide as a companion reference.
-
 
 ## Workshop Recommendation (Chapter 3)
 
@@ -30,7 +28,6 @@ Use this sequence before moving to graded chapters:
 3. Confirm readiness with a peer or facilitator.
 4. Move to Chapter 4 for Learning Room orientation, then Chapter 5 for issue-based, traceable challenges.
 
-
 ### About Learning Cards in This Chapter
 
 This chapter provides learning cards: expandable blocks that offer perspective-specific guidance for different ways of working. Not every card appears at every step. Open the ones that match how you work.
@@ -44,7 +41,6 @@ The following table describes the four learning card types used in this chapter.
 | Screen reader (NVDA / JAWS) | Screen reader users on Windows | Keystroke sequences, Focus and Browse mode, landmark navigation |
 | Screen reader (VoiceOver) | Screen reader users on macOS | VO key sequences, rotor usage, interaction model |
 
-
 ## What Is a Repository Page?
 
 When you navigate to a GitHub repository (e.g., `https://github.com/owner/repo-name`), you land on the **repository home page** (also called the Code tab). This page has several distinct regions:
@@ -54,7 +50,6 @@ When you navigate to a GitHub repository (e.g., `https://github.com/owner/repo-n
 GitHub can change visual placement based on viewport width, account features, repository settings, and product rollout. The dependable structure is the set of named regions and controls: the global navigation, the repository H1 heading, the **Repository navigation** landmark, the **Code** tab, the branch selector, the file list, optional repository sidebar information, and the rendered `README.md` when present.
 
 On a wide desktop layout, these often appear in a familiar order: global navigation, repository header, repository tabs, file/code panel, optional sidebar, and rendered README. Teach that order as a map, not as a guarantee. When the visual order differs, use headings, landmarks, tab names, and keyboard shortcuts to re-orient.
-
 
 ## Landing on a Repository - What to Expect
 
@@ -73,7 +68,6 @@ Step 3: Press NVDA+F7 (or VO+U) - scan headings to understand what's on the page
 ```
 
 > **Key landmark names you will hear with `D`:** Repository pages have three main landmark sections: **"Repository Navigation"** (the tab bar), **"Main"** (the file tree, branch selector, repo details, and contributors), and **"Repository Files Navigation"** (the rendered README content). Within each landmark, press `H` or `2` to navigate subsections - most are organized under heading level 2.
-
 
 ## Navigating the Repository Tabs
 
@@ -120,7 +114,6 @@ The tab bar is just below the repository name. At 200% browser zoom or higher:
 ### Reading the tab labels
 
 Each tab link reads with its name and the count of items: "Issues, 14 open" or "Pull requests, 3 open." The active tab is marked with `aria-selected="true"` - your screen reader will announce it as "selected" or "current."
-
 
 ## The Files Table
 
@@ -210,7 +203,6 @@ Navigate to the Name column, hear the filename, then move right to read the comm
 
 </details>
 
-
 ## The Branch Selector
 
 The branch selector button sits just above the files table. It lets you switch which branch you are viewing.
@@ -280,7 +272,6 @@ Tags mark specific releases or versions. The branch dropdown also provides tag n
 5. Navigate with `↑/↓` and press `Enter` to select a tag
 
 The repository page reloads showing the code at that tagged version.
-
 
 ## Cloning a Repository
 
@@ -393,7 +384,6 @@ git clone https://github.com/owner/repo.git
 cd repo
 ```
 
-
 ## Fork vs. Clone vs. Branch - What Is the Difference?
 
 These three concepts are related but serve different purposes. Students often confuse them, so here is a side-by-side comparison.
@@ -439,7 +429,6 @@ The following table compares forks, clones, and branches across six dimensions.
 - Branches appear in the branch dropdown (click the branch name above the file tree); the default branch is usually labeled "main" or "master"
 
 </details>
-
 
 ## Watching, Starring, and Forking
 
@@ -506,7 +495,6 @@ Click the **Star** button (top-right). The button changes to **Starred** with a 
 > **Tip:** If the Watch/Fork/Star area is not immediately found with `L`, press `D` to navigate to the **Main** landmark first, then use `I` to browse list items within that region.
 
 </details>
-
 
 ## Viewing a Single File
 
@@ -612,7 +600,6 @@ Press `B` from within the file area, OR use `D` to navigate to the "Repository f
 
 </details>
 
-
 ## The Blame View
 
 Blame shows you who changed each line of a file, in what commit, and when. It is useful for tracing why a particular change was made.
@@ -629,7 +616,6 @@ Ctrl+Alt+→ - move from commit info column to code column
 Ctrl+Alt+↓ - move to the next line
 K - navigate the commit links (opens that commit's detail page)
 ```
-
 
 ## Commit History
 
@@ -662,7 +648,6 @@ H or 3 - navigate file headings in the diff
 T - navigate to the stats table (files changed, lines added/deleted)
 + - skip table navigation and read file diffs by line
 ```
-
 
 ## Searching for a File
 
@@ -713,7 +698,6 @@ The "Go to file" shortcut is extremely useful when you know what you are looking
 
 </details>
 
-
 ## GitHub Shortcuts for Repository Navigation - Spotlight
 
 These are the GitHub built-in shortcuts you will use most on repository pages. They work by sending keystrokes directly to GitHub's JavaScript, so **enable Focus Mode first** (NVDA: `NVDA+Space`, JAWS: `Insert+Z`).
@@ -753,7 +737,6 @@ The sidebar content is inside the "Main" landmark, after the files table and REA
 
 **VoiceOver:** Navigate past the README section with `VO+Right` - the sidebar elements follow sequentially in the reading order.
 
-
 ## The Repository About Section
 
 Quick way to check the project description, website link, and topics:
@@ -762,7 +745,6 @@ Quick way to check the project description, website link, and topics:
 2. Look for a heading "About" in the sidebar
 3. `2` or `H` to jump to that "About" heading
 4. Then `↓` to read the description, URL, and topics
-
 
 ## Practical Scenarios
 
@@ -799,7 +781,6 @@ Quick way to check the project description, website link, and topics:
 3. Open it and read the contributing guidelines
 4. Then go to Issues tab and filter by `good first issue`
 
-
 ## If You Get Stuck
 
 | Problem | What to do |
@@ -810,7 +791,6 @@ Quick way to check the project description, website link, and topics:
 | Forking creates a repo I did not expect | By default, forking copies only the default branch. Go to your fork's settings if you need to adjust. The original repo is untouched. |
 | `G I` or `G P` shortcuts do not work | These require two separate key presses (G, release, then I or P), not simultaneous. Ensure Focus Mode is active first. |
 | Everything else | Post a comment on your challenge issue describing what you tried. A facilitator or buddy will help. |
-
 
 ## Try It: The Five-Tab Tour
 
@@ -828,7 +808,6 @@ Navigate to the [Accessibility Agents repository](https://github.com/community-a
 
 > **What success feels like:** You visited four tabs and opened a file without touching a mouse. Every repository on GitHub has this same layout - you now know how to navigate all of them.
 
-
 > ### Day 2 Amplifier - Accessibility Agents: `@daily-briefing`
 >
 > **Navigate every folder of [accessibility-agents](https://github.com/Community-Access/accessibility-agents) manually today before using any agent.** Find `.github/agents/`, open a `.agent.md` file, and read it - that file is how an agent knows what to do. You must understand the structure before you can evaluate whether an agent understood it correctly.
@@ -841,13 +820,43 @@ Navigate to the [Accessibility Agents repository](https://github.com/community-a
 >
 > *An agent's output only makes sense when you already know what it is describing. You are building that knowledge right now.*
 
-
 > **Next Step:** Move on to [Chapter 04: The Learning Room](04-the-learning-room.md) to understand where we'll be practicing our new skills.
 
 ---
-
 
 *Next: [Chapter 04: The Learning Room](04-the-learning-room.md)*  
 *Back: [Chapter 02: Understanding GitHub](02-understanding-github.md)*  
 *Related appendices: [Appendix B: Screen Reader Cheat Sheet](appendix-b-screen-reader-cheatsheet.md)*
 
+## Authoritative Sources
+
+Use these official references when you need the current source of truth for facts in this chapter.
+
+- [GitHub Docs, home](https://docs.github.com/en)
+- [GitHub Changelog](https://github.blog/changelog/)
+- [About Git](https://docs.github.com/en/get-started/using-git/about-git)
+- [GitHub flow](https://docs.github.com/en/get-started/using-github/github-flow)
+- [About pull requests](https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/about-pull-requests)
+- [About issues](https://docs.github.com/en/issues/tracking-your-work-with-issues/about-issues)
+- [Contributing to a project](https://docs.github.com/en/get-started/exploring-projects-on-github/contributing-to-a-project)
+
+### Section-Level Source Map
+
+Use this map to verify facts for each major section in this file.
+
+- **A Screen Reader Guide to GitHub Repositories:** [GitHub Docs, home](https://docs.github.com/en), [GitHub Changelog](https://github.blog/changelog/), [About Git](https://docs.github.com/en/get-started/using-git/about-git), [GitHub flow](https://docs.github.com/en/get-started/using-github/github-flow), [About pull requests](https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/about-pull-requests)
+- **Workshop Recommendation (Chapter 3):** [GitHub Docs, home](https://docs.github.com/en), [GitHub Changelog](https://github.blog/changelog/), [About Git](https://docs.github.com/en/get-started/using-git/about-git), [GitHub flow](https://docs.github.com/en/get-started/using-github/github-flow), [About pull requests](https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/about-pull-requests)
+- **What Is a Repository Page?:** [GitHub Docs, home](https://docs.github.com/en), [GitHub Changelog](https://github.blog/changelog/), [About Git](https://docs.github.com/en/get-started/using-git/about-git), [GitHub flow](https://docs.github.com/en/get-started/using-github/github-flow), [About pull requests](https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/about-pull-requests)
+- **Landing on a Repository - What to Expect:** [GitHub Docs, home](https://docs.github.com/en), [GitHub Changelog](https://github.blog/changelog/), [About Git](https://docs.github.com/en/get-started/using-git/about-git), [GitHub flow](https://docs.github.com/en/get-started/using-github/github-flow), [About pull requests](https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/about-pull-requests)
+- **Navigating the Repository Tabs:** [GitHub Docs, home](https://docs.github.com/en), [GitHub Changelog](https://github.blog/changelog/), [About Git](https://docs.github.com/en/get-started/using-git/about-git), [GitHub flow](https://docs.github.com/en/get-started/using-github/github-flow), [About pull requests](https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/about-pull-requests)
+- **The Files Table:** [GitHub Docs, home](https://docs.github.com/en), [GitHub Changelog](https://github.blog/changelog/), [About Git](https://docs.github.com/en/get-started/using-git/about-git), [GitHub flow](https://docs.github.com/en/get-started/using-github/github-flow), [About pull requests](https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/about-pull-requests)
+- **The Branch Selector:** [GitHub Docs, home](https://docs.github.com/en), [GitHub Changelog](https://github.blog/changelog/), [About Git](https://docs.github.com/en/get-started/using-git/about-git), [GitHub flow](https://docs.github.com/en/get-started/using-github/github-flow), [About pull requests](https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/about-pull-requests)
+- **Cloning a Repository:** [GitHub Docs, home](https://docs.github.com/en), [GitHub Changelog](https://github.blog/changelog/), [About Git](https://docs.github.com/en/get-started/using-git/about-git), [GitHub flow](https://docs.github.com/en/get-started/using-github/github-flow), [About pull requests](https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/about-pull-requests)
+- **Or with standard Git:** [GitHub Docs, home](https://docs.github.com/en), [GitHub Changelog](https://github.blog/changelog/), [About Git](https://docs.github.com/en/get-started/using-git/about-git), [GitHub flow](https://docs.github.com/en/get-started/using-github/github-flow), [About pull requests](https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/about-pull-requests)
+- **Fork vs. Clone vs. Branch - What Is the Difference?:** [GitHub Docs, home](https://docs.github.com/en), [GitHub Changelog](https://github.blog/changelog/), [About Git](https://docs.github.com/en/get-started/using-git/about-git), [GitHub flow](https://docs.github.com/en/get-started/using-github/github-flow), [About pull requests](https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/about-pull-requests)
+- **Watching, Starring, and Forking:** [GitHub Docs, home](https://docs.github.com/en), [GitHub Changelog](https://github.blog/changelog/), [About Git](https://docs.github.com/en/get-started/using-git/about-git), [GitHub flow](https://docs.github.com/en/get-started/using-github/github-flow), [About pull requests](https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/about-pull-requests)
+- **Viewing a Single File:** [GitHub Docs, home](https://docs.github.com/en), [GitHub Changelog](https://github.blog/changelog/), [About Git](https://docs.github.com/en/get-started/using-git/about-git), [GitHub flow](https://docs.github.com/en/get-started/using-github/github-flow), [About pull requests](https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/about-pull-requests)
+- **The Blame View:** [GitHub Docs, home](https://docs.github.com/en), [GitHub Changelog](https://github.blog/changelog/), [About Git](https://docs.github.com/en/get-started/using-git/about-git), [GitHub flow](https://docs.github.com/en/get-started/using-github/github-flow), [About pull requests](https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/about-pull-requests)
+- **Commit History:** [GitHub Docs, home](https://docs.github.com/en), [GitHub Changelog](https://github.blog/changelog/), [About Git](https://docs.github.com/en/get-started/using-git/about-git), [GitHub flow](https://docs.github.com/en/get-started/using-github/github-flow), [About pull requests](https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/about-pull-requests)
+- **Searching for a File:** [GitHub Docs, home](https://docs.github.com/en), [GitHub Changelog](https://github.blog/changelog/), [About Git](https://docs.github.com/en/get-started/using-git/about-git), [GitHub flow](https://docs.github.com/en/get-started/using-github/github-flow), [About pull requests](https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/about-pull-requests)
+- **GitHub Shortcuts for Repository Navigation - Spotlight:** [GitHub Docs, home](https://docs.github.com/en), [GitHub Changelog](https://github.blog/changelog/), [About Git](https://docs.github.com/en/get-started/using-git/about-git), [GitHub flow](https://docs.github.com/en/get-started/using-github/github-flow), [About pull requests](https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/about-pull-requests)

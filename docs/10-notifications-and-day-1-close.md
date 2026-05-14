@@ -5,13 +5,11 @@
 > **Related appendices:** [Appendix T: Community and Social](appendix-t-community-and-social.md) | [Appendix U: Discussions and Gists](appendix-u-discussions-and-gists.md) | [Appendix V: GitHub Mobile](appendix-v-github-mobile.md)
 > **Authoritative sources:** [GitHub Docs: About notifications](https://docs.github.com/en/account-and-profile/managing-subscriptions-and-notifications-on-github/setting-up-notifications/about-notifications)
 
-
 ## Managing Your GitHub Notification Inbox
 
 > **See also:** [Appendix V: GitHub Mobile](appendix-v-github-mobile.md) for managing notifications on your phone.
 
 > GitHub notifications are how GitHub tells you when something needs your attention. This guide teaches you to keep the inbox useful - not overwhelming - using only your keyboard and screen reader.
-
 
 ## Workshop Recommendation (Chapter 10)
 
@@ -88,7 +86,6 @@ Notification management protects focus. You can stay responsive to your team wit
 3. Take decisive action on each notification (mute, done, or respond).
 4. Build a daily routine that keeps your inbox manageable.
 
-
 ## What Generates a Notification?
 
 GitHub sends you a notification when:
@@ -101,7 +98,6 @@ GitHub sends you a notification when:
 | There is activity on a thread you are subscribed to | You commented, were mentioned, or chose to subscribe |
 | A CI check fails on your PR | Actions sends a failure notification |
 | A release is published | You are watching the repo for all activity |
-
 
 ## Notification Subscription Levels
 
@@ -146,7 +142,6 @@ At the top of any repository page, find the **Watch** button (near Star and Fork
 </details>
 
 **Recommended setting for most repos:** “Participating and @mentions only” - you stay in the loop on what involves you without noise.
-
 
 ## The Notifications Inbox
 
@@ -269,7 +264,6 @@ Components: **repo/org** | **thread title** | **event type** | **timestamp**
 
 </details>
 
-
 ## Inbox Actions - Keyboard Shortcuts
 
 These shortcuts work when a notification is focused in the inbox:
@@ -284,7 +278,6 @@ These shortcuts work when a notification is focused in the inbox:
 | `Enter` | Open the notification |
 
 > **Screen reader note:** These are GitHub's own keyboard shortcuts. In Browse Mode, some of these letters are also navigation keys. To use these shortcuts reliably, make sure focus is on the notification row (tab to it) rather than in browse/reading mode.
-
 
 ## Filtering the Inbox
 
@@ -331,7 +324,6 @@ Click the filter/search box at the top of the notification list and type a repos
 4. Press `Esc` to clear the filter and `VO+Shift+Up` to stop interacting
 
 </details>
-
 
 ## Managing Notifications at Scale
 
@@ -414,7 +406,6 @@ If you were @mentioned in an unfamiliar thread:
 
 </details>
 
-
 ## Notification Settings - Per Your Account
 
 Global notification preferences are at `https://github.com/settings/notifications`.
@@ -435,7 +426,6 @@ H → navigate to each settings section heading
 F or E → navigate form fields within each section
 Tab → move between options within a form group
 ```
-
 
 ## Starring vs. Watching - What Is the Difference?
 
@@ -516,7 +506,6 @@ This immediately reduces notifications from that repository to only threads you 
 
 </details>
 
-
 ## Screen Reader Tips for the Notification Inbox
 
 ### NVDA
@@ -537,7 +526,6 @@ This immediately reduces notifications from that repository to only threads you 
 - `VO+Space` to activate a row, `VO+Escape` to return to the list
 - With Quick Nav on, `H` navigates the date group headings
 
-
 ## The GitHub Mobile App - A Reference Note
 
 GitHub has an iOS and Android app that supports push notifications. While the app itself is not covered as a primary tool in this workshop, it is worth knowing:
@@ -545,7 +533,6 @@ GitHub has an iOS and Android app that supports push notifications. While the ap
 - Push notifications can alert you to review requests even when you're away from your computer
 - The mobile app does work with iOS VoiceOver and Android TalkBack
 - For primary contribution work, the desktop browser experience remains more fully featured
-
 
 ## Try It: Tame Your Inbox
 
@@ -561,7 +548,6 @@ Go to [github.com/notifications](https://github.com/notifications) and practice:
 
 > **What success feels like:** Your inbox has fewer items, and you chose what to watch. Notifications work *for* you now, not against you.
 
-
 > ### Day 2 Amplifier - Accessibility Agents: `@daily-briefing`
 >
 > **Manage your notification inbox manually before using any agent.** The signal-versus-noise judgment you develop - what to act on, what to watch, what to mute - is the same judgment the agent applies when prioritizing its output. Without that judgment, you cannot evaluate whether the agent's prioritization is correct or whether it surfaced the things that actually matter to you.
@@ -573,7 +559,6 @@ Go to [github.com/notifications](https://github.com/notifications) and practice:
 > - **In the cloud** - GitHub Agentic Workflows can run on a schedule and post a team digest to a designated issue each morning, surfacing what needs attention before anyone opens their notifications
 >
 > *Your notification discipline today becomes the standard the agent enforces at scale tomorrow.*
-
 
 ## What You Accomplished Today
 
@@ -649,7 +634,6 @@ If you completed all eleven challenges, you are ready for Day 2 with a strong fo
 
 </details>
 
-
 ## What Day 2 Adds
 
 > **See also:** [Chapter 11: VS Code Interface](11-vscode-interface.md) is where Day 2 begins -- have VS Code installed and ready.
@@ -689,13 +673,42 @@ Think about where you started this morning. You may not have known what a reposi
 
 Day 2 builds on every one of those skills. Nothing gets thrown away. Everything you did today is the foundation for everything that comes next.
 
-
 > **End of Day 1:** Congratulations. You have completed **Challenge 9: Merge Day** and finished the browser-based foundation. [Return to the Course Guide](course-guide.md) to prepare for Day 2.
 
 ---
-
 
 *Next: [Chapter 11: VS Code Interface](11-vscode-interface.md)*  
 *Back: [Chapter 09: Labels, Milestones, and Projects](09-labels-milestones-projects.md)*  
 *Related appendices: [Appendix T: Community and Social](appendix-t-community-and-social.md) | [Appendix U: Discussions and Gists](appendix-u-discussions-and-gists.md)*
 
+## Authoritative Sources
+
+Use these official references when you need the current source of truth for facts in this chapter.
+
+- [GitHub Docs, home](https://docs.github.com/en)
+- [GitHub Changelog](https://github.blog/changelog/)
+- [About Git](https://docs.github.com/en/get-started/using-git/about-git)
+- [GitHub flow](https://docs.github.com/en/get-started/using-github/github-flow)
+- [About pull requests](https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/about-pull-requests)
+- [About issues](https://docs.github.com/en/issues/tracking-your-work-with-issues/about-issues)
+- [Contributing to a project](https://docs.github.com/en/get-started/exploring-projects-on-github/contributing-to-a-project)
+
+### Section-Level Source Map
+
+Use this map to verify facts for each major section in this file.
+
+- **Managing Your GitHub Notification Inbox:** [GitHub Docs, home](https://docs.github.com/en), [GitHub Changelog](https://github.blog/changelog/), [About Git](https://docs.github.com/en/get-started/using-git/about-git), [GitHub flow](https://docs.github.com/en/get-started/using-github/github-flow), [About pull requests](https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/about-pull-requests)
+- **Workshop Recommendation (Chapter 10):** [GitHub Docs, home](https://docs.github.com/en), [GitHub Changelog](https://github.blog/changelog/), [About Git](https://docs.github.com/en/get-started/using-git/about-git), [GitHub flow](https://docs.github.com/en/get-started/using-github/github-flow), [About pull requests](https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/about-pull-requests)
+- **What Generates a Notification?:** [GitHub Docs, home](https://docs.github.com/en), [GitHub Changelog](https://github.blog/changelog/), [About Git](https://docs.github.com/en/get-started/using-git/about-git), [GitHub flow](https://docs.github.com/en/get-started/using-github/github-flow), [About pull requests](https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/about-pull-requests)
+- **Notification Subscription Levels:** [GitHub Docs, home](https://docs.github.com/en), [GitHub Changelog](https://github.blog/changelog/), [About Git](https://docs.github.com/en/get-started/using-git/about-git), [GitHub flow](https://docs.github.com/en/get-started/using-github/github-flow), [About pull requests](https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/about-pull-requests)
+- **The Notifications Inbox:** [GitHub Docs, home](https://docs.github.com/en), [GitHub Changelog](https://github.blog/changelog/), [About Git](https://docs.github.com/en/get-started/using-git/about-git), [GitHub flow](https://docs.github.com/en/get-started/using-github/github-flow), [About pull requests](https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/about-pull-requests)
+- **Inbox Actions - Keyboard Shortcuts:** [GitHub Docs, home](https://docs.github.com/en), [GitHub Changelog](https://github.blog/changelog/), [About Git](https://docs.github.com/en/get-started/using-git/about-git), [GitHub flow](https://docs.github.com/en/get-started/using-github/github-flow), [About pull requests](https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/about-pull-requests)
+- **Filtering the Inbox:** [GitHub Docs, home](https://docs.github.com/en), [GitHub Changelog](https://github.blog/changelog/), [About Git](https://docs.github.com/en/get-started/using-git/about-git), [GitHub flow](https://docs.github.com/en/get-started/using-github/github-flow), [About pull requests](https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/about-pull-requests)
+- **Managing Notifications at Scale:** [GitHub Docs, home](https://docs.github.com/en), [GitHub Changelog](https://github.blog/changelog/), [About Git](https://docs.github.com/en/get-started/using-git/about-git), [GitHub flow](https://docs.github.com/en/get-started/using-github/github-flow), [About pull requests](https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/about-pull-requests)
+- **Notification Settings - Per Your Account:** [GitHub Docs, home](https://docs.github.com/en), [GitHub Changelog](https://github.blog/changelog/), [About Git](https://docs.github.com/en/get-started/using-git/about-git), [GitHub flow](https://docs.github.com/en/get-started/using-github/github-flow), [About pull requests](https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/about-pull-requests)
+- **Starring vs. Watching - What Is the Difference?:** [GitHub Docs, home](https://docs.github.com/en), [GitHub Changelog](https://github.blog/changelog/), [About Git](https://docs.github.com/en/get-started/using-git/about-git), [GitHub flow](https://docs.github.com/en/get-started/using-github/github-flow), [About pull requests](https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/about-pull-requests)
+- **Screen Reader Tips for the Notification Inbox:** [GitHub Docs, home](https://docs.github.com/en), [GitHub Changelog](https://github.blog/changelog/), [About Git](https://docs.github.com/en/get-started/using-git/about-git), [GitHub flow](https://docs.github.com/en/get-started/using-github/github-flow), [About pull requests](https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/about-pull-requests)
+- **The GitHub Mobile App - A Reference Note:** [GitHub Docs, home](https://docs.github.com/en), [GitHub Changelog](https://github.blog/changelog/), [About Git](https://docs.github.com/en/get-started/using-git/about-git), [GitHub flow](https://docs.github.com/en/get-started/using-github/github-flow), [About pull requests](https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/about-pull-requests)
+- **Try It: Tame Your Inbox:** [GitHub Docs, home](https://docs.github.com/en), [GitHub Changelog](https://github.blog/changelog/), [About Git](https://docs.github.com/en/get-started/using-git/about-git), [GitHub flow](https://docs.github.com/en/get-started/using-github/github-flow), [About pull requests](https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/about-pull-requests)
+- **What You Accomplished Today:** [GitHub Docs, home](https://docs.github.com/en), [GitHub Changelog](https://github.blog/changelog/), [About Git](https://docs.github.com/en/get-started/using-git/about-git), [GitHub flow](https://docs.github.com/en/get-started/using-github/github-flow), [About pull requests](https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/about-pull-requests)
+- **What Day 2 Adds:** [GitHub Docs, home](https://docs.github.com/en), [GitHub Changelog](https://github.blog/changelog/), [About Git](https://docs.github.com/en/get-started/using-git/about-git), [GitHub flow](https://docs.github.com/en/get-started/using-github/github-flow), [About pull requests](https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/about-pull-requests)

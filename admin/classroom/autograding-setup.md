@@ -46,3 +46,20 @@ Before sharing invite links, use a test student account to verify each workflow 
 ## Historical reference
 
 The Classroom test-case definitions that used to live in `classroom/autograding-day1.json` and `classroom/autograding-day2.json` were deleted in May 2026 along with this workflow migration. The autograder workflow files (`learning-room/.github/workflows/autograder-*.yml`) are the only remaining source of truth for what each check verifies. Git history retains the old JSONs if you ever need to read them.
+
+## Authoritative Sources
+
+Use these official references when you need the current source of truth for facts in this chapter.
+
+- [GitHub Docs, home](https://docs.github.com/en)
+- [GitHub Changelog](https://github.blog/changelog/)
+
+### Section-Level Source Map
+
+Use this map to verify facts for each major section in this file.
+
+- **Why this changed:** [GitHub Docs, home](https://docs.github.com/en), [GitHub Changelog](https://github.blog/changelog/)
+- **Where the checks live now:** [GitHub Docs, home](https://docs.github.com/en), [GitHub Changelog](https://github.blog/changelog/)
+- **What to do during cohort setup:** [GitHub Docs, home](https://docs.github.com/en), [GitHub Changelog](https://github.blog/changelog/)
+- **Verifying the checks work:** [GitHub Docs, home](https://docs.github.com/en), [GitHub Changelog](https://github.blog/changelog/)
+- **Historical reference:** [GitHub Docs, home](https://docs.github.com/en), [GitHub Changelog](https://github.blog/changelog/)

@@ -10,7 +10,6 @@
 
 > **Why this matters for you:** Every time you open a pull request on a real open source project, automated processes will run. Understanding what they are, what they mean, and what to do when they fail is essential to being a confident contributor.
 
-
 ## Table of Contents
 
 1. [What Is GitHub Actions?](#1-what-is-github-actions)
@@ -26,7 +25,6 @@
 11. [Accessibility-Focused Workflows](#11-accessibility-focused-workflows)
 12. [Hands-On Activity](#12-hands-on-activity)
 13. [What We Are NOT Covering (And Where to Learn More)](#13-what-we-are-not-covering-and-where-to-learn-more)
-
 
 ## 1. What Is GitHub Actions?
 
@@ -65,7 +63,6 @@ Think of it as a robot assistant that every repository can optionally configure.
 
 </details>
 
-
 ## 2. Key Vocabulary
 
 | Term | What It Means |
@@ -83,7 +80,6 @@ Think of it as a robot assistant that every repository can optionally configure.
 | **`on:`** | The YAML key that defines what triggers a workflow. |
 | **`runs-on:`** | The YAML key that specifies the runner OS (`ubuntu-latest`, `windows-latest`, `macos-latest`). |
 
-
 ## 3. Where Workflows Live in a Repository
 
 Workflow files live in a specific, mandatory location:
@@ -98,7 +94,6 @@ The `.github/` folder is hidden by convention (starts with a dot). To find it:
 - **In VS Code:** It appears in the Explorer panel - enable "Show Hidden Files" if needed
 
 > **Screen reader tip:** The `.github` folder reads as "dot github." The `workflows` folder is inside it. File names ending in `.yml` are YAML workflow files.
-
 
 ## 4. The Anatomy of a Workflow File
 
@@ -138,7 +133,6 @@ jobs:
 
 If `npm test` exits with an error, the job fails, and that failure shows up as a red on your pull request.
 
-
 ## 5. What Triggers a Workflow
 
 The most common triggers you will encounter as a contributor:
@@ -155,7 +149,6 @@ The most common triggers you will encounter as a contributor:
 | `merge_group` | When a PR enters a merge queue |
 
 **The most important one for you:** `pull_request` - this is what triggers checks on your PR.
-
 
 ## 6. Understanding Status Checks on Pull Requests
 
@@ -222,7 +215,6 @@ When you open a pull request on a repo that uses GitHub Actions, you will see a 
 
 </details>
 
-
 ## 7. Reading the Actions Tab with a Screen Reader
 
 The **Actions tab** of a repository shows the history of all workflow runs. You can use it to see what ran, what failed, and why.
@@ -268,7 +260,6 @@ To find out **why a step failed:**
 4. Look for lines containing `Error:`, `FAILED`, `exit code`, or `AssertionError`
 
 > **Tip:** Log output can be very long. Use your screen reader's search (`NVDA+Ctrl+F`, `JAWS: Insert+F`, `VO+F`) to search for "error" or "failed" to jump directly to the problem.
-
 
 ## 8. Common Workflows You Will Encounter
 
@@ -321,7 +312,6 @@ As you contribute to open source repositories, you will see these types of workf
 **What you see:** A bot comment on your PR with a preview URL, and a check called "Deploy", "Netlify", "Vercel", "GitHub Pages", or similar.
 
 **What it gives you:** A live preview of what the site will look like with your changes - very useful for visual review and for accessibility testing with your screen reader on the actual rendered output.
-
 
 ## 9. What To Do When a Check Fails
 
@@ -427,7 +417,6 @@ This is a **security feature** - it prevents malicious code from running on the 
 
 **Dependabot** is an automated bot built into GitHub that creates pull requests to update outdated or vulnerable dependencies. You will see PRs in a repository from a user called `dependabot[bot]`. These are automated, not from a person. Maintainers typically review and merge these. As a contributor, you usually don't need to interact with them, but it is good to know they exist.
 
-
 ## 11. Accessibility-Focused Workflows
 
 This is relevant to our event specifically. The open source accessibility community actively uses GitHub Actions to **automatically catch accessibility regressions** - meaning, to ensure that new code does not introduce new accessibility barriers.
@@ -502,7 +491,6 @@ jobs:
 
 **Connection to Section 13 of the VS Code guide:** This is the infrastructure that enables Scope 3 (cloud execution) of the three-layer Accessibility Agents model. The same agent you run in VS Code with `@markdown-accessibility-assistant` can run on GitHub.com automatically - but only if the environment is prepared with this workflow.
 
-
 ## 12. Hands-On Activity
 
 ### Activity: Explore a Workflow in This Repository
@@ -530,7 +518,6 @@ jobs:
 - Where would you look to find out what accessibility violation was detected?
 - If you disagreed with a failing lint check, what would be the appropriate way to raise that with a maintainer?
 
-
 ## 13. What We Are NOT Covering (And Where to Learn More)
 
 GitHub Actions is a deep topic. This workshop covers what you need as a **contributor**. We are intentionally not diving into:
@@ -552,7 +539,6 @@ When you are ready to go deeper, these are the best places to start:
 | GitHub Accessibility Scanner | [Accessibility Scanner action](https://github.com/marketplace/actions/accessibility-scanner) |
 | GitHub Actions Accessibility Conformance Report | [Accessibility conformance report](https://accessibility.github.com/conformance) |
 
-
 ## Summary
 
 | Concept | Key Takeaway |
@@ -564,7 +550,6 @@ When you are ready to go deeper, these are the best places to start:
 | Failing checks are normal | Read the log, fix the issue, push again |
 | a11y workflows catch ~30-40% of issues | Human screen reader testing catches the rest |
 | First-time contributors may need approval | A security feature - ask a maintainer politely |
-
 
 > ### Day 2 Bridge - From Actions to Agentic Workflows
 >
@@ -586,3 +571,32 @@ When you are ready to go deeper, these are the best places to start:
 *Back: [Appendix P: Security Features](appendix-p-security-features.md)*  
 *Teaching chapter: [Chapter 17: Issue Templates](17-issue-templates.md)*
 
+## Authoritative Sources
+
+Use these official references when you need the current source of truth for facts in this chapter.
+
+- [GitHub Docs, home](https://docs.github.com/en)
+- [GitHub Changelog](https://github.blog/changelog/)
+- [Workflow syntax for GitHub Actions](https://docs.github.com/en/actions/reference/workflows-and-actions/workflow-syntax)
+- [Secure use reference for GitHub Actions](https://docs.github.com/en/actions/security-for-github-actions/security-guides/security-hardening-for-github-actions)
+- [GitHub Actions changelog](https://github.blog/changelog/label/actions/)
+
+### Section-Level Source Map
+
+Use this map to verify facts for each major section in this file.
+
+- **Understanding Automation in Open Source Repositories:** [GitHub Docs, home](https://docs.github.com/en), [GitHub Changelog](https://github.blog/changelog/), [Workflow syntax for GitHub Actions](https://docs.github.com/en/actions/reference/workflows-and-actions/workflow-syntax), [Secure use reference for GitHub Actions](https://docs.github.com/en/actions/security-for-github-actions/security-guides/security-hardening-for-github-actions), [GitHub Actions changelog](https://github.blog/changelog/label/actions/)
+- **1. What Is GitHub Actions?:** [GitHub Docs, home](https://docs.github.com/en), [GitHub Changelog](https://github.blog/changelog/), [Workflow syntax for GitHub Actions](https://docs.github.com/en/actions/reference/workflows-and-actions/workflow-syntax), [Secure use reference for GitHub Actions](https://docs.github.com/en/actions/security-for-github-actions/security-guides/security-hardening-for-github-actions), [GitHub Actions changelog](https://github.blog/changelog/label/actions/)
+- **2. Key Vocabulary:** [GitHub Docs, home](https://docs.github.com/en), [GitHub Changelog](https://github.blog/changelog/), [Workflow syntax for GitHub Actions](https://docs.github.com/en/actions/reference/workflows-and-actions/workflow-syntax), [Secure use reference for GitHub Actions](https://docs.github.com/en/actions/security-for-github-actions/security-guides/security-hardening-for-github-actions), [GitHub Actions changelog](https://github.blog/changelog/label/actions/)
+- **3. Where Workflows Live in a Repository:** [GitHub Docs, home](https://docs.github.com/en), [GitHub Changelog](https://github.blog/changelog/), [Workflow syntax for GitHub Actions](https://docs.github.com/en/actions/reference/workflows-and-actions/workflow-syntax), [Secure use reference for GitHub Actions](https://docs.github.com/en/actions/security-for-github-actions/security-guides/security-hardening-for-github-actions), [GitHub Actions changelog](https://github.blog/changelog/label/actions/)
+- **4. The Anatomy of a Workflow File:** [GitHub Docs, home](https://docs.github.com/en), [GitHub Changelog](https://github.blog/changelog/), [Workflow syntax for GitHub Actions](https://docs.github.com/en/actions/reference/workflows-and-actions/workflow-syntax), [Secure use reference for GitHub Actions](https://docs.github.com/en/actions/security-for-github-actions/security-guides/security-hardening-for-github-actions), [GitHub Actions changelog](https://github.blog/changelog/label/actions/)
+- **5. What Triggers a Workflow:** [GitHub Docs, home](https://docs.github.com/en), [GitHub Changelog](https://github.blog/changelog/), [Workflow syntax for GitHub Actions](https://docs.github.com/en/actions/reference/workflows-and-actions/workflow-syntax), [Secure use reference for GitHub Actions](https://docs.github.com/en/actions/security-for-github-actions/security-guides/security-hardening-for-github-actions), [GitHub Actions changelog](https://github.blog/changelog/label/actions/)
+- **6. Understanding Status Checks on Pull Requests:** [GitHub Docs, home](https://docs.github.com/en), [GitHub Changelog](https://github.blog/changelog/), [Workflow syntax for GitHub Actions](https://docs.github.com/en/actions/reference/workflows-and-actions/workflow-syntax), [Secure use reference for GitHub Actions](https://docs.github.com/en/actions/security-for-github-actions/security-guides/security-hardening-for-github-actions), [GitHub Actions changelog](https://github.blog/changelog/label/actions/)
+- **7. Reading the Actions Tab with a Screen Reader:** [GitHub Docs, home](https://docs.github.com/en), [GitHub Changelog](https://github.blog/changelog/), [Workflow syntax for GitHub Actions](https://docs.github.com/en/actions/reference/workflows-and-actions/workflow-syntax), [Secure use reference for GitHub Actions](https://docs.github.com/en/actions/security-for-github-actions/security-guides/security-hardening-for-github-actions), [GitHub Actions changelog](https://github.blog/changelog/label/actions/)
+- **8. Common Workflows You Will Encounter:** [GitHub Docs, home](https://docs.github.com/en), [GitHub Changelog](https://github.blog/changelog/), [Workflow syntax for GitHub Actions](https://docs.github.com/en/actions/reference/workflows-and-actions/workflow-syntax), [Secure use reference for GitHub Actions](https://docs.github.com/en/actions/security-for-github-actions/security-guides/security-hardening-for-github-actions), [GitHub Actions changelog](https://github.blog/changelog/label/actions/)
+- **9. What To Do When a Check Fails:** [GitHub Docs, home](https://docs.github.com/en), [GitHub Changelog](https://github.blog/changelog/), [Workflow syntax for GitHub Actions](https://docs.github.com/en/actions/reference/workflows-and-actions/workflow-syntax), [Secure use reference for GitHub Actions](https://docs.github.com/en/actions/security-for-github-actions/security-guides/security-hardening-for-github-actions), [GitHub Actions changelog](https://github.blog/changelog/label/actions/)
+- **10. Workflow Permissions and Security:** [GitHub Docs, home](https://docs.github.com/en), [GitHub Changelog](https://github.blog/changelog/), [Workflow syntax for GitHub Actions](https://docs.github.com/en/actions/reference/workflows-and-actions/workflow-syntax), [Secure use reference for GitHub Actions](https://docs.github.com/en/actions/security-for-github-actions/security-guides/security-hardening-for-github-actions), [GitHub Actions changelog](https://github.blog/changelog/label/actions/)
+- **11. Accessibility-Focused Workflows:** [GitHub Docs, home](https://docs.github.com/en), [GitHub Changelog](https://github.blog/changelog/), [Workflow syntax for GitHub Actions](https://docs.github.com/en/actions/reference/workflows-and-actions/workflow-syntax), [Secure use reference for GitHub Actions](https://docs.github.com/en/actions/security-for-github-actions/security-guides/security-hardening-for-github-actions), [GitHub Actions changelog](https://github.blog/changelog/label/actions/)
+- **12. Hands-On Activity:** [GitHub Docs, home](https://docs.github.com/en), [GitHub Changelog](https://github.blog/changelog/), [Workflow syntax for GitHub Actions](https://docs.github.com/en/actions/reference/workflows-and-actions/workflow-syntax), [Secure use reference for GitHub Actions](https://docs.github.com/en/actions/security-for-github-actions/security-guides/security-hardening-for-github-actions), [GitHub Actions changelog](https://github.blog/changelog/label/actions/)
+- **13. What We Are NOT Covering (And Where to Learn More):** [GitHub Docs, home](https://docs.github.com/en), [GitHub Changelog](https://github.blog/changelog/), [Workflow syntax for GitHub Actions](https://docs.github.com/en/actions/reference/workflows-and-actions/workflow-syntax), [Secure use reference for GitHub Actions](https://docs.github.com/en/actions/security-for-github-actions/security-guides/security-hardening-for-github-actions), [GitHub Actions changelog](https://github.blog/changelog/label/actions/)
+- **Summary:** [GitHub Docs, home](https://docs.github.com/en), [GitHub Changelog](https://github.blog/changelog/), [Workflow syntax for GitHub Actions](https://docs.github.com/en/actions/reference/workflows-and-actions/workflow-syntax), [Secure use reference for GitHub Actions](https://docs.github.com/en/actions/security-for-github-actions/security-guides/security-hardening-for-github-actions), [GitHub Actions changelog](https://github.blog/changelog/label/actions/)

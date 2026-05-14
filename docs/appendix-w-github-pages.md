@@ -39,7 +39,6 @@
 
 </details>
 
-
 ## Table of Contents
 
 1. [What GitHub Pages Is](#1-what-github-pages-is)
@@ -52,7 +51,6 @@
 8. [GitHub Actions and Continuous Deployment](#8-github-actions-and-continuous-deployment)
 9. [Limitations](#9-limitations)
 10. [Troubleshooting](#10-troubleshooting)
-
 
 ## 1. What GitHub Pages Is
 
@@ -78,7 +76,6 @@ https://<username>.github.io/
 - Personal portfolios
 - Simple blogs via Jekyll
 
-
 ## 2. Enabling GitHub Pages for a Repository
 
 ### Step-by-step (GitHub.com)
@@ -101,7 +98,6 @@ GitHub will build and deploy within a minute or two. The URL appears at the top 
 - The **Settings** tab is a link in the repository's top navigation bar. It has the accessible name "Settings"
 - The **Pages** option in the left sidebar is a link under the "Code and automation" group heading
 - The branch and folder dropdowns are standard `<select>` elements - navigate with arrow keys
-
 
 ## 3. Publishing Sources
 
@@ -129,7 +125,6 @@ A basic workflow for this project would:
 1. Check out the repository
 2. Run `node scripts/build-html.js`
 3. Upload the `html/` folder as the Pages artifact
-
 
 ## 4. The html/ Folder in This Project
 
@@ -221,7 +216,6 @@ jobs:
 
 This workflow triggers on every push to `master`, rebuilds the HTML, and deploys the `html/` folder.
 
-
 ## 5. Custom Domains
 
 GitHub Pages supports custom domains (e.g. `learning.community-access.org` instead of `community-access.github.io/Learning-Room`).
@@ -252,7 +246,6 @@ DNS changes can take up to 48 hours to propagate. GitHub Pages checks and verifi
 
 To prevent domain takeover attacks, GitHub recommends verifying your custom domain in your account or organization settings (Settings → Pages → Add a domain). This prevents others from claiming your domain for their GitHub Pages if you temporarily remove it.
 
-
 ## 6. HTTPS and Security
 
 GitHub Pages enforces HTTPS automatically for `github.io` subdomains. For custom domains:
@@ -262,7 +255,6 @@ GitHub Pages enforces HTTPS automatically for `github.io` subdomains. For custom
 3. Enforcing HTTPS redirects all HTTP traffic to HTTPS
 
 **Important:** Never store secrets, API keys, or private data in a GitHub Pages repository. The repository content is public (on public repositories) and is served as-is. Even deleted files remain in git history.
-
 
 ## 7. Accessibility Considerations for Published Sites
 
@@ -349,7 +341,6 @@ After deployment, test the live URL rather than only local files. Some issues (e
 3. Verify no broken links with a link checker (e.g. [W3C Link Checker](https://validator.w3.org/checklink))
 4. Test with a screen reader announcement of the page title and `<h1>`
 
-
 ## 8. GitHub Actions and Continuous Deployment
 
 Using the Actions workflow described in [Section 4](#4-the-html-folder-in-this-project) means every push to `master` automatically rebuilds and redeploys the site.
@@ -378,7 +369,6 @@ For more comprehensive checking, scan multiple pages:
           done
 ```
 
-
 ## 9. Limitations
 
 | Limitation | Detail |
@@ -390,7 +380,6 @@ For more comprehensive checking, scan multiple pages:
 | **No .htaccess** | Apache-style redirects are not supported; use `_redirects` for some static hosts |
 | **Public repositories** | For free accounts, GitHub Pages requires the repository to be public |
 | **Private Pages** | Available on GitHub Enterprise plans only |
-
 
 ## 10. Troubleshooting
 
@@ -421,3 +410,28 @@ The published `<title>` element is set during the HTML build step. Update the te
 *Back: [Appendix V: GitHub Mobile](appendix-v-github-mobile.md)*  
 *Teaching chapter: [Chapter 08: Open Source Culture](08-open-source-culture.md)*
 
+## Authoritative Sources
+
+Use these official references when you need the current source of truth for facts in this chapter.
+
+- [GitHub Docs, home](https://docs.github.com/en)
+- [GitHub Changelog](https://github.blog/changelog/)
+- [GitHub Pages docs](https://docs.github.com/en/pages)
+- [GitHub Pages quickstart](https://docs.github.com/en/pages/quickstart)
+
+### Section-Level Source Map
+
+Use this map to verify facts for each major section in this file.
+
+- **How to Deploy a Static Website Directly from Your Repository:** [GitHub Docs, home](https://docs.github.com/en), [GitHub Changelog](https://github.blog/changelog/), [GitHub Pages docs](https://docs.github.com/en/pages), [GitHub Pages quickstart](https://docs.github.com/en/pages/quickstart), [About Git](https://docs.github.com/en/get-started/using-git/about-git)
+- **1. What GitHub Pages Is:** [GitHub Docs, home](https://docs.github.com/en), [GitHub Changelog](https://github.blog/changelog/), [GitHub Pages docs](https://docs.github.com/en/pages), [GitHub Pages quickstart](https://docs.github.com/en/pages/quickstart), [About Git](https://docs.github.com/en/get-started/using-git/about-git)
+- **2. Enabling GitHub Pages for a Repository:** [GitHub Docs, home](https://docs.github.com/en), [GitHub Changelog](https://github.blog/changelog/), [GitHub Pages docs](https://docs.github.com/en/pages), [GitHub Pages quickstart](https://docs.github.com/en/pages/quickstart), [About Git](https://docs.github.com/en/get-started/using-git/about-git)
+- **3. Publishing Sources:** [GitHub Docs, home](https://docs.github.com/en), [GitHub Changelog](https://github.blog/changelog/), [GitHub Pages docs](https://docs.github.com/en/pages), [GitHub Pages quickstart](https://docs.github.com/en/pages/quickstart)
+- **4. The html/ Folder in This Project:** [GitHub Docs, home](https://docs.github.com/en), [GitHub Changelog](https://github.blog/changelog/), [GitHub Pages docs](https://docs.github.com/en/pages), [GitHub Pages quickstart](https://docs.github.com/en/pages/quickstart), [GitHub Projects docs](https://docs.github.com/en/issues/planning-and-tracking-with-projects/learning-about-projects/about-projects)
+- **Option A2 - Rename html/ to docs/:** [GitHub Docs, home](https://docs.github.com/en), [GitHub Changelog](https://github.blog/changelog/), [GitHub Pages docs](https://docs.github.com/en/pages), [GitHub Pages quickstart](https://docs.github.com/en/pages/quickstart)
+- **5. Custom Domains:** [GitHub Docs, home](https://docs.github.com/en), [GitHub Changelog](https://github.blog/changelog/), [GitHub Pages docs](https://docs.github.com/en/pages), [GitHub Pages quickstart](https://docs.github.com/en/pages/quickstart)
+- **6. HTTPS and Security:** [GitHub Docs, home](https://docs.github.com/en), [GitHub Changelog](https://github.blog/changelog/), [GitHub Pages docs](https://docs.github.com/en/pages), [GitHub Pages quickstart](https://docs.github.com/en/pages/quickstart), [GitHub security features](https://docs.github.com/en/code-security/getting-started/github-security-features)
+- **7. Accessibility Considerations for Published Sites:** [GitHub Docs, home](https://docs.github.com/en), [GitHub Changelog](https://github.blog/changelog/), [GitHub Pages docs](https://docs.github.com/en/pages), [GitHub Pages quickstart](https://docs.github.com/en/pages/quickstart), [W3C Web Content Accessibility Guidelines (WCAG) 2 overview](https://www.w3.org/WAI/standards-guidelines/wcag/)
+- **8. GitHub Actions and Continuous Deployment:** [GitHub Docs, home](https://docs.github.com/en), [GitHub Changelog](https://github.blog/changelog/), [GitHub Pages docs](https://docs.github.com/en/pages), [GitHub Pages quickstart](https://docs.github.com/en/pages/quickstart), [About Git](https://docs.github.com/en/get-started/using-git/about-git)
+- **9. Limitations:** [GitHub Docs, home](https://docs.github.com/en), [GitHub Changelog](https://github.blog/changelog/), [GitHub Pages docs](https://docs.github.com/en/pages), [GitHub Pages quickstart](https://docs.github.com/en/pages/quickstart)
+- **10. Troubleshooting:** [GitHub Docs, home](https://docs.github.com/en), [GitHub Changelog](https://github.blog/changelog/), [GitHub Pages docs](https://docs.github.com/en/pages), [GitHub Pages quickstart](https://docs.github.com/en/pages/quickstart)

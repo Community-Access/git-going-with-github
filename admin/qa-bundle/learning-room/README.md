@@ -12,7 +12,6 @@ This repository is your private Learning Room for the Git Going with GitHub work
 
 Everything in this repository is designed for learning. The files in `docs/` have intentional issues that you will find and fix during the workshop contribution sprint.
 
-
 ## What Is in This Repository
 
 | Folder / File | Purpose |
@@ -20,7 +19,6 @@ Everything in this repository is designed for learning. The files in `docs/` hav
 | `docs/welcome.md` | Introduction to contributing (has some sections to complete) |
 | `docs/keyboard-shortcuts.md` | Keyboard shortcut reference (has some errors to find and fix) |
 | `docs/setup-guide.md` | Setup instructions (has some broken links and gaps) |
-
 
 ## How to Contribute
 
@@ -40,7 +38,6 @@ Everything in this repository is designed for learning. The files in `docs/` hav
 14. Add a final issue comment with what you learned and your merged PR link
 
 See the [workshop documentation](../docs/) for full step-by-step guidance.
-
 
 ## About the Automation Bot
 
@@ -75,7 +72,6 @@ The bot isn't always right! If you believe feedback is incorrect:
 
 [**Read the Student Guide →**](.github/STUDENT_GUIDE.md)
 
-
 ## Skills & Progression
 
 As you complete challenges, you'll:
@@ -94,7 +90,6 @@ As you complete challenges, you'll:
 
 Use these references after you attempt the challenge yourself. They are designed to unblock you, not replace your own practice.
 
-
 ## Study Groups
 
 You may be assigned to a study group for collaborative learning. Groups:
@@ -105,12 +100,30 @@ You may be assigned to a study group for collaborative learning. Groups:
 
 If assigned to a group, you'll receive an issue thread for communication.
 
-
 ## Code of Conduct
 
 All participants and contributors are expected to follow our [Code of Conduct](../CODE_OF_CONDUCT.md). This is a welcoming, accessible space.
 
-
 ## Questions?
 
 Open an issue! Use the "Feature or Improvement Request" template if you have a suggestion, or the "Accessibility Bug Report" template if you find an accessibility issue.
+
+## Authoritative Sources
+
+Use these official references when you need the current source of truth for facts in this chapter.
+
+- [GitHub Docs, home](https://docs.github.com/en)
+- [GitHub Changelog](https://github.blog/changelog/)
+
+### Section-Level Source Map
+
+Use this map to verify facts for each major section in this file.
+
+- **What Is in This Repository:** [GitHub Docs, home](https://docs.github.com/en), [GitHub Changelog](https://github.blog/changelog/), [About Git](https://docs.github.com/en/get-started/using-git/about-git), [GitHub flow](https://docs.github.com/en/get-started/using-github/github-flow), [About pull requests](https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/about-pull-requests)
+- **How to Contribute:** [GitHub Docs, home](https://docs.github.com/en), [GitHub Changelog](https://github.blog/changelog/)
+- **About the Automation Bot:** [GitHub Docs, home](https://docs.github.com/en), [GitHub Changelog](https://github.blog/changelog/)
+- **Skills & Progression:** [GitHub Docs, home](https://docs.github.com/en), [GitHub Changelog](https://github.blog/changelog/), [GitHub Skills catalog](https://skills.github.com/), [GitHub Learning Pathways](https://resources.github.com/learn/pathways/)
+- **Stuck? Use Guided References:** [GitHub Docs, home](https://docs.github.com/en), [GitHub Changelog](https://github.blog/changelog/)
+- **Study Groups:** [GitHub Docs, home](https://docs.github.com/en), [GitHub Changelog](https://github.blog/changelog/)
+- **Code of Conduct:** [GitHub Docs, home](https://docs.github.com/en), [GitHub Changelog](https://github.blog/changelog/)
+- **Questions?:** [GitHub Docs, home](https://docs.github.com/en), [GitHub Changelog](https://github.blog/changelog/)

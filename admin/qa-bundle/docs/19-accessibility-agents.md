@@ -3,8 +3,7 @@
 > **Listen to Episode 17:** [Accessibility Agents](../admin/PODCASTS.md) - a conversational audio overview of this chapter. Listen before reading to preview the concepts, or after to reinforce what you learned.
 
 > **Related appendices:** [Appendix L: Agents Reference](appendix-l-agents-reference.md) | [Appendix K: Copilot Reference](appendix-k-copilot-reference.md)
-> **Authoritative sources:** [GitHub Docs: Using extensions with Copilot](https://docs.github.com/en/copilot/using-github-copilot/using-extensions-to-integrate-external-tools-with-copilot-chat) | [VS Code Docs: Chat participants](https://code.visualstudio.com/docs/copilot/copilot-chat#_chat-participants)
-
+> **Authoritative sources:** [GitHub Docs: Using extensions with Copilot](https://docs.github.com/en/copilot/using-github-copilot/using-extensions-to-integrate-external-tools-with-copilot-chat) | [VS Code Docs: Chat participants](https://code.visualstudio.com/docs/copilot/copilot-chat#_chat-participants) | [VS Code Docs: Agents window](https://code.visualstudio.com/docs/copilot/agents/agents-window)
 
 ## 55 AI Agents Across 3 Teams and 5 Platforms
 
@@ -18,6 +17,7 @@
 >
 > Day 1 built those skills. This chapter shows how to amplify them with automation - and how you can contribute new agents, improve existing ones, and shape the project's future.
 
+> **VS Code 1.120 note:** The Agents window is now available in VS Code Stable as a Preview feature. It does not replace custom Accessibility Agents. It gives you a dedicated window for running, reviewing, and organizing agent sessions across projects. Learn custom agents here, then use the Agents window when you want a single place to manage sessions, changed files, customizations, and validation tasks. See [Appendix K: VS Code 1.120 Agents Window and Impactful Updates](appendix-k-copilot-reference.md#4a-vs-code-1120-agents-window-and-impactful-updates).
 
 ## Prerequisites Checklist
 
@@ -45,7 +45,6 @@ Every agent automates a skill you should already know by hand. Before using any 
 This is not an exhaustive list - it illustrates the principle. Before running any agent, ask yourself: *could I do this task manually right now?* If the answer is no, learn the manual skill first.
 
 **Estimated time for this chapter:** 1.5 hours (including exercises)
-
 
 ## Workshop Recommendation (Chapter 19 / Challenge 15)
 
@@ -217,7 +216,6 @@ The 55 agents exist because someone did the manual work first, then automated th
 3. Read the source to understand capabilities and limits (internals matter).
 4. Contribute improvements based on your evaluation (close the feedback loop).
 
-
 ## Capstone: Share Your Feedback (The Most Important Task!)
 
 You have now explored the full agent ecosystem, completed the workshop, and have valuable perspective on what worked, what confused you, and what we should improve for the next cohort.
@@ -242,7 +240,6 @@ Use the **Workshop Feedback** form to share:
 
 **Your honest perspective is how this project improves. Thank you for being part of building a more accessible technical future.**
 
-
 ## Table of Contents
 
 1. [The Principle: Skill First, Agent Second](#1-the-principle-skill-first-agent-second)
@@ -253,7 +250,6 @@ Use the **Workshop Feedback** form to share:
 6. [Contributing to the Ecosystem](#6-contributing-to-the-ecosystem)
 7. [The Bigger Picture: Teams, Orchestration, and Beyond VS Code](#7-the-bigger-picture-teams-orchestration-and-beyond-vs-code)
 8. [GitHub Desktop, GitHub CLI, and Copilot CLI](#8-github-desktop-github-cli-and-copilot-cli)
-
 
 ## 1. The Principle: Skill First, Agent Second
 
@@ -310,7 +306,6 @@ That question is not rhetorical. Answer it before running the agent. If you cann
 - The three-team organization (GitHub Workflow, Accessibility, Developer Tools) maps to different colored badge labels in the agent table
 
 </details>
-
 
 ## 2. Setup and Configuration
 
@@ -469,7 +464,6 @@ Accessibility Agents agents run in VS Code. But the same `.agent.md` files can a
 
 This is the bridge to Section 6 (The Cloud Extension). The same agent file, three execution contexts: your editor, GitHub.com interactively, and GitHub Actions on a schedule.
 
-
 ### Copilot on GitHub.com - Browser-Native Features
 
 Beyond assigning Copilot to issues and using Task mode in Chat, GitHub.com now has several standalone Copilot features built directly into the web interface. These work **entirely in your browser** - no VS Code, no local clone needed.
@@ -600,7 +594,6 @@ This directly connects to the `/draft-release` slash command in Accessibility Ag
 - The agent files are readable Markdown documents -- open any one to see its instructions, responsibilities, and guardrails
 
 </details>
-
 
 ## 3. The Ecosystem: 55 Agents, 3 Teams, 5 Platforms
 
@@ -754,7 +747,6 @@ The project roadmap includes:
 
 </details>
 
-
 ## 4. Agents in Detail - Hands-On Reference
 
 This section walks through several agents in depth so you can see how they work, what they produce, and how to evaluate their output. These examples use GitHub Workflow agents because they build directly on Day 1 skills - but the same patterns apply to every agent in the ecosystem. After working through these examples, explore agents from any team that match your interests.
@@ -770,7 +762,6 @@ Before diving in, it helps to know that custom agents fall into two categories -
 **Task-oriented agents** take action. They can read and edit files, run shell commands, create commits, and open pull requests. Examples: `@pr-review`, `@insiders-a11y-tracker`. These agents need a broader toolset (`read`, `edit`, `execute`, `github/*`) - and because they can make changes, their output always warrants human review before anything is posted or merged.
 
 Many agents do both - they explain what they found (informational) and optionally make changes if you ask (task-oriented). The key question when you build your own is: *does this agent need to change files, or only to report?* Start informational. Expand to task-oriented only when the reporting alone is not enough.
-
 
 ### Agent 1: `@daily-briefing` - Morning Briefing
 
@@ -822,7 +813,6 @@ Sweeps every repository you have access to and builds a prioritized dashboard:
 ## Community Activity
 - Your comment on #38 received 3 reactions (×2, ×1)
 ```
-
 
 ### Agent 2: `@issue-tracker` - Issue Management
 
@@ -883,7 +873,6 @@ This will help us diagnose the issue faster.
 
 - Draft by @issue-tracker (review before posting)
 ```
-
 
 ### Agent 3: `@pr-review` - Pull Request Review
 
@@ -969,7 +958,6 @@ This is a valuable addition to the guide. The three typos and one clarification 
 - Review generated by @pr-review (edit before posting)
 ```
 
-
 ### Agent 4: `@analytics` - Team Analytics
 
 **Type:** Informational
@@ -1033,7 +1021,6 @@ Surfaces team contribution patterns, velocity metrics, and bottleneck detection:
 - Review times improving (down from 24-hour average last month)
 ```
 
-
 ### Agent 5: `@insiders-a11y-tracker` - Accessibility Change Monitoring
 
 **Type:** Both (Informational + Task-oriented)
@@ -1090,7 +1077,6 @@ Monitors accessibility-sensitive changes across configured repositories:
 
 **Suggested Fix:** Change `### Screen Reader Mode` to `## Screen Reader Mode`
 
-
 #### Issue 2: Non-Descriptive Link Text
 
 **File:** README.md  
@@ -1108,7 +1094,6 @@ For more information, [click here](https://example.com/guide).
 **Impact:** Screen reader users navigating by links will hear "click here" with no context about the destination.
 
 **Suggested Fix:** Use descriptive link text: `Read the [complete setup guide](https://example.com/guide).`
-
 
 ### Positive Changes: 1
 
@@ -1128,7 +1113,6 @@ For more information, [click here](https://example.com/guide).
 
 **Impact:** Screen reader users can now understand the button's purpose without visible text.
 
-
 ## Recommendations
 
 1. Fix heading hierarchy skip in docs/11-vscode-basics.md before merging PR #14
@@ -1136,7 +1120,6 @@ For more information, [click here](https://example.com/guide).
 3. Continue using descriptive ARIA labels for icon-only controls (positive trend)
 
 ```
-
 
 ### Agent 6: `@template-builder` - Interactive Issue Template Wizard
 
@@ -1194,7 +1177,6 @@ Agent: [Syntax-highlighted YAML output]
 **Why use it?** Manual YAML template creation takes 15-20 minutes and is error-prone. The Template Builder generates correct, tested templates in 2-3 minutes via guided questions.
 
 **Advanced:** After generating a template, you can ask: `@template-builder reorder the fields` or `@template-builder add a checkbox field for version compatibility` - the agent regenerates your YAML with the changes applied.
-
 
 ## 5. Slash Commands and Prompts
 
@@ -1310,7 +1292,6 @@ Load accessibility tracking configuration from `.github/agents/preferences.md`
 - Each `.prompt.md` file in `.github/prompts/` corresponds to one slash command -- browse them in the Explorer to discover all available commands
 
 </details>
-
 
 ## 6. Contributing to the Ecosystem
 
@@ -1442,6 +1423,16 @@ This tiered approach - automate what can be objectively evaluated, flag what nee
 3. Select your custom agent from the agent picker
 4. Type your request - the agent executes in your local workspace
 
+#### From the VS Code Agents Window
+
+1. Run **Chat: Open Agents Window** from the Command Palette
+2. Select **New** or press `Ctrl+N`
+3. Choose the workspace or GitHub repository that contains your `.github/agents/` folder
+4. Select the custom agent from the agent dropdown when it is available for that session type
+5. Run a focused prompt and review the Changes panel before accepting, committing, merging, or checking out the result
+
+Use this route when you are testing several custom agents, comparing agent output across projects, or validating a task-oriented agent with a dedicated Changes panel.
+
 #### From GitHub.com (Task mode)
 
 1. Open Copilot Chat on GitHub.com
@@ -1493,13 +1484,11 @@ You've built templates manually (Chapters 15-16) and seen them in action. Now se
 - You have forked [accessibility-agents](https://github.com/Community-Access/accessibility-agents) to your GitHub account
 - You have cloned your fork locally: `git clone https://github.com/[your-username]/accessibility-agents.git`
 
-
 #### Exercise 1: Generate a Template with the Agent
 
 **Your Mission:** Use the `@template-builder` agent to generate an accessibility bug report template interactively. You'll experience the agent as an end-user and see what production-ready agent output looks like.
 
 **Time estimate:** 5-10 minutes
-
 
 ##### Step 1: Open Your Fork in VS Code
 
@@ -1514,7 +1503,6 @@ You've built templates manually (Chapters 15-16) and seen them in action. Now se
 
 - Left sidebar showing: `.github/`, `docs/`, `learning-room/`, `README.md`, etc.
 - The status bar at the bottom shows your current git branch (probably `main`)
-
 
 ##### Step 2: Open Copilot Chat
 
@@ -1535,7 +1523,6 @@ You've built templates manually (Chapters 15-16) and seen them in action. Now se
 - Make sure built-in AI features are enabled in VS Code and that you are signed in with an account that has Copilot access
 - Make sure you're signed into GitHub (top right of VS Code)
 - Restart VS Code if neither of the above is the problem
-
 
 ##### Step 3: Invoke the Template Builder Agent
 
@@ -1558,7 +1545,6 @@ You've built templates manually (Chapters 15-16) and seen them in action. Now se
 - The agent processes your request
 - It starts asking questions via VS Code's Ask Questions interface
 - A series of prompts appear asking you to define your template
-
 
 ##### Step 4: Answer the Agent's Questions
 
@@ -1632,7 +1618,6 @@ A: No
 - Each field has a name, type, and requirement status
 - The agent confirms: "Ready to generate your template? Yes/No"
 
-
 ##### Step 5: Generate and Review the Output
 
 ###### What to do
@@ -1698,7 +1683,6 @@ body:
 - You can ask the agent: "@template-builder fix the browser field, should be an input not a dropdown"
 - The agent regenerates with corrections
 
-
 ##### Step 6: Copy the Template
 
 ###### What to do
@@ -1711,7 +1695,6 @@ body:
 
 - A notification may appear: "Copied to clipboard"
 - The text is ready to paste
-
 
 ##### Step 7: Save the Template to Your Fork
 
@@ -1744,7 +1727,6 @@ body:
 
 - Ask your facilitator for help (unlikely at this point)
 
-
 ##### Step 8: Test the Template in Your Fork
 
 ###### What to do
@@ -1767,7 +1749,6 @@ body:
 - Dropdowns work as expected
 - Screen reader announces everything clearly
 
-
 ##### Checkpoint: Exercise 1 Complete
 
 Verify you've accomplished:
@@ -1785,13 +1766,11 @@ Verify you've accomplished:
 - The interaction pattern: you describe, agent generates, you refine/deploy
 - That the agent's output still needs human review and testing
 
-
 #### Exercise 2: Extend the Agent for Your Project
 
 **Your Mission:** Customize the Template Builder agent to recognize and guide a **Security Vulnerability Report** template. This teaches you how to tailor agents for project-specific needs.
 
 **Time estimate:** 10-15 minutes
-
 
 ##### Step 1: Open the Agent File
 
@@ -1807,7 +1786,6 @@ Verify you've accomplished:
 - The file starts with YAML frontmatter (name, description, topics)
 - Below that, sections like "## How to Use", "## Pre-Built Workflow"
 - Search for the text "Pre-Built Workflow: Guided Accessibility Template"
-
 
 ##### Step 2: Find the Pre-Built Workflows Section
 
@@ -1834,7 +1812,6 @@ an accessibility bug report template.
 ### Workflow
 The agent skips to Phase 2 but pre-populates it with ...
 ```
-
 
 ##### Step 3: Add a New Pre-Built Workflow
 
@@ -1889,7 +1866,6 @@ A security vulnerability report template ready for your project's use.
 - Pre-defined fields that make sense for security reports
 - Specific options for severity and vulnerability type
 
-
 ##### Step 4: Save the Updated Agent
 
 ###### What to do
@@ -1902,7 +1878,6 @@ A security vulnerability report template ready for your project's use.
 
 - The agent recognizes your new workflow
 - Next time you invoke `@template-builder` with "create security template", it will follow your new guidance
-
 
 ##### Step 5: Test the Extended Agent
 
@@ -1939,7 +1914,6 @@ A security vulnerability report template ready for your project's use.
 - Try reloading VS Code: `Ctrl+Shift+P` → "Reload Window"
 - Try the agent invocation again
 
-
 ##### Step 6: Deploy Your Extended Agent
 
 ###### What to do
@@ -1961,7 +1935,6 @@ A security vulnerability report template ready for your project's use.
 - The agent file shows the new Pre-Built Workflow section
 - You can prove the template-builder agent is now customized for your project
 
-
 ##### Checkpoint: Exercise 2 Complete
 
 Verify you've accomplished:
@@ -1978,13 +1951,11 @@ Verify you've accomplished:
 - How to tailor agent behavior for specific domains (accessibility, security, etc.)
 - That you can extend agents without rewriting them completely
 
-
 #### Exercise 3: Iterative Refinement with Agents
 
 **Your Mission:** Generate a template, then ask the agent to modify it incrementally. This teaches you the iterative pattern that scales to all agent-assisted workflows.
 
 **Time estimate:** 5-10 minutes
-
 
 ##### Step 1: Start Fresh
 
@@ -2009,7 +1980,6 @@ Verify you've accomplished:
 
 - Running a complete template generation (same as Exercise 1)
 
-
 ##### Step 2: Ask for a Modification
 
 ###### What to do
@@ -2028,7 +1998,6 @@ Verify you've accomplished:
 - The new checkbox appears in the YAML with proper formatting and indentation
 - It doesn't regenerate from scratch - just adds your change
 
-
 ##### Step 3: Request Another Refinement
 
 ###### What to do
@@ -2045,7 +2014,6 @@ Verify you've accomplished:
 
 - The field now includes `render: "a11y friendly code rendering"` or similar
 - The YAML structure is preserved; only the specific field is enhanced
-
 
 ##### Step 4: Observe the Iterative Pattern
 
@@ -2066,7 +2034,6 @@ Verify you've accomplished:
 
 Each one follows: describe → generate → refine → deploy.
 
-
 ##### Checkpoint: Exercise 3 Complete
 
 Verify you've accomplished:
@@ -2082,7 +2049,6 @@ Verify you've accomplished:
 - You can build complex outputs through successive refinements
 - The agent remembers context and can modify instead of regenerate
 - This pattern applies to any repeatable GitHub workflow
-
 
 ### What Comes Next
 
@@ -2118,7 +2084,6 @@ That is Accessibility Agents' promise: not to replace your thinking, but to ampl
 - Study 2-3 existing `.agent.md` files before writing your own -- the pattern of frontmatter (metadata) plus Markdown body (instructions) is consistent, and matching the style reduces review friction on your PR
 - The contribution workflow for agents follows the same fork-branch-PR pattern from Chapter 18; your agent file goes in the `agents/` directory with a kebab-case filename matching the agent name
 - Use GitHub's file diff preview on your PR to verify the YAML frontmatter renders correctly -- GitHub highlights YAML syntax, making missing quotes or wrong indentation easy to spot
-
 
 ## 7. The Bigger Picture: Teams, Orchestration, and Beyond VS Code
 
@@ -2274,7 +2239,6 @@ When an issue is opened with "accessibility" or "a11y" or "screen reader" in the
 
 This runs automatically on every new issue. No human intervention required.
 
-
 ## 8. GitHub Desktop, GitHub CLI, and Copilot CLI
 
 These tools are not required for this workshop, but are worth knowing as options for different workflows.
@@ -2373,7 +2337,6 @@ Run this command? (Y/n)
 - GitHub CLI is scriptable; combine `gh issue list`, `gh pr list`, and `gh api` with shell pipelines to build custom dashboards without leaving the terminal
 - Copilot CLI complements (not replaces) your Git knowledge -- use `gh copilot explain` when you encounter an unfamiliar Git command in documentation, and `gh copilot suggest` when you know what you want to do but not the exact syntax
 
-
 ## Keyboard Shortcuts - Accessibility Agents Quick Reference
 
 | Action | Shortcut |
@@ -2384,7 +2347,6 @@ Run this command? (Y/n)
 | Accessible View | `Alt+F2` |
 | Clear chat history | `Ctrl+L` |
 | Command Palette | `Ctrl+Shift+P` |
-
 
 ## Troubleshooting
 
@@ -2427,3 +2389,48 @@ Run this command? (Y/n)
 *Back: [Chapter 18: Fork and Contribute](18-fork-and-contribute.md)*  
 *Related appendices: [Appendix L: Agents Reference](appendix-l-agents-reference.md) | [Appendix K: Copilot Reference](appendix-k-copilot-reference.md)*
 
+## Authoritative Sources
+
+Use these official references when you need the current source of truth for facts in this chapter.
+
+- [GitHub Docs, home](https://docs.github.com/en)
+- [GitHub Changelog](https://github.blog/changelog/)
+- [GitHub Copilot docs](https://docs.github.com/en/copilot)
+- [Custom instructions support matrix](https://docs.github.com/en/copilot/reference/custom-instructions-support)
+- [About custom agents](https://docs.github.com/en/copilot/concepts/agents/cloud-agent/about-custom-agents)
+- [About agent skills](https://docs.github.com/en/copilot/concepts/agents/about-agent-skills)
+- [About auto model selection](https://docs.github.com/en/copilot/concepts/auto-model-selection)
+- [Copilot changelog feed](https://github.blog/changelog/label/copilot/)
+- [VS Code Copilot chat overview](https://code.visualstudio.com/docs/copilot/chat/copilot-chat)
+- [VS Code agent overview](https://code.visualstudio.com/docs/copilot/agents/overview)
+- [VS Code custom instructions](https://code.visualstudio.com/docs/copilot/customization/custom-instructions)
+- [W3C Web Content Accessibility Guidelines (WCAG) 2 overview](https://www.w3.org/WAI/standards-guidelines/wcag/)
+- [WAI tutorials for accessible design patterns](https://www.w3.org/WAI/tutorials/)
+- [WAI-ARIA Authoring Practices Guide](https://www.w3.org/WAI/ARIA/apg/)
+- [GitHub accessibility statement](https://docs.github.com/en/site-policy/other-site-policies/github-accessibility-statement)
+- [About Git](https://docs.github.com/en/get-started/using-git/about-git)
+- [GitHub flow](https://docs.github.com/en/get-started/using-github/github-flow)
+- [About pull requests](https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/about-pull-requests)
+- [About issues](https://docs.github.com/en/issues/tracking-your-work-with-issues/about-issues)
+- [Contributing to a project](https://docs.github.com/en/get-started/exploring-projects-on-github/contributing-to-a-project)
+
+### Section-Level Source Map
+
+Use this map to verify facts for each major section in this file.
+
+- **55 AI Agents Across 3 Teams and 5 Platforms:** [GitHub Docs, home](https://docs.github.com/en), [GitHub Changelog](https://github.blog/changelog/), [GitHub Copilot docs](https://docs.github.com/en/copilot), [Custom instructions support matrix](https://docs.github.com/en/copilot/reference/custom-instructions-support), [About custom agents](https://docs.github.com/en/copilot/concepts/agents/cloud-agent/about-custom-agents)
+- **Prerequisites Checklist:** [GitHub Docs, home](https://docs.github.com/en), [GitHub Changelog](https://github.blog/changelog/), [GitHub Copilot docs](https://docs.github.com/en/copilot), [Custom instructions support matrix](https://docs.github.com/en/copilot/reference/custom-instructions-support), [About custom agents](https://docs.github.com/en/copilot/concepts/agents/cloud-agent/about-custom-agents)
+- **Workshop Recommendation (Chapter 19 / Challenge 15):** [GitHub Docs, home](https://docs.github.com/en), [GitHub Changelog](https://github.blog/changelog/), [GitHub Copilot docs](https://docs.github.com/en/copilot), [Custom instructions support matrix](https://docs.github.com/en/copilot/reference/custom-instructions-support), [About custom agents](https://docs.github.com/en/copilot/concepts/agents/cloud-agent/about-custom-agents)
+- **Capstone: Share Your Feedback (The Most Important Task!):** [GitHub Docs, home](https://docs.github.com/en), [GitHub Changelog](https://github.blog/changelog/), [GitHub Copilot docs](https://docs.github.com/en/copilot), [Custom instructions support matrix](https://docs.github.com/en/copilot/reference/custom-instructions-support), [About custom agents](https://docs.github.com/en/copilot/concepts/agents/cloud-agent/about-custom-agents)
+- **1. The Principle: Skill First, Agent Second:** [GitHub Docs, home](https://docs.github.com/en), [GitHub Changelog](https://github.blog/changelog/), [GitHub Copilot docs](https://docs.github.com/en/copilot), [Custom instructions support matrix](https://docs.github.com/en/copilot/reference/custom-instructions-support), [About custom agents](https://docs.github.com/en/copilot/concepts/agents/cloud-agent/about-custom-agents)
+- **2. Setup and Configuration:** [GitHub Docs, home](https://docs.github.com/en), [GitHub Changelog](https://github.blog/changelog/), [GitHub Copilot docs](https://docs.github.com/en/copilot), [Custom instructions support matrix](https://docs.github.com/en/copilot/reference/custom-instructions-support), [About custom agents](https://docs.github.com/en/copilot/concepts/agents/cloud-agent/about-custom-agents)
+- **3. The Ecosystem: 55 Agents, 3 Teams, 5 Platforms:** [GitHub Docs, home](https://docs.github.com/en), [GitHub Changelog](https://github.blog/changelog/), [GitHub Copilot docs](https://docs.github.com/en/copilot), [Custom instructions support matrix](https://docs.github.com/en/copilot/reference/custom-instructions-support), [About custom agents](https://docs.github.com/en/copilot/concepts/agents/cloud-agent/about-custom-agents)
+- **4. Agents in Detail - Hands-On Reference:** [GitHub Docs, home](https://docs.github.com/en), [GitHub Changelog](https://github.blog/changelog/), [GitHub Copilot docs](https://docs.github.com/en/copilot), [Custom instructions support matrix](https://docs.github.com/en/copilot/reference/custom-instructions-support), [About custom agents](https://docs.github.com/en/copilot/concepts/agents/cloud-agent/about-custom-agents)
+- **5. Slash Commands and Prompts:** [GitHub Docs, home](https://docs.github.com/en), [GitHub Changelog](https://github.blog/changelog/), [GitHub Copilot docs](https://docs.github.com/en/copilot), [Custom instructions support matrix](https://docs.github.com/en/copilot/reference/custom-instructions-support), [About custom agents](https://docs.github.com/en/copilot/concepts/agents/cloud-agent/about-custom-agents)
+- **6. Contributing to the Ecosystem:** [GitHub Docs, home](https://docs.github.com/en), [GitHub Changelog](https://github.blog/changelog/), [GitHub Copilot docs](https://docs.github.com/en/copilot), [Custom instructions support matrix](https://docs.github.com/en/copilot/reference/custom-instructions-support), [About custom agents](https://docs.github.com/en/copilot/concepts/agents/cloud-agent/about-custom-agents)
+- **Pre-Built Workflow: Guided Accessibility Template:** [GitHub Docs, home](https://docs.github.com/en), [GitHub Changelog](https://github.blog/changelog/), [GitHub Copilot docs](https://docs.github.com/en/copilot), [Custom instructions support matrix](https://docs.github.com/en/copilot/reference/custom-instructions-support), [About custom agents](https://docs.github.com/en/copilot/concepts/agents/cloud-agent/about-custom-agents)
+- **Pre-Built Workflow: Guided Security Vulnerability Template:** [GitHub Docs, home](https://docs.github.com/en), [GitHub Changelog](https://github.blog/changelog/), [GitHub Copilot docs](https://docs.github.com/en/copilot), [Custom instructions support matrix](https://docs.github.com/en/copilot/reference/custom-instructions-support), [About custom agents](https://docs.github.com/en/copilot/concepts/agents/cloud-agent/about-custom-agents)
+- **7. The Bigger Picture: Teams, Orchestration, and Beyond VS Code:** [GitHub Docs, home](https://docs.github.com/en), [GitHub Changelog](https://github.blog/changelog/), [GitHub Copilot docs](https://docs.github.com/en/copilot), [Custom instructions support matrix](https://docs.github.com/en/copilot/reference/custom-instructions-support), [About custom agents](https://docs.github.com/en/copilot/concepts/agents/cloud-agent/about-custom-agents)
+- **8. GitHub Desktop, GitHub CLI, and Copilot CLI:** [GitHub Docs, home](https://docs.github.com/en), [GitHub Changelog](https://github.blog/changelog/), [GitHub Copilot docs](https://docs.github.com/en/copilot), [Custom instructions support matrix](https://docs.github.com/en/copilot/reference/custom-instructions-support), [About custom agents](https://docs.github.com/en/copilot/concepts/agents/cloud-agent/about-custom-agents)
+- **Example session:** [GitHub Docs, home](https://docs.github.com/en), [GitHub Changelog](https://github.blog/changelog/), [GitHub Copilot docs](https://docs.github.com/en/copilot), [Custom instructions support matrix](https://docs.github.com/en/copilot/reference/custom-instructions-support), [About custom agents](https://docs.github.com/en/copilot/concepts/agents/cloud-agent/about-custom-agents)
+- **Keyboard Shortcuts - Accessibility Agents Quick Reference:** [GitHub Docs, home](https://docs.github.com/en), [GitHub Changelog](https://github.blog/changelog/), [GitHub Copilot docs](https://docs.github.com/en/copilot), [Custom instructions support matrix](https://docs.github.com/en/copilot/reference/custom-instructions-support), [About custom agents](https://docs.github.com/en/copilot/concepts/agents/cloud-agent/about-custom-agents)

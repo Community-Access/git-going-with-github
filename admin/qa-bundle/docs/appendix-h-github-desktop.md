@@ -63,7 +63,6 @@ GitHub Desktop covers the everyday Git workflow that most contributors use on mo
 
 For these operations, open the repository in your terminal directly from GitHub Desktop — **Repository → Open in Terminal** or **Repository → Open in Command Prompt** puts you in the right directory instantly.
 
-
 ### Learning Cards: What GitHub Desktop Does
 
 <details>
@@ -183,7 +182,6 @@ GitHub Desktop has three main areas:
 | **History tab** | Shows your commit history |
 | **Summary field** (bottom left) | Where you type your commit message |
 | **Commit button** (bottom left) | Commits staged changes |
-
 
 ### Learning Cards: The Desktop Interface
 
@@ -521,7 +519,6 @@ GitHub Desktop has partial screen reader support. Core workflows work well with 
 
 If screen reader navigation in GitHub Desktop is frustrating for a specific operation, VS Code's Source Control panel is often more accessible. The two tools complement each other — use whichever works best for the task at hand.
 
-
 ### Learning Cards: Desktop Accessibility
 
 <details>
@@ -573,3 +570,32 @@ GitHub Desktop, VS Code, and the Git CLI all talk to the same Git repository. Yo
 *Back: [Appendix G: VS Code Reference](appendix-g-vscode-reference.md)*  
 *Teaching chapter: [Chapter 01: Choose Your Tools](01-choose-your-tools.md)*
 
+## Authoritative Sources
+
+Use these official references when you need the current source of truth for facts in this chapter.
+
+- [GitHub Docs, home](https://docs.github.com/en)
+- [GitHub Changelog](https://github.blog/changelog/)
+- [GitHub Desktop docs](https://docs.github.com/en/desktop)
+- [GitHub Desktop site](https://desktop.github.com/)
+
+### Section-Level Source Map
+
+Use this map to verify facts for each major section in this file.
+
+- **A Visual Git Client for Every Workflow:** [GitHub Docs, home](https://docs.github.com/en), [GitHub Changelog](https://github.blog/changelog/), [GitHub Desktop docs](https://docs.github.com/en/desktop), [GitHub Desktop site](https://desktop.github.com/), [GitHub Copilot docs](https://docs.github.com/en/copilot)
+- **1. What GitHub Desktop Does (and Doesn't Do):** [GitHub Docs, home](https://docs.github.com/en), [GitHub Changelog](https://github.blog/changelog/), [GitHub Desktop docs](https://docs.github.com/en/desktop), [GitHub Desktop site](https://desktop.github.com/), [About Git](https://docs.github.com/en/get-started/using-git/about-git)
+- **2. Installing GitHub Desktop:** [GitHub Docs, home](https://docs.github.com/en), [GitHub Changelog](https://github.blog/changelog/), [GitHub Desktop docs](https://docs.github.com/en/desktop), [GitHub Desktop site](https://desktop.github.com/), [About Git](https://docs.github.com/en/get-started/using-git/about-git)
+- **3. Signing In and Authentication:** [GitHub Docs, home](https://docs.github.com/en), [GitHub Changelog](https://github.blog/changelog/), [GitHub Desktop docs](https://docs.github.com/en/desktop), [GitHub Desktop site](https://desktop.github.com/), [GitHub security features](https://docs.github.com/en/code-security/getting-started/github-security-features)
+- **4. The Interface at a Glance:** [GitHub Docs, home](https://docs.github.com/en), [GitHub Changelog](https://github.blog/changelog/), [GitHub Desktop docs](https://docs.github.com/en/desktop), [GitHub Desktop site](https://desktop.github.com/)
+- **5. Cloning a Repository:** [GitHub Docs, home](https://docs.github.com/en), [GitHub Changelog](https://github.blog/changelog/), [GitHub Desktop docs](https://docs.github.com/en/desktop), [GitHub Desktop site](https://desktop.github.com/), [About Git](https://docs.github.com/en/get-started/using-git/about-git)
+- **6. Creating and Switching Branches:** [GitHub Docs, home](https://docs.github.com/en), [GitHub Changelog](https://github.blog/changelog/), [GitHub Desktop docs](https://docs.github.com/en/desktop), [GitHub Desktop site](https://desktop.github.com/), [About Git](https://docs.github.com/en/get-started/using-git/about-git)
+- **7. Staging and Committing Changes:** [GitHub Docs, home](https://docs.github.com/en), [GitHub Changelog](https://github.blog/changelog/), [GitHub Desktop docs](https://docs.github.com/en/desktop), [GitHub Desktop site](https://desktop.github.com/), [About Git](https://docs.github.com/en/get-started/using-git/about-git)
+- **8. Push and Pull:** [GitHub Docs, home](https://docs.github.com/en), [GitHub Changelog](https://github.blog/changelog/), [GitHub Desktop docs](https://docs.github.com/en/desktop), [GitHub Desktop site](https://desktop.github.com/)
+- **9. Syncing Your Fork:** [GitHub Docs, home](https://docs.github.com/en), [GitHub Changelog](https://github.blog/changelog/), [GitHub Desktop docs](https://docs.github.com/en/desktop), [GitHub Desktop site](https://desktop.github.com/), [About Git](https://docs.github.com/en/get-started/using-git/about-git)
+- **10. Resolving Merge Conflicts:** [GitHub Docs, home](https://docs.github.com/en), [GitHub Changelog](https://github.blog/changelog/), [GitHub Desktop docs](https://docs.github.com/en/desktop), [GitHub Desktop site](https://desktop.github.com/), [About Git](https://docs.github.com/en/get-started/using-git/about-git)
+- **11. Viewing History:** [GitHub Docs, home](https://docs.github.com/en), [GitHub Changelog](https://github.blog/changelog/), [GitHub Desktop docs](https://docs.github.com/en/desktop), [GitHub Desktop site](https://desktop.github.com/)
+- **12. Cherry-Pick in GitHub Desktop:** [GitHub Docs, home](https://docs.github.com/en), [GitHub Changelog](https://github.blog/changelog/), [GitHub Desktop docs](https://docs.github.com/en/desktop), [GitHub Desktop site](https://desktop.github.com/), [About Git](https://docs.github.com/en/get-started/using-git/about-git)
+- **13. Stashing Changes:** [GitHub Docs, home](https://docs.github.com/en), [GitHub Changelog](https://github.blog/changelog/), [GitHub Desktop docs](https://docs.github.com/en/desktop), [GitHub Desktop site](https://desktop.github.com/)
+- **14. Undoing Changes:** [GitHub Docs, home](https://docs.github.com/en), [GitHub Changelog](https://github.blog/changelog/), [GitHub Desktop docs](https://docs.github.com/en/desktop), [GitHub Desktop site](https://desktop.github.com/)
+- **15. Accessibility and Screen Reader Notes:** [GitHub Docs, home](https://docs.github.com/en), [GitHub Changelog](https://github.blog/changelog/), [GitHub Desktop docs](https://docs.github.com/en/desktop), [GitHub Desktop site](https://desktop.github.com/), [W3C Web Content Accessibility Guidelines (WCAG) 2 overview](https://www.w3.org/WAI/standards-guidelines/wcag/)

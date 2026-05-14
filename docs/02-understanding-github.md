@@ -5,7 +5,6 @@
 > **Related appendices:** [Appendix A: Glossary](appendix-a-glossary.md) | [Appendix B: Screen Reader Cheat Sheet](appendix-b-screen-reader-cheatsheet.md)
 > **Authoritative sources:** [GitHub Docs: About GitHub](https://docs.github.com/en/get-started/start-your-journey/about-github-and-git) | [GitHub Accessibility Documentation](https://accessibility.github.com/documentation)
 
-
 ## How GitHub Is Organized, and How to Orient Yourself on Every Page
 
 > **Read this before navigating GitHub for the first time.** This lesson gives you the mental model that makes every subsequent guide easier. Once you understand how GitHub pages are built - their landmark structure, heading hierarchy, and URL patterns - you will know how to orient yourself on any page you land on, even ones this guide never mentions.
@@ -24,7 +23,6 @@
 8. [GitHub's Heading Hierarchy in Practice](#8-githubs-heading-hierarchy-in-practice)
 9. [How GitHub's Layout Changes by Viewport](#9-how-githubs-layout-changes-by-viewport)
 10. [The Mental Model - Building Your Internal Map](#10-the-mental-model---building-your-internal-map)
-
 
 > **The Capstone Connection:** By the end of tomorrow, you will build your own customized AI Agent. But agents do not have magic portals into your code — they read Issues, they write Pull Requests, and they trigger on Labels. Think of GitHub as the operating system for AI. As you learn these manual features today, you are actually learning how to converse with the agents you will build tomorrow.
 
@@ -112,7 +110,6 @@ When you are inside a repository, a second navigation bar appears below the glob
 
 </details>
 
-
 ## 3. How to Tell Where You Are
 
 Three signals tell you exactly where you are on GitHub, without needing to see the visual layout:
@@ -163,7 +160,6 @@ Press `1` (in Browse Mode) on any GitHub page to jump to the first H1 heading. W
 | The PR title | Pull request detail page |
 | Your username | Your profile page |
 | A settings category name | A settings page |
-
 
 ## 4. The Five Key Page Types
 
@@ -260,7 +256,6 @@ Your personal home (`github.com`) shows activity from repositories you follow. Y
 
 </details>
 
-
 ## 5. Visual Map of a Repository Page
 
 > **See also:** [Appendix A: Glossary](appendix-a-glossary.md) defines every term used in this course. [Appendix B: Screen Reader Cheat Sheet](appendix-b-screen-reader-cheatsheet.md) has quick-reference keyboard shortcuts for navigating headings and landmarks.
@@ -272,7 +267,6 @@ A repository home page is laid out from top to bottom as follows. The Global Nav
 ### Screen reader navigation of this page
 
 Press 1 to hear "owner/repo-name" (the H1, confirms you are on the right repo). Press D to hear "Navigation Menu," then D again for "Repository navigation," then D again for "Main" (the file tree area). Press T to jump to the file table, then Ctrl+Alt+Down Arrow to navigate rows. Press D again to reach "Repository files navigation" and read the README.
-
 
 ## 6. Screen Reader Orientation Sequence
 
@@ -377,7 +371,6 @@ From there, navigate with purpose: `VO+U → Landmarks` to jump to regions, Quic
 
 </details>
 
-
 ## 7. Landmark Structure by Page Type
 
 Each GitHub page type has a consistent landmark pattern. Knowing the pattern means you can skip steps 2 and 3 above for familiar pages.
@@ -433,7 +426,6 @@ Each GitHub page type has a consistent landmark pattern. Knowing the pattern mea
 | Pull request tabs | Tab links |
 | Main | File tree + diff view |
 | (no "Add a comment" - inline commenting works differently) | - |
-
 
 ## 8. GitHub's Heading Hierarchy in Practice
 
@@ -516,7 +508,6 @@ H1: PR title
 
 </details>
 
-
 ## 9. How GitHub's Layout Changes by Viewport
 
 GitHub is a responsive web application. The layout shifts at different screen widths, and this affects what landmarks and headings you encounter.
@@ -540,7 +531,6 @@ GitHub is a responsive web application. The layout shifts at different screen wi
 - The landmark structure is the same but the "Navigation Menu" landmark becomes a toggle
 
 **Consistent experience recommendation:** Use your browser maximized or at full desktop width during this workshop. GitHub's landmark and heading structure is most consistent at desktop width. If you hear different landmarks or headings than described in this guide, maximize your browser window.
-
 
 ## 10. The Mental Model - Building Your Internal Map
 
@@ -612,7 +602,6 @@ You are never lost. You always have these three fallbacks.
 
 </details>
 
-
 ## Try It: The 60-Second Orientation
 
 **Time:** 1 minute | **What you need:** A browser with your screen reader running
@@ -628,7 +617,6 @@ Open any GitHub repository - try [github.com/community-access/accessibility-agen
 
 > **What success feels like:** You heard a repo name, at least two landmarks, and several headings. If you did, you can orient yourself on *any* GitHub page using these same four keys.
 
-
 ## If You Get Stuck
 
 | Problem | What to do |
@@ -640,20 +628,45 @@ Open any GitHub repository - try [github.com/community-access/accessibility-agen
 | Everything else | Post a comment on your challenge issue describing what you see and hear. A facilitator or buddy can walk you through it. |
 | I finished but I am not sure I did it right | Compare your work against the [Challenge 1 reference solution](solutions/solution-01-scavenger-hunt.md). Your version does not need to match exactly -- if you explored the tabs and found the key files, you succeeded. |
 
-
 ## Day 2 Amplifier
 
 > Once you have this mental model solid, the Accessibility Agents make more sense. The `@daily-briefing` agent reads your GitHub notifications and presents a structured report - but the report structure mirrors the landmark structure of GitHub itself: global activity, then per-repo activity, then per-issue and per-PR detail. The agent describes the same building you have already walked through manually.
-
 
 > **Next Step:** Move on to [Chapter 03: Navigating Repositories](03-navigating-repositories.md).
 
 ---
 
-
 *Next: [Chapter 03: Navigating Repositories](03-navigating-repositories.md)*  
 *Back: [Chapter 01: Choose Your Tools](01-choose-your-tools.md)*  
 *Related appendices: [Appendix A: Glossary](appendix-a-glossary.md) | [Appendix B: Screen Reader Cheat Sheet](appendix-b-screen-reader-cheatsheet.md)*
 
+## Authoritative Sources
 
+Use these official references when you need the current source of truth for facts in this chapter.
 
+- [GitHub Docs, home](https://docs.github.com/en)
+- [GitHub Changelog](https://github.blog/changelog/)
+- [About Git](https://docs.github.com/en/get-started/using-git/about-git)
+- [GitHub flow](https://docs.github.com/en/get-started/using-github/github-flow)
+- [About pull requests](https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/about-pull-requests)
+- [About issues](https://docs.github.com/en/issues/tracking-your-work-with-issues/about-issues)
+- [Contributing to a project](https://docs.github.com/en/get-started/exploring-projects-on-github/contributing-to-a-project)
+
+### Section-Level Source Map
+
+Use this map to verify facts for each major section in this file.
+
+- **How GitHub Is Organized, and How to Orient Yourself on Every Page:** [GitHub Docs, home](https://docs.github.com/en), [GitHub Changelog](https://github.blog/changelog/), [About Git](https://docs.github.com/en/get-started/using-git/about-git), [GitHub flow](https://docs.github.com/en/get-started/using-github/github-flow), [About pull requests](https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/about-pull-requests)
+- **1. GitHub's Three-Level Structure:** [GitHub Docs, home](https://docs.github.com/en), [GitHub Changelog](https://github.blog/changelog/), [About Git](https://docs.github.com/en/get-started/using-git/about-git), [GitHub flow](https://docs.github.com/en/get-started/using-github/github-flow), [About pull requests](https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/about-pull-requests)
+- **2. What Is Always on Every GitHub Page:** [GitHub Docs, home](https://docs.github.com/en), [GitHub Changelog](https://github.blog/changelog/), [About Git](https://docs.github.com/en/get-started/using-git/about-git), [GitHub flow](https://docs.github.com/en/get-started/using-github/github-flow), [About pull requests](https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/about-pull-requests)
+- **3. How to Tell Where You Are:** [GitHub Docs, home](https://docs.github.com/en), [GitHub Changelog](https://github.blog/changelog/), [About Git](https://docs.github.com/en/get-started/using-git/about-git), [GitHub flow](https://docs.github.com/en/get-started/using-github/github-flow), [About pull requests](https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/about-pull-requests)
+- **4. The Five Key Page Types:** [GitHub Docs, home](https://docs.github.com/en), [GitHub Changelog](https://github.blog/changelog/), [About Git](https://docs.github.com/en/get-started/using-git/about-git), [GitHub flow](https://docs.github.com/en/get-started/using-github/github-flow), [About pull requests](https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/about-pull-requests)
+- **5. Visual Map of a Repository Page:** [GitHub Docs, home](https://docs.github.com/en), [GitHub Changelog](https://github.blog/changelog/), [About Git](https://docs.github.com/en/get-started/using-git/about-git), [GitHub flow](https://docs.github.com/en/get-started/using-github/github-flow), [About pull requests](https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/about-pull-requests)
+- **6. Screen Reader Orientation Sequence:** [GitHub Docs, home](https://docs.github.com/en), [GitHub Changelog](https://github.blog/changelog/), [About Git](https://docs.github.com/en/get-started/using-git/about-git), [GitHub flow](https://docs.github.com/en/get-started/using-github/github-flow), [About pull requests](https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/about-pull-requests)
+- **7. Landmark Structure by Page Type:** [GitHub Docs, home](https://docs.github.com/en), [GitHub Changelog](https://github.blog/changelog/), [About Git](https://docs.github.com/en/get-started/using-git/about-git), [GitHub flow](https://docs.github.com/en/get-started/using-github/github-flow), [About pull requests](https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/about-pull-requests)
+- **8. GitHub's Heading Hierarchy in Practice:** [GitHub Docs, home](https://docs.github.com/en), [GitHub Changelog](https://github.blog/changelog/), [About Git](https://docs.github.com/en/get-started/using-git/about-git), [GitHub flow](https://docs.github.com/en/get-started/using-github/github-flow), [About pull requests](https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/about-pull-requests)
+- **9. How GitHub's Layout Changes by Viewport:** [GitHub Docs, home](https://docs.github.com/en), [GitHub Changelog](https://github.blog/changelog/), [About Git](https://docs.github.com/en/get-started/using-git/about-git), [GitHub flow](https://docs.github.com/en/get-started/using-github/github-flow), [About pull requests](https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/about-pull-requests)
+- **10. The Mental Model - Building Your Internal Map:** [GitHub Docs, home](https://docs.github.com/en), [GitHub Changelog](https://github.blog/changelog/), [About Git](https://docs.github.com/en/get-started/using-git/about-git), [GitHub flow](https://docs.github.com/en/get-started/using-github/github-flow), [About pull requests](https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/about-pull-requests)
+- **Try It: The 60-Second Orientation:** [GitHub Docs, home](https://docs.github.com/en), [GitHub Changelog](https://github.blog/changelog/), [About Git](https://docs.github.com/en/get-started/using-git/about-git), [GitHub flow](https://docs.github.com/en/get-started/using-github/github-flow), [About pull requests](https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/about-pull-requests)
+- **If You Get Stuck:** [GitHub Docs, home](https://docs.github.com/en), [GitHub Changelog](https://github.blog/changelog/), [About Git](https://docs.github.com/en/get-started/using-git/about-git), [GitHub flow](https://docs.github.com/en/get-started/using-github/github-flow), [About pull requests](https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/about-pull-requests)
+- **Day 2 Amplifier:** [GitHub Docs, home](https://docs.github.com/en), [GitHub Changelog](https://github.blog/changelog/), [About Git](https://docs.github.com/en/get-started/using-git/about-git), [GitHub flow](https://docs.github.com/en/get-started/using-github/github-flow), [About pull requests](https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/about-pull-requests)

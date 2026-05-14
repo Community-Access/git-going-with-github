@@ -9,7 +9,6 @@
 > **Related appendices:** [Appendix D: Git Authentication](appendix-d-git-authentication.md) | [Appendix Y: Workshop Materials](appendix-y-workshop-materials.md) | [Appendix Z: GitHub Skills](appendix-z-github-skills.md)
 > **Authoritative sources:** [GitHub Docs: Create an account](https://docs.github.com/en/get-started/start-your-journey/creating-an-account-on-github) | [GitHub Docs: Set up Git](https://docs.github.com/en/get-started/getting-started-with-git/set-up-git)
 
-
 ## Everything You Need Before Day 1 Begins
 
 > **A [Community Access](https://community-access.org) workshop.**
@@ -69,7 +68,6 @@ You only need **one** of these. Use whichever you are most comfortable with.
 | **VoiceOver** | macOS / iOS | Built-in (free) | Included with macOS - press `Cmd+F5` to activate |
 
 > **Note:** All workshop exercises are designed to work with any of these screen readers. Where specific key commands differ, we will note all three. You are not disadvantaged by using any particular screen reader.
-
 
 ## Step 1 - Create Your GitHub Account
 
@@ -212,7 +210,6 @@ If you run into any authentication issues before the workshop, open a support is
 
 </details>
 
-
 ## Step 2 - Configure GitHub Accessibility Settings
 
 These settings make GitHub significantly more usable with a screen reader. **Do not skip this section** - one setting in particular (hovercards) adds significant noise to every page if left on.
@@ -346,7 +343,6 @@ Theme is on a separate page: [GitHub Appearance Settings](https://github.com/set
 
 </details>
 
-
 ## Step 3 - Configure Your Profile
 
 Your GitHub profile is your public identity in the open source community. Setting it up properly helps maintainers know who you are.
@@ -373,7 +369,6 @@ A profile picture is strongly recommended because it humanizes your contribution
 
 1. Navigate to [Settings → Notifications](https://github.com/settings/notifications)
 2. Add a **custom routing** email if you want GitHub notifications to go to a different address than your account email
-
 
 ## Step 4 - Check GitHub Feature Preview Settings
 
@@ -455,7 +450,6 @@ If you open Feature Preview and neither **"New Issues Experience"** nor **"New F
 
 > **Why this matters:** Without these features enabled, the keyboard and screen reader workflows described throughout this workshop will not match what you see on screen. Enabling them before you begin ensures everything works as documented.
 
-
 ## Step 5 - Set Up Your Screen Reader & Browser
 
 ### NVDA (Windows)
@@ -480,7 +474,6 @@ If you open Feature Preview and neither **"New Issues Experience"** nor **"New F
 
 **Your NVDA key:** By default it is `Insert`. It can also be set to `Caps Lock` in NVDA preferences if that is more comfortable.
 
-
 ### JAWS (Windows)
 
 **If using a trial:** JAWS runs in 40-minute sessions without a license. Restart it if you need more time.
@@ -497,7 +490,6 @@ If you open Feature Preview and neither **"New Issues Experience"** nor **"New F
 - Verbosity → Punctuation: "Most" for same reason as NVDA
 
 **Your JAWS key:** `Insert` (or `Caps Lock` if using laptop layout)
-
 
 ### VoiceOver (macOS)
 
@@ -562,7 +554,6 @@ Throughout this documentation, Windows keyboard shortcuts for VS Code are freque
 
 </details>
 
-
 ## Step 6 - Install Git and Visual Studio Code
 
 > **See also:** [Chapter 01: Choose Your Tools](01-choose-your-tools.md) walks through every tool option with screen reader and low-vision guidance.
@@ -601,7 +592,6 @@ Git is often already present via Xcode Command Line Tools. To check:
 - Type `git --version`, press `Enter`, then press `↑` to re-read the output line
 
 Once Git is installed, you will configure your Git identity in Step 7 after VS Code is set up.
-
 
 ### Install Visual Studio Code
 
@@ -693,7 +683,6 @@ If VS Code did **not** prompt you automatically, enable it manually:
 
 </details>
 
-
 ## Step 7 - Configure Git Identity
 
 Now that Git is installed, tell it who you are. Git embeds your name and email in every commit you make, and this affects how your contributions appear in project history.
@@ -744,11 +733,9 @@ user.email=your-email@example.com
 
 Use the same email you registered with GitHub. If you're concerned about privacy, GitHub offers a no-reply email you can use: `username@users.noreply.github.com` - find it in [Settings → Emails](https://github.com/settings/emails).
 
-
 ## Step 8 - Install VS Code Extensions
 
 This workshop uses two VS Code extensions. GitHub Copilot is built into VS Code automatically. The GitHub Pull Requests extension needs to be installed manually. Both authenticate through your browser session - if you are signed into GitHub in your web browser, VS Code picks up the session automatically.
-
 
 ### GitHub Copilot (Built In)
 
@@ -766,7 +753,6 @@ GitHub Copilot is automatically included with Visual Studio Code. There is no ex
 7. Navigate up with `Shift+Tab` or `Up Arrow` to read the response
 
 > **That is it.** You do not need to use the Command Palette to sign in. If you are logged into GitHub in your browser, VS Code handles authentication automatically when you first interact with the agent.
-
 
 ### Extension 2 - GitHub Pull Requests
 
@@ -799,7 +785,6 @@ This extension lets you review and manage pull requests without leaving VS Code.
    - If your repository has open pull requests, they will appear here
 
 > **Screen reader note:** The Pull Requests panel is a tree view. Navigate it with `Up` and `Down Arrow`. Press `Enter` or `Right Arrow` to expand a node.
-
 
 ### Copilot Free tier
 
@@ -838,7 +823,6 @@ For this workshop, Free tier is sufficient. If you want unlimited access, paid p
 - The Copilot chat panel opens when you press `Ctrl+Alt+I` or run **Chat: Open Chat** from the Command Palette; the sparkle icon in the editor gutter means Copilot has an inline suggestion
 
 </details>
-
 
 ## Step 9 - Verification Checklist
 
@@ -900,7 +884,6 @@ You do **not** need to claim a workshop repository before Day 1 -- that is the v
 
 The full guided walkthrough lives in [Chapter 4: Step-by-Step: Accept Your Classroom Assignment and Open Your Repo](04-the-learning-room.md#step-by-step-accept-your-classroom-assignment-and-open-your-repo). Skim it the night before if you want to know what to expect; we will walk through it live in Block 0.
 
-
 ## Other GitHub Access Methods (Reference Only)
 
 This workshop focuses entirely on GitHub.com in the browser and VS Code. However, you should be aware that other ways to work with GitHub exist. We list them here for your reference - we will not be teaching these in depth.
@@ -956,7 +939,6 @@ We are not covering Git commands in this workshop. If you want to learn Git, the
 - [Pro Git book (free)](https://git-scm.com/book/en/v2)
 - [GitHub Skills: Introduction to GitHub](https://github.com/skills/introduction-to-github)
 
-
 ## If You Get Stuck
 
 | Problem | What to do |
@@ -969,7 +951,6 @@ We are not covering Git commands in this workshop. If you want to learn Git, the
 | Cannot install VS Code extensions | Check your internet connection. Try installing from the terminal: `code --install-extension GitHub.vscode-pull-request-github`. |
 | Everything else | File a support issue at [Community-Access/support/issues](https://github.com/Community-Access/support/issues) describing what step you are on and what happened. We will help. |
 
-
 ## Getting Help Before the Event
 
 If you cannot complete any step in this guide before the workshop:
@@ -980,13 +961,32 @@ If you cannot complete any step in this guide before the workshop:
 
 You will not be left behind. Every setup issue we can solve before Day 1 means more time for learning on the day.
 
-
 > **Next Step:** You are all set up! Move on to [Chapter 01: Choose Your Tools](01-choose-your-tools.md).
 
 ---
-
 
 *Next: [Chapter 01: Choose Your Tools](01-choose-your-tools.md)*  
 *Back: [Course Guide](course-guide.md)*  
 *Related appendices: [Appendix D: Git Authentication](appendix-d-git-authentication.md) | [Appendix Y: Workshop Materials](appendix-y-workshop-materials.md)*
 
+## Authoritative Sources
+
+Use these official references when you need the current source of truth for facts in this chapter.
+
+- [GitHub Docs, home](https://docs.github.com/en)
+- [GitHub Changelog](https://github.blog/changelog/)
+- [About Git](https://docs.github.com/en/get-started/using-git/about-git)
+- [GitHub flow](https://docs.github.com/en/get-started/using-github/github-flow)
+- [About pull requests](https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/about-pull-requests)
+- [About issues](https://docs.github.com/en/issues/tracking-your-work-with-issues/about-issues)
+- [Contributing to a project](https://docs.github.com/en/get-started/exploring-projects-on-github/contributing-to-a-project)
+
+### Section-Level Source Map
+
+Use this map to verify facts for each major section in this file.
+
+- **Everything You Need Before Day 1 Begins:** [GitHub Docs, home](https://docs.github.com/en), [GitHub Changelog](https://github.blog/changelog/), [About Git](https://docs.github.com/en/get-started/using-git/about-git), [GitHub flow](https://docs.github.com/en/get-started/using-github/github-flow), [About pull requests](https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/about-pull-requests)
+- **What You Will Need:** [GitHub Docs, home](https://docs.github.com/en), [GitHub Changelog](https://github.blog/changelog/), [About Git](https://docs.github.com/en/get-started/using-git/about-git), [GitHub flow](https://docs.github.com/en/get-started/using-github/github-flow), [About pull requests](https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/about-pull-requests)
+- **Other GitHub Access Methods (Reference Only):** [GitHub Docs, home](https://docs.github.com/en), [GitHub Changelog](https://github.blog/changelog/), [About Git](https://docs.github.com/en/get-started/using-git/about-git), [GitHub flow](https://docs.github.com/en/get-started/using-github/github-flow), [About pull requests](https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/about-pull-requests)
+- **If You Get Stuck:** [GitHub Docs, home](https://docs.github.com/en), [GitHub Changelog](https://github.blog/changelog/), [About Git](https://docs.github.com/en/get-started/using-git/about-git), [GitHub flow](https://docs.github.com/en/get-started/using-github/github-flow), [About pull requests](https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/about-pull-requests)
+- **Getting Help Before the Event:** [GitHub Docs, home](https://docs.github.com/en), [GitHub Changelog](https://github.blog/changelog/), [About Git](https://docs.github.com/en/get-started/using-git/about-git), [GitHub flow](https://docs.github.com/en/get-started/using-github/github-flow), [About pull requests](https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/about-pull-requests)

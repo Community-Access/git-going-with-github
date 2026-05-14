@@ -5,11 +5,9 @@
 > **Related appendices:** [Appendix E: Advanced Git](appendix-e-advanced-git.md) | [Appendix G: VS Code Reference](appendix-g-vscode-reference.md)
 > **Authoritative sources:** [GitHub Docs: Resolving merge conflicts](https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/addressing-merge-conflicts/resolving-a-merge-conflict-on-github) | [Git SCM: Basic Merge Conflicts](https://git-scm.com/book/en/v2/Git-Branching-Basic-Branching-and-Merging#_basic_merge_conflicts)
 
-
 ## Understanding, Preventing, and Resolving Conflicts
 
 > Merge conflicts sound intimidating but are a normal, manageable part of collaborative development. This guide explains what conflicts are, how to read conflict markers, and how to resolve them - step by step.
-
 
 ## Workshop Recommendation (Chapter 7)
 
@@ -97,7 +95,6 @@ Merge conflicts are not failures. They are a normal collaboration checkpoint and
 4. Submit clean evidence through the PR workflow.
 5. Build confidence for real conflicts in future contributions.
 
-
 ### About Learning Cards in This Chapter
 
 This chapter provides learning cards: expandable blocks that offer perspective-specific guidance for different ways of working. Not every card appears at every step. Open the ones that match how you work.
@@ -111,7 +108,6 @@ The following table describes the five learning card types used in this chapter.
 | NVDA / JAWS (Windows) | Screen reader users on Windows | Keystroke sequences, Focus and Browse mode, verbosity tips |
 | VoiceOver (macOS) | Screen reader users on macOS | VO key sequences, rotor navigation, interaction model |
 | CLI (git / gh) | Terminal users on any platform | Git and GitHub CLI commands for conflict detection and resolution |
-
 
 ## Local Git Alternative: Resolving Conflicts from Your Terminal
 
@@ -166,7 +162,6 @@ Your PR on GitHub updates automatically with the resolved content. The same bot 
 
 </details>
 
-
 ## What Is a Merge Conflict?
 
 A merge conflict occurs when two people have both changed the **same part of the same file** in **different ways**, and Git cannot automatically decide which version is correct.
@@ -176,7 +171,6 @@ Git can merge changes automatically when they touch different parts of a file. C
 - Person A changed line 12 to say "Submit form"
 - Person B changed line 12 to say "Send message"
 - Git asks: which one do you want to keep?
-
 
 ## Why Conflicts Happen
 
@@ -188,7 +182,6 @@ The most common causes:
 | One person deleted a file but another edited it | You removed an old function; they fixed a bug in it |
 | Two people restructured the same section | You reorganized a list; they added items to it |
 | A long-running PR diverged from main | Your branch is weeks old and main has changed significantly |
-
 
 ## How to Prevent Conflicts (Prevention is Easier Than Resolution)
 
@@ -288,7 +281,6 @@ Open your PR as a draft while still working. Others can see what you're changing
 
 </details>
 
-
 ## Advanced Prevention: Understanding Fast-Forward Merges
 
 When your branch is perfectly up to date with main and adds new commits on top, GitHub can do a "fast-forward" merge - main simply moves forward to your latest commit. No merge commit needed. No possibility of conflicts.
@@ -306,7 +298,6 @@ git push --force-with-lease  # See warning below about force pushing
 
 For more on force pushing and rebasing, see the [Glossary](appendix-a-glossary.md#force-push).
 
-
 ## When Conflicts Are Actually Good
 
 Conflicts indicate that multiple people are actively improving the project. In a healthy, collaborative environment, occasional conflicts are normal and manageable.
@@ -318,7 +309,6 @@ If you never have conflicts, it might mean:
 - People are avoiding working on important files (technical debt)
 
 **The goal isn't zero conflicts.** The goal is catching them early, resolving them cleanly, and learning patterns that reduce future conflicts.
-
 
 ## Spotting a Conflict on GitHub
 
@@ -351,7 +341,6 @@ git merge main
 git add resolved-file.md
 git commit -m "resolve merge conflict"
 ```
-
 
 When a PR has a merge conflict, you will see this message on the Conversation tab, near the merge section:
 
@@ -395,7 +384,6 @@ The conflict banner sits near the bottom of the Conversation tab, above the merg
 3. Quick Nav `B` to find the **Resolve conflicts** button → `VO+Space`
 
 </details>
-
 
 ## Conflict Markers - What They Mean
 
@@ -469,7 +457,6 @@ The content coming from the OTHER branch (or main)
 - After editing, delete all three marker lines plus the version you do not want; the remaining content should read naturally as valid code or Markdown
 
 </details>
-
 
 ## Resolving Conflicts on GitHub (Web Editor)
 
@@ -582,7 +569,6 @@ When the conflict editor opens, your screen reader will announce a text editor. 
 
 </details>
 
-
 ## Resolving Conflicts in VS Code (Day 2)
 
 > **See also:** [Appendix E: Advanced Git](appendix-e-advanced-git.md) covers rebase, cherry-pick, and other advanced conflict resolution strategies.
@@ -666,7 +652,6 @@ In high-contrast themes, these colors map to system theme colors that remain dis
 
 </details>
 
-
 ## When You Feel Stuck
 
 ### Ask for help - it's normal
@@ -715,7 +700,6 @@ This is legitimate - not a failure.
 - When starting over, use the branch dropdown on the Code tab to verify you branched from the latest `main` before re-applying your changes
 
 </details>
-
 
 ## Reading a Conflict Message from Git (Command Line Reference)
 
@@ -784,7 +768,6 @@ If conflicts exist, the `gh pr view` output shows "This branch has conflicts tha
 
 </details>
 
-
 ## Summary Checklist
 
 ```text
@@ -805,7 +788,6 @@ After resolving:
   □ Comment on the PR: "Resolved merge conflict - kept both the aria-label and type attribute"
   □ Request re-review if reviewers already approved before the conflict was introduced
 ```
-
 
 ## Try It: Read a Conflict (Without Fear)
 
@@ -833,7 +815,6 @@ Answer these three questions:
 
 > **What success feels like:** Conflicts aren't mysterious anymore. They're just two versions side by side with markers telling you which is which. You already know how to pick the right one.
 
-
 > ### Day 2 Amplifier - Copilot Chat & Conflict Prevention
 >
 > **Resolve at least one conflict completely by hand before using any AI assistance.** You must be able to read `<<<<<<<`, `=======`, and `>>>>>>>` markers and understand what each version represents. An AI-suggested resolution you cannot independently verify is a liability - you are accepting a change you do not understand into a codebase other people depend on.
@@ -846,15 +827,43 @@ Answer these three questions:
 >
 > *Understanding conflict markers is not a stepping stone to letting AI handle conflicts. It is the skill that tells you when AI got it wrong.*
 
-
 > **Challenge Time:** Check the [Challenge Hub](CHALLENGES.md) for **Challenge 7: Survive a Merge Conflict**. Follow the steps to resolve it, then move to [Chapter 08: Open Source Culture](08-open-source-culture.md).
 
 ---
-
 
 *Next: [Chapter 08: Open Source Culture](08-open-source-culture.md)*  
 *Back: [Chapter 06: Working with Pull Requests](06-working-with-pull-requests.md)*  
 *Related appendices: [Appendix E: Advanced Git](appendix-e-advanced-git.md)*
 
+## Authoritative Sources
 
+Use these official references when you need the current source of truth for facts in this chapter.
 
+- [GitHub Docs, home](https://docs.github.com/en)
+- [GitHub Changelog](https://github.blog/changelog/)
+- [About Git](https://docs.github.com/en/get-started/using-git/about-git)
+- [GitHub flow](https://docs.github.com/en/get-started/using-github/github-flow)
+- [About pull requests](https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/about-pull-requests)
+- [About issues](https://docs.github.com/en/issues/tracking-your-work-with-issues/about-issues)
+- [Contributing to a project](https://docs.github.com/en/get-started/exploring-projects-on-github/contributing-to-a-project)
+
+### Section-Level Source Map
+
+Use this map to verify facts for each major section in this file.
+
+- **Understanding, Preventing, and Resolving Conflicts:** [GitHub Docs, home](https://docs.github.com/en), [GitHub Changelog](https://github.blog/changelog/), [About Git](https://docs.github.com/en/get-started/using-git/about-git), [GitHub flow](https://docs.github.com/en/get-started/using-github/github-flow), [About pull requests](https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/about-pull-requests)
+- **Workshop Recommendation (Chapter 7):** [GitHub Docs, home](https://docs.github.com/en), [GitHub Changelog](https://github.blog/changelog/), [About Git](https://docs.github.com/en/get-started/using-git/about-git), [GitHub flow](https://docs.github.com/en/get-started/using-github/github-flow), [About pull requests](https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/about-pull-requests)
+- **Local Git Alternative: Resolving Conflicts from Your Terminal:** [GitHub Docs, home](https://docs.github.com/en), [GitHub Changelog](https://github.blog/changelog/), [About Git](https://docs.github.com/en/get-started/using-git/about-git), [GitHub flow](https://docs.github.com/en/get-started/using-github/github-flow), [About pull requests](https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/about-pull-requests)
+- **What Is a Merge Conflict?:** [GitHub Docs, home](https://docs.github.com/en), [GitHub Changelog](https://github.blog/changelog/), [About Git](https://docs.github.com/en/get-started/using-git/about-git), [GitHub flow](https://docs.github.com/en/get-started/using-github/github-flow), [About pull requests](https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/about-pull-requests)
+- **Why Conflicts Happen:** [GitHub Docs, home](https://docs.github.com/en), [GitHub Changelog](https://github.blog/changelog/), [About Git](https://docs.github.com/en/get-started/using-git/about-git), [GitHub flow](https://docs.github.com/en/get-started/using-github/github-flow), [About pull requests](https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/about-pull-requests)
+- **How to Prevent Conflicts (Prevention is Easier Than Resolution):** [GitHub Docs, home](https://docs.github.com/en), [GitHub Changelog](https://github.blog/changelog/), [About Git](https://docs.github.com/en/get-started/using-git/about-git), [GitHub flow](https://docs.github.com/en/get-started/using-github/github-flow), [About pull requests](https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/about-pull-requests)
+- **Advanced Prevention: Understanding Fast-Forward Merges:** [GitHub Docs, home](https://docs.github.com/en), [GitHub Changelog](https://github.blog/changelog/), [About Git](https://docs.github.com/en/get-started/using-git/about-git), [GitHub flow](https://docs.github.com/en/get-started/using-github/github-flow), [About pull requests](https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/about-pull-requests)
+- **When Conflicts Are Actually Good:** [GitHub Docs, home](https://docs.github.com/en), [GitHub Changelog](https://github.blog/changelog/), [About Git](https://docs.github.com/en/get-started/using-git/about-git), [GitHub flow](https://docs.github.com/en/get-started/using-github/github-flow), [About pull requests](https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/about-pull-requests)
+- **Spotting a Conflict on GitHub:** [GitHub Docs, home](https://docs.github.com/en), [GitHub Changelog](https://github.blog/changelog/), [About Git](https://docs.github.com/en/get-started/using-git/about-git), [GitHub flow](https://docs.github.com/en/get-started/using-github/github-flow), [About pull requests](https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/about-pull-requests)
+- **Conflict Markers - What They Mean:** [GitHub Docs, home](https://docs.github.com/en), [GitHub Changelog](https://github.blog/changelog/), [About Git](https://docs.github.com/en/get-started/using-git/about-git), [GitHub flow](https://docs.github.com/en/get-started/using-github/github-flow), [About pull requests](https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/about-pull-requests)
+- **Resolving Conflicts on GitHub (Web Editor):** [GitHub Docs, home](https://docs.github.com/en), [GitHub Changelog](https://github.blog/changelog/), [About Git](https://docs.github.com/en/get-started/using-git/about-git), [GitHub flow](https://docs.github.com/en/get-started/using-github/github-flow), [About pull requests](https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/about-pull-requests)
+- **Resolving Conflicts in VS Code (Day 2):** [GitHub Docs, home](https://docs.github.com/en), [GitHub Changelog](https://github.blog/changelog/), [About Git](https://docs.github.com/en/get-started/using-git/about-git), [GitHub flow](https://docs.github.com/en/get-started/using-github/github-flow), [About pull requests](https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/about-pull-requests)
+- **When You Feel Stuck:** [GitHub Docs, home](https://docs.github.com/en), [GitHub Changelog](https://github.blog/changelog/), [About Git](https://docs.github.com/en/get-started/using-git/about-git), [GitHub flow](https://docs.github.com/en/get-started/using-github/github-flow), [About pull requests](https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/about-pull-requests)
+- **Reading a Conflict Message from Git (Command Line Reference):** [GitHub Docs, home](https://docs.github.com/en), [GitHub Changelog](https://github.blog/changelog/), [About Git](https://docs.github.com/en/get-started/using-git/about-git), [GitHub flow](https://docs.github.com/en/get-started/using-github/github-flow), [About pull requests](https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/about-pull-requests)
+- **Summary Checklist:** [GitHub Docs, home](https://docs.github.com/en), [GitHub Changelog](https://github.blog/changelog/), [About Git](https://docs.github.com/en/get-started/using-git/about-git), [GitHub flow](https://docs.github.com/en/get-started/using-github/github-flow), [About pull requests](https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/about-pull-requests)
+- **Try It: Read a Conflict (Without Fear):** [GitHub Docs, home](https://docs.github.com/en), [GitHub Changelog](https://github.blog/changelog/), [About Git](https://docs.github.com/en/get-started/using-git/about-git), [GitHub flow](https://docs.github.com/en/get-started/using-github/github-flow), [About pull requests](https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/about-pull-requests)

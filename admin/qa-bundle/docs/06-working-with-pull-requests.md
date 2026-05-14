@@ -5,7 +5,6 @@
 > **Related appendices:** [Appendix C: Markdown Reference](appendix-c-markdown-reference.md) | [Appendix B: Screen Reader Cheat Sheet](appendix-b-screen-reader-cheatsheet.md)
 > **Authoritative sources:** [GitHub Docs: About pull requests](https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/about-pull-requests) | [GitHub Accessibility Guide: Pull Requests](https://accessibility.github.com/documentation/guide/pull-requests/)
 
-
 ## Creating, Reviewing, and Merging Pull Requests with a Screen Reader
 
 > **See also:** [Chapter 15: Code Review](15-code-review.md) covers the full review workflow including multi-file diffs and suggested changes.
@@ -25,7 +24,6 @@
 > Full step-by-step instructions with per-screen-reader commands are in [Pre-Workshop Setup, Step 4](00-pre-workshop-setup.md#step-4---check-github-feature-preview-settings).
 >
 > **Browse vs Focus Mode (NVDA):** Use **Browse Mode** (the default) for reading PR conversations, navigating headings, and reviewing diffs. Switch to **Focus Mode** (`NVDA+Space`) only when you need to type in comment boxes or search fields. Switch back to Browse Mode to resume navigation. Maximize your browser window for consistent landmark layout.
-
 
 ## Workshop Recommendation (Chapter 6)
 
@@ -154,7 +152,6 @@ A great PR is small, linked to an issue, and easy to review. Faster feedback bui
 - Feedback is immediate and specific.
 - Success is visible (green checks + closed issue).
 
-
 ### About Learning Cards in This Chapter
 
 This chapter provides learning cards: expandable blocks that offer perspective-specific guidance for different ways of working. Not every card appears at every step. Open the ones that match how you work.
@@ -169,7 +166,6 @@ The following table describes the six learning card types used in this chapter.
 | VoiceOver (macOS) | Screen reader users on macOS | VO key sequences, rotor usage, interaction model |
 | GitHub.com web | All users working in the browser | Browser-based workflows without local tools |
 | CLI (git / gh) | Terminal users on any platform | Git and GitHub CLI commands for PR management |
-
 
 ## Local Git Alternative: The Full Branch-Edit-PR Workflow
 
@@ -226,7 +222,6 @@ The GitHub CLI walks you through title, body, base branch, and reviewers.
 
 </details>
 
-
 ## What Is a Pull Request?
 
 A pull request (PR) is a proposal to merge changes from one branch into another. When you have:
@@ -245,7 +240,6 @@ A PR shows:
 - **Status** - automated checks (CI/CD) and review status
 
 > **Learning Room connection:** In the Learning Room repository, every hands-on contribution follows this pattern. For example, when you complete Challenge 3 (filling the `[TODO]` sections in `docs/welcome.md`), you open a PR that shows your added content as green `+` lines in the diff, your description explains which TODOs you completed and why, and the validation bot posts automated check results. The scenarios in this chapter use Learning Room files so you can follow along with real content.
-
 
 ## Navigating to Pull Requests
 
@@ -331,7 +325,6 @@ gh pr view 42 --web
 - Bookmark the URL pattern `github.com/OWNER/REPO/pulls` to skip navigation entirely
 - The active tab is underlined; open PRs are the default view -- use the "Closed" filter link to toggle
 
-
 ## The Pull Request List Page
 
 The PR list works identically to the Issues list:
@@ -344,7 +337,6 @@ The PR list works identically to the Issues list:
 > **Screen reader note - PR list semantics:** The PR list does **not** have individual ARIA item containers with per-item semantics. To read a PR's full detail (title, author, labels, status), you must navigate sequentially with `Tab` or arrow keys through the elements for each item. Starting from a PR title link, `Tab` forward to find the author, labels, and review status for that same PR before moving to the next title.
 >
 > **Hovercards:** Hovercards appear when you hover over usernames and links in the PR list, adding extra verbosity. To reduce this noise: go to your GitHub Profile → Accessibility settings → disable "Show link previews" and similar hover triggers. This makes sequential navigation significantly less cluttered.
-
 
 ## Anatomy of a Pull Request Page
 
@@ -377,7 +369,6 @@ A PR page has three main tabs:
 [Diff for each file - each file is a heading]
 [Line-level comment threads within diffs]
 ```
-
 
 ## Navigating the PR Tab Bar
 
@@ -421,7 +412,6 @@ The PR tab bar sits just below the PR title and state badge. At high zoom levels
 </details>
 
 Each tab link reads with its name and the count: "Files changed, 3 files changed."
-
 
 ## Reading the Conversation Tab
 
@@ -522,7 +512,6 @@ Resolved conversations are still accessible - they collapse but can be expanded 
 
 </details>
 
-
 ## Reading the Commits Tab
 
 ```text
@@ -532,7 +521,6 @@ Step 3: I to navigate individual commits within a date group
 Step 4: Each commit: SHA link, message, author, [Verified] badge if signed
 Step 5: Enter on a commit to open its diff
 ```
-
 
 ## Reading the Checks Tab
 
@@ -578,7 +566,6 @@ The Checks tab shows the status of automated tests, CI workflows, and other veri
 - Scan the Checks tab for a row of green checkmarks (all passed) or spot a red X (failed); the summary banner at the top reads "All checks have passed" or "Some checks were not successful"
 - Click any check name to expand its step log inline; failed steps are bolded and marked with a red X so you can skip passing steps quickly
 - The "Re-run" button (circular arrow) appears next to each check for maintainers; use it to retry a flaky check without pushing a new commit
-
 
 ## Reading the Files Changed Tab
 
@@ -775,7 +762,6 @@ Inline comments appear as expandable threads within the diff table. Navigate to 
 - Hover over any line number in the diff to reveal a blue "+" button for adding an inline review comment
 
 </details>
-
 
 ## Opening a Pull Request
 
@@ -1030,7 +1016,6 @@ From the sidebar Reviewers section:
 
 > **Why some reviews are requested automatically:** A file called `CODEOWNERS` in many repositories maps file paths to specific people or teams. When your PR touches a file covered by a CODEOWNERS rule, GitHub automatically adds those people as required reviewers - you'll see them appear in the Reviewers sidebar without you adding them. You cannot remove a CODEOWNERS-required reviewer. If a required reviewer hasn't responded, reach out to them directly or leave a comment on the PR.
 
-
 ## Submitting a Review
 
 When you are asked to review a PR, you have three options:
@@ -1262,7 +1247,6 @@ your proposed text here
 - As a PR author, each suggestion shows an "Apply suggestion" button and an "Add suggestion to batch" button; use batching to combine several suggestions into one clean commit
 - Applied suggestions auto-resolve the conversation thread and create a commit attributed to both the reviewer (author of the suggestion) and you (committer)
 
-
 ## Understanding Merge Options (for Maintainers)
 
 When a PR is approved and checks pass, a maintainer can merge it. The merge button section appears at the bottom of the Conversation tab.
@@ -1313,7 +1297,6 @@ gh pr merge 42 --auto --squash
 
 > **Screen reader tip - deleting the branch after merge:** Navigate to the "Add a comment" section (`D`), then press `Shift+B` to navigate backwards to the **"Delete branch"** button and activate it. This keeps your repository clean by removing the now-merged feature branch.
 
-
 ## Auto-Merge - Merging When You Can't Wait Around
 
 **Auto-merge** lets you pre-authorize a PR to merge automatically the moment all branch protection requirements are satisfied - required reviews approved, all status checks passing, and the branch up to date.
@@ -1358,7 +1341,6 @@ Merge box → Tab → "Disable auto-merge" button → Enter
 
 > **Note:** Auto-merge is only available if the repository administrator has enabled it in Settings → General. Many open source repos have it on; some do not.
 
-
 ## Practical Scenarios
 
 ### Scenario A: "I want to review an assigned PR"
@@ -1396,7 +1378,6 @@ Merge box → Tab → "Disable auto-merge" button → Enter
 4. Edit the file to resolve → Mark as resolved → Commit merge
 ```
 
-
 ## Common PR Mistakes to Avoid
 
 | Mistake | Better Approach |
@@ -1407,7 +1388,6 @@ Merge box → Tab → "Disable auto-merge" button → Enter
 | Pushing many unrelated changes in one PR | One PR per logical change (smaller PRs get faster reviews) |
 | Not testing your own changes | Test before requesting review |
 | Not responding to reviewer comments | Acknowledge all comments, even if you disagree |
-
 
 ## Writing PR Descriptions That Get Reviewed
 
@@ -1591,7 +1571,6 @@ This version answers every question a reviewer has before they touch the diff. T
 
 </details>
 
-
 ## Try It: Read a Real Pull Request
 
 **Time:** 3 minutes | **What you need:** Browser, signed in to GitHub
@@ -1608,7 +1587,6 @@ Go to the Learning Room repository's Pull Requests tab and find any open or rece
 
 > **What success feels like:** You followed a PR from description to diff using only headings and landmarks. The next time you open a PR - yours or someone else's - you'll know exactly where everything is.
 
-
 > ### Day 2 Amplifier - Accessibility Agents: `@pr-review`
 >
 > **Review at least two pull requests manually before using any agent.** A review generated by `@pr-review` is only as useful as your ability to read, edit, and challenge it. The agent writes a first draft - you supply the context, the history, and the final judgment that no diff can contain.
@@ -1621,16 +1599,43 @@ Go to the Learning Room repository's Pull Requests tab and find any open or rece
 >
 > *The agent documents the diff. You bring the context that no diff can contain.*
 
-
 > **Challenge Time:** Go to the [Challenge Hub](CHALLENGES.md) and complete **Challenges 4, 5, and 6** to open your first PR. Aria will guide you from there.
 
 ---
-
 
 *Next: [Chapter 07: Merge Conflicts](07-merge-conflicts.md)*  
 *Back: [Chapter 05: Working with Issues](05-working-with-issues.md)*  
 *Related appendices: [Appendix C: Markdown Reference](appendix-c-markdown-reference.md) | [Appendix B: Screen Reader Cheat Sheet](appendix-b-screen-reader-cheatsheet.md)*
 
+## Authoritative Sources
 
+Use these official references when you need the current source of truth for facts in this chapter.
 
+- [GitHub Docs, home](https://docs.github.com/en)
+- [GitHub Changelog](https://github.blog/changelog/)
+- [About Git](https://docs.github.com/en/get-started/using-git/about-git)
+- [GitHub flow](https://docs.github.com/en/get-started/using-github/github-flow)
+- [About pull requests](https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/about-pull-requests)
+- [About issues](https://docs.github.com/en/issues/tracking-your-work-with-issues/about-issues)
+- [Contributing to a project](https://docs.github.com/en/get-started/exploring-projects-on-github/contributing-to-a-project)
 
+### Section-Level Source Map
+
+Use this map to verify facts for each major section in this file.
+
+- **Creating, Reviewing, and Merging Pull Requests with a Screen Reader:** [GitHub Docs, home](https://docs.github.com/en), [GitHub Changelog](https://github.blog/changelog/), [About Git](https://docs.github.com/en/get-started/using-git/about-git), [GitHub flow](https://docs.github.com/en/get-started/using-github/github-flow), [About pull requests](https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/about-pull-requests)
+- **Workshop Recommendation (Chapter 6):** [GitHub Docs, home](https://docs.github.com/en), [GitHub Changelog](https://github.blog/changelog/), [About Git](https://docs.github.com/en/get-started/using-git/about-git), [GitHub flow](https://docs.github.com/en/get-started/using-github/github-flow), [About pull requests](https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/about-pull-requests)
+- **Local Git Alternative: The Full Branch-Edit-PR Workflow:** [GitHub Docs, home](https://docs.github.com/en), [GitHub Changelog](https://github.blog/changelog/), [About Git](https://docs.github.com/en/get-started/using-git/about-git), [GitHub flow](https://docs.github.com/en/get-started/using-github/github-flow), [About pull requests](https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/about-pull-requests)
+- **What Is a Pull Request?:** [GitHub Docs, home](https://docs.github.com/en), [GitHub Changelog](https://github.blog/changelog/), [About Git](https://docs.github.com/en/get-started/using-git/about-git), [GitHub flow](https://docs.github.com/en/get-started/using-github/github-flow), [About pull requests](https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/about-pull-requests)
+- **Navigating to Pull Requests:** [GitHub Docs, home](https://docs.github.com/en), [GitHub Changelog](https://github.blog/changelog/), [About Git](https://docs.github.com/en/get-started/using-git/about-git), [GitHub flow](https://docs.github.com/en/get-started/using-github/github-flow), [About pull requests](https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/about-pull-requests)
+- **The Pull Request List Page:** [GitHub Docs, home](https://docs.github.com/en), [GitHub Changelog](https://github.blog/changelog/), [About Git](https://docs.github.com/en/get-started/using-git/about-git), [GitHub flow](https://docs.github.com/en/get-started/using-github/github-flow), [About pull requests](https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/about-pull-requests)
+- **Anatomy of a Pull Request Page:** [GitHub Docs, home](https://docs.github.com/en), [GitHub Changelog](https://github.blog/changelog/), [About Git](https://docs.github.com/en/get-started/using-git/about-git), [GitHub flow](https://docs.github.com/en/get-started/using-github/github-flow), [About pull requests](https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/about-pull-requests)
+- **Navigating the PR Tab Bar:** [GitHub Docs, home](https://docs.github.com/en), [GitHub Changelog](https://github.blog/changelog/), [About Git](https://docs.github.com/en/get-started/using-git/about-git), [GitHub flow](https://docs.github.com/en/get-started/using-github/github-flow), [About pull requests](https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/about-pull-requests)
+- **Reading the Conversation Tab:** [GitHub Docs, home](https://docs.github.com/en), [GitHub Changelog](https://github.blog/changelog/), [About Git](https://docs.github.com/en/get-started/using-git/about-git), [GitHub flow](https://docs.github.com/en/get-started/using-github/github-flow), [About pull requests](https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/about-pull-requests)
+- **Reading the Commits Tab:** [GitHub Docs, home](https://docs.github.com/en), [GitHub Changelog](https://github.blog/changelog/), [About Git](https://docs.github.com/en/get-started/using-git/about-git), [GitHub flow](https://docs.github.com/en/get-started/using-github/github-flow), [About pull requests](https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/about-pull-requests)
+- **Reading the Checks Tab:** [GitHub Docs, home](https://docs.github.com/en), [GitHub Changelog](https://github.blog/changelog/), [About Git](https://docs.github.com/en/get-started/using-git/about-git), [GitHub flow](https://docs.github.com/en/get-started/using-github/github-flow), [About pull requests](https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/about-pull-requests)
+- **Reading the Files Changed Tab:** [GitHub Docs, home](https://docs.github.com/en), [GitHub Changelog](https://github.blog/changelog/), [About Git](https://docs.github.com/en/get-started/using-git/about-git), [GitHub flow](https://docs.github.com/en/get-started/using-github/github-flow), [About pull requests](https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/about-pull-requests)
+- **Opening a Pull Request:** [GitHub Docs, home](https://docs.github.com/en), [GitHub Changelog](https://github.blog/changelog/), [About Git](https://docs.github.com/en/get-started/using-git/about-git), [GitHub flow](https://docs.github.com/en/get-started/using-github/github-flow), [About pull requests](https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/about-pull-requests)
+- **Summary:** [GitHub Docs, home](https://docs.github.com/en), [GitHub Changelog](https://github.blog/changelog/), [About Git](https://docs.github.com/en/get-started/using-git/about-git), [GitHub flow](https://docs.github.com/en/get-started/using-github/github-flow), [About pull requests](https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/about-pull-requests)
+- **Changes:** [GitHub Docs, home](https://docs.github.com/en), [GitHub Changelog](https://github.blog/changelog/), [About Git](https://docs.github.com/en/get-started/using-git/about-git), [GitHub flow](https://docs.github.com/en/get-started/using-github/github-flow), [About pull requests](https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/about-pull-requests)
+- **Screenshots / recordings:** [GitHub Docs, home](https://docs.github.com/en), [GitHub Changelog](https://github.blog/changelog/), [About Git](https://docs.github.com/en/get-started/using-git/about-git), [GitHub flow](https://docs.github.com/en/get-started/using-github/github-flow), [About pull requests](https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/about-pull-requests)

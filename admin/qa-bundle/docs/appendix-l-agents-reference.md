@@ -10,7 +10,6 @@
 
 > This is your comprehensive reference for Accessibility Agents and the full VS Code Copilot customization system. The ecosystem includes **55 agents** across **3 teams** and **5 platforms**, plus 54+ slash commands, 17 skills, and 6 instruction files. For the lesson, see [Chapter 19: Accessibility Agents](19-accessibility-agents.md). For Copilot keyboard shortcuts and Chat features, see [Appendix K: GitHub Copilot Reference](appendix-k-copilot-reference.md).
 
-
 ## Table of Contents
 
 1. [The Full Agent Ecosystem](#1-the-full-agent-ecosystem)
@@ -27,7 +26,6 @@
 12. [preferences.md - Accessibility Agents Personal Settings](#12-preferencesmd---accessibility-agents-personal-settings)
 13. [Diagnostics and Troubleshooting](#13-diagnostics-and-troubleshooting)
 14. [Further Reading](#14-further-reading)
-
 
 ## 1. The Full Agent Ecosystem
 
@@ -112,7 +110,6 @@ Accessibility Agents includes 55 agents organized into three specialized teams, 
 | Claude Code hooks | 3 | `.claude/hooks/` |
 | Example violations | 20+ | `example/` directory |
 
-
 ### Learning Cards: Agent Ecosystem Overview
 
 <details>
@@ -142,11 +139,9 @@ Accessibility Agents includes 55 agents organized into three specialized teams, 
 
 </details>
 
-
 ## 2. GitHub Workflow Agents - Quick Reference
 
 The GitHub Workflow team includes 12 agents that automate common repository operations. These are good starting points if you have completed the Day 1 skills - but explore any agent in the ecosystem that matches your workflow.\n\nInvoke any agent by typing `@agent-name` in Copilot Chat (`Ctrl+Alt+I` or **Chat: Open Chat**).
-
 
 ### `@daily-briefing` - Morning Briefing
 
@@ -170,7 +165,6 @@ The GitHub Workflow team includes 12 agents that automate common repository oper
   - Security and Dependabot Alerts
 - All Clear (confirms checked but empty categories)
 
-
 ### `@issue-tracker` - Issue Management
 
 **Agent file:** `.github/agents/issue-tracker.agent.md`
@@ -183,7 +177,6 @@ The GitHub Workflow team includes 12 agents that automate common repository oper
 | `@issue-tracker draft a reply to issue #15` | Draft a response (you review before posting) |
 
 **Important:** The agent drafts replies. You post. Always review tone against the [Culture & Etiquette guide](08-open-source-culture.md).
-
 
 ### `@pr-review` - Pull Request Review
 
@@ -208,7 +201,6 @@ The GitHub Workflow team includes 12 agents that automate common repository oper
 
 **Critical rule:** The agent produces a starting point. Read it, edit it, post it under your own name.
 
-
 ### `@analytics` - Team Analytics
 
 **Agent file:** `.github/agents/analytics.agent.md`
@@ -219,7 +211,6 @@ The GitHub Workflow team includes 12 agents that automate common repository oper
 | `@analytics who are the most active contributors?` | Top contributors by commits and reviews |
 | `@analytics which files are changed most often?` | Code hotspot detection |
 | `@analytics how long does PR review take on average?` | Review turnaround time |
-
 
 ### `@insiders-a11y-tracker` - Accessibility Change Monitor
 
@@ -242,7 +233,6 @@ The GitHub Workflow team includes 12 agents that automate common repository oper
 
 **Risk levels:** High (regression), Medium (degraded), Low (improvement opportunity)
 
-
 ### `@template-builder` - Issue Template Wizard
 
 **Agent file:** `.github/agents/template-builder.agent.md`
@@ -261,7 +251,6 @@ The GitHub Workflow team includes 12 agents that automate common repository oper
 3. **Review and output:** complete YAML ready to save to `.github/ISSUE_TEMPLATE/`
 
 **Supported field types:** `markdown`, `input`, `textarea`, `dropdown`, `checkboxes`
-
 
 ## 3. Slash Commands and Prompts
 
@@ -312,7 +301,6 @@ The repository includes 54+ slash commands. Type `/` in Copilot Chat to open the
 | `/daily-briefing` | `/daily-briefing` - same output as `@daily-briefing` |
 | `/draft-release` | `/draft-release v2.0` - generate release notes from merged PRs |
 
-
 ## 4. Customization Primitives - Decision Guide
 
 Before creating any file, choose the right primitive for the job. Each primitive is a different file type with a different purpose, scope, and trigger.
@@ -345,7 +333,6 @@ Before creating any file, choose the right primitive for the job. Each primitive
 
 - Instructions *guide* the agent (non-deterministic). Hooks *enforce* behavior via shell commands at lifecycle events - they run regardless of what the agent was prompted to do.
 
-
 ### Learning Cards: Customization Primitives
 
 <details>
@@ -374,7 +361,6 @@ Before creating any file, choose the right primitive for the job. Each primitive
 - If in doubt, start with a `.prompt.md` file for a focused task; graduate to `.agent.md` only when you need multi-step tool orchestration
 
 </details>
-
 
 ## 5. Scope and Priority - All Levels
 
@@ -431,7 +417,6 @@ To sync user instructions/prompts/agents across devices:
 
 VS Code collects **all** matching instruction files from all scopes and includes them all in the chat context. There is no single winner - all are combined. Priority only resolves conflicts between contradictory instructions.
 
-
 ## 6. Always-On Instructions - All File Types
 
 Always-on instructions are automatically included in every chat request. You never invoke them - Copilot simply follows them.
@@ -472,7 +457,6 @@ Always-on instructions are automatically included in every chat request. You nev
 
 **Auto-generate with:** Type `/init` in Copilot Chat - VS Code analyzes your workspace and generates a tailored `copilot-instructions.md`.
 
-
 ### Option B: `AGENTS.md` (Multi-Tool / Monorepo)
 
 **Best for:** Projects that use multiple AI tools (Copilot, Claude Code, Gemini CLI, etc.) where a single instruction file should work across all of them. Also best for monorepos where different folders need different rules.
@@ -499,7 +483,6 @@ Enable nested file support: `chat.useNestedAgentsMdFiles: true` in VS Code setti
 
 **Rule:** Use either `AGENTS.md` or `copilot-instructions.md` - not both.
 
-
 ### Option C: `CLAUDE.md` (Claude Code Compatibility)
 
 **Best for:** Teams that use Claude Code alongside VS Code. One file, recognized by both.
@@ -520,7 +503,6 @@ description: "Python coding standards"
 paths: ["**/*.py", "src/**"]
 Follow PEP 8. Use type hints. Write docstrings for public functions.
 ```
-
 
 ### Option D: Settings-Based Instructions (Deprecated)
 
@@ -550,7 +532,6 @@ For specialized scenarios, VS Code settings accept inline instructions or file r
 
 Each entry is an array of objects with either `text` (inline instruction) or `file` (path to an instructions file relative to workspace root).
 
-
 ### Organization-Level Instructions (GitHub Enterprise)
 
 Organization administrators can define custom instructions that apply to all repositories in the organization. Every team member gets these instructions automatically.
@@ -565,7 +546,6 @@ Organization administrators can define custom instructions that apply to all rep
 ```
 
 Organization instructions are the lowest priority - workspace and user instructions override them when they conflict.
-
 
 ## 7. File-Based Instructions (`.instructions.md`)
 
@@ -684,7 +664,6 @@ Guidance from GitHub's accessibility team on writing instructions that Copilot a
 #### Quick creation method
 
 Type `/instructions` in the Chat input to open the Configure Instructions menu.
-
 
 ## 8. `.agent.md` - Complete Format Reference
 
@@ -851,7 +830,6 @@ When asked to [task]:
 - The tool combinations table in this section shows common patterns by use case -- scan the comments (e.g., "Read-only research", "Full GitHub workflow") to find the right tool set
 - The invocation control table explains `user-invocable` and `disable-model-invocation` flags -- set `user-invocable: false` to create helper agents that only other agents can call
 
-
 ## 9. `.prompt.md` - Complete Format Reference
 
 ### File Locations
@@ -947,7 +925,6 @@ For each finding include:
 
 **Both prompts and agent skills appear as `/` slash commands.** The difference: prompts are single-task Markdown files; skills are folders with bundled scripts and references.
 
-
 ### Learning Cards: Prompts and Slash Commands
 
 <details>
@@ -976,7 +953,6 @@ For each finding include:
 - Copy an existing `.prompt.md` file as a template when creating new commands -- the frontmatter structure is the same for all prompts
 
 </details>
-
 
 ## 10. Agent Skills (`SKILL.md`) - Complete Format Reference
 
@@ -1063,7 +1039,6 @@ description: "Audit Markdown files for accessibility violations. Use for heading
 - Low risk: improvement opportunities
 - Include WCAG criterion for each finding
 ```
-
 
 ## 11. Hooks (`.json`) - Lifecycle Automation
 
@@ -1181,7 +1156,6 @@ Permission decisions: `"allow"` | `"ask"` (prompt user) | `"deny"` (block the to
 - The configuration format example shows the JSON structure with `command`, `timeout`, and platform-specific overrides -- copy this template and modify the command paths for your project
 - Hooks from workspace (`.github/hooks/`) and user (`~/.claude/settings.json`) locations are combined, not overridden -- check both locations if a hook is firing unexpectedly
 
-
 ## 12. `preferences.md` - Accessibility Agents Personal Settings
 
 Copy `.github/agents/preferences.example.md` to `.github/agents/preferences.md`. The file is in `.gitignore` - your private settings stay only in your local fork.
@@ -1261,7 +1235,6 @@ I use Narrator with Edge on Windows 11.
 I use TalkBack on Android.
 ```
 
-
 ## 13. Diagnostics and Troubleshooting
 
 ### View All Loaded Customizations
@@ -1299,7 +1272,6 @@ This shows: which files were found, which were loaded, which have errors, and fr
 2. `Ctrl+Shift+P` → "Reload Window"
 3. File must use `.prompt.md` extension (not just `.md`)
 
-
 ## Accessibility Agents Keyboard Shortcuts
 
 | Action | Shortcut |
@@ -1314,7 +1286,6 @@ This shows: which files were found, which were loaded, which have errors, and fr
 | New instructions file | `Ctrl+Shift+P` → "Chat: New Instructions File" |
 | Configure instructions | `Ctrl+Shift+P` → "Chat: Configure Instructions" |
 | View diagnostics | Configure Chat gear → Diagnostics |
-
 
 ## 14. Further Reading
 
@@ -1334,3 +1305,39 @@ For the broader ecosystem - the community plugin marketplace, MCP server integra
 *Back: [Appendix K: Copilot Reference](appendix-k-copilot-reference.md)*  
 *Teaching chapter: [Chapter 19: Accessibility Agents](19-accessibility-agents.md)*
 
+## Authoritative Sources
+
+Use these official references when you need the current source of truth for facts in this chapter.
+
+- [GitHub Docs, home](https://docs.github.com/en)
+- [GitHub Changelog](https://github.blog/changelog/)
+- [GitHub Copilot docs](https://docs.github.com/en/copilot)
+- [Custom instructions support matrix](https://docs.github.com/en/copilot/reference/custom-instructions-support)
+- [About custom agents](https://docs.github.com/en/copilot/concepts/agents/cloud-agent/about-custom-agents)
+- [About agent skills](https://docs.github.com/en/copilot/concepts/agents/about-agent-skills)
+- [About auto model selection](https://docs.github.com/en/copilot/concepts/auto-model-selection)
+- [Copilot changelog feed](https://github.blog/changelog/label/copilot/)
+- [VS Code Copilot chat overview](https://code.visualstudio.com/docs/copilot/chat/copilot-chat)
+- [VS Code agent overview](https://code.visualstudio.com/docs/copilot/agents/overview)
+- [VS Code custom instructions](https://code.visualstudio.com/docs/copilot/customization/custom-instructions)
+
+### Section-Level Source Map
+
+Use this map to verify facts for each major section in this file.
+
+- **Complete Reference - Agents, Slash Commands, Instructions, Configuration Levels, and All File Formats:** [GitHub Docs, home](https://docs.github.com/en), [GitHub Changelog](https://github.blog/changelog/), [GitHub Copilot docs](https://docs.github.com/en/copilot), [Custom instructions support matrix](https://docs.github.com/en/copilot/reference/custom-instructions-support), [About custom agents](https://docs.github.com/en/copilot/concepts/agents/cloud-agent/about-custom-agents)
+- **1. The Full Agent Ecosystem:** [GitHub Docs, home](https://docs.github.com/en), [GitHub Changelog](https://github.blog/changelog/), [GitHub Copilot docs](https://docs.github.com/en/copilot), [Custom instructions support matrix](https://docs.github.com/en/copilot/reference/custom-instructions-support), [About custom agents](https://docs.github.com/en/copilot/concepts/agents/cloud-agent/about-custom-agents)
+- **2. GitHub Workflow Agents - Quick Reference:** [GitHub Docs, home](https://docs.github.com/en), [GitHub Changelog](https://github.blog/changelog/), [GitHub Copilot docs](https://docs.github.com/en/copilot), [Custom instructions support matrix](https://docs.github.com/en/copilot/reference/custom-instructions-support), [About custom agents](https://docs.github.com/en/copilot/concepts/agents/cloud-agent/about-custom-agents)
+- **3. Slash Commands and Prompts:** [GitHub Docs, home](https://docs.github.com/en), [GitHub Changelog](https://github.blog/changelog/), [GitHub Copilot docs](https://docs.github.com/en/copilot), [Custom instructions support matrix](https://docs.github.com/en/copilot/reference/custom-instructions-support), [About custom agents](https://docs.github.com/en/copilot/concepts/agents/cloud-agent/about-custom-agents)
+- **4. Customization Primitives - Decision Guide:** [GitHub Docs, home](https://docs.github.com/en), [GitHub Changelog](https://github.blog/changelog/), [GitHub Copilot docs](https://docs.github.com/en/copilot), [Custom instructions support matrix](https://docs.github.com/en/copilot/reference/custom-instructions-support), [About custom agents](https://docs.github.com/en/copilot/concepts/agents/cloud-agent/about-custom-agents)
+- **5. Scope and Priority - All Levels:** [GitHub Docs, home](https://docs.github.com/en), [GitHub Changelog](https://github.blog/changelog/), [GitHub Copilot docs](https://docs.github.com/en/copilot), [Custom instructions support matrix](https://docs.github.com/en/copilot/reference/custom-instructions-support), [About custom agents](https://docs.github.com/en/copilot/concepts/agents/cloud-agent/about-custom-agents)
+- **6. Always-On Instructions - All File Types:** [GitHub Docs, home](https://docs.github.com/en), [GitHub Changelog](https://github.blog/changelog/), [GitHub Copilot docs](https://docs.github.com/en/copilot), [Custom instructions support matrix](https://docs.github.com/en/copilot/reference/custom-instructions-support), [About custom agents](https://docs.github.com/en/copilot/concepts/agents/cloud-agent/about-custom-agents)
+- **Accessibility Standards:** [GitHub Docs, home](https://docs.github.com/en), [GitHub Changelog](https://github.blog/changelog/), [GitHub Copilot docs](https://docs.github.com/en/copilot), [Custom instructions support matrix](https://docs.github.com/en/copilot/reference/custom-instructions-support), [About custom agents](https://docs.github.com/en/copilot/concepts/agents/cloud-agent/about-custom-agents)
+- **Documentation Style:** [GitHub Docs, home](https://docs.github.com/en), [GitHub Changelog](https://github.blog/changelog/), [GitHub Copilot docs](https://docs.github.com/en/copilot), [Custom instructions support matrix](https://docs.github.com/en/copilot/reference/custom-instructions-support), [About custom agents](https://docs.github.com/en/copilot/concepts/agents/cloud-agent/about-custom-agents)
+- **Commit Message Format:** [GitHub Docs, home](https://docs.github.com/en), [GitHub Changelog](https://github.blog/changelog/), [GitHub Copilot docs](https://docs.github.com/en/copilot), [Custom instructions support matrix](https://docs.github.com/en/copilot/reference/custom-instructions-support), [About custom agents](https://docs.github.com/en/copilot/concepts/agents/cloud-agent/about-custom-agents)
+- **7. File-Based Instructions (`.instructions.md`):** [GitHub Docs, home](https://docs.github.com/en), [GitHub Changelog](https://github.blog/changelog/), [GitHub Copilot docs](https://docs.github.com/en/copilot), [Custom instructions support matrix](https://docs.github.com/en/copilot/reference/custom-instructions-support), [About custom agents](https://docs.github.com/en/copilot/concepts/agents/cloud-agent/about-custom-agents)
+- **8. `.agent.md` - Complete Format Reference:** [GitHub Docs, home](https://docs.github.com/en), [GitHub Changelog](https://github.blog/changelog/), [GitHub Copilot docs](https://docs.github.com/en/copilot), [Custom instructions support matrix](https://docs.github.com/en/copilot/reference/custom-instructions-support), [About custom agents](https://docs.github.com/en/copilot/concepts/agents/cloud-agent/about-custom-agents)
+- **Output Format:** [GitHub Docs, home](https://docs.github.com/en), [GitHub Changelog](https://github.blog/changelog/), [GitHub Copilot docs](https://docs.github.com/en/copilot), [Custom instructions support matrix](https://docs.github.com/en/copilot/reference/custom-instructions-support), [About custom agents](https://docs.github.com/en/copilot/concepts/agents/cloud-agent/about-custom-agents)
+- **[Section Header]:** [GitHub Docs, home](https://docs.github.com/en), [GitHub Changelog](https://github.blog/changelog/), [GitHub Copilot docs](https://docs.github.com/en/copilot), [Custom instructions support matrix](https://docs.github.com/en/copilot/reference/custom-instructions-support), [About custom agents](https://docs.github.com/en/copilot/concepts/agents/cloud-agent/about-custom-agents)
+- **Accessibility Requirements:** [GitHub Docs, home](https://docs.github.com/en), [GitHub Changelog](https://github.blog/changelog/), [GitHub Copilot docs](https://docs.github.com/en/copilot), [Custom instructions support matrix](https://docs.github.com/en/copilot/reference/custom-instructions-support), [About custom agents](https://docs.github.com/en/copilot/concepts/agents/cloud-agent/about-custom-agents)
+- **Scope Boundaries:** [GitHub Docs, home](https://docs.github.com/en), [GitHub Changelog](https://github.blog/changelog/), [GitHub Copilot docs](https://docs.github.com/en/copilot), [Custom instructions support matrix](https://docs.github.com/en/copilot/reference/custom-instructions-support), [About custom agents](https://docs.github.com/en/copilot/concepts/agents/cloud-agent/about-custom-agents)

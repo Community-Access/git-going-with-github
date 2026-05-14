@@ -3,10 +3,11 @@
 > **Related appendices:** [Appendix X: Resources](appendix-x-resources.md) | [Appendix Z: GitHub Skills](appendix-z-github-skills.md) | [Appendix Y: Workshop Materials](appendix-y-workshop-materials.md)
 > **Authoritative sources:** [GitHub Skills](https://skills.github.com/) | [GitHub Docs: Getting started](https://docs.github.com/en/get-started)
 
-
 > **Day 2, Closing Material**
 >
 > Congratulations -- you have completed the Git Going with GitHub workshop. This chapter is your graduation guide: what you accomplished, where to go next, how to build your portfolio, and how to stay connected with the community.
+>
+> If you are following the companion audio path, this lesson is intentionally the final stop. Reference episodes may help you look up details, but this chapter brings you back to the bigger question: what will you do next with the skills you now have?
 
 ## Table of Contents
 
@@ -47,11 +48,11 @@ Take a moment to appreciate what you accomplished. This is not a list of what yo
 - Created an issue template
 - Forked a repository and contributed using the open source workflow
 - Explored the accessibility agents ecosystem
-- Built and contributed your own accessibility agent (capstone)
+- Completed a capstone contribution path by designing or improving an agentic asset for Accessibility Agents, GLOW, or another repository
 
 ### The evidence
 
-Your GitHub profile now contains real activity: issues filed, pull requests merged, code reviewed, and an agent contributed to an open source project. This is not a certificate. It is a commit history.
+Your GitHub profile now contains real activity: issues filed, pull requests merged, code reviewed, and capstone evidence prepared for a real repository. This is not a certificate. It is a commit history.
 
 ---
 
@@ -105,7 +106,7 @@ I am a developer focused on [your interests].
 
 ## Recent work
 
-- Contributed an accessibility agent to [Community-Access/accessibility-agents](https://github.com/Community-Access/accessibility-agents)
+- Prepared a capstone contribution for Accessibility Agents, GLOW, or another repository
 - Completed the Git Going with GitHub workshop
 
 ## What I am learning
@@ -278,6 +279,10 @@ You have already practiced every step of this workflow. This is the real thing.
 
 ## If You Get Stuck After the Workshop
 
+Before you open a new browser tab and search the whole internet, use the workshop support path you already practiced. Start with the [Course Guide](course-guide.md) when you need the map, the [Challenge Hub](CHALLENGES.md) when you need the challenge-by-challenge checklist, and [Get Going with GitHub](get-going.md) when you need the onboarding path again. These pages are not separate podcast episodes because they are navigation aids, but this closing chapter is the right place to name them.
+
+If you need human help, use the Community Access support hub. Include what you tried, what happened, what you expected, your operating system, and the screen reader or access tools you are using. That is the same evidence habit you practiced in issues and pull requests.
+
 | Problem | What to do |
 |---|---|
 | Forgot how to do something from the workshop | Search the [course guide](../course-guide.md) by topic. Every major skill links to the chapter and appendix that covers it. |
@@ -285,7 +290,6 @@ You have already practiced every step of this workflow. This is the real thing.
 | VS Code extension not working | Check the extension's page in the marketplace for known issues. Try disabling and re-enabling it. |
 | Want to contribute but do not know where to start | Search for `good first issue` labels on projects that interest you. See [Section 4: Continued Learning Roadmap](#4-continued-learning-roadmap). |
 | Need help from the community | Post in [Support Hub Discussions](https://github.com/Community-Access/support/discussions) or file a [support issue](https://github.com/Community-Access/support/issues). |
-
 
 ## 8. Final Words
 
@@ -302,3 +306,30 @@ Keep committing.
 *Back: [Chapter 20: Build Your Agent](20-build-your-agent.md)*  
 *Related appendices: [Appendix X: Resources](appendix-x-resources.md) | [Appendix Z: GitHub Skills](appendix-z-github-skills.md)*
 
+## Authoritative Sources
+
+Use these official references when you need the current source of truth for facts in this chapter.
+
+- [GitHub Docs, home](https://docs.github.com/en)
+- [GitHub Changelog](https://github.blog/changelog/)
+- [About Git](https://docs.github.com/en/get-started/using-git/about-git)
+- [GitHub flow](https://docs.github.com/en/get-started/using-github/github-flow)
+- [About pull requests](https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/about-pull-requests)
+- [About issues](https://docs.github.com/en/issues/tracking-your-work-with-issues/about-issues)
+- [Contributing to a project](https://docs.github.com/en/get-started/exploring-projects-on-github/contributing-to-a-project)
+
+### Section-Level Source Map
+
+Use this map to verify facts for each major section in this file.
+
+- **1. What You Built in Two Days:** [GitHub Docs, home](https://docs.github.com/en), [GitHub Changelog](https://github.blog/changelog/), [About Git](https://docs.github.com/en/get-started/using-git/about-git), [GitHub flow](https://docs.github.com/en/get-started/using-github/github-flow), [About pull requests](https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/about-pull-requests)
+- **2. Your New Skills Inventory:** [GitHub Docs, home](https://docs.github.com/en), [GitHub Changelog](https://github.blog/changelog/), [About Git](https://docs.github.com/en/get-started/using-git/about-git), [GitHub flow](https://docs.github.com/en/get-started/using-github/github-flow), [About pull requests](https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/about-pull-requests)
+- **3. Building Your Developer Portfolio:** [GitHub Docs, home](https://docs.github.com/en), [GitHub Changelog](https://github.blog/changelog/), [About Git](https://docs.github.com/en/get-started/using-git/about-git), [GitHub flow](https://docs.github.com/en/get-started/using-github/github-flow), [About pull requests](https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/about-pull-requests)
+- **Recent work:** [GitHub Docs, home](https://docs.github.com/en), [GitHub Changelog](https://github.blog/changelog/), [About Git](https://docs.github.com/en/get-started/using-git/about-git), [GitHub flow](https://docs.github.com/en/get-started/using-github/github-flow), [About pull requests](https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/about-pull-requests)
+- **What I am learning:** [GitHub Docs, home](https://docs.github.com/en), [GitHub Changelog](https://github.blog/changelog/), [About Git](https://docs.github.com/en/get-started/using-git/about-git), [GitHub flow](https://docs.github.com/en/get-started/using-github/github-flow), [About pull requests](https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/about-pull-requests)
+- **4. Continued Learning Roadmap:** [GitHub Docs, home](https://docs.github.com/en), [GitHub Changelog](https://github.blog/changelog/), [About Git](https://docs.github.com/en/get-started/using-git/about-git), [GitHub flow](https://docs.github.com/en/get-started/using-github/github-flow), [About pull requests](https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/about-pull-requests)
+- **5. GitHub Skills Courses to Try Next:** [GitHub Docs, home](https://docs.github.com/en), [GitHub Changelog](https://github.blog/changelog/), [About Git](https://docs.github.com/en/get-started/using-git/about-git), [GitHub flow](https://docs.github.com/en/get-started/using-github/github-flow), [About pull requests](https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/about-pull-requests)
+- **6. Staying Connected:** [GitHub Docs, home](https://docs.github.com/en), [GitHub Changelog](https://github.blog/changelog/), [About Git](https://docs.github.com/en/get-started/using-git/about-git), [GitHub flow](https://docs.github.com/en/get-started/using-github/github-flow), [About pull requests](https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/about-pull-requests)
+- **7. Contributing Back to This Workshop:** [GitHub Docs, home](https://docs.github.com/en), [GitHub Changelog](https://github.blog/changelog/), [About Git](https://docs.github.com/en/get-started/using-git/about-git), [GitHub flow](https://docs.github.com/en/get-started/using-github/github-flow), [About pull requests](https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/about-pull-requests)
+- **If You Get Stuck After the Workshop:** [GitHub Docs, home](https://docs.github.com/en), [GitHub Changelog](https://github.blog/changelog/), [About Git](https://docs.github.com/en/get-started/using-git/about-git), [GitHub flow](https://docs.github.com/en/get-started/using-github/github-flow), [About pull requests](https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/about-pull-requests)
+- **8. Final Words:** [GitHub Docs, home](https://docs.github.com/en), [GitHub Changelog](https://github.blog/changelog/), [About Git](https://docs.github.com/en/get-started/using-git/about-git), [GitHub flow](https://docs.github.com/en/get-started/using-github/github-flow), [About pull requests](https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/about-pull-requests)

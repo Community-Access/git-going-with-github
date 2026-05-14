@@ -94,7 +94,6 @@ gh auth refresh
 
 > **Screen reader tip:** `gh auth login` is an interactive prompt — navigate with `Arrow` keys, confirm with `Enter`. All prompts are plain text and read naturally. The browser step opens automatically; switch back to the terminal when the browser confirms success.
 
-
 ### Learning Cards: Getting Started with gh
 
 <details>
@@ -521,7 +520,6 @@ gh issue list --template '{{range .}}#{{.number}} {{.title}} ({{.state}}){{"\n"}
 
 > **Screen reader tip:** `--json` with `--jq` produces clean, predictable output — ideal for piping to a file or reading with a screen reader. The default human-readable output is also clean, but JSON gives you precise control over what's announced.
 
-
 ### Learning Cards: Output Formatting
 
 <details>
@@ -741,7 +739,6 @@ gh issue create --title "Bug: focus lost after modal closes" --body-file ./issue
 - `VO+Right` moves through terminal output character by character; `VO+Down` line by line
 - Use `Ctrl+C` to stop a running command if output is too long
 
-
 ### Learning Cards: Screen Reader CLI Workflow
 
 <details>
@@ -832,3 +829,29 @@ gh issue create --title "Bug: focus lost after modal closes" --body-file ./issue
 *Back: [Appendix H: GitHub Desktop](appendix-h-github-desktop.md)*  
 *Teaching chapter: [Chapter 01: Choose Your Tools](01-choose-your-tools.md)*
 
+## Authoritative Sources
+
+Use these official references when you need the current source of truth for facts in this chapter.
+
+- [GitHub Docs, home](https://docs.github.com/en)
+- [GitHub Changelog](https://github.blog/changelog/)
+- [GitHub CLI manual](https://cli.github.com/manual/)
+- [GitHub Copilot CLI docs](https://docs.github.com/en/copilot/github-copilot-in-the-cli)
+
+### Section-Level Source Map
+
+Use this map to verify facts for each major section in this file.
+
+- **Your Terminal, Supercharged for GitHub:** [GitHub Docs, home](https://docs.github.com/en), [GitHub Changelog](https://github.blog/changelog/), [GitHub CLI manual](https://cli.github.com/manual/), [GitHub Copilot CLI docs](https://docs.github.com/en/copilot/github-copilot-in-the-cli), [About Git](https://docs.github.com/en/get-started/using-git/about-git)
+- **1. Installing and Authenticating:** [GitHub Docs, home](https://docs.github.com/en), [GitHub Changelog](https://github.blog/changelog/), [GitHub CLI manual](https://cli.github.com/manual/), [GitHub Copilot CLI docs](https://docs.github.com/en/copilot/github-copilot-in-the-cli), [GitHub security features](https://docs.github.com/en/code-security/getting-started/github-security-features)
+- **2. Repos — Clone, Fork, Create, View:** [GitHub Docs, home](https://docs.github.com/en), [GitHub Changelog](https://github.blog/changelog/), [GitHub CLI manual](https://cli.github.com/manual/), [GitHub Copilot CLI docs](https://docs.github.com/en/copilot/github-copilot-in-the-cli), [About Git](https://docs.github.com/en/get-started/using-git/about-git)
+- **3. Issues — Create, List, View, Comment, Close:** [GitHub Docs, home](https://docs.github.com/en), [GitHub Changelog](https://github.blog/changelog/), [GitHub CLI manual](https://cli.github.com/manual/), [GitHub Copilot CLI docs](https://docs.github.com/en/copilot/github-copilot-in-the-cli), [About Git](https://docs.github.com/en/get-started/using-git/about-git)
+- **4. Pull Requests — Create, Review, Merge, Check:** [GitHub Docs, home](https://docs.github.com/en), [GitHub Changelog](https://github.blog/changelog/), [GitHub CLI manual](https://cli.github.com/manual/), [GitHub Copilot CLI docs](https://docs.github.com/en/copilot/github-copilot-in-the-cli), [About Git](https://docs.github.com/en/get-started/using-git/about-git)
+- **5. Releases — Create, List, Upload:** [GitHub Docs, home](https://docs.github.com/en), [GitHub Changelog](https://github.blog/changelog/), [GitHub CLI manual](https://cli.github.com/manual/), [GitHub Copilot CLI docs](https://docs.github.com/en/copilot/github-copilot-in-the-cli), [About releases](https://docs.github.com/en/repositories/releasing-projects-on-github/about-releases)
+- **6. Search — Issues, PRs, Repos, Code:** [GitHub Docs, home](https://docs.github.com/en), [GitHub Changelog](https://github.blog/changelog/), [GitHub CLI manual](https://cli.github.com/manual/), [GitHub Copilot CLI docs](https://docs.github.com/en/copilot/github-copilot-in-the-cli), [About Git](https://docs.github.com/en/get-started/using-git/about-git)
+- **7. Labels and Milestones:** [GitHub Docs, home](https://docs.github.com/en), [GitHub Changelog](https://github.blog/changelog/), [GitHub CLI manual](https://cli.github.com/manual/), [GitHub Copilot CLI docs](https://docs.github.com/en/copilot/github-copilot-in-the-cli), [GitHub Projects docs](https://docs.github.com/en/issues/planning-and-tracking-with-projects/learning-about-projects/about-projects)
+- **8. Output Formatting — JSON, jq, Templates:** [GitHub Docs, home](https://docs.github.com/en), [GitHub Changelog](https://github.blog/changelog/), [GitHub CLI manual](https://cli.github.com/manual/), [GitHub Copilot CLI docs](https://docs.github.com/en/copilot/github-copilot-in-the-cli)
+- **9. Aliases — Create Your Own Shortcuts:** [GitHub Docs, home](https://docs.github.com/en), [GitHub Changelog](https://github.blog/changelog/), [GitHub CLI manual](https://cli.github.com/manual/), [GitHub Copilot CLI docs](https://docs.github.com/en/copilot/github-copilot-in-the-cli)
+- **10. Extensions — Adding New Commands:** [GitHub Docs, home](https://docs.github.com/en), [GitHub Changelog](https://github.blog/changelog/), [GitHub CLI manual](https://cli.github.com/manual/), [GitHub Copilot CLI docs](https://docs.github.com/en/copilot/github-copilot-in-the-cli)
+- **11. Copilot in the CLI:** [GitHub Docs, home](https://docs.github.com/en), [GitHub Changelog](https://github.blog/changelog/), [GitHub CLI manual](https://cli.github.com/manual/), [GitHub Copilot CLI docs](https://docs.github.com/en/copilot/github-copilot-in-the-cli), [GitHub Copilot docs](https://docs.github.com/en/copilot)
+- **12. Screen Reader Tips:** [GitHub Docs, home](https://docs.github.com/en), [GitHub Changelog](https://github.blog/changelog/), [GitHub CLI manual](https://cli.github.com/manual/), [GitHub Copilot CLI docs](https://docs.github.com/en/copilot/github-copilot-in-the-cli), [W3C Web Content Accessibility Guidelines (WCAG) 2 overview](https://www.w3.org/WAI/standards-guidelines/wcag/)

@@ -22,15 +22,11 @@ Sponsored by [Community Access](https://community-access.org) in partnership wit
 
 ### Registration is now closed. Thank you to everyone who registered - let the learning begin!
 
-
 > **Want to join a future cohort?** Use the [**Student Opt-In page**](https://community-access.org/git-going-with-github/REGISTER.html). It feeds directly into our automated registration and waitlist workflow.
-
 
 > **Join the conversation!** Have a question before the workshop? Want to connect with other participants? Head to our [**Support Hub Discussions**](https://github.com/Community-Access/support/discussions) - introduce yourself, ask questions, and start building your network before Day 1.
 
-
 > **Already registered?** Complete the [**Pre-Workshop Setup Guide**](https://community-access.org/git-going-with-github/docs/00-pre-workshop-setup.html) before the workshop. It walks you through every step - GitHub account, screen reader configuration, [VS Code](https://code.visualstudio.com/), and [GitHub Copilot](https://github.com/features/copilot) - with instructions for NVDA, JAWS, and VoiceOver. Get set up early so Day 1 starts with learning, not troubleshooting.
-
 
 ## What Is This?
 
@@ -42,13 +38,11 @@ By the end of Day 2, you will have practiced the workflow used to contribute to 
 
 This workshop exists because open source software powers the world - and the people who use assistive technology every day deserve to be the ones shaping it. Not just filing complaints. Building. Reviewing. Shipping.
 
-
 ## Powered by [Accessibility Agents](https://community-access.org/accessibility-agents)
 
 On Day 2, you will work with **[Accessibility Agents](https://community-access.org/accessibility-agents)** - a real, MIT-licensed open source project with 55 AI agents across 3 teams and 5 platforms, built for accessible software development, project management, and community collaboration. Daily briefings, issue triage, PR review, accessibility monitoring, analytics - all driven by AI, all designed for screen reader users.
 
 You will fork it, understand it, improve it, and personalize it. The live workshop prepares you to contribute, and the continuation path gives you time to polish your work before it is reviewed.
-
 
 ## Who Should Attend?
 
@@ -61,7 +55,6 @@ This workshop is designed for:
 - **Anyone curious about accessible development** - sighted participants are welcome; all content is fully keyboard-navigable
 
 You do **not** need to know how to write code. Seriously. Documentation improvements, accessibility bug reports, issue filing, and code reviews are all real, valued contributions. Some of the most impactful open source work never touches a line of code.
-
 
 ## What You Will Walk Away With
 
@@ -76,7 +69,6 @@ By the end of this workshop, you will have:
 - A network of peers who understand the intersection of accessibility and open source
 
 These are not hypothetical outcomes. Every participant ships something real.
-
 
 ## The Two-Day Journey
 
@@ -108,7 +100,6 @@ You earned the tools. Now you wield them.
 | **[Activate the Agents](https://community-access.org/git-going-with-github/docs/19-accessibility-agents.html)** | Explore 55 AI agents across 3 teams that amplify every skill you built on Day 1 - daily briefings, issue triage, PR review, accessibility monitoring |
 | **[Ship Your Contribution](https://community-access.org/git-going-with-github/docs/15-code-review.html)** | Open a real pull request to a live public repository. Your facilitator reviews and merges it. |
 | **Design the Future** | Collaborative speccing session - what should the next version of these tools look like? Your ideas, on the record. |
-
 
 ## Prerequisites - What You Need Before Day 1
 
@@ -190,7 +181,6 @@ Security: We strongly recommend enabling Two-Factor Authentication (2FA) on your
 
 Our [Pre-Workshop Setup Guide](https://community-access.org/git-going-with-github/docs/00-pre-workshop-setup.html) walks through every one of these steps with detailed screen reader instructions for NVDA, JAWS, and VoiceOver.
 
-
 ## Registration Closed
 
 Registration for GIT Going with GitHub is now closed. Thank you to all who registered!
@@ -198,7 +188,6 @@ Registration for GIT Going with GitHub is now closed. Thank you to all who regis
 If you want to be considered for the next cohort, complete the [Student Opt-In page](https://community-access.org/git-going-with-github/REGISTER.html). The form is processed automatically and supports waitlist handling when needed.
 
 Already registered? Complete the [**Pre-Workshop Setup Guide**](https://community-access.org/git-going-with-github/docs/00-pre-workshop-setup.html) before Day 1 to make sure you are ready.
-
 
 ## What Makes This Workshop Different
 
@@ -211,7 +200,6 @@ And the goal is not just "learn GitHub." The goal is to move you from **user** t
 The curriculum includes [17 chapters](https://community-access.org/git-going-with-github/docs/course-guide.html), [26 reference appendices](https://community-access.org/git-going-with-github/docs/course-guide.html), companion podcast episodes, private Learning Room repositories with automated feedback bots, three [GitHub Skills](https://skills.github.com/) modules with a bot that verifies your work in real time, and a live open source project where your contributions are merged on Day 2.
 
 All of it is open source. All of it is yours to keep, fork, and share.
-
 
 ## Frequently Asked Questions
 
@@ -233,13 +221,11 @@ Day 1 stands on its own - you will leave with real GitHub skills. Day 2 builds o
 **Is there a cost?**
 No. The workshop, all software, and all materials are free.
 
-
 ## Questions?
 
 - **Support Hub Discussions:** [Join the conversation](https://github.com/Community-Access/support/discussions) - ask questions, connect with fellow participants, and share ideas
 - **File a support issue:** [support repository](https://github.com/Community-Access/support/issues) - yes, even before the workshop starts. That counts as practice.
 - **Community:** [GitHub Accessibility Discussions](https://github.com/orgs/community/discussions/categories/accessibility)
-
 
 ## Share This Event
 
@@ -252,12 +238,35 @@ The best way to make open source more accessible is to bring more people who use
 
 Open source is not complete without you. Come build with us.
 
-
 ## Acknowledgments
 
 A sincere thank you to the [Visual Studio Code](https://code.visualstudio.com/) team for their continuous support of the blind and low vision community. It is through action that they empower and convert people from dreamers to creators. Thank you, Visual Studio Code team - and of course, [GitHub](https://github.com)!
 
-
 *All workshop materials are licensed under [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/).*
 
 *A [Community Access](https://community-access.org) initiative.*
+
+## Authoritative Sources
+
+Use these official references when you need the current source of truth for facts in this chapter.
+
+- [GitHub Docs, home](https://docs.github.com/en)
+- [GitHub Changelog](https://github.blog/changelog/)
+
+### Section-Level Source Map
+
+Use this map to verify facts for each major section in this file.
+
+- **You Belong in Open Source. Let Us Show You the Door.:** [GitHub Docs, home](https://docs.github.com/en), [GitHub Changelog](https://github.blog/changelog/)
+- **What Is This?:** [GitHub Docs, home](https://docs.github.com/en), [GitHub Changelog](https://github.blog/changelog/)
+- **Powered by [Accessibility Agents](https://community-access.org/accessibility-agents):** [GitHub Docs, home](https://docs.github.com/en), [GitHub Changelog](https://github.blog/changelog/), [GitHub Copilot docs](https://docs.github.com/en/copilot), [Custom instructions support matrix](https://docs.github.com/en/copilot/reference/custom-instructions-support), [About custom agents](https://docs.github.com/en/copilot/concepts/agents/cloud-agent/about-custom-agents)
+- **Who Should Attend?:** [GitHub Docs, home](https://docs.github.com/en), [GitHub Changelog](https://github.blog/changelog/)
+- **What You Will Walk Away With:** [GitHub Docs, home](https://docs.github.com/en), [GitHub Changelog](https://github.blog/changelog/)
+- **The Two-Day Journey:** [GitHub Docs, home](https://docs.github.com/en), [GitHub Changelog](https://github.blog/changelog/)
+- **Prerequisites - What You Need Before Day 1:** [GitHub Docs, home](https://docs.github.com/en), [GitHub Changelog](https://github.blog/changelog/), [GitHub Pages docs](https://docs.github.com/en/pages), [GitHub Pages quickstart](https://docs.github.com/en/pages/quickstart)
+- **Registration Closed:** [GitHub Docs, home](https://docs.github.com/en), [GitHub Changelog](https://github.blog/changelog/), [GitHub Discussions docs](https://docs.github.com/en/discussions), [GitHub Gists docs](https://docs.github.com/en/get-started/writing-on-github/editing-and-sharing-content-with-gists)
+- **What Makes This Workshop Different:** [GitHub Docs, home](https://docs.github.com/en), [GitHub Changelog](https://github.blog/changelog/)
+- **Frequently Asked Questions:** [GitHub Docs, home](https://docs.github.com/en), [GitHub Changelog](https://github.blog/changelog/)
+- **Questions?:** [GitHub Docs, home](https://docs.github.com/en), [GitHub Changelog](https://github.blog/changelog/)
+- **Share This Event:** [GitHub Docs, home](https://docs.github.com/en), [GitHub Changelog](https://github.blog/changelog/)
+- **Acknowledgments:** [GitHub Docs, home](https://docs.github.com/en), [GitHub Changelog](https://github.blog/changelog/)

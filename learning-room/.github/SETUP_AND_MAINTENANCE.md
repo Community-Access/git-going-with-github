@@ -21,7 +21,6 @@ The Learning Room uses GitHub Actions workflows to provide real-time feedback to
 | `autograder-template.yml` | Validates issue template creation (Ch14) | Issues created |
 | `autograder-capstone.yml` | Validates capstone challenge (Ch16) | PR opened |
 
-
 ## Architecture
 
 ### File Structure
@@ -68,7 +67,6 @@ learning-room/
 6. **Peer reviewer approves** (facilitated by facilitator)
 
 7. **PR is merged** → skills-progression workflow celebrates 
-
 
 ## Workflow Details
 
@@ -118,7 +116,6 @@ Update the Python scripts to match your accessibility standards. The regex patte
 
 **Customization for Future Workshops:**
 Edit the badge names, skill categories, and celebration messages in `skills-progression.yml` to match your workshop theme.
-
 
 ## Setup Instructions (For New Workshop)
 
@@ -191,7 +188,6 @@ python .github/scripts/check_accessibility.py .
 2. Ensure repository has GitHub Actions enabled
 3. Create test PR to verify workflows run
 
-
 ## Maintaining & Extending
 
 ### Adding New Validation Rules
@@ -253,7 +249,6 @@ function checkMyRule() {
 | Links broken in feedback | Update relative paths in Python scripts |
 | Workflows not triggering | Check `on:` conditions and branch settings |
 
-
 ## Performance Considerations
 
 ### Workflow Optimization
@@ -275,7 +270,6 @@ As student count grows:
 - API rate limits: GitHub allows 1000 API calls per workflow run
 - If you hit limits: consolidate checks or split into multiple workflows
 
-
 ## Documentation Best Practices
 
 Document your changes in `.github/README.md` or in your main Learning Room documentation:
@@ -295,7 +289,6 @@ Create a guide explaining:
 - How to fix common issues
 - When to ask for human review
 
-
 ## Future Enhancements
 
 ### Phase 2 Ideas
@@ -311,7 +304,6 @@ This system is designed to be extended! Future contributors can:
 - Create educational resources
 - Improve error messages
 - Translate feedback to other languages
-
 
 ## Troubleshooting
 
@@ -346,7 +338,6 @@ permissions:
 - Student branches push to the repository (not forks)
 - No branch protection blocks the workflow permission
 
-
 ## Support & Questions
 
 For help maintaining this automation:
@@ -355,16 +346,37 @@ For help maintaining this automation:
 3. Test changes locally before deploying
 4. Keep changes documented for future maintainers
 
-
 ## License
 
 These workflows and scripts are part of the Git Going with GitHub workshop and are available under the same license as your workshop materials (typically CC-BY-4.0 or MIT).
 
 When you duplicate for a new workshop, maintain attribution where appropriate.
 
-
 **Last Updated:** March 2026
 
 **Maintained By:** [Workshop Lead]
 
 **Contributing:** Improvements and updates welcome!
+
+## Authoritative Sources
+
+Use these official references when you need the current source of truth for facts in this chapter.
+
+- [GitHub Docs, home](https://docs.github.com/en)
+- [GitHub Changelog](https://github.blog/changelog/)
+
+### Section-Level Source Map
+
+Use this map to verify facts for each major section in this file.
+
+- **Overview:** [GitHub Docs, home](https://docs.github.com/en), [GitHub Changelog](https://github.blog/changelog/)
+- **Architecture:** [GitHub Docs, home](https://docs.github.com/en), [GitHub Changelog](https://github.blog/changelog/)
+- **Workflow Details:** [GitHub Docs, home](https://docs.github.com/en), [GitHub Changelog](https://github.blog/changelog/), [Workflow syntax for GitHub Actions](https://docs.github.com/en/actions/reference/workflows-and-actions/workflow-syntax), [Secure use reference for GitHub Actions](https://docs.github.com/en/actions/security-for-github-actions/security-guides/security-hardening-for-github-actions), [GitHub Actions changelog](https://github.blog/changelog/label/actions/)
+- **Setup Instructions (For New Workshop):** [GitHub Docs, home](https://docs.github.com/en), [GitHub Changelog](https://github.blog/changelog/)
+- **Maintaining & Extending:** [GitHub Docs, home](https://docs.github.com/en), [GitHub Changelog](https://github.blog/changelog/)
+- **Performance Considerations:** [GitHub Docs, home](https://docs.github.com/en), [GitHub Changelog](https://github.blog/changelog/)
+- **Documentation Best Practices:** [GitHub Docs, home](https://docs.github.com/en), [GitHub Changelog](https://github.blog/changelog/)
+- **Future Enhancements:** [GitHub Docs, home](https://docs.github.com/en), [GitHub Changelog](https://github.blog/changelog/)
+- **Troubleshooting:** [GitHub Docs, home](https://docs.github.com/en), [GitHub Changelog](https://github.blog/changelog/)
+- **Support & Questions:** [GitHub Docs, home](https://docs.github.com/en), [GitHub Changelog](https://github.blog/changelog/)
+- **License:** [GitHub Docs, home](https://docs.github.com/en), [GitHub Changelog](https://github.blog/changelog/)

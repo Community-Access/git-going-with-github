@@ -39,7 +39,6 @@
 
 </details>
 
-
 ## When You Need Authentication
 
 GitHub requires authentication when you:
@@ -53,7 +52,6 @@ You do **not** need authentication to:
 - Clone public repositories
 - View public repositories on GitHub.com
 - Read issues and pull requests
-
 
 ## Two Authentication Methods
 
@@ -87,7 +85,6 @@ SSH uses public-key cryptography. You generate a key pair on your computer (publ
 
 - Requires command-line setup (less accessible for some screen reader users)
 - Slightly more complex initial configuration
-
 
 ## Creating a Personal Access Token (Recommended for This Workshop)
 
@@ -140,7 +137,6 @@ Password: [paste-your-PAT-here]
 ```bash
 git config --global credential.helper cache
 ```
-
 
 ## Setting Up SSH Keys (Alternative Method)
 
@@ -218,7 +214,6 @@ git@github.com:owner/repo.git
 https://github.com/owner/repo.git
 ```
 
-
 ## Switching Between HTTPS and SSH
 
 If you cloned with HTTPS but want to use SSH (or vice versa), update the remote:
@@ -240,7 +235,6 @@ git remote set-url origin git@github.com:your-username/repo.git
 ```bash
 git remote set-url origin https://github.com/your-username/repo.git
 ```
-
 
 ### Learning Cards: Troubleshooting Authentication
 
@@ -270,7 +264,6 @@ git remote set-url origin https://github.com/your-username/repo.git
 - The "Security Best Practices" section below is worth skimming after you resolve your issue
 
 </details>
-
 
 ## Troubleshooting
 
@@ -304,7 +297,6 @@ git remote set-url origin https://github.com/your-username/repo.git
 ssh-keyscan github.com >> ~/.ssh/known_hosts
 ```
 
-
 ## Security Best Practices
 
 1. **Never share your private key or PAT** - treat them like passwords
@@ -313,7 +305,6 @@ ssh-keyscan github.com >> ~/.ssh/known_hosts
 4. **Use a passphrase** on SSH keys - adds another layer of security
 5. **Revoke old tokens** when you're done with a project or device
 6. **Don't commit tokens or keys to Git** - use `.gitignore` for config files
-
 
 ## Commit Signing - Verified Badges and Vigilant Mode
 
@@ -406,7 +397,6 @@ GitHub has an optional setting called **Vigilant Mode** (in Settings → SSH and
 
 **Workshop recommendation:** SSH signing is simpler to set up than GPG and reuses your existing key. If you have 10 minutes, configure it before Day 2 - every commit you push to accessibility-agents will show as Verified.
 
-
 ## For This Workshop
 
 ### Recommended approach
@@ -424,3 +414,29 @@ SSH keys are great for long-term use, but PATs are faster to set up and more acc
 *Back: [Appendix C: Markdown Reference](appendix-c-markdown-reference.md)*  
 *Teaching chapter: [Chapter 00: Pre-Workshop Setup](00-pre-workshop-setup.md)*
 
+## Authoritative Sources
+
+Use these official references when you need the current source of truth for facts in this chapter.
+
+- [GitHub Docs, home](https://docs.github.com/en)
+- [GitHub Changelog](https://github.blog/changelog/)
+- [GitHub security features](https://docs.github.com/en/code-security/getting-started/github-security-features)
+- [Dependabot docs](https://docs.github.com/en/code-security/dependabot)
+- [Secret scanning docs](https://docs.github.com/en/code-security/secret-scanning/introduction/about-secret-scanning)
+- [Git authentication overview](https://docs.github.com/en/authentication/keeping-your-account-and-data-secure/about-authentication-to-github)
+- [Managing personal access tokens](https://docs.github.com/en/authentication/keeping-your-account-and-data-secure/managing-your-personal-access-tokens)
+
+### Section-Level Source Map
+
+Use this map to verify facts for each major section in this file.
+
+- **SSH Keys & Personal Access Tokens:** [GitHub Docs, home](https://docs.github.com/en), [GitHub Changelog](https://github.blog/changelog/), [GitHub security features](https://docs.github.com/en/code-security/getting-started/github-security-features), [Dependabot docs](https://docs.github.com/en/code-security/dependabot), [Secret scanning docs](https://docs.github.com/en/code-security/secret-scanning/introduction/about-secret-scanning)
+- **When You Need Authentication:** [GitHub Docs, home](https://docs.github.com/en), [GitHub Changelog](https://github.blog/changelog/), [GitHub security features](https://docs.github.com/en/code-security/getting-started/github-security-features), [Dependabot docs](https://docs.github.com/en/code-security/dependabot), [Secret scanning docs](https://docs.github.com/en/code-security/secret-scanning/introduction/about-secret-scanning)
+- **Two Authentication Methods:** [GitHub Docs, home](https://docs.github.com/en), [GitHub Changelog](https://github.blog/changelog/), [GitHub security features](https://docs.github.com/en/code-security/getting-started/github-security-features), [Dependabot docs](https://docs.github.com/en/code-security/dependabot), [Secret scanning docs](https://docs.github.com/en/code-security/secret-scanning/introduction/about-secret-scanning)
+- **Creating a Personal Access Token (Recommended for This Workshop):** [GitHub Docs, home](https://docs.github.com/en), [GitHub Changelog](https://github.blog/changelog/), [GitHub security features](https://docs.github.com/en/code-security/getting-started/github-security-features), [Dependabot docs](https://docs.github.com/en/code-security/dependabot), [Secret scanning docs](https://docs.github.com/en/code-security/secret-scanning/introduction/about-secret-scanning)
+- **Setting Up SSH Keys (Alternative Method):** [GitHub Docs, home](https://docs.github.com/en), [GitHub Changelog](https://github.blog/changelog/), [GitHub security features](https://docs.github.com/en/code-security/getting-started/github-security-features), [Dependabot docs](https://docs.github.com/en/code-security/dependabot), [Secret scanning docs](https://docs.github.com/en/code-security/secret-scanning/introduction/about-secret-scanning)
+- **Switching Between HTTPS and SSH:** [GitHub Docs, home](https://docs.github.com/en), [GitHub Changelog](https://github.blog/changelog/), [GitHub security features](https://docs.github.com/en/code-security/getting-started/github-security-features), [Dependabot docs](https://docs.github.com/en/code-security/dependabot), [Secret scanning docs](https://docs.github.com/en/code-security/secret-scanning/introduction/about-secret-scanning)
+- **Troubleshooting:** [GitHub Docs, home](https://docs.github.com/en), [GitHub Changelog](https://github.blog/changelog/), [GitHub security features](https://docs.github.com/en/code-security/getting-started/github-security-features), [Dependabot docs](https://docs.github.com/en/code-security/dependabot), [Secret scanning docs](https://docs.github.com/en/code-security/secret-scanning/introduction/about-secret-scanning)
+- **Security Best Practices:** [GitHub Docs, home](https://docs.github.com/en), [GitHub Changelog](https://github.blog/changelog/), [GitHub security features](https://docs.github.com/en/code-security/getting-started/github-security-features), [Dependabot docs](https://docs.github.com/en/code-security/dependabot), [Secret scanning docs](https://docs.github.com/en/code-security/secret-scanning/introduction/about-secret-scanning)
+- **Commit Signing - Verified Badges and Vigilant Mode:** [GitHub Docs, home](https://docs.github.com/en), [GitHub Changelog](https://github.blog/changelog/), [GitHub security features](https://docs.github.com/en/code-security/getting-started/github-security-features), [Dependabot docs](https://docs.github.com/en/code-security/dependabot), [Secret scanning docs](https://docs.github.com/en/code-security/secret-scanning/introduction/about-secret-scanning)
+- **For This Workshop:** [GitHub Docs, home](https://docs.github.com/en), [GitHub Changelog](https://github.blog/changelog/), [GitHub security features](https://docs.github.com/en/code-security/getting-started/github-security-features), [Dependabot docs](https://docs.github.com/en/code-security/dependabot), [Secret scanning docs](https://docs.github.com/en/code-security/secret-scanning/introduction/about-secret-scanning)

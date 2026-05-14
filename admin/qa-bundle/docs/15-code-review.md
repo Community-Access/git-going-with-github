@@ -3,7 +3,6 @@
 > **Related appendices:** [Appendix G: VS Code Reference](appendix-g-vscode-reference.md) | [Appendix C: Markdown Reference](appendix-c-markdown-reference.md)
 > **Authoritative sources:** [GitHub Docs: Reviewing changes in pull requests](https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/reviewing-changes-in-pull-requests) | [GitHub Accessibility Guide: Pull Request Reviews](https://accessibility.github.com/documentation/guide/pull-requests/)
 
-
 > **Day 2, Block 2 Material**
 >
 > This chapter unifies PR management, accessible code review, and the reviewer's craft into one chapter. Part 1 covers the GitHub Pull Requests extension in VS Code. Part 2 covers accessible code review with diffs and inline comments. Part 3 adds the reviewer's judgment framework.
@@ -26,7 +25,6 @@
 > **Prerequisites:** [Working with Pull Requests](06-working-with-pull-requests.md), [Git & Source Control in VS Code](14-git-in-practice.md)
 >
 > **Mac keyboard shortcuts:** Throughout this chapter, all `Ctrl+` shortcuts use `Cmd+` on Mac, and `Alt+` shortcuts use `Option+` on Mac. For example: `Ctrl+Shift+P` → `Cmd+Shift+P`, `Ctrl+Shift+G` → `Cmd+Shift+G`, `Alt+F2` → `Option+F2`. Context menus (`Shift+F10` on Windows) use `Ctrl+Return` on Mac.
-
 
 ## Workshop Recommendation (Chapter 15, Part 1)
 
@@ -134,7 +132,6 @@ PR tooling multiplies your impact. Reviewing others' work refines your own stand
 3. Use accessibility tools (`F7` Accessible Diff Viewer) to navigate efficiently.
 4. Write specific, constructive feedback (not just "looks good").
 
-
 ## Table of Contents
 
 1. [Installing the GitHub Pull Requests Extension](#1-installing-the-github-pull-requests-extension)
@@ -145,7 +142,6 @@ PR tooling multiplies your impact. Reviewing others' work refines your own stand
 6. [Pull Request Description Templates](#6-pull-request-description-templates)
 7. [Commenting and Requesting Changes](#7-commenting-and-requesting-changes)
 8. [Merging Pull Requests](#8-merging-pull-requests)
-
 
 ## 1. Installing the GitHub Pull Requests Extension
 
@@ -227,7 +223,6 @@ After installation, you gain:
 - The Explorer sidebar also gains a "GitHub Pull Requests" section that you can expand or collapse
 
 </details>
-
 
 ## 2. Viewing Pull Requests
 
@@ -343,7 +338,6 @@ A PR detail view opens in the editor area showing:
 - Headings mark each section ("Description", "Reviewers", "Files Changed", "Comments")
 - Links are clickable with `Enter`
 
-
 ## 3. Checking Out a Pull Request Branch
 
 **Checking out a PR** means downloading its branch to your local machine so you can test it, review it interactively, or add commits to it.
@@ -421,7 +415,6 @@ After reviewing:
 - Right-click a file in the PR file list to open a side-by-side diff view
 
 </details>
-
 
 ## 4. Reviewing Pull Requests in VS Code
 
@@ -519,7 +512,6 @@ As you review, note any problems:
 - Scan the left gutter for green (added) and red (removed) bars to spot changes quickly, then click the `+` icon on any line to start an inline comment
 - Use the minimap on the right edge of the diff editor to see the distribution of changes across the file and click directly on coloured blocks to jump there
 - Right-click a file in the PR file list and choose "Open Changes" for a side-by-side diff, or "Open File" to see the final state without diff annotations
-
 
 ## 5. Creating a Pull Request from VS Code
 
@@ -693,7 +685,6 @@ gh pr create --web
 
 </details>
 
-
 ## 6. Pull Request Description Templates
 
 Many repositories include a **PR template** - a Markdown file that pre-fills the PR description with a checklist or structure.
@@ -749,7 +740,6 @@ When you create a PR in VS Code, the extension automatically loads the template 
 5. Check checkboxes by typing `x` between the brackets: `- [x]`
 
 **Keyboard tip:** Use `Ctrl+F` (Mac: `Cmd+F`) to jump to each `<!--` placeholder, fill it in, then `F3` to jump to the next one.
-
 
 ## 7. Commenting and Requesting Changes
 
@@ -871,7 +861,6 @@ gh pr review 42 --comment --body "A few suggestions."
 - The "Submit Review" button in the PR detail view shows the count of pending comments ready to send
 
 </details>
-
 
 ## 8. Merging Pull Requests
 
@@ -1001,7 +990,6 @@ gh pr merge 42 --auto --squash
 - After merging, a "Delete branch" prompt appears as a blue link in the PR detail view; click it to clean up locally, then check the PR on GitHub.com where a similar button deletes the remote branch
 - Pull merged changes immediately: click the sync icon in the Status Bar (circular arrows) or run `Ctrl+Shift+P` then "Git: Pull" to bring your local `main` up to date
 
-
 ## Keyboard Shortcuts - GitHub Pull Requests Extension
 
 | Action | Windows | Mac |
@@ -1014,7 +1002,6 @@ gh pr merge 42 --auto --squash
 | Add inline comment | `Shift+F10` (in diff view) → "Add Comment" | `Ctrl+Return` (in diff view) → "Add Comment" |
 | Navigate diff hunks | `F7` (next), `Shift+F7` (previous) | `F7` (next), `Shift+F7` (previous) |
 | Accessible Diff Viewer | `Alt+F2` (in diff view) | `Option+F2` (in diff view) |
-
 
 ## Troubleshooting
 
@@ -1048,7 +1035,6 @@ gh pr merge 42 --auto --squash
 2. Check your GitHub Personal Access Token (see [Appendix D: Git Authentication](appendix-d-git-authentication.md))
 3. Verify network connection
 
-
 ## Try It: Review a PR from VS Code
 
 **Time:** 3 minutes | **What you need:** VS Code with GitHub Pull Requests extension installed and signed in
@@ -1062,7 +1048,6 @@ gh pr merge 42 --auto --squash
 **You're done.** You just reviewed a pull request entirely from VS Code.
 
 > **What success feels like:** You read a diff, heard the changes announced by your screen reader, and left feedback - all without opening a browser. This is how many developers review code every day.
-
 
 *Next: [GitHub Copilot](16-github-copilot.md)*  
 *Back: [Git & Source Control in VS Code](14-git-in-practice.md)*  
@@ -1079,7 +1064,6 @@ gh pr merge 42 --auto --squash
 > This guide is focused entirely on the **reviewer experience** - navigating diffs, reading changes, leaving comments, and submitting a review - using only your keyboard and screen reader. For the full pull request lifecycle (opening PRs, merge options, conflict resolution), see [Working with Pull Requests](06-working-with-pull-requests.md).
 >
 > **Learning Room connection:** The exercises in this chapter use files from the Learning Room repository. You will review PRs that modify `docs/keyboard-shortcuts.md` (shortcut tables with intentional errors), `docs/setup-guide.md` (broken links and incomplete steps), and `docs/welcome.md` (`[TODO]` sections to complete). These are the same files you work on during the Day 1 contribution sprint.
-
 
 ## Workshop Recommendation (Chapter 15 / Challenge 12)
 
@@ -1195,7 +1179,6 @@ Constructive review is a gift. Specific, kind feedback helps authors improve and
 4. Choose a verdict that matches the substance of your feedback.
 5. Summarize your overall impression in 1-2 sentences.
 
-
 ## Prerequisites Checklist
 
 ### Before starting this chapter, verify you have completed
@@ -1206,7 +1189,6 @@ Constructive review is a gift. Specific, kind feedback helps authors improve and
 - [ ] Access to at least one pull request to review (your own fork or a practice repo)
 
 **Estimated time for this chapter:** 1 hour (including exercises)
-
 
 ## Two Environments for Code Review
 
@@ -1262,7 +1244,6 @@ gh pr review 42 --comment --body "A few observations - see details below."
 
 </details>
 
-
 ## Part 1 - Reviewing on GitHub.com
 
 ### Good News: Modern Interface is Default
@@ -1270,7 +1251,6 @@ gh pr review 42 --comment --body "A few observations - see details below."
 As of January 2026, GitHub's improved Files Changed experience is enabled by default. The instructions below assume you have the modern interface (which you do).
 
 If the interface seems different from what's described here, clear your browser cache and reload the page.
-
 
 ### Step 1: Reach the Files Changed Tab
 
@@ -1317,7 +1297,6 @@ VO+Right or Quick Nav K → find "Files changed" link → VO+Space
 VoiceOver announces the number of changed files: *"Files changed, 4 files changed"*
 
 </details>
-
 
 ### Step 2: Use the File Tree to Orient Yourself
 
@@ -1369,7 +1348,6 @@ VO+Space on a file to scroll its diff into view
 
 </details>
 
-
 ### Step 3: Navigate Between File Diffs
 
 Each changed file in the main area is an `h3` heading containing the filename.
@@ -1406,7 +1384,6 @@ VO+Space to expand a collapsed file
 If a diff is very long, the file tree is usually faster than using heading navigation.
 
 </details>
-
 
 ### Step 4: Read a Diff
 
@@ -1473,7 +1450,6 @@ VO+Right/Left to navigate columns, VO+Up/Down to navigate rows
 - Context lines: code without a `+` or `-`
 
 **Tip:** If the code on a line is very long, the screen reader will read the full line. For minified or generated files, consider collapsing the file in the tree and skipping it.
-
 
 ### Step 5: Place an Inline Comment
 
@@ -1556,7 +1532,6 @@ Step 4: VO+Space to activate, then proceed as above
 
 </details>
 
-
 ### Step 6: Read Existing Comments and Threads
 
 Inline comments from other reviewers appear as `h3` headings within the diff table. Each thread shows: reviewer username, comment body, replies, a "Reply" link and resolution button.
@@ -1611,7 +1586,6 @@ Tab to the "Resolve conversation" button → VO+Space
 ```
 
 </details>
-
 
 ### Step 7: Submit Your Review
 
@@ -1668,7 +1642,6 @@ Step 8: Tab to "Submit review" button → VO+Space
 | Approve | You've reviewed and are satisfied; signals readiness to merge |
 | Request changes | Changes are needed before this should merge; blocks merge |
 
-
 ### Step 8: Re-request Review (for Authors)
 
 After you address review comments on your own PR:
@@ -1718,7 +1691,6 @@ Step 3: VO+Space to activate - this re-notifies the reviewer that you've made ch
 - Use the file tree on the left side of the Files Changed page to jump between files; each file shows a coloured bar indicating the ratio of additions (green) to deletions (red) so you can prioritize large changes
 - Hover on any line in the diff gutter to reveal the blue `+` icon for inline comments; click and drag across multiple line numbers to comment on a range of lines at once
 - After adding all inline comments, click the green "Review changes" button at the top right, write a summary sentence, select your verdict, and click "Submit review" to post everything in one batch
-
 
 ## Part 2 - Reviewing in VS Code with the Accessible Diff Viewer
 
@@ -1855,7 +1827,6 @@ Step 5: Submit from the inline UI
 
 Comments placed in VS Code sync to GitHub - they appear in the PR's Files Changed tab and the author receives the same notification.
 
-
 ## Code Review Structure and Content
 
 ### The Anatomy of a Useful Review Comment
@@ -1895,7 +1866,6 @@ Using shorthand prefixes helps authors parse many comments quickly:
 
 There is no hard limit, but quantity without prioritization is noise. If you have 15 comments, make clear which 2-3 are blocking. Authors can then focus energy on what matters most and address preferences in follow-up PRs.
 
-
 ## Keyboard Reference
 
 ### GitHub Web Review
@@ -1921,7 +1891,6 @@ There is no hard limit, but quantity without prioritization is noise. If you hav
 | Open Accessible View | `Alt+F2` |
 | Accessible Help (any widget) | `Alt+H` |
 | Close Accessible Diff Viewer | `Escape` |
-
 
 ## Common Review Scenarios
 
@@ -1963,18 +1932,15 @@ There is no hard limit, but quantity without prioritization is noise. If you hav
 4. Or: reference a specific line in your reply using the line number
 ```
 
-
 ## Exercises
 
 These exercises use the files in `learning-room/docs/` in this repository. All examples involve documentation changes - no code required.
-
 
 ### Exercise A - Complete a Web Review
 
 **Scenario:** A contributor has submitted a pull request titled "Add screen reader tips to the setup guide." The PR modifies `learning-room/docs/setup-guide.md`. Your job is to review it before it merges.
 
 **What You'll Learn:** How to use screen reader heading navigation to spot accessibility issues in a GitHub PR diff.
-
 
 #### Step 1: Navigate to the Pull Request
 
@@ -1996,7 +1962,6 @@ These exercises use the files in `learning-room/docs/` in this repository. All e
 - Use `Ctrl+F` to search the PR list for "screen reader tips"
 - Or ask in the workshop Slack - someone can share the exact URL
 
-
 #### Step 2: Read the PR Description
 
 ##### What to do
@@ -2017,7 +1982,6 @@ These exercises use the files in `learning-room/docs/` in this repository. All e
 - You can answer: "This PR adds [specific content] to [specific file] because [clear reason]"
 - Example: "This PR adds screen reader usage tips to the setup guide because new users need accessibility guidance"
 
-
 #### Step 3: Navigate to "Files Changed"
 
 ##### What to do
@@ -2035,7 +1999,6 @@ These exercises use the files in `learning-room/docs/` in this repository. All e
 
 - Scroll up to see if there are other files. For this exercise, only `setup-guide.md` should be changed.
 - If you see other files, confirm they are not modified (the badge should show "+0 −0" or no changes)
-
 
 #### Step 4: Activate Focus Mode for Better Diff Reading
 
@@ -2056,7 +2019,6 @@ These exercises use the files in `learning-room/docs/` in this repository. All e
 - NVDA/JAWS: Press `T` to jump to the diff table
 - VoiceOver: Navigate with `VO+Right Arrow` to find the table/content region
 - Read through the changes: `↓` arrow moves to each line
-
 
 #### Step 5: Find the Heading Hierarchy Issue
 
@@ -2085,7 +2047,6 @@ These exercises use the files in `learning-room/docs/` in this repository. All e
 - You found the line with `####` that violates hierarchy
 - You can say the line number and what heading text appears there
 - You understand *why* this is an accessibility problem
-
 
 #### Step 6: Place a Blocking Review Comment on the Heading
 
@@ -2120,7 +2081,6 @@ These exercises use the files in `learning-room/docs/` in this repository. All e
 - Try refreshing the page and trying again
 - Or use the "Add a reply" field at the bottom of the PR and mention the line number manually
 
-
 #### Step 7: Find the Link Text Issue
 
 ##### What to do
@@ -2140,7 +2100,6 @@ These exercises use the files in `learning-room/docs/` in this repository. All e
 - You found a link with non-descriptive text
 - You can explain why "click here" is bad and what would be better
 
-
 #### Step 8: Place a Comment on the Link
 
 ##### What to do
@@ -2158,7 +2117,6 @@ These exercises use the files in `learning-room/docs/` in this repository. All e
 4. Click **Comment** or press `Ctrl+Enter`
 
 **Note:** `nit:` means "nice-to-have improvement" (not blocking, but good to fix)
-
 
 #### Step 9: Submit Your Review
 
@@ -2190,7 +2148,6 @@ These exercises use the files in `learning-room/docs/` in this repository. All e
 - It shows 2 comments you made
 - The PR status shows "Changes requested"
 
-
 #### Reflect on This Exercise
 
 After submitting, answer:
@@ -2201,13 +2158,11 @@ After submitting, answer:
 
 Keep your answers - you'll need them for Chapter 16's Accessibility Agents exercise to compare manual review with agent-assisted review.
 
-
 ### Exercise B - Use the VS Code Accessible Diff Viewer
 
 **Scenario:** Review the same pull request from Exercise A, this time entirely in VS Code. You'll compare the browser experience with the VS Code experience.
 
 **What You'll Learn:** How the VS Code Accessible Diff Viewer announces changes differently than the browser diff, and when each environment is most useful.
-
 
 #### Prerequisites
 
@@ -2216,7 +2171,6 @@ Before starting:
 - VS Code must be installed on your machine
 - The GitHub Pull Requests extension must be installed (see [Chapter 12](15-code-review.md) for installation)
 - You must be signed into GitHub from VS Code (use `Ctrl+Shift+P` → "GitHub: Sign in")
-
 
 #### Step 1: Open the GitHub Pull Requests Extension
 
@@ -2233,7 +2187,6 @@ Before starting:
 
 - The extension is listed as active
 - It mentions: "Review and manage GitHub pull requests and issues"
-
 
 #### Step 2: Open the Pull Requests Sidebar
 
@@ -2257,7 +2210,6 @@ Before starting:
 - Paste the PR URL: `https://github.com/[owner]/[repo]/pull/[number]`
 - Press Enter
 
-
 #### Step 3: View the File Changes
 
 ##### What to do
@@ -2279,7 +2231,6 @@ Before starting:
 - Use `Ctrl+Home` to jump to the start of the diff
 - Use `Ctrl+End` to jump to the end
 
-
 #### Step 4: Access the Accessible Diff Viewer
 
 ##### What to do
@@ -2300,7 +2251,6 @@ Before starting:
 - Make sure the diff editor is active (click in the diff area first)
 - Try `Ctrl+Shift+P` → search `Open Accessible Diff`
 - If available, select it
-
 
 #### Step 5: Listen to and Understand the First Change
 
@@ -2328,7 +2278,6 @@ Added: ## New Heading with More Details
 
 - NVDA/JAWS: The Accessible Diff Viewer announces "Removed:" and "Added:" labels, followed by the line content
 - VoiceOver: The announcement may be similar; listen for "removed" and "added" keywords
-
 
 #### Step 6: Find the Heading Hierarchy Issue
 
@@ -2358,7 +2307,6 @@ Added: ## New Heading with More Details
 - You can explain: "The added line with `####` directly follows a `##`, skipping level 3"
 - The Accessible Diff Viewer made this *pattern* clearer than scanning raw `+` characters
 
-
 #### Step 7: Locate the Heading Line and Add an Inline Comment
 
 ##### What to do
@@ -2379,7 +2327,6 @@ Added: ## New Heading with More Details
 - A comment box opens
 - You can type your comment
 
-
 #### Step 8: Write Your Accessible Diff Comment
 
 ##### What to do
@@ -2399,7 +2346,6 @@ Added: ## New Heading with More Details
 
 - It shows that the tool *itself* helps you see the issue
 - It documents how you caught the problem (useful for learning)
-
 
 #### Step 9: Create a GitHub Pull Request Comment
 
@@ -2436,7 +2382,6 @@ the story of what changed without scanning back and forth.
 
 1. Click **Comment**
 
-
 #### Reflect on This Exercise
 
 After completing Steps 1-9, answer:
@@ -2447,13 +2392,11 @@ After completing Steps 1-9, answer:
 
 **Record your answers.** In Chapter 16, you'll compare these manual reviews with the `@pr-review` agent's suggested changes.
 
-
 ### Exercise C - Compare and Reflect
 
 **Your Mission:** Synthesize what you learned from the manual code reviews (Exercises A & B) and document your findings.
 
 **What You'll Learn:** Which tools work best for different scenarios, and how your manual review skills prepare you to use AI agents effectively.
-
 
 #### Step 1: Gather Your Data
 
@@ -2475,7 +2418,6 @@ Before writing your reflection, collect all the information you gathered:
 
 **Write these down** (in a text editor, on paper, or mentally) - you'll reference them in Steps 2-4.
 
-
 #### Step 2: Navigate to the PR and Leave Your Reflection Comment
 
 ##### What to do
@@ -2490,7 +2432,6 @@ Before writing your reflection, collect all the information you gathered:
 
 - A text editing area with formatting options (Bold, Italic, Link, etc.)
 - A **Comment** button below the text area
-
 
 #### Step 3: Write Your Comparison
 
@@ -2569,7 +2510,6 @@ The heading hierarchy skip in the published document matters because:
 [1-2 sentences about why screen reader users would be affected]
 ```
 
-
 #### Step 4: Review Your Comment
 
 ##### What to do
@@ -2582,7 +2522,6 @@ The heading hierarchy skip in the published document matters because:
    - Would someone else reading this understand how I caught the issue?
 3. Make any corrections needed
 4. **Do not submit yet** - continue to Step 5
-
 
 #### Step 5: Submit Your Reflection
 
@@ -2605,7 +2544,6 @@ The heading hierarchy skip in the published document matters because:
 - It includes all three reflections
 - The PR author and other reviewers can see your thought process
 
-
 #### Step 6: Checkpoint - Validate Your Learning
 
 Before moving forward, verify you understand:
@@ -2620,7 +2558,6 @@ Before moving forward, verify you understand:
    - *Expected answer:* Something like "Open the document in a browser, use screen reader heading navigation, and confirm I can reach all levels (H2, H3, H4)."
 
 If you can answer all three, you're ready for the next chapter.
-
 
 ## Part 3 - Using GitHub Copilot to Understand Code Changes
 
@@ -2699,13 +2636,11 @@ Copilot cannot:
 4. **Combine Copilot with manual analysis** - ask Copilot to explain, then verify by checking the PR description or looking for related files
 5. **Use Copilot to draft comments** - type `Draft a comment about [issue] for this PR` and edit Copilot's suggestion to match your tone
 
-
 ### What Comes Next
 
 Your manual code review skills - identifying heading issues, catching link text problems, understanding screen reader navigation, gathering information with Copilot - are the **foundation** for understanding automated review.
 
 In **Chapter 16 (Accessibility Agents)**, you'll meet a full team of agents designed to **amplify** these skills:
-
 
 ## Part 4: The Reviewer's Craft
 
@@ -2813,7 +2748,6 @@ Reviewing is not just a gate to keep bad code out. It is one of the fastest ways
 
 </details>
 
-
 ##  Day 2 Teaser: The Full Accessibility Agents Review Ecosystem
 
 You now have the manual skills. Chapter 16 shows you how to leverage 50+ specialized agents to make your reviews faster, more consistent, and more thorough - while staying in full control of what you post.
@@ -2863,7 +2797,6 @@ Why do this manually before using agents? Because:
 
 **Manual reviews teach you what to look for. Agents help you look for it faster.**
 
-
 ### A Real Example: The Flow
 
 **Manual Review (your work in part 1-2):**
@@ -2882,7 +2815,6 @@ Why do this manually before using agents? Because:
 
 Your manual skills + agent efficiency = **leverage.**
 
-
 > **What's coming later today (Chapter 19):**
 >
 > At the end of the day, Chapter 16 introduces the full 55-agent ecosystem - specialized agents for:
@@ -2900,3 +2832,35 @@ Your manual skills + agent efficiency = **leverage.**
 *Back: [Chapter 14: Git in Practice](14-git-in-practice.md)*  
 *Related appendices: [Appendix G: VS Code Reference](appendix-g-vscode-reference.md)*
 
+## Authoritative Sources
+
+Use these official references when you need the current source of truth for facts in this chapter.
+
+- [GitHub Docs, home](https://docs.github.com/en)
+- [GitHub Changelog](https://github.blog/changelog/)
+- [About Git](https://docs.github.com/en/get-started/using-git/about-git)
+- [GitHub flow](https://docs.github.com/en/get-started/using-github/github-flow)
+- [About pull requests](https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/about-pull-requests)
+- [About issues](https://docs.github.com/en/issues/tracking-your-work-with-issues/about-issues)
+- [Contributing to a project](https://docs.github.com/en/get-started/exploring-projects-on-github/contributing-to-a-project)
+
+### Section-Level Source Map
+
+Use this map to verify facts for each major section in this file.
+
+- **Part 1: The GitHub Pull Requests Extension:** [GitHub Docs, home](https://docs.github.com/en), [GitHub Changelog](https://github.blog/changelog/), [About Git](https://docs.github.com/en/get-started/using-git/about-git), [GitHub flow](https://docs.github.com/en/get-started/using-github/github-flow), [About pull requests](https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/about-pull-requests)
+- **Managing Pull Requests from VS Code:** [GitHub Docs, home](https://docs.github.com/en), [GitHub Changelog](https://github.blog/changelog/), [About Git](https://docs.github.com/en/get-started/using-git/about-git), [GitHub flow](https://docs.github.com/en/get-started/using-github/github-flow), [About pull requests](https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/about-pull-requests)
+- **Workshop Recommendation (Chapter 15, Part 1):** [GitHub Docs, home](https://docs.github.com/en), [GitHub Changelog](https://github.blog/changelog/), [About Git](https://docs.github.com/en/get-started/using-git/about-git), [GitHub flow](https://docs.github.com/en/get-started/using-github/github-flow), [About pull requests](https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/about-pull-requests)
+- **1. Installing the GitHub Pull Requests Extension:** [GitHub Docs, home](https://docs.github.com/en), [GitHub Changelog](https://github.blog/changelog/), [About Git](https://docs.github.com/en/get-started/using-git/about-git), [GitHub flow](https://docs.github.com/en/get-started/using-github/github-flow), [About pull requests](https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/about-pull-requests)
+- **2. Viewing Pull Requests:** [GitHub Docs, home](https://docs.github.com/en), [GitHub Changelog](https://github.blog/changelog/), [About Git](https://docs.github.com/en/get-started/using-git/about-git), [GitHub flow](https://docs.github.com/en/get-started/using-github/github-flow), [About pull requests](https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/about-pull-requests)
+- **Method 2: Explorer Section:** [GitHub Docs, home](https://docs.github.com/en), [GitHub Changelog](https://github.blog/changelog/), [About Git](https://docs.github.com/en/get-started/using-git/about-git), [GitHub flow](https://docs.github.com/en/get-started/using-github/github-flow), [About pull requests](https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/about-pull-requests)
+- **3. Checking Out a Pull Request Branch:** [GitHub Docs, home](https://docs.github.com/en), [GitHub Changelog](https://github.blog/changelog/), [About Git](https://docs.github.com/en/get-started/using-git/about-git), [GitHub flow](https://docs.github.com/en/get-started/using-github/github-flow), [About pull requests](https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/about-pull-requests)
+- **4. Reviewing Pull Requests in VS Code:** [GitHub Docs, home](https://docs.github.com/en), [GitHub Changelog](https://github.blog/changelog/), [About Git](https://docs.github.com/en/get-started/using-git/about-git), [GitHub flow](https://docs.github.com/en/get-started/using-github/github-flow), [About pull requests](https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/about-pull-requests)
+- **5. Creating a Pull Request from VS Code:** [GitHub Docs, home](https://docs.github.com/en), [GitHub Changelog](https://github.blog/changelog/), [About Git](https://docs.github.com/en/get-started/using-git/about-git), [GitHub flow](https://docs.github.com/en/get-started/using-github/github-flow), [About pull requests](https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/about-pull-requests)
+- **6. Pull Request Description Templates:** [GitHub Docs, home](https://docs.github.com/en), [GitHub Changelog](https://github.blog/changelog/), [About Git](https://docs.github.com/en/get-started/using-git/about-git), [GitHub flow](https://docs.github.com/en/get-started/using-github/github-flow), [About pull requests](https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/about-pull-requests)
+- **7. Commenting and Requesting Changes:** [GitHub Docs, home](https://docs.github.com/en), [GitHub Changelog](https://github.blog/changelog/), [About Git](https://docs.github.com/en/get-started/using-git/about-git), [GitHub flow](https://docs.github.com/en/get-started/using-github/github-flow), [About pull requests](https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/about-pull-requests)
+- **8. Merging Pull Requests:** [GitHub Docs, home](https://docs.github.com/en), [GitHub Changelog](https://github.blog/changelog/), [About Git](https://docs.github.com/en/get-started/using-git/about-git), [GitHub flow](https://docs.github.com/en/get-started/using-github/github-flow), [About pull requests](https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/about-pull-requests)
+- **Keyboard Shortcuts - GitHub Pull Requests Extension:** [GitHub Docs, home](https://docs.github.com/en), [GitHub Changelog](https://github.blog/changelog/), [About Git](https://docs.github.com/en/get-started/using-git/about-git), [GitHub flow](https://docs.github.com/en/get-started/using-github/github-flow), [About pull requests](https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/about-pull-requests)
+- **Troubleshooting:** [GitHub Docs, home](https://docs.github.com/en), [GitHub Changelog](https://github.blog/changelog/), [About Git](https://docs.github.com/en/get-started/using-git/about-git), [GitHub flow](https://docs.github.com/en/get-started/using-github/github-flow), [About pull requests](https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/about-pull-requests)
+- **Try It: Review a PR from VS Code:** [GitHub Docs, home](https://docs.github.com/en), [GitHub Changelog](https://github.blog/changelog/), [About Git](https://docs.github.com/en/get-started/using-git/about-git), [GitHub flow](https://docs.github.com/en/get-started/using-github/github-flow), [About pull requests](https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/about-pull-requests)
+- **Part 2: Accessible Code Review:** [GitHub Docs, home](https://docs.github.com/en), [GitHub Changelog](https://github.blog/changelog/), [About Git](https://docs.github.com/en/get-started/using-git/about-git), [GitHub flow](https://docs.github.com/en/get-started/using-github/github-flow), [About pull requests](https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/about-pull-requests)

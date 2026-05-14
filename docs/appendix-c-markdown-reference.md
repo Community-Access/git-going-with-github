@@ -14,7 +14,6 @@
 >
 > **How to use this guide:** Read it straight through if you are new to Markdown. If you already know the basics, use the navigation below to jump to the topic you need. Every section includes the raw Markdown you type, what it looks like when rendered, and screen reader behavior notes so you know exactly what assistive technology users will experience.
 
-
 ## Table of Contents
 
 ### Part 1 - Markdown Foundations
@@ -58,7 +57,6 @@
 31. [Your First Real Markdown Document - Guided Exercise](#31-your-first-real-markdown-document---guided-exercise)
 32. [Quick-Reference Card](#32-quick-reference-card)
 
-
 ## Part 1 - Markdown Foundations
 
 ### Learning Cards: Using This Markdown Reference
@@ -89,7 +87,6 @@
 - Part 1 covers standard Markdown, Part 2 covers GitHub-specific extensions, Part 3 ties it together
 
 </details>
-
 
 ## 1. What Is Markdown?
 
@@ -128,7 +125,6 @@ Markdown is shorter, easier to type, and easier to read in its raw form. That is
 
 When you view a `.md` file on GitHub, GitHub renders it automatically. You see the formatted output. When you edit that file, you see the raw Markdown. When a screen reader reads a rendered Markdown file on GitHub, it navigates the HTML that Markdown produced - headings, links, lists, and all their semantic structure.
 
-
 ## 2. Where You Will Use Markdown in This Workshop
 
 Markdown is not just one tool in this workshop - it is the thread that connects everything you do. Here is every place you will write or read Markdown during the two days.
@@ -162,7 +158,6 @@ The following table lists every Day 2 activity where Markdown is used.
 
 In the Learning Room repository, every challenge description, every welcome file, and every piece of documentation is Markdown. When you fix a broken link in `docs/welcome.md` for Challenge 1, you are editing Markdown. When you add alt text to an image for an accessibility challenge, you are writing Markdown. The skill you build in this appendix is the skill you use in every challenge.
 
-
 ## 3. How to Practice as You Read
 
 The best way to learn Markdown is to type it yourself. Here are three ways to practice as you read this guide.
@@ -192,7 +187,6 @@ The best way to learn Markdown is to type it yourself. Here are three ways to pr
 3. Type Markdown in the content area
 4. Click **Create secret gist** (only you can see it)
 5. View the rendered result
-
 
 ## 4. Paragraphs and Line Breaks
 
@@ -263,7 +257,6 @@ First paragraph. Second paragraph.
 
 **Fix:** Add a blank line between them.
 
-
 ## 5. Headings
 
 Headings create the structure of your document. They are how screen readers navigate, how tables of contents are built, and how readers scan for the section they need.
@@ -316,7 +309,6 @@ Heading Level 2
 ```
 
 This only works for levels 1 and 2, and it is harder to scan visually in raw Markdown. Stick with the `#` syntax - it is clearer, supports all six levels, and is what you will see in virtually every GitHub project.
-
 
 ## 6. Emphasis - Bold, Italic, and Bold Italic
 
@@ -395,7 +387,6 @@ Renders as: This**works**fine. This__does__not.
 
 Use asterisks when you need emphasis inside a word (rare, but it comes up in technical documentation).
 
-
 ## 7. Strikethrough
 
 Strikethrough text shows deleted or outdated content with a line through it. Wrap text in **two tildes** on each side.
@@ -415,7 +406,6 @@ The meeting is ~~Tuesday~~ Wednesday at 3 PM.
 > **Screen reader note:** Screen reader behavior with strikethrough varies. NVDA with "Report font attributes" enabled will announce "strikethrough" before the text. JAWS may announce it as "deleted." VoiceOver does not announce strikethrough by default - the text is simply read. Because of this inconsistency, do not rely on strikethrough alone to convey meaning. Add context in the surrounding text: "The meeting was changed from ~~Tuesday~~ to Wednesday."
 
 > **GitHub note:** Strikethrough is part of the GitHub Flavored Markdown specification. It is not in standard Markdown or CommonMark.
-
 
 ## 8. Lists - Ordered and Unordered
 
@@ -487,7 +477,6 @@ If you need a list to start at a number other than 1, use that number for the fi
 4. This is step four
 5. This is step five
 ```
-
 
 ## 9. Nested Lists and Mixed Lists
 
@@ -583,7 +572,6 @@ List items can contain paragraphs, code blocks, and other elements. Indent the c
 
 > **Screen reader note:** Nested lists are announced with their nesting level. NVDA says "list, nesting level 2" when entering an inner list. This helps you understand the hierarchy by ear.
 
-
 ## 10. Links
 
 Links are how you connect documents, reference issues, point to external resources, and cite sources. Getting links right is critical for accessibility - links with bad text are one of the most common accessibility failures in documentation.
@@ -674,7 +662,6 @@ GitHub automatically converts full URLs in your text into clickable links, but a
 - Reference-style links keep the prose clean by moving URLs to the bottom of the file -- look for `[label]: url` definitions at the end of the document
 - When reviewing a PR, check that no links use "click here" or "read more" as their visible text -- these fail accessibility audits and are unhelpful to all readers
 
-
 ## 11. Images
 
 Images in Markdown use a syntax similar to links, with an exclamation mark (`!`) at the beginning.
@@ -751,7 +738,6 @@ The architecture has three tiers:
 - Use the `<details>` pattern for complex images: display the image normally, then add a collapsible text description below for screen reader users and anyone who wants more detail
 - Linked images (`[![alt](img)](url)`) show a clickable image -- ensure the alt text describes both the image content and the link destination
 
-
 ## 12. Blockquotes
 
 Blockquotes are used for callouts, important notes, cited text, and instructor guidance throughout this course. Start each line with a `>` character followed by a space.
@@ -814,7 +800,6 @@ Throughout this workshop, blockquotes serve specific purposes:
 - **Learning Room connections:** How the current topic connects to the practice repo
 - **Important warnings:** Critical information that could prevent errors
 - **Instructor guidance:** Notes from the facilitator about pacing or approach
-
 
 ## 13. Inline Code and Code Blocks
 
@@ -947,7 +932,6 @@ Use four backticks to wrap content that contains triple backticks. Use five to w
 
 > **Screen reader note:** Code blocks are announced as "code" regions. Screen readers read the content character by character when navigating with arrow keys, and as whole lines when navigating with `Down Arrow`. Syntax highlighting is visual only - it does not affect what screen readers announce. The code text is equally accessible whether highlighted or not.
 
-
 ## 14. Horizontal Rules
 
 A horizontal rule creates a thematic break between sections - a visual line across the page. Use three or more dashes, asterisks, or underscores on a line by themselves.
@@ -964,7 +948,6 @@ ___
 **Best practice:** Use `---` (three dashes). It is the most common convention and looks clean in raw Markdown. Always put a blank line before and after the rule.
 
 > **Screen reader note:** Horizontal rules are announced as "separator" in NVDA, "horizontal separator" in JAWS, and "horizontal rule" in VoiceOver. They are useful as navigation landmarks - screen reader users can move between them, but do not overuse them. Headings are a better way to structure a document.
-
 
 ## 15. Escaping Special Characters
 
@@ -1006,7 +989,6 @@ Show a pipe character: \|
 This asterisk is literal: \*not bold\*
 This hash is literal: \# not a heading
 Show a pipe character: \|
-
 
 ## 16. Tables
 
@@ -1138,9 +1120,7 @@ This is often easier to read with a screen reader than a two-column table.
 
 </details>
 
-
 ## Part 2 - GitHub Flavored Markdown (GFM)
-
 
 ## 17. What Is GitHub Flavored Markdown?
 
@@ -1165,7 +1145,6 @@ The following table shows where GFM is supported.
 | Commit messages | Partial | Basic formatting, autolinks - no Mermaid or math |
 | GitHub Pages (Jekyll) | Depends | Jekyll has its own Markdown processor |
 | VS Code preview | Mostly | Supports most GFM; Mermaid requires an extension |
-
 
 ## 18. Alert and Callout Blocks
 
@@ -1233,7 +1212,6 @@ Alert blocks render as `<blockquote>` elements with an SVG icon and a strong hea
 - NVDA/JAWS: announces `blockquote` role, then reads the type label ("Note", "Warning") then the content
 - VoiceOver: reads the type as bold text then the content
 - The colored icon is decorative (`aria-hidden`); it does not add information beyond the type label
-
 
 ## 19. Collapsible Sections with Details and Summary
 
@@ -1339,7 +1317,6 @@ The `<details>` element renders as a disclosure widget:
 - Use collapsible sections to keep long documents manageable: error logs, configuration blocks, and exercise solutions are good candidates for hiding behind a summary
 - Always write descriptive summary text ("Full error log from CI run" not just "Details") so readers know whether they need to expand the section
 
-
 ## 20. Task List Checkboxes
 
 Task lists in GitHub issues and PRs render as **real interactive checkboxes**. Anyone with write access to the repository can check and uncheck them directly in the rendered view without editing the Markdown.
@@ -1391,7 +1368,6 @@ In Browse Mode, checkboxes are read as `checkbox, not checked` or `checkbox, che
 - NVDA: Press `NVDA+Space` to enter Focus Mode, then `Tab` to find the checkbox, then `Space` to toggle it
 - JAWS: `Tab` to the checkbox, then `Space` to toggle
 - VoiceOver: `VO+Space` on the checkbox element
-
 
 ## 21. Syntax Highlighting in Fenced Code Blocks
 
@@ -1445,7 +1421,6 @@ If no language is specified, the code block renders as plain monospaced text wit
 ### Screen Reader Note
 
 Syntax highlighting is visual only - screen readers read the code text without announcing color changes. The code block itself is announced as a `code` region. This means the text content of well-written code is equally accessible whether highlighted or not. Variable names, function names, and comments are the real accessibility of code - not colors.
-
 
 ## 22. Mermaid Diagrams
 
@@ -1525,7 +1500,6 @@ flowchart LR
 
 This way, screen reader users get the full information from the text and numbered list. Sighted users can also expand the Mermaid diagram for a visual representation.
 
-
 ## 23. Math Expressions with LaTeX
 
 GitHub renders LaTeX math expressions using MathJax. This is common in data science, research, and algorithm documentation.
@@ -1583,7 +1557,6 @@ $$
 $$
 ```
 
-
 ## 24. Footnotes
 
 GitHub supports Markdown footnotes, which render as superscript numbers that link to references at the bottom of the document. They are useful for citations, additional context, and references that would interrupt the flow of the main text.
@@ -1631,7 +1604,6 @@ Indent continuation lines with two spaces:
 - VoiceOver: "link, footnote 1"
 - The back-link at the definition reads "return to footnote reference"
 - Activating the footnote link jumps focus to the definition; activating the back-link returns focus to the original location
-
 
 ## 25. Linked Heading Anchors and Tables of Contents
 
@@ -1701,7 +1673,6 @@ If a document has two headings with the same text, GitHub appends `-1`, `-2`, an
 2. **Screen reader users:** Navigate to the heading, then `Tab` once. A link button appears. Activate it and the URL in the address bar updates to show the anchor
 3. **Keyboard (GitHub shortcut):** There is no direct shortcut, but you can copy the heading text, convert it to the anchor format mentally, and type it in the URL
 
-
 ## 26. Autolinked References - Issues, PRs, Commits, and Users
 
 One of GitHub's most powerful features is automatic linking. When you type certain patterns in any Markdown field on GitHub, they automatically become clickable links. This is how the entire GitHub collaboration workflow connects.
@@ -1757,7 +1728,6 @@ Check out https://github.com/community-access/accessibility-agents for the proje
 ```
 
 > **Accessibility note:** While autolinked URLs work, they create poor link text for screen readers (the entire URL is read character by character). In documentation and issue descriptions, always use descriptive link text instead: `[Accessibility Agents repository](https://github.com/community-access/accessibility-agents)`.
-
 
 ## 27. HTML in Markdown
 
@@ -1836,9 +1806,7 @@ GitHub strips these elements for security:
 - `<input>` - No input fields
 - Event attributes like `onclick`, `onload`
 
-
 ## Part 3 - Putting It All Together
-
 
 ## 28. Screen Reader Behavior Summary
 
@@ -1869,7 +1837,6 @@ The following table provides a summary of screen reader behavior for each Markdo
 | Footnotes | "Link, footnote N" | Use descriptive footnote text |
 | Heading anchors | Headings navigable normally | Unique, descriptive heading text |
 | `<kbd>` | "Code" or text content | Use for keyboard instructions |
-
 
 ## 29. Accessible Markdown Authoring Checklist
 
@@ -1929,7 +1896,6 @@ Use this checklist every time you write a Markdown file, issue, or PR descriptio
 - [ ] Color is never the only way information is conveyed
 - [ ] No information is communicated only through visual position or layout
 - [ ] Content makes sense when read linearly, top to bottom
-
 
 ## 30. Common Mistakes and How to Fix Them
 
@@ -2071,7 +2037,6 @@ flowchart LR
 **Why it matters:** `CAUTION` (red) implies irreversible harm. A suggestion to try a different approach is, at most, a `TIP` (green) or a `NOTE` (blue). Using the wrong severity trains readers to ignore warnings.
 
 **Fix:** Match the alert type to the actual urgency. Use `CAUTION` only for actions that could cause real harm.
-
 
 ## 31. Your First Real Markdown Document - Guided Exercise
 
@@ -2215,7 +2180,6 @@ accessibility bug reports to open source projects.
 - Pin this section in a browser tab alongside your editing window
 
 </details>
-
 
 ## 32. Quick-Reference Card
 
@@ -2393,3 +2357,34 @@ flowchart LR
 *Back: [Appendix B: Screen Reader Cheat Sheet](appendix-b-screen-reader-cheatsheet.md)*  
 *Teaching chapter: [Chapter 06: Working with Pull Requests](06-working-with-pull-requests.md)*
 
+## Authoritative Sources
+
+Use these official references when you need the current source of truth for facts in this chapter.
+
+- [GitHub Docs, home](https://docs.github.com/en)
+- [GitHub Changelog](https://github.blog/changelog/)
+- [W3C Web Content Accessibility Guidelines (WCAG) 2 overview](https://www.w3.org/WAI/standards-guidelines/wcag/)
+- [WAI tutorials for accessible design patterns](https://www.w3.org/WAI/tutorials/)
+- [WAI-ARIA Authoring Practices Guide](https://www.w3.org/WAI/ARIA/apg/)
+- [GitHub accessibility statement](https://docs.github.com/en/site-policy/other-site-policies/github-accessibility-statement)
+
+### Section-Level Source Map
+
+Use this map to verify facts for each major section in this file.
+
+- **From First Paragraph to Polished Repository - Everything You Need to Know:** [GitHub Docs, home](https://docs.github.com/en), [GitHub Changelog](https://github.blog/changelog/), [W3C Web Content Accessibility Guidelines (WCAG) 2 overview](https://www.w3.org/WAI/standards-guidelines/wcag/), [WAI tutorials for accessible design patterns](https://www.w3.org/WAI/tutorials/), [WAI-ARIA Authoring Practices Guide](https://www.w3.org/WAI/ARIA/apg/)
+- **Part 1 - Markdown Foundations:** [GitHub Docs, home](https://docs.github.com/en), [GitHub Changelog](https://github.blog/changelog/), [W3C Web Content Accessibility Guidelines (WCAG) 2 overview](https://www.w3.org/WAI/standards-guidelines/wcag/), [WAI tutorials for accessible design patterns](https://www.w3.org/WAI/tutorials/), [WAI-ARIA Authoring Practices Guide](https://www.w3.org/WAI/ARIA/apg/)
+- **1. What Is Markdown?:** [GitHub Docs, home](https://docs.github.com/en), [GitHub Changelog](https://github.blog/changelog/), [W3C Web Content Accessibility Guidelines (WCAG) 2 overview](https://www.w3.org/WAI/standards-guidelines/wcag/), [WAI tutorials for accessible design patterns](https://www.w3.org/WAI/tutorials/), [WAI-ARIA Authoring Practices Guide](https://www.w3.org/WAI/ARIA/apg/)
+- **2. Where You Will Use Markdown in This Workshop:** [GitHub Docs, home](https://docs.github.com/en), [GitHub Changelog](https://github.blog/changelog/), [W3C Web Content Accessibility Guidelines (WCAG) 2 overview](https://www.w3.org/WAI/standards-guidelines/wcag/), [WAI tutorials for accessible design patterns](https://www.w3.org/WAI/tutorials/), [WAI-ARIA Authoring Practices Guide](https://www.w3.org/WAI/ARIA/apg/)
+- **3. How to Practice as You Read:** [GitHub Docs, home](https://docs.github.com/en), [GitHub Changelog](https://github.blog/changelog/), [W3C Web Content Accessibility Guidelines (WCAG) 2 overview](https://www.w3.org/WAI/standards-guidelines/wcag/), [WAI tutorials for accessible design patterns](https://www.w3.org/WAI/tutorials/), [WAI-ARIA Authoring Practices Guide](https://www.w3.org/WAI/ARIA/apg/)
+- **4. Paragraphs and Line Breaks:** [GitHub Docs, home](https://docs.github.com/en), [GitHub Changelog](https://github.blog/changelog/), [W3C Web Content Accessibility Guidelines (WCAG) 2 overview](https://www.w3.org/WAI/standards-guidelines/wcag/), [WAI tutorials for accessible design patterns](https://www.w3.org/WAI/tutorials/), [WAI-ARIA Authoring Practices Guide](https://www.w3.org/WAI/ARIA/apg/)
+- **5. Headings:** [GitHub Docs, home](https://docs.github.com/en), [GitHub Changelog](https://github.blog/changelog/), [W3C Web Content Accessibility Guidelines (WCAG) 2 overview](https://www.w3.org/WAI/standards-guidelines/wcag/), [WAI tutorials for accessible design patterns](https://www.w3.org/WAI/tutorials/), [WAI-ARIA Authoring Practices Guide](https://www.w3.org/WAI/ARIA/apg/)
+- **Heading Level 2:** [GitHub Docs, home](https://docs.github.com/en), [GitHub Changelog](https://github.blog/changelog/), [W3C Web Content Accessibility Guidelines (WCAG) 2 overview](https://www.w3.org/WAI/standards-guidelines/wcag/), [WAI tutorials for accessible design patterns](https://www.w3.org/WAI/tutorials/), [WAI-ARIA Authoring Practices Guide](https://www.w3.org/WAI/ARIA/apg/)
+- **6. Emphasis - Bold, Italic, and Bold Italic:** [GitHub Docs, home](https://docs.github.com/en), [GitHub Changelog](https://github.blog/changelog/), [W3C Web Content Accessibility Guidelines (WCAG) 2 overview](https://www.w3.org/WAI/standards-guidelines/wcag/), [WAI tutorials for accessible design patterns](https://www.w3.org/WAI/tutorials/), [WAI-ARIA Authoring Practices Guide](https://www.w3.org/WAI/ARIA/apg/)
+- **7. Strikethrough:** [GitHub Docs, home](https://docs.github.com/en), [GitHub Changelog](https://github.blog/changelog/), [W3C Web Content Accessibility Guidelines (WCAG) 2 overview](https://www.w3.org/WAI/standards-guidelines/wcag/), [WAI tutorials for accessible design patterns](https://www.w3.org/WAI/tutorials/), [WAI-ARIA Authoring Practices Guide](https://www.w3.org/WAI/ARIA/apg/)
+- **8. Lists - Ordered and Unordered:** [GitHub Docs, home](https://docs.github.com/en), [GitHub Changelog](https://github.blog/changelog/), [W3C Web Content Accessibility Guidelines (WCAG) 2 overview](https://www.w3.org/WAI/standards-guidelines/wcag/), [WAI tutorials for accessible design patterns](https://www.w3.org/WAI/tutorials/), [WAI-ARIA Authoring Practices Guide](https://www.w3.org/WAI/ARIA/apg/)
+- **9. Nested Lists and Mixed Lists:** [GitHub Docs, home](https://docs.github.com/en), [GitHub Changelog](https://github.blog/changelog/), [W3C Web Content Accessibility Guidelines (WCAG) 2 overview](https://www.w3.org/WAI/standards-guidelines/wcag/), [WAI tutorials for accessible design patterns](https://www.w3.org/WAI/tutorials/), [WAI-ARIA Authoring Practices Guide](https://www.w3.org/WAI/ARIA/apg/)
+- **10. Links:** [GitHub Docs, home](https://docs.github.com/en), [GitHub Changelog](https://github.blog/changelog/), [W3C Web Content Accessibility Guidelines (WCAG) 2 overview](https://www.w3.org/WAI/standards-guidelines/wcag/), [WAI tutorials for accessible design patterns](https://www.w3.org/WAI/tutorials/), [WAI-ARIA Authoring Practices Guide](https://www.w3.org/WAI/ARIA/apg/)
+- **11. Images:** [GitHub Docs, home](https://docs.github.com/en), [GitHub Changelog](https://github.blog/changelog/), [W3C Web Content Accessibility Guidelines (WCAG) 2 overview](https://www.w3.org/WAI/standards-guidelines/wcag/), [WAI tutorials for accessible design patterns](https://www.w3.org/WAI/tutorials/), [WAI-ARIA Authoring Practices Guide](https://www.w3.org/WAI/ARIA/apg/)
+- **12. Blockquotes:** [GitHub Docs, home](https://docs.github.com/en), [GitHub Changelog](https://github.blog/changelog/), [W3C Web Content Accessibility Guidelines (WCAG) 2 overview](https://www.w3.org/WAI/standards-guidelines/wcag/), [WAI tutorials for accessible design patterns](https://www.w3.org/WAI/tutorials/), [WAI-ARIA Authoring Practices Guide](https://www.w3.org/WAI/ARIA/apg/)
+- **13. Inline Code and Code Blocks:** [GitHub Docs, home](https://docs.github.com/en), [GitHub Changelog](https://github.blog/changelog/), [W3C Web Content Accessibility Guidelines (WCAG) 2 overview](https://www.w3.org/WAI/standards-guidelines/wcag/), [WAI tutorials for accessible design patterns](https://www.w3.org/WAI/tutorials/), [WAI-ARIA Authoring Practices Guide](https://www.w3.org/WAI/ARIA/apg/)

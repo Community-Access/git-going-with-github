@@ -1,14 +1,12 @@
 # Progress Tracker
 ## Track Your Learning Journey Through the GitHub Workshop
 
-
 ## How to Use This Tracker
 
 1. **Print this page or save as PDF** to mark progress offline
 2. **Or keep a checklist** in your preferred note-taking app
 3. **Check off items** as you complete them
 4. **Return here** to see your learning path and next steps
-
 
 ## Pre-Workshop Setup
 
@@ -22,7 +20,6 @@
 
 **Status:** Not started  In progress  Complete
 
-
 ## Chapter 0: Pre-Workshop Setup
 **Time:** 30 minutes  |  **What You'll Do:** Get your computer ready
 
@@ -33,7 +30,6 @@
 - [ ] Test: Can you clone a repository? (`git clone ...`)
 
 **Status:** Not started  In progress  Complete
-
 
 ## Chapter 1: Understanding GitHub Web Structure
 **Time:** 1 hour  |  **What You'll Do:** Learn GitHub's layout and terminology
@@ -46,7 +42,6 @@
 
 **Status:** Not started  In progress  Complete
 
-
 ## Chapter 2: Navigating Repositories
 **Time:** 45 minutes  |  **What You'll Do:** Practice exploring real repositories
 
@@ -58,7 +53,6 @@
 
 **Status:** Not started  In progress  Complete
 
-
 ## Chapter 3: The Learning Room
 **Time:** 30 minutes  |  **What You'll Do:** Understand the shared practice environment
 
@@ -69,7 +63,6 @@
 - [ ] Understand: How bot feedback and peer review work
 
 **Status:** Not started  In progress  Complete
-
 
 ## Chapter 4: Working with Issues
 **Time:** 1 hour  |  **What You'll Do:** Create, read, and comment on issues
@@ -83,7 +76,6 @@
 
 **Status:** Not started  In progress  Complete
 
-
 ## Chapter 5: VS Code Accessibility
 **Time:** 45 minutes  |  **What You'll Do:** Set up VS Code for accessible development
 
@@ -94,7 +86,6 @@
 - [ ] Configured: Accessibility signals and editor preferences for your workflow
 
 **Status:** Not started  In progress  Complete
-
 
 ## Chapter 6: Working with Pull Requests
 **Time:** 1 hour  |  **What You'll Do:** Submit, review, and merge PRs
@@ -108,7 +99,6 @@
 
 **Status:** Not started  In progress  Complete
 
-
 ## Chapter 7: Merge Conflicts
 **Time:** 1 hour  |  **What You'll Do:** Resolve conflicts between branches
 
@@ -119,7 +109,6 @@
 - [ ] Know the "abort" option: `git merge --abort`
 
 **Status:** Not started  In progress  Complete
-
 
 ## Chapter 8: Culture & Etiquette
 **Time:** 30 minutes  |  **What You'll Do:** Learn collaborative best practices
@@ -132,7 +121,6 @@
 
 **Status:** Not started  In progress  Complete
 
-
 ## Chapter 9: Labels, Milestones & Projects
 **Time:** 45 minutes  |  **What You'll Do:** Use GitHub's organizational tools
 
@@ -143,7 +131,6 @@
 - [ ] Filtered issues using: Labels + Milestones
 
 **Status:** Not started  In progress  Complete
-
 
 ## Chapter 10: Notifications
 **Time:** 30 minutes  |  **What You'll Do:** Master GitHub notifications
@@ -156,7 +143,6 @@
 
 **Status:** Not started  In progress  Complete
 
-
 ## Chapter 11: VS Code Interface and Setup
 **Time:** 45 minutes  |  **What You'll Do:** Launch VS Code, sign in, enable screen reader mode, and orient to core surfaces
 
@@ -167,7 +153,6 @@
 - [ ] Configured: Screen reader mode and basic navigation preferences
 
 **Status:** Not started  In progress  Complete
-
 
 ## Chapter 12: VS Code Accessibility Deep Dive
 **Time:** 45 minutes  |  **What You'll Do:** Configure VS Code accessibility features for daily contribution work
@@ -180,7 +165,6 @@
 
 **Status:** Not started  In progress  Complete
 
-
 ## Chapter 13: How Git Works
 **Time:** 30 minutes  |  **What You'll Do:** Build the mental model for commits, branches, remotes, and conflicts
 
@@ -190,7 +174,6 @@
 - [ ] Understand: Why merge conflicts happen
 
 **Status:** Not started  In progress  Complete
-
 
 ## Chapter 14: Git in Practice
 **Time:** 1 hour  |  **What You'll Do:** Master Git operations within VS Code
@@ -202,7 +185,6 @@
 - [ ] Configured: Git credentials and remote tracking
 
 **Status:** Not started  In progress  Complete
-
 
 ## Chapter 15: Code Review
 **Time:** 1.5 hours + Exercises  |  **What You'll Do:** Review pull requests accessibly and constructively
@@ -222,7 +204,6 @@
 **Status:** Not started  In progress  Complete  
 **Exercises Completed:** A  B  C  All
 
-
 ## Chapter 16: GitHub Copilot
 **Time:** 1 hour  |  **What You'll Do:** Use AI-assisted coding and chat
 
@@ -233,7 +214,6 @@
 - [ ] Understand: Chat participants, agents, and model selection
 
 **Status:** Not started  In progress  Complete
-
 
 ## Chapter 17: Issue Templates
 **Time:** 1.5 hours + Exercises  |  **What You'll Do:** Create accessible issue templates
@@ -252,7 +232,6 @@
 
 **Status:** Not started  In progress  Complete  
 **Exercises Completed:** A  B  C  D  All
-
 
 ## Chapter 19: Accessibility Agents
 **Time:** 1.5 hours + Exercises  |  **What You'll Do:** Automate with Copilot agents
@@ -283,7 +262,6 @@ Browse the ecosystem and try agents that match your skills (read Chapter 19 for 
 **Status:** Not started  In progress  Complete  
 **Exercises Completed:** 1  2  3  All
 
-
 ## Appendices (Reference)
 
 - [ ] **Appendix A: Glossary** - Read as needed for term definitions
@@ -294,7 +272,6 @@ Browse the ecosystem and try agents that match your skills (read Chapter 19 for 
   - [ ] NVDA commands bookmarked
   - [ ] JAWS commands bookmarked
   - [ ] VoiceOver commands bookmarked
-
 
 ## Overall Progress Summary
 
@@ -340,7 +317,6 @@ The workshop includes structured exercises in the following chapters. Use this t
 - All chapters + appendices: Not started  In progress  Complete
 - **Time:** ~13 hours total
 
-
 ## Estimated Time Breakdown
 
 | Section | Time | Status |
@@ -350,7 +326,6 @@ The workshop includes structured exercises in the following chapters. Use this t
 | Day 2 Advanced (Ch 11-16) | 5 hrs | |
 | Reference/Appendices | As needed | |
 | **Total** | **~13 hrs** | |
-
 
 ## Learning Path by Role
 
@@ -383,7 +358,6 @@ The workshop includes structured exercises in the following chapters. Use this t
 
 **Total: ~15 hours**
 
-
 ## Next Steps After Completing This Curriculum
 
 ### Keep Learning
@@ -403,7 +377,6 @@ The workshop includes structured exercises in the following chapters. Use this t
 - [ ] Codespaces for efficient development
 - [ ] GitHub Enterprise features
 
-
 ## Questions or Stuck?
 
 - **Check:** `TROUBLESHOOTING.md` (common issues & fixes)
@@ -412,6 +385,33 @@ The workshop includes structured exercises in the following chapters. Use this t
 - **Define:** `docs/appendix-a-glossary.md` (term definitions)
 - **Ask:** Open an issue or discussion on GitHub
 
-
 *Last updated: February 2026*  
 *Print or bookmark this progress tracker to chart your journey!*
+
+## Authoritative Sources
+
+Use these official references when you need the current source of truth for facts in this chapter.
+
+- [GitHub Docs, home](https://docs.github.com/en)
+- [GitHub Changelog](https://github.blog/changelog/)
+
+### Section-Level Source Map
+
+Use this map to verify facts for each major section in this file.
+
+- **Track Your Learning Journey Through the GitHub Workshop:** [GitHub Docs, home](https://docs.github.com/en), [GitHub Changelog](https://github.blog/changelog/), [About Git](https://docs.github.com/en/get-started/using-git/about-git), [GitHub flow](https://docs.github.com/en/get-started/using-github/github-flow), [About pull requests](https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/about-pull-requests)
+- **How to Use This Tracker:** [GitHub Docs, home](https://docs.github.com/en), [GitHub Changelog](https://github.blog/changelog/)
+- **Pre-Workshop Setup:** [GitHub Docs, home](https://docs.github.com/en), [GitHub Changelog](https://github.blog/changelog/)
+- **Chapter 0: Pre-Workshop Setup:** [GitHub Docs, home](https://docs.github.com/en), [GitHub Changelog](https://github.blog/changelog/)
+- **Chapter 1: Understanding GitHub Web Structure:** [GitHub Docs, home](https://docs.github.com/en), [GitHub Changelog](https://github.blog/changelog/), [About Git](https://docs.github.com/en/get-started/using-git/about-git), [GitHub flow](https://docs.github.com/en/get-started/using-github/github-flow), [About pull requests](https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/about-pull-requests)
+- **Chapter 2: Navigating Repositories:** [GitHub Docs, home](https://docs.github.com/en), [GitHub Changelog](https://github.blog/changelog/)
+- **Chapter 3: The Learning Room:** [GitHub Docs, home](https://docs.github.com/en), [GitHub Changelog](https://github.blog/changelog/), [GitHub Skills catalog](https://skills.github.com/), [GitHub Learning Pathways](https://resources.github.com/learn/pathways/)
+- **Chapter 4: Working with Issues:** [GitHub Docs, home](https://docs.github.com/en), [GitHub Changelog](https://github.blog/changelog/), [About Git](https://docs.github.com/en/get-started/using-git/about-git), [GitHub flow](https://docs.github.com/en/get-started/using-github/github-flow), [About pull requests](https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/about-pull-requests)
+- **Chapter 5: VS Code Accessibility:** [GitHub Docs, home](https://docs.github.com/en), [GitHub Changelog](https://github.blog/changelog/), [W3C Web Content Accessibility Guidelines (WCAG) 2 overview](https://www.w3.org/WAI/standards-guidelines/wcag/), [WAI tutorials for accessible design patterns](https://www.w3.org/WAI/tutorials/), [WAI-ARIA Authoring Practices Guide](https://www.w3.org/WAI/ARIA/apg/)
+- **Chapter 6: Working with Pull Requests:** [GitHub Docs, home](https://docs.github.com/en), [GitHub Changelog](https://github.blog/changelog/), [About Git](https://docs.github.com/en/get-started/using-git/about-git), [GitHub flow](https://docs.github.com/en/get-started/using-github/github-flow), [About pull requests](https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/about-pull-requests)
+- **Chapter 7: Merge Conflicts:** [GitHub Docs, home](https://docs.github.com/en), [GitHub Changelog](https://github.blog/changelog/), [About Git](https://docs.github.com/en/get-started/using-git/about-git), [GitHub flow](https://docs.github.com/en/get-started/using-github/github-flow), [About pull requests](https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/about-pull-requests)
+- **Chapter 8: Culture & Etiquette:** [GitHub Docs, home](https://docs.github.com/en), [GitHub Changelog](https://github.blog/changelog/)
+- **Chapter 9: Labels, Milestones & Projects:** [GitHub Docs, home](https://docs.github.com/en), [GitHub Changelog](https://github.blog/changelog/), [GitHub Projects docs](https://docs.github.com/en/issues/planning-and-tracking-with-projects/learning-about-projects/about-projects), [Labels docs](https://docs.github.com/en/issues/using-labels-and-milestones-to-track-work/managing-labels), [Milestones docs](https://docs.github.com/en/issues/using-labels-and-milestones-to-track-work/about-milestones)
+- **Chapter 10: Notifications:** [GitHub Docs, home](https://docs.github.com/en), [GitHub Changelog](https://github.blog/changelog/)
+- **Chapter 11: VS Code Interface and Setup:** [GitHub Docs, home](https://docs.github.com/en), [GitHub Changelog](https://github.blog/changelog/)
+- **Chapter 12: VS Code Accessibility Deep Dive:** [GitHub Docs, home](https://docs.github.com/en), [GitHub Changelog](https://github.blog/changelog/), [W3C Web Content Accessibility Guidelines (WCAG) 2 overview](https://www.w3.org/WAI/standards-guidelines/wcag/), [WAI tutorials for accessible design patterns](https://www.w3.org/WAI/tutorials/), [WAI-ARIA Authoring Practices Guide](https://www.w3.org/WAI/ARIA/apg/)

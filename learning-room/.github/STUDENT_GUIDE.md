@@ -14,7 +14,6 @@ When you open a pull request (PR) in the Learning Room, magic happens!
 
 They're designed to give you instant, educational feedback so you can learn faster.
 
-
 ## The Magic Happens in Three Stages
 
 ### Stage 1: You Open a Pull Request
@@ -60,7 +59,6 @@ Bot: Awards achievement badge
 
 When your PR is merged, the bot celebrates your achievement and suggests the next challenge!
 
-
 ## Understanding Bot Feedback
 
 ### The PR Validation Report
@@ -96,7 +94,6 @@ Shows issues in the files you changed.
 ```
 
 **Learning tip:** Click the file name to jump right to the problem!
-
 
 ## Common Feedback & How to Fix It
 
@@ -146,7 +143,6 @@ Replace vague text with specific words describing the link destination.
 -  Wrong: `[link](../docs/markdnown-guide.md)` (typo in filename)
 -  Right: `[link](../docs/markdown-guide.md)` (typo fixed)
 
-
 ## Using Bot Auto-Responses
 
 Stuck? The bot can help! Comment on your PR with these phrases:
@@ -174,7 +170,6 @@ Stuck? The bot can help! Comment on your PR with these phrases:
 **Say:** `what's next` or `next challenge`
 
 **Bot responds with:** Where to find your next challenge
-
 
 ## What Happens After Merge
 
@@ -209,7 +204,6 @@ The bot looks at available challenges and suggests your next one.
 
 You can claim it by commenting: `I'd like to work on this challenge!`
 
-
 ## When the Bot Gets It Wrong
 
 The bot isn't perfect! Sometimes it makes mistakes or you disagree with its feedback.
@@ -224,7 +218,6 @@ The bot isn't perfect! Sometimes it makes mistakes or you disagree with its feed
 **Example comment:**
 
 > The bot flagged this as a broken link, but I can see the file exists at `../docs/file.md`. Can you double-check?
-
 
 ## Pro Tips
 
@@ -261,7 +254,6 @@ Have a question about feedback? Comment on your PR!
 - Community will see it
 - Everyone learns together
 
-
 ## Frequently Asked Questions
 
 ### Q: Does the bot always approve?
@@ -292,7 +284,6 @@ Comment on your PR! Ask your question publicly. Facilitators and peers can help.
 
 You *can*, but **don't**. The comments are part of your learning record. Future you will appreciate being able to see what you fixed!
 
-
 ## How This Helps You Learn
 
 | What the Bot Does | How It Helps |
@@ -304,7 +295,6 @@ You *can*, but **don't**. The comments are part of your learning record. Future 
 | Consistent standards | Everyone gets the same feedback |
 | Frees up reviewers | Humans focus on mentoring, not mechanics |
 
-
 ## What Bot Comments Are Saved?
 
 Your bot comments become part of:
@@ -314,7 +304,6 @@ Your bot comments become part of:
 -  Your portfolio (if you share it)
 
 **This is real open source work!**
-
 
 ## When You're Stuck
 
@@ -330,7 +319,6 @@ Here's the support path:
 
 **You belong here. Keep going! **
 
-
 ## Resources
 
 - [Pull Requests (Chapter 06)](https://github.com/Community-Access/git-going-with-github/blob/main/docs/06-working-with-pull-requests.md)
@@ -340,7 +328,32 @@ Here's the support path:
 - [Course Roadmap](../docs/course-roadmap.md)
 - [GitHub Help](https://docs.github.com/en)
 
-
 **Questions about the automation?** Mention `@facilitator` in an issue or PR comment!
 
-*This automation is created just for you — to help you learn faster, get quick feedback, and celebrate your wins.* 
+*This automation is created just for you — to help you learn faster, get quick feedback, and celebrate your wins.*
+
+## Authoritative Sources
+
+Use these official references when you need the current source of truth for facts in this chapter.
+
+- [GitHub Docs, home](https://docs.github.com/en)
+- [GitHub Changelog](https://github.blog/changelog/)
+
+### Section-Level Source Map
+
+Use this map to verify facts for each major section in this file.
+
+- **What Is This Automation?:** [GitHub Docs, home](https://docs.github.com/en), [GitHub Changelog](https://github.blog/changelog/)
+- **The Magic Happens in Three Stages:** [GitHub Docs, home](https://docs.github.com/en), [GitHub Changelog](https://github.blog/changelog/), [About releases](https://docs.github.com/en/repositories/releasing-projects-on-github/about-releases), [Managing releases and tags](https://docs.github.com/en/repositories/releasing-projects-on-github/managing-releases-in-a-repository)
+- **Understanding Bot Feedback:** [GitHub Docs, home](https://docs.github.com/en), [GitHub Changelog](https://github.blog/changelog/)
+- **Common Feedback & How to Fix It:** [GitHub Docs, home](https://docs.github.com/en), [GitHub Changelog](https://github.blog/changelog/)
+- **Using Bot Auto-Responses:** [GitHub Docs, home](https://docs.github.com/en), [GitHub Changelog](https://github.blog/changelog/)
+- **What Happens After Merge:** [GitHub Docs, home](https://docs.github.com/en), [GitHub Changelog](https://github.blog/changelog/), [About Git](https://docs.github.com/en/get-started/using-git/about-git), [GitHub flow](https://docs.github.com/en/get-started/using-github/github-flow), [About pull requests](https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/about-pull-requests)
+- **Achievement Unlocked!:** [GitHub Docs, home](https://docs.github.com/en), [GitHub Changelog](https://github.blog/changelog/)
+- **When the Bot Gets It Wrong:** [GitHub Docs, home](https://docs.github.com/en), [GitHub Changelog](https://github.blog/changelog/)
+- **Pro Tips:** [GitHub Docs, home](https://docs.github.com/en), [GitHub Changelog](https://github.blog/changelog/)
+- **Frequently Asked Questions:** [GitHub Docs, home](https://docs.github.com/en), [GitHub Changelog](https://github.blog/changelog/)
+- **How This Helps You Learn:** [GitHub Docs, home](https://docs.github.com/en), [GitHub Changelog](https://github.blog/changelog/)
+- **What Bot Comments Are Saved?:** [GitHub Docs, home](https://docs.github.com/en), [GitHub Changelog](https://github.blog/changelog/)
+- **When You're Stuck:** [GitHub Docs, home](https://docs.github.com/en), [GitHub Changelog](https://github.blog/changelog/)
+- **Resources:** [GitHub Docs, home](https://docs.github.com/en), [GitHub Changelog](https://github.blog/changelog/)

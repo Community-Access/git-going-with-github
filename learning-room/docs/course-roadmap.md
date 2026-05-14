@@ -46,13 +46,15 @@ Goal: work locally, perform code review, and complete the capstone contribution.
 4. Challenge 13: AI as Your Copilot
 5. Challenge 14: Template Remix
 6. Challenge 15: Meet the Agents
-7. Challenge 16: Build Your Agent (Capstone)
+7. Challenge 16: Capstone Project (Build Your Agent (Capstone))
+
+Challenge 16 alternate title used in current docs: Challenge 16: Build Your Agent (Capstone)
 
 Expected Day 2 outcome:
 
 - You can run a local Git workflow end to end.
 - You can give and respond to code review feedback.
-- You can complete a capstone agent contribution.
+- You can complete a capstone contribution path for Accessibility Agents, GLOW, or another meaningful repository.
 
 ## Bonus Path (A-E)
 
@@ -85,3 +87,22 @@ Use this list to track your full journey:
 - Optional: completed bonus challenges (A-E)
 
 When in doubt, return to the [Challenge Hub](../../docs/CHALLENGES.md). It is the canonical challenge reference.
+
+## Authoritative Sources
+
+Use these official references when you need the current source of truth for facts in this chapter.
+
+- [GitHub Docs, home](https://docs.github.com/en)
+- [GitHub Changelog](https://github.blog/changelog/)
+
+### Section-Level Source Map
+
+Use this map to verify facts for each major section in this file.
+
+- **Quick Navigation:** [GitHub Docs, home](https://docs.github.com/en), [GitHub Changelog](https://github.blog/changelog/)
+- **Before You Start:** [GitHub Docs, home](https://docs.github.com/en), [GitHub Changelog](https://github.blog/changelog/)
+- **Day 1 Path (Challenges 1-9):** [GitHub Docs, home](https://docs.github.com/en), [GitHub Changelog](https://github.blog/changelog/)
+- **Day 2 Path (Challenges 10-16):** [GitHub Docs, home](https://docs.github.com/en), [GitHub Changelog](https://github.blog/changelog/)
+- **Bonus Path (A-E):** [GitHub Docs, home](https://docs.github.com/en), [GitHub Changelog](https://github.blog/changelog/)
+- **How to Use Support Resources:** [GitHub Docs, home](https://docs.github.com/en), [GitHub Changelog](https://github.blog/changelog/)
+- **Completion Checklist:** [GitHub Docs, home](https://docs.github.com/en), [GitHub Changelog](https://github.blog/changelog/)

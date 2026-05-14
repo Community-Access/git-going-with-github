@@ -33,7 +33,6 @@ Out of scope:
 
 ## Canonical Source Files Used by This Runbook
 
-
 **Table: Source files consolidated by this runbook**
 
 | Area | Source file |
@@ -1092,7 +1091,7 @@ Why this matters:
 | 13 | AI as Your Copilot |  |  |  |
 | 14 | Template Remix |  |  |  |
 | 15 | Meet the Agents |  |  |  |
-| 16 | Build Your Agent (Capstone) |  |  |  |
+| 16 | Capstone Project |  |  |  |
 | Bonus A | Improve an Existing Agent |  |  |  |
 | Bonus B | Document Your Journey |  |  |  |
 | Bonus C | Create a Group Challenge |  |  |  |
@@ -1588,3 +1587,31 @@ Archive destination: `https://github.com/Community-Access/git-going-student-succ
 - [x] Learning Room template sync PR merged: `Community-Access/learning-room-template#11`.
 - [ ] Registration variable values set for next cohort (`CLASSROOM_DAY1_ASSIGNMENT_URL`, `CLASSROOM_DAY2_ASSIGNMENT_URL`).
 - [ ] Day 1 and Day 2 classroom assignments created for next cohort.
+
+## Authoritative Sources
+
+Use these official references when you need the current source of truth for facts in this chapter.
+
+- [GitHub Docs, home](https://docs.github.com/en)
+- [GitHub Changelog](https://github.blog/changelog/)
+
+### Section-Level Source Map
+
+Use this map to verify facts for each major section in this file.
+
+- **Scope and Audience:** [GitHub Docs, home](https://docs.github.com/en), [GitHub Changelog](https://github.blog/changelog/)
+- **Canonical Source Files Used by This Runbook:** [GitHub Docs, home](https://docs.github.com/en), [GitHub Changelog](https://github.blog/changelog/)
+- **Required Accounts, Access, and Tools:** [GitHub Docs, home](https://docs.github.com/en), [GitHub Changelog](https://github.blog/changelog/)
+- **Test Artifacts You Will Produce:** [GitHub Docs, home](https://docs.github.com/en), [GitHub Changelog](https://github.blog/changelog/)
+- **Runbook Execution Standard (Applies to Every Phase):** [GitHub Docs, home](https://docs.github.com/en), [GitHub Changelog](https://github.blog/changelog/)
+- **QA Validation Contract (What, Where, When, How, Expected Experience):** [GitHub Docs, home](https://docs.github.com/en), [GitHub Changelog](https://github.blog/changelog/)
+- **Reading Order for Operators:** [GitHub Docs, home](https://docs.github.com/en), [GitHub Changelog](https://github.blog/changelog/)
+- **Pre-Flight Local Validation (Non-Podcast):** [GitHub Docs, home](https://docs.github.com/en), [GitHub Changelog](https://github.blog/changelog/)
+- **Phase 0 - Registration System Deployment Gate (Admin Side):** [GitHub Docs, home](https://docs.github.com/en), [GitHub Changelog](https://github.blog/changelog/), [GitHub Discussions docs](https://docs.github.com/en/discussions), [GitHub Gists docs](https://docs.github.com/en/get-started/writing-on-github/editing-and-sharing-content-with-gists)
+- **Phase 1 - Registration System QA (Admin Side):** [GitHub Docs, home](https://docs.github.com/en), [GitHub Changelog](https://github.blog/changelog/), [GitHub Discussions docs](https://docs.github.com/en/discussions), [GitHub Gists docs](https://docs.github.com/en/get-started/writing-on-github/editing-and-sharing-content-with-gists)
+- **Phase 2 - Learning Room Template Deployment Gate (Admin Side):** [GitHub Docs, home](https://docs.github.com/en), [GitHub Changelog](https://github.blog/changelog/), [GitHub Skills catalog](https://skills.github.com/), [GitHub Learning Pathways](https://resources.github.com/learn/pathways/)
+- **Phase 3 - Classroom Deployment QA (Admin Side):** [GitHub Docs, home](https://docs.github.com/en), [GitHub Changelog](https://github.blog/changelog/)
+- **Phase 4 - Test Student Acceptance and Seeding (Bridge from Admin to Student):** [GitHub Docs, home](https://docs.github.com/en), [GitHub Changelog](https://github.blog/changelog/)
+- **Phase 5 - Curriculum Content QA (Walk every required chapter and appendix):** [GitHub Docs, home](https://docs.github.com/en), [GitHub Changelog](https://github.blog/changelog/)
+- **Phase 6 - Student Journey QA (Walk every path as a student):** [GitHub Docs, home](https://docs.github.com/en), [GitHub Changelog](https://github.blog/changelog/)
+- **Phase 7 - Workflow and Automation Validation Matrix:** [GitHub Docs, home](https://docs.github.com/en), [GitHub Changelog](https://github.blog/changelog/), [Workflow syntax for GitHub Actions](https://docs.github.com/en/actions/reference/workflows-and-actions/workflow-syntax), [Secure use reference for GitHub Actions](https://docs.github.com/en/actions/security-for-github-actions/security-guides/security-hardening-for-github-actions), [GitHub Actions changelog](https://github.blog/changelog/label/actions/)

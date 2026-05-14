@@ -5,11 +5,9 @@
 > **Related appendices:** [Appendix M: Accessibility Standards](appendix-m-accessibility-standards.md) | [Appendix F: Git Security](appendix-f-git-security.md) | [Appendix O: Branch Protection](appendix-o-branch-protection.md) | [Appendix W: GitHub Pages](appendix-w-github-pages.md)
 > **Authoritative sources:** [GitHub Docs: Contributing to open source](https://docs.github.com/en/get-started/exploring-projects-on-github/contributing-to-a-project) | [Open Source Guides: How to Contribute](https://opensource.guide/how-to-contribute/)
 
-
 ## How to Be an Effective and Respectful Open Source Contributor
 
 > Technical skills get your code into a project. Communication skills keep you welcomed in the community. This guide covers the human side of open source.
-
 
 ## Workshop Recommendation (Chapter 8)
 
@@ -81,7 +79,6 @@ Technical quality and communication quality work together. Respectful, clear com
 2. Reflect on personal experience (what worked, what was hard).
 3. Commit to specific behaviors in writing (public accountability).
 4. Apply those behaviors in upcoming chapters (reviews, comments, PRs).
-
 
 ## GitHub Flow - The Standard Contribution Workflow
 
@@ -209,7 +206,6 @@ A branch and its PR should do **one thing**. If you are fixing a broken link and
 - The PR timeline on the Conversation tab shows the entire story: description, bot checks, review comments, and merge status in chronological order
 
 </details>
-
 
 ## Keeping Your Fork Up to Date
 
@@ -449,7 +445,6 @@ Part of #200
 
 </details>
 
-
 ## The Nature of Open Source Communication
 
 Open source collaboration happens primarily **in writing**, **asynchronously**, **in public**. Understanding these three characteristics shapes everything about how we communicate.
@@ -474,7 +469,6 @@ Open source collaboration happens primarily **in writing**, **asynchronously**, 
 - Future contributors, employers, and the broader community will read your words
 - A dismissive reply to a beginner casts a shadow on the entire project
 - **Solution:** Write as if your most supportive and most critical reader are both watching.
-
 
 ## The Anatomy of Helpful Feedback
 
@@ -514,7 +508,6 @@ Help contributors understand what is a blocker versus a preference.
 - "This is a blocker because..."  - must be fixed before merge
 - "Just a thought, not a blocker..." - feedback but no requirement
 
-
 ## Language and Tone
 
 ### Prefer "we" or describe the code, not the person
@@ -542,7 +535,6 @@ Open source is global. Contributors may be:
 
 "I need this fixed ASAP"  
 "This is blocking our release scheduled for next Friday - is there capacity to look at it this week?"
-
 
 ## Commenting Etiquette
 
@@ -634,7 +626,6 @@ In a comment text area:
 
 </details>
 
-
 ## Code Review Etiquette - For Reviewers
 
 ### Review the code, not the person
@@ -661,7 +652,6 @@ If something is your stylistic preference but NOT a bug or correctness issue, sa
 
 When a PR is ready to merge, say so clearly - either by using the Approve review option, or in a comment: "This looks great to me! No blockers on my end."
 
-
 ## Code Review Etiquette - For Authors
 
 ### Say thank you
@@ -684,7 +674,6 @@ If you are keeping your implementation despite feedback, explain why.
 
 Don't wait until you have finished a 500-line PR to mention that you weren't sure about the approach. Open a Draft PR early and ask.
 
-
 ## Inclusive Commenting for Accessibility Issues
 
 When filing or discussing accessibility bugs, additional context helps:
@@ -694,7 +683,6 @@ When filing or discussing accessibility bugs, additional context helps:
 - **Be precise about versions** - accessibility behavior changes between OS and screen reader versions
 - **Represent the gap** - "This means that [group of people] cannot [do the thing]" - frame in impact, not just symptoms
 - **Don't catastrophize or be dismissive** - "No blind person can use this" may be inaccurate; be precise about the specific failure and its scope
-
 
 ## The "Good First Issue" Social Contract
 
@@ -710,7 +698,6 @@ When you take a good first issue, your responsibilities:
 3. **Check in if stuck** - "I've been working on this for a day and I'm stuck on X - can you point me in the right direction?"
 4. **Check in if unavailable** - "Life got busy and I can't finish this by the original estimate - is it okay if I extend by a week, or should you reassign?"
 5. **Don't disappear** - if you claim an issue, see it through or explicitly hand it back
-
 
 ## Handling Difficult Situations
 
@@ -738,7 +725,6 @@ When you take a good first issue, your responsibilities:
 1. Acknowledge it directly: "I can see how that came across as dismissive - that wasn't my intention."
 2. Do not over-explain or defend excessively
 3. Adjust going forward
-
 
 ## Writing Your First README
 
@@ -902,7 +888,6 @@ Navigate to any repository and click **Insights** then **Community Standards**. 
 
 </details>
 
-
 ## When to Use Different Communication Channels
 
 | Channel | Use For |
@@ -914,7 +899,6 @@ Navigate to any repository and click **Insights** then **Community Standards**. 
 | **Email / direct** | Sensitive matters (security vulnerabilities, Code of Conduct reports) |
 
 **GitHub Discussions are separate from Issues.** Use Discussions for: "What do people think about X approach?" and Issues for: "The X button is broken."
-
 
 ## Quick Reference: Phrases That Work
 
@@ -928,7 +912,6 @@ Navigate to any repository and click **Insights** then **Community Standards**. 
 | "This is a major issue." | "This is a blocker for users who rely on keyboard navigation." |
 | "Can't you just..." | "One approach that might work is..." |
 | "No." | "I don't think this approach is right for this project because..." |
-
 
 ## Try It: Rewrite One Comment
 
@@ -954,7 +937,6 @@ Notice: same feedback, completely different experience for the person receiving 
 
 > **What success feels like:** You turned a two-word dismissal into help that someone would actually want to receive. That's the difference between a comment that fixes code and a comment that also keeps a contributor coming back.
 
-
 > ### Day 2 Amplifier - Accessibility Agents Outputs Are Your Responsibility
 >
 > **Every communication principle in this guide applies with extra force when agents are involved.** When `@pr-review` generates review comments, *you* are responsible for their tone before you post them. When `@issue-tracker` drafts a triage reply, *your* name appears on it in the repository's public history. The agent writes - the contributor publishes.
@@ -966,7 +948,6 @@ Notice: same feedback, completely different experience for the person receiving 
 > - **In the cloud** - GitHub Agentic Workflow comments must be designed with the same care as human comments: clear purpose, respectful language, and a transparent signal that automation posted them
 >
 > *A community's culture is shaped by every message posted in its name - including the ones an agent wrote for you.*
-
 
 *Next: [Labels, Milestones, and Projects](09-labels-milestones-projects.md)*
 *Back: [Merge Conflicts](07-merge-conflicts.md)*
@@ -985,7 +966,6 @@ Notice: same feedback, completely different experience for the person receiving 
 
 > You do not need to be a professional developer to contribute to open source. Documentation, accessibility improvements, and bug reports are among the most valuable contributions any project can receive.
 
-
 ## Table of Contents
 
 1. [What Is Open Source?](#1-what-is-open-source)
@@ -997,7 +977,6 @@ Notice: same feedback, completely different experience for the person receiving 
 7. [Getting Help](#7-getting-help)
 8. [After Your Contribution Is Merged](#8-after-your-contribution-is-merged)
 9. [Building a Contribution Habit](#9-building-a-contribution-habit)
-
 
 ## 1. What Is Open Source?
 
@@ -1012,7 +991,6 @@ Open source software is software whose source code is publicly available. Anyone
 
 The projects that power much of today's web infrastructure - operating systems, programming languages, screen readers, and developer tools - are maintained by contributors who started exactly where you are now.
 
-
 ## 2. Who Can Contribute?
 
 Contributors come from all backgrounds, skill levels, and countries. A first contribution could be fixing a typo, adding a missing full stop, or filing a bug report that saves a maintainer hours of debugging.
@@ -1020,7 +998,6 @@ Contributors come from all backgrounds, skill levels, and countries. A first con
 Assistive technology users bring a perspective that most sighted, mouse-first developers cannot - you notice when heading structure is broken, when a button has no accessible name, or when a form cannot be completed with a keyboard. These are real, high-value contributions that improve projects for everyone.
 
 You do not need permission to start. If a repository's issues are public, you can file a bug or suggest an improvement today.
-
 
 ## 3. What Makes a Good First Contribution?
 
@@ -1038,7 +1015,6 @@ A good first contribution is:
 - The issue has been open for a long time with many comments suggesting it is complex
 
 Start small. A well-executed small contribution is far more valuable than a large contribution that cannot be merged because it is out of scope.
-
 
 ## 4. Finding Something to Work On
 
@@ -1082,7 +1058,6 @@ Before commenting "I'll take this" on an issue, ask yourself:
 - **How old is the issue?** Very old issues (2+ years) may be stale or no longer relevant. You can ask the maintainer if it is still valid before investing time.
 
 If the issue looks right for you, comment briefly to let the team know you are working on it: "I'd like to work on this. I'll open a draft PR shortly." This prevents duplicate work.
-
 
 ## 6. Making Your Contribution
 
@@ -1143,7 +1118,6 @@ Example:
 
 This gives the reviewer everything they need to approve quickly.
 
-
 ## 7. Getting Help
 
 It is always acceptable to ask a question on an issue or pull request. Good questions:
@@ -1153,7 +1127,6 @@ It is always acceptable to ask a question on an issue or pull request. Good ques
 - **Are polite:** Assume good intent from maintainers, even if they are slow to respond. Maintainers are often volunteers with day jobs.
 
 If you opened a PR and are waiting for a review, it is appropriate to leave one polite follow-up comment after a week or two. Start with: "Hi, just checking in on this PR when you have a moment."
-
 
 ## 8. After Your Contribution Is Merged
 
@@ -1167,7 +1140,6 @@ This matters for your GitHub profile. Each merged contribution demonstrates real
 
 Over time, a series of contributions builds a portfolio that shows how you work - not just what you can do in isolation.
 
-
 ## 9. Building a Contribution Habit
 
 The hardest part of open source contribution is starting. Once you have one merged PR, the next is easier - you know the workflow, you have proof it is possible, and you have already navigated the social dynamics of working with a maintainer.
@@ -1179,13 +1151,43 @@ The hardest part of open source contribution is starting. Once you have one merg
 - **Review other PRs.** Even as a new contributor, you can leave useful feedback: "Does this change affect screen reader users?" or "The example in the PR description is missing a step."
 - **Set a low bar.** A contribution does not need to be impressive. A fixed typo merged into a project used by thousands of people is more valuable than a perfect contribution never submitted.
 
-
 > **Challenge Time:** Complete **Challenge 8: The Culture Layer** in the [Challenge Hub](CHALLENGES.md), then advance to [Chapter 09: Labels, Milestones and Projects](09-labels-milestones-projects.md).
 
 ---
-
 
 *Next: [Chapter 09: Labels, Milestones, and Projects](09-labels-milestones-projects.md)*  
 *Back: [Chapter 07: Merge Conflicts](07-merge-conflicts.md)*  
 *Related appendices: [Appendix M: Accessibility Standards](appendix-m-accessibility-standards.md) | [Appendix F: Git Security](appendix-f-git-security.md) | [Appendix O: Branch Protection](appendix-o-branch-protection.md)*
 
+## Authoritative Sources
+
+Use these official references when you need the current source of truth for facts in this chapter.
+
+- [GitHub Docs, home](https://docs.github.com/en)
+- [GitHub Changelog](https://github.blog/changelog/)
+- [About Git](https://docs.github.com/en/get-started/using-git/about-git)
+- [GitHub flow](https://docs.github.com/en/get-started/using-github/github-flow)
+- [About pull requests](https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/about-pull-requests)
+- [About issues](https://docs.github.com/en/issues/tracking-your-work-with-issues/about-issues)
+- [Contributing to a project](https://docs.github.com/en/get-started/exploring-projects-on-github/contributing-to-a-project)
+
+### Section-Level Source Map
+
+Use this map to verify facts for each major section in this file.
+
+- **How to Be an Effective and Respectful Open Source Contributor:** [GitHub Docs, home](https://docs.github.com/en), [GitHub Changelog](https://github.blog/changelog/), [About Git](https://docs.github.com/en/get-started/using-git/about-git), [GitHub flow](https://docs.github.com/en/get-started/using-github/github-flow), [About pull requests](https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/about-pull-requests)
+- **Workshop Recommendation (Chapter 8):** [GitHub Docs, home](https://docs.github.com/en), [GitHub Changelog](https://github.blog/changelog/), [About Git](https://docs.github.com/en/get-started/using-git/about-git), [GitHub flow](https://docs.github.com/en/get-started/using-github/github-flow), [About pull requests](https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/about-pull-requests)
+- **GitHub Flow - The Standard Contribution Workflow:** [GitHub Docs, home](https://docs.github.com/en), [GitHub Changelog](https://github.blog/changelog/), [About Git](https://docs.github.com/en/get-started/using-git/about-git), [GitHub flow](https://docs.github.com/en/get-started/using-github/github-flow), [About pull requests](https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/about-pull-requests)
+- **Keeping Your Fork Up to Date:** [GitHub Docs, home](https://docs.github.com/en), [GitHub Changelog](https://github.blog/changelog/), [About Git](https://docs.github.com/en/get-started/using-git/about-git), [GitHub flow](https://docs.github.com/en/get-started/using-github/github-flow), [About pull requests](https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/about-pull-requests)
+- **When to sync:** [GitHub Docs, home](https://docs.github.com/en), [GitHub Changelog](https://github.blog/changelog/), [About Git](https://docs.github.com/en/get-started/using-git/about-git), [GitHub flow](https://docs.github.com/en/get-started/using-github/github-flow), [About pull requests](https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/about-pull-requests)
+- **Writing Good Commit Messages:** [GitHub Docs, home](https://docs.github.com/en), [GitHub Changelog](https://github.blog/changelog/), [About Git](https://docs.github.com/en/get-started/using-git/about-git), [GitHub flow](https://docs.github.com/en/get-started/using-github/github-flow), [About pull requests](https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/about-pull-requests)
+- **The Nature of Open Source Communication:** [GitHub Docs, home](https://docs.github.com/en), [GitHub Changelog](https://github.blog/changelog/), [About Git](https://docs.github.com/en/get-started/using-git/about-git), [GitHub flow](https://docs.github.com/en/get-started/using-github/github-flow), [About pull requests](https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/about-pull-requests)
+- **The Anatomy of Helpful Feedback:** [GitHub Docs, home](https://docs.github.com/en), [GitHub Changelog](https://github.blog/changelog/), [About Git](https://docs.github.com/en/get-started/using-git/about-git), [GitHub flow](https://docs.github.com/en/get-started/using-github/github-flow), [About pull requests](https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/about-pull-requests)
+- **Language and Tone:** [GitHub Docs, home](https://docs.github.com/en), [GitHub Changelog](https://github.blog/changelog/), [About Git](https://docs.github.com/en/get-started/using-git/about-git), [GitHub flow](https://docs.github.com/en/get-started/using-github/github-flow), [About pull requests](https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/about-pull-requests)
+- **Commenting Etiquette:** [GitHub Docs, home](https://docs.github.com/en), [GitHub Changelog](https://github.blog/changelog/), [About Git](https://docs.github.com/en/get-started/using-git/about-git), [GitHub flow](https://docs.github.com/en/get-started/using-github/github-flow), [About pull requests](https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/about-pull-requests)
+- **Code Review Etiquette - For Reviewers:** [GitHub Docs, home](https://docs.github.com/en), [GitHub Changelog](https://github.blog/changelog/), [About Git](https://docs.github.com/en/get-started/using-git/about-git), [GitHub flow](https://docs.github.com/en/get-started/using-github/github-flow), [About pull requests](https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/about-pull-requests)
+- **Code Review Etiquette - For Authors:** [GitHub Docs, home](https://docs.github.com/en), [GitHub Changelog](https://github.blog/changelog/), [About Git](https://docs.github.com/en/get-started/using-git/about-git), [GitHub flow](https://docs.github.com/en/get-started/using-github/github-flow), [About pull requests](https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/about-pull-requests)
+- **Inclusive Commenting for Accessibility Issues:** [GitHub Docs, home](https://docs.github.com/en), [GitHub Changelog](https://github.blog/changelog/), [About Git](https://docs.github.com/en/get-started/using-git/about-git), [GitHub flow](https://docs.github.com/en/get-started/using-github/github-flow), [About pull requests](https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/about-pull-requests)
+- **The "Good First Issue" Social Contract:** [GitHub Docs, home](https://docs.github.com/en), [GitHub Changelog](https://github.blog/changelog/), [About Git](https://docs.github.com/en/get-started/using-git/about-git), [GitHub flow](https://docs.github.com/en/get-started/using-github/github-flow), [About pull requests](https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/about-pull-requests)
+- **Handling Difficult Situations:** [GitHub Docs, home](https://docs.github.com/en), [GitHub Changelog](https://github.blog/changelog/), [About Git](https://docs.github.com/en/get-started/using-git/about-git), [GitHub flow](https://docs.github.com/en/get-started/using-github/github-flow), [About pull requests](https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/about-pull-requests)
+- **Writing Your First README:** [GitHub Docs, home](https://docs.github.com/en), [GitHub Changelog](https://github.blog/changelog/), [About Git](https://docs.github.com/en/get-started/using-git/about-git), [GitHub flow](https://docs.github.com/en/get-started/using-github/github-flow), [About pull requests](https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/about-pull-requests)

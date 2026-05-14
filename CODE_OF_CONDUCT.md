@@ -6,7 +6,6 @@ We as members, contributors, and leaders pledge to make participation in our com
 
 We pledge to act and interact in ways that contribute to an open, welcoming, diverse, inclusive, and healthy community.
 
-
 ## Our Standards
 
 Examples of behavior that contributes to a positive environment for our community:
@@ -25,7 +24,6 @@ Examples of unacceptable behavior:
 - Publishing others' private information, such as a physical or electronic address, without their explicit permission
 - Other conduct which could reasonably be considered inappropriate in a professional setting
 
-
 ## Accessibility Commitment
 
 This community has an explicit commitment to accessibility. All participants - contributors, facilitators, reviewers, and community members - are expected to:
@@ -39,18 +37,15 @@ This community has an explicit commitment to accessibility. All participants - c
 
 Accessibility concerns raised by community members are treated with the same urgency as any other bug report.
 
-
 ## Enforcement Responsibilities
 
 Community leaders are responsible for clarifying and enforcing our standards of acceptable behavior and will take appropriate and fair corrective action in response to any behavior that they deem inappropriate, threatening, offensive, or harmful.
 
 Community leaders have the right and responsibility to remove, edit, or reject comments, commits, code, wiki edits, issues, and other contributions that are not aligned to this Code of Conduct, and will communicate reasons for moderation decisions when appropriate.
 
-
 ## Scope
 
 This Code of Conduct applies within all community spaces, and also applies when an individual is officially representing the community in public spaces. Examples of representing our community include using an official email address, posting via an official social media account, or acting as an appointed representative at an online or offline event.
-
 
 ## Enforcement
 
@@ -61,7 +56,6 @@ All community leaders are obligated to respect the privacy and security of the r
 **Contact:** jeff@jeffbishop.com
 
 Do not open a public GitHub issue to report Code of Conduct concerns - report them directly to the email address above so that the matter can be handled privately.
-
 
 ## Enforcement Guidelines
 
@@ -91,7 +85,6 @@ Community leaders will follow these Community Impact Guidelines in determining t
 
 **Consequence:** A permanent ban from any sort of public interaction within the community.
 
-
 ## Attribution
 
 This Code of Conduct is adapted from the [Contributor Covenant](https://www.contributor-covenant.org), version 2.1, available at the [Contributor Covenant Code of Conduct version 2.1](https://www.contributor-covenant.org/version/2/1/code_of_conduct/).
@@ -100,5 +93,24 @@ Community Impact Guidelines were inspired by [Mozilla's code of conduct enforcem
 
 For answers to common questions about this code of conduct, see the FAQ at the [Contributor Covenant FAQ](https://www.contributor-covenant.org/faq). Translations are available at the [Contributor Covenant translations page](https://www.contributor-covenant.org/translations).
 
-
 *[Back to README →](README.md) | [Contributing →](CONTRIBUTING.md)*
+
+## Authoritative Sources
+
+Use these official references when you need the current source of truth for facts in this chapter.
+
+- [GitHub Docs, home](https://docs.github.com/en)
+- [GitHub Changelog](https://github.blog/changelog/)
+
+### Section-Level Source Map
+
+Use this map to verify facts for each major section in this file.
+
+- **Our Pledge:** [GitHub Docs, home](https://docs.github.com/en), [GitHub Changelog](https://github.blog/changelog/)
+- **Our Standards:** [GitHub Docs, home](https://docs.github.com/en), [GitHub Changelog](https://github.blog/changelog/)
+- **Accessibility Commitment:** [GitHub Docs, home](https://docs.github.com/en), [GitHub Changelog](https://github.blog/changelog/), [About Git](https://docs.github.com/en/get-started/using-git/about-git), [GitHub flow](https://docs.github.com/en/get-started/using-github/github-flow), [About pull requests](https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/about-pull-requests)
+- **Enforcement Responsibilities:** [GitHub Docs, home](https://docs.github.com/en), [GitHub Changelog](https://github.blog/changelog/)
+- **Scope:** [GitHub Docs, home](https://docs.github.com/en), [GitHub Changelog](https://github.blog/changelog/)
+- **Enforcement:** [GitHub Docs, home](https://docs.github.com/en), [GitHub Changelog](https://github.blog/changelog/)
+- **Enforcement Guidelines:** [GitHub Docs, home](https://docs.github.com/en), [GitHub Changelog](https://github.blog/changelog/)
+- **Attribution:** [GitHub Docs, home](https://docs.github.com/en), [GitHub Changelog](https://github.blog/changelog/)

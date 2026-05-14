@@ -5,7 +5,6 @@
 >
 > **How learning works today:** Each participant has their own private repository, created automatically when you accept the Classroom assignment. Inside that repo, an automation system called Aria guides you through a series of challenges delivered as GitHub Issues. The live session prioritizes the core path through repository navigation, issues, branches, commits, and a first pull request. The remaining challenges stay available for async completion during open lab time or after the event.
 
-
 ## Coverage Promise
 
 This agenda is a live facilitation plan, not a requirement that every chapter and challenge be completed in the room. The full curriculum contains more material than a shortened live day can responsibly cover.
@@ -14,7 +13,6 @@ This agenda is a live facilitation plan, not a requirement that every chapter an
 - **Live support if time allows:** Merge conflicts, review practice, labels, milestones, notifications, and culture exercises.
 - **Async follow-up:** Challenges 7-9 and the reference chapters remain available after the live session. Facilitators can use open lab time for catch-up instead of moving the whole room forward.
 - **Remote-ready delivery:** Remote participants should receive the same Classroom links, Slack channel, CART/ASL access where available, and written checkpoints. Every block should include a clear "you are done when" checkpoint so people can pause and resume later.
-
 
 ## Your Classroom Repository
 
@@ -33,7 +31,6 @@ When you accept the Day 1 assignment link, GitHub creates a private copy of the 
 5. This continues through all 9 Day 1 challenges
 
 **Why this matters:** You are not reading about GitHub. You are doing GitHub, in your own repository, and an automated system is verifying your work and giving you feedback. The mechanics are identical to what happens when you contribute to any real open source project.
-
 
 ## At a Glance
 
@@ -57,11 +54,9 @@ The following table summarizes the Pacific-time live agenda and identifies which
 
 **Total:** 8 hours of event time (9:00 AM - 5:00 PM Pacific), with about 5 hours of hands-on GitHub instruction after keynote, opening remarks, lunch, and breaks.
 
-
 ## Pre-Day Checklist
 
 Before entering the room (or joining the call), participants should have completed everything in [Pre-Workshop Setup](../docs/00-pre-workshop-setup.md). The facilitator will do a quick verification at the start.
-
 
 ## Block 0 - Learning Room Setup and Orientation (10:15 AM, 30 min)
 
@@ -108,7 +103,6 @@ The facilitator shares the Day 1 assignment link. Each participant follows the [
 
 **Introductions:**
 - Each participant: your name, your screen reader and OS, what brings you here
-
 
 ## Block 1 - Screen Reader Orientation to GitHub (10:45 AM, 35 min)
 
@@ -174,7 +168,6 @@ When you finish, submit your evidence in the challenge issue and close it. Withi
 
 [Screen Reader Cheat Sheet](../docs/appendix-b-screen-reader-cheatsheet.md)
 
-
 ## Block 2 - Issues and Conversations (11:20 AM, 40 min)
 
 ### Purpose
@@ -224,11 +217,9 @@ After submitting your evidence, close Challenge 3. Challenge 4 opens.
 
 [Working with Issues](../docs/05-working-with-issues.md) | [Glossary](../docs/appendix-a-glossary.md)
 
-
 ## Lunch (12:00 PM, 60 min)
 
 Encourage participants to stand, stretch, and rest their ears. Screen reader listening is cognitively demanding work.
-
 
 ## Block 3 - Branching, Editing, and Committing (1:00 PM, 50 min)
 
@@ -293,7 +284,6 @@ If you are still working on a challenge, use this time to finish.
 ### Reference Document
 
 [Working with Pull Requests](../docs/06-working-with-pull-requests.md)
-
 
 ## Block 4 - Pull Requests, Review, and Merge Conflicts (1:50 PM, 55 min)
 
@@ -384,9 +374,7 @@ Before the afternoon break, practice navigating the PR you just opened:
 
 [Working with Pull Requests](../docs/06-working-with-pull-requests.md) | [Merge Conflicts](../docs/07-merge-conflicts.md)
 
-
 ## Break (2:45 PM, 15 min)
-
 
 ## Block 5 - Contribution Lab and Merge-Conflict Support (3:00 PM, 60 min)
 
@@ -444,7 +432,6 @@ If you finished Challenges 8-9, find a classmate who is still working:
 - Answer a question about something you figured out
 
 If everyone is done, browse the bonus challenges (A through E) for extra practice.
-
 
 ## Block 6 - Community: Communication, Labels, and Notifications (4:00 PM, 30 min)
 
@@ -533,7 +520,6 @@ Practice applying labels to a challenge issue in your repo. If you have complete
 3. Mark it as Done
 4. Change your repository Watch settings to "Participating and @mentions only"
 
-
 ## Wrap-Up (4:30 PM, 30 min)
 
 ### What You Built Today (10 min)
@@ -598,7 +584,6 @@ Everything you learned today is complete and self-contained. You can now:
 - Complete the bonus challenges (A through E) in your Classroom repository
 - Share what you built today with someone who might want to learn GitHub too
 
-
 ## Facilitator Notes
 
 ### Before Day 1
@@ -635,6 +620,33 @@ Day 1 has three peaks:
 
 Do not rush these moments. Give each one time to land.
 
-
 *Day 2: [Day 2 Agenda](DAY2_AGENDA.md)*
 *Related: [Navigating Repositories](../docs/03-navigating-repositories.md) | [Working with Issues](../docs/05-working-with-issues.md) | [Working with Pull Requests](../docs/06-working-with-pull-requests.md)*
+
+## Authoritative Sources
+
+Use these official references when you need the current source of truth for facts in this chapter.
+
+- [GitHub Docs, home](https://docs.github.com/en)
+- [GitHub Changelog](https://github.blog/changelog/)
+
+### Section-Level Source Map
+
+Use this map to verify facts for each major section in this file.
+
+- **Open Source Assistive Technology Workshop - GitHub Classroom Edition:** [GitHub Docs, home](https://docs.github.com/en), [GitHub Changelog](https://github.blog/changelog/), [About Git](https://docs.github.com/en/get-started/using-git/about-git), [GitHub flow](https://docs.github.com/en/get-started/using-github/github-flow), [About pull requests](https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/about-pull-requests)
+- **Coverage Promise:** [GitHub Docs, home](https://docs.github.com/en), [GitHub Changelog](https://github.blog/changelog/)
+- **Your Classroom Repository:** [GitHub Docs, home](https://docs.github.com/en), [GitHub Changelog](https://github.blog/changelog/), [About Git](https://docs.github.com/en/get-started/using-git/about-git), [GitHub flow](https://docs.github.com/en/get-started/using-github/github-flow), [About pull requests](https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/about-pull-requests)
+- **At a Glance:** [GitHub Docs, home](https://docs.github.com/en), [GitHub Changelog](https://github.blog/changelog/)
+- **Pre-Day Checklist:** [GitHub Docs, home](https://docs.github.com/en), [GitHub Changelog](https://github.blog/changelog/)
+- **Block 0 - Learning Room Setup and Orientation (10:15 AM, 30 min):** [GitHub Docs, home](https://docs.github.com/en), [GitHub Changelog](https://github.blog/changelog/), [GitHub Skills catalog](https://skills.github.com/), [GitHub Learning Pathways](https://resources.github.com/learn/pathways/)
+- **Block 1 - Screen Reader Orientation to GitHub (10:45 AM, 35 min):** [GitHub Docs, home](https://docs.github.com/en), [GitHub Changelog](https://github.blog/changelog/), [About Git](https://docs.github.com/en/get-started/using-git/about-git), [GitHub flow](https://docs.github.com/en/get-started/using-github/github-flow), [About pull requests](https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/about-pull-requests)
+- **Block 2 - Issues and Conversations (11:20 AM, 40 min):** [GitHub Docs, home](https://docs.github.com/en), [GitHub Changelog](https://github.blog/changelog/), [About Git](https://docs.github.com/en/get-started/using-git/about-git), [GitHub flow](https://docs.github.com/en/get-started/using-github/github-flow), [About pull requests](https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/about-pull-requests)
+- **Lunch (12:00 PM, 60 min):** [GitHub Docs, home](https://docs.github.com/en), [GitHub Changelog](https://github.blog/changelog/)
+- **Block 3 - Branching, Editing, and Committing (1:00 PM, 50 min):** [GitHub Docs, home](https://docs.github.com/en), [GitHub Changelog](https://github.blog/changelog/), [About Git](https://docs.github.com/en/get-started/using-git/about-git), [GitHub flow](https://docs.github.com/en/get-started/using-github/github-flow), [About pull requests](https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/about-pull-requests)
+- **Block 4 - Pull Requests, Review, and Merge Conflicts (1:50 PM, 55 min):** [GitHub Docs, home](https://docs.github.com/en), [GitHub Changelog](https://github.blog/changelog/), [About Git](https://docs.github.com/en/get-started/using-git/about-git), [GitHub flow](https://docs.github.com/en/get-started/using-github/github-flow), [About pull requests](https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/about-pull-requests)
+- **Break (2:45 PM, 15 min):** [GitHub Docs, home](https://docs.github.com/en), [GitHub Changelog](https://github.blog/changelog/)
+- **Block 5 - Contribution Lab and Merge-Conflict Support (3:00 PM, 60 min):** [GitHub Docs, home](https://docs.github.com/en), [GitHub Changelog](https://github.blog/changelog/), [About Git](https://docs.github.com/en/get-started/using-git/about-git), [GitHub flow](https://docs.github.com/en/get-started/using-github/github-flow), [About pull requests](https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/about-pull-requests)
+- **Block 6 - Community: Communication, Labels, and Notifications (4:00 PM, 30 min):** [GitHub Docs, home](https://docs.github.com/en), [GitHub Changelog](https://github.blog/changelog/), [GitHub Projects docs](https://docs.github.com/en/issues/planning-and-tracking-with-projects/learning-about-projects/about-projects), [Labels docs](https://docs.github.com/en/issues/using-labels-and-milestones-to-track-work/managing-labels), [Milestones docs](https://docs.github.com/en/issues/using-labels-and-milestones-to-track-work/about-milestones)
+- **Wrap-Up (4:30 PM, 30 min):** [GitHub Docs, home](https://docs.github.com/en), [GitHub Changelog](https://github.blog/changelog/)
+- **Facilitator Notes:** [GitHub Docs, home](https://docs.github.com/en), [GitHub Changelog](https://github.blog/changelog/)

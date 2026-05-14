@@ -52,7 +52,7 @@ Complete these challenges in order. Each one builds on the previous. The live ag
 | 13. AI as Your Copilot | Use Copilot to improve documentation and evaluate its output | [Chapter 16](https://github.com/Community-Access/git-going-with-github/blob/main/docs/16-github-copilot.md) |
 | 14. Template Remix | Create a custom YAML issue template | [Chapter 17](https://github.com/Community-Access/git-going-with-github/blob/main/docs/17-issue-templates.md) |
 | 15. Meet the Agents | Explore and run agents from the accessibility-agents repo | [Chapter 19](https://github.com/Community-Access/git-going-with-github/blob/main/docs/19-accessibility-agents.md) |
-| 16. Build Your Agent (Capstone) | Design and submit an original agent with responsibilities and guardrails | [Chapter 20](https://github.com/Community-Access/git-going-with-github/blob/main/docs/20-build-your-agent.md) |
+| 16. Capstone Project | Prepare an impactful agentic contribution with responsibilities, guardrails, and review evidence | [Chapter 20](https://github.com/Community-Access/git-going-with-github/blob/main/docs/20-build-your-agent.md) |
 
 ## Autograded Challenges
 
@@ -89,3 +89,25 @@ See [Chapter 18](https://github.com/Community-Access/git-going-with-github/blob/
 
 If you finish early, check the [Challenges page](https://github.com/Community-Access/git-going-with-github/blob/main/docs/CHALLENGES.md) for bonus challenges.
 ```
+
+## Authoritative Sources
+
+Use these official references when you need the current source of truth for facts in this chapter.
+
+- [GitHub Docs, home](https://docs.github.com/en)
+- [GitHub Changelog](https://github.blog/changelog/)
+
+### Section-Level Source Map
+
+Use this map to verify facts for each major section in this file.
+
+- **Assignment Settings:** [GitHub Docs, home](https://docs.github.com/en), [GitHub Changelog](https://github.blog/changelog/)
+- **Paste Into Assignment Description:** [GitHub Docs, home](https://docs.github.com/en), [GitHub Changelog](https://github.blog/changelog/)
+- **Joining Day 2 Without Day 1?:** [GitHub Docs, home](https://docs.github.com/en), [GitHub Changelog](https://github.blog/changelog/)
+- **What You Will Do Today:** [GitHub Docs, home](https://docs.github.com/en), [GitHub Changelog](https://github.blog/changelog/)
+- **Challenges:** [GitHub Docs, home](https://docs.github.com/en), [GitHub Changelog](https://github.blog/changelog/)
+- **Autograded Challenges:** [GitHub Docs, home](https://docs.github.com/en), [GitHub Changelog](https://github.blog/changelog/)
+- **Evidence:** [GitHub Docs, home](https://docs.github.com/en), [GitHub Changelog](https://github.blog/changelog/)
+- **If You Get Stuck:** [GitHub Docs, home](https://docs.github.com/en), [GitHub Changelog](https://github.blog/changelog/)
+- **Fork Workflow (Challenges 15-16):** [GitHub Docs, home](https://docs.github.com/en), [GitHub Changelog](https://github.blog/changelog/), [About Git](https://docs.github.com/en/get-started/using-git/about-git), [GitHub flow](https://docs.github.com/en/get-started/using-github/github-flow), [About pull requests](https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/about-pull-requests)
+- **Bonus Challenges:** [GitHub Docs, home](https://docs.github.com/en), [GitHub Changelog](https://github.blog/changelog/)

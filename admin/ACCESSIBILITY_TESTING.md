@@ -3,7 +3,6 @@
 
 This checklist helps you test issue templates, PRs, and GitHub workflows to ensure they're usable by people with disabilities (especially screen reader users).
 
-
 ## Quick Checklist for Templates
 
 Use before deploying any new issue template or form.
@@ -34,7 +33,6 @@ Use before deploying any new issue template or form.
 - [ ] No trailing spaces or mixed indentation
 - [ ] All required fields present: `name:`, `description:`, `body:`
 - [ ] Field IDs are unique and lowercase with hyphens (e.g., `browser_type`)
-
 
 ## Screen Reader Testing Workflow
 
@@ -108,7 +106,6 @@ Use before deploying any new issue template or form.
 - [ ] Field labels are adjacent to fields
 - [ ] Instructions are readable
 
-
 ## Accessibility Testing by Component
 
 ### Checkboxes & Radio Buttons
@@ -152,7 +149,6 @@ Use before deploying any new issue template or form.
 
 **Test:** Tab to field, screen reader should announce label, field type, help text, and required status.
 
-
 ## Color & Contrast Testing
 
 - [ ] Text contrast is 4.5:1 or higher (WCAG AA for normal text)
@@ -163,7 +159,6 @@ Use before deploying any new issue template or form.
 - [ ] Disabled fields are visually distinct
 
 **Test:** Use WebAIM Contrast Checker: https://webaim.org/resources/contrastchecker/
-
 
 ## Keyboard Navigation Testing
 
@@ -180,7 +175,6 @@ Test WITHOUT using the mouse.
 
 **Test:** Close trackpad, use Tab/Shift+Tab/Enter/Space only.
 
-
 ## Mobile & Responsive Testing
 
 - [ ] Form is readable on small screens (mobile, tablet)
@@ -191,7 +185,6 @@ Test WITHOUT using the mouse.
 
 **Test:** Resize browser to mobile width (375px), or use phone/tablet to fill form.
 
-
 ## Multilingual & Plain Language Testing
 
 - [ ] Instructions use simple, clear language (avoid jargon)
@@ -200,7 +193,6 @@ Test WITHOUT using the mouse.
 - [ ] If translated, consider cultural appropriateness of images/phrasings
 
 **Test:** Select browser zoom 200% (Ctrl+Plus / Cmd+Plus), or use browser reader mode.
-
 
 ## Testing Checklist Summary
 
@@ -225,7 +217,6 @@ Test WITHOUT using the mouse.
 - [ ] Tested with actual users with disabilities
 - [ ] Performance tested (forms load quickly)
 
-
 ## Common Accessibility Failures & How to Test Them
 
 | Failure | What to Check | How to Detect |
@@ -237,7 +228,6 @@ Test WITHOUT using the mouse.
 | Unlabeled fields | Dropdown or input has no visible/announced name | Tab to field; screen reader says "(blank)" |
 | Links say "click here" | Not descriptive; screen reader only hears "click here" | Read link text aloud; should make sense out of context |
 | No skip link | Can't skip repetitive navigation | Press Tab to first element; should offer "skip to content" |
-
 
 ## Testing Tools & Resources
 
@@ -257,7 +247,6 @@ Test WITHOUT using the mouse.
 - **Screen Reader Commands:** See `docs/appendix-b-screen-reader-cheatsheet.md`
 - **WCAG Guidelines:** https://www.w3.org/WAI/WCAG21/quickref/
 - **Get Help:** Open an issue with accessibility testing results
-
 
 ## After Testing: Recording Issues
 
@@ -286,7 +275,6 @@ Browser: Chrome 130
 OS: Windows 11
 ```
 
-
 ## Testing the Built HTML Output
 
 This repository includes a build system that converts all Markdown files to HTML (see `BUILD.md`). If participants will use the HTML versions, test them separately:
@@ -313,13 +301,41 @@ This repository includes a build system that converts all Markdown files to HTML
 
 **Quick test:** Open `html/index.html` in a browser, enable your screen reader, and navigate using `H` (headings) and `K` (links). Every heading and link should be announced clearly.
 
-
 ## Questions or Feedback?
 
 - **Having trouble testing?** See `TROUBLESHOOTING.md`
 - **Need screen reader help?** See `docs/appendix-b-screen-reader-cheatsheet.md`
 - **Want resources?** See `docs/appendix-x-resources.md`
 
-
 *Last updated: February 2026*  
 *Accessibility is foundational to inclusive workflows.*
+
+## Authoritative Sources
+
+Use these official references when you need the current source of truth for facts in this chapter.
+
+- [GitHub Docs, home](https://docs.github.com/en)
+- [GitHub Changelog](https://github.blog/changelog/)
+- [W3C Web Content Accessibility Guidelines (WCAG) 2 overview](https://www.w3.org/WAI/standards-guidelines/wcag/)
+- [WAI tutorials for accessible design patterns](https://www.w3.org/WAI/tutorials/)
+- [WAI-ARIA Authoring Practices Guide](https://www.w3.org/WAI/ARIA/apg/)
+- [GitHub accessibility statement](https://docs.github.com/en/site-policy/other-site-policies/github-accessibility-statement)
+
+### Section-Level Source Map
+
+Use this map to verify facts for each major section in this file.
+
+- **Verify GitHub Templates & Workflows Are Accessible:** [GitHub Docs, home](https://docs.github.com/en), [GitHub Changelog](https://github.blog/changelog/), [W3C Web Content Accessibility Guidelines (WCAG) 2 overview](https://www.w3.org/WAI/standards-guidelines/wcag/), [WAI tutorials for accessible design patterns](https://www.w3.org/WAI/tutorials/), [WAI-ARIA Authoring Practices Guide](https://www.w3.org/WAI/ARIA/apg/)
+- **Quick Checklist for Templates:** [GitHub Docs, home](https://docs.github.com/en), [GitHub Changelog](https://github.blog/changelog/), [W3C Web Content Accessibility Guidelines (WCAG) 2 overview](https://www.w3.org/WAI/standards-guidelines/wcag/), [WAI tutorials for accessible design patterns](https://www.w3.org/WAI/tutorials/), [WAI-ARIA Authoring Practices Guide](https://www.w3.org/WAI/ARIA/apg/)
+- **Screen Reader Testing Workflow:** [GitHub Docs, home](https://docs.github.com/en), [GitHub Changelog](https://github.blog/changelog/), [W3C Web Content Accessibility Guidelines (WCAG) 2 overview](https://www.w3.org/WAI/standards-guidelines/wcag/), [WAI tutorials for accessible design patterns](https://www.w3.org/WAI/tutorials/), [WAI-ARIA Authoring Practices Guide](https://www.w3.org/WAI/ARIA/apg/)
+- **Accessibility Testing by Component:** [GitHub Docs, home](https://docs.github.com/en), [GitHub Changelog](https://github.blog/changelog/), [W3C Web Content Accessibility Guidelines (WCAG) 2 overview](https://www.w3.org/WAI/standards-guidelines/wcag/), [WAI tutorials for accessible design patterns](https://www.w3.org/WAI/tutorials/), [WAI-ARIA Authoring Practices Guide](https://www.w3.org/WAI/ARIA/apg/)
+- **Color & Contrast Testing:** [GitHub Docs, home](https://docs.github.com/en), [GitHub Changelog](https://github.blog/changelog/), [W3C Web Content Accessibility Guidelines (WCAG) 2 overview](https://www.w3.org/WAI/standards-guidelines/wcag/), [WAI tutorials for accessible design patterns](https://www.w3.org/WAI/tutorials/), [WAI-ARIA Authoring Practices Guide](https://www.w3.org/WAI/ARIA/apg/)
+- **Keyboard Navigation Testing:** [GitHub Docs, home](https://docs.github.com/en), [GitHub Changelog](https://github.blog/changelog/), [W3C Web Content Accessibility Guidelines (WCAG) 2 overview](https://www.w3.org/WAI/standards-guidelines/wcag/), [WAI tutorials for accessible design patterns](https://www.w3.org/WAI/tutorials/), [WAI-ARIA Authoring Practices Guide](https://www.w3.org/WAI/ARIA/apg/)
+- **Mobile & Responsive Testing:** [GitHub Docs, home](https://docs.github.com/en), [GitHub Changelog](https://github.blog/changelog/), [W3C Web Content Accessibility Guidelines (WCAG) 2 overview](https://www.w3.org/WAI/standards-guidelines/wcag/), [WAI tutorials for accessible design patterns](https://www.w3.org/WAI/tutorials/), [WAI-ARIA Authoring Practices Guide](https://www.w3.org/WAI/ARIA/apg/)
+- **Multilingual & Plain Language Testing:** [GitHub Docs, home](https://docs.github.com/en), [GitHub Changelog](https://github.blog/changelog/), [W3C Web Content Accessibility Guidelines (WCAG) 2 overview](https://www.w3.org/WAI/standards-guidelines/wcag/), [WAI tutorials for accessible design patterns](https://www.w3.org/WAI/tutorials/), [WAI-ARIA Authoring Practices Guide](https://www.w3.org/WAI/ARIA/apg/)
+- **Testing Checklist Summary:** [GitHub Docs, home](https://docs.github.com/en), [GitHub Changelog](https://github.blog/changelog/), [W3C Web Content Accessibility Guidelines (WCAG) 2 overview](https://www.w3.org/WAI/standards-guidelines/wcag/), [WAI tutorials for accessible design patterns](https://www.w3.org/WAI/tutorials/), [WAI-ARIA Authoring Practices Guide](https://www.w3.org/WAI/ARIA/apg/)
+- **Common Accessibility Failures & How to Test Them:** [GitHub Docs, home](https://docs.github.com/en), [GitHub Changelog](https://github.blog/changelog/), [W3C Web Content Accessibility Guidelines (WCAG) 2 overview](https://www.w3.org/WAI/standards-guidelines/wcag/), [WAI tutorials for accessible design patterns](https://www.w3.org/WAI/tutorials/), [WAI-ARIA Authoring Practices Guide](https://www.w3.org/WAI/ARIA/apg/)
+- **Testing Tools & Resources:** [GitHub Docs, home](https://docs.github.com/en), [GitHub Changelog](https://github.blog/changelog/), [W3C Web Content Accessibility Guidelines (WCAG) 2 overview](https://www.w3.org/WAI/standards-guidelines/wcag/), [WAI tutorials for accessible design patterns](https://www.w3.org/WAI/tutorials/), [WAI-ARIA Authoring Practices Guide](https://www.w3.org/WAI/ARIA/apg/)
+- **After Testing: Recording Issues:** [GitHub Docs, home](https://docs.github.com/en), [GitHub Changelog](https://github.blog/changelog/), [W3C Web Content Accessibility Guidelines (WCAG) 2 overview](https://www.w3.org/WAI/standards-guidelines/wcag/), [WAI tutorials for accessible design patterns](https://www.w3.org/WAI/tutorials/), [WAI-ARIA Authoring Practices Guide](https://www.w3.org/WAI/ARIA/apg/)
+- **Testing the Built HTML Output:** [GitHub Docs, home](https://docs.github.com/en), [GitHub Changelog](https://github.blog/changelog/), [W3C Web Content Accessibility Guidelines (WCAG) 2 overview](https://www.w3.org/WAI/standards-guidelines/wcag/), [WAI tutorials for accessible design patterns](https://www.w3.org/WAI/tutorials/), [WAI-ARIA Authoring Practices Guide](https://www.w3.org/WAI/ARIA/apg/)
+- **Questions or Feedback?:** [GitHub Docs, home](https://docs.github.com/en), [GitHub Changelog](https://github.blog/changelog/), [W3C Web Content Accessibility Guidelines (WCAG) 2 overview](https://www.w3.org/WAI/standards-guidelines/wcag/), [WAI tutorials for accessible design patterns](https://www.w3.org/WAI/tutorials/), [WAI-ARIA Authoring Practices Guide](https://www.w3.org/WAI/ARIA/apg/)

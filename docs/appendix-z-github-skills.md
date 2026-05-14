@@ -39,7 +39,6 @@ This appendix catalogs every available GitHub Skills module, organized into lear
 
 </details>
 
-
 ## How GitHub Skills Works
 
 Each course follows the same pattern:
@@ -55,7 +54,6 @@ All interaction happens through GitHub's standard interface. The screen reader n
 
 For detailed screen reader navigation instructions, see [Appendix U Section 3 (GitHub Skills)](appendix-x-resources.md).
 
-
 ## Courses Used in This Workshop
 
 These three modules are integrated into the Day 1 agenda. You complete them during the workshop with facilitator guidance.
@@ -69,7 +67,6 @@ The following table lists the three GitHub Skills modules used during Day 1, wit
 | **Review Pull Requests** | Day 1, Block 4 | Assign reviewers, leave comments, suggest changes, approve, merge | [Start course](https://github.com/skills/review-pull-requests) |
 
 If you did not finish these during the workshop, complete them first before moving to the paths below.
-
 
 ## Learning Paths
 
@@ -118,7 +115,6 @@ The following table lists Git fundamentals courses in recommended order.
 
 **Workshop connection:** Day 1, Block 5 introduced merge conflicts in the learning room. Path 1 gives you deep practice with Git's conflict resolution and history tools.
 
-
 ### Path 2: GitHub Collaboration
 
 Learn the collaboration features that power open source projects and team workflows.
@@ -133,7 +129,6 @@ The following table lists GitHub collaboration courses in recommended order.
 | 4 | **Release-Based Workflow** | Less than 1 hour | Introduction to GitHub | Create releases, tag versions, and manage a release-based workflow | [Start course](https://github.com/skills/release-based-workflow) |
 
 **Workshop connection:** Day 1, Block 6 covered labels, milestones, and notifications. Path 2 extends those skills into full repository management and publishing.
-
 
 ### Path 3: GitHub Actions and Automation
 
@@ -153,7 +148,6 @@ The following table lists GitHub Actions courses in recommended order.
 | 8 | **Create AI-Powered Actions** | Less than 1 hour | Write JavaScript Actions | Build intelligent JavaScript-based Actions that use GitHub Models | [Start course](https://github.com/skills/create-ai-powered-actions) |
 
 **Workshop connection:** Day 2 introduced GitHub Actions through the accessibility agents workflows. Path 3 teaches you to build your own automation from scratch.
-
 
 ### Path 4: GitHub Copilot
 
@@ -176,7 +170,6 @@ The following table lists GitHub Copilot courses in recommended order.
 
 **Workshop connection:** Day 2, Blocks 2-4 used Copilot for contributions and code review. Path 4 expands from basic chat to agent mode, MCP integration, CLI usage, and extension building.
 
-
 ### Path 5: Security
 
 Learn to identify vulnerabilities, scan for secrets, and secure your supply chain.
@@ -193,7 +186,6 @@ The following table lists security courses in recommended order.
 
 **Workshop connection:** Appendix L covers GitHub security features conceptually. Path 5 gives you hands-on practice enabling and using each one.
 
-
 ### Path 6: Cloud and Migration
 
 Deploy to the cloud and migrate existing projects to GitHub.
@@ -207,7 +199,6 @@ The following table lists cloud and migration courses in recommended order.
 | 3 | **Idea to App with Spark** | Less than 1 hour | None | Turn ideas into web applications by describing them in natural language - no coding required | [Start course](https://github.com/skills/idea-to-app-with-spark) |
 
 **Workshop connection:** Appendix N covers Codespaces conceptually. Path 6, course 1 gives you the hands-on setup experience.
-
 
 ## Quick Reference - All 36 Courses
 
@@ -251,7 +242,6 @@ The following table alphabetically lists every GitHub Skills course with its cat
 | Test with Actions | Actions | [Start course](https://github.com/skills/test-with-actions) |
 | Write JavaScript Actions | Actions | [Start course](https://github.com/skills/write-javascript-actions) |
 | Your First Extension for GitHub Copilot | Copilot | [Start course](https://github.com/skills/your-first-extension-for-github-copilot) |
-
 
 ## Integrating GitHub Skills into Your Learning Journey
 
@@ -338,7 +328,6 @@ Path 6: Cloud and Migration
 - [ ] Idea to App with Spark
 ```
 
-
 ## Additional Resources
 
 - [GitHub Skills homepage](https://skills.github.com/) - browse all courses with descriptions
@@ -350,3 +339,22 @@ Path 6: Cloud and Migration
 *Back: [Appendix Y: Workshop Materials](appendix-y-workshop-materials.md)*  
 *Teaching chapter: [Chapter 00: Pre-Workshop Setup](00-pre-workshop-setup.md)*
 
+## Authoritative Sources
+
+Use these official references when you need the current source of truth for facts in this chapter.
+
+- [GitHub Docs, home](https://docs.github.com/en)
+- [GitHub Changelog](https://github.blog/changelog/)
+- [GitHub Skills catalog](https://skills.github.com/)
+- [GitHub Learning Pathways](https://resources.github.com/learn/pathways/)
+
+### Section-Level Source Map
+
+Use this map to verify facts for each major section in this file.
+
+- **How GitHub Skills Works:** [GitHub Docs, home](https://docs.github.com/en), [GitHub Changelog](https://github.blog/changelog/), [GitHub Skills catalog](https://skills.github.com/), [GitHub Learning Pathways](https://resources.github.com/learn/pathways/), [About Git](https://docs.github.com/en/get-started/using-git/about-git)
+- **Courses Used in This Workshop:** [GitHub Docs, home](https://docs.github.com/en), [GitHub Changelog](https://github.blog/changelog/), [GitHub Skills catalog](https://skills.github.com/), [GitHub Learning Pathways](https://resources.github.com/learn/pathways/)
+- **Learning Paths:** [GitHub Docs, home](https://docs.github.com/en), [GitHub Changelog](https://github.blog/changelog/), [GitHub Skills catalog](https://skills.github.com/), [GitHub Learning Pathways](https://resources.github.com/learn/pathways/)
+- **Quick Reference - All 36 Courses:** [GitHub Docs, home](https://docs.github.com/en), [GitHub Changelog](https://github.blog/changelog/), [GitHub Skills catalog](https://skills.github.com/), [GitHub Learning Pathways](https://resources.github.com/learn/pathways/)
+- **Integrating GitHub Skills into Your Learning Journey:** [GitHub Docs, home](https://docs.github.com/en), [GitHub Changelog](https://github.blog/changelog/), [GitHub Skills catalog](https://skills.github.com/), [GitHub Learning Pathways](https://resources.github.com/learn/pathways/), [About Git](https://docs.github.com/en/get-started/using-git/about-git)
+- **Additional Resources:** [GitHub Docs, home](https://docs.github.com/en), [GitHub Changelog](https://github.blog/changelog/), [GitHub Skills catalog](https://skills.github.com/), [GitHub Learning Pathways](https://resources.github.com/learn/pathways/)

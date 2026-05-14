@@ -6,7 +6,6 @@ Thank you for helping improve this workshop. Whether you are a participant who f
 
 This guide covers contributing to **this workshop learning repository**. For contributing to Accessibility Agents itself (the project you work on during Day 2), see [Accessibility Agents' CONTRIBUTING.md](https://github.com/community-access/accessibility-agents/blob/main/CONTRIBUTING.md).
 
-
 ## Table of Contents
 
 1. [Who This Is For](#1-who-this-is-for)
@@ -21,7 +20,6 @@ This guide covers contributing to **this workshop learning repository**. For con
 10. [What Happens After You Submit](#10-what-happens-after-you-submit)
 11. [Questions and Discussion](#11-questions-and-discussion)
 
-
 ## 1. Who This Is For
 
 **Workshop participants:** You have already completed the contribution workflow during the workshop. This repository is an excellent first contribution target for applying what you practiced.
@@ -31,7 +29,6 @@ This guide covers contributing to **this workshop learning repository**. For con
 **Accessibility practitioners:** If you have domain expertise in a particular screen reader or assistive technology and notice something that is incorrect or incomplete, please open an issue or submit a correction. Your expertise is exactly what this documentation needs.
 
 **People who find bugs:** A broken link, a command that has stopped working, an exercise that cannot be completed - all of these are legitimate bugs. Open an issue the same way you would for any software project.
-
 
 ## 2. What Kinds of Contributions Are Welcome
 
@@ -61,7 +58,6 @@ This guide covers contributing to **this workshop learning repository**. For con
 - Rewriting the complete voice or structure of the workshop - if you have large-scale ideas, open a discussion first
 - Adding content about tools or platforms not currently mentioned in the workshop
 - Automated link-checking or content generation without human review
-
 
 ## 3. Before You Start - Fork and Clone
 
@@ -110,7 +106,6 @@ origin    https://github.com/[your-username]/[workshop-repo-name].git (push)
 upstream  https://github.com/[original-owner]/[workshop-repo-name].git (fetch)
 upstream  https://github.com/[original-owner]/[workshop-repo-name].git (push)
 ```
-
 
 ## 4. Contribution Workflow - Step by Step
 
@@ -189,7 +184,6 @@ git push origin fix-nvda-shortcut-section-05
 4. Fill in the PR template (see below)
 5. Submit
 
-
 ## 5. Writing and Style Guidelines
 
 ### Voice
@@ -222,7 +216,6 @@ When mentioning a single shortcut inline: use backticks - `NVDA+F7`
 - Link text should describe the destination - not "click here" or "this guide"
 - Good: `[NVDA User Guide](https://www.nvaccess.org/files/nvda/documentation/userGuide.html)`
 - Bad: `[click here](https://www.nvaccess.org/files/nvda/documentation/userGuide.html)`
-
 
 ## 6. Accessibility Requirements
 
@@ -257,7 +250,6 @@ Every document in this repository is used by screen reader users. Accessibility 
 - All terminal commands use fenced code blocks with language specified (` ```bash `)
 - Inline code for short references uses single backticks
 - Commands that produce output should show the expected output separately, labeled
-
 
 ## 7. HTML Documentation Build System
 
@@ -339,7 +331,6 @@ You need to install Node.js first. Download from the [Node.js download page](htt
 - Check that code blocks use proper fence syntax (` ``` `)
 - Look for unclosed brackets or parentheses in links
 
-
 ## 8. Screen Reader Guidance for Commands in This Document
 
 If you are reviewing this repository using a screen reader, here are the relevant reading patterns.
@@ -361,7 +352,6 @@ If you are reviewing this repository using a screen reader, here are the relevan
 - **Table navigation:** `VO+Right Arrow` through rows, `VO+Cmd+Right Arrow` through columns
 - **Code blocks** in Markdown renderers on GitHub: navigate with `VO+Right Arrow`; activate "Select All" (`Cmd+A`) then "Copy" (`Cmd+C`) to copy a block
 - **Heading navigation with Rotor:** `VO+U`, then left-right to select "Headings", then up-down to navigate
-
 
 ## 9. Submitting Your Pull Request
 
@@ -403,7 +393,6 @@ exercise: add bonus challenge for notifications day 2
 
 Small, focused pull requests are reviewed faster and merged sooner. If you have multiple unrelated improvements, submit them as separate pull requests.
 
-
 ## 10. What Happens After You Submit
 
 1. **A maintainer reviews your PR** - typically within a few days for documentation changes
@@ -413,7 +402,6 @@ Small, focused pull requests are reviewed faster and merged sooner. If you have 
 5. **Your name is in the commit history** of the repository - that is the permanent record of your contribution
 
 If two weeks pass with no response, feel free to leave a comment on the PR to check in.
-
 
 ## 11. Questions and Discussion
 
@@ -425,7 +413,32 @@ If two weeks pass with no response, feel free to leave a comment on the PR to ch
 
 **For accessibility concerns:** Tag your issue or comment with the `accessibility` label
 
-
 *Workshops run better when participants contribute back. Every correction, every clarification, every additional exercise makes this material stronger for everyone who comes after you. Your name in the commit history is not the end of your participation - it is the beginning.*
 
 *[Back to README →](README.md) | [Resources →](docs/appendix-x-resources.md) | [Code of Conduct →](CODE_OF_CONDUCT.md)*
+
+## Authoritative Sources
+
+Use these official references when you need the current source of truth for facts in this chapter.
+
+- [GitHub Docs, home](https://docs.github.com/en)
+- [GitHub Changelog](https://github.blog/changelog/)
+
+### Section-Level Source Map
+
+Use this map to verify facts for each major section in this file.
+
+- **1. Who This Is For:** [GitHub Docs, home](https://docs.github.com/en), [GitHub Changelog](https://github.blog/changelog/)
+- **2. What Kinds of Contributions Are Welcome:** [GitHub Docs, home](https://docs.github.com/en), [GitHub Changelog](https://github.blog/changelog/)
+- **3. Before You Start - Fork and Clone:** [GitHub Docs, home](https://docs.github.com/en), [GitHub Changelog](https://github.blog/changelog/), [About Git](https://docs.github.com/en/get-started/using-git/about-git), [GitHub flow](https://docs.github.com/en/get-started/using-github/github-flow), [About pull requests](https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/about-pull-requests)
+- **4. Contribution Workflow - Step by Step:** [GitHub Docs, home](https://docs.github.com/en), [GitHub Changelog](https://github.blog/changelog/), [Workflow syntax for GitHub Actions](https://docs.github.com/en/actions/reference/workflows-and-actions/workflow-syntax), [Secure use reference for GitHub Actions](https://docs.github.com/en/actions/security-for-github-actions/security-guides/security-hardening-for-github-actions), [GitHub Actions changelog](https://github.blog/changelog/label/actions/)
+- **5. Writing and Style Guidelines:** [GitHub Docs, home](https://docs.github.com/en), [GitHub Changelog](https://github.blog/changelog/)
+- **6. Accessibility Requirements:** [GitHub Docs, home](https://docs.github.com/en), [GitHub Changelog](https://github.blog/changelog/), [W3C Web Content Accessibility Guidelines (WCAG) 2 overview](https://www.w3.org/WAI/standards-guidelines/wcag/), [WAI tutorials for accessible design patterns](https://www.w3.org/WAI/tutorials/), [WAI-ARIA Authoring Practices Guide](https://www.w3.org/WAI/ARIA/apg/)
+- **7. HTML Documentation Build System:** [GitHub Docs, home](https://docs.github.com/en), [GitHub Changelog](https://github.blog/changelog/)
+- **8. Screen Reader Guidance for Commands in This Document:** [GitHub Docs, home](https://docs.github.com/en), [GitHub Changelog](https://github.blog/changelog/), [W3C Web Content Accessibility Guidelines (WCAG) 2 overview](https://www.w3.org/WAI/standards-guidelines/wcag/), [WAI tutorials for accessible design patterns](https://www.w3.org/WAI/tutorials/), [WAI-ARIA Authoring Practices Guide](https://www.w3.org/WAI/ARIA/apg/)
+- **9. Submitting Your Pull Request:** [GitHub Docs, home](https://docs.github.com/en), [GitHub Changelog](https://github.blog/changelog/), [About Git](https://docs.github.com/en/get-started/using-git/about-git), [GitHub flow](https://docs.github.com/en/get-started/using-github/github-flow), [About pull requests](https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/about-pull-requests)
+- **What does this change?:** [GitHub Docs, home](https://docs.github.com/en), [GitHub Changelog](https://github.blog/changelog/)
+- **Why?:** [GitHub Docs, home](https://docs.github.com/en), [GitHub Changelog](https://github.blog/changelog/)
+- **How to test / review:** [GitHub Docs, home](https://docs.github.com/en), [GitHub Changelog](https://github.blog/changelog/)
+- **10. What Happens After You Submit:** [GitHub Docs, home](https://docs.github.com/en), [GitHub Changelog](https://github.blog/changelog/)
+- **11. Questions and Discussion:** [GitHub Docs, home](https://docs.github.com/en), [GitHub Changelog](https://github.blog/changelog/), [GitHub Discussions docs](https://docs.github.com/en/discussions), [GitHub Gists docs](https://docs.github.com/en/get-started/writing-on-github/editing-and-sharing-content-with-gists)

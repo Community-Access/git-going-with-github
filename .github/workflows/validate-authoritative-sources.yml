@@ -1,0 +1,43 @@
+name: Validate Authoritative Sources
+
+on:
+  pull_request:
+    paths:
+      - "*.md"
+      - "docs/**/*.md"
+      - "classroom/**/*.md"
+      - "learning-room/**/*.md"
+      - "admin/**/*.md"
+      - "scripts/add-authoritative-sources.js"
+      - "scripts/validate-authoritative-sources.js"
+      - "package.json"
+      - ".github/workflows/validate-authoritative-sources.yml"
+  push:
+    branches:
+      - main
+    paths:
+      - "*.md"
+      - "docs/**/*.md"
+      - "classroom/**/*.md"
+      - "learning-room/**/*.md"
+      - "admin/**/*.md"
+      - "scripts/add-authoritative-sources.js"
+      - "scripts/validate-authoritative-sources.js"
+      - "package.json"
+      - ".github/workflows/validate-authoritative-sources.yml"
+
+jobs:
+  validate-authoritative-sources:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+
+      - name: Validate authoritative source sections
+        run: npm run validate:authoritative-sources

@@ -17,7 +17,7 @@ function buildValidationReportBody(results, timestampIso) {
     ? "**Validation Passed** [PASS]"
     : "**Validation Needs Attention** [ACTION REQUIRED]";
 
-  let body = `## PR Validation Report\n\n${status}\n\n`;
+  let body = `## PR Validation Report\n\n${status}\n\nHi! I am Gandalf, your workshop agent. I am here to bring a little magic to the interaction experience and keep this process fun while guiding you.\n\n`;
 
   if ((safeResults.required || []).length > 0) {
     body += "### Required Checks\n\n";
@@ -69,7 +69,7 @@ function buildValidationReportBody(results, timestampIso) {
   });
 
   body += "\n---\n";
-  body += `*Automated validation by Learning Room Bot. Aria generated this review. Last updated: ${ts}*\n`;
+  body += `*Automated validation by Learning Room Bot. Gandalf generated this review. Last updated: ${ts}*\n`;
   body += "*Questions? Check the guides or mention @facilitator in a comment.*";
   
   return body;

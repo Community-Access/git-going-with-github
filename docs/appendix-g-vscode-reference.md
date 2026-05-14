@@ -12,7 +12,6 @@
 >
 > **Referenced by:** [VS Code Setup & Accessibility Basics](11-vscode-interface.md), [GitHub Copilot](16-github-copilot.md)
 
-
 ### Learning Cards: VS Code Accessibility Reference Overview
 
 <details>
@@ -42,7 +41,6 @@
 
 </details>
 
-
 ## Table of Contents
 
 1. [Complete Accessibility Settings Reference](#1-complete-accessibility-settings-reference)
@@ -52,7 +50,7 @@
 5. [Complete Keyboard Shortcuts](#5-complete-keyboard-shortcuts)
 6. [Accessibility Signals Types and Customization](#6-accessibility-signals-types-and-customization)
 7. [Settings.json Configuration Examples](#7-settingsjson-configuration-examples)
-
+8. [VS Code 1.120 Chat, Agents Window, and Markdown Diff Updates](#8-vs-code-1120-chat-agents-window-and-markdown-diff-updates)
 
 ## 1. Complete Accessibility Settings Reference
 
@@ -111,7 +109,6 @@ All settings can be accessed via Settings UI (`Ctrl+,`) or by editing `settings.
 | `accessibility.verbosity.panel-chat` | boolean | `true` | Announces Copilot Chat panel responses. |
 | `accessibility.verbosity.settings-editor` | boolean | `true` | Announces settings editor context. |
 | `accessibility.verbosity.terminal` | boolean | `true` | Announces terminal operations. |
-
 
 ## 2. Audio Cues - All Options
 
@@ -183,7 +180,6 @@ Audio cues provide non-verbal feedback through sound. Each cue can be configured
 - Format: WAV, MP3, or OGG
 - Duration: Keep under 2 seconds
 - Volume: Normalize to avoid clipping
-
 
 ## 3. Accessible Diff Viewer - Complete Guide
 
@@ -291,7 +287,6 @@ The unchanged lines help you understand where in the file the change occurred.
 2. Search: "diffEditor.renderSideBySide"
 3. Uncheck the box (or set to `false` in settings.json)
 
-
 ### Learning Cards: Accessible Diff Viewer
 
 <details>
@@ -320,7 +315,6 @@ The unchanged lines help you understand where in the file the change occurred.
 - Click the hunk arrows in the gutter to jump directly to the next block of changes
 
 </details>
-
 
 ## 4. Screen Reader-Specific Configurations
 
@@ -438,7 +432,6 @@ Custom JAWS scripts exist for VS Code. Check: [jaws-vscode-scripts (GitHub)](htt
 | `F` | Next form control |
 
 **Note:** Quick Nav should be OFF when editing text (conflicts with text navigation).
-
 
 ## 5. Complete Keyboard Shortcuts
 
@@ -620,7 +613,6 @@ Custom JAWS scripts exist for VS Code. Check: [jaws-vscode-scripts (GitHub)](htt
 | Toggle Preview | `Ctrl+Shift+V` | `Cmd+Shift+V` |
 | Open Preview to Side | `Ctrl+K V` | `Cmd+K V` |
 
-
 ## 6. Accessibility Signals Types and Customization
 
 Accessibility signals are events that trigger announcements or audio cues. Beyond audio cues, VS Code has verbal announcements for various events.
@@ -664,7 +656,6 @@ When multiple signals occur simultaneously, VS Code prioritizes them:
 
 This prevents overlapping announcements.
 
-
 ### Learning Cards: Accessibility Signals
 
 <details>
@@ -693,7 +684,6 @@ This prevents overlapping announcements.
 - Custom sound files (WAV/MP3, under 2 seconds) can replace defaults if you want distinctive tones per event
 
 </details>
-
 
 ## 7. Settings.json Configuration Examples
 
@@ -831,7 +821,6 @@ The configuration examples below are JSON blocks you paste into your `settings.j
 }
 ```
 
-
 ## Quick Copy: Complete Recommended Settings
 
 ### Paste this into your `settings.json` for a balanced screen reader profile
@@ -862,9 +851,101 @@ The configuration examples below are JSON blocks you paste into your `settings.j
 }
 ```
 
+## 8. VS Code 1.120 Chat, Agents Window, and Markdown Diff Updates
+
+VS Code 1.120 adds several accessibility-relevant changes for learners who use Copilot, review documentation diffs, or manage agent sessions. For the full Copilot and Agents window workflow, see [Appendix K: VS Code 1.120 Agents Window and Impactful Updates](appendix-k-copilot-reference.md#4a-vs-code-1120-agents-window-and-impactful-updates).
+
+### What Changed
+
+The following table summarizes the 1.120 changes that affect accessible VS Code workflows.
+
+| Feature | Accessibility Impact | Suggested Use |
+| ------- | -------------------- | ------------- |
+| Agents window, Preview | Gives agent sessions their own window with sessions, chat, customizations, files, and changes | Use Command Palette access, worktree isolation, and Changes panel review |
+| Terminal command risk assessment, Experimental | Adds a risk badge and command explanation to some terminal confirmations | Treat as extra context, not permission to skip reading the command |
+| Terminal output compression, Preview | Reduces long terminal output sent to chat, which can reduce context noise | Use for large diffs or install logs; ask for raw output when exact text matters |
+| Markdown preview for diffs, Preview | Lets documentation diffs render as Markdown instead of only source text | Useful for sighted and low-vision review of headings, lists, links, and tables |
+| Plan mode inline control | Lets supported agents show and edit plans inline before implementation | Useful when reviewing an agent plan before file changes start |
+| Model picker grouped by provider | Makes model lists easier to scan when many models are available | Keep beginners on Auto; use provider grouping for advanced model selection |
+| BYOK token usage and thinking effort | Gives advanced users more visibility and control for bring-your-own-key models | Not needed for beginners; useful for cost and context management |
+| Markdown HTML `id` completion and validation | Improves completion and validation for internal links to HTML IDs in Markdown | Helpful when maintaining long workshop docs with many anchors |
+| Smart select for Markdown tables | Expands selection from cell to row to whole table | Helpful for keyboard users editing large reference tables |
+
+### Screen Reader Workflow
+
+1. Open the Agents window with **Chat: Open Agents Window** from the Command Palette.
+2. Use `Alt+F1` in the focused area to find context-specific accessibility help.
+3. Use `F6` and `Shift+F6` to move among major workbench parts.
+4. Use `Alt+F2` for Accessible View when chat responses, terminal output, hovers, or diffs are easier to read in a stable buffer.
+5. Use `F7` and `Shift+F7` for diff navigation before accepting agent changes.
+6. When terminal risk assessment is enabled, listen to the risk label and explanation, then still read the exact command before approving it.
+
+### Low Vision Workflow
+
+1. Set zoom and theme before starting a dense Agents window session.
+2. Use modal diff view when side-by-side changes are too compressed.
+3. Try Markdown preview diffs for documentation changes where rendered headings, lists, and tables are easier to inspect.
+4. Widen the Sessions list, Chat area, and Changes panel as needed before reviewing work.
+5. Consider separate Agents window settings if your editor and agent review layouts need different zoom or density.
+
+### Sighted Workflow
+
+1. Use changed-file counts and session status badges as quick scope checks.
+2. Open each changed file from the Changes panel before accepting a session result.
+3. Use rendered Markdown diffs for documentation PRs and source diffs for syntax-sensitive edits.
+4. Use the integrated browser or terminal in the Agents window to validate generated work before committing or merging.
+
+### Settings Reference
+
+The following settings are useful to know when teaching VS Code 1.120 workflows.
+
+| Setting | What It Controls |
+| ------- | ---------------- |
+| `chat.tools.riskAssessment.enabled` | Shows risk assessment for terminal command confirmations |
+| `chat.tools.compressOutput.enabled` | Compresses large terminal output before it is sent to the model |
+| `chat.planWidget.inlineEditor.enabled` | Enables inline plan editing for supported agent flows |
+| `workbench.diffEditorAssociations` | Can set rendered Markdown preview as the default diff editor for Markdown |
+| `extensions.supportAgentsWindow` | Lets you opt specific installed extensions into the Agents window |
+| `chat.notifyWindowOnResponseReceived` | Controls OS notifications when chat responses arrive |
+| `chat.notifyWindowOnConfirmation` | Controls OS notifications when an agent needs confirmation |
+
+Example setting for rendered Markdown diffs:
+
+```json
+{
+  "workbench.diffEditorAssociations": {
+    "*.md": "vscode.markdown.preview.editor"
+  }
+}
+```
+
 ---
 
 *Next: [Appendix H: GitHub Desktop](appendix-h-github-desktop.md)*  
 *Back: [Appendix F: Git Security](appendix-f-git-security.md)*  
 *Teaching chapter: [Chapter 11: VS Code Interface](11-vscode-interface.md)*
 
+## Authoritative Sources
+
+Use these official references when you need the current source of truth for facts in this chapter.
+
+- [GitHub Docs, home](https://docs.github.com/en)
+- [GitHub Changelog](https://github.blog/changelog/)
+- [VS Code Copilot chat overview](https://code.visualstudio.com/docs/copilot/chat/copilot-chat)
+- [VS Code agent overview](https://code.visualstudio.com/docs/copilot/agents/overview)
+- [VS Code custom instructions](https://code.visualstudio.com/docs/copilot/customization/custom-instructions)
+
+### Section-Level Source Map
+
+Use this map to verify facts for each major section in this file.
+
+- **Complete Technical Reference for Screen Reader Users:** [GitHub Docs, home](https://docs.github.com/en), [GitHub Changelog](https://github.blog/changelog/), [VS Code Copilot chat overview](https://code.visualstudio.com/docs/copilot/chat/copilot-chat), [VS Code agent overview](https://code.visualstudio.com/docs/copilot/agents/overview), [VS Code custom instructions](https://code.visualstudio.com/docs/copilot/customization/custom-instructions)
+- **1. Complete Accessibility Settings Reference:** [GitHub Docs, home](https://docs.github.com/en), [GitHub Changelog](https://github.blog/changelog/), [VS Code Copilot chat overview](https://code.visualstudio.com/docs/copilot/chat/copilot-chat), [VS Code agent overview](https://code.visualstudio.com/docs/copilot/agents/overview), [VS Code custom instructions](https://code.visualstudio.com/docs/copilot/customization/custom-instructions)
+- **2. Audio Cues - All Options:** [GitHub Docs, home](https://docs.github.com/en), [GitHub Changelog](https://github.blog/changelog/), [VS Code Copilot chat overview](https://code.visualstudio.com/docs/copilot/chat/copilot-chat), [VS Code agent overview](https://code.visualstudio.com/docs/copilot/agents/overview), [VS Code custom instructions](https://code.visualstudio.com/docs/copilot/customization/custom-instructions)
+- **3. Accessible Diff Viewer - Complete Guide:** [GitHub Docs, home](https://docs.github.com/en), [GitHub Changelog](https://github.blog/changelog/), [VS Code Copilot chat overview](https://code.visualstudio.com/docs/copilot/chat/copilot-chat), [VS Code agent overview](https://code.visualstudio.com/docs/copilot/agents/overview), [VS Code custom instructions](https://code.visualstudio.com/docs/copilot/customization/custom-instructions)
+- **4. Screen Reader-Specific Configurations:** [GitHub Docs, home](https://docs.github.com/en), [GitHub Changelog](https://github.blog/changelog/), [VS Code Copilot chat overview](https://code.visualstudio.com/docs/copilot/chat/copilot-chat), [VS Code agent overview](https://code.visualstudio.com/docs/copilot/agents/overview), [VS Code custom instructions](https://code.visualstudio.com/docs/copilot/customization/custom-instructions)
+- **5. Complete Keyboard Shortcuts:** [GitHub Docs, home](https://docs.github.com/en), [GitHub Changelog](https://github.blog/changelog/), [VS Code Copilot chat overview](https://code.visualstudio.com/docs/copilot/chat/copilot-chat), [VS Code agent overview](https://code.visualstudio.com/docs/copilot/agents/overview), [VS Code custom instructions](https://code.visualstudio.com/docs/copilot/customization/custom-instructions)
+- **6. Accessibility Signals Types and Customization:** [GitHub Docs, home](https://docs.github.com/en), [GitHub Changelog](https://github.blog/changelog/), [VS Code Copilot chat overview](https://code.visualstudio.com/docs/copilot/chat/copilot-chat), [VS Code agent overview](https://code.visualstudio.com/docs/copilot/agents/overview), [VS Code custom instructions](https://code.visualstudio.com/docs/copilot/customization/custom-instructions)
+- **7. Settings.json Configuration Examples:** [GitHub Docs, home](https://docs.github.com/en), [GitHub Changelog](https://github.blog/changelog/), [VS Code Copilot chat overview](https://code.visualstudio.com/docs/copilot/chat/copilot-chat), [VS Code agent overview](https://code.visualstudio.com/docs/copilot/agents/overview), [VS Code custom instructions](https://code.visualstudio.com/docs/copilot/customization/custom-instructions)
+- **Quick Copy: Complete Recommended Settings:** [GitHub Docs, home](https://docs.github.com/en), [GitHub Changelog](https://github.blog/changelog/), [VS Code Copilot chat overview](https://code.visualstudio.com/docs/copilot/chat/copilot-chat), [VS Code agent overview](https://code.visualstudio.com/docs/copilot/agents/overview), [VS Code custom instructions](https://code.visualstudio.com/docs/copilot/customization/custom-instructions)
+- **8. VS Code 1.120 Chat, Agents Window, and Markdown Diff Updates:** [GitHub Docs, home](https://docs.github.com/en), [GitHub Changelog](https://github.blog/changelog/), [VS Code Copilot chat overview](https://code.visualstudio.com/docs/copilot/chat/copilot-chat), [VS Code agent overview](https://code.visualstudio.com/docs/copilot/agents/overview), [VS Code custom instructions](https://code.visualstudio.com/docs/copilot/customization/custom-instructions)

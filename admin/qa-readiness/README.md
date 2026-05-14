@@ -57,3 +57,20 @@ Use this pack together with:
 
 - [admin/LEARNING-ROOM-E2E-QA-RUNBOOK.md](../LEARNING-ROOM-E2E-QA-RUNBOOK.md)
 - [GO-LIVE-QA-GUIDE.md](../../GO-LIVE-QA-GUIDE.md)
+
+## Authoritative Sources
+
+Use these official references when you need the current source of truth for facts in this chapter.
+
+- [GitHub Docs, home](https://docs.github.com/en)
+- [GitHub Changelog](https://github.blog/changelog/)
+
+### Section-Level Source Map
+
+Use this map to verify facts for each major section in this file.
+
+- **Scope:** [GitHub Docs, home](https://docs.github.com/en), [GitHub Changelog](https://github.blog/changelog/)
+- **Test Entry Point:** [GitHub Docs, home](https://docs.github.com/en), [GitHub Changelog](https://github.blog/changelog/)
+- **New Unit Tests Added in This QA Pass:** [GitHub Docs, home](https://docs.github.com/en), [GitHub Changelog](https://github.blog/changelog/)
+- **Latest Results:** [GitHub Docs, home](https://docs.github.com/en), [GitHub Changelog](https://github.blog/changelog/)
+- **Interpreting Confidence:** [GitHub Docs, home](https://docs.github.com/en), [GitHub Changelog](https://github.blog/changelog/)

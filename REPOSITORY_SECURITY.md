@@ -4,7 +4,6 @@
 
 This repository hosts the curriculum and facilitator materials for the Git Going with GitHub workshop. Student work happens in **individual private repositories** created by GitHub Classroom, not in this repository. This document covers the security model for both the curriculum repository and the student repositories.
 
-
 ## Access Control
 
 ### Curriculum Repository (git-going-with-github)
@@ -32,7 +31,6 @@ Student repositories are **private by default**. Each student can only see their
 Students do **not** need to be members of the Community-Access organization. GitHub Classroom handles all access automatically when a student accepts an assignment invite link. The student is granted access to their individual repo without any org-level permissions.
 
 Facilitators **do** need organization-level access to manage the classroom. See the Facilitator Access section below.
-
 
 ## Branch Protection
 
@@ -63,7 +61,6 @@ Even within their own repo, students cannot:
 - Access other students' repositories
 - View the classroom admin settings
 
-
 ## Permission Model
 
 ### Least Privilege
@@ -77,7 +74,6 @@ The GitHub Classroom model enforces least privilege by design:
 - Students **can** create branches, issues, and PRs in their own repo
 - Students **can** push to any branch in their own repo
 - Students **can** merge PRs in their own repo (with autograder checks reporting status)
-
 
 ## Facilitator Access
 
@@ -109,7 +105,6 @@ gh api /orgs/Community-Access/memberships/USERNAME --jq .role
 gh api /orgs/Community-Access/memberships/USERNAME -X DELETE
 ```
 
-
 ## GitHub Actions Security
 
 ### Workflows in Student Repositories
@@ -138,7 +133,6 @@ The curriculum repo uses standard CI workflows for building HTML/EPUB output. Th
 - Have read-only permissions
 - Do not deploy to production automatically
 - Cannot modify student repositories
-
 
 ## Data Privacy
 
@@ -181,7 +175,6 @@ Student repositories persist after the workshop unless explicitly deleted. Facil
 
 See [teardown-checklist.md](classroom/teardown-checklist.md) for the complete post-workshop cleanup process. Preserve private student-success records in `Community-Access/git-going-student-success` before deleting local exports or archiving Classroom data.
 
-
 ## Safety Checks
 
 ### Before the Workshop
@@ -215,7 +208,6 @@ See [teardown-checklist.md](classroom/teardown-checklist.md) for the complete po
 | Student cannot accept invite | Verify GitHub account exists and is signed in; check roster match |
 | Progression Bot skips a challenge | Check Actions tab for errors; manually create the missed issue |
 
-
 ## Rollback & Emergency
 
 ### If Something Goes Wrong
@@ -237,7 +229,6 @@ See [teardown-checklist.md](classroom/teardown-checklist.md) for the complete po
 **Student repo is corrupted:**
 - Have the student accept the invite link again (Classroom creates a fresh repo if the original is deleted)
 - Or restore files manually from the template
-
 
 ## Compliance & Audit
 
@@ -261,10 +252,35 @@ These logs are available in:
 - Student repos use automation only through `GITHUB_TOKEN` (no external credentials)
 - Facilitator access is scoped to the workshop duration and removed afterward
 
-
 ## Contact & Support
 
 **GitHub Organization:** https://github.com/Community-Access
 **Curriculum Repository:** https://github.com/Community-Access/git-going-with-github
 **GitHub Classroom:** https://classroom.github.com
 **GitHub Status:** https://www.githubstatus.com/
+
+## Authoritative Sources
+
+Use these official references when you need the current source of truth for facts in this chapter.
+
+- [GitHub Docs, home](https://docs.github.com/en)
+- [GitHub Changelog](https://github.blog/changelog/)
+- [GitHub security features](https://docs.github.com/en/code-security/getting-started/github-security-features)
+- [Dependabot docs](https://docs.github.com/en/code-security/dependabot)
+- [Secret scanning docs](https://docs.github.com/en/code-security/secret-scanning/introduction/about-secret-scanning)
+
+### Section-Level Source Map
+
+Use this map to verify facts for each major section in this file.
+
+- **Overview:** [GitHub Docs, home](https://docs.github.com/en), [GitHub Changelog](https://github.blog/changelog/), [GitHub security features](https://docs.github.com/en/code-security/getting-started/github-security-features), [Dependabot docs](https://docs.github.com/en/code-security/dependabot), [Secret scanning docs](https://docs.github.com/en/code-security/secret-scanning/introduction/about-secret-scanning)
+- **Access Control:** [GitHub Docs, home](https://docs.github.com/en), [GitHub Changelog](https://github.blog/changelog/), [GitHub security features](https://docs.github.com/en/code-security/getting-started/github-security-features), [Dependabot docs](https://docs.github.com/en/code-security/dependabot), [Secret scanning docs](https://docs.github.com/en/code-security/secret-scanning/introduction/about-secret-scanning)
+- **Branch Protection:** [GitHub Docs, home](https://docs.github.com/en), [GitHub Changelog](https://github.blog/changelog/), [GitHub security features](https://docs.github.com/en/code-security/getting-started/github-security-features), [Dependabot docs](https://docs.github.com/en/code-security/dependabot), [Secret scanning docs](https://docs.github.com/en/code-security/secret-scanning/introduction/about-secret-scanning)
+- **Permission Model:** [GitHub Docs, home](https://docs.github.com/en), [GitHub Changelog](https://github.blog/changelog/), [GitHub security features](https://docs.github.com/en/code-security/getting-started/github-security-features), [Dependabot docs](https://docs.github.com/en/code-security/dependabot), [Secret scanning docs](https://docs.github.com/en/code-security/secret-scanning/introduction/about-secret-scanning)
+- **Facilitator Access:** [GitHub Docs, home](https://docs.github.com/en), [GitHub Changelog](https://github.blog/changelog/), [GitHub security features](https://docs.github.com/en/code-security/getting-started/github-security-features), [Dependabot docs](https://docs.github.com/en/code-security/dependabot), [Secret scanning docs](https://docs.github.com/en/code-security/secret-scanning/introduction/about-secret-scanning)
+- **GitHub Actions Security:** [GitHub Docs, home](https://docs.github.com/en), [GitHub Changelog](https://github.blog/changelog/), [GitHub security features](https://docs.github.com/en/code-security/getting-started/github-security-features), [Dependabot docs](https://docs.github.com/en/code-security/dependabot), [Secret scanning docs](https://docs.github.com/en/code-security/secret-scanning/introduction/about-secret-scanning)
+- **Data Privacy:** [GitHub Docs, home](https://docs.github.com/en), [GitHub Changelog](https://github.blog/changelog/), [GitHub security features](https://docs.github.com/en/code-security/getting-started/github-security-features), [Dependabot docs](https://docs.github.com/en/code-security/dependabot), [Secret scanning docs](https://docs.github.com/en/code-security/secret-scanning/introduction/about-secret-scanning)
+- **Safety Checks:** [GitHub Docs, home](https://docs.github.com/en), [GitHub Changelog](https://github.blog/changelog/), [GitHub security features](https://docs.github.com/en/code-security/getting-started/github-security-features), [Dependabot docs](https://docs.github.com/en/code-security/dependabot), [Secret scanning docs](https://docs.github.com/en/code-security/secret-scanning/introduction/about-secret-scanning)
+- **Rollback & Emergency:** [GitHub Docs, home](https://docs.github.com/en), [GitHub Changelog](https://github.blog/changelog/), [GitHub security features](https://docs.github.com/en/code-security/getting-started/github-security-features), [Dependabot docs](https://docs.github.com/en/code-security/dependabot), [Secret scanning docs](https://docs.github.com/en/code-security/secret-scanning/introduction/about-secret-scanning)
+- **Compliance & Audit:** [GitHub Docs, home](https://docs.github.com/en), [GitHub Changelog](https://github.blog/changelog/), [GitHub security features](https://docs.github.com/en/code-security/getting-started/github-security-features), [Dependabot docs](https://docs.github.com/en/code-security/dependabot), [Secret scanning docs](https://docs.github.com/en/code-security/secret-scanning/introduction/about-secret-scanning)
+- **Contact & Support:** [GitHub Docs, home](https://docs.github.com/en), [GitHub Changelog](https://github.blog/changelog/), [GitHub security features](https://docs.github.com/en/code-security/getting-started/github-security-features), [Dependabot docs](https://docs.github.com/en/code-security/dependabot), [Secret scanning docs](https://docs.github.com/en/code-security/secret-scanning/introduction/about-secret-scanning)

@@ -5,12 +5,11 @@
 > **Related appendices:** [Appendix K: Copilot Reference](appendix-k-copilot-reference.md) | [Appendix G: VS Code Reference](appendix-g-vscode-reference.md)
 > **Authoritative sources:** [GitHub Docs: About GitHub Copilot](https://docs.github.com/en/copilot/about-github-copilot/what-is-github-copilot) | [GitHub Accessibility: Copilot in VS Code](https://accessibility.github.com/documentation/guide/github-copilot-vsc/) | [VS Code Docs: GitHub Copilot](https://code.visualstudio.com/docs/copilot/overview) | [GitHub Copilot plans](https://github.com/features/copilot/plans) | [Usage-based billing for individuals](https://docs.github.com/en/copilot/concepts/billing/usage-based-billing-for-individuals)
 
-
 ## AI-Powered Code Assistance in VS Code
 
 > **Day 2, Block 2-3 Material**
 >
-> This guide covers GitHub Copilot: inline code suggestions, Copilot Chat (conversational assistance), custom instructions vs custom agents, effective prompting for non-code contributions, and using Accessible View to read AI-generated responses.
+> This guide covers GitHub Copilot: inline code suggestions, Copilot Chat (conversational assistance), Agent mode, the VS Code 1.120 Agents window, custom instructions vs custom agents, effective prompting for non-code contributions, and using Accessible View to read AI-generated responses.
 >
 > **Official GitHub Accessibility Guides:** GitHub publishes two developer guides and an NVDA-focused screen reader guide for Copilot:
 >
@@ -22,8 +21,7 @@
 >
 > **Prerequisites:** [VS Code Setup & Accessibility Basics](11-vscode-interface.md), [Git & Source Control in VS Code](14-git-in-practice.md)
 >
-> **Keyboard shortcuts:** Current VS Code docs list `Ctrl+Alt+I` as the default shortcut for the Chat view and `Ctrl+I` for inline chat. Keymaps can vary by OS, browser, profile, and assistive technology setup, so every shortcut in this chapter has a command-palette fallback. If a shortcut does not work, open the Command Palette and run **Chat: Open Chat** or **Inline Chat: Start in Editor**.
-
+> **Keyboard shortcuts:** Current VS Code docs list `Ctrl+Alt+I` as the default shortcut for the Chat view and `Ctrl+I` for inline chat. Keymaps can vary by OS, browser, profile, and assistive technology setup, so every shortcut in this chapter has a command-palette fallback. If a shortcut does not work, open the Command Palette and run **Chat: Open Chat**, **Inline Chat: Start in Editor**, or **Chat: Open Agents Window**.
 
 ## Workshop Recommendation (Chapter 16 / Challenge 13)
 
@@ -161,7 +159,6 @@ Throughout this chapter, look for expandable "learning cards" that show how to a
 | VoiceOver (macOS) | Screen reader users on Mac |
 | CLI | Users who prefer the terminal with `gh copilot` commands |
 
-
 ## Table of Contents
 
 1. [What is GitHub Copilot](#1-what-is-github-copilot)
@@ -170,13 +167,13 @@ Throughout this chapter, look for expandable "learning cards" that show how to a
 4. [GitHub Copilot Chat - Conversational Assistance](#4-github-copilot-chat---conversational-assistance)
 5. [Copilot Edits — Making Multi-File Changes](#5-copilot-edits--making-multi-file-changes)
 6. [Agent Mode — Let Copilot Drive](#6-agent-mode--let-copilot-drive)
+6A. [VS Code 1.120 Agents Window](#6a-vs-code-1120-agents-window)
 7. [Next Edit Suggestions](#7-next-edit-suggestions)
 8. [Copilot on GitHub.com](#8-copilot-on-githubcom)
 9. [Effective Prompting for Documentation Work](#9-effective-prompting-for-documentation-work)
 10. [Custom Instructions vs Custom Agents](#10-custom-instructions-vs-custom-agents)
 11. [Using Accessible View with Copilot Responses](#11-using-accessible-view-with-copilot-responses)
 12. [Keyboard Shortcuts Reference](#12-keyboard-shortcuts-reference)
-
 
 ## 1. What is GitHub Copilot
 
@@ -200,7 +197,6 @@ GitHub Copilot is an AI pair programmer that suggests code and text completions 
 **Screen reader support:** Copilot is fully accessible with screen readers. Suggestions are announced via ARIA live regions, and Accessible View provides complete access to Chat responses.
 
 > **Screen reader optimized mode:** Press `Shift+Alt+F1` (Mac: `Shift+Option+F1`) to toggle VS Code's screen reader optimized mode. This adjusts how Copilot suggestions are announced, disables ghost text that cannot be read by screen readers, and routes all suggestion content through Accessible View. If your screen reader is detected at startup, VS Code enables this mode automatically. You can also set it manually in Settings: `editor.accessibilitySupport: "on"`.
-
 
 ## 2. Setting Up GitHub Copilot
 
@@ -248,7 +244,6 @@ During setup:
 - Organization and enterprise administrators can manage whether Copilot features are available.
 
 > **Billing note:** GitHub Copilot plan details, model availability, and usage allowances change frequently. Facilitators will provide current guidance at the workshop. To check your access status now, visit [GitHub Copilot settings](https://github.com/settings/copilot).
-
 
 ## 3. Inline Suggestions - Ghost Text Completions
 
@@ -446,7 +441,6 @@ The Copilot status bar icon (`><`) can be tiny at standard DPI. Use the Command 
 - The Copilot icon in the Status Bar shows a spinning animation while generating and stays still when idle
 
 </details>
-
 
 ## 4. GitHub Copilot Chat - Conversational Assistance
 
@@ -709,7 +703,6 @@ Useful built-in actions include:
 
 </details>
 
-
 ## 5. Copilot Edits — Making Multi-File Changes
 
 > **Edit mode is being deprecated.** As of VS Code 1.118 (April 2026), the separate **Edit** chat mode is being merged into **Agent mode**. Agent mode now supports the same working-set diff workflow that Edit mode provided. If you do not see an "Edit" mode option in your Chat panel, use Agent mode instead - the workflow is nearly identical. The deprecation is rolling out gradually; facilitators will confirm current behavior at the workshop.
@@ -781,7 +774,7 @@ Copilot Edits is the **Edit** chat mode. Instead of just answering questions, Co
 
 ## 6. Agent Mode — Let Copilot Drive
 
-> **See also:** [Chapter 19: Accessibility Agents](19-accessibility-agents.md) and [Chapter 20: Build Your Agent](20-build-your-agent.md) for creating your own Copilot agent.
+> **See also:** [Chapter 19: Accessibility Agents](19-accessibility-agents.md) and [Chapter 20: Build Your Agent](20-build-your-agent.md) for creating your own Copilot agent. For the dedicated VS Code 1.120 surface for managing agent sessions across projects, see [Appendix K: VS Code 1.120 Agents Window and Impactful Updates](appendix-k-copilot-reference.md#4a-vs-code-1120-agents-window-and-impactful-updates).
 
 Agent mode is the most autonomous way to use Copilot. You describe a goal and Copilot figures out what files to open, what changes to make, and what commands to run - asking for your approval when it needs to run something that has side effects.
 
@@ -841,6 +834,54 @@ When Agent mode wants to run a shell command (like `npm run build` or `git commi
 - Agent mode is the highest-autonomy Copilot feature -- it can create files, run terminal commands, and install packages, so always read the approval dialog before clicking Continue
 - The diff view after each Agent action shows exactly what changed; review diffs before moving to the next step rather than approving the entire sequence blindly
 - Use the Plan step (type "plan" in Agent mode) to preview the full sequence before execution, especially for unfamiliar codebases
+
+---
+
+## 6A. VS Code 1.120 Agents Window
+
+VS Code 1.120 adds the **Agents window** to Stable as a Preview feature. Agent mode is a way for Copilot to behave inside a session. The Agents window is a separate VS Code window for managing those sessions across projects.
+
+Use the normal Chat view when you are learning, editing one workspace, or using file selections from the editor. Use the Agents window when you want an agent-first dashboard: sessions on the left, chat in the center, customizations nearby, and changed files on the right.
+
+### Open the Agents Window
+
+1. Open the Command Palette with `Ctrl+Shift+P`.
+2. Run **Chat: Open Agents Window**.
+3. Sign in to GitHub if prompted.
+4. Select **New** or press `Ctrl+N`.
+5. Choose a workspace folder or GitHub repository.
+6. Choose the agent type, isolation mode, custom agent, and model if those controls are available to your account.
+7. Write a focused task and review the Changes panel before applying, committing, merging, or checking out the result.
+
+The following table shows when to stay in the editor and when to use the Agents window.
+
+| You Want To | Best Surface |
+| ----------- | ------------ |
+| Ask a question about the file you are reading | Chat view in the editor |
+| Use Accessible View to read one response carefully | Chat view in the editor |
+| Make a focused edit in the current workspace | Chat view with Agent mode |
+| Track several background or cloud sessions | Agents window |
+| Review a set of agent changes before merging | Agents window Changes panel |
+| Manage agents, skills, instructions, hooks, MCP servers, and plugins together | Agents window Customizations panel |
+
+### Safety Notes for Workshop Learners
+
+- Treat the Agents window as an advanced workflow surface. It helps you coordinate work, but it does not remove your responsibility to review changes.
+- Prefer worktree isolation for Copilot CLI sessions while learning. It keeps agent edits separate from your active workspace.
+- Use the Files panel sync button before starting a session when your branch may be behind upstream.
+- Read terminal command risk badges if enabled, but still inspect the full command before approving.
+- Run project validation tasks from the Agents window before accepting a completed session.
+- If a session changes more files than expected, stop and review before continuing.
+
+### Accessibility Notes
+
+**Screen reader users:** Open the Agents window through the Command Palette. Use `Alt+F1` for context-specific Accessibility Help, `F6` and `Shift+F6` to move between workbench parts, and `Alt+F2` for Accessible View when chat responses, terminal output, or diffs are too dense to follow live.
+
+**Low-vision users:** Increase zoom before opening dense multi-panel sessions. Use high-contrast themes, modal diff view, and wider panels when reviewing changes. If the Agents window needs different display settings than your editor, use Agents-window-specific settings overrides.
+
+**Sighted users:** Use the Sessions list as a dashboard and the Changes panel as your review gate. Changed-file counts, status badges, and diff views are the visual signals that tell you whether the agent stayed inside the requested scope.
+
+For the full 1.120 addendum, including terminal risk assessment, terminal output compression, Markdown preview diffs, BYOK model controls, and extension support in the Agents window, see [Appendix K: VS Code 1.120 Agents Window and Impactful Updates](appendix-k-copilot-reference.md#4a-vs-code-1120-agents-window-and-impactful-updates).
 
 ---
 
@@ -1096,7 +1137,6 @@ Copilot remembers the conversation context - just say what to change.
 
 </details>
 
-
 ## 10. Custom Instructions vs Custom Agents
 
 Two distinct tools shape how Copilot behaves. Understanding the difference is critical for working with Accessibility Agents (see [Chapter 16: Accessibility Agents](19-accessibility-agents.md)).
@@ -1196,7 +1236,6 @@ See [Chapter 16: Accessibility Agents](19-accessibility-agents.md) for complete 
 
 #### Both work together - instructions guide every response, agents automate specific workflows
 
-
 ### Writing Accessibility-Focused Custom Instructions
 
 > Source: [accessibility.github.com/documentation/guide/copilot-instructions/](https://accessibility.github.com/documentation/guide/copilot-instructions/)
@@ -1288,7 +1327,6 @@ These resources can help you write better accessibility-focused custom instructi
 - **Beast Mode Accessibility Prompt** - A community-maintained, comprehensive accessibility prompt that you can adapt for your own instructions: referenced in [github.com/github/awesome-copilot](https://github.com/github/awesome-copilot)
 - **Markdown Accessibility Review Guidelines** - A practical guide for reviewing Markdown output for accessibility, useful as a reference when writing documentation-focused instructions: [Markdown Accessibility](https://github.com/github/accessibility/blob/main/docs/markdown-accessibility.md)
 
-
 ## 11. Using Accessible View with Copilot Responses
 
 Copilot Chat responses stream in token by token. This is visually nice but can fragment screen reader announcements. **Accessible View** provides complete, structured access to generated content.
@@ -1379,7 +1417,6 @@ When Copilot suggests code or Markdown:
 - The `Ctrl+/` shortcut (insert at cursor) works from Accessible View regardless of whether accessibility mode is on -- it is a productivity shortcut, not just an accessibility feature
 - If you ever lose track of what Copilot suggested, `Alt+F2` always shows the most recent response without scrolling through chat history
 
-
 ## 12. Keyboard Shortcuts Reference
 
 ### Copilot Inline Suggestions
@@ -1451,7 +1488,6 @@ GitHub's accessibility team has published screen reader walkthroughs for each ma
 - [Built-in actions with a screen reader](https://www.youtube.com/watch?v=J0DGD2IWypg) - running Copilot commands from the Command Palette
 
 > **Tip:** These videos show NVDA with VS Code on Windows. The workflows apply to JAWS and VoiceOver with minor shortcut differences noted in each section above.
-
 
 ## 13. Critically Evaluating AI Output
 
@@ -1573,7 +1609,6 @@ For more on working with AI tools responsibly, see [Chapter 20](20-build-your-ag
 
 </details>
 
-
 ## Troubleshooting
 
 ### Copilot Not Suggesting Anything
@@ -1621,7 +1656,6 @@ For more on working with AI tools responsibly, see [Chapter 20](20-build-your-ag
 3. Check [github.com/settings/copilot](https://github.com/settings/copilot) for subscription status
 4. Free tier users: ensure you haven't exceeded monthly limits
 
-
 ## Try It: Your First Copilot Conversation
 
 **Time:** 3 minutes | **What you need:** Current VS Code with built-in AI features enabled and a GitHub account with Copilot access
@@ -1641,3 +1675,44 @@ For more on working with AI tools responsibly, see [Chapter 20](20-build-your-ag
 *Back: [Chapter 15: Code Review](15-code-review.md)*  
 *Related appendices: [Appendix K: Copilot Reference](appendix-k-copilot-reference.md)*
 
+## Authoritative Sources
+
+Use these official references when you need the current source of truth for facts in this chapter.
+
+- [GitHub Docs, home](https://docs.github.com/en)
+- [GitHub Changelog](https://github.blog/changelog/)
+- [GitHub Copilot docs](https://docs.github.com/en/copilot)
+- [Custom instructions support matrix](https://docs.github.com/en/copilot/reference/custom-instructions-support)
+- [About custom agents](https://docs.github.com/en/copilot/concepts/agents/cloud-agent/about-custom-agents)
+- [About agent skills](https://docs.github.com/en/copilot/concepts/agents/about-agent-skills)
+- [About auto model selection](https://docs.github.com/en/copilot/concepts/auto-model-selection)
+- [Copilot changelog feed](https://github.blog/changelog/label/copilot/)
+- [VS Code Copilot chat overview](https://code.visualstudio.com/docs/copilot/chat/copilot-chat)
+- [VS Code agent overview](https://code.visualstudio.com/docs/copilot/agents/overview)
+- [VS Code custom instructions](https://code.visualstudio.com/docs/copilot/customization/custom-instructions)
+- [About Git](https://docs.github.com/en/get-started/using-git/about-git)
+- [GitHub flow](https://docs.github.com/en/get-started/using-github/github-flow)
+- [About pull requests](https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/about-pull-requests)
+- [About issues](https://docs.github.com/en/issues/tracking-your-work-with-issues/about-issues)
+- [Contributing to a project](https://docs.github.com/en/get-started/exploring-projects-on-github/contributing-to-a-project)
+
+### Section-Level Source Map
+
+Use this map to verify facts for each major section in this file.
+
+- **AI-Powered Code Assistance in VS Code:** [GitHub Docs, home](https://docs.github.com/en), [GitHub Changelog](https://github.blog/changelog/), [GitHub Copilot docs](https://docs.github.com/en/copilot), [Custom instructions support matrix](https://docs.github.com/en/copilot/reference/custom-instructions-support), [About custom agents](https://docs.github.com/en/copilot/concepts/agents/cloud-agent/about-custom-agents)
+- **Workshop Recommendation (Chapter 16 / Challenge 13):** [GitHub Docs, home](https://docs.github.com/en), [GitHub Changelog](https://github.blog/changelog/), [GitHub Copilot docs](https://docs.github.com/en/copilot), [Custom instructions support matrix](https://docs.github.com/en/copilot/reference/custom-instructions-support), [About custom agents](https://docs.github.com/en/copilot/concepts/agents/cloud-agent/about-custom-agents)
+- **1. What is GitHub Copilot:** [GitHub Docs, home](https://docs.github.com/en), [GitHub Changelog](https://github.blog/changelog/), [GitHub Copilot docs](https://docs.github.com/en/copilot), [Custom instructions support matrix](https://docs.github.com/en/copilot/reference/custom-instructions-support), [About custom agents](https://docs.github.com/en/copilot/concepts/agents/cloud-agent/about-custom-agents)
+- **2. Setting Up GitHub Copilot:** [GitHub Docs, home](https://docs.github.com/en), [GitHub Changelog](https://github.blog/changelog/), [GitHub Copilot docs](https://docs.github.com/en/copilot), [Custom instructions support matrix](https://docs.github.com/en/copilot/reference/custom-instructions-support), [About custom agents](https://docs.github.com/en/copilot/concepts/agents/cloud-agent/about-custom-agents)
+- **3. Inline Suggestions - Ghost Text Completions:** [GitHub Docs, home](https://docs.github.com/en), [GitHub Changelog](https://github.blog/changelog/), [GitHub Copilot docs](https://docs.github.com/en/copilot), [Custom instructions support matrix](https://docs.github.com/en/copilot/reference/custom-instructions-support), [About custom agents](https://docs.github.com/en/copilot/concepts/agents/cloud-agent/about-custom-agents)
+- **4. GitHub Copilot Chat - Conversational Assistance:** [GitHub Docs, home](https://docs.github.com/en), [GitHub Changelog](https://github.blog/changelog/), [GitHub Copilot docs](https://docs.github.com/en/copilot), [Custom instructions support matrix](https://docs.github.com/en/copilot/reference/custom-instructions-support), [About custom agents](https://docs.github.com/en/copilot/concepts/agents/cloud-agent/about-custom-agents)
+- **5. Copilot Edits — Making Multi-File Changes:** [GitHub Docs, home](https://docs.github.com/en), [GitHub Changelog](https://github.blog/changelog/), [GitHub Copilot docs](https://docs.github.com/en/copilot), [Custom instructions support matrix](https://docs.github.com/en/copilot/reference/custom-instructions-support), [About custom agents](https://docs.github.com/en/copilot/concepts/agents/cloud-agent/about-custom-agents)
+- **6. Agent Mode — Let Copilot Drive:** [GitHub Docs, home](https://docs.github.com/en), [GitHub Changelog](https://github.blog/changelog/), [GitHub Copilot docs](https://docs.github.com/en/copilot), [Custom instructions support matrix](https://docs.github.com/en/copilot/reference/custom-instructions-support), [About custom agents](https://docs.github.com/en/copilot/concepts/agents/cloud-agent/about-custom-agents)
+- **6A. VS Code 1.120 Agents Window:** [GitHub Docs, home](https://docs.github.com/en), [GitHub Changelog](https://github.blog/changelog/), [GitHub Copilot docs](https://docs.github.com/en/copilot), [Custom instructions support matrix](https://docs.github.com/en/copilot/reference/custom-instructions-support), [About custom agents](https://docs.github.com/en/copilot/concepts/agents/cloud-agent/about-custom-agents)
+- **7. Next Edit Suggestions:** [GitHub Docs, home](https://docs.github.com/en), [GitHub Changelog](https://github.blog/changelog/), [GitHub Copilot docs](https://docs.github.com/en/copilot), [Custom instructions support matrix](https://docs.github.com/en/copilot/reference/custom-instructions-support), [About custom agents](https://docs.github.com/en/copilot/concepts/agents/cloud-agent/about-custom-agents)
+- **8. Copilot on GitHub.com:** [GitHub Docs, home](https://docs.github.com/en), [GitHub Changelog](https://github.blog/changelog/), [GitHub Copilot docs](https://docs.github.com/en/copilot), [Custom instructions support matrix](https://docs.github.com/en/copilot/reference/custom-instructions-support), [About custom agents](https://docs.github.com/en/copilot/concepts/agents/cloud-agent/about-custom-agents)
+- **9. Effective Prompting for Documentation Work:** [GitHub Docs, home](https://docs.github.com/en), [GitHub Changelog](https://github.blog/changelog/), [GitHub Copilot docs](https://docs.github.com/en/copilot), [Custom instructions support matrix](https://docs.github.com/en/copilot/reference/custom-instructions-support), [About custom agents](https://docs.github.com/en/copilot/concepts/agents/cloud-agent/about-custom-agents)
+- **Timeline View - File History:** [GitHub Docs, home](https://docs.github.com/en), [GitHub Changelog](https://github.blog/changelog/), [GitHub Copilot docs](https://docs.github.com/en/copilot), [Custom instructions support matrix](https://docs.github.com/en/copilot/reference/custom-instructions-support), [About custom agents](https://docs.github.com/en/copilot/concepts/agents/cloud-agent/about-custom-agents)
+- **10. Custom Instructions vs Custom Agents:** [GitHub Docs, home](https://docs.github.com/en), [GitHub Changelog](https://github.blog/changelog/), [GitHub Copilot docs](https://docs.github.com/en/copilot), [Custom instructions support matrix](https://docs.github.com/en/copilot/reference/custom-instructions-support), [About custom agents](https://docs.github.com/en/copilot/concepts/agents/cloud-agent/about-custom-agents)
+- **Accessibility Standards:** [GitHub Docs, home](https://docs.github.com/en), [GitHub Changelog](https://github.blog/changelog/), [GitHub Copilot docs](https://docs.github.com/en/copilot), [Custom instructions support matrix](https://docs.github.com/en/copilot/reference/custom-instructions-support), [About custom agents](https://docs.github.com/en/copilot/concepts/agents/cloud-agent/about-custom-agents)
+- **Documentation Style:** [GitHub Docs, home](https://docs.github.com/en), [GitHub Changelog](https://github.blog/changelog/), [GitHub Copilot docs](https://docs.github.com/en/copilot), [Custom instructions support matrix](https://docs.github.com/en/copilot/reference/custom-instructions-support), [About custom agents](https://docs.github.com/en/copilot/concepts/agents/cloud-agent/about-custom-agents)

@@ -39,7 +39,6 @@
 
 </details>
 
-
 ## Part 1: The Building Blocks
 
 ### Repository (Repo)
@@ -50,18 +49,15 @@ A repository lives on GitHub at an address like: `https://github.com/owner/repo-
 
 **Related terms:** remote repository (the one on GitHub), local repository (a copy on your computer), upstream (the original repo), fork (your personal copy)
 
-
 ### Organization (Org)
 
 An organization is a group account on GitHub that multiple people can belong to. Open source projects typically live inside an organization rather than under a personal account. For example: `https://github.com/microsoft/vscode` - here `microsoft` is the organization and `vscode` is the repository.
-
 
 ### Fork
 
 A fork is a personal copy of someone else's repository, living in your own GitHub account. When you fork a repo, you get all its files and history. Changes you make to your fork do not automatically affect the original. To propose your changes to the original project, you submit a pull request.
 
 **Why fork?** You do not have write access to most open source repos. Forking lets you work freely and then propose changes.
-
 
 ### Remote
 
@@ -84,13 +80,11 @@ git remote -v
 git remote add upstream https://github.com/original-owner/repo.git
 ```
 
-
 ### Origin
 
 `origin` is the default name Git gives to the remote repository you cloned from. When you clone your fork, `origin` points to your fork on GitHub.
 
 Commands like `git push` and `git pull` default to using `origin` unless you specify otherwise.
-
 
 ### .gitignore
 
@@ -136,7 +130,6 @@ git rm --cached filename
 
 Then add it to `.gitignore` and commit the change.
 
-
 ### Clone
 
 Cloning copies a repository from GitHub to your local computer so you can work with it in VS Code or your preferred editor. When you clone, you get all the files and the complete history.
@@ -146,7 +139,6 @@ git clone https://github.com/your-username/repo-name.git
 ```
 
 **Fork vs Clone:** Fork = your copy on GitHub. Clone = a copy on your computer. You usually clone your fork.
-
 
 ### Branch
 
@@ -161,7 +153,6 @@ Think of branches like parallel timelines - each branch is its own version of th
 - `feature/my-new-thing` - convention for feature branches
 - `fix/broken-button` - convention for bug fix branches
 - `docs/update-readme` - convention for documentation-only branches
-
 
 ### Commit
 
@@ -185,13 +176,11 @@ Updated to the current direct download page.
 Fixes #42
 ```
 
-
 ### Diff
 
 A diff (short for difference) shows what changed between two versions of a file. Lines that were **added** are shown in green (with a `+` prefix). Lines that were **removed** are shown in red (with a `-` prefix). Lines that are unchanged are shown in grey for context.
 
 Reading diffs is one of the core skills for code review. When you view a Pull Request's "Files Changed" tab, you are reading a diff.
-
 
 ## Part 2: Collaboration Workflow
 
@@ -207,7 +196,6 @@ An issue is a discussion item in a GitHub repository. Issues are used for:
 
 Every issue gets a sequential number (like `#42`) and can have labels, assignees, milestones, and comments. Issues are the starting point for most contributions - it's best practice to open or find an issue before making code changes.
 
-
 ### Pull Request (PR)
 
 A pull request is a proposal to merge changes from one branch into another. When you have finished working on your fork or feature branch, you open a PR to say "here is my work - please review it and consider merging it."
@@ -221,7 +209,6 @@ A PR shows:
 
 The name "pull request" means you are requesting that the maintainers pull your changes into their project.
 
-
 ### Code Review
 
 Code review is the process of one or more collaborators reading and providing feedback on a PR before it is merged. Reviewers can:
@@ -232,7 +219,6 @@ Code review is the process of one or more collaborators reading and providing fe
 
 Good code reviews are kind, specific, and constructive.
 
-
 ### Merge
 
 Merging is combining changes from one branch into another. When a PR is approved, a maintainer merges it. There are three merge strategies:
@@ -242,7 +228,6 @@ Merging is combining changes from one branch into another. When a PR is approved
 | **Merge commit** | Creates a new commit recording the merge | Default on most projects |
 | **Squash and merge** | Combines all PR commits into one commit | Keeping history clean |
 | **Rebase and merge** | Replays commits on top of target branch | Linear history projects |
-
 
 ### Merge Conflict
 
@@ -262,7 +247,6 @@ You resolve a conflict by editing the file to have the correct final content, re
 
 See [Merge Conflicts Guide](07-merge-conflicts.md) for step-by-step instructions.
 
-
 ### Upstream
 
 Upstream refers to the original repository that you forked from. When the upstream project has new changes that you want to bring into your fork, you "sync" your fork with upstream.
@@ -271,7 +255,6 @@ Upstream refers to the original repository that you forked from. When the upstre
 Your Fork → upstream → Original Repo
 Your changes flow this way: Original Repo ← Pull Request ← Your Fork
 ```
-
 
 ### Label
 
@@ -284,16 +267,13 @@ Labels are colored tags applied to issues and PRs to categorize them. Common lab
 - `help wanted` - maintainers want community help
 - `accessibility` - accessibility-related
 
-
 ### Milestone
 
 A milestone groups issues and PRs toward a goal or deadline. For example: "v2.0 Release" or "Hackathon Day 1." Milestones show progress as a percentage of closed versus open items.
 
-
 ### Project (GitHub Projects)
 
 A GitHub Project is a flexible board for tracking work. It can show issues and PRs in table view, board view (kanban), or roadmap view. Projects are especially useful for hackathon-style coordination.
-
 
 ## Part 3: People and Roles
 
@@ -301,21 +281,17 @@ A GitHub Project is a flexible board for tracking work. It can show issues and P
 
 A maintainer is someone with write or admin access to a repository. Maintainers review PRs, triage issues, manage releases, and make decisions about the project's direction. Most open source projects have between one and five core maintainers.
 
-
 ### Contributor
 
 Anyone who contributes to an open source project is a contributor. Contributing includes code, documentation, design, testing, translation, issue triage, and community support. You do not need commit access to contribute.
-
 
 ### Triage
 
 Triaging issues means reviewing new issues to categorize them, add labels, assign them, close duplicates, and communicate with the reporter. Triage is an important contribution that doesn't require coding skills.
 
-
 ### Collaborator
 
 A collaborator is someone who has been explicitly granted write access to a repository. Collaborators can commit directly to the repo without forking (though good practice is still to use branches and PRs).
-
 
 ## Part 4: Common Abbreviations and Slang
 
@@ -345,7 +321,6 @@ These abbreviations appear frequently in GitHub comments, PR descriptions, and c
 | **downstream** | - | A fork or project that depends on this one |
 | **breaking change** | - | A change that will break existing functionality for users |
 
-
 ## Part 5: Technical GitHub Concepts
 
 ### HEAD
@@ -362,7 +337,6 @@ You'll see HEAD referenced in commands like:
 git reset HEAD~1  # Undo the last commit
 git diff HEAD     # Show uncommitted changes
 ```
-
 
 ### Detached HEAD
 
@@ -390,7 +364,6 @@ git checkout new-branch-name
 
 **Screen reader note:** Git will warn you verbosely when entering detached HEAD state. Read the guidance carefully.
 
-
 ### Stash
 
 `git stash` temporarily saves your uncommitted changes and reverts your working directory to a clean state. It's useful when you need to switch branches but aren't ready to commit.
@@ -415,7 +388,6 @@ git stash pop  # Restore your changes
 - `git stash drop` - delete a stash
 
 **Use case:** "I need to quickly switch branches to check something, but I'm in the middle of work I'm not ready to commit."
-
 
 ### Rebase
 
@@ -460,7 +432,6 @@ git push --force-with-lease  # See Force Push below
 
 **Screen reader note:** Rebase conflicts are resolved the same way as merge conflicts (edit file, remove markers, `git add`, `git rebase --continue`).
 
-
 ### Cherry-Pick
 
 Cherry-picking applies a single commit from one branch onto another. It's like copy-pasting a commit.
@@ -479,7 +450,6 @@ git cherry-pick a1b2c3d  # Apply commit a1b2c3d to main
 - Undo a commit on one branch but keep it on another
 
 **Warning:** Cherry-picking duplicates commits (creates a new commit with the same changes). Avoid cherry-picking commits that are part of an active feature branch - it causes confusion.
-
 
 ### Fetch vs Pull
 
@@ -507,7 +477,6 @@ git pull origin main  # Fetch + merge origin/main into current branch
 - You're working alone on a branch
 
 **Best practice for collaboration:** Use `fetch` first, review with `git log origin/main`, then decide to merge or rebase.
-
 
 ### Force Push
 
@@ -538,23 +507,19 @@ When you rebase, Git rewrites commit history. The remote branch and your local b
 
 **Rule of thumb:** If you're not sure whether you need to force push, you probably shouldn't.
 
-
 ### SHA / Hash
 
 Every commit, file, and tree in Git is identified by a SHA hash - a 40-character string of letters and numbers (e.g., `a1b2c3d4e5f6...`). You will see shortened versions like `a1b2c3d` in the GitHub UI. These are unique fingerprints.
 
-
 ### Tag / Release
 
 A tag marks a specific commit as significant - usually a version release like `v1.0.0`. Tags are permanent references (unlike branches, which move with each new commit). GitHub Releases are built on top of tags and can include release notes and downloadable files.
-
 
 ### Actions / Workflow / CI/CD
 
 GitHub Actions is an automation platform built into GitHub. Workflows are automated scripts (written in YAML) that run in response to events - like a PR being opened or code being pushed. CI/CD stands for Continuous Integration / Continuous Deployment.
 
 In practice: when you open a PR, you will often see automated checks run (tests, linting, accessibility checks). These are GitHub Actions. See [GitHub Actions & Workflows](appendix-q-actions-workflows.md) for a full explanation.
-
 
 ### Status Check
 
@@ -566,26 +531,21 @@ A status check is the result of an automated test or workflow run on a PR. Statu
 
 Maintainers often require status checks to pass before merging.
 
-
 ### Webhook
 
 A webhook is an automated notification that GitHub sends to another service when something happens (a push, a PR opened, etc.). Webhooks power integrations with tools like Slack, project management systems, and CI services. As a contributor, you typically don't configure webhooks - they are set up by maintainers.
-
 
 ### GitHub Discussions
 
 Discussions are a threaded forum built into GitHub, separate from Issues. They are used for open-ended conversation, Q&A, and community announcements. Not all projects use Discussions - some prefer issues or external forums.
 
-
 ### Profile
 
 Your GitHub profile is your public identity. It shows your name, bio, location, repositories, contribution activity (the green squares), and pinned projects. Your profile URL is `https://github.com/your-username`.
 
-
 ### GitHub Copilot
 
 GitHub Copilot is an AI-powered coding assistant. It suggests code, documentation, and commit messages. In this workshop, we use Copilot to help write issue descriptions, PR descriptions, documentation, and code. See [GitHub Copilot](16-github-copilot.md) for the full walkthrough.
-
 
 ## Part 6: Community Files
 
@@ -630,7 +590,6 @@ Every healthy open source project has these files in the root of the repository:
 - Use Ctrl+F and type the term name to jump directly to it
 
 </details>
-
 
 ## Alphabetical Quick Reference
 
@@ -698,3 +657,23 @@ Every healthy open source project has these files in the root of the repository:
 *Next: [Appendix B: Screen Reader Cheat Sheet](appendix-b-screen-reader-cheatsheet.md)*  
 *Teaching chapter: [Chapter 02: Understanding GitHub](02-understanding-github.md)*
 
+## Authoritative Sources
+
+Use these official references when you need the current source of truth for facts in this chapter.
+
+- [GitHub Docs, home](https://docs.github.com/en)
+- [GitHub Changelog](https://github.blog/changelog/)
+
+### Section-Level Source Map
+
+Use this map to verify facts for each major section in this file.
+
+- **Every Term You Need for Open Source Contribution:** [GitHub Docs, home](https://docs.github.com/en), [GitHub Changelog](https://github.blog/changelog/)
+- **Part 1: The Building Blocks:** [GitHub Docs, home](https://docs.github.com/en), [GitHub Changelog](https://github.blog/changelog/)
+- **Part 2: Collaboration Workflow:** [GitHub Docs, home](https://docs.github.com/en), [GitHub Changelog](https://github.blog/changelog/), [Workflow syntax for GitHub Actions](https://docs.github.com/en/actions/reference/workflows-and-actions/workflow-syntax), [Secure use reference for GitHub Actions](https://docs.github.com/en/actions/security-for-github-actions/security-guides/security-hardening-for-github-actions), [GitHub Actions changelog](https://github.blog/changelog/label/actions/)
+- **Part 3: People and Roles:** [GitHub Docs, home](https://docs.github.com/en), [GitHub Changelog](https://github.blog/changelog/)
+- **Part 4: Common Abbreviations and Slang:** [GitHub Docs, home](https://docs.github.com/en), [GitHub Changelog](https://github.blog/changelog/)
+- **Part 5: Technical GitHub Concepts:** [GitHub Docs, home](https://docs.github.com/en), [GitHub Changelog](https://github.blog/changelog/), [About Git](https://docs.github.com/en/get-started/using-git/about-git), [GitHub flow](https://docs.github.com/en/get-started/using-github/github-flow), [About pull requests](https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/about-pull-requests)
+- **Stash commands:** [GitHub Docs, home](https://docs.github.com/en), [GitHub Changelog](https://github.blog/changelog/)
+- **Part 6: Community Files:** [GitHub Docs, home](https://docs.github.com/en), [GitHub Changelog](https://github.blog/changelog/), [GitHub Discussions docs](https://docs.github.com/en/discussions), [GitHub Gists docs](https://docs.github.com/en/get-started/writing-on-github/editing-and-sharing-content-with-gists)
+- **Alphabetical Quick Reference:** [GitHub Docs, home](https://docs.github.com/en), [GitHub Changelog](https://github.blog/changelog/)

@@ -3,7 +3,6 @@
 
 > **How to use this guide:** Find your problem in the Table of Contents, or use `Ctrl+F` (browser) to search by keyword or error message. Every problem follows the same format: **Symptoms** → **Cause** → **Solution** → **Prevention** (where applicable).
 
-
 ## Table of Contents
 
 - [Setup and Installation](#setup-and-installation)
@@ -30,7 +29,6 @@
 - [Performance and Network](#performance-and-network)
 - [Getting More Help](#getting-more-help)
 
-
 ## Setup and Installation
 
 ### Problem: Git is not installed
@@ -49,7 +47,6 @@
 
 **Prevention:** Complete [Pre-Workshop Setup](docs/00-pre-workshop-setup.md) before starting.
 
-
 ### Problem: Node.js or npm is not installed
 **Symptoms:** `npm: command not found` or `node: command not found` when trying to build HTML files.
 
@@ -60,7 +57,6 @@
 4. Verify: `node --version` and `npm --version`
 
 **Note:** Node.js is only needed if you want to build the HTML versions of the workshop documents. It is not required for the workshop itself.
-
 
 ### Problem: GitHub CLI (`gh` command) not found
 **Symptoms:** `gh issue list` or other `gh` commands show "command not found."
@@ -75,7 +71,6 @@
 
 **Note:** GitHub CLI is optional but helpful for faster issue and PR workflows from the terminal.
 
-
 ### Problem: No GitHub account
 **Symptoms:** Cannot clone, push, fork, or make pull requests.
 
@@ -86,7 +81,6 @@
 
 Security: We strongly recommend enabling Two-Factor Authentication (2FA) on your GitHub account. If you cannot enable 2FA, add an SSH key or create a Personal Access Token (PAT) with `repo` scope before contributing. If you need help, contact the workshop organizers.
 
-
 ### Problem: Cannot fork the repository
 **Symptoms:** Click "Fork" but nothing happens, or you see an error message.
 
@@ -96,7 +90,6 @@ Security: We strongly recommend enabling Two-Factor Authentication (2FA) on your
 3. If you already forked it, navigate to your existing fork instead
 4. If the Fork button is not visible, the repository may be restricted - contact the facilitator
 
-
 ### Problem: VS Code cannot be installed
 **Symptoms:** Installation fails, or you are on a restricted device.
 
@@ -104,7 +97,6 @@ Security: We strongly recommend enabling Two-Factor Authentication (2FA) on your
 - **Corporate/restricted device:** Ask your IT department to allow VS Code, or use the portable ZIP version: https://code.visualstudio.com/docs/editor/portable
 - **Chromebook:** Use github.dev (press `.` on any repo) for Day 1. For Day 2, consider GitHub Codespaces: see [Appendix N](docs/appendix-j-cloud-editors.md)
 - **Older OS:** VS Code requires Windows 10+, macOS 10.15+, or a modern Linux distribution
-
 
 ## Git Configuration and Operations
 
@@ -117,7 +109,6 @@ git config --global user.name "Your Name"
 git config --global user.email "your_email@example.com"
 ```
 Use the same email address as your GitHub account so commits are attributed to your profile.
-
 
 ### Problem: "Fatal: not a git repository"
 **Symptoms:** Any git command returns `fatal: not a git repository (or any of the parent directories): .git`
@@ -134,7 +125,6 @@ Use the same email address as your GitHub account so commits are attributed to y
    cd REPO-NAME
    ```
 
-
 ### Problem: `git pull` says "Already up to date" but files seem outdated
 **Symptoms:** You know changes were made upstream, but `git pull` reports no changes.
 
@@ -148,7 +138,6 @@ Use the same email address as your GitHub account so commits are attributed to y
    ```
 3. Verify you are on the correct branch: `git branch` (the current branch has a `*`)
 
-
 ### Problem: "Detached HEAD" message
 **Symptoms:** Git says `You are in 'detached HEAD' state` and your commits may be lost.
 
@@ -159,7 +148,6 @@ Use the same email address as your GitHub account so commits are attributed to y
    ```
 2. If you want to return to main: `git checkout main`
 3. If you already made commits in detached HEAD, create a branch first (step 1), then those commits are safe.
-
 
 ### Problem: Accidentally committed to the wrong branch
 **Symptoms:** Your changes are on `main` instead of a feature branch.
@@ -172,7 +160,6 @@ Use the same email address as your GitHub account so commits are attributed to y
 
 **If you already pushed:** Do not force-push. Instead, create a new branch from main, cherry-pick your commit, and open a PR from that branch.
 
-
 ### Problem: "Permission denied" running git commands
 **Symptoms:** `error: insufficient permission` or `Permission denied` on local git operations.
 
@@ -181,7 +168,6 @@ Use the same email address as your GitHub account so commits are attributed to y
 - **macOS/Linux:** Check folder ownership: `ls -la .git/`. If owned by root, fix with: `sudo chown -R $(whoami) .`
 - **Antivirus:** Some antivirus software blocks Git operations on `.git` directories. Add your repository folder to the antivirus exclusion list.
 
-
 ### Problem: Line ending warnings ("LF will be replaced by CRLF")
 **Symptoms:** Git shows warnings about line endings when staging files.
 
@@ -189,7 +175,6 @@ Use the same email address as your GitHub account so commits are attributed to y
 1. This is informational, not an error. Git is converting line endings for your platform.
 2. To suppress the warning: `git config --global core.autocrlf true` (Windows) or `git config --global core.autocrlf input` (macOS/Linux)
 3. In VS Code, the bottom-right shows "LF" or "CRLF" - click to change per file if needed
-
 
 ## GitHub Authentication
 
@@ -226,7 +211,6 @@ Use the same email address as your GitHub account so commits are attributed to y
 
 See [Appendix D (Git Authentication)](docs/appendix-d-git-authentication.md) for complete setup instructions.
 
-
 ### Problem: SSH key passphrase prompts every time
 **Symptoms:** Git asks for your SSH passphrase on every push/pull operation.
 
@@ -253,12 +237,10 @@ See [Appendix D (Git Authentication)](docs/appendix-d-git-authentication.md) for
   ssh-add ~/.ssh/id_ed25519
   ```
 
-
 ### Problem: "Support for password authentication was removed"
 **Symptoms:** Git prompts for a password and rejects it with a message about deprecation.
 
 **Solution:** You need a Personal Access Token instead of your password. See "Authentication fails when pushing" → Cause B above.
-
 
 ## GitHub Web Interface
 
@@ -270,7 +252,6 @@ See [Appendix D (Git Authentication)](docs/appendix-d-git-authentication.md) for
 - Use `?` on any GitHub page to see current keyboard shortcuts
 - Use the Elements List (`NVDA+F7` / `Insert+F3` / `VO+U`) to find specific elements
 
-
 ### Problem: Hovercards interfere with screen reader navigation
 **Symptoms:** When arrowing through links, a popup overlay appears and disrupts reading flow.
 
@@ -279,7 +260,6 @@ See [Appendix D (Git Authentication)](docs/appendix-d-git-authentication.md) for
 2. Uncheck "Hovercards" (or the equivalent setting for reducing motion/overlays)
 3. Save changes
 4. This is covered in [Pre-Workshop Setup](docs/00-pre-workshop-setup.md), Step 4
-
 
 ### Problem: GitHub shows "Loading..." or blank content
 **Symptoms:** Parts of a GitHub page do not render, or show a loading spinner indefinitely.
@@ -291,7 +271,6 @@ See [Appendix D (Git Authentication)](docs/appendix-d-git-authentication.md) for
 4. Check https://www.githubstatus.com/ for outages
 5. Disable browser extensions that might interfere (ad blockers, privacy extensions)
 
-
 ### Problem: "File finder" or "Go to file" does not work
 **Symptoms:** Pressing `T` on a repository page does not open the file search.
 
@@ -301,7 +280,6 @@ See [Appendix D (Git Authentication)](docs/appendix-d-git-authentication.md) for
 3. Try `Shift+T` if `T` alone does not trigger it
 4. As an alternative, use the search bar (`/`) and type `filename:` followed by the name
 
-
 ### Problem: Cannot find the "Fork" button
 **Symptoms:** You are on a repository page but cannot locate the Fork button.
 
@@ -309,7 +287,6 @@ See [Appendix D (Git Authentication)](docs/appendix-d-git-authentication.md) for
 1. The Fork button is near the top of the repository page, after the Star and Watch buttons
 2. Screen reader: Press `B` repeatedly to find buttons - look for "Fork"
 3. If the button says "Forked from..." instead, you already have a fork. Navigate to your fork at `github.com/YOUR-USERNAME/REPO-NAME`
-
 
 ## Repository Navigation and Cloning
 
@@ -322,7 +299,6 @@ See [Appendix D (Git Authentication)](docs/appendix-d-git-authentication.md) for
 3. **Typo in username or repo name:** URLs are case-sensitive for SSH
 4. **Authentication:** If using HTTPS, verify your credentials are correct (see GitHub Authentication section)
 
-
 ### Problem: Clone is extremely slow
 **Symptoms:** `git clone` starts but takes a very long time or hangs.
 
@@ -331,7 +307,6 @@ See [Appendix D (Git Authentication)](docs/appendix-d-git-authentication.md) for
 2. Check your internet connection - try cloning a small test repo first
 3. If behind a corporate proxy, configure Git: `git config --global http.proxy http://proxy-address:port`
 4. Try switching between HTTPS and SSH - one may be faster on your network
-
 
 ### Problem: Cannot find a file that the chapter references
 **Symptoms:** A chapter says "open file X" but the file does not exist in the repository.
@@ -342,7 +317,6 @@ See [Appendix D (Git Authentication)](docs/appendix-d-git-authentication.md) for
 3. Check spelling and case - filenames are case-sensitive on macOS and Linux
 4. The file may be in a subfolder - use `git ls-files | grep -i filename` to search
 5. In VS Code, use `Ctrl+P` and type part of the filename
-
 
 ## Branches, Merging, and Conflicts
 
@@ -371,7 +345,6 @@ See [Appendix D (Git Authentication)](docs/appendix-d-git-authentication.md) for
 - Keep PRs small and focused
 - Communicate with teammates about which files you are editing
 
-
 ### Problem: "Your branch is behind" or "Cannot fast-forward"
 **Symptoms:** `git push` is rejected because your branch is behind the remote.
 
@@ -382,7 +355,6 @@ See [Appendix D (Git Authentication)](docs/appendix-d-git-authentication.md) for
 
 **Do not force-push** (`git push --force`) unless you understand the consequences - it overwrites the remote branch and can destroy other people's work.
 
-
 ### Problem: Accidentally deleted a branch with unmerged work
 **Symptoms:** You ran `git branch -D branch-name` and lost commits.
 
@@ -392,7 +364,6 @@ git reflog                    # Find the commit hash of your work
 git checkout -b recovered-branch COMMIT-HASH
 ```
 
-
 ### Problem: Cannot switch branches - "Please commit or stash your changes"
 **Symptoms:** `git checkout other-branch` fails because you have uncommitted changes.
 
@@ -400,7 +371,6 @@ git checkout -b recovered-branch COMMIT-HASH
 1. **Commit your work:** `git add .` → `git commit -m "WIP: saving progress"`
 2. **Stash your work:** `git stash` → switch branches → `git stash pop` when you return
 3. **Discard changes (irreversible):** `git checkout -- .` (discards all uncommitted changes)
-
 
 ## Issues and Pull Requests
 
@@ -411,7 +381,6 @@ git checkout -b recovered-branch COMMIT-HASH
 1. Check if the project uses Discussions instead (look for a Discussions tab)
 2. Open an issue on the parent repository (if this is a fork)
 3. Contact the maintainer through other channels listed in the repository's README
-
 
 ### Problem: PR says "Unable to merge" or "Merge blocked"
 **Symptoms:** The merge button is grayed out or shows a warning.
@@ -431,7 +400,6 @@ git checkout -b recovered-branch COMMIT-HASH
 **Cause D: Branch protection rules**
 - The main branch may have protection rules. See [Appendix K (Branch Protection)](docs/appendix-o-branch-protection.md)
 
-
 ### Problem: PR shows wrong base branch
 **Symptoms:** Your PR targets the wrong branch (e.g., targeting your fork's main instead of the upstream main).
 
@@ -439,7 +407,6 @@ git checkout -b recovered-branch COMMIT-HASH
 1. On the PR page, click "Edit" next to the base branch
 2. Change the base repository and branch to the correct target
 3. If you cannot edit it, close the PR and create a new one with the correct base
-
 
 ### Problem: PR "Files Changed" tab shows too many changes
 **Symptoms:** Your PR shows changes you did not make - dozens or hundreds of files.
@@ -454,7 +421,6 @@ git checkout -b recovered-branch COMMIT-HASH
    ```
 2. The PR should now show only your changes
 3. If you are unsure, close the PR, create a fresh branch from main, re-apply your changes, and open a new PR
-
 
 ## Templates and YAML
 
@@ -487,7 +453,6 @@ git checkout -b recovered-branch COMMIT-HASH
 **Cause E: `config.yml` blocks blank issues but no templates exist**
 - Check `.github/ISSUE_TEMPLATE/config.yml` - if `blank_issues_enabled: false` and no valid templates exist, the "New Issue" page will be empty
 
-
 ### Problem: "Required field" validation not working in template
 **Symptoms:** A field marked `required: true` allows submission without being filled.
 
@@ -514,7 +479,6 @@ git checkout -b recovered-branch COMMIT-HASH
 
 After fixing, commit and push to main, then hard-refresh the browser.
 
-
 ### Problem: Markdown inside template not rendering
 **Symptoms:** Raw `*asterisks*` and `#hashes` appear instead of formatted text.
 
@@ -530,7 +494,6 @@ After fixing, commit and push to main, then hard-refresh the browser.
    ```
 3. The `|` after `value:` tells YAML the content is multi-line and should preserve formatting
 
-
 ### Problem: YAML indentation error
 **Symptoms:** Template fails to load or GitHub shows a YAML parse error.
 
@@ -539,7 +502,6 @@ After fixing, commit and push to main, then hard-refresh the browser.
 2. In VS Code: look at the bottom-right status bar - click "Spaces: 2" or "Tab Size" to set to spaces
 3. Each nesting level should be 2 spaces
 4. Validate your YAML at https://www.yamllint.com/ before committing
-
 
 ## VS Code Setup and Configuration
 
@@ -552,7 +514,6 @@ After fixing, commit and push to main, then hard-refresh the browser.
 3. Check setting: `Ctrl+,` → search `editor.accessibilitySupport` → set to `on`
 4. If NVDA or JAWS was started after VS Code, restart VS Code
 
-
 ### Problem: VS Code is too verbose or too quiet with screen reader
 **Symptoms:** Too many announcements, or important things are not announced.
 
@@ -562,7 +523,6 @@ After fixing, commit and push to main, then hard-refresh the browser.
 - **Audio signals:** Search `accessibility.signals` in Settings → enable or disable specific sounds (error, warning, breakpoint, diff changes, etc.)
 
 See [Appendix M (VS Code Accessibility Reference)](docs/appendix-g-vscode-reference.md) for all settings.
-
 
 ### Problem: Cannot find a VS Code command
 **Symptoms:** You know a command exists but cannot find it.
@@ -574,7 +534,6 @@ See [Appendix M (VS Code Accessibility Reference)](docs/appendix-g-vscode-refere
 4. Press Enter to execute
 5. If still not found, the command may require an extension to be installed
 
-
 ### Problem: VS Code terminal does not open
 **Symptoms:** `` Ctrl+` `` (backtick) does not open the terminal, or the terminal panel is not accessible.
 
@@ -582,7 +541,6 @@ See [Appendix M (VS Code Accessibility Reference)](docs/appendix-g-vscode-refere
 1. Try the command palette: `Ctrl+Shift+P` → "Terminal: Create New Terminal"
 2. If the terminal opens but screen reader does not read it: the terminal uses a specialized accessibility mode. Press `Alt+F2` to open the Accessible View of the terminal output.
 3. Check that your default shell is configured: `Ctrl+,` → search "terminal.integrated.defaultProfile"
-
 
 ### Problem: VS Code settings changed unexpectedly
 **Symptoms:** Colors, font size, or behavior changed without you doing anything.
@@ -592,7 +550,6 @@ See [Appendix M (VS Code Accessibility Reference)](docs/appendix-g-vscode-refere
 2. Check: `Ctrl+Shift+P` → "Preferences: Open Workspace Settings"
 3. Workspace settings override user settings. Remove entries you do not want.
 4. To open your user settings instead: `Ctrl+Shift+P` → "Preferences: Open User Settings"
-
 
 ## VS Code Extensions
 
@@ -609,7 +566,6 @@ See [Appendix M (VS Code Accessibility Reference)](docs/appendix-g-vscode-refere
    - If still broken, uninstall and reinstall the extension
 5. Check VS Code version: `Ctrl+Shift+P` → "About" - some extensions require recent VS Code versions
 
-
 ### Problem: GitHub Pull Requests extension not showing PRs
 **Symptoms:** The extension is installed but no PRs appear in the sidebar.
 
@@ -619,7 +575,6 @@ See [Appendix M (VS Code Accessibility Reference)](docs/appendix-g-vscode-refere
 3. Check that the repository has open PRs on GitHub
 4. Reload: `Ctrl+Shift+P` → "Developer: Reload Window"
 
-
 ### Problem: Extension conflicts
 **Symptoms:** Two extensions interfere with each other - duplicate features, broken shortcuts, or errors.
 
@@ -628,7 +583,6 @@ See [Appendix M (VS Code Accessibility Reference)](docs/appendix-g-vscode-refere
 2. Disable extensions one at a time to identify the conflict
 3. Check the extension's marketplace page for known conflicts
 4. If two extensions bind the same shortcut: `Ctrl+Shift+P` → "Preferences: Open Keyboard Shortcuts" → search for the shortcut → reassign one
-
 
 ## VS Code Source Control
 
@@ -640,7 +594,6 @@ See [Appendix M (VS Code Accessibility Reference)](docs/appendix-g-vscode-refere
 2. Make sure you made changes: edit a file, save it, then check Source Control again
 3. If VS Code says "No source control providers registered": install the Git extension (usually built-in) or reload the window
 
-
 ### Problem: File saved but git status still shows as modified
 **Symptoms:** You saved your work but `git status` says the file is changed.
 
@@ -650,7 +603,6 @@ See [Appendix M (VS Code Accessibility Reference)](docs/appendix-g-vscode-refere
 3. Check for invisible whitespace changes: Open the diff in Source Control to see exactly what changed
 4. If the diff shows no visible changes, it is likely a line ending or trailing whitespace issue
 
-
 ### Problem: Cannot stage or commit - "No changes to commit"
 **Symptoms:** You made changes but Git does not see them.
 
@@ -659,7 +611,6 @@ See [Appendix M (VS Code Accessibility Reference)](docs/appendix-g-vscode-refere
 2. Check you are in the correct repository folder
 3. Check if the file is in `.gitignore`: `git status --ignored`
 4. If the file is new, it needs to be staged with `git add [filename]` before it appears
-
 
 ## Screen Readers - General
 
@@ -674,7 +625,6 @@ See [Appendix M (VS Code Accessibility Reference)](docs/appendix-g-vscode-refere
 5. Use landmark navigation (`D`) to jump to the `main` landmark
 6. If a specific section is empty, it may be in a dynamically loaded area - press `Tab` to see if interactive elements appear
 
-
 ### Problem: Screen reader reads too much navigation before content
 **Symptoms:** Every page starts with a long list of links and menus before reaching the actual content.
 
@@ -682,7 +632,6 @@ See [Appendix M (VS Code Accessibility Reference)](docs/appendix-g-vscode-refere
 1. Press `D` (landmark navigation) to jump directly to the `main` content area
 2. Or press `1` to jump to the first H1 heading (usually the page title)
 3. GitHub pages have a "Skip to content" link - it is the first focusable element. Press `Enter` on it.
-
 
 ### Problem: Screen reader announces "[number] results" but does not read them
 **Symptoms:** After filtering issues or searching, the screen reader says how many results but does not navigate to them.
@@ -693,7 +642,6 @@ See [Appendix M (VS Code Accessibility Reference)](docs/appendix-g-vscode-refere
 3. Or use `K` to jump through links - each result is a link
 4. On the Issues/PRs page, press `J` and `Shift+J` to navigate between items (GitHub shortcut)
 
-
 ### Problem: Dropdown menus or popups disappear before you can read them
 **Symptoms:** A menu opens but closes immediately when you try to navigate it.
 
@@ -703,7 +651,6 @@ See [Appendix M (VS Code Accessibility Reference)](docs/appendix-g-vscode-refere
 3. If the popup closes on focus loss, try `Escape` to close it, then `Enter` to reopen, and immediately arrow into it
 4. Some GitHub menus require Focus Mode - press `NVDA+Space` (NVDA) or `Insert+Z` (JAWS) to switch
 
-
 ### Problem: Interactive elements are announced as "clickable" without a specific role
 **Symptoms:** Screen reader says "clickable" instead of "button," "link," or "checkbox."
 
@@ -711,7 +658,6 @@ See [Appendix M (VS Code Accessibility Reference)](docs/appendix-g-vscode-refere
 1. Try pressing `Enter` or `Space` to activate the element
 2. This indicates a potential accessibility issue with the page - the element is missing proper ARIA roles
 3. If this happens consistently on a specific page, file an accessibility issue on the project with the page URL and element description
-
 
 ## NVDA-Specific Issues
 
@@ -725,7 +671,6 @@ See [Appendix M (VS Code Accessibility Reference)](docs/appendix-g-vscode-refere
 4. Try a different browser (Firefox often works best with NVDA)
 5. Check NVDA preferences → Browse Mode → verify "Use browse mode on page load" is checked
 
-
 ### Problem: NVDA reads every character when typing in a form field
 **Symptoms:** When typing in a GitHub comment box, NVDA reads each character but you cannot review what you wrote.
 
@@ -734,7 +679,6 @@ See [Appendix M (VS Code Accessibility Reference)](docs/appendix-g-vscode-refere
 2. Press `NVDA+Space` to switch to Browse Mode temporarily to review, then `NVDA+Space` again to return to Focus Mode for typing
 3. In VS Code, use `Alt+F2` (Accessible View) to review Copilot responses or other content
 
-
 ### Problem: NVDA add-ons conflict with VS Code
 **Symptoms:** VS Code behaves strangely with certain NVDA add-ons enabled.
 
@@ -742,7 +686,6 @@ See [Appendix M (VS Code Accessibility Reference)](docs/appendix-g-vscode-refere
 1. Temporarily disable add-ons: NVDA Menu → Tools → Manage Add-ons → disable suspected add-ons → restart NVDA
 2. Common culprits: BrowserNav, Enhanced Touch Gestures, or older add-ons not updated for the current NVDA version
 3. Update all add-ons to the latest versions compatible with NVDA 2025.3.3
-
 
 ## JAWS-Specific Issues
 
@@ -756,7 +699,6 @@ See [Appendix M (VS Code Accessibility Reference)](docs/appendix-g-vscode-refere
 4. If labels are not announced, the HTML may be missing proper `<label>` elements - this is a page accessibility issue
 5. Check JAWS version: ensure you are running JAWS 2026 or later for best GitHub compatibility
 
-
 ### Problem: JAWS virtual cursor conflicts with GitHub keyboard shortcuts
 **Symptoms:** Pressing `G` in JAWS reads it as a virtual cursor command instead of triggering GitHub's keyboard shortcuts.
 
@@ -765,7 +707,6 @@ See [Appendix M (VS Code Accessibility Reference)](docs/appendix-g-vscode-refere
 2. With virtual cursor off, `G` then `I` will trigger GitHub's "Go to Issues" shortcut
 3. Toggle back to virtual cursor when done
 
-
 ### Problem: JAWS announces too much on GitHub pages
 **Symptoms:** JAWS reads every ARIA attribute, region name, and role, making navigation slow.
 
@@ -773,7 +714,6 @@ See [Appendix M (VS Code Accessibility Reference)](docs/appendix-g-vscode-refere
 1. Adjust verbosity: `Insert+V` → cycle through verbosity levels
 2. Or go to JAWS Settings Center → Web/HTML/PDF → adjust "Navigation" and "Reading" verbosity
 3. Use Skim Reading: `Insert+Shift+Down Arrow` to get a summary of the page
-
 
 ## VoiceOver-Specific Issues
 
@@ -787,7 +727,6 @@ See [Appendix M (VS Code Accessibility Reference)](docs/appendix-g-vscode-refere
 4. If the rotor shows fewer elements than expected, the page may need to finish loading - wait and try again
 5. Test in Safari first - it has the best VoiceOver compatibility among browsers
 
-
 ### Problem: VoiceOver Quick Nav conflicts with GitHub shortcuts
 **Symptoms:** Single-letter navigation (H, B, K) is consumed by VoiceOver Quick Nav instead of GitHub.
 
@@ -796,7 +735,6 @@ See [Appendix M (VS Code Accessibility Reference)](docs/appendix-g-vscode-refere
 2. **Quick Nav off:** Toggle with `Left Arrow + Right Arrow` simultaneously. With Quick Nav off, single letters type into the page - needed for some GitHub shortcuts
 3. For GitHub shortcuts like `G` then `I`: turn Quick Nav off first
 
-
 ### Problem: VoiceOver cursor gets trapped in the VS Code editor
 **Symptoms:** VoiceOver cannot leave the editor area to reach the sidebar or other panels.
 
@@ -804,7 +742,6 @@ See [Appendix M (VS Code Accessibility Reference)](docs/appendix-g-vscode-refere
 1. Press `VO+Shift+F5` to exit the current interaction context
 2. Use `VO+F6` to cycle between VS Code panels (sidebar, editor, terminal, etc.)
 3. Use VS Code keyboard shortcuts directly: `Ctrl+Shift+E` (Explorer), `Ctrl+Shift+G` (Source Control), etc.
-
 
 ## GitHub Copilot
 
@@ -818,7 +755,6 @@ See [Appendix M (VS Code Accessibility Reference)](docs/appendix-g-vscode-refere
 4. Verify you are signed in to GitHub: look for the GitHub icon in the status bar (bottom-left). Click to sign in if needed.
 5. Check subscription: Copilot requires a paid plan, organization access, or the free tier. See https://github.com/features/copilot
 
-
 ### Problem: "You don't have access to Copilot"
 **Symptoms:** Chat says you do not have Copilot access, even though the extension is installed.
 
@@ -828,7 +764,6 @@ See [Appendix M (VS Code Accessibility Reference)](docs/appendix-g-vscode-refere
 3. For full access: Copilot Individual (~$10/month), Copilot Business (via organization), or Copilot Enterprise
 4. **Students/educators:** Free access at https://education.github.com/
 5. If your organization provides Copilot, ask your admin to enable it for your account
-
 
 ### Problem: Copilot inline suggestions not appearing
 **Symptoms:** Copilot is installed and signed in, but no code suggestions appear while typing.
@@ -840,7 +775,6 @@ See [Appendix M (VS Code Accessibility Reference)](docs/appendix-g-vscode-refere
 4. Open a new file and type a comment like `// function to add two numbers` - suggestions should appear below
 5. Copilot needs an active internet connection
 
-
 ### Problem: Copilot suggestions are wrong or unhelpful
 **Symptoms:** Copilot generates irrelevant or incorrect code/text.
 
@@ -849,7 +783,6 @@ See [Appendix M (VS Code Accessibility Reference)](docs/appendix-g-vscode-refere
 2. Press `Alt+]` or `Alt+[` to cycle through alternative suggestions
 3. Provide more context: add comments explaining what you want, open related files, or use Copilot Chat for more detailed instructions
 4. Reject suggestions with `Escape`
-
 
 ## Copilot Chat
 
@@ -863,7 +796,6 @@ See [Appendix M (VS Code Accessibility Reference)](docs/appendix-g-vscode-refere
 4. Check for errors: View → Output → select "GitHub Copilot" from the dropdown → look for error messages
 5. If the problem persists, restart VS Code: save all work → close completely → reopen
 
-
 ### Problem: Chat responses are cut off or incomplete
 **Symptoms:** Copilot starts answering but stops mid-sentence.
 
@@ -871,7 +803,6 @@ See [Appendix M (VS Code Accessibility Reference)](docs/appendix-g-vscode-refere
 1. Type "continue" in the chat to ask Copilot to continue its response
 2. If the response is consistently too long, break your question into smaller parts
 3. Try a different model (click the model selector in Chat) - some models handle longer outputs better
-
 
 ### Problem: Chat does not know about my files or project
 **Symptoms:** Copilot Chat gives generic answers that do not reference your repository.
@@ -882,7 +813,6 @@ See [Appendix M (VS Code Accessibility Reference)](docs/appendix-g-vscode-refere
 3. Select specific code, then ask about it - Copilot uses the selection as context
 4. Make sure you opened the correct folder in VS Code (not a parent folder)
 
-
 ### Problem: Chat response is hard to read with screen reader
 **Symptoms:** Copilot Chat outputs formatted content that the screen reader does not navigate well.
 
@@ -890,7 +820,6 @@ See [Appendix M (VS Code Accessibility Reference)](docs/appendix-g-vscode-refere
 1. Press `Alt+F2` (Accessible View) - this renders the response as plain, navigable text
 2. In the Accessible View, use standard screen reader commands (arrows, H for headings) to read the response
 3. This is the recommended workflow for all screen reader users using Copilot Chat
-
 
 ## Accessibility Agents
 
@@ -907,7 +836,6 @@ See [Appendix M (VS Code Accessibility Reference)](docs/appendix-g-vscode-refere
    - Wait 2-3 minutes for the agent index to refresh
    - Check that the YAML frontmatter in the `.agent.md` file is valid
 
-
 ### Problem: Agent gives generic advice instead of using its persona
 **Symptoms:** You ask `@template-builder` a question but it responds like a general-purpose assistant.
 
@@ -918,7 +846,6 @@ See [Appendix M (VS Code Accessibility Reference)](docs/appendix-g-vscode-refere
 4. Check the `.agent.md` file: the YAML frontmatter must include the agent's name and description
 5. Try a simpler query to test if the agent responds correctly
 
-
 ### Problem: Agent cannot access repositories or data
 **Symptoms:** Agent says it cannot find your repositories or data.
 
@@ -928,7 +855,6 @@ See [Appendix M (VS Code Accessibility Reference)](docs/appendix-g-vscode-refere
 3. If `preferences.md` does not exist, copy from `preferences.example.md` and customize it
 4. The agent needs read access to the repositories listed in preferences
 
-
 ### Problem: Slash commands do not appear
 **Symptoms:** Typing `/` in Chat does not show the expected custom commands.
 
@@ -937,7 +863,6 @@ See [Appendix M (VS Code Accessibility Reference)](docs/appendix-g-vscode-refere
 2. Verify the prompt files exist and are on your current branch
 3. Reload VS Code: `Ctrl+Shift+P` → "Developer: Reload Window"
 4. Type `/` in Chat and wait - the list may take a moment to populate
-
 
 ## Exercises and the Learning Room
 
@@ -952,7 +877,6 @@ See [Appendix M (VS Code Accessibility Reference)](docs/appendix-g-vscode-refere
 5. You may be on the wrong branch: `git checkout main`
 6. The Learning Room files are in `learning-room/docs/` (not in the root `docs/` folder)
 
-
 ### Problem: Cannot understand what the exercise is asking
 **Symptoms:** Exercise steps are confusing or the goal is unclear.
 
@@ -964,7 +888,6 @@ See [Appendix M (VS Code Accessibility Reference)](docs/appendix-g-vscode-refere
 5. Check if there is an "If you're stuck" section within the exercise
 6. Ask for help: open an issue describing the step you are on and what you see
 
-
 ### Problem: Bot does not respond to my PR in the Learning Room
 **Symptoms:** You opened a PR but the automated bot did not post a review comment.
 
@@ -975,7 +898,6 @@ See [Appendix M (VS Code Accessibility Reference)](docs/appendix-g-vscode-refere
 4. Verify your PR targets the correct branch (usually `main`)
 5. If the bot still does not respond, ask the facilitator - the automation may need to be configured
 
-
 ### Problem: Learning Room challenges are too easy or too hard
 **Symptoms:** Individual challenges do not match your skill level.
 
@@ -984,7 +906,6 @@ See [Appendix M (VS Code Accessibility Reference)](docs/appendix-g-vscode-refere
 2. **Too easy:** Jump ahead to the bonus challenges (A through E) in `docs/CHALLENGES.md`
 3. **Too hard:** Go back to the relevant chapter and review the concepts
 4. The 21 challenges span six skill levels - find the range that stretches you without frustrating you
-
 
 ## HTML Build System
 
@@ -1000,7 +921,6 @@ See [Appendix M (VS Code Accessibility Reference)](docs/appendix-g-vscode-refere
    - `SyntaxError` → a markdown file may have unusual characters. Check the error output for the filename.
 4. Try removing `node_modules` and reinstalling: delete the `node_modules` folder → `npm install` → `npm run build:html`
 
-
 ### Problem: HTML build produces files but they look wrong
 **Symptoms:** HTML files are generated but formatting is broken, styles are missing, or navigation is wrong.
 
@@ -1010,7 +930,6 @@ See [Appendix M (VS Code Accessibility Reference)](docs/appendix-g-vscode-refere
 3. Check `scripts/build-html.js` for any custom configuration that may have been changed
 4. Try a clean rebuild: delete the `html/` folder contents → `npm run build:html`
 
-
 ### Problem: HTML files are outdated after editing markdown
 **Symptoms:** You edited a `.md` file but the corresponding `.html` file still shows old content.
 
@@ -1019,7 +938,6 @@ See [Appendix M (VS Code Accessibility Reference)](docs/appendix-g-vscode-refere
 2. The HTML build is manual - it does not auto-update when you edit markdown
 3. After rebuilding, commit both the `.md` and `html/` changes together
 4. For live preview during editing, use `npm run watch` if available, or use VS Code's built-in Markdown preview (`Ctrl+Shift+V`)
-
 
 ## GitHub Pages and Online Access
 
@@ -1032,7 +950,6 @@ See [Appendix M (VS Code Accessibility Reference)](docs/appendix-g-vscode-refere
 3. Hard refresh in your browser: `Ctrl+Shift+R`
 4. Check that GitHub Pages is configured to serve from the correct branch and folder
 
-
 ### Problem: Cannot access workshop materials
 **Symptoms:** You want to read the materials but cannot find where they are hosted or how to download them.
 
@@ -1042,7 +959,6 @@ See [Appendix M (VS Code Accessibility Reference)](docs/appendix-g-vscode-refere
 - Cloning the repository with Git
 - Downloading as a ZIP file
 - Downloading individual files
-
 
 ## Performance and Network
 
@@ -1056,7 +972,6 @@ See [Appendix M (VS Code Accessibility Reference)](docs/appendix-g-vscode-refere
 4. If behind a corporate network, some GitHub features may be blocked - check with your IT department
 5. Disable browser extensions that may interfere (ad blockers, privacy tools)
 
-
 ### Problem: VS Code is slow or laggy
 **Symptoms:** VS Code takes a long time to open files, respond to keyboard input, or load extensions.
 
@@ -1067,7 +982,6 @@ See [Appendix M (VS Code Accessibility Reference)](docs/appendix-g-vscode-refere
 4. Increase memory: VS Code Settings → search `files.maxMemoryForLargeFilesMB`
 5. Restart VS Code
 
-
 ### Problem: Operations fail behind a corporate proxy or firewall
 **Symptoms:** `git clone`, `npm install`, or Copilot fail with network errors.
 
@@ -1076,7 +990,6 @@ See [Appendix M (VS Code Accessibility Reference)](docs/appendix-g-vscode-refere
 2. Configure npm proxy: `npm config set proxy http://proxy:port`
 3. If SSH is blocked, use HTTPS for Git operations: `git remote set-url origin https://github.com/...`
 4. Some firewalls block VS Code's telemetry or extension marketplace - ask IT to whitelist `*.visualstudio.com`, `*.github.com`, and `*.githubusercontent.com`
-
 
 ## Getting More Help
 
@@ -1094,5 +1007,32 @@ If your issue is not listed here:
    - Your operating system, browser, screen reader, and versions
    - The chapter or exercise you were working on
 
-
 *Last updated: February 2026 | Maintained by GitHub Learning Community*
+
+## Authoritative Sources
+
+Use these official references when you need the current source of truth for facts in this chapter.
+
+- [GitHub Docs, home](https://docs.github.com/en)
+- [GitHub Changelog](https://github.blog/changelog/)
+
+### Section-Level Source Map
+
+Use this map to verify facts for each major section in this file.
+
+- **Common Issues and Solutions:** [GitHub Docs, home](https://docs.github.com/en), [GitHub Changelog](https://github.blog/changelog/), [About Git](https://docs.github.com/en/get-started/using-git/about-git), [GitHub flow](https://docs.github.com/en/get-started/using-github/github-flow), [About pull requests](https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/about-pull-requests)
+- **Setup and Installation:** [GitHub Docs, home](https://docs.github.com/en), [GitHub Changelog](https://github.blog/changelog/)
+- **Git Configuration and Operations:** [GitHub Docs, home](https://docs.github.com/en), [GitHub Changelog](https://github.blog/changelog/), [About Git](https://docs.github.com/en/get-started/using-git/about-git), [GitHub flow](https://docs.github.com/en/get-started/using-github/github-flow), [About pull requests](https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/about-pull-requests)
+- **GitHub Authentication:** [GitHub Docs, home](https://docs.github.com/en), [GitHub Changelog](https://github.blog/changelog/), [About Git](https://docs.github.com/en/get-started/using-git/about-git), [GitHub flow](https://docs.github.com/en/get-started/using-github/github-flow), [About pull requests](https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/about-pull-requests)
+- **GitHub Web Interface:** [GitHub Docs, home](https://docs.github.com/en), [GitHub Changelog](https://github.blog/changelog/), [About Git](https://docs.github.com/en/get-started/using-git/about-git), [GitHub flow](https://docs.github.com/en/get-started/using-github/github-flow), [About pull requests](https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/about-pull-requests)
+- **Repository Navigation and Cloning:** [GitHub Docs, home](https://docs.github.com/en), [GitHub Changelog](https://github.blog/changelog/), [About Git](https://docs.github.com/en/get-started/using-git/about-git), [GitHub flow](https://docs.github.com/en/get-started/using-github/github-flow), [About pull requests](https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/about-pull-requests)
+- **Branches, Merging, and Conflicts:** [GitHub Docs, home](https://docs.github.com/en), [GitHub Changelog](https://github.blog/changelog/), [About Git](https://docs.github.com/en/get-started/using-git/about-git), [GitHub flow](https://docs.github.com/en/get-started/using-github/github-flow), [About pull requests](https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/about-pull-requests)
+- **Issues and Pull Requests:** [GitHub Docs, home](https://docs.github.com/en), [GitHub Changelog](https://github.blog/changelog/), [About Git](https://docs.github.com/en/get-started/using-git/about-git), [GitHub flow](https://docs.github.com/en/get-started/using-github/github-flow), [About pull requests](https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/about-pull-requests)
+- **Templates and YAML:** [GitHub Docs, home](https://docs.github.com/en), [GitHub Changelog](https://github.blog/changelog/)
+- **VS Code Setup and Configuration:** [GitHub Docs, home](https://docs.github.com/en), [GitHub Changelog](https://github.blog/changelog/)
+- **VS Code Extensions:** [GitHub Docs, home](https://docs.github.com/en), [GitHub Changelog](https://github.blog/changelog/)
+- **VS Code Source Control:** [GitHub Docs, home](https://docs.github.com/en), [GitHub Changelog](https://github.blog/changelog/)
+- **Screen Readers - General:** [GitHub Docs, home](https://docs.github.com/en), [GitHub Changelog](https://github.blog/changelog/), [W3C Web Content Accessibility Guidelines (WCAG) 2 overview](https://www.w3.org/WAI/standards-guidelines/wcag/), [WAI tutorials for accessible design patterns](https://www.w3.org/WAI/tutorials/), [WAI-ARIA Authoring Practices Guide](https://www.w3.org/WAI/ARIA/apg/)
+- **NVDA-Specific Issues:** [GitHub Docs, home](https://docs.github.com/en), [GitHub Changelog](https://github.blog/changelog/), [About Git](https://docs.github.com/en/get-started/using-git/about-git), [GitHub flow](https://docs.github.com/en/get-started/using-github/github-flow), [About pull requests](https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/about-pull-requests)
+- **JAWS-Specific Issues:** [GitHub Docs, home](https://docs.github.com/en), [GitHub Changelog](https://github.blog/changelog/), [About Git](https://docs.github.com/en/get-started/using-git/about-git), [GitHub flow](https://docs.github.com/en/get-started/using-github/github-flow), [About pull requests](https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/about-pull-requests)
+- **VoiceOver-Specific Issues:** [GitHub Docs, home](https://docs.github.com/en), [GitHub Changelog](https://github.blog/changelog/), [About Git](https://docs.github.com/en/get-started/using-git/about-git), [GitHub flow](https://docs.github.com/en/get-started/using-github/github-flow), [About pull requests](https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/about-pull-requests)

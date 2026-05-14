@@ -5,7 +5,6 @@ This guide walks you through everything you need to set up before your first Git
 
 > **Workshop practice file:** This Learning Room copy intentionally contains a few small issues for students to find and fix during the workshop. Follow your assigned challenge issue before changing any `[TODO]` marker or broken sample link.
 
-
 ## Step 1 - Create a GitHub Account
 
 If you don't already have a GitHub account, create one at [github.com/join](https://github.com).
@@ -15,7 +14,6 @@ If you don't already have a GitHub account, create one at [github.com/join](http
 - Avoid special characters other than hyphens
 - Your username cannot be changed easily later
 
-
 ## Step 2 - Configure Accessibility Settings
 
 GitHub has several accessibility settings that make navigation significantly easier with a screen reader. These settings are per-account and sync across devices.
@@ -24,7 +22,6 @@ GitHub has several accessibility settings that make navigation significantly eas
 2. Under "Motion", disable any animated effects if motion causes you difficulty
 3. Under "Tab size", set to your preferred number of spaces
 4. Confirm the page reads "Accessibility settings saved" before leaving
-
 
 ## Step 3 - GitHub Interface (No Action Needed)
 
@@ -39,7 +36,6 @@ You should automatically have:
 
 If something doesn't match the workshop materials, verify your Feature Preview settings as above, then try clearing your browser cache and reloading the page.
 
-
 ## Step 4 - Disable Hovercards
 
 GitHub's hovercards appear when your mouse hovers over a username or repository. For keyboard users, these can interfere with focus and create unexpected announcements.
@@ -48,7 +44,6 @@ GitHub's hovercards appear when your mouse hovers over a username or repository.
 2. Scroll to the "Hovercards" section
 3. Uncheck "Show user hovercards"
 4. Save the changes
-
 
 ## Step 5 - Configure Your Screen Reader for GitHub
 
@@ -70,7 +65,6 @@ GitHub's hovercards appear when your mouse hovers over a username or repository.
 2. Verbosity → Punctuation: set to "Some" or "All" for reading code blocks
 3. Recommended browser: Safari (best VoiceOver compatibility) or Google Chrome
 
-
 ## Step 6 - Fork the Workshop Repository
 
 To make your own contributions, you need your own copy of the repository.
@@ -81,7 +75,6 @@ To make your own contributions, you need your own copy of the repository.
 4. GitHub creates a fork: a copy of the repository that belongs to you
 
 Your fork is at: `github.com/[your-username]/[repository-name]`
-
 
 ## Step 7 - Verify Your Setup
 
@@ -94,12 +87,24 @@ Before the workshop begins, confirm that you can:
 
 If any of these steps are difficult, bring your question to the workshop. There will be dedicated setup time at the start of Day 1.
 
-
 ## Getting Help Before the Workshop
 
 If you run into setup issues before the workshop:
 - Open an issue in the workshop repository using the "Feature or Improvement Request" template
 - Ask your question in the issue - be specific about what step you are on and what happens when you try it
 
-
 *Facilitator note: Links marked `[TODO]` and the sample broken link in this document are intentional practice targets for student issues and pull requests.*
+
+## Authoritative Sources
+
+Use these official references when you need the current source of truth for facts in this chapter.
+
+- [GitHub Docs, home](https://docs.github.com/en)
+- [GitHub Changelog](https://github.blog/changelog/)
+
+### Section-Level Source Map
+
+Use this map to verify facts for each major section in this file.
+
+- **Getting Ready to Contribute with a Screen Reader:** [GitHub Docs, home](https://docs.github.com/en), [GitHub Changelog](https://github.blog/changelog/), [W3C Web Content Accessibility Guidelines (WCAG) 2 overview](https://www.w3.org/WAI/standards-guidelines/wcag/), [WAI tutorials for accessible design patterns](https://www.w3.org/WAI/tutorials/), [WAI-ARIA Authoring Practices Guide](https://www.w3.org/WAI/ARIA/apg/)
+- **Getting Help Before the Workshop:** [GitHub Docs, home](https://docs.github.com/en), [GitHub Changelog](https://github.blog/changelog/)

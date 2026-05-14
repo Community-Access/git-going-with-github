@@ -20,7 +20,6 @@ License: CC BY 4.0 | [Site](https://community-access.org/git-going-with-github/)
 | **Dates** | May 21, 2026 & May 22, 2026 |
 | **Facilitators** | Jeff Bishop and Michael Babcock |
 
-
 > **The Central Project: Accessibility Agents**
 >
 > This workshop is built around a real, live open source project: **[Accessibility Agents](https://github.com/community-access/accessibility-agents)** - 55 AI agents across 3 teams and 5 platforms for accessible, agentic repository management. It was built by your facilitator Jeff Bishop and is MIT-licensed.
@@ -28,7 +27,6 @@ License: CC BY 4.0 | [Site](https://community-access.org/git-going-with-github/)
 > You will fork it, understand it, contribute to it, and personalize it. The live workshop prepares you to make a real contribution, and the async continuation path gives you time to polish and submit it well.
 >
 > **Accessibility Agents does not replace what you learn on Day 1. It amplifies it.** The agents only make sense when you already understand the skills they automate. That is why Day 1 comes first - and why every guide in this repository shows you the manual path before it shows you the agent path.
-
 
 ## What Is This Event?
 
@@ -40,7 +38,6 @@ During this two-day workshop, you will learn how to confidently navigate and con
 
 By the end of this event, you will have practiced **real contribution workflows** in a real repository. Some participants will ship during the live event; others will leave with a branch, a pull request path, and clear next steps to finish asynchronously.
 
-
 ## Who Is This For?
 
 This event is designed for:
@@ -51,7 +48,6 @@ This event is designed for:
 - Sighted participants are welcome - all content is keyboard-navigable for everyone
 
 You do **not** need to know how to code to participate and contribute meaningfully. Documentation improvements, issue filing, accessibility bug reports, and code reviews are all valuable contributions.
-
 
 ## Two-Day Overview
 
@@ -89,7 +85,6 @@ Every skill you build on Day 1 maps directly to an Accessibility Agents command 
 - Clear next steps to get your contribution reviewed and merged
 - A working set of 55 AI agents across 3 teams that travel with your fork to any repository you apply them to
 
-
 ## How to Read These Docs
 
 All documentation lives in the `docs/` folder. If you are new, start with [Get Going with GitHub](docs/get-going.md). It explains the GitHub Classroom assignment link, your private Learning Room repository, the first challenge issue, how evidence works, and how to choose the tool path that fits you.
@@ -103,7 +98,6 @@ After the workshop, use the open support repository for questions, troubleshooti
 - [Community-Access/support](https://github.com/Community-Access/support)
 
 Use this repository for curriculum and platform changes only.
-
 
 ## Your Challenges
 
@@ -120,7 +114,6 @@ Open the **Issues** tab of the Learning Room repository and look for challenge i
 6. When it passes, merge and move to the next challenge
 
 Every chapter has an "If You Get Stuck" section. Every challenge has a [reference solution](docs/solutions/). You do not need to memorize anything.
-
 
 > **HTML Version Available:** All markdown documentation is automatically converted to HTML format. After cloning the repository, you can browse the `html/` directory for web-formatted versions of every document. See [BUILD.md](BUILD.md) for details.
 
@@ -154,9 +147,9 @@ Every chapter has an "If You Get Stuck" section. Every challenge has a [referenc
 | [16](docs/16-github-copilot.md) | **GitHub Copilot** | Inline suggestions, Copilot Chat, prompting, Accessible View |
 | [17](docs/17-issue-templates.md) | **Issue Templates** | Creating and using GitHub issue templates |
 | [18](docs/18-fork-and-contribute.md) | **Fork and Contribute** | Fork workflow, upstream sync, cross-repo contributions |
-| [19](docs/19-accessibility-agents.md) | **Accessibility Agents** | 55 agents across 3 teams, contributing to the ecosystem |
-| [20](docs/20-build-your-agent.md) | **Build Your Own Agent** | Design an agent with responsibilities and guardrails (capstone) |
-| [21](docs/21-next-steps.md) | **Next Steps** | Where to go after the workshop |
+| [19](docs/19-accessibility-agents.md) | **Accessibility Agents** | 83 agent files, prompts, skills, and contribution paths across the ecosystem |
+| [20](docs/20-build-your-agent.md) | **Capstone Project** | Choose Accessibility Agents, GLOW, or another project and create an impactful agentic contribution |
+| [21](docs/21-next-steps.md) | **What Comes Next** | Where to go after the workshop |
 
 **Workshop Agendas** - For facilitators only (not part of learner sequence)
 
@@ -181,7 +174,7 @@ Every chapter has an "If You Get Stuck" section. Every challenge has a [referenc
 | [J](docs/appendix-n-advanced-search.md) | **GitHub Advanced Search** | Complete query language reference for searching issues, PRs, code, commits, and repositories |
 | [K](docs/appendix-o-branch-protection.md) | **Branch Protection and Rulesets** | Required reviews, status checks, repository rulesets, and diagnosing why your PR cannot be merged |
 | [L](docs/appendix-p-security-features.md) | **GitHub Security Features** | Dependabot alerts and updates, secret scanning, code scanning/CodeQL, private vulnerability reporting, and SBOM |
-| [M](docs/appendix-g-vscode-reference.md) | **VS Code Accessibility Reference** | Complete technical reference for all accessibility settings, audio cues, diff viewer, screen reader configurations, keyboard shortcuts |
+| [M](docs/appendix-g-vscode-reference.md) | **VS Code Accessibility Reference** | Complete technical reference for accessibility settings, audio cues, diff viewer, Agents window accessibility notes, screen reader configurations, keyboard shortcuts |
 | [N](docs/appendix-j-cloud-editors.md) | **GitHub Codespaces** | Cloud development environments - setup, accessibility configuration, and screen reader usage |
 | [O](docs/appendix-v-github-mobile.md) | **GitHub Mobile** | Accessibility guide for iOS and Android - VoiceOver, TalkBack, notifications, and PR reviews |
 | [P](docs/appendix-w-github-pages.md) | **Publishing with GitHub Pages** | Deploy a static site from your repository - branch setup, custom domains, CI workflows, and accessibility checks |
@@ -191,12 +184,11 @@ Every chapter has an "If You Get Stuck" section. Every challenge has a [referenc
 | [T](docs/08-open-source-culture.md) | **Contributing to Open Source** | A first-timer's guide: finding issues, scoping contributions, writing PRs, and building a contribution habit |
 | [U](docs/appendix-x-resources.md) | **Resources** | Every link, tool, and reference from this event |
 | [V](docs/appendix-l-agents-reference.md) | **Accessibility Agents Reference** | 55 agents, 3 teams, 5 platforms, slash commands, and workspace configuration |
-| [W](docs/appendix-k-copilot-reference.md) | **GitHub Copilot Reference** | Copilot features, chat participants, slash commands, MCP servers, and agentic ecosystem |
-| [X](docs/appendix-k-copilot-reference.md) | **GitHub Copilot AI Models** | Model comparison, strengths, plan availability, and selection guidance |
+| [W](docs/appendix-k-copilot-reference.md) | **GitHub Copilot Reference** | Copilot features, Agents window, chat participants, slash commands, MCP servers, and agentic ecosystem |
+| [X](docs/appendix-k-copilot-reference.md) | **GitHub Copilot Billing and Models** | Source-backed guidance for current Copilot billing, GitHub AI Credits, model volatility, and selection principles |
 | [Y](docs/appendix-y-workshop-materials.md) | **Accessing and Downloading Workshop Materials** | GitHub Pages, GitHub.com, cloning, ZIP download, offline reading, folder guide |
 | [Z](docs/appendix-z-github-skills.md) | **GitHub Skills - Complete Course Catalog** | All 36 GitHub Skills modules organized into six learning paths, with links, prerequisites, and integration guidance |
 > **Each guide from Lesson 03 onward includes a "Day 2 Amplifier" callout** that shows how Accessibility Agents extends that skill across three scopes: your VS Code editor → your repository (travels with every fork) → the cloud (GitHub Agentic Workflows running without VS Code). **Learn the manual skill first (Chapter 14), then see how it's automated (Chapter 16).**
-
 
 ## This Repository's Structure
 
@@ -246,7 +238,6 @@ Every chapter has an "If You Get Stuck" section. Every challenge has a [referenc
 
 > *Note: Appendices were renumbered during a February 2026 review. If you encounter external references to "Appendix D" or later letters, subtract one letter (e.g., the former Appendix D is now [Appendix C](docs/appendix-m-accessibility-standards.md)).*
 
-
 ## Quick Reference
 
 These standalone documents provide additional guidance and resources:
@@ -261,7 +252,6 @@ These standalone documents provide additional guidance and resources:
 | [Security](SECURITY.md) | Security policy and vulnerability reporting |
 | [GitHub Proposal](GITHUB_PROPOSAL.md) | Original event proposal and curriculum overview (internal reference) |
 
-
 ## Screen Reader Users: Start Here
 
 Before doing anything else, please read [**00 - Pre-Workshop Setup**](docs/00-pre-workshop-setup.md). It will walk you through:
@@ -271,7 +261,6 @@ Before doing anything else, please read [**00 - Pre-Workshop Setup**](docs/00-pr
 - Turning off settings that make screen reader navigation harder
 - Verifying everything works before Day 1 begins
 
-
 ## The Goal of This Event
 
 Open source software is built by people. Accessibility bugs in open source affect millions of people who use assistive technology every day. By learning to contribute - even something as small as filing a clear, detailed accessibility issue - you become part of fixing that. That matters.
@@ -280,18 +269,39 @@ Open source software is built by people. Accessibility bugs in open source affec
 
 And by the end of Day 2, you will not just be a learner. You will be a product maker - someone who has shipped something real to a project that other people use.
 
-
 ## Questions Before the Event?
 
 - **Discussion Forum:** [Join the conversation](https://github.com/community-access/git-going-with-github/discussions) - ask questions, connect with fellow participants, share ideas
 - **File an issue** in this repository if something in these docs is unclear
 - **Community:** [GitHub Accessibility Discussions](https://github.com/orgs/community/discussions/categories/accessibility)
 
-
 ## License
 
 All workshop documentation is licensed under [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/) - you are free to share and adapt with attribution.
 
-
 *Last reviewed: May 2026*
 *A [Community Access](https://community-access.org) initiative.*
+
+## Authoritative Sources
+
+Use these official references when you need the current source of truth for facts in this chapter.
+
+- [GitHub Docs, home](https://docs.github.com/en)
+- [GitHub Changelog](https://github.blog/changelog/)
+
+### Section-Level Source Map
+
+Use this map to verify facts for each major section in this file.
+
+- **A Workshop by [Community Access](https://community-access.org):** [GitHub Docs, home](https://docs.github.com/en), [GitHub Changelog](https://github.blog/changelog/), [GitHub Discussions docs](https://docs.github.com/en/discussions), [GitHub Gists docs](https://docs.github.com/en/get-started/writing-on-github/editing-and-sharing-content-with-gists)
+- **What Is This Event?:** [GitHub Docs, home](https://docs.github.com/en), [GitHub Changelog](https://github.blog/changelog/)
+- **Who Is This For?:** [GitHub Docs, home](https://docs.github.com/en), [GitHub Changelog](https://github.blog/changelog/)
+- **Two-Day Overview:** [GitHub Docs, home](https://docs.github.com/en), [GitHub Changelog](https://github.blog/changelog/)
+- **How to Read These Docs:** [GitHub Docs, home](https://docs.github.com/en), [GitHub Changelog](https://github.blog/changelog/)
+- **Post-Workshop Support:** [GitHub Docs, home](https://docs.github.com/en), [GitHub Changelog](https://github.blog/changelog/)
+- **Your Challenges:** [GitHub Docs, home](https://docs.github.com/en), [GitHub Changelog](https://github.blog/changelog/)
+- **This Repository's Structure:** [GitHub Docs, home](https://docs.github.com/en), [GitHub Changelog](https://github.blog/changelog/), [About Git](https://docs.github.com/en/get-started/using-git/about-git), [GitHub flow](https://docs.github.com/en/get-started/using-github/github-flow), [About pull requests](https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/about-pull-requests)
+- **Screen Reader Users: Start Here:** [GitHub Docs, home](https://docs.github.com/en), [GitHub Changelog](https://github.blog/changelog/), [W3C Web Content Accessibility Guidelines (WCAG) 2 overview](https://www.w3.org/WAI/standards-guidelines/wcag/), [WAI tutorials for accessible design patterns](https://www.w3.org/WAI/tutorials/), [WAI-ARIA Authoring Practices Guide](https://www.w3.org/WAI/ARIA/apg/)
+- **The Goal of This Event:** [GitHub Docs, home](https://docs.github.com/en), [GitHub Changelog](https://github.blog/changelog/)
+- **Questions Before the Event?:** [GitHub Docs, home](https://docs.github.com/en), [GitHub Changelog](https://github.blog/changelog/)
+- **License:** [GitHub Docs, home](https://docs.github.com/en), [GitHub Changelog](https://github.blog/changelog/)

@@ -11,7 +11,7 @@ function getAutoResponse(commentBody, author) {
   // Help request
   if (comment.includes('@bot help') || comment.includes('need help') || comment.includes('i\'m stuck')) {
     return [
-      `Hi @${safeAuthor}!`,
+      `Hi @${safeAuthor}! I am Gandalf, your workshop agent, here to bring a little magic to the interaction experience and keep it fun while you learn.`,
       '',
       '**Here are some helpful resources:**',
       '',
@@ -28,7 +28,7 @@ function getAutoResponse(commentBody, author) {
       '**Still stuck?** Mention `@facilitator` in a comment and they will help you.',
       '',
       '---',
-      '*Learning Room Bot*'
+      '*Gandalf, Learning Room Bot*'
     ].join('\n');
   }
 
@@ -51,7 +51,7 @@ function getAutoResponse(commentBody, author) {
       '**Screen reader tip:** If the web editor is hard to use, try pressing `.` on your PR page to open github.dev editor.',
       '',
       '---',
-      '*Learning Room Bot*'
+      '*Gandalf, Learning Room Bot*'
     ].join('\n');
   }
 
@@ -75,7 +75,7 @@ function getAutoResponse(commentBody, author) {
       '**Pro tip:** Add a comment mentioning your reviewer so they see your message in their feed!',
       '',
       '---',
-      '*Learning Room Bot*'
+      '*Gandalf, Learning Room Bot*'
     ].join('\n');
   }
 
@@ -97,7 +97,7 @@ function getAutoResponse(commentBody, author) {
       '- Challenges A-E are bonus (optional, for extra depth)',
       '',
       '---',
-      '*Learning Room Bot*'
+      '*Gandalf, Learning Room Bot*'
     ].join('\n');
   }
 
@@ -121,7 +121,7 @@ function getAutoResponse(commentBody, author) {
       '**Questions while you work?** Ask in this issue - no question is too small!',
       '',
       '---',
-      '*Learning Room Bot*'
+      '*Gandalf, Learning Room Bot*'
     ].join('\n');
   }
 

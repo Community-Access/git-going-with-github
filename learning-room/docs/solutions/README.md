@@ -28,7 +28,7 @@ Use this index when you are blocked and need a worked example. Try the challenge
 | Challenge 13: AI as Your Copilot | [solution-13-copilot.md](https://github.com/Community-Access/git-going-with-github/blob/main/docs/solutions/solution-13-copilot.md) |
 | Challenge 14: Template Remix | [solution-14-template.md](https://github.com/Community-Access/git-going-with-github/blob/main/docs/solutions/solution-14-template.md) |
 | Challenge 15: Meet the Agents | [solution-15-agents.md](https://github.com/Community-Access/git-going-with-github/blob/main/docs/solutions/solution-15-agents.md) |
-| Challenge 16: Build Your Agent (Capstone) | [solution-16-capstone.md](https://github.com/Community-Access/git-going-with-github/blob/main/docs/solutions/solution-16-capstone.md) |
+| Challenge 16: Capstone Project (Build Your Agent (Capstone)) | [solution-16-capstone.md](https://github.com/Community-Access/git-going-with-github/blob/main/docs/solutions/solution-16-capstone.md) |
 
 ## Bonus Challenges (A-E)
 
@@ -43,3 +43,19 @@ Use this index when you are blocked and need a worked example. Try the challenge
 ## Related Optional Practice
 
 For extra scenario practice inspired by GitHub Skills courses, see [Skills-Inspired Bonus Scenarios](../skills-bonus-scenarios.md).
+
+## Authoritative Sources
+
+Use these official references when you need the current source of truth for facts in this chapter.
+
+- [GitHub Docs, home](https://docs.github.com/en)
+- [GitHub Changelog](https://github.blog/changelog/)
+
+### Section-Level Source Map
+
+Use this map to verify facts for each major section in this file.
+
+- **How To Use This Folder:** [GitHub Docs, home](https://docs.github.com/en), [GitHub Changelog](https://github.blog/changelog/)
+- **Core Challenges (1-16):** [GitHub Docs, home](https://docs.github.com/en), [GitHub Changelog](https://github.blog/changelog/)
+- **Bonus Challenges (A-E):** [GitHub Docs, home](https://docs.github.com/en), [GitHub Changelog](https://github.blog/changelog/)
+- **Related Optional Practice:** [GitHub Docs, home](https://docs.github.com/en), [GitHub Changelog](https://github.blog/changelog/)
