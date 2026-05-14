@@ -33,7 +33,7 @@
   },
   {
     "speaker": "ALEX",
-    "text": "Going Deeper with Git: Who this is for: You have completed Chapter 11 (Git & Source Control) and feel comfortable with the basics -- cloning, branching, committing, pushing, and pulling. The next useful detail is concrete: This appendix covers the next tier of Git skills that come up constantly in real open source contribution: cherry-picking fixes across branches, cleaning up messy commit history before a PR, safely undoing mistakes, and understanding why your push sometimes."
+    "text": "Going Deeper with Git: Who this is for: You have completed Chapter 11 (Git & Source Control) and feel comfortable with the basics -- cloning, branching, committing, pushing, and pulling. This appendix covers the next tier of Git skills that come up constantly in real open source contribution: cherry-picking fixes across branches, cleaning up messy commit history before a PR, safely undoing mistakes, and understanding why your push sometimes."
   },
   {
     "speaker": "ALEX",
@@ -41,31 +41,23 @@
   },
   {
     "speaker": "ALEX",
-    "text": "The next layer is this. Learning Cards: Using This Advanced Git Reference has three jobs: name the idea, give the learner a move, and show what counts as evidence."
+    "text": "Learning Cards: Using This Advanced Git Reference."
   },
   {
     "speaker": "ALEX",
     "text": "Here are the anchors worth keeping. Each operation is a numbered h2 section with three sub-paths: VS Code, GitHub CLI, and Git CLI. Use H to jump between operations and 3 to jump between the tool-specific sub-headings within each. The Table of Contents above has anchor links -- activate any link to jump directly to that operation. Command examples are in labeled code blocks -- increase zoom and each command fits on one line. Every section follows the same structure: what it is, when to use it, then tool-specific steps. The Quick Reference table near the bottom gives a one-row-per-operation summary for fast lookup."
   },
   {
-    "speaker": "JAMIE",
-    "text": "What is the one idea that makes the next few steps less mysterious?"
+    "speaker": "ALEX",
+    "text": "what it is: Cherry-pick lets you take a single commit from any branch and apply it to your current branch. Think of it like copy-pasting a specific change -- without bringing the entire branch along with it."
   },
   {
     "speaker": "ALEX",
-    "text": "This is the move inside 1. Cherry-Pick -- Grabbing a Specific Commit: what it is: Cherry-pick lets you take a single commit from any branch and apply it to your current branch. That matters in practice: Think of it like copy-pasting a specific change -- without bringing the entire branch along with it."
+    "text": "You fixed a bug on a feature branch, but main also needs that fix right now. A teammate landed a commit on their branch and you need just that one change. You accidentally committed to the wrong branch and need to move that commit somewhere else."
   },
   {
     "speaker": "ALEX",
-    "text": "That shows up in the workshop in a few specific ways. You fixed a bug on a feature branch, but main also needs that fix right now. A teammate landed a commit on their branch and you need just that one change. You accidentally committed to the wrong branch and need to move that commit somewhere else."
-  },
-  {
-    "speaker": "JAMIE",
-    "text": "That feels much more doable when you say it as one move."
-  },
-  {
-    "speaker": "ALEX",
-    "text": "Right. The magic is not speed. The magic is knowing what changed and why it matters."
+    "text": "Right."
   },
   {
     "speaker": "PAUSE",
@@ -73,23 +65,19 @@
   },
   {
     "speaker": "ALEX",
-    "text": "Now bring the learner back to the room. Anchor this part on Finding the Commit SHA. Before cherry-picking, you need the commit's SHA (the unique ID for that commit)."
-  },
-  {
-    "speaker": "JAMIE",
-    "text": "What is the ordered workflow?"
+    "text": "Before cherry-picking, you need the commit's SHA (the unique ID for that commit)."
   },
   {
     "speaker": "ALEX",
-    "text": "VS Code has three jobs: name the idea, give the learner a move, and show what counts as evidence."
+    "text": "VS Code."
   },
   {
     "speaker": "ALEX",
-    "text": "The path is straightforward once it is named. Step one is open the Timeline panel: Click View → Open View → Timeline (or press Ctrl+Shift+P and type \"Timeline\"). Step two is switch to the branch that has the commit you want, browse the Timeline, and copy the commit SHA shown in the details panel. That is the rhythm: orient, act, verify, continue."
+    "text": "Step one is open the Timeline panel: Click View → Open View → Timeline (or press Ctrl+Shift+P and type \"Timeline\"). Step two is switch to the branch that has the commit you want, browse the Timeline, and copy the commit SHA shown in the details panel."
   },
   {
     "speaker": "ALEX",
-    "text": "The useful habit is simple: orient, act, verify, then continue. That pause between action and trust is part of the work."
+    "text": "That pause between action and trust is part of the work."
   },
   {
     "speaker": "JAMIE",
@@ -97,7 +85,7 @@
   },
   {
     "speaker": "ALEX",
-    "text": "Do not treat Git CLI as decoration. The short SHA is the first 7 characters (a1b2c3d). The workshop is closer to rehearsal than lecture. You hear the move, try the move, and then check what changed."
+    "text": "Do not treat Git CLI as decoration. The short SHA is the first 7 characters (a1b2c3d)."
   },
   {
     "speaker": "ALEX",
@@ -113,7 +101,7 @@
   },
   {
     "speaker": "ALEX",
-    "text": "VS Code (Command Palette) has three jobs: name the idea, give the learner a move, and show what counts as evidence."
+    "text": "VS Code (Command Palette)."
   },
   {
     "speaker": "ALEX",
@@ -133,19 +121,11 @@
   },
   {
     "speaker": "JAMIE",
-    "text": "Now it sounds like a workflow instead of a wall of instructions."
-  },
-  {
-    "speaker": "ALEX",
-    "text": "That is where confidence comes from: not from never getting lost, but from knowing how to recover."
-  },
-  {
-    "speaker": "JAMIE",
     "text": "What should they understand before typing anything?"
   },
   {
     "speaker": "ALEX",
-    "text": "Git CLI has three jobs: name the idea, give the learner a move, and show what counts as evidence."
+    "text": "Git CLI."
   },
   {
     "speaker": "ALEX",
@@ -156,16 +136,12 @@
     "text": ""
   },
   {
-    "speaker": "JAMIE",
-    "text": "Give me the sequence, because order matters here."
+    "speaker": "ALEX",
+    "text": "Cherry-pick can hit conflicts just like a merge. When a cherry-pick stops due to a conflict, run git status in the terminal -- it announces exactly which files need attention."
   },
   {
     "speaker": "ALEX",
-    "text": "This part earns its place because cherry-pick can hit conflicts just like a merge. That gives the learner a foothold: when a cherry-pick stops due to a conflict, run git status in the terminal -- it announces exactly which files need attention. That is the difference between following directions and owning the workflow."
-  },
-  {
-    "speaker": "ALEX",
-    "text": "The path is straightforward once it is named. Step one is Git pauses and marks the conflicting files (same <<<<<<< HEAD markers as merge conflicts). Step two is resolve the conflicts in VS Code's conflict editor (see Chapter 7: Merge Conflicts). Step three is stage the resolved files. Step four is then either. The point is not speed; the point is never losing your place."
+    "text": "Step one is Git pauses and marks the conflicting files (same <<<<<<< HEAD markers as merge conflicts). Step two is resolve the conflicts in VS Code's conflict editor (see Chapter 7: Merge Conflicts). Step three is stage the resolved files. Step four is then either."
   },
   {
     "speaker": "ALEX",
@@ -177,23 +153,19 @@
   },
   {
     "speaker": "ALEX",
-    "text": "2. Interactive Rebase -- Cleaning Up Your History: What it is: Interactive rebase (git rebase -i) is like a time machine for your commits. The next useful detail is concrete: Before you open a PR, you can reorder commits, combine several small commits into one clean commit, rewrite commit messages, or remove commits that were just experiments."
+    "text": "2. Interactive Rebase -- Cleaning Up Your History: What it is: Interactive rebase (git rebase -i) is like a time machine for your commits. Before you open a PR, you can reorder commits, combine several small commits into one clean commit, rewrite commit messages, or remove commits that were just experiments."
   },
   {
     "speaker": "ALEX",
     "text": "If someone is taking notes, this is the short list. You made 8 \"WIP\" commits while working and want to combine them into 1 clean commit for your PR. You want to reword a commit message to better describe what changed. You accidentally committed a debug file and want to remove that commit entirely."
   },
   {
-    "speaker": "JAMIE",
-    "text": "What does the learner do first, second, and then after that?"
+    "speaker": "ALEX",
+    "text": "VS Code has basic rebase support via the Command Palette, but for full interactive rebase you'll want the terminal. After that, git rebase -i will open the commit list in VS Code itself -- much more screen-reader-friendly."
   },
   {
     "speaker": "ALEX",
-    "text": "Here is the learner-facing version. VS Code has basic rebase support via the Command Palette, but for full interactive rebase you'll want the terminal. Put another way, after that, git rebase -i will open the commit list in VS Code itself -- much more screen-reader-friendly."
-  },
-  {
-    "speaker": "ALEX",
-    "text": "Start here: Open the Integrated Terminal: Ctrl+Backtick. Then: Run the command below to rebase the last N commits (replace N with how many commits you want to edit). Next: Your default editor opens with a list of your commits. If it opens in vim, type i to enter insert mode, make your edits, then press Esc followed by:wq to save. If you'd prefer VS Code as the editor. If one step does not match what you hear, stop there and re-orient."
+    "text": "Start here: Open the Integrated Terminal: Ctrl+Backtick. Then: Run the command below to rebase the last N commits (replace N with how many commits you want to edit). Next: Your default editor opens with a list of your commits. If it opens in vim, type i to enter insert mode, make your edits, then press Esc followed by:wq to save. If you'd prefer VS Code as the editor."
   },
   {
     "speaker": "ALEX",
@@ -209,7 +181,7 @@
   },
   {
     "speaker": "ALEX",
-    "text": "Git CLI (Terminal) has three jobs: name the idea, give the learner a move, and show what counts as evidence."
+    "text": "Git CLI (Terminal)."
   },
   {
     "speaker": "ALEX",
@@ -225,7 +197,7 @@
   },
   {
     "speaker": "ALEX",
-    "text": "Here is the moment where the page starts to make sense. Anchor this part on The Commit List -- What You're Looking At. When the editor opens, you see something like this. This is the part to say slowly: Each line starts with a command word. The durable skill is not memorizing one screen. It is knowing how to find your footing when the screen changes."
+    "text": "When the editor opens, you see something like this. This is the part to say slowly: Each line starts with a command word. The durable skill is not memorizing one screen. It is knowing how to find your footing when the screen changes."
   },
   {
     "speaker": "JAMIE",
@@ -233,7 +205,7 @@
   },
   {
     "speaker": "ALEX",
-    "text": "The reason this matters is simple: Git opens a second editor for you to write the combined commit message. The listener should be able to check this: Write a clean summary and save -- done."
+    "text": "Git opens a second editor for you to write the combined commit message. Write a clean summary and save -- done."
   },
   {
     "speaker": "PAUSE",
@@ -241,7 +213,7 @@
   },
   {
     "speaker": "ALEX",
-    "text": "The next point gives the learner a handle. Do not treat Example: Rewriting a Commit Message as decoration. Git opens the commit message for a1b2c3d for you to edit. That is not trivia. Write the new message, save -- done."
+    "text": "The next point gives the learner a handle. Do not treat Example: Rewriting a Commit Message as decoration. Git opens the commit message for a1b2c3d for you to edit. Write the new message, save -- done."
   },
   {
     "speaker": "JAMIE",
@@ -249,7 +221,7 @@
   },
   {
     "speaker": "ALEX",
-    "text": "If the interface shifts, If Something Goes Wrong is still useful because run git rebase -i with VS Code as your editor (git config --global core.editor \"code --wait\") -- the commit list opens in a VS Code tab that your screen reader can navigate normally with arrow keys. For someone navigating by keyboard or screen reader, this detail matters: GitHub Copilot can help: Not sure how to word a squashed commit message?"
+    "text": "run git rebase -i with VS Code as your editor (git config --global core.editor \"code --wait\") -- the commit list opens in a VS Code tab that your screen reader can navigate normally with arrow keys. GitHub Copilot can help: Not sure how to word a squashed commit message?"
   },
   {
     "speaker": "ALEX",
@@ -285,19 +257,15 @@
   },
   {
     "speaker": "ALEX",
-    "text": "The teaching point here is not the label; it is the move. Think of Git as having three layers: your working files (what you can see in the editor), the staging area (what git add puts there), and the commit history. That is the difference between guessing and knowing: It permanently discards your uncommitted changes."
-  },
-  {
-    "speaker": "JAMIE",
-    "text": "Turn that into a path someone can follow."
+    "text": "Think of Git as having three layers: your working files (what you can see in the editor), the staging area (what git add puts there), and the commit history. It permanently discards your uncommitted changes."
   },
   {
     "speaker": "ALEX",
-    "text": "This part earns its place because this is equivalent to git reset --soft HEAD 1 -- your changes come back as staged files, nothing is lost."
+    "text": "This is equivalent to git reset --soft HEAD 1 -- your changes come back as staged files, nothing is lost."
   },
   {
     "speaker": "ALEX",
-    "text": "The path is straightforward once it is named. Step one is open Source Control: Ctrl+Shift+G. Step two is click the \".\" (More Actions) menu at the top of the panel. Step three is select \"Commit → Undo Last Commit\". If one step does not match what you hear, stop there and re-orient."
+    "text": "Step one is open Source Control: Ctrl+Shift+G. Step two is click the \".\" (More Actions) menu at the top of the panel. Step three is select \"Commit → Undo Last Commit\"."
   },
   {
     "speaker": "JAMIE",
@@ -305,7 +273,7 @@
   },
   {
     "speaker": "ALEX",
-    "text": "Using the Command Palette has three jobs: name the idea, give the learner a move, and show what counts as evidence."
+    "text": "Using the Command Palette."
   },
   {
     "speaker": "ALEX",
@@ -329,7 +297,7 @@
   },
   {
     "speaker": "ALEX",
-    "text": "This is the move inside Unstaging a File (Without Undoing the Commit): if you just want to remove a file from the staging area without touching commit history."
+    "text": "if you just want to remove a file from the staging area without touching commit history."
   },
   {
     "speaker": "JAMIE",
@@ -341,7 +309,7 @@
   },
   {
     "speaker": "ALEX",
-    "text": "Keep the thread going. Anchor this part on VS Code. In the Source Control panel, click the minus (--) icon next to a staged file, or right-click it and select \"Unstage Changes\"."
+    "text": "Keep the thread going. In the Source Control panel, click the minus (--) icon next to a staged file, or right-click it and select \"Unstage Changes\"."
   },
   {
     "speaker": "PAUSE",
@@ -357,7 +325,7 @@
   },
   {
     "speaker": "ALEX",
-    "text": "Another way to ground it. Do not treat 4. git revert -- The Safe Undo for Shared Branches as decoration. What it is: git revert creates a new commit that undoes the changes from a previous commit. That is not trivia. Unlike git reset, it does not rewrite history -- it adds to it. The workshop is closer to rehearsal than lecture. You hear the move, try the move, and then check what changed."
+    "text": "Another way to ground it. Do not treat 4. git revert -- The Safe Undo for Shared Branches as decoration. What it is: git revert creates a new commit that undoes the changes from a previous commit. Unlike git reset, it does not rewrite history -- it adds to it."
   },
   {
     "speaker": "ALEX",
@@ -369,7 +337,7 @@
   },
   {
     "speaker": "ALEX",
-    "text": "Start here: Open the Timeline panel and navigate to the commit you want to undo. Then: Right-click the commit and select \"Revert Commit\". Next: VS Code creates a new commit with message Revert \"your original message\" -- review it and push. Each step should leave a trace you can name."
+    "text": "Start here: Open the Timeline panel and navigate to the commit you want to undo. Then: Right-click the commit and select \"Revert Commit\". Next: VS Code creates a new commit with message Revert \"your original message\" -- review it and push."
   },
   {
     "speaker": "PAUSE",
@@ -397,7 +365,7 @@
   },
   {
     "speaker": "ALEX",
-    "text": "The teaching point here is not the label; it is the move. GitHub Copilot can help: Not sure whether to use reset or revert? That is the difference between guessing and knowing: Describe your situation to Copilot Chat: \"I pushed a commit to main that broke the login page."
+    "text": "GitHub Copilot can help: Not sure whether to use reset or revert? Describe your situation to Copilot Chat: \"I pushed a commit to main that broke the login page."
   },
   {
     "speaker": "ALEX",
@@ -405,7 +373,7 @@
   },
   {
     "speaker": "ALEX",
-    "text": "Put that beside the next piece. This part earns its place because what it is: A tag is a permanent label you attach to a specific commit -- usually to mark a release version like v1.0.0. That gives the learner a foothold: unlike a branch (which moves as you commit), a tag always points to the exact same commit forever. That is the difference between following directions and owning the workflow."
+    "text": "Put that beside the next piece. What it is: A tag is a permanent label you attach to a specific commit -- usually to mark a release version like v1.0.0. Unlike a branch (which moves as you commit), a tag always points to the exact same commit forever."
   },
   {
     "speaker": "ALEX",
@@ -433,7 +401,7 @@
   },
   {
     "speaker": "ALEX",
-    "text": "GitHub CLI has three jobs: name the idea, give the learner a move, and show what counts as evidence."
+    "text": "GitHub CLI."
   },
   {
     "speaker": "ALEX",
@@ -465,7 +433,7 @@
   },
   {
     "speaker": "ALEX",
-    "text": "Anchor this part on Pushing Tags to GitHub. Tags are not pushed automatically when you run git push. The durable skill is not memorizing one screen. It is knowing how to find your footing when the screen changes."
+    "text": "Tags are not pushed automatically when you run git push. The durable skill is not memorizing one screen. It is knowing how to find your footing when the screen changes."
   },
   {
     "speaker": "ALEX",
@@ -477,7 +445,7 @@
   },
   {
     "speaker": "ALEX",
-    "text": "Deleting a Tag has three jobs: name the idea, give the learner a move, and show what counts as evidence."
+    "text": "Deleting a Tag."
   },
   {
     "speaker": "ALEX",
@@ -489,7 +457,7 @@
   },
   {
     "speaker": "ALEX",
-    "text": "Do not treat 6. Detached HEAD -- What It Is and How to Get Out as decoration. What it is: Normally, you're working on a branch -- Git tracks your commits and moves the branch forward as you commit. That is not trivia. A \"detached HEAD\" happens when you check out a specific commit SHA (or a tag) directly instead of a branch."
+    "text": "Do not treat 6. Detached HEAD -- What It Is and How to Get Out as decoration. What it is: Normally, you're working on a branch -- Git tracks your commits and moves the branch forward as you commit. A \"detached HEAD\" happens when you check out a specific commit SHA (or a tag) directly instead of a branch."
   },
   {
     "speaker": "ALEX",
@@ -505,7 +473,7 @@
   },
   {
     "speaker": "ALEX",
-    "text": "If you just want to go back to your branch has three jobs: name the idea, give the learner a move, and show what counts as evidence."
+    "text": "If you just want to go back to your branch."
   },
   {
     "speaker": "ALEX",
@@ -517,7 +485,7 @@
   },
   {
     "speaker": "ALEX",
-    "text": "If you made commits in detached HEAD and want to keep them has three jobs: name the idea, give the learner a move, and show what counts as evidence."
+    "text": "If you made commits in detached HEAD and want to keep them."
   },
   {
     "speaker": "ALEX",
@@ -537,7 +505,7 @@
   },
   {
     "speaker": "ALEX",
-    "text": "The teaching point here is not the label; it is the move. VS Code shows the current branch name in the bottom-left status bar. That is the difference between guessing and knowing: If you're in detached HEAD, it shows something like (HEAD detached at a1b2c3d) instead of a branch name."
+    "text": "VS Code shows the current branch name in the bottom-left status bar. If you're in detached HEAD, it shows something like (HEAD detached at a1b2c3d) instead of a branch name."
   },
   {
     "speaker": "PAUSE",
@@ -545,7 +513,7 @@
   },
   {
     "speaker": "ALEX",
-    "text": "That matters because of the next idea. This part earns its place because what it is: After you rebase or amend commits that have already been pushed, the remote branch has a different history than your local branch. That gives the learner a foothold: a regular git push will fail because Git sees them as diverged."
+    "text": "That matters because of the next idea. What it is: After you rebase or amend commits that have already been pushed, the remote branch has a different history than your local branch. A regular git push will fail because Git sees them as diverged."
   },
   {
     "speaker": "JAMIE",
@@ -557,7 +525,7 @@
   },
   {
     "speaker": "ALEX",
-    "text": "This is where the talk moves from concept to action. When You'd Use It has three jobs: name the idea, give the learner a move, and show what counts as evidence."
+    "text": "When You'd Use It."
   },
   {
     "speaker": "ALEX",
@@ -573,7 +541,7 @@
   },
   {
     "speaker": "ALEX",
-    "text": "This is the move inside VS Code: VS Code doesn't have a \"force push\" button in the UI -- this is intentional to prevent accidents."
+    "text": "VS Code doesn't have a \"force push\" button in the UI -- this is intentional to prevent accidents."
   },
   {
     "speaker": "ALEX",
@@ -605,7 +573,7 @@
   },
   {
     "speaker": "ALEX",
-    "text": "The Typical Rebase + Force Push Workflow has three jobs: name the idea, give the learner a move, and show what counts as evidence."
+    "text": "The Typical Rebase + Force Push Workflow."
   },
   {
     "speaker": "ALEX",
@@ -617,7 +585,7 @@
   },
   {
     "speaker": "ALEX",
-    "text": "If the interface shifts, 8. git bisect -- Finding the Commit That Broke Things is still useful because what it is: git bisect performs a binary search through your commit history to find exactly which commit introduced a bug. For someone navigating by keyboard or screen reader, this detail matters: Instead of checking 100 commits one by one, Git cuts the search in half each time -- usually finding the culprit in 7-10 steps."
+    "text": "what it is: git bisect performs a binary search through your commit history to find exactly which commit introduced a bug. Instead of checking 100 commits one by one, Git cuts the search in half each time -- usually finding the culprit in 7-10 steps."
   },
   {
     "speaker": "ALEX",
@@ -645,7 +613,7 @@
   },
   {
     "speaker": "ALEX",
-    "text": "Finishing has three jobs: name the idea, give the learner a move, and show what counts as evidence."
+    "text": "Finishing."
   },
   {
     "speaker": "ALEX",
@@ -657,7 +625,7 @@
   },
   {
     "speaker": "ALEX",
-    "text": "This part earns its place because if you have a test command that exits with code 0 on success and non-zero on failure, Git can run bisect automatically. That gives the learner a foothold: bisect output is plain text -- each step tells you exactly where it checked out and how many steps remain. That is the difference between following directions and owning the workflow."
+    "text": "If you have a test command that exits with code 0 on success and non-zero on failure, Git can run bisect automatically. Bisect output is plain text -- each step tells you exactly where it checked out and how many steps remain."
   },
   {
     "speaker": "ALEX",
@@ -669,11 +637,11 @@
   },
   {
     "speaker": "ALEX",
-    "text": "9. git clean -- Clearing Out Untracked Files: What it is: git clean removes untracked files and directories from your working directory -- files that Git doesn't know about yet (not staged, not committed, not in.gitignore). The next useful detail is concrete: This is useful when you have build artifacts, generated files, or experimental files cluttering your project."
+    "text": "9. git clean -- Clearing Out Untracked Files: What it is: git clean removes untracked files and directories from your working directory -- files that Git doesn't know about yet (not staged, not committed, not in.gitignore). This is useful when you have build artifacts, generated files, or experimental files cluttering your project."
   },
   {
     "speaker": "ALEX",
-    "text": "The parts worth keeping in working memory are these. After a build that left temporary files everywhere. You want a completely fresh state matching the last commit. Clearing out generated files before running a clean build."
+    "text": "After a build that left temporary files everywhere. You want a completely fresh state matching the last commit. Clearing out generated files before running a clean build."
   },
   {
     "speaker": "PAUSE",
@@ -685,7 +653,7 @@
   },
   {
     "speaker": "ALEX",
-    "text": "Always Dry-Run First has three jobs: name the idea, give the learner a move, and show what counts as evidence."
+    "text": "Always Dry-Run First."
   },
   {
     "speaker": "ALEX",
@@ -697,11 +665,11 @@
   },
   {
     "speaker": "ALEX",
-    "text": "This is the move inside VS Code: VS Code's Source Control panel shows untracked files in the \"Changes\" section. That matters in practice: For bulk removal, use the terminal (see Git CLI below)."
+    "text": "VS Code's Source Control panel shows untracked files in the \"Changes\" section. For bulk removal, use the terminal (see Git CLI below)."
   },
   {
     "speaker": "ALEX",
-    "text": "Walk it in order: Open Source Control: Ctrl+Shift+G; Right-click an untracked file; and Select \"Discard Changes\" -- this removes new untracked files. That is the rhythm: orient, act, verify, continue."
+    "text": "Open Source Control: Ctrl+Shift+G; Right-click an untracked file; and Select \"Discard Changes\" -- this removes new untracked files."
   },
   {
     "speaker": "JAMIE",
@@ -721,7 +689,7 @@
   },
   {
     "speaker": "ALEX",
-    "text": "The reason this matters is simple: what it is: Branch protection rules are settings a repository administrator applies to specific branches (usually main or release branches). The listener should be able to check this: They prevent direct pushes, require pull requests, require approvals before merging, and enforce status checks passing."
+    "text": "What it is: Branch protection rules are settings a repository administrator applies to specific branches (usually main or release branches). They prevent direct pushes, require pull requests, require approvals before merging, and enforce status checks passing."
   },
   {
     "speaker": "JAMIE",
@@ -729,7 +697,7 @@
   },
   {
     "speaker": "ALEX",
-    "text": "The Correct Flow for Protected Branches has three jobs: name the idea, give the learner a move, and show what counts as evidence."
+    "text": "The Correct Flow for Protected Branches."
   },
   {
     "speaker": "ALEX",
@@ -741,7 +709,7 @@
   },
   {
     "speaker": "ALEX",
-    "text": "If the interface shifts, Updating a Branch That's Out of Date is still useful because when GitHub says your branch is out of date with main."
+    "text": "when GitHub says your branch is out of date with main."
   },
   {
     "speaker": "PAUSE",
@@ -753,7 +721,7 @@
   },
   {
     "speaker": "ALEX",
-    "text": "Walk it in order: Open Source Control → Ctrl+Shift+P; Type \"merge\" → select \"Git: Merge Branch.\"; Choose origin/main from the list; and Resolve any conflicts, then push again. The point is not speed; the point is never losing your place."
+    "text": "Open Source Control → Ctrl+Shift+P; Type \"merge\" → select \"Git: Merge Branch.\"; Choose origin/main from the list; and Resolve any conflicts, then push again."
   },
   {
     "speaker": "JAMIE",
@@ -785,7 +753,7 @@
   },
   {
     "speaker": "ALEX",
-    "text": "This is the part worth saying out loud. Here is the learner-facing version. Navigate to Settings → Branches in the repository. Put another way, (You need admin access to see the full config; contributors can see the effect through blocked PRs and the merge box status.). A good GitHub workflow is like a well-run meeting: everyone knows the topic, the next action, and who has the floor."
+    "text": "This is the part worth saying out loud. Navigate to Settings → Branches in the repository. (You need admin access to see the full config; contributors can see the effect through blocked PRs and the merge box status.)."
   },
   {
     "speaker": "JAMIE",
@@ -793,7 +761,7 @@
   },
   {
     "speaker": "ALEX",
-    "text": "Learning Cards: Quick Reference Table has three jobs: name the idea, give the learner a move, and show what counts as evidence."
+    "text": "Learning Cards: Quick Reference Table."
   },
   {
     "speaker": "ALEX",
@@ -805,7 +773,7 @@
   },
   {
     "speaker": "ALEX",
-    "text": "Now shift from knowing the term to using it. Anchor this part on 11. Using GitHub Copilot for Git Operations. GitHub Copilot isn't just for writing code -- it's genuinely useful for Git operations, especially when you're doing something unfamiliar, hit a conflict, or need to understand what a command did. This is the part to say slowly: Here's how to use it across the advanced operations in this appendix."
+    "text": "Now shift from knowing the term to using it. Using GitHub Copilot for Git Operations. GitHub Copilot isn't just for writing code -- it's genuinely useful for Git operations, especially when you're doing something unfamiliar, hit a conflict, or need to understand what a command did. This is the part to say slowly: Here's how to use it across the advanced operations in this appendix."
   },
   {
     "speaker": "JAMIE",
@@ -813,7 +781,7 @@
   },
   {
     "speaker": "ALEX",
-    "text": "The reason this matters is simple: when a cherry-pick, rebase, or branch merge stops due to a conflict, VS Code highlights the conflict regions. The listener should be able to check this: Place your cursor inside a conflict block and ask Copilot."
+    "text": "When a cherry-pick, rebase, or branch merge stops due to a conflict, VS Code highlights the conflict regions. Place your cursor inside a conflict block and ask Copilot."
   },
   {
     "speaker": "ALEX",
@@ -821,7 +789,7 @@
   },
   {
     "speaker": "ALEX",
-    "text": "This is where confidence starts to build. Do not treat Writing Better Commit Messages as decoration. Copilot is excellent at turning \"WIP: stuff\" into a clear, conventional commit message. That is not trivia. Open Copilot Chat after staging your changes and try. The workshop is closer to rehearsal than lecture. You hear the move, try the move, and then check what changed."
+    "text": "This is where confidence starts to build. Do not treat Writing Better Commit Messages as decoration. Copilot is excellent at turning \"WIP: stuff\" into a clear, conventional commit message. Open Copilot Chat after staging your changes and try."
   },
   {
     "speaker": "ALEX",
@@ -837,11 +805,11 @@
   },
   {
     "speaker": "ALEX",
-    "text": "If the interface shifts, Understanding Confusing Git Output is still useful because Git's error messages and status output can be cryptic. For someone navigating by keyboard or screen reader, this detail matters: Paste them directly into Copilot Chat."
+    "text": "Git's error messages and status output can be cryptic. Paste them directly into Copilot Chat."
   },
   {
     "speaker": "ALEX",
-    "text": "Here is what that changes in practice. \"I got this git error message: [paste it]. What does it mean and how do I fix it?\". \"My git status output looks like this: [paste it]. What happened and what should I do next?\". \"I accidentally ran git reset --hard. What are my options for recovering my changes?\"."
+    "text": "\"I got this git error message: [paste it]. What does it mean and how do I fix it?\". \"My git status output looks like this: [paste it]. What happened and what should I do next?\". \"I accidentally ran git reset --hard. What are my options for recovering my changes?\"."
   },
   {
     "speaker": "ALEX",
@@ -849,7 +817,7 @@
   },
   {
     "speaker": "ALEX",
-    "text": "The room should hear these as checkpoints. \"I committed a fix on my feature branch but main also needs it urgently. What's the right git command to use?\" → Copilot will suggest cherry-pick. \"I have 6 messy commits on my PR branch before I open the PR. How do I clean them up?\" → Interactive rebase with squash. \"I pushed a commit that broke CI and I need to undo it without force-pushing.\" → git revert. \"My PR branch hasn't been updated from main in two weeks. How do I bring it up to date?\" → fetch + rebase or merge."
+    "text": "\"I committed a fix on my feature branch but main also needs it urgently. What's the right git command to use?\" → Copilot will suggest cherry-pick. \"I have 6 messy commits on my PR branch before I open the PR. How do I clean them up?\" → Interactive rebase with squash. \"I pushed a commit that broke CI and I need to undo it without force-pushing.\" → git revert. \"My PR branch hasn't been updated from main in two weeks. How do I bring it up to date?\" → fetch + rebase or merge."
   },
   {
     "speaker": "JAMIE",
@@ -857,7 +825,7 @@
   },
   {
     "speaker": "ALEX",
-    "text": "The teaching point here is not the label; it is the move. When git bisect lands on a commit and you're not sure what to test."
+    "text": "When git bisect lands on a commit and you're not sure what to test."
   },
   {
     "speaker": "ALEX",
@@ -869,7 +837,7 @@
   },
   {
     "speaker": "ALEX",
-    "text": "Here is the practical turn. This part earns its place because paste the full error message from a rejected push into Copilot. That is the difference between following directions and owning the workflow."
+    "text": "Here is the practical turn. Paste the full error message from a rejected push into Copilot."
   },
   {
     "speaker": "ALEX",
@@ -881,7 +849,7 @@
   },
   {
     "speaker": "ALEX",
-    "text": "GitHub Copilot CLI -- Git Command Suggestions: If you have the GitHub CLI with Copilot extension installed, you can ask for git commands directly in the terminal. The next useful detail is concrete: Copilot CLI explains the command before running it and asks for confirmation -- great for learning while doing."
+    "text": "GitHub Copilot CLI -- Git Command Suggestions: If you have the GitHub CLI with Copilot extension installed, you can ask for git commands directly in the terminal. Copilot CLI explains the command before running it and asks for confirmation -- great for learning while doing."
   },
   {
     "speaker": "ALEX",
