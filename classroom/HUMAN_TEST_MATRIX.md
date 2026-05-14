@@ -170,7 +170,7 @@ Seed Challenge 10 if continuing from Day 1 did not naturally reach it.
     - Close Challenge 15.
     - Verify Challenge 16 appears.
 
-16. **Challenge 16: Capstone Project**
+16. **Challenge 16: Capstone Project (Build Your Agent (Capstone))**
     - Choose Accessibility Agents, GLOW, or another meaningful repository.
     - Create or draft an agentic contribution with a clear mission, responsibilities, and guardrails.
     - Open a PR, prepare a branch, or write a contribution issue/plan.

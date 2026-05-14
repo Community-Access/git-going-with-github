@@ -46,7 +46,7 @@ Goal: work locally, perform code review, and complete the capstone contribution.
 4. Challenge 13: AI as Your Copilot
 5. Challenge 14: Template Remix
 6. Challenge 15: Meet the Agents
-7. Challenge 16: Capstone Project
+7. Challenge 16: Capstone Project (Build Your Agent (Capstone))
 
 Expected Day 2 outcome:
 

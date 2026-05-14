@@ -295,7 +295,7 @@ The [Challenge 15 solution reference](https://github.com/Community-Access/git-go
 </details>
 
 <details>
-<summary>Challenge 16: Capstone Project</summary>
+<summary>Challenge 16: Capstone Project (Build Your Agent (Capstone))</summary>
 
 **Chapters:** Ch18, Ch20 | **Evidence:** Comment | **Autograded**
 

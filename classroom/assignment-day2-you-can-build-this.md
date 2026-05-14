@@ -45,7 +45,7 @@ Complete these challenges in order. Each one builds on the previous. The live ag
 | 13. AI as Your Copilot | Use Copilot to improve documentation and evaluate its output | [Chapter 16](https://github.com/Community-Access/git-going-with-github/blob/main/docs/16-github-copilot.md) |
 | 14. Template Remix | Create a custom YAML issue template | [Chapter 17](https://github.com/Community-Access/git-going-with-github/blob/main/docs/17-issue-templates.md) |
 | 15. Meet the Agents | Explore and run agents from the accessibility-agents repo | [Chapter 19](https://github.com/Community-Access/git-going-with-github/blob/main/docs/19-accessibility-agents.md) |
-| 16. Capstone Project | Prepare an impactful agentic contribution with responsibilities, guardrails, and review evidence | [Chapter 20](https://github.com/Community-Access/git-going-with-github/blob/main/docs/20-build-your-agent.md) |
+| 16. Capstone Project (Build Your Agent (Capstone)) | Prepare an impactful agentic contribution with responsibilities, guardrails, and review evidence | [Chapter 20](https://github.com/Community-Access/git-going-with-github/blob/main/docs/20-build-your-agent.md) |
 
 ## Automated Checks
 
