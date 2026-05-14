@@ -138,7 +138,7 @@ When you are finished, return to **this** issue (Challenge 2) and activate the *
 Communication in open source is all about collaboration. Sometimes you need to draw someone's attention to a specific issue. We accomplish this using `@mentions`.
 
 **Your Goal:**
-Mention Aria, your Workshop Agent, in a comment to ask for a workspace check.
+Mention Gandalf, your Workshop Agent, in a comment to ask for a workspace check.
 
 **Step-by-Step:**
 
@@ -148,7 +148,7 @@ Mention Aria, your Workshop Agent, in a comment to ask for a workspace check.
 1. Navigate to the **Issues** tab and select an open issue.
 2. Navigate to the "Leave a comment" text area at the bottom of the issue thread.
 3. Type the `@` symbol followed by the handle `aria-bot`. A menu should appear to help you select a name.
-4. Add a friendly message like, "@aria-bot could you please check my work?"
+4. Add a friendly message like, "@gandalf-bot could you please check my work?"
 5. Send your comment by selecting the **Comment** button.
 
 </details>
@@ -158,8 +158,8 @@ Mention Aria, your Workshop Agent, in a comment to ask for a workspace check.
 
 1. Open the **GitHub Issues** panel.
 2. Use the arrow keys to choose your open issue from the list.
-3. In the issue's **Comment** text area, type `@aria-bot`. VS Code will often provide suggestions for you.
-4. Add your message: "@aria-bot could you please check my work?"
+3. In the issue's **Comment** text area, type `@gandalf-bot`. VS Code will often provide suggestions for you.
+4. Add your message: "@gandalf-bot could you please check my work?"
 5. Send your comment by selecting the **Comment** button or using `Ctrl+Enter` (`Cmd+Enter` on Mac).
 
 </details>
@@ -168,16 +168,16 @@ Mention Aria, your Workshop Agent, in a comment to ask for a workspace check.
 <summary><b>Command Line (GitHub CLI)</b></summary>
 
 1. Identify the issue number you want to comment on: `gh issue list`.
-2. Run the command to add a comment: `gh issue comment [issue-number] --body "@aria-bot could you please check my work?"`.
+2. Run the command to add a comment: `gh issue comment [issue-number] --body "@gandalf-bot could you please check my work?"`.
 3. Verify your comment was posted: `gh issue view [issue-number] --comments`.
 
 </details>
 
 **Expected Outcome:**
-Your comment will appear in the issue history, and Aria will receive a notification to review your progress.
+Your comment will appear in the issue history, and Gandalf will receive a notification to review your progress.
 
 **Troubleshooting:**
-- **The menu did not appear?** Aria might be busy! Just type `@aria-bot` manually and post the comment.
+- **The menu did not appear?** Gandalf might be busy! Just type `@gandalf-bot` manually and post the comment.
 -**Want more details?** Review [Chapter 5: Working with Issues](https://github.com/Community-Access/git-going-with-github/blob/main/docs/05-working-with-issues.md).
 
 **To Unlock Challenge 4:**
@@ -192,7 +192,7 @@ Post a link to your comment (or the issue you commented on) right here, and then
 **Body:**
 **You are a communication pro! Let us get into the code.**
 
-In Git, a "branch" is a safe space to work on your ideas without affecting the main project. Think of it as a parallel universe where you can experiment! Aria is watching for new branches to help you along.
+In Git, a "branch" is a safe space to work on your ideas without affecting the main project. Think of it as a parallel universe where you can experiment! Gandalf is watching for new branches to help you along.
 
 **Your Goal:**
 Create a feature branch where you can safely make changes.
@@ -229,10 +229,10 @@ Create a feature branch where you can safely make changes.
 </details>
 
 **Expected Outcome:**
-The page will refresh, and the branch selector will now display your new branch name instead of `main`. Aria will detect your new branch and is ready for your first commit!
+The page will refresh, and the branch selector will now display your new branch name instead of `main`. Gandalf will detect your new branch and is ready for your first commit!
 
 **Troubleshooting:**
-- **Forgot the name?** Don't worry, Aria can see all your branches.
+- **Forgot the name?** Don't worry, Gandalf can see all your branches.
 -**Branch name invalid?** Branch names cannot contain spaces. Use hyphens or underscores instead!
 -**Need more guidance?** Review [Chapter 4: The Learning Room](https://github.com/Community-Access/git-going-with-github/blob/main/docs/04-the-learning-room.md).
 
@@ -248,10 +248,10 @@ Reply to this issue with your new branch name, and then activate **Close issue**
 **Body:**
 **Branch created! You are ready to make your mark.**
 
-Now that you have a safe branch, it is time to edit a file and save your changes. Saving changes in Git is called making a "commit." Aria can help review your commit messages for clarity!
+Now that you have a safe branch, it is time to edit a file and save your changes. Saving changes in Git is called making a "commit." Gandalf can help review your commit messages for clarity!
 
 **Your Goal:**
-Edit a file in your repository and make a commit with a clear message. Ask Aria what she thinks of your message!
+Edit a file in your repository and make a commit with a clear message. Ask Gandalf for feedback of your message!
 
 **Step-by-Step:**
 
@@ -291,10 +291,10 @@ Edit a file in your repository and make a commit with a clear message. Ask Aria 
 </details>
 
 **Expected Outcome:**
-Your changes are securely saved! If you want feedback on your message, mention `@aria-bot` in your next comment.
+Your changes are securely saved! If you want feedback on your message, mention `@gandalf-bot` in your next comment.
 
 **Troubleshooting:**
-- **Accidentally saved to the wrong branch?** Ask Aria or a facilitator for help.
+- **Accidentally saved to the wrong branch?** Ask Gandalf or a facilitator for help.
 -**Want to read more?** [Chapter 4: The Learning Room](https://github.com/Community-Access/git-going-with-github/blob/main/docs/04-the-learning-room.md).
 
 **To Unlock Challenge 6:**
@@ -309,10 +309,10 @@ Leave a comment here saying "Committed!" and then activate **Close issue** to mo
 **Body:**
 **Changes securely committed! Time to share them with the world.**
 
-A Pull Request (PR) is how you ask to merge your work. Aria will perform an automated "Aria Review" as soon as you open it!
+A Pull Request (PR) is how you ask to merge your work. Gandalf will perform an automated "Gandalf Review" as soon as you open it!
 
 **Your Goal:**
-Open a Pull Request and let Aria run her first set of automated accessibility checks.
+Open a Pull Request and let Gandalf run her first set of automated accessibility checks.
 
 **Step-by-Step:**
 
@@ -351,11 +351,11 @@ Open a Pull Request and let Aria run her first set of automated accessibility ch
 </details>
 
 **Expected Outcome:**
-Your PR is live! Within seconds, look for a comment from **Aria the Workshop Agent**. She will provide a "Validation Report" on your changes.
+Your PR is live! Within seconds, look for a comment from **Gandalf the Workshop Agent**. Gandalf will provide a "Validation Report" on your changes.
 
 **Troubleshooting:**
-- **Aria didn't respond?** Check the "Checks" tab at the top of the PR to see if her automation is running.
--**Validation failed?** Read Aria's report! She usually provides specific tips on how to fix accessibility issues.
+- **Gandalf didn't respond?** Check the "Checks" tab at the top of the PR to see if her automation is running.
+-**Validation failed?** Read Gandalf's report! She usually provides specific tips on how to fix accessibility issues.
 -**Learn more about PRs: ** [Chapter 6: Working with Pull Requests](https://github.com/Community-Access/git-going-with-github/blob/main/docs/06-working-with-pull-requests.md).
 
 **To Unlock Challenge 7:**
@@ -370,10 +370,10 @@ Post a link to your Pull Request right here, then activate **Close issue**!
 **Body:**
 **Pull Request successfully opened! You are doing amazing.**
 
-Sometimes, two people edit the same line. This is a "Merge Conflict." Aria is an expert at explaining these - just ask her if you get stuck!
+Sometimes, two people edit the same line. This is a "Merge Conflict." Gandalf is an expert at explaining these - just ask her if you get stuck!
 
 **Your Goal:**
-Resolve a conflict if one appears, or ask Aria to explain how conflicts work.
+Resolve a conflict if one appears, or ask Gandalf to explain how conflicts work.
 
 **Step-by-Step:**
 
@@ -410,17 +410,17 @@ Resolve a conflict if one appears, or ask Aria to explain how conflicts work.
 
 </details>
 
-**Not sure what to do?** Drop a comment: `@aria-bot I have a merge conflict, can you explain this?`
+**Not sure what to do?** Drop a comment: `@gandalf-bot I have a merge conflict, can you explain this?`
 
 **Expected Outcome:**
-The conflict warning will disappear. If you asked Aria for help, she'll reply with a step-by-step guide to conflict resolution.
+The conflict warning will disappear. If you asked Gandalf for help, she'll reply with a step-by-step guide to conflict resolution.
 
 **Troubleshooting:**
-- **No conflict?** You're lucky! But still ask Aria: `@aria-bot explain merge conflict` to learn for next time.
+- **No conflict?** You're lucky! But still ask Gandalf: `@gandalf-bot explain merge conflict` to learn for next time.
 -**Need a deep dive?** Read [Chapter 7: Merge Conflicts](https://github.com/Community-Access/git-going-with-github/blob/main/docs/07-merge-conflicts.md).
 
 **To Unlock Challenge 8:**
-Leave a comment here explaining how Aria helped you understand conflicts, then activate **Close issue**!
+Leave a comment here explaining how Gandalf helped you understand conflicts, then activate **Close issue**!
 
 ---
 
@@ -463,7 +463,7 @@ Record your reflection as a comment right here, and then activate **Close issue*
 You have communicated, branched, committed, and resolved. Now it is the moment of truth. It is time to merge your changes into the main project!
 
 **Your Goal:**
-Get your Pull Request reviewed, approved, and merged! Aria will be cheering you on at the finish line.
+Get your Pull Request reviewed, approved, and merged! Gandalf will be cheering you on at the finish line.
 
 **Step-by-Step:**
 
@@ -471,7 +471,7 @@ Get your Pull Request reviewed, approved, and merged! Aria will be cheering you 
 <summary><b>Web Browser</b></summary>
 
 1. Navigate back to your Pull Request.
-2. Ask your buddy or a facilitator to review your PR. You can also mention `@aria-bot` to let her know you're ready!
+2. Ask your buddy or a facilitator to review your PR. You can also mention `@gandalf-bot` to let her know you're ready!
 3. Once approved, select the **Merge pull request** button.
 4. Finalize the merge by selecting **Confirm merge**.
 5. Optional but recommended: Select the option to **Delete branch** to keep your repository organized.
@@ -501,16 +501,16 @@ Get your Pull Request reviewed, approved, and merged! Aria will be cheering you 
 </details>
 
 **Expected Outcome:**
-Your Pull Request will display a "Merged" status indicator. Aria might leave a final celebratory comment on your repository! 
+Your Pull Request will display a "Merged" status indicator. Gandalf might leave a final celebratory comment on your repository! 
 
 **Troubleshooting:**
-- **The merge button is disabled?** Aria or other automated checks might still be running. Wait for the green checkmarks!
+- **The merge button is disabled?** Gandalf or other automated checks might still be running. Wait for the green checkmarks!
 -**Want to know more about wrapping up?** Check out [Chapter 10: Notifications and Day 1 Close](https://github.com/Community-Access/git-going-with-github/blob/main/docs/10-notifications-and-day-1-close.md).
 
 **To Finish Day 1:**
 Leave a comment here saying "MERGED!" and then activate **Close issue**.
 
-**Congratulations!** Aria is proud of you. You have completely finished Day 1. Rest, hydrate, and prepare for a fantastic Day 2!
+**Congratulations!** Gandalf is proud of you. You have completely finished Day 1. Rest, hydrate, and prepare for a fantastic Day 2!
 
 ---
 
@@ -591,10 +591,10 @@ Reply to this issue with a joyful message that you pushed your code, and then ac
 **Body:**
 **Excellent work connecting your local environment!**
 
-Now that your local branch is safely on GitHub, it is time to propose merging those changes into the main project. Aria will be waiting to validate your work!
+Now that your local branch is safely on GitHub, it is time to propose merging those changes into the main project. Gandalf will be waiting to validate your work!
 
 **Your Goal:**
-Open a Pull Request from your local branch and wait for Aria's automated validation report.
+Open a Pull Request from your local branch and wait for Gandalf's automated validation report.
 
 **Step-by-Step:**
 
@@ -632,11 +632,11 @@ Open a Pull Request from your local branch and wait for Aria's automated validat
 </details>
 
 **Expected Outcome:**
-Your Pull Request is live! Aria will run her automated checks and post a validation report right in the conversation.
+Your Pull Request is live! Gandalf will run the automated checks and post a validation report right in the conversation.
 
 **Troubleshooting:**
 - **Cannot find your branch?** Verify that the "push" command completed successfully locally.
--**Aria is silent?** Check the "Checks" tab to see if the workflow is running.
+-**Gandalf is silent?** Check the "Checks" tab to see if the workflow is running.
 Post a link to your new Pull Request right here, then activate **Close issue**!
 
 ---
@@ -651,7 +651,7 @@ Post a link to your new Pull Request right here, then activate **Close issue**!
 Reviewing code is where the most learning happens in open source. It is about asking questions, offering suggestions, and assuming best intent.
 
 **Your Goal:**
-Review a classmate's Pull Request and provide specific, constructive feedback. Aria will celebrate your collaborative spirit!
+Review a classmate's Pull Request and provide specific, constructive feedback. Gandalf will celebrate your collaborative spirit!
 
 **Step-by-Step:**
 
@@ -688,7 +688,7 @@ Review a classmate's Pull Request and provide specific, constructive feedback. A
 </details>
 
 **Expected Outcome:**
-Your feedback appears on their PR! Aria will post a celebration message once your review is approved.
+Your feedback appears on their PR! Gandalf will post a celebration message once your review is approved.
 
 **Troubleshooting:**
 - **No classmate PRs to review?** Ask a facilitator for a sample PR to practice on.
@@ -706,10 +706,10 @@ Leave a comment here confirming you left a review, and then activate **Close iss
 **Body:**
 **Time to introduce AI into your workflow!**
 
-GitHub Copilot is your AI pair programmer - much like Aria, it’s here to help you build great things. Today, we’ll use it to improve documentation.
+GitHub Copilot is your AI pair programmer - much like Gandalf, it’s here to help you build great things. Today, we’ll use it to improve documentation.
 
 **Your Goal:**
-Use GitHub Copilot to suggest improvements and have Aria review the result!
+Use GitHub Copilot to suggest improvements and have Gandalf review the result!
 
 **Step-by-Step:**
 
@@ -721,7 +721,7 @@ Use GitHub Copilot to suggest improvements and have Aria review the result!
 3. Type `Ctrl+I` (`Cmd+I` on Mac) to open the **Copilot Inline Chat**.
 4. Ask Copilot to improve the clarity or structure: "Rewrite this README section to be more inclusive and descriptive."
 5. Accept the suggestion by selecting **Accept** or `Ctrl+Enter` (`Cmd+Enter` on Mac).
-6. Mention `@aria-bot` in your commit message or a PR comment to have her audit the change!
+6. Mention `@gandalf-bot` in your commit message or a PR comment to have her audit the change!
 
 </details>
 
@@ -823,21 +823,21 @@ Post a link to your Issue Template PR here, then activate **Close issue**!
 **Body:**
 **We are moving into our capstone project space!**
 
-Accessibility Agents like Aria are automated tools that assist visually impaired users or check for compliance. Today, you'll meet more of Aria's peers!
+Accessibility Agents like Gandalf are automated tools that assist visually impaired users or check for compliance. Today, you'll meet more of Gandalf's peers!
 
 **Your Goal:**
-Explore the main `accessibility-agents` repository. Ask Aria if you have questions about any particular agent!
+Explore the main `accessibility-agents` repository. Ask Gandalf if you have questions about any particular agent!
 
 **Step-by-Step:**
 1. Navigate to the [Community-Access/accessibility-agents](https://github.com/Community-Access/accessibility-agents) repository.
-2. Read the `README.md` to understand how Aria and her colleagues work.
+2. Read the `README.md` to understand how Gandalf and its colleagues work.
 3. Explore an existing agent folder to see its structure.
 
 **Expected Outcome:**
-You'll understand the agent architecture. If you're confused, mention `@aria-bot` with: "How does the agent schema work?"
+You'll understand the agent architecture. If you're confused, mention `@gandalf-bot` with: "How does the agent schema work?"
 
 **Troubleshooting:**
-- **Lost?** Ask Aria for help.
+- **Lost?** Ask Gandalf for help.
 -**Want architectural context?** Review [Chapter 19: Accessibility Agents](https://github.com/Community-Access/git-going-with-github/blob/main/docs/19-accessibility-agents.md).
 
 **To Unlock Challenge 16:**

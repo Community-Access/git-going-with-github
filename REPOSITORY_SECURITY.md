@@ -51,7 +51,7 @@ Student repos are created from the `learning-room-template`. Branch protection i
 - Students can create branches freely (required for challenges)
 - Students can merge their own PRs (required for the learning flow)
 - No force push protection (students are learning; mistakes are part of the process)
-- GitHub Actions workflows run with read/write permissions (required for Aria and the Progression Bot)
+- GitHub Actions workflows run with read/write permissions (required for Gandalf and the Progression Bot)
 
 ### What Students Cannot Do
 
@@ -113,7 +113,7 @@ The template repository includes these workflows, which are copied into every st
 
 | Workflow | Trigger | Permissions | What It Does |
 |---|---|---|---|
-| `pr-validation-bot.yml` | PR opened/updated | Read/Write | Aria validates PR structure and posts feedback |
+| `pr-validation-bot.yml` | PR opened/updated | Read/Write | Gandalf validates PR structure and posts feedback |
 | `student-progression.yml` | Issue closed | Read/Write | Creates the next challenge issue |
 | `autograder-conflicts.yml` | Push | Read | Checks for conflict markers |
 | `autograder-local-commit.yml` | Push | Read | Verifies local commit evidence |
@@ -181,7 +181,7 @@ See [teardown-checklist.md](classroom/teardown-checklist.md) for the complete po
 
 **Deployment verification:** Complete the verification checklist in the [Workshop Deployment Guide](classroom/README.md#step-6-verify-everything-works). This confirms:
 - Student repos are created correctly from the template
-- Aria responds to PRs within 60 seconds
+- Gandalf responds to PRs within 60 seconds
 - The Progression Bot creates challenge issues on issue close
 - Autograding runs and reports results
 - The feedback PR is created by Classroom
@@ -203,7 +203,7 @@ See [teardown-checklist.md](classroom/teardown-checklist.md) for the complete po
 | Incident | Response |
 |---|---|
 | GitHub is down | Continue teaching fundamentals offline; resume when GitHub is back |
-| Aria stops responding | Check Actions tab; facilitators post feedback manually until resolved |
+| Gandalf stops responding | Check Actions tab; facilitators post feedback manually until resolved |
 | Autograding fails | Check workflow logs; use it as a teaching moment about CI/CD |
 | Student cannot accept invite | Verify GitHub account exists and is signed in; check roster match |
 | Progression Bot skips a challenge | Check Actions tab for errors; manually create the missed issue |

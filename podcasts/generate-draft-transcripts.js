@@ -782,7 +782,7 @@ function buildClosingTeachingPoint(title) {
 }
 
 function lowerFirst(text) {
-  if (/^(I|GitHub|Git|VS Code|NVDA|JAWS|VoiceOver|Copilot|Aria|AI|URL)\b/.test(text)) return text;
+  if (/^(I|GitHub|Git|VS Code|NVDA|JAWS|VoiceOver|Copilot|Gandalf|AI|URL|ARIA)\b/.test(text)) return text;
   return text ? text.charAt(0).toLowerCase() + text.slice(1) : text;
 }
 

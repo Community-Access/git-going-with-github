@@ -86,7 +86,7 @@ Generate a short, conversational two-host teaching episode for this challenge.
 3. Teach the concept before the steps
 4. Walk the task in screen-reader-friendly language
 5. Explain the evidence the learner submits
-6. Explain what Aria or the autograder checks, if applicable
+6. Explain what Gandalf or the validation workflow checks, if applicable
 7. Name common mistakes and recovery paths
 8. Describe what success sounds or feels like
 9. Bridge to the next challenge
