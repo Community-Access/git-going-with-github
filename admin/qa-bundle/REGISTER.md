@@ -26,11 +26,12 @@ You only need one path to begin.
 ## One path to begin
 
 1. Sign in to your [GitHub account](https://github.com/login).
-2. Open the enrollment form.
+2. Open the enrollment form in a new tab.
 3. Answer the five quick prompts.
-4. Submit and wait for the automation comment with your classroom join link.
+4. Submit the form and open the new issue page that appears.
+5. Stay on that issue page until the automation comment posts your classroom link.
 
-> [**Begin the Adventure**](https://github.com/community-access/git-going-with-github/issues/new?template=classroom-enrollment.yml&title=%5BENROLL%5D+GIT+Going+with+GitHub+Classroom)
+> <a href="https://github.com/community-access/git-going-with-github/issues/new?template=classroom-enrollment.yml&title=%5BENROLL%5D+GIT+Going+with+GitHub+Classroom" target="_blank" rel="noopener noreferrer"><strong>Begin the Adventure (opens in new tab)</strong></a>
 
 ## How to fill the form (wizard tips)
 
@@ -45,6 +46,8 @@ Use this quick spellbook so your form is accepted on the first try:
 Your GitHub username is detected automatically from the account that submits the issue.
 
 If your goals box is blank, try this starter line: `I want to feel confident using Git and GitHub in real projects.`
+
+If you do not receive an email notification, refresh your submitted issue page directly to see the latest automation comment.
 
 ## What happens automatically
 
