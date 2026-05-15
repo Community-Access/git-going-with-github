@@ -222,7 +222,7 @@ Each assignment generates a unique invite URL.
 1. GitHub shows a "Join classroom" page if they are not already on the roster
 2. If on the roster, they see "Accept this assignment"
 3. After accepting, GitHub creates their private repo within 30-60 seconds
-4. The student's repository URL follows the pattern: `github.com/Community-Access-Classroom/learning-room-[username]`
+4. The student's repository URL follows the pattern: `github.com/<classroom-org>/<assignment-slug>-<github-username>` (example: `you-belong-here-accesswatch`).
 
 ### Which links to send
 
