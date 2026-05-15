@@ -43,59 +43,80 @@ function main() {
   fs.mkdirSync(OUTPUT_DIR, { recursive: true });
   const completedJobs = ledger.listJobsByStatus([JOB_STATUS.COMPLETED]);
   let applied = 0;
+  let skipped = 0;
+  const failures = [];
 
   for (const job of completedJobs) {
     const markerPath = path.join(OUTPUT_DIR, `${job.job_id}.applied`);
     if (args.onlyUnapplied && fs.existsSync(markerPath)) continue;
-    const resultRow = ledger.getResultByJobId(job.job_id);
-    const content = extractResponseContent(resultRow);
-    if (!content) continue;
-    const parsed = parseModelResult(content);
     const slug = job.source_record_id;
-    const packetPath = job.source_file;
-    const packet = JSON.parse(fs.readFileSync(packetPath, 'utf8'));
-    const sourceEntries = (packet.sourceFiles || []).map(source => {
-      const absolute = path.isAbsolute(source.path) ? source.path : path.join(ROOT, source.path);
-      return {
-        sourcePath: absolute,
-        sourceLabel: path.basename(absolute),
-        exists: fs.existsSync(absolute),
-        content: fs.existsSync(absolute) ? fs.readFileSync(absolute, 'utf8') : '',
-        concepts: []
+    try {
+      const resultRow = ledger.getResultByJobId(job.job_id);
+      const content = extractResponseContent(resultRow);
+      if (!content) {
+        skipped += 1;
+        continue;
+      }
+      const parsed = parseModelResult(content);
+      const packetPath = job.source_file;
+      const packet = JSON.parse(fs.readFileSync(packetPath, 'utf8'));
+      const sourceEntries = (packet.sourceFiles || []).map(source => {
+        const absolute = path.isAbsolute(source.path) ? source.path : path.join(ROOT, source.path);
+        return {
+          sourcePath: absolute,
+          sourceLabel: path.basename(absolute),
+          exists: fs.existsSync(absolute),
+          content: fs.existsSync(absolute) ? fs.readFileSync(absolute, 'utf8') : '',
+          concepts: []
+        };
+      });
+      const transcript = parsed.script || '';
+      const segments = parseSegments(transcript);
+      const evaluation = evaluateTranscript({
+        transcriptPath: `${slug}.batch.candidate`,
+        transcript,
+        sources: sourceEntries,
+        concepts: packet.concepts || []
+      });
+      const candidatePath = path.join(OUTPUT_DIR, `${slug}.candidate.json`);
+      const payload = {
+        generatedAt: new Date().toISOString(),
+        slug,
+        model: job.model,
+        provider: 'batch',
+        script: transcript,
+        segments,
+        chapters: parsed.chapters || [],
+        coverageNotes: parsed.coverageNotes || [],
+        parseMode: parsed.parseMode,
+        evaluation,
+        repairAttempted: false,
+        repairSucceeded: false,
+        repairPasses: 0,
+        usage: null
       };
-    });
-    const transcript = parsed.script || '';
-    const segments = parseSegments(transcript);
-    const evaluation = evaluateTranscript({
-      transcriptPath: `${slug}.batch.candidate`,
-      transcript,
-      sources: sourceEntries,
-      concepts: packet.concepts || []
-    });
-    const candidatePath = path.join(OUTPUT_DIR, `${slug}.candidate.json`);
-    const payload = {
-      generatedAt: new Date().toISOString(),
-      slug,
-      model: job.model,
-      provider: 'batch',
-      script: transcript,
-      segments,
-      chapters: parsed.chapters || [],
-      coverageNotes: parsed.coverageNotes || [],
-      parseMode: parsed.parseMode,
-      evaluation,
-      repairAttempted: false,
-      repairSucceeded: false,
-      repairPasses: 0,
-      usage: null
-    };
-    fs.writeFileSync(candidatePath, JSON.stringify(payload, null, 2) + '\n', 'utf8');
-    runNode([PUBLISH_SCRIPT, '--slug', slug, '--candidate', candidatePath, '--write-live']);
-    fs.writeFileSync(markerPath, new Date().toISOString(), 'utf8');
-    applied += 1;
+      fs.writeFileSync(candidatePath, JSON.stringify(payload, null, 2) + '\n', 'utf8');
+      runNode([PUBLISH_SCRIPT, '--slug', slug, '--candidate', candidatePath, '--write-live']);
+      fs.writeFileSync(markerPath, new Date().toISOString(), 'utf8');
+      applied += 1;
+    } catch (error) {
+      failures.push({
+        slug,
+        jobId: job.job_id,
+        error: error && error.message ? error.message : String(error)
+      });
+      console.warn(`[WARN] Skipped apply for ${slug} (${job.job_id}): ${error.message || error}`);
+    }
   }
 
   console.log(`Applied completed jobs to live scripts: ${applied}`);
+  if (skipped > 0) console.log(`Skipped jobs with empty result payload: ${skipped}`);
+  if (failures.length) {
+    console.log(`Skipped jobs with parse/publish errors: ${failures.length}`);
+    failures.forEach(item => {
+      console.log(`- ${item.slug} (${item.jobId}): ${item.error}`);
+    });
+  }
   ledger.close();
 }
 
