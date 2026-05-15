@@ -1,0 +1,1066 @@
+﻿[
+    {
+        "speaker":  "ALEX",
+        "text":  "Welcome back. Today we\u0027re building a practical reference guide for GitHub Copilot in VS Code, especially for blind and low-vision learners who want workflows that are predictable, reviewable, and accessible."
+    },
+    {
+        "speaker":  "JAMIE",
+        "text":  "So this is less, what is Copilot, and more, how do I actually operate it well?"
+    },
+    {
+        "speaker":  "ALEX",
+        "text":  "Exactly. Think of this as the companion reference episode. We\u0027re going to cover keyboard shortcuts, chat context tools, slash commands, modes, the newer agent features, custom instructions, accessible view, troubleshooting, plugins, cloud workflows, models, pricing, and usage limits."
+    },
+    {
+        "speaker":  "JAMIE",
+        "text":  "And I\u0027m glad you said accessible view early, because that\u0027s one of those things that changes the experience completely for screen reader users."
+    },
+    {
+        "speaker":  "ALEX",
+        "text":  "It really does. Also, this appendix is positioned as a reference companion to the main Copilot lesson, and it explicitly points learners to authoritative sources like GitHub Docs, VS Code Docs for Copilot Chat, and relevant VS Code release notes. It also mentions a related audio lesson that gives a broad conversational overview. So the appendix is meant to be both practical and cross-checked."
+    },
+    {
+        "speaker":  "PAUSE",
+        "text":  ""
+    },
+    {
+        "speaker":  "ALEX",
+        "text":  "Let\u0027s start with the basic keyboard shortcuts for inline suggestions, sometimes called ghost text."
+    },
+    {
+        "speaker":  "JAMIE",
+        "text":  "That\u0027s the suggestion that appears right in the editor before I accept it?"
+    },
+    {
+        "speaker":  "ALEX",
+        "text":  "Right. The core actions are: accept the whole suggestion with Tab, reject it with Escape, accept one word at a time with Control+Right Arrow on Windows and Linux or Command+Right Arrow on macOS, move to the next alternative with Alt+Right Bracket or Option+Right Bracket, move to the previous alternative with Alt+Left Bracket or Option+Left Bracket, open the full suggestion list with Control+Enter or Command+Enter, open the suggestion in Accessible View with Alt+F2 or Option+F2, and insert the suggestion from Accessible View at the cursor with Control+Slash or Command+Slash."
+    },
+    {
+        "speaker":  "JAMIE",
+        "text":  "That word-by-word acceptance sounds especially important."
+    },
+    {
+        "speaker":  "ALEX",
+        "text":  "It is. The appendix specifically recommends word-by-word acceptance for screen reader users because it lets you review incrementally instead of committing to a large block all at once."
+    },
+    {
+        "speaker":  "JAMIE",
+        "text":  "And if ghost text is noisy or hard to parse?"
+    },
+    {
+        "speaker":  "ALEX",
+        "text":  "Use the Accessible View workflow. When a suggestion appears, press Alt+F2 to hear or review the full text in a stable pane, then press Control+Slash to insert it directly from that Accessible View without closing the panel first."
+    },
+    {
+        "speaker":  "JAMIE",
+        "text":  "That\u0027s a much calmer interaction than chasing streaming text in the editor."
+    },
+    {
+        "speaker":  "ALEX",
+        "text":  "Exactly."
+    },
+    {
+        "speaker":  "PAUSE",
+        "text":  ""
+    },
+    {
+        "speaker":  "ALEX",
+        "text":  "Now chat shortcuts. To open the Chat panel, on Windows and Linux it\u0027s Control+Alt+I. On macOS, keymaps can differ, so the safer instruction given here is to use the Command Palette and run Chat: Open Chat if needed. Inline chat, meaning chat at the cursor in the file, is Control+I on Windows and Linux or Command+I on macOS. Quick Chat, the floating dialog, is Control+Shift+Alt+I on Windows and Linux or Command+Shift+Control+I on macOS. Send a message with Control+Enter or Command+Enter. Clear chat history with Control+L or Command+L."
+    },
+    {
+        "speaker":  "JAMIE",
+        "text":  "And there\u0027s a separate accessibility shortcut group too, right?"
+    },
+    {
+        "speaker":  "ALEX",
+        "text":  "Yes. Open Accessible View with Alt+F2 or Option+F2. Open Accessible Help with Alt+H or Option+H. Close Accessible View with Escape. And the recommendation is very direct: use Accessible View every time Copilot responds. The reason is that it gives you the complete response in a readable pane, without streaming, without live region noise, and with better structural navigation."
+    },
+    {
+        "speaker":  "JAMIE",
+        "text":  "So not just sometimes. Every time, if you\u0027re using a screen reader."
+    },
+    {
+        "speaker":  "ALEX",
+        "text":  "That\u0027s the recommended habit."
+    },
+    {
+        "speaker":  "PAUSE",
+        "text":  ""
+    },
+    {
+        "speaker":  "ALEX",
+        "text":  "Next, chat participants and variables. These are about feeding Copilot the right context."
+    },
+    {
+        "speaker":  "JAMIE",
+        "text":  "I always mix those up. What\u0027s the difference?"
+    },
+    {
+        "speaker":  "ALEX",
+        "text":  "Participants, the ones that start with at-sign, scope where Copilot should look. Variables, the ones that start with a hash mark, attach specific context."
+    },
+    {
+        "speaker":  "JAMIE",
+        "text":  "Let\u0027s do participants first."
+    },
+    {
+        "speaker":  "ALEX",
+        "text":  "The key participants listed here are @workspace, @github, and @terminal. @workspace searches your entire VS Code workspace for relevant context. But there\u0027s an important note: it\u0027s been superseded by #codebase, which works in all modes, not just Ask mode. So for new prompts, prefer #codebase. @github accesses GitHub.com data, like issues, pull requests, and code across the platform. @terminal provides context from the integrated terminal."
+    },
+    {
+        "speaker":  "JAMIE",
+        "text":  "Can you give examples in plain language?"
+    },
+    {
+        "speaker":  "ALEX",
+        "text":  "Sure. You might ask @workspace to find all places where heading hierarchy is documented. You might ask @github to search a repository for issues labeled accessibility. Or ask @terminal what the last command output meant."
+    },
+    {
+        "speaker":  "JAMIE",
+        "text":  "And variables?"
+    },
+    {
+        "speaker":  "ALEX",
+        "text":  "The variables listed are #file, #selection, #codebase, #githubRepo, and #terminalLastCommand. #file opens a file picker so you can attach any file from your workspace. #selection attaches your currently selected text. #codebase searches the full codebase for relevant snippets and is preferred over @workspace. #githubRepo lets you search any GitHub repository you have access to, using syntax like a question followed by #githubRepo and the owner slash repo. And #terminalLastCommand attaches the last terminal command and its output."
+    },
+    {
+        "speaker":  "JAMIE",
+        "text":  "So if I select a paragraph in Markdown and want feedback, I\u0027d use #selection."
+    },
+    {
+        "speaker":  "ALEX",
+        "text":  "Exactly. Or if you want Copilot to inspect conventions across the whole project, use #codebase. If a build failed and you want interpretation, use #terminalLastCommand."
+    },
+    {
+        "speaker":  "PAUSE",
+        "text":  ""
+    },
+    {
+        "speaker":  "ALEX",
+        "text":  "Now slash commands. In Copilot Chat, type a slash to see available commands."
+    },
+    {
+        "speaker":  "JAMIE",
+        "text":  "These are like built-in shortcuts for common jobs?"
+    },
+    {
+        "speaker":  "ALEX",
+        "text":  "That\u0027s a good way to think about them. The built-in commands called out here are /explain, /fix, /tests, /doc, /new, /help, and /clear. /explain explains selected code or text in plain language. /fix suggests fixes for selected broken code. /tests generates unit tests for a selected function in code files. /doc generates documentation, like JSDoc or a docstring, for parsed code. /new scaffolds a new file or project structure. /help shows all available commands and participants. /clear clears the current chat history."
+    },
+    {
+        "speaker":  "JAMIE",
+        "text":  "And there are workspace management commands too."
+    },
+    {
+        "speaker":  "ALEX",
+        "text":  "Yes. /init analyzes your workspace and auto-generates a.github/copilot-instructions.md file tailored to your project. /savePrompt saves the current chat conversation as a reusable.prompt.md slash command file."
+    },
+    {
+        "speaker":  "JAMIE",
+        "text":  "That sounds useful for documentation teams too, not just code."
+    },
+    {
+        "speaker":  "ALEX",
+        "text":  "Absolutely, and the appendix says so. For documentation work, you might select a section of Markdown and run /explain to get a plain-language explanation of purpose and structure. Or select a broken YAML template and use /fix. It also notes that built-in slash commands are separate from additional workspace-level commands that can be added by a project, such as the Accessibility Agents setup mentioned elsewhere."
+    },
+    {
+        "speaker":  "PAUSE",
+        "text":  ""
+    },
+    {
+        "speaker":  "ALEX",
+        "text":  "Now let\u0027s talk about chat modes, because mode choice strongly affects behavior."
+    },
+    {
+        "speaker":  "JAMIE",
+        "text":  "This is where people get confused and blame the model, when really they picked the wrong mode."
+    },
+    {
+        "speaker":  "ALEX",
+        "text":  "Exactly right. The appendix says Copilot Chat has four modes, unified into a single Chat view since VS Code version 1.99 in March 2025. Those modes are Ask, Edit, Agent, and Plan."
+    },
+    {
+        "speaker":  "JAMIE",
+        "text":  "Walk me through them."
+    },
+    {
+        "speaker":  "ALEX",
+        "text":  "Ask is conversational question and answer. Copilot explains, suggests, and answers, but does not directly edit files. It\u0027s best for questions, explanations, discussion, and exploring ideas. Edit lets you define a working set of files. Copilot then proposes edits as a diff that you can approve or reject. Best for targeted, controlled multi-file edits. Agent is more autonomous. Copilot decides which files to touch, reads and writes code, and can run terminal commands. It uses MCP tools as part of that broader agent workflow. Best for larger end-to-end tasks. Plan writes an implementation plan first and does not write code until you approve the plan. Best for complex features where you want to validate the approach first."
+    },
+    {
+        "speaker":  "JAMIE",
+        "text":  "So Plan is the safer thinking-first mode."
+    },
+    {
+        "speaker":  "ALEX",
+        "text":  "Yes. Especially if you want review before action."
+    },
+    {
+        "speaker":  "JAMIE",
+        "text":  "And where do screen reader users find the mode control?"
+    },
+    {
+        "speaker":  "ALEX",
+        "text":  "The note here says the mode selector is in the Chat panel toolbar at the bottom. Tab through the bottom of the Chat view to find it. The current mode name is the accessible label. Press Space or Enter to open the dropdown."
+    },
+    {
+        "speaker":  "JAMIE",
+        "text":  "There\u0027s also a reminder that model selection is a separate control."
+    },
+    {
+        "speaker":  "ALEX",
+        "text":  "Right. Mode and model are different knobs. Mode changes workflow behavior. Model changes the underlying AI engine."
+    },
+    {
+        "speaker":  "PAUSE",
+        "text":  ""
+    },
+    {
+        "speaker":  "ALEX",
+        "text":  "The appendix also includes learning-card style reminders for participants, slash commands, and modes. The key accessibility takeaway is that typing at-sign or slash in chat opens keyboard-navigable autocomplete lists, and the mode selector can be reached by tabbing through the bottom toolbar."
+    },
+    {
+        "speaker":  "JAMIE",
+        "text":  "Those little operational details matter because if you can\u0027t reliably reach the control, the feature may as well not exist."
+    },
+    {
+        "speaker":  "ALEX",
+        "text":  "Well said."
+    },
+    {
+        "speaker":  "PAUSE",
+        "text":  ""
+    },
+    {
+        "speaker":  "ALEX",
+        "text":  "Now we move into the newer agent features in VS Code 1.120 and later, starting with the Agents window and its accessibility implications."
+    },
+    {
+        "speaker":  "JAMIE",
+        "text":  "Agent-first workflow sounds powerful, but also potentially risky if learners think it means, let the AI do everything."
+    },
+    {
+        "speaker":  "ALEX",
+        "text":  "And that is why the appendix emphasizes safe review workflow. The overall idea of an Agents window is to provide a dedicated place for agent-style work: choosing the agent behavior, reviewing proposed actions, and managing more autonomous tasks in a clearer interface."
+    },
+    {
+        "speaker":  "JAMIE",
+        "text":  "What are the key features learners should know conceptually?"
+    },
+    {
+        "speaker":  "ALEX",
+        "text":  "That the Agents window supports an agent-first workflow, exposes actions and context more explicitly, and is meant to improve visibility into what Copilot is planning to do. It highlights how to open the Agents window, how the interface is laid out, and how to review changes safely before accepting them. It also treats accessibility and inclusion as first-class concerns, not afterthoughts."
+    },
+    {
+        "speaker":  "JAMIE",
+        "text":  "So what does safe review mean here?"
+    },
+    {
+        "speaker":  "ALEX",
+        "text":  "Review proposed edits as diffs, inspect file changes before approving, confirm terminal commands rather than assuming they\u0027re harmless, and treat autonomous suggestions as drafts that still require human verification. For blind and low-vision contributors, that means using predictable navigation, diff review, and Accessible View or structured panes whenever available."
+    },
+    {
+        "speaker":  "JAMIE",
+        "text":  "And settings and limitations?"
+    },
+    {
+        "speaker":  "ALEX",
+        "text":  "The appendix flags that these newer agent interfaces may depend on version, plan, and rollout state. So instructors should teach them as evolving features, verify availability in the current VS Code build and GitHub plan, and be explicit about limitations rather than presenting them as guaranteed everywhere."
+    },
+    {
+        "speaker":  "JAMIE",
+        "text":  "There\u0027s also workshop placement guidance."
+    },
+    {
+        "speaker":  "ALEX",
+        "text":  "Yes. Teach the basic Ask and Edit workflows first, then introduce Agents once learners understand review and approval boundaries."
+    },
+    {
+        "speaker":  "PAUSE",
+        "text":  ""
+    },
+    {
+        "speaker":  "ALEX",
+        "text":  "Closely related are MCP servers, especially for accessibility scanning tools."
+    },
+    {
+        "speaker":  "JAMIE",
+        "text":  "MCP is one of those terms that sounds mysterious until someone explains it simply."
+    },
+    {
+        "speaker":  "ALEX",
+        "text":  "In plain language, MCP is a protocol that lets tools expose capabilities to AI assistants in a structured way. In this context, MCP servers can give Copilot access to external tools, including accessibility scanners."
+    },
+    {
+        "speaker":  "JAMIE",
+        "text":  "So Copilot can ask the tool to do something, instead of pretending to do it from memory."
+    },
+    {
+        "speaker":  "ALEX",
+        "text":  "Exactly. The appendix points to a core catalog of many MCP tools, discusses how to use MCP tools in VS Code, and how they can also fit into CI/CD workflows."
+    },
+    {
+        "speaker":  "JAMIE",
+        "text":  "What\u0027s the teaching angle for accessibility scanning?"
+    },
+    {
+        "speaker":  "ALEX",
+        "text":  "That agent workflows become more trustworthy when they can call real tooling for checks like accessibility scans, rather than just generating advice. But learners should still verify outputs, understand what a tool actually tested, and avoid assuming coverage is complete."
+    },
+    {
+        "speaker":  "JAMIE",
+        "text":  "And in CI/CD?"
+    },
+    {
+        "speaker":  "ALEX",
+        "text":  "The idea is that tooling used interactively can often also be used in automation pipelines, creating a consistent workflow from local exploration to repeatable validation."
+    },
+    {
+        "speaker":  "PAUSE",
+        "text":  ""
+    },
+    {
+        "speaker":  "ALEX",
+        "text":  "Next, smart actions."
+    },
+    {
+        "speaker":  "JAMIE",
+        "text":  "Those are contextual actions Copilot offers based on where you are and what you\u0027re doing?"
+    },
+    {
+        "speaker":  "ALEX",
+        "text":  "Yes. The appendix calls out available smart actions, how to trigger them, keyboard shortcuts for them, screen reader and low-vision workflows, and workshop guidance. The big idea is that these are context-sensitive shortcuts to common AI-assisted operations."
+    },
+    {
+        "speaker":  "JAMIE",
+        "text":  "What should accessible users keep in mind?"
+    },
+    {
+        "speaker":  "ALEX",
+        "text":  "First, discoverability matters. If an action appears contextually, learners need a reliable keyboard route to it. Second, they should understand what the action will do before triggering it. Third, outputs still need review, especially if the action can modify code or generate text that sounds polished but may be wrong."
+    },
+    {
+        "speaker":  "PAUSE",
+        "text":  ""
+    },
+    {
+        "speaker":  "ALEX",
+        "text":  "Then there\u0027s the Browser Agent, which the appendix marks as experimental."
+    },
+    {
+        "speaker":  "JAMIE",
+        "text":  "Experimental is one of those labels people need to hear twice."
+    },
+    {
+        "speaker":  "ALEX",
+        "text":  "Agreed. The Browser Agent can work with browser-based tasks, but because it\u0027s experimental, instructors should teach it cautiously. The appendix covers what it can do, how to use it, example prompts, and then explicitly warns that it\u0027s experimental."
+    },
+    {
+        "speaker":  "JAMIE",
+        "text":  "What\u0027s the accessibility angle there?"
+    },
+    {
+        "speaker":  "ALEX",
+        "text":  "Two things. First, testing in a browser can surface accessibility issues in a more realistic environment. Second, automation in a browser can be flaky, incomplete, or hard to interpret. So it\u0027s helpful for exploration, but not a substitute for deliberate accessibility testing with human judgment and dedicated tools."
+    },
+    {
+        "speaker":  "JAMIE",
+        "text":  "So workshop guidance would be: demonstrate, but don\u0027t make it foundational."
+    },
+    {
+        "speaker":  "ALEX",
+        "text":  "Exactly."
+    },
+    {
+        "speaker":  "PAUSE",
+        "text":  ""
+    },
+    {
+        "speaker":  "ALEX",
+        "text":  "Plan Agent deserves its own emphasis. It works by generating a plan before implementation."
+    },
+    {
+        "speaker":  "JAMIE",
+        "text":  "So unlike full Agent mode, it pauses at the thinking stage."
+    },
+    {
+        "speaker":  "ALEX",
+        "text":  "Yes. The appendix explains how Plan Agent works, gives an example workflow, compares it with a full implementation agent, explains when to use it, lists keyboard shortcuts, and highlights accessibility and planning workflows."
+    },
+    {
+        "speaker":  "JAMIE",
+        "text":  "When is it especially useful?"
+    },
+    {
+        "speaker":  "ALEX",
+        "text":  "For complex changes, risky refactors, broad features, or anytime you want to validate scope and sequence before files are touched. It\u0027s also great pedagogically because learners can inspect the plan, ask clarifying questions, and learn how experienced developers structure work."
+    },
+    {
+        "speaker":  "JAMIE",
+        "text":  "That sounds friendlier for students who want confidence before action."
+    },
+    {
+        "speaker":  "ALEX",
+        "text":  "Very much so."
+    },
+    {
+        "speaker":  "PAUSE",
+        "text":  ""
+    },
+    {
+        "speaker":  "ALEX",
+        "text":  "Another emerging concept is Copilot Spaces, described here as a team knowledge base."
+    },
+    {
+        "speaker":  "JAMIE",
+        "text":  "What is a Copilot Space in practical terms?"
+    },
+    {
+        "speaker":  "ALEX",
+        "text":  "A shared knowledge context that teams can create and reuse so Copilot has access to important project information beyond just the current open files. The appendix covers what a Space is, why it matters, how to create one, how to use it, and accessibility and team workflow considerations."
+    },
+    {
+        "speaker":  "JAMIE",
+        "text":  "Why do Spaces matter for teams doing accessible open source work?"
+    },
+    {
+        "speaker":  "ALEX",
+        "text":  "Because teams often have recurring standards: accessibility requirements, documentation voice, contribution conventions, testing expectations, architectural notes. A shared knowledge base can reduce repeated prompting and make responses more consistent."
+    },
+    {
+        "speaker":  "JAMIE",
+        "text":  "But I\u0027m guessing the same rule still applies: shared context helps, but doesn\u0027t replace careful review."
+    },
+    {
+        "speaker":  "ALEX",
+        "text":  "Always."
+    },
+    {
+        "speaker":  "PAUSE",
+        "text":  ""
+    },
+    {
+        "speaker":  "ALEX",
+        "text":  "Now a major section: custom instructions at all levels."
+    },
+    {
+        "speaker":  "JAMIE",
+        "text":  "This is where we move from, what can Copilot do, to, how do we shape how it behaves?"
+    },
+    {
+        "speaker":  "ALEX",
+        "text":  "Exactly. The appendix covers always-on instructions, multi-tool and monorepo patterns, cross-tool compatibility, conditional scoped instructions, organization-level instructions, deprecated settings-based instructions, comparisons between approaches, and learning cards."
+    },
+    {
+        "speaker":  "JAMIE",
+        "text":  "Let\u0027s start with the most common file."
+    },
+    {
+        "speaker":  "ALEX",
+        "text":  "The flagship always-on instructions file is.github/copilot-instructions.md. This is the project-level place to define how you want Copilot to behave in that repository."
+    },
+    {
+        "speaker":  "JAMIE",
+        "text":  "And the appendix includes an example instruction set for an accessibility-focused project."
+    },
+    {
+        "speaker":  "ALEX",
+        "text":  "Yes. It specifically names Copilot instructions for an accessibility-agents project and includes categories such as accessibility standards, documentation style, commit message format, and code quality."
+    },
+    {
+        "speaker":  "JAMIE",
+        "text":  "Can you unpack those categories?"
+    },
+    {
+        "speaker":  "ALEX",
+        "text":  "Accessibility standards means telling Copilot to preserve semantic structure, use accessible patterns, and avoid introducing barriers. Documentation style means specifying tone, formatting, heading practices, clarity expectations, and maybe plain-language goals. Commit message format means establishing a convention for generated commits. Code quality means style, correctness expectations, testing, and maintainability."
+    },
+    {
+        "speaker":  "JAMIE",
+        "text":  "And /init can auto-generate a starter instructions file."
+    },
+    {
+        "speaker":  "ALEX",
+        "text":  "Right. That\u0027s explicitly called out. /init analyzes the workspace and creates a project-tailored.github/copilot-instructions.md, which you can then refine."
+    },
+    {
+        "speaker":  "JAMIE",
+        "text":  "What about AGENTS.md and CLAUDE.md?"
+    },
+    {
+        "speaker":  "ALEX",
+        "text":  "The appendix presents AGENTS.md as an always-on instruction pattern useful for multi-tool or monorepo setups, and CLAUDE.md as a cross-tool compatibility approach. The broader lesson is that different AI tools may look for different convention files, so teams may choose to maintain files that multiple tools can use."
+    },
+    {
+        "speaker":  "JAMIE",
+        "text":  "And supported locations matter."
+    },
+    {
+        "speaker":  "ALEX",
+        "text":  "Yes. For any of these approaches, where the file lives affects whether and how tools load it."
+    },
+    {
+        "speaker":  "PAUSE",
+        "text":  ""
+    },
+    {
+        "speaker":  "ALEX",
+        "text":  "Then there are conditional or scoped instructions using.instructions.md files."
+    },
+    {
+        "speaker":  "JAMIE",
+        "text":  "This is the part where instructions apply only to certain files or contexts?"
+    },
+    {
+        "speaker":  "ALEX",
+        "text":  "Exactly. The appendix discusses locations, frontmatter, applyTo glob patterns, how files are triggered, and gives an example for test file conventions."
+    },
+    {
+        "speaker":  "JAMIE",
+        "text":  "So you might say, for all test files, use a certain naming pattern or assertion style."
+    },
+    {
+        "speaker":  "ALEX",
+        "text":  "Yes. The appendix even includes a test standards example and says to create an instructions file for that. The important concept is that scoped instructions let you avoid one giant global instruction file. Instead, you can target conventions to the files where they matter."
+    },
+    {
+        "speaker":  "JAMIE",
+        "text":  "And frontmatter is used to declare metadata, like what files the instruction should apply to."
+    },
+    {
+        "speaker":  "ALEX",
+        "text":  "Correct. The applyTo pattern is the key part for matching files. Then the tool decides when to load those instructions based on the current file or task."
+    },
+    {
+        "speaker":  "JAMIE",
+        "text":  "Organization-level instructions come next."
+    },
+    {
+        "speaker":  "ALEX",
+        "text":  "Yes. For GitHub Enterprise and Teams environments, organization-level instructions can standardize behavior across many repositories, subject to plan and platform requirements. The appendix notes requirements for that setup."
+    },
+    {
+        "speaker":  "JAMIE",
+        "text":  "And settings-based instructions are deprecated."
+    },
+    {
+        "speaker":  "ALEX",
+        "text":  "Right. The guidance is to use files instead. File-based instructions are more transparent, more portable, and easier to version in the repo."
+    },
+    {
+        "speaker":  "JAMIE",
+        "text":  "Then there\u0027s a comparison section."
+    },
+    {
+        "speaker":  "ALEX",
+        "text":  "Yes. The practical takeaway is: use repository-level files for team-shared defaults, scoped instruction files for file-type-specific rules, organization-level instructions when central governance is appropriate, and avoid relying on deprecated settings-based approaches."
+    },
+    {
+        "speaker":  "PAUSE",
+        "text":  ""
+    },
+    {
+        "speaker":  "ALEX",
+        "text":  "That leads naturally into accessible view workflow, which gets its own dedicated section."
+    },
+    {
+        "speaker":  "JAMIE",
+        "text":  "And rightly so."
+    },
+    {
+        "speaker":  "ALEX",
+        "text":  "The recommendation is strong: for every Copilot interaction, use Accessible View."
+    },
+    {
+        "speaker":  "JAMIE",
+        "text":  "Why is it better for screen reader users?"
+    },
+    {
+        "speaker":  "ALEX",
+        "text":  "Because it provides a stable pane with the complete response, avoids streaming chatter and live region interruptions, and offers more structured navigation. The appendix explicitly says this is better than trying to consume responses as they arrive live."
+    },
+    {
+        "speaker":  "JAMIE",
+        "text":  "What navigation guidance is given?"
+    },
+    {
+        "speaker":  "ALEX",
+        "text":  "There are separate notes for NVDA and JAWS, and for VoiceOver. The main concept is that screen reader users should navigate within Accessible View using their normal reading and structural navigation commands rather than wrestling with a live-updating chat stream."
+    },
+    {
+        "speaker":  "JAMIE",
+        "text":  "And this applies not only to chat responses, but also inline suggestions and code blocks."
+    },
+    {
+        "speaker":  "ALEX",
+        "text":  "Exactly. Accessible View can be used to inspect inline suggestions and to read code blocks in a more manageable form."
+    },
+    {
+        "speaker":  "PAUSE",
+        "text":  ""
+    },
+    {
+        "speaker":  "ALEX",
+        "text":  "After that, the appendix gives a configuration scope reference."
+    },
+    {
+        "speaker":  "JAMIE",
+        "text":  "Meaning where settings and instructions live, and who they affect?"
+    },
+    {
+        "speaker":  "ALEX",
+        "text":  "Right. The three main scopes are workspace or repository, user or personal, and organization. Workspace or repository scope is team-shared and travels with the project. User or personal scope follows you across workspaces. Organization scope is GitHub-configured for enterprise or team contexts."
+    },
+    {
+        "speaker":  "JAMIE",
+        "text":  "That seems simple, but it matters when something behaves differently on two machines."
+    },
+    {
+        "speaker":  "ALEX",
+        "text":  "Exactly. If a behavior is repo-specific, your teammate may see it too. If it\u0027s user-level, only you see it. If it\u0027s organization-level, it may come from central configuration."
+    },
+    {
+        "speaker":  "JAMIE",
+        "text":  "And then instruction priority and conflicts."
+    },
+    {
+        "speaker":  "ALEX",
+        "text":  "Yes. The appendix explains that instructions can be combined, and when multiple instructions exist, priority rules determine which one wins within the same scope. The practical guidance is to avoid conflicting instructions when possible, keep files clear and focused, and understand that more specific scoped rules may coexist with broader project defaults."
+    },
+    {
+        "speaker":  "PAUSE",
+        "text":  ""
+    },
+    {
+        "speaker":  "ALEX",
+        "text":  "There\u0027s also a quick reference for file types used in customization."
+    },
+    {
+        "speaker":  "JAMIE",
+        "text":  "Like, what kinds of files can I create to customize behavior?"
+    },
+    {
+        "speaker":  "ALEX",
+        "text":  "Yes. The appendix provides an all-file-types quick reference and notes how to create any new customization file. Even if learners don\u0027t memorize every filename, they should recognize the major categories: always-on instruction files, scoped instruction files, reusable prompt files, and related tool-specific files."
+    },
+    {
+        "speaker":  "JAMIE",
+        "text":  "Then we get a settings reference."
+    },
+    {
+        "speaker":  "ALEX",
+        "text":  "Right. It summarizes core instruction settings, organization instructions, deprecated task-specific instructions, and settings sync."
+    },
+    {
+        "speaker":  "JAMIE",
+        "text":  "Settings sync is important because personal settings can follow you."
+    },
+    {
+        "speaker":  "ALEX",
+        "text":  "Exactly. That\u0027s useful, but it can also create confusion if you forget a behavior comes from synced user settings rather than the repository."
+    },
+    {
+        "speaker":  "PAUSE",
+        "text":  ""
+    },
+    {
+        "speaker":  "ALEX",
+        "text":  "Next is diagnostics and troubleshooting."
+    },
+    {
+        "speaker":  "JAMIE",
+        "text":  "Always my favorite section, because eventually something doesn\u0027t load."
+    },
+    {
+        "speaker":  "ALEX",
+        "text":  "The appendix starts with viewing all loaded customizations. That\u0027s critical: before guessing, inspect what instruction files and customizations are actually active."
+    },
+    {
+        "speaker":  "JAMIE",
+        "text":  "And the common issues list is very practical."
+    },
+    {
+        "speaker":  "ALEX",
+        "text":  "Yes. It includes cases where copilot-instructions.md is not being followed, where a.instructions.md file is not loading automatically, where a custom agent name doesn\u0027t appear, where a slash command doesn\u0027t appear, where instructions from different files conflict, and where a setting for instruction file locations doesn\u0027t work."
+    },
+    {
+        "speaker":  "JAMIE",
+        "text":  "What\u0027s the general troubleshooting method across those cases?"
+    },
+    {
+        "speaker":  "ALEX",
+        "text":  "Check file names and locations first. Then verify the current tool version and feature availability. Confirm whether the feature is supported in your plan or environment. Review whether the file\u0027s scope matches your expectation. For scoped instructions, verify the applyTo pattern. For command and agent visibility, confirm registration and supported locations. For conflicts, simplify and isolate until behavior becomes predictable."
+    },
+    {
+        "speaker":  "JAMIE",
+        "text":  "So less magic, more systematic debugging."
+    },
+    {
+        "speaker":  "ALEX",
+        "text":  "Exactly."
+    },
+    {
+        "speaker":  "PAUSE",
+        "text":  ""
+    },
+    {
+        "speaker":  "ALEX",
+        "text":  "There\u0027s also a compact quick reference card."
+    },
+    {
+        "speaker":  "JAMIE",
+        "text":  "What does it emphasize?"
+    },
+    {
+        "speaker":  "ALEX",
+        "text":  "Opening Copilot, reading Copilot responses, accepting or rejecting suggestions, and managing instructions. In other words, the minimal operational loop: open the tool, read output accessibly, decide whether to accept, and know where behavior is being shaped."
+    },
+    {
+        "speaker":  "PAUSE",
+        "text":  ""
+    },
+    {
+        "speaker":  "ALEX",
+        "text":  "Now we get a fuller screen reader workflow guide, described as an official guide."
+    },
+    {
+        "speaker":  "JAMIE",
+        "text":  "This sounds like the step-by-step setup section."
+    },
+    {
+        "speaker":  "ALEX",
+        "text":  "Yes. It starts with prerequisites, then Step 1 is enabling VS Code screen reader mode."
+    },
+    {
+        "speaker":  "JAMIE",
+        "text":  "That alone can affect how the editor presents information."
+    },
+    {
+        "speaker":  "ALEX",
+        "text":  "Right. Step 2 is configuring accessibility signals, optional but recommended. Those can provide helpful cues without relying only on visual indicators."
+    },
+    {
+        "speaker":  "JAMIE",
+        "text":  "Then there\u0027s an official shortcut table."
+    },
+    {
+        "speaker":  "ALEX",
+        "text":  "Yes, sourced from accessibility guidance. Step 4 is especially important: the recommended workflow for inline suggestions. The screen reader-optimized workflow is to avoid trying to parse ghost text live. Instead, when a suggestion appears, open it in Accessible View, read it in full, then insert it if you want it."
+    },
+    {
+        "speaker":  "JAMIE",
+        "text":  "And Step 5 covers chat responses."
+    },
+    {
+        "speaker":  "ALEX",
+        "text":  "Right. Again, the key recommendation is to read chat output through Accessible View. The appendix also mentions reading the suggestions panel with Control+Enter, which opens the full list of alternatives."
+    },
+    {
+        "speaker":  "JAMIE",
+        "text":  "And there are resources and learning cards too."
+    },
+    {
+        "speaker":  "ALEX",
+        "text":  "Yes. The point is to reinforce one stable, repeatable workflow rather than leaving learners to improvise."
+    },
+    {
+        "speaker":  "PAUSE",
+        "text":  ""
+    },
+    {
+        "speaker":  "ALEX",
+        "text":  "Next, the plugin ecosystem, specifically awesome-copilot."
+    },
+    {
+        "speaker":  "JAMIE",
+        "text":  "What is that in plain language?"
+    },
+    {
+        "speaker":  "ALEX",
+        "text":  "A repository and collection that helps users browse, install, and work with Copilot-related plugins. The appendix describes the repository structure and a /plugin command for browsing and installing from chat."
+    },
+    {
+        "speaker":  "JAMIE",
+        "text":  "So a learner might use chat itself to discover plugins?"
+    },
+    {
+        "speaker":  "ALEX",
+        "text":  "Yes. It also highlights that key plugins are available via that /plugin workflow."
+    },
+    {
+        "speaker":  "JAMIE",
+        "text":  "And there\u0027s CLI installation too."
+    },
+    {
+        "speaker":  "ALEX",
+        "text":  "Right. The appendix includes command-line oriented tasks like browsing the marketplace, adding the awesome-copilot collection, installing a specific plugin, and listing what you have installed."
+    },
+    {
+        "speaker":  "JAMIE",
+        "text":  "There\u0027s also MCP server integration, with Docker required."
+    },
+    {
+        "speaker":  "ALEX",
+        "text":  "Correct. That note matters because environment requirements can be a barrier. If Docker is required for a given MCP integration, instructors should say so explicitly rather than assuming it\u0027s already available."
+    },
+    {
+        "speaker":  "JAMIE",
+        "text":  "And the appendix compares awesome-copilot with accessibility agents."
+    },
+    {
+        "speaker":  "ALEX",
+        "text":  "Yes. The practical distinction is between a broader plugin ecosystem and a specialized accessibility-focused agent setup."
+    },
+    {
+        "speaker":  "PAUSE",
+        "text":  ""
+    },
+    {
+        "speaker":  "ALEX",
+        "text":  "Now let\u0027s zoom out to GitHub agentic workflows and third-party agents."
+    },
+    {
+        "speaker":  "JAMIE",
+        "text":  "This is on GitHub.com, not just inside VS Code?"
+    },
+    {
+        "speaker":  "ALEX",
+        "text":  "Exactly. The appendix explains what this enables, how it works, cloud agents and third-party agent assignment, a workflow for assigning tasks to cloud agents on GitHub, example scenarios, accessibility concerns when reviewing agent pull requests, workshop guidance, and the workflow format itself."
+    },
+    {
+        "speaker":  "JAMIE",
+        "text":  "What does this enable, conceptually?"
+    },
+    {
+        "speaker":  "ALEX",
+        "text":  "It enables you to define structured workflows where AI agents carry out tasks in the GitHub ecosystem, potentially using third-party engines or cloud-hosted agent systems, and produce outputs like pull requests or reports."
+    },
+    {
+        "speaker":  "JAMIE",
+        "text":  "And the workflow format is Markdown with frontmatter."
+    },
+    {
+        "speaker":  "ALEX",
+        "text":  "Yes. That\u0027s a notable design choice. You write the workflow in Markdown with frontmatter properties, then it can be compiled into a GitHub Actions lock file for execution."
+    },
+    {
+        "speaker":  "JAMIE",
+        "text":  "There\u0027s an example called Daily Issues Report."
+    },
+    {
+        "speaker":  "ALEX",
+        "text":  "Right. The appendix uses that kind of scenario to illustrate what to include in a workflow: structured task instructions, key frontmatter properties, and safe-output expectations."
+    },
+    {
+        "speaker":  "JAMIE",
+        "text":  "Safe outputs sounds important."
+    },
+    {
+        "speaker":  "ALEX",
+        "text":  "Very. The security model is described in terms of safe outputs. The idea is that workflows should constrain what the agent produces and reduce risk from unrestricted behavior."
+    },
+    {
+        "speaker":  "JAMIE",
+        "text":  "What about supported engines?"
+    },
+    {
+        "speaker":  "ALEX",
+        "text":  "The appendix notes that multiple AI engines may be supported, again depending on current platform support."
+    },
+    {
+        "speaker":  "JAMIE",
+        "text":  "And getting started uses a CLI extension."
+    },
+    {
+        "speaker":  "ALEX",
+        "text":  "Yes. The steps given are: install the CLI extension, create a new workflow interactively from GitHub.com or VS Code, compile the Markdown workflow into a GitHub Actions.lock.yml file, and commit both the.md and the.lock.yml because GitHub Actions runs the lock file."
+    },
+    {
+        "speaker":  "JAMIE",
+        "text":  "Then you monitor runs."
+    },
+    {
+        "speaker":  "ALEX",
+        "text":  "Exactly. And from an accessibility perspective, reviewing agent-generated pull requests remains essential. Learners should inspect changes carefully, not assume that agent-produced code or docs are correct or accessible."
+    },
+    {
+        "speaker":  "PAUSE",
+        "text":  ""
+    },
+    {
+        "speaker":  "ALEX",
+        "text":  "Now to the model guidance, which is especially relevant for this episode\u0027s topic."
+    },
+    {
+        "speaker":  "JAMIE",
+        "text":  "Great, because people hear model names and often don\u0027t know how to choose."
+    },
+    {
+        "speaker":  "ALEX",
+        "text":  "The appendix includes a Copilot Models section with an overview, model-selection guidance, current model and billing sources, availability by plan, AI credits and usage, switching models in VS Code, auto model selection, and models retiring soon."
+    },
+    {
+        "speaker":  "JAMIE",
+        "text":  "Start with the overview."
+    },
+    {
+        "speaker":  "ALEX",
+        "text":  "The key idea is that model choice should be task-driven. Don\u0027t ask, what is the smartest model in general? Ask, what kind of job am I doing?"
+    },
+    {
+        "speaker":  "JAMIE",
+        "text":  "And the categories given are nicely practical."
+    },
+    {
+        "speaker":  "ALEX",
+        "text":  "Yes. For everyday coding and writing, use a general-purpose model that balances quality and speed. For fast help with simple or repetitive tasks, favor a quicker, lighter model. For deep reasoning and debugging, choose a model optimized for more deliberate reasoning. For agentic software development, use a model suited to multi-step autonomous workflows. For working with visuals, choose a model that supports visual understanding where available."
+    },
+    {
+        "speaker":  "JAMIE",
+        "text":  "So the answer is not one best model. It\u0027s best fit."
+    },
+    {
+        "speaker":  "ALEX",
+        "text":  "Exactly. The appendix also says the factual details about current models and billing were source-verified in May 2026, which is a helpful reminder that these specifics can change."
+    },
+    {
+        "speaker":  "JAMIE",
+        "text":  "Plan availability matters too."
+    },
+    {
+        "speaker":  "ALEX",
+        "text":  "Yes. Model availability varies by plan, and the appendix includes workshop-safe guidance to avoid teaching features some learners may not have. That means instructors should prefer demonstrations that work under common plans, or clearly label premium-only paths."
+    },
+    {
+        "speaker":  "JAMIE",
+        "text":  "Then there are AI credits and usage."
+    },
+    {
+        "speaker":  "ALEX",
+        "text":  "Right. GitHub AI credits are part of the usage picture, and the appendix includes tips for managing usage. The practical advice is to be conscious of which tasks consume more costly model usage, reserve advanced models for cases where they genuinely help, and monitor your account usage instead of waiting for surprises."
+    },
+    {
+        "speaker":  "JAMIE",
+        "text":  "How do you switch models in VS Code?"
+    },
+    {
+        "speaker":  "ALEX",
+        "text":  "The appendix gives separate guidance for the Chat panel and for an inline chat session. In both cases, the model selector is a dedicated control in the interface, separate from the mode selector. There\u0027s also a keyboard note for screen readers, emphasizing that keyboard users may need to tab to the model control and open it deliberately."
+    },
+    {
+        "speaker":  "JAMIE",
+        "text":  "And Auto model selection?"
+    },
+    {
+        "speaker":  "ALEX",
+        "text":  "Auto chooses a model for you based on the task. That can be convenient for many day-to-day interactions. But the appendix also explains when to override Auto: when you need deeper reasoning, lower latency, a specific capability, or better control over usage and billing."
+    },
+    {
+        "speaker":  "JAMIE",
+        "text":  "And models retiring soon?"
+    },
+    {
+        "speaker":  "ALEX",
+        "text":  "Yes. The appendix warns that model rosters change and recent retirement signals should be monitored. That means educators should avoid hard-coding model expectations that may disappear."
+    },
+    {
+        "speaker":  "PAUSE",
+        "text":  ""
+    },
+    {
+        "speaker":  "ALEX",
+        "text":  "That brings us to pricing, the free plan, and usage limits."
+    },
+    {
+        "speaker":  "JAMIE",
+        "text":  "Administrative, yes, but learners absolutely need this."
+    },
+    {
+        "speaker":  "ALEX",
+        "text":  "They do. The appendix includes a Copilot plans snapshot for May 2026, details for the free plan, workshop considerations, comparison guidance for Copilot Pro, usage-based billing and AI credits after June 1, 2026, keyboard and accessibility notes for checking plans, and related resources."
+    },
+    {
+        "speaker":  "JAMIE",
+        "text":  "What\u0027s the key teaching point for the free plan?"
+    },
+    {
+        "speaker":  "ALEX",
+        "text":  "That free-plan users may face limits and restrictions, and workshops should account for that rather than assuming everyone has paid access. The appendix specifically includes free plan limits, free plan restrictions, and guidance for workshop participants using the free plan."
+    },
+    {
+        "speaker":  "JAMIE",
+        "text":  "So if an exercise depends on a premium model or heavy usage, the instructor should say so."
+    },
+    {
+        "speaker":  "ALEX",
+        "text":  "Exactly. The appendix also addresses when to recommend an upgrade to Copilot Pro, but the framing should be task-based and respectful, not pushy."
+    },
+    {
+        "speaker":  "JAMIE",
+        "text":  "And then the post-June 1, 2026 AI credit model."
+    },
+    {
+        "speaker":  "ALEX",
+        "text":  "Yes. It explains credit pricing, what consumes AI credits, and how to manage usage. That\u0027s essential because model choice, agent features, and certain workflows may have cost implications. Good instruction includes budget awareness."
+    },
+    {
+        "speaker":  "JAMIE",
+        "text":  "There are even keyboard and accessibility notes for checking plans."
+    },
+    {
+        "speaker":  "ALEX",
+        "text":  "Right, because account and plan interfaces need to be operable too."
+    },
+    {
+        "speaker":  "PAUSE",
+        "text":  ""
+    },
+    {
+        "speaker":  "JAMIE",
+        "text":  "Before we wrap, I want to make sure we mention the broader meta-points in this appendix."
+    },
+    {
+        "speaker":  "ALEX",
+        "text":  "Good idea. First, it repeatedly anchors itself in authoritative sources and a section-level source map, which is a sign that the maintainers expect rapid product change and want claims traceable."
+    },
+    {
+        "speaker":  "JAMIE",
+        "text":  "Second, it treats accessibility as operational, not decorative."
+    },
+    {
+        "speaker":  "ALEX",
+        "text":  "Exactly. Accessibility here means shortcut choices, interface navigation, stable reading surfaces, review workflows, settings clarity, and explicit handling of low-vision and screen-reader use cases."
+    },
+    {
+        "speaker":  "JAMIE",
+        "text":  "Third, it balances AI assistance with human review."
+    },
+    {
+        "speaker":  "ALEX",
+        "text":  "Yes. Whether we\u0027re talking inline suggestions, Edit mode, Agent mode, MCP tools, browser automation, cloud workflows, or custom instructions, the recurring rule is: inspect, verify, and stay in control."
+    },
+    {
+        "speaker":  "JAMIE",
+        "text":  "If you had to give learners one compact workflow to remember, what would it be?"
+    },
+    {
+        "speaker":  "ALEX",
+        "text":  "Open Copilot with the keyboard. Provide intentional context using participants or variables. Choose the right mode for the task. Read every response in Accessible View. Review suggestions or diffs carefully before accepting. Use instructions files to make good behavior repeatable. And keep an eye on plan limits, model choice, and usage."
+    },
+    {
+        "speaker":  "JAMIE",
+        "text":  "That is a solid operating system for using Copilot well."
+    },
+    {
+        "speaker":  "ALEX",
+        "text":  "It is. And for blind and low-vision contributors, that operating system makes the difference between a flashy tool and a dependable one."
+    },
+    {
+        "speaker":  "JAMIE",
+        "text":  "Thanks for learning with us. Take these reference patterns into your real repositories, test them slowly, and build a workflow you can trust."
+    },
+    {
+        "speaker":  "ALEX",
+        "text":  "We\u0027ll see you next time."
+    }
+]

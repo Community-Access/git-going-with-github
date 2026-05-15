@@ -1,446 +1,446 @@
-[
-  {
-    "speaker": "ALEX",
-    "text": "Welcome back. Today we're doing something that sounds dramatic but is actually very ordinary in Git and GitHub: surviving a merge conflict."
-  },
-  {
-    "speaker": "JAMIE",
-    "text": "I appreciate that wording, because \"merge conflict\" sounds like I broke the internet."
-  },
-  {
-    "speaker": "ALEX",
-    "text": "Exactly. But a merge conflict is not a failure. It's a checkpoint. Git is simply saying, \"Two changes overlap, and I need a human decision.\""
-  },
-  {
-    "speaker": "PAUSE",
-    "text": ""
-  },
-  {
-    "speaker": "ALEX",
-    "text": "Here's the big picture. In this lesson, we'll cover what a merge conflict is, why it happens, how to prevent it, how to read the conflict markers, how to resolve conflicts on GitHub, how VS Code helps, what to do in the terminal if you work locally, and what to do when you feel stuck."
-  },
-  {
-    "speaker": "JAMIE",
-    "text": "And for this course specifically, there's a controlled practice challenge, right?"
-  },
-  {
-    "speaker": "ALEX",
-    "text": "Right. This chapter uses one short practice challenge so you can learn conflict resolution in a low-pressure way. The pattern is: observe, resolve, verify. The time expectation is under ten minutes. Your evidence is an issue-linked pull request and a completion comment."
-  },
-  {
-    "speaker": "JAMIE",
-    "text": "So the goal isn't just \"make the warning go away.\" It's to understand the structure, make a decision, and prove you resolved it cleanly."
-  },
-  {
-    "speaker": "ALEX",
-    "text": "That's it."
-  },
-  {
-    "speaker": "PAUSE",
-    "text": ""
-  },
-  {
-    "speaker": "ALEX",
-    "text": "For the challenge, your facilitator triggers a merge conflict in your pull request. You open the PR, look for the conflict notice, choose Resolve conflicts or edit the file directly on your branch, find the conflict markers, decide what content belongs in the final file, delete the marker lines, and commit the resolution."
-  },
-  {
-    "speaker": "JAMIE",
-    "text": "And the autograder is looking for two things: no conflict markers left behind, and meaningful content still in the file."
-  },
-  {
-    "speaker": "ALEX",
-    "text": "Yes. So if you remove everything, that's not success. And if you leave even one marker line, that's not success either."
-  },
-  {
-    "speaker": "PAUSE",
-    "text": ""
-  },
-  {
-    "speaker": "ALEX",
-    "text": "Let's define the core idea. A merge conflict happens when two people change the same part of the same file in different ways, and Git cannot automatically decide which version to keep."
-  },
-  {
-    "speaker": "JAMIE",
-    "text": "So if I edit line twelve and you edit line two hundred, Git usually handles that fine."
-  },
-  {
-    "speaker": "ALEX",
-    "text": "Usually, yes. But if we both edit the same line, or nearby lines in a way that overlaps, Git may stop and ask for help."
-  },
-  {
-    "speaker": "JAMIE",
-    "text": "What are the common reasons this happens?"
-  },
-  {
-    "speaker": "ALEX",
-    "text": "A few classics: two people edited the same line, one person deleted a file while another edited it, two people restructured the same section, or a branch stayed open too long and drifted far away from main."
-  },
-  {
-    "speaker": "JAMIE",
-    "text": "That last one feels especially realistic in open source."
-  },
-  {
-    "speaker": "ALEX",
-    "text": "Very realistic. Long-running branches invite conflicts."
-  },
-  {
-    "speaker": "PAUSE",
-    "text": ""
-  },
-  {
-    "speaker": "ALEX",
-    "text": "Before we resolve conflicts, let's make them less likely. Prevention is easier than resolution."
-  },
-  {
-    "speaker": "JAMIE",
-    "text": "Give us the practical list."
-  },
-  {
-    "speaker": "ALEX",
-    "text": "Keep branches short-lived. Aim for small, focused work that merges in a few days, not a few weeks. Sync with main frequently. From your feature branch, you may merge origin slash main into your branch. And if you're comfortable with rebasing, rebasing onto origin slash main is another option. Communicate with your team. If you know you'll be editing a heavily used file, say so. Avoid mass reformatting unless it's coordinated, because changing lots of lines creates unnecessary overlap. Pull before you push, so you're not building on stale history. Work on separate files when possible. Keep pull requests small. And use draft pull requests for early visibility, so other contributors can see what area you're touching before things collide."
-  },
-  {
-    "speaker": "JAMIE",
-    "text": "That's a strong pattern: short branches, frequent sync, small PRs, visible work."
-  },
-  {
-    "speaker": "ALEX",
-    "text": "Exactly. Those habits reduce stress."
-  },
-  {
-    "speaker": "JAMIE",
-    "text": "And there was also an advanced prevention idea about fast-forward merges."
-  },
-  {
-    "speaker": "ALEX",
-    "text": "Yes. The important concept is that simpler branch histories can reduce complexity. You don't need to master fast-forward behavior today, but it helps to know that the shape of history affects how cleanly changes integrate."
-  },
-  {
-    "speaker": "PAUSE",
-    "text": ""
-  },
-  {
-    "speaker": "JAMIE",
-    "text": "Okay. Now let's talk about the thing learners actually see: conflict markers."
-  },
-  {
-    "speaker": "ALEX",
-    "text": "Yes. When Git can't merge automatically, it inserts plain-text markers directly into the file. Here is the classic shape: Less-than signs repeated seven times, then HEAD. Then one version of the content. Then a separator line made of equals signs. Then the other version of the content. Then greater-than signs repeated seven times, followed by a branch name."
-  },
-  {
-    "speaker": "JAMIE",
-    "text": "And because this is an audio lesson, let's label the sections clearly."
-  },
-  {
-    "speaker": "ALEX",
-    "text": "Good idea. There are three important parts. First, the section between the start marker and the separator. Second, the section between the separator and the end marker. Third, the marker lines themselves. In the solution reference, the section between the start marker and the separator is described as the version on the branch you are merging into, usually main. The section between the separator and the end marker is the version on your branch."
-  },
-  {
-    "speaker": "JAMIE",
-    "text": "But in the practice chapter instructions, the wording says the first block is your version, the current branch, and the second block is their version, the incoming branch."
-  },
-  {
-    "speaker": "ALEX",
-    "text": "Right, and that's why context matters. Different tools and workflows describe the sides a little differently depending on where the merge is happening. The safe habit is this: do not rely only on labels like \"yours\" and \"theirs.\" Read the actual text on both sides and decide what final content should remain."
-  },
-  {
-    "speaker": "JAMIE",
-    "text": "That's helpful, especially for learners who worry about memorizing the wrong mapping."
-  },
-  {
-    "speaker": "ALEX",
-    "text": "Exactly. The universally safe truth is: the marker lines are not content, and the final file must contain only the text you actually want to keep."
-  },
-  {
-    "speaker": "PAUSE",
-    "text": ""
-  },
-  {
-    "speaker": "ALEX",
-    "text": "Let's make that concrete with the example resolution from the reference solution. Suppose one side says, \"Welcome to the Learning Room. This is the main branch version.\" The other side says, \"Welcome to the Learning Room. This is my improved version with more detail.\" Your options are threefold. Keep yours: delete the other section and all marker lines. Keep theirs: delete your section and all marker lines. Or combine both: write one clean final version that incorporates the best parts of each."
-  },
-  {
-    "speaker": "JAMIE",
-    "text": "So there is not always one magic correct answer."
-  },
-  {
-    "speaker": "ALEX",
-    "text": "Correct. The decision depends on what is better for the project. Two valid resolutions may use different wording."
-  },
-  {
-    "speaker": "JAMIE",
-    "text": "That fits the peer simulation note too. It's okay if your final wording differs from someone else's, as long as it's a valid resolution."
-  },
-  {
-    "speaker": "ALEX",
-    "text": "Exactly right."
-  },
-  {
-    "speaker": "PAUSE",
-    "text": ""
-  },
-  {
-    "speaker": "ALEX",
-    "text": "Now let's walk through the challenge flow step by step. First, wait for your facilitator to trigger the conflict. If you don't see a conflict yet, it may simply not be ready. Second, open your assigned challenge issue. It tells you which practice file contains the conflict markers. Third, open that file and search for the start marker. In a browser you can use Control F. In VS Code you can also search directly. Screen reader users can search for the literal characters, since the markers are plain text and fully readable. Fourth, read both sides carefully. Fifth, decide: keep one side or combine them. Sixth, delete all three types of marker lines: the start line, the equals separator, and the end line with the branch name. Seventh, review the file and search again so there are zero remaining markers. Eighth, commit your changes on your short-lived feature branch. The recommended naming pattern is fix slash your name dash issue number. Ninth, open or update your pull request. The suggested title pattern is fix: resolve conflict markers in filename. In the body, include Closes number, with your issue number, and a brief sentence or two explaining what content you kept and why."
-  },
-  {
-    "speaker": "JAMIE",
-    "text": "And when everything is open and passing checks, there's one more administrative step."
-  },
-  {
-    "speaker": "ALEX",
-    "text": "Yes. Post a completion comment on your assigned challenge issue. The example format is: Chapter 7 completed, then the PR number, the filename, and your content decision with a short reason."
-  },
-  {
-    "speaker": "JAMIE",
-    "text": "That matters because this course wants issue-linked evidence, not just a private sense that \"I think I fixed it.\""
-  },
-  {
-    "speaker": "ALEX",
-    "text": "Exactly."
-  },
-  {
-    "speaker": "PAUSE",
-    "text": ""
-  },
-  {
-    "speaker": "JAMIE",
-    "text": "Let's stay with accessibility for a moment. What should blind or low-vision learners know about navigating this?"
-  },
-  {
-    "speaker": "ALEX",
-    "text": "A few key points. The conflict markers themselves are just text, so screen readers can read them directly. Search is your friend. Searching for the start marker is often the fastest way to jump into the conflict area. If you're on GitHub and can't find the Resolve conflicts button, look on the PR conversation tab near the merge section toward the bottom. Screen reader users may want to search the page for the phrase \"Resolve conflicts\" button. For low-vision users, high contrast themes and zoom can make the conflict regions easier to parse, especially in editors that highlight current and incoming changes. And this chapter also includes learning card guidance for different working styles: visual and mouse users, low vision users, NVDA or JAWS on Windows, VoiceOver on macOS, and CLI users."
-  },
-  {
-    "speaker": "JAMIE",
-    "text": "So the chapter is intentionally not one-size-fits-all."
-  },
-  {
-    "speaker": "ALEX",
-    "text": "Right. Open the guidance that matches how you work."
-  },
-  {
-    "speaker": "PAUSE",
-    "text": ""
-  },
-  {
-    "speaker": "ALEX",
-    "text": "Let's talk about spotting a conflict on GitHub. On a pull request, GitHub may show a message that the branch has conflicts that must be resolved before merging."
-  },
-  {
-    "speaker": "JAMIE",
-    "text": "And that's your cue that GitHub needs human help."
-  },
-  {
-    "speaker": "ALEX",
-    "text": "Yes. If the web editor is available, choose Resolve conflicts. GitHub's conflict editor will show the conflicting sections, and your task is to edit the file into one clean final version. Step by step on GitHub: click Resolve conflicts, edit the file so the markers are removed and the final content is what you want, choose Mark as resolved, and then Commit merge."
-  },
-  {
-    "speaker": "JAMIE",
-    "text": "What does the editor generally feel like?"
-  },
-  {
-    "speaker": "ALEX",
-    "text": "It highlights the conflict region and places you right where the disagreement is. But the same rule applies: don't just click through. Read both sides. Decide intentionally."
-  },
-  {
-    "speaker": "PAUSE",
-    "text": ""
-  },
-  {
-    "speaker": "JAMIE",
-    "text": "Now compare that with VS Code."
-  },
-  {
-    "speaker": "ALEX",
-    "text": "In VS Code, conflicts are often shown with highlighted regions and helpful actions above each conflict. Common actions include Accept Current Change, Accept Incoming Change, and Accept Both Changes."
-  },
-  {
-    "speaker": "JAMIE",
-    "text": "And we should translate those a little."
-  },
-  {
-    "speaker": "ALEX",
-    "text": "Yes. \"Current\" usually means the version currently checked out in your workspace. \"Incoming\" usually means the version being merged in. \"Accept Both\" keeps both chunks, after which you may still need to edit for clarity and formatting."
-  },
-  {
-    "speaker": "JAMIE",
-    "text": "So even when the tool gives you buttons, you still need judgment."
-  },
-  {
-    "speaker": "ALEX",
-    "text": "Always. Tooling helps, but it doesn't replace understanding."
-  },
-  {
-    "speaker": "PAUSE",
-    "text": ""
-  },
-  {
-    "speaker": "ALEX",
-    "text": "If you cloned the repository and prefer local work, there is a terminal-based alternative. You update main, switch back to your branch, and merge main into your branch. If a conflict happens, Git pauses the merge and reports the affected files. Then you open each conflicted file in your editor, look for the markers, remove the markers while keeping the content you want, save the file, mark it resolved with git add, complete the merge with git commit, and push. Your pull request updates automatically."
-  },
-  {
-    "speaker": "JAMIE",
-    "text": "Can we also walk through the command-line conflict reading pattern more explicitly?"
-  },
-  {
-    "speaker": "ALEX",
-    "text": "Definitely. Start the merge that causes the conflict. Then check which files have conflicts. Look for lines like \"both modified\" in Git's output. Open each conflicted file in your editor. Edit the file: remove the marker lines, keep the content you want. After editing, mark the file as resolved with git add. Then complete the merge with git commit. Git often auto-fills the merge commit message. After that, check the result. Review the diff so you understand what changed. On the PR, review merge state, checks, and overall readiness."
-  },
-  {
-    "speaker": "JAMIE",
-    "text": "That sequence really matters: detect, edit, add, commit, verify."
-  },
-  {
-    "speaker": "ALEX",
-    "text": "Exactly."
-  },
-  {
-    "speaker": "PAUSE",
-    "text": ""
-  },
-  {
-    "speaker": "JAMIE",
-    "text": "There was also a real-file style example in the chapter, where two students both add content to the same table row."
-  },
-  {
-    "speaker": "ALEX",
-    "text": "Yes, and that example is useful because it shows that conflicts aren't always huge. Sometimes two people just edited the same small region, like one row in a Markdown table. The resolution options remain the same: keep one edit, keep the other, or combine them into one clean row that preserves the useful information."
-  },
-  {
-    "speaker": "JAMIE",
-    "text": "So the skill scales from tiny wording changes to larger sections."
-  },
-  {
-    "speaker": "ALEX",
-    "text": "Exactly."
-  },
-  {
-    "speaker": "PAUSE",
-    "text": ""
-  },
-  {
-    "speaker": "ALEX",
-    "text": "Now, something important philosophically: conflicts are not always bad."
-  },
-  {
-    "speaker": "JAMIE",
-    "text": "That sounds surprising."
-  },
-  {
-    "speaker": "ALEX",
-    "text": "A conflict can be evidence that two contributors both cared about the same important area. The conflict forces a deliberate review. In that sense, it can improve quality, because someone must consciously choose the final wording or logic rather than letting one change silently overwrite the other."
-  },
-  {
-    "speaker": "JAMIE",
-    "text": "And the chapter also frames this as relevant to AI-assisted work."
-  },
-  {
-    "speaker": "ALEX",
-    "text": "Yes. Sometimes an AI tool confidently produces changes that overlap with human-written changes. Conflict resolution becomes part of supervising AI safely. You are not just merging text. You are evaluating which content deserves to survive."
-  },
-  {
-    "speaker": "PAUSE",
-    "text": ""
-  },
-  {
-    "speaker": "JAMIE",
-    "text": "Let's cover the most common stuck moments, because learners definitely hit these."
-  },
-  {
-    "speaker": "ALEX",
-    "text": "Absolutely. If you do not see a conflict, your facilitator may not have triggered it yet. Wait for the signal. If you cannot find the Resolve conflicts button, check the PR conversation area near the merge section, or search the page for that button label. If you are not sure what to keep, read both versions aloud. If both are useful, combine them. There is often no single correct answer. If the autograder still reports conflict markers, search the file for all three marker types. Every one of them must be completely removed. If you accidentally deleted too much, undo and redo that section carefully. And if you want a sanity check, ask your facilitator before opening the PR."
-  },
-  {
-    "speaker": "JAMIE",
-    "text": "What about the nuclear option?"
-  },
-  {
-    "speaker": "ALEX",
-    "text": "Also valid. If you feel tangled up, you can abandon the attempt and start fresh from a clean copy of the branch or file. Sometimes restarting is faster than untangling confused edits."
-  },
-  {
-    "speaker": "JAMIE",
-    "text": "That's reassuring. Starting over is not cheating."
-  },
-  {
-    "speaker": "ALEX",
-    "text": "Not at all."
-  },
-  {
-    "speaker": "PAUSE",
-    "text": ""
-  },
-  {
-    "speaker": "ALEX",
-    "text": "Let's do a compact checklist. A merge conflict means overlapping edits need a human decision. Conflict markers are plain text and come in three parts: start marker, separator, end marker. Read both sides. Choose one side or combine them. Delete all marker lines. Search again to confirm none remain. Commit the resolution. Verify the PR status, checks, and diff. Submit your issue-linked evidence."
-  },
-  {
-    "speaker": "JAMIE",
-    "text": "And emotionally?"
-  },
-  {
-    "speaker": "ALEX",
-    "text": "Conflicts are normal. They are manageable. The skill is calm reading and intentional editing."
-  },
-  {
-    "speaker": "PAUSE",
-    "text": ""
-  },
-  {
-    "speaker": "JAMIE",
-    "text": "Before we wrap up, what are the expected outcomes for this chapter?"
-  },
-  {
-    "speaker": "ALEX",
-    "text": "You should be able to identify the three marker lines immediately, read both sides of a conflict, make an intentional content decision, remove all markers, and submit a clean pull request linked to the issue."
-  },
-  {
-    "speaker": "JAMIE",
-    "text": "And that's the learning moment, really. Not \"avoid all conflicts forever,\" but \"recognize them without panic and resolve them clearly.\""
-  },
-  {
-    "speaker": "ALEX",
-    "text": "Exactly. That is the point."
-  },
-  {
-    "speaker": "PAUSE",
-    "text": ""
-  },
-  {
-    "speaker": "ALEX",
-    "text": "If you want to check current official guidance beyond the course material, the authoritative sources named for this chapter are GitHub Docs, the GitHub Changelog, GitHub documentation about Git and pull requests, GitHub Flow guidance, and the Git SCM book's discussion of basic merge conflicts."
-  },
-  {
-    "speaker": "JAMIE",
-    "text": "So the course teaches the workflow, and those references are your source of truth when interfaces change."
-  },
-  {
-    "speaker": "ALEX",
-    "text": "Well said."
-  },
-  {
-    "speaker": "PAUSE",
-    "text": ""
-  },
-  {
-    "speaker": "ALEX",
-    "text": "One final reminder for the challenge: your job is not to preserve the markers. Your job is to produce a clean file that says what the project should actually say."
-  },
-  {
-    "speaker": "JAMIE",
-    "text": "Delete the markers, keep the meaning."
-  },
-  {
-    "speaker": "ALEX",
-    "text": "Perfect. And once you can do that, merge conflicts stop feeling scary."
-  },
-  {
-    "speaker": "JAMIE",
-    "text": "They start feeling like editing."
-  },
-  {
-    "speaker": "ALEX",
-    "text": "Exactly."
-  }
+﻿[
+    {
+        "speaker":  "ALEX",
+        "text":  "Welcome back. Today we\u0027re doing something that sounds dramatic but is actually very ordinary in Git and GitHub: surviving a merge conflict."
+    },
+    {
+        "speaker":  "JAMIE",
+        "text":  "I appreciate that wording, because \"merge conflict\" sounds like I broke the internet."
+    },
+    {
+        "speaker":  "ALEX",
+        "text":  "Exactly. But a merge conflict is not a failure. It\u0027s a checkpoint. Git is simply saying, \"Two changes overlap, and I need a human decision.\""
+    },
+    {
+        "speaker":  "PAUSE",
+        "text":  ""
+    },
+    {
+        "speaker":  "ALEX",
+        "text":  "Here\u0027s the big picture. In this lesson, we\u0027ll cover what a merge conflict is, why it happens, how to prevent it, how to read the conflict markers, how to resolve conflicts on GitHub, how VS Code helps, what to do in the terminal if you work locally, and what to do when you feel stuck."
+    },
+    {
+        "speaker":  "JAMIE",
+        "text":  "And for this course specifically, there\u0027s a controlled practice challenge, right?"
+    },
+    {
+        "speaker":  "ALEX",
+        "text":  "Right. This chapter uses one short practice challenge so you can learn conflict resolution in a low-pressure way. The pattern is: observe, resolve, verify. The time expectation is under ten minutes. Your evidence is an issue-linked pull request and a completion comment."
+    },
+    {
+        "speaker":  "JAMIE",
+        "text":  "So the goal isn\u0027t just \"make the warning go away.\" It\u0027s to understand the structure, make a decision, and prove you resolved it cleanly."
+    },
+    {
+        "speaker":  "ALEX",
+        "text":  "That\u0027s it."
+    },
+    {
+        "speaker":  "PAUSE",
+        "text":  ""
+    },
+    {
+        "speaker":  "ALEX",
+        "text":  "For the challenge, your facilitator triggers a merge conflict in your pull request. You open the PR, look for the conflict notice, choose Resolve conflicts or edit the file directly on your branch, find the conflict markers, decide what content belongs in the final file, delete the marker lines, and commit the resolution."
+    },
+    {
+        "speaker":  "JAMIE",
+        "text":  "And the autograder is looking for two things: no conflict markers left behind, and meaningful content still in the file."
+    },
+    {
+        "speaker":  "ALEX",
+        "text":  "Yes. So if you remove everything, that\u0027s not success. And if you leave even one marker line, that\u0027s not success either."
+    },
+    {
+        "speaker":  "PAUSE",
+        "text":  ""
+    },
+    {
+        "speaker":  "ALEX",
+        "text":  "Let\u0027s define the core idea. A merge conflict happens when two people change the same part of the same file in different ways, and Git cannot automatically decide which version to keep."
+    },
+    {
+        "speaker":  "JAMIE",
+        "text":  "So if I edit line twelve and you edit line two hundred, Git usually handles that fine."
+    },
+    {
+        "speaker":  "ALEX",
+        "text":  "Usually, yes. But if we both edit the same line, or nearby lines in a way that overlaps, Git may stop and ask for help."
+    },
+    {
+        "speaker":  "JAMIE",
+        "text":  "What are the common reasons this happens?"
+    },
+    {
+        "speaker":  "ALEX",
+        "text":  "A few classics: two people edited the same line, one person deleted a file while another edited it, two people restructured the same section, or a branch stayed open too long and drifted far away from main."
+    },
+    {
+        "speaker":  "JAMIE",
+        "text":  "That last one feels especially realistic in open source."
+    },
+    {
+        "speaker":  "ALEX",
+        "text":  "Very realistic. Long-running branches invite conflicts."
+    },
+    {
+        "speaker":  "PAUSE",
+        "text":  ""
+    },
+    {
+        "speaker":  "ALEX",
+        "text":  "Before we resolve conflicts, let\u0027s make them less likely. Prevention is easier than resolution."
+    },
+    {
+        "speaker":  "JAMIE",
+        "text":  "Give us the practical list."
+    },
+    {
+        "speaker":  "ALEX",
+        "text":  "Keep branches short-lived. Aim for small, focused work that merges in a few days, not a few weeks. Sync with main frequently. From your feature branch, you may merge origin slash main into your branch. And if you\u0027re comfortable with rebasing, rebasing onto origin slash main is another option. Communicate with your team. If you know you\u0027ll be editing a heavily used file, say so. Avoid mass reformatting unless it\u0027s coordinated, because changing lots of lines creates unnecessary overlap. Pull before you push, so you\u0027re not building on stale history. Work on separate files when possible. Keep pull requests small. And use draft pull requests for early visibility, so other contributors can see what area you\u0027re touching before things collide."
+    },
+    {
+        "speaker":  "JAMIE",
+        "text":  "That\u0027s a strong pattern: short branches, frequent sync, small PRs, visible work."
+    },
+    {
+        "speaker":  "ALEX",
+        "text":  "Exactly. Those habits reduce stress."
+    },
+    {
+        "speaker":  "JAMIE",
+        "text":  "And there was also an advanced prevention idea about fast-forward merges."
+    },
+    {
+        "speaker":  "ALEX",
+        "text":  "Yes. The important concept is that simpler branch histories can reduce complexity. You don\u0027t need to master fast-forward behavior today, but it helps to know that the shape of history affects how cleanly changes integrate."
+    },
+    {
+        "speaker":  "PAUSE",
+        "text":  ""
+    },
+    {
+        "speaker":  "JAMIE",
+        "text":  "Okay. Now let\u0027s talk about the thing learners actually see: conflict markers."
+    },
+    {
+        "speaker":  "ALEX",
+        "text":  "Yes. When Git can\u0027t merge automatically, it inserts plain-text markers directly into the file. Here is the classic shape: Less-than signs repeated seven times, then HEAD. Then one version of the content. Then a separator line made of equals signs. Then the other version of the content. Then greater-than signs repeated seven times, followed by a branch name."
+    },
+    {
+        "speaker":  "JAMIE",
+        "text":  "And because this is an audio lesson, let\u0027s label the sections clearly."
+    },
+    {
+        "speaker":  "ALEX",
+        "text":  "Good idea. There are three important parts. First, the section between the start marker and the separator. Second, the section between the separator and the end marker. Third, the marker lines themselves. In the solution reference, the section between the start marker and the separator is described as the version on the branch you are merging into, usually main. The section between the separator and the end marker is the version on your branch."
+    },
+    {
+        "speaker":  "JAMIE",
+        "text":  "But in the practice chapter instructions, the wording says the first block is your version, the current branch, and the second block is their version, the incoming branch."
+    },
+    {
+        "speaker":  "ALEX",
+        "text":  "Right, and that\u0027s why context matters. Different tools and workflows describe the sides a little differently depending on where the merge is happening. The safe habit is this: do not rely only on labels like \"yours\" and \"theirs.\" Read the actual text on both sides and decide what final content should remain."
+    },
+    {
+        "speaker":  "JAMIE",
+        "text":  "That\u0027s helpful, especially for learners who worry about memorizing the wrong mapping."
+    },
+    {
+        "speaker":  "ALEX",
+        "text":  "Exactly. The universally safe truth is: the marker lines are not content, and the final file must contain only the text you actually want to keep."
+    },
+    {
+        "speaker":  "PAUSE",
+        "text":  ""
+    },
+    {
+        "speaker":  "ALEX",
+        "text":  "Let\u0027s make that concrete with the example resolution from the reference solution. Suppose one side says, \"Welcome to the Learning Room. This is the main branch version.\" The other side says, \"Welcome to the Learning Room. This is my improved version with more detail.\" Your options are threefold. Keep yours: delete the other section and all marker lines. Keep theirs: delete your section and all marker lines. Or combine both: write one clean final version that incorporates the best parts of each."
+    },
+    {
+        "speaker":  "JAMIE",
+        "text":  "So there is not always one magic correct answer."
+    },
+    {
+        "speaker":  "ALEX",
+        "text":  "Correct. The decision depends on what is better for the project. Two valid resolutions may use different wording."
+    },
+    {
+        "speaker":  "JAMIE",
+        "text":  "That fits the peer simulation note too. It\u0027s okay if your final wording differs from someone else\u0027s, as long as it\u0027s a valid resolution."
+    },
+    {
+        "speaker":  "ALEX",
+        "text":  "Exactly right."
+    },
+    {
+        "speaker":  "PAUSE",
+        "text":  ""
+    },
+    {
+        "speaker":  "ALEX",
+        "text":  "Now let\u0027s walk through the challenge flow step by step. First, wait for your facilitator to trigger the conflict. If you don\u0027t see a conflict yet, it may simply not be ready. Second, open your assigned challenge issue. It tells you which practice file contains the conflict markers. Third, open that file and search for the start marker. In a browser you can use Control F. In VS Code you can also search directly. Screen reader users can search for the literal characters, since the markers are plain text and fully readable. Fourth, read both sides carefully. Fifth, decide: keep one side or combine them. Sixth, delete all three types of marker lines: the start line, the equals separator, and the end line with the branch name. Seventh, review the file and search again so there are zero remaining markers. Eighth, commit your changes on your short-lived feature branch. The recommended naming pattern is fix slash your name dash issue number. Ninth, open or update your pull request. The suggested title pattern is fix: resolve conflict markers in filename. In the body, include Closes number, with your issue number, and a brief sentence or two explaining what content you kept and why."
+    },
+    {
+        "speaker":  "JAMIE",
+        "text":  "And when everything is open and passing checks, there\u0027s one more administrative step."
+    },
+    {
+        "speaker":  "ALEX",
+        "text":  "Yes. Post a completion comment on your assigned challenge issue. The example format is: Chapter 7 completed, then the PR number, the filename, and your content decision with a short reason."
+    },
+    {
+        "speaker":  "JAMIE",
+        "text":  "That matters because this course wants issue-linked evidence, not just a private sense that \"I think I fixed it.\""
+    },
+    {
+        "speaker":  "ALEX",
+        "text":  "Exactly."
+    },
+    {
+        "speaker":  "PAUSE",
+        "text":  ""
+    },
+    {
+        "speaker":  "JAMIE",
+        "text":  "Let\u0027s stay with accessibility for a moment. What should blind or low-vision learners know about navigating this?"
+    },
+    {
+        "speaker":  "ALEX",
+        "text":  "A few key points. The conflict markers themselves are just text, so screen readers can read them directly. Search is your friend. Searching for the start marker is often the fastest way to jump into the conflict area. If you\u0027re on GitHub and can\u0027t find the Resolve conflicts button, look on the PR conversation tab near the merge section toward the bottom. Screen reader users may want to search the page for the phrase \"Resolve conflicts\" button. For low-vision users, high contrast themes and zoom can make the conflict regions easier to parse, especially in editors that highlight current and incoming changes. And this chapter also includes learning card guidance for different working styles: visual and mouse users, low vision users, NVDA or JAWS on Windows, VoiceOver on macOS, and CLI users."
+    },
+    {
+        "speaker":  "JAMIE",
+        "text":  "So the chapter is intentionally not one-size-fits-all."
+    },
+    {
+        "speaker":  "ALEX",
+        "text":  "Right. Open the guidance that matches how you work."
+    },
+    {
+        "speaker":  "PAUSE",
+        "text":  ""
+    },
+    {
+        "speaker":  "ALEX",
+        "text":  "Let\u0027s talk about spotting a conflict on GitHub. On a pull request, GitHub may show a message that the branch has conflicts that must be resolved before merging."
+    },
+    {
+        "speaker":  "JAMIE",
+        "text":  "And that\u0027s your cue that GitHub needs human help."
+    },
+    {
+        "speaker":  "ALEX",
+        "text":  "Yes. If the web editor is available, choose Resolve conflicts. GitHub\u0027s conflict editor will show the conflicting sections, and your task is to edit the file into one clean final version. Step by step on GitHub: click Resolve conflicts, edit the file so the markers are removed and the final content is what you want, choose Mark as resolved, and then Commit merge."
+    },
+    {
+        "speaker":  "JAMIE",
+        "text":  "What does the editor generally feel like?"
+    },
+    {
+        "speaker":  "ALEX",
+        "text":  "It highlights the conflict region and places you right where the disagreement is. But the same rule applies: don\u0027t just click through. Read both sides. Decide intentionally."
+    },
+    {
+        "speaker":  "PAUSE",
+        "text":  ""
+    },
+    {
+        "speaker":  "JAMIE",
+        "text":  "Now compare that with VS Code."
+    },
+    {
+        "speaker":  "ALEX",
+        "text":  "In VS Code, conflicts are often shown with highlighted regions and helpful actions above each conflict. Common actions include Accept Current Change, Accept Incoming Change, and Accept Both Changes."
+    },
+    {
+        "speaker":  "JAMIE",
+        "text":  "And we should translate those a little."
+    },
+    {
+        "speaker":  "ALEX",
+        "text":  "Yes. \"Current\" usually means the version currently checked out in your workspace. \"Incoming\" usually means the version being merged in. \"Accept Both\" keeps both chunks, after which you may still need to edit for clarity and formatting."
+    },
+    {
+        "speaker":  "JAMIE",
+        "text":  "So even when the tool gives you buttons, you still need judgment."
+    },
+    {
+        "speaker":  "ALEX",
+        "text":  "Always. Tooling helps, but it doesn\u0027t replace understanding."
+    },
+    {
+        "speaker":  "PAUSE",
+        "text":  ""
+    },
+    {
+        "speaker":  "ALEX",
+        "text":  "If you cloned the repository and prefer local work, there is a terminal-based alternative. You update main, switch back to your branch, and merge main into your branch. If a conflict happens, Git pauses the merge and reports the affected files. Then you open each conflicted file in your editor, look for the markers, remove the markers while keeping the content you want, save the file, mark it resolved with git add, complete the merge with git commit, and push. Your pull request updates automatically."
+    },
+    {
+        "speaker":  "JAMIE",
+        "text":  "Can we also walk through the command-line conflict reading pattern more explicitly?"
+    },
+    {
+        "speaker":  "ALEX",
+        "text":  "Definitely. Start the merge that causes the conflict. Then check which files have conflicts. Look for lines like \"both modified\" in Git\u0027s output. Open each conflicted file in your editor. Edit the file: remove the marker lines, keep the content you want. After editing, mark the file as resolved with git add. Then complete the merge with git commit. Git often auto-fills the merge commit message. After that, check the result. Review the diff so you understand what changed. On the PR, review merge state, checks, and overall readiness."
+    },
+    {
+        "speaker":  "JAMIE",
+        "text":  "That sequence really matters: detect, edit, add, commit, verify."
+    },
+    {
+        "speaker":  "ALEX",
+        "text":  "Exactly."
+    },
+    {
+        "speaker":  "PAUSE",
+        "text":  ""
+    },
+    {
+        "speaker":  "JAMIE",
+        "text":  "There was also a real-file style example in the chapter, where two students both add content to the same table row."
+    },
+    {
+        "speaker":  "ALEX",
+        "text":  "Yes, and that example is useful because it shows that conflicts aren\u0027t always huge. Sometimes two people just edited the same small region, like one row in a Markdown table. The resolution options remain the same: keep one edit, keep the other, or combine them into one clean row that preserves the useful information."
+    },
+    {
+        "speaker":  "JAMIE",
+        "text":  "So the skill scales from tiny wording changes to larger sections."
+    },
+    {
+        "speaker":  "ALEX",
+        "text":  "Exactly."
+    },
+    {
+        "speaker":  "PAUSE",
+        "text":  ""
+    },
+    {
+        "speaker":  "ALEX",
+        "text":  "Now, something important philosophically: conflicts are not always bad."
+    },
+    {
+        "speaker":  "JAMIE",
+        "text":  "That sounds surprising."
+    },
+    {
+        "speaker":  "ALEX",
+        "text":  "A conflict can be evidence that two contributors both cared about the same important area. The conflict forces a deliberate review. In that sense, it can improve quality, because someone must consciously choose the final wording or logic rather than letting one change silently overwrite the other."
+    },
+    {
+        "speaker":  "JAMIE",
+        "text":  "And the chapter also frames this as relevant to AI-assisted work."
+    },
+    {
+        "speaker":  "ALEX",
+        "text":  "Yes. Sometimes an AI tool confidently produces changes that overlap with human-written changes. Conflict resolution becomes part of supervising AI safely. You are not just merging text. You are evaluating which content deserves to survive."
+    },
+    {
+        "speaker":  "PAUSE",
+        "text":  ""
+    },
+    {
+        "speaker":  "JAMIE",
+        "text":  "Let\u0027s cover the most common stuck moments, because learners definitely hit these."
+    },
+    {
+        "speaker":  "ALEX",
+        "text":  "Absolutely. If you do not see a conflict, your facilitator may not have triggered it yet. Wait for the signal. If you cannot find the Resolve conflicts button, check the PR conversation area near the merge section, or search the page for that button label. If you are not sure what to keep, read both versions aloud. If both are useful, combine them. There is often no single correct answer. If the autograder still reports conflict markers, search the file for all three marker types. Every one of them must be completely removed. If you accidentally deleted too much, undo and redo that section carefully. And if you want a sanity check, ask your facilitator before opening the PR."
+    },
+    {
+        "speaker":  "JAMIE",
+        "text":  "What about the nuclear option?"
+    },
+    {
+        "speaker":  "ALEX",
+        "text":  "Also valid. If you feel tangled up, you can abandon the attempt and start fresh from a clean copy of the branch or file. Sometimes restarting is faster than untangling confused edits."
+    },
+    {
+        "speaker":  "JAMIE",
+        "text":  "That\u0027s reassuring. Starting over is not cheating."
+    },
+    {
+        "speaker":  "ALEX",
+        "text":  "Not at all."
+    },
+    {
+        "speaker":  "PAUSE",
+        "text":  ""
+    },
+    {
+        "speaker":  "ALEX",
+        "text":  "Let\u0027s do a compact checklist. A merge conflict means overlapping edits need a human decision. Conflict markers are plain text and come in three parts: start marker, separator, end marker. Read both sides. Choose one side or combine them. Delete all marker lines. Search again to confirm none remain. Commit the resolution. Verify the PR status, checks, and diff. Submit your issue-linked evidence."
+    },
+    {
+        "speaker":  "JAMIE",
+        "text":  "And emotionally?"
+    },
+    {
+        "speaker":  "ALEX",
+        "text":  "Conflicts are normal. They are manageable. The skill is calm reading and intentional editing."
+    },
+    {
+        "speaker":  "PAUSE",
+        "text":  ""
+    },
+    {
+        "speaker":  "JAMIE",
+        "text":  "Before we wrap up, what are the expected outcomes for this chapter?"
+    },
+    {
+        "speaker":  "ALEX",
+        "text":  "You should be able to identify the three marker lines immediately, read both sides of a conflict, make an intentional content decision, remove all markers, and submit a clean pull request linked to the issue."
+    },
+    {
+        "speaker":  "JAMIE",
+        "text":  "And that\u0027s the learning moment, really. Not \"avoid all conflicts forever,\" but \"recognize them without panic and resolve them clearly.\""
+    },
+    {
+        "speaker":  "ALEX",
+        "text":  "Exactly. That is the point."
+    },
+    {
+        "speaker":  "PAUSE",
+        "text":  ""
+    },
+    {
+        "speaker":  "ALEX",
+        "text":  "If you want to check current official guidance beyond the course material, the authoritative sources named for this chapter are GitHub Docs, the GitHub Changelog, GitHub documentation about Git and pull requests, GitHub Flow guidance, and the Git SCM book\u0027s discussion of basic merge conflicts."
+    },
+    {
+        "speaker":  "JAMIE",
+        "text":  "So the course teaches the workflow, and those references are your source of truth when interfaces change."
+    },
+    {
+        "speaker":  "ALEX",
+        "text":  "Well said."
+    },
+    {
+        "speaker":  "PAUSE",
+        "text":  ""
+    },
+    {
+        "speaker":  "ALEX",
+        "text":  "One final reminder for the challenge: your job is not to preserve the markers. Your job is to produce a clean file that says what the project should actually say."
+    },
+    {
+        "speaker":  "JAMIE",
+        "text":  "Delete the markers, keep the meaning."
+    },
+    {
+        "speaker":  "ALEX",
+        "text":  "Perfect. And once you can do that, merge conflicts stop feeling scary."
+    },
+    {
+        "speaker":  "JAMIE",
+        "text":  "They start feeling like editing."
+    },
+    {
+        "speaker":  "ALEX",
+        "text":  "Exactly."
+    }
 ]

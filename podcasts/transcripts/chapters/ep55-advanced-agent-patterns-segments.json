@@ -1,506 +1,506 @@
-[
-  {
-    "speaker": "ALEX",
-    "text": "Welcome back. Today we're digging into advanced agent patterns: how AI agents can delegate work, reuse workflows, automate checks at the right moments, and even use browser tools to inspect behavior instead of only reading static code."
-  },
-  {
-    "speaker": "JAMIE",
-    "text": "So this is less, \"What is an agent?\" and more, \"How do you build a really capable agent system without turning it into a giant mess?\""
-  },
-  {
-    "speaker": "ALEX",
-    "text": "Exactly. Think of this as the architecture layer behind strong accessibility workflows. It connects directly to practical work blind and low-vision developers and reviewers may do in GitHub, VS Code, and collaborative open source projects."
-  },
-  {
-    "speaker": "JAMIE",
-    "text": "And before we get too far, there's some framing in the source that matters. This appendix is a reference companion to earlier materials on accessibility agents, agent reference material, and installation and setup. It also points learners to authoritative sources in the Accessibility Agents repository and its skills documentation."
-  },
-  {
-    "speaker": "ALEX",
-    "text": "Right. So the intent here is not just theory. It's a companion reference for building and extending real agent systems."
-  },
-  {
-    "speaker": "PAUSE",
-    "text": ""
-  },
-  {
-    "speaker": "ALEX",
-    "text": "Let's start with architecture. A single agent can be good at one task, but a more advanced setup uses a parent agent and specialized subagents."
-  },
-  {
-    "speaker": "JAMIE",
-    "text": "What is a subagent in plain language?"
-  },
-  {
-    "speaker": "ALEX",
-    "text": "An agent is a standalone AI assistant focused on a domain, like ARIA patterns. A subagent is that same kind of specialist, but invoked by another agent. So a general web accessibility auditor might hand off one part of the job to an ARIA specialist, another to a contrast checker, another to a keyboard navigation specialist, and so on."
-  },
-  {
-    "speaker": "JAMIE",
-    "text": "So the parent agent becomes more of an orchestrator than a do-everything expert."
-  },
-  {
-    "speaker": "ALEX",
-    "text": "Yes. A useful example is a web accessibility wizard receiving a request to audit a page. Instead of doing one broad, shallow pass, it can orchestrate multiple specialists: one checking ARIA roles, one checking color contrast, one checking tab order, one checking images and headings, one checking tables. Then it gathers all of those results into a consolidated audit report."
-  },
-  {
-    "speaker": "JAMIE",
-    "text": "That sounds more reliable than one giant prompt asking one agent to remember every accessibility domain at once."
-  },
-  {
-    "speaker": "ALEX",
-    "text": "That's the core idea. Delegation over monolithic design."
-  },
-  {
-    "speaker": "JAMIE",
-    "text": "How do you actually tell an agent to use subagents?"
-  },
-  {
-    "speaker": "ALEX",
-    "text": "In the source, the pattern is to put that behavior into the agent's instructions or a custom prompt and invoke subagents through a function like runSubagent. The exact implementation may vary by platform, but conceptually the parent passes the subagent's name, a targeted prompt, and often a brief description of the task."
-  },
-  {
-    "speaker": "JAMIE",
-    "text": "So something like: call the ARIA specialist, pass in the component HTML, ask for an ARIA compliance review. Then separately call the contrast specialist with CSS rules and ask for color contrast verification."
-  },
-  {
-    "speaker": "ALEX",
-    "text": "Exactly. Small, focused assignments."
-  },
-  {
-    "speaker": "JAMIE",
-    "text": "When should learners reach for subagents instead of one agent?"
-  },
-  {
-    "speaker": "ALEX",
-    "text": "Several cases. For a full page audit, a primary web accessibility agent can dispatch all specialists in parallel and then merge the findings. For code review, a fixer agent might call an ARIA specialist and a contrast specialist to verify whether a proposed fix really works across domains. For document auditing, a document accessibility wizard can serve as a single entry point while delegating to platform-specific experts for Word, PDF, or Excel. And for Markdown, a Markdown accessibility assistant might call a link checker to cross-check link text and heading hierarchy."
-  },
-  {
-    "speaker": "JAMIE",
-    "text": "I like that because it mirrors how human teams work. One coordinator, several specialists."
-  },
-  {
-    "speaker": "ALEX",
-    "text": "Yes, and the appendix gives four principles for making that work well. First, delegation over monoliths: one parent calls specialists, but specialists generally should not call other specialists, because that can create runaway loops or tangled control flow. Second, error recovery: if one subagent fails, the parent logs the failure and continues the rest of the audit. Third, context preservation: the parent passes enough context, such as HTML, CSS, or the document content, so the subagent can make grounded judgments. Fourth, result aggregation: the parent is responsible for combining everything into one coherent report."
-  },
-  {
-    "speaker": "JAMIE",
-    "text": "That error recovery point feels especially important in accessibility workflows. You don't want one broken checker to silence five other useful findings."
-  },
-  {
-    "speaker": "ALEX",
-    "text": "Precisely."
-  },
-  {
-    "speaker": "PAUSE",
-    "text": ""
-  },
-  {
-    "speaker": "ALEX",
-    "text": "The next big idea is skills."
-  },
-  {
-    "speaker": "JAMIE",
-    "text": "And here the word skill means something more structured than just, \"the model is good at a thing,\" right?"
-  },
-  {
-    "speaker": "ALEX",
-    "text": "Right. In this appendix, a skill is a reusable multi-step workflow packaged with reference files, templates, and automation scripts. You can think of a skill as a repeatable procedure. It can be invoked by an agent, or in some environments directly by a user using a slash command."
-  },
-  {
-    "speaker": "JAMIE",
-    "text": "So instead of re-explaining the whole process every time, you encapsulate the workflow."
-  },
-  {
-    "speaker": "ALEX",
-    "text": "Exactly. For example, a web-scanning skill might include crawling logic, URL inventory templates, browser automation code, and reference documentation. A report-generation skill might include severity scoring algorithms, scorecard templates, CSV export logic, and WCAG mapping data."
-  },
-  {
-    "speaker": "JAMIE",
-    "text": "That sounds a lot like good software engineering: don't duplicate process, package it."
-  },
-  {
-    "speaker": "ALEX",
-    "text": "Yes, and the appendix lists a broad library of core skills, more than twenty-five, organized by capability."
-  },
-  {
-    "speaker": "JAMIE",
-    "text": "Can we walk through those categories?"
-  },
-  {
-    "speaker": "ALEX",
-    "text": "Absolutely. For web scanning, there are skills like web-scanning and web-severity-scoring, used for page inventory, audit scoping, and severity calculation. For web remediation, there are skills like web-issue-fixer and web-csv-reporter, which support applying fixes and exporting findings. For document scanning, skills include document-scanning and document-accessibility-rules, used to audit Word, Excel, PDF, or EPUB and map issues to WCAG. For document remediation, there are document-remediation and document-csv-reporter, focused on fixing documents and generating compliance reports. For Markdown, the library includes markdown-accessibility, markdown-fixer, and markdown-csv-reporter, which are useful for auditing Markdown files and fixing link text, heading structure, or things like confusing emoji usage. There are also CI and CD integration skills such as lighthouse-scanner and github-accessibility-scanner for parsing continuous integration reports and tracking regressions. Framework-specific skills include framework-accessibility, react-patterns, and vue-patterns. Python development tools include python-fact-grounded-coding and pylance-refactoring. Testing-focused skills include testing-coach and accessibility-testing-setup. And compliance skills include wcag-guide, accessibility-rules-reference, and help-url-reference."
-  },
-  {
-    "speaker": "JAMIE",
-    "text": "That's a strong reminder that accessibility work isn't just one kind of artifact. It's websites, documents, Markdown, CI pipelines, framework code, testing setups, and reference guidance."
-  },
-  {
-    "speaker": "ALEX",
-    "text": "Exactly. The skill system reflects the actual breadth of the work."
-  },
-  {
-    "speaker": "JAMIE",
-    "text": "How does a learner use a skill in practice?"
-  },
-  {
-    "speaker": "ALEX",
-    "text": "Two main ways are highlighted. One is directly from a chat interface through commands such as slash web-scanning followed by a URL, slash report-generation with findings data, or slash python-fact-grounded-coding with a script name. The other is from within a custom agent's instructions. In that case, the agent is told when to invoke a skill, what inputs to supply, and what output format is expected."
-  },
-  {
-    "speaker": "JAMIE",
-    "text": "So the agent instructions might say: when you need to audit a webpage, use the web-scanning skill with a URL, use WCAG 2.2 AA as the severity model, and produce JSON."
-  },
-  {
-    "speaker": "ALEX",
-    "text": "Exactly. Clear inputs, clear output expectations."
-  },
-  {
-    "speaker": "JAMIE",
-    "text": "What about writing your own skill?"
-  },
-  {
-    "speaker": "ALEX",
-    "text": "The appendix gives a pattern for that too. A custom skill lives in a directory like.github slash skills slash my-skill-name, with a SKILL.md file. That file should define the skill name, its purpose, its inputs, its workflow, its output, and its references."
-  },
-  {
-    "speaker": "JAMIE",
-    "text": "Can you unpack those sections?"
-  },
-  {
-    "speaker": "ALEX",
-    "text": "Purpose explains what problem the skill solves. Inputs list what the skill needs, such as a URL, a file path, or optional configuration. Workflow lays out the sequence, like parse input, execute steps, collect results, format output. Output defines the report format, maybe JSON, Markdown, or CSV, and often includes an example. References point to related agents or external documentation."
-  },
-  {
-    "speaker": "JAMIE",
-    "text": "And there are supporting files too."
-  },
-  {
-    "speaker": "ALEX",
-    "text": "Yes. Templates can hold input or output patterns. Scripts can hold automation in shell or Python. Reference data can store lookup tables or compliance mappings."
-  },
-  {
-    "speaker": "JAMIE",
-    "text": "Why is that structure so important?"
-  },
-  {
-    "speaker": "ALEX",
-    "text": "Because it makes a skill portable, inspectable, and reusable. And the appendix emphasizes skill reuse across agents. One web accessibility wizard might use web-scanning plus web-severity-scoring. A web issue fixer might reuse web-scanning plus web-issue-fixer. A link checker might reuse web-scanning plus a narrower link-validation subset. The benefit is consistent behavior and less duplicated logic."
-  },
-  {
-    "speaker": "PAUSE",
-    "text": ""
-  },
-  {
-    "speaker": "ALEX",
-    "text": "Now let's move into hooks, which are about lifecycle automation."
-  },
-  {
-    "speaker": "JAMIE",
-    "text": "This is where the system starts doing useful things before a human remembers to ask."
-  },
-  {
-    "speaker": "ALEX",
-    "text": "Exactly. A hook is a JSON configuration that triggers agent actions automatically at specific events. The key accessibility idea is prevention and timely feedback. Instead of waiting until a late-stage review, the system can intervene on edit, save, commit, pull request creation, or on a schedule."
-  },
-  {
-    "speaker": "JAMIE",
-    "text": "So what lifecycle events are called out?"
-  },
-  {
-    "speaker": "ALEX",
-    "text": "The appendix lists editing before save, saving after changes, committing before push, pull request creation before merge, and scheduled runs such as nightly or weekly audits."
-  },
-  {
-    "speaker": "JAMIE",
-    "text": "That maps nicely to the real development rhythm."
-  },
-  {
-    "speaker": "ALEX",
-    "text": "It does. The sample configuration lives in a file like.github slash hooks slash accessibility.hooks.json and contains an array of hook objects."
-  },
-  {
-    "speaker": "JAMIE",
-    "text": "What kinds of hooks are shown in the sample?"
-  },
-  {
-    "speaker": "ALEX",
-    "text": "One example is proactive detection on file edit. It watches matching files, routes them to an ARIA specialist, checks a condition such as whether the file includes ARIA-related content, and highlights violations at warning severity. Another example is an edit gate on file save. It watches source files, runs a broader accessibility wizard, and if severity crosses an error threshold, it blocks the save and tells the user to use a fixer agent. There is also a commit-check hook that runs on commit across all files, uses an accessibility lead agent, and appends scan results to the commit message. And a nightly audit hook runs on a cron schedule, targets documentation Markdown, uses a Markdown accessibility assistant, and creates issues with labels like accessibility and auto-audit."
-  },
-  {
-    "speaker": "JAMIE",
-    "text": "That last one is especially good for repositories that have lots of docs and not enough time for constant manual review."
-  },
-  {
-    "speaker": "ALEX",
-    "text": "Yes. It keeps quality from depending entirely on memory."
-  },
-  {
-    "speaker": "JAMIE",
-    "text": "What properties does a hook configuration typically include?"
-  },
-  {
-    "speaker": "ALEX",
-    "text": "The appendix lists a standard set. Name is the unique identifier. Event says when it runs, like on-file-edit or on-commit. Pattern is a glob describing which files it applies to. Agent is the specialist or orchestrator to run. Condition defines whether the hook should trigger. Action defines what happens, such as highlight, block-save, scan-and-report, or create-issue. Severity can be info, warning, or error. Message is custom feedback to the user. Labels support issue creation workflows."
-  },
-  {
-    "speaker": "JAMIE",
-    "text": "And the source also mentions hook examples beyond the sample block."
-  },
-  {
-    "speaker": "ALEX",
-    "text": "Yes, including a proactive ARIA detection example. The full examples in the source are partially truncated in what we received, but the pattern is clear: hooks let you encode accessible quality gates close to the work."
-  },
-  {
-    "speaker": "JAMIE",
-    "text": "There's also a heading about enabling hooks by platform."
-  },
-  {
-    "speaker": "ALEX",
-    "text": "Right, and this matters administratively. Platform support can vary. Some environments support custom instructions, agents, or automation differently than others. So learners should verify the current support matrix in GitHub documentation, Copilot documentation, changelogs, and custom agent guidance. In other words, the design pattern is stable, but exact enablement depends on the platform's current capabilities."
-  },
-  {
-    "speaker": "PAUSE",
-    "text": ""
-  },
-  {
-    "speaker": "ALEX",
-    "text": "Next comes browser tools for behavioral scanning."
-  },
-  {
-    "speaker": "JAMIE",
-    "text": "Which sounds very different from just reading source files."
-  },
-  {
-    "speaker": "ALEX",
-    "text": "It is. Browser tools let an agent interact with a page as rendered and behaving in the browser. That matters because many accessibility problems show up only when JavaScript runs, focus moves, dynamic content appears, or the layout changes."
-  },
-  {
-    "speaker": "JAMIE",
-    "text": "So what kinds of browser capabilities are implied here?"
-  },
-  {
-    "speaker": "ALEX",
-    "text": "The appendix points broadly to available browser tools and using them in agents. In practice, that usually means tools that can open pages, inspect the DOM, interact with controls, follow links, observe focus movement, capture rendered state, and gather page content for analysis."
-  },
-  {
-    "speaker": "JAMIE",
-    "text": "That seems essential for behavioral accessibility issues."
-  },
-  {
-    "speaker": "ALEX",
-    "text": "Yes. Static code analysis can tell you a button lacks an accessible name. Browser automation can go further and reveal whether a modal traps focus incorrectly, whether keyboard order is broken after a menu opens, or whether content injected after a click is actually announced or reachable."
-  },
-  {
-    "speaker": "JAMIE",
-    "text": "The source specifically calls out auditing page accessibility and then doing a smart audit based on page content."
-  },
-  {
-    "speaker": "ALEX",
-    "text": "Right. That means an agent can first inspect what kind of page it's dealing with, then decide which checks matter most. For example, if it finds a data table, it can prioritize table semantics. If it finds a form-heavy page, it can focus on labels, error handling, and keyboard flow. If it detects media, it can ask about captions or transcripts. That adaptive behavior is often more efficient than running every possible check with equal weight."
-  },
-  {
-    "speaker": "JAMIE",
-    "text": "And what about limitations?"
-  },
-  {
-    "speaker": "ALEX",
-    "text": "The appendix explicitly includes browser tool limitations and workarounds. Even when browser tools are powerful, they may have incomplete support for screen reader behavior, authentication flows, highly dynamic apps, or complex stateful interactions. Workarounds often involve combining browser automation with code inspection, logging, targeted prompts, saved test fixtures, or human verification for the final judgment."
-  },
-  {
-    "speaker": "JAMIE",
-    "text": "So learners should hear this clearly: browser-based scans are powerful, but they are not a substitute for all manual testing, especially when real assistive technology behavior matters."
-  },
-  {
-    "speaker": "ALEX",
-    "text": "Exactly right."
-  },
-  {
-    "speaker": "PAUSE",
-    "text": ""
-  },
-  {
-    "speaker": "ALEX",
-    "text": "Now let's talk orchestration, which is where these building blocks become repeatable patterns."
-  },
-  {
-    "speaker": "JAMIE",
-    "text": "The appendix gives named delegation patterns, yes?"
-  },
-  {
-    "speaker": "ALEX",
-    "text": "Yes. The first is a parallel scanning pattern described as a web accessibility wizard. The basic idea is that one orchestrator launches multiple specialists at once."
-  },
-  {
-    "speaker": "JAMIE",
-    "text": "That's the full-audit model we discussed earlier."
-  },
-  {
-    "speaker": "ALEX",
-    "text": "Correct, and the related parallel audit idea is that independent checks can run concurrently to save time and produce broader coverage. This is especially useful when scanning a page or set of pages for multiple issue classes."
-  },
-  {
-    "speaker": "JAMIE",
-    "text": "Then there's cascading fixes, with a web issue fixer."
-  },
-  {
-    "speaker": "ALEX",
-    "text": "Right. In a cascading fixes pattern, one stage detects issues, another proposes or applies fixes, and then additional specialists verify whether those fixes introduced new problems or failed to resolve the original ones. It's sequential and corrective, not just diagnostic."
-  },
-  {
-    "speaker": "JAMIE",
-    "text": "So you might detect a missing label, apply a remediation, and then re-run related checks for focus order, naming, or validation feedback."
-  },
-  {
-    "speaker": "ALEX",
-    "text": "Exactly. The third pattern is skill-first workflows, with a testing coach as the example. Here the main agent relies primarily on invoking reusable skills rather than improvising each process from scratch. That produces more predictable test setup, reporting, and teaching behavior."
-  },
-  {
-    "speaker": "JAMIE",
-    "text": "That seems useful for education, because learners can get the same process each time."
-  },
-  {
-    "speaker": "ALEX",
-    "text": "Yes, especially when teaching structured accessibility testing. The fourth pattern is report aggregation, described as a cross-page analyzer. That means collecting findings from multiple pages or scans and synthesizing them into a portfolio view, identifying recurring issues, shared components, or systemic failures."
-  },
-  {
-    "speaker": "JAMIE",
-    "text": "Which is much closer to how teams actually prioritize work. Not just one broken page, but patterns across a whole site or product."
-  },
-  {
-    "speaker": "ALEX",
-    "text": "Exactly."
-  },
-  {
-    "speaker": "PAUSE",
-    "text": ""
-  },
-  {
-    "speaker": "ALEX",
-    "text": "The appendix then moves into advanced techniques."
-  },
-  {
-    "speaker": "JAMIE",
-    "text": "Starting with custom skills for your organization."
-  },
-  {
-    "speaker": "ALEX",
-    "text": "Yes. This is about building a pattern library that reflects your team's conventions, design system, and accessibility expectations. The source gives an example path:.github slash skills slash our-pattern-library slash SKILL.md."
-  },
-  {
-    "speaker": "JAMIE",
-    "text": "And the skill itself is called Our Accessibility Pattern Library."
-  },
-  {
-    "speaker": "ALEX",
-    "text": "Right. Conceptually, that skill's purpose is to give agents a reusable internal source of approved accessibility patterns. The patterns included would be your organization's preferred implementations, guardrails, or known-good examples. Inputs might include component names, file paths, framework context, or requested pattern types. Output would be recommendations, mappings, or example implementations aligned with the organization's standards. Usage would explain how agents or developers invoke the library in practice."
-  },
-  {
-    "speaker": "JAMIE",
-    "text": "That's powerful because accessibility guidance often needs to be local, not just general. A team might have a house style for dialogs, forms, error messaging, or keyboard interactions."
-  },
-  {
-    "speaker": "ALEX",
-    "text": "Exactly. A custom pattern library lets the agent give advice that matches the repository the learner is actually in."
-  },
-  {
-    "speaker": "JAMIE",
-    "text": "What comes next?"
-  },
-  {
-    "speaker": "ALEX",
-    "text": "Continuous evaluation hooks. This extends the hook idea from occasional checks to recurring evaluation. Instead of treating accessibility as a one-time audit, the system keeps measuring over time, perhaps on commits, pull requests, or schedules, so regressions surface early."
-  },
-  {
-    "speaker": "JAMIE",
-    "text": "Then platform-specific skill variants."
-  },
-  {
-    "speaker": "ALEX",
-    "text": "Yes. Not every environment behaves the same. A skill may need variants tuned for GitHub workflows, a particular editor integration, a cloud agent environment, or a local toolchain. Same overall purpose, different implementation details."
-  },
-  {
-    "speaker": "JAMIE",
-    "text": "And result caching for performance."
-  },
-  {
-    "speaker": "ALEX",
-    "text": "That's an important engineering technique. If scans, lookups, or reference computations are expensive and inputs have not changed, caching results can make agents much faster and cheaper. But the tradeoff is freshness. You need a good strategy for invalidating stale results when files, pages, or dependencies change."
-  },
-  {
-    "speaker": "JAMIE",
-    "text": "So even in accessibility automation, performance architecture matters."
-  },
-  {
-    "speaker": "ALEX",
-    "text": "Very much so."
-  },
-  {
-    "speaker": "PAUSE",
-    "text": ""
-  },
-  {
-    "speaker": "JAMIE",
-    "text": "The appendix also mentions learning cards."
-  },
-  {
-    "speaker": "ALEX",
-    "text": "Yes, learning cards for advanced patterns. Even without the full card text in the excerpt we received, the intent is clear: distill the advanced ideas into study-friendly reminders. For learners, that usually means compact takeaways such as when to use subagents, how skills differ from agents, where hooks fit into the lifecycle, and why browser tools complement static analysis."
-  },
-  {
-    "speaker": "JAMIE",
-    "text": "And then there are references and authoritative sources."
-  },
-  {
-    "speaker": "ALEX",
-    "text": "Right. The source explicitly points learners back to authoritative documentation: the Accessibility Agents repository's skills directory, the skills documentation, GitHub Docs, the GitHub changelog, Copilot docs, the custom instructions support matrix, and documentation on custom agents. It also includes a section-level source map, which is administrative but important because it tells you where each part of the appendix is grounded."
-  },
-  {
-    "speaker": "JAMIE",
-    "text": "That's especially useful when platform behavior changes. Learners can verify what is still current."
-  },
-  {
-    "speaker": "ALEX",
-    "text": "Exactly. For accessible contribution workflows, that matters a lot. Tooling support evolves, so you want habits of checking the docs, not just memorizing one configuration."
-  },
-  {
-    "speaker": "PAUSE",
-    "text": ""
-  },
-  {
-    "speaker": "JAMIE",
-    "text": "Let me try a practical summary, and you tell me if I've got it. If I'm building an advanced accessibility agent workflow, I should think in layers. First, architecture: one parent agent can delegate to subagents instead of trying to do everything itself. Second, skills: package repeatable multi-step workflows so multiple agents can reuse them. Third, hooks: trigger those capabilities at useful lifecycle moments like edit, save, commit, pull request, or scheduled audits. Fourth, browser tools: inspect behavior, not just source. Fifth, orchestration patterns: choose whether I need parallel scanning, cascading fixes, skill-first operation, or aggregated reporting. And finally, advanced refinements like organization-specific skills, continuous evaluation, platform variants, and caching."
-  },
-  {
-    "speaker": "ALEX",
-    "text": "That is an excellent summary."
-  },
-  {
-    "speaker": "JAMIE",
-    "text": "And for our audience, one more takeaway: these patterns can support accessibility work in a way that is structured and scalable, but they don't replace judgment. They help blind and low-vision contributors, maintainers, and educators build workflows that are more consistent, more proactive, and easier to reuse across projects."
-  },
-  {
-    "speaker": "ALEX",
-    "text": "Beautifully said. The best agent systems do not just answer questions. They encode good process, reduce repeated labor, preserve accessibility knowledge, and make high-quality contribution workflows easier for everyone on the team."
-  },
-  {
-    "speaker": "JAMIE",
-    "text": "And they do it in a way that can fit GitHub repositories, VS Code habits, CI pipelines, documentation review, and open source collaboration."
-  },
-  {
-    "speaker": "ALEX",
-    "text": "Exactly. That's the real value of these advanced patterns."
-  },
-  {
-    "speaker": "PAUSE",
-    "text": ""
-  },
-  {
-    "speaker": "ALEX",
-    "text": "Next time you see an agent that looks magical, ask a better question: what subagents, skills, hooks, browser tools, and orchestration patterns are making that result possible?"
-  },
-  {
-    "speaker": "JAMIE",
-    "text": "Because behind the magic, there's architecture."
-  }
+﻿[
+    {
+        "speaker":  "ALEX",
+        "text":  "Welcome back. Today we\u0027re digging into advanced agent patterns: how AI agents can delegate work, reuse workflows, automate checks at the right moments, and even use browser tools to inspect behavior instead of only reading static code."
+    },
+    {
+        "speaker":  "JAMIE",
+        "text":  "So this is less, \"What is an agent?\" and more, \"How do you build a really capable agent system without turning it into a giant mess?\""
+    },
+    {
+        "speaker":  "ALEX",
+        "text":  "Exactly. Think of this as the architecture layer behind strong accessibility workflows. It connects directly to practical work blind and low-vision developers and reviewers may do in GitHub, VS Code, and collaborative open source projects."
+    },
+    {
+        "speaker":  "JAMIE",
+        "text":  "And before we get too far, there\u0027s some framing in the source that matters. This appendix is a reference companion to earlier materials on accessibility agents, agent reference material, and installation and setup. It also points learners to authoritative sources in the Accessibility Agents repository and its skills documentation."
+    },
+    {
+        "speaker":  "ALEX",
+        "text":  "Right. So the intent here is not just theory. It\u0027s a companion reference for building and extending real agent systems."
+    },
+    {
+        "speaker":  "PAUSE",
+        "text":  ""
+    },
+    {
+        "speaker":  "ALEX",
+        "text":  "Let\u0027s start with architecture. A single agent can be good at one task, but a more advanced setup uses a parent agent and specialized subagents."
+    },
+    {
+        "speaker":  "JAMIE",
+        "text":  "What is a subagent in plain language?"
+    },
+    {
+        "speaker":  "ALEX",
+        "text":  "An agent is a standalone AI assistant focused on a domain, like ARIA patterns. A subagent is that same kind of specialist, but invoked by another agent. So a general web accessibility auditor might hand off one part of the job to an ARIA specialist, another to a contrast checker, another to a keyboard navigation specialist, and so on."
+    },
+    {
+        "speaker":  "JAMIE",
+        "text":  "So the parent agent becomes more of an orchestrator than a do-everything expert."
+    },
+    {
+        "speaker":  "ALEX",
+        "text":  "Yes. A useful example is a web accessibility wizard receiving a request to audit a page. Instead of doing one broad, shallow pass, it can orchestrate multiple specialists: one checking ARIA roles, one checking color contrast, one checking tab order, one checking images and headings, one checking tables. Then it gathers all of those results into a consolidated audit report."
+    },
+    {
+        "speaker":  "JAMIE",
+        "text":  "That sounds more reliable than one giant prompt asking one agent to remember every accessibility domain at once."
+    },
+    {
+        "speaker":  "ALEX",
+        "text":  "That\u0027s the core idea. Delegation over monolithic design."
+    },
+    {
+        "speaker":  "JAMIE",
+        "text":  "How do you actually tell an agent to use subagents?"
+    },
+    {
+        "speaker":  "ALEX",
+        "text":  "In the source, the pattern is to put that behavior into the agent\u0027s instructions or a custom prompt and invoke subagents through a function like runSubagent. The exact implementation may vary by platform, but conceptually the parent passes the subagent\u0027s name, a targeted prompt, and often a brief description of the task."
+    },
+    {
+        "speaker":  "JAMIE",
+        "text":  "So something like: call the ARIA specialist, pass in the component HTML, ask for an ARIA compliance review. Then separately call the contrast specialist with CSS rules and ask for color contrast verification."
+    },
+    {
+        "speaker":  "ALEX",
+        "text":  "Exactly. Small, focused assignments."
+    },
+    {
+        "speaker":  "JAMIE",
+        "text":  "When should learners reach for subagents instead of one agent?"
+    },
+    {
+        "speaker":  "ALEX",
+        "text":  "Several cases. For a full page audit, a primary web accessibility agent can dispatch all specialists in parallel and then merge the findings. For code review, a fixer agent might call an ARIA specialist and a contrast specialist to verify whether a proposed fix really works across domains. For document auditing, a document accessibility wizard can serve as a single entry point while delegating to platform-specific experts for Word, PDF, or Excel. And for Markdown, a Markdown accessibility assistant might call a link checker to cross-check link text and heading hierarchy."
+    },
+    {
+        "speaker":  "JAMIE",
+        "text":  "I like that because it mirrors how human teams work. One coordinator, several specialists."
+    },
+    {
+        "speaker":  "ALEX",
+        "text":  "Yes, and the appendix gives four principles for making that work well. First, delegation over monoliths: one parent calls specialists, but specialists generally should not call other specialists, because that can create runaway loops or tangled control flow. Second, error recovery: if one subagent fails, the parent logs the failure and continues the rest of the audit. Third, context preservation: the parent passes enough context, such as HTML, CSS, or the document content, so the subagent can make grounded judgments. Fourth, result aggregation: the parent is responsible for combining everything into one coherent report."
+    },
+    {
+        "speaker":  "JAMIE",
+        "text":  "That error recovery point feels especially important in accessibility workflows. You don\u0027t want one broken checker to silence five other useful findings."
+    },
+    {
+        "speaker":  "ALEX",
+        "text":  "Precisely."
+    },
+    {
+        "speaker":  "PAUSE",
+        "text":  ""
+    },
+    {
+        "speaker":  "ALEX",
+        "text":  "The next big idea is skills."
+    },
+    {
+        "speaker":  "JAMIE",
+        "text":  "And here the word skill means something more structured than just, \"the model is good at a thing,\" right?"
+    },
+    {
+        "speaker":  "ALEX",
+        "text":  "Right. In this appendix, a skill is a reusable multi-step workflow packaged with reference files, templates, and automation scripts. You can think of a skill as a repeatable procedure. It can be invoked by an agent, or in some environments directly by a user using a slash command."
+    },
+    {
+        "speaker":  "JAMIE",
+        "text":  "So instead of re-explaining the whole process every time, you encapsulate the workflow."
+    },
+    {
+        "speaker":  "ALEX",
+        "text":  "Exactly. For example, a web-scanning skill might include crawling logic, URL inventory templates, browser automation code, and reference documentation. A report-generation skill might include severity scoring algorithms, scorecard templates, CSV export logic, and WCAG mapping data."
+    },
+    {
+        "speaker":  "JAMIE",
+        "text":  "That sounds a lot like good software engineering: don\u0027t duplicate process, package it."
+    },
+    {
+        "speaker":  "ALEX",
+        "text":  "Yes, and the appendix lists a broad library of core skills, more than twenty-five, organized by capability."
+    },
+    {
+        "speaker":  "JAMIE",
+        "text":  "Can we walk through those categories?"
+    },
+    {
+        "speaker":  "ALEX",
+        "text":  "Absolutely. For web scanning, there are skills like web-scanning and web-severity-scoring, used for page inventory, audit scoping, and severity calculation. For web remediation, there are skills like web-issue-fixer and web-csv-reporter, which support applying fixes and exporting findings. For document scanning, skills include document-scanning and document-accessibility-rules, used to audit Word, Excel, PDF, or EPUB and map issues to WCAG. For document remediation, there are document-remediation and document-csv-reporter, focused on fixing documents and generating compliance reports. For Markdown, the library includes markdown-accessibility, markdown-fixer, and markdown-csv-reporter, which are useful for auditing Markdown files and fixing link text, heading structure, or things like confusing emoji usage. There are also CI and CD integration skills such as lighthouse-scanner and github-accessibility-scanner for parsing continuous integration reports and tracking regressions. Framework-specific skills include framework-accessibility, react-patterns, and vue-patterns. Python development tools include python-fact-grounded-coding and pylance-refactoring. Testing-focused skills include testing-coach and accessibility-testing-setup. And compliance skills include wcag-guide, accessibility-rules-reference, and help-url-reference."
+    },
+    {
+        "speaker":  "JAMIE",
+        "text":  "That\u0027s a strong reminder that accessibility work isn\u0027t just one kind of artifact. It\u0027s websites, documents, Markdown, CI pipelines, framework code, testing setups, and reference guidance."
+    },
+    {
+        "speaker":  "ALEX",
+        "text":  "Exactly. The skill system reflects the actual breadth of the work."
+    },
+    {
+        "speaker":  "JAMIE",
+        "text":  "How does a learner use a skill in practice?"
+    },
+    {
+        "speaker":  "ALEX",
+        "text":  "Two main ways are highlighted. One is directly from a chat interface through commands such as slash web-scanning followed by a URL, slash report-generation with findings data, or slash python-fact-grounded-coding with a script name. The other is from within a custom agent\u0027s instructions. In that case, the agent is told when to invoke a skill, what inputs to supply, and what output format is expected."
+    },
+    {
+        "speaker":  "JAMIE",
+        "text":  "So the agent instructions might say: when you need to audit a webpage, use the web-scanning skill with a URL, use WCAG 2.2 AA as the severity model, and produce JSON."
+    },
+    {
+        "speaker":  "ALEX",
+        "text":  "Exactly. Clear inputs, clear output expectations."
+    },
+    {
+        "speaker":  "JAMIE",
+        "text":  "What about writing your own skill?"
+    },
+    {
+        "speaker":  "ALEX",
+        "text":  "The appendix gives a pattern for that too. A custom skill lives in a directory like.github slash skills slash my-skill-name, with a SKILL.md file. That file should define the skill name, its purpose, its inputs, its workflow, its output, and its references."
+    },
+    {
+        "speaker":  "JAMIE",
+        "text":  "Can you unpack those sections?"
+    },
+    {
+        "speaker":  "ALEX",
+        "text":  "Purpose explains what problem the skill solves. Inputs list what the skill needs, such as a URL, a file path, or optional configuration. Workflow lays out the sequence, like parse input, execute steps, collect results, format output. Output defines the report format, maybe JSON, Markdown, or CSV, and often includes an example. References point to related agents or external documentation."
+    },
+    {
+        "speaker":  "JAMIE",
+        "text":  "And there are supporting files too."
+    },
+    {
+        "speaker":  "ALEX",
+        "text":  "Yes. Templates can hold input or output patterns. Scripts can hold automation in shell or Python. Reference data can store lookup tables or compliance mappings."
+    },
+    {
+        "speaker":  "JAMIE",
+        "text":  "Why is that structure so important?"
+    },
+    {
+        "speaker":  "ALEX",
+        "text":  "Because it makes a skill portable, inspectable, and reusable. And the appendix emphasizes skill reuse across agents. One web accessibility wizard might use web-scanning plus web-severity-scoring. A web issue fixer might reuse web-scanning plus web-issue-fixer. A link checker might reuse web-scanning plus a narrower link-validation subset. The benefit is consistent behavior and less duplicated logic."
+    },
+    {
+        "speaker":  "PAUSE",
+        "text":  ""
+    },
+    {
+        "speaker":  "ALEX",
+        "text":  "Now let\u0027s move into hooks, which are about lifecycle automation."
+    },
+    {
+        "speaker":  "JAMIE",
+        "text":  "This is where the system starts doing useful things before a human remembers to ask."
+    },
+    {
+        "speaker":  "ALEX",
+        "text":  "Exactly. A hook is a JSON configuration that triggers agent actions automatically at specific events. The key accessibility idea is prevention and timely feedback. Instead of waiting until a late-stage review, the system can intervene on edit, save, commit, pull request creation, or on a schedule."
+    },
+    {
+        "speaker":  "JAMIE",
+        "text":  "So what lifecycle events are called out?"
+    },
+    {
+        "speaker":  "ALEX",
+        "text":  "The appendix lists editing before save, saving after changes, committing before push, pull request creation before merge, and scheduled runs such as nightly or weekly audits."
+    },
+    {
+        "speaker":  "JAMIE",
+        "text":  "That maps nicely to the real development rhythm."
+    },
+    {
+        "speaker":  "ALEX",
+        "text":  "It does. The sample configuration lives in a file like.github slash hooks slash accessibility.hooks.json and contains an array of hook objects."
+    },
+    {
+        "speaker":  "JAMIE",
+        "text":  "What kinds of hooks are shown in the sample?"
+    },
+    {
+        "speaker":  "ALEX",
+        "text":  "One example is proactive detection on file edit. It watches matching files, routes them to an ARIA specialist, checks a condition such as whether the file includes ARIA-related content, and highlights violations at warning severity. Another example is an edit gate on file save. It watches source files, runs a broader accessibility wizard, and if severity crosses an error threshold, it blocks the save and tells the user to use a fixer agent. There is also a commit-check hook that runs on commit across all files, uses an accessibility lead agent, and appends scan results to the commit message. And a nightly audit hook runs on a cron schedule, targets documentation Markdown, uses a Markdown accessibility assistant, and creates issues with labels like accessibility and auto-audit."
+    },
+    {
+        "speaker":  "JAMIE",
+        "text":  "That last one is especially good for repositories that have lots of docs and not enough time for constant manual review."
+    },
+    {
+        "speaker":  "ALEX",
+        "text":  "Yes. It keeps quality from depending entirely on memory."
+    },
+    {
+        "speaker":  "JAMIE",
+        "text":  "What properties does a hook configuration typically include?"
+    },
+    {
+        "speaker":  "ALEX",
+        "text":  "The appendix lists a standard set. Name is the unique identifier. Event says when it runs, like on-file-edit or on-commit. Pattern is a glob describing which files it applies to. Agent is the specialist or orchestrator to run. Condition defines whether the hook should trigger. Action defines what happens, such as highlight, block-save, scan-and-report, or create-issue. Severity can be info, warning, or error. Message is custom feedback to the user. Labels support issue creation workflows."
+    },
+    {
+        "speaker":  "JAMIE",
+        "text":  "And the source also mentions hook examples beyond the sample block."
+    },
+    {
+        "speaker":  "ALEX",
+        "text":  "Yes, including a proactive ARIA detection example. The full examples in the source are partially truncated in what we received, but the pattern is clear: hooks let you encode accessible quality gates close to the work."
+    },
+    {
+        "speaker":  "JAMIE",
+        "text":  "There\u0027s also a heading about enabling hooks by platform."
+    },
+    {
+        "speaker":  "ALEX",
+        "text":  "Right, and this matters administratively. Platform support can vary. Some environments support custom instructions, agents, or automation differently than others. So learners should verify the current support matrix in GitHub documentation, Copilot documentation, changelogs, and custom agent guidance. In other words, the design pattern is stable, but exact enablement depends on the platform\u0027s current capabilities."
+    },
+    {
+        "speaker":  "PAUSE",
+        "text":  ""
+    },
+    {
+        "speaker":  "ALEX",
+        "text":  "Next comes browser tools for behavioral scanning."
+    },
+    {
+        "speaker":  "JAMIE",
+        "text":  "Which sounds very different from just reading source files."
+    },
+    {
+        "speaker":  "ALEX",
+        "text":  "It is. Browser tools let an agent interact with a page as rendered and behaving in the browser. That matters because many accessibility problems show up only when JavaScript runs, focus moves, dynamic content appears, or the layout changes."
+    },
+    {
+        "speaker":  "JAMIE",
+        "text":  "So what kinds of browser capabilities are implied here?"
+    },
+    {
+        "speaker":  "ALEX",
+        "text":  "The appendix points broadly to available browser tools and using them in agents. In practice, that usually means tools that can open pages, inspect the DOM, interact with controls, follow links, observe focus movement, capture rendered state, and gather page content for analysis."
+    },
+    {
+        "speaker":  "JAMIE",
+        "text":  "That seems essential for behavioral accessibility issues."
+    },
+    {
+        "speaker":  "ALEX",
+        "text":  "Yes. Static code analysis can tell you a button lacks an accessible name. Browser automation can go further and reveal whether a modal traps focus incorrectly, whether keyboard order is broken after a menu opens, or whether content injected after a click is actually announced or reachable."
+    },
+    {
+        "speaker":  "JAMIE",
+        "text":  "The source specifically calls out auditing page accessibility and then doing a smart audit based on page content."
+    },
+    {
+        "speaker":  "ALEX",
+        "text":  "Right. That means an agent can first inspect what kind of page it\u0027s dealing with, then decide which checks matter most. For example, if it finds a data table, it can prioritize table semantics. If it finds a form-heavy page, it can focus on labels, error handling, and keyboard flow. If it detects media, it can ask about captions or transcripts. That adaptive behavior is often more efficient than running every possible check with equal weight."
+    },
+    {
+        "speaker":  "JAMIE",
+        "text":  "And what about limitations?"
+    },
+    {
+        "speaker":  "ALEX",
+        "text":  "The appendix explicitly includes browser tool limitations and workarounds. Even when browser tools are powerful, they may have incomplete support for screen reader behavior, authentication flows, highly dynamic apps, or complex stateful interactions. Workarounds often involve combining browser automation with code inspection, logging, targeted prompts, saved test fixtures, or human verification for the final judgment."
+    },
+    {
+        "speaker":  "JAMIE",
+        "text":  "So learners should hear this clearly: browser-based scans are powerful, but they are not a substitute for all manual testing, especially when real assistive technology behavior matters."
+    },
+    {
+        "speaker":  "ALEX",
+        "text":  "Exactly right."
+    },
+    {
+        "speaker":  "PAUSE",
+        "text":  ""
+    },
+    {
+        "speaker":  "ALEX",
+        "text":  "Now let\u0027s talk orchestration, which is where these building blocks become repeatable patterns."
+    },
+    {
+        "speaker":  "JAMIE",
+        "text":  "The appendix gives named delegation patterns, yes?"
+    },
+    {
+        "speaker":  "ALEX",
+        "text":  "Yes. The first is a parallel scanning pattern described as a web accessibility wizard. The basic idea is that one orchestrator launches multiple specialists at once."
+    },
+    {
+        "speaker":  "JAMIE",
+        "text":  "That\u0027s the full-audit model we discussed earlier."
+    },
+    {
+        "speaker":  "ALEX",
+        "text":  "Correct, and the related parallel audit idea is that independent checks can run concurrently to save time and produce broader coverage. This is especially useful when scanning a page or set of pages for multiple issue classes."
+    },
+    {
+        "speaker":  "JAMIE",
+        "text":  "Then there\u0027s cascading fixes, with a web issue fixer."
+    },
+    {
+        "speaker":  "ALEX",
+        "text":  "Right. In a cascading fixes pattern, one stage detects issues, another proposes or applies fixes, and then additional specialists verify whether those fixes introduced new problems or failed to resolve the original ones. It\u0027s sequential and corrective, not just diagnostic."
+    },
+    {
+        "speaker":  "JAMIE",
+        "text":  "So you might detect a missing label, apply a remediation, and then re-run related checks for focus order, naming, or validation feedback."
+    },
+    {
+        "speaker":  "ALEX",
+        "text":  "Exactly. The third pattern is skill-first workflows, with a testing coach as the example. Here the main agent relies primarily on invoking reusable skills rather than improvising each process from scratch. That produces more predictable test setup, reporting, and teaching behavior."
+    },
+    {
+        "speaker":  "JAMIE",
+        "text":  "That seems useful for education, because learners can get the same process each time."
+    },
+    {
+        "speaker":  "ALEX",
+        "text":  "Yes, especially when teaching structured accessibility testing. The fourth pattern is report aggregation, described as a cross-page analyzer. That means collecting findings from multiple pages or scans and synthesizing them into a portfolio view, identifying recurring issues, shared components, or systemic failures."
+    },
+    {
+        "speaker":  "JAMIE",
+        "text":  "Which is much closer to how teams actually prioritize work. Not just one broken page, but patterns across a whole site or product."
+    },
+    {
+        "speaker":  "ALEX",
+        "text":  "Exactly."
+    },
+    {
+        "speaker":  "PAUSE",
+        "text":  ""
+    },
+    {
+        "speaker":  "ALEX",
+        "text":  "The appendix then moves into advanced techniques."
+    },
+    {
+        "speaker":  "JAMIE",
+        "text":  "Starting with custom skills for your organization."
+    },
+    {
+        "speaker":  "ALEX",
+        "text":  "Yes. This is about building a pattern library that reflects your team\u0027s conventions, design system, and accessibility expectations. The source gives an example path:.github slash skills slash our-pattern-library slash SKILL.md."
+    },
+    {
+        "speaker":  "JAMIE",
+        "text":  "And the skill itself is called Our Accessibility Pattern Library."
+    },
+    {
+        "speaker":  "ALEX",
+        "text":  "Right. Conceptually, that skill\u0027s purpose is to give agents a reusable internal source of approved accessibility patterns. The patterns included would be your organization\u0027s preferred implementations, guardrails, or known-good examples. Inputs might include component names, file paths, framework context, or requested pattern types. Output would be recommendations, mappings, or example implementations aligned with the organization\u0027s standards. Usage would explain how agents or developers invoke the library in practice."
+    },
+    {
+        "speaker":  "JAMIE",
+        "text":  "That\u0027s powerful because accessibility guidance often needs to be local, not just general. A team might have a house style for dialogs, forms, error messaging, or keyboard interactions."
+    },
+    {
+        "speaker":  "ALEX",
+        "text":  "Exactly. A custom pattern library lets the agent give advice that matches the repository the learner is actually in."
+    },
+    {
+        "speaker":  "JAMIE",
+        "text":  "What comes next?"
+    },
+    {
+        "speaker":  "ALEX",
+        "text":  "Continuous evaluation hooks. This extends the hook idea from occasional checks to recurring evaluation. Instead of treating accessibility as a one-time audit, the system keeps measuring over time, perhaps on commits, pull requests, or schedules, so regressions surface early."
+    },
+    {
+        "speaker":  "JAMIE",
+        "text":  "Then platform-specific skill variants."
+    },
+    {
+        "speaker":  "ALEX",
+        "text":  "Yes. Not every environment behaves the same. A skill may need variants tuned for GitHub workflows, a particular editor integration, a cloud agent environment, or a local toolchain. Same overall purpose, different implementation details."
+    },
+    {
+        "speaker":  "JAMIE",
+        "text":  "And result caching for performance."
+    },
+    {
+        "speaker":  "ALEX",
+        "text":  "That\u0027s an important engineering technique. If scans, lookups, or reference computations are expensive and inputs have not changed, caching results can make agents much faster and cheaper. But the tradeoff is freshness. You need a good strategy for invalidating stale results when files, pages, or dependencies change."
+    },
+    {
+        "speaker":  "JAMIE",
+        "text":  "So even in accessibility automation, performance architecture matters."
+    },
+    {
+        "speaker":  "ALEX",
+        "text":  "Very much so."
+    },
+    {
+        "speaker":  "PAUSE",
+        "text":  ""
+    },
+    {
+        "speaker":  "JAMIE",
+        "text":  "The appendix also mentions learning cards."
+    },
+    {
+        "speaker":  "ALEX",
+        "text":  "Yes, learning cards for advanced patterns. Even without the full card text in the excerpt we received, the intent is clear: distill the advanced ideas into study-friendly reminders. For learners, that usually means compact takeaways such as when to use subagents, how skills differ from agents, where hooks fit into the lifecycle, and why browser tools complement static analysis."
+    },
+    {
+        "speaker":  "JAMIE",
+        "text":  "And then there are references and authoritative sources."
+    },
+    {
+        "speaker":  "ALEX",
+        "text":  "Right. The source explicitly points learners back to authoritative documentation: the Accessibility Agents repository\u0027s skills directory, the skills documentation, GitHub Docs, the GitHub changelog, Copilot docs, the custom instructions support matrix, and documentation on custom agents. It also includes a section-level source map, which is administrative but important because it tells you where each part of the appendix is grounded."
+    },
+    {
+        "speaker":  "JAMIE",
+        "text":  "That\u0027s especially useful when platform behavior changes. Learners can verify what is still current."
+    },
+    {
+        "speaker":  "ALEX",
+        "text":  "Exactly. For accessible contribution workflows, that matters a lot. Tooling support evolves, so you want habits of checking the docs, not just memorizing one configuration."
+    },
+    {
+        "speaker":  "PAUSE",
+        "text":  ""
+    },
+    {
+        "speaker":  "JAMIE",
+        "text":  "Let me try a practical summary, and you tell me if I\u0027ve got it. If I\u0027m building an advanced accessibility agent workflow, I should think in layers. First, architecture: one parent agent can delegate to subagents instead of trying to do everything itself. Second, skills: package repeatable multi-step workflows so multiple agents can reuse them. Third, hooks: trigger those capabilities at useful lifecycle moments like edit, save, commit, pull request, or scheduled audits. Fourth, browser tools: inspect behavior, not just source. Fifth, orchestration patterns: choose whether I need parallel scanning, cascading fixes, skill-first operation, or aggregated reporting. And finally, advanced refinements like organization-specific skills, continuous evaluation, platform variants, and caching."
+    },
+    {
+        "speaker":  "ALEX",
+        "text":  "That is an excellent summary."
+    },
+    {
+        "speaker":  "JAMIE",
+        "text":  "And for our audience, one more takeaway: these patterns can support accessibility work in a way that is structured and scalable, but they don\u0027t replace judgment. They help blind and low-vision contributors, maintainers, and educators build workflows that are more consistent, more proactive, and easier to reuse across projects."
+    },
+    {
+        "speaker":  "ALEX",
+        "text":  "Beautifully said. The best agent systems do not just answer questions. They encode good process, reduce repeated labor, preserve accessibility knowledge, and make high-quality contribution workflows easier for everyone on the team."
+    },
+    {
+        "speaker":  "JAMIE",
+        "text":  "And they do it in a way that can fit GitHub repositories, VS Code habits, CI pipelines, documentation review, and open source collaboration."
+    },
+    {
+        "speaker":  "ALEX",
+        "text":  "Exactly. That\u0027s the real value of these advanced patterns."
+    },
+    {
+        "speaker":  "PAUSE",
+        "text":  ""
+    },
+    {
+        "speaker":  "ALEX",
+        "text":  "Next time you see an agent that looks magical, ask a better question: what subagents, skills, hooks, browser tools, and orchestration patterns are making that result possible?"
+    },
+    {
+        "speaker":  "JAMIE",
+        "text":  "Because behind the magic, there\u0027s architecture."
+    }
 ]

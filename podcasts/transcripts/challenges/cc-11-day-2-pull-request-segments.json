@@ -1,878 +1,878 @@
-[
-  {
-    "speaker": "ALEX",
-    "text": "Welcome back. Today we're connecting the local Git workflow you practiced in VS Code with the pull request workflow on GitHub. The big idea is simple: a pull request is still the destination. What changes on Day 2 is how your edits get there."
-  },
-  {
-    "speaker": "JAMIE",
-    "text": "So if I edited in VS Code instead of directly on GitHub, I'm not learning a totally different process?"
-  },
-  {
-    "speaker": "ALEX",
-    "text": "Exactly. You're learning the same collaboration pattern with one extra transport step. On Day 1, the edits were made on GitHub.com, so the commit already lived on GitHub. On Day 2, you edit locally, commit locally, then push those commits up to GitHub, and only then open the pull request."
-  },
-  {
-    "speaker": "PAUSE",
-    "text": ""
-  },
-  {
-    "speaker": "ALEX",
-    "text": "Let's anchor this in the actual challenge. Your task is to open a pull request from the branch you pushed locally in the earlier local workflow practice. On GitHub.com, you go to your learning-room repository. If GitHub shows the recent-push banner, you can use the Compare and pull request button. If not, you go to Pull requests, choose New pull request, set the base branch to main, and set the compare branch to your branch, often something like fix slash your username."
-  },
-  {
-    "speaker": "JAMIE",
-    "text": "And then write the title and description the same way I would have before?"
-  },
-  {
-    "speaker": "ALEX",
-    "text": "Yes. Clear title. Clear description. And if the pull request addresses an issue, include plain text like Closes number-something so GitHub can link and close that issue when the PR merges."
-  },
-  {
-    "speaker": "JAMIE",
-    "text": "So the challenge is not really about fancy wording. It's about recognizing the workflow pattern."
-  },
-  {
-    "speaker": "ALEX",
-    "text": "Right. The evidence asks for two things: the PR URL and the pattern you noticed. That pattern is the learning objective."
-  },
-  {
-    "speaker": "PAUSE",
-    "text": ""
-  },
-  {
-    "speaker": "ALEX",
-    "text": "Here's the contrast the course wants you to notice. Day 1: edit on GitHub.com, commit, open PR. Day 2: edit locally, commit, push, open PR. The pull request step is identical. The difference is where the commits came from and how they reached GitHub."
-  },
-  {
-    "speaker": "JAMIE",
-    "text": "That makes the PR feel less mysterious. It's not a different object. It's just pointing at a branch that now contains my proposed changes."
-  },
-  {
-    "speaker": "ALEX",
-    "text": "Perfectly said."
-  },
-  {
-    "speaker": "PAUSE",
-    "text": ""
-  },
-  {
-    "speaker": "ALEX",
-    "text": "Before we stay at the PR layer, we need to revisit the local Git workflow in VS Code, because that's what feeds this challenge. This chapter covers managing repositories, branches, and changes accessibly. It assumes you already know the VS Code basics, and it keeps calling out screen reader-friendly paths, especially through the Command Palette and structured panels."
-  },
-  {
-    "speaker": "JAMIE",
-    "text": "And there was also some admin guidance around this local workflow chapter, right?"
-  },
-  {
-    "speaker": "ALEX",
-    "text": "Yes. This local workflow unit supports the earlier hands-on challenge where you cloned your learning room repository, created a branch, made a commit, pushed it, and opened a PR. The recommended practice pattern was: clone, branch, edit, commit, push, PR. The expected evidence included PR metadata, branch names, and committed changes."
-  },
-  {
-    "speaker": "JAMIE",
-    "text": "So even the workshop recommendation is really teaching a repeatable sequence."
-  },
-  {
-    "speaker": "ALEX",
-    "text": "Exactly. And there are CLI habits that the material treats as best practices even if you prefer VS Code. Check your current state before acting with git status. Keep branch context explicit with git branch dash dash show-current. Fetch before pushing if you want to verify alignment. Confirm your PR-closing text like Closes number-something in plain text. And avoid obscure convenience flags if they make output harder to understand or verify."
-  },
-  {
-    "speaker": "PAUSE",
-    "text": ""
-  },
-  {
-    "speaker": "ALEX",
-    "text": "Start with cloning. For screen reader users, the most recommended method in VS Code is the Command Palette. Open it with Control Shift P, or Command Shift P on Mac, type Git: Clone, paste the repository URL, choose a destination folder, and then open the cloned repository when prompted."
-  },
-  {
-    "speaker": "JAMIE",
-    "text": "Why is the Command Palette preferred?"
-  },
-  {
-    "speaker": "ALEX",
-    "text": "Because it gives a stable searchable command surface. Screen reader users often get more predictable announcements there than on start pages or visually arranged buttons. There are other methods too. You can use a clone button from the start page, or begin from GitHub.com and send the repo into VS Code. But Command Palette tends to be the cleanest path."
-  },
-  {
-    "speaker": "JAMIE",
-    "text": "And after cloning, I shouldn't just assume everything is ready."
-  },
-  {
-    "speaker": "ALEX",
-    "text": "Correct. Verify the clone. Open Explorer and confirm the file tree. If the course repo has files like README and a docs folder, you should hear those in the Explorer. If a progress notification was silent, there's a notification focus command you can run to check status."
-  },
-  {
-    "speaker": "JAMIE",
-    "text": "What about branch visibility after a fresh clone?"
-  },
-  {
-    "speaker": "ALEX",
-    "text": "Very important. A fresh clone checks out only the default branch locally, usually main, even if remote branches already exist. So run git branch dash a to list local and remote-tracking branches. You may see main locally and origin slash learn slash yourname remotely. That tells you the branch exists on GitHub and can be checked out locally."
-  },
-  {
-    "speaker": "PAUSE",
-    "text": ""
-  },
-  {
-    "speaker": "ALEX",
-    "text": "There are several useful clone commands the material teaches as learning cards. Standard git clone with the full repository URL. GitHub CLI clone using owner slash name, which is shorter and can handle authentication automatically. Clone into a specific folder by supplying a destination. Clone only the default branch for faster work on large repositories using a single-branch style option. And always verify the result."
-  },
-  {
-    "speaker": "JAMIE",
-    "text": "There was also a quick practice repo mentioned, right?"
-  },
-  {
-    "speaker": "ALEX",
-    "text": "Yes, a sci-fi themes repo example to practice cloning. The point wasn't the content of the repo. It was building comfort with clone commands like gh repo clone owner slash repo, then changing into the folder, then opening that repo in VS Code."
-  },
-  {
-    "speaker": "PAUSE",
-    "text": ""
-  },
-  {
-    "speaker": "ALEX",
-    "text": "Once the repo is open, the Source Control panel becomes your day-to-day dashboard. Open it with Control Shift G. It includes the commit message box near the top, action buttons, and grouped lists for staged and unstaged changes."
-  },
-  {
-    "speaker": "JAMIE",
-    "text": "Can we slow down there? For a new learner, what does that panel actually tell me?"
-  },
-  {
-    "speaker": "ALEX",
-    "text": "It tells you what Git currently sees. Modified files, untracked files, staged files, and actions you can take. Screen reader navigation matters here. NVDA and JAWS users often move through the panel with standard arrow and tab patterns. VoiceOver users may need to interact with groups and be mindful of nested controls. The course emphasizes learning the panel structure from top to bottom so the announcements make sense."
-  },
-  {
-    "speaker": "JAMIE",
-    "text": "And if I'm not in VS Code, what are the CLI equivalents?"
-  },
-  {
-    "speaker": "ALEX",
-    "text": "Good question. git status shows all modified, staged, and untracked files in a readable summary. git status dash s gives the short format with compact one-letter markers. git diff dash dash cached shows what is staged and ready to commit. git diff shows what is modified but not staged. And git diff HEAD shows both staged and unstaged differences compared to the last commit."
-  },
-  {
-    "speaker": "JAMIE",
-    "text": "So if I ever feel lost in the panel, I can cross-check in the terminal."
-  },
-  {
-    "speaker": "ALEX",
-    "text": "Absolutely. That's often the most accessible confidence check."
-  },
-  {
-    "speaker": "PAUSE",
-    "text": ""
-  },
-  {
-    "speaker": "ALEX",
-    "text": "Branch management comes next. You always want to know what branch you're on. In VS Code, the current branch is shown in the status bar. You can focus the status bar and have your screen reader announce it. In the terminal, git branch dash dash show-current says it plainly."
-  },
-  {
-    "speaker": "JAMIE",
-    "text": "And creating a branch is also best done through the Command Palette?"
-  },
-  {
-    "speaker": "ALEX",
-    "text": "For many learners, yes. Use Git: Create Branch, type a meaningful name, and switch to it. Naming conventions matter. In this workshop you've seen names like learn slash username or fix slash something-descriptive. The name should hint at purpose."
-  },
-  {
-    "speaker": "JAMIE",
-    "text": "What are the core commands I should know?"
-  },
-  {
-    "speaker": "ALEX",
-    "text": "Create and switch to a new branch with git checkout dash b branchname, or the newer style git switch dash c branchname. List local branches with git branch. List all including remote-tracking with git branch dash a. Switch to an existing branch with git switch branchname or git checkout branchname. Delete a branch after it's merged with git branch dash d branchname. Force delete with dash capital D only if you truly mean it. Rename the current branch with git branch dash m newname. Push a new branch for the first time with git push dash u origin branchname. Delete a remote branch with git push origin dash dash delete branchname. And if you work with issues, GitHub CLI can even create a branch linked to an issue and auto-name it."
-  },
-  {
-    "speaker": "JAMIE",
-    "text": "What happens when I switch branches in VS Code?"
-  },
-  {
-    "speaker": "ALEX",
-    "text": "Your working tree changes to match that branch. Files may appear, disappear, or revert depending on what that branch contains. That's normal, but it's exactly why branch awareness matters."
-  },
-  {
-    "speaker": "PAUSE",
-    "text": ""
-  },
-  {
-    "speaker": "ALEX",
-    "text": "Now staging. This is where many people blur together saving, staging, and committing. They're different. Saving writes your file to disk. Staging tells Git which changes you want included in the next commit. Committing records that staged snapshot."
-  },
-  {
-    "speaker": "JAMIE",
-    "text": "So I can save lots of things, but stage only some of them."
-  },
-  {
-    "speaker": "ALEX",
-    "text": "Exactly. In VS Code, you can stage an entire file from the Source Control panel using the plus button, a shortcut, or the context menu. You can also stage multiple files at once. And for more precise work, you can stage individual lines or chunks from a diff."
-  },
-  {
-    "speaker": "JAMIE",
-    "text": "That feels advanced, but useful."
-  },
-  {
-    "speaker": "ALEX",
-    "text": "Very useful for keeping commits focused. In CLI terms, git add filename stages one file. git add dot stages many changes. git add dash p lets you stage interactively, one hunk at a time. Git will ask whether to stage each hunk, with prompts like yes, no, split, or edit. That's powerful when a file contains two unrelated edits and you only want one in the next commit."
-  },
-  {
-    "speaker": "JAMIE",
-    "text": "And if I staged the wrong thing?"
-  },
-  {
-    "speaker": "ALEX",
-    "text": "Unstage it. In VS Code, reverse the process from the staged area. In CLI, git restore dash dash staged filename will unstage without discarding the file content. Then check staged versus unstaged state again with git diff and git diff dash dash cached."
-  },
-  {
-    "speaker": "PAUSE",
-    "text": ""
-  },
-  {
-    "speaker": "ALEX",
-    "text": "Committing comes after staging. The standard workflow is: make changes, save, stage, write a commit message, commit. The chapter spends time on how this feels with screen readers because the message box and panel state are part of the feedback loop."
-  },
-  {
-    "speaker": "JAMIE",
-    "text": "What does a good commit message look like here?"
-  },
-  {
-    "speaker": "ALEX",
-    "text": "Short, specific, and meaningful. A common format is a brief prefix and description, like docs: improve welcome page introduction. The quick reference idea is: say what changed, not your emotional state while changing it."
-  },
-  {
-    "speaker": "JAMIE",
-    "text": "And the commands?"
-  },
-  {
-    "speaker": "ALEX",
-    "text": "Commit staged changes with git commit dash m quoted message. For a multi-line message, use git commit without dash m and let your editor open. If you intend to stage all tracked modified files and commit in one step, git commit dash a dash m quoted message can do that, but remember it won't include untracked new files unless you add them first."
-  },
-  {
-    "speaker": "JAMIE",
-    "text": "What's the feedback after a successful commit?"
-  },
-  {
-    "speaker": "ALEX",
-    "text": "In VS Code, staged and unstaged entries disappear if everything was included. In Git, the commit gets a hash and becomes part of local history. But it is still only local until you push."
-  },
-  {
-    "speaker": "PAUSE",
-    "text": ""
-  },
-  {
-    "speaker": "ALEX",
-    "text": "Push and pull operations are the bridge between local work and GitHub. After a local commit, pushing sends your commits to the remote repository. In VS Code, you can do this from the sync controls or Command Palette. If it's a new branch, VS Code may ask to publish it."
-  },
-  {
-    "speaker": "JAMIE",
-    "text": "What are the core terminal commands?"
-  },
-  {
-    "speaker": "ALEX",
-    "text": "git push sends commits to GitHub. For a new branch the first time, git push dash u origin branchname sets the upstream so future pushes are simpler. git pull brings changes down and merges them. git fetch downloads remote updates without merging, which is often safer when you want to inspect first."
-  },
-  {
-    "speaker": "JAMIE",
-    "text": "When should I pull?"
-  },
-  {
-    "speaker": "ALEX",
-    "text": "Before starting work if the remote may have changed. Before pushing if others may have updated the same branch. And any time your local view may be stale. Some tools auto-fetch in the background, but it's still worth understanding the difference: fetch updates your knowledge; pull updates your branch."
-  },
-  {
-    "speaker": "JAMIE",
-    "text": "What if push fails?"
-  },
-  {
-    "speaker": "ALEX",
-    "text": "Usually one of a few reasons: authentication trouble, no upstream set for a new branch, or remote changes require you to pull first. The fix depends on the message, but a safe pattern is read the error, run git status, possibly run git fetch, confirm your branch, and then either authenticate, set upstream, or reconcile remote changes."
-  },
-  {
-    "speaker": "PAUSE",
-    "text": ""
-  },
-  {
-    "speaker": "ALEX",
-    "text": "The chapter also covers syncing a fork with an upstream repository. That may not be central to your classroom repo, but it's essential in open source. The quickest route on GitHub.com is often the Sync fork button. There's also a more explicit Git workflow: add an upstream remote once, fetch from upstream, switch to your default branch, merge upstream changes, then push the updated branch back to your fork."
-  },
-  {
-    "speaker": "JAMIE",
-    "text": "Can you say that as commands?"
-  },
-  {
-    "speaker": "ALEX",
-    "text": "Sure. First add upstream one time with something like git remote add upstream repository-URL. Then git fetch upstream. Then make sure you are on main or your default branch. Then merge, often with git merge upstream slash main. Then push to origin. VS Code can help through Command Palette too. And if conflicts occur during sync, you resolve them before pushing."
-  },
-  {
-    "speaker": "PAUSE",
-    "text": ""
-  },
-  {
-    "speaker": "ALEX",
-    "text": "Sometimes you don't want to keep changes. The course addresses discarding carefully because it can be destructive. Discard a single file to restore it to the last committed state. Discard all unstaged changes if you really mean to abandon your current edits. If changes are staged, unstage first, then restore. There's also the nuclear option that discards everything, staged and unstaged, but you should preview first whenever possible."
-  },
-  {
-    "speaker": "JAMIE",
-    "text": "What would previewing look like?"
-  },
-  {
-    "speaker": "ALEX",
-    "text": "Check git diff for unstaged changes and git diff dash dash cached for staged ones. Know what you're about to lose. The chapter also teaches a safer alternative: stash instead of discard."
-  },
-  {
-    "speaker": "JAMIE",
-    "text": "And file deletion has its own Git-aware form too."
-  },
-  {
-    "speaker": "ALEX",
-    "text": "Yes. git rm removes a file and stages the deletion in one step. git rm dash dash cached removes it from tracking but keeps the local file. You can remove directories too. Then commit the deletion and verify the file is no longer tracked."
-  },
-  {
-    "speaker": "PAUSE",
-    "text": ""
-  },
-  {
-    "speaker": "ALEX",
-    "text": "For history and accountability, VS Code has Timeline view and Git blame. Timeline can be opened from the Explorer sidebar or the Command Palette. It shows file history, including commits that affected the file."
-  },
-  {
-    "speaker": "JAMIE",
-    "text": "And blame is the line-by-line history, right?"
-  },
-  {
-    "speaker": "ALEX",
-    "text": "Right. It tells you who last changed each line and often links to a commit hash. For screen reader users, this can be much more useful than trying to infer history visually. In terminal form, you can view repo history with git log, a specific file's history with git log dash dash filename, history plus patch content with git log dash p, blame with git blame filename, concise blame with author and short hashes, a single commit with git show commitSHA, changes between commits with git diff sha1 sha2, commits by a specific author, or recent commits in the last seven days."
-  },
-  {
-    "speaker": "JAMIE",
-    "text": "So this is where I answer questions like who changed this, when, and why."
-  },
-  {
-    "speaker": "ALEX",
-    "text": "Exactly. Also PR history can often be viewed on the web when you want the review context, not just the raw commit history."
-  },
-  {
-    "speaker": "PAUSE",
-    "text": ""
-  },
-  {
-    "speaker": "ALEX",
-    "text": "The material also covers merge conflicts in VS Code. When conflicting changes touch the same area, VS Code displays conflict regions and offers resolution controls. But for screen reader users, the best workflow is often to use structured navigation and the Accessible Diff tools rather than hunting manually for conflict markers."
-  },
-  {
-    "speaker": "JAMIE",
-    "text": "And if the merge is going badly?"
-  },
-  {
-    "speaker": "ALEX",
-    "text": "You can abort it. That's an important safety valve. Stop, return to the pre-merge state, and approach again more deliberately."
-  },
-  {
-    "speaker": "PAUSE",
-    "text": ""
-  },
-  {
-    "speaker": "ALEX",
-    "text": "Now stash management. A stash is a temporary shelf for uncommitted work. Use it when you need to switch branches, pull updates, or test something without committing half-finished work."
-  },
-  {
-    "speaker": "JAMIE",
-    "text": "What are the key stash commands?"
-  },
-  {
-    "speaker": "ALEX",
-    "text": "Stash all uncommitted changes with a message using git stash push dash m quoted message. Include untracked files with an include-untracked style flag. List stashes with git stash list. Show what one stash contains with git stash show dash p stash at brace zero brace. Apply the most recent stash but keep it with git stash apply. Apply and remove it with git stash pop. Apply a specific stash by name. Drop a specific stash with git stash drop. And clear them all with git stash clear, carefully."
-  },
-  {
-    "speaker": "JAMIE",
-    "text": "So Apply keeps the stash, Pop applies and deletes it."
-  },
-  {
-    "speaker": "ALEX",
-    "text": "Exactly."
-  },
-  {
-    "speaker": "PAUSE",
-    "text": ""
-  },
-  {
-    "speaker": "ALEX",
-    "text": "There's even an emergency recovery section on git reflog. This matters when you think you lost a commit, reset too far, or deleted a branch and regret it."
-  },
-  {
-    "speaker": "JAMIE",
-    "text": "Reflog is like Git's memory of where HEAD has been?"
-  },
-  {
-    "speaker": "ALEX",
-    "text": "That's a great way to think about it. Read the reflog in the terminal, find the last good commit or branch tip, preview it with a show command, then recover safely either by creating a new branch at that point or by resetting the current branch back there. If a branch was deleted, find the SHA from reflog and recreate the branch at that commit. And remember: reflog is local-only. It is not a shared team history."
-  },
-  {
-    "speaker": "PAUSE",
-    "text": ""
-  },
-  {
-    "speaker": "ALEX",
-    "text": "The chapter briefly acknowledges alternative Git interfaces too: GitHub Desktop, GitHub CLI, and the raw Git CLI. The point is not that one is morally superior. It's that you should understand the workflow deeply enough to transfer across tools."
-  },
-  {
-    "speaker": "JAMIE",
-    "text": "And I remember there were keyboard shortcuts and try-it activities too."
-  },
-  {
-    "speaker": "ALEX",
-    "text": "Yes. There's a quick reference for Git operations in VS Code, plus a practical exercise around clone, branch, and commit. The learning cards throughout the chapter reinforce the same few moves in different forms so they become habits."
-  },
-  {
-    "speaker": "PAUSE",
-    "text": ""
-  },
-  {
-    "speaker": "ALEX",
-    "text": "Now let's move from local Git to code review and PR management in VS Code. This chapter brings together the GitHub Pull Requests extension, accessible diff reading, and the craft of giving useful feedback."
-  },
-  {
-    "speaker": "JAMIE",
-    "text": "And there was another workshop recommendation here too."
-  },
-  {
-    "speaker": "ALEX",
-    "text": "Yes. For the first part, the recommended practice was: install the extension, authenticate, check out a pull request, review it, and comment. The evidence was a confirmation comment describing whether you installed the extension, signed in, which PR you reviewed, whether your comment was inline or on GitHub.com, and what your comment was about."
-  },
-  {
-    "speaker": "JAMIE",
-    "text": "That's nice because it makes the invisible setup work visible."
-  },
-  {
-    "speaker": "ALEX",
-    "text": "Exactly. The expected outcomes were practical: install and authenticate the extension, check out a PR branch in VS Code or use a browser fallback, navigate diffs using F7 and the Accessible Diff Viewer, and post one specific constructive comment."
-  },
-  {
-    "speaker": "PAUSE",
-    "text": ""
-  },
-  {
-    "speaker": "ALEX",
-    "text": "Installing the GitHub Pull Requests and Issues extension is straightforward. Open the Extensions sidebar with Control Shift X, search for GitHub Pull Requests, choose the GitHub-published extension, install it, and sign in through the browser OAuth flow."
-  },
-  {
-    "speaker": "JAMIE",
-    "text": "How do I verify it really worked?"
-  },
-  {
-    "speaker": "ALEX",
-    "text": "Return to VS Code and look for the GitHub section in the Explorer or related PR views. It should show pull requests and issues from the repository context you're in."
-  },
-  {
-    "speaker": "JAMIE",
-    "text": "And if install or sign-in fails?"
-  },
-  {
-    "speaker": "ALEX",
-    "text": "Reload the window. Make sure your browser is already signed into the correct GitHub account. Close and reopen VS Code if needed. These setup issues are common enough that the course treats them as normal troubleshooting, not user failure."
-  },
-  {
-    "speaker": "PAUSE",
-    "text": ""
-  },
-  {
-    "speaker": "ALEX",
-    "text": "Once installed, you can view pull requests inside VS Code. You can open the PR panel from the Activity Bar or through Explorer sections. It can list open PRs, show specific PRs, open them in the browser, and filter to items waiting for your review."
-  },
-  {
-    "speaker": "JAMIE",
-    "text": "What does the PR list look like for a screen reader?"
-  },
-  {
-    "speaker": "ALEX",
-    "text": "Think of it as a tree with repositories, PR items, and details you can expand. The course even gives examples of what a screen reader might announce, so you can orient to title, status, and repo association. Filtering can narrow by status or repository if the list is noisy."
-  },
-  {
-    "speaker": "JAMIE",
-    "text": "And viewing details gives me description, checks, metadata, all that?"
-  },
-  {
-    "speaker": "ALEX",
-    "text": "Exactly. You can inspect the title, body, changed files, review status, and related metadata without leaving the editor."
-  },
-  {
-    "speaker": "PAUSE",
-    "text": ""
-  },
-  {
-    "speaker": "ALEX",
-    "text": "Checking out a PR branch is the next key move. Why do it? Because some reviews need local testing, richer navigation, or terminal inspection. You can check out from the PR detail view, from the PR tree, or by Command Palette."
-  },
-  {
-    "speaker": "JAMIE",
-    "text": "And after that, I can return to my original branch normally."
-  },
-  {
-    "speaker": "ALEX",
-    "text": "Right. That return step matters. Reviews should not strand you on someone else's branch."
-  },
-  {
-    "speaker": "PAUSE",
-    "text": ""
-  },
-  {
-    "speaker": "ALEX",
-    "text": "Now reviewing pull requests in VS Code. The changed files list tells you what files were touched. Open one and you'll get a diff editor. By default it may be split view, old on the left and new on the right. Some people prefer inline view. You can toggle between them."
-  },
-  {
-    "speaker": "JAMIE",
-    "text": "But for screen reader users, the star of the show is the Accessible Diff Viewer."
-  },
-  {
-    "speaker": "ALEX",
-    "text": "Yes. Press F7 to move through changes in a structured way, Shift F7 to move backward. Instead of fighting a visual side-by-side layout, you get hunk-by-hunk announcements: what was removed, what was added, and where. The material is very clear that this is far better for screen reader users than trying to navigate the raw visual diff manually."
-  },
-  {
-    "speaker": "JAMIE",
-    "text": "So review becomes about understanding change blocks, not wrestling the interface."
-  },
-  {
-    "speaker": "ALEX",
-    "text": "Exactly. And as you review, flag issues, ask questions, or note strengths. Good reviewing isn't only about finding mistakes."
-  },
-  {
-    "speaker": "PAUSE",
-    "text": ""
-  },
-  {
-    "speaker": "ALEX",
-    "text": "You can also create a pull request directly from VS Code. There are a few methods: Command Palette, Source Control panel, or the GitHub panel. Before creating one, you need the basics in place: local commits on a branch, that branch pushed to GitHub, and a sensible base branch target."
-  },
-  {
-    "speaker": "JAMIE",
-    "text": "What do I fill out in the PR form?"
-  },
-  {
-    "speaker": "ALEX",
-    "text": "A title is required. A description is optional but strongly recommended. You choose the base branch the changes should merge into, and the compare branch they're coming from. You may also set reviewers, labels, milestones, and whether it should be a draft PR. Some workflows prompt you interactively for title, body, and base branch. Others let you provide details inline. And if the in-editor form feels awkward, you can open it in the browser."
-  },
-  {
-    "speaker": "JAMIE",
-    "text": "So for this Day 2 challenge, that means I could open the PR from VS Code or from GitHub.com, as long as the result is the same."
-  },
-  {
-    "speaker": "ALEX",
-    "text": "Exactly. The workflow concept matters more than the exact button path."
-  },
-  {
-    "speaker": "PAUSE",
-    "text": ""
-  },
-  {
-    "speaker": "ALEX",
-    "text": "The chapter also covers pull request description templates. These usually live in repository-defined locations and can pre-fill sections like description, related issue, type of change, testing, checklist items, and screenshots if applicable."
-  },
-  {
-    "speaker": "JAMIE",
-    "text": "That seems especially helpful for learners who don't know what to write."
-  },
-  {
-    "speaker": "ALEX",
-    "text": "Yes. Templates reduce guesswork. They also support accessibility by making expectations consistent. A screen reader workflow here is mostly about moving field by field and replacing placeholder text with specific content."
-  },
-  {
-    "speaker": "PAUSE",
-    "text": ""
-  },
-  {
-    "speaker": "ALEX",
-    "text": "Then we get to commenting and formal review actions. You can add an inline comment on a specific line, or start a review and collect multiple comments before submitting them together."
-  },
-  {
-    "speaker": "JAMIE",
-    "text": "That \"start review\" option is useful when I don't want to interrupt the author with a bunch of isolated notifications."
-  },
-  {
-    "speaker": "ALEX",
-    "text": "Exactly. And when you submit your review, you usually choose one of three verdicts: approve, request changes, or comment-only. Approve means you think it's ready. Request changes means there's something blocking that should be fixed before merging. Comment-only means feedback without a merge verdict."
-  },
-  {
-    "speaker": "JAMIE",
-    "text": "The chapter also mentions terminal support for PR review, right?"
-  },
-  {
-    "speaker": "ALEX",
-    "text": "Yes. You can view PR diffs in the terminal too, which some learners may find more linear and readable. And GitHub CLI can help with approving, requesting changes, or leaving a comment-only review depending on repository permissions and setup."
-  },
-  {
-    "speaker": "PAUSE",
-    "text": ""
-  },
-  {
-    "speaker": "ALEX",
-    "text": "Merging pull requests is its own skill. First check prerequisites: reviews, passing checks, permissions, and whether the branch is up to date. In VS Code you may merge from the PR detail view or through commands. Merge types matter too."
-  },
-  {
-    "speaker": "JAMIE",
-    "text": "Can you summarize those merge types?"
-  },
-  {
-    "speaker": "ALEX",
-    "text": "Default merge preserves the branch history as a merge commit. Squash and merge compresses the branch's commits into one before merging, which many teams prefer for a tidy main branch. Some repositories enable auto-merge so the PR merges automatically once required checks pass."
-  },
-  {
-    "speaker": "JAMIE",
-    "text": "And after merging?"
-  },
-  {
-    "speaker": "ALEX",
-    "text": "Switch back to main and pull the latest changes. Then delete the feature branch if it's no longer needed, locally and sometimes remotely."
-  },
-  {
-    "speaker": "PAUSE",
-    "text": ""
-  },
-  {
-    "speaker": "ALEX",
-    "text": "There's also a troubleshooting section worth keeping. If you see no pull requests found, check your filters and repository context. If VS Code says it could not create a pull request, confirm the branch is pushed, the repo is recognized, and authentication is valid. If authentication fails, re-sign in and verify your browser session."
-  },
-  {
-    "speaker": "JAMIE",
-    "text": "That kind of troubleshooting matters because PR work spans local Git, GitHub auth, and editor integration all at once."
-  },
-  {
-    "speaker": "ALEX",
-    "text": "Exactly. Problems are often at the boundaries between tools."
-  },
-  {
-    "speaker": "PAUSE",
-    "text": ""
-  },
-  {
-    "speaker": "ALEX",
-    "text": "The chapter then broadens from tool use to accessible code review in general. It asks you to verify prerequisites first, then reminds you there are really two review environments: GitHub.com and VS Code. Both matter. Learning cards help you compare them rather than treating one as universally better."
-  },
-  {
-    "speaker": "JAMIE",
-    "text": "So if a learner asks, \"Do I have to review in VS Code?\" the answer is no, but they should understand both."
-  },
-  {
-    "speaker": "ALEX",
-    "text": "Yes. On GitHub.com, modern review interfaces support a file tree, structured navigation, inline comments, review threads, and final review submission. In VS Code, the Accessible Diff Viewer often gives a better reading experience for change hunks. Each environment has strengths."
-  },
-  {
-    "speaker": "PAUSE",
-    "text": ""
-  },
-  {
-    "speaker": "ALEX",
-    "text": "A GitHub.com review usually goes like this: open the PR, read the description, move to the Files changed tab, use the file tree to orient yourself, move between file diffs, read the additions and deletions, place inline comments, read existing threads, and finally submit a review with approve, request changes, or comment-only."
-  },
-  {
-    "speaker": "JAMIE",
-    "text": "And there was also a re-request review step for authors after updates."
-  },
-  {
-    "speaker": "ALEX",
-    "text": "Right. After the author makes changes, they can re-request review so reviewers know to revisit the PR."
-  },
-  {
-    "speaker": "PAUSE",
-    "text": ""
-  },
-  {
-    "speaker": "ALEX",
-    "text": "In VS Code review, the flow is similar but the tools differ. Open the PR for review, open changed files, use F7 for the Accessible Diff Viewer, navigate change by change, and place comments through the GitHub PR extension. The course emphasizes that structured diff reading is superior to trying to decode the raw split editor by ear."
-  },
-  {
-    "speaker": "JAMIE",
-    "text": "This is where accessibility and code review intersect directly."
-  },
-  {
-    "speaker": "ALEX",
-    "text": "Exactly. Accessibility is not an afterthought here. It shapes which workflows are realistic and sustainable."
-  },
-  {
-    "speaker": "PAUSE",
-    "text": ""
-  },
-  {
-    "speaker": "ALEX",
-    "text": "Then we get into review quality. A useful review comment should be specific, actionable, and clear about whether it blocks merging. The course gives examples of blocking comments, non-blocking nits, and questions."
-  },
-  {
-    "speaker": "JAMIE",
-    "text": "Can you model the difference?"
-  },
-  {
-    "speaker": "ALEX",
-    "text": "Sure. A blocking comment might say, \"Blocking: this heading level skips from H1 to H3, which breaks document structure for screen reader navigation. Please change it to H2.\" A non-blocking nit might say, \"Nit: consider tightening this sentence for clarity.\" A question might say, \"Question: was this link text intentionally shortened? I'm wondering whether a more descriptive label would help users.\""
-  },
-  {
-    "speaker": "JAMIE",
-    "text": "So tone and labeling matter."
-  },
-  {
-    "speaker": "ALEX",
-    "text": "Very much. Prefixes like Blocking, Nit, and Question set expectations and reduce ambiguity. The chapter also asks, how many comments is too many? The answer is usually: enough to be helpful, not so many that you overwhelm the author with fragmented noise. Group comments when possible, and focus on impact."
-  },
-  {
-    "speaker": "PAUSE",
-    "text": ""
-  },
-  {
-    "speaker": "ALEX",
-    "text": "There's a keyboard reference too, for both GitHub web review and VS Code accessible diff navigation. For learners who rely on keyboard access, that reference isn't optional background. It's part of fluency."
-  },
-  {
-    "speaker": "JAMIE",
-    "text": "And the common review scenarios were practical."
-  },
-  {
-    "speaker": "ALEX",
-    "text": "Yes. For example: I want to verify the PR only changes what it claims. Check the description, then compare it against the changed files and diff hunks. I want to find all changes to one section. Use file search, structured navigation, or history tools. I approved, but then the author pushed more changes. Revisit the diff and look for what's new. A reviewer left a comment I don't understand. Read the thread, inspect the local context, and ask for clarification rather than guessing."
-  },
-  {
-    "speaker": "PAUSE",
-    "text": ""
-  },
-  {
-    "speaker": "ALEX",
-    "text": "The exercises make these skills concrete. One exercise walks through a full web review: navigate to the PR, read the description, go to Files changed, use focus-friendly reading strategies, identify issues like heading hierarchy or link text, place comments, and submit the review. Another exercise does the same in VS Code with the Accessible Diff Viewer. A third asks you to compare the two environments and reflect."
-  },
-  {
-    "speaker": "JAMIE",
-    "text": "I like that the course doesn't force one \"correct\" environment. It asks for evidence-based reflection."
-  },
-  {
-    "speaker": "ALEX",
-    "text": "Exactly. You might conclude the browser made threaded discussion easier, while VS Code made diff reading easier. That's useful professional knowledge."
-  },
-  {
-    "speaker": "PAUSE",
-    "text": ""
-  },
-  {
-    "speaker": "ALEX",
-    "text": "There's also a section on using GitHub Copilot to understand code changes. The recommendation is cautious. Copilot can help summarize or explain a diff in VS Code or on GitHub.com, but it is not a substitute for your judgment."
-  },
-  {
-    "speaker": "JAMIE",
-    "text": "So it can support review, but not replace it."
-  },
-  {
-    "speaker": "ALEX",
-    "text": "Right. The course stresses limitations and best practices. Use it to ask clarifying questions, not to outsource the final decision. Skill first, assistant second."
-  },
-  {
-    "speaker": "PAUSE",
-    "text": ""
-  },
-  {
-    "speaker": "ALEX",
-    "text": "That idea continues in the reviewer's craft section. Good reviewers look for correctness, clarity, accessibility, scope, and alignment with the PR's stated purpose. They understand the three main review actions. They write constructive feedback. They use a checklist. And they treat reviewing as a learning tool, not just a gatekeeping role."
-  },
-  {
-    "speaker": "JAMIE",
-    "text": "That feels especially important in an accessibility-centered course."
-  },
-  {
-    "speaker": "ALEX",
-    "text": "Yes. A review is not just \"I found a problem.\" It's \"I can explain the problem in a way that helps someone improve.\""
-  },
-  {
-    "speaker": "PAUSE",
-    "text": ""
-  },
-  {
-    "speaker": "ALEX",
-    "text": "There's also a teaser about a fuller accessibility agents review ecosystem. The principle is explicit: skill first, agent second. Tools can assist, but you need to understand the workflow and standards yourself."
-  },
-  {
-    "speaker": "JAMIE",
-    "text": "That's a nice guardrail. Learn the craft before leaning on automation."
-  },
-  {
-    "speaker": "ALEX",
-    "text": "Exactly."
-  },
-  {
-    "speaker": "PAUSE",
-    "text": ""
-  },
-  {
-    "speaker": "ALEX",
-    "text": "Let's return now to the Day 2 pull request solution reference, because it ties everything together. The example PR title is a concise docs-style summary, something like improving formatting and fixing a broken link. The body has a changes section listing what was fixed or added, a short explanation of how the changes were made locally in a clone using VS Code, a Closes issue reference, and a pattern recognition section comparing the Day 2 PR to the Day 1 PR."
-  },
-  {
-    "speaker": "JAMIE",
-    "text": "So the solution isn't only saying what to type. It's modeling how to explain your workflow."
-  },
-  {
-    "speaker": "ALEX",
-    "text": "Exactly. And the comparison table is worth memorizing in spirit. Day 1 edits happened on GitHub.com or github.dev. Day 2 edits happened locally in VS Code, GitHub Desktop, or the terminal. Day 1 often meant a single web-created commit. Day 2 could involve one or more commits created with git commit. Day 1 branches might be created on GitHub. Day 2 branches are often created locally with checkout or switch. Day 1 needed no push because the commit was already on GitHub. Day 2 required git push. And the PR could be created from the web prompt or a command like gh pr create."
-  },
-  {
-    "speaker": "JAMIE",
-    "text": "And the \"what matters\" section keeps the focus narrow."
-  },
-  {
-    "speaker": "ALEX",
-    "text": "Yes. If you created a PR from a locally pushed branch and recognized how that workflow differed from Day 1 while still ending the same way, you met the objective."
-  },
-  {
-    "speaker": "PAUSE",
-    "text": ""
-  },
-  {
-    "speaker": "JAMIE",
-    "text": "What about the challenge's \"peer simulation check\"?"
-  },
-  {
-    "speaker": "ALEX",
-    "text": "Good catch. The learner is asked to review the peer-simulation PR title and description and ask whether it clearly communicates what changed. If they have real buddy access, they can review a real peer's PR too. That's an administrative instruction, but it also teaches that PR quality begins before review comments. A readable title and description reduce reviewer burden."
-  },
-  {
-    "speaker": "JAMIE",
-    "text": "And the stuck points?"
-  },
-  {
-    "speaker": "ALEX",
-    "text": "Also important. If you do not see your branch, make sure it was pushed, for example with git push dash u origin fix slash your-username. If GitHub says there is nothing to compare, your branch may not contain any new commits relative to main. If you don't know what to write in the description, reuse the earlier PR template pattern: what changed and why. And if you want to check your work, compare with the reference solution."
-  },
-  {
-    "speaker": "PAUSE",
-    "text": ""
-  },
-  {
-    "speaker": "JAMIE",
-    "text": "Before we close, can we give learners a compact mental model for the whole lesson?"
-  },
-  {
-    "speaker": "ALEX",
-    "text": "Absolutely. Here it is. Local work happens in your clone. You make edits, save files, stage intentionally, and commit with a clear message. Your branch is local until you push. Once pushed, GitHub can compare that branch against main and create a pull request. The pull request is where collaboration becomes visible: description, diffs, comments, review verdicts, and merge decisions. Accessibility matters at every layer, from using the Command Palette and Source Control panel accessibly, to reading diffs with F7, to writing review comments that clearly identify blocking issues versus suggestions."
-  },
-  {
-    "speaker": "JAMIE",
-    "text": "And the recurring pattern is clone, branch, edit, stage, commit, push, PR, review, merge."
-  },
-  {
-    "speaker": "ALEX",
-    "text": "Yes. And if you remember only one comparison from today, remember this: Day 1 and Day 2 are not rival workflows. They are two paths into the same pull request-centered collaboration model."
-  },
-  {
-    "speaker": "PAUSE",
-    "text": ""
-  },
-  {
-    "speaker": "ALEX",
-    "text": "One final note on source quality. The materials point learners back to authoritative documentation, especially GitHub Docs, the GitHub changelog, VS Code source control documentation, and GitHub accessibility guidance for CLI and pull request reviews. That means your workshop notes teach the workflow, but official docs remain the source of truth when interfaces change."
-  },
-  {
-    "speaker": "JAMIE",
-    "text": "Which is a great habit in tech generally."
-  },
-  {
-    "speaker": "ALEX",
-    "text": "Exactly. Practice the pattern, use accessible tools, verify with authoritative sources, and keep your pull requests clear enough that another human can understand them without guessing."
-  },
-  {
-    "speaker": "JAMIE",
-    "text": "That's a strong place to end."
-  },
-  {
-    "speaker": "ALEX",
-    "text": "It is. Next time, keep noticing not just what button you pressed, but what collaboration step you completed. That's how Git starts to feel coherent."
-  }
+﻿[
+    {
+        "speaker":  "ALEX",
+        "text":  "Welcome back. Today we\u0027re connecting the local Git workflow you practiced in VS Code with the pull request workflow on GitHub. The big idea is simple: a pull request is still the destination. What changes on Day 2 is how your edits get there."
+    },
+    {
+        "speaker":  "JAMIE",
+        "text":  "So if I edited in VS Code instead of directly on GitHub, I\u0027m not learning a totally different process?"
+    },
+    {
+        "speaker":  "ALEX",
+        "text":  "Exactly. You\u0027re learning the same collaboration pattern with one extra transport step. On Day 1, the edits were made on GitHub.com, so the commit already lived on GitHub. On Day 2, you edit locally, commit locally, then push those commits up to GitHub, and only then open the pull request."
+    },
+    {
+        "speaker":  "PAUSE",
+        "text":  ""
+    },
+    {
+        "speaker":  "ALEX",
+        "text":  "Let\u0027s anchor this in the actual challenge. Your task is to open a pull request from the branch you pushed locally in the earlier local workflow practice. On GitHub.com, you go to your learning-room repository. If GitHub shows the recent-push banner, you can use the Compare and pull request button. If not, you go to Pull requests, choose New pull request, set the base branch to main, and set the compare branch to your branch, often something like fix slash your username."
+    },
+    {
+        "speaker":  "JAMIE",
+        "text":  "And then write the title and description the same way I would have before?"
+    },
+    {
+        "speaker":  "ALEX",
+        "text":  "Yes. Clear title. Clear description. And if the pull request addresses an issue, include plain text like Closes number-something so GitHub can link and close that issue when the PR merges."
+    },
+    {
+        "speaker":  "JAMIE",
+        "text":  "So the challenge is not really about fancy wording. It\u0027s about recognizing the workflow pattern."
+    },
+    {
+        "speaker":  "ALEX",
+        "text":  "Right. The evidence asks for two things: the PR URL and the pattern you noticed. That pattern is the learning objective."
+    },
+    {
+        "speaker":  "PAUSE",
+        "text":  ""
+    },
+    {
+        "speaker":  "ALEX",
+        "text":  "Here\u0027s the contrast the course wants you to notice. Day 1: edit on GitHub.com, commit, open PR. Day 2: edit locally, commit, push, open PR. The pull request step is identical. The difference is where the commits came from and how they reached GitHub."
+    },
+    {
+        "speaker":  "JAMIE",
+        "text":  "That makes the PR feel less mysterious. It\u0027s not a different object. It\u0027s just pointing at a branch that now contains my proposed changes."
+    },
+    {
+        "speaker":  "ALEX",
+        "text":  "Perfectly said."
+    },
+    {
+        "speaker":  "PAUSE",
+        "text":  ""
+    },
+    {
+        "speaker":  "ALEX",
+        "text":  "Before we stay at the PR layer, we need to revisit the local Git workflow in VS Code, because that\u0027s what feeds this challenge. This chapter covers managing repositories, branches, and changes accessibly. It assumes you already know the VS Code basics, and it keeps calling out screen reader-friendly paths, especially through the Command Palette and structured panels."
+    },
+    {
+        "speaker":  "JAMIE",
+        "text":  "And there was also some admin guidance around this local workflow chapter, right?"
+    },
+    {
+        "speaker":  "ALEX",
+        "text":  "Yes. This local workflow unit supports the earlier hands-on challenge where you cloned your learning room repository, created a branch, made a commit, pushed it, and opened a PR. The recommended practice pattern was: clone, branch, edit, commit, push, PR. The expected evidence included PR metadata, branch names, and committed changes."
+    },
+    {
+        "speaker":  "JAMIE",
+        "text":  "So even the workshop recommendation is really teaching a repeatable sequence."
+    },
+    {
+        "speaker":  "ALEX",
+        "text":  "Exactly. And there are CLI habits that the material treats as best practices even if you prefer VS Code. Check your current state before acting with git status. Keep branch context explicit with git branch dash dash show-current. Fetch before pushing if you want to verify alignment. Confirm your PR-closing text like Closes number-something in plain text. And avoid obscure convenience flags if they make output harder to understand or verify."
+    },
+    {
+        "speaker":  "PAUSE",
+        "text":  ""
+    },
+    {
+        "speaker":  "ALEX",
+        "text":  "Start with cloning. For screen reader users, the most recommended method in VS Code is the Command Palette. Open it with Control Shift P, or Command Shift P on Mac, type Git: Clone, paste the repository URL, choose a destination folder, and then open the cloned repository when prompted."
+    },
+    {
+        "speaker":  "JAMIE",
+        "text":  "Why is the Command Palette preferred?"
+    },
+    {
+        "speaker":  "ALEX",
+        "text":  "Because it gives a stable searchable command surface. Screen reader users often get more predictable announcements there than on start pages or visually arranged buttons. There are other methods too. You can use a clone button from the start page, or begin from GitHub.com and send the repo into VS Code. But Command Palette tends to be the cleanest path."
+    },
+    {
+        "speaker":  "JAMIE",
+        "text":  "And after cloning, I shouldn\u0027t just assume everything is ready."
+    },
+    {
+        "speaker":  "ALEX",
+        "text":  "Correct. Verify the clone. Open Explorer and confirm the file tree. If the course repo has files like README and a docs folder, you should hear those in the Explorer. If a progress notification was silent, there\u0027s a notification focus command you can run to check status."
+    },
+    {
+        "speaker":  "JAMIE",
+        "text":  "What about branch visibility after a fresh clone?"
+    },
+    {
+        "speaker":  "ALEX",
+        "text":  "Very important. A fresh clone checks out only the default branch locally, usually main, even if remote branches already exist. So run git branch dash a to list local and remote-tracking branches. You may see main locally and origin slash learn slash yourname remotely. That tells you the branch exists on GitHub and can be checked out locally."
+    },
+    {
+        "speaker":  "PAUSE",
+        "text":  ""
+    },
+    {
+        "speaker":  "ALEX",
+        "text":  "There are several useful clone commands the material teaches as learning cards. Standard git clone with the full repository URL. GitHub CLI clone using owner slash name, which is shorter and can handle authentication automatically. Clone into a specific folder by supplying a destination. Clone only the default branch for faster work on large repositories using a single-branch style option. And always verify the result."
+    },
+    {
+        "speaker":  "JAMIE",
+        "text":  "There was also a quick practice repo mentioned, right?"
+    },
+    {
+        "speaker":  "ALEX",
+        "text":  "Yes, a sci-fi themes repo example to practice cloning. The point wasn\u0027t the content of the repo. It was building comfort with clone commands like gh repo clone owner slash repo, then changing into the folder, then opening that repo in VS Code."
+    },
+    {
+        "speaker":  "PAUSE",
+        "text":  ""
+    },
+    {
+        "speaker":  "ALEX",
+        "text":  "Once the repo is open, the Source Control panel becomes your day-to-day dashboard. Open it with Control Shift G. It includes the commit message box near the top, action buttons, and grouped lists for staged and unstaged changes."
+    },
+    {
+        "speaker":  "JAMIE",
+        "text":  "Can we slow down there? For a new learner, what does that panel actually tell me?"
+    },
+    {
+        "speaker":  "ALEX",
+        "text":  "It tells you what Git currently sees. Modified files, untracked files, staged files, and actions you can take. Screen reader navigation matters here. NVDA and JAWS users often move through the panel with standard arrow and tab patterns. VoiceOver users may need to interact with groups and be mindful of nested controls. The course emphasizes learning the panel structure from top to bottom so the announcements make sense."
+    },
+    {
+        "speaker":  "JAMIE",
+        "text":  "And if I\u0027m not in VS Code, what are the CLI equivalents?"
+    },
+    {
+        "speaker":  "ALEX",
+        "text":  "Good question. git status shows all modified, staged, and untracked files in a readable summary. git status dash s gives the short format with compact one-letter markers. git diff dash dash cached shows what is staged and ready to commit. git diff shows what is modified but not staged. And git diff HEAD shows both staged and unstaged differences compared to the last commit."
+    },
+    {
+        "speaker":  "JAMIE",
+        "text":  "So if I ever feel lost in the panel, I can cross-check in the terminal."
+    },
+    {
+        "speaker":  "ALEX",
+        "text":  "Absolutely. That\u0027s often the most accessible confidence check."
+    },
+    {
+        "speaker":  "PAUSE",
+        "text":  ""
+    },
+    {
+        "speaker":  "ALEX",
+        "text":  "Branch management comes next. You always want to know what branch you\u0027re on. In VS Code, the current branch is shown in the status bar. You can focus the status bar and have your screen reader announce it. In the terminal, git branch dash dash show-current says it plainly."
+    },
+    {
+        "speaker":  "JAMIE",
+        "text":  "And creating a branch is also best done through the Command Palette?"
+    },
+    {
+        "speaker":  "ALEX",
+        "text":  "For many learners, yes. Use Git: Create Branch, type a meaningful name, and switch to it. Naming conventions matter. In this workshop you\u0027ve seen names like learn slash username or fix slash something-descriptive. The name should hint at purpose."
+    },
+    {
+        "speaker":  "JAMIE",
+        "text":  "What are the core commands I should know?"
+    },
+    {
+        "speaker":  "ALEX",
+        "text":  "Create and switch to a new branch with git checkout dash b branchname, or the newer style git switch dash c branchname. List local branches with git branch. List all including remote-tracking with git branch dash a. Switch to an existing branch with git switch branchname or git checkout branchname. Delete a branch after it\u0027s merged with git branch dash d branchname. Force delete with dash capital D only if you truly mean it. Rename the current branch with git branch dash m newname. Push a new branch for the first time with git push dash u origin branchname. Delete a remote branch with git push origin dash dash delete branchname. And if you work with issues, GitHub CLI can even create a branch linked to an issue and auto-name it."
+    },
+    {
+        "speaker":  "JAMIE",
+        "text":  "What happens when I switch branches in VS Code?"
+    },
+    {
+        "speaker":  "ALEX",
+        "text":  "Your working tree changes to match that branch. Files may appear, disappear, or revert depending on what that branch contains. That\u0027s normal, but it\u0027s exactly why branch awareness matters."
+    },
+    {
+        "speaker":  "PAUSE",
+        "text":  ""
+    },
+    {
+        "speaker":  "ALEX",
+        "text":  "Now staging. This is where many people blur together saving, staging, and committing. They\u0027re different. Saving writes your file to disk. Staging tells Git which changes you want included in the next commit. Committing records that staged snapshot."
+    },
+    {
+        "speaker":  "JAMIE",
+        "text":  "So I can save lots of things, but stage only some of them."
+    },
+    {
+        "speaker":  "ALEX",
+        "text":  "Exactly. In VS Code, you can stage an entire file from the Source Control panel using the plus button, a shortcut, or the context menu. You can also stage multiple files at once. And for more precise work, you can stage individual lines or chunks from a diff."
+    },
+    {
+        "speaker":  "JAMIE",
+        "text":  "That feels advanced, but useful."
+    },
+    {
+        "speaker":  "ALEX",
+        "text":  "Very useful for keeping commits focused. In CLI terms, git add filename stages one file. git add dot stages many changes. git add dash p lets you stage interactively, one hunk at a time. Git will ask whether to stage each hunk, with prompts like yes, no, split, or edit. That\u0027s powerful when a file contains two unrelated edits and you only want one in the next commit."
+    },
+    {
+        "speaker":  "JAMIE",
+        "text":  "And if I staged the wrong thing?"
+    },
+    {
+        "speaker":  "ALEX",
+        "text":  "Unstage it. In VS Code, reverse the process from the staged area. In CLI, git restore dash dash staged filename will unstage without discarding the file content. Then check staged versus unstaged state again with git diff and git diff dash dash cached."
+    },
+    {
+        "speaker":  "PAUSE",
+        "text":  ""
+    },
+    {
+        "speaker":  "ALEX",
+        "text":  "Committing comes after staging. The standard workflow is: make changes, save, stage, write a commit message, commit. The chapter spends time on how this feels with screen readers because the message box and panel state are part of the feedback loop."
+    },
+    {
+        "speaker":  "JAMIE",
+        "text":  "What does a good commit message look like here?"
+    },
+    {
+        "speaker":  "ALEX",
+        "text":  "Short, specific, and meaningful. A common format is a brief prefix and description, like docs: improve welcome page introduction. The quick reference idea is: say what changed, not your emotional state while changing it."
+    },
+    {
+        "speaker":  "JAMIE",
+        "text":  "And the commands?"
+    },
+    {
+        "speaker":  "ALEX",
+        "text":  "Commit staged changes with git commit dash m quoted message. For a multi-line message, use git commit without dash m and let your editor open. If you intend to stage all tracked modified files and commit in one step, git commit dash a dash m quoted message can do that, but remember it won\u0027t include untracked new files unless you add them first."
+    },
+    {
+        "speaker":  "JAMIE",
+        "text":  "What\u0027s the feedback after a successful commit?"
+    },
+    {
+        "speaker":  "ALEX",
+        "text":  "In VS Code, staged and unstaged entries disappear if everything was included. In Git, the commit gets a hash and becomes part of local history. But it is still only local until you push."
+    },
+    {
+        "speaker":  "PAUSE",
+        "text":  ""
+    },
+    {
+        "speaker":  "ALEX",
+        "text":  "Push and pull operations are the bridge between local work and GitHub. After a local commit, pushing sends your commits to the remote repository. In VS Code, you can do this from the sync controls or Command Palette. If it\u0027s a new branch, VS Code may ask to publish it."
+    },
+    {
+        "speaker":  "JAMIE",
+        "text":  "What are the core terminal commands?"
+    },
+    {
+        "speaker":  "ALEX",
+        "text":  "git push sends commits to GitHub. For a new branch the first time, git push dash u origin branchname sets the upstream so future pushes are simpler. git pull brings changes down and merges them. git fetch downloads remote updates without merging, which is often safer when you want to inspect first."
+    },
+    {
+        "speaker":  "JAMIE",
+        "text":  "When should I pull?"
+    },
+    {
+        "speaker":  "ALEX",
+        "text":  "Before starting work if the remote may have changed. Before pushing if others may have updated the same branch. And any time your local view may be stale. Some tools auto-fetch in the background, but it\u0027s still worth understanding the difference: fetch updates your knowledge; pull updates your branch."
+    },
+    {
+        "speaker":  "JAMIE",
+        "text":  "What if push fails?"
+    },
+    {
+        "speaker":  "ALEX",
+        "text":  "Usually one of a few reasons: authentication trouble, no upstream set for a new branch, or remote changes require you to pull first. The fix depends on the message, but a safe pattern is read the error, run git status, possibly run git fetch, confirm your branch, and then either authenticate, set upstream, or reconcile remote changes."
+    },
+    {
+        "speaker":  "PAUSE",
+        "text":  ""
+    },
+    {
+        "speaker":  "ALEX",
+        "text":  "The chapter also covers syncing a fork with an upstream repository. That may not be central to your classroom repo, but it\u0027s essential in open source. The quickest route on GitHub.com is often the Sync fork button. There\u0027s also a more explicit Git workflow: add an upstream remote once, fetch from upstream, switch to your default branch, merge upstream changes, then push the updated branch back to your fork."
+    },
+    {
+        "speaker":  "JAMIE",
+        "text":  "Can you say that as commands?"
+    },
+    {
+        "speaker":  "ALEX",
+        "text":  "Sure. First add upstream one time with something like git remote add upstream repository-URL. Then git fetch upstream. Then make sure you are on main or your default branch. Then merge, often with git merge upstream slash main. Then push to origin. VS Code can help through Command Palette too. And if conflicts occur during sync, you resolve them before pushing."
+    },
+    {
+        "speaker":  "PAUSE",
+        "text":  ""
+    },
+    {
+        "speaker":  "ALEX",
+        "text":  "Sometimes you don\u0027t want to keep changes. The course addresses discarding carefully because it can be destructive. Discard a single file to restore it to the last committed state. Discard all unstaged changes if you really mean to abandon your current edits. If changes are staged, unstage first, then restore. There\u0027s also the nuclear option that discards everything, staged and unstaged, but you should preview first whenever possible."
+    },
+    {
+        "speaker":  "JAMIE",
+        "text":  "What would previewing look like?"
+    },
+    {
+        "speaker":  "ALEX",
+        "text":  "Check git diff for unstaged changes and git diff dash dash cached for staged ones. Know what you\u0027re about to lose. The chapter also teaches a safer alternative: stash instead of discard."
+    },
+    {
+        "speaker":  "JAMIE",
+        "text":  "And file deletion has its own Git-aware form too."
+    },
+    {
+        "speaker":  "ALEX",
+        "text":  "Yes. git rm removes a file and stages the deletion in one step. git rm dash dash cached removes it from tracking but keeps the local file. You can remove directories too. Then commit the deletion and verify the file is no longer tracked."
+    },
+    {
+        "speaker":  "PAUSE",
+        "text":  ""
+    },
+    {
+        "speaker":  "ALEX",
+        "text":  "For history and accountability, VS Code has Timeline view and Git blame. Timeline can be opened from the Explorer sidebar or the Command Palette. It shows file history, including commits that affected the file."
+    },
+    {
+        "speaker":  "JAMIE",
+        "text":  "And blame is the line-by-line history, right?"
+    },
+    {
+        "speaker":  "ALEX",
+        "text":  "Right. It tells you who last changed each line and often links to a commit hash. For screen reader users, this can be much more useful than trying to infer history visually. In terminal form, you can view repo history with git log, a specific file\u0027s history with git log dash dash filename, history plus patch content with git log dash p, blame with git blame filename, concise blame with author and short hashes, a single commit with git show commitSHA, changes between commits with git diff sha1 sha2, commits by a specific author, or recent commits in the last seven days."
+    },
+    {
+        "speaker":  "JAMIE",
+        "text":  "So this is where I answer questions like who changed this, when, and why."
+    },
+    {
+        "speaker":  "ALEX",
+        "text":  "Exactly. Also PR history can often be viewed on the web when you want the review context, not just the raw commit history."
+    },
+    {
+        "speaker":  "PAUSE",
+        "text":  ""
+    },
+    {
+        "speaker":  "ALEX",
+        "text":  "The material also covers merge conflicts in VS Code. When conflicting changes touch the same area, VS Code displays conflict regions and offers resolution controls. But for screen reader users, the best workflow is often to use structured navigation and the Accessible Diff tools rather than hunting manually for conflict markers."
+    },
+    {
+        "speaker":  "JAMIE",
+        "text":  "And if the merge is going badly?"
+    },
+    {
+        "speaker":  "ALEX",
+        "text":  "You can abort it. That\u0027s an important safety valve. Stop, return to the pre-merge state, and approach again more deliberately."
+    },
+    {
+        "speaker":  "PAUSE",
+        "text":  ""
+    },
+    {
+        "speaker":  "ALEX",
+        "text":  "Now stash management. A stash is a temporary shelf for uncommitted work. Use it when you need to switch branches, pull updates, or test something without committing half-finished work."
+    },
+    {
+        "speaker":  "JAMIE",
+        "text":  "What are the key stash commands?"
+    },
+    {
+        "speaker":  "ALEX",
+        "text":  "Stash all uncommitted changes with a message using git stash push dash m quoted message. Include untracked files with an include-untracked style flag. List stashes with git stash list. Show what one stash contains with git stash show dash p stash at brace zero brace. Apply the most recent stash but keep it with git stash apply. Apply and remove it with git stash pop. Apply a specific stash by name. Drop a specific stash with git stash drop. And clear them all with git stash clear, carefully."
+    },
+    {
+        "speaker":  "JAMIE",
+        "text":  "So Apply keeps the stash, Pop applies and deletes it."
+    },
+    {
+        "speaker":  "ALEX",
+        "text":  "Exactly."
+    },
+    {
+        "speaker":  "PAUSE",
+        "text":  ""
+    },
+    {
+        "speaker":  "ALEX",
+        "text":  "There\u0027s even an emergency recovery section on git reflog. This matters when you think you lost a commit, reset too far, or deleted a branch and regret it."
+    },
+    {
+        "speaker":  "JAMIE",
+        "text":  "Reflog is like Git\u0027s memory of where HEAD has been?"
+    },
+    {
+        "speaker":  "ALEX",
+        "text":  "That\u0027s a great way to think about it. Read the reflog in the terminal, find the last good commit or branch tip, preview it with a show command, then recover safely either by creating a new branch at that point or by resetting the current branch back there. If a branch was deleted, find the SHA from reflog and recreate the branch at that commit. And remember: reflog is local-only. It is not a shared team history."
+    },
+    {
+        "speaker":  "PAUSE",
+        "text":  ""
+    },
+    {
+        "speaker":  "ALEX",
+        "text":  "The chapter briefly acknowledges alternative Git interfaces too: GitHub Desktop, GitHub CLI, and the raw Git CLI. The point is not that one is morally superior. It\u0027s that you should understand the workflow deeply enough to transfer across tools."
+    },
+    {
+        "speaker":  "JAMIE",
+        "text":  "And I remember there were keyboard shortcuts and try-it activities too."
+    },
+    {
+        "speaker":  "ALEX",
+        "text":  "Yes. There\u0027s a quick reference for Git operations in VS Code, plus a practical exercise around clone, branch, and commit. The learning cards throughout the chapter reinforce the same few moves in different forms so they become habits."
+    },
+    {
+        "speaker":  "PAUSE",
+        "text":  ""
+    },
+    {
+        "speaker":  "ALEX",
+        "text":  "Now let\u0027s move from local Git to code review and PR management in VS Code. This chapter brings together the GitHub Pull Requests extension, accessible diff reading, and the craft of giving useful feedback."
+    },
+    {
+        "speaker":  "JAMIE",
+        "text":  "And there was another workshop recommendation here too."
+    },
+    {
+        "speaker":  "ALEX",
+        "text":  "Yes. For the first part, the recommended practice was: install the extension, authenticate, check out a pull request, review it, and comment. The evidence was a confirmation comment describing whether you installed the extension, signed in, which PR you reviewed, whether your comment was inline or on GitHub.com, and what your comment was about."
+    },
+    {
+        "speaker":  "JAMIE",
+        "text":  "That\u0027s nice because it makes the invisible setup work visible."
+    },
+    {
+        "speaker":  "ALEX",
+        "text":  "Exactly. The expected outcomes were practical: install and authenticate the extension, check out a PR branch in VS Code or use a browser fallback, navigate diffs using F7 and the Accessible Diff Viewer, and post one specific constructive comment."
+    },
+    {
+        "speaker":  "PAUSE",
+        "text":  ""
+    },
+    {
+        "speaker":  "ALEX",
+        "text":  "Installing the GitHub Pull Requests and Issues extension is straightforward. Open the Extensions sidebar with Control Shift X, search for GitHub Pull Requests, choose the GitHub-published extension, install it, and sign in through the browser OAuth flow."
+    },
+    {
+        "speaker":  "JAMIE",
+        "text":  "How do I verify it really worked?"
+    },
+    {
+        "speaker":  "ALEX",
+        "text":  "Return to VS Code and look for the GitHub section in the Explorer or related PR views. It should show pull requests and issues from the repository context you\u0027re in."
+    },
+    {
+        "speaker":  "JAMIE",
+        "text":  "And if install or sign-in fails?"
+    },
+    {
+        "speaker":  "ALEX",
+        "text":  "Reload the window. Make sure your browser is already signed into the correct GitHub account. Close and reopen VS Code if needed. These setup issues are common enough that the course treats them as normal troubleshooting, not user failure."
+    },
+    {
+        "speaker":  "PAUSE",
+        "text":  ""
+    },
+    {
+        "speaker":  "ALEX",
+        "text":  "Once installed, you can view pull requests inside VS Code. You can open the PR panel from the Activity Bar or through Explorer sections. It can list open PRs, show specific PRs, open them in the browser, and filter to items waiting for your review."
+    },
+    {
+        "speaker":  "JAMIE",
+        "text":  "What does the PR list look like for a screen reader?"
+    },
+    {
+        "speaker":  "ALEX",
+        "text":  "Think of it as a tree with repositories, PR items, and details you can expand. The course even gives examples of what a screen reader might announce, so you can orient to title, status, and repo association. Filtering can narrow by status or repository if the list is noisy."
+    },
+    {
+        "speaker":  "JAMIE",
+        "text":  "And viewing details gives me description, checks, metadata, all that?"
+    },
+    {
+        "speaker":  "ALEX",
+        "text":  "Exactly. You can inspect the title, body, changed files, review status, and related metadata without leaving the editor."
+    },
+    {
+        "speaker":  "PAUSE",
+        "text":  ""
+    },
+    {
+        "speaker":  "ALEX",
+        "text":  "Checking out a PR branch is the next key move. Why do it? Because some reviews need local testing, richer navigation, or terminal inspection. You can check out from the PR detail view, from the PR tree, or by Command Palette."
+    },
+    {
+        "speaker":  "JAMIE",
+        "text":  "And after that, I can return to my original branch normally."
+    },
+    {
+        "speaker":  "ALEX",
+        "text":  "Right. That return step matters. Reviews should not strand you on someone else\u0027s branch."
+    },
+    {
+        "speaker":  "PAUSE",
+        "text":  ""
+    },
+    {
+        "speaker":  "ALEX",
+        "text":  "Now reviewing pull requests in VS Code. The changed files list tells you what files were touched. Open one and you\u0027ll get a diff editor. By default it may be split view, old on the left and new on the right. Some people prefer inline view. You can toggle between them."
+    },
+    {
+        "speaker":  "JAMIE",
+        "text":  "But for screen reader users, the star of the show is the Accessible Diff Viewer."
+    },
+    {
+        "speaker":  "ALEX",
+        "text":  "Yes. Press F7 to move through changes in a structured way, Shift F7 to move backward. Instead of fighting a visual side-by-side layout, you get hunk-by-hunk announcements: what was removed, what was added, and where. The material is very clear that this is far better for screen reader users than trying to navigate the raw visual diff manually."
+    },
+    {
+        "speaker":  "JAMIE",
+        "text":  "So review becomes about understanding change blocks, not wrestling the interface."
+    },
+    {
+        "speaker":  "ALEX",
+        "text":  "Exactly. And as you review, flag issues, ask questions, or note strengths. Good reviewing isn\u0027t only about finding mistakes."
+    },
+    {
+        "speaker":  "PAUSE",
+        "text":  ""
+    },
+    {
+        "speaker":  "ALEX",
+        "text":  "You can also create a pull request directly from VS Code. There are a few methods: Command Palette, Source Control panel, or the GitHub panel. Before creating one, you need the basics in place: local commits on a branch, that branch pushed to GitHub, and a sensible base branch target."
+    },
+    {
+        "speaker":  "JAMIE",
+        "text":  "What do I fill out in the PR form?"
+    },
+    {
+        "speaker":  "ALEX",
+        "text":  "A title is required. A description is optional but strongly recommended. You choose the base branch the changes should merge into, and the compare branch they\u0027re coming from. You may also set reviewers, labels, milestones, and whether it should be a draft PR. Some workflows prompt you interactively for title, body, and base branch. Others let you provide details inline. And if the in-editor form feels awkward, you can open it in the browser."
+    },
+    {
+        "speaker":  "JAMIE",
+        "text":  "So for this Day 2 challenge, that means I could open the PR from VS Code or from GitHub.com, as long as the result is the same."
+    },
+    {
+        "speaker":  "ALEX",
+        "text":  "Exactly. The workflow concept matters more than the exact button path."
+    },
+    {
+        "speaker":  "PAUSE",
+        "text":  ""
+    },
+    {
+        "speaker":  "ALEX",
+        "text":  "The chapter also covers pull request description templates. These usually live in repository-defined locations and can pre-fill sections like description, related issue, type of change, testing, checklist items, and screenshots if applicable."
+    },
+    {
+        "speaker":  "JAMIE",
+        "text":  "That seems especially helpful for learners who don\u0027t know what to write."
+    },
+    {
+        "speaker":  "ALEX",
+        "text":  "Yes. Templates reduce guesswork. They also support accessibility by making expectations consistent. A screen reader workflow here is mostly about moving field by field and replacing placeholder text with specific content."
+    },
+    {
+        "speaker":  "PAUSE",
+        "text":  ""
+    },
+    {
+        "speaker":  "ALEX",
+        "text":  "Then we get to commenting and formal review actions. You can add an inline comment on a specific line, or start a review and collect multiple comments before submitting them together."
+    },
+    {
+        "speaker":  "JAMIE",
+        "text":  "That \"start review\" option is useful when I don\u0027t want to interrupt the author with a bunch of isolated notifications."
+    },
+    {
+        "speaker":  "ALEX",
+        "text":  "Exactly. And when you submit your review, you usually choose one of three verdicts: approve, request changes, or comment-only. Approve means you think it\u0027s ready. Request changes means there\u0027s something blocking that should be fixed before merging. Comment-only means feedback without a merge verdict."
+    },
+    {
+        "speaker":  "JAMIE",
+        "text":  "The chapter also mentions terminal support for PR review, right?"
+    },
+    {
+        "speaker":  "ALEX",
+        "text":  "Yes. You can view PR diffs in the terminal too, which some learners may find more linear and readable. And GitHub CLI can help with approving, requesting changes, or leaving a comment-only review depending on repository permissions and setup."
+    },
+    {
+        "speaker":  "PAUSE",
+        "text":  ""
+    },
+    {
+        "speaker":  "ALEX",
+        "text":  "Merging pull requests is its own skill. First check prerequisites: reviews, passing checks, permissions, and whether the branch is up to date. In VS Code you may merge from the PR detail view or through commands. Merge types matter too."
+    },
+    {
+        "speaker":  "JAMIE",
+        "text":  "Can you summarize those merge types?"
+    },
+    {
+        "speaker":  "ALEX",
+        "text":  "Default merge preserves the branch history as a merge commit. Squash and merge compresses the branch\u0027s commits into one before merging, which many teams prefer for a tidy main branch. Some repositories enable auto-merge so the PR merges automatically once required checks pass."
+    },
+    {
+        "speaker":  "JAMIE",
+        "text":  "And after merging?"
+    },
+    {
+        "speaker":  "ALEX",
+        "text":  "Switch back to main and pull the latest changes. Then delete the feature branch if it\u0027s no longer needed, locally and sometimes remotely."
+    },
+    {
+        "speaker":  "PAUSE",
+        "text":  ""
+    },
+    {
+        "speaker":  "ALEX",
+        "text":  "There\u0027s also a troubleshooting section worth keeping. If you see no pull requests found, check your filters and repository context. If VS Code says it could not create a pull request, confirm the branch is pushed, the repo is recognized, and authentication is valid. If authentication fails, re-sign in and verify your browser session."
+    },
+    {
+        "speaker":  "JAMIE",
+        "text":  "That kind of troubleshooting matters because PR work spans local Git, GitHub auth, and editor integration all at once."
+    },
+    {
+        "speaker":  "ALEX",
+        "text":  "Exactly. Problems are often at the boundaries between tools."
+    },
+    {
+        "speaker":  "PAUSE",
+        "text":  ""
+    },
+    {
+        "speaker":  "ALEX",
+        "text":  "The chapter then broadens from tool use to accessible code review in general. It asks you to verify prerequisites first, then reminds you there are really two review environments: GitHub.com and VS Code. Both matter. Learning cards help you compare them rather than treating one as universally better."
+    },
+    {
+        "speaker":  "JAMIE",
+        "text":  "So if a learner asks, \"Do I have to review in VS Code?\" the answer is no, but they should understand both."
+    },
+    {
+        "speaker":  "ALEX",
+        "text":  "Yes. On GitHub.com, modern review interfaces support a file tree, structured navigation, inline comments, review threads, and final review submission. In VS Code, the Accessible Diff Viewer often gives a better reading experience for change hunks. Each environment has strengths."
+    },
+    {
+        "speaker":  "PAUSE",
+        "text":  ""
+    },
+    {
+        "speaker":  "ALEX",
+        "text":  "A GitHub.com review usually goes like this: open the PR, read the description, move to the Files changed tab, use the file tree to orient yourself, move between file diffs, read the additions and deletions, place inline comments, read existing threads, and finally submit a review with approve, request changes, or comment-only."
+    },
+    {
+        "speaker":  "JAMIE",
+        "text":  "And there was also a re-request review step for authors after updates."
+    },
+    {
+        "speaker":  "ALEX",
+        "text":  "Right. After the author makes changes, they can re-request review so reviewers know to revisit the PR."
+    },
+    {
+        "speaker":  "PAUSE",
+        "text":  ""
+    },
+    {
+        "speaker":  "ALEX",
+        "text":  "In VS Code review, the flow is similar but the tools differ. Open the PR for review, open changed files, use F7 for the Accessible Diff Viewer, navigate change by change, and place comments through the GitHub PR extension. The course emphasizes that structured diff reading is superior to trying to decode the raw split editor by ear."
+    },
+    {
+        "speaker":  "JAMIE",
+        "text":  "This is where accessibility and code review intersect directly."
+    },
+    {
+        "speaker":  "ALEX",
+        "text":  "Exactly. Accessibility is not an afterthought here. It shapes which workflows are realistic and sustainable."
+    },
+    {
+        "speaker":  "PAUSE",
+        "text":  ""
+    },
+    {
+        "speaker":  "ALEX",
+        "text":  "Then we get into review quality. A useful review comment should be specific, actionable, and clear about whether it blocks merging. The course gives examples of blocking comments, non-blocking nits, and questions."
+    },
+    {
+        "speaker":  "JAMIE",
+        "text":  "Can you model the difference?"
+    },
+    {
+        "speaker":  "ALEX",
+        "text":  "Sure. A blocking comment might say, \"Blocking: this heading level skips from H1 to H3, which breaks document structure for screen reader navigation. Please change it to H2.\" A non-blocking nit might say, \"Nit: consider tightening this sentence for clarity.\" A question might say, \"Question: was this link text intentionally shortened? I\u0027m wondering whether a more descriptive label would help users.\""
+    },
+    {
+        "speaker":  "JAMIE",
+        "text":  "So tone and labeling matter."
+    },
+    {
+        "speaker":  "ALEX",
+        "text":  "Very much. Prefixes like Blocking, Nit, and Question set expectations and reduce ambiguity. The chapter also asks, how many comments is too many? The answer is usually: enough to be helpful, not so many that you overwhelm the author with fragmented noise. Group comments when possible, and focus on impact."
+    },
+    {
+        "speaker":  "PAUSE",
+        "text":  ""
+    },
+    {
+        "speaker":  "ALEX",
+        "text":  "There\u0027s a keyboard reference too, for both GitHub web review and VS Code accessible diff navigation. For learners who rely on keyboard access, that reference isn\u0027t optional background. It\u0027s part of fluency."
+    },
+    {
+        "speaker":  "JAMIE",
+        "text":  "And the common review scenarios were practical."
+    },
+    {
+        "speaker":  "ALEX",
+        "text":  "Yes. For example: I want to verify the PR only changes what it claims. Check the description, then compare it against the changed files and diff hunks. I want to find all changes to one section. Use file search, structured navigation, or history tools. I approved, but then the author pushed more changes. Revisit the diff and look for what\u0027s new. A reviewer left a comment I don\u0027t understand. Read the thread, inspect the local context, and ask for clarification rather than guessing."
+    },
+    {
+        "speaker":  "PAUSE",
+        "text":  ""
+    },
+    {
+        "speaker":  "ALEX",
+        "text":  "The exercises make these skills concrete. One exercise walks through a full web review: navigate to the PR, read the description, go to Files changed, use focus-friendly reading strategies, identify issues like heading hierarchy or link text, place comments, and submit the review. Another exercise does the same in VS Code with the Accessible Diff Viewer. A third asks you to compare the two environments and reflect."
+    },
+    {
+        "speaker":  "JAMIE",
+        "text":  "I like that the course doesn\u0027t force one \"correct\" environment. It asks for evidence-based reflection."
+    },
+    {
+        "speaker":  "ALEX",
+        "text":  "Exactly. You might conclude the browser made threaded discussion easier, while VS Code made diff reading easier. That\u0027s useful professional knowledge."
+    },
+    {
+        "speaker":  "PAUSE",
+        "text":  ""
+    },
+    {
+        "speaker":  "ALEX",
+        "text":  "There\u0027s also a section on using GitHub Copilot to understand code changes. The recommendation is cautious. Copilot can help summarize or explain a diff in VS Code or on GitHub.com, but it is not a substitute for your judgment."
+    },
+    {
+        "speaker":  "JAMIE",
+        "text":  "So it can support review, but not replace it."
+    },
+    {
+        "speaker":  "ALEX",
+        "text":  "Right. The course stresses limitations and best practices. Use it to ask clarifying questions, not to outsource the final decision. Skill first, assistant second."
+    },
+    {
+        "speaker":  "PAUSE",
+        "text":  ""
+    },
+    {
+        "speaker":  "ALEX",
+        "text":  "That idea continues in the reviewer\u0027s craft section. Good reviewers look for correctness, clarity, accessibility, scope, and alignment with the PR\u0027s stated purpose. They understand the three main review actions. They write constructive feedback. They use a checklist. And they treat reviewing as a learning tool, not just a gatekeeping role."
+    },
+    {
+        "speaker":  "JAMIE",
+        "text":  "That feels especially important in an accessibility-centered course."
+    },
+    {
+        "speaker":  "ALEX",
+        "text":  "Yes. A review is not just \"I found a problem.\" It\u0027s \"I can explain the problem in a way that helps someone improve.\""
+    },
+    {
+        "speaker":  "PAUSE",
+        "text":  ""
+    },
+    {
+        "speaker":  "ALEX",
+        "text":  "There\u0027s also a teaser about a fuller accessibility agents review ecosystem. The principle is explicit: skill first, agent second. Tools can assist, but you need to understand the workflow and standards yourself."
+    },
+    {
+        "speaker":  "JAMIE",
+        "text":  "That\u0027s a nice guardrail. Learn the craft before leaning on automation."
+    },
+    {
+        "speaker":  "ALEX",
+        "text":  "Exactly."
+    },
+    {
+        "speaker":  "PAUSE",
+        "text":  ""
+    },
+    {
+        "speaker":  "ALEX",
+        "text":  "Let\u0027s return now to the Day 2 pull request solution reference, because it ties everything together. The example PR title is a concise docs-style summary, something like improving formatting and fixing a broken link. The body has a changes section listing what was fixed or added, a short explanation of how the changes were made locally in a clone using VS Code, a Closes issue reference, and a pattern recognition section comparing the Day 2 PR to the Day 1 PR."
+    },
+    {
+        "speaker":  "JAMIE",
+        "text":  "So the solution isn\u0027t only saying what to type. It\u0027s modeling how to explain your workflow."
+    },
+    {
+        "speaker":  "ALEX",
+        "text":  "Exactly. And the comparison table is worth memorizing in spirit. Day 1 edits happened on GitHub.com or github.dev. Day 2 edits happened locally in VS Code, GitHub Desktop, or the terminal. Day 1 often meant a single web-created commit. Day 2 could involve one or more commits created with git commit. Day 1 branches might be created on GitHub. Day 2 branches are often created locally with checkout or switch. Day 1 needed no push because the commit was already on GitHub. Day 2 required git push. And the PR could be created from the web prompt or a command like gh pr create."
+    },
+    {
+        "speaker":  "JAMIE",
+        "text":  "And the \"what matters\" section keeps the focus narrow."
+    },
+    {
+        "speaker":  "ALEX",
+        "text":  "Yes. If you created a PR from a locally pushed branch and recognized how that workflow differed from Day 1 while still ending the same way, you met the objective."
+    },
+    {
+        "speaker":  "PAUSE",
+        "text":  ""
+    },
+    {
+        "speaker":  "JAMIE",
+        "text":  "What about the challenge\u0027s \"peer simulation check\"?"
+    },
+    {
+        "speaker":  "ALEX",
+        "text":  "Good catch. The learner is asked to review the peer-simulation PR title and description and ask whether it clearly communicates what changed. If they have real buddy access, they can review a real peer\u0027s PR too. That\u0027s an administrative instruction, but it also teaches that PR quality begins before review comments. A readable title and description reduce reviewer burden."
+    },
+    {
+        "speaker":  "JAMIE",
+        "text":  "And the stuck points?"
+    },
+    {
+        "speaker":  "ALEX",
+        "text":  "Also important. If you do not see your branch, make sure it was pushed, for example with git push dash u origin fix slash your-username. If GitHub says there is nothing to compare, your branch may not contain any new commits relative to main. If you don\u0027t know what to write in the description, reuse the earlier PR template pattern: what changed and why. And if you want to check your work, compare with the reference solution."
+    },
+    {
+        "speaker":  "PAUSE",
+        "text":  ""
+    },
+    {
+        "speaker":  "JAMIE",
+        "text":  "Before we close, can we give learners a compact mental model for the whole lesson?"
+    },
+    {
+        "speaker":  "ALEX",
+        "text":  "Absolutely. Here it is. Local work happens in your clone. You make edits, save files, stage intentionally, and commit with a clear message. Your branch is local until you push. Once pushed, GitHub can compare that branch against main and create a pull request. The pull request is where collaboration becomes visible: description, diffs, comments, review verdicts, and merge decisions. Accessibility matters at every layer, from using the Command Palette and Source Control panel accessibly, to reading diffs with F7, to writing review comments that clearly identify blocking issues versus suggestions."
+    },
+    {
+        "speaker":  "JAMIE",
+        "text":  "And the recurring pattern is clone, branch, edit, stage, commit, push, PR, review, merge."
+    },
+    {
+        "speaker":  "ALEX",
+        "text":  "Yes. And if you remember only one comparison from today, remember this: Day 1 and Day 2 are not rival workflows. They are two paths into the same pull request-centered collaboration model."
+    },
+    {
+        "speaker":  "PAUSE",
+        "text":  ""
+    },
+    {
+        "speaker":  "ALEX",
+        "text":  "One final note on source quality. The materials point learners back to authoritative documentation, especially GitHub Docs, the GitHub changelog, VS Code source control documentation, and GitHub accessibility guidance for CLI and pull request reviews. That means your workshop notes teach the workflow, but official docs remain the source of truth when interfaces change."
+    },
+    {
+        "speaker":  "JAMIE",
+        "text":  "Which is a great habit in tech generally."
+    },
+    {
+        "speaker":  "ALEX",
+        "text":  "Exactly. Practice the pattern, use accessible tools, verify with authoritative sources, and keep your pull requests clear enough that another human can understand them without guessing."
+    },
+    {
+        "speaker":  "JAMIE",
+        "text":  "That\u0027s a strong place to end."
+    },
+    {
+        "speaker":  "ALEX",
+        "text":  "It is. Next time, keep noticing not just what button you pressed, but what collaboration step you completed. That\u0027s how Git starts to feel coherent."
+    }
 ]

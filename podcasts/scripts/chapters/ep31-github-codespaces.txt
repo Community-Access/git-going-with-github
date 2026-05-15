@@ -1,0 +1,364 @@
+﻿[ALEX]
+Welcome back. Today we're exploring GitHub Codespaces, which is one of the most practical ways to get a full development environment without doing a bunch of local setup first.
+
+[JAMIE]
+So if a learner has heard the phrase but never used it, what is it, exactly?
+
+[ALEX]
+A Codespace is a cloud-hosted development environment. GitHub provisions a virtual machine for you, clones your repository into it, and then gives you a VS Code interface connected to that machine. You can use that interface right in your browser, or connect the Codespace to your local VS Code desktop app.
+
+[JAMIE]
+So the code editor feels like VS Code, but the machine doing the work is somewhere else.
+
+[ALEX]
+Exactly. And that matters a lot for accessibility and teaching. You don't have to install compilers, runtimes, or project dependencies on your own computer just to participate. Your screen reader, keyboard preferences, operating system settings, and browser setup stay on your machine, while the development environment lives in the cloud.
+
+[JAMIE]
+That sounds especially helpful in workshops.
+
+[ALEX]
+It is. Everyone can use the same environment, which means instructors can reproduce problems more reliably. If one learner says, "I opened the repository and this command failed," the facilitator is much more likely to see the same thing in the same environment.
+
+[JAMIE]
+And for cost, is this something learners should worry about right away?
+
+[ALEX]
+Usually no. GitHub offers a monthly free allowance of Codespaces hours for personal accounts, and for typical workshop use, that usually fits within the free tier.
+
+[PAUSE]
+
+[ALEX]
+A quick orientation point: this topic connects closely to choosing your tools and understanding the VS Code interface. If you already know basic VS Code navigation, Codespaces will feel familiar very quickly.
+
+[JAMIE]
+And before we go deeper, can we make a simple distinction between cloud editors in general?
+
+[ALEX]
+Sure. Think of Codespaces as a full cloud development machine with a terminal. That's different from lighter browser editors that let you edit files but don't give you the same runtime environment.
+
+[JAMIE]
+Let's make that concrete for different learners.
+
+[ALEX]
+For screen reader users: Codespaces gives you a full VS Code interface and terminal access, while your screen reader stays local on your own device. In the browser version, screen reader optimized behavior can activate automatically when the operating system signals that a screen reader is running. And if you want the most familiar experience, you can connect the Codespace to local VS Code desktop.
+
+For low vision users: your VS Code settings sync can carry over font size, theme, and zoom preferences. Browser zoom shortcuts like Control plus equals and Control plus minus work as expected, and high-contrast themes apply in the cloud editor just like they do locally.
+
+For sighted users: if you press period on a GitHub repository page, GitHub can open a lightweight browser editor quickly, but that is not the same as a full Codespace. Use a Codespace when you need to run code, use a terminal, or work in a complete development environment. And for most workshop exercises, the default two-core machine is enough.
+
+[PAUSE]
+
+[JAMIE]
+Okay, let's say I'm ready to make one. What's the easiest path?
+
+[ALEX]
+There are two common ways. First, from a repository page. You navigate to the repository on GitHub, tab to the Code button, activate it, move to the Codespaces tab in the panel that opens, and choose Create codespace on main, or on whatever branch you want. GitHub then provisions it, and after a short wait, often around thirty to sixty seconds, it opens in a new browser tab.
+
+[JAMIE]
+So that path is tied to a specific repository.
+
+[ALEX]
+Right. The second path is from the Codespaces dashboard at github dot com slash codespaces. There, you activate New codespace, search for your repository, choose a branch, machine type, and region, then activate Create codespace.
+
+[JAMIE]
+When would the dashboard path be better?
+
+[ALEX]
+It's useful when you manage several repositories, want to resume older environments, or want a more deliberate creation flow with branch and machine choices surfaced up front.
+
+[JAMIE]
+Let's talk machine types, because that can sound intimidating.
+
+[ALEX]
+It really doesn't need to be. GitHub offers sizes like two-core with eight gigabytes of RAM, four-core with sixteen gigabytes, and eight-core with thirty-two gigabytes. A two-core machine is usually fine for documentation, general development, and workshop exercises. Move up only when you're doing heavier builds, running larger test suites, or multiple services.
+
+[JAMIE]
+So learners should not assume bigger is always necessary.
+
+[ALEX]
+Correct. Bigger can cost more and is often unnecessary for getting started.
+
+[PAUSE]
+
+[JAMIE]
+Once a Codespace exists, what environments can I actually use it in?
+
+[ALEX]
+Two main ones. The first is the browser experience, basically VS Code for the web. The Codespace opens directly in your browser as a full editor interface.
+
+[JAMIE]
+And what should accessibility-minded learners know there?
+
+[ALEX]
+It works in Chrome, Edge, Firefox, and Safari, but screen reader support is most consistent in Chrome and Edge, especially with NVDA and JAWS. The big advantage is no installation. The tradeoff is that some extensions available in desktop VS Code may not be available in the browser version.
+
+[JAMIE]
+And the second option is local VS Code desktop connected to the cloud machine.
+
+[ALEX]
+Exactly. To do that, install the GitHub Codespaces extension in VS Code, sign in to GitHub inside VS Code, open the Command Palette with Control Shift P or Command Shift P on Mac, run the command Codespaces: Connect to Codespace, and then choose an existing Codespace or create a new one.
+
+[JAMIE]
+Why do some learners prefer that setup?
+
+[ALEX]
+Because then your screen reader is interacting with your local VS Code installation, with your familiar settings, local extensions, and established workflow. The code still runs in the cloud environment, but the interface feels more like home.
+
+[PAUSE]
+
+[JAMIE]
+Now let's get into accessibility features directly. If someone is using Codespaces, what should they check first?
+
+[ALEX]
+First, screen reader optimized mode. When VS Code detects a screen reader, it can turn on Screen Reader Optimized mode automatically. But it's worth knowing how to verify it manually. Open the Command Palette, search for Toggle Screen Reader Accessibility Mode, and press Enter.
+
+[JAMIE]
+And what changes when that mode is on?
+
+[ALEX]
+A few important things. The editor presents content in a way that's more readable with screen readers, often emphasizing line-by-line reading rather than a noisier character-by-character experience. Diff views become accessible text comparisons instead of more visual-only presentations. And inline suggestions, such as from Copilot, are announced on a keypress rather than constantly interrupting you.
+
+[JAMIE]
+That last part matters a lot, because surprise announcements can be exhausting.
+
+[ALEX]
+Exactly.
+
+[JAMIE]
+What about audio cues?
+
+[ALEX]
+Codespaces supports the same VS Code audio cues as desktop. You can get tones or chimes for events like an error on the current line, a warning on the current line, a breakpoint being hit, a task completing, or a Copilot suggestion becoming available.
+
+[JAMIE]
+How do you enable or review those?
+
+[ALEX]
+You can go into Settings and search for audio cues, or use the Command Palette command Help: List Audio Cues.
+
+[JAMIE]
+And for low vision users, those cues aren't just a screen reader feature.
+
+[ALEX]
+Right. They also supplement visual indicators you might miss at high zoom, with magnification, or when multiple interface elements are competing for attention.
+
+[JAMIE]
+Now the terminal. This is where many learners get nervous.
+
+[ALEX]
+Understandably. The integrated terminal in a Codespace behaves like a standard terminal. With NVDA and JAWS, screen readers typically read output after it arrives. In NVDA, a common pattern is to switch to Browse Mode to review static terminal output, then switch back to Focus Mode to type commands.
+
+[JAMIE]
+So reading mode for reviewing, focus mode for input.
+
+[ALEX]
+Exactly. And VS Code also offers Accessible View. When the cursor is in the terminal, Alt F2 can open terminal output in a navigable buffer, which can be much easier to review with a screen reader.
+
+[JAMIE]
+That sounds like one of those features people are thrilled to discover after struggling for a while.
+
+[ALEX]
+Very much so.
+
+[PAUSE]
+
+[JAMIE]
+Can we do a quick learner-specific recap here?
+
+[ALEX]
+Yes. For screen reader users: verify screen reader optimized mode with the Command Palette if needed, use audio cues to supplement what you hear from the editor, and use the same NVDA terminal pattern you would locally, browse to read and focus to type.
+
+For low vision users: browser-based Codespaces respects zoom and theme choices, Control plus equals can enlarge the editor, and Chrome and Edge often provide the most consistent rendering at high zoom and magnification.
+
+For sighted users: the browser Codespace looks a lot like desktop VS Code, you can confirm you're connected to a cloud environment by looking for the Codespaces indicator in the lower left, and if a browser extension limitation gets in your way, connect through local VS Code desktop instead.
+
+[PAUSE]
+
+[JAMIE]
+Let's go screen reader by screen reader. Starting with NVDA.
+
+[ALEX]
+For NVDA, there is no special profile required just for Codespaces. The same good practices apply as elsewhere. Use Browse Mode for reading and Focus Mode for typing. If you have access to NVDA settings, setting maximum line length to ten thousand in Browse Mode can help with reading long lines of code or output more smoothly. And Chrome or Edge generally gives the most reliable Browse Mode behavior.
+
+[JAMIE]
+How about JAWS?
+
+[ALEX]
+With JAWS, use Virtual Cursor for reading general page content, then switch to PC Cursor when you're in the editor and writing code. The common shortcut mentioned is Insert plus Z or the numpad plus key, depending on layout and configuration. And again, Chrome or Edge tends to work best.
+
+[JAMIE]
+And VoiceOver on macOS?
+
+[ALEX]
+Use Quick Nav, often with left and right arrows, to move through the VS Code interface efficiently. The Rotor, with VO plus U, can help surface landmark regions. And if the editor text is not reading fluidly, check whether screen reader optimized mode is active.
+
+[JAMIE]
+So across all three, the pattern is: learn the mode changes, use the browser that behaves most consistently, and verify accessibility mode if things feel off.
+
+[ALEX]
+Exactly right.
+
+[PAUSE]
+
+[JAMIE]
+Now let's cover keyboard shortcuts, because this is one of those topics where people often memorize too many at once.
+
+[ALEX]
+Yes. Start with the ones that matter every day. Codespaces uses standard VS Code shortcuts.
+
+For navigation: Control Shift P opens the Command Palette. Control P opens Quick Open so you can search files by name. Control backtick toggles the integrated terminal. Control Shift E opens Explorer. Control Shift G opens Source Control. Control Shift X opens Extensions. And Control B toggles the sidebar.
+
+[JAMIE]
+That's already a solid survival kit.
+
+[ALEX]
+It is. For editing: Control Shift K deletes the current line. Alt Up Arrow or Alt Down Arrow moves a line up or down. Control slash toggles a line comment. Control G jumps to a line number. And F8 moves to the next error or issue.
+
+[JAMIE]
+Even from the partial source, that one is important enough to say plainly: F8 helps you move through problems.
+
+[ALEX]
+Exactly. It's a very useful shortcut during debugging or when fixing linter errors.
+
+[JAMIE]
+What about source control shortcuts in the Codespaces context?
+
+[ALEX]
+The key idea is that the Source Control panel works the same way it does in VS Code generally. Learners should know how to open it with Control Shift G, review changed files, stage changes, write a commit message, and commit. Even if you rely on menu navigation rather than memorizing every shortcut, the workflow is consistent.
+
+[JAMIE]
+So if someone already learned source control in VS Code, they can transfer that knowledge directly.
+
+[ALEX]
+Yes. Codespaces is meant to reduce surprises, not add them.
+
+[PAUSE]
+
+[JAMIE]
+Let's talk maintenance. Once you've created a Codespace, what does it mean to manage it?
+
+[ALEX]
+Three common actions are stopping it, deleting it, and resuming it.
+
+Stopping a Codespace means shutting down the running cloud machine without necessarily destroying the environment. That's useful when you're done for now and want to preserve the workspace while not continuing to use compute time.
+
+Deleting a Codespace removes that Codespace environment entirely. That's a much bigger action.
+
+Resuming a Codespace means reopening one you've used before and continuing where you left off.
+
+[JAMIE]
+This sounds like a place where beginners can make an expensive mistake, conceptually or literally.
+
+[ALEX]
+Yes, especially confusing stop with delete. Stopping is like putting the workspace to sleep. Deleting is more final. Before deleting, make sure you've pushed important commits to GitHub.
+
+[JAMIE]
+And where do learners usually do these actions?
+
+[ALEX]
+Often from the Codespaces dashboard or related GitHub interface controls. The important conceptual model is that a Codespace is a managed cloud environment you can reopen later, not just a one-time browser tab.
+
+[PAUSE]
+
+[JAMIE]
+Now, dotfiles and persistent configuration. This is one of those topics that sounds advanced, but it matters a lot for accessibility.
+
+[ALEX]
+Absolutely. Dotfiles are your personal shell and environment configuration files, and in the Codespaces world they let you carry forward custom setup from one Codespace to another. That can include shell aliases, prompt customization, scripts, and settings that make your environment more usable.
+
+[JAMIE]
+So if a learner has accessibility-friendly terminal preferences, useful aliases, or startup scripts, those can become part of a repeatable environment.
+
+[ALEX]
+Exactly. Persistent configuration matters because the more predictable your environment is, the less cognitive load you spend re-learning where things are or re-enabling tools every time.
+
+[JAMIE]
+And paired with VS Code settings sync, that can make the cloud environment feel much closer to your own machine.
+
+[ALEX]
+Yes. Your editor settings and your shell environment can work together to make Codespaces feel stable and personalized.
+
+[PAUSE]
+
+[JAMIE]
+Earlier you hinted at the difference between Codespaces and github dot dev. Let's really unpack that.
+
+[ALEX]
+Great idea. GitHub dot dev is a lightweight browser editor experience. It's fast and convenient for quick edits, browsing files, and making simple changes. Codespaces, by contrast, provisions a full virtual machine with terminal access and the ability to run code.
+
+[JAMIE]
+So the practical question is not which one is better, but which one matches the task.
+
+[ALEX]
+Exactly. If you just need to inspect files or make a quick edit, github dot dev may be enough. If you need to run tests, install dependencies, use a terminal, or work in a complete reproducible development environment, use Codespaces.
+
+[JAMIE]
+Can we do another quick chooser for different learners?
+
+[ALEX]
+Sure. If you need the simplest no-setup editing experience and don't need a terminal, github dot dev can be a good quick option. If you need full accessibility features in a complete VS Code environment, want consistency across learners, or need to execute code, Codespaces is the stronger choice.
+
+For screen reader users in particular, local VS Code connected to Codespaces is often the most familiar path when browser limitations or extension availability become frustrating.
+
+[PAUSE]
+
+[JAMIE]
+Let's finish with troubleshooting, because that's where learners often need the most reassurance.
+
+[ALEX]
+Absolutely.
+
+[JAMIE]
+What if the Codespace takes a long time to open?
+
+[ALEX]
+Provisioning can take a little time, especially the first time or when demand is higher. If it feels unusually slow, wait a bit, then refresh carefully or check the Codespaces dashboard. Also remember that larger machine types or more complex repository setup can add time. Slow opening does not necessarily mean failure.
+
+[JAMIE]
+What if the screen reader stops reading after switching to the terminal?
+
+[ALEX]
+That's a common mode issue. In NVDA, switch to Browse Mode to review terminal output, then back to Focus Mode to type. If the terminal itself is awkward, use Accessible View with Alt F2 while the terminal has focus. The problem is often not that reading is impossible, but that the current mode is wrong for the task.
+
+[JAMIE]
+What if audio cues are not working in the browser?
+
+[ALEX]
+Check VS Code settings for audio cues, and remember that browser permissions and audio behavior can differ from desktop apps. Try listing audio cues from the Command Palette, verify they're enabled, and consider using Chrome or Edge if your current browser is inconsistent.
+
+[JAMIE]
+What if extensions I rely on locally are not available?
+
+[ALEX]
+That's one of the main reasons to connect the Codespace to local VS Code desktop instead of relying only on the browser interface. The cloud machine can stay the same while the local desktop app gives you broader extension support.
+
+[JAMIE]
+Now the painful one: I accidentally deleted my Codespace before pushing.
+
+[ALEX]
+If changes were never committed and pushed, recovery may be difficult or impossible. That's why a good habit is to commit and push regularly, especially before deleting or making major environment changes. Stopping a Codespace is safer when you're unsure. Deleting should be deliberate.
+
+[JAMIE]
+And finally, my changes are not showing in GitHub after committing.
+
+[ALEX]
+A local commit inside the Codespace is not the same as pushing to GitHub. Check whether you actually pushed the branch. Also verify which branch you're on and whether the commit happened in the repository you expected. Many "missing changes" problems are really "committed locally but not pushed" or "pushed to a different branch."
+
+[PAUSE]
+
+[JAMIE]
+Before we close, can you give listeners the big picture?
+
+[ALEX]
+Yes. GitHub Codespaces gives you a full VS Code development environment running in the cloud, with strong accessibility benefits: less local setup, more consistent workshop environments, support for screen reader optimized mode, audio cues, terminal accessibility features, and the option to connect through local VS Code for an even more familiar experience.
+
+Choose the browser version when convenience matters, choose local VS Code connection when you want your established desktop workflow, use the default machine size unless you truly need more power, and treat stop, resume, and delete as different actions with different consequences.
+
+[JAMIE]
+And if you're deciding between quick editing and full development, remember: github dot dev is the quick editor, Codespaces is the full environment.
+
+[ALEX]
+Exactly. And if you want the most trustworthy information as these tools evolve, GitHub Docs on Codespaces is the authoritative source, with GitHub Changelog and VS Code documentation also useful for updates and related accessibility behavior.
+
+[JAMIE]
+That's a great place to end. Thanks, everyone.

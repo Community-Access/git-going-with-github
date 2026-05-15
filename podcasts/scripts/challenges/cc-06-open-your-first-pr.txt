@@ -1,34 +1,34 @@
-[ALEX]
-Welcome back. Today we’re working with pull requests, and for a lot of learners, this is the moment GitHub starts to feel real. A pull request is where a private branch change becomes a proposed contribution.
+﻿[ALEX]
+Welcome back. Today weâ€™re working with pull requests, and for a lot of learners, this is the moment GitHub starts to feel real. A pull request is where a private branch change becomes a proposed contribution.
 
 [JAMIE]
-And for some people, it’s also where everything suddenly feels more complicated. There’s a branch, an issue, a form, checks, comments, tabs, diffs. So can we frame this simply before we go deep?
+And for some people, itâ€™s also where everything suddenly feels more complicated. Thereâ€™s a branch, an issue, a form, checks, comments, tabs, diffs. So can we frame this simply before we go deep?
 
 [ALEX]
 Absolutely. Think of the workflow as a short chain. First, you make a focused change on a branch. Then you open a pull request from that branch into `main`. In the pull request description, you connect the change to the reason by linking the issue, usually with text like `Closes #12`. Then GitHub and, sometimes, repository bots run checks. Reviewers read the description, inspect the diff, maybe comment, and eventually someone merges it.
 
 [JAMIE]
-So the pull request is not just “here’s my code.” It’s also “here’s why this exists.”
+So the pull request is not just â€œhereâ€™s my code.â€ Itâ€™s also â€œhereâ€™s why this exists.â€
 
 [ALEX]
-Exactly. And that issue linkage matters. This chapter’s challenge is specifically about opening your first PR from your branch to `main` and linking it to the issue you filed earlier. That connection is one of GitHub’s most powerful workflow features.
+Exactly. And that issue linkage matters. This chapterâ€™s challenge is specifically about opening your first PR from your branch to `main` and linking it to the issue you filed earlier. That connection is one of GitHubâ€™s most powerful workflow features.
 
 [PAUSE]
 
 [ALEX]
-Before the hands-on part, a few accessibility and setup notes matter. This lesson is built for keyboard and screen reader workflows. GitHub’s pull request interface is usable, but it’s much easier if you understand landmarks, headings, and when to switch between reading and typing modes.
+Before the hands-on part, a few accessibility and setup notes matter. This lesson is built for keyboard and screen reader workflows. GitHubâ€™s pull request interface is usable, but itâ€™s much easier if you understand landmarks, headings, and when to switch between reading and typing modes.
 
 [JAMIE]
-Let’s make that concrete for NVDA users.
+Letâ€™s make that concrete for NVDA users.
 
 [ALEX]
-For NVDA, stay in Browse Mode for reading conversation threads, jumping by heading, moving through landmarks, and reviewing diffs. Switch to Focus Mode with `NVDA+Space` only when you need to type in an edit field, search box, or comment field. Then switch back to Browse Mode when you’re done typing. Also, maximizing the browser window often makes landmark layout more consistent.
+For NVDA, stay in Browse Mode for reading conversation threads, jumping by heading, moving through landmarks, and reviewing diffs. Switch to Focus Mode with `NVDA+Space` only when you need to type in an edit field, search box, or comment field. Then switch back to Browse Mode when youâ€™re done typing. Also, maximizing the browser window often makes landmark layout more consistent.
 
 [JAMIE]
-And there was also a note about GitHub’s newer Files Changed experience, right?
+And there was also a note about GitHubâ€™s newer Files Changed experience, right?
 
 [ALEX]
-Yes. The improved Files Changed interface adds better ARIA structure for the file tree and diff navigation. Depending on the account, it may already be enabled automatically. If someone wants to verify, they can open the GitHub user menu, look for Feature Preview, and check whether the New Files Changed Experience is enabled. If it’s missing from the preview list entirely, that usually means it has already become the standard interface.
+Yes. The improved Files Changed interface adds better ARIA structure for the file tree and diff navigation. Depending on the account, it may already be enabled automatically. If someone wants to verify, they can open the GitHub user menu, look for Feature Preview, and check whether the New Files Changed Experience is enabled. If itâ€™s missing from the preview list entirely, that usually means it has already become the standard interface.
 
 [JAMIE]
 That matters because the diff is where many screen reader users either feel empowered or lost.
@@ -45,7 +45,7 @@ This chapter is also the first PR-validated chapter in the workshop flow. The pa
 So not a giant feature. Not ten edits. One focused change.
 
 [ALEX]
-Right. The workshop recommendation is three short challenges, each designed to take under about ten minutes. The evidence of completion is not just that you changed a file. It’s the PR metadata, the issue linkage, and the check results.
+Right. The workshop recommendation is three short challenges, each designed to take under about ten minutes. The evidence of completion is not just that you changed a file. Itâ€™s the PR metadata, the issue linkage, and the check results.
 
 [JAMIE]
 What are the three challenge steps?
@@ -62,27 +62,27 @@ Yes. If you use the CLI, keep a few principles in mind. Check your current branc
 [PAUSE]
 
 [JAMIE]
-Let’s talk branch naming, because beginners often get tangled there.
+Letâ€™s talk branch naming, because beginners often get tangled there.
 
 [ALEX]
 Good place to pause. In this workshop, beginners are encouraged to use the web editor. When you edit on GitHub and choose to propose changes, GitHub can create the branch for you automatically. A suggested naming pattern is something like `fix/yourname-issue42`.
 
 [JAMIE]
-And there’s an important warning: don’t just keep piling unrelated work onto the long-lived learning branch unless the facilitator explicitly tells you to.
+And thereâ€™s an important warning: donâ€™t just keep piling unrelated work onto the long-lived learning branch unless the facilitator explicitly tells you to.
 
 [ALEX]
-Exactly. For this chapter, short-lived feature branches are better because they teach the pull request loop cleanly. If you’re working locally instead of in the web editor, you’d create that branch yourself from `main`, for example with `git checkout -b fix/yourname-issue42`.
+Exactly. For this chapter, short-lived feature branches are better because they teach the pull request loop cleanly. If youâ€™re working locally instead of in the web editor, youâ€™d create that branch yourself from `main`, for example with `git checkout -b fix/yourname-issue42`.
 
 [JAMIE]
 So there are two paths: web editor for the gentle on-ramp, local Git for people already comfortable working in a clone.
 
 [ALEX]
-That’s right.
+Thatâ€™s right.
 
 [PAUSE]
 
 [ALEX]
-Now let’s walk the first challenge path in detail. The goal is to edit one practice file and save that change on a new branch.
+Now letâ€™s walk the first challenge path in detail. The goal is to edit one practice file and save that change on a new branch.
 
 [JAMIE]
 And the learner begins in their Learning Room repository, using GitHub.com.
@@ -97,13 +97,13 @@ What kinds of files are they likely to see?
 Three typical practice files are used. `docs/welcome.md`, which has missing content marked with TODO placeholders. `docs/keyboard-shortcuts.md`, which contains intentionally incorrect shortcut references. And `docs/setup-guide.md`, which may contain broken links or incomplete instructions.
 
 [JAMIE]
-So the learner is not inventing a project from scratch. They’re practicing realistic maintenance work.
+So the learner is not inventing a project from scratch. Theyâ€™re practicing realistic maintenance work.
 
 [ALEX]
 Exactly. Very small, concrete repairs.
 
 [JAMIE]
-What’s the actual editing path?
+Whatâ€™s the actual editing path?
 
 [ALEX]
 Navigate to the specified file, either through the repository file tree or with the Go to file shortcut, `T`. Open the file. Then activate the Edit this file button, usually the pencil icon.
@@ -118,7 +118,7 @@ NVDA or JAWS users can move by buttons, often with `B`, until they hear Edit thi
 Then they make exactly the requested change.
 
 [ALEX]
-Yes. If the issue points to a TODO section, replace the placeholder with the requested content. If it’s a broken link, correct the URL. If it’s a shortcut error, fix the incorrect shortcut entry. Keep the scope small. Edit only what the issue asks for.
+Yes. If the issue points to a TODO section, replace the placeholder with the requested content. If itâ€™s a broken link, correct the URL. If itâ€™s a shortcut error, fix the incorrect shortcut entry. Keep the scope small. Edit only what the issue asks for.
 
 [PAUSE]
 
@@ -132,7 +132,7 @@ And then choose the option that creates a new branch and starts a pull request.
 Right. Then activate Propose changes. At that point, GitHub saves the change on the new branch and usually opens the page for creating a pull request.
 
 [JAMIE]
-So the success condition for that first part is not “I typed some words.” It’s “GitHub has my change on a branch and has taken me to the PR flow.”
+So the success condition for that first part is not â€œI typed some words.â€ Itâ€™s â€œGitHub has my change on a branch and has taken me to the PR flow.â€
 
 [ALEX]
 Exactly.
@@ -140,13 +140,13 @@ Exactly.
 [PAUSE]
 
 [JAMIE]
-Now we’re on the open pull request page. What should the learner focus on first?
+Now weâ€™re on the open pull request page. What should the learner focus on first?
 
 [ALEX]
 Three things: the title, the body, and the branch relationship. The base branch should be `main`. The compare branch should be the feature branch they just created.
 
 [JAMIE]
-Let’s talk title first. What makes a good PR title?
+Letâ€™s talk title first. What makes a good PR title?
 
 [ALEX]
 A good title clearly describes the change so that someone scanning a list understands what happened without opening the PR. It should be short enough to scan, but specific enough to be meaningful.
@@ -155,10 +155,10 @@ A good title clearly describes the change so that someone scanning a list unders
 Can you give examples?
 
 [ALEX]
-Sure. “Complete the Who Can Contribute section in welcome.md.” Or “Fix broken accessibility settings link in setup-guide.md.” Or “Correct NVDA modifier key in keyboard-shortcuts.md.”
+Sure. â€œComplete the Who Can Contribute section in welcome.md.â€ Or â€œFix broken accessibility settings link in setup-guide.md.â€ Or â€œCorrect NVDA modifier key in keyboard-shortcuts.md.â€
 
 [JAMIE]
-So better than something vague like “update file” or “changes.”
+So better than something vague like â€œupdate fileâ€ or â€œchanges.â€
 
 [ALEX]
 Much better.
@@ -179,10 +179,10 @@ One sentence explaining why it matters.
 Closes #XX
 
 [JAMIE]
-That’s refreshingly small.
+Thatâ€™s refreshingly small.
 
 [ALEX]
-It is. And it’s enough to teach the important habit: every change should be connected to a reason.
+It is. And itâ€™s enough to teach the important habit: every change should be connected to a reason.
 
 [PAUSE]
 
@@ -190,7 +190,7 @@ It is. And it’s enough to teach the important habit: every change should be co
 Can we hear a full example?
 
 [ALEX]
-Certainly. Imagine a PR titled: “Fix TODO: add workshop schedule link to welcome.md.”
+Certainly. Imagine a PR titled: â€œFix TODO: add workshop schedule link to welcome.md.â€
 
 Then the body might say:
 
@@ -203,10 +203,10 @@ Students need a working link to find session times. The TODO was a known gap fil
 Closes #3
 
 [JAMIE]
-That’s nice because a reviewer can immediately understand the file, the exact type of fix, and the reason.
+Thatâ€™s nice because a reviewer can immediately understand the file, the exact type of fix, and the reason.
 
 [ALEX]
-Exactly. It’s clear, scannable, and linked.
+Exactly. Itâ€™s clear, scannable, and linked.
 
 [JAMIE]
 And that `Closes #3` line is doing real work.
@@ -229,7 +229,7 @@ Are learners limited to the exact word `Closes`?
 No. `Closes #3`, `Fixes #3`, and `Resolves #3` all work the same way for issue-linking in this context.
 
 [JAMIE]
-So if someone writes `Fixes #12` instead of `Closes #12`, they’re still fine.
+So if someone writes `Fixes #12` instead of `Closes #12`, theyâ€™re still fine.
 
 [ALEX]
 Yes. The main learning objective is the relationship: a PR should reference the issue it resolves.
@@ -255,13 +255,13 @@ Usually within about thirty seconds. The Conversation tab is often where the fir
 What kinds of things are checked?
 
 [ALEX]
-This workshop’s validation bot checks for issue linkage, like the presence of `Closes #XX`. It checks whether the description is detailed enough, not just a one-word note. It verifies that the changed files are in the expected learning-room area. And it may check accessibility-related quality, such as heading hierarchy, descriptive link text, and valid alt text.
+This workshopâ€™s validation bot checks for issue linkage, like the presence of `Closes #XX`. It checks whether the description is detailed enough, not just a one-word note. It verifies that the changed files are in the expected learning-room area. And it may check accessibility-related quality, such as heading hierarchy, descriptive link text, and valid alt text.
 
 [JAMIE]
 So the PR is not just judged on whether it exists, but also on whether it communicates and follows accessibility expectations.
 
 [ALEX]
-Exactly. That’s an important part of contribution quality.
+Exactly. Thatâ€™s an important part of contribution quality.
 
 [JAMIE]
 And if checks fail?
@@ -270,7 +270,7 @@ And if checks fail?
 Read the bot feedback carefully. Make the needed corrections on the same branch. Push or commit the fix, depending on your workflow, and GitHub reruns the checks. If the repository uses automated checks, a green checkmark appears once they pass.
 
 [JAMIE]
-So passing checks is not a side quest. It’s part of the core PR loop.
+So passing checks is not a side quest. Itâ€™s part of the core PR loop.
 
 [ALEX]
 Yes. Open PR, read feedback, revise, recheck.
@@ -281,7 +281,7 @@ Yes. Open PR, read feedback, revise, recheck.
 Before we broaden the lesson, can we explicitly name what matters most for Challenge 6?
 
 [ALEX]
-Certainly. If your PR has a clear title, a body that explains what changed and why, and a linked issue reference such as `Closes #number`, then you have achieved the essential learning goal. The point is connecting a change to a reason through GitHub’s linking system.
+Certainly. If your PR has a clear title, a body that explains what changed and why, and a linked issue reference such as `Closes #number`, then you have achieved the essential learning goal. The point is connecting a change to a reason through GitHubâ€™s linking system.
 
 [JAMIE]
 And there was also an evidence requirement.
@@ -293,7 +293,7 @@ Yes. Learners are asked to paste the URL of their pull request as evidence, and 
 Plus a peer simulation step.
 
 [ALEX]
-Right. Find the Peer Simulation PR about improving contribution guidance and leave an encouraging comment. If you have access to a real buddy’s PR, you can comment there too. The full review workflow comes later, but even now, leaving a constructive comment helps learners enter the social rhythm of pull requests.
+Right. Find the Peer Simulation PR about improving contribution guidance and leave an encouraging comment. If you have access to a real buddyâ€™s PR, you can comment there too. The full review workflow comes later, but even now, leaving a constructive comment helps learners enter the social rhythm of pull requests.
 
 [PAUSE]
 
@@ -301,10 +301,10 @@ Right. Find the Peer Simulation PR about improving contribution guidance and lea
 And if someone gets stuck during PR creation, there were a few very practical troubleshooting notes.
 
 [ALEX]
-Yes. If you can’t find the New pull request button, make sure you are on the Pull requests tab; it’s usually near the top right. If GitHub says, “There isn’t anything to compare,” your branch may not actually contain a commit that differs from `main`, or you may have committed on the wrong branch. If you forgot `Closes #XX`, edit the description after the PR is created. And if you want to compare your work to a model, use the solution reference.
+Yes. If you canâ€™t find the New pull request button, make sure you are on the Pull requests tab; itâ€™s usually near the top right. If GitHub says, â€œThere isnâ€™t anything to compare,â€ your branch may not actually contain a commit that differs from `main`, or you may have committed on the wrong branch. If you forgot `Closes #XX`, edit the description after the PR is created. And if you want to compare your work to a model, use the solution reference.
 
 [JAMIE]
-That’s reassuring. Most early PR problems are not mysterious, just workflow mismatches.
+Thatâ€™s reassuring. Most early PR problems are not mysterious, just workflow mismatches.
 
 [ALEX]
 Exactly.
@@ -312,7 +312,7 @@ Exactly.
 [PAUSE]
 
 [JAMIE]
-Let’s widen the lens. What is a pull request, in plain language?
+Letâ€™s widen the lens. What is a pull request, in plain language?
 
 [ALEX]
 A pull request is a proposal to merge changes from one branch into another branch. It gives collaborators a place to discuss the change, inspect the diff, run checks, request revisions, and eventually merge. It is both a technical object and a conversation space.
@@ -321,7 +321,7 @@ A pull request is a proposal to merge changes from one branch into another branc
 So it includes metadata, discussion, and code comparison.
 
 [ALEX]
-Yes. And that’s why learning to navigate it accessibly matters.
+Yes. And thatâ€™s why learning to navigate it accessibly matters.
 
 [PAUSE]
 
@@ -352,7 +352,7 @@ A list of open, closed, or merged pull requests, each with a title, author, stat
 Once a learner opens a specific PR, what should they expect on the page?
 
 [ALEX]
-The PR page has several major areas. There’s header information with the title and branch relationship. There’s a tab bar, often including Conversation, Commits, Checks, and Files changed. The Conversation tab contains the description, timeline events, bot comments, and review discussion. Other tabs let you inspect commits, CI details, and the diff itself.
+The PR page has several major areas. Thereâ€™s header information with the title and branch relationship. Thereâ€™s a tab bar, often including Conversation, Commits, Checks, and Files changed. The Conversation tab contains the description, timeline events, bot comments, and review discussion. Other tabs let you inspect commits, CI details, and the diff itself.
 
 [JAMIE]
 So if someone feels overwhelmed, a good strategy is to think: first read the description, then the status, then comments, then the actual changed files.
@@ -363,7 +363,7 @@ Exactly. That sequence works well.
 [PAUSE]
 
 [ALEX]
-Let’s go tab by tab.
+Letâ€™s go tab by tab.
 
 [JAMIE]
 Start with Conversation.
@@ -398,7 +398,7 @@ And the Checks tab?
 The Checks tab is where you inspect automated validation results in more detail. If a status line says something failed, the Checks tab often contains the actionable information: what job ran, what step failed, and sometimes a log or annotation.
 
 [JAMIE]
-So for accessibility learners, the principle is: don’t stop at “failed.” Open the area that tells you why.
+So for accessibility learners, the principle is: donâ€™t stop at â€œfailed.â€ Open the area that tells you why.
 
 [ALEX]
 Exactly. Treat failure output as guidance, not as a verdict on your ability.
@@ -409,10 +409,10 @@ Exactly. Treat failure output as guidance, not as a verdict on your ability.
 Now the big one: Files changed.
 
 [ALEX]
-Yes, the Files changed tab is where you inspect the diff. GitHub’s newer experience provides a left-side file tree and a main diff panel.
+Yes, the Files changed tab is where you inspect the diff. GitHubâ€™s newer experience provides a left-side file tree and a main diff panel.
 
 [JAMIE]
-Let’s describe both.
+Letâ€™s describe both.
 
 [ALEX]
 The file tree lists changed files, helping you jump directly to a file of interest. The diff panel shows additions, deletions, and context lines for the selected file.
@@ -424,16 +424,16 @@ How are lines in a diff read conceptually?
 A removed line is read as a deletion, often marked with a minus. An added line is read as an addition, often marked with a plus. Context lines are unchanged lines shown around the edit to help you understand location.
 
 [JAMIE]
-So a diff is not the whole file. It’s a focused representation of what changed, with just enough surroundings to orient you.
+So a diff is not the whole file. Itâ€™s a focused representation of what changed, with just enough surroundings to orient you.
 
 [ALEX]
 Exactly.
 
 [JAMIE]
-What’s a good screen reader strategy for this tab?
+Whatâ€™s a good screen reader strategy for this tab?
 
 [ALEX]
-Use headings and landmarks aggressively. Jump among changed file headings. Read the file title, then move into the diff content. If your screen reader announces line-level controls, listen for whether a line is added, removed, or unchanged context. Move deliberately. Don’t try to ingest the entire diff in one sweep.
+Use headings and landmarks aggressively. Jump among changed file headings. Read the file title, then move into the diff content. If your screen reader announces line-level controls, listen for whether a line is added, removed, or unchanged context. Move deliberately. Donâ€™t try to ingest the entire diff in one sweep.
 
 [JAMIE]
 And inline comments?
@@ -450,7 +450,7 @@ Yes. Part of reading the Files changed tab is noticing comments embedded near th
 [PAUSE]
 
 [JAMIE]
-Let’s return to opening a PR, but now as a broader skill rather than just the workshop challenge.
+Letâ€™s return to opening a PR, but now as a broader skill rather than just the workshop challenge.
 
 [ALEX]
 Good idea. A PR can begin from the web editor workflow, where you edit a file on GitHub and then propose changes. It can also begin from a fork or a feature branch created locally. In either case, the important form fields are the title and description.
@@ -479,7 +479,7 @@ Exactly. Start with what and why. Add testing details and evidence as the work b
 Can we talk about draft pull requests?
 
 [ALEX]
-Yes. A draft PR is useful when you want to share work early but are not yet ready for formal review or merge. It signals “please don’t treat this as finished.”
+Yes. A draft PR is useful when you want to share work early but are not yet ready for formal review or merge. It signals â€œplease donâ€™t treat this as finished.â€
 
 [JAMIE]
 When should someone use a draft?
@@ -491,16 +491,16 @@ When the implementation is incomplete, when you want early feedback on direction
 What does a draft PR do differently?
 
 [ALEX]
-It changes the PR state so reviewers know it is not ready for approval in the usual way. It may limit merge actions until it is marked ready for review. It’s a communication tool as much as a technical status.
+It changes the PR state so reviewers know it is not ready for approval in the usual way. It may limit merge actions until it is marked ready for review. Itâ€™s a communication tool as much as a technical status.
 
 [JAMIE]
 And later, the author can mark it ready for review.
 
 [ALEX]
-Exactly. There is a control to convert draft to ready. There’s also typically a path to convert an open PR back into draft if needed. In CLI-oriented workflows, you can also create a draft PR, check whether a PR is in draft state, and list only draft PRs.
+Exactly. There is a control to convert draft to ready. Thereâ€™s also typically a path to convert an open PR back into draft if needed. In CLI-oriented workflows, you can also create a draft PR, check whether a PR is in draft state, and list only draft PRs.
 
 [JAMIE]
-So draft is not a dead end. It’s part of the lifecycle.
+So draft is not a dead end. Itâ€™s part of the lifecycle.
 
 [ALEX]
 Right.
@@ -514,7 +514,7 @@ What about requesting reviewers?
 Requesting reviewers formally asks specific collaborators to examine the PR. It helps route work and makes expectations clearer.
 
 [JAMIE]
-And when you’re the reviewer, you need to know how to submit a review, not just a comment.
+And when youâ€™re the reviewer, you need to know how to submit a review, not just a comment.
 
 [ALEX]
 Yes. A review can contain line comments plus an overall verdict. Typically the choices are approve, request changes, or leave a comment-only review with no verdict.
@@ -548,7 +548,7 @@ Exactly.
 [PAUSE]
 
 [JAMIE]
-I’m glad this chapter also covers suggested changes, because that can seem mysterious at first.
+Iâ€™m glad this chapter also covers suggested changes, because that can seem mysterious at first.
 
 [ALEX]
 Suggested changes are structured code or text replacements that a reviewer can propose directly in a review comment. As a reviewer, you can insert a suggestion for a specific change instead of just describing it in prose.
@@ -568,13 +568,13 @@ Use a suggestion when the fix is small, concrete, and easy to express exactly. U
 [PAUSE]
 
 [JAMIE]
-Now let’s switch perspectives again. Suppose someone is a maintainer. What merge options should they understand?
+Now letâ€™s switch perspectives again. Suppose someone is a maintainer. What merge options should they understand?
 
 [ALEX]
-Three common options are merge commit, squash and merge, and rebase and merge. A merge commit preserves the branch history as a distinct merge event. Squash and merge combines the PR’s commits into one commit on the target branch. Rebase and merge reapplies commits onto the target branch without a merge commit.
+Three common options are merge commit, squash and merge, and rebase and merge. A merge commit preserves the branch history as a distinct merge event. Squash and merge combines the PRâ€™s commits into one commit on the target branch. Rebase and merge reapplies commits onto the target branch without a merge commit.
 
 [JAMIE]
-And there’s also the choice to delete the branch afterward.
+And thereâ€™s also the choice to delete the branch afterward.
 
 [ALEX]
 Yes. Deleting the branch after merging helps keep the repository tidy, especially for short-lived feature branches.
@@ -583,7 +583,7 @@ Yes. Deleting the branch after merging helps keep the repository tidy, especiall
 And auto-merge?
 
 [ALEX]
-Auto-merge lets a PR merge automatically once required conditions are met, such as approvals and passing checks. It’s useful when everything is ready except a pending check and you do not want to wait around watching the page.
+Auto-merge lets a PR merge automatically once required conditions are met, such as approvals and passing checks. Itâ€™s useful when everything is ready except a pending check and you do not want to wait around watching the page.
 
 [JAMIE]
 How does a user enable it?
@@ -617,19 +617,19 @@ Exactly.
 Can we walk through a few practical scenarios learners may face?
 
 [ALEX]
-Certainly. Scenario one: “I want to review an assigned PR.” Start at notifications or the PR list, open the PR, read the description first, inspect checks, then review the Files changed tab. Leave inline comments where needed, then submit a review.
+Certainly. Scenario one: â€œI want to review an assigned PR.â€ Start at notifications or the PR list, open the PR, read the description first, inspect checks, then review the Files changed tab. Leave inline comments where needed, then submit a review.
 
 [JAMIE]
-Scenario two: “I want to respond to review feedback on my PR.”
+Scenario two: â€œI want to respond to review feedback on my PR.â€
 
 [ALEX]
 Open the PR conversation and diff comments. Read each thread fully. Make changes on the same branch. Reply to comments if explanation helps. Then push updates, let checks rerun, and resolve conversations when appropriate.
 
 [JAMIE]
-Scenario three: “My PR has a merge conflict.”
+Scenario three: â€œMy PR has a merge conflict.â€
 
 [ALEX]
-That means the branch can no longer merge cleanly into the base branch. The author needs to update the branch, often by bringing it up to date with `main` and resolving conflicts either locally or using GitHub’s conflict tools if available. The key is to read carefully and avoid accidental content loss.
+That means the branch can no longer merge cleanly into the base branch. The author needs to update the branch, often by bringing it up to date with `main` and resolving conflicts either locally or using GitHubâ€™s conflict tools if available. The key is to read carefully and avoid accidental content loss.
 
 [PAUSE]
 
@@ -661,26 +661,26 @@ A summary, changes made, related issues, testing, and a checklist. For example: 
 And common description mistakes?
 
 [ALEX]
-Being too vague, omitting the why, burying the issue number in a wall of text, or claiming testing that wasn’t actually done.
+Being too vague, omitting the why, burying the issue number in a wall of text, or claiming testing that wasnâ€™t actually done.
 
 [PAUSE]
 
 [JAMIE]
-I want to come back to the challenge’s solution reference one more time, because it’s a neat model.
+I want to come back to the challengeâ€™s solution reference one more time, because itâ€™s a neat model.
 
 [ALEX]
 It is. The solution shows a complete PR with a clear title, a concise body, and linked issue syntax. The key elements are simple but powerful: a title that says what happened, a body that explains what and why, an issue link like `Closes #N`, and attention to automated checks.
 
 [JAMIE]
-And if the checks are green, that signals the repository’s automated validation agrees the PR meets the baseline expectations.
+And if the checks are green, that signals the repositoryâ€™s automated validation agrees the PR meets the baseline expectations.
 
 [ALEX]
-Exactly. If checks fail, read the bot’s feedback and revise. That feedback loop is part of the lesson, not evidence that you failed the lesson.
+Exactly. If checks fail, read the botâ€™s feedback and revise. That feedback loop is part of the lesson, not evidence that you failed the lesson.
 
 [PAUSE]
 
 [JAMIE]
-There’s also a local Git alternative in this chapter, and I think it’s worth making that explicit for learners who already cloned the repo.
+Thereâ€™s also a local Git alternative in this chapter, and I think itâ€™s worth making that explicit for learners who already cloned the repo.
 
 [ALEX]
 Certainly. The full local workflow is: start from `main`, create a feature branch, make the small edit locally, commit it, push the branch to GitHub, and then open a pull request from that branch into `main`. After that, the rest of the workflow is the same: fill out the PR form, link the issue, watch checks, respond to feedback.
@@ -694,10 +694,10 @@ Exactly right.
 [PAUSE]
 
 [JAMIE]
-There’s also a nice exercise in this chapter: reading a real pull request.
+Thereâ€™s also a nice exercise in this chapter: reading a real pull request.
 
 [ALEX]
-Yes, and it’s excellent practice. Open a recent PR. Read the description first and identify which file changed and what challenge it was solving. Check whether the description references `Closes #XX`. Then read the conversation and bot feedback. Finally, open Files changed and inspect the actual additions and deletions.
+Yes, and itâ€™s excellent practice. Open a recent PR. Read the description first and identify which file changed and what challenge it was solving. Check whether the description references `Closes #XX`. Then read the conversation and bot feedback. Finally, open Files changed and inspect the actual additions and deletions.
 
 [JAMIE]
 That sequence teaches people to follow a PR from intention to discussion to implementation.
@@ -711,7 +711,7 @@ Exactly. And for screen reader users, it reinforces that headings and landmarks 
 Before we wrap, I want to mention one philosophical thread I noticed. This chapter frames pull requests as preparation not just for human collaboration, but for reviewing AI-generated changes too.
 
 [ALEX]
-Yes. That’s an important idea. AI systems may generate code or documentation, but responsible workflows still route those changes through pull requests. The PR is where humans inspect, question, verify, and judge. An agent can draft. A human supplies context and final judgment.
+Yes. Thatâ€™s an important idea. AI systems may generate code or documentation, but responsible workflows still route those changes through pull requests. The PR is where humans inspect, question, verify, and judge. An agent can draft. A human supplies context and final judgment.
 
 [JAMIE]
 So learning to edit Markdown cleanly, link issues correctly, read diffs, and respond to checks is future-proof.
@@ -722,7 +722,7 @@ Very much so.
 [PAUSE]
 
 [ALEX]
-Let’s close with a compact review. A pull request proposes merging a branch into another branch, usually into `main`. For this chapter’s challenge, you make one small change, open a PR, and include a linked issue reference like `Closes #XX`. Your title should clearly describe the change. Your body should explain what changed and why. GitHub and repository checks may then validate the PR. If something fails, read the feedback, revise, and rerun.
+Letâ€™s close with a compact review. A pull request proposes merging a branch into another branch, usually into `main`. For this chapterâ€™s challenge, you make one small change, open a PR, and include a linked issue reference like `Closes #XX`. Your title should clearly describe the change. Your body should explain what changed and why. GitHub and repository checks may then validate the PR. If something fails, read the feedback, revise, and rerun.
 
 [JAMIE]
 When navigating PRs, start with the list page, then the PR page itself. Read the Conversation tab for the description, checks, and comments. Use the Commits and Checks tabs when you need deeper detail. Use the Files changed tab to inspect the diff, relying on headings, landmarks, and line status cues.
@@ -734,15 +734,15 @@ And remember the practical habits: keep PRs small, use short-lived feature branc
 Most of all, connect the change to the reason.
 
 [ALEX]
-Exactly. That’s what turns editing into contribution.
+Exactly. Thatâ€™s what turns editing into contribution.
 
 [PAUSE]
 
 [ALEX]
-If you want the current source of truth after this lesson, check GitHub Docs, the GitHub Changelog, and GitHub’s official pull request documentation and accessibility guidance. Those references change over time, and they’re the authoritative place to verify details.
+If you want the current source of truth after this lesson, check GitHub Docs, the GitHub Changelog, and GitHubâ€™s official pull request documentation and accessibility guidance. Those references change over time, and theyâ€™re the authoritative place to verify details.
 
 [JAMIE]
-And if today’s challenge is in front of you right now: go to Pull requests, choose New pull request if needed, make sure base is `main`, compare is your feature branch, write a descriptive title, add what changed, why, and `Closes #XX`, then create the PR.
+And if todayâ€™s challenge is in front of you right now: go to Pull requests, choose New pull request if needed, make sure base is `main`, compare is your feature branch, write a descriptive title, add what changed, why, and `Closes #XX`, then create the PR.
 
 [ALEX]
-You’ve got this.
+Youâ€™ve got this.

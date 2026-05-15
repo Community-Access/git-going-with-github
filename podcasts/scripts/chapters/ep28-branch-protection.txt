@@ -1,0 +1,353 @@
+﻿[ALEX]
+Welcome back. Today weâ€™re unpacking one of the most common GitHub mysteries: you open a pull request, everything looks fine, and yet the merge button is disabled.
+
+[JAMIE]
+That moment where GitHub seems to be saying, no, but not in a very friendly tone.
+
+[ALEX]
+Exactly. And the good news is that it usually is telling you why. This lesson is for contributors trying to understand why a PR is blocked, and for workshop facilitators or maintainers who need to configure these rules in practice repositories.
+
+[JAMIE]
+And since this series is built for blind and low-vision learners too, weâ€™re also going to cover how those merge requirements show up with a screen reader, what to listen for, and where the important controls live.
+
+[PAUSE]
+
+[ALEX]
+At a high level, branch protection is a quality gate for important branches, usually `main`. A branch protection rule is a set of requirements that must be satisfied before a pull request can be merged.
+
+[JAMIE]
+So this is not Git being difficult for fun. Itâ€™s there to protect the project.
+
+[ALEX]
+Right. Branch protection can require code review before changes enter the default branch. It can require automated tests to pass. It can prevent direct pushes to `main` so work has to come through pull requests. It can require your branch to be current with the latest `main`. And in some repositories, it can require commits to be signed.
+
+[JAMIE]
+So when a learner says, my PR wonâ€™t merge, one likely answer is: the repository is enforcing standards, not rejecting you personally.
+
+[ALEX]
+Well said.
+
+[JAMIE]
+Can we make this concrete for navigation? If someone is on a pull request page, where do these rules actually surface?
+
+[ALEX]
+Usually in the merge box near the bottom of the PR conversation view. For screen reader users, one practical strategy is to press End to jump to the bottom, then navigate by heading to find the merge area. The status lines just above the merge button explain whatâ€™s missing. You might hear things like, one review required, some checks havenâ€™t completed yet, or this branch is out of date.
+
+[JAMIE]
+And if the merge button is disabled or announced as unavailable, donâ€™t stop there. The explanation is usually right above it.
+
+[ALEX]
+Exactly. For low-vision users, the merge area also uses color and small status icons: green for ready, yellow for pending, red for blocked. Zooming in can help a lot, especially because buttons like Update branch or links like Show all checks can be easy to miss at high magnification if youâ€™re scanning quickly.
+
+[JAMIE]
+And for sighted users, same idea: bottom of the PR conversation tab, look above the merge button, read the checklist, expand checks if needed.
+
+[PAUSE]
+
+[ALEX]
+Letâ€™s talk through the most common branch protection rules.
+
+[JAMIE]
+First up: reviews.
+
+[ALEX]
+Required reviews are probably the most common rule. A maintainer can say that a pull request needs one or more approving reviews before it can be merged.
+
+[JAMIE]
+So if the repository says require one approving review, the merge box might literally tell me one review required.
+
+[ALEX]
+Yes. And there are a couple of details learners often miss. If a reviewer requests changes, that does not count as approval. Also, if you push new commits after approval, some repositories dismiss stale reviews automatically. That means previous approvals are withdrawn and you need a fresh approval after the latest changes.
+
+[JAMIE]
+That prevents a bad pattern where someone gets approval and then sneaks in extra changes after the review.
+
+[ALEX]
+Exactly. And if you do push a fix, itâ€™s good practice to re-request review from the original reviewer.
+
+[JAMIE]
+What about automated checks?
+
+[ALEX]
+Thatâ€™s the next big category: required status checks. These are automated workflows, often GitHub Actions, but they can also come from third-party services. The repository can require those checks to succeed before merging is allowed.
+
+[JAMIE]
+What are some example check names a learner might encounter?
+
+[ALEX]
+Things like `ci / build`, which compiles the code. `ci / test`, which runs tests. `lint`, which checks formatting or code style. `accessibility-check`, for automated accessibility scanning. `CodeQL`, for security analysis. Or something like `netlify/deploy-preview`, where a preview site has to build successfully.
+
+[JAMIE]
+And required means not optional. If a required check is failing or still running, merge is blocked.
+
+[ALEX]
+Correct.
+
+[JAMIE]
+Another one people see a lot is being out of date with the base branch.
+
+[ALEX]
+Yes. Some repositories require your branch to be up to date before merge. If new commits landed on `main` after you created your branch, the merge box may say this branch is out of date with the base branch.
+
+[JAMIE]
+And then there may be an Update branch button.
+
+[ALEX]
+Right. Clicking Update branch tells GitHub to merge current `main` into your branch. Some teams may prefer a rebase workflow instead, but that depends on project policy and your comfort level.
+
+[JAMIE]
+Then we have signed commits.
+
+[ALEX]
+If a repository requires signed commits, every commit in the PR must show as verified. That usually means GPG or SSH signing is configured correctly. If commits are unverified, the PR cannot be merged until you create signed commits instead.
+
+[JAMIE]
+And linear history?
+
+[ALEX]
+That rule means the repository wants a clean, non-branchy history. No merge commits into the protected branch. So maintainers may only allow squash merges or rebase merges.
+
+[JAMIE]
+So if I see a message that the repository requires a linear history, it usually means the eventual merge strategy must avoid a merge commit.
+
+[ALEX]
+Exactly.
+
+[JAMIE]
+And lock branch sounds even stricter.
+
+[ALEX]
+It is. A locked branch is effectively read-only. No merges go in. Maintainers might do this for archived repositories or temporary release freezes.
+
+[PAUSE]
+
+[JAMIE]
+Now, thereâ€™s a newer concept here too: rulesets.
+
+[ALEX]
+Yes. Repository rulesets are the modern evolution of branch protection. Classic branch protection still exists and is still very common, but rulesets are more flexible.
+
+[JAMIE]
+What do they add?
+
+[ALEX]
+They can apply rules at the organization level across many repositories, not just one repo and one branch. They support bypass lists, so specific users, roles, or automation accounts can be exempted. They can target branch patterns like `release/*` or `v*`. They provide violation insights, which help admins audit when rules were bypassed. And they support enforcement modes such as active, evaluate, and disabled.
+
+[JAMIE]
+Evaluate is interesting. That means log violations without actually blocking people yet.
+
+[ALEX]
+Exactly. Itâ€™s useful when an organization wants to test a policy before enforcing it.
+
+[JAMIE]
+Can you compare classic branch protection and rulesets in plain language?
+
+[ALEX]
+Classic branch protection is narrower: typically one branch in one repository, no real bypass list, active enforcement only. Rulesets are broader and more modern: multiple branches, patterns, organization-wide use, configurable bypass, and multiple enforcement modes.
+
+[JAMIE]
+But for most learners contributing to public repositories, theyâ€™ll still often encounter classic branch protection.
+
+[ALEX]
+Yes. Many repos still use it. And importantly, contributors usually do not need admin access to understand whatâ€™s happening. The merge box messages usually tell you enough.
+
+[JAMIE]
+If someone does have access and wants to inspect rulesets, where would they look?
+
+[ALEX]
+Typically in a repositoryâ€™s Insights tab under Rulesets, if visible to them, or in Settings, then Rules, then Rulesets, which is generally admin-only.
+
+[PAUSE]
+
+[ALEX]
+Letâ€™s move into diagnosis mode. Suppose your PR cannot be merged. How do you read the message and decide what to do?
+
+[JAMIE]
+Letâ€™s do the common messages one by one.
+
+[ALEX]
+If the merge area says something like one review required or two reviews required, the meaning is straightforward: you do not yet have the required number of approvals.
+
+[JAMIE]
+So what should the contributor do?
+
+[ALEX]
+Request review from the right people, often a maintainer or code owner. Check whether someone requested changes, because that can block approval. Wait for the reviewer to submit their review. If you respond by pushing new commits, re-request review afterward.
+
+[JAMIE]
+Next: some checks havenâ€™t completed yet, or some checks were not successful.
+
+[ALEX]
+That means at least one required status check is pending or failing. The next step is to expand the checks list, often through a Show all checks control, identify the failing check, and open its Details link to read the full log.
+
+[JAMIE]
+And then fix the actual problem, not the symptom.
+
+[ALEX]
+Exactly. Maybe a test failed. Maybe linting found formatting issues. Maybe the build broke. Maybe an accessibility scan found a violation. Push a new commit with the fix, and the checks usually re-run automatically.
+
+[JAMIE]
+How long should someone expect to wait?
+
+[ALEX]
+Often one to five minutes, though it varies. If checks pass on `main` but fail on your PR, that strongly suggests the issue is specific to your changes. And if a check has been stuck in progress for a long time, say over thirty minutes, the workflow runner or service may have a problem. At that point, contact the maintainer.
+
+[JAMIE]
+Next message: this branch is out of date with the base branch.
+
+[ALEX]
+That means new commits reached `main` and your branch no longer includes them. The easiest fix may be the Update branch button in the merge box. Or, if youâ€™re comfortable and the project permits it, you can update locally with fetch and rebase, then force-push carefully.
+
+[JAMIE]
+And the signed commits message?
+
+[ALEX]
+If the message says commits must have verified signatures, your commits are not signed in the required way. The fix is not usually a button on the PR page. You need to configure commit signing properly, then re-create or amend the commits so GitHub recognizes them as verified.
+
+[JAMIE]
+And then thereâ€™s the more generic message: merging is blocked.
+
+[ALEX]
+That one often means there are multiple unmet rules or a broader ruleset restriction. Read every status line in the merge box. Donâ€™t assume there is only one problem. There may be a missing review and a failing check, for example.
+
+[JAMIE]
+So the general method is: read the exact text, identify whether the blocker is people, automation, branch freshness, commit verification, or repository policy, then take the next action that matches that category.
+
+[ALEX]
+Perfect summary.
+
+[PAUSE]
+
+[JAMIE]
+Letâ€™s spend real time on accessibility and the merge box, because this is where a lot of frustration happens.
+
+[ALEX]
+Absolutely. If youâ€™re using a screen reader, start by getting to the lower part of the pull request page. Pressing End is often the fastest route. Then navigate by headings or landmarks until you reach the merge area.
+
+[JAMIE]
+What should the learner listen for once theyâ€™re there?
+
+[ALEX]
+Listen for status text before the button itself. The merge box is not just a button area. It is an explanation area. You may hear whether the PR is ready to merge, blocked, waiting on checks, or waiting on review.
+
+[JAMIE]
+Can we mention specific screen reader workflows?
+
+[ALEX]
+Yes, while keeping in mind that GitHubâ€™s interface evolves. For NVDA users, browse mode with heading navigation is often effective. Jump to the bottom, then use H to move through headings near the merge section, and arrow through the status text and controls like Show all checks, Details, Update branch, or the merge button.
+
+[JAMIE]
+And for JAWS?
+
+[ALEX]
+A similar strategy works: move to the bottom, use heading navigation or the links list and buttons list as needed, then read line by line around the merge controls. If the button is unavailable, keep reading nearby text because the explanation is usually adjacent.
+
+[JAMIE]
+So regardless of screen reader, the principle is: donâ€™t just tab until you hit a disabled button and stop. Explore the surrounding text.
+
+[ALEX]
+Exactly.
+
+[JAMIE]
+How do status checks fit into that navigation?
+
+[ALEX]
+Look for controls that expand the checks summary, often labeled Show all checks. Once expanded, each check may have a name, a state, and a Details link. The state might indicate passing, failing, pending, or cancelled.
+
+[JAMIE]
+And reading check details means opening the detailed log for the failing job.
+
+[ALEX]
+Yes. Thatâ€™s where you learn whether the issue is a failed test, a dependency install problem, a style violation, a deployment error, or something else.
+
+[PAUSE]
+
+[JAMIE]
+Letâ€™s broaden from merge box mechanics to the concept of status checks themselves.
+
+[ALEX]
+A status check is a reported result attached to your commit or pull request. It tells GitHub whether some automated process succeeded, failed, is still running, or did not run successfully enough for the repositoryâ€™s rules.
+
+[JAMIE]
+And many of these come from GitHub Actions.
+
+[ALEX]
+Right. GitHub Actions is GitHubâ€™s built-in automation system. A repository can include workflow files under `.github/workflows`, and one common example is a file like `ci.yml`.
+
+[JAMIE]
+Which usually means continuous integration.
+
+[ALEX]
+Exactly. A CI workflow might run when you push commits or open a pull request. It may check out the code, install dependencies, build the project, run tests, run linters, maybe run accessibility or security checks, and then report the result back to GitHub as status checks.
+
+[JAMIE]
+So when a learner sees something like `ci / test`, thatâ€™s probably one job inside a workflow file, not some mysterious separate system.
+
+[ALEX]
+Correct. Though not all checks come from GitHub Actions. Some come from third-party services, like external CI platforms, deployment previews, security scanners, or code quality services.
+
+[JAMIE]
+What are the main states a learner should recognize?
+
+[ALEX]
+Passing or successful, which usually shows a green indicator. Pending or in progress, often a spinner or waiting state. Failing or unsuccessful, usually marked in red. You may also encounter cancelled, skipped, or neutral states, though whether those block merge depends on repository configuration and whether the check is required.
+
+[JAMIE]
+So the key question is not just did a check run, but is it required, and what state is it in.
+
+[ALEX]
+Exactly.
+
+[PAUSE]
+
+[JAMIE]
+Who can actually configure all this?
+
+[ALEX]
+Usually repository administrators, maintainers with the right permissions, or organization owners for org-level rulesets. Regular contributors generally cannot change branch protection. They can only comply with it.
+
+[JAMIE]
+Which is useful emotionally too. If youâ€™re blocked by a rule, it does not mean youâ€™re expected to fix the repository settings yourself.
+
+[ALEX]
+Right. Your job is to understand the rule, satisfy it if you can, and ask a maintainer when the blocker is infrastructural or administrative.
+
+[PAUSE]
+
+[JAMIE]
+Before we wrap up, can we give a practical workshop-oriented reference setup? What might a training repository enforce?
+
+[ALEX]
+A workshop repository often enables a simple but realistic set of protections on `main`: require at least one approving review, require key status checks like build or test to pass, prevent direct pushes to `main`, and sometimes require the branch to be up to date before merging.
+
+[JAMIE]
+Usually not every advanced rule all at once.
+
+[ALEX]
+Right. For teaching, you want enough realism to show the workflow, but not so many restrictions that learners spend the whole session debugging policy instead of learning GitHub.
+
+[JAMIE]
+And that also helps facilitators explain why a pull request may be blocked in a controlled, understandable way.
+
+[ALEX]
+Exactly.
+
+[PAUSE]
+
+[JAMIE]
+Let me try a compact recap. Branch protection is the repositoryâ€™s quality gate for important branches. Common blockers are missing reviews, failing or pending checks, an out-of-date branch, unsigned commits, linear-history rules, or a locked branch. Modern repositories may use rulesets, which are more flexible than classic branch protection. And for accessibility, the merge box is the key area to inspect, especially the status text above the button.
+
+[ALEX]
+Thatâ€™s it. And one final note: if you want the most authoritative details, GitHubâ€™s documentation on protected branches and rulesets is the source to trust, because exact UI wording and available options can change over time.
+
+[JAMIE]
+So when your merge button is greyed out, treat it like feedback, not failure.
+
+[ALEX]
+Well said. Read the message, identify the category of blocker, take the matching next step, and youâ€™ll usually get unstuck quickly.
+
+[JAMIE]
+And if not, youâ€™ll at least know what question to ask a maintainer.
+
+[ALEX]
+Exactly. Thatâ€™s a strong open source skill.

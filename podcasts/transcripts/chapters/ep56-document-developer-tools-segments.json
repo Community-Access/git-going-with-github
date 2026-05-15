@@ -1,506 +1,506 @@
-[
-  {
-    "speaker": "ALEX",
-    "text": "Welcome back. Today we're looking at a reference-style appendix that ties together document accessibility work and developer tooling. Think of it as a practical companion to broader material on accessibility agents, an agents reference, and advanced usage patterns."
-  },
-  {
-    "speaker": "JAMIE",
-    "text": "So this is less, \"Here is one tool,\" and more, \"Here is a whole toolkit for accessible documents and accessible development workflows?\""
-  },
-  {
-    "speaker": "ALEX",
-    "text": "Exactly. And the appendix points learners to authoritative source repositories for two groups: a document accessibility team and a developer tools team. Together they cover Office files, PDFs, EPUBs, Python and wxPython work, desktop apps, NVDA add-ons, and CI automation."
-  },
-  {
-    "speaker": "PAUSE",
-    "text": ""
-  },
-  {
-    "speaker": "ALEX",
-    "text": "At a high level, the appendix says there are dedicated agents for scanning, remediating, and enforcing accessibility standards across business documents and developer workflows."
-  },
-  {
-    "speaker": "JAMIE",
-    "text": "And I want to underline something for our audience: even though this is framed around agents, the real lesson is the accessibility checks themselves, the remediation patterns, and how to fit them into GitHub-centered work."
-  },
-  {
-    "speaker": "ALEX",
-    "text": "Well said. The table of contents lays out the learning path: document accessibility agents, Microsoft Office accessibility, PDF and EPUB accessibility, developer tools agents, Python and wxPython accessibility, desktop and NVDA development, and CI/CD integration."
-  },
-  {
-    "speaker": "PAUSE",
-    "text": ""
-  },
-  {
-    "speaker": "ALEX",
-    "text": "Let's start with the document accessibility team. The appendix says there are 15 agents dedicated to document accessibility."
-  },
-  {
-    "speaker": "JAMIE",
-    "text": "That's a lot. Can we organize them by job?"
-  },
-  {
-    "speaker": "ALEX",
-    "text": "Yes. First, audit agents: `@word-accessibility`, `@excel-accessibility`, `@powerpoint-accessibility`, `@pdf-accessibility`, and `@epub-accessibility`. Their role is to inspect a file type and produce findings."
-  },
-  {
-    "speaker": "JAMIE",
-    "text": "So they don't just say \"good\" or \"bad.\" They report actual problems."
-  },
-  {
-    "speaker": "ALEX",
-    "text": "Right. For example, headings, alt text, hyperlinks in Word; headers, merged cells, formulas in Excel; slide structure, alt text, animations in PowerPoint; tagging and PDF/UA compliance in PDF; and structure and reading order in EPUB."
-  },
-  {
-    "speaker": "ALEX",
-    "text": "Second, configuration agents: `@office-scan-config`, `@pdf-scan-config`, and `@epub-scan-config`. These let you adjust the scanning rules, typically through JSON configuration."
-  },
-  {
-    "speaker": "JAMIE",
-    "text": "So a team can standardize how audits run."
-  },
-  {
-    "speaker": "ALEX",
-    "text": "Exactly. Third, remediation agents: `@office-remediator` for Word, Excel, and PowerPoint, plus `@pdf-remediator` for PDF fixes."
-  },
-  {
-    "speaker": "ALEX",
-    "text": "Then there are workflow and support agents: `@document-accessibility-wizard` for guided audits across document types, `@cross-document-analyzer` to compare accessibility across versions, `@document-inventory` to scan a folder and build a manifest, `@document-csv-reporter` to export findings with WCAG mappings, and `@document-remediation-coach` to walk someone through fixes step by step."
-  },
-  {
-    "speaker": "JAMIE",
-    "text": "That last group feels especially useful for teams using GitHub Issues or project boards, because audit output can become trackable work."
-  },
-  {
-    "speaker": "ALEX",
-    "text": "Yes. You can imagine inventorying documents, auditing them, exporting findings to CSV, then turning severe issues into tickets."
-  },
-  {
-    "speaker": "PAUSE",
-    "text": ""
-  },
-  {
-    "speaker": "JAMIE",
-    "text": "Let's move into Office documents. Starting with Word, what are the big accessibility problems the appendix wants learners to notice?"
-  },
-  {
-    "speaker": "ALEX",
-    "text": "Several common ones. Missing document titles or missing Heading 1 usage. Broken heading hierarchy, like jumping from heading level 1 to 3 and then back to 2. Images without alt text. Vague hyperlinks such as \"click here.\" Merged table cells that make table interpretation harder. Information conveyed only by color. And missing language metadata."
-  },
-  {
-    "speaker": "JAMIE",
-    "text": "That's a good checklist. And for blind and low-vision users, all of those affect navigation or comprehension."
-  },
-  {
-    "speaker": "ALEX",
-    "text": "Exactly. A clean heading hierarchy helps screen reader users skim. Descriptive links let people decide whether to follow them. Alt text gives meaning to non-text content. Language tags help speech engines pronounce correctly."
-  },
-  {
-    "speaker": "JAMIE",
-    "text": "What does the Word audit flow look like?"
-  },
-  {
-    "speaker": "ALEX",
-    "text": "The example command is essentially: ask `@word-accessibility` to audit a `.docx` file. The agent scans structure, checks heading hierarchy, validates image alt text, checks tables, and then returns a report. In the sample, it reports three errors, including broken headings and five images missing alt text, two warnings like merged cells and unclear hyperlinks, and an overall severity score of 72 out of 100, labeled a C grade."
-  },
-  {
-    "speaker": "JAMIE",
-    "text": "I like that it distinguishes errors from warnings. That gives teams triage language."
-  },
-  {
-    "speaker": "ALEX",
-    "text": "It does. Then `@office-remediator` can be used to fix the Word file. The sample shows automatic fixes like restructuring heading hierarchy, converting merged cells to simpler rows, and adding placeholder alt text. It also creates a changelog and returns a remediated document."
-  },
-  {
-    "speaker": "JAMIE",
-    "text": "Placeholder alt text is important to mention carefully. That means the file is improved, but a human still needs to review whether the text is actually meaningful."
-  },
-  {
-    "speaker": "ALEX",
-    "text": "Absolutely. Placeholder text is a bridge, not the final accessible answer."
-  },
-  {
-    "speaker": "PAUSE",
-    "text": ""
-  },
-  {
-    "speaker": "JAMIE",
-    "text": "How about Excel? Spreadsheets can get messy fast."
-  },
-  {
-    "speaker": "ALEX",
-    "text": "They can. The appendix highlights common Excel issues: no designated header row, merged cells in data tables, hidden columns or rows used for layout, color-only meaning such as red equals error, complex formulas without explanation, and multiple tables crammed onto one sheet."
-  },
-  {
-    "speaker": "JAMIE",
-    "text": "And those become accessibility issues because the structure is unclear to assistive technology."
-  },
-  {
-    "speaker": "ALEX",
-    "text": "Correct. The fixes are very concrete: format data as a table and mark the header row, unmerge cells, unhide rows and columns and use filters instead, add icons or symbols along with color, use named ranges, document formula logic in another column, and separate multiple tables into different sheets with clear headers."
-  },
-  {
-    "speaker": "JAMIE",
-    "text": "What does the Excel audit agent report?"
-  },
-  {
-    "speaker": "ALEX",
-    "text": "The example shows `@excel-accessibility` auditing a workbook by analyzing all sheets. It checks things like header rows, merged cells, named ranges, and color usage. Then it reports findings per sheet. In the sample, one sheet has four errors due to merged cells and missing headers, another sheet has warnings about complex formulas, and the overall severity is 65 out of 100, a D grade."
-  },
-  {
-    "speaker": "JAMIE",
-    "text": "And remediation?"
-  },
-  {
-    "speaker": "ALEX",
-    "text": "With `@office-remediator`, the sample auto-fixes include unmerging cells in tables, designating header rows, and adding conditional formatting with symbols. It returns a remediated workbook and notes that some items still need manual review, such as complex formulas."
-  },
-  {
-    "speaker": "JAMIE",
-    "text": "That's a useful pattern across this appendix: automate structural fixes, but flag semantic content decisions for humans."
-  },
-  {
-    "speaker": "ALEX",
-    "text": "Exactly right."
-  },
-  {
-    "speaker": "PAUSE",
-    "text": ""
-  },
-  {
-    "speaker": "JAMIE",
-    "text": "Now PowerPoint, which often hides accessibility problems in visual polish."
-  },
-  {
-    "speaker": "ALEX",
-    "text": "Yes. The appendix lists common issues like slides without titles, animations that move too fast, images without alt text, important text embedded in images, poor color contrast, audio without captions or transcripts, and slide numbers placed in content instead of header or footer areas."
-  },
-  {
-    "speaker": "JAMIE",
-    "text": "That \"text on image\" issue matters a lot. A beautiful slide can still be inaccessible if the actual information isn't exposed as text."
-  },
-  {
-    "speaker": "ALEX",
-    "text": "Precisely. Fixes include giving each slide a meaningful title, slowing animations to at least around three seconds, adding alt text, moving essential text into real text boxes, improving contrast, creating transcripts or detailed speaker notes for audio, and keeping slide numbers in the appropriate presentation metadata areas."
-  },
-  {
-    "speaker": "JAMIE",
-    "text": "What does the audit example show?"
-  },
-  {
-    "speaker": "ALEX",
-    "text": "`@powerpoint-accessibility` scans all slides and checks titles, alt text, contrast ratios, animation speeds, and speaker notes. The sample report shows twelve images without alt text, three low-contrast slides, five too-fast animations, and an overall severity of 58 out of 100, another D."
-  },
-  {
-    "speaker": "JAMIE",
-    "text": "And the remediator can help here too?"
-  },
-  {
-    "speaker": "ALEX",
-    "text": "Yes. The example uses `@office-remediator` with a PowerPoint-specific fix command and an option to add speaker notes. It adds placeholder alt text, adjusts animation timing to at least three seconds, improves contrast on problem slides, creates one set of speaker notes per slide, and returns a remediated presentation."
-  },
-  {
-    "speaker": "JAMIE",
-    "text": "Again, speaker notes templates help, but a presenter should still ensure they contain useful content."
-  },
-  {
-    "speaker": "ALEX",
-    "text": "Exactly."
-  },
-  {
-    "speaker": "PAUSE",
-    "text": ""
-  },
-  {
-    "speaker": "ALEX",
-    "text": "Next comes PDF and EPUB accessibility."
-  },
-  {
-    "speaker": "JAMIE",
-    "text": "Let's start with PDF, because PDFs are everywhere and often frustrating."
-  },
-  {
-    "speaker": "ALEX",
-    "text": "The appendix anchors PDF accessibility to PDF/UA, the ISO standard for accessible PDFs. It then spells out key requirements: tagged structure, meaningful alt text, bookmarks, correct reading order, proper language setting, accessible form labels, and not relying on scanned-image-only PDFs."
-  },
-  {
-    "speaker": "JAMIE",
-    "text": "So if a PDF is just a picture of text, it may look fine visually but be unusable to many readers unless OCR is applied."
-  },
-  {
-    "speaker": "ALEX",
-    "text": "Correct. The PDF needs to be text-searchable, properly tagged, and logically organized."
-  },
-  {
-    "speaker": "JAMIE",
-    "text": "What kinds of fixes are suggested?"
-  },
-  {
-    "speaker": "ALEX",
-    "text": "Use tagged PDF templates, add tags in tools like Adobe Acrobat, add image descriptions, create bookmarks matching document headings, repair the tag tree and reading order, set document language, label form fields descriptively, and run OCR when the file is essentially scanned images."
-  },
-  {
-    "speaker": "JAMIE",
-    "text": "And the audit example?"
-  },
-  {
-    "speaker": "ALEX",
-    "text": "`@pdf-accessibility` analyzes structure and validates PDF/UA compliance. The sample findings include missing alt text on five images, no bookmarks, language not set, and three unlabeled form fields, with a severity of 48 out of 100, an F."
-  },
-  {
-    "speaker": "JAMIE",
-    "text": "The markdown source truncates the full PDF remediation example, right?"
-  },
-  {
-    "speaker": "ALEX",
-    "text": "Yes, the provided excerpt cuts off that command. But the surrounding material makes the intended role clear: `@pdf-remediator` fixes PDF accessibility issues, including tags and bookmarks, and returns a remediated PDF."
-  },
-  {
-    "speaker": "JAMIE",
-    "text": "So for coverage, we should say learners need to understand both the standard and the practical repair targets: tags, reading order, language, forms, OCR, and bookmarks."
-  },
-  {
-    "speaker": "ALEX",
-    "text": "Exactly."
-  },
-  {
-    "speaker": "PAUSE",
-    "text": ""
-  },
-  {
-    "speaker": "JAMIE",
-    "text": "What about EPUB?"
-  },
-  {
-    "speaker": "ALEX",
-    "text": "The appendix includes an EPUB accessibility agent and scan configuration support, and says EPUB audits focus on structure and reading order. Even from the shorter excerpt, the conceptual point is clear: digital publications need semantic structure and predictable navigation just as much as PDFs and Office files do."
-  },
-  {
-    "speaker": "JAMIE",
-    "text": "So if a team publishes long-form learning materials, EPUB shouldn't be treated as an afterthought."
-  },
-  {
-    "speaker": "ALEX",
-    "text": "Right. Reading order, document structure, and accessible navigation matter there too."
-  },
-  {
-    "speaker": "PAUSE",
-    "text": ""
-  },
-  {
-    "speaker": "ALEX",
-    "text": "The appendix then turns to the developer tools team, describing eight agents."
-  },
-  {
-    "speaker": "JAMIE",
-    "text": "We don't get the full table in the excerpt, but the heading tells us the domain: Python, wxPython, NVDA, CI/CD, and accessible app development."
-  },
-  {
-    "speaker": "ALEX",
-    "text": "That's the key. The document is broadening accessibility from \"documents to consume\" into \"tools and software we build.\""
-  },
-  {
-    "speaker": "JAMIE",
-    "text": "And for a GitHub audience, that means accessibility belongs in repositories, automation, and coding practices, not just in final files."
-  },
-  {
-    "speaker": "ALEX",
-    "text": "Exactly. The developer tools overview conceptually covers agents that help review code, support desktop accessibility work, and integrate checks into workflows."
-  },
-  {
-    "speaker": "PAUSE",
-    "text": ""
-  },
-  {
-    "speaker": "JAMIE",
-    "text": "Let's dig into Python and wxPython. What should learners take away from the appendix headings there?"
-  },
-  {
-    "speaker": "ALEX",
-    "text": "Two big areas. First, Python accessibility best practices. Second, wxPython GUI accessibility. Even without every line of the original section, the headings are substantive and clearly intended to teach practical patterns."
-  },
-  {
-    "speaker": "JAMIE",
-    "text": "So let's state the kind of things that belong in that practice set, staying faithful to the scope named in the appendix."
-  },
-  {
-    "speaker": "ALEX",
-    "text": "For Python accessibility best practices, learners should think in terms of exposing semantics, using clear labels and names, handling keyboard interaction properly, giving meaningful status and error messages, and designing logic so accessibility information can be surfaced consistently across an application."
-  },
-  {
-    "speaker": "JAMIE",
-    "text": "And for a GitHub workflow, that means code review shouldn't ask only \"Does it work?\" but also \"Can a keyboard user operate it?\" and \"Does assistive technology get the right information?\""
-  },
-  {
-    "speaker": "ALEX",
-    "text": "Yes. In a Python project, accessibility quality often depends on explicit choices by the developer."
-  },
-  {
-    "speaker": "JAMIE",
-    "text": "Then wxPython adds GUI-specific concerns."
-  },
-  {
-    "speaker": "ALEX",
-    "text": "Right. With wxPython, the accessibility lens includes labeled controls, sensible tab order, keyboard reachability, readable focus handling, and making sure widgets expose useful information to platform accessibility APIs when possible."
-  },
-  {
-    "speaker": "JAMIE",
-    "text": "So if someone builds a desktop utility in Python, they should test beyond visual layout."
-  },
-  {
-    "speaker": "ALEX",
-    "text": "Exactly. They should test with keyboard-only use, with screen readers where feasible, and with attention to control naming and logical navigation."
-  },
-  {
-    "speaker": "PAUSE",
-    "text": ""
-  },
-  {
-    "speaker": "ALEX",
-    "text": "Next is desktop and NVDA development."
-  },
-  {
-    "speaker": "JAMIE",
-    "text": "And this is especially relevant for our audience, since NVDA is so central to many blind users' workflows."
-  },
-  {
-    "speaker": "ALEX",
-    "text": "Absolutely. The appendix includes desktop application accessibility and NVDA add-on development. It even names a sample file path: `my-addon/addon/globalPlugins/myPlugin.py`."
-  },
-  {
-    "speaker": "JAMIE",
-    "text": "That's a concrete hint that the appendix isn't just speaking abstractly. It expects readers to connect accessibility concepts to real add-on file structures."
-  },
-  {
-    "speaker": "ALEX",
-    "text": "Yes. Desktop application accessibility here means building apps whose controls, focus management, labels, states, and keyboard pathways are usable with assistive technology."
-  },
-  {
-    "speaker": "JAMIE",
-    "text": "And NVDA add-on development means writing extensions that integrate with NVDA responsibly and accessibly."
-  },
-  {
-    "speaker": "ALEX",
-    "text": "Correct. The mention of a global plugin Python file signals that add-on work lives in code, version control, and review processes just like any other software project."
-  },
-  {
-    "speaker": "JAMIE",
-    "text": "So a learner contributing to an NVDA add-on on GitHub should be ready to inspect plugin structure, understand Python files in the add-on tree, and think about both functionality and user experience."
-  },
-  {
-    "speaker": "ALEX",
-    "text": "Yes. Accessibility work there is both technical and experiential."
-  },
-  {
-    "speaker": "PAUSE",
-    "text": ""
-  },
-  {
-    "speaker": "JAMIE",
-    "text": "Now let's connect this to automation, because the appendix has a full section on CI/CD integration for accessibility."
-  },
-  {
-    "speaker": "ALEX",
-    "text": "It does. The main idea is that accessibility should be part of continuous integration and deployment, not just a one-time manual check."
-  },
-  {
-    "speaker": "JAMIE",
-    "text": "So in GitHub terms, this points straight to GitHub Actions."
-  },
-  {
-    "speaker": "ALEX",
-    "text": "Exactly. The appendix explicitly names accessibility in GitHub Actions and references a workflow file at `.github/workflows/accessibility.yml`."
-  },
-  {
-    "speaker": "JAMIE",
-    "text": "That path alone is a useful teaching moment for beginners: accessibility checks can live in the repository as code."
-  },
-  {
-    "speaker": "ALEX",
-    "text": "Yes. Once checks are in a workflow file, they can run on pushes, pull requests, or scheduled audits, helping teams catch regressions early."
-  },
-  {
-    "speaker": "JAMIE",
-    "text": "And that's especially helpful in open source, where many contributors may not all share the same accessibility expertise."
-  },
-  {
-    "speaker": "ALEX",
-    "text": "Right. Automation creates consistency."
-  },
-  {
-    "speaker": "JAMIE",
-    "text": "The appendix also names Playwright accessibility testing."
-  },
-  {
-    "speaker": "ALEX",
-    "text": "Which suggests browser-based automated checks in addition to document and desktop concerns. In practice, Playwright can support scripted tests that examine UI behavior and accessibility signals as part of a CI pipeline."
-  },
-  {
-    "speaker": "JAMIE",
-    "text": "So the bigger lesson is: accessibility belongs in tests, not just in design docs."
-  },
-  {
-    "speaker": "ALEX",
-    "text": "Exactly. And when those tests run in GitHub Actions, they become part of the team's regular development rhythm."
-  },
-  {
-    "speaker": "PAUSE",
-    "text": ""
-  },
-  {
-    "speaker": "ALEX",
-    "text": "Near the end, the appendix includes learning cards, references, authoritative sources, and a section-level source map."
-  },
-  {
-    "speaker": "JAMIE",
-    "text": "Let's not skip that administrative content, because learners often do."
-  },
-  {
-    "speaker": "ALEX",
-    "text": "Good point. The learning cards section signals that this appendix is meant for study and review, not just lookup. The references and authoritative sources matter because accessibility guidance should be anchored in trustworthy documentation."
-  },
-  {
-    "speaker": "JAMIE",
-    "text": "And the source map is interesting. It lists a verification path for each major section, repeatedly pointing learners to GitHub Docs, the GitHub Changelog, GitHub Copilot docs, the custom instructions support matrix, and documentation about custom agents."
-  },
-  {
-    "speaker": "ALEX",
-    "text": "Yes. Even though the appendix topic is document and developer tool accessibility, it still situates itself inside the GitHub and Copilot documentation ecosystem. That tells learners two things: first, check official docs for current behavior; second, treat agent-based workflows as evolving tools whose support details may change."
-  },
-  {
-    "speaker": "JAMIE",
-    "text": "So if you're building a contribution workflow around these ideas, you should verify the present-day product capabilities instead of assuming a static tool landscape."
-  },
-  {
-    "speaker": "ALEX",
-    "text": "Exactly."
-  },
-  {
-    "speaker": "PAUSE",
-    "text": ""
-  },
-  {
-    "speaker": "JAMIE",
-    "text": "Can we close by stitching all this together into one practical mental model?"
-  },
-  {
-    "speaker": "ALEX",
-    "text": "Yes. Here's the model. Start by inventorying documents and code artifacts. Audit them with specialized agents matched to the file type or development domain. Configure scan rules when your organization needs consistent standards. Remediate what can be fixed automatically, but keep humans in the loop for meaning, context, and quality. Export findings for tracking. Compare versions over time to watch improvement or regression. And bring accessibility into GitHub Actions and test automation so it becomes a routine part of software and content delivery."
-  },
-  {
-    "speaker": "JAMIE",
-    "text": "And for blind and low-vision learners, the deeper message is empowering: accessibility isn't only something done for users. It's also something you can inspect, discuss in pull requests, automate, and improve as a contributor."
-  },
-  {
-    "speaker": "ALEX",
-    "text": "Beautifully put. Whether you're fixing a Word document, repairing a tagged PDF, building a wxPython app, writing an NVDA add-on, or setting up an accessibility workflow in GitHub Actions, you are participating in a repeatable, teachable engineering practice."
-  },
-  {
-    "speaker": "JAMIE",
-    "text": "And that makes this appendix more than a catalog. It's a map of where accessibility work happens."
-  },
-  {
-    "speaker": "ALEX",
-    "text": "Exactly. And that's our goal: not just to know the names of the agents, but to understand the accessible workflows they support."
-  }
+﻿[
+    {
+        "speaker":  "ALEX",
+        "text":  "Welcome back. Today we\u0027re looking at a reference-style appendix that ties together document accessibility work and developer tooling. Think of it as a practical companion to broader material on accessibility agents, an agents reference, and advanced usage patterns."
+    },
+    {
+        "speaker":  "JAMIE",
+        "text":  "So this is less, \"Here is one tool,\" and more, \"Here is a whole toolkit for accessible documents and accessible development workflows?\""
+    },
+    {
+        "speaker":  "ALEX",
+        "text":  "Exactly. And the appendix points learners to authoritative source repositories for two groups: a document accessibility team and a developer tools team. Together they cover Office files, PDFs, EPUBs, Python and wxPython work, desktop apps, NVDA add-ons, and CI automation."
+    },
+    {
+        "speaker":  "PAUSE",
+        "text":  ""
+    },
+    {
+        "speaker":  "ALEX",
+        "text":  "At a high level, the appendix says there are dedicated agents for scanning, remediating, and enforcing accessibility standards across business documents and developer workflows."
+    },
+    {
+        "speaker":  "JAMIE",
+        "text":  "And I want to underline something for our audience: even though this is framed around agents, the real lesson is the accessibility checks themselves, the remediation patterns, and how to fit them into GitHub-centered work."
+    },
+    {
+        "speaker":  "ALEX",
+        "text":  "Well said. The table of contents lays out the learning path: document accessibility agents, Microsoft Office accessibility, PDF and EPUB accessibility, developer tools agents, Python and wxPython accessibility, desktop and NVDA development, and CI/CD integration."
+    },
+    {
+        "speaker":  "PAUSE",
+        "text":  ""
+    },
+    {
+        "speaker":  "ALEX",
+        "text":  "Let\u0027s start with the document accessibility team. The appendix says there are 15 agents dedicated to document accessibility."
+    },
+    {
+        "speaker":  "JAMIE",
+        "text":  "That\u0027s a lot. Can we organize them by job?"
+    },
+    {
+        "speaker":  "ALEX",
+        "text":  "Yes. First, audit agents: `@word-accessibility`, `@excel-accessibility`, `@powerpoint-accessibility`, `@pdf-accessibility`, and `@epub-accessibility`. Their role is to inspect a file type and produce findings."
+    },
+    {
+        "speaker":  "JAMIE",
+        "text":  "So they don\u0027t just say \"good\" or \"bad.\" They report actual problems."
+    },
+    {
+        "speaker":  "ALEX",
+        "text":  "Right. For example, headings, alt text, hyperlinks in Word; headers, merged cells, formulas in Excel; slide structure, alt text, animations in PowerPoint; tagging and PDF/UA compliance in PDF; and structure and reading order in EPUB."
+    },
+    {
+        "speaker":  "ALEX",
+        "text":  "Second, configuration agents: `@office-scan-config`, `@pdf-scan-config`, and `@epub-scan-config`. These let you adjust the scanning rules, typically through JSON configuration."
+    },
+    {
+        "speaker":  "JAMIE",
+        "text":  "So a team can standardize how audits run."
+    },
+    {
+        "speaker":  "ALEX",
+        "text":  "Exactly. Third, remediation agents: `@office-remediator` for Word, Excel, and PowerPoint, plus `@pdf-remediator` for PDF fixes."
+    },
+    {
+        "speaker":  "ALEX",
+        "text":  "Then there are workflow and support agents: `@document-accessibility-wizard` for guided audits across document types, `@cross-document-analyzer` to compare accessibility across versions, `@document-inventory` to scan a folder and build a manifest, `@document-csv-reporter` to export findings with WCAG mappings, and `@document-remediation-coach` to walk someone through fixes step by step."
+    },
+    {
+        "speaker":  "JAMIE",
+        "text":  "That last group feels especially useful for teams using GitHub Issues or project boards, because audit output can become trackable work."
+    },
+    {
+        "speaker":  "ALEX",
+        "text":  "Yes. You can imagine inventorying documents, auditing them, exporting findings to CSV, then turning severe issues into tickets."
+    },
+    {
+        "speaker":  "PAUSE",
+        "text":  ""
+    },
+    {
+        "speaker":  "JAMIE",
+        "text":  "Let\u0027s move into Office documents. Starting with Word, what are the big accessibility problems the appendix wants learners to notice?"
+    },
+    {
+        "speaker":  "ALEX",
+        "text":  "Several common ones. Missing document titles or missing Heading 1 usage. Broken heading hierarchy, like jumping from heading level 1 to 3 and then back to 2. Images without alt text. Vague hyperlinks such as \"click here.\" Merged table cells that make table interpretation harder. Information conveyed only by color. And missing language metadata."
+    },
+    {
+        "speaker":  "JAMIE",
+        "text":  "That\u0027s a good checklist. And for blind and low-vision users, all of those affect navigation or comprehension."
+    },
+    {
+        "speaker":  "ALEX",
+        "text":  "Exactly. A clean heading hierarchy helps screen reader users skim. Descriptive links let people decide whether to follow them. Alt text gives meaning to non-text content. Language tags help speech engines pronounce correctly."
+    },
+    {
+        "speaker":  "JAMIE",
+        "text":  "What does the Word audit flow look like?"
+    },
+    {
+        "speaker":  "ALEX",
+        "text":  "The example command is essentially: ask `@word-accessibility` to audit a `.docx` file. The agent scans structure, checks heading hierarchy, validates image alt text, checks tables, and then returns a report. In the sample, it reports three errors, including broken headings and five images missing alt text, two warnings like merged cells and unclear hyperlinks, and an overall severity score of 72 out of 100, labeled a C grade."
+    },
+    {
+        "speaker":  "JAMIE",
+        "text":  "I like that it distinguishes errors from warnings. That gives teams triage language."
+    },
+    {
+        "speaker":  "ALEX",
+        "text":  "It does. Then `@office-remediator` can be used to fix the Word file. The sample shows automatic fixes like restructuring heading hierarchy, converting merged cells to simpler rows, and adding placeholder alt text. It also creates a changelog and returns a remediated document."
+    },
+    {
+        "speaker":  "JAMIE",
+        "text":  "Placeholder alt text is important to mention carefully. That means the file is improved, but a human still needs to review whether the text is actually meaningful."
+    },
+    {
+        "speaker":  "ALEX",
+        "text":  "Absolutely. Placeholder text is a bridge, not the final accessible answer."
+    },
+    {
+        "speaker":  "PAUSE",
+        "text":  ""
+    },
+    {
+        "speaker":  "JAMIE",
+        "text":  "How about Excel? Spreadsheets can get messy fast."
+    },
+    {
+        "speaker":  "ALEX",
+        "text":  "They can. The appendix highlights common Excel issues: no designated header row, merged cells in data tables, hidden columns or rows used for layout, color-only meaning such as red equals error, complex formulas without explanation, and multiple tables crammed onto one sheet."
+    },
+    {
+        "speaker":  "JAMIE",
+        "text":  "And those become accessibility issues because the structure is unclear to assistive technology."
+    },
+    {
+        "speaker":  "ALEX",
+        "text":  "Correct. The fixes are very concrete: format data as a table and mark the header row, unmerge cells, unhide rows and columns and use filters instead, add icons or symbols along with color, use named ranges, document formula logic in another column, and separate multiple tables into different sheets with clear headers."
+    },
+    {
+        "speaker":  "JAMIE",
+        "text":  "What does the Excel audit agent report?"
+    },
+    {
+        "speaker":  "ALEX",
+        "text":  "The example shows `@excel-accessibility` auditing a workbook by analyzing all sheets. It checks things like header rows, merged cells, named ranges, and color usage. Then it reports findings per sheet. In the sample, one sheet has four errors due to merged cells and missing headers, another sheet has warnings about complex formulas, and the overall severity is 65 out of 100, a D grade."
+    },
+    {
+        "speaker":  "JAMIE",
+        "text":  "And remediation?"
+    },
+    {
+        "speaker":  "ALEX",
+        "text":  "With `@office-remediator`, the sample auto-fixes include unmerging cells in tables, designating header rows, and adding conditional formatting with symbols. It returns a remediated workbook and notes that some items still need manual review, such as complex formulas."
+    },
+    {
+        "speaker":  "JAMIE",
+        "text":  "That\u0027s a useful pattern across this appendix: automate structural fixes, but flag semantic content decisions for humans."
+    },
+    {
+        "speaker":  "ALEX",
+        "text":  "Exactly right."
+    },
+    {
+        "speaker":  "PAUSE",
+        "text":  ""
+    },
+    {
+        "speaker":  "JAMIE",
+        "text":  "Now PowerPoint, which often hides accessibility problems in visual polish."
+    },
+    {
+        "speaker":  "ALEX",
+        "text":  "Yes. The appendix lists common issues like slides without titles, animations that move too fast, images without alt text, important text embedded in images, poor color contrast, audio without captions or transcripts, and slide numbers placed in content instead of header or footer areas."
+    },
+    {
+        "speaker":  "JAMIE",
+        "text":  "That \"text on image\" issue matters a lot. A beautiful slide can still be inaccessible if the actual information isn\u0027t exposed as text."
+    },
+    {
+        "speaker":  "ALEX",
+        "text":  "Precisely. Fixes include giving each slide a meaningful title, slowing animations to at least around three seconds, adding alt text, moving essential text into real text boxes, improving contrast, creating transcripts or detailed speaker notes for audio, and keeping slide numbers in the appropriate presentation metadata areas."
+    },
+    {
+        "speaker":  "JAMIE",
+        "text":  "What does the audit example show?"
+    },
+    {
+        "speaker":  "ALEX",
+        "text":  "`@powerpoint-accessibility` scans all slides and checks titles, alt text, contrast ratios, animation speeds, and speaker notes. The sample report shows twelve images without alt text, three low-contrast slides, five too-fast animations, and an overall severity of 58 out of 100, another D."
+    },
+    {
+        "speaker":  "JAMIE",
+        "text":  "And the remediator can help here too?"
+    },
+    {
+        "speaker":  "ALEX",
+        "text":  "Yes. The example uses `@office-remediator` with a PowerPoint-specific fix command and an option to add speaker notes. It adds placeholder alt text, adjusts animation timing to at least three seconds, improves contrast on problem slides, creates one set of speaker notes per slide, and returns a remediated presentation."
+    },
+    {
+        "speaker":  "JAMIE",
+        "text":  "Again, speaker notes templates help, but a presenter should still ensure they contain useful content."
+    },
+    {
+        "speaker":  "ALEX",
+        "text":  "Exactly."
+    },
+    {
+        "speaker":  "PAUSE",
+        "text":  ""
+    },
+    {
+        "speaker":  "ALEX",
+        "text":  "Next comes PDF and EPUB accessibility."
+    },
+    {
+        "speaker":  "JAMIE",
+        "text":  "Let\u0027s start with PDF, because PDFs are everywhere and often frustrating."
+    },
+    {
+        "speaker":  "ALEX",
+        "text":  "The appendix anchors PDF accessibility to PDF/UA, the ISO standard for accessible PDFs. It then spells out key requirements: tagged structure, meaningful alt text, bookmarks, correct reading order, proper language setting, accessible form labels, and not relying on scanned-image-only PDFs."
+    },
+    {
+        "speaker":  "JAMIE",
+        "text":  "So if a PDF is just a picture of text, it may look fine visually but be unusable to many readers unless OCR is applied."
+    },
+    {
+        "speaker":  "ALEX",
+        "text":  "Correct. The PDF needs to be text-searchable, properly tagged, and logically organized."
+    },
+    {
+        "speaker":  "JAMIE",
+        "text":  "What kinds of fixes are suggested?"
+    },
+    {
+        "speaker":  "ALEX",
+        "text":  "Use tagged PDF templates, add tags in tools like Adobe Acrobat, add image descriptions, create bookmarks matching document headings, repair the tag tree and reading order, set document language, label form fields descriptively, and run OCR when the file is essentially scanned images."
+    },
+    {
+        "speaker":  "JAMIE",
+        "text":  "And the audit example?"
+    },
+    {
+        "speaker":  "ALEX",
+        "text":  "`@pdf-accessibility` analyzes structure and validates PDF/UA compliance. The sample findings include missing alt text on five images, no bookmarks, language not set, and three unlabeled form fields, with a severity of 48 out of 100, an F."
+    },
+    {
+        "speaker":  "JAMIE",
+        "text":  "The markdown source truncates the full PDF remediation example, right?"
+    },
+    {
+        "speaker":  "ALEX",
+        "text":  "Yes, the provided excerpt cuts off that command. But the surrounding material makes the intended role clear: `@pdf-remediator` fixes PDF accessibility issues, including tags and bookmarks, and returns a remediated PDF."
+    },
+    {
+        "speaker":  "JAMIE",
+        "text":  "So for coverage, we should say learners need to understand both the standard and the practical repair targets: tags, reading order, language, forms, OCR, and bookmarks."
+    },
+    {
+        "speaker":  "ALEX",
+        "text":  "Exactly."
+    },
+    {
+        "speaker":  "PAUSE",
+        "text":  ""
+    },
+    {
+        "speaker":  "JAMIE",
+        "text":  "What about EPUB?"
+    },
+    {
+        "speaker":  "ALEX",
+        "text":  "The appendix includes an EPUB accessibility agent and scan configuration support, and says EPUB audits focus on structure and reading order. Even from the shorter excerpt, the conceptual point is clear: digital publications need semantic structure and predictable navigation just as much as PDFs and Office files do."
+    },
+    {
+        "speaker":  "JAMIE",
+        "text":  "So if a team publishes long-form learning materials, EPUB shouldn\u0027t be treated as an afterthought."
+    },
+    {
+        "speaker":  "ALEX",
+        "text":  "Right. Reading order, document structure, and accessible navigation matter there too."
+    },
+    {
+        "speaker":  "PAUSE",
+        "text":  ""
+    },
+    {
+        "speaker":  "ALEX",
+        "text":  "The appendix then turns to the developer tools team, describing eight agents."
+    },
+    {
+        "speaker":  "JAMIE",
+        "text":  "We don\u0027t get the full table in the excerpt, but the heading tells us the domain: Python, wxPython, NVDA, CI/CD, and accessible app development."
+    },
+    {
+        "speaker":  "ALEX",
+        "text":  "That\u0027s the key. The document is broadening accessibility from \"documents to consume\" into \"tools and software we build.\""
+    },
+    {
+        "speaker":  "JAMIE",
+        "text":  "And for a GitHub audience, that means accessibility belongs in repositories, automation, and coding practices, not just in final files."
+    },
+    {
+        "speaker":  "ALEX",
+        "text":  "Exactly. The developer tools overview conceptually covers agents that help review code, support desktop accessibility work, and integrate checks into workflows."
+    },
+    {
+        "speaker":  "PAUSE",
+        "text":  ""
+    },
+    {
+        "speaker":  "JAMIE",
+        "text":  "Let\u0027s dig into Python and wxPython. What should learners take away from the appendix headings there?"
+    },
+    {
+        "speaker":  "ALEX",
+        "text":  "Two big areas. First, Python accessibility best practices. Second, wxPython GUI accessibility. Even without every line of the original section, the headings are substantive and clearly intended to teach practical patterns."
+    },
+    {
+        "speaker":  "JAMIE",
+        "text":  "So let\u0027s state the kind of things that belong in that practice set, staying faithful to the scope named in the appendix."
+    },
+    {
+        "speaker":  "ALEX",
+        "text":  "For Python accessibility best practices, learners should think in terms of exposing semantics, using clear labels and names, handling keyboard interaction properly, giving meaningful status and error messages, and designing logic so accessibility information can be surfaced consistently across an application."
+    },
+    {
+        "speaker":  "JAMIE",
+        "text":  "And for a GitHub workflow, that means code review shouldn\u0027t ask only \"Does it work?\" but also \"Can a keyboard user operate it?\" and \"Does assistive technology get the right information?\""
+    },
+    {
+        "speaker":  "ALEX",
+        "text":  "Yes. In a Python project, accessibility quality often depends on explicit choices by the developer."
+    },
+    {
+        "speaker":  "JAMIE",
+        "text":  "Then wxPython adds GUI-specific concerns."
+    },
+    {
+        "speaker":  "ALEX",
+        "text":  "Right. With wxPython, the accessibility lens includes labeled controls, sensible tab order, keyboard reachability, readable focus handling, and making sure widgets expose useful information to platform accessibility APIs when possible."
+    },
+    {
+        "speaker":  "JAMIE",
+        "text":  "So if someone builds a desktop utility in Python, they should test beyond visual layout."
+    },
+    {
+        "speaker":  "ALEX",
+        "text":  "Exactly. They should test with keyboard-only use, with screen readers where feasible, and with attention to control naming and logical navigation."
+    },
+    {
+        "speaker":  "PAUSE",
+        "text":  ""
+    },
+    {
+        "speaker":  "ALEX",
+        "text":  "Next is desktop and NVDA development."
+    },
+    {
+        "speaker":  "JAMIE",
+        "text":  "And this is especially relevant for our audience, since NVDA is so central to many blind users\u0027 workflows."
+    },
+    {
+        "speaker":  "ALEX",
+        "text":  "Absolutely. The appendix includes desktop application accessibility and NVDA add-on development. It even names a sample file path: `my-addon/addon/globalPlugins/myPlugin.py`."
+    },
+    {
+        "speaker":  "JAMIE",
+        "text":  "That\u0027s a concrete hint that the appendix isn\u0027t just speaking abstractly. It expects readers to connect accessibility concepts to real add-on file structures."
+    },
+    {
+        "speaker":  "ALEX",
+        "text":  "Yes. Desktop application accessibility here means building apps whose controls, focus management, labels, states, and keyboard pathways are usable with assistive technology."
+    },
+    {
+        "speaker":  "JAMIE",
+        "text":  "And NVDA add-on development means writing extensions that integrate with NVDA responsibly and accessibly."
+    },
+    {
+        "speaker":  "ALEX",
+        "text":  "Correct. The mention of a global plugin Python file signals that add-on work lives in code, version control, and review processes just like any other software project."
+    },
+    {
+        "speaker":  "JAMIE",
+        "text":  "So a learner contributing to an NVDA add-on on GitHub should be ready to inspect plugin structure, understand Python files in the add-on tree, and think about both functionality and user experience."
+    },
+    {
+        "speaker":  "ALEX",
+        "text":  "Yes. Accessibility work there is both technical and experiential."
+    },
+    {
+        "speaker":  "PAUSE",
+        "text":  ""
+    },
+    {
+        "speaker":  "JAMIE",
+        "text":  "Now let\u0027s connect this to automation, because the appendix has a full section on CI/CD integration for accessibility."
+    },
+    {
+        "speaker":  "ALEX",
+        "text":  "It does. The main idea is that accessibility should be part of continuous integration and deployment, not just a one-time manual check."
+    },
+    {
+        "speaker":  "JAMIE",
+        "text":  "So in GitHub terms, this points straight to GitHub Actions."
+    },
+    {
+        "speaker":  "ALEX",
+        "text":  "Exactly. The appendix explicitly names accessibility in GitHub Actions and references a workflow file at `.github/workflows/accessibility.yml`."
+    },
+    {
+        "speaker":  "JAMIE",
+        "text":  "That path alone is a useful teaching moment for beginners: accessibility checks can live in the repository as code."
+    },
+    {
+        "speaker":  "ALEX",
+        "text":  "Yes. Once checks are in a workflow file, they can run on pushes, pull requests, or scheduled audits, helping teams catch regressions early."
+    },
+    {
+        "speaker":  "JAMIE",
+        "text":  "And that\u0027s especially helpful in open source, where many contributors may not all share the same accessibility expertise."
+    },
+    {
+        "speaker":  "ALEX",
+        "text":  "Right. Automation creates consistency."
+    },
+    {
+        "speaker":  "JAMIE",
+        "text":  "The appendix also names Playwright accessibility testing."
+    },
+    {
+        "speaker":  "ALEX",
+        "text":  "Which suggests browser-based automated checks in addition to document and desktop concerns. In practice, Playwright can support scripted tests that examine UI behavior and accessibility signals as part of a CI pipeline."
+    },
+    {
+        "speaker":  "JAMIE",
+        "text":  "So the bigger lesson is: accessibility belongs in tests, not just in design docs."
+    },
+    {
+        "speaker":  "ALEX",
+        "text":  "Exactly. And when those tests run in GitHub Actions, they become part of the team\u0027s regular development rhythm."
+    },
+    {
+        "speaker":  "PAUSE",
+        "text":  ""
+    },
+    {
+        "speaker":  "ALEX",
+        "text":  "Near the end, the appendix includes learning cards, references, authoritative sources, and a section-level source map."
+    },
+    {
+        "speaker":  "JAMIE",
+        "text":  "Let\u0027s not skip that administrative content, because learners often do."
+    },
+    {
+        "speaker":  "ALEX",
+        "text":  "Good point. The learning cards section signals that this appendix is meant for study and review, not just lookup. The references and authoritative sources matter because accessibility guidance should be anchored in trustworthy documentation."
+    },
+    {
+        "speaker":  "JAMIE",
+        "text":  "And the source map is interesting. It lists a verification path for each major section, repeatedly pointing learners to GitHub Docs, the GitHub Changelog, GitHub Copilot docs, the custom instructions support matrix, and documentation about custom agents."
+    },
+    {
+        "speaker":  "ALEX",
+        "text":  "Yes. Even though the appendix topic is document and developer tool accessibility, it still situates itself inside the GitHub and Copilot documentation ecosystem. That tells learners two things: first, check official docs for current behavior; second, treat agent-based workflows as evolving tools whose support details may change."
+    },
+    {
+        "speaker":  "JAMIE",
+        "text":  "So if you\u0027re building a contribution workflow around these ideas, you should verify the present-day product capabilities instead of assuming a static tool landscape."
+    },
+    {
+        "speaker":  "ALEX",
+        "text":  "Exactly."
+    },
+    {
+        "speaker":  "PAUSE",
+        "text":  ""
+    },
+    {
+        "speaker":  "JAMIE",
+        "text":  "Can we close by stitching all this together into one practical mental model?"
+    },
+    {
+        "speaker":  "ALEX",
+        "text":  "Yes. Here\u0027s the model. Start by inventorying documents and code artifacts. Audit them with specialized agents matched to the file type or development domain. Configure scan rules when your organization needs consistent standards. Remediate what can be fixed automatically, but keep humans in the loop for meaning, context, and quality. Export findings for tracking. Compare versions over time to watch improvement or regression. And bring accessibility into GitHub Actions and test automation so it becomes a routine part of software and content delivery."
+    },
+    {
+        "speaker":  "JAMIE",
+        "text":  "And for blind and low-vision learners, the deeper message is empowering: accessibility isn\u0027t only something done for users. It\u0027s also something you can inspect, discuss in pull requests, automate, and improve as a contributor."
+    },
+    {
+        "speaker":  "ALEX",
+        "text":  "Beautifully put. Whether you\u0027re fixing a Word document, repairing a tagged PDF, building a wxPython app, writing an NVDA add-on, or setting up an accessibility workflow in GitHub Actions, you are participating in a repeatable, teachable engineering practice."
+    },
+    {
+        "speaker":  "JAMIE",
+        "text":  "And that makes this appendix more than a catalog. It\u0027s a map of where accessibility work happens."
+    },
+    {
+        "speaker":  "ALEX",
+        "text":  "Exactly. And that\u0027s our goal: not just to know the names of the agents, but to understand the accessible workflows they support."
+    }
 ]

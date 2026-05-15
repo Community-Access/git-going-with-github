@@ -1,742 +1,742 @@
-[
-  {
-    "speaker": "ALEX",
-    "text": "Welcome back. Today we're working with one of those GitHub features that quietly makes open source collaboration much easier: issue templates."
-  },
-  {
-    "speaker": "JAMIE",
-    "text": "And this is a great one for people who have ever opened a blank issue form and thought, what exactly am I supposed to put here?"
-  },
-  {
-    "speaker": "ALEX",
-    "text": "Exactly. An issue template turns that blank box into a guided experience. Instead of guessing what maintainers need, contributors get prompts, structure, and clear required fields. That reduces back-and-forth, improves quality, and helps teams act on issues faster."
-  },
-  {
-    "speaker": "JAMIE",
-    "text": "So this is not just about formatting. It's about making contributions clearer and more usable."
-  },
-  {
-    "speaker": "ALEX",
-    "text": "Yes, and especially in accessibility work. If someone is reporting an accessibility barrier, a vague report can be hard to reproduce. A thoughtful template can ask where the problem occurred, what assistive technology was involved, what the expected behavior was, and how severe the barrier is."
-  },
-  {
-    "speaker": "PAUSE",
-    "text": ""
-  },
-  {
-    "speaker": "JAMIE",
-    "text": "Before we get into the design challenge, what should learners already have in place?"
-  },
-  {
-    "speaker": "ALEX",
-    "text": "A few practical things. First, you should already know how to work with GitHub issues at a basic level. Second, you need a repository where you can create or edit files, usually your fork or your own repo. Third, it really helps to use an editor with YAML syntax highlighting, such as VS Code."
-  },
-  {
-    "speaker": "JAMIE",
-    "text": "And some things are recommended but not strictly required, right?"
-  },
-  {
-    "speaker": "ALEX",
-    "text": "Right. Familiarity with GitHub Copilot can help if you want to generate variations, but it's optional. Basic terminal comfort is useful, though you can also use the GitHub web editor or github.dev. And if you already filled out the workshop registration template earlier in this course, that template becomes a learning example now."
-  },
-  {
-    "speaker": "JAMIE",
-    "text": "I like that. You've already used a professional issue template, so now you reverse-engineer it."
-  },
-  {
-    "speaker": "ALEX",
-    "text": "Exactly. Also, there's an administrative note here: this chapter is meant to prepare you for a later workflow using a template-building agent. The advice is to complete the manual template chapter first, then use the automation later."
-  },
-  {
-    "speaker": "JAMIE",
-    "text": "And time-wise?"
-  },
-  {
-    "speaker": "ALEX",
-    "text": "Plan roughly two to two and a half hours if you do the exercises and some YAML troubleshooting."
-  },
-  {
-    "speaker": "PAUSE",
-    "text": ""
-  },
-  {
-    "speaker": "ALEX",
-    "text": "The learning pattern for this challenge is analyze, remix, create, and test."
-  },
-  {
-    "speaker": "JAMIE",
-    "text": "That feels approachable. First understand an existing template, then adapt one, then optionally build another version from scratch, then verify it works."
-  },
-  {
-    "speaker": "ALEX",
-    "text": "That's the idea. The workshop recommendation frames Challenge 14 as design-focused rather than automation-focused. You're producing evidence of understanding, often as an issue comment or a pull request, rather than trying to satisfy a complicated code runtime."
-  },
-  {
-    "speaker": "JAMIE",
-    "text": "Though there is still one small autograded requirement in the challenge template itself."
-  },
-  {
-    "speaker": "ALEX",
-    "text": "Yes. For the assigned challenge issue, the autograder checks that a YAML file exists in the repository's `.github/ISSUE_TEMPLATE/` folder and that it contains a valid `name` field. But pedagogically, the real goal is broader: understanding how structured templates guide contributions."
-  },
-  {
-    "speaker": "PAUSE",
-    "text": ""
-  },
-  {
-    "speaker": "JAMIE",
-    "text": "Let's define the basic concept clearly. What is an issue template?"
-  },
-  {
-    "speaker": "ALEX",
-    "text": "An issue template is a reusable structure GitHub offers when someone clicks New Issue. It can be a Markdown template or a YAML form-based template. Both help contributors provide the right information. The difference is in how structured and interactive they are."
-  },
-  {
-    "speaker": "JAMIE",
-    "text": "So a Markdown template is more like a prewritten document with headings and instructions."
-  },
-  {
-    "speaker": "ALEX",
-    "text": "Yes. It usually opens a text area containing sections like Problem, Context, Steps to Reproduce, or Additional Context. A YAML form template is more interactive. It creates actual fields like text inputs, dropdowns, textareas, and checkboxes."
-  },
-  {
-    "speaker": "JAMIE",
-    "text": "And for accessibility, the YAML form often wins."
-  },
-  {
-    "speaker": "ALEX",
-    "text": "Often, yes. A good YAML form can make navigation more predictable, clearly indicate required fields, constrain answers when appropriate, and reduce cognitive load. It gives contributors helpful labels and descriptions instead of asking them to infer the structure."
-  },
-  {
-    "speaker": "PAUSE",
-    "text": ""
-  },
-  {
-    "speaker": "JAMIE",
-    "text": "How do templates work on GitHub at the repository level?"
-  },
-  {
-    "speaker": "ALEX",
-    "text": "GitHub looks in a special folder: `.github/ISSUE_TEMPLATE/`. Files there can appear in the issue template chooser. If they're YAML form templates, they typically use the `.yml` extension. Markdown templates use `.md` and include frontmatter."
-  },
-  {
-    "speaker": "JAMIE",
-    "text": "And when someone clicks New Issue, GitHub may show a template picker."
-  },
-  {
-    "speaker": "ALEX",
-    "text": "Right. In that chooser, the template's name appears as the visible option, and the description appears below it as helper text. Once the user selects it, GitHub generates the issue form or prefilled issue body."
-  },
-  {
-    "speaker": "JAMIE",
-    "text": "And there's also repository-level configuration, like `config.yml`, though this lesson seems more focused on individual template files."
-  },
-  {
-    "speaker": "ALEX",
-    "text": "Yes. The chapter mentions configuration and the chooser behavior, including that some setups can change how templates are presented. It also notes there are ways users may bypass the chooser in some situations, so maintainers should think of templates as guidance, not a magical enforcement system."
-  },
-  {
-    "speaker": "JAMIE",
-    "text": "That's useful. Templates improve the default path, even if they don't control every path."
-  },
-  {
-    "speaker": "PAUSE",
-    "text": ""
-  },
-  {
-    "speaker": "ALEX",
-    "text": "Now let's ground this in the challenge. The challenge issue itself is actually built from a YAML template. That's a teaching move."
-  },
-  {
-    "speaker": "JAMIE",
-    "text": "So the assignment is also an example of the thing you're learning."
-  },
-  {
-    "speaker": "ALEX",
-    "text": "Exactly. In the challenge template, the top-level keys are doing important work. There's a `name`, which is shown in the chooser. There's a `description`, which tells the user what the template is for. There's a `title`, which pre-fills the issue title using a pattern. In the challenge it includes the username token so the issue title can identify the learner. There are `labels`, which are automatically applied to issues created from that template. And there's a `body`, which defines the form fields themselves."
-  },
-  {
-    "speaker": "JAMIE",
-    "text": "That mirrors the solution reference too."
-  },
-  {
-    "speaker": "ALEX",
-    "text": "It does. The solution file gives a complete example: an accessibility report template. The comments in that example are especially instructive because they annotate each part."
-  },
-  {
-    "speaker": "PAUSE",
-    "text": ""
-  },
-  {
-    "speaker": "JAMIE",
-    "text": "Let's unpack those top-level keys one by one, because these are must-know."
-  },
-  {
-    "speaker": "ALEX",
-    "text": "First, `name`. This is what someone sees in the template chooser after clicking New Issue. It should be short, clear, and specific enough that a contributor knows when to use it."
-  },
-  {
-    "speaker": "JAMIE",
-    "text": "Like \"Accessibility Report.\""
-  },
-  {
-    "speaker": "ALEX",
-    "text": "Exactly. Second, `description`. This appears below the name in the chooser and gives one sentence of context, like \"Report an accessibility barrier in workshop materials.\""
-  },
-  {
-    "speaker": "JAMIE",
-    "text": "Third, `labels`."
-  },
-  {
-    "speaker": "ALEX",
-    "text": "Those are automatically applied to the issue. In the example, labels like `accessibility` and `bug` categorize the issue immediately. That helps triage."
-  },
-  {
-    "speaker": "JAMIE",
-    "text": "Fourth, `title`."
-  },
-  {
-    "speaker": "ALEX",
-    "text": "That pre-fills the issue title with a pattern, such as `[A11y]: `. The contributor then finishes the title rather than starting from scratch."
-  },
-  {
-    "speaker": "JAMIE",
-    "text": "And fifth, the big one: `body`."
-  },
-  {
-    "speaker": "ALEX",
-    "text": "Yes. The body is the definition of the form fields. This is where you choose input types and specify labels, descriptions, placeholders, and validation rules."
-  },
-  {
-    "speaker": "PAUSE",
-    "text": ""
-  },
-  {
-    "speaker": "JAMIE",
-    "text": "Now I want to zoom in on the anatomy of a field, because that's where YAML can feel intimidating."
-  },
-  {
-    "speaker": "ALEX",
-    "text": "A field usually starts with a `type`. Then it often includes an `id`, which is an internal identifier not typically shown to the user. Inside `attributes`, you define what the user experiences: the visible label, the description, placeholder text, and sometimes options. Then under `validations`, you can declare whether the field is required."
-  },
-  {
-    "speaker": "JAMIE",
-    "text": "So `id` is for the template structure, while `label` is for the human filling it out."
-  },
-  {
-    "speaker": "ALEX",
-    "text": "Exactly. And that distinction is important. Good labels should be plain language and user-centered. Good IDs should be stable, concise, and meaningful to the template author."
-  },
-  {
-    "speaker": "PAUSE",
-    "text": ""
-  },
-  {
-    "speaker": "JAMIE",
-    "text": "Let's cover the field types. The source is very explicit here."
-  },
-  {
-    "speaker": "ALEX",
-    "text": "There are five primary field types highlighted. First, `markdown`. This is display-only text. It's not an input field. You use it for instructions, context, reminders, or notices. In the example template, a markdown block thanks the reporter and explains why their feedback matters. Second, `input`. That's a single-line text field. Use it for short answers like file names, URLs, versions, or a specific location where a problem occurred. Third, `textarea`. That's a multi-line text area for longer responses, such as describing the barrier, outlining steps to reproduce, or adding context. Fourth, `dropdown`. This presents predefined options, like assistive technology type or severity. It reduces ambiguity and makes responses easier to sort and compare. Fifth, `checkboxes`. These allow multiple selections and are good for acknowledgments, checklists, or multi-select categories."
-  },
-  {
-    "speaker": "JAMIE",
-    "text": "And the key design question is not just what fields exist, but when to use each one."
-  },
-  {
-    "speaker": "ALEX",
-    "text": "Exactly. If the answer should be brief and unique, use `input`. If it requires explanation, use `textarea`. If the answer should come from a controlled set, use `dropdown`. If users may need to select several items, use `checkboxes`. And if you want to communicate without collecting data, use `markdown`."
-  },
-  {
-    "speaker": "PAUSE",
-    "text": ""
-  },
-  {
-    "speaker": "JAMIE",
-    "text": "Can we walk through the accessibility report example from the solution?"
-  },
-  {
-    "speaker": "ALEX",
-    "text": "Absolutely. It begins with a markdown block that sets a respectful tone and explains why reporting accessibility barriers matters. That kind of context can make reporting feel safer and more purposeful. Then there's an input field asking where the barrier occurred. The label is clear. The description explains what kinds of answers are acceptable, like a file name, URL, or description of the location. A placeholder gives an example. Next comes a required textarea: describe the barrier. The prompt combines what happened with what the user expected to happen. That encourages useful, comparative reporting. Then there's a dropdown for assistive technology, with options like NVDA, JAWS, VoiceOver, screen magnifier, voice control, switch access, keyboard only, Other, or Not applicable."
-  },
-  {
-    "speaker": "JAMIE",
-    "text": "That option list is a subtle accessibility win, because it acknowledges different toolchains and avoids assuming everyone uses the same setup."
-  },
-  {
-    "speaker": "ALEX",
-    "text": "Exactly. And then another dropdown captures severity: blocked, difficult but workable, or minor. That helps maintainers prioritize."
-  },
-  {
-    "speaker": "JAMIE",
-    "text": "So the structure is not just neat. It captures information maintainers actually need."
-  },
-  {
-    "speaker": "ALEX",
-    "text": "Right. That's why templates matter."
-  },
-  {
-    "speaker": "PAUSE",
-    "text": ""
-  },
-  {
-    "speaker": "JAMIE",
-    "text": "The chapter also compares Markdown templates and YAML templates. Let's make that concrete."
-  },
-  {
-    "speaker": "ALEX",
-    "text": "A Markdown template is simpler and more manual. It uses YAML frontmatter at the top, then plain Markdown sections below. One important detail: in Markdown templates, the frontmatter uses `about`, not `description`."
-  },
-  {
-    "speaker": "JAMIE",
-    "text": "That's a small syntax difference that could trip people up."
-  },
-  {
-    "speaker": "ALEX",
-    "text": "Definitely. A Markdown template might start with frontmatter like name, about, title, and labels, wrapped in triple-dash lines. Then the body might include sections such as Problem, Context, and Solution Ideas, often with HTML comments giving instructions."
-  },
-  {
-    "speaker": "JAMIE",
-    "text": "So the user sees headings and writes under them, but there are no typed controls like dropdown menus."
-  },
-  {
-    "speaker": "ALEX",
-    "text": "Correct. Markdown templates are useful when you want flexibility, when the structure is lightweight, or when a form would be overkill. YAML forms are better when you want consistency, stronger guidance, built-in required fields, and a more structured reporting experience."
-  },
-  {
-    "speaker": "JAMIE",
-    "text": "The chapter also calls out when to choose each."
-  },
-  {
-    "speaker": "ALEX",
-    "text": "Yes. Use Markdown when a looser format is acceptable or when you want maximum compatibility and simplicity. Use YAML forms when you want better structure, clearer required input, and a more accessible guided workflow for frequent issue patterns."
-  },
-  {
-    "speaker": "PAUSE",
-    "text": ""
-  },
-  {
-    "speaker": "JAMIE",
-    "text": "There's also a very practical list of common Markdown bug-report sections in the source. Can we include those?"
-  },
-  {
-    "speaker": "ALEX",
-    "text": "We should. Typical bug-report sections include Describe the Bug, Steps to Reproduce, Expected Behavior, Actual Behavior, Environment, and Additional Context."
-  },
-  {
-    "speaker": "JAMIE",
-    "text": "And for accessibility-focused reporting, there are even more specific fields."
-  },
-  {
-    "speaker": "ALEX",
-    "text": "Yes: Component Affected, Your Assistive Technology Setup, Expected Behavior, Actual Behavior, Steps to Reproduce, WCAG Success Criterion if known, Additional Context, and Before Submitting."
-  },
-  {
-    "speaker": "JAMIE",
-    "text": "That \"if known\" phrasing matters."
-  },
-  {
-    "speaker": "ALEX",
-    "text": "It does. It invites expert detail without making novices feel excluded. Good accessibility templates welcome useful specificity without requiring people to speak in standards language."
-  },
-  {
-    "speaker": "JAMIE",
-    "text": "And the chapter also emphasizes accessibility considerations for Markdown templates."
-  },
-  {
-    "speaker": "ALEX",
-    "text": "Right. Because Markdown templates are more manual, instructions must be especially clear. Use meaningful headings, concise prompts, and plain language. Avoid burying essential instructions in large blocks of text. Think about screen reader navigation and cognitive load."
-  },
-  {
-    "speaker": "PAUSE",
-    "text": ""
-  },
-  {
-    "speaker": "JAMIE",
-    "text": "What about actually creating files? The chapter includes both browser and VS Code workflows."
-  },
-  {
-    "speaker": "ALEX",
-    "text": "Yes. For Markdown templates, you can create them manually in the repository browser or in VS Code. File naming conventions matter because the file must live in `.github/ISSUE_TEMPLATE/`, and the extension determines the kind of template GitHub recognizes. YAML form templates should use `.yml`. Markdown templates use `.md`."
-  },
-  {
-    "speaker": "JAMIE",
-    "text": "And indentation matters a lot in YAML."
-  },
-  {
-    "speaker": "ALEX",
-    "text": "It does. YAML is sensitive to indentation. Use spaces, typically two spaces per level, and do not use tabs. Also make sure colons are followed by a space where appropriate. These tiny syntax details are often the difference between a working template and a broken one."
-  },
-  {
-    "speaker": "PAUSE",
-    "text": ""
-  },
-  {
-    "speaker": "JAMIE",
-    "text": "Let's go through the guided challenge sequence, because it's a big part of the chapter."
-  },
-  {
-    "speaker": "ALEX",
-    "text": "Challenge 14.1 is analysis. You open the existing workshop registration template on GitHub and study it. The goal is to identify the frontmatter fields: `name`, `description`, `title`, and `labels`. Then you inspect the body and notice the field types used there: markdown, input, dropdown, and textarea."
-  },
-  {
-    "speaker": "JAMIE",
-    "text": "And you also inspect field metadata."
-  },
-  {
-    "speaker": "ALEX",
-    "text": "Yes. For each field, identify the `id`, the visible `label`, the explanatory `description`, any `placeholder`, and whether the field is required. One specific prompt in the chapter is to search the registration template for the word \"accessible\" and notice that the template explicitly mentions screen reader compatibility. That models professional accessibility thinking."
-  },
-  {
-    "speaker": "JAMIE",
-    "text": "And the final reflection is to compare this with a blank issue."
-  },
-  {
-    "speaker": "ALEX",
-    "text": "Exactly. A blank issue gives you one giant text box. A template gives structure, guidance, and clarity about what matters."
-  },
-  {
-    "speaker": "PAUSE",
-    "text": ""
-  },
-  {
-    "speaker": "ALEX",
-    "text": "Challenge 14.2 is the remix. You take the structure of the registration template and adapt it for a new purpose."
-  },
-  {
-    "speaker": "JAMIE",
-    "text": "The chapter gives some example contexts: bug report, event attendance, product research, accessibility audit request."
-  },
-  {
-    "speaker": "ALEX",
-    "text": "Right. The instruction is to keep the YAML skeleton. That means keep the overall structure: `name`, `description`, `title`, `labels`, and `body`. Keep the internal field pattern too: `type`, `id`, `attributes`, and `validations`."
-  },
-  {
-    "speaker": "JAMIE",
-    "text": "But change the content."
-  },
-  {
-    "speaker": "ALEX",
-    "text": "Exactly. Change the context-specific parts: labels, visible field names, descriptions, placeholders, and dropdown options. And rethink which fields should be required."
-  },
-  {
-    "speaker": "JAMIE",
-    "text": "Then validate the YAML."
-  },
-  {
-    "speaker": "ALEX",
-    "text": "Yes. The chapter explicitly suggests using a YAML validator like yamllint.com. Fix any errors, then commit and push the template file."
-  },
-  {
-    "speaker": "JAMIE",
-    "text": "And the \"done\" condition is a committed remixed template that validates."
-  },
-  {
-    "speaker": "ALEX",
-    "text": "Correct."
-  },
-  {
-    "speaker": "PAUSE",
-    "text": ""
-  },
-  {
-    "speaker": "JAMIE",
-    "text": "Challenge 14.3 is optional and switches formats."
-  },
-  {
-    "speaker": "ALEX",
-    "text": "Yes. You create a Markdown-based issue template from scratch. The instructions say to create a new file in `.github/ISSUE_TEMPLATE/` with an `.md` extension, add YAML frontmatter, and then add a few sections with HTML comment guidance."
-  },
-  {
-    "speaker": "JAMIE",
-    "text": "And again, the frontmatter detail matters: Markdown templates use `about` instead of `description`."
-  },
-  {
-    "speaker": "ALEX",
-    "text": "Exactly. That distinction is easy to miss."
-  },
-  {
-    "speaker": "PAUSE",
-    "text": ""
-  },
-  {
-    "speaker": "ALEX",
-    "text": "Challenge 14.4 is also optional: test your template in the template chooser. Go to your repository on GitHub, activate New Issue, make sure your template appears, then open it and file a test issue."
-  },
-  {
-    "speaker": "JAMIE",
-    "text": "That test is important because syntax can be valid but the overall behavior can still be wrong if the file is misplaced or named incorrectly."
-  },
-  {
-    "speaker": "ALEX",
-    "text": "Exactly. Testing verifies the real user experience."
-  },
-  {
-    "speaker": "PAUSE",
-    "text": ""
-  },
-  {
-    "speaker": "JAMIE",
-    "text": "The challenge issue file itself includes a minimum YAML structure. Can we restate that as a checklist?"
-  },
-  {
-    "speaker": "ALEX",
-    "text": "Yes. At minimum, your challenge template should include: - a `name` field, - a `description` field, - a `title` field using a prefix pattern, - and at least one `textarea` or `input` field in the `body`."
-  },
-  {
-    "speaker": "JAMIE",
-    "text": "And the topic is flexible."
-  },
-  {
-    "speaker": "ALEX",
-    "text": "Very flexible. The challenge explicitly suggests possibilities such as an accessibility feedback form, workshop improvement suggestion, bug report for a specific tool, or a structured feature request. The solution reference reinforces that almost any topic works: bug report, feature request, session evaluation, help request, and so on."
-  },
-  {
-    "speaker": "JAMIE",
-    "text": "So the point is not to copy one exact template. It's to show you understand the pattern."
-  },
-  {
-    "speaker": "ALEX",
-    "text": "Exactly."
-  },
-  {
-    "speaker": "PAUSE",
-    "text": ""
-  },
-  {
-    "speaker": "JAMIE",
-    "text": "Let's make the \"what matters\" part explicit, because learners often worry they need the exact same fields as the example."
-  },
-  {
-    "speaker": "ALEX",
-    "text": "The solution says the learning objective is understanding structured issue templates as a way to guide contributors. If your YAML file has a `name`, a `description`, and at least one `body` field, you've met the essential learning target for the challenge."
-  },
-  {
-    "speaker": "JAMIE",
-    "text": "That's reassuring."
-  },
-  {
-    "speaker": "ALEX",
-    "text": "Yes. Precision matters, but creativity is allowed. Alternate valid templates are expected."
-  },
-  {
-    "speaker": "PAUSE",
-    "text": ""
-  },
-  {
-    "speaker": "JAMIE",
-    "text": "The chapter also spends time on navigating the template picker. What should audio learners understand there?"
-  },
-  {
-    "speaker": "ALEX",
-    "text": "When you activate New Issue in a repository with templates, GitHub may present a list of template choices. Screen reader users should expect to navigate through each template option, hear the template name and usually its descriptive text, and then activate the associated action such as Get started."
-  },
-  {
-    "speaker": "JAMIE",
-    "text": "And the chapter specifically includes a screen reader-oriented hands-on exercise."
-  },
-  {
-    "speaker": "ALEX",
-    "text": "It does. In Exercise A, learners are told to go to the Accessibility Agents repository issues section, open the template chooser, inspect it with their screen reader, select a template, navigate the form fields, fill in the form, preview before submitting, submit the issue, and then reflect on the experience."
-  },
-  {
-    "speaker": "JAMIE",
-    "text": "That reflection step matters for accessibility learning."
-  },
-  {
-    "speaker": "ALEX",
-    "text": "Very much. You're not just clicking through. You're evaluating whether the structure supports efficient, understandable input."
-  },
-  {
-    "speaker": "PAUSE",
-    "text": ""
-  },
-  {
-    "speaker": "JAMIE",
-    "text": "Can we cover the broader hands-on activities too, even if the challenge focus is issue templates?"
-  },
-  {
-    "speaker": "ALEX",
-    "text": "Yes, because the source explicitly includes them and we shouldn't omit that administrative and workflow context. Exercise B has learners add the accessibility bug report template to their own fork. The steps are: clone your fork, open it in VS Code, navigate to the templates folder, create a new template file, paste in the accessibility template YAML, verify syntax, create a branch and commit, test the template on GitHub web, test again with your screen reader, and optionally merge your branch."
-  },
-  {
-    "speaker": "JAMIE",
-    "text": "That's a complete local-to-web workflow."
-  },
-  {
-    "speaker": "ALEX",
-    "text": "Exactly. Then Exercise C is about submitting the work upstream as a pull request. You verify the template is ready, create the PR, write a strong title and description, review before submitting, submit it, respond to feedback, and celebrate the contribution."
-  },
-  {
-    "speaker": "JAMIE",
-    "text": "And the PR description itself is structured too."
-  },
-  {
-    "speaker": "ALEX",
-    "text": "Yes. The source gives prompts like: What does this PR do? Why is this useful? How was this tested? Related issue. That mirrors the general principle we've been teaching: structure helps reviewers too, not just issue reporters."
-  },
-  {
-    "speaker": "PAUSE",
-    "text": ""
-  },
-  {
-    "speaker": "JAMIE",
-    "text": "That connects nicely to the chapter's section on pull request templates."
-  },
-  {
-    "speaker": "ALEX",
-    "text": "It does. The chapter includes pull request templates as a parallel concept. PR templates can ask for Description, Type of Change, How to Test, Accessibility Considerations, and Related Issues."
-  },
-  {
-    "speaker": "JAMIE",
-    "text": "So templates are part of a larger idea: guiding contribution quality across the workflow."
-  },
-  {
-    "speaker": "ALEX",
-    "text": "Exactly. Issue templates improve incoming reports. PR templates improve proposed changes. Both reduce ambiguity and make collaboration easier."
-  },
-  {
-    "speaker": "PAUSE",
-    "text": ""
-  },
-  {
-    "speaker": "JAMIE",
-    "text": "There's also a section on building an accessibility bug report template. We've touched that, but what makes that template accessible according to the chapter?"
-  },
-  {
-    "speaker": "ALEX",
-    "text": "Several things. It asks for concrete, relevant information without overwhelming the user. It uses clear labels and descriptions. It includes assistive technology setup, which is crucial context in accessibility debugging. It gives structured severity choices to support prioritization. And it balances required and optional fields so users can provide enough detail without facing an exhausting form."
-  },
-  {
-    "speaker": "JAMIE",
-    "text": "And there's a second example too, a feature request form."
-  },
-  {
-    "speaker": "ALEX",
-    "text": "Yes. That signals that the same design principles apply beyond bug reporting. Once you understand the field types and the top-level structure, you can design templates for many recurring contribution patterns in your own projects."
-  },
-  {
-    "speaker": "PAUSE",
-    "text": ""
-  },
-  {
-    "speaker": "JAMIE",
-    "text": "Let's talk about designing your own project template, because that's one of the final exercises."
-  },
-  {
-    "speaker": "ALEX",
-    "text": "The chapter breaks that into practical parts: choose your project, identify recurring issue patterns, decide which fields are required, decide which are optional, write placeholders and help text, test locally, optionally deploy to GitHub and test with another person, then reflect on the design."
-  },
-  {
-    "speaker": "JAMIE",
-    "text": "That reflection step is interesting again."
-  },
-  {
-    "speaker": "ALEX",
-    "text": "Yes. Template design is user experience design. After testing, ask: Did contributors know what to enter? Were the field labels understandable? Did the required fields collect enough information without creating friction? Was the flow comfortable with a screen reader?"
-  },
-  {
-    "speaker": "PAUSE",
-    "text": ""
-  },
-  {
-    "speaker": "JAMIE",
-    "text": "We should also cover common problems and troubleshooting, because the challenge template includes a specific \"If you get stuck\" table."
-  },
-  {
-    "speaker": "ALEX",
-    "text": "Good point. Common problem one: YAML syntax error. The recommended fix is to check indentation carefully, use two spaces rather than tabs, and make sure colons are followed by spaces. Problem two: the template does not appear in the issue chooser. Check that the file is in `.github/ISSUE_TEMPLATE/`, has a `.yml` extension if it's a YAML form template, and includes a `name` field. Problem three: you don't know what topic to choose. The advice is simple: any structured form works. You can build a feedback form, recipe, book review, help request, accessibility feedback form, or bug report. Problem four: you finished but want to verify your approach. Use the reference solution."
-  },
-  {
-    "speaker": "JAMIE",
-    "text": "So the troubleshooting advice is both technical and motivational."
-  },
-  {
-    "speaker": "ALEX",
-    "text": "Exactly."
-  },
-  {
-    "speaker": "PAUSE",
-    "text": ""
-  },
-  {
-    "speaker": "JAMIE",
-    "text": "What are the expected overall outcomes for this chapter?"
-  },
-  {
-    "speaker": "ALEX",
-    "text": "Learners should understand template structure, including YAML frontmatter concepts, field types, and validation. They should be able to analyze and remix professional templates. They should be able to create both YAML form and Markdown templates. They should understand why templates improve contribution quality. And they should see how templates reduce maintainer effort by guiding contributors toward complete, actionable reports."
-  },
-  {
-    "speaker": "JAMIE",
-    "text": "That's a strong payoff for what initially looks like just a formatting lesson."
-  },
-  {
-    "speaker": "ALEX",
-    "text": "It is. This is contribution design."
-  },
-  {
-    "speaker": "PAUSE",
-    "text": ""
-  },
-  {
-    "speaker": "JAMIE",
-    "text": "Let's return to the specific challenge evidence, because learners often need that exact administrative step."
-  },
-  {
-    "speaker": "ALEX",
-    "text": "To complete Challenge 14, you open your assigned challenge issue and post a completion comment. The chapter gives a sample format including whether you analyzed the registration template, what context you remixed it for, whether the YAML validates, where the template was committed, whether you created the optional Markdown template, and whether you tested it in the chooser. Then you close the challenge issue when done."
-  },
-  {
-    "speaker": "JAMIE",
-    "text": "So there are two outputs: the actual template file in your repository, and the evidence comment in the assigned challenge issue."
-  },
-  {
-    "speaker": "ALEX",
-    "text": "Exactly."
-  },
-  {
-    "speaker": "PAUSE",
-    "text": ""
-  },
-  {
-    "speaker": "JAMIE",
-    "text": "Before we wrap, can you give a compact mental model learners can carry into VS Code right now?"
-  },
-  {
-    "speaker": "ALEX",
-    "text": "Sure. Think of a YAML issue template as having two layers. Layer one is chooser metadata: - `name` is what the contributor sees. - `description` explains when to use it. - `title` gives a starting pattern. - `labels` classify the issue automatically. Layer two is the form itself: - `body` contains fields. - Each field has a `type`. - Many fields also have an `id`, visible `label`, supportive `description`, optional `placeholder`, and `validations` such as `required: true`. Then ask yourself three design questions: - What information do maintainers need? - What structure will make that information easier to provide? - How can I make the form clear and accessible for someone using assistive technology?"
-  },
-  {
-    "speaker": "JAMIE",
-    "text": "That's excellent."
-  },
-  {
-    "speaker": "PAUSE",
-    "text": ""
-  },
-  {
-    "speaker": "ALEX",
-    "text": "One final note on sources. The chapter points learners to official GitHub Docs and the GitHub Changelog as the authoritative references for current template behavior. That matters because GitHub's interface and features can evolve."
-  },
-  {
-    "speaker": "JAMIE",
-    "text": "So if a label changes in the UI or a docs example shifts, trust the official docs for the latest details."
-  },
-  {
-    "speaker": "ALEX",
-    "text": "Exactly."
-  },
-  {
-    "speaker": "JAMIE",
-    "text": "All right. Your next move is simple: inspect a real template, remix one for your own purpose, validate the YAML, test it in GitHub, and submit your evidence."
-  },
-  {
-    "speaker": "ALEX",
-    "text": "And as you do, remember what you're really learning: not just how to write YAML, but how to design a contribution path that is clear, respectful, and accessible."
-  },
-  {
-    "speaker": "JAMIE",
-    "text": "See you next time."
-  }
+﻿[
+    {
+        "speaker":  "ALEX",
+        "text":  "Welcome back. Today we\u0027re working with one of those GitHub features that quietly makes open source collaboration much easier: issue templates."
+    },
+    {
+        "speaker":  "JAMIE",
+        "text":  "And this is a great one for people who have ever opened a blank issue form and thought, what exactly am I supposed to put here?"
+    },
+    {
+        "speaker":  "ALEX",
+        "text":  "Exactly. An issue template turns that blank box into a guided experience. Instead of guessing what maintainers need, contributors get prompts, structure, and clear required fields. That reduces back-and-forth, improves quality, and helps teams act on issues faster."
+    },
+    {
+        "speaker":  "JAMIE",
+        "text":  "So this is not just about formatting. It\u0027s about making contributions clearer and more usable."
+    },
+    {
+        "speaker":  "ALEX",
+        "text":  "Yes, and especially in accessibility work. If someone is reporting an accessibility barrier, a vague report can be hard to reproduce. A thoughtful template can ask where the problem occurred, what assistive technology was involved, what the expected behavior was, and how severe the barrier is."
+    },
+    {
+        "speaker":  "PAUSE",
+        "text":  ""
+    },
+    {
+        "speaker":  "JAMIE",
+        "text":  "Before we get into the design challenge, what should learners already have in place?"
+    },
+    {
+        "speaker":  "ALEX",
+        "text":  "A few practical things. First, you should already know how to work with GitHub issues at a basic level. Second, you need a repository where you can create or edit files, usually your fork or your own repo. Third, it really helps to use an editor with YAML syntax highlighting, such as VS Code."
+    },
+    {
+        "speaker":  "JAMIE",
+        "text":  "And some things are recommended but not strictly required, right?"
+    },
+    {
+        "speaker":  "ALEX",
+        "text":  "Right. Familiarity with GitHub Copilot can help if you want to generate variations, but it\u0027s optional. Basic terminal comfort is useful, though you can also use the GitHub web editor or github.dev. And if you already filled out the workshop registration template earlier in this course, that template becomes a learning example now."
+    },
+    {
+        "speaker":  "JAMIE",
+        "text":  "I like that. You\u0027ve already used a professional issue template, so now you reverse-engineer it."
+    },
+    {
+        "speaker":  "ALEX",
+        "text":  "Exactly. Also, there\u0027s an administrative note here: this chapter is meant to prepare you for a later workflow using a template-building agent. The advice is to complete the manual template chapter first, then use the automation later."
+    },
+    {
+        "speaker":  "JAMIE",
+        "text":  "And time-wise?"
+    },
+    {
+        "speaker":  "ALEX",
+        "text":  "Plan roughly two to two and a half hours if you do the exercises and some YAML troubleshooting."
+    },
+    {
+        "speaker":  "PAUSE",
+        "text":  ""
+    },
+    {
+        "speaker":  "ALEX",
+        "text":  "The learning pattern for this challenge is analyze, remix, create, and test."
+    },
+    {
+        "speaker":  "JAMIE",
+        "text":  "That feels approachable. First understand an existing template, then adapt one, then optionally build another version from scratch, then verify it works."
+    },
+    {
+        "speaker":  "ALEX",
+        "text":  "That\u0027s the idea. The workshop recommendation frames Challenge 14 as design-focused rather than automation-focused. You\u0027re producing evidence of understanding, often as an issue comment or a pull request, rather than trying to satisfy a complicated code runtime."
+    },
+    {
+        "speaker":  "JAMIE",
+        "text":  "Though there is still one small autograded requirement in the challenge template itself."
+    },
+    {
+        "speaker":  "ALEX",
+        "text":  "Yes. For the assigned challenge issue, the autograder checks that a YAML file exists in the repository\u0027s `.github/ISSUE_TEMPLATE/` folder and that it contains a valid `name` field. But pedagogically, the real goal is broader: understanding how structured templates guide contributions."
+    },
+    {
+        "speaker":  "PAUSE",
+        "text":  ""
+    },
+    {
+        "speaker":  "JAMIE",
+        "text":  "Let\u0027s define the basic concept clearly. What is an issue template?"
+    },
+    {
+        "speaker":  "ALEX",
+        "text":  "An issue template is a reusable structure GitHub offers when someone clicks New Issue. It can be a Markdown template or a YAML form-based template. Both help contributors provide the right information. The difference is in how structured and interactive they are."
+    },
+    {
+        "speaker":  "JAMIE",
+        "text":  "So a Markdown template is more like a prewritten document with headings and instructions."
+    },
+    {
+        "speaker":  "ALEX",
+        "text":  "Yes. It usually opens a text area containing sections like Problem, Context, Steps to Reproduce, or Additional Context. A YAML form template is more interactive. It creates actual fields like text inputs, dropdowns, textareas, and checkboxes."
+    },
+    {
+        "speaker":  "JAMIE",
+        "text":  "And for accessibility, the YAML form often wins."
+    },
+    {
+        "speaker":  "ALEX",
+        "text":  "Often, yes. A good YAML form can make navigation more predictable, clearly indicate required fields, constrain answers when appropriate, and reduce cognitive load. It gives contributors helpful labels and descriptions instead of asking them to infer the structure."
+    },
+    {
+        "speaker":  "PAUSE",
+        "text":  ""
+    },
+    {
+        "speaker":  "JAMIE",
+        "text":  "How do templates work on GitHub at the repository level?"
+    },
+    {
+        "speaker":  "ALEX",
+        "text":  "GitHub looks in a special folder: `.github/ISSUE_TEMPLATE/`. Files there can appear in the issue template chooser. If they\u0027re YAML form templates, they typically use the `.yml` extension. Markdown templates use `.md` and include frontmatter."
+    },
+    {
+        "speaker":  "JAMIE",
+        "text":  "And when someone clicks New Issue, GitHub may show a template picker."
+    },
+    {
+        "speaker":  "ALEX",
+        "text":  "Right. In that chooser, the template\u0027s name appears as the visible option, and the description appears below it as helper text. Once the user selects it, GitHub generates the issue form or prefilled issue body."
+    },
+    {
+        "speaker":  "JAMIE",
+        "text":  "And there\u0027s also repository-level configuration, like `config.yml`, though this lesson seems more focused on individual template files."
+    },
+    {
+        "speaker":  "ALEX",
+        "text":  "Yes. The chapter mentions configuration and the chooser behavior, including that some setups can change how templates are presented. It also notes there are ways users may bypass the chooser in some situations, so maintainers should think of templates as guidance, not a magical enforcement system."
+    },
+    {
+        "speaker":  "JAMIE",
+        "text":  "That\u0027s useful. Templates improve the default path, even if they don\u0027t control every path."
+    },
+    {
+        "speaker":  "PAUSE",
+        "text":  ""
+    },
+    {
+        "speaker":  "ALEX",
+        "text":  "Now let\u0027s ground this in the challenge. The challenge issue itself is actually built from a YAML template. That\u0027s a teaching move."
+    },
+    {
+        "speaker":  "JAMIE",
+        "text":  "So the assignment is also an example of the thing you\u0027re learning."
+    },
+    {
+        "speaker":  "ALEX",
+        "text":  "Exactly. In the challenge template, the top-level keys are doing important work. There\u0027s a `name`, which is shown in the chooser. There\u0027s a `description`, which tells the user what the template is for. There\u0027s a `title`, which pre-fills the issue title using a pattern. In the challenge it includes the username token so the issue title can identify the learner. There are `labels`, which are automatically applied to issues created from that template. And there\u0027s a `body`, which defines the form fields themselves."
+    },
+    {
+        "speaker":  "JAMIE",
+        "text":  "That mirrors the solution reference too."
+    },
+    {
+        "speaker":  "ALEX",
+        "text":  "It does. The solution file gives a complete example: an accessibility report template. The comments in that example are especially instructive because they annotate each part."
+    },
+    {
+        "speaker":  "PAUSE",
+        "text":  ""
+    },
+    {
+        "speaker":  "JAMIE",
+        "text":  "Let\u0027s unpack those top-level keys one by one, because these are must-know."
+    },
+    {
+        "speaker":  "ALEX",
+        "text":  "First, `name`. This is what someone sees in the template chooser after clicking New Issue. It should be short, clear, and specific enough that a contributor knows when to use it."
+    },
+    {
+        "speaker":  "JAMIE",
+        "text":  "Like \"Accessibility Report.\""
+    },
+    {
+        "speaker":  "ALEX",
+        "text":  "Exactly. Second, `description`. This appears below the name in the chooser and gives one sentence of context, like \"Report an accessibility barrier in workshop materials.\""
+    },
+    {
+        "speaker":  "JAMIE",
+        "text":  "Third, `labels`."
+    },
+    {
+        "speaker":  "ALEX",
+        "text":  "Those are automatically applied to the issue. In the example, labels like `accessibility` and `bug` categorize the issue immediately. That helps triage."
+    },
+    {
+        "speaker":  "JAMIE",
+        "text":  "Fourth, `title`."
+    },
+    {
+        "speaker":  "ALEX",
+        "text":  "That pre-fills the issue title with a pattern, such as `[A11y]: `. The contributor then finishes the title rather than starting from scratch."
+    },
+    {
+        "speaker":  "JAMIE",
+        "text":  "And fifth, the big one: `body`."
+    },
+    {
+        "speaker":  "ALEX",
+        "text":  "Yes. The body is the definition of the form fields. This is where you choose input types and specify labels, descriptions, placeholders, and validation rules."
+    },
+    {
+        "speaker":  "PAUSE",
+        "text":  ""
+    },
+    {
+        "speaker":  "JAMIE",
+        "text":  "Now I want to zoom in on the anatomy of a field, because that\u0027s where YAML can feel intimidating."
+    },
+    {
+        "speaker":  "ALEX",
+        "text":  "A field usually starts with a `type`. Then it often includes an `id`, which is an internal identifier not typically shown to the user. Inside `attributes`, you define what the user experiences: the visible label, the description, placeholder text, and sometimes options. Then under `validations`, you can declare whether the field is required."
+    },
+    {
+        "speaker":  "JAMIE",
+        "text":  "So `id` is for the template structure, while `label` is for the human filling it out."
+    },
+    {
+        "speaker":  "ALEX",
+        "text":  "Exactly. And that distinction is important. Good labels should be plain language and user-centered. Good IDs should be stable, concise, and meaningful to the template author."
+    },
+    {
+        "speaker":  "PAUSE",
+        "text":  ""
+    },
+    {
+        "speaker":  "JAMIE",
+        "text":  "Let\u0027s cover the field types. The source is very explicit here."
+    },
+    {
+        "speaker":  "ALEX",
+        "text":  "There are five primary field types highlighted. First, `markdown`. This is display-only text. It\u0027s not an input field. You use it for instructions, context, reminders, or notices. In the example template, a markdown block thanks the reporter and explains why their feedback matters. Second, `input`. That\u0027s a single-line text field. Use it for short answers like file names, URLs, versions, or a specific location where a problem occurred. Third, `textarea`. That\u0027s a multi-line text area for longer responses, such as describing the barrier, outlining steps to reproduce, or adding context. Fourth, `dropdown`. This presents predefined options, like assistive technology type or severity. It reduces ambiguity and makes responses easier to sort and compare. Fifth, `checkboxes`. These allow multiple selections and are good for acknowledgments, checklists, or multi-select categories."
+    },
+    {
+        "speaker":  "JAMIE",
+        "text":  "And the key design question is not just what fields exist, but when to use each one."
+    },
+    {
+        "speaker":  "ALEX",
+        "text":  "Exactly. If the answer should be brief and unique, use `input`. If it requires explanation, use `textarea`. If the answer should come from a controlled set, use `dropdown`. If users may need to select several items, use `checkboxes`. And if you want to communicate without collecting data, use `markdown`."
+    },
+    {
+        "speaker":  "PAUSE",
+        "text":  ""
+    },
+    {
+        "speaker":  "JAMIE",
+        "text":  "Can we walk through the accessibility report example from the solution?"
+    },
+    {
+        "speaker":  "ALEX",
+        "text":  "Absolutely. It begins with a markdown block that sets a respectful tone and explains why reporting accessibility barriers matters. That kind of context can make reporting feel safer and more purposeful. Then there\u0027s an input field asking where the barrier occurred. The label is clear. The description explains what kinds of answers are acceptable, like a file name, URL, or description of the location. A placeholder gives an example. Next comes a required textarea: describe the barrier. The prompt combines what happened with what the user expected to happen. That encourages useful, comparative reporting. Then there\u0027s a dropdown for assistive technology, with options like NVDA, JAWS, VoiceOver, screen magnifier, voice control, switch access, keyboard only, Other, or Not applicable."
+    },
+    {
+        "speaker":  "JAMIE",
+        "text":  "That option list is a subtle accessibility win, because it acknowledges different toolchains and avoids assuming everyone uses the same setup."
+    },
+    {
+        "speaker":  "ALEX",
+        "text":  "Exactly. And then another dropdown captures severity: blocked, difficult but workable, or minor. That helps maintainers prioritize."
+    },
+    {
+        "speaker":  "JAMIE",
+        "text":  "So the structure is not just neat. It captures information maintainers actually need."
+    },
+    {
+        "speaker":  "ALEX",
+        "text":  "Right. That\u0027s why templates matter."
+    },
+    {
+        "speaker":  "PAUSE",
+        "text":  ""
+    },
+    {
+        "speaker":  "JAMIE",
+        "text":  "The chapter also compares Markdown templates and YAML templates. Let\u0027s make that concrete."
+    },
+    {
+        "speaker":  "ALEX",
+        "text":  "A Markdown template is simpler and more manual. It uses YAML frontmatter at the top, then plain Markdown sections below. One important detail: in Markdown templates, the frontmatter uses `about`, not `description`."
+    },
+    {
+        "speaker":  "JAMIE",
+        "text":  "That\u0027s a small syntax difference that could trip people up."
+    },
+    {
+        "speaker":  "ALEX",
+        "text":  "Definitely. A Markdown template might start with frontmatter like name, about, title, and labels, wrapped in triple-dash lines. Then the body might include sections such as Problem, Context, and Solution Ideas, often with HTML comments giving instructions."
+    },
+    {
+        "speaker":  "JAMIE",
+        "text":  "So the user sees headings and writes under them, but there are no typed controls like dropdown menus."
+    },
+    {
+        "speaker":  "ALEX",
+        "text":  "Correct. Markdown templates are useful when you want flexibility, when the structure is lightweight, or when a form would be overkill. YAML forms are better when you want consistency, stronger guidance, built-in required fields, and a more structured reporting experience."
+    },
+    {
+        "speaker":  "JAMIE",
+        "text":  "The chapter also calls out when to choose each."
+    },
+    {
+        "speaker":  "ALEX",
+        "text":  "Yes. Use Markdown when a looser format is acceptable or when you want maximum compatibility and simplicity. Use YAML forms when you want better structure, clearer required input, and a more accessible guided workflow for frequent issue patterns."
+    },
+    {
+        "speaker":  "PAUSE",
+        "text":  ""
+    },
+    {
+        "speaker":  "JAMIE",
+        "text":  "There\u0027s also a very practical list of common Markdown bug-report sections in the source. Can we include those?"
+    },
+    {
+        "speaker":  "ALEX",
+        "text":  "We should. Typical bug-report sections include Describe the Bug, Steps to Reproduce, Expected Behavior, Actual Behavior, Environment, and Additional Context."
+    },
+    {
+        "speaker":  "JAMIE",
+        "text":  "And for accessibility-focused reporting, there are even more specific fields."
+    },
+    {
+        "speaker":  "ALEX",
+        "text":  "Yes: Component Affected, Your Assistive Technology Setup, Expected Behavior, Actual Behavior, Steps to Reproduce, WCAG Success Criterion if known, Additional Context, and Before Submitting."
+    },
+    {
+        "speaker":  "JAMIE",
+        "text":  "That \"if known\" phrasing matters."
+    },
+    {
+        "speaker":  "ALEX",
+        "text":  "It does. It invites expert detail without making novices feel excluded. Good accessibility templates welcome useful specificity without requiring people to speak in standards language."
+    },
+    {
+        "speaker":  "JAMIE",
+        "text":  "And the chapter also emphasizes accessibility considerations for Markdown templates."
+    },
+    {
+        "speaker":  "ALEX",
+        "text":  "Right. Because Markdown templates are more manual, instructions must be especially clear. Use meaningful headings, concise prompts, and plain language. Avoid burying essential instructions in large blocks of text. Think about screen reader navigation and cognitive load."
+    },
+    {
+        "speaker":  "PAUSE",
+        "text":  ""
+    },
+    {
+        "speaker":  "JAMIE",
+        "text":  "What about actually creating files? The chapter includes both browser and VS Code workflows."
+    },
+    {
+        "speaker":  "ALEX",
+        "text":  "Yes. For Markdown templates, you can create them manually in the repository browser or in VS Code. File naming conventions matter because the file must live in `.github/ISSUE_TEMPLATE/`, and the extension determines the kind of template GitHub recognizes. YAML form templates should use `.yml`. Markdown templates use `.md`."
+    },
+    {
+        "speaker":  "JAMIE",
+        "text":  "And indentation matters a lot in YAML."
+    },
+    {
+        "speaker":  "ALEX",
+        "text":  "It does. YAML is sensitive to indentation. Use spaces, typically two spaces per level, and do not use tabs. Also make sure colons are followed by a space where appropriate. These tiny syntax details are often the difference between a working template and a broken one."
+    },
+    {
+        "speaker":  "PAUSE",
+        "text":  ""
+    },
+    {
+        "speaker":  "JAMIE",
+        "text":  "Let\u0027s go through the guided challenge sequence, because it\u0027s a big part of the chapter."
+    },
+    {
+        "speaker":  "ALEX",
+        "text":  "Challenge 14.1 is analysis. You open the existing workshop registration template on GitHub and study it. The goal is to identify the frontmatter fields: `name`, `description`, `title`, and `labels`. Then you inspect the body and notice the field types used there: markdown, input, dropdown, and textarea."
+    },
+    {
+        "speaker":  "JAMIE",
+        "text":  "And you also inspect field metadata."
+    },
+    {
+        "speaker":  "ALEX",
+        "text":  "Yes. For each field, identify the `id`, the visible `label`, the explanatory `description`, any `placeholder`, and whether the field is required. One specific prompt in the chapter is to search the registration template for the word \"accessible\" and notice that the template explicitly mentions screen reader compatibility. That models professional accessibility thinking."
+    },
+    {
+        "speaker":  "JAMIE",
+        "text":  "And the final reflection is to compare this with a blank issue."
+    },
+    {
+        "speaker":  "ALEX",
+        "text":  "Exactly. A blank issue gives you one giant text box. A template gives structure, guidance, and clarity about what matters."
+    },
+    {
+        "speaker":  "PAUSE",
+        "text":  ""
+    },
+    {
+        "speaker":  "ALEX",
+        "text":  "Challenge 14.2 is the remix. You take the structure of the registration template and adapt it for a new purpose."
+    },
+    {
+        "speaker":  "JAMIE",
+        "text":  "The chapter gives some example contexts: bug report, event attendance, product research, accessibility audit request."
+    },
+    {
+        "speaker":  "ALEX",
+        "text":  "Right. The instruction is to keep the YAML skeleton. That means keep the overall structure: `name`, `description`, `title`, `labels`, and `body`. Keep the internal field pattern too: `type`, `id`, `attributes`, and `validations`."
+    },
+    {
+        "speaker":  "JAMIE",
+        "text":  "But change the content."
+    },
+    {
+        "speaker":  "ALEX",
+        "text":  "Exactly. Change the context-specific parts: labels, visible field names, descriptions, placeholders, and dropdown options. And rethink which fields should be required."
+    },
+    {
+        "speaker":  "JAMIE",
+        "text":  "Then validate the YAML."
+    },
+    {
+        "speaker":  "ALEX",
+        "text":  "Yes. The chapter explicitly suggests using a YAML validator like yamllint.com. Fix any errors, then commit and push the template file."
+    },
+    {
+        "speaker":  "JAMIE",
+        "text":  "And the \"done\" condition is a committed remixed template that validates."
+    },
+    {
+        "speaker":  "ALEX",
+        "text":  "Correct."
+    },
+    {
+        "speaker":  "PAUSE",
+        "text":  ""
+    },
+    {
+        "speaker":  "JAMIE",
+        "text":  "Challenge 14.3 is optional and switches formats."
+    },
+    {
+        "speaker":  "ALEX",
+        "text":  "Yes. You create a Markdown-based issue template from scratch. The instructions say to create a new file in `.github/ISSUE_TEMPLATE/` with an `.md` extension, add YAML frontmatter, and then add a few sections with HTML comment guidance."
+    },
+    {
+        "speaker":  "JAMIE",
+        "text":  "And again, the frontmatter detail matters: Markdown templates use `about` instead of `description`."
+    },
+    {
+        "speaker":  "ALEX",
+        "text":  "Exactly. That distinction is easy to miss."
+    },
+    {
+        "speaker":  "PAUSE",
+        "text":  ""
+    },
+    {
+        "speaker":  "ALEX",
+        "text":  "Challenge 14.4 is also optional: test your template in the template chooser. Go to your repository on GitHub, activate New Issue, make sure your template appears, then open it and file a test issue."
+    },
+    {
+        "speaker":  "JAMIE",
+        "text":  "That test is important because syntax can be valid but the overall behavior can still be wrong if the file is misplaced or named incorrectly."
+    },
+    {
+        "speaker":  "ALEX",
+        "text":  "Exactly. Testing verifies the real user experience."
+    },
+    {
+        "speaker":  "PAUSE",
+        "text":  ""
+    },
+    {
+        "speaker":  "JAMIE",
+        "text":  "The challenge issue file itself includes a minimum YAML structure. Can we restate that as a checklist?"
+    },
+    {
+        "speaker":  "ALEX",
+        "text":  "Yes. At minimum, your challenge template should include: - a `name` field, - a `description` field, - a `title` field using a prefix pattern, - and at least one `textarea` or `input` field in the `body`."
+    },
+    {
+        "speaker":  "JAMIE",
+        "text":  "And the topic is flexible."
+    },
+    {
+        "speaker":  "ALEX",
+        "text":  "Very flexible. The challenge explicitly suggests possibilities such as an accessibility feedback form, workshop improvement suggestion, bug report for a specific tool, or a structured feature request. The solution reference reinforces that almost any topic works: bug report, feature request, session evaluation, help request, and so on."
+    },
+    {
+        "speaker":  "JAMIE",
+        "text":  "So the point is not to copy one exact template. It\u0027s to show you understand the pattern."
+    },
+    {
+        "speaker":  "ALEX",
+        "text":  "Exactly."
+    },
+    {
+        "speaker":  "PAUSE",
+        "text":  ""
+    },
+    {
+        "speaker":  "JAMIE",
+        "text":  "Let\u0027s make the \"what matters\" part explicit, because learners often worry they need the exact same fields as the example."
+    },
+    {
+        "speaker":  "ALEX",
+        "text":  "The solution says the learning objective is understanding structured issue templates as a way to guide contributors. If your YAML file has a `name`, a `description`, and at least one `body` field, you\u0027ve met the essential learning target for the challenge."
+    },
+    {
+        "speaker":  "JAMIE",
+        "text":  "That\u0027s reassuring."
+    },
+    {
+        "speaker":  "ALEX",
+        "text":  "Yes. Precision matters, but creativity is allowed. Alternate valid templates are expected."
+    },
+    {
+        "speaker":  "PAUSE",
+        "text":  ""
+    },
+    {
+        "speaker":  "JAMIE",
+        "text":  "The chapter also spends time on navigating the template picker. What should audio learners understand there?"
+    },
+    {
+        "speaker":  "ALEX",
+        "text":  "When you activate New Issue in a repository with templates, GitHub may present a list of template choices. Screen reader users should expect to navigate through each template option, hear the template name and usually its descriptive text, and then activate the associated action such as Get started."
+    },
+    {
+        "speaker":  "JAMIE",
+        "text":  "And the chapter specifically includes a screen reader-oriented hands-on exercise."
+    },
+    {
+        "speaker":  "ALEX",
+        "text":  "It does. In Exercise A, learners are told to go to the Accessibility Agents repository issues section, open the template chooser, inspect it with their screen reader, select a template, navigate the form fields, fill in the form, preview before submitting, submit the issue, and then reflect on the experience."
+    },
+    {
+        "speaker":  "JAMIE",
+        "text":  "That reflection step matters for accessibility learning."
+    },
+    {
+        "speaker":  "ALEX",
+        "text":  "Very much. You\u0027re not just clicking through. You\u0027re evaluating whether the structure supports efficient, understandable input."
+    },
+    {
+        "speaker":  "PAUSE",
+        "text":  ""
+    },
+    {
+        "speaker":  "JAMIE",
+        "text":  "Can we cover the broader hands-on activities too, even if the challenge focus is issue templates?"
+    },
+    {
+        "speaker":  "ALEX",
+        "text":  "Yes, because the source explicitly includes them and we shouldn\u0027t omit that administrative and workflow context. Exercise B has learners add the accessibility bug report template to their own fork. The steps are: clone your fork, open it in VS Code, navigate to the templates folder, create a new template file, paste in the accessibility template YAML, verify syntax, create a branch and commit, test the template on GitHub web, test again with your screen reader, and optionally merge your branch."
+    },
+    {
+        "speaker":  "JAMIE",
+        "text":  "That\u0027s a complete local-to-web workflow."
+    },
+    {
+        "speaker":  "ALEX",
+        "text":  "Exactly. Then Exercise C is about submitting the work upstream as a pull request. You verify the template is ready, create the PR, write a strong title and description, review before submitting, submit it, respond to feedback, and celebrate the contribution."
+    },
+    {
+        "speaker":  "JAMIE",
+        "text":  "And the PR description itself is structured too."
+    },
+    {
+        "speaker":  "ALEX",
+        "text":  "Yes. The source gives prompts like: What does this PR do? Why is this useful? How was this tested? Related issue. That mirrors the general principle we\u0027ve been teaching: structure helps reviewers too, not just issue reporters."
+    },
+    {
+        "speaker":  "PAUSE",
+        "text":  ""
+    },
+    {
+        "speaker":  "JAMIE",
+        "text":  "That connects nicely to the chapter\u0027s section on pull request templates."
+    },
+    {
+        "speaker":  "ALEX",
+        "text":  "It does. The chapter includes pull request templates as a parallel concept. PR templates can ask for Description, Type of Change, How to Test, Accessibility Considerations, and Related Issues."
+    },
+    {
+        "speaker":  "JAMIE",
+        "text":  "So templates are part of a larger idea: guiding contribution quality across the workflow."
+    },
+    {
+        "speaker":  "ALEX",
+        "text":  "Exactly. Issue templates improve incoming reports. PR templates improve proposed changes. Both reduce ambiguity and make collaboration easier."
+    },
+    {
+        "speaker":  "PAUSE",
+        "text":  ""
+    },
+    {
+        "speaker":  "JAMIE",
+        "text":  "There\u0027s also a section on building an accessibility bug report template. We\u0027ve touched that, but what makes that template accessible according to the chapter?"
+    },
+    {
+        "speaker":  "ALEX",
+        "text":  "Several things. It asks for concrete, relevant information without overwhelming the user. It uses clear labels and descriptions. It includes assistive technology setup, which is crucial context in accessibility debugging. It gives structured severity choices to support prioritization. And it balances required and optional fields so users can provide enough detail without facing an exhausting form."
+    },
+    {
+        "speaker":  "JAMIE",
+        "text":  "And there\u0027s a second example too, a feature request form."
+    },
+    {
+        "speaker":  "ALEX",
+        "text":  "Yes. That signals that the same design principles apply beyond bug reporting. Once you understand the field types and the top-level structure, you can design templates for many recurring contribution patterns in your own projects."
+    },
+    {
+        "speaker":  "PAUSE",
+        "text":  ""
+    },
+    {
+        "speaker":  "JAMIE",
+        "text":  "Let\u0027s talk about designing your own project template, because that\u0027s one of the final exercises."
+    },
+    {
+        "speaker":  "ALEX",
+        "text":  "The chapter breaks that into practical parts: choose your project, identify recurring issue patterns, decide which fields are required, decide which are optional, write placeholders and help text, test locally, optionally deploy to GitHub and test with another person, then reflect on the design."
+    },
+    {
+        "speaker":  "JAMIE",
+        "text":  "That reflection step is interesting again."
+    },
+    {
+        "speaker":  "ALEX",
+        "text":  "Yes. Template design is user experience design. After testing, ask: Did contributors know what to enter? Were the field labels understandable? Did the required fields collect enough information without creating friction? Was the flow comfortable with a screen reader?"
+    },
+    {
+        "speaker":  "PAUSE",
+        "text":  ""
+    },
+    {
+        "speaker":  "JAMIE",
+        "text":  "We should also cover common problems and troubleshooting, because the challenge template includes a specific \"If you get stuck\" table."
+    },
+    {
+        "speaker":  "ALEX",
+        "text":  "Good point. Common problem one: YAML syntax error. The recommended fix is to check indentation carefully, use two spaces rather than tabs, and make sure colons are followed by spaces. Problem two: the template does not appear in the issue chooser. Check that the file is in `.github/ISSUE_TEMPLATE/`, has a `.yml` extension if it\u0027s a YAML form template, and includes a `name` field. Problem three: you don\u0027t know what topic to choose. The advice is simple: any structured form works. You can build a feedback form, recipe, book review, help request, accessibility feedback form, or bug report. Problem four: you finished but want to verify your approach. Use the reference solution."
+    },
+    {
+        "speaker":  "JAMIE",
+        "text":  "So the troubleshooting advice is both technical and motivational."
+    },
+    {
+        "speaker":  "ALEX",
+        "text":  "Exactly."
+    },
+    {
+        "speaker":  "PAUSE",
+        "text":  ""
+    },
+    {
+        "speaker":  "JAMIE",
+        "text":  "What are the expected overall outcomes for this chapter?"
+    },
+    {
+        "speaker":  "ALEX",
+        "text":  "Learners should understand template structure, including YAML frontmatter concepts, field types, and validation. They should be able to analyze and remix professional templates. They should be able to create both YAML form and Markdown templates. They should understand why templates improve contribution quality. And they should see how templates reduce maintainer effort by guiding contributors toward complete, actionable reports."
+    },
+    {
+        "speaker":  "JAMIE",
+        "text":  "That\u0027s a strong payoff for what initially looks like just a formatting lesson."
+    },
+    {
+        "speaker":  "ALEX",
+        "text":  "It is. This is contribution design."
+    },
+    {
+        "speaker":  "PAUSE",
+        "text":  ""
+    },
+    {
+        "speaker":  "JAMIE",
+        "text":  "Let\u0027s return to the specific challenge evidence, because learners often need that exact administrative step."
+    },
+    {
+        "speaker":  "ALEX",
+        "text":  "To complete Challenge 14, you open your assigned challenge issue and post a completion comment. The chapter gives a sample format including whether you analyzed the registration template, what context you remixed it for, whether the YAML validates, where the template was committed, whether you created the optional Markdown template, and whether you tested it in the chooser. Then you close the challenge issue when done."
+    },
+    {
+        "speaker":  "JAMIE",
+        "text":  "So there are two outputs: the actual template file in your repository, and the evidence comment in the assigned challenge issue."
+    },
+    {
+        "speaker":  "ALEX",
+        "text":  "Exactly."
+    },
+    {
+        "speaker":  "PAUSE",
+        "text":  ""
+    },
+    {
+        "speaker":  "JAMIE",
+        "text":  "Before we wrap, can you give a compact mental model learners can carry into VS Code right now?"
+    },
+    {
+        "speaker":  "ALEX",
+        "text":  "Sure. Think of a YAML issue template as having two layers. Layer one is chooser metadata: - `name` is what the contributor sees. - `description` explains when to use it. - `title` gives a starting pattern. - `labels` classify the issue automatically. Layer two is the form itself: - `body` contains fields. - Each field has a `type`. - Many fields also have an `id`, visible `label`, supportive `description`, optional `placeholder`, and `validations` such as `required: true`. Then ask yourself three design questions: - What information do maintainers need? - What structure will make that information easier to provide? - How can I make the form clear and accessible for someone using assistive technology?"
+    },
+    {
+        "speaker":  "JAMIE",
+        "text":  "That\u0027s excellent."
+    },
+    {
+        "speaker":  "PAUSE",
+        "text":  ""
+    },
+    {
+        "speaker":  "ALEX",
+        "text":  "One final note on sources. The chapter points learners to official GitHub Docs and the GitHub Changelog as the authoritative references for current template behavior. That matters because GitHub\u0027s interface and features can evolve."
+    },
+    {
+        "speaker":  "JAMIE",
+        "text":  "So if a label changes in the UI or a docs example shifts, trust the official docs for the latest details."
+    },
+    {
+        "speaker":  "ALEX",
+        "text":  "Exactly."
+    },
+    {
+        "speaker":  "JAMIE",
+        "text":  "All right. Your next move is simple: inspect a real template, remix one for your own purpose, validate the YAML, test it in GitHub, and submit your evidence."
+    },
+    {
+        "speaker":  "ALEX",
+        "text":  "And as you do, remember what you\u0027re really learning: not just how to write YAML, but how to design a contribution path that is clear, respectful, and accessible."
+    },
+    {
+        "speaker":  "JAMIE",
+        "text":  "See you next time."
+    }
 ]

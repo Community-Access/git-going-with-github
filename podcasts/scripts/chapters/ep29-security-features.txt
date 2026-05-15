@@ -1,0 +1,366 @@
+﻿[ALEX]
+Today we're walking through GitHub security features in a way that's practical for contributors, especially if you're navigating with a screen reader or low vision workflow. This is a companion to open source contribution skills, and it's especially relevant when you're working in public repositories and want to understand what security alerts mean, what actions are appropriate, and how to report problems responsibly.
+
+[JAMIE]
+So this is not just for maintainers doing advanced security work.
+
+[ALEX]
+Exactly. If you contribute to open source at all, you should know four big ideas: dependency alerts, secret leaks, code scanning findings, and private vulnerability reporting. And we also need to cover how the Security and quality area works in GitHub, how to find a repository's security policy, how SBOM export fits in, and how to navigate all of this accessibly.
+
+[PAUSE]
+
+[ALEX]
+A quick orienting note: GitHub's documentation on code security is the authoritative source here. And if you're studying alongside broader course material, this connects closely with open source culture and responsible contribution practices.
+
+[JAMIE]
+And there was also a quick navigation list in the source, right?
+
+[ALEX]
+Yes, and instead of reading that list aloud, we'll simply move through the same sequence naturally: first the Security and quality tab, then Dependabot, secret scanning, code scanning, private reporting, SECURITY dot MD, SBOM, screen reader navigation, and finally a real-world style security dashboard example for an accessibility-focused project.
+
+[PAUSE]
+
+[ALEX]
+Let's start with the Security and quality tab itself. Every GitHub repository has this area in its navigation, but what you can actually see depends on your access level.
+
+[JAMIE]
+That's one of those details that confuses learners. Two people can open the same repo and get different results.
+
+[ALEX]
+Right. If you're just a public viewer, you'll typically see the repository's security policy if it has a SECURITY.md file, and you may also see a private vulnerability reporting form if the maintainer has enabled that feature.
+
+[JAMIE]
+So public viewers do not necessarily see the full alert dashboards.
+
+[ALEX]
+Correct. Contributors with write or admin access see much more: Dependabot alerts, secret scanning alerts, code scanning alerts, security advisories, and security settings management options.
+
+[JAMIE]
+That explains why a learner might hear someone say, "Go check Security," and then not find the same links.
+
+[ALEX]
+Yes. The interface is role-sensitive.
+
+[JAMIE]
+How do you get there efficiently with a screen reader?
+
+[ALEX]
+On any repository page, you can Tab through the secondary navigation region until you reach the Security link and press Enter. If GitHub keyboard shortcuts are enabled and Focus Mode is on, G then S can jump directly there. That's much faster than tabbing across the whole page.
+
+[JAMIE]
+And once you're inside that area?
+
+[ALEX]
+The alert categories are separate links, so moving by link or using keyboard navigation like K, depending on your setup, can help you move among Dependabot, Secret scanning, and Code scanning.
+
+[JAMIE]
+Can we pause on accessibility cues for different learners?
+
+[ALEX]
+Absolutely. For screen reader users: the fastest mental model is that Security and quality is a container, and the specific alert systems are separate pages inside it. For low vision users: the tab lives alongside Code, Issues, Pull requests, and Actions, and alert severity badges include text labels like Critical or High, not just color. For sighted users: a shield icon and sometimes a count badge visually signal security status, and a green shield or no alert count generally means no open alerts.
+
+[PAUSE]
+
+[ALEX]
+Now let's move to Dependabot. Dependabot is GitHub's automated system for monitoring dependencies and helping keep them updated.
+
+[JAMIE]
+And it really does two related but distinct jobs.
+
+[ALEX]
+Exactly. First, Dependabot alerts tell you when a package your project depends on has a known vulnerability. Second, Dependabot can open pull requests to fix those problems, and it can also open routine version update PRs even when the change isn't specifically security-related.
+
+[JAMIE]
+Let's unpack the alerts first. What triggers one?
+
+[ALEX]
+If a vulnerability is discovered in a dependency used by your project, GitHub can create a Dependabot alert. You'll usually see details like the package name, ecosystem such as npm, the vulnerable version range, the fixed version, an advisory identifier such as a GHSA code, and a short description of the risk.
+
+[JAMIE]
+So the alert is not just saying, "Something is bad." It gives actionable specifics.
+
+[ALEX]
+Exactly. And severity matters. The source laid out the common levels using CVSS ranges. Critical, roughly 9.0 to 10.0, means very serious and likely needing immediate attention. High, around 7.0 to 8.9, is significant risk and usually should be fixed within the current sprint or very soon. Medium, 4.0 to 6.9, still matters but may require specific conditions to exploit. Low, 0.1 to 3.9, is lower urgency but should still be addressed when practical.
+
+[JAMIE]
+That's helpful, because learners often see severity labels without understanding the difference between "drop everything" and "plan this responsibly."
+
+[ALEX]
+Right. And when you see a dependency alert as a contributor, a good process is: first, read the advisory so you understand scope. Second, check whether the project actually uses the vulnerable code path. Third, the fix is usually to update the dependency to the patched version. Fourth, look in Pull Requests, because Dependabot Security Updates may already have opened a PR for you.
+
+[JAMIE]
+I like that middle step. Sometimes the vulnerable package is present, but the exact dangerous feature isn't used.
+
+[ALEX]
+Yes, though you still generally want to patch it. Understanding actual exposure helps prioritize and communicate clearly.
+
+[JAMIE]
+What does a Dependabot security update PR typically look like?
+
+[ALEX]
+Usually a title like, "Bump lodash from version A to version B," authored by dependabot bot. The PR description often includes release notes, changelog links, and commit references.
+
+[JAMIE]
+And reviewing those is a good contribution path.
+
+[ALEX]
+A very good one. For contributors with access, reviewing and merging Dependabot PRs is often high-value and relatively low-risk, provided tests pass and the change is understood.
+
+[JAMIE]
+And then there are version updates, not just security updates.
+
+[ALEX]
+Correct. Dependabot can also be configured to keep dependencies generally current. That's controlled in a file named .github slash dependabot.yml. The example in the source showed version 2 syntax, npm as the package ecosystem, the root directory slash, a weekly schedule, and a limit on open PRs. In plain language, that means GitHub checks for dependency updates each week and opens at most a set number of update pull requests at a time.
+
+[JAMIE]
+So if a learner sees a dependabot.yml file, that is not application code. It's repository automation configuration.
+
+[ALEX]
+Exactly.
+
+[PAUSE]
+
+[ALEX]
+Next is secret scanning, and this one is urgent by nature. Secret scanning looks for accidentally committed credentials such as API keys, tokens, and passwords.
+
+[JAMIE]
+This is the one that can stop your push before it lands, right?
+
+[ALEX]
+Yes. Push Protection is the real-time prevention layer. If GitHub detects a known secret pattern during a git push, it can block the push and return an error. The example in the source showed a GH013 repository rule violation, followed by lines identifying the commit, file, secret type, and line location.
+
+[JAMIE]
+Which is actually pretty useful if you slow down and read it.
+
+[ALEX]
+Exactly. If your push is blocked, do three things. First, remove the secret from the file immediately. Second, rotate the exposed credential. GitHub may automatically revoke detected GitHub tokens, but you should still treat the credential as compromised. Third, if you suspect a false positive, a bypass may be possible with justification, but only after careful investigation.
+
+[JAMIE]
+And the best practice is to avoid hardcoding secrets in the first place.
+
+[ALEX]
+Always. The source gave a very clear bad-versus-good example. Bad: assigning a token string directly in code. Good: reading it from an environment variable like process dot env dot GITHUB underscore TOKEN.
+
+[JAMIE]
+That distinction matters for accessibility too, because if you're reviewing code by speech or braille, variable names are easier to reason about than a long credential string buried in a file.
+
+[ALEX]
+Well said. And for public repositories, GitHub can also scan existing commits and create secret scanning alerts for already-exposed secrets. Those alerts appear under Security and quality, then Secret scanning.
+
+[JAMIE]
+What's the right response if you find one?
+
+[ALEX]
+Treat it as urgent. Especially if it's a token or API key, assume the credential may have been exposed for a long time. The immediate priorities are revocation or rotation, removing the secret from the codebase, and following project procedures for cleanup and disclosure.
+
+[JAMIE]
+Let's do the accessibility layer here too.
+
+[ALEX]
+For screen reader users, the terminal output from Push Protection is valuable because it names the exact file, line, and secret type. Read those error lines carefully. In the GitHub interface, go to Secret scanning and navigate to the alerts table; jumping to tables can help, then use row and cell navigation. For low vision users, terminal errors may appear in red, so increase font size and contrast if needed, and in the alert table zoom in on columns like secret type and location. For sighted users, visual banners and icons can help, but the key lesson is the same for everyone: never hardcode tokens.
+
+[PAUSE]
+
+[ALEX]
+Now to code scanning and CodeQL. This is different from dependency scanning. Dependabot is about packages you use. Code scanning is about vulnerabilities in your actual code.
+
+[JAMIE]
+So this is static analysis.
+
+[ALEX]
+Exactly. GitHub's built-in system commonly uses CodeQL, which analyzes code patterns and logic. The source explicitly mentioned risks like SQL injection and cross-site scripting, and this category also generally includes other dangerous data flow or unsafe coding patterns.
+
+[JAMIE]
+How should a learner think about a code scanning alert when they open one?
+
+[ALEX]
+Read it as a structured explanation. A code scanning alert usually tells you what type of vulnerability was found, where it appears in the code, how severe it is, and often a path of reasoning from source to sink, meaning how untrusted input could reach a dangerous operation.
+
+[JAMIE]
+And that's the part people sometimes find intimidating.
+
+[ALEX]
+Yes, but you can break it down. Ask: what is the risky behavior, where in the file is it, what data is involved, and what safer pattern should replace it? For example, if the issue is SQL injection, the fix may involve parameterized queries rather than string concatenation. If it's XSS, the remedy may involve proper escaping, sanitization, or avoiding unsafe rendering patterns.
+
+[JAMIE]
+Where do contributors find these alerts?
+
+[ALEX]
+In the Security and quality area, under Code scanning. If you have the necessary access, you'll see a list of open findings. Opening one gives you alert details and links back into the relevant code locations.
+
+[JAMIE]
+And if you don't have write access?
+
+[ALEX]
+You may not see the internal alert list, which is another reason to understand access-dependent behavior in this area.
+
+[PAUSE]
+
+[ALEX]
+Next is private vulnerability reporting, which is a major open source professionalism topic.
+
+[JAMIE]
+Meaning: if you find a serious bug, do not immediately open a public issue describing exactly how to exploit it.
+
+[ALEX]
+Exactly. If the repository has private vulnerability reporting enabled, you should use that pathway to submit the report confidentially.
+
+[JAMIE]
+How does that usually work from the contributor side?
+
+[ALEX]
+You go to the repository's Security and quality area and look for the private vulnerability reporting form. Then you submit the details privately: what the vulnerability is, how to reproduce it, what impact it has, and any suggested mitigation if you have one.
+
+[JAMIE]
+And then comes responsible disclosure.
+
+[ALEX]
+Right. Responsible disclosure means giving maintainers time to validate the report, prepare a fix, coordinate any advisory publication, and reduce harm before broad public disclosure. The goal is not secrecy for its own sake. The goal is protecting users while giving the project a fair chance to respond.
+
+[JAMIE]
+What if the maintainer doesn't respond?
+
+[ALEX]
+Then you move carefully. The source included that question explicitly, and the guiding principle is still responsibility. Follow the project's stated policy if it has one. If there is no response after a reasonable period, you may need to consider escalation paths that reduce harm, such as using broader security reporting norms rather than dropping exploit details publicly. The exact timing and method depend on context, but the key is to act ethically and document your attempts to contact the maintainers.
+
+[JAMIE]
+So the main lesson is: private first, thoughtful process, minimize risk to users.
+
+[ALEX]
+Exactly.
+
+[PAUSE]
+
+[ALEX]
+Closely related is the SECURITY.md file. This is the repository's security policy file.
+
+[JAMIE]
+What should learners expect to find in it?
+
+[ALEX]
+Usually reporting instructions, supported versions, contact guidance, and expectations around vulnerability disclosure. In practice, it answers the question, "If I discover a security problem here, what does this project want me to do?"
+
+[JAMIE]
+How do you navigate to it?
+
+[ALEX]
+Often through the Security and quality area if GitHub exposes the security policy there, or directly in the repository files if you know the project includes SECURITY.md. Once open, read it carefully before reporting anything. It may say not to use public issues, may specify an email address or form, and may list response expectations.
+
+[JAMIE]
+That sounds administrative, but it's actually critical.
+
+[ALEX]
+Very much so. Following SECURITY.md is part of being a responsible contributor.
+
+[PAUSE]
+
+[ALEX]
+Now let's talk about SBOM, the Software Bill of Materials.
+
+[JAMIE]
+That's a phrase people hear more and more, but it can sound abstract.
+
+[ALEX]
+An SBOM is essentially an inventory of software components used by a project. Think of it as a structured list of ingredients. For security work, that matters because you want to know what dependencies are present, what versions are involved, and what could be affected by newly discovered vulnerabilities.
+
+[JAMIE]
+And GitHub can export one?
+
+[ALEX]
+Yes, in repositories and plans where the feature is available, GitHub can export an SBOM. The important conceptual point is not memorizing a button path here, but understanding why you would do it: to inspect component inventories, support audits, aid compliance, or respond quickly when a package ecosystem issue appears.
+
+[JAMIE]
+So SBOM is less about fixing one alert and more about seeing the whole supply-chain picture.
+
+[ALEX]
+Exactly.
+
+[PAUSE]
+
+[ALEX]
+Let's now gather the screen reader navigation guidance into one place, because the source had a dedicated section for that.
+
+[JAMIE]
+Good, because scattered keyboard hints are easy to forget.
+
+[ALEX]
+To reach the Security and quality tab, use the repository navigation. Tabbing to the secondary nav region works, and G then S can be faster if GitHub keyboard shortcuts and focus mode are enabled.
+
+[JAMIE]
+Once there, how do you handle Dependabot alerts accessibly?
+
+[ALEX]
+Treat the alert list like a structured page. Move by headings, links, or tables depending on your screen reader commands. Open an alert and listen for core fields: package, severity, affected versions, fixed version, advisory identifier, and description. If a related Dependabot PR exists, switch to the Pull Requests tab and review the bot-authored update.
+
+[JAMIE]
+And code scanning alerts?
+
+[ALEX]
+Similar principle, but the content is more code-centric. Navigate to the Code scanning area, open an alert, then work through the explanation and linked code. Read both the alert summary and the code snippet context. If your tooling supports it, opening the file locally in VS Code can make the analysis easier than staying only in the browser.
+
+[JAMIE]
+What about the private vulnerability reporting form itself?
+
+[ALEX]
+Expect a form with fields for summary, details, reproduction, and impact. For screen reader users, forms mode or structured form navigation is useful. Move field by field, verify required fields, and review before submitting. Because these reports can be sensitive, clarity matters. Keep the report concise but complete.
+
+[JAMIE]
+So the accessibility message is not just "you can get there." It's also "here is how to reason through the information once you arrive."
+
+[ALEX]
+Exactly right.
+
+[PAUSE]
+
+[ALEX]
+The source also included a section on security and accessibility agents, plus a security dashboard example for the community-access slash accessibility-agents repository.
+
+[JAMIE]
+That's interesting because it ties security practice directly to accessibility-focused development.
+
+[ALEX]
+Yes. The broader lesson is that accessible projects still need the same security hygiene as any other software project: dependency monitoring, secret leak prevention, code scanning, and clear vulnerability reporting. Accessibility and security are not competing concerns. Mature projects do both.
+
+[JAMIE]
+What should learners notice in a sample security dashboard?
+
+[ALEX]
+You'd look for categories like Dependabot alerts, Secret scanning, Code scanning, and the number of open Dependabot PRs. Then you'd ask practical questions. Are there known vulnerable packages? Are any secrets exposed? Are there code scanning findings that need review? Are there already automated PRs waiting for maintainers to merge?
+
+[JAMIE]
+And then the recommendation piece is basically prioritization.
+
+[ALEX]
+Exactly. A sensible recommendation framework would be: urgent first for exposed secrets, then critical and high dependency vulnerabilities, then serious code scanning findings, then routine dependency maintenance through open Dependabot PRs. For contributors, reviewing existing bot PRs is often one of the safest ways to help. For maintainers, enabling and monitoring these systems reduces risk over time.
+
+[JAMIE]
+Can you say more about what "sample output" implies in this section?
+
+[ALEX]
+It implies that learners should be able to interpret a dashboard-like summary, not just read definitions. If an agent or report says there are zero secret scanning alerts but several open Dependabot PRs, that means credential exposure is not the immediate crisis, but dependency maintenance is pending. If code scanning is clear and secret scanning is clear, that's reassuring, but it doesn't mean you stop monitoring. Security posture is ongoing.
+
+[PAUSE]
+
+[JAMIE]
+Before we wrap, I want to make sure we don't lose the administrative content from the source. There was an explicit note that this appendix is for anyone contributing to open source repositories, because you need to understand how GitHub protects code and what these alerts mean.
+
+[ALEX]
+Yes, and that framing matters. These features are not just for security specialists. They're part of normal contribution literacy. Also, the source pointed to GitHub Docs code security materials as the authoritative foundation, and included a section-level source map pointing back to GitHub Docs, the GitHub changelog, GitHub security features docs, Dependabot docs, and secret scanning docs.
+
+[JAMIE]
+So if a learner wants the official reference after listening, the place to start is GitHub Docs on code security, then the specific documentation for Dependabot and secret scanning.
+
+[ALEX]
+Exactly.
+
+[JAMIE]
+Can we do a final compact checklist?
+
+[ALEX]
+Certainly. In any repository, know how to reach Security and quality. Remember that public viewers and contributors see different things. Read Dependabot alerts for package, versions, advisory, and severity. Check for auto-opened Dependabot PRs. Never commit secrets; if Push Protection blocks a push, remove and rotate immediately. Use environment variables instead of hardcoded credentials. Understand that code scanning looks at your code logic, not just dependencies. Report vulnerabilities privately when that option exists, and follow responsible disclosure. Read SECURITY.md before reporting. Understand SBOM as a component inventory. And for accessible workflows, use keyboard shortcuts, table navigation, and form navigation strategically.
+
+[JAMIE]
+That's a solid toolkit.
+
+[ALEX]
+It is. And it makes you not only a better GitHub user, but a safer and more responsible open source collaborator.

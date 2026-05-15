@@ -1,598 +1,598 @@
-[
-  {
-    "speaker": "ALEX",
-    "text": "Welcome back. Before we dive in, two quick orientation notes. First, this lesson pairs with an earlier audio episode on VS Code setup and accessibility basics, so today we're building on that foundation rather than redoing initial setup. Second, Challenge 10, Go Local, depends on the features we cover here. If you plan to make your first local commit in this workshop, these settings and workflows are worth practicing first."
-  },
-  {
-    "speaker": "JAMIE",
-    "text": "So this is the part where VS Code stops being just a code editor and starts becoming a truly workable environment for blind, low-vision, keyboard-only, and mixed-workflow users."
-  },
-  {
-    "speaker": "ALEX",
-    "text": "Exactly. We're focusing on the power-user accessibility features that make day-to-day work efficient: moving around quickly, finding things, reading problems, using the terminal, working with Copilot Chat, opening accessible reading tools, configuring accessibility signals, trying voice input and output, and writing Markdown accessibly."
-  },
-  {
-    "speaker": "JAMIE",
-    "text": "And one more housekeeping note for Mac listeners: whenever we say Control, think Command, and whenever we say Alt, think Option, unless a shortcut is platform-specific."
-  },
-  {
-    "speaker": "PAUSE",
-    "text": ""
-  },
-  {
-    "speaker": "ALEX",
-    "text": "Let's start with fast navigation between the main parts of VS Code. If you can reliably move focus, everything else becomes easier. Control Shift E moves focus to the Explorer, the file tree. Control Shift F opens Search and lands you in the search input. Control Shift G moves to Source Control. Control Shift X opens Extensions. Control backtick opens the Terminal. Control Alt I, or the command to open chat, moves to Copilot Chat. Control Shift P opens the Command Palette. Control 1 returns focus to the active editor. And Control Shift M opens the Problems panel."
-  },
-  {
-    "speaker": "JAMIE",
-    "text": "That list matters because one of the biggest frustrations in any complex app is not knowing where focus is, or not knowing how to get somewhere without tabbing forever."
-  },
-  {
-    "speaker": "ALEX",
-    "text": "Right. These are direct focus jumps. They're much more reliable than exploratory tabbing."
-  },
-  {
-    "speaker": "JAMIE",
-    "text": "Once you're inside the editor itself, what are the core movement commands learners should keep close at hand?"
-  },
-  {
-    "speaker": "ALEX",
-    "text": "A practical starter set: Control Home jumps to the beginning of the file, Control End to the end. Control G lets you go to a line number, and you can type a line and column like 10 colon 5 to land on line 10, column 5. Control Shift O opens the symbol picker, which is especially useful in Markdown because every heading becomes a navigable symbol. F12 goes to definition when that feature is available. Control F finds in the current file. F3 and Shift F3 move to next and previous match. F8 and Shift F8 move among errors and warnings. Control P opens a file by name. Alt Z toggles word wrap. Control M toggles Tab focus mode. Control equals and Control minus adjust font size. And Control Shift semicolon opens breadcrumb navigation so you can move through path or symbol segments with the arrow keys."
-  },
-  {
-    "speaker": "JAMIE",
-    "text": "Control M is one people forget. Can you explain Tab focus mode in plain language?"
-  },
-  {
-    "speaker": "ALEX",
-    "text": "Sure. In an editor, Tab usually inserts indentation. But sometimes you need Tab to move focus among buttons, inputs, and controls instead. Control M toggles that mode. For screen reader users in particular, that can make embedded UI in the editor much easier to navigate."
-  },
-  {
-    "speaker": "PAUSE",
-    "text": ""
-  },
-  {
-    "speaker": "JAMIE",
-    "text": "Now let's talk about find inside the current file, because this is one of those features everyone uses, but not everyone uses efficiently."
-  },
-  {
-    "speaker": "ALEX",
-    "text": "Press Control F to open the Find widget. It includes three important toggles. Alt C toggles match case, Alt W toggles whole word matching, and Alt R toggles regular expressions. Those same toggles can also be reached as controls in the widget itself."
-  },
-  {
-    "speaker": "JAMIE",
-    "text": "And for screen reader users, those toggles are typically announced as checkboxes, right?"
-  },
-  {
-    "speaker": "ALEX",
-    "text": "Yes. You can move to them and press Space to toggle them. As you type in the search box, VS Code announces the match count, something like 3 of 12 matches. Then F3 moves to the next result and Shift F3 to the previous result, while keeping the widget open. Press Escape to close the widget and return to your prior cursor location."
-  },
-  {
-    "speaker": "JAMIE",
-    "text": "That return-to-cursor behavior is surprisingly important. It means find doesn't strand you somewhere unexpected."
-  },
-  {
-    "speaker": "ALEX",
-    "text": "Exactly. And if you need replacement, Control H opens the replace version of the widget with a second input. Control Shift 1 replaces the current match, and Control Alt Enter replaces all matches."
-  },
-  {
-    "speaker": "JAMIE",
-    "text": "I want to underline something for low-vision users too. The find widget is not just textual. VS Code also highlights matches in the scrollbar gutter using colored ticks, so if you do use some visual scanning, those markers help you understand distribution across a file."
-  },
-  {
-    "speaker": "ALEX",
-    "text": "Good point. And Alt Z for word wrap is another low-vision favorite, especially at high zoom, because it avoids constant horizontal scrolling."
-  },
-  {
-    "speaker": "PAUSE",
-    "text": ""
-  },
-  {
-    "speaker": "JAMIE",
-    "text": "How is global search different from find in one file?"
-  },
-  {
-    "speaker": "ALEX",
-    "text": "Global search, opened with Control Shift F, searches across the workspace. Focus lands in the search box automatically. You type your query, and you can still use Alt C, Alt W, and Alt R for case, whole word, and regex."
-  },
-  {
-    "speaker": "JAMIE",
-    "text": "And this is where include and exclude filters become a huge productivity win."
-  },
-  {
-    "speaker": "ALEX",
-    "text": "Yes. Tab to the files to include field or the files to exclude field and type glob patterns. For example, docs slash star dot md searches all Markdown files in a docs folder. Star dot agent dot md matches all files ending with dot agent dot md. Dot github slash double star means everything inside the.github folder. And if you want to exclude node_modules, use an exclude pattern like exclamation node_modules slash double star, depending on the pattern style you're using in that context."
-  },
-  {
-    "speaker": "JAMIE",
-    "text": "Then the results appear as a tree, right?"
-  },
-  {
-    "speaker": "ALEX",
-    "text": "Right. Navigate with Up and Down Arrow, press Enter to open a result, and Control Shift J collapses all results. It's a great way to keep a noisy search manageable."
-  },
-  {
-    "speaker": "JAMIE",
-    "text": "That brings us to a pattern learners will see in multiple places: type-to-filter in trees."
-  },
-  {
-    "speaker": "ALEX",
-    "text": "Yes. In the Explorer and in the Source Control changes list, if you focus the tree and start typing, a filter input appears and the visible items narrow immediately. This is excellent when a repository has many files. Press Escape to clear the filter and restore the full tree."
-  },
-  {
-    "speaker": "JAMIE",
-    "text": "So instead of arrowing through 80 files, you can jump straight to the handful whose names match what you typed."
-  },
-  {
-    "speaker": "ALEX",
-    "text": "Exactly."
-  },
-  {
-    "speaker": "JAMIE",
-    "text": "And Control Shift O deserves a second mention. In Markdown, it acts like a heading navigator. Open it, type part of a heading, press Enter, and you jump there."
-  },
-  {
-    "speaker": "ALEX",
-    "text": "That's one of the best ways to move through long documentation files. It's faster than line numbers when you know the structure but not the exact location."
-  },
-  {
-    "speaker": "JAMIE",
-    "text": "Let's also give a quick Explorer navigation refresher: Up and Down Arrow move among items, Right Arrow expands a folder, Left Arrow collapses it, Enter opens a file, F2 renames, Delete deletes, and Control N creates a new untitled file which you then save with Control S."
-  },
-  {
-    "speaker": "ALEX",
-    "text": "And one last practical note from the learning tips: the Keyboard Shortcuts editor, opened with Control K then Control S, has its own accessibility hint. After searching, some screen readers announce that you can use Control Down Arrow to move from the search input to the results table. If that hint becomes noisy, there's a setting called accessibility dot verbosity dot keyboardShortcuts to reduce that announcement."
-  },
-  {
-    "speaker": "PAUSE",
-    "text": ""
-  },
-  {
-    "speaker": "ALEX",
-    "text": "Now let's look at the Problems panel. This is where VS Code collects errors, warnings, and informational messages from linters, compilers, and extensions across your workspace."
-  },
-  {
-    "speaker": "JAMIE",
-    "text": "So if markdownlint, ESLint, a language server, or another tool notices something, this is one central place to review it."
-  },
-  {
-    "speaker": "ALEX",
-    "text": "Exactly. Open it with Control Shift M. You can also click the error and warning count in the status bar, or open it from the View menu. And if you're already in the editor, F8 jumps to the next problem in the current cycle."
-  },
-  {
-    "speaker": "JAMIE",
-    "text": "How do you work efficiently once the panel is open?"
-  },
-  {
-    "speaker": "ALEX",
-    "text": "You can type in the filter box at the top of the panel to narrow the problems list. Arrow through the entries, and press Enter on any problem to jump to its source location. If you prefer to stay in the editor, F8 and Shift F8 move forward and backward through problems without opening the panel every time."
-  },
-  {
-    "speaker": "JAMIE",
-    "text": "What information does each problem entry convey?"
-  },
-  {
-    "speaker": "ALEX",
-    "text": "Severity, message, source, file, and line. Severity might be error, warning, or info. The source tells you which tool reported it, such as markdownlint, eslint, or Pylance. Then you get the file name and line number."
-  },
-  {
-    "speaker": "JAMIE",
-    "text": "That structure is especially useful in audio, because it answers the questions in order: how serious is it, what's wrong, who said so, and where is it."
-  },
-  {
-    "speaker": "ALEX",
-    "text": "Well put. Screen reader users will typically hear the total count when the Problems panel gets focus, and each row is announced with those details. The status bar count also updates in real time, which is a handy quick health check for the workspace."
-  },
-  {
-    "speaker": "JAMIE",
-    "text": "And for low-vision users, there's strong visual coding too: red for errors, yellow for warnings, blue for info. But the crucial workflow is the same for everyone: use the list to get straight to the issue."
-  },
-  {
-    "speaker": "PAUSE",
-    "text": ""
-  },
-  {
-    "speaker": "JAMIE",
-    "text": "Next up, the terminal. This is a big one for Git workflows."
-  },
-  {
-    "speaker": "ALEX",
-    "text": "Yes. You open the integrated terminal with Control backtick. Focus lands in the terminal input. From there, you can run Git commands, package scripts, linters, build commands, and other project tools without leaving VS Code."
-  },
-  {
-    "speaker": "JAMIE",
-    "text": "When we say manage terminals, what does that include in practical terms?"
-  },
-  {
-    "speaker": "ALEX",
-    "text": "Usually opening a new terminal, switching between terminal tabs or instances, closing one you no longer need, and keeping track of which shell you're in. The exact shortcuts can vary by platform and customization, but the important accessibility point is that the terminal is a proper focusable workspace area, not an afterthought."
-  },
-  {
-    "speaker": "JAMIE",
-    "text": "The source also calls out shell integration. What does that mean for learners?"
-  },
-  {
-    "speaker": "ALEX",
-    "text": "Shell integration lets VS Code understand more about what happened in the terminal: command boundaries, exit status, and other structured events. That improves navigation and accessibility because the editor can tell where one command ends and the next begins, and can expose richer context around terminal output."
-  },
-  {
-    "speaker": "JAMIE",
-    "text": "So instead of one giant undifferentiated wall of text, the environment has more semantic awareness."
-  },
-  {
-    "speaker": "ALEX",
-    "text": "Exactly. And that ties directly into terminal accessibility. For screen reader users, a terminal becomes much more usable when command output, prompts, and status changes are easier to review and interpret. Accessibility signals can also announce important terminal events, which we'll discuss in a moment."
-  },
-  {
-    "speaker": "JAMIE",
-    "text": "What's the high-level advice here for workshop learners using Git?"
-  },
-  {
-    "speaker": "ALEX",
-    "text": "Practice moving in and out of the terminal confidently. Open it quickly, run a command, read the output, and return to the editor or Source Control without losing your place. That rhythm matters in real Git work."
-  },
-  {
-    "speaker": "PAUSE",
-    "text": ""
-  },
-  {
-    "speaker": "ALEX",
-    "text": "Now let's talk about Copilot Chat inside VS Code. You can open the chat window with Control Alt I, or by running the command to open chat."
-  },
-  {
-    "speaker": "JAMIE",
-    "text": "And once it opens, focus lands in the chat input, which is good because you can start typing immediately."
-  },
-  {
-    "speaker": "ALEX",
-    "text": "Right. The source emphasizes several ideas here: opening the chat, understanding chat modes, using chat participants, and a newer agent-mode behavior involving a question carousel and terminal focus."
-  },
-  {
-    "speaker": "JAMIE",
-    "text": "Let's unpack modes first. What should learners understand by chat modes?"
-  },
-  {
-    "speaker": "ALEX",
-    "text": "Think of modes as different ways the chat may behave depending on context and capabilities. Some interactions are straightforward question-and-answer. Others may be more agent-like, with the system proposing actions, asking follow-up questions, or involving the terminal. The accessible workflow matters because focus can move among the chat input, response area, suggested prompts, and sometimes terminal-related actions."
-  },
-  {
-    "speaker": "JAMIE",
-    "text": "And participants?"
-  },
-  {
-    "speaker": "ALEX",
-    "text": "Participants are the targeted helpers or contexts you can direct your request toward. In practice, that means shaping who or what in the Copilot system is being addressed for a task. The accessibility takeaway is that these are not just visual decorations; they affect how help is routed, and you should learn how they are exposed in the chat UI and how to select them from the keyboard."
-  },
-  {
-    "speaker": "JAMIE",
-    "text": "The learning strategy I'd suggest is: don't just ask a question and hope. Notice where focus goes, notice if suggestions appear, and notice whether the response is best read in place or in an accessibility tool."
-  },
-  {
-    "speaker": "ALEX",
-    "text": "Exactly, which leads to Accessible View shortly. But before that, a note on agent mode. The source specifically mentions a question carousel and terminal focus. That means some agent experiences present follow-up questions or action choices in a rotating suggestion area, and some operations may intentionally move focus to the terminal when a command needs review or execution."
-  },
-  {
-    "speaker": "JAMIE",
-    "text": "So if focus suddenly lands in the terminal during an agent workflow, that may be part of the design, not a bug."
-  },
-  {
-    "speaker": "ALEX",
-    "text": "Correct. The key is to expect it and know how to return to chat or the editor as needed."
-  },
-  {
-    "speaker": "PAUSE",
-    "text": ""
-  },
-  {
-    "speaker": "JAMIE",
-    "text": "This is a perfect moment to cover Accessible Help, Accessible View, and Accessible Diff, because these tools are all about turning hard-to-scan interfaces into keyboard- and screen-reader-friendly experiences."
-  },
-  {
-    "speaker": "ALEX",
-    "text": "Exactly. Accessible Help is a context-aware keyboard guide. You open it with Alt H when focus is in a supported area."
-  },
-  {
-    "speaker": "JAMIE",
-    "text": "Context-aware is the important phrase there."
-  },
-  {
-    "speaker": "ALEX",
-    "text": "Yes. The help you get depends on where you are. If you press Alt H in the editor, for example, VS Code can describe editor-specific commands and accessibility behaviors relevant to that context. It's not just generic documentation; it's immediate, local guidance."
-  },
-  {
-    "speaker": "JAMIE",
-    "text": "So if you're ever thinking, what can I do here, right now, with the keyboard, Alt H is a very good first move."
-  },
-  {
-    "speaker": "ALEX",
-    "text": "Exactly."
-  },
-  {
-    "speaker": "JAMIE",
-    "text": "Now Accessible View."
-  },
-  {
-    "speaker": "ALEX",
-    "text": "Accessible View is designed for reading dynamic, streamed, or otherwise awkward content in a simpler reading surface. You open it when supported content is present, typically through commands or keybindings associated with that content. What it provides is a cleaner, more linear, more reviewable presentation of text."
-  },
-  {
-    "speaker": "JAMIE",
-    "text": "That sounds especially relevant for Copilot Chat responses."
-  },
-  {
-    "speaker": "ALEX",
-    "text": "It is. A recommended workflow for chat is: ask your question in Copilot Chat, then open the response in Accessible View for easier reading, review, and navigation. That can be far more comfortable than trying to parse a live chat surface as it updates."
-  },
-  {
-    "speaker": "JAMIE",
-    "text": "And hover documentation too, right?"
-  },
-  {
-    "speaker": "ALEX",
-    "text": "Yes. Hover popups can be dense and transient. If hover information is available in Accessible View, use that route. It lets you read documentation or symbol help without fighting a small overlay."
-  },
-  {
-    "speaker": "JAMIE",
-    "text": "So Accessible View is basically the answer to: this content exists, but the original presentation is not the easiest thing to consume nonvisually."
-  },
-  {
-    "speaker": "ALEX",
-    "text": "Well said."
-  },
-  {
-    "speaker": "JAMIE",
-    "text": "And then there's Accessible Diff Viewer."
-  },
-  {
-    "speaker": "ALEX",
-    "text": "Yes. This is for reading changes without relying on visual side-by-side scanning. You open the Accessible Diff Viewer from a diff context when that command is available. Instead of showing only a visual comparison, it announces the structure of changes in a way that can be reviewed linearly."
-  },
-  {
-    "speaker": "JAMIE",
-    "text": "What kinds of things does it tell you?"
-  },
-  {
-    "speaker": "ALEX",
-    "text": "It can announce where changes occur and whether content was inserted, deleted, or modified, giving you a structured summary of the diff. That's incredibly useful in Git review workflows, merge conflict resolution, and editing sessions where you want to understand what changed without visually hunting through color blocks."
-  },
-  {
-    "speaker": "JAMIE",
-    "text": "The source also highlights practical workshop uses."
-  },
-  {
-    "speaker": "ALEX",
-    "text": "Right. During this workshop, that means reviewing edits to Markdown, understanding suggested changes, and checking Git-related modifications before committing. If you're contributing to open source, this skill transfers directly to reviewing pull request changes and local diffs."
-  },
-  {
-    "speaker": "JAMIE",
-    "text": "And there are audio cues for diffs too."
-  },
-  {
-    "speaker": "ALEX",
-    "text": "Yes. Audio cues can reinforce what kind of change is being encountered. Combined with the accessible diff information, they reduce the dependence on visual formatting."
-  },
-  {
-    "speaker": "PAUSE",
-    "text": ""
-  },
-  {
-    "speaker": "ALEX",
-    "text": "Now we come to one of the most powerful--and sometimes underused--systems in VS Code accessibility: accessibility signals."
-  },
-  {
-    "speaker": "JAMIE",
-    "text": "I love these, because they acknowledge a simple reality. Sometimes the fastest way to notice an event is not visual and not spoken text, but a short sound or signal."
-  },
-  {
-    "speaker": "ALEX",
-    "text": "Exactly. The source describes this as a dual-channel architecture. Signals can use sound and announcements together, giving you redundant but efficient feedback. That means important state changes can be perceived through audio cues, screen reader output, or both."
-  },
-  {
-    "speaker": "JAMIE",
-    "text": "So what are the two essential commands for discovering signals?"
-  },
-  {
-    "speaker": "ALEX",
-    "text": "The chapter emphasizes that learners should know the commands that let them discover and configure available signals. In practice, this means using the Command Palette to find accessibility signal commands and their settings, so you can hear examples, inspect what's available, and tailor behavior to your workflow."
-  },
-  {
-    "speaker": "JAMIE",
-    "text": "And volume control matters, because a useful signal at one volume can be overwhelming at another."
-  },
-  {
-    "speaker": "ALEX",
-    "text": "Right. Tune the volume so signals are informative without becoming fatiguing or masking your screen reader."
-  },
-  {
-    "speaker": "JAMIE",
-    "text": "The chapter also provides a full reference organized by category. Let's summarize what those categories mean."
-  },
-  {
-    "speaker": "ALEX",
-    "text": "Editor signals cover events in the editor, such as reaching certain markers or notable positions. Diff signals cover changes in comparison views. Terminal signals cover command-related events and terminal state changes. Chat and Copilot signals relate to AI interaction events. Debug signals help with breakpoints or debug states. Editor action signals correspond to operations performed in the editor. Voice signals support speech-related interactions. And code action signals relate to fix suggestions or refactor opportunities."
-  },
-  {
-    "speaker": "JAMIE",
-    "text": "There's also a point about debounce settings for position signals."
-  },
-  {
-    "speaker": "ALEX",
-    "text": "Yes. If a signal is tied to cursor movement or position, debounce settings control how often it fires. Without that, a rapidly repeating signal could become noisy. With proper debounce, you still get orientation cues, but not on every tiny movement."
-  },
-  {
-    "speaker": "JAMIE",
-    "text": "Then comes the recommended workshop profile."
-  },
-  {
-    "speaker": "ALEX",
-    "text": "The idea there is to choose a practical subset of signals that support workshop tasks--editing, reviewing diffs, using the terminal, and interacting with Copilot--without turning on every possible cue. More signals is not always better. Curate them."
-  },
-  {
-    "speaker": "JAMIE",
-    "text": "And for anyone who used older VS Code audio features, the chapter mentions migrating from legacy audio cues."
-  },
-  {
-    "speaker": "ALEX",
-    "text": "Right. Accessibility signals are the newer, more structured system. If you previously relied on legacy audio cues, review the updated settings and map your old habits to the new signal model."
-  },
-  {
-    "speaker": "JAMIE",
-    "text": "That learning-card lesson is really: discover, sample, configure, and keep only what helps."
-  },
-  {
-    "speaker": "ALEX",
-    "text": "Exactly."
-  },
-  {
-    "speaker": "PAUSE",
-    "text": ""
-  },
-  {
-    "speaker": "JAMIE",
-    "text": "Now for voice features: VS Code Speech."
-  },
-  {
-    "speaker": "ALEX",
-    "text": "This section covers both voice input and voice output. First, you install the VS Code Speech support if it isn't already present in your environment. Then you can use editor dictation to enter text with your voice."
-  },
-  {
-    "speaker": "JAMIE",
-    "text": "Which can be useful not just for mobility reasons, but also for reducing typing load during drafting."
-  },
-  {
-    "speaker": "ALEX",
-    "text": "Yes. The editor dictation feature lets you speak text into the editor. Beyond that, voice can also be used in Copilot Chat so you can talk to Copilot rather than only typing prompts."
-  },
-  {
-    "speaker": "JAMIE",
-    "text": "And then there's the output side: text-to-speech for chat responses."
-  },
-  {
-    "speaker": "ALEX",
-    "text": "Exactly. The chapter describes two patterns. One is automatic read-aloud after voice input, so if you ask something by voice, the response can be spoken automatically. The other is manual read-aloud for any response, which lets you listen on demand even if the prompt was typed."
-  },
-  {
-    "speaker": "JAMIE",
-    "text": "That's a nice symmetry: speak to ask, listen to receive."
-  },
-  {
-    "speaker": "ALEX",
-    "text": "It is. The section also mentions hands-free activation with \"Hey Code,\" which is aimed at lowering friction even further. Instead of always reaching for a keyboard shortcut, you can trigger certain voice workflows by wake phrase when supported and enabled."
-  },
-  {
-    "speaker": "JAMIE",
-    "text": "But this is the part where configuration matters a lot."
-  },
-  {
-    "speaker": "ALEX",
-    "text": "Very much so. Language configuration affects recognition and speech output quality, so make sure the configured language matches the language you're speaking and writing in. The chapter also includes a broader settings reference, a voice commands reference, and notes on custom keybindings for voice workflows."
-  },
-  {
-    "speaker": "JAMIE",
-    "text": "Meaning if the defaults don't fit your body, your mic, your environment, or your screen reader rhythm, you can reshape the experience."
-  },
-  {
-    "speaker": "ALEX",
-    "text": "Exactly. And there's a supported-platforms section because not every voice feature behaves identically everywhere. Always verify what's available on your operating system and setup."
-  },
-  {
-    "speaker": "PAUSE",
-    "text": ""
-  },
-  {
-    "speaker": "ALEX",
-    "text": "The last major skills section is Markdown authoring in VS Code, which matters because much of open source contribution--especially documentation work--happens in Markdown."
-  },
-  {
-    "speaker": "JAMIE",
-    "text": "And for many learners, Markdown is the first real contribution surface they'll touch."
-  },
-  {
-    "speaker": "ALEX",
-    "text": "Right. VS Code supports Markdown Preview, which lets you inspect rendered output, not just source text. For accessibility-minded authors, preview is helpful for checking heading structure, lists, code blocks, links, and overall readability."
-  },
-  {
-    "speaker": "JAMIE",
-    "text": "Then there's the markdownlint extension."
-  },
-  {
-    "speaker": "ALEX",
-    "text": "Yes. markdownlint surfaces style and structural issues, and those often appear in the Problems panel we discussed earlier. So the workflow connects: write Markdown, let markdownlint flag issues, review them in Problems, jump to the source, and fix them."
-  },
-  {
-    "speaker": "JAMIE",
-    "text": "The Outline view for headings is another big accessibility win."
-  },
-  {
-    "speaker": "ALEX",
-    "text": "Absolutely. The Outline gives you a heading-based navigation structure for the current Markdown file. That complements Control Shift O. Whether you prefer a persistent tree or a quick symbol picker, both help you move by document structure rather than raw line count."
-  },
-  {
-    "speaker": "JAMIE",
-    "text": "And Copilot can assist with Markdown too."
-  },
-  {
-    "speaker": "ALEX",
-    "text": "Yes. Copilot Markdown assistance can help draft, revise, reformat, or explain documentation text. The accessibility best practice is to treat it as a helper, not an authority. Review suggestions carefully, especially in Accessible View if needed, and verify they preserve meaning and structure."
-  },
-  {
-    "speaker": "JAMIE",
-    "text": "What about Markdown keyboard shortcuts?"
-  },
-  {
-    "speaker": "ALEX",
-    "text": "The chapter highlights that VS Code has useful shortcuts for authoring and navigation in Markdown, and these combine with the editor shortcuts we already covered: find, symbol navigation, word wrap, line jumps, preview commands, and problem navigation."
-  },
-  {
-    "speaker": "JAMIE",
-    "text": "And the reason this matters for the workshop is not abstract."
-  },
-  {
-    "speaker": "ALEX",
-    "text": "Exactly. Workshop participants will be reading, editing, and possibly contributing Markdown-based documentation. If you can navigate headings, preview output, catch lint issues, and use Copilot carefully, you're much better prepared for accessible contribution workflows."
-  },
-  {
-    "speaker": "PAUSE",
-    "text": ""
-  },
-  {
-    "speaker": "JAMIE",
-    "text": "Before we wrap, let's make space for a very human reality: sometimes you get stuck."
-  },
-  {
-    "speaker": "ALEX",
-    "text": "Yes. And when that happens, the right response is not to assume you're failing. Complex tools have complex states. Use context-aware help with Alt H. Use Accessible View when a dynamic surface feels hard to read. Open the Problems panel when something seems wrong in a file. Check whether focus is where you think it is. And return to direct area shortcuts instead of tabbing aimlessly."
-  },
-  {
-    "speaker": "JAMIE",
-    "text": "Also, if a specific feature behaves differently than expected, check the authoritative documentation. This chapter points learners to VS Code's accessibility docs and GitHub's accessibility guidance for GitHub Copilot in VS Code."
-  },
-  {
-    "speaker": "ALEX",
-    "text": "And it also points to related reference material, including a broader VS Code reference appendix and a screen reader cheat sheet appendix. Those are useful when you want a command lookup rather than a full lesson."
-  },
-  {
-    "speaker": "JAMIE",
-    "text": "There's also a section-level source map in the chapter. For listeners, the practical takeaway is that the course is encouraging verification. If you need to confirm a fact for a specific area, go back to the mapped sources and official docs."
-  },
-  {
-    "speaker": "ALEX",
-    "text": "Exactly. Build the habit of checking authoritative sources, especially as tools evolve quickly."
-  },
-  {
-    "speaker": "PAUSE",
-    "text": ""
-  },
-  {
-    "speaker": "ALEX",
-    "text": "Let's close with a compact workflow mindset. Learn your focus-jump shortcuts. Use find for local search and Search for workspace search. Filter trees instead of over-navigating them. Treat the Problems panel as your issue dashboard. Move confidently through the terminal. Use Copilot Chat with awareness of focus and accessibility tools. Reach for Accessible Help, Accessible View, and Accessible Diff when the default interface is harder to consume. Configure accessibility signals intentionally. Explore voice features if they fit your workflow. And practice Markdown authoring with structure in mind."
-  },
-  {
-    "speaker": "JAMIE",
-    "text": "In other words, accessibility here is not a separate layer. It is the workflow."
-  },
-  {
-    "speaker": "ALEX",
-    "text": "Exactly. And once these patterns become familiar, Git, GitHub, documentation, and open source contribution all become much more approachable in VS Code."
-  }
+﻿[
+    {
+        "speaker":  "ALEX",
+        "text":  "Welcome back. Before we dive in, two quick orientation notes. First, this lesson pairs with an earlier audio episode on VS Code setup and accessibility basics, so today we\u0027re building on that foundation rather than redoing initial setup. Second, Challenge 10, Go Local, depends on the features we cover here. If you plan to make your first local commit in this workshop, these settings and workflows are worth practicing first."
+    },
+    {
+        "speaker":  "JAMIE",
+        "text":  "So this is the part where VS Code stops being just a code editor and starts becoming a truly workable environment for blind, low-vision, keyboard-only, and mixed-workflow users."
+    },
+    {
+        "speaker":  "ALEX",
+        "text":  "Exactly. We\u0027re focusing on the power-user accessibility features that make day-to-day work efficient: moving around quickly, finding things, reading problems, using the terminal, working with Copilot Chat, opening accessible reading tools, configuring accessibility signals, trying voice input and output, and writing Markdown accessibly."
+    },
+    {
+        "speaker":  "JAMIE",
+        "text":  "And one more housekeeping note for Mac listeners: whenever we say Control, think Command, and whenever we say Alt, think Option, unless a shortcut is platform-specific."
+    },
+    {
+        "speaker":  "PAUSE",
+        "text":  ""
+    },
+    {
+        "speaker":  "ALEX",
+        "text":  "Let\u0027s start with fast navigation between the main parts of VS Code. If you can reliably move focus, everything else becomes easier. Control Shift E moves focus to the Explorer, the file tree. Control Shift F opens Search and lands you in the search input. Control Shift G moves to Source Control. Control Shift X opens Extensions. Control backtick opens the Terminal. Control Alt I, or the command to open chat, moves to Copilot Chat. Control Shift P opens the Command Palette. Control 1 returns focus to the active editor. And Control Shift M opens the Problems panel."
+    },
+    {
+        "speaker":  "JAMIE",
+        "text":  "That list matters because one of the biggest frustrations in any complex app is not knowing where focus is, or not knowing how to get somewhere without tabbing forever."
+    },
+    {
+        "speaker":  "ALEX",
+        "text":  "Right. These are direct focus jumps. They\u0027re much more reliable than exploratory tabbing."
+    },
+    {
+        "speaker":  "JAMIE",
+        "text":  "Once you\u0027re inside the editor itself, what are the core movement commands learners should keep close at hand?"
+    },
+    {
+        "speaker":  "ALEX",
+        "text":  "A practical starter set: Control Home jumps to the beginning of the file, Control End to the end. Control G lets you go to a line number, and you can type a line and column like 10 colon 5 to land on line 10, column 5. Control Shift O opens the symbol picker, which is especially useful in Markdown because every heading becomes a navigable symbol. F12 goes to definition when that feature is available. Control F finds in the current file. F3 and Shift F3 move to next and previous match. F8 and Shift F8 move among errors and warnings. Control P opens a file by name. Alt Z toggles word wrap. Control M toggles Tab focus mode. Control equals and Control minus adjust font size. And Control Shift semicolon opens breadcrumb navigation so you can move through path or symbol segments with the arrow keys."
+    },
+    {
+        "speaker":  "JAMIE",
+        "text":  "Control M is one people forget. Can you explain Tab focus mode in plain language?"
+    },
+    {
+        "speaker":  "ALEX",
+        "text":  "Sure. In an editor, Tab usually inserts indentation. But sometimes you need Tab to move focus among buttons, inputs, and controls instead. Control M toggles that mode. For screen reader users in particular, that can make embedded UI in the editor much easier to navigate."
+    },
+    {
+        "speaker":  "PAUSE",
+        "text":  ""
+    },
+    {
+        "speaker":  "JAMIE",
+        "text":  "Now let\u0027s talk about find inside the current file, because this is one of those features everyone uses, but not everyone uses efficiently."
+    },
+    {
+        "speaker":  "ALEX",
+        "text":  "Press Control F to open the Find widget. It includes three important toggles. Alt C toggles match case, Alt W toggles whole word matching, and Alt R toggles regular expressions. Those same toggles can also be reached as controls in the widget itself."
+    },
+    {
+        "speaker":  "JAMIE",
+        "text":  "And for screen reader users, those toggles are typically announced as checkboxes, right?"
+    },
+    {
+        "speaker":  "ALEX",
+        "text":  "Yes. You can move to them and press Space to toggle them. As you type in the search box, VS Code announces the match count, something like 3 of 12 matches. Then F3 moves to the next result and Shift F3 to the previous result, while keeping the widget open. Press Escape to close the widget and return to your prior cursor location."
+    },
+    {
+        "speaker":  "JAMIE",
+        "text":  "That return-to-cursor behavior is surprisingly important. It means find doesn\u0027t strand you somewhere unexpected."
+    },
+    {
+        "speaker":  "ALEX",
+        "text":  "Exactly. And if you need replacement, Control H opens the replace version of the widget with a second input. Control Shift 1 replaces the current match, and Control Alt Enter replaces all matches."
+    },
+    {
+        "speaker":  "JAMIE",
+        "text":  "I want to underline something for low-vision users too. The find widget is not just textual. VS Code also highlights matches in the scrollbar gutter using colored ticks, so if you do use some visual scanning, those markers help you understand distribution across a file."
+    },
+    {
+        "speaker":  "ALEX",
+        "text":  "Good point. And Alt Z for word wrap is another low-vision favorite, especially at high zoom, because it avoids constant horizontal scrolling."
+    },
+    {
+        "speaker":  "PAUSE",
+        "text":  ""
+    },
+    {
+        "speaker":  "JAMIE",
+        "text":  "How is global search different from find in one file?"
+    },
+    {
+        "speaker":  "ALEX",
+        "text":  "Global search, opened with Control Shift F, searches across the workspace. Focus lands in the search box automatically. You type your query, and you can still use Alt C, Alt W, and Alt R for case, whole word, and regex."
+    },
+    {
+        "speaker":  "JAMIE",
+        "text":  "And this is where include and exclude filters become a huge productivity win."
+    },
+    {
+        "speaker":  "ALEX",
+        "text":  "Yes. Tab to the files to include field or the files to exclude field and type glob patterns. For example, docs slash star dot md searches all Markdown files in a docs folder. Star dot agent dot md matches all files ending with dot agent dot md. Dot github slash double star means everything inside the.github folder. And if you want to exclude node_modules, use an exclude pattern like exclamation node_modules slash double star, depending on the pattern style you\u0027re using in that context."
+    },
+    {
+        "speaker":  "JAMIE",
+        "text":  "Then the results appear as a tree, right?"
+    },
+    {
+        "speaker":  "ALEX",
+        "text":  "Right. Navigate with Up and Down Arrow, press Enter to open a result, and Control Shift J collapses all results. It\u0027s a great way to keep a noisy search manageable."
+    },
+    {
+        "speaker":  "JAMIE",
+        "text":  "That brings us to a pattern learners will see in multiple places: type-to-filter in trees."
+    },
+    {
+        "speaker":  "ALEX",
+        "text":  "Yes. In the Explorer and in the Source Control changes list, if you focus the tree and start typing, a filter input appears and the visible items narrow immediately. This is excellent when a repository has many files. Press Escape to clear the filter and restore the full tree."
+    },
+    {
+        "speaker":  "JAMIE",
+        "text":  "So instead of arrowing through 80 files, you can jump straight to the handful whose names match what you typed."
+    },
+    {
+        "speaker":  "ALEX",
+        "text":  "Exactly."
+    },
+    {
+        "speaker":  "JAMIE",
+        "text":  "And Control Shift O deserves a second mention. In Markdown, it acts like a heading navigator. Open it, type part of a heading, press Enter, and you jump there."
+    },
+    {
+        "speaker":  "ALEX",
+        "text":  "That\u0027s one of the best ways to move through long documentation files. It\u0027s faster than line numbers when you know the structure but not the exact location."
+    },
+    {
+        "speaker":  "JAMIE",
+        "text":  "Let\u0027s also give a quick Explorer navigation refresher: Up and Down Arrow move among items, Right Arrow expands a folder, Left Arrow collapses it, Enter opens a file, F2 renames, Delete deletes, and Control N creates a new untitled file which you then save with Control S."
+    },
+    {
+        "speaker":  "ALEX",
+        "text":  "And one last practical note from the learning tips: the Keyboard Shortcuts editor, opened with Control K then Control S, has its own accessibility hint. After searching, some screen readers announce that you can use Control Down Arrow to move from the search input to the results table. If that hint becomes noisy, there\u0027s a setting called accessibility dot verbosity dot keyboardShortcuts to reduce that announcement."
+    },
+    {
+        "speaker":  "PAUSE",
+        "text":  ""
+    },
+    {
+        "speaker":  "ALEX",
+        "text":  "Now let\u0027s look at the Problems panel. This is where VS Code collects errors, warnings, and informational messages from linters, compilers, and extensions across your workspace."
+    },
+    {
+        "speaker":  "JAMIE",
+        "text":  "So if markdownlint, ESLint, a language server, or another tool notices something, this is one central place to review it."
+    },
+    {
+        "speaker":  "ALEX",
+        "text":  "Exactly. Open it with Control Shift M. You can also click the error and warning count in the status bar, or open it from the View menu. And if you\u0027re already in the editor, F8 jumps to the next problem in the current cycle."
+    },
+    {
+        "speaker":  "JAMIE",
+        "text":  "How do you work efficiently once the panel is open?"
+    },
+    {
+        "speaker":  "ALEX",
+        "text":  "You can type in the filter box at the top of the panel to narrow the problems list. Arrow through the entries, and press Enter on any problem to jump to its source location. If you prefer to stay in the editor, F8 and Shift F8 move forward and backward through problems without opening the panel every time."
+    },
+    {
+        "speaker":  "JAMIE",
+        "text":  "What information does each problem entry convey?"
+    },
+    {
+        "speaker":  "ALEX",
+        "text":  "Severity, message, source, file, and line. Severity might be error, warning, or info. The source tells you which tool reported it, such as markdownlint, eslint, or Pylance. Then you get the file name and line number."
+    },
+    {
+        "speaker":  "JAMIE",
+        "text":  "That structure is especially useful in audio, because it answers the questions in order: how serious is it, what\u0027s wrong, who said so, and where is it."
+    },
+    {
+        "speaker":  "ALEX",
+        "text":  "Well put. Screen reader users will typically hear the total count when the Problems panel gets focus, and each row is announced with those details. The status bar count also updates in real time, which is a handy quick health check for the workspace."
+    },
+    {
+        "speaker":  "JAMIE",
+        "text":  "And for low-vision users, there\u0027s strong visual coding too: red for errors, yellow for warnings, blue for info. But the crucial workflow is the same for everyone: use the list to get straight to the issue."
+    },
+    {
+        "speaker":  "PAUSE",
+        "text":  ""
+    },
+    {
+        "speaker":  "JAMIE",
+        "text":  "Next up, the terminal. This is a big one for Git workflows."
+    },
+    {
+        "speaker":  "ALEX",
+        "text":  "Yes. You open the integrated terminal with Control backtick. Focus lands in the terminal input. From there, you can run Git commands, package scripts, linters, build commands, and other project tools without leaving VS Code."
+    },
+    {
+        "speaker":  "JAMIE",
+        "text":  "When we say manage terminals, what does that include in practical terms?"
+    },
+    {
+        "speaker":  "ALEX",
+        "text":  "Usually opening a new terminal, switching between terminal tabs or instances, closing one you no longer need, and keeping track of which shell you\u0027re in. The exact shortcuts can vary by platform and customization, but the important accessibility point is that the terminal is a proper focusable workspace area, not an afterthought."
+    },
+    {
+        "speaker":  "JAMIE",
+        "text":  "The source also calls out shell integration. What does that mean for learners?"
+    },
+    {
+        "speaker":  "ALEX",
+        "text":  "Shell integration lets VS Code understand more about what happened in the terminal: command boundaries, exit status, and other structured events. That improves navigation and accessibility because the editor can tell where one command ends and the next begins, and can expose richer context around terminal output."
+    },
+    {
+        "speaker":  "JAMIE",
+        "text":  "So instead of one giant undifferentiated wall of text, the environment has more semantic awareness."
+    },
+    {
+        "speaker":  "ALEX",
+        "text":  "Exactly. And that ties directly into terminal accessibility. For screen reader users, a terminal becomes much more usable when command output, prompts, and status changes are easier to review and interpret. Accessibility signals can also announce important terminal events, which we\u0027ll discuss in a moment."
+    },
+    {
+        "speaker":  "JAMIE",
+        "text":  "What\u0027s the high-level advice here for workshop learners using Git?"
+    },
+    {
+        "speaker":  "ALEX",
+        "text":  "Practice moving in and out of the terminal confidently. Open it quickly, run a command, read the output, and return to the editor or Source Control without losing your place. That rhythm matters in real Git work."
+    },
+    {
+        "speaker":  "PAUSE",
+        "text":  ""
+    },
+    {
+        "speaker":  "ALEX",
+        "text":  "Now let\u0027s talk about Copilot Chat inside VS Code. You can open the chat window with Control Alt I, or by running the command to open chat."
+    },
+    {
+        "speaker":  "JAMIE",
+        "text":  "And once it opens, focus lands in the chat input, which is good because you can start typing immediately."
+    },
+    {
+        "speaker":  "ALEX",
+        "text":  "Right. The source emphasizes several ideas here: opening the chat, understanding chat modes, using chat participants, and a newer agent-mode behavior involving a question carousel and terminal focus."
+    },
+    {
+        "speaker":  "JAMIE",
+        "text":  "Let\u0027s unpack modes first. What should learners understand by chat modes?"
+    },
+    {
+        "speaker":  "ALEX",
+        "text":  "Think of modes as different ways the chat may behave depending on context and capabilities. Some interactions are straightforward question-and-answer. Others may be more agent-like, with the system proposing actions, asking follow-up questions, or involving the terminal. The accessible workflow matters because focus can move among the chat input, response area, suggested prompts, and sometimes terminal-related actions."
+    },
+    {
+        "speaker":  "JAMIE",
+        "text":  "And participants?"
+    },
+    {
+        "speaker":  "ALEX",
+        "text":  "Participants are the targeted helpers or contexts you can direct your request toward. In practice, that means shaping who or what in the Copilot system is being addressed for a task. The accessibility takeaway is that these are not just visual decorations; they affect how help is routed, and you should learn how they are exposed in the chat UI and how to select them from the keyboard."
+    },
+    {
+        "speaker":  "JAMIE",
+        "text":  "The learning strategy I\u0027d suggest is: don\u0027t just ask a question and hope. Notice where focus goes, notice if suggestions appear, and notice whether the response is best read in place or in an accessibility tool."
+    },
+    {
+        "speaker":  "ALEX",
+        "text":  "Exactly, which leads to Accessible View shortly. But before that, a note on agent mode. The source specifically mentions a question carousel and terminal focus. That means some agent experiences present follow-up questions or action choices in a rotating suggestion area, and some operations may intentionally move focus to the terminal when a command needs review or execution."
+    },
+    {
+        "speaker":  "JAMIE",
+        "text":  "So if focus suddenly lands in the terminal during an agent workflow, that may be part of the design, not a bug."
+    },
+    {
+        "speaker":  "ALEX",
+        "text":  "Correct. The key is to expect it and know how to return to chat or the editor as needed."
+    },
+    {
+        "speaker":  "PAUSE",
+        "text":  ""
+    },
+    {
+        "speaker":  "JAMIE",
+        "text":  "This is a perfect moment to cover Accessible Help, Accessible View, and Accessible Diff, because these tools are all about turning hard-to-scan interfaces into keyboard- and screen-reader-friendly experiences."
+    },
+    {
+        "speaker":  "ALEX",
+        "text":  "Exactly. Accessible Help is a context-aware keyboard guide. You open it with Alt H when focus is in a supported area."
+    },
+    {
+        "speaker":  "JAMIE",
+        "text":  "Context-aware is the important phrase there."
+    },
+    {
+        "speaker":  "ALEX",
+        "text":  "Yes. The help you get depends on where you are. If you press Alt H in the editor, for example, VS Code can describe editor-specific commands and accessibility behaviors relevant to that context. It\u0027s not just generic documentation; it\u0027s immediate, local guidance."
+    },
+    {
+        "speaker":  "JAMIE",
+        "text":  "So if you\u0027re ever thinking, what can I do here, right now, with the keyboard, Alt H is a very good first move."
+    },
+    {
+        "speaker":  "ALEX",
+        "text":  "Exactly."
+    },
+    {
+        "speaker":  "JAMIE",
+        "text":  "Now Accessible View."
+    },
+    {
+        "speaker":  "ALEX",
+        "text":  "Accessible View is designed for reading dynamic, streamed, or otherwise awkward content in a simpler reading surface. You open it when supported content is present, typically through commands or keybindings associated with that content. What it provides is a cleaner, more linear, more reviewable presentation of text."
+    },
+    {
+        "speaker":  "JAMIE",
+        "text":  "That sounds especially relevant for Copilot Chat responses."
+    },
+    {
+        "speaker":  "ALEX",
+        "text":  "It is. A recommended workflow for chat is: ask your question in Copilot Chat, then open the response in Accessible View for easier reading, review, and navigation. That can be far more comfortable than trying to parse a live chat surface as it updates."
+    },
+    {
+        "speaker":  "JAMIE",
+        "text":  "And hover documentation too, right?"
+    },
+    {
+        "speaker":  "ALEX",
+        "text":  "Yes. Hover popups can be dense and transient. If hover information is available in Accessible View, use that route. It lets you read documentation or symbol help without fighting a small overlay."
+    },
+    {
+        "speaker":  "JAMIE",
+        "text":  "So Accessible View is basically the answer to: this content exists, but the original presentation is not the easiest thing to consume nonvisually."
+    },
+    {
+        "speaker":  "ALEX",
+        "text":  "Well said."
+    },
+    {
+        "speaker":  "JAMIE",
+        "text":  "And then there\u0027s Accessible Diff Viewer."
+    },
+    {
+        "speaker":  "ALEX",
+        "text":  "Yes. This is for reading changes without relying on visual side-by-side scanning. You open the Accessible Diff Viewer from a diff context when that command is available. Instead of showing only a visual comparison, it announces the structure of changes in a way that can be reviewed linearly."
+    },
+    {
+        "speaker":  "JAMIE",
+        "text":  "What kinds of things does it tell you?"
+    },
+    {
+        "speaker":  "ALEX",
+        "text":  "It can announce where changes occur and whether content was inserted, deleted, or modified, giving you a structured summary of the diff. That\u0027s incredibly useful in Git review workflows, merge conflict resolution, and editing sessions where you want to understand what changed without visually hunting through color blocks."
+    },
+    {
+        "speaker":  "JAMIE",
+        "text":  "The source also highlights practical workshop uses."
+    },
+    {
+        "speaker":  "ALEX",
+        "text":  "Right. During this workshop, that means reviewing edits to Markdown, understanding suggested changes, and checking Git-related modifications before committing. If you\u0027re contributing to open source, this skill transfers directly to reviewing pull request changes and local diffs."
+    },
+    {
+        "speaker":  "JAMIE",
+        "text":  "And there are audio cues for diffs too."
+    },
+    {
+        "speaker":  "ALEX",
+        "text":  "Yes. Audio cues can reinforce what kind of change is being encountered. Combined with the accessible diff information, they reduce the dependence on visual formatting."
+    },
+    {
+        "speaker":  "PAUSE",
+        "text":  ""
+    },
+    {
+        "speaker":  "ALEX",
+        "text":  "Now we come to one of the most powerful--and sometimes underused--systems in VS Code accessibility: accessibility signals."
+    },
+    {
+        "speaker":  "JAMIE",
+        "text":  "I love these, because they acknowledge a simple reality. Sometimes the fastest way to notice an event is not visual and not spoken text, but a short sound or signal."
+    },
+    {
+        "speaker":  "ALEX",
+        "text":  "Exactly. The source describes this as a dual-channel architecture. Signals can use sound and announcements together, giving you redundant but efficient feedback. That means important state changes can be perceived through audio cues, screen reader output, or both."
+    },
+    {
+        "speaker":  "JAMIE",
+        "text":  "So what are the two essential commands for discovering signals?"
+    },
+    {
+        "speaker":  "ALEX",
+        "text":  "The chapter emphasizes that learners should know the commands that let them discover and configure available signals. In practice, this means using the Command Palette to find accessibility signal commands and their settings, so you can hear examples, inspect what\u0027s available, and tailor behavior to your workflow."
+    },
+    {
+        "speaker":  "JAMIE",
+        "text":  "And volume control matters, because a useful signal at one volume can be overwhelming at another."
+    },
+    {
+        "speaker":  "ALEX",
+        "text":  "Right. Tune the volume so signals are informative without becoming fatiguing or masking your screen reader."
+    },
+    {
+        "speaker":  "JAMIE",
+        "text":  "The chapter also provides a full reference organized by category. Let\u0027s summarize what those categories mean."
+    },
+    {
+        "speaker":  "ALEX",
+        "text":  "Editor signals cover events in the editor, such as reaching certain markers or notable positions. Diff signals cover changes in comparison views. Terminal signals cover command-related events and terminal state changes. Chat and Copilot signals relate to AI interaction events. Debug signals help with breakpoints or debug states. Editor action signals correspond to operations performed in the editor. Voice signals support speech-related interactions. And code action signals relate to fix suggestions or refactor opportunities."
+    },
+    {
+        "speaker":  "JAMIE",
+        "text":  "There\u0027s also a point about debounce settings for position signals."
+    },
+    {
+        "speaker":  "ALEX",
+        "text":  "Yes. If a signal is tied to cursor movement or position, debounce settings control how often it fires. Without that, a rapidly repeating signal could become noisy. With proper debounce, you still get orientation cues, but not on every tiny movement."
+    },
+    {
+        "speaker":  "JAMIE",
+        "text":  "Then comes the recommended workshop profile."
+    },
+    {
+        "speaker":  "ALEX",
+        "text":  "The idea there is to choose a practical subset of signals that support workshop tasks--editing, reviewing diffs, using the terminal, and interacting with Copilot--without turning on every possible cue. More signals is not always better. Curate them."
+    },
+    {
+        "speaker":  "JAMIE",
+        "text":  "And for anyone who used older VS Code audio features, the chapter mentions migrating from legacy audio cues."
+    },
+    {
+        "speaker":  "ALEX",
+        "text":  "Right. Accessibility signals are the newer, more structured system. If you previously relied on legacy audio cues, review the updated settings and map your old habits to the new signal model."
+    },
+    {
+        "speaker":  "JAMIE",
+        "text":  "That learning-card lesson is really: discover, sample, configure, and keep only what helps."
+    },
+    {
+        "speaker":  "ALEX",
+        "text":  "Exactly."
+    },
+    {
+        "speaker":  "PAUSE",
+        "text":  ""
+    },
+    {
+        "speaker":  "JAMIE",
+        "text":  "Now for voice features: VS Code Speech."
+    },
+    {
+        "speaker":  "ALEX",
+        "text":  "This section covers both voice input and voice output. First, you install the VS Code Speech support if it isn\u0027t already present in your environment. Then you can use editor dictation to enter text with your voice."
+    },
+    {
+        "speaker":  "JAMIE",
+        "text":  "Which can be useful not just for mobility reasons, but also for reducing typing load during drafting."
+    },
+    {
+        "speaker":  "ALEX",
+        "text":  "Yes. The editor dictation feature lets you speak text into the editor. Beyond that, voice can also be used in Copilot Chat so you can talk to Copilot rather than only typing prompts."
+    },
+    {
+        "speaker":  "JAMIE",
+        "text":  "And then there\u0027s the output side: text-to-speech for chat responses."
+    },
+    {
+        "speaker":  "ALEX",
+        "text":  "Exactly. The chapter describes two patterns. One is automatic read-aloud after voice input, so if you ask something by voice, the response can be spoken automatically. The other is manual read-aloud for any response, which lets you listen on demand even if the prompt was typed."
+    },
+    {
+        "speaker":  "JAMIE",
+        "text":  "That\u0027s a nice symmetry: speak to ask, listen to receive."
+    },
+    {
+        "speaker":  "ALEX",
+        "text":  "It is. The section also mentions hands-free activation with \"Hey Code,\" which is aimed at lowering friction even further. Instead of always reaching for a keyboard shortcut, you can trigger certain voice workflows by wake phrase when supported and enabled."
+    },
+    {
+        "speaker":  "JAMIE",
+        "text":  "But this is the part where configuration matters a lot."
+    },
+    {
+        "speaker":  "ALEX",
+        "text":  "Very much so. Language configuration affects recognition and speech output quality, so make sure the configured language matches the language you\u0027re speaking and writing in. The chapter also includes a broader settings reference, a voice commands reference, and notes on custom keybindings for voice workflows."
+    },
+    {
+        "speaker":  "JAMIE",
+        "text":  "Meaning if the defaults don\u0027t fit your body, your mic, your environment, or your screen reader rhythm, you can reshape the experience."
+    },
+    {
+        "speaker":  "ALEX",
+        "text":  "Exactly. And there\u0027s a supported-platforms section because not every voice feature behaves identically everywhere. Always verify what\u0027s available on your operating system and setup."
+    },
+    {
+        "speaker":  "PAUSE",
+        "text":  ""
+    },
+    {
+        "speaker":  "ALEX",
+        "text":  "The last major skills section is Markdown authoring in VS Code, which matters because much of open source contribution--especially documentation work--happens in Markdown."
+    },
+    {
+        "speaker":  "JAMIE",
+        "text":  "And for many learners, Markdown is the first real contribution surface they\u0027ll touch."
+    },
+    {
+        "speaker":  "ALEX",
+        "text":  "Right. VS Code supports Markdown Preview, which lets you inspect rendered output, not just source text. For accessibility-minded authors, preview is helpful for checking heading structure, lists, code blocks, links, and overall readability."
+    },
+    {
+        "speaker":  "JAMIE",
+        "text":  "Then there\u0027s the markdownlint extension."
+    },
+    {
+        "speaker":  "ALEX",
+        "text":  "Yes. markdownlint surfaces style and structural issues, and those often appear in the Problems panel we discussed earlier. So the workflow connects: write Markdown, let markdownlint flag issues, review them in Problems, jump to the source, and fix them."
+    },
+    {
+        "speaker":  "JAMIE",
+        "text":  "The Outline view for headings is another big accessibility win."
+    },
+    {
+        "speaker":  "ALEX",
+        "text":  "Absolutely. The Outline gives you a heading-based navigation structure for the current Markdown file. That complements Control Shift O. Whether you prefer a persistent tree or a quick symbol picker, both help you move by document structure rather than raw line count."
+    },
+    {
+        "speaker":  "JAMIE",
+        "text":  "And Copilot can assist with Markdown too."
+    },
+    {
+        "speaker":  "ALEX",
+        "text":  "Yes. Copilot Markdown assistance can help draft, revise, reformat, or explain documentation text. The accessibility best practice is to treat it as a helper, not an authority. Review suggestions carefully, especially in Accessible View if needed, and verify they preserve meaning and structure."
+    },
+    {
+        "speaker":  "JAMIE",
+        "text":  "What about Markdown keyboard shortcuts?"
+    },
+    {
+        "speaker":  "ALEX",
+        "text":  "The chapter highlights that VS Code has useful shortcuts for authoring and navigation in Markdown, and these combine with the editor shortcuts we already covered: find, symbol navigation, word wrap, line jumps, preview commands, and problem navigation."
+    },
+    {
+        "speaker":  "JAMIE",
+        "text":  "And the reason this matters for the workshop is not abstract."
+    },
+    {
+        "speaker":  "ALEX",
+        "text":  "Exactly. Workshop participants will be reading, editing, and possibly contributing Markdown-based documentation. If you can navigate headings, preview output, catch lint issues, and use Copilot carefully, you\u0027re much better prepared for accessible contribution workflows."
+    },
+    {
+        "speaker":  "PAUSE",
+        "text":  ""
+    },
+    {
+        "speaker":  "JAMIE",
+        "text":  "Before we wrap, let\u0027s make space for a very human reality: sometimes you get stuck."
+    },
+    {
+        "speaker":  "ALEX",
+        "text":  "Yes. And when that happens, the right response is not to assume you\u0027re failing. Complex tools have complex states. Use context-aware help with Alt H. Use Accessible View when a dynamic surface feels hard to read. Open the Problems panel when something seems wrong in a file. Check whether focus is where you think it is. And return to direct area shortcuts instead of tabbing aimlessly."
+    },
+    {
+        "speaker":  "JAMIE",
+        "text":  "Also, if a specific feature behaves differently than expected, check the authoritative documentation. This chapter points learners to VS Code\u0027s accessibility docs and GitHub\u0027s accessibility guidance for GitHub Copilot in VS Code."
+    },
+    {
+        "speaker":  "ALEX",
+        "text":  "And it also points to related reference material, including a broader VS Code reference appendix and a screen reader cheat sheet appendix. Those are useful when you want a command lookup rather than a full lesson."
+    },
+    {
+        "speaker":  "JAMIE",
+        "text":  "There\u0027s also a section-level source map in the chapter. For listeners, the practical takeaway is that the course is encouraging verification. If you need to confirm a fact for a specific area, go back to the mapped sources and official docs."
+    },
+    {
+        "speaker":  "ALEX",
+        "text":  "Exactly. Build the habit of checking authoritative sources, especially as tools evolve quickly."
+    },
+    {
+        "speaker":  "PAUSE",
+        "text":  ""
+    },
+    {
+        "speaker":  "ALEX",
+        "text":  "Let\u0027s close with a compact workflow mindset. Learn your focus-jump shortcuts. Use find for local search and Search for workspace search. Filter trees instead of over-navigating them. Treat the Problems panel as your issue dashboard. Move confidently through the terminal. Use Copilot Chat with awareness of focus and accessibility tools. Reach for Accessible Help, Accessible View, and Accessible Diff when the default interface is harder to consume. Configure accessibility signals intentionally. Explore voice features if they fit your workflow. And practice Markdown authoring with structure in mind."
+    },
+    {
+        "speaker":  "JAMIE",
+        "text":  "In other words, accessibility here is not a separate layer. It is the workflow."
+    },
+    {
+        "speaker":  "ALEX",
+        "text":  "Exactly. And once these patterns become familiar, Git, GitHub, documentation, and open source contribution all become much more approachable in VS Code."
+    }
 ]

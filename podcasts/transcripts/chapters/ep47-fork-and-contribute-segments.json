@@ -1,566 +1,566 @@
-[
-  {
-    "speaker": "ALEX",
-    "text": "Welcome back. Today we're walking through one of the most common open source contribution patterns: you make your own copy of a project, work in that copy, and then ask the original project to accept your changes."
-  },
-  {
-    "speaker": "JAMIE",
-    "text": "So this is the workflow people use when they want to help with a project but they are not one of the core maintainers?"
-  },
-  {
-    "speaker": "ALEX",
-    "text": "Exactly. This is the fork-based workflow, and it's foundational. It's also the workflow used for the capstone when a repository accepts pull requests. We'll go from the big idea all the way through forking, cloning, branching, committing, pushing, opening a pull request, responding to review, syncing your fork later, and cleaning up after a merge."
-  },
-  {
-    "speaker": "JAMIE",
-    "text": "And we should say this up front: there are related appendices if someone needs more depth. Advanced Git, branch protection, and Git authentication can all become relevant while doing this."
-  },
-  {
-    "speaker": "ALEX",
-    "text": "Yes. And if you ever need the official current source of truth, GitHub Docs, the GitHub changelog, the docs pages on GitHub flow, pull requests, issues, and contributing to a project are the authoritative references."
-  },
-  {
-    "speaker": "PAUSE",
-    "text": ""
-  },
-  {
-    "speaker": "ALEX",
-    "text": "Let's start with the core concept. A fork is your personal copy of someone else's repository on GitHub. When you fork a repository, GitHub creates a full copy under your account. You can push to it, create branches on it, and modify it freely without changing the original repository."
-  },
-  {
-    "speaker": "JAMIE",
-    "text": "So the original repo stays safe, and my copy is where I experiment and prepare my contribution."
-  },
-  {
-    "speaker": "ALEX",
-    "text": "That's right. The original repository is usually called the upstream repository. Your fork is linked conceptually to that upstream repo, which is what makes it possible to open a pull request from your fork back to the original project."
-  },
-  {
-    "speaker": "JAMIE",
-    "text": "Why do forks exist in the first place?"
-  },
-  {
-    "speaker": "ALEX",
-    "text": "They solve a permissions problem. Most open source projects do not give every contributor write access to the main repository. Instead, you fork the project, make changes on your copy, and open a pull request asking the maintainers to merge your changes. That allows broad participation without maintainers handing out direct write access."
-  },
-  {
-    "speaker": "JAMIE",
-    "text": "So it's a collaboration model and a security model."
-  },
-  {
-    "speaker": "ALEX",
-    "text": "Exactly. And there's a useful contrast with earlier work where you had write access to a shared learning repository. In that case, you could branch directly on the repository itself. In open source, you usually don't have that permission, so you fork first and then create branches on your fork."
-  },
-  {
-    "speaker": "PAUSE",
-    "text": ""
-  },
-  {
-    "speaker": "JAMIE",
-    "text": "People often mix up fork, clone, and branch. Can we separate those clearly?"
-  },
-  {
-    "speaker": "ALEX",
-    "text": "Definitely. A fork lives on GitHub under your account. It creates a copy of an entire repository on GitHub. A clone lives on your computer. It creates a local copy of a repository so you can work with files and Git commands. A branch lives inside a repository, local or remote. It's a named pointer to a specific commit history, and it lets you isolate a change."
-  },
-  {
-    "speaker": "JAMIE",
-    "text": "So if I'm contributing to a project I don't own, the sequence is: fork on GitHub, clone to my computer, create a branch inside that local clone, do the work, push that branch back up to my fork, and then open a pull request to upstream."
-  },
-  {
-    "speaker": "ALEX",
-    "text": "Perfect. And for learners who benefit from a mental picture, think of three locations. On the left is the upstream repository on GitHub. In the middle is your fork on GitHub. On the right is your local repository on your computer. The fork action goes from upstream to your GitHub account. The clone action goes from your fork to your computer. Editing, staging, and committing happen locally. Pushing sends your branch from your computer to your fork. And the pull request asks upstream to accept the changes from your fork."
-  },
-  {
-    "speaker": "JAMIE",
-    "text": "That description is especially helpful for audio learners and screen reader users because it translates the diagram into a spatial model."
-  },
-  {
-    "speaker": "ALEX",
-    "text": "And there are some practical accessibility checks worth remembering. If you run git remote dash v in the terminal, you can hear which remotes are configured. Usually origin is your fork and upstream is the original repository. In VS Code, the status bar shows the current branch name. You can navigate there with F6 and confirm you're on a feature branch instead of main. And if you use the Command Palette with Control Shift P, then choose Git: Checkout to, a screen reader will announce branch names in the picker."
-  },
-  {
-    "speaker": "JAMIE",
-    "text": "For low vision users, the fork URL includes your username, which makes it visually different from the upstream URL. And in VS Code, the bottom-left branch indicator and the Source Control panel heading help confirm both branch and repository."
-  },
-  {
-    "speaker": "ALEX",
-    "text": "And on GitHub.com, sighted users can also notice the \"forked from\" label near the repository name."
-  },
-  {
-    "speaker": "PAUSE",
-    "text": ""
-  },
-  {
-    "speaker": "ALEX",
-    "text": "Now let's do the workflow. For this lesson, the example repository is Community-Access slash accessibility-agents."
-  },
-  {
-    "speaker": "JAMIE",
-    "text": "And first comes the fork itself."
-  },
-  {
-    "speaker": "ALEX",
-    "text": "Right. If you're using the browser on GitHub.com, go to the upstream repository page. Find the Fork button near the upper-right area of the page. Screen reader users can cycle through buttons with the B key in NVDA or JAWS. The Fork button appears near the top, after Watch and Star. VoiceOver users can open the buttons rotor with VO+U and navigate to Fork."
-  },
-  {
-    "speaker": "JAMIE",
-    "text": "Then GitHub opens the create-a-new-fork page."
-  },
-  {
-    "speaker": "ALEX",
-    "text": "Yes. Usually the defaults are correct. The owner should be your username. The repository name stays accessibility-agents. There's also a checkbox to copy the main branch only, and for this workflow you leave that checked. Then activate Create fork."
-  },
-  {
-    "speaker": "JAMIE",
-    "text": "And after that, GitHub redirects me to my own copy, something like github dot com slash my username slash accessibility-agents."
-  },
-  {
-    "speaker": "ALEX",
-    "text": "Exactly. At that point, you have your own copy and the upstream repo is untouched."
-  },
-  {
-    "speaker": "JAMIE",
-    "text": "What if someone prefers GitHub CLI?"
-  },
-  {
-    "speaker": "ALEX",
-    "text": "They can create the fork from the command line with: `gh repo fork Community-Access/accessibility-agents --clone=false` That creates the fork on GitHub without cloning yet."
-  },
-  {
-    "speaker": "JAMIE",
-    "text": "There was also a handy tool card version of this workflow, right?"
-  },
-  {
-    "speaker": "ALEX",
-    "text": "Yes. In a browser, you fork first, then use the green Code button to copy a clone URL. In VS Code Desktop, you still need the browser for the actual fork, then use Git: Clone in the Command Palette. In GitHub Desktop, you fork in the browser first, then use File, Clone Repository and choose your fork. And GitHub CLI can do both fork and clone in one command with `gh repo fork Community-Access/accessibility-agents --clone` followed by changing into the directory."
-  },
-  {
-    "speaker": "PAUSE",
-    "text": ""
-  },
-  {
-    "speaker": "JAMIE",
-    "text": "Okay, now I have a fork on GitHub, but no local files yet."
-  },
-  {
-    "speaker": "ALEX",
-    "text": "That means it's time to clone your fork locally. If you're using VS Code, open the Command Palette with Control Shift P or Command Shift P on macOS, type Git: Clone, press Enter, paste your fork URL, choose a local folder such as Documents, and then accept the prompt to open the cloned repository."
-  },
-  {
-    "speaker": "JAMIE",
-    "text": "If I'm in the terminal, it's the classic two commands: `git clone https://github.com/your-username/accessibility-agents.git` and then `cd accessibility-agents`."
-  },
-  {
-    "speaker": "ALEX",
-    "text": "Exactly. In GitHub Desktop, go to File, then Clone Repository, choose the GitHub.com tab, find your fork, choose a local path, and click Clone. And with GitHub CLI, use `gh repo clone your-username/accessibility-agents` and then change into the repository directory."
-  },
-  {
-    "speaker": "JAMIE",
-    "text": "What should I know immediately after cloning?"
-  },
-  {
-    "speaker": "ALEX",
-    "text": "After cloning, your local repository typically has one remote called origin, and origin points to your fork."
-  },
-  {
-    "speaker": "JAMIE",
-    "text": "That's an important distinction. Origin is not automatically the original project. It's usually wherever I cloned from."
-  },
-  {
-    "speaker": "ALEX",
-    "text": "Exactly. And in this fork workflow, that means origin usually points to your fork."
-  },
-  {
-    "speaker": "PAUSE",
-    "text": ""
-  },
-  {
-    "speaker": "JAMIE",
-    "text": "Now comes the part many beginners miss: adding upstream."
-  },
-  {
-    "speaker": "ALEX",
-    "text": "Yes. This matters because you want your local repository to know about both destinations: your fork and the original project. Origin points to your fork. Upstream should point to the original repository."
-  },
-  {
-    "speaker": "JAMIE",
-    "text": "Why is that so useful?"
-  },
-  {
-    "speaker": "ALEX",
-    "text": "Because the upstream project keeps moving. New commits land there all the time. If you want to stay current, update your local main branch, or start fresh feature branches from the latest code, you need a remote that points to the original repository."
-  },
-  {
-    "speaker": "JAMIE",
-    "text": "So how do I add it?"
-  },
-  {
-    "speaker": "ALEX",
-    "text": "From the terminal, run: `git remote add upstream https://github.com/Community-Access/accessibility-agents.git` That defines a second remote named upstream."
-  },
-  {
-    "speaker": "JAMIE",
-    "text": "And then I verify with `git remote -v`."
-  },
-  {
-    "speaker": "ALEX",
-    "text": "Exactly. You should hear or see two remotes. Origin should reference your username slash accessibility-agents. Upstream should reference Community-Access slash accessibility-agents. Verification matters because mixing them up can cause real confusion."
-  },
-  {
-    "speaker": "PAUSE",
-    "text": ""
-  },
-  {
-    "speaker": "ALEX",
-    "text": "Once remotes are set up, you create a feature branch."
-  },
-  {
-    "speaker": "JAMIE",
-    "text": "Not on main."
-  },
-  {
-    "speaker": "ALEX",
-    "text": "Correct. Not on main. Create and switch to a new branch before you make changes. In the terminal, that typically looks like `git switch -c your-branch-name` or, on older setups, `git checkout -b your-branch-name`."
-  },
-  {
-    "speaker": "JAMIE",
-    "text": "What kind of branch names are helpful?"
-  },
-  {
-    "speaker": "ALEX",
-    "text": "Short, descriptive names. Something like `fix-readme-typo`, `add-agent-example`, or `update-install-steps`. The branch name should hint at the change."
-  },
-  {
-    "speaker": "JAMIE",
-    "text": "What about in VS Code?"
-  },
-  {
-    "speaker": "ALEX",
-    "text": "Use the branch indicator in the status bar or the Command Palette. You can invoke a branch creation or checkout command and create a new branch there. In GitHub Desktop, there's a branch menu for creating a new branch and switching to it."
-  },
-  {
-    "speaker": "JAMIE",
-    "text": "And then we verify again."
-  },
-  {
-    "speaker": "ALEX",
-    "text": "Absolutely. In the terminal, `git branch --show-current` tells you the current branch. In VS Code, the status bar branch name confirms it. In GitHub Desktop, the current branch control does the same. This is one of those habits that prevents accidental commits to main."
-  },
-  {
-    "speaker": "PAUSE",
-    "text": ""
-  },
-  {
-    "speaker": "JAMIE",
-    "text": "Now we're finally ready to make changes."
-  },
-  {
-    "speaker": "ALEX",
-    "text": "Yes, and this part is not just technical. There are contribution principles too. Keep your changes focused. Try not to mix unrelated edits into one pull request. Read any contributing guidelines the project provides. And if the repository has issue templates or specific conventions, follow them."
-  },
-  {
-    "speaker": "JAMIE",
-    "text": "So good contributions are easier to review because they are scoped and understandable."
-  },
-  {
-    "speaker": "ALEX",
-    "text": "Exactly. Make the smallest meaningful change that solves the problem you're addressing. Then stage and commit your changes."
-  },
-  {
-    "speaker": "JAMIE",
-    "text": "Can you walk through that plainly?"
-  },
-  {
-    "speaker": "ALEX",
-    "text": "Sure. First, edit the files. Then check what changed with `git status`. Stage what you want to include with `git add` and commit with `git commit -m \"clear message here\"`."
-  },
-  {
-    "speaker": "JAMIE",
-    "text": "And the commit message should say what changed, not just \"stuff\" or \"update.\""
-  },
-  {
-    "speaker": "ALEX",
-    "text": "Right. Something concise and specific. For example, \"Add clarification to setup instructions\" or \"Fix broken link in README.\""
-  },
-  {
-    "speaker": "JAMIE",
-    "text": "How does this feel in VS Code?"
-  },
-  {
-    "speaker": "ALEX",
-    "text": "In VS Code, the Source Control panel shows changed files. You can review them, stage them there, type a commit message into the message box, and commit. For screen reader users, that panel can be navigated structurally, and the file list gives a clear inventory of what changed."
-  },
-  {
-    "speaker": "JAMIE",
-    "text": "And one reassuring point from the source: multiple commits are fine."
-  },
-  {
-    "speaker": "ALEX",
-    "text": "Yes. Beginners sometimes think a pull request must be one perfect commit. It does not. Multiple commits are completely acceptable, especially while you're iterating or responding to review feedback."
-  },
-  {
-    "speaker": "PAUSE",
-    "text": ""
-  },
-  {
-    "speaker": "ALEX",
-    "text": "After you commit locally, you need to push your branch to your fork."
-  },
-  {
-    "speaker": "JAMIE",
-    "text": "This is where the branch leaves my computer and appears on GitHub."
-  },
-  {
-    "speaker": "ALEX",
-    "text": "Exactly. The first push of a new branch usually needs an upstream tracking relationship. In the terminal, that often means: `git push -u origin your-branch-name` The `-u` sets the default upstream for that branch so later pushes can often just be `git push`."
-  },
-  {
-    "speaker": "JAMIE",
-    "text": "And subsequent pushes become simpler because Git remembers where that branch goes."
-  },
-  {
-    "speaker": "ALEX",
-    "text": "Right. After the first push, additional commits on that same branch can usually be sent with `git push`."
-  },
-  {
-    "speaker": "JAMIE",
-    "text": "What about graphical tools?"
-  },
-  {
-    "speaker": "ALEX",
-    "text": "In VS Code, after you commit, you can use the sync or publish branch prompts. In GitHub Desktop, you'll see a Push origin button. The exact wording can vary a bit, but the idea is the same: send the branch to your fork."
-  },
-  {
-    "speaker": "JAMIE",
-    "text": "How do I verify that worked?"
-  },
-  {
-    "speaker": "ALEX",
-    "text": "Go to your fork on GitHub.com and confirm the branch exists there. Often GitHub shows a banner suggesting you open a pull request for the recently pushed branch. Even without the banner, the branch dropdown should show your new branch."
-  },
-  {
-    "speaker": "PAUSE",
-    "text": ""
-  },
-  {
-    "speaker": "JAMIE",
-    "text": "Now for the public-facing part: opening the pull request."
-  },
-  {
-    "speaker": "ALEX",
-    "text": "Yes. A pull request, or PR, asks the upstream project to review and potentially merge your changes. One common path is the GitHub.com banner that appears after you push a branch. You activate Compare and pull request."
-  },
-  {
-    "speaker": "JAMIE",
-    "text": "And if the banner isn't there?"
-  },
-  {
-    "speaker": "ALEX",
-    "text": "You can go to the Pull Requests tab on GitHub.com and choose to create a new pull request manually. Then verify the direction carefully."
-  },
-  {
-    "speaker": "JAMIE",
-    "text": "That's the subtle part, isn't it? Making sure the base repository is upstream and the compare branch is from my fork."
-  },
-  {
-    "speaker": "ALEX",
-    "text": "Exactly. The base should be the upstream repository, usually on its main branch. The compare side should be your fork and your feature branch. This is one of the most important things to double-check in a fork workflow."
-  },
-  {
-    "speaker": "JAMIE",
-    "text": "What if someone prefers the command line?"
-  },
-  {
-    "speaker": "ALEX",
-    "text": "GitHub CLI supports this too with `gh pr create`. It walks you through repository and branch choices, and often opens prompts for title and body."
-  },
-  {
-    "speaker": "JAMIE",
-    "text": "What makes a good PR description?"
-  },
-  {
-    "speaker": "ALEX",
-    "text": "Explain what changed, why it changed, and anything a reviewer should pay attention to. If the change addresses an issue, mention that issue. Keep it clear and respectful. The goal is to help maintainers review efficiently."
-  },
-  {
-    "speaker": "JAMIE",
-    "text": "And this is another place where accessibility matters. A well-structured PR with a meaningful title and body is easier for everyone, including screen reader users who may navigate by headings, links, and landmarks."
-  },
-  {
-    "speaker": "ALEX",
-    "text": "Absolutely."
-  },
-  {
-    "speaker": "PAUSE",
-    "text": ""
-  },
-  {
-    "speaker": "JAMIE",
-    "text": "Let's say the maintainers review the PR and request changes. What happens then?"
-  },
-  {
-    "speaker": "ALEX",
-    "text": "That's normal. You stay on the same branch, make the requested edits locally, commit them, and push again to that same branch. The pull request updates automatically."
-  },
-  {
-    "speaker": "JAMIE",
-    "text": "So I do not usually create a brand-new PR just because feedback came in."
-  },
-  {
-    "speaker": "ALEX",
-    "text": "Correct. Same branch, same PR, more commits."
-  },
-  {
-    "speaker": "JAMIE",
-    "text": "And what does good review etiquette look like?"
-  },
-  {
-    "speaker": "ALEX",
-    "text": "Be courteous. Assume good intent. Respond to comments directly. If you disagree or you're confused, ask respectful questions. Reviewers absolutely expect questions from new contributors. If requested changes are unclear, replying with a clarifying question is better than guessing silently."
-  },
-  {
-    "speaker": "JAMIE",
-    "text": "That's encouraging, because many learners hesitate to reveal uncertainty."
-  },
-  {
-    "speaker": "ALEX",
-    "text": "And open source collaboration works better when uncertainty is visible and discussed."
-  },
-  {
-    "speaker": "PAUSE",
-    "text": ""
-  },
-  {
-    "speaker": "ALEX",
-    "text": "There's another maintenance skill that matters a lot over time: keeping your fork in sync."
-  },
-  {
-    "speaker": "JAMIE",
-    "text": "Because upstream keeps changing, and my fork can become stale."
-  },
-  {
-    "speaker": "ALEX",
-    "text": "Exactly. If your fork drifts too far behind, you may see conflicts or start new work from outdated code. The command-line sync process is very systematic."
-  },
-  {
-    "speaker": "JAMIE",
-    "text": "Walk us through it step by step."
-  },
-  {
-    "speaker": "ALEX",
-    "text": "First, make sure you are on main. `git switch main` Then download the latest changes from upstream. `git fetch upstream` Then merge upstream changes into your local main. `git merge upstream/main` And finally push the updated main branch to your fork. `git push origin main`"
-  },
-  {
-    "speaker": "JAMIE",
-    "text": "So that sequence updates local main from upstream, then updates my fork's main to match."
-  },
-  {
-    "speaker": "ALEX",
-    "text": "Exactly. And those four ideas matter conceptually: be on main, fetch upstream, merge upstream into local main, push local main back to origin."
-  },
-  {
-    "speaker": "JAMIE",
-    "text": "Can this also be done without the command line?"
-  },
-  {
-    "speaker": "ALEX",
-    "text": "Yes. On GitHub.com, fork pages often include a Sync fork control that can bring your fork up to date with upstream. GitHub CLI also has sync capabilities for forks."
-  },
-  {
-    "speaker": "JAMIE",
-    "text": "When should I sync?"
-  },
-  {
-    "speaker": "ALEX",
-    "text": "Before starting a new branch, definitely. Also if your pull request falls behind, or any time you haven't contributed in a while and want a fresh foundation. Starting from an up-to-date main branch reduces friction."
-  },
-  {
-    "speaker": "JAMIE",
-    "text": "And there were learning-card style reminders here too."
-  },
-  {
-    "speaker": "ALEX",
-    "text": "Yes. The big takeaway is to treat syncing as a normal maintenance habit, not as a rescue move only when something breaks."
-  },
-  {
-    "speaker": "PAUSE",
-    "text": ""
-  },
-  {
-    "speaker": "JAMIE",
-    "text": "Could we do a compact checklist of the whole workflow?"
-  },
-  {
-    "speaker": "ALEX",
-    "text": "Absolutely. Fork the upstream repository to your GitHub account. Clone your fork locally. Add the upstream remote. Create a feature branch. Make your changes. Stage and commit them. Push the branch to your fork. Open a pull request to upstream. Respond to review feedback on the same branch. After merge, sync your fork again when needed."
-  },
-  {
-    "speaker": "JAMIE",
-    "text": "And then cleanup."
-  },
-  {
-    "speaker": "ALEX",
-    "text": "Yes, cleaning up after merge is part of a tidy workflow. Delete the local branch when you're done, typically after switching away from it first. For example, switch to main, then delete the branch with a command like `git branch -d your-branch-name` if it's fully merged."
-  },
-  {
-    "speaker": "JAMIE",
-    "text": "And the remote branch on my fork can be deleted too."
-  },
-  {
-    "speaker": "ALEX",
-    "text": "Right. You can delete the remote branch on GitHub, often from the merged pull request page or with Git commands. The point is to reduce clutter once the work has landed."
-  },
-  {
-    "speaker": "PAUSE",
-    "text": ""
-  },
-  {
-    "speaker": "JAMIE",
-    "text": "Before we finish, can we cover the \"what if something goes wrong\" section? Because this workflow has many places where a newcomer can get stuck."
-  },
-  {
-    "speaker": "ALEX",
-    "text": "Definitely. If push is rejected because your branch is behind, fetch the latest changes, merge main into your branch if needed, resolve any conflicts, and push again. If a reviewer requested changes and you do not understand them, reply to the review comment with a question. That is normal and expected."
-  },
-  {
-    "speaker": "JAMIE",
-    "text": "What about \"repository not found\" when cloning?"
-  },
-  {
-    "speaker": "ALEX",
-    "text": "Double-check the URL and make sure the fork actually exists under your account. A tiny typo in the username or repository name is enough to cause that error."
-  },
-  {
-    "speaker": "JAMIE",
-    "text": "And if someone accidentally committed to main instead of a feature branch?"
-  },
-  {
-    "speaker": "ALEX",
-    "text": "That's recoverable. The advanced Git appendix covers ways to move commits onto a new branch. The important thing is not to panic."
-  },
-  {
-    "speaker": "JAMIE",
-    "text": "There was also guidance for learners who finish and still aren't sure whether they did it right."
-  },
-  {
-    "speaker": "ALEX",
-    "text": "Yes. Compare your work against the relevant reference solution if one is provided. It does not need to match exactly. The goal is a sound workflow and a meaningful contribution, not identical wording."
-  },
-  {
-    "speaker": "JAMIE",
-    "text": "And if someone wants the cultural context behind this workflow, that ties back to earlier material on open source culture. If they want the next practical destination, the next lesson continues into accessibility agents."
-  },
-  {
-    "speaker": "ALEX",
-    "text": "Exactly. So here's the big picture to carry with you: a fork lets you contribute safely to projects you don't control, a clone gives you a place to work locally, a branch keeps your change isolated, and a pull request opens the door to collaboration. Once you understand that chain, open source becomes much more approachable."
-  },
-  {
-    "speaker": "JAMIE",
-    "text": "And much less mysterious."
-  },
-  {
-    "speaker": "ALEX",
-    "text": "That's the goal."
-  }
+﻿[
+    {
+        "speaker":  "ALEX",
+        "text":  "Welcome back. Today we\u0027re walking through one of the most common open source contribution patterns: you make your own copy of a project, work in that copy, and then ask the original project to accept your changes."
+    },
+    {
+        "speaker":  "JAMIE",
+        "text":  "So this is the workflow people use when they want to help with a project but they are not one of the core maintainers?"
+    },
+    {
+        "speaker":  "ALEX",
+        "text":  "Exactly. This is the fork-based workflow, and it\u0027s foundational. It\u0027s also the workflow used for the capstone when a repository accepts pull requests. We\u0027ll go from the big idea all the way through forking, cloning, branching, committing, pushing, opening a pull request, responding to review, syncing your fork later, and cleaning up after a merge."
+    },
+    {
+        "speaker":  "JAMIE",
+        "text":  "And we should say this up front: there are related appendices if someone needs more depth. Advanced Git, branch protection, and Git authentication can all become relevant while doing this."
+    },
+    {
+        "speaker":  "ALEX",
+        "text":  "Yes. And if you ever need the official current source of truth, GitHub Docs, the GitHub changelog, the docs pages on GitHub flow, pull requests, issues, and contributing to a project are the authoritative references."
+    },
+    {
+        "speaker":  "PAUSE",
+        "text":  ""
+    },
+    {
+        "speaker":  "ALEX",
+        "text":  "Let\u0027s start with the core concept. A fork is your personal copy of someone else\u0027s repository on GitHub. When you fork a repository, GitHub creates a full copy under your account. You can push to it, create branches on it, and modify it freely without changing the original repository."
+    },
+    {
+        "speaker":  "JAMIE",
+        "text":  "So the original repo stays safe, and my copy is where I experiment and prepare my contribution."
+    },
+    {
+        "speaker":  "ALEX",
+        "text":  "That\u0027s right. The original repository is usually called the upstream repository. Your fork is linked conceptually to that upstream repo, which is what makes it possible to open a pull request from your fork back to the original project."
+    },
+    {
+        "speaker":  "JAMIE",
+        "text":  "Why do forks exist in the first place?"
+    },
+    {
+        "speaker":  "ALEX",
+        "text":  "They solve a permissions problem. Most open source projects do not give every contributor write access to the main repository. Instead, you fork the project, make changes on your copy, and open a pull request asking the maintainers to merge your changes. That allows broad participation without maintainers handing out direct write access."
+    },
+    {
+        "speaker":  "JAMIE",
+        "text":  "So it\u0027s a collaboration model and a security model."
+    },
+    {
+        "speaker":  "ALEX",
+        "text":  "Exactly. And there\u0027s a useful contrast with earlier work where you had write access to a shared learning repository. In that case, you could branch directly on the repository itself. In open source, you usually don\u0027t have that permission, so you fork first and then create branches on your fork."
+    },
+    {
+        "speaker":  "PAUSE",
+        "text":  ""
+    },
+    {
+        "speaker":  "JAMIE",
+        "text":  "People often mix up fork, clone, and branch. Can we separate those clearly?"
+    },
+    {
+        "speaker":  "ALEX",
+        "text":  "Definitely. A fork lives on GitHub under your account. It creates a copy of an entire repository on GitHub. A clone lives on your computer. It creates a local copy of a repository so you can work with files and Git commands. A branch lives inside a repository, local or remote. It\u0027s a named pointer to a specific commit history, and it lets you isolate a change."
+    },
+    {
+        "speaker":  "JAMIE",
+        "text":  "So if I\u0027m contributing to a project I don\u0027t own, the sequence is: fork on GitHub, clone to my computer, create a branch inside that local clone, do the work, push that branch back up to my fork, and then open a pull request to upstream."
+    },
+    {
+        "speaker":  "ALEX",
+        "text":  "Perfect. And for learners who benefit from a mental picture, think of three locations. On the left is the upstream repository on GitHub. In the middle is your fork on GitHub. On the right is your local repository on your computer. The fork action goes from upstream to your GitHub account. The clone action goes from your fork to your computer. Editing, staging, and committing happen locally. Pushing sends your branch from your computer to your fork. And the pull request asks upstream to accept the changes from your fork."
+    },
+    {
+        "speaker":  "JAMIE",
+        "text":  "That description is especially helpful for audio learners and screen reader users because it translates the diagram into a spatial model."
+    },
+    {
+        "speaker":  "ALEX",
+        "text":  "And there are some practical accessibility checks worth remembering. If you run git remote dash v in the terminal, you can hear which remotes are configured. Usually origin is your fork and upstream is the original repository. In VS Code, the status bar shows the current branch name. You can navigate there with F6 and confirm you\u0027re on a feature branch instead of main. And if you use the Command Palette with Control Shift P, then choose Git: Checkout to, a screen reader will announce branch names in the picker."
+    },
+    {
+        "speaker":  "JAMIE",
+        "text":  "For low vision users, the fork URL includes your username, which makes it visually different from the upstream URL. And in VS Code, the bottom-left branch indicator and the Source Control panel heading help confirm both branch and repository."
+    },
+    {
+        "speaker":  "ALEX",
+        "text":  "And on GitHub.com, sighted users can also notice the \"forked from\" label near the repository name."
+    },
+    {
+        "speaker":  "PAUSE",
+        "text":  ""
+    },
+    {
+        "speaker":  "ALEX",
+        "text":  "Now let\u0027s do the workflow. For this lesson, the example repository is Community-Access slash accessibility-agents."
+    },
+    {
+        "speaker":  "JAMIE",
+        "text":  "And first comes the fork itself."
+    },
+    {
+        "speaker":  "ALEX",
+        "text":  "Right. If you\u0027re using the browser on GitHub.com, go to the upstream repository page. Find the Fork button near the upper-right area of the page. Screen reader users can cycle through buttons with the B key in NVDA or JAWS. The Fork button appears near the top, after Watch and Star. VoiceOver users can open the buttons rotor with VO+U and navigate to Fork."
+    },
+    {
+        "speaker":  "JAMIE",
+        "text":  "Then GitHub opens the create-a-new-fork page."
+    },
+    {
+        "speaker":  "ALEX",
+        "text":  "Yes. Usually the defaults are correct. The owner should be your username. The repository name stays accessibility-agents. There\u0027s also a checkbox to copy the main branch only, and for this workflow you leave that checked. Then activate Create fork."
+    },
+    {
+        "speaker":  "JAMIE",
+        "text":  "And after that, GitHub redirects me to my own copy, something like github dot com slash my username slash accessibility-agents."
+    },
+    {
+        "speaker":  "ALEX",
+        "text":  "Exactly. At that point, you have your own copy and the upstream repo is untouched."
+    },
+    {
+        "speaker":  "JAMIE",
+        "text":  "What if someone prefers GitHub CLI?"
+    },
+    {
+        "speaker":  "ALEX",
+        "text":  "They can create the fork from the command line with: `gh repo fork Community-Access/accessibility-agents --clone=false` That creates the fork on GitHub without cloning yet."
+    },
+    {
+        "speaker":  "JAMIE",
+        "text":  "There was also a handy tool card version of this workflow, right?"
+    },
+    {
+        "speaker":  "ALEX",
+        "text":  "Yes. In a browser, you fork first, then use the green Code button to copy a clone URL. In VS Code Desktop, you still need the browser for the actual fork, then use Git: Clone in the Command Palette. In GitHub Desktop, you fork in the browser first, then use File, Clone Repository and choose your fork. And GitHub CLI can do both fork and clone in one command with `gh repo fork Community-Access/accessibility-agents --clone` followed by changing into the directory."
+    },
+    {
+        "speaker":  "PAUSE",
+        "text":  ""
+    },
+    {
+        "speaker":  "JAMIE",
+        "text":  "Okay, now I have a fork on GitHub, but no local files yet."
+    },
+    {
+        "speaker":  "ALEX",
+        "text":  "That means it\u0027s time to clone your fork locally. If you\u0027re using VS Code, open the Command Palette with Control Shift P or Command Shift P on macOS, type Git: Clone, press Enter, paste your fork URL, choose a local folder such as Documents, and then accept the prompt to open the cloned repository."
+    },
+    {
+        "speaker":  "JAMIE",
+        "text":  "If I\u0027m in the terminal, it\u0027s the classic two commands: `git clone https://github.com/your-username/accessibility-agents.git` and then `cd accessibility-agents`."
+    },
+    {
+        "speaker":  "ALEX",
+        "text":  "Exactly. In GitHub Desktop, go to File, then Clone Repository, choose the GitHub.com tab, find your fork, choose a local path, and click Clone. And with GitHub CLI, use `gh repo clone your-username/accessibility-agents` and then change into the repository directory."
+    },
+    {
+        "speaker":  "JAMIE",
+        "text":  "What should I know immediately after cloning?"
+    },
+    {
+        "speaker":  "ALEX",
+        "text":  "After cloning, your local repository typically has one remote called origin, and origin points to your fork."
+    },
+    {
+        "speaker":  "JAMIE",
+        "text":  "That\u0027s an important distinction. Origin is not automatically the original project. It\u0027s usually wherever I cloned from."
+    },
+    {
+        "speaker":  "ALEX",
+        "text":  "Exactly. And in this fork workflow, that means origin usually points to your fork."
+    },
+    {
+        "speaker":  "PAUSE",
+        "text":  ""
+    },
+    {
+        "speaker":  "JAMIE",
+        "text":  "Now comes the part many beginners miss: adding upstream."
+    },
+    {
+        "speaker":  "ALEX",
+        "text":  "Yes. This matters because you want your local repository to know about both destinations: your fork and the original project. Origin points to your fork. Upstream should point to the original repository."
+    },
+    {
+        "speaker":  "JAMIE",
+        "text":  "Why is that so useful?"
+    },
+    {
+        "speaker":  "ALEX",
+        "text":  "Because the upstream project keeps moving. New commits land there all the time. If you want to stay current, update your local main branch, or start fresh feature branches from the latest code, you need a remote that points to the original repository."
+    },
+    {
+        "speaker":  "JAMIE",
+        "text":  "So how do I add it?"
+    },
+    {
+        "speaker":  "ALEX",
+        "text":  "From the terminal, run: `git remote add upstream https://github.com/Community-Access/accessibility-agents.git` That defines a second remote named upstream."
+    },
+    {
+        "speaker":  "JAMIE",
+        "text":  "And then I verify with `git remote -v`."
+    },
+    {
+        "speaker":  "ALEX",
+        "text":  "Exactly. You should hear or see two remotes. Origin should reference your username slash accessibility-agents. Upstream should reference Community-Access slash accessibility-agents. Verification matters because mixing them up can cause real confusion."
+    },
+    {
+        "speaker":  "PAUSE",
+        "text":  ""
+    },
+    {
+        "speaker":  "ALEX",
+        "text":  "Once remotes are set up, you create a feature branch."
+    },
+    {
+        "speaker":  "JAMIE",
+        "text":  "Not on main."
+    },
+    {
+        "speaker":  "ALEX",
+        "text":  "Correct. Not on main. Create and switch to a new branch before you make changes. In the terminal, that typically looks like `git switch -c your-branch-name` or, on older setups, `git checkout -b your-branch-name`."
+    },
+    {
+        "speaker":  "JAMIE",
+        "text":  "What kind of branch names are helpful?"
+    },
+    {
+        "speaker":  "ALEX",
+        "text":  "Short, descriptive names. Something like `fix-readme-typo`, `add-agent-example`, or `update-install-steps`. The branch name should hint at the change."
+    },
+    {
+        "speaker":  "JAMIE",
+        "text":  "What about in VS Code?"
+    },
+    {
+        "speaker":  "ALEX",
+        "text":  "Use the branch indicator in the status bar or the Command Palette. You can invoke a branch creation or checkout command and create a new branch there. In GitHub Desktop, there\u0027s a branch menu for creating a new branch and switching to it."
+    },
+    {
+        "speaker":  "JAMIE",
+        "text":  "And then we verify again."
+    },
+    {
+        "speaker":  "ALEX",
+        "text":  "Absolutely. In the terminal, `git branch --show-current` tells you the current branch. In VS Code, the status bar branch name confirms it. In GitHub Desktop, the current branch control does the same. This is one of those habits that prevents accidental commits to main."
+    },
+    {
+        "speaker":  "PAUSE",
+        "text":  ""
+    },
+    {
+        "speaker":  "JAMIE",
+        "text":  "Now we\u0027re finally ready to make changes."
+    },
+    {
+        "speaker":  "ALEX",
+        "text":  "Yes, and this part is not just technical. There are contribution principles too. Keep your changes focused. Try not to mix unrelated edits into one pull request. Read any contributing guidelines the project provides. And if the repository has issue templates or specific conventions, follow them."
+    },
+    {
+        "speaker":  "JAMIE",
+        "text":  "So good contributions are easier to review because they are scoped and understandable."
+    },
+    {
+        "speaker":  "ALEX",
+        "text":  "Exactly. Make the smallest meaningful change that solves the problem you\u0027re addressing. Then stage and commit your changes."
+    },
+    {
+        "speaker":  "JAMIE",
+        "text":  "Can you walk through that plainly?"
+    },
+    {
+        "speaker":  "ALEX",
+        "text":  "Sure. First, edit the files. Then check what changed with `git status`. Stage what you want to include with `git add` and commit with `git commit -m \"clear message here\"`."
+    },
+    {
+        "speaker":  "JAMIE",
+        "text":  "And the commit message should say what changed, not just \"stuff\" or \"update.\""
+    },
+    {
+        "speaker":  "ALEX",
+        "text":  "Right. Something concise and specific. For example, \"Add clarification to setup instructions\" or \"Fix broken link in README.\""
+    },
+    {
+        "speaker":  "JAMIE",
+        "text":  "How does this feel in VS Code?"
+    },
+    {
+        "speaker":  "ALEX",
+        "text":  "In VS Code, the Source Control panel shows changed files. You can review them, stage them there, type a commit message into the message box, and commit. For screen reader users, that panel can be navigated structurally, and the file list gives a clear inventory of what changed."
+    },
+    {
+        "speaker":  "JAMIE",
+        "text":  "And one reassuring point from the source: multiple commits are fine."
+    },
+    {
+        "speaker":  "ALEX",
+        "text":  "Yes. Beginners sometimes think a pull request must be one perfect commit. It does not. Multiple commits are completely acceptable, especially while you\u0027re iterating or responding to review feedback."
+    },
+    {
+        "speaker":  "PAUSE",
+        "text":  ""
+    },
+    {
+        "speaker":  "ALEX",
+        "text":  "After you commit locally, you need to push your branch to your fork."
+    },
+    {
+        "speaker":  "JAMIE",
+        "text":  "This is where the branch leaves my computer and appears on GitHub."
+    },
+    {
+        "speaker":  "ALEX",
+        "text":  "Exactly. The first push of a new branch usually needs an upstream tracking relationship. In the terminal, that often means: `git push -u origin your-branch-name` The `-u` sets the default upstream for that branch so later pushes can often just be `git push`."
+    },
+    {
+        "speaker":  "JAMIE",
+        "text":  "And subsequent pushes become simpler because Git remembers where that branch goes."
+    },
+    {
+        "speaker":  "ALEX",
+        "text":  "Right. After the first push, additional commits on that same branch can usually be sent with `git push`."
+    },
+    {
+        "speaker":  "JAMIE",
+        "text":  "What about graphical tools?"
+    },
+    {
+        "speaker":  "ALEX",
+        "text":  "In VS Code, after you commit, you can use the sync or publish branch prompts. In GitHub Desktop, you\u0027ll see a Push origin button. The exact wording can vary a bit, but the idea is the same: send the branch to your fork."
+    },
+    {
+        "speaker":  "JAMIE",
+        "text":  "How do I verify that worked?"
+    },
+    {
+        "speaker":  "ALEX",
+        "text":  "Go to your fork on GitHub.com and confirm the branch exists there. Often GitHub shows a banner suggesting you open a pull request for the recently pushed branch. Even without the banner, the branch dropdown should show your new branch."
+    },
+    {
+        "speaker":  "PAUSE",
+        "text":  ""
+    },
+    {
+        "speaker":  "JAMIE",
+        "text":  "Now for the public-facing part: opening the pull request."
+    },
+    {
+        "speaker":  "ALEX",
+        "text":  "Yes. A pull request, or PR, asks the upstream project to review and potentially merge your changes. One common path is the GitHub.com banner that appears after you push a branch. You activate Compare and pull request."
+    },
+    {
+        "speaker":  "JAMIE",
+        "text":  "And if the banner isn\u0027t there?"
+    },
+    {
+        "speaker":  "ALEX",
+        "text":  "You can go to the Pull Requests tab on GitHub.com and choose to create a new pull request manually. Then verify the direction carefully."
+    },
+    {
+        "speaker":  "JAMIE",
+        "text":  "That\u0027s the subtle part, isn\u0027t it? Making sure the base repository is upstream and the compare branch is from my fork."
+    },
+    {
+        "speaker":  "ALEX",
+        "text":  "Exactly. The base should be the upstream repository, usually on its main branch. The compare side should be your fork and your feature branch. This is one of the most important things to double-check in a fork workflow."
+    },
+    {
+        "speaker":  "JAMIE",
+        "text":  "What if someone prefers the command line?"
+    },
+    {
+        "speaker":  "ALEX",
+        "text":  "GitHub CLI supports this too with `gh pr create`. It walks you through repository and branch choices, and often opens prompts for title and body."
+    },
+    {
+        "speaker":  "JAMIE",
+        "text":  "What makes a good PR description?"
+    },
+    {
+        "speaker":  "ALEX",
+        "text":  "Explain what changed, why it changed, and anything a reviewer should pay attention to. If the change addresses an issue, mention that issue. Keep it clear and respectful. The goal is to help maintainers review efficiently."
+    },
+    {
+        "speaker":  "JAMIE",
+        "text":  "And this is another place where accessibility matters. A well-structured PR with a meaningful title and body is easier for everyone, including screen reader users who may navigate by headings, links, and landmarks."
+    },
+    {
+        "speaker":  "ALEX",
+        "text":  "Absolutely."
+    },
+    {
+        "speaker":  "PAUSE",
+        "text":  ""
+    },
+    {
+        "speaker":  "JAMIE",
+        "text":  "Let\u0027s say the maintainers review the PR and request changes. What happens then?"
+    },
+    {
+        "speaker":  "ALEX",
+        "text":  "That\u0027s normal. You stay on the same branch, make the requested edits locally, commit them, and push again to that same branch. The pull request updates automatically."
+    },
+    {
+        "speaker":  "JAMIE",
+        "text":  "So I do not usually create a brand-new PR just because feedback came in."
+    },
+    {
+        "speaker":  "ALEX",
+        "text":  "Correct. Same branch, same PR, more commits."
+    },
+    {
+        "speaker":  "JAMIE",
+        "text":  "And what does good review etiquette look like?"
+    },
+    {
+        "speaker":  "ALEX",
+        "text":  "Be courteous. Assume good intent. Respond to comments directly. If you disagree or you\u0027re confused, ask respectful questions. Reviewers absolutely expect questions from new contributors. If requested changes are unclear, replying with a clarifying question is better than guessing silently."
+    },
+    {
+        "speaker":  "JAMIE",
+        "text":  "That\u0027s encouraging, because many learners hesitate to reveal uncertainty."
+    },
+    {
+        "speaker":  "ALEX",
+        "text":  "And open source collaboration works better when uncertainty is visible and discussed."
+    },
+    {
+        "speaker":  "PAUSE",
+        "text":  ""
+    },
+    {
+        "speaker":  "ALEX",
+        "text":  "There\u0027s another maintenance skill that matters a lot over time: keeping your fork in sync."
+    },
+    {
+        "speaker":  "JAMIE",
+        "text":  "Because upstream keeps changing, and my fork can become stale."
+    },
+    {
+        "speaker":  "ALEX",
+        "text":  "Exactly. If your fork drifts too far behind, you may see conflicts or start new work from outdated code. The command-line sync process is very systematic."
+    },
+    {
+        "speaker":  "JAMIE",
+        "text":  "Walk us through it step by step."
+    },
+    {
+        "speaker":  "ALEX",
+        "text":  "First, make sure you are on main. `git switch main` Then download the latest changes from upstream. `git fetch upstream` Then merge upstream changes into your local main. `git merge upstream/main` And finally push the updated main branch to your fork. `git push origin main`"
+    },
+    {
+        "speaker":  "JAMIE",
+        "text":  "So that sequence updates local main from upstream, then updates my fork\u0027s main to match."
+    },
+    {
+        "speaker":  "ALEX",
+        "text":  "Exactly. And those four ideas matter conceptually: be on main, fetch upstream, merge upstream into local main, push local main back to origin."
+    },
+    {
+        "speaker":  "JAMIE",
+        "text":  "Can this also be done without the command line?"
+    },
+    {
+        "speaker":  "ALEX",
+        "text":  "Yes. On GitHub.com, fork pages often include a Sync fork control that can bring your fork up to date with upstream. GitHub CLI also has sync capabilities for forks."
+    },
+    {
+        "speaker":  "JAMIE",
+        "text":  "When should I sync?"
+    },
+    {
+        "speaker":  "ALEX",
+        "text":  "Before starting a new branch, definitely. Also if your pull request falls behind, or any time you haven\u0027t contributed in a while and want a fresh foundation. Starting from an up-to-date main branch reduces friction."
+    },
+    {
+        "speaker":  "JAMIE",
+        "text":  "And there were learning-card style reminders here too."
+    },
+    {
+        "speaker":  "ALEX",
+        "text":  "Yes. The big takeaway is to treat syncing as a normal maintenance habit, not as a rescue move only when something breaks."
+    },
+    {
+        "speaker":  "PAUSE",
+        "text":  ""
+    },
+    {
+        "speaker":  "JAMIE",
+        "text":  "Could we do a compact checklist of the whole workflow?"
+    },
+    {
+        "speaker":  "ALEX",
+        "text":  "Absolutely. Fork the upstream repository to your GitHub account. Clone your fork locally. Add the upstream remote. Create a feature branch. Make your changes. Stage and commit them. Push the branch to your fork. Open a pull request to upstream. Respond to review feedback on the same branch. After merge, sync your fork again when needed."
+    },
+    {
+        "speaker":  "JAMIE",
+        "text":  "And then cleanup."
+    },
+    {
+        "speaker":  "ALEX",
+        "text":  "Yes, cleaning up after merge is part of a tidy workflow. Delete the local branch when you\u0027re done, typically after switching away from it first. For example, switch to main, then delete the branch with a command like `git branch -d your-branch-name` if it\u0027s fully merged."
+    },
+    {
+        "speaker":  "JAMIE",
+        "text":  "And the remote branch on my fork can be deleted too."
+    },
+    {
+        "speaker":  "ALEX",
+        "text":  "Right. You can delete the remote branch on GitHub, often from the merged pull request page or with Git commands. The point is to reduce clutter once the work has landed."
+    },
+    {
+        "speaker":  "PAUSE",
+        "text":  ""
+    },
+    {
+        "speaker":  "JAMIE",
+        "text":  "Before we finish, can we cover the \"what if something goes wrong\" section? Because this workflow has many places where a newcomer can get stuck."
+    },
+    {
+        "speaker":  "ALEX",
+        "text":  "Definitely. If push is rejected because your branch is behind, fetch the latest changes, merge main into your branch if needed, resolve any conflicts, and push again. If a reviewer requested changes and you do not understand them, reply to the review comment with a question. That is normal and expected."
+    },
+    {
+        "speaker":  "JAMIE",
+        "text":  "What about \"repository not found\" when cloning?"
+    },
+    {
+        "speaker":  "ALEX",
+        "text":  "Double-check the URL and make sure the fork actually exists under your account. A tiny typo in the username or repository name is enough to cause that error."
+    },
+    {
+        "speaker":  "JAMIE",
+        "text":  "And if someone accidentally committed to main instead of a feature branch?"
+    },
+    {
+        "speaker":  "ALEX",
+        "text":  "That\u0027s recoverable. The advanced Git appendix covers ways to move commits onto a new branch. The important thing is not to panic."
+    },
+    {
+        "speaker":  "JAMIE",
+        "text":  "There was also guidance for learners who finish and still aren\u0027t sure whether they did it right."
+    },
+    {
+        "speaker":  "ALEX",
+        "text":  "Yes. Compare your work against the relevant reference solution if one is provided. It does not need to match exactly. The goal is a sound workflow and a meaningful contribution, not identical wording."
+    },
+    {
+        "speaker":  "JAMIE",
+        "text":  "And if someone wants the cultural context behind this workflow, that ties back to earlier material on open source culture. If they want the next practical destination, the next lesson continues into accessibility agents."
+    },
+    {
+        "speaker":  "ALEX",
+        "text":  "Exactly. So here\u0027s the big picture to carry with you: a fork lets you contribute safely to projects you don\u0027t control, a clone gives you a place to work locally, a branch keeps your change isolated, and a pull request opens the door to collaboration. Once you understand that chain, open source becomes much more approachable."
+    },
+    {
+        "speaker":  "JAMIE",
+        "text":  "And much less mysterious."
+    },
+    {
+        "speaker":  "ALEX",
+        "text":  "That\u0027s the goal."
+    }
 ]

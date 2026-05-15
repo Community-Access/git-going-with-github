@@ -1,738 +1,738 @@
-[
-  {
-    "speaker": "ALEX",
-    "text": "Welcome back. Today we're exploring GitHub Desktop, which is GitHub's free, open-source visual Git client for Windows and macOS."
-  },
-  {
-    "speaker": "JAMIE",
-    "text": "So this is for someone who wants Git as its own app, separate from the code editor?"
-  },
-  {
-    "speaker": "ALEX",
-    "text": "Exactly. If VS Code's Source Control view feels too tucked inside the editor, GitHub Desktop gives you a dedicated space for cloning repositories, creating branches, reviewing changes, committing, syncing with GitHub, and handling a lot of the day-to-day Git work."
-  },
-  {
-    "speaker": "JAMIE",
-    "text": "And it's worth saying: this appendix sits alongside the larger tool-choosing and Git-in-practice material, right?"
-  },
-  {
-    "speaker": "ALEX",
-    "text": "Yes. Think of this as a practical companion. If you're deciding between tools, or trying to build an accessible contribution workflow, GitHub Desktop is one strong option. And because this lesson is for blind and low-vision learners too, we'll keep noting what works well, what doesn't, and when another tool may be the better fit."
-  },
-  {
-    "speaker": "PAUSE",
-    "text": ""
-  },
-  {
-    "speaker": "ALEX",
-    "text": "Let's orient to the full journey. We'll cover what GitHub Desktop can and cannot do, how to install it, how sign-in works, what the interface looks like, cloning, branching, staging and committing, pushing and pulling, syncing a fork, resolving conflicts, viewing history, cherry-picking, stashing, undoing changes, accessibility notes, and then when to use Desktop versus VS Code versus the Git command line."
-  },
-  {
-    "speaker": "JAMIE",
-    "text": "So not just a sales pitch for the app."
-  },
-  {
-    "speaker": "ALEX",
-    "text": "Not at all. More like: here is the tool, here are its boundaries, and here is how to use it wisely."
-  },
-  {
-    "speaker": "PAUSE",
-    "text": ""
-  },
-  {
-    "speaker": "ALEX",
-    "text": "A good place to start is scope. GitHub Desktop supports the everyday workflow most contributors use most days."
-  },
-  {
-    "speaker": "JAMIE",
-    "text": "What counts as everyday workflow here?"
-  },
-  {
-    "speaker": "ALEX",
-    "text": "Cloning repositories from GitHub. Creating, switching, and deleting branches. Staging files, and even staging individual lines or hunks inside a file. Writing commit messages and committing. Pushing and pulling. Opening a pull request, though that part sends you to GitHub.com in your browser. It also supports merge conflict resolution with a visual editor, viewing commit history and diffs, cherry-picking commits from one branch to another, stashing and restoring uncommitted changes, undoing commits, and discarding changes."
-  },
-  {
-    "speaker": "JAMIE",
-    "text": "That is a lot. For many people, that really is the whole routine."
-  },
-  {
-    "speaker": "ALEX",
-    "text": "It is. But there are important limits. GitHub Desktop does not expose everything Git can do."
-  },
-  {
-    "speaker": "JAMIE",
-    "text": "Such as the scary advanced stuff?"
-  },
-  {
-    "speaker": "ALEX",
-    "text": "Some of the advanced, powerful, and sometimes risky operations, yes. In the Desktop user interface, you do not get interactive rebase, so no visual equivalent of git rebase dash i. You also do not get git bisect, git clean, creating annotated tags, or commit signing with GPG or SSH from the UI."
-  },
-  {
-    "speaker": "JAMIE",
-    "text": "So if I need those, I leave GitHub Desktop?"
-  },
-  {
-    "speaker": "ALEX",
-    "text": "You use the terminal, or sometimes VS Code's terminal. And GitHub Desktop helps with that by offering Repository, then Open in Terminal, or on Windows Open in Command Prompt, so you land in the correct repository folder immediately."
-  },
-  {
-    "speaker": "JAMIE",
-    "text": "That's a nice bridge. You're not trapped in the GUI."
-  },
-  {
-    "speaker": "ALEX",
-    "text": "Right. And for accessibility, that's significant. For screen reader users, Desktop handles a lot of core tasks through keyboard-friendly controls and standard text inputs, especially the commit message fields. For low-vision users, system zoom, display scaling, and high-contrast operating system themes matter a lot. And if the diff colors are hard to distinguish, opening the repository or diff in VS Code can give you more theme control."
-  },
-  {
-    "speaker": "JAMIE",
-    "text": "And for sighted users, the three-panel layout gives a quick snapshot: files on one side, diff on the other, commit area below."
-  },
-  {
-    "speaker": "ALEX",
-    "text": "Exactly."
-  },
-  {
-    "speaker": "PAUSE",
-    "text": ""
-  },
-  {
-    "speaker": "JAMIE",
-    "text": "Okay, let's install it."
-  },
-  {
-    "speaker": "ALEX",
-    "text": "On Windows, the recommended command-line install is winget install GitHub.GitHubDesktop."
-  },
-  {
-    "speaker": "JAMIE",
-    "text": "So if someone already uses Winget, that's quick."
-  },
-  {
-    "speaker": "ALEX",
-    "text": "Yes. The direct-download option is also simple: go to desktop dot github dot com, choose Download for Windows, run the installer, and it installs and launches automatically."
-  },
-  {
-    "speaker": "JAMIE",
-    "text": "And on a Mac?"
-  },
-  {
-    "speaker": "ALEX",
-    "text": "If you use Homebrew, brew install dash dash cask github. Or go to the same website, choose Download for macOS, open the downloaded zip file, and drag GitHub Desktop into your Applications folder."
-  },
-  {
-    "speaker": "JAMIE",
-    "text": "And Linux?"
-  },
-  {
-    "speaker": "ALEX",
-    "text": "No official Linux support for GitHub Desktop. Linux users should generally use VS Code's Source Control panel or the Git CLI."
-  },
-  {
-    "speaker": "JAMIE",
-    "text": "That's important not to gloss over."
-  },
-  {
-    "speaker": "ALEX",
-    "text": "Absolutely."
-  },
-  {
-    "speaker": "PAUSE",
-    "text": ""
-  },
-  {
-    "speaker": "JAMIE",
-    "text": "Once it's installed, what does sign-in look like? Do we need to manage personal access tokens or SSH keys?"
-  },
-  {
-    "speaker": "ALEX",
-    "text": "For normal GitHub.com use, no. GitHub Desktop uses browser-based OAuth sign-in. On first launch, you open GitHub Desktop, choose Sign in to GitHub.com, your browser opens to GitHub's authorization page, you sign in if needed, authorize GitHub Desktop, then return to the app."
-  },
-  {
-    "speaker": "JAMIE",
-    "text": "And after that?"
-  },
-  {
-    "speaker": "ALEX",
-    "text": "The app stores credentials securely in the system keychain, so you usually won't be prompted for your password again."
-  },
-  {
-    "speaker": "JAMIE",
-    "text": "What if someone uses GitHub Enterprise or an organization-hosted server?"
-  },
-  {
-    "speaker": "ALEX",
-    "text": "Then they choose Sign in to GitHub Enterprise Server and enter the server URL for that organization."
-  },
-  {
-    "speaker": "PAUSE",
-    "text": ""
-  },
-  {
-    "speaker": "ALEX",
-    "text": "Now let's build a mental model of the interface. GitHub Desktop has three main visual areas, plus a commit area."
-  },
-  {
-    "speaker": "JAMIE",
-    "text": "Talk me through it as if I can't see the screen clearly."
-  },
-  {
-    "speaker": "ALEX",
-    "text": "At the top is the toolbar. On the left is the Current Repository control, which lets you switch among local repositories you've opened in GitHub Desktop. Near the middle is Current Branch, which opens the branch selector. On the right is the sync control, usually labeled Fetch origin, Pull origin, or Push origin depending on state."
-  },
-  {
-    "speaker": "JAMIE",
-    "text": "So the top bar answers three questions: which repo, which branch, and what's my sync status?"
-  },
-  {
-    "speaker": "ALEX",
-    "text": "Perfectly said. Then in the left panel you'll usually see either the Changes tab or the History tab. Changes lists uncommitted work. History lists past commits. The larger main area to the right shows either file diffs or commit details depending on what you've selected. And near the bottom left is the commit area with a Summary field, optional Description field, and a commit button that usually says something like Commit to main or Commit to feature slash name."
-  },
-  {
-    "speaker": "JAMIE",
-    "text": "That sounds fairly structured."
-  },
-  {
-    "speaker": "ALEX",
-    "text": "It is. For keyboard users and screen reader users, that structure matters. You can tab among the major regions. The branch selector behaves like a searchable dropdown: type to filter, use arrow keys to move, press Enter to select. The commit button is announced with the target branch name."
-  },
-  {
-    "speaker": "JAMIE",
-    "text": "And for low-vision users?"
-  },
-  {
-    "speaker": "ALEX",
-    "text": "The toolbar stays fixed at the top, which helps. Increasing operating-system display scaling enlarges the interface proportionally. And the Changes and History tabs are clearly separated in the left panel. For sighted users, one useful cue is that the sync button changes icon or label to show whether you're fetching, pushing, or pulling."
-  },
-  {
-    "speaker": "PAUSE",
-    "text": ""
-  },
-  {
-    "speaker": "JAMIE",
-    "text": "Let's clone a repository. What's the easiest path?"
-  },
-  {
-    "speaker": "ALEX",
-    "text": "Often from GitHub.com. On a repository page, use the Code button and choose Open with GitHub Desktop. That launches the app with the repository URL already filled in. You choose the local folder where the repository should live, then activate Clone."
-  },
-  {
-    "speaker": "JAMIE",
-    "text": "And if I want to stay inside the app?"
-  },
-  {
-    "speaker": "ALEX",
-    "text": "Use the clone shortcut: Control Shift O on Windows, Command Shift O on macOS. Then choose either the GitHub.com tab to browse repositories connected to your account, or the URL tab to paste any repository URL. Pick the local path and choose Clone."
-  },
-  {
-    "speaker": "JAMIE",
-    "text": "The source also mentioned a GitHub CLI alternative."
-  },
-  {
-    "speaker": "ALEX",
-    "text": "Yes. If you're comfortable in the terminal, you can run gh repo clone owner slash repo-name, and after that open the repository in GitHub Desktop with the github command followed by the path to the repo."
-  },
-  {
-    "speaker": "JAMIE",
-    "text": "So Desktop can be the main tool or just one tool in a mixed workflow."
-  },
-  {
-    "speaker": "ALEX",
-    "text": "Exactly."
-  },
-  {
-    "speaker": "PAUSE",
-    "text": ""
-  },
-  {
-    "speaker": "JAMIE",
-    "text": "Now we've got a cloned repository. Branches are next, right?"
-  },
-  {
-    "speaker": "ALEX",
-    "text": "Yes. Branching is one of the most common tasks. To create a new branch, open the Current Branch menu, choose the option to create a new branch, type the branch name, and confirm. GitHub Desktop will create it based on your current branch and switch you to it."
-  },
-  {
-    "speaker": "JAMIE",
-    "text": "So I'm not just naming it. I'm also choosing the branch I branch from, whether explicitly or implicitly."
-  },
-  {
-    "speaker": "ALEX",
-    "text": "Right. Usually it's based on whatever branch you're currently on, often main. To switch to an existing branch, open the same branch selector, type to filter if needed, move to the desired branch, and select it."
-  },
-  {
-    "speaker": "JAMIE",
-    "text": "What if I have uncommitted changes and try to switch?"
-  },
-  {
-    "speaker": "ALEX",
-    "text": "GitHub Desktop may prompt you depending on whether the changes can safely move with you. In practice, if you're unsure, commit your work or stash it before switching branches. We'll talk about stashing later."
-  },
-  {
-    "speaker": "JAMIE",
-    "text": "And deleting a branch?"
-  },
-  {
-    "speaker": "ALEX",
-    "text": "You generally switch away from the branch first, then use the branch menu to delete it. Deleting a branch removes the branch reference, not the commits themselves if they still exist elsewhere, but it's still something to do thoughtfully."
-  },
-  {
-    "speaker": "PAUSE",
-    "text": ""
-  },
-  {
-    "speaker": "ALEX",
-    "text": "Now let's get into the heart of daily Git work: staging and committing."
-  },
-  {
-    "speaker": "JAMIE",
-    "text": "This is where people often blur concepts together. What does GitHub Desktop help us see clearly?"
-  },
-  {
-    "speaker": "ALEX",
-    "text": "It makes the review step very concrete. In the Changes tab, the left side lists modified, added, and deleted files. Selecting a file shows its diff in the main pane, so you can inspect exactly what changed before committing."
-  },
-  {
-    "speaker": "JAMIE",
-    "text": "So reviewing changes is not optional busywork. It's how you confirm what you're about to record."
-  },
-  {
-    "speaker": "ALEX",
-    "text": "Exactly. Then comes staging. In GitHub Desktop, files in the Changes list usually have checkboxes. Checked means staged for the next commit. Unchecked means leave it out."
-  },
-  {
-    "speaker": "JAMIE",
-    "text": "That's a very approachable model."
-  },
-  {
-    "speaker": "ALEX",
-    "text": "It is. And it gets better: you can often stage individual lines or hunks within a file. That means if one file contains two unrelated edits, you may be able to commit only the part relevant to your current task."
-  },
-  {
-    "speaker": "JAMIE",
-    "text": "Can you explain hunk in plain language?"
-  },
-  {
-    "speaker": "ALEX",
-    "text": "A hunk is a chunk of nearby changed lines shown together in a diff. It's larger than a single line, smaller than the whole file. GitHub Desktop can let you include only certain chunks, or sometimes individual lines, to keep commits focused."
-  },
-  {
-    "speaker": "JAMIE",
-    "text": "That helps create cleaner history."
-  },
-  {
-    "speaker": "ALEX",
-    "text": "Exactly. Once staged, you write the commit message. The Summary field is the short title of the commit. The Description field is optional extra detail. Then you activate the commit button."
-  },
-  {
-    "speaker": "JAMIE",
-    "text": "Any guidance on writing that summary?"
-  },
-  {
-    "speaker": "ALEX",
-    "text": "Make it specific and useful. For example, not update stuff, but fix broken heading navigation in README. The summary should help your future self and collaborators understand intent quickly."
-  },
-  {
-    "speaker": "JAMIE",
-    "text": "And the source specifically notes that these fields are standard editable text inputs, which is good for screen reader support."
-  },
-  {
-    "speaker": "ALEX",
-    "text": "Yes, that's an important accessibility detail."
-  },
-  {
-    "speaker": "PAUSE",
-    "text": ""
-  },
-  {
-    "speaker": "JAMIE",
-    "text": "After committing locally, we need to sync with GitHub."
-  },
-  {
-    "speaker": "ALEX",
-    "text": "Right. GitHub Desktop combines several related actions into the sync area at the top right. Fetch checks the remote for updates without changing your local branch. Pull fetches and then brings remote changes into your local branch. Push sends your local commits to GitHub."
-  },
-  {
-    "speaker": "JAMIE",
-    "text": "Let's separate those carefully. What does fetch do for a cautious learner?"
-  },
-  {
-    "speaker": "ALEX",
-    "text": "Fetch is the safe look-before-you-touch option. It checks whether the remote has new commits and updates GitHub Desktop's awareness of that state, but it does not merge those commits into your current branch."
-  },
-  {
-    "speaker": "JAMIE",
-    "text": "So if I just want to know whether anything changed upstream, fetch first."
-  },
-  {
-    "speaker": "ALEX",
-    "text": "Exactly. If there are commits on GitHub that your local branch doesn't have, the app may then offer Pull origin. If you have local commits not yet on GitHub, it offers Push origin."
-  },
-  {
-    "speaker": "JAMIE",
-    "text": "And if both sides changed?"
-  },
-  {
-    "speaker": "ALEX",
-    "text": "You may fetch, then pull, possibly followed later by push if you also have local work. The exact label can vary, but the conceptual model stays the same."
-  },
-  {
-    "speaker": "JAMIE",
-    "text": "The source also calls out keyboard shortcuts here."
-  },
-  {
-    "speaker": "ALEX",
-    "text": "Yes. The important lesson is not memorizing every shortcut, but knowing that the app supports keyboard access for clone and other common actions, and that sync operations are available through both toolbar controls and menus. If you're a keyboard-first user, it's worth exploring the menu bar on your platform to learn the exact commands GitHub Desktop exposes."
-  },
-  {
-    "speaker": "PAUSE",
-    "text": ""
-  },
-  {
-    "speaker": "JAMIE",
-    "text": "Fork workflows are really common in open source. How does syncing your fork fit into GitHub Desktop?"
-  },
-  {
-    "speaker": "ALEX",
-    "text": "If you've forked a repository, you usually have two remotes conceptually: your fork on GitHub, commonly called origin, and the original project repository, often called upstream. Syncing your fork means bringing changes from upstream into your local copy, and often later into your fork as well."
-  },
-  {
-    "speaker": "JAMIE",
-    "text": "And if upstream isn't set yet?"
-  },
-  {
-    "speaker": "ALEX",
-    "text": "You need to configure the upstream remote. The appendix specifically notes setting up the upstream remote if it isn't already there. GitHub Desktop can help with common fork workflows, but there are times when checking or adding remotes may be clearer in the CLI."
-  },
-  {
-    "speaker": "JAMIE",
-    "text": "So the conceptual requirement is: know where your branch is pulling from and where it's pushing to."
-  },
-  {
-    "speaker": "ALEX",
-    "text": "Exactly. Without that, fork syncing becomes confusing fast."
-  },
-  {
-    "speaker": "PAUSE",
-    "text": ""
-  },
-  {
-    "speaker": "JAMIE",
-    "text": "Now let's visit the part people dread: merge conflicts."
-  },
-  {
-    "speaker": "ALEX",
-    "text": "Yes, but they become less scary once you understand them. A merge conflict happens when Git cannot automatically reconcile competing changes, often because the same lines were changed in different ways on different branches."
-  },
-  {
-    "speaker": "JAMIE",
-    "text": "What does GitHub Desktop do when that happens?"
-  },
-  {
-    "speaker": "ALEX",
-    "text": "It will tell you there are conflicts and guide you into resolving them, often by opening the conflicted files in your editor or a visual resolution flow. The step-by-step idea is: identify the conflicted files, open and inspect them, choose which content to keep or combine, remove the conflict markers if you're editing manually, save the file, and mark the conflict as resolved."
-  },
-  {
-    "speaker": "JAMIE",
-    "text": "Then what?"
-  },
-  {
-    "speaker": "ALEX",
-    "text": "After resolving in your editor, return to GitHub Desktop. Review the now-resolved changes, commit the merge or conflict resolution, and continue syncing as needed."
-  },
-  {
-    "speaker": "JAMIE",
-    "text": "So Desktop is part coordinator, part visual assistant, but the actual text editing may happen in VS Code or another editor."
-  },
-  {
-    "speaker": "ALEX",
-    "text": "Precisely. And for blind users in particular, editing conflict markers in a familiar text editor like VS Code may be much more accessible than relying on a highly visual merge interface."
-  },
-  {
-    "speaker": "PAUSE",
-    "text": ""
-  },
-  {
-    "speaker": "ALEX",
-    "text": "Once you've worked for a while, history becomes important."
-  },
-  {
-    "speaker": "JAMIE",
-    "text": "Not just what changed, but when and why."
-  },
-  {
-    "speaker": "ALEX",
-    "text": "Exactly. In the History tab, GitHub Desktop shows the commit timeline for the current repository or branch context. You can navigate through commits, select one, and inspect its details and diff."
-  },
-  {
-    "speaker": "JAMIE",
-    "text": "What about filtering commits?"
-  },
-  {
-    "speaker": "ALEX",
-    "text": "Filtering helps narrow history, often by searching commit messages, authors, or relevant content exposed by the interface. The key skill is using search or filtering to avoid reading an entire history when you're really looking for one fix or one person's work."
-  },
-  {
-    "speaker": "JAMIE",
-    "text": "And a specific file's history?"
-  },
-  {
-    "speaker": "ALEX",
-    "text": "You can view the history related to a particular file, which is very useful when you want to know who changed one document, script, or configuration file over time."
-  },
-  {
-    "speaker": "JAMIE",
-    "text": "Comparing branches is another big one."
-  },
-  {
-    "speaker": "ALEX",
-    "text": "Yes. Comparing branches lets you inspect how one branch differs from another before merging, cherry-picking, or opening a pull request. It's a way to answer, what is unique here relative to there?"
-  },
-  {
-    "speaker": "PAUSE",
-    "text": ""
-  },
-  {
-    "speaker": "JAMIE",
-    "text": "Speaking of moving work across branches, let's talk about cherry-pick."
-  },
-  {
-    "speaker": "ALEX",
-    "text": "Cherry-pick means taking a specific commit from one branch and applying it onto another branch, without merging the entire branch."
-  },
-  {
-    "speaker": "JAMIE",
-    "text": "So if a bug fix exists on one branch and I need that exact fix on another, cherry-pick is the targeted move."
-  },
-  {
-    "speaker": "ALEX",
-    "text": "Exactly. In GitHub Desktop, you typically find the commit in history, use the context menu or available command to cherry-pick it onto your current branch, and let Desktop apply it."
-  },
-  {
-    "speaker": "JAMIE",
-    "text": "And if the commit doesn't apply cleanly?"
-  },
-  {
-    "speaker": "ALEX",
-    "text": "Then you get a conflict, just as you might during a merge. Resolve the conflicting files, save them, return to GitHub Desktop, and complete the process."
-  },
-  {
-    "speaker": "JAMIE",
-    "text": "So cherry-pick is powerful, but it can still require careful conflict resolution."
-  },
-  {
-    "speaker": "ALEX",
-    "text": "Yes."
-  },
-  {
-    "speaker": "PAUSE",
-    "text": ""
-  },
-  {
-    "speaker": "JAMIE",
-    "text": "Now, stashing. This is one of those features people hear about before they really understand when to use it."
-  },
-  {
-    "speaker": "ALEX",
-    "text": "A stash is a temporary shelf for uncommitted changes. You use it when you're in the middle of work but need a clean working tree, often to switch branches or handle an urgent task."
-  },
-  {
-    "speaker": "JAMIE",
-    "text": "So it's like saying, hold this for me, I don't want to commit it yet."
-  },
-  {
-    "speaker": "ALEX",
-    "text": "Exactly. In GitHub Desktop, you can stash your current changes, which removes them from the working view and returns the repository to a cleaner state. Later, you restore the stash to bring those changes back."
-  },
-  {
-    "speaker": "JAMIE",
-    "text": "Any caution here?"
-  },
-  {
-    "speaker": "ALEX",
-    "text": "Yes. A stash is convenient, but it is easier to forget than a commit. If the work is meaningful and coherent, a real commit on a branch is often safer. Use stash for short-term interruption management, not as long-term storage."
-  },
-  {
-    "speaker": "PAUSE",
-    "text": ""
-  },
-  {
-    "speaker": "JAMIE",
-    "text": "Let's do undoing changes, because everyone eventually needs that."
-  },
-  {
-    "speaker": "ALEX",
-    "text": "Absolutely. GitHub Desktop supports a few kinds of undo. One is undoing the last commit. That generally removes the commit while keeping the changed content available locally, so you can adjust it and recommit."
-  },
-  {
-    "speaker": "JAMIE",
-    "text": "Useful if the message was wrong or the commit included something extra."
-  },
-  {
-    "speaker": "ALEX",
-    "text": "Exactly. Another option is discarding changes to a file. That throws away the uncommitted edits in that file and restores it to its last committed state."
-  },
-  {
-    "speaker": "JAMIE",
-    "text": "So that is destructive for uncommitted work."
-  },
-  {
-    "speaker": "ALEX",
-    "text": "Yes, and learners should pause before using it. There's also discarding all changes, which wipes all current uncommitted modifications in the repository working tree. That's even more destructive."
-  },
-  {
-    "speaker": "JAMIE",
-    "text": "So the rule is: understand whether you're undoing a commit or discarding uncommitted edits. Those are very different things."
-  },
-  {
-    "speaker": "ALEX",
-    "text": "Exactly right."
-  },
-  {
-    "speaker": "PAUSE",
-    "text": ""
-  },
-  {
-    "speaker": "ALEX",
-    "text": "Now let's spend real time on accessibility and screen reader notes, because this appendix explicitly includes them."
-  },
-  {
-    "speaker": "JAMIE",
-    "text": "Good. Start with what works well."
-  },
-  {
-    "speaker": "ALEX",
-    "text": "GitHub Desktop does many core tasks through standard controls: buttons, text fields, lists, checkboxes, dropdowns. Keyboard navigation across major regions is generally workable. Commit message fields are standard edit fields. Cloning, branching, staging, committing, and pushing are all possible without depending purely on a mouse."
-  },
-  {
-    "speaker": "JAMIE",
-    "text": "So for basic workflows, many users can absolutely use it."
-  },
-  {
-    "speaker": "ALEX",
-    "text": "Yes. But there are limitations. Dense diff views can be harder to parse with a screen reader than a plain-text diff in an editor or terminal. Some visual branch comparisons or conflict-resolution flows may be less comfortable nonvisually. And if you're trying to perform something Desktop doesn't support, you'll need another tool anyway."
-  },
-  {
-    "speaker": "JAMIE",
-    "text": "Let's make the Windows and macOS notes concrete."
-  },
-  {
-    "speaker": "ALEX",
-    "text": "On Windows with NVDA or JAWS, tabbing through controls and interacting with standard input fields generally works well. The branch selector, commit fields, file list, and top toolbar are usually manageable. But reading complex diffs line by line may be slower than opening the file in VS Code, where screen reader navigation can be more granular."
-  },
-  {
-    "speaker": "JAMIE",
-    "text": "And VoiceOver on macOS?"
-  },
-  {
-    "speaker": "ALEX",
-    "text": "Similar story. VoiceOver users can navigate the application's controls, but richly visual diff presentation may be less efficient than reviewing changed files in an editor with strong text navigation commands. The app is usable, but not always optimal for every task."
-  },
-  {
-    "speaker": "JAMIE",
-    "text": "That leads naturally to the source's recommendation that VS Code may be a better accessible alternative in some cases."
-  },
-  {
-    "speaker": "ALEX",
-    "text": "Exactly. VS Code often gives blind users better file editing, better direct text access to diffs and conflict markers, and a single environment for coding plus Git tasks. GitHub Desktop can still be helpful for branch switching, a visual overview, or quick commit workflows, but if accessibility friction rises, opening the repository in VS Code is often the better path."
-  },
-  {
-    "speaker": "JAMIE",
-    "text": "And for low-vision users?"
-  },
-  {
-    "speaker": "ALEX",
-    "text": "Use system zoom, scaling, and high-contrast themes. Be aware that additions and deletions in diffs use green and red backgrounds, so if color distinction is hard, increase text size or open the same work in VS Code with a theme that gives you better contrast. On both platforms, operating-system display settings do a lot of the accessibility heavy lifting."
-  },
-  {
-    "speaker": "JAMIE",
-    "text": "Can we summarize the learning-card style takeaways?"
-  },
-  {
-    "speaker": "ALEX",
-    "text": "Sure. For screen reader users: GitHub Desktop handles core workflows with keyboard-accessible controls, and you can jump to the terminal for unsupported operations. For low-vision users: system scaling and themes matter, and VS Code may offer better diff customization. For sighted users: the layout provides fast visual status awareness, especially the file status icons and sync indicators."
-  },
-  {
-    "speaker": "PAUSE",
-    "text": ""
-  },
-  {
-    "speaker": "JAMIE",
-    "text": "So when should someone use GitHub Desktop instead of VS Code or the Git CLI?"
-  },
-  {
-    "speaker": "ALEX",
-    "text": "Use GitHub Desktop when you want a dedicated Git application with a clear visual workflow for cloning, branching, reviewing changes, and syncing. It's great when separating Git from coding helps reduce cognitive load."
-  },
-  {
-    "speaker": "JAMIE",
-    "text": "Use VS Code when?"
-  },
-  {
-    "speaker": "ALEX",
-    "text": "When your work is tightly tied to editing files, reviewing text changes in context, resolving conflicts directly in source files, or when accessibility is better in your editor than in a standalone GUI. It's often the best all-in-one option."
-  },
-  {
-    "speaker": "JAMIE",
-    "text": "And Git CLI?"
-  },
-  {
-    "speaker": "ALEX",
-    "text": "Use the Git command line when you need the full power of Git: interactive rebase, bisect, clean, advanced remote configuration, commit signing setups, scripts, automation, or simply the precision that comes from explicit commands."
-  },
-  {
-    "speaker": "JAMIE",
-    "text": "So this isn't a competition with one winner."
-  },
-  {
-    "speaker": "ALEX",
-    "text": "No. It's a toolkit. Many strong workflows combine all three. For example: clone and branch in GitHub Desktop, edit and resolve conflicts in VS Code, do advanced history surgery in the terminal."
-  },
-  {
-    "speaker": "PAUSE",
-    "text": ""
-  },
-  {
-    "speaker": "JAMIE",
-    "text": "Before we close, let's mention sources."
-  },
-  {
-    "speaker": "ALEX",
-    "text": "The authoritative reference for this appendix is GitHub Desktop documentation from GitHub, along with broader GitHub Docs and related Git guidance. For accessibility framing, standard web accessibility guidance like WCAG is also relevant. If behavior changes in the app over time, always trust the current official GitHub Desktop docs over an older walkthrough."
-  },
-  {
-    "speaker": "JAMIE",
-    "text": "That's a good reminder, especially because UI labels and workflows can evolve."
-  },
-  {
-    "speaker": "ALEX",
-    "text": "Exactly."
-  },
-  {
-    "speaker": "PAUSE",
-    "text": ""
-  },
-  {
-    "speaker": "JAMIE",
-    "text": "So the big takeaway?"
-  },
-  {
-    "speaker": "ALEX",
-    "text": "GitHub Desktop covers a wide, practical slice of everyday Git work. It makes cloning, branching, staging, committing, syncing, history review, cherry-picking, stashing, and some conflict workflows approachable. It does not replace the terminal for advanced Git, and it does not always beat VS Code for accessibility or text-heavy tasks. But for many learners, especially those who want a purpose-built Git app, it's an excellent part of an accessible contribution workflow."
-  },
-  {
-    "speaker": "JAMIE",
-    "text": "And the best way to learn it is probably to use it on a real repository."
-  },
-  {
-    "speaker": "ALEX",
-    "text": "Yes. Clone something small, create a branch, make one change, review the diff, commit it, push it, and explore history. A calm, repeatable practice loop will teach you far more than memorizing buttons."
-  },
-  {
-    "speaker": "JAMIE",
-    "text": "Perfect. That's GitHub Desktop."
-  },
-  {
-    "speaker": "ALEX",
-    "text": "And we'll see you next time."
-  }
+﻿[
+    {
+        "speaker":  "ALEX",
+        "text":  "Welcome back. Today we\u0027re exploring GitHub Desktop, which is GitHub\u0027s free, open-source visual Git client for Windows and macOS."
+    },
+    {
+        "speaker":  "JAMIE",
+        "text":  "So this is for someone who wants Git as its own app, separate from the code editor?"
+    },
+    {
+        "speaker":  "ALEX",
+        "text":  "Exactly. If VS Code\u0027s Source Control view feels too tucked inside the editor, GitHub Desktop gives you a dedicated space for cloning repositories, creating branches, reviewing changes, committing, syncing with GitHub, and handling a lot of the day-to-day Git work."
+    },
+    {
+        "speaker":  "JAMIE",
+        "text":  "And it\u0027s worth saying: this appendix sits alongside the larger tool-choosing and Git-in-practice material, right?"
+    },
+    {
+        "speaker":  "ALEX",
+        "text":  "Yes. Think of this as a practical companion. If you\u0027re deciding between tools, or trying to build an accessible contribution workflow, GitHub Desktop is one strong option. And because this lesson is for blind and low-vision learners too, we\u0027ll keep noting what works well, what doesn\u0027t, and when another tool may be the better fit."
+    },
+    {
+        "speaker":  "PAUSE",
+        "text":  ""
+    },
+    {
+        "speaker":  "ALEX",
+        "text":  "Let\u0027s orient to the full journey. We\u0027ll cover what GitHub Desktop can and cannot do, how to install it, how sign-in works, what the interface looks like, cloning, branching, staging and committing, pushing and pulling, syncing a fork, resolving conflicts, viewing history, cherry-picking, stashing, undoing changes, accessibility notes, and then when to use Desktop versus VS Code versus the Git command line."
+    },
+    {
+        "speaker":  "JAMIE",
+        "text":  "So not just a sales pitch for the app."
+    },
+    {
+        "speaker":  "ALEX",
+        "text":  "Not at all. More like: here is the tool, here are its boundaries, and here is how to use it wisely."
+    },
+    {
+        "speaker":  "PAUSE",
+        "text":  ""
+    },
+    {
+        "speaker":  "ALEX",
+        "text":  "A good place to start is scope. GitHub Desktop supports the everyday workflow most contributors use most days."
+    },
+    {
+        "speaker":  "JAMIE",
+        "text":  "What counts as everyday workflow here?"
+    },
+    {
+        "speaker":  "ALEX",
+        "text":  "Cloning repositories from GitHub. Creating, switching, and deleting branches. Staging files, and even staging individual lines or hunks inside a file. Writing commit messages and committing. Pushing and pulling. Opening a pull request, though that part sends you to GitHub.com in your browser. It also supports merge conflict resolution with a visual editor, viewing commit history and diffs, cherry-picking commits from one branch to another, stashing and restoring uncommitted changes, undoing commits, and discarding changes."
+    },
+    {
+        "speaker":  "JAMIE",
+        "text":  "That is a lot. For many people, that really is the whole routine."
+    },
+    {
+        "speaker":  "ALEX",
+        "text":  "It is. But there are important limits. GitHub Desktop does not expose everything Git can do."
+    },
+    {
+        "speaker":  "JAMIE",
+        "text":  "Such as the scary advanced stuff?"
+    },
+    {
+        "speaker":  "ALEX",
+        "text":  "Some of the advanced, powerful, and sometimes risky operations, yes. In the Desktop user interface, you do not get interactive rebase, so no visual equivalent of git rebase dash i. You also do not get git bisect, git clean, creating annotated tags, or commit signing with GPG or SSH from the UI."
+    },
+    {
+        "speaker":  "JAMIE",
+        "text":  "So if I need those, I leave GitHub Desktop?"
+    },
+    {
+        "speaker":  "ALEX",
+        "text":  "You use the terminal, or sometimes VS Code\u0027s terminal. And GitHub Desktop helps with that by offering Repository, then Open in Terminal, or on Windows Open in Command Prompt, so you land in the correct repository folder immediately."
+    },
+    {
+        "speaker":  "JAMIE",
+        "text":  "That\u0027s a nice bridge. You\u0027re not trapped in the GUI."
+    },
+    {
+        "speaker":  "ALEX",
+        "text":  "Right. And for accessibility, that\u0027s significant. For screen reader users, Desktop handles a lot of core tasks through keyboard-friendly controls and standard text inputs, especially the commit message fields. For low-vision users, system zoom, display scaling, and high-contrast operating system themes matter a lot. And if the diff colors are hard to distinguish, opening the repository or diff in VS Code can give you more theme control."
+    },
+    {
+        "speaker":  "JAMIE",
+        "text":  "And for sighted users, the three-panel layout gives a quick snapshot: files on one side, diff on the other, commit area below."
+    },
+    {
+        "speaker":  "ALEX",
+        "text":  "Exactly."
+    },
+    {
+        "speaker":  "PAUSE",
+        "text":  ""
+    },
+    {
+        "speaker":  "JAMIE",
+        "text":  "Okay, let\u0027s install it."
+    },
+    {
+        "speaker":  "ALEX",
+        "text":  "On Windows, the recommended command-line install is winget install GitHub.GitHubDesktop."
+    },
+    {
+        "speaker":  "JAMIE",
+        "text":  "So if someone already uses Winget, that\u0027s quick."
+    },
+    {
+        "speaker":  "ALEX",
+        "text":  "Yes. The direct-download option is also simple: go to desktop dot github dot com, choose Download for Windows, run the installer, and it installs and launches automatically."
+    },
+    {
+        "speaker":  "JAMIE",
+        "text":  "And on a Mac?"
+    },
+    {
+        "speaker":  "ALEX",
+        "text":  "If you use Homebrew, brew install dash dash cask github. Or go to the same website, choose Download for macOS, open the downloaded zip file, and drag GitHub Desktop into your Applications folder."
+    },
+    {
+        "speaker":  "JAMIE",
+        "text":  "And Linux?"
+    },
+    {
+        "speaker":  "ALEX",
+        "text":  "No official Linux support for GitHub Desktop. Linux users should generally use VS Code\u0027s Source Control panel or the Git CLI."
+    },
+    {
+        "speaker":  "JAMIE",
+        "text":  "That\u0027s important not to gloss over."
+    },
+    {
+        "speaker":  "ALEX",
+        "text":  "Absolutely."
+    },
+    {
+        "speaker":  "PAUSE",
+        "text":  ""
+    },
+    {
+        "speaker":  "JAMIE",
+        "text":  "Once it\u0027s installed, what does sign-in look like? Do we need to manage personal access tokens or SSH keys?"
+    },
+    {
+        "speaker":  "ALEX",
+        "text":  "For normal GitHub.com use, no. GitHub Desktop uses browser-based OAuth sign-in. On first launch, you open GitHub Desktop, choose Sign in to GitHub.com, your browser opens to GitHub\u0027s authorization page, you sign in if needed, authorize GitHub Desktop, then return to the app."
+    },
+    {
+        "speaker":  "JAMIE",
+        "text":  "And after that?"
+    },
+    {
+        "speaker":  "ALEX",
+        "text":  "The app stores credentials securely in the system keychain, so you usually won\u0027t be prompted for your password again."
+    },
+    {
+        "speaker":  "JAMIE",
+        "text":  "What if someone uses GitHub Enterprise or an organization-hosted server?"
+    },
+    {
+        "speaker":  "ALEX",
+        "text":  "Then they choose Sign in to GitHub Enterprise Server and enter the server URL for that organization."
+    },
+    {
+        "speaker":  "PAUSE",
+        "text":  ""
+    },
+    {
+        "speaker":  "ALEX",
+        "text":  "Now let\u0027s build a mental model of the interface. GitHub Desktop has three main visual areas, plus a commit area."
+    },
+    {
+        "speaker":  "JAMIE",
+        "text":  "Talk me through it as if I can\u0027t see the screen clearly."
+    },
+    {
+        "speaker":  "ALEX",
+        "text":  "At the top is the toolbar. On the left is the Current Repository control, which lets you switch among local repositories you\u0027ve opened in GitHub Desktop. Near the middle is Current Branch, which opens the branch selector. On the right is the sync control, usually labeled Fetch origin, Pull origin, or Push origin depending on state."
+    },
+    {
+        "speaker":  "JAMIE",
+        "text":  "So the top bar answers three questions: which repo, which branch, and what\u0027s my sync status?"
+    },
+    {
+        "speaker":  "ALEX",
+        "text":  "Perfectly said. Then in the left panel you\u0027ll usually see either the Changes tab or the History tab. Changes lists uncommitted work. History lists past commits. The larger main area to the right shows either file diffs or commit details depending on what you\u0027ve selected. And near the bottom left is the commit area with a Summary field, optional Description field, and a commit button that usually says something like Commit to main or Commit to feature slash name."
+    },
+    {
+        "speaker":  "JAMIE",
+        "text":  "That sounds fairly structured."
+    },
+    {
+        "speaker":  "ALEX",
+        "text":  "It is. For keyboard users and screen reader users, that structure matters. You can tab among the major regions. The branch selector behaves like a searchable dropdown: type to filter, use arrow keys to move, press Enter to select. The commit button is announced with the target branch name."
+    },
+    {
+        "speaker":  "JAMIE",
+        "text":  "And for low-vision users?"
+    },
+    {
+        "speaker":  "ALEX",
+        "text":  "The toolbar stays fixed at the top, which helps. Increasing operating-system display scaling enlarges the interface proportionally. And the Changes and History tabs are clearly separated in the left panel. For sighted users, one useful cue is that the sync button changes icon or label to show whether you\u0027re fetching, pushing, or pulling."
+    },
+    {
+        "speaker":  "PAUSE",
+        "text":  ""
+    },
+    {
+        "speaker":  "JAMIE",
+        "text":  "Let\u0027s clone a repository. What\u0027s the easiest path?"
+    },
+    {
+        "speaker":  "ALEX",
+        "text":  "Often from GitHub.com. On a repository page, use the Code button and choose Open with GitHub Desktop. That launches the app with the repository URL already filled in. You choose the local folder where the repository should live, then activate Clone."
+    },
+    {
+        "speaker":  "JAMIE",
+        "text":  "And if I want to stay inside the app?"
+    },
+    {
+        "speaker":  "ALEX",
+        "text":  "Use the clone shortcut: Control Shift O on Windows, Command Shift O on macOS. Then choose either the GitHub.com tab to browse repositories connected to your account, or the URL tab to paste any repository URL. Pick the local path and choose Clone."
+    },
+    {
+        "speaker":  "JAMIE",
+        "text":  "The source also mentioned a GitHub CLI alternative."
+    },
+    {
+        "speaker":  "ALEX",
+        "text":  "Yes. If you\u0027re comfortable in the terminal, you can run gh repo clone owner slash repo-name, and after that open the repository in GitHub Desktop with the github command followed by the path to the repo."
+    },
+    {
+        "speaker":  "JAMIE",
+        "text":  "So Desktop can be the main tool or just one tool in a mixed workflow."
+    },
+    {
+        "speaker":  "ALEX",
+        "text":  "Exactly."
+    },
+    {
+        "speaker":  "PAUSE",
+        "text":  ""
+    },
+    {
+        "speaker":  "JAMIE",
+        "text":  "Now we\u0027ve got a cloned repository. Branches are next, right?"
+    },
+    {
+        "speaker":  "ALEX",
+        "text":  "Yes. Branching is one of the most common tasks. To create a new branch, open the Current Branch menu, choose the option to create a new branch, type the branch name, and confirm. GitHub Desktop will create it based on your current branch and switch you to it."
+    },
+    {
+        "speaker":  "JAMIE",
+        "text":  "So I\u0027m not just naming it. I\u0027m also choosing the branch I branch from, whether explicitly or implicitly."
+    },
+    {
+        "speaker":  "ALEX",
+        "text":  "Right. Usually it\u0027s based on whatever branch you\u0027re currently on, often main. To switch to an existing branch, open the same branch selector, type to filter if needed, move to the desired branch, and select it."
+    },
+    {
+        "speaker":  "JAMIE",
+        "text":  "What if I have uncommitted changes and try to switch?"
+    },
+    {
+        "speaker":  "ALEX",
+        "text":  "GitHub Desktop may prompt you depending on whether the changes can safely move with you. In practice, if you\u0027re unsure, commit your work or stash it before switching branches. We\u0027ll talk about stashing later."
+    },
+    {
+        "speaker":  "JAMIE",
+        "text":  "And deleting a branch?"
+    },
+    {
+        "speaker":  "ALEX",
+        "text":  "You generally switch away from the branch first, then use the branch menu to delete it. Deleting a branch removes the branch reference, not the commits themselves if they still exist elsewhere, but it\u0027s still something to do thoughtfully."
+    },
+    {
+        "speaker":  "PAUSE",
+        "text":  ""
+    },
+    {
+        "speaker":  "ALEX",
+        "text":  "Now let\u0027s get into the heart of daily Git work: staging and committing."
+    },
+    {
+        "speaker":  "JAMIE",
+        "text":  "This is where people often blur concepts together. What does GitHub Desktop help us see clearly?"
+    },
+    {
+        "speaker":  "ALEX",
+        "text":  "It makes the review step very concrete. In the Changes tab, the left side lists modified, added, and deleted files. Selecting a file shows its diff in the main pane, so you can inspect exactly what changed before committing."
+    },
+    {
+        "speaker":  "JAMIE",
+        "text":  "So reviewing changes is not optional busywork. It\u0027s how you confirm what you\u0027re about to record."
+    },
+    {
+        "speaker":  "ALEX",
+        "text":  "Exactly. Then comes staging. In GitHub Desktop, files in the Changes list usually have checkboxes. Checked means staged for the next commit. Unchecked means leave it out."
+    },
+    {
+        "speaker":  "JAMIE",
+        "text":  "That\u0027s a very approachable model."
+    },
+    {
+        "speaker":  "ALEX",
+        "text":  "It is. And it gets better: you can often stage individual lines or hunks within a file. That means if one file contains two unrelated edits, you may be able to commit only the part relevant to your current task."
+    },
+    {
+        "speaker":  "JAMIE",
+        "text":  "Can you explain hunk in plain language?"
+    },
+    {
+        "speaker":  "ALEX",
+        "text":  "A hunk is a chunk of nearby changed lines shown together in a diff. It\u0027s larger than a single line, smaller than the whole file. GitHub Desktop can let you include only certain chunks, or sometimes individual lines, to keep commits focused."
+    },
+    {
+        "speaker":  "JAMIE",
+        "text":  "That helps create cleaner history."
+    },
+    {
+        "speaker":  "ALEX",
+        "text":  "Exactly. Once staged, you write the commit message. The Summary field is the short title of the commit. The Description field is optional extra detail. Then you activate the commit button."
+    },
+    {
+        "speaker":  "JAMIE",
+        "text":  "Any guidance on writing that summary?"
+    },
+    {
+        "speaker":  "ALEX",
+        "text":  "Make it specific and useful. For example, not update stuff, but fix broken heading navigation in README. The summary should help your future self and collaborators understand intent quickly."
+    },
+    {
+        "speaker":  "JAMIE",
+        "text":  "And the source specifically notes that these fields are standard editable text inputs, which is good for screen reader support."
+    },
+    {
+        "speaker":  "ALEX",
+        "text":  "Yes, that\u0027s an important accessibility detail."
+    },
+    {
+        "speaker":  "PAUSE",
+        "text":  ""
+    },
+    {
+        "speaker":  "JAMIE",
+        "text":  "After committing locally, we need to sync with GitHub."
+    },
+    {
+        "speaker":  "ALEX",
+        "text":  "Right. GitHub Desktop combines several related actions into the sync area at the top right. Fetch checks the remote for updates without changing your local branch. Pull fetches and then brings remote changes into your local branch. Push sends your local commits to GitHub."
+    },
+    {
+        "speaker":  "JAMIE",
+        "text":  "Let\u0027s separate those carefully. What does fetch do for a cautious learner?"
+    },
+    {
+        "speaker":  "ALEX",
+        "text":  "Fetch is the safe look-before-you-touch option. It checks whether the remote has new commits and updates GitHub Desktop\u0027s awareness of that state, but it does not merge those commits into your current branch."
+    },
+    {
+        "speaker":  "JAMIE",
+        "text":  "So if I just want to know whether anything changed upstream, fetch first."
+    },
+    {
+        "speaker":  "ALEX",
+        "text":  "Exactly. If there are commits on GitHub that your local branch doesn\u0027t have, the app may then offer Pull origin. If you have local commits not yet on GitHub, it offers Push origin."
+    },
+    {
+        "speaker":  "JAMIE",
+        "text":  "And if both sides changed?"
+    },
+    {
+        "speaker":  "ALEX",
+        "text":  "You may fetch, then pull, possibly followed later by push if you also have local work. The exact label can vary, but the conceptual model stays the same."
+    },
+    {
+        "speaker":  "JAMIE",
+        "text":  "The source also calls out keyboard shortcuts here."
+    },
+    {
+        "speaker":  "ALEX",
+        "text":  "Yes. The important lesson is not memorizing every shortcut, but knowing that the app supports keyboard access for clone and other common actions, and that sync operations are available through both toolbar controls and menus. If you\u0027re a keyboard-first user, it\u0027s worth exploring the menu bar on your platform to learn the exact commands GitHub Desktop exposes."
+    },
+    {
+        "speaker":  "PAUSE",
+        "text":  ""
+    },
+    {
+        "speaker":  "JAMIE",
+        "text":  "Fork workflows are really common in open source. How does syncing your fork fit into GitHub Desktop?"
+    },
+    {
+        "speaker":  "ALEX",
+        "text":  "If you\u0027ve forked a repository, you usually have two remotes conceptually: your fork on GitHub, commonly called origin, and the original project repository, often called upstream. Syncing your fork means bringing changes from upstream into your local copy, and often later into your fork as well."
+    },
+    {
+        "speaker":  "JAMIE",
+        "text":  "And if upstream isn\u0027t set yet?"
+    },
+    {
+        "speaker":  "ALEX",
+        "text":  "You need to configure the upstream remote. The appendix specifically notes setting up the upstream remote if it isn\u0027t already there. GitHub Desktop can help with common fork workflows, but there are times when checking or adding remotes may be clearer in the CLI."
+    },
+    {
+        "speaker":  "JAMIE",
+        "text":  "So the conceptual requirement is: know where your branch is pulling from and where it\u0027s pushing to."
+    },
+    {
+        "speaker":  "ALEX",
+        "text":  "Exactly. Without that, fork syncing becomes confusing fast."
+    },
+    {
+        "speaker":  "PAUSE",
+        "text":  ""
+    },
+    {
+        "speaker":  "JAMIE",
+        "text":  "Now let\u0027s visit the part people dread: merge conflicts."
+    },
+    {
+        "speaker":  "ALEX",
+        "text":  "Yes, but they become less scary once you understand them. A merge conflict happens when Git cannot automatically reconcile competing changes, often because the same lines were changed in different ways on different branches."
+    },
+    {
+        "speaker":  "JAMIE",
+        "text":  "What does GitHub Desktop do when that happens?"
+    },
+    {
+        "speaker":  "ALEX",
+        "text":  "It will tell you there are conflicts and guide you into resolving them, often by opening the conflicted files in your editor or a visual resolution flow. The step-by-step idea is: identify the conflicted files, open and inspect them, choose which content to keep or combine, remove the conflict markers if you\u0027re editing manually, save the file, and mark the conflict as resolved."
+    },
+    {
+        "speaker":  "JAMIE",
+        "text":  "Then what?"
+    },
+    {
+        "speaker":  "ALEX",
+        "text":  "After resolving in your editor, return to GitHub Desktop. Review the now-resolved changes, commit the merge or conflict resolution, and continue syncing as needed."
+    },
+    {
+        "speaker":  "JAMIE",
+        "text":  "So Desktop is part coordinator, part visual assistant, but the actual text editing may happen in VS Code or another editor."
+    },
+    {
+        "speaker":  "ALEX",
+        "text":  "Precisely. And for blind users in particular, editing conflict markers in a familiar text editor like VS Code may be much more accessible than relying on a highly visual merge interface."
+    },
+    {
+        "speaker":  "PAUSE",
+        "text":  ""
+    },
+    {
+        "speaker":  "ALEX",
+        "text":  "Once you\u0027ve worked for a while, history becomes important."
+    },
+    {
+        "speaker":  "JAMIE",
+        "text":  "Not just what changed, but when and why."
+    },
+    {
+        "speaker":  "ALEX",
+        "text":  "Exactly. In the History tab, GitHub Desktop shows the commit timeline for the current repository or branch context. You can navigate through commits, select one, and inspect its details and diff."
+    },
+    {
+        "speaker":  "JAMIE",
+        "text":  "What about filtering commits?"
+    },
+    {
+        "speaker":  "ALEX",
+        "text":  "Filtering helps narrow history, often by searching commit messages, authors, or relevant content exposed by the interface. The key skill is using search or filtering to avoid reading an entire history when you\u0027re really looking for one fix or one person\u0027s work."
+    },
+    {
+        "speaker":  "JAMIE",
+        "text":  "And a specific file\u0027s history?"
+    },
+    {
+        "speaker":  "ALEX",
+        "text":  "You can view the history related to a particular file, which is very useful when you want to know who changed one document, script, or configuration file over time."
+    },
+    {
+        "speaker":  "JAMIE",
+        "text":  "Comparing branches is another big one."
+    },
+    {
+        "speaker":  "ALEX",
+        "text":  "Yes. Comparing branches lets you inspect how one branch differs from another before merging, cherry-picking, or opening a pull request. It\u0027s a way to answer, what is unique here relative to there?"
+    },
+    {
+        "speaker":  "PAUSE",
+        "text":  ""
+    },
+    {
+        "speaker":  "JAMIE",
+        "text":  "Speaking of moving work across branches, let\u0027s talk about cherry-pick."
+    },
+    {
+        "speaker":  "ALEX",
+        "text":  "Cherry-pick means taking a specific commit from one branch and applying it onto another branch, without merging the entire branch."
+    },
+    {
+        "speaker":  "JAMIE",
+        "text":  "So if a bug fix exists on one branch and I need that exact fix on another, cherry-pick is the targeted move."
+    },
+    {
+        "speaker":  "ALEX",
+        "text":  "Exactly. In GitHub Desktop, you typically find the commit in history, use the context menu or available command to cherry-pick it onto your current branch, and let Desktop apply it."
+    },
+    {
+        "speaker":  "JAMIE",
+        "text":  "And if the commit doesn\u0027t apply cleanly?"
+    },
+    {
+        "speaker":  "ALEX",
+        "text":  "Then you get a conflict, just as you might during a merge. Resolve the conflicting files, save them, return to GitHub Desktop, and complete the process."
+    },
+    {
+        "speaker":  "JAMIE",
+        "text":  "So cherry-pick is powerful, but it can still require careful conflict resolution."
+    },
+    {
+        "speaker":  "ALEX",
+        "text":  "Yes."
+    },
+    {
+        "speaker":  "PAUSE",
+        "text":  ""
+    },
+    {
+        "speaker":  "JAMIE",
+        "text":  "Now, stashing. This is one of those features people hear about before they really understand when to use it."
+    },
+    {
+        "speaker":  "ALEX",
+        "text":  "A stash is a temporary shelf for uncommitted changes. You use it when you\u0027re in the middle of work but need a clean working tree, often to switch branches or handle an urgent task."
+    },
+    {
+        "speaker":  "JAMIE",
+        "text":  "So it\u0027s like saying, hold this for me, I don\u0027t want to commit it yet."
+    },
+    {
+        "speaker":  "ALEX",
+        "text":  "Exactly. In GitHub Desktop, you can stash your current changes, which removes them from the working view and returns the repository to a cleaner state. Later, you restore the stash to bring those changes back."
+    },
+    {
+        "speaker":  "JAMIE",
+        "text":  "Any caution here?"
+    },
+    {
+        "speaker":  "ALEX",
+        "text":  "Yes. A stash is convenient, but it is easier to forget than a commit. If the work is meaningful and coherent, a real commit on a branch is often safer. Use stash for short-term interruption management, not as long-term storage."
+    },
+    {
+        "speaker":  "PAUSE",
+        "text":  ""
+    },
+    {
+        "speaker":  "JAMIE",
+        "text":  "Let\u0027s do undoing changes, because everyone eventually needs that."
+    },
+    {
+        "speaker":  "ALEX",
+        "text":  "Absolutely. GitHub Desktop supports a few kinds of undo. One is undoing the last commit. That generally removes the commit while keeping the changed content available locally, so you can adjust it and recommit."
+    },
+    {
+        "speaker":  "JAMIE",
+        "text":  "Useful if the message was wrong or the commit included something extra."
+    },
+    {
+        "speaker":  "ALEX",
+        "text":  "Exactly. Another option is discarding changes to a file. That throws away the uncommitted edits in that file and restores it to its last committed state."
+    },
+    {
+        "speaker":  "JAMIE",
+        "text":  "So that is destructive for uncommitted work."
+    },
+    {
+        "speaker":  "ALEX",
+        "text":  "Yes, and learners should pause before using it. There\u0027s also discarding all changes, which wipes all current uncommitted modifications in the repository working tree. That\u0027s even more destructive."
+    },
+    {
+        "speaker":  "JAMIE",
+        "text":  "So the rule is: understand whether you\u0027re undoing a commit or discarding uncommitted edits. Those are very different things."
+    },
+    {
+        "speaker":  "ALEX",
+        "text":  "Exactly right."
+    },
+    {
+        "speaker":  "PAUSE",
+        "text":  ""
+    },
+    {
+        "speaker":  "ALEX",
+        "text":  "Now let\u0027s spend real time on accessibility and screen reader notes, because this appendix explicitly includes them."
+    },
+    {
+        "speaker":  "JAMIE",
+        "text":  "Good. Start with what works well."
+    },
+    {
+        "speaker":  "ALEX",
+        "text":  "GitHub Desktop does many core tasks through standard controls: buttons, text fields, lists, checkboxes, dropdowns. Keyboard navigation across major regions is generally workable. Commit message fields are standard edit fields. Cloning, branching, staging, committing, and pushing are all possible without depending purely on a mouse."
+    },
+    {
+        "speaker":  "JAMIE",
+        "text":  "So for basic workflows, many users can absolutely use it."
+    },
+    {
+        "speaker":  "ALEX",
+        "text":  "Yes. But there are limitations. Dense diff views can be harder to parse with a screen reader than a plain-text diff in an editor or terminal. Some visual branch comparisons or conflict-resolution flows may be less comfortable nonvisually. And if you\u0027re trying to perform something Desktop doesn\u0027t support, you\u0027ll need another tool anyway."
+    },
+    {
+        "speaker":  "JAMIE",
+        "text":  "Let\u0027s make the Windows and macOS notes concrete."
+    },
+    {
+        "speaker":  "ALEX",
+        "text":  "On Windows with NVDA or JAWS, tabbing through controls and interacting with standard input fields generally works well. The branch selector, commit fields, file list, and top toolbar are usually manageable. But reading complex diffs line by line may be slower than opening the file in VS Code, where screen reader navigation can be more granular."
+    },
+    {
+        "speaker":  "JAMIE",
+        "text":  "And VoiceOver on macOS?"
+    },
+    {
+        "speaker":  "ALEX",
+        "text":  "Similar story. VoiceOver users can navigate the application\u0027s controls, but richly visual diff presentation may be less efficient than reviewing changed files in an editor with strong text navigation commands. The app is usable, but not always optimal for every task."
+    },
+    {
+        "speaker":  "JAMIE",
+        "text":  "That leads naturally to the source\u0027s recommendation that VS Code may be a better accessible alternative in some cases."
+    },
+    {
+        "speaker":  "ALEX",
+        "text":  "Exactly. VS Code often gives blind users better file editing, better direct text access to diffs and conflict markers, and a single environment for coding plus Git tasks. GitHub Desktop can still be helpful for branch switching, a visual overview, or quick commit workflows, but if accessibility friction rises, opening the repository in VS Code is often the better path."
+    },
+    {
+        "speaker":  "JAMIE",
+        "text":  "And for low-vision users?"
+    },
+    {
+        "speaker":  "ALEX",
+        "text":  "Use system zoom, scaling, and high-contrast themes. Be aware that additions and deletions in diffs use green and red backgrounds, so if color distinction is hard, increase text size or open the same work in VS Code with a theme that gives you better contrast. On both platforms, operating-system display settings do a lot of the accessibility heavy lifting."
+    },
+    {
+        "speaker":  "JAMIE",
+        "text":  "Can we summarize the learning-card style takeaways?"
+    },
+    {
+        "speaker":  "ALEX",
+        "text":  "Sure. For screen reader users: GitHub Desktop handles core workflows with keyboard-accessible controls, and you can jump to the terminal for unsupported operations. For low-vision users: system scaling and themes matter, and VS Code may offer better diff customization. For sighted users: the layout provides fast visual status awareness, especially the file status icons and sync indicators."
+    },
+    {
+        "speaker":  "PAUSE",
+        "text":  ""
+    },
+    {
+        "speaker":  "JAMIE",
+        "text":  "So when should someone use GitHub Desktop instead of VS Code or the Git CLI?"
+    },
+    {
+        "speaker":  "ALEX",
+        "text":  "Use GitHub Desktop when you want a dedicated Git application with a clear visual workflow for cloning, branching, reviewing changes, and syncing. It\u0027s great when separating Git from coding helps reduce cognitive load."
+    },
+    {
+        "speaker":  "JAMIE",
+        "text":  "Use VS Code when?"
+    },
+    {
+        "speaker":  "ALEX",
+        "text":  "When your work is tightly tied to editing files, reviewing text changes in context, resolving conflicts directly in source files, or when accessibility is better in your editor than in a standalone GUI. It\u0027s often the best all-in-one option."
+    },
+    {
+        "speaker":  "JAMIE",
+        "text":  "And Git CLI?"
+    },
+    {
+        "speaker":  "ALEX",
+        "text":  "Use the Git command line when you need the full power of Git: interactive rebase, bisect, clean, advanced remote configuration, commit signing setups, scripts, automation, or simply the precision that comes from explicit commands."
+    },
+    {
+        "speaker":  "JAMIE",
+        "text":  "So this isn\u0027t a competition with one winner."
+    },
+    {
+        "speaker":  "ALEX",
+        "text":  "No. It\u0027s a toolkit. Many strong workflows combine all three. For example: clone and branch in GitHub Desktop, edit and resolve conflicts in VS Code, do advanced history surgery in the terminal."
+    },
+    {
+        "speaker":  "PAUSE",
+        "text":  ""
+    },
+    {
+        "speaker":  "JAMIE",
+        "text":  "Before we close, let\u0027s mention sources."
+    },
+    {
+        "speaker":  "ALEX",
+        "text":  "The authoritative reference for this appendix is GitHub Desktop documentation from GitHub, along with broader GitHub Docs and related Git guidance. For accessibility framing, standard web accessibility guidance like WCAG is also relevant. If behavior changes in the app over time, always trust the current official GitHub Desktop docs over an older walkthrough."
+    },
+    {
+        "speaker":  "JAMIE",
+        "text":  "That\u0027s a good reminder, especially because UI labels and workflows can evolve."
+    },
+    {
+        "speaker":  "ALEX",
+        "text":  "Exactly."
+    },
+    {
+        "speaker":  "PAUSE",
+        "text":  ""
+    },
+    {
+        "speaker":  "JAMIE",
+        "text":  "So the big takeaway?"
+    },
+    {
+        "speaker":  "ALEX",
+        "text":  "GitHub Desktop covers a wide, practical slice of everyday Git work. It makes cloning, branching, staging, committing, syncing, history review, cherry-picking, stashing, and some conflict workflows approachable. It does not replace the terminal for advanced Git, and it does not always beat VS Code for accessibility or text-heavy tasks. But for many learners, especially those who want a purpose-built Git app, it\u0027s an excellent part of an accessible contribution workflow."
+    },
+    {
+        "speaker":  "JAMIE",
+        "text":  "And the best way to learn it is probably to use it on a real repository."
+    },
+    {
+        "speaker":  "ALEX",
+        "text":  "Yes. Clone something small, create a branch, make one change, review the diff, commit it, push it, and explore history. A calm, repeatable practice loop will teach you far more than memorizing buttons."
+    },
+    {
+        "speaker":  "JAMIE",
+        "text":  "Perfect. That\u0027s GitHub Desktop."
+    },
+    {
+        "speaker":  "ALEX",
+        "text":  "And we\u0027ll see you next time."
+    }
 ]

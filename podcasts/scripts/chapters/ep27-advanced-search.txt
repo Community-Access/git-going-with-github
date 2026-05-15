@@ -1,0 +1,385 @@
+﻿[ALEX]
+Welcome back. Today weâ€™re working on one of the most useful GitHub skills that people often skip: advanced search. And for blind and low-vision learners especially, this is not just a power-user trick. It can be a faster, cleaner, more accessible way to move through GitHub than opening a pile of filters, dropdowns, and side panels.
+
+[JAMIE]
+Iâ€™m glad you said that up front, because search can sound optional, like a nice extra. But this chapter really treats it like a core workflow skill, right?
+
+[ALEX]
+Exactly. If you can type a precise query, you can often find issues, pull requests, code, commits, repositories, users, and organizations more efficiently than by browsing. This appendix is a reference companion to issue workflows and also connects naturally to labels, milestones, and project organization. And the authoritative reference behind what weâ€™re teaching is GitHub Docs on searching on GitHub.
+
+[PAUSE]
+
+[ALEX]
+Hereâ€™s the big idea: GitHubâ€™s search engine is powerful and underused. And because query syntax works directly from the keyboard, it can reduce the need to hunt through visual controls.
+
+[JAMIE]
+So instead of thinking, â€œWhere is that filter menu again,â€ I can think, â€œWhat do I want,â€ and type it.
+
+[ALEX]
+Thatâ€™s the mindset.
+
+[PAUSE]
+
+[ALEX]
+Letâ€™s start with how you reach search. GitHub gives you a few entry points. Thereâ€™s the global search bar at the top of nearly every GitHub page. There are repository-specific search bars inside issues and pull requests views. And thereâ€™s also an Advanced Search page at github dot com slash search slash advanced.
+
+[JAMIE]
+And that Advanced Search page is the form version, right? Separate fields instead of one compact query?
+
+[ALEX]
+Yes. Itâ€™s accessible, but it can feel verbose. For many learners, especially keyboard and screen reader users, typing the query directly is often faster.
+
+[JAMIE]
+Whatâ€™s the quickest way to get to the global search bar?
+
+[ALEX]
+Press the forward slash key. On most GitHub pages, slash focuses the global search field. Then type your query, press Enter, and GitHub opens a results page grouped by result type, like Code, Issues, Pull Requests, and Repositories.
+
+[JAMIE]
+Thatâ€™s a wonderful shortcut because it removes the whole â€œTab until you find the top navigationâ€ problem.
+
+[ALEX]
+Exactly. And that leads into the accessibility guidance from the learning cards. For screen reader users: pressing slash is often the fastest way to jump to search. After you run the query, results are grouped under headings, so heading navigation can move you between result types efficiently. And again, direct query syntax is often easier than filling out the Advanced Search form.
+
+[JAMIE]
+What about low-vision users?
+
+[ALEX]
+A few practical notes. If the top bar is hard to relocate at high zoom, slash brings focus back to the search box instantly. Search results highlight matching terms, so browser zoom can help make those highlights easier to spot. And if you prefer large labeled fields on some days, bookmarking the Advanced Search page is a smart option.
+
+[JAMIE]
+And for sighted users?
+
+[ALEX]
+Look for the search bar in the top navigation with the slash hint inside it. After searching, the left sidebar can narrow by result type visually. And GitHub highlights matched terms, often in yellow, which helps you scan results quickly.
+
+[PAUSE]
+
+[JAMIE]
+Once I can get to search, the next question is scope. Am I searching all of GitHub, one repo, one organization, titles only, comments only?
+
+[ALEX]
+Right. By default, GitHub searches broadly. Scope modifiers let you narrow that. Some of the most important are repo colon owner slash name for one repository, org colon orgname for all repositories in an organization, and user colon username for repositories owned by a particular user.
+
+[JAMIE]
+And then there are field-specific scopes too.
+
+[ALEX]
+Yes. In colon title searches only titles. In colon body searches only the body text. In colon comments searches comments.
+
+[JAMIE]
+Can you give a concrete example?
+
+[ALEX]
+Sure. If you type repo colon community-access slash accessibility-agents in colon title keyboard, youâ€™re asking GitHub to find issues or pull requests in that specific repository whose titles mention the word keyboard.
+
+[JAMIE]
+Thatâ€™s nice because it avoids noisy matches in long discussions.
+
+[ALEX]
+Exactly.
+
+[PAUSE]
+
+[ALEX]
+Now letâ€™s build the core query language. Think of GitHub search like a compact sentence made of words and qualifiers.
+
+[JAMIE]
+Start with Boolean logic?
+
+[ALEX]
+Yes. If you type two words with a space between them, GitHub usually treats that like an implicit AND. So word one, space, word two means results should include both ideas. If you use OR in capital letters, GitHub matches either term. Quotation marks create an exact phrase match. And a minus sign excludes terms.
+
+[JAMIE]
+So minus word excludes the word, and minus label colon bug excludes items with the bug label.
+
+[ALEX]
+Exactly. Then come common qualifiers. Is colon open means open items only. Is colon closed means closed items. Is colon merged means merged pull requests only. Is colon unmerged means pull requests that were not merged. Is colon issue limits to issues. Is colon pr limits to pull requests. Is colon draft finds draft pull requests.
+
+[JAMIE]
+And labels and assignments matter a lot in workflow searches.
+
+[ALEX]
+They do. Label colon name filters by label. No colon label finds items with no labels. Assignee colon at me means assigned to you. Assignee colon username means assigned to a specific person. Author colon at me means created by you. Author colon username means created by that user. Mentions colon username finds items that mention someone. Involves colon at me is broader: you are author, assignee, mentioned, or a commenter.
+
+[JAMIE]
+That one sounds especially useful when you just want â€œeverything Iâ€™m tied to.â€
+
+[ALEX]
+It is. Then there are milestone filters like milestone colon quoted milestone name and no colon milestone. Thereâ€™s no colon assignee for unassigned items. Comments colon greater than 5 filters by discussion volume. Reactions colon greater than 10 filters by reaction count.
+
+[JAMIE]
+And dates?
+
+[ALEX]
+GitHub supports date qualifiers too. Created colon greater than a date means created after that date. Created colon less than a date means before. You can specify a range with two dates separated by two periods. Updated colon greater than a date filters by recent activity. Closed colon greater than a date filters by close date.
+
+[JAMIE]
+So once you understand words, quotes, minus, OR, and qualifiers, you can express a lot.
+
+[ALEX]
+Thatâ€™s the foundation.
+
+[PAUSE]
+
+[ALEX]
+Now letâ€™s apply that to issues and pull requests, because this is where many learners first feel the payoff.
+
+[JAMIE]
+Where do you go if you want issue or PR search directly rather than global search?
+
+[ALEX]
+Github dot com slash issues gives you your issues view, and github dot com slash pulls gives you your pull requests view. Those pages are pre-scoped to repositories you have access to and items involving you, which makes them a great starting point for personal workflow.
+
+[JAMIE]
+Letâ€™s walk through the practical queries one by one.
+
+[ALEX]
+First: find all unassigned, open accessibility issues across an organization. The query is org colon community-access is colon issue is colon open label colon accessibility no colon assignee.
+
+[JAMIE]
+That says organization-wide, issues only, open only, must have the accessibility label, and nobody owns them yet.
+
+[ALEX]
+Exactly.
+
+[JAMIE]
+Next: good first issues in any language.
+
+[ALEX]
+That query is is colon issue is colon open label colon quote good first issue quote no colon assignee.
+
+[JAMIE]
+And to narrow to a specific programming language?
+
+[ALEX]
+Add language colon python, or another language you care about. So: is colon issue is colon open label colon quote good first issue quote language colon python no colon assignee.
+
+[JAMIE]
+Thatâ€™s a neat bridge between beginner-friendly and skill-relevant.
+
+[ALEX]
+Right. Next: all pull requests you need to review. Use is colon pr is colon open review-requested colon at me.
+
+[JAMIE]
+That feels like a daily dashboard query.
+
+[ALEX]
+It is. Another daily-use query is all open pull requests where you were mentioned: is colon pr is colon open mentions colon at me.
+
+[JAMIE]
+How about finding your own open issues across all repositories?
+
+[ALEX]
+Is colon issue is colon open author colon at me.
+
+[JAMIE]
+And stale issues?
+
+[ALEX]
+For stale open issues in a repository, use something like is colon issue is colon open repo colon owner slash name updated colon less than 2024-08-01. The exact date will depend on what you mean by stale, but the pattern is open issues in a repo with no updates since before a given date.
+
+[JAMIE]
+The learning cards for this section had some especially practical accessibility advice.
+
+[ALEX]
+They did. For screen reader users, the review-requested query is a strong daily default because it gives a clean list of PRs waiting on you without browsing tabs. Combining assignee colon at me with is colon open creates a simple task list. And using in colon title or in colon body can reduce noisy results from long comment threads.
+
+[JAMIE]
+For low-vision users, I remember the reminder that the URL itself becomes useful.
+
+[ALEX]
+Yes. After you run a search, bookmark the page. The query is encoded in the URL, so you can reuse it later. The github dot com slash issues page is often easier to scan at high zoom because it is more focused than a broad global search layout. And labels appear as badges next to results, so zooming in or hovering can help if color alone is not enough.
+
+[JAMIE]
+And sighted users get quick visual triage with the state icons.
+
+[ALEX]
+Exactly: green for open, purple for merged, red for closed. And saving a good-first-issue query is an easy way to keep contribution opportunities close at hand.
+
+[PAUSE]
+
+[JAMIE]
+Letâ€™s switch to code search, because this behaves a little differently.
+
+[ALEX]
+Yes. Code search uses a specialized engine, and GitHubâ€™s improved code search has better indexing than older versions. Itâ€™s designed for searching inside files, symbols, paths, and language-specific content.
+
+[JAMIE]
+Whatâ€™s a basic example?
+
+[ALEX]
+Repo colon owner slash name language colon javascript aria-label. That means search within one repository, in JavaScript files, for the text aria-label.
+
+[JAMIE]
+So if Iâ€™m investigating accessibility support in a project, that could quickly show where labels are being set.
+
+[ALEX]
+Exactly. Another useful pattern is symbol search. For example, repo colon owner slash name symbol colon handleKeyDown. That asks GitHub to find a specific symbol or function name across the repository.
+
+[JAMIE]
+Very useful when you know the function name but not where it lives.
+
+[ALEX]
+Right. And to find a pattern across all repositories in an organization, you could use org colon community-access aria-hidden equals quote true quote.
+
+[JAMIE]
+Letâ€™s list the core code search qualifiers too.
+
+[ALEX]
+Language colon python filters by language. Path colon src slash restricts to files under a folder. Filename colon config dot yml narrows to files with that exact name. Extension colon md narrows by extension. Symbol colon functionName searches a symbol. Content colon quote exact string quote searches for an exact string in file content.
+
+[JAMIE]
+Thatâ€™s powerful because it lets you be precise about where the match should happen.
+
+[ALEX]
+Yes. If youâ€™re auditing documentation, extension colon md helps. If youâ€™re looking for a config setting, filename or path helps. If youâ€™re investigating source usage, symbol or content can be the right tool.
+
+[PAUSE]
+
+[JAMIE]
+What about commit search?
+
+[ALEX]
+Commit search lets you inspect project history without cloning the repo first. One example is finding commits with a keyword in the commit message. The source gives repo colon owner slash name fix keyboard navigation.
+
+[JAMIE]
+That one is interesting because it reads almost like plain language.
+
+[ALEX]
+It does. For commits by a specific author, use repo colon owner slash name author colon username. For commits in a date range, use repo colon owner slash name committer-date colon 2025-01-01 two dots 2025-03-31. And to find commits that touched a specific file, use repo colon owner slash name path colon docs slash README dot md.
+
+[JAMIE]
+So you can answer questions like, â€œWho changed this file,â€ or â€œWhat happened to keyboard navigation earlier this year?â€
+
+[ALEX]
+Exactly.
+
+[PAUSE]
+
+[ALEX]
+Repository search is the next major category. This helps you discover projects to study or contribute to.
+
+[JAMIE]
+Such as finding accessibility-focused repositories.
+
+[ALEX]
+Yes. One example is topic colon accessibility stars colon greater than 50 is colon public. That finds public repositories tagged with the accessibility topic and more than 50 stars.
+
+[JAMIE]
+And if I want a language and topic combination, sorted by popularity?
+
+[ALEX]
+You might use language colon typescript topic colon screen-reader sort colon stars-desc.
+
+[JAMIE]
+What repository qualifiers do we have explicitly from the source?
+
+[ALEX]
+Stars colon greater than 100 means more than 100 stars. Forks colon greater than 10 means more than 10 forks. Is colon public filters to public repositories.
+
+[JAMIE]
+The source we received was truncated in that table, but those examples still show the pattern: repository search can filter by popularity, fork count, visibility, language, and topic.
+
+[ALEX]
+Exactly. Even with partial table content, the conceptual workflow is clear.
+
+[PAUSE]
+
+[JAMIE]
+We also need to cover searching users and organizations.
+
+[ALEX]
+Yes. Even though the provided excerpt doesnâ€™t include the example lines under that section, the heading matters conceptually. GitHub search can target people and orgs as result types, and you can use user-related terms to discover maintainers, contributors, or organizations relevant to a topic.
+
+[JAMIE]
+So the lesson for learners is: search is not only for issues and code. It also helps you find who is doing the work and what organizations are hosting it.
+
+[ALEX]
+Exactly. If youâ€™re looking for a maintainer, a contributor profile, or an organization focused on accessibility or open source education, search can be your entry point.
+
+[PAUSE]
+
+[ALEX]
+Now letâ€™s bring this back to the workshop with practical queries you might really use.
+
+[JAMIE]
+The first one is finding open contributions you can make right now in the accessibility-agents project.
+
+[ALEX]
+A strong pattern would combine the project scope with issue state and beginner-friendly or accessibility labels. For example, repo colon community-access slash accessibility-agents is colon issue is colon open no colon assignee. Then you might add label colon accessibility or label colon quote good first issue quote depending on what you want.
+
+[JAMIE]
+So the teaching point is to compose from building blocks rather than memorize one sacred query.
+
+[ALEX]
+Exactly. Another workshop use case is checking whether your issue is already filed. For that, search within the repository before opening a new issue. Use repo colon owner slash name plus keywords, and consider in colon title for concise matching or exact phrases in quotes if you know likely wording.
+
+[JAMIE]
+That helps avoid duplicates and saves maintainers time.
+
+[ALEX]
+Right. Another common need is finding all accessibility-related issues in a project. That might look like repo colon owner slash name is colon issue is colon open label colon accessibility, or if labels are inconsistent, keywords like keyboard OR screen reader OR aria.
+
+[JAMIE]
+What about proof of contribution?
+
+[ALEX]
+To see your merged pull requests, use is colon pr is colon merged author colon at me. If needed, add repo colon owner slash name to limit it to one repository. That gives you a concrete record of merged work.
+
+[JAMIE]
+And recent discussions about a topic?
+
+[ALEX]
+Thatâ€™s where keywords plus date filters help. Use terms for the topic and add updated colon greater than a recent date. Depending on what you want, you might search issues, pull requests, discussions if available, or even commits and code. The key idea is combining subject keywords with freshness.
+
+[PAUSE]
+
+[JAMIE]
+Letâ€™s talk about saving and reusing searches, because if a query is helpful once, itâ€™s probably helpful again.
+
+[ALEX]
+Absolutely. One of the simplest tricks in GitHub is that your search is reflected in the URL. That means the page itself can be bookmarked. You do not need a separate export or saved-search feature just to reuse a query.
+
+[JAMIE]
+So if I build a query for open review requests, good first issues in Python, or all my merged PRs, I can save that URL in bookmarks.
+
+[ALEX]
+Yes. You can even organize a small personal library of GitHub searches: daily review queue, issues assigned to me, stale issues in one repo, accessibility bugs across an organization, and so on.
+
+[JAMIE]
+And the source explicitly mentions an example bookmarkable URL, even though the exact URL text wasnâ€™t included in the excerpt we received.
+
+[ALEX]
+Right. But the principle is clear and important: search URLs are reusable workflow tools.
+
+[PAUSE]
+
+[ALEX]
+Before we close, letâ€™s not skip the administrative and reference material. This appendix points learners to GitHub Docs on searching on GitHub as the authoritative source. It also includes a section-level source map connecting the search interface, scopes, core syntax, issue and PR search, code search, commit search, repository search, user and organization search, practical workshop queries, and saving searches back to GitHub Docs, GitHub code search syntax documentation, the GitHub changelog, and in some sections, About Git.
+
+[JAMIE]
+Thatâ€™s worth emphasizing. Search behavior evolves, especially code search, so the docs matter.
+
+[ALEX]
+Exactly. Use this lesson to understand the concepts and workflows, and check the official docs when syntax changes or new qualifiers appear.
+
+[PAUSE]
+
+[JAMIE]
+Can we end with a compact mental model?
+
+[ALEX]
+Yes. Think in layers. First, choose the thing you want: issues, pull requests, code, commits, repositories, users, or organizations. Second, choose the scope: all of GitHub, one organization, one user, or one repository. Third, add qualifiers for state, labels, authorship, assignment, language, path, date, or visibility. Fourth, save the URL if itâ€™s useful.
+
+[JAMIE]
+And accessibility-wise: start from the keyboard, use slash to focus search, prefer direct syntax when forms feel slow, and bookmark the searches you rely on.
+
+[ALEX]
+Exactly. Advanced search is not just about finding things. Itâ€™s about building accessible, repeatable workflows on GitHub.
+
+[JAMIE]
+Thatâ€™s a great place to stop.
+
+[ALEX]
+See you next time.

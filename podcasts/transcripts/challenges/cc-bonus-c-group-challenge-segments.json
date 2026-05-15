@@ -1,962 +1,962 @@
-[
-  {
-    "speaker": "ALEX",
-    "text": "Welcome back. Today we're doing something a little unusual and very real to open source work: designing collaboration, not just participating in it."
-  },
-  {
-    "speaker": "JAMIE",
-    "text": "I like that framing. Usually we learn a tool or a workflow. This time we're learning how to create a challenge that helps other people practice the workflow together."
-  },
-  {
-    "speaker": "ALEX",
-    "text": "Exactly. And to do that well, we need three strands working together: open source culture, pull request review practice, and the specific bonus task of designing a group challenge for future learners."
-  },
-  {
-    "speaker": "JAMIE",
-    "text": "So the assignment is not just, make up a fun activity."
-  },
-  {
-    "speaker": "ALEX",
-    "text": "Right. It has structure. The bonus asks you to design a collaborative challenge for three to five students, document it in the learning room, and make it usable by future workshop cohorts. The file path matters: create a file named `docs/group-challenges/YOUR-USERNAME-challenge.md`, then commit, push, and open a pull request."
-  },
-  {
-    "speaker": "JAMIE",
-    "text": "And the design has required ingredients, right?"
-  },
-  {
-    "speaker": "ALEX",
-    "text": "Yes. Your challenge design needs a title, a goal, team size, time estimate, instructions, success criteria, and an accessibility note. And there are design criteria too: the task should require genuine collaboration, not just split-up solo work, it should have clear success criteria, it should be accessible regardless of how participants interact with technology, and it should fit inside workshop time."
-  },
-  {
-    "speaker": "PAUSE",
-    "text": ""
-  },
-  {
-    "speaker": "JAMIE",
-    "text": "Before we get into the sample challenge, can we zoom out? Because designing a group challenge makes more sense if you understand how open source collaboration normally works."
-  },
-  {
-    "speaker": "ALEX",
-    "text": "That's the right instinct. Technical skill gets code into a project. Communication skill keeps you welcome in the community. Open source is not just code; it is people coordinating in writing, often asynchronously, and often in public."
-  },
-  {
-    "speaker": "JAMIE",
-    "text": "That can feel high stakes, especially for beginners."
-  },
-  {
-    "speaker": "ALEX",
-    "text": "It can. Which is why the course includes a guided reflection around communication and culture. That reflection is simple but important: read the chapter, then post a comment on your assigned issue committing to three specific behaviors. One respectful review habit you'll use. One way you'll ask for help clearly. One way you'll respond to feedback constructively."
-  },
-  {
-    "speaker": "JAMIE",
-    "text": "Specific being the key word."
-  },
-  {
-    "speaker": "ALEX",
-    "text": "Exactly. Not \"I will be nice.\" More like, \"I will begin review comments by naming what already works before suggesting a change.\" Or, \"When I ask for help, I'll say the exact step where I got stuck and what I already tried.\""
-  },
-  {
-    "speaker": "JAMIE",
-    "text": "And administratively, that reflection comment is the evidence, right?"
-  },
-  {
-    "speaker": "ALEX",
-    "text": "Yes. No extra upload. No bot grading. The facilitator reviews the comment for specificity, and once it's posted, you can close the Chapter 8 challenge issue. The expected outcomes are that you can name concrete collaboration behaviors, prepare for later PR review work, and feel safer asking for help in public threads."
-  },
-  {
-    "speaker": "JAMIE",
-    "text": "And if someone gets stuck writing the reflection?"
-  },
-  {
-    "speaker": "ALEX",
-    "text": "Keep it simple. One sentence per prompt. Draft in a text editor first if that helps. Revisit the sections on giving feedback and asking for help. Or ask a facilitator for an example and adapt it into your own words. That reflection matters because communication quality and technical quality reinforce each other."
-  },
-  {
-    "speaker": "PAUSE",
-    "text": ""
-  },
-  {
-    "speaker": "JAMIE",
-    "text": "Okay. So now let's connect culture to workflow. Where do all these conversations actually happen?"
-  },
-  {
-    "speaker": "ALEX",
-    "text": "Mostly around pull requests, using GitHub Flow. GitHub Flow is the lightweight contribution model this workshop uses. The six steps are straightforward: create a branch off main, make your changes and commit them, open a pull request, discuss and review, pass status checks, and then merge."
-  },
-  {
-    "speaker": "JAMIE",
-    "text": "That sounds simple, but each step carries social meaning."
-  },
-  {
-    "speaker": "ALEX",
-    "text": "Very much so. A branch says, \"I'm working on one thing.\" A pull request says, \"Here's the change, here's why, please review it.\" Review discussion turns code into conversation. Status checks protect the whole project. And merge means the work is accepted into shared history."
-  },
-  {
-    "speaker": "JAMIE",
-    "text": "Why does this model work so well for open source?"
-  },
-  {
-    "speaker": "ALEX",
-    "text": "Because main stays deployable, branches are cheap, pull requests centralize discussion, and small focused changes move faster. It also supports accessibility-friendly collaboration because the unit of work is explicit and reviewable."
-  },
-  {
-    "speaker": "JAMIE",
-    "text": "And this is different from Git Flow."
-  },
-  {
-    "speaker": "ALEX",
-    "text": "Yes. Git Flow is older and more complex. It uses long-lived branches like `main` and `develop`, plus temporary `feature/`, `release/`, and `hotfix/` branches. It fits teams with scheduled releases, versioned software, or enterprise processes. GitHub Flow is lighter: usually just `main` plus short-lived feature branches. For a workshop, web projects, and open source contributions, GitHub Flow is easier to teach, easier to review, and easier to recover from."
-  },
-  {
-    "speaker": "JAMIE",
-    "text": "So if I see `develop` and `release/1.2.0`, I'm probably in Git Flow territory."
-  },
-  {
-    "speaker": "ALEX",
-    "text": "Exactly. But for this workshop, think one branch per task, PR back to main, and keep main healthy."
-  },
-  {
-    "speaker": "JAMIE",
-    "text": "That ties into the unwritten rule: one thing per branch."
-  },
-  {
-    "speaker": "ALEX",
-    "text": "Yes. One branch should represent one coherent change. That helps you make atomic commits, write focused PR descriptions, and receive useful reviews. If you mix a README rewrite, a bug fix, and a formatting pass in one branch, the reviewer has to untangle three stories at once."
-  },
-  {
-    "speaker": "PAUSE",
-    "text": ""
-  },
-  {
-    "speaker": "JAMIE",
-    "text": "What about keeping your fork current? That seems administrative, but it affects collaboration."
-  },
-  {
-    "speaker": "ALEX",
-    "text": "It absolutely does. If your fork is stale, you create avoidable conflicts and review noise. So you should sync your fork, especially before starting new work, after the upstream project has moved, or after your last contribution was merged long ago."
-  },
-  {
-    "speaker": "JAMIE",
-    "text": "And there are multiple ways to do that."
-  },
-  {
-    "speaker": "ALEX",
-    "text": "Three common ones. Easiest is the GitHub web interface using the Sync fork option. Another is the command line in the VS Code terminal. That requires a one-time setup: add the upstream remote. Then the sync process is four steps. Switch to your main branch. Fetch upstream changes. Merge upstream main into your local main. Push the updated main back to your fork on GitHub."
-  },
-  {
-    "speaker": "JAMIE",
-    "text": "So in plain language: get onto your own main, bring down the upstream changes, combine them, and publish the updated result to your fork."
-  },
-  {
-    "speaker": "ALEX",
-    "text": "Exactly. And there's also GitHub Desktop for people who prefer a GUI. The important concept is not the tool but the habit: sync before branching so you start from current code."
-  },
-  {
-    "speaker": "PAUSE",
-    "text": ""
-  },
-  {
-    "speaker": "JAMIE",
-    "text": "Let's talk commits, because group work gets messy fast if commit history is muddy."
-  },
-  {
-    "speaker": "ALEX",
-    "text": "Very true. Good commit messages help reviewers and future maintainers understand what happened. The usual format is a short required first line that states the change clearly, then an optional body explaining why, and an optional footer for issue references or metadata."
-  },
-  {
-    "speaker": "JAMIE",
-    "text": "What makes the first line good?"
-  },
-  {
-    "speaker": "ALEX",
-    "text": "It should be concise and specific. Think \"Add alt text to homepage feature cards\" rather than \"stuff\" or \"updates.\" The body can explain reasoning, tradeoffs, or context. The footer might include something like `Closes #42` if the project uses issue linking."
-  },
-  {
-    "speaker": "JAMIE",
-    "text": "And atomic commits?"
-  },
-  {
-    "speaker": "ALEX",
-    "text": "An atomic commit contains one coherent, complete change. That makes review easier, reverts safer, and collaboration calmer. Common mistakes include vague messages, giant mixed-purpose commits, or committing generated clutter with meaningful edits."
-  },
-  {
-    "speaker": "JAMIE",
-    "text": "So the same principle keeps showing up: one branch, one PR, one clear idea per commit when possible."
-  },
-  {
-    "speaker": "ALEX",
-    "text": "Exactly."
-  },
-  {
-    "speaker": "PAUSE",
-    "text": ""
-  },
-  {
-    "speaker": "JAMIE",
-    "text": "Now let's get into the human side. You said open source communication happens in writing, asynchronously, and in public. Can we unpack that?"
-  },
-  {
-    "speaker": "ALEX",
-    "text": "Of course. In writing means people cannot hear your tone of voice, so clarity matters. Asynchronously means the other person may reply hours later, so your message has to stand on its own. In public means your comment may help many future readers, but it also means bluntness can feel amplified."
-  },
-  {
-    "speaker": "JAMIE",
-    "text": "So that's why feedback needs structure."
-  },
-  {
-    "speaker": "ALEX",
-    "text": "Yes. Helpful feedback usually does five things. First, acknowledge what's working. Second, identify the specific concern. Third, explain why it matters. Fourth, suggest a path forward when you can. Fifth, signal the weight of the concern."
-  },
-  {
-    "speaker": "JAMIE",
-    "text": "That last one is subtle."
-  },
-  {
-    "speaker": "ALEX",
-    "text": "And very useful. Not every comment is blocking. Sometimes it's a required fix. Sometimes it's a suggestion. Sometimes it's a question. Being explicit reduces stress."
-  },
-  {
-    "speaker": "JAMIE",
-    "text": "How should the language sound?"
-  },
-  {
-    "speaker": "ALEX",
-    "text": "Prefer \"we\" language or talk about the code, not the person. Use tentative language when you're uncertain. Remember contributors may come from different cultures and may be working in a second language. Avoid urgency markers unless something is genuinely urgent."
-  },
-  {
-    "speaker": "JAMIE",
-    "text": "So instead of \"You did this wrong,\" maybe \"This heading order may confuse screen reader navigation; could we move this H3 under an H2?\""
-  },
-  {
-    "speaker": "ALEX",
-    "text": "Perfect. That addresses the artifact, explains the impact, and proposes a fix without attacking the author."
-  },
-  {
-    "speaker": "PAUSE",
-    "text": ""
-  },
-  {
-    "speaker": "JAMIE",
-    "text": "What about commenting etiquette more generally?"
-  },
-  {
-    "speaker": "ALEX",
-    "text": "Keep comments focused. Don't bundle five unrelated concerns into one comment if separate comments would be clearer. Don't leave comments unresolved forever; if the issue is addressed, resolve the conversation. Don't pile on by repeating someone else's point unless you're adding necessary context. Reactions can be useful lightweight signals of agreement or thanks."
-  },
-  {
-    "speaker": "JAMIE",
-    "text": "And saved replies are a big accessibility win, right?"
-  },
-  {
-    "speaker": "ALEX",
-    "text": "They can be. Saved replies let you store reusable comment templates for common situations. Useful for thanking contributors, asking for tests, clarifying reproduction steps, or giving a standard accessibility explanation. On GitHub, you can create a saved reply in your settings, then insert it while writing a comment. For screen reader users, this can reduce repetitive typing and cognitive load, especially for phrases you use often."
-  },
-  {
-    "speaker": "JAMIE",
-    "text": "So a saved reply might be something like, \"Thanks for this contribution. I noticed a heading hierarchy issue that may affect screen reader navigation. Could we adjust the heading levels so they don't skip?\""
-  },
-  {
-    "speaker": "ALEX",
-    "text": "Exactly. Then you customize the details for the current PR."
-  },
-  {
-    "speaker": "PAUSE",
-    "text": ""
-  },
-  {
-    "speaker": "JAMIE",
-    "text": "Let's split etiquette by role: reviewer versus author."
-  },
-  {
-    "speaker": "ALEX",
-    "text": "For reviewers: review the code, not the person. Don't gatekeep knowledge by implying someone should already know everything. Ask questions instead of making demands when appropriate. Distinguish opinion from requirement. And approve explicitly when the work is ready."
-  },
-  {
-    "speaker": "JAMIE",
-    "text": "That \"distinguish opinion from requirement\" part seems huge."
-  },
-  {
-    "speaker": "ALEX",
-    "text": "It is. \"This must be fixed because it breaks keyboard navigation\" is different from \"I prefer a shorter sentence here.\" If you blur those, authors waste effort guessing what is essential."
-  },
-  {
-    "speaker": "JAMIE",
-    "text": "And for authors?"
-  },
-  {
-    "speaker": "ALEX",
-    "text": "Say thank you. Don't take feedback personally. Explain your choices when context matters. Surface blockers early instead of silently stalling."
-  },
-  {
-    "speaker": "JAMIE",
-    "text": "What about accessibility-specific comments?"
-  },
-  {
-    "speaker": "ALEX",
-    "text": "Inclusive commenting matters a great deal. Accessibility issues are real product issues, not optional polish. But the tone should stay respectful and educational. Explain impact: for example, missing alt text leaves image meaning unavailable to some users. Avoid framing accessibility as a burden or special interest request."
-  },
-  {
-    "speaker": "JAMIE",
-    "text": "And there's also that \"good first issue\" social contract."
-  },
-  {
-    "speaker": "ALEX",
-    "text": "Yes. If a project labels something \"good first issue,\" it should be genuinely approachable, reasonably scoped, and documented enough that a newcomer has a fair chance. That's part of community trust."
-  },
-  {
-    "speaker": "PAUSE",
-    "text": ""
-  },
-  {
-    "speaker": "JAMIE",
-    "text": "Open source is human, so difficult situations happen. What guidance do learners get?"
-  },
-  {
-    "speaker": "ALEX",
-    "text": "Several scenarios. If you receive harsh feedback, slow down, extract the actionable content, and respond to the substance rather than mirroring the tone. If you disagree with a decision, ask clarifying questions and state your reasoning calmly, but respect maintainers' project authority. If someone is rude, rely on documented community standards and, if needed, ask a moderator or maintainer for help. If you accidentally caused offense, acknowledge it, apologize directly, and adjust."
-  },
-  {
-    "speaker": "JAMIE",
-    "text": "That's a reassuring framework. Not every awkward moment means you failed."
-  },
-  {
-    "speaker": "ALEX",
-    "text": "Exactly. Repair is part of collaboration."
-  },
-  {
-    "speaker": "PAUSE",
-    "text": ""
-  },
-  {
-    "speaker": "JAMIE",
-    "text": "Now I want to connect this to documentation. Why is README writing in a culture chapter?"
-  },
-  {
-    "speaker": "ALEX",
-    "text": "Because documentation is hospitality. A good README tells people what the project is, how to install it, how to use it, how to contribute, and what license governs it. A simple skeleton includes project name, installation, usage, contributing, and license."
-  },
-  {
-    "speaker": "JAMIE",
-    "text": "And accessibility belongs there too."
-  },
-  {
-    "speaker": "ALEX",
-    "text": "Absolutely. Accessible READMEs use meaningful headings, descriptive link text, clear structure, and concise language. A good README helps a newcomer get started. A bad README assumes context they do not have."
-  },
-  {
-    "speaker": "JAMIE",
-    "text": "Related to that are community health files."
-  },
-  {
-    "speaker": "ALEX",
-    "text": "Yes: `CONTRIBUTING.md`, `CODEOFCONDUCT.md`, `SECURITY.md`, and `LICENSE`. These files help contributors know how to participate, how the community behaves, how to report security issues, and what reuse is permitted. You should learn to find these on GitHub because they shape how you engage with a repository."
-  },
-  {
-    "speaker": "JAMIE",
-    "text": "And different communication channels matter too."
-  },
-  {
-    "speaker": "ALEX",
-    "text": "Right. Use issues for trackable work, PR comments for change-specific discussion, discussions or forums for broader conversation if the project supports them, and security channels for sensitive vulnerabilities. Choosing the right channel is part of professional communication."
-  },
-  {
-    "speaker": "PAUSE",
-    "text": ""
-  },
-  {
-    "speaker": "JAMIE",
-    "text": "There's also broad newcomer guidance in the chapter: what open source is, who can contribute, and how to find a first contribution."
-  },
-  {
-    "speaker": "ALEX",
-    "text": "Yes, and it's worth saying plainly: open source contribution is not limited to writing code. People contribute documentation, design, testing, issue triage, accessibility review, translation, examples, and thoughtful feedback. A good first contribution is usually small, well-scoped, and understandable. Warning signs that it's too large include many files, unclear requirements, missing reproduction steps, or lots of unresolved discussion."
-  },
-  {
-    "speaker": "JAMIE",
-    "text": "So before starting, read the issue carefully."
-  },
-  {
-    "speaker": "ALEX",
-    "text": "Exactly. Understand the problem, the expected fix, any linked discussion, and whether someone is already working on it. Then follow the basic workflow: fork if needed, clone, create a branch, edit files, commit, push, and open a PR. A good PR description explains what changed, why, and how to test it."
-  },
-  {
-    "speaker": "JAMIE",
-    "text": "And after a contribution is merged?"
-  },
-  {
-    "speaker": "ALEX",
-    "text": "Thank people, sync your fork, clean up your branch, and reflect on what you learned. Over time, build a contribution habit: small regular participation, thoughtful reading, respectful review, and realistic scope."
-  },
-  {
-    "speaker": "PAUSE",
-    "text": ""
-  },
-  {
-    "speaker": "JAMIE",
-    "text": "All right. Let's shift into code review tooling, because the sample group challenge uses issues, PRs, and peer review."
-  },
-  {
-    "speaker": "ALEX",
-    "text": "Good connection. The code review chapter covers pull requests, diffs, and constructive feedback, especially with accessible workflows. Part 1 centers the GitHub Pull Requests and Issues extension for VS Code."
-  },
-  {
-    "speaker": "JAMIE",
-    "text": "And there are workshop tasks attached to that too."
-  },
-  {
-    "speaker": "ALEX",
-    "text": "Yes. Two guided practices. First, install the extension and sign in to GitHub. Second, check out a PR and post a constructive review comment. Evidence is a completion comment on your assigned practice issue stating whether the extension is installed, whether you signed in, which PR you reviewed, whether your comment was inline or on GitHub.com, and a one-sentence summary of what your comment was about."
-  },
-  {
-    "speaker": "JAMIE",
-    "text": "No automation check there either, because installation state is local."
-  },
-  {
-    "speaker": "ALEX",
-    "text": "Correct. The pattern is install, check out, review, comment."
-  },
-  {
-    "speaker": "PAUSE",
-    "text": ""
-  },
-  {
-    "speaker": "JAMIE",
-    "text": "Walk us through installation, especially for screen reader users."
-  },
-  {
-    "speaker": "ALEX",
-    "text": "In VS Code, open Extensions with `Ctrl+Shift+X` on Windows or `Cmd+Shift+X` on Mac. Search for GitHub Pull Requests. Choose the extension published by GitHub. Activate Install. After installation, sign in to GitHub through the OAuth flow in the browser, then return to VS Code. Verify sign-in by opening Explorer and checking for a GitHub section showing pull requests and issues."
-  },
-  {
-    "speaker": "JAMIE",
-    "text": "And if notifications vanish too quickly?"
-  },
-  {
-    "speaker": "ALEX",
-    "text": "Use Command Palette and run `Notifications: Focus Notification Toast`. That's a very practical screen reader tip."
-  },
-  {
-    "speaker": "JAMIE",
-    "text": "What does the extension actually add?"
-  },
-  {
-    "speaker": "ALEX",
-    "text": "It adds PR and issue panels, the ability to inspect PR details, check out PR branches locally, open changed files, add comments, create PRs from the editor, and sometimes merge or manage review state without leaving VS Code."
-  },
-  {
-    "speaker": "PAUSE",
-    "text": ""
-  },
-  {
-    "speaker": "JAMIE",
-    "text": "How do you view pull requests once the extension is installed?"
-  },
-  {
-    "speaker": "ALEX",
-    "text": "Two common ways. One is the GitHub Pull Requests panel from the activity bar or via Command Palette. There you can list open PRs, open a specific PR, filter PRs waiting for your review, and open a PR in your browser. Another is through an Explorer section if that view is enabled."
-  },
-  {
-    "speaker": "JAMIE",
-    "text": "What does the PR tree usually contain?"
-  },
-  {
-    "speaker": "ALEX",
-    "text": "A pull request item may include the description, changed files, status checks, comments, and related metadata. For screen reader users, hearing the tree structure and item labels helps orient to where you are. Filtering can be by status or repository, which matters when many PRs are visible."
-  },
-  {
-    "speaker": "JAMIE",
-    "text": "And you can inspect PR details there too."
-  },
-  {
-    "speaker": "ALEX",
-    "text": "Yes. Title, author, branch names, review state, description, checks. Those details matter before you decide how to review."
-  },
-  {
-    "speaker": "PAUSE",
-    "text": ""
-  },
-  {
-    "speaker": "JAMIE",
-    "text": "Now checking out a PR branch. Why do that instead of just reading on the website?"
-  },
-  {
-    "speaker": "ALEX",
-    "text": "Because local checkout lets you test the actual branch, run code, inspect files with editor tools, and use VS Code's accessible diff support. You can check out from the PR detail view, from the PR tree context menu, or from the Command Palette."
-  },
-  {
-    "speaker": "JAMIE",
-    "text": "And then return to your original branch when you're done."
-  },
-  {
-    "speaker": "ALEX",
-    "text": "Exactly. That's an important cleanup step. Don't stay accidentally parked on someone else's PR branch."
-  },
-  {
-    "speaker": "PAUSE",
-    "text": ""
-  },
-  {
-    "speaker": "JAMIE",
-    "text": "Let's get to diff review in VS Code, because that's where accessibility really matters."
-  },
-  {
-    "speaker": "ALEX",
-    "text": "In the PR detail view, you can open the list of changed files. Opening one shows a diff. By default, many people see split view, old content on the left and new on the right. Inline view presents changes in one continuous flow. You can toggle between them."
-  },
-  {
-    "speaker": "JAMIE",
-    "text": "But for screen reader users, raw visual diff layouts can be exhausting."
-  },
-  {
-    "speaker": "ALEX",
-    "text": "That's exactly why the Accessible Diff Viewer matters. In VS Code, `F7` moves to the next change and `Shift+F7` moves to the previous change. Instead of forcing you to manually traverse a visual editor representation, it announces each change in a structured way: what was added, what was removed, and where."
-  },
-  {
-    "speaker": "JAMIE",
-    "text": "So it turns \"maze of symbols\" into \"readable change units.\""
-  },
-  {
-    "speaker": "ALEX",
-    "text": "Beautifully said. The chapter strongly recommends that workflow for screen reader users because it is far superior to line-by-line navigation of the visual diff."
-  },
-  {
-    "speaker": "JAMIE",
-    "text": "And if I find an issue?"
-  },
-  {
-    "speaker": "ALEX",
-    "text": "You can flag it during review with an inline comment. Put the cursor on the relevant line and use the command to add a comment. If that is difficult in VS Code, fall back to GitHub.com. Accessibility includes using the environment that lets you work accurately."
-  },
-  {
-    "speaker": "PAUSE",
-    "text": ""
-  },
-  {
-    "speaker": "JAMIE",
-    "text": "What about creating a pull request from VS Code instead of in the browser?"
-  },
-  {
-    "speaker": "ALEX",
-    "text": "The extension supports that too. Prerequisites are that your branch exists with committed changes and is pushed or ready to push. You can create a PR through the Command Palette, the Source Control panel, or the GitHub panel. The Command Palette method is often the clearest."
-  },
-  {
-    "speaker": "JAMIE",
-    "text": "Then you fill out a form."
-  },
-  {
-    "speaker": "ALEX",
-    "text": "Right. Title is required. Description is optional but strongly recommended. You choose the base branch, usually `main`, and the compare branch, your feature branch. Reviewers, labels, and milestone may be optional. There is often a draft PR checkbox, which is useful if you want early feedback before calling the work ready."
-  },
-  {
-    "speaker": "JAMIE",
-    "text": "And there are different submission styles."
-  },
-  {
-    "speaker": "ALEX",
-    "text": "Yes. Some workflows prompt interactively for title, body, and base branch. Others let you provide details inline. You may also create as draft or open the form in your browser if that's easier. Again, accessibility means choosing the route that works best for you."
-  },
-  {
-    "speaker": "PAUSE",
-    "text": ""
-  },
-  {
-    "speaker": "JAMIE",
-    "text": "PR description templates can make this a lot easier, especially for beginners."
-  },
-  {
-    "speaker": "ALEX",
-    "text": "Definitely. Repositories may store PR templates so when you open a PR, a structure appears automatically. Common sections include description, related issue, type of change, testing, checklist, and screenshots if applicable."
-  },
-  {
-    "speaker": "JAMIE",
-    "text": "That's helpful because it turns \"What do I write?\" into prompts."
-  },
-  {
-    "speaker": "ALEX",
-    "text": "Exactly. For screen reader users, working through the template in order can also reduce cognitive load. Read each prompt, replace placeholders with real details, and leave out irrelevant sections only if the project expects that."
-  },
-  {
-    "speaker": "PAUSE",
-    "text": ""
-  },
-  {
-    "speaker": "JAMIE",
-    "text": "Now the formal review actions: commenting, approving, and requesting changes."
-  },
-  {
-    "speaker": "ALEX",
-    "text": "When adding an inline comment, be specific and tie your note to the exact changed line. If you have multiple comments, use Start Review so they can be submitted together instead of sending a stream of isolated notifications. When ready, submit the review as one of three verdicts: approve, request changes, or comment-only."
-  },
-  {
-    "speaker": "JAMIE",
-    "text": "And each verdict carries different weight."
-  },
-  {
-    "speaker": "ALEX",
-    "text": "Right. Approve means the PR is ready from your perspective. Request changes means there are issues that should be addressed before merge. Comment-only means feedback without a formal accept-or-block judgment."
-  },
-  {
-    "speaker": "JAMIE",
-    "text": "There was also mention of viewing PR diffs in your terminal."
-  },
-  {
-    "speaker": "ALEX",
-    "text": "Yes, in some environments you may use CLI tooling to inspect PR diffs or metadata from the terminal. That can be another accessibility or efficiency path, depending on the learner."
-  },
-  {
-    "speaker": "PAUSE",
-    "text": ""
-  },
-  {
-    "speaker": "JAMIE",
-    "text": "Merging is the next step. What should learners know?"
-  },
-  {
-    "speaker": "ALEX",
-    "text": "Before merging, confirm prerequisites like reviews, passing checks, and project permissions. You may merge from the PR detail view or command palette in VS Code, depending on access. Common merge types include the default merge strategy and squash-and-merge. Squash-and-merge is often useful when a branch has many small work-in-progress commits but should land as one clean logical change."
-  },
-  {
-    "speaker": "JAMIE",
-    "text": "And sometimes auto-merge is available."
-  },
-  {
-    "speaker": "ALEX",
-    "text": "Yes. Auto-merge can be enabled so the PR merges automatically when required checks pass. After merging, switch back to main and pull the latest changes. Then delete the feature branch if the project's workflow calls for it."
-  },
-  {
-    "speaker": "PAUSE",
-    "text": ""
-  },
-  {
-    "speaker": "JAMIE",
-    "text": "Can we cover troubleshooting? Because review tools rarely behave perfectly on the first try."
-  },
-  {
-    "speaker": "ALEX",
-    "text": "Absolutely. If you see \"No pull requests found,\" check whether you're signed in, whether the repository is correct, and whether you need to switch to an all-open filter. If you get \"Could not create pull request,\" verify the branch is pushed, compare and base branches are valid, and authentication is healthy. If authentication fails, sign into GitHub in the browser first, then retry in VS Code."
-  },
-  {
-    "speaker": "JAMIE",
-    "text": "And if checkout fails due to permissions?"
-  },
-  {
-    "speaker": "ALEX",
-    "text": "Use the GitHub.com fallback in read-only mode. The chapter explicitly says you can still complete review practice that way."
-  },
-  {
-    "speaker": "PAUSE",
-    "text": ""
-  },
-  {
-    "speaker": "JAMIE",
-    "text": "That's Part 1. Part 2 goes deeper into accessible code review itself, right?"
-  },
-  {
-    "speaker": "ALEX",
-    "text": "Yes. It covers conducting pull request reviews with a screen reader across two environments: GitHub.com and VS Code with the Accessible Diff Viewer."
-  },
-  {
-    "speaker": "JAMIE",
-    "text": "There's a prerequisites checklist too."
-  },
-  {
-    "speaker": "ALEX",
-    "text": "Right. Before starting, learners should already know basic PR concepts and the earlier workflow chapters. Then the chapter introduces learning cards for key review tasks: viewing the full PR diff in a terminal if desired, viewing PR details like description and checks, checking out a PR branch locally for testing, and submitting one of the three review verdicts."
-  },
-  {
-    "speaker": "PAUSE",
-    "text": ""
-  },
-  {
-    "speaker": "JAMIE",
-    "text": "Let's do the browser path first."
-  },
-  {
-    "speaker": "ALEX",
-    "text": "On GitHub.com, the modern review interface is the default. First, reach the Files changed tab. Then use the file tree to orient yourself by changed file. Listen for file names and expansion states. Navigate between file diffs. Read the diff, paying attention to what each changed line announces: additions, deletions, and context. Place an inline comment on the relevant line; multi-line comments may be useful when a problem spans a block."
-  },
-  {
-    "speaker": "JAMIE",
-    "text": "Then read any existing threads so you don't duplicate work."
-  },
-  {
-    "speaker": "ALEX",
-    "text": "Exactly. Then submit your review with the appropriate verdict. If you're the author responding after making updates, you may re-request review to signal that changes are ready for another pass."
-  },
-  {
-    "speaker": "PAUSE",
-    "text": ""
-  },
-  {
-    "speaker": "JAMIE",
-    "text": "And the VS Code path?"
-  },
-  {
-    "speaker": "ALEX",
-    "text": "Open the PR for review in the extension, inspect changed files, and use the Accessible Diff Viewer with `F7`. The learning cards emphasize opening the PR, using the accessible diff, and placing comments from within the extension. The key accessibility advantage is structured navigation through changes instead of wrestling with a visually oriented diff editor."
-  },
-  {
-    "speaker": "JAMIE",
-    "text": "So whether you review in the browser or in VS Code, the principles stay the same, but the navigation model changes."
-  },
-  {
-    "speaker": "ALEX",
-    "text": "Precisely."
-  },
-  {
-    "speaker": "PAUSE",
-    "text": ""
-  },
-  {
-    "speaker": "JAMIE",
-    "text": "What makes a review comment actually useful?"
-  },
-  {
-    "speaker": "ALEX",
-    "text": "The chapter gives a strong framework. A useful review comment states the concern clearly, explains impact, and signals whether it is blocking, non-blocking, or exploratory. Prefixes help set expectations, like \"blocking,\" \"nit,\" or \"question.\""
-  },
-  {
-    "speaker": "JAMIE",
-    "text": "Can you give examples in plain language?"
-  },
-  {
-    "speaker": "ALEX",
-    "text": "A blocking comment might say a heading hierarchy skips from H1 to H3, which can confuse screen reader navigation, and ask for heading levels to be corrected before merge. A non-blocking nit might suggest rephrasing a sentence for clarity. A question might ask why a setup step was removed, in case there is context the reviewer is missing."
-  },
-  {
-    "speaker": "JAMIE",
-    "text": "And how many comments is too many?"
-  },
-  {
-    "speaker": "ALEX",
-    "text": "Enough to overwhelm without helping. If you have many related points, consolidate where sensible. Prioritize the most important issues. The goal is clarity, not volume."
-  },
-  {
-    "speaker": "PAUSE",
-    "text": ""
-  },
-  {
-    "speaker": "JAMIE",
-    "text": "The chapter also includes review scenarios and exercises."
-  },
-  {
-    "speaker": "ALEX",
-    "text": "Yes. Scenarios include verifying a PR only changes what it claims, finding all changes to a specific section, checking whether new changes appeared after updates, and interpreting a confusing reviewer comment. The exercises ask learners to complete a web review, use the VS Code Accessible Diff Viewer, and then compare the two environments."
-  },
-  {
-    "speaker": "JAMIE",
-    "text": "Including accessibility-specific findings like heading hierarchy and link text."
-  },
-  {
-    "speaker": "ALEX",
-    "text": "Exactly. In the exercises, learners identify issues like bad heading order or vague link text, place comments, submit reviews, and reflect on which environment made what easier."
-  },
-  {
-    "speaker": "JAMIE",
-    "text": "That reflection matters because accessible tooling is personal."
-  },
-  {
-    "speaker": "ALEX",
-    "text": "Yes. One learner may prefer the browser's file tree and comment threading. Another may find VS Code's `F7` navigation dramatically better. The point is to discover what supports accurate review for you."
-  },
-  {
-    "speaker": "PAUSE",
-    "text": ""
-  },
-  {
-    "speaker": "JAMIE",
-    "text": "There's also a short section on using GitHub Copilot during review."
-  },
-  {
-    "speaker": "ALEX",
-    "text": "Right, but with caution. Copilot can help summarize a diff or explain unfamiliar code changes, whether in VS Code or on GitHub.com. But it has limitations. It may misunderstand intent, miss project context, or sound overly confident. So use it as a helper for understanding, not as a replacement for judgment."
-  },
-  {
-    "speaker": "JAMIE",
-    "text": "Skill first, agent second."
-  },
-  {
-    "speaker": "ALEX",
-    "text": "Exactly. That principle comes up again in the teaser about the broader accessibility agents review ecosystem: learn the workflow and the craft yourself first, then let tools support you."
-  },
-  {
-    "speaker": "PAUSE",
-    "text": ""
-  },
-  {
-    "speaker": "JAMIE",
-    "text": "All right. We've built a lot of context. Now let's return to the bonus challenge itself."
-  },
-  {
-    "speaker": "ALEX",
-    "text": "The reference solution gives a concrete example called Accessibility Audit Relay, designed for three to five students."
-  },
-  {
-    "speaker": "JAMIE",
-    "text": "And I like that it's genuinely collaborative, not just five solo tasks living near each other."
-  },
-  {
-    "speaker": "ALEX",
-    "text": "That's the key lesson. Here's the challenge description. Students audit a sample web page for accessibility issues, relay-style, with each person assigned a focus area. Student 1 checks images for meaningful alt text. Student 2 reviews heading hierarchy. Student 3 tests links for descriptive text, avoiding vague phrases like \"click here.\" Student 4 checks color contrast on text. Student 5, if present, reviews keyboard navigation order."
-  },
-  {
-    "speaker": "JAMIE",
-    "text": "So each person has a lane, but the lanes all serve one shared artifact."
-  },
-  {
-    "speaker": "ALEX",
-    "text": "Exactly. And the workflow reinforces collaboration. The group forks a sample repository containing a deliberately imperfect HTML page. Each student creates a branch for their focus area. Each student files issues for the problems they find. The group discusses which fixes to prioritize. Each student submits a pull request fixing at least one issue. Then the group reviews and merges one another's PRs."
-  },
-  {
-    "speaker": "JAMIE",
-    "text": "That's elegant because it uses GitHub Flow, issues, PRs, and code review all in one exercise."
-  },
-  {
-    "speaker": "ALEX",
-    "text": "Yes, and it also embeds accessibility as a normal part of software quality, not an afterthought."
-  },
-  {
-    "speaker": "JAMIE",
-    "text": "What counts as evidence in that sample?"
-  },
-  {
-    "speaker": "ALEX",
-    "text": "Each student posts their filed issues, their PR, and one review they gave. That creates visible proof of participation across discovery, contribution, and review."
-  },
-  {
-    "speaker": "JAMIE",
-    "text": "And why does the reference say it works especially well for a group?"
-  },
-  {
-    "speaker": "ALEX",
-    "text": "Because everyone has a defined role, so no one is left out. The relay structure creates interdependence, so students are not just working in parallel with no contact. And the final result is a genuinely more accessible page."
-  },
-  {
-    "speaker": "JAMIE",
-    "text": "That interdependence point is subtle. If the work could be done just as well by one person alone, it may not really be a group challenge."
-  },
-  {
-    "speaker": "ALEX",
-    "text": "Exactly. The \"what matters\" section says the learning objective is to design collaborative work that gives each participant a meaningful role. If your design has clear roles, concrete deliverables, and a real reason people must work together rather than merely alongside one another, you've met the bonus."
-  },
-  {
-    "speaker": "PAUSE",
-    "text": ""
-  },
-  {
-    "speaker": "JAMIE",
-    "text": "Let's make that practical. Suppose a learner is inventing their own challenge. What questions should they ask?"
-  },
-  {
-    "speaker": "ALEX",
-    "text": "Ask: What shared artifact or outcome are we improving? Why does this need three to five people? What does each person uniquely contribute? Where do they need to coordinate? What evidence will show that each person participated meaningfully? And how will the activity remain accessible for screen reader users, keyboard-only users, speech input users, low-vision participants, and people who prefer different tools?"
-  },
-  {
-    "speaker": "JAMIE",
-    "text": "So the accessibility note is not a token sentence."
-  },
-  {
-    "speaker": "ALEX",
-    "text": "Not at all. It should explain how the challenge works for everyone. For example, you might allow review either in GitHub.com or VS Code, recommend accessible diff tools like `F7`, require descriptive issue writing instead of purely visual inspection, and design tasks that don't assume mouse use or color perception."
-  },
-  {
-    "speaker": "JAMIE",
-    "text": "Can success criteria be learner-facing and concrete?"
-  },
-  {
-    "speaker": "ALEX",
-    "text": "They should be. Good success criteria sound like: the team filed at least one issue per focus area, each student opened a branch and submitted a PR, each PR received at least one peer review comment, and the final page shows corrected alt text, heading structure, descriptive links, or other agreed improvements."
-  },
-  {
-    "speaker": "JAMIE",
-    "text": "And time estimate matters because workshop time is finite."
-  },
-  {
-    "speaker": "ALEX",
-    "text": "Exactly. A beautiful challenge that takes six hours is not a strong workshop challenge if the session provides forty-five minutes."
-  },
-  {
-    "speaker": "PAUSE",
-    "text": ""
-  },
-  {
-    "speaker": "JAMIE",
-    "text": "What should learners submit for the bonus issue itself?"
-  },
-  {
-    "speaker": "ALEX",
-    "text": "They should describe their challenge and link to the file they created. A simple evidence format is challenge name, what teams would do, and the file URL on GitHub. And if they get stuck coming up with an idea, they can look at existing bonus challenges for inspiration or check the reference solution."
-  },
-  {
-    "speaker": "JAMIE",
-    "text": "I also hear a broader lesson here: good teaching challenges mirror real project practice."
-  },
-  {
-    "speaker": "ALEX",
-    "text": "Exactly right. A strong group challenge doesn't just entertain. It teaches branching, issues, PRs, review etiquette, accessible commenting, and public evidence. It gives learners a meaningful role and a safe structure for practicing community behaviors."
-  },
-  {
-    "speaker": "JAMIE",
-    "text": "So in a way, the bonus challenge is a capstone for culture plus workflow."
-  },
-  {
-    "speaker": "ALEX",
-    "text": "Beautifully put."
-  },
-  {
-    "speaker": "PAUSE",
-    "text": ""
-  },
-  {
-    "speaker": "JAMIE",
-    "text": "Before we close, can we touch the administrative reference material? The chapters both include authoritative sources and section-level source maps."
-  },
-  {
-    "speaker": "ALEX",
-    "text": "Good catch. Learners should know that these chapters point back to GitHub Docs and the GitHub Changelog as the main sources of truth for current platform behavior. For accessibility-specific review practices, the GitHub Accessibility Guide is especially relevant. And for the group challenge example, accessibility references like WCAG, WAI tutorials, and ARIA authoring practices help ground the audit topics."
-  },
-  {
-    "speaker": "JAMIE",
-    "text": "So if GitHub changes an interface label or workflow detail, the docs win over the podcast."
-  },
-  {
-    "speaker": "ALEX",
-    "text": "Always. Use the course for understanding, and the official documentation for the latest exact behavior."
-  },
-  {
-    "speaker": "PAUSE",
-    "text": ""
-  },
-  {
-    "speaker": "JAMIE",
-    "text": "Let me try a final summary, and you tell me if I've got it. Designing a great group challenge means creating real interdependence, clear roles, concrete evidence, accessible participation paths, and a realistic scope. To do that well, you need to understand GitHub Flow, respectful communication, good review habits, and accessible PR tooling in both GitHub.com and VS Code."
-  },
-  {
-    "speaker": "ALEX",
-    "text": "That is exactly it. And one more thing: the quality of collaboration is not separate from the quality of the work. In open source, how you communicate is part of what you contribute."
-  },
-  {
-    "speaker": "JAMIE",
-    "text": "And maybe that's the most encouraging part for beginners. You do not need to be the strongest coder in the room to be valuable. You can be the person who writes a clear issue, gives a thoughtful review, notices an accessibility problem, or designs a challenge where everyone can participate."
-  },
-  {
-    "speaker": "ALEX",
-    "text": "Yes. That is real open source leadership."
-  },
-  {
-    "speaker": "PAUSE",
-    "text": ""
-  },
-  {
-    "speaker": "ALEX",
-    "text": "For your next step, design your challenge file with a clear title, goal, team size, time estimate, instructions, success criteria, and accessibility note. Then commit, push, open your pull request, and share evidence in the bonus issue."
-  },
-  {
-    "speaker": "JAMIE",
-    "text": "And while you do it, practice the same habits we talked about today: one thing per branch, specific writing, respectful review, and accessible choices all the way through."
-  },
-  {
-    "speaker": "ALEX",
-    "text": "Well said."
-  }
+﻿[
+    {
+        "speaker":  "ALEX",
+        "text":  "Welcome back. Today we\u0027re doing something a little unusual and very real to open source work: designing collaboration, not just participating in it."
+    },
+    {
+        "speaker":  "JAMIE",
+        "text":  "I like that framing. Usually we learn a tool or a workflow. This time we\u0027re learning how to create a challenge that helps other people practice the workflow together."
+    },
+    {
+        "speaker":  "ALEX",
+        "text":  "Exactly. And to do that well, we need three strands working together: open source culture, pull request review practice, and the specific bonus task of designing a group challenge for future learners."
+    },
+    {
+        "speaker":  "JAMIE",
+        "text":  "So the assignment is not just, make up a fun activity."
+    },
+    {
+        "speaker":  "ALEX",
+        "text":  "Right. It has structure. The bonus asks you to design a collaborative challenge for three to five students, document it in the learning room, and make it usable by future workshop cohorts. The file path matters: create a file named `docs/group-challenges/YOUR-USERNAME-challenge.md`, then commit, push, and open a pull request."
+    },
+    {
+        "speaker":  "JAMIE",
+        "text":  "And the design has required ingredients, right?"
+    },
+    {
+        "speaker":  "ALEX",
+        "text":  "Yes. Your challenge design needs a title, a goal, team size, time estimate, instructions, success criteria, and an accessibility note. And there are design criteria too: the task should require genuine collaboration, not just split-up solo work, it should have clear success criteria, it should be accessible regardless of how participants interact with technology, and it should fit inside workshop time."
+    },
+    {
+        "speaker":  "PAUSE",
+        "text":  ""
+    },
+    {
+        "speaker":  "JAMIE",
+        "text":  "Before we get into the sample challenge, can we zoom out? Because designing a group challenge makes more sense if you understand how open source collaboration normally works."
+    },
+    {
+        "speaker":  "ALEX",
+        "text":  "That\u0027s the right instinct. Technical skill gets code into a project. Communication skill keeps you welcome in the community. Open source is not just code; it is people coordinating in writing, often asynchronously, and often in public."
+    },
+    {
+        "speaker":  "JAMIE",
+        "text":  "That can feel high stakes, especially for beginners."
+    },
+    {
+        "speaker":  "ALEX",
+        "text":  "It can. Which is why the course includes a guided reflection around communication and culture. That reflection is simple but important: read the chapter, then post a comment on your assigned issue committing to three specific behaviors. One respectful review habit you\u0027ll use. One way you\u0027ll ask for help clearly. One way you\u0027ll respond to feedback constructively."
+    },
+    {
+        "speaker":  "JAMIE",
+        "text":  "Specific being the key word."
+    },
+    {
+        "speaker":  "ALEX",
+        "text":  "Exactly. Not \"I will be nice.\" More like, \"I will begin review comments by naming what already works before suggesting a change.\" Or, \"When I ask for help, I\u0027ll say the exact step where I got stuck and what I already tried.\""
+    },
+    {
+        "speaker":  "JAMIE",
+        "text":  "And administratively, that reflection comment is the evidence, right?"
+    },
+    {
+        "speaker":  "ALEX",
+        "text":  "Yes. No extra upload. No bot grading. The facilitator reviews the comment for specificity, and once it\u0027s posted, you can close the Chapter 8 challenge issue. The expected outcomes are that you can name concrete collaboration behaviors, prepare for later PR review work, and feel safer asking for help in public threads."
+    },
+    {
+        "speaker":  "JAMIE",
+        "text":  "And if someone gets stuck writing the reflection?"
+    },
+    {
+        "speaker":  "ALEX",
+        "text":  "Keep it simple. One sentence per prompt. Draft in a text editor first if that helps. Revisit the sections on giving feedback and asking for help. Or ask a facilitator for an example and adapt it into your own words. That reflection matters because communication quality and technical quality reinforce each other."
+    },
+    {
+        "speaker":  "PAUSE",
+        "text":  ""
+    },
+    {
+        "speaker":  "JAMIE",
+        "text":  "Okay. So now let\u0027s connect culture to workflow. Where do all these conversations actually happen?"
+    },
+    {
+        "speaker":  "ALEX",
+        "text":  "Mostly around pull requests, using GitHub Flow. GitHub Flow is the lightweight contribution model this workshop uses. The six steps are straightforward: create a branch off main, make your changes and commit them, open a pull request, discuss and review, pass status checks, and then merge."
+    },
+    {
+        "speaker":  "JAMIE",
+        "text":  "That sounds simple, but each step carries social meaning."
+    },
+    {
+        "speaker":  "ALEX",
+        "text":  "Very much so. A branch says, \"I\u0027m working on one thing.\" A pull request says, \"Here\u0027s the change, here\u0027s why, please review it.\" Review discussion turns code into conversation. Status checks protect the whole project. And merge means the work is accepted into shared history."
+    },
+    {
+        "speaker":  "JAMIE",
+        "text":  "Why does this model work so well for open source?"
+    },
+    {
+        "speaker":  "ALEX",
+        "text":  "Because main stays deployable, branches are cheap, pull requests centralize discussion, and small focused changes move faster. It also supports accessibility-friendly collaboration because the unit of work is explicit and reviewable."
+    },
+    {
+        "speaker":  "JAMIE",
+        "text":  "And this is different from Git Flow."
+    },
+    {
+        "speaker":  "ALEX",
+        "text":  "Yes. Git Flow is older and more complex. It uses long-lived branches like `main` and `develop`, plus temporary `feature/`, `release/`, and `hotfix/` branches. It fits teams with scheduled releases, versioned software, or enterprise processes. GitHub Flow is lighter: usually just `main` plus short-lived feature branches. For a workshop, web projects, and open source contributions, GitHub Flow is easier to teach, easier to review, and easier to recover from."
+    },
+    {
+        "speaker":  "JAMIE",
+        "text":  "So if I see `develop` and `release/1.2.0`, I\u0027m probably in Git Flow territory."
+    },
+    {
+        "speaker":  "ALEX",
+        "text":  "Exactly. But for this workshop, think one branch per task, PR back to main, and keep main healthy."
+    },
+    {
+        "speaker":  "JAMIE",
+        "text":  "That ties into the unwritten rule: one thing per branch."
+    },
+    {
+        "speaker":  "ALEX",
+        "text":  "Yes. One branch should represent one coherent change. That helps you make atomic commits, write focused PR descriptions, and receive useful reviews. If you mix a README rewrite, a bug fix, and a formatting pass in one branch, the reviewer has to untangle three stories at once."
+    },
+    {
+        "speaker":  "PAUSE",
+        "text":  ""
+    },
+    {
+        "speaker":  "JAMIE",
+        "text":  "What about keeping your fork current? That seems administrative, but it affects collaboration."
+    },
+    {
+        "speaker":  "ALEX",
+        "text":  "It absolutely does. If your fork is stale, you create avoidable conflicts and review noise. So you should sync your fork, especially before starting new work, after the upstream project has moved, or after your last contribution was merged long ago."
+    },
+    {
+        "speaker":  "JAMIE",
+        "text":  "And there are multiple ways to do that."
+    },
+    {
+        "speaker":  "ALEX",
+        "text":  "Three common ones. Easiest is the GitHub web interface using the Sync fork option. Another is the command line in the VS Code terminal. That requires a one-time setup: add the upstream remote. Then the sync process is four steps. Switch to your main branch. Fetch upstream changes. Merge upstream main into your local main. Push the updated main back to your fork on GitHub."
+    },
+    {
+        "speaker":  "JAMIE",
+        "text":  "So in plain language: get onto your own main, bring down the upstream changes, combine them, and publish the updated result to your fork."
+    },
+    {
+        "speaker":  "ALEX",
+        "text":  "Exactly. And there\u0027s also GitHub Desktop for people who prefer a GUI. The important concept is not the tool but the habit: sync before branching so you start from current code."
+    },
+    {
+        "speaker":  "PAUSE",
+        "text":  ""
+    },
+    {
+        "speaker":  "JAMIE",
+        "text":  "Let\u0027s talk commits, because group work gets messy fast if commit history is muddy."
+    },
+    {
+        "speaker":  "ALEX",
+        "text":  "Very true. Good commit messages help reviewers and future maintainers understand what happened. The usual format is a short required first line that states the change clearly, then an optional body explaining why, and an optional footer for issue references or metadata."
+    },
+    {
+        "speaker":  "JAMIE",
+        "text":  "What makes the first line good?"
+    },
+    {
+        "speaker":  "ALEX",
+        "text":  "It should be concise and specific. Think \"Add alt text to homepage feature cards\" rather than \"stuff\" or \"updates.\" The body can explain reasoning, tradeoffs, or context. The footer might include something like `Closes #42` if the project uses issue linking."
+    },
+    {
+        "speaker":  "JAMIE",
+        "text":  "And atomic commits?"
+    },
+    {
+        "speaker":  "ALEX",
+        "text":  "An atomic commit contains one coherent, complete change. That makes review easier, reverts safer, and collaboration calmer. Common mistakes include vague messages, giant mixed-purpose commits, or committing generated clutter with meaningful edits."
+    },
+    {
+        "speaker":  "JAMIE",
+        "text":  "So the same principle keeps showing up: one branch, one PR, one clear idea per commit when possible."
+    },
+    {
+        "speaker":  "ALEX",
+        "text":  "Exactly."
+    },
+    {
+        "speaker":  "PAUSE",
+        "text":  ""
+    },
+    {
+        "speaker":  "JAMIE",
+        "text":  "Now let\u0027s get into the human side. You said open source communication happens in writing, asynchronously, and in public. Can we unpack that?"
+    },
+    {
+        "speaker":  "ALEX",
+        "text":  "Of course. In writing means people cannot hear your tone of voice, so clarity matters. Asynchronously means the other person may reply hours later, so your message has to stand on its own. In public means your comment may help many future readers, but it also means bluntness can feel amplified."
+    },
+    {
+        "speaker":  "JAMIE",
+        "text":  "So that\u0027s why feedback needs structure."
+    },
+    {
+        "speaker":  "ALEX",
+        "text":  "Yes. Helpful feedback usually does five things. First, acknowledge what\u0027s working. Second, identify the specific concern. Third, explain why it matters. Fourth, suggest a path forward when you can. Fifth, signal the weight of the concern."
+    },
+    {
+        "speaker":  "JAMIE",
+        "text":  "That last one is subtle."
+    },
+    {
+        "speaker":  "ALEX",
+        "text":  "And very useful. Not every comment is blocking. Sometimes it\u0027s a required fix. Sometimes it\u0027s a suggestion. Sometimes it\u0027s a question. Being explicit reduces stress."
+    },
+    {
+        "speaker":  "JAMIE",
+        "text":  "How should the language sound?"
+    },
+    {
+        "speaker":  "ALEX",
+        "text":  "Prefer \"we\" language or talk about the code, not the person. Use tentative language when you\u0027re uncertain. Remember contributors may come from different cultures and may be working in a second language. Avoid urgency markers unless something is genuinely urgent."
+    },
+    {
+        "speaker":  "JAMIE",
+        "text":  "So instead of \"You did this wrong,\" maybe \"This heading order may confuse screen reader navigation; could we move this H3 under an H2?\""
+    },
+    {
+        "speaker":  "ALEX",
+        "text":  "Perfect. That addresses the artifact, explains the impact, and proposes a fix without attacking the author."
+    },
+    {
+        "speaker":  "PAUSE",
+        "text":  ""
+    },
+    {
+        "speaker":  "JAMIE",
+        "text":  "What about commenting etiquette more generally?"
+    },
+    {
+        "speaker":  "ALEX",
+        "text":  "Keep comments focused. Don\u0027t bundle five unrelated concerns into one comment if separate comments would be clearer. Don\u0027t leave comments unresolved forever; if the issue is addressed, resolve the conversation. Don\u0027t pile on by repeating someone else\u0027s point unless you\u0027re adding necessary context. Reactions can be useful lightweight signals of agreement or thanks."
+    },
+    {
+        "speaker":  "JAMIE",
+        "text":  "And saved replies are a big accessibility win, right?"
+    },
+    {
+        "speaker":  "ALEX",
+        "text":  "They can be. Saved replies let you store reusable comment templates for common situations. Useful for thanking contributors, asking for tests, clarifying reproduction steps, or giving a standard accessibility explanation. On GitHub, you can create a saved reply in your settings, then insert it while writing a comment. For screen reader users, this can reduce repetitive typing and cognitive load, especially for phrases you use often."
+    },
+    {
+        "speaker":  "JAMIE",
+        "text":  "So a saved reply might be something like, \"Thanks for this contribution. I noticed a heading hierarchy issue that may affect screen reader navigation. Could we adjust the heading levels so they don\u0027t skip?\""
+    },
+    {
+        "speaker":  "ALEX",
+        "text":  "Exactly. Then you customize the details for the current PR."
+    },
+    {
+        "speaker":  "PAUSE",
+        "text":  ""
+    },
+    {
+        "speaker":  "JAMIE",
+        "text":  "Let\u0027s split etiquette by role: reviewer versus author."
+    },
+    {
+        "speaker":  "ALEX",
+        "text":  "For reviewers: review the code, not the person. Don\u0027t gatekeep knowledge by implying someone should already know everything. Ask questions instead of making demands when appropriate. Distinguish opinion from requirement. And approve explicitly when the work is ready."
+    },
+    {
+        "speaker":  "JAMIE",
+        "text":  "That \"distinguish opinion from requirement\" part seems huge."
+    },
+    {
+        "speaker":  "ALEX",
+        "text":  "It is. \"This must be fixed because it breaks keyboard navigation\" is different from \"I prefer a shorter sentence here.\" If you blur those, authors waste effort guessing what is essential."
+    },
+    {
+        "speaker":  "JAMIE",
+        "text":  "And for authors?"
+    },
+    {
+        "speaker":  "ALEX",
+        "text":  "Say thank you. Don\u0027t take feedback personally. Explain your choices when context matters. Surface blockers early instead of silently stalling."
+    },
+    {
+        "speaker":  "JAMIE",
+        "text":  "What about accessibility-specific comments?"
+    },
+    {
+        "speaker":  "ALEX",
+        "text":  "Inclusive commenting matters a great deal. Accessibility issues are real product issues, not optional polish. But the tone should stay respectful and educational. Explain impact: for example, missing alt text leaves image meaning unavailable to some users. Avoid framing accessibility as a burden or special interest request."
+    },
+    {
+        "speaker":  "JAMIE",
+        "text":  "And there\u0027s also that \"good first issue\" social contract."
+    },
+    {
+        "speaker":  "ALEX",
+        "text":  "Yes. If a project labels something \"good first issue,\" it should be genuinely approachable, reasonably scoped, and documented enough that a newcomer has a fair chance. That\u0027s part of community trust."
+    },
+    {
+        "speaker":  "PAUSE",
+        "text":  ""
+    },
+    {
+        "speaker":  "JAMIE",
+        "text":  "Open source is human, so difficult situations happen. What guidance do learners get?"
+    },
+    {
+        "speaker":  "ALEX",
+        "text":  "Several scenarios. If you receive harsh feedback, slow down, extract the actionable content, and respond to the substance rather than mirroring the tone. If you disagree with a decision, ask clarifying questions and state your reasoning calmly, but respect maintainers\u0027 project authority. If someone is rude, rely on documented community standards and, if needed, ask a moderator or maintainer for help. If you accidentally caused offense, acknowledge it, apologize directly, and adjust."
+    },
+    {
+        "speaker":  "JAMIE",
+        "text":  "That\u0027s a reassuring framework. Not every awkward moment means you failed."
+    },
+    {
+        "speaker":  "ALEX",
+        "text":  "Exactly. Repair is part of collaboration."
+    },
+    {
+        "speaker":  "PAUSE",
+        "text":  ""
+    },
+    {
+        "speaker":  "JAMIE",
+        "text":  "Now I want to connect this to documentation. Why is README writing in a culture chapter?"
+    },
+    {
+        "speaker":  "ALEX",
+        "text":  "Because documentation is hospitality. A good README tells people what the project is, how to install it, how to use it, how to contribute, and what license governs it. A simple skeleton includes project name, installation, usage, contributing, and license."
+    },
+    {
+        "speaker":  "JAMIE",
+        "text":  "And accessibility belongs there too."
+    },
+    {
+        "speaker":  "ALEX",
+        "text":  "Absolutely. Accessible READMEs use meaningful headings, descriptive link text, clear structure, and concise language. A good README helps a newcomer get started. A bad README assumes context they do not have."
+    },
+    {
+        "speaker":  "JAMIE",
+        "text":  "Related to that are community health files."
+    },
+    {
+        "speaker":  "ALEX",
+        "text":  "Yes: `CONTRIBUTING.md`, `CODEOFCONDUCT.md`, `SECURITY.md`, and `LICENSE`. These files help contributors know how to participate, how the community behaves, how to report security issues, and what reuse is permitted. You should learn to find these on GitHub because they shape how you engage with a repository."
+    },
+    {
+        "speaker":  "JAMIE",
+        "text":  "And different communication channels matter too."
+    },
+    {
+        "speaker":  "ALEX",
+        "text":  "Right. Use issues for trackable work, PR comments for change-specific discussion, discussions or forums for broader conversation if the project supports them, and security channels for sensitive vulnerabilities. Choosing the right channel is part of professional communication."
+    },
+    {
+        "speaker":  "PAUSE",
+        "text":  ""
+    },
+    {
+        "speaker":  "JAMIE",
+        "text":  "There\u0027s also broad newcomer guidance in the chapter: what open source is, who can contribute, and how to find a first contribution."
+    },
+    {
+        "speaker":  "ALEX",
+        "text":  "Yes, and it\u0027s worth saying plainly: open source contribution is not limited to writing code. People contribute documentation, design, testing, issue triage, accessibility review, translation, examples, and thoughtful feedback. A good first contribution is usually small, well-scoped, and understandable. Warning signs that it\u0027s too large include many files, unclear requirements, missing reproduction steps, or lots of unresolved discussion."
+    },
+    {
+        "speaker":  "JAMIE",
+        "text":  "So before starting, read the issue carefully."
+    },
+    {
+        "speaker":  "ALEX",
+        "text":  "Exactly. Understand the problem, the expected fix, any linked discussion, and whether someone is already working on it. Then follow the basic workflow: fork if needed, clone, create a branch, edit files, commit, push, and open a PR. A good PR description explains what changed, why, and how to test it."
+    },
+    {
+        "speaker":  "JAMIE",
+        "text":  "And after a contribution is merged?"
+    },
+    {
+        "speaker":  "ALEX",
+        "text":  "Thank people, sync your fork, clean up your branch, and reflect on what you learned. Over time, build a contribution habit: small regular participation, thoughtful reading, respectful review, and realistic scope."
+    },
+    {
+        "speaker":  "PAUSE",
+        "text":  ""
+    },
+    {
+        "speaker":  "JAMIE",
+        "text":  "All right. Let\u0027s shift into code review tooling, because the sample group challenge uses issues, PRs, and peer review."
+    },
+    {
+        "speaker":  "ALEX",
+        "text":  "Good connection. The code review chapter covers pull requests, diffs, and constructive feedback, especially with accessible workflows. Part 1 centers the GitHub Pull Requests and Issues extension for VS Code."
+    },
+    {
+        "speaker":  "JAMIE",
+        "text":  "And there are workshop tasks attached to that too."
+    },
+    {
+        "speaker":  "ALEX",
+        "text":  "Yes. Two guided practices. First, install the extension and sign in to GitHub. Second, check out a PR and post a constructive review comment. Evidence is a completion comment on your assigned practice issue stating whether the extension is installed, whether you signed in, which PR you reviewed, whether your comment was inline or on GitHub.com, and a one-sentence summary of what your comment was about."
+    },
+    {
+        "speaker":  "JAMIE",
+        "text":  "No automation check there either, because installation state is local."
+    },
+    {
+        "speaker":  "ALEX",
+        "text":  "Correct. The pattern is install, check out, review, comment."
+    },
+    {
+        "speaker":  "PAUSE",
+        "text":  ""
+    },
+    {
+        "speaker":  "JAMIE",
+        "text":  "Walk us through installation, especially for screen reader users."
+    },
+    {
+        "speaker":  "ALEX",
+        "text":  "In VS Code, open Extensions with `Ctrl+Shift+X` on Windows or `Cmd+Shift+X` on Mac. Search for GitHub Pull Requests. Choose the extension published by GitHub. Activate Install. After installation, sign in to GitHub through the OAuth flow in the browser, then return to VS Code. Verify sign-in by opening Explorer and checking for a GitHub section showing pull requests and issues."
+    },
+    {
+        "speaker":  "JAMIE",
+        "text":  "And if notifications vanish too quickly?"
+    },
+    {
+        "speaker":  "ALEX",
+        "text":  "Use Command Palette and run `Notifications: Focus Notification Toast`. That\u0027s a very practical screen reader tip."
+    },
+    {
+        "speaker":  "JAMIE",
+        "text":  "What does the extension actually add?"
+    },
+    {
+        "speaker":  "ALEX",
+        "text":  "It adds PR and issue panels, the ability to inspect PR details, check out PR branches locally, open changed files, add comments, create PRs from the editor, and sometimes merge or manage review state without leaving VS Code."
+    },
+    {
+        "speaker":  "PAUSE",
+        "text":  ""
+    },
+    {
+        "speaker":  "JAMIE",
+        "text":  "How do you view pull requests once the extension is installed?"
+    },
+    {
+        "speaker":  "ALEX",
+        "text":  "Two common ways. One is the GitHub Pull Requests panel from the activity bar or via Command Palette. There you can list open PRs, open a specific PR, filter PRs waiting for your review, and open a PR in your browser. Another is through an Explorer section if that view is enabled."
+    },
+    {
+        "speaker":  "JAMIE",
+        "text":  "What does the PR tree usually contain?"
+    },
+    {
+        "speaker":  "ALEX",
+        "text":  "A pull request item may include the description, changed files, status checks, comments, and related metadata. For screen reader users, hearing the tree structure and item labels helps orient to where you are. Filtering can be by status or repository, which matters when many PRs are visible."
+    },
+    {
+        "speaker":  "JAMIE",
+        "text":  "And you can inspect PR details there too."
+    },
+    {
+        "speaker":  "ALEX",
+        "text":  "Yes. Title, author, branch names, review state, description, checks. Those details matter before you decide how to review."
+    },
+    {
+        "speaker":  "PAUSE",
+        "text":  ""
+    },
+    {
+        "speaker":  "JAMIE",
+        "text":  "Now checking out a PR branch. Why do that instead of just reading on the website?"
+    },
+    {
+        "speaker":  "ALEX",
+        "text":  "Because local checkout lets you test the actual branch, run code, inspect files with editor tools, and use VS Code\u0027s accessible diff support. You can check out from the PR detail view, from the PR tree context menu, or from the Command Palette."
+    },
+    {
+        "speaker":  "JAMIE",
+        "text":  "And then return to your original branch when you\u0027re done."
+    },
+    {
+        "speaker":  "ALEX",
+        "text":  "Exactly. That\u0027s an important cleanup step. Don\u0027t stay accidentally parked on someone else\u0027s PR branch."
+    },
+    {
+        "speaker":  "PAUSE",
+        "text":  ""
+    },
+    {
+        "speaker":  "JAMIE",
+        "text":  "Let\u0027s get to diff review in VS Code, because that\u0027s where accessibility really matters."
+    },
+    {
+        "speaker":  "ALEX",
+        "text":  "In the PR detail view, you can open the list of changed files. Opening one shows a diff. By default, many people see split view, old content on the left and new on the right. Inline view presents changes in one continuous flow. You can toggle between them."
+    },
+    {
+        "speaker":  "JAMIE",
+        "text":  "But for screen reader users, raw visual diff layouts can be exhausting."
+    },
+    {
+        "speaker":  "ALEX",
+        "text":  "That\u0027s exactly why the Accessible Diff Viewer matters. In VS Code, `F7` moves to the next change and `Shift+F7` moves to the previous change. Instead of forcing you to manually traverse a visual editor representation, it announces each change in a structured way: what was added, what was removed, and where."
+    },
+    {
+        "speaker":  "JAMIE",
+        "text":  "So it turns \"maze of symbols\" into \"readable change units.\""
+    },
+    {
+        "speaker":  "ALEX",
+        "text":  "Beautifully said. The chapter strongly recommends that workflow for screen reader users because it is far superior to line-by-line navigation of the visual diff."
+    },
+    {
+        "speaker":  "JAMIE",
+        "text":  "And if I find an issue?"
+    },
+    {
+        "speaker":  "ALEX",
+        "text":  "You can flag it during review with an inline comment. Put the cursor on the relevant line and use the command to add a comment. If that is difficult in VS Code, fall back to GitHub.com. Accessibility includes using the environment that lets you work accurately."
+    },
+    {
+        "speaker":  "PAUSE",
+        "text":  ""
+    },
+    {
+        "speaker":  "JAMIE",
+        "text":  "What about creating a pull request from VS Code instead of in the browser?"
+    },
+    {
+        "speaker":  "ALEX",
+        "text":  "The extension supports that too. Prerequisites are that your branch exists with committed changes and is pushed or ready to push. You can create a PR through the Command Palette, the Source Control panel, or the GitHub panel. The Command Palette method is often the clearest."
+    },
+    {
+        "speaker":  "JAMIE",
+        "text":  "Then you fill out a form."
+    },
+    {
+        "speaker":  "ALEX",
+        "text":  "Right. Title is required. Description is optional but strongly recommended. You choose the base branch, usually `main`, and the compare branch, your feature branch. Reviewers, labels, and milestone may be optional. There is often a draft PR checkbox, which is useful if you want early feedback before calling the work ready."
+    },
+    {
+        "speaker":  "JAMIE",
+        "text":  "And there are different submission styles."
+    },
+    {
+        "speaker":  "ALEX",
+        "text":  "Yes. Some workflows prompt interactively for title, body, and base branch. Others let you provide details inline. You may also create as draft or open the form in your browser if that\u0027s easier. Again, accessibility means choosing the route that works best for you."
+    },
+    {
+        "speaker":  "PAUSE",
+        "text":  ""
+    },
+    {
+        "speaker":  "JAMIE",
+        "text":  "PR description templates can make this a lot easier, especially for beginners."
+    },
+    {
+        "speaker":  "ALEX",
+        "text":  "Definitely. Repositories may store PR templates so when you open a PR, a structure appears automatically. Common sections include description, related issue, type of change, testing, checklist, and screenshots if applicable."
+    },
+    {
+        "speaker":  "JAMIE",
+        "text":  "That\u0027s helpful because it turns \"What do I write?\" into prompts."
+    },
+    {
+        "speaker":  "ALEX",
+        "text":  "Exactly. For screen reader users, working through the template in order can also reduce cognitive load. Read each prompt, replace placeholders with real details, and leave out irrelevant sections only if the project expects that."
+    },
+    {
+        "speaker":  "PAUSE",
+        "text":  ""
+    },
+    {
+        "speaker":  "JAMIE",
+        "text":  "Now the formal review actions: commenting, approving, and requesting changes."
+    },
+    {
+        "speaker":  "ALEX",
+        "text":  "When adding an inline comment, be specific and tie your note to the exact changed line. If you have multiple comments, use Start Review so they can be submitted together instead of sending a stream of isolated notifications. When ready, submit the review as one of three verdicts: approve, request changes, or comment-only."
+    },
+    {
+        "speaker":  "JAMIE",
+        "text":  "And each verdict carries different weight."
+    },
+    {
+        "speaker":  "ALEX",
+        "text":  "Right. Approve means the PR is ready from your perspective. Request changes means there are issues that should be addressed before merge. Comment-only means feedback without a formal accept-or-block judgment."
+    },
+    {
+        "speaker":  "JAMIE",
+        "text":  "There was also mention of viewing PR diffs in your terminal."
+    },
+    {
+        "speaker":  "ALEX",
+        "text":  "Yes, in some environments you may use CLI tooling to inspect PR diffs or metadata from the terminal. That can be another accessibility or efficiency path, depending on the learner."
+    },
+    {
+        "speaker":  "PAUSE",
+        "text":  ""
+    },
+    {
+        "speaker":  "JAMIE",
+        "text":  "Merging is the next step. What should learners know?"
+    },
+    {
+        "speaker":  "ALEX",
+        "text":  "Before merging, confirm prerequisites like reviews, passing checks, and project permissions. You may merge from the PR detail view or command palette in VS Code, depending on access. Common merge types include the default merge strategy and squash-and-merge. Squash-and-merge is often useful when a branch has many small work-in-progress commits but should land as one clean logical change."
+    },
+    {
+        "speaker":  "JAMIE",
+        "text":  "And sometimes auto-merge is available."
+    },
+    {
+        "speaker":  "ALEX",
+        "text":  "Yes. Auto-merge can be enabled so the PR merges automatically when required checks pass. After merging, switch back to main and pull the latest changes. Then delete the feature branch if the project\u0027s workflow calls for it."
+    },
+    {
+        "speaker":  "PAUSE",
+        "text":  ""
+    },
+    {
+        "speaker":  "JAMIE",
+        "text":  "Can we cover troubleshooting? Because review tools rarely behave perfectly on the first try."
+    },
+    {
+        "speaker":  "ALEX",
+        "text":  "Absolutely. If you see \"No pull requests found,\" check whether you\u0027re signed in, whether the repository is correct, and whether you need to switch to an all-open filter. If you get \"Could not create pull request,\" verify the branch is pushed, compare and base branches are valid, and authentication is healthy. If authentication fails, sign into GitHub in the browser first, then retry in VS Code."
+    },
+    {
+        "speaker":  "JAMIE",
+        "text":  "And if checkout fails due to permissions?"
+    },
+    {
+        "speaker":  "ALEX",
+        "text":  "Use the GitHub.com fallback in read-only mode. The chapter explicitly says you can still complete review practice that way."
+    },
+    {
+        "speaker":  "PAUSE",
+        "text":  ""
+    },
+    {
+        "speaker":  "JAMIE",
+        "text":  "That\u0027s Part 1. Part 2 goes deeper into accessible code review itself, right?"
+    },
+    {
+        "speaker":  "ALEX",
+        "text":  "Yes. It covers conducting pull request reviews with a screen reader across two environments: GitHub.com and VS Code with the Accessible Diff Viewer."
+    },
+    {
+        "speaker":  "JAMIE",
+        "text":  "There\u0027s a prerequisites checklist too."
+    },
+    {
+        "speaker":  "ALEX",
+        "text":  "Right. Before starting, learners should already know basic PR concepts and the earlier workflow chapters. Then the chapter introduces learning cards for key review tasks: viewing the full PR diff in a terminal if desired, viewing PR details like description and checks, checking out a PR branch locally for testing, and submitting one of the three review verdicts."
+    },
+    {
+        "speaker":  "PAUSE",
+        "text":  ""
+    },
+    {
+        "speaker":  "JAMIE",
+        "text":  "Let\u0027s do the browser path first."
+    },
+    {
+        "speaker":  "ALEX",
+        "text":  "On GitHub.com, the modern review interface is the default. First, reach the Files changed tab. Then use the file tree to orient yourself by changed file. Listen for file names and expansion states. Navigate between file diffs. Read the diff, paying attention to what each changed line announces: additions, deletions, and context. Place an inline comment on the relevant line; multi-line comments may be useful when a problem spans a block."
+    },
+    {
+        "speaker":  "JAMIE",
+        "text":  "Then read any existing threads so you don\u0027t duplicate work."
+    },
+    {
+        "speaker":  "ALEX",
+        "text":  "Exactly. Then submit your review with the appropriate verdict. If you\u0027re the author responding after making updates, you may re-request review to signal that changes are ready for another pass."
+    },
+    {
+        "speaker":  "PAUSE",
+        "text":  ""
+    },
+    {
+        "speaker":  "JAMIE",
+        "text":  "And the VS Code path?"
+    },
+    {
+        "speaker":  "ALEX",
+        "text":  "Open the PR for review in the extension, inspect changed files, and use the Accessible Diff Viewer with `F7`. The learning cards emphasize opening the PR, using the accessible diff, and placing comments from within the extension. The key accessibility advantage is structured navigation through changes instead of wrestling with a visually oriented diff editor."
+    },
+    {
+        "speaker":  "JAMIE",
+        "text":  "So whether you review in the browser or in VS Code, the principles stay the same, but the navigation model changes."
+    },
+    {
+        "speaker":  "ALEX",
+        "text":  "Precisely."
+    },
+    {
+        "speaker":  "PAUSE",
+        "text":  ""
+    },
+    {
+        "speaker":  "JAMIE",
+        "text":  "What makes a review comment actually useful?"
+    },
+    {
+        "speaker":  "ALEX",
+        "text":  "The chapter gives a strong framework. A useful review comment states the concern clearly, explains impact, and signals whether it is blocking, non-blocking, or exploratory. Prefixes help set expectations, like \"blocking,\" \"nit,\" or \"question.\""
+    },
+    {
+        "speaker":  "JAMIE",
+        "text":  "Can you give examples in plain language?"
+    },
+    {
+        "speaker":  "ALEX",
+        "text":  "A blocking comment might say a heading hierarchy skips from H1 to H3, which can confuse screen reader navigation, and ask for heading levels to be corrected before merge. A non-blocking nit might suggest rephrasing a sentence for clarity. A question might ask why a setup step was removed, in case there is context the reviewer is missing."
+    },
+    {
+        "speaker":  "JAMIE",
+        "text":  "And how many comments is too many?"
+    },
+    {
+        "speaker":  "ALEX",
+        "text":  "Enough to overwhelm without helping. If you have many related points, consolidate where sensible. Prioritize the most important issues. The goal is clarity, not volume."
+    },
+    {
+        "speaker":  "PAUSE",
+        "text":  ""
+    },
+    {
+        "speaker":  "JAMIE",
+        "text":  "The chapter also includes review scenarios and exercises."
+    },
+    {
+        "speaker":  "ALEX",
+        "text":  "Yes. Scenarios include verifying a PR only changes what it claims, finding all changes to a specific section, checking whether new changes appeared after updates, and interpreting a confusing reviewer comment. The exercises ask learners to complete a web review, use the VS Code Accessible Diff Viewer, and then compare the two environments."
+    },
+    {
+        "speaker":  "JAMIE",
+        "text":  "Including accessibility-specific findings like heading hierarchy and link text."
+    },
+    {
+        "speaker":  "ALEX",
+        "text":  "Exactly. In the exercises, learners identify issues like bad heading order or vague link text, place comments, submit reviews, and reflect on which environment made what easier."
+    },
+    {
+        "speaker":  "JAMIE",
+        "text":  "That reflection matters because accessible tooling is personal."
+    },
+    {
+        "speaker":  "ALEX",
+        "text":  "Yes. One learner may prefer the browser\u0027s file tree and comment threading. Another may find VS Code\u0027s `F7` navigation dramatically better. The point is to discover what supports accurate review for you."
+    },
+    {
+        "speaker":  "PAUSE",
+        "text":  ""
+    },
+    {
+        "speaker":  "JAMIE",
+        "text":  "There\u0027s also a short section on using GitHub Copilot during review."
+    },
+    {
+        "speaker":  "ALEX",
+        "text":  "Right, but with caution. Copilot can help summarize a diff or explain unfamiliar code changes, whether in VS Code or on GitHub.com. But it has limitations. It may misunderstand intent, miss project context, or sound overly confident. So use it as a helper for understanding, not as a replacement for judgment."
+    },
+    {
+        "speaker":  "JAMIE",
+        "text":  "Skill first, agent second."
+    },
+    {
+        "speaker":  "ALEX",
+        "text":  "Exactly. That principle comes up again in the teaser about the broader accessibility agents review ecosystem: learn the workflow and the craft yourself first, then let tools support you."
+    },
+    {
+        "speaker":  "PAUSE",
+        "text":  ""
+    },
+    {
+        "speaker":  "JAMIE",
+        "text":  "All right. We\u0027ve built a lot of context. Now let\u0027s return to the bonus challenge itself."
+    },
+    {
+        "speaker":  "ALEX",
+        "text":  "The reference solution gives a concrete example called Accessibility Audit Relay, designed for three to five students."
+    },
+    {
+        "speaker":  "JAMIE",
+        "text":  "And I like that it\u0027s genuinely collaborative, not just five solo tasks living near each other."
+    },
+    {
+        "speaker":  "ALEX",
+        "text":  "That\u0027s the key lesson. Here\u0027s the challenge description. Students audit a sample web page for accessibility issues, relay-style, with each person assigned a focus area. Student 1 checks images for meaningful alt text. Student 2 reviews heading hierarchy. Student 3 tests links for descriptive text, avoiding vague phrases like \"click here.\" Student 4 checks color contrast on text. Student 5, if present, reviews keyboard navigation order."
+    },
+    {
+        "speaker":  "JAMIE",
+        "text":  "So each person has a lane, but the lanes all serve one shared artifact."
+    },
+    {
+        "speaker":  "ALEX",
+        "text":  "Exactly. And the workflow reinforces collaboration. The group forks a sample repository containing a deliberately imperfect HTML page. Each student creates a branch for their focus area. Each student files issues for the problems they find. The group discusses which fixes to prioritize. Each student submits a pull request fixing at least one issue. Then the group reviews and merges one another\u0027s PRs."
+    },
+    {
+        "speaker":  "JAMIE",
+        "text":  "That\u0027s elegant because it uses GitHub Flow, issues, PRs, and code review all in one exercise."
+    },
+    {
+        "speaker":  "ALEX",
+        "text":  "Yes, and it also embeds accessibility as a normal part of software quality, not an afterthought."
+    },
+    {
+        "speaker":  "JAMIE",
+        "text":  "What counts as evidence in that sample?"
+    },
+    {
+        "speaker":  "ALEX",
+        "text":  "Each student posts their filed issues, their PR, and one review they gave. That creates visible proof of participation across discovery, contribution, and review."
+    },
+    {
+        "speaker":  "JAMIE",
+        "text":  "And why does the reference say it works especially well for a group?"
+    },
+    {
+        "speaker":  "ALEX",
+        "text":  "Because everyone has a defined role, so no one is left out. The relay structure creates interdependence, so students are not just working in parallel with no contact. And the final result is a genuinely more accessible page."
+    },
+    {
+        "speaker":  "JAMIE",
+        "text":  "That interdependence point is subtle. If the work could be done just as well by one person alone, it may not really be a group challenge."
+    },
+    {
+        "speaker":  "ALEX",
+        "text":  "Exactly. The \"what matters\" section says the learning objective is to design collaborative work that gives each participant a meaningful role. If your design has clear roles, concrete deliverables, and a real reason people must work together rather than merely alongside one another, you\u0027ve met the bonus."
+    },
+    {
+        "speaker":  "PAUSE",
+        "text":  ""
+    },
+    {
+        "speaker":  "JAMIE",
+        "text":  "Let\u0027s make that practical. Suppose a learner is inventing their own challenge. What questions should they ask?"
+    },
+    {
+        "speaker":  "ALEX",
+        "text":  "Ask: What shared artifact or outcome are we improving? Why does this need three to five people? What does each person uniquely contribute? Where do they need to coordinate? What evidence will show that each person participated meaningfully? And how will the activity remain accessible for screen reader users, keyboard-only users, speech input users, low-vision participants, and people who prefer different tools?"
+    },
+    {
+        "speaker":  "JAMIE",
+        "text":  "So the accessibility note is not a token sentence."
+    },
+    {
+        "speaker":  "ALEX",
+        "text":  "Not at all. It should explain how the challenge works for everyone. For example, you might allow review either in GitHub.com or VS Code, recommend accessible diff tools like `F7`, require descriptive issue writing instead of purely visual inspection, and design tasks that don\u0027t assume mouse use or color perception."
+    },
+    {
+        "speaker":  "JAMIE",
+        "text":  "Can success criteria be learner-facing and concrete?"
+    },
+    {
+        "speaker":  "ALEX",
+        "text":  "They should be. Good success criteria sound like: the team filed at least one issue per focus area, each student opened a branch and submitted a PR, each PR received at least one peer review comment, and the final page shows corrected alt text, heading structure, descriptive links, or other agreed improvements."
+    },
+    {
+        "speaker":  "JAMIE",
+        "text":  "And time estimate matters because workshop time is finite."
+    },
+    {
+        "speaker":  "ALEX",
+        "text":  "Exactly. A beautiful challenge that takes six hours is not a strong workshop challenge if the session provides forty-five minutes."
+    },
+    {
+        "speaker":  "PAUSE",
+        "text":  ""
+    },
+    {
+        "speaker":  "JAMIE",
+        "text":  "What should learners submit for the bonus issue itself?"
+    },
+    {
+        "speaker":  "ALEX",
+        "text":  "They should describe their challenge and link to the file they created. A simple evidence format is challenge name, what teams would do, and the file URL on GitHub. And if they get stuck coming up with an idea, they can look at existing bonus challenges for inspiration or check the reference solution."
+    },
+    {
+        "speaker":  "JAMIE",
+        "text":  "I also hear a broader lesson here: good teaching challenges mirror real project practice."
+    },
+    {
+        "speaker":  "ALEX",
+        "text":  "Exactly right. A strong group challenge doesn\u0027t just entertain. It teaches branching, issues, PRs, review etiquette, accessible commenting, and public evidence. It gives learners a meaningful role and a safe structure for practicing community behaviors."
+    },
+    {
+        "speaker":  "JAMIE",
+        "text":  "So in a way, the bonus challenge is a capstone for culture plus workflow."
+    },
+    {
+        "speaker":  "ALEX",
+        "text":  "Beautifully put."
+    },
+    {
+        "speaker":  "PAUSE",
+        "text":  ""
+    },
+    {
+        "speaker":  "JAMIE",
+        "text":  "Before we close, can we touch the administrative reference material? The chapters both include authoritative sources and section-level source maps."
+    },
+    {
+        "speaker":  "ALEX",
+        "text":  "Good catch. Learners should know that these chapters point back to GitHub Docs and the GitHub Changelog as the main sources of truth for current platform behavior. For accessibility-specific review practices, the GitHub Accessibility Guide is especially relevant. And for the group challenge example, accessibility references like WCAG, WAI tutorials, and ARIA authoring practices help ground the audit topics."
+    },
+    {
+        "speaker":  "JAMIE",
+        "text":  "So if GitHub changes an interface label or workflow detail, the docs win over the podcast."
+    },
+    {
+        "speaker":  "ALEX",
+        "text":  "Always. Use the course for understanding, and the official documentation for the latest exact behavior."
+    },
+    {
+        "speaker":  "PAUSE",
+        "text":  ""
+    },
+    {
+        "speaker":  "JAMIE",
+        "text":  "Let me try a final summary, and you tell me if I\u0027ve got it. Designing a great group challenge means creating real interdependence, clear roles, concrete evidence, accessible participation paths, and a realistic scope. To do that well, you need to understand GitHub Flow, respectful communication, good review habits, and accessible PR tooling in both GitHub.com and VS Code."
+    },
+    {
+        "speaker":  "ALEX",
+        "text":  "That is exactly it. And one more thing: the quality of collaboration is not separate from the quality of the work. In open source, how you communicate is part of what you contribute."
+    },
+    {
+        "speaker":  "JAMIE",
+        "text":  "And maybe that\u0027s the most encouraging part for beginners. You do not need to be the strongest coder in the room to be valuable. You can be the person who writes a clear issue, gives a thoughtful review, notices an accessibility problem, or designs a challenge where everyone can participate."
+    },
+    {
+        "speaker":  "ALEX",
+        "text":  "Yes. That is real open source leadership."
+    },
+    {
+        "speaker":  "PAUSE",
+        "text":  ""
+    },
+    {
+        "speaker":  "ALEX",
+        "text":  "For your next step, design your challenge file with a clear title, goal, team size, time estimate, instructions, success criteria, and accessibility note. Then commit, push, open your pull request, and share evidence in the bonus issue."
+    },
+    {
+        "speaker":  "JAMIE",
+        "text":  "And while you do it, practice the same habits we talked about today: one thing per branch, specific writing, respectful review, and accessible choices all the way through."
+    },
+    {
+        "speaker":  "ALEX",
+        "text":  "Well said."
+    }
 ]

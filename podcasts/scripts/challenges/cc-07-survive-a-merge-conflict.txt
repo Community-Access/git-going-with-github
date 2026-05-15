@@ -1,28 +1,28 @@
-[ALEX]
-Welcome back. Today we’re doing something that sounds dramatic but is actually very ordinary in Git and GitHub: surviving a merge conflict.
+﻿[ALEX]
+Welcome back. Today weâ€™re doing something that sounds dramatic but is actually very ordinary in Git and GitHub: surviving a merge conflict.
 
 [JAMIE]
 I appreciate that wording, because "merge conflict" sounds like I broke the internet.
 
 [ALEX]
-Exactly. But a merge conflict is not a failure. It’s a checkpoint. Git is simply saying, "Two changes overlap, and I need a human decision."
+Exactly. But a merge conflict is not a failure. Itâ€™s a checkpoint. Git is simply saying, "Two changes overlap, and I need a human decision."
 
 [PAUSE]
 
 [ALEX]
-Here’s the big picture. In this lesson, we’ll cover what a merge conflict is, why it happens, how to prevent it, how to read the conflict markers, how to resolve conflicts on GitHub, how VS Code helps, what to do in the terminal if you work locally, and what to do when you feel stuck.
+Hereâ€™s the big picture. In this lesson, weâ€™ll cover what a merge conflict is, why it happens, how to prevent it, how to read the conflict markers, how to resolve conflicts on GitHub, how VS Code helps, what to do in the terminal if you work locally, and what to do when you feel stuck.
 
 [JAMIE]
-And for this course specifically, there’s a controlled practice challenge, right?
+And for this course specifically, thereâ€™s a controlled practice challenge, right?
 
 [ALEX]
 Right. This chapter uses one short practice challenge so you can learn conflict resolution in a low-pressure way. The pattern is: observe, resolve, verify. The time expectation is under ten minutes. Your evidence is an issue-linked pull request and a completion comment.
 
 [JAMIE]
-So the goal isn’t just "make the warning go away." It’s to understand the structure, make a decision, and prove you resolved it cleanly.
+So the goal isnâ€™t just "make the warning go away." Itâ€™s to understand the structure, make a decision, and prove you resolved it cleanly.
 
 [ALEX]
-That’s it.
+Thatâ€™s it.
 
 [PAUSE]
 
@@ -33,12 +33,12 @@ For the challenge, your facilitator triggers a merge conflict in your pull reque
 And the autograder is looking for two things: no conflict markers left behind, and meaningful content still in the file.
 
 [ALEX]
-Yes. So if you remove everything, that’s not success. And if you leave even one marker line, that’s not success either.
+Yes. So if you remove everything, thatâ€™s not success. And if you leave even one marker line, thatâ€™s not success either.
 
 [PAUSE]
 
 [ALEX]
-Let’s define the core idea. A merge conflict happens when two people change the same part of the same file in different ways, and Git cannot automatically decide which version to keep.
+Letâ€™s define the core idea. A merge conflict happens when two people change the same part of the same file in different ways, and Git cannot automatically decide which version to keep.
 
 [JAMIE]
 So if I edit line twelve and you edit line two hundred, Git usually handles that fine.
@@ -61,7 +61,7 @@ Very realistic. Long-running branches invite conflicts.
 [PAUSE]
 
 [ALEX]
-Before we resolve conflicts, let’s make them less likely. Prevention is easier than resolution.
+Before we resolve conflicts, letâ€™s make them less likely. Prevention is easier than resolution.
 
 [JAMIE]
 Give us the practical list.
@@ -69,22 +69,22 @@ Give us the practical list.
 [ALEX]
 Keep branches short-lived. Aim for small, focused work that merges in a few days, not a few weeks.
 
-Sync with main frequently. From your feature branch, you may merge origin slash main into your branch. And if you’re comfortable with rebasing, rebasing onto origin slash main is another option.
+Sync with main frequently. From your feature branch, you may merge origin slash main into your branch. And if youâ€™re comfortable with rebasing, rebasing onto origin slash main is another option.
 
-Communicate with your team. If you know you’ll be editing a heavily used file, say so.
+Communicate with your team. If you know youâ€™ll be editing a heavily used file, say so.
 
-Avoid mass reformatting unless it’s coordinated, because changing lots of lines creates unnecessary overlap.
+Avoid mass reformatting unless itâ€™s coordinated, because changing lots of lines creates unnecessary overlap.
 
-Pull before you push, so you’re not building on stale history.
+Pull before you push, so youâ€™re not building on stale history.
 
 Work on separate files when possible.
 
 Keep pull requests small.
 
-And use draft pull requests for early visibility, so other contributors can see what area you’re touching before things collide.
+And use draft pull requests for early visibility, so other contributors can see what area youâ€™re touching before things collide.
 
 [JAMIE]
-That’s a strong pattern: short branches, frequent sync, small PRs, visible work.
+Thatâ€™s a strong pattern: short branches, frequent sync, small PRs, visible work.
 
 [ALEX]
 Exactly. Those habits reduce stress.
@@ -93,15 +93,15 @@ Exactly. Those habits reduce stress.
 And there was also an advanced prevention idea about fast-forward merges.
 
 [ALEX]
-Yes. The important concept is that simpler branch histories can reduce complexity. You don’t need to master fast-forward behavior today, but it helps to know that the shape of history affects how cleanly changes integrate.
+Yes. The important concept is that simpler branch histories can reduce complexity. You donâ€™t need to master fast-forward behavior today, but it helps to know that the shape of history affects how cleanly changes integrate.
 
 [PAUSE]
 
 [JAMIE]
-Okay. Now let’s talk about the thing learners actually see: conflict markers.
+Okay. Now letâ€™s talk about the thing learners actually see: conflict markers.
 
 [ALEX]
-Yes. When Git can’t merge automatically, it inserts plain-text markers directly into the file.
+Yes. When Git canâ€™t merge automatically, it inserts plain-text markers directly into the file.
 
 Here is the classic shape:
 
@@ -112,7 +112,7 @@ Then the other version of the content.
 Then greater-than signs repeated seven times, followed by a branch name.
 
 [JAMIE]
-And because this is an audio lesson, let’s label the sections clearly.
+And because this is an audio lesson, letâ€™s label the sections clearly.
 
 [ALEX]
 Good idea. There are three important parts.
@@ -129,10 +129,10 @@ In the solution reference, the section between the start marker and the separato
 But in the practice chapter instructions, the wording says the first block is your version, the current branch, and the second block is their version, the incoming branch.
 
 [ALEX]
-Right, and that’s why context matters. Different tools and workflows describe the sides a little differently depending on where the merge is happening. The safe habit is this: do not rely only on labels like "yours" and "theirs." Read the actual text on both sides and decide what final content should remain.
+Right, and thatâ€™s why context matters. Different tools and workflows describe the sides a little differently depending on where the merge is happening. The safe habit is this: do not rely only on labels like "yours" and "theirs." Read the actual text on both sides and decide what final content should remain.
 
 [JAMIE]
-That’s helpful, especially for learners who worry about memorizing the wrong mapping.
+Thatâ€™s helpful, especially for learners who worry about memorizing the wrong mapping.
 
 [ALEX]
 Exactly. The universally safe truth is: the marker lines are not content, and the final file must contain only the text you actually want to keep.
@@ -140,7 +140,7 @@ Exactly. The universally safe truth is: the marker lines are not content, and th
 [PAUSE]
 
 [ALEX]
-Let’s make that concrete with the example resolution from the reference solution.
+Letâ€™s make that concrete with the example resolution from the reference solution.
 
 Suppose one side says, "Welcome to the Learning Room. This is the main branch version."
 The other side says, "Welcome to the Learning Room. This is my improved version with more detail."
@@ -160,7 +160,7 @@ So there is not always one magic correct answer.
 Correct. The decision depends on what is better for the project. Two valid resolutions may use different wording.
 
 [JAMIE]
-That fits the peer simulation note too. It’s okay if your final wording differs from someone else’s, as long as it’s a valid resolution.
+That fits the peer simulation note too. Itâ€™s okay if your final wording differs from someone elseâ€™s, as long as itâ€™s a valid resolution.
 
 [ALEX]
 Exactly right.
@@ -168,9 +168,9 @@ Exactly right.
 [PAUSE]
 
 [ALEX]
-Now let’s walk through the challenge flow step by step.
+Now letâ€™s walk through the challenge flow step by step.
 
-First, wait for your facilitator to trigger the conflict. If you don’t see a conflict yet, it may simply not be ready.
+First, wait for your facilitator to trigger the conflict. If you donâ€™t see a conflict yet, it may simply not be ready.
 
 Second, open your assigned challenge issue. It tells you which practice file contains the conflict markers.
 
@@ -189,7 +189,7 @@ Eighth, commit your changes on your short-lived feature branch. The recommended 
 Ninth, open or update your pull request. The suggested title pattern is fix: resolve conflict markers in filename. In the body, include Closes number, with your issue number, and a brief sentence or two explaining what content you kept and why.
 
 [JAMIE]
-And when everything is open and passing checks, there’s one more administrative step.
+And when everything is open and passing checks, thereâ€™s one more administrative step.
 
 [ALEX]
 Yes. Post a completion comment on your assigned challenge issue. The example format is: Chapter 7 completed, then the PR number, the filename, and your content decision with a short reason.
@@ -203,12 +203,12 @@ Exactly.
 [PAUSE]
 
 [JAMIE]
-Let’s stay with accessibility for a moment. What should blind or low-vision learners know about navigating this?
+Letâ€™s stay with accessibility for a moment. What should blind or low-vision learners know about navigating this?
 
 [ALEX]
 A few key points. The conflict markers themselves are just text, so screen readers can read them directly. Search is your friend. Searching for the start marker is often the fastest way to jump into the conflict area.
 
-If you’re on GitHub and can’t find the Resolve conflicts button, look on the PR conversation tab near the merge section toward the bottom. Screen reader users may want to search the page for the phrase "Resolve conflicts" button.
+If youâ€™re on GitHub and canâ€™t find the Resolve conflicts button, look on the PR conversation tab near the merge section toward the bottom. Screen reader users may want to search the page for the phrase "Resolve conflicts" button.
 
 For low-vision users, high contrast themes and zoom can make the conflict regions easier to parse, especially in editors that highlight current and incoming changes.
 
@@ -223,13 +223,13 @@ Right. Open the guidance that matches how you work.
 [PAUSE]
 
 [ALEX]
-Let’s talk about spotting a conflict on GitHub. On a pull request, GitHub may show a message that the branch has conflicts that must be resolved before merging.
+Letâ€™s talk about spotting a conflict on GitHub. On a pull request, GitHub may show a message that the branch has conflicts that must be resolved before merging.
 
 [JAMIE]
-And that’s your cue that GitHub needs human help.
+And thatâ€™s your cue that GitHub needs human help.
 
 [ALEX]
-Yes. If the web editor is available, choose Resolve conflicts. GitHub’s conflict editor will show the conflicting sections, and your task is to edit the file into one clean final version.
+Yes. If the web editor is available, choose Resolve conflicts. GitHubâ€™s conflict editor will show the conflicting sections, and your task is to edit the file into one clean final version.
 
 Step by step on GitHub: click Resolve conflicts, edit the file so the markers are removed and the final content is what you want, choose Mark as resolved, and then Commit merge.
 
@@ -237,7 +237,7 @@ Step by step on GitHub: click Resolve conflicts, edit the file so the markers ar
 What does the editor generally feel like?
 
 [ALEX]
-It highlights the conflict region and places you right where the disagreement is. But the same rule applies: don’t just click through. Read both sides. Decide intentionally.
+It highlights the conflict region and places you right where the disagreement is. But the same rule applies: donâ€™t just click through. Read both sides. Decide intentionally.
 
 [PAUSE]
 
@@ -257,7 +257,7 @@ Yes. "Current" usually means the version currently checked out in your workspace
 So even when the tool gives you buttons, you still need judgment.
 
 [ALEX]
-Always. Tooling helps, but it doesn’t replace understanding.
+Always. Tooling helps, but it doesnâ€™t replace understanding.
 
 [PAUSE]
 
@@ -276,7 +276,7 @@ Definitely.
 
 Start the merge that causes the conflict.
 
-Then check which files have conflicts. Look for lines like "both modified" in Git’s output.
+Then check which files have conflicts. Look for lines like "both modified" in Gitâ€™s output.
 
 Open each conflicted file in your editor.
 
@@ -300,7 +300,7 @@ Exactly.
 There was also a real-file style example in the chapter, where two students both add content to the same table row.
 
 [ALEX]
-Yes, and that example is useful because it shows that conflicts aren’t always huge. Sometimes two people just edited the same small region, like one row in a Markdown table. The resolution options remain the same: keep one edit, keep the other, or combine them into one clean row that preserves the useful information.
+Yes, and that example is useful because it shows that conflicts arenâ€™t always huge. Sometimes two people just edited the same small region, like one row in a Markdown table. The resolution options remain the same: keep one edit, keep the other, or combine them into one clean row that preserves the useful information.
 
 [JAMIE]
 So the skill scales from tiny wording changes to larger sections.
@@ -328,7 +328,7 @@ Yes. Sometimes an AI tool confidently produces changes that overlap with human-w
 [PAUSE]
 
 [JAMIE]
-Let’s cover the most common stuck moments, because learners definitely hit these.
+Letâ€™s cover the most common stuck moments, because learners definitely hit these.
 
 [ALEX]
 Absolutely.
@@ -352,7 +352,7 @@ What about the nuclear option?
 Also valid. If you feel tangled up, you can abandon the attempt and start fresh from a clean copy of the branch or file. Sometimes restarting is faster than untangling confused edits.
 
 [JAMIE]
-That’s reassuring. Starting over is not cheating.
+Thatâ€™s reassuring. Starting over is not cheating.
 
 [ALEX]
 Not at all.
@@ -360,7 +360,7 @@ Not at all.
 [PAUSE]
 
 [ALEX]
-Let’s do a compact checklist.
+Letâ€™s do a compact checklist.
 
 A merge conflict means overlapping edits need a human decision.
 
@@ -395,7 +395,7 @@ Before we wrap up, what are the expected outcomes for this chapter?
 You should be able to identify the three marker lines immediately, read both sides of a conflict, make an intentional content decision, remove all markers, and submit a clean pull request linked to the issue.
 
 [JAMIE]
-And that’s the learning moment, really. Not "avoid all conflicts forever," but "recognize them without panic and resolve them clearly."
+And thatâ€™s the learning moment, really. Not "avoid all conflicts forever," but "recognize them without panic and resolve them clearly."
 
 [ALEX]
 Exactly. That is the point.
@@ -403,7 +403,7 @@ Exactly. That is the point.
 [PAUSE]
 
 [ALEX]
-If you want to check current official guidance beyond the course material, the authoritative sources named for this chapter are GitHub Docs, the GitHub Changelog, GitHub documentation about Git and pull requests, GitHub Flow guidance, and the Git SCM book’s discussion of basic merge conflicts.
+If you want to check current official guidance beyond the course material, the authoritative sources named for this chapter are GitHub Docs, the GitHub Changelog, GitHub documentation about Git and pull requests, GitHub Flow guidance, and the Git SCM bookâ€™s discussion of basic merge conflicts.
 
 [JAMIE]
 So the course teaches the workflow, and those references are your source of truth when interfaces change.

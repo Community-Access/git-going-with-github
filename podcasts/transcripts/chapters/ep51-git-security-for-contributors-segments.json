@@ -1,630 +1,630 @@
-[
-  {
-    "speaker": "ALEX",
-    "text": "Welcome back. Today we're talking about one of the most practical parts of working with Git and GitHub: keeping secrets out of your repository."
-  },
-  {
-    "speaker": "JAMIE",
-    "text": "And by secrets, we mean things like API keys, passwords, tokens, private keys, database URLs, all the stuff that absolutely should not end up in a commit."
-  },
-  {
-    "speaker": "ALEX",
-    "text": "Exactly. This lesson is for anyone who commits code or documentation. You do not need to be a security expert. In fact, most contributor security problems are not dramatic hacks. They're accidents. A token pasted into a config file. A.env file committed by mistake. A credential file that slipped into staging."
-  },
-  {
-    "speaker": "JAMIE",
-    "text": "So the reassuring part is that this is mostly about habits."
-  },
-  {
-    "speaker": "ALEX",
-    "text": "Yes. A few good habits prevent most of these problems."
-  },
-  {
-    "speaker": "PAUSE",
-    "text": ""
-  },
-  {
-    "speaker": "ALEX",
-    "text": "A quick accessibility note before we dive in. This reference is structured from understanding the risk, to prevention, to recovery, to daily habits. If you're using a screen reader, the code blocks include exact terminal commands and gitignore patterns, so it can help to switch to a focused reading mode before copying. If you have low vision, the most important warnings in the original reference are emphasized, and the checklist at the end is designed to be used as a repeatable routine."
-  },
-  {
-    "speaker": "JAMIE",
-    "text": "So this is both a lesson and a reference workflow."
-  },
-  {
-    "speaker": "ALEX",
-    "text": "Right. You can listen straight through, or come back to the prevention steps, the recovery steps, and the checklist later."
-  },
-  {
-    "speaker": "PAUSE",
-    "text": ""
-  },
-  {
-    "speaker": "ALEX",
-    "text": "Let's start with why this matters. If a secret is committed to a public GitHub repository, even for a few seconds, you should treat it as compromised."
-  },
-  {
-    "speaker": "JAMIE",
-    "text": "Even if you notice immediately and delete it?"
-  },
-  {
-    "speaker": "ALEX",
-    "text": "Even then. There are continuous bots scanning public repositories for secrets. They can harvest exposed credentials within seconds. Also, deleting the file from the latest version of the project does not remove it from Git history. And if the repository has already been forked, that history may exist elsewhere too. Search engines may also have indexed content before you removed it."
-  },
-  {
-    "speaker": "JAMIE",
-    "text": "So the phrase to remember is: deleting the visible file is not the same as removing the leak."
-  },
-  {
-    "speaker": "ALEX",
-    "text": "Perfectly said. And the consequences can be expensive or damaging very quickly. A cloud key can rack up charges. A GitHub personal access token could allow access to repositories or let someone act as you. A payment platform key could be abused for fraudulent activity."
-  },
-  {
-    "speaker": "JAMIE",
-    "text": "Is there any good news here?"
-  },
-  {
-    "speaker": "ALEX",
-    "text": "There is. GitHub can automatically revoke some of its own tokens when it detects them in a commit, like certain GitHub personal access tokens or app tokens. But for many third-party services, like AWS or Stripe, you must rotate the secret yourself, and fast."
-  },
-  {
-    "speaker": "PAUSE",
-    "text": ""
-  },
-  {
-    "speaker": "ALEX",
-    "text": "The first major prevention tool is the.gitignore file."
-  },
-  {
-    "speaker": "JAMIE",
-    "text": "This is the file that tells Git what not to track."
-  },
-  {
-    "speaker": "ALEX",
-    "text": "Yes. If a file is listed in.gitignore and Git is not already tracking it, that file won't show up in git status, won't be staged by normal add commands, and won't be committed."
-  },
-  {
-    "speaker": "JAMIE",
-    "text": "What kinds of things belong there?"
-  },
-  {
-    "speaker": "ALEX",
-    "text": "Three big categories. First, secrets and credentials. That includes environment files like.env,.env.local, environment-specific local files, generic star-dot-env patterns, key files like.pem,.key,.p12,.pfx, and SSH private key names like id_rsa or id_ed25519. Also credential files such as credentials.json, secrets.json, config slash secrets.yml, or cloud credential files."
-  },
-  {
-    "speaker": "JAMIE",
-    "text": "So if a file stores a secret, it is a strong candidate for.gitignore."
-  },
-  {
-    "speaker": "ALEX",
-    "text": "Exactly. Second category: editor and operating system clutter. On macOS that might be.DS_Store or.AppleDouble. On Windows, Thumbs.db or desktop.ini. For editors, JetBrains projects often ignore.idea slash. VS Code is nuanced: some teams commit selected settings, and some do not. So.vscode settings may be optional depending on team practice."
-  },
-  {
-    "speaker": "JAMIE",
-    "text": "That nuance matters, because learners sometimes assume every editor-generated file should always be ignored."
-  },
-  {
-    "speaker": "ALEX",
-    "text": "Right. Some workspace settings are intentionally shared. Third category: build output and dependencies. For Node projects that often means node_modules, dist, and build. For Python it might be __pycache__,.pyc files,.venv, or venv. And then general clutter like logs, temp files, and caches."
-  },
-  {
-    "speaker": "PAUSE",
-    "text": ""
-  },
-  {
-    "speaker": "JAMIE",
-    "text": "But.gitignore has an important limitation, right?"
-  },
-  {
-    "speaker": "ALEX",
-    "text": "It does..gitignore only stops untracked files from being added. If Git is already tracking a file, adding it to.gitignore does not magically untrack it."
-  },
-  {
-    "speaker": "JAMIE",
-    "text": "So how do you check?"
-  },
-  {
-    "speaker": "ALEX",
-    "text": "You can ask Git directly whether a file is tracked. For example, to check.env, run git ls-files space.env. If Git returns that filename, it's already tracked."
-  },
-  {
-    "speaker": "JAMIE",
-    "text": "And then you need to untrack it without deleting your local copy."
-  },
-  {
-    "speaker": "ALEX",
-    "text": "Exactly. The usual command is git rm --cached space.env. That removes it from Git's tracking index but leaves the file on your machine. Then add.env to.gitignore and commit that change."
-  },
-  {
-    "speaker": "JAMIE",
-    "text": "That's such an important distinction: remove from Git tracking, not from your disk."
-  },
-  {
-    "speaker": "ALEX",
-    "text": "Yes."
-  },
-  {
-    "speaker": "PAUSE",
-    "text": ""
-  },
-  {
-    "speaker": "ALEX",
-    "text": "You can also create a global gitignore file for patterns you never want in any repository on your computer."
-  },
-  {
-    "speaker": "JAMIE",
-    "text": "Like OS junk files or personal editor clutter."
-  },
-  {
-    "speaker": "ALEX",
-    "text": "Exactly. One approach is to create a file such as tilde slash.gitignore_global, then tell Git to use it with a global config setting: core.excludesfile pointed at that file."
-  },
-  {
-    "speaker": "JAMIE",
-    "text": "So project-specific ignores stay in the repository's.gitignore, and machine-specific noise can live in the global ignore."
-  },
-  {
-    "speaker": "ALEX",
-    "text": "That's the clean mental model."
-  },
-  {
-    "speaker": "JAMIE",
-    "text": "And if someone doesn't want to write all these patterns from scratch?"
-  },
-  {
-    "speaker": "ALEX",
-    "text": "GitHub maintains.gitignore templates for many languages and frameworks. You can choose one when creating a repository on GitHub, or download one for an existing project, such as the Node template, and append it to your.gitignore."
-  },
-  {
-    "speaker": "PAUSE",
-    "text": ""
-  },
-  {
-    "speaker": "ALEX",
-    "text": "Now let's talk about the right way to store secrets: environment variables."
-  },
-  {
-    "speaker": "JAMIE",
-    "text": "Meaning the secret lives outside your repository, and your code reads it in when it runs."
-  },
-  {
-    "speaker": "ALEX",
-    "text": "Exactly. The anti-pattern is hardcoding a secret directly into source code. For example, writing an API key as a literal string in Python or JavaScript. The safer pattern is to read that value from the environment instead, using something like os.environ.get in Python or process.env in JavaScript."
-  },
-  {
-    "speaker": "JAMIE",
-    "text": "So the code can be committed, but the secret value stays outside the repo."
-  },
-  {
-    "speaker": "ALEX",
-    "text": "Right. Locally, many projects use a.env file to store those environment variables. That's convenient and common, but that file must never be committed. It belongs in.gitignore."
-  },
-  {
-    "speaker": "JAMIE",
-    "text": "And the values inside might include a GitHub token, a database URL, or a payment secret key."
-  },
-  {
-    "speaker": "ALEX",
-    "text": "Exactly. The code that loads the.env file can be in the repository. The actual.env file stays on your machine."
-  },
-  {
-    "speaker": "JAMIE",
-    "text": "How should teams share secrets, then, if not by email or chat?"
-  },
-  {
-    "speaker": "ALEX",
-    "text": "Never through Slack, email, or GitHub comments. Safer options include GitHub Actions Secrets for automation, a password manager with secure sharing for team credentials, or a dedicated secrets manager for production systems."
-  },
-  {
-    "speaker": "JAMIE",
-    "text": "Can you give the GitHub Actions version in plain language?"
-  },
-  {
-    "speaker": "ALEX",
-    "text": "Sure. In a GitHub Actions workflow, you define an environment variable from a stored GitHub secret, like secrets dot API_KEY, and then the workflow can use it during deployment without placing the actual secret in the workflow file."
-  },
-  {
-    "speaker": "JAMIE",
-    "text": "So the workflow references the secret by name, but the value lives in repository or organization settings."
-  },
-  {
-    "speaker": "ALEX",
-    "text": "Exactly."
-  },
-  {
-    "speaker": "PAUSE",
-    "text": ""
-  },
-  {
-    "speaker": "ALEX",
-    "text": "Next habit: review before you commit."
-  },
-  {
-    "speaker": "JAMIE",
-    "text": "This sounds simple, but it's probably the most powerful routine in the whole lesson."
-  },
-  {
-    "speaker": "ALEX",
-    "text": "I think so too. Before committing, inspect exactly what you've staged. The key command is git diff --staged. That shows the content that is actually going into the commit."
-  },
-  {
-    "speaker": "JAMIE",
-    "text": "And you can also review a specific staged file the same way."
-  },
-  {
-    "speaker": "ALEX",
-    "text": "Yes. Use git diff --staged followed by a path if you want a narrower review. As you scan the diff, look for hardcoded passwords, tokens, API keys,.env files, credential files, or even TODO comments that mention sensitive details."
-  },
-  {
-    "speaker": "JAMIE",
-    "text": "That last one is sneaky. Sometimes the leak is not the credential itself, but a note about where the credential lives."
-  },
-  {
-    "speaker": "ALEX",
-    "text": "Exactly right."
-  },
-  {
-    "speaker": "JAMIE",
-    "text": "And this is where the warning against git add dot comes in."
-  },
-  {
-    "speaker": "ALEX",
-    "text": "Yes. git add. stages everything it sees in the working tree. That is fast, but risky. A safer habit is to stage only known-clean files, like git add followed by specific paths. Or use git add -p, patch mode, which lets you review changes hunk by hunk and decide what to stage."
-  },
-  {
-    "speaker": "JAMIE",
-    "text": "Patch mode can feel slower at first, but it's a wonderful guardrail."
-  },
-  {
-    "speaker": "ALEX",
-    "text": "It is. And after staging, check git status to see what's staged and what isn't, then use git diff --staged for the actual content review."
-  },
-  {
-    "speaker": "JAMIE",
-    "text": "The source also mentions an AI-assisted review step."
-  },
-  {
-    "speaker": "ALEX",
-    "text": "Yes. After staging changes, you can use a tool like GitHub Copilot Chat and ask it to review your staged diff for accidentally included secrets, API keys, or credentials. That is not a replacement for your own review, but it can be an extra check."
-  },
-  {
-    "speaker": "PAUSE",
-    "text": ""
-  },
-  {
-    "speaker": "ALEX",
-    "text": "Now let's add automation with pre-commit hooks."
-  },
-  {
-    "speaker": "JAMIE",
-    "text": "A pre-commit hook is a script that runs automatically when you try to commit, and it can block the commit if it finds a problem."
-  },
-  {
-    "speaker": "ALEX",
-    "text": "Exactly. Think of it as a safety net. The appendix presents three options."
-  },
-  {
-    "speaker": "JAMIE",
-    "text": "Let's do the practical overview."
-  },
-  {
-    "speaker": "ALEX",
-    "text": "Option A is detect-secrets, recommended in the source and Python-based. The workflow is: install the tool, create a baseline scan of your existing code, review that baseline so known non-secrets are marked safe, install the pre-commit hook, and test it manually."
-  },
-  {
-    "speaker": "JAMIE",
-    "text": "Why the baseline step?"
-  },
-  {
-    "speaker": "ALEX",
-    "text": "Because many repositories already contain strings that look secret-like but are harmless examples, test values, or false positives. The baseline gives the tool a starting point so it can focus on new problems."
-  },
-  {
-    "speaker": "JAMIE",
-    "text": "So baseline first, then hook, then test."
-  },
-  {
-    "speaker": "ALEX",
-    "text": "Right."
-  },
-  {
-    "speaker": "JAMIE",
-    "text": "What about Option B?"
-  },
-  {
-    "speaker": "ALEX",
-    "text": "Option B is gitleaks. It's Go-based and known for being easy to run with minimal dependencies. The source calls out installation on macOS and Windows, then two useful scan modes: scanning the entire repository history for secrets, and scanning only staged changes, meaning what you're about to commit."
-  },
-  {
-    "speaker": "JAMIE",
-    "text": "That distinction matters. One mode is for a deep audit. The other is for day-to-day protection."
-  },
-  {
-    "speaker": "ALEX",
-    "text": "Exactly. The source also describes adding gitleaks as a manual pre-commit hook by creating a script in.git slash hooks slash pre-commit."
-  },
-  {
-    "speaker": "JAMIE",
-    "text": "So that's a more hands-on setup."
-  },
-  {
-    "speaker": "ALEX",
-    "text": "Yes."
-  },
-  {
-    "speaker": "JAMIE",
-    "text": "And Option C?"
-  },
-  {
-    "speaker": "ALEX",
-    "text": "Option C is the pre-commit framework, which manages multiple hooks for you. The workflow is: install pre-commit, create a.pre-commit-config.yaml file in the repository root, define the hooks you want there, install the hooks, and optionally run them manually against all files."
-  },
-  {
-    "speaker": "JAMIE",
-    "text": "So instead of wiring each hook by hand, you use a framework to manage them consistently."
-  },
-  {
-    "speaker": "ALEX",
-    "text": "Exactly. For contributors working across multiple repos, that can be especially nice."
-  },
-  {
-    "speaker": "JAMIE",
-    "text": "If a learner is choosing, what's the simplest advice?"
-  },
-  {
-    "speaker": "ALEX",
-    "text": "Pick one automated secret scanning approach and actually use it. The perfect tool is less important than having a hook that runs before secrets leave your machine."
-  },
-  {
-    "speaker": "PAUSE",
-    "text": ""
-  },
-  {
-    "speaker": "JAMIE",
-    "text": "Okay, let's tackle the stressful scenario. I accidentally committed a secret. What now?"
-  },
-  {
-    "speaker": "ALEX",
-    "text": "Step one: rotate the secret immediately."
-  },
-  {
-    "speaker": "JAMIE",
-    "text": "Before anything else."
-  },
-  {
-    "speaker": "ALEX",
-    "text": "Before anything else. Assume the old secret is compromised. Generate a new token, key, or password with the provider, and revoke the old one if possible."
-  },
-  {
-    "speaker": "JAMIE",
-    "text": "Step two is asking whether it was pushed publicly."
-  },
-  {
-    "speaker": "ALEX",
-    "text": "Exactly. If the secret was committed locally but not pushed yet, you're in a much better position. One safe pattern is to undo the last commit while keeping your changes staged, remove the secret from the file, then re-add and recommit."
-  },
-  {
-    "speaker": "JAMIE",
-    "text": "So you fix the content before it ever reaches a public remote."
-  },
-  {
-    "speaker": "ALEX",
-    "text": "Right. Edit the file, remove the secret, stage the cleaned version, and create a new commit."
-  },
-  {
-    "speaker": "JAMIE",
-    "text": "But if it was pushed, deleting the line in a new commit is not enough because the secret still exists in history."
-  },
-  {
-    "speaker": "ALEX",
-    "text": "Exactly. That's step three: remove the secret from Git history."
-  },
-  {
-    "speaker": "PAUSE",
-    "text": ""
-  },
-  {
-    "speaker": "ALEX",
-    "text": "The recommended modern tool in the appendix is git-filter-repo. You install git-filter-repo, then either remove a specific file from all history or replace a specific secret string throughout all history."
-  },
-  {
-    "speaker": "JAMIE",
-    "text": "So if the problem is, say, an accidentally committed.env file, you can strip that file from every historical commit. And if the problem is a literal token pasted in several places, you can replace that string across history."
-  },
-  {
-    "speaker": "ALEX",
-    "text": "Exactly."
-  },
-  {
-    "speaker": "JAMIE",
-    "text": "And there's an alternative."
-  },
-  {
-    "speaker": "ALEX",
-    "text": "Yes, BFG Repo-Cleaner, which is fast and Java-based. The appendix notes downloading it from the BFG project site. With BFG, you can remove a file from all history or replace secret strings. For string replacement, the source calls out creating a passwords.txt file with one secret per line."
-  },
-  {
-    "speaker": "JAMIE",
-    "text": "So both tools are about rewriting history to eliminate the old secret traces."
-  },
-  {
-    "speaker": "ALEX",
-    "text": "Correct."
-  },
-  {
-    "speaker": "JAMIE",
-    "text": "Then comes the part people are often nervous about: force push."
-  },
-  {
-    "speaker": "ALEX",
-    "text": "Yes. Step four is force pushing the cleaned history to the remote. Because you've rewritten commit history, a normal push won't work."
-  },
-  {
-    "speaker": "JAMIE",
-    "text": "And that can affect collaborators."
-  },
-  {
-    "speaker": "ALEX",
-    "text": "It can. Rewriting history is disruptive, which is another reason prevention matters so much. After that, step five is to tell GitHub to rescan, so its secret scanning systems can reassess the repository state."
-  },
-  {
-    "speaker": "JAMIE",
-    "text": "Can we summarize the decision flow in plain language?"
-  },
-  {
-    "speaker": "ALEX",
-    "text": "Yes. First: rotate the secret immediately. Second: if it was never pushed, clean it locally and recommit. Third: if it was pushed, remove it from history, then force push the cleaned history, and follow up with GitHub rescanning and any provider-specific cleanup."
-  },
-  {
-    "speaker": "PAUSE",
-    "text": ""
-  },
-  {
-    "speaker": "ALEX",
-    "text": "Now, GitHub also has built-in push protection."
-  },
-  {
-    "speaker": "JAMIE",
-    "text": "This is the feature that can stop you from pushing certain detected secrets."
-  },
-  {
-    "speaker": "ALEX",
-    "text": "Exactly. Push protection checks for supported secret patterns and can block the push before the secret lands in the remote repository."
-  },
-  {
-    "speaker": "JAMIE",
-    "text": "That sounds great, but I want learners to hear this clearly: it's helpful, not magical."
-  },
-  {
-    "speaker": "ALEX",
-    "text": "Precisely. Push protection covers many common secret types, but not every possible secret. You still need.gitignore, environment variables, review habits, and ideally hooks."
-  },
-  {
-    "speaker": "JAMIE",
-    "text": "What if push protection blocks you?"
-  },
-  {
-    "speaker": "ALEX",
-    "text": "Treat that as a serious warning. Stop, inspect the file or diff, and determine whether the detected string is a real secret. If it is, remove it and store it properly. If it's a false positive, follow your project's and GitHub's guidance carefully before bypassing anything."
-  },
-  {
-    "speaker": "JAMIE",
-    "text": "And can you check whether a repository has push protection enabled?"
-  },
-  {
-    "speaker": "ALEX",
-    "text": "Yes. The appendix includes checking your repository's push protection status through GitHub's security settings and secret scanning features. For learners, the main concept is: know whether your repo has that guardrail, but don't rely on it as the only one."
-  },
-  {
-    "speaker": "PAUSE",
-    "text": ""
-  },
-  {
-    "speaker": "ALEX",
-    "text": "Let's talk about secure credential storage more broadly."
-  },
-  {
-    "speaker": "JAMIE",
-    "text": "Meaning not just secrets in code, but where your Git and development tools store credentials."
-  },
-  {
-    "speaker": "ALEX",
-    "text": "Exactly. The big rule is never store credentials in plaintext. Not in a plain text file, not hardcoded in a script, and not casually embedded in git config in a way that exposes the secret."
-  },
-  {
-    "speaker": "JAMIE",
-    "text": "So where should they go instead?"
-  },
-  {
-    "speaker": "ALEX",
-    "text": "Use your operating system's secure credential store when possible. On macOS, that's Keychain. On Windows, Git for Windows typically integrates with Credential Manager. On Linux, a common approach is the libsecret store, though it may require installation."
-  },
-  {
-    "speaker": "JAMIE",
-    "text": "And a password manager?"
-  },
-  {
-    "speaker": "ALEX",
-    "text": "Also a good option, especially for personal organization and for teams that need secure sharing. The appendix specifically points learners toward using a password manager rather than leaving tokens in notes or loose files."
-  },
-  {
-    "speaker": "JAMIE",
-    "text": "How do you check what Git is currently using?"
-  },
-  {
-    "speaker": "ALEX",
-    "text": "You can inspect which credential helper is set in Git configuration. The practical point is to verify that Git is using a secure helper instead of relying on insecure plaintext storage."
-  },
-  {
-    "speaker": "PAUSE",
-    "text": ""
-  },
-  {
-    "speaker": "ALEX",
-    "text": "Let's turn all of this into a repeatable checklist."
-  },
-  {
-    "speaker": "JAMIE",
-    "text": "Yes, because daily routines are what actually keep repos safe."
-  },
-  {
-    "speaker": "ALEX",
-    "text": "Before committing: make sure secrets are in environment variables, not code. Confirm.env and credential files are ignored. Stage carefully, not blindly. Review staged changes with git diff --staged. If you use patch mode or a pre-commit hook, this is where they help most."
-  },
-  {
-    "speaker": "JAMIE",
-    "text": "Before pushing: double-check what is about to leave your machine, make sure no secret warnings are appearing, and pay attention if push protection or a hook blocks you."
-  },
-  {
-    "speaker": "ALEX",
-    "text": "Repository setup, one time: create a strong.gitignore, consider a global gitignore for OS and editor noise, set up a pre-commit secret scanner, and use secure credential helpers on your machine."
-  },
-  {
-    "speaker": "JAMIE",
-    "text": "And if you're a maintainer?"
-  },
-  {
-    "speaker": "ALEX",
-    "text": "Encourage or require these habits project-wide. Provide a good.gitignore. Document how contributors should handle.env files and local configuration. Consider pre-commit tooling, secret scanning, and push protection. Make the safe path the easy path."
-  },
-  {
-    "speaker": "PAUSE",
-    "text": ""
-  },
-  {
-    "speaker": "JAMIE",
-    "text": "Before we wrap up, I want to return to the teaching structure for accessibility. This appendix was designed so learners can approach it in multiple ways: start with why leaks matter, jump to prevention if that's your immediate need, or revisit the checklist before every push."
-  },
-  {
-    "speaker": "ALEX",
-    "text": "Yes. And the authoritative guidance behind this material comes from GitHub's code security and secret scanning documentation, along with related GitHub security feature references and changelog updates."
-  },
-  {
-    "speaker": "JAMIE",
-    "text": "So this isn't just folklore. It's grounded in the platform's actual security guidance."
-  },
-  {
-    "speaker": "ALEX",
-    "text": "Exactly."
-  },
-  {
-    "speaker": "JAMIE",
-    "text": "Can you give us one final compact version?"
-  },
-  {
-    "speaker": "ALEX",
-    "text": "Sure. Don't commit secrets. Ignore the right files. Store secrets in environment variables. Review staged changes before every commit. Use automated detection with hooks. If a secret leaks, rotate it immediately and clean history if needed. Use GitHub push protection when available, but don't depend on it alone. And store credentials in secure system stores, not plaintext."
-  },
-  {
-    "speaker": "JAMIE",
-    "text": "That's the habit loop."
-  },
-  {
-    "speaker": "ALEX",
-    "text": "It is. And it's one of the best ways to protect both your own work and every project you contribute to."
-  },
-  {
-    "speaker": "PAUSE",
-    "text": ""
-  }
+﻿[
+    {
+        "speaker":  "ALEX",
+        "text":  "Welcome back. Today we\u0027re talking about one of the most practical parts of working with Git and GitHub: keeping secrets out of your repository."
+    },
+    {
+        "speaker":  "JAMIE",
+        "text":  "And by secrets, we mean things like API keys, passwords, tokens, private keys, database URLs, all the stuff that absolutely should not end up in a commit."
+    },
+    {
+        "speaker":  "ALEX",
+        "text":  "Exactly. This lesson is for anyone who commits code or documentation. You do not need to be a security expert. In fact, most contributor security problems are not dramatic hacks. They\u0027re accidents. A token pasted into a config file. A.env file committed by mistake. A credential file that slipped into staging."
+    },
+    {
+        "speaker":  "JAMIE",
+        "text":  "So the reassuring part is that this is mostly about habits."
+    },
+    {
+        "speaker":  "ALEX",
+        "text":  "Yes. A few good habits prevent most of these problems."
+    },
+    {
+        "speaker":  "PAUSE",
+        "text":  ""
+    },
+    {
+        "speaker":  "ALEX",
+        "text":  "A quick accessibility note before we dive in. This reference is structured from understanding the risk, to prevention, to recovery, to daily habits. If you\u0027re using a screen reader, the code blocks include exact terminal commands and gitignore patterns, so it can help to switch to a focused reading mode before copying. If you have low vision, the most important warnings in the original reference are emphasized, and the checklist at the end is designed to be used as a repeatable routine."
+    },
+    {
+        "speaker":  "JAMIE",
+        "text":  "So this is both a lesson and a reference workflow."
+    },
+    {
+        "speaker":  "ALEX",
+        "text":  "Right. You can listen straight through, or come back to the prevention steps, the recovery steps, and the checklist later."
+    },
+    {
+        "speaker":  "PAUSE",
+        "text":  ""
+    },
+    {
+        "speaker":  "ALEX",
+        "text":  "Let\u0027s start with why this matters. If a secret is committed to a public GitHub repository, even for a few seconds, you should treat it as compromised."
+    },
+    {
+        "speaker":  "JAMIE",
+        "text":  "Even if you notice immediately and delete it?"
+    },
+    {
+        "speaker":  "ALEX",
+        "text":  "Even then. There are continuous bots scanning public repositories for secrets. They can harvest exposed credentials within seconds. Also, deleting the file from the latest version of the project does not remove it from Git history. And if the repository has already been forked, that history may exist elsewhere too. Search engines may also have indexed content before you removed it."
+    },
+    {
+        "speaker":  "JAMIE",
+        "text":  "So the phrase to remember is: deleting the visible file is not the same as removing the leak."
+    },
+    {
+        "speaker":  "ALEX",
+        "text":  "Perfectly said. And the consequences can be expensive or damaging very quickly. A cloud key can rack up charges. A GitHub personal access token could allow access to repositories or let someone act as you. A payment platform key could be abused for fraudulent activity."
+    },
+    {
+        "speaker":  "JAMIE",
+        "text":  "Is there any good news here?"
+    },
+    {
+        "speaker":  "ALEX",
+        "text":  "There is. GitHub can automatically revoke some of its own tokens when it detects them in a commit, like certain GitHub personal access tokens or app tokens. But for many third-party services, like AWS or Stripe, you must rotate the secret yourself, and fast."
+    },
+    {
+        "speaker":  "PAUSE",
+        "text":  ""
+    },
+    {
+        "speaker":  "ALEX",
+        "text":  "The first major prevention tool is the.gitignore file."
+    },
+    {
+        "speaker":  "JAMIE",
+        "text":  "This is the file that tells Git what not to track."
+    },
+    {
+        "speaker":  "ALEX",
+        "text":  "Yes. If a file is listed in.gitignore and Git is not already tracking it, that file won\u0027t show up in git status, won\u0027t be staged by normal add commands, and won\u0027t be committed."
+    },
+    {
+        "speaker":  "JAMIE",
+        "text":  "What kinds of things belong there?"
+    },
+    {
+        "speaker":  "ALEX",
+        "text":  "Three big categories. First, secrets and credentials. That includes environment files like.env,.env.local, environment-specific local files, generic star-dot-env patterns, key files like.pem,.key,.p12,.pfx, and SSH private key names like id_rsa or id_ed25519. Also credential files such as credentials.json, secrets.json, config slash secrets.yml, or cloud credential files."
+    },
+    {
+        "speaker":  "JAMIE",
+        "text":  "So if a file stores a secret, it is a strong candidate for.gitignore."
+    },
+    {
+        "speaker":  "ALEX",
+        "text":  "Exactly. Second category: editor and operating system clutter. On macOS that might be.DS_Store or.AppleDouble. On Windows, Thumbs.db or desktop.ini. For editors, JetBrains projects often ignore.idea slash. VS Code is nuanced: some teams commit selected settings, and some do not. So.vscode settings may be optional depending on team practice."
+    },
+    {
+        "speaker":  "JAMIE",
+        "text":  "That nuance matters, because learners sometimes assume every editor-generated file should always be ignored."
+    },
+    {
+        "speaker":  "ALEX",
+        "text":  "Right. Some workspace settings are intentionally shared. Third category: build output and dependencies. For Node projects that often means node_modules, dist, and build. For Python it might be __pycache__,.pyc files,.venv, or venv. And then general clutter like logs, temp files, and caches."
+    },
+    {
+        "speaker":  "PAUSE",
+        "text":  ""
+    },
+    {
+        "speaker":  "JAMIE",
+        "text":  "But.gitignore has an important limitation, right?"
+    },
+    {
+        "speaker":  "ALEX",
+        "text":  "It does..gitignore only stops untracked files from being added. If Git is already tracking a file, adding it to.gitignore does not magically untrack it."
+    },
+    {
+        "speaker":  "JAMIE",
+        "text":  "So how do you check?"
+    },
+    {
+        "speaker":  "ALEX",
+        "text":  "You can ask Git directly whether a file is tracked. For example, to check.env, run git ls-files space.env. If Git returns that filename, it\u0027s already tracked."
+    },
+    {
+        "speaker":  "JAMIE",
+        "text":  "And then you need to untrack it without deleting your local copy."
+    },
+    {
+        "speaker":  "ALEX",
+        "text":  "Exactly. The usual command is git rm --cached space.env. That removes it from Git\u0027s tracking index but leaves the file on your machine. Then add.env to.gitignore and commit that change."
+    },
+    {
+        "speaker":  "JAMIE",
+        "text":  "That\u0027s such an important distinction: remove from Git tracking, not from your disk."
+    },
+    {
+        "speaker":  "ALEX",
+        "text":  "Yes."
+    },
+    {
+        "speaker":  "PAUSE",
+        "text":  ""
+    },
+    {
+        "speaker":  "ALEX",
+        "text":  "You can also create a global gitignore file for patterns you never want in any repository on your computer."
+    },
+    {
+        "speaker":  "JAMIE",
+        "text":  "Like OS junk files or personal editor clutter."
+    },
+    {
+        "speaker":  "ALEX",
+        "text":  "Exactly. One approach is to create a file such as tilde slash.gitignore_global, then tell Git to use it with a global config setting: core.excludesfile pointed at that file."
+    },
+    {
+        "speaker":  "JAMIE",
+        "text":  "So project-specific ignores stay in the repository\u0027s.gitignore, and machine-specific noise can live in the global ignore."
+    },
+    {
+        "speaker":  "ALEX",
+        "text":  "That\u0027s the clean mental model."
+    },
+    {
+        "speaker":  "JAMIE",
+        "text":  "And if someone doesn\u0027t want to write all these patterns from scratch?"
+    },
+    {
+        "speaker":  "ALEX",
+        "text":  "GitHub maintains.gitignore templates for many languages and frameworks. You can choose one when creating a repository on GitHub, or download one for an existing project, such as the Node template, and append it to your.gitignore."
+    },
+    {
+        "speaker":  "PAUSE",
+        "text":  ""
+    },
+    {
+        "speaker":  "ALEX",
+        "text":  "Now let\u0027s talk about the right way to store secrets: environment variables."
+    },
+    {
+        "speaker":  "JAMIE",
+        "text":  "Meaning the secret lives outside your repository, and your code reads it in when it runs."
+    },
+    {
+        "speaker":  "ALEX",
+        "text":  "Exactly. The anti-pattern is hardcoding a secret directly into source code. For example, writing an API key as a literal string in Python or JavaScript. The safer pattern is to read that value from the environment instead, using something like os.environ.get in Python or process.env in JavaScript."
+    },
+    {
+        "speaker":  "JAMIE",
+        "text":  "So the code can be committed, but the secret value stays outside the repo."
+    },
+    {
+        "speaker":  "ALEX",
+        "text":  "Right. Locally, many projects use a.env file to store those environment variables. That\u0027s convenient and common, but that file must never be committed. It belongs in.gitignore."
+    },
+    {
+        "speaker":  "JAMIE",
+        "text":  "And the values inside might include a GitHub token, a database URL, or a payment secret key."
+    },
+    {
+        "speaker":  "ALEX",
+        "text":  "Exactly. The code that loads the.env file can be in the repository. The actual.env file stays on your machine."
+    },
+    {
+        "speaker":  "JAMIE",
+        "text":  "How should teams share secrets, then, if not by email or chat?"
+    },
+    {
+        "speaker":  "ALEX",
+        "text":  "Never through Slack, email, or GitHub comments. Safer options include GitHub Actions Secrets for automation, a password manager with secure sharing for team credentials, or a dedicated secrets manager for production systems."
+    },
+    {
+        "speaker":  "JAMIE",
+        "text":  "Can you give the GitHub Actions version in plain language?"
+    },
+    {
+        "speaker":  "ALEX",
+        "text":  "Sure. In a GitHub Actions workflow, you define an environment variable from a stored GitHub secret, like secrets dot API_KEY, and then the workflow can use it during deployment without placing the actual secret in the workflow file."
+    },
+    {
+        "speaker":  "JAMIE",
+        "text":  "So the workflow references the secret by name, but the value lives in repository or organization settings."
+    },
+    {
+        "speaker":  "ALEX",
+        "text":  "Exactly."
+    },
+    {
+        "speaker":  "PAUSE",
+        "text":  ""
+    },
+    {
+        "speaker":  "ALEX",
+        "text":  "Next habit: review before you commit."
+    },
+    {
+        "speaker":  "JAMIE",
+        "text":  "This sounds simple, but it\u0027s probably the most powerful routine in the whole lesson."
+    },
+    {
+        "speaker":  "ALEX",
+        "text":  "I think so too. Before committing, inspect exactly what you\u0027ve staged. The key command is git diff --staged. That shows the content that is actually going into the commit."
+    },
+    {
+        "speaker":  "JAMIE",
+        "text":  "And you can also review a specific staged file the same way."
+    },
+    {
+        "speaker":  "ALEX",
+        "text":  "Yes. Use git diff --staged followed by a path if you want a narrower review. As you scan the diff, look for hardcoded passwords, tokens, API keys,.env files, credential files, or even TODO comments that mention sensitive details."
+    },
+    {
+        "speaker":  "JAMIE",
+        "text":  "That last one is sneaky. Sometimes the leak is not the credential itself, but a note about where the credential lives."
+    },
+    {
+        "speaker":  "ALEX",
+        "text":  "Exactly right."
+    },
+    {
+        "speaker":  "JAMIE",
+        "text":  "And this is where the warning against git add dot comes in."
+    },
+    {
+        "speaker":  "ALEX",
+        "text":  "Yes. git add. stages everything it sees in the working tree. That is fast, but risky. A safer habit is to stage only known-clean files, like git add followed by specific paths. Or use git add -p, patch mode, which lets you review changes hunk by hunk and decide what to stage."
+    },
+    {
+        "speaker":  "JAMIE",
+        "text":  "Patch mode can feel slower at first, but it\u0027s a wonderful guardrail."
+    },
+    {
+        "speaker":  "ALEX",
+        "text":  "It is. And after staging, check git status to see what\u0027s staged and what isn\u0027t, then use git diff --staged for the actual content review."
+    },
+    {
+        "speaker":  "JAMIE",
+        "text":  "The source also mentions an AI-assisted review step."
+    },
+    {
+        "speaker":  "ALEX",
+        "text":  "Yes. After staging changes, you can use a tool like GitHub Copilot Chat and ask it to review your staged diff for accidentally included secrets, API keys, or credentials. That is not a replacement for your own review, but it can be an extra check."
+    },
+    {
+        "speaker":  "PAUSE",
+        "text":  ""
+    },
+    {
+        "speaker":  "ALEX",
+        "text":  "Now let\u0027s add automation with pre-commit hooks."
+    },
+    {
+        "speaker":  "JAMIE",
+        "text":  "A pre-commit hook is a script that runs automatically when you try to commit, and it can block the commit if it finds a problem."
+    },
+    {
+        "speaker":  "ALEX",
+        "text":  "Exactly. Think of it as a safety net. The appendix presents three options."
+    },
+    {
+        "speaker":  "JAMIE",
+        "text":  "Let\u0027s do the practical overview."
+    },
+    {
+        "speaker":  "ALEX",
+        "text":  "Option A is detect-secrets, recommended in the source and Python-based. The workflow is: install the tool, create a baseline scan of your existing code, review that baseline so known non-secrets are marked safe, install the pre-commit hook, and test it manually."
+    },
+    {
+        "speaker":  "JAMIE",
+        "text":  "Why the baseline step?"
+    },
+    {
+        "speaker":  "ALEX",
+        "text":  "Because many repositories already contain strings that look secret-like but are harmless examples, test values, or false positives. The baseline gives the tool a starting point so it can focus on new problems."
+    },
+    {
+        "speaker":  "JAMIE",
+        "text":  "So baseline first, then hook, then test."
+    },
+    {
+        "speaker":  "ALEX",
+        "text":  "Right."
+    },
+    {
+        "speaker":  "JAMIE",
+        "text":  "What about Option B?"
+    },
+    {
+        "speaker":  "ALEX",
+        "text":  "Option B is gitleaks. It\u0027s Go-based and known for being easy to run with minimal dependencies. The source calls out installation on macOS and Windows, then two useful scan modes: scanning the entire repository history for secrets, and scanning only staged changes, meaning what you\u0027re about to commit."
+    },
+    {
+        "speaker":  "JAMIE",
+        "text":  "That distinction matters. One mode is for a deep audit. The other is for day-to-day protection."
+    },
+    {
+        "speaker":  "ALEX",
+        "text":  "Exactly. The source also describes adding gitleaks as a manual pre-commit hook by creating a script in.git slash hooks slash pre-commit."
+    },
+    {
+        "speaker":  "JAMIE",
+        "text":  "So that\u0027s a more hands-on setup."
+    },
+    {
+        "speaker":  "ALEX",
+        "text":  "Yes."
+    },
+    {
+        "speaker":  "JAMIE",
+        "text":  "And Option C?"
+    },
+    {
+        "speaker":  "ALEX",
+        "text":  "Option C is the pre-commit framework, which manages multiple hooks for you. The workflow is: install pre-commit, create a.pre-commit-config.yaml file in the repository root, define the hooks you want there, install the hooks, and optionally run them manually against all files."
+    },
+    {
+        "speaker":  "JAMIE",
+        "text":  "So instead of wiring each hook by hand, you use a framework to manage them consistently."
+    },
+    {
+        "speaker":  "ALEX",
+        "text":  "Exactly. For contributors working across multiple repos, that can be especially nice."
+    },
+    {
+        "speaker":  "JAMIE",
+        "text":  "If a learner is choosing, what\u0027s the simplest advice?"
+    },
+    {
+        "speaker":  "ALEX",
+        "text":  "Pick one automated secret scanning approach and actually use it. The perfect tool is less important than having a hook that runs before secrets leave your machine."
+    },
+    {
+        "speaker":  "PAUSE",
+        "text":  ""
+    },
+    {
+        "speaker":  "JAMIE",
+        "text":  "Okay, let\u0027s tackle the stressful scenario. I accidentally committed a secret. What now?"
+    },
+    {
+        "speaker":  "ALEX",
+        "text":  "Step one: rotate the secret immediately."
+    },
+    {
+        "speaker":  "JAMIE",
+        "text":  "Before anything else."
+    },
+    {
+        "speaker":  "ALEX",
+        "text":  "Before anything else. Assume the old secret is compromised. Generate a new token, key, or password with the provider, and revoke the old one if possible."
+    },
+    {
+        "speaker":  "JAMIE",
+        "text":  "Step two is asking whether it was pushed publicly."
+    },
+    {
+        "speaker":  "ALEX",
+        "text":  "Exactly. If the secret was committed locally but not pushed yet, you\u0027re in a much better position. One safe pattern is to undo the last commit while keeping your changes staged, remove the secret from the file, then re-add and recommit."
+    },
+    {
+        "speaker":  "JAMIE",
+        "text":  "So you fix the content before it ever reaches a public remote."
+    },
+    {
+        "speaker":  "ALEX",
+        "text":  "Right. Edit the file, remove the secret, stage the cleaned version, and create a new commit."
+    },
+    {
+        "speaker":  "JAMIE",
+        "text":  "But if it was pushed, deleting the line in a new commit is not enough because the secret still exists in history."
+    },
+    {
+        "speaker":  "ALEX",
+        "text":  "Exactly. That\u0027s step three: remove the secret from Git history."
+    },
+    {
+        "speaker":  "PAUSE",
+        "text":  ""
+    },
+    {
+        "speaker":  "ALEX",
+        "text":  "The recommended modern tool in the appendix is git-filter-repo. You install git-filter-repo, then either remove a specific file from all history or replace a specific secret string throughout all history."
+    },
+    {
+        "speaker":  "JAMIE",
+        "text":  "So if the problem is, say, an accidentally committed.env file, you can strip that file from every historical commit. And if the problem is a literal token pasted in several places, you can replace that string across history."
+    },
+    {
+        "speaker":  "ALEX",
+        "text":  "Exactly."
+    },
+    {
+        "speaker":  "JAMIE",
+        "text":  "And there\u0027s an alternative."
+    },
+    {
+        "speaker":  "ALEX",
+        "text":  "Yes, BFG Repo-Cleaner, which is fast and Java-based. The appendix notes downloading it from the BFG project site. With BFG, you can remove a file from all history or replace secret strings. For string replacement, the source calls out creating a passwords.txt file with one secret per line."
+    },
+    {
+        "speaker":  "JAMIE",
+        "text":  "So both tools are about rewriting history to eliminate the old secret traces."
+    },
+    {
+        "speaker":  "ALEX",
+        "text":  "Correct."
+    },
+    {
+        "speaker":  "JAMIE",
+        "text":  "Then comes the part people are often nervous about: force push."
+    },
+    {
+        "speaker":  "ALEX",
+        "text":  "Yes. Step four is force pushing the cleaned history to the remote. Because you\u0027ve rewritten commit history, a normal push won\u0027t work."
+    },
+    {
+        "speaker":  "JAMIE",
+        "text":  "And that can affect collaborators."
+    },
+    {
+        "speaker":  "ALEX",
+        "text":  "It can. Rewriting history is disruptive, which is another reason prevention matters so much. After that, step five is to tell GitHub to rescan, so its secret scanning systems can reassess the repository state."
+    },
+    {
+        "speaker":  "JAMIE",
+        "text":  "Can we summarize the decision flow in plain language?"
+    },
+    {
+        "speaker":  "ALEX",
+        "text":  "Yes. First: rotate the secret immediately. Second: if it was never pushed, clean it locally and recommit. Third: if it was pushed, remove it from history, then force push the cleaned history, and follow up with GitHub rescanning and any provider-specific cleanup."
+    },
+    {
+        "speaker":  "PAUSE",
+        "text":  ""
+    },
+    {
+        "speaker":  "ALEX",
+        "text":  "Now, GitHub also has built-in push protection."
+    },
+    {
+        "speaker":  "JAMIE",
+        "text":  "This is the feature that can stop you from pushing certain detected secrets."
+    },
+    {
+        "speaker":  "ALEX",
+        "text":  "Exactly. Push protection checks for supported secret patterns and can block the push before the secret lands in the remote repository."
+    },
+    {
+        "speaker":  "JAMIE",
+        "text":  "That sounds great, but I want learners to hear this clearly: it\u0027s helpful, not magical."
+    },
+    {
+        "speaker":  "ALEX",
+        "text":  "Precisely. Push protection covers many common secret types, but not every possible secret. You still need.gitignore, environment variables, review habits, and ideally hooks."
+    },
+    {
+        "speaker":  "JAMIE",
+        "text":  "What if push protection blocks you?"
+    },
+    {
+        "speaker":  "ALEX",
+        "text":  "Treat that as a serious warning. Stop, inspect the file or diff, and determine whether the detected string is a real secret. If it is, remove it and store it properly. If it\u0027s a false positive, follow your project\u0027s and GitHub\u0027s guidance carefully before bypassing anything."
+    },
+    {
+        "speaker":  "JAMIE",
+        "text":  "And can you check whether a repository has push protection enabled?"
+    },
+    {
+        "speaker":  "ALEX",
+        "text":  "Yes. The appendix includes checking your repository\u0027s push protection status through GitHub\u0027s security settings and secret scanning features. For learners, the main concept is: know whether your repo has that guardrail, but don\u0027t rely on it as the only one."
+    },
+    {
+        "speaker":  "PAUSE",
+        "text":  ""
+    },
+    {
+        "speaker":  "ALEX",
+        "text":  "Let\u0027s talk about secure credential storage more broadly."
+    },
+    {
+        "speaker":  "JAMIE",
+        "text":  "Meaning not just secrets in code, but where your Git and development tools store credentials."
+    },
+    {
+        "speaker":  "ALEX",
+        "text":  "Exactly. The big rule is never store credentials in plaintext. Not in a plain text file, not hardcoded in a script, and not casually embedded in git config in a way that exposes the secret."
+    },
+    {
+        "speaker":  "JAMIE",
+        "text":  "So where should they go instead?"
+    },
+    {
+        "speaker":  "ALEX",
+        "text":  "Use your operating system\u0027s secure credential store when possible. On macOS, that\u0027s Keychain. On Windows, Git for Windows typically integrates with Credential Manager. On Linux, a common approach is the libsecret store, though it may require installation."
+    },
+    {
+        "speaker":  "JAMIE",
+        "text":  "And a password manager?"
+    },
+    {
+        "speaker":  "ALEX",
+        "text":  "Also a good option, especially for personal organization and for teams that need secure sharing. The appendix specifically points learners toward using a password manager rather than leaving tokens in notes or loose files."
+    },
+    {
+        "speaker":  "JAMIE",
+        "text":  "How do you check what Git is currently using?"
+    },
+    {
+        "speaker":  "ALEX",
+        "text":  "You can inspect which credential helper is set in Git configuration. The practical point is to verify that Git is using a secure helper instead of relying on insecure plaintext storage."
+    },
+    {
+        "speaker":  "PAUSE",
+        "text":  ""
+    },
+    {
+        "speaker":  "ALEX",
+        "text":  "Let\u0027s turn all of this into a repeatable checklist."
+    },
+    {
+        "speaker":  "JAMIE",
+        "text":  "Yes, because daily routines are what actually keep repos safe."
+    },
+    {
+        "speaker":  "ALEX",
+        "text":  "Before committing: make sure secrets are in environment variables, not code. Confirm.env and credential files are ignored. Stage carefully, not blindly. Review staged changes with git diff --staged. If you use patch mode or a pre-commit hook, this is where they help most."
+    },
+    {
+        "speaker":  "JAMIE",
+        "text":  "Before pushing: double-check what is about to leave your machine, make sure no secret warnings are appearing, and pay attention if push protection or a hook blocks you."
+    },
+    {
+        "speaker":  "ALEX",
+        "text":  "Repository setup, one time: create a strong.gitignore, consider a global gitignore for OS and editor noise, set up a pre-commit secret scanner, and use secure credential helpers on your machine."
+    },
+    {
+        "speaker":  "JAMIE",
+        "text":  "And if you\u0027re a maintainer?"
+    },
+    {
+        "speaker":  "ALEX",
+        "text":  "Encourage or require these habits project-wide. Provide a good.gitignore. Document how contributors should handle.env files and local configuration. Consider pre-commit tooling, secret scanning, and push protection. Make the safe path the easy path."
+    },
+    {
+        "speaker":  "PAUSE",
+        "text":  ""
+    },
+    {
+        "speaker":  "JAMIE",
+        "text":  "Before we wrap up, I want to return to the teaching structure for accessibility. This appendix was designed so learners can approach it in multiple ways: start with why leaks matter, jump to prevention if that\u0027s your immediate need, or revisit the checklist before every push."
+    },
+    {
+        "speaker":  "ALEX",
+        "text":  "Yes. And the authoritative guidance behind this material comes from GitHub\u0027s code security and secret scanning documentation, along with related GitHub security feature references and changelog updates."
+    },
+    {
+        "speaker":  "JAMIE",
+        "text":  "So this isn\u0027t just folklore. It\u0027s grounded in the platform\u0027s actual security guidance."
+    },
+    {
+        "speaker":  "ALEX",
+        "text":  "Exactly."
+    },
+    {
+        "speaker":  "JAMIE",
+        "text":  "Can you give us one final compact version?"
+    },
+    {
+        "speaker":  "ALEX",
+        "text":  "Sure. Don\u0027t commit secrets. Ignore the right files. Store secrets in environment variables. Review staged changes before every commit. Use automated detection with hooks. If a secret leaks, rotate it immediately and clean history if needed. Use GitHub push protection when available, but don\u0027t depend on it alone. And store credentials in secure system stores, not plaintext."
+    },
+    {
+        "speaker":  "JAMIE",
+        "text":  "That\u0027s the habit loop."
+    },
+    {
+        "speaker":  "ALEX",
+        "text":  "It is. And it\u0027s one of the best ways to protect both your own work and every project you contribute to."
+    },
+    {
+        "speaker":  "PAUSE",
+        "text":  ""
+    }
 ]

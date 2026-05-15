@@ -1,0 +1,466 @@
+﻿[ALEX]
+Welcome back. This time weâ€™re doing something a little different. Think of this as your technical field guide for making Visual Studio Code work well if you use a screen reader, have low vision, or just want a more accessible setup for coding, reviewing diffs, using Git, and working with Copilot.
+
+[JAMIE]
+So not just a beginner tour.
+
+[ALEX]
+Right. More like a reference lesson in conversation form. The appendix behind this episode is meant to be a lookup manual. It even recommends practical ways to jump around it: Go to Line with Control+G, Go to Symbol with Control+Shift+O, and bookmarking the file in VS Code with Control+K, then Control+K so you can reopen it fast later.
+
+[JAMIE]
+Thatâ€™s helpful because reference files can be long, and long can feel intimidating.
+
+[ALEX]
+Exactly. And the appendix is explicit about different access strategies. For screen reader users, it treats the file as something you navigate structurally. For low vision users, it suggests bumping font size with Control+Equals before scanning long tables, using orientation aids like breadcrumbs or the minimap if that helps, and using high contrast themes so tables and inline code are easier to distinguish. For sighted users, it points to the table of contents links and the outline view with Control+Shift+O.
+
+[JAMIE]
+I like that it doesnâ€™t assume one kind of learner.
+
+[ALEX]
+And one more administrative note: this appendix is a companion reference to the main VS Code setup and accessibility chapters, and it points to the official VS Code accessibility docs as the authoritative source.
+
+[PAUSE]
+
+[ALEX]
+Letâ€™s start with the main settings youâ€™ll actually tune. In VS Code, accessibility settings can be changed in the Settings interface with Control+Comma, or directly in settings dot json through the Command Palette by opening User Settings JSON.
+
+[JAMIE]
+Can we separate the settings into categories that matter in practice?
+
+[ALEX]
+Yes. Core editor behavior, diff and merge behavior, terminal behavior, and announcement or notification behavior.
+
+[JAMIE]
+Letâ€™s do core editor behavior first.
+
+[ALEX]
+The most important setting is editor dot accessibilitySupport. Its values are auto, on, and off. Auto tries to detect screen readers like NVDA, JAWS, or VoiceOver. On forces screen reader optimizations. Off disables them.
+
+[JAMIE]
+And if detection is flaky?
+
+[ALEX]
+Then forcing it to on is often the right move.
+
+[JAMIE]
+What else matters right away?
+
+[ALEX]
+Editor dot accessibilityPageSize controls how many lines are read with page navigation in screen reader mode. Default is ten. That sounds minor, but it changes how much content you hear at a time.
+
+[JAMIE]
+So itâ€™s part comfort, part efficiency.
+
+[ALEX]
+Exactly. Then there are several visual guide settings, like bracket pair guides, horizontal bracket guides, active bracket highlighting, indentation highlighting, and indentation guides. These are mainly visual. The appendixâ€™s message is clear: for screen reader users, many of these arenâ€™t useful and may just add visual complexity for mixed workflows.
+
+[JAMIE]
+So if Iâ€™m blind and not using that visual information, I can simplify.
+
+[ALEX]
+Yes. Similarly, editor dot minimap dot enabled is visual only, and the recommendation is to turn it off for screen reader users. Editor dot renderWhitespace is also important. The recommended value for screen readers is none, because hearing code is hard enough without trying to manage a UI designed to show whitespace visually.
+
+[JAMIE]
+What about line wrapping?
+
+[ALEX]
+Editor dot wordWrap is recommended on for screen reader users, especially with long lines. It can reduce horizontal navigation friction. And workbench dot editor dot enablePreview is worth considering too. If preview mode stays on, opening files can reuse one tab. Turning it off means files open in persistent tabs, which many users find easier to track.
+
+[JAMIE]
+And hover popups?
+
+[ALEX]
+Editor dot hover dot enabled can stay on, but the key point is this: for accessible reading of hover content, use Accessible View with Alt+F2.
+
+[PAUSE]
+
+[JAMIE]
+Now diffs. This matters a lot for GitHub learners.
+
+[ALEX]
+It really does. A few settings make a huge difference. DiffEditor dot diffAlgorithm should generally be advanced. The appendix specifically says it tends to produce better hunks for screen reader users.
+
+[JAMIE]
+Meaning more sensible blocks of changes.
+
+[ALEX]
+Right. DiffEditor dot ignoreTrimWhitespace should usually stay true. That reduces noise from whitespace-only changes. DiffEditor dot renderSideBySide is a major one: the visual default is true, but for screen readers the recommendation is false, which gives you inline diffs.
+
+[JAMIE]
+Why is inline better?
+
+[ALEX]
+Because you hear one stream of content with change markers, instead of trying to mentally coordinate two columns. DiffEditor dot wordWrap can also be turned on for long lines. And merge conflict decorators are visual helpers, but the appendix nudges screen reader users toward the Accessible Diff workflow instead.
+
+[JAMIE]
+So if I remember only one thing: inline diffs, advanced algorithm, ignore trim whitespace.
+
+[ALEX]
+Thatâ€™s an excellent practical summary.
+
+[PAUSE]
+
+[ALEX]
+The terminal has its own accessibility settings. Terminal dot integrated dot screenReaderMode can be auto, on, or off, parallel to editor accessibility support. Terminal dot integrated dot enableBell is recommended on if you want audio feedback. Terminal dot integrated dot accessibleViewFocusesTerminal controls whether focus returns to the terminal after closing Accessible View, and by default it does. Terminal dot integrated dot accessibleViewPreserveCursorPosition controls whether your cursor position is preserved when opening Accessible View.
+
+[JAMIE]
+Thatâ€™s subtle, but I can imagine it matters if youâ€™re reading command output and then want to continue right where you left off.
+
+[ALEX]
+Exactly. Small settings, big effect on rhythm.
+
+[PAUSE]
+
+[JAMIE]
+And then thereâ€™s the verbosity layer.
+
+[ALEX]
+Yes. A whole group of accessibility dot verbosity settings controls whether VS Code announces context in particular parts of the interface. The appendix lists comments, the diff editor, the main editor, hover, inline chat, inline completions, the keybindings editor, notebooks, panel chat, the settings editor, and the terminal.
+
+[JAMIE]
+So if something feels too chatty, or too quiet, this is where I tune it.
+
+[ALEX]
+Exactly. And that leads naturally into audio cues, because accessible feedback in VS Code isnâ€™t just speech.
+
+[PAUSE]
+
+[ALEX]
+Audio cues provide nonverbal feedback through sound. You can get to those settings by opening Settings with Control+Comma and searching for audio cue, or by editing settings dot json directly.
+
+[JAMIE]
+And each cue has the same value choices, right?
+
+[ALEX]
+Yes: auto, on, and off. Auto means play the sound only in screen reader mode. On means always play it. Off means never.
+
+[JAMIE]
+What kinds of events can have sounds attached?
+
+[ALEX]
+A lot. The appendix lists a broad set of accessibility signals. Some are about terminal or output actions, like clear. Some are tied to Copilot chat, including when a request is sent, while a response is pending, and when a response is received. Some are about debugging, like hitting a breakpoint or landing on a line with a breakpoint. Several are specific to diff navigation, including sounds for deleted, inserted, and modified lines. Others signal formatting completion, errors, warnings, folded areas, inline suggestions, unavailable inlay hints, and notebook events.
+
+[JAMIE]
+So this is really a sensory feedback system, not just a convenience feature.
+
+[ALEX]
+Exactly. And the recommendations in the appendix are practical. Important state changes, like a line with an error or a completed chat response, are often recommended on. Some lower-priority cues are auto, and a few are off if they tend to add little value.
+
+[JAMIE]
+Can users change the sounds themselves?
+
+[ALEX]
+Yes, the appendix includes customization of signal sounds, including sound file requirements. The big idea is that if you do customize, use supported audio files and keep them short, distinct, and easy to recognize. You want cues that clarify, not cues that become a second source of clutter.
+
+[PAUSE]
+
+[JAMIE]
+Letâ€™s get into the Accessible Diff Viewer, because thatâ€™s probably one of the most important workflows for Git and pull request review.
+
+[ALEX]
+I agree. The appendix gives a complete guide. First, when should you use it? Any time the standard visual diff is hard to interpret with a screen reader, when you want a text-forward representation of changes, or when navigating code review changes line by line would be easier than trying to understand two-pane layout.
+
+[JAMIE]
+How do you open it?
+
+[ALEX]
+The appendix emphasizes the accessible diff workflow and points to function-key navigation, especially F7, as part of moving through changes. In practice, you use the diff tools built into VS Code and then switch to the accessible representation designed for screen reader reading.
+
+[JAMIE]
+And once it opens, what is its structure like?
+
+[ALEX]
+At the top level, itâ€™s organized to present changed content as understandable text rather than as a visual comparison grid. One concept the appendix calls out is line prefixes. Those prefixes indicate what kind of change youâ€™re hearing or reading: added, deleted, modified, or context. That labeling is essential because it replaces the color and spatial layout sighted users rely on.
+
+[JAMIE]
+So the prefixes are the semantic anchors.
+
+[ALEX]
+Exactly. Then there are hunks. A hunk is a block of related changes. Thatâ€™s the unit you navigate. Instead of thinking, Iâ€™m moving through the entire file visually, think, Iâ€™m moving through meaningful clusters of edits.
+
+[JAMIE]
+That sounds more cognitively manageable.
+
+[ALEX]
+It usually is. The appendix also talks about navigating hunks and about screen reader-specific navigation differences. For NVDA and JAWS, the workflow often depends on browse mode versus focus mode and using heading or structural navigation appropriately. For VoiceOver on macOS, navigation conventions differ, so users rely on VoiceOverâ€™s own reading and interaction commands.
+
+[JAMIE]
+And what are context lines in this setup?
+
+[ALEX]
+Context lines are unchanged lines included around the edits to help you understand where a change happened. They answer the question, what was around this edit before and after? The appendix even gives an example to reinforce that changed lines without surrounding context can be hard to interpret.
+
+[JAMIE]
+So context is not noise. Itâ€™s orientation.
+
+[ALEX]
+Exactly right.
+
+[JAMIE]
+And then the big comparison: inline versus side by side.
+
+[ALEX]
+Yes. The appendix is explicit. Inline diff view is recommended for screen readers. Side by side is the default visual presentation and works well if you can compare columns visually, but itâ€™s much harder in speech output. So to switch to inline view, set diffEditor dot renderSideBySide to false.
+
+[JAMIE]
+That one setting keeps coming up for good reason.
+
+[ALEX]
+It really does. And the appendix includes learning-card style reminders for the accessible diff viewer, reinforcing when to use it, how to think in hunks, and why inline structure is friendlier for nonvisual review.
+
+[PAUSE]
+
+[ALEX]
+Next, the appendix gets very specific about screen reader configurations.
+
+[JAMIE]
+Which I appreciate, because â€œit supports screen readersâ€ is not the same as â€œhereâ€™s how to make your screen reader and editor cooperate.â€
+
+[ALEX]
+Exactly. For NVDA, it includes recommended NVDA settings, mentions NVDA add-ons that may help with VS Code, and highlights VS Code-specific NVDA commands.
+
+[JAMIE]
+Without assuming everyone uses the same add-ons.
+
+[ALEX]
+Right. The point is not that every user must install extras, but that VS Code users often benefit from checking whether speech modes, punctuation levels, browse-versus-focus behavior, and any editor-friendly add-ons align with coding work.
+
+[JAMIE]
+And JAWS?
+
+[ALEX]
+Similarly, it covers recommended JAWS settings, JAWS scripts for VS Code, and VS Code-specific JAWS commands. That matters because JAWS users may depend more heavily on custom scripts in some environments, and because verbosity and cursor behavior can shape the coding experience dramatically.
+
+[JAMIE]
+Then VoiceOver on macOS gets its own configuration section.
+
+[ALEX]
+Yes. The appendix includes recommended VoiceOver Utility settings, VS Code-specific VoiceOver commands, and Quick Nav navigation when Quick Nav is enabled. That last part matters because Quick Nav changes how arrow keys behave, and in a code editor that can significantly affect movement and interaction.
+
+[JAMIE]
+So the general lesson is: donâ€™t just tweak VS Code. Tune the screen reader and the editor together.
+
+[ALEX]
+Exactly. Accessibility is an ecosystem, not a single checkbox.
+
+[PAUSE]
+
+[JAMIE]
+Now for the part many learners want as a cheat sheet: keyboard shortcuts.
+
+[ALEX]
+The appendix organizes them by task. Letâ€™s walk through the categories rather than pretending one giant list is memorable all at once.
+
+[JAMIE]
+Please.
+
+[ALEX]
+Global navigation includes the commands that help you move around VS Code itself: Command Palette, settings, quick open, outline and symbol navigation, and panel focus changes. These are the shortcuts that reduce hunting.
+
+[JAMIE]
+Then sidebar panels.
+
+[ALEX]
+Right. Explorer, Search, Source Control, Run and Debug, Extensions, and related panel focus commands. For accessibility, knowing how to jump directly to a panel is better than tabbing through unpredictable interface layers.
+
+[JAMIE]
+What about file work in the editor?
+
+[ALEX]
+Editor file operations include opening files, saving, saving all, closing, reopening, and managing tabs. Combined with turning preview tabs off, these shortcuts make file handling more stable.
+
+[JAMIE]
+And navigation inside files?
+
+[ALEX]
+Thatâ€™s its own category: go to line, go to symbol, move by word, move by line, page movement, and other cursor travel commands. If youâ€™re reading code nonvisually, navigation fluency is everything.
+
+[JAMIE]
+Editing is separate from navigation.
+
+[ALEX]
+Yes. Editor editing includes line manipulation, indentation, commenting, duplicating, deleting, and formatting. Then thereâ€™s find and replace, which is especially important in large files and long markdown documents.
+
+[JAMIE]
+And multi-cursor?
+
+[ALEX]
+Included too. Powerful, but not always the first tool a screen reader user reaches for. Still, the appendix treats it as part of complete coverage.
+
+[JAMIE]
+Terminal shortcuts must be in there.
+
+[ALEX]
+Yes, along with Source Control and Git shortcuts, diff viewer shortcuts, Copilot shortcuts, accessibility feature shortcuts, Problems panel shortcuts, and Markdown preview shortcuts.
+
+[JAMIE]
+Thatâ€™s a lot of ground.
+
+[ALEX]
+It is, but the categories matter because they mirror real workflows. For example, a Git review flow might involve Explorer, editor navigation, Source Control, diff viewer movement, and Problems panel checks. A writing flow might lean on editor commands, markdown preview, and find and replace. A Copilot-heavy flow adds inline completions and panel chat navigation.
+
+[JAMIE]
+So the appendix is not just listing keys. Itâ€™s mapping the terrain.
+
+[ALEX]
+Exactly.
+
+[PAUSE]
+
+[ALEX]
+Then thereâ€™s a deeper section on accessibility signals types and customization.
+
+[JAMIE]
+How is that different from the earlier audio cues list?
+
+[ALEX]
+Earlier, we talked about what cues exist. Here, the appendix expands into how signals behave as a system: announcement verbosity settings, custom announcement timing, and signal priorities.
+
+[JAMIE]
+Letâ€™s unpack that.
+
+[ALEX]
+Announcement verbosity means deciding how much spoken context VS Code gives in different parts of the interface. If youâ€™re overwhelmed, reduce verbosity in the places where you already know the pattern. If you miss important context, increase it.
+
+[JAMIE]
+And timing?
+
+[ALEX]
+Custom announcement timing is about when feedback occurs and whether it arrives at moments that interrupt you or moments that support you. Some users want immediate cues. Others want fewer interruptions and more manual access through Accessible View.
+
+[JAMIE]
+Signal priorities sounds like triage.
+
+[ALEX]
+Thatâ€™s a good way to think about it. Not every event deserves equal prominence. Errors, completed responses, and change-type indicators in diffs may be high priority. Less important status information can be downgraded to auto or off. The appendixâ€™s learning cards on accessibility signals reinforce that the goal is usable feedback, not maximum feedback.
+
+[PAUSE]
+
+[JAMIE]
+That sets us up for the settings dot json profiles.
+
+[ALEX]
+Yes, and these are very practical. The appendix offers example configurations for different working styles.
+
+[JAMIE]
+Letâ€™s go one by one.
+
+[ALEX]
+First is a minimal screen reader profile. This is for users who prefer fewer announcements and who open Accessible View manually when needed. The philosophy is low noise, deliberate reading.
+
+[JAMIE]
+So maybe a strong fit for experienced users who donâ€™t want constant narration.
+
+[ALEX]
+Exactly. Second is a maximum feedback profile for users who want all audio and verbal announcements. Thatâ€™s especially helpful when youâ€™re learning the interface or want confirmation for many actions.
+
+[JAMIE]
+Then thereâ€™s a Copilot-optimized profile.
+
+[ALEX]
+Right. That one emphasizes settings useful for GitHub Copilot workflows, like announcing inline completions and chat activity, and making AI interactions easier to track nonvisually.
+
+[JAMIE]
+And a Git or diff-optimized profile.
+
+[ALEX]
+Yes. That profile is for heavy pull request review and diff work. It would center the accessible diff experience: inline diffs, strong diff signals, and settings that reduce review noise, such as ignoring trim whitespace.
+
+[JAMIE]
+Then performance-optimized.
+
+[ALEX]
+For slower machines or very large repositories. The idea there is that accessibility also includes responsiveness. Turning off visually rich or nonessential features can make the editor lighter and easier to use.
+
+[JAMIE]
+And then thereâ€™s a quick-copy balanced setup.
+
+[ALEX]
+Yes. The appendix includes a complete recommended settings block that you can paste into settings dot json for a balanced screen reader profile. The intent is not â€œone true setup,â€ but a solid baseline you can customize.
+
+[JAMIE]
+Which is reassuring, because people sometimes think accessibility settings are pass or fail.
+
+[ALEX]
+Exactly. Better to think in profiles and tradeoffs.
+
+[PAUSE]
+
+[ALEX]
+The appendix also includes an update section for VS Code 1.120, focused on chat, the Agents window, and markdown diff updates.
+
+[JAMIE]
+So this is where the reference acknowledges that the tool keeps changing.
+
+[ALEX]
+Right. It covers what changed, then breaks the implications into three workflows: screen reader, low vision, and sighted.
+
+[JAMIE]
+Whatâ€™s the practical takeaway?
+
+[ALEX]
+For screen reader users, the takeaway is to reevaluate chat and agent workflows whenever VS Code adds new panes or interaction models. You may need to check focus movement, verbosity settings, and whether Accessible View gives you a better way to read generated content.
+
+[JAMIE]
+And for low vision users?
+
+[ALEX]
+Consider how the newer chat and agent surfaces present dense information, whether scaling, contrast, or layout adjustments are needed, and whether markdown diff improvements make review easier. If markdown diffs become more readable, that can matter a lot in documentation-heavy repositories.
+
+[JAMIE]
+And sighted workflows are included too, even though this appendix centers accessibility.
+
+[ALEX]
+Yes, because accessibility references still need to explain the visual defaults that many teams assume. The section also includes settings references tied to those newer features, so learners know where to look when behavior changes after an update.
+
+[PAUSE]
+
+[JAMIE]
+Before we close, I want to ask about the table of contents and source map material. People often skip those.
+
+[ALEX]
+They shouldnâ€™t. The table of contents is part of accessibility because navigation is accessibility. It tells you the reference is organized into settings, audio cues, accessible diff viewer, screen reader configurations, keyboard shortcuts, accessibility signals, configuration examples, and the newer 1.120 updates. That mental map lowers cognitive load.
+
+[JAMIE]
+And the authoritative sources?
+
+[ALEX]
+Also important. The appendix points to the official VS Code accessibility documentation as the primary authority, and then includes a section-level source map. Even if the extracted list in our source snapshot is messy, the purpose is clear: this reference is meant to be traceable and maintainable, so learners can verify details against official documentation when VS Code evolves.
+
+[JAMIE]
+So the document is both a learning tool and a maintenance-minded reference.
+
+[ALEX]
+Exactly.
+
+[PAUSE]
+
+[JAMIE]
+Can you give us a practical closing setup recommendation? Not a giant JSON block, just the decision points.
+
+[ALEX]
+Absolutely. If you use a screen reader in VS Code, start by forcing accessibility support on if auto detection is unreliable. Turn minimap off. Set word wrap on. Set whitespace rendering to none. Turn preview tabs off if you want steadier file tracking. For diffs, use the advanced diff algorithm, ignore trim whitespace, and switch to inline diff view. In the terminal, keep screen reader mode on or auto, and consider enabling the bell. Then tune verbosity and audio cues based on whether you prefer minimal interruption or rich feedback.
+
+[JAMIE]
+And if Iâ€™m doing a lot of Git review?
+
+[ALEX]
+Build around the Accessible Diff Viewer. Think in hunks, rely on line prefixes, keep context lines, and use inline rather than side-by-side comparison. That one workflow can make pull request review dramatically more usable.
+
+[JAMIE]
+And if Iâ€™m still learning?
+
+[ALEX]
+Choose the maximum-feedback end of the spectrum first, then reduce noise gradually as you build confidence.
+
+[JAMIE]
+Thatâ€™s a great rule.
+
+[ALEX]
+And maybe the most important one. Accessible setup is iterative. Youâ€™re not trying to discover the perfect editor in one session. Youâ€™re trying to build a working environment that tells you what matters, stays quiet about what doesnâ€™t, and supports the way you actually code.
+
+[JAMIE]
+Thatâ€™s it for this reference conversation. Keep the appendix handy, treat it like a manual, and come back to it when your workflow changes.
+
+[ALEX]
+And when VS Code updates, check your assumptions. Accessibility features are improving, but the best setup is still the one you verify in practice.

@@ -1,0 +1,521 @@
+﻿[ALEX]
+Welcome back. Today weâ€™re doing a deep dive into GitHub Projects, especially the modern Projects experience sometimes called Projects v2. Think of this as GitHubâ€™s built-in project management system for issues, pull requests, and draft work items, all in one place.
+
+[JAMIE]
+So this is for people who already know GitHub issues and maybe milestones, but want the bigger planning picture?
+
+[ALEX]
+Exactly. And itâ€™s especially helpful if you want one living workspace that can pull work from one repository or many repositories, then show it as a table, a board, or a roadmap. Weâ€™ll also keep accessibility front and center: keyboard use, screen reader behavior, and low-vision navigation.
+
+[PAUSE]
+
+[ALEX]
+One quick framing note. This appendix is a companion to the earlier material on labels, milestones, and projects. Here weâ€™re going beyond the basics.
+
+[JAMIE]
+And before we get into the how, what changed with the newer Projects system?
+
+[ALEX]
+A lot. GitHub had an older generation sometimes called classic projects. That older system was mostly Kanban only. The newer Projects version gives you three layouts: Board, Table, and Roadmap.
+
+[JAMIE]
+So not just sticky notes in columns anymore.
+
+[ALEX]
+Right. You also get custom fields now, which is a huge shift. Instead of just title and labels and assignees, you can add your own fields like text notes, numeric estimates, dates, single-select choices like priority, and iteration fields for sprint-style planning.
+
+[JAMIE]
+What about automation?
+
+[ALEX]
+Also improved. Classic projects had very limited built-in behavior. Projects v2 supports built-in workflows and integrates with GitHub Actions. Filtering is much stronger too. You can query by labels, assignees, statuses, and custom field values. Cross-repository tracking is supported, and the API story is more powerful through GraphQL.
+
+[JAMIE]
+And if someone sees old references to Projects Beta?
+
+[ALEX]
+That was the earlier rollout period for this newer system. Today, Projects v2 is the standard one people mean.
+
+[PAUSE]
+
+[JAMIE]
+Okay, I want to create one. Where can a project live?
+
+[ALEX]
+Two common places. At the organization level, which makes sense when a team wants shared planning across multiple repositories. Or at the repository level, which is narrower and centered on one repo.
+
+[JAMIE]
+Letâ€™s start with organization-level creation.
+
+[ALEX]
+You navigate to the organization page, open the Projects tab, activate the New project button, choose a template or start blank, give the project a name, and activate Create project.
+
+[JAMIE]
+What kinds of templates are we talking about?
+
+[ALEX]
+Things like a blank table, blank board, or a more opinionated setup like a feature release template. Templates can save time if you already know the workflow pattern you want.
+
+[JAMIE]
+And from a repository?
+
+[ALEX]
+Very similar. Go to the repository, open its Projects tab, then use Link a project or New project, depending on what GitHub shows there. If you create a new one, the template and naming flow is basically the same.
+
+[JAMIE]
+Can we pause on the screen reader flow? Because this is one of those spots where sighted walkthroughs can hide important interaction details.
+
+[ALEX]
+Absolutely. A typical screen reader path is: go to the org or repo Projects tab, tab to the green New project button, press Enter. The template dialog opens. Use arrow keys to move among template cards, each announcing its name and description. Press Enter on the one you want. Then type the project name in the name field, tab to Create project, press Enter, and youâ€™ll land in the new empty project.
+
+[JAMIE]
+And after creation, what should users expect?
+
+[ALEX]
+Usually an empty project in Table view. Thereâ€™s often a plus Add item control near the bottom. For screen reader users, tabbing to that control is a reliable way to start adding work. For low-vision users, one practical note: at high zoom, that add-item row may be off-screen, so scrolling down matters.
+
+[JAMIE]
+And visually, the New project button tends to be easy to spot?
+
+[ALEX]
+Yes, typically a green high-contrast button on the Projects tab.
+
+[PAUSE]
+
+[JAMIE]
+Now letâ€™s talk about the three layouts, because this seems like the heart of the system.
+
+[ALEX]
+It is. The default is usually Table view. Think spreadsheet. Each row is an issue, a pull request, or a draft item. Each column is a field: title, status, assignee, labels, priority, dates, repository, or any custom fields you create.
+
+[JAMIE]
+What is Table view best at?
+
+[ALEX]
+Bulk editing, sorting, filtering, and scanning lots of structured information quickly. If you want the most information density, this is usually the winner.
+
+[JAMIE]
+And accessibility-wise?
+
+[ALEX]
+Itâ€™s generally the most accessible layout. Keyboard movement is strong. Common shortcuts and navigation patterns include jumping to the table, moving up and down between rows, left and right between columns, pressing Enter to open the item detail panel in the right sidebar, Escape to close that panel, Space on a cell to edit the value, and F2 on the title cell for inline title editing.
+
+[JAMIE]
+What does a row sound like in a screen reader?
+
+[ALEX]
+Something like: title first, then field-value pairs. For example, â€œFix keyboard trap in modal dialog, Status: In Progress, Assignee: alice, Priority: High, Labels: bug, accessibility.â€ That row-style verbal summary is one reason Table view works so well nonvisually.
+
+[JAMIE]
+So if someone is blind and choosing a default working view, Table is probably the safest choice.
+
+[ALEX]
+Yes. Table first, especially for editing.
+
+[PAUSE]
+
+[JAMIE]
+What about Board view?
+
+[ALEX]
+Board view is the Kanban-style layout. Columns represent status values, and cards sit inside those columns. Itâ€™s excellent for workflow tracking, work-in-progress conversations, and quick standup-style reviews.
+
+[JAMIE]
+But I know thereâ€™s an accessibility catch here.
+
+[ALEX]
+There is. Drag-and-drop is not keyboard accessible in the way many users need. So the accessible method for changing a cardâ€™s column is not dragging. Instead, open the card, find the Status field in the right-side detail panel, activate the status dropdown, choose the new value, and then close the panel.
+
+[JAMIE]
+Thatâ€™s such an important pattern: donâ€™t imitate the visual gesture if the underlying field can be edited directly.
+
+[ALEX]
+Exactly. The column is just a visual expression of the Status field. Change the field, and the card moves.
+
+[JAMIE]
+Keyboard-wise, how do people move around the board?
+
+[ALEX]
+Tab commonly moves among columns and cards. Enter on a card opens the detail panel. In some contexts, heading or region navigation can help jump among board areas. And within a card context, Space may toggle selection for bulk actions.
+
+[JAMIE]
+For low-vision users, any practical warning?
+
+[ALEX]
+Yes. Board columns can overflow horizontally, so at high zoom you may need to scroll sideways. Card details like label badges or avatars can become small and crowded, so zooming in on a single card or switching to Table view can be easier.
+
+[PAUSE]
+
+[JAMIE]
+And Roadmap view?
+
+[ALEX]
+Roadmap is a horizontal timeline. Items appear as bars spanning dates, often start dates and due dates, or iteration windows. Itâ€™s useful for release planning, sprint capacity planning, and communicating timing to stakeholders.
+
+[JAMIE]
+This sounds visually rich, but maybe less accessible directly.
+
+[ALEX]
+Thatâ€™s the right instinct. Roadmap is chart-like, so for screen reader users itâ€™s best treated as a visual summary rather than the primary editing surface. The underlying data is still accessible in Table view. So the recommended workflow is: edit and verify in Table, then switch to Roadmap if you want the big timeline picture.
+
+[JAMIE]
+How do items get onto the roadmap timeline?
+
+[ALEX]
+They need date information. You can add Date custom fields like Start Date and Due Date, or sometimes use milestone-related timing depending on your setup. Items without dates usually sit outside the timeline grouping.
+
+[JAMIE]
+And low-vision users may need more zoom because those bars can be narrow.
+
+[ALEX]
+Exactly.
+
+[PAUSE]
+
+[JAMIE]
+Letâ€™s move into custom fields, because this is where Projects starts feeling like a real planning database.
+
+[ALEX]
+Thatâ€™s a great way to say it. Projects includes default fields like Title, Assignee, Labels, Milestone, and Repository, but its real power comes from adding your own structured fields.
+
+[JAMIE]
+Walk us through the major field types.
+
+[ALEX]
+Text fields are free-form notes, useful for links, criteria, or reminders. Number fields are for numeric values like estimates or story points. Date fields store deadlines or start dates. Single select gives you a dropdown of predefined choices, great for priority, size, risk, or type. And Iteration fields support sprint or cycle planning.
+
+[JAMIE]
+How do you create one?
+
+[ALEX]
+From Table view, you usually move to the far end of the header row and activate the plus button that adds a field. Then you choose the field type, provide the field name, and configure options if needed. For single-select, for example, you define the allowed values such as P0, P1, and P2.
+
+[JAMIE]
+What about the screen reader path for that?
+
+[ALEX]
+The important pieces are: get into Table view, move across the header row until you reach the add-field control, activate it, select the field type from the menu or dialog, then fill in the naming and option fields. Because this interaction can involve horizontal movement across many columns, it may take some patience, especially in a busy project.
+
+[JAMIE]
+And once the field exists, how do you edit a value on an item?
+
+[ALEX]
+Usually two ways. In Table view, navigate to the cell and activate it, often with Space, then choose or type the value. Or open the item detail panel and edit the field there in the sidebar. The panel method is often clearer for screen reader users because it exposes labeled controls in a more linear form.
+
+[JAMIE]
+So if a learner finds the grid editing model awkward, the sidebar is a good fallback.
+
+[ALEX]
+Very much so.
+
+[PAUSE]
+
+[JAMIE]
+Now letâ€™s add work items. What exactly can live inside a project?
+
+[ALEX]
+Three main categories: existing issues, existing pull requests, and draft issues. Drafts are especially handy when you want to capture work before a formal issue exists in a repository.
+
+[JAMIE]
+How do you add an existing issue or pull request?
+
+[ALEX]
+Use the add-item control in the project, then search for the issue or PR you want. Depending on the projectâ€™s scope and permissions, you can pull in items from linked repositories or other repos in a cross-repository setup.
+
+[JAMIE]
+And a draft issue?
+
+[ALEX]
+A draft issue is created directly in the project without immediately creating a repository issue. Itâ€™s useful for planning, brainstorming, backlog triage, or work that isnâ€™t ready to be assigned to a repo yet.
+
+[JAMIE]
+Then later you can promote it?
+
+[ALEX]
+Yes. Promoting a draft turns it into a real GitHub issue in a repository. Thatâ€™s a nice bridge between planning and execution.
+
+[JAMIE]
+So a team can start fuzzy, then formalize later.
+
+[ALEX]
+Exactly.
+
+[JAMIE]
+What about bulk editing?
+
+[ALEX]
+Thatâ€™s one of Table viewâ€™s strengths. You can select multiple items and update shared properties together, such as status, iteration, assignee, or other field values. In practice, this is useful when moving a batch of tasks into a sprint, closing out a release phase, or assigning a common label or priority pattern.
+
+[JAMIE]
+Accessibility tip there?
+
+[ALEX]
+Know how selection is announced, and confirm the set of selected items before applying the bulk change. In any bulk operation, the risk isnâ€™t understanding one item; itâ€™s accidentally changing many.
+
+[PAUSE]
+
+[JAMIE]
+Letâ€™s get to automations. What can Projects do on its own?
+
+[ALEX]
+GitHub Projects includes built-in workflows and can also work with GitHub Actions. The idea is to reduce repetitive project maintenance.
+
+[JAMIE]
+Where do people access automations?
+
+[ALEX]
+Typically through project settings or a workflows area associated with the project. The exact UI can shift over time, but conceptually youâ€™re looking for automation or workflow configuration within the projectâ€™s controls.
+
+[JAMIE]
+And what kinds of built-in workflows are we talking about?
+
+[ALEX]
+Common examples include automatically adding items to a project when they meet certain conditions, or updating fields based on status changes and project events. The source emphasizes native workflows and GitHub Actions integration rather than treating the project as a totally manual tool.
+
+[JAMIE]
+I noticed auto-add was specifically called out.
+
+[ALEX]
+Yes. Auto-add is especially useful when you want matching issues or pull requests to appear in a project automatically. For example, perhaps all issues with a certain label, or work from a specific repository, should flow into a tracking project without someone manually adding them every time.
+
+[JAMIE]
+That sounds powerful, but also like something youâ€™d want to test carefully.
+
+[ALEX]
+Absolutely. Start with a narrow rule, verify the results, then expand. Automation should reduce work, not create surprise clutter.
+
+[JAMIE]
+And GitHub Actions integration means you can go beyond built-in toggles?
+
+[ALEX]
+Right. Actions can update project fields, move work through states, or synchronize project data with repository events in more advanced workflows. If your team already uses Actions, Projects becomes another place where automation can keep planning data current.
+
+[PAUSE]
+
+[JAMIE]
+Now the sprint story: iterations.
+
+[ALEX]
+Iterations are GitHubâ€™s sprint-like field type. Instead of storing just a random date, an iteration field defines repeating cycles, such as two-week sprints.
+
+[JAMIE]
+How do you create one?
+
+[ALEX]
+Create a custom field and choose Iteration as the type. Then configure the cadence, such as duration and start date. GitHub generates the repeating iteration values from that setup.
+
+[JAMIE]
+And using iterations means assigning each item to one of those sprint buckets?
+
+[ALEX]
+Exactly. Once the field exists, items can be assigned to a specific iteration, making it easy to filter by current sprint, next sprint, or backlog. This is often clearer than manually typing sprint names in a text field because the values are structured and date-aware.
+
+[JAMIE]
+What are iteration insights?
+
+[ALEX]
+Theyâ€™re the planning benefits you get from that structure: seeing which items are in the current cycle, comparing upcoming cycles, and using roadmap or filtered views to understand sprint load and timing. In other words, the insight comes from consistent structured data.
+
+[JAMIE]
+So itâ€™s not just labeling work â€œSprint 4.â€ Itâ€™s giving GitHub enough semantics to reason about time.
+
+[ALEX]
+Perfectly put.
+
+[PAUSE]
+
+[JAMIE]
+Views and filters feel like another big productivity layer.
+
+[ALEX]
+They are. A project can have multiple saved views, each showing the same underlying items differently.
+
+[JAMIE]
+So one project, many perspectives.
+
+[ALEX]
+Exactly. You might have a Table view for backlog grooming, a Board view for daily status, and a Roadmap view for release timing. You can also create specialized views like â€œMy open work,â€ â€œCurrent sprint,â€ or â€œOnly accessibility bugs.â€
+
+[JAMIE]
+How do you create a view?
+
+[ALEX]
+You usually start from the current layout, apply filters, grouping, sorting, and visible fields the way you want, then save that configuration as a named view.
+
+[JAMIE]
+Letâ€™s unpack filter syntax a bit.
+
+[ALEX]
+Projects supports query-style filtering using fields and common GitHub metadata. The exact syntax can include things like status values, labels, assignees, repository names, and custom fields. The important conceptual point is that filtering is expressive. You are not limited to one simple dropdown; you can build meaningful queries.
+
+[JAMIE]
+So for example, I might isolate items assigned to me, with a certain label, in a particular status.
+
+[ALEX]
+Exactly. Or only items from one repository inside a cross-repo project. Or only the current iteration. Filters become much more valuable once your project has structured fields.
+
+[JAMIE]
+And grouping?
+
+[ALEX]
+Grouping changes how items are clustered visually. In Table view, you might group by Status, Assignee, Priority, or Iteration. That lets you treat one project almost like several logical sections without creating separate projects.
+
+[JAMIE]
+Sorting is more straightforward, I assume.
+
+[ALEX]
+Yes. Sorting orders items by one or more fields. Useful examples include due date ascending, priority descending, or recently updated work first. Combined with grouping, sorting can make a large project much easier to read.
+
+[PAUSE]
+
+[JAMIE]
+Cross-repository projects feel especially important for open source maintainers and org-level planning.
+
+[ALEX]
+Definitely. One of the biggest advantages of Projects v2 is that it can track work from multiple repositories together.
+
+[JAMIE]
+How do you add a repository to a project?
+
+[ALEX]
+At a high level, you configure the project so it can include items from that repository, then add or auto-add issues and PRs from it. The exact UI wording can vary, but the concept is: this project is not limited to one repo. It can aggregate work across several.
+
+[JAMIE]
+And then the Repository field becomes important.
+
+[ALEX]
+Very. Once youâ€™re mixing repos, the Repository field tells you where each item came from. Itâ€™s useful in Table view for filtering, sorting, and basic orientation. If two repositories both have an issue named something vague like â€œUpdate docs,â€ the Repository field keeps those items distinguishable.
+
+[JAMIE]
+So cross-repo planning without the Repository field visible can get confusing fast.
+
+[ALEX]
+Exactly. In a multi-repo view, showing repository is often a best practice.
+
+[PAUSE]
+
+[JAMIE]
+Letâ€™s do the dedicated screen reader navigation reference, because a lot of learners need a reliable mental map.
+
+[ALEX]
+Great idea. Start from the project home page, meaning the list of projects for an organization or repository. Expect a list or grid of project entries. Use standard navigation keys to move through links and buttons, and activate the project you want.
+
+[JAMIE]
+Once youâ€™re inside a project, whatâ€™s the general model?
+
+[ALEX]
+There are a few recurring regions: view selectors or tabs near the top, the main content area showing Table, Board, or Roadmap, filtering controls, and often a detail panel that opens on the right when you activate an item.
+
+[JAMIE]
+So learners should think in regions, not just individual controls.
+
+[ALEX]
+Yes. Region awareness matters. In general, it helps to locate the current view, then the filter bar, then the content area. When you open an item, understand that focus may move into a right sidebar panel with editable fields.
+
+[JAMIE]
+Give us the Table view mental map.
+
+[ALEX]
+Header row of fields across the top. Rows of items below. Arrow navigation can move within the grid. Enter opens details. Space may edit a cell. Because itâ€™s grid-like, listen carefully for row and column context so you always know which field youâ€™re on.
+
+[JAMIE]
+And Board view?
+
+[ALEX]
+Think columns, then cards within columns. Tab often moves through cards and related controls. Enter opens the selected card in the detail panel. Remember: if you need to move a card between columns accessibly, edit its Status field in the panel instead of trying to drag.
+
+[JAMIE]
+Tell us about the detail panel.
+
+[ALEX]
+This right sidebar appears from any view after opening an item. Itâ€™s often the most linear and therefore accessible place to review and edit title, status, assignees, labels, custom fields, and other metadata. Escape commonly closes it.
+
+[JAMIE]
+And the filter bar?
+
+[ALEX]
+The filter bar is where you type or refine project queries. For screen reader users, thatâ€™s a powerful control because it can quickly reduce noise. If a project feels overwhelming, filtering down to one assignee, one status, one repo, or one iteration can make the experience much more manageable.
+
+[PAUSE]
+
+[JAMIE]
+Iâ€™m intrigued by the accessibility agent command mentioned here: slash project-status. What is that for?
+
+[ALEX]
+The idea is an accessibility-oriented helper that summarizes the state of a project in a compact, textual way. Instead of navigating every visual element to answer basic status questions, you ask for a project-status style summary.
+
+[JAMIE]
+What kind of information would it show?
+
+[ALEX]
+Typically things like counts by status, notable items, upcoming dates or sprint context, and a plain-language snapshot of project health or progress. Itâ€™s meant to surface the information someone might otherwise gather by visually scanning a board or roadmap.
+
+[JAMIE]
+So itâ€™s a translation layer from visual project dashboard to text summary.
+
+[ALEX]
+Exactly.
+
+[JAMIE]
+Was there an example output conceptually?
+
+[ALEX]
+Yes, the chapter points to example output to show what a concise project snapshot can look like: a summary of where work sits, whatâ€™s active, whatâ€™s blocked or upcoming, and what deserves attention next.
+
+[JAMIE]
+When should someone use a tool like that?
+
+[ALEX]
+When the project is large, when a quick orientation is needed, when Roadmap or Board would take too long to parse nonvisually, or when you want a status check before drilling into details. Itâ€™s not a replacement for direct project access, but it can be an excellent first pass.
+
+[PAUSE]
+
+[JAMIE]
+Before we wrap, letâ€™s turn the chapterâ€™s exercises into practical listening prompts.
+
+[ALEX]
+Exercise one is to create a personal tracking project. That means making a project, giving it a clear name, and adding a few items that represent your own work. The learning goal is simply getting comfortable with creation, layout switching, and item entry.
+
+[JAMIE]
+Exercise two is automation.
+
+[ALEX]
+Right. Set up a basic automation, especially auto-add, so that matching work flows into the project without manual effort. Then verify that the rule behaves as expected.
+
+[JAMIE]
+Exercise three is a sprint view.
+
+[ALEX]
+Create an iteration field, assign some items to iterations, and save a filtered view that shows the current sprint or a chosen cycle. This reinforces field creation, filtering, and saved views all together.
+
+[JAMIE]
+And exercise four goes advanced with cross-repo work.
+
+[ALEX]
+Yes. Build or modify a project so it includes multiple repositories. Then make sure the Repository field is visible and useful in your layout. Try filtering by repo and compare how one shared project can coordinate work across codebases.
+
+[PAUSE]
+
+[JAMIE]
+Can we end with a few key takeaways, especially for blind and low-vision learners?
+
+[ALEX]
+Absolutely. First, Table view is usually the best primary workspace for accessibility and precision. Second, Board view is useful conceptually, but move cards by editing Status rather than dragging. Third, Roadmap is best treated as visual summary; use Table for the real data work. Fourth, custom fields are what transform Projects from a simple task list into a structured planning tool. Fifth, saved views, filters, grouping, and sorting let one project serve many different needs.
+
+[JAMIE]
+And for cross-repo planning?
+
+[ALEX]
+Show the Repository field. Always. It reduces ambiguity.
+
+[JAMIE]
+And one final administrative note: where should learners go for the most current behavior if GitHubâ€™s interface changes?
+
+[ALEX]
+Use GitHub Docs as the authoritative source, especially the Projects documentation, and keep an eye on the GitHub changelog. Labels and milestones docs also matter because those objects often appear inside project workflows.
+
+[JAMIE]
+Thatâ€™s a great place to stop. GitHub Projects is much more than a board. Itâ€™s a flexible planning system, and with the right habits, it can be highly workable for accessible contribution workflows too.
+
+[ALEX]
+Exactly. See you next time.

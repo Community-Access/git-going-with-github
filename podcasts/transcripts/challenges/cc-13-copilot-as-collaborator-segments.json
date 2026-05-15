@@ -1,994 +1,994 @@
-[
-  {
-    "speaker": "ALEX",
-    "text": "Today we're treating GitHub Copilot as a collaborator, not an authority. That distinction matters a lot, especially for documentation, accessibility, and open source contribution workflows."
-  },
-  {
-    "speaker": "JAMIE",
-    "text": "I like that framing, because a lot of people hear \"AI assistant\" and think either magic or danger. Usually it's both less magical and more useful than that."
-  },
-  {
-    "speaker": "ALEX",
-    "text": "Exactly. In this lesson, we'll cover what Copilot is, how to set it up in VS Code, how to use inline suggestions, chat, edits, agent features, GitHub.com features, prompting patterns, accessibility workflows, troubleshooting, and then the heart of this challenge: critically evaluating Copilot's output."
-  },
-  {
-    "speaker": "JAMIE",
-    "text": "And for this workshop, the task is not just \"use AI.\" It's \"use AI to improve documentation, then decide whether the suggestion actually deserves to stay.\""
-  },
-  {
-    "speaker": "PAUSE",
-    "text": ""
-  },
-  {
-    "speaker": "ALEX",
-    "text": "A quick orientation. GitHub Copilot is AI-powered assistance integrated into tools like VS Code and GitHub.com. It can suggest code and text as you type, answer questions in chat, propose edits across files, help summarize pull requests, and support review workflows."
-  },
-  {
-    "speaker": "JAMIE",
-    "text": "But here, we're not limiting it to programming."
-  },
-  {
-    "speaker": "ALEX",
-    "text": "Right. For this workshop, Copilot is especially useful for documentation work: clarifying paragraphs, fixing grammar, suggesting headings, explaining unfamiliar repositories, drafting from outlines, and checking for accessibility concerns."
-  },
-  {
-    "speaker": "JAMIE",
-    "text": "So if someone is contributing docs, issues, pull requests, accessibility notes, or repo cleanup, Copilot can still help."
-  },
-  {
-    "speaker": "ALEX",
-    "text": "Absolutely. And the official accessibility guides matter here too. GitHub provides guidance for using Copilot in VS Code with a screen reader, for writing accessibility-focused custom instructions, and for getting started with custom agents. Those official guides are companion references throughout this material."
-  },
-  {
-    "speaker": "JAMIE",
-    "text": "Also, there's an administrative reality: access depends on your plan, your account, and sometimes your organization."
-  },
-  {
-    "speaker": "ALEX",
-    "text": "Yes. Copilot Free may be available with monthly limits. Verified students may have student access. Enterprise or organization access depends on admin policy. And because billing and features change over time, learners should check GitHub Copilot settings, the plans page, or ask a facilitator if they're unsure."
-  },
-  {
-    "speaker": "JAMIE",
-    "text": "That's important for workshop planning. If a learner doesn't have access, that's not a failure. It's an account setup issue."
-  },
-  {
-    "speaker": "PAUSE",
-    "text": ""
-  },
-  {
-    "speaker": "ALEX",
-    "text": "Let's talk about the workshop flow for this challenge set. The recommended learning pattern is simple: sign in, prompt, apply, reflect."
-  },
-  {
-    "speaker": "JAMIE",
-    "text": "And there are three guided tasks in the chapter version of the challenge set, right?"
-  },
-  {
-    "speaker": "ALEX",
-    "text": "Yes. First, sign in to Copilot and confirm it works. Second, ask Copilot to explain a codebase or setting. Third, ask Copilot to create something new, then apply it."
-  },
-  {
-    "speaker": "JAMIE",
-    "text": "And the issue-based challenge version focuses on improving a documentation file and then evaluating the result."
-  },
-  {
-    "speaker": "ALEX",
-    "text": "Right. Open a sample documentation file such as docs slash samples slash copilot-improvement-before dot md, or another documentation file in the repo. Use Copilot chat or inline suggestions to improve clarity, fix grammar or spelling, and suggest a better heading or structure. Then critically evaluate every suggestion before accepting it."
-  },
-  {
-    "speaker": "JAMIE",
-    "text": "So the \"done\" condition is not \"Copilot wrote words.\" It's \"I reviewed the words like an editor.\""
-  },
-  {
-    "speaker": "ALEX",
-    "text": "Exactly."
-  },
-  {
-    "speaker": "PAUSE",
-    "text": ""
-  },
-  {
-    "speaker": "ALEX",
-    "text": "Now setup. In current VS Code builds, AI features are often built in. You usually do not need to install a separate Copilot Chat extension on a recent stable version of VS Code."
-  },
-  {
-    "speaker": "JAMIE",
-    "text": "That's useful, because older tutorials often start with \"install this extension,\" and now that may be outdated."
-  },
-  {
-    "speaker": "ALEX",
-    "text": "Correct. The practical steps are: update VS Code if possible, locate the Copilot status item in the status bar, choose something like \"Use AI Features\" or \"Set up Copilot\" if prompted, then complete the GitHub sign-in flow in your browser."
-  },
-  {
-    "speaker": "JAMIE",
-    "text": "And if someone uses GitHub Enterprise?"
-  },
-  {
-    "speaker": "ALEX",
-    "text": "Then they may need the enterprise sign-in path and their enterprise URL. After sign-in, verify activation by opening chat and sending a simple test prompt like, \"Hello, are you working?\" If Copilot responds, it's active."
-  },
-  {
-    "speaker": "JAMIE",
-    "text": "What if keyboard shortcuts differ?"
-  },
-  {
-    "speaker": "ALEX",
-    "text": "Use the Command Palette fallback. That's a theme throughout this chapter. Shortcuts can vary by operating system, keymap, profile, browser context, and assistive technology setup. So if the default shortcut doesn't work, open the Command Palette and run the relevant command directly."
-  },
-  {
-    "speaker": "JAMIE",
-    "text": "And there's also a subscription check."
-  },
-  {
-    "speaker": "ALEX",
-    "text": "Yes. If Copilot seems unavailable, you may need to check subscription status. Use the Copilot settings on GitHub, review your plan, or inspect the account state in VS Code. The chapter emphasizes that current access details can change, so official GitHub docs are the source of truth."
-  },
-  {
-    "speaker": "PAUSE",
-    "text": ""
-  },
-  {
-    "speaker": "ALEX",
-    "text": "Next, inline suggestions, sometimes called ghost text completions. These appear while typing in the editor."
-  },
-  {
-    "speaker": "JAMIE",
-    "text": "For blind and low-vision learners, ghost text can sound elegant in print but messy in practice."
-  },
-  {
-    "speaker": "ALEX",
-    "text": "Very true. Functionally, Copilot predicts likely completions based on what you're typing and the surrounding context. That might be code, Markdown, prose, comments, or configuration."
-  },
-  {
-    "speaker": "JAMIE",
-    "text": "And how do learners interact with those suggestions?"
-  },
-  {
-    "speaker": "ALEX",
-    "text": "You can accept a suggestion, open the full suggestions panel, or accept incrementally. The suggestions panel gives more options than a single inline preview. Accepting word by word can be especially helpful when you want part of a suggestion but not all of it."
-  },
-  {
-    "speaker": "JAMIE",
-    "text": "That feels perfect for documentation. Maybe the first phrase is good, but the rest gets too verbose."
-  },
-  {
-    "speaker": "ALEX",
-    "text": "Exactly. And comments can act as prompts. For example, in a Markdown or code file, you might write a comment asking for a clearer paragraph, a better heading, a concise alt text suggestion, or a rewrite for a screen reader audience."
-  },
-  {
-    "speaker": "JAMIE",
-    "text": "So prompting doesn't only happen in the chat panel."
-  },
-  {
-    "speaker": "ALEX",
-    "text": "Right. It can happen right where you're editing."
-  },
-  {
-    "speaker": "JAMIE",
-    "text": "What about screen reader behavior? Because frequent ghost text announcements can become noisy fast."
-  },
-  {
-    "speaker": "ALEX",
-    "text": "The chapter gives a very practical accessibility perspective. If suggestions are too frequent or intrusive, learners may want to adjust settings, use Accessible View, or disable inline suggestions temporarily. The goal is not to endure constant interruption. The goal is to create a workable editing environment."
-  },
-  {
-    "speaker": "JAMIE",
-    "text": "And there are specific notes for NVDA, JAWS, and VoiceOver?"
-  },
-  {
-    "speaker": "ALEX",
-    "text": "Yes. The chapter explicitly addresses those screen readers and points learners toward Accessible View as an alternative way to review suggestions in a more stable text presentation."
-  },
-  {
-    "speaker": "JAMIE",
-    "text": "Can someone turn inline suggestions off altogether?"
-  },
-  {
-    "speaker": "ALEX",
-    "text": "Yes. Temporarily for a language, temporarily via the Command Palette, or more permanently through settings. That's a key accessibility point: using Copilot does not require leaving every AI feature constantly on."
-  },
-  {
-    "speaker": "PAUSE",
-    "text": ""
-  },
-  {
-    "speaker": "ALEX",
-    "text": "Now let's move into Copilot Chat, the conversational part of the experience."
-  },
-  {
-    "speaker": "JAMIE",
-    "text": "This is probably what most people picture first."
-  },
-  {
-    "speaker": "ALEX",
-    "text": "Probably. You open chat through a shortcut or, again, through the Command Palette with something like \"Chat: Open Chat.\" Inside chat, you can ask questions, request rewrites, explain code, generate examples, or ask for help with documentation and repository understanding."
-  },
-  {
-    "speaker": "JAMIE",
-    "text": "The chapter mentions chat modes."
-  },
-  {
-    "speaker": "ALEX",
-    "text": "Yes. Different modes shape what Copilot does. Broadly, you can think of them as asking for explanation, requesting edits, or letting agent-like workflows take on more initiative. The exact labels and UI may change over time, but the concept is stable: choose a mode that matches your goal."
-  },
-  {
-    "speaker": "JAMIE",
-    "text": "And models can vary too."
-  },
-  {
-    "speaker": "ALEX",
-    "text": "Yes. There may be a model selector. The quick guidance is practical rather than theoretical: if one model seems slow, unhelpful, or overly wordy, try another if available. But learners do not need a deep model-comparison mindset to begin."
-  },
-  {
-    "speaker": "JAMIE",
-    "text": "What should learners expect in the chat interface itself?"
-  },
-  {
-    "speaker": "ALEX",
-    "text": "A prompt area, prior conversation context, controls near the top or bottom depending on layout, and often a model or mode selector. For screen reader users, understanding the panel layout matters because responses may stream in dynamically."
-  },
-  {
-    "speaker": "JAMIE",
-    "text": "Which can be hard to review linearly."
-  },
-  {
-    "speaker": "ALEX",
-    "text": "Exactly why Accessible View comes up again. For NVDA and JAWS users, and for VoiceOver users too, the chapter recommends a workflow where you ask the question, then open Accessible View to read the full response in a plain text buffer."
-  },
-  {
-    "speaker": "JAMIE",
-    "text": "That gives you something more stable than chasing streaming updates."
-  },
-  {
-    "speaker": "ALEX",
-    "text": "Right."
-  },
-  {
-    "speaker": "JAMIE",
-    "text": "What kinds of things should learners ask Copilot Chat in this workshop?"
-  },
-  {
-    "speaker": "ALEX",
-    "text": "A lot of non-coding examples are valid. Explain a setting. Summarize a repo. Suggest a clearer heading. Rewrite a paragraph for plain language. Review alt text. Draft a commit message. Suggest an outline. Evaluate documentation tone. Those are all within scope."
-  },
-  {
-    "speaker": "JAMIE",
-    "text": "And the chapter also mentions at-mentions and slash commands."
-  },
-  {
-    "speaker": "ALEX",
-    "text": "Yes. At-mentions let you provide context to Copilot, often by directing it toward specific files, tools, or context sources. Slash commands trigger built-in task patterns. These features help make prompts more precise and reduce ambiguity."
-  },
-  {
-    "speaker": "JAMIE",
-    "text": "So instead of \"Help me,\" it becomes \"Help me with this specific file, in this repo, for this purpose.\""
-  },
-  {
-    "speaker": "ALEX",
-    "text": "Exactly. Precision improves usefulness."
-  },
-  {
-    "speaker": "PAUSE",
-    "text": ""
-  },
-  {
-    "speaker": "ALEX",
-    "text": "Now, beyond chat, there's Copilot Edits for making multi-file changes."
-  },
-  {
-    "speaker": "JAMIE",
-    "text": "That sounds powerful and also potentially risky."
-  },
-  {
-    "speaker": "ALEX",
-    "text": "That's a fair summary. Copilot Edits can propose coordinated changes across several files, which is useful for refactors, documentation updates, naming changes, or consistency work. But it increases the need to review diffs carefully."
-  },
-  {
-    "speaker": "JAMIE",
-    "text": "How does a screen reader user review that safely?"
-  },
-  {
-    "speaker": "ALEX",
-    "text": "The chapter emphasizes navigating the diff with a screen reader and managing the working set intentionally. In practice, that means limiting scope, understanding which files are in play, and reviewing proposed changes file by file rather than treating the batch as a single trustworthy unit."
-  },
-  {
-    "speaker": "JAMIE",
-    "text": "So smaller working sets mean better reviewability."
-  },
-  {
-    "speaker": "ALEX",
-    "text": "Exactly."
-  },
-  {
-    "speaker": "PAUSE",
-    "text": ""
-  },
-  {
-    "speaker": "ALEX",
-    "text": "Then we get to Agent mode."
-  },
-  {
-    "speaker": "JAMIE",
-    "text": "This is where Copilot can take more initiative?"
-  },
-  {
-    "speaker": "ALEX",
-    "text": "Yes. Agent mode is for workflows where Copilot does more than answer. It can plan steps, propose actions, and sometimes execute operations, especially when terminal commands or larger workspace tasks are involved."
-  },
-  {
-    "speaker": "JAMIE",
-    "text": "Which means approvals matter."
-  },
-  {
-    "speaker": "ALEX",
-    "text": "Very much. The chapter specifically calls out approving terminal commands. Never treat agent-generated commands as harmless by default. Read them, understand them, and approve only what you intend."
-  },
-  {
-    "speaker": "JAMIE",
-    "text": "Can we distill the difference between Ask, Edit, and Agent?"
-  },
-  {
-    "speaker": "ALEX",
-    "text": "Yes. Ask is for explanation and guidance. Edit is for making requested changes. Agent is for more autonomous, multi-step help. If you only need an answer, use Ask. If you know the change you want, Edit can be efficient. If you want Copilot to drive a broader workflow, Agent may fit, but with stronger review and safety habits."
-  },
-  {
-    "speaker": "JAMIE",
-    "text": "And there's also a newer Agents window in VS Code 1.120."
-  },
-  {
-    "speaker": "ALEX",
-    "text": "Right. The chapter includes the Agents Window, how to open it, workshop safety notes, and accessibility notes. The safety guidance is especially important for learners: agentic features are powerful, but they should be used with clear intent, careful approvals, and a willingness to stop and inspect."
-  },
-  {
-    "speaker": "JAMIE",
-    "text": "So the workshop doesn't glorify autonomy. It teaches supervised collaboration."
-  },
-  {
-    "speaker": "ALEX",
-    "text": "Perfectly said."
-  },
-  {
-    "speaker": "PAUSE",
-    "text": ""
-  },
-  {
-    "speaker": "ALEX",
-    "text": "Another feature is Next Edit Suggestions."
-  },
-  {
-    "speaker": "JAMIE",
-    "text": "What does that mean in plain language?"
-  },
-  {
-    "speaker": "ALEX",
-    "text": "It means Copilot tries to predict your likely next modification after the one you just made. For example, if you update one heading style or rename one variable, it may suggest similar follow-up edits elsewhere."
-  },
-  {
-    "speaker": "JAMIE",
-    "text": "That could be great for consistency work in docs."
-  },
-  {
-    "speaker": "ALEX",
-    "text": "Yes, especially when standardizing formatting or repeated phrases. But again, prediction is not proof. Review remains necessary."
-  },
-  {
-    "speaker": "PAUSE",
-    "text": ""
-  },
-  {
-    "speaker": "ALEX",
-    "text": "Copilot also exists on GitHub dot com, not just in VS Code."
-  },
-  {
-    "speaker": "JAMIE",
-    "text": "So if someone is reviewing a repository in the browser, they still have AI help available."
-  },
-  {
-    "speaker": "ALEX",
-    "text": "Exactly. On GitHub dot com, Copilot Chat can help you ask about a specific repository, an issue, a code sample, or a general coding question. It can also help with pull request summaries and code review assistance."
-  },
-  {
-    "speaker": "JAMIE",
-    "text": "How is that different from VS Code?"
-  },
-  {
-    "speaker": "ALEX",
-    "text": "VS Code is usually better when you need close interaction with local files, editing, diffs, settings, and development workflows. GitHub dot com is often more convenient for repository-level understanding, issues, pull requests, and browser-based context."
-  },
-  {
-    "speaker": "JAMIE",
-    "text": "So one is more workspace-centered, the other more platform-centered."
-  },
-  {
-    "speaker": "ALEX",
-    "text": "Yes."
-  },
-  {
-    "speaker": "PAUSE",
-    "text": ""
-  },
-  {
-    "speaker": "ALEX",
-    "text": "Let's get practical with prompting, especially for documentation work. The chapter gives a whole section on effective prompting."
-  },
-  {
-    "speaker": "JAMIE",
-    "text": "Good, because \"write better\" is not a great prompt."
-  },
-  {
-    "speaker": "ALEX",
-    "text": "Exactly. A good prompt includes context, a clear task, constraints, and often the intended audience. A bad prompt is vague. A better one might say: rewrite this paragraph for beginners, keep the tone friendly, preserve technical accuracy, use plain language, and avoid adding information not already supported by the document."
-  },
-  {
-    "speaker": "JAMIE",
-    "text": "That's a huge difference."
-  },
-  {
-    "speaker": "ALEX",
-    "text": "And the workshop teaches several prompting patterns. Contextual rewrite: improve something that already exists, with context. Generate with constraints: create something new, but within tight boundaries. Review and improve: critique and revise. Accessibility audit: inspect content for barriers. Draft from outline: expand structured notes into a first draft."
-  },
-  {
-    "speaker": "JAMIE",
-    "text": "Those all sound useful for docs contributors."
-  },
-  {
-    "speaker": "ALEX",
-    "text": "They are. And the chapter also recommends iterating on responses. If the first answer is too long, too generic, or misses the audience, follow up. Ask it to shorten, preserve terminology, avoid tables, write for screen reader users, or keep to a specific style."
-  },
-  {
-    "speaker": "JAMIE",
-    "text": "That's a great learning point. Prompting is not one-and-done."
-  },
-  {
-    "speaker": "ALEX",
-    "text": "Right. It's conversational steering."
-  },
-  {
-    "speaker": "PAUSE",
-    "text": ""
-  },
-  {
-    "speaker": "ALEX",
-    "text": "There's also a section on Timeline View and file history, which complements AI work nicely."
-  },
-  {
-    "speaker": "JAMIE",
-    "text": "Because if Copilot helps you revise something, you still want to see what changed over time."
-  },
-  {
-    "speaker": "ALEX",
-    "text": "Exactly. AI assistance doesn't replace version history. It makes version history more important, because you may want to compare drafts, undo changes, or understand how a file evolved."
-  },
-  {
-    "speaker": "PAUSE",
-    "text": ""
-  },
-  {
-    "speaker": "ALEX",
-    "text": "Next: custom instructions versus custom agents."
-  },
-  {
-    "speaker": "JAMIE",
-    "text": "This is a big one. People often mix them up."
-  },
-  {
-    "speaker": "ALEX",
-    "text": "Custom instructions are persistent guidance. They tell Copilot how to behave by default: preferred tone, documentation style, accessibility standards, commit message format, organizational rules, and so on."
-  },
-  {
-    "speaker": "JAMIE",
-    "text": "So they're like house rules."
-  },
-  {
-    "speaker": "ALEX",
-    "text": "Exactly. The example in the chapter points to a dot github slash copilot-instructions dot md file and includes ideas like accessibility standards, documentation style, commit message format, and tone."
-  },
-  {
-    "speaker": "JAMIE",
-    "text": "Meaning you don't have to restate those preferences every time."
-  },
-  {
-    "speaker": "ALEX",
-    "text": "Right. If supported in your environment, Copilot simply follows them."
-  },
-  {
-    "speaker": "JAMIE",
-    "text": "And custom agents?"
-  },
-  {
-    "speaker": "ALEX",
-    "text": "Custom agents are more task-oriented helpers. They package workflows or specialized behavior for repeated tasks. So if custom instructions are the rules of the road, custom agents are specialized vehicles for particular jobs."
-  },
-  {
-    "speaker": "JAMIE",
-    "text": "Can you use both together?"
-  },
-  {
-    "speaker": "ALEX",
-    "text": "Yes, and the chapter explicitly recommends that mental model. Instructions guide every response. Agents automate specific workflows. Together, they can support consistent, accessibility-aware collaboration."
-  },
-  {
-    "speaker": "JAMIE",
-    "text": "What makes accessibility-focused custom instructions effective?"
-  },
-  {
-    "speaker": "ALEX",
-    "text": "The chapter's guidance is very practical. Focus on team-specific standards rather than vague generic values. Use lists and checklists. Reference your design system. Be explicit about accessibility requirements like keyboard navigation, headings, semantic structure, plain language, and criteria you care about."
-  },
-  {
-    "speaker": "JAMIE",
-    "text": "And there's an example checklist around WCAG 1.3.1, info and relationships."
-  },
-  {
-    "speaker": "ALEX",
-    "text": "Yes, which reinforces that instructions can encode structured review habits, not just tone preferences."
-  },
-  {
-    "speaker": "JAMIE",
-    "text": "What are the common mistakes?"
-  },
-  {
-    "speaker": "ALEX",
-    "text": "Instructions that are too vague, too broad, contradictory, or aspirational without being testable. \"Make this accessible\" is weaker than \"use semantic headings, avoid unnecessary tables, include meaningful alt text only for informative images, and preserve keyboard-operable patterns.\""
-  },
-  {
-    "speaker": "PAUSE",
-    "text": ""
-  },
-  {
-    "speaker": "ALEX",
-    "text": "Now let's highlight Accessible View, because for many learners this is not a side note. It's central."
-  },
-  {
-    "speaker": "JAMIE",
-    "text": "Yes. If a response streams visually in a chat panel, that may be awkward or exhausting with a screen reader."
-  },
-  {
-    "speaker": "ALEX",
-    "text": "Accessible View gives a plain text buffer for reviewing Copilot responses and sometimes inline suggestions more comfortably. The chapter recommends a workflow: every time you ask Copilot something, consider opening Accessible View to read the full answer in a more stable form."
-  },
-  {
-    "speaker": "JAMIE",
-    "text": "So instead of listening while text appears unpredictably, you move into a review space."
-  },
-  {
-    "speaker": "ALEX",
-    "text": "Exactly. It helps with long answers, code blocks, copying text, and multi-line suggestions. It is especially useful when ghost text or streaming output is hard to parse."
-  },
-  {
-    "speaker": "JAMIE",
-    "text": "That sounds like one of those features learners should build into their muscle memory early."
-  },
-  {
-    "speaker": "ALEX",
-    "text": "I agree."
-  },
-  {
-    "speaker": "PAUSE",
-    "text": ""
-  },
-  {
-    "speaker": "ALEX",
-    "text": "The chapter also includes a keyboard shortcuts reference."
-  },
-  {
-    "speaker": "JAMIE",
-    "text": "Do we need to memorize them all?"
-  },
-  {
-    "speaker": "ALEX",
-    "text": "No. The important principle is to know categories and fallbacks. There are shortcuts for inline suggestions, chat, accessibility features like Accessible View, general VS Code navigation, and browser-based GitHub shortcuts. But since shortcuts vary, the Command Palette remains your reliable fallback."
-  },
-  {
-    "speaker": "JAMIE",
-    "text": "And the chapter even notes video tutorials for screen reader demonstrations."
-  },
-  {
-    "speaker": "ALEX",
-    "text": "Yes, which can be helpful if someone wants a second mode of learning."
-  },
-  {
-    "speaker": "PAUSE",
-    "text": ""
-  },
-  {
-    "speaker": "ALEX",
-    "text": "Now we reach the core evaluative mindset. The challenge YAML gives a trust, verify, reject framework, and the chapter expands that into a full critical evaluation model."
-  },
-  {
-    "speaker": "JAMIE",
-    "text": "Let's slow down here, because this is the part learners really need."
-  },
-  {
-    "speaker": "ALEX",
-    "text": "For every Copilot suggestion, ask: is it factually accurate? Is it clearer than the original? Does it match the document's tone? Does it introduce accessibility issues? Did it add content you didn't ask for?"
-  },
-  {
-    "speaker": "JAMIE",
-    "text": "That last one is sneaky. AI loves to add extras."
-  },
-  {
-    "speaker": "ALEX",
-    "text": "It does. And those extras may sound polished while being wrong, off-topic, or out of scope."
-  },
-  {
-    "speaker": "JAMIE",
-    "text": "So when should you trust Copilot?"
-  },
-  {
-    "speaker": "ALEX",
-    "text": "More readily for low-risk, easily verifiable tasks: grammar cleanup, rough brainstorming, formatting suggestions, possible headings, draft rewrites you can inspect line by line."
-  },
-  {
-    "speaker": "JAMIE",
-    "text": "When should you verify?"
-  },
-  {
-    "speaker": "ALEX",
-    "text": "Almost always for substantive claims, instructions, examples, links, accessibility advice, configuration details, commands, policy statements, and anything user-facing."
-  },
-  {
-    "speaker": "JAMIE",
-    "text": "And when should you reject?"
-  },
-  {
-    "speaker": "ALEX",
-    "text": "Reject when it is factually wrong, adds invented links, becomes less clear, changes the tone in an unhelpful way, introduces accessibility regressions, misrepresents the audience, or performs a task other than the one you requested."
-  },
-  {
-    "speaker": "JAMIE",
-    "text": "What are the common failure modes the chapter warns about?"
-  },
-  {
-    "speaker": "ALEX",
-    "text": "Hallucinated links. Over-complicated language. Lost context. Accessibility regressions. Also overconfidence, hidden assumptions, and suggestions that appear polished but are not grounded in the repository or the workshop's goals."
-  },
-  {
-    "speaker": "JAMIE",
-    "text": "Can you say more about accessibility-specific concerns?"
-  },
-  {
-    "speaker": "ALEX",
-    "text": "Certainly. AI may produce alt text that is too vague or too long. It may suggest tables where lists would be simpler. It may remove semantic structure. It may use visual wording without considering screen reader users. It may recommend decorative images be described when empty alt text would be more appropriate, or vice versa. Accessibility requires judgment about purpose, not just wording."
-  },
-  {
-    "speaker": "JAMIE",
-    "text": "So \"sounds descriptive\" is not enough."
-  },
-  {
-    "speaker": "ALEX",
-    "text": "Exactly. You need to ask what the content is doing."
-  },
-  {
-    "speaker": "JAMIE",
-    "text": "What's the right mental model, then?"
-  },
-  {
-    "speaker": "ALEX",
-    "text": "Copilot is a fast drafting partner. It is not a source of truth, not an accessibility expert, not a repository maintainer, and not your editor-in-chief. You stay responsible for the final content."
-  },
-  {
-    "speaker": "PAUSE",
-    "text": ""
-  },
-  {
-    "speaker": "ALEX",
-    "text": "Let's ground that with the example solution for the challenge."
-  },
-  {
-    "speaker": "JAMIE",
-    "text": "Yes, because the sample interaction is small but very revealing."
-  },
-  {
-    "speaker": "ALEX",
-    "text": "The example prompt asks Copilot to review alt text in a file and suggest improvements for screen reader users. Copilot notices an image with alt text equal to \"screenshot\" and proposes something much more descriptive, naming the repository page and the visible file list."
-  },
-  {
-    "speaker": "JAMIE",
-    "text": "That's a good start, because \"screenshot\" alone tells a screen reader user almost nothing useful."
-  },
-  {
-    "speaker": "ALEX",
-    "text": "Exactly. The before version is simply an image with alt text \"screenshot.\" The improved after version describes the GitHub repository Code tab and the visible items, such as README, the docs folder, and the dot github folder."
-  },
-  {
-    "speaker": "JAMIE",
-    "text": "So what did Copilot get right?"
-  },
-  {
-    "speaker": "ALEX",
-    "text": "It recognized that the original alt text was not descriptive enough for an informational image. That is a real improvement."
-  },
-  {
-    "speaker": "JAMIE",
-    "text": "And what needed adjustment?"
-  },
-  {
-    "speaker": "ALEX",
-    "text": "The solution notes that Copilot's version was about 30 words long, so the human editor shortened it to 18 words while preserving the key information. Concision matters in alt text."
-  },
-  {
-    "speaker": "JAMIE",
-    "text": "And what did Copilot miss?"
-  },
-  {
-    "speaker": "ALEX",
-    "text": "It did not raise the possibility that the image might be decorative. The editor had to ask that question independently. After checking, the image was judged informational, so descriptive alt text was appropriate."
-  },
-  {
-    "speaker": "JAMIE",
-    "text": "That example is excellent because it shows three levels of thinking. One, notice the obvious improvement. Two, refine it. Three, question the underlying assumption."
-  },
-  {
-    "speaker": "ALEX",
-    "text": "Beautifully put."
-  },
-  {
-    "speaker": "PAUSE",
-    "text": ""
-  },
-  {
-    "speaker": "ALEX",
-    "text": "The solution also offers alternate approaches to completing the challenge."
-  },
-  {
-    "speaker": "JAMIE",
-    "text": "So learners aren't trapped into one exact prompt."
-  },
-  {
-    "speaker": "ALEX",
-    "text": "Right. You could ask Copilot to improve documentation clarity, check Markdown formatting, or suggest commit messages, as long as you critically evaluate the output and make a reasoned decision."
-  },
-  {
-    "speaker": "JAMIE",
-    "text": "And the bottom line?"
-  },
-  {
-    "speaker": "ALEX",
-    "text": "What matters is using AI as a collaborator while maintaining your own judgment. If you used Copilot, evaluated its output critically, and made an improvement based on that evaluation, you met the learning objective."
-  },
-  {
-    "speaker": "PAUSE",
-    "text": ""
-  },
-  {
-    "speaker": "ALEX",
-    "text": "Let's walk through the challenge tasks more concretely."
-  },
-  {
-    "speaker": "JAMIE",
-    "text": "Great. Start with the chapter version first?"
-  },
-  {
-    "speaker": "ALEX",
-    "text": "Sure. First task: sign in to Copilot. Update VS Code if needed, open the Copilot control in the status bar, enable AI features or set up Copilot, complete GitHub sign-in, then open chat and test it with a simple prompt."
-  },
-  {
-    "speaker": "JAMIE",
-    "text": "And for screen reader users, if the response streams awkwardly, open Accessible View."
-  },
-  {
-    "speaker": "ALEX",
-    "text": "Exactly. Second task: explain a codebase. Clone the sci-fi themes repository using Git: Clone, open it, open Copilot Chat, and ask a targeted question such as what a specific setting does. Then ask a follow-up, like how to apply one of the themes in settings dot json. The goal is to ask at least two questions and apply one setting change."
-  },
-  {
-    "speaker": "JAMIE",
-    "text": "That's a neat combination of understanding and action."
-  },
-  {
-    "speaker": "ALEX",
-    "text": "Yes. Third task: create something new. Ask Copilot to generate a custom thinking-phrases theme based on a fictional universe you like. Review the generated array, copy it into your settings dot json, save, reload VS Code, and test it by asking Copilot another question."
-  },
-  {
-    "speaker": "JAMIE",
-    "text": "That makes the AI feel less abstract. You see a custom result in your own environment."
-  },
-  {
-    "speaker": "ALEX",
-    "text": "Exactly."
-  },
-  {
-    "speaker": "JAMIE",
-    "text": "And then there's the issue comment evidence."
-  },
-  {
-    "speaker": "ALEX",
-    "text": "Yes. Learners should comment on the assigned challenge issue with a checklist indicating whether Copilot was enabled and signed in, whether they asked it to explain a setting, whether they applied a setting from its suggestion, whether they created a custom theme, and what theme universe they chose. Then close the issue when done."
-  },
-  {
-    "speaker": "JAMIE",
-    "text": "That's the chapter challenge path. And the YAML challenge path asks for a narrative evidence box."
-  },
-  {
-    "speaker": "ALEX",
-    "text": "Correct. In that version, the learner describes what they asked Copilot to do, what it suggested, how they evaluated it, one thing Copilot got wrong, and one thing it got right."
-  },
-  {
-    "speaker": "JAMIE",
-    "text": "That's a fantastic reflection structure."
-  },
-  {
-    "speaker": "ALEX",
-    "text": "It is, because it pushes beyond \"I used the tool\" into \"I judged the tool.\""
-  },
-  {
-    "speaker": "PAUSE",
-    "text": ""
-  },
-  {
-    "speaker": "ALEX",
-    "text": "The YAML challenge also includes a peer simulation check."
-  },
-  {
-    "speaker": "JAMIE",
-    "text": "Meaning compare your Copilot-improved result with a peer-simulation pull request or a real buddy, if available, and ask whether the AI suggestion genuinely improved the document."
-  },
-  {
-    "speaker": "ALEX",
-    "text": "Exactly. That comparison step is pedagogically strong, because AI output can feel persuasive in isolation. Comparison restores perspective."
-  },
-  {
-    "speaker": "PAUSE",
-    "text": ""
-  },
-  {
-    "speaker": "ALEX",
-    "text": "Let's cover \"if you get stuck,\" because administrative and troubleshooting guidance matters."
-  },
-  {
-    "speaker": "JAMIE",
-    "text": "Yes, especially in workshops."
-  },
-  {
-    "speaker": "ALEX",
-    "text": "If Copilot controls are missing, update VS Code and reload the window. If OAuth sign-in fails, verify you're signed into GitHub in the browser, then retry. If the chat panel doesn't open, use the Command Palette and confirm AI features are enabled. If Copilot seems unresponsive, check the model selector or account state."
-  },
-  {
-    "speaker": "JAMIE",
-    "text": "And in the challenge YAML, if Copilot is not available at all, the note says you may need Copilot access, including possible student access via GitHub Education, or ask a facilitator for alternatives."
-  },
-  {
-    "speaker": "ALEX",
-    "text": "Right. If you don't know what to ask, start simple: \"Improve the clarity of this paragraph\" or \"Suggest a better heading for this section.\" If everything seems good, raise the difficulty: ask for a rewrite for a screen reader user, then evaluate whether it actually helps."
-  },
-  {
-    "speaker": "JAMIE",
-    "text": "And if you finish but want to compare, there's a reference solution."
-  },
-  {
-    "speaker": "ALEX",
-    "text": "Yes."
-  },
-  {
-    "speaker": "PAUSE",
-    "text": ""
-  },
-  {
-    "speaker": "ALEX",
-    "text": "There's also a \"learning moment\" embedded in this chapter, even if not always labeled aloud. The bigger lesson is that Copilot is not just autocomplete."
-  },
-  {
-    "speaker": "JAMIE",
-    "text": "It can explain, draft, propose, and customize, but the human still defines success."
-  },
-  {
-    "speaker": "ALEX",
-    "text": "Exactly. And the learning pattern used here is intentional: sign in, prompt, apply, reflect. It builds both technical confidence and editorial judgment."
-  },
-  {
-    "speaker": "JAMIE",
-    "text": "What about the learning cards mentioned throughout the chapter?"
-  },
-  {
-    "speaker": "ALEX",
-    "text": "Those sections reinforce the main concepts in compact form: inline suggestions, chat, edits, agent mode, Copilot on GitHub dot com, effective prompting, Accessible View, and critical evaluation. They're not extra topics so much as reinforcement points."
-  },
-  {
-    "speaker": "JAMIE",
-    "text": "And the \"about learning cards\" note basically tells learners how to use those as quick-reference study aids."
-  },
-  {
-    "speaker": "ALEX",
-    "text": "Yes."
-  },
-  {
-    "speaker": "PAUSE",
-    "text": ""
-  },
-  {
-    "speaker": "ALEX",
-    "text": "Before we wrap up, let's touch on a few advanced and newer features mentioned later in the chapter: Smart Actions, Browser Agent, Plan Agent and Copilot Spaces, and pricing updates."
-  },
-  {
-    "speaker": "JAMIE",
-    "text": "Do beginners need to master those now?"
-  },
-  {
-    "speaker": "ALEX",
-    "text": "No. The takeaway is awareness. Copilot is expanding beyond simple suggestion and chat experiences. Some features are experimental. Some may depend on version, plan, region, or policy. And pricing is evolving, including usage-based billing for some AI-powered actions, while code completions and next edit suggestions may be treated differently on paid plans."
-  },
-  {
-    "speaker": "JAMIE",
-    "text": "So learners should avoid assuming every Copilot feature is universally available or billed the same way."
-  },
-  {
-    "speaker": "ALEX",
-    "text": "Exactly. Check current docs when it matters."
-  },
-  {
-    "speaker": "PAUSE",
-    "text": ""
-  },
-  {
-    "speaker": "JAMIE",
-    "text": "Can we do a concise checklist for the challenge mindset?"
-  },
-  {
-    "speaker": "ALEX",
-    "text": "Yes. Ask Copilot for a specific documentation improvement. Read the response in a way that works for you, ideally with Accessible View if needed. Compare the suggestion to the original. Check accuracy, clarity, tone, audience fit, and accessibility. Accept, modify, or reject. Then document what happened in your evidence comment."
-  },
-  {
-    "speaker": "JAMIE",
-    "text": "And if the suggestion feels polished but suspicious, slow down."
-  },
-  {
-    "speaker": "ALEX",
-    "text": "Always."
-  },
-  {
-    "speaker": "JAMIE",
-    "text": "And if it gives you a link, command, setting, policy statement, or accessibility claim?"
-  },
-  {
-    "speaker": "ALEX",
-    "text": "Verify it."
-  },
-  {
-    "speaker": "JAMIE",
-    "text": "And if it rewrites something in a way that erases meaning or makes it harder for the intended audience?"
-  },
-  {
-    "speaker": "ALEX",
-    "text": "Reject or revise it."
-  },
-  {
-    "speaker": "JAMIE",
-    "text": "And if it genuinely helps, but needs trimming?"
-  },
-  {
-    "speaker": "ALEX",
-    "text": "Then collaborate. Keep the good part, improve the rest."
-  },
-  {
-    "speaker": "PAUSE",
-    "text": ""
-  },
-  {
-    "speaker": "ALEX",
-    "text": "One last note on sources. This chapter and the solution both point learners to authoritative references: GitHub Docs, the GitHub Changelog, GitHub Copilot docs, VS Code Copilot documentation, the custom instructions support matrix, guidance on custom agents and agent skills, auto model selection information, the Copilot changelog feed, and GitHub accessibility documentation."
-  },
-  {
-    "speaker": "JAMIE",
-    "text": "So even in a lesson about AI assistance, the real source of truth is still the official documentation."
-  },
-  {
-    "speaker": "ALEX",
-    "text": "Exactly. Copilot can help you navigate, draft, and explore. Official docs and your own review confirm what is correct."
-  },
-  {
-    "speaker": "JAMIE",
-    "text": "That feels like the perfect closing idea."
-  },
-  {
-    "speaker": "ALEX",
-    "text": "GitHub Copilot is most useful when you treat it as a collaborator with speed, not as a collaborator with judgment. The judgment is still yours."
-  },
-  {
-    "speaker": "JAMIE",
-    "text": "And that is what makes \"AI as your copilot\" better than \"AI as your autopilot.\""
-  },
-  {
-    "speaker": "ALEX",
-    "text": "Well said."
-  }
+﻿[
+    {
+        "speaker":  "ALEX",
+        "text":  "Today we\u0027re treating GitHub Copilot as a collaborator, not an authority. That distinction matters a lot, especially for documentation, accessibility, and open source contribution workflows."
+    },
+    {
+        "speaker":  "JAMIE",
+        "text":  "I like that framing, because a lot of people hear \"AI assistant\" and think either magic or danger. Usually it\u0027s both less magical and more useful than that."
+    },
+    {
+        "speaker":  "ALEX",
+        "text":  "Exactly. In this lesson, we\u0027ll cover what Copilot is, how to set it up in VS Code, how to use inline suggestions, chat, edits, agent features, GitHub.com features, prompting patterns, accessibility workflows, troubleshooting, and then the heart of this challenge: critically evaluating Copilot\u0027s output."
+    },
+    {
+        "speaker":  "JAMIE",
+        "text":  "And for this workshop, the task is not just \"use AI.\" It\u0027s \"use AI to improve documentation, then decide whether the suggestion actually deserves to stay.\""
+    },
+    {
+        "speaker":  "PAUSE",
+        "text":  ""
+    },
+    {
+        "speaker":  "ALEX",
+        "text":  "A quick orientation. GitHub Copilot is AI-powered assistance integrated into tools like VS Code and GitHub.com. It can suggest code and text as you type, answer questions in chat, propose edits across files, help summarize pull requests, and support review workflows."
+    },
+    {
+        "speaker":  "JAMIE",
+        "text":  "But here, we\u0027re not limiting it to programming."
+    },
+    {
+        "speaker":  "ALEX",
+        "text":  "Right. For this workshop, Copilot is especially useful for documentation work: clarifying paragraphs, fixing grammar, suggesting headings, explaining unfamiliar repositories, drafting from outlines, and checking for accessibility concerns."
+    },
+    {
+        "speaker":  "JAMIE",
+        "text":  "So if someone is contributing docs, issues, pull requests, accessibility notes, or repo cleanup, Copilot can still help."
+    },
+    {
+        "speaker":  "ALEX",
+        "text":  "Absolutely. And the official accessibility guides matter here too. GitHub provides guidance for using Copilot in VS Code with a screen reader, for writing accessibility-focused custom instructions, and for getting started with custom agents. Those official guides are companion references throughout this material."
+    },
+    {
+        "speaker":  "JAMIE",
+        "text":  "Also, there\u0027s an administrative reality: access depends on your plan, your account, and sometimes your organization."
+    },
+    {
+        "speaker":  "ALEX",
+        "text":  "Yes. Copilot Free may be available with monthly limits. Verified students may have student access. Enterprise or organization access depends on admin policy. And because billing and features change over time, learners should check GitHub Copilot settings, the plans page, or ask a facilitator if they\u0027re unsure."
+    },
+    {
+        "speaker":  "JAMIE",
+        "text":  "That\u0027s important for workshop planning. If a learner doesn\u0027t have access, that\u0027s not a failure. It\u0027s an account setup issue."
+    },
+    {
+        "speaker":  "PAUSE",
+        "text":  ""
+    },
+    {
+        "speaker":  "ALEX",
+        "text":  "Let\u0027s talk about the workshop flow for this challenge set. The recommended learning pattern is simple: sign in, prompt, apply, reflect."
+    },
+    {
+        "speaker":  "JAMIE",
+        "text":  "And there are three guided tasks in the chapter version of the challenge set, right?"
+    },
+    {
+        "speaker":  "ALEX",
+        "text":  "Yes. First, sign in to Copilot and confirm it works. Second, ask Copilot to explain a codebase or setting. Third, ask Copilot to create something new, then apply it."
+    },
+    {
+        "speaker":  "JAMIE",
+        "text":  "And the issue-based challenge version focuses on improving a documentation file and then evaluating the result."
+    },
+    {
+        "speaker":  "ALEX",
+        "text":  "Right. Open a sample documentation file such as docs slash samples slash copilot-improvement-before dot md, or another documentation file in the repo. Use Copilot chat or inline suggestions to improve clarity, fix grammar or spelling, and suggest a better heading or structure. Then critically evaluate every suggestion before accepting it."
+    },
+    {
+        "speaker":  "JAMIE",
+        "text":  "So the \"done\" condition is not \"Copilot wrote words.\" It\u0027s \"I reviewed the words like an editor.\""
+    },
+    {
+        "speaker":  "ALEX",
+        "text":  "Exactly."
+    },
+    {
+        "speaker":  "PAUSE",
+        "text":  ""
+    },
+    {
+        "speaker":  "ALEX",
+        "text":  "Now setup. In current VS Code builds, AI features are often built in. You usually do not need to install a separate Copilot Chat extension on a recent stable version of VS Code."
+    },
+    {
+        "speaker":  "JAMIE",
+        "text":  "That\u0027s useful, because older tutorials often start with \"install this extension,\" and now that may be outdated."
+    },
+    {
+        "speaker":  "ALEX",
+        "text":  "Correct. The practical steps are: update VS Code if possible, locate the Copilot status item in the status bar, choose something like \"Use AI Features\" or \"Set up Copilot\" if prompted, then complete the GitHub sign-in flow in your browser."
+    },
+    {
+        "speaker":  "JAMIE",
+        "text":  "And if someone uses GitHub Enterprise?"
+    },
+    {
+        "speaker":  "ALEX",
+        "text":  "Then they may need the enterprise sign-in path and their enterprise URL. After sign-in, verify activation by opening chat and sending a simple test prompt like, \"Hello, are you working?\" If Copilot responds, it\u0027s active."
+    },
+    {
+        "speaker":  "JAMIE",
+        "text":  "What if keyboard shortcuts differ?"
+    },
+    {
+        "speaker":  "ALEX",
+        "text":  "Use the Command Palette fallback. That\u0027s a theme throughout this chapter. Shortcuts can vary by operating system, keymap, profile, browser context, and assistive technology setup. So if the default shortcut doesn\u0027t work, open the Command Palette and run the relevant command directly."
+    },
+    {
+        "speaker":  "JAMIE",
+        "text":  "And there\u0027s also a subscription check."
+    },
+    {
+        "speaker":  "ALEX",
+        "text":  "Yes. If Copilot seems unavailable, you may need to check subscription status. Use the Copilot settings on GitHub, review your plan, or inspect the account state in VS Code. The chapter emphasizes that current access details can change, so official GitHub docs are the source of truth."
+    },
+    {
+        "speaker":  "PAUSE",
+        "text":  ""
+    },
+    {
+        "speaker":  "ALEX",
+        "text":  "Next, inline suggestions, sometimes called ghost text completions. These appear while typing in the editor."
+    },
+    {
+        "speaker":  "JAMIE",
+        "text":  "For blind and low-vision learners, ghost text can sound elegant in print but messy in practice."
+    },
+    {
+        "speaker":  "ALEX",
+        "text":  "Very true. Functionally, Copilot predicts likely completions based on what you\u0027re typing and the surrounding context. That might be code, Markdown, prose, comments, or configuration."
+    },
+    {
+        "speaker":  "JAMIE",
+        "text":  "And how do learners interact with those suggestions?"
+    },
+    {
+        "speaker":  "ALEX",
+        "text":  "You can accept a suggestion, open the full suggestions panel, or accept incrementally. The suggestions panel gives more options than a single inline preview. Accepting word by word can be especially helpful when you want part of a suggestion but not all of it."
+    },
+    {
+        "speaker":  "JAMIE",
+        "text":  "That feels perfect for documentation. Maybe the first phrase is good, but the rest gets too verbose."
+    },
+    {
+        "speaker":  "ALEX",
+        "text":  "Exactly. And comments can act as prompts. For example, in a Markdown or code file, you might write a comment asking for a clearer paragraph, a better heading, a concise alt text suggestion, or a rewrite for a screen reader audience."
+    },
+    {
+        "speaker":  "JAMIE",
+        "text":  "So prompting doesn\u0027t only happen in the chat panel."
+    },
+    {
+        "speaker":  "ALEX",
+        "text":  "Right. It can happen right where you\u0027re editing."
+    },
+    {
+        "speaker":  "JAMIE",
+        "text":  "What about screen reader behavior? Because frequent ghost text announcements can become noisy fast."
+    },
+    {
+        "speaker":  "ALEX",
+        "text":  "The chapter gives a very practical accessibility perspective. If suggestions are too frequent or intrusive, learners may want to adjust settings, use Accessible View, or disable inline suggestions temporarily. The goal is not to endure constant interruption. The goal is to create a workable editing environment."
+    },
+    {
+        "speaker":  "JAMIE",
+        "text":  "And there are specific notes for NVDA, JAWS, and VoiceOver?"
+    },
+    {
+        "speaker":  "ALEX",
+        "text":  "Yes. The chapter explicitly addresses those screen readers and points learners toward Accessible View as an alternative way to review suggestions in a more stable text presentation."
+    },
+    {
+        "speaker":  "JAMIE",
+        "text":  "Can someone turn inline suggestions off altogether?"
+    },
+    {
+        "speaker":  "ALEX",
+        "text":  "Yes. Temporarily for a language, temporarily via the Command Palette, or more permanently through settings. That\u0027s a key accessibility point: using Copilot does not require leaving every AI feature constantly on."
+    },
+    {
+        "speaker":  "PAUSE",
+        "text":  ""
+    },
+    {
+        "speaker":  "ALEX",
+        "text":  "Now let\u0027s move into Copilot Chat, the conversational part of the experience."
+    },
+    {
+        "speaker":  "JAMIE",
+        "text":  "This is probably what most people picture first."
+    },
+    {
+        "speaker":  "ALEX",
+        "text":  "Probably. You open chat through a shortcut or, again, through the Command Palette with something like \"Chat: Open Chat.\" Inside chat, you can ask questions, request rewrites, explain code, generate examples, or ask for help with documentation and repository understanding."
+    },
+    {
+        "speaker":  "JAMIE",
+        "text":  "The chapter mentions chat modes."
+    },
+    {
+        "speaker":  "ALEX",
+        "text":  "Yes. Different modes shape what Copilot does. Broadly, you can think of them as asking for explanation, requesting edits, or letting agent-like workflows take on more initiative. The exact labels and UI may change over time, but the concept is stable: choose a mode that matches your goal."
+    },
+    {
+        "speaker":  "JAMIE",
+        "text":  "And models can vary too."
+    },
+    {
+        "speaker":  "ALEX",
+        "text":  "Yes. There may be a model selector. The quick guidance is practical rather than theoretical: if one model seems slow, unhelpful, or overly wordy, try another if available. But learners do not need a deep model-comparison mindset to begin."
+    },
+    {
+        "speaker":  "JAMIE",
+        "text":  "What should learners expect in the chat interface itself?"
+    },
+    {
+        "speaker":  "ALEX",
+        "text":  "A prompt area, prior conversation context, controls near the top or bottom depending on layout, and often a model or mode selector. For screen reader users, understanding the panel layout matters because responses may stream in dynamically."
+    },
+    {
+        "speaker":  "JAMIE",
+        "text":  "Which can be hard to review linearly."
+    },
+    {
+        "speaker":  "ALEX",
+        "text":  "Exactly why Accessible View comes up again. For NVDA and JAWS users, and for VoiceOver users too, the chapter recommends a workflow where you ask the question, then open Accessible View to read the full response in a plain text buffer."
+    },
+    {
+        "speaker":  "JAMIE",
+        "text":  "That gives you something more stable than chasing streaming updates."
+    },
+    {
+        "speaker":  "ALEX",
+        "text":  "Right."
+    },
+    {
+        "speaker":  "JAMIE",
+        "text":  "What kinds of things should learners ask Copilot Chat in this workshop?"
+    },
+    {
+        "speaker":  "ALEX",
+        "text":  "A lot of non-coding examples are valid. Explain a setting. Summarize a repo. Suggest a clearer heading. Rewrite a paragraph for plain language. Review alt text. Draft a commit message. Suggest an outline. Evaluate documentation tone. Those are all within scope."
+    },
+    {
+        "speaker":  "JAMIE",
+        "text":  "And the chapter also mentions at-mentions and slash commands."
+    },
+    {
+        "speaker":  "ALEX",
+        "text":  "Yes. At-mentions let you provide context to Copilot, often by directing it toward specific files, tools, or context sources. Slash commands trigger built-in task patterns. These features help make prompts more precise and reduce ambiguity."
+    },
+    {
+        "speaker":  "JAMIE",
+        "text":  "So instead of \"Help me,\" it becomes \"Help me with this specific file, in this repo, for this purpose.\""
+    },
+    {
+        "speaker":  "ALEX",
+        "text":  "Exactly. Precision improves usefulness."
+    },
+    {
+        "speaker":  "PAUSE",
+        "text":  ""
+    },
+    {
+        "speaker":  "ALEX",
+        "text":  "Now, beyond chat, there\u0027s Copilot Edits for making multi-file changes."
+    },
+    {
+        "speaker":  "JAMIE",
+        "text":  "That sounds powerful and also potentially risky."
+    },
+    {
+        "speaker":  "ALEX",
+        "text":  "That\u0027s a fair summary. Copilot Edits can propose coordinated changes across several files, which is useful for refactors, documentation updates, naming changes, or consistency work. But it increases the need to review diffs carefully."
+    },
+    {
+        "speaker":  "JAMIE",
+        "text":  "How does a screen reader user review that safely?"
+    },
+    {
+        "speaker":  "ALEX",
+        "text":  "The chapter emphasizes navigating the diff with a screen reader and managing the working set intentionally. In practice, that means limiting scope, understanding which files are in play, and reviewing proposed changes file by file rather than treating the batch as a single trustworthy unit."
+    },
+    {
+        "speaker":  "JAMIE",
+        "text":  "So smaller working sets mean better reviewability."
+    },
+    {
+        "speaker":  "ALEX",
+        "text":  "Exactly."
+    },
+    {
+        "speaker":  "PAUSE",
+        "text":  ""
+    },
+    {
+        "speaker":  "ALEX",
+        "text":  "Then we get to Agent mode."
+    },
+    {
+        "speaker":  "JAMIE",
+        "text":  "This is where Copilot can take more initiative?"
+    },
+    {
+        "speaker":  "ALEX",
+        "text":  "Yes. Agent mode is for workflows where Copilot does more than answer. It can plan steps, propose actions, and sometimes execute operations, especially when terminal commands or larger workspace tasks are involved."
+    },
+    {
+        "speaker":  "JAMIE",
+        "text":  "Which means approvals matter."
+    },
+    {
+        "speaker":  "ALEX",
+        "text":  "Very much. The chapter specifically calls out approving terminal commands. Never treat agent-generated commands as harmless by default. Read them, understand them, and approve only what you intend."
+    },
+    {
+        "speaker":  "JAMIE",
+        "text":  "Can we distill the difference between Ask, Edit, and Agent?"
+    },
+    {
+        "speaker":  "ALEX",
+        "text":  "Yes. Ask is for explanation and guidance. Edit is for making requested changes. Agent is for more autonomous, multi-step help. If you only need an answer, use Ask. If you know the change you want, Edit can be efficient. If you want Copilot to drive a broader workflow, Agent may fit, but with stronger review and safety habits."
+    },
+    {
+        "speaker":  "JAMIE",
+        "text":  "And there\u0027s also a newer Agents window in VS Code 1.120."
+    },
+    {
+        "speaker":  "ALEX",
+        "text":  "Right. The chapter includes the Agents Window, how to open it, workshop safety notes, and accessibility notes. The safety guidance is especially important for learners: agentic features are powerful, but they should be used with clear intent, careful approvals, and a willingness to stop and inspect."
+    },
+    {
+        "speaker":  "JAMIE",
+        "text":  "So the workshop doesn\u0027t glorify autonomy. It teaches supervised collaboration."
+    },
+    {
+        "speaker":  "ALEX",
+        "text":  "Perfectly said."
+    },
+    {
+        "speaker":  "PAUSE",
+        "text":  ""
+    },
+    {
+        "speaker":  "ALEX",
+        "text":  "Another feature is Next Edit Suggestions."
+    },
+    {
+        "speaker":  "JAMIE",
+        "text":  "What does that mean in plain language?"
+    },
+    {
+        "speaker":  "ALEX",
+        "text":  "It means Copilot tries to predict your likely next modification after the one you just made. For example, if you update one heading style or rename one variable, it may suggest similar follow-up edits elsewhere."
+    },
+    {
+        "speaker":  "JAMIE",
+        "text":  "That could be great for consistency work in docs."
+    },
+    {
+        "speaker":  "ALEX",
+        "text":  "Yes, especially when standardizing formatting or repeated phrases. But again, prediction is not proof. Review remains necessary."
+    },
+    {
+        "speaker":  "PAUSE",
+        "text":  ""
+    },
+    {
+        "speaker":  "ALEX",
+        "text":  "Copilot also exists on GitHub dot com, not just in VS Code."
+    },
+    {
+        "speaker":  "JAMIE",
+        "text":  "So if someone is reviewing a repository in the browser, they still have AI help available."
+    },
+    {
+        "speaker":  "ALEX",
+        "text":  "Exactly. On GitHub dot com, Copilot Chat can help you ask about a specific repository, an issue, a code sample, or a general coding question. It can also help with pull request summaries and code review assistance."
+    },
+    {
+        "speaker":  "JAMIE",
+        "text":  "How is that different from VS Code?"
+    },
+    {
+        "speaker":  "ALEX",
+        "text":  "VS Code is usually better when you need close interaction with local files, editing, diffs, settings, and development workflows. GitHub dot com is often more convenient for repository-level understanding, issues, pull requests, and browser-based context."
+    },
+    {
+        "speaker":  "JAMIE",
+        "text":  "So one is more workspace-centered, the other more platform-centered."
+    },
+    {
+        "speaker":  "ALEX",
+        "text":  "Yes."
+    },
+    {
+        "speaker":  "PAUSE",
+        "text":  ""
+    },
+    {
+        "speaker":  "ALEX",
+        "text":  "Let\u0027s get practical with prompting, especially for documentation work. The chapter gives a whole section on effective prompting."
+    },
+    {
+        "speaker":  "JAMIE",
+        "text":  "Good, because \"write better\" is not a great prompt."
+    },
+    {
+        "speaker":  "ALEX",
+        "text":  "Exactly. A good prompt includes context, a clear task, constraints, and often the intended audience. A bad prompt is vague. A better one might say: rewrite this paragraph for beginners, keep the tone friendly, preserve technical accuracy, use plain language, and avoid adding information not already supported by the document."
+    },
+    {
+        "speaker":  "JAMIE",
+        "text":  "That\u0027s a huge difference."
+    },
+    {
+        "speaker":  "ALEX",
+        "text":  "And the workshop teaches several prompting patterns. Contextual rewrite: improve something that already exists, with context. Generate with constraints: create something new, but within tight boundaries. Review and improve: critique and revise. Accessibility audit: inspect content for barriers. Draft from outline: expand structured notes into a first draft."
+    },
+    {
+        "speaker":  "JAMIE",
+        "text":  "Those all sound useful for docs contributors."
+    },
+    {
+        "speaker":  "ALEX",
+        "text":  "They are. And the chapter also recommends iterating on responses. If the first answer is too long, too generic, or misses the audience, follow up. Ask it to shorten, preserve terminology, avoid tables, write for screen reader users, or keep to a specific style."
+    },
+    {
+        "speaker":  "JAMIE",
+        "text":  "That\u0027s a great learning point. Prompting is not one-and-done."
+    },
+    {
+        "speaker":  "ALEX",
+        "text":  "Right. It\u0027s conversational steering."
+    },
+    {
+        "speaker":  "PAUSE",
+        "text":  ""
+    },
+    {
+        "speaker":  "ALEX",
+        "text":  "There\u0027s also a section on Timeline View and file history, which complements AI work nicely."
+    },
+    {
+        "speaker":  "JAMIE",
+        "text":  "Because if Copilot helps you revise something, you still want to see what changed over time."
+    },
+    {
+        "speaker":  "ALEX",
+        "text":  "Exactly. AI assistance doesn\u0027t replace version history. It makes version history more important, because you may want to compare drafts, undo changes, or understand how a file evolved."
+    },
+    {
+        "speaker":  "PAUSE",
+        "text":  ""
+    },
+    {
+        "speaker":  "ALEX",
+        "text":  "Next: custom instructions versus custom agents."
+    },
+    {
+        "speaker":  "JAMIE",
+        "text":  "This is a big one. People often mix them up."
+    },
+    {
+        "speaker":  "ALEX",
+        "text":  "Custom instructions are persistent guidance. They tell Copilot how to behave by default: preferred tone, documentation style, accessibility standards, commit message format, organizational rules, and so on."
+    },
+    {
+        "speaker":  "JAMIE",
+        "text":  "So they\u0027re like house rules."
+    },
+    {
+        "speaker":  "ALEX",
+        "text":  "Exactly. The example in the chapter points to a dot github slash copilot-instructions dot md file and includes ideas like accessibility standards, documentation style, commit message format, and tone."
+    },
+    {
+        "speaker":  "JAMIE",
+        "text":  "Meaning you don\u0027t have to restate those preferences every time."
+    },
+    {
+        "speaker":  "ALEX",
+        "text":  "Right. If supported in your environment, Copilot simply follows them."
+    },
+    {
+        "speaker":  "JAMIE",
+        "text":  "And custom agents?"
+    },
+    {
+        "speaker":  "ALEX",
+        "text":  "Custom agents are more task-oriented helpers. They package workflows or specialized behavior for repeated tasks. So if custom instructions are the rules of the road, custom agents are specialized vehicles for particular jobs."
+    },
+    {
+        "speaker":  "JAMIE",
+        "text":  "Can you use both together?"
+    },
+    {
+        "speaker":  "ALEX",
+        "text":  "Yes, and the chapter explicitly recommends that mental model. Instructions guide every response. Agents automate specific workflows. Together, they can support consistent, accessibility-aware collaboration."
+    },
+    {
+        "speaker":  "JAMIE",
+        "text":  "What makes accessibility-focused custom instructions effective?"
+    },
+    {
+        "speaker":  "ALEX",
+        "text":  "The chapter\u0027s guidance is very practical. Focus on team-specific standards rather than vague generic values. Use lists and checklists. Reference your design system. Be explicit about accessibility requirements like keyboard navigation, headings, semantic structure, plain language, and criteria you care about."
+    },
+    {
+        "speaker":  "JAMIE",
+        "text":  "And there\u0027s an example checklist around WCAG 1.3.1, info and relationships."
+    },
+    {
+        "speaker":  "ALEX",
+        "text":  "Yes, which reinforces that instructions can encode structured review habits, not just tone preferences."
+    },
+    {
+        "speaker":  "JAMIE",
+        "text":  "What are the common mistakes?"
+    },
+    {
+        "speaker":  "ALEX",
+        "text":  "Instructions that are too vague, too broad, contradictory, or aspirational without being testable. \"Make this accessible\" is weaker than \"use semantic headings, avoid unnecessary tables, include meaningful alt text only for informative images, and preserve keyboard-operable patterns.\""
+    },
+    {
+        "speaker":  "PAUSE",
+        "text":  ""
+    },
+    {
+        "speaker":  "ALEX",
+        "text":  "Now let\u0027s highlight Accessible View, because for many learners this is not a side note. It\u0027s central."
+    },
+    {
+        "speaker":  "JAMIE",
+        "text":  "Yes. If a response streams visually in a chat panel, that may be awkward or exhausting with a screen reader."
+    },
+    {
+        "speaker":  "ALEX",
+        "text":  "Accessible View gives a plain text buffer for reviewing Copilot responses and sometimes inline suggestions more comfortably. The chapter recommends a workflow: every time you ask Copilot something, consider opening Accessible View to read the full answer in a more stable form."
+    },
+    {
+        "speaker":  "JAMIE",
+        "text":  "So instead of listening while text appears unpredictably, you move into a review space."
+    },
+    {
+        "speaker":  "ALEX",
+        "text":  "Exactly. It helps with long answers, code blocks, copying text, and multi-line suggestions. It is especially useful when ghost text or streaming output is hard to parse."
+    },
+    {
+        "speaker":  "JAMIE",
+        "text":  "That sounds like one of those features learners should build into their muscle memory early."
+    },
+    {
+        "speaker":  "ALEX",
+        "text":  "I agree."
+    },
+    {
+        "speaker":  "PAUSE",
+        "text":  ""
+    },
+    {
+        "speaker":  "ALEX",
+        "text":  "The chapter also includes a keyboard shortcuts reference."
+    },
+    {
+        "speaker":  "JAMIE",
+        "text":  "Do we need to memorize them all?"
+    },
+    {
+        "speaker":  "ALEX",
+        "text":  "No. The important principle is to know categories and fallbacks. There are shortcuts for inline suggestions, chat, accessibility features like Accessible View, general VS Code navigation, and browser-based GitHub shortcuts. But since shortcuts vary, the Command Palette remains your reliable fallback."
+    },
+    {
+        "speaker":  "JAMIE",
+        "text":  "And the chapter even notes video tutorials for screen reader demonstrations."
+    },
+    {
+        "speaker":  "ALEX",
+        "text":  "Yes, which can be helpful if someone wants a second mode of learning."
+    },
+    {
+        "speaker":  "PAUSE",
+        "text":  ""
+    },
+    {
+        "speaker":  "ALEX",
+        "text":  "Now we reach the core evaluative mindset. The challenge YAML gives a trust, verify, reject framework, and the chapter expands that into a full critical evaluation model."
+    },
+    {
+        "speaker":  "JAMIE",
+        "text":  "Let\u0027s slow down here, because this is the part learners really need."
+    },
+    {
+        "speaker":  "ALEX",
+        "text":  "For every Copilot suggestion, ask: is it factually accurate? Is it clearer than the original? Does it match the document\u0027s tone? Does it introduce accessibility issues? Did it add content you didn\u0027t ask for?"
+    },
+    {
+        "speaker":  "JAMIE",
+        "text":  "That last one is sneaky. AI loves to add extras."
+    },
+    {
+        "speaker":  "ALEX",
+        "text":  "It does. And those extras may sound polished while being wrong, off-topic, or out of scope."
+    },
+    {
+        "speaker":  "JAMIE",
+        "text":  "So when should you trust Copilot?"
+    },
+    {
+        "speaker":  "ALEX",
+        "text":  "More readily for low-risk, easily verifiable tasks: grammar cleanup, rough brainstorming, formatting suggestions, possible headings, draft rewrites you can inspect line by line."
+    },
+    {
+        "speaker":  "JAMIE",
+        "text":  "When should you verify?"
+    },
+    {
+        "speaker":  "ALEX",
+        "text":  "Almost always for substantive claims, instructions, examples, links, accessibility advice, configuration details, commands, policy statements, and anything user-facing."
+    },
+    {
+        "speaker":  "JAMIE",
+        "text":  "And when should you reject?"
+    },
+    {
+        "speaker":  "ALEX",
+        "text":  "Reject when it is factually wrong, adds invented links, becomes less clear, changes the tone in an unhelpful way, introduces accessibility regressions, misrepresents the audience, or performs a task other than the one you requested."
+    },
+    {
+        "speaker":  "JAMIE",
+        "text":  "What are the common failure modes the chapter warns about?"
+    },
+    {
+        "speaker":  "ALEX",
+        "text":  "Hallucinated links. Over-complicated language. Lost context. Accessibility regressions. Also overconfidence, hidden assumptions, and suggestions that appear polished but are not grounded in the repository or the workshop\u0027s goals."
+    },
+    {
+        "speaker":  "JAMIE",
+        "text":  "Can you say more about accessibility-specific concerns?"
+    },
+    {
+        "speaker":  "ALEX",
+        "text":  "Certainly. AI may produce alt text that is too vague or too long. It may suggest tables where lists would be simpler. It may remove semantic structure. It may use visual wording without considering screen reader users. It may recommend decorative images be described when empty alt text would be more appropriate, or vice versa. Accessibility requires judgment about purpose, not just wording."
+    },
+    {
+        "speaker":  "JAMIE",
+        "text":  "So \"sounds descriptive\" is not enough."
+    },
+    {
+        "speaker":  "ALEX",
+        "text":  "Exactly. You need to ask what the content is doing."
+    },
+    {
+        "speaker":  "JAMIE",
+        "text":  "What\u0027s the right mental model, then?"
+    },
+    {
+        "speaker":  "ALEX",
+        "text":  "Copilot is a fast drafting partner. It is not a source of truth, not an accessibility expert, not a repository maintainer, and not your editor-in-chief. You stay responsible for the final content."
+    },
+    {
+        "speaker":  "PAUSE",
+        "text":  ""
+    },
+    {
+        "speaker":  "ALEX",
+        "text":  "Let\u0027s ground that with the example solution for the challenge."
+    },
+    {
+        "speaker":  "JAMIE",
+        "text":  "Yes, because the sample interaction is small but very revealing."
+    },
+    {
+        "speaker":  "ALEX",
+        "text":  "The example prompt asks Copilot to review alt text in a file and suggest improvements for screen reader users. Copilot notices an image with alt text equal to \"screenshot\" and proposes something much more descriptive, naming the repository page and the visible file list."
+    },
+    {
+        "speaker":  "JAMIE",
+        "text":  "That\u0027s a good start, because \"screenshot\" alone tells a screen reader user almost nothing useful."
+    },
+    {
+        "speaker":  "ALEX",
+        "text":  "Exactly. The before version is simply an image with alt text \"screenshot.\" The improved after version describes the GitHub repository Code tab and the visible items, such as README, the docs folder, and the dot github folder."
+    },
+    {
+        "speaker":  "JAMIE",
+        "text":  "So what did Copilot get right?"
+    },
+    {
+        "speaker":  "ALEX",
+        "text":  "It recognized that the original alt text was not descriptive enough for an informational image. That is a real improvement."
+    },
+    {
+        "speaker":  "JAMIE",
+        "text":  "And what needed adjustment?"
+    },
+    {
+        "speaker":  "ALEX",
+        "text":  "The solution notes that Copilot\u0027s version was about 30 words long, so the human editor shortened it to 18 words while preserving the key information. Concision matters in alt text."
+    },
+    {
+        "speaker":  "JAMIE",
+        "text":  "And what did Copilot miss?"
+    },
+    {
+        "speaker":  "ALEX",
+        "text":  "It did not raise the possibility that the image might be decorative. The editor had to ask that question independently. After checking, the image was judged informational, so descriptive alt text was appropriate."
+    },
+    {
+        "speaker":  "JAMIE",
+        "text":  "That example is excellent because it shows three levels of thinking. One, notice the obvious improvement. Two, refine it. Three, question the underlying assumption."
+    },
+    {
+        "speaker":  "ALEX",
+        "text":  "Beautifully put."
+    },
+    {
+        "speaker":  "PAUSE",
+        "text":  ""
+    },
+    {
+        "speaker":  "ALEX",
+        "text":  "The solution also offers alternate approaches to completing the challenge."
+    },
+    {
+        "speaker":  "JAMIE",
+        "text":  "So learners aren\u0027t trapped into one exact prompt."
+    },
+    {
+        "speaker":  "ALEX",
+        "text":  "Right. You could ask Copilot to improve documentation clarity, check Markdown formatting, or suggest commit messages, as long as you critically evaluate the output and make a reasoned decision."
+    },
+    {
+        "speaker":  "JAMIE",
+        "text":  "And the bottom line?"
+    },
+    {
+        "speaker":  "ALEX",
+        "text":  "What matters is using AI as a collaborator while maintaining your own judgment. If you used Copilot, evaluated its output critically, and made an improvement based on that evaluation, you met the learning objective."
+    },
+    {
+        "speaker":  "PAUSE",
+        "text":  ""
+    },
+    {
+        "speaker":  "ALEX",
+        "text":  "Let\u0027s walk through the challenge tasks more concretely."
+    },
+    {
+        "speaker":  "JAMIE",
+        "text":  "Great. Start with the chapter version first?"
+    },
+    {
+        "speaker":  "ALEX",
+        "text":  "Sure. First task: sign in to Copilot. Update VS Code if needed, open the Copilot control in the status bar, enable AI features or set up Copilot, complete GitHub sign-in, then open chat and test it with a simple prompt."
+    },
+    {
+        "speaker":  "JAMIE",
+        "text":  "And for screen reader users, if the response streams awkwardly, open Accessible View."
+    },
+    {
+        "speaker":  "ALEX",
+        "text":  "Exactly. Second task: explain a codebase. Clone the sci-fi themes repository using Git: Clone, open it, open Copilot Chat, and ask a targeted question such as what a specific setting does. Then ask a follow-up, like how to apply one of the themes in settings dot json. The goal is to ask at least two questions and apply one setting change."
+    },
+    {
+        "speaker":  "JAMIE",
+        "text":  "That\u0027s a neat combination of understanding and action."
+    },
+    {
+        "speaker":  "ALEX",
+        "text":  "Yes. Third task: create something new. Ask Copilot to generate a custom thinking-phrases theme based on a fictional universe you like. Review the generated array, copy it into your settings dot json, save, reload VS Code, and test it by asking Copilot another question."
+    },
+    {
+        "speaker":  "JAMIE",
+        "text":  "That makes the AI feel less abstract. You see a custom result in your own environment."
+    },
+    {
+        "speaker":  "ALEX",
+        "text":  "Exactly."
+    },
+    {
+        "speaker":  "JAMIE",
+        "text":  "And then there\u0027s the issue comment evidence."
+    },
+    {
+        "speaker":  "ALEX",
+        "text":  "Yes. Learners should comment on the assigned challenge issue with a checklist indicating whether Copilot was enabled and signed in, whether they asked it to explain a setting, whether they applied a setting from its suggestion, whether they created a custom theme, and what theme universe they chose. Then close the issue when done."
+    },
+    {
+        "speaker":  "JAMIE",
+        "text":  "That\u0027s the chapter challenge path. And the YAML challenge path asks for a narrative evidence box."
+    },
+    {
+        "speaker":  "ALEX",
+        "text":  "Correct. In that version, the learner describes what they asked Copilot to do, what it suggested, how they evaluated it, one thing Copilot got wrong, and one thing it got right."
+    },
+    {
+        "speaker":  "JAMIE",
+        "text":  "That\u0027s a fantastic reflection structure."
+    },
+    {
+        "speaker":  "ALEX",
+        "text":  "It is, because it pushes beyond \"I used the tool\" into \"I judged the tool.\""
+    },
+    {
+        "speaker":  "PAUSE",
+        "text":  ""
+    },
+    {
+        "speaker":  "ALEX",
+        "text":  "The YAML challenge also includes a peer simulation check."
+    },
+    {
+        "speaker":  "JAMIE",
+        "text":  "Meaning compare your Copilot-improved result with a peer-simulation pull request or a real buddy, if available, and ask whether the AI suggestion genuinely improved the document."
+    },
+    {
+        "speaker":  "ALEX",
+        "text":  "Exactly. That comparison step is pedagogically strong, because AI output can feel persuasive in isolation. Comparison restores perspective."
+    },
+    {
+        "speaker":  "PAUSE",
+        "text":  ""
+    },
+    {
+        "speaker":  "ALEX",
+        "text":  "Let\u0027s cover \"if you get stuck,\" because administrative and troubleshooting guidance matters."
+    },
+    {
+        "speaker":  "JAMIE",
+        "text":  "Yes, especially in workshops."
+    },
+    {
+        "speaker":  "ALEX",
+        "text":  "If Copilot controls are missing, update VS Code and reload the window. If OAuth sign-in fails, verify you\u0027re signed into GitHub in the browser, then retry. If the chat panel doesn\u0027t open, use the Command Palette and confirm AI features are enabled. If Copilot seems unresponsive, check the model selector or account state."
+    },
+    {
+        "speaker":  "JAMIE",
+        "text":  "And in the challenge YAML, if Copilot is not available at all, the note says you may need Copilot access, including possible student access via GitHub Education, or ask a facilitator for alternatives."
+    },
+    {
+        "speaker":  "ALEX",
+        "text":  "Right. If you don\u0027t know what to ask, start simple: \"Improve the clarity of this paragraph\" or \"Suggest a better heading for this section.\" If everything seems good, raise the difficulty: ask for a rewrite for a screen reader user, then evaluate whether it actually helps."
+    },
+    {
+        "speaker":  "JAMIE",
+        "text":  "And if you finish but want to compare, there\u0027s a reference solution."
+    },
+    {
+        "speaker":  "ALEX",
+        "text":  "Yes."
+    },
+    {
+        "speaker":  "PAUSE",
+        "text":  ""
+    },
+    {
+        "speaker":  "ALEX",
+        "text":  "There\u0027s also a \"learning moment\" embedded in this chapter, even if not always labeled aloud. The bigger lesson is that Copilot is not just autocomplete."
+    },
+    {
+        "speaker":  "JAMIE",
+        "text":  "It can explain, draft, propose, and customize, but the human still defines success."
+    },
+    {
+        "speaker":  "ALEX",
+        "text":  "Exactly. And the learning pattern used here is intentional: sign in, prompt, apply, reflect. It builds both technical confidence and editorial judgment."
+    },
+    {
+        "speaker":  "JAMIE",
+        "text":  "What about the learning cards mentioned throughout the chapter?"
+    },
+    {
+        "speaker":  "ALEX",
+        "text":  "Those sections reinforce the main concepts in compact form: inline suggestions, chat, edits, agent mode, Copilot on GitHub dot com, effective prompting, Accessible View, and critical evaluation. They\u0027re not extra topics so much as reinforcement points."
+    },
+    {
+        "speaker":  "JAMIE",
+        "text":  "And the \"about learning cards\" note basically tells learners how to use those as quick-reference study aids."
+    },
+    {
+        "speaker":  "ALEX",
+        "text":  "Yes."
+    },
+    {
+        "speaker":  "PAUSE",
+        "text":  ""
+    },
+    {
+        "speaker":  "ALEX",
+        "text":  "Before we wrap up, let\u0027s touch on a few advanced and newer features mentioned later in the chapter: Smart Actions, Browser Agent, Plan Agent and Copilot Spaces, and pricing updates."
+    },
+    {
+        "speaker":  "JAMIE",
+        "text":  "Do beginners need to master those now?"
+    },
+    {
+        "speaker":  "ALEX",
+        "text":  "No. The takeaway is awareness. Copilot is expanding beyond simple suggestion and chat experiences. Some features are experimental. Some may depend on version, plan, region, or policy. And pricing is evolving, including usage-based billing for some AI-powered actions, while code completions and next edit suggestions may be treated differently on paid plans."
+    },
+    {
+        "speaker":  "JAMIE",
+        "text":  "So learners should avoid assuming every Copilot feature is universally available or billed the same way."
+    },
+    {
+        "speaker":  "ALEX",
+        "text":  "Exactly. Check current docs when it matters."
+    },
+    {
+        "speaker":  "PAUSE",
+        "text":  ""
+    },
+    {
+        "speaker":  "JAMIE",
+        "text":  "Can we do a concise checklist for the challenge mindset?"
+    },
+    {
+        "speaker":  "ALEX",
+        "text":  "Yes. Ask Copilot for a specific documentation improvement. Read the response in a way that works for you, ideally with Accessible View if needed. Compare the suggestion to the original. Check accuracy, clarity, tone, audience fit, and accessibility. Accept, modify, or reject. Then document what happened in your evidence comment."
+    },
+    {
+        "speaker":  "JAMIE",
+        "text":  "And if the suggestion feels polished but suspicious, slow down."
+    },
+    {
+        "speaker":  "ALEX",
+        "text":  "Always."
+    },
+    {
+        "speaker":  "JAMIE",
+        "text":  "And if it gives you a link, command, setting, policy statement, or accessibility claim?"
+    },
+    {
+        "speaker":  "ALEX",
+        "text":  "Verify it."
+    },
+    {
+        "speaker":  "JAMIE",
+        "text":  "And if it rewrites something in a way that erases meaning or makes it harder for the intended audience?"
+    },
+    {
+        "speaker":  "ALEX",
+        "text":  "Reject or revise it."
+    },
+    {
+        "speaker":  "JAMIE",
+        "text":  "And if it genuinely helps, but needs trimming?"
+    },
+    {
+        "speaker":  "ALEX",
+        "text":  "Then collaborate. Keep the good part, improve the rest."
+    },
+    {
+        "speaker":  "PAUSE",
+        "text":  ""
+    },
+    {
+        "speaker":  "ALEX",
+        "text":  "One last note on sources. This chapter and the solution both point learners to authoritative references: GitHub Docs, the GitHub Changelog, GitHub Copilot docs, VS Code Copilot documentation, the custom instructions support matrix, guidance on custom agents and agent skills, auto model selection information, the Copilot changelog feed, and GitHub accessibility documentation."
+    },
+    {
+        "speaker":  "JAMIE",
+        "text":  "So even in a lesson about AI assistance, the real source of truth is still the official documentation."
+    },
+    {
+        "speaker":  "ALEX",
+        "text":  "Exactly. Copilot can help you navigate, draft, and explore. Official docs and your own review confirm what is correct."
+    },
+    {
+        "speaker":  "JAMIE",
+        "text":  "That feels like the perfect closing idea."
+    },
+    {
+        "speaker":  "ALEX",
+        "text":  "GitHub Copilot is most useful when you treat it as a collaborator with speed, not as a collaborator with judgment. The judgment is still yours."
+    },
+    {
+        "speaker":  "JAMIE",
+        "text":  "And that is what makes \"AI as your copilot\" better than \"AI as your autopilot.\""
+    },
+    {
+        "speaker":  "ALEX",
+        "text":  "Well said."
+    }
 ]
