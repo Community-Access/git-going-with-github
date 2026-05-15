@@ -308,6 +308,12 @@ Use this sequence to validate generation, publication, podcast build surfaces, a
 generate-llm-batch-jobs.bat
 ```
 
+For a strict regeneration (wipe old durable state and prior published artifacts before prepare/run/apply):
+
+```bat
+generate-llm-batch-jobs.bat --clean
+```
+
 2. Confirm durable execution completed:
 
 ```powershell

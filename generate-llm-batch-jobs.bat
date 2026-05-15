@@ -3,6 +3,11 @@ setlocal
 
 cd /d "%~dp0"
 
+set "CLEAN_FIRST=0"
+for %%A in (%*) do (
+    if /I "%%~A"=="--clean" set "CLEAN_FIRST=1"
+)
+
 if not exist "key.txt" (
     echo [ERROR] key.txt not found in repo root.
     exit /b 1
@@ -27,9 +32,18 @@ echo ============================================================
 echo  LLM Durable AI Run
 echo  Base URL : %OPENAI_BASE_URL%
 echo  Mode     : prepare + run + apply
+if "%CLEAN_FIRST%"=="1" echo  Clean    : enabled ^(--clean^)
 echo  Budget   : run=%PODCAST_LLM_RUN_BUDGET_USD% day=%PODCAST_LLM_DAY_BUDGET_USD%
 echo ============================================================
 echo.
+
+if "%CLEAN_FIRST%"=="1" (
+    echo [CLEAN] Removing prior durable execution and published artifacts...
+    if exist "podcasts\llm-podcast-generator-review\generated\execution" rmdir /s /q "podcasts\llm-podcast-generator-review\generated\execution"
+    if exist "podcasts\llm-podcast-generator-review\output\published" rmdir /s /q "podcasts\llm-podcast-generator-review\output\published"
+    echo [CLEAN] Done.
+    echo.
+)
 
 node podcasts\llm-podcast-generator-review\src\execution\prepare-script-jobs.js --group all --model openai/gpt-5.4 --mode batch
 if errorlevel 1 exit /b 1

@@ -77,6 +77,10 @@ node podcasts/llm-podcast-generator-review/src/generate-teaching-transcript.js `
    ```bat
    generate-llm-batch-jobs.bat
    ```
+   For a strict from-scratch run that clears prior durable ledger and published artifacts first:
+   ```bat
+   generate-llm-batch-jobs.bat --clean
+   ```
 
 Batch mode does not send one giant request for all 79. It creates one request per slug in a single batch file so each item is independently resumable and deduplicated by `request_hash`.
 
