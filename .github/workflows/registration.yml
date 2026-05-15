@@ -53,6 +53,18 @@ jobs:
           DAY1_ASSIGNMENT_URL: ${{ vars.CLASSROOM_DAY1_ASSIGNMENT_URL }}
         with:
           script: |
+            function parseField(body, fieldName) {
+              if (!body) return '';
+              const regex = new RegExp(`### ${fieldName}\\s*\\n+([\\s\\S]*?)(?=\\n### |$)`, 'i');
+              const match = body.match(regex);
+              if (!match) return '';
+              const value = match[1].trim();
+              if (value === '_No response_') return '';
+              return value;
+            }
+
+            const body = context.payload.issue.body || '';
+            const displayName = parseField(body, 'Full Name') || 'there';
             const links = [];
             const day1 = (process.env.DAY1_ASSIGNMENT_URL || '').trim();
             if (day1) links.push(`- Day 1 assignment link: ${day1}`);
@@ -63,7 +75,7 @@ jobs:
             const duplicateBodyLines = [
               '## You are already enrolled',
               '',
-              `Hi @${context.payload.issue.user.login}, it looks like you already submitted enrollment in #${process.env.ORIGINAL_ISSUE}.`,
+              `Hi ${displayName}, it looks like you already submitted enrollment in #${process.env.ORIGINAL_ISSUE}.`,
               '',
               `No action needed. Your original enrollment remains active.${quickLinksSection}`,
               '',
@@ -225,10 +237,22 @@ jobs:
           MISSING_FIELDS: ${{ steps.parse.outputs.missing_fields }}
         with:
           script: |
+            function parseField(body, fieldName) {
+              if (!body) return '';
+              const regex = new RegExp(`### ${fieldName}\\s*\\n+([\\s\\S]*?)(?=\\n### |$)`, 'i');
+              const match = body.match(regex);
+              if (!match) return '';
+              const value = match[1].trim();
+              if (value === '_No response_') return '';
+              return value;
+            }
+
+            const body = context.payload.issue.body || '';
+            const displayName = parseField(body, 'Full Name') || 'there';
             const missingBodyLines = [
               '## We need a quick update before enrollment',
               '',
-              `Hi @${context.payload.issue.user.login}, we could not process enrollment because some required values were missing: ${process.env.MISSING_FIELDS}.`,
+              `Hi ${displayName}, we could not process enrollment because some required values were missing: ${process.env.MISSING_FIELDS}.`,
               '',
               'Please edit this issue and add the missing information, then comment `ready` so a facilitator can retry.'
             ];
@@ -337,6 +361,18 @@ jobs:
           DAY1_ASSIGNMENT_URL: ${{ vars.CLASSROOM_DAY1_ASSIGNMENT_URL }}
         with:
           script: |
+            function parseField(body, fieldName) {
+              if (!body) return '';
+              const regex = new RegExp(`### ${fieldName}\\s*\\n+([\\s\\S]*?)(?=\\n### |$)`, 'i');
+              const match = body.match(regex);
+              if (!match) return '';
+              const value = match[1].trim();
+              if (value === '_No response_') return '';
+              return value;
+            }
+
+            const body = context.payload.issue.body || '';
+            const displayName = parseField(body, 'Full Name') || 'there';
             const day1 = (process.env.DAY1_ASSIGNMENT_URL || '').trim();
 
             const onboarding = [];
@@ -348,7 +384,7 @@ jobs:
             const successBodyLines = [
               '## You are enrolled. Welcome!',
               '',
-              `Hi @${context.payload.issue.user.login}, great job submitting your first step.`,
+              `Hi ${displayName}, great job submitting your first step.`,
               '',
               '## Next steps',
               `${onboarding.join('\n')}${noLinksFallback}`,
@@ -481,6 +517,21 @@ jobs:
           ORIGINAL_ISSUE: ${{ steps.dup-check.outputs.original_issue }}
         with:
           script: |
+            function parseField(body, fieldName) {
+              if (!body) return '';
+              const regex = new RegExp(`### ${fieldName}\\s*\\n+([\\s\\S]*?)(?=\\n### |$)`, 'i');
+              const match = body.match(regex);
+              if (!match) return '';
+              const value = match[1].trim();
+              if (value === '_No response_') return '';
+              return value;
+            }
+
+            const body = context.payload.issue.body || '';
+            const firstName = parseField(body, 'First Name');
+            const lastName = parseField(body, 'Last Name');
+            const fullName = [firstName, lastName].filter(Boolean).join(' ').trim() || parseField(body, 'Full Name') || parseField(body, 'Name');
+            const displayName = fullName || 'there';
             const originalIssue = parseInt(process.env.ORIGINAL_ISSUE, 10);
 
             await github.rest.issues.createComment({
@@ -489,7 +540,7 @@ jobs:
               issue_number: context.issue.number,
               body: `## You are already registered!
 
-            Hi @${context.payload.issue.user.login}, it looks like you already registered in issue #${originalIssue}. No need to register again — your spot is saved!
+            Hi ${displayName}, it looks like you already registered in issue #${originalIssue}. No need to register again — your spot is saved!
 
             We have closed this issue since your original registration is already on file. If you need to update your details, please comment on your original issue #${originalIssue}.
 
@@ -544,13 +595,28 @@ jobs:
         uses: actions/github-script@v7
         with:
           script: |
+            function parseField(body, fieldName) {
+              if (!body) return '';
+              const regex = new RegExp(`### ${fieldName}\\s*\\n+([\\s\\S]*?)(?=\\n### |$)`, 'i');
+              const match = body.match(regex);
+              if (!match) return '';
+              const value = match[1].trim();
+              if (value === '_No response_') return '';
+              return value;
+            }
+
+            const body = context.payload.issue.body || '';
+            const firstName = parseField(body, 'First Name');
+            const lastName = parseField(body, 'Last Name');
+            const fullName = [firstName, lastName].filter(Boolean).join(' ').trim() || parseField(body, 'Full Name') || parseField(body, 'Name');
+            const displayName = fullName || 'there';
             await github.rest.issues.createComment({
               owner: context.repo.owner,
               repo: context.repo.repo,
               issue_number: context.issue.number,
               body: `## Registration is currently full
 
-            Hi @${context.payload.issue.user.login}, thank you for your interest in GIT Going with GitHub! Unfortunately, all 75 spots have been filled.
+            Hi ${displayName}, thank you for your interest in GIT Going with GitHub! Unfortunately, all 75 spots have been filled.
 
             We have added you to the waitlist. If a spot opens up, we will let you know right here on this issue.
 
@@ -572,6 +638,21 @@ jobs:
           DAY2_ASSIGNMENT_URL: ${{ vars.CLASSROOM_DAY2_ASSIGNMENT_URL }}
         with:
           script: |
+            function parseField(body, fieldName) {
+              if (!body) return '';
+              const regex = new RegExp(`### ${fieldName}\\s*\\n+([\\s\\S]*?)(?=\\n### |$)`, 'i');
+              const match = body.match(regex);
+              if (!match) return '';
+              const value = match[1].trim();
+              if (value === '_No response_') return '';
+              return value;
+            }
+
+            const body = context.payload.issue.body || '';
+            const firstName = parseField(body, 'First Name');
+            const lastName = parseField(body, 'Last Name');
+            const fullName = [firstName, lastName].filter(Boolean).join(' ').trim() || parseField(body, 'Full Name') || parseField(body, 'Name');
+            const displayName = fullName || 'there';
             const day1 = (process.env.DAY1_ASSIGNMENT_URL || '').trim();
             const day2 = (process.env.DAY2_ASSIGNMENT_URL || '').trim();
 
@@ -599,7 +680,7 @@ jobs:
               issue_number: context.issue.number,
               body: `## Welcome to GIT Going with GitHub!
 
-            Hi @${context.payload.issue.user.login}, thank you for registering! We are excited to have you join us.
+            Hi ${displayName}, thank you for registering! We are excited to have you join us.
 
             Your registration is confirmed. Please register for the Zoom session here: [Register on Zoom](https://us06web.zoom.us/meeting/register/YdAAvwzAQUCYpPpNtAlG3g)
 
