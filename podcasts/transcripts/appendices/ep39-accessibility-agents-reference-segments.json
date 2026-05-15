@@ -1,11 +1,23 @@
 [
   {
     "speaker": "ALEX",
-    "text": "Welcome to episode 39 of Git Going with GitHub: Accessibility Agents - Complete Reference. I am Alex, and today we are teaching this topic as a conversation you can carry into the workshop, not as a page you have to memorize."
+    "text": "Welcome back. This time we're building a practical mental map for accessibility agents and the wider customization system around them. Think of this as a reference episode in conversation form: not just what the files are called, but when you'd use each one, how they interact, where they live, and how to keep the workflow accessible."
   },
   {
     "speaker": "JAMIE",
-    "text": "And I am Jamie. I will keep pulling the lesson back to real learners, real repositories, and the evidence that proves the work happened."
+    "text": "So this is the episode for the learner who keeps seeing things like.agent.md,.prompt.md, SKILL.md, copilot-instructions.md, and maybe hooks JSON, and is thinking, I know these are related, but I do not yet have the whole picture."
+  },
+  {
+    "speaker": "ALEX",
+    "text": "Exactly. And one important update right at the start: older GitHub materials about building Copilot Extensions now point toward MCP documentation. The GitHub App based extension model has effectively been superseded by MCP servers as the standard extensibility path. But custom.agent.md files are still a primary way to define agent personas and behavior in editor-based workflows."
+  },
+  {
+    "speaker": "JAMIE",
+    "text": "That helps. So learners should understand both the newer MCP direction and the continuing importance of file-based agent customization."
+  },
+  {
+    "speaker": "ALEX",
+    "text": "Yes. Also, this appendix is a companion reference to the earlier lesson on accessibility agents and the chapter about building your own agent. So here we're doing the full map."
   },
   {
     "speaker": "PAUSE",
@@ -13,47 +25,39 @@
   },
   {
     "speaker": "ALEX",
-    "text": "The lesson focus is All 55 agents, all 54+ slash commands, customization, and troubleshooting. We will treat every step as a teachable decision, because that is what makes the skill portable and the workflow feel smooth."
+    "text": "At the highest level, the ecosystem described here includes 80 agents across three teams, available across five platforms, along with more than 54 slash commands, more than 25 reusable skills, and several instruction file types."
   },
   {
     "speaker": "JAMIE",
-    "text": "So we should explain the why clearly enough that the steps make sense when the learner meets them later and still feel doable."
+    "text": "That's a lot. If I'm blind or low vision and trying to keep this organized mentally, what's the cleanest first split?"
   },
   {
     "speaker": "ALEX",
-    "text": "That is it. If a listener only has audio right now, they should still get the complete concept and know what evidence would prove success."
-  },
-  {
-    "speaker": "PAUSE",
-    "text": ""
+    "text": "Start with four buckets. First, agents: named helpers you can invoke, often with an at-sign. Second, prompts or slash commands: reusable commands that package a task. Third, instructions: always-on or file-targeted guidance that shapes model behavior. Fourth, supporting automation and preferences, like hooks and personal settings."
   },
   {
     "speaker": "JAMIE",
-    "text": "There are a lot of tools in play. How do we keep that from feeling like a contest?"
+    "text": "And the platforms matter too, right?"
   },
   {
     "speaker": "ALEX",
-    "text": "Complete Reference - Agents, Slash Commands, Instructions, Configuration Levels, and All File Formats: This is your comprehensive reference for Accessibility Agents and the full VS Code Copilot customization system. The next useful detail is concrete: The ecosystem includes 80 agents across 3 teams and 5 platforms, plus 54+ slash commands, 25+ reusable skills, and 6 instruction files."
-  },
-  {
-    "speaker": "ALEX",
-    "text": "The next layer is this. Here is the learner-facing version. Accessibility Agents includes 80 agents organized into three specialized teams, available on five platforms. Put another way, all agents run on GitHub Copilot in VS Code; many also run on Claude Code, Gemini CLI, Claude Desktop, and Codex CLI via platform-specific installation paths. A good GitHub workflow is like a well-run meeting: everyone knows the topic, the next action, and who has the floor."
+    "text": "They do. In this reference, the platforms are GitHub Copilot in VS Code, Claude Code, Gemini CLI, Claude Desktop, and Codex CLI. VS Code with GitHub Copilot is the central daily-workflow environment, especially because it combines agent files, tools, inline suggestions, and accessible editor navigation. Other platforms use different installation or configuration patterns, but many of the ideas transfer."
   },
   {
     "speaker": "JAMIE",
-    "text": "What is the one idea that makes the next few steps less mysterious?"
+    "text": "Can we walk through those platforms in plain language?"
   },
   {
     "speaker": "ALEX",
-    "text": "This is the move inside Team 1: Accessibility (40 agents): this team audits and remediates web and document accessibility across all WCAG criteria, from basic to AAA conformance. That matters in practice: Includes specialized agents for native mobile apps, email accessibility, media, data visualization, design systems, and cognitive accessibility."
+    "text": "Sure. GitHub Copilot in VS Code uses.github/agents with.agent.md files and is best for everyday editor work. Claude Code emphasizes autonomous multi-file work with terminal and file management. Gemini CLI is command-line oriented and can integrate search workflows. Claude Desktop is more session-oriented, with persistent context and longer-running interaction. Codex CLI is described here as experimental and uses its own configuration style."
   },
   {
     "speaker": "JAMIE",
-    "text": "That feels much more doable when you say it as one move."
+    "text": "So same broad idea, different homes and capabilities."
   },
   {
     "speaker": "ALEX",
-    "text": "Right. The magic is not speed. The magic is knowing what changed and why it matters."
+    "text": "Right."
   },
   {
     "speaker": "PAUSE",
@@ -61,27 +65,55 @@
   },
   {
     "speaker": "ALEX",
-    "text": "Now bring the learner back to the room. Anchor this part on Team 2: GitHub Workflow (20 agents). This team manages repository operations, issue triage, pull request review, project coordination, CI/CD pipelines, security alerts, releases, notifications, and wiki pages."
+    "text": "Now the three agent teams. Team one is Accessibility, with 40 agents. Team two is GitHub Workflow, with 20 agents. Team three is Developer Tools, with 18 agents."
   },
   {
     "speaker": "JAMIE",
-    "text": "What should someone listen for when a lesson offers more than one tool path?"
+    "text": "Let's start with the accessibility team, because that's probably the emotional center of this lesson."
   },
   {
     "speaker": "ALEX",
-    "text": "The reason this matters is simple: this team specializes in Python, wxPython, NVDA addon development, desktop accessibility, CI/CD accessibility pipelines, screen reader simulation, and accessibility tool building."
+    "text": "Agreed. The accessibility team covers web and document accessibility across the WCAG spectrum, from basic conformance work through more advanced and sometimes AAA-oriented guidance. The key point is specialization. You have orchestrators, task agents, and informational agents."
+  },
+  {
+    "speaker": "JAMIE",
+    "text": "What's the difference?"
   },
   {
     "speaker": "ALEX",
-    "text": "The useful habit is simple: orient, act, verify, then continue. That pause between action and trust is part of the work."
+    "text": "An orchestrator coordinates. A task agent performs a specialized kind of analysis or output. An informational agent explains standards, testing approaches, or background material."
+  },
+  {
+    "speaker": "JAMIE",
+    "text": "Give me some anchor examples."
   },
   {
     "speaker": "ALEX",
-    "text": "That matters because of the next idea. Do not treat Core Skills (25+) as decoration. Reusable skills provide bundled guidance, reference data, scripts, and templates. That is not trivia. Each skill includes a SKILL.md file defining its scope and API, plus supporting artifacts. The workshop is closer to rehearsal than lecture. You hear the move, try the move, and then check what changed."
+    "text": "@accessibility-lead is an orchestrator that can delegate across specialist agents. @web-accessibility-wizard is another orchestrator, but guided, with severity scoring, remediation tracking, and action plans. On the task side, @aria-specialist focuses on ARIA roles, states, properties, and widget patterns. @modal-specialist handles dialogs, focus trapping, escape behavior, and announcement concerns. @keyboard-navigator looks at tab order, focus management, shortcuts, skip links, and traps. @forms-specialist covers labels, validation, error handling, autocomplete, and grouping."
+  },
+  {
+    "speaker": "JAMIE",
+    "text": "And for content structure?"
   },
   {
     "speaker": "ALEX",
-    "text": "On the ground, that means a few things. accessibility-rules - WCAG 2.2 AA criteria reference with success indicators. framework-accessibility - React, Vue, Angular, Svelte, Tailwind accessibility patterns. web-scanning - URL discovery, crawling, and page inventory for audits. web-severity-scoring - Scoring formula, scorecard computation, confidence levels."
+    "text": "That's where agents like @alt-text-headings and @markdown-a11y-assistant become useful. They focus on alt text quality, heading hierarchy, landmarks, tables, link clarity, emoji use, and document structure. Then you have @tables-specialist, @link-checker, and @live-region-controller for narrower domains."
+  },
+  {
+    "speaker": "JAMIE",
+    "text": "I also noticed broader or more specialized areas."
+  },
+  {
+    "speaker": "ALEX",
+    "text": "Yes. There are agents for cognitive accessibility, mobile accessibility, email, media, data visualizations, web components, performance impacts on accessibility, internationalization and right-to-left language support, compliance mapping, accessibility statements, and design system auditing."
+  },
+  {
+    "speaker": "JAMIE",
+    "text": "And documents are their own cluster."
+  },
+  {
+    "speaker": "ALEX",
+    "text": "Exactly. Word, Excel, PowerPoint, PDF, ePub, cross-document analysis, document inventories, CSV reporting, and a document accessibility wizard. That matters because accessibility work is not just websites. Many teams need accessible office documents and PDFs, and these agents reflect that."
   },
   {
     "speaker": "PAUSE",
@@ -89,35 +121,59 @@
   },
   {
     "speaker": "JAMIE",
-    "text": "Okay, set the room for us. What are we walking into?"
+    "text": "Now what about the GitHub workflow team?"
   },
   {
     "speaker": "ALEX",
-    "text": "Learning Cards: Agent Ecosystem Overview has three jobs: name the idea, give the learner a move, and show what counts as evidence."
-  },
-  {
-    "speaker": "ALEX",
-    "text": "Here is what that changes in practice. Invoke any agent by typing @agent-name in Copilot Chat (Ctrl+Alt+I or Chat: Open Chat ) -- the autocomplete list is keyboard-navigable with arrow keys. The 80 agents are organized into 3 teams (Accessibility, GitHub Workflow, Developer Tools) -- use H in the team tables to jump between headings. Agent responses appear in the Chat panel; press Alt+F2 (Accessible View) for a structured, non-streaming version. 25+ reusable skills provide bundled guidance; agents automatically use relevant skills when they match the task. Skills are also available cross-platform on Claude Code, Gemini CLI, Claude Desktop, and Codex CLI. The agent team tables use consistent columns (Agent, Type, What It Does) -- increase font size so the narrow \"Type\" column remains readable."
-  },
-  {
-    "speaker": "ALEX",
-    "text": "This is where the talk moves from concept to action. Put 2. GitHub Workflow Agents - Quick Reference into plain language. The GitHub Workflow team includes 12 agents that automate common repository operations. The useful version is: These are good starting points if you have completed the Day 1 skills - but explore any agent in the ecosystem that matches your workflow.\\n\\nInvoke any agent by typing @agent-name in Copilot Chat (Ctrl+Alt+I or Chat: Open Chat )."
+    "text": "These 20 agents support repository operations: issues, pull requests, analytics, CI, releases, notifications, repository administration, and related collaboration tasks. The quick-reference section especially highlights a few agents that are central for day-to-day work."
   },
   {
     "speaker": "JAMIE",
-    "text": "Now it sounds like a workflow instead of a wall of instructions."
+    "text": "Let's do those carefully."
   },
   {
     "speaker": "ALEX",
-    "text": "That is where confidence comes from: not from never getting lost, but from knowing how to recover."
+    "text": "First, @daily-briefing. This is a morning situation report for issues, PRs, CI status, security, and community activity. The accessibility-specific note is that its output uses H2 headings so screen reader users can navigate quickly with heading shortcuts, like pressing H in many reading modes."
   },
   {
     "speaker": "JAMIE",
-    "text": "Where do you want a learner to place their attention here?"
+    "text": "That's an important design pattern: an agent is not just smart, it formats its output for navigation."
   },
   {
     "speaker": "ALEX",
-    "text": "The teaching point here is not the label; it is the move. Agent file.github/agents/daily-briefing.agent.md."
+    "text": "Exactly. Accessibility is as much about structure as content."
+  },
+  {
+    "speaker": "JAMIE",
+    "text": "What's next?"
+  },
+  {
+    "speaker": "ALEX",
+    "text": "@issue-tracker for issue management across repositories: finding, prioritizing, triaging, and drafting replies. Then @pr-review for structured pull request review with risk assessment, change maps, and suggestions. Its output is called out as using H2 and H3 headings, again to support heading-based navigation."
+  },
+  {
+    "speaker": "JAMIE",
+    "text": "So if I'm listening with a screen reader or reading in an accessible view, I can jump section by section rather than wading through a wall of text."
+  },
+  {
+    "speaker": "ALEX",
+    "text": "Precisely. Then @analytics gives team-level insight like contribution velocity, turnaround time, code hotspots, and workload distribution. @insiders-a11y-tracker monitors accessibility-sensitive changes, including WCAG and ARIA related shifts, headings, links, and keyboard-related regressions."
+  },
+  {
+    "speaker": "JAMIE",
+    "text": "What exactly does that tracker monitor?"
+  },
+  {
+    "speaker": "ALEX",
+    "text": "In spirit, anything likely to affect accessibility in a meaningful way: semantic structure changes, link text shifts, heading hierarchy changes, keyboard interactions, ARIA updates, and similar high-risk changes. Finally, @template-builder is an interactive wizard for issue templates through ask-and-answer interaction."
+  },
+  {
+    "speaker": "JAMIE",
+    "text": "That sounds helpful for learners who don't want to memorize YAML structure."
+  },
+  {
+    "speaker": "ALEX",
+    "text": "Very much so."
   },
   {
     "speaker": "PAUSE",
@@ -125,35 +181,23 @@
   },
   {
     "speaker": "ALEX",
-    "text": "Before the learner moves on. Output sections (H2 headings - navigate with H) has three jobs: name the idea, give the learner a move, and show what counts as evidence."
-  },
-  {
-    "speaker": "ALEX",
-    "text": "That becomes easier when you listen for these cues. Needs Your Action. Pull Requests Waiting for Your Review. @Mentions Requiring Response. CI Failures on Your Branches. For Your Awareness. Issues Opened Since Yesterday."
-  },
-  {
-    "speaker": "ALEX",
-    "text": "A solid navigation habit is to prove where you are before activating controls. Headings, landmarks, and the address bar are not trivia; they are your map."
+    "text": "The reference also points to supporting resources and reusable skills. Skills are packaged know-how that can be loaded when relevant, rather than always being fully active."
   },
   {
     "speaker": "JAMIE",
-    "text": "What would you say to someone who is already bracing for this to be too much?"
+    "text": "And there are also learning cards."
   },
   {
     "speaker": "ALEX",
-    "text": "@issue-tracker - Issue Management: Agent file.github/agents/issue-tracker.agent.md. That gives the learner a foothold: the agent drafts replies."
+    "text": "Right. Several sections include learning-card style summaries, meant to reinforce the core mental model: how the ecosystem fits together, how invocation works, how skills differ from agents, and which features are cross-platform."
+  },
+  {
+    "speaker": "JAMIE",
+    "text": "So the appendix is trying to be both a technical reference and a study tool."
   },
   {
     "speaker": "ALEX",
-    "text": "A solid issue habit is to read the title, the body, and the timeline before acting. You are listening for the requested action, the missing evidence, and the person who needs a response."
-  },
-  {
-    "speaker": "ALEX",
-    "text": "Now slow down for the part people usually miss. Here is the learner-facing version. Agent file.github/agents/pr-review.agent.md."
-  },
-  {
-    "speaker": "ALEX",
-    "text": "A solid pull request habit is to separate three questions: what changed, why it changed, and what still needs review. That keeps the conversation useful instead of noisy."
+    "text": "Yes."
   },
   {
     "speaker": "PAUSE",
@@ -161,35 +205,43 @@
   },
   {
     "speaker": "JAMIE",
-    "text": "If I am listening before the workshop starts, what should settle in my mind first?"
+    "text": "Now I want the file and scope story, because that's where people get confused. What applies always? What applies only to some files? What wins in conflicts?"
   },
   {
     "speaker": "ALEX",
-    "text": "This is the move inside Output sections (H2/H3 headings): critical rule: The agent produces a starting point. Put another way, read it, edit it, post it under your own name."
-  },
-  {
-    "speaker": "ALEX",
-    "text": "These are the pieces that turn the idea into a usable move. Risk Assessment (High / Medium / Low). Files Changed (per-file descriptions). Suggested Inline Comments (prefixed: nit:, question:, suggestion:, important:, blocking:, praise:). Questions for the Author."
+    "text": "Great question. The appendix describes scope and priority across multiple levels. The three main scopes are user level, workspace level, and more specific file or folder targeting."
   },
   {
     "speaker": "JAMIE",
-    "text": "That is the kind of detail that keeps a screen reader user oriented."
+    "text": "User level means personal and cross-workspace?"
   },
   {
     "speaker": "ALEX",
-    "text": "Yes. The named thing - the heading, tab, field, branch, or button - is the handhold."
-  },
-  {
-    "speaker": "ALEX",
-    "text": "Here is the moment where the page starts to make sense. Anchor this part on @analytics - Team Analytics. Agent file.github/agents/analytics.agent.md. The durable skill is not memorizing one screen. It is knowing how to find your footing when the screen changes."
+    "text": "Exactly. User-level files are your own preferences and instructions that follow you across projects. Workspace-level files are repository-shared and meant for the whole team. Then there are targeted files, like.instructions.md with applyTo patterns, which narrow behavior to particular file types or paths."
   },
   {
     "speaker": "JAMIE",
-    "text": "Give me the version that sounds like an instructor, not a manual."
+    "text": "And priority?"
   },
   {
     "speaker": "ALEX",
-    "text": "The reason this matters is simple: agent file.github/agents/insiders-a11y-tracker.agent.md."
+    "text": "Highest priority wins when there's conflict, and the more specific scope generally overrides the broader one. So a targeted instruction for Markdown files can override general always-on guidance, and repository guidance can override your general expectations where the tool honors that precedence model."
+  },
+  {
+    "speaker": "JAMIE",
+    "text": "What about combining multiple files?"
+  },
+  {
+    "speaker": "ALEX",
+    "text": "Multiple files can be merged. The general idea is additive combination when instructions don't conflict, and priority-based resolution when they do. That's why being explicit and non-duplicative matters."
+  },
+  {
+    "speaker": "JAMIE",
+    "text": "Can you ground that in locations?"
+  },
+  {
+    "speaker": "ALEX",
+    "text": "At user level, think personal, cross-workspace locations. At workspace level, think repo-shared locations inside the project, especially under.github or dedicated customization folders depending on the file type and platform. The appendix emphasizes both categories because discoverability depends heavily on correct placement."
   },
   {
     "speaker": "PAUSE",
@@ -197,31 +249,47 @@
   },
   {
     "speaker": "ALEX",
-    "text": "The next point gives the learner a handle. Do not treat What it monitors as decoration. Risk levels: High (regression), Medium (degraded), Low (improvement opportunity)."
+    "text": "That brings us to always-on instructions. The recommended option is.github/copilot-instructions.md."
   },
   {
     "speaker": "JAMIE",
-    "text": "Let's pause on @template-builder - Issue Template Wizard. What should a learner take away from it?"
+    "text": "Why is that the recommended default?"
   },
   {
     "speaker": "ALEX",
-    "text": "If the interface shifts, @template-builder - Issue Template Wizard is still useful because this appendix is the authoritative reference for all Accessibility Agents, skills, slash commands, customization primitives, and file formats. That is not trivia. Updated for Accessibility Agents v5.0.0+ and VS Code 1.120+."
-  },
-  {
-    "speaker": "ALEX",
-    "text": "Hold that next to this. Put 1. Agent Teams, Roles, and Platforms into plain language. Accessibility Agents v5.0.0+ includes 80+ agents, 25+ skills, and 30+ MCP tools, organized into three teams and five platforms. The interface gets easier when it becomes a set of named places instead of a wall of controls."
-  },
-  {
-    "speaker": "ALEX",
-    "text": "Here are the anchors worth keeping. Copilot: Full support for all agents, skills, and MCP tools. Claude Code: All agents and skills, with some platform-specific limitations. Gemini Code: All agents and skills, with some platform-specific limitations. Codex: All agents and skills, with some platform-specific limitations. CI/CD: MCP tools and reporting agents for automated workflows. Web: Web accessibility, ARIA, keyboard, color, forms, tables, modals, live regions."
+    "text": "Because it's simple, repository-shared, and intended as an always-on instruction layer for the project. If your team wants the assistant to consistently follow accessibility standards, documentation style rules, commit message conventions, and tone guidelines, this is a strong home for that."
   },
   {
     "speaker": "JAMIE",
-    "text": "So the learner is not behind if they stop there and check the page."
+    "text": "And this appendix even includes a sample set of copilot instructions for accessibility-agents, right?"
   },
   {
     "speaker": "ALEX",
-    "text": "Yes. Pausing to verify is not a detour; it is how you keep control of the workflow."
+    "text": "Yes. The sample covers accessibility standards, documentation style, commit message format, and tone. That means you can tell the assistant, in effect: use semantic headings, write accessible Markdown, keep explanations structured, use a chosen commit message convention, and adopt an appropriate review voice."
+  },
+  {
+    "speaker": "JAMIE",
+    "text": "So this is where teams define their baseline values."
+  },
+  {
+    "speaker": "ALEX",
+    "text": "Well put."
+  },
+  {
+    "speaker": "JAMIE",
+    "text": "What are the other options?"
+  },
+  {
+    "speaker": "ALEX",
+    "text": "Option B is AGENTS.md, useful for multi-tool or monorepo contexts. A root-level AGENTS.md can apply broadly, and nested AGENTS.md files may apply per subfolder, though the appendix notes that nested behavior is experimental. Option C is CLAUDE.md for Claude Code compatibility. Option D is settings-based instructions, but those are marked deprecated. There are also organization-level instructions for GitHub Enterprise."
+  },
+  {
+    "speaker": "JAMIE",
+    "text": "And there's a note about enabling discovery in VS Code?"
+  },
+  {
+    "speaker": "ALEX",
+    "text": "Yes. Some org-level or shared setups require making sure VS Code can discover those instructions. In practice, that means paying attention to supported locations and product documentation so the editor actually loads what you expect."
   },
   {
     "speaker": "PAUSE",
@@ -229,123 +297,67 @@
   },
   {
     "speaker": "JAMIE",
-    "text": "Let's pause on 2. Agent and Skill Table. What should a learner take away from it?"
+    "text": "Okay. Always-on instructions are the baseline. What if I want instructions only for certain file types?"
   },
   {
     "speaker": "ALEX",
-    "text": "The teaching point here is not the label; it is the move. This table lists all agents and skills, their roles, and platform support. The useful version is: For the latest list, see Accessibility Agents Repository."
-  },
-  {
-    "speaker": "ALEX",
-    "text": "That shows up in the workshop in a few specific ways. All agents can invoke skills as needed. Skills are documented in.github/skills/ /SKILL.md. Skills include: web-severity-scoring, report-generation, markdown-accessibility, framework-accessibility, help-url-reference, lighthouse-scanner, web-scanning, etc."
-  },
-  {
-    "speaker": "ALEX",
-    "text": "That connects to another useful point. This part earns its place because the repository includes 54+ slash commands, each mapped to a.prompt.md file in.github/prompts/. That is the difference between guessing and knowing: Type / in Copilot Chat to open the command menu."
+    "text": "Then you move to.instructions.md files. These are file-based instructions with targeting support."
   },
   {
     "speaker": "JAMIE",
-    "text": "Let's pause on 4. Customization Primitives and File Formats. What should a learner take away from it?"
+    "text": "What do learners need to know first?"
   },
   {
     "speaker": "ALEX",
-    "text": "4. Customization Primitives and File Formats: See Appendix K: Copilot Reference for a full guide to customization primitives, file formats, and always-on/file-based instructions."
-  },
-  {
-    "speaker": "PAUSE",
-    "text": ""
-  },
-  {
-    "speaker": "ALEX",
-    "text": "Here is the practical turn. 5. Learning Cards: Agent Invocation, Skills, and Cross-Platform Support has three jobs: name the idea, give the learner a move, and show what counts as evidence."
-  },
-  {
-    "speaker": "ALEX",
-    "text": "The room should hear these as checkpoints. All agents and skills are invoked by name with the @ prefix (e.g., @web-accessibility-wizard). Use the slash command menu (/) to discover available prompts and skills. Agent output is rendered as Markdown tables and lists; use Alt+F2 for Accessible View. Skills are documented in.github/skills/ /SKILL.md and referenced in agent output. Platform support is shown in agent/skill tables; check for Copilot, Claude, Gemini, Codex, CI/CD icons or text. Agent and skill names are always shown in the chat transcript and output tables."
+    "text": "Three things: location, frontmatter, and applyTo. File locations determine whether the file is discovered. Frontmatter carries metadata. And applyTo is the glob pattern that says which files the instructions should affect."
   },
   {
     "speaker": "JAMIE",
-    "text": "Let's pause on 5. Scope and Priority - All Levels. What should a learner take away from it?"
+    "text": "Let's slow down on applyTo."
   },
   {
     "speaker": "ALEX",
-    "text": "This is the move inside 5. Scope and Priority - All Levels: every customization file exists at one of three scopes. The next useful detail is concrete: VS Code combines all matching files from all scopes and sends them to the model."
+    "text": "applyTo is how you say, for example, \"use these rules for all Markdown files,\" or \"only for issue template YAML files,\" or \"only for docs under a certain folder.\" It uses glob-style matching. So the power here is precision."
   },
   {
     "speaker": "JAMIE",
-    "text": "That is a useful checkpoint before anyone starts pressing keys."
+    "text": "And discovery modes?"
   },
   {
     "speaker": "ALEX",
-    "text": "Exactly. Checkpoints turn uncertainty into information."
+    "text": "That's about how the environment finds and activates instruction files. Depending on tooling, files may be discovered automatically from expected locations or surfaced through creation workflows in the editor."
   },
   {
     "speaker": "JAMIE",
-    "text": "Turn that into a path someone can follow."
+    "text": "The appendix gives examples too."
   },
   {
     "speaker": "ALEX",
-    "text": "Priority Order (highest wins in conflicts) has three jobs: name the idea, give the learner a move, and show what counts as evidence."
-  },
-  {
-    "speaker": "ALEX",
-    "text": "Think of this as 3 checks: Personal / User-level - your profile instructions override everything; Workspace / Repository-level -.github/copilot-instructions.md, AGENTS.md,.github/agents/.agent.md; and Organization-level - organization-defined custom instructions (lowest priority). Keep it that plain: know where you are, make the move, check the result."
-  },
-  {
-    "speaker": "PAUSE",
-    "text": ""
+    "text": "Yes. One example is accessibility-specific instructions for Markdown accessibility standards. Another is YAML issue template instructions, specifically for issue template YAML standards. Those examples show how you can keep guidance close to the artifact type."
   },
   {
     "speaker": "JAMIE",
-    "text": "What is the ordered workflow?"
+    "text": "That seems especially good for accessibility. Instead of vague \"be accessible\" guidance, you can say exactly how Markdown should be structured, or exactly how issue forms should be written."
   },
   {
     "speaker": "ALEX",
-    "text": "The reason this matters is simple: all of these files roam with your VS Code Settings Sync. That matters in practice: On this machine: C:\\Users\\jeffb\\AppData\\Roaming\\Code - Insiders\\User\\prompts\\."
-  },
-  {
-    "speaker": "ALEX",
-    "text": "The path is straightforward once it is named. Step one is enable Settings Sync (Ctrl+Shift+P → \"Settings Sync: Turn On\"). Step two is ctrl+Shift+P → \"Settings Sync: Configure\". Step three is check \"Prompts and Instructions\". Pause after each step and listen for the confirmation before moving on."
-  },
-  {
-    "speaker": "ALEX",
-    "text": "Another way to ground it. Do not treat How Multiple Files Are Combined as decoration. VS Code collects all matching instruction files from all scopes and includes them all in the chat context. This is the part to say slowly: There is no single winner - all are combined. The workshop is closer to rehearsal than lecture. You hear the move, try the move, and then check what changed."
+    "text": "Exactly. This reduces drift and improves consistency."
   },
   {
     "speaker": "JAMIE",
-    "text": "Let's pause on 6. Always-On Instructions - All File Types. What should a learner take away from it?"
+    "text": "And there are practical creation methods."
   },
   {
     "speaker": "ALEX",
-    "text": "If the interface shifts, 6. Always-On Instructions - All File Types is still useful because always-on instructions are automatically included in every chat request. The listener should be able to check this: You never invoke them - Copilot simply follows them."
-  },
-  {
-    "speaker": "PAUSE",
-    "text": ""
-  },
-  {
-    "speaker": "ALEX",
-    "text": "This is the part worth saying out loud. Put Option A.github/copilot-instructions.md (Recommended) into plain language. Version-controlled and team-shared. That is not trivia. Auto-generate with: Type /init in Copilot Chat - VS Code analyzes your workspace and generates a tailored copilot-instructions.md."
+    "text": "Two are called out: a Command Palette method and a quick creation method. The appendix also repeats the \"creating an instructions file\" topic, underscoring that this is a common task. Learners should know both routes: using the editor's guided command flow, or just creating the file directly in the proper location with the proper frontmatter."
   },
   {
     "speaker": "JAMIE",
-    "text": "I like that because it gives people permission to slow down."
+    "text": "What about writing effective instructions?"
   },
   {
     "speaker": "ALEX",
-    "text": "That is the goal. We want the page to feel explorable, not fragile."
-  },
-  {
-    "speaker": "JAMIE",
-    "text": "How do we make tool choice feel like access, not pressure?"
-  },
-  {
-    "speaker": "ALEX",
-    "text": "The teaching point here is not the label; it is the move. Best for: Projects that use multiple AI tools (Copilot, Claude Code, Gemini CLI, etc.) where a single instruction file should work across all of them. For someone navigating by keyboard or screen reader, this detail matters: Also best for monorepos where different folders need different rules."
-  },
-  {
-    "speaker": "ALEX",
-    "text": "Put that beside the next piece. This part earns its place because enable nested file support: chat.useNestedAgentsMdFiles: true in VS Code settings. The useful version is: File structure: Same as copilot-instructions.md - plain Markdown, no frontmatter. That is the difference between following directions and owning the workflow."
+    "text": "Keep them specific, testable, and scoped. Avoid contradictory guidance. Prefer concrete requirements over aspirational language. And make accessibility requirements explicit, not implied."
   },
   {
     "speaker": "PAUSE",
@@ -353,139 +365,91 @@
   },
   {
     "speaker": "JAMIE",
-    "text": "Let's pause on Option C: CLAUDE.md (Claude Code Compatibility). What should a learner take away from it?"
+    "text": "Now for the star of the show:.agent.md."
   },
   {
     "speaker": "ALEX",
-    "text": "Option C: CLAUDE.md (Claude Code Compatibility): Best for: Teams that use Claude Code alongside VS Code. That is the difference between guessing and knowing: VS Code recognizes all four locations when chat.useClaudeMdFile is enabled (default: on)."
-  },
-  {
-    "speaker": "ALEX",
-    "text": "Now shift from knowing the term to using it. Here is the learner-facing version. Settings-based instructions may be removed in a future VS Code version. This is where the workflow starts to feel magical, because the result becomes visible and explainable: Use file-based instructions instead for new work."
+    "text": "Yes. A.agent.md file defines a custom agent. The appendix treats this as a complete format reference."
   },
   {
     "speaker": "JAMIE",
-    "text": "Let's pause on Organization-Level Instructions (GitHub Enterprise). What should a learner take away from it?"
+    "text": "What are the big pieces?"
   },
   {
     "speaker": "ALEX",
-    "text": "This is the move inside Organization-Level Instructions (GitHub Enterprise): organization administrators can define custom instructions that apply to all repositories in the organization. That gives the learner a foothold: every team member gets these instructions automatically."
+    "text": "File locations, frontmatter, model fallback, invocation control, allowed tools, body structure, constraints, behavior, output format, section headers, accessibility requirements, scope boundaries, and how to create your own agent."
   },
   {
     "speaker": "JAMIE",
-    "text": "That is the part I would want someone to say out loud while they work."
+    "text": "Start with frontmatter."
   },
   {
     "speaker": "ALEX",
-    "text": "Exactly. A learner should always know what they are trying to prove before they take the next action."
-  },
-  {
-    "speaker": "PAUSE",
-    "text": ""
-  },
-  {
-    "speaker": "ALEX",
-    "text": "This is where confidence starts to build. Anchor this part on To enable discovery in VS Code. Organization instructions are the lowest priority - workspace and user instructions override them when they conflict. The durable skill is not memorizing one screen. It is knowing how to find your footing when the screen changes."
+    "text": "Frontmatter is the metadata block at the top. It identifies the agent and controls things like model choices, tool access, invocation behavior, and related properties. One especially useful idea is model fallback arrays: if a preferred model is unavailable, the system can try alternates in a specified order."
   },
   {
     "speaker": "JAMIE",
-    "text": "Let's pause on 7. File-Based Instructions (.instructions.md). What should a learner take away from it?"
+    "text": "That's a reliability feature."
   },
   {
     "speaker": "ALEX",
-    "text": "The reason this matters is simple: file-based instructions load conditionally - either when the files you are editing match a glob pattern, or when the agent determines the instruction is relevant to the current task. Put another way, use for: Language-specific rules, framework conventions, module-specific standards that only apply to part of the codebase."
-  },
-  {
-    "speaker": "ALEX",
-    "text": "Keep the thread going. Do not treat The applyTo Glob Pattern as decoration. applyTo specifies which files trigger automatic inclusion of these instructions. That matters in practice: When a file matching the pattern is part of the chat context, the instructions are included automatically."
-  },
-  {
-    "speaker": "PAUSE",
-    "text": ""
+    "text": "Exactly. Then there's invocation control, which governs how the agent is called or surfaced. Some agents are meant to be directly invoked with an at-sign. Others may be chosen by workflows or commands."
   },
   {
     "speaker": "JAMIE",
-    "text": "Let's pause on Writing Effective Instructions. What should a learner take away from it?"
+    "text": "The tool list sounded important too."
   },
   {
     "speaker": "ALEX",
-    "text": "If the interface shifts, Writing Effective Instructions is still useful because guidance from GitHub's accessibility team on writing instructions that Copilot actually follows. This is the part to say slowly: Share your instructions: The github/awesome-copilot repository collects community-contributed instructions files."
-  },
-  {
-    "speaker": "ALEX",
-    "text": "The parts worth keeping in working memory are these. Use normative language. Write MUST, MUST NOT, SHOULD, SHOULD NOT, and MAY for rules. LLMs respond well to these terms because they reduce ambiguity -- the same words used in WCAG. Example: Keyboard shortcuts MUST NOT override browser or OS shortcuts. Use lists and checklists. Structured lists provide guardrails that keep Copilot on track. Format accessibility requirements as a checklist so no criterion is overlooked. Specify your versions and standards. This application MUST conform to WCAG 2.2 Level AA is more useful than a general reference to accessibility. Include your design system's component names and flag deprecated components explicitly: DeprecatedButton MUST NOT. Focus on what Copilot doesn't already know. Instructions should add net-new information -- your team's conventions, exceptions, and priorities -- not restate what Copilot was trained on."
+    "text": "Very. The appendix describes all tool names, built-in aliases, exact-name references, and recommended tool combinations by use case. This matters because tools define the agent's power and risk profile."
   },
   {
     "speaker": "JAMIE",
-    "text": "What does the learner do first, second, and then after that?"
+    "text": "Can we walk through those use cases in plain English?"
   },
   {
     "speaker": "ALEX",
-    "text": "Command Palette method has three jobs: name the idea, give the learner a move, and show what counts as evidence."
-  },
-  {
-    "speaker": "ALEX",
-    "text": "Walk it in order: Ctrl+Shift+P → \"Chat: New Instructions File\"; Choose Workspace or User Profile scope; Enter filename; and Add applyTo and/or description frontmatter. That small check between steps is what makes the workflow reliable."
+    "text": "Sure. A read-only research setup is safest when you want analysis without modifications. Documentation or file generation adds writing capability. Full GitHub workflow combines repo-aware operations. Terminal access is powerful but should be used carefully. Conversational-only mode means no file access. Interactive wizard mode emphasizes guided Q and A."
   },
   {
     "speaker": "JAMIE",
-    "text": "Give me the sequence, because order matters here."
+    "text": "So choosing tools is really choosing capability boundaries."
   },
   {
     "speaker": "ALEX",
-    "text": "Think of this as 1 checks: Write instructions. The sequence works because every action has a confirmation."
+    "text": "Yes, and safety boundaries."
   },
   {
     "speaker": "JAMIE",
-    "text": "So this is less about memorizing and more about noticing."
+    "text": "What about the body of the agent file?"
   },
   {
     "speaker": "ALEX",
-    "text": "Right. Once the learner can name the move, the interface becomes much less intimidating."
+    "text": "The body is the operational prompt. The template described here includes sections such as constraints, behavior, task name, output format, section header conventions, accessibility requirements, and scope boundaries. This is where you tell the agent what it should and should not do."
   },
   {
     "speaker": "JAMIE",
-    "text": "Let's pause on Quick creation method. What should a learner take away from it?"
+    "text": "Give me a concrete example of why those sections matter."
   },
   {
     "speaker": "ALEX",
-    "text": "The teaching point here is not the label; it is the move. Type /instructions in the Chat input to open the Configure Instructions menu."
-  },
-  {
-    "speaker": "PAUSE",
-    "text": ""
-  },
-  {
-    "speaker": "ALEX",
-    "text": "Keep the teaching thread moving. This part earns its place because the first available model in the array is used. For someone navigating by keyboard or screen reader, this detail matters: Useful for environments where not all models are licensed."
+    "text": "If you're building an accessibility review agent, constraints might say \"do not invent test results,\" behavior might say \"analyze semantic structure and keyboard implications,\" output format might require headings and severity groupings, accessibility requirements might mandate navigable heading levels and descriptive link text, and scope boundaries might say \"do not alter build configuration unless explicitly asked.\""
   },
   {
     "speaker": "JAMIE",
-    "text": "Let's pause on [Section Header]. What should a learner take away from it?"
+    "text": "So the structure disciplines the assistant."
   },
   {
     "speaker": "ALEX",
-    "text": "[Section Header]: [Describe the exact output structure here with placeholders]."
+    "text": "Exactly. And because this appendix is accessibility-focused, it explicitly includes accessibility requirements as part of the agent definition, not as an afterthought."
   },
   {
     "speaker": "JAMIE",
-    "text": "How would you walk the room through that step by step?"
+    "text": "There's also a learning-card section for.agent.md."
   },
   {
     "speaker": "ALEX",
-    "text": "Here is the learner-facing version. Write keyword-rich descriptions. That is the difference between guessing and knowing: The description is how other agents decide whether to delegate to yours. A good GitHub workflow is like a well-run meeting: everyone knows the topic, the next action, and who has the floor."
-  },
-  {
-    "speaker": "ALEX",
-    "text": "Start here: Copy an existing.agent.md from.github/agents/. Then: Edit the frontmatter (name, description, tools). Next: Write clear step-by-step instructions in the body. Last: Add an Output Format section showing the expected structure. The point is not speed; the point is never losing your place."
-  },
-  {
-    "speaker": "JAMIE",
-    "text": "Let's pause on Creating Your Own Agent. What should a learner take away from it?"
-  },
-  {
-    "speaker": "ALEX",
-    "text": "Walk it in order: Add Constraints and Scope Boundaries sections; Save to.github/agents/your-agent-name.agent.md; Reload VS Code: Ctrl+Shift+P → \"Reload Window\"; and Type @your-agent-name in Copilot Chat. Each step should leave a trace you can name."
+    "text": "Right, reinforcing that this file type is central enough to warrant recap and memorization."
   },
   {
     "speaker": "PAUSE",
@@ -493,31 +457,43 @@
   },
   {
     "speaker": "JAMIE",
-    "text": "Let's pause on Learning Cards.agent.md - Complete Format Reference. What should a learner take away from it?"
+    "text": "How is.prompt.md different?"
   },
   {
     "speaker": "ALEX",
-    "text": "Learning Cards.agent.md - Complete Format Reference has three jobs: name the idea, give the learner a move, and show what counts as evidence."
-  },
-  {
-    "speaker": "ALEX",
-    "text": "If someone is taking notes, this is the short list. YAML frontmatter is the first block in the file between --- delimiters -- arrow through it line by line to verify name, description, and tools fields; indentation matters. The name field in frontmatter is what you type after @ in Copilot Chat -- if the agent does not appear, check this field matches your invocation and reload VS Code (Ctrl+Shift+P then \"Reload Window\"). Use Chat Diagnostics (gear icon in Chat header then Diagnostics) to verify your agent loaded successfully -- it lists every agent found, with error details if frontmatter parsing failed. Agent files are small Markdown documents typically under 100 lines -- increase editor font size and use a theme with distinct YAML keyword colors so frontmatter fields stand out. The tools list in frontmatter uses array syntax ([\"read\", \"search\"]) -- at high zoom, verify commas and quotes are correct since YAML is sensitive to formatting. The body template structure (Constraints, Behavior, Output Format, Scope Boundaries) uses headings -- use VS Code's Outline view (Ctrl+Shift+O) to navigate between sections."
-  },
-  {
-    "speaker": "ALEX",
-    "text": "Keep the teaching thread moving. Complete Frontmatter Reference has three jobs: name the idea, give the learner a move, and show what counts as evidence."
+    "text": "A.prompt.md file defines a reusable prompt or slash command rather than a full agent persona. Think of it as a command-shaped task package."
   },
   {
     "speaker": "JAMIE",
-    "text": "Let's pause on Tool Priority When Agent Is Also Specified. What should a learner take away from it?"
+    "text": "So if an agent is \"who you are,\" a prompt is more like \"what to do.\""
   },
   {
     "speaker": "ALEX",
-    "text": "The reason this matters is simple: when both the prompt and the referenced agent define tools, VS Code uses this priority."
+    "text": "That's a very good shorthand. The.prompt.md reference covers file locations, frontmatter, model fallback, tool priority when an agent is also specified, input parameters, body structure for referencing tools and files, an example accessibility update command, and behavior rules."
+  },
+  {
+    "speaker": "JAMIE",
+    "text": "Input parameters sound especially useful."
   },
   {
     "speaker": "ALEX",
-    "text": "The path is straightforward once it is named. Step one is tools listed in the prompt file's frontmatter (highest priority). Step two is tools from the referenced custom agent. Step three is default tools for the selected agent mode. That is the rhythm: orient, act, verify, continue."
+    "text": "They are. They let a slash command accept values such as a file path, repository name, date range, or review target. That makes the command reusable without rewriting the prompt every time."
+  },
+  {
+    "speaker": "JAMIE",
+    "text": "And tool priority when an agent is also specified?"
+  },
+  {
+    "speaker": "ALEX",
+    "text": "That's about resolving authority. If a prompt calls an agent but also declares tools or expectations, the system needs a rule for which settings take precedence. The appendix makes clear that this interaction matters and should be designed intentionally."
+  },
+  {
+    "speaker": "JAMIE",
+    "text": "And creating your own slash command follows the same general philosophy as creating an agent: name it well, scope it carefully, specify inputs, and define outputs."
+  },
+  {
+    "speaker": "ALEX",
+    "text": "Yes, with the additional reminder that good slash commands reduce repetitive prompting and support consistent workflows."
   },
   {
     "speaker": "PAUSE",
@@ -525,39 +501,47 @@
   },
   {
     "speaker": "ALEX",
-    "text": "Keep the teaching thread moving. Input Parameters has three jobs: name the idea, give the learner a move, and show what counts as evidence."
-  },
-  {
-    "speaker": "ALEX",
-    "text": "Listen for the small confirmations in this list. parameterName - internal identifier (no spaces). The text after the second: is shown to the user as a placeholder or tooltip. Multiple parameters are supported in one prompt file."
+    "text": "Now skills. Agent skills use SKILL.md and are described as a complete format reference too."
   },
   {
     "speaker": "JAMIE",
-    "text": "Let's pause on Creating Your Own Slash Command. What should a learner take away from it?"
+    "text": "How should learners think about skills compared with agents and prompts?"
   },
   {
     "speaker": "ALEX",
-    "text": "If the interface shifts, Creating Your Own Slash Command is still useful because both prompts and agent skills appear as / slash commands. That matters in practice: The difference: prompts are single-task Markdown files; skills are folders with bundled scripts and references."
-  },
-  {
-    "speaker": "ALEX",
-    "text": "Start here: Copy an existing.prompt.md from.github/prompts/. Then: Edit frontmatter (name, description, tools). Next: Write the task instructions in plain English. Last: Add ${input.} placeholders where the user must provide values. The sequence works because every action has a confirmation."
+    "text": "Skills are reusable capability modules. An agent is a persona plus behavior package. A prompt is a reusable command. A skill is a chunk of specialized know-how that can be loaded when needed."
   },
   {
     "speaker": "JAMIE",
-    "text": "Before we leave Creating Your Own Slash Command, what is the practical point?"
+    "text": "And the appendix includes folder structure and file locations."
   },
   {
     "speaker": "ALEX",
-    "text": "Walk it in order: Save to.github/prompts/your-command.prompt.md; Reload VS Code: Ctrl+Shift+P → \"Reload Window\"; and Type /your-command to invoke it. Keep it that plain: know where you are, make the move, check the result."
+    "text": "Right. Skills live in a defined folder structure. Their frontmatter and body define what they do and how they should be invoked or loaded. There's also a key concept called progressive loading."
+  },
+  {
+    "speaker": "JAMIE",
+    "text": "What does that mean?"
   },
   {
     "speaker": "ALEX",
-    "text": "Keep the teaching thread moving. Learning Cards: Prompts and Slash Commands has three jobs: name the idea, give the learner a move, and show what counts as evidence."
+    "text": "VS Code may load skills progressively rather than all at once. In practical terms, that means relevant skills can become available when context suggests they're needed, which helps manage scale and avoids overloading the model with every skill at all times."
+  },
+  {
+    "speaker": "JAMIE",
+    "text": "That sounds like a performance and relevance strategy."
   },
   {
     "speaker": "ALEX",
-    "text": "This is where the lesson becomes something you can check. Type / in Copilot Chat to see all available slash commands -- the autocomplete list reads each command name and description aloud.prompt.md files use YAML frontmatter for metadata (name, description, tools) followed by plain Markdown instructions. Use ${input:variableName} placeholders in prompts to create interactive fill-in-the-blank commands that prompt the user at invocation. The slash command picker popup is themed to match your current VS Code theme -- ensure your theme has sufficient contrast for dropdown items.prompt.md files are small Markdown files that are easy to read and edit at high zoom -- typically under 50 lines. The YAML frontmatter block at the top is indentation-sensitive -- use VS Code's indentation guides or a linter to verify structure."
+    "text": "It is. The appendix also notes slash command behavior for skills, which helps learners understand how skills may connect to command-driven workflows."
+  },
+  {
+    "speaker": "JAMIE",
+    "text": "And there's an example skill."
+  },
+  {
+    "speaker": "ALEX",
+    "text": "Yes, an Accessibility Audit Skill. The example is organized with sections like when to use, procedure, and output format. That's pedagogically important because it shows that even a skill should define activation conditions, repeatable steps, and a structured result."
   },
   {
     "speaker": "PAUSE",
@@ -565,23 +549,43 @@
   },
   {
     "speaker": "JAMIE",
-    "text": "Let's pause on 10. Agent Skills (SKILL.md) - Complete Format Reference. What should a learner take away from it?"
+    "text": "Hooks are next, and I think some learners hear \"hooks\" and immediately worry."
   },
   {
     "speaker": "ALEX",
-    "text": "The teaching point here is not the label; it is the move. A Skill is a folder - not a single file. The listener should be able to check this: The folder contains SKILL.md plus any scripts, templates, and reference documents the skill needs."
+    "text": "Fair reaction. Hooks are lifecycle automation defined in JSON. They can trigger at certain events and run commands. Powerful, but they need care."
   },
   {
     "speaker": "JAMIE",
-    "text": "Let's pause on Progressive Loading - How VS Code Loads Skills. What should a learner take away from it?"
+    "text": "What should learners remember?"
   },
   {
     "speaker": "ALEX",
-    "text": "Progressive Loading - How VS Code Loads Skills: Move reference material to references/ folder files."
+    "text": "Locations, events, configuration format, command fields, and the input-output contract. Hooks respond to defined events, such as before a tool is used or after certain actions complete, depending on the supported hook system."
+  },
+  {
+    "speaker": "JAMIE",
+    "text": "The appendix specifically mentions PreToolUse permission decisions."
   },
   {
     "speaker": "ALEX",
-    "text": "First, discovery ( 100 tokens): Reads name and description to decide if the skill is relevant. Then, instructions (<5000 tokens): Loads the full SKILL.md body when the skill is relevant. After that, resources: Additional files (scripts/, references/) only load when explicitly referenced from SKILL.md. Each step should leave a trace you can name."
+    "text": "Yes. That means a hook can participate in deciding whether a tool use should be allowed. It's part of the safety and governance story."
+  },
+  {
+    "speaker": "JAMIE",
+    "text": "And exit codes?"
+  },
+  {
+    "speaker": "ALEX",
+    "text": "Exit codes communicate success, failure, or decision outcomes in automation flows. So if you're debugging a hook or designing one, those codes matter."
+  },
+  {
+    "speaker": "JAMIE",
+    "text": "This feels advanced, but still important for trustworthy workflows."
+  },
+  {
+    "speaker": "ALEX",
+    "text": "Exactly. Even if a learner doesn't write hooks immediately, they should know hooks exist as an automation and enforcement layer."
   },
   {
     "speaker": "PAUSE",
@@ -589,27 +593,39 @@
   },
   {
     "speaker": "ALEX",
-    "text": "Keep the teaching thread moving. Here is the learner-facing version. Hooks execute shell commands at specific points in an agent's lifecycle. The useful version is: They are deterministic - they run regardless of what the agent was prompted to do."
+    "text": "Now a gentler file: preferences.md. This is presented as Accessibility Agents Personal Settings."
   },
   {
     "speaker": "JAMIE",
-    "text": "Let's pause on File Locations. What should a learner take away from it?"
+    "text": "So this is less about repository policy and more about me."
   },
   {
     "speaker": "ALEX",
-    "text": "This is the move inside File Locations: hooks from all locations are combined - workspace and user hooks do not override each other."
+    "text": "Correct. The full template includes fields like your GitHub username, repositories you work on most, preferred output format, notification priority, review comment tone, time zone, and accessibility context."
   },
   {
     "speaker": "JAMIE",
-    "text": "How do you keep commands from becoming magic words?"
+    "text": "That accessibility context field is especially interesting."
   },
   {
     "speaker": "ALEX",
-    "text": "Configuration Format has three jobs: name the idea, give the learner a move, and show what counts as evidence."
+    "text": "It is. It acknowledges that accessibility is not only an external product concern. It also affects how the assistant should communicate with you. Maybe you want concise heading-rich output, maybe minimal tables, maybe explicit keyboard steps, maybe strong text alternatives for visual descriptions."
+  },
+  {
+    "speaker": "JAMIE",
+    "text": "And the appendix lists option sets for output format, notification priority, comment tone, and accessibility context."
   },
   {
     "speaker": "ALEX",
-    "text": "Treat examples as spoken recipes, not decorations. You may hear something like {; \"hooks\": {; \"PreToolUse\": [; {; \"type\": \"command\",; \"command\": \".github/hooks/validate-before-edit.sh\",; \"timeout\": 15; }; ],; \"PostToolUse\": [; {; \"type\": \"command\",; \"command\": \"npx prettier --write\",; \"windows\": \"npx.cmd prettier --write\",; \"timeout\". Read the command, understand what it changes, then run it only when the repository state matches the lesson."
+    "text": "Yes. That helps standardize personalization while still allowing individual needs."
+  },
+  {
+    "speaker": "JAMIE",
+    "text": "So a learner could effectively tell the system: I prefer structured prose over tables, I need higher priority alerts for accessibility regressions, I want review comments direct but respectful, and I'm in this time zone."
+  },
+  {
+    "speaker": "ALEX",
+    "text": "Exactly."
   },
   {
     "speaker": "PAUSE",
@@ -617,31 +633,43 @@
   },
   {
     "speaker": "JAMIE",
-    "text": "How should a learner choose a tool without feeling judged by the choice?"
+    "text": "Troubleshooting time. What goes wrong most often?"
   },
   {
     "speaker": "ALEX",
-    "text": "The reason this matters is simple: permission decisions: \"allow\" \"ask\" (prompt user) \"deny\" (block the tool call)."
-  },
-  {
-    "speaker": "ALEX",
-    "text": "Keep the teaching thread moving. Exit codes has three jobs: name the idea, give the learner a move, and show what counts as evidence."
-  },
-  {
-    "speaker": "ALEX",
-    "text": "These are the details that keep the idea from floating away. 0 - success; agent continues. 2 - blocking error; agent stops. Other - non-blocking warning."
+    "text": "The appendix calls out a diagnostics area and common issues. First, viewing all loaded customizations. That's important because many problems come down to \"the file exists, but it isn't being loaded.\""
   },
   {
     "speaker": "JAMIE",
-    "text": "Let's pause on Learning Cards: Hooks. What should a learner take away from it?"
+    "text": "So visibility into loaded customizations is step one."
   },
   {
     "speaker": "ALEX",
-    "text": "Learning Cards: Hooks has three jobs: name the idea, give the learner a move, and show what counts as evidence."
+    "text": "Yes. Then common problems: the agent is not found when typing the at-name, instructions are not being applied, the instructions file is in the wrong place, or the slash command is not appearing."
+  },
+  {
+    "speaker": "JAMIE",
+    "text": "And the likely root causes?"
   },
   {
     "speaker": "ALEX",
-    "text": "Here is the part that makes the next action easier. Hooks are JSON files, not Markdown -- navigate them in the editor with arrow keys; each hook event (e.g., PreToolUse, PostToolUse) is a key in the \"hooks\" object. Hook output is returned as JSON on stdout -- the \"continue\" field (true/false) determines whether the agent proceeds; listen for the \"stopReason\" message if the hook blocks an action. The \"permissionDecision\" values (allow, ask, deny) control tool access -- ask triggers a confirmation dialog that your screen reader will announce as a standard VS Code dialog. JSON syntax requires careful attention to braces, brackets, and commas -- use VS Code's bracket pair colorization (editor.bracketPairColorization.enabled) and increase font size to verify structure. The hook events table maps each event name to when it fires -- zoom in on the \"When It Fires\" column to understand the lifecycle timing. Hook errors appear in the agent session output -- look for non-zero exit codes or \"continue\": false in the output pane."
+    "text": "Usually incorrect file location, unsupported naming, invalid frontmatter, discovery mismatch, or simply using a feature in a context where it isn't supported. The reference strongly implies: check placement, naming, and product support matrix before assuming the model is broken."
+  },
+  {
+    "speaker": "JAMIE",
+    "text": "That's a very real lesson in tooling."
+  },
+  {
+    "speaker": "ALEX",
+    "text": "Yes. Also, there's a specific section on accessibility agents keyboard shortcuts. Even without reading each shortcut aloud here, the important point is that keyboard-first access matters, especially for blind and low-vision users. Learners should actively practice invoking chat, navigating heading-based output, opening accessible views, and moving through command interfaces without relying on the mouse."
+  },
+  {
+    "speaker": "JAMIE",
+    "text": "So accessibility is present both in the content being analyzed and in the way we operate the tools."
+  },
+  {
+    "speaker": "ALEX",
+    "text": "Absolutely."
   },
   {
     "speaker": "PAUSE",
@@ -649,31 +677,23 @@
   },
   {
     "speaker": "ALEX",
-    "text": "Keep the teaching thread moving. Put 12. preferences.md - Accessibility Agents Personal Settings into plain language. Copy.github/agents/preferences.example.md to.github/agents/preferences.md. That matters in practice: The file is in.gitignore - your private settings stay only in your local fork. The interface gets easier when it becomes a set of named places instead of a wall of controls."
+    "text": "The appendix also looks beyond custom files to smart actions, the browser agent, and third-party agents."
   },
   {
     "speaker": "JAMIE",
-    "text": "What is the safe way to learn from that example?"
+    "text": "What's the takeaway there?"
   },
   {
     "speaker": "ALEX",
-    "text": "Full File Template has three jobs: name the idea, give the learner a move, and show what counts as evidence."
-  },
-  {
-    "speaker": "ALEX",
-    "text": "Treat examples as spoken recipes, not decorations. You may hear something like My Accessibility Agents Preferences; My GitHub Username; your-github-username; Repositories I Work On Most; - community-access/accessibility-agents; - your-org/your-repo; Preferred Output Format; screen-reader-optimized; Notification Priority; Accessibility. Read the command, understand what it changes, then run it only when the repository state matches the lesson."
+    "text": "Smart Actions can complement accessibility workflows by offering contextual operations in supported environments. Browser Agent support matters for accessibility testing because many accessibility checks are inherently browser-centered: DOM behavior, keyboard interaction, live announcements, layout responsiveness, and rendered semantics. Third-party agents on GitHub.com or GitHub Cloud expand the ecosystem, but learners should evaluate capability, trust, and support carefully."
   },
   {
     "speaker": "JAMIE",
-    "text": "What is the judgment call here?"
+    "text": "So the ecosystem is broader than just one editor feature."
   },
   {
     "speaker": "ALEX",
-    "text": "Preferred Output Format Options has three jobs: name the idea, give the learner a move, and show what counts as evidence."
-  },
-  {
-    "speaker": "ALEX",
-    "text": "Use the comparison to make a decision, not to recite a table. The main contrasts are: \"concise\" means Bullet points and short summaries, minimal prose. \"detailed\" means Full context and more explanation in every response. \"screen-reader-optimized\" means Heading-heavy structure, no tables, explicit empty-state messages."
+    "text": "Yes, though the reference keeps VS Code and GitHub Copilot at the center for practical day-to-day customization."
   },
   {
     "speaker": "PAUSE",
@@ -681,27 +701,27 @@
   },
   {
     "speaker": "JAMIE",
-    "text": "Let's pause on Notification Priority Options. What should a learner take away from it?"
+    "text": "Before we wrap up, can we do a compact decision guide? If I need to customize behavior, how do I choose the right primitive?"
   },
   {
     "speaker": "ALEX",
-    "text": "Notification Priority Options: The @daily-briefing agent reads this to sort its output sections."
-  },
-  {
-    "speaker": "ALEX",
-    "text": "Keep the teaching thread moving. Here is the learner-facing version. The @pr-review and @issue-tracker agents read this when drafting comments. A good GitHub workflow is like a well-run meeting: everyone knows the topic, the next action, and who has the floor."
+    "text": "Absolutely. If you want broad, always-on project guidance, use.github/copilot-instructions.md. If you want tool-agnostic or monorepo guidance, consider AGENTS.md, with caution around nested behavior. If you want Claude Code compatibility, use CLAUDE.md where appropriate. If you want rules only for certain files, use.instructions.md with applyTo globs. If you want a named assistant persona with defined tools and behavior, create a.agent.md file. If you want a reusable slash command, create a.prompt.md file. If you want reusable specialized know-how, define a skill with SKILL.md. If you want lifecycle automation or policy enforcement, use hooks JSON. If you want your own personal defaults and communication preferences, use preferences.md."
   },
   {
     "speaker": "JAMIE",
-    "text": "What should happen before anyone copies and runs it?"
+    "text": "That is the map."
   },
   {
     "speaker": "ALEX",
-    "text": "This is the move inside Accessibility Context Options: tells agents which screen reader and browser you use so they can tailor output and recommendations."
+    "text": "And if you're unsure, start simple. Don't build an agent, a prompt, a skill, and a hook on day one. Begin with always-on instructions and one targeted instruction file. Then add a custom agent or slash command once you know what repetition you're trying to eliminate."
+  },
+  {
+    "speaker": "JAMIE",
+    "text": "That advice probably saves people a lot of confusion."
   },
   {
     "speaker": "ALEX",
-    "text": "Treat examples as spoken recipes, not decorations. You may hear something like I use NVDA with Chrome on Windows 11.; I use VoiceOver with Safari on macOS Sonoma.; I use JAWS with Firefox on Windows 10.; I use Narrator with Edge on Windows 11.; I use TalkBack on Android. Read the command, understand what it changes, then run it only when the repository state matches the lesson."
+    "text": "Usually, yes."
   },
   {
     "speaker": "PAUSE",
@@ -709,146 +729,26 @@
   },
   {
     "speaker": "JAMIE",
-    "text": "Let's pause on View All Loaded Customizations. What should a learner take away from it?"
+    "text": "Any final note on sources and trustworthiness?"
   },
   {
     "speaker": "ALEX",
-    "text": "Anchor this part on View All Loaded Customizations. To see every instruction file, agent, prompt, and skill currently loaded and any errors. That is the difference between guessing and knowing: This shows: which files were found, which were loaded, which have errors, and from which scope (user vs workspace vs organization)."
-  },
-  {
-    "speaker": "ALEX",
-    "text": "Think of this as 2 checks: In Copilot Chat, select the gear icon (Configure Chat) → Diagnostics; and Or right-click in the Chat view → Diagnostics. Keep it that plain: know where you are, make the move, check the result."
+    "text": "Yes. The appendix points learners back to authoritative documentation: GitHub Docs, Copilot docs, support matrices for custom instructions, documentation about custom agents, and the changelog. That matters because these features are evolving. File names, precedence rules, and platform support can shift. So the best habit is to keep a stable mental model, but verify current behavior against official docs."
   },
   {
     "speaker": "JAMIE",
-    "text": "Let's pause on Agent not found when typing @agent-name. What should a learner take away from it?"
+    "text": "And maybe the most important accessibility takeaway is that output structure is part of quality, not decoration."
   },
   {
     "speaker": "ALEX",
-    "text": "Agent not found when typing @agent-name has three jobs: name the idea, give the learner a move, and show what counts as evidence."
-  },
-  {
-    "speaker": "ALEX",
-    "text": "The path is straightforward once it is named. Step one is verify.github/agents/[name].agent.md exists in your open workspace folder. Step two is check that the YAML frontmatter has no syntax errors (missing quotes, wrong indentation). Step three is ctrl+Shift+P → \"Reload Window\". Step four is check that the name field in the frontmatter matches what you are typing. Pause after each step and listen for the confirmation before moving on."
+    "text": "Beautifully said. Headings, navigable sections, explicit scope, clear constraints, and predictable formatting help everyone, and they are especially valuable for blind and low-vision contributors."
   },
   {
     "speaker": "JAMIE",
-    "text": "Let's pause on Instructions not being applied. What should a learner take away from it?"
+    "text": "So the real skill here is not just learning a bunch of filenames. It's learning how to design trustworthy, reusable, accessible collaboration with AI tools."
   },
   {
     "speaker": "ALEX",
-    "text": "Instructions not being applied has three jobs: name the idea, give the learner a move, and show what counts as evidence."
-  },
-  {
-    "speaker": "ALEX",
-    "text": "First, for.github/copilot-instructions.md: file must be at workspace root in the.github/ folder. Then, for.instructions.md: check that applyTo glob matches the file you are editing, and that chat.includeApplyingInstructions is true in VS Code settings. After that, for AGENTS.md: check that chat.useAgentsMdFile is true. Finally, use Diagnostics view (above) to verify the file was found and loaded. The point is not speed; the point is never losing your place."
-  },
-  {
-    "speaker": "PAUSE",
-    "text": ""
-  },
-  {
-    "speaker": "JAMIE",
-    "text": "Let's pause on Instructions file in wrong place. What should a learner take away from it?"
-  },
-  {
-    "speaker": "ALEX",
-    "text": "Instructions file in wrong place has three jobs: name the idea, give the learner a move, and show what counts as evidence."
-  },
-  {
-    "speaker": "ALEX",
-    "text": "For a learner, the useful signals are concrete. Add custom locations: chat.instructionsFilesLocations setting accepts an array of additional folder paths."
-  },
-  {
-    "speaker": "JAMIE",
-    "text": "Let's pause on Slash command not appearing. What should a learner take away from it?"
-  },
-  {
-    "speaker": "ALEX",
-    "text": "Slash command not appearing has three jobs: name the idea, give the learner a move, and show what counts as evidence."
-  },
-  {
-    "speaker": "ALEX",
-    "text": "Walk it in order: Verify.github/prompts/[name].prompt.md exists; Ctrl+Shift+P → \"Reload Window\"; and File must use.prompt.md extension (not just.md). If one step does not match what you hear, stop there and re-orient."
-  },
-  {
-    "speaker": "JAMIE",
-    "text": "Let's pause on Smart Actions and Accessibility Agents. What should a learner take away from it?"
-  },
-  {
-    "speaker": "ALEX",
-    "text": "The teaching point here is not the label; it is the move. VS Code 1.120+ introduces Smart Actions (automated suggestions for commit messages, symbol renaming, error fixing, and semantic search). That matters in practice: These complement Accessibility Agents by automating routine tasks that don't require conversational reasoning."
-  },
-  {
-    "speaker": "PAUSE",
-    "text": ""
-  },
-  {
-    "speaker": "JAMIE",
-    "text": "Let's pause on Browser Agent and Accessibility Testing. What should a learner take away from it?"
-  },
-  {
-    "speaker": "ALEX",
-    "text": "This part earns its place because the Browser Agent (Experimental) can open and test web applications, but it requires human verification for accessibility claims. This is the part to say slowly: Pair Browser Agent with manual screen reader testing and structured Accessibility Agents audits. That is the difference between following directions and owning the workflow."
-  },
-  {
-    "speaker": "ALEX",
-    "text": "The path is straightforward once it is named. Step one is use Browser Agent to take screenshots and verify layout (quick visual check). Step two is use @web-accessibility-wizard to run structured audit (axe-core, semantic analysis). Step three is do manual screen reader + keyboard testing to verify agent findings. Step four is use Accessibility Agents for remediation guidance and compliance mapping. That small check between steps is what makes the workflow reliable."
-  },
-  {
-    "speaker": "JAMIE",
-    "text": "Let's pause on Third-Party Agents on GitHub.com and GitHub Cloud. What should a learner take away from it?"
-  },
-  {
-    "speaker": "ALEX",
-    "text": "Third-Party Agents on GitHub.com and GitHub Cloud: GitHub supports assigning cloud agents to issues and pull requests. The listener should be able to check this: You can use Copilot Agent, Claude (by Anthropic), or OpenAI Codex for task automation at scale."
-  },
-  {
-    "speaker": "ALEX",
-    "text": "The useful version is not abstract; it sounds like this. Tag issues with labels that trigger agent assignments ( agent-review, documentation ). Create a custom instruction or hook that directs agents to consider accessibility. Review agent PRs with Accessibility Agents before merging. Use @compliance-mapping to verify WCAG alignment of agent-generated code."
-  },
-  {
-    "speaker": "ALEX",
-    "text": "Keep the teaching thread moving. Here is the learner-facing version. For the broader ecosystem - the community plugin marketplace, MCP server integrations, and running agents in the cloud via GitHub Actions - see Appendix K: GitHub Copilot and Agentic Reference."
-  },
-  {
-    "speaker": "PAUSE",
-    "text": ""
-  },
-  {
-    "speaker": "JAMIE",
-    "text": "Let's pause on Official accessibility.github.com Guides. What should a learner take away from it?"
-  },
-  {
-    "speaker": "ALEX",
-    "text": "This is the move inside Official accessibility.github.com Guides: next: Appendix M: Accessibility Standards Back: Appendix K: Copilot Reference Teaching chapter: Chapter 19: Accessibility Agents."
-  },
-  {
-    "speaker": "ALEX",
-    "text": "Keep the teaching thread moving. Anchor this part on Section-Level Source Map. Use this map to verify facts for each major section in this file. The durable skill is not memorizing one screen. It is knowing how to find your footing when the screen changes."
-  },
-  {
-    "speaker": "ALEX",
-    "text": "A few details make that real. Complete Reference - Agents, Slash Commands, Instructions, Configuration Levels, and All File Formats: GitHub Docs, home, GitHub Changelog, GitHub Copilot docs, Custom instructions support matrix, About custom agents. The Full Agent Ecosystem: GitHub Docs, home, GitHub Changelog, GitHub Copilot docs, Custom instructions support matrix, About custom agents. GitHub Workflow Agents - Quick Reference: GitHub Docs, home, GitHub Changelog, GitHub Copilot docs, Custom instructions support matrix, About custom agents. Agent Teams, Roles, and Platforms: GitHub Docs, home, GitHub Changelog, GitHub Copilot docs, Custom instructions support matrix, About custom agents. Agent and Skill Table: GitHub Docs, home, GitHub Changelog, GitHub Copilot docs, Custom instructions support matrix, About custom agents. Slash Commands and Prompts: GitHub Docs, home, GitHub Changelog, GitHub Copilot docs, Custom instructions support matrix, About custom agents."
-  },
-  {
-    "speaker": "PAUSE",
-    "text": ""
-  },
-  {
-    "speaker": "JAMIE",
-    "text": "What should people carry with them after this?"
-  },
-  {
-    "speaker": "ALEX",
-    "text": "Carry the map. Know what page or tool you are in, know which action you are taking, and know what confirmation should follow. If the confirmation is missing, pause. That pause is not wasted time; it is professional judgment, and it is how complex workflows start to feel magical instead of stressful."
-  },
-  {
-    "speaker": "JAMIE",
-    "text": "That is a better way to say it than just follow the steps."
-  },
-  {
-    "speaker": "ALEX",
-    "text": "Right. Steps matter, but understanding wins. That is episode 39. Next in the series is episode 40, where we keep building the same contributor muscles."
+    "text": "Exactly. And once that clicks, these files stop feeling like clutter and start feeling like a well-organized toolkit."
   }
 ]
