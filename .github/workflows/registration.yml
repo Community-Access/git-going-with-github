@@ -397,6 +397,7 @@ jobs:
               '- Email notifications for this issue thread',
               '',
               'Please reply `ack` on this issue after you confirm your Day 1 link works.',
+              'Then close this enrollment issue as Challenge 0.',
               '',
               'If you get stuck at any step, open support:',
               '- https://github.com/Community-Access/support/issues',
@@ -456,22 +457,6 @@ jobs:
               repo: context.repo.repo,
               issue_number: context.issue.number,
               labels: labelsToAdd
-            });
-
-      - name: Close enrollment issue
-        if: >-
-          steps.dup-check.outputs.is_duplicate == 'false' &&
-          steps.storage-guardrail.outputs.configured == 'true' &&
-          steps.parse.outputs.is_valid == 'true'
-        uses: actions/github-script@v7
-        with:
-          script: |
-            await github.rest.issues.update({
-              owner: context.repo.owner,
-              repo: context.repo.repo,
-              issue_number: context.issue.number,
-              state: 'closed',
-              state_reason: 'completed'
             });
 
   welcome:

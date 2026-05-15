@@ -258,7 +258,7 @@ const htmlTemplate = (content, title, relativePath) => {
 </script>` : ''}
   ${(isHome || isRegister) ? `<script>
 (function() {
-  var url = 'https://api.github.com/search/issues?q=repo:community-access/git-going-with-github+label:enrolled+is:issue+is:closed';
+  var url = 'https://api.github.com/search/issues?q=repo:community-access/git-going-with-github+label:enrolled+is:issue';
   var xhr = new XMLHttpRequest();
   xhr.open('GET', url);
   xhr.setRequestHeader('Accept', 'application/vnd.github+json');

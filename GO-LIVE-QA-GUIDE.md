@@ -27,7 +27,7 @@ Do not mark a cohort ready until all required items in this section are complete
 - [ ] Day 2 Classroom assignment has been created from the current Learning Room template.
 - [ ] A test student account accepted the Day 1 invite and received a private repository.
 - [ ] A test student account accepted the Day 2 invite and received a private repository.
-- [ ] A test student can reply `ack` in enrollment issue and retain expected workflow state.
+- [ ] A test student can reply `ack`, then close the enrollment issue as Challenge 0 and retain expected workflow state.
 - [ ] A test student can reply `day1-complete` and receive Day 2 release comment.
 - [ ] Challenge 1 can be seeded and completed.
 - [ ] Challenge 10 can be seeded and completed.

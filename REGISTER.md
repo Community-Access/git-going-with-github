@@ -30,6 +30,7 @@ You only need one path to begin.
 3. Answer the five quick prompts.
 4. Submit the form and open the new issue page that appears.
 5. Stay on that issue page until the automation comment posts your classroom link.
+6. Reply `ack`, then close the enrollment issue as **Challenge 0**.
 
 > <a href="https://github.com/community-access/git-going-with-github/issues/new?template=classroom-enrollment.yml&title=%5BENROLL%5D+GIT+Going+with+GitHub+Classroom" target="_blank" rel="noopener noreferrer"><strong>Begin the Adventure (opens in new tab)</strong></a>
 
@@ -55,6 +56,7 @@ If you do not receive an email notification, refresh your submitted issue page d
 - Registration is currently unlimited.
 - Enrollment submissions are processed and public issue bodies are redacted after automation runs.
 - Classroom and challenge progression automation picks up after enrollment.
+- Enrollment issues stay open until the student replies `ack` and closes the issue.
 
 ## Important note
 
