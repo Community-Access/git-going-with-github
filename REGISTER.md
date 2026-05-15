@@ -27,7 +27,7 @@ You only need one path to begin.
 
 1. Sign in to your [GitHub account](https://github.com/login).
 2. Open the enrollment form.
-3. Answer the six quick prompts.
+3. Answer the five quick prompts.
 4. Submit and wait for the automation comment with your classroom join link.
 
 > [**Begin the Adventure**](https://github.com/community-access/git-going-with-github/issues/new?template=classroom-enrollment.yml&title=%5BENROLL%5D+GIT+Going+with+GitHub+Classroom)
@@ -38,10 +38,11 @@ Use this quick spellbook so your form is accepted on the first try:
 
 1. **Full Name:** enter the name you want facilitators to call you (example: `Jane Doe`).
 2. **Email Address:** use the best address for workshop updates (example: `jane.doe@example.com`).
-3. **GitHub Username:** enter your handle without `@` (example: `janedoe`).
-4. **Experience dropdowns:** pick the option that feels true today. There is no wrong level.
-5. **Course goals:** write 1 to 3 short sentences about what you want to learn.
-6. **Final check:** confirm everything looks right, then click **Submit new issue** once.
+3. **Experience dropdowns:** pick the option that feels true today. There is no wrong level.
+4. **Course goals:** write 1 to 3 short sentences about what you want to learn.
+5. **Final check:** confirm everything looks right, then click **Submit new issue** once.
+
+Your GitHub username is detected automatically from the account that submits the issue.
 
 If your goals box is blank, try this starter line: `I want to feel confident using Git and GitHub in real projects.`
 

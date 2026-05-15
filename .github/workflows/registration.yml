@@ -201,16 +201,12 @@ jobs:
             const body = context.payload.issue.body || '';
             const fullName = parseField(body, 'Full Name');
             const email = parseField(body, 'Email Address');
-            const githubUsername = parseField(body, 'GitHub Username').replace(/^@+/, '').trim();
-
             core.setOutput('full_name', fullName);
             core.setOutput('email', email);
-            core.setOutput('github_username', githubUsername);
 
             const missing = [];
             if (!fullName) missing.push('Full Name');
             if (!email) missing.push('Email Address');
-            if (!githubUsername) missing.push('GitHub Username');
 
             if (missing.length) {
               core.setOutput('is_valid', 'false');
@@ -262,7 +258,6 @@ jobs:
           TARGET_REPO: ${{ vars.PRIVATE_STUDENT_DATA_REPO }}
           FULL_NAME: ${{ steps.parse.outputs.full_name }}
           EMAIL: ${{ steps.parse.outputs.email }}
-          FORM_GITHUB_USERNAME: ${{ steps.parse.outputs.github_username }}
         with:
           github-token: ${{ secrets.PRIVATE_STUDENT_DATA_TOKEN }}
           script: |
@@ -281,7 +276,6 @@ jobs:
               `- Submitted by: @${context.payload.issue.user.login}`,
               `- Full Name: ${process.env.FULL_NAME || ''}`,
               `- Email Address: ${process.env.EMAIL || ''}`,
-              `- GitHub Username (form): ${process.env.FORM_GITHUB_USERNAME || ''}`,
               `- GitHub Experience: ${(context.payload.issue.body || '').match(/### Experience with GitHub\s*\n+([\s\S]*?)(?=\n### |$)/i)?.[1]?.trim() || ''}`,
               `- VS Code Experience: ${(context.payload.issue.body || '').match(/### Experience with Visual Studio Code\s*\n+([\s\S]*?)(?=\n### |$)/i)?.[1]?.trim() || ''}`,
               `- Course Goals: ${(context.payload.issue.body || '').match(/### What do you hope to get out of this course\?\s*\n+([\s\S]*?)(?=\n### |$)/i)?.[1]?.trim() || ''}`,
@@ -808,7 +802,6 @@ jobs:
               'SubmittedByGitHubLogin',
               'FullName',
               'EmailAddress',
-              'GitHubUsername',
               'GitHubExperience',
               'VSCodeExperience',
               'CourseGoals'
@@ -830,7 +823,6 @@ jobs:
                 login,
                 parseField(issue.body, 'Full Name'),
                 parseField(issue.body, 'Email Address'),
-                parseField(issue.body, 'GitHub Username'),
                 parseField(issue.body, 'Experience with GitHub'),
                 parseField(issue.body, 'Experience with Visual Studio Code'),
                 parseField(issue.body, 'What do you hope to get out of this course?')
