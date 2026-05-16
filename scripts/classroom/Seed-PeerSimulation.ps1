@@ -28,7 +28,7 @@ function Ensure-Label {
 
 function Get-IssueNumberByTitle {
     param([string]$Title)
-    $issuesJson = gh issue list -R $Repository --state all --limit 200 --json number, title
+    $issuesJson = gh issue list -R $Repository --state all --limit 200 --json "number,title"
     if (-not $issuesJson) { return $null }
     $issues = $issuesJson | ConvertFrom-Json
     $match = $issues | Where-Object { $_.title -eq $Title } | Select-Object -First 1
@@ -156,7 +156,7 @@ try {
             Invoke-CheckedCommand git @('push', '--force', '-u', 'origin', 'peer-simulation/review-pr')
         }
 
-        $existingPrJson = gh pr list -R $Repository --head 'peer-simulation/review-pr' --state all --json number, url
+        $existingPrJson = gh pr list -R $Repository --head 'peer-simulation/review-pr' --state all --json "number,url"
         $existingPr = if ($existingPrJson) { ($existingPrJson | ConvertFrom-Json | Select-Object -First 1) } else { $null }
         if ($existingPr) {
             Write-Host "Peer simulation PR already exists: $($existingPr.url)"
