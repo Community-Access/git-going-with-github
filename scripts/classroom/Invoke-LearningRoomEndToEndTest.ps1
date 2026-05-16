@@ -580,8 +580,29 @@ When your pull request is merged:
 
 function Test-ChallengeTemplates {
     $templatePath = Join-Path $script:ClonePath '.github\ISSUE_TEMPLATE'
-    $core = Get-ChildItem $templatePath -Filter 'challenge-*.yml'
-    $bonus = Get-ChildItem $templatePath -Filter 'bonus-*.yml'
+    
+    # Debug: Check what's actually in the cloned repo
+    $repoContents = Get-ChildItem -LiteralPath $script:ClonePath -Force | Select-Object -ExpandProperty Name
+    Write-Status "Repository root contents: $($repoContents -join ', ')"
+    
+    if (-not (Test-Path -LiteralPath (Join-Path $script:ClonePath '.github') -PathType Container)) {
+        Write-Status "WARNING: .github directory not found at repo root"
+        # Check if it's in a subdirectory
+        $githubDirs = Get-ChildItem -LiteralPath $script:ClonePath -Recurse -Directory -Filter '.github' | Select-Object -First 5
+        if ($githubDirs) {
+            Write-Status "Found .github directories: $($githubDirs.FullName -join ', ')"
+        }
+    }
+    
+    if (-not (Test-Path -LiteralPath $templatePath -PathType Container)) {
+        throw "Challenge template directory not found: $templatePath. Repository structure may be invalid."
+    }
+    
+    $core = @(Get-ChildItem -LiteralPath $templatePath -Filter 'challenge-*.yml' -ErrorAction SilentlyContinue)
+    $bonus = @(Get-ChildItem -LiteralPath $templatePath -Filter 'bonus-*.yml' -ErrorAction SilentlyContinue)
+    
+    Write-Status "Found $($core.Count) core templates and $($bonus.Count) bonus templates"
+    
     if ($core.Count -ne 16) {
         throw "Expected 16 core challenge templates, found $($core.Count)."
     }
