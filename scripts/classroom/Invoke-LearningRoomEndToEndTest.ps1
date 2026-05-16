@@ -727,6 +727,42 @@ try {
     finally {
         Pop-Location
     }
+    
+    # GitHub templates don't copy .github directories for security. Sync them from local source.
+    Write-Status "Syncing .github from local Learning Room source to test repository..."
+    $scriptDir = Split-Path -Parent $PSCommandPath
+    $sourceGithubPath = Join-Path $scriptDir '..\..\learning-room\.github'
+    $sourceGithubPath = Resolve-Path $sourceGithubPath -ErrorAction SilentlyContinue
+    
+    if ($sourceGithubPath -and (Test-Path -LiteralPath $sourceGithubPath -PathType Container)) {
+        $targetGithubPath = Join-Path $script:ClonePath '.github'
+        if (Test-Path -LiteralPath $targetGithubPath) {
+            Remove-Item -LiteralPath $targetGithubPath -Recurse -Force
+        }
+        Copy-Item -LiteralPath $sourceGithubPath.Path -Destination $targetGithubPath -Recurse
+        Write-Status ".github directory synced from local source ($($sourceGithubPath.Path))."
+        
+        # Commit the .github sync
+        Push-Location $script:ClonePath
+        try {
+            Invoke-CheckedCommand git @('add', '.github')
+            $commitOutput = & git commit -m '[test-setup] Sync .github from learning-room source' 2>&1
+            if ($LASTEXITCODE -eq 0) {
+                Write-Status "Committed .github updates"
+                Invoke-CheckedCommand git @('push')
+            }
+            else {
+                Write-Status "No .github changes needed (already synchronized)"
+            }
+        }
+        finally {
+            Pop-Location
+        }
+    }
+    else {
+        Write-Status "Warning: Could not find .github in local Learning Room source ($sourceGithubPath). Workflow automation may not function."
+    }
+    
     Add-Result -Name 'Repository clone' -Status 'PASS' -Detail $script:ClonePath
 
     Test-ChallengeTemplates
