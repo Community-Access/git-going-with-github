@@ -290,14 +290,16 @@ async function createChallenge(challengeNumber) {
     }
 
     // Validate actor if assignees will be used
+    let validAssignee = actor;
     if (actor) {
       log('DEBUG', `Validating assignee: ${actor}`);
       try {
         await githubRequest(`/users/${actor}`);
         log('DEBUG', `Assignee ${actor} exists`);
       } catch (error) {
-        log('WARN', `Assignee ${actor} may not exist: ${error.message}`);
-        // Continue anyway - GitHub might still accept it
+        log('WARN', `Assignee ${actor} does not exist or is inaccessible: ${error.message}`);
+        log('INFO', `Issue will be created without assignee. Ensure assignee is valid in GitHub.`);
+        validAssignee = null;
       }
     }
 
@@ -316,12 +318,12 @@ async function createChallenge(challengeNumber) {
     log('DEBUG', `Body length: ${body.length} characters`);
 
     const labels = readLabels(content);
-    const assignees = actor ? [actor] : [];
+    const assignees = validAssignee ? [validAssignee] : [];
 
     log('INFO', `Creating issue with:
       - Title: "${finalTitle}"
       - Labels: [${labels.join(', ')}]
-      - Assignees: [${assignees.join(', ')}]`);
+      - Assignees: [${assignees.join(', ') || '(none)'}]`);
 
     const issue = await githubRequest(`/repos/${owner}/${repo}/issues`, {
       method: 'POST',
