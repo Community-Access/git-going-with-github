@@ -142,6 +142,10 @@ If you already have a GitHub account, skip to [Step 2](#step-2---configure-githu
 
 GitHub also sends a **separate** email verification link after account creation. Check your inbox for an email from GitHub with subject "Please verify your email address" and activate the link inside it. Some GitHub features (including creating repositories) require a verified email.
 
+> **Note: Account verification email vs. notification emails**
+>
+> The emails in steps 8 and this section are **required for account setup** and are sent directly by GitHub. These are different from optional notification emails about activity in repositories. This workshop does NOT require you to enable notification emails. If you prefer not to receive notifications by email, you can disable them in your GitHub settings after account verification. You will still be able to view all notifications in GitHub's web notification inbox at `github.com/notifications`.
+
 ### Enable two-factor authentication (2FA): detailed guidance and workshop policy
 
 Two-factor authentication (2FA) adds a second verification step each time you sign in, protecting your account if your password is compromised. GitHub now requires 2FA for all accounts, so you may already have it enabled. If not, set it up now. We recommend using the **GitHub Mobile app** for the smoothest experience - see the options below.

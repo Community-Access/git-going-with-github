@@ -20,6 +20,23 @@ For this workshop, Chapter 10 is a **guided practice chapter**, not a graded aut
 - **Evidence:** structured completion comment on your assigned challenge issue
 - **Pattern:** configure, filter, act
 
+### Important Note: This Challenge Uses GitHub's Web Notification Inbox
+
+This challenge focuses on **GitHub's web-based notification inbox** (at `github.com/notifications`), not email notifications. You do NOT need to configure email delivery, and you do NOT need to receive emails to complete this challenge.
+
+**Why we focus on the web inbox:**
+- Email delivery depends on your mail server, ISP, spam filters, and account settings—factors outside our control
+- GitHub's web notification inbox is always available and works the same way for everyone
+- Professional developers typically check notifications in the GitHub app or web UI rather than waiting for emails
+- The skills you learn (filtering, muting, managing noise) apply whether you eventually enable email or not
+
+**What you will do:**
+- Use GitHub's web notification inbox to view and filter notifications
+- Configure repository watch levels to control what notifications you receive
+- Practice managing your inbox with GitHub's built-in actions (mute, mark done)
+
+If you have already configured email notifications on your GitHub account, that is fine—but this challenge does not require or test email delivery. Focus on the web inbox workflow instead.
+
 ### Chapter 10 Challenge Set
 
 1. **Configure notifications and practice inbox management** - set your watch level, use filters to find relevant notifications, and perform one inbox action.

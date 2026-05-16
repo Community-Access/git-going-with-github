@@ -1,0 +1,1034 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="GIT Going with GitHub - A two-day accessible open source workshop by Community Access">
+  <title>[solution-12-review.md] Solution Reference: Challenge 12 -- Code Review - GIT Going with GitHub</title>
+  <link rel="stylesheet" href="./styles/github-markdown.css">
+  <link rel="stylesheet" href="./styles/highlight.css">
+  <link rel="stylesheet" href="./styles/custom.css">
+  <style>
+    .markdown-body {
+      box-sizing: border-box;
+      min-width: 200px;
+      max-width: 980px;
+      margin: 0 auto;
+      padding: 45px;
+    }
+    @media (max-width: 767px) {
+      .markdown-body {
+        padding: 15px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+  <header class="site-header" role="banner">
+    <div class="site-header-inner">
+      <nav aria-label="Breadcrumb" class="breadcrumb">
+        <a href="./index.html">Home</a> <span aria-hidden="true">›</span> <span aria-current="page">[solution-12-review.md] Solution Reference: Challenge 12 -- Code Review</span>
+      </nav>
+      <div class="header-actions">
+        <a href="https://github.com/Community-Access/git-going-with-github/wiki" class="wiki-link" target="_blank" rel="noopener noreferrer">
+          <svg aria-hidden="true" focusable="false" width="16" height="16" viewBox="0 0 16 16" fill="currentColor">
+            <path d="M1.75 1h8.5c.966 0 1.75.784 1.75 1.75v5.5A1.75 1.75 0 0 1 10.25 10H7.06l-2.573 2.573A1.458 1.458 0 0 1 2 11.543V10h-.25A1.75 1.75 0 0 1 0 8.25v-5.5C0 1.784.784 1 1.75 1ZM1.5 2.75v5.5c0 .138.112.25.25.25h1a.75.75 0 0 1 .75.75v2.19l2.72-2.72a.749.749 0 0 1 .53-.22h3.5a.25.25 0 0 0 .25-.25v-5.5a.25.25 0 0 0-.25-.25h-8.5a.25.25 0 0 0-.25.25Zm13 2a.25.25 0 0 0-.25-.25h-.5a.75.75 0 0 1 0-1.5h.5c.966 0 1.75.784 1.75 1.75v5.5A1.75 1.75 0 0 1 14.25 12H14v1.543a1.457 1.457 0 0 1-2.487 1.03L9.22 12.28a.749.749 0 1 1 1.06-1.06l2.22 2.22v-2.19a.75.75 0 0 1 .75-.75h.25a.25.25 0 0 0 .25-.25v-5.5Z"/>
+          </svg>
+          Wiki
+        </a>
+        <form role="search" class="search-form" action="./search.html" method="get">
+        <label for="site-search" class="search-label">Search docs</label>
+        <input
+          type="search"
+          id="site-search"
+          class="search-input"
+          name="q"
+          placeholder="Search docs…"
+          autocomplete="off"
+          aria-label="Search documentation"
+        >
+        <button type="submit" class="search-button" aria-label="Submit search">
+          <svg aria-hidden="true" focusable="false" width="16" height="16" viewBox="0 0 16 16" fill="currentColor">
+            <path d="M10.68 11.74a6 6 0 0 1-7.922-8.982 6 6 0 0 1 8.982 7.922l3.04 3.04a.749.749 0 0 1-.326 1.275.749.749 0 0 1-.734-.215ZM11.5 7a4.499 4.499 0 1 0-8.997 0A4.499 4.499 0 0 0 11.5 7Z"/>
+          </svg>
+        </button>
+      </form>
+      </div>
+    </div>
+  </header>
+  <main id="main-content" class="markdown-body">
+    <p>You are writing a Git Going with GitHub podcast script.</p>
+<p>Audience:
+Blind and low-vision learners studying GitHub, Git, VS Code, open source, and accessible contribution workflows.</p>
+<p>Hosts:</p>
+<ul>
+<li>Alex: warm expert professor</li>
+<li>Jamie: curious professor who asks the questions learners may hesitate to ask</li>
+</ul>
+<p>Goal:
+Create a complete, conversational, two-host audio lesson. Teach every substantive concept from the Markdown source. Do not merely summarize. Do not omit administrative or accessibility content. Use varied phrasing and make it feel like a thoughtful NotebookLM-style teaching conversation.</p>
+<p>Scale rules:</p>
+<ul>
+<li>The source set may be large. Prioritize complete conceptual coverage over quoting every line.</li>
+<li>Use concise turns and avoid unnecessary verbosity.</li>
+</ul>
+<p>Required script markers:
+Use only these markers on their own lines:
+[ALEX]
+[JAMIE]
+[PAUSE]</p>
+<p>Narration constraints:</p>
+<ul>
+<li>Do not say chapter titles, section names, or &quot;chapter marker&quot; language out loud.</li>
+<li>Keep transitions natural so chapter separation can be handled in metadata, not spoken labels.</li>
+</ul>
+<p>Return JSON only:
+{
+  &quot;script&quot;: &quot;[ALEX]\n...\n&quot;,
+  &quot;chapters&quot;: [
+    {
+      &quot;title&quot;: &quot;Specific chapter title&quot;,
+      &quot;startSegmentIndex&quot;: 0,
+      &quot;sourceHeading&quot;: &quot;Heading represented&quot;
+    }
+  ],
+  &quot;coverageNotes&quot;: [
+    {
+      &quot;sourceHeading&quot;: &quot;Heading&quot;,
+      &quot;status&quot;: &quot;covered | partial | risk&quot;,
+      &quot;notes&quot;: &quot;Brief note&quot;
+    }
+  ]
+}</p>
+<p>Slug: cc-12-code-review
+Sources:</p>
+<ul>
+<li>challenge-12-review.yml</li>
+<li>solution-12-review.md</li>
+<li>15-code-review.md</li>
+<li>08-open-source-culture.md</li>
+</ul>
+<p>Headings that must be represented:</p>
+<h1 id="solution-12-reviewmd-solution-reference-challenge-12----code-review">[solution-12-review.md] Solution Reference: Challenge 12 -- Code Review</h1>
+<h2 id="solution-12-reviewmd-example-review-on-a-buddy39s-pr">[solution-12-review.md] Example review on a buddy&#39;s PR</h2>
+<h3 id="solution-12-reviewmd-inline-comment-on-a-specific-line">[solution-12-review.md] Inline comment on a specific line</h3>
+<h3 id="solution-12-reviewmd-suggestion-using-github39s-suggestion-feature">[solution-12-review.md] Suggestion using GitHub&#39;s suggestion feature</h3>
+<h2 id="solution-12-reviewmd-getting-started">[solution-12-review.md] Getting Started</h2>
+<h3 id="solution-12-reviewmd-review-verdict">[solution-12-review.md] Review verdict</h3>
+<h2 id="solution-12-reviewmd-types-of-review-comments">[solution-12-review.md] Types of review comments</h2>
+<h2 id="solution-12-reviewmd-what-matters">[solution-12-review.md] What matters</h2>
+<h2 id="solution-12-reviewmd-authoritative-sources">[solution-12-review.md] Authoritative Sources</h2>
+<h3 id="solution-12-reviewmd-section-level-source-map">[solution-12-review.md] Section-Level Source Map</h3>
+<h1 id="15-code-reviewmd-code-review-prs-diffs-and-constructive-feedback">[15-code-review.md] Code Review: PRs, Diffs, and Constructive Feedback</h1>
+<h2 id="15-code-reviewmd-part-1-the-github-pull-requests-extension">[15-code-review.md] Part 1: The GitHub Pull Requests Extension</h2>
+<h2 id="15-code-reviewmd-managing-pull-requests-from-vs-code">[15-code-review.md] Managing Pull Requests from VS Code</h2>
+<h2 id="15-code-reviewmd-workshop-recommendation-chapter-15-part-1">[15-code-review.md] Workshop Recommendation Chapter 15, Part 1</h2>
+<h3 id="15-code-reviewmd-chapter-15-part-1-practice-set">[15-code-review.md] Chapter 15, Part 1 Practice Set</h3>
+<h3 id="15-code-reviewmd-practice-151-step-by-step-install-the-extension">[15-code-review.md] Practice 15.1 Step-by-Step: Install the Extension</h3>
+<h3 id="15-code-reviewmd-practice-152-step-by-step-check-out-a-pr-and-post-a-comment">[15-code-review.md] Practice 15.2 Step-by-Step: Check Out a PR and Post a Comment</h3>
+<h3 id="15-code-reviewmd-completing-chapter-15-part-1-submit-your-evidence">[15-code-review.md] Completing Chapter 15, Part 1: Submit Your Evidence</h3>
+<h3 id="15-code-reviewmd-expected-outcomes">[15-code-review.md] Expected Outcomes</h3>
+<h3 id="15-code-reviewmd-if-you-get-stuck">[15-code-review.md] If You Get Stuck</h3>
+<h3 id="15-code-reviewmd-learning-moment">[15-code-review.md] Learning Moment</h3>
+<h3 id="15-code-reviewmd-learning-pattern-used-in-this-chapter">[15-code-review.md] Learning Pattern Used in This Chapter</h3>
+<h2 id="15-code-reviewmd-table-of-contents">[15-code-review.md] Table of Contents</h2>
+<h2 id="15-code-reviewmd-1-installing-the-github-pull-requests-extension">[15-code-review.md] 1. Installing the GitHub Pull Requests Extension</h2>
+<h3 id="15-code-reviewmd-installation-steps">[15-code-review.md] Installation Steps</h3>
+<h4 id="15-code-reviewmd-method-1-extensions-sidebar">[15-code-review.md] Method 1: Extensions Sidebar</h4>
+<h4 id="15-code-reviewmd-method-2-command-palette">[15-code-review.md] Method 2: Command Palette</h4>
+<h3 id="15-code-reviewmd-signing-in-to-github">[15-code-review.md] Signing In to GitHub</h3>
+<h4 id="15-code-reviewmd-verify-sign-in">[15-code-review.md] Verify sign-in</h4>
+<h3 id="15-code-reviewmd-what-the-extension-adds">[15-code-review.md] What the Extension Adds</h3>
+<h3 id="15-code-reviewmd-learning-cards-installing-the-pr-extension">[15-code-review.md] Learning Cards: Installing the PR Extension</h3>
+<h2 id="15-code-reviewmd-2-viewing-pull-requests">[15-code-review.md] 2. Viewing Pull Requests</h2>
+<h3 id="15-code-reviewmd-opening-the-github-pull-requests-panel">[15-code-review.md] Opening the GitHub Pull Requests Panel</h3>
+<h4 id="15-code-reviewmd-method-1-activity-bar">[15-code-review.md] Method 1: Activity Bar</h4>
+<h1 id="15-code-reviewmd-list-open-prs">[15-code-review.md] List open PRs</h1>
+<h1 id="15-code-reviewmd-view-a-specific-pr">[15-code-review.md] View a specific PR</h1>
+<h1 id="15-code-reviewmd-open-a-pr-in-your-browser">[15-code-review.md] Open a PR in your browser</h1>
+<h1 id="15-code-reviewmd-filter-prs-waiting-for-your-review">[15-code-review.md] Filter PRs waiting for your review</h1>
+<h2 id="15-code-reviewmd-method-2-explorer-section">[15-code-review.md] Method 2: Explorer Section</h2>
+<h3 id="15-code-reviewmd-pull-request-tree-structure">[15-code-review.md] Pull Request Tree Structure</h3>
+<h4 id="15-code-reviewmd-description">[15-code-review.md] Description</h4>
+<h4 id="15-code-reviewmd-screen-reader-announcement-example">[15-code-review.md] Screen reader announcement example</h4>
+<h3 id="15-code-reviewmd-filtering-pr-lists">[15-code-review.md] Filtering PR Lists</h3>
+<h4 id="15-code-reviewmd-by-status">[15-code-review.md] By status</h4>
+<h4 id="15-code-reviewmd-by-repository">[15-code-review.md] By repository</h4>
+<h3 id="15-code-reviewmd-viewing-pr-details">[15-code-review.md] Viewing PR Details</h3>
+<h4 id="15-code-reviewmd-screen-reader-experience">[15-code-review.md] Screen reader experience</h4>
+<h2 id="15-code-reviewmd-3-checking-out-a-pull-request-branch">[15-code-review.md] 3. Checking Out a Pull Request Branch</h2>
+<h3 id="15-code-reviewmd-why-check-out-a-pr">[15-code-review.md] Why Check Out a PR</h3>
+<h3 id="15-code-reviewmd-how-to-check-out-a-pr">[15-code-review.md] How to Check Out a PR</h3>
+<h4 id="15-code-reviewmd-method-1-from-the-pr-detail-view">[15-code-review.md] Method 1: From the PR Detail View</h4>
+<h4 id="15-code-reviewmd-method-2-from-the-pr-tree">[15-code-review.md] Method 2: From the PR Tree</h4>
+<h4 id="15-code-reviewmd-method-3-command-palette">[15-code-review.md] Method 3: Command Palette</h4>
+<h3 id="15-code-reviewmd-returning-to-your-original-branch">[15-code-review.md] Returning to Your Original Branch</h3>
+<h3 id="15-code-reviewmd-learning-cards-checking-out-a-pr">[15-code-review.md] Learning Cards: Checking Out a PR</h3>
+<h2 id="15-code-reviewmd-4-reviewing-pull-requests-in-vs-code">[15-code-review.md] 4. Reviewing Pull Requests in VS Code</h2>
+<h3 id="15-code-reviewmd-reading-the-files-changed-list">[15-code-review.md] Reading the Files Changed List</h3>
+<h4 id="15-code-reviewmd-in-the-pr-detail-view">[15-code-review.md] In the PR detail view</h4>
+<h4 id="15-code-reviewmd-screen-reader-announcement">[15-code-review.md] Screen reader announcement</h4>
+<h3 id="15-code-reviewmd-understanding-the-diff-view">[15-code-review.md] Understanding the Diff View</h3>
+<h4 id="15-code-reviewmd-split-view-mode-default">[15-code-review.md] Split view mode default</h4>
+<h4 id="15-code-reviewmd-inline-view-mode">[15-code-review.md] Inline view mode</h4>
+<h4 id="15-code-reviewmd-to-toggle-between-views">[15-code-review.md] To toggle between views</h4>
+<h3 id="15-code-reviewmd-screen-reader-diff-review-with-accessible-diff-viewer">[15-code-review.md] Screen Reader Diff Review with Accessible Diff Viewer</h3>
+<h4 id="15-code-reviewmd-recommended-workflow-for-screen-reader-users">[15-code-review.md] Recommended workflow for screen reader users</h4>
+<h4 id="15-code-reviewmd-example-accessible-diff-output">[15-code-review.md] Example Accessible Diff output</h4>
+<h4 id="15-code-reviewmd-this-structured-reading-is-far-superior-to-navigating-the-visual-diff-manually">[15-code-review.md] This structured reading is far superior to navigating the visual diff manually</h4>
+<h3 id="15-code-reviewmd-flagging-issues-during-review">[15-code-review.md] Flagging Issues During Review</h3>
+<h3 id="15-code-reviewmd-learning-cards-reviewing-pull-requests-in-vs-code">[15-code-review.md] Learning Cards: Reviewing Pull Requests in VS Code</h3>
+<h2 id="15-code-reviewmd-5-creating-a-pull-request-from-vs-code">[15-code-review.md] 5. Creating a Pull Request from VS Code</h2>
+<h3 id="15-code-reviewmd-tool-cards-create-a-pull-request-from-your-editor">[15-code-review.md] Tool Cards: Create a Pull Request from your editor</h3>
+<h3 id="15-code-reviewmd-prerequisites">[15-code-review.md] Prerequisites</h3>
+<h3 id="15-code-reviewmd-creating-the-pr">[15-code-review.md] Creating the PR</h3>
+<h4 id="15-code-reviewmd-method-1-command-palette-recommended">[15-code-review.md] Method 1: Command Palette Recommended</h4>
+<h4 id="15-code-reviewmd-method-2-source-control-panel">[15-code-review.md] Method 2: Source Control Panel</h4>
+<h4 id="15-code-reviewmd-method-3-github-panel">[15-code-review.md] Method 3: GitHub Panel</h4>
+<h3 id="15-code-reviewmd-filling-out-the-pr-form">[15-code-review.md] Filling Out the PR Form</h3>
+<h4 id="15-code-reviewmd-title-required">[15-code-review.md] Title required</h4>
+<h4 id="15-code-reviewmd-description-optional-but-recommended">[15-code-review.md] Description optional but recommended</h4>
+<h4 id="15-code-reviewmd-base-branch-target">[15-code-review.md] Base branch target</h4>
+<h4 id="15-code-reviewmd-compare-branch-source">[15-code-review.md] Compare branch source</h4>
+<h4 id="15-code-reviewmd-reviewers-optional">[15-code-review.md] Reviewers optional</h4>
+<h4 id="15-code-reviewmd-labels-optional">[15-code-review.md] Labels optional</h4>
+<h4 id="15-code-reviewmd-milestone-optional">[15-code-review.md] Milestone optional</h4>
+<h4 id="15-code-reviewmd-draft-pr-checkbox">[15-code-review.md] Draft PR checkbox</h4>
+<h4 id="15-code-reviewmd-screen-reader-navigation">[15-code-review.md] Screen reader navigation</h4>
+<h3 id="15-code-reviewmd-submitting-the-pr">[15-code-review.md] Submitting the PR</h3>
+<h1 id="15-code-reviewmd-interactive-prompts-for-title-body-base-branch">[15-code-review.md] Interactive: prompts for title, body, base branch</h1>
+<h1 id="15-code-reviewmd-inline-provide-details-directly">[15-code-review.md] Inline: provide details directly</h1>
+<h1 id="15-code-reviewmd-create-as-draft">[15-code-review.md] Create as draft</h1>
+<h1 id="15-code-reviewmd-open-the-form-in-your-browser">[15-code-review.md] Open the form in your browser</h1>
+<h3 id="15-code-reviewmd-learning-cards-creating-a-pull-request">[15-code-review.md] Learning Cards: Creating a Pull Request</h3>
+<h2 id="15-code-reviewmd-6-pull-request-description-templates">[15-code-review.md] 6. Pull Request Description Templates</h2>
+<h3 id="15-code-reviewmd-where-templates-are-stored">[15-code-review.md] Where Templates Are Stored</h3>
+<h3 id="15-code-reviewmd-example-pr-template">[15-code-review.md] Example PR Template</h3>
+<h2 id="15-code-reviewmd-description">[15-code-review.md] Description</h2>
+<h2 id="15-code-reviewmd-related-issue">[15-code-review.md] Related Issue</h2>
+<h2 id="15-code-reviewmd-type-of-change">[15-code-review.md] Type of Change</h2>
+<h2 id="15-code-reviewmd-testing">[15-code-review.md] Testing</h2>
+<h2 id="15-code-reviewmd-checklist">[15-code-review.md] Checklist</h2>
+<h2 id="15-code-reviewmd-screenshots-if-applicable">[15-code-review.md] Screenshots if applicable</h2>
+<h3 id="15-code-reviewmd-filling-out-a-template">[15-code-review.md] Filling Out a Template</h3>
+<h4 id="15-code-reviewmd-screen-reader-workflow">[15-code-review.md] Screen reader workflow</h4>
+<h2 id="15-code-reviewmd-7-commenting-and-requesting-changes">[15-code-review.md] 7. Commenting and Requesting Changes</h2>
+<h3 id="15-code-reviewmd-adding-an-inline-comment">[15-code-review.md] Adding an Inline Comment</h3>
+<h4 id="15-code-reviewmd-comment-format-tips">[15-code-review.md] Comment format tips</h4>
+<h3 id="15-code-reviewmd-starting-a-review">[15-code-review.md] Starting a Review</h3>
+<h4 id="15-code-reviewmd-if-you-have-multiple-comments-to-make-use-quotstart-reviewquot">[15-code-review.md] If you have multiple comments to make, use &quot;Start Review&quot;</h4>
+<h3 id="15-code-reviewmd-submitting-your-review">[15-code-review.md] Submitting Your Review</h3>
+<h3 id="15-code-reviewmd-what-happens-after-submission">[15-code-review.md] What Happens After Submission</h3>
+<h1 id="15-code-reviewmd-view-the-pr-diff-in-your-terminal">[15-code-review.md] View the PR diff in your terminal</h1>
+<h1 id="15-code-reviewmd-approve">[15-code-review.md] Approve</h1>
+<h1 id="15-code-reviewmd-request-changes">[15-code-review.md] Request changes</h1>
+<h1 id="15-code-reviewmd-comment-only-no-verdict">[15-code-review.md] Comment-only no verdict</h1>
+<h3 id="15-code-reviewmd-learning-cards-commenting-and-requesting-changes">[15-code-review.md] Learning Cards: Commenting and Requesting Changes</h3>
+<h2 id="15-code-reviewmd-8-merging-pull-requests">[15-code-review.md] 8. Merging Pull Requests</h2>
+<h3 id="15-code-reviewmd-prerequisites-for-merging">[15-code-review.md] Prerequisites for Merging</h3>
+<h3 id="15-code-reviewmd-merging-from-vs-code">[15-code-review.md] Merging from VS Code</h3>
+<h4 id="15-code-reviewmd-method-1-pr-detail-view">[15-code-review.md] Method 1: PR Detail View</h4>
+<h4 id="15-code-reviewmd-method-2-command-palette">[15-code-review.md] Method 2: Command Palette</h4>
+<h3 id="15-code-reviewmd-merge-types">[15-code-review.md] Merge Types</h3>
+<h4 id="15-code-reviewmd-which-merge-type-to-use">[15-code-review.md] Which merge type to use</h4>
+<h3 id="15-code-reviewmd-after-merging">[15-code-review.md] After Merging</h3>
+<h4 id="15-code-reviewmd-switching-to-main-and-pulling">[15-code-review.md] Switching to main and pulling</h4>
+<h3 id="15-code-reviewmd-deleting-the-feature-branch">[15-code-review.md] Deleting the Feature Branch</h3>
+<h1 id="15-code-reviewmd-merge-with-default-strategy">[15-code-review.md] Merge with default strategy</h1>
+<h1 id="15-code-reviewmd-squash-and-merge-then-delete-the-branch">[15-code-review.md] Squash and merge, then delete the branch</h1>
+<h1 id="15-code-reviewmd-enable-auto-merge-merges-when-checks-pass">[15-code-review.md] Enable auto-merge merges when checks pass</h1>
+<h3 id="15-code-reviewmd-learning-cards-merging-pull-requests">[15-code-review.md] Learning Cards: Merging Pull Requests</h3>
+<h2 id="15-code-reviewmd-keyboard-shortcuts---github-pull-requests-extension">[15-code-review.md] Keyboard Shortcuts - GitHub Pull Requests Extension</h2>
+<h2 id="15-code-reviewmd-troubleshooting">[15-code-review.md] Troubleshooting</h2>
+<h3 id="15-code-reviewmd-quotno-pull-requests-foundquot">[15-code-review.md] &quot;No pull requests found&quot;</h3>
+<h4 id="15-code-reviewmd-solutions">[15-code-review.md] Solutions</h4>
+<h3 id="15-code-reviewmd-quotcould-not-create-pull-requestquot">[15-code-review.md] &quot;Could not create pull request&quot;</h3>
+<h4 id="15-code-reviewmd-solutions">[15-code-review.md] Solutions</h4>
+<h3 id="15-code-reviewmd-quotauthentication-failedquot">[15-code-review.md] &quot;Authentication failed&quot;</h3>
+<h4 id="15-code-reviewmd-solutions">[15-code-review.md] Solutions</h4>
+<h2 id="15-code-reviewmd-try-it-review-a-pr-from-vs-code">[15-code-review.md] Try It: Review a PR from VS Code</h2>
+<h2 id="15-code-reviewmd-part-2-accessible-code-review">[15-code-review.md] Part 2: Accessible Code Review</h2>
+<h2 id="15-code-reviewmd-conducting-pull-request-reviews-with-a-screen-reader">[15-code-review.md] Conducting Pull Request Reviews with a Screen Reader</h2>
+<h2 id="15-code-reviewmd-workshop-recommendation-chapter-15--challenge-12">[15-code-review.md] Workshop Recommendation Chapter 15 / Challenge 12</h2>
+<h3 id="15-code-reviewmd-challenge-12-practice-set">[15-code-review.md] Challenge 12 Practice Set</h3>
+<h3 id="15-code-reviewmd-practice-121-step-by-step-review-a-pr-and-leave-inline-comments">[15-code-review.md] Practice 12.1 Step-by-Step: Review a PR and Leave Inline Comments</h3>
+<h3 id="15-code-reviewmd-practice-122-step-by-step-submit-a-formal-review-verdict">[15-code-review.md] Practice 12.2 Step-by-Step: Submit a Formal Review Verdict</h3>
+<h3 id="15-code-reviewmd-completing-challenge-12-submit-your-evidence">[15-code-review.md] Completing Challenge 12: Submit Your Evidence</h3>
+<h3 id="15-code-reviewmd-expected-outcomes">[15-code-review.md] Expected Outcomes</h3>
+<h3 id="15-code-reviewmd-if-you-get-stuck">[15-code-review.md] If You Get Stuck</h3>
+<h3 id="15-code-reviewmd-learning-moment">[15-code-review.md] Learning Moment</h3>
+<h3 id="15-code-reviewmd-learning-pattern-used-in-this-chapter">[15-code-review.md] Learning Pattern Used in This Chapter</h3>
+<h2 id="15-code-reviewmd-prerequisites-checklist">[15-code-review.md] Prerequisites Checklist</h2>
+<h3 id="15-code-reviewmd-before-starting-this-chapter-verify-you-have-completed">[15-code-review.md] Before starting this chapter, verify you have completed</h3>
+<h2 id="15-code-reviewmd-two-environments-for-code-review">[15-code-review.md] Two Environments for Code Review</h2>
+<h3 id="15-code-reviewmd-about-learning-cards-in-this-chapter">[15-code-review.md] About Learning Cards in This Chapter</h3>
+<h1 id="15-code-reviewmd-view-the-full-pr-diff-in-your-terminal">[15-code-review.md] View the full PR diff in your terminal</h1>
+<h1 id="15-code-reviewmd-view-pr-details-description-status-checks">[15-code-review.md] View PR details description, status, checks</h1>
+<h1 id="15-code-reviewmd-checkout-the-pr-branch-locally-for-testing">[15-code-review.md] Checkout the PR branch locally for testing</h1>
+<h1 id="15-code-reviewmd-approve-the-pr">[15-code-review.md] Approve the PR</h1>
+<h1 id="15-code-reviewmd-request-changes">[15-code-review.md] Request changes</h1>
+<h1 id="15-code-reviewmd-leave-a-comment-only-review">[15-code-review.md] Leave a comment-only review</h1>
+<h2 id="15-code-reviewmd-part-1---reviewing-on-githubcom">[15-code-review.md] Part 1 - Reviewing on GitHub.com</h2>
+<h3 id="15-code-reviewmd-good-news-modern-interface-is-default">[15-code-review.md] Good News: Modern Interface is Default</h3>
+<h3 id="15-code-reviewmd-step-1-reach-the-files-changed-tab">[15-code-review.md] Step 1: Reach the Files Changed Tab</h3>
+<h3 id="15-code-reviewmd-step-2-use-the-file-tree-to-orient-yourself">[15-code-review.md] Step 2: Use the File Tree to Orient Yourself</h3>
+<h4 id="15-code-reviewmd-what-to-listen-for--look-for">[15-code-review.md] What to listen for / look for</h4>
+<h3 id="15-code-reviewmd-step-3-navigate-between-file-diffs">[15-code-review.md] Step 3: Navigate Between File Diffs</h3>
+<h3 id="15-code-reviewmd-step-4-read-a-diff">[15-code-review.md] Step 4: Read a Diff</h3>
+<h4 id="15-code-reviewmd-what-each-line-announces--shows">[15-code-review.md] What each line announces / shows</h4>
+<h3 id="15-code-reviewmd-step-5-place-an-inline-comment">[15-code-review.md] Step 5: Place an Inline Comment</h3>
+<h4 id="15-code-reviewmd-placing-a-multi-line-comment">[15-code-review.md] Placing a multi-line comment</h4>
+<h3 id="15-code-reviewmd-step-6-read-existing-comments-and-threads">[15-code-review.md] Step 6: Read Existing Comments and Threads</h3>
+<h3 id="15-code-reviewmd-step-7-submit-your-review">[15-code-review.md] Step 7: Submit Your Review</h3>
+<h4 id="15-code-reviewmd-verdicts-and-their-meaning">[15-code-review.md] Verdicts and their meaning</h4>
+<h3 id="15-code-reviewmd-step-8-re-request-review-for-authors">[15-code-review.md] Step 8: Re-request Review for Authors</h3>
+<h3 id="15-code-reviewmd-learning-cards-reviewing-on-githubcom">[15-code-review.md] Learning Cards: Reviewing on GitHub.com</h3>
+<h2 id="15-code-reviewmd-part-2---reviewing-in-vs-code-with-the-accessible-diff-viewer">[15-code-review.md] Part 2 - Reviewing in VS Code with the Accessible Diff Viewer</h2>
+<h3 id="15-code-reviewmd-opening-a-diff-in-vs-code">[15-code-review.md] Opening a Diff in VS Code</h3>
+<h3 id="15-code-reviewmd-learning-cards-vs-code-code-review">[15-code-review.md] Learning Cards: VS Code Code Review</h3>
+<h4 id="15-code-reviewmd-opening-the-pr-for-review">[15-code-review.md] Opening the PR for review</h4>
+<h4 id="15-code-reviewmd-using-the-accessible-diff-viewer">[15-code-review.md] Using the Accessible Diff Viewer</h4>
+<h4 id="15-code-reviewmd-placing-a-comment">[15-code-review.md] Placing a comment</h4>
+<h4 id="15-code-reviewmd-opening-the-pr">[15-code-review.md] Opening the PR</h4>
+<h4 id="15-code-reviewmd-accessible-diff-viewer">[15-code-review.md] Accessible Diff Viewer</h4>
+<h4 id="15-code-reviewmd-comment-placement">[15-code-review.md] Comment placement</h4>
+<h3 id="15-code-reviewmd-using-the-accessible-diff-viewer-f7">[15-code-review.md] Using the Accessible Diff Viewer F7</h3>
+<h4 id="15-code-reviewmd-navigation">[15-code-review.md] Navigation</h4>
+<h4 id="15-code-reviewmd-what-makes-this-better-than-the-raw-diff-editor">[15-code-review.md] What makes this better than the raw diff editor</h4>
+<h3 id="15-code-reviewmd-placing-comments-in-vs-code-github-pr-extension">[15-code-review.md] Placing Comments in VS Code GitHub PR Extension</h3>
+<h2 id="15-code-reviewmd-code-review-structure-and-content">[15-code-review.md] Code Review Structure and Content</h2>
+<h3 id="15-code-reviewmd-the-anatomy-of-a-useful-review-comment">[15-code-review.md] The Anatomy of a Useful Review Comment</h3>
+<h4 id="15-code-reviewmd-blocking-example-reviewing-a-pr-for-docskeyboard-shortcutsmd">[15-code-review.md] Blocking example reviewing a PR for docs/keyboard-shortcuts.md</h4>
+<h4 id="15-code-reviewmd-non-blocking-nit-example-reviewing-a-pr-for-docswelcomemd">[15-code-review.md] Non-blocking nit example reviewing a PR for docs/welcome.md</h4>
+<h4 id="15-code-reviewmd-question-example-reviewing-a-pr-for-docssetup-guidemd">[15-code-review.md] Question example reviewing a PR for docs/setup-guide.md</h4>
+<h3 id="15-code-reviewmd-prefixes-that-set-expectations">[15-code-review.md] Prefixes That Set Expectations</h3>
+<h3 id="15-code-reviewmd-how-many-comments-is-too-many">[15-code-review.md] How Many Comments Is Too Many?</h3>
+<h2 id="15-code-reviewmd-keyboard-reference">[15-code-review.md] Keyboard Reference</h2>
+<h3 id="15-code-reviewmd-github-web-review">[15-code-review.md] GitHub Web Review</h3>
+<h3 id="15-code-reviewmd-vs-code-accessible-diff-viewer">[15-code-review.md] VS Code Accessible Diff Viewer</h3>
+<h2 id="15-code-reviewmd-common-review-scenarios">[15-code-review.md] Common Review Scenarios</h2>
+<h3 id="15-code-reviewmd-quoti-want-to-verify-the-pr-only-changes-what-it-claimsquot">[15-code-review.md] &quot;I want to verify the PR only changes what it claims&quot;</h3>
+<h3 id="15-code-reviewmd-quoti-want-to-find-all-changes-to-one-specific-sectionquot">[15-code-review.md] &quot;I want to find all changes to one specific section&quot;</h3>
+<h3 id="15-code-reviewmd-quoti-agreed-but-then-the-author-made-more-changes---did-anything-new-appearquot">[15-code-review.md] &quot;I agreed but then the author made more changes - did anything new appear?&quot;</h3>
+<h3 id="15-code-reviewmd-quota-reviewer-left-a-comment-i-don39t-understandquot">[15-code-review.md] &quot;A reviewer left a comment I don&#39;t understand&quot;</h3>
+<h2 id="15-code-reviewmd-exercises">[15-code-review.md] Exercises</h2>
+<h3 id="15-code-reviewmd-exercise-a---complete-a-web-review">[15-code-review.md] Exercise A - Complete a Web Review</h3>
+<h4 id="15-code-reviewmd-step-1-navigate-to-the-pull-request">[15-code-review.md] Step 1: Navigate to the Pull Request</h4>
+<h4 id="15-code-reviewmd-step-2-read-the-pr-description">[15-code-review.md] Step 2: Read the PR Description</h4>
+<h4 id="15-code-reviewmd-step-3-navigate-to-quotfiles-changedquot">[15-code-review.md] Step 3: Navigate to &quot;Files Changed&quot;</h4>
+<h4 id="15-code-reviewmd-step-4-activate-focus-mode-for-better-diff-reading">[15-code-review.md] Step 4: Activate Focus Mode for Better Diff Reading</h4>
+<h4 id="15-code-reviewmd-step-5-find-the-heading-hierarchy-issue">[15-code-review.md] Step 5: Find the Heading Hierarchy Issue</h4>
+<h4 id="15-code-reviewmd-step-6-place-a-blocking-review-comment-on-the-heading">[15-code-review.md] Step 6: Place a Blocking Review Comment on the Heading</h4>
+<h4 id="15-code-reviewmd-step-7-find-the-link-text-issue">[15-code-review.md] Step 7: Find the Link Text Issue</h4>
+<h4 id="15-code-reviewmd-step-8-place-a-comment-on-the-link">[15-code-review.md] Step 8: Place a Comment on the Link</h4>
+<h4 id="15-code-reviewmd-step-9-submit-your-review">[15-code-review.md] Step 9: Submit Your Review</h4>
+<h4 id="15-code-reviewmd-reflect-on-this-exercise">[15-code-review.md] Reflect on This Exercise</h4>
+<h3 id="15-code-reviewmd-exercise-b---use-the-vs-code-accessible-diff-viewer">[15-code-review.md] Exercise B - Use the VS Code Accessible Diff Viewer</h3>
+<h4 id="15-code-reviewmd-prerequisites">[15-code-review.md] Prerequisites</h4>
+<h4 id="15-code-reviewmd-step-1-open-the-github-pull-requests-extension">[15-code-review.md] Step 1: Open the GitHub Pull Requests Extension</h4>
+<h4 id="15-code-reviewmd-step-2-open-the-pull-requests-sidebar">[15-code-review.md] Step 2: Open the Pull Requests Sidebar</h4>
+<h4 id="15-code-reviewmd-step-3-view-the-file-changes">[15-code-review.md] Step 3: View the File Changes</h4>
+<h4 id="15-code-reviewmd-step-4-access-the-accessible-diff-viewer">[15-code-review.md] Step 4: Access the Accessible Diff Viewer</h4>
+<h4 id="15-code-reviewmd-step-5-listen-to-and-understand-the-first-change">[15-code-review.md] Step 5: Listen to and Understand the First Change</h4>
+<h4 id="15-code-reviewmd-step-6-find-the-heading-hierarchy-issue">[15-code-review.md] Step 6: Find the Heading Hierarchy Issue</h4>
+<h4 id="15-code-reviewmd-step-7-locate-the-heading-line-and-add-an-inline-comment">[15-code-review.md] Step 7: Locate the Heading Line and Add an Inline Comment</h4>
+<h4 id="15-code-reviewmd-step-8-write-your-accessible-diff-comment">[15-code-review.md] Step 8: Write Your Accessible Diff Comment</h4>
+<h4 id="15-code-reviewmd-step-9-create-a-github-pull-request-comment">[15-code-review.md] Step 9: Create a GitHub Pull Request Comment</h4>
+<h4 id="15-code-reviewmd-reflect-on-this-exercise">[15-code-review.md] Reflect on This Exercise</h4>
+<h3 id="15-code-reviewmd-exercise-c---compare-and-reflect">[15-code-review.md] Exercise C - Compare and Reflect</h3>
+<h4 id="15-code-reviewmd-step-1-gather-your-data">[15-code-review.md] Step 1: Gather Your Data</h4>
+<h4 id="15-code-reviewmd-step-2-navigate-to-the-pr-and-leave-your-reflection-comment">[15-code-review.md] Step 2: Navigate to the PR and Leave Your Reflection Comment</h4>
+<h4 id="15-code-reviewmd-step-3-write-your-comparison">[15-code-review.md] Step 3: Write Your Comparison</h4>
+<h2 id="15-code-reviewmd-code-review-reflection---browser-vs-vs-code">[15-code-review.md] Code Review Reflection - Browser vs VS Code</h2>
+<h3 id="15-code-reviewmd-environment-preference">[15-code-review.md] Environment Preference</h3>
+<h3 id="15-code-reviewmd-specific-strengths">[15-code-review.md] Specific Strengths</h3>
+<h4 id="15-code-reviewmd-browser-made-this-easier">[15-code-review.md] Browser made this easier</h4>
+<h4 id="15-code-reviewmd-vs-code-made-this-easier">[15-code-review.md] VS Code made this easier</h4>
+<h3 id="15-code-reviewmd-real-world-impact">[15-code-review.md] Real-World Impact</h3>
+<h4 id="15-code-reviewmd-step-4-review-your-comment">[15-code-review.md] Step 4: Review Your Comment</h4>
+<h4 id="15-code-reviewmd-step-5-submit-your-reflection">[15-code-review.md] Step 5: Submit Your Reflection</h4>
+<h4 id="15-code-reviewmd-step-6-checkpoint---validate-your-learning">[15-code-review.md] Step 6: Checkpoint - Validate Your Learning</h4>
+<h2 id="15-code-reviewmd-part-3---using-github-copilot-to-understand-code-changes">[15-code-review.md] Part 3 - Using GitHub Copilot to Understand Code Changes</h2>
+<h3 id="15-code-reviewmd-when-to-use-copilot-during-code-review">[15-code-review.md] When to Use Copilot During Code Review</h3>
+<h3 id="15-code-reviewmd-how-to-use-copilot-during-review">[15-code-review.md] How to Use Copilot During Review</h3>
+<h4 id="15-code-reviewmd-in-vs-code-with-an-open-diff">[15-code-review.md] In VS Code with an Open Diff</h4>
+<h4 id="15-code-reviewmd-example-exchange">[15-code-review.md] Example Exchange</h4>
+<h4 id="15-code-reviewmd-on-githubcom-web-interface">[15-code-review.md] On GitHub.com Web Interface</h4>
+<h3 id="15-code-reviewmd-copilot-limitations-during-review-critical-to-know">[15-code-review.md] Copilot Limitations During Review Critical to Know</h3>
+<h3 id="15-code-reviewmd-best-practices">[15-code-review.md] Best Practices</h3>
+<h3 id="15-code-reviewmd-what-comes-next">[15-code-review.md] What Comes Next</h3>
+<h2 id="15-code-reviewmd-part-4-the-reviewer39s-craft">[15-code-review.md] Part 4: The Reviewer&#39;s Craft</h2>
+<h3 id="15-code-reviewmd-what-to-look-for-in-a-review">[15-code-review.md] What to Look for in a Review</h3>
+<h3 id="15-code-reviewmd-the-three-review-actions">[15-code-review.md] The Three Review Actions</h3>
+<h3 id="15-code-reviewmd-writing-constructive-feedback">[15-code-review.md] Writing Constructive Feedback</h3>
+<h3 id="15-code-reviewmd-the-reviewer39s-checklist">[15-code-review.md] The Reviewer&#39;s Checklist</h3>
+<h3 id="15-code-reviewmd-reviewing-as-a-learning-tool">[15-code-review.md] Reviewing as a Learning Tool</h3>
+<h3 id="15-code-reviewmd-learning-cards-the-reviewer39s-craft">[15-code-review.md] Learning Cards: The Reviewer&#39;s Craft</h3>
+<h2 id="15-code-reviewmd-day-2-teaser-the-full-accessibility-agents-review-ecosystem">[15-code-review.md] Day 2 Teaser: The Full Accessibility Agents Review Ecosystem</h2>
+<h3 id="15-code-reviewmd-the-agents-that-help-with-code-review">[15-code-review.md] The Agents That Help With Code Review</h3>
+<h3 id="15-code-reviewmd-how-it-works">[15-code-review.md] How It Works</h3>
+<h3 id="15-code-reviewmd-the-principle-skill-first-agent-second">[15-code-review.md] The Principle: Skill First, Agent Second</h3>
+<h3 id="15-code-reviewmd-a-real-example-the-flow">[15-code-review.md] A Real Example: The Flow</h3>
+<h2 id="15-code-reviewmd-authoritative-sources">[15-code-review.md] Authoritative Sources</h2>
+<h3 id="15-code-reviewmd-section-level-source-map">[15-code-review.md] Section-Level Source Map</h3>
+<h1 id="08-open-source-culturemd-culture-etiquette-and-community-standards">[08-open-source-culture.md] Culture, Etiquette, and Community Standards</h1>
+<h2 id="08-open-source-culturemd-how-to-be-an-effective-and-respectful-open-source-contributor">[08-open-source-culture.md] How to Be an Effective and Respectful Open Source Contributor</h2>
+<h2 id="08-open-source-culturemd-workshop-recommendation-chapter-8">[08-open-source-culture.md] Workshop Recommendation Chapter 8</h2>
+<h3 id="08-open-source-culturemd-chapter-8-challenge-set">[08-open-source-culture.md] Chapter 8 Challenge Set</h3>
+<h3 id="08-open-source-culturemd-challenge-81-step-by-step-guided-reflection">[08-open-source-culture.md] Challenge 8.1 Step-by-Step: Guided Reflection</h3>
+<h3 id="08-open-source-culturemd-completing-chapter-8-submit-your-evidence">[08-open-source-culture.md] Completing Chapter 8: Submit Your Evidence</h3>
+<h3 id="08-open-source-culturemd-expected-outcomes">[08-open-source-culture.md] Expected Outcomes</h3>
+<h3 id="08-open-source-culturemd-if-you-get-stuck">[08-open-source-culture.md] If You Get Stuck</h3>
+<h3 id="08-open-source-culturemd-learning-moment">[08-open-source-culture.md] Learning Moment</h3>
+<h3 id="08-open-source-culturemd-learning-pattern-used-in-this-chapter">[08-open-source-culture.md] Learning Pattern Used in This Chapter</h3>
+<h2 id="08-open-source-culturemd-github-flow---the-standard-contribution-workflow">[08-open-source-culture.md] GitHub Flow - The Standard Contribution Workflow</h2>
+<h3 id="08-open-source-culturemd-the-six-steps-of-github-flow">[08-open-source-culture.md] The Six Steps of GitHub Flow</h3>
+<h3 id="08-open-source-culturemd-why-this-model-works">[08-open-source-culture.md] Why This Model Works</h3>
+<h3 id="08-open-source-culturemd-github-flow-vs-git-flow">[08-open-source-culture.md] GitHub Flow vs Git Flow</h3>
+<h4 id="08-open-source-culturemd-what-git-flow-is">[08-open-source-culture.md] What Git Flow Is</h4>
+<h4 id="08-open-source-culturemd-how-the-git-flow-cycle-works">[08-open-source-culture.md] How the Git Flow Cycle Works</h4>
+<h4 id="08-open-source-culturemd-how-github-flow-differs">[08-open-source-culture.md] How GitHub Flow Differs</h4>
+<h4 id="08-open-source-culturemd-when-you-might-see-git-flow">[08-open-source-culture.md] When You Might See Git Flow</h4>
+<h4 id="08-open-source-culturemd-why-this-workshop-uses-github-flow">[08-open-source-culture.md] Why This Workshop Uses GitHub Flow</h4>
+<h3 id="08-open-source-culturemd-the-unwritten-rule-one-thing-per-branch">[08-open-source-culture.md] The Unwritten Rule: One Thing Per Branch</h3>
+<h3 id="08-open-source-culturemd-learning-cards-github-flow">[08-open-source-culture.md] Learning Cards: GitHub Flow</h3>
+<h2 id="08-open-source-culturemd-keeping-your-fork-up-to-date">[08-open-source-culture.md] Keeping Your Fork Up to Date</h2>
+<h3 id="08-open-source-culturemd-why-sync-your-fork">[08-open-source-culture.md] Why Sync Your Fork?</h3>
+<h3 id="08-open-source-culturemd-method-1-github-web-interface-easiest">[08-open-source-culture.md] Method 1: GitHub Web Interface Easiest</h3>
+<h3 id="08-open-source-culturemd-method-2-git-command-line-vs-code-terminal">[08-open-source-culture.md] Method 2: Git Command Line VS Code Terminal</h3>
+<h4 id="08-open-source-culturemd-one-time-setup---add-the-upstream-remote">[08-open-source-culture.md] One-time setup - add the upstream remote</h4>
+<h4 id="08-open-source-culturemd-sync-process">[08-open-source-culture.md] Sync process</h4>
+<h1 id="08-open-source-culturemd-1-switch-to-your-main-branch">[08-open-source-culture.md] 1. Switch to your main branch</h1>
+<h1 id="08-open-source-culturemd-2-fetch-upstream-changes">[08-open-source-culture.md] 2. Fetch upstream changes</h1>
+<h1 id="08-open-source-culturemd-3-merge-upstream39s-main-into-yours">[08-open-source-culture.md] 3. Merge upstream&#39;s main into yours</h1>
+<h1 id="08-open-source-culturemd-4-push-the-updated-main-to-your-fork-on-github">[08-open-source-culture.md] 4. Push the updated main to your fork on GitHub</h1>
+<h2 id="08-open-source-culturemd-when-to-sync">[08-open-source-culture.md] When to sync</h2>
+<h3 id="08-open-source-culturemd-method-3-github-desktop">[08-open-source-culture.md] Method 3: GitHub Desktop</h3>
+<h3 id="08-open-source-culturemd-learning-cards-keeping-your-fork-up-to-date">[08-open-source-culture.md] Learning Cards: Keeping Your Fork Up to Date</h3>
+<h2 id="08-open-source-culturemd-writing-good-commit-messages">[08-open-source-culture.md] Writing Good Commit Messages</h2>
+<h3 id="08-open-source-culturemd-the-commit-message-format">[08-open-source-culture.md] The commit message format</h3>
+<h3 id="08-open-source-culturemd-the-first-line-required">[08-open-source-culture.md] The First Line Required</h3>
+<h3 id="08-open-source-culturemd-the-body-optional">[08-open-source-culture.md] The Body Optional</h3>
+<h3 id="08-open-source-culturemd-the-footer-optional">[08-open-source-culture.md] The Footer Optional</h3>
+<h3 id="08-open-source-culturemd-atomic-commits">[08-open-source-culture.md] Atomic Commits</h3>
+<h3 id="08-open-source-culturemd-common-mistakes-to-avoid">[08-open-source-culture.md] Common mistakes to avoid</h3>
+<h3 id="08-open-source-culturemd-good-commit-messages-in-practice">[08-open-source-culture.md] Good commit messages in practice</h3>
+<h3 id="08-open-source-culturemd-learning-cards-writing-good-commit-messages">[08-open-source-culture.md] Learning Cards: Writing Good Commit Messages</h3>
+<h2 id="08-open-source-culturemd-the-nature-of-open-source-communication">[08-open-source-culture.md] The Nature of Open Source Communication</h2>
+<h3 id="08-open-source-culturemd-in-writing">[08-open-source-culture.md] In writing</h3>
+<h3 id="08-open-source-culturemd-asynchronously">[08-open-source-culture.md] Asynchronously</h3>
+<h3 id="08-open-source-culturemd-in-public">[08-open-source-culture.md] In public</h3>
+<h2 id="08-open-source-culturemd-the-anatomy-of-helpful-feedback">[08-open-source-culture.md] The Anatomy of Helpful Feedback</h2>
+<h3 id="08-open-source-culturemd-1-acknowledge-what39s-working">[08-open-source-culture.md] 1. Acknowledge what&#39;s working</h3>
+<h3 id="08-open-source-culturemd-2-identify-the-specific-concern">[08-open-source-culture.md] 2. Identify the specific concern</h3>
+<h3 id="08-open-source-culturemd-3-explain-why-it-matters">[08-open-source-culture.md] 3. Explain why it matters</h3>
+<h3 id="08-open-source-culturemd-4-suggest-a-path-forward-when-you-can">[08-open-source-culture.md] 4. Suggest a path forward when you can</h3>
+<h3 id="08-open-source-culturemd-5-signal-the-weight-of-the-concern">[08-open-source-culture.md] 5. Signal the weight of the concern</h3>
+<h2 id="08-open-source-culturemd-language-and-tone">[08-open-source-culture.md] Language and Tone</h2>
+<h3 id="08-open-source-culturemd-prefer-quotwequot-or-describe-the-code-not-the-person">[08-open-source-culture.md] Prefer &quot;we&quot; or describe the code, not the person</h3>
+<h3 id="08-open-source-culturemd-use-tentative-language-for-uncertainty">[08-open-source-culture.md] Use tentative language for uncertainty</h3>
+<h3 id="08-open-source-culturemd-acknowledge-cultural-and-language-diversity">[08-open-source-culture.md] Acknowledge cultural and language diversity</h3>
+<h3 id="08-open-source-culturemd-avoid-urgency-markers-unless-genuinely-urgent">[08-open-source-culture.md] Avoid urgency markers unless genuinely urgent</h3>
+<h2 id="08-open-source-culturemd-commenting-etiquette">[08-open-source-culture.md] Commenting Etiquette</h2>
+<h3 id="08-open-source-culturemd-keep-comments-focused">[08-open-source-culture.md] Keep comments focused</h3>
+<h3 id="08-open-source-culturemd-don39t-leave-comments-unresolved">[08-open-source-culture.md] Don&#39;t leave comments unresolved</h3>
+<h3 id="08-open-source-culturemd-resolving-conversations">[08-open-source-culture.md] Resolving conversations</h3>
+<h3 id="08-open-source-culturemd-do-not-quotpile-onquot">[08-open-source-culture.md] Do not &quot;pile on&quot;</h3>
+<h3 id="08-open-source-culturemd-reactions">[08-open-source-culture.md] Reactions</h3>
+<h3 id="08-open-source-culturemd-saved-replies---your-accessibility-win">[08-open-source-culture.md] Saved Replies - Your Accessibility Win</h3>
+<h4 id="08-open-source-culturemd-common-uses">[08-open-source-culture.md] Common uses</h4>
+<h4 id="08-open-source-culturemd-creating-a-saved-reply">[08-open-source-culture.md] Creating a Saved Reply</h4>
+<h4 id="08-open-source-culturemd-using-a-saved-reply-in-a-comment">[08-open-source-culture.md] Using a Saved Reply in a comment</h4>
+<h4 id="08-open-source-culturemd-screen-reader-path">[08-open-source-culture.md] Screen reader path</h4>
+<h3 id="08-open-source-culturemd-learning-cards-commenting-etiquette">[08-open-source-culture.md] Learning Cards: Commenting Etiquette</h3>
+<h2 id="08-open-source-culturemd-code-review-etiquette---for-reviewers">[08-open-source-culture.md] Code Review Etiquette - For Reviewers</h2>
+<h3 id="08-open-source-culturemd-review-the-code-not-the-person">[08-open-source-culture.md] Review the code, not the person</h3>
+<h3 id="08-open-source-culturemd-don39t-gatekeep-knowledge">[08-open-source-culture.md] Don&#39;t gatekeep knowledge</h3>
+<h3 id="08-open-source-culturemd-ask-questions-instead-of-making-demands">[08-open-source-culture.md] Ask questions instead of making demands</h3>
+<h3 id="08-open-source-culturemd-distinguish-opinion-from-requirement">[08-open-source-culture.md] Distinguish opinion from requirement</h3>
+<h3 id="08-open-source-culturemd-approve-explicitly">[08-open-source-culture.md] Approve explicitly</h3>
+<h2 id="08-open-source-culturemd-code-review-etiquette---for-authors">[08-open-source-culture.md] Code Review Etiquette - For Authors</h2>
+<h3 id="08-open-source-culturemd-say-thank-you">[08-open-source-culture.md] Say thank you</h3>
+<h3 id="08-open-source-culturemd-don39t-take-feedback-personally">[08-open-source-culture.md] Don&#39;t take feedback personally</h3>
+<h3 id="08-open-source-culturemd-explain-your-choices">[08-open-source-culture.md] Explain your choices</h3>
+<h3 id="08-open-source-culturemd-surface-blockers-early">[08-open-source-culture.md] Surface blockers early</h3>
+<h2 id="08-open-source-culturemd-inclusive-commenting-for-accessibility-issues">[08-open-source-culture.md] Inclusive Commenting for Accessibility Issues</h2>
+<h2 id="08-open-source-culturemd-the-quotgood-first-issuequot-social-contract">[08-open-source-culture.md] The &quot;Good First Issue&quot; Social Contract</h2>
+<h2 id="08-open-source-culturemd-handling-difficult-situations">[08-open-source-culture.md] Handling Difficult Situations</h2>
+<h3 id="08-open-source-culturemd-when-you-receive-harsh-feedback">[08-open-source-culture.md] When you receive harsh feedback</h3>
+<h3 id="08-open-source-culturemd-when-you-disagree-with-a-decision">[08-open-source-culture.md] When you disagree with a decision</h3>
+<h3 id="08-open-source-culturemd-when-someone-is-rude-to-you">[08-open-source-culture.md] When someone is rude to you</h3>
+<h3 id="08-open-source-culturemd-when-you-accidentally-caused-offense">[08-open-source-culture.md] When you accidentally caused offense</h3>
+<h2 id="08-open-source-culturemd-writing-your-first-readme">[08-open-source-culture.md] Writing Your First README</h2>
+<h3 id="08-open-source-culturemd-what-belongs-in-a-readme">[08-open-source-culture.md] What belongs in a README</h3>
+<h3 id="08-open-source-culturemd-a-skeleton-you-can-copy">[08-open-source-culture.md] A skeleton you can copy</h3>
+<h1 id="08-open-source-culturemd-project-name">[08-open-source-culture.md] Project Name</h1>
+<h2 id="08-open-source-culturemd-installation">[08-open-source-culture.md] Installation</h2>
+<h2 id="08-open-source-culturemd-usage">[08-open-source-culture.md] Usage</h2>
+<h2 id="08-open-source-culturemd-contributing">[08-open-source-culture.md] Contributing</h2>
+<h2 id="08-open-source-culturemd-license">[08-open-source-culture.md] License</h2>
+<h3 id="08-open-source-culturemd-accessibility-in-readmes">[08-open-source-culture.md] Accessibility in READMEs</h3>
+<h3 id="08-open-source-culturemd-good-readme-vs-bad-readme">[08-open-source-culture.md] Good README vs. bad README</h3>
+<h3 id="08-open-source-culturemd-learning-cards-writing-your-first-readme">[08-open-source-culture.md] Learning Cards: Writing Your First README</h3>
+<h2 id="08-open-source-culturemd-community-health-files">[08-open-source-culture.md] Community Health Files</h2>
+<h3 id="08-open-source-culturemd-contributingmd">[08-open-source-culture.md] CONTRIBUTING.md</h3>
+<h3 id="08-open-source-culturemd-codeofconductmd">[08-open-source-culture.md] CODEOFCONDUCT.md</h3>
+<h3 id="08-open-source-culturemd-securitymd">[08-open-source-culture.md] SECURITY.md</h3>
+<h3 id="08-open-source-culturemd-license">[08-open-source-culture.md] LICENSE</h3>
+<h3 id="08-open-source-culturemd-finding-these-files-on-github">[08-open-source-culture.md] Finding these files on GitHub</h3>
+<h3 id="08-open-source-culturemd-learning-cards-community-health-files">[08-open-source-culture.md] Learning Cards: Community Health Files</h3>
+<h2 id="08-open-source-culturemd-when-to-use-different-communication-channels">[08-open-source-culture.md] When to Use Different Communication Channels</h2>
+<h2 id="08-open-source-culturemd-quick-reference-phrases-that-work">[08-open-source-culture.md] Quick Reference: Phrases That Work</h2>
+<h2 id="08-open-source-culturemd-try-it-rewrite-one-comment">[08-open-source-culture.md] Try It: Rewrite One Comment</h2>
+<h2 id="08-open-source-culturemd-contributing-to-open-source">[08-open-source-culture.md] Contributing to Open Source</h2>
+<h2 id="08-open-source-culturemd-a-guide-for-first-time-contributors">[08-open-source-culture.md] A Guide for First-Time Contributors</h2>
+<h2 id="08-open-source-culturemd-table-of-contents">[08-open-source-culture.md] Table of Contents</h2>
+<h2 id="08-open-source-culturemd-1-what-is-open-source">[08-open-source-culture.md] 1. What Is Open Source?</h2>
+<h2 id="08-open-source-culturemd-2-who-can-contribute">[08-open-source-culture.md] 2. Who Can Contribute?</h2>
+<h2 id="08-open-source-culturemd-3-what-makes-a-good-first-contribution">[08-open-source-culture.md] 3. What Makes a Good First Contribution?</h2>
+<h3 id="08-open-source-culturemd-signs-a-contribution-is-too-large-for-a-first-attempt">[08-open-source-culture.md] Signs a contribution is too large for a first attempt</h3>
+<h2 id="08-open-source-culturemd-4-finding-something-to-work-on">[08-open-source-culture.md] 4. Finding Something to Work On</h2>
+<h3 id="08-open-source-culturemd-learning-cards-finding-something-to-work-on">[08-open-source-culture.md] Learning Cards: Finding Something to Work On</h3>
+<h2 id="08-open-source-culturemd-5-reading-an-issue-before-you-start">[08-open-source-culture.md] 5. Reading an Issue Before You Start</h2>
+<h2 id="08-open-source-culturemd-6-making-your-contribution">[08-open-source-culture.md] 6. Making Your Contribution</h2>
+<h3 id="08-open-source-culturemd-tool-cards-fork-clone-and-contribute">[08-open-source-culture.md] Tool Cards: Fork, Clone, and Contribute</h3>
+<h1 id="08-open-source-culturemd-edit-files">[08-open-source-culture.md] edit files</h1>
+<h3 id="08-open-source-culturemd-the-basic-workflow">[08-open-source-culture.md] The Basic Workflow</h3>
+<h3 id="08-open-source-culturemd-writing-a-good-pr-description">[08-open-source-culture.md] Writing a Good PR Description</h3>
+<h2 id="08-open-source-culturemd-7-getting-help">[08-open-source-culture.md] 7. Getting Help</h2>
+<h2 id="08-open-source-culturemd-8-after-your-contribution-is-merged">[08-open-source-culture.md] 8. After Your Contribution Is Merged</h2>
+<h2 id="08-open-source-culturemd-9-building-a-contribution-habit">[08-open-source-culture.md] 9. Building a Contribution Habit</h2>
+<h3 id="08-open-source-culturemd-practical-habits">[08-open-source-culture.md] Practical habits</h3>
+<h2 id="08-open-source-culturemd-authoritative-sources">[08-open-source-culture.md] Authoritative Sources</h2>
+<h3 id="08-open-source-culturemd-section-level-source-map">[08-open-source-culture.md] Section-Level Source Map</h3>
+<p>Markdown source:</p>
+<h2 id="source-challenge-12-reviewyml">Source: challenge-12-review.yml</h2>
+<pre><code class="hljs language-markdown">name: &quot;Challenge 12: Review Like a Pro&quot;
+description: Perform a full code review of a peer-simulation PR.
+title: &quot;Challenge 12: Review Like a Pro (@{username})&quot;
+labels: [&quot;challenge&quot;, &quot;day-2&quot;]
+body:
+<span class="hljs-bullet">  -</span> type: markdown
+<span class="hljs-code">    attributes:
+      value: |
+        ## Challenge 12: Review Like a Pro
+</span>
+<span class="hljs-code">        **Chapter:** [Ch15: Code Review](https://github.com/Community-Access/git-going-with-github/blob/main/docs/15-code-review.md)
+</span>
+<span class="hljs-code">        **What you will do:** Give the peer-simulation PR a thorough code review with inline comments, a suggestion, and a verdict. If your facilitator gave you access to a real buddy&#x27;s PR, you may review that PR instead.
+</span>
+<span class="hljs-code">        ### Instructions
+</span>
+<span class="hljs-bullet">        1.</span> Open the <span class="hljs-strong">**Peer Simulation: Improve contribution guidance**</span> PR. If you have real buddy access, you may open your buddy&#x27;s Day 2 PR instead.
+<span class="hljs-bullet">        2.</span> Go to the <span class="hljs-strong">**Files changed**</span> tab.
+<span class="hljs-bullet">        3.</span> Review the changes and leave at least <span class="hljs-strong">**two inline comments**</span>:
+<span class="hljs-bullet">           -</span> One <span class="hljs-strong">**specific observation**</span> about something they did well
+<span class="hljs-bullet">           -</span> One <span class="hljs-strong">**constructive suggestion**</span> for improvement
+<span class="hljs-bullet">        4.</span> Use the <span class="hljs-strong">**Suggest changes**</span> feature for at least one of your comments (select the +/- icon in the comment toolbar to create a code suggestion block).
+<span class="hljs-bullet">        5.</span> Submit your review with a verdict: <span class="hljs-strong">**Approve**</span>, <span class="hljs-strong">**Request changes**</span>, or <span class="hljs-strong">**Comment**</span>.
+
+<span class="hljs-code">        ### Review checklist
+</span>
+<span class="hljs-code">        When reviewing, consider:
+        - [ ] Does the change do what the PR description says?
+        - [ ] Is the commit message clear?
+        - [ ] Are there any typos or formatting issues?
+        - [ ] Would someone reading this file for the first time understand the changes?
+        - [ ] Is the content accessible (clear language, proper Markdown formatting)?
+</span>
+<span class="hljs-code">        ### The three verdicts
+</span>
+<span class="hljs-code">        | Verdict | When to use it |
+        |---|---|
+        | **Approve** | The changes are good and ready to merge |
+        | **Request changes** | Something needs to be fixed before merging |
+        | **Comment** | You have feedback but are not blocking the merge |
+</span>
+<span class="hljs-bullet">  -</span> type: textarea
+<span class="hljs-code">    id: evidence
+    attributes:
+      label: &quot;Your evidence&quot;
+      description: &quot;Paste the URL of your review and describe what feedback you gave.&quot;
+      placeholder: |
+        Review URL: https://github.com/...
+        I reviewed the peer-simulation PR.
+        My inline comments were about: ...
+        My verdict was: ... because...
+    validations:
+      required: true
+</span>
+<span class="hljs-bullet">  -</span> type: markdown
+<span class="hljs-code">    attributes:
+      value: |
+        ### Peer simulation check
+</span>
+<span class="hljs-code">        Read any review comments on your PR. If you do not have real buddy access, reply to a comment on the peer-simulation PR with one thing you learned.
+</span>
+<span class="hljs-code">        ### If you get stuck
+</span>
+<span class="hljs-code">        | Symptom | Try this |
+        |---|---|
+        | I cannot find the Files changed tab | Open the PR, then look for tabs: Conversation, Commits, Files changed. Screen reader users: these are tab links within the PR page. |
+        | I do not know how to leave an inline comment | Hover over (or focus on) a line number in the diff and select the blue + button that appears. |
+        | I do not know how to suggest changes | In the comment box, select the file-diff icon (it looks like +/-) to create a suggestion block. Edit the code inside the block. |
+        | I am not sure which verdict to give | When in doubt, use **Comment**. It gives feedback without blocking. |
+        | I finished but want to check my work | [View the reference solution](https://github.com/Community-Access/git-going-with-github/blob/main/docs/solutions/solution-12-review.md) |
+</span></code></pre>
+<h2 id="source-solution-12-reviewmd">Source: solution-12-review.md</h2>
+<pre><code class="hljs language-markdown"><span class="hljs-section"># Solution Reference: Challenge 12 -- Code Review</span>
+
+This shows what a complete code review looks like.
+
+<span class="hljs-section">## Example review on a buddy&#x27;s PR</span>
+
+<span class="hljs-section">### Inline comment (on a specific line)</span>
+
+<span class="hljs-quote">&gt; <span class="hljs-strong">**Line 18 of docs/welcome.md:**</span></span>
+<span class="hljs-quote">&gt;
+&gt; This heading says &quot;## getting started&quot; but the other headings in the file use title case (&quot;## What You Will Learn&quot;). Consider changing it to &quot;## Getting Started&quot; for consistency.</span>
+
+<span class="hljs-section">### Suggestion (using GitHub&#x27;s suggestion feature)</span>
+
+<span class="hljs-code">```suggestion
+## Getting Started</span></code></pre>
+<p>Using the suggestion feature lets the PR author accept the change with one click, which creates a commit automatically.</p>
+<h3 id="review-verdict">Review verdict</h3>
+<blockquote>
+<p><strong>Changes requested</strong></p>
+<p>Good work overall. The content additions are helpful and well-written. Two things to address before merging:</p>
+<ol>
+<li>Heading capitalization inconsistency (see inline comment on line 18)</li>
+<li>The new link on line 25 points to <code>http://</code> instead of <code>https://</code> -- please update for security</li>
+</ol>
+<p>Once those are fixed, this is ready to merge.</p>
+</blockquote>
+<h2 id="types-of-review-comments">Types of review comments</h2>
+<ul>
+<li><strong>Praise:</strong> &quot;This section reads really clearly&quot; -- positive feedback encourages good practices</li>
+<li><strong>Question:</strong> &quot;What happens if the user does not have a GitHub account yet?&quot; -- surfaces assumptions</li>
+<li><strong>Suggestion:</strong> Use the suggestion block to propose specific text changes</li>
+<li><strong>Required change:</strong> &quot;The YAML frontmatter is missing the <code>description</code> field, which is required&quot;</li>
+</ul>
+<h2 id="what-matters">What matters</h2>
+<p>The learning objective is providing constructive feedback on someone else&#39;s work. If you left at least one specific, helpful comment on a buddy&#39;s PR, you completed this challenge. The quality of feedback matters more than the quantity.</p>
+<h2 id="authoritative-sources">Authoritative Sources</h2>
+<p>Use these official references when you need the current source of truth for facts in this chapter.</p>
+<ul>
+<li><a href="https://docs.github.com/en">GitHub Docs, home</a></li>
+<li><a href="https://github.blog/changelog/">GitHub Changelog</a></li>
+</ul>
+<h3 id="section-level-source-map">Section-Level Source Map</h3>
+<p>Use this map to verify facts for each major section in this file.</p>
+<ul>
+<li><strong>Example review on a buddy&#39;s PR:</strong> <a href="https://docs.github.com/en">GitHub Docs, home</a>, <a href="https://github.blog/changelog/">GitHub Changelog</a>, <a href="https://docs.github.com/en/get-started/using-git/about-git">About Git</a>, <a href="https://docs.github.com/en/get-started/using-github/github-flow">GitHub flow</a>, <a href="https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/about-pull-requests">About pull requests</a></li>
+<li><strong>Getting Started:</strong> <a href="https://docs.github.com/en">GitHub Docs, home</a>, <a href="https://github.blog/changelog/">GitHub Changelog</a></li>
+<li><strong>Types of review comments:</strong> <a href="https://docs.github.com/en">GitHub Docs, home</a>, <a href="https://github.blog/changelog/">GitHub Changelog</a></li>
+<li><strong>What matters:</strong> <a href="https://docs.github.com/en">GitHub Docs, home</a>, <a href="https://github.blog/changelog/">GitHub Changelog</a></li>
+</ul>
+<pre><code class="hljs">
+## Source: 15-code-review.md
+
+```markdown
+# Code Review: PRs, Diffs, <span class="hljs-keyword">and</span> Constructive Feedback
+
+&gt; <span class="hljs-comment">**Related appendices:** [Appendix G: VS Code Reference](appendix-g-vscode-reference.md) | [Appendix C: Markdown Reference](appendix-c-markdown-reference.md)
+&gt; **Authoritative sources:** [GitHub Docs: Reviewing changes in pull requests](https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/reviewing-changes-in-pull-requests) | [GitHub Accessibility Guide: Pull Request Reviews](https://accessibility.github.com/documentation/guide/pull-requests/)
+
+&gt; **Day 2, Block 2 Material**
+&gt;
+&gt; This chapter unifies PR management, accessible code review, and the reviewer&#x27;s craft into one chapter. Part 1 covers the GitHub Pull Requests extension in VS Code. Part 2 covers accessible code review with diffs and inline comments. Part 3 adds the reviewer&#x27;s judgment framework.
+
+---
+
+## Part 1: The GitHub Pull Requests Extension
+
+&gt; **See also:** [Appendix G: VS Code Reference](appendix-g-vscode-reference.md) for the complete list of GitHub Pull Requests extension keyboard shortcuts.
+
+&gt;
+&gt; **Listen to Episode 13:** [The GitHub Pull Requests Extension](../admin/PODCASTS.md) - a conversational audio overview of this chapter. Listen before reading to preview the concepts, or after to reinforce what you learned.
+
+## Managing Pull Requests from VS Code
+
+&gt; **Day 2, Block 2 Material**
+&gt;
+&gt; This guide covers the GitHub Pull Requests and Issues extension: viewing open PRs, checking out PR branches for local testing, reviewing PRs with screen reader-accessible tools, creating PRs directly from VS Code, using PR templates, and syncing PR status with GitHub.
+&gt;
+&gt; **Prerequisites:** [Working with Pull Requests](06-working-with-pull-requests.md), [Git &amp; Source Control in VS Code](14-git-in-practice.md)
+&gt;
+&gt; **Mac keyboard shortcuts:** Throughout this chapter, all `Ctrl+` shortcuts use `Cmd+` on Mac, and `Alt+` shortcuts use `Option+` on Mac. For example: `Ctrl+Shift+P` → `Cmd+Shift+P`, `Ctrl+Shift+G` → `Cmd+Shift+G`, `Alt+F2` → `Option+F2`. Context menus (`Shift+F10` on Windows) use `Ctrl+Return` on Mac.
+
+## Workshop Recommendation (Chapter 15, Part 1)
+
+Chapter 15, Part 1 introduces the **GitHub Pull Requests extension** for managing PRs directly from VS Code.
+
+- **Challenge count:** 2 guided challenges
+- **Automation check:** none (extension installation and review state are account-local)
+- **Evidence:** issue comment with confirmation of actions completed
+- **Pattern:** install, check out, review, comment
+
+### Chapter 15, Part 1 Practice Set
+
+1. **Install the GitHub Pull Requests extension** - add the extension to VS Code and sign in with your GitHub account.
+2. **Check out a PR and post a review comment** - download a PR branch locally, read the diff, and post one constructive review comment.
+
+### Practice 15.1 Step-by-Step: Install the Extension
+
+**Goal:** Install the GitHub Pull Requests and Issues extension and authenticate with your GitHub account.
+
+**Where you are working:** VS Code desktop with your Learning Room repository open.
+
+**Estimated time:** 3-5 minutes.
+
+1. Open the Extensions sidebar: `Ctrl+Shift+X` (Mac: `Cmd+Shift+X`).
+2. Your screen reader announces &quot;Extensions: Marketplace.&quot; The search box has focus.
+3. Type `GitHub Pull Requests` in the search box and press `Enter`.
+4. Navigate down the results list. Select **GitHub Pull Requests** (publisher: GitHub).
+5. Activate the **Install** button. VS Code installs the extension and may show a notification.
+6. After installation, VS Code prompts you to sign in. Activate **Sign in to GitHub**.
+7. A browser window opens for GitHub OAuth. Approve the authorization and return to VS Code.
+8. Verify: open the Explorer sidebar (`Ctrl+Shift+E`). You should now see a **GitHub** section in the sidebar showing Pull Requests and Issues.
+
+**Screen reader tip:** After step 5, if the install notification disappears before you can read it, open Command Palette (`Ctrl+Shift+P`) and run `Notifications: Focus Notification Toast`.
+
+**You are done when:** The GitHub section appears in your Explorer sidebar and shows pull requests from your Learning Room repository.
+
+### Practice 15.2 Step-by-Step: Check Out a PR and Post a Comment
+
+**Goal:** Check out someone else&#x27;s PR branch locally, read the diff in VS Code, and post one constructive review comment.
+
+**Where you are working:** VS Code with the GitHub Pull Requests extension installed.
+
+**Estimated time:** 10-15 minutes.
+
+1. Open the Command Palette: `Ctrl+Shift+P` (Mac: `Cmd+Shift+P`).
+2. Type `GitHub Pull Requests: Focus on Pull Requests View` and select it. The Pull Requests panel opens.
+3. Navigate the list of open PRs. Find one that is **not yours** (a classmate&#x27;s PR from Chapter 6, 7, or 14).
+4. With the PR focused, press `Enter` or activate **Checkout** from the context menu (`Shift+F10` on Windows). VS Code switches to that PR&#x27;s branch.
+5. Open the Command Palette again and run `GitHub Pull Requests: Open Changed Files`. This shows the list of files the PR changed.
+6. Open one changed file. VS Code opens the **Diff Editor** showing old content on the left and new content on the right.
+7. Navigate the diff with the **Accessible Diff Viewer**: press `F7` to move to the next change, `Shift+F7` for the previous change. Your screen reader announces each change (added lines, removed lines).
+8. Find one specific thing to comment on: a typo, an unclear sentence, a missing step, or something the author did well.
+9. To add an inline comment: position your cursor on the line you want to comment on, then open Command Palette and run `GitHub Pull Requests: Add Comment`. Type your constructive comment and activate **Add Comment**.
+10. If the inline comment method is difficult, navigate to the PR on GitHub.com instead and add your comment in the **Files changed** tab.
+
+**If checkout is blocked by permissions:** You can still complete this challenge in read-only mode. Skip step 4 and instead open the PR on GitHub.com. Use the **Files changed** tab to read the diff and post your comment there.
+
+**Screen reader tip:** In the Diff Editor, `F7` (Accessible Diff Viewer) is the most reliable way to navigate changes. It reads each hunk as a single block, which is much easier than navigating line by line.
+
+**You are done when:** You have posted at least one constructive review comment on someone else&#x27;s PR.
+
+### Completing Chapter 15, Part 1: Submit Your Evidence
+
+Open your assigned setup or review practice issue and post a completion comment:
+
+```text
+Chapter 15 Part 1 completed:
+- Extension installed: yes / no
+- Signed in to GitHub: yes / no
+- PR reviewed: #[PR number by classmate]
+- Comment posted: yes (inline / on GitHub.com)
+- My comment was about: [one-sentence summary]</span></code></pre>
+<p>Close your Chapter 12 challenge issues when done.</p>
+<h3 id="expected-outcomes">Expected Outcomes</h3>
+<ul>
+<li>Student can install and authenticate the GitHub PR extension.</li>
+<li>Student can check out a PR branch in VS Code (or view it on GitHub.com).</li>
+<li>Student can navigate diffs using the Accessible Diff Viewer (<code>F7</code>).</li>
+<li>Student can post constructive, specific feedback on a classmate&#39;s work.</li>
+</ul>
+<h3 id="if-you-get-stuck">If You Get Stuck</h3>
+<ol>
+<li>Extension does not install? Reload VS Code: <code>Ctrl+Shift+P</code>, then run <code>Developer: Reload Window</code>.</li>
+<li>OAuth sign-in fails? Verify your GitHub account is active in the browser first, close VS Code, reopen, and retry.</li>
+<li>PR list is empty? Switch to &quot;All Open&quot; view in the GitHub Pull Requests panel.</li>
+<li>Checkout fails? Confirm you have write access to the repository. If not, use the read-only GitHub.com fallback.</li>
+<li>Diff Editor is hard to navigate? Press <code>F7</code> for the Accessible Diff Viewer mode, which is purpose-built for screen readers.</li>
+<li>Cannot find the Add Comment command? Use Command Palette and search for <code>GitHub Pull Requests: Add Comment</code>.</li>
+<li>Ask facilitator to help verify the GitHub PR panel and model one review comment.</li>
+<li>Finished but not sure you did it right? Compare your work against the <a href="solutions/solution-11-day2-pr.html">Challenge 11 reference solution</a>.</li>
+</ol>
+<blockquote>
+<p><strong>Continue learning:</strong> The GitHub Skills course <a href="https://github.com/skills/review-pull-requests">Review Pull Requests</a> practices approving, requesting changes, and using suggestions in an interactive format. See <a href="appendix-z-github-skills.html">Appendix Z</a> for the full catalog.</p>
+</blockquote>
+<h3 id="learning-moment">Learning Moment</h3>
+<p>PR tooling multiplies your impact. Reviewing others&#39; work refines your own standards and builds community trust. The comment you just wrote helps another student learn - and you learn by articulating what makes documentation clear.</p>
+<h3 id="learning-pattern-used-in-this-chapter">Learning Pattern Used in This Chapter</h3>
+<ol>
+<li>Install and configure the tool before starting the task.</li>
+<li>Practice on someone else&#39;s work first (reviewing is safer than authoring).</li>
+<li>Use accessibility tools (<code>F7</code> Accessible Diff Viewer) to navigate efficiently.</li>
+<li>Write specific, constructive feedback (not just &quot;looks good&quot;).</li>
+</ol>
+<h2 id="table-of-contents">Table of Contents</h2>
+<ol>
+<li><a href="#1-installing-the-github-pull-requests-extension">Installing the GitHub Pull Requests Extension</a></li>
+<li><a href="#2-viewing-pull-requests">Viewing Pull Requests</a></li>
+<li><a href="#3-checking-out-a-pull-request-branch">Checking Out a Pull Request Branch</a></li>
+<li><a href="#4-reviewing-pull-requests-in-vs-code">Reviewing Pull Requests in VS Code</a></li>
+<li><a href="#5-creating-a-pull-request-from-vs-code">Creating a Pull Request from VS Code</a></li>
+<li><a href="#6-pull-request-description-templates">Pull Request Description Templates</a></li>
+<li><a href="#7-commenting-and-requesting-changes">Commenting and Requesting Changes</a></li>
+<li><a href="#8-merging-pull-requests">Merging Pull Requests</a></li>
+</ol>
+<h2 id="1-installing-the-github-pull-requests-extension">1. Installing the GitHub Pull Requests Extension</h2>
+<p>The GitHub Pull Requests and Issues extension integrates GitHub&#39;s PR workflow directly into VS Code - no browser tab switching required.</p>
+<h3 id="installation-steps">Installation Steps</h3>
+<h4 id="method-1-extensions-sidebar">Method 1: Extensions Sidebar</h4>
+<ol>
+<li>Open Extensions sidebar: <code>Ctrl+Shift+X</code> (Mac: <code>Cmd+Shift+X</code>)</li>
+<li>Type &quot;GitHub Pul</li>
+</ol>
+<!-- content omitted for length -->
+
+<p>th-pull-requests/about-pull-requests)</p>
+<ul>
+<li><strong>4. Reviewing Pull Requests in VS Code:</strong> <a href="https://docs.github.com/en">GitHub Docs, home</a>, <a href="https://github.blog/changelog/">GitHub Changelog</a>, <a href="https://docs.github.com/en/get-started/using-git/about-git">About Git</a>, <a href="https://docs.github.com/en/get-started/using-github/github-flow">GitHub flow</a>, <a href="https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/about-pull-requests">About pull requests</a></li>
+<li><strong>5. Creating a Pull Request from VS Code:</strong> <a href="https://docs.github.com/en">GitHub Docs, home</a>, <a href="https://github.blog/changelog/">GitHub Changelog</a>, <a href="https://docs.github.com/en/get-started/using-git/about-git">About Git</a>, <a href="https://docs.github.com/en/get-started/using-github/github-flow">GitHub flow</a>, <a href="https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/about-pull-requests">About pull requests</a></li>
+<li><strong>6. Pull Request Description Templates:</strong> <a href="https://docs.github.com/en">GitHub Docs, home</a>, <a href="https://github.blog/changelog/">GitHub Changelog</a>, <a href="https://docs.github.com/en/get-started/using-git/about-git">About Git</a>, <a href="https://docs.github.com/en/get-started/using-github/github-flow">GitHub flow</a>, <a href="https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/about-pull-requests">About pull requests</a></li>
+<li><strong>7. Commenting and Requesting Changes:</strong> <a href="https://docs.github.com/en">GitHub Docs, home</a>, <a href="https://github.blog/changelog/">GitHub Changelog</a>, <a href="https://docs.github.com/en/get-started/using-git/about-git">About Git</a>, <a href="https://docs.github.com/en/get-started/using-github/github-flow">GitHub flow</a>, <a href="https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/about-pull-requests">About pull requests</a></li>
+<li><strong>8. Merging Pull Requests:</strong> <a href="https://docs.github.com/en">GitHub Docs, home</a>, <a href="https://github.blog/changelog/">GitHub Changelog</a>, <a href="https://docs.github.com/en/get-started/using-git/about-git">About Git</a>, <a href="https://docs.github.com/en/get-started/using-github/github-flow">GitHub flow</a>, <a href="https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/about-pull-requests">About pull requests</a></li>
+<li><strong>Keyboard Shortcuts - GitHub Pull Requests Extension:</strong> <a href="https://docs.github.com/en">GitHub Docs, home</a>, <a href="https://github.blog/changelog/">GitHub Changelog</a>, <a href="https://docs.github.com/en/get-started/using-git/about-git">About Git</a>, <a href="https://docs.github.com/en/get-started/using-github/github-flow">GitHub flow</a>, <a href="https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/about-pull-requests">About pull requests</a></li>
+<li><strong>Troubleshooting:</strong> <a href="https://docs.github.com/en">GitHub Docs, home</a>, <a href="https://github.blog/changelog/">GitHub Changelog</a>, <a href="https://docs.github.com/en/get-started/using-git/about-git">About Git</a>, <a href="https://docs.github.com/en/get-started/using-github/github-flow">GitHub flow</a>, <a href="https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/about-pull-requests">About pull requests</a></li>
+<li><strong>Try It: Review a PR from VS Code:</strong> <a href="https://docs.github.com/en">GitHub Docs, home</a>, <a href="https://github.blog/changelog/">GitHub Changelog</a>, <a href="https://docs.github.com/en/get-started/using-git/about-git">About Git</a>, <a href="https://docs.github.com/en/get-started/using-github/github-flow">GitHub flow</a>, <a href="https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/about-pull-requests">About pull requests</a></li>
+<li><strong>Part 2: Accessible Code Review:</strong> <a href="https://docs.github.com/en">GitHub Docs, home</a>, <a href="https://github.blog/changelog/">GitHub Changelog</a>, <a href="https://docs.github.com/en/get-started/using-git/about-git">About Git</a>, <a href="https://docs.github.com/en/get-started/using-github/github-flow">GitHub flow</a>, <a href="https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/about-pull-requests">About pull requests</a></li>
+</ul>
+<pre><code class="hljs">
+<span class="hljs-comment">## Source: 08-open-source-culture.md</span>
+
+```markdown
+<span class="hljs-comment"># Culture, Etiquette, and Community Standards</span>
+&gt;
+&gt; **Listen <span class="hljs-built_in">to</span> Episode <span class="hljs-number">8</span>:** [Open Source Culture <span class="hljs-keyword">and</span> Etiquette](../admin/PODCASTS.md) - <span class="hljs-keyword">a</span> conversational audio overview <span class="hljs-keyword">of</span> this chapter. Listen <span class="hljs-keyword">before</span> reading <span class="hljs-built_in">to</span> preview <span class="hljs-keyword">the</span> concepts, <span class="hljs-keyword">or</span> <span class="hljs-keyword">after</span> <span class="hljs-built_in">to</span> reinforce what you learned.
+
+&gt; **Related appendices:** [Appendix M: Accessibility Standards](appendix-m-accessibility-standards.md) | [Appendix F: Git Security](appendix-f-git-security.md) | [Appendix O: Branch Protection](appendix-o-branch-protection.md) | [Appendix W: GitHub Pages](appendix-w-github-pages.md)
+&gt; **Authoritative sources:** [GitHub Docs: Contributing <span class="hljs-built_in">to</span> <span class="hljs-built_in">open</span> source](<span class="hljs-keyword">https</span>://docs.github.com/en/<span class="hljs-built_in">get</span>-started/exploring-projects-<span class="hljs-keyword">on</span><span class="hljs-title">-github</span>/<span class="hljs-title">contributing-to-a-project</span>) | [<span class="hljs-title">Open</span> <span class="hljs-title">Source</span> <span class="hljs-title">Guides</span>: <span class="hljs-title">How</span> <span class="hljs-title">to</span> <span class="hljs-title">Contribute</span>](<span class="hljs-title">https</span>://<span class="hljs-title">opensource</span>.<span class="hljs-title">guide</span>/<span class="hljs-title">how-to-contribute</span>/)
+
+<span class="hljs-comment">## How to Be an Effective and Respectful Open Source Contributor</span>
+
+&gt; Technical skills <span class="hljs-built_in">get</span> your code <span class="hljs-keyword">into</span> <span class="hljs-keyword">a</span> project. Communication skills keep you welcomed <span class="hljs-keyword">in</span> <span class="hljs-keyword">the</span> community. This guide covers <span class="hljs-keyword">the</span> human side <span class="hljs-keyword">of</span> <span class="hljs-built_in">open</span> source.
+
+<span class="hljs-comment">## Workshop Recommendation (Chapter 8)</span>
+
+Chapter <span class="hljs-number">8</span> is <span class="hljs-keyword">a</span> **communication <span class="hljs-keyword">and</span> culture chapter**.
+
+- **Challenge count:** <span class="hljs-number">1</span> guided reflection (no bot grading)
+- **Automation check:** <span class="hljs-literal">none</span> - communication quality is too subjective <span class="hljs-keyword">for</span> fair automated scoring
+- **Evidence:** structured reflection comment <span class="hljs-keyword">on</span> <span class="hljs-title">your</span> <span class="hljs-title">assigned</span> <span class="hljs-title">challenge</span> <span class="hljs-title">issue</span>
+- **Pattern:** <span class="hljs-built_in">read</span>, reflect, commit <span class="hljs-built_in">to</span> <span class="hljs-literal">one</span> behavior
+
+<span class="hljs-comment">### Chapter 8 Challenge Set</span>
+
+<span class="hljs-number">1.</span> **Guided reflection** - <span class="hljs-built_in">read</span> <span class="hljs-keyword">the</span> chapter, <span class="hljs-keyword">then</span> <span class="hljs-built_in">post</span> <span class="hljs-keyword">a</span> <span class="hljs-keyword">short</span> reflection comment committing <span class="hljs-built_in">to</span> <span class="hljs-literal">three</span> specific collaboration behaviors.
+
+<span class="hljs-comment">### Challenge 8.1 Step-by-Step: Guided Reflection</span>
+
+**Goal:** Identify <span class="hljs-literal">three</span> concrete communication behaviors you will practice during <span class="hljs-keyword">the</span> rest <span class="hljs-keyword">of</span> <span class="hljs-keyword">the</span> workshop.
+
+**Where you are working:** your assigned Chapter <span class="hljs-number">8</span> challenge issue <span class="hljs-keyword">in</span> your Learning Room repository <span class="hljs-keyword">on</span> <span class="hljs-title">GitHub</span>.<span class="hljs-title">com</span>.
+
+<span class="hljs-number">1.</span> Read through <span class="hljs-keyword">the</span> chapter content below, paying attention <span class="hljs-built_in">to</span> <span class="hljs-keyword">the</span> sections <span class="hljs-keyword">on</span> <span class="hljs-title">GitHub</span> <span class="hljs-title">Flow</span>, <span class="hljs-title">constructive</span> <span class="hljs-title">feedback</span>, <span class="hljs-title">and</span> <span class="hljs-title">asking</span> <span class="hljs-title">for</span> <span class="hljs-title">help</span>.
+<span class="hljs-number">2.</span> As you <span class="hljs-built_in">read</span>, think about <span class="hljs-literal">one</span> situation <span class="hljs-built_in">from</span> Day <span class="hljs-number">1</span> where communication helped (<span class="hljs-keyword">or</span> could have helped) you.
+<span class="hljs-number">3.</span> Open your **assigned Chapter <span class="hljs-number">8</span> challenge issue** (<span class="hljs-keyword">the</span> <span class="hljs-literal">one</span> titled <span class="hljs-string">&quot;Chapter 8.1: Guided Reflection (@yourname)&quot;</span>).
+<span class="hljs-number">4.</span> Scroll <span class="hljs-built_in">to</span> <span class="hljs-keyword">the</span> comment box <span class="hljs-keyword">at</span> <span class="hljs-keyword">the</span> bottom <span class="hljs-keyword">of</span> <span class="hljs-keyword">the</span> issue.
+<span class="hljs-number">5.</span> Post <span class="hljs-keyword">a</span> reflection comment <span class="hljs-keyword">using</span> this <span class="hljs-built_in">format</span>:
+
+```<span class="hljs-keyword">text</span>
+Chapter <span class="hljs-number">8</span> reflection:
+- One respectful review habit I will use:
+- One way I will ask <span class="hljs-keyword">for</span> help clearly:
+- One way I will respond <span class="hljs-built_in">to</span> feedback constructively:</code></pre>
+<ol start="6">
+<li>For each prompt, write one specific, actionable sentence - not a vague goal. Examples:<ul>
+<li>Good: &quot;I will start review comments with what the author did well before suggesting changes.&quot;</li>
+<li>Vague: &quot;I will be nice.&quot;</li>
+<li>Good: &quot;I will include the exact step where I got stuck and what I already tried.&quot;</li>
+<li>Vague: &quot;I will ask good questions.&quot;</li>
+</ul>
+</li>
+<li>Activate the <strong>Comment</strong> button (or press <code>Ctrl+Enter</code>).</li>
+</ol>
+<p><strong>You are done when:</strong> Your reflection comment appears on the issue with three specific, actionable behaviors.</p>
+<h3 id="completing-chapter-8-submit-your-evidence">Completing Chapter 8: Submit Your Evidence</h3>
+<p>The reflection comment itself is your evidence. No additional steps are needed. The facilitator reviews your comment for specificity. Close your Chapter 8 challenge issue when done.</p>
+<h3 id="expected-outcomes">Expected Outcomes</h3>
+<ul>
+<li>Student can name specific, actionable respectful collaboration behaviors.</li>
+<li>Student can prepare a constructive feedback style before review work in later chapters.</li>
+<li>Student feels safer asking for help in public threads.</li>
+</ul>
+<h3 id="if-you-get-stuck">If You Get Stuck</h3>
+<ol>
+<li>Use one simple sentence per prompt - do not overthink it.</li>
+<li>Focus on one real behavior you can start doing today, not an abstract principle.</li>
+<li>If writing feels hard, draft bullet points first in a text editor, then paste into the comment.</li>
+<li>Look at the &quot;Giving Feedback&quot; and &quot;Asking for Help&quot; sections in this chapter for concrete examples.</li>
+<li>Ask facilitator for one example response and adapt it to your own words.</li>
+<li>Finished but not sure you did it right? Compare your work against the <a href="solutions/solution-08-culture.html">Challenge 8 reference solution</a>.</li>
+</ol>
+<h3 id="learning-moment">Learning Moment</h3>
+<p>Technical quality and communication quality work together. Respectful, clear communication helps good code get merged faster. The behaviors you commit to here will directly improve your PR reviews in Chapters 12 and 14.</p>
+<h3 id="learning-pattern-used-in-this-chapter">Learning Pattern Used in This Chapter</h3>
+<ol>
+<li>Read and absorb community norms (not just rules, but reasons).</li>
+<li>Reflect on personal experience (what worked, what was hard).</li>
+<li>Commit to specific behaviors in writing (public accountability).</li>
+<li>Apply those behaviors in upcoming chapters (reviews, comments, PRs).</li>
+</ol>
+<h2 id="github-flow---the-standard-contribution-workflow">GitHub Flow - The Standard Contribution Workflow</h2>
+<p>Before diving into communication norms, it helps to understand the workflow that gives all of those conversations their context. <strong>GitHub Flow</strong> is the lightweight branching model recommended for open source contribution. It is simple by design and works whether you are making a one-line documentation fix or a major feature addition.</p>
+<h3 id="the-six-steps-of-github-flow">The Six Steps of GitHub Flow</h3>
+<pre><code class="hljs language-text">1. Create a branch
+   └─ Branch off main with a descriptive name
+      (e.g., fix/missing-alt-text, docs/update-contributing-guide)
+
+2. Make your changes and commit
+   └─ Work in small, logical commits with clear messages
+      Each commit should represent one coherent, complete change
+
+3. Open a Pull Request
+   └─ Share your work early - even as a Draft PR
+      Describe what you changed, why, and how to test it
+      Link to the related issue (Closes #42)
+
+4. Discuss and review
+   └─ Reviewers leave feedback → you refine your work
+      This is collaborative, not adversarial
+
+5. Pass status checks
+   └─ Automated tests and linting must pass
+      The project&#x27;s quality gates exist to protect everyone
+
+6. Merge
+   └─ A maintainer merges your PR into main
+      The linked issue closes automatically
+      Your contribution is now part of the project</code></pre>
+<h3 id="why-this-model-works">Why This Model Works</h3>
+<ul>
+<li><strong><code>main</code> is always deployable.</strong> Nothing goes into <code>main</code> directly - every change goes through a PR and review. This protects the project and all its users.</li>
+<li><strong>Branches are cheap and disposable.</strong> Create a branch per task. Delete it after merging. There is no overhead to starting fresh.</li>
+<li><strong>PRs are the unit of conversation.</strong> Everything about a change - the why, the tradeoffs, the review, the approval - lives in one place.</li>
+<li><strong>Small changes move faster.</strong> A 5-file PR gets reviewed in an hour. A 50-file PR sits for days. The most effective contributors keep PRs small and focused.</li>
+</ul>
+<h3 id="github-flow-vs-git-flow">GitHub Flow vs Git Flow</h3>
+<p>You may encounter &quot;Git Flow&quot; (sometimes written &quot;GitFlow&quot;) in older projects or enterprise environments. This section explains what Git Flow is, how it differs from GitHub Flow, and why this workshop teaches GitHub Flow.</p>
+<h4 id="what-git-flow-is">What Git Flow Is</h4>
+<p>Git Flow is a branching model published by Vincent Driessen in 2010. It was designed for teams that ship versioned releases on a schedule (desktop software, mobile apps, embedded systems). It defines five branch types:</p>
+<p>The following table describes each Git Flow branch type, its lifetime, and its purpose.</p>
+<table>
+<thead>
+<tr>
+<th scope="col">Branch</th>
+<th scope="col">Lifetime</th>
+<th scope="col">Purpose</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>main</code> (or <code>master</code>)</td>
+<td>Permanent</td>
+<td>Always reflects the latest production release. Only receives merges from <code>release/</code> or <code>hotfix/</code> branches.</td>
+</tr>
+<tr>
+<td><code>develop</code></td>
+<td>Permanent</td>
+<td>Integration branch where completed features accumulate. Represents the next planned release.</td>
+</tr>
+<tr>
+<td><code>feature/</code></td>
+<td>Temporary</td>
+<td>Branched from <code>develop</code>. One branch per feature. Merged back into <code>develop</code> when complete. Deleted after merge.</td>
+</tr>
+<tr>
+<td><code>release/</code></td>
+<td>Temporary</td>
+<td>Branched from <code>develop</code> when enough features are ready. Used for final testing, version bumps, and changelog updates. Merged into both <code>main</code> and <code>develop</code>, then deleted.</td>
+</tr>
+<tr>
+<td><code>hotfix/</code></td>
+<td>Temporary</td>
+<td>Branched from <code>main</code> to patch a critical production bug. Merged into both <code>main</code> and <code>develop</code>, then deleted.</td>
+</tr>
+</tbody></table>
+<h4 id="how-the-git-flow-cycle-works">How the Git Flow Cycle Works</h4>
+<ol>
+<li>Developers branch <code>feature/my-feature</code> off <code>develop</code> and work there.</li>
+<li>Completed features merge back into <code>develop</code> via pull request.</li>
+<li>When <code>develop</code> has enough features for a release, a <code>release/1.2.0</code> branch is created.</li>
+<li>The release branch gets final testing, bug fixes, and version number updates.</li>
+<li>The release branch merges into <code>main</code> (tagged with the version) and back into <code>develop</code>.</li>
+<li>If a critical bug is found in production, a <code>hotfix/</code> branch is created from <code>main</code>, fixed, and merged into both <code>main</code> and <code>develop</code>.</li>
+</ol>
+<h4 id="how-github-flow-differs">How GitHub Flow Differs</h4>
+<p>The following table compares GitHub Flow and Git Flow across key dimensions.</p>
+<table>
+<thead>
+<tr>
+<th scope="col">Dimension</th>
+<th scope="col">GitHub Flow</th>
+<th scope="col">Git Flow</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Long-lived branches</td>
+<td><code>main</code> only</td>
+<td><code>main</code> and <code>develop</code> (plus temporary <code>release/</code> and <code>hotfix/</code>)</td>
+</tr>
+<tr>
+<td>Feature work</td>
+<td>Branch off <code>main</code>, PR back to <code>main</code></td>
+<td>Branch off <code>develop</code>, PR back to <code>develop</code></td>
+</tr>
+<tr>
+<td>Releases</td>
+<td>Every merge to <code>main</code> is deployable</td>
+<td>Explicit <code>release/</code> branches with version numbers</td>
+</tr>
+<tr>
+<td>Hotfixes</td>
+<td>Same as any other PR to <code>main</code></td>
+<td>Dedicated <code>hotfix/</code> branch merged to both <code>main</code> and <code>develop</code></td>
+</tr>
+<tr>
+<td>Complexity</td>
+<td>Low - one rule: <code>main</code> is always deployable</td>
+<td>High - multiple branch types with specific merge targets</td>
+</tr>
+<tr>
+<td>Best for</td>
+<td>Continuous deployment, web apps, open source</td>
+<td>Scheduled releases, versioned software, large enterprise teams</td>
+</tr>
+</tbody></table>
+<h4 id="when-you-might-see-git-flow">When You Might See Git Flow</h4>
+<ul>
+<li><strong>Enterprise products</strong> with quarterly or annual release cycles</li>
+<li><strong>Mobile apps</strong> that go through app store review before release</li>
+<li><strong>Embedded systems or firmware</strong> where &quot;deploying&quot; means shipping hardware</li>
+<li><strong>Legacy projects</strong> that adopted it before continuous deployment became common</li>
+</ul>
+<h4 id="why-this-workshop-uses-github-flow">Why This Workshop Uses GitHub Flow</h4>
+<p>For open source contribution - especially at a hackathon or when contributing to web-based proje</p>
+<!-- content omitted for length -->
+
+<p>-changes-to-your-work-with-pull-requests/about-pull-requests)</p>
+<ul>
+<li><strong>The Anatomy of Helpful Feedback:</strong> <a href="https://docs.github.com/en">GitHub Docs, home</a>, <a href="https://github.blog/changelog/">GitHub Changelog</a>, <a href="https://docs.github.com/en/get-started/using-git/about-git">About Git</a>, <a href="https://docs.github.com/en/get-started/using-github/github-flow">GitHub flow</a>, <a href="https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/about-pull-requests">About pull requests</a></li>
+<li><strong>Language and Tone:</strong> <a href="https://docs.github.com/en">GitHub Docs, home</a>, <a href="https://github.blog/changelog/">GitHub Changelog</a>, <a href="https://docs.github.com/en/get-started/using-git/about-git">About Git</a>, <a href="https://docs.github.com/en/get-started/using-github/github-flow">GitHub flow</a>, <a href="https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/about-pull-requests">About pull requests</a></li>
+<li><strong>Commenting Etiquette:</strong> <a href="https://docs.github.com/en">GitHub Docs, home</a>, <a href="https://github.blog/changelog/">GitHub Changelog</a>, <a href="https://docs.github.com/en/get-started/using-git/about-git">About Git</a>, <a href="https://docs.github.com/en/get-started/using-github/github-flow">GitHub flow</a>, <a href="https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/about-pull-requests">About pull requests</a></li>
+<li><strong>Code Review Etiquette - For Reviewers:</strong> <a href="https://docs.github.com/en">GitHub Docs, home</a>, <a href="https://github.blog/changelog/">GitHub Changelog</a>, <a href="https://docs.github.com/en/get-started/using-git/about-git">About Git</a>, <a href="https://docs.github.com/en/get-started/using-github/github-flow">GitHub flow</a>, <a href="https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/about-pull-requests">About pull requests</a></li>
+<li><strong>Code Review Etiquette - For Authors:</strong> <a href="https://docs.github.com/en">GitHub Docs, home</a>, <a href="https://github.blog/changelog/">GitHub Changelog</a>, <a href="https://docs.github.com/en/get-started/using-git/about-git">About Git</a>, <a href="https://docs.github.com/en/get-started/using-github/github-flow">GitHub flow</a>, <a href="https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/about-pull-requests">About pull requests</a></li>
+<li><strong>Inclusive Commenting for Accessibility Issues:</strong> <a href="https://docs.github.com/en">GitHub Docs, home</a>, <a href="https://github.blog/changelog/">GitHub Changelog</a>, <a href="https://docs.github.com/en/get-started/using-git/about-git">About Git</a>, <a href="https://docs.github.com/en/get-started/using-github/github-flow">GitHub flow</a>, <a href="https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/about-pull-requests">About pull requests</a></li>
+<li><strong>The &quot;Good First Issue&quot; Social Contract:</strong> <a href="https://docs.github.com/en">GitHub Docs, home</a>, <a href="https://github.blog/changelog/">GitHub Changelog</a>, <a href="https://docs.github.com/en/get-started/using-git/about-git">About Git</a>, <a href="https://docs.github.com/en/get-started/using-github/github-flow">GitHub flow</a>, <a href="https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/about-pull-requests">About pull requests</a></li>
+<li><strong>Handling Difficult Situations:</strong> <a href="https://docs.github.com/en">GitHub Docs, home</a>, <a href="https://github.blog/changelog/">GitHub Changelog</a>, <a href="https://docs.github.com/en/get-started/using-git/about-git">About Git</a>, <a href="https://docs.github.com/en/get-started/using-github/github-flow">GitHub flow</a>, <a href="https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/about-pull-requests">About pull requests</a></li>
+<li><strong>Writing Your First README:</strong> <a href="https://docs.github.com/en">GitHub Docs, home</a>, <a href="https://github.blog/changelog/">GitHub Changelog</a>, <a href="https://docs.github.com/en/get-started/using-git/about-git">About Git</a>, <a href="https://docs.github.com/en/get-started/using-github/github-flow">GitHub flow</a>, <a href="https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/about-pull-requests">About pull requests</a></li>
+</ul>
+<pre><code class="hljs"></code></pre>
+
+  </main>
+  <footer role="contentinfo" class="site-footer">
+    <p><strong>GIT Going with GitHub</strong> - A workshop by <a href="https://community-access.org">Community Access</a></p>
+    <p><a href="https://github.com/community-access/git-going-with-github">View on GitHub</a> · <a href="https://community-access.org">community-access.org</a></p>
+  </footer>
+
+  </body>
+</html>

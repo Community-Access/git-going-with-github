@@ -1,0 +1,600 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="GIT Going with GitHub - A two-day accessible open source workshop by Community Access">
+  <title>[solution-07-merge-conflict.md] Solution Reference: Challenge 7 -- Resolve a Merge Conflict - GIT Going with GitHub</title>
+  <link rel="stylesheet" href="./styles/github-markdown.css">
+  <link rel="stylesheet" href="./styles/highlight.css">
+  <link rel="stylesheet" href="./styles/custom.css">
+  <style>
+    .markdown-body {
+      box-sizing: border-box;
+      min-width: 200px;
+      max-width: 980px;
+      margin: 0 auto;
+      padding: 45px;
+    }
+    @media (max-width: 767px) {
+      .markdown-body {
+        padding: 15px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+  <header class="site-header" role="banner">
+    <div class="site-header-inner">
+      <nav aria-label="Breadcrumb" class="breadcrumb">
+        <a href="./index.html">Home</a> <span aria-hidden="true">›</span> <span aria-current="page">[solution-07-merge-conflict.md] Solution Reference: Challenge 7 -- Resolve a Merge Conflict</span>
+      </nav>
+      <div class="header-actions">
+        <a href="https://github.com/Community-Access/git-going-with-github/wiki" class="wiki-link" target="_blank" rel="noopener noreferrer">
+          <svg aria-hidden="true" focusable="false" width="16" height="16" viewBox="0 0 16 16" fill="currentColor">
+            <path d="M1.75 1h8.5c.966 0 1.75.784 1.75 1.75v5.5A1.75 1.75 0 0 1 10.25 10H7.06l-2.573 2.573A1.458 1.458 0 0 1 2 11.543V10h-.25A1.75 1.75 0 0 1 0 8.25v-5.5C0 1.784.784 1 1.75 1ZM1.5 2.75v5.5c0 .138.112.25.25.25h1a.75.75 0 0 1 .75.75v2.19l2.72-2.72a.749.749 0 0 1 .53-.22h3.5a.25.25 0 0 0 .25-.25v-5.5a.25.25 0 0 0-.25-.25h-8.5a.25.25 0 0 0-.25.25Zm13 2a.25.25 0 0 0-.25-.25h-.5a.75.75 0 0 1 0-1.5h.5c.966 0 1.75.784 1.75 1.75v5.5A1.75 1.75 0 0 1 14.25 12H14v1.543a1.457 1.457 0 0 1-2.487 1.03L9.22 12.28a.749.749 0 1 1 1.06-1.06l2.22 2.22v-2.19a.75.75 0 0 1 .75-.75h.25a.25.25 0 0 0 .25-.25v-5.5Z"/>
+          </svg>
+          Wiki
+        </a>
+        <form role="search" class="search-form" action="./search.html" method="get">
+        <label for="site-search" class="search-label">Search docs</label>
+        <input
+          type="search"
+          id="site-search"
+          class="search-input"
+          name="q"
+          placeholder="Search docs…"
+          autocomplete="off"
+          aria-label="Search documentation"
+        >
+        <button type="submit" class="search-button" aria-label="Submit search">
+          <svg aria-hidden="true" focusable="false" width="16" height="16" viewBox="0 0 16 16" fill="currentColor">
+            <path d="M10.68 11.74a6 6 0 0 1-7.922-8.982 6 6 0 0 1 8.982 7.922l3.04 3.04a.749.749 0 0 1-.326 1.275.749.749 0 0 1-.734-.215ZM11.5 7a4.499 4.499 0 1 0-8.997 0A4.499 4.499 0 0 0 11.5 7Z"/>
+          </svg>
+        </button>
+      </form>
+      </div>
+    </div>
+  </header>
+  <main id="main-content" class="markdown-body">
+    <p>You are writing a Git Going with GitHub podcast script.</p>
+<p>Audience:
+Blind and low-vision learners studying GitHub, Git, VS Code, open source, and accessible contribution workflows.</p>
+<p>Hosts:</p>
+<ul>
+<li>Alex: warm expert professor</li>
+<li>Jamie: curious professor who asks the questions learners may hesitate to ask</li>
+</ul>
+<p>Goal:
+Create a complete, conversational, two-host audio lesson. Teach every substantive concept from the Markdown source. Do not merely summarize. Do not omit administrative or accessibility content. Use varied phrasing and make it feel like a thoughtful NotebookLM-style teaching conversation.</p>
+<p>Scale rules:</p>
+<ul>
+<li>The source set may be large. Prioritize complete conceptual coverage over quoting every line.</li>
+<li>Use concise turns and avoid unnecessary verbosity.</li>
+</ul>
+<p>Required script markers:
+Use only these markers on their own lines:
+[ALEX]
+[JAMIE]
+[PAUSE]</p>
+<p>Narration constraints:</p>
+<ul>
+<li>Do not say chapter titles, section names, or &quot;chapter marker&quot; language out loud.</li>
+<li>Keep transitions natural so chapter separation can be handled in metadata, not spoken labels.</li>
+</ul>
+<p>Return JSON only:
+{
+  &quot;script&quot;: &quot;[ALEX]\n...\n&quot;,
+  &quot;chapters&quot;: [
+    {
+      &quot;title&quot;: &quot;Specific chapter title&quot;,
+      &quot;startSegmentIndex&quot;: 0,
+      &quot;sourceHeading&quot;: &quot;Heading represented&quot;
+    }
+  ],
+  &quot;coverageNotes&quot;: [
+    {
+      &quot;sourceHeading&quot;: &quot;Heading&quot;,
+      &quot;status&quot;: &quot;covered | partial | risk&quot;,
+      &quot;notes&quot;: &quot;Brief note&quot;
+    }
+  ]
+}</p>
+<p>Slug: cc-07-survive-a-merge-conflict
+Sources:</p>
+<ul>
+<li>challenge-07-merge-conflict.yml</li>
+<li>solution-07-merge-conflict.md</li>
+<li>07-merge-conflicts.md</li>
+</ul>
+<p>Headings that must be represented:</p>
+<h1 id="solution-07-merge-conflictmd-solution-reference-challenge-7----resolve-a-merge-conflict">[solution-07-merge-conflict.md] Solution Reference: Challenge 7 -- Resolve a Merge Conflict</h1>
+<h2 id="solution-07-merge-conflictmd-what-conflict-markers-look-like">[solution-07-merge-conflict.md] What conflict markers look like</h2>
+<h3 id="solution-07-merge-conflictmd-the-three-sections">[solution-07-merge-conflict.md] The three sections</h3>
+<h2 id="solution-07-merge-conflictmd-example-resolution">[solution-07-merge-conflict.md] Example resolution</h2>
+<h3 id="solution-07-merge-conflictmd-decision-process">[solution-07-merge-conflict.md] Decision process</h3>
+<h2 id="solution-07-merge-conflictmd-on-githubcom">[solution-07-merge-conflict.md] On github.com</h2>
+<h2 id="solution-07-merge-conflictmd-in-vs-code">[solution-07-merge-conflict.md] In VS Code</h2>
+<h2 id="solution-07-merge-conflictmd-what-matters">[solution-07-merge-conflict.md] What matters</h2>
+<h2 id="solution-07-merge-conflictmd-authoritative-sources">[solution-07-merge-conflict.md] Authoritative Sources</h2>
+<h3 id="solution-07-merge-conflictmd-section-level-source-map">[solution-07-merge-conflict.md] Section-Level Source Map</h3>
+<h1 id="07-merge-conflictsmd-merge-conflicts">[07-merge-conflicts.md] Merge Conflicts</h1>
+<h2 id="07-merge-conflictsmd-understanding-preventing-and-resolving-conflicts">[07-merge-conflicts.md] Understanding, Preventing, and Resolving Conflicts</h2>
+<h2 id="07-merge-conflictsmd-workshop-recommendation-chapter-7">[07-merge-conflicts.md] Workshop Recommendation Chapter 7</h2>
+<h3 id="07-merge-conflictsmd-chapter-7-challenge-set">[07-merge-conflicts.md] Chapter 7 Challenge Set</h3>
+<h3 id="07-merge-conflictsmd-challenge-71-step-by-step-resolve-conflict-markers">[07-merge-conflicts.md] Challenge 7.1 Step-by-Step: Resolve Conflict Markers</h3>
+<h3 id="07-merge-conflictsmd-completing-chapter-7-submit-your-evidence">[07-merge-conflicts.md] Completing Chapter 7: Submit Your Evidence</h3>
+<h3 id="07-merge-conflictsmd-expected-outcomes">[07-merge-conflicts.md] Expected Outcomes</h3>
+<h3 id="07-merge-conflictsmd-if-you-get-stuck">[07-merge-conflicts.md] If You Get Stuck</h3>
+<h3 id="07-merge-conflictsmd-learning-moment">[07-merge-conflicts.md] Learning Moment</h3>
+<h3 id="07-merge-conflictsmd-learning-pattern-used-in-this-chapter">[07-merge-conflicts.md] Learning Pattern Used in This Chapter</h3>
+<h3 id="07-merge-conflictsmd-about-learning-cards-in-this-chapter">[07-merge-conflicts.md] About Learning Cards in This Chapter</h3>
+<h2 id="07-merge-conflictsmd-local-git-alternative-resolving-conflicts-from-your-terminal">[07-merge-conflicts.md] Local Git Alternative: Resolving Conflicts from Your Terminal</h2>
+<h2 id="07-merge-conflictsmd-what-is-a-merge-conflict">[07-merge-conflicts.md] What Is a Merge Conflict?</h2>
+<h2 id="07-merge-conflictsmd-why-conflicts-happen">[07-merge-conflicts.md] Why Conflicts Happen</h2>
+<h2 id="07-merge-conflictsmd-how-to-prevent-conflicts-prevention-is-easier-than-resolution">[07-merge-conflicts.md] How to Prevent Conflicts Prevention is Easier Than Resolution</h2>
+<h3 id="07-merge-conflictsmd-1-keep-your-branches-short-lived">[07-merge-conflicts.md] 1. Keep your branches short-lived</h3>
+<h3 id="07-merge-conflictsmd-2-sync-with-main-frequently">[07-merge-conflicts.md] 2. Sync with main frequently</h3>
+<h1 id="07-merge-conflictsmd-from-your-feature-branch">[07-merge-conflicts.md] From your feature branch</h1>
+<h1 id="07-merge-conflictsmd-or-git-rebase-originmain-if-comfortable-with-rebasing">[07-merge-conflicts.md] Or: git rebase origin/main if comfortable with rebasing</h1>
+<h3 id="07-merge-conflictsmd-3-communicate-with-your-team">[07-merge-conflicts.md] 3. Communicate with your team</h3>
+<h3 id="07-merge-conflictsmd-4-avoid-mass-reformatting">[07-merge-conflicts.md] 4. Avoid mass reformatting</h3>
+<h3 id="07-merge-conflictsmd-5-pull-before-you-push">[07-merge-conflicts.md] 5. Pull before you push</h3>
+<h3 id="07-merge-conflictsmd-6-work-on-separate-files-when-possible">[07-merge-conflicts.md] 6. Work on separate files when possible</h3>
+<h3 id="07-merge-conflictsmd-7-keep-prs-small">[07-merge-conflicts.md] 7. Keep PRs small</h3>
+<h3 id="07-merge-conflictsmd-8-use-draft-prs-for-early-visibility">[07-merge-conflicts.md] 8. Use Draft PRs for early visibility</h3>
+<h3 id="07-merge-conflictsmd-learning-cards-how-to-prevent-conflicts">[07-merge-conflicts.md] Learning Cards: How to Prevent Conflicts</h3>
+<h2 id="07-merge-conflictsmd-advanced-prevention-understanding-fast-forward-merges">[07-merge-conflicts.md] Advanced Prevention: Understanding Fast-Forward Merges</h2>
+<h2 id="07-merge-conflictsmd-when-conflicts-are-actually-good">[07-merge-conflicts.md] When Conflicts Are Actually Good</h2>
+<h2 id="07-merge-conflictsmd-spotting-a-conflict-on-github">[07-merge-conflicts.md] Spotting a Conflict on GitHub</h2>
+<h3 id="07-merge-conflictsmd-tool-cards-resolve-a-merge-conflict">[07-merge-conflicts.md] Tool Cards: Resolve a Merge Conflict</h3>
+<h1 id="07-merge-conflictsmd-edit-conflicting-files-to-remove-ltltltltltltlt----gtgtgtgtgtgtgt">[07-merge-conflicts.md] Edit conflicting files to remove &lt;&lt;&lt;&lt;&lt;&lt;&lt; / ======= / &gt;&gt;&gt;&gt;&gt;&gt;&gt;</h1>
+<h2 id="07-merge-conflictsmd-conflict-markers---what-they-mean">[07-merge-conflicts.md] Conflict Markers - What They Mean</h2>
+<h3 id="07-merge-conflictsmd-breakdown">[07-merge-conflicts.md] Breakdown</h3>
+<h3 id="07-merge-conflictsmd-example-in-a-real-file">[07-merge-conflicts.md] Example in a real file</h3>
+<h4 id="07-merge-conflictsmd-original-file-docskeyboard-shortcutsmd-before-conflict">[07-merge-conflicts.md] Original file docs/keyboard-shortcuts.md before conflict</h4>
+<h4 id="07-merge-conflictsmd-after-two-students-both-added-a-shortcut-to-the-same-table-row">[07-merge-conflicts.md] After two students both added a shortcut to the same table row</h4>
+<h4 id="07-merge-conflictsmd-resolution-options">[07-merge-conflicts.md] Resolution options</h4>
+<h3 id="07-merge-conflictsmd-learning-cards-conflict-markers">[07-merge-conflicts.md] Learning Cards: Conflict Markers</h3>
+<h2 id="07-merge-conflictsmd-resolving-conflicts-on-github-web-editor">[07-merge-conflicts.md] Resolving Conflicts on GitHub Web Editor</h2>
+<h3 id="07-merge-conflictsmd-step-by-step-github-conflict-editor">[07-merge-conflicts.md] Step-by-step: GitHub Conflict Editor</h3>
+<h3 id="07-merge-conflictsmd-what-it-looks-like-in-the-editor">[07-merge-conflicts.md] What it looks like in the editor</h3>
+<h3 id="07-merge-conflictsmd-learning-cards-resolving-conflicts-on-github">[07-merge-conflicts.md] Learning Cards: Resolving Conflicts on GitHub</h3>
+<h2 id="07-merge-conflictsmd-resolving-conflicts-in-vs-code-day-2">[07-merge-conflicts.md] Resolving Conflicts in VS Code Day 2</h2>
+<h3 id="07-merge-conflictsmd-vs-code-shows-conflicts-as">[07-merge-conflicts.md] VS Code shows conflicts as</h3>
+<h3 id="07-merge-conflictsmd-vs-code-merge-conflict-actions">[07-merge-conflicts.md] VS Code merge conflict actions</h3>
+<h2 id="07-merge-conflictsmd-when-you-feel-stuck">[07-merge-conflicts.md] When You Feel Stuck</h2>
+<h3 id="07-merge-conflictsmd-ask-for-help---it39s-normal">[07-merge-conflicts.md] Ask for help - it&#39;s normal</h3>
+<h3 id="07-merge-conflictsmd-abandon-and-start-fresh-nuclear-option">[07-merge-conflicts.md] Abandon and start fresh nuclear option</h3>
+<h3 id="07-merge-conflictsmd-learning-cards-when-you-feel-stuck">[07-merge-conflicts.md] Learning Cards: When You Feel Stuck</h3>
+<h2 id="07-merge-conflictsmd-reading-a-conflict-message-from-git-command-line-reference">[07-merge-conflicts.md] Reading a Conflict Message from Git Command Line Reference</h2>
+<h1 id="07-merge-conflictsmd-1-start-the-merge-that-causes-the-conflict">[07-merge-conflicts.md] 1. Start the merge that causes the conflict</h1>
+<h1 id="07-merge-conflictsmd-2-see-which-files-have-conflicts">[07-merge-conflicts.md] 2. See which files have conflicts</h1>
+<h1 id="07-merge-conflictsmd-look-for-quotboth-modifiedquot-entries">[07-merge-conflicts.md] Look for &quot;both modified:&quot; entries</h1>
+<h1 id="07-merge-conflictsmd-3-open-each-conflicted-file-in-your-editor">[07-merge-conflicts.md] 3. Open each conflicted file in your editor</h1>
+<h1 id="07-merge-conflictsmd-edit-the-file-remove-ltltltltltlt--gtgtgtgtgtgt-markers">[07-merge-conflicts.md] Edit the file: remove &lt;&lt;&lt;&lt;&lt;&lt;, =======, &gt;&gt;&gt;&gt;&gt;&gt; markers</h1>
+<h1 id="07-merge-conflictsmd-keep-the-content-you-want">[07-merge-conflicts.md] Keep the content you want</h1>
+<h1 id="07-merge-conflictsmd-4-after-editing-mark-the-file-as-resolved">[07-merge-conflicts.md] 4. After editing, mark the file as resolved</h1>
+<h1 id="07-merge-conflictsmd-5-complete-the-merge">[07-merge-conflicts.md] 5. Complete the merge</h1>
+<h1 id="07-merge-conflictsmd-git-auto-fills-the-merge-commit-message">[07-merge-conflicts.md] Git auto-fills the merge commit message</h1>
+<h1 id="07-merge-conflictsmd-check-the-result">[07-merge-conflicts.md] Check the result</h1>
+<h1 id="07-merge-conflictsmd-view-pr-status-shows-merge-state">[07-merge-conflicts.md] View PR status shows merge state</h1>
+<h1 id="07-merge-conflictsmd-check-all-pr-checks-and-merge-readiness">[07-merge-conflicts.md] Check all PR checks and merge readiness</h1>
+<h1 id="07-merge-conflictsmd-view-the-diff-to-understand-what-changed">[07-merge-conflicts.md] View the diff to understand what changed</h1>
+<h2 id="07-merge-conflictsmd-summary-checklist">[07-merge-conflicts.md] Summary Checklist</h2>
+<h2 id="07-merge-conflictsmd-try-it-read-a-conflict-without-fear">[07-merge-conflicts.md] Try It: Read a Conflict Without Fear</h2>
+<h2 id="07-merge-conflictsmd-authoritative-sources">[07-merge-conflicts.md] Authoritative Sources</h2>
+<h3 id="07-merge-conflictsmd-section-level-source-map">[07-merge-conflicts.md] Section-Level Source Map</h3>
+<p>Markdown source:</p>
+<h2 id="source-challenge-07-merge-conflictyml">Source: challenge-07-merge-conflict.yml</h2>
+<pre><code class="hljs language-markdown">name: &quot;Challenge 7: Survive a Merge Conflict&quot;
+description: Resolve a facilitator-triggered merge conflict.
+title: &quot;Challenge 7: Survive a Merge Conflict (@{username})&quot;
+labels: [&quot;challenge&quot;, &quot;day-1&quot;, &quot;autograded&quot;]
+body:
+<span class="hljs-bullet">  -</span> type: markdown
+<span class="hljs-code">    attributes:
+      value: |
+        ## Challenge 7: Survive a Merge Conflict
+</span>
+<span class="hljs-code">        **Chapter:** [Ch07: Merge Conflicts](https://github.com/Community-Access/git-going-with-github/blob/main/docs/07-merge-conflicts.md)
+</span>
+<span class="hljs-code">        **What you will do:** Your facilitator will trigger a merge conflict in your PR. You will resolve it by editing the file, removing conflict markers, and keeping the right content.
+</span>
+<span class="hljs-code">        ### What are conflict markers?
+</span>
+<span class="hljs-code">        When Git cannot automatically merge changes, it inserts markers like this:
+</span>
+<span class="hljs-code">        ```
+        &lt;&lt;&lt;&lt;&lt;&lt;&lt; HEAD
+        The version currently on the target branch
+        =======
+        Your version from your branch
+        &gt;&gt;&gt;&gt;&gt;&gt;&gt; learn/your-username
+        ```
+</span>
+<span class="hljs-code">        Your job: decide what the final version should look like, then **delete all three marker lines** (`&lt;&lt;&lt;&lt;&lt;&lt;&lt;`, `=======`, `&gt;&gt;&gt;&gt;&gt;&gt;&gt;`).
+</span>
+<span class="hljs-code">        ### Instructions
+</span>
+<span class="hljs-bullet">        1.</span> Wait for your facilitator to trigger the conflict (they will tell you when).
+<span class="hljs-bullet">        2.</span> Open your PR -- you will see a message about conflicts.
+<span class="hljs-bullet">        3.</span> Select <span class="hljs-strong">**Resolve conflicts**</span> (or edit the file directly on your branch).
+<span class="hljs-bullet">        4.</span> Find the conflict markers in the file.
+<span class="hljs-bullet">        5.</span> Decide which content to keep (or combine both).
+<span class="hljs-bullet">        6.</span> Delete all conflict marker lines.
+<span class="hljs-bullet">        7.</span> Commit the resolution.
+
+<span class="hljs-code">        **Autograded:** The autograder will check that no conflict markers remain in your file and that the file has meaningful content.
+</span>
+<span class="hljs-bullet">  -</span> type: textarea
+<span class="hljs-code">    id: evidence
+    attributes:
+      label: &quot;Your evidence&quot;
+      description: &quot;Describe the conflict and how you resolved it.&quot;
+      placeholder: |
+        The conflict was in file: ...
+        I chose to keep: ...
+        I resolved it by: ...
+    validations:
+      required: true
+</span>
+<span class="hljs-bullet">  -</span> type: markdown
+<span class="hljs-code">    attributes:
+      value: |
+        ### Peer simulation check
+</span>
+<span class="hljs-code">        Compare your resolution with the facilitator&#x27;s conflict seed or with a real buddy if you have access. It is OK if two valid resolutions keep different wording.
+</span>
+<span class="hljs-code">        ### If you get stuck
+</span>
+<span class="hljs-code">        | Symptom | Try this |
+        |---|---|
+        | I do not see a conflict | Your facilitator may not have triggered it yet. Wait for their signal. |
+        | I cannot find the Resolve conflicts button | Look in the PR conversation tab, near the merge section at the bottom. Screen reader users: search for &quot;Resolve conflicts&quot; button. |
+        | I am not sure which content to keep | Read both versions. If both are valuable, combine them. If one is clearly better, keep that one. There is no single right answer. |
+        | The autograder still reports conflict markers | Search the file for `&lt;&lt;&lt;&lt;&lt;&lt;&lt;`, `=======`, and `&gt;&gt;&gt;&gt;&gt;&gt;&gt;`. All three types must be completely removed. |
+        | I finished but want to check my work | [View the reference solution](https://github.com/Community-Access/git-going-with-github/blob/main/docs/solutions/solution-07-merge-conflict.md) |
+</span></code></pre>
+<h2 id="source-solution-07-merge-conflictmd">Source: solution-07-merge-conflict.md</h2>
+<pre><code class="hljs language-markdown"><span class="hljs-section"># Solution Reference: Challenge 7 -- Resolve a Merge Conflict</span>
+
+This shows what conflict markers look like and how to resolve them.
+
+<span class="hljs-section">## What conflict markers look like</span>
+
+When Git cannot automatically merge two changes to the same lines, it inserts markers:
+</code></pre>
+<h1 id="ltltltltltltlt-head
+welcome-to-the-learning-room-this-is-the-main-branch-version">&lt;&lt;&lt;&lt;&lt;&lt;&lt; HEAD
+Welcome to the Learning Room! This is the main branch version.</h1>
+<p>Welcome to the Learning Room! This is my improved version with more detail.</p>
+<blockquote>
+<blockquote>
+<blockquote>
+<blockquote>
+<blockquote>
+<blockquote>
+<blockquote>
+<p>fix/welcome-update</p>
+</blockquote>
+</blockquote>
+</blockquote>
+</blockquote>
+</blockquote>
+</blockquote>
+</blockquote>
+<pre><code class="hljs">
+### The three sections
+
+- **<span class="hljs-keyword">Between</span> `&lt;&lt;&lt;&lt;&lt;&lt;&lt; HEAD` <span class="hljs-keyword">and</span> `=======`**: The <span class="hljs-keyword">version</span> <span class="hljs-keyword">on</span> the branch you are merging <span class="hljs-keyword">INTO</span> (usually main)
+- **<span class="hljs-keyword">Between</span> `=======` <span class="hljs-keyword">and</span> `&gt;&gt;&gt;&gt;&gt;&gt;&gt;`**: The <span class="hljs-keyword">version</span> <span class="hljs-keyword">on</span> YOUR branch
+- **The marker lines themselves**: Must be deleted <span class="hljs-comment">-- they are not content</span>
+
+## Example resolution
+
+**<span class="hljs-keyword">Before</span> (<span class="hljs-keyword">with</span> <span class="hljs-keyword">conflict</span> markers):**
+</code></pre>
+<h1 id="ltltltltltltlt-head
+welcome-to-the-learning-room-this-is-the-main-branch-version">&lt;&lt;&lt;&lt;&lt;&lt;&lt; HEAD
+Welcome to the Learning Room! This is the main branch version.</h1>
+<p>Welcome to the Learning Room! This is my improved version with more detail.</p>
+<blockquote>
+<blockquote>
+<blockquote>
+<blockquote>
+<blockquote>
+<blockquote>
+<blockquote>
+<p>fix/welcome-update</p>
+</blockquote>
+</blockquote>
+</blockquote>
+</blockquote>
+</blockquote>
+</blockquote>
+</blockquote>
+<pre><code class="hljs">
+<span class="hljs-strong">**After (resolved):**</span>
+</code></pre>
+<p>Welcome to the Learning Room! This is my improved version with more detail.</p>
+<pre><code class="hljs">
+<span class="hljs-section">### Decision process</span>
+
+You chose one of three options:
+
+<span class="hljs-bullet">1.</span> <span class="hljs-strong">**Keep yours:**</span> Delete the HEAD section and all markers, keep your changes
+<span class="hljs-bullet">2.</span> <span class="hljs-strong">**Keep theirs:**</span> Delete your section and all markers, keep the HEAD version
+<span class="hljs-bullet">3.</span> <span class="hljs-strong">**Combine both:**</span> Write new text that incorporates ideas from both versions, delete all markers
+
+All three are valid. The choice depends on which version is better for the project.
+
+<span class="hljs-section">## On github.com</span>
+
+GitHub offers a conflict editor directly in the browser:
+
+<span class="hljs-bullet">1.</span> Click &quot;Resolve conflicts&quot; on the PR page
+<span class="hljs-bullet">2.</span> The editor highlights conflicting sections
+<span class="hljs-bullet">3.</span> Edit the file to remove markers and keep the content you want
+<span class="hljs-bullet">4.</span> Click &quot;Mark as resolved&quot; then &quot;Commit merge&quot;
+
+<span class="hljs-section">## In VS Code</span>
+
+VS Code highlights conflicts and offers clickable options above each conflict:
+
+<span class="hljs-bullet">-</span> &quot;Accept Current Change&quot; (HEAD version)
+<span class="hljs-bullet">-</span> &quot;Accept Incoming Change&quot; (your version)
+<span class="hljs-bullet">-</span> &quot;Accept Both Changes&quot; (keeps both, you edit after)
+
+<span class="hljs-section">## What matters</span>
+
+The learning objective is understanding that conflicts are normal and resolvable. If you removed all conflict markers and the file makes sense, you completed this challenge.
+
+<span class="hljs-section">## Authoritative Sources</span>
+
+Use these official references when you need the current source of truth for facts in this chapter.
+
+<span class="hljs-bullet">-</span> [<span class="hljs-string">GitHub Docs, home</span>](<span class="hljs-link">https://docs.github.com/en</span>)
+<span class="hljs-bullet">-</span> [<span class="hljs-string">GitHub Changelog</span>](<span class="hljs-link">https://github.blog/changelog/</span>)
+
+<span class="hljs-section">### Section-Level Source Map</span>
+
+Use this map to verify facts for each major section in this file.
+
+<span class="hljs-bullet">-</span> <span class="hljs-strong">**What conflict markers look like:**</span> [<span class="hljs-string">GitHub Docs, home</span>](<span class="hljs-link">https://docs.github.com/en</span>), [<span class="hljs-string">GitHub Changelog</span>](<span class="hljs-link">https://github.blog/changelog/</span>)
+<span class="hljs-bullet">-</span> <span class="hljs-strong">**Example resolution:**</span> [<span class="hljs-string">GitHub Docs, home</span>](<span class="hljs-link">https://docs.github.com/en</span>), [<span class="hljs-string">GitHub Changelog</span>](<span class="hljs-link">https://github.blog/changelog/</span>)
+<span class="hljs-bullet">-</span> <span class="hljs-strong">**On github.com:**</span> [<span class="hljs-string">GitHub Docs, home</span>](<span class="hljs-link">https://docs.github.com/en</span>), [<span class="hljs-string">GitHub Changelog</span>](<span class="hljs-link">https://github.blog/changelog/</span>), [<span class="hljs-string">About Git</span>](<span class="hljs-link">https://docs.github.com/en/get-started/using-git/about-git</span>), [<span class="hljs-string">GitHub flow</span>](<span class="hljs-link">https://docs.github.com/en/get-started/using-github/github-flow</span>), [<span class="hljs-string">About pull requests</span>](<span class="hljs-link">https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/about-pull-requests</span>)
+<span class="hljs-bullet">-</span> <span class="hljs-strong">**In VS Code:**</span> [<span class="hljs-string">GitHub Docs, home</span>](<span class="hljs-link">https://docs.github.com/en</span>), [<span class="hljs-string">GitHub Changelog</span>](<span class="hljs-link">https://github.blog/changelog/</span>)
+<span class="hljs-bullet">-</span> <span class="hljs-strong">**What matters:**</span> [<span class="hljs-string">GitHub Docs, home</span>](<span class="hljs-link">https://docs.github.com/en</span>), [<span class="hljs-string">GitHub Changelog</span>](<span class="hljs-link">https://github.blog/changelog/</span>)
+</code></pre>
+<h2 id="source-07-merge-conflictsmd">Source: 07-merge-conflicts.md</h2>
+<pre><code class="hljs language-markdown"><span class="hljs-section"># Merge Conflicts</span>
+<span class="hljs-quote">&gt;
+&gt; <span class="hljs-strong">**Listen to Episode 7:**</span> [<span class="hljs-string">Merge Conflicts Are Not Scary</span>](<span class="hljs-link">../admin/PODCASTS.md</span>) - a conversational audio overview of this chapter. Listen before reading to preview the concepts, or after to reinforce what you learned.</span>
+
+<span class="hljs-quote">&gt; <span class="hljs-strong">**Related appendices:**</span> [<span class="hljs-string">Appendix E: Advanced Git</span>](<span class="hljs-link">appendix-e-advanced-git.md</span>) | [<span class="hljs-string">Appendix G: VS Code Reference</span>](<span class="hljs-link">appendix-g-vscode-reference.md</span>)</span>
+<span class="hljs-quote">&gt; <span class="hljs-strong">**Authoritative sources:**</span> [<span class="hljs-string">GitHub Docs: Resolving merge conflicts</span>](<span class="hljs-link">https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/addressing-merge-conflicts/resolving-a-merge-conflict-on-github</span>) | [<span class="hljs-string">Git SCM: Basic Merge Conflicts</span>](<span class="hljs-link">https://git-scm.com/book/en/v2/Git-Branching-Basic-Branching-and-Merging#_basic_merge_conflicts</span>)</span>
+
+<span class="hljs-section">## Understanding, Preventing, and Resolving Conflicts</span>
+
+<span class="hljs-quote">&gt; Merge conflicts sound intimidating but are a normal, manageable part of collaborative development. This guide explains what conflicts are, how to read conflict markers, and how to resolve them - step by step.</span>
+
+<span class="hljs-section">## Workshop Recommendation (Chapter 7)</span>
+
+Chapter 7 uses <span class="hljs-strong">**one controlled practice challenge**</span> so students can learn conflict resolution without high-pressure scenarios.
+
+<span class="hljs-bullet">-</span> <span class="hljs-strong">**Challenge count:**</span> 1
+<span class="hljs-bullet">-</span> <span class="hljs-strong">**Time:**</span> under 10 minutes
+<span class="hljs-bullet">-</span> <span class="hljs-strong">**Evidence:**</span> issue-linked PR and completion comment
+<span class="hljs-bullet">-</span> <span class="hljs-strong">**Pattern:**</span> observe, resolve, verify
+
+<span class="hljs-section">### Chapter 7 Challenge Set</span>
+
+<span class="hljs-bullet">1.</span> <span class="hljs-strong">**Resolve conflict markers**</span> - identify and clean up conflict markers in a practice file, then open a linked PR.
+
+<span class="hljs-quote">&gt; <span class="hljs-strong">**Branch guidance for Chapter 7:**</span> Use a short-lived feature branch: `fix/yourname-issueXX` (for example, `fix/maria-issue48`). The same pattern you used in Chapter 6.</span>
+
+<span class="hljs-section">### Challenge 7.1 Step-by-Step: Resolve Conflict Markers</span>
+
+<span class="hljs-strong">**Goal:**</span> Identify the three types of conflict markers in a practice file, decide which content to keep, remove the markers, and submit a clean PR.
+
+<span class="hljs-quote">&gt; <span class="hljs-strong">**Agentic strategy:**</span> Sometimes an AI agent will confidently generate code that conflicts with human-written code. Resolving merge conflicts is not just a hurdle for human teamwork; it is exactly how you supervise, correct, and collaborate safely with an AI.</span>
+
+<span class="hljs-strong">**Where you are working:**</span> your Learning Room repository on GitHub.com (web editor) or in VS Code if you cloned locally.
+
+<span class="hljs-strong">**Before you start:**</span> Open your <span class="hljs-strong">**assigned Chapter 7 challenge issue**</span> (the one titled &quot;Chapter 7.1: Resolve Conflict Markers (@yourname)&quot;). The issue description tells you which practice file contains the conflict markers.
+
+Practice sample: [<span class="hljs-string">`learning-room/docs/samples/chapter-6-conflict-practice-sample.md`</span>](<span class="hljs-link">../learning-room/docs/samples/chapter-6-conflict-practice-sample.md</span>)
+
+<span class="hljs-bullet">1.</span> Open the practice file specified in your challenge issue.
+<span class="hljs-bullet">2.</span> Search the file for <span class="hljs-code">`&lt;&lt;&lt;&lt;&lt;&lt;&lt;`</span>. This is the <span class="hljs-strong">**start marker**</span> - it shows where the conflict begins.
+<span class="hljs-bullet">3.</span> Read the content between <span class="hljs-code">`&lt;&lt;&lt;&lt;&lt;&lt;&lt;`</span> and <span class="hljs-code">`=======`</span>. This is <span class="hljs-strong">**your version**</span> (the current branch).
+<span class="hljs-bullet">4.</span> Read the content between <span class="hljs-code">`=======`</span> and <span class="hljs-code">`&gt;&gt;&gt;&gt;&gt;&gt;&gt;`</span>. This is <span class="hljs-strong">**their version**</span> (the incoming branch).
+<span class="hljs-bullet">5.</span> Decide which content to keep:
+<span class="hljs-bullet">   -</span> Keep only your version, or
+<span class="hljs-bullet">   -</span> Keep only their version, or
+<span class="hljs-bullet">   -</span> Combine both versions into one clean paragraph.
+<span class="hljs-bullet">6.</span> Delete all three marker lines:
+<span class="hljs-bullet">   -</span> The <span class="hljs-code">`&lt;&lt;&lt;&lt;&lt;&lt;&lt; HEAD`</span> line (or similar)
+<span class="hljs-bullet">   -</span> The <span class="hljs-code">`=======`</span> separator line
+<span class="hljs-bullet">   -</span> The <span class="hljs-code">`&gt;&gt;&gt;&gt;&gt;&gt;&gt; branch-name`</span> line
+<span class="hljs-bullet">7.</span> Review the file to confirm no marker lines remain. Search for <span class="hljs-code">`&lt;&lt;&lt;&lt;&lt;&lt;&lt;`</span> again - there should be zero results.
+<span class="hljs-bullet">8.</span> Commit your changes on a branch named <span class="hljs-code">`fix/yourname-issueXX`</span>.
+<span class="hljs-bullet">9.</span> Open a pull request with:
+<span class="hljs-bullet">   -</span> Title: <span class="hljs-code">`fix: resolve conflict markers in [filename]`</span>
+<span class="hljs-bullet">   -</span> Body: Include <span class="hljs-code">`Closes #XX`</span> (your challenge issue number) and a 1-2 sentence description of which content you kept and why.
+
+<span class="hljs-strong">**Screen reader tip:**</span> Use your screen reader&#x27;s find command (<span class="hljs-code">`Ctrl+F`</span> in browser, <span class="hljs-code">`Ctrl+H`</span> in VS Code) to jump directly to <span class="hljs-code">`&lt;&lt;&lt;&lt;&lt;&lt;&lt;`</span>. The markers are plain text, so they are fully readable.
+
+<span class="hljs-strong">**You are done when:**</span> Your PR passes bot validation checks and contains no remaining conflict markers.
+
+<span class="hljs-section">### Completing Chapter 7: Submit Your Evidence</span>
+
+When your PR is open and passing checks, post a comment on your assigned Chapter 7 challenge issue:
+
+<span class="hljs-code">```text
+Chapter 7 completed:
+- Challenge 7.1: Opened PR #[number] resolving conflict markers in [filename]
+- Content decision: kept [your version / their version / combined both] because [reason]</span></code></pre>
+<h3 id="expected-outcomes">Expected Outcomes</h3>
+<ul>
+<li>Student can identify the three conflict marker lines (<code>&lt;&lt;&lt;&lt;&lt;&lt;&lt;</code>, <code>=======</code>, <code>&gt;&gt;&gt;&gt;&gt;&gt;&gt;</code>) immediately.</li>
+<li>Student can read both sides of a conflict and make an intentional content decision.</li>
+<li>Student can remove all markers and submit a clean, issue-linked PR.</li>
+</ul>
+<h3 id="if-you-get-stuck">If You Get Stuck</h3>
+<ol>
+<li>Can&#39;t find the markers? Use <code>Ctrl+F</code> and search for <code>&lt;&lt;&lt;&lt;&lt;&lt;&lt;</code> - they are always in sets of three.</li>
+<li>Not sure which side to keep? Read both versions aloud. Pick the one that is clearer, or combine them.</li>
+<li>Accidentally deleted too much? Undo with <code>Ctrl+Z</code> and start the section over.</li>
+<li>PR bot says content is wrong? Double-check that zero marker lines remain - search for <code>&lt;&lt;&lt;&lt;&lt;&lt;&lt;</code>, <code>=======</code>, and <code>&gt;&gt;&gt;&gt;&gt;&gt;&gt;</code>.</li>
+<li>Ask facilitator to sanity-check your final content before opening the PR.</li>
+<li>Finished but not sure you did it right? Compare your work against the <a href="solutions/solution-07-merge-conflict.html">Challenge 7 reference solution</a>.</li>
+</ol>
+<h3 id="learning-moment">Learning Moment</h3>
+<p>Merge conflicts are not failures. They are a normal collaboration checkpoint and a chance to make an intentional content decision. In real open source projects, conflicts happen whenever two people edit near the same lines. The skill is not avoiding them - it is resolving them calmly and clearly.</p>
+<h3 id="learning-pattern-used-in-this-chapter">Learning Pattern Used in This Chapter</h3>
+<ol>
+<li>Start with a controlled, safe conflict (practice file with known markers).</li>
+<li>Learn to read the conflict structure (your version vs. their version).</li>
+<li>Make a deliberate content decision (not just deleting randomly).</li>
+<li>Submit clean evidence through the PR workflow.</li>
+<li>Build confidence for real conflicts in future contributions.</li>
+</ol>
+<h3 id="about-learning-cards-in-this-chapter">About Learning Cards in This Chapter</h3>
+<p>This chapter provides learning cards: expandable blocks that offer perspective-specific guidance for different ways of working. Not every card appears at every step. Open the ones that match how you work.</p>
+<p>The following table describes the five learning card types used in this chapter.</p>
+<table>
+<thead>
+<tr>
+<th scope="col">Card</th>
+<th scope="col">Who it helps</th>
+<th scope="col">What it covers</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Visual / mouse</td>
+<td>Sighted users navigating with a mouse or trackpad</td>
+<td>Click targets, visual cues, color-coded conflict regions</td>
+</tr>
+<tr>
+<td>Low vision</td>
+<td>Users with magnification, zoom, or high-contrast themes</td>
+<td>Zoom-friendly navigation, high contrast marker visibility, enlargement tips</td>
+</tr>
+<tr>
+<td>NVDA / JAWS (Windows)</td>
+<td>Screen reader users on Windows</td>
+<td>Keystroke sequences, Focus and Browse mode, verbosity tips</td>
+</tr>
+<tr>
+<td>VoiceOver (macOS)</td>
+<td>Screen reader users on macOS</td>
+<td>VO key sequences, rotor navigation, interaction model</td>
+</tr>
+<tr>
+<td>CLI (git / gh)</td>
+<td>Terminal users on any platform</td>
+<td>Git and GitHub CLI commands for conflict detection and resolution</td>
+</tr>
+</tbody></table>
+<h2 id="local-git-alternative-resolving-conflicts-from-your-terminal">Local Git Alternative: Resolving Conflicts from Your Terminal</h2>
+<details>
+<summary>If you cloned the learning-room in Block 0 and prefer resolving conflicts locally</summary>
+
+<p>The GitHub web conflict editor works well and is the primary method taught in this chapter. If you cloned the Learning Room in Block 0 and prefer working in your terminal, here is how to resolve conflicts locally. This is the same workflow covered in depth in <a href="14-git-in-practice.html">Chapter 11: Git and Source Control</a>.</p>
+<p><strong>Step 1 - Sync main and merge into your branch:</strong></p>
+<pre><code class="hljs language-bash"><span class="hljs-built_in">cd</span> ~/Documents/learning-room
+git checkout main
+git pull origin main
+git checkout your-branch-name
+git merge main</code></pre>
+<p>If there is a conflict, Git will report which files are affected and stop the merge.</p>
+<p><strong>Step 2 - Open the conflicted file:</strong></p>
+<pre><code class="hljs language-bash">code docs/welcome.md   <span class="hljs-comment"># or your preferred editor</span></code></pre>
+<p>Look for the conflict markers:</p>
+<pre><code class="hljs language-text">&lt;&lt;&lt;&lt;&lt;&lt;&lt; HEAD
+Your version of the content
+<span aria-hidden="true"></span>=======
+The incoming version from main
+&gt;&gt;&gt;&gt;&gt;&gt;&gt; main</code></pre>
+<p><strong>Step 3 - Resolve by editing:</strong></p>
+<ul>
+<li>Keep the version you want (or combine both)</li>
+<li>Delete all three marker lines (<code>&lt;&lt;&lt;&lt;&lt;&lt;&lt;</code>, <code>=======</code>, <code>&gt;&gt;&gt;&gt;&gt;&gt;&gt;</code>)</li>
+<li>Save the file</li>
+</ul>
+<p><strong>Step 4 - Mark resolved, commit, and push:</strong></p>
+<pre><code class="hljs language-bash">git add docs/welcome.md
+git commit -m <span class="hljs-string">&quot;Resolve merge conflict in welcome.md&quot;</span>
+git push</code></pre>
+<p>Your PR on GitHub updates automatically with the resolved content. The same bot checks and human review process apply.</p>
+</details>
+
+<h2 id="what-is-a-merge-conflict">What Is a Merge Conflict?</h2>
+<p>A merge conflict occurs when two people have both changed the <strong>same part of the same file</strong> in <strong>different ways</strong>, and Git cannot automatically decide which version is correct.</p>
+<p>Git can merge changes automatically when they touch different parts of a file. Conflicts only happen when two changes overlap - for example:</p>
+<ul>
+<li>Person A changed line 12 to say &quot;Submit form&quot;</li>
+<li>Person B changed line 12 to say &quot;Send message&quot;</li>
+<li>Git asks: which one do you want to keep?</li>
+</ul>
+<h2 id="why-conflicts-happen">Why Conflicts Happen</h2>
+<p>The most common causes:</p>
+<table>
+<thead>
+<tr>
+<th scope="col">Cause</th>
+<th scope="col">Example</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Two people edited the same line</td>
+<td>You both fixed the same typo differently</td>
+</tr>
+<tr>
+<td>One person deleted a file but another edited it</td>
+<td>You removed an old function; they fixed a bug in it</td>
+</tr>
+<tr>
+<td>Two people restructured the same section</td>
+<td>You reorganized a list; they added items to it</td>
+</tr>
+<tr>
+<td>A long-running PR diverged from main</td>
+<td>Your branch is weeks old and main has changed significantly</td>
+</tr>
+</tbody></table>
+<h2 id="how-to-prevent-conflicts-prevention-is-easier-than-resolution">How to Prevent Conflicts (Prevention is Easier Than Resolution)</h2>
+<p>Avoiding conflicts in the first place saves time and reduces stress. Here are the most effective strategies:</p>
+<h3 id="1-keep-your-branches-short-lived">1. <strong>Keep your branches short-lived</strong></h3>
+<p>Work in small, focused chunks. A branch that lives for 3 days has far fewer conflicts than one that lives for 3 weeks.</p>
+<ul>
+<li>Target: 1-3 days from branch to merge</li>
+<li>If a feature takes longer, brea</li>
+</ul>
+<!-- content omitted for length -->
+
+<p>-requests/about-pull-requests)</p>
+<ul>
+<li><strong>When Conflicts Are Actually Good:</strong> <a href="https://docs.github.com/en">GitHub Docs, home</a>, <a href="https://github.blog/changelog/">GitHub Changelog</a>, <a href="https://docs.github.com/en/get-started/using-git/about-git">About Git</a>, <a href="https://docs.github.com/en/get-started/using-github/github-flow">GitHub flow</a>, <a href="https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/about-pull-requests">About pull requests</a></li>
+<li><strong>Spotting a Conflict on GitHub:</strong> <a href="https://docs.github.com/en">GitHub Docs, home</a>, <a href="https://github.blog/changelog/">GitHub Changelog</a>, <a href="https://docs.github.com/en/get-started/using-git/about-git">About Git</a>, <a href="https://docs.github.com/en/get-started/using-github/github-flow">GitHub flow</a>, <a href="https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/about-pull-requests">About pull requests</a></li>
+<li><strong>Conflict Markers - What They Mean:</strong> <a href="https://docs.github.com/en">GitHub Docs, home</a>, <a href="https://github.blog/changelog/">GitHub Changelog</a>, <a href="https://docs.github.com/en/get-started/using-git/about-git">About Git</a>, <a href="https://docs.github.com/en/get-started/using-github/github-flow">GitHub flow</a>, <a href="https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/about-pull-requests">About pull requests</a></li>
+<li><strong>Resolving Conflicts on GitHub (Web Editor):</strong> <a href="https://docs.github.com/en">GitHub Docs, home</a>, <a href="https://github.blog/changelog/">GitHub Changelog</a>, <a href="https://docs.github.com/en/get-started/using-git/about-git">About Git</a>, <a href="https://docs.github.com/en/get-started/using-github/github-flow">GitHub flow</a>, <a href="https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/about-pull-requests">About pull requests</a></li>
+<li><strong>Resolving Conflicts in VS Code (Day 2):</strong> <a href="https://docs.github.com/en">GitHub Docs, home</a>, <a href="https://github.blog/changelog/">GitHub Changelog</a>, <a href="https://docs.github.com/en/get-started/using-git/about-git">About Git</a>, <a href="https://docs.github.com/en/get-started/using-github/github-flow">GitHub flow</a>, <a href="https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/about-pull-requests">About pull requests</a></li>
+<li><strong>When You Feel Stuck:</strong> <a href="https://docs.github.com/en">GitHub Docs, home</a>, <a href="https://github.blog/changelog/">GitHub Changelog</a>, <a href="https://docs.github.com/en/get-started/using-git/about-git">About Git</a>, <a href="https://docs.github.com/en/get-started/using-github/github-flow">GitHub flow</a>, <a href="https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/about-pull-requests">About pull requests</a></li>
+<li><strong>Reading a Conflict Message from Git (Command Line Reference):</strong> <a href="https://docs.github.com/en">GitHub Docs, home</a>, <a href="https://github.blog/changelog/">GitHub Changelog</a>, <a href="https://docs.github.com/en/get-started/using-git/about-git">About Git</a>, <a href="https://docs.github.com/en/get-started/using-github/github-flow">GitHub flow</a>, <a href="https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/about-pull-requests">About pull requests</a></li>
+<li><strong>Summary Checklist:</strong> <a href="https://docs.github.com/en">GitHub Docs, home</a>, <a href="https://github.blog/changelog/">GitHub Changelog</a>, <a href="https://docs.github.com/en/get-started/using-git/about-git">About Git</a>, <a href="https://docs.github.com/en/get-started/using-github/github-flow">GitHub flow</a>, <a href="https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/about-pull-requests">About pull requests</a></li>
+<li><strong>Try It: Read a Conflict (Without Fear):</strong> <a href="https://docs.github.com/en">GitHub Docs, home</a>, <a href="https://github.blog/changelog/">GitHub Changelog</a>, <a href="https://docs.github.com/en/get-started/using-git/about-git">About Git</a>, <a href="https://docs.github.com/en/get-started/using-github/github-flow">GitHub flow</a>, <a href="https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/about-pull-requests">About pull requests</a></li>
+</ul>
+<pre><code class="hljs"></code></pre>
+
+  </main>
+  <footer role="contentinfo" class="site-footer">
+    <p><strong>GIT Going with GitHub</strong> - A workshop by <a href="https://community-access.org">Community Access</a></p>
+    <p><a href="https://github.com/community-access/git-going-with-github">View on GitHub</a> · <a href="https://community-access.org">community-access.org</a></p>
+  </footer>
+
+  </body>
+</html>

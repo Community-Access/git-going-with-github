@@ -2,6 +2,12 @@
 
 This shows a configured notification setup with before/after.
 
+## Important Context: Web-First Notification Management
+
+This bonus focuses on **GitHub's web notification inbox** as the primary way to manage notifications. Email notifications are optional and not required for this workshop. The configuration shown here demonstrates how to set up your GitHub account to manage notifications effectively whether you choose to use email or not.
+
+**The key principle:** Use GitHub's web inbox at `github.com/notifications` as your main workflow. Enable email only if you choose to, and even then, only for high-priority items.
+
 ## Before: Default settings
 
 With default settings, GitHub sends email notifications for:
@@ -10,7 +16,7 @@ With default settings, GitHub sends email notifications for:
 - Every comment on any thread you have participated in
 - Every CI status update
 
-This quickly becomes overwhelming. Most people start ignoring all GitHub emails.
+This quickly becomes overwhelming. Most people start ignoring all GitHub emails. Instead, most professional developers use the web notification inbox.
 
 ## After: Configured settings
 

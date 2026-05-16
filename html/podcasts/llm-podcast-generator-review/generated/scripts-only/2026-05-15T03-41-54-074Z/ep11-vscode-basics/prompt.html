@@ -1,0 +1,410 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="GIT Going with GitHub - A two-day accessible open source workshop by Community Access">
+  <title>[11-vscode-interface.md] VS Code: Interface and Setup - GIT Going with GitHub</title>
+  <link rel="stylesheet" href="./styles/github-markdown.css">
+  <link rel="stylesheet" href="./styles/highlight.css">
+  <link rel="stylesheet" href="./styles/custom.css">
+  <style>
+    .markdown-body {
+      box-sizing: border-box;
+      min-width: 200px;
+      max-width: 980px;
+      margin: 0 auto;
+      padding: 45px;
+    }
+    @media (max-width: 767px) {
+      .markdown-body {
+        padding: 15px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+  <header class="site-header" role="banner">
+    <div class="site-header-inner">
+      <nav aria-label="Breadcrumb" class="breadcrumb">
+        <a href="./index.html">Home</a> <span aria-hidden="true">›</span> <span aria-current="page">[11-vscode-interface.md] VS Code: Interface and Setup</span>
+      </nav>
+      <div class="header-actions">
+        <a href="https://github.com/Community-Access/git-going-with-github/wiki" class="wiki-link" target="_blank" rel="noopener noreferrer">
+          <svg aria-hidden="true" focusable="false" width="16" height="16" viewBox="0 0 16 16" fill="currentColor">
+            <path d="M1.75 1h8.5c.966 0 1.75.784 1.75 1.75v5.5A1.75 1.75 0 0 1 10.25 10H7.06l-2.573 2.573A1.458 1.458 0 0 1 2 11.543V10h-.25A1.75 1.75 0 0 1 0 8.25v-5.5C0 1.784.784 1 1.75 1ZM1.5 2.75v5.5c0 .138.112.25.25.25h1a.75.75 0 0 1 .75.75v2.19l2.72-2.72a.749.749 0 0 1 .53-.22h3.5a.25.25 0 0 0 .25-.25v-5.5a.25.25 0 0 0-.25-.25h-8.5a.25.25 0 0 0-.25.25Zm13 2a.25.25 0 0 0-.25-.25h-.5a.75.75 0 0 1 0-1.5h.5c.966 0 1.75.784 1.75 1.75v5.5A1.75 1.75 0 0 1 14.25 12H14v1.543a1.457 1.457 0 0 1-2.487 1.03L9.22 12.28a.749.749 0 1 1 1.06-1.06l2.22 2.22v-2.19a.75.75 0 0 1 .75-.75h.25a.25.25 0 0 0 .25-.25v-5.5Z"/>
+          </svg>
+          Wiki
+        </a>
+        <form role="search" class="search-form" action="./search.html" method="get">
+        <label for="site-search" class="search-label">Search docs</label>
+        <input
+          type="search"
+          id="site-search"
+          class="search-input"
+          name="q"
+          placeholder="Search docs…"
+          autocomplete="off"
+          aria-label="Search documentation"
+        >
+        <button type="submit" class="search-button" aria-label="Submit search">
+          <svg aria-hidden="true" focusable="false" width="16" height="16" viewBox="0 0 16 16" fill="currentColor">
+            <path d="M10.68 11.74a6 6 0 0 1-7.922-8.982 6 6 0 0 1 8.982 7.922l3.04 3.04a.749.749 0 0 1-.326 1.275.749.749 0 0 1-.734-.215ZM11.5 7a4.499 4.499 0 1 0-8.997 0A4.499 4.499 0 0 0 11.5 7Z"/>
+          </svg>
+        </button>
+      </form>
+      </div>
+    </div>
+  </header>
+  <main id="main-content" class="markdown-body">
+    <p>You are writing a Git Going with GitHub podcast script.</p>
+<p>Audience:
+Blind and low-vision learners studying GitHub, Git, VS Code, open source, and accessible contribution workflows.</p>
+<p>Hosts:</p>
+<ul>
+<li>Alex: warm expert professor</li>
+<li>Jamie: curious professor who asks the questions learners may hesitate to ask</li>
+</ul>
+<p>Goal:
+Create a complete, conversational, two-host audio lesson. Teach every substantive concept from the Markdown source. Do not merely summarize. Do not omit administrative or accessibility content. Use varied phrasing and make it feel like a thoughtful NotebookLM-style teaching conversation.</p>
+<p>Scale rules:</p>
+<ul>
+<li>The source set may be large. Prioritize complete conceptual coverage over quoting every line.</li>
+<li>Use concise turns and avoid unnecessary verbosity.</li>
+</ul>
+<p>Required script markers:
+Use only these markers on their own lines:
+[ALEX]
+[JAMIE]
+[PAUSE]</p>
+<p>Narration constraints:</p>
+<ul>
+<li>Do not say chapter titles, section names, or &quot;chapter marker&quot; language out loud.</li>
+<li>Keep transitions natural so chapter separation can be handled in metadata, not spoken labels.</li>
+</ul>
+<p>Return JSON only:
+{
+  &quot;script&quot;: &quot;[ALEX]\n...\n&quot;,
+  &quot;chapters&quot;: [
+    {
+      &quot;title&quot;: &quot;Specific chapter title&quot;,
+      &quot;startSegmentIndex&quot;: 0,
+      &quot;sourceHeading&quot;: &quot;Heading represented&quot;
+    }
+  ],
+  &quot;coverageNotes&quot;: [
+    {
+      &quot;sourceHeading&quot;: &quot;Heading&quot;,
+      &quot;status&quot;: &quot;covered | partial | risk&quot;,
+      &quot;notes&quot;: &quot;Brief note&quot;
+    }
+  ]
+}</p>
+<p>Slug: ep11-vscode-basics
+Sources:</p>
+<ul>
+<li>11-vscode-interface.md</li>
+</ul>
+<p>Headings that must be represented:</p>
+<h1 id="11-vscode-interfacemd-vs-code-interface-and-setup">[11-vscode-interface.md] VS Code: Interface and Setup</h1>
+<h2 id="11-vscode-interfacemd-your-accessible-development-environment---the-foundation">[11-vscode-interface.md] Your Accessible Development Environment - The Foundation</h2>
+<h2 id="11-vscode-interfacemd-workshop-recommendation-chapter-11">[11-vscode-interface.md] Workshop Recommendation Chapter 11</h2>
+<h3 id="11-vscode-interfacemd-chapter-11-practice-set">[11-vscode-interface.md] Chapter 11 Practice Set</h3>
+<h3 id="11-vscode-interfacemd-practice-111-step-by-step-vs-code-accessibility-baseline">[11-vscode-interface.md] Practice 11.1 Step-by-Step: VS Code Accessibility Baseline</h3>
+<h3 id="11-vscode-interfacemd-completing-chapter-11-submit-your-evidence">[11-vscode-interface.md] Completing Chapter 11: Submit Your Evidence</h3>
+<h3 id="11-vscode-interfacemd-expected-outcomes">[11-vscode-interface.md] Expected Outcomes</h3>
+<h3 id="11-vscode-interfacemd-if-you-get-stuck">[11-vscode-interface.md] If You Get Stuck</h3>
+<h3 id="11-vscode-interfacemd-learning-moment">[11-vscode-interface.md] Learning Moment</h3>
+<h3 id="11-vscode-interfacemd-learning-pattern-used-in-this-chapter">[11-vscode-interface.md] Learning Pattern Used in This Chapter</h3>
+<h2 id="11-vscode-interfacemd-table-of-contents">[11-vscode-interface.md] Table of Contents</h2>
+<h2 id="11-vscode-interfacemd-1-why-vs-code-for-open-source-contribution">[11-vscode-interface.md] 1. Why VS Code for Open Source Contribution</h2>
+<h3 id="11-vscode-interfacemd-learning-cards-why-vs-code">[11-vscode-interface.md] Learning Cards: Why VS Code</h3>
+<h2 id="11-vscode-interfacemd-2-the-bridge-githubdev---vs-code-in-your-browser">[11-vscode-interface.md] 2. The Bridge: github.dev - VS Code in Your Browser</h2>
+<h3 id="11-vscode-interfacemd-before-you-install-anything-try-vs-code-right-now-in-your-browser">[11-vscode-interface.md] Before you install anything: try VS Code right now in your browser</h3>
+<h3 id="11-vscode-interfacemd-how-to-access-githubdev">[11-vscode-interface.md] How to Access github.dev</h3>
+<h4 id="11-vscode-interfacemd-method-1-the-period-key-shortcut-fastest">[11-vscode-interface.md] Method 1: The Period Key Shortcut Fastest</h4>
+<h4 id="11-vscode-interfacemd-where-it-works">[11-vscode-interface.md] Where it works</h4>
+<h4 id="11-vscode-interfacemd-method-2-direct-url">[11-vscode-interface.md] Method 2: Direct URL</h4>
+<h4 id="11-vscode-interfacemd-method-3-from-the-repository-page">[11-vscode-interface.md] Method 3: From the Repository Page</h4>
+<h3 id="11-vscode-interfacemd-what-you-get-in-githubdev">[11-vscode-interface.md] What You Get in github.dev</h3>
+<h3 id="11-vscode-interfacemd-what-githubdev-does-not-have">[11-vscode-interface.md] What github.dev Does NOT Have</h3>
+<h3 id="11-vscode-interfacemd-why-githubdev-matters-for-this-workshop">[11-vscode-interface.md] Why github.dev Matters for This Workshop</h3>
+<h4 id="11-vscode-interfacemd-use-githubdev-when">[11-vscode-interface.md] Use github.dev when</h4>
+<h4 id="11-vscode-interfacemd-use-desktop-vs-code-when">[11-vscode-interface.md] Use desktop VS Code when</h4>
+<h3 id="11-vscode-interfacemd-screen-reader-experience-in-githubdev">[11-vscode-interface.md] Screen Reader Experience in github.dev</h3>
+<h4 id="11-vscode-interfacemd-activate-screen-reader-mode-immediately">[11-vscode-interface.md] Activate screen reader mode immediately</h4>
+<h4 id="11-vscode-interfacemd-what-changes">[11-vscode-interface.md] What changes</h4>
+<h4 id="11-vscode-interfacemd-navigation">[11-vscode-interface.md] Navigation</h4>
+<h4 id="11-vscode-interfacemd-nvdajaws-users">[11-vscode-interface.md] NVDA/JAWS users</h4>
+<h4 id="11-vscode-interfacemd-voiceover-users">[11-vscode-interface.md] VoiceOver users</h4>
+<h3 id="11-vscode-interfacemd-learning-cards-githubdev">[11-vscode-interface.md] Learning Cards: github.dev</h3>
+<h3 id="11-vscode-interfacemd-try-it-right-now">[11-vscode-interface.md] Try It Right Now</h3>
+<h2 id="11-vscode-interfacemd-3-screen-reader-mode-in-vs-code">[11-vscode-interface.md] 3. Screen Reader Mode in VS Code</h2>
+<h3 id="11-vscode-interfacemd-activating-screen-reader-mode">[11-vscode-interface.md] Activating Screen Reader Mode</h3>
+<h4 id="11-vscode-interfacemd-verify-it-is-active">[11-vscode-interface.md] Verify it is active</h4>
+<h3 id="11-vscode-interfacemd-what-changes-in-screen-reader-mode">[11-vscode-interface.md] What Changes in Screen Reader Mode</h3>
+<h3 id="11-vscode-interfacemd-nvda-specific-settings-for-vs-code">[11-vscode-interface.md] NVDA-Specific Settings for VS Code</h3>
+<h3 id="11-vscode-interfacemd-jaws-specific-settings-for-vs-code">[11-vscode-interface.md] JAWS-Specific Settings for VS Code</h3>
+<h3 id="11-vscode-interfacemd-voiceover-specific-settings-for-vs-code-macos">[11-vscode-interface.md] VoiceOver-Specific Settings for VS Code macOS</h3>
+<h3 id="11-vscode-interfacemd-learning-cards-screen-reader-mode">[11-vscode-interface.md] Learning Cards: Screen Reader Mode</h3>
+<h2 id="11-vscode-interfacemd-4-the-vs-code-interface-tour">[11-vscode-interface.md] 4. The VS Code Interface Tour</h2>
+<h3 id="11-vscode-interfacemd-the-five-major-regions">[11-vscode-interface.md] The Five Major Regions</h3>
+<h3 id="11-vscode-interfacemd-navigating-between-regions">[11-vscode-interface.md] Navigating Between Regions</h3>
+<h3 id="11-vscode-interfacemd-learning-cards-finding-your-way-around-vs-code">[11-vscode-interface.md] Learning Cards: Finding Your Way Around VS Code</h3>
+<h2 id="11-vscode-interfacemd-5-the-accounts-button-and-github-sign-in">[11-vscode-interface.md] 5. The Accounts Button and GitHub Sign-In</h2>
+<h3 id="11-vscode-interfacemd-why-sign-in-matters">[11-vscode-interface.md] Why Sign In Matters</h3>
+<h3 id="11-vscode-interfacemd-signing-in">[11-vscode-interface.md] Signing In</h3>
+<h4 id="11-vscode-interfacemd-from-the-accounts-button">[11-vscode-interface.md] From the Accounts Button</h4>
+<h4 id="11-vscode-interfacemd-from-the-command-palette">[11-vscode-interface.md] From the Command Palette</h4>
+<h3 id="11-vscode-interfacemd-verifying-you-are-signed-in">[11-vscode-interface.md] Verifying You Are Signed In</h3>
+<h3 id="11-vscode-interfacemd-learning-cards-github-sign-in">[11-vscode-interface.md] Learning Cards: GitHub Sign-In</h3>
+<h2 id="11-vscode-interfacemd-6-verifying-github-copilot-status">[11-vscode-interface.md] 6. Verifying GitHub Copilot Status</h2>
+<h3 id="11-vscode-interfacemd-where-to-check-copilot-status">[11-vscode-interface.md] Where to Check Copilot Status</h3>
+<h4 id="11-vscode-interfacemd-status-bar-indicator">[11-vscode-interface.md] Status Bar Indicator</h4>
+<h4 id="11-vscode-interfacemd-command-palette-check">[11-vscode-interface.md] Command Palette Check</h4>
+<h4 id="11-vscode-interfacemd-quick-test">[11-vscode-interface.md] Quick Test</h4>
+<h3 id="11-vscode-interfacemd-troubleshooting-copilot">[11-vscode-interface.md] Troubleshooting Copilot</h3>
+<h3 id="11-vscode-interfacemd-learning-cards-copilot-status">[11-vscode-interface.md] Learning Cards: Copilot Status</h3>
+<h2 id="11-vscode-interfacemd-7-the-status-bar">[11-vscode-interface.md] 7. The Status Bar</h2>
+<h3 id="11-vscode-interfacemd-what-the-status-bar-contains-left-to-right">[11-vscode-interface.md] What the Status Bar Contains Left to Right</h3>
+<h3 id="11-vscode-interfacemd-navigating-the-status-bar-with-a-keyboard">[11-vscode-interface.md] Navigating the Status Bar with a Keyboard</h3>
+<h3 id="11-vscode-interfacemd-learning-cards-status-bar">[11-vscode-interface.md] Learning Cards: Status Bar</h3>
+<h2 id="11-vscode-interfacemd-8-the-menu-bar">[11-vscode-interface.md] 8. The Menu Bar</h2>
+<h3 id="11-vscode-interfacemd-menu-bar-structure">[11-vscode-interface.md] Menu Bar Structure</h3>
+<h3 id="11-vscode-interfacemd-accessing-the-menu-bar">[11-vscode-interface.md] Accessing the Menu Bar</h3>
+<h3 id="11-vscode-interfacemd-learning-cards-menu-bar">[11-vscode-interface.md] Learning Cards: Menu Bar</h3>
+<h2 id="11-vscode-interfacemd-9-settings-sync">[11-vscode-interface.md] 9. Settings Sync</h2>
+<h3 id="11-vscode-interfacemd-what-gets-synced">[11-vscode-interface.md] What Gets Synced</h3>
+<h3 id="11-vscode-interfacemd-enabling-settings-sync">[11-vscode-interface.md] Enabling Settings Sync</h3>
+<h3 id="11-vscode-interfacemd-conflict-resolution">[11-vscode-interface.md] Conflict Resolution</h3>
+<h3 id="11-vscode-interfacemd-learning-cards-settings-sync">[11-vscode-interface.md] Learning Cards: Settings Sync</h3>
+<h3 id="11-vscode-interfacemd-profiles">[11-vscode-interface.md] Profiles</h3>
+<h4 id="11-vscode-interfacemd-creating-a-profile">[11-vscode-interface.md] Creating a Profile</h4>
+<h4 id="11-vscode-interfacemd-switching-profiles">[11-vscode-interface.md] Switching Profiles</h4>
+<h4 id="11-vscode-interfacemd-workshop-profile-recommendations">[11-vscode-interface.md] Workshop Profile Recommendations</h4>
+<h4 id="11-vscode-interfacemd-exporting-and-sharing-profiles">[11-vscode-interface.md] Exporting and Sharing Profiles</h4>
+<h4 id="11-vscode-interfacemd-profiles-and-settings-sync">[11-vscode-interface.md] Profiles and Settings Sync</h4>
+<h4 id="11-vscode-interfacemd-learning-cards-profiles">[11-vscode-interface.md] Learning Cards: Profiles</h4>
+<h2 id="11-vscode-interfacemd-10-the-settings-editor">[11-vscode-interface.md] 10. The Settings Editor</h2>
+<h3 id="11-vscode-interfacemd-opening-the-settings-editor">[11-vscode-interface.md] Opening the Settings Editor</h3>
+<h3 id="11-vscode-interfacemd-navigating-the-settings-editor">[11-vscode-interface.md] Navigating the Settings Editor</h3>
+<h4 id="11-vscode-interfacemd-special-search-filters">[11-vscode-interface.md] Special Search Filters</h4>
+<h3 id="11-vscode-interfacemd-key-accessibility-settings-to-configure">[11-vscode-interface.md] Key Accessibility Settings to Configure</h3>
+<h3 id="11-vscode-interfacemd-learning-cards-settings-editor">[11-vscode-interface.md] Learning Cards: Settings Editor</h3>
+<h2 id="11-vscode-interfacemd-11-the-keyboard-shortcuts-editor">[11-vscode-interface.md] 11. The Keyboard Shortcuts Editor</h2>
+<h3 id="11-vscode-interfacemd-opening-the-keyboard-shortcuts-editor">[11-vscode-interface.md] Opening the Keyboard Shortcuts Editor</h3>
+<h3 id="11-vscode-interfacemd-searching-for-shortcuts">[11-vscode-interface.md] Searching for Shortcuts</h3>
+<h3 id="11-vscode-interfacemd-customizing-a-shortcut">[11-vscode-interface.md] Customizing a Shortcut</h3>
+<h3 id="11-vscode-interfacemd-learning-cards-keyboard-shortcuts-editor">[11-vscode-interface.md] Learning Cards: Keyboard Shortcuts Editor</h3>
+<h2 id="11-vscode-interfacemd-authoritative-sources">[11-vscode-interface.md] Authoritative Sources</h2>
+<h3 id="11-vscode-interfacemd-section-level-source-map">[11-vscode-interface.md] Section-Level Source Map</h3>
+<p>Markdown source:</p>
+<h2 id="source-11-vscode-interfacemd">Source: 11-vscode-interface.md</h2>
+<pre><code class="hljs language-markdown"><span class="hljs-section"># VS Code: Interface and Setup</span>
+
+<span class="hljs-quote">&gt; <span class="hljs-strong">**Listen to Episode 11:**</span> [<span class="hljs-string">VS Code Setup and Accessibility</span>](<span class="hljs-link">../admin/PODCASTS.md</span>) - a conversational audio overview covering both this chapter and [<span class="hljs-string">Chapter 12</span>](<span class="hljs-link">12-vscode-accessibility.md</span>).</span>
+
+<span class="hljs-quote">&gt; <span class="hljs-strong">**Related appendices:**</span> [<span class="hljs-string">Appendix G: VS Code Reference</span>](<span class="hljs-link">appendix-g-vscode-reference.md</span>) | [<span class="hljs-string">Appendix B: Screen Reader Cheat Sheet</span>](<span class="hljs-link">appendix-b-screen-reader-cheatsheet.md</span>)</span>
+<span class="hljs-quote">&gt; <span class="hljs-strong">**Authoritative sources:**</span> [<span class="hljs-string">VS Code Docs: User Interface</span>](<span class="hljs-link">https://code.visualstudio.com/docs/getstarted/userinterface</span>) | [<span class="hljs-string">VS Code Docs: Accessibility</span>](<span class="hljs-link">https://code.visualstudio.com/docs/editor/accessibility</span>)</span>
+
+<span class="hljs-section">## Your Accessible Development Environment - The Foundation</span>
+
+<span class="hljs-quote">&gt; <span class="hljs-strong">**Day 2, Block 1 Material**</span></span>
+<span class="hljs-quote">&gt;
+&gt; This chapter covers the VS Code interface: launching VS Code, signing in to GitHub, verifying Copilot is active, configuring screen reader mode, and navigating the Activity Bar, Status Bar, menus, settings, and keyboard shortcuts.</span>
+<span class="hljs-quote">&gt;
+&gt; For accessibility deep-dive topics (keyboard navigation, Problems panel, Terminal, Copilot Chat, Accessible Help/View/Diff, Accessibility Signals, and VS Code Speech), see [<span class="hljs-string">Chapter 12: VS Code Accessibility Deep Dive</span>](<span class="hljs-link">12-vscode-accessibility.md</span>).</span>
+<span class="hljs-quote">&gt;
+&gt; <span class="hljs-strong">**Prerequisites:**</span> Complete Day 1 walkthrough of GitHub&#x27;s browser interface before working through VS Code material.</span>
+
+<span class="hljs-section">## Workshop Recommendation (Chapter 11)</span>
+
+For this workshop, Chapter 11 is a <span class="hljs-strong">**guided setup chapter**</span> with a lightweight completion practice.
+
+<span class="hljs-bullet">-</span> <span class="hljs-strong">**Challenge count:**</span> 1 guided walkthrough
+<span class="hljs-bullet">-</span> <span class="hljs-strong">**Automation check:**</span> none - setup state is local/account-level and cannot be validated by the Learning Room PR bot
+<span class="hljs-bullet">-</span> <span class="hljs-strong">**Evidence:**</span> structured completion comment on your assigned challenge issue
+<span class="hljs-bullet">-</span> <span class="hljs-strong">**Pattern:**</span> open, configure, navigate, verify
+
+<span class="hljs-section">### Chapter 11 Practice Set</span>
+
+<span class="hljs-bullet">1.</span> <span class="hljs-strong">**VS Code accessibility baseline**</span> - open VS Code (github.dev or desktop), enable screen reader mode, sign in to GitHub, verify Copilot status, and navigate core surfaces.
+
+<span class="hljs-section">### Practice 11.1 Step-by-Step: VS Code Accessibility Baseline</span>
+
+<span class="hljs-strong">**Goal:**</span> Confirm you can access VS Code (github.dev or desktop), enable screen reader support, sign in to GitHub, check Copilot status, and perform core navigation.
+
+<span class="hljs-strong">**Where you are working:**</span> github.dev (VS Code in the browser) or desktop VS Code if you installed it in Block 0.
+
+<span class="hljs-strong">**Estimated time:**</span> 10-15 minutes.
+
+<span class="hljs-bullet">1.</span> Open your Learning Room repository on GitHub.com.
+<span class="hljs-bullet">2.</span> Press <span class="hljs-code">`.`</span> (the period key) on your keyboard. This launches <span class="hljs-strong">**github.dev**</span> - a full VS Code editor running in your browser. Wait a few seconds for it to load.
+<span class="hljs-bullet">3.</span> Enable screen reader mode:
+<span class="hljs-bullet">   -</span> <span class="hljs-strong">**Windows (NVDA/JAWS):**</span> Press <span class="hljs-code">`Shift+Alt+F1`</span>. You should hear an announcement confirming screen reader mode is on.
+<span class="hljs-bullet">   -</span> <span class="hljs-strong">**Mac (VoiceOver):**</span> Screen reader mode is usually already optimized. If navigation feels wrong, open Command Palette (<span class="hljs-code">`Cmd+Shift+P`</span>) and run <span class="hljs-code">`Toggle Screen Reader Accessibility Mode`</span>.
+<span class="hljs-bullet">4.</span> Open the <span class="hljs-strong">**Explorer**</span> panel with <span class="hljs-code">`Ctrl+Shift+E`</span> (Mac: <span class="hljs-code">`Cmd+Shift+E`</span>). Your screen reader should announce the file tree.
+<span class="hljs-bullet">5.</span> Navigate to and open <span class="hljs-code">`README.md`</span> from the file tree. Use arrow keys to move through files and <span class="hljs-code">`Enter`</span> to open.
+<span class="hljs-bullet">6.</span> Open the <span class="hljs-strong">**outline/symbols**</span> view with <span class="hljs-code">`Ctrl+Shift+O`</span> (Mac: <span class="hljs-code">`Cmd+Shift+O`</span>). This shows all headings and sections in the current file - a key navigation tool for screen reader users.
+<span class="hljs-bullet">7.</span> Open the <span class="hljs-strong">**Command Palette**</span> with <span class="hljs-code">`Ctrl+Shift+P`</span> (Mac: <span class="hljs-code">`Cmd+Shift+P`</span>). Type any command name (for example, <span class="hljs-code">`Toggle Word Wrap`</span>) and press <span class="hljs-code">`Enter`</span> to run it. Press <span class="hljs-code">`Escape`</span> to close without running.
+<span class="hljs-bullet">8.</span> Check the <span class="hljs-strong">**Accounts**</span> button in the Activity Bar (bottom-left of the sidebar). If you are signed in, your screen reader announces your GitHub username. If not, activate it and sign in with GitHub.
+<span class="hljs-bullet">9.</span> Check the <span class="hljs-strong">**Status Bar**</span> at the bottom of the window. Tab or arrow through it to find GitHub Copilot status. If Copilot is active, you hear an indicator showing it is ready.
+
+<span class="hljs-strong">**You are done when:**</span> You have successfully opened github.dev, enabled screen reader mode, signed in to GitHub, confirmed Copilot status, opened a file, viewed its outline, and run a command from the Command Palette.
+
+<span class="hljs-section">### Completing Chapter 11: Submit Your Evidence</span>
+
+Return to GitHub.com, open the assigned setup or Day 2 readiness issue, and post a completion comment:
+
+<span class="hljs-code">```text
+Chapter 11 completed:
+- Opened github.dev: yes / no
+- Screen reader mode enabled: yes / no
+- Signed in to GitHub: yes / no
+- Copilot status checked: yes / no
+- Opened file in Explorer: yes / no
+- Opened outline/symbols: yes / no
+- Opened Command Palette: yes / no</span></code></pre>
+<p>If any step was &quot;no,&quot; add a note explaining where you got stuck so the facilitator can help. Close the assigned setup or readiness issue when done.</p>
+<h3 id="expected-outcomes">Expected Outcomes</h3>
+<ul>
+<li>Student can launch and navigate github.dev or desktop VS Code.</li>
+<li>Student can enable screen reader mode and hear navigation announcements.</li>
+<li>Student has signed in to GitHub and can see their account status.</li>
+<li>Student has verified GitHub Copilot is active (or knows it requires desktop VS Code).</li>
+<li>Student can open core navigation surfaces (Explorer, Outline, Command Palette).</li>
+<li>Student is ready for VS Code-based contribution chapters (6-16).</li>
+</ul>
+<h3 id="if-you-get-stuck">If You Get Stuck</h3>
+<ol>
+<li>Nothing happens when you press <code>.</code>? Make sure you are on the repository&#39;s main page (not inside an issue or PR). The <code>.</code> shortcut only works on repository code pages.</li>
+<li>Screen reader mode toggle did not announce anything? Open Command Palette (<code>Ctrl+Shift+P</code>) and type <code>Screen Reader</code> to find the toggle manually.</li>
+<li>Explorer panel is empty? VS Code may still be loading the repository. Wait 5-10 seconds and press <code>Ctrl+Shift+E</code> again.</li>
+<li>On Mac with VoiceOver, navigation feels wrong? Run <code>Toggle Screen Reader Accessibility Mode</code> from Command Palette. VoiceOver sometimes needs the explicit toggle.</li>
+<li>Cannot find the Accounts button? Open Command Palette and type <code>Accounts</code> to manage sign-in from there.</li>
+<li>Copilot not showing in the status bar? github.dev does not support Copilot - you need desktop VS Code or a Codespace.</li>
+<li>Shortcut not working? Use Command Palette as a fallback for any action - type what you want to do and VS Code will find the command.</li>
+<li>Ask facilitator for a side-by-side demo and repeat the same steps.</li>
+</ol>
+<h3 id="learning-moment">Learning Moment</h3>
+<p>Tool setup is part of contribution skill. A stable, accessible editor reduces stress and increases contribution quality. The surfaces you just tested - github.dev launch, screen reader mode, GitHub sign-in, Copilot status, Explorer, Outline, and Command Palette - are the foundation for everything in Day 2.</p>
+<h3 id="learning-pattern-used-in-this-chapter">Learning Pattern Used in This Chapter</h3>
+<ol>
+<li>Open the tool in the simplest way possible (<code>.</code> key for github.dev).</li>
+<li>Sign in and verify your identity and tools are ready (Accounts, Copilot).</li>
+<li>Configure accessibility before doing any work (screen reader mode first).</li>
+<li>Verify each navigation surface works with your assistive technology.</li>
+<li>Record what worked and what didn&#39;t (evidence comment).</li>
+</ol>
+<h2 id="table-of-contents">Table of Contents</h2>
+<ol>
+<li><a href="#1-why-vs-code-for-open-source-contribution">Why VS Code for Open Source Contribution</a></li>
+<li><a href="#2-the-bridge-githubdev---vs-code-in-your-browser">The Bridge: github.dev - VS Code in Your Browser</a></li>
+<li><a href="#3-screen-reader-mode-in-vs-code">Screen Reader Mode in VS Code</a></li>
+<li><a href="#4-the-vs-code-interface-tour">The VS Code Interface Tour</a></li>
+<li><a href="#5-the-accounts-button-and-github-sign-in">The Accounts Button and GitHub Sign-In</a></li>
+<li><a href="#6-verifying-github-copilot-status">Verifying GitHub Copilot Status</a></li>
+<li><a href="#7-the-status-bar">The Status Bar</a></li>
+<li><a href="#8-the-menu-bar">The Menu Bar</a></li>
+<li><a href="#9-settings-sync">Settings Sync</a><ul>
+<li><a href="#profiles">Profiles</a></li>
+</ul>
+</li>
+<li><a href="#10-the-settings-editor">The Settings Editor</a></li>
+<li><a href="#11-the-keyboard-shortcuts-editor">The Keyboard Shortcuts Editor</a></li>
+<li><a href="#12-essential-keyboard-navigation-and-findfilter">Essential Keyboard Navigation and Find/Filter</a></li>
+<li><a href="#13-the-problems-panel">The Problems Panel</a></li>
+<li><a href="#14-the-terminal">The Terminal</a></li>
+<li><a href="#15-copilot-chat-window">Copilot Chat Window</a></li>
+<li><a href="#16-accessible-help-accessible-view-and-accessible-diff">Accessible Help, Accessible View, and Accessible Diff</a></li>
+<li><a href="#17-accessibility-signals">Accessibility Signals</a></li>
+<li><a href="#18-vs-code-speech---voice-input-and-output">VS Code Speech - Voice Input and Output</a></li>
+<li><a href="#19-git-operations-inside-vs-code">Git Operations Inside VS Code</a></li>
+</ol>
+<hr>
+<h2 id="1-why-vs-code-for-open-source-contribution">1. Why VS Code for Open Source Contribution</h2>
+<p>GitHub&#39;s browser interface is excellent for reviewing, discussing, and triaging. VS Code is where you create. The difference:</p>
+<table>
+<thead>
+<tr>
+<th scope="col">Task</th>
+<th scope="col">Browser</th>
+<th scope="col">VS Code</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Navigate a repository</td>
+<td>Excellent</td>
+<td>Explorer sidebar</td>
+</tr>
+<tr>
+<td>Read issues and PRs</td>
+<td>Excellent</td>
+<td>GitHub PR extension</td>
+</tr>
+<tr>
+<td>Comment on a PR</td>
+<td>Excellent</td>
+<td>GitHub PR extension</td>
+</tr>
+<tr>
+<td>Edit a file</td>
+<td>Web editor</td>
+<td>Full text editor with Copilot</td>
+</tr>
+<tr>
+<td>Review a diff</td>
+<td>Files Changed tab</td>
+<td>Three-way merge view with navigation</td>
+</tr>
+<tr>
+<td>Get AI help while writing</td>
+<td>Not available</td>
+<td>Copilot inline + Chat</td>
+</tr>
+<tr>
+<td>Run Accessibility Agents</td>
+<td>Not available</td>
+<td>Copilot Chat with agent files</td>
+</tr>
+<tr>
+<td>See errors in your contribution</td>
+<td>After push</td>
+<td>Real-time as you type</td>
+</tr>
+</tbody></table>
+<p>For Markdown contributions (which is most of what <a href="https://github.com/Community-Access/accessibility-agents">accessibility-agents</a> needs), VS Code gives you Copilot assistance, live preview, and the same Git workflow - with less tab switching and with agents available on every file you open.</p>
+<h3 id="learning-cards-why-vs-code">Learning Cards: Why VS Code</h3>
+<details>
+<summary>Screen reader users</summary>
+
+<ul>
+<li>VS Code announces errors, warnings, and suggestions via ARIA live regions -- you hear problems as you type instead of after pushing to GitHub</li>
+<li>Press <code>Ctrl+Shift+P</code> (Mac: <code>Cmd+Shift+P</code>) to open the Command Palette and access every VS Code feature without a mouse</li>
+<li>The Explorer sidebar (<code>Ctrl+Shift+E</code>) gives you the same file tree as GitHub.com but with keyboard-driven editin</li>
+</ul>
+<!-- content omitted for length -->
+
+<p>, home](<a href="https://docs.github.com/en">https://docs.github.com/en</a>), <a href="https://github.blog/changelog/">GitHub Changelog</a>, <a href="https://code.visualstudio.com/docs/copilot/chat/copilot-chat">VS Code Copilot chat overview</a>, <a href="https://code.visualstudio.com/docs/copilot/agents/overview">VS Code agent overview</a>, <a href="https://code.visualstudio.com/docs/copilot/customization/custom-instructions">VS Code custom instructions</a></p>
+<ul>
+<li><strong>3. Screen Reader Mode in VS Code:</strong> <a href="https://docs.github.com/en">GitHub Docs, home</a>, <a href="https://github.blog/changelog/">GitHub Changelog</a>, <a href="https://code.visualstudio.com/docs/copilot/chat/copilot-chat">VS Code Copilot chat overview</a>, <a href="https://code.visualstudio.com/docs/copilot/agents/overview">VS Code agent overview</a>, <a href="https://code.visualstudio.com/docs/copilot/customization/custom-instructions">VS Code custom instructions</a></li>
+<li><strong>4. The VS Code Interface Tour:</strong> <a href="https://docs.github.com/en">GitHub Docs, home</a>, <a href="https://github.blog/changelog/">GitHub Changelog</a>, <a href="https://code.visualstudio.com/docs/copilot/chat/copilot-chat">VS Code Copilot chat overview</a>, <a href="https://code.visualstudio.com/docs/copilot/agents/overview">VS Code agent overview</a>, <a href="https://code.visualstudio.com/docs/copilot/customization/custom-instructions">VS Code custom instructions</a></li>
+<li><strong>5. The Accounts Button and GitHub Sign-In:</strong> <a href="https://docs.github.com/en">GitHub Docs, home</a>, <a href="https://github.blog/changelog/">GitHub Changelog</a>, <a href="https://code.visualstudio.com/docs/copilot/chat/copilot-chat">VS Code Copilot chat overview</a>, <a href="https://code.visualstudio.com/docs/copilot/agents/overview">VS Code agent overview</a>, <a href="https://code.visualstudio.com/docs/copilot/customization/custom-instructions">VS Code custom instructions</a></li>
+<li><strong>6. Verifying GitHub Copilot Status:</strong> <a href="https://docs.github.com/en">GitHub Docs, home</a>, <a href="https://github.blog/changelog/">GitHub Changelog</a>, <a href="https://code.visualstudio.com/docs/copilot/chat/copilot-chat">VS Code Copilot chat overview</a>, <a href="https://code.visualstudio.com/docs/copilot/agents/overview">VS Code agent overview</a>, <a href="https://code.visualstudio.com/docs/copilot/customization/custom-instructions">VS Code custom instructions</a></li>
+<li><strong>7. The Status Bar:</strong> <a href="https://docs.github.com/en">GitHub Docs, home</a>, <a href="https://github.blog/changelog/">GitHub Changelog</a>, <a href="https://code.visualstudio.com/docs/copilot/chat/copilot-chat">VS Code Copilot chat overview</a>, <a href="https://code.visualstudio.com/docs/copilot/agents/overview">VS Code agent overview</a>, <a href="https://code.visualstudio.com/docs/copilot/customization/custom-instructions">VS Code custom instructions</a></li>
+<li><strong>8. The Menu Bar:</strong> <a href="https://docs.github.com/en">GitHub Docs, home</a>, <a href="https://github.blog/changelog/">GitHub Changelog</a>, <a href="https://code.visualstudio.com/docs/copilot/chat/copilot-chat">VS Code Copilot chat overview</a>, <a href="https://code.visualstudio.com/docs/copilot/agents/overview">VS Code agent overview</a>, <a href="https://code.visualstudio.com/docs/copilot/customization/custom-instructions">VS Code custom instructions</a></li>
+<li><strong>9. Settings Sync:</strong> <a href="https://docs.github.com/en">GitHub Docs, home</a>, <a href="https://github.blog/changelog/">GitHub Changelog</a>, <a href="https://code.visualstudio.com/docs/copilot/chat/copilot-chat">VS Code Copilot chat overview</a>, <a href="https://code.visualstudio.com/docs/copilot/agents/overview">VS Code agent overview</a>, <a href="https://code.visualstudio.com/docs/copilot/customization/custom-instructions">VS Code custom instructions</a></li>
+<li><strong>10. The Settings Editor:</strong> <a href="https://docs.github.com/en">GitHub Docs, home</a>, <a href="https://github.blog/changelog/">GitHub Changelog</a>, <a href="https://code.visualstudio.com/docs/copilot/chat/copilot-chat">VS Code Copilot chat overview</a>, <a href="https://code.visualstudio.com/docs/copilot/agents/overview">VS Code agent overview</a>, <a href="https://code.visualstudio.com/docs/copilot/customization/custom-instructions">VS Code custom instructions</a></li>
+<li><strong>11. The Keyboard Shortcuts Editor:</strong> <a href="https://docs.github.com/en">GitHub Docs, home</a>, <a href="https://github.blog/changelog/">GitHub Changelog</a>, <a href="https://code.visualstudio.com/docs/copilot/chat/copilot-chat">VS Code Copilot chat overview</a>, <a href="https://code.visualstudio.com/docs/copilot/agents/overview">VS Code agent overview</a>, <a href="https://code.visualstudio.com/docs/copilot/customization/custom-instructions">VS Code custom instructions</a></li>
+</ul>
+<pre><code class="hljs"></code></pre>
+
+  </main>
+  <footer role="contentinfo" class="site-footer">
+    <p><strong>GIT Going with GitHub</strong> - A workshop by <a href="https://community-access.org">Community Access</a></p>
+    <p><a href="https://github.com/community-access/git-going-with-github">View on GitHub</a> · <a href="https://community-access.org">community-access.org</a></p>
+  </footer>
+
+  </body>
+</html>

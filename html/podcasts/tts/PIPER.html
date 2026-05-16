@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="GIT Going with GitHub - A two-day accessible open source workshop by Community Access">
+  <title>Piper Fallback TTS - GIT Going with GitHub</title>
+  <link rel="stylesheet" href="./styles/github-markdown.css">
+  <link rel="stylesheet" href="./styles/highlight.css">
+  <link rel="stylesheet" href="./styles/custom.css">
+  <style>
+    .markdown-body {
+      box-sizing: border-box;
+      min-width: 200px;
+      max-width: 980px;
+      margin: 0 auto;
+      padding: 45px;
+    }
+    @media (max-width: 767px) {
+      .markdown-body {
+        padding: 15px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+  <header class="site-header" role="banner">
+    <div class="site-header-inner">
+      <nav aria-label="Breadcrumb" class="breadcrumb">
+        <a href="./index.html">Home</a> <span aria-hidden="true">›</span> <span aria-current="page">Piper Fallback TTS</span>
+      </nav>
+      <div class="header-actions">
+        <a href="https://github.com/Community-Access/git-going-with-github/wiki" class="wiki-link" target="_blank" rel="noopener noreferrer">
+          <svg aria-hidden="true" focusable="false" width="16" height="16" viewBox="0 0 16 16" fill="currentColor">
+            <path d="M1.75 1h8.5c.966 0 1.75.784 1.75 1.75v5.5A1.75 1.75 0 0 1 10.25 10H7.06l-2.573 2.573A1.458 1.458 0 0 1 2 11.543V10h-.25A1.75 1.75 0 0 1 0 8.25v-5.5C0 1.784.784 1 1.75 1ZM1.5 2.75v5.5c0 .138.112.25.25.25h1a.75.75 0 0 1 .75.75v2.19l2.72-2.72a.749.749 0 0 1 .53-.22h3.5a.25.25 0 0 0 .25-.25v-5.5a.25.25 0 0 0-.25-.25h-8.5a.25.25 0 0 0-.25.25Zm13 2a.25.25 0 0 0-.25-.25h-.5a.75.75 0 0 1 0-1.5h.5c.966 0 1.75.784 1.75 1.75v5.5A1.75 1.75 0 0 1 14.25 12H14v1.543a1.457 1.457 0 0 1-2.487 1.03L9.22 12.28a.749.749 0 1 1 1.06-1.06l2.22 2.22v-2.19a.75.75 0 0 1 .75-.75h.25a.25.25 0 0 0 .25-.25v-5.5Z"/>
+          </svg>
+          Wiki
+        </a>
+        <form role="search" class="search-form" action="./search.html" method="get">
+        <label for="site-search" class="search-label">Search docs</label>
+        <input
+          type="search"
+          id="site-search"
+          class="search-input"
+          name="q"
+          placeholder="Search docs…"
+          autocomplete="off"
+          aria-label="Search documentation"
+        >
+        <button type="submit" class="search-button" aria-label="Submit search">
+          <svg aria-hidden="true" focusable="false" width="16" height="16" viewBox="0 0 16 16" fill="currentColor">
+            <path d="M10.68 11.74a6 6 0 0 1-7.922-8.982 6 6 0 0 1 8.982 7.922l3.04 3.04a.749.749 0 0 1-.326 1.275.749.749 0 0 1-.734-.215ZM11.5 7a4.499 4.499 0 1 0-8.997 0A4.499 4.499 0 0 0 11.5 7Z"/>
+          </svg>
+        </button>
+      </form>
+      </div>
+    </div>
+  </header>
+  <main id="main-content" class="markdown-body">
+    <h1 id="piper-fallback-tts">Piper Fallback TTS</h1>
+<p>Kokoro is the production audio path for this project. Piper is kept as a durable fallback and comparison engine for machines where Kokoro is unavailable or when maintainers want to compare voice quality.</p>
+<h2 id="when-to-use-piper">When to Use Piper</h2>
+<p>Use Piper only when:</p>
+<ul>
+<li>Kokoro dependencies cannot be installed on the target machine.</li>
+<li>You need a local fallback to compare pronunciation, pacing, or voice character.</li>
+<li>You are diagnosing whether an issue is script-related or engine-related.</li>
+</ul>
+<p>Do not use Piper for the final published audio unless the project intentionally switches production engines.</p>
+<h2 id="setup">Setup</h2>
+<p>Run these commands from the repository root:</p>
+<pre><code class="hljs language-powershell">python <span class="hljs-literal">-m</span> pip install piper<span class="hljs-literal">-tts</span>
+python <span class="hljs-literal">-m</span> podcasts.tts.download_samples</code></pre>
+<p>The downloaded Piper models live under <code>podcasts/tts/models/</code>, which is intentionally ignored by git.</p>
+<h2 id="generate-audio-with-piper">Generate Audio with Piper</h2>
+<p>Use the npm wrapper:</p>
+<pre><code class="hljs language-powershell">npm run build:podcast<span class="hljs-literal">-audio</span>:piper</code></pre>
+<p>Or call the unified audio command directly:</p>
+<pre><code class="hljs language-powershell">python <span class="hljs-literal">-m</span> podcasts.tts.generate_audio <span class="hljs-literal">--engine</span> piper <span class="hljs-literal">--start</span> <span class="hljs-number">0</span> <span class="hljs-literal">--end</span> <span class="hljs-number">10</span> <span class="hljs-literal">--audio-format</span> mp3</code></pre>
+<p>The older Piper module remains available for diagnostics:</p>
+<pre><code class="hljs language-powershell">python <span class="hljs-literal">-m</span> podcasts.tts.generate_all <span class="hljs-literal">--start</span> <span class="hljs-number">0</span> <span class="hljs-literal">--end</span> <span class="hljs-number">10</span></code></pre>
+<p>The legacy Piper batch path follows the same canonical listening order as Kokoro, so Challenge Coach episodes stay near the chapters they support.</p>
+<h2 id="configuration">Configuration</h2>
+<p>Piper runtime settings live in <code>podcasts/tts/voice-config.ini</code> and can also be overridden with environment variables documented in <code>generate_episode.py</code>.</p>
+<p>The default Piper voices are:</p>
+<table>
+<thead>
+<tr>
+<th scope="col">Host</th>
+<th scope="col">Piper model</th>
+<th scope="col">Purpose</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Alex</td>
+<td><code>en_US-ryan-high.onnx</code></td>
+<td>Lead host fallback voice</td>
+</tr>
+<tr>
+<td>Jamie</td>
+<td><code>en_US-lessac-high.onnx</code></td>
+<td>Co-host fallback voice</td>
+</tr>
+</tbody></table>
+<h2 id="validation">Validation</h2>
+<p>After a Piper test run, use the same checks as Kokoro:</p>
+<pre><code class="hljs language-powershell">npm run podcast:inventory:check
+npm run podcast:metadata:check
+npm run build:podcast<span class="hljs-literal">-site</span>
+npm run validate:podcast<span class="hljs-literal">-feed</span></code></pre>
+<p>For production, return to Kokoro unless maintainers explicitly decide otherwise.</p>
+
+  </main>
+  <footer role="contentinfo" class="site-footer">
+    <p><strong>GIT Going with GitHub</strong> - A workshop by <a href="https://community-access.org">Community Access</a></p>
+    <p><a href="https://github.com/community-access/git-going-with-github">View on GitHub</a> · <a href="https://community-access.org">community-access.org</a></p>
+  </footer>
+
+  </body>
+</html>

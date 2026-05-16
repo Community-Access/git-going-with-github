@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="GIT Going with GitHub - A two-day accessible open source workshop by Community Access">
+  <title>Scripts-Only Completion Troubleshooting - GIT Going with GitHub</title>
+  <link rel="stylesheet" href="./styles/github-markdown.css">
+  <link rel="stylesheet" href="./styles/highlight.css">
+  <link rel="stylesheet" href="./styles/custom.css">
+  <style>
+    .markdown-body {
+      box-sizing: border-box;
+      min-width: 200px;
+      max-width: 980px;
+      margin: 0 auto;
+      padding: 45px;
+    }
+    @media (max-width: 767px) {
+      .markdown-body {
+        padding: 15px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+  <header class="site-header" role="banner">
+    <div class="site-header-inner">
+      <nav aria-label="Breadcrumb" class="breadcrumb">
+        <a href="./index.html">Home</a> <span aria-hidden="true">›</span> <span aria-current="page">Scripts-Only Completion Troubleshooting</span>
+      </nav>
+      <div class="header-actions">
+        <a href="https://github.com/Community-Access/git-going-with-github/wiki" class="wiki-link" target="_blank" rel="noopener noreferrer">
+          <svg aria-hidden="true" focusable="false" width="16" height="16" viewBox="0 0 16 16" fill="currentColor">
+            <path d="M1.75 1h8.5c.966 0 1.75.784 1.75 1.75v5.5A1.75 1.75 0 0 1 10.25 10H7.06l-2.573 2.573A1.458 1.458 0 0 1 2 11.543V10h-.25A1.75 1.75 0 0 1 0 8.25v-5.5C0 1.784.784 1 1.75 1ZM1.5 2.75v5.5c0 .138.112.25.25.25h1a.75.75 0 0 1 .75.75v2.19l2.72-2.72a.749.749 0 0 1 .53-.22h3.5a.25.25 0 0 0 .25-.25v-5.5a.25.25 0 0 0-.25-.25h-8.5a.25.25 0 0 0-.25.25Zm13 2a.25.25 0 0 0-.25-.25h-.5a.75.75 0 0 1 0-1.5h.5c.966 0 1.75.784 1.75 1.75v5.5A1.75 1.75 0 0 1 14.25 12H14v1.543a1.457 1.457 0 0 1-2.487 1.03L9.22 12.28a.749.749 0 1 1 1.06-1.06l2.22 2.22v-2.19a.75.75 0 0 1 .75-.75h.25a.25.25 0 0 0 .25-.25v-5.5Z"/>
+          </svg>
+          Wiki
+        </a>
+        <form role="search" class="search-form" action="./search.html" method="get">
+        <label for="site-search" class="search-label">Search docs</label>
+        <input
+          type="search"
+          id="site-search"
+          class="search-input"
+          name="q"
+          placeholder="Search docs…"
+          autocomplete="off"
+          aria-label="Search documentation"
+        >
+        <button type="submit" class="search-button" aria-label="Submit search">
+          <svg aria-hidden="true" focusable="false" width="16" height="16" viewBox="0 0 16 16" fill="currentColor">
+            <path d="M10.68 11.74a6 6 0 0 1-7.922-8.982 6 6 0 0 1 8.982 7.922l3.04 3.04a.749.749 0 0 1-.326 1.275.749.749 0 0 1-.734-.215ZM11.5 7a4.499 4.499 0 1 0-8.997 0A4.499 4.499 0 0 0 11.5 7Z"/>
+          </svg>
+        </button>
+      </form>
+      </div>
+    </div>
+  </header>
+  <main id="main-content" class="markdown-body">
+    <h1 id="scripts-only-completion-troubleshooting">Scripts-Only Completion Troubleshooting</h1>
+<p>This guide is for completing all 79 script/transcript items with the 5.4 scripts-only lane.</p>
+<p>For highest reliability/cost control on offline runs, use the durable batch lane:</p>
+<pre><code class="hljs language-powershell">npm run podcast:llm:ai:prepare
+npm run podcast:llm:ai:run:batch
+npm run podcast:llm:ai:apply</code></pre>
+<p>This uses a SQLite ledger (<code>generated/execution/ai_jobs.sqlite</code>) so restarts resume without repaying for already-completed identical requests.
+If <code>OPENAI_BASE_URL</code> points to OpenRouter, batch mode automatically runs through the durable sync fallback path.</p>
+<h2 id="standard-run">Standard run</h2>
+<p>From repo root:</p>
+<pre><code class="hljs language-powershell">npm run podcast:llm:scripts<span class="hljs-literal">-only</span></code></pre>
+<p>The runner prints live progress:</p>
+<ul>
+<li><code>[N/79] &lt;slug&gt; - start</code></li>
+<li><code>packet ready</code></li>
+<li><code>candidate ready</code></li>
+<li><code>published</code> or <code>error</code></li>
+</ul>
+<h2 id="what-self-cleaning-does">What self-cleaning does</h2>
+<ul>
+<li>Removes stale incomplete runs before a new run starts.</li>
+<li>Tracks active work in <code>generated/scripts-only/.active-run.json</code>.</li>
+<li>On Ctrl+C, writes partial summary and clears active lock.</li>
+<li>Uses <code>&lt;timestamp&gt;-incomplete</code> while running, then renames to complete folder on success.</li>
+</ul>
+<h2 id="find-latest-summary">Find latest summary</h2>
+<pre><code class="hljs language-powershell"><span class="hljs-built_in">Get-ChildItem</span> <span class="hljs-string">&quot;podcasts/llm-podcast-generator-review/generated/scripts-only&quot;</span> <span class="hljs-literal">-Directory</span> `
+| <span class="hljs-built_in">Sort-Object</span> LastWriteTime <span class="hljs-literal">-Descending</span> `
+| <span class="hljs-built_in">Select-Object</span> <span class="hljs-literal">-First</span> <span class="hljs-number">1</span> `
+| <span class="hljs-built_in">ForEach-Object</span> { <span class="hljs-built_in">Join-Path</span> <span class="hljs-variable">$_</span>.FullName <span class="hljs-string">&quot;summary.json&quot;</span> }</code></pre>
+<h2 id="retry-only-failed-slugs">Retry only failed slugs</h2>
+<pre><code class="hljs language-powershell">npm run podcast:llm:scripts<span class="hljs-literal">-only</span>:retry<span class="hljs-literal">-failed</span> <span class="hljs-literal">--</span> <span class="hljs-literal">--summary</span> <span class="hljs-string">&quot;podcasts/llm-podcast-generator-review/generated/scripts-only/&lt;run&gt;/summary.json&quot;</span></code></pre>
+<p>This reads <code>status=error</code> entries and re-runs only those slugs.</p>
+<h2 id="recommended-fallback-tuning-for-unstable-apis">Recommended fallback tuning for unstable APIs</h2>
+<pre><code class="hljs language-powershell">node podcasts/llm<span class="hljs-literal">-podcast-generator-review</span>/src/generate<span class="hljs-literal">-scripts-only</span>.js `
+  <span class="hljs-literal">--group</span> all `
+  <span class="hljs-literal">--model</span> openai/gpt<span class="hljs-literal">-5</span>.<span class="hljs-number">4</span> `
+  <span class="hljs-literal">--retries</span> <span class="hljs-number">4</span> `
+  <span class="hljs-literal">--retry-delay-ms</span> <span class="hljs-number">3000</span> `
+  <span class="hljs-literal">--max-repair-attempts</span> <span class="hljs-number">5</span></code></pre>
+<h2 id="failure-classes-and-responses">Failure classes and responses</h2>
+<ol>
+<li>Network/provider transient errors (<code>429</code>, <code>502/503/504</code>, timeout, reset)<ul>
+<li>Increase retries and retry delay.</li>
+<li>Re-run failed slugs only.</li>
+</ul>
+</li>
+<li>Generation quality/gate failures<ul>
+<li>Increase <code>--max-repair-attempts</code>.</li>
+<li>Re-run failed slugs only.</li>
+</ul>
+</li>
+<li>Persistent slug failure<ul>
+<li>Script salvage fallback uses existing live script for that slug so full-catalog processing can continue.</li>
+<li>Check summary for <code>published-salvage</code>.</li>
+</ul>
+</li>
+</ol>
+<h2 id="completion-check">Completion check</h2>
+<p>After run:</p>
+<pre><code class="hljs language-powershell"><span class="hljs-variable">$summary</span> = <span class="hljs-built_in">Get-Content</span> <span class="hljs-string">&quot;podcasts/llm-podcast-generator-review/generated/scripts-only/&lt;run&gt;/summary.json&quot;</span> <span class="hljs-literal">-Raw</span> | <span class="hljs-built_in">ConvertFrom-Json</span>
+<span class="hljs-string">&quot;selected=<span class="hljs-variable">$</span>(<span class="hljs-variable">$summary</span>.selected) published=<span class="hljs-variable">$</span>(<span class="hljs-variable">$summary</span>.published) failed=<span class="hljs-variable">$</span>(<span class="hljs-variable">$summary</span>.failed)&quot;</span></code></pre>
+<p>Completion target is <code>published == selected</code>.</p>
+
+  </main>
+  <footer role="contentinfo" class="site-footer">
+    <p><strong>GIT Going with GitHub</strong> - A workshop by <a href="https://community-access.org">Community Access</a></p>
+    <p><a href="https://github.com/community-access/git-going-with-github">View on GitHub</a> · <a href="https://community-access.org">community-access.org</a></p>
+  </footer>
+
+  </body>
+</html>

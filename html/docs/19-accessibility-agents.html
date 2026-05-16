@@ -64,22 +64,24 @@
 </blockquote>
 <blockquote>
 <p><strong>Related appendices:</strong> <a href="appendix-l-agents-reference.html">Appendix L: Agents Reference</a> | <a href="appendix-k-copilot-reference.html">Appendix K: Copilot Reference</a>
-<strong>Authoritative sources:</strong> <a href="https://docs.github.com/en/copilot/using-github-copilot/using-extensions-to-integrate-external-tools-with-copilot-chat">GitHub Docs: Using extensions with Copilot</a> | <a href="https://code.visualstudio.com/docs/copilot/copilot-chat#_chat-participants">VS Code Docs: Chat participants</a></p>
+<strong>Authoritative sources:</strong> <a href="https://docs.github.com/en/copilot/using-github-copilot/using-extensions-to-integrate-external-tools-with-copilot-chat">GitHub Docs: Using extensions with Copilot</a> | <a href="https://code.visualstudio.com/docs/copilot/copilot-chat#_chat-participants">VS Code Docs: Chat participants</a> | <a href="https://code.visualstudio.com/docs/copilot/agents/agents-window">VS Code Docs: Agents window</a></p>
 </blockquote>
 <h2 id="55-ai-agents-across-3-teams-and-5-platforms">55 AI Agents Across 3 Teams and 5 Platforms</h2>
 <blockquote>
 <p><strong>Day 2, Block 3 Material</strong></p>
-<p><strong>Before you read this guide:</strong></p>
-<p><a href="https://github.com/community-access/accessibility-agents">Accessibility Agents</a> is a growing open source ecosystem: <strong>55 AI-powered agents</strong> organized into <strong>three teams</strong> (Accessibility, GitHub Workflow, and Developer Tools), running on <strong>five platforms</strong> (GitHub Copilot, Claude Code, Gemini CLI, Claude Desktop, and Codex CLI). This chapter introduces the full landscape. Explore the agents that match your interests and workflows - there is no fixed subset you are required to use.</p>
+<p><a href="https://github.com/community-access/accessibility-agents">Accessibility Agents</a> is a growing open source ecosystem: <strong>80 AI-powered agents</strong> organized into <strong>three teams</strong> (Accessibility, GitHub Workflow, and Developer Tools), running on <strong>five platforms</strong> (GitHub Copilot, Claude Code, Gemini CLI, Claude Desktop, and Codex CLI). This chapter introduces the full landscape. Explore the agents that match your interests and workflows - there is no fixed subset you are required to use.</p>
 <p><strong>The agents are only useful if you have already done the work manually.</strong> An agent that summarizes issues is useless to someone who has never read an issue. An agent that reviews a diff is useless to someone who has never read a diff. The agent does not teach you the skill - it multiplies a skill you already have.</p>
 <p>Day 1 built those skills. This chapter shows how to amplify them with automation - and how you can contribute new agents, improve existing ones, and shape the project&#39;s future.</p>
+</blockquote>
+<blockquote>
+<p><strong>VS Code 1.120 note:</strong> The Agents window is now available in VS Code Stable as a Preview feature. It does not replace custom Accessibility Agents. It gives you a dedicated window for running, reviewing, and organizing agent sessions across projects. Learn custom agents here, then use the Agents window when you want a single place to manage sessions, changed files, customizations, and validation tasks. See <a href="appendix-k-copilot-reference.html#4a-vs-code-1120-agents-window-and-impactful-updates">Appendix K: VS Code 1.120 Agents Window and Impactful Updates</a>.</p>
 </blockquote>
 <h2 id="prerequisites-checklist">Prerequisites Checklist</h2>
 <h3 id="before-starting-this-chapter-verify-you-have-completed">Before starting this chapter, verify you have completed</h3>
 <h3 id="core-prerequisites-required-for-all-agents">Core Prerequisites (Required for All Agents)</h3>
 <ul>
 <li><input aria-label="Chapter 0:" disabled="" type="checkbox"> Chapter 0: <a href="00-pre-workshop-setup.html">Pre-Workshop Setup</a> - Git, VS Code, and GitHub account</li>
-<li><input aria-label="Chapter 16:" disabled="" type="checkbox"> Chapter 16: <a href="16-github-copilot.html">GitHub Copilot</a> - GitHub Copilot Chat installed and working</li>
+<li><input aria-label="Chapter 16:" disabled="" type="checkbox"> Chapter 16: <a href="16-github-copilot.html">GitHub Copilot</a> - built-in Copilot features enabled and working in VS Code</li>
 <li><input aria-label="GitHub Copilot access (Copilot Free tier is enough for this workshop)" disabled="" type="checkbox"> GitHub Copilot access (Copilot Free tier is enough for this workshop)</li>
 <li><input aria-label="" disabled="" type="checkbox"> <code>.github/agents/</code> folder exists in your repository (or will create custom agents)</li>
 </ul>
@@ -99,7 +101,7 @@
 <td><a href="03-navigating-repositories.html">Ch 2</a>, <a href="05-working-with-issues.html">Ch 4</a>, <a href="06-working-with-pull-requests.html">Ch 6</a></td>
 </tr>
 <tr>
-<td>Accessibility monitoring (<code>@insiders-a11y-tracker</code>)</td>
+<td>Accessibility monitoring (<code>@insiders-a11y-tracker</code>, <code>@accessibility-regression-detector</code>)</td>
 <td>Filed an accessibility bug, applied WCAG labels, checked heading hierarchy</td>
 <td><a href="05-working-with-issues.html">Ch 4</a>, <a href="17-issue-templates.html">Ch 15</a></td>
 </tr>
@@ -111,12 +113,27 @@
 <tr>
 <td>Web accessibility auditing (<code>@web-accessibility-wizard</code>, <code>@contrast-master</code>, <code>@keyboard-navigator</code>, etc.)</td>
 <td>Understand WCAG success criteria, tested pages with a screen reader</td>
-<td><a href="appendix-m-accessibility-standards.html">Appendix C</a></td>
+<td><a href="appendix-m-accessibility-standards.html">Appendix M</a></td>
 </tr>
 <tr>
-<td>Document accessibility (<code>@word-accessibility</code>, <code>@pdf-accessibility</code>, etc.)</td>
-<td>Reviewed a document for accessibility issues manually</td>
-<td><a href="appendix-m-accessibility-standards.html">Appendix C</a></td>
+<td>Document accessibility (<code>@word-accessibility</code>, <code>@excel-accessibility</code>, <code>@pdf-accessibility</code>, <code>@epub-accessibility</code>)</td>
+<td>Reviewed a Word/Excel/PDF/ePub document for accessibility issues manually; understand Office/PDF structure</td>
+<td><a href="appendix-m-accessibility-standards.html">Appendix M</a>, Office application accessibility tutorials</td>
+</tr>
+<tr>
+<td>Document remediation (<code>@office-remediator</code>, <code>@pdf-remediator</code>)</td>
+<td>Used Office or PDF editing tools; understand tagging, alternative text, bookmarks</td>
+<td>Office/PDF application docs, PDF/UA specification basics</td>
+</tr>
+<tr>
+<td>Python/wxPython agents (<code>@python-specialist</code>, <code>@wxpython-specialist</code>)</td>
+<td>Written Python code; understand tkinter or wxPython GUI basics; tested keyboard navigation in a GUI app</td>
+<td>External Python frameworks documentation</td>
+</tr>
+<tr>
+<td>Developer tools (<code>@ci-accessibility</code>, <code>@playwright-scanner</code>)</td>
+<td>Set up CI/CD pipelines; written Playwright tests or similar automation</td>
+<td><a href="14-git-in-practice.html">Ch 14</a>, external CI/CD and testing documentation</td>
 </tr>
 </tbody></table>
 <p>This is not an exhaustive list - it illustrates the principle. Before running any agent, ask yourself: <em>could I do this task manually right now?</em> If the answer is no, learn the manual skill first.</p>
@@ -178,7 +195,7 @@ I am ready because I have already: [specific skill from Day 1]</code></pre>
 <p><strong>Estimated time:</strong> 30 minutes.</p>
 <ol>
 <li>Clone your fork of <a href="https://github.com/Community-Access/accessibility-agents">accessibility-agents</a> to VS Code (or open it in github.dev).</li>
-<li>Open Copilot Chat: <code>Ctrl+Shift+I</code> (Mac: <code>Cmd+Shift+I</code>).</li>
+<li>Open Copilot Chat: <code>Ctrl+Alt+I</code>, or run <strong>Chat: Open Chat</strong> from the Command Palette if your keymap differs.</li>
 <li>Choose one agent from your discovery list. If unsure, start with <code>@daily-briefing</code> or <code>@issue-tracker</code>.</li>
 <li>Run it with a simple prompt. Examples:<ul>
 <li><code>@daily-briefing morning briefing</code></li>
@@ -257,7 +274,7 @@ Could it make a mistake? [your answer and what kind]</code></pre>
 <ol>
 <li>Cannot find an agent that matches your skills? Start with <code>@daily-briefing</code> or <code>@issue-tracker</code> - those build directly on Chapter 2-5 material. If you have not done those manual steps yet, go back to those chapters first.</li>
 <li>Agent output does not make sense? That is the right response. Paste the output in an issue comment along with your confusion. That is valuable feedback - the agent may need better instructions or guardrails.</li>
-<li>Cannot access the agents in Copilot Chat? Verify: Is Copilot Chat extension installed (not just base Copilot)? Are you signed in to GitHub in VS Code? Does <code>.github/agents/</code> folder exist in your cloned repository?</li>
+<li>Cannot access the agents in Copilot Chat? Verify: Are built-in AI features enabled in VS Code? Are you signed in to GitHub in VS Code with Copilot access? Does <code>.github/agents/</code> folder exist in your cloned repository?</li>
 <li>Repository will not clone? Use the terminal: <code>git clone https://github.com/[your-username]/accessibility-agents.git</code> then open the folder in VS Code.</li>
 <li>Ask facilitator to show them what agent you wanted to run, what output you got, and what you expected.</li>
 <li>Finished but not sure you did it right? Compare your work against the <a href="solutions/solution-15-agents.html">Challenge 15 reference solution</a>.</li>
@@ -295,7 +312,8 @@ Could it make a mistake? [your answer and what kind]</code></pre>
 <ol>
 <li><a href="#1-the-principle-skill-first-agent-second">The Principle: Skill First, Agent Second</a></li>
 <li><a href="#2-setup-and-configuration">Setup and Configuration</a></li>
-<li><a href="#3-the-ecosystem-55-agents-3-teams-5-platforms">The Ecosystem: 55 Agents, 3 Teams, 5 Platforms</a></li>
+<li><a href="#3-the-ecosystem-80-agents-3-teams-5-platforms">The Ecosystem: 80 Agents, 3 Teams, 5 Platforms</a>
+3A. <a href="#3a-multi-platform-deployment---beyond-vs-code">Multi-Platform Deployment - Beyond VS Code</a></li>
 <li><a href="#4-agents-in-detail---hands-on-reference">Agents in Detail - Hands-On Reference</a></li>
 <li><a href="#5-slash-commands-and-prompts">Slash Commands and Prompts</a></li>
 <li><a href="#6-contributing-to-the-ecosystem">Contributing to the Ecosystem</a></li>
@@ -357,7 +375,6 @@ Could it make a mistake? [your answer and what kind]</code></pre>
 </ul>
 </details>
 
-
 <h2 id="2-setup-and-configuration">2. Setup and Configuration</h2>
 <h3 id="quick-install-one-command">Quick Install (One Command)</h3>
 <p>Accessibility Agents now ships with a one-liner installer that sets up all 55 agents for your platform:</p>
@@ -374,13 +391,13 @@ Could it make a mistake? [your answer and what kind]</code></pre>
 <pre><code class="hljs language-bash">git <span class="hljs-built_in">clone</span> https://github.com/[your-username]/accessibility-agents.git</code></pre>
 </li>
 <li><strong>Open in VS Code</strong>: navigate to the folder and run <code>code .</code> (or File, then Open Folder)</li>
-<li><strong>Open Copilot Chat</strong>: <code>Ctrl+Shift+I</code></li>
+<li><strong>Open Copilot Chat</strong>: <code>Ctrl+Alt+I</code>, or run <strong>Chat: Open Chat</strong> from the Command Palette if your keymap differs</li>
 <li><strong>Test</strong>: type <code>@daily-briefing morning briefing</code> and press <code>Enter</code></li>
 </ol>
 <p><strong>No API keys. No configuration files. The installer handles everything.</strong> If Copilot Chat works, the agents work.</p>
 <h3 id="prerequisites">Prerequisites</h3>
 <ul>
-<li>GitHub Copilot Chat extension installed (see <a href="16-github-copilot.html#2-installing-github-copilot">GitHub Copilot: Installation</a>)</li>
+<li>Built-in GitHub Copilot features enabled in current VS Code (see <a href="16-github-copilot.html#2-setting-up-github-copilot">GitHub Copilot setup</a>)</li>
 <li>Signed in to GitHub via VS Code</li>
 <li>A workspace open containing <code>.github/agents/</code> folder with <code>.agent.md</code> files</li>
 </ul>
@@ -614,8 +631,7 @@ Response appears below the Send button; use H to find the response section headi
 </ul>
 </details>
 
-
-<h2 id="3-the-ecosystem-55-agents-3-teams-5-platforms">3. The Ecosystem: 55 Agents, 3 Teams, 5 Platforms</h2>
+<h2 id="3-the-ecosystem-80-agents-3-teams-5-platforms">3. The Ecosystem: 80 Agents, 3 Teams, 5 Platforms</h2>
 <p>Accessibility Agents is an ecosystem of 55 specialized agents organized into three teams, each addressing a different dimension of accessible software development. Browse all three teams below, then choose the agents that match your current skills and interests.</p>
 <h3 id="team-1-accessibility-26-agents">Team 1: Accessibility (26 agents)</h3>
 <p>These agents audit, fix, and enforce accessibility across web, document, and mobile platforms.</p>
@@ -926,7 +942,261 @@ Response appears below the Send button; use H to find the response section headi
 </ul>
 </details>
 
-
+<h2 id="3a-multi-platform-deployment---beyond-vs-code">3A. Multi-Platform Deployment - Beyond VS Code</h2>
+<p>Chapter 16 introduced GitHub Copilot running in VS Code. But Accessibility Agents run on <strong>five platforms</strong>, each with its own setup, capabilities, and workflow. This section shows you when to use each platform and how to choose.</p>
+<h3 id="the-five-platforms-when-to-use-each">The Five Platforms: When to Use Each</h3>
+<table>
+<thead>
+<tr>
+<th scope="col">Platform</th>
+<th scope="col">Best For</th>
+<th scope="col">Installation Time</th>
+<th scope="col">Learning Curve</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><strong>GitHub Copilot (VS Code)</strong></td>
+<td>Full-time development, web work, accessibility audits</td>
+<td>5 min</td>
+<td>Low (familiar IDE)</td>
+</tr>
+<tr>
+<td><strong>Claude Code (CLI)</strong></td>
+<td>Fast iteration, scripting, quick experiments</td>
+<td>2 min</td>
+<td>Low (command line)</td>
+</tr>
+<tr>
+<td><strong>Gemini CLI</strong></td>
+<td>Free tier accessibility, Google Search integration</td>
+<td>2 min</td>
+<td>Low (command line)</td>
+</tr>
+<tr>
+<td><strong>Claude Desktop</strong></td>
+<td>Extended context, longer sessions, offline work</td>
+<td>5 min</td>
+<td>Low (GUI)</td>
+</tr>
+<tr>
+<td><strong>Codex CLI</strong></td>
+<td>Experimental features, TOML configuration</td>
+<td>3 min</td>
+<td>Medium (TOML syntax)</td>
+</tr>
+</tbody></table>
+<h3 id="platform-comparison-key-capabilities">Platform Comparison: Key Capabilities</h3>
+<table>
+<thead>
+<tr>
+<th scope="col">Feature</th>
+<th scope="col">Copilot</th>
+<th scope="col">Claude Code</th>
+<th scope="col">Gemini</th>
+<th scope="col">Desktop</th>
+<th scope="col">Codex</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><strong>Web accessibility audit</strong></td>
+<td>Yes</td>
+<td>Yes</td>
+<td>Yes</td>
+<td>Yes</td>
+<td>Yes</td>
+</tr>
+<tr>
+<td><strong>Document remediation</strong></td>
+<td>Yes</td>
+<td>Yes</td>
+<td>Yes</td>
+<td>Yes</td>
+<td>No</td>
+</tr>
+<tr>
+<td><strong>GitHub integration</strong></td>
+<td>Native</td>
+<td>Yes</td>
+<td>Limited</td>
+<td>Yes</td>
+<td>Yes</td>
+</tr>
+<tr>
+<td><strong>Keyboard-only use</strong></td>
+<td>Full</td>
+<td>Full</td>
+<td>Full</td>
+<td>Partial</td>
+<td>Full</td>
+</tr>
+<tr>
+<td><strong>Screen reader support</strong></td>
+<td>Strong</td>
+<td>Strong</td>
+<td>Good</td>
+<td>Good</td>
+<td>Strong</td>
+</tr>
+<tr>
+<td><strong>Cost</strong></td>
+<td>Copilot subscription</td>
+<td>Claude Pro</td>
+<td>Free tier available</td>
+<td>Claude Pro</td>
+<td>Free</td>
+</tr>
+</tbody></table>
+<h3 id="getting-started-on-each-platform">Getting Started on Each Platform</h3>
+<h4 id="option-1-start-with-github-copilot-recommended-for-most-users">Option 1: Start with GitHub Copilot (Recommended for Most Users)</h4>
+<p>You already have Copilot if VS Code is installed. No additional setup needed.</p>
+<p><strong>To start using agents right now:</strong></p>
+<ol>
+<li>Open VS Code</li>
+<li>Press <code>Ctrl+Alt+I</code> (or <strong>View → Copilot Chat</strong>)</li>
+<li>Type <code>@daily-briefing morning briefing</code></li>
+<li>Read the result in the Chat panel</li>
+</ol>
+<p><strong>Next step:</strong> Follow the challenges in Section 4 below. All examples assume Copilot in VS Code unless noted otherwise.</p>
+<h4 id="option-2-use-claude-code-for-faster-iteration">Option 2: Use Claude Code for Faster Iteration</h4>
+<p>Claude Code runs on the command line and offers free tier access (for certain Claude models).</p>
+<p><strong>Quick start:</strong></p>
+<pre><code class="hljs language-bash">npm install -g @anthropic-ai/claude-code
+claude code auth
+claude code @daily-briefing morning briefing</code></pre>
+<p><strong>When to prefer Claude Code:</strong></p>
+<ul>
+<li>You want to test agents without VS Code</li>
+<li>You prefer terminal workflows</li>
+<li>You want quick command-line experimentation</li>
+</ul>
+<p><strong>Full setup:</strong> See <a href="appendix-aa-agent-installation-setup.html#claude-code">Appendix AA: Installation &amp; Setup - Claude Code</a>.</p>
+<h4 id="option-3-use-gemini-cli-for-free-accessibility">Option 3: Use Gemini CLI for Free Accessibility</h4>
+<p>Gemini CLI offers <strong>free tier access</strong> to Gemini models with built-in Google Search.</p>
+<p><strong>Quick start:</strong></p>
+<pre><code class="hljs language-bash">npm install -g @google/gemini-cli
+gemini config <span class="hljs-built_in">set</span> api-key YOUR_API_KEY  <span class="hljs-comment"># Get free key at ai.google.dev</span>
+gemini @daily-briefing morning briefing</code></pre>
+<p><strong>When to prefer Gemini:</strong></p>
+<ul>
+<li>Budget is a priority</li>
+<li>You want Google Search integrated with agent responses</li>
+<li>You prefer lightweight CLI tools</li>
+</ul>
+<p><strong>Full setup:</strong> See <a href="appendix-aa-agent-installation-setup.html#gemini-cli">Appendix AA: Installation &amp; Setup - Gemini CLI</a>.</p>
+<h4 id="option-4-use-claude-desktop-for-long-sessions">Option 4: Use Claude Desktop for Long Sessions</h4>
+<p>Claude Desktop is the native Claude application with extended context windows and offline capability.</p>
+<p><strong>When to prefer Claude Desktop:</strong></p>
+<ul>
+<li>Working on large documents or codebases</li>
+<li>Need longer conversation context (200K tokens+)</li>
+<li>Offline work on the plane</li>
+<li>MCP server integration for custom tools</li>
+</ul>
+<p><strong>Full setup:</strong> See <a href="appendix-aa-agent-installation-setup.html#claude-desktop">Appendix AA: Installation &amp; Setup - Claude Desktop</a>.</p>
+<h3 id="choosing-your-primary-platform">Choosing Your Primary Platform</h3>
+<p><strong>Decision tree:</strong></p>
+<ol>
+<li><p><strong>Do you already use VS Code daily?</strong></p>
+<ul>
+<li>Yes → Use <strong>GitHub Copilot (VS Code)</strong> - it&#39;s already there</li>
+<li>No → Continue to #2</li>
+</ul>
+</li>
+<li><p><strong>Do you have a Copilot or Claude subscription?</strong></p>
+<ul>
+<li>Yes → Use <strong>Claude Desktop</strong> for longer sessions or Claude Code for CLI</li>
+<li>No → Continue to #3</li>
+</ul>
+</li>
+<li><p><strong>Do you prefer CLI or GUI?</strong></p>
+<ul>
+<li>CLI → Use <strong>Gemini CLI</strong> (free) or <strong>Claude Code</strong></li>
+<li>GUI → Use <strong>Claude Desktop</strong></li>
+</ul>
+</li>
+<li><p><strong>Are you exploring experimental features?</strong></p>
+<ul>
+<li>Yes → Try <strong>Codex CLI</strong> (TOML-based configuration)</li>
+<li>No → Pick one of the above</li>
+</ul>
+</li>
+</ol>
+<h3 id="running-the-same-agent-on-multiple-platforms">Running the Same Agent on Multiple Platforms</h3>
+<p>All agents work the same across platforms, but the workflow differs slightly.</p>
+<p><strong>Example: Run <code>@aria-specialist</code> on all five platforms</strong></p>
+<p><strong>GitHub Copilot (VS Code):</strong></p>
+<pre><code class="hljs">Ctrl+Alt+I → <span class="hljs-built_in">Type</span>: <span class="hljs-meta">@aria</span>-specialist audit <span class="hljs-keyword">this</span> component <span class="hljs-keyword">for</span> ARIA</code></pre>
+<p><strong>Claude Code:</strong></p>
+<pre><code class="hljs language-bash">claude code @aria-specialist audit this component <span class="hljs-keyword">for</span> ARIA</code></pre>
+<p><strong>Gemini CLI:</strong></p>
+<pre><code class="hljs language-bash">gemini @aria-specialist audit this component <span class="hljs-keyword">for</span> ARIA</code></pre>
+<p><strong>Claude Desktop:</strong></p>
+<pre><code class="hljs">Open chat → <span class="hljs-built_in">Type</span>: <span class="hljs-meta">@aria</span>-specialist audit <span class="hljs-keyword">this</span> component <span class="hljs-keyword">for</span> ARIA</code></pre>
+<p><strong>Codex CLI:</strong></p>
+<pre><code class="hljs language-bash">codex run @aria-specialist --task <span class="hljs-string">&quot;audit this component for ARIA&quot;</span></code></pre>
+<p><strong>Result:</strong> All five produce similar accessibility findings, but with platform-specific presentation (VS Code sidebar, terminal, or GUI chat window).</p>
+<h3 id="learning-paths-by-platform">Learning Paths by Platform</h3>
+<h4 id="path-a-quoti-use-vs-codequot-recommended">Path A: &quot;I use VS Code&quot; (Recommended)</h4>
+<ol>
+<li>Install Copilot extension (automatic)</li>
+<li>Complete all challenges in Section 4 using Copilot Chat</li>
+<li>Optionally try Claude Desktop for longer sessions</li>
+<li>Explore Appendices AA, AB, AC for advanced features</li>
+</ol>
+<h4 id="path-b-quoti-prefer-command-linequot">Path B: &quot;I prefer command line&quot;</h4>
+<ol>
+<li>Install Claude Code CLI: <code>npm install -g @anthropic-ai/claude-code</code></li>
+<li>Run agents from terminal</li>
+<li>Use Gemini CLI for free tier experimentation</li>
+<li>Refer to Appendix AB for hooks and scripting</li>
+</ol>
+<h4 id="path-c-quoti-want-the-best-of-bothquot">Path C: &quot;I want the best of both&quot;</h4>
+<ol>
+<li>Use Copilot in VS Code for daily work</li>
+<li>Install Claude Desktop for long-context projects</li>
+<li>Keep Gemini CLI for quick experiments</li>
+<li>Switch between platforms as needed per task</li>
+</ol>
+<h3 id="screen-reader-low-vision-and-keyboard-navigation-by-platform">Screen Reader, Low Vision, and Keyboard Navigation by Platform</h3>
+<p><strong>GitHub Copilot (VS Code):</strong></p>
+<ul>
+<li>Screen readers: Full support in Chat panel; use <code>Ctrl+Alt+I</code> to open</li>
+<li>Low vision: Zoom independently with <code>Ctrl+=</code>; use High Contrast theme</li>
+<li>Keyboard: Full keyboard navigation; all features accessible</li>
+</ul>
+<p><strong>Claude Code (CLI):</strong></p>
+<ul>
+<li>Screen readers: Full terminal support (NVDA, JAWS announce all output)</li>
+<li>Low vision: Terminal zoom and colors configurable</li>
+<li>Keyboard: Native CLI keyboard support</li>
+</ul>
+<p><strong>Gemini CLI:</strong></p>
+<ul>
+<li>Screen readers: Full terminal support</li>
+<li>Low vision: Configure terminal colors and font size</li>
+<li>Keyboard: Full CLI keyboard navigation</li>
+</ul>
+<p><strong>Claude Desktop:</strong></p>
+<ul>
+<li>Screen readers: Strong chat interface support</li>
+<li>Low vision: Built-in zoom and theme options</li>
+<li>Keyboard: Tab through controls; standard keyboard shortcuts</li>
+</ul>
+<p><strong>Codex CLI:</strong></p>
+<ul>
+<li>Screen readers: Full terminal output announced</li>
+<li>Low vision: Terminal customization available</li>
+<li>Keyboard: Full terminal keyboard navigation</li>
+</ul>
+<h3 id="next-steps">Next Steps</h3>
+<p>Choose your primary platform and continue with the challenges in Section 4. You can switch platforms anytime - all agents work the same way.</p>
+<p><strong>Quick reference:</strong></p>
+<ul>
+<li><strong>Already in VS Code?</strong> Go to Section 4 now.</li>
+<li><strong>Want to try CLI first?</strong> Read <a href="appendix-aa-agent-installation-setup.html">Appendix AA: Installation</a> then come back to Section 4.</li>
+<li><strong>Want full platform comparison?</strong> See <a href="appendix-k-copilot-reference.html">Appendix K: Copilot Reference</a> for detailed feature matrix.</li>
+</ul>
+<hr>
 <h2 id="4-agents-in-detail---hands-on-reference">4. Agents in Detail - Hands-On Reference</h2>
 <p>This section walks through several agents in depth so you can see how they work, what they produce, and how to evaluate their output. These examples use GitHub Workflow agents because they build directly on Day 1 skills - but the same patterns apply to every agent in the ecosystem. After working through these examples, explore agents from any team that match your interests.</p>
 <p>Open any agent file in VS Code to read its full instructions: <code>.github/agents/[name].agent.md</code></p>
@@ -1181,7 +1451,6 @@ Return to <a href="17-issue-templates.html">Issue Templates</a> and <a href="05-
 
 <span class="hljs-strong">**Suggested Fix:**</span> Change <span class="hljs-code">`### Screen Reader Mode`</span> to <span class="hljs-code">`## Screen Reader Mode`</span>
 
-
 <span class="hljs-section">#### Issue 2: Non-Descriptive Link Text</span>
 
 <span class="hljs-strong">**File:**</span> README.md
@@ -1200,7 +1469,6 @@ For more information, [click here](https://example.com/guide).
 
 <span class="hljs-strong">**Suggested Fix:**</span> Use descriptive link text: <span class="hljs-code">`Read the [complete setup guide](https://example.com/guide).`</span>
 
-
 <span class="hljs-section">### Positive Changes: 1</span>
 
 <span class="hljs-section">#### Improvement: ARIA Label Added</span>
@@ -1218,7 +1486,6 @@ For more information, [click here](https://example.com/guide).
 <span class="hljs-strong">**WCAG Guideline:**</span> 4.1.2 Name, Role, Value (Level A)
 
 <span class="hljs-strong">**Impact:**</span> Screen reader users can now understand the button&#x27;s purpose without visible text.
-
 
 <span class="hljs-section">## Recommendations</span>
 
@@ -1410,7 +1677,6 @@ Load accessibility tracking configuration from `.github/agents/preferences.md`
 </ul>
 </details>
 
-
 <h2 id="6-contributing-to-the-ecosystem">6. Contributing to the Ecosystem</h2>
 <p>The 55 Accessibility Agents and 54+ slash commands are starting points. The <code>.agent.md</code> format is open - you can create your own agents for any repeatable workflow, and contribute them back to the project.</p>
 <blockquote>
@@ -1529,11 +1795,20 @@ For subjective issues (alt text, plain language):
 <h3 id="invoking-custom-agents">Invoking Custom Agents</h3>
 <h4 id="from-vs-code">From VS Code</h4>
 <ol>
-<li>Open Copilot Chat (<code>Ctrl+Shift+I</code> / <code>Cmd+Shift+I</code> on macOS)</li>
+<li>Open Copilot Chat (<code>Ctrl+Alt+I</code>) or run <strong>Chat: Open Chat</strong> from the Command Palette</li>
 <li>In the Chat input toolbar, select the <strong>Set Agent</strong> button</li>
 <li>Select your custom agent from the agent picker</li>
 <li>Type your request - the agent executes in your local workspace</li>
 </ol>
+<h4 id="from-the-vs-code-agents-window">From the VS Code Agents Window</h4>
+<ol>
+<li>Run <strong>Chat: Open Agents Window</strong> from the Command Palette</li>
+<li>Select <strong>New</strong> or press <code>Ctrl+N</code></li>
+<li>Choose the workspace or GitHub repository that contains your <code>.github/agents/</code> folder</li>
+<li>Select the custom agent from the agent dropdown when it is available for that session type</li>
+<li>Run a focused prompt and review the Changes panel before accepting, committing, merging, or checking out the result</li>
+</ol>
+<p>Use this route when you are testing several custom agents, comparing agent output across projects, or validating a task-oriented agent with a dedicated Changes panel.</p>
 <h4 id="from-githubcom-task-mode">From GitHub.com (Task mode)</h4>
 <ol>
 <li>Open Copilot Chat on GitHub.com</li>
@@ -1595,7 +1870,7 @@ For subjective issues (alt text, plain language):
 <h5 id="step-2-open-copilot-chat">Step 2: Open Copilot Chat</h5>
 <h6 id="what-to-do">What to do</h6>
 <ol>
-<li><strong>Keyboard shortcut:</strong> Press <code>Ctrl+Shift+I</code> (Windows/Linux) or <code>Cmd+Shift+I</code> (macOS)<ul>
+<li><strong>Keyboard shortcut:</strong> Press <code>Ctrl+Alt+I</code>, or run <strong>Chat: Open Chat</strong> from the Command Palette if your keymap differs<ul>
 <li><strong>Alternative:</strong> Use menu: <strong>View</strong> → <strong>Copilot Chat</strong></li>
 </ul>
 </li>
@@ -1609,7 +1884,7 @@ For subjective issues (alt text, plain language):
 </ul>
 <h6 id="if-copilot-chat-doesn39t-open">If Copilot Chat doesn&#39;t open</h6>
 <ul>
-<li>Make sure GitHub Copilot Chat extension is installed (Extensions sidebar → search &quot;GitHub Copilot Chat&quot;)</li>
+<li>Make sure built-in AI features are enabled in VS Code and that you are signed in with an account that has Copilot access</li>
 <li>Make sure you&#39;re signed into GitHub (top right of VS Code)</li>
 <li>Restart VS Code if neither of the above is the problem</li>
 </ul>
@@ -1944,7 +2219,7 @@ A security vulnerability report template ready for your project&#x27;s use.</cod
 <h5 id="step-5-test-the-extended-agent">Step 5: Test the Extended Agent</h5>
 <h6 id="what-to-do">What to do</h6>
 <ol>
-<li>Open Copilot Chat again: <code>Ctrl+Shift+I</code></li>
+<li>Open Copilot Chat again: <code>Ctrl+Alt+I</code>, or run <strong>Chat: Open Chat</strong> from the Command Palette</li>
 <li>Type: <code>@template-builder create security template</code></li>
 <li>Press <code>Enter</code></li>
 <li><p>The agent should now ask vulnerability-specific questions:</p>
@@ -2388,7 +2663,7 @@ Run this <span class="hljs-built_in">command</span>? (Y/n)</code></pre>
 </thead>
 <tbody><tr>
 <td>Open Copilot Chat</td>
-<td><code>Ctrl+Shift+I</code></td>
+<td><code>Ctrl+Alt+I</code> or <strong>Chat: Open Chat</strong> from the Command Palette</td>
 </tr>
 <tr>
 <td>Invoke agent</td>
@@ -2441,6 +2716,50 @@ Run this <span class="hljs-built_in">command</span>? (Y/n)</code></pre>
 </ol>
 <hr>
 <p><em>Next: <a href="20-build-your-agent.html">Chapter 20: Build Your Agent</a></em><br><em>Back: <a href="18-fork-and-contribute.html">Chapter 18: Fork and Contribute</a></em><br><em>Related appendices: <a href="appendix-l-agents-reference.html">Appendix L: Agents Reference</a> | <a href="appendix-k-copilot-reference.html">Appendix K: Copilot Reference</a></em></p>
+<h2 id="authoritative-sources">Authoritative Sources</h2>
+<p>Use these official references when you need the current source of truth for facts in this chapter.</p>
+<ul>
+<li><a href="https://docs.github.com/en">GitHub Docs, home</a></li>
+<li><a href="https://github.blog/changelog/">GitHub Changelog</a></li>
+<li><a href="https://docs.github.com/en/copilot">GitHub Copilot docs</a></li>
+<li><a href="https://docs.github.com/en/copilot/reference/custom-instructions-support">Custom instructions support matrix</a></li>
+<li><a href="https://docs.github.com/en/copilot/concepts/agents/cloud-agent/about-custom-agents">About custom agents</a></li>
+<li><a href="https://docs.github.com/en/copilot/concepts/agents/about-agent-skills">About agent skills</a></li>
+<li><a href="https://docs.github.com/en/copilot/concepts/auto-model-selection">About auto model selection</a></li>
+<li><a href="https://github.blog/changelog/label/copilot/">Copilot changelog feed</a></li>
+<li><a href="https://code.visualstudio.com/docs/copilot/chat/copilot-chat">VS Code Copilot chat overview</a></li>
+<li><a href="https://code.visualstudio.com/docs/copilot/agents/overview">VS Code agent overview</a></li>
+<li><a href="https://code.visualstudio.com/docs/copilot/customization/custom-instructions">VS Code custom instructions</a></li>
+<li><a href="https://www.w3.org/WAI/standards-guidelines/wcag/">W3C Web Content Accessibility Guidelines (WCAG) 2 overview</a></li>
+<li><a href="https://www.w3.org/WAI/tutorials/">WAI tutorials for accessible design patterns</a></li>
+<li><a href="https://www.w3.org/WAI/ARIA/apg/">WAI-ARIA Authoring Practices Guide</a></li>
+<li><a href="https://docs.github.com/en/site-policy/other-site-policies/github-accessibility-statement">GitHub accessibility statement</a></li>
+<li><a href="https://docs.github.com/en/get-started/using-git/about-git">About Git</a></li>
+<li><a href="https://docs.github.com/en/get-started/using-github/github-flow">GitHub flow</a></li>
+<li><a href="https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/about-pull-requests">About pull requests</a></li>
+<li><a href="https://docs.github.com/en/issues/tracking-your-work-with-issues/about-issues">About issues</a></li>
+<li><a href="https://docs.github.com/en/get-started/exploring-projects-on-github/contributing-to-a-project">Contributing to a project</a></li>
+</ul>
+<h3 id="section-level-source-map">Section-Level Source Map</h3>
+<p>Use this map to verify facts for each major section in this file.</p>
+<ul>
+<li><strong>55 AI Agents Across 3 Teams and 5 Platforms:</strong> <a href="https://docs.github.com/en">GitHub Docs, home</a>, <a href="https://github.blog/changelog/">GitHub Changelog</a>, <a href="https://docs.github.com/en/copilot">GitHub Copilot docs</a>, <a href="https://docs.github.com/en/copilot/reference/custom-instructions-support">Custom instructions support matrix</a>, <a href="https://docs.github.com/en/copilot/concepts/agents/cloud-agent/about-custom-agents">About custom agents</a></li>
+<li><strong>Prerequisites Checklist:</strong> <a href="https://docs.github.com/en">GitHub Docs, home</a>, <a href="https://github.blog/changelog/">GitHub Changelog</a>, <a href="https://docs.github.com/en/copilot">GitHub Copilot docs</a>, <a href="https://docs.github.com/en/copilot/reference/custom-instructions-support">Custom instructions support matrix</a>, <a href="https://docs.github.com/en/copilot/concepts/agents/cloud-agent/about-custom-agents">About custom agents</a></li>
+<li><strong>Workshop Recommendation (Chapter 19 / Challenge 15):</strong> <a href="https://docs.github.com/en">GitHub Docs, home</a>, <a href="https://github.blog/changelog/">GitHub Changelog</a>, <a href="https://docs.github.com/en/copilot">GitHub Copilot docs</a>, <a href="https://docs.github.com/en/copilot/reference/custom-instructions-support">Custom instructions support matrix</a>, <a href="https://docs.github.com/en/copilot/concepts/agents/cloud-agent/about-custom-agents">About custom agents</a></li>
+<li><strong>Capstone: Share Your Feedback (The Most Important Task!):</strong> <a href="https://docs.github.com/en">GitHub Docs, home</a>, <a href="https://github.blog/changelog/">GitHub Changelog</a>, <a href="https://docs.github.com/en/copilot">GitHub Copilot docs</a>, <a href="https://docs.github.com/en/copilot/reference/custom-instructions-support">Custom instructions support matrix</a>, <a href="https://docs.github.com/en/copilot/concepts/agents/cloud-agent/about-custom-agents">About custom agents</a></li>
+<li><strong>1. The Principle: Skill First, Agent Second:</strong> <a href="https://docs.github.com/en">GitHub Docs, home</a>, <a href="https://github.blog/changelog/">GitHub Changelog</a>, <a href="https://docs.github.com/en/copilot">GitHub Copilot docs</a>, <a href="https://docs.github.com/en/copilot/reference/custom-instructions-support">Custom instructions support matrix</a>, <a href="https://docs.github.com/en/copilot/concepts/agents/cloud-agent/about-custom-agents">About custom agents</a></li>
+<li><strong>2. Setup and Configuration:</strong> <a href="https://docs.github.com/en">GitHub Docs, home</a>, <a href="https://github.blog/changelog/">GitHub Changelog</a>, <a href="https://docs.github.com/en/copilot">GitHub Copilot docs</a>, <a href="https://docs.github.com/en/copilot/reference/custom-instructions-support">Custom instructions support matrix</a>, <a href="https://docs.github.com/en/copilot/concepts/agents/cloud-agent/about-custom-agents">About custom agents</a></li>
+<li><strong>3. The Ecosystem: 80 Agents, 3 Teams, 5 Platforms:</strong> <a href="https://docs.github.com/en">GitHub Docs, home</a>, <a href="https://github.blog/changelog/">GitHub Changelog</a>, <a href="https://docs.github.com/en/copilot">GitHub Copilot docs</a>, <a href="https://docs.github.com/en/copilot/reference/custom-instructions-support">Custom instructions support matrix</a>, <a href="https://docs.github.com/en/copilot/concepts/agents/cloud-agent/about-custom-agents">About custom agents</a></li>
+<li><strong>3A. Multi-Platform Deployment - Beyond VS Code:</strong> <a href="https://docs.github.com/en">GitHub Docs, home</a>, <a href="https://github.blog/changelog/">GitHub Changelog</a>, <a href="https://docs.github.com/en/copilot">GitHub Copilot docs</a>, <a href="https://docs.github.com/en/copilot/reference/custom-instructions-support">Custom instructions support matrix</a>, <a href="https://docs.github.com/en/copilot/concepts/agents/cloud-agent/about-custom-agents">About custom agents</a></li>
+<li><strong>4. Agents in Detail - Hands-On Reference:</strong> <a href="https://docs.github.com/en">GitHub Docs, home</a>, <a href="https://github.blog/changelog/">GitHub Changelog</a>, <a href="https://docs.github.com/en/copilot">GitHub Copilot docs</a>, <a href="https://docs.github.com/en/copilot/reference/custom-instructions-support">Custom instructions support matrix</a>, <a href="https://docs.github.com/en/copilot/concepts/agents/cloud-agent/about-custom-agents">About custom agents</a></li>
+<li><strong>5. Slash Commands and Prompts:</strong> <a href="https://docs.github.com/en">GitHub Docs, home</a>, <a href="https://github.blog/changelog/">GitHub Changelog</a>, <a href="https://docs.github.com/en/copilot">GitHub Copilot docs</a>, <a href="https://docs.github.com/en/copilot/reference/custom-instructions-support">Custom instructions support matrix</a>, <a href="https://docs.github.com/en/copilot/concepts/agents/cloud-agent/about-custom-agents">About custom agents</a></li>
+<li><strong>6. Contributing to the Ecosystem:</strong> <a href="https://docs.github.com/en">GitHub Docs, home</a>, <a href="https://github.blog/changelog/">GitHub Changelog</a>, <a href="https://docs.github.com/en/copilot">GitHub Copilot docs</a>, <a href="https://docs.github.com/en/copilot/reference/custom-instructions-support">Custom instructions support matrix</a>, <a href="https://docs.github.com/en/copilot/concepts/agents/cloud-agent/about-custom-agents">About custom agents</a></li>
+<li><strong>Pre-Built Workflow: Guided Accessibility Template:</strong> <a href="https://docs.github.com/en">GitHub Docs, home</a>, <a href="https://github.blog/changelog/">GitHub Changelog</a>, <a href="https://docs.github.com/en/copilot">GitHub Copilot docs</a>, <a href="https://docs.github.com/en/copilot/reference/custom-instructions-support">Custom instructions support matrix</a>, <a href="https://docs.github.com/en/copilot/concepts/agents/cloud-agent/about-custom-agents">About custom agents</a></li>
+<li><strong>Pre-Built Workflow: Guided Security Vulnerability Template:</strong> <a href="https://docs.github.com/en">GitHub Docs, home</a>, <a href="https://github.blog/changelog/">GitHub Changelog</a>, <a href="https://docs.github.com/en/copilot">GitHub Copilot docs</a>, <a href="https://docs.github.com/en/copilot/reference/custom-instructions-support">Custom instructions support matrix</a>, <a href="https://docs.github.com/en/copilot/concepts/agents/cloud-agent/about-custom-agents">About custom agents</a></li>
+<li><strong>7. The Bigger Picture: Teams, Orchestration, and Beyond VS Code:</strong> <a href="https://docs.github.com/en">GitHub Docs, home</a>, <a href="https://github.blog/changelog/">GitHub Changelog</a>, <a href="https://docs.github.com/en/copilot">GitHub Copilot docs</a>, <a href="https://docs.github.com/en/copilot/reference/custom-instructions-support">Custom instructions support matrix</a>, <a href="https://docs.github.com/en/copilot/concepts/agents/cloud-agent/about-custom-agents">About custom agents</a></li>
+<li><strong>8. GitHub Desktop, GitHub CLI, and Copilot CLI:</strong> <a href="https://docs.github.com/en">GitHub Docs, home</a>, <a href="https://github.blog/changelog/">GitHub Changelog</a>, <a href="https://docs.github.com/en/copilot">GitHub Copilot docs</a>, <a href="https://docs.github.com/en/copilot/reference/custom-instructions-support">Custom instructions support matrix</a>, <a href="https://docs.github.com/en/copilot/concepts/agents/cloud-agent/about-custom-agents">About custom agents</a></li>
+<li><strong>Example session:</strong> <a href="https://docs.github.com/en">GitHub Docs, home</a>, <a href="https://github.blog/changelog/">GitHub Changelog</a>, <a href="https://docs.github.com/en/copilot">GitHub Copilot docs</a>, <a href="https://docs.github.com/en/copilot/reference/custom-instructions-support">Custom instructions support matrix</a>, <a href="https://docs.github.com/en/copilot/concepts/agents/cloud-agent/about-custom-agents">About custom agents</a></li>
+</ul>
 
   </main>
   <footer role="contentinfo" class="site-footer">

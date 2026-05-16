@@ -1,0 +1,809 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="GIT Going with GitHub - A two-day accessible open source workshop by Community Access">
+  <title>Appendix AB: Advanced Agent Patterns & Skills - GIT Going with GitHub</title>
+  <link rel="stylesheet" href="./styles/github-markdown.css">
+  <link rel="stylesheet" href="./styles/highlight.css">
+  <link rel="stylesheet" href="./styles/custom.css">
+  <style>
+    .markdown-body {
+      box-sizing: border-box;
+      min-width: 200px;
+      max-width: 980px;
+      margin: 0 auto;
+      padding: 45px;
+    }
+    @media (max-width: 767px) {
+      .markdown-body {
+        padding: 15px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+  <header class="site-header" role="banner">
+    <div class="site-header-inner">
+      <nav aria-label="Breadcrumb" class="breadcrumb">
+        <a href="./index.html">Home</a> <span aria-hidden="true">›</span> <span aria-current="page">Appendix AB: Advanced Agent Patterns & Skills</span>
+      </nav>
+      <div class="header-actions">
+        <a href="https://github.com/Community-Access/git-going-with-github/wiki" class="wiki-link" target="_blank" rel="noopener noreferrer">
+          <svg aria-hidden="true" focusable="false" width="16" height="16" viewBox="0 0 16 16" fill="currentColor">
+            <path d="M1.75 1h8.5c.966 0 1.75.784 1.75 1.75v5.5A1.75 1.75 0 0 1 10.25 10H7.06l-2.573 2.573A1.458 1.458 0 0 1 2 11.543V10h-.25A1.75 1.75 0 0 1 0 8.25v-5.5C0 1.784.784 1 1.75 1ZM1.5 2.75v5.5c0 .138.112.25.25.25h1a.75.75 0 0 1 .75.75v2.19l2.72-2.72a.749.749 0 0 1 .53-.22h3.5a.25.25 0 0 0 .25-.25v-5.5a.25.25 0 0 0-.25-.25h-8.5a.25.25 0 0 0-.25.25Zm13 2a.25.25 0 0 0-.25-.25h-.5a.75.75 0 0 1 0-1.5h.5c.966 0 1.75.784 1.75 1.75v5.5A1.75 1.75 0 0 1 14.25 12H14v1.543a1.457 1.457 0 0 1-2.487 1.03L9.22 12.28a.749.749 0 1 1 1.06-1.06l2.22 2.22v-2.19a.75.75 0 0 1 .75-.75h.25a.25.25 0 0 0 .25-.25v-5.5Z"/>
+          </svg>
+          Wiki
+        </a>
+        <form role="search" class="search-form" action="./search.html" method="get">
+        <label for="site-search" class="search-label">Search docs</label>
+        <input
+          type="search"
+          id="site-search"
+          class="search-input"
+          name="q"
+          placeholder="Search docs…"
+          autocomplete="off"
+          aria-label="Search documentation"
+        >
+        <button type="submit" class="search-button" aria-label="Submit search">
+          <svg aria-hidden="true" focusable="false" width="16" height="16" viewBox="0 0 16 16" fill="currentColor">
+            <path d="M10.68 11.74a6 6 0 0 1-7.922-8.982 6 6 0 0 1 8.982 7.922l3.04 3.04a.749.749 0 0 1-.326 1.275.749.749 0 0 1-.734-.215ZM11.5 7a4.499 4.499 0 1 0-8.997 0A4.499 4.499 0 0 0 11.5 7Z"/>
+          </svg>
+        </button>
+      </form>
+      </div>
+    </div>
+  </header>
+  <main id="main-content" class="markdown-body">
+    <h1 id="appendix-ab-advanced-agent-patterns-amp-skills">Appendix AB: Advanced Agent Patterns &amp; Skills</h1>
+<blockquote>
+<p><strong>Reference companion to:</strong> <a href="19-accessibility-agents.html">Chapter 19: Accessibility Agents</a> | <a href="appendix-l-agents-reference.html">Appendix L: Agents Reference</a> | <a href="appendix-aa-agent-installation-setup.html">Appendix AA: Installation &amp; Setup</a></p>
+<p><strong>Authoritative source:</strong> <a href="https://github.com/Community-Access/accessibility-agents/tree/main/.github/skills">Accessibility Agents Repository - Skills</a> | <a href="https://github.com/Community-Access/accessibility-agents/blob/main/SKILLS.md">Skills Documentation</a></p>
+</blockquote>
+<h2 id="architecture-skills-hooks-and-advanced-patterns-for-ai-agents">Architecture, Skills, Hooks, and Advanced Patterns for AI Agents</h2>
+<blockquote>
+<p>This appendix covers how to build sophisticated agent workflows using subagent delegation, lifecycle hooks, reusable skills, and browser automation tools. These patterns scale beyond single-agent use to orchestrate complex accessibility audits and remediation workflows.</p>
+</blockquote>
+<h2 id="table-of-contents">Table of Contents</h2>
+<ol>
+<li><a href="#1-architecture-agents-and-subagents">Architecture: Agents and Subagents</a></li>
+<li><a href="#2-skills-reusable-multi-step-workflows">Skills: Reusable Multi-Step Workflows</a></li>
+<li><a href="#3-hooks-lifecycle-automation">Hooks: Lifecycle Automation</a></li>
+<li><a href="#4-browser-tools-for-behavioral-scanning">Browser Tools for Behavioral Scanning</a></li>
+<li><a href="#5-orchestration-delegation-patterns">Orchestration: Delegation Patterns</a></li>
+<li><a href="#6-advanced-techniques">Advanced Techniques</a></li>
+</ol>
+<h2 id="1-architecture-agents-and-subagents">1. Architecture: Agents and Subagents</h2>
+<h3 id="what-are-subagents">What Are Subagents?</h3>
+<p>An <strong>agent</strong> is a standalone AI system (like <code>@aria-specialist</code>) that understands one domain (ARIA patterns). A <strong>subagent</strong> is an agent invoked by another agent to delegate work.</p>
+<p><strong>Example workflow:</strong></p>
+<pre><code class="hljs"><span class="hljs-keyword">User</span>: <span class="hljs-variable">@web</span><span class="hljs-operator">-</span>accessibility<span class="hljs-operator">-</span>wizard [audit this page]
+  ↓ (orchestrates multiple specialists)
+  ├─→ <span class="hljs-variable">@aria</span><span class="hljs-operator">-</span>specialist (<span class="hljs-keyword">check</span> ARIA roles)
+  ├─→ <span class="hljs-variable">@contrast</span><span class="hljs-operator">-</span>master (<span class="hljs-keyword">check</span> colors)
+  ├─→ <span class="hljs-variable">@keyboard</span><span class="hljs-operator">-</span>navigator (<span class="hljs-keyword">check</span> tab <span class="hljs-keyword">order</span>)
+  ├─→ <span class="hljs-variable">@alt</span><span class="hljs-operator">-</span>text<span class="hljs-operator">-</span>headings (<span class="hljs-keyword">check</span> images <span class="hljs-keyword">and</span> headings)
+  └─→ <span class="hljs-variable">@tables</span><span class="hljs-operator">-</span>specialist (<span class="hljs-keyword">check</span> <span class="hljs-keyword">table</span> markup)
+  ↓ (aggregates results)
+Output: [consolidated audit report]</code></pre>
+<h3 id="how-to-use-subagents">How to Use Subagents</h3>
+<p>In your agent&#39;s instructions or a custom prompt, invoke subagents with the <code>runSubagent()</code> function:</p>
+<pre><code class="hljs language-markdown">&lt;!-- In your .agent.md or .prompt.md file --&gt;
+
+<span class="hljs-section">## Use Subagents for Deep Audits</span>
+
+When you need to audit multiple aspects of a page, use subagents:
+
+<span class="hljs-code">```javascript
+// Pseudo-code - how agents invoke subagents
+const results = await runSubagent({
+  agentName: &#x27;@aria-specialist&#x27;,
+  prompt: &#x27;Check this component for ARIA compliance: &lt;component HTML&gt;&#x27;,
+  description: &#x27;ARIA pattern review&#x27;
+});
+
+const contrastResults = await runSubagent({
+  agentName: &#x27;@contrast-master&#x27;,
+  prompt: &#x27;Audit these colors: &lt;CSS rules&gt;&#x27;,
+  description: &#x27;Color contrast verification&#x27;
+});</span></code></pre>
+<h3 id="when-to-use-subagents">When to Use Subagents</h3>
+<table>
+<thead>
+<tr>
+<th scope="col">Scenario</th>
+<th scope="col">Primary Agent</th>
+<th scope="col">Subagents</th>
+<th scope="col">Benefit</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><strong>Full page audit</strong></td>
+<td><code>@web-accessibility-wizard</code></td>
+<td>All specialists</td>
+<td>Parallel scanning, consolidated report</td>
+</tr>
+<tr>
+<td><strong>Code review</strong></td>
+<td><code>@web-issue-fixer</code></td>
+<td><code>@aria-specialist</code>, <code>@contrast-master</code></td>
+<td>Verify fixes across multiple domains</td>
+</tr>
+<tr>
+<td><strong>Document audit</strong></td>
+<td><code>@document-accessibility-wizard</code></td>
+<td>Platform-specific agents</td>
+<td>Single entry point for Word/PDF/Excel</td>
+</tr>
+<tr>
+<td><strong>Markdown audit</strong></td>
+<td><code>@markdown-a11y-assistant</code></td>
+<td><code>@link-checker</code></td>
+<td>Cross-check link text and heading hierarchy</td>
+</tr>
+</tbody></table>
+<h3 id="subagent-architecture-principles">Subagent Architecture Principles</h3>
+<ol>
+<li><strong>Delegation over monoliths:</strong> One agent calls specialists; specialists don&#39;t call other specialists (avoid infinite loops)</li>
+<li><strong>Error recovery:</strong> If a subagent fails, the parent agent logs it and continues with other subagents</li>
+<li><strong>Context preservation:</strong> Parent passes full context (HTML, CSS, document) to subagents</li>
+<li><strong>Result aggregation:</strong> Parent collects results and produces a single consolidated report</li>
+</ol>
+<h2 id="2-skills-reusable-multi-step-workflows">2. Skills: Reusable Multi-Step Workflows</h2>
+<h3 id="what-are-skills">What Are Skills?</h3>
+<p>A <strong>skill</strong> is a reusable, multi-step workflow bundled with reference files, templates, and automation scripts. Skills are invoked by agents or directly by users via slash commands.</p>
+<p><strong>Example:</strong> The <code>web-scanning</code> skill contains:</p>
+<ul>
+<li>Step-by-step crawling logic</li>
+<li>URL inventory templates</li>
+<li>Browser automation code</li>
+<li>Reference documentation</li>
+</ul>
+<p><strong>Example:</strong> The <code>report-generation</code> skill contains:</p>
+<ul>
+<li>Severity scoring algorithms</li>
+<li>Scorecard templates</li>
+<li>CSV export logic</li>
+<li>WCAG mapping reference data</li>
+</ul>
+<h3 id="the-25-core-skills">The 25+ Core Skills</h3>
+<p>Accessibility Agents includes a library of reusable skills organized by capability:</p>
+<table>
+<thead>
+<tr>
+<th scope="col">Skill Category</th>
+<th scope="col">Skills</th>
+<th scope="col">Purpose</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><strong>Web Scanning</strong></td>
+<td><code>web-scanning</code>, <code>web-severity-scoring</code></td>
+<td>Page inventory, audit scope, severity calculation</td>
+</tr>
+<tr>
+<td><strong>Web Remediation</strong></td>
+<td><code>web-issue-fixer</code>, <code>web-csv-reporter</code></td>
+<td>Apply fixes, export findings to CSV</td>
+</tr>
+<tr>
+<td><strong>Document Scanning</strong></td>
+<td><code>document-scanning</code>, <code>document-accessibility-rules</code></td>
+<td>Audit Word/Excel/PDF/EPUB; map to WCAG</td>
+</tr>
+<tr>
+<td><strong>Document Remediation</strong></td>
+<td><code>document-remediation</code>, <code>document-csv-reporter</code></td>
+<td>Fix documents; generate compliance reports</td>
+</tr>
+<tr>
+<td><strong>Markdown</strong></td>
+<td><code>markdown-accessibility</code>, <code>markdown-fixer</code>, <code>markdown-csv-reporter</code></td>
+<td>Audit .md files; fix links, headings, emoji</td>
+</tr>
+<tr>
+<td><strong>CI/CD Integration</strong></td>
+<td><code>lighthouse-scanner</code>, <code>github-accessibility-scanner</code></td>
+<td>Parse CI reports; track regressions</td>
+</tr>
+<tr>
+<td><strong>Framework Specifics</strong></td>
+<td><code>framework-accessibility</code>, <code>react-patterns</code>, <code>vue-patterns</code></td>
+<td>Framework-specific accessibility patterns</td>
+</tr>
+<tr>
+<td><strong>Python Dev Tools</strong></td>
+<td><code>python-fact-grounded-coding</code>, <code>pylance-refactoring</code></td>
+<td>Python code analysis, accessibility linting</td>
+</tr>
+<tr>
+<td><strong>Testing</strong></td>
+<td><code>testing-coach</code>, <code>accessibility-testing-setup</code></td>
+<td>Screen reader testing, test automation, CI/CD setup</td>
+</tr>
+<tr>
+<td><strong>Compliance</strong></td>
+<td><code>wcag-guide</code>, <code>accessibility-rules-reference</code>, <code>help-url-reference</code></td>
+<td>WCAG 2.2 AA reference, remediation links</td>
+</tr>
+</tbody></table>
+<h3 id="how-to-use-a-skill">How to Use a Skill</h3>
+<p><strong>From Copilot Chat:</strong></p>
+<pre><code class="hljs">/web-scanning [URL]
+/report-generation [findings JSON]
+/python-fact-grounded-coding my_script.py</code></pre>
+<p><strong>From a Custom Agent:</strong></p>
+<pre><code class="hljs language-markdown"><span class="hljs-section">## Invoke Skills</span>
+
+When you need to audit a webpage, use the web-scanning skill:
+
+&quot;Scan the following URL for accessibility issues and generate a severity score.&quot;
+
+<span class="hljs-bullet">-</span> URL: https://example.com
+<span class="hljs-bullet">-</span> Severity model: WCAG 2.2 AA
+<span class="hljs-bullet">-</span> Output: JSON report</code></pre>
+<h3 id="skill-authoring-pattern">Skill Authoring Pattern</h3>
+<p>If you are writing a custom skill, follow this structure:</p>
+<p><strong>File: <code>.github/skills/my-skill-name/SKILL.md</code></strong></p>
+<pre><code class="hljs language-markdown"><span class="hljs-section"># My Skill Name</span>
+
+<span class="hljs-section">## Purpose</span>
+What problem does this skill solve?
+
+<span class="hljs-section">## Inputs</span>
+<span class="hljs-bullet">-</span> URL or file path
+<span class="hljs-bullet">-</span> Configuration (optional)
+
+<span class="hljs-section">## Workflow</span>
+<span class="hljs-bullet">1.</span> Parse input
+<span class="hljs-bullet">2.</span> Execute steps
+<span class="hljs-bullet">3.</span> Collect results
+<span class="hljs-bullet">4.</span> Format output
+
+<span class="hljs-section">## Output</span>
+<span class="hljs-bullet">-</span> Report format (JSON, Markdown, CSV)
+<span class="hljs-bullet">-</span> Example output
+
+<span class="hljs-section">## References</span>
+<span class="hljs-bullet">-</span> Links to related agents
+<span class="hljs-bullet">-</span> Links to external docs</code></pre>
+<p><strong>Supporting files:</strong></p>
+<ul>
+<li><code>templates/</code> - Templates for input/output</li>
+<li><code>scripts/</code> - Automation scripts (shell, Python)</li>
+<li><code>reference/</code> - Reference data (lookup tables, compliance mappings)</li>
+</ul>
+<h3 id="skill-reuse-across-agents">Skill Reuse Across Agents</h3>
+<p>Skills are designed to be called by multiple agents. For example:</p>
+<ul>
+<li><code>@web-accessibility-wizard</code> uses <code>web-scanning</code> + <code>web-severity-scoring</code></li>
+<li><code>@web-issue-fixer</code> uses <code>web-scanning</code> + <code>web-issue-fixer</code></li>
+<li><code>@link-checker</code> uses <code>web-scanning</code> + a link-validation subset</li>
+</ul>
+<p>This prevents code duplication and ensures consistent behavior across agents.</p>
+<h2 id="3-hooks-lifecycle-automation">3. Hooks: Lifecycle Automation</h2>
+<h3 id="what-are-hooks">What Are Hooks?</h3>
+<p>A <strong>hook</strong> is a JSON configuration that triggers agent actions automatically at specific lifecycle events. Hooks enforce accessibility standards without requiring the user to remember to ask for an audit.</p>
+<p><strong>Lifecycle events:</strong></p>
+<ul>
+<li>On file edit (before save)</li>
+<li>On file save (after save)</li>
+<li>On commit (before push)</li>
+<li>On PR creation (before merge)</li>
+<li>On scheduled interval (nightly, weekly)</li>
+</ul>
+<h3 id="hook-configuration-format">Hook Configuration Format</h3>
+<p><strong>File: <code>.github/hooks/accessibility.hooks.json</code></strong></p>
+<pre><code class="hljs language-json"><span class="hljs-punctuation">{</span>
+  <span class="hljs-attr">&quot;hooks&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-punctuation">[</span>
+    <span class="hljs-punctuation">{</span>
+      <span class="hljs-attr">&quot;name&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;proactive-detection&quot;</span><span class="hljs-punctuation">,</span>
+      <span class="hljs-attr">&quot;event&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;on-file-edit&quot;</span><span class="hljs-punctuation">,</span>
+      <span class="hljs-attr">&quot;pattern&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;**/*.{html,jsx,tsx,vue}&quot;</span><span class="hljs-punctuation">,</span>
+      <span class="hljs-attr">&quot;agent&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;@aria-specialist&quot;</span><span class="hljs-punctuation">,</span>
+      <span class="hljs-attr">&quot;condition&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;file.includes(&#x27;aria&#x27;)&quot;</span><span class="hljs-punctuation">,</span>
+      <span class="hljs-attr">&quot;action&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;highlight-violations&quot;</span><span class="hljs-punctuation">,</span>
+      <span class="hljs-attr">&quot;severity&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;warning&quot;</span>
+    <span class="hljs-punctuation">}</span><span class="hljs-punctuation">,</span>
+    <span class="hljs-punctuation">{</span>
+      <span class="hljs-attr">&quot;name&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;edit-gate&quot;</span><span class="hljs-punctuation">,</span>
+      <span class="hljs-attr">&quot;event&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;on-file-save&quot;</span><span class="hljs-punctuation">,</span>
+      <span class="hljs-attr">&quot;pattern&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;src/**/*.tsx&quot;</span><span class="hljs-punctuation">,</span>
+      <span class="hljs-attr">&quot;agent&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;@web-accessibility-wizard&quot;</span><span class="hljs-punctuation">,</span>
+      <span class="hljs-attr">&quot;condition&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;severity &gt;= &#x27;error&#x27;&quot;</span><span class="hljs-punctuation">,</span>
+      <span class="hljs-attr">&quot;action&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;block-save&quot;</span><span class="hljs-punctuation">,</span>
+      <span class="hljs-attr">&quot;message&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;Accessibility violations detected. Use @web-issue-fixer to resolve.&quot;</span>
+    <span class="hljs-punctuation">}</span><span class="hljs-punctuation">,</span>
+    <span class="hljs-punctuation">{</span>
+      <span class="hljs-attr">&quot;name&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;commit-check&quot;</span><span class="hljs-punctuation">,</span>
+      <span class="hljs-attr">&quot;event&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;on-commit&quot;</span><span class="hljs-punctuation">,</span>
+      <span class="hljs-attr">&quot;pattern&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;**/*&quot;</span><span class="hljs-punctuation">,</span>
+      <span class="hljs-attr">&quot;agent&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;@accessibility-lead&quot;</span><span class="hljs-punctuation">,</span>
+      <span class="hljs-attr">&quot;condition&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;true&quot;</span><span class="hljs-punctuation">,</span>
+      <span class="hljs-attr">&quot;action&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;scan-and-report&quot;</span><span class="hljs-punctuation">,</span>
+      <span class="hljs-attr">&quot;output&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;commit-message-append&quot;</span>
+    <span class="hljs-punctuation">}</span><span class="hljs-punctuation">,</span>
+    <span class="hljs-punctuation">{</span>
+      <span class="hljs-attr">&quot;name&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;nightly-audit&quot;</span><span class="hljs-punctuation">,</span>
+      <span class="hljs-attr">&quot;event&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;on-schedule&quot;</span><span class="hljs-punctuation">,</span>
+      <span class="hljs-attr">&quot;schedule&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;0 2 * * *&quot;</span><span class="hljs-punctuation">,</span>
+      <span class="hljs-attr">&quot;pattern&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;docs/**/*.md&quot;</span><span class="hljs-punctuation">,</span>
+      <span class="hljs-attr">&quot;agent&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;@markdown-a11y-assistant&quot;</span><span class="hljs-punctuation">,</span>
+      <span class="hljs-attr">&quot;action&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;create-issue&quot;</span><span class="hljs-punctuation">,</span>
+      <span class="hljs-attr">&quot;labels&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-punctuation">[</span><span class="hljs-string">&quot;accessibility&quot;</span><span class="hljs-punctuation">,</span> <span class="hljs-string">&quot;auto-audit&quot;</span><span class="hljs-punctuation">]</span>
+    <span class="hljs-punctuation">}</span>
+  <span class="hljs-punctuation">]</span>
+<span class="hljs-punctuation">}</span></code></pre>
+<h3 id="hook-properties">Hook Properties</h3>
+<table>
+<thead>
+<tr>
+<th scope="col">Property</th>
+<th scope="col">Type</th>
+<th scope="col">Description</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>name</code></td>
+<td>string</td>
+<td>Unique hook identifier</td>
+</tr>
+<tr>
+<td><code>event</code></td>
+<td>enum</td>
+<td><code>on-file-edit</code>, <code>on-file-save</code>, <code>on-commit</code>, <code>on-pr-create</code>, <code>on-schedule</code></td>
+</tr>
+<tr>
+<td><code>pattern</code></td>
+<td>glob</td>
+<td>File path pattern (e.g., <code>**/*.tsx</code>)</td>
+</tr>
+<tr>
+<td><code>agent</code></td>
+<td>string</td>
+<td>Agent name (e.g., <code>@aria-specialist</code>)</td>
+</tr>
+<tr>
+<td><code>condition</code></td>
+<td>string</td>
+<td>When to trigger (e.g., <code>file.size &gt; 5000</code>)</td>
+</tr>
+<tr>
+<td><code>action</code></td>
+<td>enum</td>
+<td><code>highlight</code>, <code>block-save</code>, <code>scan-and-report</code>, <code>create-issue</code></td>
+</tr>
+<tr>
+<td><code>severity</code></td>
+<td>enum</td>
+<td><code>info</code>, <code>warning</code>, <code>error</code></td>
+</tr>
+<tr>
+<td><code>message</code></td>
+<td>string</td>
+<td>Custom message to show user</td>
+</tr>
+<tr>
+<td><code>labels</code></td>
+<td>array</td>
+<td>Labels for auto-created issues</td>
+</tr>
+</tbody></table>
+<h3 id="hook-examples">Hook Examples</h3>
+<p><strong>Example 1: Proactive ARIA Detection</strong></p>
+<pre><code class="hljs language-json"><span class="hljs-punctuation">{</span>
+  <span class="hljs-attr">&quot;name&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;aria-proactive-check&quot;</span><span class="hljs-punctuation">,</span>
+  <span class="hljs-attr">&quot;event&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;on-file-edit&quot;</span><span class="hljs-punctuation">,</span>
+  <span class="hljs-attr">&quot;pattern&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;src/**/*.jsx&quot;</span><span class="hljs-punctuation">,</span>
+  <span class="hljs-attr">&quot;agent&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;@aria-specialist&quot;</span><span class="hljs-punctuation">,</span>
+  <span class="hljs-attr">&quot;condition&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;true&quot;</span><span class="hljs-punctuation">,</span>
+  <span class="hljs-attr">&quot;action&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;highlight-violations&quot;</span><span class="hljs-punctuation">,</span>
+  <span class="hljs-attr">&quot;severity&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;warning&quot;</span>
+<span class="hljs-punctuation">}</span></code></pre>
+<p><strong>Behavior:</strong> As you type in a <code>.jsx</code> file, violations are highlighted in real time.</p>
+<p><strong>Example 2: Block Non-Accessible Commits</strong></p>
+<pre><code class="hljs language-json"><span class="hljs-punctuation">{</span>
+  <span class="hljs-attr">&quot;name&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;accessibility-commit-gate&quot;</span><span class="hljs-punctuation">,</span>
+  <span class="hljs-attr">&quot;event&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;on-commit&quot;</span><span class="hljs-punctuation">,</span>
+  <span class="hljs-attr">&quot;pattern&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;**/*&quot;</span><span class="hljs-punctuation">,</span>
+  <span class="hljs-attr">&quot;agent&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;@web-accessibility-wizard&quot;</span><span class="hljs-punctuation">,</span>
+  <span class="hljs-attr">&quot;condition&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;severity &gt;= &#x27;error&#x27;&quot;</span><span class="hljs-punctuation">,</span>
+  <span class="hljs-attr">&quot;action&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;block-save&quot;</span><span class="hljs-punctuation">,</span>
+  <span class="hljs-attr">&quot;message&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;Critical accessibility issues detected. Run @web-issue-fixer to resolve.&quot;</span>
+<span class="hljs-punctuation">}</span></code></pre>
+<p><strong>Behavior:</strong> Commits are blocked if critical accessibility violations are found.</p>
+<p><strong>Example 3: Nightly Document Audits</strong></p>
+<pre><code class="hljs language-json"><span class="hljs-punctuation">{</span>
+  <span class="hljs-attr">&quot;name&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;nightly-markdown-audit&quot;</span><span class="hljs-punctuation">,</span>
+  <span class="hljs-attr">&quot;event&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;on-schedule&quot;</span><span class="hljs-punctuation">,</span>
+  <span class="hljs-attr">&quot;schedule&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;0 2 * * *&quot;</span><span class="hljs-punctuation">,</span>
+  <span class="hljs-attr">&quot;pattern&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;docs/**/*.md&quot;</span><span class="hljs-punctuation">,</span>
+  <span class="hljs-attr">&quot;agent&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;@markdown-a11y-assistant&quot;</span><span class="hljs-punctuation">,</span>
+  <span class="hljs-attr">&quot;action&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;create-issue&quot;</span><span class="hljs-punctuation">,</span>
+  <span class="hljs-attr">&quot;labels&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-punctuation">[</span><span class="hljs-string">&quot;a11y&quot;</span><span class="hljs-punctuation">,</span> <span class="hljs-string">&quot;auto-audit&quot;</span><span class="hljs-punctuation">,</span> <span class="hljs-string">&quot;documentation&quot;</span><span class="hljs-punctuation">]</span>
+<span class="hljs-punctuation">}</span></code></pre>
+<p><strong>Behavior:</strong> Every night at 2 AM, markdown files are audited and issues are created automatically.</p>
+<h3 id="enabling-hooks-by-platform">Enabling Hooks by Platform</h3>
+<p><strong>GitHub Copilot (VS Code):</strong></p>
+<ul>
+<li>Place <code>accessibility.hooks.json</code> in <code>.github/hooks/</code></li>
+<li>Hooks are read on workspace open</li>
+<li>View hook status: Settings Gear → Accessibility Hooks</li>
+</ul>
+<p><strong>Claude Code:</strong></p>
+<ul>
+<li>Configure in <code>.claude-code.toml</code>:<pre><code class="hljs language-toml"><span class="hljs-section">[hooks]</span>
+<span class="hljs-attr">enabled</span> = <span class="hljs-literal">true</span>
+<span class="hljs-attr">config_file</span> = <span class="hljs-string">&quot;.github/hooks/accessibility.hooks.json&quot;</span></code></pre>
+</li>
+</ul>
+<p><strong>Claude Desktop (MCP):</strong></p>
+<ul>
+<li>Configure in <code>.mcp.json</code>:<pre><code class="hljs language-json"><span class="hljs-punctuation">{</span>
+  <span class="hljs-attr">&quot;accessibility-agents&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-punctuation">{</span>
+    <span class="hljs-attr">&quot;hooks&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-punctuation">{</span>
+      <span class="hljs-attr">&quot;enabled&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-literal"><span class="hljs-keyword">true</span></span><span class="hljs-punctuation">,</span>
+      <span class="hljs-attr">&quot;config&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;.github/hooks/accessibility.hooks.json&quot;</span>
+    <span class="hljs-punctuation">}</span>
+  <span class="hljs-punctuation">}</span>
+<span class="hljs-punctuation">}</span></code></pre>
+</li>
+</ul>
+<h2 id="4-browser-tools-for-behavioral-scanning">4. Browser Tools for Behavioral Scanning</h2>
+<h3 id="available-browser-tools">Available Browser Tools</h3>
+<p>Accessibility Agents includes browser automation tools for interactive scanning:</p>
+<table>
+<thead>
+<tr>
+<th scope="col">Tool</th>
+<th scope="col">What It Does</th>
+<th scope="col">When to Use</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>scan-page</code></td>
+<td>Single page audit (static + dynamic)</td>
+<td>Quick single-page check</td>
+</tr>
+<tr>
+<td><code>scan-pages</code></td>
+<td>Crawl URL and audit all pages</td>
+<td>Site audit, scope definition</td>
+</tr>
+<tr>
+<td><code>scan-dom</code></td>
+<td>Live DOM inspection</td>
+<td>Debug dynamic content</td>
+</tr>
+<tr>
+<td><code>scan-with-lighthouse</code></td>
+<td>Lighthouse accessibility audit</td>
+<td>Performance + a11y scoring</td>
+</tr>
+<tr>
+<td><code>scan-with-playwright</code></td>
+<td>Playwright automated testing</td>
+<td>Interactive flows, form testing</td>
+</tr>
+<tr>
+<td><code>get-page-outline</code></td>
+<td>Extract page structure</td>
+<td>Understand heading hierarchy</td>
+</tr>
+<tr>
+<td><code>detect-color-contrast</code></td>
+<td>CSS color analysis</td>
+<td>Find contrast violations</td>
+</tr>
+<tr>
+<td><code>find-aria-roles</code></td>
+<td>ARIA role inventory</td>
+<td>Understand ARIA implementation</td>
+</tr>
+</tbody></table>
+<h3 id="using-browser-tools-in-agents">Using Browser Tools in Agents</h3>
+<p><strong>Pattern 1: Direct Tool Invocation</strong></p>
+<pre><code class="hljs language-markdown"><span class="hljs-section">## Audit Page Accessibility</span>
+
+When the user provides a URL, use the scan-page tool:
+
+<span class="hljs-bullet">1.</span> Call <span class="hljs-code">`scan-page(url)`</span> to get accessibility findings
+<span class="hljs-bullet">2.</span> Filter findings by severity
+<span class="hljs-bullet">3.</span> Group by category (ARIA, contrast, keyboard, etc.)
+<span class="hljs-bullet">4.</span> Present results in a prioritized table
+
+Example:
+<span class="hljs-strong">**User:**</span> Audit https://example.com for accessibility issues
+<span class="hljs-strong">**Agent:**</span>
+<span class="hljs-bullet">-</span> Calls <span class="hljs-code">`scan-page(&quot;https://example.com&quot;)`</span>
+<span class="hljs-bullet">-</span> Receives findings JSON
+<span class="hljs-bullet">-</span> Groups by category and severity
+<span class="hljs-bullet">-</span> Reports top 10 issues</code></pre>
+<p><strong>Pattern 2: Conditional Scanning</strong></p>
+<pre><code class="hljs language-markdown"><span class="hljs-section">## Smart Audit Based on Page Content</span>
+
+<span class="hljs-bullet">1.</span> Call <span class="hljs-code">`get-page-outline(url)`</span> to understand structure
+<span class="hljs-bullet">2.</span> If heading hierarchy is broken:
+<span class="hljs-bullet">   -</span> Recommend structure fixes (use @alt-text-headings)
+<span class="hljs-bullet">3.</span> If many interactive components detected:
+<span class="hljs-bullet">   -</span> Recommend ARIA review (use @aria-specialist)
+<span class="hljs-bullet">4.</span> If dynamic content detected:
+<span class="hljs-bullet">   -</span> Recommend behavioral testing (use @testing-coach)</code></pre>
+<p><strong>Pattern 3: Playwright for Complex Workflows</strong></p>
+<pre><code class="hljs language-javascript"><span class="hljs-comment">// Pseudo-code: Test a multi-step form</span>
+<span class="hljs-keyword">const</span> browser = <span class="hljs-keyword">await</span> playwright.<span class="hljs-title function_">launch</span>();
+<span class="hljs-keyword">const</span> page = <span class="hljs-keyword">await</span> browser.<span class="hljs-title function_">newPage</span>();
+
+<span class="hljs-keyword">await</span> page.<span class="hljs-title function_">goto</span>(<span class="hljs-string">&#x27;https://example.com/form&#x27;</span>);
+<span class="hljs-keyword">await</span> page.<span class="hljs-title function_">fill</span>(<span class="hljs-string">&#x27;#name&#x27;</span>, <span class="hljs-string">&#x27;Jane Doe&#x27;</span>);
+<span class="hljs-keyword">await</span> page.<span class="hljs-title function_">fill</span>(<span class="hljs-string">&#x27;#email&#x27;</span>, <span class="hljs-string">&#x27;jane@example.com&#x27;</span>);
+<span class="hljs-keyword">await</span> page.<span class="hljs-title function_">click</span>(<span class="hljs-string">&#x27;button:has-text(&quot;Submit&quot;)&#x27;</span>);
+
+<span class="hljs-comment">// Check for error messages (accessibility of feedback)</span>
+<span class="hljs-keyword">const</span> errorMessage = <span class="hljs-keyword">await</span> page.<span class="hljs-title function_">locator</span>(<span class="hljs-string">&#x27;[role=&quot;alert&quot;]&#x27;</span>);
+<span class="hljs-keyword">const</span> text = <span class="hljs-keyword">await</span> errorMessage.<span class="hljs-title function_">innerText</span>();
+
+<span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(<span class="hljs-string">`Error announced: <span class="hljs-subst">${text}</span>`</span>);
+
+<span class="hljs-keyword">await</span> browser.<span class="hljs-title function_">close</span>();</code></pre>
+<h3 id="browser-tool-limitations-and-workarounds">Browser Tool Limitations and Workarounds</h3>
+<table>
+<thead>
+<tr>
+<th scope="col">Limitation</th>
+<th scope="col">Workaround</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Cannot test with actual screen readers</td>
+<td>Use @testing-coach guidance instead; CLI offers NVDA integration</td>
+</tr>
+<tr>
+<td>JavaScript-heavy pages may be incomplete</td>
+<td>Increase wait time: <code>waitForNavigation()</code></td>
+</tr>
+<tr>
+<td>Some dynamic content misses ARIA updates</td>
+<td>Use Playwright to trigger updates and re-scan</td>
+</tr>
+<tr>
+<td>Cannot test keyboard without manual intervention</td>
+<td>Use @keyboard-navigator for structural analysis</td>
+</tr>
+</tbody></table>
+<h2 id="5-orchestration-delegation-patterns">5. Orchestration: Delegation Patterns</h2>
+<h3 id="pattern-1-parallel-scanning-web-accessibility-wizard">Pattern 1: Parallel Scanning (Web Accessibility Wizard)</h3>
+<p><strong>Goal:</strong> Audit multiple aspects of a page simultaneously for speed.</p>
+<pre><code class="hljs">User request: Audit this page
+  │
+  ├─ @aria-specialist (<span class="hljs-built_in">scan</span> ARIA)
+  ├─ @contrast-master (<span class="hljs-built_in">scan</span> colors)
+  ├─ @keyboard-navigator (<span class="hljs-built_in">scan</span> keyboard flow)
+  ├─ @alt-text-headings (<span class="hljs-built_in">scan</span> images/headings)
+  └─ @<span class="hljs-built_in">tables</span>-specialist (<span class="hljs-built_in">scan</span> <span class="hljs-built_in">tables</span>)
+  │
+  ↓ (<span class="hljs-built_in">all</span> run in parallel, results aggregated)
+  │
+  Consolidated Report:
+  - Severity: <span class="hljs-number">12</span> errors, <span class="hljs-number">8</span> warnings
+  - Priority issues (blocking top <span class="hljs-number">5</span>)
+  - Detailed findings per agent</code></pre>
+<p><strong>Agent code pattern:</strong></p>
+<pre><code class="hljs language-markdown"><span class="hljs-section">## Parallel Audit</span>
+
+Invoke all specialist agents in parallel:
+
+<span class="hljs-bullet">1.</span> Gather all findings simultaneously (not sequentially)
+<span class="hljs-bullet">2.</span> Deduplicate issues across agents
+<span class="hljs-bullet">3.</span> Sort by severity
+<span class="hljs-bullet">4.</span> Present top 10 blocking issues first
+<span class="hljs-bullet">5.</span> Link to detailed fix guidance per agent</code></pre>
+<h3 id="pattern-2-cascading-fixes-web-issue-fixer">Pattern 2: Cascading Fixes (Web Issue Fixer)</h3>
+<p><strong>Goal:</strong> Fix issues in order of severity and dependency.</p>
+<pre><code class="hljs">Findings identified:
+<span class="hljs-bullet">  1.</span> Missing alt text (3 images)
+<span class="hljs-bullet">  2.</span> Poor color contrast (5 elements)
+<span class="hljs-bullet">  3.</span> Missing form labels (2 inputs)
+<span class="hljs-bullet">  4.</span> ARIA misuse (1 element)
+
+Remediation order:
+<span class="hljs-bullet">  1.</span> Fix ARIA misuse first (foundational)
+<span class="hljs-bullet">  2.</span> Add form labels (unblocks testing)
+<span class="hljs-bullet">  3.</span> Add alt text (content layer)
+<span class="hljs-bullet">  4.</span> Fix contrast (visual layer)
+
+Output: Numbered PR suggestions, 1 fix per commit message</code></pre>
+<h3 id="pattern-3-skill-first-workflows-testing-coach">Pattern 3: Skill-First Workflows (Testing Coach)</h3>
+<p><strong>Goal:</strong> Guide users through testing workflows without assuming prior knowledge.</p>
+<pre><code class="hljs"><span class="hljs-attribute">User</span><span class="hljs-punctuation">:</span> <span class="hljs-string">How do I test keyboard navigation?</span>
+
+<span class="hljs-attribute">Agent (@testing-coach) response</span><span class="hljs-punctuation">:
+</span>
+<span class="hljs-attribute">1. Ask clarifying questions</span><span class="hljs-punctuation">:</span>
+   <span class="hljs-bullet">-</span> <span class="hljs-string">Have you used NVDA before?</span>
+   <span class="hljs-bullet">-</span> <span class="hljs-string">What platform (Windows/Mac/Linux)?</span>
+   <span class="hljs-bullet">-</span> <span class="hljs-string">What component type (form/menu/modal)?</span>
+
+<span class="hljs-attribute">2. Recommend testing path</span><span class="hljs-punctuation">:</span>
+   <span class="hljs-bullet">-</span> <span class="hljs-string">Step 1: Learn Tab order basics (video link)</span>
+   <span class="hljs-bullet">-</span> <span class="hljs-string">Step 2: Test with keyboard-only (no mouse)</span>
+   <span class="hljs-bullet">-</span> <span class="hljs-string">Step 3: Verify focus indicators visible</span>
+   <span class="hljs-bullet">-</span> <span class="hljs-string">Step 4: Check against WCAG 2.5.4</span>
+
+<span class="hljs-attribute">3. Provide interactive test</span><span class="hljs-punctuation">:</span>
+   <span class="hljs-bullet">-</span> <span class="hljs-string">Code snippet to inject focus indicators</span>
+   <span class="hljs-bullet">-</span> <span class="hljs-string">Keyboard test checklist</span>
+   <span class="hljs-bullet">-</span> <span class="hljs-string">Screenshot comparison guide</span></code></pre>
+<h3 id="pattern-4-report-aggregation-cross-page-analyzer">Pattern 4: Report Aggregation (Cross-Page Analyzer)</h3>
+<p><strong>Goal:</strong> Consolidate findings across multiple pages into systemic issues.</p>
+<pre><code class="hljs"><span class="hljs-attribute">Input</span><span class="hljs-punctuation">:</span> <span class="hljs-string">50 pages audited</span>
+
+<span class="hljs-attribute">Output</span><span class="hljs-punctuation">:</span>
+<span class="hljs-bullet">-</span> <span class="hljs-string">Systemic issues (found on 10+ pages):</span>
+  <span class="hljs-bullet">-</span> <span class="hljs-string">Color contrast: 45 instances across 18 pages</span>
+  <span class="hljs-bullet">-</span> <span class="hljs-string">Missing alt text: 120 instances across 32 pages</span>
+
+<span class="hljs-bullet">-</span> <span class="hljs-string">Page-specific issues (found on 1-2 pages):</span>
+  <span class="hljs-bullet">-</span> <span class="hljs-string">Modal focus trap broken (page 15)</span>
+  <span class="hljs-bullet">-</span> <span class="hljs-string">ARIA combobox pattern error (page 3)</span>
+
+<span class="hljs-bullet">-</span> <span class="hljs-string">Severity scorecard:</span>
+  <span class="hljs-bullet">-</span> <span class="hljs-string">Overall score: 62/100 (D grade)</span>
+  <span class="hljs-bullet">-</span> <span class="hljs-string">Top 3 fixes: address these to reach 75/100</span>
+  <span class="hljs-bullet">-</span> <span class="hljs-string">Estimated effort: 8-12 hours</span></code></pre>
+<h2 id="6-advanced-techniques">6. Advanced Techniques</h2>
+<h3 id="technique-1-custom-skills-for-your-organization">Technique 1: Custom Skills for Your Organization</h3>
+<p>If your organization has repeated accessibility patterns, bundle them as a custom skill:</p>
+<pre><code class="hljs language-markdown"><span class="hljs-section"># .github/skills/our-pattern-library/SKILL.md</span>
+
+<span class="hljs-section">## Our Accessibility Pattern Library</span>
+
+<span class="hljs-section">### Purpose</span>
+Codify internal accessibility standards and patterns used across all projects.
+
+<span class="hljs-section">### Patterns Included</span>
+<span class="hljs-bullet">1.</span> Form validation messaging
+<span class="hljs-bullet">2.</span> Accessible modal templates
+<span class="hljs-bullet">3.</span> Color palette compliance
+<span class="hljs-bullet">4.</span> Data table best practices
+
+<span class="hljs-section">### Inputs</span>
+<span class="hljs-bullet">-</span> HTML snippet or component name
+<span class="hljs-bullet">-</span> Pattern ID (e.g., &quot;form-validation-v2&quot;)
+
+<span class="hljs-section">### Output</span>
+<span class="hljs-bullet">-</span> Remediation code
+<span class="hljs-bullet">-</span> Compliance checklist
+<span class="hljs-bullet">-</span> Testing steps
+
+<span class="hljs-section">### Usage</span>
+@custom-agent check-pattern &quot;form-validation-v2&quot; [HTML]</code></pre>
+<h3 id="technique-2-continuous-evaluation-hooks">Technique 2: Continuous Evaluation Hooks</h3>
+<p>Set up automated evaluation to measure improvement over time:</p>
+<pre><code class="hljs language-json"><span class="hljs-punctuation">{</span>
+  <span class="hljs-attr">&quot;name&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;continuous-accessibility-eval&quot;</span><span class="hljs-punctuation">,</span>
+  <span class="hljs-attr">&quot;event&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;on-schedule&quot;</span><span class="hljs-punctuation">,</span>
+  <span class="hljs-attr">&quot;schedule&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;0 0 * * 0&quot;</span><span class="hljs-punctuation">,</span>
+  <span class="hljs-attr">&quot;pattern&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;src/**/*&quot;</span><span class="hljs-punctuation">,</span>
+  <span class="hljs-attr">&quot;agent&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;@accessibility-lead&quot;</span><span class="hljs-punctuation">,</span>
+  <span class="hljs-attr">&quot;action&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;create-eval-report&quot;</span><span class="hljs-punctuation">,</span>
+  <span class="hljs-attr">&quot;track&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-punctuation">{</span>
+    <span class="hljs-attr">&quot;metrics&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-punctuation">[</span><span class="hljs-string">&quot;page-score&quot;</span><span class="hljs-punctuation">,</span> <span class="hljs-string">&quot;error-count&quot;</span><span class="hljs-punctuation">,</span> <span class="hljs-string">&quot;warning-count&quot;</span><span class="hljs-punctuation">]</span><span class="hljs-punctuation">,</span>
+    <span class="hljs-attr">&quot;baseline&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;2026-01-01&quot;</span><span class="hljs-punctuation">,</span>
+    <span class="hljs-attr">&quot;frequency&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;weekly&quot;</span>
+  <span class="hljs-punctuation">}</span>
+<span class="hljs-punctuation">}</span></code></pre>
+<h3 id="technique-3-platform-specific-skill-variants">Technique 3: Platform-Specific Skill Variants</h3>
+<p>Create platform-specific implementations of the same skill:</p>
+<pre><code class="hljs"><span class="hljs-selector-class">.github</span>/skills/<span class="hljs-selector-tag">form</span>-accessibility/
+  ├── SKILL<span class="hljs-selector-class">.md</span> (base description)
+  ├── implementations/
+  │   ├── react/<span class="hljs-selector-tag">form</span>-<span class="hljs-selector-tag">pattern</span><span class="hljs-selector-class">.tsx</span>
+  │   ├── vue/<span class="hljs-selector-tag">form</span>-<span class="hljs-selector-tag">pattern</span><span class="hljs-selector-class">.vue</span>
+  │   ├── svelte/<span class="hljs-selector-tag">form</span>-<span class="hljs-selector-tag">pattern</span><span class="hljs-selector-class">.svelte</span>
+  │   └── vanilla/<span class="hljs-selector-tag">form</span>-<span class="hljs-selector-tag">pattern</span><span class="hljs-selector-class">.js</span></code></pre>
+<p><strong>Agents select the implementation matching the detected framework.</strong></p>
+<h3 id="technique-4-result-caching-for-performance">Technique 4: Result Caching for Performance</h3>
+<p>For repeated audits (e.g., nightly checks), cache results to speed up analysis:</p>
+<pre><code class="hljs language-json"><span class="hljs-punctuation">{</span>
+  <span class="hljs-attr">&quot;name&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;smart-audit-with-cache&quot;</span><span class="hljs-punctuation">,</span>
+  <span class="hljs-attr">&quot;event&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;on-schedule&quot;</span><span class="hljs-punctuation">,</span>
+  <span class="hljs-attr">&quot;schedule&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;0 2 * * *&quot;</span><span class="hljs-punctuation">,</span>
+  <span class="hljs-attr">&quot;pattern&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;docs/**/*.md&quot;</span><span class="hljs-punctuation">,</span>
+  <span class="hljs-attr">&quot;cache&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-punctuation">{</span>
+    <span class="hljs-attr">&quot;enabled&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-literal"><span class="hljs-keyword">true</span></span><span class="hljs-punctuation">,</span>
+    <span class="hljs-attr">&quot;ttl&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-number">86400</span><span class="hljs-punctuation">,</span>
+    <span class="hljs-attr">&quot;key&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;filepath + git-commit-hash&quot;</span>
+  <span class="hljs-punctuation">}</span><span class="hljs-punctuation">,</span>
+  <span class="hljs-attr">&quot;action&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;compare-to-previous&quot;</span>
+<span class="hljs-punctuation">}</span></code></pre>
+<p><strong>Behavior:</strong> Only re-audited files that changed since the last run; unchanged files use cached results.</p>
+<h2 id="learning-cards-advanced-patterns">Learning Cards: Advanced Patterns</h2>
+<details>
+<summary>Screen reader users</summary>
+
+<ul>
+<li>Subagent delegation is explained through example workflows; use the tables to understand which agents delegate to which subagents</li>
+<li>Hooks are configured in JSON files; the JSON structure is explained line-by-line, so you can edit <code>.github/hooks/accessibility.hooks.json</code> with confidence</li>
+<li>Skills are organized by category in a table; navigate to the category that matches your need (Web Scanning, Document, etc.)</li>
+<li>Browser tools are listed with clear descriptions; copy the tool name and use it with your chosen agent</li>
+</ul>
+</details>
+
+<details>
+<summary>Low vision users</summary>
+
+<ul>
+<li>Workflow diagrams are presented both visually and in text form (with indentation showing hierarchy); read the text version if visual ASCII doesn&#39;t render clearly</li>
+<li>Code examples are formatted in clearly marked code blocks with syntax highlighting</li>
+<li>Tables can be magnified independently; zoom in on the &quot;Purpose&quot; or &quot;When to Use&quot; columns for quick reference</li>
+<li>The JSON hook format includes comments explaining each property; copy the template and modify values for your use case</li>
+</ul>
+</details>
+
+<details>
+<summary>Sighted users</summary>
+
+<ul>
+<li>Use the Table of Contents to jump to the pattern you need (Subagents, Skills, Hooks, etc.)</li>
+<li>Skim the workflow diagrams to understand orchestration; dive into code examples for implementation details</li>
+<li>The hook examples section shows 3 practical configurations you can copy and adapt</li>
+<li>Read the &quot;When to Use&quot; column in tables to find the right pattern for your task</li>
+</ul>
+</details>
+
+<h3 id="references">References</h3>
+<ul>
+<li><a href="https://github.com/Community-Access/accessibility-agents/blob/main/SKILLS.md">Accessibility Agents Skills Reference</a></li>
+<li><a href="https://github.com/Community-Access/accessibility-agents/blob/main/SUBAGENT-DELEGATION.md">Subagent Architecture</a></li>
+<li><a href="https://github.com/Community-Access/accessibility-agents/blob/main/.github/hooks/README.md">Hooks Configuration Guide</a></li>
+<li><a href="https://github.com/Community-Access/accessibility-agents/blob/main/BROWSER-TOOLS.md">Browser Tools API Reference</a></li>
+<li><a href="https://playwright.dev/">Playwright Documentation</a></li>
+</ul>
+<h2 id="authoritative-sources">Authoritative Sources</h2>
+<p>Use these official references when you need the current source of truth for facts in this chapter.</p>
+<ul>
+<li><a href="https://docs.github.com/en">GitHub Docs, home</a></li>
+<li><a href="https://github.blog/changelog/">GitHub Changelog</a></li>
+<li><a href="https://docs.github.com/en/copilot">GitHub Copilot docs</a></li>
+<li><a href="https://docs.github.com/en/copilot/reference/custom-instructions-support">Custom instructions support matrix</a></li>
+<li><a href="https://docs.github.com/en/copilot/concepts/agents/cloud-agent/about-custom-agents">About custom agents</a></li>
+<li><a href="https://docs.github.com/en/copilot/concepts/agents/about-agent-skills">About agent skills</a></li>
+<li><a href="https://docs.github.com/en/copilot/concepts/auto-model-selection">About auto model selection</a></li>
+<li><a href="https://github.blog/changelog/label/copilot/">Copilot changelog feed</a></li>
+<li><a href="https://code.visualstudio.com/docs/copilot/chat/copilot-chat">VS Code Copilot chat overview</a></li>
+<li><a href="https://code.visualstudio.com/docs/copilot/agents/overview">VS Code agent overview</a></li>
+<li><a href="https://code.visualstudio.com/docs/copilot/customization/custom-instructions">VS Code custom instructions</a></li>
+</ul>
+<h3 id="section-level-source-map">Section-Level Source Map</h3>
+<p>Use this map to verify facts for each major section in this file.</p>
+<ul>
+<li><strong>Architecture, Skills, Hooks, and Advanced Patterns for AI Agents:</strong> <a href="https://docs.github.com/en">GitHub Docs, home</a>, <a href="https://github.blog/changelog/">GitHub Changelog</a>, <a href="https://docs.github.com/en/copilot">GitHub Copilot docs</a>, <a href="https://docs.github.com/en/copilot/reference/custom-instructions-support">Custom instructions support matrix</a>, <a href="https://docs.github.com/en/copilot/concepts/agents/cloud-agent/about-custom-agents">About custom agents</a></li>
+<li><strong>1. Architecture: Agents and Subagents:</strong> <a href="https://docs.github.com/en">GitHub Docs, home</a>, <a href="https://github.blog/changelog/">GitHub Changelog</a>, <a href="https://docs.github.com/en/copilot">GitHub Copilot docs</a>, <a href="https://docs.github.com/en/copilot/reference/custom-instructions-support">Custom instructions support matrix</a>, <a href="https://docs.github.com/en/copilot/concepts/agents/cloud-agent/about-custom-agents">About custom agents</a></li>
+<li><strong>Use Subagents for Deep Audits:</strong> <a href="https://docs.github.com/en">GitHub Docs, home</a>, <a href="https://github.blog/changelog/">GitHub Changelog</a>, <a href="https://docs.github.com/en/copilot">GitHub Copilot docs</a>, <a href="https://docs.github.com/en/copilot/reference/custom-instructions-support">Custom instructions support matrix</a>, <a href="https://docs.github.com/en/copilot/concepts/agents/cloud-agent/about-custom-agents">About custom agents</a></li>
+<li><strong>2. Skills: Reusable Multi-Step Workflows:</strong> <a href="https://docs.github.com/en">GitHub Docs, home</a>, <a href="https://github.blog/changelog/">GitHub Changelog</a>, <a href="https://docs.github.com/en/copilot">GitHub Copilot docs</a>, <a href="https://docs.github.com/en/copilot/reference/custom-instructions-support">Custom instructions support matrix</a>, <a href="https://docs.github.com/en/copilot/concepts/agents/cloud-agent/about-custom-agents">About custom agents</a></li>
+<li><strong>Invoke Skills:</strong> <a href="https://docs.github.com/en">GitHub Docs, home</a>, <a href="https://github.blog/changelog/">GitHub Changelog</a>, <a href="https://docs.github.com/en/copilot">GitHub Copilot docs</a>, <a href="https://docs.github.com/en/copilot/reference/custom-instructions-support">Custom instructions support matrix</a>, <a href="https://docs.github.com/en/copilot/concepts/agents/cloud-agent/about-custom-agents">About custom agents</a></li>
+<li><strong>Inputs:</strong> <a href="https://docs.github.com/en">GitHub Docs, home</a>, <a href="https://github.blog/changelog/">GitHub Changelog</a>, <a href="https://docs.github.com/en/copilot">GitHub Copilot docs</a>, <a href="https://docs.github.com/en/copilot/reference/custom-instructions-support">Custom instructions support matrix</a>, <a href="https://docs.github.com/en/copilot/concepts/agents/cloud-agent/about-custom-agents">About custom agents</a></li>
+<li><strong>Workflow:</strong> <a href="https://docs.github.com/en">GitHub Docs, home</a>, <a href="https://github.blog/changelog/">GitHub Changelog</a>, <a href="https://docs.github.com/en/copilot">GitHub Copilot docs</a>, <a href="https://docs.github.com/en/copilot/reference/custom-instructions-support">Custom instructions support matrix</a>, <a href="https://docs.github.com/en/copilot/concepts/agents/cloud-agent/about-custom-agents">About custom agents</a></li>
+<li><strong>Output:</strong> <a href="https://docs.github.com/en">GitHub Docs, home</a>, <a href="https://github.blog/changelog/">GitHub Changelog</a>, <a href="https://docs.github.com/en/copilot">GitHub Copilot docs</a>, <a href="https://docs.github.com/en/copilot/reference/custom-instructions-support">Custom instructions support matrix</a>, <a href="https://docs.github.com/en/copilot/concepts/agents/cloud-agent/about-custom-agents">About custom agents</a></li>
+<li><strong>References:</strong> <a href="https://docs.github.com/en">GitHub Docs, home</a>, <a href="https://github.blog/changelog/">GitHub Changelog</a>, <a href="https://docs.github.com/en/copilot">GitHub Copilot docs</a>, <a href="https://docs.github.com/en/copilot/reference/custom-instructions-support">Custom instructions support matrix</a>, <a href="https://docs.github.com/en/copilot/concepts/agents/cloud-agent/about-custom-agents">About custom agents</a></li>
+<li><strong>3. Hooks: Lifecycle Automation:</strong> <a href="https://docs.github.com/en">GitHub Docs, home</a>, <a href="https://github.blog/changelog/">GitHub Changelog</a>, <a href="https://docs.github.com/en/copilot">GitHub Copilot docs</a>, <a href="https://docs.github.com/en/copilot/reference/custom-instructions-support">Custom instructions support matrix</a>, <a href="https://docs.github.com/en/copilot/concepts/agents/cloud-agent/about-custom-agents">About custom agents</a></li>
+<li><strong>4. Browser Tools for Behavioral Scanning:</strong> <a href="https://docs.github.com/en">GitHub Docs, home</a>, <a href="https://github.blog/changelog/">GitHub Changelog</a>, <a href="https://docs.github.com/en/copilot">GitHub Copilot docs</a>, <a href="https://docs.github.com/en/copilot/reference/custom-instructions-support">Custom instructions support matrix</a>, <a href="https://docs.github.com/en/copilot/concepts/agents/cloud-agent/about-custom-agents">About custom agents</a></li>
+<li><strong>Audit Page Accessibility:</strong> <a href="https://docs.github.com/en">GitHub Docs, home</a>, <a href="https://github.blog/changelog/">GitHub Changelog</a>, <a href="https://docs.github.com/en/copilot">GitHub Copilot docs</a>, <a href="https://docs.github.com/en/copilot/reference/custom-instructions-support">Custom instructions support matrix</a>, <a href="https://docs.github.com/en/copilot/concepts/agents/cloud-agent/about-custom-agents">About custom agents</a></li>
+<li><strong>Smart Audit Based on Page Content:</strong> <a href="https://docs.github.com/en">GitHub Docs, home</a>, <a href="https://github.blog/changelog/">GitHub Changelog</a>, <a href="https://docs.github.com/en/copilot">GitHub Copilot docs</a>, <a href="https://docs.github.com/en/copilot/reference/custom-instructions-support">Custom instructions support matrix</a>, <a href="https://docs.github.com/en/copilot/concepts/agents/cloud-agent/about-custom-agents">About custom agents</a></li>
+<li><strong>5. Orchestration: Delegation Patterns:</strong> <a href="https://docs.github.com/en">GitHub Docs, home</a>, <a href="https://github.blog/changelog/">GitHub Changelog</a>, <a href="https://docs.github.com/en/copilot">GitHub Copilot docs</a>, <a href="https://docs.github.com/en/copilot/reference/custom-instructions-support">Custom instructions support matrix</a>, <a href="https://docs.github.com/en/copilot/concepts/agents/cloud-agent/about-custom-agents">About custom agents</a></li>
+<li><strong>Parallel Audit:</strong> <a href="https://docs.github.com/en">GitHub Docs, home</a>, <a href="https://github.blog/changelog/">GitHub Changelog</a>, <a href="https://docs.github.com/en/copilot">GitHub Copilot docs</a>, <a href="https://docs.github.com/en/copilot/reference/custom-instructions-support">Custom instructions support matrix</a>, <a href="https://docs.github.com/en/copilot/concepts/agents/cloud-agent/about-custom-agents">About custom agents</a></li>
+<li><strong>6. Advanced Techniques:</strong> <a href="https://docs.github.com/en">GitHub Docs, home</a>, <a href="https://github.blog/changelog/">GitHub Changelog</a>, <a href="https://docs.github.com/en/copilot">GitHub Copilot docs</a>, <a href="https://docs.github.com/en/copilot/reference/custom-instructions-support">Custom instructions support matrix</a>, <a href="https://docs.github.com/en/copilot/concepts/agents/cloud-agent/about-custom-agents">About custom agents</a></li>
+</ul>
+
+  </main>
+  <footer role="contentinfo" class="site-footer">
+    <p><strong>GIT Going with GitHub</strong> - A workshop by <a href="https://community-access.org">Community Access</a></p>
+    <p><a href="https://github.com/community-access/git-going-with-github">View on GitHub</a> · <a href="https://community-access.org">community-access.org</a></p>
+  </footer>
+
+  </body>
+</html>

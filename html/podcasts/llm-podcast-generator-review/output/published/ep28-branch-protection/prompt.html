@@ -1,0 +1,359 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="GIT Going with GitHub - A two-day accessible open source workshop by Community Access">
+  <title>[appendix-o-branch-protection.md] Appendix O: Branch Protection Rules and Repository Rulesets - GIT Going with GitHub</title>
+  <link rel="stylesheet" href="./styles/github-markdown.css">
+  <link rel="stylesheet" href="./styles/highlight.css">
+  <link rel="stylesheet" href="./styles/custom.css">
+  <style>
+    .markdown-body {
+      box-sizing: border-box;
+      min-width: 200px;
+      max-width: 980px;
+      margin: 0 auto;
+      padding: 45px;
+    }
+    @media (max-width: 767px) {
+      .markdown-body {
+        padding: 15px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+  <header class="site-header" role="banner">
+    <div class="site-header-inner">
+      <nav aria-label="Breadcrumb" class="breadcrumb">
+        <a href="./index.html">Home</a> <span aria-hidden="true">›</span> <span aria-current="page">[appendix-o-branch-protection.md] Appendix O: Branch Protection Rules and Repository Rulesets</span>
+      </nav>
+      <div class="header-actions">
+        <a href="https://github.com/Community-Access/git-going-with-github/wiki" class="wiki-link" target="_blank" rel="noopener noreferrer">
+          <svg aria-hidden="true" focusable="false" width="16" height="16" viewBox="0 0 16 16" fill="currentColor">
+            <path d="M1.75 1h8.5c.966 0 1.75.784 1.75 1.75v5.5A1.75 1.75 0 0 1 10.25 10H7.06l-2.573 2.573A1.458 1.458 0 0 1 2 11.543V10h-.25A1.75 1.75 0 0 1 0 8.25v-5.5C0 1.784.784 1 1.75 1ZM1.5 2.75v5.5c0 .138.112.25.25.25h1a.75.75 0 0 1 .75.75v2.19l2.72-2.72a.749.749 0 0 1 .53-.22h3.5a.25.25 0 0 0 .25-.25v-5.5a.25.25 0 0 0-.25-.25h-8.5a.25.25 0 0 0-.25.25Zm13 2a.25.25 0 0 0-.25-.25h-.5a.75.75 0 0 1 0-1.5h.5c.966 0 1.75.784 1.75 1.75v5.5A1.75 1.75 0 0 1 14.25 12H14v1.543a1.457 1.457 0 0 1-2.487 1.03L9.22 12.28a.749.749 0 1 1 1.06-1.06l2.22 2.22v-2.19a.75.75 0 0 1 .75-.75h.25a.25.25 0 0 0 .25-.25v-5.5Z"/>
+          </svg>
+          Wiki
+        </a>
+        <form role="search" class="search-form" action="./search.html" method="get">
+        <label for="site-search" class="search-label">Search docs</label>
+        <input
+          type="search"
+          id="site-search"
+          class="search-input"
+          name="q"
+          placeholder="Search docs…"
+          autocomplete="off"
+          aria-label="Search documentation"
+        >
+        <button type="submit" class="search-button" aria-label="Submit search">
+          <svg aria-hidden="true" focusable="false" width="16" height="16" viewBox="0 0 16 16" fill="currentColor">
+            <path d="M10.68 11.74a6 6 0 0 1-7.922-8.982 6 6 0 0 1 8.982 7.922l3.04 3.04a.749.749 0 0 1-.326 1.275.749.749 0 0 1-.734-.215ZM11.5 7a4.499 4.499 0 1 0-8.997 0A4.499 4.499 0 0 0 11.5 7Z"/>
+          </svg>
+        </button>
+      </form>
+      </div>
+    </div>
+  </header>
+  <main id="main-content" class="markdown-body">
+    <p>You are writing a Git Going with GitHub podcast script.</p>
+<p>Audience:
+Blind and low-vision learners studying GitHub, Git, VS Code, open source, and accessible contribution workflows.</p>
+<p>Hosts:</p>
+<ul>
+<li>Alex: warm expert professor</li>
+<li>Jamie: curious professor who asks the questions learners may hesitate to ask</li>
+</ul>
+<p>Goal:
+Create a complete, conversational, two-host audio lesson. Teach every substantive concept from the Markdown source. Do not merely summarize. Do not omit administrative or accessibility content. Use varied phrasing and make it feel like a thoughtful NotebookLM-style teaching conversation.</p>
+<p>Scale rules:</p>
+<ul>
+<li>The source set may be large. Prioritize complete conceptual coverage over quoting every line.</li>
+<li>Use concise turns and avoid unnecessary verbosity.</li>
+</ul>
+<p>Required script markers:
+Use only these markers on their own lines:
+[ALEX]
+[JAMIE]
+[PAUSE]</p>
+<p>Narration constraints:</p>
+<ul>
+<li>Do not say chapter titles, section names, or &quot;chapter marker&quot; language out loud.</li>
+<li>Keep transitions natural so chapter separation can be handled in metadata, not spoken labels.</li>
+</ul>
+<p>Return JSON only:
+{
+  &quot;script&quot;: &quot;[ALEX]\n...\n&quot;,
+  &quot;chapters&quot;: [
+    {
+      &quot;title&quot;: &quot;Specific chapter title&quot;,
+      &quot;startSegmentIndex&quot;: 0,
+      &quot;sourceHeading&quot;: &quot;Heading represented&quot;
+    }
+  ],
+  &quot;coverageNotes&quot;: [
+    {
+      &quot;sourceHeading&quot;: &quot;Heading&quot;,
+      &quot;status&quot;: &quot;covered | partial | risk&quot;,
+      &quot;notes&quot;: &quot;Brief note&quot;
+    }
+  ]
+}</p>
+<p>Slug: ep28-branch-protection
+Sources:</p>
+<ul>
+<li>appendix-o-branch-protection.md</li>
+</ul>
+<p>Headings that must be represented:</p>
+<h1 id="appendix-o-branch-protectionmd-appendix-o-branch-protection-rules-and-repository-rulesets">[appendix-o-branch-protection.md] Appendix O: Branch Protection Rules and Repository Rulesets</h1>
+<h2 id="appendix-o-branch-protectionmd-how-merging-rules-work-and-why-your-pr-may-be-blocked">[appendix-o-branch-protection.md] How Merging Rules Work and Why Your PR May Be Blocked</h2>
+<h2 id="appendix-o-branch-protectionmd-quick-navigation">[appendix-o-branch-protection.md] Quick Navigation</h2>
+<h2 id="appendix-o-branch-protectionmd-1-what-branch-protection-does">[appendix-o-branch-protection.md] 1. What Branch Protection Does</h2>
+<h3 id="appendix-o-branch-protectionmd-learning-cards-what-branch-protection-does">[appendix-o-branch-protection.md] Learning Cards: What Branch Protection Does</h3>
+<h2 id="appendix-o-branch-protectionmd-2-common-branch-protection-rules">[appendix-o-branch-protection.md] 2. Common Branch Protection Rules</h2>
+<h3 id="appendix-o-branch-protectionmd-required-reviews">[appendix-o-branch-protection.md] Required Reviews</h3>
+<h3 id="appendix-o-branch-protectionmd-required-status-checks">[appendix-o-branch-protection.md] Required Status Checks</h3>
+<h4 id="appendix-o-branch-protectionmd-example-checks-you-may-see">[appendix-o-branch-protection.md] Example checks you may see</h4>
+<h3 id="appendix-o-branch-protectionmd-require-branches-to-be-up-to-date">[appendix-o-branch-protection.md] Require Branches to Be Up to Date</h3>
+<h3 id="appendix-o-branch-protectionmd-require-signed-commits">[appendix-o-branch-protection.md] Require Signed Commits</h3>
+<h3 id="appendix-o-branch-protectionmd-require-linear-history">[appendix-o-branch-protection.md] Require Linear History</h3>
+<h3 id="appendix-o-branch-protectionmd-lock-branch">[appendix-o-branch-protection.md] Lock Branch</h3>
+<h2 id="appendix-o-branch-protectionmd-3-repository-rulesets---the-modern-approach">[appendix-o-branch-protection.md] 3. Repository Rulesets - The Modern Approach</h2>
+<h3 id="appendix-o-branch-protectionmd-rulesets-vs-branch-protection-rules">[appendix-o-branch-protection.md] Rulesets vs. Branch Protection Rules</h3>
+<h3 id="appendix-o-branch-protectionmd-finding-and-reading-rulesets">[appendix-o-branch-protection.md] Finding and Reading Rulesets</h3>
+<h2 id="appendix-o-branch-protectionmd-4-why-your-pr-cannot-be-merged---diagnosis-guide">[appendix-o-branch-protection.md] 4. Why Your PR Cannot Be Merged - Diagnosis Guide</h2>
+<h3 id="appendix-o-branch-protectionmd-quotx-review-required--x-reviews-requiredquot">[appendix-o-branch-protection.md] &quot;X review required / X reviews required&quot;</h3>
+<h4 id="appendix-o-branch-protectionmd-what-to-do">[appendix-o-branch-protection.md] What to do</h4>
+<h3 id="appendix-o-branch-protectionmd-quotsome-checks-haven39t-completed-yetquot-or-quotsome-checks-were-not-successfulquot">[appendix-o-branch-protection.md] &quot;Some checks haven&#39;t completed yet&quot; or &quot;Some checks were not successful&quot;</h3>
+<h4 id="appendix-o-branch-protectionmd-what-to-do">[appendix-o-branch-protection.md] What to do</h4>
+<h3 id="appendix-o-branch-protectionmd-quotthis-branch-is-out-of-date-with-the-base-branchquot">[appendix-o-branch-protection.md] &quot;This branch is out of date with the base branch&quot;</h3>
+<h4 id="appendix-o-branch-protectionmd-what-to-do">[appendix-o-branch-protection.md] What to do</h4>
+<h3 id="appendix-o-branch-protectionmd-quotcommits-must-have-verified-signaturesquot">[appendix-o-branch-protection.md] &quot;Commits must have verified signatures&quot;</h3>
+<h4 id="appendix-o-branch-protectionmd-what-to-do">[appendix-o-branch-protection.md] What to do</h4>
+<h3 id="appendix-o-branch-protectionmd-quotmerging-is-blockedquot">[appendix-o-branch-protection.md] &quot;Merging is blocked&quot;</h3>
+<h3 id="appendix-o-branch-protectionmd-learning-cards-why-your-pr-cannot-be-merged">[appendix-o-branch-protection.md] Learning Cards: Why Your PR Cannot Be Merged</h3>
+<h2 id="appendix-o-branch-protectionmd-5-navigating-the-merge-box-with-a-screen-reader">[appendix-o-branch-protection.md] 5. Navigating the Merge Box with a Screen Reader</h2>
+<h3 id="appendix-o-branch-protectionmd-reaching-the-merge-box">[appendix-o-branch-protection.md] Reaching the Merge Box</h3>
+<h3 id="appendix-o-branch-protectionmd-reading-the-merge-box-status">[appendix-o-branch-protection.md] Reading the Merge Box Status</h3>
+<h4 id="appendix-o-branch-protectionmd-nvda-specific-path">[appendix-o-branch-protection.md] NVDA specific path</h4>
+<h4 id="appendix-o-branch-protectionmd-jaws-specific-path">[appendix-o-branch-protection.md] JAWS specific path</h4>
+<h3 id="appendix-o-branch-protectionmd-checking-status-checks">[appendix-o-branch-protection.md] Checking Status Checks</h3>
+<h3 id="appendix-o-branch-protectionmd-reading-check-details">[appendix-o-branch-protection.md] Reading Check Details</h3>
+<h2 id="appendix-o-branch-protectionmd-6-status-checks---what-they-are-and-what-they-mean">[appendix-o-branch-protection.md] 6. Status Checks - What They Are and What They Mean</h2>
+<h3 id="appendix-o-branch-protectionmd-github-actions-status-checks">[appendix-o-branch-protection.md] GitHub Actions Status Checks</h3>
+<h1 id="appendix-o-branch-protectionmd-githubworkflowsciyml">[appendix-o-branch-protection.md] .github/workflows/ci.yml</h1>
+<h3 id="appendix-o-branch-protectionmd-third-party-status-checks">[appendix-o-branch-protection.md] Third-Party Status Checks</h3>
+<h3 id="appendix-o-branch-protectionmd-status-check-states">[appendix-o-branch-protection.md] Status Check States</h3>
+<h2 id="appendix-o-branch-protectionmd-7-who-can-configure-branch-protection">[appendix-o-branch-protection.md] 7. Who Can Configure Branch Protection</h2>
+<h2 id="appendix-o-branch-protectionmd-8-workshop-repository-configuration-reference">[appendix-o-branch-protection.md] 8. Workshop Repository Configuration Reference</h2>
+<h2 id="appendix-o-branch-protectionmd-related-resources">[appendix-o-branch-protection.md] Related Resources</h2>
+<h2 id="appendix-o-branch-protectionmd-authoritative-sources">[appendix-o-branch-protection.md] Authoritative Sources</h2>
+<h3 id="appendix-o-branch-protectionmd-section-level-source-map">[appendix-o-branch-protection.md] Section-Level Source Map</h3>
+<p>Markdown source:</p>
+<h2 id="source-appendix-o-branch-protectionmd">Source: appendix-o-branch-protection.md</h2>
+<pre><code class="hljs language-markdown"><span class="hljs-section"># Appendix O: Branch Protection Rules and Repository Rulesets</span>
+<span class="hljs-quote">&gt;
+&gt; <span class="hljs-strong">**Listen to Episode 28:**</span> [<span class="hljs-string">Branch Protection and Rulesets</span>](<span class="hljs-link">../admin/PODCASTS.md</span>) - a conversational audio overview of this chapter. Listen before reading to preview the concepts, or after to reinforce what you learned.</span>
+
+<span class="hljs-quote">&gt; <span class="hljs-strong">**Reference companion to:**</span> [<span class="hljs-string">Chapter 08: Open Source Culture</span>](<span class="hljs-link">08-open-source-culture.md</span>) | Also relevant: [<span class="hljs-string">Chapter 14</span>](<span class="hljs-link">14-git-in-practice.md</span>)</span>
+<span class="hljs-quote">&gt;
+&gt; <span class="hljs-strong">**Authoritative source:**</span> [<span class="hljs-string">GitHub Docs: Protected branches</span>](<span class="hljs-link">https://docs.github.com/en/repositories/configuring-branches-and-merges-in-your-repository/managing-protected-branches/about-protected-branches</span>)</span>
+
+<span class="hljs-section">## How Merging Rules Work and Why Your PR May Be Blocked</span>
+
+<span class="hljs-quote">&gt; <span class="hljs-strong">**Who this is for:**</span> Contributors who have submitted a PR and are wondering why it cannot be merged yet, as well as workshop facilitators who configure branch protection for practice repositories.</span>
+
+<span class="hljs-section">## Quick Navigation</span>
+
+<span class="hljs-bullet">1.</span> [<span class="hljs-string">What Branch Protection Does</span>](<span class="hljs-link">#1-what-branch-protection-does</span>)
+<span class="hljs-bullet">2.</span> [<span class="hljs-string">Common Branch Protection Rules</span>](<span class="hljs-link">#2-common-branch-protection-rules</span>)
+<span class="hljs-bullet">3.</span> [<span class="hljs-string">Repository Rulesets - The Modern Approach</span>](<span class="hljs-link">#3-repository-rulesets---the-modern-approach</span>)
+<span class="hljs-bullet">4.</span> [<span class="hljs-string">Why Your PR Cannot Be Merged - Diagnosis Guide</span>](<span class="hljs-link">#4-why-your-pr-cannot-be-merged---diagnosis-guide</span>)
+<span class="hljs-bullet">5.</span> [<span class="hljs-string">Navigating the Merge Box with a Screen Reader</span>](<span class="hljs-link">#5-navigating-the-merge-box-with-a-screen-reader</span>)
+<span class="hljs-bullet">6.</span> [<span class="hljs-string">Status Checks - What They Are and What They Mean</span>](<span class="hljs-link">#6-status-checks---what-they-are-and-what-they-mean</span>)
+<span class="hljs-bullet">7.</span> [<span class="hljs-string">Who Can Configure Branch Protection</span>](<span class="hljs-link">#7-who-can-configure-branch-protection</span>)
+<span class="hljs-bullet">8.</span> [<span class="hljs-string">Workshop Repository Configuration Reference</span>](<span class="hljs-link">#8-workshop-repository-configuration-reference</span>)
+
+<span class="hljs-section">## 1. What Branch Protection Does</span>
+
+A <span class="hljs-strong">**branch protection rule**</span> is a set of requirements that must be satisfied before a PR can be merged into a specific branch (typically <span class="hljs-code">`main`</span>). Branch protection exists to:
+
+<span class="hljs-bullet">-</span> Require that code is reviewed before it enters the default branch
+<span class="hljs-bullet">-</span> Require that automated tests pass before merging
+<span class="hljs-bullet">-</span> Prevent direct pushes to <span class="hljs-code">`main`</span> without a PR
+<span class="hljs-bullet">-</span> Ensure the branch is up-to-date before merging
+<span class="hljs-bullet">-</span> Require commits to be signed (GPG or SSH signatures)
+
+Think of branch protection as the quality gate for a repository&#x27;s primary branch.
+
+<span class="hljs-section">### Learning Cards: What Branch Protection Does</span>
+
+<span class="language-xml"><span class="hljs-tag">&lt;<span class="hljs-name">details</span>&gt;</span></span>
+<span class="language-xml"><span class="hljs-tag">&lt;<span class="hljs-name">summary</span>&gt;</span></span>Screen reader users<span class="language-xml"><span class="hljs-tag">&lt;/<span class="hljs-name">summary</span>&gt;</span></span>
+
+<span class="hljs-bullet">-</span> The merge box at the bottom of every PR page is where branch protection surfaces its requirements — press End to jump to the bottom, then use H to find the merge heading
+<span class="hljs-bullet">-</span> Each requirement is announced as a status line: &quot;1 review required,&quot; &quot;Some checks haven&#x27;t completed yet,&quot; etc. — listen for these before attempting to merge
+<span class="hljs-bullet">-</span> If the Merge button says &quot;disabled&quot; or &quot;grayed out,&quot; branch protection is blocking — the status lines immediately above explain exactly what is needed
+
+<span class="language-xml"><span class="hljs-tag">&lt;/<span class="hljs-name">details</span>&gt;</span></span>
+
+<span class="language-xml"><span class="hljs-tag">&lt;<span class="hljs-name">details</span>&gt;</span></span>
+<span class="language-xml"><span class="hljs-tag">&lt;<span class="hljs-name">summary</span>&gt;</span></span>Low vision users<span class="language-xml"><span class="hljs-tag">&lt;/<span class="hljs-name">summary</span>&gt;</span></span>
+
+<span class="hljs-bullet">-</span> The merge box uses green (ready), yellow (pending), and red (blocked) indicators — zoom in on the merge area to read the text labels next to each colored icon
+<span class="hljs-bullet">-</span> The &quot;Update branch&quot; button appears as a secondary button above the merge button when your PR is behind main — it can be easy to miss at high zoom
+<span class="hljs-bullet">-</span> Required checks show checkmark or X icons that are small at default size — browser zoom to 150%+ makes the pass/fail status easier to distinguish
+
+<span class="language-xml"><span class="hljs-tag">&lt;/<span class="hljs-name">details</span>&gt;</span></span>
+
+<span class="language-xml"><span class="hljs-tag">&lt;<span class="hljs-name">details</span>&gt;</span></span>
+<span class="language-xml"><span class="hljs-tag">&lt;<span class="hljs-name">summary</span>&gt;</span></span>Sighted users<span class="language-xml"><span class="hljs-tag">&lt;/<span class="hljs-name">summary</span>&gt;</span></span>
+
+<span class="hljs-bullet">-</span> Look at the bottom of the PR Conversation tab for the merge box — a green &quot;Merge pull request&quot; button means all requirements are met; grey means something is blocking
+<span class="hljs-bullet">-</span> The list of requirements appears as a vertical checklist above the merge button — each item shows a green checkmark, yellow spinner, or red X
+<span class="hljs-bullet">-</span> Click &quot;Show all checks&quot; to expand the full list of status checks if only a summary is visible
+
+<span class="language-xml"><span class="hljs-tag">&lt;/<span class="hljs-name">details</span>&gt;</span></span>
+
+<span class="hljs-section">## 2. Common Branch Protection Rules</span>
+
+<span class="hljs-section">### Required Reviews</span>
+
+The most common rule. The maintainer requires a minimum number of approving reviews before the PR can be merged.
+
+<span class="hljs-strong">**Example:**</span> &quot;Require 1 approving review&quot;
+
+What this means for you:
+
+<span class="hljs-bullet">-</span> Your PR shows a &quot;1 review required&quot; notice in the merge box
+<span class="hljs-bullet">-</span> If a reviewer requests changes, their approval is revoked - you need at least one new approval after your latest push
+<span class="hljs-bullet">-</span> After you push new commits, re-request review from the original reviewer
+
+<span class="hljs-strong">**Dismiss stale reviews:**</span> Some repos have this enabled - whenever you push a new commit, all existing approvals are automatically withdrawn and you need a fresh review. This prevents sneaking in bad code after approval.
+
+<span class="hljs-section">### Required Status Checks</span>
+
+Automated workflows (GitHub Actions or third-party CI) must complete successfully before merging is allowed.
+
+<span class="hljs-section">#### Example checks you may see</span>
+
+<span class="hljs-bullet">-</span> <span class="hljs-code">`ci / build`</span> - compiles the code
+<span class="hljs-bullet">-</span> <span class="hljs-code">`ci / test`</span> - runs the test suite
+<span class="hljs-bullet">-</span> <span class="hljs-code">`lint`</span> - code style checks
+<span class="hljs-bullet">-</span> <span class="hljs-code">`accessibility-check`</span> - automated accessibility scanning
+<span class="hljs-bullet">-</span> <span class="hljs-code">`CodeQL`</span> - security analysis
+<span class="hljs-bullet">-</span> <span class="hljs-code">`netlify/deploy-preview`</span> - preview deployment must succeed
+
+<span class="hljs-strong">**What &quot;Required&quot; means:**</span> The merge button is grayed out (or shows an error) until all required checks show a green checkmark. A failing or pending check blocks the merge.
+
+<span class="hljs-section">### Require Branches to Be Up to Date</span>
+
+Before merging, your PR branch must include all changes from <span class="hljs-code">`main`</span>. This prevents merge conflicts from being introduced silently.
+
+If your PR is behind <span class="hljs-code">`main`</span>:
+
+<span class="hljs-bullet">-</span> The merge box shows: &quot;This branch is out of date with the base branch&quot;
+<span class="hljs-bullet">-</span> Button: &quot;Update branch&quot; - merges current <span class="hljs-code">`main`</span> into your branch
+<span class="hljs-bullet">-</span> Alternative: Rebase your branch (only if the maintainer permits rebase merges)
+
+<span class="hljs-section">### Require Signed Commits</span>
+
+All commits in the PR must have a Verified badge (see [<span class="hljs-string">Appendix D: Git Authentication</span>](<span class="hljs-link">appendix-d-git-authentication.md</span>)). If your commits are unverified, the PR cannot be merged until you re-commit with signing enabled.
+
+<span class="hljs-section">### Require Linear History</span>
+
+Only squash merges or rebase merges are permitted - no merge commits. This keeps the commit history linear and readable.
+
+If you see: &quot;This repository requires a linear history&quot; - the maintainer will squash or rebase merge your PR, not create a merge commit.
+
+<span class="hljs-section">### Lock Branch</span>
+
+A locked branch cannot receive any merges - it is effectively read-only. This is sometimes used for archived repositories or during release freezes.
+
+<span class="hljs-section">## 3. Repository Rulesets - The Modern Approach</span>
+
+<span class="hljs-strong">**Repository Rulesets**</span> (introduced in late 2023) are the next generation of branch protection. They extend branch protection rules with:
+
+<span class="hljs-bullet">-</span> <span class="hljs-strong">**Organization-level rules**</span> - apply across all repos in an org from one place
+<span class="hljs-bullet">-</span> <span class="hljs-strong">**Bypass lists**</span> - specific users or roles can be exempted from rules (e.g., release bots)
+<span class="hljs-bullet">-</span> <span class="hljs-strong">**Target multiple branches**</span> - one ruleset can target a pattern like <span class="hljs-code">`release/*`</span> or <span class="hljs-code">`v*`</span>
+<span class="hljs-bullet">-</span> <span class="hljs-strong">**Violation insights**</span> - audit log of when rules were bypassed and by whom
+<span class="hljs-bullet">-</span> <span class="hljs-strong">**Rule enforcement**</span> - Active (enforced), Evaluate (only log violations, don&#x27;t block), Disabled
+
+<span class="hljs-section">### Rulesets vs. Branch Protection Rules</span>
+
+| Feature | Branch Protection Rules | Repository Rulesets |
+| ---------  | ------------------------  | ---------------------  |
+| Scope | Single branch, single repo | Patterns, multi-branch, cross-org |
+| Bypass | No bypass capability | Configurable bypass list |
+| Enforcement modes | Active only | Active, Evaluate, Disabled |
+| Organization-level | No | Yes (org rulesets) |
+| Status | Classic (still supported) | Current/modern approach |
+
+Most repositories you encounter still use classic branch protection rules. Rulesets will become more common as maintainers migrate.
+
+<span class="hljs-section">### Finding and Reading Rulesets</span>
+
+If you want to understand why certain rules apply to a branch:
+
+<span class="hljs-code">```text
+Repository → Insights tab → Rulesets (if you have access - contributors usually don&#x27;t)
+Or: Repository → Settings → Rules → Rulesets (admin only)</span></code></pre>
+<p>Alternatively, PR merge box messages describe which rules are blocking - you don&#39;t need admin access to understand what&#39;s required.</p>
+<h2 id="4-why-your-pr-cannot-be-merged---diagnosis-guide">4. Why Your PR Cannot Be Merged - Diagnosis Guide</h2>
+<p>When you open a PR and the merge button is grayed out or shows an error, the merge box tells you exactly what needs to happen. Here is how to read it.</p>
+<h3 id="quotx-review-required--x-reviews-requiredquot">&quot;X review required / X reviews required&quot;</h3>
+<p><strong>What it means:</strong> The required number of approvals hasn&#39;t been reached yet.</p>
+<h4 id="what-to-do">What to do</h4>
+<ol>
+<li>Request review from a codeowner or maintainer (right sidebar → Reviewers → request)</li>
+<li>Check if any reviews exist but requested changes - those count against you</li>
+<li>Wait for the reviewer to submit their review</li>
+<li>Respond to requested changes by pushing new commits, then re-requesting review</li>
+</ol>
+<h3 id="quotsome-checks-haven39t-completed-yetquot-or-quotsome-checks-were-not-successfulquot">&quot;Some checks haven&#39;t completed yet&quot; or &quot;Some checks were not successful&quot;</h3>
+<p><strong>What it means:</strong> A required status check is pending or failing.</p>
+<h4 id="what-to-do">What to do</h4>
+<ol>
+<li>Scroll down to the merge box - expand &quot;Show all checks&quot;</li>
+<li>Find the failing check → click &quot;Details&quot; to see the full log</li>
+<li>Fix the underlying issue (test failure, lint error, build error) in your branch</li>
+<li>Push new commits - checks re-run automatically</li>
+<li>Wait for checks to complete (typically 1-5 minutes for most CI)</li>
+</ol>
+<p><strong>If checks pass on <code>main</code> but fail on your PR:</strong> The issue is specific to your changes. Read the check log carefully.</p>
+<p><strong>If checks are stuck &quot;in progress&quot; for over 30 minutes:</strong> The workflow runner may have an issue - contact the maintainer.</p>
+<h3 id="quotthis-branch-is-out-of-date-with-the-base-branchquot">&quot;This branch is out of date with the base branch&quot;</h3>
+<p><strong>What it means:</strong> New commits were pushed to <code>main</code> after you created your PR branch. The maintainer requires everything to be current.</p>
+<h4 id="what-to-do">What to do</h4>
+<ul>
+<li>Click <strong>&quot;Update branch&quot;</strong> in the merge box - GitHub does a merge commit from <code>main</code> into your branch</li>
+<li>Or locally: <code>git fetch upstream &amp;&amp; git rebase upstream/main</code> then force-push (only if you are comfortable with rebase)</li>
+</ul>
+<h3 id="quotcommits-must-have-verified-signaturesquot">&quot;Commits must have verified signatures&quot;</h3>
+<p><strong>What it means:</strong> Branch protection requires signed commits (see [Appendix D: G</p>
+<!-- content omitted for length -->
+
+<p>ing-labels-and-milestones-to-track-work/managing-labels), <a href="https://docs.github.com/en/issues/using-labels-and-milestones-to-track-work/about-milestones">Milestones docs</a></p>
+<ul>
+<li><strong>2. Common Branch Protection Rules:</strong> <a href="https://docs.github.com/en">GitHub Docs, home</a>, <a href="https://github.blog/changelog/">GitHub Changelog</a>, <a href="https://docs.github.com/en/issues/planning-and-tracking-with-projects/learning-about-projects/about-projects">GitHub Projects docs</a>, <a href="https://docs.github.com/en/issues/using-labels-and-milestones-to-track-work/managing-labels">Labels docs</a>, <a href="https://docs.github.com/en/issues/using-labels-and-milestones-to-track-work/about-milestones">Milestones docs</a></li>
+<li><strong>3. Repository Rulesets - The Modern Approach:</strong> <a href="https://docs.github.com/en">GitHub Docs, home</a>, <a href="https://github.blog/changelog/">GitHub Changelog</a>, <a href="https://docs.github.com/en/issues/planning-and-tracking-with-projects/learning-about-projects/about-projects">GitHub Projects docs</a>, <a href="https://docs.github.com/en/issues/using-labels-and-milestones-to-track-work/managing-labels">Labels docs</a>, <a href="https://docs.github.com/en/issues/using-labels-and-milestones-to-track-work/about-milestones">Milestones docs</a></li>
+<li><strong>4. Why Your PR Cannot Be Merged - Diagnosis Guide:</strong> <a href="https://docs.github.com/en">GitHub Docs, home</a>, <a href="https://github.blog/changelog/">GitHub Changelog</a>, <a href="https://docs.github.com/en/issues/planning-and-tracking-with-projects/learning-about-projects/about-projects">GitHub Projects docs</a>, <a href="https://docs.github.com/en/issues/using-labels-and-milestones-to-track-work/managing-labels">Labels docs</a>, <a href="https://docs.github.com/en/issues/using-labels-and-milestones-to-track-work/about-milestones">Milestones docs</a></li>
+<li><strong>5. Navigating the Merge Box with a Screen Reader:</strong> <a href="https://docs.github.com/en">GitHub Docs, home</a>, <a href="https://github.blog/changelog/">GitHub Changelog</a>, <a href="https://docs.github.com/en/issues/planning-and-tracking-with-projects/learning-about-projects/about-projects">GitHub Projects docs</a>, <a href="https://docs.github.com/en/issues/using-labels-and-milestones-to-track-work/managing-labels">Labels docs</a>, <a href="https://docs.github.com/en/issues/using-labels-and-milestones-to-track-work/about-milestones">Milestones docs</a></li>
+<li><strong>6. Status Checks - What They Are and What They Mean:</strong> <a href="https://docs.github.com/en">GitHub Docs, home</a>, <a href="https://github.blog/changelog/">GitHub Changelog</a>, <a href="https://docs.github.com/en/issues/planning-and-tracking-with-projects/learning-about-projects/about-projects">GitHub Projects docs</a>, <a href="https://docs.github.com/en/issues/using-labels-and-milestones-to-track-work/managing-labels">Labels docs</a>, <a href="https://docs.github.com/en/issues/using-labels-and-milestones-to-track-work/about-milestones">Milestones docs</a></li>
+<li><strong>7. Who Can Configure Branch Protection:</strong> <a href="https://docs.github.com/en">GitHub Docs, home</a>, <a href="https://github.blog/changelog/">GitHub Changelog</a>, <a href="https://docs.github.com/en/issues/planning-and-tracking-with-projects/learning-about-projects/about-projects">GitHub Projects docs</a>, <a href="https://docs.github.com/en/issues/using-labels-and-milestones-to-track-work/managing-labels">Labels docs</a>, <a href="https://docs.github.com/en/issues/using-labels-and-milestones-to-track-work/about-milestones">Milestones docs</a></li>
+<li><strong>8. Workshop Repository Configuration Reference:</strong> <a href="https://docs.github.com/en">GitHub Docs, home</a>, <a href="https://github.blog/changelog/">GitHub Changelog</a>, <a href="https://docs.github.com/en/issues/planning-and-tracking-with-projects/learning-about-projects/about-projects">GitHub Projects docs</a>, <a href="https://docs.github.com/en/issues/using-labels-and-milestones-to-track-work/managing-labels">Labels docs</a>, <a href="https://docs.github.com/en/issues/using-labels-and-milestones-to-track-work/about-milestones">Milestones docs</a></li>
+<li><strong>Related Resources:</strong> <a href="https://docs.github.com/en">GitHub Docs, home</a>, <a href="https://github.blog/changelog/">GitHub Changelog</a>, <a href="https://docs.github.com/en/issues/planning-and-tracking-with-projects/learning-about-projects/about-projects">GitHub Projects docs</a>, <a href="https://docs.github.com/en/issues/using-labels-and-milestones-to-track-work/managing-labels">Labels docs</a>, <a href="https://docs.github.com/en/issues/using-labels-and-milestones-to-track-work/about-milestones">Milestones docs</a></li>
+</ul>
+<pre><code class="hljs"></code></pre>
+
+  </main>
+  <footer role="contentinfo" class="site-footer">
+    <p><strong>GIT Going with GitHub</strong> - A workshop by <a href="https://community-access.org">Community Access</a></p>
+    <p><a href="https://github.com/community-access/git-going-with-github">View on GitHub</a> · <a href="https://community-access.org">community-access.org</a></p>
+  </footer>
+
+  </body>
+</html>

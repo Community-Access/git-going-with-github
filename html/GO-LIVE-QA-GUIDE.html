@@ -59,35 +59,44 @@
   </header>
   <main id="main-content" class="markdown-body">
     <h1 id="git-going-with-github-go-live-qa-guide">Git Going with GitHub Go-Live QA Guide</h1>
-<p>Use this guide before a cohort is opened to learners. It is the release gate for curriculum content, GitHub Classroom deployment, Learning Room automation, podcast materials, accessibility, and human test coverage.</p>
+<p>Use this guide before a cohort is opened to learners. It is the release gate for curriculum content, GitHub Classroom deployment, Learning Room automation, accessibility, and human test coverage. Podcast and LLM-generation QA is tracked here as non-blocking unless a podcast release is explicitly in scope.</p>
 <p>For end-to-end execution details, use <a href="admin/LEARNING-ROOM-E2E-QA-RUNBOOK.html">admin/LEARNING-ROOM-E2E-QA-RUNBOOK.md</a> as the operator procedure. This guide is the release gate summary; the runbook is the required execution playbook.</p>
 <p>The goal is simple: a facilitator should be able to create a classroom, seed test repositories, complete every challenge path, validate every generated artifact, and know exactly what remains before students arrive.</p>
+<h2 id="important-note-email-and-notification-handling">Important Note: Email and Notification Handling</h2>
+<p><strong>This curriculum does NOT depend on email notifications.</strong></p>
+<ul>
+<li>Account <strong>verification emails</strong> (GitHub signup, email confirmation) are required by GitHub and are outside our control</li>
+<li><strong>Notification emails</strong> (activity updates, mentions, assignments) are completely optional</li>
+<li>All challenges complete successfully using only GitHub&#39;s <strong>web notification inbox</strong> at <code>github.com/notifications</code></li>
+<li>Students can disable email notifications in their GitHub settings after account setup—this will NOT break the workshop</li>
+<li>Chapter 10 (Notifications) focuses on managing the web notification inbox, not email delivery</li>
+</ul>
+<p>If a student&#39;s email delivery is problematic, delayed, or filtered by their ISP, they can still complete all challenges and exercises without any impact. Instructors should inform students that they can check <code>github.com/notifications</code> anytime instead of waiting for emails.</p>
 <h2 id="release-decision">Release Decision</h2>
 <p>Do not mark a cohort ready until all required items in this section are complete.</p>
 <ul>
 <li><input aria-label="Automated tests pass locally." disabled="" type="checkbox"> Automated tests pass locally.</li>
 <li><input aria-label="HTML documentation builds from the current Markdown sources." disabled="" type="checkbox"> HTML documentation builds from the current Markdown sources.</li>
-<li><input aria-label="Podcast catalog validation passes." disabled="" type="checkbox"> Podcast catalog validation passes.</li>
-<li><input aria-label="RSS feed validation passes for the current audio state." disabled="" type="checkbox"> RSS feed validation passes for the current audio state.</li>
-<li><input aria-label="Git diff whitespace check has no actual whitespace or conflict-marker errors." disabled="" type="checkbox"> Git diff whitespace check has no actual whitespace or conflict-marker errors.</li>
-<li><input aria-label="Registration deployment gate completed (issue form template, workflow enablement, required labels, and optional classroom automation settings)." disabled="" type="checkbox"> Registration deployment gate completed (issue form template, workflow enablement, required labels, and optional classroom automation settings).</li>
-<li><input aria-label="Registration comment flow is assignment-link based (no org invite dependency)." disabled="" type="checkbox"> Registration comment flow is assignment-link based (no org invite dependency).</li>
-<li><input aria-label="Support Hub is provisioned and publicly accessible at" disabled="" type="checkbox"> Support Hub is provisioned and publicly accessible at <code>Community-Access/support</code>.</li>
-<li><input aria-label="Registration confirmation and help pathways route support requests to Support Hub issues/discussions." disabled="" type="checkbox"> Registration confirmation and help pathways route support requests to Support Hub issues/discussions.</li>
-<li><input aria-label="Registration issue form template and labels are configured (" disabled="" type="checkbox"> Registration issue form template and labels are configured (<code>workshop-registration.yml</code>, <code>registration</code>, <code>duplicate</code>, <code>waitlist</code>).</li>
 <li><input aria-label="Learning Room source has been synced to" disabled="" type="checkbox"> Learning Room source has been synced to <code>Community-Access/learning-room-template</code> and merged to <code>main</code> (or validated as no-change).</li>
 <li><input aria-label="Template smoke validation from" disabled="" type="checkbox"> Template smoke validation from <code>Community-Access/learning-room-template</code> succeeded before assignment publishing.</li>
 <li><input aria-label="Template freshness proof confirms smoke repo content matches latest merged template sync changes." disabled="" type="checkbox"> Template freshness proof confirms smoke repo content matches latest merged template sync changes.</li>
+<li><input aria-label="Git diff whitespace check has no actual whitespace or conflict-marker errors." disabled="" type="checkbox"> Git diff whitespace check has no actual whitespace or conflict-marker errors.</li>
+<li><input aria-label="Registration deployment gate completed (issue form template, workflow enablement, required labels, and optional classroom automation settings)." disabled="" type="checkbox"> Registration deployment gate completed (issue form template, workflow enablement, required labels, and optional classroom automation settings).</li>
+<li><input aria-label="Registration comment flow is assignment-link based (no org invite dependency)." disabled="" type="checkbox"> Registration comment flow is assignment-link based (no org invite dependency).</li>
+<li><input checked="" disabled="" type="checkbox"> Registration form smoke test passed on 2026-05-14 (submission accepted, redacted, labeled, and support routing confirmed).</li>
+<li><input aria-label="Support Hub is provisioned and publicly accessible at" disabled="" type="checkbox"> Support Hub is provisioned and publicly accessible at <code>Community-Access/support</code>.</li>
+<li><input aria-label="Registration confirmation and help pathways route support requests to Support Hub issues/discussions." disabled="" type="checkbox"> Registration confirmation and help pathways route support requests to Support Hub issues/discussions.</li>
+<li><input aria-label="Registration issue form template and labels are configured (" disabled="" type="checkbox"> Registration issue form template and labels are configured (<code>workshop-registration.yml</code>, <code>registration</code>, <code>duplicate</code>, <code>waitlist</code>).</li>
 <li><input aria-label="Smoke repo confirms all required workflow files are present (PR validation, content validation, progression, skills progression, and all autograder workflows:" disabled="" type="checkbox"> Smoke repo confirms all required workflow files are present (PR validation, content validation, progression, skills progression, and all autograder workflows: <code>autograder-issue-filed.yml</code>, <code>autograder-branch-commit.yml</code>, <code>autograder-pr-link.yml</code>, <code>autograder-conflicts.yml</code>, <code>autograder-local-commit.yml</code>, <code>autograder-template.yml</code>, <code>autograder-capstone.yml</code>, <code>autograder-watchdog.yml</code>).</li>
 <li><input aria-label="Day 1 Classroom assignment has been created from the current Learning Room template." disabled="" type="checkbox"> Day 1 Classroom assignment has been created from the current Learning Room template.</li>
 <li><input aria-label="Day 2 Classroom assignment has been created from the current Learning Room template." disabled="" type="checkbox"> Day 2 Classroom assignment has been created from the current Learning Room template.</li>
 <li><input aria-label="A test student account accepted the Day 1 invite and received a private repository." disabled="" type="checkbox"> A test student account accepted the Day 1 invite and received a private repository.</li>
 <li><input aria-label="A test student account accepted the Day 2 invite and received a private repository." disabled="" type="checkbox"> A test student account accepted the Day 2 invite and received a private repository.</li>
-<li><input aria-label="A test student can reply" disabled="" type="checkbox"> A test student can reply <code>ack</code> in enrollment issue and retain expected workflow state.</li>
+<li><input aria-label="A test student can reply" disabled="" type="checkbox"> A test student can reply <code>ack</code>, then close the enrollment issue as Challenge 0 and retain expected workflow state.</li>
 <li><input aria-label="A test student can reply" disabled="" type="checkbox"> A test student can reply <code>day1-complete</code> and receive Day 2 release comment.</li>
 <li><input aria-label="Challenge 1 can be seeded and completed." disabled="" type="checkbox"> Challenge 1 can be seeded and completed.</li>
 <li><input aria-label="Challenge 10 can be seeded and completed." disabled="" type="checkbox"> Challenge 10 can be seeded and completed.</li>
-<li><input aria-label="Aria posts PR feedback on a test pull request." disabled="" type="checkbox"> Aria posts PR feedback on a test pull request.</li>
+<li><input aria-label="Gandalf posts PR feedback on a test pull request." disabled="" type="checkbox"> Gandalf posts PR feedback on a test pull request.</li>
 <li><input aria-label="Student Progression Bot creates the next challenge when a challenge issue is closed." disabled="" type="checkbox"> Student Progression Bot creates the next challenge when a challenge issue is closed.</li>
 <li><input aria-label="Autograder workflows run inside the student repo and post pass/fail comments on the relevant issues and PRs. (Classroom UI test cases are intentionally not configured -- see" disabled="" type="checkbox"> Autograder workflows run inside the student repo and post pass/fail comments on the relevant issues and PRs. (Classroom UI test cases are intentionally not configured -- see <a href="admin/classroom/autograding-setup.html">admin/classroom/autograding-setup.md</a>.)</li>
 <li><input aria-label="Peer simulation artifacts can be seeded and used for review practice." disabled="" type="checkbox"> Peer simulation artifacts can be seeded and used for review practice.</li>
@@ -98,6 +107,7 @@
 <li><input aria-label="Student recovery Level 2 restore test is completed and evidenced with branch and PR links." disabled="" type="checkbox"> Student recovery Level 2 restore test is completed and evidenced with branch and PR links.</li>
 <li><input aria-label="All in-scope automation workflows and facilitator scripts were validated with expected behavior and evidence." disabled="" type="checkbox"> All in-scope automation workflows and facilitator scripts were validated with expected behavior and evidence.</li>
 <li><input aria-label="Local non-podcast readiness evidence is recorded in" disabled="" type="checkbox"> Local non-podcast readiness evidence is recorded in <a href="admin/qa-readiness/README.html">admin/qa-readiness</a>.</li>
+<li><input aria-label="If podcast/LLM generation is part of this release, podcast evidence is recorded; otherwise mark Phase 7 as non-blocking by release-owner decision." disabled="" type="checkbox"> If podcast/LLM generation is part of this release, podcast evidence is recorded; otherwise mark Phase 7 as non-blocking by release-owner decision.</li>
 <li><input aria-label="All blocking findings have a fix, owner, or written release exception." disabled="" type="checkbox"> All blocking findings have a fix, owner, or written release exception.</li>
 </ul>
 <p>No-go conditions:</p>
@@ -267,7 +277,7 @@ git <span class="hljs-built_in">diff</span> <span class="hljs-literal">--check</
 </ul>
 <h2 id="phase-4-workflow-and-automation-qa">Phase 4: Workflow And Automation QA</h2>
 <p>Run these checks in disposable student repositories created by GitHub Classroom.</p>
-<h3 id="aria-pr-validation-bot">Aria PR Validation Bot</h3>
+<h3 id="gandalf-pr-validation-bot">Gandalf PR Validation Bot</h3>
 <ul>
 <li><input aria-label="Open a PR with a clear title, body, and" disabled="" type="checkbox"> Open a PR with a clear title, body, and <code>Closes #N</code> reference.</li>
 <li><input aria-label="Confirm the first-time contributor welcome comment appears on the first PR." disabled="" type="checkbox"> Confirm the first-time contributor welcome comment appears on the first PR.</li>
@@ -275,7 +285,7 @@ git <span class="hljs-built_in">diff</span> <span class="hljs-literal">--check</
 <li><input aria-label="Push another commit and confirm the existing validation comment updates instead of duplicating." disabled="" type="checkbox"> Push another commit and confirm the existing validation comment updates instead of duplicating.</li>
 <li><input aria-label="Add an intentional issue, such as vague link text, and confirm the bot explains the problem." disabled="" type="checkbox"> Add an intentional issue, such as vague link text, and confirm the bot explains the problem.</li>
 <li><input aria-label="Fix the issue and confirm the validation result improves." disabled="" type="checkbox"> Fix the issue and confirm the validation result improves.</li>
-<li><input aria-label="Comment" disabled="" type="checkbox"> Comment <code>@aria-bot help</code> and confirm the help responder answers.</li>
+<li><input aria-label="Comment" disabled="" type="checkbox"> Comment <code>@gandalf-bot help</code> and confirm the help responder answers.</li>
 <li><input aria-label="Comment with" disabled="" type="checkbox"> Comment with <code>merge conflict</code> and confirm the conflict guidance appears.</li>
 <li><input aria-label="Confirm bot-authored comments do not trigger an infinite response loop." disabled="" type="checkbox"> Confirm bot-authored comments do not trigger an infinite response loop.</li>
 </ul>
@@ -365,9 +375,12 @@ git <span class="hljs-built_in">diff</span> <span class="hljs-literal">--check</
 <li><input aria-label="Confirm generated HTML task-list checkboxes are not duplicated." disabled="" type="checkbox"> Confirm generated HTML task-list checkboxes are not duplicated.</li>
 <li><input aria-label="Confirm conflict-marker examples render as examples and do not break Git diff checks." disabled="" type="checkbox"> Confirm conflict-marker examples render as examples and do not break Git diff checks.</li>
 </ul>
-<h2 id="phase-7-podcast-and-audio-qa">Phase 7: Podcast And Audio QA</h2>
-<p>The podcast material is part of the release. Test it even if audio has not been regenerated yet.</p>
+<h2 id="phase-7-podcast-and-audio-qa-non-blocking-for-learning-room-go-live">Phase 7: Podcast And Audio QA (Non-blocking for Learning Room go-live)</h2>
+<p>Use this section when podcast or LLM regeneration is in scope. For Learning Room go-live quality gating, this phase is advisory and does not block release unless release owner marks it in-scope.</p>
 <ul>
+<li><input aria-label="LLM durable execution report exists for the current generation pass at" disabled="" type="checkbox"> LLM durable execution report exists for the current generation pass at <code>podcasts/llm-podcast-generator-review/generated/execution/reports/</code>.</li>
+<li><input aria-label="If OpenRouter was used, durable sync fallback behavior and completion status are documented in the run evidence." disabled="" type="checkbox"> If OpenRouter was used, durable sync fallback behavior and completion status are documented in the run evidence.</li>
+<li><input aria-label="Scripts/transcripts publication summary is recorded with selected, published, and failed counts." disabled="" type="checkbox"> Scripts/transcripts publication summary is recorded with selected, published, and failed counts.</li>
 <li><input aria-label="" disabled="" type="checkbox"> <code>npm run validate:podcasts</code> passes.</li>
 <li><input aria-label="" disabled="" type="checkbox"> <code>npm run validate:podcast-feed</code> passes.</li>
 <li><input aria-label="Podcast catalog lists 54 companion episodes." disabled="" type="checkbox"> Podcast catalog lists 54 companion episodes.</li>
@@ -390,7 +403,7 @@ git <span class="hljs-built_in">diff</span> <span class="hljs-literal">--check</
 <li><input aria-label="Facilitator can seed Challenge 1 and Challenge 10 from PowerShell." disabled="" type="checkbox"> Facilitator can seed Challenge 1 and Challenge 10 from PowerShell.</li>
 <li><input aria-label="Facilitator can seed peer simulation artifacts." disabled="" type="checkbox"> Facilitator can seed peer simulation artifacts.</li>
 <li><input aria-label="Facilitator can start a merge conflict challenge." disabled="" type="checkbox"> Facilitator can start a merge conflict challenge.</li>
-<li><input aria-label="Facilitator can read Aria feedback and decide whether it is correct." disabled="" type="checkbox"> Facilitator can read Aria feedback and decide whether it is correct.</li>
+<li><input aria-label="Facilitator can read Gandalf feedback and decide whether it is correct." disabled="" type="checkbox"> Facilitator can read Gandalf feedback and decide whether it is correct.</li>
 <li><input aria-label="Facilitator can override or manually support a student if automation fails." disabled="" type="checkbox"> Facilitator can override or manually support a student if automation fails.</li>
 <li><input aria-label="Facilitator can explain how Day-2-only participants enter the course." disabled="" type="checkbox"> Facilitator can explain how Day-2-only participants enter the course.</li>
 <li><input aria-label="Facilitator can explain what to do when a student joins late." disabled="" type="checkbox"> Facilitator can explain what to do when a student joins late.</li>
@@ -478,10 +491,35 @@ Podcast tester:
 <li><input aria-label="No open High findings remain without written release-owner exception." disabled="" type="checkbox"> No open High findings remain without written release-owner exception.</li>
 <li><input aria-label="Invite links are stored in the facilitator runbook and student communications." disabled="" type="checkbox"> Invite links are stored in the facilitator runbook and student communications.</li>
 <li><input aria-label="Facilitators know how to seed Challenge 1 and Challenge 10." disabled="" type="checkbox"> Facilitators know how to seed Challenge 1 and Challenge 10.</li>
-<li><input aria-label="Facilitators know how to recover when Aria, progression, or autograding fails." disabled="" type="checkbox"> Facilitators know how to recover when Aria, progression, or autograding fails.</li>
+<li><input aria-label="Facilitators know how to recover when Gandalf, progression, or autograding fails." disabled="" type="checkbox"> Facilitators know how to recover when Gandalf, progression, or autograding fails.</li>
 <li><input aria-label="Student-facing instructions match the current GitHub Classroom private-repository model." disabled="" type="checkbox"> Student-facing instructions match the current GitHub Classroom private-repository model.</li>
 <li><input aria-label="Generated HTML and podcast site have been rebuilt from the final sources." disabled="" type="checkbox"> Generated HTML and podcast site have been rebuilt from the final sources.</li>
 <li><input aria-label="Release owner has recorded the final decision." disabled="" type="checkbox"> Release owner has recorded the final decision.</li>
+</ul>
+<h2 id="authoritative-sources">Authoritative Sources</h2>
+<p>Use these official references when you need the current source of truth for facts in this chapter.</p>
+<ul>
+<li><a href="https://docs.github.com/en">GitHub Docs, home</a></li>
+<li><a href="https://github.blog/changelog/">GitHub Changelog</a></li>
+</ul>
+<h3 id="section-level-source-map">Section-Level Source Map</h3>
+<p>Use this map to verify facts for each major section in this file.</p>
+<ul>
+<li><strong>Release Decision:</strong> <a href="https://docs.github.com/en">GitHub Docs, home</a>, <a href="https://github.blog/changelog/">GitHub Changelog</a>, <a href="https://docs.github.com/en/repositories/releasing-projects-on-github/about-releases">About releases</a>, <a href="https://docs.github.com/en/repositories/releasing-projects-on-github/managing-releases-in-a-repository">Managing releases and tags</a></li>
+<li><strong>Source Of Truth:</strong> <a href="https://docs.github.com/en">GitHub Docs, home</a>, <a href="https://github.blog/changelog/">GitHub Changelog</a></li>
+<li><strong>Roles:</strong> <a href="https://docs.github.com/en">GitHub Docs, home</a>, <a href="https://github.blog/changelog/">GitHub Changelog</a></li>
+<li><strong>Phase 1: Local Repository Health:</strong> <a href="https://docs.github.com/en">GitHub Docs, home</a>, <a href="https://github.blog/changelog/">GitHub Changelog</a>, <a href="https://docs.github.com/en/get-started/using-git/about-git">About Git</a>, <a href="https://docs.github.com/en/get-started/using-github/github-flow">GitHub flow</a>, <a href="https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/about-pull-requests">About pull requests</a></li>
+<li><strong>Phase 2: Content Inventory Review:</strong> <a href="https://docs.github.com/en">GitHub Docs, home</a>, <a href="https://github.blog/changelog/">GitHub Changelog</a></li>
+<li><strong>Phase 3: Classroom Deployment Dry Run:</strong> <a href="https://docs.github.com/en">GitHub Docs, home</a>, <a href="https://github.blog/changelog/">GitHub Changelog</a></li>
+<li><strong>Phase 4: Workflow And Automation QA:</strong> <a href="https://docs.github.com/en">GitHub Docs, home</a>, <a href="https://github.blog/changelog/">GitHub Changelog</a>, <a href="https://docs.github.com/en/actions/reference/workflows-and-actions/workflow-syntax">Workflow syntax for GitHub Actions</a>, <a href="https://docs.github.com/en/actions/security-for-github-actions/security-guides/security-hardening-for-github-actions">Secure use reference for GitHub Actions</a>, <a href="https://github.blog/changelog/label/actions/">GitHub Actions changelog</a></li>
+<li><strong>Phase 5: Human Challenge Walkthrough:</strong> <a href="https://docs.github.com/en">GitHub Docs, home</a>, <a href="https://github.blog/changelog/">GitHub Changelog</a></li>
+<li><strong>Phase 6: Accessibility QA:</strong> <a href="https://docs.github.com/en">GitHub Docs, home</a>, <a href="https://github.blog/changelog/">GitHub Changelog</a>, <a href="https://www.w3.org/WAI/standards-guidelines/wcag/">W3C Web Content Accessibility Guidelines (WCAG) 2 overview</a>, <a href="https://www.w3.org/WAI/tutorials/">WAI tutorials for accessible design patterns</a>, <a href="https://www.w3.org/WAI/ARIA/apg/">WAI-ARIA Authoring Practices Guide</a></li>
+<li><strong>Phase 7: Podcast And Audio QA:</strong> <a href="https://docs.github.com/en">GitHub Docs, home</a>, <a href="https://github.blog/changelog/">GitHub Changelog</a></li>
+<li><strong>Phase 8: Facilitator Dry Run:</strong> <a href="https://docs.github.com/en">GitHub Docs, home</a>, <a href="https://github.blog/changelog/">GitHub Changelog</a></li>
+<li><strong>Issue Severity:</strong> <a href="https://docs.github.com/en">GitHub Docs, home</a>, <a href="https://github.blog/changelog/">GitHub Changelog</a>, <a href="https://docs.github.com/en/get-started/using-git/about-git">About Git</a>, <a href="https://docs.github.com/en/get-started/using-github/github-flow">GitHub flow</a>, <a href="https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/about-pull-requests">About pull requests</a></li>
+<li><strong>QA Evidence Log Template:</strong> <a href="https://docs.github.com/en">GitHub Docs, home</a>, <a href="https://github.blog/changelog/">GitHub Changelog</a></li>
+<li><strong>QA Evidence Log:</strong> <a href="https://docs.github.com/en">GitHub Docs, home</a>, <a href="https://github.blog/changelog/">GitHub Changelog</a></li>
+<li><strong>Final Go-Live Checklist:</strong> <a href="https://docs.github.com/en">GitHub Docs, home</a>, <a href="https://github.blog/changelog/">GitHub Changelog</a></li>
 </ul>
 
   </main>

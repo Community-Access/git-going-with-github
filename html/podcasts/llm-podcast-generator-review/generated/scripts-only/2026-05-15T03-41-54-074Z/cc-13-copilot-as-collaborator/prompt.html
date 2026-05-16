@@ -1,0 +1,593 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="GIT Going with GitHub - A two-day accessible open source workshop by Community Access">
+  <title>[solution-13-copilot.md] Solution Reference: Challenge 13 -- Copilot as Collaborator - GIT Going with GitHub</title>
+  <link rel="stylesheet" href="./styles/github-markdown.css">
+  <link rel="stylesheet" href="./styles/highlight.css">
+  <link rel="stylesheet" href="./styles/custom.css">
+  <style>
+    .markdown-body {
+      box-sizing: border-box;
+      min-width: 200px;
+      max-width: 980px;
+      margin: 0 auto;
+      padding: 45px;
+    }
+    @media (max-width: 767px) {
+      .markdown-body {
+        padding: 15px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+  <header class="site-header" role="banner">
+    <div class="site-header-inner">
+      <nav aria-label="Breadcrumb" class="breadcrumb">
+        <a href="./index.html">Home</a> <span aria-hidden="true">›</span> <span aria-current="page">[solution-13-copilot.md] Solution Reference: Challenge 13 -- Copilot as Collaborator</span>
+      </nav>
+      <div class="header-actions">
+        <a href="https://github.com/Community-Access/git-going-with-github/wiki" class="wiki-link" target="_blank" rel="noopener noreferrer">
+          <svg aria-hidden="true" focusable="false" width="16" height="16" viewBox="0 0 16 16" fill="currentColor">
+            <path d="M1.75 1h8.5c.966 0 1.75.784 1.75 1.75v5.5A1.75 1.75 0 0 1 10.25 10H7.06l-2.573 2.573A1.458 1.458 0 0 1 2 11.543V10h-.25A1.75 1.75 0 0 1 0 8.25v-5.5C0 1.784.784 1 1.75 1ZM1.5 2.75v5.5c0 .138.112.25.25.25h1a.75.75 0 0 1 .75.75v2.19l2.72-2.72a.749.749 0 0 1 .53-.22h3.5a.25.25 0 0 0 .25-.25v-5.5a.25.25 0 0 0-.25-.25h-8.5a.25.25 0 0 0-.25.25Zm13 2a.25.25 0 0 0-.25-.25h-.5a.75.75 0 0 1 0-1.5h.5c.966 0 1.75.784 1.75 1.75v5.5A1.75 1.75 0 0 1 14.25 12H14v1.543a1.457 1.457 0 0 1-2.487 1.03L9.22 12.28a.749.749 0 1 1 1.06-1.06l2.22 2.22v-2.19a.75.75 0 0 1 .75-.75h.25a.25.25 0 0 0 .25-.25v-5.5Z"/>
+          </svg>
+          Wiki
+        </a>
+        <form role="search" class="search-form" action="./search.html" method="get">
+        <label for="site-search" class="search-label">Search docs</label>
+        <input
+          type="search"
+          id="site-search"
+          class="search-input"
+          name="q"
+          placeholder="Search docs…"
+          autocomplete="off"
+          aria-label="Search documentation"
+        >
+        <button type="submit" class="search-button" aria-label="Submit search">
+          <svg aria-hidden="true" focusable="false" width="16" height="16" viewBox="0 0 16 16" fill="currentColor">
+            <path d="M10.68 11.74a6 6 0 0 1-7.922-8.982 6 6 0 0 1 8.982 7.922l3.04 3.04a.749.749 0 0 1-.326 1.275.749.749 0 0 1-.734-.215ZM11.5 7a4.499 4.499 0 1 0-8.997 0A4.499 4.499 0 0 0 11.5 7Z"/>
+          </svg>
+        </button>
+      </form>
+      </div>
+    </div>
+  </header>
+  <main id="main-content" class="markdown-body">
+    <p>You are writing a Git Going with GitHub podcast script.</p>
+<p>Audience:
+Blind and low-vision learners studying GitHub, Git, VS Code, open source, and accessible contribution workflows.</p>
+<p>Hosts:</p>
+<ul>
+<li>Alex: warm expert professor</li>
+<li>Jamie: curious professor who asks the questions learners may hesitate to ask</li>
+</ul>
+<p>Goal:
+Create a complete, conversational, two-host audio lesson. Teach every substantive concept from the Markdown source. Do not merely summarize. Do not omit administrative or accessibility content. Use varied phrasing and make it feel like a thoughtful NotebookLM-style teaching conversation.</p>
+<p>Scale rules:</p>
+<ul>
+<li>The source set may be large. Prioritize complete conceptual coverage over quoting every line.</li>
+<li>Use concise turns and avoid unnecessary verbosity.</li>
+</ul>
+<p>Required script markers:
+Use only these markers on their own lines:
+[ALEX]
+[JAMIE]
+[PAUSE]</p>
+<p>Narration constraints:</p>
+<ul>
+<li>Do not say chapter titles, section names, or &quot;chapter marker&quot; language out loud.</li>
+<li>Keep transitions natural so chapter separation can be handled in metadata, not spoken labels.</li>
+</ul>
+<p>Return JSON only:
+{
+  &quot;script&quot;: &quot;[ALEX]\n...\n&quot;,
+  &quot;chapters&quot;: [
+    {
+      &quot;title&quot;: &quot;Specific chapter title&quot;,
+      &quot;startSegmentIndex&quot;: 0,
+      &quot;sourceHeading&quot;: &quot;Heading represented&quot;
+    }
+  ],
+  &quot;coverageNotes&quot;: [
+    {
+      &quot;sourceHeading&quot;: &quot;Heading&quot;,
+      &quot;status&quot;: &quot;covered | partial | risk&quot;,
+      &quot;notes&quot;: &quot;Brief note&quot;
+    }
+  ]
+}</p>
+<p>Slug: cc-13-copilot-as-collaborator
+Sources:</p>
+<ul>
+<li>challenge-13-copilot.yml</li>
+<li>solution-13-copilot.md</li>
+<li>16-github-copilot.md</li>
+</ul>
+<p>Headings that must be represented:</p>
+<h1 id="solution-13-copilotmd-solution-reference-challenge-13----copilot-as-collaborator">[solution-13-copilot.md] Solution Reference: Challenge 13 -- Copilot as Collaborator</h1>
+<h2 id="solution-13-copilotmd-example-interaction-transcript">[solution-13-copilot.md] Example interaction transcript</h2>
+<h2 id="solution-13-copilotmd-before-and-after">[solution-13-copilot.md] Before and after</h2>
+<h2 id="solution-13-copilotmd-critical-evaluation-notes">[solution-13-copilot.md] Critical evaluation notes</h2>
+<h2 id="solution-13-copilotmd-alternate-approaches">[solution-13-copilot.md] Alternate approaches</h2>
+<h2 id="solution-13-copilotmd-what-matters">[solution-13-copilot.md] What matters</h2>
+<h2 id="solution-13-copilotmd-authoritative-sources">[solution-13-copilot.md] Authoritative Sources</h2>
+<h3 id="solution-13-copilotmd-section-level-source-map">[solution-13-copilot.md] Section-Level Source Map</h3>
+<h1 id="16-github-copilotmd-github-copilot">[16-github-copilot.md] GitHub Copilot</h1>
+<h2 id="16-github-copilotmd-ai-powered-code-assistance-in-vs-code">[16-github-copilot.md] AI-Powered Code Assistance in VS Code</h2>
+<h2 id="16-github-copilotmd-workshop-recommendation-chapter-16--challenge-13">[16-github-copilot.md] Workshop Recommendation Chapter 16 / Challenge 13</h2>
+<h3 id="16-github-copilotmd-challenge-13-set">[16-github-copilot.md] Challenge 13 Set</h3>
+<h3 id="16-github-copilotmd-challenge-131-step-by-step-sign-in-to-copilot">[16-github-copilot.md] Challenge 13.1 Step-by-Step: Sign In to Copilot</h3>
+<h3 id="16-github-copilotmd-challenge-132-step-by-step-explain-a-codebase">[16-github-copilot.md] Challenge 13.2 Step-by-Step: Explain a Codebase</h3>
+<h3 id="16-github-copilotmd-challenge-133-step-by-step-create-something-new">[16-github-copilot.md] Challenge 13.3 Step-by-Step: Create Something New</h3>
+<h3 id="16-github-copilotmd-completing-challenge-13-submit-your-evidence">[16-github-copilot.md] Completing Challenge 13: Submit Your Evidence</h3>
+<h3 id="16-github-copilotmd-expected-outcomes">[16-github-copilot.md] Expected Outcomes</h3>
+<h3 id="16-github-copilotmd-if-you-get-stuck">[16-github-copilot.md] If You Get Stuck</h3>
+<h3 id="16-github-copilotmd-learning-moment">[16-github-copilot.md] Learning Moment</h3>
+<h3 id="16-github-copilotmd-learning-pattern-used-in-this-chapter">[16-github-copilot.md] Learning Pattern Used in This Chapter</h3>
+<h3 id="16-github-copilotmd-about-learning-cards-in-this-chapter">[16-github-copilot.md] About Learning Cards in This Chapter</h3>
+<h2 id="16-github-copilotmd-table-of-contents">[16-github-copilot.md] Table of Contents</h2>
+<h2 id="16-github-copilotmd-1-what-is-github-copilot">[16-github-copilot.md] 1. What is GitHub Copilot</h2>
+<h2 id="16-github-copilotmd-2-setting-up-github-copilot">[16-github-copilot.md] 2. Setting Up GitHub Copilot</h2>
+<h3 id="16-github-copilotmd-current-vs-code-setup-steps">[16-github-copilot.md] Current VS Code Setup Steps</h3>
+<h3 id="16-github-copilotmd-signing-in">[16-github-copilot.md] Signing In</h3>
+<h4 id="16-github-copilotmd-verify-activation">[16-github-copilot.md] Verify activation</h4>
+<h3 id="16-github-copilotmd-checking-subscription-status">[16-github-copilot.md] Checking Subscription Status</h3>
+<h4 id="16-github-copilotmd-command-palette">[16-github-copilot.md] Command Palette</h4>
+<h4 id="16-github-copilotmd-current-access-notes">[16-github-copilot.md] Current access notes</h4>
+<h2 id="16-github-copilotmd-3-inline-suggestions---ghost-text-completions">[16-github-copilot.md] 3. Inline Suggestions - Ghost Text Completions</h2>
+<h3 id="16-github-copilotmd-how-inline-suggestions-work">[16-github-copilot.md] How Inline Suggestions Work</h3>
+<h4 id="16-github-copilotmd-while-typing">[16-github-copilot.md] While typing</h4>
+<h3 id="16-github-copilotmd-accepting-suggestions">[16-github-copilot.md] Accepting Suggestions</h3>
+<h4 id="16-github-copilotmd-navigating-the-full-suggestions-panel-ctrlenter">[16-github-copilot.md] Navigating the full Suggestions Panel Ctrl+Enter</h4>
+<h4 id="16-github-copilotmd-accepting-word-by-word-ctrlright-arrow--mac-cmdright-arrow-is-particularly-useful-when">[16-github-copilot.md] Accepting word-by-word Ctrl+Right Arrow / Mac: Cmd+Right Arrow is particularly useful when</h4>
+<h3 id="16-github-copilotmd-reading-suggestions-with-screen-readers">[16-github-copilot.md] Reading Suggestions with Screen Readers</h3>
+<h4 id="16-github-copilotmd-if-suggestions-are-announced-too-frequently-or-are-intrusive">[16-github-copilot.md] If suggestions are announced too frequently or are intrusive</h4>
+<h4 id="16-github-copilotmd-nvda">[16-github-copilot.md] NVDA</h4>
+<h4 id="16-github-copilotmd-jaws">[16-github-copilot.md] JAWS</h4>
+<h4 id="16-github-copilotmd-voiceover">[16-github-copilot.md] VoiceOver</h4>
+<h4 id="16-github-copilotmd-alternative-use-accessible-view">[16-github-copilot.md] Alternative: Use Accessible View</h4>
+<h3 id="16-github-copilotmd-prompting-through-comments">[16-github-copilot.md] Prompting Through Comments</h3>
+<h4 id="16-github-copilotmd-example-prompts-for-this-workshop">[16-github-copilot.md] Example prompts for this workshop</h4>
+<h3 id="16-github-copilotmd-disabling-inline-suggestions">[16-github-copilot.md] Disabling Inline Suggestions</h3>
+<h4 id="16-github-copilotmd-temporarily-disable-for-current-language">[16-github-copilot.md] Temporarily disable for current language</h4>
+<h4 id="16-github-copilotmd-permanently-disable-completions">[16-github-copilot.md] Permanently disable completions</h4>
+<h4 id="16-github-copilotmd-temporarily-disable-via-command-palette">[16-github-copilot.md] Temporarily disable via Command Palette</h4>
+<h4 id="16-github-copilotmd-permanently-disable-via-settings">[16-github-copilot.md] Permanently disable via Settings</h4>
+<h3 id="16-github-copilotmd-learning-cards-inline-suggestions">[16-github-copilot.md] Learning Cards: Inline Suggestions</h3>
+<h2 id="16-github-copilotmd-4-github-copilot-chat---conversational-assistance">[16-github-copilot.md] 4. GitHub Copilot Chat - Conversational Assistance</h2>
+<h3 id="16-github-copilotmd-opening-copilot-chat">[16-github-copilot.md] Opening Copilot Chat</h3>
+<h3 id="16-github-copilotmd-chat-modes">[16-github-copilot.md] Chat Modes</h3>
+<h4 id="16-github-copilotmd-switching-modes">[16-github-copilot.md] Switching modes</h4>
+<h3 id="16-github-copilotmd-choosing-a-model">[16-github-copilot.md] Choosing a Model</h3>
+<h4 id="16-github-copilotmd-quick-guidance">[16-github-copilot.md] Quick guidance</h4>
+<h3 id="16-github-copilotmd-chat-interface-structure">[16-github-copilot.md] Chat Interface Structure</h3>
+<h4 id="16-github-copilotmd-panel-layout-top-to-bottom">[16-github-copilot.md] Panel layout top to bottom</h4>
+<h3 id="16-github-copilotmd-screen-reader-navigation-in-chat">[16-github-copilot.md] Screen Reader Navigation in Chat</h3>
+<h4 id="16-github-copilotmd-nvdajaws">[16-github-copilot.md] NVDA/JAWS</h4>
+<h4 id="16-github-copilotmd-voiceover">[16-github-copilot.md] VoiceOver</h4>
+<h3 id="16-github-copilotmd-what-to-ask-copilot-chat">[16-github-copilot.md] What to Ask Copilot Chat</h3>
+<h4 id="16-github-copilotmd-for-this-workshop-non-coding-examples">[16-github-copilot.md] For this workshop non-coding examples</h4>
+<h3 id="16-github-copilotmd-using--mentions-in-chat">[16-github-copilot.md] Using @ Mentions in Chat</h3>
+<h4 id="16-github-copilotmd--symbols-let-you-provide-context-to-copilot">[16-github-copilot.md] @ symbols let you provide context to Copilot</h4>
+<h4 id="16-github-copilotmd-example-prompts-with-context">[16-github-copilot.md] Example prompts with context</h4>
+<h3 id="16-github-copilotmd-using-slash-commands">[16-github-copilot.md] Using Slash Commands</h3>
+<h4 id="16-github-copilotmd-example">[16-github-copilot.md] Example</h4>
+<h3 id="16-github-copilotmd-built-in-actions-via-command-palette">[16-github-copilot.md] Built-in Actions via Command Palette</h3>
+<h3 id="16-github-copilotmd-learning-cards-copilot-chat">[16-github-copilot.md] Learning Cards: Copilot Chat</h3>
+<h2 id="16-github-copilotmd-5-copilot-edits--making-multi-file-changes">[16-github-copilot.md] 5. Copilot Edits — Making Multi-File Changes</h2>
+<h3 id="16-github-copilotmd-how-to-use-copilot-edits">[16-github-copilot.md] How to use Copilot Edits</h3>
+<h3 id="16-github-copilotmd-navigating-the-diff-with-a-screen-reader">[16-github-copilot.md] Navigating the diff with a screen reader</h3>
+<h3 id="16-github-copilotmd-working-set-tips">[16-github-copilot.md] Working set tips</h3>
+<h3 id="16-github-copilotmd-learning-cards-copilot-edits">[16-github-copilot.md] Learning Cards: Copilot Edits</h3>
+<h2 id="16-github-copilotmd-6-agent-mode--let-copilot-drive">[16-github-copilot.md] 6. Agent Mode — Let Copilot Drive</h2>
+<h3 id="16-github-copilotmd-how-to-use-agent-mode">[16-github-copilot.md] How to use Agent mode</h3>
+<h3 id="16-github-copilotmd-approving-terminal-commands">[16-github-copilot.md] Approving terminal commands</h3>
+<h3 id="16-github-copilotmd-agent-vs-edit-vs-ask--choosing-the-right-mode">[16-github-copilot.md] Agent vs Edit vs Ask — choosing the right mode</h3>
+<h3 id="16-github-copilotmd-learning-cards-agent-mode">[16-github-copilot.md] Learning Cards: Agent Mode</h3>
+<h2 id="16-github-copilotmd-6a-vs-code-1120-agents-window">[16-github-copilot.md] 6A. VS Code 1.120 Agents Window</h2>
+<h3 id="16-github-copilotmd-open-the-agents-window">[16-github-copilot.md] Open the Agents Window</h3>
+<h3 id="16-github-copilotmd-safety-notes-for-workshop-learners">[16-github-copilot.md] Safety Notes for Workshop Learners</h3>
+<h3 id="16-github-copilotmd-accessibility-notes">[16-github-copilot.md] Accessibility Notes</h3>
+<h2 id="16-github-copilotmd-7-next-edit-suggestions">[16-github-copilot.md] 7. Next Edit Suggestions</h2>
+<h3 id="16-github-copilotmd-turning-on-next-edit-suggestions">[16-github-copilot.md] Turning on Next Edit Suggestions</h3>
+<h3 id="16-github-copilotmd-how-it-works-in-practice">[16-github-copilot.md] How it works in practice</h3>
+<h2 id="16-github-copilotmd-8-copilot-on-githubcom">[16-github-copilot.md] 8. Copilot on GitHub.com</h2>
+<h3 id="16-github-copilotmd-opening-copilot-chat-on-githubcom">[16-github-copilot.md] Opening Copilot Chat on GitHub.com</h3>
+<h3 id="16-github-copilotmd-what-you-can-ask-copilot-on-githubcom">[16-github-copilot.md] What you can ask Copilot on GitHub.com</h3>
+<h1 id="16-github-copilotmd-ask-about-a-specific-repository">[16-github-copilot.md] Ask about a specific repository</h1>
+<h1 id="16-github-copilotmd-ask-about-an-issue">[16-github-copilot.md] Ask about an issue</h1>
+<h1 id="16-github-copilotmd-ask-about-code">[16-github-copilot.md] Ask about code</h1>
+<h1 id="16-github-copilotmd-general-coding-questions">[16-github-copilot.md] General coding questions</h1>
+<h3 id="16-github-copilotmd-copilot-for-pull-request-summaries">[16-github-copilot.md] Copilot for Pull Request Summaries</h3>
+<h3 id="16-github-copilotmd-copilot-for-code-review-on-githubcom">[16-github-copilot.md] Copilot for Code Review on GitHub.com</h3>
+<h3 id="16-github-copilotmd-copilot-on-githubcom-vs-vs-code">[16-github-copilot.md] Copilot on GitHub.com vs VS Code</h3>
+<h3 id="16-github-copilotmd-learning-cards-copilot-on-githubcom">[16-github-copilot.md] Learning Cards: Copilot on GitHub.com</h3>
+<h2 id="16-github-copilotmd-9-effective-prompting-for-documentation-work">[16-github-copilot.md] 9. Effective Prompting for Documentation Work</h2>
+<h3 id="16-github-copilotmd-anatomy-of-a-good-prompt">[16-github-copilot.md] Anatomy of a Good Prompt</h3>
+<h4 id="16-github-copilotmd-bad-prompt">[16-github-copilot.md] Bad prompt</h4>
+<h4 id="16-github-copilotmd-good-prompt">[16-github-copilot.md] Good prompt</h4>
+<h4 id="16-github-copilotmd-what-makes-it-good">[16-github-copilot.md] What makes it good</h4>
+<h3 id="16-github-copilotmd-prompting-patterns-for-this-workshop">[16-github-copilot.md] Prompting Patterns for This Workshop</h3>
+<h4 id="16-github-copilotmd-pattern-1-contextual-rewrite">[16-github-copilot.md] Pattern 1: Contextual Rewrite</h4>
+<h4 id="16-github-copilotmd-pattern-2-generate-with-constraints">[16-github-copilot.md] Pattern 2: Generate with Constraints</h4>
+<h4 id="16-github-copilotmd-pattern-3-review-and-improve">[16-github-copilot.md] Pattern 3: Review and Improve</h4>
+<h4 id="16-github-copilotmd-pattern-4-accessibility-audit">[16-github-copilot.md] Pattern 4: Accessibility Audit</h4>
+<h4 id="16-github-copilotmd-pattern-5-draft-from-outline">[16-github-copilot.md] Pattern 5: Draft from Outline</h4>
+<h2 id="16-github-copilotmd-timeline-view---file-history">[16-github-copilot.md] Timeline View - File History</h2>
+<h3 id="16-github-copilotmd-iterating-on-responses">[16-github-copilot.md] Iterating on Responses</h3>
+<h4 id="16-github-copilotmd-follow-up-prompts">[16-github-copilot.md] Follow-up prompts</h4>
+<h3 id="16-github-copilotmd-learning-cards-effective-prompting">[16-github-copilot.md] Learning Cards: Effective Prompting</h3>
+<h2 id="16-github-copilotmd-10-custom-instructions-vs-custom-agents">[16-github-copilot.md] 10. Custom Instructions vs Custom Agents</h2>
+<h3 id="16-github-copilotmd-custom-instructions">[16-github-copilot.md] Custom Instructions</h3>
+<h4 id="16-github-copilotmd-what-they-do">[16-github-copilot.md] What they do</h4>
+<h4 id="16-github-copilotmd-example-githubcopilot-instructionsmd">[16-github-copilot.md] Example .github/copilot-instructions.md</h4>
+<h1 id="16-github-copilotmd-copilot-instructions-for-accessibility-agents">[16-github-copilot.md] Copilot Instructions for accessibility-agents</h1>
+<h2 id="16-github-copilotmd-accessibility-standards">[16-github-copilot.md] Accessibility Standards</h2>
+<h2 id="16-github-copilotmd-documentation-style">[16-github-copilot.md] Documentation Style</h2>
+<h2 id="16-github-copilotmd-commit-message-format">[16-github-copilot.md] Commit Message Format</h2>
+<h2 id="16-github-copilotmd-tone">[16-github-copilot.md] Tone</h2>
+<h3 id="16-github-copilotmd-you-never-have-to-ask-for-these---copilot-simply-follows-them">[16-github-copilot.md] You never have to ask for these - Copilot simply follows them</h3>
+<h3 id="16-github-copilotmd-custom-agents">[16-github-copilot.md] Custom Agents</h3>
+<h4 id="16-github-copilotmd-what-they-do">[16-github-copilot.md] What they do</h4>
+<h4 id="16-github-copilotmd-example-agent-names">[16-github-copilot.md] Example agent names</h4>
+<h3 id="16-github-copilotmd-comparison-table">[16-github-copilot.md] Comparison Table</h3>
+<h3 id="16-github-copilotmd-using-both-together">[16-github-copilot.md] Using Both Together</h3>
+<h4 id="16-github-copilotmd-example-workflow">[16-github-copilot.md] Example workflow</h4>
+<h4 id="16-github-copilotmd-both-work-together---instructions-guide-every-response-agents-automate-specific-workflows">[16-github-copilot.md] Both work together - instructions guide every response, agents automate specific workflows</h4>
+<h3 id="16-github-copilotmd-writing-accessibility-focused-custom-instructions">[16-github-copilot.md] Writing Accessibility-Focused Custom Instructions</h3>
+<h4 id="16-github-copilotmd-do39s---what-makes-instructions-effective">[16-github-copilot.md] Do&#39;s - What Makes Instructions Effective</h4>
+<h2 id="16-github-copilotmd-keyboard-navigation">[16-github-copilot.md] Keyboard Navigation</h2>
+<h3 id="16-github-copilotmd-focus-on-team-specific-standards-not-generic-principles">[16-github-copilot.md] Focus on team-specific standards, not generic principles</h3>
+<h3 id="16-github-copilotmd-use-lists-and-checklists-to-structure-instructions">[16-github-copilot.md] Use lists and checklists to structure instructions</h3>
+<h2 id="16-github-copilotmd-checklist-for-evaluating-131-info-and-relationships">[16-github-copilot.md] Checklist for evaluating 1.3.1 Info and Relationships</h2>
+<h3 id="16-github-copilotmd-reference-and-enforce-your-design-system">[16-github-copilot.md] Reference and enforce your design system</h3>
+<h4 id="16-github-copilotmd-don39ts---common-instruction-mistakes">[16-github-copilot.md] Don&#39;ts - Common Instruction Mistakes</h4>
+<h4 id="16-github-copilotmd-additional-guidance">[16-github-copilot.md] Additional Guidance</h4>
+<h4 id="16-github-copilotmd-accessibility-resources-for-custom-instructions">[16-github-copilot.md] Accessibility Resources for Custom Instructions</h4>
+<h2 id="16-github-copilotmd-11-using-accessible-view-with-copilot-responses">[16-github-copilot.md] 11. Using Accessible View with Copilot Responses</h2>
+<h3 id="16-github-copilotmd-why-use-accessible-view-for-copilot">[16-github-copilot.md] Why Use Accessible View for Copilot</h3>
+<h4 id="16-github-copilotmd-without-accessible-view">[16-github-copilot.md] Without Accessible View</h4>
+<h4 id="16-github-copilotmd-with-accessible-view-altf2--mac-optionf2">[16-github-copilot.md] With Accessible View Alt+F2 / Mac: Option+F2</h4>
+<h3 id="16-github-copilotmd-recommended-workflow">[16-github-copilot.md] Recommended Workflow</h3>
+<h4 id="16-github-copilotmd-every-time-you-ask-copilot-something">[16-github-copilot.md] Every time you ask Copilot something</h4>
+<h4 id="16-github-copilotmd-benefits">[16-github-copilot.md] Benefits</h4>
+<h3 id="16-github-copilotmd-accessible-view-for-inline-suggestions">[16-github-copilot.md] Accessible View for Inline Suggestions</h3>
+<h4 id="16-github-copilotmd-when-a-suggestion-appears">[16-github-copilot.md] When a suggestion appears</h4>
+<h4 id="16-github-copilotmd-this-is-especially-useful-for-multi-line-suggestions-where-the-ghost-text-is-hard-to-review">[16-github-copilot.md] This is especially useful for multi-line suggestions where the ghost text is hard to review</h4>
+<h3 id="16-github-copilotmd-code-blocks-in-accessible-view">[16-github-copilot.md] Code Blocks in Accessible View</h3>
+<h4 id="16-github-copilotmd-in-accessible-view">[16-github-copilot.md] In Accessible View</h4>
+<h3 id="16-github-copilotmd-learning-cards-using-accessible-view-with-copilot-responses">[16-github-copilot.md] Learning Cards: Using Accessible View with Copilot Responses</h3>
+<h2 id="16-github-copilotmd-12-keyboard-shortcuts-reference">[16-github-copilot.md] 12. Keyboard Shortcuts Reference</h2>
+<h3 id="16-github-copilotmd-copilot-inline-suggestions">[16-github-copilot.md] Copilot Inline Suggestions</h3>
+<h3 id="16-github-copilotmd-copilot-chat">[16-github-copilot.md] Copilot Chat</h3>
+<h3 id="16-github-copilotmd-accessibility">[16-github-copilot.md] Accessibility</h3>
+<h3 id="16-github-copilotmd-vs-code-general-quick-reference">[16-github-copilot.md] VS Code General Quick Reference</h3>
+<h3 id="16-github-copilotmd-githubcom-shortcuts-not-vs-code">[16-github-copilot.md] GitHub.com Shortcuts Not VS Code</h3>
+<h3 id="16-github-copilotmd-video-tutorials-screen-reader-demonstrations">[16-github-copilot.md] Video Tutorials Screen Reader Demonstrations</h3>
+<h2 id="16-github-copilotmd-13-critically-evaluating-ai-output">[16-github-copilot.md] 13. Critically Evaluating AI Output</h2>
+<h3 id="16-github-copilotmd-when-to-trust-copilot">[16-github-copilot.md] When to Trust Copilot</h3>
+<h3 id="16-github-copilotmd-when-to-verify">[16-github-copilot.md] When to Verify</h3>
+<h3 id="16-github-copilotmd-when-to-reject">[16-github-copilot.md] When to Reject</h3>
+<h3 id="16-github-copilotmd-common-failure-modes">[16-github-copilot.md] Common Failure Modes</h3>
+<h3 id="16-github-copilotmd-the-verification-checklist">[16-github-copilot.md] The Verification Checklist</h3>
+<h3 id="16-github-copilotmd-accessibility-specific-concerns">[16-github-copilot.md] Accessibility-Specific Concerns</h3>
+<h3 id="16-github-copilotmd-the-right-mental-model">[16-github-copilot.md] The Right Mental Model</h3>
+<h3 id="16-github-copilotmd-learning-cards-critically-evaluating-ai-output">[16-github-copilot.md] Learning Cards: Critically Evaluating AI Output</h3>
+<h2 id="16-github-copilotmd-troubleshooting">[16-github-copilot.md] Troubleshooting</h2>
+<h3 id="16-github-copilotmd-copilot-not-suggesting-anything">[16-github-copilot.md] Copilot Not Suggesting Anything</h3>
+<h4 id="16-github-copilotmd-solutions">[16-github-copilot.md] Solutions</h4>
+<h3 id="16-github-copilotmd-suggestions-are-too-frequentdistracting">[16-github-copilot.md] Suggestions Are Too Frequent/Distracting</h3>
+<h4 id="16-github-copilotmd-solutions">[16-github-copilot.md] Solutions</h4>
+<h3 id="16-github-copilotmd-chat-responses-not-announced">[16-github-copilot.md] Chat Responses Not Announced</h3>
+<h4 id="16-github-copilotmd-solutions">[16-github-copilot.md] Solutions</h4>
+<h3 id="16-github-copilotmd-quotcopilot-subscription-requiredquot">[16-github-copilot.md] &quot;Copilot Subscription Required&quot;</h3>
+<h4 id="16-github-copilotmd-solutions">[16-github-copilot.md] Solutions</h4>
+<h2 id="16-github-copilotmd-try-it-your-first-copilot-conversation">[16-github-copilot.md] Try It: Your First Copilot Conversation</h2>
+<h2 id="16-github-copilotmd-11-smart-actions-and-advanced-copilot-features-vs-code-1120">[16-github-copilot.md] 11. Smart Actions and Advanced Copilot Features VS Code 1.120+</h2>
+<h3 id="16-github-copilotmd-smart-actions">[16-github-copilot.md] Smart Actions</h3>
+<h3 id="16-github-copilotmd-browser-agent-experimental">[16-github-copilot.md] Browser Agent Experimental</h3>
+<h3 id="16-github-copilotmd-plan-agent-and-copilot-spaces">[16-github-copilot.md] Plan Agent and Copilot Spaces</h3>
+<h3 id="16-github-copilotmd-copilot-pricing-and-free-plan">[16-github-copilot.md] Copilot Pricing and Free Plan</h3>
+<h2 id="16-github-copilotmd-authoritative-sources">[16-github-copilot.md] Authoritative Sources</h2>
+<h3 id="16-github-copilotmd-section-level-source-map">[16-github-copilot.md] Section-Level Source Map</h3>
+<p>Markdown source:</p>
+<h2 id="source-challenge-13-copilotyml">Source: challenge-13-copilot.yml</h2>
+<pre><code class="hljs language-markdown">name: &quot;Challenge 13: AI as Your Copilot&quot;
+description: Use GitHub Copilot to improve documentation, then critically evaluate the output.
+title: &quot;Challenge 13: AI as Your Copilot (@{username})&quot;
+labels: [&quot;challenge&quot;, &quot;day-2&quot;]
+body:
+<span class="hljs-bullet">  -</span> type: markdown
+<span class="hljs-code">    attributes:
+      value: |
+        ## Challenge 13: AI as Your Copilot
+</span>
+<span class="hljs-code">        **Chapter:** [Ch16: GitHub Copilot](https://github.com/Community-Access/git-going-with-github/blob/main/docs/16-github-copilot.md)
+</span>
+<span class="hljs-code">        **What you will do:** Use GitHub Copilot to improve a documentation file, then critically evaluate whether the AI&#x27;s suggestions are actually improvements.
+</span>
+<span class="hljs-code">        ### Instructions
+</span>
+<span class="hljs-bullet">        1.</span> Open the sample file: <span class="hljs-code">`docs/samples/copilot-improvement-before.md`</span> (or any documentation file in the repo).
+<span class="hljs-bullet">        2.</span> Use GitHub Copilot (Chat or inline suggestions) to:
+<span class="hljs-bullet">           -</span> Improve the clarity of a paragraph
+<span class="hljs-bullet">           -</span> Fix any grammar or spelling issues
+<span class="hljs-bullet">           -</span> Suggest a better heading or structure
+<span class="hljs-bullet">        3.</span> <span class="hljs-strong">**Critically evaluate**</span> the AI&#x27;s output before accepting it.
+
+<span class="hljs-code">        ### The trust-verify-reject framework
+</span>
+<span class="hljs-code">        For every Copilot suggestion, ask yourself:
+</span>
+<span class="hljs-code">        | Question | If yes | If no |
+        |---|---|---|
+        | Is this factually accurate? | Consider accepting | Reject immediately |
+        | Is this clearer than the original? | Consider accepting | Keep the original |
+        | Does this match the tone of the document? | Consider accepting | Modify or reject |
+        | Does this introduce accessibility issues? | Reject or fix | Consider accepting |
+        | Did the AI add content I did not ask for? | Review carefully | Likely fine |
+</span>
+<span class="hljs-code">        ### What to watch for
+</span>
+<span class="hljs-code">        AI can be confidently wrong. Watch for:
+        - **Hallucinated links** -- URLs that look real but go nowhere
+        - **Over-complicated language** -- simpler is usually better
+        - **Lost context** -- the AI may not understand the workshop&#x27;s audience
+        - **Accessibility regressions** -- images without alt text, complex tables where lists work better
+</span>
+<span class="hljs-bullet">  -</span> type: textarea
+<span class="hljs-code">    id: evidence
+    attributes:
+      label: &quot;Your evidence&quot;
+      description: &quot;Describe what you asked Copilot to do, what it suggested, and your evaluation.&quot;
+      placeholder: |
+        I asked Copilot to: ...
+        It suggested: ...
+        My evaluation: I accepted/modified/rejected this because...
+        One thing Copilot got wrong: ...
+        One thing Copilot got right: ...
+    validations:
+      required: true
+</span>
+<span class="hljs-bullet">  -</span> type: markdown
+<span class="hljs-code">    attributes:
+      value: |
+        ### Peer simulation check
+</span>
+<span class="hljs-code">        Compare your Copilot result with the peer-simulation PR or with a real buddy if you have access. Did the AI suggestion actually improve the document?
+</span>
+<span class="hljs-code">        ### If you get stuck
+</span>
+<span class="hljs-code">        | Symptom | Try this |
+        |---|---|
+        | Copilot is not available | You need GitHub Copilot access (free for students via GitHub Education). Ask your facilitator for alternatives if Copilot is not available. |
+        | I do not know what to ask Copilot | Try: &quot;Improve the clarity of this paragraph&quot; or &quot;Suggest a better heading for this section.&quot; |
+        | All of Copilot&#x27;s suggestions seem good | Try asking it something harder, like &quot;Rewrite this for a screen reader user.&quot; Evaluate whether the result actually helps. |
+        | I finished but want to check my work | [View the reference solution](https://github.com/Community-Access/git-going-with-github/blob/main/docs/solutions/solution-13-copilot.md) |
+</span></code></pre>
+<h2 id="source-solution-13-copilotmd">Source: solution-13-copilot.md</h2>
+<pre><code class="hljs language-markdown"><span class="hljs-section"># Solution Reference: Challenge 13 -- Copilot as Collaborator</span>
+
+This shows an example Copilot interaction and critical evaluation.
+
+<span class="hljs-section">## Example interaction transcript</span>
+
+<span class="hljs-strong">**Prompt to Copilot:**</span>
+
+<span class="hljs-quote">&gt; Review the alt text in docs/welcome.md and suggest improvements for screen reader users.</span>
+
+<span class="hljs-strong">**Copilot response (example):**</span>
+
+<span class="hljs-quote">&gt; The image on line 42 has `alt=&quot;screenshot&quot;` which is not descriptive. A better alternative would be: `alt=&quot;Learning Room repository page showing the Code tab with a list of files including README.md, docs folder, and .github folder&quot;`.</span>
+
+<span class="hljs-section">## Before and after</span>
+
+<span class="hljs-strong">**Before:**</span>
+
+<span class="hljs-code">```markdown
+![screenshot](images/repo-overview.png)</span></code></pre>
+<p><strong>After (improved with Copilot&#39;s help):</strong></p>
+<pre><code class="hljs language-markdown">![<span class="hljs-string">Learning Room repository Code tab showing file list with README.md, docs folder, and .github folder</span>](<span class="hljs-link">images/repo-overview.png</span>)</code></pre>
+<h2 id="critical-evaluation-notes">Critical evaluation notes</h2>
+<p>Not everything Copilot suggests is correct. Here is how to evaluate:</p>
+<blockquote>
+<p><strong>What Copilot got right:</strong> The suggestion to be more descriptive than &quot;screenshot&quot; is correct. Screen reader users need to understand what the image communicates, not just that it exists.</p>
+<p><strong>What I adjusted:</strong> Copilot&#39;s suggested alt text was 30 words. I shortened it to 18 words while keeping the key information. Alt text should be concise.</p>
+<p><strong>What Copilot missed:</strong> It did not flag that the image might be decorative (meaning <code>alt=&quot;&quot;</code> would be appropriate). I checked -- it is informational, so descriptive alt text is correct.</p>
+</blockquote>
+<h2 id="alternate-approaches">Alternate approaches</h2>
+<ul>
+<li>Ask Copilot to improve documentation clarity, then evaluate whether the suggestions make sense</li>
+<li>Ask Copilot to check Markdown formatting, then verify its corrections</li>
+<li>Ask Copilot to suggest commit messages, then refine them</li>
+</ul>
+<h2 id="what-matters">What matters</h2>
+<p>The learning objective is using AI as a collaborator while maintaining your own judgment. If you used Copilot, evaluated its output critically, and made an improvement based on that evaluation, you completed this challenge.</p>
+<h2 id="authoritative-sources">Authoritative Sources</h2>
+<p>Use these official references when you need the current source of truth for facts in this chapter.</p>
+<ul>
+<li><a href="https://docs.github.com/en">GitHub Docs, home</a></li>
+<li><a href="https://github.blog/changelog/">GitHub Changelog</a></li>
+<li><a href="https://docs.github.com/en/copilot">GitHub Copilot docs</a></li>
+<li><a href="https://docs.github.com/en/copilot/reference/custom-instructions-support">Custom instructions support matrix</a></li>
+<li><a href="https://docs.github.com/en/copilot/concepts/agents/cloud-agent/about-custom-agents">About custom agents</a></li>
+<li><a href="https://docs.github.com/en/copilot/concepts/agents/about-agent-skills">About agent skills</a></li>
+<li><a href="https://docs.github.com/en/copilot/concepts/auto-model-selection">About auto model selection</a></li>
+<li><a href="https://github.blog/changelog/label/copilot/">Copilot changelog feed</a></li>
+<li><a href="https://code.visualstudio.com/docs/copilot/chat/copilot-chat">VS Code Copilot chat overview</a></li>
+<li><a href="https://code.visualstudio.com/docs/copilot/agents/overview">VS Code agent overview</a></li>
+<li><a href="https://code.visualstudio.com/docs/copilot/customization/custom-instructions">VS Code custom instructions</a></li>
+</ul>
+<h3 id="section-level-source-map">Section-Level Source Map</h3>
+<p>Use this map to verify facts for each major section in this file.</p>
+<ul>
+<li><strong>Example interaction transcript:</strong> <a href="https://docs.github.com/en">GitHub Docs, home</a>, <a href="https://github.blog/changelog/">GitHub Changelog</a>, <a href="https://docs.github.com/en/copilot">GitHub Copilot docs</a>, <a href="https://docs.github.com/en/copilot/reference/custom-instructions-support">Custom instructions support matrix</a>, <a href="https://docs.github.com/en/copilot/concepts/agents/cloud-agent/about-custom-agents">About custom agents</a></li>
+<li><strong>Before and after:</strong> <a href="https://docs.github.com/en">GitHub Docs, home</a>, <a href="https://github.blog/changelog/">GitHub Changelog</a>, <a href="https://docs.github.com/en/copilot">GitHub Copilot docs</a>, <a href="https://docs.github.com/en/copilot/reference/custom-instructions-support">Custom instructions support matrix</a>, <a href="https://docs.github.com/en/copilot/concepts/agents/cloud-agent/about-custom-agents">About custom agents</a></li>
+<li><strong>Critical evaluation notes:</strong> <a href="https://docs.github.com/en">GitHub Docs, home</a>, <a href="https://github.blog/changelog/">GitHub Changelog</a>, <a href="https://docs.github.com/en/copilot">GitHub Copilot docs</a>, <a href="https://docs.github.com/en/copilot/reference/custom-instructions-support">Custom instructions support matrix</a>, <a href="https://docs.github.com/en/copilot/concepts/agents/cloud-agent/about-custom-agents">About custom agents</a></li>
+<li><strong>Alternate approaches:</strong> <a href="https://docs.github.com/en">GitHub Docs, home</a>, <a href="https://github.blog/changelog/">GitHub Changelog</a>, <a href="https://docs.github.com/en/copilot">GitHub Copilot docs</a>, <a href="https://docs.github.com/en/copilot/reference/custom-instructions-support">Custom instructions support matrix</a>, <a href="https://docs.github.com/en/copilot/concepts/agents/cloud-agent/about-custom-agents">About custom agents</a></li>
+<li><strong>What matters:</strong> <a href="https://docs.github.com/en">GitHub Docs, home</a>, <a href="https://github.blog/changelog/">GitHub Changelog</a>, <a href="https://docs.github.com/en/copilot">GitHub Copilot docs</a>, <a href="https://docs.github.com/en/copilot/reference/custom-instructions-support">Custom instructions support matrix</a>, <a href="https://docs.github.com/en/copilot/concepts/agents/cloud-agent/about-custom-agents">About custom agents</a></li>
+</ul>
+<pre><code class="hljs">
+## Source: 16-github-copilot.md
+
+```markdown
+# GitHub Copilot
+&gt;
+&gt; <span class="hljs-comment">**Listen to Episode 14:** [GitHub Copilot](../admin/PODCASTS.md) - a conversational audio overview of this chapter. Listen before reading to preview the concepts, or after to reinforce what you learned.
+
+&gt; **Related appendices:** [Appendix K: Copilot Reference](appendix-k-copilot-reference.md) | [Appendix G: VS Code Reference](appendix-g-vscode-reference.md)
+&gt; **Authoritative sources:** [GitHub Docs: About GitHub Copilot](https://docs.github.com/en/copilot/about-github-copilot/what-is-github-copilot) | [GitHub Accessibility: Copilot in VS Code](https://accessibility.github.com/documentation/guide/github-copilot-vsc/) | [VS Code Docs: GitHub Copilot](https://code.visualstudio.com/docs/copilot/overview) | [GitHub Copilot plans](https://github.com/features/copilot/plans) | [Usage-based billing for individuals](https://docs.github.com/en/copilot/concepts/billing/usage-based-billing-for-individuals)
+
+## AI-Powered Code Assistance in VS Code
+
+&gt; **Day 2, Block 2-3 Material**
+&gt;
+&gt; This guide covers GitHub Copilot: inline code suggestions, Copilot Chat (conversational assistance), Agent mode, the VS Code 1.120 Agents window, custom instructions vs custom agents, effective prompting for non-code contributions, and using Accessible View to read AI-generated responses.
+&gt;
+&gt; **Official GitHub Accessibility Guides:** GitHub publishes two developer guides and an NVDA-focused screen reader guide for Copilot:
+&gt;
+&gt; - [Using GitHub Copilot in Visual Studio Code with a Screen Reader](https://accessibility.github.com/documentation/guide/github-copilot-vsc/) - NVDA-specific setup, audio cues, inline suggestions, inline chat, chat view, and built-in actions
+&gt; - [Optimizing GitHub Copilot for Accessibility with Custom Instructions](https://accessibility.github.com/documentation/guide/copilot-instructions/) - writing effective custom instructions at org, repo, and personal levels
+&gt; - [Getting Started with GitHub Copilot Custom Agents for Accessibility](https://accessibility.github.com/documentation/guide/getting-started-with-agents/) - creating and invoking custom agents in VS Code and on GitHub.com
+&gt;
+&gt; This chapter covers the same material with additional perspectives and workshop context. Use the official guides as companion references.
+&gt;
+&gt; **Prerequisites:** [VS Code Setup &amp; Accessibility Basics](11-vscode-interface.md), [Git &amp; Source Control in VS Code](14-git-in-practice.md)
+&gt;
+&gt; **Keyboard shortcuts:** Current VS Code docs list `Ctrl+Alt+I` as the default shortcut for the Chat view and `Ctrl+I` for inline chat. Keymaps can vary by OS, browser, profile, and assistive technology setup, so every shortcut in this chapter has a command-palette fallback. If a shortcut does not work, open the Command Palette and run **Chat: Open Chat**, **Inline Chat: Start in Editor**, or **Chat: Open Agents Window**.
+
+## Workshop Recommendation (Chapter 16 / Challenge 13)
+
+&gt; **Access note, verified May 12, 2026:** GitHub Copilot Free is available to individual developers with monthly limits, and verified students may have access to the GitHub Copilot Student plan. Organization or enterprise access depends on your administrator&#x27;s policy. This workshop is designed to work within limited Copilot access when learners keep prompts short and use Copilot for focused documentation tasks.
+&gt;
+&gt; **Billing guidance for this workshop:** GitHub Copilot is moving to usage-based billing on June 1, 2026. Chat, CLI, cloud agent, Spaces, Spark, and third-party coding agents consume GitHub AI Credits. Code completions and next edit suggestions are not billed in AI Credits for paid plans. If you are unsure whether your account has Copilot access, check [GitHub Copilot settings](https://github.com/settings/copilot), review the [GitHub Copilot plans page](https://github.com/features/copilot/plans), or ask a facilitator before the workshop begins.
+
+Chapter 16 introduces **GitHub Copilot** for AI-assisted documentation and writing. It supports Challenge 13: AI as Your Copilot.
+
+- **Challenge count:** 3 guided challenges
+- **Automation check:** none (tool configuration is account-local and account-specific)
+- **Evidence:** issue comment with checklist of completed actions
+- **Pattern:** sign in, prompt, apply, reflect
+
+### Challenge 13 Set
+
+1. **Sign in to GitHub Copilot** - authenticate with GitHub and confirm your account has Copilot access.
+2. **Ask Copilot to explain a codebase** - clone the sci-fi themes repo and use Copilot Chat to understand it.
+3. **Ask Copilot to create something new** - prompt Copilot to generate a custom theme and apply it.
+
+### Challenge 13.1 Step-by-Step: Sign In to Copilot
+
+**Goal:** Sign in to GitHub Copilot and verify it responds to prompts.
+
+**Where you are working:** VS Code desktop with your Learning Room repository open.
+
+**Estimated time:** 3-5 minutes.
+
+&gt; **Current VS Code guidance, verified May 12, 2026:** Recent VS Code builds include built-in AI features and surface Copilot and Chat directly. You normally do not install a separate GitHub Copilot Chat extension on a current VS Code build. Your account still needs Copilot access, and your organization may disable or manage AI features. If Copilot is missing, update VS Code first, then use the Copilot status item or Command Palette to enable AI features and sign in.
+
+1. Update VS Code to the current stable release if possible.
+2. In the Status Bar, open the Copilot status item and choose **Use AI Features** or **Set up Copilot** if prompted.
+3. Choose your sign-in method and complete the GitHub OAuth flow in your browser.
+4. If your Copilot subscription is tied to GitHub Enterprise, choose the GitHub Enterprise sign-in path and provide the enterprise URL when prompted.
+5. Verify Copilot is active: open the Chat view with `Ctrl+Alt+I`, or run **Chat: Open Chat** from the Command Palette. Type `Hello, are you working?` and press `Enter`. Copilot should respond.
+
+**Screen reader tip:** The Copilot Chat panel opens as a sidebar. Your screen reader announces responses as they stream in. Press `Alt+F2` (Accessible View) to read the full response in a plain text buffer if streaming is hard to follow.
+
+**You are done when:** Copilot Chat responds to a test prompt.
+
+### Challenge 13.2 Step-by-Step: Explain a Codebase
+
+**Goal:** Use Copilot Chat to understand an unfamiliar repository by asking targeted questions.
+
+**Where you are working:** VS Code with the sci-fi themes repository cloned.
+
+**Estimated time:** 10-15 minutes.
+
+1. Open the Command Palette: `Ctrl+Shift+P` (Mac: `Cmd+Shift+P`).
+2. Run `Git: Clone` and paste: `https://github.com/community-access/vscode-sci-fi-themes.git`
+3. Open the cloned repository when VS Code prompts.
+4. Open Copilot Chat: `Ctrl+Alt+I`, or run **Chat: Open Chat** from the Command Palette if your keymap differs.
+5. Ask Copilot: &quot;What does the `chat.agent.thinking.phrases` setting do in VS Code?&quot;
+6. Read the response. Use `Alt+F2` (Accessible View) if needed to read the full text.
+7. Ask a follow-up: &quot;How do I apply one of these themes to my settings.json?&quot;
+8. Follow Copilot&#x27;s instructions to apply one theme to your `settings.json` file.
+
+**You are done when:** You have asked Copilot at least two questions and applied one setting change.
+
+### Challenge 13.3 Step-by-Step: Create Something New
+
+**Goal:** Use Copilot as a creative collaborator to generate a custom config and apply it.
+
+**Where you are working:** VS Code with Copilot Chat open.
+
+**Estimated time:** 10-15 minutes.
+
+1. Open Copilot Chat: `Ctrl+Alt+I`, or run **Chat: Open Chat** from the Command Palette if your keymap differs.
+2. Type a creative prompt: &quot;Create a custom GitHub Copilot thinking phrases theme for [your favorite universe - Dune, Marvel, Studio Ghibli, Star Trek, etc.]&quot;
+3. Read Copilot&#x27;s generated theme. It should include an array of themed phrases.
+4. Copy the generated content: select all text in the Copilot response, then `Ctrl+C` (Mac: `Cmd+C`).
+5. Open your `settings.json`: Command Palette, then `Preferences: Open User Settings (JSON)`.
+6. Paste the theme configuration into your settings.
+7. Save with `Ctrl+S` and reload VS Code: Command Palette, then `Developer: Reload Window`.
+8. Test your new theme by asking Copilot a question and watching the thinking phrases.
+
+**Screen reader tip:** Copilot Chat responses can be long. Use `Alt+F2` (Accessible View) to read them in a plain text buffer where you can copy text more easily.
+
+**You are done when:** Your personalized thinking phrases appear when Copilot is processing a response.
+
+### Completing Challenge 13: Submit Your Evidence
+
+Open your **assigned Challenge 13 issue** and post a completion comment:
+
+```text
+Chapter 13 completed:
+- Copilot enabled and signed in: yes / no
+- Asked Copilot to explain a setting: yes / no
+- Applied a setting from Copilot&#x27;s suggestion: yes / no
+- Created a custom theme: yes / no
+- My theme universe: [your choice]</span></code></pre>
+<p>Close your Challenge 13 issue when done.</p>
+<h3 id="expected-outcomes">Expected Outcomes</h3>
+<ul>
+<li>Student can enable built-in Copilot features in current VS Code and authenticate with GitHub.</li>
+<li>Student can ask Copilot effective questions about code and settings.</li>
+<li>Student can use Copilot&#39;s output to customize their development environment.</li>
+<li>Student understands Copilot as a tool to explain and create, not just autocomplete.</li>
+</ul>
+<h3 id="if-you-get-stuck">If You Get Stuck</h3>
+<ol>
+<li>Copilot controls are missing? Update VS Code first, then reload VS Code: <code>Ctrl+Shift+P</code>, then <code>Developer: Reload Window</code>.</li>
+<li>OAuth sign-in fails? Verify your GitHub account is active in the browser first, close VS Code and retry.</li>
+<li>Chat panel does not open? Try <code>Ctrl+Alt+I</code>, then use the Command Palette to run <strong>Chat: Open Chat</strong>. If still nothing, confirm AI features are enabled and you are signed in.</li>
+<li>Copilot seems unresponsive? Click the model selector at the bott</li>
+</ol>
+<!-- content omitted for length -->
+
+<p>d-agent/about-custom-agents)</p>
+<ul>
+<li><strong>5. Copilot Edits — Making Multi-File Changes:</strong> <a href="https://docs.github.com/en">GitHub Docs, home</a>, <a href="https://github.blog/changelog/">GitHub Changelog</a>, <a href="https://docs.github.com/en/copilot">GitHub Copilot docs</a>, <a href="https://docs.github.com/en/copilot/reference/custom-instructions-support">Custom instructions support matrix</a>, <a href="https://docs.github.com/en/copilot/concepts/agents/cloud-agent/about-custom-agents">About custom agents</a></li>
+<li><strong>6. Agent Mode — Let Copilot Drive:</strong> <a href="https://docs.github.com/en">GitHub Docs, home</a>, <a href="https://github.blog/changelog/">GitHub Changelog</a>, <a href="https://docs.github.com/en/copilot">GitHub Copilot docs</a>, <a href="https://docs.github.com/en/copilot/reference/custom-instructions-support">Custom instructions support matrix</a>, <a href="https://docs.github.com/en/copilot/concepts/agents/cloud-agent/about-custom-agents">About custom agents</a></li>
+<li><strong>6A. VS Code 1.120 Agents Window:</strong> <a href="https://docs.github.com/en">GitHub Docs, home</a>, <a href="https://github.blog/changelog/">GitHub Changelog</a>, <a href="https://docs.github.com/en/copilot">GitHub Copilot docs</a>, <a href="https://docs.github.com/en/copilot/reference/custom-instructions-support">Custom instructions support matrix</a>, <a href="https://docs.github.com/en/copilot/concepts/agents/cloud-agent/about-custom-agents">About custom agents</a></li>
+<li><strong>7. Next Edit Suggestions:</strong> <a href="https://docs.github.com/en">GitHub Docs, home</a>, <a href="https://github.blog/changelog/">GitHub Changelog</a>, <a href="https://docs.github.com/en/copilot">GitHub Copilot docs</a>, <a href="https://docs.github.com/en/copilot/reference/custom-instructions-support">Custom instructions support matrix</a>, <a href="https://docs.github.com/en/copilot/concepts/agents/cloud-agent/about-custom-agents">About custom agents</a></li>
+<li><strong>8. Copilot on GitHub.com:</strong> <a href="https://docs.github.com/en">GitHub Docs, home</a>, <a href="https://github.blog/changelog/">GitHub Changelog</a>, <a href="https://docs.github.com/en/copilot">GitHub Copilot docs</a>, <a href="https://docs.github.com/en/copilot/reference/custom-instructions-support">Custom instructions support matrix</a>, <a href="https://docs.github.com/en/copilot/concepts/agents/cloud-agent/about-custom-agents">About custom agents</a></li>
+<li><strong>9. Effective Prompting for Documentation Work:</strong> <a href="https://docs.github.com/en">GitHub Docs, home</a>, <a href="https://github.blog/changelog/">GitHub Changelog</a>, <a href="https://docs.github.com/en/copilot">GitHub Copilot docs</a>, <a href="https://docs.github.com/en/copilot/reference/custom-instructions-support">Custom instructions support matrix</a>, <a href="https://docs.github.com/en/copilot/concepts/agents/cloud-agent/about-custom-agents">About custom agents</a></li>
+<li><strong>Timeline View - File History:</strong> <a href="https://docs.github.com/en">GitHub Docs, home</a>, <a href="https://github.blog/changelog/">GitHub Changelog</a>, <a href="https://docs.github.com/en/copilot">GitHub Copilot docs</a>, <a href="https://docs.github.com/en/copilot/reference/custom-instructions-support">Custom instructions support matrix</a>, <a href="https://docs.github.com/en/copilot/concepts/agents/cloud-agent/about-custom-agents">About custom agents</a></li>
+<li><strong>10. Custom Instructions vs Custom Agents:</strong> <a href="https://docs.github.com/en">GitHub Docs, home</a>, <a href="https://github.blog/changelog/">GitHub Changelog</a>, <a href="https://docs.github.com/en/copilot">GitHub Copilot docs</a>, <a href="https://docs.github.com/en/copilot/reference/custom-instructions-support">Custom instructions support matrix</a>, <a href="https://docs.github.com/en/copilot/concepts/agents/cloud-agent/about-custom-agents">About custom agents</a></li>
+<li><strong>Accessibility Standards:</strong> <a href="https://docs.github.com/en">GitHub Docs, home</a>, <a href="https://github.blog/changelog/">GitHub Changelog</a>, <a href="https://docs.github.com/en/copilot">GitHub Copilot docs</a>, <a href="https://docs.github.com/en/copilot/reference/custom-instructions-support">Custom instructions support matrix</a>, <a href="https://docs.github.com/en/copilot/concepts/agents/cloud-agent/about-custom-agents">About custom agents</a></li>
+<li><strong>Documentation Style:</strong> <a href="https://docs.github.com/en">GitHub Docs, home</a>, <a href="https://github.blog/changelog/">GitHub Changelog</a>, <a href="https://docs.github.com/en/copilot">GitHub Copilot docs</a>, <a href="https://docs.github.com/en/copilot/reference/custom-instructions-support">Custom instructions support matrix</a>, <a href="https://docs.github.com/en/copilot/concepts/agents/cloud-agent/about-custom-agents">About custom agents</a></li>
+</ul>
+<pre><code class="hljs"></code></pre>
+
+  </main>
+  <footer role="contentinfo" class="site-footer">
+    <p><strong>GIT Going with GitHub</strong> - A workshop by <a href="https://community-access.org">Community Access</a></p>
+    <p><a href="https://github.com/community-access/git-going-with-github">View on GitHub</a> · <a href="https://community-access.org">community-access.org</a></p>
+  </footer>
+
+  </body>
+</html>

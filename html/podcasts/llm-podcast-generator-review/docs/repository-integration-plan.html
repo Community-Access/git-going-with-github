@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="GIT Going with GitHub - A two-day accessible open source workshop by Community Access">
+  <title>Repository Integration Plan - GIT Going with GitHub</title>
+  <link rel="stylesheet" href="./styles/github-markdown.css">
+  <link rel="stylesheet" href="./styles/highlight.css">
+  <link rel="stylesheet" href="./styles/custom.css">
+  <style>
+    .markdown-body {
+      box-sizing: border-box;
+      min-width: 200px;
+      max-width: 980px;
+      margin: 0 auto;
+      padding: 45px;
+    }
+    @media (max-width: 767px) {
+      .markdown-body {
+        padding: 15px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+  <header class="site-header" role="banner">
+    <div class="site-header-inner">
+      <nav aria-label="Breadcrumb" class="breadcrumb">
+        <a href="./index.html">Home</a> <span aria-hidden="true">›</span> <span aria-current="page">Repository Integration Plan</span>
+      </nav>
+      <div class="header-actions">
+        <a href="https://github.com/Community-Access/git-going-with-github/wiki" class="wiki-link" target="_blank" rel="noopener noreferrer">
+          <svg aria-hidden="true" focusable="false" width="16" height="16" viewBox="0 0 16 16" fill="currentColor">
+            <path d="M1.75 1h8.5c.966 0 1.75.784 1.75 1.75v5.5A1.75 1.75 0 0 1 10.25 10H7.06l-2.573 2.573A1.458 1.458 0 0 1 2 11.543V10h-.25A1.75 1.75 0 0 1 0 8.25v-5.5C0 1.784.784 1 1.75 1ZM1.5 2.75v5.5c0 .138.112.25.25.25h1a.75.75 0 0 1 .75.75v2.19l2.72-2.72a.749.749 0 0 1 .53-.22h3.5a.25.25 0 0 0 .25-.25v-5.5a.25.25 0 0 0-.25-.25h-8.5a.25.25 0 0 0-.25.25Zm13 2a.25.25 0 0 0-.25-.25h-.5a.75.75 0 0 1 0-1.5h.5c.966 0 1.75.784 1.75 1.75v5.5A1.75 1.75 0 0 1 14.25 12H14v1.543a1.457 1.457 0 0 1-2.487 1.03L9.22 12.28a.749.749 0 1 1 1.06-1.06l2.22 2.22v-2.19a.75.75 0 0 1 .75-.75h.25a.25.25 0 0 0 .25-.25v-5.5Z"/>
+          </svg>
+          Wiki
+        </a>
+        <form role="search" class="search-form" action="./search.html" method="get">
+        <label for="site-search" class="search-label">Search docs</label>
+        <input
+          type="search"
+          id="site-search"
+          class="search-input"
+          name="q"
+          placeholder="Search docs…"
+          autocomplete="off"
+          aria-label="Search documentation"
+        >
+        <button type="submit" class="search-button" aria-label="Submit search">
+          <svg aria-hidden="true" focusable="false" width="16" height="16" viewBox="0 0 16 16" fill="currentColor">
+            <path d="M10.68 11.74a6 6 0 0 1-7.922-8.982 6 6 0 0 1 8.982 7.922l3.04 3.04a.749.749 0 0 1-.326 1.275.749.749 0 0 1-.734-.215ZM11.5 7a4.499 4.499 0 1 0-8.997 0A4.499 4.499 0 0 0 11.5 7Z"/>
+          </svg>
+        </button>
+      </form>
+      </div>
+    </div>
+  </header>
+  <main id="main-content" class="markdown-body">
+    <h1 id="repository-integration-plan">Repository Integration Plan</h1>
+<h2 id="current-pipeline">Current pipeline</h2>
+<p>The existing podcast pipeline already has these layers:</p>
+<ol>
+<li>Podcast catalog validation.</li>
+<li>Bundle generation from source Markdown.</li>
+<li>Deterministic transcript generation.</li>
+<li>Segment JSON and chapter-plan JSON generation.</li>
+<li>Local TTS audio generation.</li>
+<li>Site and RSS feed generation.</li>
+<li>Metadata and inventory checks.</li>
+</ol>
+<p>The proposed LLM generator should replace only layer 3 for selected episodes. Everything downstream should remain compatible.</p>
+<p>The review lane now uses:</p>
+<ul>
+<li><code>podcasts/llm-podcast-generator-review/src/generate-teaching-transcript.js</code></li>
+<li><code>podcasts/llm-podcast-generator-review/src/run-regression.js</code></li>
+<li>source packets from <code>podcasts/tools/agentic-pilot/build-source-packet.js</code></li>
+<li>transcript quality gates from <code>podcasts/tools/agentic-pilot/evaluate-transcript.js</code></li>
+</ul>
+<h2 id="safe-adoption-path">Safe adoption path</h2>
+<h3 id="phase-1-review-folder-only">Phase 1: Review folder only</h3>
+<p>Keep this folder in the root of the repository:</p>
+<pre><code class="hljs language-text">podcasts/llm-podcast-generator-review/</code></pre>
+<p>No live pipeline changes.</p>
+<h3 id="phase-2-pilot-branch">Phase 2: Pilot branch</h3>
+<p>Create a branch:</p>
+<pre><code class="hljs language-powershell">git checkout <span class="hljs-literal">-b</span> feature/llm<span class="hljs-literal">-podcast-generator</span></code></pre>
+<p>Move the generator into:</p>
+<pre><code class="hljs language-text">podcasts/tools/llm/generate-teaching-transcript.js</code></pre>
+<p>Add scripts to <code>package.json</code>.</p>
+<h3 id="phase-3-one-chapter-and-one-challenge">Phase 3: One chapter and one challenge</h3>
+<p>Generate:</p>
+<pre><code class="hljs language-powershell">node podcasts/llm<span class="hljs-literal">-podcast-generator-review</span>/src/run<span class="hljs-literal">-regression</span>.js <span class="hljs-literal">--slug</span> ep05<span class="hljs-literal">-working-with-issues</span> <span class="hljs-literal">--limit</span> <span class="hljs-number">1</span>
+node podcasts/llm<span class="hljs-literal">-podcast-generator-review</span>/src/run<span class="hljs-literal">-regression</span>.js <span class="hljs-literal">--slug</span> cc<span class="hljs-literal">-02-file-your-first-issue</span> <span class="hljs-literal">--limit</span> <span class="hljs-number">1</span></code></pre>
+<p>Review for quality and source coverage.</p>
+<h3 id="phase-4-publish-and-promote-pilot-transcripts">Phase 4: Publish and promote pilot transcripts</h3>
+<p>Once accepted:</p>
+<pre><code class="hljs language-powershell">node podcasts/llm<span class="hljs-literal">-podcast-generator-review</span>/src/<span class="hljs-built_in">publish-candidate</span>.js <span class="hljs-literal">--slug</span> ep05<span class="hljs-literal">-working-with-issues</span> <span class="hljs-literal">--candidate</span> &lt;path<span class="hljs-literal">-to-candidate</span>.json&gt; <span class="hljs-literal">--write-live</span>
+node podcasts/llm<span class="hljs-literal">-podcast-generator-review</span>/src/<span class="hljs-built_in">publish-candidate</span>.js <span class="hljs-literal">--slug</span> cc<span class="hljs-literal">-02-file-your-first-issue</span> <span class="hljs-literal">--candidate</span> &lt;path<span class="hljs-literal">-to-candidate</span>.json&gt; <span class="hljs-literal">--write-live</span></code></pre>
+<p>Then:</p>
+<pre><code class="hljs language-powershell">npm run build:podcast<span class="hljs-literal">-site</span>
+npm run podcast:chapters:audit
+npm run validate:podcasts
+python <span class="hljs-literal">-m</span> podcasts.tts.generate_audio <span class="hljs-literal">--group</span> chapters <span class="hljs-literal">--start</span> <span class="hljs-number">5</span> <span class="hljs-literal">--end</span> <span class="hljs-number">5</span> <span class="hljs-literal">--force</span> <span class="hljs-literal">--audio-format</span> mp3
+python podcasts/tag<span class="hljs-literal">-audio-metadata</span>.py <span class="hljs-literal">--slug</span> ep05<span class="hljs-literal">-working-with-issues</span> <span class="hljs-literal">--audio-dir</span> podcasts/audio/kokoro<span class="hljs-literal">-am_liam-af_jessica</span> <span class="hljs-literal">--expected-count</span> <span class="hljs-number">1</span> <span class="hljs-literal">--write</span></code></pre>
+<h3 id="phase-5-batch-small-groups">Phase 5: Batch small groups</h3>
+<p>Generate in reviewable groups with <code>run-regression.js</code>:</p>
+<ul>
+<li>core chapters</li>
+<li>appendices</li>
+<li>challenge episodes</li>
+<li>bonus challenges</li>
+</ul>
+<p>Do not regenerate everything at once until the review process is proven.</p>
+<h2 id="artifact-mapping">Artifact mapping</h2>
+<p>LLM output should create or update:</p>
+<pre><code class="hljs language-text">podcasts/llm-podcast-generator-review/generated/&lt;slug&gt;.prompt.md
+podcasts/llm-podcast-generator-review/generated/regression/&lt;timestamp&gt;/&lt;slug&gt;/mini.candidate.json
+podcasts/llm-podcast-generator-review/generated/regression/&lt;timestamp&gt;/&lt;slug&gt;/polish.candidate.json
+podcasts/llm-podcast-generator-review/generated/regression/&lt;timestamp&gt;/summary.json
+podcasts/llm-podcast-generator-review/output/published/&lt;slug&gt;/&lt;slug&gt;.txt
+podcasts/llm-podcast-generator-review/output/published/&lt;slug&gt;/&lt;slug&gt;-segments.json
+podcasts/llm-podcast-generator-review/output/published/&lt;slug&gt;/&lt;slug&gt;-chapters.json
+podcasts/llm-podcast-generator-review/output/published/&lt;slug&gt;/&lt;slug&gt;-chapter-preview.json</code></pre>
+<h2 id="promotion-rule">Promotion rule</h2>
+<p>A generated transcript should not become production merely because it exists. It should pass:</p>
+<ul>
+<li>source coverage review</li>
+<li>accessibility language review</li>
+<li>host voice review</li>
+<li>chapter title review</li>
+<li>technical accuracy review</li>
+<li>screen reader workflow review</li>
+</ul>
+<h2 id="why-this-is-magical-but-safe">Why this is magical but safe</h2>
+<p>The magic is in the teaching: a model can transform dense Markdown into a warm, complete, conversational lesson.</p>
+<p>The safety is in the pipeline: source Markdown remains the authority, transcripts remain reviewable text, and existing audio/site tooling remains intact.</p>
+
+  </main>
+  <footer role="contentinfo" class="site-footer">
+    <p><strong>GIT Going with GitHub</strong> - A workshop by <a href="https://community-access.org">Community Access</a></p>
+    <p><a href="https://github.com/community-access/git-going-with-github">View on GitHub</a> · <a href="https://community-access.org">community-access.org</a></p>
+  </footer>
+
+  </body>
+</html>

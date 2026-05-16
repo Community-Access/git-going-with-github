@@ -1,0 +1,512 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="GIT Going with GitHub - A two-day accessible open source workshop by Community Access">
+  <title>[14-git-in-practice.md] Git & Source Control in VS Code - GIT Going with GitHub</title>
+  <link rel="stylesheet" href="./styles/github-markdown.css">
+  <link rel="stylesheet" href="./styles/highlight.css">
+  <link rel="stylesheet" href="./styles/custom.css">
+  <style>
+    .markdown-body {
+      box-sizing: border-box;
+      min-width: 200px;
+      max-width: 980px;
+      margin: 0 auto;
+      padding: 45px;
+    }
+    @media (max-width: 767px) {
+      .markdown-body {
+        padding: 15px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+  <header class="site-header" role="banner">
+    <div class="site-header-inner">
+      <nav aria-label="Breadcrumb" class="breadcrumb">
+        <a href="./index.html">Home</a> <span aria-hidden="true">›</span> <span aria-current="page">[14-git-in-practice.md] Git & Source Control in VS Code</span>
+      </nav>
+      <div class="header-actions">
+        <a href="https://github.com/Community-Access/git-going-with-github/wiki" class="wiki-link" target="_blank" rel="noopener noreferrer">
+          <svg aria-hidden="true" focusable="false" width="16" height="16" viewBox="0 0 16 16" fill="currentColor">
+            <path d="M1.75 1h8.5c.966 0 1.75.784 1.75 1.75v5.5A1.75 1.75 0 0 1 10.25 10H7.06l-2.573 2.573A1.458 1.458 0 0 1 2 11.543V10h-.25A1.75 1.75 0 0 1 0 8.25v-5.5C0 1.784.784 1 1.75 1ZM1.5 2.75v5.5c0 .138.112.25.25.25h1a.75.75 0 0 1 .75.75v2.19l2.72-2.72a.749.749 0 0 1 .53-.22h3.5a.25.25 0 0 0 .25-.25v-5.5a.25.25 0 0 0-.25-.25h-8.5a.25.25 0 0 0-.25.25Zm13 2a.25.25 0 0 0-.25-.25h-.5a.75.75 0 0 1 0-1.5h.5c.966 0 1.75.784 1.75 1.75v5.5A1.75 1.75 0 0 1 14.25 12H14v1.543a1.457 1.457 0 0 1-2.487 1.03L9.22 12.28a.749.749 0 1 1 1.06-1.06l2.22 2.22v-2.19a.75.75 0 0 1 .75-.75h.25a.25.25 0 0 0 .25-.25v-5.5Z"/>
+          </svg>
+          Wiki
+        </a>
+        <form role="search" class="search-form" action="./search.html" method="get">
+        <label for="site-search" class="search-label">Search docs</label>
+        <input
+          type="search"
+          id="site-search"
+          class="search-input"
+          name="q"
+          placeholder="Search docs…"
+          autocomplete="off"
+          aria-label="Search documentation"
+        >
+        <button type="submit" class="search-button" aria-label="Submit search">
+          <svg aria-hidden="true" focusable="false" width="16" height="16" viewBox="0 0 16 16" fill="currentColor">
+            <path d="M10.68 11.74a6 6 0 0 1-7.922-8.982 6 6 0 0 1 8.982 7.922l3.04 3.04a.749.749 0 0 1-.326 1.275.749.749 0 0 1-.734-.215ZM11.5 7a4.499 4.499 0 1 0-8.997 0A4.499 4.499 0 0 0 11.5 7Z"/>
+          </svg>
+        </button>
+      </form>
+      </div>
+    </div>
+  </header>
+  <main id="main-content" class="markdown-body">
+    <p>You are writing a Git Going with GitHub podcast script.</p>
+<p>Audience:
+Blind and low-vision learners studying GitHub, Git, VS Code, open source, and accessible contribution workflows.</p>
+<p>Hosts:</p>
+<ul>
+<li>Alex: warm expert professor</li>
+<li>Jamie: curious professor who asks the questions learners may hesitate to ask</li>
+</ul>
+<p>Goal:
+Create a complete, conversational, two-host audio lesson. Teach every substantive concept from the Markdown source. Do not merely summarize. Do not omit administrative or accessibility content. Use varied phrasing and make it feel like a thoughtful NotebookLM-style teaching conversation.</p>
+<p>Scale rules:</p>
+<ul>
+<li>The source set may be large. Prioritize complete conceptual coverage over quoting every line.</li>
+<li>Use concise turns and avoid unnecessary verbosity.</li>
+</ul>
+<p>Required script markers:
+Use only these markers on their own lines:
+[ALEX]
+[JAMIE]
+[PAUSE]</p>
+<p>Narration constraints:</p>
+<ul>
+<li>Do not say chapter titles, section names, or &quot;chapter marker&quot; language out loud.</li>
+<li>Keep transitions natural so chapter separation can be handled in metadata, not spoken labels.</li>
+</ul>
+<p>Return JSON only:
+{
+  &quot;script&quot;: &quot;[ALEX]\n...\n&quot;,
+  &quot;chapters&quot;: [
+    {
+      &quot;title&quot;: &quot;Specific chapter title&quot;,
+      &quot;startSegmentIndex&quot;: 0,
+      &quot;sourceHeading&quot;: &quot;Heading represented&quot;
+    }
+  ],
+  &quot;coverageNotes&quot;: [
+    {
+      &quot;sourceHeading&quot;: &quot;Heading&quot;,
+      &quot;status&quot;: &quot;covered | partial | risk&quot;,
+      &quot;notes&quot;: &quot;Brief note&quot;
+    }
+  ]
+}</p>
+<p>Slug: ep12-git-source-control
+Sources:</p>
+<ul>
+<li>14-git-in-practice.md</li>
+</ul>
+<p>Headings that must be represented:</p>
+<h1 id="14-git-in-practicemd-git-amp-source-control-in-vs-code">[14-git-in-practice.md] Git &amp; Source Control in VS Code</h1>
+<h2 id="14-git-in-practicemd-managing-repositories-branches-and-changes-accessibly">[14-git-in-practice.md] Managing Repositories, Branches, and Changes Accessibly</h2>
+<h2 id="14-git-in-practicemd-workshop-recommendation-chapter-14--challenge-10">[14-git-in-practice.md] Workshop Recommendation Chapter 14 / Challenge 10</h2>
+<h3 id="14-git-in-practicemd-challenge-10-practice-set">[14-git-in-practice.md] Challenge 10 Practice Set</h3>
+<h3 id="14-git-in-practicemd-cli-best-practices-for-getting-started">[14-git-in-practice.md] CLI best practices for getting started</h3>
+<h3 id="14-git-in-practicemd-practice-101-step-by-step-clone-your-learning-room-repository">[14-git-in-practice.md] Practice 10.1 Step-by-Step: Clone Your Learning Room Repository</h3>
+<h3 id="14-git-in-practicemd-practice-102-step-by-step-create-a-branch-and-commit">[14-git-in-practice.md] Practice 10.2 Step-by-Step: Create a Branch and Commit</h3>
+<h3 id="14-git-in-practicemd-practice-103-step-by-step-push-and-open-a-linked-pr">[14-git-in-practice.md] Practice 10.3 Step-by-Step: Push and Open a Linked PR</h3>
+<h3 id="14-git-in-practicemd-completing-challenge-10-submit-your-evidence">[14-git-in-practice.md] Completing Challenge 10: Submit Your Evidence</h3>
+<h3 id="14-git-in-practicemd-expected-outcomes">[14-git-in-practice.md] Expected Outcomes</h3>
+<h3 id="14-git-in-practicemd-if-you-get-stuck">[14-git-in-practice.md] If You Get Stuck</h3>
+<h3 id="14-git-in-practicemd-learning-moment">[14-git-in-practice.md] Learning Moment</h3>
+<h3 id="14-git-in-practicemd-learning-pattern-used-in-this-chapter">[14-git-in-practice.md] Learning Pattern Used in This Chapter</h3>
+<h3 id="14-git-in-practicemd-about-learning-cards">[14-git-in-practice.md] About Learning Cards</h3>
+<h2 id="14-git-in-practicemd-table-of-contents">[14-git-in-practice.md] Table of Contents</h2>
+<h2 id="14-git-in-practicemd-1-cloning-a-repository-in-vs-code">[14-git-in-practice.md] 1. Cloning a Repository in VS Code</h2>
+<h3 id="14-git-in-practicemd-tool-cards-clone-a-repository-day-2">[14-git-in-practice.md] Tool Cards: Clone a Repository Day 2</h3>
+<h3 id="14-git-in-practicemd-three-ways-to-clone-a-repository">[14-git-in-practice.md] Three ways to clone a repository</h3>
+<h3 id="14-git-in-practicemd-method-1-command-palette-recommended-for-screen-readers">[14-git-in-practice.md] Method 1: Command Palette Recommended for Screen Readers</h3>
+<h4 id="14-git-in-practicemd-screen-reader-navigation">[14-git-in-practice.md] Screen reader navigation</h4>
+<h3 id="14-git-in-practicemd-method-2-start-page-clone-button">[14-git-in-practice.md] Method 2: Start Page Clone Button</h3>
+<h3 id="14-git-in-practicemd-method-3-from-githubcom">[14-git-in-practice.md] Method 3: From GitHub.com</h3>
+<h3 id="14-git-in-practicemd-learning-cards-cloning-a-repository">[14-git-in-practice.md] Learning Cards: Cloning a Repository</h3>
+<h1 id="14-git-in-practicemd-standard-git-clone">[14-git-in-practice.md] Standard Git clone</h1>
+<h1 id="14-git-in-practicemd-github-cli-clone-shorter-syntax-handles-auth-automatically">[14-git-in-practice.md] GitHub CLI clone shorter syntax, handles auth automatically</h1>
+<h1 id="14-git-in-practicemd-clone-into-a-specific-folder">[14-git-in-practice.md] Clone into a specific folder</h1>
+<h1 id="14-git-in-practicemd-clone-only-the-default-branch-faster-for-large-repos">[14-git-in-practice.md] Clone only the default branch faster for large repos</h1>
+<h1 id="14-git-in-practicemd-verify-the-clone">[14-git-in-practice.md] Verify the clone</h1>
+<h3 id="14-git-in-practicemd-try-it-now-clone-the-sci-fi-themes-repo">[14-git-in-practice.md] Try It Now: Clone the Sci-Fi Themes Repo</h3>
+<h4 id="14-git-in-practicemd-why-clone-this">[14-git-in-practice.md] Why Clone This?</h4>
+<h4 id="14-git-in-practicemd-quick-start">[14-git-in-practice.md] Quick Start</h4>
+<h1 id="14-git-in-practicemd-clone-using-ownername-no-url-needed">[14-git-in-practice.md] Clone using owner/name no URL needed</h1>
+<h1 id="14-git-in-practicemd-clone-and-cd-into-the-folder">[14-git-in-practice.md] Clone and cd into the folder</h1>
+<h1 id="14-git-in-practicemd-open-the-cloned-repo-in-vs-code">[14-git-in-practice.md] Open the cloned repo in VS Code</h1>
+<h2 id="14-git-in-practicemd-2-the-source-control-panel---complete-walkthrough">[14-git-in-practice.md] 2. The Source Control Panel - Complete Walkthrough</h2>
+<h3 id="14-git-in-practicemd-opening-the-source-control-panel">[14-git-in-practice.md] Opening the Source Control Panel</h3>
+<h4 id="14-git-in-practicemd-what-opens">[14-git-in-practice.md] What opens</h4>
+<h4 id="14-git-in-practicemd-panel-structure-from-top-to-bottom">[14-git-in-practice.md] Panel structure from top to bottom</h4>
+<h3 id="14-git-in-practicemd-screen-reader-navigation-in-the-source-control-panel">[14-git-in-practice.md] Screen Reader Navigation in the Source Control Panel</h3>
+<h4 id="14-git-in-practicemd-nvdajaws">[14-git-in-practice.md] NVDA/JAWS</h4>
+<h4 id="14-git-in-practicemd-voiceover">[14-git-in-practice.md] VoiceOver</h4>
+<h3 id="14-git-in-practicemd-what-each-file-shows">[14-git-in-practice.md] What Each File Shows</h3>
+<h3 id="14-git-in-practicemd-context-menu-actions-right-click-or-shiftf10">[14-git-in-practice.md] Context Menu Actions Right-Click or Shift+F10</h3>
+<h3 id="14-git-in-practicemd-learning-cards-source-control-panel">[14-git-in-practice.md] Learning Cards: Source Control Panel</h3>
+<h1 id="14-git-in-practicemd-see-all-modified-staged-and-untracked-files">[14-git-in-practice.md] See all modified, staged, and untracked files</h1>
+<h1 id="14-git-in-practicemd-short-format-one-letter-per-file-compact">[14-git-in-practice.md] Short format one letter per file, compact</h1>
+<h1 id="14-git-in-practicemd-see-what-is-staged-ready-to-commit">[14-git-in-practice.md] See what is staged ready to commit</h1>
+<h1 id="14-git-in-practicemd-see-what-is-modified-but-not-staged">[14-git-in-practice.md] See what is modified but not staged</h1>
+<h1 id="14-git-in-practicemd-see-both-staged-and-unstaged-differences-with-content">[14-git-in-practice.md] See both staged and unstaged differences with content</h1>
+<h2 id="14-git-in-practicemd-3-branch-management">[14-git-in-practice.md] 3. Branch Management</h2>
+<h3 id="14-git-in-practicemd-viewing-the-current-branch">[14-git-in-practice.md] Viewing the Current Branch</h3>
+<h4 id="14-git-in-practicemd-where-it39s-shown">[14-git-in-practice.md] Where it&#39;s shown</h4>
+<h4 id="14-git-in-practicemd-keyboard-access-to-status-bar">[14-git-in-practice.md] Keyboard access to status bar</h4>
+<h3 id="14-git-in-practicemd-creating-a-new-branch">[14-git-in-practice.md] Creating a New Branch</h3>
+<h4 id="14-git-in-practicemd-command-palette-method-recommended">[14-git-in-practice.md] Command Palette method recommended</h4>
+<h4 id="14-git-in-practicemd-naming-conventions">[14-git-in-practice.md] Naming conventions</h4>
+<h1 id="14-git-in-practicemd-create-and-switch-to-a-new-branch">[14-git-in-practice.md] Create and switch to a new branch</h1>
+<h1 id="14-git-in-practicemd-list-all-branches">[14-git-in-practice.md] List all branches</h1>
+<h1 id="14-git-in-practicemd-switch-to-an-existing-branch">[14-git-in-practice.md] Switch to an existing branch</h1>
+<h1 id="14-git-in-practicemd-delete-a-branch-after-merging">[14-git-in-practice.md] Delete a branch after merging</h1>
+<h3 id="14-git-in-practicemd-switching-between-branches">[14-git-in-practice.md] Switching Between Branches</h3>
+<h4 id="14-git-in-practicemd-command-palette-method">[14-git-in-practice.md] Command Palette method</h4>
+<h4 id="14-git-in-practicemd-what-happens-when-you-switch">[14-git-in-practice.md] What happens when you switch</h4>
+<h3 id="14-git-in-practicemd-deleting-a-branch">[14-git-in-practice.md] Deleting a Branch</h3>
+<h4 id="14-git-in-practicemd-after-your-pr-is-merged-you-can-delete-the-branch">[14-git-in-practice.md] After your PR is merged, you can delete the branch</h4>
+<h3 id="14-git-in-practicemd-viewing-all-branches">[14-git-in-practice.md] Viewing All Branches</h3>
+<h3 id="14-git-in-practicemd-learning-cards-branch-management">[14-git-in-practice.md] Learning Cards: Branch Management</h3>
+<h4 id="14-git-in-practicemd-creating-a-branch">[14-git-in-practice.md] Creating a branch</h4>
+<h4 id="14-git-in-practicemd-switching-branches">[14-git-in-practice.md] Switching branches</h4>
+<h4 id="14-git-in-practicemd-deleting-a-branch">[14-git-in-practice.md] Deleting a branch</h4>
+<h4 id="14-git-in-practicemd-creating-a-branch">[14-git-in-practice.md] Creating a branch</h4>
+<h4 id="14-git-in-practicemd-switching-branches">[14-git-in-practice.md] Switching branches</h4>
+<h4 id="14-git-in-practicemd-getting-the-current-branch-name">[14-git-in-practice.md] Getting the current branch name</h4>
+<h1 id="14-git-in-practicemd-create-and-switch-to-a-new-branch">[14-git-in-practice.md] Create and switch to a new branch</h1>
+<h1 id="14-git-in-practicemd-or-use-the-newer-39switch39-command">[14-git-in-practice.md] Or use the newer &#39;switch&#39; command</h1>
+<h1 id="14-git-in-practicemd-list-local-branches-current-branch-marked-with">[14-git-in-practice.md] List local branches current branch marked with</h1>
+<h1 id="14-git-in-practicemd-list-all-branches-including-remote-tracking">[14-git-in-practice.md] List all branches including remote-tracking</h1>
+<h1 id="14-git-in-practicemd-switch-to-an-existing-branch">[14-git-in-practice.md] Switch to an existing branch</h1>
+<h1 id="14-git-in-practicemd-or">[14-git-in-practice.md] or</h1>
+<h1 id="14-git-in-practicemd-delete-a-branch-safe---only-if-merged">[14-git-in-practice.md] Delete a branch safe - only if merged</h1>
+<h1 id="14-git-in-practicemd-force-delete-a-branch-even-if-not-merged">[14-git-in-practice.md] Force delete a branch even if not merged</h1>
+<h1 id="14-git-in-practicemd-rename-the-current-branch">[14-git-in-practice.md] Rename the current branch</h1>
+<h1 id="14-git-in-practicemd-push-a-new-branch-to-github-for-the-first-time">[14-git-in-practice.md] Push a new branch to GitHub for the first time</h1>
+<h1 id="14-git-in-practicemd-delete-a-remote-branch">[14-git-in-practice.md] Delete a remote branch</h1>
+<h1 id="14-git-in-practicemd-create-a-branch-linked-to-an-issue-auto-names-from-issue-title">[14-git-in-practice.md] Create a branch linked to an issue auto-names from issue title</h1>
+<h1 id="14-git-in-practicemd-list-remote-branches">[14-git-in-practice.md] List remote branches</h1>
+<h2 id="14-git-in-practicemd-4-staging-changes---files-lines-and-chunks">[14-git-in-practice.md] 4. Staging Changes - Files, Lines, and Chunks</h2>
+<h3 id="14-git-in-practicemd-staging-an-entire-file">[14-git-in-practice.md] Staging an Entire File</h3>
+<h4 id="14-git-in-practicemd-alternative-keyboard-shortcut">[14-git-in-practice.md] Alternative keyboard shortcut</h4>
+<h4 id="14-git-in-practicemd-alternative-context-menu">[14-git-in-practice.md] Alternative context menu</h4>
+<h4 id="14-git-in-practicemd-what-happens">[14-git-in-practice.md] What happens</h4>
+<h3 id="14-git-in-practicemd-staging-multiple-files-at-once">[14-git-in-practice.md] Staging Multiple Files at Once</h3>
+<h3 id="14-git-in-practicemd-staging-individual-lines-or-chunks">[14-git-in-practice.md] Staging Individual Lines or Chunks</h3>
+<h4 id="14-git-in-practicemd-workflow">[14-git-in-practice.md] Workflow</h4>
+<h4 id="14-git-in-practicemd-use-case-for-this-workshop">[14-git-in-practice.md] Use case for this workshop</h4>
+<h1 id="14-git-in-practicemd-stage-a-specific-file">[14-git-in-practice.md] Stage a specific file</h1>
+<h1 id="14-git-in-practicemd-stage-all-changes">[14-git-in-practice.md] Stage all changes</h1>
+<h1 id="14-git-in-practicemd-stage-specific-lines-interactively">[14-git-in-practice.md] Stage specific lines interactively</h1>
+<h1 id="14-git-in-practicemd-git-shows-each-change-hunk-and-asks-stage-this-ynse">[14-git-in-practice.md] Git shows each change hunk and asks: stage this? y/n/s/e</h1>
+<h1 id="14-git-in-practicemd-unstage-a-file">[14-git-in-practice.md] Unstage a file</h1>
+<h1 id="14-git-in-practicemd-check-what-is-staged-vs-unstaged">[14-git-in-practice.md] Check what is staged vs unstaged</h1>
+<h3 id="14-git-in-practicemd-unstaging-files">[14-git-in-practice.md] Unstaging Files</h3>
+<h4 id="14-git-in-practicemd-reverse-the-process">[14-git-in-practice.md] Reverse the process</h4>
+<h3 id="14-git-in-practicemd-learning-cards-staging-changes">[14-git-in-practice.md] Learning Cards: Staging Changes</h3>
+<h2 id="14-git-in-practicemd-5-committing-with-screen-readers">[14-git-in-practice.md] 5. Committing with Screen Readers</h2>
+<h3 id="14-git-in-practicemd-the-commit-workflow">[14-git-in-practice.md] The Commit Workflow</h3>
+<h4 id="14-git-in-practicemd-standard-process">[14-git-in-practice.md] Standard process</h4>
+<h3 id="14-git-in-practicemd-learning-cards-committing">[14-git-in-practice.md] Learning Cards: Committing</h3>
+<h4 id="14-git-in-practicemd-screen-reader-experience">[14-git-in-practice.md] Screen reader experience</h4>
+<h4 id="14-git-in-practicemd-nvdajaws">[14-git-in-practice.md] NVDA/JAWS</h4>
+<h4 id="14-git-in-practicemd-voiceover">[14-git-in-practice.md] VoiceOver</h4>
+<h3 id="14-git-in-practicemd-writing-good-commit-messages">[14-git-in-practice.md] Writing Good Commit Messages</h3>
+<h4 id="14-git-in-practicemd-quick-reference">[14-git-in-practice.md] Quick reference</h4>
+<h4 id="14-git-in-practicemd-format">[14-git-in-practice.md] Format</h4>
+<h1 id="14-git-in-practicemd-commit-staged-changes-with-a-message">[14-git-in-practice.md] Commit staged changes with a message</h1>
+<h1 id="14-git-in-practicemd-commit-with-a-multi-line-message-opens-your-editor">[14-git-in-practice.md] Commit with a multi-line message opens your editor</h1>
+<h1 id="14-git-in-practicemd-stage-all-tracked-files-and-commit-in-one-step">[14-git-in-practice.md] Stage all tracked files and commit in one step</h1>
+<h3 id="14-git-in-practicemd-what-happens-after-commit">[14-git-in-practice.md] What Happens After Commit</h3>
+<h2 id="14-git-in-practicemd-6-push-and-pull-operations">[14-git-in-practice.md] 6. Push and Pull Operations</h2>
+<h3 id="14-git-in-practicemd-pushing-your-commits-to-github">[14-git-in-practice.md] Pushing Your Commits to GitHub</h3>
+<h4 id="14-git-in-practicemd-after-committing-locally">[14-git-in-practice.md] After committing locally</h4>
+<h4 id="14-git-in-practicemd-alternative-command-palette">[14-git-in-practice.md] Alternative: Command Palette</h4>
+<h3 id="14-git-in-practicemd-learning-cards-push-and-pull">[14-git-in-practice.md] Learning Cards: Push and Pull</h3>
+<h4 id="14-git-in-practicemd-pushing">[14-git-in-practice.md] Pushing</h4>
+<h4 id="14-git-in-practicemd-pulling">[14-git-in-practice.md] Pulling</h4>
+<h4 id="14-git-in-practicemd-checking-sync-status">[14-git-in-practice.md] Checking sync status</h4>
+<h4 id="14-git-in-practicemd-pushing">[14-git-in-practice.md] Pushing</h4>
+<h4 id="14-git-in-practicemd-pulling">[14-git-in-practice.md] Pulling</h4>
+<h4 id="14-git-in-practicemd-screen-reader-feedback">[14-git-in-practice.md] Screen reader feedback</h4>
+<h1 id="14-git-in-practicemd-push-commits-to-github">[14-git-in-practice.md] Push commits to GitHub</h1>
+<h1 id="14-git-in-practicemd-push-a-new-branch-for-the-first-time">[14-git-in-practice.md] Push a new branch for the first time</h1>
+<h1 id="14-git-in-practicemd-pull-changes-from-github">[14-git-in-practice.md] Pull changes from GitHub</h1>
+<h1 id="14-git-in-practicemd-fetch-without-merging-see-what-changed-first">[14-git-in-practice.md] Fetch without merging see what changed first</h1>
+<h2 id="14-git-in-practicemd-what-to-do-if-push-fails">[14-git-in-practice.md] What to do if push fails</h2>
+<h3 id="14-git-in-practicemd-pulling-changes-from-github">[14-git-in-practice.md] Pulling Changes from GitHub</h3>
+<h4 id="14-git-in-practicemd-when-to-pull">[14-git-in-practice.md] When to pull</h4>
+<h4 id="14-git-in-practicemd-how-to-pull">[14-git-in-practice.md] How to pull</h4>
+<h4 id="14-git-in-practicemd-auto-fetch-setting">[14-git-in-practice.md] Auto-fetch setting</h4>
+<h2 id="14-git-in-practicemd-syncing-your-fork-with-the-upstream-repository">[14-git-in-practice.md] Syncing Your Fork with the Upstream Repository</h2>
+<h3 id="14-git-in-practicemd-the-github-quotsync-forkquot-button-quickest-method">[14-git-in-practice.md] The GitHub &quot;Sync fork&quot; Button Quickest Method</h3>
+<h4 id="14-git-in-practicemd-screen-reader-path">[14-git-in-practice.md] Screen reader path</h4>
+<h3 id="14-git-in-practicemd-adding-the-upstream-remote-one-time-setup">[14-git-in-practice.md] Adding the Upstream Remote One-Time Setup</h3>
+<h4 id="14-git-in-practicemd-example-for-accessibility-agents">[14-git-in-practice.md] Example for Accessibility Agents</h4>
+<h3 id="14-git-in-practicemd-fetching-and-merging-upstream-changes">[14-git-in-practice.md] Fetching and Merging Upstream Changes</h3>
+<h1 id="14-git-in-practicemd-1-fetch-all-updates-from-upstream-does-not-change-your-files-yet">[14-git-in-practice.md] 1. Fetch all updates from upstream does not change your files yet</h1>
+<h1 id="14-git-in-practicemd-2-make-sure-you-are-on-your-default-branch">[14-git-in-practice.md] 2. Make sure you are on your default branch</h1>
+<h1 id="14-git-in-practicemd-3-merge-upstream-changes-into-your-local-branch">[14-git-in-practice.md] 3. Merge upstream changes into your local branch</h1>
+<h1 id="14-git-in-practicemd-4-push-the-updated-branch-to-your-fork-on-github">[14-git-in-practice.md] 4. Push the updated branch to your fork on GitHub</h1>
+<h2 id="14-git-in-practicemd-via-vs-code-command-palette">[14-git-in-practice.md] Via VS Code Command Palette</h2>
+<h3 id="14-git-in-practicemd-when-conflicts-occur-during-sync">[14-git-in-practice.md] When Conflicts Occur During Sync</h3>
+<h2 id="14-git-in-practicemd-7-discarding-changes">[14-git-in-practice.md] 7. Discarding Changes</h2>
+<h3 id="14-git-in-practicemd-when-to-discard">[14-git-in-practice.md] When to Discard</h3>
+<h3 id="14-git-in-practicemd-how-to-discard-changes">[14-git-in-practice.md] How to Discard Changes</h3>
+<h4 id="14-git-in-practicemd-single-file">[14-git-in-practice.md] Single file</h4>
+<h4 id="14-git-in-practicemd-all-changes">[14-git-in-practice.md] All changes</h4>
+<h3 id="14-git-in-practicemd-learning-cards-discarding-changes">[14-git-in-practice.md] Learning Cards: Discarding Changes</h3>
+<h4 id="14-git-in-practicemd-single-file">[14-git-in-practice.md] Single file</h4>
+<h4 id="14-git-in-practicemd-all-files">[14-git-in-practice.md] All files</h4>
+<h1 id="14-git-in-practicemd-discard-changes-to-a-specific-file-restore-to-last-commit">[14-git-in-practice.md] Discard changes to a specific file restore to last commit</h1>
+<h1 id="14-git-in-practicemd-discard-all-unstaged-changes">[14-git-in-practice.md] Discard all unstaged changes</h1>
+<h1 id="14-git-in-practicemd-discard-staged-changes-unstage-first-then-restore">[14-git-in-practice.md] Discard staged changes unstage first, then restore</h1>
+<h1 id="14-git-in-practicemd-nuclear-option-discard-all-changes-staged-and-unstaged">[14-git-in-practice.md] Nuclear option: discard ALL changes staged and unstaged</h1>
+<h1 id="14-git-in-practicemd-preview-what-would-be-discarded-before-doing-it">[14-git-in-practice.md] Preview what would be discarded before doing it</h1>
+<h3 id="14-git-in-practicemd-safer-alternative-stash-instead-of-discard">[14-git-in-practice.md] Safer Alternative: Stash Instead of Discard</h3>
+<h3 id="14-git-in-practicemd-deleting-a-file-from-the-repository-git-delete--git-rm">[14-git-in-practice.md] Deleting a File from the Repository Git Delete / git rm</h3>
+<h4 id="14-git-in-practicemd-how-to-use">[14-git-in-practice.md] How to use</h4>
+<h4 id="14-git-in-practicemd-when-to-use-git-delete-vs-just-deleting-the-file">[14-git-in-practice.md] When to use Git Delete vs. just deleting the file</h4>
+<h3 id="14-git-in-practicemd-learning-cards-deleting-a-file-from-the-repository">[14-git-in-practice.md] Learning Cards: Deleting a File from the Repository</h3>
+<h1 id="14-git-in-practicemd-remove-a-file-and-stage-the-deletion-in-one-step">[14-git-in-practice.md] Remove a file and stage the deletion in one step</h1>
+<h1 id="14-git-in-practicemd-remove-a-file-but-keep-it-locally-stop-tracking-only">[14-git-in-practice.md] Remove a file but keep it locally stop tracking only</h1>
+<h1 id="14-git-in-practicemd-remove-an-entire-directory">[14-git-in-practice.md] Remove an entire directory</h1>
+<h1 id="14-git-in-practicemd-commit-the-deletion">[14-git-in-practice.md] Commit the deletion</h1>
+<h1 id="14-git-in-practicemd-verify-the-file-is-no-longer-tracked">[14-git-in-practice.md] Verify the file is no longer tracked</h1>
+<h2 id="14-git-in-practicemd-8-timeline-view---file-history-and-blame">[14-git-in-practice.md] 8. Timeline View - File History and Blame</h2>
+<h3 id="14-git-in-practicemd-opening-timeline-view">[14-git-in-practice.md] Opening Timeline View</h3>
+<h4 id="14-git-in-practicemd-method-1-explorer-sidebar">[14-git-in-practice.md] Method 1: Explorer Sidebar</h4>
+<h4 id="14-git-in-practicemd-method-2-command-palette">[14-git-in-practice.md] Method 2: Command Palette</h4>
+<h3 id="14-git-in-practicemd-what-timeline-shows">[14-git-in-practice.md] What Timeline Shows</h3>
+<h3 id="14-git-in-practicemd-viewing-a-commit39s-changes">[14-git-in-practice.md] Viewing a Commit&#39;s Changes</h3>
+<h3 id="14-git-in-practicemd-git-blame---line-by-line-history">[14-git-in-practice.md] Git Blame - Line-by-Line History</h3>
+<h4 id="14-git-in-practicemd-how-to-access">[14-git-in-practice.md] How to access</h4>
+<h4 id="14-git-in-practicemd-what-appears">[14-git-in-practice.md] What appears</h4>
+<h4 id="14-git-in-practicemd-for-screen-reader-users">[14-git-in-practice.md] For screen reader users</h4>
+<h3 id="14-git-in-practicemd-learning-cards-timeline-and-history">[14-git-in-practice.md] Learning Cards: Timeline and History</h3>
+<h4 id="14-git-in-practicemd-opening-timeline">[14-git-in-practice.md] Opening Timeline</h4>
+<h4 id="14-git-in-practicemd-reading-a-diff-with-screen-reader">[14-git-in-practice.md] Reading a diff with screen reader</h4>
+<h4 id="14-git-in-practicemd-git-blame">[14-git-in-practice.md] Git Blame</h4>
+<h4 id="14-git-in-practicemd-opening-timeline">[14-git-in-practice.md] Opening Timeline</h4>
+<h4 id="14-git-in-practicemd-accessible-diff-viewer">[14-git-in-practice.md] Accessible Diff Viewer</h4>
+<h1 id="14-git-in-practicemd-view-commit-history-for-the-entire-repo">[14-git-in-practice.md] View commit history for the entire repo</h1>
+<h1 id="14-git-in-practicemd-view-history-for-a-specific-file">[14-git-in-practice.md] View history for a specific file</h1>
+<h1 id="14-git-in-practicemd-view-history-with-what-changed-in-each-commit">[14-git-in-practice.md] View history with what changed in each commit</h1>
+<h1 id="14-git-in-practicemd-view-who-last-changed-each-line-blame">[14-git-in-practice.md] View who last changed each line blame</h1>
+<h1 id="14-git-in-practicemd-blame-with-short-commit-hashes-and-author">[14-git-in-practice.md] Blame with short commit hashes and author</h1>
+<h1 id="14-git-in-practicemd-show-a-specific-commit39s-changes">[14-git-in-practice.md] Show a specific commit&#39;s changes</h1>
+<h1 id="14-git-in-practicemd-show-what-changed-between-two-commits">[14-git-in-practice.md] Show what changed between two commits</h1>
+<h1 id="14-git-in-practicemd-show-commits-by-a-specific-author">[14-git-in-practice.md] Show commits by a specific author</h1>
+<h1 id="14-git-in-practicemd-show-commits-in-the-last-7-days">[14-git-in-practice.md] Show commits in the last 7 days</h1>
+<h1 id="14-git-in-practicemd-view-recent-commits-from-the-web">[14-git-in-practice.md] View recent commits from the web</h1>
+<h1 id="14-git-in-practicemd-view-pr-history">[14-git-in-practice.md] View PR history</h1>
+<h2 id="14-git-in-practicemd-9-resolving-merge-conflicts-in-vs-code">[14-git-in-practice.md] 9. Resolving Merge Conflicts in VS Code</h2>
+<h3 id="14-git-in-practicemd-how-vs-code-displays-conflicts">[14-git-in-practice.md] How VS Code Displays Conflicts</h3>
+<h2 id="14-git-in-practicemd-timeline-view---file-history">[14-git-in-practice.md] Timeline View - File History</h2>
+<h2 id="14-git-in-practicemd-timeline-view---git-history-and-blame">[14-git-in-practice.md] Timeline View - Git History and Blame</h2>
+<h3 id="14-git-in-practicemd-screen-reader-workflow-for-resolving-conflicts">[14-git-in-practice.md] Screen Reader Workflow for Resolving Conflicts</h3>
+<h3 id="14-git-in-practicemd-using-accessible-diff-for-conflict-review">[14-git-in-practice.md] Using Accessible Diff for Conflict Review</h3>
+<h4 id="14-git-in-practicemd-this-gives-you-structured-hunk-by-hunk-navigation-instead-of-searching-for-markers-manually">[14-git-in-practice.md] This gives you structured, hunk-by-hunk navigation instead of searching for markers manually</h4>
+<h3 id="14-git-in-practicemd-aborting-a-merge">[14-git-in-practice.md] Aborting a Merge</h3>
+<h3 id="14-git-in-practicemd-learning-cards-resolving-merge-conflicts">[14-git-in-practice.md] Learning Cards: Resolving Merge Conflicts</h3>
+<h2 id="14-git-in-practicemd-10-stash-management">[14-git-in-practice.md] 10. Stash Management</h2>
+<h3 id="14-git-in-practicemd-when-to-use-stash">[14-git-in-practice.md] When to Use Stash</h3>
+<h3 id="14-git-in-practicemd-creating-a-stash">[14-git-in-practice.md] Creating a Stash</h3>
+<h4 id="14-git-in-practicemd-method-1-command-palette">[14-git-in-practice.md] Method 1: Command Palette</h4>
+<h4 id="14-git-in-practicemd-what-happens">[14-git-in-practice.md] What happens</h4>
+<h3 id="14-git-in-practicemd-viewing-stashes">[14-git-in-practice.md] Viewing Stashes</h3>
+<h4 id="14-git-in-practicemd-command-palette">[14-git-in-practice.md] Command Palette</h4>
+<h4 id="14-git-in-practicemd-alternative-integrated-terminal">[14-git-in-practice.md] Alternative: Integrated Terminal</h4>
+<h3 id="14-git-in-practicemd-applying-a-stash">[14-git-in-practice.md] Applying a Stash</h3>
+<h4 id="14-git-in-practicemd-to-restore-your-stashed-changes">[14-git-in-practice.md] To restore your stashed changes</h4>
+<h4 id="14-git-in-practicemd-or-to-apply-a-specific-stash">[14-git-in-practice.md] Or to apply a specific stash</h4>
+<h4 id="14-git-in-practicemd-difference-between-apply-and-pop">[14-git-in-practice.md] Difference between Apply and Pop</h4>
+<h3 id="14-git-in-practicemd-dropping-a-stash">[14-git-in-practice.md] Dropping a Stash</h3>
+<h3 id="14-git-in-practicemd-learning-cards-stash-management">[14-git-in-practice.md] Learning Cards: Stash Management</h3>
+<h4 id="14-git-in-practicemd-creating-a-stash">[14-git-in-practice.md] Creating a stash</h4>
+<h4 id="14-git-in-practicemd-applying-a-stash">[14-git-in-practice.md] Applying a stash</h4>
+<h4 id="14-git-in-practicemd-viewing-stashes">[14-git-in-practice.md] Viewing stashes</h4>
+<h1 id="14-git-in-practicemd-stash-all-uncommitted-changes-with-a-message">[14-git-in-practice.md] Stash all uncommitted changes with a message</h1>
+<h1 id="14-git-in-practicemd-stash-including-untracked-new-files">[14-git-in-practice.md] Stash including untracked new files</h1>
+<h1 id="14-git-in-practicemd-list-all-stashes">[14-git-in-practice.md] List all stashes</h1>
+<h1 id="14-git-in-practicemd-show-what-a-specific-stash-contains">[14-git-in-practice.md] Show what a specific stash contains</h1>
+<h1 id="14-git-in-practicemd-apply-the-most-recent-stash-keep-stash">[14-git-in-practice.md] Apply the most recent stash keep stash</h1>
+<h1 id="14-git-in-practicemd-apply-and-delete-the-most-recent-stash">[14-git-in-practice.md] Apply and delete the most recent stash</h1>
+<h1 id="14-git-in-practicemd-apply-a-specific-stash">[14-git-in-practice.md] Apply a specific stash</h1>
+<h1 id="14-git-in-practicemd-delete-a-specific-stash">[14-git-in-practice.md] Delete a specific stash</h1>
+<h1 id="14-git-in-practicemd-delete-all-stashes-careful">[14-git-in-practice.md] Delete ALL stashes careful</h1>
+<h2 id="14-git-in-practicemd-10b-emergency-recovery---git-reflog">[14-git-in-practice.md] 10b. Emergency Recovery - git reflog</h2>
+<h3 id="14-git-in-practicemd-when-to-use-reflog">[14-git-in-practice.md] When to Use Reflog</h3>
+<h3 id="14-git-in-practicemd-reading-the-reflog-in-vs-code-terminal">[14-git-in-practice.md] Reading the Reflog in VS Code Terminal</h3>
+<h3 id="14-git-in-practicemd-recovering-lost-commits">[14-git-in-practice.md] Recovering Lost Commits</h3>
+<h4 id="14-git-in-practicemd-if-you-need-to-restore-a-commit-that-has-been-lost">[14-git-in-practice.md] If you need to restore a commit that has been lost</h4>
+<h1 id="14-git-in-practicemd-step-1---find-the-last-good-commit-sha-in-reflog">[14-git-in-practice.md] Step 1 - Find the last good commit SHA in reflog</h1>
+<h1 id="14-git-in-practicemd-step-2---preview-what-that-commit-looked-like">[14-git-in-practice.md] Step 2 - Preview what that commit looked like</h1>
+<h1 id="14-git-in-practicemd-step-3a---create-a-new-branch-at-that-point-safest">[14-git-in-practice.md] Step 3a - Create a new branch at that point safest</h1>
+<h1 id="14-git-in-practicemd-step-3b---or-reset-the-current-branch-to-that-point">[14-git-in-practice.md] Step 3b - OR reset the current branch to that point</h1>
+<h3 id="14-git-in-practicemd-recovering-a-deleted-branch">[14-git-in-practice.md] Recovering a Deleted Branch</h3>
+<h1 id="14-git-in-practicemd-find-the-last-commit-on-the-deleted-branch">[14-git-in-practice.md] Find the last commit on the deleted branch</h1>
+<h1 id="14-git-in-practicemd-recreate-the-branch-at-that-sha">[14-git-in-practice.md] Recreate the branch at that SHA</h1>
+<h3 id="14-git-in-practicemd-why-reflog-is-local-only">[14-git-in-practice.md] Why Reflog Is Local-Only</h3>
+<h3 id="14-git-in-practicemd-learning-cards-emergency-recovery">[14-git-in-practice.md] Learning Cards: Emergency Recovery</h3>
+<h2 id="14-git-in-practicemd-11-alternative-git-interfaces">[14-git-in-practice.md] 11. Alternative Git Interfaces</h2>
+<h3 id="14-git-in-practicemd-github-desktop">[14-git-in-practice.md] GitHub Desktop</h3>
+<h3 id="14-git-in-practicemd-github-cli-gh">[14-git-in-practice.md] GitHub CLI gh</h3>
+<h4 id="14-git-in-practicemd-common-commands">[14-git-in-practice.md] Common commands</h4>
+<h3 id="14-git-in-practicemd-git-cli-terminal">[14-git-in-practice.md] Git CLI Terminal</h3>
+<h4 id="14-git-in-practicemd-common-commands">[14-git-in-practice.md] Common commands</h4>
+<h2 id="14-git-in-practicemd-vs-code-keyboard-shortcuts---git-operations-quick-reference">[14-git-in-practice.md] VS Code Keyboard Shortcuts - Git Operations Quick Reference</h2>
+<h2 id="14-git-in-practicemd-try-it-clone-branch-commit">[14-git-in-practice.md] Try It: Clone, Branch, Commit</h2>
+<h2 id="14-git-in-practicemd-authoritative-sources">[14-git-in-practice.md] Authoritative Sources</h2>
+<h3 id="14-git-in-practicemd-section-level-source-map">[14-git-in-practice.md] Section-Level Source Map</h3>
+<p>Markdown source:</p>
+<h2 id="source-14-git-in-practicemd">Source: 14-git-in-practice.md</h2>
+<pre><code class="hljs language-markdown"><span class="hljs-section"># Git &amp; Source Control in VS Code</span>
+<span class="hljs-quote">&gt;
+&gt; <span class="hljs-strong">**Listen to Episode 12:**</span> [<span class="hljs-string">Git and Source Control in VS Code</span>](<span class="hljs-link">../admin/PODCASTS.md</span>) - a conversational audio overview of this chapter. Listen before reading to preview the concepts, or after to reinforce what you learned.</span>
+
+<span class="hljs-quote">&gt; <span class="hljs-strong">**Related appendices:**</span> [<span class="hljs-string">Appendix E: Advanced Git</span>](<span class="hljs-link">appendix-e-advanced-git.md</span>) | [<span class="hljs-string">Appendix D: Git Authentication</span>](<span class="hljs-link">appendix-d-git-authentication.md</span>) | [<span class="hljs-string">Appendix H: GitHub Desktop</span>](<span class="hljs-link">appendix-h-github-desktop.md</span>)</span>
+<span class="hljs-quote">&gt; <span class="hljs-strong">**Authoritative sources:**</span> [<span class="hljs-string">VS Code Docs: Source Control</span>](<span class="hljs-link">https://code.visualstudio.com/docs/sourcecontrol/overview</span>) | [<span class="hljs-string">GitHub Docs: Using Git</span>](<span class="hljs-link">https://docs.github.com/en/get-started/using-git</span>) | [<span class="hljs-string">GitHub Accessibility Lab: CLI Guide</span>](<span class="hljs-link">https://accessibility.github.com/documentation/guide/cli/</span>)</span>
+
+<span class="hljs-section">## Managing Repositories, Branches, and Changes Accessibly</span>
+
+<span class="hljs-quote">&gt; <span class="hljs-strong">**Day 2, Block 1-2 Material**</span></span>
+<span class="hljs-quote">&gt;
+&gt; This guide covers all Git operations in VS Code: cloning repositories, navigating the Source Control panel with screen readers, branch management, staging changes (including individual lines), push/pull operations, viewing file history with Timeline, resolving merge conflicts, and stash management.</span>
+<span class="hljs-quote">&gt;
+&gt; <span class="hljs-strong">**Prerequisites:**</span> [<span class="hljs-string">VS Code Setup &amp; Accessibility Basics</span>](<span class="hljs-link">11-vscode-interface.md</span>), [<span class="hljs-string">Working with Pull Requests</span>](<span class="hljs-link">06-working-with-pull-requests.md</span>), [<span class="hljs-string">Merge Conflicts</span>](<span class="hljs-link">07-merge-conflicts.md</span>)</span>
+<span class="hljs-quote">&gt;
+&gt; <span class="hljs-strong">**Mac keyboard shortcuts:**</span> Throughout this chapter, all `Ctrl+` shortcuts use `Cmd+` on Mac, and `Alt+` shortcuts use `Option+`. Common equivalents: `Ctrl+Shift+G` → `Cmd+Shift+G`, `Ctrl+Shift+P` → `Cmd+Shift+P`, `Ctrl+Enter` → `Cmd+Enter`, `Ctrl+S` → `Cmd+S`.</span>
+
+<span class="hljs-section">## Workshop Recommendation (Chapter 14 / Challenge 10)</span>
+
+Chapter 14 is the first <span class="hljs-strong">**local Git workflow chapter**</span> with hands-on repository management. It supports Challenge 10: Go Local.
+
+<span class="hljs-bullet">-</span> <span class="hljs-strong">**Challenge count:**</span> 3
+<span class="hljs-bullet">-</span> <span class="hljs-strong">**Time per challenge:**</span> under 10 minutes each
+<span class="hljs-bullet">-</span> <span class="hljs-strong">**Evidence:**</span> PR metadata, branch names, and committed changes
+<span class="hljs-bullet">-</span> <span class="hljs-strong">**Pattern:**</span> clone, branch, edit, commit, push, PR
+
+<span class="hljs-section">### Challenge 10 Practice Set</span>
+
+<span class="hljs-bullet">1.</span> <span class="hljs-strong">**Clone your Learning Room repository**</span> - clone your private Learning Room repo to your local machine using VS Code.
+<span class="hljs-bullet">2.</span> <span class="hljs-strong">**Create a branch and make one commit**</span> - check out (or create) your <span class="hljs-code">`learn/&lt;username&gt;`</span> branch, edit a file, stage, write a clear commit message, and commit locally.
+<span class="hljs-bullet">3.</span> <span class="hljs-strong">**Push and open a linked PR**</span> - push your branch and open a PR in your Learning Room repo that references your Challenge 10 or Day 2 PR issue.
+
+<span class="hljs-section">### CLI best practices for getting started</span>
+
+Even when you are working in VS Code, these CLI habits improve reliability:
+
+<span class="hljs-bullet">1.</span> Check current state before action: run <span class="hljs-code">`git status`</span>.
+<span class="hljs-bullet">2.</span> Keep branch context explicit: run <span class="hljs-code">`git branch --show-current`</span>.
+<span class="hljs-bullet">3.</span> Verify remote alignment before pushing: run <span class="hljs-code">`git fetch`</span> then <span class="hljs-code">`git status`</span>.
+<span class="hljs-bullet">4.</span> Confirm PR linkage in plain text (<span class="hljs-code">`Closes #&lt;number&gt;`</span>) before opening or updating the PR.
+<span class="hljs-bullet">5.</span> Avoid undocumented or unverified convenience flags; use stable commands with clear output.
+
+<span class="hljs-section">### Practice 10.1 Step-by-Step: Clone Your Learning Room Repository</span>
+
+<span class="hljs-strong">**Goal:**</span> Get a local copy of your Learning Room repository on your machine using VS Code.
+
+<span class="hljs-strong">**Where you are working:**</span> VS Code desktop (or github.dev if you cannot install desktop VS Code).
+
+Your Learning Room repo is the same repo you have been working in all of Day 1 -- the private copy of <span class="hljs-code">`learning-room-template`</span> that GitHub Classroom created for you. Cloning it locally lets you practice the full local Git workflow on a codebase you already know.
+
+Do <span class="hljs-strong">**not**</span> clone <span class="hljs-code">`Community-Access/learning-room-template`</span> for this challenge. That template is maintained by facilitators. Clone your own private Learning Room repository, the one whose URL looks like <span class="hljs-code">`https://github.com/&lt;workshop-org&gt;/learning-room-&lt;your-username&gt;.git`</span>.
+
+You do <span class="hljs-strong">**not**</span> need a GitHub organization or organization-level permissions to complete this workflow. If GitHub asks for authentication, sign in with your own GitHub account. If GitHub says you do not have access to the repo, confirm that you are using your private Learning Room URL and ask a facilitator for help.
+
+<span class="hljs-bullet">1.</span> Open VS Code. If no folder is open, you should see the Welcome tab.
+<span class="hljs-bullet">2.</span> Open the Command Palette: <span class="hljs-code">`Ctrl+Shift+P`</span> (Mac: <span class="hljs-code">`Cmd+Shift+P`</span>).
+<span class="hljs-bullet">3.</span> Type <span class="hljs-code">`git clone`</span> and select <span class="hljs-strong">**Git: Clone**</span>.
+<span class="hljs-bullet">4.</span> VS Code asks for a repository URL. Paste your Learning Room repo URL (it looks like <span class="hljs-code">`https://github.com/&lt;workshop-org&gt;/learning-room-&lt;your-username&gt;.git`</span>). You can copy this from the green <span class="hljs-strong">**Code**</span> button on your repo&#x27;s GitHub page.
+<span class="hljs-bullet">5.</span> Press <span class="hljs-code">`Enter`</span>.
+<span class="hljs-bullet">6.</span> A file browser dialog opens asking where to save the clone. Choose a folder you can find easily (for example, <span class="hljs-code">`Documents`</span> or <span class="hljs-code">`Desktop`</span>). Press <span class="hljs-strong">**Select as Repository Destination**</span>.
+<span class="hljs-bullet">7.</span> VS Code clones the repository. When it finishes, a notification appears asking &quot;Would you like to open the cloned repository?&quot; Activate <span class="hljs-strong">**Open**</span>.
+<span class="hljs-bullet">8.</span> Verify the clone worked: press <span class="hljs-code">`Ctrl+Shift+E`</span> (Mac: <span class="hljs-code">`Cmd+Shift+E`</span>) to open Explorer. Your screen reader should announce the file tree with files like <span class="hljs-code">`README.md`</span> and the <span class="hljs-code">`docs/`</span> folder.
+
+<span class="hljs-strong">**Screen reader tip:**</span> After step 6, VS Code shows a progress notification. NVDA reads this automatically. If you hear nothing for 30 seconds, open the Command Palette and run <span class="hljs-code">`Notifications: Focus Notification Toast`</span> to check status.
+
+<span class="hljs-strong">**You are done when:**</span> Your Learning Room repo folder is open in VS Code and you can see the <span class="hljs-code">`docs/`</span> folder along with <span class="hljs-code">`README.md`</span> in the Explorer panel.
+
+<span class="hljs-quote">&gt; <span class="hljs-strong">**After cloning: check what branches exist.**</span> A fresh clone only checks out the default branch (`main`), but the remote may have other branches you created earlier on GitHub.com (such as your `learn/<span class="language-xml"><span class="hljs-tag">&lt;<span class="hljs-name">username</span>&gt;</span></span>` branch). Run `git branch -a` in the terminal (`` Ctrl+` ``) to see all branches -- local and remote:</span>
+<span class="hljs-quote">&gt;
+&gt; ```bash</span>
+<span class="hljs-quote">&gt; git branch -a</span>
+<span class="hljs-quote">&gt; ```</span>
+<span class="hljs-quote">&gt;
+&gt; You will see output like:</span>
+<span class="hljs-quote">&gt;
+&gt; ```text</span>
+<span class="hljs-quote">&gt; * main</span>
+<span class="hljs-quote">&gt;   remotes/origin/HEAD -&gt; origin/main</span>
+<span class="hljs-quote">&gt;   remotes/origin/main</span>
+<span class="hljs-quote">&gt;   remotes/origin/learn/yourname</span>
+<span class="hljs-quote">&gt; ```</span>
+<span class="hljs-quote">&gt;
+&gt; The `<span class="hljs-emphasis">*` marks your current branch. Lines starting with `remotes/origin/` are branches on GitHub that you can check out locally with `git checkout learn/yourname` or `git switch learn/yourname`.
+
+### Practice 10.2 Step-by-Step: Create a Branch and Commit
+
+&gt; <span class="hljs-strong">**See also:**</span> [<span class="hljs-string">Chapter 13: How Git Works</span>](<span class="hljs-link">13-how-git-works.md</span>) explains the three areas (working directory, staging, repository) that make commits meaningful.
+
+<span class="hljs-strong">**Goal:**</span> Check out (or create) a properly named branch, edit a file, stage the change, and commit with a clear message.
+
+<span class="hljs-strong">**Where you are working:**</span> VS Code with your cloned Learning Room repository open.
+
+1. Open the Command Palette: `Ctrl+Shift+P` (Mac: `Cmd+Shift+P`).
+2. If your `learn/<span class="language-xml"><span class="hljs-tag">&lt;<span class="hljs-name">username</span>&gt;</span></span>` branch already exists on the remote (because you created it during Day 1), type `git checkout` and select <span class="hljs-strong">**Git: Checkout to...**</span>, then pick `learn/<span class="language-xml"><span class="hljs-tag">&lt;<span class="hljs-name">your-username</span>&gt;</span></span>`. If the branch does not exist yet, type `git create branch` and select <span class="hljs-strong">**Git: Create Branch...**</span> and enter `learn/<span class="language-xml"><span class="hljs-tag">&lt;<span class="hljs-name">your-username</span>&gt;</span></span>`.
+3. The status bar at the bottom of VS Code now shows your branch name instead of `main`. Your screen reader announces the branch name when you focus the status bar.
+4. Open the Explorer (`Ctrl+Shift+E`) and navigate to the `docs/` folder. Open any file mentioned in your Challenge 10 issue (for example, `docs/welcome.md`).
+5. Make one small, meaningful edit. For example, add a new sentence, fix a typo, or improve a description. Save the file with `Ctrl+S` (Mac: `Cmd+S`).
+6. Open the Source Control panel: `Ctrl+Shift+G` (Mac: `Cmd+Shift+G`). Your screen reader announces &quot;Source Control&quot; and shows your changed file under &quot;Changes.&quot;
+7. Navigate to your changed file in the Changes list. Press `Enter` or activate the `+` (Stage Changes) button next to the filename. The file moves from &quot;Changes&quot; to &quot;Staged Changes.&quot;
+8. Move focus to the <span class="hljs-strong">**Message**</span> input box at the top of the Source Control panel. Type a clear commit message, for example: `docs: improve welcome.md introduction`
+9. Press `Ctrl+Enter` (Mac: `Cmd+Enter`) to commit. The staged changes disappear, which means your commit succeeded.
+
+<span class="hljs-strong">**Screen reader tip:**</span> In the Source Control panel, use arrow keys to navigate between changed files. Each file announces its name and change status (modified, added, deleted). The `+` button is announced as &quot;Stage Changes&quot; when you Tab to it.
+
+<span class="hljs-strong">**You are done when:**</span> Your commit appears in the Source Control panel&#x27;s history (no more staged or unstaged changes visible) and the status bar still shows your branch name.
+
+### Practice 10.3 Step-by-Step: Push and Open a Linked PR
+
+<span class="hljs-strong">**Goal:**</span> Push your branch to GitHub and open a PR in your Learning Room repo that references your challenge issue.
+
+<span class="hljs-strong">**Where you are working:**</span> VS Code (for the push) and GitHub.com (for the PR).
+
+1. Open the Command Palette: `Ctrl+Shift+P` (Mac: `Cmd+Shift+P`).
+2. Type `git push` and select <span class="hljs-strong">**Git: Push**</span>. If VS Code asks to publish the branch (because it is new), confirm by selecting <span class="hljs-strong">**OK**</span> or <span class="hljs-strong">**Publish Branch**</span>.
+3. Wait for the push to complete. VS Code shows a progress notification. When done, the sync indicator in the status bar should show no pending changes.
+4. Open your browser and navigate to your Learning Room repository on GitHub.
+5. GitHub usually shows a yellow banner: &quot;yourname recently pushed to learn/yourname.&quot; Activate the <span class="hljs-strong">**Compare &amp; pull request**</span> button in that banner.
+6. If you do not see the banner, activate the <span class="hljs-strong">**Pull requests**</span> tab, then activate <span class="hljs-strong">**New pull request**</span>. Set the base branch to `main` and the compare branch to your `learn/<span class="language-xml"><span class="hljs-tag">&lt;<span class="hljs-name">your-username</span>&gt;</span></span>` branch.
+7. In the PR title, write a descriptive title (for example: &quot;docs: improve welcome.md introduction&quot;).
+8. In the PR description, type `C
+
+&lt;!-- content omitted for length --&gt;
+
+ith-pull-requests/about-pull-requests)
+- <span class="hljs-strong">**6. Push and Pull Operations:**</span> [<span class="hljs-string">GitHub Docs, home</span>](<span class="hljs-link">https://docs.github.com/en</span>), [<span class="hljs-string">GitHub Changelog</span>](<span class="hljs-link">https://github.blog/changelog/</span>), [<span class="hljs-string">About Git</span>](<span class="hljs-link">https://docs.github.com/en/get-started/using-git/about-git</span>), [<span class="hljs-string">GitHub flow</span>](<span class="hljs-link">https://docs.github.com/en/get-started/using-github/github-flow</span>), [<span class="hljs-string">About pull requests</span>](<span class="hljs-link">https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/about-pull-requests</span>)
+- <span class="hljs-strong">**What to do if push fails:**</span> [<span class="hljs-string">GitHub Docs, home</span>](<span class="hljs-link">https://docs.github.com/en</span>), [<span class="hljs-string">GitHub Changelog</span>](<span class="hljs-link">https://github.blog/changelog/</span>), [<span class="hljs-string">About Git</span>](<span class="hljs-link">https://docs.github.com/en/get-started/using-git/about-git</span>), [<span class="hljs-string">GitHub flow</span>](<span class="hljs-link">https://docs.github.com/en/get-started/using-github/github-flow</span>), [<span class="hljs-string">About pull requests</span>](<span class="hljs-link">https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/about-pull-requests</span>)
+- <span class="hljs-strong">**Syncing Your Fork with the Upstream Repository:**</span> [<span class="hljs-string">GitHub Docs, home</span>](<span class="hljs-link">https://docs.github.com/en</span>), [<span class="hljs-string">GitHub Changelog</span>](<span class="hljs-link">https://github.blog/changelog/</span>), [<span class="hljs-string">About Git</span>](<span class="hljs-link">https://docs.github.com/en/get-started/using-git/about-git</span>), [<span class="hljs-string">GitHub flow</span>](<span class="hljs-link">https://docs.github.com/en/get-started/using-github/github-flow</span>), [<span class="hljs-string">About pull requests</span>](<span class="hljs-link">https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/about-pull-requests</span>)
+- <span class="hljs-strong">**Via VS Code Command Palette:**</span> [<span class="hljs-string">GitHub Docs, home</span>](<span class="hljs-link">https://docs.github.com/en</span>), [<span class="hljs-string">GitHub Changelog</span>](<span class="hljs-link">https://github.blog/changelog/</span>), [<span class="hljs-string">About Git</span>](<span class="hljs-link">https://docs.github.com/en/get-started/using-git/about-git</span>), [<span class="hljs-string">GitHub flow</span>](<span class="hljs-link">https://docs.github.com/en/get-started/using-github/github-flow</span>), [<span class="hljs-string">About pull requests</span>](<span class="hljs-link">https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/about-pull-requests</span>)
+- <span class="hljs-strong">**7. Discarding Changes:**</span> [<span class="hljs-string">GitHub Docs, home</span>](<span class="hljs-link">https://docs.github.com/en</span>), [<span class="hljs-string">GitHub Changelog</span>](<span class="hljs-link">https://github.blog/changelog/</span>), [<span class="hljs-string">About Git</span>](<span class="hljs-link">https://docs.github.com/en/get-started/using-git/about-git</span>), [<span class="hljs-string">GitHub flow</span>](<span class="hljs-link">https://docs.github.com/en/get-started/using-github/github-flow</span>), [<span class="hljs-string">About pull requests</span>](<span class="hljs-link">https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/about-pull-requests</span>)
+- <span class="hljs-strong">**8. Timeline View - File History and Blame:**</span> [<span class="hljs-string">GitHub Docs, home</span>](<span class="hljs-link">https://docs.github.com/en</span>), [<span class="hljs-string">GitHub Changelog</span>](<span class="hljs-link">https://github.blog/changelog/</span>), [<span class="hljs-string">About Git</span>](<span class="hljs-link">https://docs.github.com/en/get-started/using-git/about-git</span>), [<span class="hljs-string">GitHub flow</span>](<span class="hljs-link">https://docs.github.com/en/get-started/using-github/github-flow</span>), [<span class="hljs-string">About pull requests</span>](<span class="hljs-link">https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/about-pull-requests</span>)
+- <span class="hljs-strong">**9. Resolving Merge Conflicts in VS Code:**</span> [<span class="hljs-string">GitHub Docs, home</span>](<span class="hljs-link">https://docs.github.com/en</span>), [<span class="hljs-string">GitHub Changelog</span>](<span class="hljs-link">https://github.blog/changelog/</span>), [<span class="hljs-string">About Git</span>](<span class="hljs-link">https://docs.github.com/en/get-started/using-git/about-git</span>), [<span class="hljs-string">GitHub flow</span>](<span class="hljs-link">https://docs.github.com/en/get-started/using-github/github-flow</span>), [<span class="hljs-string">About pull requests</span>](<span class="hljs-link">https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/about-pull-requests</span>)
+- <span class="hljs-strong">**Timeline View - File History:**</span> [<span class="hljs-string">GitHub Docs, home</span>](<span class="hljs-link">https://docs.github.com/en</span>), [<span class="hljs-string">GitHub Changelog</span>](<span class="hljs-link">https://github.blog/changelog/</span>), [<span class="hljs-string">About Git</span>](<span class="hljs-link">https://docs.github.com/en/get-started/using-git/about-git</span>), [<span class="hljs-string">GitHub flow</span>](<span class="hljs-link">https://docs.github.com/en/get-started/using-github/github-flow</span>), [<span class="hljs-string">About pull requests</span>](<span class="hljs-link">https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/about-pull-requests</span>)
+- <span class="hljs-strong">**Timeline View - Git History and Blame:**</span> [<span class="hljs-string">GitHub Docs, home</span>](<span class="hljs-link">https://docs.github.com/en</span>), [<span class="hljs-string">GitHub Changelog</span>](<span class="hljs-link">https://github.blog/changelog/</span>), [<span class="hljs-string">About Git</span>](<span class="hljs-link">https://docs.github.com/en/get-started/using-git/about-git</span>), [<span class="hljs-string">GitHub flow</span>](<span class="hljs-link">https://docs.github.com/en/get-started/using-github/github-flow</span>), [<span class="hljs-string">About pull requests</span>](<span class="hljs-link">https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/about-pull-requests</span>)</span></span></code></pre>
+
+  </main>
+  <footer role="contentinfo" class="site-footer">
+    <p><strong>GIT Going with GitHub</strong> - A workshop by <a href="https://community-access.org">Community Access</a></p>
+    <p><a href="https://github.com/community-access/git-going-with-github">View on GitHub</a> · <a href="https://community-access.org">community-access.org</a></p>
+  </footer>
+
+  </body>
+</html>

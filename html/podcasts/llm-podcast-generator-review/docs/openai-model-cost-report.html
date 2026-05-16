@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="GIT Going with GitHub - A two-day accessible open source workshop by Community Access">
+  <title>OpenRouter/OpenAI Model Cost Report for 5.4-Focused Full Podcast Generation - GIT Going with GitHub</title>
+  <link rel="stylesheet" href="./styles/github-markdown.css">
+  <link rel="stylesheet" href="./styles/highlight.css">
+  <link rel="stylesheet" href="./styles/custom.css">
+  <style>
+    .markdown-body {
+      box-sizing: border-box;
+      min-width: 200px;
+      max-width: 980px;
+      margin: 0 auto;
+      padding: 45px;
+    }
+    @media (max-width: 767px) {
+      .markdown-body {
+        padding: 15px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+  <header class="site-header" role="banner">
+    <div class="site-header-inner">
+      <nav aria-label="Breadcrumb" class="breadcrumb">
+        <a href="./index.html">Home</a> <span aria-hidden="true">›</span> <span aria-current="page">OpenRouter/OpenAI Model Cost Report for 5.4-Focused Full Podcast Generation</span>
+      </nav>
+      <div class="header-actions">
+        <a href="https://github.com/Community-Access/git-going-with-github/wiki" class="wiki-link" target="_blank" rel="noopener noreferrer">
+          <svg aria-hidden="true" focusable="false" width="16" height="16" viewBox="0 0 16 16" fill="currentColor">
+            <path d="M1.75 1h8.5c.966 0 1.75.784 1.75 1.75v5.5A1.75 1.75 0 0 1 10.25 10H7.06l-2.573 2.573A1.458 1.458 0 0 1 2 11.543V10h-.25A1.75 1.75 0 0 1 0 8.25v-5.5C0 1.784.784 1 1.75 1ZM1.5 2.75v5.5c0 .138.112.25.25.25h1a.75.75 0 0 1 .75.75v2.19l2.72-2.72a.749.749 0 0 1 .53-.22h3.5a.25.25 0 0 0 .25-.25v-5.5a.25.25 0 0 0-.25-.25h-8.5a.25.25 0 0 0-.25.25Zm13 2a.25.25 0 0 0-.25-.25h-.5a.75.75 0 0 1 0-1.5h.5c.966 0 1.75.784 1.75 1.75v5.5A1.75 1.75 0 0 1 14.25 12H14v1.543a1.457 1.457 0 0 1-2.487 1.03L9.22 12.28a.749.749 0 1 1 1.06-1.06l2.22 2.22v-2.19a.75.75 0 0 1 .75-.75h.25a.25.25 0 0 0 .25-.25v-5.5Z"/>
+          </svg>
+          Wiki
+        </a>
+        <form role="search" class="search-form" action="./search.html" method="get">
+        <label for="site-search" class="search-label">Search docs</label>
+        <input
+          type="search"
+          id="site-search"
+          class="search-input"
+          name="q"
+          placeholder="Search docs…"
+          autocomplete="off"
+          aria-label="Search documentation"
+        >
+        <button type="submit" class="search-button" aria-label="Submit search">
+          <svg aria-hidden="true" focusable="false" width="16" height="16" viewBox="0 0 16 16" fill="currentColor">
+            <path d="M10.68 11.74a6 6 0 0 1-7.922-8.982 6 6 0 0 1 8.982 7.922l3.04 3.04a.749.749 0 0 1-.326 1.275.749.749 0 0 1-.734-.215ZM11.5 7a4.499 4.499 0 1 0-8.997 0A4.499 4.499 0 0 0 11.5 7Z"/>
+          </svg>
+        </button>
+      </form>
+      </div>
+    </div>
+  </header>
+  <main id="main-content" class="markdown-body">
+    <h1 id="openrouteropenai-model-cost-report-for-54-focused-full-podcast-generation">OpenRouter/OpenAI Model Cost Report for 5.4-Focused Full Podcast Generation</h1>
+<p>Generated for the Git Going with GitHub LLM podcast proposal.</p>
+<h2 id="pricing-used">Pricing used</h2>
+<p>OpenAI model pricing snapshot (commonly exposed through OpenRouter routes):</p>
+<table>
+<thead>
+<tr>
+<th scope="col">Model</th>
+<th style="text-align:right" scope="col">Input / 1M tokens</th>
+<th style="text-align:right" scope="col">Cached input / 1M tokens</th>
+<th style="text-align:right" scope="col">Output / 1M tokens</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>GPT-5.4</td>
+<td style="text-align:right">$2.50</td>
+<td style="text-align:right">$0.25</td>
+<td style="text-align:right">$15.00</td>
+</tr>
+<tr>
+<td>GPT-5.4 mini</td>
+<td style="text-align:right">$0.75</td>
+<td style="text-align:right">$0.075</td>
+<td style="text-align:right">$4.50</td>
+</tr>
+</tbody></table>
+<p>Batch API can save 50% on inputs and outputs when the workflow can run asynchronously.</p>
+<h2 id="corpus-assumptions">Corpus assumptions</h2>
+<p>The estimate assumes all chapters, appendices, and challenges are generated from source Markdown.</p>
+<p>Planning assumptions:</p>
+<ul>
+<li>Approximately 79 source files / generation targets.</li>
+<li>One generation call per target for the first pass.</li>
+<li>Source Markdown plus prompt/instructions per call.</li>
+<li>Rich Alex/Jamie output, not short summaries.</li>
+<li>Local Kokoro/Piper audio generation, so no OpenAI TTS cost is included.</li>
+<li>Human review before promotion.</li>
+</ul>
+<h2 id="token-scenarios">Token scenarios</h2>
+<table>
+<thead>
+<tr>
+<th scope="col">Scenario</th>
+<th style="text-align:right" scope="col">Input tokens</th>
+<th style="text-align:right" scope="col">Output tokens</th>
+<th scope="col">Description</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Lean first pass</td>
+<td style="text-align:right">500,000</td>
+<td style="text-align:right">320,000</td>
+<td>Shorter scripts, limited expansion</td>
+</tr>
+<tr>
+<td>Likely rich first pass</td>
+<td style="text-align:right">900,000</td>
+<td style="text-align:right">550,000</td>
+<td>Strong conversational scripts</td>
+</tr>
+<tr>
+<td>Full NotebookLM-style first pass</td>
+<td style="text-align:right">1,500,000</td>
+<td style="text-align:right">900,000</td>
+<td>Deep teaching, richer examples</td>
+</tr>
+<tr>
+<td>Generate plus QA/rewrite</td>
+<td style="text-align:right">2,500,000</td>
+<td style="text-align:right">1,400,000</td>
+<td>Generation plus second-pass repair</td>
+</tr>
+</tbody></table>
+<h2 id="standard-api-estimated-cost">Standard API estimated cost</h2>
+<table>
+<thead>
+<tr>
+<th scope="col">Scenario</th>
+<th style="text-align:right" scope="col">GPT-5.4</th>
+<th style="text-align:right" scope="col">GPT-5.4 mini</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Lean first pass</td>
+<td style="text-align:right">$6.05</td>
+<td style="text-align:right">$1.82</td>
+</tr>
+<tr>
+<td>Likely rich first pass</td>
+<td style="text-align:right">$10.50</td>
+<td style="text-align:right">$3.15</td>
+</tr>
+<tr>
+<td>Full NotebookLM-style first pass</td>
+<td style="text-align:right">$17.25</td>
+<td style="text-align:right">$5.18</td>
+</tr>
+<tr>
+<td>Generate plus QA/rewrite</td>
+<td style="text-align:right">$27.25</td>
+<td style="text-align:right">$8.18</td>
+</tr>
+</tbody></table>
+<h2 id="batch-api-estimated-cost">Batch API estimated cost</h2>
+<table>
+<thead>
+<tr>
+<th scope="col">Scenario</th>
+<th style="text-align:right" scope="col">GPT-5.4 Batch</th>
+<th style="text-align:right" scope="col">GPT-5.4 mini Batch</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Lean first pass</td>
+<td style="text-align:right">$3.03</td>
+<td style="text-align:right">$0.91</td>
+</tr>
+<tr>
+<td>Likely rich first pass</td>
+<td style="text-align:right">$5.25</td>
+<td style="text-align:right">$1.58</td>
+</tr>
+<tr>
+<td>Full NotebookLM-style first pass</td>
+<td style="text-align:right">$8.63</td>
+<td style="text-align:right">$2.59</td>
+</tr>
+<tr>
+<td>Generate plus QA/rewrite</td>
+<td style="text-align:right">$13.63</td>
+<td style="text-align:right">$4.09</td>
+</tr>
+</tbody></table>
+<h2 id="recommended-budget">Recommended budget</h2>
+<p>Practical recommendation for this review lane:</p>
+<ul>
+<li><strong>Prototype:</strong> $2 to $10 using GPT-5.4 mini for a few episodes.</li>
+<li><strong>Full mini regression pass:</strong> about $3 to $9 depending on richness.</li>
+<li><strong>Mini + selective GPT-5.4 rescue:</strong> balances quality and cost.</li>
+<li><strong>All-in GPT-5.4 runs:</strong> use when consistency matters more than lowest cost.</li>
+<li><strong>Comfortable experimentation ceiling:</strong> $100.</li>
+</ul>
+<h2 id="recommended-cost-strategy">Recommended cost strategy</h2>
+<ol>
+<li>Run dry-run prompts first.</li>
+<li>Run mini-first regression across a small chapter subset.</li>
+<li>Capture actual token usage from candidate JSON output.</li>
+<li>Keep mini as default for broad catalog sweeps.</li>
+<li>Trigger GPT-5.4 only for mini failures or final polish.</li>
+<li>Use Batch API for full-catalog runs when turnaround time can be asynchronous.</li>
+</ol>
+<h2 id="what-is-excluded">What is excluded</h2>
+<p>This estimate excludes:</p>
+<ul>
+<li>OpenAI TTS</li>
+<li>Web search</li>
+<li>GitHub Actions minutes</li>
+<li>GitHub LFS/storage</li>
+<li>Human review time</li>
+<li>Hosted audio processing</li>
+</ul>
+
+  </main>
+  <footer role="contentinfo" class="site-footer">
+    <p><strong>GIT Going with GitHub</strong> - A workshop by <a href="https://community-access.org">Community Access</a></p>
+    <p><a href="https://github.com/community-access/git-going-with-github">View on GitHub</a> · <a href="https://community-access.org">community-access.org</a></p>
+  </footer>
+
+  </body>
+</html>

@@ -1,0 +1,359 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="GIT Going with GitHub - A two-day accessible open source workshop by Community Access">
+  <title>[13-how-git-works.md] How Git Works: The Mental Model - GIT Going with GitHub</title>
+  <link rel="stylesheet" href="./styles/github-markdown.css">
+  <link rel="stylesheet" href="./styles/highlight.css">
+  <link rel="stylesheet" href="./styles/custom.css">
+  <style>
+    .markdown-body {
+      box-sizing: border-box;
+      min-width: 200px;
+      max-width: 980px;
+      margin: 0 auto;
+      padding: 45px;
+    }
+    @media (max-width: 767px) {
+      .markdown-body {
+        padding: 15px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+  <header class="site-header" role="banner">
+    <div class="site-header-inner">
+      <nav aria-label="Breadcrumb" class="breadcrumb">
+        <a href="./index.html">Home</a> <span aria-hidden="true">›</span> <span aria-current="page">[13-how-git-works.md] How Git Works: The Mental Model</span>
+      </nav>
+      <div class="header-actions">
+        <a href="https://github.com/Community-Access/git-going-with-github/wiki" class="wiki-link" target="_blank" rel="noopener noreferrer">
+          <svg aria-hidden="true" focusable="false" width="16" height="16" viewBox="0 0 16 16" fill="currentColor">
+            <path d="M1.75 1h8.5c.966 0 1.75.784 1.75 1.75v5.5A1.75 1.75 0 0 1 10.25 10H7.06l-2.573 2.573A1.458 1.458 0 0 1 2 11.543V10h-.25A1.75 1.75 0 0 1 0 8.25v-5.5C0 1.784.784 1 1.75 1ZM1.5 2.75v5.5c0 .138.112.25.25.25h1a.75.75 0 0 1 .75.75v2.19l2.72-2.72a.749.749 0 0 1 .53-.22h3.5a.25.25 0 0 0 .25-.25v-5.5a.25.25 0 0 0-.25-.25h-8.5a.25.25 0 0 0-.25.25Zm13 2a.25.25 0 0 0-.25-.25h-.5a.75.75 0 0 1 0-1.5h.5c.966 0 1.75.784 1.75 1.75v5.5A1.75 1.75 0 0 1 14.25 12H14v1.543a1.457 1.457 0 0 1-2.487 1.03L9.22 12.28a.749.749 0 1 1 1.06-1.06l2.22 2.22v-2.19a.75.75 0 0 1 .75-.75h.25a.25.25 0 0 0 .25-.25v-5.5Z"/>
+          </svg>
+          Wiki
+        </a>
+        <form role="search" class="search-form" action="./search.html" method="get">
+        <label for="site-search" class="search-label">Search docs</label>
+        <input
+          type="search"
+          id="site-search"
+          class="search-input"
+          name="q"
+          placeholder="Search docs…"
+          autocomplete="off"
+          aria-label="Search documentation"
+        >
+        <button type="submit" class="search-button" aria-label="Submit search">
+          <svg aria-hidden="true" focusable="false" width="16" height="16" viewBox="0 0 16 16" fill="currentColor">
+            <path d="M10.68 11.74a6 6 0 0 1-7.922-8.982 6 6 0 0 1 8.982 7.922l3.04 3.04a.749.749 0 0 1-.326 1.275.749.749 0 0 1-.734-.215ZM11.5 7a4.499 4.499 0 1 0-8.997 0A4.499 4.499 0 0 0 11.5 7Z"/>
+          </svg>
+        </button>
+      </form>
+      </div>
+    </div>
+  </header>
+  <main id="main-content" class="markdown-body">
+    <p>You are writing a Git Going with GitHub podcast script.</p>
+<p>Audience:
+Blind and low-vision learners studying GitHub, Git, VS Code, open source, and accessible contribution workflows.</p>
+<p>Hosts:</p>
+<ul>
+<li>Alex: warm expert professor</li>
+<li>Jamie: curious professor who asks the questions learners may hesitate to ask</li>
+</ul>
+<p>Goal:
+Create a complete, conversational, two-host audio lesson. Teach every substantive concept from the Markdown source. Do not merely summarize. Do not omit administrative or accessibility content. Use varied phrasing and make it feel like a thoughtful NotebookLM-style teaching conversation.</p>
+<p>Scale rules:</p>
+<ul>
+<li>The source set may be large. Prioritize complete conceptual coverage over quoting every line.</li>
+<li>Use concise turns and avoid unnecessary verbosity.</li>
+</ul>
+<p>Required script markers:
+Use only these markers on their own lines:
+[ALEX]
+[JAMIE]
+[PAUSE]</p>
+<p>Narration constraints:</p>
+<ul>
+<li>Do not say chapter titles, section names, or &quot;chapter marker&quot; language out loud.</li>
+<li>Keep transitions natural so chapter separation can be handled in metadata, not spoken labels.</li>
+</ul>
+<p>Return JSON only:
+{
+  &quot;script&quot;: &quot;[ALEX]\n...\n&quot;,
+  &quot;chapters&quot;: [
+    {
+      &quot;title&quot;: &quot;Specific chapter title&quot;,
+      &quot;startSegmentIndex&quot;: 0,
+      &quot;sourceHeading&quot;: &quot;Heading represented&quot;
+    }
+  ],
+  &quot;coverageNotes&quot;: [
+    {
+      &quot;sourceHeading&quot;: &quot;Heading&quot;,
+      &quot;status&quot;: &quot;covered | partial | risk&quot;,
+      &quot;notes&quot;: &quot;Brief note&quot;
+    }
+  ]
+}</p>
+<p>Slug: ep46-how-git-works
+Sources:</p>
+<ul>
+<li>13-how-git-works.md</li>
+</ul>
+<p>Headings that must be represented:</p>
+<h1 id="13-how-git-worksmd-how-git-works-the-mental-model">[13-how-git-works.md] How Git Works: The Mental Model</h1>
+<h2 id="13-how-git-worksmd-table-of-contents">[13-how-git-works.md] Table of Contents</h2>
+<h2 id="13-how-git-worksmd-1-why-a-mental-model-matters">[13-how-git-works.md] 1. Why a Mental Model Matters</h2>
+<h2 id="13-how-git-worksmd-2-the-three-areas-working-directory-staging-area-repository">[13-how-git-works.md] 2. The Three Areas: Working Directory, Staging Area, Repository</h2>
+<h3 id="13-how-git-worksmd-working-directory">[13-how-git-works.md] Working directory</h3>
+<h3 id="13-how-git-worksmd-staging-area-also-called-the-index">[13-how-git-works.md] Staging area also called the index</h3>
+<h3 id="13-how-git-worksmd-repository-the-git-folder">[13-how-git-works.md] Repository the .git folder</h3>
+<h3 id="13-how-git-worksmd-how-the-three-areas-connect">[13-how-git-works.md] How the three areas connect</h3>
+<h3 id="13-how-git-worksmd-an-analogy-packing-a-box">[13-how-git-works.md] An analogy: packing a box</h3>
+<h3 id="13-how-git-worksmd-learning-cards-the-three-areas">[13-how-git-works.md] Learning Cards: The Three Areas</h3>
+<h2 id="13-how-git-worksmd-3-what-is-a-commit">[13-how-git-works.md] 3. What Is a Commit?</h2>
+<h3 id="13-how-git-worksmd-what-a-commit-contains">[13-how-git-works.md] What a commit contains</h3>
+<h3 id="13-how-git-worksmd-commit-ids-hashes">[13-how-git-works.md] Commit IDs hashes</h3>
+<h3 id="13-how-git-worksmd-commits-are-permanent-mostly">[13-how-git-works.md] Commits are permanent mostly</h3>
+<h3 id="13-how-git-worksmd-learning-cards-commits">[13-how-git-works.md] Learning Cards: Commits</h3>
+<h2 id="13-how-git-worksmd-4-what-is-a-branch">[13-how-git-works.md] 4. What Is a Branch?</h2>
+<h3 id="13-how-git-worksmd-the-default-branch-main">[13-how-git-works.md] The default branch: main</h3>
+<h3 id="13-how-git-worksmd-creating-a-branch">[13-how-git-works.md] Creating a branch</h3>
+<h3 id="13-how-git-worksmd-making-commits-on-a-branch">[13-how-git-works.md] Making commits on a branch</h3>
+<h3 id="13-how-git-worksmd-head-which-branch-are-you-on">[13-how-git-works.md] HEAD: which branch are you on?</h3>
+<h3 id="13-how-git-worksmd-learning-cards-branches">[13-how-git-works.md] Learning Cards: Branches</h3>
+<h2 id="13-how-git-worksmd-5-local-vs-remote">[13-how-git-works.md] 5. Local vs Remote</h2>
+<h3 id="13-how-git-worksmd-the-remote-repository">[13-how-git-works.md] The remote repository</h3>
+<h3 id="13-how-git-worksmd-the-local-repository">[13-how-git-works.md] The local repository</h3>
+<h3 id="13-how-git-worksmd-how-local-and-remote-stay-in-sync">[13-how-git-works.md] How local and remote stay in sync</h3>
+<h3 id="13-how-git-worksmd-the-two-copy-model">[13-how-git-works.md] The two-copy model</h3>
+<h3 id="13-how-git-worksmd-learning-cards-local-vs-remote">[13-how-git-works.md] Learning Cards: Local vs Remote</h3>
+<h2 id="13-how-git-worksmd-6-push-pull-and-fetch">[13-how-git-works.md] 6. Push, Pull, and Fetch</h2>
+<h3 id="13-how-git-worksmd-push-share-your-work">[13-how-git-works.md] Push: share your work</h3>
+<h3 id="13-how-git-worksmd-pull-get-other-people39s-work">[13-how-git-works.md] Pull: get other people&#39;s work</h3>
+<h3 id="13-how-git-worksmd-fetch-check-for-updates-without-merging">[13-how-git-works.md] Fetch: check for updates without merging</h3>
+<h2 id="13-how-git-worksmd-7-why-merge-conflicts-happen">[13-how-git-works.md] 7. Why Merge Conflicts Happen</h2>
+<h3 id="13-how-git-worksmd-when-conflicts-occur">[13-how-git-works.md] When conflicts occur</h3>
+<h3 id="13-how-git-worksmd-what-a-conflict-looks-like">[13-how-git-works.md] What a conflict looks like</h3>
+<h3 id="13-how-git-worksmd-how-to-resolve-a-conflict">[13-how-git-works.md] How to resolve a conflict</h3>
+<h3 id="13-how-git-worksmd-why-conflicts-are-normal">[13-how-git-works.md] Why conflicts are normal</h3>
+<h3 id="13-how-git-worksmd-learning-cards-merge-conflicts">[13-how-git-works.md] Learning Cards: Merge Conflicts</h3>
+<h2 id="13-how-git-worksmd-8-the-git-timeline">[13-how-git-works.md] 8. The Git Timeline</h2>
+<h3 id="13-how-git-worksmd-reading-the-timeline">[13-how-git-works.md] Reading the timeline</h3>
+<h3 id="13-how-git-worksmd-branching-creates-parallel-timelines">[13-how-git-works.md] Branching creates parallel timelines</h3>
+<h3 id="13-how-git-worksmd-merging-reconnects-timelines">[13-how-git-works.md] Merging reconnects timelines</h3>
+<h2 id="13-how-git-worksmd-9-putting-it-all-together">[13-how-git-works.md] 9. Putting It All Together</h2>
+<h3 id="13-how-git-worksmd-quick-mental-model-checklist">[13-how-git-works.md] Quick mental model checklist</h3>
+<h2 id="13-how-git-worksmd-10-if-you-get-stuck">[13-how-git-works.md] 10. If You Get Stuck</h2>
+<h2 id="13-how-git-worksmd-authoritative-sources">[13-how-git-works.md] Authoritative Sources</h2>
+<h3 id="13-how-git-worksmd-section-level-source-map">[13-how-git-works.md] Section-Level Source Map</h3>
+<p>Markdown source:</p>
+<h2 id="source-13-how-git-worksmd">Source: 13-how-git-works.md</h2>
+<pre><code class="hljs language-markdown"><span class="hljs-section"># How Git Works: The Mental Model</span>
+
+<span class="hljs-quote">&gt; <span class="hljs-strong">**Related appendices:**</span> [<span class="hljs-string">Appendix E: Advanced Git</span>](<span class="hljs-link">appendix-e-advanced-git.md</span>) | [<span class="hljs-string">Appendix D: Git Authentication</span>](<span class="hljs-link">appendix-d-git-authentication.md</span>) | [<span class="hljs-string">Appendix F: Git Security</span>](<span class="hljs-link">appendix-f-git-security.md</span>)</span>
+<span class="hljs-quote">&gt; <span class="hljs-strong">**Authoritative sources:**</span> [<span class="hljs-string">Git SCM: Git Basics</span>](<span class="hljs-link">https://git-scm.com/book/en/v2/Getting-Started-What-is-Git%3F</span>) | [<span class="hljs-string">Git SCM: Branching in a Nutshell</span>](<span class="hljs-link">https://git-scm.com/book/en/v2/Git-Branching-Branches-in-a-Nutshell</span>) | [<span class="hljs-string">GitHub Docs: About Git</span>](<span class="hljs-link">https://docs.github.com/en/get-started/using-git/about-git</span>) | [<span class="hljs-string">GitHub Accessibility Lab: CLI Guide</span>](<span class="hljs-link">https://accessibility.github.com/documentation/guide/cli/</span>)</span>
+
+<span class="hljs-quote">&gt; <span class="hljs-strong">**Day 2, Block 1 Material**</span></span>
+<span class="hljs-quote">&gt;
+&gt; Before you start running Git commands, you need a mental model of what Git actually does. This chapter builds that model from the ground up: what a commit is, what a branch is, how local and remote repositories relate, and why merge conflicts happen. Every operation in [<span class="hljs-string">Chapter 14</span>](<span class="hljs-link">14-git-in-practice.md</span>) will make more sense after reading this.</span>
+
+<span class="hljs-section">## Table of Contents</span>
+
+<span class="hljs-bullet">1.</span> [<span class="hljs-string">Why a Mental Model Matters</span>](<span class="hljs-link">#1-why-a-mental-model-matters</span>)
+<span class="hljs-bullet">2.</span> [<span class="hljs-string">The Three Areas: Working Directory, Staging Area, Repository</span>](<span class="hljs-link">#2-the-three-areas-working-directory-staging-area-repository</span>)
+<span class="hljs-bullet">3.</span> [<span class="hljs-string">What Is a Commit?</span>](<span class="hljs-link">#3-what-is-a-commit</span>)
+<span class="hljs-bullet">4.</span> [<span class="hljs-string">What Is a Branch?</span>](<span class="hljs-link">#4-what-is-a-branch</span>)
+<span class="hljs-bullet">5.</span> [<span class="hljs-string">Local vs Remote</span>](<span class="hljs-link">#5-local-vs-remote</span>)
+<span class="hljs-bullet">6.</span> [<span class="hljs-string">Push, Pull, and Fetch</span>](<span class="hljs-link">#6-push-pull-and-fetch</span>)
+<span class="hljs-bullet">7.</span> [<span class="hljs-string">Why Merge Conflicts Happen</span>](<span class="hljs-link">#7-why-merge-conflicts-happen</span>)
+<span class="hljs-bullet">8.</span> [<span class="hljs-string">The Git Timeline</span>](<span class="hljs-link">#8-the-git-timeline</span>)
+<span class="hljs-bullet">9.</span> [<span class="hljs-string">Putting It All Together</span>](<span class="hljs-link">#9-putting-it-all-together</span>)
+<span class="hljs-bullet">10.</span> [<span class="hljs-string">If You Get Stuck</span>](<span class="hljs-link">#10-if-you-get-stuck</span>)
+
+---
+
+<span class="hljs-quote">&gt; <span class="hljs-strong">**Challenges 10-16**</span> all depend on the mental model built in this chapter. Understanding the three areas, branches, and push/pull makes every Day 2 Git command predictable.</span>
+
+<span class="hljs-quote">&gt; <span class="hljs-strong">**CLI learning principle:**</span> Build confidence in local Git mechanics first, then connect those mechanics to GitHub workflows with `gh`. This order keeps terminal work understandable and recoverable.</span>
+
+<span class="hljs-section">## 1. Why a Mental Model Matters</span>
+
+On Day 1, you edited files on GitHub.com using the web editor. GitHub handled Git for you behind the scenes -- creating commits, managing branches, and tracking changes. You did not need to think about how it worked because the web interface made it invisible.
+
+On Day 2, you will do the same operations locally: clone a repository to your computer, create branches, make commits, and push changes back to GitHub. The commands themselves are not hard. But without understanding what they do, you will hit a wall the first time something goes wrong -- and you will not know how to fix it.
+
+This chapter gives you that understanding. It is not a list of commands (that is [<span class="hljs-string">Chapter 14</span>](<span class="hljs-link">14-git-in-practice.md</span>)). It is the mental model that makes the commands make sense.
+
+<span class="hljs-quote">&gt; <span class="hljs-strong">**Authoritative source:**</span> The concepts in this chapter are grounded in the [<span class="hljs-string">Pro Git book</span>](<span class="hljs-link">https://git-scm.com/book/en/v2</span>) by Scott Chacon and Ben Straub, which is the official Git documentation&#x27;s recommended resource. It is free to read online.</span>
+
+---
+
+<span class="hljs-section">## 2. The Three Areas: Working Directory, Staging Area, Repository</span>
+
+Git organizes your work into three areas. Understanding these three areas is the single most important concept in this chapter.
+
+<span class="hljs-section">### Working directory</span>
+
+The working directory is the folder on your computer where the files live. When you open a project in VS Code, everything you see in the file explorer is the working directory. These are real files on your disk that you can edit, rename, and delete.
+
+When you change a file in the working directory, Git notices. But Git does not automatically record the change. You have to tell Git which changes you want to keep.
+
+<span class="hljs-section">### Staging area (also called the index)</span>
+
+The staging area is a holding zone. When you are happy with a change in the working directory, you add it to the staging area. This is like saying: &quot;I want this change to be part of my next save point.&quot;
+
+You can add some files to the staging area and leave others out. This lets you make a commit (save point) that includes only the changes that belong together.
+
+<span class="hljs-section">### Repository (the .git folder)</span>
+
+The repository is Git&#x27;s permanent record. When you commit, Git takes everything in the staging area and stores it as a snapshot -- a permanent record of what those files looked like at that moment. The repository is stored in a hidden <span class="hljs-code">`.git`</span> folder inside your project directory.
+
+<span class="hljs-section">### How the three areas connect</span>
+
+The flow is always the same:
+
+<span class="hljs-bullet">1.</span> <span class="hljs-strong">**Edit**</span> files in the working directory
+<span class="hljs-bullet">2.</span> <span class="hljs-strong">**Stage**</span> the changes you want to keep (add to the staging area)
+<span class="hljs-bullet">3.</span> <span class="hljs-strong">**Commit**</span> the staged changes (save to the repository)
+
+In Git commands, this looks like:
+
+<span class="hljs-code">```text
+edit a file        --&gt;   git add file.md       --&gt;   git commit -m &quot;description&quot;
+(working directory)      (staging area)              (repository)</span></code></pre>
+<blockquote>
+<p><strong>Screen reader note:</strong> Many visual Git tutorials use diagrams with arrows to show this flow. The text description above and the three-step sequence are the same information without requiring a visual representation.</p>
+</blockquote>
+<h3 id="an-analogy-packing-a-box">An analogy: packing a box</h3>
+<p>Think of it like packing a box to mail:</p>
+<ul>
+<li>The <strong>working directory</strong> is your desk with papers and items scattered on it</li>
+<li>The <strong>staging area</strong> is the open box on the floor -- you put items into it as you decide what to ship</li>
+<li>The <strong>commit</strong> is sealing the box, labeling it, and putting it on the shelf -- once sealed, its contents are recorded permanently</li>
+</ul>
+<p>You can put items in and take them out of the box (stage and unstage) as many times as you want before sealing it (committing).</p>
+<h3 id="learning-cards-the-three-areas">Learning Cards: The Three Areas</h3>
+<details>
+<summary>Screen reader users</summary>
+
+<ul>
+<li>Run <code>git status</code> in the terminal (`Ctrl+``) -- it announces which files are in each area (working directory, staging, committed) with clear labels</li>
+<li>In VS Code Source Control (<code>Ctrl+Shift+G</code>), files are grouped under &quot;Changes&quot; (working directory) and &quot;Staged Changes&quot; (staging area) -- navigate with arrow keys</li>
+<li>Press <code>Enter</code> on any file in the Source Control panel to hear the diff -- added and removed lines are announced with change-type prefixes</li>
+</ul>
+</details>
+
+<details>
+<summary>Low vision users</summary>
+
+<ul>
+<li>In Source Control (<code>Ctrl+Shift+G</code>), staged files appear under a separate &quot;Staged Changes&quot; heading with a green <code>+</code> icon; unstaged files are under &quot;Changes&quot; with an orange <code>M</code> icon</li>
+<li>Use <code>Ctrl+=</code> to increase editor font size if the Source Control file list is hard to read at default zoom</li>
+<li>The gutter indicator (colored bar on the left edge of the editor) shows green for added lines and blue for modified lines</li>
+</ul>
+</details>
+
+<details>
+<summary>Sighted users</summary>
+
+<ul>
+<li>The Source Control badge on the Activity Bar shows a number indicating how many files have changes -- click it to see the full list</li>
+<li>Look for letter badges next to filenames: <code>M</code> (modified), <code>U</code> (untracked), <code>A</code> (added to staging), <code>D</code> (deleted)</li>
+<li>The inline gutter colors in the editor margin (green = added, blue = modified, red = deleted) show changes at a glance without opening Source Control</li>
+</ul>
+</details>
+
+<hr>
+<h2 id="3-what-is-a-commit">3. What Is a Commit?</h2>
+<p>A commit is a snapshot of your project at a specific moment in time. It is not a diff (a list of changes). It records the complete state of every file in the staging area when the commit was made.</p>
+<h3 id="what-a-commit-contains">What a commit contains</h3>
+<p>Every commit has four parts:</p>
+<table>
+<thead>
+<tr>
+<th scope="col">Part</th>
+<th scope="col">What it is</th>
+<th scope="col">Example</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><strong>Snapshot</strong></td>
+<td>The complete state of all staged files</td>
+<td>All the files as they were when you committed</td>
+</tr>
+<tr>
+<td><strong>Message</strong></td>
+<td>A human-readable description of the change</td>
+<td>&quot;Fix broken link in setup guide&quot;</td>
+</tr>
+<tr>
+<td><strong>Author</strong></td>
+<td>Who made the commit (name and email)</td>
+<td>Jane Developer, <a href="mailto:jane@example.com">jane@example.com</a></td>
+</tr>
+<tr>
+<td><strong>Parent pointer</strong></td>
+<td>Which commit came before this one</td>
+<td>A reference to the previous commit&#39;s ID</td>
+</tr>
+</tbody></table>
+<h3 id="commit-ids-hashes">Commit IDs (hashes)</h3>
+<p>Every commit gets a unique identifier -- a 40-character string called a SHA hash. It looks like this:</p>
+<pre><code class="hljs language-text">a1b2c3d4e5f6789012345678901234567890abcd</code></pre>
+<p>In practice, you usually see only the first 7 characters: <code>a1b2c3d</code>. This short form is enough to uniquely identify a commit in most repositories.</p>
+<p>You do not need to memorize these. Git commands accept both the full hash and the short form.</p>
+<h3 id="commits-are-permanent-mostly">Commits are permanent (mostly)</h3>
+<p>Once a commit is made, it is part of the repository&#39;s history. You can make new commits that undo the changes, but the original commit still exists in the timeline. This is what makes Git safe: you can always go back.</p>
+<blockquote>
+<p><strong>The Day 1 connection:</strong> When you edited a file on GitHub.com and clicked &quot;Commit changes,&quot; GitHub created a commit for you. It did the stage-and-commit steps in a single action. On Day 2, you will do these steps separately, which gives you more control.</p>
+</blockquote>
+<h3 id="learning-cards-commits">Learning Cards: Commits</h3>
+<details>
+<summary>Screen reader users</summary>
+
+<ul>
+<li>After committing, run <code>git log --oneline -5</code> in the terminal to hear the last 5 commit hashes and messages read aloud</li>
+<li>In VS Code, press <code>Ctrl+Shift+G</code> then navigate to the commit message input box -- your screen reader announces &quot;Message&quot; -- type your description and press <code>Ctrl+Enter</code> to commit</li>
+<li>The 7-character short hash (e.g., <code>a1b2c3d</code>) is what Git commands accept -- you do not need the full 40 characters</li>
+</ul>
+</details>
+
+<details>
+<summary>Low vision users</summary>
+
+<ul>
+<li>The Source Control commit input box is at the top of the Source Control panel -- increase panel width by dragging the panel edge if the text is truncated</li>
+<li>After committing, the file count badge on the Source Control icon drops to zero, confirming the commit succeeded</li>
+<li>Use Timeline view (<code>Ctrl+Shift+P</code> then &quot;Focus on Timeline Vi</li>
+</ul>
+<!-- content omitted for length -->
+
+<p>with-pull-requests/proposing-changes-to-your-work-with-pull-requests/about-pull-requests)</p>
+<ul>
+<li><strong>2. The Three Areas: Working Directory, Staging Area, Repository:</strong> <a href="https://docs.github.com/en">GitHub Docs, home</a>, <a href="https://github.blog/changelog/">GitHub Changelog</a>, <a href="https://docs.github.com/en/get-started/using-git/about-git">About Git</a>, <a href="https://docs.github.com/en/get-started/using-github/github-flow">GitHub flow</a>, <a href="https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/about-pull-requests">About pull requests</a></li>
+<li><strong>3. What Is a Commit?:</strong> <a href="https://docs.github.com/en">GitHub Docs, home</a>, <a href="https://github.blog/changelog/">GitHub Changelog</a>, <a href="https://docs.github.com/en/get-started/using-git/about-git">About Git</a>, <a href="https://docs.github.com/en/get-started/using-github/github-flow">GitHub flow</a>, <a href="https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/about-pull-requests">About pull requests</a></li>
+<li><strong>4. What Is a Branch?:</strong> <a href="https://docs.github.com/en">GitHub Docs, home</a>, <a href="https://github.blog/changelog/">GitHub Changelog</a>, <a href="https://docs.github.com/en/get-started/using-git/about-git">About Git</a>, <a href="https://docs.github.com/en/get-started/using-github/github-flow">GitHub flow</a>, <a href="https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/about-pull-requests">About pull requests</a></li>
+<li><strong>5. Local vs Remote:</strong> <a href="https://docs.github.com/en">GitHub Docs, home</a>, <a href="https://github.blog/changelog/">GitHub Changelog</a>, <a href="https://docs.github.com/en/get-started/using-git/about-git">About Git</a>, <a href="https://docs.github.com/en/get-started/using-github/github-flow">GitHub flow</a>, <a href="https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/about-pull-requests">About pull requests</a></li>
+<li><strong>6. Push, Pull, and Fetch:</strong> <a href="https://docs.github.com/en">GitHub Docs, home</a>, <a href="https://github.blog/changelog/">GitHub Changelog</a>, <a href="https://docs.github.com/en/get-started/using-git/about-git">About Git</a>, <a href="https://docs.github.com/en/get-started/using-github/github-flow">GitHub flow</a>, <a href="https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/about-pull-requests">About pull requests</a></li>
+<li><strong>7. Why Merge Conflicts Happen:</strong> <a href="https://docs.github.com/en">GitHub Docs, home</a>, <a href="https://github.blog/changelog/">GitHub Changelog</a>, <a href="https://docs.github.com/en/get-started/using-git/about-git">About Git</a>, <a href="https://docs.github.com/en/get-started/using-github/github-flow">GitHub flow</a>, <a href="https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/about-pull-requests">About pull requests</a></li>
+<li><strong>8. The Git Timeline:</strong> <a href="https://docs.github.com/en">GitHub Docs, home</a>, <a href="https://github.blog/changelog/">GitHub Changelog</a>, <a href="https://docs.github.com/en/get-started/using-git/about-git">About Git</a>, <a href="https://docs.github.com/en/get-started/using-github/github-flow">GitHub flow</a>, <a href="https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/about-pull-requests">About pull requests</a></li>
+<li><strong>9. Putting It All Together:</strong> <a href="https://docs.github.com/en">GitHub Docs, home</a>, <a href="https://github.blog/changelog/">GitHub Changelog</a>, <a href="https://docs.github.com/en/get-started/using-git/about-git">About Git</a>, <a href="https://docs.github.com/en/get-started/using-github/github-flow">GitHub flow</a>, <a href="https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/about-pull-requests">About pull requests</a></li>
+<li><strong>10. If You Get Stuck:</strong> <a href="https://docs.github.com/en">GitHub Docs, home</a>, <a href="https://github.blog/changelog/">GitHub Changelog</a>, <a href="https://docs.github.com/en/get-started/using-git/about-git">About Git</a>, <a href="https://docs.github.com/en/get-started/using-github/github-flow">GitHub flow</a>, <a href="https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/about-pull-requests">About pull requests</a></li>
+</ul>
+<pre><code class="hljs"></code></pre>
+
+  </main>
+  <footer role="contentinfo" class="site-footer">
+    <p><strong>GIT Going with GitHub</strong> - A workshop by <a href="https://community-access.org">Community Access</a></p>
+    <p><a href="https://github.com/community-access/git-going-with-github">View on GitHub</a> · <a href="https://community-access.org">community-access.org</a></p>
+  </footer>
+
+  </body>
+</html>

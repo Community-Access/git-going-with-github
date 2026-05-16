@@ -1,0 +1,426 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="GIT Going with GitHub - A two-day accessible open source workshop by Community Access">
+  <title>[appendix-q-actions-workflows.md] Appendix Q: GitHub Actions and Workflows - GIT Going with GitHub</title>
+  <link rel="stylesheet" href="./styles/github-markdown.css">
+  <link rel="stylesheet" href="./styles/highlight.css">
+  <link rel="stylesheet" href="./styles/custom.css">
+  <style>
+    .markdown-body {
+      box-sizing: border-box;
+      min-width: 200px;
+      max-width: 980px;
+      margin: 0 auto;
+      padding: 45px;
+    }
+    @media (max-width: 767px) {
+      .markdown-body {
+        padding: 15px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+  <header class="site-header" role="banner">
+    <div class="site-header-inner">
+      <nav aria-label="Breadcrumb" class="breadcrumb">
+        <a href="./index.html">Home</a> <span aria-hidden="true">›</span> <span aria-current="page">[appendix-q-actions-workflows.md] Appendix Q: GitHub Actions and Workflows</span>
+      </nav>
+      <div class="header-actions">
+        <a href="https://github.com/Community-Access/git-going-with-github/wiki" class="wiki-link" target="_blank" rel="noopener noreferrer">
+          <svg aria-hidden="true" focusable="false" width="16" height="16" viewBox="0 0 16 16" fill="currentColor">
+            <path d="M1.75 1h8.5c.966 0 1.75.784 1.75 1.75v5.5A1.75 1.75 0 0 1 10.25 10H7.06l-2.573 2.573A1.458 1.458 0 0 1 2 11.543V10h-.25A1.75 1.75 0 0 1 0 8.25v-5.5C0 1.784.784 1 1.75 1ZM1.5 2.75v5.5c0 .138.112.25.25.25h1a.75.75 0 0 1 .75.75v2.19l2.72-2.72a.749.749 0 0 1 .53-.22h3.5a.25.25 0 0 0 .25-.25v-5.5a.25.25 0 0 0-.25-.25h-8.5a.25.25 0 0 0-.25.25Zm13 2a.25.25 0 0 0-.25-.25h-.5a.75.75 0 0 1 0-1.5h.5c.966 0 1.75.784 1.75 1.75v5.5A1.75 1.75 0 0 1 14.25 12H14v1.543a1.457 1.457 0 0 1-2.487 1.03L9.22 12.28a.749.749 0 1 1 1.06-1.06l2.22 2.22v-2.19a.75.75 0 0 1 .75-.75h.25a.25.25 0 0 0 .25-.25v-5.5Z"/>
+          </svg>
+          Wiki
+        </a>
+        <form role="search" class="search-form" action="./search.html" method="get">
+        <label for="site-search" class="search-label">Search docs</label>
+        <input
+          type="search"
+          id="site-search"
+          class="search-input"
+          name="q"
+          placeholder="Search docs…"
+          autocomplete="off"
+          aria-label="Search documentation"
+        >
+        <button type="submit" class="search-button" aria-label="Submit search">
+          <svg aria-hidden="true" focusable="false" width="16" height="16" viewBox="0 0 16 16" fill="currentColor">
+            <path d="M10.68 11.74a6 6 0 0 1-7.922-8.982 6 6 0 0 1 8.982 7.922l3.04 3.04a.749.749 0 0 1-.326 1.275.749.749 0 0 1-.734-.215ZM11.5 7a4.499 4.499 0 1 0-8.997 0A4.499 4.499 0 0 0 11.5 7Z"/>
+          </svg>
+        </button>
+      </form>
+      </div>
+    </div>
+  </header>
+  <main id="main-content" class="markdown-body">
+    <p>You are writing a Git Going with GitHub podcast script.</p>
+<p>Audience:
+Blind and low-vision learners studying GitHub, Git, VS Code, open source, and accessible contribution workflows.</p>
+<p>Hosts:</p>
+<ul>
+<li>Alex: warm expert professor</li>
+<li>Jamie: curious professor who asks the questions learners may hesitate to ask</li>
+</ul>
+<p>Goal:
+Create a complete, conversational, two-host audio lesson. Teach every substantive concept from the Markdown source. Do not merely summarize. Do not omit administrative or accessibility content. Use varied phrasing and make it feel like a thoughtful NotebookLM-style teaching conversation.</p>
+<p>Scale rules:</p>
+<ul>
+<li>The source set may be large. Prioritize complete conceptual coverage over quoting every line.</li>
+<li>Use concise turns and avoid unnecessary verbosity.</li>
+</ul>
+<p>Required script markers:
+Use only these markers on their own lines:
+[ALEX]
+[JAMIE]
+[PAUSE]</p>
+<p>Narration constraints:</p>
+<ul>
+<li>Do not say chapter titles, section names, or &quot;chapter marker&quot; language out loud.</li>
+<li>Keep transitions natural so chapter separation can be handled in metadata, not spoken labels.</li>
+</ul>
+<p>Return JSON only:
+{
+  &quot;script&quot;: &quot;[ALEX]\n...\n&quot;,
+  &quot;chapters&quot;: [
+    {
+      &quot;title&quot;: &quot;Specific chapter title&quot;,
+      &quot;startSegmentIndex&quot;: 0,
+      &quot;sourceHeading&quot;: &quot;Heading represented&quot;
+    }
+  ],
+  &quot;coverageNotes&quot;: [
+    {
+      &quot;sourceHeading&quot;: &quot;Heading&quot;,
+      &quot;status&quot;: &quot;covered | partial | risk&quot;,
+      &quot;notes&quot;: &quot;Brief note&quot;
+    }
+  ]
+}</p>
+<p>Slug: ep34-github-actions
+Sources:</p>
+<ul>
+<li>appendix-q-actions-workflows.md</li>
+</ul>
+<p>Headings that must be represented:</p>
+<h1 id="appendix-q-actions-workflowsmd-appendix-q-github-actions-and-workflows">[appendix-q-actions-workflows.md] Appendix Q: GitHub Actions and Workflows</h1>
+<h2 id="appendix-q-actions-workflowsmd-understanding-automation-in-open-source-repositories">[appendix-q-actions-workflows.md] Understanding Automation in Open Source Repositories</h2>
+<h2 id="appendix-q-actions-workflowsmd-table-of-contents">[appendix-q-actions-workflows.md] Table of Contents</h2>
+<h2 id="appendix-q-actions-workflowsmd-1-what-is-github-actions">[appendix-q-actions-workflows.md] 1. What Is GitHub Actions?</h2>
+<h3 id="appendix-q-actions-workflowsmd-learning-cards-what-is-github-actions">[appendix-q-actions-workflows.md] Learning Cards: What Is GitHub Actions</h3>
+<h2 id="appendix-q-actions-workflowsmd-2-key-vocabulary">[appendix-q-actions-workflows.md] 2. Key Vocabulary</h2>
+<h2 id="appendix-q-actions-workflowsmd-3-where-workflows-live-in-a-repository">[appendix-q-actions-workflows.md] 3. Where Workflows Live in a Repository</h2>
+<h3 id="appendix-q-actions-workflowsmd-description">[appendix-q-actions-workflows.md] Description</h3>
+<h2 id="appendix-q-actions-workflowsmd-4-the-anatomy-of-a-workflow-file">[appendix-q-actions-workflows.md] 4. The Anatomy of a Workflow File</h2>
+<h1 id="appendix-q-actions-workflowsmd-githubworkflowsciyml">[appendix-q-actions-workflows.md] .github/workflows/ci.yml</h1>
+<h2 id="appendix-q-actions-workflowsmd-5-what-triggers-a-workflow">[appendix-q-actions-workflows.md] 5. What Triggers a Workflow</h2>
+<h2 id="appendix-q-actions-workflowsmd-6-understanding-status-checks-on-pull-requests">[appendix-q-actions-workflows.md] 6. Understanding Status Checks on Pull Requests</h2>
+<h3 id="appendix-q-actions-workflowsmd-what-the-status-indicators-mean">[appendix-q-actions-workflows.md] What the status indicators mean</h3>
+<h3 id="appendix-q-actions-workflowsmd-navigating-status-checks-with-a-screen-reader">[appendix-q-actions-workflows.md] Navigating status checks with a screen reader</h3>
+<h4 id="appendix-q-actions-workflowsmd-nvda--jaws-browse-mode">[appendix-q-actions-workflows.md] NVDA / JAWS browse mode</h4>
+<h4 id="appendix-q-actions-workflowsmd-voiceover-macos-safari">[appendix-q-actions-workflows.md] VoiceOver macOS, Safari</h4>
+<h3 id="appendix-q-actions-workflowsmd-required-vs-non-required-checks">[appendix-q-actions-workflows.md] Required vs. non-required checks</h3>
+<h3 id="appendix-q-actions-workflowsmd-learning-cards-understanding-status-checks">[appendix-q-actions-workflows.md] Learning Cards: Understanding Status Checks</h3>
+<h2 id="appendix-q-actions-workflowsmd-7-reading-the-actions-tab-with-a-screen-reader">[appendix-q-actions-workflows.md] 7. Reading the Actions Tab with a Screen Reader</h2>
+<h3 id="appendix-q-actions-workflowsmd-getting-to-the-actions-tab">[appendix-q-actions-workflows.md] Getting to the Actions tab</h3>
+<h3 id="appendix-q-actions-workflowsmd-navigating-workflow-runs-nvdajaws-browse-mode">[appendix-q-actions-workflows.md] Navigating workflow runs NVDA/JAWS browse mode</h3>
+<h3 id="appendix-q-actions-workflowsmd-navigating-workflow-runs-voiceover-macos">[appendix-q-actions-workflows.md] Navigating workflow runs VoiceOver macOS</h3>
+<h3 id="appendix-q-actions-workflowsmd-reading-a-run39s-details">[appendix-q-actions-workflows.md] Reading a run&#39;s details</h3>
+<h2 id="appendix-q-actions-workflowsmd-8-common-workflows-you-will-encounter">[appendix-q-actions-workflows.md] 8. Common Workflows You Will Encounter</h2>
+<h3 id="appendix-q-actions-workflowsmd-continuous-integration-ci">[appendix-q-actions-workflows.md] Continuous Integration CI</h3>
+<h3 id="appendix-q-actions-workflowsmd-linting--code-style">[appendix-q-actions-workflows.md] Linting / Code Style</h3>
+<h3 id="appendix-q-actions-workflowsmd-spelling--documentation-checks">[appendix-q-actions-workflows.md] Spelling / Documentation Checks</h3>
+<h3 id="appendix-q-actions-workflowsmd-accessibility-scanning">[appendix-q-actions-workflows.md] Accessibility Scanning</h3>
+<h3 id="appendix-q-actions-workflowsmd-security-scanning">[appendix-q-actions-workflows.md] Security Scanning</h3>
+<h3 id="appendix-q-actions-workflowsmd-deployment--preview-builds">[appendix-q-actions-workflows.md] Deployment / Preview Builds</h3>
+<h2 id="appendix-q-actions-workflowsmd-9-what-to-do-when-a-check-fails">[appendix-q-actions-workflows.md] 9. What To Do When a Check Fails</h2>
+<h3 id="appendix-q-actions-workflowsmd-step-1-don39t-panic">[appendix-q-actions-workflows.md] Step 1: Don&#39;t panic</h3>
+<h3 id="appendix-q-actions-workflowsmd-step-2-navigate-to-the-failed-check">[appendix-q-actions-workflows.md] Step 2: Navigate to the failed check</h3>
+<h3 id="appendix-q-actions-workflowsmd-step-3-find-the-failing-step">[appendix-q-actions-workflows.md] Step 3: Find the failing step</h3>
+<h3 id="appendix-q-actions-workflowsmd-step-4-read-the-error-message">[appendix-q-actions-workflows.md] Step 4: Read the error message</h3>
+<h3 id="appendix-q-actions-workflowsmd-step-5-fix-the-issue-locally-or-in-the-web-editor">[appendix-q-actions-workflows.md] Step 5: Fix the issue locally or in the web editor</h3>
+<h3 id="appendix-q-actions-workflowsmd-step-6-commit-and-push-the-fix">[appendix-q-actions-workflows.md] Step 6: Commit and push the fix</h3>
+<h3 id="appendix-q-actions-workflowsmd-step-7-if-you39re-stuck">[appendix-q-actions-workflows.md] Step 7: If you&#39;re stuck</h3>
+<h3 id="appendix-q-actions-workflowsmd-learning-cards-what-to-do-when-a-check-fails">[appendix-q-actions-workflows.md] Learning Cards: What To Do When a Check Fails</h3>
+<h2 id="appendix-q-actions-workflowsmd-10-workflow-permissions-and-security">[appendix-q-actions-workflows.md] 10. Workflow Permissions and Security</h2>
+<h3 id="appendix-q-actions-workflowsmd-why-some-workflows-need-your-approval">[appendix-q-actions-workflows.md] Why some workflows need your approval</h3>
+<h3 id="appendix-q-actions-workflowsmd-what-you-should-never-do">[appendix-q-actions-workflows.md] What you should never do</h3>
+<h3 id="appendix-q-actions-workflowsmd-dependabot">[appendix-q-actions-workflows.md] Dependabot</h3>
+<h2 id="appendix-q-actions-workflowsmd-11-accessibility-focused-workflows">[appendix-q-actions-workflows.md] 11. Accessibility-Focused Workflows</h2>
+<h3 id="appendix-q-actions-workflowsmd-github39s-accessibility-scanner-action">[appendix-q-actions-workflows.md] GitHub&#39;s Accessibility Scanner Action</h3>
+<h3 id="appendix-q-actions-workflowsmd-common-tools-used-in-a11y-workflows">[appendix-q-actions-workflows.md] Common tools used in a11y workflows</h3>
+<h4 id="appendix-q-actions-workflowsmd-what-these-tools-catch-and-what-they-do-not">[appendix-q-actions-workflows.md] What these tools catch and what they do not</h4>
+<h3 id="appendix-q-actions-workflowsmd-preparing-the-environment-for-github-hosted-agents">[appendix-q-actions-workflows.md] Preparing the Environment for GitHub-Hosted Agents</h3>
+<h2 id="appendix-q-actions-workflowsmd-12-hands-on-activity">[appendix-q-actions-workflows.md] 12. Hands-On Activity</h2>
+<h3 id="appendix-q-actions-workflowsmd-activity-explore-a-workflow-in-this-repository">[appendix-q-actions-workflows.md] Activity: Explore a Workflow in This Repository</h3>
+<h4 id="appendix-q-actions-workflowsmd-steps">[appendix-q-actions-workflows.md] Steps</h4>
+<h4 id="appendix-q-actions-workflowsmd-discussion-questions">[appendix-q-actions-workflows.md] Discussion questions</h4>
+<h2 id="appendix-q-actions-workflowsmd-13-what-we-are-not-covering-and-where-to-learn-more">[appendix-q-actions-workflows.md] 13. What We Are NOT Covering And Where to Learn More</h2>
+<h2 id="appendix-q-actions-workflowsmd-summary">[appendix-q-actions-workflows.md] Summary</h2>
+<h2 id="appendix-q-actions-workflowsmd-authoritative-sources">[appendix-q-actions-workflows.md] Authoritative Sources</h2>
+<h3 id="appendix-q-actions-workflowsmd-section-level-source-map">[appendix-q-actions-workflows.md] Section-Level Source Map</h3>
+<p>Markdown source:</p>
+<h2 id="source-appendix-q-actions-workflowsmd">Source: appendix-q-actions-workflows.md</h2>
+<pre><code class="hljs language-markdown"><span class="hljs-section"># Appendix Q: GitHub Actions and Workflows</span>
+<span class="hljs-quote">&gt;
+&gt; <span class="hljs-strong">**Listen to Episode 34:**</span> [<span class="hljs-string">GitHub Actions and Workflows</span>](<span class="hljs-link">../admin/PODCASTS.md</span>) - a conversational audio overview of this chapter. Listen before reading to preview the concepts, or after to reinforce what you learned.</span>
+
+<span class="hljs-quote">&gt; <span class="hljs-strong">**Reference companion to:**</span> [<span class="hljs-string">Chapter 17: Issue Templates</span>](<span class="hljs-link">17-issue-templates.md</span>) | Also relevant: [<span class="hljs-string">Chapter 19</span>](<span class="hljs-link">19-accessibility-agents.md</span>)</span>
+<span class="hljs-quote">&gt;
+&gt; <span class="hljs-strong">**Authoritative source:**</span> [<span class="hljs-string">GitHub Docs: Understanding Actions</span>](<span class="hljs-link">https://docs.github.com/en/actions/learn-github-actions/understanding-github-actions</span>)</span>
+
+<span class="hljs-section">## Understanding Automation in Open Source Repositories</span>
+
+<span class="hljs-quote">&gt; <span class="hljs-strong">**Why this matters for you:**</span> Every time you open a pull request on a real open source project, automated processes will run. Understanding what they are, what they mean, and what to do when they fail is essential to being a confident contributor.</span>
+
+<span class="hljs-section">## Table of Contents</span>
+
+<span class="hljs-bullet">1.</span> [<span class="hljs-string">What Is GitHub Actions?</span>](<span class="hljs-link">#1-what-is-github-actions</span>)
+<span class="hljs-bullet">2.</span> [<span class="hljs-string">Key Vocabulary</span>](<span class="hljs-link">#2-key-vocabulary</span>)
+<span class="hljs-bullet">3.</span> [<span class="hljs-string">Where Workflows Live in a Repository</span>](<span class="hljs-link">#3-where-workflows-live-in-a-repository</span>)
+<span class="hljs-bullet">4.</span> [<span class="hljs-string">The Anatomy of a Workflow File</span>](<span class="hljs-link">#4-the-anatomy-of-a-workflow-file</span>)
+<span class="hljs-bullet">5.</span> [<span class="hljs-string">What Triggers a Workflow</span>](<span class="hljs-link">#5-what-triggers-a-workflow</span>)
+<span class="hljs-bullet">6.</span> [<span class="hljs-string">Understanding Status Checks on Pull Requests</span>](<span class="hljs-link">#6-understanding-status-checks-on-pull-requests</span>)
+<span class="hljs-bullet">7.</span> [<span class="hljs-string">Reading the Actions Tab with a Screen Reader</span>](<span class="hljs-link">#7-reading-the-actions-tab-with-a-screen-reader</span>)
+<span class="hljs-bullet">8.</span> [<span class="hljs-string">Common Workflows You Will Encounter</span>](<span class="hljs-link">#8-common-workflows-you-will-encounter</span>)
+<span class="hljs-bullet">9.</span> [<span class="hljs-string">What To Do When a Check Fails</span>](<span class="hljs-link">#9-what-to-do-when-a-check-fails</span>)
+<span class="hljs-bullet">10.</span> [<span class="hljs-string">Workflow Permissions and Security</span>](<span class="hljs-link">#10-workflow-permissions-and-security</span>)
+<span class="hljs-bullet">11.</span> [<span class="hljs-string">Accessibility-Focused Workflows</span>](<span class="hljs-link">#11-accessibility-focused-workflows</span>)
+<span class="hljs-bullet">12.</span> [<span class="hljs-string">Hands-On Activity</span>](<span class="hljs-link">#12-hands-on-activity</span>)
+<span class="hljs-bullet">13.</span> [<span class="hljs-string">What We Are NOT Covering (And Where to Learn More)</span>](<span class="hljs-link">#13-what-we-are-not-covering-and-where-to-learn-more</span>)
+
+<span class="hljs-section">## 1. What Is GitHub Actions?</span>
+
+<span class="hljs-strong">**GitHub Actions**</span> is GitHub&#x27;s built-in automation system. It lets repository maintainers define automated tasks that run in response to things that happen in the repository - like someone opening a pull request, pushing a commit, or filing an issue.
+
+Think of it as a robot assistant that every repository can optionally configure. That robot watches for specific events and then automatically runs jobs: testing code, checking spelling, scanning for accessibility issues, building documentation, deploying a website, and more.
+
+<span class="hljs-strong">**As a contributor, you do not need to write workflows.**</span> But you will see their results on nearly every pull request you open, and you need to understand what those results mean.
+
+<span class="hljs-section">### Learning Cards: What Is GitHub Actions</span>
+
+<span class="language-xml"><span class="hljs-tag">&lt;<span class="hljs-name">details</span>&gt;</span></span>
+<span class="language-xml"><span class="hljs-tag">&lt;<span class="hljs-name">summary</span>&gt;</span></span>Screen reader users<span class="language-xml"><span class="hljs-tag">&lt;/<span class="hljs-name">summary</span>&gt;</span></span>
+
+<span class="hljs-bullet">-</span> Workflow files live in <span class="hljs-code">`.github/workflows/`</span> — use T (Go to file) on any repo page to search for <span class="hljs-code">`.yml`</span> files in that directory
+<span class="hljs-bullet">-</span> The Actions tab is in the repository navigation landmark — press D (NVDA/JAWS) to jump between landmarks and find it
+<span class="hljs-bullet">-</span> You do not need to write YAML to contribute — your job is to read the status check results on your PR and fix any issues they flag
+
+<span class="language-xml"><span class="hljs-tag">&lt;/<span class="hljs-name">details</span>&gt;</span></span>
+
+<span class="language-xml"><span class="hljs-tag">&lt;<span class="hljs-name">details</span>&gt;</span></span>
+<span class="language-xml"><span class="hljs-tag">&lt;<span class="hljs-name">summary</span>&gt;</span></span>Low vision users<span class="language-xml"><span class="hljs-tag">&lt;/<span class="hljs-name">summary</span>&gt;</span></span>
+
+<span class="hljs-bullet">-</span> The Actions tab icon (a play-button triangle) sits in the repo&#x27;s top navigation bar — zoom in if the icon-only display is hard to read; the word &quot;Actions&quot; appears next to it
+<span class="hljs-bullet">-</span> Workflow YAML files use indentation-sensitive syntax — increase your editor font size and enable visible whitespace to distinguish nesting levels
+<span class="hljs-bullet">-</span> Status check results on your PR use small colored icons (green checkmark, red X, yellow spinner) — zoom to 150%+ to read the text labels beside them
+
+<span class="language-xml"><span class="hljs-tag">&lt;/<span class="hljs-name">details</span>&gt;</span></span>
+
+<span class="language-xml"><span class="hljs-tag">&lt;<span class="hljs-name">details</span>&gt;</span></span>
+<span class="language-xml"><span class="hljs-tag">&lt;<span class="hljs-name">summary</span>&gt;</span></span>Sighted users<span class="language-xml"><span class="hljs-tag">&lt;/<span class="hljs-name">summary</span>&gt;</span></span>
+
+<span class="hljs-bullet">-</span> Find the Actions tab in the repository&#x27;s top navigation bar between Projects and Security — a play-button icon marks it
+<span class="hljs-bullet">-</span> Workflow files are YAML files in <span class="hljs-code">`.github/workflows/`</span> — open any one in the Code tab to see the triggers (<span class="hljs-code">`on:`</span>) and job steps
+<span class="hljs-bullet">-</span> On your PR, scroll to the checks section near the merge box to see green checkmarks (passed), red X marks (failed), or yellow spinners (running)
+
+<span class="language-xml"><span class="hljs-tag">&lt;/<span class="hljs-name">details</span>&gt;</span></span>
+
+<span class="hljs-section">## 2. Key Vocabulary</span>
+
+| Term | What It Means |
+| ------  | ---------------  |
+| <span class="hljs-strong">**Workflow**</span> | A complete automated process defined in a YAML file. A repo can have many workflows. |
+| <span class="hljs-strong">**Job**</span> | A group of steps that run together, usually on the same machine. A workflow can have multiple jobs. |
+| <span class="hljs-strong">**Step**</span> | A single task within a job - running a command, calling an action, etc. |
+| <span class="hljs-strong">**Action**</span> | A reusable unit of automation. Like a plugin. Many are shared publicly on [<span class="hljs-string">GitHub Marketplace</span>](<span class="hljs-link">https://github.com/marketplace?type=actions</span>). |
+| <span class="hljs-strong">**Runner**</span> | The machine (virtual server) that executes a job. GitHub provides free runners. |
+| <span class="hljs-strong">**Trigger / Event**</span> | The thing that causes a workflow to start - a push, a PR, a schedule, etc. |
+| <span class="hljs-strong">**Status check**</span> | The pass/fail result of a workflow shown on a pull request. |
+| <span class="hljs-strong">**Artifact**</span> | A file produced by a workflow (a build output, a test report, etc.) that can be downloaded. |
+| <span class="hljs-strong">**Secret**</span> | An encrypted variable stored in a repo&#x27;s settings - used in workflows without exposing sensitive values. |
+| <span class="hljs-strong">**YAML**</span> | The file format used to write workflow files. Indentation matters. |
+| <span class="hljs-strong">**`on:`**</span> | The YAML key that defines what triggers a workflow. |
+| <span class="hljs-strong">**`runs-on:`**</span> | The YAML key that specifies the runner OS (<span class="hljs-code">`ubuntu-latest`</span>, <span class="hljs-code">`windows-latest`</span>, <span class="hljs-code">`macos-latest`</span>). |
+
+<span class="hljs-section">## 3. Where Workflows Live in a Repository</span>
+
+Workflow files live in a specific, mandatory location:
+
+<span class="hljs-section">### Description</span>
+
+Workflow files live at your-repository/.github/workflows/. Example files include: ci.yml (runs tests on every push or PR), lint.yml (checks code style), a11y-scan.yml (accessibility scanning), and deploy.yml (deploys the site when code merges to main).
+
+The <span class="hljs-code">`.github/`</span> folder is hidden by convention (starts with a dot). To find it:
+
+<span class="hljs-bullet">-</span> <span class="hljs-strong">**On GitHub.com:**</span> The file browser shows it - use <span class="hljs-code">`T`</span> (go to file) or navigate the file table with <span class="hljs-code">`Ctrl+Alt+Arrow`</span> keys
+<span class="hljs-bullet">-</span> <span class="hljs-strong">**In VS Code:**</span> It appears in the Explorer panel - enable &quot;Show Hidden Files&quot; if needed
+
+<span class="hljs-quote">&gt; <span class="hljs-strong">**Screen reader tip:**</span> The `.github` folder reads as &quot;dot github.&quot; The `workflows` folder is inside it. File names ending in `.yml` are YAML workflow files.</span>
+
+<span class="hljs-section">## 4. The Anatomy of a Workflow File</span>
+
+Here is a simple, real workflow file. You do not need to write this, but you should be able to read it:
+
+<span class="hljs-code">```yaml
+# .github/workflows/ci.yml
+
+name: CI                          # The display name shown in the Actions tab
+
+on:                               # What triggers this workflow
+  push:
+    branches: [main]              # Run when code is pushed to main
+  pull_request:                   # Run when a PR is opened or updated
+    branches: [main]
+
+jobs:
+  test:                           # The job name (shown in status checks)
+    runs-on: ubuntu-latest        # What operating system to use
+    steps:
+      - name: Check out code
+        uses: actions/checkout@v4 # A reusable action - downloads your repo code
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: &#x27;20&#x27;
+
+      - name: Install dependencies
+        run: npm install          # A shell command
+
+      - name: Run tests
+        run: npm test             # Another shell command</span></code></pre>
+<p><strong>Reading this:</strong> The workflow named &quot;CI&quot; runs when code is pushed to <code>main</code> or a PR targets <code>main</code>. It creates one job called <code>test</code> that runs on Linux. That job checks out the code, installs Node.js, installs dependencies, and runs the test suite.</p>
+<p>If <code>npm test</code> exits with an error, the job fails, and that failure shows up as a red on your pull request.</p>
+<h2 id="5-what-triggers-a-workflow">5. What Triggers a Workflow</h2>
+<p>The most common triggers you will encounter as a contributor:</p>
+<table>
+<thead>
+<tr>
+<th scope="col">Trigger</th>
+<th scope="col">What Causes It</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>push</code></td>
+<td>Any commit pushed to a branch</td>
+</tr>
+<tr>
+<td><code>pull_request</code></td>
+<td>A PR is opened, updated, synchronized, or reopened</td>
+</tr>
+<tr>
+<td><code>pull_request_review</code></td>
+<td>A review is submitted on a PR</td>
+</tr>
+<tr>
+<td><code>issue_comment</code></td>
+<td>A comment is posted on an issue or PR</td>
+</tr>
+<tr>
+<td><code>schedule</code></td>
+<td>A recurring timer (like a cron job) - e.g., every Monday at 9am</td>
+</tr>
+<tr>
+<td><code>workflow_dispatch</code></td>
+<td>A manual trigger - someone activates a button in the Actions tab</td>
+</tr>
+<tr>
+<td><code>release</code></td>
+<td>When a new release is published</td>
+</tr>
+<tr>
+<td><code>merge_group</code></td>
+<td>When a PR enters a merge queue</td>
+</tr>
+</tbody></table>
+<p><strong>The most important one for you:</strong> <code>pull_request</code> - this is what triggers checks on your PR.</p>
+<h2 id="6-understanding-status-checks-on-pull-requests">6. Understanding Status Checks on Pull Requests</h2>
+<p>When you open a pull request on a repo that uses GitHub Actions, you will see a section near the bottom of the <strong>Conversation tab</strong> called <strong>checks</strong> or <strong>status checks</strong>.</p>
+<h3 id="what-the-status-indicators-mean">What the status indicators mean</h3>
+<table>
+<thead>
+<tr>
+<th scope="col">Symbol</th>
+<th scope="col">Color</th>
+<th scope="col">Meaning</th>
+<th scope="col">What to do</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Spinning circle</td>
+<td>Yellow/Orange</td>
+<td>Checks are running - wait</td>
+<td>Wait for them to complete</td>
+</tr>
+<tr>
+<td>Checkmark</td>
+<td>Green</td>
+<td>All required checks passed</td>
+<td>Good - you may be able to merge</td>
+</tr>
+<tr>
+<td>X (cross)</td>
+<td>Red</td>
+<td>One or more checks failed</td>
+<td>Do not merge - read the failure</td>
+</tr>
+<tr>
+<td>Slashed circle</td>
+<td>Grey</td>
+<td>Check was skipped</td>
+<td>Usually fine - skipped by design</td>
+</tr>
+<tr>
+<td></td>
+<td>Yellow</td>
+<td>Non-blocking warning</td>
+<td>Review but may not block merge</td>
+</tr>
+</tbody></table>
+<h3 id="navigating-status-checks-with-a-screen-reader">Navigating status checks with a screen reader</h3>
+<h4 id="nvda--jaws-browse-mode">NVDA / JAWS (browse mode)</h4>
+<ol>
+<li>Open the pull request Conversation tab</li>
+<li>Navigate to the section heading for &quot;checks&quot; using <code>H</code> or <code>2</code></li>
+<li>Each check result is announced as a link or button with its name and status</li>
+<li>Press <code>Enter</code> on a failed check to expand its details</li>
+</ol>
+<h4 id="voiceover-macos-safari">VoiceOver (macOS, Safari)</h4>
+<ol>
+<li>Use <code>VO+U</code> to open the Rotor</li>
+<li>Select &quot;Headings&quot; and navigate to the checks section</li>
+<li>Use <code>VO+Arrow</code> to read through check results</li>
+<li>Activate a check link with <code>VO+Space</code></li>
+</ol>
+<h3 id="required-vs-non-required-checks">Required vs. non-required checks</h3>
+<ul>
+<li><strong>Required checks</strong> must pass before a PR can be merged. A maintainer</li>
+</ul>
+<!-- content omitted for length -->
+
+<p>GitHub Actions](<a href="https://docs.github.com/en/actions/security-for-github-actions/security-guides/security-hardening-for-github-actions">https://docs.github.com/en/actions/security-for-github-actions/security-guides/security-hardening-for-github-actions</a>), <a href="https://github.blog/changelog/label/actions/">GitHub Actions changelog</a></p>
+<ul>
+<li><strong>7. Reading the Actions Tab with a Screen Reader:</strong> <a href="https://docs.github.com/en">GitHub Docs, home</a>, <a href="https://github.blog/changelog/">GitHub Changelog</a>, <a href="https://docs.github.com/en/actions/reference/workflows-and-actions/workflow-syntax">Workflow syntax for GitHub Actions</a>, <a href="https://docs.github.com/en/actions/security-for-github-actions/security-guides/security-hardening-for-github-actions">Secure use reference for GitHub Actions</a>, <a href="https://github.blog/changelog/label/actions/">GitHub Actions changelog</a></li>
+<li><strong>8. Common Workflows You Will Encounter:</strong> <a href="https://docs.github.com/en">GitHub Docs, home</a>, <a href="https://github.blog/changelog/">GitHub Changelog</a>, <a href="https://docs.github.com/en/actions/reference/workflows-and-actions/workflow-syntax">Workflow syntax for GitHub Actions</a>, <a href="https://docs.github.com/en/actions/security-for-github-actions/security-guides/security-hardening-for-github-actions">Secure use reference for GitHub Actions</a>, <a href="https://github.blog/changelog/label/actions/">GitHub Actions changelog</a></li>
+<li><strong>9. What To Do When a Check Fails:</strong> <a href="https://docs.github.com/en">GitHub Docs, home</a>, <a href="https://github.blog/changelog/">GitHub Changelog</a>, <a href="https://docs.github.com/en/actions/reference/workflows-and-actions/workflow-syntax">Workflow syntax for GitHub Actions</a>, <a href="https://docs.github.com/en/actions/security-for-github-actions/security-guides/security-hardening-for-github-actions">Secure use reference for GitHub Actions</a>, <a href="https://github.blog/changelog/label/actions/">GitHub Actions changelog</a></li>
+<li><strong>10. Workflow Permissions and Security:</strong> <a href="https://docs.github.com/en">GitHub Docs, home</a>, <a href="https://github.blog/changelog/">GitHub Changelog</a>, <a href="https://docs.github.com/en/actions/reference/workflows-and-actions/workflow-syntax">Workflow syntax for GitHub Actions</a>, <a href="https://docs.github.com/en/actions/security-for-github-actions/security-guides/security-hardening-for-github-actions">Secure use reference for GitHub Actions</a>, <a href="https://github.blog/changelog/label/actions/">GitHub Actions changelog</a></li>
+<li><strong>11. Accessibility-Focused Workflows:</strong> <a href="https://docs.github.com/en">GitHub Docs, home</a>, <a href="https://github.blog/changelog/">GitHub Changelog</a>, <a href="https://docs.github.com/en/actions/reference/workflows-and-actions/workflow-syntax">Workflow syntax for GitHub Actions</a>, <a href="https://docs.github.com/en/actions/security-for-github-actions/security-guides/security-hardening-for-github-actions">Secure use reference for GitHub Actions</a>, <a href="https://github.blog/changelog/label/actions/">GitHub Actions changelog</a></li>
+<li><strong>12. Hands-On Activity:</strong> <a href="https://docs.github.com/en">GitHub Docs, home</a>, <a href="https://github.blog/changelog/">GitHub Changelog</a>, <a href="https://docs.github.com/en/actions/reference/workflows-and-actions/workflow-syntax">Workflow syntax for GitHub Actions</a>, <a href="https://docs.github.com/en/actions/security-for-github-actions/security-guides/security-hardening-for-github-actions">Secure use reference for GitHub Actions</a>, <a href="https://github.blog/changelog/label/actions/">GitHub Actions changelog</a></li>
+<li><strong>13. What We Are NOT Covering (And Where to Learn More):</strong> <a href="https://docs.github.com/en">GitHub Docs, home</a>, <a href="https://github.blog/changelog/">GitHub Changelog</a>, <a href="https://docs.github.com/en/actions/reference/workflows-and-actions/workflow-syntax">Workflow syntax for GitHub Actions</a>, <a href="https://docs.github.com/en/actions/security-for-github-actions/security-guides/security-hardening-for-github-actions">Secure use reference for GitHub Actions</a>, <a href="https://github.blog/changelog/label/actions/">GitHub Actions changelog</a></li>
+<li><strong>Summary:</strong> <a href="https://docs.github.com/en">GitHub Docs, home</a>, <a href="https://github.blog/changelog/">GitHub Changelog</a>, <a href="https://docs.github.com/en/actions/reference/workflows-and-actions/workflow-syntax">Workflow syntax for GitHub Actions</a>, <a href="https://docs.github.com/en/actions/security-for-github-actions/security-guides/security-hardening-for-github-actions">Secure use reference for GitHub Actions</a>, <a href="https://github.blog/changelog/label/actions/">GitHub Actions changelog</a></li>
+</ul>
+<pre><code class="hljs"></code></pre>
+
+  </main>
+  <footer role="contentinfo" class="site-footer">
+    <p><strong>GIT Going with GitHub</strong> - A workshop by <a href="https://community-access.org">Community Access</a></p>
+    <p><a href="https://github.com/community-access/git-going-with-github">View on GitHub</a> · <a href="https://community-access.org">community-access.org</a></p>
+  </footer>
+
+  </body>
+</html>

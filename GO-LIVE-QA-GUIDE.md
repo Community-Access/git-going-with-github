@@ -6,6 +6,18 @@ For end-to-end execution details, use [admin/LEARNING-ROOM-E2E-QA-RUNBOOK.md](ad
 
 The goal is simple: a facilitator should be able to create a classroom, seed test repositories, complete every challenge path, validate every generated artifact, and know exactly what remains before students arrive.
 
+## Important Note: Email and Notification Handling
+
+**This curriculum does NOT depend on email notifications.**
+
+- Account **verification emails** (GitHub signup, email confirmation) are required by GitHub and are outside our control
+- **Notification emails** (activity updates, mentions, assignments) are completely optional
+- All challenges complete successfully using only GitHub's **web notification inbox** at `github.com/notifications`
+- Students can disable email notifications in their GitHub settings after account setup—this will NOT break the workshop
+- Chapter 10 (Notifications) focuses on managing the web notification inbox, not email delivery
+
+If a student's email delivery is problematic, delayed, or filtered by their ISP, they can still complete all challenges and exercises without any impact. Instructors should inform students that they can check `github.com/notifications` anytime instead of waiting for emails.
+
 ## Release Decision
 
 Do not mark a cohort ready until all required items in this section are complete.

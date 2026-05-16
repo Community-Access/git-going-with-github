@@ -1,0 +1,482 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="GIT Going with GitHub - A two-day accessible open source workshop by Community Access">
+  <title>[12-vscode-accessibility.md] VS Code: Accessibility Deep Dive - GIT Going with GitHub</title>
+  <link rel="stylesheet" href="./styles/github-markdown.css">
+  <link rel="stylesheet" href="./styles/highlight.css">
+  <link rel="stylesheet" href="./styles/custom.css">
+  <style>
+    .markdown-body {
+      box-sizing: border-box;
+      min-width: 200px;
+      max-width: 980px;
+      margin: 0 auto;
+      padding: 45px;
+    }
+    @media (max-width: 767px) {
+      .markdown-body {
+        padding: 15px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+  <header class="site-header" role="banner">
+    <div class="site-header-inner">
+      <nav aria-label="Breadcrumb" class="breadcrumb">
+        <a href="./index.html">Home</a> <span aria-hidden="true">›</span> <span aria-current="page">[12-vscode-accessibility.md] VS Code: Accessibility Deep Dive</span>
+      </nav>
+      <div class="header-actions">
+        <a href="https://github.com/Community-Access/git-going-with-github/wiki" class="wiki-link" target="_blank" rel="noopener noreferrer">
+          <svg aria-hidden="true" focusable="false" width="16" height="16" viewBox="0 0 16 16" fill="currentColor">
+            <path d="M1.75 1h8.5c.966 0 1.75.784 1.75 1.75v5.5A1.75 1.75 0 0 1 10.25 10H7.06l-2.573 2.573A1.458 1.458 0 0 1 2 11.543V10h-.25A1.75 1.75 0 0 1 0 8.25v-5.5C0 1.784.784 1 1.75 1ZM1.5 2.75v5.5c0 .138.112.25.25.25h1a.75.75 0 0 1 .75.75v2.19l2.72-2.72a.749.749 0 0 1 .53-.22h3.5a.25.25 0 0 0 .25-.25v-5.5a.25.25 0 0 0-.25-.25h-8.5a.25.25 0 0 0-.25.25Zm13 2a.25.25 0 0 0-.25-.25h-.5a.75.75 0 0 1 0-1.5h.5c.966 0 1.75.784 1.75 1.75v5.5A1.75 1.75 0 0 1 14.25 12H14v1.543a1.457 1.457 0 0 1-2.487 1.03L9.22 12.28a.749.749 0 1 1 1.06-1.06l2.22 2.22v-2.19a.75.75 0 0 1 .75-.75h.25a.25.25 0 0 0 .25-.25v-5.5Z"/>
+          </svg>
+          Wiki
+        </a>
+        <form role="search" class="search-form" action="./search.html" method="get">
+        <label for="site-search" class="search-label">Search docs</label>
+        <input
+          type="search"
+          id="site-search"
+          class="search-input"
+          name="q"
+          placeholder="Search docs…"
+          autocomplete="off"
+          aria-label="Search documentation"
+        >
+        <button type="submit" class="search-button" aria-label="Submit search">
+          <svg aria-hidden="true" focusable="false" width="16" height="16" viewBox="0 0 16 16" fill="currentColor">
+            <path d="M10.68 11.74a6 6 0 0 1-7.922-8.982 6 6 0 0 1 8.982 7.922l3.04 3.04a.749.749 0 0 1-.326 1.275.749.749 0 0 1-.734-.215ZM11.5 7a4.499 4.499 0 1 0-8.997 0A4.499 4.499 0 0 0 11.5 7Z"/>
+          </svg>
+        </button>
+      </form>
+      </div>
+    </div>
+  </header>
+  <main id="main-content" class="markdown-body">
+    <p>You are writing a Git Going with GitHub podcast script.</p>
+<p>Audience:
+Blind and low-vision learners studying GitHub, Git, VS Code, open source, and accessible contribution workflows.</p>
+<p>Hosts:</p>
+<ul>
+<li>Alex: warm expert professor</li>
+<li>Jamie: curious professor who asks the questions learners may hesitate to ask</li>
+</ul>
+<p>Goal:
+Create a complete, conversational, two-host audio lesson. Teach every substantive concept from the Markdown source. Do not merely summarize. Do not omit administrative or accessibility content. Use varied phrasing and make it feel like a thoughtful NotebookLM-style teaching conversation.</p>
+<p>Scale rules:</p>
+<ul>
+<li>The source set may be large. Prioritize complete conceptual coverage over quoting every line.</li>
+<li>Use concise turns and avoid unnecessary verbosity.</li>
+</ul>
+<p>Required script markers:
+Use only these markers on their own lines:
+[ALEX]
+[JAMIE]
+[PAUSE]</p>
+<p>Narration constraints:</p>
+<ul>
+<li>Do not say chapter titles, section names, or &quot;chapter marker&quot; language out loud.</li>
+<li>Keep transitions natural so chapter separation can be handled in metadata, not spoken labels.</li>
+</ul>
+<p>Return JSON only:
+{
+  &quot;script&quot;: &quot;[ALEX]\n...\n&quot;,
+  &quot;chapters&quot;: [
+    {
+      &quot;title&quot;: &quot;Specific chapter title&quot;,
+      &quot;startSegmentIndex&quot;: 0,
+      &quot;sourceHeading&quot;: &quot;Heading represented&quot;
+    }
+  ],
+  &quot;coverageNotes&quot;: [
+    {
+      &quot;sourceHeading&quot;: &quot;Heading&quot;,
+      &quot;status&quot;: &quot;covered | partial | risk&quot;,
+      &quot;notes&quot;: &quot;Brief note&quot;
+    }
+  ]
+}</p>
+<p>Slug: ep45-vscode-accessibility-deep-dive
+Sources:</p>
+<ul>
+<li>12-vscode-accessibility.md</li>
+</ul>
+<p>Headings that must be represented:</p>
+<h1 id="12-vscode-accessibilitymd-vs-code-accessibility-deep-dive">[12-vscode-accessibility.md] VS Code: Accessibility Deep Dive</h1>
+<h2 id="12-vscode-accessibilitymd-accessibility-features-for-power-users">[12-vscode-accessibility.md] Accessibility Features for Power Users</h2>
+<h2 id="12-vscode-accessibilitymd-table-of-contents">[12-vscode-accessibility.md] Table of Contents</h2>
+<h2 id="12-vscode-accessibilitymd-12-essential-keyboard-navigation-and-findfilter">[12-vscode-accessibility.md] 12. Essential Keyboard Navigation and Find/Filter</h2>
+<h3 id="12-vscode-accessibilitymd-panels-and-areas">[12-vscode-accessibility.md] Panels and Areas</h3>
+<h3 id="12-vscode-accessibilitymd-within-the-editor">[12-vscode-accessibility.md] Within the Editor</h3>
+<h3 id="12-vscode-accessibilitymd-find-in-current-file-ctrlf">[12-vscode-accessibility.md] Find in Current File Ctrl+F</h3>
+<h4 id="12-vscode-accessibilitymd-screen-reader-interactions-inside-the-find-widget">[12-vscode-accessibility.md] Screen reader interactions inside the Find widget</h4>
+<h3 id="12-vscode-accessibilitymd-global-search-across-the-workspace-ctrlshiftf">[12-vscode-accessibility.md] Global Search Across the Workspace Ctrl+Shift+F</h3>
+<h4 id="12-vscode-accessibilitymd-glob-pattern-examples-for-this-workshop">[12-vscode-accessibility.md] Glob pattern examples for this workshop</h4>
+<h3 id="12-vscode-accessibilitymd-type-to-filter-in-tree-views">[12-vscode-accessibility.md] Type-to-Filter in Tree Views</h3>
+<h3 id="12-vscode-accessibilitymd-go-to-symbol-with-inline-filtering-ctrlshifto">[12-vscode-accessibility.md] Go to Symbol with Inline Filtering Ctrl+Shift+O</h3>
+<h3 id="12-vscode-accessibilitymd-explorer-file-tree-navigation">[12-vscode-accessibility.md] Explorer File Tree Navigation</h3>
+<h3 id="12-vscode-accessibilitymd-learning-cards-keyboard-navigation-and-find">[12-vscode-accessibility.md] Learning Cards: Keyboard Navigation and Find</h3>
+<h2 id="12-vscode-accessibilitymd-13-the-problems-panel">[12-vscode-accessibility.md] 13. The Problems Panel</h2>
+<h3 id="12-vscode-accessibilitymd-opening-the-problems-panel">[12-vscode-accessibility.md] Opening the Problems Panel</h3>
+<h3 id="12-vscode-accessibilitymd-navigating-problems">[12-vscode-accessibility.md] Navigating Problems</h3>
+<h3 id="12-vscode-accessibilitymd-understanding-problem-entries">[12-vscode-accessibility.md] Understanding Problem Entries</h3>
+<h3 id="12-vscode-accessibilitymd-learning-cards-problems-panel">[12-vscode-accessibility.md] Learning Cards: Problems Panel</h3>
+<h2 id="12-vscode-accessibilitymd-14-the-terminal">[12-vscode-accessibility.md] 14. The Terminal</h2>
+<h3 id="12-vscode-accessibilitymd-opening-and-managing-terminals">[12-vscode-accessibility.md] Opening and Managing Terminals</h3>
+<h3 id="12-vscode-accessibilitymd-terminal-shell-integration">[12-vscode-accessibility.md] Terminal Shell Integration</h3>
+<h3 id="12-vscode-accessibilitymd-terminal-accessibility">[12-vscode-accessibility.md] Terminal Accessibility</h3>
+<h3 id="12-vscode-accessibilitymd-learning-cards-terminal">[12-vscode-accessibility.md] Learning Cards: Terminal</h3>
+<h2 id="12-vscode-accessibilitymd-15-copilot-chat-window">[12-vscode-accessibility.md] 15. Copilot Chat Window</h2>
+<h3 id="12-vscode-accessibilitymd-opening-copilot-chat">[12-vscode-accessibility.md] Opening Copilot Chat</h3>
+<h3 id="12-vscode-accessibilitymd-chat-modes">[12-vscode-accessibility.md] Chat Modes</h3>
+<h3 id="12-vscode-accessibilitymd-using-chat-participants">[12-vscode-accessibility.md] Using Chat Participants</h3>
+<h3 id="12-vscode-accessibilitymd-learning-cards-copilot-chat">[12-vscode-accessibility.md] Learning Cards: Copilot Chat</h3>
+<h3 id="12-vscode-accessibilitymd-agent-mode-question-carousel-and-terminal-focus">[12-vscode-accessibility.md] Agent Mode: Question Carousel and Terminal Focus</h3>
+<h2 id="12-vscode-accessibilitymd-16-accessible-help-accessible-view-and-accessible-diff">[12-vscode-accessibility.md] 16. Accessible Help, Accessible View, and Accessible Diff</h2>
+<h3 id="12-vscode-accessibilitymd-161-accessible-help---context-aware-keyboard-guide">[12-vscode-accessibility.md] 16.1 Accessible Help - Context-Aware Keyboard Guide</h3>
+<h4 id="12-vscode-accessibilitymd-how-to-open-accessible-help">[12-vscode-accessibility.md] How to open Accessible Help</h4>
+<h4 id="12-vscode-accessibilitymd-example-output-when-pressing-alth-in-the-editor">[12-vscode-accessibility.md] Example output when pressing Alt+H in the editor</h4>
+<h3 id="12-vscode-accessibilitymd-162-accessible-view---reading-dynamic-and-streamed-content">[12-vscode-accessibility.md] 16.2 Accessible View - Reading Dynamic and Streamed Content</h3>
+<h4 id="12-vscode-accessibilitymd-how-to-open-accessible-view">[12-vscode-accessibility.md] How to open Accessible View</h4>
+<h4 id="12-vscode-accessibilitymd-what-accessible-view-provides">[12-vscode-accessibility.md] What Accessible View provides</h4>
+<h4 id="12-vscode-accessibilitymd-recommended-workflow-for-copilot-chat">[12-vscode-accessibility.md] Recommended workflow for Copilot Chat</h4>
+<h4 id="12-vscode-accessibilitymd-recommended-workflow-for-hover-documentation">[12-vscode-accessibility.md] Recommended workflow for hover documentation</h4>
+<h3 id="12-vscode-accessibilitymd-163-accessible-diff-viewer---reading-changes-without-visual-scanning">[12-vscode-accessibility.md] 16.3 Accessible Diff Viewer - Reading Changes Without Visual Scanning</h3>
+<h4 id="12-vscode-accessibilitymd-how-to-open-the-accessible-diff-viewer">[12-vscode-accessibility.md] How to open the Accessible Diff Viewer</h4>
+<h4 id="12-vscode-accessibilitymd-what-the-accessible-diff-viewer-announces">[12-vscode-accessibility.md] What the Accessible Diff Viewer announces</h4>
+<h4 id="12-vscode-accessibilitymd-practical-uses-during-this-workshop">[12-vscode-accessibility.md] Practical uses during this workshop</h4>
+<h4 id="12-vscode-accessibilitymd-audio-cues-for-diffs">[12-vscode-accessibility.md] Audio cues for diffs</h4>
+<h3 id="12-vscode-accessibilitymd-learning-cards-accessible-help-view-and-diff">[12-vscode-accessibility.md] Learning Cards: Accessible Help, View, and Diff</h3>
+<h2 id="12-vscode-accessibilitymd-17-accessibility-signals">[12-vscode-accessibility.md] 17. Accessibility Signals</h2>
+<h3 id="12-vscode-accessibilitymd-how-signals-work-the-dual-channel-architecture">[12-vscode-accessibility.md] How Signals Work: The Dual-Channel Architecture</h3>
+<h3 id="12-vscode-accessibilitymd-discovering-signals-the-two-essential-commands">[12-vscode-accessibility.md] Discovering Signals: The Two Essential Commands</h3>
+<h3 id="12-vscode-accessibilitymd-volume-control">[12-vscode-accessibility.md] Volume Control</h3>
+<h3 id="12-vscode-accessibilitymd-complete-signal-reference">[12-vscode-accessibility.md] Complete Signal Reference</h3>
+<h4 id="12-vscode-accessibilitymd-editor-signals">[12-vscode-accessibility.md] Editor Signals</h4>
+<h4 id="12-vscode-accessibilitymd-diff-signals">[12-vscode-accessibility.md] Diff Signals</h4>
+<h4 id="12-vscode-accessibilitymd-terminal-signals">[12-vscode-accessibility.md] Terminal Signals</h4>
+<h4 id="12-vscode-accessibilitymd-chat-and-copilot-signals">[12-vscode-accessibility.md] Chat and Copilot Signals</h4>
+<h4 id="12-vscode-accessibilitymd-debug-signals">[12-vscode-accessibility.md] Debug Signals</h4>
+<h4 id="12-vscode-accessibilitymd-editor-action-signals">[12-vscode-accessibility.md] Editor Action Signals</h4>
+<h4 id="12-vscode-accessibilitymd-voice-signals">[12-vscode-accessibility.md] Voice Signals</h4>
+<h4 id="12-vscode-accessibilitymd-code-action-signals">[12-vscode-accessibility.md] Code Action Signals</h4>
+<h3 id="12-vscode-accessibilitymd-debounce-settings-for-position-signals">[12-vscode-accessibility.md] Debounce Settings for Position Signals</h3>
+<h3 id="12-vscode-accessibilitymd-recommended-workshop-profile">[12-vscode-accessibility.md] Recommended Workshop Profile</h3>
+<h3 id="12-vscode-accessibilitymd-migrating-from-legacy-audio-cues">[12-vscode-accessibility.md] Migrating from Legacy Audio Cues</h3>
+<h3 id="12-vscode-accessibilitymd-learning-cards-accessibility-signals">[12-vscode-accessibility.md] Learning Cards: Accessibility Signals</h3>
+<h2 id="12-vscode-accessibilitymd-18-vs-code-speech---voice-input-and-output">[12-vscode-accessibility.md] 18. VS Code Speech - Voice Input and Output</h2>
+<h3 id="12-vscode-accessibilitymd-installing-vs-code-speech">[12-vscode-accessibility.md] Installing VS Code Speech</h3>
+<h3 id="12-vscode-accessibilitymd-editor-dictation---type-with-your-voice">[12-vscode-accessibility.md] Editor Dictation - Type with Your Voice</h3>
+<h3 id="12-vscode-accessibilitymd-voice-in-copilot-chat---talk-to-copilot">[12-vscode-accessibility.md] Voice in Copilot Chat - Talk to Copilot</h3>
+<h3 id="12-vscode-accessibilitymd-text-to-speech---listen-to-chat-responses">[12-vscode-accessibility.md] Text-to-Speech - Listen to Chat Responses</h3>
+<h4 id="12-vscode-accessibilitymd-automatic-read-aloud-after-voice-input">[12-vscode-accessibility.md] Automatic read-aloud after voice input</h4>
+<h4 id="12-vscode-accessibilitymd-manual-read-aloud-for-any-response">[12-vscode-accessibility.md] Manual read-aloud for any response</h4>
+<h3 id="12-vscode-accessibilitymd-quothey-codequot---hands-free-activation">[12-vscode-accessibility.md] &quot;Hey Code&quot; - Hands-Free Activation</h3>
+<h3 id="12-vscode-accessibilitymd-language-configuration">[12-vscode-accessibility.md] Language Configuration</h3>
+<h3 id="12-vscode-accessibilitymd-all-voice-settings-reference">[12-vscode-accessibility.md] All Voice Settings Reference</h3>
+<h3 id="12-vscode-accessibilitymd-all-voice-commands-reference">[12-vscode-accessibility.md] All Voice Commands Reference</h3>
+<h3 id="12-vscode-accessibilitymd-custom-keybindings-for-voice">[12-vscode-accessibility.md] Custom Keybindings for Voice</h3>
+<h3 id="12-vscode-accessibilitymd-supported-platforms">[12-vscode-accessibility.md] Supported Platforms</h3>
+<h2 id="12-vscode-accessibilitymd-19-markdown-authoring-in-vs-code">[12-vscode-accessibility.md] 19. Markdown Authoring in VS Code</h2>
+<h3 id="12-vscode-accessibilitymd-markdown-preview">[12-vscode-accessibility.md] Markdown Preview</h3>
+<h3 id="12-vscode-accessibilitymd-the-markdownlint-extension">[12-vscode-accessibility.md] The markdownlint Extension</h3>
+<h3 id="12-vscode-accessibilitymd-outline-view-for-headings">[12-vscode-accessibility.md] Outline View for Headings</h3>
+<h3 id="12-vscode-accessibilitymd-copilot-markdown-assistance">[12-vscode-accessibility.md] Copilot Markdown Assistance</h3>
+<h3 id="12-vscode-accessibilitymd-markdown-keyboard-shortcuts">[12-vscode-accessibility.md] Markdown Keyboard Shortcuts</h3>
+<h3 id="12-vscode-accessibilitymd-why-this-matters-for-the-workshop">[12-vscode-accessibility.md] Why This Matters for the Workshop</h3>
+<h2 id="12-vscode-accessibilitymd-if-you-get-stuck">[12-vscode-accessibility.md] If You Get Stuck</h2>
+<h2 id="12-vscode-accessibilitymd-authoritative-sources">[12-vscode-accessibility.md] Authoritative Sources</h2>
+<h3 id="12-vscode-accessibilitymd-section-level-source-map">[12-vscode-accessibility.md] Section-Level Source Map</h3>
+<p>Markdown source:</p>
+<h2 id="source-12-vscode-accessibilitymd">Source: 12-vscode-accessibility.md</h2>
+<pre><code class="hljs language-markdown"><span class="hljs-section"># VS Code: Accessibility Deep Dive</span>
+
+<span class="hljs-quote">&gt; <span class="hljs-strong">**Listen to Episode 11:**</span> [<span class="hljs-string">VS Code Setup and Accessibility</span>](<span class="hljs-link">../admin/PODCASTS.md</span>) - a conversational audio overview covering both [<span class="hljs-string">Chapter 11</span>](<span class="hljs-link">11-vscode-interface.md</span>) and this chapter.</span>
+
+<span class="hljs-quote">&gt; <span class="hljs-strong">**Related appendices:**</span> [<span class="hljs-string">Appendix G: VS Code Reference</span>](<span class="hljs-link">appendix-g-vscode-reference.md</span>) | [<span class="hljs-string">Appendix B: Screen Reader Cheat Sheet</span>](<span class="hljs-link">appendix-b-screen-reader-cheatsheet.md</span>)</span>
+<span class="hljs-quote">&gt; <span class="hljs-strong">**Authoritative sources:**</span> [<span class="hljs-string">VS Code Docs: Accessibility</span>](<span class="hljs-link">https://code.visualstudio.com/docs/editor/accessibility</span>) | [<span class="hljs-string">GitHub Accessibility: GitHub Copilot in VS Code</span>](<span class="hljs-link">https://accessibility.github.com/documentation/guide/github-copilot-vsc/</span>)</span>
+
+<span class="hljs-section">## Accessibility Features for Power Users</span>
+
+<span class="hljs-quote">&gt; <span class="hljs-strong">**Challenge 10: Go Local**</span> depends on the accessibility features covered in this chapter. Configure these settings before your first local commit.</span>
+
+<span class="hljs-quote">&gt; <span class="hljs-strong">**Day 2, Block 1 Material (continued)**</span></span>
+<span class="hljs-quote">&gt;
+&gt; This chapter covers the accessibility features that make VS Code productive for screen reader users, keyboard-only users, and low-vision users: essential keyboard navigation, the Problems panel, the Terminal, Copilot Chat, Accessible Help/View/Diff, Accessibility Signals, and VS Code Speech.</span>
+<span class="hljs-quote">&gt;
+&gt; For VS Code interface basics (setup, sign-in, Activity Bar, Settings, keyboard shortcuts), see [<span class="hljs-string">Chapter 11: VS Code Interface and Setup</span>](<span class="hljs-link">11-vscode-interface.md</span>).</span>
+
+<span class="hljs-section">## Table of Contents</span>
+
+<span class="hljs-bullet">12.</span> [<span class="hljs-string">Essential Keyboard Navigation and Find/Filter</span>](<span class="hljs-link">#12-essential-keyboard-navigation-and-findfilter</span>)
+<span class="hljs-bullet">13.</span> [<span class="hljs-string">The Problems Panel</span>](<span class="hljs-link">#13-the-problems-panel</span>)
+<span class="hljs-bullet">14.</span> [<span class="hljs-string">The Terminal</span>](<span class="hljs-link">#14-the-terminal</span>)
+<span class="hljs-bullet">15.</span> [<span class="hljs-string">Copilot Chat Window</span>](<span class="hljs-link">#15-copilot-chat-window</span>)
+<span class="hljs-bullet">16.</span> [<span class="hljs-string">Accessible Help, Accessible View, and Accessible Diff</span>](<span class="hljs-link">#16-accessible-help-accessible-view-and-accessible-diff</span>)
+<span class="hljs-bullet">17.</span> [<span class="hljs-string">Accessibility Signals</span>](<span class="hljs-link">#17-accessibility-signals</span>)
+<span class="hljs-bullet">18.</span> [<span class="hljs-string">VS Code Speech - Voice Input and Output</span>](<span class="hljs-link">#18-vs-code-speech---voice-input-and-output</span>)
+<span class="hljs-bullet">19.</span> [<span class="hljs-string">Markdown Authoring in VS Code</span>](<span class="hljs-link">#19-markdown-authoring-in-vs-code</span>)
+<span class="hljs-bullet">20.</span> [<span class="hljs-string">If You Get Stuck</span>](<span class="hljs-link">#if-you-get-stuck</span>)
+
+<span class="hljs-section">## 12. Essential Keyboard Navigation and Find/Filter</span>
+
+<span class="hljs-section">### Panels and Areas</span>
+
+<span class="hljs-quote">&gt; <span class="hljs-strong">**Mac users:**</span> Substitute `Cmd` for `Ctrl` and `Option` for `Alt` in all shortcuts below.</span>
+
+| Area | Shortcut (Windows) | What Gets Focus |
+| --- | --- | --- |
+| Explorer (file tree) | <span class="hljs-code">`Ctrl+Shift+E`</span> | Folder/file list |
+| Search | <span class="hljs-code">`Ctrl+Shift+F`</span> | Search input |
+| Source Control (Git) | <span class="hljs-code">`Ctrl+Shift+G`</span> | Changes list |
+| Extensions | <span class="hljs-code">`Ctrl+Shift+X`</span> | Extensions list |
+| Terminal | <span class="hljs-code">`` Ctrl+`</span> `` | Terminal input |
+| Copilot Chat | <span class="hljs-code">`Ctrl+Alt+I`</span> or <span class="hljs-strong">**Chat: Open Chat**</span> | Chat input |
+| Command Palette | <span class="hljs-code">`Ctrl+Shift+P`</span> | Command search input |
+| Editor | <span class="hljs-code">`Ctrl+1`</span> | Active editor file |
+| Problems panel | <span class="hljs-code">`Ctrl+Shift+M`</span> | List of all errors and warnings |
+
+<span class="hljs-section">### Within the Editor</span>
+
+| Action | Shortcut |
+| --- | --- |
+| Go to beginning of file | <span class="hljs-code">`Ctrl+Home`</span> |
+| Go to end of file | <span class="hljs-code">`Ctrl+End`</span> |
+| Go to line N | <span class="hljs-code">`Ctrl+G`</span> then type line number |
+| Go to line and column | <span class="hljs-code">`Ctrl+G`</span> then type <span class="hljs-code">`N:C`</span> (e.g., <span class="hljs-code">`10:5`</span>) |
+| Go to symbol (heading in Markdown) | <span class="hljs-code">`Ctrl+Shift+O`</span> |
+| Go to definition | <span class="hljs-code">`F12`</span> |
+| Find in file | <span class="hljs-code">`Ctrl+F`</span> |
+| Next find result | <span class="hljs-code">`F3`</span> |
+| Previous find result | <span class="hljs-code">`Shift+F3`</span> |
+| Next error or warning | <span class="hljs-code">`F8`</span> |
+| Previous error or warning | <span class="hljs-code">`Shift+F8`</span> |
+| Open file by name | <span class="hljs-code">`Ctrl+P`</span> then type filename |
+| Toggle word wrap | <span class="hljs-code">`Alt+Z`</span> |
+| Toggle Tab focus mode | <span class="hljs-code">`Ctrl+M`</span> (makes Tab move focus instead of indenting) |
+| Increase/decrease font size | <span class="hljs-code">`Ctrl+=`</span> / <span class="hljs-code">`Ctrl+-`</span> |
+| Breadcrumb navigation | <span class="hljs-code">`Ctrl+Shift+;`</span> then arrow keys to navigate path segments |
+
+<span class="hljs-section">### Find in Current File (`Ctrl+F`)</span>
+
+When the Find widget opens, three toggle buttons refine what matches:
+
+| Toggle | Shortcut | What It Does |
+| --- | --- | --- |
+| Match Case | <span class="hljs-code">`Alt+C`</span> | Limits results to exact uppercase/lowercase |
+| Match Whole Word | <span class="hljs-code">`Alt+W`</span> | Matches full words only, not substrings |
+| Use Regular Expression | <span class="hljs-code">`Alt+R`</span> | Enables regex patterns in the search box |
+
+<span class="hljs-section">#### Screen reader interactions inside the Find widget</span>
+
+<span class="hljs-bullet">-</span> Toggles are announced as checkboxes - press <span class="hljs-code">`Space`</span> to toggle each one
+<span class="hljs-bullet">-</span> Match count is announced as you type (example: <span class="hljs-code">`3 of 12 matches`</span>)
+<span class="hljs-bullet">-</span> <span class="hljs-code">`F3`</span> / <span class="hljs-code">`Shift+F3`</span> move through matches while the widget stays open
+<span class="hljs-bullet">-</span> <span class="hljs-code">`Escape`</span> closes the widget and returns focus to your last cursor position
+
+<span class="hljs-strong">**Replace (`Ctrl+H`):**</span> Opens the Find widget with a second input for the replacement text.
+
+<span class="hljs-bullet">-</span> <span class="hljs-code">`Ctrl+Shift+1`</span> - replace the current match
+<span class="hljs-bullet">-</span> <span class="hljs-code">`Ctrl+Alt+Enter`</span> - replace all matches at once
+
+<span class="hljs-section">### Global Search Across the Workspace (`Ctrl+Shift+F`)</span>
+
+The global Search panel has a rich filtering system - all keyboard-accessible:
+
+| Action | How |
+| --- | --- |
+| Open global search | <span class="hljs-code">`Ctrl+Shift+F`</span> |
+| Search input | Focus lands here automatically - type your query |
+| Toggle case / word / regex | <span class="hljs-code">`Alt+C`</span>, <span class="hljs-code">`Alt+W`</span>, <span class="hljs-code">`Alt+R`</span> (same as Find) |
+| Include files filter | <span class="hljs-code">`Tab`</span> to &quot;files to include&quot; field then type glob patterns |
+| Exclude files filter | <span class="hljs-code">`Tab`</span> to &quot;files to exclude&quot; field then type glob patterns |
+| Collapse all results | <span class="hljs-code">`Ctrl+Shift+J`</span> |
+| Open a result | Navigate the result tree with <span class="hljs-code">`Up/Down Arrow`</span> then <span class="hljs-code">`Enter`</span> to open |
+
+<span class="hljs-section">#### Glob pattern examples for this workshop</span>
+
+<span class="hljs-code">```text
+docs/*.md          - all Markdown files in the docs folder
+*.agent.md         - all agent definition files
+.github/**         - everything inside the .github folder
+!node_modules/**   - exclude node_modules folder</span></code></pre>
+<h3 id="type-to-filter-in-tree-views">Type-to-Filter in Tree Views</h3>
+<p>In the <strong>Explorer</strong> file tree and the <strong>Source Control</strong> changes list, type characters to narrow visible items:</p>
+<ol>
+<li>Focus the Explorer (<code>Ctrl+Shift+E</code>)</li>
+<li>Start typing a filename - a filter input appears at the bottom of the tree</li>
+<li>The tree instantly narrows to matching files</li>
+<li>Press <code>Escape</code> to clear the filter and restore full view</li>
+</ol>
+<h3 id="go-to-symbol-with-inline-filtering-ctrlshifto">Go to Symbol with Inline Filtering (<code>Ctrl+Shift+O</code>)</h3>
+<p>In any Markdown file, <code>Ctrl+Shift+O</code> opens a symbol picker populated by every heading. Type to narrow the list, then press <code>Enter</code> to jump.</p>
+<h3 id="explorer-file-tree-navigation">Explorer (File Tree) Navigation</h3>
+<table>
+<thead>
+<tr>
+<th scope="col">Action</th>
+<th scope="col">Key</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Navigate items</td>
+<td><code>Up/Down Arrow</code></td>
+</tr>
+<tr>
+<td>Expand folder</td>
+<td><code>Right Arrow</code></td>
+</tr>
+<tr>
+<td>Collapse folder</td>
+<td><code>Left Arrow</code></td>
+</tr>
+<tr>
+<td>Open file</td>
+<td><code>Enter</code></td>
+</tr>
+<tr>
+<td>Rename file</td>
+<td><code>F2</code></td>
+</tr>
+<tr>
+<td>Delete file</td>
+<td><code>Delete</code></td>
+</tr>
+<tr>
+<td>New file</td>
+<td><code>Ctrl+N</code> (then save with <code>Ctrl+S</code>)</td>
+</tr>
+</tbody></table>
+<h3 id="learning-cards-keyboard-navigation-and-find">Learning Cards: Keyboard Navigation and Find</h3>
+<details>
+<summary>Screen reader users</summary>
+
+<ul>
+<li>Press <code>Ctrl+M</code> to toggle Tab focus mode -- when on, <code>Tab</code> moves focus between UI elements instead of inserting a tab character</li>
+<li>Use <code>Ctrl+G</code> then type a line number to jump directly to any line; type <code>10:5</code> to land at line 10, column 5</li>
+<li>In the Find widget (<code>Ctrl+F</code>), match count is announced as you type (e.g., &quot;3 of 12 matches&quot;); press <code>F3</code> / <code>Shift+F3</code> to step through results</li>
+<li><strong>Keyboard Shortcuts editor (<code>Ctrl+K Ctrl+S</code>):</strong> After typing a search query, your screen reader announces &quot;Use Ctrl+Down Arrow to access the searched shortcut details&quot; -- press <code>Ctrl+Down</code> to jump from the search input directly to the matching results table. Disable this hint with <code>accessibility.verbosity.keyboardShortcuts</code>.</li>
+</ul>
+</details>
+
+<details>
+<summary>Low vision users</summary>
+
+<ul>
+<li>Press <code>Alt+Z</code> to toggle word wrap so long lines stay visible without horizontal scrolling at high zoom</li>
+<li>Increase font size with <code>Ctrl+=</code> (Mac: <code>Cmd+=</code>) independently of your OS magnification for sharper text rendering</li>
+<li>The Find widget highlights all matches in the scrollbar gutter with colored ticks -- look for the bright orange markers</li>
+</ul>
+</details>
+
+<details>
+<summary>Sighted users</summary>
+
+<ul>
+<li>The breadcrumb bar above the editor (<code>Ctrl+Shift+;</code>) shows your file path and symbol hierarchy -- click any segment to navigate</li>
+<li><code>Ctrl+P</code> opens the Quick Open file picker with fuzzy matching -- type a few letters of any filename to jump there instantly</li>
+<li>Use <code>Ctrl+Shift+O</code> in Markdown files to see all headings as a navigable symbol list</li>
+</ul>
+</details>
+
+<hr>
+<h2 id="13-the-problems-panel">13. The Problems Panel</h2>
+<p>The <strong>Problems panel</strong> (<code>Ctrl+Shift+M</code>) shows all errors, warnings, and informational messages from linters, compilers, and extensions for every open file in your workspace.</p>
+<h3 id="opening-the-problems-panel">Opening the Problems Panel</h3>
+<ul>
+<li><strong>Keyboard:</strong> <code>Ctrl+Shift+M</code></li>
+<li><strong>Status Bar:</strong> Click the errors/warnings count (bottom-left of window)</li>
+<li><strong>Menu Bar:</strong> View then Problems</li>
+<li><strong>From the editor:</strong> Press <code>F8</code> to jump to the next problem (cycles through errors in the current file)</li>
+</ul>
+<h3 id="navigating-problems">Navigating Problems</h3>
+<table>
+<thead>
+<tr>
+<th scope="col">Action</th>
+<th scope="col">Shortcut</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Open Problems panel</td>
+<td><code>Ctrl+Shift+M</code></td>
+</tr>
+<tr>
+<td>Next problem in editor</td>
+<td><code>F8</code></td>
+</tr>
+<tr>
+<td>Previous problem in editor</td>
+<td><code>Shift+F8</code></td>
+</tr>
+<tr>
+<td>Filter problems</td>
+<td>Type in the filter box at the top of the panel</td>
+</tr>
+<tr>
+<td>Jump to problem source</td>
+<td><code>Enter</code> on a problem row</td>
+</tr>
+</tbody></table>
+<h3 id="understanding-problem-entries">Understanding Problem Entries</h3>
+<p>Each entry shows:</p>
+<ul>
+<li><strong>Severity icon:</strong> Error (red circle with X), Warning (yellow triangle), Info (blue circle with i)</li>
+<li><strong>Message:</strong> Description of the problem</li>
+<li><strong>Source:</strong> Which tool reported it (e.g., &quot;markdownlint&quot;, &quot;eslint&quot;, &quot;Pylance&quot;)</li>
+<li><strong>File and line:</strong> Where the problem is located</li>
+</ul>
+<h3 id="learning-cards-problems-panel">Learning Cards: Problems Panel</h3>
+<details>
+<summary>Screen reader users</summary>
+
+<ul>
+<li>Press <code>Ctrl+Shift+M</code> to focus the Problems panel. Your screen reader announces the total count.</li>
+<li>Each problem is read as: severity, message, source, file name, and line number</li>
+<li>Press <code>Enter</code> on any problem to jump directly to that line in the editor</li>
+<li>Use <code>F8</code> / <code>Shift+F8</code> from inside the editor to cycle through problems without opening the panel</li>
+<li>The status bar errors/warnings count updates in real time and is announced when you Tab to it</li>
+</ul>
+</details>
+
+<details>
+<summary>Low vision users</summary>
+
+<ul>
+<li>Problems are color-coded: red for errors, yellow for warnings, blue for info</li>
+<li>The errors/warnings count in the Status Bar gives a quick overview</li>
+<li>Click any problem to jump to the exact file and line</li>
+<li>Filter the pan</li>
+</ul>
+<!-- content omitted for length -->
+
+<p>uting-to-a-project)</p>
+<h3 id="section-level-source-map">Section-Level Source Map</h3>
+<p>Use this map to verify facts for each major section in this file.</p>
+<ul>
+<li><strong>Accessibility Features for Power Users:</strong> <a href="https://docs.github.com/en">GitHub Docs, home</a>, <a href="https://github.blog/changelog/">GitHub Changelog</a>, <a href="https://www.w3.org/WAI/standards-guidelines/wcag/">W3C Web Content Accessibility Guidelines (WCAG) 2 overview</a>, <a href="https://www.w3.org/WAI/tutorials/">WAI tutorials for accessible design patterns</a>, <a href="https://www.w3.org/WAI/ARIA/apg/">WAI-ARIA Authoring Practices Guide</a></li>
+<li><strong>12. Essential Keyboard Navigation and Find/Filter:</strong> <a href="https://docs.github.com/en">GitHub Docs, home</a>, <a href="https://github.blog/changelog/">GitHub Changelog</a>, <a href="https://www.w3.org/WAI/standards-guidelines/wcag/">W3C Web Content Accessibility Guidelines (WCAG) 2 overview</a>, <a href="https://www.w3.org/WAI/tutorials/">WAI tutorials for accessible design patterns</a>, <a href="https://www.w3.org/WAI/ARIA/apg/">WAI-ARIA Authoring Practices Guide</a></li>
+<li><strong>13. The Problems Panel:</strong> <a href="https://docs.github.com/en">GitHub Docs, home</a>, <a href="https://github.blog/changelog/">GitHub Changelog</a>, <a href="https://www.w3.org/WAI/standards-guidelines/wcag/">W3C Web Content Accessibility Guidelines (WCAG) 2 overview</a>, <a href="https://www.w3.org/WAI/tutorials/">WAI tutorials for accessible design patterns</a>, <a href="https://www.w3.org/WAI/ARIA/apg/">WAI-ARIA Authoring Practices Guide</a></li>
+<li><strong>14. The Terminal:</strong> <a href="https://docs.github.com/en">GitHub Docs, home</a>, <a href="https://github.blog/changelog/">GitHub Changelog</a>, <a href="https://www.w3.org/WAI/standards-guidelines/wcag/">W3C Web Content Accessibility Guidelines (WCAG) 2 overview</a>, <a href="https://www.w3.org/WAI/tutorials/">WAI tutorials for accessible design patterns</a>, <a href="https://www.w3.org/WAI/ARIA/apg/">WAI-ARIA Authoring Practices Guide</a></li>
+<li><strong>15. Copilot Chat Window:</strong> <a href="https://docs.github.com/en">GitHub Docs, home</a>, <a href="https://github.blog/changelog/">GitHub Changelog</a>, <a href="https://www.w3.org/WAI/standards-guidelines/wcag/">W3C Web Content Accessibility Guidelines (WCAG) 2 overview</a>, <a href="https://www.w3.org/WAI/tutorials/">WAI tutorials for accessible design patterns</a>, <a href="https://www.w3.org/WAI/ARIA/apg/">WAI-ARIA Authoring Practices Guide</a></li>
+<li><strong>16. Accessible Help, Accessible View, and Accessible Diff:</strong> <a href="https://docs.github.com/en">GitHub Docs, home</a>, <a href="https://github.blog/changelog/">GitHub Changelog</a>, <a href="https://www.w3.org/WAI/standards-guidelines/wcag/">W3C Web Content Accessibility Guidelines (WCAG) 2 overview</a>, <a href="https://www.w3.org/WAI/tutorials/">WAI tutorials for accessible design patterns</a>, <a href="https://www.w3.org/WAI/ARIA/apg/">WAI-ARIA Authoring Practices Guide</a></li>
+<li><strong>17. Accessibility Signals:</strong> <a href="https://docs.github.com/en">GitHub Docs, home</a>, <a href="https://github.blog/changelog/">GitHub Changelog</a>, <a href="https://www.w3.org/WAI/standards-guidelines/wcag/">W3C Web Content Accessibility Guidelines (WCAG) 2 overview</a>, <a href="https://www.w3.org/WAI/tutorials/">WAI tutorials for accessible design patterns</a>, <a href="https://www.w3.org/WAI/ARIA/apg/">WAI-ARIA Authoring Practices Guide</a></li>
+<li><strong>18. VS Code Speech - Voice Input and Output:</strong> <a href="https://docs.github.com/en">GitHub Docs, home</a>, <a href="https://github.blog/changelog/">GitHub Changelog</a>, <a href="https://www.w3.org/WAI/standards-guidelines/wcag/">W3C Web Content Accessibility Guidelines (WCAG) 2 overview</a>, <a href="https://www.w3.org/WAI/tutorials/">WAI tutorials for accessible design patterns</a>, <a href="https://www.w3.org/WAI/ARIA/apg/">WAI-ARIA Authoring Practices Guide</a></li>
+<li><strong>19. Markdown Authoring in VS Code:</strong> <a href="https://docs.github.com/en">GitHub Docs, home</a>, <a href="https://github.blog/changelog/">GitHub Changelog</a>, <a href="https://www.w3.org/WAI/standards-guidelines/wcag/">W3C Web Content Accessibility Guidelines (WCAG) 2 overview</a>, <a href="https://www.w3.org/WAI/tutorials/">WAI tutorials for accessible design patterns</a>, <a href="https://www.w3.org/WAI/ARIA/apg/">WAI-ARIA Authoring Practices Guide</a></li>
+<li><strong>If You Get Stuck:</strong> <a href="https://docs.github.com/en">GitHub Docs, home</a>, <a href="https://github.blog/changelog/">GitHub Changelog</a>, <a href="https://www.w3.org/WAI/standards-guidelines/wcag/">W3C Web Content Accessibility Guidelines (WCAG) 2 overview</a>, <a href="https://www.w3.org/WAI/tutorials/">WAI tutorials for accessible design patterns</a>, <a href="https://www.w3.org/WAI/ARIA/apg/">WAI-ARIA Authoring Practices Guide</a></li>
+</ul>
+<pre><code class="hljs"></code></pre>
+
+  </main>
+  <footer role="contentinfo" class="site-footer">
+    <p><strong>GIT Going with GitHub</strong> - A workshop by <a href="https://community-access.org">Community Access</a></p>
+    <p><a href="https://github.com/community-access/git-going-with-github">View on GitHub</a> · <a href="https://community-access.org">community-access.org</a></p>
+  </footer>
+
+  </body>
+</html>

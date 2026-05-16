@@ -372,7 +372,7 @@ git remote -v</code></pre>
 <li>Navigate to the <code>themes/</code> folder and pick a <code>.json</code> file (star-trek, hitchhikers, or star-wars)</li>
 <li>Copy the <code>chat.agent.thinking.phrases</code> setting into your VS Code <code>settings.json</code></li>
 <li>Reload VS Code: <code>Ctrl+Shift+P</code> → &quot;Developer: Reload Window&quot;</li>
-<li>Open Copilot Chat (<code>Ctrl+Shift+I</code>) and ask a question—watch your custom phrases appear!</li>
+<li>Open Copilot Chat (<code>Ctrl+Alt+I</code>, or <strong>Chat: Open Chat</strong> from the Command Palette if your keymap differs) and ask a question - watch your custom phrases appear!</li>
 </ol>
 <p>See <code>CLONE-THIS-REPO.md</code> in that repo for full instructions.</p>
 <details>
@@ -401,7 +401,6 @@ gh repo <span class="hljs-built_in">clone</span> community-access/vscode-sci-fi-
 <span class="hljs-comment"># Open the cloned repo in VS Code</span>
 gh repo <span class="hljs-built_in">clone</span> community-access/vscode-sci-fi-themes &amp;&amp; code vscode-sci-fi-themes</code></pre>
 </details>
-
 
 <h2 id="2-the-source-control-panel---complete-walkthrough">2. The Source Control Panel - Complete Walkthrough</h2>
 <p>The Source Control panel (<code>Ctrl+Shift+G</code> - Mac: <code>Cmd+Shift+G</code>) is where all Git operations happen in VS Code. This section provides a complete screen reader walkthrough of every interactive element.</p>
@@ -578,7 +577,6 @@ git diff          <span class="hljs-comment"># unstaged changes</span>
 git diff --cached <span class="hljs-comment"># staged changes</span></code></pre>
 <p><strong>The letters match:</strong> <code>M</code> = modified, <code>A</code> = added, <code>D</code> = deleted, <code>R</code> = renamed, <code>??</code> = untracked.</p>
 </details>
-
 
 <h2 id="3-branch-management">3. Branch Management</h2>
 <p>Branches are how you organize work in Git. Every repository starts with a <code>main</code> or <code>master</code> branch. You create new branches for features, bug fixes, or experiments.</p>
@@ -815,7 +813,6 @@ gh issue develop 42 --checkout
 gh api repos/{owner}/{repo}/branches --jq <span class="hljs-string">&#x27;.[].name&#x27;</span></code></pre>
 </details>
 
-
 <h2 id="4-staging-changes---files-lines-and-chunks">4. Staging Changes - Files, Lines, and Chunks</h2>
 <p>Git has a two-step commit process:</p>
 <ol>
@@ -973,7 +970,6 @@ git status</code></pre>
 <li>The Source Control badge number on the Activity Bar decreases as you stage and commit changes</li>
 </ul>
 </details>
-
 
 <h2 id="5-committing-with-screen-readers">5. Committing with Screen Readers</h2>
 <h3 id="the-commit-workflow">The Commit Workflow</h3>
@@ -1420,7 +1416,6 @@ git commit -m <span class="hljs-string">&quot;chore: remove outdated documentati
 git status</code></pre>
 </details>
 
-
 <h2 id="8-timeline-view---file-history-and-blame">8. Timeline View - File History and Blame</h2>
 <p>The <strong>Timeline view</strong> shows the Git history of the currently open file: every commit that touched this file, who made it, and when.</p>
 <h3 id="opening-timeline-view">Opening Timeline View</h3>
@@ -1595,7 +1590,6 @@ gh <span class="hljs-built_in">pr</span> list --state all --<span class="hljs-bu
 <p><strong>Screen reader advantage:</strong> <code>git log --oneline</code> and <code>git blame</code> produce clean, columnar text output. Read line by line with arrow keys in the terminal.</p>
 </details>
 
-
 <h2 id="9-resolving-merge-conflicts-in-vs-code">9. Resolving Merge Conflicts in VS Code</h2>
 <p>Merge conflicts happen when two people edit the same lines of a file. Git can&#39;t decide which version to keep, so it asks you to choose.</p>
 <p><strong>Prerequisite:</strong> Read <a href="07-merge-conflicts.html">Merge Conflicts</a> for the underlying concepts. This section covers the VS Code-specific workflow.</p>
@@ -1702,7 +1696,6 @@ gh <span class="hljs-built_in">pr</span> list --state all --<span class="hljs-bu
 <li>The Source Control panel shows a merge badge when conflicts exist -- it clears after you commit the resolution</li>
 </ul>
 </details>
-
 
 <h2 id="10-stash-management">10. Stash Management</h2>
 <p><strong>Stash</strong> temporarily saves your uncommitted changes so you can switch branches or pull updates without committing half-finished work.</p>
@@ -1869,7 +1862,6 @@ git stash drop stash@{0}
 git stash clear</code></pre>
 </details>
 
-
 <h2 id="10b-emergency-recovery---git-reflog">10b. Emergency Recovery - git reflog</h2>
 <p><code>git reflog</code> is the safety net you reach for when something goes seriously wrong: an accidental hard reset, a lost branch, a rebase that destroyed commits you needed. It is the most underused recovery tool in Git.</p>
 <p><strong>What reflog records:</strong> Every time the <code>HEAD</code> pointer moves - from commits, resets, rebases, checkouts, merges - Git quietly records it in the reflog. These entries are kept for 90 days by default.</p>
@@ -1967,7 +1959,6 @@ git checkout -b feature/deleted-branch-name abc1234</code></pre>
 <li>After recovering with <code>git checkout -b</code>, verify in the Source Control panel that the branch appears with the expected files</li>
 </ul>
 </details>
-
 
 <h2 id="11-alternative-git-interfaces">11. Alternative Git Interfaces</h2>
 <p>VS Code&#39;s Source Control panel is one way to use Git. These alternatives exist for different workflows.</p>
@@ -2078,6 +2069,37 @@ git <span class="hljs-built_in">log</span>                        <span class="h
 </blockquote>
 <hr>
 <p><em>Next: <a href="15-code-review.html">Chapter 15: Code Review</a></em><br><em>Back: <a href="13-how-git-works.html">Chapter 13: How Git Works</a></em><br><em>Related appendices: <a href="appendix-e-advanced-git.html">Appendix E: Advanced Git</a> | <a href="appendix-d-git-authentication.html">Appendix D: Git Authentication</a></em></p>
+<h2 id="authoritative-sources">Authoritative Sources</h2>
+<p>Use these official references when you need the current source of truth for facts in this chapter.</p>
+<ul>
+<li><a href="https://docs.github.com/en">GitHub Docs, home</a></li>
+<li><a href="https://github.blog/changelog/">GitHub Changelog</a></li>
+<li><a href="https://docs.github.com/en/get-started/using-git/about-git">About Git</a></li>
+<li><a href="https://docs.github.com/en/get-started/using-github/github-flow">GitHub flow</a></li>
+<li><a href="https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/about-pull-requests">About pull requests</a></li>
+<li><a href="https://docs.github.com/en/issues/tracking-your-work-with-issues/about-issues">About issues</a></li>
+<li><a href="https://docs.github.com/en/get-started/exploring-projects-on-github/contributing-to-a-project">Contributing to a project</a></li>
+</ul>
+<h3 id="section-level-source-map">Section-Level Source Map</h3>
+<p>Use this map to verify facts for each major section in this file.</p>
+<ul>
+<li><strong>Managing Repositories, Branches, and Changes Accessibly:</strong> <a href="https://docs.github.com/en">GitHub Docs, home</a>, <a href="https://github.blog/changelog/">GitHub Changelog</a>, <a href="https://docs.github.com/en/get-started/using-git/about-git">About Git</a>, <a href="https://docs.github.com/en/get-started/using-github/github-flow">GitHub flow</a>, <a href="https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/about-pull-requests">About pull requests</a></li>
+<li><strong>Workshop Recommendation (Chapter 14 / Challenge 10):</strong> <a href="https://docs.github.com/en">GitHub Docs, home</a>, <a href="https://github.blog/changelog/">GitHub Changelog</a>, <a href="https://docs.github.com/en/get-started/using-git/about-git">About Git</a>, <a href="https://docs.github.com/en/get-started/using-github/github-flow">GitHub flow</a>, <a href="https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/about-pull-requests">About pull requests</a></li>
+<li><strong>1. Cloning a Repository in VS Code:</strong> <a href="https://docs.github.com/en">GitHub Docs, home</a>, <a href="https://github.blog/changelog/">GitHub Changelog</a>, <a href="https://docs.github.com/en/get-started/using-git/about-git">About Git</a>, <a href="https://docs.github.com/en/get-started/using-github/github-flow">GitHub flow</a>, <a href="https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/about-pull-requests">About pull requests</a></li>
+<li><strong>2. The Source Control Panel - Complete Walkthrough:</strong> <a href="https://docs.github.com/en">GitHub Docs, home</a>, <a href="https://github.blog/changelog/">GitHub Changelog</a>, <a href="https://docs.github.com/en/get-started/using-git/about-git">About Git</a>, <a href="https://docs.github.com/en/get-started/using-github/github-flow">GitHub flow</a>, <a href="https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/about-pull-requests">About pull requests</a></li>
+<li><strong>3. Branch Management:</strong> <a href="https://docs.github.com/en">GitHub Docs, home</a>, <a href="https://github.blog/changelog/">GitHub Changelog</a>, <a href="https://docs.github.com/en/get-started/using-git/about-git">About Git</a>, <a href="https://docs.github.com/en/get-started/using-github/github-flow">GitHub flow</a>, <a href="https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/about-pull-requests">About pull requests</a></li>
+<li><strong>4. Staging Changes - Files, Lines, and Chunks:</strong> <a href="https://docs.github.com/en">GitHub Docs, home</a>, <a href="https://github.blog/changelog/">GitHub Changelog</a>, <a href="https://docs.github.com/en/get-started/using-git/about-git">About Git</a>, <a href="https://docs.github.com/en/get-started/using-github/github-flow">GitHub flow</a>, <a href="https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/about-pull-requests">About pull requests</a></li>
+<li><strong>5. Committing with Screen Readers:</strong> <a href="https://docs.github.com/en">GitHub Docs, home</a>, <a href="https://github.blog/changelog/">GitHub Changelog</a>, <a href="https://docs.github.com/en/get-started/using-git/about-git">About Git</a>, <a href="https://docs.github.com/en/get-started/using-github/github-flow">GitHub flow</a>, <a href="https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/about-pull-requests">About pull requests</a></li>
+<li><strong>6. Push and Pull Operations:</strong> <a href="https://docs.github.com/en">GitHub Docs, home</a>, <a href="https://github.blog/changelog/">GitHub Changelog</a>, <a href="https://docs.github.com/en/get-started/using-git/about-git">About Git</a>, <a href="https://docs.github.com/en/get-started/using-github/github-flow">GitHub flow</a>, <a href="https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/about-pull-requests">About pull requests</a></li>
+<li><strong>What to do if push fails:</strong> <a href="https://docs.github.com/en">GitHub Docs, home</a>, <a href="https://github.blog/changelog/">GitHub Changelog</a>, <a href="https://docs.github.com/en/get-started/using-git/about-git">About Git</a>, <a href="https://docs.github.com/en/get-started/using-github/github-flow">GitHub flow</a>, <a href="https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/about-pull-requests">About pull requests</a></li>
+<li><strong>Syncing Your Fork with the Upstream Repository:</strong> <a href="https://docs.github.com/en">GitHub Docs, home</a>, <a href="https://github.blog/changelog/">GitHub Changelog</a>, <a href="https://docs.github.com/en/get-started/using-git/about-git">About Git</a>, <a href="https://docs.github.com/en/get-started/using-github/github-flow">GitHub flow</a>, <a href="https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/about-pull-requests">About pull requests</a></li>
+<li><strong>Via VS Code Command Palette:</strong> <a href="https://docs.github.com/en">GitHub Docs, home</a>, <a href="https://github.blog/changelog/">GitHub Changelog</a>, <a href="https://docs.github.com/en/get-started/using-git/about-git">About Git</a>, <a href="https://docs.github.com/en/get-started/using-github/github-flow">GitHub flow</a>, <a href="https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/about-pull-requests">About pull requests</a></li>
+<li><strong>7. Discarding Changes:</strong> <a href="https://docs.github.com/en">GitHub Docs, home</a>, <a href="https://github.blog/changelog/">GitHub Changelog</a>, <a href="https://docs.github.com/en/get-started/using-git/about-git">About Git</a>, <a href="https://docs.github.com/en/get-started/using-github/github-flow">GitHub flow</a>, <a href="https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/about-pull-requests">About pull requests</a></li>
+<li><strong>8. Timeline View - File History and Blame:</strong> <a href="https://docs.github.com/en">GitHub Docs, home</a>, <a href="https://github.blog/changelog/">GitHub Changelog</a>, <a href="https://docs.github.com/en/get-started/using-git/about-git">About Git</a>, <a href="https://docs.github.com/en/get-started/using-github/github-flow">GitHub flow</a>, <a href="https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/about-pull-requests">About pull requests</a></li>
+<li><strong>9. Resolving Merge Conflicts in VS Code:</strong> <a href="https://docs.github.com/en">GitHub Docs, home</a>, <a href="https://github.blog/changelog/">GitHub Changelog</a>, <a href="https://docs.github.com/en/get-started/using-git/about-git">About Git</a>, <a href="https://docs.github.com/en/get-started/using-github/github-flow">GitHub flow</a>, <a href="https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/about-pull-requests">About pull requests</a></li>
+<li><strong>Timeline View - File History:</strong> <a href="https://docs.github.com/en">GitHub Docs, home</a>, <a href="https://github.blog/changelog/">GitHub Changelog</a>, <a href="https://docs.github.com/en/get-started/using-git/about-git">About Git</a>, <a href="https://docs.github.com/en/get-started/using-github/github-flow">GitHub flow</a>, <a href="https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/about-pull-requests">About pull requests</a></li>
+<li><strong>Timeline View - Git History and Blame:</strong> <a href="https://docs.github.com/en">GitHub Docs, home</a>, <a href="https://github.blog/changelog/">GitHub Changelog</a>, <a href="https://docs.github.com/en/get-started/using-git/about-git">About Git</a>, <a href="https://docs.github.com/en/get-started/using-github/github-flow">GitHub flow</a>, <a href="https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/about-pull-requests">About pull requests</a></li>
+</ul>
 
   </main>
   <footer role="contentinfo" class="site-footer">

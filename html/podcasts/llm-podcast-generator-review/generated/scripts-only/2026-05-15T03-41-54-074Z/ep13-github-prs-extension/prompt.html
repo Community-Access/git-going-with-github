@@ -1,0 +1,536 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="GIT Going with GitHub - A two-day accessible open source workshop by Community Access">
+  <title>[15-code-review.md] Code Review: PRs, Diffs, and Constructive Feedback - GIT Going with GitHub</title>
+  <link rel="stylesheet" href="./styles/github-markdown.css">
+  <link rel="stylesheet" href="./styles/highlight.css">
+  <link rel="stylesheet" href="./styles/custom.css">
+  <style>
+    .markdown-body {
+      box-sizing: border-box;
+      min-width: 200px;
+      max-width: 980px;
+      margin: 0 auto;
+      padding: 45px;
+    }
+    @media (max-width: 767px) {
+      .markdown-body {
+        padding: 15px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+  <header class="site-header" role="banner">
+    <div class="site-header-inner">
+      <nav aria-label="Breadcrumb" class="breadcrumb">
+        <a href="./index.html">Home</a> <span aria-hidden="true">›</span> <span aria-current="page">[15-code-review.md] Code Review: PRs, Diffs, and Constructive Feedback</span>
+      </nav>
+      <div class="header-actions">
+        <a href="https://github.com/Community-Access/git-going-with-github/wiki" class="wiki-link" target="_blank" rel="noopener noreferrer">
+          <svg aria-hidden="true" focusable="false" width="16" height="16" viewBox="0 0 16 16" fill="currentColor">
+            <path d="M1.75 1h8.5c.966 0 1.75.784 1.75 1.75v5.5A1.75 1.75 0 0 1 10.25 10H7.06l-2.573 2.573A1.458 1.458 0 0 1 2 11.543V10h-.25A1.75 1.75 0 0 1 0 8.25v-5.5C0 1.784.784 1 1.75 1ZM1.5 2.75v5.5c0 .138.112.25.25.25h1a.75.75 0 0 1 .75.75v2.19l2.72-2.72a.749.749 0 0 1 .53-.22h3.5a.25.25 0 0 0 .25-.25v-5.5a.25.25 0 0 0-.25-.25h-8.5a.25.25 0 0 0-.25.25Zm13 2a.25.25 0 0 0-.25-.25h-.5a.75.75 0 0 1 0-1.5h.5c.966 0 1.75.784 1.75 1.75v5.5A1.75 1.75 0 0 1 14.25 12H14v1.543a1.457 1.457 0 0 1-2.487 1.03L9.22 12.28a.749.749 0 1 1 1.06-1.06l2.22 2.22v-2.19a.75.75 0 0 1 .75-.75h.25a.25.25 0 0 0 .25-.25v-5.5Z"/>
+          </svg>
+          Wiki
+        </a>
+        <form role="search" class="search-form" action="./search.html" method="get">
+        <label for="site-search" class="search-label">Search docs</label>
+        <input
+          type="search"
+          id="site-search"
+          class="search-input"
+          name="q"
+          placeholder="Search docs…"
+          autocomplete="off"
+          aria-label="Search documentation"
+        >
+        <button type="submit" class="search-button" aria-label="Submit search">
+          <svg aria-hidden="true" focusable="false" width="16" height="16" viewBox="0 0 16 16" fill="currentColor">
+            <path d="M10.68 11.74a6 6 0 0 1-7.922-8.982 6 6 0 0 1 8.982 7.922l3.04 3.04a.749.749 0 0 1-.326 1.275.749.749 0 0 1-.734-.215ZM11.5 7a4.499 4.499 0 1 0-8.997 0A4.499 4.499 0 0 0 11.5 7Z"/>
+          </svg>
+        </button>
+      </form>
+      </div>
+    </div>
+  </header>
+  <main id="main-content" class="markdown-body">
+    <p>You are writing a Git Going with GitHub podcast script.</p>
+<p>Audience:
+Blind and low-vision learners studying GitHub, Git, VS Code, open source, and accessible contribution workflows.</p>
+<p>Hosts:</p>
+<ul>
+<li>Alex: warm expert professor</li>
+<li>Jamie: curious professor who asks the questions learners may hesitate to ask</li>
+</ul>
+<p>Goal:
+Create a complete, conversational, two-host audio lesson. Teach every substantive concept from the Markdown source. Do not merely summarize. Do not omit administrative or accessibility content. Use varied phrasing and make it feel like a thoughtful NotebookLM-style teaching conversation.</p>
+<p>Scale rules:</p>
+<ul>
+<li>The source set may be large. Prioritize complete conceptual coverage over quoting every line.</li>
+<li>Use concise turns and avoid unnecessary verbosity.</li>
+</ul>
+<p>Required script markers:
+Use only these markers on their own lines:
+[ALEX]
+[JAMIE]
+[PAUSE]</p>
+<p>Narration constraints:</p>
+<ul>
+<li>Do not say chapter titles, section names, or &quot;chapter marker&quot; language out loud.</li>
+<li>Keep transitions natural so chapter separation can be handled in metadata, not spoken labels.</li>
+</ul>
+<p>Return JSON only:
+{
+  &quot;script&quot;: &quot;[ALEX]\n...\n&quot;,
+  &quot;chapters&quot;: [
+    {
+      &quot;title&quot;: &quot;Specific chapter title&quot;,
+      &quot;startSegmentIndex&quot;: 0,
+      &quot;sourceHeading&quot;: &quot;Heading represented&quot;
+    }
+  ],
+  &quot;coverageNotes&quot;: [
+    {
+      &quot;sourceHeading&quot;: &quot;Heading&quot;,
+      &quot;status&quot;: &quot;covered | partial | risk&quot;,
+      &quot;notes&quot;: &quot;Brief note&quot;
+    }
+  ]
+}</p>
+<p>Slug: ep13-github-prs-extension
+Sources:</p>
+<ul>
+<li>15-code-review.md</li>
+</ul>
+<p>Headings that must be represented:</p>
+<h1 id="15-code-reviewmd-code-review-prs-diffs-and-constructive-feedback">[15-code-review.md] Code Review: PRs, Diffs, and Constructive Feedback</h1>
+<h2 id="15-code-reviewmd-part-1-the-github-pull-requests-extension">[15-code-review.md] Part 1: The GitHub Pull Requests Extension</h2>
+<h2 id="15-code-reviewmd-managing-pull-requests-from-vs-code">[15-code-review.md] Managing Pull Requests from VS Code</h2>
+<h2 id="15-code-reviewmd-workshop-recommendation-chapter-15-part-1">[15-code-review.md] Workshop Recommendation Chapter 15, Part 1</h2>
+<h3 id="15-code-reviewmd-chapter-15-part-1-practice-set">[15-code-review.md] Chapter 15, Part 1 Practice Set</h3>
+<h3 id="15-code-reviewmd-practice-151-step-by-step-install-the-extension">[15-code-review.md] Practice 15.1 Step-by-Step: Install the Extension</h3>
+<h3 id="15-code-reviewmd-practice-152-step-by-step-check-out-a-pr-and-post-a-comment">[15-code-review.md] Practice 15.2 Step-by-Step: Check Out a PR and Post a Comment</h3>
+<h3 id="15-code-reviewmd-completing-chapter-15-part-1-submit-your-evidence">[15-code-review.md] Completing Chapter 15, Part 1: Submit Your Evidence</h3>
+<h3 id="15-code-reviewmd-expected-outcomes">[15-code-review.md] Expected Outcomes</h3>
+<h3 id="15-code-reviewmd-if-you-get-stuck">[15-code-review.md] If You Get Stuck</h3>
+<h3 id="15-code-reviewmd-learning-moment">[15-code-review.md] Learning Moment</h3>
+<h3 id="15-code-reviewmd-learning-pattern-used-in-this-chapter">[15-code-review.md] Learning Pattern Used in This Chapter</h3>
+<h2 id="15-code-reviewmd-table-of-contents">[15-code-review.md] Table of Contents</h2>
+<h2 id="15-code-reviewmd-1-installing-the-github-pull-requests-extension">[15-code-review.md] 1. Installing the GitHub Pull Requests Extension</h2>
+<h3 id="15-code-reviewmd-installation-steps">[15-code-review.md] Installation Steps</h3>
+<h4 id="15-code-reviewmd-method-1-extensions-sidebar">[15-code-review.md] Method 1: Extensions Sidebar</h4>
+<h4 id="15-code-reviewmd-method-2-command-palette">[15-code-review.md] Method 2: Command Palette</h4>
+<h3 id="15-code-reviewmd-signing-in-to-github">[15-code-review.md] Signing In to GitHub</h3>
+<h4 id="15-code-reviewmd-verify-sign-in">[15-code-review.md] Verify sign-in</h4>
+<h3 id="15-code-reviewmd-what-the-extension-adds">[15-code-review.md] What the Extension Adds</h3>
+<h3 id="15-code-reviewmd-learning-cards-installing-the-pr-extension">[15-code-review.md] Learning Cards: Installing the PR Extension</h3>
+<h2 id="15-code-reviewmd-2-viewing-pull-requests">[15-code-review.md] 2. Viewing Pull Requests</h2>
+<h3 id="15-code-reviewmd-opening-the-github-pull-requests-panel">[15-code-review.md] Opening the GitHub Pull Requests Panel</h3>
+<h4 id="15-code-reviewmd-method-1-activity-bar">[15-code-review.md] Method 1: Activity Bar</h4>
+<h1 id="15-code-reviewmd-list-open-prs">[15-code-review.md] List open PRs</h1>
+<h1 id="15-code-reviewmd-view-a-specific-pr">[15-code-review.md] View a specific PR</h1>
+<h1 id="15-code-reviewmd-open-a-pr-in-your-browser">[15-code-review.md] Open a PR in your browser</h1>
+<h1 id="15-code-reviewmd-filter-prs-waiting-for-your-review">[15-code-review.md] Filter PRs waiting for your review</h1>
+<h2 id="15-code-reviewmd-method-2-explorer-section">[15-code-review.md] Method 2: Explorer Section</h2>
+<h3 id="15-code-reviewmd-pull-request-tree-structure">[15-code-review.md] Pull Request Tree Structure</h3>
+<h4 id="15-code-reviewmd-description">[15-code-review.md] Description</h4>
+<h4 id="15-code-reviewmd-screen-reader-announcement-example">[15-code-review.md] Screen reader announcement example</h4>
+<h3 id="15-code-reviewmd-filtering-pr-lists">[15-code-review.md] Filtering PR Lists</h3>
+<h4 id="15-code-reviewmd-by-status">[15-code-review.md] By status</h4>
+<h4 id="15-code-reviewmd-by-repository">[15-code-review.md] By repository</h4>
+<h3 id="15-code-reviewmd-viewing-pr-details">[15-code-review.md] Viewing PR Details</h3>
+<h4 id="15-code-reviewmd-screen-reader-experience">[15-code-review.md] Screen reader experience</h4>
+<h2 id="15-code-reviewmd-3-checking-out-a-pull-request-branch">[15-code-review.md] 3. Checking Out a Pull Request Branch</h2>
+<h3 id="15-code-reviewmd-why-check-out-a-pr">[15-code-review.md] Why Check Out a PR</h3>
+<h3 id="15-code-reviewmd-how-to-check-out-a-pr">[15-code-review.md] How to Check Out a PR</h3>
+<h4 id="15-code-reviewmd-method-1-from-the-pr-detail-view">[15-code-review.md] Method 1: From the PR Detail View</h4>
+<h4 id="15-code-reviewmd-method-2-from-the-pr-tree">[15-code-review.md] Method 2: From the PR Tree</h4>
+<h4 id="15-code-reviewmd-method-3-command-palette">[15-code-review.md] Method 3: Command Palette</h4>
+<h3 id="15-code-reviewmd-returning-to-your-original-branch">[15-code-review.md] Returning to Your Original Branch</h3>
+<h3 id="15-code-reviewmd-learning-cards-checking-out-a-pr">[15-code-review.md] Learning Cards: Checking Out a PR</h3>
+<h2 id="15-code-reviewmd-4-reviewing-pull-requests-in-vs-code">[15-code-review.md] 4. Reviewing Pull Requests in VS Code</h2>
+<h3 id="15-code-reviewmd-reading-the-files-changed-list">[15-code-review.md] Reading the Files Changed List</h3>
+<h4 id="15-code-reviewmd-in-the-pr-detail-view">[15-code-review.md] In the PR detail view</h4>
+<h4 id="15-code-reviewmd-screen-reader-announcement">[15-code-review.md] Screen reader announcement</h4>
+<h3 id="15-code-reviewmd-understanding-the-diff-view">[15-code-review.md] Understanding the Diff View</h3>
+<h4 id="15-code-reviewmd-split-view-mode-default">[15-code-review.md] Split view mode default</h4>
+<h4 id="15-code-reviewmd-inline-view-mode">[15-code-review.md] Inline view mode</h4>
+<h4 id="15-code-reviewmd-to-toggle-between-views">[15-code-review.md] To toggle between views</h4>
+<h3 id="15-code-reviewmd-screen-reader-diff-review-with-accessible-diff-viewer">[15-code-review.md] Screen Reader Diff Review with Accessible Diff Viewer</h3>
+<h4 id="15-code-reviewmd-recommended-workflow-for-screen-reader-users">[15-code-review.md] Recommended workflow for screen reader users</h4>
+<h4 id="15-code-reviewmd-example-accessible-diff-output">[15-code-review.md] Example Accessible Diff output</h4>
+<h4 id="15-code-reviewmd-this-structured-reading-is-far-superior-to-navigating-the-visual-diff-manually">[15-code-review.md] This structured reading is far superior to navigating the visual diff manually</h4>
+<h3 id="15-code-reviewmd-flagging-issues-during-review">[15-code-review.md] Flagging Issues During Review</h3>
+<h3 id="15-code-reviewmd-learning-cards-reviewing-pull-requests-in-vs-code">[15-code-review.md] Learning Cards: Reviewing Pull Requests in VS Code</h3>
+<h2 id="15-code-reviewmd-5-creating-a-pull-request-from-vs-code">[15-code-review.md] 5. Creating a Pull Request from VS Code</h2>
+<h3 id="15-code-reviewmd-tool-cards-create-a-pull-request-from-your-editor">[15-code-review.md] Tool Cards: Create a Pull Request from your editor</h3>
+<h3 id="15-code-reviewmd-prerequisites">[15-code-review.md] Prerequisites</h3>
+<h3 id="15-code-reviewmd-creating-the-pr">[15-code-review.md] Creating the PR</h3>
+<h4 id="15-code-reviewmd-method-1-command-palette-recommended">[15-code-review.md] Method 1: Command Palette Recommended</h4>
+<h4 id="15-code-reviewmd-method-2-source-control-panel">[15-code-review.md] Method 2: Source Control Panel</h4>
+<h4 id="15-code-reviewmd-method-3-github-panel">[15-code-review.md] Method 3: GitHub Panel</h4>
+<h3 id="15-code-reviewmd-filling-out-the-pr-form">[15-code-review.md] Filling Out the PR Form</h3>
+<h4 id="15-code-reviewmd-title-required">[15-code-review.md] Title required</h4>
+<h4 id="15-code-reviewmd-description-optional-but-recommended">[15-code-review.md] Description optional but recommended</h4>
+<h4 id="15-code-reviewmd-base-branch-target">[15-code-review.md] Base branch target</h4>
+<h4 id="15-code-reviewmd-compare-branch-source">[15-code-review.md] Compare branch source</h4>
+<h4 id="15-code-reviewmd-reviewers-optional">[15-code-review.md] Reviewers optional</h4>
+<h4 id="15-code-reviewmd-labels-optional">[15-code-review.md] Labels optional</h4>
+<h4 id="15-code-reviewmd-milestone-optional">[15-code-review.md] Milestone optional</h4>
+<h4 id="15-code-reviewmd-draft-pr-checkbox">[15-code-review.md] Draft PR checkbox</h4>
+<h4 id="15-code-reviewmd-screen-reader-navigation">[15-code-review.md] Screen reader navigation</h4>
+<h3 id="15-code-reviewmd-submitting-the-pr">[15-code-review.md] Submitting the PR</h3>
+<h1 id="15-code-reviewmd-interactive-prompts-for-title-body-base-branch">[15-code-review.md] Interactive: prompts for title, body, base branch</h1>
+<h1 id="15-code-reviewmd-inline-provide-details-directly">[15-code-review.md] Inline: provide details directly</h1>
+<h1 id="15-code-reviewmd-create-as-draft">[15-code-review.md] Create as draft</h1>
+<h1 id="15-code-reviewmd-open-the-form-in-your-browser">[15-code-review.md] Open the form in your browser</h1>
+<h3 id="15-code-reviewmd-learning-cards-creating-a-pull-request">[15-code-review.md] Learning Cards: Creating a Pull Request</h3>
+<h2 id="15-code-reviewmd-6-pull-request-description-templates">[15-code-review.md] 6. Pull Request Description Templates</h2>
+<h3 id="15-code-reviewmd-where-templates-are-stored">[15-code-review.md] Where Templates Are Stored</h3>
+<h3 id="15-code-reviewmd-example-pr-template">[15-code-review.md] Example PR Template</h3>
+<h2 id="15-code-reviewmd-description">[15-code-review.md] Description</h2>
+<h2 id="15-code-reviewmd-related-issue">[15-code-review.md] Related Issue</h2>
+<h2 id="15-code-reviewmd-type-of-change">[15-code-review.md] Type of Change</h2>
+<h2 id="15-code-reviewmd-testing">[15-code-review.md] Testing</h2>
+<h2 id="15-code-reviewmd-checklist">[15-code-review.md] Checklist</h2>
+<h2 id="15-code-reviewmd-screenshots-if-applicable">[15-code-review.md] Screenshots if applicable</h2>
+<h3 id="15-code-reviewmd-filling-out-a-template">[15-code-review.md] Filling Out a Template</h3>
+<h4 id="15-code-reviewmd-screen-reader-workflow">[15-code-review.md] Screen reader workflow</h4>
+<h2 id="15-code-reviewmd-7-commenting-and-requesting-changes">[15-code-review.md] 7. Commenting and Requesting Changes</h2>
+<h3 id="15-code-reviewmd-adding-an-inline-comment">[15-code-review.md] Adding an Inline Comment</h3>
+<h4 id="15-code-reviewmd-comment-format-tips">[15-code-review.md] Comment format tips</h4>
+<h3 id="15-code-reviewmd-starting-a-review">[15-code-review.md] Starting a Review</h3>
+<h4 id="15-code-reviewmd-if-you-have-multiple-comments-to-make-use-quotstart-reviewquot">[15-code-review.md] If you have multiple comments to make, use &quot;Start Review&quot;</h4>
+<h3 id="15-code-reviewmd-submitting-your-review">[15-code-review.md] Submitting Your Review</h3>
+<h3 id="15-code-reviewmd-what-happens-after-submission">[15-code-review.md] What Happens After Submission</h3>
+<h1 id="15-code-reviewmd-view-the-pr-diff-in-your-terminal">[15-code-review.md] View the PR diff in your terminal</h1>
+<h1 id="15-code-reviewmd-approve">[15-code-review.md] Approve</h1>
+<h1 id="15-code-reviewmd-request-changes">[15-code-review.md] Request changes</h1>
+<h1 id="15-code-reviewmd-comment-only-no-verdict">[15-code-review.md] Comment-only no verdict</h1>
+<h3 id="15-code-reviewmd-learning-cards-commenting-and-requesting-changes">[15-code-review.md] Learning Cards: Commenting and Requesting Changes</h3>
+<h2 id="15-code-reviewmd-8-merging-pull-requests">[15-code-review.md] 8. Merging Pull Requests</h2>
+<h3 id="15-code-reviewmd-prerequisites-for-merging">[15-code-review.md] Prerequisites for Merging</h3>
+<h3 id="15-code-reviewmd-merging-from-vs-code">[15-code-review.md] Merging from VS Code</h3>
+<h4 id="15-code-reviewmd-method-1-pr-detail-view">[15-code-review.md] Method 1: PR Detail View</h4>
+<h4 id="15-code-reviewmd-method-2-command-palette">[15-code-review.md] Method 2: Command Palette</h4>
+<h3 id="15-code-reviewmd-merge-types">[15-code-review.md] Merge Types</h3>
+<h4 id="15-code-reviewmd-which-merge-type-to-use">[15-code-review.md] Which merge type to use</h4>
+<h3 id="15-code-reviewmd-after-merging">[15-code-review.md] After Merging</h3>
+<h4 id="15-code-reviewmd-switching-to-main-and-pulling">[15-code-review.md] Switching to main and pulling</h4>
+<h3 id="15-code-reviewmd-deleting-the-feature-branch">[15-code-review.md] Deleting the Feature Branch</h3>
+<h1 id="15-code-reviewmd-merge-with-default-strategy">[15-code-review.md] Merge with default strategy</h1>
+<h1 id="15-code-reviewmd-squash-and-merge-then-delete-the-branch">[15-code-review.md] Squash and merge, then delete the branch</h1>
+<h1 id="15-code-reviewmd-enable-auto-merge-merges-when-checks-pass">[15-code-review.md] Enable auto-merge merges when checks pass</h1>
+<h3 id="15-code-reviewmd-learning-cards-merging-pull-requests">[15-code-review.md] Learning Cards: Merging Pull Requests</h3>
+<h2 id="15-code-reviewmd-keyboard-shortcuts---github-pull-requests-extension">[15-code-review.md] Keyboard Shortcuts - GitHub Pull Requests Extension</h2>
+<h2 id="15-code-reviewmd-troubleshooting">[15-code-review.md] Troubleshooting</h2>
+<h3 id="15-code-reviewmd-quotno-pull-requests-foundquot">[15-code-review.md] &quot;No pull requests found&quot;</h3>
+<h4 id="15-code-reviewmd-solutions">[15-code-review.md] Solutions</h4>
+<h3 id="15-code-reviewmd-quotcould-not-create-pull-requestquot">[15-code-review.md] &quot;Could not create pull request&quot;</h3>
+<h4 id="15-code-reviewmd-solutions">[15-code-review.md] Solutions</h4>
+<h3 id="15-code-reviewmd-quotauthentication-failedquot">[15-code-review.md] &quot;Authentication failed&quot;</h3>
+<h4 id="15-code-reviewmd-solutions">[15-code-review.md] Solutions</h4>
+<h2 id="15-code-reviewmd-try-it-review-a-pr-from-vs-code">[15-code-review.md] Try It: Review a PR from VS Code</h2>
+<h2 id="15-code-reviewmd-part-2-accessible-code-review">[15-code-review.md] Part 2: Accessible Code Review</h2>
+<h2 id="15-code-reviewmd-conducting-pull-request-reviews-with-a-screen-reader">[15-code-review.md] Conducting Pull Request Reviews with a Screen Reader</h2>
+<h2 id="15-code-reviewmd-workshop-recommendation-chapter-15--challenge-12">[15-code-review.md] Workshop Recommendation Chapter 15 / Challenge 12</h2>
+<h3 id="15-code-reviewmd-challenge-12-practice-set">[15-code-review.md] Challenge 12 Practice Set</h3>
+<h3 id="15-code-reviewmd-practice-121-step-by-step-review-a-pr-and-leave-inline-comments">[15-code-review.md] Practice 12.1 Step-by-Step: Review a PR and Leave Inline Comments</h3>
+<h3 id="15-code-reviewmd-practice-122-step-by-step-submit-a-formal-review-verdict">[15-code-review.md] Practice 12.2 Step-by-Step: Submit a Formal Review Verdict</h3>
+<h3 id="15-code-reviewmd-completing-challenge-12-submit-your-evidence">[15-code-review.md] Completing Challenge 12: Submit Your Evidence</h3>
+<h3 id="15-code-reviewmd-expected-outcomes">[15-code-review.md] Expected Outcomes</h3>
+<h3 id="15-code-reviewmd-if-you-get-stuck">[15-code-review.md] If You Get Stuck</h3>
+<h3 id="15-code-reviewmd-learning-moment">[15-code-review.md] Learning Moment</h3>
+<h3 id="15-code-reviewmd-learning-pattern-used-in-this-chapter">[15-code-review.md] Learning Pattern Used in This Chapter</h3>
+<h2 id="15-code-reviewmd-prerequisites-checklist">[15-code-review.md] Prerequisites Checklist</h2>
+<h3 id="15-code-reviewmd-before-starting-this-chapter-verify-you-have-completed">[15-code-review.md] Before starting this chapter, verify you have completed</h3>
+<h2 id="15-code-reviewmd-two-environments-for-code-review">[15-code-review.md] Two Environments for Code Review</h2>
+<h3 id="15-code-reviewmd-about-learning-cards-in-this-chapter">[15-code-review.md] About Learning Cards in This Chapter</h3>
+<h1 id="15-code-reviewmd-view-the-full-pr-diff-in-your-terminal">[15-code-review.md] View the full PR diff in your terminal</h1>
+<h1 id="15-code-reviewmd-view-pr-details-description-status-checks">[15-code-review.md] View PR details description, status, checks</h1>
+<h1 id="15-code-reviewmd-checkout-the-pr-branch-locally-for-testing">[15-code-review.md] Checkout the PR branch locally for testing</h1>
+<h1 id="15-code-reviewmd-approve-the-pr">[15-code-review.md] Approve the PR</h1>
+<h1 id="15-code-reviewmd-request-changes">[15-code-review.md] Request changes</h1>
+<h1 id="15-code-reviewmd-leave-a-comment-only-review">[15-code-review.md] Leave a comment-only review</h1>
+<h2 id="15-code-reviewmd-part-1---reviewing-on-githubcom">[15-code-review.md] Part 1 - Reviewing on GitHub.com</h2>
+<h3 id="15-code-reviewmd-good-news-modern-interface-is-default">[15-code-review.md] Good News: Modern Interface is Default</h3>
+<h3 id="15-code-reviewmd-step-1-reach-the-files-changed-tab">[15-code-review.md] Step 1: Reach the Files Changed Tab</h3>
+<h3 id="15-code-reviewmd-step-2-use-the-file-tree-to-orient-yourself">[15-code-review.md] Step 2: Use the File Tree to Orient Yourself</h3>
+<h4 id="15-code-reviewmd-what-to-listen-for--look-for">[15-code-review.md] What to listen for / look for</h4>
+<h3 id="15-code-reviewmd-step-3-navigate-between-file-diffs">[15-code-review.md] Step 3: Navigate Between File Diffs</h3>
+<h3 id="15-code-reviewmd-step-4-read-a-diff">[15-code-review.md] Step 4: Read a Diff</h3>
+<h4 id="15-code-reviewmd-what-each-line-announces--shows">[15-code-review.md] What each line announces / shows</h4>
+<h3 id="15-code-reviewmd-step-5-place-an-inline-comment">[15-code-review.md] Step 5: Place an Inline Comment</h3>
+<h4 id="15-code-reviewmd-placing-a-multi-line-comment">[15-code-review.md] Placing a multi-line comment</h4>
+<h3 id="15-code-reviewmd-step-6-read-existing-comments-and-threads">[15-code-review.md] Step 6: Read Existing Comments and Threads</h3>
+<h3 id="15-code-reviewmd-step-7-submit-your-review">[15-code-review.md] Step 7: Submit Your Review</h3>
+<h4 id="15-code-reviewmd-verdicts-and-their-meaning">[15-code-review.md] Verdicts and their meaning</h4>
+<h3 id="15-code-reviewmd-step-8-re-request-review-for-authors">[15-code-review.md] Step 8: Re-request Review for Authors</h3>
+<h3 id="15-code-reviewmd-learning-cards-reviewing-on-githubcom">[15-code-review.md] Learning Cards: Reviewing on GitHub.com</h3>
+<h2 id="15-code-reviewmd-part-2---reviewing-in-vs-code-with-the-accessible-diff-viewer">[15-code-review.md] Part 2 - Reviewing in VS Code with the Accessible Diff Viewer</h2>
+<h3 id="15-code-reviewmd-opening-a-diff-in-vs-code">[15-code-review.md] Opening a Diff in VS Code</h3>
+<h3 id="15-code-reviewmd-learning-cards-vs-code-code-review">[15-code-review.md] Learning Cards: VS Code Code Review</h3>
+<h4 id="15-code-reviewmd-opening-the-pr-for-review">[15-code-review.md] Opening the PR for review</h4>
+<h4 id="15-code-reviewmd-using-the-accessible-diff-viewer">[15-code-review.md] Using the Accessible Diff Viewer</h4>
+<h4 id="15-code-reviewmd-placing-a-comment">[15-code-review.md] Placing a comment</h4>
+<h4 id="15-code-reviewmd-opening-the-pr">[15-code-review.md] Opening the PR</h4>
+<h4 id="15-code-reviewmd-accessible-diff-viewer">[15-code-review.md] Accessible Diff Viewer</h4>
+<h4 id="15-code-reviewmd-comment-placement">[15-code-review.md] Comment placement</h4>
+<h3 id="15-code-reviewmd-using-the-accessible-diff-viewer-f7">[15-code-review.md] Using the Accessible Diff Viewer F7</h3>
+<h4 id="15-code-reviewmd-navigation">[15-code-review.md] Navigation</h4>
+<h4 id="15-code-reviewmd-what-makes-this-better-than-the-raw-diff-editor">[15-code-review.md] What makes this better than the raw diff editor</h4>
+<h3 id="15-code-reviewmd-placing-comments-in-vs-code-github-pr-extension">[15-code-review.md] Placing Comments in VS Code GitHub PR Extension</h3>
+<h2 id="15-code-reviewmd-code-review-structure-and-content">[15-code-review.md] Code Review Structure and Content</h2>
+<h3 id="15-code-reviewmd-the-anatomy-of-a-useful-review-comment">[15-code-review.md] The Anatomy of a Useful Review Comment</h3>
+<h4 id="15-code-reviewmd-blocking-example-reviewing-a-pr-for-docskeyboard-shortcutsmd">[15-code-review.md] Blocking example reviewing a PR for docs/keyboard-shortcuts.md</h4>
+<h4 id="15-code-reviewmd-non-blocking-nit-example-reviewing-a-pr-for-docswelcomemd">[15-code-review.md] Non-blocking nit example reviewing a PR for docs/welcome.md</h4>
+<h4 id="15-code-reviewmd-question-example-reviewing-a-pr-for-docssetup-guidemd">[15-code-review.md] Question example reviewing a PR for docs/setup-guide.md</h4>
+<h3 id="15-code-reviewmd-prefixes-that-set-expectations">[15-code-review.md] Prefixes That Set Expectations</h3>
+<h3 id="15-code-reviewmd-how-many-comments-is-too-many">[15-code-review.md] How Many Comments Is Too Many?</h3>
+<h2 id="15-code-reviewmd-keyboard-reference">[15-code-review.md] Keyboard Reference</h2>
+<h3 id="15-code-reviewmd-github-web-review">[15-code-review.md] GitHub Web Review</h3>
+<h3 id="15-code-reviewmd-vs-code-accessible-diff-viewer">[15-code-review.md] VS Code Accessible Diff Viewer</h3>
+<h2 id="15-code-reviewmd-common-review-scenarios">[15-code-review.md] Common Review Scenarios</h2>
+<h3 id="15-code-reviewmd-quoti-want-to-verify-the-pr-only-changes-what-it-claimsquot">[15-code-review.md] &quot;I want to verify the PR only changes what it claims&quot;</h3>
+<h3 id="15-code-reviewmd-quoti-want-to-find-all-changes-to-one-specific-sectionquot">[15-code-review.md] &quot;I want to find all changes to one specific section&quot;</h3>
+<h3 id="15-code-reviewmd-quoti-agreed-but-then-the-author-made-more-changes---did-anything-new-appearquot">[15-code-review.md] &quot;I agreed but then the author made more changes - did anything new appear?&quot;</h3>
+<h3 id="15-code-reviewmd-quota-reviewer-left-a-comment-i-don39t-understandquot">[15-code-review.md] &quot;A reviewer left a comment I don&#39;t understand&quot;</h3>
+<h2 id="15-code-reviewmd-exercises">[15-code-review.md] Exercises</h2>
+<h3 id="15-code-reviewmd-exercise-a---complete-a-web-review">[15-code-review.md] Exercise A - Complete a Web Review</h3>
+<h4 id="15-code-reviewmd-step-1-navigate-to-the-pull-request">[15-code-review.md] Step 1: Navigate to the Pull Request</h4>
+<h4 id="15-code-reviewmd-step-2-read-the-pr-description">[15-code-review.md] Step 2: Read the PR Description</h4>
+<h4 id="15-code-reviewmd-step-3-navigate-to-quotfiles-changedquot">[15-code-review.md] Step 3: Navigate to &quot;Files Changed&quot;</h4>
+<h4 id="15-code-reviewmd-step-4-activate-focus-mode-for-better-diff-reading">[15-code-review.md] Step 4: Activate Focus Mode for Better Diff Reading</h4>
+<h4 id="15-code-reviewmd-step-5-find-the-heading-hierarchy-issue">[15-code-review.md] Step 5: Find the Heading Hierarchy Issue</h4>
+<h4 id="15-code-reviewmd-step-6-place-a-blocking-review-comment-on-the-heading">[15-code-review.md] Step 6: Place a Blocking Review Comment on the Heading</h4>
+<h4 id="15-code-reviewmd-step-7-find-the-link-text-issue">[15-code-review.md] Step 7: Find the Link Text Issue</h4>
+<h4 id="15-code-reviewmd-step-8-place-a-comment-on-the-link">[15-code-review.md] Step 8: Place a Comment on the Link</h4>
+<h4 id="15-code-reviewmd-step-9-submit-your-review">[15-code-review.md] Step 9: Submit Your Review</h4>
+<h4 id="15-code-reviewmd-reflect-on-this-exercise">[15-code-review.md] Reflect on This Exercise</h4>
+<h3 id="15-code-reviewmd-exercise-b---use-the-vs-code-accessible-diff-viewer">[15-code-review.md] Exercise B - Use the VS Code Accessible Diff Viewer</h3>
+<h4 id="15-code-reviewmd-prerequisites">[15-code-review.md] Prerequisites</h4>
+<h4 id="15-code-reviewmd-step-1-open-the-github-pull-requests-extension">[15-code-review.md] Step 1: Open the GitHub Pull Requests Extension</h4>
+<h4 id="15-code-reviewmd-step-2-open-the-pull-requests-sidebar">[15-code-review.md] Step 2: Open the Pull Requests Sidebar</h4>
+<h4 id="15-code-reviewmd-step-3-view-the-file-changes">[15-code-review.md] Step 3: View the File Changes</h4>
+<h4 id="15-code-reviewmd-step-4-access-the-accessible-diff-viewer">[15-code-review.md] Step 4: Access the Accessible Diff Viewer</h4>
+<h4 id="15-code-reviewmd-step-5-listen-to-and-understand-the-first-change">[15-code-review.md] Step 5: Listen to and Understand the First Change</h4>
+<h4 id="15-code-reviewmd-step-6-find-the-heading-hierarchy-issue">[15-code-review.md] Step 6: Find the Heading Hierarchy Issue</h4>
+<h4 id="15-code-reviewmd-step-7-locate-the-heading-line-and-add-an-inline-comment">[15-code-review.md] Step 7: Locate the Heading Line and Add an Inline Comment</h4>
+<h4 id="15-code-reviewmd-step-8-write-your-accessible-diff-comment">[15-code-review.md] Step 8: Write Your Accessible Diff Comment</h4>
+<h4 id="15-code-reviewmd-step-9-create-a-github-pull-request-comment">[15-code-review.md] Step 9: Create a GitHub Pull Request Comment</h4>
+<h4 id="15-code-reviewmd-reflect-on-this-exercise">[15-code-review.md] Reflect on This Exercise</h4>
+<h3 id="15-code-reviewmd-exercise-c---compare-and-reflect">[15-code-review.md] Exercise C - Compare and Reflect</h3>
+<h4 id="15-code-reviewmd-step-1-gather-your-data">[15-code-review.md] Step 1: Gather Your Data</h4>
+<h4 id="15-code-reviewmd-step-2-navigate-to-the-pr-and-leave-your-reflection-comment">[15-code-review.md] Step 2: Navigate to the PR and Leave Your Reflection Comment</h4>
+<h4 id="15-code-reviewmd-step-3-write-your-comparison">[15-code-review.md] Step 3: Write Your Comparison</h4>
+<h2 id="15-code-reviewmd-code-review-reflection---browser-vs-vs-code">[15-code-review.md] Code Review Reflection - Browser vs VS Code</h2>
+<h3 id="15-code-reviewmd-environment-preference">[15-code-review.md] Environment Preference</h3>
+<h3 id="15-code-reviewmd-specific-strengths">[15-code-review.md] Specific Strengths</h3>
+<h4 id="15-code-reviewmd-browser-made-this-easier">[15-code-review.md] Browser made this easier</h4>
+<h4 id="15-code-reviewmd-vs-code-made-this-easier">[15-code-review.md] VS Code made this easier</h4>
+<h3 id="15-code-reviewmd-real-world-impact">[15-code-review.md] Real-World Impact</h3>
+<h4 id="15-code-reviewmd-step-4-review-your-comment">[15-code-review.md] Step 4: Review Your Comment</h4>
+<h4 id="15-code-reviewmd-step-5-submit-your-reflection">[15-code-review.md] Step 5: Submit Your Reflection</h4>
+<h4 id="15-code-reviewmd-step-6-checkpoint---validate-your-learning">[15-code-review.md] Step 6: Checkpoint - Validate Your Learning</h4>
+<h2 id="15-code-reviewmd-part-3---using-github-copilot-to-understand-code-changes">[15-code-review.md] Part 3 - Using GitHub Copilot to Understand Code Changes</h2>
+<h3 id="15-code-reviewmd-when-to-use-copilot-during-code-review">[15-code-review.md] When to Use Copilot During Code Review</h3>
+<h3 id="15-code-reviewmd-how-to-use-copilot-during-review">[15-code-review.md] How to Use Copilot During Review</h3>
+<h4 id="15-code-reviewmd-in-vs-code-with-an-open-diff">[15-code-review.md] In VS Code with an Open Diff</h4>
+<h4 id="15-code-reviewmd-example-exchange">[15-code-review.md] Example Exchange</h4>
+<h4 id="15-code-reviewmd-on-githubcom-web-interface">[15-code-review.md] On GitHub.com Web Interface</h4>
+<h3 id="15-code-reviewmd-copilot-limitations-during-review-critical-to-know">[15-code-review.md] Copilot Limitations During Review Critical to Know</h3>
+<h3 id="15-code-reviewmd-best-practices">[15-code-review.md] Best Practices</h3>
+<h3 id="15-code-reviewmd-what-comes-next">[15-code-review.md] What Comes Next</h3>
+<h2 id="15-code-reviewmd-part-4-the-reviewer39s-craft">[15-code-review.md] Part 4: The Reviewer&#39;s Craft</h2>
+<h3 id="15-code-reviewmd-what-to-look-for-in-a-review">[15-code-review.md] What to Look for in a Review</h3>
+<h3 id="15-code-reviewmd-the-three-review-actions">[15-code-review.md] The Three Review Actions</h3>
+<h3 id="15-code-reviewmd-writing-constructive-feedback">[15-code-review.md] Writing Constructive Feedback</h3>
+<h3 id="15-code-reviewmd-the-reviewer39s-checklist">[15-code-review.md] The Reviewer&#39;s Checklist</h3>
+<h3 id="15-code-reviewmd-reviewing-as-a-learning-tool">[15-code-review.md] Reviewing as a Learning Tool</h3>
+<h3 id="15-code-reviewmd-learning-cards-the-reviewer39s-craft">[15-code-review.md] Learning Cards: The Reviewer&#39;s Craft</h3>
+<h2 id="15-code-reviewmd-day-2-teaser-the-full-accessibility-agents-review-ecosystem">[15-code-review.md] Day 2 Teaser: The Full Accessibility Agents Review Ecosystem</h2>
+<h3 id="15-code-reviewmd-the-agents-that-help-with-code-review">[15-code-review.md] The Agents That Help With Code Review</h3>
+<h3 id="15-code-reviewmd-how-it-works">[15-code-review.md] How It Works</h3>
+<h3 id="15-code-reviewmd-the-principle-skill-first-agent-second">[15-code-review.md] The Principle: Skill First, Agent Second</h3>
+<h3 id="15-code-reviewmd-a-real-example-the-flow">[15-code-review.md] A Real Example: The Flow</h3>
+<h2 id="15-code-reviewmd-authoritative-sources">[15-code-review.md] Authoritative Sources</h2>
+<h3 id="15-code-reviewmd-section-level-source-map">[15-code-review.md] Section-Level Source Map</h3>
+<p>Markdown source:</p>
+<h2 id="source-15-code-reviewmd">Source: 15-code-review.md</h2>
+<pre><code class="hljs language-markdown"><span class="hljs-section"># Code Review: PRs, Diffs, and Constructive Feedback</span>
+
+<span class="hljs-quote">&gt; <span class="hljs-strong">**Related appendices:**</span> [<span class="hljs-string">Appendix G: VS Code Reference</span>](<span class="hljs-link">appendix-g-vscode-reference.md</span>) | [<span class="hljs-string">Appendix C: Markdown Reference</span>](<span class="hljs-link">appendix-c-markdown-reference.md</span>)</span>
+<span class="hljs-quote">&gt; <span class="hljs-strong">**Authoritative sources:**</span> [<span class="hljs-string">GitHub Docs: Reviewing changes in pull requests</span>](<span class="hljs-link">https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/reviewing-changes-in-pull-requests</span>) | [<span class="hljs-string">GitHub Accessibility Guide: Pull Request Reviews</span>](<span class="hljs-link">https://accessibility.github.com/documentation/guide/pull-requests/</span>)</span>
+
+<span class="hljs-quote">&gt; <span class="hljs-strong">**Day 2, Block 2 Material**</span></span>
+<span class="hljs-quote">&gt;
+&gt; This chapter unifies PR management, accessible code review, and the reviewer&#x27;s craft into one chapter. Part 1 covers the GitHub Pull Requests extension in VS Code. Part 2 covers accessible code review with diffs and inline comments. Part 3 adds the reviewer&#x27;s judgment framework.</span>
+
+---
+
+<span class="hljs-section">## Part 1: The GitHub Pull Requests Extension</span>
+
+<span class="hljs-quote">&gt; <span class="hljs-strong">**See also:**</span> [<span class="hljs-string">Appendix G: VS Code Reference</span>](<span class="hljs-link">appendix-g-vscode-reference.md</span>) for the complete list of GitHub Pull Requests extension keyboard shortcuts.</span>
+
+<span class="hljs-quote">&gt;
+&gt; <span class="hljs-strong">**Listen to Episode 13:**</span> [<span class="hljs-string">The GitHub Pull Requests Extension</span>](<span class="hljs-link">../admin/PODCASTS.md</span>) - a conversational audio overview of this chapter. Listen before reading to preview the concepts, or after to reinforce what you learned.</span>
+
+<span class="hljs-section">## Managing Pull Requests from VS Code</span>
+
+<span class="hljs-quote">&gt; <span class="hljs-strong">**Day 2, Block 2 Material**</span></span>
+<span class="hljs-quote">&gt;
+&gt; This guide covers the GitHub Pull Requests and Issues extension: viewing open PRs, checking out PR branches for local testing, reviewing PRs with screen reader-accessible tools, creating PRs directly from VS Code, using PR templates, and syncing PR status with GitHub.</span>
+<span class="hljs-quote">&gt;
+&gt; <span class="hljs-strong">**Prerequisites:**</span> [<span class="hljs-string">Working with Pull Requests</span>](<span class="hljs-link">06-working-with-pull-requests.md</span>), [<span class="hljs-string">Git &amp; Source Control in VS Code</span>](<span class="hljs-link">14-git-in-practice.md</span>)</span>
+<span class="hljs-quote">&gt;
+&gt; <span class="hljs-strong">**Mac keyboard shortcuts:**</span> Throughout this chapter, all `Ctrl+` shortcuts use `Cmd+` on Mac, and `Alt+` shortcuts use `Option+` on Mac. For example: `Ctrl+Shift+P` → `Cmd+Shift+P`, `Ctrl+Shift+G` → `Cmd+Shift+G`, `Alt+F2` → `Option+F2`. Context menus (`Shift+F10` on Windows) use `Ctrl+Return` on Mac.</span>
+
+<span class="hljs-section">## Workshop Recommendation (Chapter 15, Part 1)</span>
+
+Chapter 15, Part 1 introduces the <span class="hljs-strong">**GitHub Pull Requests extension**</span> for managing PRs directly from VS Code.
+
+<span class="hljs-bullet">-</span> <span class="hljs-strong">**Challenge count:**</span> 2 guided challenges
+<span class="hljs-bullet">-</span> <span class="hljs-strong">**Automation check:**</span> none (extension installation and review state are account-local)
+<span class="hljs-bullet">-</span> <span class="hljs-strong">**Evidence:**</span> issue comment with confirmation of actions completed
+<span class="hljs-bullet">-</span> <span class="hljs-strong">**Pattern:**</span> install, check out, review, comment
+
+<span class="hljs-section">### Chapter 15, Part 1 Practice Set</span>
+
+<span class="hljs-bullet">1.</span> <span class="hljs-strong">**Install the GitHub Pull Requests extension**</span> - add the extension to VS Code and sign in with your GitHub account.
+<span class="hljs-bullet">2.</span> <span class="hljs-strong">**Check out a PR and post a review comment**</span> - download a PR branch locally, read the diff, and post one constructive review comment.
+
+<span class="hljs-section">### Practice 15.1 Step-by-Step: Install the Extension</span>
+
+<span class="hljs-strong">**Goal:**</span> Install the GitHub Pull Requests and Issues extension and authenticate with your GitHub account.
+
+<span class="hljs-strong">**Where you are working:**</span> VS Code desktop with your Learning Room repository open.
+
+<span class="hljs-strong">**Estimated time:**</span> 3-5 minutes.
+
+<span class="hljs-bullet">1.</span> Open the Extensions sidebar: <span class="hljs-code">`Ctrl+Shift+X`</span> (Mac: <span class="hljs-code">`Cmd+Shift+X`</span>).
+<span class="hljs-bullet">2.</span> Your screen reader announces &quot;Extensions: Marketplace.&quot; The search box has focus.
+<span class="hljs-bullet">3.</span> Type <span class="hljs-code">`GitHub Pull Requests`</span> in the search box and press <span class="hljs-code">`Enter`</span>.
+<span class="hljs-bullet">4.</span> Navigate down the results list. Select <span class="hljs-strong">**GitHub Pull Requests**</span> (publisher: GitHub).
+<span class="hljs-bullet">5.</span> Activate the <span class="hljs-strong">**Install**</span> button. VS Code installs the extension and may show a notification.
+<span class="hljs-bullet">6.</span> After installation, VS Code prompts you to sign in. Activate <span class="hljs-strong">**Sign in to GitHub**</span>.
+<span class="hljs-bullet">7.</span> A browser window opens for GitHub OAuth. Approve the authorization and return to VS Code.
+<span class="hljs-bullet">8.</span> Verify: open the Explorer sidebar (<span class="hljs-code">`Ctrl+Shift+E`</span>). You should now see a <span class="hljs-strong">**GitHub**</span> section in the sidebar showing Pull Requests and Issues.
+
+<span class="hljs-strong">**Screen reader tip:**</span> After step 5, if the install notification disappears before you can read it, open Command Palette (<span class="hljs-code">`Ctrl+Shift+P`</span>) and run <span class="hljs-code">`Notifications: Focus Notification Toast`</span>.
+
+<span class="hljs-strong">**You are done when:**</span> The GitHub section appears in your Explorer sidebar and shows pull requests from your Learning Room repository.
+
+<span class="hljs-section">### Practice 15.2 Step-by-Step: Check Out a PR and Post a Comment</span>
+
+<span class="hljs-strong">**Goal:**</span> Check out someone else&#x27;s PR branch locally, read the diff in VS Code, and post one constructive review comment.
+
+<span class="hljs-strong">**Where you are working:**</span> VS Code with the GitHub Pull Requests extension installed.
+
+<span class="hljs-strong">**Estimated time:**</span> 10-15 minutes.
+
+<span class="hljs-bullet">1.</span> Open the Command Palette: <span class="hljs-code">`Ctrl+Shift+P`</span> (Mac: <span class="hljs-code">`Cmd+Shift+P`</span>).
+<span class="hljs-bullet">2.</span> Type <span class="hljs-code">`GitHub Pull Requests: Focus on Pull Requests View`</span> and select it. The Pull Requests panel opens.
+<span class="hljs-bullet">3.</span> Navigate the list of open PRs. Find one that is <span class="hljs-strong">**not yours**</span> (a classmate&#x27;s PR from Chapter 6, 7, or 14).
+<span class="hljs-bullet">4.</span> With the PR focused, press <span class="hljs-code">`Enter`</span> or activate <span class="hljs-strong">**Checkout**</span> from the context menu (<span class="hljs-code">`Shift+F10`</span> on Windows). VS Code switches to that PR&#x27;s branch.
+<span class="hljs-bullet">5.</span> Open the Command Palette again and run <span class="hljs-code">`GitHub Pull Requests: Open Changed Files`</span>. This shows the list of files the PR changed.
+<span class="hljs-bullet">6.</span> Open one changed file. VS Code opens the <span class="hljs-strong">**Diff Editor**</span> showing old content on the left and new content on the right.
+<span class="hljs-bullet">7.</span> Navigate the diff with the <span class="hljs-strong">**Accessible Diff Viewer**</span>: press <span class="hljs-code">`F7`</span> to move to the next change, <span class="hljs-code">`Shift+F7`</span> for the previous change. Your screen reader announces each change (added lines, removed lines).
+<span class="hljs-bullet">8.</span> Find one specific thing to comment on: a typo, an unclear sentence, a missing step, or something the author did well.
+<span class="hljs-bullet">9.</span> To add an inline comment: position your cursor on the line you want to comment on, then open Command Palette and run <span class="hljs-code">`GitHub Pull Requests: Add Comment`</span>. Type your constructive comment and activate <span class="hljs-strong">**Add Comment**</span>.
+<span class="hljs-bullet">10.</span> If the inline comment method is difficult, navigate to the PR on GitHub.com instead and add your comment in the <span class="hljs-strong">**Files changed**</span> tab.
+
+<span class="hljs-strong">**If checkout is blocked by permissions:**</span> You can still complete this challenge in read-only mode. Skip step 4 and instead open the PR on GitHub.com. Use the <span class="hljs-strong">**Files changed**</span> tab to read the diff and post your comment there.
+
+<span class="hljs-strong">**Screen reader tip:**</span> In the Diff Editor, <span class="hljs-code">`F7`</span> (Accessible Diff Viewer) is the most reliable way to navigate changes. It reads each hunk as a single block, which is much easier than navigating line by line.
+
+<span class="hljs-strong">**You are done when:**</span> You have posted at least one constructive review comment on someone else&#x27;s PR.
+
+<span class="hljs-section">### Completing Chapter 15, Part 1: Submit Your Evidence</span>
+
+Open your assigned setup or review practice issue and post a completion comment:
+
+<span class="hljs-code">```text
+Chapter 15 Part 1 completed:
+- Extension installed: yes / no
+- Signed in to GitHub: yes / no
+- PR reviewed: #[PR number by classmate]
+- Comment posted: yes (inline / on GitHub.com)
+- My comment was about: [one-sentence summary]</span></code></pre>
+<p>Close your Chapter 12 challenge issues when done.</p>
+<h3 id="expected-outcomes">Expected Outcomes</h3>
+<ul>
+<li>Student can install and authenticate the GitHub PR extension.</li>
+<li>Student can check out a PR branch in VS Code (or view it on GitHub.com).</li>
+<li>Student can navigate diffs using the Accessible Diff Viewer (<code>F7</code>).</li>
+<li>Student can post constructive, specific feedback on a classmate&#39;s work.</li>
+</ul>
+<h3 id="if-you-get-stuck">If You Get Stuck</h3>
+<ol>
+<li>Extension does not install? Reload VS Code: <code>Ctrl+Shift+P</code>, then run <code>Developer: Reload Window</code>.</li>
+<li>OAuth sign-in fails? Verify your GitHub account is active in the browser first, close VS Code, reopen, and retry.</li>
+<li>PR list is empty? Switch to &quot;All Open&quot; view in the GitHub Pull Requests panel.</li>
+<li>Checkout fails? Confirm you have write access to the repository. If not, use the read-only GitHub.com fallback.</li>
+<li>Diff Editor is hard to navigate? Press <code>F7</code> for the Accessible Diff Viewer mode, which is purpose-built for screen readers.</li>
+<li>Cannot find the Add Comment command? Use Command Palette and search for <code>GitHub Pull Requests: Add Comment</code>.</li>
+<li>Ask facilitator to help verify the GitHub PR panel and model one review comment.</li>
+<li>Finished but not sure you did it right? Compare your work against the <a href="solutions/solution-11-day2-pr.html">Challenge 11 reference solution</a>.</li>
+</ol>
+<blockquote>
+<p><strong>Continue learning:</strong> The GitHub Skills course <a href="https://github.com/skills/review-pull-requests">Review Pull Requests</a> practices approving, requesting changes, and using suggestions in an interactive format. See <a href="appendix-z-github-skills.html">Appendix Z</a> for the full catalog.</p>
+</blockquote>
+<h3 id="learning-moment">Learning Moment</h3>
+<p>PR tooling multiplies your impact. Reviewing others&#39; work refines your own standards and builds community trust. The comment you just wrote helps another student learn - and you learn by articulating what makes documentation clear.</p>
+<h3 id="learning-pattern-used-in-this-chapter">Learning Pattern Used in This Chapter</h3>
+<ol>
+<li>Install and configure the tool before starting the task.</li>
+<li>Practice on someone else&#39;s work first (reviewing is safer than authoring).</li>
+<li>Use accessibility tools (<code>F7</code> Accessible Diff Viewer) to navigate efficiently.</li>
+<li>Write specific, constructive feedback (not just &quot;looks good&quot;).</li>
+</ol>
+<h2 id="table-of-contents">Table of Contents</h2>
+<ol>
+<li><a href="#1-installing-the-github-pull-requests-extension">Installing the GitHub Pull Requests Extension</a></li>
+<li><a href="#2-viewing-pull-requests">Viewing Pull Requests</a></li>
+<li><a href="#3-checking-out-a-pull-request-branch">Checking Out a Pull Request Branch</a></li>
+<li><a href="#4-reviewing-pull-requests-in-vs-code">Reviewing Pull Requests in VS Code</a></li>
+<li><a href="#5-creating-a-pull-request-from-vs-code">Creating a Pull Request from VS Code</a></li>
+<li><a href="#6-pull-request-description-templates">Pull Request Description Templates</a></li>
+<li><a href="#7-commenting-and-requesting-changes">Commenting and Requesting Changes</a></li>
+<li><a href="#8-merging-pull-requests">Merging Pull Requests</a></li>
+</ol>
+<h2 id="1-installing-the-github-pull-requests-extension">1. Installing the GitHub Pull Requests Extension</h2>
+<p>The GitHub Pull Requests and Issues extension integrates GitHub&#39;s PR workflow directly into VS Code - no browser tab switching required.</p>
+<h3 id="installation-steps">Installation Steps</h3>
+<h4 id="method-1-extensions-sidebar">Method 1: Extensions Sidebar</h4>
+<ol>
+<li>Open Extensions sidebar: <code>Ctrl+Shift+X</code> (Mac: <code>Cmd+Shift+X</code>)</li>
+<li>Type &quot;GitHub Pul</li>
+</ol>
+<!-- content omitted for length -->
+
+<p>th-pull-requests/about-pull-requests)</p>
+<ul>
+<li><strong>4. Reviewing Pull Requests in VS Code:</strong> <a href="https://docs.github.com/en">GitHub Docs, home</a>, <a href="https://github.blog/changelog/">GitHub Changelog</a>, <a href="https://docs.github.com/en/get-started/using-git/about-git">About Git</a>, <a href="https://docs.github.com/en/get-started/using-github/github-flow">GitHub flow</a>, <a href="https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/about-pull-requests">About pull requests</a></li>
+<li><strong>5. Creating a Pull Request from VS Code:</strong> <a href="https://docs.github.com/en">GitHub Docs, home</a>, <a href="https://github.blog/changelog/">GitHub Changelog</a>, <a href="https://docs.github.com/en/get-started/using-git/about-git">About Git</a>, <a href="https://docs.github.com/en/get-started/using-github/github-flow">GitHub flow</a>, <a href="https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/about-pull-requests">About pull requests</a></li>
+<li><strong>6. Pull Request Description Templates:</strong> <a href="https://docs.github.com/en">GitHub Docs, home</a>, <a href="https://github.blog/changelog/">GitHub Changelog</a>, <a href="https://docs.github.com/en/get-started/using-git/about-git">About Git</a>, <a href="https://docs.github.com/en/get-started/using-github/github-flow">GitHub flow</a>, <a href="https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/about-pull-requests">About pull requests</a></li>
+<li><strong>7. Commenting and Requesting Changes:</strong> <a href="https://docs.github.com/en">GitHub Docs, home</a>, <a href="https://github.blog/changelog/">GitHub Changelog</a>, <a href="https://docs.github.com/en/get-started/using-git/about-git">About Git</a>, <a href="https://docs.github.com/en/get-started/using-github/github-flow">GitHub flow</a>, <a href="https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/about-pull-requests">About pull requests</a></li>
+<li><strong>8. Merging Pull Requests:</strong> <a href="https://docs.github.com/en">GitHub Docs, home</a>, <a href="https://github.blog/changelog/">GitHub Changelog</a>, <a href="https://docs.github.com/en/get-started/using-git/about-git">About Git</a>, <a href="https://docs.github.com/en/get-started/using-github/github-flow">GitHub flow</a>, <a href="https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/about-pull-requests">About pull requests</a></li>
+<li><strong>Keyboard Shortcuts - GitHub Pull Requests Extension:</strong> <a href="https://docs.github.com/en">GitHub Docs, home</a>, <a href="https://github.blog/changelog/">GitHub Changelog</a>, <a href="https://docs.github.com/en/get-started/using-git/about-git">About Git</a>, <a href="https://docs.github.com/en/get-started/using-github/github-flow">GitHub flow</a>, <a href="https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/about-pull-requests">About pull requests</a></li>
+<li><strong>Troubleshooting:</strong> <a href="https://docs.github.com/en">GitHub Docs, home</a>, <a href="https://github.blog/changelog/">GitHub Changelog</a>, <a href="https://docs.github.com/en/get-started/using-git/about-git">About Git</a>, <a href="https://docs.github.com/en/get-started/using-github/github-flow">GitHub flow</a>, <a href="https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/about-pull-requests">About pull requests</a></li>
+<li><strong>Try It: Review a PR from VS Code:</strong> <a href="https://docs.github.com/en">GitHub Docs, home</a>, <a href="https://github.blog/changelog/">GitHub Changelog</a>, <a href="https://docs.github.com/en/get-started/using-git/about-git">About Git</a>, <a href="https://docs.github.com/en/get-started/using-github/github-flow">GitHub flow</a>, <a href="https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/about-pull-requests">About pull requests</a></li>
+<li><strong>Part 2: Accessible Code Review:</strong> <a href="https://docs.github.com/en">GitHub Docs, home</a>, <a href="https://github.blog/changelog/">GitHub Changelog</a>, <a href="https://docs.github.com/en/get-started/using-git/about-git">About Git</a>, <a href="https://docs.github.com/en/get-started/using-github/github-flow">GitHub flow</a>, <a href="https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/about-pull-requests">About pull requests</a></li>
+</ul>
+<pre><code class="hljs"></code></pre>
+
+  </main>
+  <footer role="contentinfo" class="site-footer">
+    <p><strong>GIT Going with GitHub</strong> - A workshop by <a href="https://community-access.org">Community Access</a></p>
+    <p><a href="https://github.com/community-access/git-going-with-github">View on GitHub</a> · <a href="https://community-access.org">community-access.org</a></p>
+  </footer>
+
+  </body>
+</html>

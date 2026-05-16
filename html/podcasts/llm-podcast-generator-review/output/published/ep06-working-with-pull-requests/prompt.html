@@ -1,0 +1,432 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="GIT Going with GitHub - A two-day accessible open source workshop by Community Access">
+  <title>[06-working-with-pull-requests.md] Working with Pull Requests - GIT Going with GitHub</title>
+  <link rel="stylesheet" href="./styles/github-markdown.css">
+  <link rel="stylesheet" href="./styles/highlight.css">
+  <link rel="stylesheet" href="./styles/custom.css">
+  <style>
+    .markdown-body {
+      box-sizing: border-box;
+      min-width: 200px;
+      max-width: 980px;
+      margin: 0 auto;
+      padding: 45px;
+    }
+    @media (max-width: 767px) {
+      .markdown-body {
+        padding: 15px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+  <header class="site-header" role="banner">
+    <div class="site-header-inner">
+      <nav aria-label="Breadcrumb" class="breadcrumb">
+        <a href="./index.html">Home</a> <span aria-hidden="true">›</span> <span aria-current="page">[06-working-with-pull-requests.md] Working with Pull Requests</span>
+      </nav>
+      <div class="header-actions">
+        <a href="https://github.com/Community-Access/git-going-with-github/wiki" class="wiki-link" target="_blank" rel="noopener noreferrer">
+          <svg aria-hidden="true" focusable="false" width="16" height="16" viewBox="0 0 16 16" fill="currentColor">
+            <path d="M1.75 1h8.5c.966 0 1.75.784 1.75 1.75v5.5A1.75 1.75 0 0 1 10.25 10H7.06l-2.573 2.573A1.458 1.458 0 0 1 2 11.543V10h-.25A1.75 1.75 0 0 1 0 8.25v-5.5C0 1.784.784 1 1.75 1ZM1.5 2.75v5.5c0 .138.112.25.25.25h1a.75.75 0 0 1 .75.75v2.19l2.72-2.72a.749.749 0 0 1 .53-.22h3.5a.25.25 0 0 0 .25-.25v-5.5a.25.25 0 0 0-.25-.25h-8.5a.25.25 0 0 0-.25.25Zm13 2a.25.25 0 0 0-.25-.25h-.5a.75.75 0 0 1 0-1.5h.5c.966 0 1.75.784 1.75 1.75v5.5A1.75 1.75 0 0 1 14.25 12H14v1.543a1.457 1.457 0 0 1-2.487 1.03L9.22 12.28a.749.749 0 1 1 1.06-1.06l2.22 2.22v-2.19a.75.75 0 0 1 .75-.75h.25a.25.25 0 0 0 .25-.25v-5.5Z"/>
+          </svg>
+          Wiki
+        </a>
+        <form role="search" class="search-form" action="./search.html" method="get">
+        <label for="site-search" class="search-label">Search docs</label>
+        <input
+          type="search"
+          id="site-search"
+          class="search-input"
+          name="q"
+          placeholder="Search docs…"
+          autocomplete="off"
+          aria-label="Search documentation"
+        >
+        <button type="submit" class="search-button" aria-label="Submit search">
+          <svg aria-hidden="true" focusable="false" width="16" height="16" viewBox="0 0 16 16" fill="currentColor">
+            <path d="M10.68 11.74a6 6 0 0 1-7.922-8.982 6 6 0 0 1 8.982 7.922l3.04 3.04a.749.749 0 0 1-.326 1.275.749.749 0 0 1-.734-.215ZM11.5 7a4.499 4.499 0 1 0-8.997 0A4.499 4.499 0 0 0 11.5 7Z"/>
+          </svg>
+        </button>
+      </form>
+      </div>
+    </div>
+  </header>
+  <main id="main-content" class="markdown-body">
+    <p>You are writing a Git Going with GitHub podcast script.</p>
+<p>Audience:
+Blind and low-vision learners studying GitHub, Git, VS Code, open source, and accessible contribution workflows.</p>
+<p>Hosts:</p>
+<ul>
+<li>Alex: warm expert professor</li>
+<li>Jamie: curious professor who asks the questions learners may hesitate to ask</li>
+</ul>
+<p>Goal:
+Create a complete, conversational, two-host audio lesson. Teach every substantive concept from the Markdown source. Do not merely summarize. Do not omit administrative or accessibility content. Use varied phrasing and make it feel like a thoughtful NotebookLM-style teaching conversation.</p>
+<p>Scale rules:</p>
+<ul>
+<li>The source set may be large. Prioritize complete conceptual coverage over quoting every line.</li>
+<li>Use concise turns and avoid unnecessary verbosity.</li>
+</ul>
+<p>Required script markers:
+Use only these markers on their own lines:
+[ALEX]
+[JAMIE]
+[PAUSE]</p>
+<p>Narration constraints:</p>
+<ul>
+<li>Do not say chapter titles, section names, or &quot;chapter marker&quot; language out loud.</li>
+<li>Keep transitions natural so chapter separation can be handled in metadata, not spoken labels.</li>
+</ul>
+<p>Return JSON only:
+{
+  &quot;script&quot;: &quot;[ALEX]\n...\n&quot;,
+  &quot;chapters&quot;: [
+    {
+      &quot;title&quot;: &quot;Specific chapter title&quot;,
+      &quot;startSegmentIndex&quot;: 0,
+      &quot;sourceHeading&quot;: &quot;Heading represented&quot;
+    }
+  ],
+  &quot;coverageNotes&quot;: [
+    {
+      &quot;sourceHeading&quot;: &quot;Heading&quot;,
+      &quot;status&quot;: &quot;covered | partial | risk&quot;,
+      &quot;notes&quot;: &quot;Brief note&quot;
+    }
+  ]
+}</p>
+<p>Slug: ep06-working-with-pull-requests
+Sources:</p>
+<ul>
+<li>06-working-with-pull-requests.md</li>
+</ul>
+<p>Headings that must be represented:</p>
+<h1 id="06-working-with-pull-requestsmd-working-with-pull-requests">[06-working-with-pull-requests.md] Working with Pull Requests</h1>
+<h2 id="06-working-with-pull-requestsmd-creating-reviewing-and-merging-pull-requests-with-a-screen-reader">[06-working-with-pull-requests.md] Creating, Reviewing, and Merging Pull Requests with a Screen Reader</h2>
+<h2 id="06-working-with-pull-requestsmd-workshop-recommendation-chapter-6">[06-working-with-pull-requests.md] Workshop Recommendation Chapter 6</h2>
+<h3 id="06-working-with-pull-requestsmd-chapter-6-challenge-set">[06-working-with-pull-requests.md] Chapter 6 Challenge Set</h3>
+<h3 id="06-working-with-pull-requestsmd-cli-getting-started-principles-for-pull-request-work">[06-working-with-pull-requests.md] CLI getting-started principles for pull request work</h3>
+<h3 id="06-working-with-pull-requestsmd-challenge-61-step-by-step-create-one-small-branch-change">[06-working-with-pull-requests.md] Challenge 6.1 Step-by-Step: Create One Small Branch Change</h3>
+<h3 id="06-working-with-pull-requestsmd-challenge-62-step-by-step-open-a-linked-pr">[06-working-with-pull-requests.md] Challenge 6.2 Step-by-Step: Open a Linked PR</h3>
+<h3 id="06-working-with-pull-requestsmd-challenge-63-step-by-step-pass-required-checks">[06-working-with-pull-requests.md] Challenge 6.3 Step-by-Step: Pass Required Checks</h3>
+<h3 id="06-working-with-pull-requestsmd-expected-outcomes">[06-working-with-pull-requests.md] Expected Outcomes</h3>
+<h3 id="06-working-with-pull-requestsmd-if-you-get-stuck">[06-working-with-pull-requests.md] If You Get Stuck</h3>
+<h3 id="06-working-with-pull-requestsmd-learning-moment">[06-working-with-pull-requests.md] Learning Moment</h3>
+<h3 id="06-working-with-pull-requestsmd-why-this-feels-achievable">[06-working-with-pull-requests.md] Why this feels achievable</h3>
+<h3 id="06-working-with-pull-requestsmd-about-learning-cards-in-this-chapter">[06-working-with-pull-requests.md] About Learning Cards in This Chapter</h3>
+<h2 id="06-working-with-pull-requestsmd-local-git-alternative-the-full-branch-edit-pr-workflow">[06-working-with-pull-requests.md] Local Git Alternative: The Full Branch-Edit-PR Workflow</h2>
+<h2 id="06-working-with-pull-requestsmd-what-is-a-pull-request">[06-working-with-pull-requests.md] What Is a Pull Request?</h2>
+<h2 id="06-working-with-pull-requestsmd-navigating-to-pull-requests">[06-working-with-pull-requests.md] Navigating to Pull Requests</h2>
+<h3 id="06-working-with-pull-requestsmd-from-a-pr-notification">[06-working-with-pull-requests.md] From a PR notification</h3>
+<h1 id="06-working-with-pull-requestsmd-list-open-prs">[06-working-with-pull-requests.md] List open PRs</h1>
+<h1 id="06-working-with-pull-requestsmd-filter-by-review-status">[06-working-with-pull-requests.md] Filter by review status</h1>
+<h1 id="06-working-with-pull-requestsmd-view-a-specific-pr-in-the-terminal">[06-working-with-pull-requests.md] View a specific PR in the terminal</h1>
+<h1 id="06-working-with-pull-requestsmd-open-a-pr-in-your-browser">[06-working-with-pull-requests.md] Open a PR in your browser</h1>
+<h3 id="06-working-with-pull-requestsmd-learning-cards-navigating-to-pull-requests">[06-working-with-pull-requests.md] Learning Cards: Navigating to Pull Requests</h3>
+<h2 id="06-working-with-pull-requestsmd-the-pull-request-list-page">[06-working-with-pull-requests.md] The Pull Request List Page</h2>
+<h2 id="06-working-with-pull-requestsmd-anatomy-of-a-pull-request-page">[06-working-with-pull-requests.md] Anatomy of a Pull Request Page</h2>
+<h2 id="06-working-with-pull-requestsmd-navigating-the-pr-tab-bar">[06-working-with-pull-requests.md] Navigating the PR Tab Bar</h2>
+<h2 id="06-working-with-pull-requestsmd-reading-the-conversation-tab">[06-working-with-pull-requests.md] Reading the Conversation Tab</h2>
+<h3 id="06-working-with-pull-requestsmd-pr-description">[06-working-with-pull-requests.md] PR Description</h3>
+<h3 id="06-working-with-pull-requestsmd-status-checks-section">[06-working-with-pull-requests.md] Status Checks Section</h3>
+<h3 id="06-working-with-pull-requestsmd-review-comments">[06-working-with-pull-requests.md] Review Comments</h3>
+<h4 id="06-working-with-pull-requestsmd-resolving-conversations">[06-working-with-pull-requests.md] Resolving conversations</h4>
+<h3 id="06-working-with-pull-requestsmd-learning-cards-reading-the-conversation-tab">[06-working-with-pull-requests.md] Learning Cards: Reading the Conversation Tab</h3>
+<h2 id="06-working-with-pull-requestsmd-reading-the-commits-tab">[06-working-with-pull-requests.md] Reading the Commits Tab</h2>
+<h2 id="06-working-with-pull-requestsmd-reading-the-checks-tab">[06-working-with-pull-requests.md] Reading the Checks Tab</h2>
+<h3 id="06-working-with-pull-requestsmd-learning-cards-reading-the-checks-tab">[06-working-with-pull-requests.md] Learning Cards: Reading the Checks Tab</h3>
+<h2 id="06-working-with-pull-requestsmd-reading-the-files-changed-tab">[06-working-with-pull-requests.md] Reading the Files Changed Tab</h2>
+<h3 id="06-working-with-pull-requestsmd-file-tree-left-panel">[06-working-with-pull-requests.md] File Tree left panel</h3>
+<h3 id="06-working-with-pull-requestsmd-the-diff-for-a-file">[06-working-with-pull-requests.md] The Diff for a File</h3>
+<h4 id="06-working-with-pull-requestsmd-lines-in-a-diff-are-read-as">[06-working-with-pull-requests.md] Lines in a diff are read as</h4>
+<h3 id="06-working-with-pull-requestsmd-navigating-the-diff-with-a-screen-reader">[06-working-with-pull-requests.md] Navigating the diff with a screen reader</h3>
+<h3 id="06-working-with-pull-requestsmd-placing-an-inline-comment-on-a-diff-line">[06-working-with-pull-requests.md] Placing an inline comment on a diff line</h3>
+<h4 id="06-working-with-pull-requestsmd-multi-line-comment-windows">[06-working-with-pull-requests.md] Multi-line comment Windows</h4>
+<h4 id="06-working-with-pull-requestsmd-multi-line-comment-macos">[06-working-with-pull-requests.md] Multi-line comment macOS</h4>
+<h3 id="06-working-with-pull-requestsmd-viewing-comments-within-the-diff">[06-working-with-pull-requests.md] Viewing comments within the diff</h3>
+<h3 id="06-working-with-pull-requestsmd-learning-cards-reading-the-files-changed-tab">[06-working-with-pull-requests.md] Learning Cards: Reading the Files Changed Tab</h3>
+<h2 id="06-working-with-pull-requestsmd-opening-a-pull-request">[06-working-with-pull-requests.md] Opening a Pull Request</h2>
+<h3 id="06-working-with-pull-requestsmd-tool-cards-open-a-pull-request">[06-working-with-pull-requests.md] Tool Cards: Open a Pull Request</h3>
+<h3 id="06-working-with-pull-requestsmd-from-the-web-editor-workflow-editing-a-file-on-github">[06-working-with-pull-requests.md] From the web editor workflow editing a file on GitHub</h3>
+<h3 id="06-working-with-pull-requestsmd-from-a-fork-or-feature-branch">[06-working-with-pull-requests.md] From a fork or feature branch</h3>
+<h3 id="06-working-with-pull-requestsmd-filling-out-the-pr-form">[06-working-with-pull-requests.md] Filling out the PR form</h3>
+<h4 id="06-working-with-pull-requestsmd-title-field">[06-working-with-pull-requests.md] Title field</h4>
+<h4 id="06-working-with-pull-requestsmd-description-field">[06-working-with-pull-requests.md] Description field</h4>
+<h2 id="06-working-with-pull-requestsmd-summary">[06-working-with-pull-requests.md] Summary</h2>
+<h2 id="06-working-with-pull-requestsmd-changes">[06-working-with-pull-requests.md] Changes</h2>
+<h2 id="06-working-with-pull-requestsmd-related-issues">[06-working-with-pull-requests.md] Related Issues</h2>
+<h2 id="06-working-with-pull-requestsmd-testing">[06-working-with-pull-requests.md] Testing</h2>
+<h2 id="06-working-with-pull-requestsmd-screenshots--recordings">[06-working-with-pull-requests.md] Screenshots / recordings</h2>
+<h3 id="06-working-with-pull-requestsmd-setting-a-draft-pr">[06-working-with-pull-requests.md] Setting a Draft PR</h3>
+<h3 id="06-working-with-pull-requestsmd-draft-pull-requests---full-lifecycle">[06-working-with-pull-requests.md] Draft Pull Requests - Full Lifecycle</h3>
+<h4 id="06-working-with-pull-requestsmd-when-to-use-a-draft">[06-working-with-pull-requests.md] When to use a draft</h4>
+<h4 id="06-working-with-pull-requestsmd-what-a-draft-pr-does-differently">[06-working-with-pull-requests.md] What a draft PR does differently</h4>
+<h4 id="06-working-with-pull-requestsmd-mark-a-draft-ready-for-review">[06-working-with-pull-requests.md] Mark a draft ready for review</h4>
+<h4 id="06-working-with-pull-requestsmd-screen-reader-path">[06-working-with-pull-requests.md] Screen reader path</h4>
+<h4 id="06-working-with-pull-requestsmd-convert-an-open-pr-to-draft-after-opening">[06-working-with-pull-requests.md] Convert an open PR to draft after opening</h4>
+<h1 id="06-working-with-pull-requestsmd-create-a-draft-pr">[06-working-with-pull-requests.md] Create a draft PR</h1>
+<h1 id="06-working-with-pull-requestsmd-mark-a-draft-ready-for-review">[06-working-with-pull-requests.md] Mark a draft ready for review</h1>
+<h1 id="06-working-with-pull-requestsmd-check-pr-status-shows-draft-state">[06-working-with-pull-requests.md] Check PR status shows draft state</h1>
+<h1 id="06-working-with-pull-requestsmd-list-only-draft-prs">[06-working-with-pull-requests.md] List only draft PRs</h1>
+<h3 id="06-working-with-pull-requestsmd-learning-cards-opening-a-pull-request">[06-working-with-pull-requests.md] Learning Cards: Opening a Pull Request</h3>
+<h2 id="06-working-with-pull-requestsmd-requesting-reviewers">[06-working-with-pull-requests.md] Requesting reviewers</h2>
+<h2 id="06-working-with-pull-requestsmd-submitting-a-review">[06-working-with-pull-requests.md] Submitting a Review</h2>
+<h3 id="06-working-with-pull-requestsmd-starting-a-review">[06-working-with-pull-requests.md] Starting a review</h3>
+<h3 id="06-working-with-pull-requestsmd-completing-and-submitting-a-review">[06-working-with-pull-requests.md] Completing and submitting a review</h3>
+<h1 id="06-working-with-pull-requestsmd-view-the-pr-diff-in-your-terminal">[06-working-with-pull-requests.md] View the PR diff in your terminal</h1>
+<h1 id="06-working-with-pull-requestsmd-approve-a-pr">[06-working-with-pull-requests.md] Approve a PR</h1>
+<h1 id="06-working-with-pull-requestsmd-approve-with-a-comment">[06-working-with-pull-requests.md] Approve with a comment</h1>
+<h1 id="06-working-with-pull-requestsmd-request-changes">[06-working-with-pull-requests.md] Request changes</h1>
+<h1 id="06-working-with-pull-requestsmd-leave-a-comment-only-review-no-verdict">[06-working-with-pull-requests.md] Leave a comment-only review no verdict</h1>
+<h3 id="06-working-with-pull-requestsmd-github-shortcuts-for-pull-requests">[06-working-with-pull-requests.md] GitHub shortcuts for pull requests</h3>
+<h4 id="06-working-with-pull-requestsmd-on-the-pr-list-page">[06-working-with-pull-requests.md] On the PR list page</h4>
+<h4 id="06-working-with-pull-requestsmd-on-an-open-pull-request">[06-working-with-pull-requests.md] On an open pull request</h4>
+<h4 id="06-working-with-pull-requestsmd-on-the-files-changed-tab">[06-working-with-pull-requests.md] On the Files Changed tab</h4>
+<h3 id="06-working-with-pull-requestsmd-learning-cards-submitting-a-review">[06-working-with-pull-requests.md] Learning Cards: Submitting a Review</h3>
+<h3 id="06-working-with-pull-requestsmd-suggested-changes">[06-working-with-pull-requests.md] Suggested Changes</h3>
+<h4 id="06-working-with-pull-requestsmd-as-a-reviewer---inserting-a-suggestion">[06-working-with-pull-requests.md] As a reviewer - inserting a suggestion</h4>
+<h4 id="06-working-with-pull-requestsmd-as-an-author---applying-a-suggestion">[06-working-with-pull-requests.md] As an author - applying a suggestion</h4>
+<h4 id="06-working-with-pull-requestsmd-batching-multiple-suggestions-into-one-commit">[06-working-with-pull-requests.md] Batching multiple suggestions into one commit</h4>
+<h4 id="06-working-with-pull-requestsmd-when-to-use-suggestions-vs-comments">[06-working-with-pull-requests.md] When to use suggestions vs. comments</h4>
+<h3 id="06-working-with-pull-requestsmd-learning-cards-suggested-changes">[06-working-with-pull-requests.md] Learning Cards: Suggested Changes</h3>
+<h2 id="06-working-with-pull-requestsmd-understanding-merge-options-for-maintainers">[06-working-with-pull-requests.md] Understanding Merge Options for Maintainers</h2>
+<h1 id="06-working-with-pull-requestsmd-merge-with-default-strategy-merge-commit">[06-working-with-pull-requests.md] Merge with default strategy merge commit</h1>
+<h1 id="06-working-with-pull-requestsmd-squash-and-merge">[06-working-with-pull-requests.md] Squash and merge</h1>
+<h1 id="06-working-with-pull-requestsmd-rebase-and-merge">[06-working-with-pull-requests.md] Rebase and merge</h1>
+<h1 id="06-working-with-pull-requestsmd-delete-the-branch-after-merging">[06-working-with-pull-requests.md] Delete the branch after merging</h1>
+<h1 id="06-working-with-pull-requestsmd-enable-auto-merge-merges-when-checks-pass">[06-working-with-pull-requests.md] Enable auto-merge merges when checks pass</h1>
+<h2 id="06-working-with-pull-requestsmd-after-a-pr-is-merged">[06-working-with-pull-requests.md] After a PR is merged</h2>
+<h2 id="06-working-with-pull-requestsmd-auto-merge---merging-when-you-can39t-wait-around">[06-working-with-pull-requests.md] Auto-Merge - Merging When You Can&#39;t Wait Around</h2>
+<h3 id="06-working-with-pull-requestsmd-enabling-auto-merge-on-your-pr">[06-working-with-pull-requests.md] Enabling Auto-Merge on Your PR</h3>
+<h4 id="06-working-with-pull-requestsmd-screen-reader-path">[06-working-with-pull-requests.md] Screen reader path</h4>
+<h4 id="06-working-with-pull-requestsmd-what-happens-next">[06-working-with-pull-requests.md] What happens next</h4>
+<h3 id="06-working-with-pull-requestsmd-cancelling-auto-merge">[06-working-with-pull-requests.md] Cancelling Auto-Merge</h3>
+<h2 id="06-working-with-pull-requestsmd-practical-scenarios">[06-working-with-pull-requests.md] Practical Scenarios</h2>
+<h3 id="06-working-with-pull-requestsmd-scenario-a-quoti-want-to-review-an-assigned-prquot">[06-working-with-pull-requests.md] Scenario A: &quot;I want to review an assigned PR&quot;</h3>
+<h3 id="06-working-with-pull-requestsmd-scenario-b-quoti-want-to-respond-to-review-feedback-on-my-prquot">[06-working-with-pull-requests.md] Scenario B: &quot;I want to respond to review feedback on my PR&quot;</h3>
+<h3 id="06-working-with-pull-requestsmd-scenario-c-quotmy-pr-has-a-merge-conflictquot">[06-working-with-pull-requests.md] Scenario C: &quot;My PR has a merge conflict&quot;</h3>
+<h2 id="06-working-with-pull-requestsmd-common-pr-mistakes-to-avoid">[06-working-with-pull-requests.md] Common PR Mistakes to Avoid</h2>
+<h2 id="06-working-with-pull-requestsmd-writing-pr-descriptions-that-get-reviewed">[06-working-with-pull-requests.md] Writing PR Descriptions That Get Reviewed</h2>
+<h3 id="06-working-with-pull-requestsmd-what-reviewers-look-for">[06-working-with-pull-requests.md] What Reviewers Look For</h3>
+<h3 id="06-working-with-pull-requestsmd-the-closes-xx-pattern">[06-working-with-pull-requests.md] The Closes XX Pattern</h3>
+<h3 id="06-working-with-pull-requestsmd-beforeafter-structure">[06-working-with-pull-requests.md] Before/After Structure</h3>
+<h3 id="06-working-with-pull-requestsmd-a-pr-description-template">[06-working-with-pull-requests.md] A PR Description Template</h3>
+<h2 id="06-working-with-pull-requestsmd-summary">[06-working-with-pull-requests.md] Summary</h2>
+<h2 id="06-working-with-pull-requestsmd-changes-made">[06-working-with-pull-requests.md] Changes Made</h2>
+<h2 id="06-working-with-pull-requestsmd-related-issues">[06-working-with-pull-requests.md] Related Issues</h2>
+<h2 id="06-working-with-pull-requestsmd-testing">[06-working-with-pull-requests.md] Testing</h2>
+<h2 id="06-working-with-pull-requestsmd-checklist">[06-working-with-pull-requests.md] Checklist</h2>
+<h3 id="06-working-with-pull-requestsmd-common-description-mistakes">[06-working-with-pull-requests.md] Common Description Mistakes</h3>
+<h3 id="06-working-with-pull-requestsmd-good-vs-bad-side-by-side">[06-working-with-pull-requests.md] Good vs. Bad: Side by Side</h3>
+<h2 id="06-working-with-pull-requestsmd-summary">[06-working-with-pull-requests.md] Summary</h2>
+<h2 id="06-working-with-pull-requestsmd-changes-made">[06-working-with-pull-requests.md] Changes Made</h2>
+<h2 id="06-working-with-pull-requestsmd-related-issues">[06-working-with-pull-requests.md] Related Issues</h2>
+<h2 id="06-working-with-pull-requestsmd-testing">[06-working-with-pull-requests.md] Testing</h2>
+<h2 id="06-working-with-pull-requestsmd-checklist">[06-working-with-pull-requests.md] Checklist</h2>
+<h3 id="06-working-with-pull-requestsmd-learning-cards-writing-pr-descriptions-that-get-reviewed">[06-working-with-pull-requests.md] Learning Cards: Writing PR Descriptions That Get Reviewed</h3>
+<h2 id="06-working-with-pull-requestsmd-try-it-read-a-real-pull-request">[06-working-with-pull-requests.md] Try It: Read a Real Pull Request</h2>
+<h2 id="06-working-with-pull-requestsmd-authoritative-sources">[06-working-with-pull-requests.md] Authoritative Sources</h2>
+<h3 id="06-working-with-pull-requestsmd-section-level-source-map">[06-working-with-pull-requests.md] Section-Level Source Map</h3>
+<p>Markdown source:</p>
+<h2 id="source-06-working-with-pull-requestsmd">Source: 06-working-with-pull-requests.md</h2>
+<pre><code class="hljs language-markdown"><span class="hljs-section"># Working with Pull Requests</span>
+<span class="hljs-quote">&gt;
+&gt; <span class="hljs-strong">**Listen to Episode 6:**</span> [<span class="hljs-string">Working with Pull Requests</span>](<span class="hljs-link">../admin/PODCASTS.md</span>) - a conversational audio overview of this chapter. Listen before reading to preview the concepts, or after to reinforce what you learned.</span>
+
+<span class="hljs-quote">&gt; <span class="hljs-strong">**Related appendices:**</span> [<span class="hljs-string">Appendix C: Markdown Reference</span>](<span class="hljs-link">appendix-c-markdown-reference.md</span>) | [<span class="hljs-string">Appendix B: Screen Reader Cheat Sheet</span>](<span class="hljs-link">appendix-b-screen-reader-cheatsheet.md</span>)</span>
+<span class="hljs-quote">&gt; <span class="hljs-strong">**Authoritative sources:**</span> [<span class="hljs-string">GitHub Docs: About pull requests</span>](<span class="hljs-link">https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/about-pull-requests</span>) | [<span class="hljs-string">GitHub Accessibility Guide: Pull Requests</span>](<span class="hljs-link">https://accessibility.github.com/documentation/guide/pull-requests/</span>) | [<span class="hljs-string">GitHub Accessibility Lab: CLI Guide</span>](<span class="hljs-link">https://accessibility.github.com/documentation/guide/cli/</span>)</span>
+
+
+<span class="hljs-section">## Creating, Reviewing, and Merging Pull Requests with a Screen Reader</span>
+
+<span class="hljs-quote">&gt; <span class="hljs-strong">**See also:**</span> [<span class="hljs-string">Chapter 15: Code Review</span>](<span class="hljs-link">15-code-review.md</span>) covers the full review workflow including multi-file diffs and suggested changes.</span>
+
+<span class="hljs-quote">&gt; Pull requests are where your work becomes a contribution. This guide takes you through the full pull request workflow - from opening one to participating in review - using only your keyboard and screen reader.</span>
+<span class="hljs-quote">&gt;
+&gt; <span class="hljs-strong">**Official GitHub Accessibility Guide:**</span> GitHub publishes an NVDA-focused guide for working with pull requests using a screen reader at [<span class="hljs-string">Using GitHub Pull Requests with a Screen Reader</span>](<span class="hljs-link">https://accessibility.github.com/documentation/guide/pull-requests/</span>). This chapter covers the same material with additional perspectives (VoiceOver, low vision, CLI) and workshop-specific challenges. Use the official guide as a companion reference.</span>
+<span class="hljs-quote">&gt;
+&gt; <span class="hljs-strong">**Screen reader note - New Files Changed Experience:**</span> This guide uses GitHub&#x27;s improved Files Changed experience, which adds proper ARIA landmark structure to the Files Changed tab, including the file tree and diff navigation. This feature may already be active for your account - it has been broadly rolled out and may no longer appear as a Feature Preview toggle at all.</span>
+<span class="hljs-quote">&gt;
+&gt; <span class="hljs-strong">**To verify:**</span> Activate the <span class="hljs-strong">**User Menu**</span> button (top-right of any GitHub page) → activate <span class="hljs-strong">**&quot;Feature preview&quot;**</span> → scan the list for <span class="hljs-strong">**&quot;New Files Changed Experience&quot;**</span>:</span>
+<span class="hljs-quote">&gt;
+&gt; - If listed and the toggle announces <span class="hljs-strong">**&quot;Pressed&quot;**</span> (or <span class="hljs-strong">**&quot;Disable&quot;**</span>) - already enabled, no action needed</span>
+<span class="hljs-quote">&gt; - If listed but <span class="hljs-strong">**not Pressed**</span> (or <span class="hljs-strong">**&quot;Enable&quot;**</span>) - activate the toggle to enable it</span>
+<span class="hljs-quote">&gt; - If not listed at all - the feature has graduated to the standard interface; it is active automatically</span>
+<span class="hljs-quote">&gt;
+&gt; Full step-by-step instructions with per-screen-reader commands are in [<span class="hljs-string">Pre-Workshop Setup, Step 4</span>](<span class="hljs-link">00-pre-workshop-setup.md#step-4---check-github-feature-preview-settings</span>).</span>
+<span class="hljs-quote">&gt;
+&gt; <span class="hljs-strong">**Browse vs Focus Mode (NVDA):**</span> Use <span class="hljs-strong">**Browse Mode**</span> (the default) for reading PR conversations, navigating headings, and reviewing diffs. Switch to <span class="hljs-strong">**Focus Mode**</span> (`NVDA+Space`) only when you need to type in comment boxes or search fields. Switch back to Browse Mode to resume navigation. Maximize your browser window for consistent landmark layout.</span>
+
+
+<span class="hljs-section">## Workshop Recommendation (Chapter 6)</span>
+
+Chapter 6 is the first <span class="hljs-strong">**PR-validated chapter**</span> where students convert issue work into merge-ready contributions.
+
+<span class="hljs-bullet">-</span> <span class="hljs-strong">**Challenge count:**</span> 3
+<span class="hljs-bullet">-</span> <span class="hljs-strong">**Time per challenge:**</span> under 10 minutes each
+<span class="hljs-bullet">-</span> <span class="hljs-strong">**Evidence:**</span> PR metadata, bot checks, and merged issue linkage
+<span class="hljs-bullet">-</span> <span class="hljs-strong">**Pattern:**</span> small change -&gt; linked PR -&gt; green checks
+
+<span class="hljs-section">### Chapter 6 Challenge Set</span>
+
+<span class="hljs-bullet">1.</span> <span class="hljs-strong">**Create one small branch change**</span> - edit a practice file on a new branch.
+<span class="hljs-bullet">2.</span> <span class="hljs-strong">**Open a linked PR**</span> - use the PR template and include <span class="hljs-code">`Closes #XX`</span>.
+<span class="hljs-bullet">3.</span> <span class="hljs-strong">**Pass required checks**</span> - respond to bot feedback until all required checks pass.
+
+<span class="hljs-section">### CLI getting-started principles for pull request work</span>
+
+For reliable PR workflows in the terminal:
+
+<span class="hljs-bullet">1.</span> Check current branch before pushing (<span class="hljs-code">`git branch --show-current`</span>).
+<span class="hljs-bullet">2.</span> Keep PR scope small (one focused change per branch).
+<span class="hljs-bullet">3.</span> Confirm issue linkage in plain text (<span class="hljs-code">`Closes #&lt;number&gt;`</span>).
+<span class="hljs-bullet">4.</span> Validate check status after each push (<span class="hljs-code">`gh pr checks`</span>).
+<span class="hljs-bullet">5.</span> Prefer documented command options only (<span class="hljs-code">`gh pr --help`</span>).
+
+<span class="hljs-quote">&gt; <span class="hljs-strong">**Branch guidance for Chapter 6:**</span> This is the first chapter where you edit files and create branches. Use one of these two paths:</span>
+<span class="hljs-quote">&gt;
+&gt; - <span class="hljs-strong">**Web editor (recommended for beginners):**</span> When you edit a file on GitHub.com and click &quot;Propose changes,&quot; GitHub creates a branch for you automatically. Name it `fix/yourname-issueXX` (for example, `fix/maria-issue42`).</span>
+<span class="hljs-quote">&gt; - <span class="hljs-strong">**Local Git (if you cloned in Block 0):**</span> Create a feature branch with `git checkout -b fix/yourname-issueXX` from `main`. See the &quot;Local Git Alternative&quot; section below for the full command sequence.</span>
+<span class="hljs-quote">&gt;
+&gt; <span class="hljs-strong">**Do not reuse your `learn/<span class="language-xml"><span class="hljs-tag">&lt;<span class="hljs-name">username</span>&gt;</span></span>` branch for this short exercise unless your facilitator tells you to.**</span> Chapter 6 works best with a short-lived feature branch such as `fix/yourname-issueXX`, because it teaches the pull request loop without mixing multiple challenges on one branch.</span>
+
+<span class="hljs-section">### Challenge 6.1 Step-by-Step: Create One Small Branch Change</span>
+
+<span class="hljs-strong">**Goal:**</span> Edit one of the practice files and save your change on a new branch.
+
+<span class="hljs-strong">**Where you are working:**</span> your Learning Room repository on GitHub.com, using the web editor.
+
+<span class="hljs-strong">**Before you start:**</span> Open your <span class="hljs-strong">**assigned Chapter 6.1 challenge issue**</span> (the one titled &quot;Chapter 6.1: Create One Small Branch Change (@yourname)&quot;). The issue description tells you which file to edit and what to fix.
+
+The Learning Room has three practice files with intentional problems. Your assigned issue points you to one of them:
+
+The following table summarizes the practice files in the learning-room, what each file contains, and the type of issues to look for.
+
+| File | What it contains | What to fix |
+|------|-----------------|-------------|
+| <span class="hljs-code">`docs/welcome.md`</span> | Introduction to open source contribution | Three <span class="hljs-code">`[TODO]`</span> sections where content is missing |
+| <span class="hljs-code">`docs/keyboard-shortcuts.md`</span> | Screen reader shortcut reference tables | Intentional errors in shortcut references |
+| <span class="hljs-code">`docs/setup-guide.md`</span> | Getting-started instructions | Broken links and incomplete steps |
+
+<span class="hljs-strong">**Steps using the web editor:**</span>
+
+<span class="hljs-bullet">1.</span> In your Learning Room repository, navigate to the file specified in your issue. Use the file tree or the &quot;Go to file&quot; button (<span class="hljs-code">`T`</span> keyboard shortcut).
+<span class="hljs-bullet">2.</span> Open the file and activate the <span class="hljs-strong">**pencil icon**</span> (Edit this file) button.
+<span class="hljs-bullet">   -</span> Screen reader users (NVDA/JAWS): Press <span class="hljs-code">`B`</span> to navigate buttons, find &quot;Edit this file,&quot; and press <span class="hljs-code">`Enter`</span>.
+<span class="hljs-bullet">   -</span> VoiceOver users: Press <span class="hljs-code">`VO+U`</span>, open Buttons rotor, find &quot;Edit this file,&quot; and press <span class="hljs-code">`VO+Space`</span>.
+<span class="hljs-bullet">3.</span> The file opens in the web editor. Make your change. For example:
+<span class="hljs-bullet">   -</span> If your issue is about a <span class="hljs-code">`[TODO]`</span> section: replace the <span class="hljs-code">`[TODO]`</span> placeholder with the requested content (one to three sentences).
+<span class="hljs-bullet">   -</span> If your issue is about a broken link: find and correct the URL.
+<span class="hljs-bullet">   -</span> If your issue is about a shortcut error: find and fix the incorrect value in the table.
+<span class="hljs-bullet">4.</span> Keep your change small and focused. Edit only what the issue asks for.
+
+<span class="hljs-strong">**Proposing your changes (this creates your branch):**</span>
+
+<span class="hljs-bullet">5.</span> After editing, activate the <span class="hljs-strong">**Commit changes**</span> button (green button above the editor).
+<span class="hljs-bullet">6.</span> A dialog appears. In the <span class="hljs-strong">**Branch name**</span> field, type: <span class="hljs-code">`fix/yourname-issueXX`</span> (replace <span class="hljs-code">`yourname`</span> with your GitHub username, and <span class="hljs-code">`XX`</span> with the issue number).
+<span class="hljs-bullet">7.</span> Select <span class="hljs-strong">**Create a new branch for this commit and start a pull request**</span>.
+<span class="hljs-bullet">8.</span> Activate <span class="hljs-strong">**Propose changes**</span>.
+
+<span class="hljs-strong">**You are done when:**</span> GitHub shows the &quot;Open a pull request&quot; page. Your file change is saved on a new branch. Continue to Challenge 6.2.
+
+<span class="hljs-section">### Challenge 6.2 Step-by-Step: Open a Linked PR</span>
+
+<span class="hljs-strong">**Goal:**</span> Open a pull request
+
+<span class="hljs-quote">&gt; <span class="hljs-strong">**Agentic strategy:**</span> AI agents do not just deploy code directly; they submit pull requests. Learning to edit a file, format it in Markdown, and review a PR today prepares you to audit and approve AI-generated changes tomorrow. Make your Markdown clean and structured, and include the `Closes #XX` line that links to your challenge issue so it closes automatically on merge.</span>
+
+<span class="hljs-strong">**Where you are working:**</span> the &quot;Open a pull request&quot; page that appeared after Challenge 6.1 (or navigate to Pull Requests tab and select &quot;Compare and pull request&quot;).
+
+<span class="hljs-bullet">1.</span> In the <span class="hljs-strong">**Title**</span> field, write a short description of your change. Examples:
+<span class="hljs-bullet">   -</span> &quot;Complete the Who Can Contribute section in welcome.md&quot;
+<span class="hljs-bullet">   -</span> &quot;Fix broken accessibility settings link in setup-guide.md&quot;
+<span class="hljs-bullet">   -</span> &quot;Correct NVDA modifier key in keyboard-shortcuts.md&quot;
+<span class="hljs-bullet">2.</span> In the <span class="hljs-strong">**Body**</span> field, use the PR template if one is provided. Make sure to include:
+<span class="hljs-bullet">   -</span> A summary of what you changed and why (at least 50 characters).
+<span class="hljs-bullet">   -</span> The line <span class="hljs-code">`Closes #XX`</span> where <span class="hljs-code">`XX`</span> is the number of your <span class="hljs-strong">**assigned Chapter 6 challenge issue**</span>.
+<span class="hljs-bullet">3.</span> Verify the <span class="hljs-strong">**base branch**</span> is <span class="hljs-code">`main`</span> and the <span class="hljs-strong">**compare branch**</span> is your <span class="hljs-code">`fix/yourname-issueXX`</span> branch.
+<span class="hljs-bullet">4.</span> Activate the <span class="hljs-strong">**Create pull request**</span> button.
+
+<span class="hljs-strong">**You are done when:**</span> Your PR appears in the Pull Requests list. The bot will begin running checks within about 30 seconds. Continue to Challenge 6.3.
+
+<span class="hljs-section">### Challenge 6.3 Step-by-Step: Pass Required Checks</span>
+
+<span class="hljs-strong">**Goal:**</span> Read bot feedback, fix any issues it finds, and get all required checks to pass.
+
+<span class="hljs-strong">**Where you are working:**</span> the Conversation tab of your open pull request.
+
+<span class="hljs-bullet">1.</span> Wait approximately 30 seconds after opening the PR. The bot posts a validation comment.
+<span class="hljs-bullet">2.</span> Read the bot comment carefully. It checks:
+<span class="hljs-bullet">   -</span> That your PR references an issue with <span class="hljs-code">`Closes #XX`</span>.
+<span class="hljs-bullet">   -</span> That your PR description is detailed enough (50+ characters).
+<span class="hljs-bullet">   -</span> That your changed files are in the <span class="hljs-code">`learning-room/`</span> folder.
+<span class="hljs-bullet">   -</span> Accessibility checks: heading hierarchy, descriptive link text, valid alt text.
+<span class="hljs-bullet">3.</span> If
+
+&lt;!-- content omitted for length --&gt;
+
+ecently closed PR:
+
+<span class="hljs-bullet">1.</span> Navigate to Pull Requests (<span class="hljs-code">`G`</span> then <span class="hljs-code">`P`</span> in Focus Mode)
+<span class="hljs-bullet">2.</span> Open the first PR in the list (press <span class="hljs-code">`Enter`</span> on its title)
+<span class="hljs-bullet">3.</span> <span class="hljs-strong">**Read the description**</span> - press <span class="hljs-code">`2`</span> to jump to the first section heading, then arrow down to read. Look for: which file was changed (<span class="hljs-code">`docs/welcome.md`</span>, <span class="hljs-code">`docs/keyboard-shortcuts.md`</span>, or <span class="hljs-code">`docs/setup-guide.md`</span>)? Which challenge was this PR solving? Does the description reference <span class="hljs-code">`Closes #XX`</span>?
+<span class="hljs-bullet">4.</span> <span class="hljs-strong">**Check the conversation**</span> - press <span class="hljs-code">`3`</span> to jump between comments. Read what the validation bot reported - did the bot find any accessibility issues like broken headings or non-descriptive links? How did the author respond?
+<span class="hljs-bullet">5.</span> <span class="hljs-strong">**Look at the diff**</span> - press <span class="hljs-code">`D`</span> to the &quot;Pull request tabs&quot; landmark, then navigate to &quot;Files changed&quot; and press <span class="hljs-code">`Enter`</span>. Press <span class="hljs-code">`H`</span> to scan the changed file headings. If the PR touched <span class="hljs-code">`docs/welcome.md`</span>, you should see <span class="hljs-code">`+`</span> lines where the <span class="hljs-code">`[TODO]`</span> sections were filled in. If it touched <span class="hljs-code">`docs/keyboard-shortcuts.md`</span>, you should see new rows added to a shortcut table.
+
+<span class="hljs-strong">**You&#x27;re done.**</span> You just read a complete PR - description, conversation, and code changes.
+
+<span class="hljs-quote">&gt; <span class="hljs-strong">**What success feels like:**</span> You followed a PR from description to diff using only headings and landmarks. The next time you open a PR - yours or someone else&#x27;s - you&#x27;ll know exactly where everything is.</span>
+
+
+<span class="hljs-quote">&gt; ### Day 2 Amplifier - Accessibility Agents: `@pr-review`</span>
+<span class="hljs-quote">&gt;
+&gt; <span class="hljs-strong">**Review at least two pull requests manually before using any agent.**</span> A review generated by `@pr-review` is only as useful as your ability to read, edit, and challenge it. The agent writes a first draft - you supply the context, the history, and the final judgment that no diff can contain.</span>
+<span class="hljs-quote">&gt;
+&gt; Once you have mastered manual pull request review:</span>
+<span class="hljs-quote">&gt;
+&gt; - <span class="hljs-strong">**In VS Code**</span> - `@pr-review review PR #N` generates line-numbered diffs with change maps, risk assessment, before/after snapshots, CI results, and suggested inline comments - a documented starting point for your own review, not a replacement for it</span>
+<span class="hljs-quote">&gt; - <span class="hljs-strong">**In your repo**</span> - Accessibility Agents&#x27; review capabilities work across every repository you have access to by default; fork [<span class="hljs-string">accessibility-agents</span>](<span class="hljs-link">https://github.com/Community-Access/accessibility-agents</span>) and those capabilities travel with your project from day one</span>
+<span class="hljs-quote">&gt; - <span class="hljs-strong">**In the cloud**</span> - GitHub Agentic Workflows can auto-generate PR descriptions, verify linked issues, and post accessibility impact summaries on a `pull<span class="hljs-emphasis">_request` trigger - running the moment a PR is opened, whether or not anyone is watching
+&gt;
+&gt; *The agent documents the diff. You bring the context that no diff can contain.*
+
+
+&gt; <span class="hljs-strong">**Challenge Time:**</span> Go to the [<span class="hljs-string">Challenge Hub</span>](<span class="hljs-link">CHALLENGES.md</span>) and complete <span class="hljs-strong">**Challenges 4, 5, and 6**</span> to open your first PR. Gandalf will guide you from there.
+
+---
+
+
+*Next: [<span class="hljs-string">Chapter 07: Merge Conflicts</span>](<span class="hljs-link">07-merge-conflicts.md</span>)*
+*Back: [<span class="hljs-string">Chapter 05: Working with Issues</span>](<span class="hljs-link">05-working-with-issues.md</span>)*
+*Related appendices: [<span class="hljs-string">Appendix C: Markdown Reference</span>](<span class="hljs-link">appendix-c-markdown-reference.md</span>) | [<span class="hljs-string">Appendix B: Screen Reader Cheat Sheet</span>](<span class="hljs-link">appendix-b-screen-reader-cheatsheet.md</span>)*
+
+## Authoritative Sources
+
+Use these official references when you need the current source of truth for facts in this chapter.
+
+- [<span class="hljs-string">GitHub Docs, home</span>](<span class="hljs-link">https://docs.github.com/en</span>)
+- [<span class="hljs-string">GitHub Changelog</span>](<span class="hljs-link">https://github.blog/changelog/</span>)
+- [<span class="hljs-string">GitHub Docs: About pull requests</span>](<span class="hljs-link">https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/about-pull-requests</span>)
+
+### Section-Level Source Map
+
+Use this map to verify facts for each major section in this file.
+
+- <span class="hljs-strong">**Creating, Reviewing, and Merging Pull Requests:**</span> [<span class="hljs-string">GitHub Docs: About pull requests</span>](<span class="hljs-link">https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/about-pull-requests</span>), [<span class="hljs-string">GitHub Docs, home</span>](<span class="hljs-link">https://docs.github.com/en</span>)
+- <span class="hljs-strong">**Challenge and workflow guidance:**</span> [<span class="hljs-string">GitHub Docs, home</span>](<span class="hljs-link">https://docs.github.com/en</span>), [<span class="hljs-string">GitHub Changelog</span>](<span class="hljs-link">https://github.blog/changelog/</span>)
+- <span class="hljs-strong">**CLI pull request workflow guidance:**</span> [<span class="hljs-string">GitHub Docs, home</span>](<span class="hljs-link">https://docs.github.com/en</span>), [<span class="hljs-string">GitHub Changelog</span>](<span class="hljs-link">https://github.blog/changelog/</span>)</span></span></code></pre>
+
+  </main>
+  <footer role="contentinfo" class="site-footer">
+    <p><strong>GIT Going with GitHub</strong> - A workshop by <a href="https://community-access.org">Community Access</a></p>
+    <p><a href="https://github.com/community-access/git-going-with-github">View on GitHub</a> · <a href="https://community-access.org">community-access.org</a></p>
+  </footer>
+
+  </body>
+</html>
