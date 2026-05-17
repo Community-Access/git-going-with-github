@@ -5,18 +5,34 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="description" content="GIT Going with GitHub - A two-day accessible open source workshop by Community Access">
   <title>Appendix G: VS Code Accessibility Reference - GIT Going with GitHub</title>
-  <link rel="stylesheet" href="./styles/github-markdown.css">
-  <link rel="stylesheet" href="./styles/highlight.css">
-  <link rel="stylesheet" href="./styles/custom.css">
+  <link rel="stylesheet" href="../../../styles/github-markdown.css">
+  <link rel="stylesheet" href="../../../styles/highlight.css">
+  <link rel="stylesheet" href="../../../styles/custom.css">
   <style>
     .markdown-body {
       box-sizing: border-box;
-      min-width: 200px;
+      min-width: 0;
       max-width: 980px;
-      margin: 0 auto;
+      margin: 0;
       padding: 45px;
     }
+
+    .page-layout {
+      max-width: 1320px;
+      margin: 0 auto;
+      padding: 1rem 1rem 2rem;
+      display: grid;
+      grid-template-columns: minmax(240px, 300px) minmax(0, 1fr);
+      gap: 1.25rem;
+      align-items: start;
+    }
+
     @media (max-width: 767px) {
+      .page-layout {
+        grid-template-columns: 1fr;
+        padding: 0.5rem 0.5rem 1rem;
+      }
+
       .markdown-body {
         padding: 15px;
       }
@@ -28,7 +44,7 @@
   <header class="site-header" role="banner">
     <div class="site-header-inner">
       <nav aria-label="Breadcrumb" class="breadcrumb">
-        <a href="./index.html">Home</a> <span aria-hidden="true">›</span> <span aria-current="page">Appendix G: VS Code Accessibility Reference</span>
+        <a href="../../../index.html">Home</a> <span aria-hidden="true">›</span> <span aria-current="page">Appendix G: VS Code Accessibility Reference</span>
       </nav>
       <div class="header-actions">
         <a href="https://github.com/Community-Access/git-going-with-github/wiki" class="wiki-link" target="_blank" rel="noopener noreferrer">
@@ -37,7 +53,7 @@
           </svg>
           Wiki
         </a>
-        <form role="search" class="search-form" action="./search.html" method="get">
+        <form role="search" class="search-form" action="../../../search.html" method="get">
         <label for="site-search" class="search-label">Search docs</label>
         <input
           type="search"
@@ -57,11 +73,198 @@
       </div>
     </div>
   </header>
-  <main id="main-content" class="markdown-body">
-    <h1 id="appendix-g-vs-code-accessibility-reference">Appendix G: VS Code Accessibility Reference</h1>
-<nav class="quick-jumps" aria-label="Quick Jumps"><strong class="quick-jumps-label">Quick Jumps</strong><ul class="quick-jumps-list"><li><a href="#complete-technical-reference-for-screen-reader-users">Complete Technical Reference for Screen Reader Users</a></li><li style="margin-left:1.5em"><a href="#learning-cards-vs-code-accessibility-reference-overview">Learning Cards: VS Code Accessibility Reference Overview</a></li><li><a href="#table-of-contents">Table of Contents</a></li><li><a href="#1-complete-accessibility-settings-reference">1. Complete Accessibility Settings Reference</a></li><li style="margin-left:1.5em"><a href="#core-accessibility-settings">Core Accessibility Settings</a></li><li style="margin-left:1.5em"><a href="#diff-and-merge-settings">Diff and Merge Settings</a></li><li style="margin-left:1.5em"><a href="#terminal-settings">Terminal Settings</a></li><li style="margin-left:1.5em"><a href="#notification-settings">Notification Settings</a></li><li><a href="#2-audio-cues---all-options">2. Audio Cues - All Options</a></li><li style="margin-left:1.5em"><a href="#accessing-audio-cue-settings">Accessing Audio Cue Settings</a></li><li style="margin-left:1.5em"><a href="#audio-cue-values">Audio Cue Values</a></li><li style="margin-left:1.5em"><a href="#complete-accessibility-signals-list">Complete Accessibility Signals List</a></li><li style="margin-left:1.5em"><a href="#customizing-signal-sounds">Customizing Signal Sounds</a></li><li style="margin-left:3em"><a href="#sound-file-requirements">Sound file requirements</a></li><li><a href="#3-accessible-diff-viewer---complete-guide">3. Accessible Diff Viewer - Complete Guide</a></li><li style="margin-left:1.5em"><a href="#when-to-use-accessible-diff-viewer">When to Use Accessible Diff Viewer</a></li><li style="margin-left:1.5em"><a href="#opening-accessible-diff-viewer">Opening Accessible Diff Viewer</a></li><li style="margin-left:1.5em"><a href="#diff-viewer-structure">Diff Viewer Structure</a></li><li style="margin-left:3em"><a href="#top-level-structure">Top-level structure</a></li><li style="margin-left:3em"><a href="#line-prefixes">Line prefixes</a></li><li style="margin-left:1.5em"><a href="#navigating-hunks">Navigating Hunks</a></li><li style="margin-left:3em"><a href="#hunk--a-block-of-related-changes">Hunk = a block of related changes</a></li><li style="margin-left:1.5em"><a href="#screen-reader-specific-navigation">Screen Reader-Specific Navigation</a></li><li style="margin-left:3em"><a href="#nvdajaws">NVDA/JAWS</a></li><li style="margin-left:3em"><a href="#voiceover">VoiceOver</a></li><li style="margin-left:1.5em"><a href="#understanding-context-lines">Understanding Context Lines</a></li><li style="margin-left:3em"><a href="#example">Example</a></li><li style="margin-left:1.5em"><a href="#inline-diff-view-vs-side-by-side">Inline Diff View vs Side-by-Side</a></li><li style="margin-left:3em"><a href="#inline-view-recommended-for-screen-readers">Inline view (recommended for screen readers)</a></li><li style="margin-left:3em"><a href="#side-by-side-view-default-visual">Side-by-side view (default, visual)</a></li><li style="margin-left:3em"><a href="#to-switch-to-inline-view">To switch to inline view</a></li><li style="margin-left:1.5em"><a href="#learning-cards-accessible-diff-viewer">Learning Cards: Accessible Diff Viewer</a></li><li><a href="#4-screen-reader-specific-configurations">4. Screen Reader-Specific Configurations</a></li><li style="margin-left:1.5em"><a href="#nvda-configuration-for-vs-code">NVDA Configuration for VS Code</a></li><li style="margin-left:3em"><a href="#recommended-nvda-settings">Recommended NVDA settings</a></li><li style="margin-left:3em"><a href="#nvda-add-ons-for-vs-code">NVDA add-ons for VS Code</a></li><li style="margin-left:3em"><a href="#vs-code-specific-nvda-commands">VS Code-specific NVDA commands</a></li><li style="margin-left:1.5em"><a href="#jaws-configuration-for-vs-code">JAWS Configuration for VS Code</a></li><li style="margin-left:3em"><a href="#recommended-jaws-settings">Recommended JAWS settings</a></li><li style="margin-left:3em"><a href="#jaws-scripts-for-vs-code">JAWS scripts for VS Code</a></li><li style="margin-left:3em"><a href="#vs-code-specific-jaws-commands">VS Code-specific JAWS commands</a></li><li style="margin-left:1.5em"><a href="#voiceover-configuration-for-vs-code-macos">VoiceOver Configuration for VS Code (macOS)</a></li><li style="margin-left:3em"><a href="#recommended-voiceover-utility-settings">Recommended VoiceOver Utility settings</a></li><li style="margin-left:3em"><a href="#vs-code-specific-voiceover-commands">VS Code-specific VoiceOver commands</a></li><li style="margin-left:3em"><a href="#quick-nav-navigation-when-enabled">Quick Nav navigation (when enabled)</a></li><li><a href="#5-complete-keyboard-shortcuts">5. Complete Keyboard Shortcuts</a></li><li style="margin-left:1.5em"><a href="#global-navigation">Global Navigation</a></li><li style="margin-left:1.5em"><a href="#sidebar-panels">Sidebar Panels</a></li><li style="margin-left:1.5em"><a href="#editor---file-operations">Editor - File Operations</a></li><li style="margin-left:1.5em"><a href="#editor---navigation">Editor - Navigation</a></li><li style="margin-left:1.5em"><a href="#editor---editing">Editor - Editing</a></li><li style="margin-left:1.5em"><a href="#editor---find-and-replace">Editor - Find and Replace</a></li><li style="margin-left:1.5em"><a href="#editor---multi-cursor">Editor - Multi-Cursor</a></li><li style="margin-left:1.5em"><a href="#terminal">Terminal</a></li><li style="margin-left:1.5em"><a href="#source-control-git">Source Control (Git)</a></li><li style="margin-left:1.5em"><a href="#diff-viewer">Diff Viewer</a></li><li style="margin-left:1.5em"><a href="#copilot">Copilot</a></li><li style="margin-left:1.5em"><a href="#accessibility-features">Accessibility Features</a></li><li style="margin-left:1.5em"><a href="#problems-panel">Problems Panel</a></li><li style="margin-left:1.5em"><a href="#markdown-preview">Markdown Preview</a></li><li><a href="#6-accessibility-signals-types-and-customization">6. Accessibility Signals Types and Customization</a></li><li style="margin-left:1.5em"><a href="#announcement-verbosity-settings">Announcement Verbosity Settings</a></li><li style="margin-left:1.5em"><a href="#custom-announcement-timing">Custom Announcement Timing</a></li><li style="margin-left:1.5em"><a href="#signal-priorities">Signal Priorities</a></li><li style="margin-left:1.5em"><a href="#learning-cards-accessibility-signals">Learning Cards: Accessibility Signals</a></li><li><a href="#7-settingsjson-configuration-examples">7. Settings.json Configuration Examples</a></li><li style="margin-left:1.5em"><a href="#minimal-screen-reader-profile">Minimal Screen Reader Profile</a></li><li style="margin-left:3em"><a href="#for-users-who-prefer-minimal-announcements-and-use-accessible-view-manually">For users who prefer minimal announcements and use Accessible View manually</a></li><li style="margin-left:1.5em"><a href="#maximum-feedback-profile">Maximum Feedback Profile</a></li><li style="margin-left:3em"><a href="#for-users-who-want-all-audio-and-verbal-announcements">For users who want all audio and verbal announcements</a></li><li style="margin-left:1.5em"><a href="#copilot-optimized-profile">Copilot-Optimized Profile</a></li><li style="margin-left:3em"><a href="#for-users-working-heavily-with-github-copilot">For users working heavily with GitHub Copilot</a></li><li style="margin-left:1.5em"><a href="#gitdiff-optimized-profile">Git/Diff-Optimized Profile</a></li><li style="margin-left:3em"><a href="#for-users-doing-heavy-pr-review-and-diff-work">For users doing heavy PR review and diff work</a></li><li style="margin-left:1.5em"><a href="#performance-optimized-profile">Performance-Optimized Profile</a></li><li style="margin-left:3em"><a href="#for-users-on-slower-machines-or-with-large-repositories">For users on slower machines or with large repositories</a></li><li><a href="#quick-copy-complete-recommended-settings">Quick Copy: Complete Recommended Settings</a></li><li style="margin-left:1.5em"><a href="#paste-this-into-your-settingsjson-for-a-balanced-screen-reader-profile">Paste this into your `settings.json` for a balanced screen reader profile</a></li><li><a href="#8-vs-code-1120-chat-agents-window-and-markdown-diff-updates">8. VS Code 1.120 Chat, Agents Window, and Markdown Diff Updates</a></li><li style="margin-left:1.5em"><a href="#what-changed">What Changed</a></li><li style="margin-left:1.5em"><a href="#screen-reader-workflow">Screen Reader Workflow</a></li><li style="margin-left:1.5em"><a href="#low-vision-workflow">Low Vision Workflow</a></li><li style="margin-left:1.5em"><a href="#sighted-workflow">Sighted Workflow</a></li><li style="margin-left:1.5em"><a href="#settings-reference">Settings Reference</a></li><li><a href="#authoritative-sources">Authoritative Sources</a></li><li style="margin-left:1.5em"><a href="#section-level-source-map">Section-Level Source Map</a></li></ul></nav>
+  <div class="page-layout">
+    <aside class="guided-sidebar" aria-label="Guided reference">
+    <h2 class="guided-title">Guided Reference</h2>
+    <p class="guided-intro">Follow the learning order, then jump into challenge issue views, appendices, and support resources.</p>
+
+
+    <section class="guided-resume" aria-label="Resume learning">
+      <a id="resume-link" class="guided-resume-link" href="../../../index.html" hidden>Resume where you left off</a>
+    </section>
+
+    <nav class="guided-nav" aria-label="Workshop navigation">
+      <section class="guided-section">
+        <h3>Start Here</h3>
+        <ul>
+          <li><a href="../../../index.html">Workshop Home</a></li>
+          <li><a href="../../../docs/course-guide.html">Course Guide</a></li>
+<li><a href="../../../docs/get-going.html">Get Going with GitHub</a></li>
+<li><a href="../../../docs/CHALLENGES.html">Challenge Hub</a></li>
+        </ul>
+      </section>
+
+      <section class="guided-section">
+        <h3>Learning Order</h3>
+        <details>
+          <summary>Day 1 chapters</summary>
+          <ul>
+            <li><a href="../../../docs/00-pre-workshop-setup.html">Pre-Workshop Setup - GIT Going with GitHub</a></li>
+<li><a href="../../../docs/01-choose-your-tools.html">Choose Your Adventure: A Tool Tour</a></li>
+<li><a href="../../../docs/02-understanding-github.html">Understanding GitHub&#39;s Web Structure</a></li>
+<li><a href="../../../docs/03-navigating-repositories.html">Navigating Repositories</a></li>
+<li><a href="../../../docs/04-the-learning-room.html">The Learning Room: Your Personal Practice Repository</a></li>
+<li><a href="../../../docs/05-working-with-issues.html">Working with Issues</a></li>
+<li><a href="../../../docs/06-working-with-pull-requests.html">Working with Pull Requests</a></li>
+<li><a href="../../../docs/07-merge-conflicts.html">Merge Conflicts</a></li>
+<li><a href="../../../docs/08-open-source-culture.html">Culture, Etiquette, and Community Standards</a></li>
+<li><a href="../../../docs/09-labels-milestones-projects.html">Labels, Milestones, and Projects</a></li>
+<li><a href="../../../docs/10-notifications-and-day-1-close.html">Notifications</a></li>
+          </ul>
+        </details>
+        <details>
+          <summary>Day 2 chapters</summary>
+          <ul>
+            <li><a href="../../../docs/11-vscode-interface.html">VS Code: Interface and Setup</a></li>
+<li><a href="../../../docs/12-vscode-accessibility.html">VS Code: Accessibility Deep Dive</a></li>
+<li><a href="../../../docs/13-how-git-works.html">How Git Works: The Mental Model</a></li>
+<li><a href="../../../docs/14-git-in-practice.html">Git &amp; Source Control in VS Code</a></li>
+<li><a href="../../../docs/15-code-review.html">Code Review: PRs, Diffs, and Constructive Feedback</a></li>
+<li><a href="../../../docs/16-github-copilot.html">GitHub Copilot</a></li>
+<li><a href="../../../docs/17-issue-templates.html">Issue Templates</a></li>
+<li><a href="../../../docs/18-fork-and-contribute.html">Fork and Contribute: The Open Source Workflow</a></li>
+<li><a href="../../../docs/19-accessibility-agents.html">Accessibility Agents</a></li>
+<li><a href="../../../docs/20-build-your-agent.html">Capstone Project: Contribute an Impactful Agent</a></li>
+<li><a href="../../../docs/21-github-accessibility-and-open-source.html">GitHub Accessibility and Open Source at Scale</a></li>
+<li><a href="../../../docs/22-what-comes-next.html">What Comes Next: Your Developer Journey</a></li>
+          </ul>
+        </details>
+      </section>
+
+      <section class="guided-section">
+        <h3>Appendices</h3>
+        <details>
+          <summary>Reference library</summary>
+          <ul>
+            <li><a href="../../../docs/appendix-a-glossary.html">Appendix A: GitHub Concepts &amp; Glossary</a></li>
+<li><a href="../../../docs/appendix-b-screen-reader-cheatsheet.html">Appendix B: Screen Reader Cheat Sheet</a></li>
+<li><a href="../../../docs/appendix-c-markdown-reference.html">Appendix C: Markdown and GitHub Flavored Markdown - Complete Guide</a></li>
+<li><a href="../../../docs/appendix-d-git-authentication.html">Appendix D: Git Authentication</a></li>
+<li><a href="../../../docs/appendix-e-advanced-git.html">Appendix E: Advanced Git Operations</a></li>
+<li><a href="../../../docs/appendix-f-git-security.html">Appendix F: Git Security for Contributors</a></li>
+<li><a href="../../../docs/appendix-g-vscode-reference.html">Appendix G: VS Code Accessibility Reference</a></li>
+<li><a href="../../../docs/appendix-h-github-desktop.html">Appendix H: GitHub Desktop</a></li>
+<li><a href="../../../docs/appendix-i-github-cli.html">Appendix I: GitHub CLI Reference</a></li>
+<li><a href="../../../docs/appendix-j-cloud-editors.html">Appendix J: GitHub Codespaces</a></li>
+<li><a href="../../../docs/appendix-k-copilot-reference.html">Appendix K: Copilot Reference</a></li>
+<li><a href="../../../docs/appendix-l-agents-reference.html">Appendix L: Accessibility Agents Reference</a></li>
+<li><a href="../../../docs/appendix-m-accessibility-standards.html">Appendix M: Accessibility Standards Reference</a></li>
+<li><a href="../../../docs/appendix-n-advanced-search.html">Appendix N: GitHub Advanced Search</a></li>
+<li><a href="../../../docs/appendix-o-branch-protection.html">Appendix O: Branch Protection Rules and Repository Rulesets</a></li>
+<li><a href="../../../docs/appendix-p-security-features.html">Appendix P: GitHub Security Features</a></li>
+<li><a href="../../../docs/appendix-q-actions-workflows.html">Appendix Q: GitHub Actions and Workflows</a></li>
+<li><a href="../../../docs/appendix-r-projects-deep-dive.html">Appendix R: GitHub Projects Deep Dive</a></li>
+<li><a href="../../../docs/appendix-s-releases-tags-insights.html">Appendix S: Releases, Tags, and Repository Insights</a></li>
+<li><a href="../../../docs/appendix-t-community-and-social.html">Appendix T: Community and Social</a></li>
+<li><a href="../../../docs/appendix-u-discussions-and-gists.html">Appendix U: Discussions and Gists</a></li>
+<li><a href="../../../docs/appendix-v-github-mobile.html">Appendix V: GitHub Mobile</a></li>
+<li><a href="../../../docs/appendix-w-github-pages.html">Appendix W: Publishing with GitHub Pages</a></li>
+<li><a href="../../../docs/appendix-x-resources.html">Appendix X: Resources</a></li>
+<li><a href="../../../docs/appendix-y-workshop-materials.html">Appendix Y: Accessing and Downloading Workshop Materials</a></li>
+<li><a href="../../../docs/appendix-z-github-skills.html">Appendix Z: GitHub Skills - Complete Course Catalog</a></li>
+<li><a href="../../../docs/appendix-aa-agent-installation-setup.html">Appendix AA: Agent Installation &amp; Setup Across All Platforms</a></li>
+<li><a href="../../../docs/appendix-ab-advanced-agent-patterns.html">Appendix AB: Advanced Agent Patterns &amp; Skills</a></li>
+<li><a href="../../../docs/appendix-ac-document-developer-tools.html">Appendix AC: Document &amp; Developer Tool Agents</a></li>
+          </ul>
+        </details>
+      </section>
+
+      <section class="guided-section">
+        <h3>Challenge Lab</h3>
+        <ul>
+          <li><a href="../../../docs/CHALLENGES.html">Challenge Hub</a></li>
+<li><a href="../../../work.html">Issue-Style Challenge Walkthrough</a></li>
+<li><a href="../../../docs/17-issue-templates.html">Issue Template Deep Dive</a></li>
+        </ul>
+      </section>
+
+      <section class="guided-section">
+        <h3>External Resources</h3>
+        <ul>
+          <li><a href="https://lp.csedesigns.com/ggg/PODCASTS.html">Podcast Episodes <span class="guided-external">(external)</span></a></li>
+<li><a href="https://lp.csedesigns.com/ggg/feed.xml">RSS Feed <span class="guided-external">(external)</span></a></li>
+        </ul>
+      </section>
+    </nav>
+  </aside>
+    <main id="main-content" class="markdown-body page-main">
+      <nav class="quick-jumps" aria-label="Quick jumps">
+    <h2 class="quick-jumps-title">Quick Jumps</h2>
+    <ul class="quick-jumps-list">
+      <li><a href="#course-content">Jump to course content</a></li><li><a href="#main-content">Jump to main content top</a></li><li><a href="#on-this-page">Jump to on-page sections</a></li><li><a href="../../../docs/CHALLENGES.html">Open challenge hub</a></li><li><a href="../../../work.html">Open issue-style challenge walkthrough</a></li>
+    </ul>
+  </nav>
+
+      <nav id="on-this-page" class="onpage-nav" aria-label="On this page">
+    <h2 class="onpage-title">On This Page</h2>
+    <ul class="onpage-list">
+      <li class="onpage-item"><a href="#complete-technical-reference-for-screen-reader-users">Complete Technical Reference for Screen Reader Users</a></li>
+<li class="onpage-item onpage-sub"><a href="#learning-cards-vs-code-accessibility-reference-overview">Learning Cards: VS Code Accessibility Reference Overview</a></li>
+<li class="onpage-item"><a href="#table-of-contents">Table of Contents</a></li>
+<li class="onpage-item"><a href="#1-complete-accessibility-settings-reference">1. Complete Accessibility Settings Reference</a></li>
+<li class="onpage-item onpage-sub"><a href="#core-accessibility-settings">Core Accessibility Settings</a></li>
+<li class="onpage-item onpage-sub"><a href="#diff-and-merge-settings">Diff and Merge Settings</a></li>
+<li class="onpage-item onpage-sub"><a href="#terminal-settings">Terminal Settings</a></li>
+<li class="onpage-item onpage-sub"><a href="#notification-settings">Notification Settings</a></li>
+<li class="onpage-item"><a href="#2-audio-cues---all-options">2. Audio Cues - All Options</a></li>
+<li class="onpage-item onpage-sub"><a href="#accessing-audio-cue-settings">Accessing Audio Cue Settings</a></li>
+<li class="onpage-item onpage-sub"><a href="#audio-cue-values">Audio Cue Values</a></li>
+<li class="onpage-item onpage-sub"><a href="#complete-accessibility-signals-list">Complete Accessibility Signals List</a></li>
+<li class="onpage-item onpage-sub"><a href="#customizing-signal-sounds">Customizing Signal Sounds</a></li>
+<li class="onpage-item"><a href="#3-accessible-diff-viewer---complete-guide">3. Accessible Diff Viewer - Complete Guide</a></li>
+<li class="onpage-item onpage-sub"><a href="#when-to-use-accessible-diff-viewer">When to Use Accessible Diff Viewer</a></li>
+<li class="onpage-item onpage-sub"><a href="#opening-accessible-diff-viewer">Opening Accessible Diff Viewer</a></li>
+<li class="onpage-item onpage-sub"><a href="#diff-viewer-structure">Diff Viewer Structure</a></li>
+<li class="onpage-item onpage-sub"><a href="#navigating-hunks">Navigating Hunks</a></li>
+<li class="onpage-item onpage-sub"><a href="#screen-reader-specific-navigation">Screen Reader-Specific Navigation</a></li>
+<li class="onpage-item onpage-sub"><a href="#understanding-context-lines">Understanding Context Lines</a></li>
+<li class="onpage-item onpage-sub"><a href="#inline-diff-view-vs-side-by-side">Inline Diff View vs Side-by-Side</a></li>
+<li class="onpage-item onpage-sub"><a href="#learning-cards-accessible-diff-viewer">Learning Cards: Accessible Diff Viewer</a></li>
+<li class="onpage-item"><a href="#4-screen-reader-specific-configurations">4. Screen Reader-Specific Configurations</a></li>
+<li class="onpage-item onpage-sub"><a href="#nvda-configuration-for-vs-code">NVDA Configuration for VS Code</a></li>
+<li class="onpage-item onpage-sub"><a href="#jaws-configuration-for-vs-code">JAWS Configuration for VS Code</a></li>
+<li class="onpage-item onpage-sub"><a href="#voiceover-configuration-for-vs-code-macos">VoiceOver Configuration for VS Code (macOS)</a></li>
+<li class="onpage-item"><a href="#5-complete-keyboard-shortcuts">5. Complete Keyboard Shortcuts</a></li>
+<li class="onpage-item onpage-sub"><a href="#global-navigation">Global Navigation</a></li>
+<li class="onpage-item onpage-sub"><a href="#sidebar-panels">Sidebar Panels</a></li>
+<li class="onpage-item onpage-sub"><a href="#editor---file-operations">Editor - File Operations</a></li>
+<li class="onpage-item onpage-sub"><a href="#editor---navigation">Editor - Navigation</a></li>
+<li class="onpage-item onpage-sub"><a href="#editor---editing">Editor - Editing</a></li>
+<li class="onpage-item onpage-sub"><a href="#editor---find-and-replace">Editor - Find and Replace</a></li>
+<li class="onpage-item onpage-sub"><a href="#editor---multi-cursor">Editor - Multi-Cursor</a></li>
+<li class="onpage-item onpage-sub"><a href="#terminal">Terminal</a></li>
+<li class="onpage-item onpage-sub"><a href="#source-control-git">Source Control (Git)</a></li>
+<li class="onpage-item onpage-sub"><a href="#diff-viewer">Diff Viewer</a></li>
+<li class="onpage-item onpage-sub"><a href="#copilot">Copilot</a></li>
+<li class="onpage-item onpage-sub"><a href="#accessibility-features">Accessibility Features</a></li>
+<li class="onpage-item onpage-sub"><a href="#problems-panel">Problems Panel</a></li>
+<li class="onpage-item onpage-sub"><a href="#markdown-preview">Markdown Preview</a></li>
+<li class="onpage-item"><a href="#6-accessibility-signals-types-and-customization">6. Accessibility Signals Types and Customization</a></li>
+<li class="onpage-item onpage-sub"><a href="#announcement-verbosity-settings">Announcement Verbosity Settings</a></li>
+<li class="onpage-item onpage-sub"><a href="#custom-announcement-timing">Custom Announcement Timing</a></li>
+<li class="onpage-item onpage-sub"><a href="#signal-priorities">Signal Priorities</a></li>
+<li class="onpage-item onpage-sub"><a href="#learning-cards-accessibility-signals">Learning Cards: Accessibility Signals</a></li>
+<li class="onpage-item"><a href="#7-settingsjson-configuration-examples">7. Settings.json Configuration Examples</a></li>
+<li class="onpage-item onpage-sub"><a href="#minimal-screen-reader-profile">Minimal Screen Reader Profile</a></li>
+<li class="onpage-item onpage-sub"><a href="#maximum-feedback-profile">Maximum Feedback Profile</a></li>
+<li class="onpage-item onpage-sub"><a href="#copilot-optimized-profile">Copilot-Optimized Profile</a></li>
+<li class="onpage-item onpage-sub"><a href="#gitdiff-optimized-profile">Git/Diff-Optimized Profile</a></li>
+<li class="onpage-item onpage-sub"><a href="#performance-optimized-profile">Performance-Optimized Profile</a></li>
+<li class="onpage-item"><a href="#quick-copy-complete-recommended-settings">Quick Copy: Complete Recommended Settings</a></li>
+<li class="onpage-item onpage-sub"><a href="#paste-this-into-your-settingsjson-for-a-balanced-screen-reader-profile">Paste this into your settings.json for a balanced screen reader profile</a></li>
+<li class="onpage-item"><a href="#8-vs-code-1120-chat-agents-window-and-markdown-diff-updates">8. VS Code 1.120 Chat, Agents Window, and Markdown Diff Updates</a></li>
+<li class="onpage-item onpage-sub"><a href="#what-changed">What Changed</a></li>
+<li class="onpage-item onpage-sub"><a href="#screen-reader-workflow">Screen Reader Workflow</a></li>
+<li class="onpage-item onpage-sub"><a href="#low-vision-workflow">Low Vision Workflow</a></li>
+<li class="onpage-item onpage-sub"><a href="#sighted-workflow">Sighted Workflow</a></li>
+<li class="onpage-item onpage-sub"><a href="#settings-reference">Settings Reference</a></li>
+<li class="onpage-item"><a href="#authoritative-sources">Authoritative Sources</a></li>
+<li class="onpage-item onpage-sub"><a href="#section-level-source-map">Section-Level Source Map</a></li>
+    </ul>
+  </nav>
+      <div id="course-content"><h1 id="appendix-g-vs-code-accessibility-reference">Appendix G: VS Code Accessibility Reference</h1>
 <blockquote>
-<p><strong>Listen to Episode 30:</strong> <a href="../admin/PODCASTS.html">VS Code Accessibility Reference</a> - a conversational audio overview of this chapter. Listen before reading to preview the concepts, or after to reinforce what you learned.</p>
+<p><strong>Listen to Episode 30:</strong> <a href="https://lp.csedesigns.com/ggg/PODCASTS.html">VS Code Accessibility Reference</a> - a conversational audio overview of this chapter. Listen before reading to preview the concepts, or after to reinforce what you learned.</p>
 </blockquote>
 <blockquote>
 <p><strong>Reference companion to:</strong> <a href="11-vscode-interface.html">Chapter 11: VS Code Interface</a> | Also relevant: <a href="12-vscode-accessibility.html">Chapter 12</a></p>
@@ -2038,12 +2241,36 @@
 <li><strong>Quick Copy: Complete Recommended Settings:</strong> <a href="https://docs.github.com/en">GitHub Docs, home</a>, <a href="https://github.blog/changelog/">GitHub Changelog</a>, <a href="https://code.visualstudio.com/docs/copilot/chat/copilot-chat">VS Code Copilot chat overview</a>, <a href="https://code.visualstudio.com/docs/copilot/agents/overview">VS Code agent overview</a>, <a href="https://code.visualstudio.com/docs/copilot/customization/custom-instructions">VS Code custom instructions</a></li>
 <li><strong>8. VS Code 1.120 Chat, Agents Window, and Markdown Diff Updates:</strong> <a href="https://docs.github.com/en">GitHub Docs, home</a>, <a href="https://github.blog/changelog/">GitHub Changelog</a>, <a href="https://code.visualstudio.com/docs/copilot/chat/copilot-chat">VS Code Copilot chat overview</a>, <a href="https://code.visualstudio.com/docs/copilot/agents/overview">VS Code agent overview</a>, <a href="https://code.visualstudio.com/docs/copilot/customization/custom-instructions">VS Code custom instructions</a></li>
 </ul>
+</div>
 
-  </main>
+    </main>
+  </div>
   <footer role="contentinfo" class="site-footer">
     <p><strong>GIT Going with GitHub</strong> - A workshop by <a href="https://community-access.org">Community Access</a></p>
     <p><a href="https://github.com/community-access/git-going-with-github">View on GitHub</a> · <a href="https://community-access.org">community-access.org</a></p>
   </footer>
 
+  <script>
+  (function() {
+    var key = 'gggLastVisitedPath';
+    var currentPath = window.location.pathname || '';
+    try {
+      if (currentPath) {
+        localStorage.setItem(key, currentPath);
+      }
+    } catch (e) {}
+
+    var resumeLink = document.getElementById('resume-link');
+    if (!resumeLink) return;
+
+    try {
+      var savedPath = localStorage.getItem(key);
+      if (savedPath && savedPath !== currentPath) {
+        resumeLink.hidden = false;
+        resumeLink.setAttribute('href', savedPath);
+      }
+    } catch (e) {}
+  })();
+  </script>
   </body>
 </html>

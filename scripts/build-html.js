@@ -830,39 +830,7 @@ function ensureDir(dirPath) {
 function convertMarkdownFile(mdPath, outputDir) {
   try {
     const content = fs.readFileSync(mdPath, 'utf-8');
-    // Extract headings for TOC (levels 2-4)
-    const headingRegex = /^(#{2,4})\s+(.+?)(?:\s+#+)?$/gm;
-    let match;
-    const tocHeadings = [];
-    while ((match = headingRegex.exec(content)) !== null) {
-      const level = match[1].length;
-      const text = match[2].trim();
-      const id = headingAnchor(text);
-      tocHeadings.push({ level, text, id });
-    }
-
-    // Build TOC/Quick Jumps HTML if there are at least 2 headings
-    let tocHtml = '';
-    if (tocHeadings.length >= 2) {
-      tocHtml = '<nav class="quick-jumps" aria-label="Quick Jumps"><strong class="quick-jumps-label">Quick Jumps</strong><ul class="quick-jumps-list">';
-      tocHeadings.forEach(h => {
-        const indent = h.level > 2 ? ' style="margin-left:' + ((h.level - 2) * 1.5) + 'em"' : '';
-        tocHtml += `<li${indent}><a href="#${h.id}">${h.text}</a></li>`;
-      });
-      tocHtml += '</ul></nav>';
-    }
-
     let htmlContent = marked.parse(content);
-
-    // Insert TOC after the first <h1> or at the top if no <h1>
-    if (tocHtml) {
-      const h1Match = htmlContent.match(/<h1[^>]*>.*?<\/h1>/i);
-      if (h1Match) {
-        htmlContent = htmlContent.replace(h1Match[0], h1Match[0] + '\n' + tocHtml);
-      } else {
-        htmlContent = tocHtml + '\n' + htmlContent;
-      }
-    }
 
     // Rewrite internal .md links to .html (href="...md" and href="...md#anchor")
     htmlContent = htmlContent.replace(

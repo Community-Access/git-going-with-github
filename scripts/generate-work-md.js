@@ -121,6 +121,23 @@ function render(entries) {
     section('Core challenges', core),
     '',
     section('Bonus challenges', bonus),
+    '',
+    '## Authoritative Sources',
+    '',
+    'Use these official references when you need the current source of truth for the Git and GitHub workflow concepts summarized in this generated walkthrough.',
+    '',
+    '- [GitHub Docs, home](https://docs.github.com/en)',
+    '- [GitHub Changelog](https://github.blog/changelog/)',
+    '- [About Git](https://docs.github.com/en/get-started/using-git/about-git)',
+    '- [GitHub flow](https://docs.github.com/en/get-started/using-github/github-flow)',
+    '- [About pull requests](https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/about-pull-requests)',
+    '- [About issues](https://docs.github.com/en/issues/tracking-your-work-with-issues/about-issues)',
+    '- [Contributing to a project](https://docs.github.com/en/get-started/exploring-projects-on-github/contributing-to-a-project)',
+    '',
+    '### Section-Level Source Map',
+    '',
+    '- **Core challenges:** [GitHub Docs, home](https://docs.github.com/en), [GitHub Changelog](https://github.blog/changelog/), [About Git](https://docs.github.com/en/get-started/using-git/about-git), [GitHub flow](https://docs.github.com/en/get-started/using-github/github-flow), [About pull requests](https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/about-pull-requests), [About issues](https://docs.github.com/en/issues/tracking-your-work-with-issues/about-issues), [Contributing to a project](https://docs.github.com/en/get-started/exploring-projects-on-github/contributing-to-a-project)',
+    '- **Bonus challenges:** [GitHub Docs, home](https://docs.github.com/en), [GitHub Changelog](https://github.blog/changelog/), [About Git](https://docs.github.com/en/get-started/using-git/about-git), [GitHub flow](https://docs.github.com/en/get-started/using-github/github-flow), [About pull requests](https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/about-pull-requests), [About issues](https://docs.github.com/en/issues/tracking-your-work-with-issues/about-issues), [Contributing to a project](https://docs.github.com/en/get-started/exploring-projects-on-github/contributing-to-a-project)',
     ''
   ].join('\n');
 }

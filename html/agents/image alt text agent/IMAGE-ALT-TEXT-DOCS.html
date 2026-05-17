@@ -5,18 +5,34 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="description" content="GIT Going with GitHub - A two-day accessible open source workshop by Community Access">
   <title>Image Alt Text Agent -- Enhanced Documentation - GIT Going with GitHub</title>
-  <link rel="stylesheet" href="./styles/github-markdown.css">
-  <link rel="stylesheet" href="./styles/highlight.css">
-  <link rel="stylesheet" href="./styles/custom.css">
+  <link rel="stylesheet" href="../../styles/github-markdown.css">
+  <link rel="stylesheet" href="../../styles/highlight.css">
+  <link rel="stylesheet" href="../../styles/custom.css">
   <style>
     .markdown-body {
       box-sizing: border-box;
-      min-width: 200px;
+      min-width: 0;
       max-width: 980px;
-      margin: 0 auto;
+      margin: 0;
       padding: 45px;
     }
+
+    .page-layout {
+      max-width: 1320px;
+      margin: 0 auto;
+      padding: 1rem 1rem 2rem;
+      display: grid;
+      grid-template-columns: minmax(240px, 300px) minmax(0, 1fr);
+      gap: 1.25rem;
+      align-items: start;
+    }
+
     @media (max-width: 767px) {
+      .page-layout {
+        grid-template-columns: 1fr;
+        padding: 0.5rem 0.5rem 1rem;
+      }
+
       .markdown-body {
         padding: 15px;
       }
@@ -28,7 +44,7 @@
   <header class="site-header" role="banner">
     <div class="site-header-inner">
       <nav aria-label="Breadcrumb" class="breadcrumb">
-        <a href="./index.html">Home</a> <span aria-hidden="true">›</span> <span aria-current="page">Image Alt Text Agent -- Enhanced Documentation</span>
+        <a href="../../index.html">Home</a> <span aria-hidden="true">›</span> <span aria-current="page">Image Alt Text Agent -- Enhanced Documentation</span>
       </nav>
       <div class="header-actions">
         <a href="https://github.com/Community-Access/git-going-with-github/wiki" class="wiki-link" target="_blank" rel="noopener noreferrer">
@@ -37,7 +53,7 @@
           </svg>
           Wiki
         </a>
-        <form role="search" class="search-form" action="./search.html" method="get">
+        <form role="search" class="search-form" action="../../search.html" method="get">
         <label for="site-search" class="search-label">Search docs</label>
         <input
           type="search"
@@ -57,9 +73,218 @@
       </div>
     </div>
   </header>
-  <main id="main-content" class="markdown-body">
-    <h1 id="image-alt-text-agent----enhanced-documentation">Image Alt Text Agent -- Enhanced Documentation</h1>
-<nav class="quick-jumps" aria-label="Quick Jumps"><strong class="quick-jumps-label">Quick Jumps</strong><ul class="quick-jumps-list"><li><a href="#overview">Overview</a></li><li style="margin-left:1.5em"><a href="#what-changed-in-the-enhanced-version">What Changed in the Enhanced Version</a></li><li><a href="#table-of-contents">Table of Contents</a></li><li><a href="#architecture">Architecture</a></li><li style="margin-left:1.5em"><a href="#design-principles">Design Principles</a></li><li><a href="#components">Components</a></li><li style="margin-left:1.5em"><a href="#orchestrator-image-alt-text">Orchestrator: image-alt-text</a></li><li style="margin-left:1.5em"><a href="#sub-agent-image-analyzer">Sub-Agent: image-analyzer</a></li><li style="margin-left:1.5em"><a href="#sub-agent-tag-builder">Sub-Agent: tag-builder</a></li><li style="margin-left:1.5em"><a href="#sub-agent-image-cataloger">Sub-Agent: image-cataloger</a></li><li style="margin-left:1.5em"><a href="#utility-script-get_image_infopy">Utility Script: get_image_info.py</a></li><li style="margin-left:1.5em"><a href="#instruction-image-dimensions">Instruction: image-dimensions</a></li><li style="margin-left:1.5em"><a href="#prompt-files">Prompt Files</a></li><li><a href="#installation-and-prerequisites">Installation and Prerequisites</a></li><li style="margin-left:1.5em"><a href="#requirements">Requirements</a></li><li style="margin-left:1.5em"><a href="#verify-pillow">Verify Pillow</a></li><li style="margin-left:1.5em"><a href="#verify-the-utility-script">Verify the utility script</a></li><li style="margin-left:1.5em"><a href="#to-install-as-user-level-agents">To install as user-level agents</a></li><li><a href="#operating-modes">Operating Modes</a></li><li><a href="#usage-guide">Usage Guide</a></li><li style="margin-left:1.5em"><a href="#single-image-analysis">Single Image Analysis</a></li><li><a href="#hero-bannerjpg">hero-banner.jpg</a></li><li style="margin-left:1.5em"><a href="#ready-to-use-markup">Ready-to-use markup</a></li><li style="margin-left:1.5em"><a href="#batch-folder-processing">Batch Folder Processing</a></li><li style="margin-left:1.5em"><a href="#delta-mode-changed-images-only">Delta Mode (Changed Images Only)</a></li><li style="margin-left:1.5em"><a href="#quick-mode-alt-text-only">Quick Mode (Alt Text Only)</a></li><li style="margin-left:1.5em"><a href="#responsive-mode">Responsive Mode</a></li><li style="margin-left:1.5em"><a href="#hero-mode-above-the-fold">Hero Mode (Above the Fold)</a></li><li style="margin-left:1.5em"><a href="#catalog-management">Catalog Management</a></li><li style="margin-left:1.5em"><a href="#output-format-selection">Output Format Selection</a></li><li><a href="#image-classification-reference">Image Classification Reference</a></li><li style="margin-left:1.5em"><a href="#classification-categories">Classification Categories</a></li><li style="margin-left:1.5em"><a href="#classification-decision-tree">Classification Decision Tree</a></li><li style="margin-left:1.5em"><a href="#confidence-scoring">Confidence Scoring</a></li><li style="margin-left:1.5em"><a href="#content-flags">Content Flags</a></li><li><a href="#supported-image-formats">Supported Image Formats</a></li><li><a href="#output-formats">Output Formats</a></li><li style="margin-left:1.5em"><a href="#html">HTML</a></li><li style="margin-left:1.5em"><a href="#html-figure-with-figcaption">HTML Figure with Figcaption</a></li><li style="margin-left:1.5em"><a href="#hero--above-the-fold-html">Hero / Above-the-Fold HTML</a></li><li style="margin-left:1.5em"><a href="#responsive-html-srcset">Responsive HTML (srcset)</a></li><li style="margin-left:1.5em"><a href="#picture-element">Picture Element</a></li><li style="margin-left:1.5em"><a href="#markdown">Markdown</a></li><li style="margin-left:1.5em"><a href="#jsx-and-react">JSX and React</a></li><li style="margin-left:1.5em"><a href="#nextjs-image-component">Next.js Image Component</a></li><li style="margin-left:1.5em"><a href="#astro-image-component">Astro Image Component</a></li><li><a href="#accessibility-scoring">Accessibility Scoring</a></li><li style="margin-left:1.5em"><a href="#per-image-scoring">Per-Image Scoring</a></li><li style="margin-left:1.5em"><a href="#project-level-scoring">Project-Level Scoring</a></li><li><a href="#catalog-file-formats">Catalog File Formats</a></li><li style="margin-left:1.5em"><a href="#markdown-catalog">Markdown Catalog</a></li><li><a href="#project-score-88100-good">Project Score: 88/100 (Good)</a></li><li><a href="#summary">Summary</a></li><li><a href="#images">Images</a></li><li><a href="#action-items">Action Items</a></li><li style="margin-left:1.5em"><a href="#needs-human-review-low-confidence">Needs Human Review (Low Confidence)</a></li><li style="margin-left:1.5em"><a href="#image-of-text-warnings-wcag-145">Image-of-Text Warnings (WCAG 1.4.5)</a></li><li style="margin-left:1.5em"><a href="#json-catalog">JSON Catalog</a></li><li style="margin-left:1.5em"><a href="#csv-catalog">CSV Catalog</a></li><li><a href="#alt-text-quality-standards">Alt Text Quality Standards</a></li><li><a href="#edge-case-handling">Edge Case Handling</a></li><li><a href="#wcag-compliance-reference">WCAG Compliance Reference</a></li><li style="margin-left:1.5em"><a href="#success-criteria-addressed">Success Criteria Addressed</a></li><li style="margin-left:1.5em"><a href="#additional-reinforcement-via-instruction-file">Additional Reinforcement via Instruction File</a></li><li><a href="#utility-script-reference">Utility Script Reference</a></li><li style="margin-left:1.5em"><a href="#command-line-interface">Command-Line Interface</a></li><li style="margin-left:1.5em"><a href="#output-fields">Output Fields</a></li><li style="margin-left:1.5em"><a href="#svg-handling">SVG Handling</a></li><li style="margin-left:1.5em"><a href="#exif-data">EXIF Data</a></li><li style="margin-left:1.5em"><a href="#dominant-colors">Dominant Colors</a></li><li style="margin-left:1.5em"><a href="#text-content-heuristic">Text-Content Heuristic</a></li><li><a href="#agent-handoffs">Agent Handoffs</a></li><li><a href="#file-manifest">File Manifest</a></li><li><a href="#relationship-to-other-agents">Relationship to Other Agents</a></li><li><a href="#troubleshooting">Troubleshooting</a></li><li style="margin-left:1.5em"><a href="#pillow-is-not-installed">Pillow is not installed</a></li><li style="margin-left:1.5em"><a href="#script-cannot-find-the-image">Script cannot find the image</a></li><li style="margin-left:1.5em"><a href="#svg-dimensions-are-0x0">SVG dimensions are 0x0</a></li><li style="margin-left:1.5em"><a href="#agent-does-not-appear-in-copilot-chat">Agent does not appear in Copilot chat</a></li><li style="margin-left:1.5em"><a href="#sub-agents-appear-in-the-picker">Sub-agents appear in the picker</a></li><li style="margin-left:1.5em"><a href="#model-does-not-support-vision">Model does not support vision</a></li><li style="margin-left:1.5em"><a href="#low-confidence-on-every-image">Low confidence on every image</a></li><li style="margin-left:1.5em"><a href="#batch-scan-finds-no-images">Batch scan finds no images</a></li><li style="margin-left:1.5em"><a href="#exif-data-is-empty">EXIF data is empty</a></li><li style="margin-left:1.5em"><a href="#text-heuristic-gives-wrong-result">Text heuristic gives wrong result</a></li><li><a href="#example-prompts">Example Prompts</a></li><li style="margin-left:1.5em"><a href="#analysis">Analysis</a></li><li style="margin-left:1.5em"><a href="#markup-generation">Markup Generation</a></li><li style="margin-left:1.5em"><a href="#responsive-and-performance">Responsive and Performance</a></li><li style="margin-left:1.5em"><a href="#batch-processing">Batch Processing</a></li><li style="margin-left:1.5em"><a href="#cataloging">Cataloging</a></li><li style="margin-left:1.5em"><a href="#combined-workflows">Combined Workflows</a></li></ul></nav>
+  <div class="page-layout">
+    <aside class="guided-sidebar" aria-label="Guided reference">
+    <h2 class="guided-title">Guided Reference</h2>
+    <p class="guided-intro">Follow the learning order, then jump into challenge issue views, appendices, and support resources.</p>
+
+
+    <section class="guided-resume" aria-label="Resume learning">
+      <a id="resume-link" class="guided-resume-link" href="../../index.html" hidden>Resume where you left off</a>
+    </section>
+
+    <nav class="guided-nav" aria-label="Workshop navigation">
+      <section class="guided-section">
+        <h3>Start Here</h3>
+        <ul>
+          <li><a href="../../index.html">Workshop Home</a></li>
+          <li><a href="../../docs/course-guide.html">Course Guide</a></li>
+<li><a href="../../docs/get-going.html">Get Going with GitHub</a></li>
+<li><a href="../../docs/CHALLENGES.html">Challenge Hub</a></li>
+        </ul>
+      </section>
+
+      <section class="guided-section">
+        <h3>Learning Order</h3>
+        <details>
+          <summary>Day 1 chapters</summary>
+          <ul>
+            <li><a href="../../docs/00-pre-workshop-setup.html">Pre-Workshop Setup - GIT Going with GitHub</a></li>
+<li><a href="../../docs/01-choose-your-tools.html">Choose Your Adventure: A Tool Tour</a></li>
+<li><a href="../../docs/02-understanding-github.html">Understanding GitHub&#39;s Web Structure</a></li>
+<li><a href="../../docs/03-navigating-repositories.html">Navigating Repositories</a></li>
+<li><a href="../../docs/04-the-learning-room.html">The Learning Room: Your Personal Practice Repository</a></li>
+<li><a href="../../docs/05-working-with-issues.html">Working with Issues</a></li>
+<li><a href="../../docs/06-working-with-pull-requests.html">Working with Pull Requests</a></li>
+<li><a href="../../docs/07-merge-conflicts.html">Merge Conflicts</a></li>
+<li><a href="../../docs/08-open-source-culture.html">Culture, Etiquette, and Community Standards</a></li>
+<li><a href="../../docs/09-labels-milestones-projects.html">Labels, Milestones, and Projects</a></li>
+<li><a href="../../docs/10-notifications-and-day-1-close.html">Notifications</a></li>
+          </ul>
+        </details>
+        <details>
+          <summary>Day 2 chapters</summary>
+          <ul>
+            <li><a href="../../docs/11-vscode-interface.html">VS Code: Interface and Setup</a></li>
+<li><a href="../../docs/12-vscode-accessibility.html">VS Code: Accessibility Deep Dive</a></li>
+<li><a href="../../docs/13-how-git-works.html">How Git Works: The Mental Model</a></li>
+<li><a href="../../docs/14-git-in-practice.html">Git &amp; Source Control in VS Code</a></li>
+<li><a href="../../docs/15-code-review.html">Code Review: PRs, Diffs, and Constructive Feedback</a></li>
+<li><a href="../../docs/16-github-copilot.html">GitHub Copilot</a></li>
+<li><a href="../../docs/17-issue-templates.html">Issue Templates</a></li>
+<li><a href="../../docs/18-fork-and-contribute.html">Fork and Contribute: The Open Source Workflow</a></li>
+<li><a href="../../docs/19-accessibility-agents.html">Accessibility Agents</a></li>
+<li><a href="../../docs/20-build-your-agent.html">Capstone Project: Contribute an Impactful Agent</a></li>
+<li><a href="../../docs/21-github-accessibility-and-open-source.html">GitHub Accessibility and Open Source at Scale</a></li>
+<li><a href="../../docs/22-what-comes-next.html">What Comes Next: Your Developer Journey</a></li>
+          </ul>
+        </details>
+      </section>
+
+      <section class="guided-section">
+        <h3>Appendices</h3>
+        <details>
+          <summary>Reference library</summary>
+          <ul>
+            <li><a href="../../docs/appendix-a-glossary.html">Appendix A: GitHub Concepts &amp; Glossary</a></li>
+<li><a href="../../docs/appendix-b-screen-reader-cheatsheet.html">Appendix B: Screen Reader Cheat Sheet</a></li>
+<li><a href="../../docs/appendix-c-markdown-reference.html">Appendix C: Markdown and GitHub Flavored Markdown - Complete Guide</a></li>
+<li><a href="../../docs/appendix-d-git-authentication.html">Appendix D: Git Authentication</a></li>
+<li><a href="../../docs/appendix-e-advanced-git.html">Appendix E: Advanced Git Operations</a></li>
+<li><a href="../../docs/appendix-f-git-security.html">Appendix F: Git Security for Contributors</a></li>
+<li><a href="../../docs/appendix-g-vscode-reference.html">Appendix G: VS Code Accessibility Reference</a></li>
+<li><a href="../../docs/appendix-h-github-desktop.html">Appendix H: GitHub Desktop</a></li>
+<li><a href="../../docs/appendix-i-github-cli.html">Appendix I: GitHub CLI Reference</a></li>
+<li><a href="../../docs/appendix-j-cloud-editors.html">Appendix J: GitHub Codespaces</a></li>
+<li><a href="../../docs/appendix-k-copilot-reference.html">Appendix K: Copilot Reference</a></li>
+<li><a href="../../docs/appendix-l-agents-reference.html">Appendix L: Accessibility Agents Reference</a></li>
+<li><a href="../../docs/appendix-m-accessibility-standards.html">Appendix M: Accessibility Standards Reference</a></li>
+<li><a href="../../docs/appendix-n-advanced-search.html">Appendix N: GitHub Advanced Search</a></li>
+<li><a href="../../docs/appendix-o-branch-protection.html">Appendix O: Branch Protection Rules and Repository Rulesets</a></li>
+<li><a href="../../docs/appendix-p-security-features.html">Appendix P: GitHub Security Features</a></li>
+<li><a href="../../docs/appendix-q-actions-workflows.html">Appendix Q: GitHub Actions and Workflows</a></li>
+<li><a href="../../docs/appendix-r-projects-deep-dive.html">Appendix R: GitHub Projects Deep Dive</a></li>
+<li><a href="../../docs/appendix-s-releases-tags-insights.html">Appendix S: Releases, Tags, and Repository Insights</a></li>
+<li><a href="../../docs/appendix-t-community-and-social.html">Appendix T: Community and Social</a></li>
+<li><a href="../../docs/appendix-u-discussions-and-gists.html">Appendix U: Discussions and Gists</a></li>
+<li><a href="../../docs/appendix-v-github-mobile.html">Appendix V: GitHub Mobile</a></li>
+<li><a href="../../docs/appendix-w-github-pages.html">Appendix W: Publishing with GitHub Pages</a></li>
+<li><a href="../../docs/appendix-x-resources.html">Appendix X: Resources</a></li>
+<li><a href="../../docs/appendix-y-workshop-materials.html">Appendix Y: Accessing and Downloading Workshop Materials</a></li>
+<li><a href="../../docs/appendix-z-github-skills.html">Appendix Z: GitHub Skills - Complete Course Catalog</a></li>
+<li><a href="../../docs/appendix-aa-agent-installation-setup.html">Appendix AA: Agent Installation &amp; Setup Across All Platforms</a></li>
+<li><a href="../../docs/appendix-ab-advanced-agent-patterns.html">Appendix AB: Advanced Agent Patterns &amp; Skills</a></li>
+<li><a href="../../docs/appendix-ac-document-developer-tools.html">Appendix AC: Document &amp; Developer Tool Agents</a></li>
+          </ul>
+        </details>
+      </section>
+
+      <section class="guided-section">
+        <h3>Challenge Lab</h3>
+        <ul>
+          <li><a href="../../docs/CHALLENGES.html">Challenge Hub</a></li>
+<li><a href="../../work.html">Issue-Style Challenge Walkthrough</a></li>
+<li><a href="../../docs/17-issue-templates.html">Issue Template Deep Dive</a></li>
+        </ul>
+      </section>
+
+      <section class="guided-section">
+        <h3>External Resources</h3>
+        <ul>
+          <li><a href="https://lp.csedesigns.com/ggg/PODCASTS.html">Podcast Episodes <span class="guided-external">(external)</span></a></li>
+<li><a href="https://lp.csedesigns.com/ggg/feed.xml">RSS Feed <span class="guided-external">(external)</span></a></li>
+        </ul>
+      </section>
+    </nav>
+  </aside>
+    <main id="main-content" class="markdown-body page-main">
+      <nav class="quick-jumps" aria-label="Quick jumps">
+    <h2 class="quick-jumps-title">Quick Jumps</h2>
+    <ul class="quick-jumps-list">
+      <li><a href="#course-content">Jump to course content</a></li><li><a href="#main-content">Jump to main content top</a></li><li><a href="#on-this-page">Jump to on-page sections</a></li><li><a href="../../docs/CHALLENGES.html">Open challenge hub</a></li><li><a href="../../work.html">Open issue-style challenge walkthrough</a></li>
+    </ul>
+  </nav>
+
+      <nav id="on-this-page" class="onpage-nav" aria-label="On this page">
+    <h2 class="onpage-title">On This Page</h2>
+    <ul class="onpage-list">
+      <li class="onpage-item"><a href="#overview">Overview</a></li>
+<li class="onpage-item onpage-sub"><a href="#what-changed-in-the-enhanced-version">What Changed in the Enhanced Version</a></li>
+<li class="onpage-item"><a href="#table-of-contents">Table of Contents</a></li>
+<li class="onpage-item"><a href="#architecture">Architecture</a></li>
+<li class="onpage-item onpage-sub"><a href="#design-principles">Design Principles</a></li>
+<li class="onpage-item"><a href="#components">Components</a></li>
+<li class="onpage-item onpage-sub"><a href="#orchestrator-image-alt-text">Orchestrator: image-alt-text</a></li>
+<li class="onpage-item onpage-sub"><a href="#sub-agent-image-analyzer">Sub-Agent: image-analyzer</a></li>
+<li class="onpage-item onpage-sub"><a href="#sub-agent-tag-builder">Sub-Agent: tag-builder</a></li>
+<li class="onpage-item onpage-sub"><a href="#sub-agent-image-cataloger">Sub-Agent: image-cataloger</a></li>
+<li class="onpage-item onpage-sub"><a href="#utility-script-get_image_infopy">Utility Script: get_image_info.py</a></li>
+<li class="onpage-item onpage-sub"><a href="#instruction-image-dimensions">Instruction: image-dimensions</a></li>
+<li class="onpage-item onpage-sub"><a href="#prompt-files">Prompt Files</a></li>
+<li class="onpage-item"><a href="#installation-and-prerequisites">Installation and Prerequisites</a></li>
+<li class="onpage-item onpage-sub"><a href="#requirements">Requirements</a></li>
+<li class="onpage-item onpage-sub"><a href="#verify-pillow">Verify Pillow</a></li>
+<li class="onpage-item onpage-sub"><a href="#verify-the-utility-script">Verify the utility script</a></li>
+<li class="onpage-item onpage-sub"><a href="#to-install-as-user-level-agents">To install as user-level agents</a></li>
+<li class="onpage-item"><a href="#operating-modes">Operating Modes</a></li>
+<li class="onpage-item"><a href="#usage-guide">Usage Guide</a></li>
+<li class="onpage-item onpage-sub"><a href="#single-image-analysis">Single Image Analysis</a></li>
+<li class="onpage-item onpage-sub"><a href="#batch-folder-processing">Batch Folder Processing</a></li>
+<li class="onpage-item onpage-sub"><a href="#delta-mode-changed-images-only">Delta Mode (Changed Images Only)</a></li>
+<li class="onpage-item onpage-sub"><a href="#quick-mode-alt-text-only">Quick Mode (Alt Text Only)</a></li>
+<li class="onpage-item onpage-sub"><a href="#responsive-mode">Responsive Mode</a></li>
+<li class="onpage-item onpage-sub"><a href="#hero-mode-above-the-fold">Hero Mode (Above the Fold)</a></li>
+<li class="onpage-item onpage-sub"><a href="#catalog-management">Catalog Management</a></li>
+<li class="onpage-item onpage-sub"><a href="#output-format-selection">Output Format Selection</a></li>
+<li class="onpage-item"><a href="#image-classification-reference">Image Classification Reference</a></li>
+<li class="onpage-item onpage-sub"><a href="#classification-categories">Classification Categories</a></li>
+<li class="onpage-item onpage-sub"><a href="#classification-decision-tree">Classification Decision Tree</a></li>
+<li class="onpage-item onpage-sub"><a href="#confidence-scoring">Confidence Scoring</a></li>
+<li class="onpage-item onpage-sub"><a href="#content-flags">Content Flags</a></li>
+<li class="onpage-item"><a href="#supported-image-formats">Supported Image Formats</a></li>
+<li class="onpage-item"><a href="#output-formats">Output Formats</a></li>
+<li class="onpage-item onpage-sub"><a href="#html">HTML</a></li>
+<li class="onpage-item onpage-sub"><a href="#html-figure-with-figcaption">HTML Figure with Figcaption</a></li>
+<li class="onpage-item onpage-sub"><a href="#hero--above-the-fold-html">Hero / Above-the-Fold HTML</a></li>
+<li class="onpage-item onpage-sub"><a href="#responsive-html-srcset">Responsive HTML (srcset)</a></li>
+<li class="onpage-item onpage-sub"><a href="#picture-element">Picture Element</a></li>
+<li class="onpage-item onpage-sub"><a href="#markdown">Markdown</a></li>
+<li class="onpage-item onpage-sub"><a href="#jsx-and-react">JSX and React</a></li>
+<li class="onpage-item onpage-sub"><a href="#nextjs-image-component">Next.js Image Component</a></li>
+<li class="onpage-item onpage-sub"><a href="#astro-image-component">Astro Image Component</a></li>
+<li class="onpage-item"><a href="#accessibility-scoring">Accessibility Scoring</a></li>
+<li class="onpage-item onpage-sub"><a href="#per-image-scoring">Per-Image Scoring</a></li>
+<li class="onpage-item onpage-sub"><a href="#project-level-scoring">Project-Level Scoring</a></li>
+<li class="onpage-item"><a href="#catalog-file-formats">Catalog File Formats</a></li>
+<li class="onpage-item onpage-sub"><a href="#markdown-catalog">Markdown Catalog</a></li>
+<li class="onpage-item onpage-sub"><a href="#json-catalog">JSON Catalog</a></li>
+<li class="onpage-item onpage-sub"><a href="#csv-catalog">CSV Catalog</a></li>
+<li class="onpage-item"><a href="#alt-text-quality-standards">Alt Text Quality Standards</a></li>
+<li class="onpage-item"><a href="#edge-case-handling">Edge Case Handling</a></li>
+<li class="onpage-item"><a href="#wcag-compliance-reference">WCAG Compliance Reference</a></li>
+<li class="onpage-item onpage-sub"><a href="#success-criteria-addressed">Success Criteria Addressed</a></li>
+<li class="onpage-item onpage-sub"><a href="#additional-reinforcement-via-instruction-file">Additional Reinforcement via Instruction File</a></li>
+<li class="onpage-item"><a href="#utility-script-reference">Utility Script Reference</a></li>
+<li class="onpage-item onpage-sub"><a href="#command-line-interface">Command-Line Interface</a></li>
+<li class="onpage-item onpage-sub"><a href="#output-fields">Output Fields</a></li>
+<li class="onpage-item onpage-sub"><a href="#svg-handling">SVG Handling</a></li>
+<li class="onpage-item onpage-sub"><a href="#exif-data">EXIF Data</a></li>
+<li class="onpage-item onpage-sub"><a href="#dominant-colors">Dominant Colors</a></li>
+<li class="onpage-item onpage-sub"><a href="#text-content-heuristic">Text-Content Heuristic</a></li>
+<li class="onpage-item"><a href="#agent-handoffs">Agent Handoffs</a></li>
+<li class="onpage-item"><a href="#file-manifest">File Manifest</a></li>
+<li class="onpage-item"><a href="#relationship-to-other-agents">Relationship to Other Agents</a></li>
+<li class="onpage-item"><a href="#troubleshooting">Troubleshooting</a></li>
+<li class="onpage-item onpage-sub"><a href="#pillow-is-not-installed">Pillow is not installed</a></li>
+<li class="onpage-item onpage-sub"><a href="#script-cannot-find-the-image">Script cannot find the image</a></li>
+<li class="onpage-item onpage-sub"><a href="#svg-dimensions-are-0x0">SVG dimensions are 0x0</a></li>
+<li class="onpage-item onpage-sub"><a href="#agent-does-not-appear-in-copilot-chat">Agent does not appear in Copilot chat</a></li>
+<li class="onpage-item onpage-sub"><a href="#sub-agents-appear-in-the-picker">Sub-agents appear in the picker</a></li>
+<li class="onpage-item onpage-sub"><a href="#model-does-not-support-vision">Model does not support vision</a></li>
+<li class="onpage-item onpage-sub"><a href="#low-confidence-on-every-image">Low confidence on every image</a></li>
+<li class="onpage-item onpage-sub"><a href="#batch-scan-finds-no-images">Batch scan finds no images</a></li>
+<li class="onpage-item onpage-sub"><a href="#exif-data-is-empty">EXIF data is empty</a></li>
+<li class="onpage-item onpage-sub"><a href="#text-heuristic-gives-wrong-result">Text heuristic gives wrong result</a></li>
+<li class="onpage-item"><a href="#example-prompts">Example Prompts</a></li>
+<li class="onpage-item onpage-sub"><a href="#analysis">Analysis</a></li>
+<li class="onpage-item onpage-sub"><a href="#markup-generation">Markup Generation</a></li>
+<li class="onpage-item onpage-sub"><a href="#responsive-and-performance">Responsive and Performance</a></li>
+<li class="onpage-item onpage-sub"><a href="#batch-processing">Batch Processing</a></li>
+<li class="onpage-item onpage-sub"><a href="#cataloging">Cataloging</a></li>
+<li class="onpage-item onpage-sub"><a href="#combined-workflows">Combined Workflows</a></li>
+    </ul>
+  </nav>
+      <div id="course-content"><h1 id="image-alt-text-agent----enhanced-documentation">Image Alt Text Agent -- Enhanced Documentation</h1>
 <h2 id="overview">Overview</h2>
 <p>The Image Alt Text agent is an accessibility-focused toolchain that automates the process of analyzing images, generating alternative text, extracting dimensions, building accessible markup, and maintaining an image inventory. It is designed for developers, content authors, and accessibility practitioners who need to produce WCAG-compliant image markup efficiently.</p>
 <p>The agent runs entirely within VS Code via GitHub Copilot custom agents. It works across all workspaces and supports single-image analysis, batch folder scanning, persistent catalog management, confidence scoring, content flagging, responsive image patterns, and accessibility scoring.</p>
@@ -1479,12 +1704,36 @@ options:
 <span class="hljs-variable">@image-alt-text</span> batch process /public/images with JSX output <span class="hljs-keyword">and</span> update the catalog
 <span class="hljs-variable">@image-alt-text</span> responsive hero markup for all images in /public/heroes, then catalog them
 <span class="hljs-variable">@image-alt-text</span> quick analysis of /assets, then hand off to accessibility-lead for full audit</code></pre>
+</div>
 
-  </main>
+    </main>
+  </div>
   <footer role="contentinfo" class="site-footer">
     <p><strong>GIT Going with GitHub</strong> - A workshop by <a href="https://community-access.org">Community Access</a></p>
     <p><a href="https://github.com/community-access/git-going-with-github">View on GitHub</a> · <a href="https://community-access.org">community-access.org</a></p>
   </footer>
 
+  <script>
+  (function() {
+    var key = 'gggLastVisitedPath';
+    var currentPath = window.location.pathname || '';
+    try {
+      if (currentPath) {
+        localStorage.setItem(key, currentPath);
+      }
+    } catch (e) {}
+
+    var resumeLink = document.getElementById('resume-link');
+    if (!resumeLink) return;
+
+    try {
+      var savedPath = localStorage.getItem(key);
+      if (savedPath && savedPath !== currentPath) {
+        resumeLink.hidden = false;
+        resumeLink.setAttribute('href', savedPath);
+      }
+    } catch (e) {}
+  })();
+  </script>
   </body>
 </html>

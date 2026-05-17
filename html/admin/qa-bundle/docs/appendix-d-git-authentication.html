@@ -5,18 +5,34 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="description" content="GIT Going with GitHub - A two-day accessible open source workshop by Community Access">
   <title>Appendix D: Git Authentication - GIT Going with GitHub</title>
-  <link rel="stylesheet" href="./styles/github-markdown.css">
-  <link rel="stylesheet" href="./styles/highlight.css">
-  <link rel="stylesheet" href="./styles/custom.css">
+  <link rel="stylesheet" href="../../../styles/github-markdown.css">
+  <link rel="stylesheet" href="../../../styles/highlight.css">
+  <link rel="stylesheet" href="../../../styles/custom.css">
   <style>
     .markdown-body {
       box-sizing: border-box;
-      min-width: 200px;
+      min-width: 0;
       max-width: 980px;
-      margin: 0 auto;
+      margin: 0;
       padding: 45px;
     }
+
+    .page-layout {
+      max-width: 1320px;
+      margin: 0 auto;
+      padding: 1rem 1rem 2rem;
+      display: grid;
+      grid-template-columns: minmax(240px, 300px) minmax(0, 1fr);
+      gap: 1.25rem;
+      align-items: start;
+    }
+
     @media (max-width: 767px) {
+      .page-layout {
+        grid-template-columns: 1fr;
+        padding: 0.5rem 0.5rem 1rem;
+      }
+
       .markdown-body {
         padding: 15px;
       }
@@ -28,7 +44,7 @@
   <header class="site-header" role="banner">
     <div class="site-header-inner">
       <nav aria-label="Breadcrumb" class="breadcrumb">
-        <a href="./index.html">Home</a> <span aria-hidden="true">›</span> <span aria-current="page">Appendix D: Git Authentication</span>
+        <a href="../../../index.html">Home</a> <span aria-hidden="true">›</span> <span aria-current="page">Appendix D: Git Authentication</span>
       </nav>
       <div class="header-actions">
         <a href="https://github.com/Community-Access/git-going-with-github/wiki" class="wiki-link" target="_blank" rel="noopener noreferrer">
@@ -37,7 +53,7 @@
           </svg>
           Wiki
         </a>
-        <form role="search" class="search-form" action="./search.html" method="get">
+        <form role="search" class="search-form" action="../../../search.html" method="get">
         <label for="site-search" class="search-label">Search docs</label>
         <input
           type="search"
@@ -57,11 +73,175 @@
       </div>
     </div>
   </header>
-  <main id="main-content" class="markdown-body">
-    <h1 id="appendix-d-git-authentication">Appendix D: Git Authentication</h1>
-<nav class="quick-jumps" aria-label="Quick Jumps"><strong class="quick-jumps-label">Quick Jumps</strong><ul class="quick-jumps-list"><li><a href="#ssh-keys--personal-access-tokens">SSH Keys & Personal Access Tokens</a></li><li style="margin-left:1.5em"><a href="#learning-cards-using-this-authentication-reference">Learning Cards: Using This Authentication Reference</a></li><li><a href="#when-you-need-authentication">When You Need Authentication</a></li><li><a href="#two-authentication-methods">Two Authentication Methods</a></li><li style="margin-left:1.5em"><a href="#personal-access-token-pat">Personal Access Token (PAT)</a></li><li style="margin-left:3em"><a href="#pros">Pros</a></li><li style="margin-left:3em"><a href="#cons">Cons</a></li><li style="margin-left:1.5em"><a href="#ssh-keys">SSH Keys</a></li><li style="margin-left:3em"><a href="#pros">Pros</a></li><li style="margin-left:3em"><a href="#cons">Cons</a></li><li><a href="#creating-a-personal-access-token-recommended-for-this-workshop">Creating a Personal Access Token (Recommended for This Workshop)</a></li><li style="margin-left:1.5em"><a href="#step-1-generate-the-token">Step 1: Generate the Token</a></li><li style="margin-left:1.5em"><a href="#step-2-store-it-securely">Step 2: Store It Securely</a></li><li style="margin-left:3em"><a href="#options">Options</a></li><li style="margin-left:3em"><a href="#do-not">Do not</a></li><li style="margin-left:1.5em"><a href="#step-3-use-it">Step 3: Use It</a></li><li><a href="#setting-up-ssh-keys-alternative-method">Setting Up SSH Keys (Alternative Method)</a></li><li style="margin-left:1.5em"><a href="#step-1-check-if-you-already-have-a-key">Step 1: Check If You Already Have a Key</a></li><li style="margin-left:1.5em"><a href="#step-2-generate-a-new-ssh-key">Step 2: Generate a New SSH Key</a></li><li style="margin-left:1.5em"><a href="#step-3-copy-your-public-key">Step 3: Copy Your Public Key</a></li><li style="margin-left:3em"><a href="#windows-powershell">Windows (PowerShell)</a></li><li style="margin-left:3em"><a href="#macos">macOS</a></li><li style="margin-left:3em"><a href="#linux">Linux</a></li><li style="margin-left:1.5em"><a href="#step-4-add-to-github">Step 4: Add to GitHub</a></li><li style="margin-left:1.5em"><a href="#step-5-test-the-connection">Step 5: Test the Connection</a></li><li style="margin-left:1.5em"><a href="#step-6-use-ssh-urls">Step 6: Use SSH URLs</a></li><li><a href="#switching-between-https-and-ssh">Switching Between HTTPS and SSH</a></li><li style="margin-left:1.5em"><a href="#check-your-current-remote">Check your current remote</a></li><li style="margin-left:1.5em"><a href="#switch-to-ssh">Switch to SSH</a></li><li style="margin-left:1.5em"><a href="#switch-to-https">Switch to HTTPS</a></li><li style="margin-left:1.5em"><a href="#learning-cards-troubleshooting-authentication">Learning Cards: Troubleshooting Authentication</a></li><li><a href="#troubleshooting">Troubleshooting</a></li><li style="margin-left:1.5em"><a href="#authentication-failed-when-pushing">"Authentication failed" when pushing</a></li><li style="margin-left:3em"><a href="#solution">Solution</a></li><li style="margin-left:1.5em"><a href="#permission-denied-publickey">"Permission denied (publickey)"</a></li><li style="margin-left:3em"><a href="#solution">Solution</a></li><li style="margin-left:1.5em"><a href="#host-key-verification-failed">"Host key verification failed"</a></li><li style="margin-left:3em"><a href="#solution">Solution</a></li><li><a href="#security-best-practices">Security Best Practices</a></li><li><a href="#commit-signing---verified-badges-and-vigilant-mode">Commit Signing - Verified Badges and Vigilant Mode</a></li><li style="margin-left:1.5em"><a href="#why-it-matters">Why It Matters</a></li><li style="margin-left:1.5em"><a href="#two-methods-for-signing-commits">Two Methods for Signing Commits</a></li><li style="margin-left:3em"><a href="#ssh-signing-simpler---reuses-your-existing-ssh-key">SSH Signing (simpler - reuses your existing SSH key)</a></li><li style="margin-left:3em"><a href="#gpg-signing-traditional-method">GPG Signing (traditional method)</a></li><li><a href="#step-2-find-your-key-id">Step 2: Find your key ID</a></li><li><a href="#step-3-export-the-public-key">Step 3: Export the public key</a></li><li><a href="#step-4-add-to-github">Step 4: Add to GitHub</a></li><li><a href="#step-5-configure-git-to-sign-all-commits">Step 5: Configure Git to sign all commits</a></li><li style="margin-left:1.5em"><a href="#vigilant-mode">Vigilant Mode</a></li><li style="margin-left:3em"><a href="#why-some-maintainers-enable-vigilant-mode">Why some maintainers enable Vigilant Mode</a></li><li style="margin-left:3em"><a href="#what-you-see-as-a-contributor">What you see as a contributor</a></li><li style="margin-left:3em"><a href="#to-read-verification-badges-with-a-screen-reader">To read verification badges with a screen reader</a></li><li><a href="#for-this-workshop">For This Workshop</a></li><li style="margin-left:1.5em"><a href="#recommended-approach">Recommended approach</a></li><li><a href="#authoritative-sources">Authoritative Sources</a></li><li style="margin-left:1.5em"><a href="#section-level-source-map">Section-Level Source Map</a></li></ul></nav>
+  <div class="page-layout">
+    <aside class="guided-sidebar" aria-label="Guided reference">
+    <h2 class="guided-title">Guided Reference</h2>
+    <p class="guided-intro">Follow the learning order, then jump into challenge issue views, appendices, and support resources.</p>
+
+
+    <section class="guided-resume" aria-label="Resume learning">
+      <a id="resume-link" class="guided-resume-link" href="../../../index.html" hidden>Resume where you left off</a>
+    </section>
+
+    <nav class="guided-nav" aria-label="Workshop navigation">
+      <section class="guided-section">
+        <h3>Start Here</h3>
+        <ul>
+          <li><a href="../../../index.html">Workshop Home</a></li>
+          <li><a href="../../../docs/course-guide.html">Course Guide</a></li>
+<li><a href="../../../docs/get-going.html">Get Going with GitHub</a></li>
+<li><a href="../../../docs/CHALLENGES.html">Challenge Hub</a></li>
+        </ul>
+      </section>
+
+      <section class="guided-section">
+        <h3>Learning Order</h3>
+        <details>
+          <summary>Day 1 chapters</summary>
+          <ul>
+            <li><a href="../../../docs/00-pre-workshop-setup.html">Pre-Workshop Setup - GIT Going with GitHub</a></li>
+<li><a href="../../../docs/01-choose-your-tools.html">Choose Your Adventure: A Tool Tour</a></li>
+<li><a href="../../../docs/02-understanding-github.html">Understanding GitHub&#39;s Web Structure</a></li>
+<li><a href="../../../docs/03-navigating-repositories.html">Navigating Repositories</a></li>
+<li><a href="../../../docs/04-the-learning-room.html">The Learning Room: Your Personal Practice Repository</a></li>
+<li><a href="../../../docs/05-working-with-issues.html">Working with Issues</a></li>
+<li><a href="../../../docs/06-working-with-pull-requests.html">Working with Pull Requests</a></li>
+<li><a href="../../../docs/07-merge-conflicts.html">Merge Conflicts</a></li>
+<li><a href="../../../docs/08-open-source-culture.html">Culture, Etiquette, and Community Standards</a></li>
+<li><a href="../../../docs/09-labels-milestones-projects.html">Labels, Milestones, and Projects</a></li>
+<li><a href="../../../docs/10-notifications-and-day-1-close.html">Notifications</a></li>
+          </ul>
+        </details>
+        <details>
+          <summary>Day 2 chapters</summary>
+          <ul>
+            <li><a href="../../../docs/11-vscode-interface.html">VS Code: Interface and Setup</a></li>
+<li><a href="../../../docs/12-vscode-accessibility.html">VS Code: Accessibility Deep Dive</a></li>
+<li><a href="../../../docs/13-how-git-works.html">How Git Works: The Mental Model</a></li>
+<li><a href="../../../docs/14-git-in-practice.html">Git &amp; Source Control in VS Code</a></li>
+<li><a href="../../../docs/15-code-review.html">Code Review: PRs, Diffs, and Constructive Feedback</a></li>
+<li><a href="../../../docs/16-github-copilot.html">GitHub Copilot</a></li>
+<li><a href="../../../docs/17-issue-templates.html">Issue Templates</a></li>
+<li><a href="../../../docs/18-fork-and-contribute.html">Fork and Contribute: The Open Source Workflow</a></li>
+<li><a href="../../../docs/19-accessibility-agents.html">Accessibility Agents</a></li>
+<li><a href="../../../docs/20-build-your-agent.html">Capstone Project: Contribute an Impactful Agent</a></li>
+<li><a href="../../../docs/21-github-accessibility-and-open-source.html">GitHub Accessibility and Open Source at Scale</a></li>
+<li><a href="../../../docs/22-what-comes-next.html">What Comes Next: Your Developer Journey</a></li>
+          </ul>
+        </details>
+      </section>
+
+      <section class="guided-section">
+        <h3>Appendices</h3>
+        <details>
+          <summary>Reference library</summary>
+          <ul>
+            <li><a href="../../../docs/appendix-a-glossary.html">Appendix A: GitHub Concepts &amp; Glossary</a></li>
+<li><a href="../../../docs/appendix-b-screen-reader-cheatsheet.html">Appendix B: Screen Reader Cheat Sheet</a></li>
+<li><a href="../../../docs/appendix-c-markdown-reference.html">Appendix C: Markdown and GitHub Flavored Markdown - Complete Guide</a></li>
+<li><a href="../../../docs/appendix-d-git-authentication.html">Appendix D: Git Authentication</a></li>
+<li><a href="../../../docs/appendix-e-advanced-git.html">Appendix E: Advanced Git Operations</a></li>
+<li><a href="../../../docs/appendix-f-git-security.html">Appendix F: Git Security for Contributors</a></li>
+<li><a href="../../../docs/appendix-g-vscode-reference.html">Appendix G: VS Code Accessibility Reference</a></li>
+<li><a href="../../../docs/appendix-h-github-desktop.html">Appendix H: GitHub Desktop</a></li>
+<li><a href="../../../docs/appendix-i-github-cli.html">Appendix I: GitHub CLI Reference</a></li>
+<li><a href="../../../docs/appendix-j-cloud-editors.html">Appendix J: GitHub Codespaces</a></li>
+<li><a href="../../../docs/appendix-k-copilot-reference.html">Appendix K: Copilot Reference</a></li>
+<li><a href="../../../docs/appendix-l-agents-reference.html">Appendix L: Accessibility Agents Reference</a></li>
+<li><a href="../../../docs/appendix-m-accessibility-standards.html">Appendix M: Accessibility Standards Reference</a></li>
+<li><a href="../../../docs/appendix-n-advanced-search.html">Appendix N: GitHub Advanced Search</a></li>
+<li><a href="../../../docs/appendix-o-branch-protection.html">Appendix O: Branch Protection Rules and Repository Rulesets</a></li>
+<li><a href="../../../docs/appendix-p-security-features.html">Appendix P: GitHub Security Features</a></li>
+<li><a href="../../../docs/appendix-q-actions-workflows.html">Appendix Q: GitHub Actions and Workflows</a></li>
+<li><a href="../../../docs/appendix-r-projects-deep-dive.html">Appendix R: GitHub Projects Deep Dive</a></li>
+<li><a href="../../../docs/appendix-s-releases-tags-insights.html">Appendix S: Releases, Tags, and Repository Insights</a></li>
+<li><a href="../../../docs/appendix-t-community-and-social.html">Appendix T: Community and Social</a></li>
+<li><a href="../../../docs/appendix-u-discussions-and-gists.html">Appendix U: Discussions and Gists</a></li>
+<li><a href="../../../docs/appendix-v-github-mobile.html">Appendix V: GitHub Mobile</a></li>
+<li><a href="../../../docs/appendix-w-github-pages.html">Appendix W: Publishing with GitHub Pages</a></li>
+<li><a href="../../../docs/appendix-x-resources.html">Appendix X: Resources</a></li>
+<li><a href="../../../docs/appendix-y-workshop-materials.html">Appendix Y: Accessing and Downloading Workshop Materials</a></li>
+<li><a href="../../../docs/appendix-z-github-skills.html">Appendix Z: GitHub Skills - Complete Course Catalog</a></li>
+<li><a href="../../../docs/appendix-aa-agent-installation-setup.html">Appendix AA: Agent Installation &amp; Setup Across All Platforms</a></li>
+<li><a href="../../../docs/appendix-ab-advanced-agent-patterns.html">Appendix AB: Advanced Agent Patterns &amp; Skills</a></li>
+<li><a href="../../../docs/appendix-ac-document-developer-tools.html">Appendix AC: Document &amp; Developer Tool Agents</a></li>
+          </ul>
+        </details>
+      </section>
+
+      <section class="guided-section">
+        <h3>Challenge Lab</h3>
+        <ul>
+          <li><a href="../../../docs/CHALLENGES.html">Challenge Hub</a></li>
+<li><a href="../../../work.html">Issue-Style Challenge Walkthrough</a></li>
+<li><a href="../../../docs/17-issue-templates.html">Issue Template Deep Dive</a></li>
+        </ul>
+      </section>
+
+      <section class="guided-section">
+        <h3>External Resources</h3>
+        <ul>
+          <li><a href="https://lp.csedesigns.com/ggg/PODCASTS.html">Podcast Episodes <span class="guided-external">(external)</span></a></li>
+<li><a href="https://lp.csedesigns.com/ggg/feed.xml">RSS Feed <span class="guided-external">(external)</span></a></li>
+        </ul>
+      </section>
+    </nav>
+  </aside>
+    <main id="main-content" class="markdown-body page-main">
+      <nav class="quick-jumps" aria-label="Quick jumps">
+    <h2 class="quick-jumps-title">Quick Jumps</h2>
+    <ul class="quick-jumps-list">
+      <li><a href="#course-content">Jump to course content</a></li><li><a href="#main-content">Jump to main content top</a></li><li><a href="#on-this-page">Jump to on-page sections</a></li><li><a href="../../../docs/CHALLENGES.html">Open challenge hub</a></li><li><a href="../../../work.html">Open issue-style challenge walkthrough</a></li>
+    </ul>
+  </nav>
+
+      <nav id="on-this-page" class="onpage-nav" aria-label="On this page">
+    <h2 class="onpage-title">On This Page</h2>
+    <ul class="onpage-list">
+      <li class="onpage-item"><a href="#ssh-keys-amp-personal-access-tokens">SSH Keys &amp; Personal Access Tokens</a></li>
+<li class="onpage-item onpage-sub"><a href="#learning-cards-using-this-authentication-reference">Learning Cards: Using This Authentication Reference</a></li>
+<li class="onpage-item"><a href="#when-you-need-authentication">When You Need Authentication</a></li>
+<li class="onpage-item"><a href="#two-authentication-methods">Two Authentication Methods</a></li>
+<li class="onpage-item onpage-sub"><a href="#personal-access-token-pat">Personal Access Token (PAT)</a></li>
+<li class="onpage-item onpage-sub"><a href="#ssh-keys">SSH Keys</a></li>
+<li class="onpage-item"><a href="#creating-a-personal-access-token-recommended-for-this-workshop">Creating a Personal Access Token (Recommended for This Workshop)</a></li>
+<li class="onpage-item onpage-sub"><a href="#step-1-generate-the-token">Step 1: Generate the Token</a></li>
+<li class="onpage-item onpage-sub"><a href="#step-2-store-it-securely">Step 2: Store It Securely</a></li>
+<li class="onpage-item onpage-sub"><a href="#step-3-use-it">Step 3: Use It</a></li>
+<li class="onpage-item"><a href="#setting-up-ssh-keys-alternative-method">Setting Up SSH Keys (Alternative Method)</a></li>
+<li class="onpage-item onpage-sub"><a href="#step-1-check-if-you-already-have-a-key">Step 1: Check If You Already Have a Key</a></li>
+<li class="onpage-item onpage-sub"><a href="#step-2-generate-a-new-ssh-key">Step 2: Generate a New SSH Key</a></li>
+<li class="onpage-item onpage-sub"><a href="#step-3-copy-your-public-key">Step 3: Copy Your Public Key</a></li>
+<li class="onpage-item onpage-sub"><a href="#step-4-add-to-github">Step 4: Add to GitHub</a></li>
+<li class="onpage-item onpage-sub"><a href="#step-5-test-the-connection">Step 5: Test the Connection</a></li>
+<li class="onpage-item onpage-sub"><a href="#step-6-use-ssh-urls">Step 6: Use SSH URLs</a></li>
+<li class="onpage-item"><a href="#switching-between-https-and-ssh">Switching Between HTTPS and SSH</a></li>
+<li class="onpage-item onpage-sub"><a href="#check-your-current-remote">Check your current remote</a></li>
+<li class="onpage-item onpage-sub"><a href="#switch-to-ssh">Switch to SSH</a></li>
+<li class="onpage-item onpage-sub"><a href="#switch-to-https">Switch to HTTPS</a></li>
+<li class="onpage-item onpage-sub"><a href="#learning-cards-troubleshooting-authentication">Learning Cards: Troubleshooting Authentication</a></li>
+<li class="onpage-item"><a href="#troubleshooting">Troubleshooting</a></li>
+<li class="onpage-item onpage-sub"><a href="#quotauthentication-failedquot-when-pushing">&amp;quot;Authentication failed&amp;quot; when pushing</a></li>
+<li class="onpage-item onpage-sub"><a href="#quotpermission-denied-publickeyquot">&amp;quot;Permission denied (publickey)&amp;quot;</a></li>
+<li class="onpage-item onpage-sub"><a href="#quothost-key-verification-failedquot">&amp;quot;Host key verification failed&amp;quot;</a></li>
+<li class="onpage-item"><a href="#security-best-practices">Security Best Practices</a></li>
+<li class="onpage-item"><a href="#commit-signing---verified-badges-and-vigilant-mode">Commit Signing - Verified Badges and Vigilant Mode</a></li>
+<li class="onpage-item onpage-sub"><a href="#why-it-matters">Why It Matters</a></li>
+<li class="onpage-item onpage-sub"><a href="#two-methods-for-signing-commits">Two Methods for Signing Commits</a></li>
+<li class="onpage-item"><a href="#step-2-find-your-key-id">Step 2: Find your key ID</a></li>
+<li class="onpage-item"><a href="#step-3-export-the-public-key">Step 3: Export the public key</a></li>
+<li class="onpage-item"><a href="#step-4-add-to-github">Step 4: Add to GitHub</a></li>
+<li class="onpage-item"><a href="#step-5-configure-git-to-sign-all-commits">Step 5: Configure Git to sign all commits</a></li>
+<li class="onpage-item onpage-sub"><a href="#vigilant-mode">Vigilant Mode</a></li>
+<li class="onpage-item"><a href="#for-this-workshop">For This Workshop</a></li>
+<li class="onpage-item onpage-sub"><a href="#recommended-approach">Recommended approach</a></li>
+<li class="onpage-item"><a href="#authoritative-sources">Authoritative Sources</a></li>
+<li class="onpage-item onpage-sub"><a href="#section-level-source-map">Section-Level Source Map</a></li>
+    </ul>
+  </nav>
+      <div id="course-content"><h1 id="appendix-d-git-authentication">Appendix D: Git Authentication</h1>
 <blockquote>
-<p><strong>Listen to Episode 21:</strong> <a href="../admin/PODCASTS.html">Git Authentication</a> - a conversational audio overview of this chapter. Listen before reading to preview the concepts, or after to reinforce what you learned.</p>
+<p><strong>Listen to Episode 21:</strong> <a href="https://lp.csedesigns.com/ggg/PODCASTS.html">Git Authentication</a> - a conversational audio overview of this chapter. Listen before reading to preview the concepts, or after to reinforce what you learned.</p>
 </blockquote>
 <blockquote>
 <p><strong>Reference companion to:</strong> <a href="00-pre-workshop-setup.html">Chapter 00: Pre-Workshop Setup</a> | Also relevant: <a href="14-git-in-practice.html">Chapter 14</a></p>
@@ -387,12 +567,36 @@ git config --global commit.gpgsign <span class="hljs-literal">true</span></code>
 <li><strong>Commit Signing - Verified Badges and Vigilant Mode:</strong> <a href="https://docs.github.com/en">GitHub Docs, home</a>, <a href="https://github.blog/changelog/">GitHub Changelog</a>, <a href="https://docs.github.com/en/code-security/getting-started/github-security-features">GitHub security features</a>, <a href="https://docs.github.com/en/code-security/dependabot">Dependabot docs</a>, <a href="https://docs.github.com/en/code-security/secret-scanning/introduction/about-secret-scanning">Secret scanning docs</a></li>
 <li><strong>For This Workshop:</strong> <a href="https://docs.github.com/en">GitHub Docs, home</a>, <a href="https://github.blog/changelog/">GitHub Changelog</a>, <a href="https://docs.github.com/en/code-security/getting-started/github-security-features">GitHub security features</a>, <a href="https://docs.github.com/en/code-security/dependabot">Dependabot docs</a>, <a href="https://docs.github.com/en/code-security/secret-scanning/introduction/about-secret-scanning">Secret scanning docs</a></li>
 </ul>
+</div>
 
-  </main>
+    </main>
+  </div>
   <footer role="contentinfo" class="site-footer">
     <p><strong>GIT Going with GitHub</strong> - A workshop by <a href="https://community-access.org">Community Access</a></p>
     <p><a href="https://github.com/community-access/git-going-with-github">View on GitHub</a> · <a href="https://community-access.org">community-access.org</a></p>
   </footer>
 
+  <script>
+  (function() {
+    var key = 'gggLastVisitedPath';
+    var currentPath = window.location.pathname || '';
+    try {
+      if (currentPath) {
+        localStorage.setItem(key, currentPath);
+      }
+    } catch (e) {}
+
+    var resumeLink = document.getElementById('resume-link');
+    if (!resumeLink) return;
+
+    try {
+      var savedPath = localStorage.getItem(key);
+      if (savedPath && savedPath !== currentPath) {
+        resumeLink.hidden = false;
+        resumeLink.setAttribute('href', savedPath);
+      }
+    } catch (e) {}
+  })();
+  </script>
   </body>
 </html>

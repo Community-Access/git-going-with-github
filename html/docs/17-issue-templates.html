@@ -5,18 +5,34 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="description" content="GIT Going with GitHub - A two-day accessible open source workshop by Community Access">
   <title>Issue Templates - GIT Going with GitHub</title>
-  <link rel="stylesheet" href="./styles/github-markdown.css">
-  <link rel="stylesheet" href="./styles/highlight.css">
-  <link rel="stylesheet" href="./styles/custom.css">
+  <link rel="stylesheet" href="../styles/github-markdown.css">
+  <link rel="stylesheet" href="../styles/highlight.css">
+  <link rel="stylesheet" href="../styles/custom.css">
   <style>
     .markdown-body {
       box-sizing: border-box;
-      min-width: 200px;
+      min-width: 0;
       max-width: 980px;
-      margin: 0 auto;
+      margin: 0;
       padding: 45px;
     }
+
+    .page-layout {
+      max-width: 1320px;
+      margin: 0 auto;
+      padding: 1rem 1rem 2rem;
+      display: grid;
+      grid-template-columns: minmax(240px, 300px) minmax(0, 1fr);
+      gap: 1.25rem;
+      align-items: start;
+    }
+
     @media (max-width: 767px) {
+      .page-layout {
+        grid-template-columns: 1fr;
+        padding: 0.5rem 0.5rem 1rem;
+      }
+
       .markdown-body {
         padding: 15px;
       }
@@ -28,7 +44,7 @@
   <header class="site-header" role="banner">
     <div class="site-header-inner">
       <nav aria-label="Breadcrumb" class="breadcrumb">
-        <a href="./index.html">Home</a> <span aria-hidden="true">›</span> <span aria-current="page">Issue Templates</span>
+        <a href="../index.html">Home</a> <span aria-hidden="true">›</span> <span aria-current="page">Issue Templates</span>
       </nav>
       <div class="header-actions">
         <a href="https://github.com/Community-Access/git-going-with-github/wiki" class="wiki-link" target="_blank" rel="noopener noreferrer">
@@ -37,7 +53,7 @@
           </svg>
           Wiki
         </a>
-        <form role="search" class="search-form" action="./search.html" method="get">
+        <form role="search" class="search-form" action="../search.html" method="get">
         <label for="site-search" class="search-label">Search docs</label>
         <input
           type="search"
@@ -57,9 +73,223 @@
       </div>
     </div>
   </header>
-  <main id="main-content" class="markdown-body">
-    <h1 id="issue-templates">Issue Templates</h1>
-<nav class="quick-jumps" aria-label="Quick Jumps"><strong class="quick-jumps-label">Quick Jumps</strong><ul class="quick-jumps-list"><li><a href="#structuring-contributions-for-clarity-and-quality">Structuring Contributions for Clarity and Quality</a></li><li><a href="#prerequisites-checklist">Prerequisites Checklist</a></li><li style="margin-left:1.5em"><a href="#before-starting-this-chapter-verify-you-have-completed">Before starting this chapter, verify you have completed</a></li><li><a href="#workshop-recommendation-chapter-17--challenge-14">Workshop Recommendation (Chapter 17 / Challenge 14)</a></li><li style="margin-left:1.5em"><a href="#challenge-14-set">Challenge 14 Set</a></li><li style="margin-left:1.5em"><a href="#challenge-141-step-by-step-analyze-the-registration-template">Challenge 14.1 Step-by-Step: Analyze the Registration Template</a></li><li style="margin-left:1.5em"><a href="#challenge-142-step-by-step-remix-the-registration-template">Challenge 14.2 Step-by-Step: Remix the Registration Template</a></li><li style="margin-left:1.5em"><a href="#challenge-143-optional-step-by-step-create-a-markdown-template">Challenge 14.3 (Optional) Step-by-Step: Create a Markdown Template</a></li><li><a href="#problem">Problem</a></li><li><a href="#context">Context</a></li><li><a href="#solution-ideas">Solution Ideas</a></li><li style="margin-left:1.5em"><a href="#challenge-144-optional-test-in-the-template-chooser">Challenge 14.4 (Optional): Test in the Template Chooser</a></li><li style="margin-left:1.5em"><a href="#completing-challenge-14-submit-your-evidence">Completing Challenge 14: Submit Your Evidence</a></li><li style="margin-left:1.5em"><a href="#expected-overall-outcomes">Expected Overall Outcomes</a></li><li style="margin-left:1.5em"><a href="#if-you-get-stuck">If You Get Stuck</a></li><li style="margin-left:1.5em"><a href="#learning-moment">Learning Moment</a></li><li style="margin-left:1.5em"><a href="#learning-pattern-used-in-this-chapter">Learning Pattern Used in This Chapter</a></li><li><a href="#table-of-contents">Table of Contents</a></li><li><a href="#1-what-is-an-issue-template">1. What Is an Issue Template?</a></li><li style="margin-left:1.5em"><a href="#why-they-matter-for-accessibility-projects">Why they matter for accessibility projects</a></li><li><a href="#2-how-templates-work-on-github">2. How Templates Work on GitHub</a></li><li style="margin-left:1.5em"><a href="#description">Description</a></li><li style="margin-left:1.5em"><a href="#example-configyml">Example `config.yml`</a></li><li style="margin-left:1.5em"><a href="#learning-cards-how-templates-work-on-github">Learning Cards: How Templates Work on GitHub</a></li><li><a href="#3-navigating-the-template-picker">3. Navigating the Template Picker</a></li><li style="margin-left:1.5em"><a href="#bypassing-the-chooser">Bypassing the Chooser</a></li><li style="margin-left:1.5em"><a href="#learning-cards-navigating-the-template-picker">Learning Cards: Navigating the Template Picker</a></li><li><a href="#4-the-accessibility-agents-issue-templates">4. The Accessibility Agents Issue Templates</a></li><li style="margin-left:1.5em"><a href="#reading-a-template-file">Reading a Template File</a></li><li style="margin-left:3em"><a href="#example-frontmatter">Example frontmatter</a></li><li><a href="#5-creating-a-new-template---step-by-step">5. Creating a New Template - Step by Step</a></li><li style="margin-left:1.5em"><a href="#tool-cards-create-an-issue-template">Tool Cards: Create an Issue Template</a></li><li style="margin-left:1.5em"><a href="#choosing-between-markdown-and-yaml-templates">Choosing Between Markdown and YAML Templates</a></li><li style="margin-left:3em"><a href="#use-markdown-templates-when">Use Markdown templates when</a></li><li style="margin-left:3em"><a href="#use-yaml-form-templates-when">Use YAML form templates when</a></li><li style="margin-left:1.5em"><a href="#markdown-template-structure">Markdown Template Structure</a></li><li style="margin-left:3em"><a href="#2-markdown-body">2. Markdown Body</a></li><li><a href="#describe-the-bug">Describe the Bug</a></li><li><a href="#steps-to-reproduce">Steps to Reproduce</a></li><li><a href="#expected-behavior">Expected Behavior</a></li><li><a href="#actual-behavior">Actual Behavior</a></li><li><a href="#environment">Environment</a></li><li><a href="#additional-context">Additional Context</a></li><li style="margin-left:1.5em"><a href="#markdown-template-tips">Markdown template tips</a></li><li style="margin-left:1.5em"><a href="#complete-markdown-template-example">Complete Markdown Template Example</a></li><li><a href="#component-affected">Component Affected</a></li><li><a href="#your-assistive-technology-setup">Your Assistive Technology Setup</a></li><li><a href="#expected-behavior">Expected Behavior</a></li><li><a href="#actual-behavior">Actual Behavior</a></li><li><a href="#steps-to-reproduce">Steps to Reproduce</a></li><li><a href="#wcag-success-criterion-if-known">WCAG Success Criterion (if known)</a></li><li><a href="#additional-context">Additional Context</a></li><li><a href="#before-submitting">Before Submitting</a></li><li style="margin-left:1.5em"><a href="#when-to-use-this-markdown-version-instead-of-yaml">When to use this Markdown version instead of YAML</a></li><li style="margin-left:1.5em"><a href="#markdown-template-accessibility-considerations">Markdown template accessibility considerations</a></li><li style="margin-left:1.5em"><a href="#creating-markdown-templates-the-manual-workflow-browser">Creating Markdown Templates: The Manual Workflow (Browser)</a></li><li style="margin-left:1.5em"><a href="#creating-markdown-templates-the-vs-code-workflow">Creating Markdown Templates: The VS Code Workflow</a></li><li style="margin-left:3em"><a href="#file-naming-conventions">File naming conventions</a></li><li style="margin-left:1.5em"><a href="#learning-cards-creating-a-new-template">Learning Cards: Creating a New Template</a></li><li><a href="#6-yaml-form-based-templates">6. YAML Form-Based Templates</a></li><li style="margin-left:1.5em"><a href="#why-yaml-forms-are-better-for-accessibility">Why YAML Forms Are Better for Accessibility</a></li><li style="margin-left:1.5em"><a href="#yaml-template-structure">YAML Template Structure</a></li><li style="margin-left:3em"><a href="#top-level-keys">Top-level keys</a></li><li style="margin-left:1.5em"><a href="#yaml-field-types-reference">YAML Field Types Reference</a></li><li style="margin-left:3em"><a href="#1-markdown---instructional-text">1. `markdown` - Instructional Text</a></li><li style="margin-left:3em"><a href="#2-input---single-line-text-field">2. `input` - Single-line Text Field</a></li><li style="margin-left:3em"><a href="#3-textarea---multi-line-text-area">3. `textarea` - Multi-line Text Area</a></li><li style="margin-left:3em"><a href="#4-dropdown---select-menu">4. `dropdown` - Select Menu</a></li><li style="margin-left:3em"><a href="#5-checkboxes---checkbox-group">5. `checkboxes` - Checkbox Group</a></li><li style="margin-left:1.5em"><a href="#yaml-field-types-summary-table">YAML Field Types Summary Table</a></li><li style="margin-left:3em"><a href="#choosing-the-right-field-type">Choosing the right field type</a></li><li style="margin-left:1.5em"><a href="#learning-cards-yaml-form-templates">Learning Cards: YAML Form Templates</a></li><li><a href="#7-building-an-accessibility-bug-report-template">7. Building an Accessibility Bug Report Template</a></li><li style="margin-left:1.5em"><a href="#full-template">Full Template</a></li><li style="margin-left:1.5em"><a href="#what-makes-this-template-accessible">What Makes This Template Accessible</a></li><li style="margin-left:1.5em"><a href="#a-second-template-feature-request-form">A Second Template: Feature Request Form</a></li><li style="margin-left:1.5em"><a href="#designing-templates-for-your-own-projects">Designing Templates for Your Own Projects</a></li><li style="margin-left:1.5em"><a href="#learning-cards-building-an-accessibility-bug-report-template">Learning Cards: Building an Accessibility Bug Report Template</a></li><li><a href="#8-pull-request-templates">8. Pull Request Templates</a></li><li style="margin-left:1.5em"><a href="#reading-the-accessibility-agents-pr-template">Reading the Accessibility Agents PR Template</a></li><li><a href="#description">Description</a></li><li><a href="#type-of-change">Type of Change</a></li><li><a href="#how-to-test">How to Test</a></li><li><a href="#accessibility-considerations">Accessibility Considerations</a></li><li><a href="#related-issues">Related Issues</a></li><li style="margin-left:1.5em"><a href="#learning-cards-pull-request-templates">Learning Cards: Pull Request Templates</a></li><li style="margin-left:1.5em"><a href="#learning-cards-hands-on-activity">Learning Cards: Hands-On Activity</a></li><li><a href="#9-hands-on-activity">9. Hands-On Activity</a></li><li style="margin-left:1.5em"><a href="#exercise-a---use-an-existing-template">Exercise A - Use an Existing Template</a></li><li style="margin-left:3em"><a href="#step-1-navigate-to-the-accessibility-agents-issues-section">Step 1: Navigate to the Accessibility Agents Issues Section</a></li><li style="margin-left:3em"><a href="#step-2-view-the-template-chooser-with-your-screen-reader">Step 2: View the Template Chooser with Your Screen Reader</a></li><li style="margin-left:3em"><a href="#step-3-select-a-template">Step 3: Select a Template</a></li><li style="margin-left:3em"><a href="#step-4-navigate-the-form-fields">Step 4: Navigate the Form Fields</a></li><li style="margin-left:3em"><a href="#step-5-fill-in-the-form">Step 5: Fill In the Form</a></li><li style="margin-left:3em"><a href="#step-6-preview-the-issue-before-submitting">Step 6: Preview the Issue Before Submitting</a></li><li style="margin-left:3em"><a href="#step-7-submit-the-issue">Step 7: Submit the Issue</a></li><li style="margin-left:3em"><a href="#step-8-checkpoint---reflect-on-the-template">Step 8: Checkpoint - Reflect on the Template</a></li><li style="margin-left:1.5em"><a href="#exercise-b---add-the-accessibility-bug-report-template-to-your-fork">Exercise B - Add the Accessibility Bug Report Template to Your Fork</a></li><li style="margin-left:3em"><a href="#step-1-clone-your-fork-to-your-machine">Step 1: Clone Your Fork to Your Machine</a></li><li style="margin-left:3em"><a href="#step-2-open-your-fork-in-vs-code">Step 2: Open Your Fork in VS Code</a></li><li style="margin-left:3em"><a href="#step-3-navigate-to-the-templates-folder">Step 3: Navigate to the Templates Folder</a></li><li style="margin-left:3em"><a href="#step-4-create-a-new-template-file">Step 4: Create a New Template File</a></li><li style="margin-left:3em"><a href="#step-5-copy-the-accessibility-template-yaml">Step 5: Copy the Accessibility Template YAML</a></li><li style="margin-left:3em"><a href="#step-6-verify-the-yaml-syntax">Step 6: Verify the YAML Syntax</a></li><li style="margin-left:3em"><a href="#step-7-create-a-branch-and-commit">Step 7: Create a Branch and Commit</a></li><li style="margin-left:3em"><a href="#step-8-test-the-template-in-github-web">Step 8: Test the Template in GitHub Web</a></li><li style="margin-left:3em"><a href="#step-9-test-with-your-screen-reader">Step 9: Test with Your Screen Reader</a></li><li style="margin-left:3em"><a href="#step-10-merge-your-branch-optional">Step 10: Merge Your Branch (Optional)</a></li><li style="margin-left:3em"><a href="#checkpoint">Checkpoint</a></li><li style="margin-left:1.5em"><a href="#exercise-c---submit-it-upstream">Exercise C - Submit It Upstream</a></li><li style="margin-left:3em"><a href="#step-1-verify-your-template-is-ready">Step 1: Verify Your Template is Ready</a></li><li style="margin-left:3em"><a href="#step-2-create-the-pull-request">Step 2: Create the Pull Request</a></li><li style="margin-left:3em"><a href="#step-3-write-your-pr-title-and-description">Step 3: Write Your PR Title and Description</a></li><li><a href="#what-does-this-pr-do">What Does This PR Do?</a></li><li><a href="#why-is-this-useful">Why Is This Useful?</a></li><li><a href="#how-was-this-tested">How Was This Tested?</a></li><li><a href="#related-issue">Related Issue</a></li><li style="margin-left:1.5em"><a href="#what-to-do">What to do</a></li><li style="margin-left:3em"><a href="#step-4-review-your-pr-before-submitting">Step 4: Review Your PR Before Submitting</a></li><li style="margin-left:3em"><a href="#step-5-submit-the-pr">Step 5: Submit the PR</a></li><li style="margin-left:3em"><a href="#step-6-respond-to-feedback">Step 6: Respond to Feedback</a></li><li style="margin-left:3em"><a href="#step-7-celebrate-your-contribution">Step 7: Celebrate Your Contribution</a></li><li style="margin-left:3em"><a href="#checkpoint">Checkpoint</a></li><li style="margin-left:1.5em"><a href="#exercise-d---design-a-template-for-your-own-project">Exercise D - Design a Template for Your Own Project</a></li><li style="margin-left:3em"><a href="#part-1-choose-your-project">Part 1: Choose Your Project</a></li><li style="margin-left:3em"><a href="#part-2-identify-issue-patterns">Part 2: Identify Issue Patterns</a></li><li style="margin-left:3em"><a href="#part-3-design-your-required-fields">Part 3: Design Your Required Fields</a></li><li style="margin-left:3em"><a href="#part-4-design-your-optional-fields">Part 4: Design Your Optional Fields</a></li><li style="margin-left:3em"><a href="#part-5-write-field-placeholders-and-help-text">Part 5: Write Field Placeholders and Help Text</a></li><li style="margin-left:3em"><a href="#part-6-test-your-template-locally">Part 6: Test Your Template Locally</a></li><li style="margin-left:3em"><a href="#part-7-optional-deploy-to-github-and-test-with-a-friend">Part 7: (Optional) Deploy to GitHub and Test with a Friend</a></li><li style="margin-left:3em"><a href="#part-8-reflect-on-your-template-design">Part 8: Reflect on Your Template Design</a></li><li style="margin-left:3em"><a href="#checkpoint">Checkpoint</a></li><li style="margin-left:1.5em"><a href="#youve-completed-the-template-exercises">You've Completed the Template Exercises</a></li><li><a href="#10-day-2-amplifier-the-template-builder-agent">10. Day 2 Amplifier: The Template Builder Agent</a></li><li style="margin-left:1.5em"><a href="#how-it-works">How It Works</a></li><li style="margin-left:3em"><a href="#in-vs-code">In VS Code</a></li><li style="margin-left:1.5em"><a href="#why-it-matters">Why It Matters</a></li><li style="margin-left:1.5em"><a href="#using-the-template-builder">Using the Template Builder</a></li><li><a href="#authoritative-sources">Authoritative Sources</a></li><li style="margin-left:1.5em"><a href="#section-level-source-map">Section-Level Source Map</a></li></ul></nav>
+  <div class="page-layout">
+    <aside class="guided-sidebar" aria-label="Guided reference">
+    <h2 class="guided-title">Guided Reference</h2>
+    <p class="guided-intro">Follow the learning order, then jump into challenge issue views, appendices, and support resources.</p>
+    <section class="guided-progress" aria-label="Learning progress">
+        <h3>Learning Progress</h3>
+        <p class="guided-progress-copy">21 of 55 pages in the guided sequence</p>
+        <div class="guided-progress-track" role="progressbar" aria-valuemin="0" aria-valuemax="100" aria-valuenow="38" aria-label="Guided sequence progress">
+          <span class="guided-progress-fill" style="width:38%;"></span>
+        </div>
+        <p class="guided-progress-percent">38% complete</p>
+      </section>
+
+    <section class="guided-resume" aria-label="Resume learning">
+      <a id="resume-link" class="guided-resume-link" href="../index.html" hidden>Resume where you left off</a>
+    </section>
+
+    <nav class="guided-nav" aria-label="Workshop navigation">
+      <section class="guided-section">
+        <h3>Start Here</h3>
+        <ul>
+          <li><a href="../index.html">Workshop Home</a></li>
+          <li><a href="../docs/course-guide.html">Course Guide</a></li>
+<li><a href="../docs/get-going.html">Get Going with GitHub</a></li>
+<li><a href="../docs/CHALLENGES.html">Challenge Hub</a></li>
+        </ul>
+      </section>
+
+      <section class="guided-section">
+        <h3>Learning Order</h3>
+        <details open>
+          <summary>Day 1 chapters</summary>
+          <ul>
+            <li><a href="../docs/00-pre-workshop-setup.html">Pre-Workshop Setup - GIT Going with GitHub</a></li>
+<li><a href="../docs/01-choose-your-tools.html">Choose Your Adventure: A Tool Tour</a></li>
+<li><a href="../docs/02-understanding-github.html">Understanding GitHub&#39;s Web Structure</a></li>
+<li><a href="../docs/03-navigating-repositories.html">Navigating Repositories</a></li>
+<li><a href="../docs/04-the-learning-room.html">The Learning Room: Your Personal Practice Repository</a></li>
+<li><a href="../docs/05-working-with-issues.html">Working with Issues</a></li>
+<li><a href="../docs/06-working-with-pull-requests.html">Working with Pull Requests</a></li>
+<li><a href="../docs/07-merge-conflicts.html">Merge Conflicts</a></li>
+<li><a href="../docs/08-open-source-culture.html">Culture, Etiquette, and Community Standards</a></li>
+<li><a href="../docs/09-labels-milestones-projects.html">Labels, Milestones, and Projects</a></li>
+<li><a href="../docs/10-notifications-and-day-1-close.html">Notifications</a></li>
+          </ul>
+        </details>
+        <details open>
+          <summary>Day 2 chapters</summary>
+          <ul>
+            <li><a href="../docs/11-vscode-interface.html">VS Code: Interface and Setup</a></li>
+<li><a href="../docs/12-vscode-accessibility.html">VS Code: Accessibility Deep Dive</a></li>
+<li><a href="../docs/13-how-git-works.html">How Git Works: The Mental Model</a></li>
+<li><a href="../docs/14-git-in-practice.html">Git &amp; Source Control in VS Code</a></li>
+<li><a href="../docs/15-code-review.html">Code Review: PRs, Diffs, and Constructive Feedback</a></li>
+<li><a href="../docs/16-github-copilot.html">GitHub Copilot</a></li>
+<li><a href="../docs/17-issue-templates.html" aria-current="page" class="guided-active">Issue Templates</a></li>
+<li><a href="../docs/18-fork-and-contribute.html">Fork and Contribute: The Open Source Workflow</a></li>
+<li><a href="../docs/19-accessibility-agents.html">Accessibility Agents</a></li>
+<li><a href="../docs/20-build-your-agent.html">Capstone Project: Contribute an Impactful Agent</a></li>
+<li><a href="../docs/21-github-accessibility-and-open-source.html">GitHub Accessibility and Open Source at Scale</a></li>
+<li><a href="../docs/22-what-comes-next.html">What Comes Next: Your Developer Journey</a></li>
+          </ul>
+        </details>
+      </section>
+
+      <section class="guided-section">
+        <h3>Appendices</h3>
+        <details>
+          <summary>Reference library</summary>
+          <ul>
+            <li><a href="../docs/appendix-a-glossary.html">Appendix A: GitHub Concepts &amp; Glossary</a></li>
+<li><a href="../docs/appendix-b-screen-reader-cheatsheet.html">Appendix B: Screen Reader Cheat Sheet</a></li>
+<li><a href="../docs/appendix-c-markdown-reference.html">Appendix C: Markdown and GitHub Flavored Markdown - Complete Guide</a></li>
+<li><a href="../docs/appendix-d-git-authentication.html">Appendix D: Git Authentication</a></li>
+<li><a href="../docs/appendix-e-advanced-git.html">Appendix E: Advanced Git Operations</a></li>
+<li><a href="../docs/appendix-f-git-security.html">Appendix F: Git Security for Contributors</a></li>
+<li><a href="../docs/appendix-g-vscode-reference.html">Appendix G: VS Code Accessibility Reference</a></li>
+<li><a href="../docs/appendix-h-github-desktop.html">Appendix H: GitHub Desktop</a></li>
+<li><a href="../docs/appendix-i-github-cli.html">Appendix I: GitHub CLI Reference</a></li>
+<li><a href="../docs/appendix-j-cloud-editors.html">Appendix J: GitHub Codespaces</a></li>
+<li><a href="../docs/appendix-k-copilot-reference.html">Appendix K: Copilot Reference</a></li>
+<li><a href="../docs/appendix-l-agents-reference.html">Appendix L: Accessibility Agents Reference</a></li>
+<li><a href="../docs/appendix-m-accessibility-standards.html">Appendix M: Accessibility Standards Reference</a></li>
+<li><a href="../docs/appendix-n-advanced-search.html">Appendix N: GitHub Advanced Search</a></li>
+<li><a href="../docs/appendix-o-branch-protection.html">Appendix O: Branch Protection Rules and Repository Rulesets</a></li>
+<li><a href="../docs/appendix-p-security-features.html">Appendix P: GitHub Security Features</a></li>
+<li><a href="../docs/appendix-q-actions-workflows.html">Appendix Q: GitHub Actions and Workflows</a></li>
+<li><a href="../docs/appendix-r-projects-deep-dive.html">Appendix R: GitHub Projects Deep Dive</a></li>
+<li><a href="../docs/appendix-s-releases-tags-insights.html">Appendix S: Releases, Tags, and Repository Insights</a></li>
+<li><a href="../docs/appendix-t-community-and-social.html">Appendix T: Community and Social</a></li>
+<li><a href="../docs/appendix-u-discussions-and-gists.html">Appendix U: Discussions and Gists</a></li>
+<li><a href="../docs/appendix-v-github-mobile.html">Appendix V: GitHub Mobile</a></li>
+<li><a href="../docs/appendix-w-github-pages.html">Appendix W: Publishing with GitHub Pages</a></li>
+<li><a href="../docs/appendix-x-resources.html">Appendix X: Resources</a></li>
+<li><a href="../docs/appendix-y-workshop-materials.html">Appendix Y: Accessing and Downloading Workshop Materials</a></li>
+<li><a href="../docs/appendix-z-github-skills.html">Appendix Z: GitHub Skills - Complete Course Catalog</a></li>
+<li><a href="../docs/appendix-aa-agent-installation-setup.html">Appendix AA: Agent Installation &amp; Setup Across All Platforms</a></li>
+<li><a href="../docs/appendix-ab-advanced-agent-patterns.html">Appendix AB: Advanced Agent Patterns &amp; Skills</a></li>
+<li><a href="../docs/appendix-ac-document-developer-tools.html">Appendix AC: Document &amp; Developer Tool Agents</a></li>
+          </ul>
+        </details>
+      </section>
+
+      <section class="guided-section">
+        <h3>Challenge Lab</h3>
+        <ul>
+          <li><a href="../docs/CHALLENGES.html">Challenge Hub</a></li>
+<li><a href="../work.html">Issue-Style Challenge Walkthrough</a></li>
+<li><a href="../docs/17-issue-templates.html" aria-current="page" class="guided-active">Issue Template Deep Dive</a></li>
+        </ul>
+      </section>
+
+      <section class="guided-section">
+        <h3>External Resources</h3>
+        <ul>
+          <li><a href="https://lp.csedesigns.com/ggg/PODCASTS.html">Podcast Episodes <span class="guided-external">(external)</span></a></li>
+<li><a href="https://lp.csedesigns.com/ggg/feed.xml">RSS Feed <span class="guided-external">(external)</span></a></li>
+        </ul>
+      </section>
+    </nav>
+  </aside>
+    <main id="main-content" class="markdown-body page-main">
+      <nav class="quick-jumps" aria-label="Quick jumps">
+    <h2 class="quick-jumps-title">Quick Jumps</h2>
+    <ul class="quick-jumps-list">
+      <li><a href="#course-content">Jump to course content</a></li><li><a href="#main-content">Jump to main content top</a></li><li><a href="#on-this-page">Jump to on-page sections</a></li><li><a href="#companion-media">Jump to companion audio</a></li><li><a href="../docs/CHALLENGES.html">Open challenge hub</a></li><li><a href="../work.html">Open issue-style challenge walkthrough</a></li>
+    </ul>
+  </nav>
+      <section id="companion-media" class="companion-media" aria-label="Companion podcast content">
+    <h2 class="companion-title">Companion Podcast and Transcript</h2>
+    <p class="companion-intro">Use audio and transcript companions to review concepts in a conversational format.</p>
+    <article class="companion-card">
+      <h3>Issue Templates</h3>
+      <p class="companion-note">Companion audio: this episode reinforces key ideas and may not be a word-for-word reading of this page.</p>
+      <audio controls preload="none" class="companion-player" src="https://lp.csedesigns.com/ggg/media/ep16-issue-templates.mp3">
+        Your browser does not support the audio element.
+      </audio>
+      <p class="companion-links">
+        <a href="https://lp.csedesigns.com/ggg/media/ep16-issue-templates.mp3" target="_blank" rel="noopener noreferrer">Open audio file (external)</a>
+        <span aria-hidden="true"> · </span>
+        <a href="https://github.com/Community-Access/git-going-with-github/blob/main/podcasts/scripts/chapters/ep16-issue-templates.txt" target="_blank" rel="noopener noreferrer">Full transcript source (external)</a>
+      </p>
+      <details class="companion-preview"><summary>Transcript preview</summary><p><strong>Alex:</strong> Welcome back. Today we&#39;re talking about issue templates, and this is one of those topics that sounds administrative until you realize it can completely change how accessible and useful contribution workflows feel.</p><p><strong>Jamie:</strong> Yes. A blank issue box can feel like someone saying, &quot;Tell me everything,&quot; with no structure, no prompts, and no clue what matters.</p><p><strong>Alex:</strong> Exactly. Templates turn that blank box into guidance. They help contributors include the right details, help maintainers spend less time asking follow-up questions, and help projects get to action faster. And for accessibility work, structure matters even more, because missing environment details, assistive technology details, or reproduction steps can make a report much harder to use.</p><p><strong>Alex:</strong> A quick orientation before we go deeper. This lesson connects to a few other parts of your learning path. You should already know how to work with GitHub issues, and it helps if you have a repository where you have write access, like a fork or personal repo. You&#39;ll also want an editor that highlights YAML syntax, such as VS Code. Optional but helpful background includes GitHub Copilot, notifications, and basic terminal comfort, though you can do a lot in the browser if needed.</p></details>
+    </article>
+  </section>
+      <nav id="on-this-page" class="onpage-nav" aria-label="On this page">
+    <h2 class="onpage-title">On This Page</h2>
+    <ul class="onpage-list">
+      <li class="onpage-item"><a href="#structuring-contributions-for-clarity-and-quality">Structuring Contributions for Clarity and Quality</a></li>
+<li class="onpage-item"><a href="#prerequisites-checklist">Prerequisites Checklist</a></li>
+<li class="onpage-item onpage-sub"><a href="#before-starting-this-chapter-verify-you-have-completed">Before starting this chapter, verify you have completed</a></li>
+<li class="onpage-item"><a href="#workshop-recommendation-chapter-17--challenge-14">Workshop Recommendation (Chapter 17 / Challenge 14)</a></li>
+<li class="onpage-item onpage-sub"><a href="#challenge-14-set">Challenge 14 Set</a></li>
+<li class="onpage-item onpage-sub"><a href="#challenge-141-step-by-step-analyze-the-registration-template">Challenge 14.1 Step-by-Step: Analyze the Registration Template</a></li>
+<li class="onpage-item onpage-sub"><a href="#challenge-142-step-by-step-remix-the-registration-template">Challenge 14.2 Step-by-Step: Remix the Registration Template</a></li>
+<li class="onpage-item onpage-sub"><a href="#challenge-143-optional-step-by-step-create-a-markdown-template">Challenge 14.3 (Optional) Step-by-Step: Create a Markdown Template</a></li>
+<li class="onpage-item onpage-sub"><a href="#challenge-144-optional-test-in-the-template-chooser">Challenge 14.4 (Optional): Test in the Template Chooser</a></li>
+<li class="onpage-item onpage-sub"><a href="#completing-challenge-14-submit-your-evidence">Completing Challenge 14: Submit Your Evidence</a></li>
+<li class="onpage-item onpage-sub"><a href="#expected-overall-outcomes">Expected Overall Outcomes</a></li>
+<li class="onpage-item onpage-sub"><a href="#if-you-get-stuck">If You Get Stuck</a></li>
+<li class="onpage-item onpage-sub"><a href="#learning-moment">Learning Moment</a></li>
+<li class="onpage-item onpage-sub"><a href="#learning-pattern-used-in-this-chapter">Learning Pattern Used in This Chapter</a></li>
+<li class="onpage-item"><a href="#table-of-contents">Table of Contents</a></li>
+<li class="onpage-item"><a href="#1-what-is-an-issue-template">1. What Is an Issue Template?</a></li>
+<li class="onpage-item onpage-sub"><a href="#why-they-matter-for-accessibility-projects">Why they matter for accessibility projects</a></li>
+<li class="onpage-item"><a href="#2-how-templates-work-on-github">2. How Templates Work on GitHub</a></li>
+<li class="onpage-item onpage-sub"><a href="#description">Description</a></li>
+<li class="onpage-item onpage-sub"><a href="#example-configyml">Example config.yml</a></li>
+<li class="onpage-item onpage-sub"><a href="#learning-cards-how-templates-work-on-github">Learning Cards: How Templates Work on GitHub</a></li>
+<li class="onpage-item"><a href="#3-navigating-the-template-picker">3. Navigating the Template Picker</a></li>
+<li class="onpage-item onpage-sub"><a href="#bypassing-the-chooser">Bypassing the Chooser</a></li>
+<li class="onpage-item onpage-sub"><a href="#learning-cards-navigating-the-template-picker">Learning Cards: Navigating the Template Picker</a></li>
+<li class="onpage-item"><a href="#4-the-accessibility-agents-issue-templates">4. The Accessibility Agents Issue Templates</a></li>
+<li class="onpage-item onpage-sub"><a href="#reading-a-template-file">Reading a Template File</a></li>
+<li class="onpage-item"><a href="#5-creating-a-new-template---step-by-step">5. Creating a New Template - Step by Step</a></li>
+<li class="onpage-item onpage-sub"><a href="#tool-cards-create-an-issue-template">Tool Cards: Create an Issue Template</a></li>
+<li class="onpage-item onpage-sub"><a href="#choosing-between-markdown-and-yaml-templates">Choosing Between Markdown and YAML Templates</a></li>
+<li class="onpage-item onpage-sub"><a href="#markdown-template-structure">Markdown Template Structure</a></li>
+<li class="onpage-item onpage-sub"><a href="#markdown-template-tips">Markdown template tips</a></li>
+<li class="onpage-item onpage-sub"><a href="#complete-markdown-template-example">Complete Markdown Template Example</a></li>
+<li class="onpage-item onpage-sub"><a href="#when-to-use-this-markdown-version-instead-of-yaml">When to use this Markdown version instead of YAML</a></li>
+<li class="onpage-item onpage-sub"><a href="#markdown-template-accessibility-considerations">Markdown template accessibility considerations</a></li>
+<li class="onpage-item onpage-sub"><a href="#creating-markdown-templates-the-manual-workflow-browser">Creating Markdown Templates: The Manual Workflow (Browser)</a></li>
+<li class="onpage-item onpage-sub"><a href="#creating-markdown-templates-the-vs-code-workflow">Creating Markdown Templates: The VS Code Workflow</a></li>
+<li class="onpage-item onpage-sub"><a href="#learning-cards-creating-a-new-template">Learning Cards: Creating a New Template</a></li>
+<li class="onpage-item"><a href="#6-yaml-form-based-templates">6. YAML Form-Based Templates</a></li>
+<li class="onpage-item onpage-sub"><a href="#why-yaml-forms-are-better-for-accessibility">Why YAML Forms Are Better for Accessibility</a></li>
+<li class="onpage-item onpage-sub"><a href="#yaml-template-structure">YAML Template Structure</a></li>
+<li class="onpage-item onpage-sub"><a href="#yaml-field-types-reference">YAML Field Types Reference</a></li>
+<li class="onpage-item onpage-sub"><a href="#yaml-field-types-summary-table">YAML Field Types Summary Table</a></li>
+<li class="onpage-item onpage-sub"><a href="#learning-cards-yaml-form-templates">Learning Cards: YAML Form Templates</a></li>
+<li class="onpage-item"><a href="#7-building-an-accessibility-bug-report-template">7. Building an Accessibility Bug Report Template</a></li>
+<li class="onpage-item onpage-sub"><a href="#full-template">Full Template</a></li>
+<li class="onpage-item onpage-sub"><a href="#what-makes-this-template-accessible">What Makes This Template Accessible</a></li>
+<li class="onpage-item onpage-sub"><a href="#a-second-template-feature-request-form">A Second Template: Feature Request Form</a></li>
+<li class="onpage-item onpage-sub"><a href="#designing-templates-for-your-own-projects">Designing Templates for Your Own Projects</a></li>
+<li class="onpage-item onpage-sub"><a href="#learning-cards-building-an-accessibility-bug-report-template">Learning Cards: Building an Accessibility Bug Report Template</a></li>
+<li class="onpage-item"><a href="#8-pull-request-templates">8. Pull Request Templates</a></li>
+<li class="onpage-item onpage-sub"><a href="#reading-the-accessibility-agents-pr-template">Reading the Accessibility Agents PR Template</a></li>
+<li class="onpage-item onpage-sub"><a href="#learning-cards-pull-request-templates">Learning Cards: Pull Request Templates</a></li>
+<li class="onpage-item onpage-sub"><a href="#learning-cards-hands-on-activity">Learning Cards: Hands-On Activity</a></li>
+<li class="onpage-item"><a href="#9-hands-on-activity">9. Hands-On Activity</a></li>
+<li class="onpage-item onpage-sub"><a href="#exercise-a---use-an-existing-template">Exercise A - Use an Existing Template</a></li>
+<li class="onpage-item onpage-sub"><a href="#exercise-b---add-the-accessibility-bug-report-template-to-your-fork">Exercise B - Add the Accessibility Bug Report Template to Your Fork</a></li>
+<li class="onpage-item onpage-sub"><a href="#exercise-c---submit-it-upstream">Exercise C - Submit It Upstream</a></li>
+<li class="onpage-item onpage-sub"><a href="#what-to-do">What to do</a></li>
+<li class="onpage-item onpage-sub"><a href="#exercise-d---design-a-template-for-your-own-project">Exercise D - Design a Template for Your Own Project</a></li>
+<li class="onpage-item onpage-sub"><a href="#you39ve-completed-the-template-exercises">You&amp;#39;ve Completed the Template Exercises</a></li>
+<li class="onpage-item"><a href="#10-day-2-amplifier-the-template-builder-agent">10. Day 2 Amplifier: The Template Builder Agent</a></li>
+<li class="onpage-item onpage-sub"><a href="#how-it-works">How It Works</a></li>
+<li class="onpage-item onpage-sub"><a href="#why-it-matters">Why It Matters</a></li>
+<li class="onpage-item onpage-sub"><a href="#using-the-template-builder">Using the Template Builder</a></li>
+<li class="onpage-item"><a href="#authoritative-sources">Authoritative Sources</a></li>
+<li class="onpage-item onpage-sub"><a href="#section-level-source-map">Section-Level Source Map</a></li>
+    </ul>
+  </nav>
+      <div id="course-content"><h1 id="issue-templates">Issue Templates</h1>
 <blockquote>
 <p><strong>Listen to Episode 16:</strong> <a href="https://lp.csedesigns.com/ggg/PODCASTS.html">Issue Templates</a> - a conversational audio overview of this chapter. Listen before reading to preview the concepts, or after to reinforce what you learned.</p>
 </blockquote>
@@ -145,8 +375,8 @@
 <p><strong>Estimated time:</strong> 20-30 minutes.</p>
 <p>Use this worked example as a guide:</p>
 <ul>
-<li><strong>Source:</strong> <a href="../.github/ISSUE_TEMPLATE/workshop-registration.yml"><code>.github/ISSUE_TEMPLATE/workshop-registration.yml</code></a></li>
-<li><strong>Remix sample:</strong> <a href="../learning-room/docs/samples/challenge-14-registration-remix-example.yml"><code>learning-room/docs/samples/challenge-14-registration-remix-example.yml</code></a></li>
+<li><strong>Source:</strong> <a href="https://github.com/Community-Access/git-going-with-github/blob/main/.github/ISSUE_TEMPLATE/workshop-registration.yml"><code>.github/ISSUE_TEMPLATE/workshop-registration.yml</code></a></li>
+<li><strong>Remix sample:</strong> <a href="https://github.com/Community-Access/git-going-with-github/blob/main/docs/samples/challenge-14-registration-remix-example.yml"><code>docs/samples/challenge-14-registration-remix-example.yml</code></a></li>
 </ul>
 <p>What changes and what stays the same:</p>
 <ul>
@@ -2410,12 +2640,39 @@ Agent: Here&#x27;s your YAML template [syntax-highlighted code block]</code></pr
 <li><strong>9. Hands-On Activity:</strong> <a href="https://docs.github.com/en">GitHub Docs, home</a>, <a href="https://github.blog/changelog/">GitHub Changelog</a>, <a href="https://docs.github.com/en/get-started/using-git/about-git">About Git</a>, <a href="https://docs.github.com/en/get-started/using-github/github-flow">GitHub flow</a>, <a href="https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/about-pull-requests">About pull requests</a></li>
 <li><strong>10. Day 2 Amplifier: The Template Builder Agent:</strong> <a href="https://docs.github.com/en">GitHub Docs, home</a>, <a href="https://github.blog/changelog/">GitHub Changelog</a>, <a href="https://docs.github.com/en/get-started/using-git/about-git">About Git</a>, <a href="https://docs.github.com/en/get-started/using-github/github-flow">GitHub flow</a>, <a href="https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/about-pull-requests">About pull requests</a></li>
 </ul>
-
-  </main>
+</div>
+      <nav class="progression-nav" aria-label="Page progression">
+    <a class="progression-link progression-prev" href="../docs/16-github-copilot.html" rel="prev"><span class="progression-label">Previous</span><span class="progression-title">GitHub Copilot</span></a>
+    <a class="progression-link progression-next" href="../docs/18-fork-and-contribute.html" rel="next"><span class="progression-label">Next</span><span class="progression-title">Fork and Contribute: The Open Source Workflow</span></a>
+  </nav>
+    </main>
+  </div>
   <footer role="contentinfo" class="site-footer">
     <p><strong>GIT Going with GitHub</strong> - A workshop by <a href="https://community-access.org">Community Access</a></p>
     <p><a href="https://github.com/community-access/git-going-with-github">View on GitHub</a> · <a href="https://community-access.org">community-access.org</a></p>
   </footer>
 
+  <script>
+  (function() {
+    var key = 'gggLastVisitedPath';
+    var currentPath = window.location.pathname || '';
+    try {
+      if (currentPath) {
+        localStorage.setItem(key, currentPath);
+      }
+    } catch (e) {}
+
+    var resumeLink = document.getElementById('resume-link');
+    if (!resumeLink) return;
+
+    try {
+      var savedPath = localStorage.getItem(key);
+      if (savedPath && savedPath !== currentPath) {
+        resumeLink.hidden = false;
+        resumeLink.setAttribute('href', savedPath);
+      }
+    } catch (e) {}
+  })();
+  </script>
   </body>
 </html>

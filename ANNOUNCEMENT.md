@@ -40,3 +40,21 @@ Podcast browse and RSS distribution are available through external endpoints.
 - [Repository README](README.md)
 - [Contributing Guide](CONTRIBUTING.md)
 - [Code of Conduct](CODE_OF_CONDUCT.md)
+
+## Authoritative Sources
+
+Use these official references when you need the current source of truth for the public workshop hub, GitHub platform concepts, and podcast distribution links referenced on this landing page.
+
+- [GitHub Docs, home](https://docs.github.com/en)
+- [GitHub Changelog](https://github.blog/changelog/)
+- [About Git](https://docs.github.com/en/get-started/using-git/about-git)
+- [GitHub Pages docs](https://docs.github.com/en/pages)
+- [GitHub Skills catalog](https://skills.github.com/)
+
+### Section-Level Source Map
+
+- **Start Here:** [GitHub Docs, home](https://docs.github.com/en), [GitHub Changelog](https://github.blog/changelog/)
+- **Choose Your Path:** [GitHub Docs, home](https://docs.github.com/en), [GitHub Changelog](https://github.blog/changelog/), [GitHub Skills catalog](https://skills.github.com/)
+- **Follow podcast distribution:** [GitHub Docs, home](https://docs.github.com/en), [GitHub Changelog](https://github.blog/changelog/), [GitHub Pages docs](https://docs.github.com/en/pages)
+- **What Lives Where:** [GitHub Docs, home](https://docs.github.com/en), [GitHub Changelog](https://github.blog/changelog/)
+- **Contribute:** [GitHub Docs, home](https://docs.github.com/en), [GitHub Changelog](https://github.blog/changelog/), [About Git](https://docs.github.com/en/get-started/using-git/about-git)

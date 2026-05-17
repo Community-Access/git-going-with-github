@@ -5,18 +5,34 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="description" content="GIT Going with GitHub - A two-day accessible open source workshop by Community Access">
   <title>Code Review: PRs, Diffs, and Constructive Feedback - GIT Going with GitHub</title>
-  <link rel="stylesheet" href="./styles/github-markdown.css">
-  <link rel="stylesheet" href="./styles/highlight.css">
-  <link rel="stylesheet" href="./styles/custom.css">
+  <link rel="stylesheet" href="../../../styles/github-markdown.css">
+  <link rel="stylesheet" href="../../../styles/highlight.css">
+  <link rel="stylesheet" href="../../../styles/custom.css">
   <style>
     .markdown-body {
       box-sizing: border-box;
-      min-width: 200px;
+      min-width: 0;
       max-width: 980px;
-      margin: 0 auto;
+      margin: 0;
       padding: 45px;
     }
+
+    .page-layout {
+      max-width: 1320px;
+      margin: 0 auto;
+      padding: 1rem 1rem 2rem;
+      display: grid;
+      grid-template-columns: minmax(240px, 300px) minmax(0, 1fr);
+      gap: 1.25rem;
+      align-items: start;
+    }
+
     @media (max-width: 767px) {
+      .page-layout {
+        grid-template-columns: 1fr;
+        padding: 0.5rem 0.5rem 1rem;
+      }
+
       .markdown-body {
         padding: 15px;
       }
@@ -28,7 +44,7 @@
   <header class="site-header" role="banner">
     <div class="site-header-inner">
       <nav aria-label="Breadcrumb" class="breadcrumb">
-        <a href="./index.html">Home</a> <span aria-hidden="true">›</span> <span aria-current="page">Code Review: PRs, Diffs, and Constructive Feedback</span>
+        <a href="../../../index.html">Home</a> <span aria-hidden="true">›</span> <span aria-current="page">Code Review: PRs, Diffs, and Constructive Feedback</span>
       </nav>
       <div class="header-actions">
         <a href="https://github.com/Community-Access/git-going-with-github/wiki" class="wiki-link" target="_blank" rel="noopener noreferrer">
@@ -37,7 +53,7 @@
           </svg>
           Wiki
         </a>
-        <form role="search" class="search-form" action="./search.html" method="get">
+        <form role="search" class="search-form" action="../../../search.html" method="get">
         <label for="site-search" class="search-label">Search docs</label>
         <input
           type="search"
@@ -57,9 +73,265 @@
       </div>
     </div>
   </header>
-  <main id="main-content" class="markdown-body">
-    <h1 id="code-review-prs-diffs-and-constructive-feedback">Code Review: PRs, Diffs, and Constructive Feedback</h1>
-<nav class="quick-jumps" aria-label="Quick Jumps"><strong class="quick-jumps-label">Quick Jumps</strong><ul class="quick-jumps-list"><li><a href="#part-1-the-github-pull-requests-extension">Part 1: The GitHub Pull Requests Extension</a></li><li><a href="#managing-pull-requests-from-vs-code">Managing Pull Requests from VS Code</a></li><li><a href="#workshop-recommendation-chapter-15-part-1">Workshop Recommendation (Chapter 15, Part 1)</a></li><li style="margin-left:1.5em"><a href="#chapter-15-part-1-practice-set">Chapter 15, Part 1 Practice Set</a></li><li style="margin-left:1.5em"><a href="#practice-151-step-by-step-install-the-extension">Practice 15.1 Step-by-Step: Install the Extension</a></li><li style="margin-left:1.5em"><a href="#practice-152-step-by-step-check-out-a-pr-and-post-a-comment">Practice 15.2 Step-by-Step: Check Out a PR and Post a Comment</a></li><li style="margin-left:1.5em"><a href="#completing-chapter-15-part-1-submit-your-evidence">Completing Chapter 15, Part 1: Submit Your Evidence</a></li><li style="margin-left:1.5em"><a href="#expected-outcomes">Expected Outcomes</a></li><li style="margin-left:1.5em"><a href="#if-you-get-stuck">If You Get Stuck</a></li><li style="margin-left:1.5em"><a href="#learning-moment">Learning Moment</a></li><li style="margin-left:1.5em"><a href="#learning-pattern-used-in-this-chapter">Learning Pattern Used in This Chapter</a></li><li><a href="#table-of-contents">Table of Contents</a></li><li><a href="#1-installing-the-github-pull-requests-extension">1. Installing the GitHub Pull Requests Extension</a></li><li style="margin-left:1.5em"><a href="#installation-steps">Installation Steps</a></li><li style="margin-left:3em"><a href="#method-1-extensions-sidebar">Method 1: Extensions Sidebar</a></li><li style="margin-left:3em"><a href="#method-2-command-palette">Method 2: Command Palette</a></li><li style="margin-left:1.5em"><a href="#signing-in-to-github">Signing In to GitHub</a></li><li style="margin-left:3em"><a href="#verify-sign-in">Verify sign-in</a></li><li style="margin-left:1.5em"><a href="#what-the-extension-adds">What the Extension Adds</a></li><li style="margin-left:1.5em"><a href="#learning-cards-installing-the-pr-extension">Learning Cards: Installing the PR Extension</a></li><li><a href="#2-viewing-pull-requests">2. Viewing Pull Requests</a></li><li style="margin-left:1.5em"><a href="#opening-the-github-pull-requests-panel">Opening the GitHub Pull Requests Panel</a></li><li style="margin-left:3em"><a href="#method-1-activity-bar">Method 1: Activity Bar</a></li><li><a href="#method-2-explorer-section">Method 2: Explorer Section</a></li><li style="margin-left:1.5em"><a href="#pull-request-tree-structure">Pull Request Tree Structure</a></li><li style="margin-left:3em"><a href="#description">Description</a></li><li style="margin-left:3em"><a href="#screen-reader-announcement-example">Screen reader announcement example</a></li><li style="margin-left:1.5em"><a href="#filtering-pr-lists">Filtering PR Lists</a></li><li style="margin-left:3em"><a href="#by-status">By status</a></li><li style="margin-left:3em"><a href="#by-repository">By repository</a></li><li style="margin-left:1.5em"><a href="#viewing-pr-details">Viewing PR Details</a></li><li style="margin-left:3em"><a href="#screen-reader-experience">Screen reader experience</a></li><li><a href="#3-checking-out-a-pull-request-branch">3. Checking Out a Pull Request Branch</a></li><li style="margin-left:1.5em"><a href="#why-check-out-a-pr">Why Check Out a PR</a></li><li style="margin-left:1.5em"><a href="#how-to-check-out-a-pr">How to Check Out a PR</a></li><li style="margin-left:3em"><a href="#method-1-from-the-pr-detail-view">Method 1: From the PR Detail View</a></li><li style="margin-left:3em"><a href="#method-2-from-the-pr-tree">Method 2: From the PR Tree</a></li><li style="margin-left:3em"><a href="#method-3-command-palette">Method 3: Command Palette</a></li><li style="margin-left:1.5em"><a href="#returning-to-your-original-branch">Returning to Your Original Branch</a></li><li style="margin-left:1.5em"><a href="#learning-cards-checking-out-a-pr">Learning Cards: Checking Out a PR</a></li><li><a href="#4-reviewing-pull-requests-in-vs-code">4. Reviewing Pull Requests in VS Code</a></li><li style="margin-left:1.5em"><a href="#reading-the-files-changed-list">Reading the Files Changed List</a></li><li style="margin-left:3em"><a href="#in-the-pr-detail-view">In the PR detail view</a></li><li style="margin-left:3em"><a href="#screen-reader-announcement">Screen reader announcement</a></li><li style="margin-left:1.5em"><a href="#understanding-the-diff-view">Understanding the Diff View</a></li><li style="margin-left:3em"><a href="#split-view-mode-default">Split view mode (default)</a></li><li style="margin-left:3em"><a href="#inline-view-mode">Inline view mode</a></li><li style="margin-left:3em"><a href="#to-toggle-between-views">To toggle between views</a></li><li style="margin-left:1.5em"><a href="#screen-reader-diff-review-with-accessible-diff-viewer">Screen Reader Diff Review with Accessible Diff Viewer</a></li><li style="margin-left:3em"><a href="#recommended-workflow-for-screen-reader-users">Recommended workflow for screen reader users</a></li><li style="margin-left:3em"><a href="#example-accessible-diff-output">Example Accessible Diff output</a></li><li style="margin-left:3em"><a href="#this-structured-reading-is-far-superior-to-navigating-the-visual-diff-manually">This structured reading is far superior to navigating the visual diff manually</a></li><li style="margin-left:1.5em"><a href="#flagging-issues-during-review">Flagging Issues During Review</a></li><li style="margin-left:1.5em"><a href="#learning-cards-reviewing-pull-requests-in-vs-code">Learning Cards: Reviewing Pull Requests in VS Code</a></li><li><a href="#5-creating-a-pull-request-from-vs-code">5. Creating a Pull Request from VS Code</a></li><li style="margin-left:1.5em"><a href="#tool-cards-create-a-pull-request-from-your-editor">Tool Cards: Create a Pull Request (from your editor)</a></li><li style="margin-left:1.5em"><a href="#prerequisites">Prerequisites</a></li><li style="margin-left:1.5em"><a href="#creating-the-pr">Creating the PR</a></li><li style="margin-left:3em"><a href="#method-1-command-palette-recommended">Method 1: Command Palette (Recommended)</a></li><li style="margin-left:3em"><a href="#method-2-source-control-panel">Method 2: Source Control Panel</a></li><li style="margin-left:3em"><a href="#method-3-github-panel">Method 3: GitHub Panel</a></li><li style="margin-left:1.5em"><a href="#filling-out-the-pr-form">Filling Out the PR Form</a></li><li style="margin-left:3em"><a href="#title-required">Title (required)</a></li><li style="margin-left:3em"><a href="#description-optional-but-recommended">Description (optional but recommended)</a></li><li style="margin-left:3em"><a href="#base-branch-target">Base branch (target)</a></li><li style="margin-left:3em"><a href="#compare-branch-source">Compare branch (source)</a></li><li style="margin-left:3em"><a href="#reviewers-optional">Reviewers (optional)</a></li><li style="margin-left:3em"><a href="#labels-optional">Labels (optional)</a></li><li style="margin-left:3em"><a href="#milestone-optional">Milestone (optional)</a></li><li style="margin-left:3em"><a href="#draft-pr-checkbox">Draft PR checkbox</a></li><li style="margin-left:3em"><a href="#screen-reader-navigation">Screen reader navigation</a></li><li style="margin-left:1.5em"><a href="#submitting-the-pr">Submitting the PR</a></li><li style="margin-left:1.5em"><a href="#learning-cards-creating-a-pull-request">Learning Cards: Creating a Pull Request</a></li><li><a href="#6-pull-request-description-templates">6. Pull Request Description Templates</a></li><li style="margin-left:1.5em"><a href="#where-templates-are-stored">Where Templates Are Stored</a></li><li style="margin-left:1.5em"><a href="#example-pr-template">Example PR Template</a></li><li><a href="#description">Description</a></li><li><a href="#related-issue">Related Issue</a></li><li><a href="#type-of-change">Type of Change</a></li><li><a href="#testing">Testing</a></li><li><a href="#checklist">Checklist</a></li><li><a href="#screenshots-if-applicable">Screenshots (if applicable)</a></li><li style="margin-left:1.5em"><a href="#filling-out-a-template">Filling Out a Template</a></li><li style="margin-left:3em"><a href="#screen-reader-workflow">Screen reader workflow</a></li><li><a href="#7-commenting-and-requesting-changes">7. Commenting and Requesting Changes</a></li><li style="margin-left:1.5em"><a href="#adding-an-inline-comment">Adding an Inline Comment</a></li><li style="margin-left:3em"><a href="#comment-format-tips">Comment format tips</a></li><li style="margin-left:1.5em"><a href="#starting-a-review">Starting a Review</a></li><li style="margin-left:3em"><a href="#if-you-have-multiple-comments-to-make-use-start-review">If you have multiple comments to make, use "Start Review"</a></li><li style="margin-left:1.5em"><a href="#submitting-your-review">Submitting Your Review</a></li><li style="margin-left:1.5em"><a href="#what-happens-after-submission">What Happens After Submission</a></li><li style="margin-left:1.5em"><a href="#learning-cards-commenting-and-requesting-changes">Learning Cards: Commenting and Requesting Changes</a></li><li><a href="#8-merging-pull-requests">8. Merging Pull Requests</a></li><li style="margin-left:1.5em"><a href="#prerequisites-for-merging">Prerequisites for Merging</a></li><li style="margin-left:1.5em"><a href="#merging-from-vs-code">Merging from VS Code</a></li><li style="margin-left:3em"><a href="#method-1-pr-detail-view">Method 1: PR Detail View</a></li><li style="margin-left:3em"><a href="#method-2-command-palette">Method 2: Command Palette</a></li><li style="margin-left:1.5em"><a href="#merge-types">Merge Types</a></li><li style="margin-left:3em"><a href="#which-merge-type-to-use">Which merge type to use</a></li><li style="margin-left:1.5em"><a href="#after-merging">After Merging</a></li><li style="margin-left:3em"><a href="#switching-to-main-and-pulling">Switching to main and pulling</a></li><li style="margin-left:1.5em"><a href="#deleting-the-feature-branch">Deleting the Feature Branch</a></li><li style="margin-left:1.5em"><a href="#learning-cards-merging-pull-requests">Learning Cards: Merging Pull Requests</a></li><li><a href="#keyboard-shortcuts---github-pull-requests-extension">Keyboard Shortcuts - GitHub Pull Requests Extension</a></li><li><a href="#troubleshooting">Troubleshooting</a></li><li style="margin-left:1.5em"><a href="#no-pull-requests-found">"No pull requests found"</a></li><li style="margin-left:3em"><a href="#solutions">Solutions</a></li><li style="margin-left:1.5em"><a href="#could-not-create-pull-request">"Could not create pull request"</a></li><li style="margin-left:3em"><a href="#solutions">Solutions</a></li><li style="margin-left:1.5em"><a href="#authentication-failed">"Authentication failed"</a></li><li style="margin-left:3em"><a href="#solutions">Solutions</a></li><li><a href="#try-it-review-a-pr-from-vs-code">Try It: Review a PR from VS Code</a></li><li><a href="#part-2-accessible-code-review">Part 2: Accessible Code Review</a></li><li><a href="#conducting-pull-request-reviews-with-a-screen-reader">Conducting Pull Request Reviews with a Screen Reader</a></li><li><a href="#workshop-recommendation-chapter-15--challenge-12">Workshop Recommendation (Chapter 15 / Challenge 12)</a></li><li style="margin-left:1.5em"><a href="#challenge-12-practice-set">Challenge 12 Practice Set</a></li><li style="margin-left:1.5em"><a href="#practice-121-step-by-step-review-a-pr-and-leave-inline-comments">Practice 12.1 Step-by-Step: Review a PR and Leave Inline Comments</a></li><li style="margin-left:1.5em"><a href="#practice-122-step-by-step-submit-a-formal-review-verdict">Practice 12.2 Step-by-Step: Submit a Formal Review Verdict</a></li><li style="margin-left:1.5em"><a href="#completing-challenge-12-submit-your-evidence">Completing Challenge 12: Submit Your Evidence</a></li><li style="margin-left:1.5em"><a href="#expected-outcomes">Expected Outcomes</a></li><li style="margin-left:1.5em"><a href="#if-you-get-stuck">If You Get Stuck</a></li><li style="margin-left:1.5em"><a href="#learning-moment">Learning Moment</a></li><li style="margin-left:1.5em"><a href="#learning-pattern-used-in-this-chapter">Learning Pattern Used in This Chapter</a></li><li><a href="#prerequisites-checklist">Prerequisites Checklist</a></li><li style="margin-left:1.5em"><a href="#before-starting-this-chapter-verify-you-have-completed">Before starting this chapter, verify you have completed</a></li><li><a href="#two-environments-for-code-review">Two Environments for Code Review</a></li><li style="margin-left:1.5em"><a href="#about-learning-cards-in-this-chapter">About Learning Cards in This Chapter</a></li><li><a href="#part-1---reviewing-on-githubcom">Part 1 - Reviewing on GitHub.com</a></li><li style="margin-left:1.5em"><a href="#good-news-modern-interface-is-default">Good News: Modern Interface is Default</a></li><li style="margin-left:1.5em"><a href="#step-1-reach-the-files-changed-tab">Step 1: Reach the Files Changed Tab</a></li><li style="margin-left:1.5em"><a href="#step-2-use-the-file-tree-to-orient-yourself">Step 2: Use the File Tree to Orient Yourself</a></li><li style="margin-left:3em"><a href="#what-to-listen-for--look-for">What to listen for / look for</a></li><li style="margin-left:1.5em"><a href="#step-3-navigate-between-file-diffs">Step 3: Navigate Between File Diffs</a></li><li style="margin-left:1.5em"><a href="#step-4-read-a-diff">Step 4: Read a Diff</a></li><li style="margin-left:3em"><a href="#what-each-line-announces--shows">What each line announces / shows</a></li><li style="margin-left:1.5em"><a href="#step-5-place-an-inline-comment">Step 5: Place an Inline Comment</a></li><li style="margin-left:3em"><a href="#placing-a-multi-line-comment">Placing a multi-line comment</a></li><li style="margin-left:1.5em"><a href="#step-6-read-existing-comments-and-threads">Step 6: Read Existing Comments and Threads</a></li><li style="margin-left:1.5em"><a href="#step-7-submit-your-review">Step 7: Submit Your Review</a></li><li style="margin-left:3em"><a href="#verdicts-and-their-meaning">Verdicts and their meaning</a></li><li style="margin-left:1.5em"><a href="#step-8-re-request-review-for-authors">Step 8: Re-request Review (for Authors)</a></li><li style="margin-left:1.5em"><a href="#learning-cards-reviewing-on-githubcom">Learning Cards: Reviewing on GitHub.com</a></li><li><a href="#part-2---reviewing-in-vs-code-with-the-accessible-diff-viewer">Part 2 - Reviewing in VS Code with the Accessible Diff Viewer</a></li><li style="margin-left:1.5em"><a href="#opening-a-diff-in-vs-code">Opening a Diff in VS Code</a></li><li style="margin-left:1.5em"><a href="#learning-cards-vs-code-code-review">Learning Cards: VS Code Code Review</a></li><li style="margin-left:3em"><a href="#opening-the-pr-for-review">Opening the PR for review</a></li><li style="margin-left:3em"><a href="#using-the-accessible-diff-viewer">Using the Accessible Diff Viewer</a></li><li style="margin-left:3em"><a href="#placing-a-comment">Placing a comment</a></li><li style="margin-left:3em"><a href="#opening-the-pr">Opening the PR</a></li><li style="margin-left:3em"><a href="#accessible-diff-viewer">Accessible Diff Viewer</a></li><li style="margin-left:3em"><a href="#comment-placement">Comment placement</a></li><li style="margin-left:1.5em"><a href="#using-the-accessible-diff-viewer-f7">Using the Accessible Diff Viewer (`F7`)</a></li><li style="margin-left:3em"><a href="#navigation">Navigation</a></li><li style="margin-left:3em"><a href="#what-makes-this-better-than-the-raw-diff-editor">What makes this better than the raw diff editor</a></li><li style="margin-left:1.5em"><a href="#placing-comments-in-vs-code-github-pr-extension">Placing Comments in VS Code (GitHub PR Extension)</a></li><li><a href="#code-review-structure-and-content">Code Review Structure and Content</a></li><li style="margin-left:1.5em"><a href="#the-anatomy-of-a-useful-review-comment">The Anatomy of a Useful Review Comment</a></li><li style="margin-left:3em"><a href="#blocking-example-reviewing-a-pr-for-docskeyboard-shortcutsmd">Blocking example (reviewing a PR for `docs/keyboard-shortcuts.md`)</a></li><li style="margin-left:3em"><a href="#non-blocking-nit-example-reviewing-a-pr-for-docswelcomemd">Non-blocking (nit) example (reviewing a PR for `docs/welcome.md`)</a></li><li style="margin-left:3em"><a href="#question-example-reviewing-a-pr-for-docssetup-guidemd">Question example (reviewing a PR for `docs/setup-guide.md`)</a></li><li style="margin-left:1.5em"><a href="#prefixes-that-set-expectations">Prefixes That Set Expectations</a></li><li style="margin-left:1.5em"><a href="#how-many-comments-is-too-many">How Many Comments Is Too Many?</a></li><li><a href="#keyboard-reference">Keyboard Reference</a></li><li style="margin-left:1.5em"><a href="#github-web-review">GitHub Web Review</a></li><li style="margin-left:1.5em"><a href="#vs-code-accessible-diff-viewer">VS Code Accessible Diff Viewer</a></li><li><a href="#common-review-scenarios">Common Review Scenarios</a></li><li style="margin-left:1.5em"><a href="#i-want-to-verify-the-pr-only-changes-what-it-claims">"I want to verify the PR only changes what it claims"</a></li><li style="margin-left:1.5em"><a href="#i-want-to-find-all-changes-to-one-specific-section">"I want to find all changes to one specific section"</a></li><li style="margin-left:1.5em"><a href="#i-agreed-but-then-the-author-made-more-changes---did-anything-new-appear">"I agreed but then the author made more changes - did anything new appear?"</a></li><li style="margin-left:1.5em"><a href="#a-reviewer-left-a-comment-i-dont-understand">"A reviewer left a comment I don't understand"</a></li><li><a href="#exercises">Exercises</a></li><li style="margin-left:1.5em"><a href="#exercise-a---complete-a-web-review">Exercise A - Complete a Web Review</a></li><li style="margin-left:3em"><a href="#step-1-navigate-to-the-pull-request">Step 1: Navigate to the Pull Request</a></li><li style="margin-left:3em"><a href="#step-2-read-the-pr-description">Step 2: Read the PR Description</a></li><li style="margin-left:3em"><a href="#step-3-navigate-to-files-changed">Step 3: Navigate to "Files Changed"</a></li><li style="margin-left:3em"><a href="#step-4-activate-focus-mode-for-better-diff-reading">Step 4: Activate Focus Mode for Better Diff Reading</a></li><li style="margin-left:3em"><a href="#step-5-find-the-heading-hierarchy-issue">Step 5: Find the Heading Hierarchy Issue</a></li><li style="margin-left:3em"><a href="#step-6-place-a-blocking-review-comment-on-the-heading">Step 6: Place a Blocking Review Comment on the Heading</a></li><li style="margin-left:3em"><a href="#step-7-find-the-link-text-issue">Step 7: Find the Link Text Issue</a></li><li style="margin-left:3em"><a href="#step-8-place-a-comment-on-the-link">Step 8: Place a Comment on the Link</a></li><li style="margin-left:3em"><a href="#step-9-submit-your-review">Step 9: Submit Your Review</a></li><li style="margin-left:3em"><a href="#reflect-on-this-exercise">Reflect on This Exercise</a></li><li style="margin-left:1.5em"><a href="#exercise-b---use-the-vs-code-accessible-diff-viewer">Exercise B - Use the VS Code Accessible Diff Viewer</a></li><li style="margin-left:3em"><a href="#prerequisites">Prerequisites</a></li><li style="margin-left:3em"><a href="#step-1-open-the-github-pull-requests-extension">Step 1: Open the GitHub Pull Requests Extension</a></li><li style="margin-left:3em"><a href="#step-2-open-the-pull-requests-sidebar">Step 2: Open the Pull Requests Sidebar</a></li><li style="margin-left:3em"><a href="#step-3-view-the-file-changes">Step 3: View the File Changes</a></li><li style="margin-left:3em"><a href="#step-4-access-the-accessible-diff-viewer">Step 4: Access the Accessible Diff Viewer</a></li><li style="margin-left:3em"><a href="#step-5-listen-to-and-understand-the-first-change">Step 5: Listen to and Understand the First Change</a></li><li style="margin-left:3em"><a href="#step-6-find-the-heading-hierarchy-issue">Step 6: Find the Heading Hierarchy Issue</a></li><li style="margin-left:3em"><a href="#step-7-locate-the-heading-line-and-add-an-inline-comment">Step 7: Locate the Heading Line and Add an Inline Comment</a></li><li style="margin-left:3em"><a href="#step-8-write-your-accessible-diff-comment">Step 8: Write Your Accessible Diff Comment</a></li><li style="margin-left:3em"><a href="#step-9-create-a-github-pull-request-comment">Step 9: Create a GitHub Pull Request Comment</a></li><li style="margin-left:3em"><a href="#reflect-on-this-exercise">Reflect on This Exercise</a></li><li style="margin-left:1.5em"><a href="#exercise-c---compare-and-reflect">Exercise C - Compare and Reflect</a></li><li style="margin-left:3em"><a href="#step-1-gather-your-data">Step 1: Gather Your Data</a></li><li style="margin-left:3em"><a href="#step-2-navigate-to-the-pr-and-leave-your-reflection-comment">Step 2: Navigate to the PR and Leave Your Reflection Comment</a></li><li style="margin-left:3em"><a href="#step-3-write-your-comparison">Step 3: Write Your Comparison</a></li><li><a href="#code-review-reflection---browser-vs-vs-code">Code Review Reflection - Browser vs VS Code</a></li><li style="margin-left:1.5em"><a href="#environment-preference">Environment Preference</a></li><li style="margin-left:1.5em"><a href="#specific-strengths">Specific Strengths</a></li><li style="margin-left:3em"><a href="#browser-made-this-easier">Browser made this easier</a></li><li style="margin-left:3em"><a href="#vs-code-made-this-easier">VS Code made this easier</a></li><li style="margin-left:1.5em"><a href="#real-world-impact">Real-World Impact</a></li><li style="margin-left:3em"><a href="#step-4-review-your-comment">Step 4: Review Your Comment</a></li><li style="margin-left:3em"><a href="#step-5-submit-your-reflection">Step 5: Submit Your Reflection</a></li><li style="margin-left:3em"><a href="#step-6-checkpoint---validate-your-learning">Step 6: Checkpoint - Validate Your Learning</a></li><li><a href="#part-3---using-github-copilot-to-understand-code-changes">Part 3 - Using GitHub Copilot to Understand Code Changes</a></li><li style="margin-left:1.5em"><a href="#when-to-use-copilot-during-code-review">When to Use Copilot During Code Review</a></li><li style="margin-left:1.5em"><a href="#how-to-use-copilot-during-review">How to Use Copilot During Review</a></li><li style="margin-left:3em"><a href="#in-vs-code-with-an-open-diff">In VS Code with an Open Diff</a></li><li style="margin-left:3em"><a href="#example-exchange">Example Exchange</a></li><li style="margin-left:3em"><a href="#on-githubcom-web-interface">On GitHub.com (Web Interface)</a></li><li style="margin-left:1.5em"><a href="#copilot-limitations-during-review-critical-to-know">Copilot Limitations During Review (Critical to Know)</a></li><li style="margin-left:1.5em"><a href="#best-practices">Best Practices</a></li><li style="margin-left:1.5em"><a href="#what-comes-next">What Comes Next</a></li><li><a href="#part-4-the-reviewers-craft">Part 4: The Reviewer's Craft</a></li><li style="margin-left:1.5em"><a href="#what-to-look-for-in-a-review">What to Look for in a Review</a></li><li style="margin-left:1.5em"><a href="#the-three-review-actions">The Three Review Actions</a></li><li style="margin-left:1.5em"><a href="#writing-constructive-feedback">Writing Constructive Feedback</a></li><li style="margin-left:1.5em"><a href="#the-reviewers-checklist">The Reviewer's Checklist</a></li><li style="margin-left:1.5em"><a href="#reviewing-as-a-learning-tool">Reviewing as a Learning Tool</a></li><li style="margin-left:1.5em"><a href="#learning-cards-the-reviewers-craft">Learning Cards: The Reviewer's Craft</a></li><li><a href="#day-2-teaser-the-full-accessibility-agents-review-ecosystem">Day 2 Teaser: The Full Accessibility Agents Review Ecosystem</a></li><li style="margin-left:1.5em"><a href="#the-agents-that-help-with-code-review">The Agents That Help With Code Review</a></li><li style="margin-left:1.5em"><a href="#how-it-works">How It Works</a></li><li style="margin-left:1.5em"><a href="#the-principle-skill-first-agent-second">The Principle: Skill First, Agent Second</a></li><li style="margin-left:1.5em"><a href="#a-real-example-the-flow">A Real Example: The Flow</a></li><li><a href="#authoritative-sources">Authoritative Sources</a></li><li style="margin-left:1.5em"><a href="#section-level-source-map">Section-Level Source Map</a></li></ul></nav>
+  <div class="page-layout">
+    <aside class="guided-sidebar" aria-label="Guided reference">
+    <h2 class="guided-title">Guided Reference</h2>
+    <p class="guided-intro">Follow the learning order, then jump into challenge issue views, appendices, and support resources.</p>
+
+
+    <section class="guided-resume" aria-label="Resume learning">
+      <a id="resume-link" class="guided-resume-link" href="../../../index.html" hidden>Resume where you left off</a>
+    </section>
+
+    <nav class="guided-nav" aria-label="Workshop navigation">
+      <section class="guided-section">
+        <h3>Start Here</h3>
+        <ul>
+          <li><a href="../../../index.html">Workshop Home</a></li>
+          <li><a href="../../../docs/course-guide.html">Course Guide</a></li>
+<li><a href="../../../docs/get-going.html">Get Going with GitHub</a></li>
+<li><a href="../../../docs/CHALLENGES.html">Challenge Hub</a></li>
+        </ul>
+      </section>
+
+      <section class="guided-section">
+        <h3>Learning Order</h3>
+        <details>
+          <summary>Day 1 chapters</summary>
+          <ul>
+            <li><a href="../../../docs/00-pre-workshop-setup.html">Pre-Workshop Setup - GIT Going with GitHub</a></li>
+<li><a href="../../../docs/01-choose-your-tools.html">Choose Your Adventure: A Tool Tour</a></li>
+<li><a href="../../../docs/02-understanding-github.html">Understanding GitHub&#39;s Web Structure</a></li>
+<li><a href="../../../docs/03-navigating-repositories.html">Navigating Repositories</a></li>
+<li><a href="../../../docs/04-the-learning-room.html">The Learning Room: Your Personal Practice Repository</a></li>
+<li><a href="../../../docs/05-working-with-issues.html">Working with Issues</a></li>
+<li><a href="../../../docs/06-working-with-pull-requests.html">Working with Pull Requests</a></li>
+<li><a href="../../../docs/07-merge-conflicts.html">Merge Conflicts</a></li>
+<li><a href="../../../docs/08-open-source-culture.html">Culture, Etiquette, and Community Standards</a></li>
+<li><a href="../../../docs/09-labels-milestones-projects.html">Labels, Milestones, and Projects</a></li>
+<li><a href="../../../docs/10-notifications-and-day-1-close.html">Notifications</a></li>
+          </ul>
+        </details>
+        <details>
+          <summary>Day 2 chapters</summary>
+          <ul>
+            <li><a href="../../../docs/11-vscode-interface.html">VS Code: Interface and Setup</a></li>
+<li><a href="../../../docs/12-vscode-accessibility.html">VS Code: Accessibility Deep Dive</a></li>
+<li><a href="../../../docs/13-how-git-works.html">How Git Works: The Mental Model</a></li>
+<li><a href="../../../docs/14-git-in-practice.html">Git &amp; Source Control in VS Code</a></li>
+<li><a href="../../../docs/15-code-review.html">Code Review: PRs, Diffs, and Constructive Feedback</a></li>
+<li><a href="../../../docs/16-github-copilot.html">GitHub Copilot</a></li>
+<li><a href="../../../docs/17-issue-templates.html">Issue Templates</a></li>
+<li><a href="../../../docs/18-fork-and-contribute.html">Fork and Contribute: The Open Source Workflow</a></li>
+<li><a href="../../../docs/19-accessibility-agents.html">Accessibility Agents</a></li>
+<li><a href="../../../docs/20-build-your-agent.html">Capstone Project: Contribute an Impactful Agent</a></li>
+<li><a href="../../../docs/21-github-accessibility-and-open-source.html">GitHub Accessibility and Open Source at Scale</a></li>
+<li><a href="../../../docs/22-what-comes-next.html">What Comes Next: Your Developer Journey</a></li>
+          </ul>
+        </details>
+      </section>
+
+      <section class="guided-section">
+        <h3>Appendices</h3>
+        <details>
+          <summary>Reference library</summary>
+          <ul>
+            <li><a href="../../../docs/appendix-a-glossary.html">Appendix A: GitHub Concepts &amp; Glossary</a></li>
+<li><a href="../../../docs/appendix-b-screen-reader-cheatsheet.html">Appendix B: Screen Reader Cheat Sheet</a></li>
+<li><a href="../../../docs/appendix-c-markdown-reference.html">Appendix C: Markdown and GitHub Flavored Markdown - Complete Guide</a></li>
+<li><a href="../../../docs/appendix-d-git-authentication.html">Appendix D: Git Authentication</a></li>
+<li><a href="../../../docs/appendix-e-advanced-git.html">Appendix E: Advanced Git Operations</a></li>
+<li><a href="../../../docs/appendix-f-git-security.html">Appendix F: Git Security for Contributors</a></li>
+<li><a href="../../../docs/appendix-g-vscode-reference.html">Appendix G: VS Code Accessibility Reference</a></li>
+<li><a href="../../../docs/appendix-h-github-desktop.html">Appendix H: GitHub Desktop</a></li>
+<li><a href="../../../docs/appendix-i-github-cli.html">Appendix I: GitHub CLI Reference</a></li>
+<li><a href="../../../docs/appendix-j-cloud-editors.html">Appendix J: GitHub Codespaces</a></li>
+<li><a href="../../../docs/appendix-k-copilot-reference.html">Appendix K: Copilot Reference</a></li>
+<li><a href="../../../docs/appendix-l-agents-reference.html">Appendix L: Accessibility Agents Reference</a></li>
+<li><a href="../../../docs/appendix-m-accessibility-standards.html">Appendix M: Accessibility Standards Reference</a></li>
+<li><a href="../../../docs/appendix-n-advanced-search.html">Appendix N: GitHub Advanced Search</a></li>
+<li><a href="../../../docs/appendix-o-branch-protection.html">Appendix O: Branch Protection Rules and Repository Rulesets</a></li>
+<li><a href="../../../docs/appendix-p-security-features.html">Appendix P: GitHub Security Features</a></li>
+<li><a href="../../../docs/appendix-q-actions-workflows.html">Appendix Q: GitHub Actions and Workflows</a></li>
+<li><a href="../../../docs/appendix-r-projects-deep-dive.html">Appendix R: GitHub Projects Deep Dive</a></li>
+<li><a href="../../../docs/appendix-s-releases-tags-insights.html">Appendix S: Releases, Tags, and Repository Insights</a></li>
+<li><a href="../../../docs/appendix-t-community-and-social.html">Appendix T: Community and Social</a></li>
+<li><a href="../../../docs/appendix-u-discussions-and-gists.html">Appendix U: Discussions and Gists</a></li>
+<li><a href="../../../docs/appendix-v-github-mobile.html">Appendix V: GitHub Mobile</a></li>
+<li><a href="../../../docs/appendix-w-github-pages.html">Appendix W: Publishing with GitHub Pages</a></li>
+<li><a href="../../../docs/appendix-x-resources.html">Appendix X: Resources</a></li>
+<li><a href="../../../docs/appendix-y-workshop-materials.html">Appendix Y: Accessing and Downloading Workshop Materials</a></li>
+<li><a href="../../../docs/appendix-z-github-skills.html">Appendix Z: GitHub Skills - Complete Course Catalog</a></li>
+<li><a href="../../../docs/appendix-aa-agent-installation-setup.html">Appendix AA: Agent Installation &amp; Setup Across All Platforms</a></li>
+<li><a href="../../../docs/appendix-ab-advanced-agent-patterns.html">Appendix AB: Advanced Agent Patterns &amp; Skills</a></li>
+<li><a href="../../../docs/appendix-ac-document-developer-tools.html">Appendix AC: Document &amp; Developer Tool Agents</a></li>
+          </ul>
+        </details>
+      </section>
+
+      <section class="guided-section">
+        <h3>Challenge Lab</h3>
+        <ul>
+          <li><a href="../../../docs/CHALLENGES.html">Challenge Hub</a></li>
+<li><a href="../../../work.html">Issue-Style Challenge Walkthrough</a></li>
+<li><a href="../../../docs/17-issue-templates.html">Issue Template Deep Dive</a></li>
+        </ul>
+      </section>
+
+      <section class="guided-section">
+        <h3>External Resources</h3>
+        <ul>
+          <li><a href="https://lp.csedesigns.com/ggg/PODCASTS.html">Podcast Episodes <span class="guided-external">(external)</span></a></li>
+<li><a href="https://lp.csedesigns.com/ggg/feed.xml">RSS Feed <span class="guided-external">(external)</span></a></li>
+        </ul>
+      </section>
+    </nav>
+  </aside>
+    <main id="main-content" class="markdown-body page-main">
+      <nav class="quick-jumps" aria-label="Quick jumps">
+    <h2 class="quick-jumps-title">Quick Jumps</h2>
+    <ul class="quick-jumps-list">
+      <li><a href="#course-content">Jump to course content</a></li><li><a href="#main-content">Jump to main content top</a></li><li><a href="#on-this-page">Jump to on-page sections</a></li><li><a href="../../../docs/CHALLENGES.html">Open challenge hub</a></li><li><a href="../../../work.html">Open issue-style challenge walkthrough</a></li>
+    </ul>
+  </nav>
+
+      <nav id="on-this-page" class="onpage-nav" aria-label="On this page">
+    <h2 class="onpage-title">On This Page</h2>
+    <ul class="onpage-list">
+      <li class="onpage-item"><a href="#part-1-the-github-pull-requests-extension">Part 1: The GitHub Pull Requests Extension</a></li>
+<li class="onpage-item"><a href="#managing-pull-requests-from-vs-code">Managing Pull Requests from VS Code</a></li>
+<li class="onpage-item"><a href="#workshop-recommendation-chapter-15-part-1">Workshop Recommendation (Chapter 15, Part 1)</a></li>
+<li class="onpage-item onpage-sub"><a href="#chapter-15-part-1-practice-set">Chapter 15, Part 1 Practice Set</a></li>
+<li class="onpage-item onpage-sub"><a href="#practice-151-step-by-step-install-the-extension">Practice 15.1 Step-by-Step: Install the Extension</a></li>
+<li class="onpage-item onpage-sub"><a href="#practice-152-step-by-step-check-out-a-pr-and-post-a-comment">Practice 15.2 Step-by-Step: Check Out a PR and Post a Comment</a></li>
+<li class="onpage-item onpage-sub"><a href="#completing-chapter-15-part-1-submit-your-evidence">Completing Chapter 15, Part 1: Submit Your Evidence</a></li>
+<li class="onpage-item onpage-sub"><a href="#expected-outcomes">Expected Outcomes</a></li>
+<li class="onpage-item onpage-sub"><a href="#if-you-get-stuck">If You Get Stuck</a></li>
+<li class="onpage-item onpage-sub"><a href="#learning-moment">Learning Moment</a></li>
+<li class="onpage-item onpage-sub"><a href="#learning-pattern-used-in-this-chapter">Learning Pattern Used in This Chapter</a></li>
+<li class="onpage-item"><a href="#table-of-contents">Table of Contents</a></li>
+<li class="onpage-item"><a href="#1-installing-the-github-pull-requests-extension">1. Installing the GitHub Pull Requests Extension</a></li>
+<li class="onpage-item onpage-sub"><a href="#installation-steps">Installation Steps</a></li>
+<li class="onpage-item onpage-sub"><a href="#signing-in-to-github">Signing In to GitHub</a></li>
+<li class="onpage-item onpage-sub"><a href="#what-the-extension-adds">What the Extension Adds</a></li>
+<li class="onpage-item onpage-sub"><a href="#learning-cards-installing-the-pr-extension">Learning Cards: Installing the PR Extension</a></li>
+<li class="onpage-item"><a href="#2-viewing-pull-requests">2. Viewing Pull Requests</a></li>
+<li class="onpage-item onpage-sub"><a href="#opening-the-github-pull-requests-panel">Opening the GitHub Pull Requests Panel</a></li>
+<li class="onpage-item"><a href="#method-2-explorer-section">Method 2: Explorer Section</a></li>
+<li class="onpage-item onpage-sub"><a href="#pull-request-tree-structure">Pull Request Tree Structure</a></li>
+<li class="onpage-item onpage-sub"><a href="#filtering-pr-lists">Filtering PR Lists</a></li>
+<li class="onpage-item onpage-sub"><a href="#viewing-pr-details">Viewing PR Details</a></li>
+<li class="onpage-item"><a href="#3-checking-out-a-pull-request-branch">3. Checking Out a Pull Request Branch</a></li>
+<li class="onpage-item onpage-sub"><a href="#why-check-out-a-pr">Why Check Out a PR</a></li>
+<li class="onpage-item onpage-sub"><a href="#how-to-check-out-a-pr">How to Check Out a PR</a></li>
+<li class="onpage-item onpage-sub"><a href="#returning-to-your-original-branch">Returning to Your Original Branch</a></li>
+<li class="onpage-item onpage-sub"><a href="#learning-cards-checking-out-a-pr">Learning Cards: Checking Out a PR</a></li>
+<li class="onpage-item"><a href="#4-reviewing-pull-requests-in-vs-code">4. Reviewing Pull Requests in VS Code</a></li>
+<li class="onpage-item onpage-sub"><a href="#reading-the-files-changed-list">Reading the Files Changed List</a></li>
+<li class="onpage-item onpage-sub"><a href="#understanding-the-diff-view">Understanding the Diff View</a></li>
+<li class="onpage-item onpage-sub"><a href="#screen-reader-diff-review-with-accessible-diff-viewer">Screen Reader Diff Review with Accessible Diff Viewer</a></li>
+<li class="onpage-item onpage-sub"><a href="#flagging-issues-during-review">Flagging Issues During Review</a></li>
+<li class="onpage-item onpage-sub"><a href="#learning-cards-reviewing-pull-requests-in-vs-code">Learning Cards: Reviewing Pull Requests in VS Code</a></li>
+<li class="onpage-item"><a href="#5-creating-a-pull-request-from-vs-code">5. Creating a Pull Request from VS Code</a></li>
+<li class="onpage-item onpage-sub"><a href="#tool-cards-create-a-pull-request-from-your-editor">Tool Cards: Create a Pull Request (from your editor)</a></li>
+<li class="onpage-item onpage-sub"><a href="#prerequisites">Prerequisites</a></li>
+<li class="onpage-item onpage-sub"><a href="#creating-the-pr">Creating the PR</a></li>
+<li class="onpage-item onpage-sub"><a href="#filling-out-the-pr-form">Filling Out the PR Form</a></li>
+<li class="onpage-item onpage-sub"><a href="#submitting-the-pr">Submitting the PR</a></li>
+<li class="onpage-item onpage-sub"><a href="#learning-cards-creating-a-pull-request">Learning Cards: Creating a Pull Request</a></li>
+<li class="onpage-item"><a href="#6-pull-request-description-templates">6. Pull Request Description Templates</a></li>
+<li class="onpage-item onpage-sub"><a href="#where-templates-are-stored">Where Templates Are Stored</a></li>
+<li class="onpage-item onpage-sub"><a href="#example-pr-template">Example PR Template</a></li>
+<li class="onpage-item onpage-sub"><a href="#filling-out-a-template">Filling Out a Template</a></li>
+<li class="onpage-item"><a href="#7-commenting-and-requesting-changes">7. Commenting and Requesting Changes</a></li>
+<li class="onpage-item onpage-sub"><a href="#adding-an-inline-comment">Adding an Inline Comment</a></li>
+<li class="onpage-item onpage-sub"><a href="#starting-a-review">Starting a Review</a></li>
+<li class="onpage-item onpage-sub"><a href="#submitting-your-review">Submitting Your Review</a></li>
+<li class="onpage-item onpage-sub"><a href="#what-happens-after-submission">What Happens After Submission</a></li>
+<li class="onpage-item onpage-sub"><a href="#learning-cards-commenting-and-requesting-changes">Learning Cards: Commenting and Requesting Changes</a></li>
+<li class="onpage-item"><a href="#8-merging-pull-requests">8. Merging Pull Requests</a></li>
+<li class="onpage-item onpage-sub"><a href="#prerequisites-for-merging">Prerequisites for Merging</a></li>
+<li class="onpage-item onpage-sub"><a href="#merging-from-vs-code">Merging from VS Code</a></li>
+<li class="onpage-item onpage-sub"><a href="#merge-types">Merge Types</a></li>
+<li class="onpage-item onpage-sub"><a href="#after-merging">After Merging</a></li>
+<li class="onpage-item onpage-sub"><a href="#deleting-the-feature-branch">Deleting the Feature Branch</a></li>
+<li class="onpage-item onpage-sub"><a href="#learning-cards-merging-pull-requests">Learning Cards: Merging Pull Requests</a></li>
+<li class="onpage-item"><a href="#keyboard-shortcuts---github-pull-requests-extension">Keyboard Shortcuts - GitHub Pull Requests Extension</a></li>
+<li class="onpage-item"><a href="#troubleshooting">Troubleshooting</a></li>
+<li class="onpage-item onpage-sub"><a href="#quotno-pull-requests-foundquot">&amp;quot;No pull requests found&amp;quot;</a></li>
+<li class="onpage-item onpage-sub"><a href="#quotcould-not-create-pull-requestquot">&amp;quot;Could not create pull request&amp;quot;</a></li>
+<li class="onpage-item onpage-sub"><a href="#quotauthentication-failedquot">&amp;quot;Authentication failed&amp;quot;</a></li>
+<li class="onpage-item"><a href="#try-it-review-a-pr-from-vs-code">Try It: Review a PR from VS Code</a></li>
+<li class="onpage-item"><a href="#part-2-accessible-code-review">Part 2: Accessible Code Review</a></li>
+<li class="onpage-item"><a href="#conducting-pull-request-reviews-with-a-screen-reader">Conducting Pull Request Reviews with a Screen Reader</a></li>
+<li class="onpage-item"><a href="#workshop-recommendation-chapter-15--challenge-12">Workshop Recommendation (Chapter 15 / Challenge 12)</a></li>
+<li class="onpage-item onpage-sub"><a href="#challenge-12-practice-set">Challenge 12 Practice Set</a></li>
+<li class="onpage-item onpage-sub"><a href="#practice-121-step-by-step-review-a-pr-and-leave-inline-comments">Practice 12.1 Step-by-Step: Review a PR and Leave Inline Comments</a></li>
+<li class="onpage-item onpage-sub"><a href="#practice-122-step-by-step-submit-a-formal-review-verdict">Practice 12.2 Step-by-Step: Submit a Formal Review Verdict</a></li>
+<li class="onpage-item onpage-sub"><a href="#completing-challenge-12-submit-your-evidence">Completing Challenge 12: Submit Your Evidence</a></li>
+<li class="onpage-item onpage-sub"><a href="#expected-outcomes">Expected Outcomes</a></li>
+<li class="onpage-item onpage-sub"><a href="#if-you-get-stuck">If You Get Stuck</a></li>
+<li class="onpage-item onpage-sub"><a href="#learning-moment">Learning Moment</a></li>
+<li class="onpage-item onpage-sub"><a href="#learning-pattern-used-in-this-chapter">Learning Pattern Used in This Chapter</a></li>
+<li class="onpage-item"><a href="#prerequisites-checklist">Prerequisites Checklist</a></li>
+<li class="onpage-item onpage-sub"><a href="#before-starting-this-chapter-verify-you-have-completed">Before starting this chapter, verify you have completed</a></li>
+<li class="onpage-item"><a href="#two-environments-for-code-review">Two Environments for Code Review</a></li>
+<li class="onpage-item onpage-sub"><a href="#about-learning-cards-in-this-chapter">About Learning Cards in This Chapter</a></li>
+<li class="onpage-item"><a href="#part-1---reviewing-on-githubcom">Part 1 - Reviewing on GitHub.com</a></li>
+<li class="onpage-item onpage-sub"><a href="#good-news-modern-interface-is-default">Good News: Modern Interface is Default</a></li>
+<li class="onpage-item onpage-sub"><a href="#step-1-reach-the-files-changed-tab">Step 1: Reach the Files Changed Tab</a></li>
+<li class="onpage-item onpage-sub"><a href="#step-2-use-the-file-tree-to-orient-yourself">Step 2: Use the File Tree to Orient Yourself</a></li>
+<li class="onpage-item onpage-sub"><a href="#step-3-navigate-between-file-diffs">Step 3: Navigate Between File Diffs</a></li>
+<li class="onpage-item onpage-sub"><a href="#step-4-read-a-diff">Step 4: Read a Diff</a></li>
+<li class="onpage-item onpage-sub"><a href="#step-5-place-an-inline-comment">Step 5: Place an Inline Comment</a></li>
+<li class="onpage-item onpage-sub"><a href="#step-6-read-existing-comments-and-threads">Step 6: Read Existing Comments and Threads</a></li>
+<li class="onpage-item onpage-sub"><a href="#step-7-submit-your-review">Step 7: Submit Your Review</a></li>
+<li class="onpage-item onpage-sub"><a href="#step-8-re-request-review-for-authors">Step 8: Re-request Review (for Authors)</a></li>
+<li class="onpage-item onpage-sub"><a href="#learning-cards-reviewing-on-githubcom">Learning Cards: Reviewing on GitHub.com</a></li>
+<li class="onpage-item"><a href="#part-2---reviewing-in-vs-code-with-the-accessible-diff-viewer">Part 2 - Reviewing in VS Code with the Accessible Diff Viewer</a></li>
+<li class="onpage-item onpage-sub"><a href="#opening-a-diff-in-vs-code">Opening a Diff in VS Code</a></li>
+<li class="onpage-item onpage-sub"><a href="#learning-cards-vs-code-code-review">Learning Cards: VS Code Code Review</a></li>
+<li class="onpage-item onpage-sub"><a href="#using-the-accessible-diff-viewer-f7">Using the Accessible Diff Viewer (F7)</a></li>
+<li class="onpage-item onpage-sub"><a href="#placing-comments-in-vs-code-github-pr-extension">Placing Comments in VS Code (GitHub PR Extension)</a></li>
+<li class="onpage-item"><a href="#code-review-structure-and-content">Code Review Structure and Content</a></li>
+<li class="onpage-item onpage-sub"><a href="#the-anatomy-of-a-useful-review-comment">The Anatomy of a Useful Review Comment</a></li>
+<li class="onpage-item onpage-sub"><a href="#prefixes-that-set-expectations">Prefixes That Set Expectations</a></li>
+<li class="onpage-item onpage-sub"><a href="#how-many-comments-is-too-many">How Many Comments Is Too Many?</a></li>
+<li class="onpage-item"><a href="#keyboard-reference">Keyboard Reference</a></li>
+<li class="onpage-item onpage-sub"><a href="#github-web-review">GitHub Web Review</a></li>
+<li class="onpage-item onpage-sub"><a href="#vs-code-accessible-diff-viewer">VS Code Accessible Diff Viewer</a></li>
+<li class="onpage-item"><a href="#common-review-scenarios">Common Review Scenarios</a></li>
+<li class="onpage-item onpage-sub"><a href="#quoti-want-to-verify-the-pr-only-changes-what-it-claimsquot">&amp;quot;I want to verify the PR only changes what it claims&amp;quot;</a></li>
+<li class="onpage-item onpage-sub"><a href="#quoti-want-to-find-all-changes-to-one-specific-sectionquot">&amp;quot;I want to find all changes to one specific section&amp;quot;</a></li>
+<li class="onpage-item onpage-sub"><a href="#quoti-agreed-but-then-the-author-made-more-changes---did-anything-new-appearquot">&amp;quot;I agreed but then the author made more changes - did anything new appear?&amp;quot;</a></li>
+<li class="onpage-item onpage-sub"><a href="#quota-reviewer-left-a-comment-i-don39t-understandquot">&amp;quot;A reviewer left a comment I don&amp;#39;t understand&amp;quot;</a></li>
+<li class="onpage-item"><a href="#exercises">Exercises</a></li>
+<li class="onpage-item onpage-sub"><a href="#exercise-a---complete-a-web-review">Exercise A - Complete a Web Review</a></li>
+<li class="onpage-item onpage-sub"><a href="#exercise-b---use-the-vs-code-accessible-diff-viewer">Exercise B - Use the VS Code Accessible Diff Viewer</a></li>
+<li class="onpage-item onpage-sub"><a href="#exercise-c---compare-and-reflect">Exercise C - Compare and Reflect</a></li>
+<li class="onpage-item"><a href="#part-3---using-github-copilot-to-understand-code-changes">Part 3 - Using GitHub Copilot to Understand Code Changes</a></li>
+<li class="onpage-item onpage-sub"><a href="#when-to-use-copilot-during-code-review">When to Use Copilot During Code Review</a></li>
+<li class="onpage-item onpage-sub"><a href="#how-to-use-copilot-during-review">How to Use Copilot During Review</a></li>
+<li class="onpage-item onpage-sub"><a href="#copilot-limitations-during-review-critical-to-know">Copilot Limitations During Review (Critical to Know)</a></li>
+<li class="onpage-item onpage-sub"><a href="#best-practices">Best Practices</a></li>
+<li class="onpage-item onpage-sub"><a href="#what-comes-next">What Comes Next</a></li>
+<li class="onpage-item"><a href="#part-4-the-reviewer39s-craft">Part 4: The Reviewer&amp;#39;s Craft</a></li>
+<li class="onpage-item onpage-sub"><a href="#what-to-look-for-in-a-review">What to Look for in a Review</a></li>
+<li class="onpage-item onpage-sub"><a href="#the-three-review-actions">The Three Review Actions</a></li>
+<li class="onpage-item onpage-sub"><a href="#writing-constructive-feedback">Writing Constructive Feedback</a></li>
+<li class="onpage-item onpage-sub"><a href="#the-reviewer39s-checklist">The Reviewer&amp;#39;s Checklist</a></li>
+<li class="onpage-item onpage-sub"><a href="#reviewing-as-a-learning-tool">Reviewing as a Learning Tool</a></li>
+<li class="onpage-item onpage-sub"><a href="#learning-cards-the-reviewer39s-craft">Learning Cards: The Reviewer&amp;#39;s Craft</a></li>
+<li class="onpage-item"><a href="#day-2-teaser-the-full-accessibility-agents-review-ecosystem">Day 2 Teaser: The Full Accessibility Agents Review Ecosystem</a></li>
+<li class="onpage-item onpage-sub"><a href="#the-agents-that-help-with-code-review">The Agents That Help With Code Review</a></li>
+<li class="onpage-item onpage-sub"><a href="#how-it-works">How It Works</a></li>
+<li class="onpage-item onpage-sub"><a href="#the-principle-skill-first-agent-second">The Principle: Skill First, Agent Second</a></li>
+<li class="onpage-item onpage-sub"><a href="#a-real-example-the-flow">A Real Example: The Flow</a></li>
+<li class="onpage-item"><a href="#authoritative-sources">Authoritative Sources</a></li>
+<li class="onpage-item onpage-sub"><a href="#section-level-source-map">Section-Level Source Map</a></li>
+    </ul>
+  </nav>
+      <div id="course-content"><h1 id="code-review-prs-diffs-and-constructive-feedback">Code Review: PRs, Diffs, and Constructive Feedback</h1>
 <blockquote>
 <p><strong>Related appendices:</strong> <a href="appendix-g-vscode-reference.html">Appendix G: VS Code Reference</a> | <a href="appendix-c-markdown-reference.html">Appendix C: Markdown Reference</a>
 <strong>Authoritative sources:</strong> <a href="https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/reviewing-changes-in-pull-requests">GitHub Docs: Reviewing changes in pull requests</a> | <a href="https://accessibility.github.com/documentation/guide/pull-requests/">GitHub Accessibility Guide: Pull Request Reviews</a></p>
@@ -74,7 +346,7 @@
 <p><strong>See also:</strong> <a href="appendix-g-vscode-reference.html">Appendix G: VS Code Reference</a> for the complete list of GitHub Pull Requests extension keyboard shortcuts.</p>
 </blockquote>
 <blockquote>
-<p><strong>Listen to Episode 13:</strong> <a href="../admin/PODCASTS.html">The GitHub Pull Requests Extension</a> - a conversational audio overview of this chapter. Listen before reading to preview the concepts, or after to reinforce what you learned.</p>
+<p><strong>Listen to Episode 13:</strong> <a href="https://lp.csedesigns.com/ggg/PODCASTS.html">The GitHub Pull Requests Extension</a> - a conversational audio overview of this chapter. Listen before reading to preview the concepts, or after to reinforce what you learned.</p>
 </blockquote>
 <h2 id="managing-pull-requests-from-vs-code">Managing Pull Requests from VS Code</h2>
 <blockquote>
@@ -1065,7 +1337,7 @@ gh <span class="hljs-built_in">pr</span> merge 42 --auto --squash</code></pre>
 <hr>
 <h2 id="part-2-accessible-code-review">Part 2: Accessible Code Review</h2>
 <blockquote>
-<p><strong>Listen to Episode 15:</strong> <a href="../admin/PODCASTS.html">Accessible Code Review</a> - a conversational audio overview of this chapter. Listen before reading to preview the concepts, or after to reinforce what you learned.</p>
+<p><strong>Listen to Episode 15:</strong> <a href="https://lp.csedesigns.com/ggg/PODCASTS.html">Accessible Code Review</a> - a conversational audio overview of this chapter. Listen before reading to preview the concepts, or after to reinforce what you learned.</p>
 </blockquote>
 <h2 id="conducting-pull-request-reviews-with-a-screen-reader">Conducting Pull Request Reviews with a Screen Reader</h2>
 <blockquote>
@@ -2755,12 +3027,36 @@ You then:
 <li><strong>Try It: Review a PR from VS Code:</strong> <a href="https://docs.github.com/en">GitHub Docs, home</a>, <a href="https://github.blog/changelog/">GitHub Changelog</a>, <a href="https://docs.github.com/en/get-started/using-git/about-git">About Git</a>, <a href="https://docs.github.com/en/get-started/using-github/github-flow">GitHub flow</a>, <a href="https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/about-pull-requests">About pull requests</a></li>
 <li><strong>Part 2: Accessible Code Review:</strong> <a href="https://docs.github.com/en">GitHub Docs, home</a>, <a href="https://github.blog/changelog/">GitHub Changelog</a>, <a href="https://docs.github.com/en/get-started/using-git/about-git">About Git</a>, <a href="https://docs.github.com/en/get-started/using-github/github-flow">GitHub flow</a>, <a href="https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/about-pull-requests">About pull requests</a></li>
 </ul>
+</div>
 
-  </main>
+    </main>
+  </div>
   <footer role="contentinfo" class="site-footer">
     <p><strong>GIT Going with GitHub</strong> - A workshop by <a href="https://community-access.org">Community Access</a></p>
     <p><a href="https://github.com/community-access/git-going-with-github">View on GitHub</a> · <a href="https://community-access.org">community-access.org</a></p>
   </footer>
 
+  <script>
+  (function() {
+    var key = 'gggLastVisitedPath';
+    var currentPath = window.location.pathname || '';
+    try {
+      if (currentPath) {
+        localStorage.setItem(key, currentPath);
+      }
+    } catch (e) {}
+
+    var resumeLink = document.getElementById('resume-link');
+    if (!resumeLink) return;
+
+    try {
+      var savedPath = localStorage.getItem(key);
+      if (savedPath && savedPath !== currentPath) {
+        resumeLink.hidden = false;
+        resumeLink.setAttribute('href', savedPath);
+      }
+    } catch (e) {}
+  })();
+  </script>
   </body>
 </html>
