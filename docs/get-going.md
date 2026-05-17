@@ -38,7 +38,7 @@ If you cannot finish every setup step before the workshop, tell a facilitator ea
 
 ## Step 2 - Accept the GitHub Classroom Assignment
 
-At the start of Day 1, the facilitator gives you a GitHub Classroom assignment link. It usually starts with `https://classroom.github.com/a/`.
+At the start of the workshop, the facilitator gives you a GitHub Classroom assignment link. It usually starts with `https://classroom.github.com/a/`. This single assignment covers both Day 1 and Day 2 content -- Day 2 challenges automatically unlock after you complete Day 1.
 
 1. Open the assignment link in the browser where you are signed in to GitHub.
 2. If GitHub asks you to authorize GitHub Classroom, activate **Authorize GitHub Classroom**.

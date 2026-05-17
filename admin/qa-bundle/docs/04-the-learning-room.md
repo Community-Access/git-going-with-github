@@ -32,12 +32,12 @@ This is the very first hands-on step of Day 1. By the end of this walkthrough yo
 > **What you need before you start:**
 >
 > - A GitHub account you are signed into in your browser ([Pre-Workshop Setup, Step 1](00-pre-workshop-setup.md#step-1---create-your-github-account))
-> - The **Day 1 Classroom assignment link** -- the facilitator pastes this link in the workshop chat at the start of Block 0. It looks like `https://classroom.github.com/a/<random-id>`. If you do not have it, ask in chat or DM the facilitator.
+> - The **Classroom assignment link** -- the facilitator pastes this link in the workshop chat at the start of Block 0. It looks like `https://classroom.github.com/a/<random-id>`. If you do not have it, ask in chat or DM the facilitator.
 
 ### 1. Open the assignment link
 
-1. In the same browser where you are signed into GitHub, open the Day 1 assignment link the facilitator shared.
-2. The page that loads is hosted on `classroom.github.com`. Your screen reader announces a heading with the assignment name (for example, "Git Going with GitHub -- Day 1").
+1. In the same browser where you are signed into GitHub, open the Classroom assignment link the facilitator shared.
+2. The page that loads is hosted on `classroom.github.com`. Your screen reader announces a heading with the assignment name (for example, "Git Going with GitHub").
 3. If the page asks you to authorize **GitHub Classroom** to access your GitHub account, activate **Authorize GitHub Classroom**. This is a one-time step.
 
 ### 2. Identify yourself (if asked)
