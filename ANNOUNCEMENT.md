@@ -2,7 +2,7 @@
 
 Welcome to the Community Access workshop hub.
 
-This site is the canonical home for workshop curriculum, guides, classroom workflows, and contributor documentation.
+This site is the canonical home for workshop curriculum, guides, challenge workflows, and contributor documentation.
 
 ## Start Here
 
@@ -19,13 +19,9 @@ Use the chapter and appendix flow for structured learning.
 - [Workshop Docs](docs/00-pre-workshop-setup.md)
 - [Course Guide](docs/course-guide.md)
 
-### Run the classroom
+### Instructor resources
 
-Use classroom operations pages for facilitation and grading.
-
-- [Classroom Home](classroom/index.md)
-- [Grading Guide](classroom/grading-guide.md)
-- [Human Test Matrix](classroom/HUMAN_TEST_MATRIX.md)
+Instructor-only facilitation and classroom operations resources are available through private channels.
 
 ### Follow podcast distribution
 
@@ -36,7 +32,7 @@ Podcast browse and RSS distribution are intentionally hosted on LP.
 
 ## What Lives Where
 
-- Community Access workshop site: curriculum, guides, classroom operations, contributor docs
+- Community Access workshop site: curriculum, guides, challenge workflows, contributor docs
 - LP distribution site: podcast index and feed delivery
 
 ## Contribute
