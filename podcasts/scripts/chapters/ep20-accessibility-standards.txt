@@ -1,11 +1,11 @@
-﻿[ALEX]
-Welcome back. This time, weâ€™re building a practical reference in audio form: the accessibility standards that show up when you use GitHub, review pull requests, write docs, or contribute code to the web.
+[ALEX]
+Welcome back. This time, we're building a practical reference in audio form: the accessibility standards that show up when you use GitHub, review pull requests, write docs, or contribute code to the web.
 
 [JAMIE]
-So this is the episode for the moment when somebody comments, â€œThis may fail WCAG 1.4.3,â€ and you think, I know that matters, but I need help decoding it.
+So this is the episode for the moment when somebody comments, "This may fail WCAG 1.4.3," and you think, I know that matters, but I need help decoding it.
 
 [ALEX]
-Exactly. Think of this as a working guide, not a memorization exercise. Itâ€™s a companion to open source collaboration and also very relevant when you work in VS Code or inspect web interfaces. And if you want the canonical standards, the authoritative references are the W3C documents for WCAG 2.2 and WAI-ARIA 1.2.
+Exactly. Think of this as a working guide, not a memorization exercise. It's a companion to open source collaboration and also very relevant when you work in VS Code or inspect web interfaces. And if you want the canonical standards, the authoritative references are the W3C documents for WCAG 2.2 and WAI-ARIA 1.2.
 
 [JAMIE]
 Before we dive in, can we set expectations? Are learners supposed to memorize criterion numbers?
@@ -16,10 +16,10 @@ No. You should recognize the big ideas, know the common trouble spots, and know 
 [PAUSE]
 
 [ALEX]
-Letâ€™s orient the map. The material moves through the four WCAG principles, conformance levels, commonly encountered success criteria, ARIA basics, landmark roles, common ARIA patterns, how standards apply to GitHub contributions, testing, a pull request checklist, and official references.
+Let's orient the map. The material moves through the four WCAG principles, conformance levels, commonly encountered success criteria, ARIA basics, landmark roles, common ARIA patterns, how standards apply to GitHub contributions, testing, a pull request checklist, and official references.
 
 [JAMIE]
-Thatâ€™s helpful, because accessibility standards can feel like a giant wall of acronyms unless you know the structure.
+That's helpful, because accessibility standards can feel like a giant wall of acronyms unless you know the structure.
 
 [ALEX]
 Right. And the structure starts with WCAG.
@@ -30,34 +30,34 @@ Right. And the structure starts with WCAG.
 WCAG stands for Web Content Accessibility Guidelines. Version 2.2 is organized around four principles often remembered with the mnemonic POUR: Perceivable, Operable, Understandable, and Robust.
 
 [JAMIE]
-Letâ€™s make each one concrete.
+Let's make each one concrete.
 
 [ALEX]
-Perceivable means information must be available in ways users can actually perceive. If an image has no alt text, a screen reader user may get nothing meaningful. Thatâ€™s a perceivability failure.
+Perceivable means information must be available in ways users can actually perceive. If an image has no alt text, a screen reader user may get nothing meaningful. That's a perceivability failure.
 
 [JAMIE]
 So the content exists visually, but not accessibly.
 
 [ALEX]
-Exactly. Operable means people must be able to use the interface. If a control only works on hover, keyboard users may be blocked. Thatâ€™s an operability failure.
+Exactly. Operable means people must be able to use the interface. If a control only works on hover, keyboard users may be blocked. That's an operability failure.
 
 [JAMIE]
 Understandable sounds like both wording and behavior.
 
 [ALEX]
-Yes. If a form says only â€œInvalid inputâ€ but never explains what is wrong, the system is not understandable enough. Users need clear labels, instructions, and error explanations.
+Yes. If a form says only "Invalid input" but never explains what is wrong, the system is not understandable enough. Users need clear labels, instructions, and error explanations.
 
 [JAMIE]
 And Robust?
 
 [ALEX]
-Robust means content has to work with assistive technologies and across different user agents. A custom widget with JavaScript but no proper semantics may leave a screen reader unable to identify what it is, what state itâ€™s in, or how to interact with it.
+Robust means content has to work with assistive technologies and across different user agents. A custom widget with JavaScript but no proper semantics may leave a screen reader unable to identify what it is, what state it's in, or how to interact with it.
 
 [JAMIE]
 So every WCAG success criterion belongs to one of those four buckets.
 
 [ALEX]
-Exactly. Thatâ€™s the high-level index for everything else.
+Exactly. That's the high-level index for everything else.
 
 [JAMIE]
 The learning cards in the source also had audience-specific advice. Can we fold that in?
@@ -65,7 +65,7 @@ The learning cards in the source also had audience-specific advice. Can we fold 
 [ALEX]
 Absolutely. For screen reader users: remember POUR as your fast review lens, know that many projects target WCAG 2.2 AA, and when someone cites a number like 1.4.3, the WCAG quick reference is searchable by criterion number.
 
-For low-vision users: contrast criteria like 1.4.3 for text contrast and 1.4.11 for non-text contrast are especially relevant day to day. If tables are hard to read in plain Markdown, use larger editor text or Markdown preview. And when checking contrast with a tool like WebAIMâ€™s contrast checker, use your usual zoom level so you stay in your normal workflow.
+For low-vision users: contrast criteria like 1.4.3 for text contrast and 1.4.11 for non-text contrast are especially relevant day to day. If tables are hard to read in plain Markdown, use larger editor text or Markdown preview. And when checking contrast with a tool like WebAIM's contrast checker, use your usual zoom level so you stay in your normal workflow.
 
 For sighted users: the quick mental shortcut is to connect each principle to a typical failure. Also, pay attention to conformance levels in tables, because AA is usually the practical target. And the ARIA Authoring Practices Guide is worth bookmarking for real pattern examples.
 
@@ -75,10 +75,10 @@ For sighted users: the quick mental shortcut is to connect each principle to a t
 That leads nicely to conformance levels. What do A, AA, and AAA really mean in practice?
 
 [ALEX]
-Level A is the baseline. It removes the most severe barriers and is often the minimum legal floor in many contexts. Level AA goes further and removes significant barriers; itâ€™s the common compliance target for WCAG 2.2, for many enterprise and government contexts, and it aligns with GitHubâ€™s accessibility commitments. Level AAA is the highest level, but it is not generally required across the board and is applied where feasible.
+Level A is the baseline. It removes the most severe barriers and is often the minimum legal floor in many contexts. Level AA goes further and removes significant barriers; it's the common compliance target for WCAG 2.2, for many enterprise and government contexts, and it aligns with GitHub's accessibility commitments. Level AAA is the highest level, but it is not generally required across the board and is applied where feasible.
 
 [JAMIE]
-So if Iâ€™m contributing to an open source web project and I want to use the standard most reviewers will recognize, I should usually reference WCAG 2.2 AA.
+So if I'm contributing to an open source web project and I want to use the standard most reviewers will recognize, I should usually reference WCAG 2.2 AA.
 
 [ALEX]
 Yes. That is the safest default unless the project says otherwise.
@@ -86,7 +86,7 @@ Yes. That is the safest default unless the project says otherwise.
 [PAUSE]
 
 [ALEX]
-Now letâ€™s cover the success criteria you are most likely to encounter in web contributions.
+Now let's cover the success criteria you are most likely to encounter in web contributions.
 
 [JAMIE]
 And maybe translate them into things you can notice in a pull request.
@@ -95,7 +95,7 @@ And maybe translate them into things you can notice in a pull request.
 Exactly.
 
 [ALEX]
-Under Perceivable, one of the biggest is 1.1.1 Non-text Content. Images, icons, and other non-text content need text alternatives, whether thatâ€™s alt text, an accessible name, or another appropriate text equivalent.
+Under Perceivable, one of the biggest is 1.1.1 Non-text Content. Images, icons, and other non-text content need text alternatives, whether that's alt text, an accessible name, or another appropriate text equivalent.
 
 [JAMIE]
 So a meaningful icon-only button with no label is a problem.
@@ -104,13 +104,13 @@ So a meaningful icon-only button with no label is a problem.
 Yes. Next is 1.3.1 Info and Relationships. If structure is communicated visually with headings, lists, or tables, that structure also needs to exist programmatically.
 
 [JAMIE]
-Meaning you canâ€™t just make text look like a heading with bold styling.
+Meaning you can't just make text look like a heading with bold styling.
 
 [ALEX]
 Right. Use real headings. Then 1.3.2 Meaningful Sequence: the reading order should still make sense, even if CSS is removed or layout shifts. That matters because assistive tech often follows DOM order, not just visual layout.
 
 [JAMIE]
-And 1.3.3 Sensory Characteristics says donâ€™t rely only on things like â€œclick the green button on the right.â€
+And 1.3.3 Sensory Characteristics says don't rely only on things like "click the green button on the right."
 
 [ALEX]
 Exactly. Instructions should not depend solely on color, shape, sound, or position. 1.4.1 Use of Color continues that theme: color alone cannot carry the information.
@@ -133,7 +133,7 @@ Yes. Focus indicators, buttons, form boundaries, icons, and other UI elements ma
 Under Operable, start with 2.1.1 Keyboard. All functionality must be available by keyboard alone.
 
 [JAMIE]
-Which means if I can only trigger a control with a mouse, thatâ€™s a failure.
+Which means if I can only trigger a control with a mouse, that's a failure.
 
 [ALEX]
 Correct. Then 2.1.2 No Keyboard Trap: once focus enters a component, the user must be able to move focus away. A modal, menu, or custom widget cannot trap someone indefinitely.
@@ -145,16 +145,16 @@ And 2.4.1 Bypass Blocks is where skip links come in.
 Yes. Repeated navigation should be skippable. 2.4.2 Page Titled means pages need descriptive titles. 2.4.3 Focus Order means keyboard focus should proceed logically. 2.4.4 Link Purpose means link text should say where it goes or what it does.
 
 [JAMIE]
-So â€œclick hereâ€ and â€œread moreâ€ are often weak if theyâ€™re ambiguous out of context.
+So "click here" and "read more" are often weak if they're ambiguous out of context.
 
 [ALEX]
 Exactly. Then 2.4.6 Headings and Labels says headings and labels should describe topic or purpose. 2.4.7 Focus Visible requires a visible focus indicator for keyboard users. 2.4.11 Focus Appearance, which is new in WCAG 2.2, raises the bar by requiring minimum size and contrast for that focus indicator.
 
 [JAMIE]
-Thatâ€™s a good example of standards evolving from â€œthere is some focusâ€ to â€œthe focus has to be meaningfully perceivable.â€
+That's a good example of standards evolving from "there is some focus" to "the focus has to be meaningfully perceivable."
 
 [ALEX]
-Well put. And 2.5.3 Label in Name matters especially for speech input and consistency. If a control visibly says â€œSubmit order,â€ the accessible name should contain that visible text, not something unrelated like â€œConfirm purchase now.â€
+Well put. And 2.5.3 Label in Name matters especially for speech input and consistency. If a control visibly says "Submit order," the accessible name should contain that visible text, not something unrelated like "Confirm purchase now."
 
 [PAUSE]
 
@@ -162,13 +162,13 @@ Well put. And 2.5.3 Label in Name matters especially for speech input and consis
 Under Understandable, 3.1.1 Language of Page says the page language must be identified, usually with the HTML lang attribute. 3.2.1 On Focus means merely receiving focus should not trigger a surprising context change. 3.2.2 On Input says changing a setting should not unexpectedly launch something or move the user somewhere else unless they were warned.
 
 [JAMIE]
-So just tabbing into a field shouldnâ€™t open a new page, and selecting an option shouldnâ€™t suddenly submit a form without clear expectation.
+So just tabbing into a field shouldn't open a new page, and selecting an option shouldn't suddenly submit a form without clear expectation.
 
 [ALEX]
 Exactly. Then 3.3.1 Error Identification says input errors need to be identified and described in text. 3.3.2 Labels or Instructions means forms need labels or instructions where input is required. And 3.3.3 Error Suggestion says that when possible, users should be told how to correct the issue, not merely that something went wrong.
 
 [JAMIE]
-Thatâ€™s a subtle but important distinction: â€œinvalid inputâ€ versus â€œpassword must be at least twelve characters.â€
+That's a subtle but important distinction: "invalid input" versus "password must be at least twelve characters."
 
 [ALEX]
 Yes. Good accessible design reduces guesswork.
@@ -176,13 +176,13 @@ Yes. Good accessible design reduces guesswork.
 [PAUSE]
 
 [ALEX]
-Under Robust, 4.1.1 Parsing means markup should not contain errors that break assistive technology interpretation. 4.1.2 Name, Role, Value says UI components need accessible names, semantic roles, and states that can be determined programmatically. And 4.1.3 Status Messages says updates like â€œitem addedâ€ or â€œsaved successfullyâ€ should be announced without moving focus.
+Under Robust, 4.1.1 Parsing means markup should not contain errors that break assistive technology interpretation. 4.1.2 Name, Role, Value says UI components need accessible names, semantic roles, and states that can be determined programmatically. And 4.1.3 Status Messages says updates like "item added" or "saved successfully" should be announced without moving focus.
 
 [JAMIE]
 That last one connects directly to live regions and polite announcements.
 
 [ALEX]
-Exactly, and weâ€™ll get there shortly.
+Exactly, and we'll get there shortly.
 
 [PAUSE]
 
@@ -190,7 +190,7 @@ Exactly, and weâ€™ll get there shortly.
 Now for the other big acronym: ARIA.
 
 [ALEX]
-ARIA stands for Accessible Rich Internet Applications. It helps when native HTML cannot fully express a complex interface. But itâ€™s not a replacement for semantic HTML. It fills gaps.
+ARIA stands for Accessible Rich Internet Applications. It helps when native HTML cannot fully express a complex interface. But it's not a replacement for semantic HTML. It fills gaps.
 
 [JAMIE]
 And the source breaks ARIA into three categories.
@@ -222,7 +222,7 @@ Perfectly said.
 A particularly important ARIA topic is landmark roles. These let screen reader users jump quickly among major page regions.
 
 [JAMIE]
-And thatâ€™s very relevant on large sites like GitHub.
+And that's very relevant on large sites like GitHub.
 
 [ALEX]
 Exactly. Common landmarks include banner for a site-wide header, navigation for nav links, main for primary page content, complementary for supporting side content, contentinfo for footer-like site information, search for search regions, and form when a form region needs landmark semantics.
@@ -237,12 +237,12 @@ Yes. Header, nav, main, aside, footer, search-related structures, and forms ofte
 The source also notes practical navigation commands.
 
 [ALEX]
-Right. Screen reader users often jump by landmarks using commands like D in NVDA or JAWS, or the Rotor in VoiceOver. Thatâ€™s one reason clear page regions matter so much.
+Right. Screen reader users often jump by landmarks using commands like D in NVDA or JAWS, or the Rotor in VoiceOver. That's one reason clear page regions matter so much.
 
 [PAUSE]
 
 [JAMIE]
-Letâ€™s make ARIA more concrete with patterns people actually implement.
+Let's make ARIA more concrete with patterns people actually implement.
 
 [ALEX]
 Good idea. One pattern is the accessible button when a real button cannot be used.
@@ -254,7 +254,7 @@ Which is not the preferred choice.
 Correct. Preferred is always the real button element. But if you inherit a difficult codebase or truly cannot use button, the substitute needs at minimum button semantics, keyboard focus, and activation with Enter and Space. It also needs a clear accessible name.
 
 [JAMIE]
-So the lesson is less â€œhereâ€™s a cool div trickâ€ and more â€œif you must do this, you inherit several responsibilities.â€
+So the lesson is less "here's a cool div trick" and more "if you must do this, you inherit several responsibilities."
 
 [ALEX]
 Exactly.
@@ -269,10 +269,10 @@ And that matches the WCAG requirements we talked about: error identification, la
 Exactly right.
 
 [ALEX]
-Then there are live region status announcements. This is where 4.1.3 Status Messages often shows up. When something changes dynamically, like â€œsettings savedâ€ or â€œissue created,â€ users of assistive tech should be informed without having focus yanked away. Live regions provide that channel.
+Then there are live region status announcements. This is where 4.1.3 Status Messages often shows up. When something changes dynamically, like "settings saved" or "issue created," users of assistive tech should be informed without having focus yanked away. Live regions provide that channel.
 
 [JAMIE]
-Usually with polite announcements unless itâ€™s urgent.
+Usually with polite announcements unless it's urgent.
 
 [ALEX]
 Yes. Use urgency carefully. The goal is to inform, not overwhelm.
@@ -289,7 +289,7 @@ Exactly. Native elements reduce the amount you have to recreate.
 [PAUSE]
 
 [JAMIE]
-Now letâ€™s bring this back to GitHub contributions, because thatâ€™s where learners need to apply the standards.
+Now let's bring this back to GitHub contributions, because that's where learners need to apply the standards.
 
 [ALEX]
 Yes. There are three recurring situations here: filing an accessibility bug, reviewing a pull request for accessibility, and writing accessible documentation.
@@ -298,13 +298,13 @@ Yes. There are three recurring situations here: filing an accessibility bug, rev
 Start with bug reports.
 
 [ALEX]
-When filing an accessibility bug, be specific and standard-aware. Describe the user impact, the exact steps to reproduce, the environment if relevant, and the observed behavior. Then, where possible, connect it to a WCAG criterion. For example, instead of saying â€œthe form is inaccessible,â€ say â€œthe submit control has no accessible name, which affects screen reader users and may fail WCAG 4.1.2 Name, Role, Value.â€
+When filing an accessibility bug, be specific and standard-aware. Describe the user impact, the exact steps to reproduce, the environment if relevant, and the observed behavior. Then, where possible, connect it to a WCAG criterion. For example, instead of saying "the form is inaccessible," say "the submit control has no accessible name, which affects screen reader users and may fail WCAG 4.1.2 Name, Role, Value."
 
 [JAMIE]
 That gives maintainers something actionable rather than just alarming.
 
 [ALEX]
-Exactly. If itâ€™s a contrast issue, cite the ratio and likely criterion. If itâ€™s keyboard access, mention the exact key path that fails. If itâ€™s a missing status announcement, explain what happened and what was not announced.
+Exactly. If it's a contrast issue, cite the ratio and likely criterion. If it's keyboard access, mention the exact key path that fails. If it's a missing status announcement, explain what happened and what was not announced.
 
 [JAMIE]
 How about pull request review?
@@ -336,10 +336,10 @@ Absolutely. Documentation, checklists, issue templates, contributing guides, and
 Testing is the other huge theme. The appendix makes a strong point that automated tools only catch part of the problem.
 
 [ALEX]
-Yes. Automated tools are useful, but they typically catch only about thirty to forty percent of issues. Theyâ€™re great for finding missing alt text, some contrast failures, certain form labeling problems, missing landmarks, some ARIA misuse, and structural issues.
+Yes. Automated tools are useful, but they typically catch only about thirty to forty percent of issues. They're great for finding missing alt text, some contrast failures, certain form labeling problems, missing landmarks, some ARIA misuse, and structural issues.
 
 [JAMIE]
-But they canâ€™t tell the whole story.
+But they can't tell the whole story.
 
 [ALEX]
 Exactly. They usually cannot judge whether alt text is meaningful, whether focus order truly makes sense, whether instructions are understandable, whether the reading order is coherent, whether a custom interaction is usable, or whether documentation is actually clear.
@@ -354,12 +354,12 @@ Right. Manual testing should include keyboard-only testing, checking focus visib
 Can we include the learning-card style guidance here too?
 
 [ALEX]
-Yes. For testing against standards, the mindset is: use automation first for broad detection, then manual testing for human judgment and interaction quality. If youâ€™re a screen reader user, use landmarks, headings, and form navigation commands to evaluate structure efficiently. If youâ€™re a low-vision tester, zoom and contrast checks are essential, not optional. If youâ€™re a sighted keyboard tester, pay special attention to visible focus, logical tab order, and whether interactive elements expose their purpose without relying on a mouse.
+Yes. For testing against standards, the mindset is: use automation first for broad detection, then manual testing for human judgment and interaction quality. If you're a screen reader user, use landmarks, headings, and form navigation commands to evaluate structure efficiently. If you're a low-vision tester, zoom and contrast checks are essential, not optional. If you're a sighted keyboard tester, pay special attention to visible focus, logical tab order, and whether interactive elements expose their purpose without relying on a mouse.
 
 [PAUSE]
 
 [ALEX]
-Now letâ€™s compress that into a fast pull request checklist.
+Now let's compress that into a fast pull request checklist.
 
 [JAMIE]
 The kind of thing you can mentally run before approving.
@@ -384,10 +384,10 @@ Are status messages announced without stealing focus?
 If ARIA is used, is it necessary, and is the widget fully keyboard operable?
 
 [JAMIE]
-Thatâ€™s a great practical translation of the standards into review behavior.
+That's a great practical translation of the standards into review behavior.
 
 [ALEX]
-Thatâ€™s the goal. Standards should guide contribution decisions, not just sit in a reference document.
+That's the goal. Standards should guide contribution decisions, not just sit in a reference document.
 
 [PAUSE]
 
@@ -398,7 +398,7 @@ Before we close, what should learners treat as the official source of truth?
 For WCAG, use the W3C WCAG 2.2 specification and the W3C WCAG overview and quick reference materials. For ARIA, use WAI-ARIA 1.2 and the WAI-ARIA Authoring Practices Guide. For implementation help and examples, WAI tutorials are excellent. And for platform-specific context, GitHub Docs and the GitHub Changelog can help you track product behavior and documentation changes.
 
 [JAMIE]
-So if a project debate starts, â€œI read a blog post that saidâ€¦,â€ you can ground the conversation in W3C and primary documentation.
+So if a project debate starts, "I read a blog post that said"¦," you can ground the conversation in W3C and primary documentation.
 
 [ALEX]
 Exactly. The appendix also included an authoritative source map by section, and the big idea there is simple: use official standards and official implementation guides whenever possible.
@@ -406,19 +406,19 @@ Exactly. The appendix also included an authoritative source map by section, and 
 [PAUSE]
 
 [JAMIE]
-Let me try a final summary without turning this into a shallow recap. WCAG gives us the four-part mental model: Perceivable, Operable, Understandable, Robust. Most real-world contribution work targets WCAG 2.2 AA. The success criteria weâ€™ll see most often involve text alternatives, semantic structure, contrast, zoom, keyboard access, focus behavior, clear labels and errors, and programmatic name-role-value support. ARIA helps with complex widgets, but native HTML is preferred. Landmarks and common patterns matter because they shape real navigation for assistive tech. And accessibility testing has to combine automation with manual checks.
+Let me try a final summary without turning this into a shallow recap. WCAG gives us the four-part mental model: Perceivable, Operable, Understandable, Robust. Most real-world contribution work targets WCAG 2.2 AA. The success criteria we'll see most often involve text alternatives, semantic structure, contrast, zoom, keyboard access, focus behavior, clear labels and errors, and programmatic name-role-value support. ARIA helps with complex widgets, but native HTML is preferred. Landmarks and common patterns matter because they shape real navigation for assistive tech. And accessibility testing has to combine automation with manual checks.
 
 [ALEX]
-Thatâ€™s excellent. And Iâ€™d add one final contributor mindset: when you file issues, review pull requests, or write documentation, try to name both the user impact and the likely standard involved. That combination makes you much more effective in collaborative accessibility work.
+That's excellent. And I'd add one final contributor mindset: when you file issues, review pull requests, or write documentation, try to name both the user impact and the likely standard involved. That combination makes you much more effective in collaborative accessibility work.
 
 [JAMIE]
-In other words, not just â€œthis is broken,â€ but â€œthis blocks keyboard users,â€ or â€œthis status change is not announced,â€ or â€œthis may fail WCAG 4.1.3.â€
+In other words, not just "this is broken," but "this blocks keyboard users," or "this status change is not announced," or "this may fail WCAG 4.1.3."
 
 [ALEX]
 Exactly. Precision helps teams fix real barriers.
 
 [JAMIE]
-And it helps learners grow from â€œI know accessibility mattersâ€ to â€œI can participate in accessibility review with confidence.â€
+And it helps learners grow from "I know accessibility matters" to "I can participate in accessibility review with confidence."
 
 [ALEX]
 Well said.
@@ -426,4 +426,4 @@ Well said.
 [PAUSE]
 
 [ALEX]
-Thatâ€™s it for this reference conversation. Keep the standards close, use them as tools rather than trivia, and let them shape how you contribute on GitHub and beyond.
+That's it for this reference conversation. Keep the standards close, use them as tools rather than trivia, and let them shape how you contribute on GitHub and beyond.

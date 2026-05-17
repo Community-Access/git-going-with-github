@@ -26,8 +26,10 @@ from typing import Any
 
 try:
     from mutagen.mp3 import MP3
+    from mutagen.id3 import ID3
 except Exception:  # pragma: no cover
     MP3 = None
+    ID3 = None
 
 ROOT = Path(__file__).resolve().parent
 REPO_ROOT = ROOT.parent
@@ -38,14 +40,25 @@ TRANSCRIPTS_DIR = ROOT / "transcripts"
 AUDIO_DIR = ROOT / "audio"
 DEFAULT_AUDIO_DIR = AUDIO_DIR / "kokoro-am_liam-af_jessica"
 SEGMENTS_DIR = AUDIO_DIR / "segments"
+CHAPTERS_DIR = ROOT / "chapters"
 LOGS_DIR = ROOT / "logs"
+COMPLETION_DIR = LOGS_DIR / "audio-complete"
 REPORT_PATH = LOGS_DIR / "audio_inventory_report.json"
 
 if str(REPO_ROOT) not in sys.path:
     sys.path.insert(0, str(REPO_ROOT))
 
-from podcasts.tts.generate_episode import parse_script  # noqa: E402
-from podcasts.listening_plan import build_listening_targets, listening_order_path  # noqa: E402
+from podcasts.tts.generate_episode import parse_script, safe_text  # noqa: E402
+from podcasts.listening_plan import (  # noqa: E402
+    build_listening_targets,
+    listening_order_path,
+)
+from podcasts.completion_records import (  # noqa: E402
+    build_record,
+    read_json,
+    record_matches,
+    record_path,
+)
 
 LISTENING_ORDER_PATH = listening_order_path()
 
@@ -65,12 +78,16 @@ def normalize_text(value: str) -> str:
     return " ".join(str(value or "").split())
 
 
+def canonical_text(value: str) -> str:
+    return safe_text(normalize_text(value))
+
+
 def load_manifest() -> list[dict]:
-    return json.loads(MANIFEST_PATH.read_text(encoding="utf-8"))
+    return json.loads(MANIFEST_PATH.read_text(encoding="utf-8-sig"))
 
 
 def load_listening_order() -> list[dict]:
-    return json.loads(LISTENING_ORDER_PATH.read_text(encoding="utf-8"))
+    return json.loads(LISTENING_ORDER_PATH.read_text(encoding="utf-8-sig"))
 
 
 def load_challenges() -> dict[str, dict]:
@@ -144,8 +161,8 @@ def compare_segments(script_segments: list[dict], other_segments: list[dict]) ->
             issues.append(f"segment {index}: speaker mismatch script={expected_speaker} other={actual_speaker}")
             continue
 
-        expected_text = normalize_text(expected.get("text", ""))
-        actual_text = normalize_text(actual.get("text", ""))
+        expected_text = canonical_text(expected.get("text", ""))
+        actual_text = canonical_text(actual.get("text", ""))
         if expected_text != actual_text:
             issues.append(f"segment {index}: text mismatch")
     return issues
@@ -153,6 +170,79 @@ def compare_segments(script_segments: list[dict], other_segments: list[dict]) ->
 
 def manifest_to_segments(entries: list[dict]) -> list[dict]:
     return [{"speaker": entry.get("speaker", ""), "text": entry.get("text", "")} for entry in entries]
+
+
+def chapter_sidecar_path(target: Target) -> Path:
+    return CHAPTERS_DIR / f"{target.slug}.json"
+
+
+def metadata_issues(audio_path: Path) -> list[str]:
+    issues: list[str] = []
+    if ID3 is None:
+        issues.append("metadata check skipped (mutagen.id3 unavailable)")
+        return issues
+
+    try:
+        tags = ID3(audio_path)
+    except Exception as exc:
+        return [f"unable to read ID3 tags: {exc}"]
+
+    required_frames = ["TIT2", "TPE1", "TALB", "TRCK"]
+    for frame_name in required_frames:
+        if not tags.getall(frame_name):
+            issues.append(f"missing ID3 frame {frame_name}")
+
+    if not tags.getall("TXXX"):
+        issues.append("missing ID3 TXXX frames")
+    if not tags.getall("USLT"):
+        issues.append("missing ID3 lyrics frame")
+    if not tags.getall("CHAP"):
+        issues.append("missing ID3 chapter frames")
+    if not tags.getall("CTOC"):
+        issues.append("missing ID3 chapter table of contents")
+
+    return issues
+
+
+def completion_record_issues(
+    target: Target,
+    script_path: Path | None,
+    transcript_path: Path | None,
+    segment_manifest_path: Path,
+    chapter_path: Path,
+    audio_path: Path | None,
+) -> list[str]:
+    if not (
+        script_path
+        and script_path.exists()
+        and transcript_path
+        and transcript_path.exists()
+        and chapter_path.exists()
+        and audio_path
+        and audio_path.exists()
+    ):
+        return []
+
+    completion_file = record_path(COMPLETION_DIR, target.slug)
+    if not completion_file.exists():
+        return ["missing completion record"]
+
+    try:
+        record = read_json(completion_file)
+    except Exception as exc:
+        return [f"unable to read completion record: {exc}"]
+
+    expected = build_record(
+        slug=target.slug,
+        script_path=script_path,
+        transcript_path=transcript_path,
+        manifest_path=segment_manifest_path if segment_manifest_path.exists() else None,
+        chapter_path=chapter_path,
+        audio_path=audio_path,
+    )
+    if not record_matches(record, expected):
+        return ["completion record hash mismatch"]
+    return []
 
 
 def verify_target(target: Target, audio_dirs: list[Path], duration_tolerance_seconds: float) -> dict[str, Any]:
@@ -170,6 +260,7 @@ def verify_target(target: Target, audio_dirs: list[Path], duration_tolerance_sec
         "transcript": str(transcript_path) if transcript_path else None,
         "segment_manifest": str(segment_manifest_path) if segment_manifest_path.exists() else None,
         "audio": str(audio_path) if audio_path else None,
+        "chapter_sidecar": str(chapter_sidecar_path(target)) if chapter_sidecar_path(target).exists() else None,
         "issues": [],
     }
 
@@ -186,15 +277,39 @@ def verify_target(target: Target, audio_dirs: list[Path], duration_tolerance_sec
     if not transcript_path:
         result["issues"].append("missing transcript segments JSON")
     else:
-        transcript_segments = json.loads(transcript_path.read_text(encoding="utf-8"))
+        transcript_segments = json.loads(transcript_path.read_text(encoding="utf-8-sig"))
         transcript_issues = compare_segments(script_segments, transcript_segments)
         result["issues"].extend(f"transcript: {issue}" for issue in transcript_issues)
 
+    chapter_path = chapter_sidecar_path(target)
+    if not chapter_path.exists():
+        result["issues"].append("missing chapter sidecar")
+
     manifest_entries: list[dict] = []
+    has_completion_inputs = (
+        script_path
+        and script_path.exists()
+        and transcript_path
+        and transcript_path.exists()
+        and chapter_path.exists()
+        and audio_path
+        and audio_path.exists()
+    )
+    completion_issues = completion_record_issues(
+        target,
+        script_path,
+        transcript_path,
+        segment_manifest_path,
+        chapter_path,
+        audio_path,
+    )
+    archived_segments = bool(has_completion_inputs and not segment_manifest_path.exists() and not completion_issues)
+
     if not segment_manifest_path.exists():
-        result["issues"].append("missing segment manifest")
+        if not archived_segments:
+            result["issues"].append("missing segment manifest")
     else:
-        manifest_entries = json.loads(segment_manifest_path.read_text(encoding="utf-8"))
+        manifest_entries = json.loads(segment_manifest_path.read_text(encoding="utf-8-sig"))
         for expected_seq, entry in enumerate(manifest_entries, start=1):
             if entry.get("seq") != expected_seq:
                 result["issues"].append(f"manifest: seq mismatch at position {expected_seq}")
@@ -203,17 +318,18 @@ def verify_target(target: Target, audio_dirs: list[Path], duration_tolerance_sec
         manifest_issues = compare_segments(script_segments, manifest_to_segments(manifest_entries))
         result["issues"].extend(f"manifest: {issue}" for issue in manifest_issues)
 
-        segment_dir = SEGMENTS_DIR / target.slug
-        missing_segment_files: list[str] = []
-        for entry in manifest_entries:
-            filename = entry.get("filename")
-            if not filename:
-                result["issues"].append("manifest: missing segment filename")
-                continue
-            if not (segment_dir / filename).exists():
-                missing_segment_files.append(filename)
-        if missing_segment_files:
-            result["issues"].append(f"missing segment wav files: {len(missing_segment_files)}")
+        if not archived_segments:
+            segment_dir = SEGMENTS_DIR / target.slug
+            missing_segment_files: list[str] = []
+            for entry in manifest_entries:
+                filename = entry.get("filename")
+                if not filename:
+                    result["issues"].append("manifest: missing segment filename")
+                    continue
+                if not (segment_dir / filename).exists():
+                    missing_segment_files.append(filename)
+            if missing_segment_files:
+                result["issues"].append(f"missing segment wav files: {len(missing_segment_files)}")
 
     expected_duration = sum(float(entry.get("duration") or 0.0) for entry in manifest_entries)
     result["segment_duration_seconds"] = round(expected_duration, 3)
@@ -235,6 +351,11 @@ def verify_target(target: Target, audio_dirs: list[Path], duration_tolerance_sec
                     )
         except Exception as exc:  # pragma: no cover
             result["issues"].append(f"unable to read MP3 duration: {exc}")
+
+    if audio_path:
+        result["issues"].extend(metadata_issues(audio_path))
+
+    result["issues"].extend(completion_issues)
 
     return result
 

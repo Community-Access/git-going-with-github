@@ -15,6 +15,7 @@ Usage:
 import hashlib
 import json
 import os
+import unicodedata
 import sys
 import wave
 import subprocess
@@ -208,7 +209,9 @@ def parse_script(text: str) -> list[dict]:
     current = None
     buf: list[str] = []
     for line in text.splitlines():
-        t = line.strip()
+        # Some transcript files may begin with UTF-8 BOM. Strip it so markers
+        # like [ALEX] are still recognized on the first line.
+        t = line.lstrip('\ufeff').strip()
         if not t:
             continue
         if t == '[ALEX]':
@@ -238,14 +241,40 @@ def parse_script(text: str) -> list[dict]:
 # ---------------------------------------------------------------------------
 
 def safe_text(s: str) -> str:
-    """Replace smart quotes and em-dashes with ASCII equivalents."""
+    """Replace smart quotes, dashes, and invisible Unicode with ASCII equivalents."""
+    # Repair common UTF-8 mojibake (for example "Youâ€™ve" -> "You've").
+    try:
+        s = s.encode('cp1252').decode('utf-8')
+    except UnicodeError:
+        pass
+
+    s = unicodedata.normalize('NFKC', s)
+
     return (s
+            .replace('\u00a0', ' ')
             .replace('\u2019', "'")
             .replace('\u2018', "'")
             .replace('\u2014', '-')
             .replace('\u2013', '-')
+            .replace('\u2026', '...')
             .replace('\u201c', '"')
-            .replace('\u201d', '"'))
+            .replace('\u201d', '"')
+            .translate({
+                ord('\u200b'): None,
+                ord('\u200c'): None,
+                ord('\u200d'): None,
+                ord('\u2060'): None,
+                ord('\ufeff'): None,
+                ord('\u202a'): None,
+                ord('\u202b'): None,
+                ord('\u202c'): None,
+                ord('\u202d'): None,
+                ord('\u202e'): None,
+                ord('\u2066'): None,
+                ord('\u2067'): None,
+                ord('\u2068'): None,
+                ord('\u2069'): None,
+            }))
 
 
 # ---------------------------------------------------------------------------
@@ -384,7 +413,9 @@ def generate_episode(script_path: Path, out_path: Path | None = None) -> Path | 
     manifest: list[dict] = []
     pcm_parts: list[bytes] = []
 
+    total_segments = len(segments)
     for idx, seg in enumerate(segments, start=1):
+        segment_index = idx - 1
         seq_str = f'{idx:03d}'
         speaker = seg['speaker']
 
@@ -394,7 +425,7 @@ def generate_episode(script_path: Path, out_path: Path | None = None) -> Path | 
             pcm = generate_silence(PAUSE_SECONDS)
             write_wav(seg_wav, pcm)
             duration = PAUSE_SECONDS
-            print(f'  [{idx}/{len(segments)}] PAUSE {duration}s -> {filename}')
+            print(f'  [{idx}/{total_segments}] (segmentIndex={segment_index}) PAUSE {duration}s -> {filename}')
             manifest.append({
                 'seq': idx,
                 'speaker': 'PAUSE',
@@ -419,7 +450,7 @@ def generate_episode(script_path: Path, out_path: Path | None = None) -> Path | 
 
         filename = f'seg{seq_str}-{speaker.lower()}.wav'
         seg_wav = seg_dir / filename
-        print(f'  [{idx}/{len(segments)}] {speaker}: "{raw_text[:60]}..." -> {filename}')
+        print(f'  [{idx}/{total_segments}] (segmentIndex={segment_index}) {speaker}: "{raw_text[:60]}..." -> {filename}')
 
         call_piper(model, processed_text, seg_wav)
         apply_pitch_shift(seg_wav, pitch_shift)

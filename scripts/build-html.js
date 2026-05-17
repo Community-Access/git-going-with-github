@@ -291,7 +291,39 @@ function ensureDir(dirPath) {
 function convertMarkdownFile(mdPath, outputDir) {
   try {
     const content = fs.readFileSync(mdPath, 'utf-8');
+    // Extract headings for TOC (levels 2-4)
+    const headingRegex = /^(#{2,4})\s+(.+?)(?:\s+#+)?$/gm;
+    let match;
+    const tocHeadings = [];
+    while ((match = headingRegex.exec(content)) !== null) {
+      const level = match[1].length;
+      const text = match[2].trim();
+      const id = headingAnchor(text);
+      tocHeadings.push({ level, text, id });
+    }
+
+    // Build TOC/Quick Jumps HTML if there are at least 2 headings
+    let tocHtml = '';
+    if (tocHeadings.length >= 2) {
+      tocHtml = '<nav class="quick-jumps" aria-label="Quick Jumps"><strong class="quick-jumps-label">Quick Jumps</strong><ul class="quick-jumps-list">';
+      tocHeadings.forEach(h => {
+        const indent = h.level > 2 ? ' style="margin-left:' + ((h.level - 2) * 1.5) + 'em"' : '';
+        tocHtml += `<li${indent}><a href="#${h.id}">${h.text}</a></li>`;
+      });
+      tocHtml += '</ul></nav>';
+    }
+
     let htmlContent = marked.parse(content);
+
+    // Insert TOC after the first <h1> or at the top if no <h1>
+    if (tocHtml) {
+      const h1Match = htmlContent.match(/<h1[^>]*>.*?<\/h1>/i);
+      if (h1Match) {
+        htmlContent = htmlContent.replace(h1Match[0], h1Match[0] + '\n' + tocHtml);
+      } else {
+        htmlContent = tocHtml + '\n' + htmlContent;
+      }
+    }
 
     // Rewrite internal .md links to .html (href="...md" and href="...md#anchor")
     htmlContent = htmlContent.replace(
@@ -397,7 +429,7 @@ function findMarkdownFiles(dir, fileList = []) {
   return fileList;
 }
 
-// Copy CSS files
+// Add Quick Jumps/TOC styles to custom CSS
 function setupStyles(outputDir) {
   const stylesDir = path.join(outputDir, 'styles');
   ensureDir(stylesDir);
@@ -412,6 +444,54 @@ function setupStyles(outputDir) {
 
   // Create custom CSS for additional accessibility and styling
   const customCss = `
+/* Quick Jumps/TOC navigation */
+.quick-jumps {
+  margin: 1.5em 0 2em 0;
+  padding: 0.75em 1.2em;
+  background: #f6f8fa;
+  border: 1px solid #d0d7de;
+  border-radius: 6px;
+  font-size: 1rem;
+  box-shadow: 0 1px 2px rgba(27,31,35,0.03);
+}
+.quick-jumps-label {
+  font-weight: 600;
+  font-size: 1.05em;
+  margin-right: 0.7em;
+}
+.quick-jumps-list {
+  list-style: none;
+  margin: 0.5em 0 0 0;
+  padding: 0;
+}
+.quick-jumps-list li {
+  margin: 0.15em 0;
+  padding: 0;
+  font-size: 0.98em;
+}
+.quick-jumps-list a {
+  color: #0969da;
+  text-decoration: none;
+  border-radius: 3px;
+  padding: 2px 6px;
+  transition: background 0.15s;
+}
+.quick-jumps-list a:hover,
+.quick-jumps-list a:focus {
+  background: #eaeef2;
+  text-decoration: underline;
+  outline: none;
+}
+@media (prefers-color-scheme: dark) {
+  .quick-jumps { background: #161b22; border-color: #30363d; }
+  .quick-jumps-list a { color: #58a6ff; }
+  .quick-jumps-list a:hover, .quick-jumps-list a:focus { background: #1c2128; }
+}
+@media (prefers-contrast: high) {
+  .quick-jumps { background: #000000; border-color: #ffffff; color: #ffffff; }
+  .quick-jumps-list a { color: #6db3f2; }
+}
+
 /* Site header with search */
 .site-header {
   border-bottom: 1px solid var(--borderColor-default, #d0d7de);

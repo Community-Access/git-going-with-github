@@ -1,6 +1,6 @@
 # Appendix B: Screen Reader Cheat Sheet
 >
-> **Listen to Episode 19:** [Screen Reader Cheat Sheet](../admin/PODCASTS.md) - a conversational audio overview of this chapter. Listen before reading to preview the concepts, or after to reinforce what you learned.
+> **Listen to Episode 19:** [Screen Reader Cheat Sheet](https://lp.csedesigns.com/ggg/PODCASTS.html) - a conversational audio overview of this chapter. Listen before reading to preview the concepts, or after to reinforce what you learned.
 
 > **Reference companion to:** [Chapter 02: Understanding GitHub](02-understanding-github.md) | Also relevant: [Chapter 03](03-navigating-repositories.md), [Chapter 11](11-vscode-interface.md)
 >

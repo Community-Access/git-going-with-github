@@ -1,6 +1,6 @@
 # Notifications
 >
-> **Listen to Episode 10:** [Notifications and Mentions](../admin/PODCASTS.md) - a conversational audio overview of this chapter. Listen before reading to preview the concepts, or after to reinforce what you learned.
+> **Listen to Episode 10:** [Notifications and Mentions](https://lp.csedesigns.com/ggg/PODCASTS.html) - a conversational audio overview of this chapter. Listen before reading to preview the concepts, or after to reinforce what you learned.
 
 > **Related appendices:** [Appendix T: Community and Social](appendix-t-community-and-social.md) | [Appendix U: Discussions and Gists](appendix-u-discussions-and-gists.md) | [Appendix V: GitHub Mobile](appendix-v-github-mobile.md)
 > **Authoritative sources:** [GitHub Docs: About notifications](https://docs.github.com/en/account-and-profile/managing-subscriptions-and-notifications-on-github/setting-up-notifications/about-notifications)

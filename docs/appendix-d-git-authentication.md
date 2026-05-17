@@ -1,6 +1,6 @@
 # Appendix D: Git Authentication
 >
-> **Listen to Episode 21:** [Git Authentication](../admin/PODCASTS.md) - a conversational audio overview of this chapter. Listen before reading to preview the concepts, or after to reinforce what you learned.
+> **Listen to Episode 21:** [Git Authentication](https://lp.csedesigns.com/ggg/PODCASTS.html) - a conversational audio overview of this chapter. Listen before reading to preview the concepts, or after to reinforce what you learned.
 
 > **Reference companion to:** [Chapter 00: Pre-Workshop Setup](00-pre-workshop-setup.md) | Also relevant: [Chapter 14](14-git-in-practice.md)
 >

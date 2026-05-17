@@ -1,6 +1,6 @@
 # Appendix X: Resources
 >
-> **Listen to Episode 38:** [Resources and Links](../admin/PODCASTS.md) - a conversational audio overview of this chapter. Listen before reading to preview the concepts, or after to reinforce what you learned.
+> **Listen to Episode 38:** [Resources and Links](https://lp.csedesigns.com/ggg/PODCASTS.html) - a conversational audio overview of this chapter. Listen before reading to preview the concepts, or after to reinforce what you learned.
 
 > **Reference companion to:** All chapters | Master resource index for the entire curriculum
 

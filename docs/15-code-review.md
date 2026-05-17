@@ -14,7 +14,7 @@
 > **See also:** [Appendix G: VS Code Reference](appendix-g-vscode-reference.md) for the complete list of GitHub Pull Requests extension keyboard shortcuts.
 
 >
-> **Listen to Episode 13:** [The GitHub Pull Requests Extension](../admin/PODCASTS.md) - a conversational audio overview of this chapter. Listen before reading to preview the concepts, or after to reinforce what you learned.
+> **Listen to Episode 13:** [The GitHub Pull Requests Extension](https://lp.csedesigns.com/ggg/PODCASTS.html) - a conversational audio overview of this chapter. Listen before reading to preview the concepts, or after to reinforce what you learned.
 
 ## Managing Pull Requests from VS Code
 
@@ -1057,7 +1057,7 @@ gh pr merge 42 --auto --squash
 
 ## Part 2: Accessible Code Review
 >
-> **Listen to Episode 15:** [Accessible Code Review](../admin/PODCASTS.md) - a conversational audio overview of this chapter. Listen before reading to preview the concepts, or after to reinforce what you learned.
+> **Listen to Episode 15:** [Accessible Code Review](https://lp.csedesigns.com/ggg/PODCASTS.html) - a conversational audio overview of this chapter. Listen before reading to preview the concepts, or after to reinforce what you learned.
 
 ## Conducting Pull Request Reviews with a Screen Reader
 

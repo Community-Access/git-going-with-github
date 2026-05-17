@@ -1,6 +1,6 @@
 # Appendix J: GitHub Codespaces
 >
-> **Listen to Episode 31:** [GitHub Codespaces](../admin/PODCASTS.md) - a conversational audio overview of this chapter. Listen before reading to preview the concepts, or after to reinforce what you learned.
+> **Listen to Episode 31:** [GitHub Codespaces](https://lp.csedesigns.com/ggg/PODCASTS.html) - a conversational audio overview of this chapter. Listen before reading to preview the concepts, or after to reinforce what you learned.
 
 > **Reference companion to:** [Chapter 01: Choose Your Tools](01-choose-your-tools.md) | Also relevant: [Chapter 11](11-vscode-interface.md)
 >

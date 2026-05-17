@@ -32,6 +32,11 @@ except ImportError:  # pragma: no cover - exercised by operator environment
 
 ROOT = Path(__file__).resolve().parent
 REPO_ROOT = ROOT.parent
+if str(REPO_ROOT) not in sys.path:
+    sys.path.insert(0, str(REPO_ROOT))
+
+from podcasts.completion_records import build_record, write_json  # noqa: E402
+
 MANIFEST_PATH = ROOT / "manifest.json"
 LISTENING_ORDER_PATH = ROOT / "config" / "listening-order.json"
 SCRIPTS_DIR = ROOT / "scripts"
@@ -84,7 +89,7 @@ def clean_text(value: str) -> str:
 def load_manifest() -> list[dict]:
     if not MANIFEST_PATH.exists():
         raise FileNotFoundError(f"Missing manifest: {MANIFEST_PATH}")
-    return json.loads(MANIFEST_PATH.read_text(encoding="utf-8"))
+    return json.loads(MANIFEST_PATH.read_text(encoding="utf-8-sig"))
 
 
 def find_script_by_name(file_name: str) -> Path:
@@ -143,7 +148,7 @@ def challenge_file_name(challenge: dict) -> str:
 def load_listening_order() -> list[dict]:
     if not LISTENING_ORDER_PATH.exists():
         return []
-    return json.loads(LISTENING_ORDER_PATH.read_text(encoding="utf-8"))
+    return json.loads(LISTENING_ORDER_PATH.read_text(encoding="utf-8-sig"))
 
 
 def with_track_number(target: EpisodeTarget, number: int) -> EpisodeTarget:
@@ -250,7 +255,7 @@ def load_segment_manifest(target: EpisodeTarget) -> list[dict]:
     manifest_path = segment_manifest_path(target)
     if not manifest_path.exists():
         return []
-    return json.loads(manifest_path.read_text(encoding="utf-8"))
+    return json.loads(manifest_path.read_text(encoding="utf-8-sig"))
 
 
 def chapter_plan_path(target: EpisodeTarget) -> Path | None:
@@ -258,11 +263,25 @@ def chapter_plan_path(target: EpisodeTarget) -> Path | None:
     return matches[0] if matches else None
 
 
+def transcript_segments_path(target: EpisodeTarget) -> Path | None:
+    matches = sorted(
+        path for path in TRANSCRIPTS_DIR.rglob(f"{target.slug}-segments.json") if path.is_file()
+    )
+    return matches[0] if matches else None
+
+
+def transcript_segments_path(target: EpisodeTarget) -> Path | None:
+    matches = sorted(
+        path for path in TRANSCRIPTS_DIR.rglob(f"{target.slug}-segments.json") if path.is_file()
+    )
+    return matches[0] if matches else None
+
+
 def load_chapter_plan(target: EpisodeTarget) -> list[dict]:
     plan_path = chapter_plan_path(target)
     if not plan_path:
         return []
-    payload = json.loads(plan_path.read_text(encoding="utf-8"))
+    payload = json.loads(plan_path.read_text(encoding="utf-8-sig"))
     return payload.get("chapters", []) if isinstance(payload, dict) else []
 
 
@@ -649,7 +668,26 @@ def main() -> int:
     if can_write:
         for target, mp3_path, script_text, chapters in ready:
             chapter_path = write_chapter_sidecar(target, chapters)
+            if not chapter_path:
+                raise FileNotFoundError(f"Missing chapter sidecar for {target.slug}")
             apply_tags(mp3_path, target, script_text, chapters, touch=not args.no_touch)
+            transcript_path = transcript_segments_path(target)
+            if not transcript_path:
+                raise FileNotFoundError(
+                    f"Missing transcript segments JSON for {target.slug}"
+                )
+            record = build_record(
+                slug=target.slug,
+                script_path=target.script_path,
+                transcript_path=transcript_path,
+                manifest_path=segment_manifest_path(target),
+                chapter_path=chapter_path,
+                audio_path=mp3_path,
+            )
+            write_json(
+                REPO_ROOT / "podcasts" / "logs" / "audio-complete" / f"{target.slug}.json",
+                record,
+            )
             touched.append({
                 "file": str(mp3_path.relative_to(REPO_ROOT)),
                 "title": target.title,

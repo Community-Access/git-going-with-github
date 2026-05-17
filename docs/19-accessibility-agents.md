@@ -1,6 +1,6 @@
 # Accessibility Agents
 >
-> **Listen to Episode 17:** [Accessibility Agents](../admin/PODCASTS.md) - a conversational audio overview of this chapter. Listen before reading to preview the concepts, or after to reinforce what you learned.
+> **Listen to Episode 17:** [Accessibility Agents](https://lp.csedesigns.com/ggg/PODCASTS.html) - a conversational audio overview of this chapter. Listen before reading to preview the concepts, or after to reinforce what you learned.
 
 > **Related appendices:** [Appendix L: Agents Reference](appendix-l-agents-reference.md) | [Appendix K: Copilot Reference](appendix-k-copilot-reference.md)
 > **Authoritative sources:** [GitHub Docs: Using extensions with Copilot](https://docs.github.com/en/copilot/using-github-copilot/using-extensions-to-integrate-external-tools-with-copilot-chat) | [VS Code Docs: Chat participants](https://code.visualstudio.com/docs/copilot/copilot-chat#_chat-participants) | [VS Code Docs: Agents window](https://code.visualstudio.com/docs/copilot/agents/agents-window)
@@ -2369,7 +2369,7 @@ These commands work without invoking a full agent - type them directly in Copilo
 - **`/draft-release v2.0`** - Generate release notes from merged PRs
 - **`/onboard-repo`** - First-time scan of a repo with health assessment and recommended actions
 
-The full list of 54+ commands is in [Appendix L](appendix-l-agents-reference.md), and [Episode 39](../admin/PODCASTS.md) walks through all of them with examples.
+The full list of 54+ commands is in [Appendix L](appendix-l-agents-reference.md), and [Episode 39](https://lp.csedesigns.com/ggg/PODCASTS.html) walks through all of them with examples.
 
 ### Running Agents Beyond VS Code
 
@@ -2407,7 +2407,7 @@ No VS Code required. No local machine required. The workflow runs whether or not
 
 ### Go Deeper
 
-For full documentation on every agent, all 54+ slash commands, customization formats, and troubleshooting, see [Appendix L: Accessibility Agents Reference](appendix-l-agents-reference.md). For the audio version, listen to [Episode 39: Accessibility Agents - Complete Reference](../admin/PODCASTS.md).
+For full documentation on every agent, all 54+ slash commands, customization formats, and troubleshooting, see [Appendix L: Accessibility Agents Reference](appendix-l-agents-reference.md). For the audio version, listen to [Episode 39: Accessibility Agents - Complete Reference](https://lp.csedesigns.com/ggg/PODCASTS.html).
 
 #### Example: Auto-triage accessibility issues
 

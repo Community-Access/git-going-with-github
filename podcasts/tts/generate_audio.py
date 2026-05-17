@@ -54,7 +54,11 @@ def main() -> int:
 
     print(f"Audio engine: {known.engine}")
     print("Command: " + " ".join(command))
-    return subprocess.call(command)
+    try:
+        return subprocess.call(command)
+    except KeyboardInterrupt:
+        print("\n[INTERRUPTED] Audio generation cancelled by user.")
+        return 130
 
 
 if __name__ == "__main__":

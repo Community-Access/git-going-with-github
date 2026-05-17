@@ -9,7 +9,7 @@
   },
   {
     "speaker": "ALEX",
-    "text": "Exactly. This lesson is for anyone who commits code or documentation. You do not need to be a security expert. In fact, most contributor security problems are not dramatic hacks. They're accidents. A token pasted into a config file. A.env file committed by mistake. A credential file that slipped into staging."
+    "text": "Exactly. This lesson is for anyone who commits code or documentation. You do not need to be a security expert. In fact, most contributor security problems are not dramatic hacks. They're accidents. A token pasted into a config file. A .env file committed by mistake. A credential file that slipped into staging."
   },
   {
     "speaker": "JAMIE",
@@ -73,7 +73,7 @@
   },
   {
     "speaker": "ALEX",
-    "text": "The first major prevention tool is the.gitignore file."
+    "text": "The first major prevention tool is the .gitignore file."
   },
   {
     "speaker": "JAMIE",
@@ -81,7 +81,7 @@
   },
   {
     "speaker": "ALEX",
-    "text": "Yes. If a file is listed in.gitignore and Git is not already tracking it, that file won't show up in git status, won't be staged by normal add commands, and won't be committed."
+    "text": "Yes. If a file is listed in .gitignore and Git is not already tracking it, that file won't show up in git status, won't be staged by normal add commands, and won't be committed."
   },
   {
     "speaker": "JAMIE",
@@ -89,15 +89,15 @@
   },
   {
     "speaker": "ALEX",
-    "text": "Three big categories. First, secrets and credentials. That includes environment files like.env,.env.local, environment-specific local files, generic star-dot-env patterns, key files like.pem,.key,.p12,.pfx, and SSH private key names like id_rsa or id_ed25519. Also credential files such as credentials.json, secrets.json, config slash secrets.yml, or cloud credential files."
+    "text": "Three big categories. First, secrets and credentials. That includes environment files like .env, .env.local, environment-specific local files, generic star-dot-env patterns, key files like .pem, .key, .p12, .pfx, and SSH private key names like id_rsa or id_ed25519. Also credential files such as credentials.json, secrets.json, config slash secrets.yml, or cloud credential files."
   },
   {
     "speaker": "JAMIE",
-    "text": "So if a file stores a secret, it is a strong candidate for.gitignore."
+    "text": "So if a file stores a secret, it is a strong candidate for .gitignore."
   },
   {
     "speaker": "ALEX",
-    "text": "Exactly. Second category: editor and operating system clutter. On macOS that might be.DS_Store or.AppleDouble. On Windows, Thumbs.db or desktop.ini. For editors, JetBrains projects often ignore.idea slash. VS Code is nuanced: some teams commit selected settings, and some do not. So.vscode settings may be optional depending on team practice."
+    "text": "Exactly. Second category: editor and operating system clutter. On macOS that might be .DS_Store or .AppleDouble. On Windows, Thumbs.db or desktop.ini. For editors, JetBrains projects often ignore .idea slash. VS Code is nuanced: some teams commit selected settings, and some do not. So .vscode settings may be optional depending on team practice."
   },
   {
     "speaker": "JAMIE",
@@ -105,7 +105,7 @@
   },
   {
     "speaker": "ALEX",
-    "text": "Right. Some workspace settings are intentionally shared. Third category: build output and dependencies. For Node projects that often means node_modules, dist, and build. For Python it might be __pycache__,.pyc files,.venv, or venv. And then general clutter like logs, temp files, and caches."
+    "text": "Right. Some workspace settings are intentionally shared. Third category: build output and dependencies. For Node projects that often means node_modules, dist, and build. For Python it might be __pycache__, .pyc files, .venv, or venv. And then general clutter like logs, temp files, and caches."
   },
   {
     "speaker": "PAUSE",
@@ -113,11 +113,11 @@
   },
   {
     "speaker": "JAMIE",
-    "text": "But.gitignore has an important limitation, right?"
+    "text": "But .gitignore has an important limitation, right?"
   },
   {
     "speaker": "ALEX",
-    "text": "It does..gitignore only stops untracked files from being added. If Git is already tracking a file, adding it to.gitignore does not magically untrack it."
+    "text": "It does. .gitignore only stops untracked files from being added. If Git is already tracking a file, adding it to .gitignore does not magically untrack it."
   },
   {
     "speaker": "JAMIE",
@@ -125,7 +125,7 @@
   },
   {
     "speaker": "ALEX",
-    "text": "You can ask Git directly whether a file is tracked. For example, to check.env, run git ls-files space.env. If Git returns that filename, it's already tracked."
+    "text": "You can ask Git directly whether a file is tracked. For example, to check .env, run git ls-files space .env. If Git returns that filename, it's already tracked."
   },
   {
     "speaker": "JAMIE",
@@ -133,7 +133,7 @@
   },
   {
     "speaker": "ALEX",
-    "text": "Exactly. The usual command is git rm --cached space.env. That removes it from Git's tracking index but leaves the file on your machine. Then add.env to.gitignore and commit that change."
+    "text": "Exactly. The usual command is git rm --cached space .env. That removes it from Git's tracking index but leaves the file on your machine. Then add .env to .gitignore and commit that change."
   },
   {
     "speaker": "JAMIE",
@@ -157,11 +157,11 @@
   },
   {
     "speaker": "ALEX",
-    "text": "Exactly. One approach is to create a file such as tilde slash.gitignore_global, then tell Git to use it with a global config setting: core.excludesfile pointed at that file."
+    "text": "Exactly. One approach is to create a file such as tilde slash .gitignore_global, then tell Git to use it with a global config setting: core.excludesfile pointed at that file."
   },
   {
     "speaker": "JAMIE",
-    "text": "So project-specific ignores stay in the repository's.gitignore, and machine-specific noise can live in the global ignore."
+    "text": "So project-specific ignores stay in the repository's .gitignore, and machine-specific noise can live in the global ignore."
   },
   {
     "speaker": "ALEX",
@@ -173,7 +173,7 @@
   },
   {
     "speaker": "ALEX",
-    "text": "GitHub maintains.gitignore templates for many languages and frameworks. You can choose one when creating a repository on GitHub, or download one for an existing project, such as the Node template, and append it to your.gitignore."
+    "text": "GitHub maintains .gitignore templates for many languages and frameworks. You can choose one when creating a repository on GitHub, or download one for an existing project, such as the Node template, and append it to your .gitignore."
   },
   {
     "speaker": "PAUSE",
@@ -197,7 +197,7 @@
   },
   {
     "speaker": "ALEX",
-    "text": "Right. Locally, many projects use a.env file to store those environment variables. That's convenient and common, but that file must never be committed. It belongs in.gitignore."
+    "text": "Right. Locally, many projects use a .env file to store those environment variables. That's convenient and common, but that file must never be committed. It belongs in .gitignore."
   },
   {
     "speaker": "JAMIE",
@@ -205,7 +205,7 @@
   },
   {
     "speaker": "ALEX",
-    "text": "Exactly. The code that loads the.env file can be in the repository. The actual.env file stays on your machine."
+    "text": "Exactly. The code that loads the .env file can be in the repository. The actual .env file stays on your machine."
   },
   {
     "speaker": "JAMIE",
@@ -253,7 +253,7 @@
   },
   {
     "speaker": "ALEX",
-    "text": "Yes. Use git diff --staged followed by a path if you want a narrower review. As you scan the diff, look for hardcoded passwords, tokens, API keys,.env files, credential files, or even TODO comments that mention sensitive details."
+    "text": "Yes. Use git diff --staged followed by a path if you want a narrower review. As you scan the diff, look for hardcoded passwords, tokens, API keys, .env files, credential files, or even TODO comments that mention sensitive details."
   },
   {
     "speaker": "JAMIE",
@@ -269,7 +269,7 @@
   },
   {
     "speaker": "ALEX",
-    "text": "Yes. git add. stages everything it sees in the working tree. That is fast, but risky. A safer habit is to stage only known-clean files, like git add followed by specific paths. Or use git add -p, patch mode, which lets you review changes hunk by hunk and decide what to stage."
+    "text": "Yes. git add . stages everything it sees in the working tree. That is fast, but risky. A safer habit is to stage only known-clean files, like git add followed by specific paths. Or use git add -p, patch mode, which lets you review changes hunk by hunk and decide what to stage."
   },
   {
     "speaker": "JAMIE",
@@ -341,7 +341,7 @@
   },
   {
     "speaker": "ALEX",
-    "text": "Exactly. The source also describes adding gitleaks as a manual pre-commit hook by creating a script in.git slash hooks slash pre-commit."
+    "text": "Exactly. The source also describes adding gitleaks as a manual pre-commit hook by creating a script in .git slash hooks slash pre-commit."
   },
   {
     "speaker": "JAMIE",
@@ -357,7 +357,7 @@
   },
   {
     "speaker": "ALEX",
-    "text": "Option C is the pre-commit framework, which manages multiple hooks for you. The workflow is: install pre-commit, create a.pre-commit-config.yaml file in the repository root, define the hooks you want there, install the hooks, and optionally run them manually against all files."
+    "text": "Option C is the pre-commit framework, which manages multiple hooks for you. The workflow is: install pre-commit, create a .pre-commit-config.yaml file in the repository root, define the hooks you want there, install the hooks, and optionally run them manually against all files."
   },
   {
     "speaker": "JAMIE",
@@ -429,7 +429,7 @@
   },
   {
     "speaker": "JAMIE",
-    "text": "So if the problem is, say, an accidentally committed.env file, you can strip that file from every historical commit. And if the problem is a literal token pasted in several places, you can replace that string across history."
+    "text": "So if the problem is, say, an accidentally committed .env file, you can strip that file from every historical commit. And if the problem is a literal token pasted in several places, you can replace that string across history."
   },
   {
     "speaker": "ALEX",
@@ -497,7 +497,7 @@
   },
   {
     "speaker": "ALEX",
-    "text": "Precisely. Push protection covers many common secret types, but not every possible secret. You still need.gitignore, environment variables, review habits, and ideally hooks."
+    "text": "Precisely. Push protection covers many common secret types, but not every possible secret. You still need .gitignore, environment variables, review habits, and ideally hooks."
   },
   {
     "speaker": "JAMIE",
@@ -569,7 +569,7 @@
   },
   {
     "speaker": "ALEX",
-    "text": "Before committing: make sure secrets are in environment variables, not code. Confirm.env and credential files are ignored. Stage carefully, not blindly. Review staged changes with git diff --staged. If you use patch mode or a pre-commit hook, this is where they help most."
+    "text": "Before committing: make sure secrets are in environment variables, not code. Confirm .env and credential files are ignored. Stage carefully, not blindly. Review staged changes with git diff --staged. If you use patch mode or a pre-commit hook, this is where they help most."
   },
   {
     "speaker": "JAMIE",
@@ -577,7 +577,7 @@
   },
   {
     "speaker": "ALEX",
-    "text": "Repository setup, one time: create a strong.gitignore, consider a global gitignore for OS and editor noise, set up a pre-commit secret scanner, and use secure credential helpers on your machine."
+    "text": "Repository setup, one time: create a strong .gitignore, consider a global gitignore for OS and editor noise, set up a pre-commit secret scanner, and use secure credential helpers on your machine."
   },
   {
     "speaker": "JAMIE",
@@ -585,7 +585,7 @@
   },
   {
     "speaker": "ALEX",
-    "text": "Encourage or require these habits project-wide. Provide a good.gitignore. Document how contributors should handle.env files and local configuration. Consider pre-commit tooling, secret scanning, and push protection. Make the safe path the easy path."
+    "text": "Encourage or require these habits project-wide. Provide a good .gitignore. Document how contributors should handle .env files and local configuration. Consider pre-commit tooling, secret scanning, and push protection. Make the safe path the easy path."
   },
   {
     "speaker": "PAUSE",

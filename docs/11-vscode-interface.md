@@ -1,6 +1,6 @@
 # VS Code: Interface and Setup
 
-> **Listen to Episode 11:** [VS Code Setup and Accessibility](../admin/PODCASTS.md) - a conversational audio overview covering both this chapter and [Chapter 12](12-vscode-accessibility.md).
+> **Listen to Episode 11:** [VS Code Setup and Accessibility](https://lp.csedesigns.com/ggg/PODCASTS.html) - a conversational audio overview covering both this chapter and [Chapter 12](12-vscode-accessibility.md).
 
 > **Related appendices:** [Appendix G: VS Code Reference](appendix-g-vscode-reference.md) | [Appendix B: Screen Reader Cheat Sheet](appendix-b-screen-reader-cheatsheet.md)
 > **Authoritative sources:** [VS Code Docs: User Interface](https://code.visualstudio.com/docs/getstarted/userinterface) | [VS Code Docs: Accessibility](https://code.visualstudio.com/docs/editor/accessibility)

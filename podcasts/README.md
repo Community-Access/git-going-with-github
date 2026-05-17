@@ -179,6 +179,12 @@ Listen to samples in `podcasts/tts/samples/` to try different voices.
 
 To change Kokoro voices, pass `--male-voice` and `--female-voice` through the unified command: `python -m podcasts.tts.generate_audio --engine kokoro --male-voice am_liam --female-voice af_jessica`.
 
+If delivery feels too slow or too fast, tune Kokoro pacing directly:
+
+```bash
+python -m podcasts.tts.generate_audio --engine kokoro --speech-speed 1.08 --pause-seconds 1.0 --inter-segment-seconds 0.18 --inter-speaker-seconds 0.28
+```
+
 Pitch can be configured independently per host in `podcasts/tts/voice-config.ini`:
 
 ```ini
