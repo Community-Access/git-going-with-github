@@ -694,7 +694,7 @@ These keyboard shortcuts work inside the text area (Focus Mode):
 | `Ctrl+B` | **Bold text** |
 | `Ctrl+I` | *Italic text* |
 | `Ctrl+E` | `Code span` |
-| `Ctrl+K` | [Link text](URL) dialog |
+| `Ctrl+K` | Inserts a link dialog for markdown links (example: `[Link text](https://example.com)`) |
 | `Ctrl+Shift+.` | > Blockquote |
 | `Ctrl+Shift+L` | - Bullet list |
 | `Ctrl+Shift+7` | 1. Numbered list |

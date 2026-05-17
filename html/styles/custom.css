@@ -168,6 +168,112 @@ body {
   color: #24292f;
 }
 
+.guided-sidebar {
+  position: sticky;
+  top: 5.25rem;
+  border: 1px solid #d0d7de;
+  border-radius: 10px;
+  background: #f8fafc;
+  padding: 0.9rem;
+  max-height: calc(100vh - 6.5rem);
+  overflow: auto;
+}
+
+.guided-title {
+  margin: 0;
+  font-size: 1rem;
+}
+
+.guided-intro {
+  margin: 0.4rem 0 0.9rem;
+  color: #57606a;
+  font-size: 0.86rem;
+  line-height: 1.45;
+}
+
+.guided-section {
+  margin-bottom: 0.85rem;
+}
+
+.guided-section h3 {
+  margin: 0 0 0.35rem;
+  font-size: 0.9rem;
+  letter-spacing: 0.01em;
+}
+
+.guided-nav ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.guided-nav li {
+  margin: 0.1rem 0;
+}
+
+.guided-nav a {
+  display: inline-block;
+  text-decoration: none;
+  color: #0b4fa2;
+  font-size: 0.84rem;
+  line-height: 1.35;
+  padding: 0.12rem 0;
+}
+
+.guided-nav a:hover {
+  text-decoration: underline;
+}
+
+.guided-active {
+  font-weight: 700;
+  color: #0550ae;
+}
+
+.guided-external {
+  color: #57606a;
+  font-size: 0.78rem;
+}
+
+.guided-empty {
+  color: #57606a;
+  font-size: 0.82rem;
+}
+
+.guided-sidebar details {
+  border: none;
+  margin: 0.1rem 0;
+  padding: 0;
+}
+
+.guided-sidebar summary {
+  cursor: pointer;
+  font-size: 0.82rem;
+  font-weight: 600;
+  color: #3d4c63;
+  list-style: none;
+  padding: 0.1rem 0;
+}
+
+.guided-sidebar summary::-webkit-details-marker {
+  display: none;
+}
+
+.guided-sidebar summary::before {
+  content: '▶ ';
+  font-size: 0.7em;
+}
+
+.guided-sidebar details[open] > summary::before {
+  content: '▼ ';
+}
+
+@media (max-width: 980px) {
+  .guided-sidebar {
+    position: static;
+    max-height: none;
+  }
+}
+
 /* Improve focus visibility for keyboard navigation */
 a:focus-visible,
 button:focus-visible,
@@ -256,6 +362,27 @@ textarea:focus-visible {
     background-color: #0d1117;
     color: #e6edf3;
   }
+
+  .guided-sidebar {
+    background: #111827;
+    border-color: #2e3744;
+  }
+
+  .guided-intro,
+  .guided-empty,
+  .guided-external,
+  .guided-sidebar summary {
+    color: #9ca3af;
+  }
+
+  .guided-nav a {
+    color: #8ec5ff;
+  }
+
+  .guided-active {
+    color: #d2e7ff;
+  }
+
   .markdown-body {
     color: #e6edf3;
   }
@@ -355,6 +482,7 @@ textarea:focus-visible {
 
 /* Print styles */
 @media print {
+  .guided-sidebar,
   .breadcrumb,
   footer,
   .skip-link {

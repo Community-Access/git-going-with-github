@@ -109,11 +109,167 @@ function normalizePodcastEndpoints(text) {
     .replace(/href="(?:https?:\/\/community-access\.org\/git-going-with-github)?\/?podcasts\/feed\.xml"/gi, `href="${PODCAST_FEED_URL}"`);
 }
 
+let docsCatalogCache = null;
+
+function escapeHtmlText(value) {
+  return String(value)
+    .replace(/&/g, '&amp;')
+    .replace(/</g, '&lt;')
+    .replace(/>/g, '&gt;')
+    .replace(/"/g, '&quot;')
+    .replace(/'/g, '&#39;');
+}
+
+function readMarkdownTitle(filePath, fallbackTitle) {
+  try {
+    const content = fs.readFileSync(filePath, 'utf-8');
+    const heading = content.match(/^#\s+(.+)$/m);
+    if (heading && heading[1]) {
+      return heading[1].trim();
+    }
+  } catch (err) {
+    // Ignore title extraction failures and use fallback.
+  }
+  return fallbackTitle;
+}
+
+function getDocsCatalog() {
+  if (docsCatalogCache) {
+    return docsCatalogCache;
+  }
+
+  const docsDir = path.join(process.cwd(), 'docs');
+  if (!fs.existsSync(docsDir)) {
+    docsCatalogCache = {
+      essentials: [],
+      chapters: [],
+      day1: [],
+      day2: [],
+      appendices: []
+    };
+    return docsCatalogCache;
+  }
+
+  const files = fs.readdirSync(docsDir)
+    .filter((name) => name.toLowerCase().endsWith('.md'))
+    .sort((a, b) => a.localeCompare(b, undefined, { numeric: true }));
+
+  const toItem = (name) => {
+    const sourcePath = path.join(docsDir, name);
+    const fallback = name
+      .replace(/\.md$/i, '')
+      .replace(/-/g, ' ')
+      .replace(/\b\w/g, (m) => m.toUpperCase());
+    return {
+      href: `docs/${name.replace(/\.md$/i, '.html')}`,
+      title: readMarkdownTitle(sourcePath, fallback),
+      source: name
+    };
+  };
+
+  const essentialsOrder = ['course-guide.md', 'get-going.md', 'CHALLENGES.md'];
+  const essentials = essentialsOrder
+    .filter((name) => files.includes(name))
+    .map(toItem);
+
+  const chapters = files
+    .filter((name) => /^\d{2}-.*\.md$/i.test(name))
+    .map(toItem);
+
+  const day1 = chapters.filter((item) => {
+    const num = Number(item.source.slice(0, 2));
+    return !Number.isNaN(num) && num <= 10;
+  });
+
+  const day2 = chapters.filter((item) => {
+    const num = Number(item.source.slice(0, 2));
+    return !Number.isNaN(num) && num >= 11;
+  });
+
+  const appendices = files
+    .filter((name) => /^appendix-[a-z0-9-]+\.md$/i.test(name))
+    .map(toItem);
+
+  docsCatalogCache = { essentials, chapters, day1, day2, appendices };
+  return docsCatalogCache;
+}
+
+function renderGuidedSidebar(normalizedRelativePath, prefix) {
+  const catalog = getDocsCatalog();
+
+  const renderLinks = (items) => {
+    if (!items.length) {
+      return '<li><span class="guided-empty">No entries yet.</span></li>';
+    }
+
+    return items.map((item) => {
+      const isCurrent = normalizedRelativePath === item.href;
+      const href = item.href.startsWith('http') ? item.href : `${prefix}${item.href}`;
+      const external = item.href.startsWith('http') ? ' <span class="guided-external">(external)</span>' : '';
+      return `<li><a href="${href}"${isCurrent ? ' aria-current="page" class="guided-active"' : ''}>${escapeHtmlText(item.title)}${external}</a></li>`;
+    }).join('\n');
+  };
+
+  const externalResources = [
+    { href: PODCAST_INDEX_URL, title: 'Podcast Episodes' },
+    { href: PODCAST_FEED_URL, title: 'RSS Feed' }
+  ];
+
+  return `<aside class="guided-sidebar" aria-label="Guided reference">
+    <h2 class="guided-title">Guided Reference</h2>
+    <p class="guided-intro">Follow the learning order, then branch into appendices and challenge support.</p>
+
+    <nav class="guided-nav" aria-label="Workshop navigation">
+      <section class="guided-section">
+        <h3>Start Here</h3>
+        <ul>
+          <li><a href="${prefix}index.html"${normalizedRelativePath === 'index.html' ? ' aria-current="page" class="guided-active"' : ''}>Workshop Home</a></li>
+          ${renderLinks(catalog.essentials)}
+        </ul>
+      </section>
+
+      <section class="guided-section">
+        <h3>Learning Order</h3>
+        <details${normalizedRelativePath.startsWith('docs/') ? ' open' : ''}>
+          <summary>Day 1 chapters</summary>
+          <ul>
+            ${renderLinks(catalog.day1)}
+          </ul>
+        </details>
+        <details${normalizedRelativePath.startsWith('docs/') ? ' open' : ''}>
+          <summary>Day 2 chapters</summary>
+          <ul>
+            ${renderLinks(catalog.day2)}
+          </ul>
+        </details>
+      </section>
+
+      <section class="guided-section">
+        <h3>Appendices</h3>
+        <details${normalizedRelativePath.startsWith('docs/appendix-') ? ' open' : ''}>
+          <summary>Reference library</summary>
+          <ul>
+            ${renderLinks(catalog.appendices)}
+          </ul>
+        </details>
+      </section>
+
+      <section class="guided-section">
+        <h3>External Resources</h3>
+        <ul>
+          ${renderLinks(externalResources)}
+        </ul>
+      </section>
+    </nav>
+  </aside>`;
+}
+
 // HTML template with accessibility features
 const htmlTemplate = (content, title, relativePath) => {
   const normalizedRelativePath = relativePath.replace(/\\/g, '/');
   const depth = normalizedRelativePath.split('/').length - 1;
   const prefix = depth > 0 ? '../'.repeat(depth) : './';
+  const guidedSidebar = renderGuidedSidebar(normalizedRelativePath, prefix);
   const isHome = normalizedRelativePath === 'index.html';
   const isRegister = normalizedRelativePath === 'REGISTER.html';
   const siteName = 'GIT Going with GitHub';
@@ -133,12 +289,28 @@ const htmlTemplate = (content, title, relativePath) => {
   <style>
     .markdown-body {
       box-sizing: border-box;
-      min-width: 200px;
+      min-width: 0;
       max-width: 980px;
-      margin: 0 auto;
+      margin: 0;
       padding: 45px;
     }
+
+    .page-layout {
+      max-width: 1320px;
+      margin: 0 auto;
+      padding: 1rem 1rem 2rem;
+      display: grid;
+      grid-template-columns: minmax(240px, 300px) minmax(0, 1fr);
+      gap: 1.25rem;
+      align-items: start;
+    }
+
     @media (max-width: 767px) {
+      .page-layout {
+        grid-template-columns: 1fr;
+        padding: 0.5rem 0.5rem 1rem;
+      }
+
       .markdown-body {
         padding: 15px;
       }
@@ -182,9 +354,12 @@ const htmlTemplate = (content, title, relativePath) => {
       </div>
     </div>
   </header>
-  <main id="main-content" class="markdown-body">
-    ${content}
-  </main>
+  <div class="page-layout">
+    ${guidedSidebar}
+    <main id="main-content" class="markdown-body page-main">
+      ${content}
+    </main>
+  </div>
   <footer role="contentinfo" class="site-footer">
     <p><strong>GIT Going with GitHub</strong> - A workshop by <a href="https://community-access.org">Community Access</a></p>
     <p><a href="https://github.com/community-access/git-going-with-github">View on GitHub</a> · <a href="https://community-access.org">community-access.org</a></p>
@@ -594,6 +769,112 @@ body {
   color: #24292f;
 }
 
+.guided-sidebar {
+  position: sticky;
+  top: 5.25rem;
+  border: 1px solid #d0d7de;
+  border-radius: 10px;
+  background: #f8fafc;
+  padding: 0.9rem;
+  max-height: calc(100vh - 6.5rem);
+  overflow: auto;
+}
+
+.guided-title {
+  margin: 0;
+  font-size: 1rem;
+}
+
+.guided-intro {
+  margin: 0.4rem 0 0.9rem;
+  color: #57606a;
+  font-size: 0.86rem;
+  line-height: 1.45;
+}
+
+.guided-section {
+  margin-bottom: 0.85rem;
+}
+
+.guided-section h3 {
+  margin: 0 0 0.35rem;
+  font-size: 0.9rem;
+  letter-spacing: 0.01em;
+}
+
+.guided-nav ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.guided-nav li {
+  margin: 0.1rem 0;
+}
+
+.guided-nav a {
+  display: inline-block;
+  text-decoration: none;
+  color: #0b4fa2;
+  font-size: 0.84rem;
+  line-height: 1.35;
+  padding: 0.12rem 0;
+}
+
+.guided-nav a:hover {
+  text-decoration: underline;
+}
+
+.guided-active {
+  font-weight: 700;
+  color: #0550ae;
+}
+
+.guided-external {
+  color: #57606a;
+  font-size: 0.78rem;
+}
+
+.guided-empty {
+  color: #57606a;
+  font-size: 0.82rem;
+}
+
+.guided-sidebar details {
+  border: none;
+  margin: 0.1rem 0;
+  padding: 0;
+}
+
+.guided-sidebar summary {
+  cursor: pointer;
+  font-size: 0.82rem;
+  font-weight: 600;
+  color: #3d4c63;
+  list-style: none;
+  padding: 0.1rem 0;
+}
+
+.guided-sidebar summary::-webkit-details-marker {
+  display: none;
+}
+
+.guided-sidebar summary::before {
+  content: '▶ ';
+  font-size: 0.7em;
+}
+
+.guided-sidebar details[open] > summary::before {
+  content: '▼ ';
+}
+
+@media (max-width: 980px) {
+  .guided-sidebar {
+    position: static;
+    max-height: none;
+  }
+}
+
 /* Improve focus visibility for keyboard navigation */
 a:focus-visible,
 button:focus-visible,
@@ -682,6 +963,27 @@ textarea:focus-visible {
     background-color: #0d1117;
     color: #e6edf3;
   }
+
+  .guided-sidebar {
+    background: #111827;
+    border-color: #2e3744;
+  }
+
+  .guided-intro,
+  .guided-empty,
+  .guided-external,
+  .guided-sidebar summary {
+    color: #9ca3af;
+  }
+
+  .guided-nav a {
+    color: #8ec5ff;
+  }
+
+  .guided-active {
+    color: #d2e7ff;
+  }
+
   .markdown-body {
     color: #e6edf3;
   }
@@ -781,6 +1083,7 @@ textarea:focus-visible {
 
 /* Print styles */
 @media print {
+  .guided-sidebar,
   .breadcrumb,
   footer,
   .skip-link {

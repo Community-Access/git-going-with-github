@@ -25,15 +25,15 @@ Instructor-only facilitation and classroom operations resources are available th
 
 ### Follow podcast distribution
 
-Podcast browse and RSS distribution are intentionally hosted on LP.
+Podcast browse and RSS distribution are available through external endpoints.
 
-- [Browse podcast episodes](https://lp.csedesigns.com/ggg/PODCASTS.html)
-- [Subscribe to RSS](https://lp.csedesigns.com/ggg/feed.xml)
+- [Browse podcast episodes (external)](https://lp.csedesigns.com/ggg/PODCASTS.html)
+- [Subscribe to RSS (external)](https://lp.csedesigns.com/ggg/feed.xml)
 
 ## What Lives Where
 
 - Community Access workshop site: curriculum, guides, challenge workflows, contributor docs
-- LP distribution site: podcast index and feed delivery
+- External distribution endpoints: podcast index and feed delivery
 
 ## Contribute
 
