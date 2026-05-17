@@ -371,11 +371,36 @@ function renderCompanionMedia(normalizedRelativePath) {
     </article>`;
   }).join('');
 
-  return `<section class="companion-media" aria-label="Companion podcast content">
+  return `<section id="companion-media" class="companion-media" aria-label="Companion podcast content">
     <h2 class="companion-title">Companion Podcast and Transcript</h2>
     <p class="companion-intro">Use audio and transcript companions to review concepts in a conversational format.</p>
     ${cards}
   </section>`;
+}
+
+function renderQuickJumps(prefix, hasCompanionMedia, hasOnPageToc) {
+  const links = [
+    '<a href="#course-content">Jump to course content</a>',
+    '<a href="#main-content">Jump to main content top</a>'
+  ];
+
+  if (hasOnPageToc) {
+    links.push('<a href="#on-this-page">Jump to on-page sections</a>');
+  }
+
+  if (hasCompanionMedia) {
+    links.push('<a href="#companion-media">Jump to companion audio</a>');
+  }
+
+  links.push(`<a href="${prefix}docs/CHALLENGES.html">Open challenge hub</a>`);
+  links.push(`<a href="${prefix}work.html">Open issue-style challenge walkthrough</a>`);
+
+  return `<nav class="quick-jumps" aria-label="Quick jumps">
+    <h2 class="quick-jumps-title">Quick Jumps</h2>
+    <ul class="quick-jumps-list">
+      ${links.map((link) => `<li>${link}</li>`).join('')}
+    </ul>
+  </nav>`;
 }
 
 function renderGuidedSidebar(normalizedRelativePath, prefix) {
@@ -532,7 +557,7 @@ function renderOnPageToc(content) {
     return `<li class="onpage-item${cls}"><a href="#${escapeHtmlText(h.id)}">${escapeHtmlText(h.text)}</a></li>`;
   }).join('\n');
 
-  return `<nav class="onpage-nav" aria-label="On this page">
+  return `<nav id="on-this-page" class="onpage-nav" aria-label="On this page">
     <h2 class="onpage-title">On This Page</h2>
     <ul class="onpage-list">
       ${links}
@@ -571,6 +596,7 @@ const htmlTemplate = (content, title, relativePath) => {
   const guidedSidebar = renderGuidedSidebar(normalizedRelativePath, prefix);
   const companionMedia = renderCompanionMedia(normalizedRelativePath);
   const onPageToc = renderOnPageToc(content);
+  const quickJumps = renderQuickJumps(prefix, !!companionMedia, !!onPageToc);
   const progressionNav = renderProgressionNav(normalizedRelativePath, prefix);
   const isHome = normalizedRelativePath === 'index.html';
   const isRegister = normalizedRelativePath === 'REGISTER.html';
@@ -659,9 +685,10 @@ const htmlTemplate = (content, title, relativePath) => {
   <div class="page-layout">
     ${guidedSidebar}
     <main id="main-content" class="markdown-body page-main">
+      ${quickJumps}
       ${companionMedia}
       ${onPageToc}
-      ${content}
+      <div id="course-content">${content}</div>
       ${progressionNav}
     </main>
   </div>
@@ -1250,6 +1277,43 @@ body {
   content: '▼ ';
 }
 
+.quick-jumps {
+  margin: 0 0 1rem;
+  border: 1px solid #d0d7de;
+  border-radius: 10px;
+  background: #f6f8fa;
+  padding: 0.7rem 0.85rem;
+}
+
+.quick-jumps-title {
+  margin: 0 0 0.45rem;
+  font-size: 0.95rem;
+  border: none;
+  padding: 0;
+}
+
+.quick-jumps-list {
+  margin: 0;
+  padding-left: 1rem;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 0.3rem 0.8rem;
+}
+
+.quick-jumps-list li {
+  margin: 0;
+}
+
+.quick-jumps-list a {
+  color: #0550ae;
+  text-decoration: none;
+  font-size: 0.85rem;
+}
+
+.quick-jumps-list a:hover {
+  text-decoration: underline;
+}
+
 .progression-nav {
   margin-top: 2.2rem;
   padding-top: 1rem;
@@ -1520,7 +1584,8 @@ textarea:focus-visible {
 
   .guided-progress,
   .onpage-nav,
-  .companion-media {
+  .companion-media,
+  .quick-jumps {
     background: #111827;
     border-color: #2e3744;
   }
@@ -1561,6 +1626,8 @@ textarea:focus-visible {
   .guided-resume-link,
   .onpage-item a,
   .onpage-title,
+  .quick-jumps-title,
+  .quick-jumps-list a,
   .companion-title,
   .companion-card h3,
   .companion-links a,
