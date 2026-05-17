@@ -154,19 +154,9 @@ jobs:
             const day2 = (process.env.DAY2_ASSIGNMENT_URL || '').trim();
 
             let classroomSection = '';
-            if (day1 || day2) {
-              const lines = ['## Classroom Access'];
-
-              if (day1) {
-                lines.push(`- Day 1 assignment link: ${day1}`);
-              }
-              if (day2) {
-                lines.push(`- Day 2 assignment link: ${day2}`);
-              }
-
-              if (lines.length > 1) {
-                classroomSection = `\n\n${lines.join('\n')}`;
-              }
+            if (day1) {
+              const lines = ['## Classroom Access', `- Start here: ${day1}`];
+              classroomSection = `\n\n${lines.join('\n')}`;
             }
 
             await github.rest.issues.createComment({
