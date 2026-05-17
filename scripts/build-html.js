@@ -8,6 +8,8 @@ const chokidar = require('chokidar');
 
 const PODCAST_INDEX_URL = 'https://lp.csedesigns.com/ggg/PODCASTS.html';
 const PODCAST_FEED_URL = 'https://lp.csedesigns.com/ggg/feed.xml';
+const PODCAST_AUDIO_BASE_URL = 'https://github.com/Community-Access/git-going-with-github/releases/download/podcasts';
+const REPO_BLOB_BASE_URL = 'https://github.com/Community-Access/git-going-with-github/blob/main';
 
 // Accumulates page data for search index
 const searchPages = [];
@@ -110,6 +112,7 @@ function normalizePodcastEndpoints(text) {
 }
 
 let docsCatalogCache = null;
+let podcastCompanionCache = null;
 
 function escapeHtmlText(value) {
   return String(value)
@@ -209,6 +212,170 @@ function getDocsCatalog() {
 
   docsCatalogCache = { essentials, chapters, day1, day2, appendices };
   return docsCatalogCache;
+}
+
+function listFilesRecursive(dirPath, predicate, acc = []) {
+  if (!fs.existsSync(dirPath)) return acc;
+  const entries = fs.readdirSync(dirPath, { withFileTypes: true });
+  for (const entry of entries) {
+    const full = path.join(dirPath, entry.name);
+    if (entry.isDirectory()) {
+      listFilesRecursive(full, predicate, acc);
+    } else if (entry.isFile() && predicate(entry.name, full)) {
+      acc.push(full);
+    }
+  }
+  return acc;
+}
+
+function parseTranscriptSegments(scriptText) {
+  const segments = [];
+  let currentSpeaker = null;
+  let currentLines = [];
+
+  for (const line of scriptText.split('\n')) {
+    const trimmed = line.trim();
+    if (!trimmed) continue;
+
+    if (trimmed === '[PAUSE]') {
+      if (currentSpeaker && currentLines.length) {
+        segments.push({ speaker: currentSpeaker, text: currentLines.join(' ').trim() });
+        currentLines = [];
+      }
+      continue;
+    }
+
+    const speakerMatch = trimmed.match(/^\[(ALEX|JAMIE)\]$/);
+    if (speakerMatch) {
+      if (currentSpeaker && currentLines.length) {
+        segments.push({ speaker: currentSpeaker, text: currentLines.join(' ').trim() });
+        currentLines = [];
+      }
+      currentSpeaker = speakerMatch[1];
+      continue;
+    }
+
+    const inlineMatch = trimmed.match(/^\[(ALEX|JAMIE)\]\s+(.*)/);
+    if (inlineMatch) {
+      if (currentSpeaker && currentLines.length) {
+        segments.push({ speaker: currentSpeaker, text: currentLines.join(' ').trim() });
+        currentLines = [];
+      }
+      currentSpeaker = inlineMatch[1];
+      if (inlineMatch[2]) currentLines.push(inlineMatch[2]);
+      continue;
+    }
+
+    if (currentSpeaker) {
+      currentLines.push(trimmed);
+    }
+  }
+
+  if (currentSpeaker && currentLines.length) {
+    segments.push({ speaker: currentSpeaker, text: currentLines.join(' ').trim() });
+  }
+
+  return segments;
+}
+
+function getPodcastCompanionsForPage(normalizedRelativePath) {
+  if (!normalizedRelativePath.startsWith('docs/')) {
+    return [];
+  }
+
+  if (!podcastCompanionCache) {
+    const manifestPath = path.join(process.cwd(), 'podcasts', 'manifest.json');
+    const scriptsDir = path.join(process.cwd(), 'podcasts', 'scripts');
+    const manifest = fs.existsSync(manifestPath)
+      ? JSON.parse(fs.readFileSync(manifestPath, 'utf-8'))
+      : [];
+
+    const scripts = listFilesRecursive(
+      scriptsDir,
+      (name) => name.toLowerCase().endsWith('.txt')
+    );
+
+    const scriptMap = new Map();
+    for (const scriptPath of scripts) {
+      scriptMap.set(path.basename(scriptPath).toLowerCase(), scriptPath);
+    }
+
+    const bySource = new Map();
+
+    for (const ep of manifest) {
+      const pad = String(ep.number).padStart(2, '0');
+      const defaultAudio = `ep${pad}-${ep.slug}.mp3`;
+      const audioFile = ep.audio || defaultAudio;
+      const scriptName = `ep${pad}-${ep.slug}.txt`.toLowerCase();
+      const scriptPath = scriptMap.get(scriptName) || null;
+      const transcriptUrl = scriptPath
+        ? `${REPO_BLOB_BASE_URL}/${path.relative(process.cwd(), scriptPath).replace(/\\/g, '/')}`
+        : `${REPO_BLOB_BASE_URL}/podcasts/scripts`;
+
+      const previewSegments = (() => {
+        if (!scriptPath) return [];
+        try {
+          const raw = fs.readFileSync(scriptPath, 'utf-8');
+          return parseTranscriptSegments(raw).slice(0, 4);
+        } catch {
+          return [];
+        }
+      })();
+
+      const item = {
+        title: ep.title || ep.slug,
+        audioUrl: `${PODCAST_AUDIO_BASE_URL}/${audioFile}`,
+        transcriptUrl,
+        previewSegments
+      };
+
+      const sources = Array.isArray(ep.sources) ? ep.sources : [];
+      for (const src of sources) {
+        const key = String(src || '').toLowerCase();
+        if (!key) continue;
+        if (!bySource.has(key)) bySource.set(key, []);
+        bySource.get(key).push(item);
+      }
+    }
+
+    podcastCompanionCache = { bySource };
+  }
+
+  const sourceMd = path.basename(normalizedRelativePath).replace(/\.html$/i, '.md').toLowerCase();
+  return podcastCompanionCache.bySource.get(sourceMd) || [];
+}
+
+function renderCompanionMedia(normalizedRelativePath) {
+  const companions = getPodcastCompanionsForPage(normalizedRelativePath);
+  if (!companions.length) {
+    return '';
+  }
+
+  const cards = companions.map((c) => {
+    const preview = c.previewSegments.length
+      ? `<details class="companion-preview"><summary>Transcript preview</summary>${c.previewSegments.map((s) => `<p><strong>${s.speaker === 'ALEX' ? 'Alex' : 'Jamie'}:</strong> ${escapeHtmlText(s.text)}</p>`).join('')}</details>`
+      : '';
+
+    return `<article class="companion-card">
+      <h3>${escapeHtmlText(c.title)}</h3>
+      <p class="companion-note">Companion audio: this episode reinforces key ideas and may not be a word-for-word reading of this page.</p>
+      <audio controls preload="none" class="companion-player" src="${c.audioUrl}">
+        Your browser does not support the audio element.
+      </audio>
+      <p class="companion-links">
+        <a href="${c.audioUrl}" target="_blank" rel="noopener noreferrer">Open audio file (external)</a>
+        <span aria-hidden="true"> · </span>
+        <a href="${c.transcriptUrl}" target="_blank" rel="noopener noreferrer">Full transcript source (external)</a>
+      </p>
+      ${preview}
+    </article>`;
+  }).join('');
+
+  return `<section class="companion-media" aria-label="Companion podcast content">
+    <h2 class="companion-title">Companion Podcast and Transcript</h2>
+    <p class="companion-intro">Use audio and transcript companions to review concepts in a conversational format.</p>
+    ${cards}
+  </section>`;
 }
 
 function renderGuidedSidebar(normalizedRelativePath, prefix) {
@@ -383,6 +550,7 @@ const htmlTemplate = (content, title, relativePath) => {
   const depth = normalizedRelativePath.split('/').length - 1;
   const prefix = depth > 0 ? '../'.repeat(depth) : './';
   const guidedSidebar = renderGuidedSidebar(normalizedRelativePath, prefix);
+  const companionMedia = renderCompanionMedia(normalizedRelativePath);
   const onPageToc = renderOnPageToc(content);
   const progressionNav = renderProgressionNav(normalizedRelativePath, prefix);
   const isHome = normalizedRelativePath === 'index.html';
@@ -472,6 +640,7 @@ const htmlTemplate = (content, title, relativePath) => {
   <div class="page-layout">
     ${guidedSidebar}
     <main id="main-content" class="markdown-body page-main">
+      ${companionMedia}
       ${onPageToc}
       ${content}
       ${progressionNav}
@@ -1108,6 +1277,84 @@ body {
   pointer-events: none;
 }
 
+.companion-media {
+  margin: 0 0 1.2rem;
+  border: 1px solid #d0d7de;
+  border-radius: 10px;
+  background: #f8fafc;
+  padding: 0.8rem 0.9rem;
+}
+
+.companion-title {
+  margin: 0;
+  font-size: 1rem;
+  border: none;
+  padding: 0;
+}
+
+.companion-intro {
+  margin: 0.35rem 0 0.7rem;
+  font-size: 0.86rem;
+  color: #57606a;
+}
+
+.companion-card {
+  border: 1px solid #d0d7de;
+  border-radius: 8px;
+  background: #ffffff;
+  padding: 0.7rem;
+  margin: 0.65rem 0 0;
+}
+
+.companion-card h3 {
+  margin: 0;
+  font-size: 0.95rem;
+  border: none;
+  padding: 0;
+}
+
+.companion-note {
+  margin: 0.35rem 0 0.5rem;
+  color: #57606a;
+  font-size: 0.82rem;
+}
+
+.companion-player {
+  width: 100%;
+  margin: 0.2rem 0 0.35rem;
+}
+
+.companion-links {
+  margin: 0;
+  font-size: 0.82rem;
+}
+
+.companion-links a {
+  text-decoration: none;
+}
+
+.companion-links a:hover {
+  text-decoration: underline;
+}
+
+.companion-preview {
+  margin: 0.55rem 0 0;
+  border: 1px solid #d0d7de;
+  border-radius: 6px;
+  padding: 0.45rem 0.55rem;
+}
+
+.companion-preview summary {
+  cursor: pointer;
+  font-size: 0.82rem;
+  font-weight: 600;
+}
+
+.companion-preview p {
+  margin: 0.45rem 0 0;
+  font-size: 0.84rem;
+}
+
 .onpage-nav {
   margin: 0 0 1.3rem;
   padding: 0.7rem 0.85rem;
@@ -1253,7 +1500,14 @@ textarea:focus-visible {
   }
 
   .guided-progress,
-  .onpage-nav {
+  .onpage-nav,
+  .companion-media {
+    background: #111827;
+    border-color: #2e3744;
+  }
+
+  .companion-card,
+  .companion-preview {
     background: #111827;
     border-color: #2e3744;
   }
@@ -1263,7 +1517,9 @@ textarea:focus-visible {
   .guided-external,
   .guided-sidebar summary,
   .guided-progress-copy,
-  .guided-progress-percent {
+  .guided-progress-percent,
+  .companion-intro,
+  .companion-note {
     color: #9ca3af;
   }
 
@@ -1285,7 +1541,12 @@ textarea:focus-visible {
 
   .guided-resume-link,
   .onpage-item a,
-  .onpage-title {
+  .onpage-title,
+  .companion-title,
+  .companion-card h3,
+  .companion-links a,
+  .companion-preview summary,
+  .companion-preview p {
     color: #d2e7ff;
   }
 
