@@ -79,9 +79,6 @@ jobs:
               '',
               `No action needed. Your original enrollment remains active.${quickLinksSection}`,
               '',
-              '## Day 2 release',
-              '- Day 2 links are released after Day 1 milestone completion.',
-              '',
               '## Where to see replies',
               '- GitHub notification bell',
               '- Email notifications for this issue thread'
@@ -389,8 +386,7 @@ jobs:
               '## Next steps',
               `${onboarding.join('\n')}${noLinksFallback}`,
               '',
-              '## Day 2 release',
-              '- Day 2 links are released automatically after Day 1 milestone completion.',
+              'Day 2 content automatically unlocks in your learning room after you complete Day 1 challenges.',
               '',
               '## Where to see replies',
               '- GitHub notification bell',
@@ -642,21 +638,9 @@ jobs:
             const day2 = (process.env.DAY2_ASSIGNMENT_URL || '').trim();
 
             let classroomSection = '';
-            if (day1 || day2) {
-              const lines = ['## Classroom Access'];
-
-              if (day1) {
-                lines.push(`- Day 1 assignment link: ${day1}`);
-              }
-              if (day2) {
-                lines.push(`- Day 2 assignment link: ${day2}`);
-              } else {
-                lines.push('- Day 2 assignment link is released after Day 1 milestone completion.');
-              }
-
-              if (lines.length > 1) {
-                classroomSection = `\n\n${lines.join('\n')}`;
-              }
+            if (day1) {
+              const lines = ['## Classroom Access', `- Start here: ${day1}`];
+              classroomSection = `\n\n${lines.join('\n')}`;
             }
 
             await github.rest.issues.createComment({
