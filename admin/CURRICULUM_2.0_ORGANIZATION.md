@@ -26,7 +26,7 @@
 | `docs/appendix-k-copilot-reference.md` | Added MCP Server section 4B | ✅ Complete |
 | `docs/appendix-l-agents-reference.md` | Expanded to 80 agents, added skills, updated platforms | ✅ Complete |
 | `.github/copilot-instructions.md` | Added agents-specific guidance section | ✅ Complete |
-| `admin/PODCASTS.md` | Added episodes 41-43, regeneration notes | ✅ Complete |
+| `https://lp.csedesigns.com/ggg/PODCASTS.html` | Added episodes 41-43, regeneration notes | ✅ Complete |
 | `admin/AGENTS_ROADMAP.md` | NEW file for agents tracking | ✅ Complete |
 
 **Total new content:** ~7,600 words | **Total files touched:** 11
@@ -178,7 +178,7 @@
 
 ---
 
-### admin/PODCASTS.md (Updated)
+### https://lp.csedesigns.com/ggg/PODCASTS.html (Updated)
 
 **New sections added:**
 - ✅ Episodes 41-43: Agents content (new appendices AA, AB, AC)
@@ -314,7 +314,7 @@ All new files include **learning cards** with four workflow perspectives:
 - ✅ All content written and formatted
 - ✅ Alex & Jamie style guide available (PODCASTS.md)
 - ✅ Learning cards prepared for each episode
-- ✅ Production checklist ready (admin/PODCASTS.md)
+- ✅ Production checklist ready (https://lp.csedesigns.com/ggg/PODCASTS.html)
 - ✅ Quality assurance steps documented
 
 ---

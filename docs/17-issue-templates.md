@@ -1,6 +1,6 @@
 # Issue Templates
 >
-> **Listen to Episode 16:** [Issue Templates](../admin/PODCASTS.md) - a conversational audio overview of this chapter. Listen before reading to preview the concepts, or after to reinforce what you learned.
+> **Listen to Episode 16:** [Issue Templates](https://lp.csedesigns.com/ggg/PODCASTS.html) - a conversational audio overview of this chapter. Listen before reading to preview the concepts, or after to reinforce what you learned.
 
 > **Related appendices:** [Appendix Q: GitHub Actions](appendix-q-actions-workflows.md) | [Appendix C: Markdown Reference](appendix-c-markdown-reference.md) | [Appendix N: Advanced Search](appendix-n-advanced-search.md)
 > **Authoritative sources:** [GitHub Docs: About issue and PR templates](https://docs.github.com/en/communities/using-templates-to-encourage-useful-issues-and-pull-requests/about-issue-and-pull-request-templates) | [GitHub Docs: Configuring issue templates](https://docs.github.com/en/communities/using-templates-to-encourage-useful-issues-and-pull-requests/configuring-issue-templates-for-your-repository)
@@ -87,8 +87,8 @@ Chapter 17 is a **template design and implementation chapter** focused on struct
 **Estimated time:** 20-30 minutes.
 
 Use this worked example as a guide:
-- **Source:** [`.github/ISSUE_TEMPLATE/workshop-registration.yml`](../.github/ISSUE_TEMPLATE/workshop-registration.yml)
-- **Remix sample:** [`learning-room/docs/samples/challenge-14-registration-remix-example.yml`](../learning-room/docs/samples/challenge-14-registration-remix-example.yml)
+- **Source:** [`.github/ISSUE_TEMPLATE/workshop-registration.yml`](https://github.com/Community-Access/git-going-with-github/blob/main/.github/ISSUE_TEMPLATE/workshop-registration.yml)
+- **Remix sample:** [`docs/samples/challenge-14-registration-remix-example.yml`](https://github.com/Community-Access/git-going-with-github/blob/main/docs/samples/challenge-14-registration-remix-example.yml)
 
 What changes and what stays the same:
 - Keep: the YAML skeleton (`name`, `description`, `title`, `labels`, `body`)

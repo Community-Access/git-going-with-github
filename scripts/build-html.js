@@ -6,6 +6,9 @@ const { marked, Renderer } = require('marked');
 const hljs = require('highlight.js');
 const chokidar = require('chokidar');
 
+const PODCAST_INDEX_URL = 'https://lp.csedesigns.com/ggg/PODCASTS.html';
+const PODCAST_FEED_URL = 'https://lp.csedesigns.com/ggg/feed.xml';
+
 // Accumulates page data for search index
 const searchPages = [];
 
@@ -100,12 +103,19 @@ function writeRedirectPage(filePath, targetHref) {
   writeGeneratedFile(filePath, redirectHtml);
 }
 
+function normalizePodcastEndpoints(text) {
+  return text
+    .replace(/href="(?:\.\.\/)?admin\/PODCASTS\.(?:md|html)(#[^"]*)?"/gi, `href="${PODCAST_INDEX_URL}$1"`)
+    .replace(/href="(?:https?:\/\/community-access\.org\/git-going-with-github)?\/?podcasts\/feed\.xml"/gi, `href="${PODCAST_FEED_URL}"`);
+}
+
 // HTML template with accessibility features
 const htmlTemplate = (content, title, relativePath) => {
-  const depth = relativePath.split('/').length - 1;
+  const normalizedRelativePath = relativePath.replace(/\\/g, '/');
+  const depth = normalizedRelativePath.split('/').length - 1;
   const prefix = depth > 0 ? '../'.repeat(depth) : './';
-  const isHome = relativePath === 'index.html';
-  const isRegister = relativePath === 'REGISTER.html';
+  const isHome = normalizedRelativePath === 'index.html';
+  const isRegister = normalizedRelativePath === 'REGISTER.html';
   const siteName = 'GIT Going with GitHub';
   const titleContainsSiteName = title === siteName || title.includes(siteName);
   const pageTitle = isHome || titleContainsSiteName ? title : `${title} - ${siteName}`;
@@ -304,6 +314,9 @@ function convertMarkdownFile(mdPath, outputDir) {
         return `href="${rewritten}.html${anchor || ''}"`;
       }
     );
+
+    // Always route podcast landing/feed links to the LP-hosted distribution endpoints.
+    htmlContent = normalizePodcastEndpoints(htmlContent);
 
     // Add aria-label to GFM task list checkboxes (WCAG 1.3.1 / 4.1.2)
     htmlContent = htmlContent.replace(
@@ -998,6 +1011,14 @@ function buildAll() {
       convertedCount++;
     }
   });
+
+  // If no dedicated homepage source exists, keep "Home" links functional.
+  const rootIndexPath = path.join(outputDir, 'index.html');
+  const rootReadmePath = path.join(outputDir, 'README.html');
+  if (!fs.existsSync(rootIndexPath) && fs.existsSync(rootReadmePath)) {
+    writeRedirectPage(rootIndexPath, './README.html');
+    console.log('✓ Added alias: index.html -> README.html');
+  }
 
   // Write search index JSON
   buildSearchIndex(outputDir);

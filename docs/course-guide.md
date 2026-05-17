@@ -1,6 +1,6 @@
 # Course Guide
 >
-> **Listen to Episode 0:** [Welcome to Git Going with GitHub](../admin/PODCASTS.md) - a conversational audio overview of this chapter. Listen before reading to preview the concepts, or after to reinforce what you learned.
+> **Listen to Episode 0:** [Welcome to Git Going with GitHub](https://lp.csedesigns.com/ggg/PODCASTS.html) - a conversational audio overview of this chapter. Listen before reading to preview the concepts, or after to reinforce what you learned.
 
 ## GitHub Learning Room - Your Complete Workshop Companion
 
@@ -71,8 +71,8 @@ Complete everything in **[Chapter 00: Pre-Workshop Setup](00-pre-workshop-setup.
 
 Every chapter and appendix has a companion podcast episode - a conversational two-host overview that previews or reviews the key concepts. Listen before reading a chapter to know what to expect, or after to reinforce what you learned.
 
-- **[Browse the podcast episodes](../admin/PODCASTS.md)** with HTML5 audio players
-- **[Subscribe via RSS](https://community-access.org/git-going-with-github/podcasts/feed.xml)** in your preferred podcast app
+- **[Browse the podcast episodes](https://lp.csedesigns.com/ggg/PODCASTS.html)** with HTML5 audio players
+- **[Subscribe via RSS](https://lp.csedesigns.com/ggg/feed.xml)** in your preferred podcast app
 - Episodes are 8-18 minutes each - perfect for commutes, walks, or screen reader breaks
 
 ## Day 1: GitHub Foundations
@@ -112,7 +112,7 @@ Day 2 moves you from the browser to the desktop. Every skill maps directly to wh
 | [18](18-fork-and-contribute.md) | **Fork and Contribute** | The complete fork-based open source contribution workflow | 45 min |
 | [19](19-accessibility-agents.md) | **Accessibility Agents** | Agent files, prompts, skills, and contribution paths across the ecosystem | 1 hr |
 | [20](20-build-your-agent.md) | **Capstone Project** | Choose Accessibility Agents, GLOW, or another project and create an impactful agentic contribution | 1.5 hrs |
-| [21](21-next-steps.md) | **What Comes Next** | Graduation, portfolio, continued learning, community | 30 min |
+| [22](22-what-comes-next.md) | **What Comes Next** | Graduation, portfolio, continued learning, community | 30 min |
 
 **Day 2 self-paced total:** ~10 hours. The live Day 2 agenda focuses on VS Code, Git, Copilot, agent discovery, and supported contribution work; deeper capstone material can continue asynchronously.
 

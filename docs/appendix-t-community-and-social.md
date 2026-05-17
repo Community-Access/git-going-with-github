@@ -11,7 +11,7 @@
 ## GitHub Profiles, Sponsors, and Wikis
 
 >
-> **Listen to Episode 35:** [Profile, Sponsors, and Wikis](../admin/PODCASTS.md) - a conversational audio overview of this chapter. Listen before reading to preview the concepts, or after to reinforce what you learned.
+> **Listen to Episode 35:** [Profile, Sponsors, and Wikis](https://lp.csedesigns.com/ggg/PODCASTS.html) - a conversational audio overview of this chapter. Listen before reading to preview the concepts, or after to reinforce what you learned.
 
 ## Building Your Community Presence on GitHub
 
@@ -223,7 +223,7 @@ Wiki pages automatically appear in a sidebar for navigation.
 ## GitHub Organizations and Templates
 
 >
-> **Listen to Episode 36:** [Organizations and Templates](../admin/PODCASTS.md) - a conversational audio overview of this chapter. Listen before reading to preview the concepts, or after to reinforce what you learned.
+> **Listen to Episode 36:** [Organizations and Templates](https://lp.csedesigns.com/ggg/PODCASTS.html) - a conversational audio overview of this chapter. Listen before reading to preview the concepts, or after to reinforce what you learned.
 
 ## A Contributor's Guide to GitHub's Structural Features
 

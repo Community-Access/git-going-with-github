@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="GIT Going with GitHub - A two-day accessible open source workshop by Community Access">
+  <title>Agentic Pilot Workflow - GIT Going with GitHub</title>
+  <link rel="stylesheet" href="../../../styles/github-markdown.css">
+  <link rel="stylesheet" href="../../../styles/highlight.css">
+  <link rel="stylesheet" href="../../../styles/custom.css">
+  <style>
+    .markdown-body {
+      box-sizing: border-box;
+      min-width: 200px;
+      max-width: 980px;
+      margin: 0 auto;
+      padding: 45px;
+    }
+    @media (max-width: 767px) {
+      .markdown-body {
+        padding: 15px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+  <header class="site-header" role="banner">
+    <div class="site-header-inner">
+      <nav aria-label="Breadcrumb" class="breadcrumb">
+        <a href="../../../index.html">Home</a> <span aria-hidden="true">›</span> <span aria-current="page">Agentic Pilot Workflow</span>
+      </nav>
+      <div class="header-actions">
+        <a href="https://github.com/Community-Access/git-going-with-github/wiki" class="wiki-link" target="_blank" rel="noopener noreferrer">
+          <svg aria-hidden="true" focusable="false" width="16" height="16" viewBox="0 0 16 16" fill="currentColor">
+            <path d="M1.75 1h8.5c.966 0 1.75.784 1.75 1.75v5.5A1.75 1.75 0 0 1 10.25 10H7.06l-2.573 2.573A1.458 1.458 0 0 1 2 11.543V10h-.25A1.75 1.75 0 0 1 0 8.25v-5.5C0 1.784.784 1 1.75 1ZM1.5 2.75v5.5c0 .138.112.25.25.25h1a.75.75 0 0 1 .75.75v2.19l2.72-2.72a.749.749 0 0 1 .53-.22h3.5a.25.25 0 0 0 .25-.25v-5.5a.25.25 0 0 0-.25-.25h-8.5a.25.25 0 0 0-.25.25Zm13 2a.25.25 0 0 0-.25-.25h-.5a.75.75 0 0 1 0-1.5h.5c.966 0 1.75.784 1.75 1.75v5.5A1.75 1.75 0 0 1 14.25 12H14v1.543a1.457 1.457 0 0 1-2.487 1.03L9.22 12.28a.749.749 0 1 1 1.06-1.06l2.22 2.22v-2.19a.75.75 0 0 1 .75-.75h.25a.25.25 0 0 0 .25-.25v-5.5Z"/>
+          </svg>
+          Wiki
+        </a>
+        <form role="search" class="search-form" action="../../../search.html" method="get">
+        <label for="site-search" class="search-label">Search docs</label>
+        <input
+          type="search"
+          id="site-search"
+          class="search-input"
+          name="q"
+          placeholder="Search docs…"
+          autocomplete="off"
+          aria-label="Search documentation"
+        >
+        <button type="submit" class="search-button" aria-label="Submit search">
+          <svg aria-hidden="true" focusable="false" width="16" height="16" viewBox="0 0 16 16" fill="currentColor">
+            <path d="M10.68 11.74a6 6 0 0 1-7.922-8.982 6 6 0 0 1 8.982 7.922l3.04 3.04a.749.749 0 0 1-.326 1.275.749.749 0 0 1-.734-.215ZM11.5 7a4.499 4.499 0 1 0-8.997 0A4.499 4.499 0 0 0 11.5 7Z"/>
+          </svg>
+        </button>
+      </form>
+      </div>
+    </div>
+  </header>
+  <main id="main-content" class="markdown-body">
+    <h1 id="agentic-pilot-workflow">Agentic Pilot Workflow</h1>
+<p>This folder contains repeatable tooling for running an LLM-assisted transcript workflow with automatic model selection, without overwriting committed podcast scripts until quality gates pass.</p>
+<h2 id="goal">Goal</h2>
+<p>Use the existing podcast pipeline for source extraction, script structure, segment manifests, and metadata tagging, while adding a repeatable human-in-the-loop rewrite workflow for better voice, stronger chapter names, and tighter quality checks.</p>
+<h2 id="workflow">Workflow</h2>
+<ol>
+<li>Build the podcast source bundles if the curriculum has changed.</li>
+<li>Generate or refresh the baseline transcript for one episode or challenge.</li>
+<li>Build a source packet for that slug.</li>
+<li>Rewrite the transcript with Copilot CLI (auto model selection) using the packet as source of truth.</li>
+<li>Save the candidate transcript in <code>podcasts/logs/agentic-pilots/candidates/</code>.</li>
+<li>Evaluate the candidate transcript against all mapped source files for that episode/challenge.</li>
+<li>When accepted, promote the transcript into <code>podcasts/scripts/</code>.</li>
+<li>Run catalog-level repetition and coverage summaries.</li>
+<li>Audit chapter-plan quality across the catalog and refine weak titles.</li>
+<li>Regenerate audio and metadata.</li>
+</ol>
+<h2 id="useful-commands">Useful Commands</h2>
+<p>Generate a single transcript by slug:</p>
+<pre><code class="hljs language-powershell">npm run generate:podcast<span class="hljs-literal">-transcript</span> <span class="hljs-literal">--</span> <span class="hljs-literal">--slug</span> ep05<span class="hljs-literal">-working-with-issues</span></code></pre>
+<p>Generate a range of companion episodes:</p>
+<pre><code class="hljs language-powershell">npm run generate:podcast<span class="hljs-literal">-transcript</span> <span class="hljs-literal">--</span> <span class="hljs-literal">--start</span> <span class="hljs-number">5</span> <span class="hljs-literal">--end</span> <span class="hljs-number">10</span> <span class="hljs-literal">--group</span> chapters</code></pre>
+<p>Generate a range of challenge episodes:</p>
+<pre><code class="hljs language-powershell">npm run generate:podcast<span class="hljs-literal">-transcript</span> <span class="hljs-literal">--</span> <span class="hljs-literal">--start</span> <span class="hljs-number">1</span> <span class="hljs-literal">--end</span> <span class="hljs-number">4</span> <span class="hljs-literal">--group</span> challenges</code></pre>
+<p>Build the source packet for one slug:</p>
+<pre><code class="hljs language-powershell">npm run podcast:agentic:packet <span class="hljs-literal">--</span> <span class="hljs-literal">--slug</span> ep05<span class="hljs-literal">-working-with-issues</span></code></pre>
+<p>Rewrite one transcript to a candidate and evaluate quality gates:</p>
+<pre><code class="hljs language-powershell">npm run podcast:agentic:rewrite <span class="hljs-literal">--</span> <span class="hljs-literal">--slug</span> ep05<span class="hljs-literal">-working-with-issues</span></code></pre>
+<p>Rewrite and promote one transcript only if quality gates pass:</p>
+<pre><code class="hljs language-powershell">npm run podcast:agentic:rewrite <span class="hljs-literal">--</span> <span class="hljs-literal">--slug</span> ep05<span class="hljs-literal">-working-with-issues</span> <span class="hljs-literal">--promote</span></code></pre>
+<p>Run full listening-order batch (all episodes/items), generate candidates, and promote only passing rewrites:</p>
+<pre><code class="hljs language-powershell">npm run podcast:agentic:rewrite:batch:promote</code></pre>
+<p>Evaluate any transcript against all mapped sources with explicit thresholds:</p>
+<pre><code class="hljs language-powershell">node podcasts/tools/agentic<span class="hljs-literal">-pilot</span>/evaluate<span class="hljs-literal">-transcript</span>.js \
+  <span class="hljs-literal">--packet</span> podcasts/logs/agentic<span class="hljs-literal">-pilots</span>/ep05<span class="hljs-literal">-working-with-issues</span>.packet.json \
+  <span class="hljs-literal">--transcript</span> podcasts/logs/agentic<span class="hljs-literal">-pilots</span>/candidates/ep05<span class="hljs-literal">-working-with-issues</span>/attempt<span class="hljs-literal">-001</span>.txt \
+  <span class="hljs-literal">--max-missing</span> <span class="hljs-number">4</span> \
+  <span class="hljs-literal">--max-repeated-starts</span> <span class="hljs-number">2</span> \
+  <span class="hljs-literal">--max-repeated-long</span> <span class="hljs-number">0</span> \
+  <span class="hljs-literal">--max-stock-hits</span> <span class="hljs-number">0</span> \
+  <span class="hljs-literal">--out</span> podcasts/logs/agentic<span class="hljs-literal">-pilots</span>/candidates/ep05<span class="hljs-literal">-working-with-issues</span>/attempt<span class="hljs-literal">-001</span>.txt.report.json</code></pre>
+<p>Run a full-catalog pass with per-episode coverage reports:</p>
+<pre><code class="hljs language-powershell">npm run podcast:agentic:catalog</code></pre>
+<p>Promote an accepted candidate into the live script path and refresh its segment JSON:</p>
+<pre><code class="hljs language-powershell">npm run podcast:agentic:promote <span class="hljs-literal">--</span> <span class="hljs-literal">--slug</span> ep05<span class="hljs-literal">-working-with-issues</span></code></pre>
+<p>Audit chapter-plan quality across every generated <code>*-chapters.json</code> file:</p>
+<pre><code class="hljs language-powershell">npm run podcast:chapters:audit</code></pre>
+<p>Normalize chapter-plan sidecars after a full rebuild to drop generic or overly granular titles:</p>
+<pre><code class="hljs language-powershell">npm run podcast:chapters:normalize</code></pre>
+<h2 id="chapter-marker-flow">Chapter Marker Flow</h2>
+<p>Transcript generation now writes three artifacts for each selected script:</p>
+<ul>
+<li>the transcript text file in <code>podcasts/scripts/</code></li>
+<li>the derived segment file in <code>podcasts/transcripts/*-segments.json</code></li>
+<li>the ordered chapter plan in <code>podcasts/transcripts/*-chapters.json</code></li>
+</ul>
+<p>The chapter plan is sequential, not time-based. Each entry stores a chapter title plus a <code>startSegmentIndex</code>. Later, <code>podcasts/tag-audio-metadata.py</code> converts those ordered segment boundaries into timed ID3 chapters and Podcasting 2.0 chapter sidecars after audio generation. This keeps chapter naming in the transcript layer, where the teaching context is still available.</p>
+<h2 id="what-scales-across-all-79-listening-order-items">What Scales Across All 79 Listening-Order Items</h2>
+<ul>
+<li>selective transcript generation by slug, range, and group</li>
+<li>reusable source-packet generation</li>
+<li>reusable transcript rewrite + evaluation</li>
+<li>candidate-first promotion flow</li>
+<li>full-catalog batch rewrite summary with repetition metrics</li>
+<li>sequential chapter-plan generation for metadata tagging</li>
+<li>reusable chapter-plan auditing across the full catalog</li>
+</ul>
+<p>The rewrite itself is automated through Copilot CLI with automatic model selection. Everything around that step is scriptable and repeatable across the full catalog.</p>
+<h2 id="future-utilization-with-the-review-lane">Future utilization with the review lane</h2>
+<p>When running the LLM review workflow in <code>podcasts/llm-podcast-generator-review</code>:</p>
+<ul>
+<li>Keep per-run prompt artifacts so future prompt tuning has concrete examples.</li>
+<li>Carry durable findings into <code>podcasts/llm-podcast-generator-review/docs/lessons-learned.md</code>.</li>
+<li>Reuse lessons that describe process and quality controls rather than chapter-specific wording, so guidance remains valid as curriculum content evolves.</li>
+</ul>
+
+  </main>
+  <footer role="contentinfo" class="site-footer">
+    <p><strong>GIT Going with GitHub</strong> - A workshop by <a href="https://community-access.org">Community Access</a></p>
+    <p><a href="https://github.com/community-access/git-going-with-github">View on GitHub</a> · <a href="https://community-access.org">community-access.org</a></p>
+  </footer>
+
+  </body>
+</html>

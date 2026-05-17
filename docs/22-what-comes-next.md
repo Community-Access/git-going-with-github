@@ -285,7 +285,7 @@ If you need human help, use the Community Access support hub. Include what you t
 
 | Problem | What to do |
 |---|---|
-| Forgot how to do something from the workshop | Search the [course guide](../course-guide.md) by topic. Every major skill links to the chapter and appendix that covers it. |
+| Forgot how to do something from the workshop | Search the [course guide](course-guide.md) by topic. Every major skill links to the chapter and appendix that covers it. |
 | Git error you have not seen before | Copy the exact error text and search for it. [Pro Git](https://git-scm.com/book/en/v2) and Stack Overflow's [git tag](https://stackoverflow.com/questions/tagged/git) cover nearly every scenario. |
 | VS Code extension not working | Check the extension's page in the marketplace for known issues. Try disabling and re-enabling it. |
 | Want to contribute but do not know where to start | Search for `good first issue` labels on projects that interest you. See [Section 4: Continued Learning Roadmap](#4-continued-learning-roadmap). |

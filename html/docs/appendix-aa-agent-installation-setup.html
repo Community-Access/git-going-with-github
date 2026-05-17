@@ -1,0 +1,718 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="GIT Going with GitHub - A two-day accessible open source workshop by Community Access">
+  <title>Appendix AA: Agent Installation & Setup Across All Platforms - GIT Going with GitHub</title>
+  <link rel="stylesheet" href="../styles/github-markdown.css">
+  <link rel="stylesheet" href="../styles/highlight.css">
+  <link rel="stylesheet" href="../styles/custom.css">
+  <style>
+    .markdown-body {
+      box-sizing: border-box;
+      min-width: 200px;
+      max-width: 980px;
+      margin: 0 auto;
+      padding: 45px;
+    }
+    @media (max-width: 767px) {
+      .markdown-body {
+        padding: 15px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+  <header class="site-header" role="banner">
+    <div class="site-header-inner">
+      <nav aria-label="Breadcrumb" class="breadcrumb">
+        <a href="../index.html">Home</a> <span aria-hidden="true">›</span> <span aria-current="page">Appendix AA: Agent Installation & Setup Across All Platforms</span>
+      </nav>
+      <div class="header-actions">
+        <a href="https://github.com/Community-Access/git-going-with-github/wiki" class="wiki-link" target="_blank" rel="noopener noreferrer">
+          <svg aria-hidden="true" focusable="false" width="16" height="16" viewBox="0 0 16 16" fill="currentColor">
+            <path d="M1.75 1h8.5c.966 0 1.75.784 1.75 1.75v5.5A1.75 1.75 0 0 1 10.25 10H7.06l-2.573 2.573A1.458 1.458 0 0 1 2 11.543V10h-.25A1.75 1.75 0 0 1 0 8.25v-5.5C0 1.784.784 1 1.75 1ZM1.5 2.75v5.5c0 .138.112.25.25.25h1a.75.75 0 0 1 .75.75v2.19l2.72-2.72a.749.749 0 0 1 .53-.22h3.5a.25.25 0 0 0 .25-.25v-5.5a.25.25 0 0 0-.25-.25h-8.5a.25.25 0 0 0-.25.25Zm13 2a.25.25 0 0 0-.25-.25h-.5a.75.75 0 0 1 0-1.5h.5c.966 0 1.75.784 1.75 1.75v5.5A1.75 1.75 0 0 1 14.25 12H14v1.543a1.457 1.457 0 0 1-2.487 1.03L9.22 12.28a.749.749 0 1 1 1.06-1.06l2.22 2.22v-2.19a.75.75 0 0 1 .75-.75h.25a.25.25 0 0 0 .25-.25v-5.5Z"/>
+          </svg>
+          Wiki
+        </a>
+        <form role="search" class="search-form" action="../search.html" method="get">
+        <label for="site-search" class="search-label">Search docs</label>
+        <input
+          type="search"
+          id="site-search"
+          class="search-input"
+          name="q"
+          placeholder="Search docs…"
+          autocomplete="off"
+          aria-label="Search documentation"
+        >
+        <button type="submit" class="search-button" aria-label="Submit search">
+          <svg aria-hidden="true" focusable="false" width="16" height="16" viewBox="0 0 16 16" fill="currentColor">
+            <path d="M10.68 11.74a6 6 0 0 1-7.922-8.982 6 6 0 0 1 8.982 7.922l3.04 3.04a.749.749 0 0 1-.326 1.275.749.749 0 0 1-.734-.215ZM11.5 7a4.499 4.499 0 1 0-8.997 0A4.499 4.499 0 0 0 11.5 7Z"/>
+          </svg>
+        </button>
+      </form>
+      </div>
+    </div>
+  </header>
+  <main id="main-content" class="markdown-body">
+    <h1 id="appendix-aa-agent-installation-amp-setup-across-all-platforms">Appendix AA: Agent Installation &amp; Setup Across All Platforms</h1>
+<blockquote>
+<p><strong>Reference companion to:</strong> <a href="19-accessibility-agents.html">Chapter 19: Accessibility Agents</a> | <a href="appendix-l-agents-reference.html">Appendix L: Agents Reference</a></p>
+<p><strong>Authoritative source:</strong> <a href="https://github.com/Community-Access/accessibility-agents">Accessibility Agents Repository</a> | <a href="https://github.com/Community-Access/accessibility-agents#system-requirements">System Requirements</a></p>
+</blockquote>
+<h2 id="installation-configuration-and-troubleshooting-for-all-five-platforms">Installation, Configuration, and Troubleshooting for All Five Platforms</h2>
+<blockquote>
+<p>This appendix covers the step-by-step installation process for Accessibility Agents on GitHub Copilot (VS Code), Claude Code, Gemini CLI, Claude Desktop, and Codex CLI, plus system requirements, version checking, and troubleshooting for each platform.</p>
+</blockquote>
+<h2 id="table-of-contents">Table of Contents</h2>
+<ol>
+<li><a href="#1-system-requirements">System Requirements</a></li>
+<li><a href="#2-version-checking-commands">Version Checking Commands</a></li>
+<li><a href="#3-platform-specific-installation">Platform-Specific Installation</a></li>
+<li><a href="#4-post-installation-verification">Post-Installation Verification</a></li>
+<li><a href="#5-troubleshooting-compatibility-issues">Troubleshooting Compatibility Issues</a></li>
+<li><a href="#6-keeping-tools-updated">Keeping Tools Updated</a></li>
+</ol>
+<h2 id="1-system-requirements">1. System Requirements</h2>
+<h3 id="critical-tool-currency">Critical: Tool Currency</h3>
+<p>Accessibility Agents requires the <strong>latest versions</strong> of all tools. Older versions miss accessibility features, API capabilities, and bug fixes that agents depend on.</p>
+<p><strong>Version baseline (May 2026):</strong></p>
+<ul>
+<li>VS Code: 1.113 or later (stable or Insiders)</li>
+<li>GitHub Copilot: Latest from VS Code Marketplace</li>
+<li>Node.js: v18.0.0 or higher</li>
+<li>Python: 3.8+</li>
+<li>Operating Systems: Windows 10/11, macOS 10.15+, or Linux (Ubuntu 20.04+)</li>
+</ul>
+<h3 id="operating-system-requirements">Operating System Requirements</h3>
+<table>
+<thead>
+<tr>
+<th scope="col">OS</th>
+<th scope="col">Minimum Version</th>
+<th scope="col">Supported Architectures</th>
+<th scope="col">Notes</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><strong>Windows</strong></td>
+<td>Windows 10 Build 1909+</td>
+<td>x64, Arm64 (preview)</td>
+<td>PowerShell 5.1+ required for command-line tools</td>
+</tr>
+<tr>
+<td><strong>macOS</strong></td>
+<td>10.15 (Catalina)</td>
+<td>Intel, Apple Silicon (M1/M2+)</td>
+<td>Requires command-line tools (run <code>xcode-select --install</code>)</td>
+</tr>
+<tr>
+<td><strong>Linux</strong></td>
+<td>Ubuntu 20.04 LTS+</td>
+<td>x64 (primary), ARM64</td>
+<td>Debian, Fedora, RHEL derivatives supported</td>
+</tr>
+</tbody></table>
+<h3 id="per-platform-system-requirements">Per-Platform System Requirements</h3>
+<table>
+<thead>
+<tr>
+<th scope="col">Platform</th>
+<th scope="col">Min RAM</th>
+<th scope="col">Disk Space</th>
+<th scope="col">Network</th>
+<th scope="col">Notes</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><strong>GitHub Copilot (VS Code)</strong></td>
+<td>4 GB</td>
+<td>2 GB available</td>
+<td>Required</td>
+<td>Inline suggestions, chat, Accessible View</td>
+</tr>
+<tr>
+<td><strong>Claude Code</strong></td>
+<td>4 GB</td>
+<td>1 GB available</td>
+<td>Required</td>
+<td>Direct code generation and editing</td>
+</tr>
+<tr>
+<td><strong>Gemini CLI</strong></td>
+<td>2 GB</td>
+<td>500 MB available</td>
+<td>Required</td>
+<td>Fast iteration, Google Search integration</td>
+</tr>
+<tr>
+<td><strong>Claude Desktop</strong></td>
+<td>4 GB</td>
+<td>1 GB available</td>
+<td>Required</td>
+<td>Extended context windows, longer sessions</td>
+</tr>
+<tr>
+<td><strong>Codex CLI</strong></td>
+<td>2 GB</td>
+<td>500 MB available</td>
+<td>Optional for local mode</td>
+<td>Experimental roles and TOML configuration</td>
+</tr>
+</tbody></table>
+<h3 id="required-tools-by-platform">Required Tools by Platform</h3>
+<h4 id="github-copilot-vs-code">GitHub Copilot (VS Code)</h4>
+<pre><code class="hljs language-plaintext">VS Code 1.113+
+  - GitHub Copilot extension (latest)
+  - GitHub Copilot Chat extension (latest)
+Node.js 18.0.0+ (for Playwright, axe-core, other tools)
+Git 2.20+ (for repository operations)</code></pre>
+<h4 id="claude-code">Claude Code</h4>
+<pre><code class="hljs language-plaintext">Claude Code CLI (latest)
+  - Installation: https://docs.anthropic.com/en/docs/claude-code
+Claude subscription (Pro, Max, or Team)</code></pre>
+<h4 id="gemini-cli">Gemini CLI</h4>
+<pre><code class="hljs language-plaintext">Gemini CLI (latest)
+  - Installation: https://github.com/google-gemini/gemini-cli
+Google AI Studio API Key (free: https://ai.google.dev/)</code></pre>
+<h4 id="claude-desktop">Claude Desktop</h4>
+<pre><code class="hljs language-plaintext">Claude Desktop (latest)
+  - Download: https://claude.ai/download
+Claude subscription (Pro, Max, or Team)
+MCP server configuration (`.mcp.json`)</code></pre>
+<h4 id="codex-cli">Codex CLI</h4>
+<pre><code class="hljs language-plaintext">Codex CLI (latest)
+  - Installation: npm install -g @codex-cli/core
+Node.js 18.0.0+ required for npm</code></pre>
+<h2 id="2-version-checking-commands">2. Version Checking Commands</h2>
+<p>Use these commands to verify your installed versions before starting.</p>
+<h3 id="github-copilot-vs-code">GitHub Copilot (VS Code)</h3>
+<pre><code class="hljs language-bash"><span class="hljs-comment"># Check VS Code version</span>
+code --version
+
+<span class="hljs-comment"># Verify GitHub Copilot extension is installed</span>
+code --list-extensions | grep -i copilot
+
+<span class="hljs-comment"># Check Node.js (used by Copilot and accessibility tools)</span>
+node --version
+npm --version
+
+<span class="hljs-comment"># Verify Git</span>
+git --version</code></pre>
+<p>Expected output:</p>
+<pre><code class="hljs"><span class="hljs-attribute">1</span>.<span class="hljs-number">113</span>.<span class="hljs-number">0</span> or higher (VS Code)
+<span class="hljs-attribute">github</span>.copilot
+<span class="hljs-attribute">v18</span>.<span class="hljs-number">0</span>.<span class="hljs-number">0</span> or higher (Node.js)
+<span class="hljs-attribute">v2</span>.<span class="hljs-number">20</span>.<span class="hljs-number">0</span> or higher (Git)</code></pre>
+<h3 id="claude-code">Claude Code</h3>
+<pre><code class="hljs language-bash"><span class="hljs-comment"># Check Claude Code CLI version</span>
+claude code --version
+
+<span class="hljs-comment"># Verify you have an active subscription</span>
+claude code <span class="hljs-built_in">whoami</span>
+
+<span class="hljs-comment"># Check Node.js</span>
+node --version</code></pre>
+<h3 id="gemini-cli">Gemini CLI</h3>
+<pre><code class="hljs language-bash"><span class="hljs-comment"># Check Gemini CLI version</span>
+gemini --version
+
+<span class="hljs-comment"># Verify API key is configured</span>
+gemini config show
+
+<span class="hljs-comment"># Check Node.js</span>
+node --version</code></pre>
+<h3 id="claude-desktop">Claude Desktop</h3>
+<p>Check inside the application: <strong>Settings → About</strong> to see the current version.</p>
+<h3 id="codex-cli">Codex CLI</h3>
+<pre><code class="hljs language-bash"><span class="hljs-comment"># Check Codex CLI version</span>
+codex --version
+
+<span class="hljs-comment"># Check Node.js</span>
+node --version
+npm --version</code></pre>
+<h2 id="3-platform-specific-installation">3. Platform-Specific Installation</h2>
+<h3 id="github-copilot-vs-code---recommended-for-most-workshops">GitHub Copilot (VS Code) - Recommended for Most Workshops</h3>
+<p><strong>Step 1: Install VS Code</strong></p>
+<ol>
+<li>Download from <a href="https://code.visualstudio.com">code.visualstudio.com</a></li>
+<li>Run installer</li>
+<li>Open VS Code and verify it starts</li>
+</ol>
+<p><strong>Step 2: Install GitHub Copilot Extensions</strong></p>
+<ol>
+<li>Open Extensions panel: <code>Ctrl+Shift+X</code> (or <strong>View → Extensions</strong>)</li>
+<li>Search for &quot;GitHub Copilot&quot;</li>
+<li>Install both:<ul>
+<li>GitHub Copilot (by GitHub)</li>
+<li>GitHub Copilot Chat (by GitHub)</li>
+</ul>
+</li>
+<li>Sign in with your GitHub account when prompted</li>
+</ol>
+<p><strong>Step 3: Install Node.js (for accessibility tools)</strong></p>
+<ol>
+<li>Download from <a href="https://nodejs.org">nodejs.org</a> (v18 LTS or later)</li>
+<li>Run installer</li>
+<li>Verify: <code>node --version</code> and <code>npm --version</code></li>
+</ol>
+<p><strong>Step 4: Clone Accessibility Agents Repository</strong></p>
+<pre><code class="hljs language-bash"><span class="hljs-built_in">cd</span> /path/to/projects
+git <span class="hljs-built_in">clone</span> https://github.com/Community-Access/accessibility-agents.git
+<span class="hljs-built_in">cd</span> accessibility-agents</code></pre>
+<p><strong>Step 5: Open in VS Code</strong></p>
+<pre><code class="hljs language-bash">code .</code></pre>
+<p><strong>Step 6: Verify Agents Load</strong></p>
+<ol>
+<li>Open Copilot Chat: <code>Ctrl+Alt+I</code></li>
+<li>Type <code>@</code> and look for agent autocomplete suggestions</li>
+<li>Verify <code>.github/agents/</code> folder exists in the repository</li>
+</ol>
+<p><strong>Step 7: (Optional) Install Global Tools</strong></p>
+<pre><code class="hljs language-bash"><span class="hljs-comment"># For accessibility scanning</span>
+npm install -g @axe-core/cli pa11y
+
+<span class="hljs-comment"># For Playwright testing</span>
+npm install -g playwright</code></pre>
+<h3 id="claude-code">Claude Code</h3>
+<p><strong>Step 1: Install Claude Code CLI</strong></p>
+<pre><code class="hljs language-bash">npm install -g @anthropic-ai/claude-code</code></pre>
+<p><strong>Step 2: Authenticate</strong></p>
+<pre><code class="hljs language-bash">claude code auth
+<span class="hljs-comment"># Follow the browser login flow</span></code></pre>
+<p><strong>Step 3: Clone Repository</strong></p>
+<pre><code class="hljs language-bash"><span class="hljs-built_in">cd</span> /path/to/projects
+git <span class="hljs-built_in">clone</span> https://github.com/Community-Access/accessibility-agents.git
+<span class="hljs-built_in">cd</span> accessibility-agents</code></pre>
+<p><strong>Step 4: Run an Agent</strong></p>
+<pre><code class="hljs language-bash">claude code @daily-briefing morning briefing</code></pre>
+<h3 id="gemini-cli">Gemini CLI</h3>
+<p><strong>Step 1: Install Gemini CLI</strong></p>
+<pre><code class="hljs language-bash">npm install -g @google/gemini-cli</code></pre>
+<p><strong>Step 2: Set Up API Key</strong></p>
+<ol>
+<li>Get API key from <a href="https://ai.google.dev/">ai.google.dev</a></li>
+<li>Set environment variable:<pre><code class="hljs language-bash"><span class="hljs-built_in">export</span> GEMINI_API_KEY=<span class="hljs-string">&quot;your-api-key-here&quot;</span></code></pre>
+</li>
+</ol>
+<p><strong>Step 3: Test Connection</strong></p>
+<pre><code class="hljs language-bash">gemini --version
+gemini <span class="hljs-built_in">whoami</span></code></pre>
+<p><strong>Step 4: Use with Accessibility Agents</strong></p>
+<pre><code class="hljs language-bash">gemini skill search accessibility-agents
+gemini skill use community-access/accessibility-agents</code></pre>
+<h3 id="claude-desktop">Claude Desktop</h3>
+<p><strong>Step 1: Download and Install</strong></p>
+<ol>
+<li>Download from <a href="https://claude.ai/download">claude.ai</a></li>
+<li>Install application</li>
+<li>Open Claude Desktop</li>
+</ol>
+<p><strong>Step 2: Configure MCP Server</strong></p>
+<ol>
+<li>Create or edit <code>.mcp.json</code> in your home folder (macOS/Linux: <code>~/.mcp.json</code>, Windows: <code>%USERPROFILE%\.mcp.json</code>)</li>
+<li>Add the Accessibility Agents MCP server:<pre><code class="hljs language-json"><span class="hljs-punctuation">{</span>
+  <span class="hljs-attr">&quot;mcpServers&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-punctuation">{</span>
+    <span class="hljs-attr">&quot;accessibility-agents&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-punctuation">{</span>
+      <span class="hljs-attr">&quot;command&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;node&quot;</span><span class="hljs-punctuation">,</span>
+      <span class="hljs-attr">&quot;args&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-punctuation">[</span><span class="hljs-string">&quot;/path/to/accessibility-agents/mcp-server/index.js&quot;</span><span class="hljs-punctuation">]</span><span class="hljs-punctuation">,</span>
+      <span class="hljs-attr">&quot;env&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-punctuation">{</span>
+        <span class="hljs-attr">&quot;PORT&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;3000&quot;</span>
+      <span class="hljs-punctuation">}</span>
+    <span class="hljs-punctuation">}</span>
+  <span class="hljs-punctuation">}</span>
+<span class="hljs-punctuation">}</span></code></pre>
+</li>
+</ol>
+<p><strong>Step 3: Restart Claude Desktop</strong></p>
+<ol>
+<li>Quit Claude Desktop completely</li>
+<li>Reopen Claude Desktop</li>
+<li>Verify MCP server connects (check logs)</li>
+</ol>
+<h3 id="codex-cli">Codex CLI</h3>
+<p><strong>Step 1: Install Codex CLI</strong></p>
+<pre><code class="hljs language-bash">npm install -g @codex-cli/core</code></pre>
+<p><strong>Step 2: Initialize Configuration</strong></p>
+<pre><code class="hljs language-bash">codex init
+<span class="hljs-comment"># Answer interactive setup questions</span></code></pre>
+<p><strong>Step 3: Test Installation</strong></p>
+<pre><code class="hljs language-bash">codex --version
+codex role list</code></pre>
+<p><strong>Step 4: Use Accessibility Agents</strong></p>
+<pre><code class="hljs language-bash">codex role search accessibility
+codex run @accessibility-lead</code></pre>
+<h2 id="4-post-installation-verification">4. Post-Installation Verification</h2>
+<h3 id="verification-checklist">Verification Checklist</h3>
+<p>After installation, verify each platform is ready:</p>
+<table>
+<thead>
+<tr>
+<th scope="col">Check</th>
+<th scope="col">Command/Action</th>
+<th scope="col">Expected Result</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><strong>Tools installed</strong></td>
+<td><code>node --version</code>, <code>git --version</code></td>
+<td>v18+, v2.20+</td>
+</tr>
+<tr>
+<td><strong>Repository cloned</strong></td>
+<td><code>ls -la accessibility-agents</code></td>
+<td><code>.github/agents/</code> folder exists</td>
+</tr>
+<tr>
+<td><strong>Agents discoverable</strong></td>
+<td>Type <code>@</code> in chat/CLI</td>
+<td>Autocomplete shows agent names</td>
+</tr>
+<tr>
+<td><strong>Network access</strong></td>
+<td>Ping GitHub</td>
+<td>No firewall blocks</td>
+</tr>
+<tr>
+<td><strong>API keys valid</strong> (Claude/Gemini)</td>
+<td><code>claude code whoami</code> / <code>gemini whoami</code></td>
+<td>Authenticated successfully</td>
+</tr>
+</tbody></table>
+<h3 id="quick-test-run-one-agent">Quick Test: Run One Agent</h3>
+<p><strong>On GitHub Copilot (VS Code):</strong></p>
+<pre><code class="hljs"><span class="hljs-keyword">Open</span> Chat (Ctrl+Alt+I) → <span class="hljs-keyword">Type</span>: @daily-briefing morning briefing</code></pre>
+<p><strong>On Claude Code:</strong></p>
+<pre><code class="hljs language-bash">claude code @daily-briefing morning briefing</code></pre>
+<p><strong>On Gemini CLI:</strong></p>
+<pre><code class="hljs language-bash">gemini @daily-briefing morning briefing</code></pre>
+<p><strong>On Claude Desktop:</strong>
+In chat input, type: <code>@daily-briefing morning briefing</code></p>
+<p><strong>On Codex CLI:</strong></p>
+<pre><code class="hljs language-bash">codex run @daily-briefing morning briefing</code></pre>
+<p>If the agent responds with information, installation is successful.</p>
+<h2 id="5-troubleshooting-compatibility-issues">5. Troubleshooting Compatibility Issues</h2>
+<h3 id="github-copilot-vs-code">GitHub Copilot (VS Code)</h3>
+<table>
+<thead>
+<tr>
+<th scope="col">Issue</th>
+<th scope="col">Cause</th>
+<th scope="col">Solution</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Agents not appearing after <code>@</code></td>
+<td>Extensions not installed or outdated</td>
+<td>Reinstall GitHub Copilot and GitHub Copilot Chat from VS Code Marketplace</td>
+</tr>
+<tr>
+<td>&quot;Cannot find agents&quot; error</td>
+<td><code>.github/agents/</code> folder missing</td>
+<td>Clone the full <code>accessibility-agents</code> repository; do not copy files manually</td>
+</tr>
+<tr>
+<td>Chat not working</td>
+<td>Copilot not signed in</td>
+<td>Click Copilot Chat panel → &quot;Sign in with GitHub&quot;</td>
+</tr>
+<tr>
+<td>VS Code 1.113+ required notice</td>
+<td>Running older VS Code</td>
+<td>Update: Help → Check for Updates (or auto-install in settings)</td>
+</tr>
+<tr>
+<td>Slow responses</td>
+<td>Network latency or token limit</td>
+<td>Check internet connection; restart VS Code; check OpenAI quota</td>
+</tr>
+</tbody></table>
+<p><strong>Reset Copilot (if stuck):</strong></p>
+<pre><code class="hljs language-bash"><span class="hljs-comment"># Delete VS Code cache</span>
+<span class="hljs-built_in">rm</span> -rf ~/.config/Code/Cache  <span class="hljs-comment"># macOS/Linux</span>
+<span class="hljs-built_in">rmdir</span> /s %APPDATA%\Code\Cache  <span class="hljs-comment"># Windows PowerShell</span>
+
+<span class="hljs-comment"># Restart VS Code</span></code></pre>
+<h3 id="claude-code">Claude Code</h3>
+<table>
+<thead>
+<tr>
+<th scope="col">Issue</th>
+<th scope="col">Cause</th>
+<th scope="col">Solution</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>&quot;Not authenticated&quot; error</td>
+<td>API key expired or invalid</td>
+<td>Run <code>claude code auth</code> and re-login</td>
+</tr>
+<tr>
+<td>Agent not found</td>
+<td>CLI version mismatch</td>
+<td>Update: <code>npm update -g @anthropic-ai/claude-code</code></td>
+</tr>
+<tr>
+<td>Slow generation</td>
+<td>Large context or complex task</td>
+<td>Break task into smaller steps; try simpler prompt</td>
+</tr>
+</tbody></table>
+<h3 id="gemini-cli">Gemini CLI</h3>
+<table>
+<thead>
+<tr>
+<th scope="col">Issue</th>
+<th scope="col">Cause</th>
+<th scope="col">Solution</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>API key error</td>
+<td><code>GEMINI_API_KEY</code> not set</td>
+<td><code>export GEMINI_API_KEY=&quot;your-key&quot;</code> (on Linux/macOS) or set in Windows env vars</td>
+</tr>
+<tr>
+<td>&quot;Rate limit exceeded&quot;</td>
+<td>Too many requests</td>
+<td>Wait 60 seconds; Gemini CLI has a 15 requests/minute limit</td>
+</tr>
+<tr>
+<td>Model not found</td>
+<td>Old CLI version</td>
+<td>Update: <code>npm update -g @google/gemini-cli</code></td>
+</tr>
+</tbody></table>
+<h3 id="claude-desktop">Claude Desktop</h3>
+<table>
+<thead>
+<tr>
+<th scope="col">Issue</th>
+<th scope="col">Cause</th>
+<th scope="col">Solution</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>MCP server not connecting</td>
+<td><code>.mcp.json</code> syntax error or wrong path</td>
+<td>Validate JSON syntax; verify file path; check server logs</td>
+</tr>
+<tr>
+<td>&quot;Port already in use&quot;</td>
+<td>Another process on port 3000</td>
+<td>Change port in <code>.mcp.json</code> to 3001 or find/kill process on 3000</td>
+</tr>
+<tr>
+<td>Subscription required</td>
+<td>Free Claude account</td>
+<td>Upgrade to Claude Pro or Team subscription</td>
+</tr>
+</tbody></table>
+<h3 id="codex-cli">Codex CLI</h3>
+<table>
+<thead>
+<tr>
+<th scope="col">Issue</th>
+<th scope="col">Cause</th>
+<th scope="col">Solution</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Role not found</td>
+<td>Accessibility Agents not installed as role</td>
+<td>Run <code>codex init</code> and add the agents GitHub URL during setup</td>
+</tr>
+<tr>
+<td>TOML config syntax error</td>
+<td>Invalid TOML file</td>
+<td>Validate with online TOML validator; check indentation</td>
+</tr>
+</tbody></table>
+<h3 id="universal-troubleshooting">Universal Troubleshooting</h3>
+<ol>
+<li><p><strong>Verify internet connection:</strong></p>
+<pre><code class="hljs language-bash">ping github.com</code></pre>
+</li>
+<li><p><strong>Check firewall/proxy:</strong></p>
+<ul>
+<li>Ensure ports 443 (HTTPS), 3000 (MCP) are not blocked</li>
+<li>If behind proxy, configure Git: <code>git config --global http.proxy [proxy-url]</code></li>
+</ul>
+</li>
+<li><p><strong>Clear caches and restart:</strong></p>
+<ul>
+<li>VS Code: Reload Window (<code>Ctrl+Shift+P</code> → &quot;Reload Window&quot;)</li>
+<li>CLI tools: Reinstall latest version</li>
+</ul>
+</li>
+<li><p><strong>Check subscription/quota:</strong></p>
+<ul>
+<li>GitHub Copilot: Requires active subscription (Free, Pro, or Team)</li>
+<li>Claude Code: Requires Claude Pro/Team/Enterprise</li>
+<li>Gemini: Free tier available but with rate limits</li>
+</ul>
+</li>
+<li><p><strong>Review logs:</strong></p>
+<ul>
+<li>VS Code: Help → Toggle Developer Tools → Console tab</li>
+<li>Claude Desktop: Application menu → View Logs</li>
+<li>CLI: Add <code>--debug</code> flag to commands</li>
+</ul>
+</li>
+</ol>
+<h2 id="6-keeping-tools-updated">6. Keeping Tools Updated</h2>
+<h3 id="why-updates-matter">Why Updates Matter</h3>
+<ul>
+<li><strong>New accessibility features</strong> in platforms enable better agent behavior</li>
+<li><strong>Bug fixes</strong> prevent silent failures and context loss</li>
+<li><strong>API improvements</strong> improve performance and reliability</li>
+<li><strong>Security patches</strong> protect your data and credentials</li>
+</ul>
+<h3 id="update-schedules-by-platform">Update Schedules by Platform</h3>
+<table>
+<thead>
+<tr>
+<th scope="col">Platform</th>
+<th scope="col">Release Cycle</th>
+<th scope="col">Check Method</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><strong>VS Code</strong></td>
+<td>Monthly (stable), weekly (Insiders)</td>
+<td>Help → Check for Updates</td>
+</tr>
+<tr>
+<td><strong>GitHub Copilot</strong></td>
+<td>Monthly</td>
+<td>VS Code Extensions view → GitHub Copilot → Update</td>
+</tr>
+<tr>
+<td><strong>Node.js</strong></td>
+<td>Quarterly (LTS)</td>
+<td><code>npm outdated -g</code></td>
+</tr>
+<tr>
+<td><strong>Claude Code</strong></td>
+<td>As needed</td>
+<td><code>npm outdated -g @anthropic-ai/claude-code</code></td>
+</tr>
+<tr>
+<td><strong>Gemini CLI</strong></td>
+<td>As needed</td>
+<td><code>npm outdated -g @google/gemini-cli</code></td>
+</tr>
+<tr>
+<td><strong>Claude Desktop</strong></td>
+<td>Monthly</td>
+<td>Application menu → Check for Updates</td>
+</tr>
+</tbody></table>
+<h3 id="update-commands">Update Commands</h3>
+<p><strong>GitHub Copilot (VS Code):</strong></p>
+<pre><code class="hljs language-bash"><span class="hljs-comment"># Update VS Code</span>
+code --update
+
+<span class="hljs-comment"># Update extensions</span>
+<span class="hljs-comment"># Use VS Code UI: Extensions → click update on GitHub Copilot extensions</span></code></pre>
+<p><strong>All npm-based tools (one command):</strong></p>
+<pre><code class="hljs language-bash">npm update -g</code></pre>
+<p><strong>Individual tool updates:</strong></p>
+<pre><code class="hljs language-bash">npm update -g @anthropic-ai/claude-code
+npm update -g @google/gemini-cli
+npm update -g @codex-cli/core</code></pre>
+<p><strong>Verify current versions after update:</strong></p>
+<pre><code class="hljs language-bash">code --version
+node --version
+claude code --version
+gemini --version</code></pre>
+<h3 id="update-best-practices">Update Best Practices</h3>
+<ol>
+<li><strong>Update before starting a new project:</strong> Ensure latest fixes and features are available</li>
+<li><strong>Keep Node.js current:</strong> Many CLI tools depend on Node.js features</li>
+<li><strong>Check compatibility notes:</strong> Major version updates may introduce breaking changes</li>
+<li><strong>Test in a branch:</strong> After updating, test one agent before relying on it</li>
+<li><strong>Subscribe to release notes:</strong> Watch <a href="https://github.com/Community-Access/accessibility-agents/releases">Accessibility Agents releases</a> for new features and requirements</li>
+</ol>
+<h2 id="learning-cards-installation-amp-setup">Learning Cards: Installation &amp; Setup</h2>
+<details>
+<summary>Screen reader users</summary>
+
+<ul>
+<li>Installation steps are presented in sequence; follow them in order and do not skip any step</li>
+<li>After installation, the quick verification test (running <code>@daily-briefing</code>) confirms setup is working -- if it produces a response, you are ready to proceed</li>
+<li>Each platform has its own section; use headings (<code>H</code> key in browse mode) to jump to the section for your chosen platform</li>
+<li>Troubleshooting tables are organized by platform; navigate to your platform&#39;s row for solutions</li>
+</ul>
+</details>
+
+<details>
+<summary>Low vision users</summary>
+
+<ul>
+<li>The system requirements table can be magnified independently; zoom in on the &quot;Minimum Version&quot; and &quot;Notes&quot; columns if you need specific details</li>
+<li>Installation commands are in code blocks with clear context; copy the command that matches your platform</li>
+<li>After each installation step, there is a verification check (run <code>node --version</code>, etc.) -- write down the output so you can confirm success</li>
+<li>The troubleshooting section is organized as a decision tree by platform; skip to your platform&#39;s section</li>
+</ul>
+</details>
+
+<details>
+<summary>Sighted users</summary>
+
+<ul>
+<li>Skim the System Requirements section to choose your target platform</li>
+<li>Follow the numbered steps in the Platform-Specific Installation section for your platform</li>
+<li>Run the verification commands after each step to confirm success before moving to the next step</li>
+<li>If something does not work, jump to Troubleshooting and find your issue in the table for your platform</li>
+</ul>
+</details>
+
+<h3 id="references">References</h3>
+<ul>
+<li><a href="https://github.com/Community-Access/accessibility-agents">Accessibility Agents Repository</a></li>
+<li><a href="https://code.visualstudio.com/docs/setup/setup-overview">VS Code Installation Guide</a></li>
+<li><a href="https://docs.github.com/en/copilot">GitHub Copilot Documentation</a></li>
+<li><a href="https://docs.anthropic.com/en/docs/claude-code">Claude Code Documentation</a></li>
+<li><a href="https://github.com/google-gemini/gemini-cli">Gemini CLI GitHub</a></li>
+<li><a href="https://nodejs.org/">Node.js Installation</a></li>
+</ul>
+<h2 id="authoritative-sources">Authoritative Sources</h2>
+<p>Use these official references when you need the current source of truth for facts in this chapter.</p>
+<ul>
+<li><a href="https://docs.github.com/en">GitHub Docs, home</a></li>
+<li><a href="https://github.blog/changelog/">GitHub Changelog</a></li>
+<li><a href="https://docs.github.com/en/copilot">GitHub Copilot docs</a></li>
+<li><a href="https://docs.github.com/en/copilot/reference/custom-instructions-support">Custom instructions support matrix</a></li>
+<li><a href="https://docs.github.com/en/copilot/concepts/agents/cloud-agent/about-custom-agents">About custom agents</a></li>
+<li><a href="https://docs.github.com/en/copilot/concepts/agents/about-agent-skills">About agent skills</a></li>
+<li><a href="https://docs.github.com/en/copilot/concepts/auto-model-selection">About auto model selection</a></li>
+<li><a href="https://github.blog/changelog/label/copilot/">Copilot changelog feed</a></li>
+<li><a href="https://code.visualstudio.com/docs/copilot/chat/copilot-chat">VS Code Copilot chat overview</a></li>
+<li><a href="https://code.visualstudio.com/docs/copilot/agents/overview">VS Code agent overview</a></li>
+<li><a href="https://code.visualstudio.com/docs/copilot/customization/custom-instructions">VS Code custom instructions</a></li>
+</ul>
+<h3 id="section-level-source-map">Section-Level Source Map</h3>
+<p>Use this map to verify facts for each major section in this file.</p>
+<ul>
+<li><strong>Installation, Configuration, and Troubleshooting for All Five Platforms:</strong> <a href="https://docs.github.com/en">GitHub Docs, home</a>, <a href="https://github.blog/changelog/">GitHub Changelog</a>, <a href="https://docs.github.com/en/copilot">GitHub Copilot docs</a>, <a href="https://docs.github.com/en/copilot/reference/custom-instructions-support">Custom instructions support matrix</a>, <a href="https://docs.github.com/en/copilot/concepts/agents/cloud-agent/about-custom-agents">About custom agents</a></li>
+<li><strong>1. System Requirements:</strong> <a href="https://docs.github.com/en">GitHub Docs, home</a>, <a href="https://github.blog/changelog/">GitHub Changelog</a>, <a href="https://docs.github.com/en/copilot">GitHub Copilot docs</a>, <a href="https://docs.github.com/en/copilot/reference/custom-instructions-support">Custom instructions support matrix</a>, <a href="https://docs.github.com/en/copilot/concepts/agents/cloud-agent/about-custom-agents">About custom agents</a></li>
+<li><strong>2. Version Checking Commands:</strong> <a href="https://docs.github.com/en">GitHub Docs, home</a>, <a href="https://github.blog/changelog/">GitHub Changelog</a>, <a href="https://docs.github.com/en/copilot">GitHub Copilot docs</a>, <a href="https://docs.github.com/en/copilot/reference/custom-instructions-support">Custom instructions support matrix</a>, <a href="https://docs.github.com/en/copilot/concepts/agents/cloud-agent/about-custom-agents">About custom agents</a></li>
+<li><strong>3. Platform-Specific Installation:</strong> <a href="https://docs.github.com/en">GitHub Docs, home</a>, <a href="https://github.blog/changelog/">GitHub Changelog</a>, <a href="https://docs.github.com/en/copilot">GitHub Copilot docs</a>, <a href="https://docs.github.com/en/copilot/reference/custom-instructions-support">Custom instructions support matrix</a>, <a href="https://docs.github.com/en/copilot/concepts/agents/cloud-agent/about-custom-agents">About custom agents</a></li>
+<li><strong>4. Post-Installation Verification:</strong> <a href="https://docs.github.com/en">GitHub Docs, home</a>, <a href="https://github.blog/changelog/">GitHub Changelog</a>, <a href="https://docs.github.com/en/copilot">GitHub Copilot docs</a>, <a href="https://docs.github.com/en/copilot/reference/custom-instructions-support">Custom instructions support matrix</a>, <a href="https://docs.github.com/en/copilot/concepts/agents/cloud-agent/about-custom-agents">About custom agents</a></li>
+<li><strong>5. Troubleshooting Compatibility Issues:</strong> <a href="https://docs.github.com/en">GitHub Docs, home</a>, <a href="https://github.blog/changelog/">GitHub Changelog</a>, <a href="https://docs.github.com/en/copilot">GitHub Copilot docs</a>, <a href="https://docs.github.com/en/copilot/reference/custom-instructions-support">Custom instructions support matrix</a>, <a href="https://docs.github.com/en/copilot/concepts/agents/cloud-agent/about-custom-agents">About custom agents</a></li>
+<li><strong>6. Keeping Tools Updated:</strong> <a href="https://docs.github.com/en">GitHub Docs, home</a>, <a href="https://github.blog/changelog/">GitHub Changelog</a>, <a href="https://docs.github.com/en/copilot">GitHub Copilot docs</a>, <a href="https://docs.github.com/en/copilot/reference/custom-instructions-support">Custom instructions support matrix</a>, <a href="https://docs.github.com/en/copilot/concepts/agents/cloud-agent/about-custom-agents">About custom agents</a></li>
+<li><strong>Learning Cards: Installation &amp; Setup:</strong> <a href="https://docs.github.com/en">GitHub Docs, home</a>, <a href="https://github.blog/changelog/">GitHub Changelog</a>, <a href="https://docs.github.com/en/copilot">GitHub Copilot docs</a>, <a href="https://docs.github.com/en/copilot/reference/custom-instructions-support">Custom instructions support matrix</a>, <a href="https://docs.github.com/en/copilot/concepts/agents/cloud-agent/about-custom-agents">About custom agents</a></li>
+</ul>
+
+  </main>
+  <footer role="contentinfo" class="site-footer">
+    <p><strong>GIT Going with GitHub</strong> - A workshop by <a href="https://community-access.org">Community Access</a></p>
+    <p><a href="https://github.com/community-access/git-going-with-github">View on GitHub</a> · <a href="https://community-access.org">community-access.org</a></p>
+  </footer>
+
+  </body>
+</html>

@@ -5,9 +5,9 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="description" content="GIT Going with GitHub - A two-day accessible open source workshop by Community Access">
   <title>Podcast Audio Pipeline - GIT Going with GitHub</title>
-  <link rel="stylesheet" href="./styles/github-markdown.css">
-  <link rel="stylesheet" href="./styles/highlight.css">
-  <link rel="stylesheet" href="./styles/custom.css">
+  <link rel="stylesheet" href="../styles/github-markdown.css">
+  <link rel="stylesheet" href="../styles/highlight.css">
+  <link rel="stylesheet" href="../styles/custom.css">
   <style>
     .markdown-body {
       box-sizing: border-box;
@@ -28,7 +28,7 @@
   <header class="site-header" role="banner">
     <div class="site-header-inner">
       <nav aria-label="Breadcrumb" class="breadcrumb">
-        <a href="./index.html">Home</a> <span aria-hidden="true">›</span> <span aria-current="page">Podcast Audio Pipeline</span>
+        <a href="../index.html">Home</a> <span aria-hidden="true">›</span> <span aria-current="page">Podcast Audio Pipeline</span>
       </nav>
       <div class="header-actions">
         <a href="https://github.com/Community-Access/git-going-with-github/wiki" class="wiki-link" target="_blank" rel="noopener noreferrer">
@@ -37,7 +37,7 @@
           </svg>
           Wiki
         </a>
-        <form role="search" class="search-form" action="./search.html" method="get">
+        <form role="search" class="search-form" action="../search.html" method="get">
         <label for="site-search" class="search-label">Search docs</label>
         <input
           type="search"
@@ -58,10 +58,7 @@
     </div>
   </header>
   <main id="main-content" class="markdown-body">
-    <p><strong>Table: Host voice and character mapping for VibeVoice podcast</strong></p>
-<p><strong>Table: Podcast build and validation commands</strong></p>
-<p><strong>Table: Podcast bundle generation steps and costs</strong></p>
-<h1 id="podcast-audio-pipeline">Podcast Audio Pipeline</h1>
+    <h1 id="podcast-audio-pipeline">Podcast Audio Pipeline</h1>
 <p>This directory contains the complete pipeline for producing the Git Going with GitHub audio series: 54 companion episodes of two-host conversational content designed for blind and low-vision developers, plus 21 Challenge Coach episodes placed near the chapters they support.</p>
 <h2 id="pipeline-overview">Pipeline Overview</h2>
 <pre><code class="hljs">build-bundles.js     Generate source bundles from chapter content
@@ -73,6 +70,9 @@
   scripts/*.txt      Conversational scripts <span class="hljs-built_in">with</span> [ALEX]/[JAMIE]/[PAUSE] markers
         |
         <span class="hljs-type">v</span>
+  transcripts/*-chapters.json  Ordered chapter plans <span class="hljs-built_in">by</span> segment index
+        |
+        <span class="hljs-type">v</span>
   tts/               <span class="hljs-keyword">Local</span> neural TTS (ONNX models, pronunciation lexicon)
         |
         <span class="hljs-type">v</span>
@@ -81,35 +81,42 @@
         <span class="hljs-type">v</span>
 generate-site.js     Build PODCASTS.md player page and RSS feed from manifest</code></pre>
 <p>Audio is generated locally using ONNX text-to-speech models. No cloud APIs, no API keys, no billing. Runs entirely on your machine.</p>
-<p>Use the Kokoro batch generator as the production audio path. The Piper generator remains available as <code>npm run build:podcast-audio:piper</code> for fallback or comparison.</p>
-<p><code>podcasts/listening-order.json</code> controls the public listening path. It interleaves companion lessons, Challenge Coach episodes, and reference episodes so podcast apps and the generated player page present the workshop as one end-to-end experience.</p>
+<p>Use the unified audio command as the front door. It defaults to Kokoro, the production audio path. Piper remains available only when explicitly selected for fallback or comparison. See <a href="tts/PIPER.html">Piper Fallback TTS</a> for setup, scope, and validation guidance.</p>
+<pre><code class="hljs language-bash">python -m podcasts.tts.generate_audio --audio-format mp3
+python -m podcasts.tts.generate_audio --engine kokoro --audio-format mp3
+python -m podcasts.tts.generate_audio --engine piper --audio-format mp3</code></pre>
+<p><code>podcasts/config/listening-order.json</code> controls the public listening path. It interleaves companion lessons, Challenge Coach episodes, and reference episodes so podcast apps and the generated player page present the workshop as one end-to-end experience. The audio generators and inventory tools use the same order, so generation queues match the learner path.</p>
 <p>Final episode output format is configurable through <code>podcasts/tts/voice-config.ini</code> (<code>episode_audio_format = wav|mp3|both</code>). MP3 generation requires <code>ffmpeg</code> on your PATH.</p>
 <p>After all MP3 files and segment manifests are generated, run the metadata pass to add ID3 tags, embed the source script, and derive smart chapter markers for each episode. The metadata pass defaults to a dry run so it can verify the full 75-file set before touching audio.</p>
 <h2 id="directory-structure">Directory Structure</h2>
-<pre><code class="hljs">podcasts/
-  README<span class="hljs-selector-class">.md</span>             This guide
-  build-bundles<span class="hljs-selector-class">.js</span>      Generates <span class="hljs-selector-tag">source</span> bundles + manifest<span class="hljs-selector-class">.json</span>
-      build-challenge-bundles<span class="hljs-selector-class">.js</span>
-                                                                        Generates Challenge Coach <span class="hljs-selector-tag">source</span> bundles
-      generate-draft-transcripts<span class="hljs-selector-class">.js</span>
-                                                                        Generates reviewable Alex/Jamie transcript scripts
-  generate-site<span class="hljs-selector-class">.js</span>      Generates PODCASTS<span class="hljs-selector-class">.md</span> and feed<span class="hljs-selector-class">.xml</span> from manifest<span class="hljs-selector-class">.json</span>
-  manifest<span class="hljs-selector-class">.json</span>         Episode manifest (metadata, status tracking)
-      feed<span class="hljs-selector-class">.xml</span>              RSS <span class="hljs-number">2.0</span> podcast feed (auto-generated)
-      bundles/              Generated episode <span class="hljs-selector-tag">source</span> bundles (gitignored)
-      challenge-bundles/    Generated challenge coach <span class="hljs-selector-tag">source</span> bundles (gitignored)
-  scripts/              Two-host scripts (committed, reviewable)
-      audio/                Episode WAV/MP3 files after generation (not <span class="hljs-keyword">in</span> git)
-  tts/                  Python TTS package
-    __init__<span class="hljs-selector-class">.py</span>         Package init
-    generate_episode<span class="hljs-selector-class">.py</span> Legacy Piper single episode generator
-    generate_all<span class="hljs-selector-class">.py</span>     Legacy Piper batch generator
-    generate_all_kokoro<span class="hljs-selector-class">.py</span> Kokoro batch generator <span class="hljs-keyword">for</span> <span class="hljs-attribute">all</span> episodes
-    download_kokoro_samples<span class="hljs-selector-class">.py</span> Kokoro model downloader
-    download_samples<span class="hljs-selector-class">.py</span> Legacy Piper voice sample downloader
-    lexicon<span class="hljs-selector-class">.txt</span>         Pronunciation dictionary <span class="hljs-keyword">for</span> technical terms
-    models/             Kokoro and legacy Piper ONNX voice models
-    samples/            Voice sample WAVs</code></pre>
+<p>The following tree separates source files, generated artifacts, local caches, and legacy helpers.</p>
+<pre><code class="hljs language-text">podcasts/
+  README.md                         This guide
+  REGENERATION.md                   Full regeneration runbook
+  config/listening-order.json       Canonical public listening path
+  lib/listening-plan.js             Shared JavaScript listening-order resolver
+  listening_plan.py                 Shared Python listening-order resolver
+  build-bundles.js                  Companion episode catalog and bundle generator
+  build-challenge-bundles.js        Challenge Coach catalog and bundle generator
+  generate-draft-transcripts.js     Reviewable Alex/Jamie script generator
+  generate-site.js                  Generates https://lp.csedesigns.com/ggg/PODCASTS.html and feed.xml
+  validate-catalog.js               Validates source coverage
+  validate-listening-order.js       Validates the complete public listening path
+  validate-feed.js                  Validates RSS structure and enclosures
+  verify_audio_inventory.py         Validates scripts, transcripts, manifests, and MP3s
+  tag-audio-metadata.py             Writes ID3 metadata and chapter markers
+  manifest.json                     Companion episode metadata
+  feed.xml                          Generated RSS feed
+  bundles/                          Generated companion prompt packets
+  challenge-bundles/                Generated Challenge Coach prompt packets
+  scripts/                          Committed transcript source scripts
+      transcripts/                      Derived segment JSON transcripts and chapter plans
+      chapters/                         Podcasting 2.0 chapter JSON sidecars written during metadata tagging
+  audio/                            Local audio output and segment cache, not committed
+  logs/                             Local generation and inventory reports
+      tools/agentic-pilot/              One-episode packet builder and transcript evaluation helpers
+  tools/legacy/                     Older diagnostic and one-off helpers
+  tts/                              Production and fallback TTS package</code></pre>
 <h2 id="prerequisites">Prerequisites</h2>
 <ul>
 <li>Python 3.10 or later</li>
@@ -133,14 +140,28 @@ npm run build:podcast-challenge-bundles
 npm run generate:podcast-transcripts</code></pre>
 <p><code>podcasts/bundles/*.md</code> files are generated prompt packets. They are intentionally ignored by git and should be regenerated when needed.
 <code>podcasts/challenge-bundles/*.md</code> files are the same kind of generated prompt packet, but scoped to individual Challenge Coach episodes.</p>
+<p>Transcript generation now writes three artifacts for each episode or challenge:</p>
+<ul>
+<li>the transcript source in <code>podcasts/scripts/</code></li>
+<li>the segment manifest in <code>podcasts/transcripts/*-segments.json</code></li>
+<li>the ordered chapter plan in <code>podcasts/transcripts/*-chapters.json</code></li>
+</ul>
+<p>The chapter plan is sequential, not time-based. It stores chapter titles with segment indexes. Later, the metadata pass converts those ordered boundaries into timed ID3 chapter markers and Podcasting 2.0 chapter sidecars after audio generation.</p>
+<p>You can also regenerate a subset instead of rebuilding all 75 scripts:</p>
+<pre><code class="hljs language-bash">npm run generate:podcast-transcript -- --slug ep05-working-with-issues
+npm run generate:podcast-transcript -- --start 1 --end 4 --group challenges
+npm run generate:podcast-transcript -- --start 20 --end 25 --group appendices</code></pre>
 <h3 id="4-generate-all-episodes">4. Generate all episodes</h3>
-<pre><code class="hljs language-bash">python -m podcasts.tts.generate_all_kokoro --audio-format mp3</code></pre>
+<p>Preview the listening-order generation queue without loading models or creating audio:</p>
+<pre><code class="hljs language-bash">npm run podcast:audio:queue</code></pre>
+<p>Then generate audio when you are ready:</p>
+<pre><code class="hljs language-bash">python -m podcasts.tts.generate_audio --audio-format mp3</code></pre>
 <p>This batch command processes the full committed script set: all <code>ep*.txt</code> companion episodes plus all <code>cc-*.txt</code> Challenge Coach and bonus episodes.</p>
 <p>Or generate a single episode:</p>
-<pre><code class="hljs language-bash">python -m podcasts.tts.generate_all_kokoro --start 0 --end 0 --force --audio-format mp3
-python -m podcasts.tts.generate_all_kokoro --start 5 --end 5 --force --audio-format mp3</code></pre>
+<pre><code class="hljs language-bash">python -m podcasts.tts.generate_audio --start 0 --end 0 --force --audio-format mp3
+python -m podcasts.tts.generate_audio --start 5 --end 5 --force --audio-format mp3</code></pre>
 <p>Or a range:</p>
-<pre><code class="hljs language-bash">python -m podcasts.tts.generate_all_kokoro --start 0 --end 10 --audio-format mp3</code></pre>
+<pre><code class="hljs language-bash">python -m podcasts.tts.generate_audio --start 0 --end 10 --audio-format mp3</code></pre>
 <h3 id="5-build-player-page-and-rss-feed">5. Build player page and RSS feed</h3>
 <pre><code class="hljs language-bash">npm run build:podcast-site</code></pre>
 <h2 id="voice-configuration">Voice Configuration</h2>
@@ -168,7 +189,7 @@ python -m podcasts.tts.generate_all_kokoro --start 5 --end 5 --force --audio-for
 </tr>
 </tbody></table>
 <p>Listen to samples in <code>podcasts/tts/samples/</code> to try different voices.</p>
-<p>To change voices, pass <code>--male-voice</code> and <code>--female-voice</code> to <code>python -m podcasts.tts.generate_all_kokoro</code>.</p>
+<p>To change Kokoro voices, pass <code>--male-voice</code> and <code>--female-voice</code> through the unified command: <code>python -m podcasts.tts.generate_audio --engine kokoro --male-voice am_liam --female-voice af_jessica</code>.</p>
 <p>Pitch can be configured independently per host in <code>podcasts/tts/voice-config.ini</code>:</p>
 <pre><code class="hljs language-ini"><span class="hljs-attr">male_pitch_semitones</span> = -<span class="hljs-number">1.0</span>
 <span class="hljs-attr">female_pitch_semitones</span> = <span class="hljs-number">0.8</span></code></pre>
@@ -187,6 +208,7 @@ python -m podcasts.tts.generate_all_kokoro --start 5 --end 5 --force --audio-for
 <pre><code class="hljs"><span class="hljs-function"><span class="hljs-title">bundle</span>-ready  --&gt;</span>  <span class="hljs-function"><span class="hljs-title">script</span>-ready  --&gt;</span>  <span class="hljs-function"><span class="hljs-title">audio</span>-ready  --&gt;</span>  published
 (build-bundles)    (scripts/)         (tts/)            (GitHub Release)</code></pre>
 <h2 id="all-npm-scripts">All npm Scripts</h2>
+<p>The following table lists the supported podcast build and validation commands.</p>
 <table>
 <thead>
 <tr>
@@ -196,7 +218,7 @@ python -m podcasts.tts.generate_all_kokoro --start 5 --end 5 --force --audio-for
 </thead>
 <tbody><tr>
 <td><code>npm run validate:podcasts</code></td>
-<td>Validate episode catalog source mappings and stale generated bundle tracking</td>
+<td>Validate episode catalog source mappings and the complete listening order</td>
 </tr>
 <tr>
 <td><code>npm run build:podcast-bundles</code></td>
@@ -209,6 +231,34 @@ python -m podcasts.tts.generate_all_kokoro --start 5 --end 5 --force --audio-for
 <tr>
 <td><code>npm run generate:podcast-transcripts</code></td>
 <td>Replace old scripts with fresh reviewable Alex/Jamie draft transcripts</td>
+</tr>
+<tr>
+<td><code>npm run generate:podcast-transcript -- --slug &lt;slug&gt;</code></td>
+<td>Regenerate one selected transcript or a filtered range using <code>--start</code>, <code>--end</code>, and <code>--group</code></td>
+</tr>
+<tr>
+<td><code>npm run podcast:agentic:packet -- --slug &lt;slug&gt;</code></td>
+<td>Build a single episode source packet for rewrite and review workflows</td>
+</tr>
+<tr>
+<td><code>npm run podcast:agentic:stage -- --slug &lt;slug&gt; --input &lt;file&gt;</code></td>
+<td>Save a retryable candidate rewrite under <code>logs/agentic-pilots/candidates/&lt;slug&gt;/attempt-###.txt</code></td>
+</tr>
+<tr>
+<td><code>npm run podcast:agentic:catalog</code></td>
+<td>Run full-catalog coverage/style/repetition evaluation with per-episode reports</td>
+</tr>
+<tr>
+<td><code>npm run podcast:agentic:promote -- --slug &lt;slug&gt;</code></td>
+<td>Promote an accepted candidate transcript into the live script path only when all gates pass</td>
+</tr>
+<tr>
+<td><code>npm run podcast:chapters:normalize</code></td>
+<td>Normalize generated chapter-plan sidecars to remove weak or overly generic titles</td>
+</tr>
+<tr>
+<td><code>npm run podcast:chapters:audit</code></td>
+<td>Audit all generated chapter-plan sidecars and report title quality across the full catalog</td>
 </tr>
 <tr>
 <td><code>npm run build:podcast-transcripts</code></td>
@@ -225,6 +275,10 @@ python -m podcasts.tts.generate_all_kokoro --start 5 --end 5 --force --audio-for
 <tr>
 <td><code>npm run build:podcast-audio:kokoro</code></td>
 <td>Generate MP3 audio with the Kokoro TTS path</td>
+</tr>
+<tr>
+<td><code>npm run podcast:audio:queue</code></td>
+<td>Print the listening-order audio generation queue without creating MP3 files</td>
 </tr>
 <tr>
 <td><code>npm run build:podcast-transcripts-and-audio</code></td>
@@ -287,10 +341,20 @@ python -m podcasts.tts.generate_all_kokoro --start 5 --end 5 --force --audio-for
 <li>Author website: <a href="http://www.community-access.org">Community Access website</a></li>
 <li>Description: episode description or challenge focus</li>
 <li>Episode script: the matching <code>podcasts/scripts/*.txt</code> source embedded as both a custom text frame and an unsynchronized lyrics frame</li>
-<li>Smart chapters: ID3 chapter frames derived from <code>podcasts/audio/segments/&lt;episode&gt;/manifest.json</code></li>
+<li>Smart chapters: ID3 chapter frames derived from <code>podcasts/audio/segments/&lt;episode&gt;/manifest.json</code>, preferring transcript-authored chapter plans from <code>podcasts/transcripts/*-chapters.json</code> when available</li>
 <li>Chapter sidecars: Podcasting 2.0 JSON files in <code>podcasts/chapters/</code>, linked from RSS as <code>podcast:chapters</code></li>
 </ul>
-<p>Chapter markers are pause-aware. The tool starts with the opening segment, prefers natural boundaries after <code>[PAUSE]</code>, avoids very short chapters, and forces a new marker when a section grows too long. Chapter titles are generated from the next spoken segment with small heuristics for questions, &quot;big idea&quot; openings, practice anchors, and why-it-matters sections.</p>
+<p>Chapter markers now have a two-stage flow:</p>
+<ol>
+<li>Transcript generation writes ordered chapter plans using segment indexes, while the lesson structure is still available.</li>
+<li>Metadata tagging converts those segment indexes into timed chapter markers after audio generation.</li>
+</ol>
+<p>If no transcript-authored chapter plan exists, the metadata tool falls back to the older pause-aware heuristic. That fallback starts with the opening segment, prefers natural boundaries after <code>[PAUSE]</code>, avoids very short chapters, and forces a new marker when a section grows too long.</p>
+<p>For one-episode agentic pilot work (automatic model selection), see <code>podcasts/tools/agentic-pilot/README.md</code>.</p>
+<p>For a full-catalog refresh, the recommended sequence is:</p>
+<pre><code class="hljs language-bash">npm run generate:podcast-transcripts
+npm run podcast:chapters:normalize
+npm run podcast:chapters:audit</code></pre>
 <p>Run the dry-run check first:</p>
 <pre><code class="hljs language-bash">npm run podcast:metadata:check</code></pre>
 <p>Only after all 75 MP3 files and segment manifests exist, write tags, chapters, and refresh file modification times:</p>

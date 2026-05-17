@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="GIT Going with GitHub - A two-day accessible open source workshop by Community Access">
+  <title>Mac Audio Generation Handoff - GIT Going with GitHub</title>
+  <link rel="stylesheet" href="../styles/github-markdown.css">
+  <link rel="stylesheet" href="../styles/highlight.css">
+  <link rel="stylesheet" href="../styles/custom.css">
+  <style>
+    .markdown-body {
+      box-sizing: border-box;
+      min-width: 200px;
+      max-width: 980px;
+      margin: 0 auto;
+      padding: 45px;
+    }
+    @media (max-width: 767px) {
+      .markdown-body {
+        padding: 15px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+  <header class="site-header" role="banner">
+    <div class="site-header-inner">
+      <nav aria-label="Breadcrumb" class="breadcrumb">
+        <a href="../index.html">Home</a> <span aria-hidden="true">›</span> <span aria-current="page">Mac Audio Generation Handoff</span>
+      </nav>
+      <div class="header-actions">
+        <a href="https://github.com/Community-Access/git-going-with-github/wiki" class="wiki-link" target="_blank" rel="noopener noreferrer">
+          <svg aria-hidden="true" focusable="false" width="16" height="16" viewBox="0 0 16 16" fill="currentColor">
+            <path d="M1.75 1h8.5c.966 0 1.75.784 1.75 1.75v5.5A1.75 1.75 0 0 1 10.25 10H7.06l-2.573 2.573A1.458 1.458 0 0 1 2 11.543V10h-.25A1.75 1.75 0 0 1 0 8.25v-5.5C0 1.784.784 1 1.75 1ZM1.5 2.75v5.5c0 .138.112.25.25.25h1a.75.75 0 0 1 .75.75v2.19l2.72-2.72a.749.749 0 0 1 .53-.22h3.5a.25.25 0 0 0 .25-.25v-5.5a.25.25 0 0 0-.25-.25h-8.5a.25.25 0 0 0-.25.25Zm13 2a.25.25 0 0 0-.25-.25h-.5a.75.75 0 0 1 0-1.5h.5c.966 0 1.75.784 1.75 1.75v5.5A1.75 1.75 0 0 1 14.25 12H14v1.543a1.457 1.457 0 0 1-2.487 1.03L9.22 12.28a.749.749 0 1 1 1.06-1.06l2.22 2.22v-2.19a.75.75 0 0 1 .75-.75h.25a.25.25 0 0 0 .25-.25v-5.5Z"/>
+          </svg>
+          Wiki
+        </a>
+        <form role="search" class="search-form" action="../search.html" method="get">
+        <label for="site-search" class="search-label">Search docs</label>
+        <input
+          type="search"
+          id="site-search"
+          class="search-input"
+          name="q"
+          placeholder="Search docs…"
+          autocomplete="off"
+          aria-label="Search documentation"
+        >
+        <button type="submit" class="search-button" aria-label="Submit search">
+          <svg aria-hidden="true" focusable="false" width="16" height="16" viewBox="0 0 16 16" fill="currentColor">
+            <path d="M10.68 11.74a6 6 0 0 1-7.922-8.982 6 6 0 0 1 8.982 7.922l3.04 3.04a.749.749 0 0 1-.326 1.275.749.749 0 0 1-.734-.215ZM11.5 7a4.499 4.499 0 1 0-8.997 0A4.499 4.499 0 0 0 11.5 7Z"/>
+          </svg>
+        </button>
+      </form>
+      </div>
+    </div>
+  </header>
+  <main id="main-content" class="markdown-body">
+    <h1 id="mac-audio-generation-handoff">Mac Audio Generation Handoff</h1>
+<p>This handoff is for generating the Git Going with GitHub podcast MP3 files on a fast Mac. Kokoro is the default production engine. Piper is available only as an explicit fallback.</p>
+<h2 id="what-is-included">What Is Included</h2>
+<p>The handoff folder includes:</p>
+<ul>
+<li><code>podcasts/scripts/</code> - source audio scripts with <code>[ALEX]</code>, <code>[JAMIE]</code>, and <code>[PAUSE]</code> markers.</li>
+<li><code>podcasts/transcripts/</code> - derived transcript segment JSON.</li>
+<li><code>podcasts/config/listening-order.json</code> - the canonical generation and feed order.</li>
+<li><code>podcasts/tts/</code> - Kokoro and Piper generation code, lexicon, and requirements.</li>
+<li><code>podcasts/lib/</code> and <code>podcasts/listening_plan.py</code> - shared listening-order helpers.</li>
+<li><code>podcasts/manifest.json</code> and <code>podcasts/build-challenge-bundles.js</code> - metadata needed for ordering and tagging.</li>
+<li><code>package.json</code> and <code>package-lock.json</code> - Node commands and locked dependencies.</li>
+</ul>
+<p>The folder does not include generated MP3/WAV files, local TTS models, or <code>node_modules</code>.</p>
+<h2 id="mac-prerequisites">Mac Prerequisites</h2>
+<p>Install these once:</p>
+<pre><code class="hljs language-bash">brew install python ffmpeg node</code></pre>
+<p>Use Python 3.10 or later. Apple Silicon Macs work well with the default Python wheels.</p>
+<h2 id="setup">Setup</h2>
+<p>From the handoff folder root:</p>
+<pre><code class="hljs language-bash">python3 -m venv .venv
+<span class="hljs-built_in">source</span> .venv/bin/activate
+python -m pip install --upgrade pip
+python -m pip install -r podcasts/tts/requirements.txt
+npm ci
+python -m podcasts.tts.download_kokoro_samples --english-high-quality-only</code></pre>
+<p>Or run the setup helper:</p>
+<pre><code class="hljs language-bash">bash podcasts/tools/macos-audio-setup.sh</code></pre>
+<p>The model download writes to <code>podcasts/tts/models/</code>. That folder is intentionally local and not committed.</p>
+<h2 id="preview-the-queue">Preview the Queue</h2>
+<p>This prints the full listening path without generating audio:</p>
+<pre><code class="hljs language-bash">npm run podcast:audio:queue</code></pre>
+<p>The queue should show 75 scripts in learning order, with Challenge Coach episodes interleaved near supporting chapters.</p>
+<h2 id="generate-a-single-trial-episode">Generate a Single Trial Episode</h2>
+<p>Start with Episode 00:</p>
+<pre><code class="hljs language-bash">python -m podcasts.tts.generate_audio --start 0 --end 0 --force --audio-format mp3</code></pre>
+<p>Verify the output:</p>
+<pre><code class="hljs language-bash">python podcasts/verify_audio_inventory.py --include-appendices --write-report --audio-dir podcasts/audio/kokoro-am_liam-af_jessica</code></pre>
+<p>A partial run is expected to report missing audio for the other 74 episodes.</p>
+<h2 id="generate-the-full-production-batch">Generate the Full Production Batch</h2>
+<p>After the Episode 00 trial sounds good:</p>
+<pre><code class="hljs language-bash">npm run build:podcast-audio</code></pre>
+<p>Or run the full helper, which generates audio, writes metadata, rebuilds the feed, and validates inventory:</p>
+<pre><code class="hljs language-bash">bash podcasts/tools/macos-audio-generate.sh</code></pre>
+<p>This uses Kokoro by default and writes MP3s to:</p>
+<pre><code class="hljs language-text">podcasts/audio/kokoro-am_liam-af_jessica/</code></pre>
+<h2 id="tag-metadata">Tag Metadata</h2>
+<p>After all 75 MP3s and segment manifests exist:</p>
+<pre><code class="hljs language-bash">npm run podcast:metadata:check
+npm run podcast:metadata:write</code></pre>
+<p>The metadata pass writes:</p>
+<ul>
+<li>Title</li>
+<li>Artist and album artist: Community Access</li>
+<li>Album: Git Going with GitHub - Audio Series</li>
+<li>Publisher</li>
+<li>Track number matching listening order</li>
+<li>Author website and contact email</li>
+<li>Episode description</li>
+<li>Embedded source script</li>
+<li>ID3 chapter frames</li>
+<li>Podcasting 2.0 chapter JSON sidecars in <code>podcasts/chapters/</code></li>
+</ul>
+<h2 id="build-and-validate-feed">Build and Validate Feed</h2>
+<pre><code class="hljs language-bash">npm run build:podcast-site
+npm run validate:podcast-feed
+npm run podcast:inventory:check</code></pre>
+<p>When all audio is present, feed validation should report 75 checked items.</p>
+<h2 id="optional-piper-fallback">Optional Piper Fallback</h2>
+<p>Use Piper only if Kokoro cannot run or if you need a comparison render:</p>
+<pre><code class="hljs language-bash">python -m podcasts.tts.generate_audio --engine piper --start 0 --end 0 --audio-format mp3</code></pre>
+<p>See <code>podcasts/tts/PIPER.md</code> for Piper setup and scope.</p>
+<h2 id="files-to-return">Files to Return</h2>
+<p>After generation, return these folders/files:</p>
+<pre><code class="hljs language-text">podcasts/audio/kokoro-am_liam-af_jessica/*.mp3
+podcasts/audio/segments/**/manifest.json
+podcasts/chapters/*.json
+podcasts/audio/metadata-touch-report.json
+podcasts/logs/audio_inventory_report.json
+podcasts/feed.xml
+https://lp.csedesigns.com/ggg/PODCASTS.html</code></pre>
+<p>The segment WAV files are useful for debugging but are large. Return them only if we need to inspect timing or regenerate assembled audio without re-synthesizing speech.</p>
+
+  </main>
+  <footer role="contentinfo" class="site-footer">
+    <p><strong>GIT Going with GitHub</strong> - A workshop by <a href="https://community-access.org">Community Access</a></p>
+    <p><a href="https://github.com/community-access/git-going-with-github">View on GitHub</a> · <a href="https://community-access.org">community-access.org</a></p>
+  </footer>
+
+  </body>
+</html>

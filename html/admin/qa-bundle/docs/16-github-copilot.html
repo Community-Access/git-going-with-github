@@ -5,9 +5,9 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="description" content="GIT Going with GitHub - A two-day accessible open source workshop by Community Access">
   <title>GitHub Copilot - GIT Going with GitHub</title>
-  <link rel="stylesheet" href="./styles/github-markdown.css">
-  <link rel="stylesheet" href="./styles/highlight.css">
-  <link rel="stylesheet" href="./styles/custom.css">
+  <link rel="stylesheet" href="../../../styles/github-markdown.css">
+  <link rel="stylesheet" href="../../../styles/highlight.css">
+  <link rel="stylesheet" href="../../../styles/custom.css">
   <style>
     .markdown-body {
       box-sizing: border-box;
@@ -28,7 +28,7 @@
   <header class="site-header" role="banner">
     <div class="site-header-inner">
       <nav aria-label="Breadcrumb" class="breadcrumb">
-        <a href="./index.html">Home</a> <span aria-hidden="true">›</span> <span aria-current="page">GitHub Copilot</span>
+        <a href="../../../index.html">Home</a> <span aria-hidden="true">›</span> <span aria-current="page">GitHub Copilot</span>
       </nav>
       <div class="header-actions">
         <a href="https://github.com/Community-Access/git-going-with-github/wiki" class="wiki-link" target="_blank" rel="noopener noreferrer">
@@ -37,7 +37,7 @@
           </svg>
           Wiki
         </a>
-        <form role="search" class="search-form" action="./search.html" method="get">
+        <form role="search" class="search-form" action="../../../search.html" method="get">
         <label for="site-search" class="search-label">Search docs</label>
         <input
           type="search"
@@ -60,16 +60,16 @@
   <main id="main-content" class="markdown-body">
     <h1 id="github-copilot">GitHub Copilot</h1>
 <blockquote>
-<p><strong>Listen to Episode 14:</strong> <a href="../admin/PODCASTS.html">GitHub Copilot</a> - a conversational audio overview of this chapter. Listen before reading to preview the concepts, or after to reinforce what you learned.</p>
+<p><strong>Listen to Episode 14:</strong> <a href="https://lp.csedesigns.com/ggg/PODCASTS.html">GitHub Copilot</a> - a conversational audio overview of this chapter. Listen before reading to preview the concepts, or after to reinforce what you learned.</p>
 </blockquote>
 <blockquote>
 <p><strong>Related appendices:</strong> <a href="appendix-k-copilot-reference.html">Appendix K: Copilot Reference</a> | <a href="appendix-g-vscode-reference.html">Appendix G: VS Code Reference</a>
-<strong>Authoritative sources:</strong> <a href="https://docs.github.com/en/copilot/about-github-copilot/what-is-github-copilot">GitHub Docs: About GitHub Copilot</a> | <a href="https://accessibility.github.com/documentation/guide/github-copilot-vsc/">GitHub Accessibility: Copilot in VS Code</a> | <a href="https://code.visualstudio.com/docs/copilot/overview">VS Code Docs: GitHub Copilot</a></p>
+<strong>Authoritative sources:</strong> <a href="https://docs.github.com/en/copilot/about-github-copilot/what-is-github-copilot">GitHub Docs: About GitHub Copilot</a> | <a href="https://accessibility.github.com/documentation/guide/github-copilot-vsc/">GitHub Accessibility: Copilot in VS Code</a> | <a href="https://code.visualstudio.com/docs/copilot/overview">VS Code Docs: GitHub Copilot</a> | <a href="https://github.com/features/copilot/plans">GitHub Copilot plans</a> | <a href="https://docs.github.com/en/copilot/concepts/billing/usage-based-billing-for-individuals">Usage-based billing for individuals</a></p>
 </blockquote>
 <h2 id="ai-powered-code-assistance-in-vs-code">AI-Powered Code Assistance in VS Code</h2>
 <blockquote>
 <p><strong>Day 2, Block 2-3 Material</strong></p>
-<p>This guide covers GitHub Copilot: inline code suggestions, Copilot Chat (conversational assistance), custom instructions vs custom agents, effective prompting for non-code contributions, and using Accessible View to read AI-generated responses.</p>
+<p>This guide covers GitHub Copilot: inline code suggestions, Copilot Chat (conversational assistance), Agent mode, the VS Code 1.120 Agents window, custom instructions vs custom agents, effective prompting for non-code contributions, and using Accessible View to read AI-generated responses.</p>
 <p><strong>Official GitHub Accessibility Guides:</strong> GitHub publishes two developer guides and an NVDA-focused screen reader guide for Copilot:</p>
 <ul>
 <li><a href="https://accessibility.github.com/documentation/guide/github-copilot-vsc/">Using GitHub Copilot in Visual Studio Code with a Screen Reader</a> - NVDA-specific setup, audio cues, inline suggestions, inline chat, chat view, and built-in actions</li>
@@ -78,23 +78,23 @@
 </ul>
 <p>This chapter covers the same material with additional perspectives and workshop context. Use the official guides as companion references.</p>
 <p><strong>Prerequisites:</strong> <a href="11-vscode-interface.html">VS Code Setup &amp; Accessibility Basics</a>, <a href="14-git-in-practice.html">Git &amp; Source Control in VS Code</a></p>
-<p><strong>Mac keyboard shortcuts:</strong> Throughout this chapter, all <code>Ctrl+</code> shortcuts use <code>Cmd+</code> on Mac, and <code>Alt+</code> shortcuts use <code>Option+</code> on Mac. Key equivalents: <code>Ctrl+Shift+I</code> → <code>Cmd+Shift+I</code> (Chat), <code>Ctrl+I</code> → <code>Cmd+I</code> (inline chat), <code>Alt+F2</code> → <code>Option+F2</code> (Accessible View), <code>Ctrl+/</code> → <code>Cmd+/</code> (insert suggestion). See the <a href="#8-keyboard-shortcuts-reference">Keyboard Shortcuts Reference</a> at the end of this chapter for the complete list.</p>
+<p><strong>Keyboard shortcuts:</strong> Current VS Code docs list <code>Ctrl+Alt+I</code> as the default shortcut for the Chat view and <code>Ctrl+I</code> for inline chat. Keymaps can vary by OS, browser, profile, and assistive technology setup, so every shortcut in this chapter has a command-palette fallback. If a shortcut does not work, open the Command Palette and run <strong>Chat: Open Chat</strong>, <strong>Inline Chat: Start in Editor</strong>, or <strong>Chat: Open Agents Window</strong>.</p>
 </blockquote>
 <h2 id="workshop-recommendation-chapter-16--challenge-13">Workshop Recommendation (Chapter 16 / Challenge 13)</h2>
 <blockquote>
-<p><strong>Free to use:</strong> GitHub Copilot Free tier is included with all GitHub accounts at no cost. This workshop uses only the free tier. If you&#39;re on an organization with GitHub Enterprise, you may have Copilot Pro included; either way, you&#39;re covered.</p>
-<p><strong>Billing guidance for this workshop:</strong> GitHub Copilot plans and billing are changing. We will provide specific guidance at the workshop, as this is a continuing moving target and is subject to change as we approach the event. If you are unsure whether your account has Copilot access, check <a href="https://github.com/settings/copilot">github.com/settings/copilot</a> or ask a facilitator before the workshop begins.</p>
+<p><strong>Access note, verified May 12, 2026:</strong> GitHub Copilot Free is available to individual developers with monthly limits, and verified students may have access to the GitHub Copilot Student plan. Organization or enterprise access depends on your administrator&#39;s policy. This workshop is designed to work within limited Copilot access when learners keep prompts short and use Copilot for focused documentation tasks.</p>
+<p><strong>Billing guidance for this workshop:</strong> GitHub Copilot is moving to usage-based billing on June 1, 2026. Chat, CLI, cloud agent, Spaces, Spark, and third-party coding agents consume GitHub AI Credits. Code completions and next edit suggestions are not billed in AI Credits for paid plans. If you are unsure whether your account has Copilot access, check <a href="https://github.com/settings/copilot">GitHub Copilot settings</a>, review the <a href="https://github.com/features/copilot/plans">GitHub Copilot plans page</a>, or ask a facilitator before the workshop begins.</p>
 </blockquote>
 <p>Chapter 16 introduces <strong>GitHub Copilot</strong> for AI-assisted documentation and writing. It supports Challenge 13: AI as Your Copilot.</p>
 <ul>
 <li><strong>Challenge count:</strong> 3 guided challenges</li>
 <li><strong>Automation check:</strong> none (tool configuration is account-local and account-specific)</li>
 <li><strong>Evidence:</strong> issue comment with checklist of completed actions</li>
-<li><strong>Pattern:</strong> install, prompt, apply, reflect</li>
+<li><strong>Pattern:</strong> sign in, prompt, apply, reflect</li>
 </ul>
 <h3 id="challenge-13-set">Challenge 13 Set</h3>
 <ol>
-<li><strong>Sign in to GitHub Copilot</strong> - authenticate with GitHub (VS Code 1.116+ has Copilot built in; no extension install needed).</li>
+<li><strong>Sign in to GitHub Copilot</strong> - authenticate with GitHub and confirm your account has Copilot access.</li>
 <li><strong>Ask Copilot to explain a codebase</strong> - clone the sci-fi themes repo and use Copilot Chat to understand it.</li>
 <li><strong>Ask Copilot to create something new</strong> - prompt Copilot to generate a custom theme and apply it.</li>
 </ol>
@@ -103,15 +103,14 @@
 <p><strong>Where you are working:</strong> VS Code desktop with your Learning Room repository open.</p>
 <p><strong>Estimated time:</strong> 3-5 minutes.</p>
 <blockquote>
-<p><strong>VS Code 1.116 and later:</strong> GitHub Copilot is built into VS Code and no extension installation is needed. Skip steps 1-4 below if you are on VS Code 1.116 or later -- Copilot is already present. If VS Code prompts you to sign in on first launch, follow the browser OAuth flow and then proceed to step 5.</p>
+<p><strong>Current VS Code guidance, verified May 12, 2026:</strong> Recent VS Code builds include built-in AI features and surface Copilot and Chat directly. You normally do not install a separate GitHub Copilot Chat extension on a current VS Code build. Your account still needs Copilot access, and your organization may disable or manage AI features. If Copilot is missing, update VS Code first, then use the Copilot status item or Command Palette to enable AI features and sign in.</p>
 </blockquote>
 <ol>
-<li><em>(Older VS Code only)</em> Open the Extensions sidebar: <code>Ctrl+Shift+X</code> (Mac: <code>Cmd+Shift+X</code>).</li>
-<li><em>(Older VS Code only)</em> Type <code>GitHub Copilot</code> in the search box and press <code>Enter</code>.</li>
-<li><em>(Older VS Code only)</em> Find <strong>GitHub Copilot</strong> (publisher: GitHub) in the results. Activate <strong>Install</strong>.</li>
-<li><em>(Older VS Code only)</em> VS Code may also install <strong>GitHub Copilot Chat</strong> automatically. If not, search for it separately and install it.</li>
-<li>Sign in when prompted: activate <strong>Sign in to GitHub</strong> and complete the OAuth flow in your browser.</li>
-<li>Verify Copilot is active: open Copilot Chat with <code>Ctrl+Shift+I</code> (Mac: <code>Cmd+Shift+I</code>). Type <code>Hello, are you working?</code> and press <code>Enter</code>. Copilot should respond.</li>
+<li>Update VS Code to the current stable release if possible.</li>
+<li>In the Status Bar, open the Copilot status item and choose <strong>Use AI Features</strong> or <strong>Set up Copilot</strong> if prompted.</li>
+<li>Choose your sign-in method and complete the GitHub OAuth flow in your browser.</li>
+<li>If your Copilot subscription is tied to GitHub Enterprise, choose the GitHub Enterprise sign-in path and provide the enterprise URL when prompted.</li>
+<li>Verify Copilot is active: open the Chat view with <code>Ctrl+Alt+I</code>, or run <strong>Chat: Open Chat</strong> from the Command Palette. Type <code>Hello, are you working?</code> and press <code>Enter</code>. Copilot should respond.</li>
 </ol>
 <p><strong>Screen reader tip:</strong> The Copilot Chat panel opens as a sidebar. Your screen reader announces responses as they stream in. Press <code>Alt+F2</code> (Accessible View) to read the full response in a plain text buffer if streaming is hard to follow.</p>
 <p><strong>You are done when:</strong> Copilot Chat responds to a test prompt.</p>
@@ -123,7 +122,7 @@
 <li>Open the Command Palette: <code>Ctrl+Shift+P</code> (Mac: <code>Cmd+Shift+P</code>).</li>
 <li>Run <code>Git: Clone</code> and paste: <code>https://github.com/community-access/vscode-sci-fi-themes.git</code></li>
 <li>Open the cloned repository when VS Code prompts.</li>
-<li>Open Copilot Chat: <code>Ctrl+Shift+I</code> (Mac: <code>Cmd+Shift+I</code>).</li>
+<li>Open Copilot Chat: <code>Ctrl+Alt+I</code>, or run <strong>Chat: Open Chat</strong> from the Command Palette if your keymap differs.</li>
 <li>Ask Copilot: &quot;What does the <code>chat.agent.thinking.phrases</code> setting do in VS Code?&quot;</li>
 <li>Read the response. Use <code>Alt+F2</code> (Accessible View) if needed to read the full text.</li>
 <li>Ask a follow-up: &quot;How do I apply one of these themes to my settings.json?&quot;</li>
@@ -135,7 +134,7 @@
 <p><strong>Where you are working:</strong> VS Code with Copilot Chat open.</p>
 <p><strong>Estimated time:</strong> 10-15 minutes.</p>
 <ol>
-<li>Open Copilot Chat: <code>Ctrl+Shift+I</code> (Mac: <code>Cmd+Shift+I</code>).</li>
+<li>Open Copilot Chat: <code>Ctrl+Alt+I</code>, or run <strong>Chat: Open Chat</strong> from the Command Palette if your keymap differs.</li>
 <li>Type a creative prompt: &quot;Create a custom GitHub Copilot thinking phrases theme for [your favorite universe - Dune, Marvel, Studio Ghibli, Star Trek, etc.]&quot;</li>
 <li>Read Copilot&#39;s generated theme. It should include an array of themed phrases.</li>
 <li>Copy the generated content: select all text in the Copilot response, then <code>Ctrl+C</code> (Mac: <code>Cmd+C</code>).</li>
@@ -149,7 +148,7 @@
 <h3 id="completing-challenge-13-submit-your-evidence">Completing Challenge 13: Submit Your Evidence</h3>
 <p>Open your <strong>assigned Challenge 13 issue</strong> and post a completion comment:</p>
 <pre><code class="hljs language-text">Chapter 13 completed:
-- Copilot installed and signed in: yes / no
+- Copilot enabled and signed in: yes / no
 - Asked Copilot to explain a setting: yes / no
 - Applied a setting from Copilot&#x27;s suggestion: yes / no
 - Created a custom theme: yes / no
@@ -157,16 +156,16 @@
 <p>Close your Challenge 13 issue when done.</p>
 <h3 id="expected-outcomes">Expected Outcomes</h3>
 <ul>
-<li>Student can install and authenticate GitHub Copilot Chat.</li>
+<li>Student can enable built-in Copilot features in current VS Code and authenticate with GitHub.</li>
 <li>Student can ask Copilot effective questions about code and settings.</li>
 <li>Student can use Copilot&#39;s output to customize their development environment.</li>
 <li>Student understands Copilot as a tool to explain and create, not just autocomplete.</li>
 </ul>
 <h3 id="if-you-get-stuck">If You Get Stuck</h3>
 <ol>
-<li>Extension installation fails? Reload VS Code: <code>Ctrl+Shift+P</code>, then <code>Developer: Reload Window</code>.</li>
+<li>Copilot controls are missing? Update VS Code first, then reload VS Code: <code>Ctrl+Shift+P</code>, then <code>Developer: Reload Window</code>.</li>
 <li>OAuth sign-in fails? Verify your GitHub account is active in the browser first, close VS Code and retry.</li>
-<li>Chat panel does not open? Try <code>Ctrl+Shift+I</code> (Mac: <code>Cmd+Shift+I</code>). If still nothing, check that the Copilot Chat extension is installed (not just the base Copilot extension).</li>
+<li>Chat panel does not open? Try <code>Ctrl+Alt+I</code>, then use the Command Palette to run <strong>Chat: Open Chat</strong>. If still nothing, confirm AI features are enabled and you are signed in.</li>
 <li>Copilot seems unresponsive? Click the model selector at the bottom of Chat panel and confirm you are signed in.</li>
 <li>Cannot copy from Copilot response? Use <code>Alt+F2</code> (Accessible View) to get the text in a copyable buffer.</li>
 <li>Ask facilitator to verify Copilot is activated and show you one example prompt.</li>
@@ -179,7 +178,7 @@
 <p>AI assistance amplifies clarity. Using Copilot as a brainstorming partner helps you write documentation that others can actually understand. The prompting skill you practiced here - asking specific questions, iterating on responses, applying results - transfers to every AI tool you will use in your career.</p>
 <h3 id="learning-pattern-used-in-this-chapter">Learning Pattern Used in This Chapter</h3>
 <ol>
-<li>Install the tool and verify it works before starting the task.</li>
+<li>Enable the built-in tool and verify it works before starting the task.</li>
 <li>Use the tool to explore and understand (ask questions, read responses).</li>
 <li>Use the tool to create something new (generate, customize, apply).</li>
 <li>Reflect on when the tool helped and when your own judgment was better.</li>
@@ -217,11 +216,12 @@
 <h2 id="table-of-contents">Table of Contents</h2>
 <ol>
 <li><a href="#1-what-is-github-copilot">What is GitHub Copilot</a></li>
-<li><a href="#2-installing-github-copilot">Installing GitHub Copilot</a></li>
+<li><a href="#2-setting-up-github-copilot">Setting Up GitHub Copilot</a></li>
 <li><a href="#3-inline-suggestions---ghost-text-completions">Inline Suggestions - Ghost Text Completions</a></li>
 <li><a href="#4-github-copilot-chat---conversational-assistance">GitHub Copilot Chat - Conversational Assistance</a></li>
 <li><a href="#5-copilot-edits--making-multi-file-changes">Copilot Edits — Making Multi-File Changes</a></li>
-<li><a href="#6-agent-mode--let-copilot-drive">Agent Mode — Let Copilot Drive</a></li>
+<li><a href="#6-agent-mode--let-copilot-drive">Agent Mode — Let Copilot Drive</a>
+6A. <a href="#6a-vs-code-1120-agents-window">VS Code 1.120 Agents Window</a></li>
 <li><a href="#7-next-edit-suggestions">Next Edit Suggestions</a></li>
 <li><a href="#8-copilot-on-githubcom">Copilot on GitHub.com</a></li>
 <li><a href="#9-effective-prompting-for-documentation-work">Effective Prompting for Documentation Work</a></li>
@@ -241,33 +241,33 @@
 </ul>
 <p><strong>For this workshop:</strong> Copilot helps with Markdown documentation, issue triage, PR descriptions, and commit messages - not just code.</p>
 <p><strong>Copilot as a git co-author:</strong> Starting with VS Code 1.118, GitHub Copilot is automatically added as a co-author in your Git commit messages when Copilot assists with your work. You will see a <code>Co-authored-by: GitHub Copilot &lt;copilot@github.com&gt;</code> trailer appended to commits. This is on by default and can be disabled via Settings: search <code>github.copilot.git.generateCommitMessage</code> and set <code>coAuthoredBy</code> to <code>off</code> if you prefer not to include it.</p>
-<p><strong>Copilot Free tier:</strong> Available for all GitHub users. Provides access to inline suggestions and Copilot Chat with usage limits. No payment required for this workshop.</p>
+<p><strong>Copilot Free:</strong> Available to individual developers with monthly limits. It can be enough for this workshop if you use short, focused prompts and avoid long agentic sessions. Organization policies, regional restrictions, or account settings can still affect access.</p>
 <blockquote>
-<p><strong>Note on billing changes:</strong> GitHub Copilot plans and billing are actively evolving. We will provide specific guidance at the workshop. Check <a href="https://github.com/settings/copilot">github.com/settings/copilot</a> to verify your current access level before the event.</p>
+<p><strong>Note on billing changes:</strong> GitHub Copilot usage-based billing starts June 1, 2026. GitHub AI Credits are consumed by model token usage for chat and agentic features. Verify your current access and usage on the <a href="https://github.com/settings/copilot">GitHub Copilot settings page</a> before the event.</p>
 </blockquote>
 <p><strong>Screen reader support:</strong> Copilot is fully accessible with screen readers. Suggestions are announced via ARIA live regions, and Accessible View provides complete access to Chat responses.</p>
 <blockquote>
 <p><strong>Screen reader optimized mode:</strong> Press <code>Shift+Alt+F1</code> (Mac: <code>Shift+Option+F1</code>) to toggle VS Code&#39;s screen reader optimized mode. This adjusts how Copilot suggestions are announced, disables ghost text that cannot be read by screen readers, and routes all suggestion content through Accessible View. If your screen reader is detected at startup, VS Code enables this mode automatically. You can also set it manually in Settings: <code>editor.accessibilitySupport: &quot;on&quot;</code>.</p>
 </blockquote>
-<h2 id="2-installing-github-copilot">2. Installing GitHub Copilot</h2>
-<h3 id="installation-steps">Installation Steps</h3>
+<h2 id="2-setting-up-github-copilot">2. Setting Up GitHub Copilot</h2>
+<h3 id="current-vs-code-setup-steps">Current VS Code Setup Steps</h3>
+<p>Current VS Code builds include built-in AI features. Start with setup and sign-in, not extension installation.</p>
 <ol>
-<li>Open Extensions sidebar: <code>Ctrl+Shift+X</code> (Mac: <code>Cmd+Shift+X</code>)</li>
-<li>Search for &quot;GitHub Copilot Chat&quot;</li>
-<li>Find <strong>GitHub Copilot Chat</strong> (publisher: GitHub)</li>
-<li>Press <code>Enter</code> to open the extension detail page</li>
-<li><code>Tab</code> to &quot;Install&quot; button → press <code>Enter</code></li>
-<li>Wait for installation to complete</li>
+<li>Open VS Code desktop and update to the current stable release if prompted.</li>
+<li>In the Status Bar, activate the Copilot status item.</li>
+<li>Choose <strong>Use AI Features</strong>, <strong>Set up Copilot</strong>, or <strong>Sign in to use Copilot</strong> when prompted.</li>
+<li>Complete the GitHub sign-in flow in your browser.</li>
+<li>Return to VS Code and verify that the Chat view opens.</li>
 </ol>
-<p><strong>One extension, all features:</strong> GitHub Copilot Chat is now the single all-in-one extension. It provides inline code suggestions, the Chat panel (<code>Ctrl+Shift+I</code> / Mac: <code>Cmd+Shift+I</code>), inline chat (<code>Ctrl+I</code> / Mac: <code>Cmd+I</code>), and all agent features. The older separate &quot;GitHub Copilot&quot; extension has been deprecated.</p>
+<p><strong>Older or managed environments:</strong> If you are on an older pinned VS Code build, or an enterprise-managed image, Copilot may still appear as an extension-managed feature. Ask a facilitator before installing anything manually. Organization policy can also hide or disable AI features.</p>
 <h3 id="signing-in">Signing In</h3>
-<p>After installation:</p>
+<p>During setup:</p>
 <ol>
 <li>VS Code prompts: &quot;Sign in to use GitHub Copilot&quot;</li>
 <li>Navigate to the notification or click the Copilot icon in the status bar</li>
 <li>Select &quot;Sign in to GitHub&quot;</li>
 <li>Your browser opens for GitHub authentication</li>
-<li>Authorize the Copilot extension</li>
+<li>Authorize Copilot access</li>
 <li>Return to VS Code</li>
 </ol>
 <h4 id="verify-activation">Verify activation</h4>
@@ -283,14 +283,14 @@
 <li>Type &quot;Copilot: Check Status&quot;</li>
 <li>Select it to see your subscription tier (Free, Pro, Enterprise)</li>
 </ol>
-<h4 id="free-tier-includes">Free tier includes</h4>
+<h4 id="current-access-notes">Current access notes</h4>
 <ul>
-<li>Completions and multi-line suggestions</li>
-<li>Copilot Chat</li>
-<li>Limited monthly usage (usually sufficient for documentation work)</li>
+<li>Copilot Free includes limited monthly chat or agent-mode requests and limited completions.</li>
+<li>Paid plans include more usage and broader feature access, but billing is changing to GitHub AI Credits on June 1, 2026.</li>
+<li>Organization and enterprise administrators can manage whether Copilot features are available.</li>
 </ul>
 <blockquote>
-<p><strong>Billing note:</strong> GitHub Copilot plan details are evolving. Facilitators will provide current guidance at the workshop. To check your access status now, visit <a href="https://github.com/settings/copilot">github.com/settings/copilot</a>.</p>
+<p><strong>Billing note:</strong> GitHub Copilot plan details, model availability, and usage allowances change frequently. Facilitators will provide current guidance at the workshop. To check your access status now, visit <a href="https://github.com/settings/copilot">GitHub Copilot settings</a>.</p>
 </blockquote>
 <h2 id="3-inline-suggestions---ghost-text-completions">3. Inline Suggestions - Ghost Text Completions</h2>
 <p>Copilot suggests completions as you type, displayed as gray &quot;ghost text&quot; after your cursor. In screen reader mode, VS Code announces suggestions rather than showing them visually.</p>
@@ -508,14 +508,13 @@
 </ul>
 </details>
 
-
 <h2 id="4-github-copilot-chat---conversational-assistance">4. GitHub Copilot Chat - Conversational Assistance</h2>
 <blockquote>
 <p><strong>See also:</strong> <a href="appendix-k-copilot-reference.html">Appendix K: Copilot Reference</a> has the complete slash command and chat variable reference.</p>
 </blockquote>
 <p>Copilot Chat is a full conversation interface where you ask questions, request explanations, and have content drafted.</p>
 <h3 id="opening-copilot-chat">Opening Copilot Chat</h3>
-<p><strong>Primary panel:</strong> <code>Ctrl+Shift+I</code> (Mac: <code>Cmd+Shift+I</code>)</p>
+<p><strong>Primary panel:</strong> <code>Ctrl+Alt+I</code> in current VS Code docs. If that shortcut conflicts with your keymap, run <strong>Chat: Open Chat</strong> from the Command Palette.</p>
 <p>Opens the Chat panel on the right side of VS Code.</p>
 <p><strong>Inline chat (in-file):</strong> <code>Ctrl+I</code> (Mac: <code>Cmd+I</code>)</p>
 <p>Opens a chat prompt directly in the editor, anchored to your cursor. Results appear inline. Best for file-specific edits.</p>
@@ -549,7 +548,7 @@
 </details>
 
 <h3 id="chat-modes">Chat Modes</h3>
-<p>Copilot Chat has four modes, selected from a dropdown at the bottom of the Chat input area. Each mode changes how Copilot interprets your request and what it can do.</p>
+<p>Copilot Chat has multiple modes, selected from a dropdown at the bottom of the Chat input area. Mode availability can change by VS Code version and rollout. Each mode changes how Copilot interprets your request and what it can do.</p>
 <table>
 <thead>
 <tr>
@@ -565,7 +564,7 @@
 </tr>
 <tr>
 <td><strong>Edit</strong></td>
-<td>You define a &quot;working set&quot; of files; Copilot proposes edits and shows a diff you approve or reject - nothing changes without your confirmation</td>
+<td>You define a &quot;working set&quot; of files; Copilot proposes edits and shows a diff you approve or reject. Edit mode is being deprecated into Agent mode, so use Agent mode if Edit is not shown</td>
 <td>Targeted, multi-file changes where you want full control</td>
 </tr>
 <tr>
@@ -590,17 +589,18 @@
 <p><strong>Note:</strong> <strong>Plan</strong> mode was introduced in October 2025 (VS Code 1.106) and is available as a public preview. Plan mode lets you get an AI-generated implementation plan before any code is written - useful for understanding what a complex change will involve.</p>
 </blockquote>
 <h3 id="choosing-a-model">Choosing a Model</h3>
-<p>Copilot gives you access to AI models from OpenAI, Anthropic (Claude), Google (Gemini), xAI (Grok), and others. The <strong>model picker</strong> is a button at the bottom of the Chat input area, next to the mode selector, showing the current model name (e.g., &quot;Auto&quot; or &quot;Claude Sonnet 4.6&quot;).</p>
+<p>Copilot gives you access to AI models from OpenAI, Anthropic, Google, and others. The <strong>model picker</strong> is a button at the bottom of the Chat input area, next to the mode selector, showing the current model selection, such as <strong>Auto</strong> or a model name available to your account.</p>
 <p><strong>When &quot;Auto&quot; is selected</strong> (the default), Copilot automatically chooses the best model for each request - lighter models for quick questions, more capable models for complex reasoning. Auto mode has been generally available since December 2025. You can override it whenever you want a specific model.</p>
 <h4 id="quick-guidance">Quick guidance</h4>
 <ul>
-<li><strong>Free-tier users:</strong> GPT-4.1 and GPT-5 mini are available at no cost and handle most everyday tasks well</li>
-<li><strong>Need deep reasoning/debugging?</strong> Try Claude Sonnet 4.6 or GPT-5.5 (1x premium requests)</li>
-<li><strong>Running Agent mode?</strong> GPT-5.5 or Claude Sonnet 4.6 work well for autonomous multi-step tasks</li>
-<li><strong>High cost to avoid unless needed:</strong> Claude Opus 4.6 (3x cost) - powerful but reserve for the most demanding work</li>
+<li>Start with <strong>Auto</strong> model selection unless the workshop facilitator asks you to choose a specific model.</li>
+<li>Use lightweight or default models for short explanations, documentation drafts, and quick questions.</li>
+<li>Use more capable models only when the task genuinely needs deeper reasoning, long context, or agentic work.</li>
+<li>Watch the model badge or picker when available. VS Code 1.119 and later can show model details and usage multipliers for some agent responses.</li>
+<li>Do not rely on a saved model name from this guide. Model availability changes by plan, organization policy, geography, and rollout.</li>
 </ul>
 <blockquote>
-<p><strong>Model availability changes frequently.</strong> Facilitators will provide current guidance at the workshop. For the complete model reference including plan availability, see <a href="appendix-k-copilot-reference.html">Appendix K: GitHub Copilot Reference</a>.</p>
+<p><strong>Model availability changes frequently.</strong> Facilitators will provide current guidance at the workshop. For current sources and model-selection principles, see <a href="appendix-k-copilot-reference.html">Appendix K: GitHub Copilot Reference</a>.</p>
 </blockquote>
 <details>
 <summary>Low vision users - finding the mode and model controls</summary>
@@ -779,7 +779,7 @@ What does this error mean? #terminalLastCommand</code></pre>
 <h4 id="example">Example</h4>
 <ol>
 <li>Select a block of complex Markdown</li>
-<li>Open Chat: <code>Ctrl+Shift+I</code> (Mac: <code>Cmd+Shift+I</code>)</li>
+<li>Open Chat: <code>Ctrl+Alt+I</code>, or run <strong>Chat: Open Chat</strong> from the Command Palette if your keymap differs</li>
 <li>Type <code>/explain</code></li>
 <li>Copilot explains the structure and purpose</li>
 </ol>
@@ -827,7 +827,7 @@ What does this error mean? #terminalLastCommand</code></pre>
 <summary>Screen reader users</summary>
 
 <ul>
-<li>Open Copilot Chat with <code>Ctrl+Shift+I</code> (Mac: <code>Cmd+Shift+I</code>) -- focus lands in the chat input box, ready for your question</li>
+<li>Open Copilot Chat with <code>Ctrl+Alt+I</code>, or run <strong>Chat: Open Chat</strong> from the Command Palette if your keymap differs; focus lands in the chat input box, ready for your question</li>
 <li>After the response finishes streaming, press <code>Alt+F2</code> to open Accessible View and read the complete response with arrow keys, one paragraph at a time</li>
 <li>Use <code>@workspace</code> before your question to give Copilot context about your entire project (e.g., &quot;@workspace what files reference heading levels?&quot;)</li>
 </ul>
@@ -847,12 +847,11 @@ What does this error mean? #terminalLastCommand</code></pre>
 <summary>Sighted users</summary>
 
 <ul>
-<li>Click the Copilot icon in the Activity Bar sidebar or use <code>Ctrl+Shift+I</code> to open the Chat panel</li>
+<li>Click the Copilot icon in the Activity Bar sidebar, use <code>Ctrl+Alt+I</code>, or run <strong>Chat: Open Chat</strong> from the Command Palette to open the Chat panel</li>
 <li>The mode picker dropdown at the top of Chat lets you switch between Ask, Edit, and Agent modes</li>
 <li>Code blocks in responses have hover-revealed buttons: Copy, Insert at Cursor, and Run in Terminal</li>
 </ul>
 </details>
-
 
 <h2 id="5-copilot-edits--making-multi-file-changes">5. Copilot Edits — Making Multi-File Changes</h2>
 <blockquote>
@@ -868,7 +867,7 @@ What does this error mean? #terminalLastCommand</code></pre>
 </ul>
 <h3 id="how-to-use-copilot-edits">How to use Copilot Edits</h3>
 <ol>
-<li>Open Copilot Chat: <code>Ctrl+Shift+I</code> (Mac: <code>Cmd+Shift+I</code>)</li>
+<li>Open Copilot Chat: <code>Ctrl+Alt+I</code>, or run <strong>Chat: Open Chat</strong> from the Command Palette if your keymap differs</li>
 <li>At the bottom of the Chat panel, click the <strong>mode dropdown</strong> and select <strong>Edit</strong></li>
 <li>Add files to your <strong>working set</strong> — these are the files Copilot is allowed to edit:<ul>
 <li>Click <strong>&quot;Add Files...&quot;</strong> above the chat input, or</li>
@@ -929,9 +928,9 @@ What does this error mean? #terminalLastCommand</code></pre>
 <hr>
 <h2 id="6-agent-mode--let-copilot-drive">6. Agent Mode — Let Copilot Drive</h2>
 <blockquote>
-<p><strong>See also:</strong> <a href="19-accessibility-agents.html">Chapter 19: Accessibility Agents</a> and <a href="20-build-your-agent.html">Chapter 20: Build Your Agent</a> for creating your own Copilot agent.</p>
+<p><strong>See also:</strong> <a href="19-accessibility-agents.html">Chapter 19: Accessibility Agents</a> and <a href="20-build-your-agent.html">Chapter 20: Build Your Agent</a> for creating your own Copilot agent. For the dedicated VS Code 1.120 surface for managing agent sessions across projects, see <a href="appendix-k-copilot-reference.html#4a-vs-code-1120-agents-window-and-impactful-updates">Appendix K: VS Code 1.120 Agents Window and Impactful Updates</a>.</p>
 </blockquote>
-<p>Agent mode is the most autonomous way to use Copilot. You describe a goal and Copilot figures out what files to open, what changes to make, and what commands to run — asking for your approval when it needs to run something that has side effects.</p>
+<p>Agent mode is the most autonomous way to use Copilot. You describe a goal and Copilot figures out what files to open, what changes to make, and what commands to run - asking for your approval when it needs to run something that has side effects.</p>
 <p><strong>When to use it:</strong></p>
 <ul>
 <li>Scaffolding a new feature from scratch</li>
@@ -939,23 +938,29 @@ What does this error mean? #terminalLastCommand</code></pre>
 <li>Tasks where you&#39;re not sure which files need to change</li>
 </ul>
 <blockquote>
-<p><strong>Agent mode is powerful — and that&#39;s worth being thoughtful about.</strong> It can open, read, and edit files across your whole workspace and run terminal commands. Review its actions as it works, especially before approving terminal commands. Start with well-scoped tasks until you&#39;re comfortable with how it behaves.</p>
+<p><strong>Agent mode is powerful, and that is worth being thoughtful about.</strong> It can open, read, and edit files across your whole workspace and run terminal commands. Review its actions as it works, especially before approving terminal commands. Start with well-scoped tasks until you&#39;re comfortable with how it behaves.</p>
 </blockquote>
 <h3 id="how-to-use-agent-mode">How to use Agent mode</h3>
 <ol>
-<li>Open Copilot Chat: <code>Ctrl+Shift+I</code> (Mac: <code>Cmd+Shift+I</code>)</li>
+<li>Open Copilot Chat: <code>Ctrl+Alt+I</code>, or run <strong>Chat: Open Chat</strong> from the Command Palette if your keymap differs</li>
 <li>Select <strong>Agent</strong> from the mode dropdown at the bottom of the Chat panel</li>
 <li>Type your goal: <em>&quot;Add a Table of Contents to every Markdown file in the docs/ folder&quot;</em> or <em>&quot;Find all TODO comments in this project and create a GitHub issue for each one&quot;</em></li>
-<li>Copilot begins working — it shows each step it&#39;s taking and asks for approval before running terminal commands</li>
+<li>Copilot begins working - it shows each step it&#39;s taking and asks for approval before running terminal commands</li>
 <li>Watch the progress in the Chat panel; review any proposed changes in the editor</li>
 </ol>
+<blockquote>
+<p><strong>Integrated browser sharing:</strong> An agent does not automatically have access to VS Code&#39;s integrated browser. In VS Code 1.119 and later, you can explicitly attach browser tabs as context, and an agent may ask you to approve sharing an existing tab. Share only the page needed for the task, and use the browser sharing control to stop sharing when you are done.</p>
+</blockquote>
 <h3 id="approving-terminal-commands">Approving terminal commands</h3>
 <p>When Agent mode wants to run a shell command (like <code>npm run build</code> or <code>git commit</code>), it pauses and shows you the command before running it.</p>
 <ul>
-<li><strong>Allow</strong> — run this command once</li>
-<li><strong>Allow Always</strong> — always allow this command type without asking again (use carefully)</li>
-<li><strong>Cancel</strong> — stop and don&#39;t run it</li>
+<li><strong>Allow</strong> - run this command once</li>
+<li><strong>Allow Always</strong> - always allow this command type without asking again (use carefully)</li>
+<li><strong>Cancel</strong> - stop and don&#39;t run it</li>
 </ul>
+<blockquote>
+<p><strong>Trust and security note:</strong> Some approval prompts depend on organization-managed settings. VS Code 1.119 added an <code>allowNetwork</code> sandbox mode and reduces repeated approvals for temp-folder writes after you allow all commands in a session. If your prompts differ from this guide, follow your organization&#39;s policy and ask a facilitator before approving broad permissions.</p>
+</blockquote>
 <blockquote>
 <p><strong>Screen reader tip:</strong> When Copilot pauses for approval, focus moves to the approval dialog in the Chat panel. Your screen reader announces the command Copilot wants to run and the approval options. Tab to your choice and press <code>Enter</code>.</p>
 </blockquote>
@@ -1005,6 +1010,67 @@ What does this error mean? #terminalLastCommand</code></pre>
 <li>Use the Plan step (type &quot;plan&quot; in Agent mode) to preview the full sequence before execution, especially for unfamiliar codebases</li>
 </ul>
 <hr>
+<h2 id="6a-vs-code-1120-agents-window">6A. VS Code 1.120 Agents Window</h2>
+<p>VS Code 1.120 adds the <strong>Agents window</strong> to Stable as a Preview feature. Agent mode is a way for Copilot to behave inside a session. The Agents window is a separate VS Code window for managing those sessions across projects.</p>
+<p>Use the normal Chat view when you are learning, editing one workspace, or using file selections from the editor. Use the Agents window when you want an agent-first dashboard: sessions on the left, chat in the center, customizations nearby, and changed files on the right.</p>
+<h3 id="open-the-agents-window">Open the Agents Window</h3>
+<ol>
+<li>Open the Command Palette with <code>Ctrl+Shift+P</code>.</li>
+<li>Run <strong>Chat: Open Agents Window</strong>.</li>
+<li>Sign in to GitHub if prompted.</li>
+<li>Select <strong>New</strong> or press <code>Ctrl+N</code>.</li>
+<li>Choose a workspace folder or GitHub repository.</li>
+<li>Choose the agent type, isolation mode, custom agent, and model if those controls are available to your account.</li>
+<li>Write a focused task and review the Changes panel before applying, committing, merging, or checking out the result.</li>
+</ol>
+<p>The following table shows when to stay in the editor and when to use the Agents window.</p>
+<table>
+<thead>
+<tr>
+<th scope="col">You Want To</th>
+<th scope="col">Best Surface</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Ask a question about the file you are reading</td>
+<td>Chat view in the editor</td>
+</tr>
+<tr>
+<td>Use Accessible View to read one response carefully</td>
+<td>Chat view in the editor</td>
+</tr>
+<tr>
+<td>Make a focused edit in the current workspace</td>
+<td>Chat view with Agent mode</td>
+</tr>
+<tr>
+<td>Track several background or cloud sessions</td>
+<td>Agents window</td>
+</tr>
+<tr>
+<td>Review a set of agent changes before merging</td>
+<td>Agents window Changes panel</td>
+</tr>
+<tr>
+<td>Manage agents, skills, instructions, hooks, MCP servers, and plugins together</td>
+<td>Agents window Customizations panel</td>
+</tr>
+</tbody></table>
+<h3 id="safety-notes-for-workshop-learners">Safety Notes for Workshop Learners</h3>
+<ul>
+<li>Treat the Agents window as an advanced workflow surface. It helps you coordinate work, but it does not remove your responsibility to review changes.</li>
+<li>Prefer worktree isolation for Copilot CLI sessions while learning. It keeps agent edits separate from your active workspace.</li>
+<li>Use the Files panel sync button before starting a session when your branch may be behind upstream.</li>
+<li>Read terminal command risk badges if enabled, but still inspect the full command before approving.</li>
+<li>Run project validation tasks from the Agents window before accepting a completed session.</li>
+<li>If a session changes more files than expected, stop and review before continuing.</li>
+</ul>
+<h3 id="accessibility-notes">Accessibility Notes</h3>
+<p><strong>Screen reader users:</strong> Open the Agents window through the Command Palette. Use <code>Alt+F1</code> for context-specific Accessibility Help, <code>F6</code> and <code>Shift+F6</code> to move between workbench parts, and <code>Alt+F2</code> for Accessible View when chat responses, terminal output, or diffs are too dense to follow live.</p>
+<p><strong>Low-vision users:</strong> Increase zoom before opening dense multi-panel sessions. Use high-contrast themes, modal diff view, and wider panels when reviewing changes. If the Agents window needs different display settings than your editor, use Agents-window-specific settings overrides.</p>
+<p><strong>Sighted users:</strong> Use the Sessions list as a dashboard and the Changes panel as your review gate. Changed-file counts, status badges, and diff views are the visual signals that tell you whether the agent stayed inside the requested scope.</p>
+<p>For the full 1.120 addendum, including terminal risk assessment, terminal output compression, Markdown preview diffs, BYOK model controls, and extension support in the Agents window, see <a href="appendix-k-copilot-reference.html#4a-vs-code-1120-agents-window-and-impactful-updates">Appendix K: VS Code 1.120 Agents Window and Impactful Updates</a>.</p>
+<hr>
 <h2 id="7-next-edit-suggestions">7. Next Edit Suggestions</h2>
 <p>Next Edit Suggestions (NES) is a feature where Copilot watches what you&#39;re editing and predicts <strong>where you&#39;ll need to make your next change</strong> — then offers to make it for you. Unlike regular inline suggestions that complete what you&#39;re currently typing, NES looks ahead to related edits elsewhere in the file.</p>
 <p><strong>Example:</strong> You rename a variable on line 12. NES notices it&#39;s also used on lines 34 and 67 and offers to update those too — without you navigating there first.</p>
@@ -1036,7 +1102,7 @@ What does this error mean? #terminalLastCommand</code></pre>
 <li>Click it (or press <code>?</code> then select Copilot from the command palette) to open the chat panel</li>
 <li>Type your question and press <code>Enter</code></li>
 </ol>
-<p>Copilot on GitHub.com has context about your repositories, issues, PRs, and code — you can reference them directly.</p>
+<p>Copilot on GitHub.com has context about your repositories, issues, PRs, and code - you can reference them directly.</p>
 <h3 id="what-you-can-ask-copilot-on-githubcom">What you can ask Copilot on GitHub.com</h3>
 <pre><code class="hljs"># <span class="hljs-type">Ask</span> about a specific repository
 <span class="hljs-comment">&quot;Summarize the recent changes to the accessibility-agents repo&quot;</span>
@@ -1063,7 +1129,10 @@ What does this error mean? #terminalLastCommand</code></pre>
 </blockquote>
 <p><strong>Screen reader tip:</strong> The Copilot sparkle button is next to the description textarea. It&#39;s announced as a button labelled &quot;Copilot&quot; or &quot;Generate with Copilot.&quot; After clicking, the description field is populated — read through it with your screen reader before submitting.</p>
 <h3 id="copilot-for-code-review-on-githubcom">Copilot for Code Review on GitHub.com</h3>
-<p>Maintainers can use Copilot to review pull requests on GitHub.com. As a contributor, you may see <strong>Copilot-authored review comments</strong> on your PR — they look like regular review comments but are labelled &quot;Copilot&quot;.</p>
+<p>Maintainers can use Copilot to review pull requests on GitHub.com. As a contributor, you may see <strong>Copilot-authored review comments</strong> on your PR - they look like regular review comments but are labelled &quot;Copilot&quot;.</p>
+<blockquote>
+<p><strong>Cost note, verified May 12, 2026:</strong> Starting June 1, 2026, Copilot code review is expected to consume GitHub Actions minutes in addition to GitHub AI Credits. Facilitators and maintainers should check current billing settings before enabling Copilot review broadly for a cohort.</p>
+</blockquote>
 <ul>
 <li>Copilot review comments work just like human review comments — respond, resolve, or address them</li>
 <li>They flag things like potential bugs, style inconsistencies, or missing edge cases</li>
@@ -1100,8 +1169,8 @@ What does this error mean? #terminalLastCommand</code></pre>
 </tr>
 <tr>
 <td>Agent mode</td>
-<td>No</td>
-<td>Yes</td>
+<td>Cloud agent sessions may be available for eligible accounts and repositories</td>
+<td>Yes, local Agent mode in VS Code</td>
 </tr>
 <tr>
 <td>PR description generation</td>
@@ -1136,7 +1205,7 @@ What does this error mean? #terminalLastCommand</code></pre>
 <p><strong>Sighted users:</strong></p>
 <ul>
 <li>Look for the Copilot sparkle icon in the top-right header area of any GitHub.com page to open chat; on PR pages, a second sparkle button appears next to the description field</li>
-<li>GitHub.com Copilot is completely separate from VS Code Copilot -- your prompts, history, and extensions do not carry over between the two environments</li>
+<li>GitHub.com Copilot and VS Code Copilot are separate surfaces. Some account state and agent sessions may connect across surfaces, but prompts, local workspace context, and extensions do not automatically carry over</li>
 <li>Use the Copilot chat on GitHub.com for quick questions about repos, issues, and PRs without needing to clone anything locally</li>
 </ul>
 <hr>
@@ -1238,7 +1307,6 @@ Format this as a table instead of a bulleted list</code></pre>
 <li>Use the &quot;Rewrite&quot; prompt pattern -- paste content and ask Copilot to restructure it rather than writing from scratch</li>
 </ul>
 </details>
-
 
 <h2 id="10-custom-instructions-vs-custom-agents">10. Custom Instructions vs Custom Agents</h2>
 <p>Two distinct tools shape how Copilot behaves. Understanding the difference is critical for working with Accessibility Agents (see <a href="19-accessibility-agents.html">Chapter 16: Accessibility Agents</a>).</p>
@@ -1560,8 +1628,8 @@ all UI is accessible by default, relying on semantic HTML before ARIA attributes
 </thead>
 <tbody><tr>
 <td>Open Chat panel</td>
-<td><code>Ctrl+Shift+I</code></td>
-<td><code>Cmd+Shift+I</code></td>
+<td><code>Ctrl+Alt+I</code></td>
+<td>Use <strong>Chat: Open Chat</strong> from the Command Palette if your keymap differs</td>
 </tr>
 <tr>
 <td>Inline chat (in-file)</td>
@@ -1837,7 +1905,6 @@ all UI is accessible by default, relying on semantic HTML before ARIA attributes
 </ul>
 </details>
 
-
 <h2 id="troubleshooting">Troubleshooting</h2>
 <h3 id="copilot-not-suggesting-anything">Copilot Not Suggesting Anything</h3>
 <p><strong>Issue:</strong> No suggestions appear as you type.</p>
@@ -1877,9 +1944,9 @@ all UI is accessible by default, relying on semantic HTML before ARIA attributes
 <li>Free tier users: ensure you haven&#39;t exceeded monthly limits</li>
 </ol>
 <h2 id="try-it-your-first-copilot-conversation">Try It: Your First Copilot Conversation</h2>
-<p><strong>Time:</strong> 3 minutes | <strong>What you need:</strong> VS Code with Copilot Chat extension installed</p>
+<p><strong>Time:</strong> 3 minutes | <strong>What you need:</strong> Current VS Code with built-in AI features enabled and a GitHub account with Copilot access</p>
 <ol>
-<li><strong>Open Copilot Chat</strong> - Press <code>Ctrl+Shift+I</code> (Mac: <code>Cmd+Shift+I</code>). Your screen reader announces the chat panel.</li>
+<li><strong>Open Copilot Chat</strong> - Press <code>Ctrl+Alt+I</code>, or run <strong>Chat: Open Chat</strong> from the Command Palette if your keymap differs. Your screen reader announces the chat panel.</li>
 <li><strong>Ask a question</strong> - Type: <code>What does the CONTRIBUTING.md file in this repository say about how to submit a pull request?</code> Press <code>Enter</code>.</li>
 <li><strong>Read the response</strong> - Press <code>Ctrl+Shift+A</code> to open the Accessible View if your screen reader doesn&#39;t read the response automatically. The response appears as plain text you can arrow through.</li>
 <li><strong>Try a follow-up</strong> - Type: <code>Summarize that in 3 bullet points</code> and press <code>Enter</code>. Copilot remembers the context from your first question.</li>
@@ -1890,6 +1957,46 @@ all UI is accessible by default, relying on semantic HTML before ARIA attributes
 </blockquote>
 <hr>
 <p><em>Next: <a href="17-issue-templates.html">Chapter 17: Issue Templates</a></em><br><em>Back: <a href="15-code-review.html">Chapter 15: Code Review</a></em><br><em>Related appendices: <a href="appendix-k-copilot-reference.html">Appendix K: Copilot Reference</a></em></p>
+<h2 id="authoritative-sources">Authoritative Sources</h2>
+<p>Use these official references when you need the current source of truth for facts in this chapter.</p>
+<ul>
+<li><a href="https://docs.github.com/en">GitHub Docs, home</a></li>
+<li><a href="https://github.blog/changelog/">GitHub Changelog</a></li>
+<li><a href="https://docs.github.com/en/copilot">GitHub Copilot docs</a></li>
+<li><a href="https://docs.github.com/en/copilot/reference/custom-instructions-support">Custom instructions support matrix</a></li>
+<li><a href="https://docs.github.com/en/copilot/concepts/agents/cloud-agent/about-custom-agents">About custom agents</a></li>
+<li><a href="https://docs.github.com/en/copilot/concepts/agents/about-agent-skills">About agent skills</a></li>
+<li><a href="https://docs.github.com/en/copilot/concepts/auto-model-selection">About auto model selection</a></li>
+<li><a href="https://github.blog/changelog/label/copilot/">Copilot changelog feed</a></li>
+<li><a href="https://code.visualstudio.com/docs/copilot/chat/copilot-chat">VS Code Copilot chat overview</a></li>
+<li><a href="https://code.visualstudio.com/docs/copilot/agents/overview">VS Code agent overview</a></li>
+<li><a href="https://code.visualstudio.com/docs/copilot/customization/custom-instructions">VS Code custom instructions</a></li>
+<li><a href="https://docs.github.com/en/get-started/using-git/about-git">About Git</a></li>
+<li><a href="https://docs.github.com/en/get-started/using-github/github-flow">GitHub flow</a></li>
+<li><a href="https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/about-pull-requests">About pull requests</a></li>
+<li><a href="https://docs.github.com/en/issues/tracking-your-work-with-issues/about-issues">About issues</a></li>
+<li><a href="https://docs.github.com/en/get-started/exploring-projects-on-github/contributing-to-a-project">Contributing to a project</a></li>
+</ul>
+<h3 id="section-level-source-map">Section-Level Source Map</h3>
+<p>Use this map to verify facts for each major section in this file.</p>
+<ul>
+<li><strong>AI-Powered Code Assistance in VS Code:</strong> <a href="https://docs.github.com/en">GitHub Docs, home</a>, <a href="https://github.blog/changelog/">GitHub Changelog</a>, <a href="https://docs.github.com/en/copilot">GitHub Copilot docs</a>, <a href="https://docs.github.com/en/copilot/reference/custom-instructions-support">Custom instructions support matrix</a>, <a href="https://docs.github.com/en/copilot/concepts/agents/cloud-agent/about-custom-agents">About custom agents</a></li>
+<li><strong>Workshop Recommendation (Chapter 16 / Challenge 13):</strong> <a href="https://docs.github.com/en">GitHub Docs, home</a>, <a href="https://github.blog/changelog/">GitHub Changelog</a>, <a href="https://docs.github.com/en/copilot">GitHub Copilot docs</a>, <a href="https://docs.github.com/en/copilot/reference/custom-instructions-support">Custom instructions support matrix</a>, <a href="https://docs.github.com/en/copilot/concepts/agents/cloud-agent/about-custom-agents">About custom agents</a></li>
+<li><strong>1. What is GitHub Copilot:</strong> <a href="https://docs.github.com/en">GitHub Docs, home</a>, <a href="https://github.blog/changelog/">GitHub Changelog</a>, <a href="https://docs.github.com/en/copilot">GitHub Copilot docs</a>, <a href="https://docs.github.com/en/copilot/reference/custom-instructions-support">Custom instructions support matrix</a>, <a href="https://docs.github.com/en/copilot/concepts/agents/cloud-agent/about-custom-agents">About custom agents</a></li>
+<li><strong>2. Setting Up GitHub Copilot:</strong> <a href="https://docs.github.com/en">GitHub Docs, home</a>, <a href="https://github.blog/changelog/">GitHub Changelog</a>, <a href="https://docs.github.com/en/copilot">GitHub Copilot docs</a>, <a href="https://docs.github.com/en/copilot/reference/custom-instructions-support">Custom instructions support matrix</a>, <a href="https://docs.github.com/en/copilot/concepts/agents/cloud-agent/about-custom-agents">About custom agents</a></li>
+<li><strong>3. Inline Suggestions - Ghost Text Completions:</strong> <a href="https://docs.github.com/en">GitHub Docs, home</a>, <a href="https://github.blog/changelog/">GitHub Changelog</a>, <a href="https://docs.github.com/en/copilot">GitHub Copilot docs</a>, <a href="https://docs.github.com/en/copilot/reference/custom-instructions-support">Custom instructions support matrix</a>, <a href="https://docs.github.com/en/copilot/concepts/agents/cloud-agent/about-custom-agents">About custom agents</a></li>
+<li><strong>4. GitHub Copilot Chat - Conversational Assistance:</strong> <a href="https://docs.github.com/en">GitHub Docs, home</a>, <a href="https://github.blog/changelog/">GitHub Changelog</a>, <a href="https://docs.github.com/en/copilot">GitHub Copilot docs</a>, <a href="https://docs.github.com/en/copilot/reference/custom-instructions-support">Custom instructions support matrix</a>, <a href="https://docs.github.com/en/copilot/concepts/agents/cloud-agent/about-custom-agents">About custom agents</a></li>
+<li><strong>5. Copilot Edits — Making Multi-File Changes:</strong> <a href="https://docs.github.com/en">GitHub Docs, home</a>, <a href="https://github.blog/changelog/">GitHub Changelog</a>, <a href="https://docs.github.com/en/copilot">GitHub Copilot docs</a>, <a href="https://docs.github.com/en/copilot/reference/custom-instructions-support">Custom instructions support matrix</a>, <a href="https://docs.github.com/en/copilot/concepts/agents/cloud-agent/about-custom-agents">About custom agents</a></li>
+<li><strong>6. Agent Mode — Let Copilot Drive:</strong> <a href="https://docs.github.com/en">GitHub Docs, home</a>, <a href="https://github.blog/changelog/">GitHub Changelog</a>, <a href="https://docs.github.com/en/copilot">GitHub Copilot docs</a>, <a href="https://docs.github.com/en/copilot/reference/custom-instructions-support">Custom instructions support matrix</a>, <a href="https://docs.github.com/en/copilot/concepts/agents/cloud-agent/about-custom-agents">About custom agents</a></li>
+<li><strong>6A. VS Code 1.120 Agents Window:</strong> <a href="https://docs.github.com/en">GitHub Docs, home</a>, <a href="https://github.blog/changelog/">GitHub Changelog</a>, <a href="https://docs.github.com/en/copilot">GitHub Copilot docs</a>, <a href="https://docs.github.com/en/copilot/reference/custom-instructions-support">Custom instructions support matrix</a>, <a href="https://docs.github.com/en/copilot/concepts/agents/cloud-agent/about-custom-agents">About custom agents</a></li>
+<li><strong>7. Next Edit Suggestions:</strong> <a href="https://docs.github.com/en">GitHub Docs, home</a>, <a href="https://github.blog/changelog/">GitHub Changelog</a>, <a href="https://docs.github.com/en/copilot">GitHub Copilot docs</a>, <a href="https://docs.github.com/en/copilot/reference/custom-instructions-support">Custom instructions support matrix</a>, <a href="https://docs.github.com/en/copilot/concepts/agents/cloud-agent/about-custom-agents">About custom agents</a></li>
+<li><strong>8. Copilot on GitHub.com:</strong> <a href="https://docs.github.com/en">GitHub Docs, home</a>, <a href="https://github.blog/changelog/">GitHub Changelog</a>, <a href="https://docs.github.com/en/copilot">GitHub Copilot docs</a>, <a href="https://docs.github.com/en/copilot/reference/custom-instructions-support">Custom instructions support matrix</a>, <a href="https://docs.github.com/en/copilot/concepts/agents/cloud-agent/about-custom-agents">About custom agents</a></li>
+<li><strong>9. Effective Prompting for Documentation Work:</strong> <a href="https://docs.github.com/en">GitHub Docs, home</a>, <a href="https://github.blog/changelog/">GitHub Changelog</a>, <a href="https://docs.github.com/en/copilot">GitHub Copilot docs</a>, <a href="https://docs.github.com/en/copilot/reference/custom-instructions-support">Custom instructions support matrix</a>, <a href="https://docs.github.com/en/copilot/concepts/agents/cloud-agent/about-custom-agents">About custom agents</a></li>
+<li><strong>Timeline View - File History:</strong> <a href="https://docs.github.com/en">GitHub Docs, home</a>, <a href="https://github.blog/changelog/">GitHub Changelog</a>, <a href="https://docs.github.com/en/copilot">GitHub Copilot docs</a>, <a href="https://docs.github.com/en/copilot/reference/custom-instructions-support">Custom instructions support matrix</a>, <a href="https://docs.github.com/en/copilot/concepts/agents/cloud-agent/about-custom-agents">About custom agents</a></li>
+<li><strong>10. Custom Instructions vs Custom Agents:</strong> <a href="https://docs.github.com/en">GitHub Docs, home</a>, <a href="https://github.blog/changelog/">GitHub Changelog</a>, <a href="https://docs.github.com/en/copilot">GitHub Copilot docs</a>, <a href="https://docs.github.com/en/copilot/reference/custom-instructions-support">Custom instructions support matrix</a>, <a href="https://docs.github.com/en/copilot/concepts/agents/cloud-agent/about-custom-agents">About custom agents</a></li>
+<li><strong>Accessibility Standards:</strong> <a href="https://docs.github.com/en">GitHub Docs, home</a>, <a href="https://github.blog/changelog/">GitHub Changelog</a>, <a href="https://docs.github.com/en/copilot">GitHub Copilot docs</a>, <a href="https://docs.github.com/en/copilot/reference/custom-instructions-support">Custom instructions support matrix</a>, <a href="https://docs.github.com/en/copilot/concepts/agents/cloud-agent/about-custom-agents">About custom agents</a></li>
+<li><strong>Documentation Style:</strong> <a href="https://docs.github.com/en">GitHub Docs, home</a>, <a href="https://github.blog/changelog/">GitHub Changelog</a>, <a href="https://docs.github.com/en/copilot">GitHub Copilot docs</a>, <a href="https://docs.github.com/en/copilot/reference/custom-instructions-support">Custom instructions support matrix</a>, <a href="https://docs.github.com/en/copilot/concepts/agents/cloud-agent/about-custom-agents">About custom agents</a></li>
+</ul>
 
   </main>
   <footer role="contentinfo" class="site-footer">

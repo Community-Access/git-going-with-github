@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="GIT Going with GitHub - A two-day accessible open source workshop by Community Access">
+  <title>LLM Podcast Generation Readiness Plan - GIT Going with GitHub</title>
+  <link rel="stylesheet" href="../../styles/github-markdown.css">
+  <link rel="stylesheet" href="../../styles/highlight.css">
+  <link rel="stylesheet" href="../../styles/custom.css">
+  <style>
+    .markdown-body {
+      box-sizing: border-box;
+      min-width: 200px;
+      max-width: 980px;
+      margin: 0 auto;
+      padding: 45px;
+    }
+    @media (max-width: 767px) {
+      .markdown-body {
+        padding: 15px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+  <header class="site-header" role="banner">
+    <div class="site-header-inner">
+      <nav aria-label="Breadcrumb" class="breadcrumb">
+        <a href="../../index.html">Home</a> <span aria-hidden="true">›</span> <span aria-current="page">LLM Podcast Generation Readiness Plan</span>
+      </nav>
+      <div class="header-actions">
+        <a href="https://github.com/Community-Access/git-going-with-github/wiki" class="wiki-link" target="_blank" rel="noopener noreferrer">
+          <svg aria-hidden="true" focusable="false" width="16" height="16" viewBox="0 0 16 16" fill="currentColor">
+            <path d="M1.75 1h8.5c.966 0 1.75.784 1.75 1.75v5.5A1.75 1.75 0 0 1 10.25 10H7.06l-2.573 2.573A1.458 1.458 0 0 1 2 11.543V10h-.25A1.75 1.75 0 0 1 0 8.25v-5.5C0 1.784.784 1 1.75 1ZM1.5 2.75v5.5c0 .138.112.25.25.25h1a.75.75 0 0 1 .75.75v2.19l2.72-2.72a.749.749 0 0 1 .53-.22h3.5a.25.25 0 0 0 .25-.25v-5.5a.25.25 0 0 0-.25-.25h-8.5a.25.25 0 0 0-.25.25Zm13 2a.25.25 0 0 0-.25-.25h-.5a.75.75 0 0 1 0-1.5h.5c.966 0 1.75.784 1.75 1.75v5.5A1.75 1.75 0 0 1 14.25 12H14v1.543a1.457 1.457 0 0 1-2.487 1.03L9.22 12.28a.749.749 0 1 1 1.06-1.06l2.22 2.22v-2.19a.75.75 0 0 1 .75-.75h.25a.25.25 0 0 0 .25-.25v-5.5Z"/>
+          </svg>
+          Wiki
+        </a>
+        <form role="search" class="search-form" action="../../search.html" method="get">
+        <label for="site-search" class="search-label">Search docs</label>
+        <input
+          type="search"
+          id="site-search"
+          class="search-input"
+          name="q"
+          placeholder="Search docs…"
+          autocomplete="off"
+          aria-label="Search documentation"
+        >
+        <button type="submit" class="search-button" aria-label="Submit search">
+          <svg aria-hidden="true" focusable="false" width="16" height="16" viewBox="0 0 16 16" fill="currentColor">
+            <path d="M10.68 11.74a6 6 0 0 1-7.922-8.982 6 6 0 0 1 8.982 7.922l3.04 3.04a.749.749 0 0 1-.326 1.275.749.749 0 0 1-.734-.215ZM11.5 7a4.499 4.499 0 1 0-8.997 0A4.499 4.499 0 0 0 11.5 7Z"/>
+          </svg>
+        </button>
+      </form>
+      </div>
+    </div>
+  </header>
+  <main id="main-content" class="markdown-body">
+    <h1 id="llm-podcast-generation-readiness-plan">LLM Podcast Generation Readiness Plan</h1>
+<h2 id="objective">Objective</h2>
+<p>Deliver a stable, low-cost, 5.4-first generation lane that can produce reviewable transcripts, segment/chapter artifacts, and metadata-ready outputs without requiring full-catalog generation.</p>
+<h2 id="implemented">Implemented</h2>
+<ol>
+<li>Mini-first regression runner with optional 5.4 polish fallback (<code>src/run-regression.js</code>).</li>
+<li>Strong transcript constraints to keep spoken flow natural and avoid spoken chapter labels (<code>src/generate-teaching-transcript.js</code>).</li>
+<li>Candidate publishing pipeline that emits:<ul>
+<li>script text</li>
+<li>segments JSON</li>
+<li>chapter plan JSON</li>
+<li>chapter-time estimate preview JSON
+(<code>src/publish-candidate.js</code>, <code>src/artifact-utils.js</code>).</li>
+</ul>
+</li>
+<li>Optional live-write mode to update <code>podcasts/scripts/*</code> and <code>podcasts/transcripts/*</code> directly when ready.</li>
+<li>Updated commands and documentation for setup, regression, publishing, and integration in:<ul>
+<li><code>README.md</code></li>
+<li><code>docs/setup-and-wiring.md</code></li>
+<li><code>docs/repository-integration-plan.md</code></li>
+<li><code>examples/commands.ps1.txt</code></li>
+<li>root <code>package.json</code> scripts.</li>
+</ul>
+</li>
+</ol>
+<h2 id="quality-gates">Quality Gates</h2>
+<ul>
+<li>Repository automation checks pass.</li>
+<li>Podcast catalog and listening-order validation pass.</li>
+<li>Publish flow smoke test confirmed artifact generation for a real candidate.</li>
+</ul>
+<h2 id="operating-mode">Operating Mode</h2>
+<ul>
+<li>Use GPT-5.4 mini for tuning and broad regression.</li>
+<li>Use GPT-5.4 for rescue/polish only when mini fails.</li>
+<li>Keep generation in batches until strict gates are consistently stable.</li>
+<li>Do not run full 79-item generation until content expansion is complete.</li>
+</ul>
+<h2 id="productized-future-utilization">Productized Future Utilization</h2>
+<ul>
+<li>Keep prompt artifacts and lessons-learned files as reusable process assets.</li>
+<li>Reuse packet-driven source ingestion to support evolving markdown content.</li>
+<li>Treat chapter preview timestamps as planning guidance; final audio chapter timing comes from the existing metadata tagging pipeline.</li>
+</ul>
+
+  </main>
+  <footer role="contentinfo" class="site-footer">
+    <p><strong>GIT Going with GitHub</strong> - A workshop by <a href="https://community-access.org">Community Access</a></p>
+    <p><a href="https://github.com/community-access/git-going-with-github">View on GitHub</a> · <a href="https://community-access.org">community-access.org</a></p>
+  </footer>
+
+  </body>
+</html>

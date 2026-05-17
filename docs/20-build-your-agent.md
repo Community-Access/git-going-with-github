@@ -447,7 +447,7 @@ This is always useful evidence. A learner who explains a failure thoughtfully ha
 
 ---
 
-*Next: [Chapter 21: Next Steps](21-next-steps.md)*  
+*Next: [Chapter 22: What Comes Next](22-what-comes-next.md)*  
 *Back: [Chapter 19: Accessibility Agents](19-accessibility-agents.md)*  
 *Related appendices: [Appendix L: Agents Reference](appendix-l-agents-reference.md) | [Appendix K: Copilot Reference](appendix-k-copilot-reference.md)*
 

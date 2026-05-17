@@ -243,7 +243,7 @@ Output: Trend report showing score changes week-over-week
 **Podcast generation process:**
 1. Review chapter/appendix changes in git diff
 2. Extract key learning points (3-5 min main content)
-3. Record Alex + Jamie conversation (see admin/PODCASTS.md for style guide)
+3. Record Alex + Jamie conversation (see https://lp.csedesigns.com/ggg/PODCASTS.html for style guide)
 4. Add full transcript below audio player
 5. Update RSS feed and release notes
 

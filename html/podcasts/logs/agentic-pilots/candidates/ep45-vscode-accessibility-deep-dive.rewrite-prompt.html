@@ -1,0 +1,392 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="GIT Going with GitHub - A two-day accessible open source workshop by Community Access">
+  <title>ep45-vscode-accessibility-deep-dive.rewrite-prompt - GIT Going with GitHub</title>
+  <link rel="stylesheet" href="../../../../styles/github-markdown.css">
+  <link rel="stylesheet" href="../../../../styles/highlight.css">
+  <link rel="stylesheet" href="../../../../styles/custom.css">
+  <style>
+    .markdown-body {
+      box-sizing: border-box;
+      min-width: 200px;
+      max-width: 980px;
+      margin: 0 auto;
+      padding: 45px;
+    }
+    @media (max-width: 767px) {
+      .markdown-body {
+        padding: 15px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+  <header class="site-header" role="banner">
+    <div class="site-header-inner">
+      <nav aria-label="Breadcrumb" class="breadcrumb">
+        <a href="../../../../index.html">Home</a> <span aria-hidden="true">›</span> <span aria-current="page">ep45-vscode-accessibility-deep-dive.rewrite-prompt</span>
+      </nav>
+      <div class="header-actions">
+        <a href="https://github.com/Community-Access/git-going-with-github/wiki" class="wiki-link" target="_blank" rel="noopener noreferrer">
+          <svg aria-hidden="true" focusable="false" width="16" height="16" viewBox="0 0 16 16" fill="currentColor">
+            <path d="M1.75 1h8.5c.966 0 1.75.784 1.75 1.75v5.5A1.75 1.75 0 0 1 10.25 10H7.06l-2.573 2.573A1.458 1.458 0 0 1 2 11.543V10h-.25A1.75 1.75 0 0 1 0 8.25v-5.5C0 1.784.784 1 1.75 1ZM1.5 2.75v5.5c0 .138.112.25.25.25h1a.75.75 0 0 1 .75.75v2.19l2.72-2.72a.749.749 0 0 1 .53-.22h3.5a.25.25 0 0 0 .25-.25v-5.5a.25.25 0 0 0-.25-.25h-8.5a.25.25 0 0 0-.25.25Zm13 2a.25.25 0 0 0-.25-.25h-.5a.75.75 0 0 1 0-1.5h.5c.966 0 1.75.784 1.75 1.75v5.5A1.75 1.75 0 0 1 14.25 12H14v1.543a1.457 1.457 0 0 1-2.487 1.03L9.22 12.28a.749.749 0 1 1 1.06-1.06l2.22 2.22v-2.19a.75.75 0 0 1 .75-.75h.25a.25.25 0 0 0 .25-.25v-5.5Z"/>
+          </svg>
+          Wiki
+        </a>
+        <form role="search" class="search-form" action="../../../../search.html" method="get">
+        <label for="site-search" class="search-label">Search docs</label>
+        <input
+          type="search"
+          id="site-search"
+          class="search-input"
+          name="q"
+          placeholder="Search docs…"
+          autocomplete="off"
+          aria-label="Search documentation"
+        >
+        <button type="submit" class="search-button" aria-label="Submit search">
+          <svg aria-hidden="true" focusable="false" width="16" height="16" viewBox="0 0 16 16" fill="currentColor">
+            <path d="M10.68 11.74a6 6 0 0 1-7.922-8.982 6 6 0 0 1 8.982 7.922l3.04 3.04a.749.749 0 0 1-.326 1.275.749.749 0 0 1-.734-.215ZM11.5 7a4.499 4.499 0 1 0-8.997 0A4.499 4.499 0 0 0 11.5 7Z"/>
+          </svg>
+        </button>
+      </form>
+      </div>
+    </div>
+  </header>
+  <main id="main-content" class="markdown-body">
+    <p>You are rewriting a podcast transcript for variety and teachability.
+Use automatic model selection (no model is specified by caller).
+Return ONLY the transcript text with valid speaker markers.</p>
+<p>Hard format requirements:</p>
+<ul>
+<li>Allowed markers only: [ALEX], [JAMIE], [PAUSE]</li>
+<li>Marker line must be on its own line</li>
+<li>Keep script structure conversational and teachable</li>
+<li>Keep concept coverage aligned to source materials</li>
+</ul>
+<p>Slug: ep45-vscode-accessibility-deep-dive
+Title: Episode 45: VS Code Accessibility Deep Dive
+Description: Keyboard navigation, accessible views, terminal access, signals, speech, and Copilot accessibility in VS Code.</p>
+<p>Concept checklist to preserve:</p>
+<ul>
+<li>Accessible View and Accessible Help in VS Code</li>
+<li>Navigating panels, problems, terminal output, and diffs</li>
+<li>Accessibility signals and when audio cues help</li>
+<li>Speech and dictation features</li>
+<li>Reading Copilot responses accessibly</li>
+<li>Recovering focus when VS Code feels noisy or confusing</li>
+</ul>
+<p>Source heading checklist to preserve (topic coverage, can paraphrase):</p>
+<ul>
+<li><h2 id="accessibility-features-for-power-users">Accessibility Features for Power Users</h2>
+</li>
+<li><h2 id="table-of-contents">Table of Contents</h2>
+</li>
+<li><h2 id="12-essential-keyboard-navigation-and-findfilter">12. Essential Keyboard Navigation and Find/Filter</h2>
+</li>
+<li><h3 id="panels-and-areas">Panels and Areas</h3>
+</li>
+<li><h3 id="within-the-editor">Within the Editor</h3>
+</li>
+<li><h3 id="find-in-current-file-ctrlf">Find in Current File (<code>Ctrl+F</code>)</h3>
+</li>
+<li><h4 id="screen-reader-interactions-inside-the-find-widget">Screen reader interactions inside the Find widget</h4>
+</li>
+<li><h3 id="global-search-across-the-workspace-ctrlshiftf">Global Search Across the Workspace (<code>Ctrl+Shift+F</code>)</h3>
+</li>
+<li><h4 id="glob-pattern-examples-for-this-workshop">Glob pattern examples for this workshop</h4>
+</li>
+<li><h3 id="type-to-filter-in-tree-views">Type-to-Filter in Tree Views</h3>
+</li>
+<li><h3 id="go-to-symbol-with-inline-filtering-ctrlshifto">Go to Symbol with Inline Filtering (<code>Ctrl+Shift+O</code>)</h3>
+</li>
+<li><h3 id="explorer-file-tree-navigation">Explorer (File Tree) Navigation</h3>
+</li>
+<li><h3 id="learning-cards-keyboard-navigation-and-find">Learning Cards: Keyboard Navigation and Find</h3>
+</li>
+<li><h2 id="13-the-problems-panel">13. The Problems Panel</h2>
+</li>
+<li><h3 id="opening-the-problems-panel">Opening the Problems Panel</h3>
+</li>
+<li><h3 id="navigating-problems">Navigating Problems</h3>
+</li>
+<li><h3 id="understanding-problem-entries">Understanding Problem Entries</h3>
+</li>
+<li><h3 id="learning-cards-problems-panel">Learning Cards: Problems Panel</h3>
+</li>
+<li><h2 id="14-the-terminal">14. The Terminal</h2>
+</li>
+<li><h3 id="opening-and-managing-terminals">Opening and Managing Terminals</h3>
+</li>
+<li><h3 id="terminal-shell-integration">Terminal Shell Integration</h3>
+</li>
+<li><h3 id="terminal-accessibility">Terminal Accessibility</h3>
+</li>
+<li><h3 id="learning-cards-terminal">Learning Cards: Terminal</h3>
+</li>
+<li><h2 id="15-copilot-chat-window">15. Copilot Chat Window</h2>
+</li>
+<li><h3 id="opening-copilot-chat">Opening Copilot Chat</h3>
+</li>
+<li><h3 id="chat-modes">Chat Modes</h3>
+</li>
+<li><h3 id="using-chat-participants">Using Chat Participants</h3>
+</li>
+<li><h3 id="learning-cards-copilot-chat">Learning Cards: Copilot Chat</h3>
+</li>
+<li><h3 id="agent-mode-question-carousel-and-terminal-focus">Agent Mode: Question Carousel and Terminal Focus</h3>
+</li>
+<li><h2 id="16-accessible-help-accessible-view-and-accessible-diff">16. Accessible Help, Accessible View, and Accessible Diff</h2>
+</li>
+<li><h3 id="161-accessible-help---context-aware-keyboard-guide">16.1 Accessible Help - Context-Aware Keyboard Guide</h3>
+</li>
+<li><h4 id="how-to-open-accessible-help">How to open Accessible Help</h4>
+</li>
+<li><h4 id="example-output-when-pressing-alth-in-the-editor">Example output when pressing <code>Alt+H</code> in the editor</h4>
+</li>
+<li><h3 id="162-accessible-view---reading-dynamic-and-streamed-content">16.2 Accessible View - Reading Dynamic and Streamed Content</h3>
+</li>
+<li><h4 id="how-to-open-accessible-view">How to open Accessible View</h4>
+</li>
+<li><h4 id="what-accessible-view-provides">What Accessible View provides</h4>
+</li>
+<li><h4 id="recommended-workflow-for-copilot-chat">Recommended workflow for Copilot Chat</h4>
+</li>
+<li><h4 id="recommended-workflow-for-hover-documentation">Recommended workflow for hover documentation</h4>
+</li>
+<li><h3 id="163-accessible-diff-viewer---reading-changes-without-visual-scanning">16.3 Accessible Diff Viewer - Reading Changes Without Visual Scanning</h3>
+</li>
+<li><h4 id="how-to-open-the-accessible-diff-viewer">How to open the Accessible Diff Viewer</h4>
+</li>
+<li><h4 id="what-the-accessible-diff-viewer-announces">What the Accessible Diff Viewer announces</h4>
+</li>
+<li><h4 id="practical-uses-during-this-workshop">Practical uses during this workshop</h4>
+</li>
+<li><h4 id="audio-cues-for-diffs">Audio cues for diffs</h4>
+</li>
+<li><h3 id="learning-cards-accessible-help-view-and-diff">Learning Cards: Accessible Help, View, and Diff</h3>
+</li>
+<li><h2 id="17-accessibility-signals">17. Accessibility Signals</h2>
+</li>
+<li><h3 id="how-signals-work-the-dual-channel-architecture">How Signals Work: The Dual-Channel Architecture</h3>
+</li>
+<li><h3 id="discovering-signals-the-two-essential-commands">Discovering Signals: The Two Essential Commands</h3>
+</li>
+<li><h3 id="volume-control">Volume Control</h3>
+</li>
+<li><h3 id="complete-signal-reference">Complete Signal Reference</h3>
+</li>
+<li><h4 id="editor-signals">Editor Signals</h4>
+</li>
+<li><h4 id="diff-signals">Diff Signals</h4>
+</li>
+<li><h4 id="terminal-signals">Terminal Signals</h4>
+</li>
+<li><h4 id="chat-and-copilot-signals">Chat and Copilot Signals</h4>
+</li>
+<li><h4 id="debug-signals">Debug Signals</h4>
+</li>
+<li><h4 id="editor-action-signals">Editor Action Signals</h4>
+</li>
+<li><h4 id="voice-signals">Voice Signals</h4>
+</li>
+<li><h4 id="code-action-signals">Code Action Signals</h4>
+</li>
+<li><h3 id="debounce-settings-for-position-signals">Debounce Settings for Position Signals</h3>
+</li>
+<li><h3 id="recommended-workshop-profile">Recommended Workshop Profile</h3>
+</li>
+<li><h3 id="migrating-from-legacy-audio-cues">Migrating from Legacy Audio Cues</h3>
+</li>
+</ul>
+<p>Anti-repetition constraints:</p>
+<ul>
+<li>do not start with &quot;Welcome to...&quot; in most episodes</li>
+<li>do not use &quot;And I am Jamie.&quot; as a fixed boilerplate line</li>
+<li>avoid repeating &quot;orient, act, verify&quot;</li>
+<li>avoid repeating &quot;Carry the map&quot;</li>
+<li>vary opening style across episodes; avoid repetitive intros</li>
+<li>avoid repeating long lines verbatim inside this script</li>
+<li>preserve the same overall script flow and marker order as the current transcript</li>
+</ul>
+<p>Current transcript to rewrite:
+&lt;&lt;<TRANSCRIPT>&gt;&gt;
+[ALEX]
+Welcome back to Git Going with GitHub. This is episode 45: VS Code Accessibility Deep Dive. I am Alex, and today we are turning VS Code Accessibility Deep Dive from a list of instructions into a working mental model that actually feels alive.</p>
+<p>[JAMIE]
+And I am Jamie. I will stop us whenever the instructions sound simple on paper but feel less magical at the keyboard with a screen reader.</p>
+<p>[PAUSE]</p>
+<p>[ALEX]
+Keyboard navigation, accessible views, terminal access, signals, speech, and Copilot accessibility in VS Code. That is the surface description. Underneath it, we are building judgment: where to focus, what to ignore, and how to verify the result.</p>
+<p>[JAMIE]
+So we are not using the audio as a shortcut around learning. We are using it to make the learning easier to enter and easier to remember.</p>
+<p>[ALEX]
+Yes. A good audio lesson gives someone enough context to try the work with confidence, even before they open the written material.</p>
+<p>[PAUSE]</p>
+<p>[JAMIE]
+Okay, set the room for us. What are we walking into?</p>
+<p>[ALEX]
+Accessibility Features for Power Users: Challenge 10: Go Local depends on the accessibility features covered in this chapter. The next useful detail is concrete: Configure these settings before your first local commit.</p>
+<p>[ALEX]
+The next layer is this. Here is the learner-facing version. Mac users: Substitute Cmd for Ctrl and Option for Alt in all shortcuts below. A good GitHub workflow is like a well-run meeting: everyone knows the topic, the next action, and who has the floor.</p>
+<p>[JAMIE]
+What is the one idea that makes the next few steps less mysterious?</p>
+<p>[ALEX]
+This is the move inside Find in Current File (Ctrl+F): when the Find widget opens, three toggle buttons refine what matches.</p>
+<p>[JAMIE]
+That feels much more doable when you say it as one move.</p>
+<p>[ALEX]
+Right. The magic is not speed. The magic is knowing what changed and why it matters.</p>
+<p>[PAUSE]</p>
+<p>[ALEX]
+Now bring the learner back to the room. Anchor this part on Screen reader interactions inside the Find widget. Replace (Ctrl+H): Opens the Find widget with a second input for the replacement text.</p>
+<p>[ALEX]
+For a learner, the useful signals are concrete. Toggles are announced as checkboxes - press Space to toggle each one. Match count is announced as you type (example: 3 of 12 matches). F3 / Shift+F3 move through matches while the widget stays open. Escape closes the widget and returns focus to your last cursor position. Ctrl+Shift+1 - replace the current match. Ctrl+Alt+Enter - replace all matches at once.</p>
+<p>[ALEX]
+A solid navigation habit is to prove where you are before activating controls. Headings, landmarks, and the address bar are not trivia; they are your map.</p>
+<p>[JAMIE]
+What would you say to someone who is already bracing for this to be too much?</p>
+<p>[ALEX]
+The reason this matters is simple: the global Search panel has a rich filtering system - all keyboard-accessible.</p>
+<p>[ALEX]
+The useful habit is simple: orient, act, verify, then continue. That pause between action and trust is part of the work.</p>
+<p>[JAMIE]
+Give me the sequence, because order matters here.</p>
+<p>[ALEX]
+Do not treat Type-to-Filter in Tree Views as decoration. In the Explorer file tree and the Source Control changes list, type characters to narrow visible items. The workshop is closer to rehearsal than lecture. You hear the move, try the move, and then check what changed.</p>
+<p>[ALEX]
+First, focus the Explorer (Ctrl+Shift+E). Then, start typing a filename - a filter input appears at the bottom of the tree. After that, the tree instantly narrows to matching files. Finally, press Escape to clear the filter and restore full view. That small check between steps is what makes the workflow reliable.</p>
+<p>[PAUSE]</p>
+<p>[JAMIE]
+If I am listening before the workshop starts, what should settle in my mind first?</p>
+<p>[ALEX]
+If the interface shifts, Go to Symbol with Inline Filtering (Ctrl+Shift+O) is still useful because in any Markdown file, Ctrl+Shift+O opens a symbol picker populated by every heading. For someone navigating by keyboard or screen reader, this detail matters: Type to narrow the list, then press Enter to jump.</p>
+<p>[ALEX]
+This is where the talk moves from concept to action. Learning Cards: Keyboard Navigation and Find has three jobs: name the idea, give the learner a move, and show what counts as evidence.</p>
+<p>[ALEX]
+The room should hear these as checkpoints. Press Ctrl+M to toggle Tab focus mode -- when on, Tab moves focus between UI elements instead of inserting a tab character. Use Ctrl+G then type a line number to jump directly to any line; type 10:5 to land at line 10, column 5. In the Find widget (Ctrl+F), match count is announced as you type (e.g., &quot;3 of 12 matches&quot;); press F3 / Shift+F3 to step through results. Keyboard Shortcuts editor (Ctrl+K Ctrl+S): After typing a search query, your screen reader announces &quot;Use Ctrl+Down Arrow to access the searched shortcut details&quot; -- press Ctrl+Down to jump from the search input directly to the matching results table. Disable. Press Alt+Z to toggle word wrap so long lines stay visible without horizontal scrolling at high zoom. Increase font size with Ctrl+= (Mac: Cmd+=) independently of your OS magnification for sharper text rendering.</p>
+<p>[JAMIE]
+Now it sounds like a workflow instead of a wall of instructions.</p>
+<p>[ALEX]
+That is where confidence comes from: not from never getting lost, but from knowing how to recover.</p>
+<p>[JAMIE]
+Where do you want a learner to place their attention here?</p>
+<p>[ALEX]
+The teaching point here is not the label; it is the move. The Problems panel (Ctrl+Shift+M) shows all errors, warnings, and informational messages from linters, compilers, and extensions for every open file in your workspace.</p>
+<p>[ALEX]
+A solid pull request habit is to separate three questions: what changed, why it changed, and what still needs review. That keeps the conversation useful instead of noisy.</p>
+<p>[PAUSE]</p>
+<p>[ALEX]
+Before the learner moves on. Opening the Problems Panel has three jobs: name the idea, give the learner a move, and show what counts as evidence.</p>
+<p>[ALEX]
+That becomes easier when you listen for these cues. Keyboard: Ctrl+Shift+M. Status Bar: Click the errors/warnings count (bottom-left of window). Menu Bar: View then Problems. From the editor: Press F8 to jump to the next problem (cycles through errors in the current file).</p>
+<p>[JAMIE]
+Give me the version that sounds like an instructor, not a manual.</p>
+<p>[ALEX]
+Understanding Problem Entries has three jobs: name the idea, give the learner a move, and show what counts as evidence.</p>
+<p>[ALEX]
+If someone is taking notes, this is the short list. Severity icon: Error (red circle with X), Warning (yellow triangle), Info (blue circle with i). Message: Description of the problem. Source: Which tool reported it (e.g., &quot;markdownlint&quot;, &quot;eslint&quot;, &quot;Pylance&quot;). File and line: Where the problem is located.</p>
+<p>[ALEX]
+Now slow down for the part people usually miss. Learning Cards: Problems Panel has three jobs: name the idea, give the learner a move, and show what counts as evidence.</p>
+<p>[ALEX]
+Here is the part that makes the next action easier. Press Ctrl+Shift+M to focus the Problems panel. Your screen reader announces the total count. Each problem is read as: severity, message, source, file name, and line number. Press Enter on any problem to jump directly to that line in the editor. Use F8 / Shift+F8 from inside the editor to cycle through problems without opening the panel. The status bar errors/warnings count updates in real time and is announced when you Tab to it. Problems are color-coded: red for errors, yellow for warnings, blue for info.</p>
+<p>[PAUSE]</p>
+<p>[JAMIE]
+Let&#39;s pause on 14. The Terminal. What should a learner take away from it?</p>
+<p>[ALEX]
+This is the move inside 14. The Terminal: VS Code includes a fully featured integrated terminal. Put another way, you can run shell commands, Git operations, and scripts without leaving the editor.</p>
+<p>[JAMIE]
+That is the kind of detail that keeps a screen reader user oriented.</p>
+<p>[ALEX]
+Yes. The named thing - the heading, tab, field, branch, or button - is the handhold.</p>
+<p>[ALEX]
+Here is the moment where the page starts to make sense. Anchor this part on Terminal Shell Integration. VS Code&#39;s shell integration enhances the terminal. That matters in practice: Enable Terminal IntelliSense: Settings (Ctrl+,) then search terminal.integrated.suggest.enabled then set to on. The durable skill is not memorizing one screen. It is knowing how to find your footing when the screen changes.</p>
+<p>[ALEX]
+Listen for the small confirmations in this list. Command decoration marks - visual indicators showing where each command started and whether it succeeded or failed. Run recent command (Ctrl+R in terminal) - VS Code&#39;s quick pick of your recent commands, searchable by name. Terminal IntelliSense (Ctrl+Space) - completion suggestions for shell commands, file paths, and arguments.</p>
+<p>[JAMIE]
+Let&#39;s pause on Learning Cards: Terminal. What should a learner take away from it?</p>
+<p>[ALEX]
+Learning Cards: Terminal has three jobs: name the idea, give the learner a move, and show what counts as evidence.</p>
+<p>[ALEX]
+The useful version is not abstract; it sounds like this. Press Ctrl+ ` to toggle the terminal. Your screen reader announces &quot;Terminal&quot; and the shell prompt. The terminal acts like a standard text input - type commands and press Enter. Press Alt+H while in the terminal for a full list of terminal-specific keyboard shortcuts. Use Ctrl+R to open the &quot;Run Recent Command&quot; picker - a searchable list of your recent commands. Terminal Navigation Mode: Commands for moving between lines help when reviewing output with a screen reader. VS Code enforces a minimum contrast ratio (4.5:1 by default) for terminal text.</p>
+<p>[PAUSE]</p>
+<p>[ALEX]
+The next point gives the learner a handle. Do not treat 15. Copilot Chat Window as decoration. The Copilot Chat window (Ctrl+Alt+I, or Chat: Open Chat from the Command Palette if your keymap differs) is your conversational AI assistant within VS Code. The listener should be able to check this: It can answer questions, generate code, explain code, fix problems, and help with documentation.</p>
+<p>[JAMIE]
+Let&#39;s pause on Chat Modes. What should a learner take away from it?</p>
+<p>[ALEX]
+If the interface shifts, Chat Modes is still useful because switch modes using the mode picker at the top of the Chat view, or use keyboard shortcuts.</p>
+<p>[ALEX]
+A few details make that real. workbench.action.chat.openAsk - Ask mode. workbench.action.chat.openEdit - Edit mode. workbench.action.chat.openAgent - Agent mode.</p>
+<p>[ALEX]
+Hold that next to this. Put Using Chat Participants into plain language. Type @ in the chat input to see available participants. The interface gets easier when it becomes a set of named places instead of a wall of controls.</p>
+<p>[ALEX]
+Here are the anchors worth keeping. @workspace - Ask questions about your entire codebase. @vscode - Ask about VS Code settings and features. @terminal - Run commands or explain terminal output.</p>
+<p>[JAMIE]
+So the learner is not behind if they stop there and check the page.</p>
+<p>[ALEX]
+Yes. Pausing to verify is not a detour; it is how you keep control of the workflow.</p>
+<p>[PAUSE]</p>
+<p>[JAMIE]
+Let&#39;s pause on Learning Cards: Copilot Chat. What should a learner take away from it?</p>
+<p>[ALEX]
+Learning Cards: Copilot Chat has three jobs: name the idea, give the learner a move, and show what counts as evidence.</p>
+<p>[ALEX]
+That shows up in the workshop in a few specific ways. Press Ctrl+Alt+I, or run Chat: Open Chat from the Command Palette, to open Chat. Focus lands in the text input - start typing your question. After submitting, wait for the response to complete (audio cue plays if accessibility.signals.chatResponseReceived is on). Press Alt+F2 (Accessible View) to read the complete response in a clean, navigable text view. Navigate response content with Up/Down Arrow in the Accessible View. Press Escape to return to the chat input for follow-up questions. The Chat view appears in the sidebar and respects your zoom level and font settings.</p>
+<p>[ALEX]
+That connects to another useful point. This part earns its place because when Copilot&#39;s Agent mode is running a terminal command and needs your input -- such as a password prompt, confirmation, or interactive installer question -- VS Code displays a question carousel in the Chat panel. That is the difference between guessing and knowing: The carousel shows what the terminal is asking and lets you respond without switching focus to the terminal manually.</p>
+<p>[JAMIE]
+What do you want them to do when the plan breaks?</p>
+<p>[ALEX]
+16. Accessible Help, Accessible View, and Accessible Diff: See also: Appendix G: VS Code Reference has a complete keyboard</p>
+<p>[...middle omitted for length...]</p>
+<p>. Heading levels that skip (jumping from to ). Missing blank lines before and after headings, lists, and code blocks. Inconsistent list markers (mixing - and ). Trailing spaces and hard tabs.</p>
+<p>[ALEX]
+The path is straightforward once it is named. Step one is open Extensions: Ctrl+Shift+X (Mac: Cmd+Shift+X). Step two is search for markdownlint. Step three is install the one by David Anson. If one step does not match what you hear, stop there and re-orient.</p>
+<p>[PAUSE]</p>
+<p>[JAMIE]
+Let&#39;s pause on Outline View for Headings. What should a learner take away from it?</p>
+<p>[ALEX]
+Outline View for Headings: The Outline view shows the heading structure of your Markdown file as a navigable tree -- think of it as a table of contents you can jump through. That is not trivia. The Go to Symbol list (Ctrl+Shift+O) announces each heading with its level -- for example, &quot;H2 Installation&quot; or &quot;H3 Configuring rules.&quot; This is the fastest way to verify your document structure without scrolling through the entire file.</p>
+<p>[ALEX]
+Here is the part to remember. Open Outline: Press Ctrl+Shift+O (Mac: Cmd+Shift+O) to open the Go to Symbol quick-pick, which lists every heading in the file. Type to filter, then press Enter to jump. Outline panel: The Outline view also appears in the Explorer sidebar. Press Ctrl+Shift+E to open Explorer, then Tab until you reach the Outline section. Breadcrumbs: The breadcrumb bar at the top of the editor shows your current heading context. Press Ctrl+Shift+. to focus breadcrumbs and navigate between headings.</p>
+<p>[ALEX]
+Keep the teaching thread moving. Here is the learner-facing version. If you have GitHub Copilot enabled (see Chapter 16), it can help with Markdown authoring directly in the editor. For someone navigating by keyboard or screen reader, this detail matters: These features save time when you are writing issue descriptions or pull request bodies during the workshop challenges. A good GitHub workflow is like a well-run meeting: everyone knows the topic, the next action, and who has the floor.</p>
+<p>[ALEX]
+Here is the part to remember. Generate tables: Type a comment like and Copilot suggests a formatted Markdown table. Press Tab to accept. Fix formatting: Select a block of text, open inline chat (Ctrl+I), and type &quot;fix the Markdown formatting.&quot; Copilot restructures headings, adds missing blank lines, and corrects list indentation. Suggest alt text: Select an image link like, open inline chat, and ask &quot;suggest alt text for this image.&quot; Copilot proposes a description based on the filename and surrounding context. Complete link syntax: Start typing [link text]( and Copilot often autocompletes the URL from your recent files or repository structure.</p>
+<p>[JAMIE]
+What should feel predictable before the first live session starts?</p>
+<p>[ALEX]
+This is the move inside Why This Matters for the Workshop: students write Markdown in every single challenge -- from the very first issue you file in Chapter 5 to the agent file you create in Chapter 20. The useful version is: Markdown is also how you write pull request descriptions (Chapter 6) and README files.</p>
+<p>[PAUSE]</p>
+<p>[ALEX]
+Keep the teaching thread moving. Anchor this part on If You Get Stuck. Next: Chapter 13: How Git Works Back: Chapter 11: VS Code Interface Related appendices: Appendix G: VS Code Reference.</p>
+<p>[JAMIE]
+Let&#39;s pause on Section-Level Source Map. What should a learner take away from it?</p>
+<p>[ALEX]
+The reason this matters is simple: use this map to verify facts for each major section in this file.</p>
+<p>[ALEX]
+Here is the part to remember. Accessibility Features for Power Users: GitHub Docs, home, GitHub Changelog, W3C Web Content Accessibility Guidelines (WCAG) 2 overview, WAI tutorials for accessible design patterns, WAI-ARIA Authoring Practices Guide. Essential Keyboard Navigation and Find/Filter: GitHub Docs, home, GitHub Changelog, W3C Web Content Accessibility Guidelines (WCAG) 2 overview, WAI tutorials for accessible design patterns, WAI-ARIA Authoring Practices Guide. The Problems Panel: GitHub Docs, home, GitHub Changelog, W3C Web Content Accessibility Guidelines (WCAG) 2 overview, WAI tutorials for accessible design patterns, WAI-ARIA Authoring Practices Guide. The Terminal: GitHub Docs, home, GitHub Changelog, W3C Web Content Accessibility Guidelines (WCAG) 2 overview, WAI tutorials for accessible design patterns, WAI-ARIA Authoring Practices Guide. Copilot Chat Window: GitHub Docs, home, GitHub Changelog, W3C Web Content Accessibility Guidelines (WCAG) 2 overview, WAI tutorials for accessible design patterns, WAI-ARIA Authoring Practices Guide. Accessible Help, Accessible View, and Accessible Diff: GitHub Docs, home, GitHub Changelog, W3C Web Content Accessibility Guidelines (WCAG) 2 overview, WAI tutorials for accessible design patterns, WAI-ARIA Authoring Practices Guide.</p>
+<p>[PAUSE]</p>
+<p>[JAMIE]
+What should people carry with them after this?</p>
+<p>[ALEX]
+Carry the map. Know what page or tool you are in, know which action you are taking, and know what confirmation should follow. If the confirmation is missing, pause. That pause is not wasted time; it is professional judgment, and it is how complex workflows start to feel magical instead of stressful.</p>
+<p>[JAMIE]
+That is a better way to say it than just follow the steps.</p>
+<p>[ALEX]
+Right. Steps matter, but understanding wins. That is episode 45. Next in the series is episode 46, where we keep building the same contributor muscles.
+&lt;&lt;<END_TRANSCRIPT>&gt;&gt;</p>
+
+  </main>
+  <footer role="contentinfo" class="site-footer">
+    <p><strong>GIT Going with GitHub</strong> - A workshop by <a href="https://community-access.org">Community Access</a></p>
+    <p><a href="https://github.com/community-access/git-going-with-github">View on GitHub</a> · <a href="https://community-access.org">community-access.org</a></p>
+  </footer>
+
+  </body>
+</html>

@@ -117,7 +117,7 @@ Every chapter has an "If You Get Stuck" section. Every challenge has a [referenc
 
 > **HTML Version Available:** All markdown documentation is automatically converted to HTML format. After cloning the repository, you can browse the `html/` directory for web-formatted versions of every document. See [BUILD.md](BUILD.md) for details.
 
-> **Audio Series Available:** Every chapter and appendix has a companion podcast episode - a conversational two-host overview perfect for previewing concepts or reducing screen reader fatigue. The refreshed catalog now covers 54 companion episodes, with Challenge Coach episodes planned as a separate teaching layer. [Browse the podcast episodes](admin/PODCASTS.md) or [subscribe via RSS](https://community-access.org/git-going-with-github/podcasts/feed.xml).
+> **Audio Series Available:** Every chapter and appendix has a companion podcast episode - a conversational two-host overview perfect for previewing concepts or reducing screen reader fatigue. The refreshed catalog now covers 54 companion episodes, with Challenge Coach episodes planned as a separate teaching layer. [Browse the podcast episodes](https://lp.csedesigns.com/ggg/PODCASTS.html) or [subscribe via RSS](https://lp.csedesigns.com/ggg/feed.xml).
 
 ### Quick Navigation
 

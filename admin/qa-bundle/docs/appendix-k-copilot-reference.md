@@ -11,7 +11,7 @@
 ## Copilot Reference Tables
 
 >
-> **Listen to Episode 40:** [GitHub Copilot - Complete Reference](../admin/PODCASTS.md) - a conversational audio overview of this chapter. Listen before reading to preview the concepts, or after to reinforce what you learned.
+> **Listen to Episode 40:** [GitHub Copilot - Complete Reference](https://lp.csedesigns.com/ggg/PODCASTS.html) - a conversational audio overview of this chapter. Listen before reading to preview the concepts, or after to reinforce what you learned.
 
 ## Keyboard Shortcuts, Chat, Screen Reader Workflow, Plugin Ecosystem, and GitHub Agentic Workflows
 
@@ -1312,7 +1312,7 @@ gh aw compile .github/workflows/daily-report.md
 ## Copilot Models
 
 >
-> **Listen to Episode 41:** [Copilot Billing and Models](../admin/PODCASTS.md) - a conversational audio overview of this chapter. Listen before reading to preview the concepts, or after to reinforce what you learned.
+> **Listen to Episode 41:** [Copilot Billing and Models](https://lp.csedesigns.com/ggg/PODCASTS.html) - a conversational audio overview of this chapter. Listen before reading to preview the concepts, or after to reinforce what you learned.
 
 <!-- TOC -->
 - [Overview](#1-overview)

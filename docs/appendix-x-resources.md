@@ -1,6 +1,6 @@
 # Appendix X: Resources
 >
-> **Listen to Episode 38:** [Resources and Links](../admin/PODCASTS.md) - a conversational audio overview of this chapter. Listen before reading to preview the concepts, or after to reinforce what you learned.
+> **Listen to Episode 38:** [Resources and Links](https://lp.csedesigns.com/ggg/PODCASTS.html) - a conversational audio overview of this chapter. Listen before reading to preview the concepts, or after to reinforce what you learned.
 
 > **Reference companion to:** All chapters | Master resource index for the entire curriculum
 
@@ -847,8 +847,8 @@ The documentation set is in the `docs/` folder of this learning repository (sepa
 | Culture and etiquette | [docs/08-open-source-culture.md](08-open-source-culture.md) |
 | Labels, milestones, projects | [docs/09-labels-milestones-projects.md](09-labels-milestones-projects.md) |
 | Notifications | [docs/10-notifications-and-day-1-close.md](10-notifications-and-day-1-close.md) |
-| Day 1 agenda | [DAY1_AGENDA.md](admin/DAY1_AGENDA.md) |
-| Day 2 agenda | [DAY2_AGENDA.md](admin/DAY2_AGENDA.md) |
+| Day 1 agenda | [Day 1 Agenda](../admin/DAY1_AGENDA.md) |
+| Day 2 agenda | [Day 2 Agenda](../admin/DAY2_AGENDA.md) |
 | VS Code: Setup & Accessibility Basics | [docs/11-vscode-interface.md](11-vscode-interface.md) |
 | VS Code: Git & Source Control | [docs/14-git-in-practice.md](14-git-in-practice.md) |
 | VS Code: GitHub Pull Requests Extension | [docs/15-code-review.md](15-code-review.md) |

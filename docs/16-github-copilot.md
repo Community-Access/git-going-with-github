@@ -1,6 +1,6 @@
 # GitHub Copilot
 >
-> **Listen to Episode 14:** [GitHub Copilot](../admin/PODCASTS.md) - a conversational audio overview of this chapter. Listen before reading to preview the concepts, or after to reinforce what you learned.
+> **Listen to Episode 14:** [GitHub Copilot](https://lp.csedesigns.com/ggg/PODCASTS.html) - a conversational audio overview of this chapter. Listen before reading to preview the concepts, or after to reinforce what you learned.
 
 > **Related appendices:** [Appendix K: Copilot Reference](appendix-k-copilot-reference.md) | [Appendix G: VS Code Reference](appendix-g-vscode-reference.md)
 > **Authoritative sources:** [GitHub Docs: About GitHub Copilot](https://docs.github.com/en/copilot/about-github-copilot/what-is-github-copilot) | [GitHub Accessibility: Copilot in VS Code](https://accessibility.github.com/documentation/guide/github-copilot-vsc/) | [VS Code Docs: GitHub Copilot](https://code.visualstudio.com/docs/copilot/overview) | [GitHub Copilot plans](https://github.com/features/copilot/plans) | [Usage-based billing for individuals](https://docs.github.com/en/copilot/concepts/billing/usage-based-billing-for-individuals)
@@ -1578,7 +1578,7 @@ Think of Copilot as a fast typist who has read a lot of code. It can reproduce p
 
 The right relationship with Copilot is the one you have with a first draft. You would never submit a first draft without reading it, testing it, and revising it. Treat every Copilot suggestion the same way.
 
-For more on working with AI tools responsibly, see [Chapter 20](20-build-your-agent.md) on building and evaluating your own agent, and [Chapter 21](21-next-steps.md) for continued learning resources.
+For more on working with AI tools responsibly, see [Chapter 20](20-build-your-agent.md) on building and evaluating your own agent, and [Chapter 22: What Comes Next](22-what-comes-next.md) for continued learning resources.
 
 ### Learning Cards: Critically Evaluating AI Output
 

@@ -4,7 +4,7 @@
 
 Listen to the workshop as one end-to-end path. Companion lessons, Challenge Coach episodes, and reference material are interleaved so learners can hear the concept, practice it, and then keep moving through the course. Every episode includes a full transcript below the player.
 
-**Subscribe:** Add the [podcast RSS feed](https://community-access.org/git-going-with-github/podcasts/feed.xml) to your preferred podcast app - Apple Podcasts, Spotify, Overcast, or any RSS reader.
+**Subscribe:** Add the [podcast RSS feed](https://lp.csedesigns.com/ggg/feed.xml) to your preferred podcast app - Apple Podcasts, Spotify, Overcast, or any RSS reader.
 
 **Transcripts:** Every episode includes a complete, readable transcript. Expand the "Read Transcript" section below any episode to follow along or search the conversation.
 

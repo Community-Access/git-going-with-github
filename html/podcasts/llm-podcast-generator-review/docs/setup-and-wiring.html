@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="GIT Going with GitHub - A two-day accessible open source workshop by Community Access">
+  <title>Setup and Wiring Guide - GIT Going with GitHub</title>
+  <link rel="stylesheet" href="../../../styles/github-markdown.css">
+  <link rel="stylesheet" href="../../../styles/highlight.css">
+  <link rel="stylesheet" href="../../../styles/custom.css">
+  <style>
+    .markdown-body {
+      box-sizing: border-box;
+      min-width: 200px;
+      max-width: 980px;
+      margin: 0 auto;
+      padding: 45px;
+    }
+    @media (max-width: 767px) {
+      .markdown-body {
+        padding: 15px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+  <header class="site-header" role="banner">
+    <div class="site-header-inner">
+      <nav aria-label="Breadcrumb" class="breadcrumb">
+        <a href="../../../index.html">Home</a> <span aria-hidden="true">›</span> <span aria-current="page">Setup and Wiring Guide</span>
+      </nav>
+      <div class="header-actions">
+        <a href="https://github.com/Community-Access/git-going-with-github/wiki" class="wiki-link" target="_blank" rel="noopener noreferrer">
+          <svg aria-hidden="true" focusable="false" width="16" height="16" viewBox="0 0 16 16" fill="currentColor">
+            <path d="M1.75 1h8.5c.966 0 1.75.784 1.75 1.75v5.5A1.75 1.75 0 0 1 10.25 10H7.06l-2.573 2.573A1.458 1.458 0 0 1 2 11.543V10h-.25A1.75 1.75 0 0 1 0 8.25v-5.5C0 1.784.784 1 1.75 1ZM1.5 2.75v5.5c0 .138.112.25.25.25h1a.75.75 0 0 1 .75.75v2.19l2.72-2.72a.749.749 0 0 1 .53-.22h3.5a.25.25 0 0 0 .25-.25v-5.5a.25.25 0 0 0-.25-.25h-8.5a.25.25 0 0 0-.25.25Zm13 2a.25.25 0 0 0-.25-.25h-.5a.75.75 0 0 1 0-1.5h.5c.966 0 1.75.784 1.75 1.75v5.5A1.75 1.75 0 0 1 14.25 12H14v1.543a1.457 1.457 0 0 1-2.487 1.03L9.22 12.28a.749.749 0 1 1 1.06-1.06l2.22 2.22v-2.19a.75.75 0 0 1 .75-.75h.25a.25.25 0 0 0 .25-.25v-5.5Z"/>
+          </svg>
+          Wiki
+        </a>
+        <form role="search" class="search-form" action="../../../search.html" method="get">
+        <label for="site-search" class="search-label">Search docs</label>
+        <input
+          type="search"
+          id="site-search"
+          class="search-input"
+          name="q"
+          placeholder="Search docs…"
+          autocomplete="off"
+          aria-label="Search documentation"
+        >
+        <button type="submit" class="search-button" aria-label="Submit search">
+          <svg aria-hidden="true" focusable="false" width="16" height="16" viewBox="0 0 16 16" fill="currentColor">
+            <path d="M10.68 11.74a6 6 0 0 1-7.922-8.982 6 6 0 0 1 8.982 7.922l3.04 3.04a.749.749 0 0 1-.326 1.275.749.749 0 0 1-.734-.215ZM11.5 7a4.499 4.499 0 1 0-8.997 0A4.499 4.499 0 0 0 11.5 7Z"/>
+          </svg>
+        </button>
+      </form>
+      </div>
+    </div>
+  </header>
+  <main id="main-content" class="markdown-body">
+    <h1 id="setup-and-wiring-guide">Setup and Wiring Guide</h1>
+<p>This guide explains what you need to make the LLM-first podcast workflow run.</p>
+<h2 id="1-local-prerequisites">1. Local prerequisites</h2>
+<p>Install these from the repository root:</p>
+<pre><code class="hljs language-powershell">npm install
+python <span class="hljs-literal">-m</span> pip install <span class="hljs-literal">--upgrade</span> pip
+python <span class="hljs-literal">-m</span> pip install kokoro<span class="hljs-literal">-onnx</span> soundfile numpy mutagen
+python <span class="hljs-literal">-m</span> podcasts.tts.download_kokoro_samples <span class="hljs-literal">--english-high-quality-only</span></code></pre>
+<p>Recommended baseline:</p>
+<ul>
+<li>Node.js 20 or newer</li>
+<li>Python 3.10 or newer</li>
+<li>Git</li>
+<li>PowerShell 7 or Windows PowerShell</li>
+<li>A clean branch for testing</li>
+</ul>
+<h2 id="2-api-key-setup-openrouter-first">2. API key setup (OpenRouter first)</h2>
+<p>Set your OpenRouter key in the shell. The generator also supports direct OpenAI keys, but OpenRouter is the default path in this review lane.</p>
+<p>PowerShell:</p>
+<pre><code class="hljs language-powershell"><span class="hljs-variable">$env:OPENROUTER_API_KEY</span> = <span class="hljs-string">&quot;sk-or-v1-your-key-here&quot;</span>
+<span class="hljs-variable">$env:PODCAST_LLM_MODEL_MINI</span> = <span class="hljs-string">&quot;openai/gpt-5.4-mini&quot;</span>
+<span class="hljs-variable">$env:PODCAST_LLM_MODEL_POLISH</span> = <span class="hljs-string">&quot;openai/gpt-5.4&quot;</span></code></pre>
+<p>Bash:</p>
+<pre><code class="hljs language-bash"><span class="hljs-built_in">export</span> OPENROUTER_API_KEY=<span class="hljs-string">&quot;sk-or-v1-your-key-here&quot;</span>
+<span class="hljs-built_in">export</span> PODCAST_LLM_MODEL_MINI=<span class="hljs-string">&quot;openai/gpt-5.4-mini&quot;</span>
+<span class="hljs-built_in">export</span> PODCAST_LLM_MODEL_POLISH=<span class="hljs-string">&quot;openai/gpt-5.4&quot;</span></code></pre>
+<p>Optional:</p>
+<pre><code class="hljs language-powershell"><span class="hljs-variable">$env:OPENROUTER_BASE_URL</span> = <span class="hljs-string">&quot;https://openrouter.ai/api/v1&quot;</span>
+<span class="hljs-variable">$env:OPENROUTER_SITE_URL</span> = <span class="hljs-string">&quot;https://github.com/Community-Access/git-going-with-github&quot;</span>
+<span class="hljs-variable">$env:OPENROUTER_APP_TITLE</span> = <span class="hljs-string">&quot;git-going-with-github-podcast-review&quot;</span>
+<span class="hljs-variable">$env:PODCAST_LLM_TEMPERATURE</span> = <span class="hljs-string">&quot;0.7&quot;</span>
+<span class="hljs-variable">$env:PODCAST_LLM_MAX_OUTPUT_TOKENS</span> = <span class="hljs-string">&quot;12000&quot;</span></code></pre>
+<h2 id="3-first-dry-run">3. First dry run</h2>
+<p>A dry run writes the prompt but does not call the API. Build a packet first so multi-source episodes and challenge episodes are covered correctly.</p>
+<pre><code class="hljs language-powershell">node podcasts/tools/agentic<span class="hljs-literal">-pilot</span>/<span class="hljs-built_in">build-source</span><span class="hljs-literal">-packet</span>.js <span class="hljs-literal">--slug</span> ep05<span class="hljs-literal">-working-with-issues</span>
+
+node podcasts/llm<span class="hljs-literal">-podcast-generator-review</span>/src/generate<span class="hljs-literal">-teaching-transcript</span>.js `
+  <span class="hljs-literal">--slug</span> ep05<span class="hljs-literal">-working-with-issues</span> `
+  <span class="hljs-literal">--packet</span> podcasts/logs/agentic<span class="hljs-literal">-pilots</span>/ep05<span class="hljs-literal">-working-with-issues</span>.packet.json `
+  <span class="hljs-literal">--dry-run</span></code></pre>
+<p>Review:</p>
+<pre><code class="hljs language-text">podcasts/llm-podcast-generator-review/generated/ep05-working-with-issues.prompt.md</code></pre>
+<h2 id="4-first-generation-run">4. First generation run</h2>
+<pre><code class="hljs language-powershell">node podcasts/llm<span class="hljs-literal">-podcast-generator-review</span>/src/generate<span class="hljs-literal">-teaching-transcript</span>.js `
+  <span class="hljs-literal">--slug</span> ep05<span class="hljs-literal">-working-with-issues</span> `
+  <span class="hljs-literal">--packet</span> podcasts/logs/agentic<span class="hljs-literal">-pilots</span>/ep05<span class="hljs-literal">-working-with-issues</span>.packet.json `
+  <span class="hljs-literal">--model</span> openai/gpt<span class="hljs-literal">-5</span>.<span class="hljs-number">4</span><span class="hljs-literal">-mini</span> `
+  <span class="hljs-literal">--out</span> podcasts/llm<span class="hljs-literal">-podcast-generator-review</span>/generated/ep05<span class="hljs-literal">-working-with-issues</span>.mini.candidate.json</code></pre>
+<p>Expected output:</p>
+<pre><code class="hljs language-text">podcasts/llm-podcast-generator-review/generated/ep05-working-with-issues.mini.candidate.json
+podcasts/llm-podcast-generator-review/generated/ep05-working-with-issues.mini.candidate.txt</code></pre>
+<h2 id="5-human-review-checklist">5. Human review checklist</h2>
+<p>Before promoting any generated transcript:</p>
+<ul>
+<li>Does Alex sound like the warm expert guide?</li>
+<li>Does Jamie ask learner-centered questions?</li>
+<li>Does the transcript cover every meaningful source heading?</li>
+<li>Does it avoid visual-only language?</li>
+<li>Does it teach accessibility as central to the experience?</li>
+<li>Does it preserve challenge evidence requirements?</li>
+<li>Are chapter titles specific and useful?</li>
+<li>Are commands explained before being used?</li>
+<li>Does the output avoid hallucinated GitHub behavior?</li>
+</ul>
+<h2 id="6-regression-flow-mini-then-54-polish">6. Regression flow: mini then 5.4 polish</h2>
+<p>Run a low-cost pass with mini, then automatically run GPT-5.4 polish only for mini failures:</p>
+<pre><code class="hljs language-powershell">node podcasts/llm<span class="hljs-literal">-podcast-generator-review</span>/src/run<span class="hljs-literal">-regression</span>.js <span class="hljs-literal">--group</span> chapters <span class="hljs-literal">--limit</span> <span class="hljs-number">5</span></code></pre>
+<p>Mini-only pass (no polish):</p>
+<pre><code class="hljs language-powershell">node podcasts/llm<span class="hljs-literal">-podcast-generator-review</span>/src/run<span class="hljs-literal">-regression</span>.js <span class="hljs-literal">--group</span> chapters <span class="hljs-literal">--limit</span> <span class="hljs-number">5</span> <span class="hljs-literal">--skip-polish</span></code></pre>
+<p>Full catalog dry-run prompt build:</p>
+<pre><code class="hljs language-powershell">node podcasts/llm<span class="hljs-literal">-podcast-generator-review</span>/src/run<span class="hljs-literal">-regression</span>.js <span class="hljs-literal">--dry-run</span> <span class="hljs-literal">--group</span> all</code></pre>
+<p>The runner writes:</p>
+<pre><code class="hljs language-text">podcasts/llm-podcast-generator-review/generated/regression/&lt;timestamp&gt;/&lt;slug&gt;/mini.candidate.json
+podcasts/llm-podcast-generator-review/generated/regression/&lt;timestamp&gt;/&lt;slug&gt;/mini.prompt.md
+podcasts/llm-podcast-generator-review/generated/regression/&lt;timestamp&gt;/&lt;slug&gt;/polish.candidate.json
+podcasts/llm-podcast-generator-review/generated/regression/&lt;timestamp&gt;/&lt;slug&gt;/polish.prompt.md
+podcasts/llm-podcast-generator-review/generated/regression/&lt;timestamp&gt;/summary.json
+podcasts/llm-podcast-generator-review/docs/lessons-learned.md</code></pre>
+<p>Passing criteria in regression are strict: candidates pass only when heading and concept coverage are fully covered (no partial or missing items).</p>
+<p>Publish passing artifacts for end-to-end metadata flow:</p>
+<pre><code class="hljs language-powershell">node podcasts/llm<span class="hljs-literal">-podcast-generator-review</span>/src/run<span class="hljs-literal">-regression</span>.js <span class="hljs-literal">--group</span> chapters <span class="hljs-literal">--limit</span> <span class="hljs-number">5</span> <span class="hljs-literal">--publish-passing</span></code></pre>
+<p>Write directly to live script/transcript paths only when you are ready:</p>
+<pre><code class="hljs language-powershell">node podcasts/llm<span class="hljs-literal">-podcast-generator-review</span>/src/run<span class="hljs-literal">-regression</span>.js <span class="hljs-literal">--group</span> chapters <span class="hljs-literal">--limit</span> <span class="hljs-number">5</span> <span class="hljs-literal">--publish-passing</span> <span class="hljs-literal">--write-live</span></code></pre>
+<p>Per published slug:</p>
+<pre><code class="hljs language-text">podcasts/llm-podcast-generator-review/output/published/&lt;slug&gt;/&lt;slug&gt;.txt
+podcasts/llm-podcast-generator-review/output/published/&lt;slug&gt;/&lt;slug&gt;-segments.json
+podcasts/llm-podcast-generator-review/output/published/&lt;slug&gt;/&lt;slug&gt;-chapters.json
+podcasts/llm-podcast-generator-review/output/published/&lt;slug&gt;/&lt;slug&gt;-chapter-preview.json</code></pre>
+<p>The chapter preview contains estimated chapter start seconds for planning and QA. Final audio timestamps are derived by the existing metadata tagging flow from generated segment manifests.</p>
+<h2 id="7-production-wiring-after-approval">7. Production wiring after approval</h2>
+<p>The review lane keeps outputs isolated. When a transcript is approved, promote it into the live scripts and regenerate podcast artifacts.</p>
+<h2 id="8-after-transcript-promotion">8. After transcript promotion</h2>
+<p>Run:</p>
+<pre><code class="hljs language-powershell">npm run build:podcast<span class="hljs-literal">-site</span>
+npm run podcast:chapters:audit
+npm run validate:podcasts</code></pre>
+<p>Then generate audio:</p>
+<pre><code class="hljs language-powershell">npm run podcast:audio:queue
+python <span class="hljs-literal">-m</span> podcasts.tts.generate_audio <span class="hljs-literal">--start</span> <span class="hljs-number">5</span> <span class="hljs-literal">--end</span> <span class="hljs-number">5</span> <span class="hljs-literal">--force</span> <span class="hljs-literal">--audio-format</span> mp3</code></pre>
+<p>Write metadata and chapters for one slug:</p>
+<pre><code class="hljs language-powershell">python podcasts/tag<span class="hljs-literal">-audio-metadata</span>.py <span class="hljs-literal">--slug</span> ep05<span class="hljs-literal">-working-with-issues</span> <span class="hljs-literal">--audio-dir</span> podcasts/audio/kokoro<span class="hljs-literal">-am_liam-af_jessica</span> <span class="hljs-literal">--expected-count</span> <span class="hljs-number">1</span> <span class="hljs-literal">--write</span></code></pre>
+<p>One-step review-lane render and tag from a candidate:</p>
+<pre><code class="hljs language-powershell">node podcasts/llm<span class="hljs-literal">-podcast-generator-review</span>/src/render<span class="hljs-operator">-and</span><span class="hljs-literal">-tag</span>.js `
+  <span class="hljs-literal">--slug</span> ep05<span class="hljs-literal">-working-with-issues</span> `
+  <span class="hljs-literal">--candidate</span> podcasts/llm<span class="hljs-literal">-podcast-generator-review</span>/generated/regression/&lt;timestamp&gt;/ep05<span class="hljs-literal">-working-with-issues</span>/mini.candidate.json</code></pre>
+<h3 id="technical-integration-notes">Technical integration notes</h3>
+<ul>
+<li>Audio generation reads live scripts from <code>podcasts/scripts/&lt;group&gt;/&lt;slug&gt;.txt</code>.</li>
+<li>Audio generation writes segment audio and timing manifests to <code>podcasts/audio/segments/&lt;slug&gt;/manifest.json</code>.</li>
+<li>Metadata tagging reads chapter plans from <code>podcasts/transcripts/&lt;group&gt;/&lt;slug&gt;-chapters.json</code>.</li>
+<li>Metadata tagging combines chapter plans with segment timing manifests to produce:<ul>
+<li>embedded ID3 chapter frames in MP3 files</li>
+<li>chapter sidecars in <code>podcasts/chapters/&lt;slug&gt;.json</code>.</li>
+</ul>
+</li>
+<li>The review lane is compatible when promoted candidates are written to live script/transcript paths (<code>--write-live</code> or <code>render-and-tag.js</code>).</li>
+</ul>
+<h2 id="9-recommended-model-strategy">9. Recommended model strategy</h2>
+<p>Use this model sequence:</p>
+<ol>
+<li><strong>GPT-5.4 mini</strong> for broad regression and prompt tuning.</li>
+<li><strong>GPT-5.4</strong> for mini failures and final quality polish.</li>
+<li>Keep deterministic transcript tooling available as a fallback lane.</li>
+<li><strong>Batch API</strong> when running many episodes asynchronously.</li>
+</ol>
+<h2 id="10-scripts-only-full-catalog-generation-54-only">10. Scripts-only full catalog generation (5.4 only)</h2>
+<p>Use this when you want all 79 scripts/transcripts generated with no audio rendering:</p>
+<pre><code class="hljs language-powershell">npm run podcast:llm:scripts<span class="hljs-literal">-only</span></code></pre>
+<p>Direct command with explicit retries:</p>
+<pre><code class="hljs language-powershell">node podcasts/llm<span class="hljs-literal">-podcast-generator-review</span>/src/generate<span class="hljs-literal">-scripts-only</span>.js `
+  <span class="hljs-literal">--group</span> all `
+  <span class="hljs-literal">--model</span> openai/gpt<span class="hljs-literal">-5</span>.<span class="hljs-number">4</span> `
+  <span class="hljs-literal">--retries</span> <span class="hljs-number">3</span> `
+  <span class="hljs-literal">--retry-delay-ms</span> <span class="hljs-number">2000</span> `
+  <span class="hljs-literal">--max-repair-attempts</span> <span class="hljs-number">4</span></code></pre>
+<p>Outputs:</p>
+<ul>
+<li>Run artifacts and summaries in <code>podcasts/llm-podcast-generator-review/generated/scripts-only/&lt;timestamp&gt;/</code>.</li>
+<li>Live scripts/transcripts updated in:<ul>
+<li><code>podcasts/scripts/&lt;group&gt;/&lt;slug&gt;.txt</code></li>
+<li><code>podcasts/transcripts/&lt;group&gt;/&lt;slug&gt;-segments.json</code></li>
+<li><code>podcasts/transcripts/&lt;group&gt;/&lt;slug&gt;-chapters.json</code></li>
+</ul>
+</li>
+</ul>
+<p>This path intentionally skips audio and metadata steps.
+Use <code>docs/scripts-only-troubleshooting.md</code> for completion, retry, and recovery workflow.</p>
+<p>Fallback behavior for high-completion runs:</p>
+<ul>
+<li>Retries transient API/network failures (<code>429</code>, <code>502/503/504</code>, timeouts, connection resets).</li>
+<li>Uses multiple repair passes in generator (<code>--max-repair-attempts</code>).</li>
+<li>If generation still fails for a slug, salvages from the existing live script so run progress continues.</li>
+<li>Disable salvage behavior only if you want hard-fail semantics:</li>
+</ul>
+<pre><code class="hljs language-powershell">node podcasts/llm<span class="hljs-literal">-podcast-generator-review</span>/src/generate<span class="hljs-literal">-scripts-only</span>.js <span class="hljs-literal">--group</span> all <span class="hljs-literal">--model</span> openai/gpt<span class="hljs-literal">-5</span>.<span class="hljs-number">4</span> <span class="hljs-literal">--no-salvage-from-live</span></code></pre>
+<h2 id="11-durable-syncbatch-execution-layer">11. Durable sync/batch execution layer</h2>
+<p>Use this for durable, resumable API execution with de-duplication and run reports.</p>
+<p>Prepare jobs (creates/updates <code>generated/execution/ai_jobs.sqlite</code>):</p>
+<pre><code class="hljs language-powershell">npm run podcast:llm:ai:prepare</code></pre>
+<p>Dry-run estimate (no API calls):</p>
+<pre><code class="hljs language-powershell">node podcasts/llm<span class="hljs-literal">-podcast-generator-review</span>/src/execution/run<span class="hljs-literal">-ai-jobs</span>.js <span class="hljs-literal">--mode</span> batch <span class="hljs-literal">--dry-run</span></code></pre>
+<p>Submit/poll batch jobs:</p>
+<pre><code class="hljs language-powershell">npm run podcast:llm:ai:run:batch
+node podcasts/llm<span class="hljs-literal">-podcast-generator-review</span>/src/execution/run<span class="hljs-literal">-ai-jobs</span>.js <span class="hljs-literal">--mode</span> batch <span class="hljs-literal">--action</span> poll</code></pre>
+<p>With OpenRouter (<code>OPENAI_BASE_URL=https://openrouter.ai/api/v1</code>), <code>--mode batch</code> automatically uses a durable sync fallback (ledger + retries + dedupe) because native Files/Batches endpoints are not used in that provider path.</p>
+<p>Sync execution for interactive subsets:</p>
+<pre><code class="hljs language-powershell">npm run podcast:llm:ai:run:sync</code></pre>
+<p>Resume and apply completed jobs to live scripts/transcripts:</p>
+<pre><code class="hljs language-powershell">node podcasts/llm<span class="hljs-literal">-podcast-generator-review</span>/src/execution/run<span class="hljs-literal">-ai-jobs</span>.js <span class="hljs-literal">--mode</span> batch <span class="hljs-literal">--action</span> resume
+npm run podcast:llm:ai:apply</code></pre>
+<p>Run reports are written to:</p>
+<pre><code class="hljs language-text">podcasts/llm-podcast-generator-review/generated/execution/reports/</code></pre>
+<h2 id="12-time-critical-full-end-to-end-validation-highest-quality-pass">12. Time-critical full end-to-end validation (highest-quality pass)</h2>
+<p>This section is for podcast/LLM pipeline validation. Learning Room template go-live gating remains controlled by <code>GO-LIVE-QA-GUIDE.md</code> and <code>admin/LEARNING-ROOM-E2E-QA-RUNBOOK.md</code>.</p>
+<p>Use this sequence to validate generation, publication, podcast build surfaces, and release checks.</p>
+<ol>
+<li>Run durable generation from <code>cmd.exe</code>:</li>
+</ol>
+<pre><code class="hljs language-bat">generate-llm-batch-jobs.bat</code></pre>
+<p>For a strict regeneration (wipe old durable state and prior published artifacts before prepare/run/apply):</p>
+<pre><code class="hljs language-bat">generate-llm-batch-jobs.bat --clean</code></pre>
+<ol start="2">
+<li>Confirm durable execution completed:</li>
+</ol>
+<pre><code class="hljs language-powershell"><span class="hljs-built_in">Get-ChildItem</span> <span class="hljs-string">&quot;podcasts/llm-podcast-generator-review/generated/execution/reports&quot;</span> <span class="hljs-operator">-File</span> `
+| <span class="hljs-built_in">Sort-Object</span> LastWriteTime <span class="hljs-literal">-Descending</span> `
+| <span class="hljs-built_in">Select-Object</span> <span class="hljs-literal">-First</span> <span class="hljs-number">1</span> <span class="hljs-literal">-ExpandProperty</span> FullName</code></pre>
+<ol start="3">
+<li>Confirm all selected scripts were published:</li>
+</ol>
+<pre><code class="hljs language-powershell"><span class="hljs-variable">$summary</span> = <span class="hljs-built_in">Get-Content</span> <span class="hljs-string">&quot;podcasts/llm-podcast-generator-review/generated/scripts-only/&lt;run&gt;/summary.json&quot;</span> <span class="hljs-literal">-Raw</span> | <span class="hljs-built_in">ConvertFrom-Json</span>
+<span class="hljs-string">&quot;selected=<span class="hljs-variable">$</span>(<span class="hljs-variable">$summary</span>.selected) published=<span class="hljs-variable">$</span>(<span class="hljs-variable">$summary</span>.published) failed=<span class="hljs-variable">$</span>(<span class="hljs-variable">$summary</span>.failed)&quot;</span></code></pre>
+<ol start="4">
+<li>Run repository validation gates:</li>
+</ol>
+<pre><code class="hljs language-powershell">npm run test:automation
+npm run test:llm<span class="hljs-literal">-execution</span>
+npm run validate:podcasts
+npm run validate:podcast<span class="hljs-literal">-feed</span>
+npm run build:podcast<span class="hljs-literal">-site</span></code></pre>
+<ol start="5">
+<li>If audio integration is required for signoff, run a targeted live slug check:</li>
+</ol>
+<pre><code class="hljs language-powershell">python <span class="hljs-literal">-m</span> podcasts.tts.generate_audio <span class="hljs-literal">--start</span> <span class="hljs-number">5</span> <span class="hljs-literal">--end</span> <span class="hljs-number">5</span> <span class="hljs-literal">--force</span> <span class="hljs-literal">--audio-format</span> mp3
+python podcasts/tag<span class="hljs-literal">-audio-metadata</span>.py <span class="hljs-literal">--slug</span> ep05<span class="hljs-literal">-working-with-issues</span> <span class="hljs-literal">--audio-dir</span> podcasts/audio/kokoro<span class="hljs-literal">-am_liam-af_jessica</span> <span class="hljs-literal">--expected-count</span> <span class="hljs-number">1</span> <span class="hljs-literal">--write</span></code></pre>
+<p>Release-quality completion criteria:</p>
+<ul>
+<li>Latest execution report exists and contains no unresolved blocker failures.</li>
+<li>Script/transcript publication counts match expected scope.</li>
+<li><code>test:automation</code>, <code>test:llm-execution</code>, <code>validate:podcasts</code>, and <code>validate:podcast-feed</code> all pass.</li>
+<li>Podcast site builds from current sources without manual patching.</li>
+</ul>
+
+  </main>
+  <footer role="contentinfo" class="site-footer">
+    <p><strong>GIT Going with GitHub</strong> - A workshop by <a href="https://community-access.org">Community Access</a></p>
+    <p><a href="https://github.com/community-access/git-going-with-github">View on GitHub</a> · <a href="https://community-access.org">community-access.org</a></p>
+  </footer>
+
+  </body>
+</html>

@@ -1,0 +1,406 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="GIT Going with GitHub - A two-day accessible open source workshop by Community Access">
+  <title>ep05-working-with-issues.rewrite-prompt - GIT Going with GitHub</title>
+  <link rel="stylesheet" href="../../../../styles/github-markdown.css">
+  <link rel="stylesheet" href="../../../../styles/highlight.css">
+  <link rel="stylesheet" href="../../../../styles/custom.css">
+  <style>
+    .markdown-body {
+      box-sizing: border-box;
+      min-width: 200px;
+      max-width: 980px;
+      margin: 0 auto;
+      padding: 45px;
+    }
+    @media (max-width: 767px) {
+      .markdown-body {
+        padding: 15px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+  <header class="site-header" role="banner">
+    <div class="site-header-inner">
+      <nav aria-label="Breadcrumb" class="breadcrumb">
+        <a href="../../../../index.html">Home</a> <span aria-hidden="true">›</span> <span aria-current="page">ep05-working-with-issues.rewrite-prompt</span>
+      </nav>
+      <div class="header-actions">
+        <a href="https://github.com/Community-Access/git-going-with-github/wiki" class="wiki-link" target="_blank" rel="noopener noreferrer">
+          <svg aria-hidden="true" focusable="false" width="16" height="16" viewBox="0 0 16 16" fill="currentColor">
+            <path d="M1.75 1h8.5c.966 0 1.75.784 1.75 1.75v5.5A1.75 1.75 0 0 1 10.25 10H7.06l-2.573 2.573A1.458 1.458 0 0 1 2 11.543V10h-.25A1.75 1.75 0 0 1 0 8.25v-5.5C0 1.784.784 1 1.75 1ZM1.5 2.75v5.5c0 .138.112.25.25.25h1a.75.75 0 0 1 .75.75v2.19l2.72-2.72a.749.749 0 0 1 .53-.22h3.5a.25.25 0 0 0 .25-.25v-5.5a.25.25 0 0 0-.25-.25h-8.5a.25.25 0 0 0-.25.25Zm13 2a.25.25 0 0 0-.25-.25h-.5a.75.75 0 0 1 0-1.5h.5c.966 0 1.75.784 1.75 1.75v5.5A1.75 1.75 0 0 1 14.25 12H14v1.543a1.457 1.457 0 0 1-2.487 1.03L9.22 12.28a.749.749 0 1 1 1.06-1.06l2.22 2.22v-2.19a.75.75 0 0 1 .75-.75h.25a.25.25 0 0 0 .25-.25v-5.5Z"/>
+          </svg>
+          Wiki
+        </a>
+        <form role="search" class="search-form" action="../../../../search.html" method="get">
+        <label for="site-search" class="search-label">Search docs</label>
+        <input
+          type="search"
+          id="site-search"
+          class="search-input"
+          name="q"
+          placeholder="Search docs…"
+          autocomplete="off"
+          aria-label="Search documentation"
+        >
+        <button type="submit" class="search-button" aria-label="Submit search">
+          <svg aria-hidden="true" focusable="false" width="16" height="16" viewBox="0 0 16 16" fill="currentColor">
+            <path d="M10.68 11.74a6 6 0 0 1-7.922-8.982 6 6 0 0 1 8.982 7.922l3.04 3.04a.749.749 0 0 1-.326 1.275.749.749 0 0 1-.734-.215ZM11.5 7a4.499 4.499 0 1 0-8.997 0A4.499 4.499 0 0 0 11.5 7Z"/>
+          </svg>
+        </button>
+      </form>
+      </div>
+    </div>
+  </header>
+  <main id="main-content" class="markdown-body">
+    <p>You are rewriting a podcast transcript for variety and teachability.
+Use automatic model selection (no model is specified by caller).
+Return ONLY the transcript text with valid speaker markers.</p>
+<p>Hard format requirements:</p>
+<ul>
+<li>Allowed markers only: [ALEX], [JAMIE], [PAUSE]</li>
+<li>Marker line must be on its own line</li>
+<li>Keep script structure conversational and teachable</li>
+<li>Keep concept coverage aligned to source materials</li>
+</ul>
+<p>Slug: ep05-working-with-issues
+Title: Episode 5: Working with Issues
+Description: Filing, searching, filtering, commenting on, and managing GitHub issues.</p>
+<p>Concept checklist to preserve:</p>
+<ul>
+<li>What an issue is: a unit of work, bug report, or feature request</li>
+<li>The Issues tab: list view, filters, and search</li>
+<li>Issue anatomy: title, body (markdown), labels, assignees, milestone</li>
+<li>Filtering issues: by label, author, assignee, milestone, open/closed</li>
+<li>Using the search bar with qualifiers like is:open label:bug</li>
+<li>Reading an issue: the timeline of comments, events, and references</li>
+<li>Filing a new issue: writing a clear title and descriptive body</li>
+<li>Using markdown in issue bodies: code blocks, lists, task lists, links</li>
+<li>Commenting on issues: adding context, asking questions, reacting</li>
+<li>Reactions (emoji) as lightweight feedback</li>
+<li>Referencing issues from other issues or pull requests with #number</li>
+<li>Assigning an issue to yourself or someone else</li>
+<li>Applying and removing labels</li>
+<li>Closing an issue and what closed means</li>
+<li>Reopening a closed issue</li>
+<li>The connection between issues and pull requests</li>
+<li>Using gh issue commands from the terminal as an alternative</li>
+</ul>
+<p>Source heading checklist to preserve (topic coverage, can paraphrase):</p>
+<ul>
+<li><h2 id="filing-managing-and-participating-in-github-issues">Filing, Managing, and Participating in GitHub Issues</h2>
+</li>
+<li><h2 id="workshop-recommendation-chapter-5--challenges-2-3">Workshop Recommendation (Chapter 5 / Challenges 2-3)</h2>
+</li>
+<li><h3 id="chapter-5-challenge-set">Chapter 5 Challenge Set</h3>
+</li>
+<li><h3 id="challenge-2-step-by-step-create-your-first-issue">Challenge 2 Step-by-Step: Create Your First Issue</h3>
+</li>
+<li><h3 id="challenge-3-step-by-step-comment-and-mention">Challenge 3 Step-by-Step: Comment and @Mention</h3>
+</li>
+<li><h3 id="optional-extension-step-by-step-add-a-sub-issue">Optional Extension Step-by-Step: Add a Sub-Issue</h3>
+</li>
+<li><h3 id="completing-chapter-5-submit-your-evidence">Completing Chapter 5: Submit Your Evidence</h3>
+</li>
+<li><h3 id="expected-outcomes">Expected Outcomes</h3>
+</li>
+<li><h3 id="if-you-get-stuck">If You Get Stuck</h3>
+</li>
+<li><h3 id="learning-moment">Learning Moment</h3>
+</li>
+<li><h3 id="learning-pattern-used-in-this-chapter">Learning Pattern Used in This Chapter</h3>
+</li>
+<li><h3 id="about-learning-cards-in-this-chapter">About Learning Cards in This Chapter</h3>
+</li>
+<li><h2 id="local-git-alternative-working-from-your-clone">Local Git Alternative: Working from Your Clone</h2>
+</li>
+<li><h2 id="what-is-a-github-issue">What Is a GitHub Issue?</h2>
+</li>
+<li><h2 id="navigating-to-the-issues-list">Navigating to the Issues List</h2>
+</li>
+<li><h3 id="from-a-repository-page">From a repository page</h3>
+</li>
+<li><h3 id="direct-url">Direct URL</h3>
+</li>
+<li><h3 id="learning-cards-navigating-to-the-issues-list">Learning Cards: Navigating to the Issues List</h3>
+</li>
+<li><h2 id="the-issues-list-page">The Issues List Page</h2>
+</li>
+<li><h3 id="page-structure">Page structure</h3>
+</li>
+<li><h3 id="how-to-read-the-issue-list">How to read the issue list</h3>
+</li>
+<li><h3 id="what-is-announced-per-issue">What is announced per issue</h3>
+</li>
+<li><h3 id="learning-cards-the-issues-list-page">Learning Cards: The Issues List Page</h3>
+</li>
+<li><h2 id="filtering-and-searching-issues">Filtering and Searching Issues</h2>
+</li>
+<li><h3 id="using-the-searchfilter-bar">Using the search/filter bar</h3>
+</li>
+<li><h4 id="useful-filter-queries">Useful filter queries</h4>
+</li>
+<li><h3 id="using-the-filter-buttons">Using the filter buttons</h3>
+</li>
+<li><h3 id="open-vs-closed-filter">Open vs Closed filter</h3>
+</li>
+<li><h3 id="learning-cards-filtering-and-searching-issues">Learning Cards: Filtering and Searching Issues</h3>
+</li>
+<li><h2 id="reading-an-issue">Reading an Issue</h2>
+</li>
+<li><h3 id="landing-on-an-issue-page">Landing on an issue page</h3>
+</li>
+<li><h3 id="quick-navigation">Quick navigation</h3>
+</li>
+<li><h3 id="reading-the-issue-description">Reading the issue description</h3>
+</li>
+<li><h3 id="reading-comments-and-activity">Reading comments and activity</h3>
+</li>
+<li><h3 id="learning-cards-reading-an-issue">Learning Cards: Reading an Issue</h3>
+</li>
+<li><h2 id="leaving-a-comment">Leaving a Comment</h2>
+</li>
+<li><h3 id="step-by-step">Step-by-step</h3>
+</li>
+<li><h3 id="markdown-formatting-while-typing">Markdown formatting while typing</h3>
+</li>
+<li><h3 id="github-shortcuts-for-the-issues-pages">GitHub shortcuts for the Issues pages</h3>
+</li>
+<li><h4 id="on-the-issues-list-page">On the Issues list page</h4>
+</li>
+<li><h4 id="on-an-open-issue">On an open issue</h4>
+</li>
+<li><h3 id="learning-cards-leaving-a-comment">Learning Cards: Leaving a Comment</h3>
+</li>
+<li><h2 id="filing-a-new-issue">Filing a New Issue</h2>
+</li>
+<li><h3 id="navigating-to-new-issue">Navigating to New Issue</h3>
+</li>
+<li><h3 id="filling-out-the-issue-form">Filling Out the Issue Form</h3>
+</li>
+<li><h4 id="title-field">Title field</h4>
+</li>
+<li><h4 id="description--body-field">Description / Body field</h4>
+</li>
+<li><h2 id="what-happened">What happened</h2>
+</li>
+<li><h2 id="what-i-expected">What I expected</h2>
+</li>
+<li><h2 id="how-to-reproduce">How to reproduce</h2>
+</li>
+<li><h2 id="environment">Environment</h2>
+</li>
+<li><h2 id="additional-context">Additional context</h2>
+</li>
+<li><h3 id="assigning-labels-from-the-sidebar">Assigning labels from the sidebar</h3>
+</li>
+<li><h3 id="submitting-the-issue">Submitting the issue</h3>
+</li>
+<li><h3 id="learning-cards-filing-a-new-issue">Learning Cards: Filing a New Issue</h3>
+</li>
+<li><h3 id="tool-cards-file-a-new-issue">Tool Cards: File a New Issue</h3>
+</li>
+<li><h2 id="cross-referencing-issues">Cross-Referencing Issues</h2>
+</li>
+<li><h3 id="closing-keywords-in-pr-descriptions-or-issue-comments">Closing keywords in PR descriptions or issue comments</h3>
+</li>
+<li><h3 id="mentioning-another-issue-in-a-comment">Mentioning another issue in a comment</h3>
+</li>
+<li><h3 id="cross-repo-references">Cross-repo references</h3>
+</li>
+</ul>
+<p>Anti-repetition constraints:</p>
+<ul>
+<li>do not start with &quot;Welcome to...&quot; in most episodes</li>
+<li>do not use &quot;And I am Jamie.&quot; as a fixed boilerplate line</li>
+<li>avoid repeating &quot;orient, act, verify&quot;</li>
+<li>avoid repeating &quot;Carry the map&quot;</li>
+<li>vary opening style across episodes; avoid repetitive intros</li>
+<li>avoid repeating long lines verbatim inside this script</li>
+<li>preserve the same overall script flow and marker order as the current transcript</li>
+</ul>
+<p>Current transcript to rewrite:
+&lt;&lt;<TRANSCRIPT>&gt;&gt;
+[ALEX]
+Welcome back to Git Going with GitHub. This is episode 5: Working with Issues. I am Alex, and today we are turning Working with Issues from a list of instructions into a working mental model that actually feels alive.</p>
+<p>[JAMIE]
+And I am Jamie. I will stop us whenever the instructions sound simple on paper but feel less magical at the keyboard with a screen reader.</p>
+<p>[PAUSE]</p>
+<p>[ALEX]
+Filing, searching, filtering, commenting on, and managing GitHub issues. That is the surface description. Underneath it, we are building judgment: where to focus, what to ignore, and how to verify the result.</p>
+<p>[JAMIE]
+So we are not using the audio as a shortcut around learning. We are using it to make the learning easier to enter and easier to remember.</p>
+<p>[ALEX]
+Yes. A good audio lesson gives someone enough context to try the work with confidence, even before they open the written material.</p>
+<p>[PAUSE]</p>
+<p>[JAMIE]
+Okay, set the room for us. What are we walking into?</p>
+<p>[ALEX]
+Filing, Managing, and Participating in GitHub Issues: Issues are where open source collaboration begins. The next useful detail is concrete: everything from finding the right issue to file a perfect bug report - all with your keyboard and screen reader.</p>
+<p>[ALEX]
+A solid issue habit is to read the title, the body, and the timeline before acting. You are listening for the requested action, the missing evidence, and the person who needs a response.</p>
+<p>[ALEX]
+The next layer is this. Here is the learner-facing version. Chapter 5 is the first issue-based challenge chapter with short, confidence-building tasks. Put another way, it supports Challenge 2 (File Your First Issue) and Challenge 3 (Join the Conversation). A good GitHub workflow is like a well-run meeting: everyone knows the topic, the next action, and who has the floor.</p>
+<p>[ALEX]
+Here are the anchors worth keeping. There are 2 core challenges plus one optional extension. Each challenge should take under 10 minutes. The evidence is issue comments and issue metadata. The pattern is claim - act - confirm.</p>
+<p>[JAMIE]
+What does the learner do first, second, and then after that?</p>
+<p>[ALEX]
+This is the move inside Chapter 5 Challenge Set: chapter 5 focuses on issue skills. That matters in practice: You do NOT need to create a branch or edit any files for these challenges.</p>
+<p>[ALEX]
+Walk it in order: Create your first issue - file a new issue with a clear title and description; Comment and @mention - leave a comment on a classmate&#39;s issue and tag them with an @mention; and Optional extension: Add a sub-issue - break a larger issue into smaller, trackable pieces if your repository has sub-issues enabled. Each step should leave a trace you can name.</p>
+<p>[JAMIE]
+That feels much more doable when you say it as one move.</p>
+<p>[ALEX]
+Right. The magic is not speed. The magic is knowing what changed and why it matters.</p>
+<p>[PAUSE]</p>
+<p>[JAMIE]
+Turn that into a path someone can follow.</p>
+<p>[ALEX]
+Anchor this part on Challenge 2 Step-by-Step: Create Your First Issue. File a new issue in your Learning Room repository with a specific title and a meaningful description. This is the part to say slowly: Issues are the prompts that wake up AI.</p>
+<p>[ALEX]
+For a learner, the useful signals are concrete. &quot;Agent Request: Add missing contributor background paragraph in welcome.md&quot;. &quot;Keyboard shortcuts table has incorrect NVDA modifier key&quot;. &quot;Setup guide link to accessibility settings is broken&quot;. What the problem is or what content is missing.</p>
+<p>[ALEX]
+Think of this as 4 checks: Open your Learning Room repository in your browser; Navigate to the Issues tab (press G then I to jump there with keyboard shortcuts, or find the &quot;Issues&quot; link in the repository navigation); Activate the New issue button; and If a template picker appears, select Open a blank issue (or choose a template if one fits). If one step does not match what you hear, stop there and re-orient.</p>
+<p>[JAMIE]
+What is the ordered workflow?</p>
+<p>[ALEX]
+The path is straightforward once it is named. Step one is in the Title field, type a clear, specific title (at least 12 characters). Step two is in the Body field, write a meaningful description (at least 80 characters). Step three is activate Submit new issue. Step four is copy the issue URL or note the issue number (for example, 150). You will reference this later. That is the rhythm: orient, act, verify, continue.</p>
+<p>[JAMIE]
+Give me the sequence, because order matters here.</p>
+<p>[ALEX]
+The reason this matters is simple: leave a comment on another student&#39;s issue and use an @mention to notify them. The listener should be able to check this: the Issues tab of your Learning Room repository on GitHub.com.</p>
+<p>[ALEX]
+The parts worth keeping in working memory are these. &quot;@classmate I can confirm this - the link in setup-guide.md goes to a 404 page.&quot;. &quot;@classmate Good catch! I think the correct shortcut is Insert+F7, not Insert+F5.&quot;. &quot;@classmate I&#39;d suggest adding the paragraph right after the &#39;Who Can Contribute&#39; heading.&quot;.</p>
+<p>[ALEX]
+The path is straightforward once it is named. Step one is open the Issues tab in your Learning Room repository. Step two is find an issue created by a classmate (look for recent open issues, or use a facilitator-provided peer-simulation issue). Step three is open the issue by activating its title link. Step four is read the issue description to understand what they reported. That is the rhythm: orient, act, verify, continue.</p>
+<p>[JAMIE]
+How would you walk the room through that step by step?</p>
+<p>[ALEX]
+First, scroll to the comment box at the bottom of the issue. Then, write a helpful comment that @mentions the issue author by username. After that, activate the Comment button (or press Ctrl+Enter). That small check between steps is what makes the workflow reliable.</p>
+<p>[ALEX]
+The useful habit is simple: orient, act, verify, then continue. That pause between action and trust is part of the work.</p>
+<p>[JAMIE]
+Let&#39;s pause on Optional Extension Step-by-Step: Add a Sub-Issue. What should a learner take away from it?</p>
+<p>[ALEX]
+Do not treat Optional Extension Step-by-Step: Add a Sub-Issue as decoration. Break a larger issue into smaller, trackable pieces using GitHub&#39;s sub-issue feature. That is not trivia. the issue you created in Challenge 2 (or any open issue you have permission to edit). The workshop is closer to rehearsal than lecture. You hear the move, try the move, and then check what changed.</p>
+<p>[ALEX]
+On the ground, that means a few things. Sub-issue: &quot;Add alt text to welcome banner image&quot;. Sub-issue: &quot;Fix heading hierarchy in Getting Started section&quot;.</p>
+<p>[ALEX]
+First, open the issue you created in Challenge 2. Then, look for the Sub-issues section in the issue sidebar (right side on desktop). If you do not see it, look for an Add sub-issue button or the Create sub-issue option below the issue description. After that, activate Add sub-issue and choose Create new sub-issue. Finally, give the sub-issue a clear title that describes one specific piece of the parent issue. For example, if the parent is &quot;Fix accessibility in welcome.md&quot;. That small check between steps is what makes the workflow reliable.</p>
+<p>[JAMIE]
+Before we leave Optional Extension Step-by-Step: Add a Sub-Issue, what is the practical point?</p>
+<p>[ALEX]
+Start here: Add a short description and activate Create. Then: The sub-issue now appears nested under the parent issue with a progress indicator. The sequence works because every action has a confirmation.</p>
+<p>[PAUSE]</p>
+<p>[JAMIE]
+What should the learner prove to themselves after each small task?</p>
+<p>[ALEX]
+If the interface shifts, Completing Chapter 5: Submit Your Evidence is still useful because when you have finished the Chapter 5 issue challenges, go to your assigned Challenge 2 or Challenge 3 issue and post a comment with your evidence. For someone navigating by keyboard or screen reader, this detail matters: Replace [number] with the actual issue numbers.</p>
+<p>[ALEX]
+This is where the talk moves from concept to action. Expected Outcomes has three jobs: name the idea, give the learner a move, and show what counts as evidence.</p>
+<p>[ALEX]
+The room should hear these as checkpoints. Student can create an issue with a clear title and description. Student can communicate in issue threads using @mentions. Student can organize work by breaking issues into sub-issues.</p>
+<p>[JAMIE]
+Now it sounds like a workflow instead of a wall of instructions.</p>
+<p>[ALEX]
+That is where confidence comes from: not from never getting lost, but from knowing how to recover.</p>
+<p>[JAMIE]
+Let&#39;s pause on If You Get Stuck. What should a learner take away from it?</p>
+<p>[ALEX]
+If You Get Stuck has three jobs: name the idea, give the learner a move, and show what counts as evidence.</p>
+<p>[ALEX]
+Think of this as 4 checks: Can&#39;t find a classmate&#39;s issue? Filter the Issues tab by is:open and look for recent ones; @mention not working? Make sure you type @ immediately followed by the username with no space; Sub-issue option not visible? Ask a facilitator - the feature may need to be enabled for the repository; and Still stuck? Ask a facilitator for a direct issue link. Pause after each step and listen for the confirmation before moving on.</p>
+<p>[JAMIE]
+Before we leave If You Get Stuck, what is the practical point?</p>
+<p>[ALEX]
+The path is straightforward once it is named. Step one is finished but not sure you did it right? Compare your work against the Challenge 2 reference solution or the Challenge 3 reference solution. The point is not speed; the point is never losing your place.</p>
+<p>[PAUSE]</p>
+<p>[ALEX]
+Before the learner moves on. This part earns its place because issues are collaborative spaces, not just task lists. This is where the workflow starts to feel magical, because the result becomes visible and explainable: An @mention tells someone &quot;I need your attention here.&quot; Sub-issues turn vague tasks into clear checklists. That is the difference between following directions and owning the workflow.</p>
+<p>[JAMIE]
+Let&#39;s pause on Learning Pattern Used in This Chapter. What should a learner take away from it?</p>
+<p>[ALEX]
+Learning Pattern Used in This Chapter has three jobs: name the idea, give the learner a move, and show what counts as evidence.</p>
+<p>[ALEX]
+First, start with a small, safe action (create an issue). Then, practice communication in public issue threads (@mention a peer). After that, organize work into smaller pieces (sub-issues). Finally, leave clear evidence in the issue timeline. Each step should leave a trace you can name.</p>
+<p>[JAMIE]
+Before we leave Learning Pattern Used in This Chapter, what is the practical point?</p>
+<p>[ALEX]
+Start here: Build momentum for file editing and PR work in Chapter 6. If one step does not match what you hear, stop there and re-orient.</p>
+<p>[ALEX]
+Now slow down for the part people usually miss. Here is the learner-facing version. This chapter provides learning cards: expandable blocks that offer perspective-specific guidance for different ways of working. The next useful detail is concrete: Not every card appears at every step.</p>
+<p>[PAUSE]</p>
+<p>[JAMIE]
+What should they understand before typing anything?</p>
+<p>[ALEX]
+This is the move inside Local Git Alternative: Working from Your Clone: if you cloned the learning-room in Block 0 and prefer working locally. Put another way, during Block 0 you cloned the Learning Room repository to your computer.</p>
+<p>[ALEX]
+Treat examples as spoken recipes, not decorations. You may hear something like cd /Documents/learning-room or wherever you cloned it; git status should show &quot;On branch main&quot;. List your assigned challenge issues; gh issue list --assignee @me --label challenge; View a specific issue in the terminal; gh issue view 42; Leave a comment on an issue; gh issue comment 42 --body &quot;I&#39;d like to try this!&quot;; Create a new issue interactively; gh. Read the command, understand what it changes, then run it only when the repository state matches the lesson.</p>
+<p>[JAMIE]
+That is the kind of detail that keeps a screen reader user oriented.</p>
+<p>[ALEX]
+Yes. The named thing - the heading, tab, field, branch, or button - is the handhold.</p>
+<p>[ALEX]
+A solid Git habit is to know which branch you are on, what changed, and what confirmation you expect before you run the next command.</p>
+<p>[ALEX]
+Here is the moment where the page starts to make sense. Anchor this part on What Is a GitHub Issue? An issue is a discussion thread attached to a repository. That matters in practice: Every issue has a number ( 42), a state (Open or Closed), a title, a description, and a comment thread. The durable skill is not memorizing one screen. It is knowing how to find your footing when the screen changes.</p>
+<p>[ALEX]
+Listen for the small confirmations in this list. Bug reports - &quot;This feature doesn&#39;t work when usin</p>
+<p>[...middle omitted for length...]</p>
+<p>contrast.&quot; The second version gives maintainers something to. That is the difference between following directions and owning the workflow.</p>
+<p>[ALEX]
+The path is straightforward once it is named. Step one is problem statement -- Describe the pain point. What are you trying to do, and why is it hard or impossible right now? Step two is proposed solution -- Your best idea for fixing the problem. Be specific enough to discuss, but hold it loosely. Step three is alternatives considered -- Other approaches you thought about and why they fell short. This shows you have done your homework. Step four is who benefits -- Name the audience. &quot;Screen reader users navigating large repositories&quot; is more compelling than &quot;everyone.&quot;. That small check between steps is what makes the workflow reliable.</p>
+<p>[JAMIE]
+Let&#39;s pause on General Issue Writing Principles. What should a learner take away from it?</p>
+<p>[ALEX]
+General Issue Writing Principles: These rules apply to every issue -- bugs, features, questions, and everything in between. The listener should be able to check this: If you discovered two bugs during the same session, file two separate issues.</p>
+<p>[ALEX]
+Keep the teaching thread moving. Here is the learner-facing version. I tried clicking and nothing happened. That is not trivia. The maintainer has to ask: What doesn&#39;t work?</p>
+<p>[PAUSE]</p>
+<p>[JAMIE]
+Let&#39;s pause on Learning Cards: Writing Effective Issues. What should a learner take away from it?</p>
+<p>[ALEX]
+Learning Cards: Writing Effective Issues has three jobs: name the idea, give the learner a move, and show what counts as evidence.</p>
+<p>[ALEX]
+Here is the part to remember. Use fenced code blocks (triple backticks) when pasting error messages or screen reader output; your screen reader announces &quot;code block&quot; so listeners know the text is literal, not description. When writing &quot;Steps to Reproduce,&quot; type each step as a numbered Markdown list item (1., 2., etc.) so screen readers announce &quot;list with N items&quot;. Type in the comment body to trigger issue autocomplete; press Down Arrow to navigate matching issues and Enter to insert a cross-reference link. Use the Preview tab (next to Write) to check your Markdown rendering before submitting; headings, bold text, and code blocks are much easier to proofread in rendered form. Screenshots with alt text are valuable evidence; add them with the image button in the formatting toolbar or drag-and-drop into the body field. Keep paragraphs short (3-4 sentences max) so the issue is scannable at high zoom without excessive scrolling.</p>
+<p>[JAMIE]
+Let&#39;s pause on Try It: File Your First Issue. What should a learner take away from it?</p>
+<p>[ALEX]
+Anchor this part on Try It: File Your First Issue. Time: 3 minutes What you need: Browser, signed in to GitHub. The useful version is: Go to the Learning Room repository and file a real issue. The durable skill is not memorizing one screen. It is knowing how to find your footing when the screen changes.</p>
+<p>[ALEX]
+Think of this as 4 checks: Navigate to the Issues tab (press G then I in Focus Mode); Find and activate the &quot;New issue&quot; button (K to links, or Tab to it); In the title field, type: &quot;Introduce myself - [Your Name]&quot;; and In the description, write 2-3 sentences: who you are, what screen reader you use, and one thing you&#39;re hoping to learn today. The point is not speed; the point is never losing your place.</p>
+<p>[JAMIE]
+Before we leave Try It: File Your First Issue, what is the practical point?</p>
+<p>[ALEX]
+The path is straightforward once it is named. Step one is press Ctrl+Enter to submit (or Tab to the Submit button and press Enter). Each step should leave a trace you can name.</p>
+<p>[JAMIE]
+Let&#39;s pause on Learning Cards: Filing Your First Issue. What should a learner take away from it?</p>
+<p>[ALEX]
+The reason this matters is simple: day 2 Amplifier - Accessibility Agents: @issue-tracker File, read, comment on, and triage real issues manually before using any agent. That is the difference between guessing and knowing: If you have not done the triage work yourself - reading descriptions, assigning labels, identifying duplicates - you cannot evaluate whether an agent&#39;s priority scoring is correct.</p>
+<p>[ALEX]
+Here is the part to remember. After pressing Ctrl+Enter to submit, listen for the page reload; GitHub navigates to your new issue page where the title is the first heading -- press 1 to confirm it matches what you typed. Navigate the issue list with 3 (heading level 3) to jump between issue titles; this is faster than arrowing through every element on the page. If the template picker appears, use Tab and Enter to select &quot;Open a blank issue&quot;; template names are announced as link text. The &quot;New issue&quot; button is prominent and green on the Issues list page; at high zoom it remains visible near the top of the page and does not collapse into a menu.</p>
+<p>[PAUSE]</p>
+<p>[JAMIE]
+What should people carry with them after this?</p>
+<p>[ALEX]
+Carry the map. Know what page or tool you are in, know which action you are taking, and know what confirmation should follow. If the confirmation is missing, pause. That pause is not wasted time; it is professional judgment, and it is how complex workflows start to feel magical instead of stressful.</p>
+<p>[JAMIE]
+That is a better way to say it than just follow the steps.</p>
+<p>[ALEX]
+Right. Steps matter, but understanding wins. That is episode 5. Next in the series is episode 6, where we keep building the same contributor muscles.
+&lt;&lt;<END_TRANSCRIPT>&gt;&gt;</p>
+
+  </main>
+  <footer role="contentinfo" class="site-footer">
+    <p><strong>GIT Going with GitHub</strong> - A workshop by <a href="https://community-access.org">Community Access</a></p>
+    <p><a href="https://github.com/community-access/git-going-with-github">View on GitHub</a> · <a href="https://community-access.org">community-access.org</a></p>
+  </footer>
+
+  </body>
+</html>

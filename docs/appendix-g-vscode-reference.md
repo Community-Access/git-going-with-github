@@ -1,6 +1,6 @@
 # Appendix G: VS Code Accessibility Reference
 >
-> **Listen to Episode 30:** [VS Code Accessibility Reference](../admin/PODCASTS.md) - a conversational audio overview of this chapter. Listen before reading to preview the concepts, or after to reinforce what you learned.
+> **Listen to Episode 30:** [VS Code Accessibility Reference](https://lp.csedesigns.com/ggg/PODCASTS.html) - a conversational audio overview of this chapter. Listen before reading to preview the concepts, or after to reinforce what you learned.
 
 > **Reference companion to:** [Chapter 11: VS Code Interface](11-vscode-interface.md) | Also relevant: [Chapter 12](12-vscode-accessibility.md)
 >

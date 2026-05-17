@@ -146,7 +146,7 @@ podcasts/chapters/*.json
 podcasts/audio/metadata-touch-report.json
 podcasts/logs/audio_inventory_report.json
 podcasts/feed.xml
-admin/PODCASTS.md
+https://lp.csedesigns.com/ggg/PODCASTS.html
 ```
 
 The segment WAV files are useful for debugging but are large. Return them only if we need to inspect timing or regenerate assembled audio without re-synthesizing speech.

@@ -1,6 +1,6 @@
 # Understanding GitHub's Web Structure
 >
-> **Listen to Episode 2:** [Understanding GitHub on the Web](../admin/PODCASTS.md) - a conversational audio overview of this chapter. Listen before reading to preview the concepts, or after to reinforce what you learned.
+> **Listen to Episode 2:** [Understanding GitHub on the Web](https://lp.csedesigns.com/ggg/PODCASTS.html) - a conversational audio overview of this chapter. Listen before reading to preview the concepts, or after to reinforce what you learned.
 
 > **Related appendices:** [Appendix A: Glossary](appendix-a-glossary.md) | [Appendix B: Screen Reader Cheat Sheet](appendix-b-screen-reader-cheatsheet.md)
 > **Authoritative sources:** [GitHub Docs: About GitHub](https://docs.github.com/en/get-started/start-your-journey/about-github-and-git) | [GitHub Accessibility Documentation](https://accessibility.github.com/documentation)

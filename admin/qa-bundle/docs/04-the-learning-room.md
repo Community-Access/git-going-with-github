@@ -1,6 +1,6 @@
 # The Learning Room: Your Personal Practice Repository
 >
-> **Listen to Episode 4:** [The Learning Room](../admin/PODCASTS.md) - a conversational audio overview of this chapter. Listen before reading to preview the concepts, or after to reinforce what you learned.
+> **Listen to Episode 4:** [The Learning Room](https://lp.csedesigns.com/ggg/PODCASTS.html) - a conversational audio overview of this chapter. Listen before reading to preview the concepts, or after to reinforce what you learned.
 
 > **Related appendices:** [Appendix A: Glossary](appendix-a-glossary.md) | [Appendix C: Markdown Reference](appendix-c-markdown-reference.md)
 > **Authoritative sources:** [GitHub Docs: About README files](https://docs.github.com/en/repositories/managing-your-repositorys-settings-and-features/customizing-your-repository/about-readmes) | [GitHub Docs: Editing files](https://docs.github.com/en/repositories/working-with-files/managing-files/editing-files)

@@ -117,7 +117,7 @@ You have several safety nets.
 
 - Every challenge issue includes instructions and evidence prompts.
 - Every chapter has an **If You Get Stuck** section.
-- Every challenge has a reference solution in [the solutions folder](solutions/).
+- Every challenge has a reference solution in [the solutions folder](docs/solutions/).
 - Gandalf posts feedback on pull requests.
 - The Student Progression Bot opens the next challenge when you finish the current one.
 - Facilitators and peers are part of the learning system.

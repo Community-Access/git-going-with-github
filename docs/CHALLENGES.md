@@ -388,7 +388,7 @@ Every challenge issue includes an "If you get stuck" section with common problem
 - Ask your facilitator
 - Read the relevant chapter in the [Git Going with GitHub curriculum](https://github.com/Community-Access/git-going-with-github/tree/main/docs)
 - Check the [solution reference directory](https://github.com/Community-Access/git-going-with-github/tree/main/docs/solutions)
-- Use the [Learning Room solutions index](../learning-room/docs/solutions/README.md) for quick challenge-by-challenge references
+- Use the [Learning Room solutions index](https://github.com/Community-Access/git-going-with-github/blob/main/docs/solutions/) for quick challenge-by-challenge references
 
 When you ask for help, include what you were trying to do, where you were in the repository, what happened, and what you expected. That gives your buddy, facilitator, or bot enough context to help you quickly.
 

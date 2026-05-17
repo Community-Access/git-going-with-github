@@ -1,0 +1,419 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="GIT Going with GitHub - A two-day accessible open source workshop by Community Access">
+  <title>ep06-working-with-pull-requests.rewrite-prompt - GIT Going with GitHub</title>
+  <link rel="stylesheet" href="../../../../styles/github-markdown.css">
+  <link rel="stylesheet" href="../../../../styles/highlight.css">
+  <link rel="stylesheet" href="../../../../styles/custom.css">
+  <style>
+    .markdown-body {
+      box-sizing: border-box;
+      min-width: 200px;
+      max-width: 980px;
+      margin: 0 auto;
+      padding: 45px;
+    }
+    @media (max-width: 767px) {
+      .markdown-body {
+        padding: 15px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+  <header class="site-header" role="banner">
+    <div class="site-header-inner">
+      <nav aria-label="Breadcrumb" class="breadcrumb">
+        <a href="../../../../index.html">Home</a> <span aria-hidden="true">›</span> <span aria-current="page">ep06-working-with-pull-requests.rewrite-prompt</span>
+      </nav>
+      <div class="header-actions">
+        <a href="https://github.com/Community-Access/git-going-with-github/wiki" class="wiki-link" target="_blank" rel="noopener noreferrer">
+          <svg aria-hidden="true" focusable="false" width="16" height="16" viewBox="0 0 16 16" fill="currentColor">
+            <path d="M1.75 1h8.5c.966 0 1.75.784 1.75 1.75v5.5A1.75 1.75 0 0 1 10.25 10H7.06l-2.573 2.573A1.458 1.458 0 0 1 2 11.543V10h-.25A1.75 1.75 0 0 1 0 8.25v-5.5C0 1.784.784 1 1.75 1ZM1.5 2.75v5.5c0 .138.112.25.25.25h1a.75.75 0 0 1 .75.75v2.19l2.72-2.72a.749.749 0 0 1 .53-.22h3.5a.25.25 0 0 0 .25-.25v-5.5a.25.25 0 0 0-.25-.25h-8.5a.25.25 0 0 0-.25.25Zm13 2a.25.25 0 0 0-.25-.25h-.5a.75.75 0 0 1 0-1.5h.5c.966 0 1.75.784 1.75 1.75v5.5A1.75 1.75 0 0 1 14.25 12H14v1.543a1.457 1.457 0 0 1-2.487 1.03L9.22 12.28a.749.749 0 1 1 1.06-1.06l2.22 2.22v-2.19a.75.75 0 0 1 .75-.75h.25a.25.25 0 0 0 .25-.25v-5.5Z"/>
+          </svg>
+          Wiki
+        </a>
+        <form role="search" class="search-form" action="../../../../search.html" method="get">
+        <label for="site-search" class="search-label">Search docs</label>
+        <input
+          type="search"
+          id="site-search"
+          class="search-input"
+          name="q"
+          placeholder="Search docs…"
+          autocomplete="off"
+          aria-label="Search documentation"
+        >
+        <button type="submit" class="search-button" aria-label="Submit search">
+          <svg aria-hidden="true" focusable="false" width="16" height="16" viewBox="0 0 16 16" fill="currentColor">
+            <path d="M10.68 11.74a6 6 0 0 1-7.922-8.982 6 6 0 0 1 8.982 7.922l3.04 3.04a.749.749 0 0 1-.326 1.275.749.749 0 0 1-.734-.215ZM11.5 7a4.499 4.499 0 1 0-8.997 0A4.499 4.499 0 0 0 11.5 7Z"/>
+          </svg>
+        </button>
+      </form>
+      </div>
+    </div>
+  </header>
+  <main id="main-content" class="markdown-body">
+    <p>You are rewriting a podcast transcript for variety and teachability.
+Use automatic model selection (no model is specified by caller).
+Return ONLY the transcript text with valid speaker markers.</p>
+<p>Hard format requirements:</p>
+<ul>
+<li>Allowed markers only: [ALEX], [JAMIE], [PAUSE]</li>
+<li>Marker line must be on its own line</li>
+<li>Keep script structure conversational and teachable</li>
+<li>Keep concept coverage aligned to source materials</li>
+</ul>
+<p>Slug: ep06-working-with-pull-requests
+Title: Episode 6: Working with Pull Requests
+Description: Creating, reviewing, commenting on, and merging pull requests.</p>
+<p>Concept checklist to preserve:</p>
+<ul>
+<li>What a pull request is: a proposal to merge changes from one branch into another</li>
+<li>The difference between an issue and a pull request</li>
+<li>PR anatomy: title, body, commits, files changed, reviewers, labels</li>
+<li>Creating a pull request from a fork (cross-repository)</li>
+<li>Creating a pull request from a branch (same repository)</li>
+<li>Writing a good PR description: what changed, why, and how to test</li>
+<li>The PR timeline: comments, reviews, status checks, merge</li>
+<li>Requesting a review from someone</li>
+<li>Reviewing a pull request: reading the diff</li>
+<li>What additions (green/+) and deletions (red/-) mean in a diff</li>
+<li>Leaving inline comments on specific lines</li>
+<li>Submitting a review: approve, request changes, or comment</li>
+<li>Status checks and what they mean for merging</li>
+<li>Merge options: merge commit, squash and merge, rebase and merge</li>
+<li>When to use each merge strategy</li>
+<li>Draft pull requests: signaling work in progress</li>
+<li>Converting a draft to ready for review</li>
+<li>Using gh pr commands from the terminal as an alternative</li>
+</ul>
+<p>Source heading checklist to preserve (topic coverage, can paraphrase):</p>
+<ul>
+<li><h2 id="creating-reviewing-and-merging-pull-requests-with-a-screen-reader">Creating, Reviewing, and Merging Pull Requests with a Screen Reader</h2>
+</li>
+<li><h2 id="workshop-recommendation-chapter-6">Workshop Recommendation (Chapter 6)</h2>
+</li>
+<li><h3 id="chapter-6-challenge-set">Chapter 6 Challenge Set</h3>
+</li>
+<li><h3 id="challenge-61-step-by-step-create-one-small-branch-change">Challenge 6.1 Step-by-Step: Create One Small Branch Change</h3>
+</li>
+<li><h3 id="challenge-62-step-by-step-open-a-linked-pr">Challenge 6.2 Step-by-Step: Open a Linked PR</h3>
+</li>
+<li><h3 id="challenge-63-step-by-step-pass-required-checks">Challenge 6.3 Step-by-Step: Pass Required Checks</h3>
+</li>
+<li><h3 id="expected-outcomes">Expected Outcomes</h3>
+</li>
+<li><h3 id="if-you-get-stuck">If You Get Stuck</h3>
+</li>
+<li><h3 id="learning-moment">Learning Moment</h3>
+</li>
+<li><h3 id="why-this-feels-achievable">Why this feels achievable</h3>
+</li>
+<li><h3 id="about-learning-cards-in-this-chapter">About Learning Cards in This Chapter</h3>
+</li>
+<li><h2 id="local-git-alternative-the-full-branch-edit-pr-workflow">Local Git Alternative: The Full Branch-Edit-PR Workflow</h2>
+</li>
+<li><h2 id="what-is-a-pull-request">What Is a Pull Request?</h2>
+</li>
+<li><h2 id="navigating-to-pull-requests">Navigating to Pull Requests</h2>
+</li>
+<li><h3 id="from-a-pr-notification">From a PR notification</h3>
+</li>
+<li><h3 id="learning-cards-navigating-to-pull-requests">Learning Cards: Navigating to Pull Requests</h3>
+</li>
+<li><h2 id="the-pull-request-list-page">The Pull Request List Page</h2>
+</li>
+<li><h2 id="anatomy-of-a-pull-request-page">Anatomy of a Pull Request Page</h2>
+</li>
+<li><h2 id="navigating-the-pr-tab-bar">Navigating the PR Tab Bar</h2>
+</li>
+<li><h2 id="reading-the-conversation-tab">Reading the Conversation Tab</h2>
+</li>
+<li><h3 id="pr-description">PR Description</h3>
+</li>
+<li><h3 id="status-checks-section">Status Checks Section</h3>
+</li>
+<li><h3 id="review-comments">Review Comments</h3>
+</li>
+<li><h4 id="resolving-conversations">Resolving conversations</h4>
+</li>
+<li><h3 id="learning-cards-reading-the-conversation-tab">Learning Cards: Reading the Conversation Tab</h3>
+</li>
+<li><h2 id="reading-the-commits-tab">Reading the Commits Tab</h2>
+</li>
+<li><h2 id="reading-the-checks-tab">Reading the Checks Tab</h2>
+</li>
+<li><h3 id="learning-cards-reading-the-checks-tab">Learning Cards: Reading the Checks Tab</h3>
+</li>
+<li><h2 id="reading-the-files-changed-tab">Reading the Files Changed Tab</h2>
+</li>
+<li><h3 id="file-tree-left-panel">File Tree (left panel)</h3>
+</li>
+<li><h3 id="the-diff-for-a-file">The Diff for a File</h3>
+</li>
+<li><h4 id="lines-in-a-diff-are-read-as">Lines in a diff are read as</h4>
+</li>
+<li><h3 id="navigating-the-diff-with-a-screen-reader">Navigating the diff with a screen reader</h3>
+</li>
+<li><h3 id="placing-an-inline-comment-on-a-diff-line">Placing an inline comment on a diff line</h3>
+</li>
+<li><h4 id="multi-line-comment-windows">Multi-line comment (Windows)</h4>
+</li>
+<li><h4 id="multi-line-comment-macos">Multi-line comment (macOS)</h4>
+</li>
+<li><h3 id="viewing-comments-within-the-diff">Viewing comments within the diff</h3>
+</li>
+<li><h3 id="learning-cards-reading-the-files-changed-tab">Learning Cards: Reading the Files Changed Tab</h3>
+</li>
+<li><h2 id="opening-a-pull-request">Opening a Pull Request</h2>
+</li>
+<li><h3 id="tool-cards-open-a-pull-request">Tool Cards: Open a Pull Request</h3>
+</li>
+<li><h3 id="from-the-web-editor-workflow-editing-a-file-on-github">From the web editor workflow (editing a file on GitHub)</h3>
+</li>
+<li><h3 id="from-a-fork-or-feature-branch">From a fork or feature branch</h3>
+</li>
+<li><h3 id="filling-out-the-pr-form">Filling out the PR form</h3>
+</li>
+<li><h4 id="title-field">Title field</h4>
+</li>
+<li><h4 id="description-field">Description field</h4>
+</li>
+<li><h2 id="summary">Summary</h2>
+</li>
+<li><h2 id="changes">Changes</h2>
+</li>
+<li><h2 id="related-issues">Related Issues</h2>
+</li>
+<li><h2 id="testing">Testing</h2>
+</li>
+<li><h2 id="screenshots--recordings">Screenshots / recordings</h2>
+</li>
+<li><h3 id="setting-a-draft-pr">Setting a Draft PR</h3>
+</li>
+<li><h3 id="draft-pull-requests---full-lifecycle">Draft Pull Requests - Full Lifecycle</h3>
+</li>
+<li><h4 id="when-to-use-a-draft">When to use a draft</h4>
+</li>
+<li><h4 id="what-a-draft-pr-does-differently">What a draft PR does differently</h4>
+</li>
+<li><h4 id="mark-a-draft-ready-for-review">Mark a draft ready for review</h4>
+</li>
+<li><h4 id="screen-reader-path">Screen reader path</h4>
+</li>
+<li><h4 id="convert-an-open-pr-to-draft-after-opening">Convert an open PR to draft (after opening)</h4>
+</li>
+<li><h3 id="learning-cards-opening-a-pull-request">Learning Cards: Opening a Pull Request</h3>
+</li>
+<li><h2 id="requesting-reviewers">Requesting reviewers</h2>
+</li>
+<li><h2 id="submitting-a-review">Submitting a Review</h2>
+</li>
+</ul>
+<p>Anti-repetition constraints:</p>
+<ul>
+<li>do not start with &quot;Welcome to...&quot; in most episodes</li>
+<li>do not use &quot;And I am Jamie.&quot; as a fixed boilerplate line</li>
+<li>avoid repeating &quot;orient, act, verify&quot;</li>
+<li>avoid repeating &quot;Carry the map&quot;</li>
+<li>vary opening style across episodes; avoid repetitive intros</li>
+<li>avoid repeating long lines verbatim inside this script</li>
+<li>preserve the same overall script flow and marker order as the current transcript</li>
+</ul>
+<p>Current transcript to rewrite:
+&lt;&lt;<TRANSCRIPT>&gt;&gt;
+[ALEX]
+This is Git Going with GitHub, episode 6: Working with Pull Requests. I am Alex. By the end of this episode, Working with Pull Requests should feel less like a wall of GitHub words and more like a set of moves with visible momentum.</p>
+<p>[JAMIE]
+And I am Jamie. I am here for the practical questions: what should I listen for, what can go wrong, and what is the next calm move?</p>
+<p>[PAUSE]</p>
+<p>[ALEX]
+Today we are working on this: Creating, reviewing, commenting on, and merging pull requests. I want the learner to leave with a mental map, not just a remembered path through buttons.</p>
+<p>[JAMIE]
+So the goal is understanding first, then action, then confirmation.</p>
+<p>[ALEX]
+Right. We are building a rhythm: orient yourself, take one intentional action, then verify what changed before moving on. That rhythm is where the magic lives.</p>
+<p>[PAUSE]</p>
+<p>[JAMIE]
+Okay, set the room for us. What are we walking into?</p>
+<p>[ALEX]
+Creating, Reviewing, and Merging Pull Requests with a Screen Reader: See also: Chapter 15: Code Review covers the full review workflow including multi-file diffs and suggested changes. The next useful detail is concrete: Pull requests are where your work becomes a contribution.</p>
+<p>[ALEX]
+A solid pull request habit is to separate three questions: what changed, why it changed, and what still needs review. That keeps the conversation useful instead of noisy.</p>
+<p>[ALEX]
+The next layer is this. Here is the learner-facing version. Chapter 6 is the first PR-validated chapter where students convert issue work into merge-ready contributions. A good GitHub workflow is like a well-run meeting: everyone knows the topic, the next action, and who has the floor.</p>
+<p>[ALEX]
+Here are the anchors worth keeping. There are 3. Each challenge should take under 10 minutes each. The evidence is PR metadata, bot checks, and merged issue linkage. The pattern is small change - linked PR - green checks.</p>
+<p>[JAMIE]
+What does the learner do first, second, and then after that?</p>
+<p>[ALEX]
+This is the move inside Chapter 6 Challenge Set: this is the first chapter where you edit files and create branches. That matters in practice: Use one of these two paths: - Web editor (recommended for beginners): When you edit a file on GitHub.com and click &quot;Propose changes,&quot; GitHub creates a branch for you automatically.</p>
+<p>[ALEX]
+Walk it in order: Create one small branch change - edit a practice file on a new branch; Open a linked PR - use the PR template and include Closes XX; and Pass required checks - respond to bot feedback until all required checks pass. Each step should leave a trace you can name.</p>
+<p>[JAMIE]
+That feels much more doable when you say it as one move.</p>
+<p>[ALEX]
+Right. The magic is not speed. The magic is knowing what changed and why it matters.</p>
+<p>[PAUSE]</p>
+<p>[JAMIE]
+Turn that into a path someone can follow.</p>
+<p>[ALEX]
+Anchor this part on Challenge 6.1 Step-by-Step: Create One Small Branch Change. Edit one of the practice files and save your change on a new branch. This is the part to say slowly: your Learning Room repository on GitHub.com, using the web editor.</p>
+<p>[ALEX]
+For a learner, the useful signals are concrete. Screen reader users (NVDA/JAWS): Press B to navigate buttons, find &quot;Edit this file,&quot; and press Enter. VoiceOver users: Press VO+U, open Buttons rotor, find &quot;Edit this file,&quot; and press VO+Space. If your issue is about a [TODO] section: replace the [TODO] placeholder with the requested content (one to three sentences). If your issue is about a broken link: find and correct the URL.</p>
+<p>[ALEX]
+Think of this as 4 checks: In your Learning Room repository, navigate to the file specified in your issue. Use the file tree or the &quot;Go to file&quot; button (T keyboard shortcut); Open the file and activate the pencil icon (Edit this file) button; The file opens in the web editor. Make your change. For; and Keep your change small and focused. Edit only what the issue asks for. If one step does not match what you hear, stop there and re-orient.</p>
+<p>[JAMIE]
+What is the ordered workflow?</p>
+<p>[ALEX]
+The path is straightforward once it is named. Step one is after editing, activate the Commit changes button (green button above the editor). Step two is a dialog appears. In the Branch name field, type: fix/yourname-issueXX (replace yourname with your GitHub username, and XX with the issue number). Step three is select Create a new branch for this commit and start a pull request. Step four is activate Propose changes. That is the rhythm: orient, act, verify, continue.</p>
+<p>[ALEX]
+A solid Git habit is to know which branch you are on, what changed, and what confirmation you expect before you run the next command.</p>
+<p>[JAMIE]
+Give me the sequence, because order matters here.</p>
+<p>[ALEX]
+The reason this matters is simple: AI agents do not just deploy code directly; they submit pull requests. The listener should be able to check this: Learning to edit a file, format it in Markdown, and review a PR today prepares you to audit and approve AI-generated changes tomorrow.</p>
+<p>[ALEX]
+The parts worth keeping in working memory are these. &quot;Complete the Who Can Contribute section in welcome.md&quot;. &quot;Fix broken accessibility settings link in setup-guide.md&quot;. &quot;Correct NVDA modifier key in keyboard-shortcuts.md&quot;. A summary of what you changed and why (at least 50 characters).</p>
+<p>[ALEX]
+The path is straightforward once it is named. Step one is in the Title field, write a short description of your change. Step two is in the Body field, use the PR template if one is provided. Make sure to. Step three is verify the base branch is main and the compare branch is your fix/yourname-issueXX branch. Step four is activate the Create pull request button. That is the rhythm: orient, act, verify, continue.</p>
+<p>[JAMIE]
+How would you walk the room through that step by step?</p>
+<p>[ALEX]
+Do not treat Challenge 6.3 Step-by-Step: Pass Required Checks as decoration. Read bot feedback, fix any issues it finds, and get all required checks to pass. That is not trivia. the Conversation tab of your open pull request. The workshop is closer to rehearsal than lecture. You hear the move, try the move, and then check what changed.</p>
+<p>[ALEX]
+On the ground, that means a few things. That your PR references an issue with Closes XX. That your PR description is detailed enough (50+ characters). That your changed files are in the learning-room/ folder. Accessibility checks: heading hierarchy, descriptive link text, valid alt text.</p>
+<p>[ALEX]
+First, wait approximately 30 seconds after opening the PR. The bot posts a validation comment. Then, read the bot comment carefully. It checks. After that, if the bot reports failures. Finally, repeat step 3 until all required checks show a green checkmark. That small check between steps is what makes the workflow reliable.</p>
+<p>[JAMIE]
+Let&#39;s pause on Challenge 6.3 Step-by-Step: Pass Required Checks. What should a learner take away from it?</p>
+<p>[ALEX]
+Start here: When all checks pass, request a review from a peer or the facilitator. The sequence works because every action has a confirmation.</p>
+<p>[ALEX]
+The useful habit is simple: orient, act, verify, then continue. That pause between action and trust is part of the work.</p>
+<p>[PAUSE]</p>
+<p>[JAMIE]
+If I am listening before the workshop starts, what should settle in my mind first?</p>
+<p>[ALEX]
+Expected Outcomes has three jobs: name the idea, give the learner a move, and show what counts as evidence.</p>
+<p>[ALEX]
+Here is what that changes in practice. Student opens a focused PR that maps to one issue. Student uses Closes XX correctly. Student can interpret bot feedback and improve the PR.</p>
+<p>[JAMIE]
+Let&#39;s pause on If You Get Stuck. What should a learner take away from it?</p>
+<p>[ALEX]
+If You Get Stuck has three jobs: name the idea, give the learner a move, and show what counts as evidence.</p>
+<p>[ALEX]
+Walk it in order: Confirm your PR includes Closes XX in title or body; Check that changed files are only in learning-room/; Open the bot validation comment and resolve one required check at a time; and If checks still fail, ask for peer or facilitator review with the exact error message. Keep it that plain: know where you are, make the move, check the result.</p>
+<p>[JAMIE]
+Before we leave If You Get Stuck, what is the practical point?</p>
+<p>[ALEX]
+Think of this as 1 checks: Finished but not sure you did it right? Compare your work against the Challenge 6 reference solution. Pause after each step and listen for the confirmation before moving on.</p>
+<p>[JAMIE]
+Now it sounds like a workflow instead of a wall of instructions.</p>
+<p>[ALEX]
+That is where confidence comes from: not from never getting lost, but from knowing how to recover.</p>
+<p>[JAMIE]
+What is the one idea that makes the next few steps less mysterious?</p>
+<p>[ALEX]
+The teaching point here is not the label; it is the move. A great PR is small, linked to an issue, and easy to review. That is the difference between guessing and knowing: Faster feedback builds confidence and momentum.</p>
+<p>[PAUSE]</p>
+<p>[ALEX]
+Before the learner moves on. Why this feels achievable has three jobs: name the idea, give the learner a move, and show what counts as evidence.</p>
+<p>[ALEX]
+That becomes easier when you listen for these cues. Scope is intentionally small. Feedback is immediate and specific. Success is visible (green checks + closed issue).</p>
+<p>[JAMIE]
+What would you say to someone who is already bracing for this to be too much?</p>
+<p>[ALEX]
+About Learning Cards in This Chapter: This chapter provides learning cards: expandable blocks that offer perspective-specific guidance for different ways of working. That gives the learner a foothold: not every card appears at every step.</p>
+<p>[JAMIE]
+What should happen before anyone copies and runs it?</p>
+<p>[ALEX]
+Here is the learner-facing version. If you cloned the learning-room in Block 0 and prefer working locally. The next useful detail is concrete: The web editor workflow (pencil button, &quot;Propose changes&quot;) is the primary path taught in this chapter.</p>
+<p>[ALEX]
+Treat examples as spoken recipes, not decorations. You may hear something like cd /Documents/learning-room; git checkout main; git pull origin main; git checkout -b fix/welcome-todos. code docs/welcome.md. Read the command, understand what it changes, then run it only when the repository state matches the lesson.</p>
+<p>[PAUSE]</p>
+<p>[JAMIE]
+Where do you want a learner to place their attention here?</p>
+<p>[ALEX]
+This is the move inside What Is a Pull Request?: a pull request (PR) is a proposal to merge changes from one branch into another. Put another way,.you open a PR to request that those changes be merged into the target branch (usually main).</p>
+<p>[ALEX]
+These are the pieces that turn the idea into a usable move. Edited a file directly on GitHub (web editor). Made changes in your fork. Made changes on a feature branch. What changed - a diff of every file.</p>
+<p>[JAMIE]
+That is the kind of detail that keeps a screen reader user oriented.</p>
+<p>[ALEX]
+Yes. The named thing - the heading, tab, field, branch, or button - is the handhold.</p>
+<p>[JAMIE]
+Let&#39;s pause on Navigating to Pull Requests. What should a learner take away from it?</p>
+<p>[ALEX]
+Anchor this part on Navigating to Pull Requests. Global pull requests dashboard: GitHub now shows a global pull requests page at github.com/pulls listing all open PRs across every repository you have access to. That matters in practice: This is now the default landing page when you click &quot;Pull requests&quot; in the top navigation bar (the one above the repository content, not inside a repository). The durable skill is not memorizing one screen. It is knowing how to find your footing when the screen changes.</p>
+<p>[ALEX]
+Listen for the small confirmations in this list. In Windows High Contrast mode, the active tab is indicated by a system-colored underline, not just a color change. At high magnification, use Tab to move through the repository navigation links if the tab bar is hard to target with a pointer. Once in the PR list, PR titles are links with standard hover underlines. They remain clickable at any zoom level.</p>
+<p>[ALEX]
+Think of this as 4 checks: D → &quot;Repository navigation&quot; landmark; K to navigate tabs → &quot;Pull requests, [N] open&quot;; Enter to open; and VO+U → Landmarks → navigate to &quot;Repository navigation&quot;. That small check between steps is what makes the workflow reliable.</p>
+<p>[JAMIE]
+Before we leave Navigating to Pull Requests, what is the practical point?</p>
+<p>[ALEX]
+The path is straightforward once it is named. Step one is quick Nav K or VO+Right to navigate tabs → &quot;Pull requests&quot;. Step two is vO+Space to open. The sequence works because every action has a confirmation.</p>
+<p>[JAMIE]
+What is the safe way to learn from that example?</p>
+<p>[ALEX]
+The reason this matters is simple: if you received a notification about a PR,</p>
+<p>[...middle omitted for length...]</p>
+<p>lve, or what goal does it advance?; What is the scope? -- Which files changed, and roughly how big is the change?; How was it tested? -- Did you verify that the change works, and how?; and What should I pay attention to? -- Are there tricky parts, trade-offs, or areas where you want a second opinion? That is the rhythm: orient, act, verify, continue.</p>
+<p>[PAUSE]</p>
+<p>[ALEX]
+Keep the thread going. This part earns its place because GitHub recognizes special keywords in PR descriptions that automatically close linked issues when the PR merges. This is the part to say slowly: You do not need to close issues by hand -- just include the right keyword followed by the issue number. That is the difference between following directions and owning the workflow.</p>
+<p>[JAMIE]
+What is the pre-flight check here?</p>
+<p>[ALEX]
+Before/After Structure: One of the most effective patterns for PR descriptions is showing the state before your change and the state after. The listener should be able to check this: This gives the reviewer an instant mental model of what changed without reading the diff line by line.</p>
+<p>[ALEX]
+Keep the teaching thread moving. Here is the learner-facing version. Here is a template you can copy into your PR descriptions. That is not trivia. Not every section applies to every PR, but filling in even a few sentences per section makes a meaningful difference.</p>
+<p>[PAUSE]</p>
+<p>[JAMIE]
+Let&#39;s pause on Common Description Mistakes. What should a learner take away from it?</p>
+<p>[ALEX]
+This is the move inside Common Description Mistakes: even experienced contributors make these mistakes. For someone navigating by keyboard or screen reader, this detail matters: Knowing what to avoid is half the battle.</p>
+<p>[ALEX]
+Keep the teaching thread moving. Anchor this part on Good vs. Bad: Side by Side. No context, no linked issue, no explanation of what file or what was wrong with it. The useful version is: A reviewer seeing this has to open the diff, figure out which file changed, read every line, and guess at the intent. The durable skill is not memorizing one screen. It is knowing how to find your footing when the screen changes.</p>
+<p>[JAMIE]
+Let&#39;s pause on Learning Cards: Writing PR Descriptions That Get Reviewed. What should a learner take away from it?</p>
+<p>[ALEX]
+Learning Cards: Writing PR Descriptions That Get Reviewed has three jobs: name the idea, give the learner a move, and show what counts as evidence.</p>
+<p>[ALEX]
+Here is the part to remember. Use Markdown headings ( ) in your description (Summary, Changes, Related Issues, Testing) so reviewers can press H to jump between sections. Type Closes followed by the issue number to auto-close the linked issue on merge; GitHub autocompletes when you type. Press Ctrl+Shift+P in the description text area to toggle between Write and Preview modes; Preview renders your Markdown so you can check structure before submitting. Use the Preview tab to verify your Markdown renders correctly; headings, bullet lists, and code blocks are easier to proofread in rendered form. Keep bullet points short (one line each) so the description is scannable at high zoom without excessive horizontal scrolling. When including screenshots, add alt text in the Markdown image syntax: so every reader gets the same information.</p>
+<p>[PAUSE]</p>
+<p>[JAMIE]
+Let&#39;s pause on Try It: Read a Real Pull Request. What should a learner take away from it?</p>
+<p>[ALEX]
+Do not treat Try It: Read a Real Pull Request as decoration. Time: 3 minutes What you need: Browser, signed in to GitHub. This is where the workflow starts to feel magical, because the result becomes visible and explainable: Go to the Learning Room repository&#39;s Pull Requests tab and find any open or recently closed PR.</p>
+<p>[ALEX]
+First, navigate to Pull Requests (G then P in Focus Mode). Then, open the first PR in the list (press Enter on its title). After that, read the description - press 2 to jump to the first section heading, then arrow down to read. Look for: which file was changed (docs/welcome.md, docs/keyboard-shortcuts.md, or docs/setup-guide.md)? Which challenge was this PR solving? Does the description. Finally, check the conversation - press 3 to jump between comments. Read what the validation bot reported - did the bot find any accessibility issues like broken headings or non-descriptive links? How did the author respond? If one step does not match what you hear, stop there and re-orient.</p>
+<p>[JAMIE]
+Before we leave Try It: Read a Real Pull Request, what is the practical point?</p>
+<p>[ALEX]
+Start here: Look at the diff - press D to the &quot;Pull request tabs&quot; landmark, then navigate to &quot;Files changed&quot; and press Enter. Press H to scan the changed file headings. If the PR touched docs/welcome.md, you should see + lines where the [TODO] sections were filled in. If. That is the rhythm: orient, act, verify, continue.</p>
+<p>[PAUSE]</p>
+<p>[JAMIE]
+What should people carry with them after this?</p>
+<p>[ALEX]
+Carry the map. Know what page or tool you are in, know which action you are taking, and know what confirmation should follow. If the confirmation is missing, pause. That pause is not wasted time; it is professional judgment, and it is how complex workflows start to feel magical instead of stressful.</p>
+<p>[JAMIE]
+That is a better way to say it than just follow the steps.</p>
+<p>[ALEX]
+Right. Steps matter, but understanding wins. That is episode 6. Next in the series is episode 7, where we keep building the same contributor muscles.
+&lt;&lt;<END_TRANSCRIPT>&gt;&gt;</p>
+
+  </main>
+  <footer role="contentinfo" class="site-footer">
+    <p><strong>GIT Going with GitHub</strong> - A workshop by <a href="https://community-access.org">Community Access</a></p>
+    <p><a href="https://github.com/community-access/git-going-with-github">View on GitHub</a> · <a href="https://community-access.org">community-access.org</a></p>
+  </footer>
+
+  </body>
+</html>
