@@ -188,7 +188,24 @@ function getDocsCatalog() {
 
   const appendices = files
     .filter((name) => /^appendix-[a-z0-9-]+\.md$/i.test(name))
-    .map(toItem);
+    .map(toItem)
+    .sort((a, b) => {
+      const getAppendixKey = (source) => {
+        const match = source.match(/^appendix-([a-z0-9]+)-?/i);
+        const key = (match && match[1] ? match[1] : '').toLowerCase();
+        const isExtended = ['aa', 'ab', 'ac'].includes(key);
+        return { key, isExtended };
+      };
+
+      const aKey = getAppendixKey(a.source);
+      const bKey = getAppendixKey(b.source);
+
+      // Keep AA/AB/AC at the bottom of appendix navigation.
+      if (aKey.isExtended && !bKey.isExtended) return 1;
+      if (!aKey.isExtended && bKey.isExtended) return -1;
+
+      return a.source.localeCompare(b.source, undefined, { numeric: true });
+    });
 
   docsCatalogCache = { essentials, chapters, day1, day2, appendices };
   return docsCatalogCache;
