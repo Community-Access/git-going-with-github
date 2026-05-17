@@ -78,6 +78,11 @@
     <h2 class="guided-title">Guided Reference</h2>
     <p class="guided-intro">Follow the learning order, then branch into appendices and challenge support.</p>
 
+
+    <section class="guided-resume" aria-label="Resume learning">
+      <a id="resume-link" class="guided-resume-link" href="../index.html" hidden>Resume where you left off</a>
+    </section>
+
     <nav class="guided-nav" aria-label="Workshop navigation">
       <section class="guided-section">
         <h3>Start Here</h3>
@@ -174,6 +179,23 @@
     </nav>
   </aside>
     <main id="main-content" class="markdown-body page-main">
+      <nav class="onpage-nav" aria-label="On this page">
+    <h2 class="onpage-title">On This Page</h2>
+    <ul class="onpage-list">
+      <li class="onpage-item"><a href="#self-assessment-are-you-ready-for-day-2">Self-Assessment: Are You Ready for Day 2?</a></li>
+<li class="onpage-item"><a href="#setup-checklist">Setup Checklist</a></li>
+<li class="onpage-item onpage-sub"><a href="#required-accounts-and-tools">Required Accounts and Tools</a></li>
+<li class="onpage-item onpage-sub"><a href="#git-identity">Git Identity</a></li>
+<li class="onpage-item onpage-sub"><a href="#vs-code-extensions">VS Code Extensions</a></li>
+<li class="onpage-item onpage-sub"><a href="#accept-the-day-2-classroom-assignment">Accept the Day 2 Classroom Assignment</a></li>
+<li class="onpage-item onpage-sub"><a href="#full-setup-reference">Full Setup Reference</a></li>
+<li class="onpage-item"><a href="#what-you-missed-on-day-1-and-do-not-need-to-repeat">What You Missed on Day 1 (and Do Not Need to Repeat)</a></li>
+<li class="onpage-item"><a href="#what-happens-when-you-arrive">What Happens When You Arrive</a></li>
+<li class="onpage-item"><a href="#key-resources">Key Resources</a></li>
+<li class="onpage-item"><a href="#authoritative-sources">Authoritative Sources</a></li>
+<li class="onpage-item onpage-sub"><a href="#section-level-source-map">Section-Level Source Map</a></li>
+    </ul>
+  </nav>
       <h1 id="day-2-quick-start---for-participants-joining-on-day-2">Day 2 Quick Start - For Participants Joining on Day 2</h1>
 <blockquote>
 <p><strong>If you attended Day 1</strong>, you do not need this guide. Head straight to the <a href="DAY2_AGENDA.html">Day 2 Agenda</a>.</p>
@@ -304,6 +326,7 @@ git <span class="hljs-built_in">clone</span> https://github.com/YOUR-ORG/YOUR-RE
 <li><strong>Key Resources:</strong> <a href="https://docs.github.com/en">GitHub Docs, home</a>, <a href="https://github.blog/changelog/">GitHub Changelog</a></li>
 </ul>
 
+
     </main>
   </div>
   <footer role="contentinfo" class="site-footer">
@@ -311,5 +334,27 @@ git <span class="hljs-built_in">clone</span> https://github.com/YOUR-ORG/YOUR-RE
     <p><a href="https://github.com/community-access/git-going-with-github">View on GitHub</a> · <a href="https://community-access.org">community-access.org</a></p>
   </footer>
 
+  <script>
+  (function() {
+    var key = 'gggLastVisitedPath';
+    var currentPath = window.location.pathname || '';
+    try {
+      if (currentPath) {
+        localStorage.setItem(key, currentPath);
+      }
+    } catch (e) {}
+
+    var resumeLink = document.getElementById('resume-link');
+    if (!resumeLink) return;
+
+    try {
+      var savedPath = localStorage.getItem(key);
+      if (savedPath && savedPath !== currentPath) {
+        resumeLink.hidden = false;
+        resumeLink.setAttribute('href', savedPath);
+      }
+    } catch (e) {}
+  })();
+  </script>
   </body>
 </html>

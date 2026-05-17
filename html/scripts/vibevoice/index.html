@@ -78,6 +78,11 @@
     <h2 class="guided-title">Guided Reference</h2>
     <p class="guided-intro">Follow the learning order, then branch into appendices and challenge support.</p>
 
+
+    <section class="guided-resume" aria-label="Resume learning">
+      <a id="resume-link" class="guided-resume-link" href="../../index.html" hidden>Resume where you left off</a>
+    </section>
+
     <nav class="guided-nav" aria-label="Workshop navigation">
       <section class="guided-section">
         <h3>Start Here</h3>
@@ -174,6 +179,21 @@
     </nav>
   </aside>
     <main id="main-content" class="markdown-body page-main">
+      <nav class="onpage-nav" aria-label="On this page">
+    <h2 class="onpage-title">On This Page</h2>
+    <ul class="onpage-list">
+      <li class="onpage-item"><a href="#hear-samples-right-now----no-install-required">Hear samples right now -- no install required</a></li>
+<li class="onpage-item"><a href="#available-built-in-english-voices">Available built-in English voices</a></li>
+<li class="onpage-item onpage-sub"><a href="#experimental-voice-packs-run-demodownload_experimental_voicessh">Experimental voice packs (run demo/download_experimental_voices.sh)</a></li>
+<li class="onpage-item"><a href="#local-setup-windows-nvidia-gpu-recommended">Local setup (Windows, NVIDIA GPU recommended)</a></li>
+<li class="onpage-item onpage-sub"><a href="#prerequisites">Prerequisites</a></li>
+<li class="onpage-item onpage-sub"><a href="#step-1-run-the-setup-script">Step 1: Run the setup script</a></li>
+<li class="onpage-item onpage-sub"><a href="#step-2-generate-comparison-samples">Step 2: Generate comparison samples</a></li>
+<li class="onpage-item onpage-sub"><a href="#manual-usage-from-inside-the-vibevoice-repo">Manual usage (from inside the VibeVoice repo)</a></li>
+<li class="onpage-item"><a href="#python-script-options">Python script options</a></li>
+<li class="onpage-item"><a href="#model-notes">Model notes</a></li>
+    </ul>
+  </nav>
       <h1 id="vibevoice-voice-comparison-setup">VibeVoice Voice Comparison Setup</h1>
 <p>Tools for evaluating and comparing Microsoft VibeVoice-Realtime-0.5B voices
 before choosing one for your project.</p>
@@ -320,6 +340,7 @@ repo in September 2025 due to misuse. Only Realtime-0.5B is currently available.
 imperceptible provenance watermark.</li>
 </ul>
 
+
     </main>
   </div>
   <footer role="contentinfo" class="site-footer">
@@ -327,5 +348,27 @@ imperceptible provenance watermark.</li>
     <p><a href="https://github.com/community-access/git-going-with-github">View on GitHub</a> · <a href="https://community-access.org">community-access.org</a></p>
   </footer>
 
+  <script>
+  (function() {
+    var key = 'gggLastVisitedPath';
+    var currentPath = window.location.pathname || '';
+    try {
+      if (currentPath) {
+        localStorage.setItem(key, currentPath);
+      }
+    } catch (e) {}
+
+    var resumeLink = document.getElementById('resume-link');
+    if (!resumeLink) return;
+
+    try {
+      var savedPath = localStorage.getItem(key);
+      if (savedPath && savedPath !== currentPath) {
+        resumeLink.hidden = false;
+        resumeLink.setAttribute('href', savedPath);
+      }
+    } catch (e) {}
+  })();
+  </script>
   </body>
 </html>

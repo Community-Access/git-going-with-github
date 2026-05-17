@@ -78,6 +78,11 @@
     <h2 class="guided-title">Guided Reference</h2>
     <p class="guided-intro">Follow the learning order, then branch into appendices and challenge support.</p>
 
+
+    <section class="guided-resume" aria-label="Resume learning">
+      <a id="resume-link" class="guided-resume-link" href="../../../index.html" hidden>Resume where you left off</a>
+    </section>
+
     <nav class="guided-nav" aria-label="Workshop navigation">
       <section class="guided-section">
         <h3>Start Here</h3>
@@ -174,6 +179,45 @@
     </nav>
   </aside>
     <main id="main-content" class="markdown-body page-main">
+      <nav class="onpage-nav" aria-label="On this page">
+    <h2 class="onpage-title">On This Page</h2>
+    <ul class="onpage-list">
+      <li class="onpage-item"><a href="#table-of-contents">Table of Contents</a></li>
+<li class="onpage-item"><a href="#1-what-you-built-in-two-days">1. What You Built in Two Days</a></li>
+<li class="onpage-item onpage-sub"><a href="#day-1-you-can-navigate-this">Day 1: You Can Navigate This</a></li>
+<li class="onpage-item onpage-sub"><a href="#day-2-you-can-build-this">Day 2: You Can Build This</a></li>
+<li class="onpage-item onpage-sub"><a href="#the-evidence">The evidence</a></li>
+<li class="onpage-item"><a href="#2-your-new-skills-inventory">2. Your New Skills Inventory</a></li>
+<li class="onpage-item onpage-sub"><a href="#skills-you-may-not-have-noticed">Skills you may not have noticed</a></li>
+<li class="onpage-item"><a href="#3-building-your-developer-portfolio">3. Building Your Developer Portfolio</a></li>
+<li class="onpage-item onpage-sub"><a href="#pin-your-best-repositories">Pin your best repositories</a></li>
+<li class="onpage-item onpage-sub"><a href="#write-a-profile-readme">Write a profile README</a></li>
+<li class="onpage-item onpage-sub"><a href="#keep-your-contribution-graph-active">Keep your contribution graph active</a></li>
+<li class="onpage-item onpage-sub"><a href="#learning-cards-building-your-developer-portfolio">Learning Cards: Building Your Developer Portfolio</a></li>
+<li class="onpage-item"><a href="#4-continued-learning-roadmap">4. Continued Learning Roadmap</a></li>
+<li class="onpage-item onpage-sub"><a href="#git-and-version-control">Git and version control</a></li>
+<li class="onpage-item onpage-sub"><a href="#github-platform">GitHub platform</a></li>
+<li class="onpage-item onpage-sub"><a href="#vs-code">VS Code</a></li>
+<li class="onpage-item onpage-sub"><a href="#accessibility">Accessibility</a></li>
+<li class="onpage-item onpage-sub"><a href="#ai-assisted-development">AI-assisted development</a></li>
+<li class="onpage-item onpage-sub"><a href="#programming-languages">Programming languages</a></li>
+<li class="onpage-item"><a href="#5-github-skills-courses-to-try-next">5. GitHub Skills Courses to Try Next</a></li>
+<li class="onpage-item onpage-sub"><a href="#recommended-next-courses">Recommended next courses</a></li>
+<li class="onpage-item onpage-sub"><a href="#how-to-start-a-course">How to start a course</a></li>
+<li class="onpage-item"><a href="#6-staying-connected">6. Staying Connected</a></li>
+<li class="onpage-item onpage-sub"><a href="#community-access">Community Access</a></li>
+<li class="onpage-item onpage-sub"><a href="#open-source-contribution">Open source contribution</a></li>
+<li class="onpage-item onpage-sub"><a href="#accessibility-community">Accessibility community</a></li>
+<li class="onpage-item"><a href="#7-contributing-back-to-this-workshop">7. Contributing Back to This Workshop</a></li>
+<li class="onpage-item onpage-sub"><a href="#types-of-contributions-we-value">Types of contributions we value</a></li>
+<li class="onpage-item onpage-sub"><a href="#the-contribution-workflow">The contribution workflow</a></li>
+<li class="onpage-item onpage-sub"><a href="#learning-cards-contributing-back-to-this-workshop">Learning Cards: Contributing Back to This Workshop</a></li>
+<li class="onpage-item"><a href="#if-you-get-stuck-after-the-workshop">If You Get Stuck After the Workshop</a></li>
+<li class="onpage-item"><a href="#8-final-words">8. Final Words</a></li>
+<li class="onpage-item"><a href="#authoritative-sources">Authoritative Sources</a></li>
+<li class="onpage-item onpage-sub"><a href="#section-level-source-map">Section-Level Source Map</a></li>
+    </ul>
+  </nav>
       <h1 id="what-comes-next-your-developer-journey">What Comes Next: Your Developer Journey</h1>
 <blockquote>
 <p><strong>Related appendices:</strong> <a href="appendix-x-resources.html">Appendix X: Resources</a> | <a href="appendix-z-github-skills.html">Appendix Z: GitHub Skills</a> | <a href="appendix-y-workshop-materials.html">Appendix Y: Workshop Materials</a>
@@ -605,6 +649,7 @@ I am a developer focused on [your interests].
 <li><strong>8. Final Words:</strong> <a href="https://docs.github.com/en">GitHub Docs, home</a>, <a href="https://github.blog/changelog/">GitHub Changelog</a>, <a href="https://docs.github.com/en/get-started/using-git/about-git">About Git</a>, <a href="https://docs.github.com/en/get-started/using-github/github-flow">GitHub flow</a>, <a href="https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/about-pull-requests">About pull requests</a></li>
 </ul>
 
+
     </main>
   </div>
   <footer role="contentinfo" class="site-footer">
@@ -612,5 +657,27 @@ I am a developer focused on [your interests].
     <p><a href="https://github.com/community-access/git-going-with-github">View on GitHub</a> · <a href="https://community-access.org">community-access.org</a></p>
   </footer>
 
+  <script>
+  (function() {
+    var key = 'gggLastVisitedPath';
+    var currentPath = window.location.pathname || '';
+    try {
+      if (currentPath) {
+        localStorage.setItem(key, currentPath);
+      }
+    } catch (e) {}
+
+    var resumeLink = document.getElementById('resume-link');
+    if (!resumeLink) return;
+
+    try {
+      var savedPath = localStorage.getItem(key);
+      if (savedPath && savedPath !== currentPath) {
+        resumeLink.hidden = false;
+        resumeLink.setAttribute('href', savedPath);
+      }
+    } catch (e) {}
+  })();
+  </script>
   </body>
 </html>

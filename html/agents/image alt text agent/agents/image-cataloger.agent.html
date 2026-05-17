@@ -78,6 +78,11 @@
     <h2 class="guided-title">Guided Reference</h2>
     <p class="guided-intro">Follow the learning order, then branch into appendices and challenge support.</p>
 
+
+    <section class="guided-resume" aria-label="Resume learning">
+      <a id="resume-link" class="guided-resume-link" href="../../../index.html" hidden>Resume where you left off</a>
+    </section>
+
     <nav class="guided-nav" aria-label="Workshop navigation">
       <section class="guided-section">
         <h3>Start Here</h3>
@@ -174,6 +179,31 @@
     </nav>
   </aside>
     <main id="main-content" class="markdown-body page-main">
+      <nav class="onpage-nav" aria-label="On this page">
+    <h2 class="onpage-title">On This Page</h2>
+    <ul class="onpage-list">
+      <li class="onpage-item"><a href="#description-quotinternal-helper-agent-invoked-by-image-alt-text-orchestrator-via-task-tool-maintains-an-image-accessibility-catalog-file-tracking-all-processed-images-their-alt-text-dimensions-classification-confidence-scores-and-accessibility-scoring-use-when-image-analysis-results-need-to-be-persisted-to-a-catalog-for-future-referencequot
+tools-read-edit-search
+user-invocable-false
+agents-">description: &amp;quot;Internal helper agent. Invoked by image-alt-text orchestrator via Task tool. Maintains an image accessibility catalog file tracking all processed images, their alt text, dimensions, classification, confidence scores, and accessibility scoring. Use when image analysis results need to be persisted to a catalog for future reference.&amp;quot;
+tools: [read, edit, search]
+user-invocable: false
+agents: []</a></li>
+<li class="onpage-item"><a href="#constraints">Constraints</a></li>
+<li class="onpage-item"><a href="#input">Input</a></li>
+<li class="onpage-item"><a href="#accessibility-score">Accessibility Score</a></li>
+<li class="onpage-item"><a href="#catalog-file-structure">Catalog File Structure</a></li>
+<li class="onpage-item onpage-sub"><a href="#markdown-format-default-image-catalogmd">Markdown format (default: image-catalog.md)</a></li>
+<li class="onpage-item onpage-sub"><a href="#json-format-alternative-image-catalogjson">JSON format (alternative: image-catalog.json)</a></li>
+<li class="onpage-item onpage-sub"><a href="#csv-format-alternative-image-catalogcsv">CSV format (alternative: image-catalog.csv)</a></li>
+<li class="onpage-item"><a href="#operations">Operations</a></li>
+<li class="onpage-item onpage-sub"><a href="#add-entry">Add Entry</a></li>
+<li class="onpage-item onpage-sub"><a href="#batch-add">Batch Add</a></li>
+<li class="onpage-item onpage-sub"><a href="#remove-entry">Remove Entry</a></li>
+<li class="onpage-item onpage-sub"><a href="#delta-mode">Delta Mode</a></li>
+<li class="onpage-item"><a href="#output-format">Output Format</a></li>
+    </ul>
+  </nav>
       <hr>
 <h2 id="description-quotinternal-helper-agent-invoked-by-image-alt-text-orchestrator-via-task-tool-maintains-an-image-accessibility-catalog-file-tracking-all-processed-images-their-alt-text-dimensions-classification-confidence-scores-and-accessibility-scoring-use-when-image-analysis-results-need-to-be-persisted-to-a-catalog-for-future-referencequot
 tools-read-edit-search
@@ -368,6 +398,7 @@ PROJECT_SCORE: </span><span class="hljs-template-variable">{score}</span><span c
 NEEDS_REVIEW: </span><span class="hljs-template-variable">{count}</span><span class="language-xml"> images need human review
 TOTAL: </span><span class="hljs-template-variable">{total image count}</span></code></pre>
 
+
     </main>
   </div>
   <footer role="contentinfo" class="site-footer">
@@ -375,5 +406,27 @@ TOTAL: </span><span class="hljs-template-variable">{total image count}</span></c
     <p><a href="https://github.com/community-access/git-going-with-github">View on GitHub</a> · <a href="https://community-access.org">community-access.org</a></p>
   </footer>
 
+  <script>
+  (function() {
+    var key = 'gggLastVisitedPath';
+    var currentPath = window.location.pathname || '';
+    try {
+      if (currentPath) {
+        localStorage.setItem(key, currentPath);
+      }
+    } catch (e) {}
+
+    var resumeLink = document.getElementById('resume-link');
+    if (!resumeLink) return;
+
+    try {
+      var savedPath = localStorage.getItem(key);
+      if (savedPath && savedPath !== currentPath) {
+        resumeLink.hidden = false;
+        resumeLink.setAttribute('href', savedPath);
+      }
+    } catch (e) {}
+  })();
+  </script>
   </body>
 </html>

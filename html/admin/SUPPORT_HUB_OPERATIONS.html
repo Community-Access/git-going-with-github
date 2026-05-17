@@ -78,6 +78,11 @@
     <h2 class="guided-title">Guided Reference</h2>
     <p class="guided-intro">Follow the learning order, then branch into appendices and challenge support.</p>
 
+
+    <section class="guided-resume" aria-label="Resume learning">
+      <a id="resume-link" class="guided-resume-link" href="../index.html" hidden>Resume where you left off</a>
+    </section>
+
     <nav class="guided-nav" aria-label="Workshop navigation">
       <section class="guided-section">
         <h3>Start Here</h3>
@@ -174,6 +179,24 @@
     </nav>
   </aside>
     <main id="main-content" class="markdown-body page-main">
+      <nav class="onpage-nav" aria-label="On this page">
+    <h2 class="onpage-title">On This Page</h2>
+    <ul class="onpage-list">
+      <li class="onpage-item"><a href="#canonical-support-repository">Canonical Support Repository</a></li>
+<li class="onpage-item"><a href="#student-onboarding-model-rich-path">Student Onboarding Model (Rich Path)</a></li>
+<li class="onpage-item"><a href="#what-belongs-in-support-hub">What Belongs In Support Hub</a></li>
+<li class="onpage-item"><a href="#recommended-support-taxonomy">Recommended Support Taxonomy</a></li>
+<li class="onpage-item onpage-sub"><a href="#discussions-categories">Discussions categories</a></li>
+<li class="onpage-item onpage-sub"><a href="#labels">Labels</a></li>
+<li class="onpage-item"><a href="#response-standards">Response Standards</a></li>
+<li class="onpage-item"><a href="#moderator-playbook">Moderator Playbook</a></li>
+<li class="onpage-item"><a href="#privacy-and-safety-rules">Privacy And Safety Rules</a></li>
+<li class="onpage-item"><a href="#integration-checklist">Integration Checklist</a></li>
+<li class="onpage-item"><a href="#reset-and-rebuild-from-scratch">Reset And Rebuild (From Scratch)</a></li>
+<li class="onpage-item"><a href="#authoritative-sources">Authoritative Sources</a></li>
+<li class="onpage-item onpage-sub"><a href="#section-level-source-map">Section-Level Source Map</a></li>
+    </ul>
+  </nav>
       <h1 id="support-hub-operations">Support Hub Operations</h1>
 <p>This guide defines how we run the open, post-workshop support repository for GIT Going with GitHub.</p>
 <h2 id="canonical-support-repository">Canonical Support Repository</h2>
@@ -296,6 +319,7 @@
 <li><strong>Reset And Rebuild (From Scratch):</strong> <a href="https://docs.github.com/en">GitHub Docs, home</a>, <a href="https://github.blog/changelog/">GitHub Changelog</a></li>
 </ul>
 
+
     </main>
   </div>
   <footer role="contentinfo" class="site-footer">
@@ -303,5 +327,27 @@
     <p><a href="https://github.com/community-access/git-going-with-github">View on GitHub</a> · <a href="https://community-access.org">community-access.org</a></p>
   </footer>
 
+  <script>
+  (function() {
+    var key = 'gggLastVisitedPath';
+    var currentPath = window.location.pathname || '';
+    try {
+      if (currentPath) {
+        localStorage.setItem(key, currentPath);
+      }
+    } catch (e) {}
+
+    var resumeLink = document.getElementById('resume-link');
+    if (!resumeLink) return;
+
+    try {
+      var savedPath = localStorage.getItem(key);
+      if (savedPath && savedPath !== currentPath) {
+        resumeLink.hidden = false;
+        resumeLink.setAttribute('href', savedPath);
+      }
+    } catch (e) {}
+  })();
+  </script>
   </body>
 </html>

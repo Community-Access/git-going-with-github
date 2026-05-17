@@ -78,6 +78,11 @@
     <h2 class="guided-title">Guided Reference</h2>
     <p class="guided-intro">Follow the learning order, then branch into appendices and challenge support.</p>
 
+
+    <section class="guided-resume" aria-label="Resume learning">
+      <a id="resume-link" class="guided-resume-link" href="../index.html" hidden>Resume where you left off</a>
+    </section>
+
     <nav class="guided-nav" aria-label="Workshop navigation">
       <section class="guided-section">
         <h3>Start Here</h3>
@@ -174,6 +179,19 @@
     </nav>
   </aside>
     <main id="main-content" class="markdown-body page-main">
+      <nav class="onpage-nav" aria-label="On this page">
+    <h2 class="onpage-title">On This Page</h2>
+    <ul class="onpage-list">
+      <li class="onpage-item"><a href="#current-strategy">Current Strategy</a></li>
+<li class="onpage-item"><a href="#style-standard">Style Standard</a></li>
+<li class="onpage-item"><a href="#new-machine-setup">New Machine Setup</a></li>
+<li class="onpage-item"><a href="#regeneration-workflow">Regeneration Workflow</a></li>
+<li class="onpage-item"><a href="#challenge-episode-strategy">Challenge Episode Strategy</a></li>
+<li class="onpage-item"><a href="#transcript-source-of-truth">Transcript Source of Truth</a></li>
+<li class="onpage-item"><a href="#voice-deployment-notes">Voice Deployment Notes</a></li>
+<li class="onpage-item"><a href="#recommended-next-tooling">Recommended Next Tooling</a></li>
+    </ul>
+  </nav>
       <h1 id="podcast-regeneration-runbook">Podcast Regeneration Runbook</h1>
 <p>This runbook explains how to rebuild the Git Going with GitHub podcast series after curriculum changes. Use it when chapters, appendices, agendas, or challenges change enough that the existing transcripts no longer match the source material.</p>
 <h2 id="current-strategy">Current Strategy</h2>
@@ -365,6 +383,7 @@ git <span class="hljs-built_in">diff</span> <span class="hljs-literal">--check</
 npm run generate:podcast<span class="hljs-literal">-challenge-script</span> <span class="hljs-literal">--</span> challenge<span class="hljs-literal">-01-find-your-way-around</span></code></pre>
 <p>Until that exists, use the bundles as prompt packets and generate scripts manually or with the AI tool of choice, then commit the reviewed <code>.txt</code> scripts.</p>
 
+
     </main>
   </div>
   <footer role="contentinfo" class="site-footer">
@@ -372,5 +391,27 @@ npm run generate:podcast<span class="hljs-literal">-challenge-script</span> <spa
     <p><a href="https://github.com/community-access/git-going-with-github">View on GitHub</a> · <a href="https://community-access.org">community-access.org</a></p>
   </footer>
 
+  <script>
+  (function() {
+    var key = 'gggLastVisitedPath';
+    var currentPath = window.location.pathname || '';
+    try {
+      if (currentPath) {
+        localStorage.setItem(key, currentPath);
+      }
+    } catch (e) {}
+
+    var resumeLink = document.getElementById('resume-link');
+    if (!resumeLink) return;
+
+    try {
+      var savedPath = localStorage.getItem(key);
+      if (savedPath && savedPath !== currentPath) {
+        resumeLink.hidden = false;
+        resumeLink.setAttribute('href', savedPath);
+      }
+    } catch (e) {}
+  })();
+  </script>
   </body>
 </html>

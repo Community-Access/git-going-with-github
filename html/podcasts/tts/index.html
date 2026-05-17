@@ -78,6 +78,11 @@
     <h2 class="guided-title">Guided Reference</h2>
     <p class="guided-intro">Follow the learning order, then branch into appendices and challenge support.</p>
 
+
+    <section class="guided-resume" aria-label="Resume learning">
+      <a id="resume-link" class="guided-resume-link" href="../../index.html" hidden>Resume where you left off</a>
+    </section>
+
     <nav class="guided-nav" aria-label="Workshop navigation">
       <section class="guided-section">
         <h3>Start Here</h3>
@@ -174,6 +179,17 @@
     </nav>
   </aside>
     <main id="main-content" class="markdown-body page-main">
+      <nav class="onpage-nav" aria-label="On this page">
+    <h2 class="onpage-title">On This Page</h2>
+    <ul class="onpage-list">
+      <li class="onpage-item"><a href="#what-this-runbook-covers">What this runbook covers</a></li>
+<li class="onpage-item"><a href="#install-requirements">Install requirements</a></li>
+<li class="onpage-item"><a href="#one-command-setup-via-npm-scripts">One-command setup via npm scripts</a></li>
+<li class="onpage-item"><a href="#piper-setup-and-samples">Piper setup and samples</a></li>
+<li class="onpage-item"><a href="#kokoro-setup-and-samples">Kokoro setup and samples</a></li>
+<li class="onpage-item"><a href="#notes">Notes</a></li>
+    </ul>
+  </nav>
       <p><strong>Table: TTS pipeline outcomes and provided commands</strong></p>
 <h1 id="tts-setup-piper-and-kokoro">TTS Setup: Piper and Kokoro</h1>
 <p>This runbook documents the end-to-end local setup for the workshop TTS toolchain.</p>
@@ -251,6 +267,7 @@ python <span class="hljs-literal">-m</span> pip install piper<span class="hljs-l
 <li>Kokoro does not publish low/medium/high voice tiers like Piper. In this repository, English voices are treated as the high-quality English set for practical testing.</li>
 </ul>
 
+
     </main>
   </div>
   <footer role="contentinfo" class="site-footer">
@@ -258,5 +275,27 @@ python <span class="hljs-literal">-m</span> pip install piper<span class="hljs-l
     <p><a href="https://github.com/community-access/git-going-with-github">View on GitHub</a> · <a href="https://community-access.org">community-access.org</a></p>
   </footer>
 
+  <script>
+  (function() {
+    var key = 'gggLastVisitedPath';
+    var currentPath = window.location.pathname || '';
+    try {
+      if (currentPath) {
+        localStorage.setItem(key, currentPath);
+      }
+    } catch (e) {}
+
+    var resumeLink = document.getElementById('resume-link');
+    if (!resumeLink) return;
+
+    try {
+      var savedPath = localStorage.getItem(key);
+      if (savedPath && savedPath !== currentPath) {
+        resumeLink.hidden = false;
+        resumeLink.setAttribute('href', savedPath);
+      }
+    } catch (e) {}
+  })();
+  </script>
   </body>
 </html>

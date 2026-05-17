@@ -78,6 +78,11 @@
     <h2 class="guided-title">Guided Reference</h2>
     <p class="guided-intro">Follow the learning order, then branch into appendices and challenge support.</p>
 
+
+    <section class="guided-resume" aria-label="Resume learning">
+      <a id="resume-link" class="guided-resume-link" href="../index.html" hidden>Resume where you left off</a>
+    </section>
+
     <nav class="guided-nav" aria-label="Workshop navigation">
       <section class="guided-section">
         <h3>Start Here</h3>
@@ -174,6 +179,19 @@
     </nav>
   </aside>
     <main id="main-content" class="markdown-body page-main">
+      <nav class="onpage-nav" aria-label="On this page">
+    <h2 class="onpage-title">On This Page</h2>
+    <ul class="onpage-list">
+      <li class="onpage-item"><a href="#join-the-next-git-going-with-github-cohort">Join the next GIT Going with GitHub cohort</a></li>
+<li class="onpage-item"><a href="#quick-opt-in-workflow">Quick opt-in workflow</a></li>
+<li class="onpage-item"><a href="#what-happens-automatically-after-you-submit">What happens automatically after you submit</a></li>
+<li class="onpage-item"><a href="#important-notes">Important notes</a></li>
+<li class="onpage-item"><a href="#after-you-opt-in">After you opt in</a></li>
+<li class="onpage-item"><a href="#need-help">Need help?</a></li>
+<li class="onpage-item"><a href="#authoritative-sources">Authoritative Sources</a></li>
+<li class="onpage-item onpage-sub"><a href="#section-level-source-map">Section-Level Source Map</a></li>
+    </ul>
+  </nav>
       <h1 id="student-opt-in">Student Opt-In</h1>
 <p><a href="https://community-access.org/git-going-with-github/">Back to Home</a> | <a href="https://github.com/Community-Access/support">Support Hub</a> | <a href="https://community-access.org/git-going-with-github/docs/00-pre-workshop-setup.html">Pre-Workshop Setup Guide</a></p>
 <h2 id="join-the-next-git-going-with-github-cohort">Join the next GIT Going with GitHub cohort</h2>
@@ -258,6 +276,7 @@
 <li><strong>Need help?:</strong> <a href="https://docs.github.com/en">GitHub Docs, home</a>, <a href="https://github.blog/changelog/">GitHub Changelog</a>, <a href="https://docs.github.com/en/discussions">GitHub Discussions docs</a>, <a href="https://docs.github.com/en/get-started/writing-on-github/editing-and-sharing-content-with-gists">GitHub Gists docs</a></li>
 </ul>
 
+
     </main>
   </div>
   <footer role="contentinfo" class="site-footer">
@@ -265,5 +284,27 @@
     <p><a href="https://github.com/community-access/git-going-with-github">View on GitHub</a> · <a href="https://community-access.org">community-access.org</a></p>
   </footer>
 
+  <script>
+  (function() {
+    var key = 'gggLastVisitedPath';
+    var currentPath = window.location.pathname || '';
+    try {
+      if (currentPath) {
+        localStorage.setItem(key, currentPath);
+      }
+    } catch (e) {}
+
+    var resumeLink = document.getElementById('resume-link');
+    if (!resumeLink) return;
+
+    try {
+      var savedPath = localStorage.getItem(key);
+      if (savedPath && savedPath !== currentPath) {
+        resumeLink.hidden = false;
+        resumeLink.setAttribute('href', savedPath);
+      }
+    } catch (e) {}
+  })();
+  </script>
   </body>
 </html>

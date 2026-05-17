@@ -78,6 +78,11 @@
     <h2 class="guided-title">Guided Reference</h2>
     <p class="guided-intro">Follow the learning order, then branch into appendices and challenge support.</p>
 
+
+    <section class="guided-resume" aria-label="Resume learning">
+      <a id="resume-link" class="guided-resume-link" href="./index.html" hidden>Resume where you left off</a>
+    </section>
+
     <nav class="guided-nav" aria-label="Workshop navigation">
       <section class="guided-section">
         <h3>Start Here</h3>
@@ -174,6 +179,28 @@
     </nav>
   </aside>
     <main id="main-content" class="markdown-body page-main">
+      <nav class="onpage-nav" aria-label="On this page">
+    <h2 class="onpage-title">On This Page</h2>
+    <ul class="onpage-list">
+      <li class="onpage-item"><a href="#a-workshop-by-community-access">A Workshop by Community Access</a></li>
+<li class="onpage-item"><a href="#what-is-this-event">What Is This Event?</a></li>
+<li class="onpage-item"><a href="#who-is-this-for">Who Is This For?</a></li>
+<li class="onpage-item"><a href="#two-day-overview">Two-Day Overview</a></li>
+<li class="onpage-item onpage-sub"><a href="#the-journey-arc">The Journey Arc</a></li>
+<li class="onpage-item"><a href="#how-to-read-these-docs">How to Read These Docs</a></li>
+<li class="onpage-item"><a href="#post-workshop-support">Post-Workshop Support</a></li>
+<li class="onpage-item"><a href="#your-challenges">Your Challenges</a></li>
+<li class="onpage-item onpage-sub"><a href="#quick-navigation">Quick Navigation</a></li>
+<li class="onpage-item"><a href="#this-repository39s-structure">This Repository&amp;#39;s Structure</a></li>
+<li class="onpage-item"><a href="#quick-reference">Quick Reference</a></li>
+<li class="onpage-item"><a href="#screen-reader-users-start-here">Screen Reader Users: Start Here</a></li>
+<li class="onpage-item"><a href="#the-goal-of-this-event">The Goal of This Event</a></li>
+<li class="onpage-item"><a href="#questions-before-the-event">Questions Before the Event?</a></li>
+<li class="onpage-item"><a href="#license">License</a></li>
+<li class="onpage-item"><a href="#authoritative-sources">Authoritative Sources</a></li>
+<li class="onpage-item onpage-sub"><a href="#section-level-source-map">Section-Level Source Map</a></li>
+    </ul>
+  </nav>
       <h1 id="git-going-with-github">GIT Going with GitHub</h1>
 <p>License: CC BY 4.0 | <a href="https://community-access.org/git-going-with-github/">Site</a> | <a href="https://github.com/community-access/git-going-with-github/discussions">Discussions</a></p>
 <h2 id="a-workshop-by-community-access">A Workshop by <a href="https://community-access.org">Community Access</a></h2>
@@ -733,6 +760,7 @@ Day <span class="hljs-number">2</span> - Deepen with VS <span class="hljs-built_
 <li><strong>License:</strong> <a href="https://docs.github.com/en">GitHub Docs, home</a>, <a href="https://github.blog/changelog/">GitHub Changelog</a></li>
 </ul>
 
+
     </main>
   </div>
   <footer role="contentinfo" class="site-footer">
@@ -740,5 +768,27 @@ Day <span class="hljs-number">2</span> - Deepen with VS <span class="hljs-built_
     <p><a href="https://github.com/community-access/git-going-with-github">View on GitHub</a> · <a href="https://community-access.org">community-access.org</a></p>
   </footer>
 
+  <script>
+  (function() {
+    var key = 'gggLastVisitedPath';
+    var currentPath = window.location.pathname || '';
+    try {
+      if (currentPath) {
+        localStorage.setItem(key, currentPath);
+      }
+    } catch (e) {}
+
+    var resumeLink = document.getElementById('resume-link');
+    if (!resumeLink) return;
+
+    try {
+      var savedPath = localStorage.getItem(key);
+      if (savedPath && savedPath !== currentPath) {
+        resumeLink.hidden = false;
+        resumeLink.setAttribute('href', savedPath);
+      }
+    } catch (e) {}
+  })();
+  </script>
   </body>
 </html>

@@ -78,6 +78,11 @@
     <h2 class="guided-title">Guided Reference</h2>
     <p class="guided-intro">Follow the learning order, then branch into appendices and challenge support.</p>
 
+
+    <section class="guided-resume" aria-label="Resume learning">
+      <a id="resume-link" class="guided-resume-link" href="../../../index.html" hidden>Resume where you left off</a>
+    </section>
+
     <nav class="guided-nav" aria-label="Workshop navigation">
       <section class="guided-section">
         <h3>Start Here</h3>
@@ -174,6 +179,24 @@
     </nav>
   </aside>
     <main id="main-content" class="markdown-body page-main">
+      <nav class="onpage-nav" aria-label="On this page">
+    <h2 class="onpage-title">On This Page</h2>
+    <ul class="onpage-list">
+      <li class="onpage-item"><a href="#1-local-prerequisites">1. Local prerequisites</a></li>
+<li class="onpage-item"><a href="#2-api-key-setup-openrouter-first">2. API key setup (OpenRouter first)</a></li>
+<li class="onpage-item"><a href="#3-first-dry-run">3. First dry run</a></li>
+<li class="onpage-item"><a href="#4-first-generation-run">4. First generation run</a></li>
+<li class="onpage-item"><a href="#5-human-review-checklist">5. Human review checklist</a></li>
+<li class="onpage-item"><a href="#6-regression-flow-mini-then-54-polish">6. Regression flow: mini then 5.4 polish</a></li>
+<li class="onpage-item"><a href="#7-production-wiring-after-approval">7. Production wiring after approval</a></li>
+<li class="onpage-item"><a href="#8-after-transcript-promotion">8. After transcript promotion</a></li>
+<li class="onpage-item onpage-sub"><a href="#technical-integration-notes">Technical integration notes</a></li>
+<li class="onpage-item"><a href="#9-recommended-model-strategy">9. Recommended model strategy</a></li>
+<li class="onpage-item"><a href="#10-scripts-only-full-catalog-generation-54-only">10. Scripts-only full catalog generation (5.4 only)</a></li>
+<li class="onpage-item"><a href="#11-durable-syncbatch-execution-layer">11. Durable sync/batch execution layer</a></li>
+<li class="onpage-item"><a href="#12-time-critical-full-end-to-end-validation-highest-quality-pass">12. Time-critical full end-to-end validation (highest-quality pass)</a></li>
+    </ul>
+  </nav>
       <h1 id="setup-and-wiring-guide">Setup and Wiring Guide</h1>
 <p>This guide explains what you need to make the LLM-first podcast workflow run.</p>
 <h2 id="1-local-prerequisites">1. Local prerequisites</h2>
@@ -387,6 +410,7 @@ python podcasts/tag<span class="hljs-literal">-audio-metadata</span>.py <span cl
 <li>Podcast site builds from current sources without manual patching.</li>
 </ul>
 
+
     </main>
   </div>
   <footer role="contentinfo" class="site-footer">
@@ -394,5 +418,27 @@ python podcasts/tag<span class="hljs-literal">-audio-metadata</span>.py <span cl
     <p><a href="https://github.com/community-access/git-going-with-github">View on GitHub</a> · <a href="https://community-access.org">community-access.org</a></p>
   </footer>
 
+  <script>
+  (function() {
+    var key = 'gggLastVisitedPath';
+    var currentPath = window.location.pathname || '';
+    try {
+      if (currentPath) {
+        localStorage.setItem(key, currentPath);
+      }
+    } catch (e) {}
+
+    var resumeLink = document.getElementById('resume-link');
+    if (!resumeLink) return;
+
+    try {
+      var savedPath = localStorage.getItem(key);
+      if (savedPath && savedPath !== currentPath) {
+        resumeLink.hidden = false;
+        resumeLink.setAttribute('href', savedPath);
+      }
+    } catch (e) {}
+  })();
+  </script>
   </body>
 </html>

@@ -78,6 +78,11 @@
     <h2 class="guided-title">Guided Reference</h2>
     <p class="guided-intro">Follow the learning order, then branch into appendices and challenge support.</p>
 
+
+    <section class="guided-resume" aria-label="Resume learning">
+      <a id="resume-link" class="guided-resume-link" href="../../../index.html" hidden>Resume where you left off</a>
+    </section>
+
     <nav class="guided-nav" aria-label="Workshop navigation">
       <section class="guided-section">
         <h3>Start Here</h3>
@@ -174,6 +179,19 @@
     </nav>
   </aside>
     <main id="main-content" class="markdown-body page-main">
+      <nav class="onpage-nav" aria-label="On this page">
+    <h2 class="onpage-title">On This Page</h2>
+    <ul class="onpage-list">
+      <li class="onpage-item"><a href="#pricing-used">Pricing used</a></li>
+<li class="onpage-item"><a href="#corpus-assumptions">Corpus assumptions</a></li>
+<li class="onpage-item"><a href="#token-scenarios">Token scenarios</a></li>
+<li class="onpage-item"><a href="#standard-api-estimated-cost">Standard API estimated cost</a></li>
+<li class="onpage-item"><a href="#batch-api-estimated-cost">Batch API estimated cost</a></li>
+<li class="onpage-item"><a href="#recommended-budget">Recommended budget</a></li>
+<li class="onpage-item"><a href="#recommended-cost-strategy">Recommended cost strategy</a></li>
+<li class="onpage-item"><a href="#what-is-excluded">What is excluded</a></li>
+    </ul>
+  </nav>
       <h1 id="openrouteropenai-model-cost-report-for-54-focused-full-podcast-generation">OpenRouter/OpenAI Model Cost Report for 5.4-Focused Full Podcast Generation</h1>
 <p>Generated for the Git Going with GitHub LLM podcast proposal.</p>
 <h2 id="pricing-used">Pricing used</h2>
@@ -336,6 +354,7 @@
 <li>Hosted audio processing</li>
 </ul>
 
+
     </main>
   </div>
   <footer role="contentinfo" class="site-footer">
@@ -343,5 +362,27 @@
     <p><a href="https://github.com/community-access/git-going-with-github">View on GitHub</a> · <a href="https://community-access.org">community-access.org</a></p>
   </footer>
 
+  <script>
+  (function() {
+    var key = 'gggLastVisitedPath';
+    var currentPath = window.location.pathname || '';
+    try {
+      if (currentPath) {
+        localStorage.setItem(key, currentPath);
+      }
+    } catch (e) {}
+
+    var resumeLink = document.getElementById('resume-link');
+    if (!resumeLink) return;
+
+    try {
+      var savedPath = localStorage.getItem(key);
+      if (savedPath && savedPath !== currentPath) {
+        resumeLink.hidden = false;
+        resumeLink.setAttribute('href', savedPath);
+      }
+    } catch (e) {}
+  })();
+  </script>
   </body>
 </html>

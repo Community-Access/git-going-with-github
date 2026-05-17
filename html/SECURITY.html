@@ -78,6 +78,11 @@
     <h2 class="guided-title">Guided Reference</h2>
     <p class="guided-intro">Follow the learning order, then branch into appendices and challenge support.</p>
 
+
+    <section class="guided-resume" aria-label="Resume learning">
+      <a id="resume-link" class="guided-resume-link" href="./index.html" hidden>Resume where you left off</a>
+    </section>
+
     <nav class="guided-nav" aria-label="Workshop navigation">
       <section class="guided-section">
         <h3>Start Here</h3>
@@ -174,6 +179,21 @@
     </nav>
   </aside>
     <main id="main-content" class="markdown-body page-main">
+      <nav class="onpage-nav" aria-label="On this page">
+    <h2 class="onpage-title">On This Page</h2>
+    <ul class="onpage-list">
+      <li class="onpage-item"><a href="#supported-versions">Supported Versions</a></li>
+<li class="onpage-item"><a href="#reporting-a-vulnerability">Reporting a Vulnerability</a></li>
+<li class="onpage-item onpage-sub"><a href="#preferred-method---private-vulnerability-reporting">Preferred Method - Private Vulnerability Reporting</a></li>
+<li class="onpage-item onpage-sub"><a href="#what-to-report">What to Report</a></li>
+<li class="onpage-item onpage-sub"><a href="#what-is-out-of-scope">What Is Out of Scope</a></li>
+<li class="onpage-item"><a href="#response-timeline">Response Timeline</a></li>
+<li class="onpage-item"><a href="#scope-and-impact">Scope and Impact</a></li>
+<li class="onpage-item"><a href="#credit">Credit</a></li>
+<li class="onpage-item"><a href="#authoritative-sources">Authoritative Sources</a></li>
+<li class="onpage-item onpage-sub"><a href="#section-level-source-map">Section-Level Source Map</a></li>
+    </ul>
+  </nav>
       <h1 id="security-policy">Security Policy</h1>
 <h2 id="supported-versions">Supported Versions</h2>
 <p>This repository contains <strong>educational curriculum and documentation only</strong> - no production software, application servers, or APIs. There are no versioned software releases to patch.</p>
@@ -287,6 +307,7 @@
 <li><strong>Credit:</strong> <a href="https://docs.github.com/en">GitHub Docs, home</a>, <a href="https://github.blog/changelog/">GitHub Changelog</a>, <a href="https://docs.github.com/en/code-security/getting-started/github-security-features">GitHub security features</a>, <a href="https://docs.github.com/en/code-security/dependabot">Dependabot docs</a>, <a href="https://docs.github.com/en/code-security/secret-scanning/introduction/about-secret-scanning">Secret scanning docs</a></li>
 </ul>
 
+
     </main>
   </div>
   <footer role="contentinfo" class="site-footer">
@@ -294,5 +315,27 @@
     <p><a href="https://github.com/community-access/git-going-with-github">View on GitHub</a> · <a href="https://community-access.org">community-access.org</a></p>
   </footer>
 
+  <script>
+  (function() {
+    var key = 'gggLastVisitedPath';
+    var currentPath = window.location.pathname || '';
+    try {
+      if (currentPath) {
+        localStorage.setItem(key, currentPath);
+      }
+    } catch (e) {}
+
+    var resumeLink = document.getElementById('resume-link');
+    if (!resumeLink) return;
+
+    try {
+      var savedPath = localStorage.getItem(key);
+      if (savedPath && savedPath !== currentPath) {
+        resumeLink.hidden = false;
+        resumeLink.setAttribute('href', savedPath);
+      }
+    } catch (e) {}
+  })();
+  </script>
   </body>
 </html>

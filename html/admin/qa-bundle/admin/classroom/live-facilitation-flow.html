@@ -78,6 +78,11 @@
     <h2 class="guided-title">Guided Reference</h2>
     <p class="guided-intro">Follow the learning order, then branch into appendices and challenge support.</p>
 
+
+    <section class="guided-resume" aria-label="Resume learning">
+      <a id="resume-link" class="guided-resume-link" href="../../../../index.html" hidden>Resume where you left off</a>
+    </section>
+
     <nav class="guided-nav" aria-label="Workshop navigation">
       <section class="guided-section">
         <h3>Start Here</h3>
@@ -174,6 +179,25 @@
     </nav>
   </aside>
     <main id="main-content" class="markdown-body page-main">
+      <nav class="onpage-nav" aria-label="On this page">
+    <h2 class="onpage-title">On This Page</h2>
+    <ul class="onpage-list">
+      <li class="onpage-item"><a href="#phase-1-classroom-and-roster">Phase 1: Classroom and Roster</a></li>
+<li class="onpage-item"><a href="#phase-2-create-day-1-assignment">Phase 2: Create Day 1 Assignment</a></li>
+<li class="onpage-item"><a href="#phase-3-verify-autograder-workflows-no-classroom-configuration">Phase 3: Verify Autograder Workflows (no Classroom configuration)</a></li>
+<li class="onpage-item"><a href="#phase-4-create-day-2-assignment">Phase 4: Create Day 2 Assignment</a></li>
+<li class="onpage-item"><a href="#phase-5-verify-day-2-autograder-workflows-no-classroom-configuration">Phase 5: Verify Day 2 Autograder Workflows (no Classroom configuration)</a></li>
+<li class="onpage-item"><a href="#phase-6-publish-and-share">Phase 6: Publish and Share</a></li>
+<li class="onpage-item"><a href="#phase-7-first-student-acceptance-and-seeding">Phase 7: First Student Acceptance and Seeding</a></li>
+<li class="onpage-item onpage-sub"><a href="#day-1-seeding">Day 1 seeding</a></li>
+<li class="onpage-item onpage-sub"><a href="#day-2-seeding">Day 2 seeding</a></li>
+<li class="onpage-item onpage-sub"><a href="#peer-simulation-seeding">Peer simulation seeding</a></li>
+<li class="onpage-item"><a href="#phase-8-verification-gate">Phase 8: Verification Gate</a></li>
+<li class="onpage-item"><a href="#phase-9-cohort-readiness-sign-off">Phase 9: Cohort Readiness Sign-Off</a></li>
+<li class="onpage-item"><a href="#authoritative-sources">Authoritative Sources</a></li>
+<li class="onpage-item onpage-sub"><a href="#section-level-source-map">Section-Level Source Map</a></li>
+    </ul>
+  </nav>
       <h1 id="live-facilitation-flow-checklist">Live Facilitation Flow Checklist</h1>
 <p>Use this checklist when setting up a new cohort so you can run the full Classroom workflow in one pass.</p>
 <h2 id="phase-1-classroom-and-roster">Phase 1: Classroom and Roster</h2>
@@ -282,6 +306,7 @@
 <li><strong>Phase 9: Cohort Readiness Sign-Off:</strong> <a href="https://docs.github.com/en">GitHub Docs, home</a>, <a href="https://github.blog/changelog/">GitHub Changelog</a></li>
 </ul>
 
+
     </main>
   </div>
   <footer role="contentinfo" class="site-footer">
@@ -289,5 +314,27 @@
     <p><a href="https://github.com/community-access/git-going-with-github">View on GitHub</a> · <a href="https://community-access.org">community-access.org</a></p>
   </footer>
 
+  <script>
+  (function() {
+    var key = 'gggLastVisitedPath';
+    var currentPath = window.location.pathname || '';
+    try {
+      if (currentPath) {
+        localStorage.setItem(key, currentPath);
+      }
+    } catch (e) {}
+
+    var resumeLink = document.getElementById('resume-link');
+    if (!resumeLink) return;
+
+    try {
+      var savedPath = localStorage.getItem(key);
+      if (savedPath && savedPath !== currentPath) {
+        resumeLink.hidden = false;
+        resumeLink.setAttribute('href', savedPath);
+      }
+    } catch (e) {}
+  })();
+  </script>
   </body>
 </html>

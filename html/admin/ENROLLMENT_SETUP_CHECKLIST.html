@@ -78,6 +78,11 @@
     <h2 class="guided-title">Guided Reference</h2>
     <p class="guided-intro">Follow the learning order, then branch into appendices and challenge support.</p>
 
+
+    <section class="guided-resume" aria-label="Resume learning">
+      <a id="resume-link" class="guided-resume-link" href="../index.html" hidden>Resume where you left off</a>
+    </section>
+
     <nav class="guided-nav" aria-label="Workshop navigation">
       <section class="guided-section">
         <h3>Start Here</h3>
@@ -174,6 +179,23 @@
     </nav>
   </aside>
     <main id="main-content" class="markdown-body page-main">
+      <nav class="onpage-nav" aria-label="On this page">
+    <h2 class="onpage-title">On This Page</h2>
+    <ul class="onpage-list">
+      <li class="onpage-item"><a href="#pre-enrollment-github-classroom-setup">Pre-Enrollment: GitHub Classroom Setup</a></li>
+<li class="onpage-item"><a href="#github-repository-configuration">GitHub Repository Configuration</a></li>
+<li class="onpage-item onpage-sub"><a href="#repository-variables">Repository Variables</a></li>
+<li class="onpage-item onpage-sub"><a href="#repository-secrets">Repository Secrets</a></li>
+<li class="onpage-item"><a href="#private-admin-repository-setup">Private Admin Repository Setup</a></li>
+<li class="onpage-item"><a href="#pre-workshop-enrollment-window">Pre-Workshop: Enrollment Window</a></li>
+<li class="onpage-item"><a href="#workshop-day-0-final-prep">Workshop Day 0: Final Prep</a></li>
+<li class="onpage-item"><a href="#workshop-day-1-2-active-monitoring">Workshop Day 1-2: Active Monitoring</a></li>
+<li class="onpage-item"><a href="#post-workshop-data-archival">Post-Workshop: Data Archival</a></li>
+<li class="onpage-item"><a href="#troubleshooting-quick-reference">Troubleshooting Quick Reference</a></li>
+<li class="onpage-item"><a href="#authoritative-sources">Authoritative Sources</a></li>
+<li class="onpage-item onpage-sub"><a href="#section-level-source-map">Section-Level Source Map</a></li>
+    </ul>
+  </nav>
       <h1 id="enrollment-setup-amp-configuration-checklist">Enrollment Setup &amp; Configuration Checklist</h1>
 <p>Use this checklist to complete the GitHub Classroom integration setup for a new cohort.</p>
 <h2 id="pre-enrollment-github-classroom-setup">Pre-Enrollment: GitHub Classroom Setup</h2>
@@ -415,6 +437,7 @@ Archive passwords/tokens:</p>
 <li><strong>Troubleshooting Quick Reference:</strong> <a href="https://docs.github.com/en">GitHub Docs, home</a>, <a href="https://github.blog/changelog/">GitHub Changelog</a></li>
 </ul>
 
+
     </main>
   </div>
   <footer role="contentinfo" class="site-footer">
@@ -422,5 +445,27 @@ Archive passwords/tokens:</p>
     <p><a href="https://github.com/community-access/git-going-with-github">View on GitHub</a> · <a href="https://community-access.org">community-access.org</a></p>
   </footer>
 
+  <script>
+  (function() {
+    var key = 'gggLastVisitedPath';
+    var currentPath = window.location.pathname || '';
+    try {
+      if (currentPath) {
+        localStorage.setItem(key, currentPath);
+      }
+    } catch (e) {}
+
+    var resumeLink = document.getElementById('resume-link');
+    if (!resumeLink) return;
+
+    try {
+      var savedPath = localStorage.getItem(key);
+      if (savedPath && savedPath !== currentPath) {
+        resumeLink.hidden = false;
+        resumeLink.setAttribute('href', savedPath);
+      }
+    } catch (e) {}
+  })();
+  </script>
   </body>
 </html>

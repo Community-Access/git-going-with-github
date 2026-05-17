@@ -213,6 +213,7 @@ function getDocsCatalog() {
 
 function renderGuidedSidebar(normalizedRelativePath, prefix) {
   const catalog = getDocsCatalog();
+  const sequenceState = getLearningSequenceState(normalizedRelativePath);
 
   const renderLinks = (items) => {
     if (!items.length) {
@@ -232,9 +233,25 @@ function renderGuidedSidebar(normalizedRelativePath, prefix) {
     { href: PODCAST_FEED_URL, title: 'RSS Feed' }
   ];
 
+  const progressCard = sequenceState.index === -1
+    ? ''
+    : `<section class="guided-progress" aria-label="Learning progress">
+        <h3>Learning Progress</h3>
+        <p class="guided-progress-copy">${sequenceState.index + 1} of ${sequenceState.total} pages in the guided sequence</p>
+        <div class="guided-progress-track" role="progressbar" aria-valuemin="0" aria-valuemax="100" aria-valuenow="${sequenceState.percent}" aria-label="Guided sequence progress">
+          <span class="guided-progress-fill" style="width:${sequenceState.percent}%;"></span>
+        </div>
+        <p class="guided-progress-percent">${sequenceState.percent}% complete</p>
+      </section>`;
+
   return `<aside class="guided-sidebar" aria-label="Guided reference">
     <h2 class="guided-title">Guided Reference</h2>
     <p class="guided-intro">Follow the learning order, then branch into appendices and challenge support.</p>
+    ${progressCard}
+
+    <section class="guided-resume" aria-label="Resume learning">
+      <a id="resume-link" class="guided-resume-link" href="${prefix}index.html" hidden>Resume where you left off</a>
+    </section>
 
     <nav class="guided-nav" aria-label="Workshop navigation">
       <section class="guided-section">
@@ -281,12 +298,93 @@ function renderGuidedSidebar(normalizedRelativePath, prefix) {
   </aside>`;
 }
 
+function getLearningSequence() {
+  const catalog = getDocsCatalog();
+  return [
+    ...catalog.essentials,
+    ...catalog.chapters,
+    ...catalog.appendices
+  ];
+}
+
+function getLearningSequenceState(normalizedRelativePath) {
+  const ordered = getLearningSequence();
+  const index = ordered.findIndex((item) => item.href === normalizedRelativePath);
+  const total = ordered.length;
+  const percent = index >= 0 && total > 0
+    ? Math.round(((index + 1) / total) * 100)
+    : 0;
+
+  return { ordered, index, total, percent };
+}
+
+function renderOnPageToc(content) {
+  const headings = [];
+  const re = /<h([2-3]) id="([^"]+)">([\s\S]*?)<\/h\1>/gi;
+  let match;
+
+  while ((match = re.exec(content)) !== null) {
+    const level = Number(match[1]);
+    const id = match[2];
+    const text = match[3]
+      .replace(/<[^>]+>/g, '')
+      .replace(/&amp;/g, '&')
+      .replace(/&lt;/g, '<')
+      .replace(/&gt;/g, '>')
+      .trim();
+    if (id && text) {
+      headings.push({ level, id, text });
+    }
+  }
+
+  if (!headings.length) {
+    return '';
+  }
+
+  const links = headings.map((h) => {
+    const cls = h.level === 3 ? ' onpage-sub' : '';
+    return `<li class="onpage-item${cls}"><a href="#${escapeHtmlText(h.id)}">${escapeHtmlText(h.text)}</a></li>`;
+  }).join('\n');
+
+  return `<nav class="onpage-nav" aria-label="On this page">
+    <h2 class="onpage-title">On This Page</h2>
+    <ul class="onpage-list">
+      ${links}
+    </ul>
+  </nav>`;
+}
+
+function renderProgressionNav(normalizedRelativePath, prefix) {
+  const state = getLearningSequenceState(normalizedRelativePath);
+  if (state.index === -1) {
+    return '';
+  }
+
+  const prev = state.index > 0 ? state.ordered[state.index - 1] : null;
+  const next = state.index < state.ordered.length - 1 ? state.ordered[state.index + 1] : null;
+
+  const prevHtml = prev
+    ? `<a class="progression-link progression-prev" href="${prefix}${prev.href}" rel="prev"><span class="progression-label">Previous</span><span class="progression-title">${escapeHtmlText(prev.title)}</span></a>`
+    : '<span class="progression-link progression-disabled" aria-disabled="true"><span class="progression-label">Previous</span><span class="progression-title">Start of sequence</span></span>';
+
+  const nextHtml = next
+    ? `<a class="progression-link progression-next" href="${prefix}${next.href}" rel="next"><span class="progression-label">Next</span><span class="progression-title">${escapeHtmlText(next.title)}</span></a>`
+    : '<span class="progression-link progression-disabled" aria-disabled="true"><span class="progression-label">Next</span><span class="progression-title">End of sequence</span></span>';
+
+  return `<nav class="progression-nav" aria-label="Page progression">
+    ${prevHtml}
+    ${nextHtml}
+  </nav>`;
+}
+
 // HTML template with accessibility features
 const htmlTemplate = (content, title, relativePath) => {
   const normalizedRelativePath = relativePath.replace(/\\/g, '/');
   const depth = normalizedRelativePath.split('/').length - 1;
   const prefix = depth > 0 ? '../'.repeat(depth) : './';
   const guidedSidebar = renderGuidedSidebar(normalizedRelativePath, prefix);
+  const onPageToc = renderOnPageToc(content);
+  const progressionNav = renderProgressionNav(normalizedRelativePath, prefix);
   const isHome = normalizedRelativePath === 'index.html';
   const isRegister = normalizedRelativePath === 'REGISTER.html';
   const siteName = 'GIT Going with GitHub';
@@ -374,7 +472,9 @@ const htmlTemplate = (content, title, relativePath) => {
   <div class="page-layout">
     ${guidedSidebar}
     <main id="main-content" class="markdown-body page-main">
+      ${onPageToc}
       ${content}
+      ${progressionNav}
     </main>
   </div>
   <footer role="contentinfo" class="site-footer">
@@ -458,6 +558,28 @@ const htmlTemplate = (content, title, relativePath) => {
   }
 })();
 </script>` : ''}
+  <script>
+  (function() {
+    var key = 'gggLastVisitedPath';
+    var currentPath = window.location.pathname || '';
+    try {
+      if (currentPath) {
+        localStorage.setItem(key, currentPath);
+      }
+    } catch (e) {}
+
+    var resumeLink = document.getElementById('resume-link');
+    if (!resumeLink) return;
+
+    try {
+      var savedPath = localStorage.getItem(key);
+      if (savedPath && savedPath !== currentPath) {
+        resumeLink.hidden = false;
+        resumeLink.setAttribute('href', savedPath);
+      }
+    } catch (e) {}
+  })();
+  </script>
   ${(isHome || isRegister) ? `<script>
 (function() {
   var url = 'https://api.github.com/search/issues?q=repo:community-access/git-going-with-github+label:enrolled+is:issue';
@@ -809,6 +931,61 @@ body {
   line-height: 1.45;
 }
 
+.guided-progress {
+  border: 1px solid #d0d7de;
+  border-radius: 8px;
+  background: #ffffff;
+  padding: 0.55rem 0.65rem;
+  margin: 0 0 0.8rem;
+}
+
+.guided-progress h3 {
+  margin: 0;
+  font-size: 0.84rem;
+}
+
+.guided-progress-copy {
+  margin: 0.35rem 0 0.5rem;
+  color: #57606a;
+  font-size: 0.78rem;
+}
+
+.guided-progress-track {
+  width: 100%;
+  height: 0.45rem;
+  border-radius: 999px;
+  background: #eaeef2;
+  overflow: hidden;
+}
+
+.guided-progress-fill {
+  display: block;
+  height: 100%;
+  background: linear-gradient(90deg, #1f8f63, #2da44e);
+}
+
+.guided-progress-percent {
+  margin: 0.35rem 0 0;
+  font-size: 0.74rem;
+  color: #57606a;
+}
+
+.guided-resume {
+  margin: 0 0 0.9rem;
+}
+
+.guided-resume-link {
+  display: inline-block;
+  font-size: 0.82rem;
+  text-decoration: none;
+  color: #0550ae;
+  padding: 0.2rem 0;
+}
+
+.guided-resume-link:hover {
+  text-decoration: underline;
+}
+
 .guided-section {
   margin-bottom: 0.85rem;
 }
@@ -885,10 +1062,99 @@ body {
   content: '▼ ';
 }
 
+.progression-nav {
+  margin-top: 2.2rem;
+  padding-top: 1rem;
+  border-top: 1px solid #d0d7de;
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 0.75rem;
+}
+
+.progression-link {
+  display: block;
+  border: 1px solid #d0d7de;
+  border-radius: 8px;
+  background: #ffffff;
+  padding: 0.6rem 0.75rem;
+  text-decoration: none;
+  min-height: 3.6rem;
+}
+
+.progression-link:hover {
+  border-color: #8c959f;
+  background: #f6f8fa;
+}
+
+.progression-label {
+  display: block;
+  font-size: 0.74rem;
+  color: #57606a;
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+  margin-bottom: 0.2rem;
+}
+
+.progression-title {
+  display: block;
+  color: #0550ae;
+  font-size: 0.9rem;
+  line-height: 1.3;
+  font-weight: 600;
+}
+
+.progression-disabled {
+  opacity: 0.62;
+  pointer-events: none;
+}
+
+.onpage-nav {
+  margin: 0 0 1.3rem;
+  padding: 0.7rem 0.85rem;
+  border: 1px solid #d0d7de;
+  border-radius: 8px;
+  background: #f8fafc;
+}
+
+.onpage-title {
+  margin: 0 0 0.45rem;
+  font-size: 0.95rem;
+  border: none;
+  padding: 0;
+}
+
+.onpage-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.onpage-item {
+  margin: 0.12rem 0;
+}
+
+.onpage-item a {
+  text-decoration: none;
+  font-size: 0.84rem;
+  line-height: 1.35;
+}
+
+.onpage-item a:hover {
+  text-decoration: underline;
+}
+
+.onpage-sub {
+  margin-left: 0.9rem;
+}
+
 @media (max-width: 980px) {
   .guided-sidebar {
     position: static;
     max-height: none;
+  }
+
+  .progression-nav {
+    grid-template-columns: 1fr;
   }
 }
 
@@ -986,10 +1252,18 @@ textarea:focus-visible {
     border-color: #2e3744;
   }
 
+  .guided-progress,
+  .onpage-nav {
+    background: #111827;
+    border-color: #2e3744;
+  }
+
   .guided-intro,
   .guided-empty,
   .guided-external,
-  .guided-sidebar summary {
+  .guided-sidebar summary,
+  .guided-progress-copy,
+  .guided-progress-percent {
     color: #9ca3af;
   }
 
@@ -998,6 +1272,42 @@ textarea:focus-visible {
   }
 
   .guided-active {
+    color: #d2e7ff;
+  }
+
+  .guided-progress-track {
+    background: #233146;
+  }
+
+  .guided-progress-fill {
+    background: linear-gradient(90deg, #2ea66a, #4bc571);
+  }
+
+  .guided-resume-link,
+  .onpage-item a,
+  .onpage-title {
+    color: #d2e7ff;
+  }
+
+  .progression-nav {
+    border-top-color: #2e3744;
+  }
+
+  .progression-link {
+    border-color: #2e3744;
+    background: #111827;
+  }
+
+  .progression-link:hover {
+    border-color: #465368;
+    background: #172134;
+  }
+
+  .progression-label {
+    color: #9ca3af;
+  }
+
+  .progression-title {
     color: #d2e7ff;
   }
 

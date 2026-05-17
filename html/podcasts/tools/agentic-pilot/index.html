@@ -78,6 +78,11 @@
     <h2 class="guided-title">Guided Reference</h2>
     <p class="guided-intro">Follow the learning order, then branch into appendices and challenge support.</p>
 
+
+    <section class="guided-resume" aria-label="Resume learning">
+      <a id="resume-link" class="guided-resume-link" href="../../../index.html" hidden>Resume where you left off</a>
+    </section>
+
     <nav class="guided-nav" aria-label="Workshop navigation">
       <section class="guided-section">
         <h3>Start Here</h3>
@@ -174,6 +179,17 @@
     </nav>
   </aside>
     <main id="main-content" class="markdown-body page-main">
+      <nav class="onpage-nav" aria-label="On this page">
+    <h2 class="onpage-title">On This Page</h2>
+    <ul class="onpage-list">
+      <li class="onpage-item"><a href="#goal">Goal</a></li>
+<li class="onpage-item"><a href="#workflow">Workflow</a></li>
+<li class="onpage-item"><a href="#useful-commands">Useful Commands</a></li>
+<li class="onpage-item"><a href="#chapter-marker-flow">Chapter Marker Flow</a></li>
+<li class="onpage-item"><a href="#what-scales-across-all-79-listening-order-items">What Scales Across All 79 Listening-Order Items</a></li>
+<li class="onpage-item"><a href="#future-utilization-with-the-review-lane">Future utilization with the review lane</a></li>
+    </ul>
+  </nav>
       <h1 id="agentic-pilot-workflow">Agentic Pilot Workflow</h1>
 <p>This folder contains repeatable tooling for running an LLM-assisted transcript workflow with automatic model selection, without overwriting committed podcast scripts until quality gates pass.</p>
 <h2 id="goal">Goal</h2>
@@ -250,6 +266,7 @@
 <li>Reuse lessons that describe process and quality controls rather than chapter-specific wording, so guidance remains valid as curriculum content evolves.</li>
 </ul>
 
+
     </main>
   </div>
   <footer role="contentinfo" class="site-footer">
@@ -257,5 +274,27 @@
     <p><a href="https://github.com/community-access/git-going-with-github">View on GitHub</a> · <a href="https://community-access.org">community-access.org</a></p>
   </footer>
 
+  <script>
+  (function() {
+    var key = 'gggLastVisitedPath';
+    var currentPath = window.location.pathname || '';
+    try {
+      if (currentPath) {
+        localStorage.setItem(key, currentPath);
+      }
+    } catch (e) {}
+
+    var resumeLink = document.getElementById('resume-link');
+    if (!resumeLink) return;
+
+    try {
+      var savedPath = localStorage.getItem(key);
+      if (savedPath && savedPath !== currentPath) {
+        resumeLink.hidden = false;
+        resumeLink.setAttribute('href', savedPath);
+      }
+    } catch (e) {}
+  })();
+  </script>
   </body>
 </html>

@@ -77,6 +77,18 @@
     <aside class="guided-sidebar" aria-label="Guided reference">
     <h2 class="guided-title">Guided Reference</h2>
     <p class="guided-intro">Follow the learning order, then branch into appendices and challenge support.</p>
+    <section class="guided-progress" aria-label="Learning progress">
+        <h3>Learning Progress</h3>
+        <p class="guided-progress-copy">31 of 55 pages in the guided sequence</p>
+        <div class="guided-progress-track" role="progressbar" aria-valuemin="0" aria-valuemax="100" aria-valuenow="56" aria-label="Guided sequence progress">
+          <span class="guided-progress-fill" style="width:56%;"></span>
+        </div>
+        <p class="guided-progress-percent">56% complete</p>
+      </section>
+
+    <section class="guided-resume" aria-label="Resume learning">
+      <a id="resume-link" class="guided-resume-link" href="../index.html" hidden>Resume where you left off</a>
+    </section>
 
     <nav class="guided-nav" aria-label="Workshop navigation">
       <section class="guided-section">
@@ -174,6 +186,73 @@
     </nav>
   </aside>
     <main id="main-content" class="markdown-body page-main">
+      <nav class="onpage-nav" aria-label="On this page">
+    <h2 class="onpage-title">On This Page</h2>
+    <ul class="onpage-list">
+      <li class="onpage-item"><a href="#going-deeper-with-git">Going Deeper with Git</a></li>
+<li class="onpage-item"><a href="#table-of-contents">Table of Contents</a></li>
+<li class="onpage-item onpage-sub"><a href="#learning-cards-using-this-advanced-git-reference">Learning Cards: Using This Advanced Git Reference</a></li>
+<li class="onpage-item"><a href="#1-cherry-pick--grabbing-a-specific-commit">1. Cherry-Pick — Grabbing a Specific Commit</a></li>
+<li class="onpage-item onpage-sub"><a href="#finding-the-commit-sha">Finding the Commit SHA</a></li>
+<li class="onpage-item onpage-sub"><a href="#applying-the-cherry-pick">Applying the Cherry-Pick</a></li>
+<li class="onpage-item onpage-sub"><a href="#if-there39s-a-conflict">If There&amp;#39;s a Conflict</a></li>
+<li class="onpage-item"><a href="#2-interactive-rebase--cleaning-up-your-history">2. Interactive Rebase — Cleaning Up Your History</a></li>
+<li class="onpage-item onpage-sub"><a href="#starting-an-interactive-rebase">Starting an Interactive Rebase</a></li>
+<li class="onpage-item onpage-sub"><a href="#the-commit-list--what-you39re-looking-at">The Commit List — What You&amp;#39;re Looking At</a></li>
+<li class="onpage-item onpage-sub"><a href="#example-squashing-3-commits-into-1">Example: Squashing 3 Commits Into 1</a></li>
+<li class="onpage-item onpage-sub"><a href="#example-rewriting-a-commit-message">Example: Rewriting a Commit Message</a></li>
+<li class="onpage-item onpage-sub"><a href="#if-something-goes-wrong">If Something Goes Wrong</a></li>
+<li class="onpage-item"><a href="#3-git-reset--undoing-at-different-depths">3. git reset — Undoing at Different Depths</a></li>
+<li class="onpage-item onpage-sub"><a href="#the-three-modes">The Three Modes</a></li>
+<li class="onpage-item onpage-sub"><a href="#vs-code--undoing-the-last-commit">VS Code — Undoing the Last Commit</a></li>
+<li class="onpage-item onpage-sub"><a href="#git-cli">Git CLI</a></li>
+<li class="onpage-item onpage-sub"><a href="#unstaging-a-file-without-undoing-the-commit">Unstaging a File (Without Undoing the Commit)</a></li>
+<li class="onpage-item"><a href="#4-git-revert--the-safe-undo-for-shared-branches">4. git revert — The Safe Undo for Shared Branches</a></li>
+<li class="onpage-item onpage-sub"><a href="#vs-code">VS Code</a></li>
+<li class="onpage-item onpage-sub"><a href="#git-cli">Git CLI</a></li>
+<li class="onpage-item onpage-sub"><a href="#when-to-use-revert-vs-reset">When to Use revert vs reset</a></li>
+<li class="onpage-item"><a href="#5-tags--marking-important-moments">5. Tags — Marking Important Moments</a></li>
+<li class="onpage-item onpage-sub"><a href="#types-of-tags">Types of Tags</a></li>
+<li class="onpage-item onpage-sub"><a href="#creating-a-tag">Creating a Tag</a></li>
+<li class="onpage-item onpage-sub"><a href="#pushing-tags-to-github">Pushing Tags to GitHub</a></li>
+<li class="onpage-item onpage-sub"><a href="#deleting-a-tag">Deleting a Tag</a></li>
+<li class="onpage-item"><a href="#6-detached-head--what-it-is-and-how-to-get-out">6. Detached HEAD — What It Is and How to Get Out</a></li>
+<li class="onpage-item onpage-sub"><a href="#getting-out-of-detached-head">Getting Out of Detached HEAD</a></li>
+<li class="onpage-item"><a href="#7-force-pushing-safely">7. Force Pushing Safely</a></li>
+<li class="onpage-item onpage-sub"><a href="#--force-with-lease-vs---force">--force-with-lease vs --force</a></li>
+<li class="onpage-item onpage-sub"><a href="#when-you39d-use-it">When You&amp;#39;d Use It</a></li>
+<li class="onpage-item onpage-sub"><a href="#vs-code">VS Code</a></li>
+<li class="onpage-item onpage-sub"><a href="#github-cli">GitHub CLI</a></li>
+<li class="onpage-item onpage-sub"><a href="#git-cli">Git CLI</a></li>
+<li class="onpage-item onpage-sub"><a href="#the-typical-rebase--force-push-workflow">The Typical Rebase + Force Push Workflow</a></li>
+<li class="onpage-item"><a href="#8-git-bisect--finding-the-commit-that-broke-things">8. git bisect — Finding the Commit That Broke Things</a></li>
+<li class="onpage-item onpage-sub"><a href="#starting-a-bisect-session">Starting a Bisect Session</a></li>
+<li class="onpage-item onpage-sub"><a href="#finishing">Finishing</a></li>
+<li class="onpage-item onpage-sub"><a href="#automating-bisect-with-a-test-script">Automating Bisect with a Test Script</a></li>
+<li class="onpage-item"><a href="#9-git-clean--clearing-out-untracked-files">9. git clean — Clearing Out Untracked Files</a></li>
+<li class="onpage-item onpage-sub"><a href="#always-dry-run-first">Always Dry-Run First</a></li>
+<li class="onpage-item onpage-sub"><a href="#vs-code">VS Code</a></li>
+<li class="onpage-item onpage-sub"><a href="#git-cli">Git CLI</a></li>
+<li class="onpage-item onpage-sub"><a href="#what--n--f--d--x-mean">What -n, -f, -d, -x Mean</a></li>
+<li class="onpage-item"><a href="#10-branch-protection--why-your-push-or-merge-may-be-blocked">10. Branch Protection — Why Your Push or Merge May Be Blocked</a></li>
+<li class="onpage-item onpage-sub"><a href="#common-things-that-block-you-and-why">Common Things That Block You (and Why)</a></li>
+<li class="onpage-item onpage-sub"><a href="#the-correct-flow-for-protected-branches">The Correct Flow for Protected Branches</a></li>
+<li class="onpage-item onpage-sub"><a href="#updating-a-branch-that39s-out-of-date">Updating a Branch That&amp;#39;s Out of Date</a></li>
+<li class="onpage-item onpage-sub"><a href="#checking-what-protection-rules-are-active">Checking What Protection Rules Are Active</a></li>
+<li class="onpage-item onpage-sub"><a href="#learning-cards-quick-reference-table">Learning Cards: Quick Reference Table</a></li>
+<li class="onpage-item"><a href="#quick-reference--advanced-git-commands">Quick Reference — Advanced Git Commands</a></li>
+<li class="onpage-item"><a href="#11-using-github-copilot-for-git-operations">11. Using GitHub Copilot for Git Operations</a></li>
+<li class="onpage-item onpage-sub"><a href="#resolving-merge-conflicts">Resolving Merge Conflicts</a></li>
+<li class="onpage-item onpage-sub"><a href="#writing-better-commit-messages">Writing Better Commit Messages</a></li>
+<li class="onpage-item onpage-sub"><a href="#understanding-confusing-git-output">Understanding Confusing Git Output</a></li>
+<li class="onpage-item onpage-sub"><a href="#choosing-the-right-command">Choosing the Right Command</a></li>
+<li class="onpage-item onpage-sub"><a href="#debugging-a-failing-bisect">Debugging a Failing Bisect</a></li>
+<li class="onpage-item onpage-sub"><a href="#getting-help-with-branch-protection-errors">Getting Help With Branch Protection Errors</a></li>
+<li class="onpage-item onpage-sub"><a href="#copilot-in-the-terminal-vs-copilot-chat">Copilot in the Terminal vs. Copilot Chat</a></li>
+<li class="onpage-item"><a href="#authoritative-sources">Authoritative Sources</a></li>
+<li class="onpage-item onpage-sub"><a href="#section-level-source-map">Section-Level Source Map</a></li>
+    </ul>
+  </nav>
       <h1 id="appendix-e-advanced-git-operations">Appendix E: Advanced Git Operations</h1>
 <blockquote>
 <p><strong>Episode coming soon:</strong> Advanced Git Operations - a conversational audio overview of this appendix. Listen before reading to preview the concepts, or after to reinforce what you learned.</p>
@@ -1115,6 +1194,10 @@ gh copilot suggest <span class="hljs-string">&quot;find which commit broke the l
 <li><strong>11. Using GitHub Copilot for Git Operations:</strong> <a href="https://docs.github.com/en">GitHub Docs, home</a>, <a href="https://github.blog/changelog/">GitHub Changelog</a>, <a href="https://docs.github.com/en/copilot">GitHub Copilot docs</a>, <a href="https://docs.github.com/en/copilot/reference/custom-instructions-support">Custom instructions support matrix</a>, <a href="https://docs.github.com/en/copilot/concepts/agents/cloud-agent/about-custom-agents">About custom agents</a></li>
 </ul>
 
+      <nav class="progression-nav" aria-label="Page progression">
+    <a class="progression-link progression-prev" href="../docs/appendix-d-git-authentication.html" rel="prev"><span class="progression-label">Previous</span><span class="progression-title">Appendix D: Git Authentication</span></a>
+    <a class="progression-link progression-next" href="../docs/appendix-f-git-security.html" rel="next"><span class="progression-label">Next</span><span class="progression-title">Appendix F: Git Security for Contributors</span></a>
+  </nav>
     </main>
   </div>
   <footer role="contentinfo" class="site-footer">
@@ -1122,5 +1205,27 @@ gh copilot suggest <span class="hljs-string">&quot;find which commit broke the l
     <p><a href="https://github.com/community-access/git-going-with-github">View on GitHub</a> · <a href="https://community-access.org">community-access.org</a></p>
   </footer>
 
+  <script>
+  (function() {
+    var key = 'gggLastVisitedPath';
+    var currentPath = window.location.pathname || '';
+    try {
+      if (currentPath) {
+        localStorage.setItem(key, currentPath);
+      }
+    } catch (e) {}
+
+    var resumeLink = document.getElementById('resume-link');
+    if (!resumeLink) return;
+
+    try {
+      var savedPath = localStorage.getItem(key);
+      if (savedPath && savedPath !== currentPath) {
+        resumeLink.hidden = false;
+        resumeLink.setAttribute('href', savedPath);
+      }
+    } catch (e) {}
+  })();
+  </script>
   </body>
 </html>

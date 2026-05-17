@@ -78,6 +78,11 @@
     <h2 class="guided-title">Guided Reference</h2>
     <p class="guided-intro">Follow the learning order, then branch into appendices and challenge support.</p>
 
+
+    <section class="guided-resume" aria-label="Resume learning">
+      <a id="resume-link" class="guided-resume-link" href="../../../../index.html" hidden>Resume where you left off</a>
+    </section>
+
     <nav class="guided-nav" aria-label="Workshop navigation">
       <section class="guided-section">
         <h3>Start Here</h3>
@@ -174,6 +179,21 @@
     </nav>
   </aside>
     <main id="main-content" class="markdown-body page-main">
+      <nav class="onpage-nav" aria-label="On this page">
+    <h2 class="onpage-title">On This Page</h2>
+    <ul class="onpage-list">
+      <li class="onpage-item"><a href="#example-pr">Example PR</a></li>
+<li class="onpage-item"><a href="#key-elements">Key elements</a></li>
+<li class="onpage-item onpage-sub"><a href="#title">Title</a></li>
+<li class="onpage-item onpage-sub"><a href="#body">Body</a></li>
+<li class="onpage-item onpage-sub"><a href="#linked-issue">Linked issue</a></li>
+<li class="onpage-item onpage-sub"><a href="#passing-checks">Passing checks</a></li>
+<li class="onpage-item"><a href="#alternate-linking-syntax">Alternate linking syntax</a></li>
+<li class="onpage-item"><a href="#what-matters">What matters</a></li>
+<li class="onpage-item"><a href="#authoritative-sources">Authoritative Sources</a></li>
+<li class="onpage-item onpage-sub"><a href="#section-level-source-map">Section-Level Source Map</a></li>
+    </ul>
+  </nav>
       <h1 id="solution-reference-challenge-6----your-first-pull-request">Solution Reference: Challenge 6 -- Your First Pull Request</h1>
 <p>This shows what a complete pull request looks like.</p>
 <h2 id="example-pr">Example PR</h2>
@@ -232,6 +252,7 @@ Closes #3</code></pre>
 <li><strong>What matters:</strong> <a href="https://docs.github.com/en">GitHub Docs, home</a>, <a href="https://github.blog/changelog/">GitHub Changelog</a></li>
 </ul>
 
+
     </main>
   </div>
   <footer role="contentinfo" class="site-footer">
@@ -239,5 +260,27 @@ Closes #3</code></pre>
     <p><a href="https://github.com/community-access/git-going-with-github">View on GitHub</a> · <a href="https://community-access.org">community-access.org</a></p>
   </footer>
 
+  <script>
+  (function() {
+    var key = 'gggLastVisitedPath';
+    var currentPath = window.location.pathname || '';
+    try {
+      if (currentPath) {
+        localStorage.setItem(key, currentPath);
+      }
+    } catch (e) {}
+
+    var resumeLink = document.getElementById('resume-link');
+    if (!resumeLink) return;
+
+    try {
+      var savedPath = localStorage.getItem(key);
+      if (savedPath && savedPath !== currentPath) {
+        resumeLink.hidden = false;
+        resumeLink.setAttribute('href', savedPath);
+      }
+    } catch (e) {}
+  })();
+  </script>
   </body>
 </html>

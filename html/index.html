@@ -78,6 +78,11 @@
     <h2 class="guided-title">Guided Reference</h2>
     <p class="guided-intro">Follow the learning order, then branch into appendices and challenge support.</p>
 
+
+    <section class="guided-resume" aria-label="Resume learning">
+      <a id="resume-link" class="guided-resume-link" href="./index.html" hidden>Resume where you left off</a>
+    </section>
+
     <nav class="guided-nav" aria-label="Workshop navigation">
       <section class="guided-section">
         <h3>Start Here</h3>
@@ -174,6 +179,18 @@
     </nav>
   </aside>
     <main id="main-content" class="markdown-body page-main">
+      <nav class="onpage-nav" aria-label="On this page">
+    <h2 class="onpage-title">On This Page</h2>
+    <ul class="onpage-list">
+      <li class="onpage-item"><a href="#start-here">Start Here</a></li>
+<li class="onpage-item"><a href="#choose-your-path">Choose Your Path</a></li>
+<li class="onpage-item onpage-sub"><a href="#learn-the-curriculum">Learn the curriculum</a></li>
+<li class="onpage-item onpage-sub"><a href="#instructor-resources">Instructor resources</a></li>
+<li class="onpage-item onpage-sub"><a href="#follow-podcast-distribution">Follow podcast distribution</a></li>
+<li class="onpage-item"><a href="#what-lives-where">What Lives Where</a></li>
+<li class="onpage-item"><a href="#contribute">Contribute</a></li>
+    </ul>
+  </nav>
       <h1 id="git-going-with-github">GIT Going with GitHub</h1>
 <p>Welcome to the Community Access workshop hub.</p>
 <p>This site is the canonical home for workshop curriculum, guides, challenge workflows, and contributor documentation.</p>
@@ -210,6 +227,7 @@
 <li><a href="CODE_OF_CONDUCT.html">Code of Conduct</a></li>
 </ul>
 
+
     </main>
   </div>
   <footer role="contentinfo" class="site-footer">
@@ -217,6 +235,28 @@
     <p><a href="https://github.com/community-access/git-going-with-github">View on GitHub</a> · <a href="https://community-access.org">community-access.org</a></p>
   </footer>
 
+  <script>
+  (function() {
+    var key = 'gggLastVisitedPath';
+    var currentPath = window.location.pathname || '';
+    try {
+      if (currentPath) {
+        localStorage.setItem(key, currentPath);
+      }
+    } catch (e) {}
+
+    var resumeLink = document.getElementById('resume-link');
+    if (!resumeLink) return;
+
+    try {
+      var savedPath = localStorage.getItem(key);
+      if (savedPath && savedPath !== currentPath) {
+        resumeLink.hidden = false;
+        resumeLink.setAttribute('href', savedPath);
+      }
+    } catch (e) {}
+  })();
+  </script>
   <script>
 (function() {
   var url = 'https://api.github.com/search/issues?q=repo:community-access/git-going-with-github+label:enrolled+is:issue';

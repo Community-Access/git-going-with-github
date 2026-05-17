@@ -77,6 +77,18 @@
     <aside class="guided-sidebar" aria-label="Guided reference">
     <h2 class="guided-title">Guided Reference</h2>
     <p class="guided-intro">Follow the learning order, then branch into appendices and challenge support.</p>
+    <section class="guided-progress" aria-label="Learning progress">
+        <h3>Learning Progress</h3>
+        <p class="guided-progress-copy">1 of 55 pages in the guided sequence</p>
+        <div class="guided-progress-track" role="progressbar" aria-valuemin="0" aria-valuemax="100" aria-valuenow="2" aria-label="Guided sequence progress">
+          <span class="guided-progress-fill" style="width:2%;"></span>
+        </div>
+        <p class="guided-progress-percent">2% complete</p>
+      </section>
+
+    <section class="guided-resume" aria-label="Resume learning">
+      <a id="resume-link" class="guided-resume-link" href="../index.html" hidden>Resume where you left off</a>
+    </section>
 
     <nav class="guided-nav" aria-label="Workshop navigation">
       <section class="guided-section">
@@ -174,6 +186,32 @@
     </nav>
   </aside>
     <main id="main-content" class="markdown-body page-main">
+      <nav class="onpage-nav" aria-label="On this page">
+    <h2 class="onpage-title">On This Page</h2>
+    <ul class="onpage-list">
+      <li class="onpage-item"><a href="#github-learning-room---your-complete-workshop-companion">GitHub Learning Room - Your Complete Workshop Companion</a></li>
+<li class="onpage-item"><a href="#how-this-course-works">How This Course Works</a></li>
+<li class="onpage-item onpage-sub"><a href="#live-agenda-and-self-paced-curriculum">Live Agenda and Self-Paced Curriculum</a></li>
+<li class="onpage-item onpage-sub"><a href="#the-two-days">The Two Days</a></li>
+<li class="onpage-item onpage-sub"><a href="#the-journey-arc">The Journey Arc</a></li>
+<li class="onpage-item"><a href="#before-you-begin">Before You Begin</a></li>
+<li class="onpage-item"><a href="#companion-audio-series">Companion Audio Series</a></li>
+<li class="onpage-item"><a href="#day-1-github-foundations">Day 1: GitHub Foundations</a></li>
+<li class="onpage-item"><a href="#day-2-vs-code--accessibility-agents">Day 2: VS Code + Accessibility Agents</a></li>
+<li class="onpage-item"><a href="#appendices---reference-material">Appendices - Reference Material</a></li>
+<li class="onpage-item onpage-sub"><a href="#always-open-bookmark-these">Always Open (Bookmark These)</a></li>
+<li class="onpage-item onpage-sub"><a href="#core-reference-c-d">Core Reference (C-D)</a></li>
+<li class="onpage-item onpage-sub"><a href="#git-deep-dive-e-f">Git Deep Dive (E-F)</a></li>
+<li class="onpage-item onpage-sub"><a href="#vs-code-and-copilot-g-l">VS Code and Copilot (G-L)</a></li>
+<li class="onpage-item onpage-sub"><a href="#github-platform-m-s">GitHub Platform (M-S)</a></li>
+<li class="onpage-item onpage-sub"><a href="#community-and-continuing-t-z">Community and Continuing (T-Z)</a></li>
+<li class="onpage-item"><a href="#exercises-at-a-glance">Exercises at a Glance</a></li>
+<li class="onpage-item"><a href="#getting-help">Getting Help</a></li>
+<li class="onpage-item"><a href="#workshop-at-a-glance">Workshop at a Glance</a></li>
+<li class="onpage-item"><a href="#authoritative-sources">Authoritative Sources</a></li>
+<li class="onpage-item onpage-sub"><a href="#section-level-source-map">Section-Level Source Map</a></li>
+    </ul>
+  </nav>
       <h1 id="course-guide">Course Guide</h1>
 <blockquote>
 <p><strong>Listen to Episode 0:</strong> <a href="https://lp.csedesigns.com/ggg/PODCASTS.html">Welcome to Git Going with GitHub</a> - a conversational audio overview of this chapter. Listen before reading to preview the concepts, or after to reinforce what you learned.</p>
@@ -799,6 +837,10 @@ Day 2 - Deepen with VS Code + Accessibility Agents
 <li><strong>Workshop at a Glance:</strong> <a href="https://docs.github.com/en">GitHub Docs, home</a>, <a href="https://github.blog/changelog/">GitHub Changelog</a></li>
 </ul>
 
+      <nav class="progression-nav" aria-label="Page progression">
+    <span class="progression-link progression-disabled" aria-disabled="true"><span class="progression-label">Previous</span><span class="progression-title">Start of sequence</span></span>
+    <a class="progression-link progression-next" href="../docs/get-going.html" rel="next"><span class="progression-label">Next</span><span class="progression-title">Get Going with GitHub</span></a>
+  </nav>
     </main>
   </div>
   <footer role="contentinfo" class="site-footer">
@@ -806,5 +848,27 @@ Day 2 - Deepen with VS Code + Accessibility Agents
     <p><a href="https://github.com/community-access/git-going-with-github">View on GitHub</a> · <a href="https://community-access.org">community-access.org</a></p>
   </footer>
 
+  <script>
+  (function() {
+    var key = 'gggLastVisitedPath';
+    var currentPath = window.location.pathname || '';
+    try {
+      if (currentPath) {
+        localStorage.setItem(key, currentPath);
+      }
+    } catch (e) {}
+
+    var resumeLink = document.getElementById('resume-link');
+    if (!resumeLink) return;
+
+    try {
+      var savedPath = localStorage.getItem(key);
+      if (savedPath && savedPath !== currentPath) {
+        resumeLink.hidden = false;
+        resumeLink.setAttribute('href', savedPath);
+      }
+    } catch (e) {}
+  })();
+  </script>
   </body>
 </html>

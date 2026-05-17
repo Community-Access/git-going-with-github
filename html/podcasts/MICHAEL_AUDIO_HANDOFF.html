@@ -78,6 +78,11 @@
     <h2 class="guided-title">Guided Reference</h2>
     <p class="guided-intro">Follow the learning order, then branch into appendices and challenge support.</p>
 
+
+    <section class="guided-resume" aria-label="Resume learning">
+      <a id="resume-link" class="guided-resume-link" href="../index.html" hidden>Resume where you left off</a>
+    </section>
+
     <nav class="guided-nav" aria-label="Workshop navigation">
       <section class="guided-section">
         <h3>Start Here</h3>
@@ -174,6 +179,21 @@
     </nav>
   </aside>
     <main id="main-content" class="markdown-body page-main">
+      <nav class="onpage-nav" aria-label="On this page">
+    <h2 class="onpage-title">On This Page</h2>
+    <ul class="onpage-list">
+      <li class="onpage-item"><a href="#what-is-included">What Is Included</a></li>
+<li class="onpage-item"><a href="#mac-prerequisites">Mac Prerequisites</a></li>
+<li class="onpage-item"><a href="#setup">Setup</a></li>
+<li class="onpage-item"><a href="#preview-the-queue">Preview the Queue</a></li>
+<li class="onpage-item"><a href="#generate-a-single-trial-episode">Generate a Single Trial Episode</a></li>
+<li class="onpage-item"><a href="#generate-the-full-production-batch">Generate the Full Production Batch</a></li>
+<li class="onpage-item"><a href="#tag-metadata">Tag Metadata</a></li>
+<li class="onpage-item"><a href="#build-and-validate-feed">Build and Validate Feed</a></li>
+<li class="onpage-item"><a href="#optional-piper-fallback">Optional Piper Fallback</a></li>
+<li class="onpage-item"><a href="#files-to-return">Files to Return</a></li>
+    </ul>
+  </nav>
       <h1 id="mac-audio-generation-handoff">Mac Audio Generation Handoff</h1>
 <p>This handoff is for generating the Git Going with GitHub podcast MP3 files on a fast Mac. Kokoro is the default production engine. Piper is available only as an explicit fallback.</p>
 <h2 id="what-is-included">What Is Included</h2>
@@ -257,6 +277,7 @@ podcasts/feed.xml
 https://lp.csedesigns.com/ggg/PODCASTS.html</code></pre>
 <p>The segment WAV files are useful for debugging but are large. Return them only if we need to inspect timing or regenerate assembled audio without re-synthesizing speech.</p>
 
+
     </main>
   </div>
   <footer role="contentinfo" class="site-footer">
@@ -264,5 +285,27 @@ https://lp.csedesigns.com/ggg/PODCASTS.html</code></pre>
     <p><a href="https://github.com/community-access/git-going-with-github">View on GitHub</a> · <a href="https://community-access.org">community-access.org</a></p>
   </footer>
 
+  <script>
+  (function() {
+    var key = 'gggLastVisitedPath';
+    var currentPath = window.location.pathname || '';
+    try {
+      if (currentPath) {
+        localStorage.setItem(key, currentPath);
+      }
+    } catch (e) {}
+
+    var resumeLink = document.getElementById('resume-link');
+    if (!resumeLink) return;
+
+    try {
+      var savedPath = localStorage.getItem(key);
+      if (savedPath && savedPath !== currentPath) {
+        resumeLink.hidden = false;
+        resumeLink.setAttribute('href', savedPath);
+      }
+    } catch (e) {}
+  })();
+  </script>
   </body>
 </html>

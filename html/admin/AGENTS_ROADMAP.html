@@ -78,6 +78,11 @@
     <h2 class="guided-title">Guided Reference</h2>
     <p class="guided-intro">Follow the learning order, then branch into appendices and challenge support.</p>
 
+
+    <section class="guided-resume" aria-label="Resume learning">
+      <a id="resume-link" class="guided-resume-link" href="../index.html" hidden>Resume where you left off</a>
+    </section>
+
     <nav class="guided-nav" aria-label="Workshop navigation">
       <section class="guided-section">
         <h3>Start Here</h3>
@@ -174,6 +179,42 @@
     </nav>
   </aside>
     <main id="main-content" class="markdown-body page-main">
+      <nav class="onpage-nav" aria-label="On this page">
+    <h2 class="onpage-title">On This Page</h2>
+    <ul class="onpage-list">
+      <li class="onpage-item"><a href="#overview">Overview</a></li>
+<li class="onpage-item"><a href="#version-alignment">Version Alignment</a></li>
+<li class="onpage-item onpage-sub"><a href="#curriculum-version-20-may-2026---accessibility-agents-500">Curriculum Version 2.0 (May 2026) - Accessibility Agents 5.0.0+</a></li>
+<li class="onpage-item onpage-sub"><a href="#previous-versions">Previous Versions</a></li>
+<li class="onpage-item"><a href="#key-transitions-what-changed-between-4x--500">Key Transitions: What Changed Between 4.x → 5.0.0</a></li>
+<li class="onpage-item onpage-sub"><a href="#1-detection--remediation-paradigm-shift">1. Detection → Remediation Paradigm Shift</a></li>
+<li class="onpage-item onpage-sub"><a href="#2-compliance-exports-amp-vpat-generation">2. Compliance Exports &amp; VPAT Generation</a></li>
+<li class="onpage-item onpage-sub"><a href="#3-continuous-evaluation-amp-trending">3. Continuous Evaluation &amp; Trending</a></li>
+<li class="onpage-item onpage-sub"><a href="#4-multi-platform-parity">4. Multi-Platform Parity</a></li>
+<li class="onpage-item"><a href="#curriculum-learning-pathways">Curriculum Learning Pathways</a></li>
+<li class="onpage-item onpage-sub"><a href="#path-1-web-accessibility-foundational">Path 1: Web Accessibility (Foundational)</a></li>
+<li class="onpage-item onpage-sub"><a href="#path-2-document-accessibility-intermediate">Path 2: Document Accessibility (Intermediate)</a></li>
+<li class="onpage-item onpage-sub"><a href="#path-3-developer-tools-amp-automation-advanced">Path 3: Developer Tools &amp; Automation (Advanced)</a></li>
+<li class="onpage-item onpage-sub"><a href="#path-4-multi-platform-agents-optional">Path 4: Multi-Platform Agents (Optional)</a></li>
+<li class="onpage-item"><a href="#contribution-pathways-for-facilitators">Contribution Pathways for Facilitators</a></li>
+<li class="onpage-item onpage-sub"><a href="#adding-a-new-agent-to-curriculum">Adding a New Agent to Curriculum</a></li>
+<li class="onpage-item onpage-sub"><a href="#creating-custom-hooks-for-classroom-use">Creating Custom Hooks for Classroom Use</a></li>
+<li class="onpage-item onpage-sub"><a href="#updating-podcast-episodes">Updating Podcast Episodes</a></li>
+<li class="onpage-item"><a href="#infrastructure-agents-ecosystem-reference">Infrastructure: Agents Ecosystem Reference</a></li>
+<li class="onpage-item onpage-sub"><a href="#three-teams-80-agents-5-platforms">Three Teams, 80 Agents, 5 Platforms</a></li>
+<li class="onpage-item onpage-sub"><a href="#core-skills-25">Core Skills (25+)</a></li>
+<li class="onpage-item onpage-sub"><a href="#mcp-server-30-tools">MCP Server (30+ Tools)</a></li>
+<li class="onpage-item"><a href="#roadmap-agents-5x--60-future">Roadmap: Agents 5.x → 6.0 (Future)</a></li>
+<li class="onpage-item onpage-sub"><a href="#planned-features">Planned Features</a></li>
+<li class="onpage-item"><a href="#maintenance-tasks-by-semester">Maintenance Tasks (By Semester)</a></li>
+<li class="onpage-item onpage-sub"><a href="#spring-2026">Spring 2026</a></li>
+<li class="onpage-item onpage-sub"><a href="#summer-2026">Summer 2026</a></li>
+<li class="onpage-item onpage-sub"><a href="#fall-2026">Fall 2026</a></li>
+<li class="onpage-item"><a href="#references">References</a></li>
+<li class="onpage-item"><a href="#authoritative-sources">Authoritative Sources</a></li>
+<li class="onpage-item onpage-sub"><a href="#section-level-source-map">Section-Level Source Map</a></li>
+    </ul>
+  </nav>
       <h1 id="agents-roadmap-amp-version-history">Agents Roadmap &amp; Version History</h1>
 <blockquote>
 <p><strong>Overview document for facilitators and contributors.</strong></p>
@@ -619,6 +660,7 @@ Output: Trend report showing score changes <span class="hljs-built_in">week</spa
 <li><strong>References:</strong> <a href="https://docs.github.com/en">GitHub Docs, home</a>, <a href="https://github.blog/changelog/">GitHub Changelog</a>, <a href="https://docs.github.com/en/copilot">GitHub Copilot docs</a>, <a href="https://docs.github.com/en/copilot/reference/custom-instructions-support">Custom instructions support matrix</a>, <a href="https://docs.github.com/en/copilot/concepts/agents/cloud-agent/about-custom-agents">About custom agents</a></li>
 </ul>
 
+
     </main>
   </div>
   <footer role="contentinfo" class="site-footer">
@@ -626,5 +668,27 @@ Output: Trend report showing score changes <span class="hljs-built_in">week</spa
     <p><a href="https://github.com/community-access/git-going-with-github">View on GitHub</a> · <a href="https://community-access.org">community-access.org</a></p>
   </footer>
 
+  <script>
+  (function() {
+    var key = 'gggLastVisitedPath';
+    var currentPath = window.location.pathname || '';
+    try {
+      if (currentPath) {
+        localStorage.setItem(key, currentPath);
+      }
+    } catch (e) {}
+
+    var resumeLink = document.getElementById('resume-link');
+    if (!resumeLink) return;
+
+    try {
+      var savedPath = localStorage.getItem(key);
+      if (savedPath && savedPath !== currentPath) {
+        resumeLink.hidden = false;
+        resumeLink.setAttribute('href', savedPath);
+      }
+    } catch (e) {}
+  })();
+  </script>
   </body>
 </html>

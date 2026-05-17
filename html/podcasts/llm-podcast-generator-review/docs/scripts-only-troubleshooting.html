@@ -78,6 +78,11 @@
     <h2 class="guided-title">Guided Reference</h2>
     <p class="guided-intro">Follow the learning order, then branch into appendices and challenge support.</p>
 
+
+    <section class="guided-resume" aria-label="Resume learning">
+      <a id="resume-link" class="guided-resume-link" href="../../../index.html" hidden>Resume where you left off</a>
+    </section>
+
     <nav class="guided-nav" aria-label="Workshop navigation">
       <section class="guided-section">
         <h3>Start Here</h3>
@@ -174,6 +179,18 @@
     </nav>
   </aside>
     <main id="main-content" class="markdown-body page-main">
+      <nav class="onpage-nav" aria-label="On this page">
+    <h2 class="onpage-title">On This Page</h2>
+    <ul class="onpage-list">
+      <li class="onpage-item"><a href="#standard-run">Standard run</a></li>
+<li class="onpage-item"><a href="#what-self-cleaning-does">What self-cleaning does</a></li>
+<li class="onpage-item"><a href="#find-latest-summary">Find latest summary</a></li>
+<li class="onpage-item"><a href="#retry-only-failed-slugs">Retry only failed slugs</a></li>
+<li class="onpage-item"><a href="#recommended-fallback-tuning-for-unstable-apis">Recommended fallback tuning for unstable APIs</a></li>
+<li class="onpage-item"><a href="#failure-classes-and-responses">Failure classes and responses</a></li>
+<li class="onpage-item"><a href="#completion-check">Completion check</a></li>
+    </ul>
+  </nav>
       <h1 id="scripts-only-completion-troubleshooting">Scripts-Only Completion Troubleshooting</h1>
 <p>This guide is for completing all 79 script/transcript items with the 5.4 scripts-only lane.</p>
 <p>For highest reliability/cost control on offline runs, use the durable batch lane:</p>
@@ -238,6 +255,7 @@ If <code>OPENAI_BASE_URL</code> points to OpenRouter, batch mode automatically r
 <span class="hljs-string">&quot;selected=<span class="hljs-variable">$</span>(<span class="hljs-variable">$summary</span>.selected) published=<span class="hljs-variable">$</span>(<span class="hljs-variable">$summary</span>.published) failed=<span class="hljs-variable">$</span>(<span class="hljs-variable">$summary</span>.failed)&quot;</span></code></pre>
 <p>Completion target is <code>published == selected</code>.</p>
 
+
     </main>
   </div>
   <footer role="contentinfo" class="site-footer">
@@ -245,5 +263,27 @@ If <code>OPENAI_BASE_URL</code> points to OpenRouter, batch mode automatically r
     <p><a href="https://github.com/community-access/git-going-with-github">View on GitHub</a> · <a href="https://community-access.org">community-access.org</a></p>
   </footer>
 
+  <script>
+  (function() {
+    var key = 'gggLastVisitedPath';
+    var currentPath = window.location.pathname || '';
+    try {
+      if (currentPath) {
+        localStorage.setItem(key, currentPath);
+      }
+    } catch (e) {}
+
+    var resumeLink = document.getElementById('resume-link');
+    if (!resumeLink) return;
+
+    try {
+      var savedPath = localStorage.getItem(key);
+      if (savedPath && savedPath !== currentPath) {
+        resumeLink.hidden = false;
+        resumeLink.setAttribute('href', savedPath);
+      }
+    } catch (e) {}
+  })();
+  </script>
   </body>
 </html>

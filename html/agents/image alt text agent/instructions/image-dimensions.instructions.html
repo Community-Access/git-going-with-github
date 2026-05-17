@@ -78,6 +78,11 @@
     <h2 class="guided-title">Guided Reference</h2>
     <p class="guided-intro">Follow the learning order, then branch into appendices and challenge support.</p>
 
+
+    <section class="guided-resume" aria-label="Resume learning">
+      <a id="resume-link" class="guided-resume-link" href="../../../index.html" hidden>Resume where you left off</a>
+    </section>
+
     <nav class="guided-nav" aria-label="Workshop navigation">
       <section class="guided-section">
         <h3>Start Here</h3>
@@ -174,6 +179,22 @@
     </nav>
   </aside>
     <main id="main-content" class="markdown-body page-main">
+      <nav class="onpage-nav" aria-label="On this page">
+    <h2 class="onpage-title">On This Page</h2>
+    <ul class="onpage-list">
+      <li class="onpage-item"><a href="#description-quotenforces-accessible-image-markup-in-web-files-covers-alt-text-widthheight-lazy-loading-responsive-images-srcset-picture-elements-and-performance-attributes-applies-to-html-jsx-tsx-vue-svelte-and-astro-filesquot
+applyto-quothtmljsxtsxvuesvelteastroquot">description: &amp;quot;Enforces accessible image markup in web files. Covers alt text, width/height, lazy loading, responsive images, srcset, picture elements, and performance attributes. Applies to HTML, JSX, TSX, Vue, Svelte, and Astro files.&amp;quot;
+applyTo: &amp;quot;**/*.{html,jsx,tsx,vue,svelte,astro}&amp;quot;</a></li>
+<li class="onpage-item"><a href="#accessible-image-markup-requirements">Accessible Image Markup Requirements</a></li>
+<li class="onpage-item onpage-sub"><a href="#required-attributes">Required attributes</a></li>
+<li class="onpage-item onpage-sub"><a href="#recommended-attributes">Recommended attributes</a></li>
+<li class="onpage-item onpage-sub"><a href="#responsive-images">Responsive images</a></li>
+<li class="onpage-item onpage-sub"><a href="#performance-for-hero-images">Performance for hero images</a></li>
+<li class="onpage-item onpage-sub"><a href="#things-to-avoid">Things to avoid</a></li>
+<li class="onpage-item onpage-sub"><a href="#image-of-text-warning">Image-of-text warning</a></li>
+<li class="onpage-item onpage-sub"><a href="#dimension-extraction">Dimension extraction</a></li>
+    </ul>
+  </nav>
       <hr>
 <h2 id="description-quotenforces-accessible-image-markup-in-web-files-covers-alt-text-widthheight-lazy-loading-responsive-images-srcset-picture-elements-and-performance-attributes-applies-to-html-jsx-tsx-vue-svelte-and-astro-filesquot
 applyto-quothtmljsxtsxvuesvelteastroquot">description: &quot;Enforces accessible image markup in web files. Covers alt text, width/height, lazy loading, responsive images, srcset, picture elements, and performance attributes. Applies to HTML, JSX, TSX, Vue, Svelte, and Astro files.&quot;
@@ -224,6 +245,7 @@ applyTo: &quot;**/*.{html,jsx,tsx,vue,svelte,astro}&quot;</h2>
 <pre><code class="hljs language-bash">python ~/.agents/scripts/get_image_info.py path/to/images/ --batch --json</code></pre>
 <p>The script also extracts EXIF data, dominant colors, SVG viewBox, and a text-content heuristic.</p>
 
+
     </main>
   </div>
   <footer role="contentinfo" class="site-footer">
@@ -231,5 +253,27 @@ applyTo: &quot;**/*.{html,jsx,tsx,vue,svelte,astro}&quot;</h2>
     <p><a href="https://github.com/community-access/git-going-with-github">View on GitHub</a> · <a href="https://community-access.org">community-access.org</a></p>
   </footer>
 
+  <script>
+  (function() {
+    var key = 'gggLastVisitedPath';
+    var currentPath = window.location.pathname || '';
+    try {
+      if (currentPath) {
+        localStorage.setItem(key, currentPath);
+      }
+    } catch (e) {}
+
+    var resumeLink = document.getElementById('resume-link');
+    if (!resumeLink) return;
+
+    try {
+      var savedPath = localStorage.getItem(key);
+      if (savedPath && savedPath !== currentPath) {
+        resumeLink.hidden = false;
+        resumeLink.setAttribute('href', savedPath);
+      }
+    } catch (e) {}
+  })();
+  </script>
   </body>
 </html>

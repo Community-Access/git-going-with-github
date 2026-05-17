@@ -78,6 +78,11 @@
     <h2 class="guided-title">Guided Reference</h2>
     <p class="guided-intro">Follow the learning order, then branch into appendices and challenge support.</p>
 
+
+    <section class="guided-resume" aria-label="Resume learning">
+      <a id="resume-link" class="guided-resume-link" href="./index.html" hidden>Resume where you left off</a>
+    </section>
+
     <nav class="guided-nav" aria-label="Workshop navigation">
       <section class="guided-section">
         <h3>Start Here</h3>
@@ -174,6 +179,20 @@
     </nav>
   </aside>
     <main id="main-content" class="markdown-body page-main">
+      <nav class="onpage-nav" aria-label="On this page">
+    <h2 class="onpage-title">On This Page</h2>
+    <ul class="onpage-list">
+      <li class="onpage-item"><a href="#workflow-order">Workflow order</a></li>
+<li class="onpage-item"><a href="#generate-transcriptsbat">generate-transcripts.bat</a></li>
+<li class="onpage-item"><a href="#generate-audiobat">generate-audio.bat</a></li>
+<li class="onpage-item"><a href="#build-rss-feedbat">build-rss-feed.bat</a></li>
+<li class="onpage-item"><a href="#validate-rss-feedbat">validate-rss-feed.bat</a></li>
+<li class="onpage-item"><a href="#configuration-file">Configuration file</a></li>
+<li class="onpage-item"><a href="#npm-scripts">npm scripts</a></li>
+<li class="onpage-item"><a href="#authoritative-sources">Authoritative Sources</a></li>
+<li class="onpage-item onpage-sub"><a href="#section-level-source-map">Section-Level Source Map</a></li>
+    </ul>
+  </nav>
       <h1 id="batch-command-reference">Batch Command Reference</h1>
 <p>This file documents the cmd.exe batch files in the repo root for podcast operations.
 All batch files change directory to the repo root automatically, so they work correctly
@@ -323,6 +342,7 @@ a PowerShell or bash session at the repo root.</p>
 <li><strong>npm scripts:</strong> <a href="https://docs.github.com/en">GitHub Docs, home</a>, <a href="https://github.blog/changelog/">GitHub Changelog</a></li>
 </ul>
 
+
     </main>
   </div>
   <footer role="contentinfo" class="site-footer">
@@ -330,5 +350,27 @@ a PowerShell or bash session at the repo root.</p>
     <p><a href="https://github.com/community-access/git-going-with-github">View on GitHub</a> · <a href="https://community-access.org">community-access.org</a></p>
   </footer>
 
+  <script>
+  (function() {
+    var key = 'gggLastVisitedPath';
+    var currentPath = window.location.pathname || '';
+    try {
+      if (currentPath) {
+        localStorage.setItem(key, currentPath);
+      }
+    } catch (e) {}
+
+    var resumeLink = document.getElementById('resume-link');
+    if (!resumeLink) return;
+
+    try {
+      var savedPath = localStorage.getItem(key);
+      if (savedPath && savedPath !== currentPath) {
+        resumeLink.hidden = false;
+        resumeLink.setAttribute('href', savedPath);
+      }
+    } catch (e) {}
+  })();
+  </script>
   </body>
 </html>

@@ -78,6 +78,11 @@
     <h2 class="guided-title">Guided Reference</h2>
     <p class="guided-intro">Follow the learning order, then branch into appendices and challenge support.</p>
 
+
+    <section class="guided-resume" aria-label="Resume learning">
+      <a id="resume-link" class="guided-resume-link" href="../../../index.html" hidden>Resume where you left off</a>
+    </section>
+
     <nav class="guided-nav" aria-label="Workshop navigation">
       <section class="guided-section">
         <h3>Start Here</h3>
@@ -174,6 +179,21 @@
     </nav>
   </aside>
     <main id="main-content" class="markdown-body page-main">
+      <nav class="onpage-nav" aria-label="On this page">
+    <h2 class="onpage-title">On This Page</h2>
+    <ul class="onpage-list">
+      <li class="onpage-item"><a href="#course-dates">Course Dates</a></li>
+<li class="onpage-item"><a href="#complete-before-day-1">Complete Before Day 1</a></li>
+<li class="onpage-item"><a href="#do-not-claim-a-repository-yet">Do Not Claim A Repository Yet</a></li>
+<li class="onpage-item"><a href="#what-your-learning-room-is">What Your Learning Room Is</a></li>
+<li class="onpage-item"><a href="#how-the-challenge-flow-works">How The Challenge Flow Works</a></li>
+<li class="onpage-item"><a href="#github-skills-modules">GitHub Skills Modules</a></li>
+<li class="onpage-item"><a href="#what-to-keep-nearby">What To Keep Nearby</a></li>
+<li class="onpage-item"><a href="#getting-help">Getting Help</a></li>
+<li class="onpage-item"><a href="#authoritative-sources">Authoritative Sources</a></li>
+<li class="onpage-item onpage-sub"><a href="#section-level-source-map">Section-Level Source Map</a></li>
+    </ul>
+  </nav>
       <h1 id="student-onboarding-git-going-with-github">Student Onboarding: Git Going with GitHub</h1>
 <p>Welcome to <strong>Git Going with GitHub</strong>, a two-day Community Access workshop for blind and low-vision learners who want practical, confidence-building GitHub skills.</p>
 <p>This page is the short version of what to do before the workshop and what to expect when we begin. The detailed setup guide is still the source of truth: <a href="00-pre-workshop-setup.html">Pre-Workshop Setup</a>.</p>
@@ -269,6 +289,7 @@
 <li><strong>Getting Help:</strong> <a href="https://docs.github.com/en">GitHub Docs, home</a>, <a href="https://github.blog/changelog/">GitHub Changelog</a></li>
 </ul>
 
+
     </main>
   </div>
   <footer role="contentinfo" class="site-footer">
@@ -276,5 +297,27 @@
     <p><a href="https://github.com/community-access/git-going-with-github">View on GitHub</a> · <a href="https://community-access.org">community-access.org</a></p>
   </footer>
 
+  <script>
+  (function() {
+    var key = 'gggLastVisitedPath';
+    var currentPath = window.location.pathname || '';
+    try {
+      if (currentPath) {
+        localStorage.setItem(key, currentPath);
+      }
+    } catch (e) {}
+
+    var resumeLink = document.getElementById('resume-link');
+    if (!resumeLink) return;
+
+    try {
+      var savedPath = localStorage.getItem(key);
+      if (savedPath && savedPath !== currentPath) {
+        resumeLink.hidden = false;
+        resumeLink.setAttribute('href', savedPath);
+      }
+    } catch (e) {}
+  })();
+  </script>
   </body>
 </html>

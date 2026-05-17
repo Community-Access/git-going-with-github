@@ -78,6 +78,11 @@
     <h2 class="guided-title">Guided Reference</h2>
     <p class="guided-intro">Follow the learning order, then branch into appendices and challenge support.</p>
 
+
+    <section class="guided-resume" aria-label="Resume learning">
+      <a id="resume-link" class="guided-resume-link" href="./index.html" hidden>Resume where you left off</a>
+    </section>
+
     <nav class="guided-nav" aria-label="Workshop navigation">
       <section class="guided-section">
         <h3>Start Here</h3>
@@ -174,6 +179,44 @@
     </nav>
   </aside>
     <main id="main-content" class="markdown-body page-main">
+      <nav class="onpage-nav" aria-label="On this page">
+    <h2 class="onpage-title">On This Page</h2>
+    <ul class="onpage-list">
+      <li class="onpage-item"><a href="#overview">Overview</a></li>
+<li class="onpage-item"><a href="#access-control">Access Control</a></li>
+<li class="onpage-item onpage-sub"><a href="#curriculum-repository-git-going-with-github">Curriculum Repository (git-going-with-github)</a></li>
+<li class="onpage-item onpage-sub"><a href="#student-repositories-created-by-github-classroom">Student Repositories (created by GitHub Classroom)</a></li>
+<li class="onpage-item onpage-sub"><a href="#organization-membership">Organization Membership</a></li>
+<li class="onpage-item"><a href="#branch-protection">Branch Protection</a></li>
+<li class="onpage-item onpage-sub"><a href="#curriculum-repository-main-branch">Curriculum Repository (main branch)</a></li>
+<li class="onpage-item onpage-sub"><a href="#student-repositories">Student Repositories</a></li>
+<li class="onpage-item onpage-sub"><a href="#what-students-cannot-do">What Students Cannot Do</a></li>
+<li class="onpage-item"><a href="#permission-model">Permission Model</a></li>
+<li class="onpage-item onpage-sub"><a href="#least-privilege">Least Privilege</a></li>
+<li class="onpage-item"><a href="#facilitator-access">Facilitator Access</a></li>
+<li class="onpage-item onpage-sub"><a href="#required-access-level">Required Access Level</a></li>
+<li class="onpage-item onpage-sub"><a href="#adding-a-facilitator">Adding a Facilitator</a></li>
+<li class="onpage-item onpage-sub"><a href="#removing-a-facilitator-after-the-workshop">Removing a Facilitator After the Workshop</a></li>
+<li class="onpage-item"><a href="#github-actions-security">GitHub Actions Security</a></li>
+<li class="onpage-item onpage-sub"><a href="#workflows-in-student-repositories">Workflows in Student Repositories</a></li>
+<li class="onpage-item onpage-sub"><a href="#curriculum-repository-workflows">Curriculum Repository Workflows</a></li>
+<li class="onpage-item"><a href="#data-privacy">Data Privacy</a></li>
+<li class="onpage-item onpage-sub"><a href="#what-data-is-stored">What Data Is Stored</a></li>
+<li class="onpage-item onpage-sub"><a href="#what-data-is-not-stored">What Data Is NOT Stored</a></li>
+<li class="onpage-item onpage-sub"><a href="#data-retention">Data Retention</a></li>
+<li class="onpage-item"><a href="#safety-checks">Safety Checks</a></li>
+<li class="onpage-item onpage-sub"><a href="#before-the-workshop">Before the Workshop</a></li>
+<li class="onpage-item onpage-sub"><a href="#during-the-workshop">During the Workshop</a></li>
+<li class="onpage-item"><a href="#rollback-amp-emergency">Rollback &amp; Emergency</a></li>
+<li class="onpage-item onpage-sub"><a href="#if-something-goes-wrong">If Something Goes Wrong</a></li>
+<li class="onpage-item"><a href="#compliance-amp-audit">Compliance &amp; Audit</a></li>
+<li class="onpage-item onpage-sub"><a href="#what-is-logged">What Is Logged</a></li>
+<li class="onpage-item onpage-sub"><a href="#audit-priorities">Audit Priorities</a></li>
+<li class="onpage-item"><a href="#contact-amp-support">Contact &amp; Support</a></li>
+<li class="onpage-item"><a href="#authoritative-sources">Authoritative Sources</a></li>
+<li class="onpage-item onpage-sub"><a href="#section-level-source-map">Section-Level Source Map</a></li>
+    </ul>
+  </nav>
       <h1 id="repository-security-amp-access-guidelines">Repository Security &amp; Access Guidelines</h1>
 <h2 id="overview">Overview</h2>
 <p>This repository hosts the curriculum and facilitator materials for the Git Going with GitHub workshop. Student work happens in <strong>individual private repositories</strong> created by GitHub Classroom, not in this repository. This document covers the security model for both the curriculum repository and the student repositories.</p>
@@ -542,6 +585,7 @@ gh api /orgs/Community-Access/memberships/USERNAME -X DELETE</code></pre>
 <li><strong>Contact &amp; Support:</strong> <a href="https://docs.github.com/en">GitHub Docs, home</a>, <a href="https://github.blog/changelog/">GitHub Changelog</a>, <a href="https://docs.github.com/en/code-security/getting-started/github-security-features">GitHub security features</a>, <a href="https://docs.github.com/en/code-security/dependabot">Dependabot docs</a>, <a href="https://docs.github.com/en/code-security/secret-scanning/introduction/about-secret-scanning">Secret scanning docs</a></li>
 </ul>
 
+
     </main>
   </div>
   <footer role="contentinfo" class="site-footer">
@@ -549,5 +593,27 @@ gh api /orgs/Community-Access/memberships/USERNAME -X DELETE</code></pre>
     <p><a href="https://github.com/community-access/git-going-with-github">View on GitHub</a> · <a href="https://community-access.org">community-access.org</a></p>
   </footer>
 
+  <script>
+  (function() {
+    var key = 'gggLastVisitedPath';
+    var currentPath = window.location.pathname || '';
+    try {
+      if (currentPath) {
+        localStorage.setItem(key, currentPath);
+      }
+    } catch (e) {}
+
+    var resumeLink = document.getElementById('resume-link');
+    if (!resumeLink) return;
+
+    try {
+      var savedPath = localStorage.getItem(key);
+      if (savedPath && savedPath !== currentPath) {
+        resumeLink.hidden = false;
+        resumeLink.setAttribute('href', savedPath);
+      }
+    } catch (e) {}
+  })();
+  </script>
   </body>
 </html>

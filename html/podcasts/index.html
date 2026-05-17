@@ -78,6 +78,11 @@
     <h2 class="guided-title">Guided Reference</h2>
     <p class="guided-intro">Follow the learning order, then branch into appendices and challenge support.</p>
 
+
+    <section class="guided-resume" aria-label="Resume learning">
+      <a id="resume-link" class="guided-resume-link" href="../index.html" hidden>Resume where you left off</a>
+    </section>
+
     <nav class="guided-nav" aria-label="Workshop navigation">
       <section class="guided-section">
         <h3>Start Here</h3>
@@ -174,6 +179,34 @@
     </nav>
   </aside>
     <main id="main-content" class="markdown-body page-main">
+      <nav class="onpage-nav" aria-label="On this page">
+    <h2 class="onpage-title">On This Page</h2>
+    <ul class="onpage-list">
+      <li class="onpage-item"><a href="#pipeline-overview">Pipeline Overview</a></li>
+<li class="onpage-item"><a href="#directory-structure">Directory Structure</a></li>
+<li class="onpage-item"><a href="#prerequisites">Prerequisites</a></li>
+<li class="onpage-item"><a href="#quick-start">Quick Start</a></li>
+<li class="onpage-item onpage-sub"><a href="#1-install-kokoro-and-metadata-tooling">1. Install Kokoro and metadata tooling</a></li>
+<li class="onpage-item onpage-sub"><a href="#2-download-voice-models-if-not-already-present">2. Download voice models (if not already present)</a></li>
+<li class="onpage-item onpage-sub"><a href="#3-validate-the-catalog-and-generate-fresh-local-bundles">3. Validate the catalog and generate fresh local bundles</a></li>
+<li class="onpage-item onpage-sub"><a href="#4-generate-all-episodes">4. Generate all episodes</a></li>
+<li class="onpage-item onpage-sub"><a href="#5-build-player-page-and-rss-feed">5. Build player page and RSS feed</a></li>
+<li class="onpage-item"><a href="#voice-configuration">Voice Configuration</a></li>
+<li class="onpage-item"><a href="#pronunciation-lexicon">Pronunciation Lexicon</a></li>
+<li class="onpage-item"><a href="#manifest-status-flow">Manifest Status Flow</a></li>
+<li class="onpage-item"><a href="#all-npm-scripts">All npm Scripts</a></li>
+<li class="onpage-item"><a href="#publishing-audio">Publishing Audio</a></li>
+<li class="onpage-item"><a href="#updating-episodes">Updating Episodes</a></li>
+<li class="onpage-item"><a href="#mp3-metadata-embedded-scripts-and-chapters">MP3 Metadata, Embedded Scripts, and Chapters</a></li>
+<li class="onpage-item"><a href="#troubleshooting">Troubleshooting</a></li>
+<li class="onpage-item onpage-sub"><a href="#kokoro-dependencies-missing">Kokoro dependencies missing</a></li>
+<li class="onpage-item onpage-sub"><a href="#model-not-found">Model not found</a></li>
+<li class="onpage-item onpage-sub"><a href="#mispronounced-word">Mispronounced word</a></li>
+<li class="onpage-item onpage-sub"><a href="#script-quality-issues">Script quality issues</a></li>
+<li class="onpage-item onpage-sub"><a href="#audio-sounds-robotic-or-unnatural">Audio sounds robotic or unnatural</a></li>
+<li class="onpage-item"><a href="#cost-summary">Cost Summary</a></li>
+    </ul>
+  </nav>
       <h1 id="podcast-audio-pipeline">Podcast Audio Pipeline</h1>
 <p>This directory contains the complete pipeline for producing the Git Going with GitHub audio series: 54 companion episodes of two-host conversational content designed for blind and low-vision developers, plus 21 Challenge Coach episodes placed near the chapters they support.</p>
 <h2 id="pipeline-overview">Pipeline Overview</h2>
@@ -532,6 +565,7 @@ npm run podcast:chapters:audit</code></pre>
 </tr>
 </tbody></table>
 
+
     </main>
   </div>
   <footer role="contentinfo" class="site-footer">
@@ -539,5 +573,27 @@ npm run podcast:chapters:audit</code></pre>
     <p><a href="https://github.com/community-access/git-going-with-github">View on GitHub</a> · <a href="https://community-access.org">community-access.org</a></p>
   </footer>
 
+  <script>
+  (function() {
+    var key = 'gggLastVisitedPath';
+    var currentPath = window.location.pathname || '';
+    try {
+      if (currentPath) {
+        localStorage.setItem(key, currentPath);
+      }
+    } catch (e) {}
+
+    var resumeLink = document.getElementById('resume-link');
+    if (!resumeLink) return;
+
+    try {
+      var savedPath = localStorage.getItem(key);
+      if (savedPath && savedPath !== currentPath) {
+        resumeLink.hidden = false;
+        resumeLink.setAttribute('href', savedPath);
+      }
+    } catch (e) {}
+  })();
+  </script>
   </body>
 </html>

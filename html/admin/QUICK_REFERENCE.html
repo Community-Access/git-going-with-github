@@ -78,6 +78,11 @@
     <h2 class="guided-title">Guided Reference</h2>
     <p class="guided-intro">Follow the learning order, then branch into appendices and challenge support.</p>
 
+
+    <section class="guided-resume" aria-label="Resume learning">
+      <a id="resume-link" class="guided-resume-link" href="../index.html" hidden>Resume where you left off</a>
+    </section>
+
     <nav class="guided-nav" aria-label="Workshop navigation">
       <section class="guided-section">
         <h3>Start Here</h3>
@@ -174,6 +179,33 @@
     </nav>
   </aside>
     <main id="main-content" class="markdown-body page-main">
+      <nav class="onpage-nav" aria-label="On this page">
+    <h2 class="onpage-title">On This Page</h2>
+    <ul class="onpage-list">
+      <li class="onpage-item"><a href="#essential-commands-shortcuts-and-file-locations">Essential Commands, Shortcuts, and File Locations</a></li>
+<li class="onpage-item"><a href="#screen-reader-commands-for-github">Screen Reader Commands for GitHub</a></li>
+<li class="onpage-item onpage-sub"><a href="#nvda-windows">NVDA (Windows)</a></li>
+<li class="onpage-item onpage-sub"><a href="#jaws-windows">JAWS (Windows)</a></li>
+<li class="onpage-item onpage-sub"><a href="#voiceover-macos">VoiceOver (macOS)</a></li>
+<li class="onpage-item"><a href="#github-navigation-shortcuts-all-browsers">GitHub Navigation Shortcuts (All Browsers)</a></li>
+<li class="onpage-item"><a href="#vs-code-keyboard-shortcuts">VS Code Keyboard Shortcuts</a></li>
+<li class="onpage-item"><a href="#git-commands-terminal">Git Commands (Terminal)</a></li>
+<li class="onpage-item onpage-sub"><a href="#repository-setup">Repository Setup</a></li>
+<li class="onpage-item onpage-sub"><a href="#branch-workflow">Branch Workflow</a></li>
+<li class="onpage-item onpage-sub"><a href="#staging-and-committing">Staging and Committing</a></li>
+<li class="onpage-item onpage-sub"><a href="#pulling-updates">Pulling Updates</a></li>
+<li class="onpage-item"><a href="#file-locations-reference">File Locations Reference</a></li>
+<li class="onpage-item onpage-sub"><a href="#template-amp-agent-files">Template &amp; Agent Files</a></li>
+<li class="onpage-item onpage-sub"><a href="#documentation-files">Documentation Files</a></li>
+<li class="onpage-item"><a href="#yaml-template-structure-quick-template">YAML Template Structure (Quick Template)</a></li>
+<li class="onpage-item"><a href="#accessibility-testing-checklist-quick">Accessibility Testing Checklist (Quick)</a></li>
+<li class="onpage-item"><a href="#common-yaml-errors-amp-fixes">Common YAML Errors &amp; Fixes</a></li>
+<li class="onpage-item"><a href="#where-to-find-help">Where to Find Help</a></li>
+<li class="onpage-item"><a href="#accessibility-hotkeys-summary">Accessibility Hotkeys Summary</a></li>
+<li class="onpage-item"><a href="#authoritative-sources">Authoritative Sources</a></li>
+<li class="onpage-item onpage-sub"><a href="#section-level-source-map">Section-Level Source Map</a></li>
+    </ul>
+  </nav>
       <h1 id="quick-reference-guide">Quick Reference Guide</h1>
 <h2 id="essential-commands-shortcuts-and-file-locations">Essential Commands, Shortcuts, and File Locations</h2>
 <h2 id="screen-reader-commands-for-github">Screen Reader Commands for GitHub</h2>
@@ -614,6 +646,7 @@ git fetch upstream                       <span class="hljs-comment"># Fetch with
 <li><strong>Accessibility Hotkeys Summary:</strong> <a href="https://docs.github.com/en">GitHub Docs, home</a>, <a href="https://github.blog/changelog/">GitHub Changelog</a>, <a href="https://www.w3.org/WAI/standards-guidelines/wcag/">W3C Web Content Accessibility Guidelines (WCAG) 2 overview</a>, <a href="https://www.w3.org/WAI/tutorials/">WAI tutorials for accessible design patterns</a>, <a href="https://www.w3.org/WAI/ARIA/apg/">WAI-ARIA Authoring Practices Guide</a></li>
 </ul>
 
+
     </main>
   </div>
   <footer role="contentinfo" class="site-footer">
@@ -621,5 +654,27 @@ git fetch upstream                       <span class="hljs-comment"># Fetch with
     <p><a href="https://github.com/community-access/git-going-with-github">View on GitHub</a> · <a href="https://community-access.org">community-access.org</a></p>
   </footer>
 
+  <script>
+  (function() {
+    var key = 'gggLastVisitedPath';
+    var currentPath = window.location.pathname || '';
+    try {
+      if (currentPath) {
+        localStorage.setItem(key, currentPath);
+      }
+    } catch (e) {}
+
+    var resumeLink = document.getElementById('resume-link');
+    if (!resumeLink) return;
+
+    try {
+      var savedPath = localStorage.getItem(key);
+      if (savedPath && savedPath !== currentPath) {
+        resumeLink.hidden = false;
+        resumeLink.setAttribute('href', savedPath);
+      }
+    } catch (e) {}
+  })();
+  </script>
   </body>
 </html>

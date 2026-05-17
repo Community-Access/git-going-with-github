@@ -78,6 +78,11 @@
     <h2 class="guided-title">Guided Reference</h2>
     <p class="guided-intro">Follow the learning order, then branch into appendices and challenge support.</p>
 
+
+    <section class="guided-resume" aria-label="Resume learning">
+      <a id="resume-link" class="guided-resume-link" href="../../../index.html" hidden>Resume where you left off</a>
+    </section>
+
     <nav class="guided-nav" aria-label="Workshop navigation">
       <section class="guided-section">
         <h3>Start Here</h3>
@@ -174,6 +179,34 @@
     </nav>
   </aside>
     <main id="main-content" class="markdown-body page-main">
+      <nav class="onpage-nav" aria-label="On this page">
+    <h2 class="onpage-title">On This Page</h2>
+    <ul class="onpage-list">
+      <li class="onpage-item"><a href="#description-quotinternal-helper-agent-invoked-by-image-alt-text-orchestrator-via-task-tool-assembles-accessible-html-img-tags-figure-blocks-markdown-image-syntax-jsxreact-image-components-responsive-picture-elements-and-srcset-attributes-from-analysis-results-use-when-image-metadata-and-alt-text-are-ready-and-need-to-be-formatted-into-markupquot
+tools-read
+user-invocable-false
+agents-">description: &amp;quot;Internal helper agent. Invoked by image-alt-text orchestrator via Task tool. Assembles accessible HTML img tags, figure blocks, Markdown image syntax, JSX/React Image components, responsive picture elements, and srcset attributes from analysis results. Use when image metadata and alt text are ready and need to be formatted into markup.&amp;quot;
+tools: [read]
+user-invocable: false
+agents: []</a></li>
+<li class="onpage-item"><a href="#constraints">Constraints</a></li>
+<li class="onpage-item"><a href="#input">Input</a></li>
+<li class="onpage-item"><a href="#markup-templates">Markup Templates</a></li>
+<li class="onpage-item onpage-sub"><a href="#html-default">HTML (default)</a></li>
+<li class="onpage-item onpage-sub"><a href="#responsive-html-srcset">Responsive HTML (srcset)</a></li>
+<li class="onpage-item onpage-sub"><a href="#picture-element">Picture Element</a></li>
+<li class="onpage-item onpage-sub"><a href="#markdown">Markdown</a></li>
+<li class="onpage-item onpage-sub"><a href="#jsx--react">JSX / React</a></li>
+<li class="onpage-item onpage-sub"><a href="#nextjs-image">Next.js Image</a></li>
+<li class="onpage-item onpage-sub"><a href="#astro-image">Astro Image</a></li>
+<li class="onpage-item"><a href="#flag-specific-adjustments">Flag-Specific Adjustments</a></li>
+<li class="onpage-item onpage-sub"><a href="#image-of-text-flag">image-of-text flag</a></li>
+<li class="onpage-item onpage-sub"><a href="#icon-flag">icon flag</a></li>
+<li class="onpage-item onpage-sub"><a href="#logo-flag">logo flag</a></li>
+<li class="onpage-item"><a href="#rules">Rules</a></li>
+<li class="onpage-item"><a href="#output-format">Output Format</a></li>
+    </ul>
+  </nav>
       <hr>
 <h2 id="description-quotinternal-helper-agent-invoked-by-image-alt-text-orchestrator-via-task-tool-assembles-accessible-html-img-tags-figure-blocks-markdown-image-syntax-jsxreact-image-components-responsive-picture-elements-and-srcset-attributes-from-analysis-results-use-when-image-metadata-and-alt-text-are-ready-and-need-to-be-formatted-into-markupquot
 tools-read
@@ -293,6 +326,7 @@ agents: []</h2>
 <h2 id="output-format">Output Format</h2>
 <p>Return the complete, copy-paste-ready markup block. If there are warnings or developer action items, include them as HTML comments or a brief note below the markup.</p>
 
+
     </main>
   </div>
   <footer role="contentinfo" class="site-footer">
@@ -300,5 +334,27 @@ agents: []</h2>
     <p><a href="https://github.com/community-access/git-going-with-github">View on GitHub</a> · <a href="https://community-access.org">community-access.org</a></p>
   </footer>
 
+  <script>
+  (function() {
+    var key = 'gggLastVisitedPath';
+    var currentPath = window.location.pathname || '';
+    try {
+      if (currentPath) {
+        localStorage.setItem(key, currentPath);
+      }
+    } catch (e) {}
+
+    var resumeLink = document.getElementById('resume-link');
+    if (!resumeLink) return;
+
+    try {
+      var savedPath = localStorage.getItem(key);
+      if (savedPath && savedPath !== currentPath) {
+        resumeLink.hidden = false;
+        resumeLink.setAttribute('href', savedPath);
+      }
+    } catch (e) {}
+  })();
+  </script>
   </body>
 </html>

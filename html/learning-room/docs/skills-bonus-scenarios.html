@@ -78,6 +78,11 @@
     <h2 class="guided-title">Guided Reference</h2>
     <p class="guided-intro">Follow the learning order, then branch into appendices and challenge support.</p>
 
+
+    <section class="guided-resume" aria-label="Resume learning">
+      <a id="resume-link" class="guided-resume-link" href="../../index.html" hidden>Resume where you left off</a>
+    </section>
+
     <nav class="guided-nav" aria-label="Workshop navigation">
       <section class="guided-section">
         <h3>Start Here</h3>
@@ -174,6 +179,21 @@
     </nav>
   </aside>
     <main id="main-content" class="markdown-body page-main">
+      <nav class="onpage-nav" aria-label="On this page">
+    <h2 class="onpage-title">On This Page</h2>
+    <ul class="onpage-list">
+      <li class="onpage-item"><a href="#source-documentation">Source Documentation</a></li>
+<li class="onpage-item"><a href="#selection-criteria">Selection Criteria</a></li>
+<li class="onpage-item"><a href="#consolidated-scenarios">Consolidated Scenarios</a></li>
+<li class="onpage-item onpage-sub"><a href="#scenario-1-pr-description-quality-drill">Scenario 1: PR Description Quality Drill</a></li>
+<li class="onpage-item onpage-sub"><a href="#scenario-2-structured-review-verdict-practice">Scenario 2: Structured Review Verdict Practice</a></li>
+<li class="onpage-item onpage-sub"><a href="#scenario-3-merge-conflict-recovery-replay">Scenario 3: Merge Conflict Recovery Replay</a></li>
+<li class="onpage-item onpage-sub"><a href="#scenario-4-workflow-event-tracing-for-advanced-students">Scenario 4: Workflow Event Tracing for Advanced Students</a></li>
+<li class="onpage-item"><a href="#integration-notes">Integration Notes</a></li>
+<li class="onpage-item"><a href="#authoritative-sources">Authoritative Sources</a></li>
+<li class="onpage-item onpage-sub"><a href="#section-level-source-map">Section-Level Source Map</a></li>
+    </ul>
+  </nav>
       <h1 id="skills-inspired-bonus-scenarios">Skills-Inspired Bonus Scenarios</h1>
 <p>These optional scenarios adapt selected GitHub Skills exercises into this Learning Room environment. They are optional because they add value for advanced students without changing the required 21-challenge path.</p>
 <h2 id="source-documentation">Source Documentation</h2>
@@ -263,6 +283,7 @@
 <li><strong>Integration Notes:</strong> <a href="https://docs.github.com/en">GitHub Docs, home</a>, <a href="https://github.blog/changelog/">GitHub Changelog</a>, <a href="https://skills.github.com/">GitHub Skills catalog</a>, <a href="https://resources.github.com/learn/pathways/">GitHub Learning Pathways</a></li>
 </ul>
 
+
     </main>
   </div>
   <footer role="contentinfo" class="site-footer">
@@ -270,5 +291,27 @@
     <p><a href="https://github.com/community-access/git-going-with-github">View on GitHub</a> · <a href="https://community-access.org">community-access.org</a></p>
   </footer>
 
+  <script>
+  (function() {
+    var key = 'gggLastVisitedPath';
+    var currentPath = window.location.pathname || '';
+    try {
+      if (currentPath) {
+        localStorage.setItem(key, currentPath);
+      }
+    } catch (e) {}
+
+    var resumeLink = document.getElementById('resume-link');
+    if (!resumeLink) return;
+
+    try {
+      var savedPath = localStorage.getItem(key);
+      if (savedPath && savedPath !== currentPath) {
+        resumeLink.hidden = false;
+        resumeLink.setAttribute('href', savedPath);
+      }
+    } catch (e) {}
+  })();
+  </script>
   </body>
 </html>

@@ -78,6 +78,11 @@
     <h2 class="guided-title">Guided Reference</h2>
     <p class="guided-intro">Follow the learning order, then branch into appendices and challenge support.</p>
 
+
+    <section class="guided-resume" aria-label="Resume learning">
+      <a id="resume-link" class="guided-resume-link" href="../../../index.html" hidden>Resume where you left off</a>
+    </section>
+
     <nav class="guided-nav" aria-label="Workshop navigation">
       <section class="guided-section">
         <h3>Start Here</h3>
@@ -174,6 +179,22 @@
     </nav>
   </aside>
     <main id="main-content" class="markdown-body page-main">
+      <nav class="onpage-nav" aria-label="On this page">
+    <h2 class="onpage-title">On This Page</h2>
+    <ul class="onpage-list">
+      <li class="onpage-item"><a href="#what-is-in-this-repository">What Is in This Repository</a></li>
+<li class="onpage-item"><a href="#how-to-contribute">How to Contribute</a></li>
+<li class="onpage-item"><a href="#about-the-automation-bot">About the Automation Bot</a></li>
+<li class="onpage-item onpage-sub"><a href="#how-to-interact-with-the-bot">How to Interact with the Bot</a></li>
+<li class="onpage-item"><a href="#skills-amp-progression">Skills &amp; Progression</a></li>
+<li class="onpage-item"><a href="#stuck-use-guided-references">Stuck? Use Guided References</a></li>
+<li class="onpage-item"><a href="#study-groups">Study Groups</a></li>
+<li class="onpage-item"><a href="#code-of-conduct">Code of Conduct</a></li>
+<li class="onpage-item"><a href="#questions">Questions?</a></li>
+<li class="onpage-item"><a href="#authoritative-sources">Authoritative Sources</a></li>
+<li class="onpage-item onpage-sub"><a href="#section-level-source-map">Section-Level Source Map</a></li>
+    </ul>
+  </nav>
       <p><strong>Table: Learning Room folder and file purposes</strong>
 <strong>Table: Host voice and character mapping for VibeVoice podcast</strong></p>
 <h1 id="welcome-to-the-learning-room">Welcome to the Learning Room</h1>
@@ -304,6 +325,7 @@ The bot isn&#39;t always right! If you believe feedback is incorrect:</p>
 <li><strong>Questions?:</strong> <a href="https://docs.github.com/en">GitHub Docs, home</a>, <a href="https://github.blog/changelog/">GitHub Changelog</a></li>
 </ul>
 
+
     </main>
   </div>
   <footer role="contentinfo" class="site-footer">
@@ -311,5 +333,27 @@ The bot isn&#39;t always right! If you believe feedback is incorrect:</p>
     <p><a href="https://github.com/community-access/git-going-with-github">View on GitHub</a> · <a href="https://community-access.org">community-access.org</a></p>
   </footer>
 
+  <script>
+  (function() {
+    var key = 'gggLastVisitedPath';
+    var currentPath = window.location.pathname || '';
+    try {
+      if (currentPath) {
+        localStorage.setItem(key, currentPath);
+      }
+    } catch (e) {}
+
+    var resumeLink = document.getElementById('resume-link');
+    if (!resumeLink) return;
+
+    try {
+      var savedPath = localStorage.getItem(key);
+      if (savedPath && savedPath !== currentPath) {
+        resumeLink.hidden = false;
+        resumeLink.setAttribute('href', savedPath);
+      }
+    } catch (e) {}
+  })();
+  </script>
   </body>
 </html>

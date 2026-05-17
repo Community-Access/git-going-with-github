@@ -78,6 +78,11 @@
     <h2 class="guided-title">Guided Reference</h2>
     <p class="guided-intro">Follow the learning order, then branch into appendices and challenge support.</p>
 
+
+    <section class="guided-resume" aria-label="Resume learning">
+      <a id="resume-link" class="guided-resume-link" href="../../../index.html" hidden>Resume where you left off</a>
+    </section>
+
     <nav class="guided-nav" aria-label="Workshop navigation">
       <section class="guided-section">
         <h3>Start Here</h3>
@@ -174,6 +179,56 @@
     </nav>
   </aside>
     <main id="main-content" class="markdown-body page-main">
+      <nav class="onpage-nav" aria-label="On this page">
+    <h2 class="onpage-title">On This Page</h2>
+    <ul class="onpage-list">
+      <li class="onpage-item"><a href="#keeping-secrets-out-of-your-repository">Keeping Secrets Out of Your Repository</a></li>
+<li class="onpage-item"><a href="#table-of-contents">Table of Contents</a></li>
+<li class="onpage-item onpage-sub"><a href="#learning-cards-using-this-security-reference">Learning Cards: Using This Security Reference</a></li>
+<li class="onpage-item"><a href="#1-why-this-matters--what-happens-when-secrets-leak">1. Why This Matters — What Happens When Secrets Leak</a></li>
+<li class="onpage-item"><a href="#2-the-gitignore-file--your-first-line-of-defense">2. The .gitignore File — Your First Line of Defense</a></li>
+<li class="onpage-item onpage-sub"><a href="#what-belongs-in-gitignore">What belongs in .gitignore</a></li>
+<li class="onpage-item onpage-sub"><a href="#checking-if-a-file-is-already-tracked">Checking if a file is already tracked</a></li>
+<li class="onpage-item onpage-sub"><a href="#global-gitignore--apply-to-every-repo-on-your-machine">Global .gitignore — apply to every repo on your machine</a></li>
+<li class="onpage-item onpage-sub"><a href="#github39s-gitignore-templates">GitHub&amp;#39;s .gitignore templates</a></li>
+<li class="onpage-item"><a href="#3-environment-variables--the-right-way-to-store-secrets">3. Environment Variables — The Right Way to Store Secrets</a></li>
+<li class="onpage-item onpage-sub"><a href="#the-pattern">The pattern</a></li>
+<li class="onpage-item onpage-sub"><a href="#using-a-env-file-locally">Using a .env file locally</a></li>
+<li class="onpage-item onpage-sub"><a href="#sharing-secrets-with-your-team-safely">Sharing secrets with your team safely</a></li>
+<li class="onpage-item onpage-sub"><a href="#example-using-github-actions-secrets">Example: Using GitHub Actions Secrets</a></li>
+<li class="onpage-item"><a href="#4-review-before-you-commit">4. Review Before You Commit</a></li>
+<li class="onpage-item onpage-sub"><a href="#git-diff---staged--see-exactly-what39s-going-in">git diff --staged — see exactly what&amp;#39;s going in</a></li>
+<li class="onpage-item onpage-sub"><a href="#avoid-git-add--blindly">Avoid git add . blindly</a></li>
+<li class="onpage-item onpage-sub"><a href="#check-what39s-staged-before-committing">Check what&amp;#39;s staged before committing</a></li>
+<li class="onpage-item"><a href="#5-pre-commit-hooks--automated-secret-detection">5. Pre-Commit Hooks — Automated Secret Detection</a></li>
+<li class="onpage-item onpage-sub"><a href="#option-a-detect-secrets-recommended-python-based">Option A: detect-secrets (recommended, Python-based)</a></li>
+<li class="onpage-item onpage-sub"><a href="#option-b-gitleaks-go-based-zero-dependencies">Option B: gitleaks (Go-based, zero dependencies)</a></li>
+<li class="onpage-item onpage-sub"><a href="#option-c-pre-commit-framework-manages-multiple-hooks">Option C: pre-commit framework (manages multiple hooks)</a></li>
+<li class="onpage-item"><a href="#6-i-accidentally-committed-a-secret--what-now">6. I Accidentally Committed a Secret — What Now?</a></li>
+<li class="onpage-item onpage-sub"><a href="#step-1-rotate-the-secret-immediately">Step 1: Rotate the secret immediately</a></li>
+<li class="onpage-item onpage-sub"><a href="#step-2-was-it-pushed-to-a-public-repo">Step 2: Was it pushed to a public repo?</a></li>
+<li class="onpage-item onpage-sub"><a href="#step-3-remove-the-secret-from-git-history">Step 3: Remove the secret from git history</a></li>
+<li class="onpage-item onpage-sub"><a href="#step-4-force-push-the-cleaned-history">Step 4: Force push the cleaned history</a></li>
+<li class="onpage-item onpage-sub"><a href="#step-5-tell-github-to-rescan">Step 5: Tell GitHub to rescan</a></li>
+<li class="onpage-item onpage-sub"><a href="#quick-decision-flowchart">Quick decision flowchart</a></li>
+<li class="onpage-item"><a href="#7-github39s-built-in-push-protection">7. GitHub&amp;#39;s Built-In Push Protection</a></li>
+<li class="onpage-item onpage-sub"><a href="#what-push-protection-covers">What push protection covers</a></li>
+<li class="onpage-item onpage-sub"><a href="#if-push-protection-blocks-you">If push protection blocks you</a></li>
+<li class="onpage-item onpage-sub"><a href="#checking-your-repo39s-push-protection-status">Checking your repo&amp;#39;s push protection status</a></li>
+<li class="onpage-item"><a href="#8-secure-credential-storage">8. Secure Credential Storage</a></li>
+<li class="onpage-item onpage-sub"><a href="#never-store-credentials-in-plaintext">Never store credentials in plaintext</a></li>
+<li class="onpage-item onpage-sub"><a href="#using-a-password-manager">Using a password manager</a></li>
+<li class="onpage-item onpage-sub"><a href="#checking-what-credential-helper-is-set">Checking what credential helper is set</a></li>
+<li class="onpage-item onpage-sub"><a href="#learning-cards-security-checklist">Learning Cards: Security Checklist</a></li>
+<li class="onpage-item"><a href="#9-security-checklist-for-contributors">9. Security Checklist for Contributors</a></li>
+<li class="onpage-item onpage-sub"><a href="#before-committing">Before committing</a></li>
+<li class="onpage-item onpage-sub"><a href="#before-pushing">Before pushing</a></li>
+<li class="onpage-item onpage-sub"><a href="#repository-setup-one-time">Repository setup (one time)</a></li>
+<li class="onpage-item onpage-sub"><a href="#if-you39re-a-maintainer">If you&amp;#39;re a maintainer</a></li>
+<li class="onpage-item"><a href="#authoritative-sources">Authoritative Sources</a></li>
+<li class="onpage-item onpage-sub"><a href="#section-level-source-map">Section-Level Source Map</a></li>
+    </ul>
+  </nav>
       <h1 id="appendix-f-git-security-for-contributors">Appendix F: Git Security for Contributors</h1>
 <blockquote>
 <p><strong>Episode coming soon:</strong> Git Security for Contributors - a conversational audio overview of this appendix. Listen before reading to preview the concepts, or after to reinforce what you learned.</p>
@@ -686,6 +741,7 @@ git config --global credential.helper /usr/share/doc/git/contrib/credential/libs
 <li><strong>9. Security Checklist for Contributors:</strong> <a href="https://docs.github.com/en">GitHub Docs, home</a>, <a href="https://github.blog/changelog/">GitHub Changelog</a>, <a href="https://docs.github.com/en/code-security/getting-started/github-security-features">GitHub security features</a>, <a href="https://docs.github.com/en/code-security/dependabot">Dependabot docs</a>, <a href="https://docs.github.com/en/code-security/secret-scanning/introduction/about-secret-scanning">Secret scanning docs</a></li>
 </ul>
 
+
     </main>
   </div>
   <footer role="contentinfo" class="site-footer">
@@ -693,5 +749,27 @@ git config --global credential.helper /usr/share/doc/git/contrib/credential/libs
     <p><a href="https://github.com/community-access/git-going-with-github">View on GitHub</a> · <a href="https://community-access.org">community-access.org</a></p>
   </footer>
 
+  <script>
+  (function() {
+    var key = 'gggLastVisitedPath';
+    var currentPath = window.location.pathname || '';
+    try {
+      if (currentPath) {
+        localStorage.setItem(key, currentPath);
+      }
+    } catch (e) {}
+
+    var resumeLink = document.getElementById('resume-link');
+    if (!resumeLink) return;
+
+    try {
+      var savedPath = localStorage.getItem(key);
+      if (savedPath && savedPath !== currentPath) {
+        resumeLink.hidden = false;
+        resumeLink.setAttribute('href', savedPath);
+      }
+    } catch (e) {}
+  })();
+  </script>
   </body>
 </html>

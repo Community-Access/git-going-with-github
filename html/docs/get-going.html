@@ -77,6 +77,18 @@
     <aside class="guided-sidebar" aria-label="Guided reference">
     <h2 class="guided-title">Guided Reference</h2>
     <p class="guided-intro">Follow the learning order, then branch into appendices and challenge support.</p>
+    <section class="guided-progress" aria-label="Learning progress">
+        <h3>Learning Progress</h3>
+        <p class="guided-progress-copy">2 of 55 pages in the guided sequence</p>
+        <div class="guided-progress-track" role="progressbar" aria-valuemin="0" aria-valuemax="100" aria-valuenow="4" aria-label="Guided sequence progress">
+          <span class="guided-progress-fill" style="width:4%;"></span>
+        </div>
+        <p class="guided-progress-percent">4% complete</p>
+      </section>
+
+    <section class="guided-resume" aria-label="Resume learning">
+      <a id="resume-link" class="guided-resume-link" href="../index.html" hidden>Resume where you left off</a>
+    </section>
 
     <nav class="guided-nav" aria-label="Workshop navigation">
       <section class="guided-section">
@@ -174,6 +186,24 @@
     </nav>
   </aside>
     <main id="main-content" class="markdown-body page-main">
+      <nav class="onpage-nav" aria-label="On this page">
+    <h2 class="onpage-title">On This Page</h2>
+    <ul class="onpage-list">
+      <li class="onpage-item"><a href="#what-this-guide-does">What This Guide Does</a></li>
+<li class="onpage-item"><a href="#when-tools-or-pages-change">When Tools or Pages Change</a></li>
+<li class="onpage-item"><a href="#step-1---know-your-starting-place">Step 1 - Know Your Starting Place</a></li>
+<li class="onpage-item"><a href="#step-2---accept-the-github-classroom-assignment">Step 2 - Accept the GitHub Classroom Assignment</a></li>
+<li class="onpage-item"><a href="#step-3---understand-the-learning-room">Step 3 - Understand the Learning Room</a></li>
+<li class="onpage-item"><a href="#step-4---find-challenge-1">Step 4 - Find Challenge 1</a></li>
+<li class="onpage-item"><a href="#step-5---choose-the-tool-that-fits-the-moment">Step 5 - Choose the Tool That Fits the Moment</a></li>
+<li class="onpage-item"><a href="#step-6---what-to-listen-for-with-a-screen-reader">Step 6 - What to Listen For with a Screen Reader</a></li>
+<li class="onpage-item"><a href="#step-7---use-the-support-built-into-the-course">Step 7 - Use the Support Built into the Course</a></li>
+<li class="onpage-item"><a href="#step-8---your-first-success-check">Step 8 - Your First Success Check</a></li>
+<li class="onpage-item"><a href="#where-to-go-next">Where to Go Next</a></li>
+<li class="onpage-item"><a href="#authoritative-sources">Authoritative Sources</a></li>
+<li class="onpage-item onpage-sub"><a href="#section-level-source-map">Section-Level Source Map</a></li>
+    </ul>
+  </nav>
       <h1 id="get-going-with-github">Get Going with GitHub</h1>
 <blockquote>
 <p><strong>Start here if you are new, unsure, or joining from a workshop link.</strong> This guide walks you from &quot;I have the link&quot; to &quot;I know where I am, what to do next, and how to ask for help.&quot; You do not need to know Git, GitHub, VS Code, or the command line before you begin.</p>
@@ -311,6 +341,10 @@
 <li><strong>Where to Go Next:</strong> <a href="https://docs.github.com/en">GitHub Docs, home</a>, <a href="https://github.blog/changelog/">GitHub Changelog</a></li>
 </ul>
 
+      <nav class="progression-nav" aria-label="Page progression">
+    <a class="progression-link progression-prev" href="../docs/course-guide.html" rel="prev"><span class="progression-label">Previous</span><span class="progression-title">Course Guide</span></a>
+    <a class="progression-link progression-next" href="../docs/CHALLENGES.html" rel="next"><span class="progression-label">Next</span><span class="progression-title">Challenge Hub</span></a>
+  </nav>
     </main>
   </div>
   <footer role="contentinfo" class="site-footer">
@@ -318,5 +352,27 @@
     <p><a href="https://github.com/community-access/git-going-with-github">View on GitHub</a> · <a href="https://community-access.org">community-access.org</a></p>
   </footer>
 
+  <script>
+  (function() {
+    var key = 'gggLastVisitedPath';
+    var currentPath = window.location.pathname || '';
+    try {
+      if (currentPath) {
+        localStorage.setItem(key, currentPath);
+      }
+    } catch (e) {}
+
+    var resumeLink = document.getElementById('resume-link');
+    if (!resumeLink) return;
+
+    try {
+      var savedPath = localStorage.getItem(key);
+      if (savedPath && savedPath !== currentPath) {
+        resumeLink.hidden = false;
+        resumeLink.setAttribute('href', savedPath);
+      }
+    } catch (e) {}
+  })();
+  </script>
   </body>
 </html>

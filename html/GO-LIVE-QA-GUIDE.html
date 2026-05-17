@@ -78,6 +78,11 @@
     <h2 class="guided-title">Guided Reference</h2>
     <p class="guided-intro">Follow the learning order, then branch into appendices and challenge support.</p>
 
+
+    <section class="guided-resume" aria-label="Resume learning">
+      <a id="resume-link" class="guided-resume-link" href="./index.html" hidden>Resume where you left off</a>
+    </section>
+
     <nav class="guided-nav" aria-label="Workshop navigation">
       <section class="guided-section">
         <h3>Start Here</h3>
@@ -174,6 +179,37 @@
     </nav>
   </aside>
     <main id="main-content" class="markdown-body page-main">
+      <nav class="onpage-nav" aria-label="On this page">
+    <h2 class="onpage-title">On This Page</h2>
+    <ul class="onpage-list">
+      <li class="onpage-item"><a href="#release-decision">Release Decision</a></li>
+<li class="onpage-item"><a href="#source-of-truth">Source Of Truth</a></li>
+<li class="onpage-item"><a href="#roles">Roles</a></li>
+<li class="onpage-item"><a href="#phase-1-local-repository-health">Phase 1: Local Repository Health</a></li>
+<li class="onpage-item"><a href="#phase-2-content-inventory-review">Phase 2: Content Inventory Review</a></li>
+<li class="onpage-item"><a href="#phase-3-classroom-deployment-dry-run">Phase 3: Classroom Deployment Dry Run</a></li>
+<li class="onpage-item onpage-sub"><a href="#organization-and-template-readiness">Organization And Template Readiness</a></li>
+<li class="onpage-item onpage-sub"><a href="#day-1-assignment">Day 1 Assignment</a></li>
+<li class="onpage-item onpage-sub"><a href="#day-2-assignment">Day 2 Assignment</a></li>
+<li class="onpage-item"><a href="#phase-4-workflow-and-automation-qa">Phase 4: Workflow And Automation QA</a></li>
+<li class="onpage-item onpage-sub"><a href="#gandalf-pr-validation-bot">Gandalf PR Validation Bot</a></li>
+<li class="onpage-item onpage-sub"><a href="#student-progression-bot">Student Progression Bot</a></li>
+<li class="onpage-item onpage-sub"><a href="#autograders">Autograders</a></li>
+<li class="onpage-item onpage-sub"><a href="#seeding-scripts">Seeding Scripts</a></li>
+<li class="onpage-item"><a href="#phase-5-human-challenge-walkthrough">Phase 5: Human Challenge Walkthrough</a></li>
+<li class="onpage-item onpage-sub"><a href="#day-1-core-path">Day 1 Core Path</a></li>
+<li class="onpage-item onpage-sub"><a href="#day-2-core-path">Day 2 Core Path</a></li>
+<li class="onpage-item onpage-sub"><a href="#bonus-path">Bonus Path</a></li>
+<li class="onpage-item"><a href="#phase-6-accessibility-qa">Phase 6: Accessibility QA</a></li>
+<li class="onpage-item"><a href="#phase-7-podcast-and-audio-qa-non-blocking-for-learning-room-go-live">Phase 7: Podcast And Audio QA (Non-blocking for Learning Room go-live)</a></li>
+<li class="onpage-item"><a href="#phase-8-facilitator-dry-run">Phase 8: Facilitator Dry Run</a></li>
+<li class="onpage-item"><a href="#issue-severity">Issue Severity</a></li>
+<li class="onpage-item"><a href="#qa-evidence-log-template">QA Evidence Log Template</a></li>
+<li class="onpage-item"><a href="#final-go-live-checklist">Final Go-Live Checklist</a></li>
+<li class="onpage-item"><a href="#authoritative-sources">Authoritative Sources</a></li>
+<li class="onpage-item onpage-sub"><a href="#section-level-source-map">Section-Level Source Map</a></li>
+    </ul>
+  </nav>
       <h1 id="git-going-with-github-go-live-qa-guide">Git Going with GitHub Go-Live QA Guide</h1>
 <p>Use this guide before a cohort is opened to learners. It is the release gate for curriculum content, GitHub Classroom deployment, Learning Room automation, accessibility, and human test coverage. Podcast and LLM-generation QA is tracked here as non-blocking unless a podcast release is explicitly in scope.</p>
 <p>For end-to-end execution details, use <a href="admin/LEARNING-ROOM-E2E-QA-RUNBOOK.html">admin/LEARNING-ROOM-E2E-QA-RUNBOOK.md</a> as the operator procedure. This guide is the release gate summary; the runbook is the required execution playbook.</p>
@@ -628,6 +664,7 @@ Podcast tester:
 <li><strong>Final Go-Live Checklist:</strong> <a href="https://docs.github.com/en">GitHub Docs, home</a>, <a href="https://github.blog/changelog/">GitHub Changelog</a></li>
 </ul>
 
+
     </main>
   </div>
   <footer role="contentinfo" class="site-footer">
@@ -635,5 +672,27 @@ Podcast tester:
     <p><a href="https://github.com/community-access/git-going-with-github">View on GitHub</a> · <a href="https://community-access.org">community-access.org</a></p>
   </footer>
 
+  <script>
+  (function() {
+    var key = 'gggLastVisitedPath';
+    var currentPath = window.location.pathname || '';
+    try {
+      if (currentPath) {
+        localStorage.setItem(key, currentPath);
+      }
+    } catch (e) {}
+
+    var resumeLink = document.getElementById('resume-link');
+    if (!resumeLink) return;
+
+    try {
+      var savedPath = localStorage.getItem(key);
+      if (savedPath && savedPath !== currentPath) {
+        resumeLink.hidden = false;
+        resumeLink.setAttribute('href', savedPath);
+      }
+    } catch (e) {}
+  })();
+  </script>
   </body>
 </html>

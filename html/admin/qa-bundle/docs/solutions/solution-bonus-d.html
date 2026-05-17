@@ -78,6 +78,11 @@
     <h2 class="guided-title">Guided Reference</h2>
     <p class="guided-intro">Follow the learning order, then branch into appendices and challenge support.</p>
 
+
+    <section class="guided-resume" aria-label="Resume learning">
+      <a id="resume-link" class="guided-resume-link" href="../../../../index.html" hidden>Resume where you left off</a>
+    </section>
+
     <nav class="guided-nav" aria-label="Workshop navigation">
       <section class="guided-section">
         <h3>Start Here</h3>
@@ -174,6 +179,20 @@
     </nav>
   </aside>
     <main id="main-content" class="markdown-body page-main">
+      <nav class="onpage-nav" aria-label="On this page">
+    <h2 class="onpage-title">On This Page</h2>
+    <ul class="onpage-list">
+      <li class="onpage-item"><a href="#before-default-settings">Before: Default settings</a></li>
+<li class="onpage-item"><a href="#after-configured-settings">After: Configured settings</a></li>
+<li class="onpage-item onpage-sub"><a href="#notification-settings-githubcomsettingsnotifications">Notification settings (github.com/settings/notifications)</a></li>
+<li class="onpage-item onpage-sub"><a href="#repository-watching">Repository watching</a></li>
+<li class="onpage-item onpage-sub"><a href="#custom-routing-if-you-use-multiple-emails">Custom routing (if you use multiple emails)</a></li>
+<li class="onpage-item"><a href="#key-decisions-explained">Key decisions explained</a></li>
+<li class="onpage-item"><a href="#what-matters">What matters</a></li>
+<li class="onpage-item"><a href="#authoritative-sources">Authoritative Sources</a></li>
+<li class="onpage-item onpage-sub"><a href="#section-level-source-map">Section-Level Source Map</a></li>
+    </ul>
+  </nav>
       <h1 id="solution-reference-bonus-d----notification-mastery">Solution Reference: Bonus D -- Notification Mastery</h1>
 <p>This shows a configured notification setup with before/after.</p>
 <h2 id="before-default-settings">Before: Default settings</h2>
@@ -225,6 +244,7 @@
 <li><strong>What matters:</strong> <a href="https://docs.github.com/en">GitHub Docs, home</a>, <a href="https://github.blog/changelog/">GitHub Changelog</a></li>
 </ul>
 
+
     </main>
   </div>
   <footer role="contentinfo" class="site-footer">
@@ -232,5 +252,27 @@
     <p><a href="https://github.com/community-access/git-going-with-github">View on GitHub</a> · <a href="https://community-access.org">community-access.org</a></p>
   </footer>
 
+  <script>
+  (function() {
+    var key = 'gggLastVisitedPath';
+    var currentPath = window.location.pathname || '';
+    try {
+      if (currentPath) {
+        localStorage.setItem(key, currentPath);
+      }
+    } catch (e) {}
+
+    var resumeLink = document.getElementById('resume-link');
+    if (!resumeLink) return;
+
+    try {
+      var savedPath = localStorage.getItem(key);
+      if (savedPath && savedPath !== currentPath) {
+        resumeLink.hidden = false;
+        resumeLink.setAttribute('href', savedPath);
+      }
+    } catch (e) {}
+  })();
+  </script>
   </body>
 </html>

@@ -78,6 +78,11 @@
     <h2 class="guided-title">Guided Reference</h2>
     <p class="guided-intro">Follow the learning order, then branch into appendices and challenge support.</p>
 
+
+    <section class="guided-resume" aria-label="Resume learning">
+      <a id="resume-link" class="guided-resume-link" href="../index.html" hidden>Resume where you left off</a>
+    </section>
+
     <nav class="guided-nav" aria-label="Workshop navigation">
       <section class="guided-section">
         <h3>Start Here</h3>
@@ -174,6 +179,30 @@
     </nav>
   </aside>
     <main id="main-content" class="markdown-body page-main">
+      <nav class="onpage-nav" aria-label="On this page">
+    <h2 class="onpage-title">On This Page</h2>
+    <ul class="onpage-list">
+      <li class="onpage-item"><a href="#quick-start-syncing-students-to-classroom">Quick Start: Syncing Students to Classroom</a></li>
+<li class="onpage-item onpage-sub"><a href="#1-prepare-your-classroom-organization">1. Prepare Your Classroom Organization</a></li>
+<li class="onpage-item onpage-sub"><a href="#2-configure-repository-integration">2. Configure Repository Integration</a></li>
+<li class="onpage-item onpage-sub"><a href="#3-proficiency-based-triage">3. Proficiency-Based Triage</a></li>
+<li class="onpage-item onpage-sub"><a href="#4-viewing-enrollment-data">4. Viewing Enrollment Data</a></li>
+<li class="onpage-item"><a href="#workflow-enrollment--team-assignment--assignments">Workflow: Enrollment → Team Assignment → Assignments</a></li>
+<li class="onpage-item onpage-sub"><a href="#day-0-enrollment-opens">Day 0: Enrollment Opens</a></li>
+<li class="onpage-item onpage-sub"><a href="#day-0-1-facilitator-triage">Day 0-1: Facilitator Triage</a></li>
+<li class="onpage-item onpage-sub"><a href="#day-1-teams-amp-assignments">Day 1: Teams &amp; Assignments</a></li>
+<li class="onpage-item onpage-sub"><a href="#day-1-2-track-progress">Day 1-2: Track Progress</a></li>
+<li class="onpage-item onpage-sub"><a href="#day-2-advanced-assignment">Day 2: Advanced Assignment</a></li>
+<li class="onpage-item"><a href="#troubleshooting">Troubleshooting</a></li>
+<li class="onpage-item onpage-sub"><a href="#quotenrollment-is-temporarily-unavailablequot">&amp;quot;Enrollment is temporarily unavailable&amp;quot;</a></li>
+<li class="onpage-item onpage-sub"><a href="#student-did-not-receive-day-2-release">Student did not receive Day 2 release</a></li>
+<li class="onpage-item onpage-sub"><a href="#can39t-find-enrollment-details">Can&amp;#39;t find enrollment details</a></li>
+<li class="onpage-item"><a href="#exporting-student-roster">Exporting Student Roster</a></li>
+<li class="onpage-item"><a href="#need-help">Need Help?</a></li>
+<li class="onpage-item"><a href="#authoritative-sources">Authoritative Sources</a></li>
+<li class="onpage-item onpage-sub"><a href="#section-level-source-map">Section-Level Source Map</a></li>
+    </ul>
+  </nav>
       <h1 id="github-classroom-integration-guide">GitHub Classroom Integration Guide</h1>
 <p>This guide helps facilitators connect student enrollment data with GitHub Classroom assignments and dashboard triage.</p>
 <h2 id="quick-start-syncing-students-to-classroom">Quick Start: Syncing Students to Classroom</h2>
@@ -306,6 +335,7 @@
 <li><strong>Need Help?:</strong> <a href="https://docs.github.com/en">GitHub Docs, home</a>, <a href="https://github.blog/changelog/">GitHub Changelog</a></li>
 </ul>
 
+
     </main>
   </div>
   <footer role="contentinfo" class="site-footer">
@@ -313,5 +343,27 @@
     <p><a href="https://github.com/community-access/git-going-with-github">View on GitHub</a> · <a href="https://community-access.org">community-access.org</a></p>
   </footer>
 
+  <script>
+  (function() {
+    var key = 'gggLastVisitedPath';
+    var currentPath = window.location.pathname || '';
+    try {
+      if (currentPath) {
+        localStorage.setItem(key, currentPath);
+      }
+    } catch (e) {}
+
+    var resumeLink = document.getElementById('resume-link');
+    if (!resumeLink) return;
+
+    try {
+      var savedPath = localStorage.getItem(key);
+      if (savedPath && savedPath !== currentPath) {
+        resumeLink.hidden = false;
+        resumeLink.setAttribute('href', savedPath);
+      }
+    } catch (e) {}
+  })();
+  </script>
   </body>
 </html>

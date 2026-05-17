@@ -78,6 +78,11 @@
     <h2 class="guided-title">Guided Reference</h2>
     <p class="guided-intro">Follow the learning order, then branch into appendices and challenge support.</p>
 
+
+    <section class="guided-resume" aria-label="Resume learning">
+      <a id="resume-link" class="guided-resume-link" href="../../index.html" hidden>Resume where you left off</a>
+    </section>
+
     <nav class="guided-nav" aria-label="Workshop navigation">
       <section class="guided-section">
         <h3>Start Here</h3>
@@ -174,6 +179,25 @@
     </nav>
   </aside>
     <main id="main-content" class="markdown-body page-main">
+      <nav class="onpage-nav" aria-label="On this page">
+    <h2 class="onpage-title">On This Page</h2>
+    <ul class="onpage-list">
+      <li class="onpage-item"><a href="#getting-ready-to-contribute-with-a-screen-reader">Getting Ready to Contribute with a Screen Reader</a></li>
+<li class="onpage-item"><a href="#step-1---create-a-github-account">Step 1 - Create a GitHub Account</a></li>
+<li class="onpage-item"><a href="#step-2---configure-accessibility-settings">Step 2 - Configure Accessibility Settings</a></li>
+<li class="onpage-item"><a href="#step-3---github-interface-no-action-needed">Step 3 - GitHub Interface (No Action Needed)</a></li>
+<li class="onpage-item"><a href="#step-4---disable-hovercards">Step 4 - Disable Hovercards</a></li>
+<li class="onpage-item"><a href="#step-5---configure-your-screen-reader-for-github">Step 5 - Configure Your Screen Reader for GitHub</a></li>
+<li class="onpage-item onpage-sub"><a href="#nvda">NVDA</a></li>
+<li class="onpage-item onpage-sub"><a href="#jaws">JAWS</a></li>
+<li class="onpage-item onpage-sub"><a href="#voiceover-macos">VoiceOver (macOS)</a></li>
+<li class="onpage-item"><a href="#step-6---fork-the-workshop-repository">Step 6 - Fork the Workshop Repository</a></li>
+<li class="onpage-item"><a href="#step-7---verify-your-setup">Step 7 - Verify Your Setup</a></li>
+<li class="onpage-item"><a href="#getting-help-before-the-workshop">Getting Help Before the Workshop</a></li>
+<li class="onpage-item"><a href="#authoritative-sources">Authoritative Sources</a></li>
+<li class="onpage-item onpage-sub"><a href="#section-level-source-map">Section-Level Source Map</a></li>
+    </ul>
+  </nav>
       <h1 id="setup-guide">Setup Guide</h1>
 <h2 id="getting-ready-to-contribute-with-a-screen-reader">Getting Ready to Contribute with a Screen Reader</h2>
 <p>This guide walks you through everything you need to set up before your first GitHub contribution. Complete all steps before the workshop begins.</p>
@@ -271,6 +295,7 @@
 <li><strong>Getting Help Before the Workshop:</strong> <a href="https://docs.github.com/en">GitHub Docs, home</a>, <a href="https://github.blog/changelog/">GitHub Changelog</a></li>
 </ul>
 
+
     </main>
   </div>
   <footer role="contentinfo" class="site-footer">
@@ -278,5 +303,27 @@
     <p><a href="https://github.com/community-access/git-going-with-github">View on GitHub</a> · <a href="https://community-access.org">community-access.org</a></p>
   </footer>
 
+  <script>
+  (function() {
+    var key = 'gggLastVisitedPath';
+    var currentPath = window.location.pathname || '';
+    try {
+      if (currentPath) {
+        localStorage.setItem(key, currentPath);
+      }
+    } catch (e) {}
+
+    var resumeLink = document.getElementById('resume-link');
+    if (!resumeLink) return;
+
+    try {
+      var savedPath = localStorage.getItem(key);
+      if (savedPath && savedPath !== currentPath) {
+        resumeLink.hidden = false;
+        resumeLink.setAttribute('href', savedPath);
+      }
+    } catch (e) {}
+  })();
+  </script>
   </body>
 </html>
