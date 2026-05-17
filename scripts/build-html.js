@@ -8,7 +8,7 @@ const chokidar = require('chokidar');
 
 const PODCAST_INDEX_URL = 'https://lp.csedesigns.com/ggg/PODCASTS.html';
 const PODCAST_FEED_URL = 'https://lp.csedesigns.com/ggg/feed.xml';
-const PODCAST_AUDIO_BASE_URL = 'https://github.com/Community-Access/git-going-with-github/releases/download/podcasts';
+const PODCAST_AUDIO_BASE_URL = 'https://lp.csedesigns.com/ggg/media';
 const REPO_BLOB_BASE_URL = 'https://github.com/Community-Access/git-going-with-github/blob/main';
 
 // Accumulates page data for search index
@@ -400,6 +400,18 @@ function renderGuidedSidebar(normalizedRelativePath, prefix) {
     { href: PODCAST_FEED_URL, title: 'RSS Feed' }
   ];
 
+  const challengeLabItems = [
+    { href: 'docs/CHALLENGES.html', title: 'Challenge Hub' },
+    { href: 'docs/17-issue-templates.html', title: 'Issue Template Deep Dive' }
+  ];
+
+  if (fs.existsSync(path.join(process.cwd(), 'work.md'))) {
+    challengeLabItems.splice(1, 0, {
+      href: 'work.html',
+      title: 'Issue-Style Challenge Walkthrough'
+    });
+  }
+
   const progressCard = sequenceState.index === -1
     ? ''
     : `<section class="guided-progress" aria-label="Learning progress">
@@ -413,7 +425,7 @@ function renderGuidedSidebar(normalizedRelativePath, prefix) {
 
   return `<aside class="guided-sidebar" aria-label="Guided reference">
     <h2 class="guided-title">Guided Reference</h2>
-    <p class="guided-intro">Follow the learning order, then branch into appendices and challenge support.</p>
+    <p class="guided-intro">Follow the learning order, then jump into challenge issue views, appendices, and support resources.</p>
     ${progressCard}
 
     <section class="guided-resume" aria-label="Resume learning">
@@ -453,6 +465,13 @@ function renderGuidedSidebar(normalizedRelativePath, prefix) {
             ${renderLinks(catalog.appendices)}
           </ul>
         </details>
+      </section>
+
+      <section class="guided-section">
+        <h3>Challenge Lab</h3>
+        <ul>
+          ${renderLinks(challengeLabItems)}
+        </ul>
       </section>
 
       <section class="guided-section">
