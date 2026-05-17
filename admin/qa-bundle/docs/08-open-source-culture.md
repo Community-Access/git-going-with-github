@@ -1,6 +1,6 @@
 # Culture, Etiquette, and Community Standards
 >
-> **Listen to Episode 8:** [Open Source Culture and Etiquette](../admin/PODCASTS.md) - a conversational audio overview of this chapter. Listen before reading to preview the concepts, or after to reinforce what you learned.
+> **Listen to Episode 8:** [Open Source Culture and Etiquette](https://lp.csedesigns.com/ggg/PODCASTS.html) - a conversational audio overview of this chapter. Listen before reading to preview the concepts, or after to reinforce what you learned.
 
 > **Related appendices:** [Appendix M: Accessibility Standards](appendix-m-accessibility-standards.md) | [Appendix F: Git Security](appendix-f-git-security.md) | [Appendix O: Branch Protection](appendix-o-branch-protection.md) | [Appendix W: GitHub Pages](appendix-w-github-pages.md)
 > **Authoritative sources:** [GitHub Docs: Contributing to open source](https://docs.github.com/en/get-started/exploring-projects-on-github/contributing-to-a-project) | [Open Source Guides: How to Contribute](https://opensource.guide/how-to-contribute/)
@@ -960,7 +960,7 @@ Notice: same feedback, completely different experience for the person receiving 
 > *This section was previously Appendix T. It is now part of the teaching narrative.*
 
 >
-> **Listen to Episode 37:** [Contributing to Open Source](../admin/PODCASTS.md) - a conversational audio overview of this chapter. Listen before reading to preview the concepts, or after to reinforce what you learned.
+> **Listen to Episode 37:** [Contributing to Open Source](https://lp.csedesigns.com/ggg/PODCASTS.html) - a conversational audio overview of this chapter. Listen before reading to preview the concepts, or after to reinforce what you learned.
 
 ## A Guide for First-Time Contributors
 

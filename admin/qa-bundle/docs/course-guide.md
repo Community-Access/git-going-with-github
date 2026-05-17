@@ -1,6 +1,6 @@
 # Course Guide
 >
-> **Listen to Episode 0:** [Welcome to Git Going with GitHub](../admin/PODCASTS.md) - a conversational audio overview of this chapter. Listen before reading to preview the concepts, or after to reinforce what you learned.
+> **Listen to Episode 0:** [Welcome to Git Going with GitHub](https://lp.csedesigns.com/ggg/PODCASTS.html) - a conversational audio overview of this chapter. Listen before reading to preview the concepts, or after to reinforce what you learned.
 
 ## GitHub Learning Room - Your Complete Workshop Companion
 
@@ -71,8 +71,8 @@ Complete everything in **[Chapter 00: Pre-Workshop Setup](00-pre-workshop-setup.
 
 Every chapter and appendix has a companion podcast episode - a conversational two-host overview that previews or reviews the key concepts. Listen before reading a chapter to know what to expect, or after to reinforce what you learned.
 
-- **[Browse the podcast episodes](../admin/PODCASTS.md)** with HTML5 audio players
-- **[Subscribe via RSS](https://community-access.org/git-going-with-github/podcasts/feed.xml)** in your preferred podcast app
+- **[Browse the podcast episodes](https://lp.csedesigns.com/ggg/PODCASTS.html)** with HTML5 audio players
+- **[Subscribe via RSS](https://lp.csedesigns.com/ggg/feed.xml)** in your preferred podcast app
 - Episodes are 8-18 minutes each - perfect for commutes, walks, or screen reader breaks
 
 ## Day 1: GitHub Foundations

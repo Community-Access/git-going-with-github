@@ -56,7 +56,7 @@ podcasts/
   build-bundles.js                  Companion episode catalog and bundle generator
   build-challenge-bundles.js        Challenge Coach catalog and bundle generator
   generate-draft-transcripts.js     Reviewable Alex/Jamie script generator
-  generate-site.js                  Generates admin/PODCASTS.md and feed.xml
+  generate-site.js                  Generates https://lp.csedesigns.com/ggg/PODCASTS.html and feed.xml
   validate-catalog.js               Validates source coverage
   validate-listening-order.js       Validates the complete public listening path
   validate-feed.js                  Validates RSS structure and enclosures

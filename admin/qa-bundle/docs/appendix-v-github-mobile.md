@@ -1,6 +1,6 @@
 # Appendix V: GitHub Mobile
 >
-> **Listen to Episode 32:** [GitHub Mobile](../admin/PODCASTS.md) - a conversational audio overview of this chapter. Listen before reading to preview the concepts, or after to reinforce what you learned.
+> **Listen to Episode 32:** [GitHub Mobile](https://lp.csedesigns.com/ggg/PODCASTS.html) - a conversational audio overview of this chapter. Listen before reading to preview the concepts, or after to reinforce what you learned.
 
 > **Reference companion to:** [Chapter 05: Working with Issues](05-working-with-issues.md) | Also relevant: [Chapter 10](10-notifications-and-day-1-close.md)
 >

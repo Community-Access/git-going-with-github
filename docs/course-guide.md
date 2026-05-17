@@ -112,7 +112,7 @@ Day 2 moves you from the browser to the desktop. Every skill maps directly to wh
 | [18](18-fork-and-contribute.md) | **Fork and Contribute** | The complete fork-based open source contribution workflow | 45 min |
 | [19](19-accessibility-agents.md) | **Accessibility Agents** | Agent files, prompts, skills, and contribution paths across the ecosystem | 1 hr |
 | [20](20-build-your-agent.md) | **Capstone Project** | Choose Accessibility Agents, GLOW, or another project and create an impactful agentic contribution | 1.5 hrs |
-| [21](21-next-steps.md) | **What Comes Next** | Graduation, portfolio, continued learning, community | 30 min |
+| [22](22-what-comes-next.md) | **What Comes Next** | Graduation, portfolio, continued learning, community | 30 min |
 
 **Day 2 self-paced total:** ~10 hours. The live Day 2 agenda focuses on VS Code, Git, Copilot, agent discovery, and supported contribution work; deeper capstone material can continue asynchronously.
 

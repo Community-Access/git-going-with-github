@@ -2,7 +2,7 @@
 >
 > **Listen to Episode 33:** [Publishing with GitHub Pages](https://lp.csedesigns.com/ggg/PODCASTS.html) - a conversational audio overview of this chapter. Listen before reading to preview the concepts, or after to reinforce what you learned.
 
-> **Reference companion to:** [Chapter 08: Open Source Culture](08-open-source-culture.md) | Also relevant: [Chapter 21](21-next-steps.md)
+> **Reference companion to:** [Chapter 08: Open Source Culture](08-open-source-culture.md) | Also relevant: [Chapter 22: What Comes Next](22-what-comes-next.md)
 >
 > **Authoritative source:** [GitHub Docs: About Pages](https://docs.github.com/en/pages/getting-started-with-github-pages/about-github-pages)
 

@@ -6,6 +6,11 @@ const { marked, Renderer } = require('marked');
 const hljs = require('highlight.js');
 const chokidar = require('chokidar');
 
+const PODCAST_INDEX_URL = 'https://lp.csedesigns.com/ggg/PODCASTS.html';
+const PODCAST_FEED_URL = 'https://lp.csedesigns.com/ggg/feed.xml';
+const PODCAST_AUDIO_BASE_URL = 'https://lp.csedesigns.com/ggg/media';
+const REPO_BLOB_BASE_URL = 'https://github.com/Community-Access/git-going-with-github/blob/main';
+
 // Accumulates page data for search index
 const searchPages = [];
 
@@ -100,12 +105,501 @@ function writeRedirectPage(filePath, targetHref) {
   writeGeneratedFile(filePath, redirectHtml);
 }
 
+function normalizePodcastEndpoints(text) {
+  return text
+    .replace(/href="(?:\.\.\/)?admin\/PODCASTS\.(?:md|html)(#[^"]*)?"/gi, `href="${PODCAST_INDEX_URL}$1"`)
+    .replace(/href="(?:https?:\/\/community-access\.org\/git-going-with-github)?\/?podcasts\/feed\.xml"/gi, `href="${PODCAST_FEED_URL}"`);
+}
+
+let docsCatalogCache = null;
+let podcastCompanionCache = null;
+
+function escapeHtmlText(value) {
+  return String(value)
+    .replace(/&/g, '&amp;')
+    .replace(/</g, '&lt;')
+    .replace(/>/g, '&gt;')
+    .replace(/"/g, '&quot;')
+    .replace(/'/g, '&#39;');
+}
+
+function readMarkdownTitle(filePath, fallbackTitle) {
+  try {
+    const content = fs.readFileSync(filePath, 'utf-8');
+    const heading = content.match(/^#\s+(.+)$/m);
+    if (heading && heading[1]) {
+      return heading[1].trim();
+    }
+  } catch (err) {
+    // Ignore title extraction failures and use fallback.
+  }
+  return fallbackTitle;
+}
+
+function getDocsCatalog() {
+  if (docsCatalogCache) {
+    return docsCatalogCache;
+  }
+
+  const docsDir = path.join(process.cwd(), 'docs');
+  if (!fs.existsSync(docsDir)) {
+    docsCatalogCache = {
+      essentials: [],
+      chapters: [],
+      day1: [],
+      day2: [],
+      appendices: []
+    };
+    return docsCatalogCache;
+  }
+
+  const files = fs.readdirSync(docsDir)
+    .filter((name) => name.toLowerCase().endsWith('.md'))
+    .sort((a, b) => a.localeCompare(b, undefined, { numeric: true }));
+
+  const toItem = (name) => {
+    const sourcePath = path.join(docsDir, name);
+    const fallback = name
+      .replace(/\.md$/i, '')
+      .replace(/-/g, ' ')
+      .replace(/\b\w/g, (m) => m.toUpperCase());
+    return {
+      href: `docs/${name.replace(/\.md$/i, '.html')}`,
+      title: readMarkdownTitle(sourcePath, fallback),
+      source: name
+    };
+  };
+
+  const essentialsOrder = ['course-guide.md', 'get-going.md', 'CHALLENGES.md'];
+  const essentials = essentialsOrder
+    .filter((name) => files.includes(name))
+    .map(toItem);
+
+  const chapters = files
+    .filter((name) => /^\d{2}-.*\.md$/i.test(name))
+    .map(toItem);
+
+  const day1 = chapters.filter((item) => {
+    const num = Number(item.source.slice(0, 2));
+    return !Number.isNaN(num) && num <= 10;
+  });
+
+  const day2 = chapters.filter((item) => {
+    const num = Number(item.source.slice(0, 2));
+    return !Number.isNaN(num) && num >= 11;
+  });
+
+  const appendices = files
+    .filter((name) => /^appendix-[a-z0-9-]+\.md$/i.test(name))
+    .map(toItem)
+    .sort((a, b) => {
+      const getAppendixKey = (source) => {
+        const match = source.match(/^appendix-([a-z0-9]+)-?/i);
+        const key = (match && match[1] ? match[1] : '').toLowerCase();
+        const isExtended = ['aa', 'ab', 'ac'].includes(key);
+        return { key, isExtended };
+      };
+
+      const aKey = getAppendixKey(a.source);
+      const bKey = getAppendixKey(b.source);
+
+      // Keep AA/AB/AC at the bottom of appendix navigation.
+      if (aKey.isExtended && !bKey.isExtended) return 1;
+      if (!aKey.isExtended && bKey.isExtended) return -1;
+
+      return a.source.localeCompare(b.source, undefined, { numeric: true });
+    });
+
+  docsCatalogCache = { essentials, chapters, day1, day2, appendices };
+  return docsCatalogCache;
+}
+
+function listFilesRecursive(dirPath, predicate, acc = []) {
+  if (!fs.existsSync(dirPath)) return acc;
+  const entries = fs.readdirSync(dirPath, { withFileTypes: true });
+  for (const entry of entries) {
+    const full = path.join(dirPath, entry.name);
+    if (entry.isDirectory()) {
+      listFilesRecursive(full, predicate, acc);
+    } else if (entry.isFile() && predicate(entry.name, full)) {
+      acc.push(full);
+    }
+  }
+  return acc;
+}
+
+function parseTranscriptSegments(scriptText) {
+  const segments = [];
+  let currentSpeaker = null;
+  let currentLines = [];
+
+  for (const line of scriptText.split('\n')) {
+    const trimmed = line.trim();
+    if (!trimmed) continue;
+
+    if (trimmed === '[PAUSE]') {
+      if (currentSpeaker && currentLines.length) {
+        segments.push({ speaker: currentSpeaker, text: currentLines.join(' ').trim() });
+        currentLines = [];
+      }
+      continue;
+    }
+
+    const speakerMatch = trimmed.match(/^\[(ALEX|JAMIE)\]$/);
+    if (speakerMatch) {
+      if (currentSpeaker && currentLines.length) {
+        segments.push({ speaker: currentSpeaker, text: currentLines.join(' ').trim() });
+        currentLines = [];
+      }
+      currentSpeaker = speakerMatch[1];
+      continue;
+    }
+
+    const inlineMatch = trimmed.match(/^\[(ALEX|JAMIE)\]\s+(.*)/);
+    if (inlineMatch) {
+      if (currentSpeaker && currentLines.length) {
+        segments.push({ speaker: currentSpeaker, text: currentLines.join(' ').trim() });
+        currentLines = [];
+      }
+      currentSpeaker = inlineMatch[1];
+      if (inlineMatch[2]) currentLines.push(inlineMatch[2]);
+      continue;
+    }
+
+    if (currentSpeaker) {
+      currentLines.push(trimmed);
+    }
+  }
+
+  if (currentSpeaker && currentLines.length) {
+    segments.push({ speaker: currentSpeaker, text: currentLines.join(' ').trim() });
+  }
+
+  return segments;
+}
+
+function getPodcastCompanionsForPage(normalizedRelativePath) {
+  if (!normalizedRelativePath.startsWith('docs/')) {
+    return [];
+  }
+
+  if (!podcastCompanionCache) {
+    const manifestPath = path.join(process.cwd(), 'podcasts', 'manifest.json');
+    const scriptsDir = path.join(process.cwd(), 'podcasts', 'scripts');
+    const manifest = fs.existsSync(manifestPath)
+      ? JSON.parse(fs.readFileSync(manifestPath, 'utf-8'))
+      : [];
+
+    const scripts = listFilesRecursive(
+      scriptsDir,
+      (name) => name.toLowerCase().endsWith('.txt')
+    );
+
+    const scriptMap = new Map();
+    for (const scriptPath of scripts) {
+      scriptMap.set(path.basename(scriptPath).toLowerCase(), scriptPath);
+    }
+
+    const bySource = new Map();
+
+    for (const ep of manifest) {
+      const pad = String(ep.number).padStart(2, '0');
+      const defaultAudio = `ep${pad}-${ep.slug}.mp3`;
+      const audioFile = ep.audio || defaultAudio;
+      const scriptName = `ep${pad}-${ep.slug}.txt`.toLowerCase();
+      const scriptPath = scriptMap.get(scriptName) || null;
+      const transcriptUrl = scriptPath
+        ? `${REPO_BLOB_BASE_URL}/${path.relative(process.cwd(), scriptPath).replace(/\\/g, '/')}`
+        : `${REPO_BLOB_BASE_URL}/podcasts/scripts`;
+
+      const previewSegments = (() => {
+        if (!scriptPath) return [];
+        try {
+          const raw = fs.readFileSync(scriptPath, 'utf-8');
+          return parseTranscriptSegments(raw).slice(0, 4);
+        } catch {
+          return [];
+        }
+      })();
+
+      const item = {
+        title: ep.title || ep.slug,
+        audioUrl: `${PODCAST_AUDIO_BASE_URL}/${audioFile}`,
+        transcriptUrl,
+        previewSegments
+      };
+
+      const sources = Array.isArray(ep.sources) ? ep.sources : [];
+      for (const src of sources) {
+        const key = String(src || '').toLowerCase();
+        if (!key) continue;
+        if (!bySource.has(key)) bySource.set(key, []);
+        bySource.get(key).push(item);
+      }
+    }
+
+    podcastCompanionCache = { bySource };
+  }
+
+  const sourceMd = path.basename(normalizedRelativePath).replace(/\.html$/i, '.md').toLowerCase();
+  return podcastCompanionCache.bySource.get(sourceMd) || [];
+}
+
+function renderCompanionMedia(normalizedRelativePath) {
+  const companions = getPodcastCompanionsForPage(normalizedRelativePath);
+  if (!companions.length) {
+    return '';
+  }
+
+  const cards = companions.map((c) => {
+    const preview = c.previewSegments.length
+      ? `<details class="companion-preview"><summary>Transcript preview</summary>${c.previewSegments.map((s) => `<p><strong>${s.speaker === 'ALEX' ? 'Alex' : 'Jamie'}:</strong> ${escapeHtmlText(s.text)}</p>`).join('')}</details>`
+      : '';
+
+    return `<article class="companion-card">
+      <h3>${escapeHtmlText(c.title)}</h3>
+      <p class="companion-note">Companion audio: this episode reinforces key ideas and may not be a word-for-word reading of this page.</p>
+      <audio controls preload="none" class="companion-player" src="${c.audioUrl}">
+        Your browser does not support the audio element.
+      </audio>
+      <p class="companion-links">
+        <a href="${c.audioUrl}" target="_blank" rel="noopener noreferrer">Open audio file (external)</a>
+        <span aria-hidden="true"> · </span>
+        <a href="${c.transcriptUrl}" target="_blank" rel="noopener noreferrer">Full transcript source (external)</a>
+      </p>
+      ${preview}
+    </article>`;
+  }).join('');
+
+  return `<section id="companion-media" class="companion-media" aria-label="Companion podcast content">
+    <h2 class="companion-title">Companion Podcast and Transcript</h2>
+    <p class="companion-intro">Use audio and transcript companions to review concepts in a conversational format.</p>
+    ${cards}
+  </section>`;
+}
+
+function renderQuickJumps(prefix, hasCompanionMedia, hasOnPageToc) {
+  const links = [
+    '<a href="#course-content">Jump to course content</a>',
+    '<a href="#main-content">Jump to main content top</a>'
+  ];
+
+  if (hasOnPageToc) {
+    links.push('<a href="#on-this-page">Jump to on-page sections</a>');
+  }
+
+  if (hasCompanionMedia) {
+    links.push('<a href="#companion-media">Jump to companion audio</a>');
+  }
+
+  links.push(`<a href="${prefix}docs/CHALLENGES.html">Open challenge hub</a>`);
+  links.push(`<a href="${prefix}work.html">Open issue-style challenge walkthrough</a>`);
+
+  return `<nav class="quick-jumps" aria-label="Quick jumps">
+    <h2 class="quick-jumps-title">Quick Jumps</h2>
+    <ul class="quick-jumps-list">
+      ${links.map((link) => `<li>${link}</li>`).join('')}
+    </ul>
+  </nav>`;
+}
+
+function renderGuidedSidebar(normalizedRelativePath, prefix) {
+  const catalog = getDocsCatalog();
+  const sequenceState = getLearningSequenceState(normalizedRelativePath);
+
+  const renderLinks = (items) => {
+    if (!items.length) {
+      return '<li><span class="guided-empty">No entries yet.</span></li>';
+    }
+
+    return items.map((item) => {
+      const isCurrent = normalizedRelativePath === item.href;
+      const href = item.href.startsWith('http') ? item.href : `${prefix}${item.href}`;
+      const external = item.href.startsWith('http') ? ' <span class="guided-external">(external)</span>' : '';
+      return `<li><a href="${href}"${isCurrent ? ' aria-current="page" class="guided-active"' : ''}>${escapeHtmlText(item.title)}${external}</a></li>`;
+    }).join('\n');
+  };
+
+  const externalResources = [
+    { href: PODCAST_INDEX_URL, title: 'Podcast Episodes' },
+    { href: PODCAST_FEED_URL, title: 'RSS Feed' }
+  ];
+
+  const challengeLabItems = [
+    { href: 'docs/CHALLENGES.html', title: 'Challenge Hub' },
+    { href: 'docs/17-issue-templates.html', title: 'Issue Template Deep Dive' }
+  ];
+
+  if (fs.existsSync(path.join(process.cwd(), 'work.md'))) {
+    challengeLabItems.splice(1, 0, {
+      href: 'work.html',
+      title: 'Issue-Style Challenge Walkthrough'
+    });
+  }
+
+  const progressCard = sequenceState.index === -1
+    ? ''
+    : `<section class="guided-progress" aria-label="Learning progress">
+        <h3>Learning Progress</h3>
+        <p class="guided-progress-copy">${sequenceState.index + 1} of ${sequenceState.total} pages in the guided sequence</p>
+        <div class="guided-progress-track" role="progressbar" aria-valuemin="0" aria-valuemax="100" aria-valuenow="${sequenceState.percent}" aria-label="Guided sequence progress">
+          <span class="guided-progress-fill" style="width:${sequenceState.percent}%;"></span>
+        </div>
+        <p class="guided-progress-percent">${sequenceState.percent}% complete</p>
+      </section>`;
+
+  return `<aside class="guided-sidebar" aria-label="Guided reference">
+    <h2 class="guided-title">Guided Reference</h2>
+    <p class="guided-intro">Follow the learning order, then jump into challenge issue views, appendices, and support resources.</p>
+    ${progressCard}
+
+    <section class="guided-resume" aria-label="Resume learning">
+      <a id="resume-link" class="guided-resume-link" href="${prefix}index.html" hidden>Resume where you left off</a>
+    </section>
+
+    <nav class="guided-nav" aria-label="Workshop navigation">
+      <section class="guided-section">
+        <h3>Start Here</h3>
+        <ul>
+          <li><a href="${prefix}index.html"${normalizedRelativePath === 'index.html' ? ' aria-current="page" class="guided-active"' : ''}>Workshop Home</a></li>
+          ${renderLinks(catalog.essentials)}
+        </ul>
+      </section>
+
+      <section class="guided-section">
+        <h3>Learning Order</h3>
+        <details${normalizedRelativePath.startsWith('docs/') ? ' open' : ''}>
+          <summary>Day 1 chapters</summary>
+          <ul>
+            ${renderLinks(catalog.day1)}
+          </ul>
+        </details>
+        <details${normalizedRelativePath.startsWith('docs/') ? ' open' : ''}>
+          <summary>Day 2 chapters</summary>
+          <ul>
+            ${renderLinks(catalog.day2)}
+          </ul>
+        </details>
+      </section>
+
+      <section class="guided-section">
+        <h3>Appendices</h3>
+        <details${normalizedRelativePath.startsWith('docs/appendix-') ? ' open' : ''}>
+          <summary>Reference library</summary>
+          <ul>
+            ${renderLinks(catalog.appendices)}
+          </ul>
+        </details>
+      </section>
+
+      <section class="guided-section">
+        <h3>Challenge Lab</h3>
+        <ul>
+          ${renderLinks(challengeLabItems)}
+        </ul>
+      </section>
+
+      <section class="guided-section">
+        <h3>External Resources</h3>
+        <ul>
+          ${renderLinks(externalResources)}
+        </ul>
+      </section>
+    </nav>
+  </aside>`;
+}
+
+function getLearningSequence() {
+  const catalog = getDocsCatalog();
+  return [
+    ...catalog.essentials,
+    ...catalog.chapters,
+    ...catalog.appendices
+  ];
+}
+
+function getLearningSequenceState(normalizedRelativePath) {
+  const ordered = getLearningSequence();
+  const index = ordered.findIndex((item) => item.href === normalizedRelativePath);
+  const total = ordered.length;
+  const percent = index >= 0 && total > 0
+    ? Math.round(((index + 1) / total) * 100)
+    : 0;
+
+  return { ordered, index, total, percent };
+}
+
+function renderOnPageToc(content) {
+  const headings = [];
+  const re = /<h([2-3]) id="([^"]+)">([\s\S]*?)<\/h\1>/gi;
+  let match;
+
+  while ((match = re.exec(content)) !== null) {
+    const level = Number(match[1]);
+    const id = match[2];
+    const text = match[3]
+      .replace(/<[^>]+>/g, '')
+      .replace(/&amp;/g, '&')
+      .replace(/&lt;/g, '<')
+      .replace(/&gt;/g, '>')
+      .trim();
+    if (id && text) {
+      headings.push({ level, id, text });
+    }
+  }
+
+  if (!headings.length) {
+    return '';
+  }
+
+  const links = headings.map((h) => {
+    const cls = h.level === 3 ? ' onpage-sub' : '';
+    return `<li class="onpage-item${cls}"><a href="#${escapeHtmlText(h.id)}">${escapeHtmlText(h.text)}</a></li>`;
+  }).join('\n');
+
+  return `<nav id="on-this-page" class="onpage-nav" aria-label="On this page">
+    <h2 class="onpage-title">On This Page</h2>
+    <ul class="onpage-list">
+      ${links}
+    </ul>
+  </nav>`;
+}
+
+function renderProgressionNav(normalizedRelativePath, prefix) {
+  const state = getLearningSequenceState(normalizedRelativePath);
+  if (state.index === -1) {
+    return '';
+  }
+
+  const prev = state.index > 0 ? state.ordered[state.index - 1] : null;
+  const next = state.index < state.ordered.length - 1 ? state.ordered[state.index + 1] : null;
+
+  const prevHtml = prev
+    ? `<a class="progression-link progression-prev" href="${prefix}${prev.href}" rel="prev"><span class="progression-label">Previous</span><span class="progression-title">${escapeHtmlText(prev.title)}</span></a>`
+    : '<span class="progression-link progression-disabled" aria-disabled="true"><span class="progression-label">Previous</span><span class="progression-title">Start of sequence</span></span>';
+
+  const nextHtml = next
+    ? `<a class="progression-link progression-next" href="${prefix}${next.href}" rel="next"><span class="progression-label">Next</span><span class="progression-title">${escapeHtmlText(next.title)}</span></a>`
+    : '<span class="progression-link progression-disabled" aria-disabled="true"><span class="progression-label">Next</span><span class="progression-title">End of sequence</span></span>';
+
+  return `<nav class="progression-nav" aria-label="Page progression">
+    ${prevHtml}
+    ${nextHtml}
+  </nav>`;
+}
+
 // HTML template with accessibility features
 const htmlTemplate = (content, title, relativePath) => {
-  const depth = relativePath.split('/').length - 1;
+  const normalizedRelativePath = relativePath.replace(/\\/g, '/');
+  const depth = normalizedRelativePath.split('/').length - 1;
   const prefix = depth > 0 ? '../'.repeat(depth) : './';
-  const isHome = relativePath === 'index.html';
-  const isRegister = relativePath === 'REGISTER.html';
+  const guidedSidebar = renderGuidedSidebar(normalizedRelativePath, prefix);
+  const companionMedia = renderCompanionMedia(normalizedRelativePath);
+  const onPageToc = renderOnPageToc(content);
+  const quickJumps = renderQuickJumps(prefix, !!companionMedia, !!onPageToc);
+  const progressionNav = renderProgressionNav(normalizedRelativePath, prefix);
+  const isHome = normalizedRelativePath === 'index.html';
+  const isRegister = normalizedRelativePath === 'REGISTER.html';
   const siteName = 'GIT Going with GitHub';
   const titleContainsSiteName = title === siteName || title.includes(siteName);
   const pageTitle = isHome || titleContainsSiteName ? title : `${title} - ${siteName}`;
@@ -123,12 +617,28 @@ const htmlTemplate = (content, title, relativePath) => {
   <style>
     .markdown-body {
       box-sizing: border-box;
-      min-width: 200px;
+      min-width: 0;
       max-width: 980px;
-      margin: 0 auto;
+      margin: 0;
       padding: 45px;
     }
+
+    .page-layout {
+      max-width: 1320px;
+      margin: 0 auto;
+      padding: 1rem 1rem 2rem;
+      display: grid;
+      grid-template-columns: minmax(240px, 300px) minmax(0, 1fr);
+      gap: 1.25rem;
+      align-items: start;
+    }
+
     @media (max-width: 767px) {
+      .page-layout {
+        grid-template-columns: 1fr;
+        padding: 0.5rem 0.5rem 1rem;
+      }
+
       .markdown-body {
         padding: 15px;
       }
@@ -172,9 +682,16 @@ const htmlTemplate = (content, title, relativePath) => {
       </div>
     </div>
   </header>
-  <main id="main-content" class="markdown-body">
-    ${content}
-  </main>
+  <div class="page-layout">
+    ${guidedSidebar}
+    <main id="main-content" class="markdown-body page-main">
+      ${quickJumps}
+      ${companionMedia}
+      ${onPageToc}
+      <div id="course-content">${content}</div>
+      ${progressionNav}
+    </main>
+  </div>
   <footer role="contentinfo" class="site-footer">
     <p><strong>GIT Going with GitHub</strong> - A workshop by <a href="https://community-access.org">Community Access</a></p>
     <p><a href="https://github.com/community-access/git-going-with-github">View on GitHub</a> · <a href="https://community-access.org">community-access.org</a></p>
@@ -256,6 +773,28 @@ const htmlTemplate = (content, title, relativePath) => {
   }
 })();
 </script>` : ''}
+  <script>
+  (function() {
+    var key = 'gggLastVisitedPath';
+    var currentPath = window.location.pathname || '';
+    try {
+      if (currentPath) {
+        localStorage.setItem(key, currentPath);
+      }
+    } catch (e) {}
+
+    var resumeLink = document.getElementById('resume-link');
+    if (!resumeLink) return;
+
+    try {
+      var savedPath = localStorage.getItem(key);
+      if (savedPath && savedPath !== currentPath) {
+        resumeLink.hidden = false;
+        resumeLink.setAttribute('href', savedPath);
+      }
+    } catch (e) {}
+  })();
+  </script>
   ${(isHome || isRegister) ? `<script>
 (function() {
   var url = 'https://api.github.com/search/issues?q=repo:community-access/git-going-with-github+label:enrolled+is:issue';
@@ -336,6 +875,9 @@ function convertMarkdownFile(mdPath, outputDir) {
         return `href="${rewritten}.html${anchor || ''}"`;
       }
     );
+
+    // Always route podcast landing/feed links to the LP-hosted distribution endpoints.
+    htmlContent = normalizePodcastEndpoints(htmlContent);
 
     // Add aria-label to GFM task list checkboxes (WCAG 1.3.1 / 4.1.2)
     htmlContent = htmlContent.replace(
@@ -661,6 +1203,371 @@ body {
   color: #24292f;
 }
 
+.guided-sidebar {
+  position: sticky;
+  top: 5.25rem;
+  border: 1px solid #d0d7de;
+  border-radius: 10px;
+  background: #f8fafc;
+  padding: 0.9rem;
+  max-height: calc(100vh - 6.5rem);
+  overflow: auto;
+}
+
+.guided-title {
+  margin: 0;
+  font-size: 1rem;
+}
+
+.guided-intro {
+  margin: 0.4rem 0 0.9rem;
+  color: #57606a;
+  font-size: 0.86rem;
+  line-height: 1.45;
+}
+
+.guided-progress {
+  border: 1px solid #d0d7de;
+  border-radius: 8px;
+  background: #ffffff;
+  padding: 0.55rem 0.65rem;
+  margin: 0 0 0.8rem;
+}
+
+.guided-progress h3 {
+  margin: 0;
+  font-size: 0.84rem;
+}
+
+.guided-progress-copy {
+  margin: 0.35rem 0 0.5rem;
+  color: #57606a;
+  font-size: 0.78rem;
+}
+
+.guided-progress-track {
+  width: 100%;
+  height: 0.45rem;
+  border-radius: 999px;
+  background: #eaeef2;
+  overflow: hidden;
+}
+
+.guided-progress-fill {
+  display: block;
+  height: 100%;
+  background: linear-gradient(90deg, #1f8f63, #2da44e);
+}
+
+.guided-progress-percent {
+  margin: 0.35rem 0 0;
+  font-size: 0.74rem;
+  color: #57606a;
+}
+
+.guided-resume {
+  margin: 0 0 0.9rem;
+}
+
+.guided-resume-link {
+  display: inline-block;
+  font-size: 0.82rem;
+  text-decoration: none;
+  color: #0550ae;
+  padding: 0.2rem 0;
+}
+
+.guided-resume-link:hover {
+  text-decoration: underline;
+}
+
+.guided-section {
+  margin-bottom: 0.85rem;
+}
+
+.guided-section h3 {
+  margin: 0 0 0.35rem;
+  font-size: 0.9rem;
+  letter-spacing: 0.01em;
+}
+
+.guided-nav ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.guided-nav li {
+  margin: 0.1rem 0;
+}
+
+.guided-nav a {
+  display: inline-block;
+  text-decoration: none;
+  color: #0b4fa2;
+  font-size: 0.84rem;
+  line-height: 1.35;
+  padding: 0.12rem 0;
+}
+
+.guided-nav a:hover {
+  text-decoration: underline;
+}
+
+.guided-active {
+  font-weight: 700;
+  color: #0550ae;
+}
+
+.guided-external {
+  color: #57606a;
+  font-size: 0.78rem;
+}
+
+.guided-empty {
+  color: #57606a;
+  font-size: 0.82rem;
+}
+
+.guided-sidebar details {
+  border: none;
+  margin: 0.1rem 0;
+  padding: 0;
+}
+
+.guided-sidebar summary {
+  cursor: pointer;
+  font-size: 0.82rem;
+  font-weight: 600;
+  color: #3d4c63;
+  list-style: none;
+  padding: 0.1rem 0;
+}
+
+.guided-sidebar summary::-webkit-details-marker {
+  display: none;
+}
+
+.guided-sidebar summary::before {
+  content: '▶ ';
+  font-size: 0.7em;
+}
+
+.guided-sidebar details[open] > summary::before {
+  content: '▼ ';
+}
+
+.quick-jumps {
+  margin: 0 0 1rem;
+  border: 1px solid #d0d7de;
+  border-radius: 10px;
+  background: #f6f8fa;
+  padding: 0.7rem 0.85rem;
+}
+
+.quick-jumps-title {
+  margin: 0 0 0.45rem;
+  font-size: 0.95rem;
+  border: none;
+  padding: 0;
+}
+
+.quick-jumps-list {
+  margin: 0;
+  padding-left: 1rem;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 0.3rem 0.8rem;
+}
+
+.quick-jumps-list li {
+  margin: 0;
+}
+
+.quick-jumps-list a {
+  color: #0550ae;
+  text-decoration: none;
+  font-size: 0.85rem;
+}
+
+.quick-jumps-list a:hover {
+  text-decoration: underline;
+}
+
+.progression-nav {
+  margin-top: 2.2rem;
+  padding-top: 1rem;
+  border-top: 1px solid #d0d7de;
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 0.75rem;
+}
+
+.progression-link {
+  display: block;
+  border: 1px solid #d0d7de;
+  border-radius: 8px;
+  background: #ffffff;
+  padding: 0.6rem 0.75rem;
+  text-decoration: none;
+  min-height: 3.6rem;
+}
+
+.progression-link:hover {
+  border-color: #8c959f;
+  background: #f6f8fa;
+}
+
+.progression-label {
+  display: block;
+  font-size: 0.74rem;
+  color: #57606a;
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+  margin-bottom: 0.2rem;
+}
+
+.progression-title {
+  display: block;
+  color: #0550ae;
+  font-size: 0.9rem;
+  line-height: 1.3;
+  font-weight: 600;
+}
+
+.progression-disabled {
+  opacity: 0.62;
+  pointer-events: none;
+}
+
+.companion-media {
+  margin: 0 0 1.2rem;
+  border: 1px solid #d0d7de;
+  border-radius: 10px;
+  background: #f8fafc;
+  padding: 0.8rem 0.9rem;
+}
+
+.companion-title {
+  margin: 0;
+  font-size: 1rem;
+  border: none;
+  padding: 0;
+}
+
+.companion-intro {
+  margin: 0.35rem 0 0.7rem;
+  font-size: 0.86rem;
+  color: #57606a;
+}
+
+.companion-card {
+  border: 1px solid #d0d7de;
+  border-radius: 8px;
+  background: #ffffff;
+  padding: 0.7rem;
+  margin: 0.65rem 0 0;
+}
+
+.companion-card h3 {
+  margin: 0;
+  font-size: 0.95rem;
+  border: none;
+  padding: 0;
+}
+
+.companion-note {
+  margin: 0.35rem 0 0.5rem;
+  color: #57606a;
+  font-size: 0.82rem;
+}
+
+.companion-player {
+  width: 100%;
+  margin: 0.2rem 0 0.35rem;
+}
+
+.companion-links {
+  margin: 0;
+  font-size: 0.82rem;
+}
+
+.companion-links a {
+  text-decoration: none;
+}
+
+.companion-links a:hover {
+  text-decoration: underline;
+}
+
+.companion-preview {
+  margin: 0.55rem 0 0;
+  border: 1px solid #d0d7de;
+  border-radius: 6px;
+  padding: 0.45rem 0.55rem;
+}
+
+.companion-preview summary {
+  cursor: pointer;
+  font-size: 0.82rem;
+  font-weight: 600;
+}
+
+.companion-preview p {
+  margin: 0.45rem 0 0;
+  font-size: 0.84rem;
+}
+
+.onpage-nav {
+  margin: 0 0 1.3rem;
+  padding: 0.7rem 0.85rem;
+  border: 1px solid #d0d7de;
+  border-radius: 8px;
+  background: #f8fafc;
+}
+
+.onpage-title {
+  margin: 0 0 0.45rem;
+  font-size: 0.95rem;
+  border: none;
+  padding: 0;
+}
+
+.onpage-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.onpage-item {
+  margin: 0.12rem 0;
+}
+
+.onpage-item a {
+  text-decoration: none;
+  font-size: 0.84rem;
+  line-height: 1.35;
+}
+
+.onpage-item a:hover {
+  text-decoration: underline;
+}
+
+.onpage-sub {
+  margin-left: 0.9rem;
+}
+
+@media (max-width: 980px) {
+  .guided-sidebar {
+    position: static;
+    max-height: none;
+  }
+
+  .progression-nav {
+    grid-template-columns: 1fr;
+  }
+}
+
 /* Improve focus visibility for keyboard navigation */
 a:focus-visible,
 button:focus-visible,
@@ -749,6 +1656,88 @@ textarea:focus-visible {
     background-color: #0d1117;
     color: #e6edf3;
   }
+
+  .guided-sidebar {
+    background: #111827;
+    border-color: #2e3744;
+  }
+
+  .guided-progress,
+  .onpage-nav,
+  .companion-media,
+  .quick-jumps {
+    background: #111827;
+    border-color: #2e3744;
+  }
+
+  .companion-card,
+  .companion-preview {
+    background: #111827;
+    border-color: #2e3744;
+  }
+
+  .guided-intro,
+  .guided-empty,
+  .guided-external,
+  .guided-sidebar summary,
+  .guided-progress-copy,
+  .guided-progress-percent,
+  .companion-intro,
+  .companion-note {
+    color: #9ca3af;
+  }
+
+  .guided-nav a {
+    color: #8ec5ff;
+  }
+
+  .guided-active {
+    color: #d2e7ff;
+  }
+
+  .guided-progress-track {
+    background: #233146;
+  }
+
+  .guided-progress-fill {
+    background: linear-gradient(90deg, #2ea66a, #4bc571);
+  }
+
+  .guided-resume-link,
+  .onpage-item a,
+  .onpage-title,
+  .quick-jumps-title,
+  .quick-jumps-list a,
+  .companion-title,
+  .companion-card h3,
+  .companion-links a,
+  .companion-preview summary,
+  .companion-preview p {
+    color: #d2e7ff;
+  }
+
+  .progression-nav {
+    border-top-color: #2e3744;
+  }
+
+  .progression-link {
+    border-color: #2e3744;
+    background: #111827;
+  }
+
+  .progression-link:hover {
+    border-color: #465368;
+    background: #172134;
+  }
+
+  .progression-label {
+    color: #9ca3af;
+  }
+
+  .progression-title {
+    color: #d2e7ff;
+  }
+
   .markdown-body {
     color: #e6edf3;
   }
@@ -848,6 +1837,7 @@ textarea:focus-visible {
 
 /* Print styles */
 @media print {
+  .guided-sidebar,
   .breadcrumb,
   footer,
   .skip-link {
@@ -1078,6 +2068,14 @@ function buildAll() {
       convertedCount++;
     }
   });
+
+  // If no dedicated homepage source exists, keep "Home" links functional.
+  const rootIndexPath = path.join(outputDir, 'index.html');
+  const rootReadmePath = path.join(outputDir, 'README.html');
+  if (!fs.existsSync(rootIndexPath) && fs.existsSync(rootReadmePath)) {
+    writeRedirectPage(rootIndexPath, './README.html');
+    console.log('✓ Added alias: index.html -> README.html');
+  }
 
   // Write search index JSON
   buildSearchIndex(outputDir);

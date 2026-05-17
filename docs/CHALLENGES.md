@@ -4,6 +4,8 @@ Welcome to the Challenge Hub - your guide to all 16 core challenges and 5 bonus 
 
 The challenges are the practice path for the course. Each one asks you to do a small piece of real GitHub work, leave evidence of what you did, and then close the issue so the next challenge can open. The goal is not speed. The goal is to build a contributor rhythm you can trust: orient yourself, make the move, verify the result, and ask for help with clear facts when something feels off.
 
+Prefer the exact issue-style flow? Open the consolidated issue walkthrough: [Issue-Style Challenge Walkthrough](../work.html).
+
 ## How Challenges Work
 
 Start in your private Learning Room repository, not in the public curriculum repository. Open the **Issues** tab, find the challenge issue assigned to you, and read the issue body before acting. Each issue explains the task, the evidence prompt, and any buddy check or automated check that applies.
@@ -388,7 +390,7 @@ Every challenge issue includes an "If you get stuck" section with common problem
 - Ask your facilitator
 - Read the relevant chapter in the [Git Going with GitHub curriculum](https://github.com/Community-Access/git-going-with-github/tree/main/docs)
 - Check the [solution reference directory](https://github.com/Community-Access/git-going-with-github/tree/main/docs/solutions)
-- Use the [Learning Room solutions index](../learning-room/docs/solutions/README.md) for quick challenge-by-challenge references
+- Use the [Learning Room solutions index](https://github.com/Community-Access/git-going-with-github/blob/main/docs/solutions/) for quick challenge-by-challenge references
 
 When you ask for help, include what you were trying to do, where you were in the repository, what happened, and what you expected. That gives your buddy, facilitator, or bot enough context to help you quickly.
 

@@ -1578,7 +1578,7 @@ Think of Copilot as a fast typist who has read a lot of code. It can reproduce p
 
 The right relationship with Copilot is the one you have with a first draft. You would never submit a first draft without reading it, testing it, and revising it. Treat every Copilot suggestion the same way.
 
-For more on working with AI tools responsibly, see [Chapter 20](20-build-your-agent.md) on building and evaluating your own agent, and [Chapter 21](21-next-steps.md) for continued learning resources.
+For more on working with AI tools responsibly, see [Chapter 20](20-build-your-agent.md) on building and evaluating your own agent, and [Chapter 22: What Comes Next](22-what-comes-next.md) for continued learning resources.
 
 ### Learning Cards: Critically Evaluating AI Output
 

@@ -1,6 +1,6 @@
 # Appendix M: Accessibility Standards Reference
 >
-> **Listen to Episode 20:** [Accessibility Standards Reference](../admin/PODCASTS.md) - a conversational audio overview of this chapter. Listen before reading to preview the concepts, or after to reinforce what you learned.
+> **Listen to Episode 20:** [Accessibility Standards Reference](https://lp.csedesigns.com/ggg/PODCASTS.html) - a conversational audio overview of this chapter. Listen before reading to preview the concepts, or after to reinforce what you learned.
 
 > **Reference companion to:** [Chapter 08: Open Source Culture](08-open-source-culture.md) | Also relevant: [Chapter 12](12-vscode-accessibility.md)
 >

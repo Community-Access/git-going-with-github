@@ -1,6 +1,6 @@
 # Appendix C: Markdown and GitHub Flavored Markdown - Complete Guide
 >
-> **Listen to Episode 22:** [GitHub Flavored Markdown](../admin/PODCASTS.md) - a conversational audio overview of this chapter. Listen before reading to preview the concepts, or after to reinforce what you learned.
+> **Listen to Episode 22:** [GitHub Flavored Markdown](https://lp.csedesigns.com/ggg/PODCASTS.html) - a conversational audio overview of this chapter. Listen before reading to preview the concepts, or after to reinforce what you learned.
 
 > **Reference companion to:** [Chapter 06: Working with Pull Requests](06-working-with-pull-requests.md) | Also relevant: [Chapter 12](12-vscode-accessibility.md), [Chapter 17](17-issue-templates.md)
 >

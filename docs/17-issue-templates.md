@@ -87,8 +87,8 @@ Chapter 17 is a **template design and implementation chapter** focused on struct
 **Estimated time:** 20-30 minutes.
 
 Use this worked example as a guide:
-- **Source:** [`.github/ISSUE_TEMPLATE/workshop-registration.yml`](../.github/ISSUE_TEMPLATE/workshop-registration.yml)
-- **Remix sample:** [`learning-room/docs/samples/challenge-14-registration-remix-example.yml`](../learning-room/docs/samples/challenge-14-registration-remix-example.yml)
+- **Source:** [`.github/ISSUE_TEMPLATE/workshop-registration.yml`](https://github.com/Community-Access/git-going-with-github/blob/main/.github/ISSUE_TEMPLATE/workshop-registration.yml)
+- **Remix sample:** [`docs/samples/challenge-14-registration-remix-example.yml`](https://github.com/Community-Access/git-going-with-github/blob/main/docs/samples/challenge-14-registration-remix-example.yml)
 
 What changes and what stays the same:
 - Keep: the YAML skeleton (`name`, `description`, `title`, `labels`, `body`)

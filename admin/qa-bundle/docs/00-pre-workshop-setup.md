@@ -4,7 +4,7 @@
 **Table: Accessibility improvements for screen reader users**
 # Pre-Workshop Setup - GIT Going with GitHub
 >
-> **Listen to Episode 1:** [Pre-Workshop Setup](../admin/PODCASTS.md) - a conversational audio overview of this chapter. Listen before reading to preview the concepts, or after to reinforce what you learned.
+> **Listen to Episode 1:** [Pre-Workshop Setup](https://lp.csedesigns.com/ggg/PODCASTS.html) - a conversational audio overview of this chapter. Listen before reading to preview the concepts, or after to reinforce what you learned.
 
 > **Related appendices:** [Appendix D: Git Authentication](appendix-d-git-authentication.md) | [Appendix Y: Workshop Materials](appendix-y-workshop-materials.md) | [Appendix Z: GitHub Skills](appendix-z-github-skills.md)
 > **Authoritative sources:** [GitHub Docs: Create an account](https://docs.github.com/en/get-started/start-your-journey/creating-an-account-on-github) | [GitHub Docs: Set up Git](https://docs.github.com/en/get-started/getting-started-with-git/set-up-git)
