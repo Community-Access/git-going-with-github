@@ -11,31 +11,54 @@ body:
 
         **Chapter:** [Ch07: Merge Conflicts](https://github.com/Community-Access/git-going-with-github/blob/main/docs/07-merge-conflicts.md)
 
-        **What you will do:** Your facilitator will trigger a merge conflict in your PR. You will resolve it by editing the file, removing conflict markers, and keeping the right content.
+        **What you will do:** Your facilitator will intentionally trigger a merge conflict in your PR. You will resolve it by identifying conflict markers, choosing the right content, and cleaning up the markers.
 
-        ### What are conflict markers?
+        **Why this matters:** Merge conflicts happen in real teamwork. Learning to resolve them calmly is a key professional skill.
 
-        When Git cannot automatically merge changes, it inserts markers like this:
+        ### Understanding conflict markers
+
+        When Git cannot automatically merge code, it marks the problem with special markers:
 
         ```
         <<<<<<< HEAD
-        The version currently on the target branch
+        The version currently on main branch
         =======
         Your version from your branch
         >>>>>>> learn/your-username
         ```
 
-        Your job: decide what the final version should look like, then **delete all three marker lines** (`<<<<<<<`, `=======`, `>>>>>>>`).
+        **Your job:** Decide which version is right (or combine them), then **DELETE all three marker lines** (the `<<<<<<<`, `=======`, `>>>>>>>` lines). The final file should have NO markers and have actual, meaningful code.
 
-        ### Instructions
+        ### Step-by-step resolution
 
-        1. Wait for your facilitator to trigger the conflict (they will tell you when).
-        2. Open your PR -- you will see a message about conflicts.
-        3. Select **Resolve conflicts** (or edit the file directly on your branch).
-        4. Find the conflict markers in the file.
-        5. Decide which content to keep (or combine both).
-        6. Delete all conflict marker lines.
-        7. Commit the resolution.
+        **Step 1: Look at your PR**
+        1. Go to your **Pull requests** tab
+        2. Click on your PR
+        3. You should see a message: "Can't automatically merge" or "This branch has conflicts..."
+        4. Look for a button: **Resolve conflicts** (or "Resolve")
+        5. Click it
+
+        **Step 2: Find the conflict markers**
+        1. GitHub will show the file with conflict markers highlighted
+        2. Look for lines starting with `<<<<<<<`, `=======`, `>>>>>>>`
+        3. Read both versions carefully
+
+        **Step 3: Choose your version**
+        You have three options:
+        - Keep the **main branch** version (delete everything from `<<<<<<<` to `=======` inclusive, keep `=======` to `>>>>>>>`)
+        - Keep **your branch** version (keep `<<<<<<<` to `=======` exclusive, delete `=======` to `>>>>>>>`)
+        - **Combine both** (keep parts of both, delete all marker lines)
+        - Ask your facilitator which is correct
+
+        **Step 4: Clean up**
+        1. Delete the marker lines: `<<<<<<<`, `=======`, `>>>>>>>`
+        2. The final file should have NO conflict markers
+        3. The final file should have meaningful, correct code
+
+        **Step 5: Mark as resolved**
+        1. At the bottom, click **Mark as resolved**
+        2. Commit the resolution
+        3. Your PR should now be mergeable
 
         **Autograded:** The autograder will check that no conflict markers remain in your file and that the file has meaningful content.
 
