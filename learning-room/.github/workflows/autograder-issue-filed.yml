@@ -42,9 +42,43 @@ jobs:
         uses: actions/github-script@v7
         with:
           script: |
+            const issue = context.payload.issue;
+            const title = (issue.title || '').trim();
+            const bodyText = (issue.body || '').trim();
+            const genericTitlePattern = /^(fix|bug|update|todo|fix\s+todo|update\s+file)$/i;
+            const hasSpecificTitle = title.length >= 12 && !genericTitlePattern.test(title);
+
+            const hasWhatLine = /^\s*what\s*:/im.test(bodyText);
+            const hasWhereLine = /^\s*where\s*:/im.test(bodyText);
+            const hasWhyLine = /^\s*why\s*:/im.test(bodyText);
+            const hasFileReference = /\bdocs\/welcome\.md\b/i.test(bodyText);
+            const hasTodoReference = /\bTODO\b/i.test(bodyText);
+
+            const missing = [];
+            if (!hasSpecificTitle) {
+              missing.push('Use a specific, descriptive title (not generic like "Bug" or "Fix TODO").');
+            }
+            if (!hasWhatLine) {
+              missing.push('Add a `What:` line describing what must change.');
+            }
+            if (!hasWhereLine) {
+              missing.push('Add a `Where:` line that includes `docs/welcome.md`.');
+            }
+            if (!hasWhyLine) {
+              missing.push('Add a `Why:` line explaining why the change matters.');
+            }
+            if (!hasFileReference) {
+              missing.push('Reference `docs/welcome.md` in the issue description.');
+            }
+            if (!hasTodoReference) {
+              missing.push('Mention the `TODO` you found in `docs/welcome.md`.');
+            }
+
+            const passesInstructionCheck = missing.length === 0;
             const count = parseInt('${{ steps.count.outputs.count }}', 10);
             const isFirst = count === 1;
-            const body = isFirst
+            const body = passesInstructionCheck
+              ? (isFirst
               ? [
                   '## Challenge 2: First issue filed!',
                   '',
@@ -60,9 +94,51 @@ jobs:
                   '## Challenge 2: Another issue filed',
                   '',
                   'You have now filed ' + count + ' issues in this Learning Room. Keep going!'
+                ].join('\n'))
+              : [
+                  '## Challenge 2: Needs revision',
+                  '',
+                  'Thanks for filing an issue. To complete Challenge 2, update this issue so it follows the required format:',
+                  '',
+                  '- Use a specific title (not generic).',
+                  '- Include lines for `What:`, `Where:`, and `Why:`.',
+                  '- Mention `docs/welcome.md` and the `TODO` you found.',
+                  '',
+                  '### Missing items',
+                  ...missing.map(item => '- ' + item),
+                  '',
+                  'After editing the issue, your facilitator can re-run the Challenge 2 check from Actions.'
                 ].join('\n');
             const MARKER = '## Challenge 2:';
             try {
+              const labelsToAdd = passesInstructionCheck ? ['challenge-2-complete'] : ['challenge-2-needs-revision'];
+              const labelsToRemove = passesInstructionCheck ? ['challenge-2-needs-revision'] : ['challenge-2-complete'];
+
+              try {
+                await github.rest.issues.addLabels({
+                  owner: context.repo.owner,
+                  repo: context.repo.repo,
+                  issue_number: context.issue.number,
+                  labels: labelsToAdd
+                });
+              } catch (labelErr) {
+                console.log('Could not add Challenge 2 status label:', labelErr.message);
+              }
+
+              for (const labelName of labelsToRemove) {
+                try {
+                  await github.rest.issues.removeLabel({
+                    owner: context.repo.owner,
+                    repo: context.repo.repo,
+                    issue_number: context.issue.number,
+                    name: labelName
+                  });
+                } catch (removeErr) {
+                  // Ignore when label does not exist yet.
+                  console.log('Label remove skipped:', removeErr.message);
+                }
+              }
+
               const { data: comments } = await github.rest.issues.listComments({
                 owner: context.repo.owner,
                 repo: context.repo.repo,
