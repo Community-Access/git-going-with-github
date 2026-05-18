@@ -612,7 +612,7 @@ This is the professional Git workflow you will use for the rest of your career:
 1. Open VS Code
 2. Press Ctrl+Shift+P (or Cmd+Shift+P on Mac) to open the Command Palette
 3. Type `Git: Clone`
-4. Paste this repository URL: `https://github.com/Community-Access/learning-room.git`
+4. Paste this repository URL: `https://github.com/Community-Access/vscode-sci-fi-themes.git`
 5. Choose a folder on your computer where you want to save it
 6. Wait for it to clone (you should see it in the file explorer)
 
