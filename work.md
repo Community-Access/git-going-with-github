@@ -1081,19 +1081,37 @@ Source template: [bonus-a-improve-agent.yml](learning-room/.github/ISSUE_TEMPLAT
 
 **For students who:** Finish early and want to contribute more to the accessibility-agents ecosystem.
 
-**What you will do:** Choose an existing agent in the accessibility-agents repository, identify something that could be better, and open a PR with your improvement.
+**What you will do:** Choose an existing agent, improve its documentation, and open a PR back to the main repo.
 
-### Instructions
+### Step-by-step
 
-1. Browse the agents in the [accessibility-agents repository](https://github.com/Community-Access/accessibility-agents).
-2. Pick one that interests you and read its `.agent.md` file carefully.
-3. Identify an improvement. Ideas:
-   - Add a missing guardrail
-   - Clarify a responsibility that is vague
-   - Fix a typo or improve the description
-   - Add a new responsibility that fits the agent's purpose
-4. Make the change on your fork (you already forked this in Challenge 16).
-5. Open a pull request explaining what you improved and why.
+**Step 1: Pick an agent (5 min)**
+1. Go to github.com/Community-Access/accessibility-agents
+2. Browse agent folders
+3. Read 2-3 `.agent.md` files
+4. Choose one to improve
+
+**Step 2: Identify an improvement (5 min)**
+Look for:
+- Vague responsibility that needs clarification
+- Missing guardrail (what it should NOT do)
+- Typo or unclear description
+- New responsibility that fits
+
+**Step 3: Make the improvement (10 min)**
+1. On your fork (from Challenge 16), create branch `agent-improve/AGENT-NAME`
+2. Edit the agent's `.agent.md` file
+3. Make your improvement clear and focused
+4. Commit: `Improve [agent name]: [specific improvement]`
+5. Push to your fork
+
+**Step 4: Open cross-fork PR (5 min)**
+1. Go to Community-Access/accessibility-agents
+2. Click "New pull request"
+3. Set base to Community-Access/accessibility-agents main
+4. Set compare to your-fork agent-improve branch
+5. Title: `Improve [agent]: [specific improvement]`
+6. Explain why this makes the agent better
 
 ### Improvement criteria
 
@@ -1110,12 +1128,30 @@ Source template: [bonus-b-document-journey.yml](learning-room/.github/ISSUE_TEMP
 
 **For students who:** Enjoy writing and reflection.
 
-**What you will do:** Write a structured reflection about your workshop experience, using proper Markdown formatting.
+**What you will do:** Write a reflection document about your workshop experience and what you learned.
 
-### Instructions
+### Step-by-step
 
-1. Create a new file on your branch: `reflections/YOUR-USERNAME.md`
-2. Use this structure:
+**Step 1: Create your file (2 min)**
+1. On your branch, create: `reflections/YOUR-USERNAME.md`
+
+**Step 2: Document key sections (20 min)**
+Write about:
+- **What I learned:** Your top 3 GitHub skills
+- **How I felt:** Surprising? Challenging? Fun?
+- **My biggest win:** One accomplishment you're proud of
+- **What's next:** How will you use these skills?
+- **Advice to next cohort:** One thing you'd tell future students
+
+**Step 3: Format properly (5 min)**
+- Use markdown headings (##, ###)
+- Use lists for clarity
+- Keep it 300-500 words
+
+**Step 4: Share your story (5 min)**
+- Commit to your branch
+- Push to GitHub
+- Optional: Share in #wins or discussions
 
 ```markdown
 # My Git Going with GitHub Journey
