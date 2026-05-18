@@ -188,7 +188,7 @@ Before moving on, scan the [Challenge 9 solution reference](https://github.com/C
 
 **Chapters:** Ch11-14 | **Evidence:** Comment | **Autograded**
 
-Day 2 moves the same contribution workflow onto your computer. You clone your Learning Room repository, create a branch locally, edit a file, commit, and push the branch back to GitHub.
+Day 2 moves the same contribution workflow onto your computer. You clone the sci-fi themes repository, create a branch locally, edit `README.md`, commit, and push the branch back to GitHub.
 
 **CLI best practices for this challenge:**
 
@@ -199,9 +199,9 @@ Day 2 moves the same contribution workflow onto your computer. You clone your Le
 
 **What to do:**
 
-- Clone your Learning Room repository to your computer with VS Code, GitHub Desktop, or the command line
+- Clone `https://github.com/Community-Access/vscode-sci-fi-themes.git` to your computer with VS Code, GitHub Desktop, or the command line
 - Create a branch named `fix/YOUR-USERNAME`
-- Edit a file in `docs/`
+- Edit `README.md`
 - Commit and push the branch to GitHub
 
 **Evidence to post:** Share your branch name and a short note about how you confirmed the push reached GitHub. The autograder verifies a commit on a non-default branch.
@@ -214,7 +214,7 @@ The [Challenge 10 solution reference](https://github.com/Community-Access/git-go
 
 **Chapters:** Ch14-15 | **Evidence:** Comment
 
-This challenge proves that the pull request pattern is the same whether the edit started in the browser or on your computer. You push a local branch, open a PR, and explain the change for reviewers.
+This challenge proves that the pull request pattern is the same whether the edit started in the browser or on your computer. You push a local branch to the sci-fi themes repository, open a PR, and explain the change for reviewers.
 
 **CLI best practices for this challenge:**
 
@@ -225,7 +225,7 @@ This challenge proves that the pull request pattern is the same whether the edit
 **What to do:**
 
 - Open a PR from `fix/YOUR-USERNAME` to `main`
-- Write a title and description that describe the change clearly
+- Write a title and description that describe your `README.md` change clearly
 - Notice the familiar shape: branch, compare, title, body, submit
 
 **Evidence to post:** Link to the PR and identify what changed between the branch and `main`.
