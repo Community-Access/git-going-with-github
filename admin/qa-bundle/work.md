@@ -401,7 +401,7 @@ Source template: [challenge-07-merge-conflict.yml](learning-room/.github/ISSUE_T
 
 **Chapter:** [Ch07: Merge Conflicts](https://github.com/Community-Access/git-going-with-github/blob/main/docs/07-merge-conflicts.md)
 
-**What you will do:** Your facilitator will intentionally trigger a merge conflict in your PR. You will resolve it by identifying conflict markers, choosing the right content, and cleaning up the markers.
+**What you will do:** When this challenge was opened, the workshop bot automatically committed a conflicting change to `docs/welcome.md` on `main`. You will resolve it by identifying conflict markers, choosing the right content, and cleaning up the markers.
 
 **Why this matters:** Merge conflicts happen in real teamwork. Learning to resolve them calmly is a key professional skill.
 
@@ -422,11 +422,14 @@ Your version from your branch
 ### Step-by-step resolution
 
 **Step 1: Look at your PR**
+
+> The workshop bot automatically committed a change to `docs/welcome.md` on `main` when this issue was created. If you also edited that file on your branch in Challenge 5, your PR will now show a conflict. It may take up to a minute for GitHub to update the PR status.
+
 1. Go to your **Pull requests** tab
 2. Open your PR
-3. You should see a message: "Can't automatically merge" or "This branch has conflicts..."
-4. Look for a button: **Resolve conflicts** (or "Resolve")
-5. Select it
+3. Look for a message: "This branch has conflicts that must be resolved" near the merge section
+4. Look for a button labeled **Resolve conflicts** (or "Resolve")
+5. Select it to open the conflict editor
 
 **Step 2: Find the conflict markers**
 1. GitHub will show the file with conflict markers highlighted
