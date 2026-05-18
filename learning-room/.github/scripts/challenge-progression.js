@@ -343,16 +343,51 @@ async function createChallenge(challengeNumber) {
   }
 }
 
+async function seedMergeConflict() {
+  const filePath = 'docs/welcome.md';
+  log('INFO', 'Seeding merge conflict for Challenge 7...');
+  try {
+    const fileData = await githubRequest(`/repos/${owner}/${repo}/contents/${filePath}?ref=main`);
+    const currentContent = Buffer.from(fileData.content.replace(/\n/g, ''), 'base64').toString('utf8');
+    const todoPattern = /\[TODO: Add a paragraph explaining that contributors come from all backgrounds[^\]]+\]/;
+    const replacement = 'Contributors come from many backgrounds, skill levels, countries, and access needs. People who use assistive technology bring practical insight that helps projects work better for everyone.';
+    if (!todoPattern.test(currentContent)) {
+      log('INFO', 'TODO placeholder not found on main — conflict already seeded or student replaced it. Skipping.');
+      return;
+    }
+    const newContent = currentContent.replace(todoPattern, replacement);
+    const encoded = Buffer.from(newContent).toString('base64');
+    await githubRequest(`/repos/${owner}/${repo}/contents/${filePath}`, {
+      method: 'PUT',
+      body: {
+        message: 'Workshop: seed merge conflict for Challenge 7 practice',
+        content: encoded,
+        sha: fileData.sha,
+        branch: 'main'
+      }
+    });
+    log('INFO', 'Merge conflict seeded successfully on main.');
+    console.log('Merge conflict seeded on main for Challenge 7.');
+  } catch (error) {
+    log('WARN', `Could not seed merge conflict: ${error.message}. Students can still resolve manually.`);
+  }
+}
+
 const nextChallenge = getNextChallengeNumber();
 if (!nextChallenge) {
   log('INFO', 'No challenge to create for this event.');
   console.log('No challenge to create for this event.');
 } else {
   log('INFO', `Proceeding with Challenge ${nextChallenge}`);
-  createChallenge(nextChallenge).catch(error => {
-    log('ERROR', `Challenge progression failed: ${error.message}`);
-    log('ERROR', error.stack);
-    console.error(`FATAL: ${error.message}`);
-    process.exitCode = 1;
-  });
+  const afterCreate = nextChallenge === 7
+    ? () => seedMergeConflict()
+    : () => Promise.resolve();
+  createChallenge(nextChallenge)
+    .then(afterCreate)
+    .catch(error => {
+      log('ERROR', `Challenge progression failed: ${error.message}`);
+      log('ERROR', error.stack);
+      console.error(`FATAL: ${error.message}`);
+      process.exitCode = 1;
+    });
 }
