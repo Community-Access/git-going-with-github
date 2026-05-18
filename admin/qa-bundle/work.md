@@ -16,22 +16,22 @@ Source template: [challenge-01-find-your-way.yml](learning-room/.github/ISSUE_TE
 ### Step-by-step scavenger hunt
 
 **Task 1: Count files in the root**
-1. Make sure you are on the **Code** tab (click it at the top)
+1. Make sure you are on the **Code** tab (select it at the top)
 2. Look at the file/folder list
 3. Count how many items are showing (stop before the first folder)
 4. Write down this number
 
 **Task 2: Find an open issue**
-1. Click the **Issues** tab
-2. Look for issues with a green **Open** label
-3. Click on one to read it
+1. Select the **Issues** tab
+2. Look for issues with an **Open** label
+3. Open one to read it
 4. Write down its title
 
 **Task 3: Read welcome.md**
-1. Click the **Code** tab
+1. Select the **Code** tab
 2. Look for a folder named `docs/`
-3. Click to open it
-4. Find `welcome.md` and click it
+3. Open it
+4. Find `welcome.md` and select it
 5. Read the first paragraph (the opening sentence)
 6. Write down what it says
 
@@ -43,7 +43,7 @@ Source template: [challenge-01-find-your-way.yml](learning-room/.github/ISSUE_TE
 
 **Task 5: Read the README**
 1. On the **Code** tab, scroll down to find `README.md`
-2. Click it to open
+2. Select it to open
 3. Find the section that says "Who this workshop is for"
 4. Write down the answer
 
@@ -72,7 +72,7 @@ Source template: [challenge-02-first-issue.yml](learning-room/.github/ISSUE_TEMP
 
 #### Step 2: Create a new issue
 1. Go to the **Issues** tab at the top of the repository
-2. Click the green **New issue** button
+2. Select the **New issue** button
 3. You will see this template. Fill it out as described below.
 
 #### Step 3: Write the issue title
@@ -132,13 +132,13 @@ Source template: [challenge-03-conversation.yml](learning-room/.github/ISSUE_TEM
 #### Step 1: Find the peer-simulation issue
 1. Go to the **Issues** tab in this repository
 2. Look for an issue titled **"Peer Simulation: Welcome Link Needs Context"**
-3. Click to open it
+3. Open it
 
 **Alternative:** If your facilitator gave you access to a real buddy repository, you can comment on your buddy's Challenge 2 issue instead.
 
 #### Step 2: Write a comment on the issue
 1. Scroll to the bottom of the issue
-2. In the text field labeled "Leave a comment", click and start typing
+2. In the text field labeled "Leave a comment", place your cursor and start typing
 3. Write a **meaningful comment**. Examples of what to say:
    - "I see the same TODO on line 12. The welcome section really needs actual content."
    - "Great catch! This TODO is in docs/welcome.md where new people look first."
@@ -168,8 +168,8 @@ Hey @buddy-username, what do you think about this TODO?
 
 #### Step 4: Add a reaction
 1. Look at the top-right of the original issue (the one you're commenting on)
-2. Find the smiley face icon labeled "Add your reaction"
-3. Click it and choose a reaction (😀, 👍, ❤️, etc.)
+2. Find the reaction button labeled "Add your reaction"
+3. Open it and choose a reaction (😀, 👍, ❤️, etc.)
 4. This shows the issue author you care about their work
 
 #### Step 5: Submit your evidence
@@ -177,7 +177,7 @@ Hey @buddy-username, what do you think about this TODO?
 2. Paste the **URL of the comment you just left**
    - Go back to the issue you commented on
    - Find your comment
-   - Right-click on the comment timestamp (e.g., "just now" or "2 minutes ago")
+   - Open the comment timestamp menu (e.g., "just now" or "2 minutes ago")
    - Select "Copy link"
    - Paste it into the evidence field
 3. Answer: "What was helpful or interesting about the comment you left?"
@@ -197,20 +197,20 @@ Source template: [challenge-04-branch-out.yml](learning-room/.github/ISSUE_TEMPL
 ### Step-by-step instructions
 
 #### Step 1: Go to the Code tab
-1. Click the **Code** tab at the top of the learning-room repository
+1. Select the **Code** tab at the top of the learning-room repository
 2. You should see a list of files and folders
 
 #### Step 2: Find the branch dropdown
 1. Look for a button that says **"main"** (usually appears above the file list)
 2. This is the branch dropdown
-3. Click on it
+3. Open it
 
 #### Step 3: Create your branch
 1. In the text field that appears, type your branch name: `learn/YOUR-USERNAME`
    - Replace `YOUR-USERNAME` with your actual GitHub username (the one you use to log in)
    - Examples: `learn/octocat`, `learn/mona-lisa`, `learn/jessica-jones`
 2. You will see a button appear: **"Create branch: learn/YOUR-USERNAME from main"**
-3. Click that button
+3. Select that button
 4. Wait for the page to refresh
 
 #### Step 4: Confirm your branch was created
@@ -244,14 +244,14 @@ Source template: [challenge-05-make-your-mark.yml](learning-room/.github/ISSUE_T
 
 #### Step 1: Make sure you are on your branch
 1. Look at the branch dropdown (should show your branch name like `learn/YOUR-USERNAME`)
-2. If it says `main`, click the dropdown and select `learn/YOUR-USERNAME`
+2. If it says `main`, open the dropdown and select `learn/YOUR-USERNAME`
 3. You must be on your personal branch before making edits
 
 #### Step 2: Open the file to edit
 1. In the file list, find `docs/welcome.md`
-2. Click on it to open it
-3. Look at the top-right of the file - you should see a **pencil icon** (Edit button)
-4. Click the pencil icon
+2. Open it
+3. Look at the top of the file - you should see an **Edit** button
+4. Select the **Edit** button
 5. The file will now be in edit mode
 
 #### Step 3: Find and replace the TODO
@@ -297,9 +297,9 @@ so new contributors understand the workshop purpose immediately.
 
 #### Step 5: Commit the change
 1. At the bottom of the edit box, find the **Commit changes** button
-2. Click it
+2. Select it
 3. Select **Commit directly to `learn/YOUR-USERNAME` branch**
-4. Click **Commit changes** again
+4. Select **Commit changes** again
 5. Done! Your change is now committed to your branch
 
 ---
@@ -317,17 +317,17 @@ Source template: [challenge-06-first-pr.yml](learning-room/.github/ISSUE_TEMPLAT
 ### Step-by-step instructions
 
 #### Step 1: Go to the Pull Requests tab
-1. Click the **Pull requests** tab at the top of the repository
+1. Select the **Pull requests** tab at the top of the repository
 2. You will see existing pull requests
-3. Look for a green button labeled **New pull request**
-4. Click it
+3. Look for a button labeled **New pull request**
+4. Select it
 
 #### Step 2: Choose your branches
 You will see a comparison screen with two branch selectors:
 
 1. On the **left side** (base branch), make sure it says `main`
-2. On the **right side** (compare branch), click the dropdown and select `learn/YOUR-USERNAME`
-3. Wait a moment - GitHub will check for changes and show you a green button
+2. On the **right side** (compare branch), open the dropdown and select `learn/YOUR-USERNAME`
+3. Wait a moment - GitHub will check for changes and show you the pull request creation button
 
 #### Step 3: Write your PR title
 **WRITE THIS TEXT IN THE TITLE FIELD:**
@@ -368,7 +368,7 @@ Closes #2
 
 #### Step 5: Submit the PR
 1. Scroll to the bottom of the form
-2. Click the green **Create pull request** button
+2. Select the **Create pull request** button
 3. Your PR is now live! Others can see it and review it.
 
 ### PR description template
@@ -423,10 +423,10 @@ Your version from your branch
 
 **Step 1: Look at your PR**
 1. Go to your **Pull requests** tab
-2. Click on your PR
+2. Open your PR
 3. You should see a message: "Can't automatically merge" or "This branch has conflicts..."
 4. Look for a button: **Resolve conflicts** (or "Resolve")
-5. Click it
+5. Select it
 
 **Step 2: Find the conflict markers**
 1. GitHub will show the file with conflict markers highlighted
@@ -446,7 +446,7 @@ You have three options:
 3. The final file should have meaningful, correct code
 
 **Step 5: Mark as resolved**
-1. At the bottom, click **Mark as resolved**
+1. At the bottom, select **Mark as resolved**
 2. Commit the resolution
 3. Your PR should now be mergeable
 
@@ -474,13 +474,13 @@ Think about your workshop experience today and answer 2-3 of these questions (wr
 - How did a peer help you or learn from you?
 
 **Step 2: Find an issue to triage**
-1. Click the **Issues** tab
+1. Select the **Issues** tab
 2. Look for the **Peer Simulation: Welcome Link Needs Context** issue (or a real classmate's issue if you have buddy access)
-3. Click to open it
+3. Open it
 
 **Step 3: Add a label**
 1. In the issue, look on the right side for a section labeled **Labels**
-2. Click in that section
+2. Open that section
 3. You will see a dropdown menu of available labels
 4. Choose ONE label that describes this issue:
    - `bug` -- something is broken or not working
@@ -488,7 +488,7 @@ Think about your workshop experience today and answer 2-3 of these questions (wr
    - `documentation` -- about docs, help, or guidance
    - `good first issue` -- suitable for newcomers
    - `question` -- asking for clarification
-5. Click the label to apply it
+5. Select the label to apply it
 6. The label will appear in the issue
 
 **Step 4: Leave a comment (optional)**
@@ -497,7 +497,7 @@ Think about your workshop experience today and answer 2-3 of these questions (wr
    ```
    I added the "documentation" label because this issue helps new contributors understand the welcome section.
    ```
-3. Click **Comment**
+3. Select **Comment**
 
 **Step 5: Submit your evidence**
 1. In the form below, write:
@@ -519,7 +519,7 @@ Source template: [challenge-09-merge-day.yml](learning-room/.github/ISSUE_TEMPLA
 
 ### Pre-merge checklist
 
-Before clicking merge, make sure:
+Before merging, make sure:
 - ✅ Your PR has no conflict markers or merge conflicts (if it does, go back to Challenge 7)
 - ✅ Your PR description includes `Closes #XX` linking to your Challenge 2 issue
 - ✅ Your commit message is meaningful (describes what you changed)
@@ -528,31 +528,31 @@ Before clicking merge, make sure:
 ### Step-by-step merge
 
 **Step 1: Open your PR**
-1. Click the **Pull requests** tab
+1. Select the **Pull requests** tab
 2. Find your PR (the one you created in Challenge 6)
-3. Click it to open
+3. Select it to open
 
 **Step 2: Check the merge button**
 1. Look at the top of the PR
-2. You should see a button labeled **Merge pull request** in green
-3. If the button is gray and disabled, your facilitator may need to approve it or resolve conflicts first
+2. You should see a button labeled **Merge pull request**
+3. If the button is disabled, your facilitator may need to approve it or resolve conflicts first
 4. Ask your facilitator if needed
 
-**Step 3: Click to merge**
-1. Click the green **Merge pull request** button
-2. A dropdown may appear with merge strategy options - just click **Merge**
-3. You may see a confirmation message asking if you're sure - click **Confirm merge**
+**Step 3: Review and merge**
+1. Select the **Merge pull request** button
+2. A dropdown may appear with merge strategy options - just select **Merge**
+3. You may see a confirmation message asking if you're sure - select **Confirm merge**
 4. GitHub will show "Pull request successfully merged"
 
 **Step 4: Verify your changes are on main**
-1. Click the **Code** tab
+1. Select the **Code** tab
 2. Make sure the branch dropdown shows `main`
 3. Navigate to `docs/welcome.md`
 4. You should see your new welcome text (not the TODO)
 5. This confirms your change is now on the main branch for everyone to see
 
 **Step 5: Check that your issue was closed**
-1. Click the **Issues** tab
+1. Select the **Issues** tab
 2. Look at the issue you filed in Challenge 2
 3. It should show **Closed** (because your PR said `Closes #XX`)
 4. This automation keeps issues and PRs connected
@@ -628,17 +628,17 @@ This is the professional Git workflow you will use for the rest of your career:
 **Step 4: Commit your change**
 1. Press Ctrl+Shift+G to open the Source Control panel
 2. You will see your modified file listed
-3. Click the **+** next to it to **Stage** the change
+3. Select the **+** next to it to **Stage** the change
 4. In the message field at the top, write a commit message:
    ```
    fix: correct typo in chapter 5
    ```
-5. Press Ctrl+Enter (or click the checkmark) to **Commit**
+5. Press Ctrl+Enter (or select the checkmark) to **Commit**
 
 **Step 5: Push to GitHub**
 1. Press Ctrl+Shift+P again
 2. Type `Git: Push`
-3. You may see a prompt asking about "set upstream" - click **OK**
+3. You may see a prompt asking about "set upstream" - select **OK**
 4. Wait for the push to complete
 
 ---
@@ -647,20 +647,20 @@ This is the professional Git workflow you will use for the rest of your career:
 
 **Step 1: Clone the repository**
 1. Open GitHub Desktop
-2. Click File > Clone Repository
+2. Choose File > Clone Repository
 3. Paste the URL: `https://github.com/Community-Access/learning-room.git`
 4. Choose a folder location
-5. Click Clone
+5. Select Clone
 
 **Step 2: Create your feature branch**
-1. Click the **Branch** menu at the top
+1. Open the **Branch** menu at the top
 2. Select **New Branch**
 3. Name it: `fix/YOUR-USERNAME`
 4. Make sure "main" is selected as the base
-5. Click **Create Branch**
+5. Select **Create Branch**
 
 **Step 3: Edit a file**
-1. Click **Show in Explorer** to open the folder
+1. Select **Show in Explorer** to open the folder
 2. Navigate to `docs/`
 3. Open any file and make a small improvement (fix typo, improve wording, add comment)
 
@@ -668,10 +668,10 @@ This is the professional Git workflow you will use for the rest of your career:
 1. Go back to GitHub Desktop
 2. You should see your change listed
 3. At the bottom-left, write a commit message: `fix: correct typo in chapter 5`
-4. Click **Commit to fix/YOUR-USERNAME**
+4. Select **Commit to fix/YOUR-USERNAME**
 
 **Step 5: Push to GitHub**
-1. Click the **Publish branch** button (or **Push** if it's already published)
+1. Select the **Publish branch** button (or **Push** if it's already published)
 2. Wait for the push to complete
 
 ---
@@ -721,16 +721,16 @@ The PR creation step is the same. Git just moves you between locations.
 
 **Step 1: Check for a notification banner**
 1. Go to the learning-room repository on GitHub.com
-2. You may see a yellow/blue banner at the top saying "Your branch had recent pushes"
-3. If so, click **Compare & pull request** - this is a shortcut
+2. You may see a notification banner at the top saying "Your branch had recent pushes"
+3. If so, select **Compare & pull request** - this is a shortcut
 4. Skip to Step 3
 
 **Step 2: Or create PR manually**
-1. Click the **Pull requests** tab
-2. Click **New pull request**
+1. Select the **Pull requests** tab
+2. Select **New pull request**
 3. Set **base** to `main`
 4. Set **compare** to `fix/YOUR-USERNAME` (your Day 2 branch)
-5. Click **Create pull request**
+5. Select **Create pull request**
 
 **Step 3: Write your PR title**
 Write a clear, specific title about what you changed:
@@ -748,7 +748,7 @@ Clear documentation helps new developers learn faster.
 ```
 
 **Step 5: Submit**
-1. Click **Create pull request**
+1. Select **Create pull request**
 2. Your PR is now open for review!
 
 ---
@@ -768,39 +768,39 @@ Source template: [challenge-12-review.yml](learning-room/.github/ISSUE_TEMPLATE/
 **Step 1: Find the PR to review**
 1. Go to the **Pull requests** tab in this repository
 2. Look for the **Peer Simulation: Improve contribution guidance** PR
-3. Click to open it
+3. Open it
 4. Alternatively, if your facilitator gave you buddy access, open your buddy's Day 2 PR
 
 **Step 2: Go to the Files changed tab**
 1. At the top of the PR, you will see tabs: **Conversation**, **Commits**, **Files changed**, **Checks**
-2. Click **Files changed**
-3. You will see the exact lines that were added or removed (red = removed, green = added)
+2. Select **Files changed**
+3. You will see the exact lines that were added or removed (removed lines = deleted content, added lines = new content)
 
 **Step 3: Leave inline comment #1 (something positive)**
 1. Hover over a line of the changed code
 2. A comment button (+) will appear on the left
-3. Click it
+3. Select it
 4. Type a specific observation about something they did well:
    ```
    Great! This heading structure makes the section easy to scan.
    ```
-5. Click **Comment** (not "Start a review")
+5. Select **Comment** (not "Start a review")
 
 **Step 4: Leave inline comment #2 (constructive suggestion)**
 1. Hover over another line
-2. Click the comment button
+2. Select the comment button
 3. Type a suggestion:
    ```
    This could be clearer if you said "beginners" instead of "new people".
    ```
-4. Click the "Suggest changes" option if available (shows a +/- icon)
+4. Select the "Suggest changes" option if available (shows a plus/minus icon)
 5. This creates a code suggestion block showing your proposed fix
-6. Click **Add suggestion** or **Comment**
+6. Select **Add suggestion** or **Comment**
 
 **Step 5: Decide on a verdict**
 1. Scroll to the bottom of the **Files changed** tab
-2. Look for a green **Review changes** button
-3. Click it
+2. Look for a button labeled **Review changes**
+3. Select it
 4. Choose your verdict:
    - **Approve** = "This is good to merge!"
    - **Request changes** = "Please fix this before merging"
@@ -809,7 +809,7 @@ Source template: [challenge-12-review.yml](learning-room/.github/ISSUE_TEMPLATE/
    ```
    Nice work! The structure is clear and the content is welcoming. The one suggestion would improve clarity even more.
    ```
-6. Click **Submit review**
+6. Select **Submit review**
 
 ### Review checklist
 
@@ -859,7 +859,7 @@ Source template: [challenge-13-copilot.yml](learning-room/.github/ISSUE_TEMPLATE
 **Step 2: Use Copilot to improve it**
 1. In VS Code, open the same file locally (from Challenge 10)
 2. Select a paragraph that could be clearer
-3. Press Ctrl+Shift+A (or click the Copilot icon)
+3. Press Ctrl+Shift+A or use the Copilot button
 4. Write a prompt like:
    ```
    Improve the clarity of this paragraph for beginners
@@ -875,7 +875,7 @@ Ask these questions before accepting:
 - ⚠️ **Did the AI add things I didn't ask for?** (Watch for extra content)
 
 **Step 4: Accept, modify, or reject**
-- **Accept** -- Click "Accept" or manually copy the suggestion
+- **Accept** -- Select "Accept" or manually copy the suggestion
 - **Modify** -- Take the AI's suggestion but edit it to be better
 - **Reject** -- Keep the original, the AI's suggestion wasn't helpful
 
@@ -902,7 +902,7 @@ Ask these questions before accepting:
 **Accessibility regressions:**
 - Images without alt text
 - Complex tables instead of lists
-- Colors used to convey meaning (not accessible to colorblind users)
+- Use text labels instead of color to convey meaning
 
 ### The trust-verify-reject framework
 
@@ -1040,7 +1040,7 @@ Source template: [challenge-16-capstone.yml](learning-room/.github/ISSUE_TEMPLAT
 
 ### Phase 1: Fork and clone
 1. Go to https://github.com/Community-Access/accessibility-agents
-2. Click **Fork** to create your own copy
+2. Select **Fork** to create your own copy
 3. Clone your fork: `git clone https://github.com/YOUR-USERNAME/accessibility-agents.git`
 4. Create a branch: `git checkout -b agent/YOUR-USERNAME`
 
@@ -1067,7 +1067,7 @@ Source template: [challenge-16-capstone.yml](learning-room/.github/ISSUE_TEMPLAT
 
 ### Phase 4: Open cross-fork PR
 1. Go to your fork on GitHub
-2. Click **New pull request**
+2. Select **New pull request**
 3. Set base to `Community-Access/accessibility-agents` main
 4. Set compare to `YOUR-USERNAME/accessibility-agents` your-branch
 5. Write a title and description
@@ -1107,7 +1107,7 @@ Look for:
 
 **Step 4: Open cross-fork PR (5 min)**
 1. Go to Community-Access/accessibility-agents
-2. Click "New pull request"
+2. Select "New pull request"
 3. Set base to Community-Access/accessibility-agents main
 4. Set compare to your-fork agent-improve branch
 5. Title: `Improve [agent]: [specific improvement]`
@@ -1163,7 +1163,7 @@ Write about:
 [What moment stands out from Day 1? What surprised you?]
 
 ## Day 2 highlights
-[What clicked on Day 2 that did not make sense before?]
+[What made sense on Day 2 that did not make sense before?]
 
 ## What I built
 [Describe your capstone agent and why you chose that topic.]

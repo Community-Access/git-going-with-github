@@ -11,23 +11,57 @@ body:
 
         **Chapter:** [Ch17: Issue Templates](https://github.com/Community-Access/git-going-with-github/blob/main/docs/17-issue-templates.md)
 
-        **What you will do:** Create your own custom issue template by studying the existing registration template and remixing it for a new purpose.
+        **What you will do:** Create your own custom GitHub issue template by studying an example and remixing it for a new purpose.
 
-        ### Instructions
+        **Why this matters:** Templates shape how teams communicate. Well-designed templates make collaboration easier.
 
-        1. Study the sample template at `docs/samples/chapter-15-registration-remix-example.yml` to understand the YAML format.
-        2. Create a new file at `.github/ISSUE_TEMPLATE/YOUR-USERNAME-template.yml` on your branch.
-        3. Your template must include:
-           - A `name` field (required -- the autograder checks for this)
-           - A `description` field
-           - A `title` field with a prefix pattern
-           - At least one `textarea` or `input` field in the `body`
-        4. Choose your own topic. Ideas:
-           - Accessibility feedback form
-           - Workshop improvement suggestion
-           - Bug report for a specific tool
-           - Feature request with structured fields
-        5. Commit and push your template.
+        ### Step-by-step instructions
+
+        **Step 1: Study the example**
+        1. Go to **Code** tab
+        2. Navigate to `docs/samples/chapter-15-registration-remix-example.yml`
+        3. Read it carefully - this is the YAML template format GitHub uses
+        4. Notice the structure: `name`, `description`, `title`, `body`
+
+        **Step 2: Create your template file**
+        1. From Challenge 10, you have the repo cloned locally
+        2. On your `fix/YOUR-USERNAME` branch, navigate to `.github/ISSUE_TEMPLATE/`
+        3. Create a new file: `YOUR-USERNAME-template.yml`
+        4. Copy the structure from the example file
+
+        **Step 3: Design your template**
+        Choose a topic you care about and create fields for it. Examples:
+        - **Accessibility feedback:** Form for reporting accessibility barriers
+        - **Workshop improvement:** Structured suggestion form
+        - **Bug report:** Fields for steps to reproduce
+        - **Feature request:** Fields for problem and proposed solution
+
+        **Step 4: Required fields**
+        Your template MUST include:
+        ```yaml
+        name: "Your Template Name"
+        description: "One sentence describing when to use this"
+        title: "PREFIX: (@{username})"
+        labels: ["custom-template"]
+        body:
+          - type: markdown
+            attributes:
+              value: |
+                ## Your template heading
+                [Instructions here]
+          - type: textarea
+            id: feedback
+            attributes:
+              label: "Feedback"
+              placeholder: "Type here..."
+            validations:
+              required: true
+        ```
+
+        **Step 5: Commit and push**
+        1. Commit: `git commit -m "Add custom issue template for [your topic]"`
+        2. Push: `git push`
+        3. Create a PR on GitHub (like Challenge 11)
 
         ### Minimum YAML structure
 
