@@ -48,6 +48,49 @@ function Wait-ForRepositoryContent {
     throw "Repository content did not become available in time for $Repository."
 }
 
+function Get-RepositoryFileContent {
+    param(
+        [string]$Repository,
+        [string]$Path
+    )
+
+    $file = & gh api "repos/$Repository/contents/$Path" | ConvertFrom-Json
+    if ($LASTEXITCODE -ne 0 -or -not $file) {
+        throw "Could not read file '$Path' from $Repository."
+    }
+
+    return [System.Text.Encoding]::UTF8.GetString(
+        [System.Convert]::FromBase64String(($file.content -replace '\s', ''))
+    )
+}
+
+function Wait-ForIssue {
+    param(
+        [string]$Repository,
+        [string]$TitleContains,
+        [int]$MaxAttempts = 18,
+        [int]$DelaySeconds = 5
+    )
+
+    for ($attempt = 1; $attempt -le $MaxAttempts; $attempt++) {
+        $issues = & gh issue list -R $Repository --state all --limit 100 --json number,title
+        if ($LASTEXITCODE -eq 0 -and $issues) {
+            $parsed = $issues | ConvertFrom-Json
+            $match = @($parsed | Where-Object { $_.title -like "*$TitleContains*" }) | Select-Object -First 1
+            if ($match) {
+                return $match
+            }
+        }
+
+        if ($attempt -lt $MaxAttempts) {
+            Write-Host "Issue '$TitleContains' not found yet (attempt $attempt/$MaxAttempts). Retrying in $DelaySeconds seconds..."
+            Start-Sleep -Seconds $DelaySeconds
+        }
+    }
+
+    throw "Issue containing '$TitleContains' was not created in time for $Repository."
+}
+
 $template = "$Owner/$TemplateRepo"
 $smoke = "$Owner/$SmokeRepo"
 
@@ -78,6 +121,22 @@ try {
     }
     Invoke-CheckedCommand gh @('api', "repos/$smoke/contents/.github/ISSUE_TEMPLATE/challenge-01-find-your-way.yml")
     Invoke-CheckedCommand gh @('api', "repos/$smoke/contents/.github/scripts/challenge-progression.js")
+
+    Write-Host "Validating skills progression workflow create trigger and first-issue job..."
+    $skillsWorkflow = Get-RepositoryFileContent -Repository $smoke -Path '.github/workflows/skills-progression.yml'
+    if ($skillsWorkflow -notmatch '(?m)^\s{2}create:\s*$') {
+        throw "skills-progression.yml is missing 'create' trigger."
+    }
+    if ($skillsWorkflow -notmatch '(?m)^\s{2}create-first-issue:\s*$') {
+        throw "skills-progression.yml is missing create-first-issue job."
+    }
+    if ($skillsWorkflow -notmatch '(?m)^\s{4}if:\s+github\.event_name\s*==\s*''create''\s*$') {
+        throw "create-first-issue job is missing the create-event guard condition."
+    }
+
+    Write-Host "Waiting for auto-created first challenge issue..."
+    $firstIssue = Wait-ForIssue -Repository $smoke -TitleContains 'Welcome to Your First Challenge!'
+    Write-Host "Detected first issue #$($firstIssue.number): $($firstIssue.title)"
 
     Write-Host "Triggering Challenge 1 creation..."
     Invoke-CheckedCommand gh @('workflow', 'run', 'student-progression.yml', '-R', $smoke, '-f', 'start_challenge=1')
