@@ -45,8 +45,7 @@ function Get-ProfilePaths {
             'docs/setup-guide.md'
         )
         'core-day2' = @(
-            'docs/samples/copilot-improvement-before.md',
-            'docs/samples/peer-review-practice.md'
+            'docs/samples/copilot-improvement-before.md'
         )
         'automation-core' = @(
             '.github/workflows/pr-validation-bot.yml',
@@ -138,7 +137,7 @@ try {
             Invoke-CheckedCommand git @('checkout', "template/$TemplateRef", '--', $file)
         }
 
-        Invoke-CheckedCommand git @('add', '--', $selectedPaths)
+        Invoke-CheckedCommand git (@('add', '--') + $selectedPaths)
 
         $status = git status --short
         if (-not $status) {

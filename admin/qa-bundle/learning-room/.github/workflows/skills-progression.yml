@@ -16,6 +16,8 @@ on:
         description: "Action (check_progress, assign_next, reset)"
         required: false
         default: "check_progress"
+  create:
+    types: [repository]
 
 concurrency:
   group: skills-progression-${{ github.event.pull_request.number || github.event.issue.number || github.run_id }}
@@ -162,3 +164,47 @@ jobs:
             } catch (error) {
               console.error('Error awarding achievement:', error);
             }
+
+  create-first-issue:
+    name: Create First Challenge Issue
+    runs-on: ubuntu-latest
+    if: github.event_name == 'create'
+
+    steps:
+      - name: Create First Issue
+        uses: actions/github-script@v7
+        with:
+          script: |
+            const issueTitle = "Welcome to Your First Challenge!";
+            const issueBody = `
+            ## Your First Challenge
+            Welcome to the repository! Your first challenge is to complete the following steps:
+            - [ ] Clone this repository to your local machine.
+            - [ ] Make a small change to the README file.
+            - [ ] Commit and push your changes.
+            - [ ] Open a pull request to merge your changes.
+
+            Once you complete these steps, close this issue to unlock the next challenge!
+            `;
+
+            const { data: existingIssues } = await github.rest.issues.listForRepo({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              state: 'all',
+              labels: 'first-issue',
+              per_page: 100
+            });
+
+            const alreadyExists = existingIssues.some((issue) => issue.title === issueTitle);
+            if (alreadyExists) {
+              console.log('First challenge issue already exists. Skipping creation.');
+              return;
+            }
+
+            await github.rest.issues.create({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              title: issueTitle,
+              body: issueBody,
+              labels: ['challenge', 'first-issue']
+            });
