@@ -592,7 +592,7 @@ Source template: [challenge-10-go-local.yml](learning-room/.github/ISSUE_TEMPLAT
 
 **Chapters:** [Ch11: VS Code Interface](https://github.com/Community-Access/git-going-with-github/blob/main/docs/11-vscode-interface.md) | [Ch13: How Git Works](https://github.com/Community-Access/git-going-with-github/blob/main/docs/13-how-git-works.md) | [Ch14: Git in Practice](https://github.com/Community-Access/git-going-with-github/blob/main/docs/14-git-in-practice.md)
 
-**What you will do:** Clone the learning-room to your computer, create a feature branch, make an edit, commit locally, and push to GitHub.
+**What you will do:** Clone the sci-fi themes repo to your computer, create a feature branch, make an edit to the README.md file, commit locally, and push to GitHub.
 
 ### The local workflow
 
@@ -623,19 +623,17 @@ This is the professional Git workflow you will use for the rest of your career:
 4. Press Enter
 
 **Step 3: Edit a file**
-1. In the explorer on the left, navigate to `docs/`
-2. Open any file in the `docs/` folder
-3. Find a typo, improve a sentence, or add a helpful comment
-4. Make a small, meaningful change (just 1-2 lines)
+1. In the explorer on the left, open `README.md`
+2. Add a comment, fix a typo, or improve a sentence (just 1-2 lines)
 
 **Step 4: Commit your change**
 1. Press Ctrl+Shift+G to open the Source Control panel
 2. You will see your modified file listed
 3. Select the **+** next to it to **Stage** the change
-4. In the message field at the top, write a commit message:
-   ```
-   fix: correct typo in chapter 5
-   ```
+  4. In the message field at the top, write a commit message:
+    ```
+    docs: improve README wording
+    ```
 5. Press Ctrl+Enter (or select the checkmark) to **Commit**
 
 **Step 5: Push to GitHub**
@@ -651,7 +649,7 @@ This is the professional Git workflow you will use for the rest of your career:
 **Step 1: Clone the repository**
 1. Open GitHub Desktop
 2. Choose File > Clone Repository
-3. Paste the URL: `https://github.com/Community-Access/learning-room.git`
+3. Paste the URL: `https://github.com/Community-Access/vscode-sci-fi-themes.git`
 4. Choose a folder location
 5. Select Clone
 
@@ -664,13 +662,13 @@ This is the professional Git workflow you will use for the rest of your career:
 
 **Step 3: Edit a file**
 1. Select **Show in Explorer** to open the folder
-2. Navigate to `docs/`
-3. Open any file and make a small improvement (fix typo, improve wording, add comment)
+2. Open `README.md`
+3. Add a comment, fix a typo, or improve a sentence
 
 **Step 4: Commit your change**
 1. Go back to GitHub Desktop
 2. You should see your change listed
-3. At the bottom-left, write a commit message: `fix: correct typo in chapter 5`
+3. At the bottom-left, write a commit message: `docs: improve README wording`
 4. Select **Commit to fix/YOUR-USERNAME**
 
 **Step 5: Push to GitHub**
@@ -723,7 +721,7 @@ The PR creation step is the same. Git just moves you between locations.
 ### Step-by-step instructions
 
 **Step 1: Check for a notification banner**
-1. Go to the learning-room repository on GitHub.com
+1. Go to the sci-fi themes repository on GitHub.com
 2. You may see a notification banner at the top saying "Your branch had recent pushes"
 3. If so, select **Compare & pull request** - this is a shortcut
 4. Skip to Step 3
@@ -738,16 +736,16 @@ The PR creation step is the same. Git just moves you between locations.
 **Step 3: Write your PR title**
 Write a clear, specific title about what you changed:
 ```
-Fix typo in chapter 5 documentation
+docs: improve README wording
 ```
 
 **Step 4: Write your PR description**
 ```
 ## What this PR does
-Fixes a typo in the chapter 5 file that was confusing readers.
+Improves the README by clarifying the instructions and fixing a typo.
 
 ## Why
-Clear documentation helps new developers learn faster.
+Clear documentation helps new developers and theme users understand the project.
 ```
 
 **Step 5: Submit**
