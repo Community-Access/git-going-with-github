@@ -4,6 +4,33 @@ Welcome to the Community Access workshop hub.
 
 This site is the canonical home for workshop curriculum, guides, challenge workflows, and contributor documentation.
 
+## By the Numbers
+
+This is more than a two-day event. It is a full accessibility-first learning ecosystem built to help people ship real open source contributions.
+
+| Metric | Count |
+|---|---|
+| Written chapters | 23 |
+| Reference appendices | 29 |
+| Total reference pages | 78 |
+| Total words across all documentation | ~355,000 |
+| Podcast companion episodes | 58 |
+| Total podcast audio | ~12 hours |
+| Hands-on challenges | 16 core + 5 bonus = 21 total |
+| Worked reference solutions | 21 |
+
+Every chapter has a podcast companion. Every challenge has a worked solution. Every page is written for screen reader users first.
+
+## The Story of This Workshop
+
+GIT Going with GitHub is designed as one continuous journey, not two disconnected days.
+
+You start by learning the core workflow in the browser: navigate repositories, open issues, create pull requests, review, and merge with confidence.
+
+Then you bridge into `github.dev` with the same keyboard-first patterns, and finish by stepping into full VS Code with GitHub Copilot and Accessibility Agents so your skills scale from manual workflow to agentic workflow.
+
+The story is simple: learn the fundamentals first, then amplify them. You are not watching a demo. You are building the skills to contribute upstream in real projects.
+
 ## Start Here
 
 - [Open the Course Guide](docs/course-guide.md)
