@@ -10,8 +10,8 @@ on:
         required: true
         default: "1"
       assignee:
-        description: "GitHub username to assign. Leave blank to use the workflow actor."
-        required: false
+        description: "GitHub username to assign when manually starting progression."
+        required: true
 
 concurrency:
   group: student-progression-${{ github.event.issue.number || github.run_id }}
@@ -46,4 +46,4 @@ jobs:
           GITHUB_ACTOR: ${{ github.actor }}
           CLOSED_ISSUE_TITLE: ${{ github.event.issue.title }}
           START_CHALLENGE: ${{ github.event.inputs.start_challenge }}
-          CHALLENGE_ASSIGNEE: ${{ github.event.inputs.assignee || github.actor }}
+          CHALLENGE_ASSIGNEE: ${{ github.event.inputs.assignee || github.event.issue.assignee.login || '' }}

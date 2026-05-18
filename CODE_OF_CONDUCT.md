@@ -53,7 +53,7 @@ Instances of abusive, harassing, or otherwise unacceptable behavior may be repor
 
 All community leaders are obligated to respect the privacy and security of the reporter of any incident.
 
-**Contact:** jeff@jeffbishop.com
+**Contact:** <jeff@jeffbishop.com>
 
 Do not open a public GitHub issue to report Code of Conduct concerns - report them directly to the email address above so that the matter can be handled privately.
 

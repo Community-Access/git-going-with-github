@@ -510,6 +510,7 @@ The **`/project-status`** command from Accessibility Agents gives you a live pro
 | Done | 23 | -- | -- | -- |
 
 **Attention Items:**
+
 - Stale: "Update screen reader navigation guide" - In Review for 9 days, no activity
 - Unassigned: "Triage accessibility bug backlog" in In Progress
 

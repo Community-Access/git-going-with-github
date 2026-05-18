@@ -2,11 +2,12 @@ name: address-comments
 description: "Systematically address PR review comments -- track, resolve, and respond to all feedback with release awareness"
 agent: pr-review
 tools:
-  - github/*
-  - readFile
-  - codebase
-  - editFiles
-  - ask_questions
+
+- github/*
+- readFile
+- codebase
+- editFiles
+- ask_questions
 
 Help me systematically address all review comments on a pull request.
 
@@ -60,6 +61,7 @@ ${input:pr:PR reference -- e.g. owner/repo#123 or a GitHub PR URL}
     - **Generate summary** -- create a comment summarizing all changes made
 
 11. Optionally, draft a summary comment for the PR:
+
     ```markdown
     Thanks for the review, @{reviewer}! Here's what I addressed:
 

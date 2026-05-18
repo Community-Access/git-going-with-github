@@ -11,6 +11,7 @@ This shows two example issues. Yours will look different and that is fine.
 > In `docs/welcome.md`, line 15, there is a TODO comment that says "add link to workshop schedule." This placeholder should be replaced with an actual link so students can find the schedule.
 >
 > **Steps to find it:**
+>
 > 1. Open `docs/welcome.md`
 > 2. Search for "TODO"
 > 3. The comment is on line 15

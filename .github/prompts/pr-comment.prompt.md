@@ -2,9 +2,10 @@ name: pr-comment
 description: "Add line-specific review comments to a PR with interactive file selection"
 agent: pr-review
 tools:
-  - github/*
-  - readFile
-  - ask_questions
+
+- github/*
+- readFile
+- ask_questions
 
 Add targeted review comments to specific lines in a pull request.
 
@@ -24,6 +25,7 @@ ${input:pr:PR reference -- e.g. owner/repo#123 or a GitHub PR URL}
    - **Priority level:** CRITICAL, IMPORTANT, SUGGESTION, NIT, or PRAISE (per code review standards)
 7. Preview the comment with surrounding numbered lines from the diff:
    > **Comment on `{file}` L{N} -- {PRIORITY}:**
+>
    > ```
    > {N-2} | {context line}
    > {N-1} | {context line}
@@ -31,6 +33,7 @@ ${input:pr:PR reference -- e.g. owner/repo#123 or a GitHub PR URL}
    > {N+1} | {context line}
    > {N+2} | {context line}
    > ```
+>
    > {comment text}
 8. Use #tool:ask_questions: **Submit**, **Edit**, **Add another comment first**, **Cancel**.
 9. Create a pending review --> add comment(s) --> when ready, ask for review event:

@@ -15,6 +15,7 @@ GitHub describes four strategic accessibility priorities. The following list sum
 ### Priority 1: Employees with Disabilities
 
 GitHub says accessibility starts at home by supporting employees with disabilities. This includes:
+
 - Requiring accessibility training for all GitHub teams
 - Improving internal tools and systems used by employees
 - Supporting employee communities such as NeuroCats and AccessCats
@@ -23,6 +24,7 @@ GitHub says accessibility starts at home by supporting employees with disabiliti
 ### Priority 2: Developers with Disabilities
 
 GitHub says every developer should feel welcome and be able to use GitHub products, documentation, training, support, events, and community spaces. Accessibility is listed as a GitHub Fundamental, meaning it has:
+
 - Clear expectations for product teams
 - Testing requirements and processes
 - Accountability through GitHub Fundamentals scorecards
@@ -31,6 +33,7 @@ GitHub says every developer should feel welcome and be able to use GitHub produc
 ### Priority 3: Customers Building on GitHub
 
 GitHub shares tools and practices to help customers meet their own accessibility goals:
+
 - The Figma annotation toolkit for accessible design collaboration
 - The GitHub Accessibility Scanner action you can add to your own repository CI checks
 - Guidance for building accessibility-focused Copilot custom instructions so agents help with accessibility audits
@@ -39,6 +42,7 @@ GitHub shares tools and practices to help customers meet their own accessibility
 ### Priority 4: Open Source at Scale
 
 GitHub has pledged to help improve accessibility in open source by:
+
 - Empowering people with disabilities to contribute to open source projects
 - Increasing free and open source assistive technologies
 - Increasing the accessibility of mainstream open source projects
@@ -47,6 +51,7 @@ GitHub has pledged to help improve accessibility in open source by:
 ## What Excellence Looks Like in Practice
 
 Your capstone work is an example of accessibility excellence. You:
+
 1. Named a real user need
 2. Described the barrier or opportunity clearly
 3. Proposed a focused change
@@ -58,6 +63,7 @@ This evidence-based approach is exactly what GitHub's accessibility program advo
 ## Why This Matters
 
 The connection between your capstone skills and GitHub's accessibility priorities is direct:
+
 - Your evidence habits scale to thousands of projects
 - Your contributions help normalize accessibility in open source
 - Your presence as a contributor with a disability or accessibility expertise changes who has a voice in tool design

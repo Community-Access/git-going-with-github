@@ -366,6 +366,7 @@ It is completely acceptable to comment on your PR:
 > "The CI check is failing on [step name]. I've read the error log and I'm not sure how to fix [specific issue]. Could a maintainer point me in the right direction?"
 
 Asking for help is not weakness. It is collaboration.
+
 ### Learning Cards: What To Do When a Check Fails
 
 <details>

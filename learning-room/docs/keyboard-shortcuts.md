@@ -1,4 +1,5 @@
 # Keyboard Shortcut Reference
+
 ## GitHub Navigation with Assistive Technology
 
 This reference lists keyboard shortcuts for navigating GitHub with a screen reader. It covers three screen readers: NVDA, JAWS, and VoiceOver.

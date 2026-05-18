@@ -425,6 +425,10 @@ function renderGuidedSidebar(normalizedRelativePath, prefix) {
     { href: PODCAST_FEED_URL, title: 'RSS Feed' }
   ];
 
+  const getHelpItems = [
+    { href: 'https://github.com/Community-Access/support', title: 'Support Hub' }
+  ];
+
   const challengeLabItems = [
     { href: 'docs/CHALLENGES.html', title: 'Challenge Hub' },
     { href: 'docs/17-issue-templates.html', title: 'Issue Template Deep Dive' }
@@ -503,6 +507,13 @@ function renderGuidedSidebar(normalizedRelativePath, prefix) {
         <h3>External Resources</h3>
         <ul>
           ${renderLinks(externalResources)}
+        </ul>
+      </section>
+
+      <section class="guided-section">
+        <h3>Get Help</h3>
+        <ul>
+          ${renderLinks(getHelpItems)}
         </ul>
       </section>
     </nav>

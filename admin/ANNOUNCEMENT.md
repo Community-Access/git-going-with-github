@@ -2,7 +2,7 @@
 
 [License: CC BY 4.0](https://creativecommons.org/licenses/by/4.0/) | [View Site](https://community-access.org/git-going-with-github/) | [Full Curriculum](https://community-access.org/git-going-with-github/docs/course-guide.html) | [Support Hub](https://github.com/Community-Access/support)
 
-## You Belong in Open Source. Let Us Show You the Door.
+## You Belong in Open Source. Let Us Show You the Door
 
 > **Note:** Workshop content is being actively refined before the workshop. Students should expect updates to materials leading up to and during the course.
 
@@ -20,7 +20,7 @@ Sponsored by [Community Access](https://community-access.org) in partnership wit
 | **Presented by** | [Community Access](https://community-access.org) |
 | **In partnership with** | [GitHub](https://github.com) |
 
-### Registration is now closed. Thank you to everyone who registered - let the learning begin!
+### Registration is now closed. Thank you to everyone who registered - let the learning begin
 
 > **Want to join a future cohort?** Use the [**Student Opt-In page**](https://community-access.org/git-going-with-github/REGISTER.html). It feeds directly into our automated registration and waitlist workflow.
 

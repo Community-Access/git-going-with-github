@@ -2,10 +2,11 @@ name: security-dashboard
 description: "Security overview -- Dependabot alerts, security advisories, dependency update PRs, and vulnerability status across your repos"
 agent: daily-briefing
 tools:
-  - github/*
-  - createFile
-  - createDirectory
-  - ask_questions
+
+- github/*
+- createFile
+- createDirectory
+- ask_questions
 
 Generate a security dashboard showing Dependabot alerts, security advisories, and dependency update PRs across your repos.
 

@@ -6,8 +6,8 @@
 
 <!-- List the specific changes you made. Be concrete. -->
 
-- 
-- 
+-
+-
 
 ## Related Issue
 
@@ -33,9 +33,9 @@ Closes #
 
 <!-- How did you verify your changes? -->
 
-- Tested with: 
-- Screen reader used (if applicable): 
-- Browser (if applicable): 
+- Tested with:
+- Screen reader used (if applicable):
+- Browser (if applicable):
 
 ## Screenshots or Recordings
 

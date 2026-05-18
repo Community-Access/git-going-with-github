@@ -37,6 +37,7 @@ Facilitators **do** need organization-level access to manage the classroom. See 
 ### Curriculum Repository (main branch)
 
 **Protection Rules:**
+
 - Require pull request reviews: Yes (1 approval minimum)
 - Require status checks to pass: Yes (GitHub Actions validation)
 - Require branches to be up to date: No (to avoid unnecessary merge conflicts)
@@ -56,6 +57,7 @@ Student repos are created from the `learning-room-template`. Branch protection i
 ### What Students Cannot Do
 
 Even within their own repo, students cannot:
+
 - Access GitHub Actions secrets at the organization level
 - Modify workflow files that run with elevated permissions
 - Access other students' repositories
@@ -121,6 +123,7 @@ The template repository includes these workflows, which are copied into every st
 | `autograder-capstone.yml` | Push | Read | Validates agent file structure |
 
 **Safety guarantees:**
+
 - Workflows use only `GITHUB_TOKEN` (scoped to the individual student repo)
 - No external API keys or webhook secrets are stored
 - Workflows cannot access other repositories or organization-level resources
@@ -129,6 +132,7 @@ The template repository includes these workflows, which are copied into every st
 ### Curriculum Repository Workflows
 
 The curriculum repo uses standard CI workflows for building HTML/EPUB output. These workflows:
+
 - Run on PRs to `main` only
 - Have read-only permissions
 - Do not deploy to production automatically
@@ -139,20 +143,24 @@ The curriculum repo uses standard CI workflows for building HTML/EPUB output. Th
 ### What Data Is Stored
 
 **In the curriculum repository:**
+
 - No student data. This repo contains only curriculum content and facilitator guides.
 
 **In the private student-success repository:**
+
 - Private cohort operations data belongs in `Community-Access/git-going-student-success`
 - This includes registration exports, facilitator notes, accommodation follow-up, grade exports, and student-success follow-up records
 - Do not store credentials, API keys, or tokens there; use an approved secret manager for secrets
 
 **In GitHub Classroom:**
+
 - Student GitHub usernames (public information)
 - Roster data (identifier, optional name, optional email) -- visible only to classroom admins
 - Assignment acceptance timestamps
 - Autograding scores
 
 **In student repositories:**
+
 - Commit history (who wrote what, when)
 - Issue and PR comments (visible only to the student and facilitators)
 - Branch names
@@ -169,6 +177,7 @@ The curriculum repo uses standard CI workflows for building HTML/EPUB output. Th
 ### Data Retention
 
 Student repositories persist after the workshop unless explicitly deleted. Facilitators can:
+
 - Archive the classroom (makes repos read-only; preserves them as portfolio pieces)
 - Delete student repos through the classroom settings
 - Export grades before archiving
@@ -180,6 +189,7 @@ See [teardown-checklist.md](classroom/teardown-checklist.md) for the complete po
 ### Before the Workshop
 
 **Deployment verification:** Complete the verification checklist in the [Workshop Deployment Guide](classroom/README.md#step-6-verify-everything-works). This confirms:
+
 - Student repos are created correctly from the template
 - Gandalf responds to PRs within 60 seconds
 - The Progression Bot creates challenge issues on issue close
@@ -187,6 +197,7 @@ See [teardown-checklist.md](classroom/teardown-checklist.md) for the complete po
 - The feedback PR is created by Classroom
 
 **Facilitator access:** Confirm all facilitators can:
+
 - View the classroom dashboard
 - Open student repos from the dashboard
 - Comment on student issues and PRs
@@ -194,7 +205,8 @@ See [teardown-checklist.md](classroom/teardown-checklist.md) for the complete po
 ### During the Workshop
 
 **Monitoring:**
-- GitHub status page: https://www.githubstatus.com/
+
+- GitHub status page: <https://www.githubstatus.com/>
 - Classroom dashboard for student progress and autograding results
 - Student repos' Actions tabs for workflow failures
 
@@ -213,20 +225,24 @@ See [teardown-checklist.md](classroom/teardown-checklist.md) for the complete po
 ### If Something Goes Wrong
 
 **GitHub outage:**
-- Monitor: https://www.githubstatus.com/
+
+- Monitor: <https://www.githubstatus.com/>
 - Fallback: Continue teaching fundamentals offline
 - Recovery: Resume when GitHub is back; student repos persist through outages
 
 **Student accidentally deletes a workflow file:**
+
 - Restore the file from the template repository
 - Commit directly to the student's `main` branch
 - The workflow resumes on the next trigger
 
 **Need to revert a student's work:**
+
 - Use `git revert` (do not force push -- protect learning history)
 - Guide the student through the revert as a teaching moment
 
 **Student repo is corrupted:**
+
 - Have the student accept the invite link again (Classroom creates a fresh repo if the original is deleted)
 - Or restore files manually from the template
 
@@ -235,12 +251,14 @@ See [teardown-checklist.md](classroom/teardown-checklist.md) for the complete po
 ### What Is Logged
 
 GitHub automatically logs:
+
 - All push events (who, what, when)
 - All PR activity (created, reviewed, merged)
 - All issue activity (created, commented, closed)
 - Workflow runs and results
 
 These logs are available in:
+
 - Each repository's Actions tab (workflow history)
 - Organization settings > Audit log (admin actions)
 - GitHub Classroom dashboard (assignment and grading data)
@@ -254,10 +272,10 @@ These logs are available in:
 
 ## Contact & Support
 
-**GitHub Organization:** https://github.com/Community-Access
-**Curriculum Repository:** https://github.com/Community-Access/git-going-with-github
-**GitHub Classroom:** https://classroom.github.com
-**GitHub Status:** https://www.githubstatus.com/
+**GitHub Organization:** <https://github.com/Community-Access>
+**Curriculum Repository:** <https://github.com/Community-Access/git-going-with-github>
+**GitHub Classroom:** <https://classroom.github.com>
+**GitHub Status:** <https://www.githubstatus.com/>
 
 ## Authoritative Sources
 

@@ -64,6 +64,7 @@ Each challenge has an issue that the Student Progression Bot creates for you. Co
 Every chapter has an "If You Get Stuck" section with specific troubleshooting steps. Start there.
 
 You can also:
+
 - Ask your assigned buddy or study group
 - Post a question on the issue thread
 - Mention `@gandalf-bot` in a comment for a workspace check

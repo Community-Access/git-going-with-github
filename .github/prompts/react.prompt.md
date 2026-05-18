@@ -2,8 +2,9 @@ name: react
 description: "Add emoji reactions to issues, PRs, and comments -- thumbs up, heart, rocket, and more"
 agent: issue-tracker
 tools:
-  - github/*
-  - ask_questions
+
+- github/*
+- ask_questions
 
 Add an emoji reaction to an issue, PR, or specific comment.
 

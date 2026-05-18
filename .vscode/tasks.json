@@ -6,6 +6,60 @@
 			"type": "shell",
 			"command": "npm run test:automation",
 			"isBackground": false
+		},
+		{
+			"label": "Learning Room Smoke Test",
+			"type": "shell",
+			"command": "& 'C:\\code\\git-going-with-github\\tmp-learning-room-smoke-wrapper.ps1'",
+			"isBackground": false
+		},
+		{
+			"label": "Learning Room Smoke Test Retry",
+			"type": "shell",
+			"command": "& 'C:\\code\\git-going-with-github\\tmp-learning-room-smoke-wrapper.ps1'",
+			"isBackground": false
+		},
+		{
+			"label": "Inspect Smoke Repo State",
+			"type": "shell",
+			"command": "gh issue list -R accesswatch/learning-room-smoke-20260518080514 --state all --limit 50 --json number,title,state; gh pr list -R accesswatch/learning-room-smoke-20260518080514 --state all --limit 20 --json number,title,state; gh run list -R accesswatch/learning-room-smoke-20260518080514 --limit 30 --json workflowName,event,status,conclusion,displayTitle,url",
+			"isBackground": false
+		},
+		{
+			"label": "Inspect Smoke Repo State 2",
+			"type": "shell",
+			"command": "gh pr list -R accesswatch/learning-room-smoke-20260518080514 --state all --limit 20 --json number,title,state,url; gh run list -R accesswatch/learning-room-smoke-20260518080514 --limit 20 --json workflowName,event,status,conclusion,displayTitle,url",
+			"isBackground": false
+		},
+		{
+			"label": "Learning Room Smoke Test Clean",
+			"type": "shell",
+			"command": "& 'C:\\code\\git-going-with-github\\tmp-learning-room-smoke-wrapper.ps1'",
+			"isBackground": false
+		},
+		{
+			"label": "Inspect Advanced Smoke Repo",
+			"type": "shell",
+			"command": "gh issue list -R accesswatch/learning-room-smoke-20260518080514 --state all --limit 100 --json number,title,state,url; gh pr list -R accesswatch/learning-room-smoke-20260518080514 --state all --limit 20 --json number,title,state,url; gh run list -R accesswatch/learning-room-smoke-20260518080514 --limit 40 --json workflowName,event,status,conclusion,displayTitle,url",
+			"isBackground": false
+		},
+		{
+			"label": "Inspect Newest Smoke Repo",
+			"type": "shell",
+			"command": "gh issue list -R accesswatch/learning-room-smoke-20260518081032 --state all --limit 100 --json number,title,state,url; gh pr list -R accesswatch/learning-room-smoke-20260518081032 --state all --limit 20 --json number,title,state,url; gh run list -R accesswatch/learning-room-smoke-20260518081032 --limit 40 --json workflowName,event,status,conclusion,displayTitle,url",
+			"isBackground": false
+		},
+		{
+			"label": "Sync Advanced Smoke Repo Workflows",
+			"type": "shell",
+			"command": "Copy-Item 'C:\\code\\learning-room-template\\.github\\workflows\\pr-validation-bot.yml' 'C:\\code\\learning-room-smoke-20260518080514\\.github\\workflows\\pr-validation-bot.yml' -Force; Copy-Item 'C:\\code\\learning-room-template\\.github\\workflows\\student-progression.yml' 'C:\\code\\learning-room-smoke-20260518080514\\.github\\workflows\\student-progression.yml' -Force; Push-Location 'C:\\code\\learning-room-smoke-20260518080514'; git checkout main; git add .github/workflows/pr-validation-bot.yml .github/workflows/student-progression.yml; git commit -m \"Sync final workflow fixes for smoke completion\"; git push origin main; Pop-Location",
+			"isBackground": false
+		},
+		{
+			"label": "Commit Advanced Smoke Repo Workflow Sync",
+			"type": "shell",
+			"command": "Push-Location 'C:\\code\\learning-room-smoke-20260518080514'; git status --short; git add .github/workflows/pr-validation-bot.yml .github/workflows/student-progression.yml; git commit -m 'Sync final workflow fixes for smoke completion'; git push origin main; Pop-Location",
+			"isBackground": false
 		}
 	]
 }

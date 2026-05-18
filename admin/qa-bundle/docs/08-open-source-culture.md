@@ -41,12 +41,12 @@ Chapter 8 reflection:
 - One way I will respond to feedback constructively:
 ```
 
-6. For each prompt, write one specific, actionable sentence - not a vague goal. Examples:
+1. For each prompt, write one specific, actionable sentence - not a vague goal. Examples:
    - Good: "I will start review comments with what the author did well before suggesting changes."
    - Vague: "I will be nice."
    - Good: "I will include the exact step where I got stuck and what I already tried."
    - Vague: "I will ask good questions."
-7. Activate the **Comment** button (or press `Ctrl+Enter`).
+2. Activate the **Comment** button (or press `Ctrl+Enter`).
 
 **You are done when:** Your reflection comment appears on the issue with three specific, actionable behaviors.
 
@@ -287,16 +287,19 @@ git push origin main
 ### Learning Cards: Keeping Your Fork Up to Date
 
 **Screen reader users:**
+
 - In the GitHub web interface, press `D` to cycle landmarks until you reach the branch region, then press `B` to find the "Sync fork" button.
 - In the terminal, run `git remote -v` to confirm your upstream remote is configured before fetching -- the output reads back both `origin` and `upstream` URLs.
 - After `git fetch upstream && git merge upstream/main`, run `git log --oneline -3` to hear the latest commits and verify the merge succeeded.
 
 **Low-vision users:**
+
 - On github.com, the "Sync fork" button and its "X commits behind" indicator sit near the branch selector -- zoom to 200% and the button remains in the same row.
 - In GitHub Desktop, the merge dialog uses high-contrast text for branch names; confirm you see "upstream/main" before activating Merge.
 - If the terminal output of `git fetch` scrolls too fast, pipe it through `| more` or increase your terminal font size before running sync commands.
 
 **Sighted users:**
+
 - The yellow "This branch is N commits behind" banner on your fork's main page is your visual cue -- click **Sync fork** then **Update branch** and watch the banner disappear.
 - In GitHub Desktop, the branch graph in History view shows where upstream diverged; after merging, the graph lines should rejoin.
 - In VS Code's Source Control sidebar, the sync icon (circular arrows) in the status bar updates your branch with one click once the upstream remote is configured.
@@ -792,16 +795,19 @@ The difference is about two minutes of writing and saves every future visitor fr
 ### Learning Cards: Writing Your First README
 
 **Screen reader users:**
+
 - Maintain strict heading hierarchy (`#` then `##` then `###`) -- your heading list shortcut (`Insert+F7` in NVDA, Rotor in VoiceOver) becomes a usable table of contents only when levels are not skipped.
 - Write descriptive alt text on every badge and image: `![Build status: passing](...)` rather than an empty `![]()` that reads as "image" with no context.
 - Use real Markdown link text (`[installation guide](docs/install.md)`) instead of bare URLs, so your screen reader announces the destination rather than spelling out a long URL.
 
 **Low-vision users:**
+
 - Use `##` headings to create clear visual blocks -- GitHub's rendered Markdown adds spacing and larger font weight to headings, making the README scannable at high zoom.
 - Keep code blocks short (under 10 lines) and use syntax-highlighted fenced blocks (` ```bash `) so keywords stand out in your high-contrast or dark theme.
 - Put the most important information (project name, one-line description, install command) in the first 5 lines so it is visible without scrolling at 200% zoom.
 
 **Sighted users:**
+
 - Preview your README in VS Code (`Ctrl+Shift+V`) or on GitHub after pushing -- the rendered view reveals formatting mistakes that are invisible in raw Markdown.
 - Add a badge row near the top (build status, license, version) for a quick visual health check, but always include alt text for each badge.
 - Use a table for structured information (like the "What belongs in a README" table in this section) -- tables render as clean grids on GitHub and are faster to scan than bullet lists for tabular data.
@@ -1034,16 +1040,19 @@ Most open source projects label issues that are suitable for new contributors. L
 ### Learning Cards: Finding Something to Work On
 
 **Screen reader users:**
+
 - On a repository's Issues page, use the landmark shortcut (`D` in NVDA browse mode) to jump to the filter region, then type a label name like `good first issue` in the Label filter field and press `Enter` to narrow results.
 - GitHub's global search (`label:"good first issue" is:open language:markdown`) returns a results list navigable by heading level -- each issue title is a link, so press `K` (next link) or `Tab` to step through them efficiently.
 - Before claiming an issue, press `End` to jump to the bottom of the issue page and listen for recent comments -- if someone already said "I'll take this," move on to the next one.
 
 **Low-vision users:**
+
 - GitHub color-codes labels, but do not rely on color alone -- hover over a label to see its text name in a tooltip, or use the Label dropdown which lists label names as text.
 - Zoom to 150-200% when scanning the Issues list; the issue title, label pills, and comment count remain in a single row up to about 250% zoom before wrapping.
 - Use the Sort dropdown ("Newest," "Recently updated") to push stale issues down the list so you focus on actively maintained work first.
 
 **Sighted users:**
+
 - Skim the colored label pills on the Issues list for `good first issue` (typically green) or `help wanted` (typically yellow) -- these stand out visually in a long list.
 - Check the comment count and last-updated date on the right side of each issue row; a high comment count on a `first-timers-only` issue often means someone is already working on it.
 - Use GitHub's global search bar with `label:"good first issue" is:open` and add `language:` or `topic:` filters to match your interests across all public repositories.
@@ -1064,26 +1073,31 @@ If the issue looks right for you, comment briefly to let the team know you are w
 ### Tool Cards: Fork, Clone, and Contribute
 
 **github.com (browser):**
+
 1. Click **Fork** on the repository page, then **Create fork**.
 2. Edit files directly in your fork's web interface.
 3. Click **Contribute > Open pull request** to submit back to the original.
 
 **github.dev (web editor):**
+
 1. Fork the repo on github.com first.
 2. Navigate to your fork and press `.` to open in the web editor.
 3. Edit, commit, and create a PR from the Source Control panel.
 
 **VS Code Desktop:**
+
 1. Fork on github.com, then clone your fork: `Ctrl+Shift+P` > **Git: Clone**.
 2. Create a branch, make edits, commit and push.
 3. Use **GitHub Pull Requests: Create Pull Request** to submit.
 
 **GitHub Desktop:**
+
 1. **File > Clone Repository**, select your fork.
 2. Create a branch via **Branch > New Branch**, make edits.
 3. Push and click **Create Pull Request** (opens browser).
 
 **Git CLI / GitHub CLI:**
+
 ```bash
 gh repo fork owner/repo --clone
 cd repo

@@ -1,4 +1,5 @@
 # Facilitator Resource Index
+
 ## Complete Guide to Running GitHub Classroom Workshops
 
 Welcome, facilitator! This page helps you navigate all the documentation for running an accessible GitHub workshop for blind and low-vision students.
@@ -8,34 +9,46 @@ Welcome, facilitator! This page helps you navigate all the documentation for run
 ## 🎯 Start Here Based on Your Situation
 
 ### "I've Never Run This Workshop Before"
+
 → Read in this order:
+
 1. [FACILITATOR_GUIDE.md](FACILITATOR_GUIDE.md#-github-classroom-setup-before-day-1) — GitHub Classroom Setup section
 2. [FACILITATOR_GUIDE.md](FACILITATOR_GUIDE.md#-pre-workshop-checklist-48-hours-before) — Pre-Workshop Checklist
 3. [FACILITATOR_OPERATIONS.md](FACILITATOR_OPERATIONS.md) — For hands-on procedures
 
 ### "Workshop Is Tomorrow"
+
 → Quick tasks:
+
 1. [FACILITATOR_GUIDE.md](FACILITATOR_GUIDE.md#-pre-workshop-checklist-48-hours-before) — Pre-Workshop Checklist (all boxes)
 2. [FACILITATOR_OPERATIONS.md](FACILITATOR_OPERATIONS.md#pre-workshop-setup-3-hours-before) — 3-Hour Prep
 3. [FACILITATOR_OPERATIONS.md](FACILITATOR_OPERATIONS.md#starting-day-1-15-minutes-before-call-starts) — Day-Of Checklist
 
 ### "Workshop Is Happening Right Now"
+
 → Reference:
+
 - [FACILITATOR_OPERATIONS.md](FACILITATOR_OPERATIONS.md) — Hour-by-hour procedures
 - [FACILITATOR_CLASSROOM_TROUBLESHOOTING.md](FACILITATOR_CLASSROOM_TROUBLESHOOTING.md) — When things break
 
 ### "A Student Got Stuck"
+
 → Go to:
+
 - [FACILITATOR_CLASSROOM_TROUBLESHOOTING.md](FACILITATOR_CLASSROOM_TROUBLESHOOTING.md#-student-level-issues) — Student-level scenarios
 - Then [FACILITATOR_OPERATIONS.md](FACILITATOR_OPERATIONS.md) — For how to respond
 
 ### "Something Technical Broke"
+
 → Check:
+
 - [FACILITATOR_CLASSROOM_TROUBLESHOOTING.md](FACILITATOR_CLASSROOM_TROUBLESHOOTING.md#-emergency-what-to-do-when-everything-stops-working) — Emergency protocols
 - Then [FACILITATOR_GUIDE.md](FACILITATOR_GUIDE.md#-quick-troubleshooting-reference) — Quick reference
 
 ### "Workshop Just Ended, What's Next?"
+
 → See:
+
 - [FACILITATOR_GUIDE.md](FACILITATOR_GUIDE.md#-post-workshop-tasks-week-after) — Post-workshop tasks
 - [FACILITATOR_OPERATIONS.md](FACILITATOR_OPERATIONS.md#post-workshop-operations) — Detailed post-workshop procedures
 
@@ -46,9 +59,11 @@ Welcome, facilitator! This page helps you navigate all the documentation for run
 ### Primary Documents
 
 #### [FACILITATOR_GUIDE.md](FACILITATOR_GUIDE.md) (33 KB)
+
 **The complete workshop bible.** Everything from GitHub Classroom setup through post-workshop follow-up.
 
 **Main sections:**
+
 - GitHub Classroom Setup (first-time setup)
 - Pre-Workshop Checklist (48 hours before)
 - Day 1 Live Operations (hour-by-hour)
@@ -57,7 +72,8 @@ Welcome, facilitator! This page helps you navigate all the documentation for run
 - Quick Troubleshooting Reference
 - Appendices (templates, keyboard shortcuts)
 
-**When to use:** 
+**When to use:**
+
 - First-time workshop setup
 - Planning a cohort
 - During workshop (overview reference)
@@ -65,9 +81,11 @@ Welcome, facilitator! This page helps you navigate all the documentation for run
 ---
 
 #### [FACILITATOR_OPERATIONS.md](FACILITATOR_OPERATIONS.md) (18 KB)
+
 **Real-time, hands-on procedures.** Step-by-step what to do during each hour of the workshop.
 
 **Main sections:**
+
 - Pre-Workshop Workstation Setup
 - Hour-by-Hour Procedures
 - Dashboard Monitoring Routines
@@ -76,6 +94,7 @@ Welcome, facilitator! This page helps you navigate all the documentation for run
 - Facilitator Self-Care
 
 **When to use:**
+
 - During workshop (follow procedures hour-by-hour)
 - Preparing facilitator workstation
 - Real-time student support
@@ -83,9 +102,11 @@ Welcome, facilitator! This page helps you navigate all the documentation for run
 ---
 
 #### [FACILITATOR_CLASSROOM_TROUBLESHOOTING.md](FACILITATOR_CLASSROOM_TROUBLESHOOTING.md) (18 KB)
+
 **Problem-solving guide.** Specific issues and their solutions.
 
 **Main sections:**
+
 - Emergency Scenarios (bots down, video call broken, etc.)
 - Student-Level Issues (can't find repo, confused by feedback, etc.)
 - Specific Technical Scenarios (merge conflicts, autograder failures, etc.)
@@ -94,6 +115,7 @@ Welcome, facilitator! This page helps you navigate all the documentation for run
 - Prevention Strategies
 
 **When to use:**
+
 - Something is broken and you need to fix it
 - Student is confused or stuck
 - Automation failed
@@ -103,15 +125,18 @@ Welcome, facilitator! This page helps you navigate all the documentation for run
 ### Supporting Documents
 
 #### [FACILITATOR_CHALLENGES.md](FACILITATOR_CHALLENGES.md) (11.6 KB)
+
 Operations guide for managing the challenge system and student progression during a live cohort.
 
 **Covers:**
+
 - How the challenge system works
 - Monitoring student progress
 - Responding to help requests
 - Common issue patterns
 
 **When to use:**
+
 - Understanding the challenge flow
 - Monitoring student progression
 - Identifying stuck students
@@ -119,13 +144,16 @@ Operations guide for managing the challenge system and student progression durin
 ---
 
 #### [FACILITATOR_ASSESSMENT.md](FACILITATOR_ASSESSMENT.md) (0.4 KB)
+
 Assessment rubric and grading guidance (brief reference).
 
 **Covers:**
+
 - How to assess student work
 - What "success" looks like
 
 **When to use:**
+
 - Providing meaningful feedback to students
 - Deciding if student meets learning goals
 
@@ -134,30 +162,36 @@ Assessment rubric and grading guidance (brief reference).
 ## 🎓 Typical Workflow
 
 ### Weeks 1-2 Before Workshop
+
 1. Read [FACILITATOR_GUIDE.md](FACILITATOR_GUIDE.md#-github-classroom-setup-before-day-1) GitHub Classroom Setup
 2. Create your GitHub Classroom and assignments
 3. Follow setup checklist in [FACILITATOR_GUIDE.md](FACILITATOR_GUIDE.md#-pre-workshop-checklist-48-hours-before)
 
 ### 48 Hours Before
+
 1. Complete [FACILITATOR_GUIDE.md](FACILITATOR_GUIDE.md#-pre-workshop-checklist-48-hours-before) checklist
 2. Test everything one more time
 3. Read [FACILITATOR_OPERATIONS.md](FACILITATOR_OPERATIONS.md) overview
 
 ### Day Before
+
 1. Final checklist items
 2. Setup workstation per [FACILITATOR_OPERATIONS.md](FACILITATOR_OPERATIONS.md#pre-workshop-setup-3-hours-before)
 3. Message co-facilitator: "Ready for tomorrow?"
 
 ### Day 1 During
+
 1. Follow [FACILITATOR_OPERATIONS.md](FACILITATOR_OPERATIONS.md) hour-by-hour
 2. Keep [FACILITATOR_CLASSROOM_TROUBLESHOOTING.md](FACILITATOR_CLASSROOM_TROUBLESHOOTING.md) open in another tab
 3. Reference [FACILITATOR_GUIDE.md](FACILITATOR_GUIDE.md#-day-1-live-operations) for overview
 
 ### Day 2 During
+
 1. Same as Day 1, but reference [FACILITATOR_GUIDE.md](FACILITATOR_GUIDE.md#-day-2-deeper-skills-and-celebration) Day 2 section
 2. Be ready for harder scenarios and more independence from students
 
 ### After Workshop
+
 1. Follow [FACILITATOR_GUIDE.md](FACILITATOR_GUIDE.md#-post-workshop-tasks-week-after) post-workshop tasks
 2. Note what worked and what didn't
 3. Update this guide for next time
@@ -169,12 +203,14 @@ Assessment rubric and grading guidance (brief reference).
 ### During Workshop: Have These Open
 
 **Browser tabs:**
+
 1. [FACILITATOR_OPERATIONS.md](FACILITATOR_OPERATIONS.md) (current section)
 2. [FACILITATOR_CLASSROOM_TROUBLESHOOTING.md](FACILITATOR_CLASSROOM_TROUBLESHOOTING.md) (troubleshooting reference)
 3. Your GitHub Classroom dashboard
 4. GitHub Discussions / chat with students
 
 **Physical:**
+
 - Print [FACILITATOR_GUIDE.md](FACILITATOR_GUIDE.md) or have on second monitor
 - Notepad for tracking issues
 
@@ -185,6 +221,7 @@ Assessment rubric and grading guidance (brief reference).
 In your browser: `Ctrl+F` (or `Cmd+F` on Mac)
 
 Then search for:
+
 - `### Hour` — Jump to specific hour procedures
 - `**Student Says** "...` — Jump to chat response template
 - `**Symptom:** ...` → Jump to troubleshooting scenario
@@ -192,6 +229,7 @@ Then search for:
 ### Getting Help
 
 **If you can't find something:**
+
 1. Check "Start Here Based on Your Situation" above
 2. Use browser search (Ctrl+F)
 3. Check the table of contents in individual documents
@@ -241,11 +279,13 @@ These principles appear repeatedly because they're **that important**:
 ## 🚀 Related Resources
 
 **In this repository:**
+
 - [classroom/README.md](../classroom/README.md) — GitHub Classroom deployment guide
 - [docs/](../docs/) — Student-facing resources and guides
 - [CONTRIBUTING.md](../CONTRIBUTING.md) — How to contribute to open source (post-workshop resource)
 
 **External:**
+
 - [GitHub Classroom Help](https://classroom.github.com/help)
 - [GitHub Docs](https://docs.github.com)
 - [Accessibility Testing Guide](ACCESSIBILITY_TESTING.md) — For testing with screen readers
@@ -267,7 +307,7 @@ Before your first workshop, verify:
 - [ ] Co-facilitator has confirmed they're ready
 - [ ] I've reviewed [FACILITATOR_CLASSROOM_TROUBLESHOOTING.md](FACILITATOR_CLASSROOM_TROUBLESHOOTING.md) emergency section
 
-**If all checked:** You're ready! 
+**If all checked:** You're ready!
 
 **If any unchecked:** That item is probably your next task. Don't skip it — it matters.
 

@@ -1,4 +1,5 @@
 # Setup Guide
+
 ## Getting Ready to Contribute with a Screen Reader
 
 This guide walks you through everything you need to set up before your first GitHub contribution. Complete all steps before the workshop begins.
@@ -10,6 +11,7 @@ This guide walks you through everything you need to set up before your first Git
 If you don't already have a GitHub account, create one at [github.com/join](https://github.com).
 
 **Account name tips:**
+
 - Choose something you're comfortable sharing publicly - your GitHub username will appear in commit history
 - Avoid special characters other than hyphens
 - Your username cannot be changed easily later
@@ -28,6 +30,7 @@ GitHub has several accessibility settings that make navigation significantly eas
 GitHub's improved Issues and Pull Request experiences have been broadly rolled out and are likely already active for your account. However, some features may still appear as opt-in toggles in Feature Preview for some users.
 
 You should automatically have:
+
 - **Modern Issues experience** with proper heading hierarchy and better screen reader navigation
 - **Improved Pull Request Files Changed view** with accessible diff navigation
 - Better keyboard accessibility throughout GitHub
@@ -90,6 +93,7 @@ If any of these steps are difficult, bring your question to the workshop. There 
 ## Getting Help Before the Workshop
 
 If you run into setup issues before the workshop:
+
 - Open an issue in the workshop repository using the "Feature or Improvement Request" template
 - Ask your question in the issue - be specific about what step you are on and what happens when you try it
 

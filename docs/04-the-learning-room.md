@@ -196,6 +196,7 @@ In your own Learning Room repository, **you decide what branches to create**. Th
 > **Branch naming convention for Day 1:** `learn/<your-github-username>` (all lowercase)
 
 **Examples:**
+
 - If your GitHub username is `payown`, your branch is `learn/payown`
 - If your username is `BudgieMom`, your branch is `learn/budgiemom`
 - If your username is `Weijun-Zhang-1996`, your branch is `learn/weijun-zhang-1996`
@@ -263,22 +264,27 @@ git checkout learn/<your-github-username>
 ### Tool Cards: Switch to Your Practice Branch
 
 **github.com (browser):**
+
 1. On the repository page, click the branch selector dropdown (shows "main").
 2. Type `learn` to filter, then select `learn/<username>`.
 
 **github.dev (web editor):**
+
 1. Click the branch name in the bottom-left status bar.
 2. Select your `learn/<username>` branch from the list.
 
 **VS Code Desktop:**
+
 1. Click the branch name in the bottom-left status bar (or press `Ctrl+Shift+P` then type **Git: Checkout to**).
 2. Select `origin/learn/<username>` from the branch list.
 
 **GitHub Desktop:**
+
 1. Click the **Current Branch** dropdown at the top.
 2. Type `learn` to filter, then select `learn/<username>`.
 
 **Git CLI (terminal):**
+
 ```bash
 git checkout learn/<username>
 ```

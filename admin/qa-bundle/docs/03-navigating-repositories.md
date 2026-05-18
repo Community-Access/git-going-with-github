@@ -361,6 +361,7 @@ cd git-going-with-github
 ### Tool Cards: Clone a Repository
 
 **github.com (browser):**
+
 1. Click the green **Code** button above the file table.
 2. Copy the HTTPS URL.
 3. You will paste this into your local tool of choice below.
@@ -369,16 +370,19 @@ cd git-going-with-github
 No clone needed. Press `.` on any repository page to open it in the browser-based editor instantly.
 
 **VS Code Desktop:**
+
 1. Press `Ctrl+Shift+P`, type **Git: Clone**, press `Enter`.
 2. Paste the HTTPS URL and choose a local folder.
 3. Click **Open** when prompted.
 
 **GitHub Desktop:**
+
 1. **File > Clone Repository** (or `Ctrl+Shift+O`).
 2. Paste the URL or select from your GitHub account list.
 3. Choose a local path and click **Clone**.
 
 **Git CLI (terminal):**
+
 ```bash
 git clone https://github.com/owner/repo.git
 cd repo

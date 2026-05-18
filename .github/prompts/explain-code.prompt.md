@@ -2,11 +2,12 @@ name: explain-code
 description: "Understand specific lines, functions, or blocks of code in a PR diff -- plain language explanations with context"
 agent: pr-review
 tools:
-  - github/*
-  - fetch
-  - readFile
-  - codebase
-  - ask_questions
+
+- github/*
+- fetch
+- readFile
+- codebase
+- ask_questions
 
 Explain specific code in a pull request -- what it does, why it's there, and what changed.
 

@@ -2,11 +2,12 @@ name: draft-release
 description: "Draft release notes from merged PRs since last release -- auto-categorized as Features, Bug Fixes, Breaking Changes, with changelog and readiness checklist"
 agent: daily-briefing
 tools:
-  - github/*
-  - createFile
-  - createDirectory
-  - editFiles
-  - ask_questions
+
+- github/*
+- createFile
+- createDirectory
+- editFiles
+- ask_questions
 
 Draft release notes for the next release based on merged PRs since the last release. Save both markdown and HTML versions.
 
@@ -39,6 +40,7 @@ ${input:details:Optional: repo name, target version (e.g. 'v2.1.0'), or 'compare
 9. Present a summary in chat and offer to create the GitHub release draft.
 
 **Post-release checklist items:**
+
 - [ ] Close the milestone
 - [ ] Update documentation
 - [ ] Announce in discussions/channels

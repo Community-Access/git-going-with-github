@@ -2,6 +2,7 @@
 **Table: Screen reader options for workshop setup**
 
 **Table: Accessibility improvements for screen reader users**
+
 # Pre-Workshop Setup - GIT Going with GitHub
 >
 > **Listen to Episode 1:** [Pre-Workshop Setup](https://lp.csedesigns.com/ggg/PODCASTS.html) - a conversational audio overview of this chapter. Listen before reading to preview the concepts, or after to reinforce what you learned.
@@ -168,6 +169,7 @@ That is it. No tokens to generate, no keys to create, no strings to paste. If yo
 > **Default browser warning:** VS Code opens the GitHub authorization page in your operating system's **default browser**, not necessarily the browser you use day-to-day. If your default browser is set to something unexpected (for example, an older browser without your screen reader configured), the OAuth page may open in an unfamiliar environment.
 >
 > **Before the workshop:** Verify which browser is your OS default:
+>
 > - **Windows:** Settings, Apps, Default apps, look for "Web browser"
 > - **macOS:** System Settings, Desktop and Dock, Default web browser
 >
@@ -772,9 +774,10 @@ This extension lets you review and manage pull requests without leaving VS Code.
 > - **GitHub Copilot** - publisher must be **GitHub** (built in, no manual install needed)
 >
 > If the publisher name says anything other than "GitHub" (for example, a personal username or an unfamiliar company), **do not install it**. A screen reader user can verify the publisher: after arrowing to a search result, `Tab` forward past the extension name to hear "Publisher: GitHub" or similar. If you accidentally install a wrong extension, press `Ctrl+Shift+X`, find it, and select **Uninstall**.
-5. Press `Enter` to open the details page
-6. Press `Tab` to the **Install** button and press `Enter` or `Space`
-7. VS Code will announce when installation is complete
+
+1. Press `Enter` to open the details page
+2. Press `Tab` to the **Install** button and press `Enter` or `Space`
+3. VS Code will announce when installation is complete
 
 #### Verify it is working
 
@@ -838,6 +841,7 @@ Open VS Code and confirm: Screen Reader Mode is on (`Shift+Alt+F1`), Git is dete
 Open GitHub Desktop, sign in with your GitHub account, and verify it shows your repositories list.
 
 **Git CLI (terminal):**
+
 ```bash
 git --version
 git config user.name

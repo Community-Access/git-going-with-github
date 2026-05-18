@@ -25,12 +25,14 @@ For this workshop, Chapter 10 is a **guided practice chapter**, not a graded aut
 This challenge focuses on **GitHub's web-based notification inbox** (at `github.com/notifications`), not email notifications. You do NOT need to configure email delivery, and you do NOT need to receive emails to complete this challenge.
 
 **Why we focus on the web inbox:**
+
 - Email delivery depends on your mail server, ISP, spam filters, and account settings—factors outside our control
 - GitHub's web notification inbox is always available and works the same way for everyone
 - Professional developers typically check notifications in the GitHub app or web UI rather than waiting for emails
 - The skills you learn (filtering, muting, managing noise) apply whether you eventually enable email or not
 
 **What you will do:**
+
 - Use GitHub's web notification inbox to view and filter notifications
 - Configure repository watch levels to control what notifications you receive
 - Practice managing your inbox with GitHub's built-in actions (mute, mark done)
@@ -165,10 +167,12 @@ At the top of any repository page, find the **Watch** button (near Star and Fork
 ### Tool Cards: Manage Notifications
 
 **github.com (browser):**
+
 1. Go to [github.com/notifications](https://github.com/notifications) (or press `G` then `N`).
 2. Use `E` to mark done, `I` to mark read/unread, `Shift+M` to mute a thread.
 
 **VS Code Desktop (GitHub Pull Requests extension):**
+
 1. The **Notifications** view in the GitHub sidebar shows items needing attention.
 2. Click a notification to open the related issue or PR directly in VS Code.
 
@@ -176,6 +180,7 @@ At the top of any repository page, find the **Watch** button (near Star and Fork
 GitHub Desktop does not manage notifications. Use the browser or CLI.
 
 **Git CLI / GitHub CLI:**
+
 ```bash
 # List PRs requesting your review (most common notification)
 gh search prs --review-requested @me --state open

@@ -1,5 +1,5 @@
 name: "Challenge 14: Template Remix"
-description: Create a custom issue template by remixing the registration template.
+description: Create a custom issue template by remixing the workshop registration template.
 hidden: true
 title: "Challenge 14: Template Remix (@{username})"
 labels: ["challenge", "day-2", "autograded"]
@@ -11,76 +11,58 @@ body:
 
         **Chapter:** [Ch17: Issue Templates](https://github.com/Community-Access/git-going-with-github/blob/main/docs/17-issue-templates.md)
 
-        **What you will do:** Create your own custom GitHub issue template by studying an example and remixing it for a new purpose.
+        **What you will do:** Study the familiar workshop registration template, compare it with a worked remix sample, and create your own custom issue template for a new purpose.
 
-        **Why this matters:** Templates shape how teams communicate. Well-designed templates make collaboration easier.
+        **Why this matters:** Templates shape how teams communicate. A strong template helps contributors provide the right information the first time.
 
         ### Step-by-step instructions
 
-        **Step 1: Study the example**
-        1. Go to **Code** tab
-        2. Navigate to `docs/samples/chapter-15-registration-remix-example.yml`
-        3. Read it carefully - this is the YAML template format GitHub uses
-        4. Notice the structure: `name`, `description`, `title`, `body`
+        **Step 1: Study the familiar template**
+        1. Open `.github/ISSUE_TEMPLATE/workshop-registration.yml`
+        2. Notice the structure: `name`, `description`, `title`, `labels`, `body`
+        3. Then open `docs/samples/challenge-14-registration-remix-example.yml`
+        4. Compare what stayed the same and what changed for the new use case
 
         **Step 2: Create your template file**
-        1. From Challenge 10, you have the repo cloned locally
-        2. On your `fix/YOUR-USERNAME` branch, navigate to `.github/ISSUE_TEMPLATE/`
+        1. From Challenge 10, you already have the repository cloned locally
+        2. On your `fix/YOUR-USERNAME` branch, go to `.github/ISSUE_TEMPLATE/`
         3. Create a new file: `YOUR-USERNAME-template.yml`
-        4. Copy the structure from the example file
+        4. Use the registration template and remix sample as your starting structure
 
-        **Step 3: Design your template**
-        Choose a topic you care about and create fields for it. Examples:
-        - **Accessibility feedback:** Form for reporting accessibility barriers
-        - **Workshop improvement:** Structured suggestion form
-        - **Bug report:** Fields for steps to reproduce
-        - **Feature request:** Fields for problem and proposed solution
+        **Step 3: Choose a new purpose**
+        Pick any structured form that would be useful. Examples:
+        - **Accessibility feedback** for reporting barriers
+        - **Workshop improvement** ideas from participants
+        - **Bug report** with steps to reproduce
+        - **Feature request** with problem and proposed solution
 
-        **Step 4: Required fields**
-        Your template MUST include:
+        **Step 4: Include the required structure**
+        Your template must include:
         ```yaml
         name: "Your Template Name"
-        description: "One sentence describing when to use this"
-        title: "PREFIX: (@{username})"
+        description: "One sentence describing when to use this template"
+        title: "[PREFIX]: "
         labels: ["custom-template"]
         body:
           - type: markdown
             attributes:
               value: |
                 ## Your template heading
-                [Instructions here]
-          - type: textarea
-            id: feedback
-            attributes:
-              label: "Feedback"
-              placeholder: "Type here..."
-            validations:
-              required: true
-        ```
-
-        **Step 5: Commit and push**
-        1. Commit: `git commit -m "Add custom issue template for [your topic]"`
-        2. Push: `git push`
-        3. Create a PR on GitHub (like Challenge 11)
-
-        ### Minimum YAML structure
-
-        ```yaml
-        name: "Your Template Name"
-        description: "One sentence describing when to use this template."
-hidden: true
-        title: "[PREFIX] "
-        labels: ["your-label"]
-        body:
+                Add short instructions here.
           - type: textarea
             id: details
             attributes:
               label: "Details"
               description: "Describe your request."
-hidden: true
             validations:
               required: true
         ```
+
+        **Step 5: Validate and test**
+        1. Check your indentation carefully
+        2. Commit and push your branch
+        3. Open a PR on GitHub
+        4. If you want extra practice, open the issue chooser and confirm your template appears
 
         **Autograded:** The autograder verifies that a YAML file exists in `.github/ISSUE_TEMPLATE/` with a valid `name` field.
 
@@ -88,10 +70,10 @@ hidden: true
     id: evidence
     attributes:
       label: "Your evidence"
-      description: "Paste the URL of your template file and describe what it is for."
-hidden: true
+      description: "Paste the URL of your template file and describe what you remixed."
       placeholder: |
         Template file URL: https://github.com/...
+        I remixed the registration template into: ...
         My template is for: ...
         I included these fields: ...
     validations:
@@ -102,13 +84,14 @@ hidden: true
       value: |
         ### Peer simulation check
 
-        Create a test issue using your own custom template, then compare it with the seeded challenge templates. If you have real buddy access, you may also try your buddy's template.
+        Compare your template with the seeded challenge templates. What information does your template capture more clearly than a blank issue would?
 
         ### If you get stuck
 
         | Symptom | Try this |
         |---|---|
-        | YAML syntax error | YAML is sensitive to indentation. Use 2 spaces (not tabs). Check that all colons have a space after them. |
-        | The template does not appear in the issue chooser | Make sure the file is in `.github/ISSUE_TEMPLATE/` and has a `.yml` extension. The `name` field must be present. |
-        | I do not know what topic to choose | Look at the sample template for inspiration. Any structured form works -- a feedback form, a recipe, a book review. |
+        | I cannot find the familiar template | Open `.github/ISSUE_TEMPLATE/workshop-registration.yml` in this repository. That is the form you used during onboarding. |
+        | YAML syntax error | YAML is indentation-sensitive. Use 2 spaces, not tabs, and make sure each key is followed by a colon. |
+        | I do not know what topic to choose | Start with something simple: a bug report, feedback form, or feature request. |
+        | The template does not appear in the issue chooser | Make sure the file is in `.github/ISSUE_TEMPLATE/`, ends in `.yml`, and includes a `name` field. |
         | I finished but want to check my work | [View the reference solution](https://github.com/Community-Access/git-going-with-github/blob/main/docs/solutions/solution-14-template.md) |

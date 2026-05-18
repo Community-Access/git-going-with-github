@@ -499,16 +499,19 @@ As you review, note any problems:
 ### Learning Cards: Reviewing Pull Requests in VS Code
 
 **Screen reader users:**
+
 - Press `F7` to enter the Accessible Diff Viewer and hear each hunk announced as "Change N of M" with clear "Removed:" and "Added:" labels -- this is far more reliable than navigating the raw split diff line by line
 - After reviewing a hunk, press `Escape` to return to the diff editor, then `Shift+F10` on the target line and select "Add Comment" to place inline feedback exactly where the issue is
 - Use `Alt+F2` (Accessible View) on any hunk for a plain-text rendering you can read with arrow keys at your own pace
 
 **Low-vision users:**
+
 - Switch from split diff to inline diff (`Ctrl+Shift+P` then "Toggle Inline View") to keep all changes in a single column -- much easier at high zoom than scanning two narrow panes
 - Press `F7` / `Shift+F7` to jump between hunks; each hunk gains a visible focus outline that tracks your position so you do not lose your place at high magnification
 - Added lines show a green gutter bar and removed lines a red gutter bar; in High Contrast themes these become bold solid borders visible at any zoom level
 
 **Sighted users:**
+
 - Scan the left gutter for green (added) and red (removed) bars to spot changes quickly, then click the `+` icon on any line to start an inline comment
 - Use the minimap on the right edge of the diff editor to see the distribution of changes across the file and click directly on coloured blocks to jump there
 - Right-click a file in the PR file list and choose "Open Changes" for a side-by-side diff, or "Open File" to see the final state without diff annotations
@@ -518,18 +521,22 @@ As you review, note any problems:
 ### Tool Cards: Create a Pull Request (from your editor)
 
 **VS Code Desktop (primary for Day 2):**
+
 1. `Ctrl+Shift+P` > **GitHub Pull Requests: Create Pull Request**.
 2. Fill in the title, description, and base branch.
 3. Click **Create**.
 
 **github.com (browser):**
+
 1. Push your branch, then click the **Compare & pull request** banner on the repo page.
 2. Fill in the form and click **Create pull request**.
 
 **GitHub Desktop:**
+
 1. After pushing, click **Create Pull Request** -- this opens gitub.com with the form pre-filled.
 
 **Git CLI / GitHub CLI:**
+
 ```bash
 git push -u origin your-branch
 gh pr create --title "Title" --body "Description"
@@ -976,16 +983,19 @@ gh pr merge 42 --auto --squash
 ### Learning Cards: Merging Pull Requests
 
 **Screen reader users:**
+
 - The merge type selector (Merge Commit, Squash, Rebase) is announced as a dropdown or radio group -- use `Arrow` keys to move between options and `Enter` to confirm; if unsure, choose Merge Commit (the default and safest option)
 - After merging, VS Code prompts "Delete branch?" as a notification -- press `Alt+N` to focus the notification and `Enter` to confirm, then run `Ctrl+Shift+P` then "Git: Checkout to" and select `main` to return to your default branch
 - Confirm the merge succeeded by pressing `F6` to reach the Status Bar and verifying it now reads `main` instead of the feature branch name
 
 **Low-vision users:**
+
 - The merge button at the bottom of the PR detail view includes a dropdown arrow for selecting merge type -- at high zoom, widen the editor pane so the button label and dropdown are not truncated
 - After merging, the PR detail view header changes from "Open" (green badge) to "Merged" (purple badge) -- verify this colour/label change before deleting the branch
 - When switching back to `main`, the branch name in the bottom-left Status Bar updates immediately -- confirm it reads `main` before pulling new changes with `Ctrl+Shift+P` then "Git: Pull"
 
 **Sighted users:**
+
 - Click the dropdown arrow next to the green "Merge" button to choose between Merge Commit, Squash and Merge, or Rebase and Merge -- the dropdown shows a brief description of each strategy
 - After merging, a "Delete branch" prompt appears as a blue link in the PR detail view; click it to clean up locally, then check the PR on GitHub.com where a similar button deletes the remote branch
 - Pull merged changes immediately: click the sync icon in the Status Bar (circular arrows) or run `Ctrl+Shift+P` then "Git: Pull" to bring your local `main` up to date
@@ -1678,16 +1688,19 @@ Step 3: VO+Space to activate - this re-notifies the reviewer that you've made ch
 ### Learning Cards: Reviewing on GitHub.com
 
 **Screen reader users:**
+
 - In the Files Changed tab, press `T` to jump to the diff table, then use Focus Mode (`Insert+Space` in NVDA, `Insert+Z` in JAWS) and `Down Arrow` to read line by line -- each added line starts with `+` and each removed line with `-`
 - To place an inline comment, navigate to the target line and press `Tab` or `B` to find the "Add a comment to this line" button; after typing your comment, choose "Start a review" (not "Add single comment") to batch all feedback into one notification
 - Submit your full review by pressing `B` repeatedly to find the "Review changes" button; the dialog contains a radio group (Comment / Approve / Request changes) navigable with `Arrow` keys, then `Tab` to "Submit review"
 
 **Low-vision users:**
+
 - Switch from split diff to unified diff (gear icon in the Files Changed toolbar then select "Unified") to show old and new code in a single column -- much easier to follow at high zoom than two side-by-side panes
 - The blue `+` comment button appears in the line gutter on hover; at high zoom it may be small -- use `Ctrl++` to increase browser zoom and look just left of the line number column
 - The "Review changes" dialog uses clearly labeled radio buttons for the three verdict types; each label includes a brief description, and the currently selected option has a filled circle indicator visible in all themes
 
 **Sighted users:**
+
 - Use the file tree on the left side of the Files Changed page to jump between files; each file shows a coloured bar indicating the ratio of additions (green) to deletions (red) so you can prioritize large changes
 - Hover on any line in the diff gutter to reveal the blue `+` icon for inline comments; click and drag across multiple line numbers to comment on a range of lines at once
 - After adding all inline comments, click the green "Review changes" button at the top right, write a summary sentence, select your verdict, and click "Submit review" to post everything in one batch
@@ -2748,7 +2761,7 @@ Reviewing is not just a gate to keep bad code out. It is one of the fastest ways
 
 </details>
 
-##  Day 2 Teaser: The Full Accessibility Agents Review Ecosystem
+## Day 2 Teaser: The Full Accessibility Agents Review Ecosystem
 
 You now have the manual skills. Chapter 16 shows you how to leverage 50+ specialized agents to make your reviews faster, more consistent, and more thorough - while staying in full control of what you post.
 
@@ -2800,12 +2813,14 @@ Why do this manually before using agents? Because:
 ### A Real Example: The Flow
 
 **Manual Review (your work in part 1-2):**
+
 - Read diff, identify heading hierarchy skip
 - Write comment explaining why it matters
 - Submit your verdict
 
 **Agent-Assisted Review (what you'll do in Chapter 19):**
-1. Run: `@pr-review review PR #14` 
+
+1. Run: `@pr-review review PR #14`
 2. Agent generates a draft review covering the heading skip, link text, and 5 other issues
 3. You read the draft and notice: "the agent's explanation of the heading skip is good, but it missed that the link text on line 23 is still vague. Let me add that."
 4. You post the agent's review + your additions
@@ -2818,6 +2833,7 @@ Your manual skills + agent efficiency = **leverage.**
 > **What's coming later today (Chapter 19):**
 >
 > At the end of the day, Chapter 16 introduces the full 55-agent ecosystem - specialized agents for:
+>
 > - GitHub workflow automation (`@daily-briefing`, `@issue-tracker`, `@analytics`)
 > - Web accessibility auditing (`@web-accessibility-wizard`, `@contrast-master`, `@keyboard-navigator`)
 > - Document scanning (`@word-accessibility`, `@pdf-accessibility`, `@markdown-a11y-assistant`)

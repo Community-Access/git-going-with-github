@@ -1,6 +1,6 @@
 # Challenge Content Review
 
-This document contains the complete set of instructions for all 9 challenges. 
+This document contains the complete set of instructions for all 9 challenges.
 It has been written to prioritize accessibility, inclusive language, and clear progression. Visual dependencies (like "green button"), sensory verbs (like "see" or "look at"), and mouse-specific actions (like "click") have been replaced with inclusive terminology ("activate", "select", "navigate", "verify").
 
 You can review, edit, and refine the content here. Once finalized, Challenge 1 should be pre-created in the template repository, and Challenges 2-9 will be updated in the `student-progression.yml` bot.
@@ -16,7 +16,7 @@ You can review, edit, and refine the content here. Once finalized, Challenge 1 s
 **Body:**
 **Welcome to Git Going with GitHub!**
 
-We are thrilled to have you here. This repository is your safe, private learning environment for Day 1. Let's start by getting comfortable with your surroundings. 
+We are thrilled to have you here. This repository is your safe, private learning environment for Day 1. Let's start by getting comfortable with your surroundings.
 
 **Your Goal:**
 Explore the main areas of a GitHub repository and locate where the files live.
@@ -58,6 +58,7 @@ Explore the main areas of a GitHub repository and locate where the files live.
 You have familiarized yourself with the repository layout and understand where to locate project files.
 
 **Troubleshooting (If you get stuck):**
+
 - **Feel lost?** Use your browser's "Go Back" function or select the repository name at the top left to return to the main page.
 -**Need more context?** Review [Chapter 2: Understanding GitHub](https://github.com/Community-Access/git-going-with-github/blob/main/docs/02-understanding-github.md).
 
@@ -109,8 +110,8 @@ File a new issue describing something you noticed in the repository. It can be a
 1. Run the interactive issue creator: `gh issue create`.
 2. Follow the prompts:
    -**What would you like to do?**: Choose **"Create a new issue"**.
-   -**Title **: Enter a clear title (e.g., "Idea: Add a welcome banner").
-   -**Body **: Select **"Write with editor"** or **"Input text"** and type your sentence.
+   -**Title**: Enter a clear title (e.g., "Idea: Add a welcome banner").
+   -**Body**: Select **"Write with editor"** or **"Input text"** and type your sentence.
    -**What's next?**: Select **"Submit"**.
 
 </details>
@@ -119,6 +120,7 @@ File a new issue describing something you noticed in the repository. It can be a
 The page will update to display your newly created issue with a unique number (like `#2`). Take a deep breath - you just started a conversation in open source!
 
 **Troubleshooting (If you get stuck):**
+
 - **Cannot find the New Issue button?** Ensure you are in the "Issues" tab, rather than Pull Requests or Actions.
 -**Unsure what to write?** Simply type "Hello World! This is my first issue."
 -**Need more context?** Review [Chapter 5: Working with Issues](https://github.com/Community-Access/git-going-with-github/blob/main/docs/05-working-with-issues.md).
@@ -177,6 +179,7 @@ Mention Gandalf, your Workshop Agent, in a comment to ask for a workspace check.
 Your comment will appear in the issue history, and Gandalf will receive a notification to review your progress.
 
 **Troubleshooting:**
+
 - **The menu did not appear?** Gandalf might be busy! Just type `@gandalf-bot` manually and post the comment.
 -**Want more details?** Review [Chapter 5: Working with Issues](https://github.com/Community-Access/git-going-with-github/blob/main/docs/05-working-with-issues.md).
 
@@ -213,8 +216,8 @@ Create a feature branch where you can safely make changes.
 <summary><b>Visual Studio Code</b></summary>
 
 1. Open the **Source Control** view (`Ctrl+Shift+G` or `Cmd+Shift+G` on Mac).
-2. Use the arrow keys to focus the **Branch Name ** indicator in the Status Bar (bottom left) or open the **More Actions (...)** menu.
-3. Choose **Branch ** ->**Create Branch...**.
+2. Use the arrow keys to focus the **Branch Name** indicator in the Status Bar (bottom left) or open the **More Actions (...)** menu.
+3. Choose **Branch** ->**Create Branch...**.
 4. Type your branch name: `feature/my-first-edit`.
 
 </details>
@@ -232,6 +235,7 @@ Create a feature branch where you can safely make changes.
 The page will refresh, and the branch selector will now display your new branch name instead of `main`. Gandalf will detect your new branch and is ready for your first commit!
 
 **Troubleshooting:**
+
 - **Forgot the name?** Don't worry, Gandalf can see all your branches.
 -**Branch name invalid?** Branch names cannot contain spaces. Use hyphens or underscores instead!
 -**Need more guidance?** Review [Chapter 4: The Learning Room](https://github.com/Community-Access/git-going-with-github/blob/main/docs/04-the-learning-room.md).
@@ -273,10 +277,10 @@ Edit a file in your repository and make a commit with a clear message. Ask Ganda
 1. Verify you are on the new branch (check the Status Bar).
 2. Open the `README.md` file (or another of your choice) from the Explorer.
 3. Make a change in the editor and save the file (`Ctrl+S` or `Cmd+S` on Mac).
-4. Stage your changes (this prepares them for your commit): Use the **Source Control ** view (`Ctrl+Shift+G` or `Cmd+Shift+G` on Mac). Use the arrow keys to focus your file and select the **Stage Changes ** icon (plus sign), or use the Command Palette (`Ctrl+Shift+P` or `Cmd+Shift+P` on Mac) and search for **"Git: Stage Changes"**.
+4. Stage your changes (this prepares them for your commit): Use the **Source Control** view (`Ctrl+Shift+G` or `Cmd+Shift+G` on Mac). Use the arrow keys to focus your file and select the **Stage Changes** icon (plus sign), or use the Command Palette (`Ctrl+Shift+P` or `Cmd+Shift+P` on Mac) and search for **"Git: Stage Changes"**.
 5. Type your commit message in the message field (e.g., "Add my name to the README").
-6. Finalize your commit: Select the **Commit ** button, use `Ctrl+Enter` (`Cmd+Enter` on Mac), or use the Command Palette (`Ctrl+Shift+P` or `Cmd+Shift+P` on Mac) and search for **"Git: Commit"**.
-7. Send your work to GitHub: Select the **Sync Changes ** or **Publish Branch ** button in the Source Control view, or use the Command Palette and search for **"Git: Push"**.
+6. Finalize your commit: Select the **Commit** button, use `Ctrl+Enter` (`Cmd+Enter` on Mac), or use the Command Palette (`Ctrl+Shift+P` or `Cmd+Shift+P` on Mac) and search for **"Git: Commit"**.
+7. Send your work to GitHub: Select the **Sync Changes** or **Publish Branch** button in the Source Control view, or use the Command Palette and search for **"Git: Push"**.
 
 </details>
 
@@ -294,6 +298,7 @@ Edit a file in your repository and make a commit with a clear message. Ask Ganda
 Your changes are securely saved! If you want feedback on your message, mention `@gandalf-bot` in your next comment.
 
 **Troubleshooting:**
+
 - **Accidentally saved to the wrong branch?** Ask Gandalf or a facilitator for help.
 -**Want to read more?** [Chapter 4: The Learning Room](https://github.com/Community-Access/git-going-with-github/blob/main/docs/04-the-learning-room.md).
 
@@ -322,7 +327,7 @@ Open a Pull Request and let Gandalf run her first set of automated accessibility
 1. Navigate to the **Pull requests** tab and choose **New pull request**.
 2. Ensure the *base* branch is `main` and *compare* is your feature branch.
 3. Choose **Create pull request** and give it a descriptive title.
-4. In the description field, type `Closes #1` (or your issue number). 
+4. In the description field, type `Closes #1` (or your issue number).
 5. Select **Create pull request** to submit.
 
 </details>
@@ -332,7 +337,7 @@ Open a Pull Request and let Gandalf run her first set of automated accessibility
 
 1. Open the **GitHub Pull Requests and Issues** view from the Activity Bar, or open the Command Palette (`Ctrl+Shift+P` or `Cmd+Shift+P` on Mac).
 2. Run **GitHub Pull Requests: Create Pull Request**, or select the **Create Pull Request** button in the Pull Requests view.
-3. Choose the **Compare Branch ** (e.g., `feature/my-first-edit`) and the **Base Branch** (`main`).
+3. Choose the **Compare Branch** (e.g., `feature/my-first-edit`) and the **Base Branch** (`main`).
 4. Type your PR title (e.g., "Add my name to the README").
 5. In the description field, include `Closes #1` to link it to your issue.
 6. Select **Create** or use the keyboard shortcut announced by the create view.
@@ -344,8 +349,8 @@ Open a Pull Request and let Gandalf run her first set of automated accessibility
 
 1. Run the interactive PR creator: `gh pr create`.
 2. Follow the prompts:
-   -**Title **: Enter a clear title (e.g., "Add my name to the README").
-   -**Body **: Select **"Write with editor"** and include `Closes #1` in your description.
+   -**Title**: Enter a clear title (e.g., "Add my name to the README").
+   -**Body**: Select **"Write with editor"** and include `Closes #1` in your description.
    -**What's next?**: Select **"Submit"**.
 
 </details>
@@ -354,9 +359,10 @@ Open a Pull Request and let Gandalf run her first set of automated accessibility
 Your PR is live! Within seconds, look for a comment from **Gandalf the Workshop Agent**. Gandalf will provide a "Validation Report" on your changes.
 
 **Troubleshooting:**
+
 - **Gandalf didn't respond?** Check the "Checks" tab at the top of the PR to see if her automation is running.
 -**Validation failed?** Read Gandalf's report! She usually provides specific tips on how to fix accessibility issues.
--**Learn more about PRs: ** [Chapter 6: Working with Pull Requests](https://github.com/Community-Access/git-going-with-github/blob/main/docs/06-working-with-pull-requests.md).
+-**Learn more about PRs:** [Chapter 6: Working with Pull Requests](https://github.com/Community-Access/git-going-with-github/blob/main/docs/06-working-with-pull-requests.md).
 
 **To Unlock Challenge 7:**
 Post a link to your Pull Request right here, then activate **Close issue**!
@@ -381,9 +387,9 @@ Resolve a conflict if one appears, or ask Gandalf to explain how conflicts work.
 <summary><b>Web Browser</b></summary>
 
 1. If your PR has a conflict, select the **Resolve conflicts** button.
-2. Look for the markers: `<<<<<<<`, `=======`, and `>>>>>>>`. 
+2. Look for the markers: `<<<<<<<`, `=======`, and `>>>>>>>`.
 3. Edit the text to your preferred version and remove the markers.
-4. Finalize the resolution by selecting **Mark as resolved ** and **Commit merge**.
+4. Finalize the resolution by selecting **Mark as resolved** and **Commit merge**.
 
 </details>
 
@@ -416,6 +422,7 @@ Resolve a conflict if one appears, or ask Gandalf to explain how conflicts work.
 The conflict warning will disappear. If you asked Gandalf for help, she'll reply with a step-by-step guide to conflict resolution.
 
 **Troubleshooting:**
+
 - **No conflict?** You're lucky! But still ask Gandalf: `@gandalf-bot explain merge conflict` to learn for next time.
 -**Need a deep dive?** Read [Chapter 7: Merge Conflicts](https://github.com/Community-Access/git-going-with-github/blob/main/docs/07-merge-conflicts.md).
 
@@ -437,6 +444,7 @@ Writing code is only a small part of open source. The rest relies on communicati
 Reflect on community norms, healthy collaboration, and inclusive contribution practices.
 
 **Step-by-Step:**
+
 1. Take a few minutes to review [Chapter 8: Open Source Culture](https://github.com/Community-Access/git-going-with-github/blob/main/docs/08-open-source-culture.md).
 2. Consider a time a project or group made you feel welcomed, or what you would do to make others feel welcome.
 3. Write a short reflection about how good communication impacts software development teams.
@@ -445,6 +453,7 @@ Reflect on community norms, healthy collaboration, and inclusive contribution pr
 A stronger appreciation for the humans behind the screens, and an understanding of how tone in PRs and reviews makes all the difference.
 
 **Troubleshooting:**
+
 - **Unsure what to write?** Just share one sentence about what "assuming best intent" means to you.
 -**Feeling stuck?** Discuss it with your buddy!
 
@@ -483,7 +492,7 @@ Get your Pull Request reviewed, approved, and merged! Gandalf will be cheering y
 
 1. Open the **Pull Requests** view.
 2. Use the arrow keys to choose your PR from the list.
-3. Open the **More Actions (...) ** menu or select the **Merge** button at the top of the PR overview.
+3. Open the **More Actions (...)** menu or select the **Merge** button at the top of the PR overview.
 4. Choose the merge strategy (e.g.,**Create Merge Commit** or **Squash and Merge**).
 5. Finalize the merge by selecting **Confirm Merge**.
 6. Select **Delete Branch** if prompted to keep the repository clean.
@@ -501,9 +510,10 @@ Get your Pull Request reviewed, approved, and merged! Gandalf will be cheering y
 </details>
 
 **Expected Outcome:**
-Your Pull Request will display a "Merged" status indicator. Gandalf might leave a final celebratory comment on your repository! 
+Your Pull Request will display a "Merged" status indicator. Gandalf might leave a final celebratory comment on your repository!
 
 **Troubleshooting:**
+
 - **The merge button is disabled?** Gandalf or other automated checks might still be running. Wait for the green checkmarks!
 -**Want to know more about wrapping up?** Check out [Chapter 10: Notifications and Day 1 Close](https://github.com/Community-Access/git-going-with-github/blob/main/docs/10-notifications-and-day-1-close.md).
 
@@ -541,7 +551,7 @@ Clone your repository to your local machine, create a branch, make a change, and
 4. Paste the URL and choose a folder on your computer. Select **Open** in the new window.
 5. Create a new branch: Use the arrow keys to focus the branch name in the Status Bar (bottom left) or use the Command Palette (`Ctrl+Shift+P` or `Cmd+Shift+P` on Mac) and search for **"Git: Create Branch..."**.
 6. Edit a file, save it (`Ctrl+S` or `Cmd+S` on Mac), and open the **Source Control** view (`Ctrl+Shift+G` or `Cmd+Shift+G` on Mac).
-7. Stage your changes: Use the arrow keys to focus your file and select the **Stage Changes ** icon (plus sign), type a message, and select **Commit** (`Ctrl+Enter` or `Cmd+Enter` on Mac).
+7. Stage your changes: Use the arrow keys to focus your file and select the **Stage Changes** icon (plus sign), type a message, and select **Commit** (`Ctrl+Enter` or `Cmd+Enter` on Mac).
 8. Choose **Publish Branch** to send it to GitHub.
 
 </details>
@@ -561,9 +571,9 @@ Clone your repository to your local machine, create a branch, make a change, and
 <details>
 <summary><b>GitHub Desktop</b></summary>
 
-1. Copy the repository URL and select **File ** ->**Clone repository...** in GitHub Desktop.
-2. Select the **URL ** tab, paste the link, and choose your local path. Select **Clone**.
-3. Select the **Current Branch ** menu and choose **New Branch** -> name it `feature/day2-local-edit`.
+1. Copy the repository URL and select **File** ->**Clone repository...** in GitHub Desktop.
+2. Select the **URL** tab, paste the link, and choose your local path. Select **Clone**.
+3. Select the **Current Branch** menu and choose **New Branch** -> name it `feature/day2-local-edit`.
 4. Open the file in your preferred editor, make a change, and save.
 5. Return to GitHub Desktop. Your changes will be listed on the left.
 6. Provide a summary in the bottom-left box and select **Commit to [branch-name]**.
@@ -575,6 +585,7 @@ Clone your repository to your local machine, create a branch, make a change, and
 Your changes made on your computer are securely backed up on GitHub. You will be able to see your new branch listed in the repository's branch selector on the website.
 
 **Troubleshooting:**
+
 - **Having trouble cloning?** Ensure you copied the correct HTTPS or SSH URL from the repository.
 -**Push rejected?** Make sure you committed your changes first.
 -**Need a walkthrough?** Review [Chapter 14: Git in Practice](https://github.com/Community-Access/git-going-with-github/blob/main/docs/14-git-in-practice.md).
@@ -613,7 +624,7 @@ Open a Pull Request from your local branch and wait for Gandalf's automated vali
 
 1. Open the **GitHub Pull Requests and Issues** view from the Activity Bar, or open the Command Palette (`Ctrl+Shift+P` or `Cmd+Shift+P` on Mac).
 2. Run **GitHub Pull Requests: Create Pull Request**, or select the **Create Pull Request** button in the Pull Requests view.
-3. Choose the **Compare Branch ** (e.g., `feature/day2-local-edit`) and the **Base Branch** (`main`).
+3. Choose the **Compare Branch** (e.g., `feature/day2-local-edit`) and the **Base Branch** (`main`).
 4. Type your PR title (e.g., "Day 2 local edit").
 5. In the description field, type a sentence or two summarizing your change.
 6. Select **Create** or use the keyboard shortcut announced by the create view.
@@ -625,8 +636,8 @@ Open a Pull Request from your local branch and wait for Gandalf's automated vali
 
 1. Run the interactive PR creator: `gh pr create`.
 2. Follow the prompts:
-   -**Title **: Enter a clear title (e.g., "Day 2 local edit").
-   -**Body **: Select **"Write with editor"** and summarize your changes.
+   -**Title**: Enter a clear title (e.g., "Day 2 local edit").
+   -**Body**: Select **"Write with editor"** and summarize your changes.
    -**What's next?**: Select **"Submit"**.
 
 </details>
@@ -635,6 +646,7 @@ Open a Pull Request from your local branch and wait for Gandalf's automated vali
 Your Pull Request is live! Gandalf will run the automated checks and post a validation report right in the conversation.
 
 **Troubleshooting:**
+
 - **Cannot find your branch?** Verify that the "push" command completed successfully locally.
 -**Gandalf is silent?** Check the "Checks" tab to see if the workflow is running.
 Post a link to your new Pull Request right here, then activate **Close issue**!
@@ -691,6 +703,7 @@ Review a classmate's Pull Request and provide specific, constructive feedback. G
 Your feedback appears on their PR! Gandalf will post a celebration message once your review is approved.
 
 **Troubleshooting:**
+
 - **No classmate PRs to review?** Ask a facilitator for a sample PR to practice on.
 -**Want to learn how to frame feedback?** Review [Chapter 15: Code Review](https://github.com/Community-Access/git-going-with-github/blob/main/docs/15-code-review.md).
 
@@ -749,6 +762,7 @@ Use GitHub Copilot to suggest improvements and have Gandalf review the result!
 You have successfully utilized AI to enhance your output while staying the "human-in-the-loop."
 
 **Troubleshooting:**
+
 - **Copilot not responding?** Ensure you are signed into GitHub in VS Code.
 -**Want prompt ideas?** Review [Chapter 16: GitHub Copilot](https://github.com/Community-Access/git-going-with-github/blob/main/docs/16-github-copilot.md).
 
@@ -804,10 +818,11 @@ Create a custom YAML issue template in your repository.
 </details>
 
 **Expected Outcome:**
-An automated check will verify your template contains the required 
+An automated check will verify your template contains the required
 ame and description fields. Once merged, future contributors will see this template as an option when creating a new issue!
 
 **Troubleshooting:**
+
 - **Autograder failed?** Double check your YAML spacing and indentation.
 -**Need a YAML template example?** Review [Chapter 17: Issue Templates](https://github.com/Community-Access/git-going-with-github/blob/main/docs/17-issue-templates.md).
 
@@ -829,6 +844,7 @@ Accessibility Agents like Gandalf are automated tools that assist visually impai
 Explore the main `accessibility-agents` repository. Ask Gandalf if you have questions about any particular agent!
 
 **Step-by-Step:**
+
 1. Navigate to the [Community-Access/accessibility-agents](https://github.com/Community-Access/accessibility-agents) repository.
 2. Read the `README.md` to understand how Gandalf and its colleagues work.
 3. Explore an existing agent folder to see its structure.
@@ -837,6 +853,7 @@ Explore the main `accessibility-agents` repository. Ask Gandalf if you have ques
 You'll understand the agent architecture. If you're confused, mention `@gandalf-bot` with: "How does the agent schema work?"
 
 **Troubleshooting:**
+
 - **Lost?** Ask Gandalf for help.
 -**Want architectural context?** Review [Chapter 19: Accessibility Agents](https://github.com/Community-Access/git-going-with-github/blob/main/docs/19-accessibility-agents.md).
 
@@ -897,6 +914,7 @@ Choose Accessibility Agents, GLOW, or another meaningful repository. Create or i
 You will have a review-ready contribution path: a PR, branch, draft issue, or contribution plan that explains who it helps, what it does, and how it stays safe.
 
 **Troubleshooting:**
+
 - **Workflow issues?** See [Chapter 18: Fork and Contribute](https://github.com/Community-Access/git-going-with-github/blob/main/docs/18-fork-and-contribute.md).
 - **Need capstone examples?** See [Chapter 20: Capstone Project](https://github.com/Community-Access/git-going-with-github/blob/main/docs/20-build-your-agent.md).
 

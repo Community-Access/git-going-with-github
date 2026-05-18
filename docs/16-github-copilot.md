@@ -710,6 +710,7 @@ Useful built-in actions include:
 Copilot Edits is the **Edit** chat mode. Instead of just answering questions, Copilot proposes actual file changes — shown as a diff — across multiple files at once. You review every change before anything is saved.
 
 **When to use it:**
+
 - Renaming something used across many files
 - Updating documentation to match a code change
 - Adding the same pattern (e.g., error handling, a header comment) to multiple files
@@ -779,6 +780,7 @@ Copilot Edits is the **Edit** chat mode. Instead of just answering questions, Co
 Agent mode is the most autonomous way to use Copilot. You describe a goal and Copilot figures out what files to open, what changes to make, and what commands to run - asking for your approval when it needs to run something that has side effects.
 
 **When to use it:**
+
 - Scaffolding a new feature from scratch
 - Running a complex multi-step task that involves several files and commands
 - Tasks where you're not sure which files need to change
@@ -821,16 +823,19 @@ When Agent mode wants to run a shell command (like `npm run build` or `git commi
 ### Learning Cards: Agent Mode
 
 **Screen reader users:**
+
 - Agent mode's terminal command approval dialogs are announced differently by NVDA ("dialog") vs JAWS ("message box") vs VoiceOver ("alert") -- learn your screen reader's announcement so you recognize approval prompts instantly
 - Listen for the confirmation prompt before any terminal command executes -- pressing Enter without reading the command is the single highest-risk action in Agent mode
 - Use Accessible View (`Alt+F2`) to review the multi-step plan Agent mode proposes before approving; the plan is often too long for live region announcements to capture fully
 
 **Low-vision users:**
+
 - Agent mode's progress appears in the Chat panel -- if your zoom level pushes the panel narrow, widen it or pop it out so multi-step status lines do not truncate
 - Terminal command approval buttons use the same accent color as other VS Code buttons; consider a high-contrast theme so approval prompts stand out from surrounding chat text
 - Watch the file tabs along the top -- Agent mode opens and edits files automatically, and new tabs appearing is your visual cue that changes are happening
 
 **Sighted users:**
+
 - Agent mode is the highest-autonomy Copilot feature -- it can create files, run terminal commands, and install packages, so always read the approval dialog before clicking Continue
 - The diff view after each Agent action shows exactly what changed; review diffs before moving to the next step rather than approving the entire sequence blindly
 - Use the Plan step (type "plan" in Agent mode) to preview the full sequence before execution, especially for unfamiliar codebases
@@ -985,16 +990,19 @@ Maintainers can use Copilot to review pull requests on GitHub.com. As a contribu
 ### Learning Cards: Copilot on GitHub.com
 
 **Screen reader users:**
+
 - The Copilot chat icon on GitHub.com is in the site header -- navigate by landmark (`d` in NVDA/JAWS browse mode) to reach the banner, then find the button labeled "Open GitHub Copilot Chat"
 - PR description generation uses a sparkle button ("Copilot actions") next to the description field -- Tab through the PR form controls to find it; it is not inside the markdown toolbar
 - Browser-based Copilot Chat responses are standard page content, not a VS Code panel -- your normal web reading commands (arrows, headings, links) work without any special mode
 
 **Low-vision users:**
+
 - The Copilot icon in the GitHub.com header is small (16px) -- zoom to at least 200% or use browser find (`Ctrl+F` and type "Copilot") to locate the chat entry point faster
 - PR description suggestions appear inline in the description textarea; the sparkle button sits to the right of the formatting toolbar and may scroll off-screen at high zoom levels
 - GitHub.com Copilot Chat opens as a side panel that overlaps page content on narrow viewports -- resize the panel or collapse the file tree to reclaim space
 
 **Sighted users:**
+
 - Look for the Copilot sparkle icon in the top-right header area of any GitHub.com page to open chat; on PR pages, a second sparkle button appears next to the description field
 - GitHub.com Copilot and VS Code Copilot are separate surfaces. Some account state and agent sessions may connect across surfaces, but prompts, local workspace context, and extensions do not automatically carry over
 - Use the Copilot chat on GitHub.com for quick questions about repos, issues, and PRs without needing to clone anything locally
@@ -1403,16 +1411,19 @@ When Copilot suggests code or Markdown:
 ### Learning Cards: Using Accessible View with Copilot Responses
 
 **Screen reader users:**
+
 - Build the `Alt+F2` --> read --> `Ctrl+/` muscle memory: press `Alt+F2` to open Accessible View, read the response at your own pace with arrow keys, then press `Ctrl+/` to insert the code suggestion into your file
 - Accessible View converts Copilot's streaming markdown into a plain text buffer -- headings, lists, and code blocks are all there, but read as flat text without formatting announcements, which is often easier to parse
 - If a Copilot response contains multiple code blocks, each block starts on its own line in Accessible View -- use your search command (`Ctrl+F` in the view) to jump between code blocks quickly
 
 **Low-vision users:**
+
 - Accessible View opens as a separate editor pane that inherits your font size and theme -- if Copilot Chat text is too small in the sidebar, `Alt+F2` gives you the same content at your preferred zoom
 - The Accessible View pane can be resized like any editor pane; drag the border or use the keyboard layout commands to give it more horizontal space for long code lines
 - Use `Ctrl+/` from Accessible View to insert code at your cursor position without needing to copy-paste manually, reducing the chance of losing your place in the file
 
 **Sighted users:**
+
 - Even with full vision, `Alt+F2` is useful when Copilot Chat responses are long -- it opens the response as a full editor buffer where you can scroll, search, and select text more easily than in the Chat sidebar
 - The `Ctrl+/` shortcut (insert at cursor) works from Accessible View regardless of whether accessibility mode is on -- it is a productivity shortcut, not just an accessibility feature
 - If you ever lose track of what Copilot suggested, `Alt+F2` always shows the most recent response without scrolling through chat history
@@ -1680,6 +1691,7 @@ VS Code 1.120 (May 2026) introduced several new Copilot features that accelerate
 **Smart Actions** are AI-powered suggestions for common tasks like generating commit messages, renaming symbols, fixing errors, and searching for related code semantically. They appear when you click the lightbulb icon (`Ctrl+.`) or interact with errors.
 
 Common Smart Actions:
+
 - **Generate Commit Message** - Turn staged changes into a descriptive commit message
 - **Rename Symbol** - Rename a variable or function and all references at once
 - **Fix Error** - Get suggestions to fix compilation, lint, or test errors

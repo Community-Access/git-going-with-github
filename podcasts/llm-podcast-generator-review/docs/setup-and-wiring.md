@@ -314,7 +314,7 @@ For a strict regeneration (wipe old durable state and prior published artifacts 
 generate-llm-batch-jobs.bat --clean
 ```
 
-2. Confirm durable execution completed:
+1. Confirm durable execution completed:
 
 ```powershell
 Get-ChildItem "podcasts/llm-podcast-generator-review/generated/execution/reports" -File `
@@ -322,14 +322,14 @@ Get-ChildItem "podcasts/llm-podcast-generator-review/generated/execution/reports
 | Select-Object -First 1 -ExpandProperty FullName
 ```
 
-3. Confirm all selected scripts were published:
+1. Confirm all selected scripts were published:
 
 ```powershell
 $summary = Get-Content "podcasts/llm-podcast-generator-review/generated/scripts-only/<run>/summary.json" -Raw | ConvertFrom-Json
 "selected=$($summary.selected) published=$($summary.published) failed=$($summary.failed)"
 ```
 
-4. Run repository validation gates:
+1. Run repository validation gates:
 
 ```powershell
 npm run test:automation
@@ -339,7 +339,7 @@ npm run validate:podcast-feed
 npm run build:podcast-site
 ```
 
-5. If audio integration is required for signoff, run a targeted live slug check:
+1. If audio integration is required for signoff, run a targeted live slug check:
 
 ```powershell
 python -m podcasts.tts.generate_audio --start 5 --end 5 --force --audio-format mp3

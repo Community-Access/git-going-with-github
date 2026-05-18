@@ -24,6 +24,7 @@
 An **agent** is a standalone AI system (like `@aria-specialist`) that understands one domain (ARIA patterns). A **subagent** is an agent invoked by another agent to delegate work.
 
 **Example workflow:**
+
 ```
 User: @web-accessibility-wizard [audit this page]
   ↓ (orchestrates multiple specialists)
@@ -65,7 +66,7 @@ const contrastResults = await runSubagent({
 ### When to Use Subagents
 
 | Scenario | Primary Agent | Subagents | Benefit |
-|----------|---------------|-----------|---------| 
+|----------|---------------|-----------|---------|
 | **Full page audit** | `@web-accessibility-wizard` | All specialists | Parallel scanning, consolidated report |
 | **Code review** | `@web-issue-fixer` | `@aria-specialist`, `@contrast-master` | Verify fixes across multiple domains |
 | **Document audit** | `@document-accessibility-wizard` | Platform-specific agents | Single entry point for Word/PDF/Excel |
@@ -85,12 +86,14 @@ const contrastResults = await runSubagent({
 A **skill** is a reusable, multi-step workflow bundled with reference files, templates, and automation scripts. Skills are invoked by agents or directly by users via slash commands.
 
 **Example:** The `web-scanning` skill contains:
+
 - Step-by-step crawling logic
 - URL inventory templates
 - Browser automation code
 - Reference documentation
 
 **Example:** The `report-generation` skill contains:
+
 - Severity scoring algorithms
 - Scorecard templates
 - CSV export logic
@@ -116,6 +119,7 @@ Accessibility Agents includes a library of reusable skills organized by capabili
 ### How to Use a Skill
 
 **From Copilot Chat:**
+
 ```
 /web-scanning [URL]
 /report-generation [findings JSON]
@@ -123,6 +127,7 @@ Accessibility Agents includes a library of reusable skills organized by capabili
 ```
 
 **From a Custom Agent:**
+
 ```markdown
 ## Invoke Skills
 
@@ -167,6 +172,7 @@ What problem does this skill solve?
 ```
 
 **Supporting files:**
+
 - `templates/` - Templates for input/output
 - `scripts/` - Automation scripts (shell, Python)
 - `reference/` - Reference data (lookup tables, compliance mappings)
@@ -188,6 +194,7 @@ This prevents code duplication and ensures consistent behavior across agents.
 A **hook** is a JSON configuration that triggers agent actions automatically at specific lifecycle events. Hooks enforce accessibility standards without requiring the user to remember to ask for an audit.
 
 **Lifecycle events:**
+
 - On file edit (before save)
 - On file save (after save)
 - On commit (before push)
@@ -308,12 +315,15 @@ A **hook** is a JSON configuration that triggers agent actions automatically at 
 ### Enabling Hooks by Platform
 
 **GitHub Copilot (VS Code):**
+
 - Place `accessibility.hooks.json` in `.github/hooks/`
 - Hooks are read on workspace open
 - View hook status: Settings Gear → Accessibility Hooks
 
 **Claude Code:**
+
 - Configure in `.claude-code.toml`:
+
   ```toml
   [hooks]
   enabled = true
@@ -321,7 +331,9 @@ A **hook** is a JSON configuration that triggers agent actions automatically at 
   ```
 
 **Claude Desktop (MCP):**
+
 - Configure in `.mcp.json`:
+
   ```json
   {
     "accessibility-agents": {

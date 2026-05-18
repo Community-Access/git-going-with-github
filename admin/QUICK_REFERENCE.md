@@ -1,4 +1,5 @@
 # Quick Reference Guide
+
 ## Essential Commands, Shortcuts, and File Locations
 
 ## Screen Reader Commands for GitHub
@@ -77,6 +78,7 @@
 ## Git Commands (Terminal)
 
 ### Repository Setup
+
 ```bash
 git clone https://github.com/[USERNAME]/[REPO].git    # Clone your fork
 cd [REPO]                                               # Enter folder
@@ -85,6 +87,7 @@ git remote add upstream https://github.com/[ORIGINAL]   # Add upstream
 ```
 
 ### Branch Workflow
+
 ```bash
 git checkout -b [branch-name]           # Create and switch to branch
 git branch -a                            # List all branches
@@ -93,6 +96,7 @@ git push origin [branch-name]            # Push branch to GitHub
 ```
 
 ### Staging and Committing
+
 ```bash
 git status                               # See what changed
 git add [file]                           # Stage specific file
@@ -102,6 +106,7 @@ git push origin [branch-name]            # Push commits
 ```
 
 ### Pulling Updates
+
 ```bash
 git pull origin main                     # Pull latest from your fork
 git pull upstream main                   # Pull latest from upstream
@@ -111,6 +116,7 @@ git fetch upstream                       # Fetch without merging
 ## File Locations Reference
 
 ### Template & Agent Files
+
 ```
 .github/
 ├── ISSUE_TEMPLATE/
@@ -135,6 +141,7 @@ git fetch upstream                       # Fetch without merging
 ```
 
 ### Documentation Files
+
 ```
 docs/
 ├── 00-pre-workshop-setup.md             ← Start here

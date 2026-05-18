@@ -1,4 +1,5 @@
 # Facilitator Operations Guide
+
 ## Real-Time Workshop Management Procedures
 
 This guide provides step-by-step procedures for facilitators during the workshop. Use this alongside [FACILITATOR_GUIDE.md](FACILITATOR_GUIDE.md) for the big picture and [FACILITATOR_CLASSROOM_TROUBLESHOOTING.md](FACILITATOR_CLASSROOM_TROUBLESHOOTING.md) for problem-solving.
@@ -10,6 +11,7 @@ This guide provides step-by-step procedures for facilitators during the workshop
 ### Facilitator Workstation Setup
 
 **Physical Setup:**
+
 - [ ] Primary monitor: GitHub Classroom dashboard
 - [ ] Secondary monitor (or browser tab): Student repo template / demo repo
 - [ ] Laptop: Video call software tested
@@ -19,8 +21,9 @@ This guide provides step-by-step procedures for facilitators during the workshop
 - [ ] Noise-canceling headphones (optional but helpful)
 
 **Software Setup:**
+
 - [ ] GitHub Classroom dashboard open and logged in
-  - URL: https://classroom.github.com
+  - URL: <https://classroom.github.com>
   - Bookmark this for quick access
 - [ ] Test student repo open in a tab (your repo you created during setup)
 - [ ] GitHub Discussions / chat channel open
@@ -28,6 +31,7 @@ This guide provides step-by-step procedures for facilitators during the workshop
 - [ ] Email client visible (for student emails)
 
 **Communication Setup:**
+
 - [ ] Co-facilitator has your phone number
 - [ ] You have their phone number
 - [ ] Both have chat channel open
@@ -57,6 +61,7 @@ Open [classroom.github.com](https://classroom.github.com):
 ### Notification Setup
 
 Ask GitHub or chat platform to notify you of:
+
 - [ ] GitHub Discussions (if using for questions)
 - [ ] Mentions in chat (@facilitator)
 - [ ] Direct messages from students
@@ -80,6 +85,7 @@ Ask GitHub or chat platform to notify you of:
 ### First 60 Seconds on Call
 
 1. **Welcome message to chat:**
+
    ```
    Welcome to the GitHub Workshop! 👋 
    If you can see this message, you're connected.
@@ -132,6 +138,7 @@ Ask GitHub or chat platform to notify you of:
 **Step 1: Share the invite link**
 
 In chat, post:
+
 ```
 Here's your Day 1 invite link:
 [PASTE YOUR INVITE LINK]
@@ -149,6 +156,7 @@ Accept and GitHub creates your repo.
 **Step 3: Guide through the process**
 
 In chat as things happen:
+
 ```
 Great! I see people accepting the invite.
 You should now be in your private repo.
@@ -159,6 +167,7 @@ When you see it, say so in chat!
 **Step 4: Help people who are stuck**
 
 After 5 minutes, if someone hasn't said they found Challenge 1:
+
 - Message them directly: "Hey @[name], did you find your Challenge 1? Let me know if you need help."
 - Check dashboard: Did their repo get created?
 - If repo created but they can't find issue: Direct link: `github.com/community-access-classroom/learning-room-[username]/issues`
@@ -173,12 +182,14 @@ Wait until 70%+ have said they see Challenge 1 before moving forward.
 
 1. **Open your test repo on screen**
 2. **Narrate what you're doing:**
+
    ```
    "I'm going to show you what Challenge 1 looks like.
    I'm clicking the Issues tab...
    I see Challenge 1 here...
    Let me read it to you..."
    ```
+
 3. **Read the challenge issue text out loud** (slowly, pausing between sentences)
 4. **Point out key sections:**
    - "Here's what I need to do: [describe]"
@@ -285,32 +296,38 @@ Answer a few questions, then:
 
 ### Proactive Interventions (By Time)
 
-**0-15 min:** 
+**0-15 min:**
+
 - Monitor dashboard constantly
 - Expect: First PRs being created
 - If nothing: "Anyone need help with their first PR?"
 
 **15-30 min:**
+
 - Gandalf bot feedback should be flowing
 - Look for confused students
 - In chat: "Anyone see feedback from Gandalf? Let me know if it's confusing!"
 
 **30-60 min:**
+
 - First merges happening
 - New challenges appearing
 - Celebrate: "🎉 @student1 just merged their first PR! Nice work!"
 
 **60-120 min:**
+
 - Mixed activity
 - Some on Challenge 2, others still on Challenge 1 — both OK
 - Check on quiet students: "How's it going, @student2?"
 
 **120-180 min:**
+
 - Momentum building
 - Multiple PRs happening simultaneously
 - Watch for: Stuck students (same challenge 60+ min)
 
 **180-270 min:**
+
 - Peak activity
 - Help focuses on blockers, not starters
 - Celebrate milestones: "Wow, @student3 is on Challenge 3!"
@@ -329,6 +346,7 @@ Answer a few questions, then:
 ### Peer Review Encouragement
 
 **What to look for:**
+
 - Student A finishes Challenge 1
 - Student B also finished Challenge 1
 - Opportunity: Have them review each other!
@@ -337,6 +355,7 @@ Answer a few questions, then:
 > "@student1 and @student2 — you both finished Challenge 1! Want to review each other's PRs? That's how real developers work."
 
 **Guide them:**
+
 - "Go to their PR"
 - "Click 'Files changed'"
 - "Leave a comment on lines you have thoughts about"
@@ -349,12 +368,14 @@ Answer a few questions, then:
 ### 0:00-0:10: Celebration
 
 **Pull Classroom dashboard data:**
+
 - X students accepted
 - Y PRs merged
 - Z students on Challenge 2+
 
 **Say:**
 > "Okay everyone, look at what you did today:
+>
 > - [X] of you joined the workshop
 > - [Y] pull requests were merged
 > - [Z] of you are already on Challenge 2
@@ -367,6 +388,7 @@ In chat or on call:
 > "Tell us in chat: What was one thing you learned about GitHub today? Or something that surprised you?"
 
 Read responses out loud and affirm them:
+
 - "GitHub is [response]" ✓
 - "Peer review is [response]" ✓  
 - "I struggled with [thing] but figured it out" ✓✓✓ **BIG CELEBRATION**
@@ -376,6 +398,7 @@ Read responses out loud and affirm them:
 > "Anyone still stuck on Challenge 1 and want help?"
 
 Help them:
+
 - Offer to review their PR if Gandalf bot isn't responding
 - Give them a nudge in right direction
 - Or schedule 1:1 after call
@@ -385,6 +408,7 @@ Help them:
 > "Tomorrow we go deeper. Same process, harder challenges. You've got the skills now.
 >
 > Here's what to expect:
+>
 > - Code review deep dive
 > - Challenges 10-16 (progressively harder)
 > - More peer collaboration
@@ -401,6 +425,7 @@ Listen and note anything that broke. Fix it that night if possible.
 ### 0:45-1:00: Optional Office Hours
 
 > "We're staying on the call for office hours. If you want to:
+>
 > - Finish your first PR
 > - Start Challenge 2
 > - Ask follow-up questions
@@ -416,11 +441,13 @@ Monitor chat and help individuals.
 ### Energy Management
 
 **Every 60 minutes:**
+
 - Announce: "Quick break everyone. Stand up, stretch, grab water. We'll resume in 5."
 - Facilitators: Actually take a break too
 - Mental check: Are you OK? Hydrated? Focused?
 
 **Every 120 minutes:**
+
 - Celebrate progress: "Look at the dashboard! So many merges today!"
 - Remind students: "This is normal pace. Everyone's doing great."
 - Check co-facilitator: "How are you doing? Need to switch tasks?"
@@ -428,11 +455,13 @@ Monitor chat and help individuals.
 ### Dashboard Fatigue Prevention
 
 **Don't:**
+
 - Stare at dashboard constantly (you'll miss chat questions)
 - Check every 1 minute (data doesn't change that fast)
 - Panic if someone is quiet (they might be concentrating)
 
 **Do:**
+
 - Refresh every 5-10 minutes
 - Trust that bots are working
 - Pay attention to chat too (it's often where real help requests go)
@@ -440,6 +469,7 @@ Monitor chat and help individuals.
 ### When Students Help Students
 
 **This is great.** When you notice:
+
 - "I see @student1 helping @student2 with merge conflicts!"
 
 **Publicly celebrate it:**
@@ -467,6 +497,7 @@ Pull Classroom dashboard (Day 1 assignment):
 > "Yesterday, X of you joined and Y PRs were merged. Z of you kept working async.
 >
 > You all know:
+>
 > - How to navigate GitHub
 > - How to edit and create a PR
 > - How to request a review and merge
@@ -492,6 +523,7 @@ This is YOUR demo, not the bot's:
 ### Day 2 Dashboard Monitoring
 
 Same as Day 1, but looking for:
+
 - Students on Challenge 10+ (new territory)
 - Autograding failures (these get harder)
 - Merge conflicts (look for red flags in PR comments)
@@ -556,6 +588,7 @@ Same as Day 1, but looking for:
 ## Facilitator Self-Care
 
 **During the workshop:**
+
 - Drink water
 - Stretch every 60 minutes
 - Answer questions but don't obsess
@@ -563,12 +596,14 @@ Same as Day 1, but looking for:
 - Remember: You can't help everyone at once
 
 **After the workshop:**
+
 - Take a break (don't immediately plan next cohort)
 - Celebrate what went well
 - Document issues objectively (not as failures)
 - Get feedback from co-facilitator
 
 **Before next cohort:**
+
 - Update this guide based on lessons learned
 - Test automation fresh
 - Add your own notes and strategies

@@ -1,4 +1,5 @@
 # Progress Tracker
+
 ## Track Your Learning Journey Through the GitHub Workshop
 
 ## How to Use This Tracker
@@ -11,7 +12,7 @@
 ## Pre-Workshop Setup
 
 - [ ] Created GitHub account (free tier is fine)
-- [ ] Installed Git (https://git-scm.com/download/)
+- [ ] Installed Git (<https://git-scm.com/download/>)
 - [ ] Installed/configured VS Code or preferred editor
 - [ ] Installed GitHub CLI (`gh`) - *optional but recommended*
 - [ ] Set up SSH key or HTTPS authentication
@@ -21,6 +22,7 @@
 **Status:** Not started  In progress  Complete
 
 ## Chapter 0: Pre-Workshop Setup
+
 **Time:** 30 minutes  |  **What You'll Do:** Get your computer ready
 
 - [ ] Read `docs/00-pre-workshop-setup.md`
@@ -32,6 +34,7 @@
 **Status:** Not started  In progress  Complete
 
 ## Chapter 1: Understanding GitHub Web Structure
+
 **Time:** 1 hour  |  **What You'll Do:** Learn GitHub's layout and terminology
 
 - [ ] Read `docs/02-understanding-github.md`
@@ -43,6 +46,7 @@
 **Status:** Not started  In progress  Complete
 
 ## Chapter 2: Navigating Repositories
+
 **Time:** 45 minutes  |  **What You'll Do:** Practice exploring real repositories
 
 - [ ] Read `docs/03-navigating-repositories.md`
@@ -54,6 +58,7 @@
 **Status:** Not started  In progress  Complete
 
 ## Chapter 3: The Learning Room
+
 **Time:** 30 minutes  |  **What You'll Do:** Understand the shared practice environment
 
 - [ ] Read `docs/04-the-learning-room.md`
@@ -65,6 +70,7 @@
 **Status:** Not started  In progress  Complete
 
 ## Chapter 4: Working with Issues
+
 **Time:** 1 hour  |  **What You'll Do:** Create, read, and comment on issues
 
 - [ ] Read `docs/05-working-with-issues.md`
@@ -77,6 +83,7 @@
 **Status:** Not started  In progress  Complete
 
 ## Chapter 5: VS Code Accessibility
+
 **Time:** 45 minutes  |  **What You'll Do:** Set up VS Code for accessible development
 
 - [ ] Read `docs/11-vscode-interface.md`
@@ -88,6 +95,7 @@
 **Status:** Not started  In progress  Complete
 
 ## Chapter 6: Working with Pull Requests
+
 **Time:** 1 hour  |  **What You'll Do:** Submit, review, and merge PRs
 
 - [ ] Read `docs/06-working-with-pull-requests.md`
@@ -100,6 +108,7 @@
 **Status:** Not started  In progress  Complete
 
 ## Chapter 7: Merge Conflicts
+
 **Time:** 1 hour  |  **What You'll Do:** Resolve conflicts between branches
 
 - [ ] Read `docs/07-merge-conflicts.md`
@@ -111,6 +120,7 @@
 **Status:** Not started  In progress  Complete
 
 ## Chapter 8: Culture & Etiquette
+
 **Time:** 30 minutes  |  **What You'll Do:** Learn collaborative best practices
 
 - [ ] Read `docs/08-open-source-culture.md`
@@ -122,6 +132,7 @@
 **Status:** Not started  In progress  Complete
 
 ## Chapter 9: Labels, Milestones & Projects
+
 **Time:** 45 minutes  |  **What You'll Do:** Use GitHub's organizational tools
 
 - [ ] Read `docs/09-labels-milestones-projects.md`
@@ -133,6 +144,7 @@
 **Status:** Not started  In progress  Complete
 
 ## Chapter 10: Notifications
+
 **Time:** 30 minutes  |  **What You'll Do:** Master GitHub notifications
 
 - [ ] Read `docs/10-notifications-and-day-1-close.md`
@@ -144,6 +156,7 @@
 **Status:** Not started  In progress  Complete
 
 ## Chapter 11: VS Code Interface and Setup
+
 **Time:** 45 minutes  |  **What You'll Do:** Launch VS Code, sign in, enable screen reader mode, and orient to core surfaces
 
 - [ ] Read `docs/11-vscode-interface.md`
@@ -155,6 +168,7 @@
 **Status:** Not started  In progress  Complete
 
 ## Chapter 12: VS Code Accessibility Deep Dive
+
 **Time:** 45 minutes  |  **What You'll Do:** Configure VS Code accessibility features for daily contribution work
 
 - [ ] Read `docs/12-vscode-accessibility.md`
@@ -166,6 +180,7 @@
 **Status:** Not started  In progress  Complete
 
 ## Chapter 13: How Git Works
+
 **Time:** 30 minutes  |  **What You'll Do:** Build the mental model for commits, branches, remotes, and conflicts
 
 - [ ] Read `docs/13-how-git-works.md`
@@ -176,6 +191,7 @@
 **Status:** Not started  In progress  Complete
 
 ## Chapter 14: Git in Practice
+
 **Time:** 1 hour  |  **What You'll Do:** Master Git operations within VS Code
 
 - [ ] Read `docs/14-git-in-practice.md`
@@ -187,9 +203,11 @@
 **Status:** Not started  In progress  Complete
 
 ## Chapter 15: Code Review
+
 **Time:** 1.5 hours + Exercises  |  **What You'll Do:** Review pull requests accessibly and constructively
 
 ### Reading & Concepts
+
 - [ ] Read `docs/15-code-review.md`
 - [ ] Installed: GitHub Pull Requests and Issues extension
 - [ ] Know how to: View, review, and create PRs in VS Code
@@ -197,6 +215,7 @@
 - [ ] Familiar with: VS Code Accessible Diff Viewer (F7)
 
 ### Exercises
+
 - [ ] **Exercise A:** Review issue accessibility using web reader
 - [ ] **Exercise B:** Use VS Code Accessible Diff Viewer
 - [ ] **Exercise C:** Comment on PR accessibility
@@ -205,6 +224,7 @@
 **Exercises Completed:** A  B  C  All
 
 ## Chapter 16: GitHub Copilot
+
 **Time:** 1 hour  |  **What You'll Do:** Use AI-assisted coding and chat
 
 - [ ] Read `docs/16-github-copilot.md`
@@ -216,15 +236,18 @@
 **Status:** Not started  In progress  Complete
 
 ## Chapter 17: Issue Templates
+
 **Time:** 1.5 hours + Exercises  |  **What You'll Do:** Create accessible issue templates
 
 ### Reading & Concepts
+
 - [ ] Read `docs/17-issue-templates.md`
 - [ ] Understand: YAML syntax for templates
 - [ ] Know how to: Create and test custom templates
 - [ ] Understand: Form accessibility in templates
 
 ### Exercises
+
 - [ ] **Exercise A:** Create template using GitHub web UI
 - [ ] **Exercise B:** Create template locally in VS Code
 - [ ] **Exercise C:** Create PR for accessibility template
@@ -234,15 +257,19 @@
 **Exercises Completed:** A  B  C  D  All
 
 ## Chapter 19: Accessibility Agents
+
 **Time:** 1.5 hours + Exercises  |  **What You'll Do:** Automate with Copilot agents
 
 ### Agents to Explore
+
 Browse the ecosystem and try agents that match your skills (read Chapter 19 for the full landscape):
+
 - [ ] **GitHub Workflow agents** - `@daily-briefing`, `@issue-tracker`, `@pr-review`, `@analytics`, `@insiders-a11y-tracker`, `@template-builder`
 - [ ] **Accessibility agents** - `@web-accessibility-wizard`, `@contrast-master`, `@keyboard-navigator`, `@markdown-a11y-assistant`
 - [ ] **Developer Tools agents** - `@python-specialist`, `@desktop-a11y-specialist`, `@a11y-tool-builder`
 
 ### Exercises
+
 - [ ] **Exercise 1:** Generate a template with @template-builder
   - [ ] Follow all 8 steps
   - [ ] Ask Questions workflow guided tour
@@ -306,14 +333,17 @@ The workshop includes structured exercises in the following chapters. Use this t
 | **Ch 16** | Exercise 3 | Practice iterative refinement with agents | |
 
 ### Core Path (Recommended first)
+
 - Chapters 0-10: Not started  In progress  Complete
 - **Time:** ~8 hours (includes workshop time)
 
 ### Advanced Path (Day 2)
+
 - Chapters 11-16: Not started  In progress  Complete
 - **Time:** ~5 hours (includes exercises)
 
 ### Full Curriculum
+
 - All chapters + appendices: Not started  In progress  Complete
 - **Time:** ~13 hours total
 
@@ -330,7 +360,9 @@ The workshop includes structured exercises in the following chapters. Use this t
 ## Learning Path by Role
 
 ### If You're a **Contributor** (New to collaborative coding)
+
 **Recommended order:**
+
 1. Ch 0 (Setup) - 30 min
 2. Ch 1 (Structure) - 1 hr
 3. Ch 4 (Issues) - 1 hr
@@ -341,7 +373,9 @@ The workshop includes structured exercises in the following chapters. Use this t
 **Total: ~6.5 hours**
 
 ### If You're a **Maintainer** (Manage projects)
+
 **Recommended order:**
+
 1. Ch 0 (Setup) - 30 min
 2. Ch 9 (Labels/Milestones) - 45 min
 3. Ch 15 (Issue Templates) - 1.5 hrs
@@ -351,7 +385,9 @@ The workshop includes structured exercises in the following chapters. Use this t
 **Total: ~5.5 hours**
 
 ### If You're a **Facilitator** (Teaching others)
+
 **Recommended order:**
+
 1. Full curriculum (0-16) - **11+ hours**
 2. Read FACILITATOR.md
 3. Practice all exercises before leading workshop
@@ -361,17 +397,20 @@ The workshop includes structured exercises in the following chapters. Use this t
 ## Next Steps After Completing This Curriculum
 
 ### Keep Learning
+
 - [ ] Work on real open-source projects
 - [ ] Practice code review on real PRs
 - [ ] Create templates for your own repositories
 - [ ] Experiment with agents on your own code
 
 ### Share Your Knowledge
+
 - [ ] Lead a workshop for your team
 - [ ] Contribute improvements to this guide
 - [ ] Help others in GitHub discussions/issues
 
 ### Advanced Topics (Not in This Guide)
+
 - [ ] GitHub Advanced Security features
 - [ ] Custom GitHub Actions
 - [ ] Codespaces for efficient development

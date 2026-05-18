@@ -2,8 +2,9 @@ name: manage-issue
 description: "Manage an issue -- edit, label, assign, close, reopen, lock, set milestone, or transfer"
 agent: issue-tracker
 tools:
-  - github/*
-  - ask_questions
+
+- github/*
+- ask_questions
 
 Manage a GitHub issue -- edit, label, assign, close, or perform any administrative action.
 

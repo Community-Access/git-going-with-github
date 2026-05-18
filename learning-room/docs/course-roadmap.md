@@ -38,7 +38,7 @@ Expected Day 1 outcome:
 
 ## Day 2 Path (Challenges 10-16)
 
-Goal: work locally, perform code review, and complete the capstone contribution.
+Goal: work locally, perform code review, and complete a review-ready capstone contribution.
 
 1. Challenge 10: Go Local
 2. Challenge 11: Open a Day 2 PR
@@ -46,9 +46,9 @@ Goal: work locally, perform code review, and complete the capstone contribution.
 4. Challenge 13: AI as Your Copilot
 5. Challenge 14: Template Remix
 6. Challenge 15: Meet the Agents
-7. Challenge 16: Capstone Project (Build Your Agent (Capstone))
+7. Challenge 16: Capstone Project
 
-Challenge 16 alternate title used in current docs: Challenge 16: Build Your Agent (Capstone)
+After Challenge 15, the path branches: **Challenge 16** and **all five bonus challenges** unlock. Students can continue with the capstone, choose any bonus, or mix both paths based on time and interest.
 
 Expected Day 2 outcome:
 
@@ -58,7 +58,7 @@ Expected Day 2 outcome:
 
 ## Bonus Path (A-E)
 
-Use bonus scenarios after core challenges are complete.
+Use bonus scenarios after Challenge 15. You do not need to finish Challenge 16 before starting a bonus, and you may complete the bonuses in any order.
 
 1. Bonus A: Improve an Existing Agent
 2. Bonus B: Document Your Journey

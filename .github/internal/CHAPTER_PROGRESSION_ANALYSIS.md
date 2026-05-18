@@ -6,7 +6,6 @@
 
 **New "The Learning Room" chapter (02a) fills a critical gap** - students now understand the shared environment before learning individual skills.
 
-
 ## Foundation Level: Understanding the Environment
 
 ```
@@ -34,12 +33,12 @@ NEW 02a. The Learning Room
 ```
 
 **Why This Order:**
+
 - Students arrive with anxiety ("Will I break something?")
 - Chapter 01 shows how GitHub is organized (reduce anxiety)
 - Chapter 02 shows the schedule (build confidence)
 - Chapter 02a explains the shared environment (now they're READY)
 - They're ready to learn individual skills (03-09)
-
 
 ## Day 1: Skill Building (Progressive)
 
@@ -104,10 +103,10 @@ Housekeeping/Optimization
 | 09 | Too much info early | After 08, inbox management makes sense |
 
 **Cross-Level Dependencies (Non-Adjacent):**
+
 - 09 (notifications) → 05 (PRs generate notifications)
 - 08 (labels) → 04 (issues can be labeled)
 - 07 (culture) → ALL of 03-09 (tone matters in every interaction)
-
 
 ## Bridge: Day 1 → Day 2
 
@@ -118,7 +117,6 @@ Housekeeping/Optimization
        Bridges: "Here's why VS Code matters" + "Here's how it's accessible"
        Leads to: 11 (introduces new tool: VS Code)
 ```
-
 
 ## Day 2: Skill Amplification
 
@@ -186,6 +184,7 @@ Expert: Agentic Automation Synthesis
 ## Appendices: Reference Material (No Dependency)
 
 ```
+
 A. Glossary
    └─ Can be opened anytime - define any term, any time
 
@@ -206,6 +205,7 @@ F. VS Code Accessibility Reference
 
 G. Resources
    └─ Can be opened anytime - every link, tool, and reference from the event
+
 ```
 ```
 
@@ -221,7 +221,6 @@ G. Resources
 | 16 | Templates | Reference material; can read anytime |
 | 17 | GitHub Actions | Builds on 05 (PRs) + 14 (understanding automation) |
 | 18 | Accessibility Agents (agentic automation) | Builds on 14 (Copilot) + 15 (code review mastery); FINAL synthesis |
-
 
 ## Appendices: Reference Material (No Dependency)
 
@@ -246,11 +245,11 @@ F. VS Code Accessibility Reference
 ```
 
 **Why Appendices Have No Dependencies:**
+
 - They are reference materials, not lessons
 - Can be opened during the relevant chapter
 - Can be skipped entirely (optional)
 - Support both Day 1 and Day 2
-
 
 ## Visualizing the Learning Arc
 
@@ -310,10 +309,10 @@ REFERENCE
     (reference, open as needed)
 ```
 
-
 ## Dependency Chain: Critical Path
 
 **For a student to complete Block 5 (Real Contribution):**
+
 ```
 Must know:
    00: System ready
@@ -331,6 +330,7 @@ Nice to know:
 ```
 
 **For a student to complete Day 2:**
+
 ```
 Must complete:
    All of Day 1 (11 depends on 01-09)
@@ -358,15 +358,16 @@ Optional post-workshop:
   Appendix O: Resources (every link and reference)
 ```
 
-
 ## Verification: Is This Truly Progressive?
 
 ### Criterion 1: Foundation Before Complexity
+
 - **PASS** - Chapters 00-02a establish context; chapters 03-06 teach basic mechanics
 - **PASS** - Chapters 07-10 assume all prior skills understood
 - **PASS** - Chapter 10 explicitly marks transition
 
 ### Criterion 2: Prerequisites Met
+
 - **PASS** - 04 (issues) comes after 03 (navigation); can't manage issues without finding them
 - **PASS** - 05 (PRs) comes after 04 (issues); PRs reference issues
 - **PASS** - 06 (conflicts) comes after 05 (PRs); conflicts only happen in PR merges
@@ -378,25 +379,28 @@ Optional post-workshop:
 - **PASS** - Appendix F (GitHub Actions) is heavy infrastructure, appropriately moved to optional post-workshop reference
 
 ### Criterion 3: No Jumps or Leaps
+
 - **PASS** - Adjacent chapters reinforce each other
 - **PASS** - Each chapter builds incrementally on prior knowledge
 - **PASS** - Cross-chapter references are backward (newer chapter references prior chapter), never forward
 
 ### Criterion 4: Day 1 → Day 2 Bridge
+
 - **PASS** - Chapter 10 explicitly marks the transition
 - **PASS** - Chapter 11 repeats Day 1 foundations in new tool (accessibility, keyboard nav, landmarks)
 - **PASS** - Chapters 12-15 show Day 1 skills (PR, git, review) amplified in VS Code
 
 ### Criterion 5: Soft Skills Appropriately Placed
+
 - **PASS** - Chapter 07 (culture) comes AFTER 03-06 (students have experience)
 - **PASS** - Chapter 08 (organization) comes AFTER 07 (assumes team coordination)
 - **PASS** - Chapter 14 (code review) comes BEFORE Chapter 16 (students learn manual skill first, then automation)
 - **PASS** - Chapter 16 (Accessibility Agents) is FINAL (student mastery of all prior skills gets automated and amplified)
 
-
 ## Additional Improvements Made with New Chapter 02a
 
 ### Problems Solved by New Chapter
+
 1. **Removed ambiguity:** Students didn't understand they were working in ONE shared repo, not personal forks
 2. **Reduced anxiety:** Explicit explanation that all PRs are visible, bot feedback is helpful, peer review is safe
 3. **Clarified automation:** Bot + human feedback explained, automation not mysterious
@@ -404,10 +408,10 @@ Optional post-workshop:
 5. **Integrated PR sharing:** Day 1 agenda Block 5 now assumes students understand the Learning Room
 
 ### Updated Documents
+
 - [README.md](README.md) - Added 02a to chapter navigation
 - [docs/02-day1-agenda.md](docs/02-day1-agenda.md) - Added "Read This BEFORE Day 1" section pointing to 02a
 - [docs/03a-the-learning-room.md](docs/03a-the-learning-room.md) - New comprehensive guide
-
 
 ## Final Recommendation
 
@@ -422,6 +426,7 @@ GitHub Actions is infrastructure-heavy (YAML, triggers, CI/CD) and doesn't belon
 3. **Resources stays as Appendix O:** Final appendix with links and tools (17 appendices A-Q, no M)
 
 **Benefits of This Reordering:**
+
 - **Lighter path for intro students**: No heavy infrastructure learning before they ship their first code
 - **Accessibility Agents becomes the natural finale**: Students master code review (Ch 15) → then see it automated (Ch 17)
 - **Smart optional learning**: GitHub Actions available for students who want deeper automation knowledge post-workshop
@@ -431,12 +436,14 @@ GitHub Actions is infrastructure-heavy (YAML, triggers, CI/CD) and doesn't belon
 - **Branch protection guide**: New Appendix O helps contributors diagnose why PRs are blocked
 
 **Rationale:**
+
 - Foundation → intermediate → advanced progression remains logical
 - Main chapters maintain pedagogical clarity and accessibility
 - Day 1 and Day 2 progression is clean and focused
 - Appendices serve learners at their own pace post-workshop
 
 **Files Updated:**
+
 - `README.md` - Chapter count now 17 (vs 18); GitHub Actions moved to Appendix F
 - `CHAPTER_PROGRESSION_ANALYSIS.md` - Complete dependency re-verification
 - `docs/` - Files renamed to reflect new chapter/appendix structure
@@ -446,6 +453,7 @@ GitHub Actions is infrastructure-heavy (YAML, triggers, CI/CD) and doesn't belon
 1. **Add a "Prerequisites" section to each chapter** - at the top, list which chapters should be read first
 
    Example:
+
    ```
    # 04. Working with Issues
 
@@ -456,6 +464,7 @@ GitHub Actions is infrastructure-heavy (YAML, triggers, CI/CD) and doesn't belon
 2. **Add forward references in chapters** - hint at what's coming next
 
    Example:
+
    ```
    Next chapter: Chapter 05 (Pull Requests) - you'll create PRs to resolve your issues
    ```
@@ -469,7 +478,6 @@ GitHub Actions is infrastructure-heavy (YAML, triggers, CI/CD) and doesn't belon
    | 05 | Working with Pull Requests | Intermediate |
 
 These are "nice to have" - not necessary, since the structure is already progressive.
-
 
 ## Summary Table: Complete Chapter Progression
 
@@ -504,6 +512,5 @@ These are "nice to have" - not necessary, since the structure is already progres
 | O | GitHub Security Features | | 05 + 17 | None | Appendix | Reference |
 | P | Branch Protection | | 05 | None | Appendix | Reference |
 | Q | Resources | | None | Any | Appendix | Reference |
-
 
 *Chapter Structure: 18 core chapters (00-17) plus 16 appendices (A-Q, no M). GitHub Actions moved to appendix for lighter intro course path. New appendices N, O, P added February 2026. All dependencies verified. Ship with confidence!*

@@ -1,5 +1,6 @@
 
 **Table: TTS pipeline outcomes and provided commands**
+
 # TTS Setup: Piper and Kokoro
 
 This runbook documents the end-to-end local setup for the workshop TTS toolchain.

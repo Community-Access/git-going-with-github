@@ -185,6 +185,13 @@
 <li><a href="https://lp.csedesigns.com/ggg/feed.xml">RSS Feed <span class="guided-external">(external)</span></a></li>
         </ul>
       </section>
+
+      <section class="guided-section">
+        <h3>Get Help</h3>
+        <ul>
+          <li><a href="https://github.com/Community-Access/support">Support Hub <span class="guided-external">(external)</span></a></li>
+        </ul>
+      </section>
     </nav>
   </aside>
     <main id="main-content" class="markdown-body page-main">
@@ -252,13 +259,18 @@ node podcasts/llm<span class="hljs-literal">-podcast-generator-review</span>/src
   <span class="hljs-literal">--model</span> openai/gpt<span class="hljs-literal">-5</span>.<span class="hljs-number">4</span><span class="hljs-literal">-mini</span></code></pre>
 <h2 id="durable-execution-path-recommended-for-full-79">Durable execution path (recommended for full 79)</h2>
 <ol>
-<li>Prepare durable jobs (dedupe + cost estimate):<pre><code class="hljs language-powershell">npm run podcast:llm:ai:prepare</code></pre>
+<li><p>Prepare durable jobs (dedupe + cost estimate):</p>
+<pre><code class="hljs language-powershell">npm run podcast:llm:ai:prepare</code></pre>
 </li>
-<li>Submit/poll via Batch API:<pre><code class="hljs language-powershell">npm run podcast:llm:ai:run:batch</code></pre>
+<li><p>Submit/poll via Batch API:</p>
+<pre><code class="hljs language-powershell">npm run podcast:llm:ai:run:batch</code></pre>
 </li>
-<li>Apply completed jobs to live scripts/transcripts:<pre><code class="hljs language-powershell">npm run podcast:llm:ai:apply</code></pre>
-Or run the root helper from <code>cmd.exe</code>:<pre><code class="hljs language-bat">generate-llm-batch-jobs.bat</code></pre>
-For a strict from-scratch run that clears prior durable ledger and published artifacts first:<pre><code class="hljs language-bat">generate-llm-batch-jobs.bat --clean</code></pre>
+<li><p>Apply completed jobs to live scripts/transcripts:</p>
+<pre><code class="hljs language-powershell">npm run podcast:llm:ai:apply</code></pre>
+<p>Or run the root helper from <code>cmd.exe</code>:</p>
+<pre><code class="hljs language-bat">generate-llm-batch-jobs.bat</code></pre>
+<p>For a strict from-scratch run that clears prior durable ledger and published artifacts first:</p>
+<pre><code class="hljs language-bat">generate-llm-batch-jobs.bat --clean</code></pre>
 </li>
 </ol>
 <p>Batch mode does not send one giant request for all 79. It creates one request per slug in a single batch file so each item is independently resumable and deduplicated by <code>request_hash</code>.</p>

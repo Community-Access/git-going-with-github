@@ -1,6 +1,7 @@
 
 **Table: Learning Room folder and file purposes**
 **Table: Host voice and character mapping for VibeVoice podcast**
+
 # Welcome to the Learning Room
 
 This repository is your private Learning Room for the Git Going with GitHub workshop. GitHub Classroom created it from the Learning Room template so you can practice the full contribution workflow safely. In this repository you will:
@@ -54,18 +55,21 @@ When you open a pull request, an automated bot will:
 ### How to Interact with the Bot
 
 **Reading Bot Comments:**
+
 - Bot posts ONE comment that updates as you make changes
 - Use headings to navigate (Required Checks, Suggestions, Accessibility Analysis, Resources)
 - Each issue includes file/line numbers and how to fix it
 
 **Getting Help from the Bot:**
 Comment on your PR with keywords:
+
 - `@bot help` - Get help information
 - Mention "merge conflict" - Get conflict resolution guide  
 - Mention "request review" - Get instructions for requesting human review
 
 **When You Disagree:**
 The bot isn't always right! If you believe feedback is incorrect:
+
 1. Comment explaining your reasoning
 2. Request human review
 3. Facilitators can override bot checks
@@ -75,6 +79,7 @@ The bot isn't always right! If you believe feedback is incorrect:
 ## Skills & Progression
 
 As you complete challenges, you'll:
+
 - **Track progress** through skill levels (Explorer, Contributor, Collaborator, Operator, Reviewer, Agent Navigator)
 - **Unlock new challenges** when you reach milestones
 - **Earn badges** for specific achievements (Branch Builder, PR Pioneer, Conflict Resolver, and more)
@@ -93,6 +98,7 @@ Use these references after you attempt the challenge yourself. They are designed
 ## Study Groups
 
 You may be assigned to a study group for collaborative learning. Groups:
+
 - Work through challenges together
 - Review each other's PRs
 - Share resources and tips

@@ -1,4 +1,5 @@
 # GitHub Learning Curriculum
+
 ## Executive Summary & Proposal to GitHub
 
 ## Project Overview
@@ -12,13 +13,16 @@
 ## Problem Statement
 
 ### Current Gap
+
 GitHub is powerful but intimidating for newcomers. Standard onboarding approaches:
+
 - Assume prior Git/collaboration knowledge
 - Don't explicitly teach soft skills (communication, inclusive review)
 - Often lack accessibility guidance
 - Don't leverage AI to amplify human expertise
 
 Many organizations need structured, repeatable, accessible training that:
+
 1. Teaches Git and GitHub concepts sequentially
 2. Emphasizes inclusive collaboration practices
 3. Includes accessibility requirements from day one
@@ -26,6 +30,7 @@ Many organizations need structured, repeatable, accessible training that:
 5. Provides hands-on, guided practice with clear success criteria
 
 ### Impact
+
 - **New developers** struggle with PR review culture and GitHub workflows
 - **Maintainers** lack templates and automation to scale contributions
 - **Accessibility advocates** have no GitHub-specific guidance
@@ -38,6 +43,7 @@ Many organizations need structured, repeatable, accessible training that:
 **Three-Part Modular Design:**
 
 #### Part 1: Foundation (Day 1 - 7.5 hours)
+
 Chapters 0-10 teach GitHub essentials and collaborative workflows.
 
 | Chapter | Duration | Focus | Hands-On |
@@ -59,6 +65,7 @@ Chapters 0-10 teach GitHub essentials and collaborative workflows.
 **Note:** Day 1 and Day 2 agenda files provided separately for facilitators (not counted in learner time).
 
 #### Part 2: VS Code & Development Environment (Day 2 Foundation - 2.5 hours)
+
 Chapters 11-13 introduce Git integration, GitHub PR tooling, and GitHub Copilot.
 
 | Chapter | Duration | Focus | New Concepts |
@@ -70,6 +77,7 @@ Chapters 11-13 introduce Git integration, GitHub PR tooling, and GitHub Copilot.
 **Outcome:** Users comfortable with development environment; ready for advanced workflows.
 
 #### Part 3: Accessibility & Advanced Workflows (Day 2 Advanced - 4 hours)
+
 Chapters 14-16 teach accessible code review, issue templates, and AI agent automation.
 
 | Chapter | Duration | Focus | New Concepts |
@@ -79,6 +87,7 @@ Chapters 14-16 teach accessible code review, issue templates, and AI agent autom
 | 16 | 1.5 hrs + 3 exercises | Accessibility Agents | 55 AI agents across 3 teams, 54+ slash commands, Template Builder wizard |
 
 **AI Agent Integration:**
+
 - **55 Agents across 3 Teams:** Accessibility (26), GitHub Workflow (12), Developer Tools (6) - automate auditing, issue triage, PR review, analytics, and more
 - **54+ Slash Commands:** Targeted invocations for specific workflows
 - **Template Builder:** Interactive wizard for guided template creation
@@ -88,6 +97,7 @@ Chapters 14-16 teach accessible code review, issue templates, and AI agent autom
 ## Curriculum Highlights
 
 ### 1. Accessibility-First Design
+
 - **Screen reader integration:** Every exercise tested with NVDA, JAWS, VoiceOver
 - **Keyboard-only workflows:** Users never require a mouse
 - **Plain language:** Glossary for all terminology
@@ -96,6 +106,7 @@ Chapters 14-16 teach accessible code review, issue templates, and AI agent autom
 **Why:** ~15% of population has disabilities; GitHub should be usable by all.
 
 ### 2. Hands-On Exercises
+
 - **10+ guided exercises** across Chapters 4-6, 11-16 (all hands-on chapters)
 - **Step-by-step walkthroughs:** 300-900 lines per exercise
 - **"What you should see":" Checkpoint validation at each step
@@ -104,6 +115,7 @@ Chapters 14-16 teach accessible code review, issue templates, and AI agent autom
 **Note on Chapters 5 and 11-13:** These VS Code chapters teach through integrated practice rather than standalone exercises - users configure tools, explore features, and practice workflows as they learn. Formal numbered exercises resume at Chapter 14.
 
 **Example:** Exercise A (Ch 15) walks users through:
+
 1. Navigating to template selector
 2. Reading template instructions
 3. Filling form fields accessibly
@@ -141,16 +153,19 @@ Comprehensive breakdown of every hands-on exercise across the curriculum:
 | 10 | Ch 15 | Create Template PR | Full workflow | 7 | PR creation, feedback integration, merging |
 
 **Advanced Option - Chapter 15, Exercise D:**
+
 - **Custom Template Design** (8 parts, 500+ lines)
 - Choose real project → Identify patterns → Design fields → Write descriptions → Test locally → Deploy → Reflect
 - Full-scope exercise for practitioners building organizational templates
 
 **Chapter 16 Exercises (Agent Integration - 3 additional exercises):**
+
 - **Exercise 1: Generate Template with @template-builder** (8 steps) - Interactive Ask Questions workflow
 - **Exercise 2: Extend Agent Capabilities** (6 steps) - Edit agent, add security workflow variant
 - **Exercise 3: Iterative Refinement with Agent** (4 steps) - Generate → Modify → Refine → Observe pattern
 
 **Exercise Structure (All 10+):**
+
 - 300-900 lines per exercise
 - "What you should see" checkpoints after each step
 - "If this happens, try..." troubleshooting sections
@@ -159,12 +174,14 @@ Comprehensive breakdown of every hands-on exercise across the curriculum:
 - Copy-paste code templates where applicable
 
 **Estimated Times:**
+
 - Basic exercises (Ch 4-5): 30-45 min each
 - Accessibility exercises (Ch 14): 1 hour each
 - Template exercises (Ch 15): 1-1.5 hours each
 - Agent exercises (Ch 16): 30-60 min each
 
 ### 3. AI Agent Integration
+
 **The Template Builder Agent (NEW!)** exemplifies the curriculum's approach:
 
 ```yaml
@@ -183,6 +200,7 @@ Result: 5-minute template creation vs. 30 minutes manual YAML editing
 **Why:** Amplifies user skill; automates the repetitive parts.
 
 ### 4. Supporting Documentation
+
 - **QUICK_REFERENCE.md** (1-page cheat sheet for commands, shortcuts, file locations)
 - **TROUBLESHOOTING.md** (20+ common problems with solutions)
 - **appendix-x-resources.md** (links to WCAG, screen readers, documentation)
@@ -197,15 +215,18 @@ Result: 5-minute template creation vs. 30 minutes manual YAML editing
 ### Three Core Principles
 
 #### 1. Skill First, Agent Second
+
 Agents amplify human expertise; they don't replace learning.
 
 **Example:**
+
 - Day 1: Learn to review PRs manually (read diffs, leave comments)
 - Day 2: Use `@pr-review` agent to speed up that process
 
 Result: Users understand when agent output is correct or needs editing.
 
 #### 2. Manual → Automated → Mastered
+
 Every exercise follows progression:
 
 ```
@@ -217,6 +238,7 @@ Mastered (User reviews agent work, makes final call)
 ```
 
 **Example (Ch 15 Progress):**
+
 1. **Exercise A:** Design template manually (GitHub web UI)
 2. **Exercise B:** Clone, edit, test template locally (Git workflow)
 3. **Exercise D:** Critique team's template (human judgment)
@@ -225,6 +247,7 @@ Mastered (User reviews agent work, makes final call)
 6. **Ch 16 - Exercise 3:** Guide agent iteratively (You: iterate; Agent: generates)
 
 #### 3. Accessible by Default, Not Afterthought
+
 Accessibility is woven into every chapter.
 
 - Every issue template includes WCAG label suggestions
@@ -237,6 +260,7 @@ Accessibility is woven into every chapter.
 ## Implementation & Deployment
 
 ### Current Assets
+
 - **49 Markdown documents** (16 core chapters + 1 setup guide + 31 appendices A-Z, AA-AE + Accessibility Agents)
 - **6 AI agents** fully defined and integrated
 - **10 hands-on exercises** with detailed walkthroughs
@@ -244,6 +268,7 @@ Accessibility is woven into every chapter.
 - **1 Executive Proposal** (this document)
 
 ### File Structure
+
 ```
 .github/
 ├── agents/
@@ -317,6 +342,7 @@ Root/
 ## Success Criteria & Metrics
 
 ### Learner Outcomes (Measurable)
+
 - [ ] 100% of learners complete setup chapter successfully
 - [ ] 90%+ of learners complete at least one hands-on exercise
 - [ ] 80%+ of learners understand PR review process after Chapter 6
@@ -324,12 +350,14 @@ Root/
 - **Satisfaction:** Post-workshop survey shows 4.5+/5.0 average
 
 ### Organizational Outcomes
+
 - [ ] Reduced onboarding time for new developers (5 hrs down from 20+ hrs of ad-hoc training)
 - [ ] More consistent issue templates across team repositories
 - [ ] Increased PR review quality (more complete feedback from reviewers)
 - [ ] Higher accessibility compliance (templates and workflows built-in accessibility checks)
 
 ### Accessibility Metrics
+
 - [ ] 100% of templates tested with screen readers (NVDA, JAWS, VoiceOver)
 - [ ] WCAG 2.1 AA compliance verified for all guided workflows
 - [ ] Keyboard-only functionality tested on all exercises
@@ -338,24 +366,28 @@ Root/
 ## Recommended Next Steps
 
 ### Phase 1: Finalize & Polish (1 week)
+
 - [ ] Convert all Markdown to HTML for web deployment
 - [ ] Create landing page with learning path selector
 - [ ] Set up GitHub Pages or web server for hosting
 - [ ] Gather feedback from 5-10 pilot users
 
 ### Phase 2: Pilot Program (2-3 weeks)
+
 - [ ] Run 1-2 beta workshops with external participants
 - [ ] Collect feedback: What worked? What needs clarification?
 - [ ] Iterate based on learner feedback
 - [ ] Update exercises with common questions
 
 ### Phase 3: Public Release (1 month)
+
 - [ ] Launch curriculum publicly (GitHub Pages, blog announcement)
 - [ ] Promote in GitHub education channels, open-source communities
 - [ ] Establish feedback/issue tracking for curriculum improvements
 - [ ] Plan first live workshop (in-person or virtual)
 
 ### Phase 4: Long-Term Maintenance (Ongoing)
+
 - [ ] Monitor GitHub API/UI changes; update curriculum as needed
 - [ ] Collect learner feedback quarterly
 - [ ] Rotate facilitators for fresh perspectives
@@ -364,31 +396,41 @@ Root/
 ## Why GitHub Should Support This
 
 ### 1. Education Mission
+
 GitHub's mission is to build the all-inclusive home for developers. This curriculum:
+
 - Makes GitHub accessible to beginners
 - Emphasizes inclusive collaboration practices
 - Teaches AI-human partnership (not AI replacement)
 
 ### 2. Reduces Support Load
+
 Well-trained users need fewer support interactions. Clear documentation:
+
 - Answers 80% of onboarding questions
 - Teaches troubleshooting self-sufficiency
 - Reduces "how do I...?" issues
 
 ### 3. Amplifies GitHub Copilot Adoption
+
 Users learn agents, they adopt Copilot subscriptions. The curriculum:
+
 - Shows real-world use cases (not just theory)
 - Builds confidence in AI tools
 - Drives feature adoption (Templates, Actions, Copilot agents)
 
 ### 4. Models Accessibility Best Practices
+
 By releasing a fully-accessible learning resource, GitHub demonstrates:
+
 - Commitment to inclusive design
 - Leadership in accessible software documentation
 - Real accessibility implementation (not just compliance)
 
 ### 5. Community-Driven Success
+
 Open curriculum invites contributions:
+
 - Organizations customize for their workflows
 - Community suggests improvements and translations
 - Becomes standard reference (like "Pro Git" book)
@@ -405,6 +447,7 @@ Open curriculum invites contributions:
 ## Budget & Resources
 
 ### Current Assets (Complete)
+
 - **49 Markdown chapters** (~200,000 words total)
   - 16 core chapters (01-16)
   - 1 pre-workshop setup guide (00)
@@ -450,11 +493,13 @@ Open curriculum invites contributions:
   - Plain language glossary
 
 ### Time Commitment (GitHub Internal)
+
 - **Product Manager:** 5 hrs/week for 4 weeks (strategy, GitHub Features integration)
 - **Engineer:** 2-3 hrs/week for ongoing agent updates
 - **Accessibility Lead:** 2-3 hrs/week for testing & validation
 
 ### Ongoing (Long-term)
+
 - **Quarterly maintenance:** 4 hrs/month (keep curriculum current)
 - **Community support:** 3 hrs/week (respond to feedback)
 - **Annual curriculum review:** 20 hrs (comprehensive update)
@@ -478,14 +523,17 @@ This curriculum is **ready for deployment**. The required next step is:
 3. **Timeline:** Target launch date (Recommend: Q2 2026)
 
 ### Success Metric
+
 **If this curriculum launches:** We expect 10,000+ learners in year one, 50,000+ by year two.
 
 ## Appendices
 
 ### A. Curriculum Overview
+
 See `README.md` for full chapter list and quick links.
 
 ### B. Quick Stats
+
 - **Total content:** ~110,000 words (chapters + appendices + guides + exercises)
 - **Exercises:** 10+ (300-900 lines each, hand-holding walkthroughs)
   - Ch 4: 2 exercises (issues)
@@ -505,6 +553,7 @@ See `README.md` for full chapter list and quick links.
 - **HTML conversion:** 11 new files, 545KB web-ready content
 
 ### C. Contact & Questions
+
 - **Curriculum Owner:** [Your Name/GitHub Team]
 - **Accessibility Lead:** [A11y Champion]
 - **GitHub Contact:** [Product Manager]

@@ -24,27 +24,14 @@ function extractName(content, fallback) {
   return String(m[1]).trim();
 }
 
-function extractFirstMarkdownBlock(content) {
-  const lines = content.split(/\r?\n/);
-  let valueIndex = -1;
-
-  for (let i = 0; i < lines.length; i++) {
-    if (/^\s*value:\s*\|\s*$/.test(lines[i])) {
-      valueIndex = i;
-      break;
-    }
-  }
-
-  if (valueIndex === -1) {
-    return '';
-  }
-
-  const valueLine = lines[valueIndex];
+function extractBlockScalar(lines, startIndex) {
+  const valueLine = lines[startIndex];
   const valueIndent = valueLine.match(/^\s*/)[0].length;
   const minBlockIndent = valueIndent + 2;
 
   const block = [];
-  for (let i = valueIndex + 1; i < lines.length; i++) {
+  let i = startIndex + 1;
+  for (; i < lines.length; i++) {
     const line = lines[i];
     const rawIndent = line.match(/^\s*/)[0].length;
 
@@ -60,7 +47,45 @@ function extractFirstMarkdownBlock(content) {
     block.push(line.slice(minBlockIndent));
   }
 
-  return block.join('\n').trim();
+  return { text: block.join('\n').trim(), nextIndex: i };
+}
+
+function extractAllTemplateContent(content) {
+  const lines = content.split(/\r?\n/);
+  const parts = [];
+  let i = 0;
+
+  while (i < lines.length) {
+    // Markdown value block
+    if (/^\s*value:\s*\|\s*$/.test(lines[i])) {
+      const { text, nextIndex } = extractBlockScalar(lines, i);
+      if (text) parts.push({ type: 'markdown', text });
+      i = nextIndex;
+      continue;
+    }
+
+    // Evidence textarea placeholder block
+    if (/^\s*placeholder:\s*\|\s*$/.test(lines[i])) {
+      const { text, nextIndex } = extractBlockScalar(lines, i);
+      if (text) parts.push({ type: 'evidence', text });
+      i = nextIndex;
+      continue;
+    }
+
+    i++;
+  }
+
+  return parts;
+}
+
+function extractFirstMarkdownBlock(content) {
+  const lines = content.split(/\r?\n/);
+  for (let i = 0; i < lines.length; i++) {
+    if (/^\s*value:\s*\|\s*$/.test(lines[i])) {
+      return extractBlockScalar(lines, i).text;
+    }
+  }
+  return '';
 }
 
 function cleanupIssueBody(body) {
@@ -73,6 +98,29 @@ function cleanupIssueBody(body) {
 
   // Keep issue task checklists readable in docs.
   out = out.replace(/^- \[ \]/gm, '-');
+
+  // Nest template headings beneath the challenge heading and normalize bold-only
+  // pseudo-headings so the generated walkthrough reads like a structured page.
+  out = out
+    .split('\n')
+    .map((line) => {
+      const headingMatch = line.match(/^(#{1,5})\s+(.+)$/);
+      if (headingMatch) {
+        return `${headingMatch[1]}# ${headingMatch[2]}`;
+      }
+
+      const boldHeadingMatch = line.match(/^\s*\*\*([^*]+)\*\*$/);
+      if (boldHeadingMatch) {
+        return `#### ${boldHeadingMatch[1]}`;
+      }
+
+      if (line.trim() === '```') {
+        return '```text';
+      }
+
+      return line;
+    })
+    .join('\n');
 
   return out.trim();
 }
@@ -87,7 +135,20 @@ function toEntry(filePath) {
     .replace(/\b\w/g, (m) => m.toUpperCase());
 
   const name = extractName(content, fallbackTitle);
-  const body = cleanupIssueBody(extractFirstMarkdownBlock(content));
+  const parts = extractAllTemplateContent(content);
+
+  // Render all content parts in order
+  const renderedParts = parts.map((part) => {
+    if (part.type === 'markdown') {
+      return cleanupIssueBody(part.text);
+    }
+    if (part.type === 'evidence') {
+      return '**Your evidence** (fill in when closing this issue):\n\n```text\n' + part.text + '\n```';
+    }
+    return '';
+  }).filter(Boolean);
+
+  const body = renderedParts.join('\n\n---\n\n');
 
   return {
     fileName,
@@ -136,8 +197,10 @@ function render(entries) {
     '',
     '### Section-Level Source Map',
     '',
-    '- **Core challenges:** [GitHub Docs, home](https://docs.github.com/en), [GitHub Changelog](https://github.blog/changelog/), [About Git](https://docs.github.com/en/get-started/using-git/about-git), [GitHub flow](https://docs.github.com/en/get-started/using-github/github-flow), [About pull requests](https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/about-pull-requests), [About issues](https://docs.github.com/en/issues/tracking-your-work-with-issues/about-issues), [Contributing to a project](https://docs.github.com/en/get-started/exploring-projects-on-github/contributing-to-a-project)',
-    '- **Bonus challenges:** [GitHub Docs, home](https://docs.github.com/en), [GitHub Changelog](https://github.blog/changelog/), [About Git](https://docs.github.com/en/get-started/using-git/about-git), [GitHub flow](https://docs.github.com/en/get-started/using-github/github-flow), [About pull requests](https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/about-pull-requests), [About issues](https://docs.github.com/en/issues/tracking-your-work-with-issues/about-issues), [Contributing to a project](https://docs.github.com/en/get-started/exploring-projects-on-github/contributing-to-a-project)',
+     '- **Core challenges:** [GitHub Docs, home](https://docs.github.com/en) [GitHub Changelog](https://github.blog/changelog/) [About Git](https://docs.github.com/en/get-started/using-git/about-git)',
+    '  [GitHub flow](https://docs.github.com/en/get-started/using-github/github-flow) [About pull requests](https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/about-pull-requests) [About issues](https://docs.github.com/en/issues/tracking-your-work-with-issues/about-issues) [Contributing to a project](https://docs.github.com/en/get-started/exploring-projects-on-github/contributing-to-a-project)',
+    '- **Bonus challenges:** [GitHub Docs, home](https://docs.github.com/en) [GitHub Changelog](https://github.blog/changelog/) [About Git](https://docs.github.com/en/get-started/using-git/about-git)',
+    '  [GitHub flow](https://docs.github.com/en/get-started/using-github/github-flow) [About pull requests](https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-references) [About issues](https://docs.github.com/en/issues/tracking-your-work-with-issues/about-issues) [Contributing to a project](https://docs.github.com/en/get-started/exploring-projects-on-github/contributing-to-a-project)',
     ''
   ].join('\n');
 }

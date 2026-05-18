@@ -2,8 +2,9 @@ name: notifications
 description: "Manage GitHub notifications across all repos -- list unread, mark as read/done, unsubscribe, smart filtering by @mentions, review requests, and CI failures"
 agent: daily-briefing
 tools:
-  - github/*
-  - ask_questions
+
+- github/*
+- ask_questions
 
 Manage your GitHub notifications from the editor. List, filter, and act on notifications without opening a browser.
 
@@ -14,6 +15,7 @@ ${input:action:Optional: 'unread', 'review requests', 'mentions', 'mark all read
 ## Capabilities
 
 ### List Notifications
+
 - Fetch unread notifications grouped by repo, then by type (review requested, mentioned, CI failure, subscribed)
 - Show count per group and most recent notification in each
 - Apply smart filtering from notification preferences in `.github/agents/preferences.md`:
@@ -21,6 +23,7 @@ ${input:action:Optional: 'unread', 'review requests', 'mentions', 'mark all read
   - Dim or hide repos/labels/events marked as muted
 
 ### Filter Views
+
 | Filter | Shows |
 |--------|-------|
 | `unread` (default) | All unread notifications, grouped by repo |
@@ -30,6 +33,7 @@ ${input:action:Optional: 'unread', 'review requests', 'mentions', 'mark all read
 | `{repo name}` | Notifications for a specific repo |
 
 ### Actions
+
 | Action | How |
 |--------|-----|
 | **Mark as read** | `mark #3 as read` or `mark all from repo as read` |

@@ -35,7 +35,7 @@ During the live Day 2 core path, you will move from browser-based GitHub to loca
 
 ## Challenges
 
-Complete these challenges in order. Each one builds on the previous. The live agenda prioritizes Challenges 10-13 and agent discovery; Challenges 14-16 can be completed during lab time or after the event.
+Complete these challenges in order through Challenge 15. After Challenge 15, Challenge 16 and all five bonus challenges are available, so students can choose the capstone path, bonus work, or both during lab time or after the event.
 
 | Challenge | What You Do | Chapter |
 |---|---|---|
@@ -56,6 +56,10 @@ Challenges 10, 14, and 16 have automated checks that run as GitHub Actions insid
 - **Challenge 16:** Verifies an Accessibility Agents agent file when you use that path; facilitators review GLOW or other-project evidence using the same mission, responsibilities, and guardrails criteria
 
 Each check posts a single comment on the relevant pull request and updates it whenever you push a new change. If a check fails, read the comment and push an update.
+
+## After Challenge 15
+
+Once Challenge 15 is complete, students can move into **Challenge 16**, **Bonus A-E**, or any combination of those paths. Challenge 16 remains the capstone, but the bonus challenges are intentionally unlocked at the same time so students can choose what is most useful next.
 
 ## Evidence
 

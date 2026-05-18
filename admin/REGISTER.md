@@ -20,7 +20,7 @@ This page is a fast, self-serve opt-in workflow. Students can opt in directly fr
 
 > [**Start Student Opt-In Form**](https://github.com/community-access/git-going-with-github/issues/new?template=workshop-registration.yml&title=%5BREGISTER%5D+GIT+Going+with+GitHub)
 
-3. Submit the form with your details.
+1. Submit the form with your details.
 
 ## What happens automatically after you submit
 

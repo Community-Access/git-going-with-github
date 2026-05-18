@@ -1,4 +1,4 @@
-https://classroom.github.com/classrooms/263509777-git-going-with-github
+<https://classroom.github.com/classrooms/263509777-git-going-with-github>
 
 ## Authoritative Sources
 

@@ -351,11 +351,13 @@ GitHub Desktop adds the upstream remote automatically when you clone a fork from
 
 1. Open the repository in terminal: **Repository → Open in Terminal**
 2. Run:
+
 ```bash
 git remote add upstream https://github.com/ORIGINAL-OWNER/ORIGINAL-REPO.git
 git fetch upstream
 ```
-3. Switch back to GitHub Desktop — it will now see the upstream branches
+
+1. Switch back to GitHub Desktop — it will now see the upstream branches
 
 ---
 

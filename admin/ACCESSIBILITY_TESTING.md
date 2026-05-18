@@ -1,4 +1,5 @@
 # Accessibility Testing Checklist
+
 ## Verify GitHub Templates & Workflows Are Accessible
 
 This checklist helps you test issue templates, PRs, and GitHub workflows to ensure they're usable by people with disabilities (especially screen reader users).
@@ -8,6 +9,7 @@ This checklist helps you test issue templates, PRs, and GitHub workflows to ensu
 Use before deploying any new issue template or form.
 
 ### Form Fields & Labels
+
 - [ ] Every form field has a visible label
 - [ ] Label text is clear and describes what's needed (not "Please enter")
 - [ ] Required fields are marked and announced as required
@@ -15,6 +17,7 @@ Use before deploying any new issue template or form.
 - [ ] No fields rely on color alone to indicate required/error status
 
 ### Form Structure
+
 - [ ] Form inputs are in logical order (top to bottom)
 - [ ] Dropdown options are readable and include blank option or instruction
 - [ ] Checkboxes and radio buttons are grouped and labeled
@@ -22,6 +25,7 @@ Use before deploying any new issue template or form.
 - [ ] Preview or review step before submission (allows verification)
 
 ### Instructions & Guidance
+
 - [ ] Markdown section explains what's needed and why
 - [ ] Instructions use simple language (8th grade reading level)
 - [ ] Headings are in order (H2, H3, H4 - not H2, H4)
@@ -29,7 +33,8 @@ Use before deploying any new issue template or form.
 - [ ] Code examples are formatted clearly (not in plain text)
 
 ### YAML & Technical
-- [ ] YAML passes syntax validation (https://www.yamllint.com/)
+
+- [ ] YAML passes syntax validation (<https://www.yamllint.com/>)
 - [ ] No trailing spaces or mixed indentation
 - [ ] All required fields present: `name:`, `description:`, `body:`
 - [ ] Field IDs are unique and lowercase with hyphens (e.g., `browser_type`)
@@ -37,11 +42,13 @@ Use before deploying any new issue template or form.
 ## Screen Reader Testing Workflow
 
 ### Before Testing
+
 1. **Prepare:** Have form open in browser with screen reader ready
 2. **Choose:** Test with NVDA (Windows), JAWS (Windows), or VoiceOver (macOS)
 3. **Record:** Note any issues for fixing
 
 ### NVDA Testing (Windows)
+
 ```
 1. Press NVDA+Space to enable browse mode on page
 2. Press H to navigate to first heading
@@ -57,6 +64,7 @@ Use before deploying any new issue template or form.
 ```
 
 **What to listen for:**
+
 - [ ] Every field label is announced
 - [ ] "Required" is announced for required fields
 - [ ] No fields are skipped
@@ -64,6 +72,7 @@ Use before deploying any new issue template or form.
 - [ ] Help text is read before or near the field
 
 ### JAWS Testing (Windows)
+
 ```
 1. Press Spacebar to enter browse mode
 2. Press Insert+F6 to open headings list
@@ -79,6 +88,7 @@ Use before deploying any new issue template or form.
 ```
 
 **What to listen for:**
+
 - [ ] Form start is announced
 - [ ] All fields are listed in Forms List
 - [ ] Required fields say "required"
@@ -86,6 +96,7 @@ Use before deploying any new issue template or form.
 - [ ] No unlabeled fields
 
 ### VoiceOver Testing (macOS)
+
 ```
 1. Press VO+U to open Web Rotor
 2. Navigate to Form Controls section
@@ -101,6 +112,7 @@ Use before deploying any new issue template or form.
 ```
 
 **What to listen for:**
+
 - [ ] Rotor shows all form controls
 - [ ] Heading levels are correct (no 1 → 3 jumps)
 - [ ] Field labels are adjacent to fields
@@ -109,6 +121,7 @@ Use before deploying any new issue template or form.
 ## Accessibility Testing by Component
 
 ### Checkboxes & Radio Buttons
+
 - [ ] Grouped label describes the entire group
 - [ ] Individual labels describe each option
 - [ ] Screen reader announces number of options
@@ -117,6 +130,7 @@ Use before deploying any new issue template or form.
 **Test:** Tab to group, use arrow keys to select. Screen reader should guide you clearly.
 
 ### Dropdowns
+
 - [ ] Visible label above or adjacent to dropdown
 - [ ] Dropdown shows currently selected value
 - [ ] Opening dropdown announces all options (or "expandable menu")
@@ -126,6 +140,7 @@ Use before deploying any new issue template or form.
 **Test:** Tab to dropdown, press Down/Space to open, arrow through options.
 
 ### Links & Buttons
+
 - [ ] Link text describes where it goes (not "click here", "link", "read more")
 - [ ] Button text describes what happens (not "submit", "go", "continue")
 - [ ] Focuses visible with keyboard (Tab key shows clear highlight)
@@ -134,6 +149,7 @@ Use before deploying any new issue template or form.
 **Test:** Press Tab to navigate, read labels aloud.
 
 ### Text Fields (Input, Textarea)
+
 - [ ] Label directly associated with field (via `label` tag or aria-label)
 - [ ] Placeholder text is NOT a substitute for label
 - [ ] Example: Bad: Empty field with gray "Enter email" (disappears when you type)
@@ -142,6 +158,7 @@ Use before deploying any new issue template or form.
 **Test:** Tab to field, screen reader announces label, then focus moves into field.
 
 ### Instructions & Help Text
+
 - [ ] Help text appears visually near the field
 - [ ] Help text is announced by screen reader (not hidden)
 - [ ] Instructions use simple language
@@ -158,7 +175,7 @@ Use before deploying any new issue template or form.
 - [ ] Required fields marked with  or "required" text (not just color)
 - [ ] Disabled fields are visually distinct
 
-**Test:** Use WebAIM Contrast Checker: https://webaim.org/resources/contrastchecker/
+**Test:** Use WebAIM Contrast Checker: <https://webaim.org/resources/contrastchecker/>
 
 ## Keyboard Navigation Testing
 
@@ -197,6 +214,7 @@ Test WITHOUT using the mouse.
 ## Testing Checklist Summary
 
 ### Before Deploying (Must-Have)
+
 - [ ] All form fields have labels
 - [ ] Required fields marked and announced
 - [ ] Tab order is logical
@@ -206,12 +224,14 @@ Test WITHOUT using the mouse.
 - [ ] YAML syntax is valid
 
 ### Before Workshop/Training (Should-Have)
+
 - [ ] Tested with at least 1 screen reader (NVDA, JAWS, or VoiceOver)
 - [ ] Keyboard-only workthrough (no mouse)
 - [ ] Mobile/responsive check
 - [ ] Plain language review
 
 ### Best Practice (Nice-to-Have)
+
 - [ ] Tested with all 3 screen readers
 - [ ] Tested with multiple browsers (Chrome, Firefox, Safari, Edge)
 - [ ] Tested with actual users with disabilities
@@ -232,20 +252,23 @@ Test WITHOUT using the mouse.
 ## Testing Tools & Resources
 
 ### Automated Testing
-- **WebAIM Contrast Checker:** https://webaim.org/resources/contrastchecker/ (color accessibility)
-- **WAVE Browser Extension:** https://wave.webaim.org/extension/ (errors & warnings)
-- **Axe DevTools:** https://www.deque.com/axe/devtools/ (comprehensive audit)
+
+- **WebAIM Contrast Checker:** <https://webaim.org/resources/contrastchecker/> (color accessibility)
+- **WAVE Browser Extension:** <https://wave.webaim.org/extension/> (errors & warnings)
+- **Axe DevTools:** <https://www.deque.com/axe/devtools/> (comprehensive audit)
 - **Lighthouse (built into Chrome):** F12 → Lighthouse → Accessibility (score & feedback)
 
 ### Manual Testing
-- **NVDA (free):** https://www.nvaccess.org/ (Windows)
-- **JAWS (trial available):** https://www.freedomscientific.com/ (Windows)
+
+- **NVDA (free):** <https://www.nvaccess.org/> (Windows)
+- **JAWS (trial available):** <https://www.freedomscientific.com/> (Windows)
 - **VoiceOver (built-in):** macOS/iOS
 - **Keyboard Testing:** No tools needed - just don't use mouse!
 
 ### Feedback
+
 - **Screen Reader Commands:** See `docs/appendix-b-screen-reader-cheatsheet.md`
-- **WCAG Guidelines:** https://www.w3.org/WAI/WCAG21/quickref/
+- **WCAG Guidelines:** <https://www.w3.org/WAI/WCAG21/quickref/>
 - **Get Help:** Open an issue with accessibility testing results
 
 ## After Testing: Recording Issues
@@ -280,21 +303,25 @@ OS: Windows 11
 This repository includes a build system that converts all Markdown files to HTML (see `BUILD.md`). If participants will use the HTML versions, test them separately:
 
 ### Heading Hierarchy
+
 - [ ] Each HTML page has exactly one `<h1>` element
 - [ ] Heading levels don't skip (no `<h1>` → `<h3>` jumps)
 - [ ] Navigation footers don't break the heading outline
 
 ### Link Targets
+
 - [ ] Internal links resolve correctly (`.md` links are converted to `.html`)
 - [ ] Anchor links (`#section-name`) scroll to the correct position
 - [ ] External links open and are not broken
 
 ### Landmark Structure
+
 - [ ] The `<main>` element wraps the primary content
 - [ ] Navigation elements are properly structured
 - [ ] Screen reader can identify page regions using landmarks (`D` key in NVDA/JAWS)
 
 ### Validation
+
 - [ ] Run pages through the [W3C HTML Validator](https://validator.w3.org/) - check for errors
 - [ ] Run pages through [WAVE](https://wave.webaim.org/) - check for accessibility errors
 - [ ] Verify syntax-highlighted code blocks are readable (not color-only)

@@ -2,6 +2,7 @@
 **Table: Workflow automation in the Learning Room**
 
 **Table: Troubleshooting common issues in Learning Room automation**
+
 # Learning Room Automation Setup & Maintenance Guide
 
 ## Overview
@@ -57,29 +58,32 @@ learning-room/
 3. **Workflows run automatically:**
    - `pr-validation-bot`: Validates structure, welcomes first-timers
    - `content-validation`: Checks links, markdown, accessibility
-  - `student-progression`: Creates the next challenge when an issue closes
-  - `skills-progression`: Awards badges when a PR merges
 
-4. **Student receives feedback** in PR comments within ~30 seconds
+- `student-progression`: Creates the next challenge when an issue closes
+- `skills-progression`: Awards badges when a PR merges
 
-5. **Student makes updates** to their branch; workflows re-run automatically
+1. **Student receives feedback** in PR comments within ~30 seconds
 
-6. **Peer reviewer approves** (facilitated by facilitator)
+2. **Student makes updates** to their branch; workflows re-run automatically
 
-7. **PR is merged** → skills-progression workflow celebrates 
+3. **Peer reviewer approves** (facilitated by facilitator)
+
+4. **PR is merged** → skills-progression workflow celebrates
 
 ## Workflow Details
 
 ### 1. PR Validation Bot (`pr-validation-bot.yml`)
 
 **What it does:**
--  Welcomes new contributors with orientation
--  Validates PR has issue reference (`Closes #123`)
--  Validates PR has meaningful description
--  Provides educational feedback with links to resources
--  Auto-responds to help requests in comments
+
+- Welcomes new contributors with orientation
+- Validates PR has issue reference (`Closes #123`)
+- Validates PR has meaningful description
+- Provides educational feedback with links to resources
+- Auto-responds to help requests in comments
 
 **Key Scripts:**
+
 - `validate-pr.js` — Checks PR requirements
 - `validation-report.js` — Formats feedback
 - `comment-responder.js` — Handles help requests
@@ -90,12 +94,14 @@ Edit `validate-pr.js` to change what's validated. Keep checks *encouraging* not 
 ### 2. Content Validation (`content-validation.yml`)
 
 **What it does:**
--  Validates all markdown links exist
--  Checks markdown structure (headings, lists, code blocks)
--  Identifies accessibility issues (alt text, link text, tables)
--  Provides clear, educational feedback
+
+- Validates all markdown links exist
+- Checks markdown structure (headings, lists, code blocks)
+- Identifies accessibility issues (alt text, link text, tables)
+- Provides clear, educational feedback
 
 **Key Scripts:**
+
 - `check_links.py` — Validates relative/absolute links
 - `check_markdown.py` — Validates heading hierarchy, formatting
 - `check_accessibility.py` — Checks for missing alt text, poor link text
@@ -106,12 +112,14 @@ Update the Python scripts to match your accessibility standards. The regex patte
 ### 3. Skills Progression (`skills-progression.yml`)
 
 **What it does:**
--  Awards achievement badges when PRs merge
--  Celebrates milestones (first PR, 5th PR, etc.)
--  Tracks skill categories (markdown, accessibility, review, collaboration)
--  Suggests next challenges to students
+
+- Awards achievement badges when PRs merge
+- Celebrates milestones (first PR, 5th PR, etc.)
+- Tracks skill categories (markdown, accessibility, review, collaboration)
+- Suggests next challenges to students
 
 **Key Scripts:**
+
 - Built into the workflow using `actions/github-script`
 
 **Customization for Future Workshops:**
@@ -120,6 +128,7 @@ Edit the badge names, skill categories, and celebration messages in `skills-prog
 ## Setup Instructions (For New Workshop)
 
 ### Prerequisites
+
 - GitHub organization with access to create/edit workflows
 - Node.js 20+ (for local testing)
 - Python 3.11+ (for link validation)
@@ -142,6 +151,7 @@ cp learning-room/package.json your-new-learning-room/package.json
 ### Step 2: Customize for Your Workshop
 
 **Edit `.github/workflows/pr-validation-bot.yml`:**
+
 ```yaml
 # Change welcome message
 welcomeBody: 'Your custom welcome message...'
@@ -150,6 +160,7 @@ welcomeBody: 'Your custom welcome message...'
 ```
 
 **Edit `.github/workflows/skills-progression.yml`:**
+
 ```yaml
 # Customize badge names and skill categories
 badges:
@@ -159,6 +170,7 @@ badges:
 ```
 
 **Edit Python validation scripts (`.github/scripts/check_*.py`):**
+
 ```python
 # Update accessibility standards to match your requirements
 # Update link patterns, heading rules, etc.
@@ -200,6 +212,7 @@ python .github/scripts/check_accessibility.py .
 4. Call your function in `runValidation()`
 
 **Example:**
+
 ```javascript
 function checkMyRule() {
   const passes = /* your check */;
@@ -224,18 +237,21 @@ function checkMyRule() {
 
 1. Edit `.github/workflows/skills-progression.yml`
 2. Add new label recognition:
+
    ```yaml
    if (labels.includes('skill: yourskill')) {
      skillType = 'yourskill';
      badgeName = ' Your Badge';
    }
    ```
+
 3. Update `skillDescription` and other references
 4. Consider adding to challenge issues with appropriate labels
 
 ### Monitoring & Troubleshooting
 
 **Check workflow logs:**
+
 - Go to Actions tab in repository
 - Click workflow run
 - Check "Annotations" tab for any issues
@@ -254,11 +270,13 @@ function checkMyRule() {
 ### Workflow Optimization
 
 The current setup:
+
 - **Fast triggers**: Feedback within ~30 seconds
 - **Efficient checks**: Python validators run in parallel
 - **Caching**: npm dependencies cached between runs
 
 **To optimize further:**
+
 - Use workflow caching for large dependency sets
 - Limit file validation to changed files only (advanced)
 - Consider separate workflows for different check types
@@ -266,6 +284,7 @@ The current setup:
 ### Scalability
 
 As student count grows:
+
 - Current setup handles 100+ concurrent PRs
 - API rate limits: GitHub allows 1000 API calls per workflow run
 - If you hit limits: consolidate checks or split into multiple workflows
@@ -275,15 +294,17 @@ As student count grows:
 Document your changes in `.github/README.md` or in your main Learning Room documentation:
 
 ### What to Document
--  Which checks are enabled and why
--  How to interpret bot feedback  
--  How students request help from the bot
--  What to do if bot feedback seems wrong
--  How facilitators can override bot decisions
+
+- Which checks are enabled and why
+- How to interpret bot feedback  
+- How students request help from the bot
+- What to do if bot feedback seems wrong
+- How facilitators can override bot decisions
 
 ### Student-Facing Guide
 
 Create a guide explaining:
+
 - What the bot validates
 - Why each check matters
 - How to fix common issues
@@ -292,6 +313,7 @@ Create a guide explaining:
 ## Future Enhancements
 
 ### Phase 2 Ideas
+
 - [ ] Automated skill level progression (Beginner → Intermediate → Advanced)
 - [ ] Progress dashboard showing student completion rates
 - [ ] Custom challenge sequencing based on skill levels
@@ -299,7 +321,9 @@ Create a guide explaining:
 - [ ] Integration with GitHub Projects for progress tracking
 
 ### Community Contributions
+
 This system is designed to be extended! Future contributors can:
+
 - Add new validators
 - Create educational resources
 - Improve error messages
@@ -310,11 +334,13 @@ This system is designed to be extended! Future contributors can:
 ### Workflows Not Running
 
 **Check:**
+
 1. Is GitHub Actions enabled? (Settings → Actions)
 2. Do workflows have correct permissions? (Check `permissions:` field)
 3. Is the branch protection rule blocking? (Settings → Branches)
 
 **Fix:**
+
 ```yaml
 # Ensure workflows have needed permissions
 permissions:
@@ -326,6 +352,7 @@ permissions:
 ### Validation False Positives
 
 **If bot rejects valid content:**
+
 1. Check the specific validation rule in the Python/JS script
 2. Consider if the rule is too strict
 3. Update the rule or add an exception
@@ -334,6 +361,7 @@ permissions:
 ### Students Can't Trigger Actions
 
 **Ensure:**
+
 - Workflows have correct `on:` triggers
 - Student branches push to the repository (not forks)
 - No branch protection blocks the workflow permission
@@ -341,6 +369,7 @@ permissions:
 ## Support & Questions
 
 For help maintaining this automation:
+
 1. Check the `.github/workflows/` comments
 2. Review the script docstrings
 3. Test changes locally before deploying

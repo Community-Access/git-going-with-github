@@ -16,6 +16,7 @@ This document tracks the curriculum's alignment with Accessibility Agents versio
 ### Curriculum Version 2.0 (May 2026) - Accessibility Agents 5.0.0+
 
 **Curriculum changes:**
+
 - Chapter 19: Expanded from 55 to 80 agents; added 5-platform support; added document and developer tools teams
 - Appendix K: Added MCP Server section; comprehensive Copilot reference with cross-platform guidance
 - Appendix L: Enhanced from 26 to 40 accessibility agents; added 20 GitHub Workflow agents; added 18 developer tool agents
@@ -39,6 +40,7 @@ This document tracks the curriculum's alignment with Accessibility Agents versio
 ### Previous Versions
 
 **Curriculum Version 1.0 (September 2025) - Accessibility Agents 4.x**
+
 - Chapter 16: GitHub Copilot introduction (basic agents, no cross-platform)
 - Appendices K-L: Copilot and 55 web/GitHub agents (web accessibility team only)
 - No document or developer tools support
@@ -54,6 +56,7 @@ This document tracks the curriculum's alignment with Accessibility Agents versio
 **Now (5.0.0+):** Agents can auto-apply many fixes; users review and confirm.
 
 **Example:**
+
 ```
 Version 4.x:
 User: @aria-specialist audit this component
@@ -85,6 +88,7 @@ Output: compliance-report.xlsx
 **Now (5.0.0+):** Track accessibility scores over time; identify improvement or regression.
 
 **Capability:**
+
 ```
 Hook configuration:
 {
@@ -105,6 +109,7 @@ Output: Trend report showing score changes week-over-week
 
 **Before (4.x):** VS Code Copilot only.
 **Now (5.0.0+):** Same agents run on:
+
 - GitHub Copilot (VS Code)
 - Claude Code (CLI)
 - Gemini CLI
@@ -120,6 +125,7 @@ Output: Trend report showing score changes week-over-week
 **Prerequisite chapters:** 1-10 (GitHub fundamentals)
 
 **Learning sequence:**
+
 1. Chapter 11: VS Code interface
 2. Chapter 16: GitHub Copilot introduction
 3. Chapter 19: Accessibility Agents (Web team) - Chapters/Appendices L, K
@@ -135,6 +141,7 @@ Output: Trend report showing score changes week-over-week
 **Prerequisite:** Path 1 (web accessibility) or Chapter 19 overview
 
 **Learning sequence:**
+
 1. Appendix AC: Document & Developer Tool Agents (Document section)
 2. Challenge 19.4: Audit Word/Excel/PowerPoint with `@office-accessibility` agents
 3. Challenge 19.5: Remediate documents with `@office-remediator`
@@ -149,6 +156,7 @@ Output: Trend report showing score changes week-over-week
 **Prerequisite:** Path 1 or strong Python/testing background
 
 **Learning sequence:**
+
 1. Appendix AC: Document & Developer Tool Agents (Developer section)
 2. Appendix AB: Advanced Agent Patterns & Skills (Hooks, Skills authoring)
 3. Challenge 19.6: Set up CI/CD accessibility checks with `@ci-accessibility`
@@ -164,6 +172,7 @@ Output: Trend report showing score changes week-over-week
 **Prerequisite:** Chapter 19 (basic Copilot knowledge)
 
 **Learning sequence:**
+
 1. Appendix K: Copilot Reference (5-platform comparison table)
 2. Appendix AA: Installation & Setup (Platform-specific sections)
 3. Appendix AB: Advanced Patterns (Skill-first workflows across platforms)
@@ -180,6 +189,7 @@ Output: Trend report showing score changes week-over-week
 ### Adding a New Agent to Curriculum
 
 **When to propose a new agent:**
+
 - New accessibility domain not yet covered (e.g., internationalization, performance)
 - Platform-specific agent (macOS/Linux/mobile-specific)
 - New Agents 5.0+ feature (compliance export, hooks, etc.)
@@ -223,6 +233,7 @@ Output: Trend report showing score changes week-over-week
 ```
 
 **To add to curriculum:**
+
 1. Document the hook in admin guides (FACILITATOR_GUIDE.md, CLASSROOM_INTEGRATION_GUIDE.md)
 2. Create step-by-step setup instructions for facilitators
 3. Add troubleshooting section (e.g., "hook not triggering")
@@ -241,9 +252,10 @@ Output: Trend report showing score changes week-over-week
 | NEW | Appendix AC | Document and developer agents | When App AC added |
 
 **Podcast generation process:**
+
 1. Review chapter/appendix changes in git diff
 2. Extract key learning points (3-5 min main content)
-3. Record Alex + Jamie conversation (see https://lp.csedesigns.com/ggg/PODCASTS.html for style guide)
+3. Record Alex + Jamie conversation (see <https://lp.csedesigns.com/ggg/PODCASTS.html> for style guide)
 4. Add full transcript below audio player
 5. Update RSS feed and release notes
 
@@ -279,6 +291,7 @@ Accessibility Agents 5.0.0
 ### Core Skills (25+)
 
 **Categories:**
+
 - Web scanning & severity scoring (2)
 - Document scanning & compliance (2)
 - Markdown accessibility (3)
@@ -288,6 +301,7 @@ Accessibility Agents 5.0.0
 - Troubleshooting & reference (7+)
 
 **Skills are bundled with agents**, meaning:
+
 - Agents use skills internally (not visible to learners by default)
 - Advanced users can invoke skills directly via slash commands
 - Facilitators can create custom skills for classroom use
@@ -297,6 +311,7 @@ Accessibility Agents 5.0.0
 MCP (Model Context Protocol) provides standardized tool access across platforms.
 
 **Tool categories:**
+
 - Web scanning (8): page, pages, DOM, Lighthouse, Playwright, etc.
 - Document (10): Word, Excel, PowerPoint, PDF, EPUB scanning
 - Markdown (4): scanning, linting, validation
@@ -322,17 +337,20 @@ MCP (Model Context Protocol) provides standardized tool access across platforms.
 ## Maintenance Tasks (By Semester)
 
 ### Spring 2026
+
 - [x] Expand agents from 55 to 80 (document + dev tools teams)
 - [x] Create appendices AA, AB, AC with comprehensive guides
 - [x] Add multi-platform support to curriculum (5 platforms)
 - [ ] Regenerate podcasts for Episodes 17, 39, 40 and new Episodes 41-43
 
 ### Summer 2026
+
 - [ ] Create mobile accessibility challenge (iOS VoiceOver, Android TalkBack)
 - [ ] Update facilitator guides with classroom CI/CD hook examples
 - [ ] Propose new agent for internationalization testing
 
 ### Fall 2026
+
 - [ ] Align curriculum with Agents 5.5 (if released)
 - [ ] Create certification pathway for facilitators (Agent Trainer Badge)
 - [ ] Document custom skill examples from community contributions

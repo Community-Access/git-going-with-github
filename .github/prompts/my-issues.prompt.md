@@ -2,10 +2,11 @@ name: my-issues
 description: "Smart issue dashboard -- lists your open issues across all repos, sorted by priority with activity signals, reactions, release context, and discussion links"
 agent: issue-tracker
 tools:
-  - github/*
-  - createFile
-  - createDirectory
-  - ask_questions
+
+- github/*
+- createFile
+- createDirectory
+- ask_questions
 
 Get the current authenticated user with #tool:mcp_github_github_get_me, then search for all **open** issues created by that user using #tool:mcp_github_github_search_issues.
 
@@ -16,6 +17,7 @@ ${input:filter:Optional: repo name, 'org:orgname', date range, labels, or keywor
 ## Behavior
 
 Parse the filter text:
+
 - **Repo name** --> scope search to that repo with `repo:owner/name`
 - **Org name** (e.g., "org:microsoft") --> scope to that org with `org:orgname`
 - **Date** ("last week", "past 30 days", "since Jan") --> add `updated:>YYYY-MM-DD`
@@ -26,6 +28,7 @@ Parse the filter text:
 ## Enhanced Data Collection
 
 For each issue found, also gather:
+
 - **Reactions** -- summarize positive/negative reactions. Flag as Popular (5+), Controversial (mixed), or Quiet.
 - **Release context** -- check if the issue is in a milestone tied to an upcoming release.
 - **Discussions** -- note if there are related GitHub Discussions.
@@ -43,6 +46,7 @@ Display results sorted by priority (issues with recent comments, @mentions, reac
 | 2 | [Issue #N: Title](url) | repo | `feature` | 2 | +1: 1 | 1 day ago | New activity |
 
 **Signal legend:**
+
 - **Action needed** -- Needs your reply
 - **New activity** -- New comments since your last visit
 - **Popular** -- 5+ positive reactions from community

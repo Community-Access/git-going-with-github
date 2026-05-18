@@ -1,4 +1,5 @@
 # GitHub Classroom Troubleshooting Guide
+
 ## For Facilitators Managing Student Workflows
 
 This document covers common issues that arise during GitHub Classroom workshops and how to resolve them quickly. Use this alongside [FACILITATOR_GUIDE.md](FACILITATOR_GUIDE.md) for general facilitation.
@@ -12,6 +13,7 @@ This document covers common issues that arise during GitHub Classroom workshops 
 **Symptom:** Students are creating PRs but Gandalf bot isn't commenting within 30 seconds.
 
 **Diagnostics:**
+
 1. Check [GitHub Status](https://www.githubstatus.com) — is GitHub Actions down?
 2. Check your test repo — try creating a PR yourself. Does Gandalf respond?
 3. Check the workflow logs in the template repository:
@@ -34,6 +36,7 @@ If the bot is down and you need to review PRs:
 
 1. Go to student's PR
 2. Comment with this template (copy Gandalf's format):
+
    ```markdown
    Checking your work...
    
@@ -45,6 +48,7 @@ If the bot is down and you need to review PRs:
    
    Nice work! [personalized comment]
    ```
+
 3. Students continue as normal (they don't know the difference)
 4. When bot comes back, future PRs will get automatic feedback
 
@@ -53,6 +57,7 @@ If the bot is down and you need to review PRs:
 **Symptom:** Student merged a PR, but the next challenge didn't appear. They're stuck waiting for Challenge 2.
 
 **Diagnostics:**
+
 1. Go to student's repo → Issues tab
 2. Check if the old challenge is closed
 3. Check if the new challenge exists (might be closed too)
@@ -70,6 +75,7 @@ If the bot is down and you need to review PRs:
 **Symptom:** Zoom/Teams/Google Meet is disconnected. Students are isolated.
 
 **What to Do:**
+
 1. **Don't panic** — GitHub Classroom work doesn't stop without the call
 2. **Create backup**: Send message to any chat channel (email, GitHub Discussions):
    > "Video call dropped temporarily. You can keep working on your challenges — we're working on reconnecting. Use [Discussions/email/Slack] if you need help in the meantime."
@@ -79,6 +85,7 @@ If the bot is down and you need to review PRs:
 ### Co-Facilitator Is Unavailable
 
 **Symptom:** You're alone and need to:
+
 - Monitor dashboard
 - Answer chat questions
 - Do a demo
@@ -88,11 +95,13 @@ If the bot is down and you need to review PRs:
 **Solutions:**
 
 **Short-term (next 30 min):**
+
 - Shift to async mode: "We're doing async today. Post questions in chat and I'll respond promptly."
 - Use recorded demo if you have one
 - Focus on responding to questions quickly rather than real-time facilitation
 
 **Mid-term (next few hours):**
+
 - Recruit a volunteer:
   - Advanced student
   - TA or peer
@@ -101,6 +110,7 @@ If the bot is down and you need to review PRs:
 - Put facilitator on mute except for key moments
 
 **Long-term:**
+
 - Consider pausing until co-facilitator returns
 - Or shift to fully asynchronous (post challenges, respond to questions async)
 
@@ -145,11 +155,13 @@ Q: Are you logged in?
 **Student accepted assignment, but Challenge 1 issue doesn't exist.**
 
 **Causes:**
+
 - Template repo doesn't have Challenge 1 issue
 - Issue exists but in wrong place
 - Student accepted but issue creation failed
 
 **Fix:**
+
 1. Check template repo → Issues → Does Challenge 1 exist?
    - If no: Create it in template, then re-create in student repo
    - If yes: Go to step 2
@@ -158,6 +170,7 @@ Q: Are you logged in?
    - If yes: Problem solved (they might not be looking in the right place)
 
 **Manual Creation:**
+
 1. Student repo → Issues tab
 2. Click "New issue"
 3. Copy the Challenge 1 content from the template issue
@@ -171,6 +184,7 @@ Q: Are you logged in?
 **First:** Read the challenge text back to them aloud.
 
 **Then:** Break it down:
+
 - What is it asking me to change? [Tell them]
 - Where is that in my repo? [Show them]
 - How will I know when I'm done? [Tell them the success criterion]
@@ -178,7 +192,8 @@ Q: Are you logged in?
 **Next:** Give them the first tiny step:
 > "Start by [one specific action]. Do that, then come back and tell me what you see."
 
-**Don't:** 
+**Don't:**
+
 - Do it for them
 - Overwhelm with the whole solution
 - Use jargon without explaining
@@ -188,16 +203,18 @@ Q: Are you logged in?
 **Student is confused by Gandalf bot comment.**
 
 **What the bot might say:**
+
 ```
 Consider: PR title should follow the pattern "Challenge X: [description]"
 ```
 
 **What you say:**
-> "Gandalf is asking you to change your PR title. Right now it says '[current title]'. 
-> Change it to 'Challenge 1: [something describing the change]'. 
+> "Gandalf is asking you to change your PR title. Right now it says '[current title]'.
+> Change it to 'Challenge 1: [something describing the change]'.
 > Go back to your PR, click 'Edit' on the title, make the change, save."
 
 **Practice Translation:**
+
 - Bot: "Markdown formatting issue" → You: "Your description has an extra space somewhere. Check for weird spacing."
 - Bot: "File path incorrect" → You: "You edited the wrong file. Edit [correct filename] instead."
 - Bot: "Branch naming convention" → You: "Your branch name should be [format], not [what they did]."
@@ -207,11 +224,13 @@ Consider: PR title should follow the pattern "Challenge X: [description]"
 **Student merged PR. Old issue closed. New issue missing.**
 
 **Causes:**
+
 1. Progression bot is running late (just wait)
 2. Progression bot failed
 3. Student is looking in wrong place
 
 **Fix:**
+
 1. Ask: "Refresh your Issues page. Do you see Challenge 2 now?"
    - If yes: Problem solved
    - If no: Go to step 2
@@ -237,6 +256,7 @@ Consider: PR title should follow the pattern "Challenge X: [description]"
 | "File not found" | They're trying to edit wrong file. Help them find correct one. |
 
 **General troubleshooting:**
+
 1. Have them refresh the repo
 2. Have them close/reopen the file they're editing
 3. Have them try a simpler edit (just one word) first
@@ -271,11 +291,13 @@ Consider: PR title should follow the pattern "Challenge X: [description]"
 **When it happens:** Usually Challenge 7 or later in the workshop.
 
 **Student sees:**
+
 ```
 This branch has conflicts that must be resolved
 ```
 
 **Your response:**
+
 1. Don't panic — this is intentional (a learning challenge)
 2. **Don't try to fix it over chat** — merge conflict resolution is hands-on
 3. Do one of these:
@@ -284,6 +306,7 @@ This branch has conflicts that must be resolved
    - **Have them post in Discussions** → Someone can walk them through async
 
 **Teaching the fix:**
+
 1. Go to the PR → click "Resolve conflicts"
 2. GitHub shows the conflicting lines
 3. The student picks which version is correct (or combines both)
@@ -298,6 +321,7 @@ This branch has conflicts that must be resolved
 **What it is:** Challenge X has an automated test. Student's submission failed the test.
 
 **Student sees:**
+
 ```
 Autograding failed (X failed)
 ```
@@ -332,6 +356,7 @@ Autograding failed (X failed)
 > "This happens in real GitHub all the time. We just undo it."
 
 **How to undo:**
+
 1. Go to the merged PR
 2. Look for "Revert this pull request" button
 3. Click it
@@ -346,17 +371,20 @@ Autograding failed (X failed)
 **Student says:** "I was working on something and it's gone now."
 
 **Possible causes:**
+
 1. They edited in GitHub web editor (not saved)
 2. They refreshed before saving
 3. They closed browser
 4. They're looking in wrong repo/branch
 
 **Your investigation:**
+
 1. "What were you trying to change?" → You explain it
 2. "Let's look at your repo" → You check it together
 3. "Do you see a [branch/PR/draft]?" → Navigate together
 
 **If truly lost:**
+
 1. "It's okay, let's start fresh"
 2. Help them re-do the work
 3. This time, save properly by creating PR (not just editing)
@@ -372,12 +400,14 @@ Autograding failed (X failed)
 **How to know:** You get an error like "502 Bad Gateway" when accessing any GitHub page.
 
 **What to do:**
+
 1. Check [GitHub Status](https://www.githubstatus.com)
 2. Post in chat: "GitHub.com is temporarily down. We're waiting for it to come back up. Keep your changes safe (don't refresh)."
 3. Wait for GitHub to recover
 4. Resume workshop
 
 **In the meantime:** Students can:
+
 - Read challenge instructions offline
 - Plan their approach
 - Discuss with peers
@@ -389,6 +419,7 @@ Autograding failed (X failed)
 **What's happening:** GitHub's infrastructure is overloaded.
 
 **What to do:**
+
 - Let students know: "Feedback bot is running a bit slow today. Don't refresh — it'll show up in a few minutes."
 - Continue working while waiting
 - If it doesn't show up, manually review (as described earlier)
@@ -400,6 +431,7 @@ Autograding failed (X failed)
 **Likely cause:** Organization settings changed accidentally.
 
 **Fix:**
+
 1. Go to Organization Settings
 2. Check "Member privileges"
 3. Make sure members can create public/private repos
@@ -416,6 +448,7 @@ Autograding failed (X failed)
 **Cause:** Dashboard is cached or lagging behind.
 
 **Fix:**
+
 1. Refresh the page
 2. Wait a few minutes (GitHub's dashboard updates asynchronously)
 3. Try incognito/private browser (clears cache)
@@ -423,12 +456,14 @@ Autograding failed (X failed)
 ### Can't Access Classroom Dashboard
 
 **Causes:**
+
 1. Not logged in
 2. Organization didn't set up Classroom
 3. Permissions issue
 
 **Fix:**
-1. Go to https://classroom.github.com
+
+1. Go to <https://classroom.github.com>
 2. Click "Sign in"
 3. Select your organization
 4. If not listed, go to organization settings and link GitHub Classroom
@@ -440,6 +475,7 @@ Autograding failed (X failed)
 **Cause:** Dashboard is lagging or those people haven't been processed yet.
 
 **Fix:**
+
 1. Refresh
 2. Wait 5 minutes
 3. Check directly: Go to org → Repositories → Look for new repos manually
@@ -453,6 +489,7 @@ Autograding failed (X failed)
 **You:** Closed Challenge 2 in a student's repo by mistake.
 
 **Recovery:**
+
 1. Go to the repo
 2. Find the closed challenge in the Issues tab (closed filter)
 3. Re-open it
@@ -465,6 +502,7 @@ Autograding failed (X failed)
 **Cause:** Manual creation while bot was also creating it.
 
 **Fix:**
+
 1. Go to student repo
 2. Close/delete the duplicate
 3. Tell student: "Cleaned that up. You should see one Challenge 2 now."
@@ -474,6 +512,7 @@ Autograding failed (X failed)
 **You:** Accepted and merged a PR meant for a student to merge.
 
 **Recovery:**
+
 1. Revert the PR (see "Accidental Merge" section)
 2. Apologize: "I shouldn't have done that — I reverted it. Your merge is what counts."
 3. Have student re-merge it (they'll get the learning)
@@ -524,6 +563,7 @@ Autograding failed (X failed)
 Most issues in this guide have happened to facilitators before. You're not the first and won't be the last.
 
 Key principles:
+
 1. **Stay calm** — The students are watching. If you're calm, they're calm.
 2. **Explain out loud** — "Here's what I think is happening... let's check..."
 3. **Don't pretend to know** — "I'm not sure. Let's figure this out together."

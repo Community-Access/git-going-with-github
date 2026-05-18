@@ -5,7 +5,6 @@
 > **Related appendices:** [Appendix C: Markdown Reference](appendix-c-markdown-reference.md) | [Appendix B: Screen Reader Cheat Sheet](appendix-b-screen-reader-cheatsheet.md)
 > **Authoritative sources:** [GitHub Docs: About pull requests](https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/about-pull-requests) | [GitHub Accessibility Guide: Pull Requests](https://accessibility.github.com/documentation/guide/pull-requests/) | [GitHub Accessibility Lab: CLI Guide](https://accessibility.github.com/documentation/guide/cli/)
 
-
 ## Creating, Reviewing, and Merging Pull Requests with a Screen Reader
 
 > **See also:** [Chapter 15: Code Review](15-code-review.md) covers the full review workflow including multi-file diffs and suggested changes.
@@ -25,7 +24,6 @@
 > Full step-by-step instructions with per-screen-reader commands are in [Pre-Workshop Setup, Step 4](00-pre-workshop-setup.md#step-4---check-github-feature-preview-settings).
 >
 > **Browse vs Focus Mode (NVDA):** Use **Browse Mode** (the default) for reading PR conversations, navigating headings, and reviewing diffs. Switch to **Focus Mode** (`NVDA+Space`) only when you need to type in comment boxes or search fields. Switch back to Browse Mode to resume navigation. Maximize your browser window for consistent landmark layout.
-
 
 ## Workshop Recommendation (Chapter 6)
 
@@ -91,10 +89,10 @@ The following table summarizes the practice files in the learning-room, what eac
 
 **Proposing your changes (this creates your branch):**
 
-5. After editing, activate the **Commit changes** button (green button above the editor).
-6. A dialog appears. In the **Branch name** field, type: `fix/yourname-issueXX` (replace `yourname` with your GitHub username, and `XX` with the issue number).
-7. Select **Create a new branch for this commit and start a pull request**.
-8. Activate **Propose changes**.
+1. After editing, activate the **Commit changes** button (green button above the editor).
+2. A dialog appears. In the **Branch name** field, type: `fix/yourname-issueXX` (replace `yourname` with your GitHub username, and `XX` with the issue number).
+3. Select **Create a new branch for this commit and start a pull request**.
+4. Activate **Propose changes**.
 
 **You are done when:** GitHub shows the "Open a pull request" page. Your file change is saved on a new branch. Continue to Challenge 6.2.
 
@@ -164,7 +162,6 @@ A great PR is small, linked to an issue, and easy to review. Faster feedback bui
 - Feedback is immediate and specific.
 - Success is visible (green checks + closed issue).
 
-
 ### About Learning Cards in This Chapter
 
 This chapter provides learning cards: expandable blocks that offer perspective-specific guidance for different ways of working. Not every card appears at every step. Open the ones that match how you work.
@@ -179,7 +176,6 @@ The following table describes the six learning card types used in this chapter.
 | VoiceOver (macOS) | Screen reader users on macOS | VO key sequences, rotor usage, interaction model |
 | GitHub.com web | All users working in the browser | Browser-based workflows without local tools |
 | CLI (git / gh) | Terminal users on any platform | Git and GitHub CLI commands for PR management |
-
 
 ## Local Git Alternative: The Full Branch-Edit-PR Workflow
 
@@ -236,7 +232,6 @@ The GitHub CLI walks you through title, body, base branch, and reviewers.
 
 </details>
 
-
 ## What Is a Pull Request?
 
 A pull request (PR) is a proposal to merge changes from one branch into another. When you have:
@@ -255,7 +250,6 @@ A PR shows:
 - **Status** - automated checks (CI/CD) and review status
 
 > **Learning Room connection:** In the Learning Room repository, every hands-on contribution follows this pattern. For example, when you complete Challenge 3 (filling the `[TODO]` sections in `docs/welcome.md`), you open a PR that shows your added content as green `+` lines in the diff, your description explains which TODOs you completed and why, and the validation bot posts automated check results. The scenarios in this chapter use Learning Room files so you can follow along with real content.
-
 
 ## Navigating to Pull Requests
 
@@ -327,21 +321,23 @@ gh pr view 42 --web
 ### Learning Cards: Navigating to Pull Requests
 
 **Screen reader users:**
+
 - Press `D` to jump to the "Repository navigation" landmark, then `K` to reach the "Pull requests" tab link -- this is faster than arrowing through the entire page
 - The tab link announces the open PR count ("Pull requests, 7 open"), giving you a quick triage number without opening the list
 - From any GitHub page, press `G` then `P` (two sequential key presses in Focus Mode) to jump directly to the repository's Pull Requests tab
 - Use terminal-first triage when needed: `gh pr list` then `gh pr view <number>` to review essentials before entering the web diff
 
 **Low-vision users:**
+
 - The Pull requests tab is in the repository navigation bar near the page top; at 200%+ zoom the tab bar may wrap to a second line, but each tab remains a distinct clickable link
 - The open PR count appears in parentheses next to the tab text; zoom into the tab area to read it without opening the list
 - Use `Tab` key navigation to step through the repository nav links if pointer targeting is difficult at high magnification
 
 **Sighted users:**
+
 - Click the **Pull requests** tab in the horizontal navigation bar below the repository name; the badge shows the number of open PRs
 - Bookmark the URL pattern `github.com/OWNER/REPO/pulls` to skip navigation entirely
 - The active tab is underlined; open PRs are the default view -- use the "Closed" filter link to toggle
-
 
 ## The Pull Request List Page
 
@@ -355,7 +351,6 @@ The PR list works identically to the Issues list:
 > **Screen reader note - PR list semantics:** The PR list does **not** have individual ARIA item containers with per-item semantics. To read a PR's full detail (title, author, labels, status), you must navigate sequentially with `Tab` or arrow keys through the elements for each item. Starting from a PR title link, `Tab` forward to find the author, labels, and review status for that same PR before moving to the next title.
 >
 > **Hovercards:** Hovercards appear when you hover over usernames and links in the PR list, adding extra verbosity. To reduce this noise: go to your GitHub Profile → Accessibility settings → disable "Show link previews" and similar hover triggers. This makes sequential navigation significantly less cluttered.
-
 
 ## Anatomy of a Pull Request Page
 
@@ -388,7 +383,6 @@ A PR page has three main tabs:
 [Diff for each file - each file is a heading]
 [Line-level comment threads within diffs]
 ```
-
 
 ## Navigating the PR Tab Bar
 
@@ -432,7 +426,6 @@ The PR tab bar sits just below the PR title and state badge. At high zoom levels
 </details>
 
 Each tab link reads with its name and the count: "Files changed, 3 files changed."
-
 
 ## Reading the Conversation Tab
 
@@ -533,7 +526,6 @@ Resolved conversations are still accessible - they collapse but can be expanded 
 
 </details>
 
-
 ## Reading the Commits Tab
 
 ```text
@@ -543,7 +535,6 @@ Step 3: I to navigate individual commits within a date group
 Step 4: Each commit: SHA link, message, author, [Verified] badge if signed
 Step 5: Enter on a commit to open its diff
 ```
-
 
 ## Reading the Checks Tab
 
@@ -576,20 +567,22 @@ The Checks tab shows the status of automated tests, CI workflows, and other veri
 ### Learning Cards: Reading the Checks Tab
 
 **Screen reader users:**
+
 - Each check button is labeled with the check's name and its pass/fail state; listen for "success" or "failure" in the ARIA label before expanding the details
 - Press `D` to jump between the "check suites" and "check run summary" landmarks to get a high-level pass/fail overview without expanding every check
 - If a check fails, expand it and press `K` to navigate step links inside the log -- the failing step is usually labeled with a red X icon described in the accessible name
 
 **Low-vision users:**
+
 - Passed checks show a green checkmark icon; failed checks show a red X icon; pending checks show a yellow dot -- in Windows High Contrast mode these map to system success/error/warning colors
 - At high zoom, each check row may wrap; the icon and check name stay on the first line, while the duration and "Details" link may appear on a second line
 - Click the "Details" link next to a failed check to jump to the CI log; failed steps are highlighted with a red background that remains visible in high-contrast themes
 
 **Sighted users:**
+
 - Scan the Checks tab for a row of green checkmarks (all passed) or spot a red X (failed); the summary banner at the top reads "All checks have passed" or "Some checks were not successful"
 - Click any check name to expand its step log inline; failed steps are bolded and marked with a red X so you can skip passing steps quickly
 - The "Re-run" button (circular arrow) appears next to each check for maintainers; use it to retry a flaky check without pushing a new commit
-
 
 ## Reading the Files Changed Tab
 
@@ -787,31 +780,35 @@ Inline comments appear as expandable threads within the diff table. Navigate to 
 
 </details>
 
-
 ## Opening a Pull Request
 
 ### Tool Cards: Open a Pull Request
 
 **github.com (browser):**
+
 1. Push your branch, then click the **Compare & pull request** banner (or go to **Pull requests > New pull request**).
 2. Set base branch to `main`, compare branch to yours.
 3. Fill in the title and description, then click **Create pull request**.
 
 **github.dev (web editor):**
+
 1. After committing changes, click the **Source Control** icon.
 2. Click **Create Pull Request** in the Source Control panel header.
 3. Fill in details and submit.
 
 **VS Code Desktop (GitHub Pull Requests extension):**
+
 1. Press `Ctrl+Shift+P`, type **GitHub Pull Requests: Create Pull Request**.
 2. Select base and compare branches.
 3. Fill in the title and description, then click **Create**.
 
 **GitHub Desktop:**
+
 1. After pushing your branch, click **Create Pull Request** in the banner or **Branch > Create Pull Request**.
 2. This opens github.com with the PR form pre-filled.
 
 **Git CLI / GitHub CLI:**
+
 ```bash
 git push -u origin your-branch
 gh pr create --title "Your title" --body "Description"
@@ -1041,7 +1038,6 @@ From the sidebar Reviewers section:
 
 > **Why some reviews are requested automatically:** A file called `CODEOWNERS` in many repositories maps file paths to specific people or teams. When your PR touches a file covered by a CODEOWNERS rule, GitHub automatically adds those people as required reviewers - you'll see them appear in the Reviewers sidebar without you adding them. You cannot remove a CODEOWNERS-required reviewer. If a required reviewer hasn't responded, reach out to them directly or leave a comment on the PR.
 
-
 ## Submitting a Review
 
 When you are asked to review a PR, you have three options:
@@ -1181,16 +1177,19 @@ For the full shortcut system, see [Screen Reader Cheat Sheet - GitHub Shortcuts 
 ### Learning Cards: Submitting a Review
 
 **Screen reader users:**
+
 - The review verdict controls are inside a popover triggered by the "Finish your review" button; press `1` to return to the h1 (PR title), then `B` or `Tab` forward to find the button -- it is easy to miss because it is not a landmark
 - Inside the popover, `Tab` past the summary text area to reach a radio group labeled "Review Event"; use `Up/Down Arrow` to switch between Comment, Approve, and Request Changes
 - Shortcut: press `Ctrl+Shift+Enter` from any review comment text area to open the submit review dialog directly, bypassing the search for the button
 
 **Low-vision users:**
+
 - The "Finish your review" button sits in the top-right corner of the Files Changed tab with a small badge showing your pending comment count; at 200%+ zoom it may scroll off-screen to the right
 - Inside the submit popover, the three radio buttons (Comment, Approve, Request changes) are small standard HTML radios; zoom in on the popover area or use `Tab` to step between them
 - After submitting, your review verdict appears as a colored banner in the Conversation timeline: green for Approve, red for Request Changes, grey for Comment
 
 **Sighted users:**
+
 - Look for the green "Finish your review" button in the sticky header of the Files Changed tab; the badge shows how many comments are pending
 - The popover has a text area for an overall summary at the top and three radio buttons at the bottom: Comment, Approve, Request changes -- select one before clicking "Submit review"
 - If you added comments with "Add single comment" instead of "Start a review," those are already posted; the submit review flow only applies to batched review comments
@@ -1259,20 +1258,22 @@ your proposed text here
 ### Learning Cards: Suggested Changes
 
 **Screen reader users:**
+
 - To insert a suggestion block, press `Ctrl+G` (Windows) or `Cmd+G` (Mac) in the comment text area; the screen reader announces the inserted fence -- arrow down to edit the text between the backtick lines
 - Alternatively type the block manually: three backticks, the word `suggestion`, Enter, your replacement text, Enter, three backticks -- this avoids relying on the keyboard shortcut
 - As a PR author, navigate to a suggestion comment with `3`, then `Tab` to the "Apply suggestion" button; GitHub commits the change automatically with no file editing required
 
 **Low-vision users:**
+
 - Suggestion blocks render as a mini inline diff: the original line in red/pink background and your proposed replacement in green background; in high-contrast mode these use system diff colors
 - The "Apply suggestion" button is small and sits below the suggestion diff preview; zoom into the comment area to find it, or `Tab` from the suggestion text to reach it
 - When batching multiple suggestions, a floating "Commit suggestions" bar appears at the top of the page; at high zoom scroll up or press `Home` to find it
 
 **Sighted users:**
+
 - In the comment box, press `Ctrl+G` / `Cmd+G` to wrap the current line in a suggestion block; edit the text inside to show your proposed replacement -- the preview tab renders it as an inline diff
 - As a PR author, each suggestion shows an "Apply suggestion" button and an "Add suggestion to batch" button; use batching to combine several suggestions into one clean commit
 - Applied suggestions auto-resolve the conversation thread and create a commit attributed to both the reviewer (author of the suggestion) and you (committer)
-
 
 ## Understanding Merge Options (for Maintainers)
 
@@ -1324,7 +1325,6 @@ gh pr merge 42 --auto --squash
 
 > **Screen reader tip - deleting the branch after merge:** Navigate to the "Add a comment" section (`D`), then press `Shift+B` to navigate backwards to the **"Delete branch"** button and activate it. This keeps your repository clean by removing the now-merged feature branch.
 
-
 ## Auto-Merge - Merging When You Can't Wait Around
 
 **Auto-merge** lets you pre-authorize a PR to merge automatically the moment all branch protection requirements are satisfied - required reviews approved, all status checks passing, and the branch up to date.
@@ -1369,7 +1369,6 @@ Merge box → Tab → "Disable auto-merge" button → Enter
 
 > **Note:** Auto-merge is only available if the repository administrator has enabled it in Settings → General. Many open source repos have it on; some do not.
 
-
 ## Practical Scenarios
 
 ### Scenario A: "I want to review an assigned PR"
@@ -1407,7 +1406,6 @@ Merge box → Tab → "Disable auto-merge" button → Enter
 4. Edit the file to resolve → Mark as resolved → Commit merge
 ```
 
-
 ## Common PR Mistakes to Avoid
 
 | Mistake | Better Approach |
@@ -1418,7 +1416,6 @@ Merge box → Tab → "Disable auto-merge" button → Enter
 | Pushing many unrelated changes in one PR | One PR per logical change (smaller PRs get faster reviews) |
 | Not testing your own changes | Test before requesting review |
 | Not responding to reviewer comments | Acknowledge all comments, even if you disagree |
-
 
 ## Writing PR Descriptions That Get Reviewed
 
@@ -1602,7 +1599,6 @@ This version answers every question a reviewer has before they touch the diff. T
 
 </details>
 
-
 ## Try It: Read a Real Pull Request
 
 **Time:** 3 minutes | **What you need:** Browser, signed in to GitHub
@@ -1619,7 +1615,6 @@ Go to the Learning Room repository's Pull Requests tab and find any open or rece
 
 > **What success feels like:** You followed a PR from description to diff using only headings and landmarks. The next time you open a PR - yours or someone else's - you'll know exactly where everything is.
 
-
 > ### Day 2 Amplifier - Accessibility Agents: `@pr-review`
 >
 > **Review at least two pull requests manually before using any agent.** A review generated by `@pr-review` is only as useful as your ability to read, edit, and challenge it. The agent writes a first draft - you supply the context, the history, and the final judgment that no diff can contain.
@@ -1632,11 +1627,9 @@ Go to the Learning Room repository's Pull Requests tab and find any open or rece
 >
 > *The agent documents the diff. You bring the context that no diff can contain.*
 
-
 > **Challenge Time:** Go to the [Challenge Hub](CHALLENGES.md) and complete **Challenges 4, 5, and 6** to open your first PR. Gandalf will guide you from there.
 
 ---
-
 
 *Next: [Chapter 07: Merge Conflicts](07-merge-conflicts.md)*
 *Back: [Chapter 05: Working with Issues](05-working-with-issues.md)*
@@ -1657,6 +1650,3 @@ Use this map to verify facts for each major section in this file.
 - **Creating, Reviewing, and Merging Pull Requests:** [GitHub Docs: About pull requests](https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/about-pull-requests), [GitHub Docs, home](https://docs.github.com/en)
 - **Challenge and workflow guidance:** [GitHub Docs, home](https://docs.github.com/en), [GitHub Changelog](https://github.blog/changelog/)
 - **CLI pull request workflow guidance:** [GitHub Docs, home](https://docs.github.com/en), [GitHub Changelog](https://github.blog/changelog/)
-
-
-

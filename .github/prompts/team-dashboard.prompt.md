@@ -2,10 +2,11 @@ name: team-dashboard
 description: "Team-wide activity dashboard across all repos -- review load, contribution metrics, bottlenecks, and load balancing insights in dual markdown + HTML format"
 agent: analytics
 tools:
-  - github/*
-  - createFile
-  - createDirectory
-  - ask_questions
+
+- github/*
+- createFile
+- createDirectory
+- ask_questions
 
 Generate a team activity dashboard covering all team members' contributions, review load, and bottlenecks. Save both markdown and HTML versions.
 

@@ -17,15 +17,15 @@
 
 ## Table of Contents
 
-12. [Essential Keyboard Navigation and Find/Filter](#12-essential-keyboard-navigation-and-findfilter)
-13. [The Problems Panel](#13-the-problems-panel)
-14. [The Terminal](#14-the-terminal)
-15. [Copilot Chat Window](#15-copilot-chat-window)
-16. [Accessible Help, Accessible View, and Accessible Diff](#16-accessible-help-accessible-view-and-accessible-diff)
-17. [Accessibility Signals](#17-accessibility-signals)
-18. [VS Code Speech - Voice Input and Output](#18-vs-code-speech---voice-input-and-output)
-19. [Markdown Authoring in VS Code](#19-markdown-authoring-in-vs-code)
-20. [If You Get Stuck](#if-you-get-stuck)
+1. [Essential Keyboard Navigation and Find/Filter](#12-essential-keyboard-navigation-and-findfilter)
+2. [The Problems Panel](#13-the-problems-panel)
+3. [The Terminal](#14-the-terminal)
+4. [Copilot Chat Window](#15-copilot-chat-window)
+5. [Accessible Help, Accessible View, and Accessible Diff](#16-accessible-help-accessible-view-and-accessible-diff)
+6. [Accessibility Signals](#17-accessibility-signals)
+7. [VS Code Speech - Voice Input and Output](#18-vs-code-speech---voice-input-and-output)
+8. [Markdown Authoring in VS Code](#19-markdown-authoring-in-vs-code)
+9. [If You Get Stuck](#if-you-get-stuck)
 
 ## 12. Essential Keyboard Navigation and Find/Filter
 
@@ -324,6 +324,7 @@ The **Copilot Chat** window (`Ctrl+Alt+I`, or **Chat: Open Chat** from the Comma
 | **Agent** | Autonomous mode - Copilot can run terminal commands, create files, and perform complex tasks |
 
 Switch modes using the mode picker at the top of the Chat view, or use keyboard shortcuts:
+
 - `workbench.action.chat.openAsk` - Ask mode
 - `workbench.action.chat.openEdit` - Edit mode
 - `workbench.action.chat.openAgent` - Agent mode

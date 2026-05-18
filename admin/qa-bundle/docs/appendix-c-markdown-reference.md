@@ -37,25 +37,25 @@
 
 ### Part 2 - GitHub Flavored Markdown (GFM)
 
-17. [What Is GitHub Flavored Markdown?](#17-what-is-github-flavored-markdown)
-18. [Alert and Callout Blocks](#18-alert-and-callout-blocks)
-19. [Collapsible Sections with Details and Summary](#19-collapsible-sections-with-details-and-summary)
-20. [Task List Checkboxes](#20-task-list-checkboxes)
-21. [Syntax Highlighting in Fenced Code Blocks](#21-syntax-highlighting-in-fenced-code-blocks)
-22. [Mermaid Diagrams](#22-mermaid-diagrams)
-23. [Math Expressions with LaTeX](#23-math-expressions-with-latex)
-24. [Footnotes](#24-footnotes)
-25. [Linked Heading Anchors and Tables of Contents](#25-linked-heading-anchors-and-tables-of-contents)
-26. [Autolinked References - Issues, PRs, Commits, and Users](#26-autolinked-references---issues-prs-commits-and-users)
-27. [HTML in Markdown](#27-html-in-markdown)
+1. [What Is GitHub Flavored Markdown?](#17-what-is-github-flavored-markdown)
+2. [Alert and Callout Blocks](#18-alert-and-callout-blocks)
+3. [Collapsible Sections with Details and Summary](#19-collapsible-sections-with-details-and-summary)
+4. [Task List Checkboxes](#20-task-list-checkboxes)
+5. [Syntax Highlighting in Fenced Code Blocks](#21-syntax-highlighting-in-fenced-code-blocks)
+6. [Mermaid Diagrams](#22-mermaid-diagrams)
+7. [Math Expressions with LaTeX](#23-math-expressions-with-latex)
+8. [Footnotes](#24-footnotes)
+9. [Linked Heading Anchors and Tables of Contents](#25-linked-heading-anchors-and-tables-of-contents)
+10. [Autolinked References - Issues, PRs, Commits, and Users](#26-autolinked-references---issues-prs-commits-and-users)
+11. [HTML in Markdown](#27-html-in-markdown)
 
 ### Part 3 - Putting It All Together
 
-28. [Screen Reader Behavior Summary](#28-screen-reader-behavior-summary)
-29. [Accessible Markdown Authoring Checklist](#29-accessible-markdown-authoring-checklist)
-30. [Common Mistakes and How to Fix Them](#30-common-mistakes-and-how-to-fix-them)
-31. [Your First Real Markdown Document - Guided Exercise](#31-your-first-real-markdown-document---guided-exercise)
-32. [Quick-Reference Card](#32-quick-reference-card)
+1. [Screen Reader Behavior Summary](#28-screen-reader-behavior-summary)
+2. [Accessible Markdown Authoring Checklist](#29-accessible-markdown-authoring-checklist)
+3. [Common Mistakes and How to Fix Them](#30-common-mistakes-and-how-to-fix-them)
+4. [Your First Real Markdown Document - Guided Exercise](#31-your-first-real-markdown-document---guided-exercise)
+5. [Quick-Reference Card](#32-quick-reference-card)
 
 ## Part 1 - Markdown Foundations
 
@@ -328,7 +328,7 @@ This is __bold text__ using underscores.
 **What renders:**
 
 This is **bold text** using asterisks.
-This is __bold text__ using underscores.
+This is **bold text** using underscores.
 
 **Best practice:** Use asterisks (`**`). Underscores can cause problems in the middle of words (like `file__name__here`), while asterisks always work.
 
@@ -346,7 +346,7 @@ This is _italic text_ using underscores.
 **What renders:**
 
 This is *italic text* using asterisks.
-This is _italic text_ using underscores.
+This is *italic text* using underscores.
 
 ### Bold and italic combined
 
@@ -505,16 +505,16 @@ Indent the nested items by **two or four spaces** (GitHub accepts either, but fo
 **What renders:**
 
 - Accessibility testing tools
-    - Screen readers
-        - NVDA (Windows, free)
-        - JAWS (Windows, commercial)
-        - VoiceOver (macOS and iOS, built-in)
-    - Browser extensions
-        - axe DevTools
-        - WAVE
+  - Screen readers
+    - NVDA (Windows, free)
+    - JAWS (Windows, commercial)
+    - VoiceOver (macOS and iOS, built-in)
+  - Browser extensions
+    - axe DevTools
+    - WAVE
 - Documentation tools
-    - Markdown editors
-    - Static site generators
+  - Markdown editors
+  - Static site generators
 
 ### Nesting ordered lists
 
@@ -648,16 +648,19 @@ GitHub automatically converts full URLs in your text into clickable links, but a
 ### Learning Cards: Links
 
 **Screen reader users:**
+
 - Pull up a links list (NVDA: `NVDA+F7` then Links tab; JAWS: `Insert+F7`) to audit your document -- every link must make sense without its surrounding sentence
 - Reference-style links (`[text][ref]`) produce identical HTML to inline links -- screen readers announce them the same way, so choose whichever keeps your source readable
 - Relative links to other repo files (e.g., `[Setup](00-pre-workshop-setup.md)`) work on any fork or branch -- prefer them over full URLs for internal documentation
 
 **Low-vision users:**
+
 - Links render as blue underlined text by default -- if your GitHub theme reduces underline visibility, rely on the color difference or hover state to identify links
 - Long URLs in link text are hard to read at high zoom; always use descriptive text like `[Contributing Guide](url)` instead of pasting the raw URL
 - The title attribute (text in quotes after the URL) appears as a tooltip on hover -- useful at high magnification but do not put essential information only there
 
 **Sighted users:**
+
 - Scan for blue underlined text to identify all links in rendered Markdown -- bare URLs will also be clickable but look cluttered in prose
 - Reference-style links keep the prose clean by moving URLs to the bottom of the file -- look for `[label]: url` definitions at the end of the document
 - When reviewing a PR, check that no links use "click here" or "read more" as their visible text -- these fail accessibility audits and are unhelpful to all readers
@@ -724,16 +727,19 @@ The architecture has three tiers:
 ### Learning Cards: Images
 
 **Screen reader users:**
+
 - Alt text is read aloud as the only representation of the image -- write it to answer "what information does this image convey?" not just "what does it look like?"
 - For decorative images, use empty alt text (`![](image.png)`) so the screen reader skips them entirely rather than announcing the filename
 - Complex images (architecture diagrams, charts) need a full text description in a `<details>` block below the image -- expand it to read the complete information
 
 **Low-vision users:**
+
 - Images render at their original size by default -- use browser or VS Code zoom to enlarge them, and ensure alt text is present in case the image becomes too pixelated
 - Screenshots with small text are the hardest images to read at high magnification -- request that contributors use cropped, focused screenshots instead of full-screen captures
 - The alt text is invisible in the rendered view but visible in the raw Markdown source -- switch to the source view to verify alt text exists on all images
 
 **Sighted users:**
+
 - Alt text does not appear visually on the rendered page unless the image fails to load -- check alt text quality by viewing the raw Markdown or using a Markdown linter
 - Use the `<details>` pattern for complex images: display the image normally, then add a collapsible text description below for screen reader users and anyone who wants more detail
 - Linked images (`[![alt](img)](url)`) show a clickable image -- ensure the alt text describes both the image content and the link destination
@@ -1077,16 +1083,19 @@ This is often easier to read with a screen reader than a two-column table.
 ### Learning Cards: Tables
 
 **Screen reader users:**
+
 - Navigate tables with `Ctrl+Alt+Arrow` keys (NVDA/JAWS) -- Right moves to the next column, Down to the next row; the column header is announced each time you change columns
 - Enter table mode automatically when your screen reader encounters a table -- press `T` in browse mode to jump to the next table on the page
 - Before the table structure, listen for the description sentence the author should place above it -- this tells you what data the table contains before you enter cell-by-cell navigation
 
 **Low-vision users:**
+
 - Wide tables (6+ columns) may require horizontal scrolling at high zoom -- if the table overflows, scroll right to see truncated columns or view the raw Markdown source instead
 - Column alignment (left, center, right) is controlled by colons in the separator row -- at high magnification, right-aligned numbers are easier to compare than left-aligned ones
 - If a table is hard to read at your zoom level, try narrowing the browser window -- GitHub will sometimes reflow content or add a horizontal scrollbar
 
 **Sighted users:**
+
 - The header row is visually bold and separated by a line from data rows -- scan headers first to understand the table structure before reading data
 - Column alignment is subtle: left-aligned is default, centered and right-aligned text may not be obvious without comparing multiple cells
 - Consider whether your data truly needs a table -- if it is a simple label-value list, use bold labels (`**Key:** value`) instead for less visual complexity
@@ -1303,16 +1312,19 @@ The `<details>` element renders as a disclosure widget:
 ### Learning Cards: Collapsible Sections
 
 **Screen reader users:**
+
 - The `<summary>` element is announced as a button -- press `Enter` or `Space` to toggle between collapsed and expanded; listen for "collapsed" or "expanded" state announcements
 - After expanding, the content is immediately available -- arrow down to read it; no page reload or focus change occurs
 - Nested `<details>` blocks (details inside details) work but add complexity -- each level is an independent toggle button; keep nesting to one level deep for predictable navigation
 
 **Low-vision users:**
+
 - The summary text is the only visible element when collapsed -- it appears as a disclosure triangle (`>`) with text; zoom in to ensure the triangle and text are both readable
 - Expanded content appears inline below the summary -- at high zoom it flows naturally with the rest of the page content
 - The `open` attribute forces a section to start expanded -- useful when the content is important enough that most readers should see it by default
 
 **Sighted users:**
+
 - Collapsed sections show a disclosure triangle (`>`) that rotates to point downward when expanded -- click the summary text or triangle to toggle
 - Use collapsible sections to keep long documents manageable: error logs, configuration blocks, and exercise solutions are good candidates for hiding behind a summary
 - Always write descriptive summary text ("Full error log from CI run" not just "Details") so readers know whether they need to expand the section

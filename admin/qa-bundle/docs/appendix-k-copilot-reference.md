@@ -585,16 +585,19 @@ Each setting accepts an array of `{ text: "..." }` (inline) or `{ file: "relativ
 ### Learning Cards: Custom Instructions
 
 **Screen reader users:**
+
 - The three-level scope hierarchy (Organization, Workspace, User) means instructions can come from multiple places -- use Chat Diagnostics (gear icon in Chat header) to list every loaded instruction file and its source
 - `.github/copilot-instructions.md` is always-on and requires no frontmatter -- just write plain Markdown; screen readers read the source file like any other Markdown document
 - `.instructions.md` files use YAML frontmatter with `applyTo` globs -- the frontmatter is the first few lines between `---` delimiters; arrow through carefully to verify syntax
 
 **Low-vision users:**
+
 - The Diagnostics panel (Chat gear, then Diagnostics) lists loaded files in a scrollable pane -- increase font size in VS Code settings if the file paths are hard to read
 - YAML frontmatter is indentation-sensitive -- enable VS Code's indentation guides (`editor.guides.indentation`) and use a high-contrast theme so the guide lines are visible
 - The `/init` command auto-generates `copilot-instructions.md` from your workspace -- review the generated file in your editor at your preferred zoom before committing
 
 **Sighted users:**
+
 - The comparison table above maps each instruction type to its scope, always-on status, and multi-tool compatibility -- scan the "Best For" column to choose the right approach
 - Look in `.github/instructions/` for scoped instruction files and `.github/copilot-instructions.md` for always-on instructions -- both are plain Markdown files you can edit directly
 - Use the `applyTo` glob pattern in `.instructions.md` frontmatter to limit when instructions activate -- `"**/*.py"` for Python-only rules, `"docs/**"` for documentation-only rules
@@ -1290,16 +1293,19 @@ gh aw compile .github/workflows/daily-report.md
 ### Learning Cards: GitHub Agentic Workflows
 
 **Screen reader users:**
+
 - Agentic workflow runs appear in the Actions tab of your repository -- navigate to Actions with `T` (tab bar), then use heading navigation (`3`) to jump between workflow run entries
 - Workflow files are Markdown (`.md`) not YAML -- the frontmatter at the top controls triggers and permissions; the body is natural language instructions the AI agent reads
 - The `safe-outputs` frontmatter property lists every write operation the agent is allowed to perform -- review this section carefully since it is the security boundary
 
 **Low-vision users:**
+
 - The Actions tab lists workflow runs with status icons (green check, red X, yellow circle) -- at high zoom, also look for the text status label next to each run name
 - Workflow `.md` files use the same Markdown rendering as any other file in the repo -- edit them in VS Code with your preferred font size and theme
 - The `gh aw compile` command generates a `.lock.yml` file alongside your `.md` file -- both appear in the file explorer; the `.lock.yml` is auto-generated and should not be edited manually
 
 **Sighted users:**
+
 - Browse 50+ community workflows at Peli's Agent Factory to find templates matching your use case -- each example includes the full `.md` source you can copy
 - The workflow format table at the top of this section maps trigger types to use cases -- scan the "Example" column for the pattern closest to your need
 - Unlike VS Code agent files, agentic workflows run in the cloud via GitHub Actions -- no local VS Code session is required; results appear as issues, PR comments, or other GitHub artifacts

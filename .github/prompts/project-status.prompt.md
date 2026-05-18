@@ -2,10 +2,11 @@ name: project-status
 description: "GitHub Projects overview -- item counts per column, blocked items, stale items, sprint progress, and team assignments"
 agent: issue-tracker
 tools:
-  - github/*
-  - createFile
-  - createDirectory
-  - ask_questions
+
+- github/*
+- createFile
+- createDirectory
+- ask_questions
 
 Show the status of a GitHub Project board -- items per column, blocked items, stale items, and team workload.
 

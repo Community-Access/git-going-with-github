@@ -64,6 +64,7 @@
 **What it is:** Cherry-pick lets you take a single commit from any branch and apply it to your current branch. Think of it like copy-pasting a specific change — without bringing the entire branch along with it.
 
 **When you'd use it:**
+
 - You fixed a bug on a feature branch, but `main` also needs that fix right now
 - A teammate landed a commit on their branch and you need just that one change
 - You accidentally committed to the wrong branch and need to move that commit somewhere else
@@ -152,6 +153,7 @@ git cherry-pick --abort
 **What it is:** Interactive rebase (`git rebase -i`) is like a time machine for your commits. Before you open a PR, you can reorder commits, combine several small commits into one clean commit, rewrite commit messages, or remove commits that were just experiments.
 
 **When you'd use it:**
+
 - You made 8 "WIP" commits while working and want to combine them into 1 clean commit for your PR
 - You want to reword a commit message to better describe what changed
 - You accidentally committed a debug file and want to remove that commit entirely
@@ -172,7 +174,7 @@ git rebase -i HEAD~3
 # This opens your last 3 commits for editing
 ```
 
-3. Your default editor opens with a list of your commits. If it opens in `vim`, type `i` to enter insert mode, make your edits, then press `Esc` followed by `:wq` to save. If you'd prefer VS Code as the editor:
+1. Your default editor opens with a list of your commits. If it opens in `vim`, type `i` to enter insert mode, make your edits, then press `Esc` followed by `:wq` to save. If you'd prefer VS Code as the editor:
 
 ```bash
 git config --global core.editor "code --wait"
@@ -253,6 +255,7 @@ git rebase --continue
 **What it is:** `git reset` moves the tip of your current branch backward to a previous commit. The three modes (`--soft`, `--mixed`, `--hard`) control what happens to the changes that were in those commits.
 
 **When you'd use it:**
+
 - You committed too early and want to add more changes to that commit
 - You staged the wrong files and want to unstage them
 - You want to completely throw away the last few commits and start fresh
@@ -329,6 +332,7 @@ git restore --staged .
 **What it is:** `git revert` creates a **new commit** that undoes the changes from a previous commit. Unlike `git reset`, it does not rewrite history — it adds to it. This makes it the right choice when you need to undo something on a shared branch (like `main`) where other people may already have the history you'd be rewriting.
 
 **When you'd use it:**
+
 - A commit made it to `main` and it broke something — you need to roll it back without force-pushing
 - You want to undo a change but keep a record that the undo happened
 - You're working on a protected branch where force-push is disabled
@@ -374,6 +378,7 @@ git revert -m 1 a1b2c3d
 **What it is:** A tag is a permanent label you attach to a specific commit — usually to mark a release version like `v1.0.0`. Unlike a branch (which moves as you commit), a tag always points to the exact same commit forever.
 
 **When you'd use it:**
+
 - Releasing a new version of a project
 - Marking a stable checkpoint before starting a big refactor
 - Documenting when a major feature shipped
@@ -575,6 +580,7 @@ git push --force-with-lease origin feature/my-branch
 **What it is:** `git bisect` performs a binary search through your commit history to find exactly which commit introduced a bug. Instead of checking 100 commits one by one, Git cuts the search in half each time — usually finding the culprit in 7-10 steps.
 
 **When you'd use it:**
+
 - "This was working last week, now it's broken — what changed?"
 - You need to find the exact commit so you can revert or fix it
 - A test that used to pass now fails and you don't know why
@@ -644,6 +650,7 @@ git bisect run python -m pytest tests/test_auth.py
 > **git clean cannot be undone.** The files it removes are permanently deleted — they're not moved to the trash or recoverable from `git reflog`. Always run with `--dry-run` first.
 
 **When you'd use it:**
+
 - After a build that left temporary files everywhere
 - You want a completely fresh state matching the last commit
 - Clearing out generated files before running a clean build

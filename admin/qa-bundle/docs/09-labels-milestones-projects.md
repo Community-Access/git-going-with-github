@@ -47,8 +47,8 @@ Chapter 9 triage recommendation for issue #[number]:
 - One-sentence reason: [why you chose these categories]
 ```
 
-6. If you have write access to the repository, apply the recommended labels and milestone directly on the issue you triaged.
-7. Activate the **Comment** button.
+1. If you have write access to the repository, apply the recommended labels and milestone directly on the issue you triaged.
+2. Activate the **Comment** button.
 
 **Screen reader tip:** When browsing available labels, open the Labels page (`/labels` path on the repo) to see all label names and descriptions. Your screen reader will read each label name and its description text.
 
@@ -158,6 +158,7 @@ gh label list --json name,description
 ### Tool Cards: Apply a Label
 
 **github.com (browser):**
+
 1. Open the issue or PR.
 2. In the right sidebar, click the gear icon next to **Labels**.
 3. Select labels from the dropdown, then click outside to apply.
@@ -166,6 +167,7 @@ gh label list --json name,description
 Not available -- labels are managed on the issue/PR page, not in the code editor.
 
 **VS Code Desktop (GitHub Pull Requests extension):**
+
 1. Open the issue in the **GitHub** sidebar panel.
 2. Click the label area to add or remove labels.
 
@@ -173,6 +175,7 @@ Not available -- labels are managed on the issue/PR page, not in the code editor
 Not directly supported. Use **Repository > View on GitHub** to manage labels in the browser.
 
 **Git CLI / GitHub CLI:**
+
 ```bash
 gh issue edit 42 --add-label "accessibility,good first issue"
 gh pr edit 15 --add-label "documentation"

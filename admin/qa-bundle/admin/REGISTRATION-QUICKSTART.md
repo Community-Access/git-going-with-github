@@ -31,8 +31,8 @@ Use this checklist while entering repository settings values.
 | Name | Value to paste |
 |---|---|
 | CLASSROOM_ORG | Community-Access-Classroom |
-| CLASSROOM_DAY1_ASSIGNMENT_URL | https://classroom.github.com/a/REPLACE_DAY1_ID |
-| CLASSROOM_DAY2_ASSIGNMENT_URL | https://classroom.github.com/a/REPLACE_DAY2_ID |
+| CLASSROOM_DAY1_ASSIGNMENT_URL | <https://classroom.github.com/a/REPLACE_DAY1_ID> |
+| CLASSROOM_DAY2_ASSIGNMENT_URL | <https://classroom.github.com/a/REPLACE_DAY2_ID> |
 
 ### Before You Save
 

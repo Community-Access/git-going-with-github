@@ -74,6 +74,7 @@ Chapter 19 is the **agent exploration and hands-on validation chapter** - where 
 **Estimated time:** 20 minutes.
 
 If 55 agents feels too broad, start with this beginner sequence:
+
 - `@daily-briefing` (maps to repository and issue awareness from Chapters 2-4)
 - `@issue-tracker` (maps to Chapter 4 issue workflow)
 - `@pr-review` (maps to Chapter 6 and Chapter 14 review workflow)
@@ -171,6 +172,7 @@ Could it make a mistake? [your answer and what kind]
 ### Optional Extensions 15.4-15.5 (Hackathon)
 
 **Extension 15.4: Improve an Existing Agent** (45 min)
+
 - Find an agent whose instructions have a gap (use Section 6 suggestions or file an issue).
 - Fork the repo, edit the agent's `.agent.md` file.
 - Get a facilitator review.
@@ -178,6 +180,7 @@ Could it make a mistake? [your answer and what kind]
 - Evidence: your merged PR.
 
 **Extension 15.5: Propose a New Agent** (60 min)
+
 - Identify a workflow not yet covered by any of the 55 agents.
 - File an issue describing what the agent should do and why it matters.
 - Include 3 example prompts people would use.
@@ -573,7 +576,7 @@ This directly connects to the `/draft-release` slash command in Accessibility Ag
 <details>
 <summary>Screen reader users</summary>
 
-- Run the installer command in the VS Code terminal (`Ctrl+\``) -- it announces progress as it copies agent files to `.github/agents/`
+- Run the installer command in the VS Code terminal (`Ctrl+\``) -- it announces progress as it copies agent files to`.github/agents/`
 - After installation, press `Ctrl+Shift+E` to open the Explorer and navigate to `.github/agents/` to verify agent files are present
 - Edit `.github/agents/preferences.md` to configure your username, repositories, and notification preferences -- it is a standard Markdown file
 
@@ -781,6 +784,7 @@ Chapter 16 introduced GitHub Copilot running in VS Code. But Accessibility Agent
 You already have Copilot if VS Code is installed. No additional setup needed.
 
 **To start using agents right now:**
+
 1. Open VS Code
 2. Press `Ctrl+Alt+I` (or **View → Copilot Chat**)
 3. Type `@daily-briefing morning briefing`
@@ -793,6 +797,7 @@ You already have Copilot if VS Code is installed. No additional setup needed.
 Claude Code runs on the command line and offers free tier access (for certain Claude models).
 
 **Quick start:**
+
 ```bash
 npm install -g @anthropic-ai/claude-code
 claude code auth
@@ -800,6 +805,7 @@ claude code @daily-briefing morning briefing
 ```
 
 **When to prefer Claude Code:**
+
 - You want to test agents without VS Code
 - You prefer terminal workflows
 - You want quick command-line experimentation
@@ -811,6 +817,7 @@ claude code @daily-briefing morning briefing
 Gemini CLI offers **free tier access** to Gemini models with built-in Google Search.
 
 **Quick start:**
+
 ```bash
 npm install -g @google/gemini-cli
 gemini config set api-key YOUR_API_KEY  # Get free key at ai.google.dev
@@ -818,6 +825,7 @@ gemini @daily-briefing morning briefing
 ```
 
 **When to prefer Gemini:**
+
 - Budget is a priority
 - You want Google Search integrated with agent responses
 - You prefer lightweight CLI tools
@@ -829,6 +837,7 @@ gemini @daily-briefing morning briefing
 Claude Desktop is the native Claude application with extended context windows and offline capability.
 
 **When to prefer Claude Desktop:**
+
 - Working on large documents or codebases
 - Need longer conversation context (200K tokens+)
 - Offline work on the plane
@@ -863,26 +872,31 @@ All agents work the same across platforms, but the workflow differs slightly.
 **Example: Run `@aria-specialist` on all five platforms**
 
 **GitHub Copilot (VS Code):**
+
 ```
 Ctrl+Alt+I → Type: @aria-specialist audit this component for ARIA
 ```
 
 **Claude Code:**
+
 ```bash
 claude code @aria-specialist audit this component for ARIA
 ```
 
 **Gemini CLI:**
+
 ```bash
 gemini @aria-specialist audit this component for ARIA
 ```
 
 **Claude Desktop:**
+
 ```
 Open chat → Type: @aria-specialist audit this component for ARIA
 ```
 
 **Codex CLI:**
+
 ```bash
 codex run @aria-specialist --task "audit this component for ARIA"
 ```
@@ -892,18 +906,21 @@ codex run @aria-specialist --task "audit this component for ARIA"
 ### Learning Paths by Platform
 
 #### Path A: "I use VS Code" (Recommended)
+
 1. Install Copilot extension (automatic)
 2. Complete all challenges in Section 4 using Copilot Chat
 3. Optionally try Claude Desktop for longer sessions
 4. Explore Appendices AA, AB, AC for advanced features
 
 #### Path B: "I prefer command line"
+
 1. Install Claude Code CLI: `npm install -g @anthropic-ai/claude-code`
 2. Run agents from terminal
 3. Use Gemini CLI for free tier experimentation
 4. Refer to Appendix AB for hooks and scripting
 
 #### Path C: "I want the best of both"
+
 1. Use Copilot in VS Code for daily work
 2. Install Claude Desktop for long-context projects
 3. Keep Gemini CLI for quick experiments
@@ -912,26 +929,31 @@ codex run @aria-specialist --task "audit this component for ARIA"
 ### Screen Reader, Low Vision, and Keyboard Navigation by Platform
 
 **GitHub Copilot (VS Code):**
+
 - Screen readers: Full support in Chat panel; use `Ctrl+Alt+I` to open
 - Low vision: Zoom independently with `Ctrl+=`; use High Contrast theme
 - Keyboard: Full keyboard navigation; all features accessible
 
 **Claude Code (CLI):**
+
 - Screen readers: Full terminal support (NVDA, JAWS announce all output)
 - Low vision: Terminal zoom and colors configurable
 - Keyboard: Native CLI keyboard support
 
 **Gemini CLI:**
+
 - Screen readers: Full terminal support
 - Low vision: Configure terminal colors and font size
 - Keyboard: Full CLI keyboard navigation
 
 **Claude Desktop:**
+
 - Screen readers: Strong chat interface support
 - Low vision: Built-in zoom and theme options
 - Keyboard: Tab through controls; standard keyboard shortcuts
 
 **Codex CLI:**
+
 - Screen readers: Full terminal output announced
 - Low vision: Terminal customization available
 - Keyboard: Full terminal keyboard navigation
@@ -941,6 +963,7 @@ codex run @aria-specialist --task "audit this component for ARIA"
 Choose your primary platform and continue with the challenges in Section 4. You can switch platforms anytime - all agents work the same way.
 
 **Quick reference:**
+
 - **Already in VS Code?** Go to Section 4 now.
 - **Want to try CLI first?** Read [Appendix AA: Installation](appendix-aa-agent-installation-setup.md) then come back to Section 4.
 - **Want full platform comparison?** See [Appendix K: Copilot Reference](appendix-k-copilot-reference.md) for detailed feature matrix.
@@ -2271,16 +2294,19 @@ That is Accessibility Agents' promise: not to replace your thinking, but to ampl
 ### Learning Cards: Contributing to the Ecosystem
 
 **Screen reader users:**
+
 - Agent `.agent.md` files use YAML frontmatter at the top (between `---` delimiters) followed by Markdown body; in VS Code, use `Ctrl+G` to jump to line 1 and arrow through the frontmatter fields (`name`, `description`, `tools`) before reading the body instructions
 - When writing your own `.agent.md`, use VS Code's Outline view (`Ctrl+Shift+O`) to verify that your Markdown headings (Purpose, Capabilities, Responsibilities) are correctly nested -- malformed headings will not appear in the outline
 - Before submitting a PR with a new agent file, run the file through a YAML linter (install the YAML extension, or use `yamllint` from the terminal) -- frontmatter syntax errors silently break agent registration
 
 **Low-vision users:**
+
 - YAML frontmatter fields are densely packed with colons and quotes; increase your editor font size or use a monospaced font with wide character spacing so `name:`, `description:`, and `tools:` are clearly distinct
 - The `.agent.md` files in the `agents/` directory follow a consistent structure -- use the file explorer's icon theme or file nesting feature to visually group agent files separately from regular documentation
 - When reviewing existing agents for contribution ideas, use VS Code's split editor to place the agent file and the README side by side so you can cross-reference the agent's instructions with its documented capabilities
 
 **Sighted users:**
+
 - Study 2-3 existing `.agent.md` files before writing your own -- the pattern of frontmatter (metadata) plus Markdown body (instructions) is consistent, and matching the style reduces review friction on your PR
 - The contribution workflow for agents follows the same fork-branch-PR pattern from Chapter 18; your agent file goes in the `agents/` directory with a kebab-case filename matching the agent name
 - Use GitHub's file diff preview on your PR to verify the YAML frontmatter renders correctly -- GitHub highlights YAML syntax, making missing quotes or wrong indentation easy to spot
@@ -2523,16 +2549,19 @@ Run this command? (Y/n)
 ### Learning Cards: GitHub Desktop, GitHub CLI, and Copilot CLI
 
 **Screen reader users:**
+
 - GitHub Desktop is a native application -- on Windows it uses UI Automation, not a browser DOM; your screen reader's object navigation (NVDA: `Insert+Numpad`) rather than browse mode is the correct approach for navigating its interface
 - GitHub CLI (`gh`) is entirely terminal-based; all output is plain text that your screen reader reads line by line -- pipe verbose output through `| head -20` or `| Select-Object -First 20` to avoid overwhelming your speech buffer
 - Copilot CLI (`gh copilot suggest` and `gh copilot explain`) presents interactive prompts in the terminal; listen for the "Run this command? (Y/n)" confirmation before pressing Enter to avoid executing unreviewed commands
 
 **Low-vision users:**
+
 - GitHub Desktop inherits your Windows display scaling -- if text appears small, increase system-level scaling (Settings > Display > Scale) rather than looking for an in-app zoom option
 - Terminal output from `gh` and `gh copilot` uses your terminal's font and color settings; configure your terminal profile (Windows Terminal settings or iTerm2 preferences) with a high-contrast color scheme and large font for comfortable reading
 - Copilot CLI suggestions appear as plain text in the terminal, not in a styled panel -- they are easy to miss among other output; look for the indented suggestion block immediately after your prompt
 
 **Sighted users:**
+
 - GitHub Desktop provides a visual diff view, branch graph, and drag-and-drop staging that are unavailable in the CLI -- use Desktop when you want a spatial overview of complex changes
 - GitHub CLI is scriptable; combine `gh issue list`, `gh pr list`, and `gh api` with shell pipelines to build custom dashboards without leaving the terminal
 - Copilot CLI complements (not replaces) your Git knowledge -- use `gh copilot explain` when you encounter an unfamiliar Git command in documentation, and `gh copilot suggest` when you know what you want to do but not the exact syntax

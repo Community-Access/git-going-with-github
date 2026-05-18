@@ -286,7 +286,7 @@ The Developer Tools Team supports accessible application development across Pyth
 **Common patterns in accessible Python code:**
 
 | Pattern | Example | Why It Matters |
-|---------|---------|---------------| 
+|---------|---------|---------------|
 | **Clear function names** | `check_alt_text()` not `chk_at()` | Screen readers announce the full name |
 | **Docstrings for all functions** | Include purpose, args, returns | Documentation tools (and assistants) understand intent |
 | **Type hints** | `def scan(url: str) -> Dict[str, Any]:` | Type checkers catch errors early |
@@ -380,18 +380,21 @@ class AccessibleFrame(wx.Frame):
 Desktop applications must follow OS conventions:
 
 **Windows (Microsoft UI Automation):**
+
 - All controls must expose their role (button, text, etc.)
 - Labels and descriptions required
 - Keyboard navigation essential
 - Focus must be visible
 
 **macOS (NSAccessibility):**
+
 - Controls expose accessibility attributes
 - VoiceOver announces all changes
 - Keyboard support required
 - Role and subrole must be set
 
 **Linux (AT-SPI2):**
+
 - DBus-based accessibility API
 - Screen reader (Orca) discovers objects
 - Action model (click, focus, etc.)

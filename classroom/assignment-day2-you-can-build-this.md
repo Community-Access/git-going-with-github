@@ -35,7 +35,7 @@ During the live Day 2 core path, you will move from browser-based GitHub to loca
 
 ## Challenges
 
-Complete these challenges in order. Each one builds on the previous. The live agenda prioritizes Challenges 10-13 and agent discovery; Challenges 14-16 can be completed during lab time or after the event.
+Complete these challenges in order through Challenge 15. After Challenge 15, Challenge 16 and all five bonus challenges are available, so students can choose the capstone path, bonus work, or both during lab time or after the event.
 
 | Challenge | What You Do | Chapter |
 |---|---|---|
@@ -45,7 +45,7 @@ Complete these challenges in order. Each one builds on the previous. The live ag
 | 13. AI as Your Copilot | Use Copilot to improve documentation and evaluate its output | [Chapter 16](https://github.com/Community-Access/git-going-with-github/blob/main/docs/16-github-copilot.md) |
 | 14. Template Remix | Create a custom YAML issue template | [Chapter 17](https://github.com/Community-Access/git-going-with-github/blob/main/docs/17-issue-templates.md) |
 | 15. Meet the Agents | Explore and run agents from the accessibility-agents repo | [Chapter 19](https://github.com/Community-Access/git-going-with-github/blob/main/docs/19-accessibility-agents.md) |
-| 16. Capstone Project (Build Your Agent (Capstone)) | Prepare an impactful agentic contribution with responsibilities, guardrails, and review evidence | [Chapter 20](https://github.com/Community-Access/git-going-with-github/blob/main/docs/20-build-your-agent.md) |
+| 16. Capstone Project | Prepare an impactful agentic contribution with responsibilities, guardrails, and review evidence | [Chapter 20](https://github.com/Community-Access/git-going-with-github/blob/main/docs/20-build-your-agent.md) |
 
 ## Automated Checks
 
@@ -56,6 +56,10 @@ Challenges 10, 14, and 16 have automated checks that run as GitHub Actions insid
 - **Challenge 16:** Verifies an Accessibility Agents agent file when you use that path; facilitators review GLOW or other-project evidence using the same mission, responsibilities, and guardrails criteria
 
 Each check posts a single comment on the relevant pull request and updates it whenever you push a new change. If a check fails, read the comment and push an update.
+
+## After Challenge 15
+
+Once Challenge 15 is complete, students can move into **Challenge 16**, **Bonus A-E**, or any combination of those paths. Challenge 16 remains the capstone, but the bonus challenges are intentionally unlocked at the same time so students can choose what is most useful next.
 
 ## Evidence
 

@@ -310,7 +310,7 @@ The [Challenge 15 solution reference](https://github.com/Community-Access/git-go
 </details>
 
 <details>
-<summary>Challenge 16: Capstone Project (Build Your Agent (Capstone))</summary>
+<summary>Challenge 16: Capstone Project</summary>
 
 **Chapters:** Ch18, Ch20 | **Evidence:** Comment | **Autograded**
 
@@ -334,7 +334,7 @@ The [Challenge 16 solution reference](https://github.com/Community-Access/git-go
 
 ## Bonus Challenges
 
-Bonus challenges are optional. Use them when you finish the core path early or want more practice with contribution habits that transfer beyond this workshop.
+Bonus challenges are optional. They unlock immediately after Challenge 15, at the same time as Challenge 16. Students can choose bonus work, capstone work, or both based on time, interest, and facilitator guidance.
 
 <details>
 <summary>Bonus A: Improve an Existing Agent</summary>

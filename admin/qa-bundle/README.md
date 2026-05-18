@@ -80,6 +80,7 @@ Day 2 - Deepen with VS Code + Accessibility Agents
 Every skill you build on Day 1 maps directly to an Accessibility Agents command on Day 2. The agent is not a shortcut - it is a multiplier. You have to understand what it is doing to know when it is wrong.
 
 **By the end of the Day 2 core path, you will have:**
+
 - A fork of `accessibility-agents` with your personalized preferences
 - A branch or pull request path for a real open source contribution
 - Clear next steps to get your contribution reviewed and merged
@@ -106,6 +107,7 @@ Use this repository for curriculum and platform changes only.
 Open the **Issues** tab of the Learning Room repository and look for challenge issue templates matching each chapter. The [Challenge Hub](docs/CHALLENGES.md) has the full list with instructions, evidence requirements, and links.
 
 **The workflow:**
+
 1. Open the challenge issue template for the current chapter
 2. Follow the instructions in the issue and the corresponding chapter
 3. Complete the challenge and post your evidence
@@ -188,6 +190,7 @@ Every chapter has an "If You Get Stuck" section. Every challenge has a [referenc
 | [X](docs/appendix-k-copilot-reference.md) | **GitHub Copilot Billing and Models** | Source-backed guidance for current Copilot billing, GitHub AI Credits, model volatility, and selection principles |
 | [Y](docs/appendix-y-workshop-materials.md) | **Accessing and Downloading Workshop Materials** | GitHub Pages, GitHub.com, cloning, ZIP download, offline reading, folder guide |
 | [Z](docs/appendix-z-github-skills.md) | **GitHub Skills - Complete Course Catalog** | All 36 GitHub Skills modules organized into six learning paths, with links, prerequisites, and integration guidance |
+
 > **Each guide from Lesson 03 onward includes a "Day 2 Amplifier" callout** that shows how Accessibility Agents extends that skill across three scopes: your VS Code editor → your repository (travels with every fork) → the cloud (GitHub Agentic Workflows running without VS Code). **Learn the manual skill first (Chapter 14), then see how it's automated (Chapter 16).**
 
 ## This Repository's Structure

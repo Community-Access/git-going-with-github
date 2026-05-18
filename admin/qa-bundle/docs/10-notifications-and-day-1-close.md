@@ -148,10 +148,12 @@ At the top of any repository page, find the **Watch** button (near Star and Fork
 ### Tool Cards: Manage Notifications
 
 **github.com (browser):**
+
 1. Go to [github.com/notifications](https://github.com/notifications) (or press `G` then `N`).
 2. Use `E` to mark done, `I` to mark read/unread, `Shift+M` to mute a thread.
 
 **VS Code Desktop (GitHub Pull Requests extension):**
+
 1. The **Notifications** view in the GitHub sidebar shows items needing attention.
 2. Click a notification to open the related issue or PR directly in VS Code.
 
@@ -159,6 +161,7 @@ At the top of any repository page, find the **Watch** button (near Star and Fork
 GitHub Desktop does not manage notifications. Use the browser or CLI.
 
 **Git CLI / GitHub CLI:**
+
 ```bash
 # List PRs requesting your review (most common notification)
 gh search prs --review-requested @me --state open

@@ -1,4 +1,5 @@
 # The Complete Facilitator Guide
+
 ## Running GitHub Classroom Workshops for Blind and Low-Vision Students
 
 This is your comprehensive guide to facilitate a two-day GitHub workshop. It covers everything from initial GitHub Classroom setup through post-workshop follow-up, with special attention to accessibility and student success in an open-enrollment environment.
@@ -24,6 +25,7 @@ This is your comprehensive guide to facilitate a two-day GitHub workshop. It cov
 **Where:** Hybrid — video call + individual GitHub Classroom repositories.
 
 **Why It Matters:** GitHub is a critical skill for modern tech careers. This workshop makes GitHub accessible through:
+
 - Hybrid delivery (people can join sync or async)
 - Individual private repos (safe practice space)
 - Automated feedback (Gandalf bot)
@@ -42,6 +44,7 @@ This workshop is designed for **2 co-facilitators** who can split roles:
 - **Co-Facilitator** -- Monitors chat, watches dashboard, helps individuals
 
 If you're solo:
+
 - Recruit a volunteer (TA, peer mentor, or co-instructor)
 - Pre-record demos for asynchronous watching
 - Use GitHub Discussions more heavily for async Q&A
@@ -55,6 +58,7 @@ This section is for someone (probably you!) setting up GitHub Classroom for the 
 ### What is GitHub Classroom?
 
 GitHub Classroom is a free service that automatically creates private repositories for students. When a student clicks an invite link, GitHub Classroom:
+
 1. Creates a repo from your template
 2. Assigns it to that student
 3. Sets permissions (student owns it, you can see it)
@@ -67,7 +71,7 @@ You get a dashboard showing all students' progress without manual intervention.
 Before setting up Classroom, you need:
 
 - A GitHub Organization (free plan works) — used to hold student repos
-  - Create at https://github.com/organizations/new (or use existing one)
+  - Create at <https://github.com/organizations/new> (or use existing one)
   - Add both facilitators as owners
 - At least one template repository in that organization
   - Template includes: Challenge 1 issue, PR template, README
@@ -76,7 +80,7 @@ Before setting up Classroom, you need:
 
 ### Step 1: Create Your First Assignment in GitHub Classroom
 
-1. Go to https://classroom.github.com
+1. Go to <https://classroom.github.com>
 2. Click "New Classroom"
 3. Select your Organization
 4. Give it a name: `learning-room-day1` (or similar)
@@ -125,21 +129,25 @@ If anything is missing, see [Troubleshooting GitHub Classroom Setup](#troublesho
 ### ⚠️ Known Gotchas
 
 **"The invite link isn't working"**
+
 - Make sure your Organization is created
 - Make sure the assignment is published (green checkmark in Classroom)
 - Make sure students have GitHub accounts (free account works)
 
 **"No one in my organization can accept the invite"**
+
 - Students don't need to be org members
 - They just need a GitHub account
 - If issue persists, check if Classroom link was copied correctly
 
 **"Gandalf bot isn't commenting on PRs"**
+
 - Verify Gandalf bot is installed in your Organization (Settings > GitHub Apps)
 - Check if the Actions workflow is enabled in the template repo
 - Manually test a PR in your test repo
 
 **"I created a second assignment but can't see an invite link"**
+
 - Assignments don't have individual invite links
 - Use the **classroom-wide** invite link and let students select which assignment
 - Or create separate Classrooms for Day 1 and Day 2
@@ -357,22 +365,26 @@ When you notice something:
 #### Facilitator Interventions
 
 **If a student says "I don't understand this challenge":**
+
 1. Read the challenge text back to them
 2. Break it into smaller steps
 3. Give one next step: "Try [this specific thing] first"
 4. Offer to look at their repo: "Send me the link and I'll take a look"
 
 **If a student says "I'm done, what do I do next?":**
+
 - **Option A:** "Start Challenge 2 (it will appear automatically when the bot processes)"
 - **Option B:** "Can you review someone else's PR? That helps them and teaches you code review"
 - **Option C:** "Help a peer who's still working. Teaching others is real learning"
 
 **If Gandalf bot stops responding:**
+
 1. Check [GitHub Actions status page](https://www.githubstatus.com)
 2. If it's down, post in chat: "We're experiencing a brief delay with our feedback bot. We're looking into it."
 3. Manually review PRs and post feedback in Gandalf's format (see [Troubleshooting](FACILITATOR_CLASSROOM_TROUBLESHOOTING.md))
 
 **If two students want to peer review:**
+
 - Perfect! Encourage it. That's the whole point.
 - Remind them: "Click the 'Files changed' tab to see the code. Leave thoughtful comments."
 
@@ -441,6 +453,7 @@ Pull from the Classroom dashboard:
 > Z students are working async and will finish today.
 >
 > That means you all know:
+>
 > - How to navigate GitHub
 > - How to edit and create a PR
 > - How to request a review
@@ -484,11 +497,13 @@ Pull from the Classroom dashboard:
 
 1. Assign pairs: "Student A, you review Student B's PR. Student B, you'll review Student C's. Etc."
 2. Give them a template for feedback:
+
    ```
    - What I liked about this PR: [specific thing]
    - One question I have: [genuine question]
    - One suggestion: [improvement idea]
    ```
+
 3. Give them 20 minutes to do reviews
 4. Check back and celebrate: "I see great comments happening!"
 
@@ -509,17 +524,20 @@ Students don't see challenges that aren't unlocked yet. The progression bot unlo
 #### Your Facilitation During Hour 3-7
 
 **Dashboard monitoring:** Every 10 minutes, check:
+
 - Who's on which challenge
 - Any students still on Challenge 10 (might need help)
 - Any autograding failures
 - Recent merges (celebrate them)
 
 **Proactive help:**
+
 - Students on Challenge 14+ → Extra encouragement: "You're getting into real developer territory!"
 - Students still on Challenge 10-12 → Gentle check-in: "How's it going? Stuck on anything?"
 - Peer reviews → Encourage more: "I see reviewers doing great work!"
 
 **Responsive help:**
+
 - Student asks "What's Git?" → Explain clearly, add to a running glossary
 - Student's PR has autograder failure → Check what test failed, help them debug
 - Student at same place as another → Suggest they collaborate: "You two are both on Challenge 11 — want to pair?"
@@ -527,16 +545,19 @@ Students don't see challenges that aren't unlocked yet. The progression bot unlo
 #### Managing Different Paces
 
 **Faster students (on Challenge 14+):**
+
 - Give them bonus challenges to explore
 - Invite them to help peers
 - Recognize their ambition: "You're flying through these!"
 
 **Average pace students (on Challenge 11-13):**
+
 - Keep them engaged with encouragement
 - Help when they hit roadblocks
 - Celebrate steady progress
 
 **Slower pace students (still on Challenge 10-12):**
+
 - NO pressure — this is fine
 - Check if they need help or prefer async
 - Offer 1:1 support after main session
@@ -569,6 +590,7 @@ From GitHub Classroom, collect:
 Say something like:
 
 > "Over two days, we had X students join. Here's what we accomplished:
+>
 > - Y students merged their first PR
 > - Z total PRs were merged — that's real code changes
 > - N students made it to advanced challenges
@@ -589,6 +611,7 @@ Call out individuals by name (with permission):
 Give students concrete next steps:
 
 > "Here's what we suggest next:
+>
 > 1. **Contribute to open source** — Find a repo you love and look for 'good first issue'
 > 2. **Use what you learned** — GitHub is real infrastructure; keep using it
 > 3. **Join our alumni community** — [Community-Access/support](https://github.com/Community-Access/support) — ask questions, share wins
@@ -597,6 +620,7 @@ Give students concrete next steps:
 #### Share Resources
 
 Point to:
+
 - [CONTRIBUTING.md](../CONTRIBUTING.md) — How to contribute to open source
 - [docs/](../docs/) — All the reference guides
 - Support Hub: [Community-Access/support](https://github.com/Community-Access/support)
@@ -644,7 +668,7 @@ Point to:
   - What accessibility issues appeared?
   - What challenges took longer than expected?
 - [ ] Invite students to alumni community
-  - Support Hub: https://github.com/Community-Access/support
+  - Support Hub: <https://github.com/Community-Access/support>
   - Encourage them to stay in touch and help future students
 
 ### Weeks 2+
@@ -705,11 +729,13 @@ Subject: Your GitHub Workshop Starts Tomorrow!
 > We're excited to have you join us tomorrow at [TIME] for our two-day GitHub workshop!
 >
 > **Quick checklist:**
+>
 > - GitHub account created? (Go to github.com)
 > - Can you join the video call? (Link: [URL]) or dial audio-only: [NUMBER]
 > - Do you have a screen reader installed? (NVDA, JAWS, or VoiceOver work great with GitHub)
 >
 > **Tomorrow's plan:**
+>
 > - Hour 1: Welcome and GitHub orientation
 > - Hour 2: Demo of your first PR
 > - Hours 3-6: You work on challenges, we help
@@ -742,8 +768,9 @@ Subject: Your GitHub Workshop Starts Tomorrow!
 > I especially appreciated when you [specific moment they did well].
 >
 > **Keep learning:**
+>
 > - Check out [CONTRIBUTING.md](../CONTRIBUTING.md) for contributing to open source
-> - Join our alumni community: https://github.com/Community-Access/support
+> - Join our alumni community: <https://github.com/Community-Access/support>
 > - Email if you have any GitHub questions — we're here
 >
 > Great work, and keep building!
@@ -751,6 +778,7 @@ Subject: Your GitHub Workshop Starts Tomorrow!
 ### Appendix B: Screen Reader Quick Reference
 
 **For NVDA Users:**
+
 - `Insert + Down Arrow` — Read all
 - `H` — Jump to next heading
 - `Tab` — Jump to next button/link
@@ -758,6 +786,7 @@ Subject: Your GitHub Workshop Starts Tomorrow!
 - `A` — Jump to next button or clickable element
 
 **For JAWS Users:**
+
 - `Insert + Down Arrow` — Read all
 - `H` — Jump to next heading
 - `Tab` — Jump to next button/link
@@ -765,12 +794,14 @@ Subject: Your GitHub Workshop Starts Tomorrow!
 - `B` — Jump to next button
 
 **For VoiceOver (Mac) Users:**
+
 - `VO + Down Arrow` — Read continuously
 - `H` — Jump to next heading
 - `Tab` — Jump to next button/link
 - `F` — Jump to next form field
 
 **GitHub.com Keyboard Shortcuts (Most Important):**
+
 - `T` — Open file finder
 - `I` — Jump to Issues
 - `P` — Jump to Pull requests

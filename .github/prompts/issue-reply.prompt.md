@@ -2,8 +2,9 @@ name: issue-reply
 description: "Draft and post a context-aware reply to a GitHub issue with full thread context and reaction awareness"
 agent: issue-tracker
 tools:
-  - github/*
-  - ask_questions
+
+- github/*
+- ask_questions
 
 Help the user reply to a GitHub issue with full context awareness.
 

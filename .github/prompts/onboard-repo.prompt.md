@@ -2,12 +2,13 @@ name: onboard-repo
 description: "First-time repo onboarding -- scan issues, PRs, releases, CI health, CODEOWNERS, and suggest initial triage and setup actions"
 agent: daily-briefing
 tools:
-  - github/*
-  - readFile
-  - textSearch
-  - createFile
-  - createDirectory
-  - ask_questions
+
+- github/*
+- readFile
+- textSearch
+- createFile
+- createDirectory
+- ask_questions
 
 Run a comprehensive first-time scan of a repository to understand its health, activity, and what needs attention. Save both markdown and HTML versions.
 

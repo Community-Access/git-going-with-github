@@ -43,6 +43,7 @@ Calculate an accessibility score for each image based on these criteria:
 | Appropriate classification | +10 | Classification matches the flags (e.g., icon+functional, chart+complex) |
 
 **Score ranges**:
+
 - 90-100: Excellent
 - 70-89: Good
 - 50-69: Needs review
@@ -169,6 +170,7 @@ Path,Filename,Alt Text,Width,Height,Format,Size KB,Classification,Confidence,Fla
 ### Delta Mode
 
 When told to use delta mode:
+
 1. Read the existing catalog
 2. Compare incoming image paths against catalog entries
 3. Only add/update entries that are new or have changed (different file size)

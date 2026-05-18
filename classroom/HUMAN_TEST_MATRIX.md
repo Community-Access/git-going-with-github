@@ -100,20 +100,20 @@ Complete these steps as a test student.
 scripts/classroom/Start-MergeConflictChallenge.ps1 -Repository Community-Access/learning-room-smoke-a -StudentBranch learn/test-student-a
 ```
 
-   - Verify the student's PR reports a conflict.
-   - Resolve the conflict.
-   - Verify the Challenge 7 conflict-marker workflow succeeds.
-   - Close Challenge 7.
-   - Verify Challenge 8 appears.
+- Verify the student's PR reports a conflict.
+- Resolve the conflict.
+- Verify the Challenge 7 conflict-marker workflow succeeds.
+- Close Challenge 7.
+- Verify Challenge 8 appears.
 
-8. **Challenge 8: The Culture Layer**
+1. **Challenge 8: The Culture Layer**
    - Read governance/community files.
    - Use the peer-simulation issue for label/triage discussion.
    - Comment reflection evidence.
    - Close Challenge 8.
    - Verify Challenge 9 appears.
 
-9. **Challenge 9: Merge Day**
+2. **Challenge 9: Merge Day**
    - Verify the PR has been reviewed and can merge.
    - Merge the PR or have the facilitator merge it.
    - Leave wrap-up feedback on the peer-simulation issue or PR.
@@ -123,7 +123,7 @@ scripts/classroom/Start-MergeConflictChallenge.ps1 -Repository Community-Access/
 
 Seed Challenge 10 if continuing from Day 1 did not naturally reach it.
 
-10. **Challenge 10: Go Local**
+1. **Challenge 10: Go Local**
     - Clone the repo locally.
     - Create a branch.
     - Edit, commit, and push.
@@ -131,14 +131,14 @@ Seed Challenge 10 if continuing from Day 1 did not naturally reach it.
     - Close Challenge 10.
     - Verify Challenge 11 appears.
 
-11. **Challenge 11: Open a Day 2 PR**
+2. **Challenge 11: Open a Day 2 PR**
     - Open a PR from the locally pushed branch.
     - Verify Gandalf feedback appears.
     - Review the peer-simulation PR title and description.
     - Close Challenge 11.
     - Verify Challenge 12 appears.
 
-12. **Challenge 12: Review Like a Pro**
+3. **Challenge 12: Review Like a Pro**
     - Review the peer-simulation PR.
     - Leave at least two specific comments if GitHub allows inline comments.
     - Submit a review verdict if available.
@@ -146,7 +146,7 @@ Seed Challenge 10 if continuing from Day 1 did not naturally reach it.
     - Close Challenge 12.
     - Verify Challenge 13 appears.
 
-13. **Challenge 13: AI as Your Copilot**
+4. **Challenge 13: AI as Your Copilot**
     - Use Copilot to improve `docs/samples/copilot-improvement-before.md` or another document.
     - Record what Copilot suggested.
     - Record what the student accepted, rejected, or changed.
@@ -154,7 +154,7 @@ Seed Challenge 10 if continuing from Day 1 did not naturally reach it.
     - Close Challenge 13.
     - Verify Challenge 14 appears.
 
-14. **Challenge 14: Template Remix**
+5. **Challenge 14: Template Remix**
     - Create a new non-challenge issue template in `.github/ISSUE_TEMPLATE/`.
     - Verify it has `name:` and `description:`.
     - Open a PR.
@@ -162,15 +162,16 @@ Seed Challenge 10 if continuing from Day 1 did not naturally reach it.
     - Close Challenge 14.
     - Verify Challenge 15 appears.
 
-15. **Challenge 15: Meet the Agents**
+6. **Challenge 15: Meet the Agents**
     - Browse `Community-Access/accessibility-agents`.
     - Identify at least three agents.
     - Run or inspect one agent.
     - Compare discoveries with the peer-simulation issue or a real buddy.
     - Close Challenge 15.
     - Verify Challenge 16 appears.
+    - Verify Bonus A, Bonus B, Bonus C, Bonus D, and Bonus E also appear.
 
-16. **Challenge 16: Capstone Project (Build Your Agent (Capstone))**
+7. **Challenge 16: Capstone Project**
     - Choose Accessibility Agents, GLOW, or another meaningful repository.
     - Create or draft an agentic contribution with a clear mission, responsibilities, and guardrails.
     - Open a PR, prepare a branch, or write a contribution issue/plan.
@@ -180,25 +181,25 @@ Seed Challenge 10 if continuing from Day 1 did not naturally reach it.
 
 ## Bonus Test
 
-The five bonus challenges are optional and facilitator-reviewed.
+The five bonus challenges are optional, facilitator-reviewed, and should unlock immediately after Challenge 15. Students may complete them in any order, before or after Challenge 16.
 
-17. **Bonus A: Improve an Existing Agent**
+1. **Bonus A: Improve an Existing Agent**
     - Choose an existing agent.
     - Propose and submit a meaningful improvement.
 
-18. **Bonus B: Document Your Journey**
+2. **Bonus B: Document Your Journey**
     - Write a reflection document.
     - Verify it is clear and accessible.
 
-19. **Bonus C: Create a Group Challenge**
+3. **Bonus C: Create a Group Challenge**
     - Design a collaborative challenge for a future cohort.
     - Confirm it can work with peer simulation or real buddy access.
 
-20. **Bonus D: Notification Mastery**
+4. **Bonus D: Notification Mastery**
     - Configure notification settings.
     - Document the student's notification strategy.
 
-21. **Bonus E: Explore Git History Visually**
+5. **Bonus E: Explore Git History Visually**
     - Use GitHub Desktop or GitHub.com history views.
     - Explain what changed over time.
 

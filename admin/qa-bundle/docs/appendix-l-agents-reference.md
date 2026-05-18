@@ -630,6 +630,7 @@ applyTo: ".github/ISSUE_TEMPLATE/**/*.{yml,yaml}"
 ### Creating an Instructions File
 
 #### Command Palette method
+
 ### Writing Effective Instructions
 
 Guidance from GitHub's accessibility team on writing instructions that Copilot actually follows:
@@ -816,16 +817,19 @@ When asked to [task]:
 ### Learning Cards: .agent.md - Complete Format Reference
 
 **Screen reader users:**
+
 - YAML frontmatter is the first block in the file between `---` delimiters -- arrow through it line by line to verify `name`, `description`, and `tools` fields; indentation matters
 - The `name` field in frontmatter is what you type after `@` in Copilot Chat -- if the agent does not appear, check this field matches your invocation and reload VS Code (`Ctrl+Shift+P` then "Reload Window")
 - Use Chat Diagnostics (gear icon in Chat header then Diagnostics) to verify your agent loaded successfully -- it lists every agent found, with error details if frontmatter parsing failed
 
 **Low-vision users:**
+
 - Agent files are small Markdown documents typically under 100 lines -- increase editor font size and use a theme with distinct YAML keyword colors so frontmatter fields stand out
 - The tools list in frontmatter uses array syntax (`["read", "search"]`) -- at high zoom, verify commas and quotes are correct since YAML is sensitive to formatting
 - The body template structure (Constraints, Behavior, Output Format, Scope Boundaries) uses `##` headings -- use VS Code's Outline view (`Ctrl+Shift+O`) to navigate between sections
 
 **Sighted users:**
+
 - Copy an existing `.agent.md` from `.github/agents/` as a starting template -- the frontmatter structure is identical across all agents; just change the name, description, and tool list
 - The tool combinations table in this section shows common patterns by use case -- scan the comments (e.g., "Read-only research", "Full GitHub workflow") to find the right tool set
 - The invocation control table explains `user-invocable` and `disable-model-invocation` flags -- set `user-invocable: false` to create helper agents that only other agents can call
@@ -1142,16 +1146,19 @@ Permission decisions: `"allow"` | `"ask"` (prompt user) | `"deny"` (block the to
 ### Learning Cards: Hooks
 
 **Screen reader users:**
+
 - Hooks are JSON files, not Markdown -- navigate them in the editor with arrow keys; each hook event (e.g., `PreToolUse`, `PostToolUse`) is a key in the `"hooks"` object
 - Hook output is returned as JSON on `stdout` -- the `"continue"` field (true/false) determines whether the agent proceeds; listen for the `"stopReason"` message if the hook blocks an action
 - The `"permissionDecision"` values (`allow`, `ask`, `deny`) control tool access -- `ask` triggers a confirmation dialog that your screen reader will announce as a standard VS Code dialog
 
 **Low-vision users:**
+
 - JSON syntax requires careful attention to braces, brackets, and commas -- use VS Code's bracket pair colorization (`editor.bracketPairColorization.enabled`) and increase font size to verify structure
 - The hook events table maps each event name to when it fires -- zoom in on the "When It Fires" column to understand the lifecycle timing
 - Hook errors appear in the agent session output -- look for non-zero exit codes or `"continue": false` in the output pane
 
 **Sighted users:**
+
 - The hook events table lists 8 lifecycle events -- `PreToolUse` and `PostToolUse` are the most commonly used for validation and formatting enforcement
 - The configuration format example shows the JSON structure with `command`, `timeout`, and platform-specific overrides -- copy this template and modify the command paths for your project
 - Hooks from workspace (`.github/hooks/`) and user (`~/.claude/settings.json`) locations are combined, not overridden -- check both locations if a hook is firing unexpectedly

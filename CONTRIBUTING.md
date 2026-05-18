@@ -1,5 +1,6 @@
 
 **Table: Keyboard shortcut for focusing search in different screen readers**
+
 # Contributing to This Workshop Repository
 
 Thank you for helping improve this workshop. Whether you are a participant who found a typo, someone who wants to add a new exercise, or an educator adapting these materials for your own community - your contribution is meaningful and welcome.
@@ -75,6 +76,7 @@ Security: We strongly recommend enabling Two-Factor Authentication (2FA) on your
 4. Wait for the fork to complete - you will be redirected to your copy
 
 **Screen reader users:**
+
 - NVDA / JAWS: Navigate by button (`B`) to find "Fork"
 - VoiceOver: `VO+Right Arrow` to find "Fork" button, `VO+Space` to activate
 
@@ -100,6 +102,7 @@ git remote -v
 ```
 
 Expected output:
+
 ```
 origin    https://github.com/[your-username]/[workshop-repo-name].git (fetch)
 origin    https://github.com/[your-username]/[workshop-repo-name].git (push)
@@ -137,11 +140,13 @@ git checkout -b update-broken-links-resources
 Edit the file or files. Limit your changes to what is described in your branch name. Unrelated improvements belong in separate branches and separate pull requests.
 
 **In VS Code:**
+
 1. Open the file in the Explorer (`Ctrl+Shift+E`)
 2. Make your edits
 3. Save (`Ctrl+S`)
 
 **In the GitHub web editor:**
+
 1. Navigate to the file
 2. Activate the pencil icon (Edit this file)
 3. Make your changes
@@ -161,6 +166,7 @@ which is not a term NVDA uses. Updated to match NVDA's own terminology."
 ```
 
 **Commit message format:**
+
 ```
 type: short summary (under 72 characters)
 
@@ -258,11 +264,13 @@ This repository maintains HTML versions of all Markdown files. The HTML is built
 ### How It Works
 
 **Local build, committed output:**
+
 - You edit `.md` files, then run `npm run build:html` before committing
 - Both the Markdown changes and the updated `html/` output are committed together
 - There is no CI pipeline - the build is your responsibility before pushing
 
 **What gets converted:**
+
 - All markdown files in `docs/`
 - All markdown files in `learning-room/`
 - Root level markdown files (README.md, CONTRIBUTING.md, etc.)
@@ -290,6 +298,7 @@ Generated HTML files will be in the `html/` directory with the same folder struc
 ### HTML Features
 
 The generated documentation includes:
+
 - **GitHub-flavored styling** - familiar appearance for GitHub users
 - **Syntax highlighting** for code blocks
 - **Responsive design** - works on mobile and desktop
@@ -311,12 +320,14 @@ git commit -m "docs: update chapter 6 and rebuild HTML"
 
 **Testing the HTML locally (optional):**
 If you want to verify how your Markdown will look in HTML before committing:
+
 1. Run `npm install` (first time only)
 2. Run `npm run build:html`
 3. Open files in `html/` directory in your browser
 
 **HTML files in the repository:**
 The `html/` directory is committed to the repository so that:
+
 - Documentation can be browsed directly from the repository
 - HTML files are version-controlled alongside their Markdown source
 - GitHub Pages can serve the documentation without a build step
@@ -327,6 +338,7 @@ The `html/` directory is committed to the repository so that:
 You need to install Node.js first. Download from the [Node.js download page](https://nodejs.org/) (LTS version recommended).
 
 **Build errors:**
+
 - Ensure all markdown files have valid syntax
 - Check that code blocks use proper fence syntax (` ``` `)
 - Look for unclosed brackets or parentheses in links

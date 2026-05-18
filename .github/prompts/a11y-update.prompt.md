@@ -2,10 +2,11 @@ name: a11y-update
 description: "Get the latest accessibility improvements across all tracked repos -- with WCAG cross-references and ARIA pattern mapping"
 agent: insiders-a11y-tracker
 tools:
-  - github/*
-  - createFile
-  - createDirectory
-  - ask_questions
+
+- github/*
+- createFile
+- createDirectory
+- ask_questions
 
 Show me the latest accessibility improvements across tracked repositories.
 
@@ -31,6 +32,7 @@ Interpret the scope:
 Present results as a categorized list grouped by: Screen Reader, Keyboard Navigation, Visual/Contrast, Audio/Motion, Cognitive, Other.
 
 For each issue, include:
+
 - WCAG success criteria reference (e.g., "WCAG 2.4.3 Focus Order (Level A)")
 - ARIA design pattern if applicable (e.g., "Dialog pattern")
 - Impact level: Critical / Major / Minor

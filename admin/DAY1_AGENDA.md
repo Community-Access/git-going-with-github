@@ -1,4 +1,5 @@
 # Day 1 Agenda
+
 ## Open Source Assistive Technology Workshop - GitHub Classroom Edition
 
 > **Day 1 Focus:** The GitHub web interface -- navigating repositories, filing and responding to issues, understanding pull requests, and contributing through the browser using only your keyboard and screen reader.
@@ -24,6 +25,7 @@ When you accept the Day 1 assignment link, GitHub creates a private copy of the 
 - **21 challenge templates** (Challenges 1-9 today, 10-16 + bonus on Day 2)
 
 **How Gandalf works:**
+
 1. You open Challenge 1 as your first issue after facilitators seed it for your private repo
 2. You work through the instructions and submit your evidence
 3. When you close the issue, the progression system creates Challenge 2
@@ -79,12 +81,14 @@ Make participants comfortable, set expectations, verify setups, and create a psy
 ### Activities
 
 **Facilitator introduces:**
+
 - The purpose of this session: building real, usable GitHub skills for open source AT contribution
 - What "contribution" means -- it is not only code. Documentation, accessibility testing, issue triage, and feedback are all valuable contributions.
 - The "ask before you assume" norm -- it is always OK to ask what something means
 - The Classroom model: each participant has their own private repo with Gandalf bot and challenge progression
 
 **Quick setup verification (10 min):**
+
 - Can everyone navigate to github.com?
 - Does everyone's screen reader announce page headings?
 - Is hovercards turned off? (If not -- navigate to Accessibility Settings now)
@@ -102,6 +106,7 @@ The facilitator shares the Day 1 assignment link. Each participant follows the [
 > **If Challenge 1 does not appear:** Wait 60 seconds and refresh. If it still does not appear, the facilitator can manually create it from the issue template.
 
 **Introductions:**
+
 - Each participant: your name, your screen reader and OS, what brings you here
 
 ## Block 1 - Screen Reader Orientation to GitHub (10:45 AM, 35 min)
@@ -121,12 +126,14 @@ Establish a shared navigation foundation. Every participant leaves this block ab
 ### Part A - Navigate GitHub Together (15 min)
 
 **Navigate the GitHub homepage:**
+
 1. Open GitHub.com -- what is announced? (heading level, landmark)
 2. Press `H` repeatedly -- list the headings aloud
 3. Press `D` -- what landmarks exist?
 4. Open Elements List -- how many links are on the page?
 
 **Navigate your Classroom repository:**
+
 1. Go to your repository URL (provided by the facilitator or visible in your Classroom dashboard)
 2. Find the repo name with `1` (h1)
 3. Find the tab bar (Issues, Pull Requests, etc.) with `D` -- repository navigation landmark
@@ -142,7 +149,7 @@ The `docs/` folder contains files with intentional issues that you will fix duri
 | `docs/keyboard-shortcuts.md` | NVDA, JAWS, and VoiceOver shortcut tables | Intentional errors in keyboard shortcut references |
 | `docs/setup-guide.md` | Step-by-step GitHub setup instructions | Broken links and incomplete steps |
 
-6. Open `docs/welcome.md` -- navigate with `H` to read the headings. Notice the `[TODO]` markers.
+1. Open `docs/welcome.md` -- navigate with `H` to read the headings. Notice the `[TODO]` markers.
 
 > **Key insight:** These files are intentionally imperfect. You will fix them during your challenges. For now, notice the structure -- headings, tables, links -- and how your screen reader announces each one.
 
@@ -151,6 +158,7 @@ The `docs/` folder contains files with intentional issues that you will fix duri
 > **Your first challenge is waiting.** Navigate to the Issues tab in your repo. Challenge 1 is a scavenger hunt across the repository.
 
 **What Challenge 1 asks you to do:**
+
 - Find the Code tab and count root files
 - Open the Issues tab and find an open issue
 - Navigate to `docs/welcome.md` and read the first paragraph
@@ -187,6 +195,7 @@ Participants can file, read, respond to, and navigate issues -- and understand h
 Challenge 2 asks you to find a TODO in `docs/welcome.md` and file a well-structured issue describing the problem.
 
 **Key skills you practice:**
+
 1. Navigating to a file and finding specific content
 2. Going to the Issues tab and creating a new issue
 3. Writing a clear, descriptive title (not just "Fix TODO")
@@ -201,12 +210,14 @@ When you close Challenge 2, Challenge 3 appears.
 Challenge 3 asks you to comment on a classmate's issue, use @mentions, and add reactions.
 
 **What you will do:**
+
 1. Find a classmate's Challenge 2 issue (your facilitator will help pair you)
 2. Leave a meaningful comment -- confirm you see the same problem, suggest an approach, or ask a clarifying question
 3. Use `@username` to mention your classmate
 4. Add a reaction (thumbs up, heart, or any emoji) to their original issue
 
 **Good commenting tips:**
+
 - Be specific ("I found the same TODO on line 12" beats "I agree")
 - Be encouraging ("Great find!" is always welcome)
 - Be constructive (suggest, do not just criticize)
@@ -240,6 +251,7 @@ Participants create a branch, edit a file on GitHub, and commit with a meaningfu
 Challenge 4 asks you to create a personal branch named `learn/YOUR-USERNAME`.
 
 **Step by step:**
+
 1. Make sure you are on the Code tab of your repository
 2. Find the branch dropdown (it shows "main" by default) -- use `B` to navigate buttons
 3. Type `learn/YOUR-USERNAME` (replace with your actual GitHub username)
@@ -254,6 +266,7 @@ Submit your evidence and close Challenge 4. Challenge 5 appears.
 Challenge 5 asks you to edit `docs/welcome.md` on your branch to fix the TODO you identified in Challenge 2, then commit with a meaningful message.
 
 **Step by step:**
+
 1. Make sure you are on your `learn/YOUR-USERNAME` branch (check the branch dropdown)
 2. Navigate to `docs/welcome.md`
 3. Find the edit button (pencil icon) -- use `B` to navigate buttons
@@ -266,7 +279,7 @@ Challenge 5 asks you to edit `docs/welcome.md` on your branch to fix the TODO yo
 | Fix stuff | Replace placeholder text with actual welcome message |
 | changes | Add participant introduction section to welcome.md |
 
-6. Commit directly to your branch
+1. Commit directly to your branch
 
 > **Key insight:** A good commit message answers two questions: **What** did you change and **Why?** Future contributors (including future you) will read these messages to understand the project's history.
 
@@ -275,6 +288,7 @@ Submit your evidence and close Challenge 5. Challenge 6 appears.
 ### Part C - Catch-Up and Exploration (10 min)
 
 If you finished Challenges 4-5, explore your repository using the navigation skills from Block 1:
+
 - View your commit history (navigate to the Commits section)
 - Compare your branch to `main` -- what differs?
 - Read `docs/keyboard-shortcuts.md` and find the intentional errors you will fix later
@@ -305,6 +319,7 @@ Participants open their first pull request, experience automated feedback from G
 Challenge 6 asks you to open a PR from your `learn/YOUR-USERNAME` branch to `main`, linking it to the issue you filed in Challenge 2.
 
 **Step by step:**
+
 1. Navigate to the Pull Requests tab
 2. Activate "New pull request"
 3. Set base to `main`, compare to `learn/YOUR-USERNAME`
@@ -314,6 +329,7 @@ Challenge 6 asks you to open a PR from your `learn/YOUR-USERNAME` branch to `mai
 7. Submit the pull request
 
 > **Magic Moment:** Within 30 seconds, Gandalf bot comments on your PR. Navigate to the Conversation tab and read the comment with your screen reader. Gandalf checks for:
+>
 > - Issue reference (did you include `Closes #XX`?)
 > - Description quality
 > - File location
@@ -324,6 +340,7 @@ Challenge 6 asks you to open a PR from your `learn/YOUR-USERNAME` branch to `mai
 > The feedback explains WHY each issue matters and links to resources. This is automated feedback on your real GitHub action, from an actual GitHub Actions workflow running in your repository.
 
 **If Gandalf flags issues:**
+
 1. Address any required checks
 2. Push your changes to the same branch -- Gandalf re-checks automatically
 3. The bot is educational, not punitive. Every message tells you what to fix and why.
@@ -348,6 +365,7 @@ Your version from your branch
 ```
 
 **How to resolve:**
+
 1. Select "Resolve conflicts" in your PR (or edit the file directly on your branch)
 2. Find the conflict markers
 3. Decide which content to keep (or combine both)
@@ -390,11 +408,13 @@ Challenge 8 has two parts:
 
 **Part 1 - Reflection:**
 Think about your experience so far. Answer one or more:
+
 - What made you feel welcome when you arrived?
 - What would make this workshop more accessible or inclusive?
 - What is one thing you learned from a classmate today?
 
 **Part 2 - Triage an issue:**
+
 1. Go to the Issues tab and find an open issue (yours or a classmate's)
 2. Add at least one label that describes the issue (`bug`, `enhancement`, `documentation`, `good first issue`)
 3. If you think the issue needs someone's attention, leave a comment tagging them
@@ -408,12 +428,14 @@ Submit your evidence and close Challenge 8. Challenge 9 appears.
 Challenge 9 is the Day 1 capstone: get your PR merged.
 
 **Merge checklist:**
+
 - [ ] Your PR has no merge conflicts (if it does, resolve them first)
 - [ ] Your PR links to your issue with `Closes #XX`
 - [ ] Your commit message is meaningful
 - [ ] You have reviewed your own changes one last time
 
 **Steps:**
+
 1. Open your PR on the Pull Requests tab
 2. If all checks pass (green checkmarks), you are ready to merge
 3. Select "Merge pull request" (your facilitator may handle this step)
@@ -427,6 +449,7 @@ Submit your evidence and close Challenge 9.
 ### Part C - Help a Classmate (10 min)
 
 If you finished Challenges 8-9, find a classmate who is still working:
+
 - Help them resolve a merge conflict
 - Review their PR and leave a constructive comment
 - Answer a question about something you figured out
@@ -446,6 +469,7 @@ Participants understand the human side of open source: how to communicate well, 
 **Discussion:** What makes an open source project a welcoming place?
 
 **Hands-on:** Navigate the community health files in your repository:
+
 1. Read `CODE_OF_CONDUCT.md` -- what does it commit to?
 2. Read `CONTRIBUTING.md` -- what does the project ask of contributors?
 3. Navigate to `.github/ISSUE_TEMPLATE/` and open a challenge template. What information does it require and why?
@@ -468,6 +492,7 @@ Open source communication is asynchronous. Your comment will be read out of cont
 **The anatomy of a good review comment (10 min)**
 
 A useful comment includes:
+
 1. **What** you noticed
 2. **Why** it matters
 3. **A suggestion** (optional but helpful)
@@ -476,6 +501,7 @@ Example:
 > "The `alt` attribute on line 42 is empty. Screen readers will skip this image entirely, which means blind users miss the chart. A description like 'Bar chart showing monthly downloads from January to June' would help. Happy to help draft one if useful!"
 
 **Practices to demonstrate:**
+
 - Separating factual observations from preferences ("This might be a typo" vs "I personally prefer single quotes")
 - Using `nit:` to signal non-blocking suggestions
 - Asking clarifying questions instead of assuming intent
@@ -484,6 +510,7 @@ Example:
 **Exercise: Rewrite and write (10 min)**
 
 Rewrite these comments to be more inclusive:
+
 1. "This is obviously wrong -- anyone can see it does not handle nulls."
 2. "LGTM but TBH this feels like over-engineering IMO."
 3. "Fix this before EOD."
@@ -493,12 +520,14 @@ Then write a review comment for this change: "A PR removes the `<main>` landmark
 ### Part C - Labels, Milestones, and Cross-References (20 min)
 
 **Labels -- organizing intent:**
+
 - Creating a label: Issues > Labels > New label
 - Applying labels from the issue sidebar
 - Filtering issues by multiple labels
 - Label naming conventions
 
 **Cross-references -- linking work:**
+
 - From a PR description: `Closes #42` auto-closes the issue on merge
 - Referencing across repos: `owner/repo#42`
 - From comments: type `#` and a number
@@ -509,12 +538,14 @@ Practice applying labels to a challenge issue in your repo. If you have complete
 ### Part D - Notifications: Taking Control of Your Inbox (10 min)
 
 **Concepts:**
+
 - GitHub Notifications inbox: `github.com/notifications`
 - Subscribed vs Participating vs @mentioned
 - Notification preferences per repository
 - The "Done" button
 
 **Hands-on:**
+
 1. Navigate to your Notifications inbox
 2. Find the notification from your PR or issue comment
 3. Mark it as Done
@@ -561,6 +592,7 @@ Day 2 moves from the browser to **Visual Studio Code**. Here is what is coming:
 > Tomorrow you will see the agents in action and have the opportunity to contribute new agents, improve existing ones, or shape the project's roadmap. The best contributions come from people who have done the manual work first -- and that is exactly what you did today.
 
 **Tonight (optional):**
+
 - Install VS Code and the GitHub Copilot Chat extension (see [Pre-Workshop Setup](../docs/00-pre-workshop-setup.md))
 - Complete any remaining Day 1 challenges
 - Browse the bonus challenges (A through E) for extra practice
@@ -578,6 +610,7 @@ Everything you learned today is complete and self-contained. You can now:
 - **Merge contributions** and see your name in a project's history
 
 **What to do next on your own:**
+
 - Explore the [Next Steps](../docs/21-next-steps.md) guide for continuing your GitHub journey independently
 - Browse [github.com/topics/accessibility](https://github.com/topics/accessibility) for projects that need contributors
 - Look for issues labeled `good first issue` on any project that interests you
@@ -598,6 +631,7 @@ Students do not need an organization, owner access, or repository settings acces
 
 **Pre-create the merge conflict trigger:**
 For Challenge 7, you need to edit `docs/welcome.md` on `main` in each student's repo AFTER they have committed to their branch but BEFORE they try to merge. Plan the timing:
+
 - Watch for students reaching Challenge 6 (opening a PR)
 - Push a conflicting edit to `main` in their repos, or use a workflow to trigger it
 - This must happen between Challenge 6 and Challenge 7
@@ -614,6 +648,7 @@ For Challenge 7, you need to edit `docs/welcome.md` on `main` in each student's 
 ### The Emotional Arc
 
 Day 1 has three peaks:
+
 1. **The first Gandalf response** (Block 1) -- participants see an automated system react to their action
 2. **The first PR feedback** (Block 4) -- Gandalf comments on their real PR within 30 seconds
 3. **The merge** (Block 5) -- their changes are on `main` and their issue auto-closed

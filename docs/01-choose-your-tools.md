@@ -460,14 +460,14 @@ gh repo clone Community-Access/git-going-with-github
 cd learning-room
 ```
 
-3. Open the README in your preferred way:
+1. Open the README in your preferred way:
 
 ```bash
 cat README.md       # print to terminal
 code README.md      # open in VS Code
 ```
 
-4. You are done when you can read the first paragraph.
+1. You are done when you can read the first paragraph.
 
 ### What success looks like
 

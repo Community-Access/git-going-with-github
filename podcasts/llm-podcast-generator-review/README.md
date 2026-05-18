@@ -62,22 +62,31 @@ node podcasts/llm-podcast-generator-review/src/generate-teaching-transcript.js `
 ## Durable execution path (recommended for full 79)
 
 1. Prepare durable jobs (dedupe + cost estimate):
+
    ```powershell
    npm run podcast:llm:ai:prepare
    ```
+
 2. Submit/poll via Batch API:
+
    ```powershell
    npm run podcast:llm:ai:run:batch
    ```
+
 3. Apply completed jobs to live scripts/transcripts:
+
    ```powershell
    npm run podcast:llm:ai:apply
    ```
+
    Or run the root helper from `cmd.exe`:
+
    ```bat
    generate-llm-batch-jobs.bat
    ```
+
    For a strict from-scratch run that clears prior durable ledger and published artifacts first:
+
    ```bat
    generate-llm-batch-jobs.bat --clean
    ```

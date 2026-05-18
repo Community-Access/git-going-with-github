@@ -7,6 +7,7 @@ This repository converts all Markdown files to accessible HTML. The HTML output 
 ### View HTML Documentation
 
 All HTML files live in the `html/` directory:
+
 - Open `html/index.html` in your browser for the homepage
 - Browse the `html/docs/` folder for chapter and appendix pages
 - All internal links between documents are preserved
@@ -32,6 +33,7 @@ npm run clean
 The build is run **locally** before committing. There is no CI pipeline - you build the HTML yourself and commit both the `.md` source and the `html/` output in the same commit.
 
 **Typical workflow:**
+
 1. Edit one or more `.md` files
 2. Run `npm run build:html`
 3. Stage and commit everything: `git add -A && git commit -m "docs: update chapter 6 and rebuild HTML"`
@@ -48,12 +50,14 @@ The build is run **locally** before committing. There is no CI pipeline - you bu
 ### HTML Features
 
 **Style and Layout:**
+
 - GitHub-flavored Markdown styling (familiar appearance)
 - Responsive design (mobile and desktop)
 - Syntax highlighting for code blocks
 - Clean, readable typography
 
 **Accessibility:**
+
 - Semantic HTML5 markup
 - Proper ARIA labels and roles
 - Keyboard navigation support
@@ -62,6 +66,7 @@ The build is run **locally** before committing. There is no CI pipeline - you bu
 - Screen reader friendly navigation
 
 **Navigation:**
+
 - Breadcrumb links on every page
 - Footer with return link
 - Preserves all internal links between documents
@@ -118,6 +123,7 @@ Check `.gitignore` to ensure `html/` is NOT listed there. The `html/` directory 
 ## For Contributors
 
 When submitting pull requests:
+
 - **Edit the Markdown files**, then run `npm run build:html`
 - **Include both** the `.md` changes and the updated `html/` files in your commit
 - If you forget to rebuild, a reviewer will ask you to run the build before merging

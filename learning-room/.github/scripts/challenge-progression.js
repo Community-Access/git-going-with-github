@@ -41,10 +41,10 @@ function getChallengeNumberFromTitle(title) {
   return match ? Number(match[1]) : null;
 }
 
-function getNextChallengeNumber() {
+function getProgressionTargets() {
   if (requestedChallenge > 0) {
     log('DEBUG', `Using requested challenge: ${requestedChallenge}`);
-    return requestedChallenge;
+    return [{ kind: 'challenge', number: requestedChallenge }];
   }
 
   if (eventName === 'issues' && closedIssueTitle) {
@@ -52,21 +52,32 @@ function getNextChallengeNumber() {
     log('DEBUG', `Extracted challenge number from title "${closedIssueTitle}": ${current}`);
     if (!current) {
       log('WARN', 'Could not extract challenge number from closed issue title');
-      return null;
+      return [];
     }
-    if (current >= 1 && current < 16) {
+    if (current >= 1 && current < 15) {
       const next = current + 1;
       log('INFO', `Next challenge after ${current} is ${next}`);
-      return next;
+      return [{ kind: 'challenge', number: next }];
+    }
+    if (current === 15) {
+      log('INFO', 'Challenge 15 closed. Unlocking Challenge 16 and Bonus A-E.');
+      return [
+        { kind: 'challenge', number: 16 },
+        { kind: 'bonus', template: 'bonus-a-improve-agent.yml' },
+        { kind: 'bonus', template: 'bonus-b-document-journey.yml' },
+        { kind: 'bonus', template: 'bonus-c-group-challenge.yml' },
+        { kind: 'bonus', template: 'bonus-d-notifications.yml' },
+        { kind: 'bonus', template: 'bonus-e-git-history.yml' }
+      ];
     }
     if (current === 16) {
       log('INFO', 'Challenge 16 is the last core challenge. Progression complete.');
-      return null;
+      return [];
     }
   }
 
   log('DEBUG', `Event name: "${eventName}", Challenge determination failed`);
-  return null;
+  return [];
 }
 
 function findTemplate(challengeNumber) {
@@ -259,10 +270,14 @@ async function issueAlreadyExists(titlePrefix) {
 }
 
 async function createChallenge(challengeNumber) {
-  log('INFO', `Creating challenge ${challengeNumber}...`);
-  
+  const templateName = findTemplate(challengeNumber);
+  return createIssueFromTemplate(templateName, `Challenge ${challengeNumber}`);
+}
+
+async function createIssueFromTemplate(templateName, fallbackLabel) {
+  log('INFO', `Creating issue from template ${templateName}...`);
+
   try {
-    const templateName = findTemplate(challengeNumber);
     const templatePath = path.join(challengeDirectory, templateName);
     
     log('DEBUG', `Reading template: ${templatePath}`);
@@ -272,14 +287,15 @@ async function createChallenge(challengeNumber) {
       throw new Error(`Template file is empty: ${templatePath}`);
     }
 
-    const titleTemplate = readQuotedField(content, 'title') || readQuotedField(content, 'name');
+    const canonicalName = readQuotedField(content, 'name');
+    const titleTemplate = readQuotedField(content, 'title') || canonicalName;
     if (!titleTemplate) {
       throw new Error('Could not extract title from template');
     }
 
     // Handle username in title - support @{username} pattern
     const finalTitle = titleTemplate.replace(/@\{username\}/g, `@${actor || 'student'}`);
-    const titlePrefix = `Challenge ${challengeNumber}:`;
+    const titlePrefix = canonicalName || fallbackLabel || finalTitle.replace(/\s+\(@[^)]+\)$/, '');
     
     log('INFO', `Generated title: "${finalTitle}"`);
 
@@ -335,10 +351,10 @@ async function createChallenge(challengeNumber) {
       }
     });
 
-    log('INFO', `Successfully created challenge: ${issue.html_url}`);
+    log('INFO', `Successfully created issue: ${issue.html_url}`);
     console.log(`Created ${finalTitle}: ${issue.html_url}`);
   } catch (error) {
-    log('ERROR', `Failed to create challenge ${challengeNumber}: ${error.message}`);
+    log('ERROR', `Failed to create issue from template ${templateName}: ${error.message}`);
     throw error;
   }
 }
@@ -373,17 +389,25 @@ async function seedMergeConflict() {
   }
 }
 
-const nextChallenge = getNextChallengeNumber();
-if (!nextChallenge) {
+const progressionTargets = getProgressionTargets();
+if (!progressionTargets.length) {
   log('INFO', 'No challenge to create for this event.');
   console.log('No challenge to create for this event.');
 } else {
-  log('INFO', `Proceeding with Challenge ${nextChallenge}`);
-  const afterCreate = nextChallenge === 7
-    ? () => seedMergeConflict()
-    : () => Promise.resolve();
-  createChallenge(nextChallenge)
-    .then(afterCreate)
+  log('INFO', `Proceeding with ${progressionTargets.length} progression target(s).`);
+  (async () => {
+    for (const target of progressionTargets) {
+      if (target.kind === 'challenge') {
+        await createChallenge(target.number);
+      } else if (target.kind === 'bonus') {
+        await createIssueFromTemplate(target.template, 'Bonus');
+      }
+    }
+
+    if (progressionTargets.some(target => target.kind === 'challenge' && target.number === 7)) {
+      await seedMergeConflict();
+    }
+  })()
     .catch(error => {
       log('ERROR', `Challenge progression failed: ${error.message}`);
       log('ERROR', error.stack);

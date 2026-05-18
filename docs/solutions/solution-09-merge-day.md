@@ -18,6 +18,7 @@ Your Day 1 recap evidence might include:
 > **What I merged:** PR #5 which fixed the TODO in welcome.md (linked to issue #3)
 >
 > **What I learned today:**
+>
 > - Repositories have a navigable structure with tabs for code, issues, and PRs
 > - Issues document problems; PRs propose solutions
 > - Branches let you work without affecting main

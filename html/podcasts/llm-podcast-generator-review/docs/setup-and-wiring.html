@@ -185,6 +185,13 @@
 <li><a href="https://lp.csedesigns.com/ggg/feed.xml">RSS Feed <span class="guided-external">(external)</span></a></li>
         </ul>
       </section>
+
+      <section class="guided-section">
+        <h3>Get Help</h3>
+        <ul>
+          <li><a href="https://github.com/Community-Access/support">Support Hub <span class="guided-external">(external)</span></a></li>
+        </ul>
+      </section>
     </nav>
   </aside>
     <main id="main-content" class="markdown-body page-main">
@@ -394,18 +401,18 @@ npm run podcast:llm:ai:apply</code></pre>
 <pre><code class="hljs language-bat">generate-llm-batch-jobs.bat</code></pre>
 <p>For a strict regeneration (wipe old durable state and prior published artifacts before prepare/run/apply):</p>
 <pre><code class="hljs language-bat">generate-llm-batch-jobs.bat --clean</code></pre>
-<ol start="2">
+<ol>
 <li>Confirm durable execution completed:</li>
 </ol>
 <pre><code class="hljs language-powershell"><span class="hljs-built_in">Get-ChildItem</span> <span class="hljs-string">&quot;podcasts/llm-podcast-generator-review/generated/execution/reports&quot;</span> <span class="hljs-operator">-File</span> `
 | <span class="hljs-built_in">Sort-Object</span> LastWriteTime <span class="hljs-literal">-Descending</span> `
 | <span class="hljs-built_in">Select-Object</span> <span class="hljs-literal">-First</span> <span class="hljs-number">1</span> <span class="hljs-literal">-ExpandProperty</span> FullName</code></pre>
-<ol start="3">
+<ol>
 <li>Confirm all selected scripts were published:</li>
 </ol>
 <pre><code class="hljs language-powershell"><span class="hljs-variable">$summary</span> = <span class="hljs-built_in">Get-Content</span> <span class="hljs-string">&quot;podcasts/llm-podcast-generator-review/generated/scripts-only/&lt;run&gt;/summary.json&quot;</span> <span class="hljs-literal">-Raw</span> | <span class="hljs-built_in">ConvertFrom-Json</span>
 <span class="hljs-string">&quot;selected=<span class="hljs-variable">$</span>(<span class="hljs-variable">$summary</span>.selected) published=<span class="hljs-variable">$</span>(<span class="hljs-variable">$summary</span>.published) failed=<span class="hljs-variable">$</span>(<span class="hljs-variable">$summary</span>.failed)&quot;</span></code></pre>
-<ol start="4">
+<ol>
 <li>Run repository validation gates:</li>
 </ol>
 <pre><code class="hljs language-powershell">npm run test:automation
@@ -413,7 +420,7 @@ npm run test:llm<span class="hljs-literal">-execution</span>
 npm run validate:podcasts
 npm run validate:podcast<span class="hljs-literal">-feed</span>
 npm run build:podcast<span class="hljs-literal">-site</span></code></pre>
-<ol start="5">
+<ol>
 <li>If audio integration is required for signoff, run a targeted live slug check:</li>
 </ol>
 <pre><code class="hljs language-powershell">python <span class="hljs-literal">-m</span> podcasts.tts.generate_audio <span class="hljs-literal">--start</span> <span class="hljs-number">5</span> <span class="hljs-literal">--end</span> <span class="hljs-number">5</span> <span class="hljs-literal">--force</span> <span class="hljs-literal">--audio-format</span> mp3

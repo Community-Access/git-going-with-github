@@ -61,7 +61,8 @@ function groupLabel(ep) {
 // Map episode number to chapter/appendix source label
 function sourceLabel(ep) {
   if (ep.number === 0) return '[Course Guide](docs/course-guide.md)';
-  const src = ep.sources[0];
+  const src = Array.isArray(ep.sources) ? ep.sources[0] : '';
+  if (!src) return ep.title || 'Source unavailable';
   const chapterNumber = chapterNumberFromSource(ep);
   if (chapterNumber !== null) {
     return `[Chapter ${chapterNumber}: ${ep.title}](docs/${src})`;
@@ -138,6 +139,37 @@ function formatDurationFromSeconds(seconds) {
     return `${h}:${String(m).padStart(2, '0')}:${String(s).padStart(2, '0')}`;
   }
   return `${m}:${String(s).padStart(2, '0')}`;
+}
+
+function wrapText(text, width = 100) {
+  const words = String(text || '').trim().split(/\s+/).filter(Boolean);
+  if (!words.length) return [];
+
+  const lines = [];
+  let current = words[0];
+
+  for (let i = 1; i < words.length; i++) {
+    const word = words[i];
+    if ((current + ' ' + word).length <= width) {
+      current += ` ${word}`;
+    } else {
+      lines.push(current);
+      current = word;
+    }
+  }
+
+  lines.push(current);
+  return lines;
+}
+
+function pushWrappedParagraph(lines, text, width = 100, prefix = '') {
+  const wrapped = wrapText(text, width);
+  if (!wrapped.length) return;
+
+  lines.push(`${prefix}${wrapped[0]}`);
+  for (let i = 1; i < wrapped.length; i++) {
+    lines.push(`  ${wrapped[i]}`);
+  }
 }
 
 function durationFromSegments(slug) {
@@ -274,20 +306,26 @@ function parseScript(scriptText) {
 }
 
 /**
- * Format transcript segments into readable markdown for the PODCASTS.md page.
- * Each speaker turn becomes a bold-labeled paragraph.
+ * Format transcript segments into HTML for the PODCASTS.md page.
+ * Each speaker turn becomes a paragraph inside the details block.
  */
 function formatTranscriptMarkdown(segments) {
   const lines = [];
   for (const seg of segments) {
     if (seg.speaker === 'PAUSE') {
-      lines.push('---');
-      lines.push('');
+      lines.push('<hr />');
       continue;
     }
     const name = seg.speaker === 'ALEX' ? 'Alex' : 'Jamie';
-    lines.push(`**${name}:** ${seg.text}`);
-    lines.push('');
+    const wrapped = wrapText(escapeXml(seg.text), 90);
+    if (!wrapped.length) {
+      continue;
+    }
+    lines.push(`<p><strong>${name}:</strong> ${wrapped[0]}`);
+    for (let i = 1; i < wrapped.length; i++) {
+      lines.push(`  ${wrapped[i]}`);
+    }
+    lines.push('</p>');
   }
   return lines.join('\n');
 }
@@ -386,11 +424,11 @@ function generatePlayerPage(manifest) {
   lines.push('');
   lines.push('## Git Going with GitHub - Audio Series');
   lines.push('');
-  lines.push('Listen to the workshop as one end-to-end path. Companion lessons, Challenge Coach episodes, and reference material are interleaved so learners can hear the concept, practice it, and then keep moving through the course. Every episode includes a full transcript below the player.');
+  pushWrappedParagraph(lines, 'Listen to the workshop as one end-to-end path. Companion lessons, Challenge Coach episodes, and reference material are interleaved so learners can hear the concept, practice it, and then keep moving through the course. Every episode includes a full transcript below the player.');
   lines.push('');
-  lines.push(`**Subscribe:** Add the [podcast RSS feed](${SITE_URL}/podcasts/feed.xml) to your preferred podcast app - Apple Podcasts, Spotify, Overcast, or any RSS reader.`);
+  pushWrappedParagraph(lines, `Add the [podcast RSS feed](${SITE_URL}/podcasts/feed.xml) to your preferred podcast app - Apple Podcasts, Spotify, Overcast, or any RSS reader.`, 100, '**Subscribe:** ');
   lines.push('');
-  lines.push('**Transcripts:** Every episode includes a complete, readable transcript. Expand the "Read Transcript" section below any episode to follow along or search the conversation.');
+  pushWrappedParagraph(lines, 'Every episode includes a complete, readable transcript. Expand the "Read Transcript" section below any episode to follow along or search the conversation.', 100, '**Transcripts:** ');
   lines.push('');
   lines.push('---');
   lines.push('');
@@ -423,7 +461,7 @@ function generatePlayerPage(manifest) {
 
     lines.push(`### ${item.sequence}. ${item.title}`);
     lines.push('');
-    lines.push(item.description);
+    pushWrappedParagraph(lines, item.description);
     lines.push('');
     if (item.kind === 'companion') {
       lines.push(`Based on: ${sourceLabel(item.ep)}`);
@@ -467,7 +505,7 @@ function generatePlayerPage(manifest) {
   // Footer
   lines.push('## Production');
   lines.push('');
-  lines.push('These episodes are generated with local neural text-to-speech models. Each episode is produced from the workshop chapter content using episode-specific scripts that ensure concept coverage, accessible language, and screen reader-friendly descriptions.');
+  pushWrappedParagraph(lines, 'These episodes are generated with local neural text-to-speech models. Each episode is produced from the workshop chapter content using episode-specific scripts that ensure concept coverage, accessible language, and screen reader-friendly descriptions.');
   lines.push('');
   lines.push('Source bundles and production documentation are in the [podcasts/](podcasts/) directory.');
   lines.push('');

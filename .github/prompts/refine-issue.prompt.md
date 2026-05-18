@@ -2,8 +2,9 @@ name: refine-issue
 description: "Refine an issue with acceptance criteria, technical considerations, edge cases, and community context"
 agent: issue-tracker
 tools:
-  - github/*
-  - ask_questions
+
+- github/*
+- ask_questions
 
 Help refine a GitHub issue to make it actionable and well-defined.
 
@@ -22,12 +23,14 @@ ${input:issue:Issue reference -- e.g. owner/repo#123 or a GitHub issue URL}
 5. Draft a refined issue body that adds:
 
    ### Acceptance Criteria
+
    - [ ] {Specific, testable criterion derived from the description}
    - [ ] {Edge case handling criterion}
    - [ ] {Performance/UX criterion if applicable}
    - [ ] {Accessibility criterion if applicable -- reference WCAG}
 
    ### Technical Considerations
+
    - **Affected components:** {Where in the codebase this touches}
    - **Dependencies:** {Other issues, PRs, or external services}
    - **Breaking changes:** {Yes/No -- explain if yes}
@@ -35,17 +38,21 @@ ${input:issue:Issue reference -- e.g. owner/repo#123 or a GitHub issue URL}
    - **Release target:** {milestone or "None specified"}
 
    ### Edge Cases to Handle
+
    - {Edge case 1 -- and expected behavior}
    - {Edge case 2 -- and expected behavior}
 
    ### Out of Scope
+
    - {What this issue explicitly does NOT cover}
 
    ### Testing Strategy
+
    - {How to verify the implementation}
    - {Accessibility testing if applicable}
 
    ### Community Context
+
    - {Reactions summary -- Popular/Controversial/Quiet}
    - {Key points from related discussions}
 

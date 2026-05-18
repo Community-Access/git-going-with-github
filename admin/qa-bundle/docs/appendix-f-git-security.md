@@ -69,6 +69,7 @@ When a secret (API key, token, password, private key) is committed to a public G
 - Search engines may index the content before you remove it
 
 **Real-world consequences:**
+
 - An AWS key leaked to a public repo can result in thousands of dollars of compute charges within hours
 - A GitHub PAT can be used to access private repositories, delete code, or impersonate you
 - A Stripe API key can be used to make fraudulent charges against your account
@@ -84,6 +85,7 @@ A `.gitignore` file tells Git which files to never track. Files listed in `.giti
 ### What belongs in .gitignore
 
 #### Secrets and credentials
+
 ```gitignore
 # Environment files (contain API keys, database passwords, etc.)
 .env
@@ -109,6 +111,7 @@ config/secrets.yml
 ```
 
 #### Editor and OS clutter
+
 ```gitignore
 # macOS
 .DS_Store
@@ -126,6 +129,7 @@ desktop.ini
 ```
 
 #### Build output and dependencies
+
 ```gitignore
 # Node
 node_modules/
@@ -251,6 +255,7 @@ git diff --staged docs/config.md
 ```
 
 Read through the diff looking for:
+
 - Any hardcoded passwords, tokens, or API keys
 - `.env` or credential files that snuck in
 - Any TODO comments that reference sensitive information
@@ -485,6 +490,7 @@ remote:   https://github.com/owner/repo/security/secret-scanning/unblock-secret/
 ### What push protection covers
 
 GitHub knows the patterns for hundreds of secret types including:
+
 - GitHub tokens (PATs, GitHub App tokens, OAuth tokens)
 - AWS access keys
 - Azure credentials
@@ -510,6 +516,7 @@ As a contributor you can see push protection in action when a push is blocked. M
 ### Never store credentials in plaintext
 
 Do not do these:
+
 ```bash
 # Storing a token in a plain text file
 echo "ghp_mytoken" > ~/token.txt

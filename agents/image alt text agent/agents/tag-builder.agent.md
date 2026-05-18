@@ -61,6 +61,7 @@ For hero / above-the-fold images (any classification):
 ```
 
 Also recommend adding this to `<head>`:
+
 ```html
 <link rel="preload" as="image" href="{path}">
 ```
@@ -118,6 +119,7 @@ For complex images, add the long description as a paragraph below:
 ```
 
 For decorative:
+
 ```jsx
 <img src="{path}" alt="" width={{width}} height={{height}} loading="lazy" decoding="async" aria-hidden="true" />
 ```
@@ -131,6 +133,7 @@ import Image from 'next/image';
 ```
 
 For hero images:
+
 ```jsx
 import Image from 'next/image';
 
@@ -151,20 +154,26 @@ import myImage from '{path}';
 ## Flag-Specific Adjustments
 
 ### `image-of-text` flag
+
 Add an HTML comment warning:
+
 ```html
 <!-- WARNING: This image contains text. Consider replacing with actual HTML text for WCAG 1.4.5 compliance. -->
 <img src="{path}" alt="{alt}" width="{width}" height="{height}" loading="lazy" decoding="async">
 ```
 
 ### `icon` flag
+
 If dimensions are small (under 64px), omit `loading="lazy"` (tiny images load fast, lazy adds overhead):
+
 ```html
 <img src="{path}" alt="{alt}" width="{width}" height="{height}" decoding="async">
 ```
 
 ### `logo` flag
+
 If the logo is functional (linked), wrap in a link context comment:
+
 ```html
 <!-- Ensure this img is wrapped in an <a> tag with the logo alt text describing the destination -->
 <img src="{path}" alt="{alt}" width="{width}" height="{height}" decoding="async">

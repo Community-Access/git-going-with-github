@@ -210,20 +210,24 @@ You do not need to read every card. Pick the one or two that match your setup an
 ### Tool Cards: Clone a Repository (Day 2)
 
 **VS Code Desktop (primary for Day 2):**
+
 1. `Ctrl+Shift+P` > **Git: Clone** > paste the HTTPS URL > choose a folder > **Open**.
 
 **github.dev (web editor):**
 No clone needed. Press `.` on any GitHub repository page to open it instantly.
 
 **GitHub Desktop:**
+
 1. **File > Clone Repository** > paste URL or select from your account > **Clone**.
 
 **Git CLI (terminal):**
+
 ```bash
 git clone https://github.com/owner/repo.git && cd repo
 ```
 
 **GitHub CLI:**
+
 ```bash
 gh repo clone owner/repo && cd repo
 ```
@@ -329,23 +333,24 @@ git remote -v
 
 **Why HTTPS over SSH for this workshop:** HTTPS works immediately with no setup. SSH requires key generation and configuration (see [Appendix D: Git Authentication](appendix-d-git-authentication.md) for SSH setup).
 
-### Try It Now: Clone the Sci-Fi Themes Repo 
+### Try It Now: Clone the Sci-Fi Themes Repo
 
 To make your first clone meaningful and fun, try cloning the **VS Code Sci-Fi Thinking Phrases** repository:
 
 **Repository URL:** `https://github.com/community-access/vscode-sci-fi-themes.git`
 
 This repo contains custom loading phrases for GitHub Copilot Chat from three sci-fi universes:
+
 - **Star Trek** — Engage warp drive and run diagnostics
 - **The Hitchhiker's Guide** — Consult the Infinite Improbability Drive
 - **Star Wars** — Read the ripples in the Force
 
 #### Why Clone This?
 
--  It's a real, working repository with multiple files to explore
--  You'll see a practical use of cloning (customizing your personal VS Code setup)
--  After cloning, you can pick a theme and apply it to your `settings.json`
--  When you open Copilot Chat, you'll see your custom phrases appear! 
+- It's a real, working repository with multiple files to explore
+- You'll see a practical use of cloning (customizing your personal VS Code setup)
+- After cloning, you can pick a theme and apply it to your `settings.json`
+- When you open Copilot Chat, you'll see your custom phrases appear!
 
 #### Quick Start
 

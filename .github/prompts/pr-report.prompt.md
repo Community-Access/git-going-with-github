@@ -2,14 +2,15 @@ name: pr-report
 description: "Save a full PR review as dual workspace documents (markdown + HTML) for offline review and action tracking"
 agent: pr-review
 tools:
-  - github/*
-  - fetch
-  - readFile
-  - codebase
-  - createFile
-  - createDirectory
-  - editFiles
-  - ask_questions
+
+- github/*
+- fetch
+- readFile
+- codebase
+- createFile
+- createDirectory
+- editFiles
+- ask_questions
 
 Generate a comprehensive PR review document and save it to the workspace in both markdown and HTML formats for offline review.
 

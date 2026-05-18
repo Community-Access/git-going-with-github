@@ -10,7 +10,7 @@
 ## Outcome Summary
 
 1. Template sync completed and opened PR:
-   - https://github.com/Community-Access/learning-room-template/pull/14
+   - <https://github.com/Community-Access/learning-room-template/pull/14>
 2. PR #14 was merged to `main` (squash merge) and sync branch was deleted.
 3. Smoke test then passed end-to-end:
    - Smoke repo created from template
@@ -26,7 +26,7 @@ The first smoke attempt failed before merge because `learning-room-template/main
 
 ## Evidence
 
-- Sync PR merged: https://github.com/Community-Access/learning-room-template/pull/14
+- Sync PR merged: <https://github.com/Community-Access/learning-room-template/pull/14>
 - Successful smoke run repo slug: `Community-Access/learning-room-smoke-test-20260514160851` (deleted after validation)
 
 ## Readiness Impact

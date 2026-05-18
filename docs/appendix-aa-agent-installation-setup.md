@@ -24,6 +24,7 @@
 Accessibility Agents requires the **latest versions** of all tools. Older versions miss accessibility features, API capabilities, and bug fixes that agents depend on.
 
 **Version baseline (May 2026):**
+
 - VS Code: 1.113 or later (stable or Insiders)
 - GitHub Copilot: Latest from VS Code Marketplace
 - Node.js: v18.0.0 or higher
@@ -115,6 +116,7 @@ git --version
 ```
 
 Expected output:
+
 ```
 1.113.0 or higher (VS Code)
 github.copilot
@@ -168,11 +170,13 @@ npm --version
 ### GitHub Copilot (VS Code) - Recommended for Most Workshops
 
 **Step 1: Install VS Code**
+
 1. Download from [code.visualstudio.com](https://code.visualstudio.com)
 2. Run installer
 3. Open VS Code and verify it starts
 
 **Step 2: Install GitHub Copilot Extensions**
+
 1. Open Extensions panel: `Ctrl+Shift+X` (or **View → Extensions**)
 2. Search for "GitHub Copilot"
 3. Install both:
@@ -181,11 +185,13 @@ npm --version
 4. Sign in with your GitHub account when prompted
 
 **Step 3: Install Node.js (for accessibility tools)**
+
 1. Download from [nodejs.org](https://nodejs.org) (v18 LTS or later)
 2. Run installer
 3. Verify: `node --version` and `npm --version`
 
 **Step 4: Clone Accessibility Agents Repository**
+
 ```bash
 cd /path/to/projects
 git clone https://github.com/Community-Access/accessibility-agents.git
@@ -193,16 +199,19 @@ cd accessibility-agents
 ```
 
 **Step 5: Open in VS Code**
+
 ```bash
 code .
 ```
 
 **Step 6: Verify Agents Load**
+
 1. Open Copilot Chat: `Ctrl+Alt+I`
 2. Type `@` and look for agent autocomplete suggestions
 3. Verify `.github/agents/` folder exists in the repository
 
 **Step 7: (Optional) Install Global Tools**
+
 ```bash
 # For accessibility scanning
 npm install -g @axe-core/cli pa11y
@@ -214,17 +223,20 @@ npm install -g playwright
 ### Claude Code
 
 **Step 1: Install Claude Code CLI**
+
 ```bash
 npm install -g @anthropic-ai/claude-code
 ```
 
 **Step 2: Authenticate**
+
 ```bash
 claude code auth
 # Follow the browser login flow
 ```
 
 **Step 3: Clone Repository**
+
 ```bash
 cd /path/to/projects
 git clone https://github.com/Community-Access/accessibility-agents.git
@@ -232,6 +244,7 @@ cd accessibility-agents
 ```
 
 **Step 4: Run an Agent**
+
 ```bash
 claude code @daily-briefing morning briefing
 ```
@@ -239,24 +252,29 @@ claude code @daily-briefing morning briefing
 ### Gemini CLI
 
 **Step 1: Install Gemini CLI**
+
 ```bash
 npm install -g @google/gemini-cli
 ```
 
 **Step 2: Set Up API Key**
+
 1. Get API key from [ai.google.dev](https://ai.google.dev/)
 2. Set environment variable:
+
    ```bash
    export GEMINI_API_KEY="your-api-key-here"
    ```
 
 **Step 3: Test Connection**
+
 ```bash
 gemini --version
 gemini whoami
 ```
 
 **Step 4: Use with Accessibility Agents**
+
 ```bash
 gemini skill search accessibility-agents
 gemini skill use community-access/accessibility-agents
@@ -265,13 +283,16 @@ gemini skill use community-access/accessibility-agents
 ### Claude Desktop
 
 **Step 1: Download and Install**
+
 1. Download from [claude.ai](https://claude.ai/download)
 2. Install application
 3. Open Claude Desktop
 
 **Step 2: Configure MCP Server**
+
 1. Create or edit `.mcp.json` in your home folder (macOS/Linux: `~/.mcp.json`, Windows: `%USERPROFILE%\.mcp.json`)
 2. Add the Accessibility Agents MCP server:
+
    ```json
    {
      "mcpServers": {
@@ -287,6 +308,7 @@ gemini skill use community-access/accessibility-agents
    ```
 
 **Step 3: Restart Claude Desktop**
+
 1. Quit Claude Desktop completely
 2. Reopen Claude Desktop
 3. Verify MCP server connects (check logs)
@@ -294,23 +316,27 @@ gemini skill use community-access/accessibility-agents
 ### Codex CLI
 
 **Step 1: Install Codex CLI**
+
 ```bash
 npm install -g @codex-cli/core
 ```
 
 **Step 2: Initialize Configuration**
+
 ```bash
 codex init
 # Answer interactive setup questions
 ```
 
 **Step 3: Test Installation**
+
 ```bash
 codex --version
 codex role list
 ```
 
 **Step 4: Use Accessibility Agents**
+
 ```bash
 codex role search accessibility
 codex run @accessibility-lead
@@ -333,16 +359,19 @@ After installation, verify each platform is ready:
 ### Quick Test: Run One Agent
 
 **On GitHub Copilot (VS Code):**
+
 ```
 Open Chat (Ctrl+Alt+I) → Type: @daily-briefing morning briefing
 ```
 
 **On Claude Code:**
+
 ```bash
 claude code @daily-briefing morning briefing
 ```
 
 **On Gemini CLI:**
+
 ```bash
 gemini @daily-briefing morning briefing
 ```
@@ -351,6 +380,7 @@ gemini @daily-briefing morning briefing
 In chat input, type: `@daily-briefing morning briefing`
 
 **On Codex CLI:**
+
 ```bash
 codex run @daily-briefing morning briefing
 ```
@@ -370,6 +400,7 @@ If the agent responds with information, installation is successful.
 | Slow responses | Network latency or token limit | Check internet connection; restart VS Code; check OpenAI quota |
 
 **Reset Copilot (if stuck):**
+
 ```bash
 # Delete VS Code cache
 rm -rf ~/.config/Code/Cache  # macOS/Linux
@@ -412,6 +443,7 @@ rmdir /s %APPDATA%\Code\Cache  # Windows PowerShell
 ### Universal Troubleshooting
 
 1. **Verify internet connection:**
+
    ```bash
    ping github.com
    ```
@@ -457,6 +489,7 @@ rmdir /s %APPDATA%\Code\Cache  # Windows PowerShell
 ### Update Commands
 
 **GitHub Copilot (VS Code):**
+
 ```bash
 # Update VS Code
 code --update
@@ -466,11 +499,13 @@ code --update
 ```
 
 **All npm-based tools (one command):**
+
 ```bash
 npm update -g
 ```
 
 **Individual tool updates:**
+
 ```bash
 npm update -g @anthropic-ai/claude-code
 npm update -g @google/gemini-cli
@@ -478,6 +513,7 @@ npm update -g @codex-cli/core
 ```
 
 **Verify current versions after update:**
+
 ```bash
 code --version
 node --version

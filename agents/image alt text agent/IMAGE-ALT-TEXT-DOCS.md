@@ -169,6 +169,7 @@ The image analyzer examines an image visually using the LLM's vision capabilitie
 **Model preference**: Claude Sonnet 4.5 (copilot), GPT-5 (copilot)
 
 **Output format**:
+
 ```
 CLASSIFICATION: [informational | functional | decorative | complex]
 SHORT_ALT: [concise alt text or empty string]
@@ -423,6 +424,7 @@ Returns:
 ```
 
 Creates `image-catalog.md` with:
+
 - Project-level accessibility score
 - Summary counts by classification
 - Low-confidence and image-of-text warnings
@@ -483,6 +485,7 @@ Creates `image-catalog.md` with:
 | **low** | Uncertain -- context needed, image is ambiguous | Pauses and asks user to confirm before proceeding |
 
 Low confidence triggers include:
+
 - Cannot determine if an icon is functional or decorative without page context
 - Image could be either informational or decorative depending on surrounding text
 - Screenshot content is partially obscured or unclear
@@ -862,6 +865,7 @@ options:
 ### SVG Handling
 
 SVGs are parsed directly from XML rather than opened with Pillow. The script extracts:
+
 - `viewBox` attribute (used to calculate dimensions and aspect ratio)
 - Explicit `width` and `height` attributes on the `<svg>` element
 - File size
@@ -884,12 +888,14 @@ The script extracts these EXIF tags when present:
 ### Dominant Colors
 
 The top 3 most frequent colors are extracted by:
+
 1. Resizing the image to a 50x50 thumbnail (for speed)
 2. Converting to RGB (compositing RGBA on white background)
 3. Counting color frequencies
 4. Returning the top 3 as hex strings
 
 This is useful for:
+
 - Quick contrast checking against background colors
 - Identifying images that are primarily one color (possibly text/graphic)
 - Documenting brand colors in logos

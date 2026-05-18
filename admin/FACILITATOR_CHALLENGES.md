@@ -98,6 +98,7 @@ These challenges have autograding tests that verify completion:
 Challenges 1, 2, 3, 8, 13, and 15 do not have autograders. The Progression Bot still unlocks the next challenge when the student closes the issue. Facilitators review the evidence in the issue comments using the [grading guide](../classroom/grading-guide.md).
 
 What to look for:
+
 1. Clear evidence the student completed the task (screenshot description, pasted output, or linked artifact)
 2. Correct application of the concept (not just clicking through)
 3. Genuine engagement (not copy-pasting the example verbatim)
@@ -111,11 +112,13 @@ Comment on the issue: "Great work! Your [specific thing] shows you understand [c
 **Symptoms:** Student closes an issue but no new issue appears.
 
 **Possible causes:**
+
 - The student edited the issue title (the bot matches on title pattern)
 - GitHub Actions is disabled in the student's repo
 - The workflow file was deleted or corrupted during a student's edit
 
 **Fix:**
+
 1. Check the Actions tab in the student's repo for workflow run errors
 2. If the workflow did not trigger, verify `.github/workflows/student-progression.yml` exists
 3. If the file is missing, the student may have accidentally deleted it -- restore from the template
@@ -126,11 +129,13 @@ Comment on the issue: "Great work! Your [specific thing] shows you understand [c
 **Symptoms:** Student opens a PR but Gandalf does not respond.
 
 **Possible causes:**
+
 - Workflow permissions: the repo may need `GITHUB_TOKEN` write access
 - The PR validation workflow is not enabled
 - The student opened the PR against a branch other than `main`
 
 **Fix:**
+
 1. Go to the student's repo > Settings > Actions > General
 2. Verify "Read and write permissions" is selected for workflow permissions
 3. Check the Actions tab for the `pr-validation-bot` workflow -- did it trigger?
@@ -141,6 +146,7 @@ Comment on the issue: "Great work! Your [specific thing] shows you understand [c
 **Symptoms:** Student completed the challenge correctly but the autograder fails.
 
 **Fix:**
+
 1. Open the student's repo > Actions tab > most recent autograding run
 2. Read the test output to see what specifically failed
 3. Common false failures:
@@ -155,6 +161,7 @@ Comment on the issue: "Great work! Your [specific thing] shows you understand [c
 **Symptoms:** Student clicks the invite but gets an error or cannot see the assignment.
 
 **Fix:**
+
 1. Verify the student has a GitHub account and is signed in
 2. If using a roster, confirm the student's GitHub username matches the roster entry exactly
 3. Try having the student open the link in an incognito/private window to rule out caching
@@ -180,6 +187,7 @@ Challenge [NUMBER]: [Title]
 ```
 
 Examples:
+
 ```
 Challenge 1: Find Your Way Around
 Challenge 7: Resolve a Merge Conflict
@@ -207,16 +215,19 @@ All automation files live in the student's repo (copied from the template):
 ### Track During the Workshop
 
 **Participation:**
+
 - Assignments accepted (visible on classroom dashboard)
 - Challenges completed per student (count of closed issues)
 - Autograding pass rate (percentage of tests that pass on first push)
 
 **Quality:**
+
 - Comments per challenge issue (discussion depth)
 - PR review engagement (are students reviewing each other's work?)
 - Merge rate (percentage of PRs merged without facilitator intervention)
 
 **Support Load:**
+
 - Number of students requiring direct facilitator help per hour
 - Autograding failures per hour (if high, may indicate unclear challenge instructions)
 - Gandalf response failures (if any, indicates workflow configuration issue)

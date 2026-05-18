@@ -315,26 +315,31 @@ If you never have conflicts, it might mean:
 ### Tool Cards: Resolve a Merge Conflict
 
 **github.com (browser):**
+
 1. On the PR page, click **Resolve conflicts** if the button is available.
 2. Edit the file in the web editor to remove conflict markers.
 3. Click **Mark as resolved**, then **Commit merge**.
 
 **github.dev (web editor):**
+
 1. Open the PR's branch by pressing `.` on the repository page.
 2. Open the conflicting file -- conflict markers are highlighted in the editor.
 3. Edit to resolve, commit via Source Control panel.
 
 **VS Code Desktop:**
+
 1. Pull the latest changes: `git pull origin main`.
 2. VS Code highlights conflicts with **Accept Current / Accept Incoming / Accept Both** buttons.
 3. Click your choice, save, stage, and commit.
 
 **GitHub Desktop:**
+
 1. **Branch > Update from main** (or the merge prompt banner).
 2. GitHub Desktop opens your editor with conflict markers highlighted.
 3. Resolve in the editor, return to GitHub Desktop, and click **Commit merge**.
 
 **Git CLI (terminal):**
+
 ```bash
 git merge main
 # Edit conflicting files to remove <<<<<<< / ======= / >>>>>>>

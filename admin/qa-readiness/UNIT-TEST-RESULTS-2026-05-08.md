@@ -29,38 +29,46 @@ Revalidation:
 ## What Was Validated by This Run
 
 1. Challenge inventory and numbering consistency:
+
 - 16 core challenge templates
 - 5 bonus templates
 - Complete numbering/lettering coverage
 
-2. Challenge quality gates:
+1. Challenge quality gates:
+
 - Required evidence fields and troubleshooting guidance
 - Core and bonus template quality checks
 
-3. Classroom setup consistency:
+1. Classroom setup consistency:
+
 - Assignment docs and autograding JSON integrity
 - Required scripts and template files present
 - Classroom README deployment section coverage
 
-4. Workflow configuration readiness:
+1. Workflow configuration readiness:
+
 - Concurrency settings in key workflows
 - Critical permissions in bot/progression workflows
 
-5. Registration readiness:
+1. Registration readiness:
+
 - Workflow logic includes registration, duplicate, and waitlist paths
 - Registration issue form template exists
 
-6. QA gate integrity:
+1. QA gate integrity:
+
 - E2E runbook includes no-go gates and reliability matrix sections
 - Top-level go-live guide includes non-podcast readiness gate checks
 
 ## Defects Found During Initial Run and Resolved
 
 1. Brittle assertion mismatch in new runbook gate test:
+
 - Cause: expected wording did not match final runbook phrasing.
 - Fix: updated test to assert actual required phrasing in runbook.
 
-2. Registration template name assertion too strict:
+1. Registration template name assertion too strict:
+
 - Cause: regex did not account for quoted/suffixed template title.
 - Fix: relaxed assertion to match real template naming format.
 

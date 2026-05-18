@@ -246,7 +246,8 @@ test('course roadmap exists and includes full student path guidance', () => {
     '## Day 1 Path (Challenges 1-9)',
     '## Day 2 Path (Challenges 10-16)',
     '## Bonus Path (A-E)',
-    'Challenge 16: Build Your Agent (Capstone)',
+    'Challenge 16: Capstone Project',
+    'After Challenge 15, the path branches',
     'Challenge Hub'
   ];
 

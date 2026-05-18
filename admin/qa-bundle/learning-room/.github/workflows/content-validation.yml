@@ -10,6 +10,11 @@ concurrency:
   group: content-validation-${{ github.event.pull_request.number || github.run_id }}
   cancel-in-progress: true
 
+permissions:
+  contents: read
+  issues: write
+  pull-requests: write
+
 jobs:
   validate-content:
     runs-on: ubuntu-latest
@@ -37,8 +42,10 @@ jobs:
         run: |
           if [ -f package-lock.json ]; then
             npm ci
-          else
+          elif [ -f package.json ]; then
             npm install
+          else
+            echo "No package.json found; skipping npm install"
           fi
 
       - name: Check for broken links

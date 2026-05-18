@@ -2,10 +2,11 @@ name: create-issue
 description: "Create a new GitHub issue with smart drafting -- describe the problem and get a well-structured issue"
 agent: issue-tracker
 tools:
-  - github/*
-  - readFile
-  - codebase
-  - ask_questions
+
+- github/*
+- readFile
+- codebase
+- ask_questions
 
 Create a new GitHub issue with smart formatting and metadata.
 
@@ -29,6 +30,7 @@ ${input:description:Describe the issue -- e.g. 'bug: login timeout after 30 seco
 5. Draft a well-structured issue:
 
    For **bugs**:
+
    ```markdown
    ## Description
    {expanded description}
@@ -50,6 +52,7 @@ ${input:description:Describe the issue -- e.g. 'bug: login timeout after 30 seco
    ```
 
    For **features**:
+
    ```markdown
    ## Description
    {what the feature should do}
@@ -65,6 +68,7 @@ ${input:description:Describe the issue -- e.g. 'bug: login timeout after 30 seco
    ```
 
    For **tasks/chores**:
+
    ```markdown
    ## Description
    {what needs to be done}

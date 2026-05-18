@@ -128,7 +128,7 @@ Every commit has four parts:
 |---|---|---|
 | **Snapshot** | The complete state of all staged files | All the files as they were when you committed |
 | **Message** | A human-readable description of the change | "Fix broken link in setup guide" |
-| **Author** | Who made the commit (name and email) | Jane Developer, jane@example.com |
+| **Author** | Who made the commit (name and email) | Jane Developer, <jane@example.com> |
 | **Parent pointer** | Which commit came before this one | A reference to the previous commit's ID |
 
 ### Commit IDs (hashes)

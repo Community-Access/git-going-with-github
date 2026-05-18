@@ -185,6 +185,13 @@
 <li><a href="https://lp.csedesigns.com/ggg/feed.xml">RSS Feed <span class="guided-external">(external)</span></a></li>
         </ul>
       </section>
+
+      <section class="guided-section">
+        <h3>Get Help</h3>
+        <ul>
+          <li><a href="https://github.com/Community-Access/support">Support Hub <span class="guided-external">(external)</span></a></li>
+        </ul>
+      </section>
     </nav>
   </aside>
     <main id="main-content" class="markdown-body page-main">
@@ -419,14 +426,16 @@ git config --global user.email <span class="hljs-string">&quot;your_email@exampl
 <p><strong>Symptoms:</strong> Any git command returns <code>fatal: not a git repository (or any of the parent directories): .git</code></p>
 <p><strong>Solution:</strong></p>
 <ol>
-<li>You are not inside a Git repository. Check your current folder:<ul>
+<li><p>You are not inside a Git repository. Check your current folder:</p>
+<ul>
 <li><strong>Windows PowerShell:</strong> <code>Get-Location</code></li>
 <li><strong>macOS/Linux:</strong> <code>pwd</code></li>
 </ul>
 </li>
 <li>Navigate to your cloned repository: <code>cd path/to/your-repo</code></li>
 <li>Verify it is a Git repo: <code>git status</code></li>
-<li>If the folder does not contain a <code>.git</code> directory, you need to clone the repository again:<pre><code class="hljs language-bash">git <span class="hljs-built_in">clone</span> https://github.com/YOUR-USERNAME/REPO-NAME.git
+<li><p>If the folder does not contain a <code>.git</code> directory, you need to clone the repository again:</p>
+<pre><code class="hljs language-bash">git <span class="hljs-built_in">clone</span> https://github.com/YOUR-USERNAME/REPO-NAME.git
 <span class="hljs-built_in">cd</span> REPO-NAME</code></pre>
 </li>
 </ol>
@@ -435,7 +444,8 @@ git config --global user.email <span class="hljs-string">&quot;your_email@exampl
 <p><strong>Solution:</strong></p>
 <ol>
 <li>Check which remote you are pulling from: <code>git remote -v</code></li>
-<li>If you forked the repo, you need to pull from upstream, not your fork:<pre><code class="hljs language-bash">git remote add upstream https://github.com/ORIGINAL-OWNER/REPO.git
+<li><p>If you forked the repo, you need to pull from upstream, not your fork:</p>
+<pre><code class="hljs language-bash">git remote add upstream https://github.com/ORIGINAL-OWNER/REPO.git
 git fetch upstream
 git merge upstream/main</code></pre>
 </li>
@@ -445,7 +455,8 @@ git merge upstream/main</code></pre>
 <p><strong>Symptoms:</strong> Git says <code>You are in &#39;detached HEAD&#39; state</code> and your commits may be lost.</p>
 <p><strong>Solution:</strong></p>
 <ol>
-<li>This means you are not on a branch. Create one to save your work:<pre><code class="hljs language-bash">git checkout -b my-new-branch</code></pre>
+<li><p>This means you are not on a branch. Create one to save your work:</p>
+<pre><code class="hljs language-bash">git checkout -b my-new-branch</code></pre>
 </li>
 <li>If you want to return to main: <code>git checkout main</code></li>
 <li>If you already made commits in detached HEAD, create a branch first (step 1), then those commits are safe.</li>
@@ -520,16 +531,20 @@ git merge upstream/main</code></pre>
 <p><strong>Symptoms:</strong> Git asks for your SSH passphrase on every push/pull operation.</p>
 <p><strong>Solution:</strong> Add your key to the SSH agent so it is remembered:</p>
 <ul>
-<li><strong>Windows (Git Bash):</strong><pre><code class="hljs language-bash"><span class="hljs-built_in">eval</span> <span class="hljs-string">&quot;<span class="hljs-subst">$(ssh-agent -s)</span>&quot;</span>
+<li><p><strong>Windows (Git Bash):</strong></p>
+<pre><code class="hljs language-bash"><span class="hljs-built_in">eval</span> <span class="hljs-string">&quot;<span class="hljs-subst">$(ssh-agent -s)</span>&quot;</span>
 ssh-add ~/.ssh/id_ed25519</code></pre>
 </li>
-<li><strong>macOS:</strong><pre><code class="hljs language-bash">ssh-add --apple-use-keychain ~/.ssh/id_ed25519</code></pre>
-Then add to <code>~/.ssh/config</code>:<pre><code class="hljs">Host github.com
+<li><p><strong>macOS:</strong></p>
+<pre><code class="hljs language-bash">ssh-add --apple-use-keychain ~/.ssh/id_ed25519</code></pre>
+<p>Then add to <code>~/.ssh/config</code>:</p>
+<pre><code class="hljs">Host github.com
   AddKeysToAgent <span class="hljs-built_in">yes</span>
   UseKeychain <span class="hljs-built_in">yes</span>
   IdentityFile ~/.ssh/id_ed25519</code></pre>
 </li>
-<li><strong>Linux:</strong><pre><code class="hljs language-bash"><span class="hljs-built_in">eval</span> <span class="hljs-string">&quot;<span class="hljs-subst">$(ssh-agent -s)</span>&quot;</span>
+<li><p><strong>Linux:</strong></p>
+<pre><code class="hljs language-bash"><span class="hljs-built_in">eval</span> <span class="hljs-string">&quot;<span class="hljs-subst">$(ssh-agent -s)</span>&quot;</span>
 ssh-add ~/.ssh/id_ed25519</code></pre>
 </li>
 </ul>
@@ -703,7 +718,8 @@ git checkout -b recovered-branch COMMIT-HASH</code></pre>
 <p><strong>Symptoms:</strong> Your PR shows changes you did not make - dozens or hundreds of files.</p>
 <p><strong>Solution:</strong></p>
 <ol>
-<li>Your branch likely diverged from main. Update it:<pre><code class="hljs language-bash">git checkout your-branch
+<li><p>Your branch likely diverged from main. Update it:</p>
+<pre><code class="hljs language-bash">git checkout your-branch
 git fetch upstream
 git rebase upstream/main
 git push --force-with-lease origin your-branch</code></pre>
@@ -769,7 +785,8 @@ git push --force-with-lease origin your-branch</code></pre>
 <p><strong>Solution:</strong></p>
 <ol>
 <li>Use <code>type: markdown</code> for instructional text (not <code>type: input</code> or <code>type: textarea</code>)</li>
-<li>Use the pipe <code>|</code> for multi-line content:<pre><code class="hljs language-yaml"><span class="hljs-bullet">-</span> <span class="hljs-attr">type:</span> <span class="hljs-string">markdown</span>
+<li><p>Use the pipe <code>|</code> for multi-line content:</p>
+<pre><code class="hljs language-yaml"><span class="hljs-bullet">-</span> <span class="hljs-attr">type:</span> <span class="hljs-string">markdown</span>
   <span class="hljs-attr">attributes:</span>
     <span class="hljs-attr">value:</span> <span class="hljs-string">|
       ## Instructions

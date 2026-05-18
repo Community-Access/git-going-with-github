@@ -2,14 +2,15 @@ name: review-pr
 description: "Full PR review with diff analysis, before/after snapshots, reactions, release context, and saved workspace documents in markdown + HTML"
 agent: pr-review
 tools:
-  - github/*
-  - fetch
-  - readFile
-  - codebase
-  - createFile
-  - createDirectory
-  - editFiles
-  - ask_questions
+
+- github/*
+- fetch
+- readFile
+- codebase
+- createFile
+- createDirectory
+- editFiles
+- ask_questions
 
 Perform a comprehensive code review of the specified pull request and save review documents to the workspace in both markdown and HTML formats.
 

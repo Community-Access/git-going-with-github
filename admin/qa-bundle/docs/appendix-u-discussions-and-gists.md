@@ -158,16 +158,19 @@ Tab to "New discussion" button → Enter
 ### Learning Cards: Creating a Discussion
 
 **Screen reader users:**
+
 - Tab to the "New discussion" button from the Discussions tab, then press Enter -- the form loads with a category selector first; arrow through categories and press Enter to select
 - The title field comes after the category selector -- type a clear, searchable title; for Q&A category, phrase it as a question so it reads naturally in search results
 - The body editor is the same as the issue comment editor -- enter Focus Mode to type, use Markdown formatting, and press `Ctrl+Enter` to submit the discussion
 
 **Low-vision users:**
+
 - The category selector appears as a list or grid of labeled options -- each category has a name and description; zoom in to read the descriptions and pick the right one
 - The title and body fields stack vertically in a single-column layout -- the form is the same width as the main content area, making it easy to scan at high zoom
 - After creating a discussion, a green success banner appears at the top -- scroll up if you do not see confirmation at your current zoom position
 
 **Sighted users:**
+
 - Categories appear as clickable cards or a list when creating a new discussion -- choose Q&A for questions (allows marking an answer), Ideas for brainstorming, General for everything else
 - The "New discussion" button is prominently placed at the top-right of the Discussions tab -- the form layout is nearly identical to the new issue form
 - Search existing discussions before posting -- use the search bar at the top of the Discussions page to avoid duplicate questions
@@ -410,16 +413,19 @@ You can add multiple files to a single Gist:
 ### Learning Cards: Creating a Gist
 
 **Screen reader users:**
+
 - On the Gist creation page at gist.github.com, press `D` to jump to the main landmark, then `F` to navigate form fields in order: Description, Filename, Content textarea, and visibility buttons
 - The visibility selector is a split button -- the main button creates a public gist; Tab to the dropdown arrow next to it and press Enter to reveal the "Create secret gist" option
 - Each filename field has a corresponding content textarea directly below it -- after filling one file, Tab to the "Add file" button to add another file to the same gist
 
 **Low-vision users:**
+
 - The Gist editor uses the same syntax highlighting as regular GitHub files -- your current theme applies; increase font size in browser zoom for comfortable editing
 - The split button for public vs. secret visibility is at the bottom of the form -- the two options look nearly identical; read the button label carefully ("Create public gist" vs. "Create secret gist") before clicking
 - The "Add file" button appears below the first file editor as a small text link -- zoom in to find it; each additional file gets its own filename field and content textarea
 
 **Sighted users:**
+
 - The Gist creation form has three main fields stacked vertically: description at the top, then filename, then a large code editor -- fill all three before choosing visibility
 - The visibility split button at the bottom-right has a dropdown arrow -- click the arrow to choose between public and secret; the default (larger) button creates a public gist
 - Add multiple files to a single gist using the "Add file" link below the editor -- multi-file gists are useful for sharing related configurations or code snippets together

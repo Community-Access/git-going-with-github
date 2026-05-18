@@ -15,24 +15,26 @@ When writing or reviewing `<img>` tags in this project, always follow these rule
 
 ### Recommended attributes
 
-4. **`decoding="async"`** - Improves rendering performance.
-5. **`aria-hidden="true"`** - Add alongside `alt=""` for purely decorative images.
-6. **`fetchpriority="high"`** - Add on hero/above-the-fold images alongside `loading="eager"`.
+1. **`decoding="async"`** - Improves rendering performance.
+2. **`aria-hidden="true"`** - Add alongside `alt=""` for purely decorative images.
+3. **`fetchpriority="high"`** - Add on hero/above-the-fold images alongside `loading="eager"`.
 
 ### Responsive images
 
-7. **`srcset` and `sizes`** - When serving multiple image sizes, always include both. The `sizes` attribute tells the browser which size to download before layout is computed.
-8. **`<picture>` element** - Use for art direction (different crops at different breakpoints) or format switching (AVIF/WebP with JPEG fallback). The `<img>` inside `<picture>` must still have `alt`, `width`, and `height`.
-9. **Format fallbacks** - When using modern formats (AVIF, WebP), always provide a JPEG/PNG fallback as the `<img>` src inside `<picture>`.
+1. **`srcset` and `sizes`** - When serving multiple image sizes, always include both. The `sizes` attribute tells the browser which size to download before layout is computed.
+2. **`<picture>` element** - Use for art direction (different crops at different breakpoints) or format switching (AVIF/WebP with JPEG fallback). The `<img>` inside `<picture>` must still have `alt`, `width`, and `height`.
+3. **Format fallbacks** - When using modern formats (AVIF, WebP), always provide a JPEG/PNG fallback as the `<img>` src inside `<picture>`.
 
 ### Performance for hero images
 
 For above-the-fold images:
+
 ```html
 <img src="hero.jpg" alt="..." width="1920" height="1080" loading="eager" decoding="async" fetchpriority="high">
 ```
 
 And in the `<head>`:
+
 ```html
 <link rel="preload" as="image" href="hero.jpg">
 ```
@@ -50,6 +52,7 @@ And in the `<head>`:
 ### Image-of-text warning
 
 If an image contains text as its primary content, add a warning comment and consider replacing with actual HTML text:
+
 ```html
 <!-- WARNING: WCAG 1.4.5 - Consider replacing this image-of-text with actual HTML text -->
 <img src="banner-text.png" alt="Spring Sale - 50% off all items" width="800" height="200" loading="lazy" decoding="async">

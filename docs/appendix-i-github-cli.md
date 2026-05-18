@@ -83,6 +83,7 @@ gh auth login
 ```
 
 Follow the prompts:
+
 - **Where do you use GitHub?** → GitHub.com (or Enterprise)
 - **Preferred protocol?** → HTTPS (or SSH)
 - **Authenticate with browser?** → Yes — your browser opens for OAuth sign-in
@@ -709,6 +710,7 @@ The GitHub CLI is one of the most screen-reader-friendly ways to use GitHub. Her
 ### Tips by task
 
 **Reading issues and PRs:**
+
 ```bash
 # Pipe output to less for page-by-page reading
 gh issue view 42 | less
@@ -719,6 +721,7 @@ code pr-56.md
 ```
 
 **Navigating long lists:**
+
 ```bash
 # Limit results to a manageable number
 gh issue list --limit 10
@@ -728,6 +731,7 @@ gh issue list --search "keyboard" --limit 5
 ```
 
 **Getting just what you need:**
+
 ```bash
 # Get just the PR title
 gh pr view 56 --json title --jq '.title'
@@ -740,6 +744,7 @@ gh pr checks 56 --json name,state --jq '.[] | "\(.state): \(.name)"'
 ```
 
 **Creating content without a browser:**
+
 ```bash
 # Write your issue body in a text file first (easier with a screen reader)
 # Then create the issue from the file
@@ -792,6 +797,7 @@ gh issue create --title "Bug: focus lost after modal closes" --body-file ./issue
 ## 13. Quick Reference Card
 
 ### Authentication
+
 | Command | What it does |
 |---------|-------------|
 | `gh auth login` | Sign in to GitHub |
@@ -799,6 +805,7 @@ gh issue create --title "Bug: focus lost after modal closes" --body-file ./issue
 | `gh auth logout` | Sign out |
 
 ### Repos
+
 | Command | What it does |
 |---------|-------------|
 | `gh repo clone owner/repo` | Clone a repo |
@@ -808,6 +815,7 @@ gh issue create --title "Bug: focus lost after modal closes" --body-file ./issue
 | `gh repo sync` | Sync fork with upstream |
 
 ### Issues
+
 | Command | What it does |
 |---------|-------------|
 | `gh issue list` | List open issues |
@@ -817,6 +825,7 @@ gh issue create --title "Bug: focus lost after modal closes" --body-file ./issue
 | `gh issue close 42` | Close an issue |
 
 ### Pull Requests
+
 | Command | What it does |
 |---------|-------------|
 | `gh pr list` | List open PRs |
@@ -830,6 +839,7 @@ gh issue create --title "Bug: focus lost after modal closes" --body-file ./issue
 | `gh pr update-branch` | Update from base |
 
 ### Releases
+
 | Command | What it does |
 |---------|-------------|
 | `gh release create v1.0.0` | Create a release |
@@ -837,6 +847,7 @@ gh issue create --title "Bug: focus lost after modal closes" --body-file ./issue
 | `gh release download v1.0.0` | Download assets |
 
 ### Copilot
+
 | Command | What it does |
 |---------|-------------|
 | `gh copilot suggest "..."` | Get a command suggestion |

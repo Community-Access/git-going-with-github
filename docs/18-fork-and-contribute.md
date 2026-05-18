@@ -119,18 +119,22 @@ Upstream repo (GitHub)      Your fork (GitHub)        Your computer (local)
 ### Tool Cards: Fork and Clone a Repository
 
 **github.com (browser):**
+
 1. Click **Fork** on the repository page > **Create fork**.
 2. Clone: click the green **Code** button > copy URL > paste into your local tool.
 
 **VS Code Desktop:**
+
 1. Fork on github.com first (browser required for forking).
 2. `Ctrl+Shift+P` > **Git: Clone** > paste your fork's URL.
 
 **GitHub Desktop:**
+
 1. Fork on github.com first.
 2. **File > Clone Repository** > select your fork from the GitHub.com tab.
 
 **GitHub CLI (one command):**
+
 ```bash
 gh repo fork Community-Access/accessibility-agents --clone
 cd accessibility-agents
@@ -206,7 +210,7 @@ After cloning, your local repository has one remote called `origin` that points 
 
 - Use `Ctrl+Shift+P` then "Git: Clone" and paste your fork URL -- VS Code announces progress and opens the repository when done
 - After cloning, press `Ctrl+Shift+E` to open the Explorer and verify the file tree loaded correctly
-- Run `git remote -v` in the terminal (`Ctrl+\``) to confirm `origin` points to your fork URL
+- Run `git remote -v` in the terminal (`Ctrl+\``) to confirm`origin` points to your fork URL
 
 </details>
 
@@ -468,8 +472,8 @@ git commit -m "Address review feedback: improve guardrails section"
 git push
 ```
 
-4. Your new commits automatically appear in the open pull request. The reviewer is notified.
-5. Reply to each review comment explaining what you changed, or ask clarifying questions if the feedback is unclear.
+1. Your new commits automatically appear in the open pull request. The reviewer is notified.
+2. Reply to each review comment explaining what you changed, or ask clarifying questions if the feedback is unclear.
 
 ### Review etiquette
 

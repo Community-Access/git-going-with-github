@@ -5,7 +5,6 @@
 > **Related appendices:** [Appendix N: Advanced Search](appendix-n-advanced-search.md) | [Appendix V: GitHub Mobile](appendix-v-github-mobile.md) | [Appendix B: Screen Reader Cheat Sheet](appendix-b-screen-reader-cheatsheet.md)
 > **Authoritative sources:** [GitHub Docs: About issues](https://docs.github.com/en/issues/tracking-your-work-with-issues/about-issues) | [GitHub Accessibility Guide: Issues](https://accessibility.github.com/documentation/guide/issues/) | [GitHub Accessibility Lab: CLI Guide](https://accessibility.github.com/documentation/guide/cli/)
 
-
 ## Filing, Managing, and Participating in GitHub Issues
 
 > Issues are where open source collaboration begins. This guide covers everything from finding the right issue to file a perfect bug report - all with your keyboard and screen reader.
@@ -23,7 +22,6 @@
 > Full step-by-step instructions with per-screen-reader commands are in [Pre-Workshop Setup, Step 4](00-pre-workshop-setup.md#step-4---check-github-feature-preview-settings).
 >
 > **Browse vs Focus Mode (NVDA):** Toggle between modes with `NVDA+Space` (NVDA key = `Insert` or `Caps Lock`). Use **Browse Mode** (the default) for reading lists, headings, and issue content. Switch to **Focus Mode** when typing in text fields and search boxes. Use `NVDA+F7` at any time to open a list of all headings, links, form fields, buttons, and landmarks on the page - this is your orientation tool.
-
 
 ## Workshop Recommendation (Chapter 5 / Challenges 2-3)
 
@@ -158,7 +156,6 @@ Issues are collaborative spaces, not just task lists. An @mention tells someone 
 4. Leave clear evidence in the issue timeline.
 5. Build momentum for file editing and PR work in Chapter 6.
 
-
 ### About Learning Cards in This Chapter
 
 This chapter provides learning cards: expandable blocks that offer perspective-specific guidance for different ways of working. Not every card appears at every step. Open the ones that match how you work.
@@ -172,7 +169,6 @@ The following table describes the five learning card types used in this chapter.
 | NVDA / JAWS (Windows) | Screen reader users on Windows | Keystroke sequences, Focus and Browse mode, landmark navigation |
 | VoiceOver (macOS) | Screen reader users on macOS | VO key sequences, rotor usage, interaction model |
 | CLI (gh) | Terminal users on any platform | GitHub CLI commands for issue management |
-
 
 ## Local Git Alternative: Working from Your Clone
 
@@ -208,7 +204,6 @@ All of these produce the same result as the web interface. The chapter instructi
 
 </details>
 
-
 ## What Is a GitHub Issue?
 
 An issue is a discussion thread attached to a repository. Issues are used for:
@@ -222,7 +217,6 @@ An issue is a discussion thread attached to a repository. Issues are used for:
 Every issue has a **number** (`#42`), a **state** (Open or Closed), a **title**, a **description**, and a **comment thread**. Issues are public by default on public repositories.
 
 > **Learning Room connection:** In your Learning Room repo, every challenge from `docs/CHALLENGES.md` becomes an issue. For example, Challenge 1 ("Fix Broken Link") is filed as an issue pointing to `docs/welcome.md`, describing the broken link and linking to the challenge success criteria. When you open a PR to fix it, you reference the issue with `Closes #XX` to automatically close it on merge.
-
 
 ## Navigating to the Issues List
 
@@ -283,21 +277,23 @@ Navigate directly: `https://github.com/[owner]/[repo]/issues`
 ### Learning Cards: Navigating to the Issues List
 
 **Screen reader users:**
+
 - Press `D` to jump to the "Repository navigation" landmark, then `K` or `Tab` to find the Issues link -- this is faster than arrowing through the entire page
 - The Issues tab announces its open count ("Issues, 14 open"), giving you an instant sense of project activity without loading the list
 - Use `gh issue list` in the terminal to bypass browser navigation entirely; pipe through `--label` or `--assignee @me` to pre-filter results
 - In Windows Terminal, use mark mode (`Ctrl+Shift+M`) to review long issue output line by line before taking action
 
 **Low-vision users:**
+
 - The Issues tab count badge may be small at default zoom; at 200%+ the tab text reflows but the count remains visible next to the word "Issues"
 - Bookmark the direct URL pattern (`github.com/owner/repo/issues`) to skip repository page navigation altogether
 - In high-contrast mode, the active tab is indicated with an underline using system highlight color, not just a subtle background change
 
 **Sighted users:**
+
 - The Issues tab sits in the repository navigation bar directly below the repo name; the open count badge gives a quick pulse check on project health
 - Memorize the `G I` keyboard shortcut (press G, release, press I) to jump to Issues from anywhere in the repository without scrolling
 - The direct URL pattern works for any repository: swap `[owner]/[repo]` with real values and bookmark your most visited projects
-
 
 ## The Issues List Page
 
@@ -391,7 +387,6 @@ When you navigate to an issue in the list, your screen reader will announce (in 
 - Issue labels appear as colored rounded rectangles inline with the title; hover over a label to see its description
 
 </details>
-
 
 ## Filtering and Searching Issues
 
@@ -493,20 +488,22 @@ The two state links "Open" and "Closed" appear near the top of the issue list. P
 ### Learning Cards: Filtering and Searching Issues
 
 **Screen reader users:**
+
 - Switch to Focus Mode (`NVDA+Space`) before typing in the filter bar; switch back to Browse Mode after pressing Enter to read the filtered results
 - The filter bar does not announce how many results remain after filtering; press `H` to jump to the issue list heading, then listen for the count in the heading text
 - Combine `gh issue list` flags (e.g., `--label "accessibility" --assignee @me`) for instant filtered results without navigating dropdown menus
 
 **Low-vision users:**
+
 - Filter dropdown menus can extend below the viewport at high zoom; scroll within the dropdown or type in the search field at the top of each dropdown to narrow options
 - After applying a filter, verify it took effect by checking the search bar text -- it updates to show active conditions like `is:open label:accessibility`
 - The `Ctrl+/` (Windows) or `Cmd+/` (Mac) shortcut focuses the search bar instantly, avoiding the need to scroll up to find it
 
 **Sighted users:**
+
 - Build compound queries in the search bar for precision: `is:open label:"good first issue" no:assignee` finds unclaimed starter issues in one step
 - The Open/Closed toggle near the top of the list preserves your current filter; click Closed to see resolved issues without losing your label or assignee filter
 - Pin your most-used filter as a browser bookmark (the URL updates to reflect the active query) for one-click access
-
 
 ## Reading an Issue
 
@@ -615,7 +612,6 @@ Other timeline events (label added, PR linked, issue closed) appear between comm
 - Timeline events (label changes, assignments, cross-references) appear as small lines between comments with icons indicating the event type
 
 </details>
-
 
 ## Leaving a Comment
 
@@ -745,20 +741,22 @@ For the full shortcut system, see [Screen Reader Cheat Sheet - GitHub Shortcuts 
 ### Learning Cards: Leaving a Comment
 
 **Screen reader users:**
+
 - Press `D` to jump to the "Add a comment" landmark, which places focus near the text area; then Enter Focus Mode to start typing
 - Use `Ctrl+Enter` to submit your comment directly from inside the text area -- this avoids having to Tab through the formatting toolbar to find the Comment button
 - To quote someone's text in your reply, select the text in Browse Mode (`Shift+Arrow`), then press `R`; GitHub inserts it as a blockquote in the comment box automatically
 
 **Low-vision users:**
+
 - The comment text area expands as you type and is full-width at high zoom, making it easy to target; use `Ctrl+Enter` to submit without hunting for the Comment button
 - Use the Preview tab next to Write to check your Markdown formatting in rendered form before posting; bold, code blocks, and links are much easier to proofread there
 - Keyboard formatting shortcuts (`Ctrl+B` for bold, `Ctrl+E` for inline code) work inside the text area and save time over clicking small toolbar icons
 
 **Sighted users:**
+
 - The formatting toolbar above the text area offers bold, italic, code, link, and list buttons; hover for tooltips showing the keyboard shortcut for each
 - Use the `R` shortcut to quote selected text -- it creates a blockquote in your reply, making threaded conversations much easier to follow
 - The Close with comment option (dropdown arrow on the Close button) lets you leave a final note and close the issue in a single action
-
 
 ## Filing a New Issue
 
@@ -947,6 +945,7 @@ The interactive mode walks you step-by-step through title, body (opens your edit
 ### Tool Cards: File a New Issue
 
 **github.com (browser):**
+
 1. Navigate to the repository's **Issues** tab (or press `G` then `I`).
 2. Click **New issue**, choose a template or blank issue.
 3. Fill in the title and description, then click **Submit new issue**.
@@ -955,6 +954,7 @@ The interactive mode walks you step-by-step through title, body (opens your edit
 Not available -- issues are managed through the repository's Issues tab, not the code editor.
 
 **VS Code Desktop (GitHub Pull Requests extension):**
+
 1. Open the **GitHub** panel in the sidebar.
 2. Under **Issues**, click the **+** icon to create a new issue.
 3. Fill in the title and body, then click **Create**.
@@ -963,12 +963,12 @@ Not available -- issues are managed through the repository's Issues tab, not the
 Not directly supported. Click **Repository > View on GitHub** to open the browser, then file the issue there.
 
 **Git CLI / GitHub CLI:**
+
 ```bash
 gh issue create --title "Your title" --body "Description here"
 # Or interactively:
 gh issue create
 ```
-
 
 ## Cross-Referencing Issues
 
@@ -1004,20 +1004,22 @@ Step 4: Enter to insert the reference
 ### Learning Cards: Cross-Referencing Issues
 
 **Screen reader users:**
+
 - Type `#` in any comment body to trigger GitHub's autocomplete dropdown; press `Down Arrow` to browse matching issues and `Enter` to insert the reference link
 - Use `Closes #42` (not just `#42`) in PR descriptions so GitHub automatically closes the issue on merge; your screen reader will confirm the link is created in the PR timeline
 - Cross-references appear as timeline events on the linked issue; navigate with `H` to find "mentioned this issue" entries to trace the conversation history
 
 **Low-vision users:**
+
 - Cross-reference links (`#42`) render as colored, clickable links in both issue bodies and PR descriptions; at high zoom they remain inline with surrounding text
 - The autocomplete dropdown triggered by `#` may overlap content at high magnification; type additional digits to narrow results and reduce dropdown size
 - Back-links appear automatically on the referenced issue's timeline, so you can verify the connection was created by visiting either side
 
 **Sighted users:**
+
 - Use `Closes #42`, `Fixes #42`, or `Resolves #42` in PR descriptions for auto-closing on merge; `refs #42` creates a reference without auto-close, useful for "related but not solved" links
 - GitHub's autocomplete (`#` then type) searches both issue titles and numbers, so you can find issues by keyword without memorizing numbers
 - Cross-repo references use the format `owner/repo#42` -- useful when your PR in one repository fixes a bug tracked in another
-
 
 ## Sub-Issues - Parent and Child Relationships
 
@@ -1076,20 +1078,22 @@ Every child issue shows a "Parent issue" link near the top of the page (above th
 ### Learning Cards: Sub-Issues
 
 **Screen reader users:**
+
 - The sub-issues section is announced as a region; press `H` to navigate to the "Sub-issues" heading, then arrow down through the list where each child announces its checkbox state, title, and open/closed badge
 - The parent issue shows a progress indicator ("3 of 7 completed") announced as a progress region; listen for this after the sub-issues heading to gauge overall status
 - Every child issue includes a "Parent issue" link near the top of its page; navigate with `K` (links) to find it and jump back to the parent quickly
 
 **Low-vision users:**
+
 - The completion progress bar on the parent issue uses color to show progress; in high-contrast mode, completed vs. remaining segments use distinct system colors
 - At high zoom, the "Add sub-issue" button may wrap below the sub-issues list; Tab past the last child item to reach it
 - Each child issue's open/closed badge uses both color and text ("Open" or "Closed"), so status is readable without relying on color alone
 
 **Sighted users:**
+
 - Sub-issues appear as a checklist with a progress bar on the parent issue; each child links directly to its own issue page with full discussion and labels
 - Use sub-issues instead of Markdown task-list checkboxes when each item needs its own assignee, labels, or cross-repo tracking -- sub-issues are structured data, not just text
 - Creating a sub-issue from the parent's "Add sub-issue" button auto-links the new issue; you can also link existing issues by searching their number or title
-
 
 ## Managing Issues (for Maintainers and Triagers)
 
@@ -1192,20 +1196,22 @@ Available from the "..." (ellipsis) button at the top of the issue - navigate bu
 ### Learning Cards: Managing Issues
 
 **Screen reader users:**
+
 - Close an issue instantly with `Ctrl+Shift+Enter` from the comment text area (Focus Mode) -- no need to Tab to the Close button
 - The sidebar sections (Assignees, Labels, Milestone) each have their own heading; press `H` or `3` to jump between them, then activate the gear icon to open each dropdown
 - Use `gh issue edit 42 --add-label "accessibility" --add-assignee @me` to batch-update labels and assignments from the terminal without navigating sidebar controls
 
 **Low-vision users:**
+
 - Sidebar controls (Assignees, Labels, Milestone) are narrow at default width; at high zoom they stack vertically and each dropdown opens a searchable overlay that is easier to read
 - The Close issue button turns green and its label changes to "Reopen issue" once closed; in high-contrast mode, both states use distinct system colors
 - Type in the search field inside each sidebar dropdown (Labels, Assignees) to filter long lists rather than scrolling through all options at high magnification
 
 **Sighted users:**
+
 - The issue sidebar on the right contains Assignees, Labels, Projects, and Milestone in collapsible sections; click the gear icon next to each to open the edit dropdown
 - Use the dropdown arrow on the Close button to choose "Close as completed" vs. "Close as not planned" -- this distinction helps with project tracking and search filtering
 - The "..." menu at the top of any issue provides Transfer, Pin, Lock, and Delete options for repository maintainers
-
 
 ## The "good first issue" Label - Your Entry Point
 
@@ -1222,20 +1228,22 @@ When looking for your first open source contribution:
 ### Learning Cards: The "good first issue" Label
 
 **Screen reader users:**
+
 - Use the filter query `is:open label:"good first issue"` in the search bar to jump directly to beginner-friendly issues; `gh issue list --label "good first issue"` does the same in the terminal
 - Before claiming an issue, read existing comments to check whether someone else has already been assigned; listen for "assigned to" in the sidebar metadata
 - When you comment to claim an issue, include a sentence about your approach so the maintainer can give early feedback before you start coding
 
 **Low-vision users:**
+
 - The "good first issue" label renders with a distinct background color (typically light purple or teal); in high-contrast mode it uses system highlight colors with readable text
 - Filter results may include issues with multiple labels stacked together; at high zoom, labels wrap to a second line but remain readable
 - Bookmark the filtered URL (`/issues?q=is:open+label:"good first issue"`) in your browser for one-click access to beginner issues across your favorite repositories
 
 **Sighted users:**
+
 - The "good first issue" label is a GitHub convention recognized across the ecosystem; many projects also use "help wanted" for intermediate tasks
 - Always comment before starting work -- even if unassigned -- to avoid duplicating effort with another contributor who may already be working quietly
 - Read the issue's linked PR history (if any) to see whether previous attempts were made and why they were closed; this saves you from repeating known dead ends
-
 
 ## Accessibility-Specific Issue Writing Tips
 
@@ -1289,20 +1297,22 @@ so the macOS behavior appears correct.
 ### Learning Cards: Accessibility-Specific Issue Writing
 
 **Screen reader users:**
+
 - Always quote the exact text your screen reader announced in the issue body; wrap it in a fenced code block so readers know it is literal output, not your description
 - Include your screen reader name and version (e.g., "NVDA 2025.3.3") plus browser and OS; this lets maintainers reproduce with the same toolchain
 - Test with a second screen reader or browser if possible and note the results -- "Also fails in JAWS 2026 with Chrome; works in VoiceOver with Safari" dramatically narrows the debugging scope
 
 **Low-vision users:**
+
 - When filing zoom or contrast bugs, state your exact zoom level and whether you use Windows High Contrast, macOS Increase Contrast, or a browser extension
 - Screenshots are powerful evidence; annotate them (circle the problem area, add a text callout) and always include alt text describing what the screenshot shows
 - Note whether the issue occurs only at certain zoom levels or viewport widths; a bug at 400% that disappears at 200% points to a CSS breakpoint problem
 
 **Sighted users:**
+
 - Even if you do not use assistive technology, you can file accessibility issues by testing with keyboard-only navigation (Tab, Enter, Escape) and noting where focus is lost or trapped
 - Include the ARIA role or attribute involved if you can identify it from browser DevTools (e.g., "The button has `role=presentation` and no accessible name")
 - Link to the relevant WCAG success criterion when possible (e.g., "Fails WCAG 2.1 SC 1.3.1 Info and Relationships"); this gives maintainers a clear standard to design against
-
 
 ## Writing Effective Issues
 
@@ -1373,6 +1383,7 @@ The maintainer has to ask: What doesn't work? Where did you click? What browser?
 > **Title:** When I press Enter on the "New issue" button, nothing happens instead of opening the issue form
 >
 > **Steps to Reproduce:**
+>
 > 1. Navigate to github.com/org/repo
 > 2. Press `G` then `I` to go to the Issues tab
 > 3. Tab to the "New issue" button
@@ -1417,7 +1428,6 @@ The maintainer can reproduce this in under a minute. No follow-up questions need
 
 </details>
 
-
 ## Try It: File Your First Issue
 
 **Time:** 3 minutes | **What you need:** Browser, signed in to GitHub
@@ -1437,20 +1447,22 @@ Go to the Learning Room repository and file a real issue:
 ### Learning Cards: Filing Your First Issue
 
 **Screen reader users:**
+
 - After pressing `Ctrl+Enter` to submit, listen for the page reload; GitHub navigates to your new issue page where the title is the first heading -- press `1` to confirm it matches what you typed
 - Navigate the issue list with `3` (heading level 3) to jump between issue titles; this is faster than arrowing through every element on the page
 - If the template picker appears, use `Tab` and `Enter` to select "Open a blank issue"; template names are announced as link text
 
 **Low-vision users:**
+
 - The "New issue" button is prominent and green on the Issues list page; at high zoom it remains visible near the top of the page and does not collapse into a menu
 - The title field is full-width and the body field expands as you type; both are easy to locate and target at any zoom level
 - After submitting, your new issue page shows your avatar, title, and description in high-contrast-friendly layout; verify the content rendered correctly before moving on
 
 **Sighted users:**
+
 - Your issue immediately appears at the top of the Issues list; the green "Open" badge confirms it was created successfully
 - Read a few other students' introduction issues and leave a comment to practice the commenting workflow from the Leaving a Comment section
 - Notice how the issue number (e.g., #150) is auto-assigned and appears in the URL and page title; you will use this number for cross-references later
-
 
 > ### Day 2 Amplifier - Accessibility Agents: `@issue-tracker`
 >
@@ -1464,11 +1476,9 @@ Go to the Learning Room repository and file a real issue:
 >
 > *Today you are the triage engine. On Day 2, you understand the engine well enough to direct it.*
 
-
 > **Challenge Time:** It's time for the real deal. Go to the [Challenge Hub](CHALLENGES.md) and complete **Challenge 2: File Your First Issue** and **Challenge 3: Join the Conversation**. When Gandalf the bot replies to you, it will tell you when it's time to move to [Chapter 06: Working with Pull Requests](06-working-with-pull-requests.md).
 
 ---
-
 
 *Next: [Chapter 06: Working with Pull Requests](06-working-with-pull-requests.md)*
 *Back: [Chapter 04: The Learning Room](04-the-learning-room.md)*
@@ -1489,6 +1499,3 @@ Use this map to verify facts for each major section in this file.
 - **Filing, Managing, and Participating in GitHub Issues:** [GitHub Docs: About issues](https://docs.github.com/en/issues/tracking-your-work-with-issues/about-issues), [GitHub Docs, home](https://docs.github.com/en)
 - **Challenge and workflow guidance:** [GitHub Docs, home](https://docs.github.com/en), [GitHub Changelog](https://github.blog/changelog/)
 - **CLI issue workflow guidance:** [GitHub Docs, home](https://docs.github.com/en), [GitHub Changelog](https://github.blog/changelog/)
-
-
-

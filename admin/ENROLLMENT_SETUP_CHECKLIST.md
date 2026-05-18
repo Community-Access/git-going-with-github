@@ -5,7 +5,7 @@ Use this checklist to complete the GitHub Classroom integration setup for a new 
 ## Pre-Enrollment: GitHub Classroom Setup
 
 - [ ] Confirm classroom access in GitHub Classroom
-  - URL: https://classroom.github.com
+  - URL: <https://classroom.github.com>
   - Verify facilitators can manage assignments
 
 - [ ] Create GitHub Classroom assignments:
@@ -69,12 +69,12 @@ In [Community-Access/git-going-with-github-administration](https://github.com/Co
 ## Pre-Workshop: Enrollment Window
 
 - [ ] Create announcement/email pointing to public registration link
-  - URL: https://community-access.github.io/git-going-with-github/REGISTER.md
+  - URL: <https://community-access.github.io/git-going-with-github/REGISTER.md>
   - Mention: "Students should use the **New Student Fast Path** form"
 
 - [ ] Monitor enrollment:
-  - Public issues: https://github.com/Community-Access/git-going-with-github/issues?label=classroom-enrollment
-  - Private intakes: https://github.com/Community-Access/git-going-with-github-administration/issues?label=intake
+  - Public issues: <https://github.com/Community-Access/git-going-with-github/issues?label=classroom-enrollment>
+  - Private intakes: <https://github.com/Community-Access/git-going-with-github-administration/issues?label=intake>
 
 - [ ] Triage by proficiency:
   - [ ] Pull list of `proficiency-beginner` students
@@ -95,7 +95,7 @@ In [Community-Access/git-going-with-github-administration](https://github.com/Co
 ## Workshop Day 1-2: Active Monitoring
 
 - [ ] Track assignment submissions in GitHub Classroom
-  - View: https://classroom.github.com → Your org → Assignments → Day 1
+  - View: <https://classroom.github.com> → Your org → Assignments → Day 1
   - Identify students who haven't accepted invitation or started work
 
 - [ ] Re-engage non-starters:

@@ -342,6 +342,7 @@ VS Code 1.120 introduces the **Agents window** (Preview, now Stable) for agent-f
 | `chat.notifyWindowOnConfirmation` | Current | OS notifications for agent input/confirmation |
 
 **Limitations:**
+
 - Agents window is Preview in 1.120; not all agent types/extensions supported
 - Multi-root sessions not yet supported
 - Some extensions require opt-in
@@ -425,6 +426,7 @@ Model Context Protocol (MCP) servers expose accessibility scanning tools that wo
 MCP is an open protocol (anthropic/model-context-protocol) that lets AI agents access tools and data sources through a standardized interface. The Accessibility Agents project operates an HTTP-based MCP server with 30+ accessibility tools - no installation needed, just connect and scan.
 
 **Benefits for accessibility work:**
+
 - Use the same tools across different AI platforms (Copilot, Claude, Gemini, CI/CD)
 - Tools work offline or in restricted environments via local HTTP server
 - Streaming responses with live progress updates
@@ -433,6 +435,7 @@ MCP is an open protocol (anthropic/model-context-protocol) that lets AI agents a
 ### Core 30+ MCP Tools Catalog
 
 **Web Accessibility Scanning (8 tools):**
+
 - `scan-page` - Scan a live URL with axe-core WCAG 2.2 AA rules
 - `scan-pages` - Batch scan multiple URLs
 - `scan-dom` - Scan raw HTML/DOM without loading a page
@@ -443,6 +446,7 @@ MCP is an open protocol (anthropic/model-context-protocol) that lets AI agents a
 - `find-aria-roles` - Map all ARIA roles and their state changes
 
 **Document Accessibility Scanning (10 tools):**
+
 - `scan-word` - Microsoft Word .docx accessibility scan
 - `scan-excel` - Microsoft Excel .xlsx accessibility scan
 - `scan-powerpoint` - Microsoft PowerPoint .pptx accessibility scan
@@ -455,12 +459,14 @@ MCP is an open protocol (anthropic/model-context-protocol) that lets AI agents a
 - `remediate-document` - Apply fixes to scanned documents
 
 **Markdown & Content Scanning (4 tools):**
+
 - `scan-markdown` - Markdown file accessibility check
 - `lint-markdown` - Markdownlint rules with accessibility focus
 - `validate-links` - Check link structure and destinations
 - `check-headings` - Verify heading hierarchy and anchor links
 
 **Compliance & Reporting (5 tools):**
+
 - `calculate-severity-score` - WCAG severity scoring (0-100)
 - `trend-audit-results` - Compare audits across time
 - `generate-audit-report` - Full markdown audit report
@@ -468,6 +474,7 @@ MCP is an open protocol (anthropic/model-context-protocol) that lets AI agents a
 - `map-to-compliance-standard` - Section 508, EN 301 549, EAA mapping
 
 **GitHub & CI/CD Integration (3+ tools):**
+
 - `post-audit-to-issue` - Comment audit results on a GitHub issue
 - `create-accessibility-pr` - Create PR with accessibility fixes
 - `trigger-ci-scan` - Start accessibility scanning in CI pipeline
@@ -646,6 +653,7 @@ jobs:
 ### Workshop Guidance
 
 Introduce Smart Actions as a shortcut for common tasks, but emphasize manual understanding first:
+
 - Teach learners to rename variables manually before showing "Rename Symbol"
 - Teach error-fixing patterns before showing "Fix Error"
 - Use "Generate Commit Message" as a review tool, not a replacement for writing meaningful messages
@@ -669,9 +677,11 @@ Introduce Smart Actions as a shortcut for common tasks, but emphasize manual und
 
 1. Start a Copilot agent session (Chat or Agents window)
 2. Ask the agent to test your web app:
+
    ```text
    Open the web app at localhost:3000 and verify the login form works correctly.
    ```
+
 3. The agent opens the integrated browser automatically
 4. It interacts with the page and reports findings
 5. Review results in Chat and take action as needed
@@ -850,6 +860,7 @@ You review and edit the plan → Agent implements → Tests run → Feature comp
 ### Workshop Guidance
 
 Introduce Plan Agent as a **design-first** approach:
+
 - Use it for larger features or refactors
 - Teach learners to ask clarifying questions back to the plan
 - Emphasize code review: "Is this plan what you expected?"
@@ -864,6 +875,7 @@ Introduce Plan Agent as a **design-first** approach:
 ### What is a Copilot Space?
 
 A **Space** is a collection of:
+
 - Project documentation
 - Code repositories
 - Architectural guides
@@ -898,9 +910,11 @@ When someone uses Copilot in the Space, the AI uses that knowledge to provide mo
 2. Select your Space from the Space picker (top of Chat)
 3. Ask questions - Copilot uses the Space knowledge
 4. Example:
+
    ```text
    We're adding a new API endpoint. What patterns does our team use in src/api/?
    ```
+
 5. Copilot searches the Space and returns context-aware answers
 
 ### Accessibility & Team Workflows
@@ -1176,16 +1190,19 @@ Each setting accepts an array of `{ text: "..." }` (inline) or `{ file: "relativ
 ### Learning Cards: Custom Instructions
 
 **Screen reader users:**
+
 - The three-level scope hierarchy (Organization, Workspace, User) means instructions can come from multiple places -- use Chat Diagnostics (gear icon in Chat header) to list every loaded instruction file and its source
 - `.github/copilot-instructions.md` is always-on and requires no frontmatter -- just write plain Markdown; screen readers read the source file like any other Markdown document
 - `.instructions.md` files use YAML frontmatter with `applyTo` globs -- the frontmatter is the first few lines between `---` delimiters; arrow through carefully to verify syntax
 
 **Low-vision users:**
+
 - The Diagnostics panel (Chat gear, then Diagnostics) lists loaded files in a scrollable pane -- increase font size in VS Code settings if the file paths are hard to read
 - YAML frontmatter is indentation-sensitive -- enable VS Code's indentation guides (`editor.guides.indentation`) and use a high-contrast theme so the guide lines are visible
 - The `/init` command auto-generates `copilot-instructions.md` from your workspace -- review the generated file in your editor at your preferred zoom before committing
 
 **Sighted users:**
+
 - The comparison table above maps each instruction type to its scope, always-on status, and multi-tool compatibility -- scan the "Best For" column to choose the right approach
 - Look in `.github/instructions/` for scoped instruction files and `.github/copilot-instructions.md` for always-on instructions -- both are plain Markdown files you can edit directly
 - Use the `applyTo` glob pattern in `.instructions.md` frontmatter to limit when instructions activate -- `"**/*.py"` for Python-only rules, `"docs/**"` for documentation-only rules
@@ -1803,24 +1820,29 @@ On GitHub.com, you can assign tasks to different AI agents, including third-part
 3. Search for the agent name (`@copilot`, `@claude`, etc.)
 4. Select the agent
 5. Add a comment describing the task:
+
    ```
    @copilot please implement this feature and open a PR.
    ```
+
 6. The agent reads the issue, makes a plan, creates a branch, implements, and opens a PR
 7. Review the agent's PR changes before merging
 
 ### Example Scenarios
 
 **Scenario 1: Copilot cloud agent for bug fix**
+
 - Assign a GitHub issue to `@copilot`
 - Add details about the bug
 - Copilot creates a branch, reproduces the bug, fixes it, and opens a PR
 
 **Scenario 2: Claude agent for documentation**
+
 - Assign `@claude` to improve project docs
 - Claude writes expanded documentation, tests examples, opens a PR
 
 **Scenario 3: Codex agent for refactoring**
+
 - If your organization has Codex access, assign `@codex` to refactor old code
 - Codex modernizes the code and opens a PR
 
@@ -1966,16 +1988,19 @@ gh aw compile .github/workflows/daily-report.md
 ### Learning Cards: GitHub Agentic Workflows
 
 **Screen reader users:**
+
 - Agentic workflow runs appear in the Actions tab of your repository -- navigate to Actions with `T` (tab bar), then use heading navigation (`3`) to jump between workflow run entries
 - Workflow files are Markdown (`.md`) not YAML -- the frontmatter at the top controls triggers and permissions; the body is natural language instructions the AI agent reads
 - The `safe-outputs` frontmatter property lists every write operation the agent is allowed to perform -- review this section carefully since it is the security boundary
 
 **Low-vision users:**
+
 - The Actions tab lists workflow runs with status icons (green check, red X, yellow circle) -- at high zoom, also look for the text status label next to each run name
 - Workflow `.md` files use the same Markdown rendering as any other file in the repo -- edit them in VS Code with your preferred font size and theme
 - The `gh aw compile` command generates a `.lock.yml` file alongside your `.md` file -- both appear in the file explorer; the `.lock.yml` is auto-generated and should not be edited manually
 
 **Sighted users:**
+
 - Browse 50+ community workflows at Peli's Agent Factory to find templates matching your use case -- each example includes the full `.md` source you can copy
 - The workflow format table at the top of this section maps trigger types to use cases -- scan the "Example" column for the pattern closest to your need
 - Unlike VS Code agent files, agentic workflows run in the cloud via GitHub Actions -- no local VS Code session is required; results appear as issues, PR comments, or other GitHub artifacts
@@ -2188,6 +2213,7 @@ If your workshop has Free plan participants:
 ### Copilot Pro Comparison: When to Recommend an Upgrade
 
 Recommend **Copilot Pro** ($10/month) for workshops if:
+
 - Your exercises involve Copilot Chat extensively
 - You want learners to experiment freely without token anxiety
 - The workshop lasts multiple days (Free plan limits reset monthly, but daily resets don't exist)
@@ -2224,6 +2250,7 @@ On June 1, 2026, GitHub Copilot switched from **Premium Request Units** (PRUs) t
 Users see their credit consumption in [GitHub Settings - Copilot](https://github.com/settings/copilot) under Usage & Billing.
 
 **Tips for facilitators:**
+
 - Advise learners to monitor their usage if they're on a limited plan
 - Set expectations: "A typical multi-turn chat conversation costs 5-50 credits depending on the model"
 - Recommend Auto model selection to balance quality and cost

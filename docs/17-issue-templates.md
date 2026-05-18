@@ -14,16 +14,19 @@
 ### Before starting this chapter, verify you have completed
 
 **Hard Requirements:**
+
 - [ ] Chapter 4: [Working with Issues](05-working-with-issues.md) - Know how to create, read, and navigate issues
 - [ ] A GitHub repository where you have write access (your fork or personal repo)
 - [ ] A text editor with YAML syntax highlighting (VS Code, or any editor showing `.yml` files with color)
 
 **Recommended (but not blocking):**
+
 - [ ] Chapter 16: [GitHub Copilot](16-github-copilot.md) - Optional but helpful for generating template variations
 - [ ] Chapter 10: [Notifications](10-notifications-and-day-1-close.md) - Basic understanding of workflow triggers
 - [ ] Terminal/Command line basic comfort (useful but you can GitHub web editor if needed)
 
 **What you already have:**
+
 - [ ] You filled out the **Workshop Registration template** to join this workshop - this is your learning tool for Chapter 17
 
 **Day 2 Amplifier:** In [Chapter 19 (Accessibility Agents)](19-accessibility-agents.md), you'll use `@template-builder` to automate template creation. Complete this chapter first, then come back to Chapter 19.
@@ -87,10 +90,12 @@ Chapter 17 is a **template design and implementation chapter** focused on struct
 **Estimated time:** 20-30 minutes.
 
 Use this worked example as a guide:
+
 - **Source:** [`.github/ISSUE_TEMPLATE/workshop-registration.yml`](https://github.com/Community-Access/git-going-with-github/blob/main/.github/ISSUE_TEMPLATE/workshop-registration.yml)
 - **Remix sample:** [`docs/samples/challenge-14-registration-remix-example.yml`](https://github.com/Community-Access/git-going-with-github/blob/main/docs/samples/challenge-14-registration-remix-example.yml)
 
 What changes and what stays the same:
+
 - Keep: the YAML skeleton (`name`, `description`, `title`, `labels`, `body`)
 - Keep: field structure (`type`, `id`, `attributes`, `validations`)
 - Change: context-specific content (labels, field names, descriptions, options)
@@ -101,7 +106,7 @@ Steps:
 1. Pick a new context for your template (for example: bug report, event attendance, product research, accessibility audit request).
 2. Copy the registration template file to a new file: `.github/ISSUE_TEMPLATE/my-template.yml`
 3. Change the `name` and `description` in the frontmatter to match your new context.
-4. Change the `title` prefix (for example: `[Bug Report]: ` or `[Event]: `).
+4. Change the `title` prefix (for example: `[Bug Report]:` or `[Event]:`).
 5. Change the `labels` to appropriate labels for your use case.
 6. Replace each field's `label`, `description`, `placeholder`, and options to match your new context.
 7. Decide which fields should be `required: true` and which can be optional.
@@ -128,8 +133,8 @@ labels: documentation
 ---
 ```
 
-3. Note: Markdown templates use `about` instead of `description` (unlike YAML form templates).
-4. Below the frontmatter, add 3-4 sections with HTML comment instructions:
+1. Note: Markdown templates use `about` instead of `description` (unlike YAML form templates).
+2. Below the frontmatter, add 3-4 sections with HTML comment instructions:
 
 ```markdown
 ## Problem
@@ -142,7 +147,7 @@ labels: documentation
 <!-- Optional: any ideas for how to fix this? -->
 ```
 
-5. Commit and push.
+1. Commit and push.
 
 **You are done when:** Your Markdown template file is committed with proper frontmatter and section structure.
 
@@ -424,16 +429,19 @@ The `about` text appears in the template chooser. The `title` pre-fills the issu
 ### Tool Cards: Create an Issue Template
 
 **github.com (browser):**
+
 1. Go to **Settings > General** (scroll to Features section) > **Set up templates**.
 2. Choose a starter template or create a blank one.
 3. Edit the template content and click **Propose changes** to commit.
 
 **VS Code Desktop / github.dev:**
+
 1. Create the file `.github/ISSUE_TEMPLATE/your-template.md` (or `.yml` for form-based).
 2. Add YAML frontmatter (`name`, `description`, `title`, `labels`) and body content.
 3. Commit and push.
 
 **Git CLI / GitHub CLI:**
+
 ```bash
 mkdir -p .github/ISSUE_TEMPLATE
 # Create and edit your template file, then:
@@ -1300,16 +1308,19 @@ When designing templates for a project you maintain, use these principles:
 ### Learning Cards: Building an Accessibility Bug Report Template
 
 **Screen reader users:**
+
 - YAML indentation is invisible to your ears but critical to the parser -- use VS Code's "Editor: Detect Indentation" setting and listen for the indentation level announcement (`Alt+Shift+I` in NVDA) to catch misaligned fields before committing
 - When editing YAML `body:` fields, each `- type:` block begins at the same indent level; use line-by-line arrow navigation and listen for consistent leading whitespace to verify structure
 - Test your finished template by filing a real issue with your screen reader -- tab through every field, confirm labels are announced, and verify that required-field validation errors are spoken before the form submits
 
 **Low-vision users:**
+
 - Turn on VS Code bracket and indentation colorization (`"editor.guides.indentation": true`) so the nested YAML structure of `body > attributes > validations` is visually distinct at each level
 - Use the Minimap or breadcrumb bar to track your position in a long YAML file -- accessibility bug report templates can easily exceed 100 lines, and losing your place is common at high zoom
 - Preview the rendered form on GitHub.com at your working zoom level to confirm that dropdown options, placeholders, and help text are all readable without horizontal scrolling
 
 **Sighted users:**
+
 - Install the YAML extension in VS Code for red-squiggle validation as you type -- a single wrong indent in YAML silently breaks the field and GitHub shows no error, just a missing field
 - After pushing your template, open the "New issue" template chooser in an incognito window to verify it appears correctly; caching can hide updates in your normal browser session
 - Compare your template side-by-side with the accessibility-agents `accessibility-bug-report.yml` to check that you have not missed critical fields like assistive technology setup or WCAG criterion
@@ -1381,16 +1392,19 @@ Open `.github/pull_request_template.md` in VS Code. You will see the standard se
 ### Learning Cards: Hands-On Activity
 
 **Screen reader users:**
+
 - When filing an issue using a YAML form template, Tab moves between form fields and your screen reader announces each label -- listen for "required" on mandatory fields so you do not submit an incomplete form
 - After submitting your test issue, navigate to it and use heading navigation (`H` key in browse mode) to verify that your field responses rendered under the correct headings
 - When verifying your own created template, file a test issue yourself and read the entire rendered output with your screen reader before asking others to use it
 
 **Low-vision users:**
+
 - The GitHub template chooser displays template names and descriptions in a list -- at high zoom, the descriptions may wrap; look for the bold template name as your anchor point
 - After filing your test issue, switch to the rendered view and check that dropdown selections, text areas, and checkbox states are all visible and correctly formatted at your zoom level
 - When testing your custom template in Exercise B, open the form at both 100% and your preferred zoom to catch layout breaks that only appear at magnification
 
 **Sighted users:**
+
 - Use the template chooser's visual cards to compare your new template against existing ones -- consistent naming, description length, and label style make the chooser look professional
 - After creating your template, file a test issue and screenshot the rendered output; compare it against the original YAML to verify every field type (dropdown, textarea, checkboxes) rendered as intended
 - Try the "Preview" tab on GitHub.com while editing Markdown templates to catch formatting issues before committing; YAML form templates have no preview, so you must test by filing a real issue

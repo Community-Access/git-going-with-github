@@ -161,6 +161,7 @@ This team specializes in Python, wxPython, NVDA addon development, desktop acces
 Reusable skills provide bundled guidance, reference data, scripts, and templates. Each skill includes a `SKILL.md` file defining its scope and API, plus supporting artifacts. Skills are designed for cross-platform use across Copilot, Claude Code, Gemini CLI, Codex CLI, and MCP servers.
 
 **Web Accessibility Skills:**
+
 - `accessibility-rules` - WCAG 2.2 AA criteria reference with success indicators
 - `framework-accessibility` - React, Vue, Angular, Svelte, Tailwind accessibility patterns
 - `web-scanning` - URL discovery, crawling, and page inventory for audits
@@ -170,21 +171,25 @@ Reusable skills provide bundled guidance, reference data, scripts, and templates
 - `help-url-reference` - Help links for axe-core rules, WCAG criteria, and remediation
 
 **Document & Compliance Skills:**
+
 - `document-scanning` - Office and PDF document collection inventory
 - `report-generation` - Audit report formatting, VPAT export, compliance mapping
 - `legal-compliance-mapping` - Section 508, EN 301 549, EAA compliance profiles
 
 **GitHub Workflow Skills:**
+
 - `github-scanning` - Repository discovery and GitHub API patterns
 - `github-analytics-scoring` - Velocity, review turnaround, code hotspot detection
 - `github-workflow-standards` - Branch protection, code review, release processes
 
 **Development Tools Skills:**
+
 - `python-development` - Python testing, packaging, and accessibility patterns
 - `ci-integration` - CI/CD pipeline setup, artifact management, status checks
 - `testing-strategy` - Test planning, axe-core setup, automated accessibility testing
 
 **Reference & Guidance Skills:**
+
 - `cognitive-accessibility` - Plain language, reading level, content clarity
 - `email-accessibility` - Email template markup and screen reader compatibility
 - `data-visualization-accessibility` - Chart accessibility patterns
@@ -194,6 +199,7 @@ Reusable skills provide bundled guidance, reference data, scripts, and templates
 - `severity-mapping` - Finding categorization and priority scoring
 
 **Example usage:**
+
 - An agent needing to score a web audit will use `web-severity-scoring` skill
 - A CI/CD pipeline needing test patterns will use `testing-strategy` skill
 - A document agent needing compliance mapping will use `legal-compliance-mapping` skill
@@ -342,6 +348,7 @@ Accessibility Agents v5.0.0+ includes **80+ agents**, **25+ skills**, and **30+ 
 | Dev Tools | GitHub, CI/CD, PR review, analytics, template builder, insiders tracker       | `@pr-review`, `@issue-tracker`, `@analytics`, `@template-builder`, `@insiders-a11y-tracker`, `@daily-briefing`, `@scanner-bridge`, `@lighthouse-bridge` | Copilot, Claude, Gemini, Codex, CI/CD     |
 
 **Platform support:**
+
 - **Copilot**: Full support for all agents, skills, and MCP tools
 - **Claude Code**: All agents and skills, with some platform-specific limitations
 - **Gemini Code**: All agents and skills, with some platform-specific limitations
@@ -349,6 +356,7 @@ Accessibility Agents v5.0.0+ includes **80+ agents**, **25+ skills**, and **30+ 
 - **CI/CD**: MCP tools and reporting agents for automated workflows
 
 **Teams:**
+
 - **Web**: Web accessibility, ARIA, keyboard, color, forms, tables, modals, live regions
 - **Document**: Office, PDF, Markdown, CSV, compliance, reporting
 - **Dev Tools**: GitHub, CI/CD, PR review, analytics, template builder, insiders tracker
@@ -384,6 +392,7 @@ This table lists all agents and skills, their roles, and platform support. For t
 | `@lighthouse-bridge`       | Lighthouse CI bridge                        | Copilot, Claude, Gemini, Codex, CI/CD     | (internal, invoked by web/document agents) |
 
 **Skills:**
+
 - All agents can invoke skills as needed. Skills are documented in `.github/skills/<name>/SKILL.md`.
 - Skills include: web-severity-scoring, report-generation, markdown-accessibility, framework-accessibility, help-url-reference, lighthouse-scanner, web-scanning, etc.
 
@@ -736,6 +745,7 @@ applyTo: ".github/ISSUE_TEMPLATE/**/*.{yml,yaml}"
 ### Creating an Instructions File
 
 #### Command Palette method
+
 ### Writing Effective Instructions
 
 Guidance from GitHub's accessibility team on writing instructions that Copilot actually follows:
@@ -922,16 +932,19 @@ When asked to [task]:
 ### Learning Cards: .agent.md - Complete Format Reference
 
 **Screen reader users:**
+
 - YAML frontmatter is the first block in the file between `---` delimiters -- arrow through it line by line to verify `name`, `description`, and `tools` fields; indentation matters
 - The `name` field in frontmatter is what you type after `@` in Copilot Chat -- if the agent does not appear, check this field matches your invocation and reload VS Code (`Ctrl+Shift+P` then "Reload Window")
 - Use Chat Diagnostics (gear icon in Chat header then Diagnostics) to verify your agent loaded successfully -- it lists every agent found, with error details if frontmatter parsing failed
 
 **Low-vision users:**
+
 - Agent files are small Markdown documents typically under 100 lines -- increase editor font size and use a theme with distinct YAML keyword colors so frontmatter fields stand out
 - The tools list in frontmatter uses array syntax (`["read", "search"]`) -- at high zoom, verify commas and quotes are correct since YAML is sensitive to formatting
 - The body template structure (Constraints, Behavior, Output Format, Scope Boundaries) uses `##` headings -- use VS Code's Outline view (`Ctrl+Shift+O`) to navigate between sections
 
 **Sighted users:**
+
 - Copy an existing `.agent.md` from `.github/agents/` as a starting template -- the frontmatter structure is identical across all agents; just change the name, description, and tool list
 - The tool combinations table in this section shows common patterns by use case -- scan the comments (e.g., "Read-only research", "Full GitHub workflow") to find the right tool set
 - The invocation control table explains `user-invocable` and `disable-model-invocation` flags -- set `user-invocable: false` to create helper agents that only other agents can call
@@ -1248,16 +1261,19 @@ Permission decisions: `"allow"` | `"ask"` (prompt user) | `"deny"` (block the to
 ### Learning Cards: Hooks
 
 **Screen reader users:**
+
 - Hooks are JSON files, not Markdown -- navigate them in the editor with arrow keys; each hook event (e.g., `PreToolUse`, `PostToolUse`) is a key in the `"hooks"` object
 - Hook output is returned as JSON on `stdout` -- the `"continue"` field (true/false) determines whether the agent proceeds; listen for the `"stopReason"` message if the hook blocks an action
 - The `"permissionDecision"` values (`allow`, `ask`, `deny`) control tool access -- `ask` triggers a confirmation dialog that your screen reader will announce as a standard VS Code dialog
 
 **Low-vision users:**
+
 - JSON syntax requires careful attention to braces, brackets, and commas -- use VS Code's bracket pair colorization (`editor.bracketPairColorization.enabled`) and increase font size to verify structure
 - The hook events table maps each event name to when it fires -- zoom in on the "When It Fires" column to understand the lifecycle timing
 - Hook errors appear in the agent session output -- look for non-zero exit codes or `"continue": false` in the output pane
 
 **Sighted users:**
+
 - The hook events table lists 8 lifecycle events -- `PreToolUse` and `PostToolUse` are the most commonly used for validation and formatting enforcement
 - The configuration format example shows the JSON structure with `command`, `timeout`, and platform-specific overrides -- copy this template and modify the command paths for your project
 - Hooks from workspace (`.github/hooks/`) and user (`~/.claude/settings.json`) locations are combined, not overridden -- check both locations if a hook is firing unexpectedly
@@ -1399,7 +1415,7 @@ This shows: which files were found, which were loaded, which have errors, and fr
 
 VS Code 1.120+ introduces **Smart Actions** (automated suggestions for commit messages, symbol renaming, error fixing, and semantic search). These complement Accessibility Agents by automating routine tasks that don't require conversational reasoning.
 
-**Workflow:** Use Smart Actions (` Ctrl+.`) for quick fixes and accessibility agents (`` `@accessibility-lead` ``, `` `@wcag-guide` ``) for audits, explanations, and strategic guidance.
+**Workflow:** Use Smart Actions (`Ctrl+.`) for quick fixes and accessibility agents (`` `@accessibility-lead` ``, `` `@wcag-guide` ``) for audits, explanations, and strategic guidance.
 
 | Use Smart Actions For | Use Accessibility Agents For |
 |----------------------|------------------------------|
@@ -1416,6 +1432,7 @@ See [Appendix K: Smart Actions](appendix-k-copilot-reference.md#4c-smart-actions
 The **Browser Agent (Experimental)** can open and test web applications, but it requires human verification for accessibility claims. Pair Browser Agent with manual screen reader testing and structured Accessibility Agents audits.
 
 **Best practice workflow:**
+
 1. Use Browser Agent to take screenshots and verify layout (quick visual check)
 2. Use `` `@web-accessibility-wizard` `` to run structured audit (axe-core, semantic analysis)
 3. Do manual screen reader + keyboard testing to verify agent findings
@@ -1428,12 +1445,14 @@ See [Appendix K: Browser Agent (Experimental)](appendix-k-copilot-reference.md#4
 GitHub supports assigning cloud agents to issues and pull requests. You can use Copilot Agent, Claude (by Anthropic), or OpenAI Codex for task automation at scale.
 
 **Accessibility workflow for cloud agents:**
+
 - Tag issues with labels that trigger agent assignments (`` `agent-review`, `documentation` ``)
 - Create a custom instruction or hook that directs agents to consider accessibility
 - Review agent PRs with Accessibility Agents before merging
 - Use `` `@compliance-mapping` `` to verify WCAG alignment of agent-generated code
 
 **GitHub cloud agent assignment syntax:**
+
 ```
 @copilot please implement this feature with accessibility best practices in mind.
 Reference: [Appendix K: GitHub Agentic Workflows](appendix-k-copilot-reference.md#14-github-agentic-workflows-and-third-party-agents)

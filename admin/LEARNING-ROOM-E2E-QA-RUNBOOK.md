@@ -72,22 +72,22 @@ Complete this section before Phase 1.
 Complete all items below before any cohort launch actions.
 
 - [ ] Facilitator account `accesswatch` can access both organizations:
-   - [ ] `Community-Access` (the workshop and code repository organization)
-   - [ ] `Community-Access-Classroom` (the GitHub Classroom organization where student repos are created)
+  - [ ] `Community-Access` (the workshop and code repository organization)
+  - [ ] `Community-Access-Classroom` (the GitHub Classroom organization where student repos are created)
 - [ ] `accesswatch` has a verified email address on its GitHub account and can create and edit Classroom assignments at [classroom.github.com](https://classroom.github.com).
 - [ ] Dedicated non-admin test student account exists and can accept invites.
 - [x] `gh auth status` succeeds for `accesswatch` in local terminal.
 - [x] Template repository exists and is set as template repo:
-   - [x] `Community-Access/learning-room-template`
+  - [x] `Community-Access/learning-room-template`
 - [x] Template repository Actions settings allow required automation behavior:
-   - [x] Actions enabled
-   - [x] `GITHUB_TOKEN` default workflow permissions include write where required
-   - [x] `Allow GitHub Actions to create and approve pull requests` enabled
+  - [x] Actions enabled
+  - [x] `GITHUB_TOKEN` default workflow permissions include write where required
+  - [x] `Allow GitHub Actions to create and approve pull requests` enabled
 - [ ] Registration automation settings are correct when using registration-to-classroom handoff:
-   - [ ] Variables `CLASSROOM_DAY1_ASSIGNMENT_URL` and `CLASSROOM_DAY2_ASSIGNMENT_URL` are set in `Community-Access/git-going-with-github`
+  - [ ] Variables `CLASSROOM_DAY1_ASSIGNMENT_URL` and `CLASSROOM_DAY2_ASSIGNMENT_URL` are set in `Community-Access/git-going-with-github`
 - [x] Registration entry configuration exists and is valid:
-   - [x] Issue form template `workshop-registration.yml` exists
-   - [x] Required labels exist: `registration`, `duplicate`, `waitlist`
+  - [x] Issue form template `workshop-registration.yml` exists
+  - [x] Required labels exist: `registration`, `duplicate`, `waitlist`
 - [ ] While signed in as `accesswatch`, opening [classroom.github.com](https://classroom.github.com) shows the `Community-Access-Classroom` classroom organization.
 
 If any precondition fails, stop and resolve before proceeding.
@@ -217,9 +217,9 @@ Why this matters:
 scripts/classroom/Prepare-LearningRoomTemplate.ps1 -Owner Community-Access -TemplateRepo learning-room-template
 ```
 
-2. If the script reports changes, open and merge the generated sync pull request in `Community-Access/learning-room-template`.
-3. If the script reports no changes, capture that output as evidence.
-4. Verify merged PR (or no-change output) in QA notes.
+1. If the script reports changes, open and merge the generated sync pull request in `Community-Access/learning-room-template`.
+2. If the script reports no changes, capture that output as evidence.
+3. Verify merged PR (or no-change output) in QA notes.
 
 Why this matters:
 
@@ -233,13 +233,13 @@ Why this matters:
 scripts/classroom/Test-LearningRoomTemplate.ps1 -Owner Community-Access -TemplateRepo learning-room-template -KeepSmokeRepo
 ```
 
-2. Open the retained smoke repository.
-3. Compare at least three files changed in the most recent template sync PR:
+1. Open the retained smoke repository.
+2. Compare at least three files changed in the most recent template sync PR:
    - one workflow file
    - one issue template file
    - one docs or script file
-4. Confirm file content in smoke repo matches merged sync PR content.
-5. Record comparison links and outcome in QA notes.
+3. Confirm file content in smoke repo matches merged sync PR content.
+4. Record comparison links and outcome in QA notes.
 
 Why this matters:
 
@@ -416,6 +416,7 @@ scripts/classroom/Initialize-WorkshopSetup.ps1
 ```
 
 The script will:
+
 - Resolve Day 1 and Day 2 assignment URLs automatically from the GitHub Classroom API (if assignments exist in the `GIT Going with Github` classroom)
 - Set `CLASSROOM_DAY1_ASSIGNMENT_URL` and `CLASSROOM_DAY2_ASSIGNMENT_URL` in `Community-Access/git-going-with-github`
 - Verify all three required labels exist, creating any that are missing
@@ -481,6 +482,7 @@ Pass criteria:
 4. Confirm the page communicates that registration issues are public.
 
 Pass criteria:
+
 - Registration link opens correctly.
 - Registration issue title is prefilled with `[REGISTER]`.
 - Public visibility warning is present.
@@ -512,6 +514,7 @@ Expected output: `CLASSROOM_DAY1_ASSIGNMENT_URL` and `CLASSROOM_DAY2_ASSIGNMENT_
 If any are missing, run `Initialize-WorkshopSetup.ps1` again or follow the manual steps in section B of the setup instructions. For full reference, see [REGISTRATION-QUICKSTART.md](REGISTRATION-QUICKSTART.md) and [REGISTRATION-ADMIN.md](REGISTRATION-ADMIN.md).
 
 Pass criteria:
+
 - Both assignment URL variables are present with correct values and no leading or trailing spaces.
 
 ### Step 3. Execute registration happy-path test
@@ -528,6 +531,7 @@ Use the non-admin test student account.
 5. Confirm `registration` label is applied.
 
 Pass criteria:
+
 - Workflow succeeds.
 - Comment content is complete and accurate.
 - `registration` label exists on the issue.
@@ -542,6 +546,7 @@ Pass criteria:
 4. Confirm waitlist message and `waitlist` label behavior in the chosen test environment.
 
 Pass criteria:
+
 - Duplicate submission closes with duplicate guidance.
 - Waitlist path and label behavior are validated.
 
@@ -557,6 +562,7 @@ gh workflow run registration.yml -R community-access/git-going-with-github
 ```
 
 Pass criteria:
+
 - CSV artifact is present and parseable.
 - Roster sync commit appears only when data changed.
 
@@ -620,18 +626,18 @@ Pass criteria:
 - Required files exist in smoke repo.
 - Challenge 1 workflow dispatch succeeds.
 - Smoke repo validates workflow inventory:
-   - `pr-validation-bot.yml`
-   - `content-validation.yml`
-   - `student-progression.yml`
-   - `skills-progression.yml`
-   - `autograder-issue-filed.yml`
-   - `autograder-branch-commit.yml`
-   - `autograder-pr-link.yml`
-   - `autograder-conflicts.yml`
-   - `autograder-local-commit.yml`
-   - `autograder-template.yml`
-   - `autograder-capstone.yml`
-   - `autograder-watchdog.yml`
+  - `pr-validation-bot.yml`
+  - `content-validation.yml`
+  - `student-progression.yml`
+  - `skills-progression.yml`
+  - `autograder-issue-filed.yml`
+  - `autograder-branch-commit.yml`
+  - `autograder-pr-link.yml`
+  - `autograder-conflicts.yml`
+  - `autograder-local-commit.yml`
+  - `autograder-template.yml`
+  - `autograder-capstone.yml`
+  - `autograder-watchdog.yml`
 
 ### Step 8. Prove template freshness (latest release content is live)
 
@@ -684,6 +690,7 @@ gh api /classrooms --jq '.[] | {id, name, url}'
 ```
 
 Pass criteria:
+
 - Classroom exists in `Community-Access-Classroom` and is accessible to `accesswatch`.
 - Roster includes `accesswatch-student` (or the designated test student username).
 
@@ -716,6 +723,7 @@ If the assignment exists and its `invite_link` is already in the `CLASSROOM_DAY1
 11. If `Initialize-WorkshopSetup.ps1` has not been run yet, paste the URL into `CLASSROOM_DAY1_ASSIGNMENT_URL`. If it has been run, re-run it to pick up the new URL automatically.
 
 Pass criteria:
+
 - Day 1 assignment exists with title `You Belong Here`.
 - The Classroom autograding tests area is empty (checks run from template workflows instead).
 - Feedback pull request is enabled.
@@ -743,6 +751,7 @@ If the assignment exists and its `invite_link` is already in `CLASSROOM_DAY2_ASS
 8. Update `CLASSROOM_DAY2_ASSIGNMENT_URL` or re-run `Initialize-WorkshopSetup.ps1` to pick it up automatically
 
 Pass criteria:
+
 - Day 2 assignment exists with title `You Can Build This`.
 - The Classroom autograding tests area is empty (checks run from template workflows instead).
 - Feedback pull request is enabled.
@@ -769,6 +778,7 @@ scripts/classroom/Test-RegistrationPage.ps1 -RunLiveTest
 ```
 
 Pass criteria:
+
 - `CLASSROOM_DAY1_ASSIGNMENT_URL` and `CLASSROOM_DAY2_ASSIGNMENT_URL` are set and match assignment invite links.
 - Registration confirmation comment includes both assignment URLs.
 - `Test-RegistrationPage.ps1 -RunLiveTest` exits with no failures.
@@ -787,6 +797,7 @@ Use the test student account.
 6. Record Day 2 test repo URL.
 
 Pass criteria:
+
 - Two private repos are created and visible in classroom dashboard.
 
 ### Step 15. Seed initial challenges and peer simulation
@@ -817,6 +828,7 @@ scripts/classroom/Seed-PeerSimulation.ps1 -Repository $day2 -StudentUsername acc
 Alternatively, if `Initialize-WorkshopSetup.ps1` is run after `accesswatch-student` has accepted both invites, it will detect the repos and seed them automatically.
 
 Pass criteria:
+
 - Challenge 1 issue appears in Day 1 repo assigned to `accesswatch-student`.
 - Challenge 10 issue appears in Day 2 repo assigned to `accesswatch-student`.
 - Peer simulation issues and PR exist in both repos.
@@ -910,6 +922,7 @@ Appendices:
 - [ ] [docs/appendix-z-github-skills.md](../docs/appendix-z-github-skills.md)
 
 Phase 4 pass criteria:
+
 - Every listed file has been reviewed and marked complete.
 - Any doc defects are logged with owner and due date.
 
@@ -930,21 +943,21 @@ Why this matters:
 - Cross-document consistency reduces failed setup attempts during live cohorts.
 
 - [ ] Root docs alignment:
-   - [ ] [README.md](../README.md)
-   - [ ] [BUILD.md](../BUILD.md)
-   - [ ] [REGISTER.md](../REGISTER.md)
-   - [ ] [CONTRIBUTING.md](../CONTRIBUTING.md)
-   - [ ] [SECURITY.md](../SECURITY.md)
-   - [ ] [REPOSITORY_SECURITY.md](../REPOSITORY_SECURITY.md)
+  - [ ] [README.md](../README.md)
+  - [ ] [BUILD.md](../BUILD.md)
+  - [ ] [REGISTER.md](../REGISTER.md)
+  - [ ] [CONTRIBUTING.md](../CONTRIBUTING.md)
+  - [ ] [SECURITY.md](../SECURITY.md)
+  - [ ] [REPOSITORY_SECURITY.md](../REPOSITORY_SECURITY.md)
 - [ ] Classroom deployment docs:
-   - [ ] [classroom/README.md](../classroom/README.md)
-   - [ ] [classroom/HUMAN_TEST_MATRIX.md](../classroom/HUMAN_TEST_MATRIX.md)
-   - [ ] [classroom/grading-guide.md](../classroom/grading-guide.md)
+  - [ ] [classroom/README.md](../classroom/README.md)
+  - [ ] [classroom/HUMAN_TEST_MATRIX.md](../classroom/HUMAN_TEST_MATRIX.md)
+  - [ ] [classroom/grading-guide.md](../classroom/grading-guide.md)
 - [ ] Learning Room automation docs:
-   - [ ] [learning-room/.github/STUDENT_GUIDE.md](../learning-room/.github/STUDENT_GUIDE.md)
-   - [ ] [learning-room/.github/FACILITATOR_GUIDE.md](../learning-room/.github/FACILITATOR_GUIDE.md)
-   - [ ] [learning-room/.github/SETUP_AND_MAINTENANCE.md](../learning-room/.github/SETUP_AND_MAINTENANCE.md)
-   - [ ] [learning-room/.github/DEPLOYMENT_VALIDATION.md](../learning-room/.github/DEPLOYMENT_VALIDATION.md)
+  - [ ] [learning-room/.github/STUDENT_GUIDE.md](../learning-room/.github/STUDENT_GUIDE.md)
+  - [ ] [learning-room/.github/FACILITATOR_GUIDE.md](../learning-room/.github/FACILITATOR_GUIDE.md)
+  - [ ] [learning-room/.github/SETUP_AND_MAINTENANCE.md](../learning-room/.github/SETUP_AND_MAINTENANCE.md)
+  - [ ] [learning-room/.github/DEPLOYMENT_VALIDATION.md](../learning-room/.github/DEPLOYMENT_VALIDATION.md)
 
 Pass criteria:
 
@@ -1004,6 +1017,7 @@ scripts/classroom/Start-MergeConflictChallenge.ps1 -Repository Community-Access-
 ```
 
 Day 1 pass criteria:
+
 - Progression works across all nine challenges.
 - Gandalf feedback appears on test PRs.
 - Challenge 7 conflict-marker checks fail before fix and pass after fix.
@@ -1023,6 +1037,7 @@ Challenge-specific checks:
 7. Challenge 16: fork `Community-Access/accessibility-agents`, create agent file with frontmatter, responsibilities, and guardrails, then open cross-fork PR.
 
 Day 2 pass criteria:
+
 - Progression works from 10 through 16.
 - Autograders for 10, 14, and 16 provide useful pass/fail feedback.
 - Capstone evidence is complete and reviewable.
@@ -1057,6 +1072,7 @@ Bonus challenges are optional for students, but QA tracking is required for ever
 4. If a bonus challenge is not fully executed, record why and what validated the path.
 
 Pass criteria:
+
 - All bonus challenges A to E have explicit status and notes.
 - No bonus challenge is left untracked.
 
@@ -1574,7 +1590,7 @@ After the script completes, two manual cleanup steps are required (API limitatio
 scripts/classroom/Delete-RegistrationIssues.ps1
 ```
 
-2. **Delete discussions** -- discussions still require manual deletion:
+1. **Delete discussions** -- discussions still require manual deletion:
    `https://github.com/Community-Access/git-going-with-github/discussions`
 
 Archive destination: `https://github.com/Community-Access/git-going-student-success/tree/main/admin/cohorts/<CohortSlug>/`

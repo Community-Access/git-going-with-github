@@ -9,6 +9,7 @@ This folder contains all administrative and facilitator documentation for runnin
 **Start here if you're running a workshop:**
 
 ### Quick Navigation
+
 - **[FACILITATOR_RESOURCES.md](FACILITATOR_RESOURCES.md)** - Navigation hub for all facilitator guides
 - **[FACILITATOR_GUIDE.md](FACILITATOR_GUIDE.md)** - Complete workshop bible (setup through post-workshop)
 - **[FACILITATOR_OPERATIONS.md](FACILITATOR_OPERATIONS.md)** - Hour-by-hour procedures during workshop
@@ -17,6 +18,7 @@ This folder contains all administrative and facilitator documentation for runnin
 - **[LEARNING-ROOM-E2E-QA-RUNBOOK.md](LEARNING-ROOM-E2E-QA-RUNBOOK.md)** - Single step-by-step QA runbook from registration to full student completion (podcast excluded)
 
 ### Supporting Guides
+
 - **[FACILITATOR_CHALLENGES.md](FACILITATOR_CHALLENGES.md)** - Managing the challenge system
 - **[FACILITATOR_ASSESSMENT.md](FACILITATOR_ASSESSMENT.md)** - Assessment and grading rubric
 - **[SUPPORT_HUB_OPERATIONS.md](SUPPORT_HUB_OPERATIONS.md)** - Post-workshop support hub governance and triage model
@@ -73,22 +75,26 @@ This folder contains all administrative and facilitator documentation for runnin
 ## Typical Workflow
 
 ### Planning Phase (Weeks 1-2 Before)
+
 1. [COHORT_PROVISIONING.md](COHORT_PROVISIONING.md) - Set up the cohort
 2. [FACILITATOR_GUIDE.md](FACILITATOR_GUIDE.md#-github-classroom-setup-before-day-1) - GitHub Classroom setup
 3. [ANNOUNCEMENT.md](ANNOUNCEMENT.md) - Create student announcements
 4. [STUDENT_MANAGEMENT.md](STUDENT_MANAGEMENT.md) - Prepare roster
 
 ### Pre-Workshop (48 Hours Before)
+
 1. [FACILITATOR_GUIDE.md](FACILITATOR_GUIDE.md#-pre-workshop-checklist-48-hours-before) - Complete checklist
 2. [ACCESSIBILITY_TESTING.md](ACCESSIBILITY_TESTING.md) - Test with screen readers
 3. [FACILITATOR_OPERATIONS.md](FACILITATOR_OPERATIONS.md#pre-workshop-setup-3-hours-before) - Setup workstation
 
 ### During Workshop
+
 1. [FACILITATOR_OPERATIONS.md](FACILITATOR_OPERATIONS.md) - Follow hour-by-hour procedures
 2. [FACILITATOR_CLASSROOM_TROUBLESHOOTING.md](FACILITATOR_CLASSROOM_TROUBLESHOOTING.md) - Reference when needed
 3. [PROGRESS_TRACKER.md](PROGRESS_TRACKER.md) - Track student progress
 
 ### Post-Workshop
+
 1. [FACILITATOR_GUIDE.md](FACILITATOR_GUIDE.md#-post-workshop-tasks-week-after) - Follow-up tasks
 2. Update this documentation with lessons learned
 
@@ -97,17 +103,20 @@ This folder contains all administrative and facilitator documentation for runnin
 ## Reading Order Recommendations
 
 ### For First-Time Facilitators
+
 1. Start: [FACILITATOR_RESOURCES.md](FACILITATOR_RESOURCES.md)
 2. Then: [FACILITATOR_GUIDE.md](FACILITATOR_GUIDE.md) (full read)
 3. Then: [FACILITATOR_OPERATIONS.md](FACILITATOR_OPERATIONS.md) (full read)
 4. Reference: [FACILITATOR_CLASSROOM_TROUBLESHOOTING.md](FACILITATOR_CLASSROOM_TROUBLESHOOTING.md)
 
 ### For Returning Facilitators
+
 1. Quick reference: [QUICK_REFERENCE.md](QUICK_REFERENCE.md)
 2. Review: [FACILITATOR_GUIDE.md](FACILITATOR_GUIDE.md#-pre-workshop-checklist-48-hours-before) checklist
 3. Keep open: [FACILITATOR_OPERATIONS.md](FACILITATOR_OPERATIONS.md) during workshop
 
 ### For Admin/Coordinators
+
 1. [COHORT_PROVISIONING.md](COHORT_PROVISIONING.md) - Setup cohorts
 2. [STUDENT_MANAGEMENT.md](STUDENT_MANAGEMENT.md) - Manage rosters
 3. [PROGRESS_TRACKER.md](PROGRESS_TRACKER.md) - Monitor progress
@@ -118,24 +127,29 @@ This folder contains all administrative and facilitator documentation for runnin
 ## Key Resources By Topic
 
 ### GitHub Classroom
+
 - [FACILITATOR_GUIDE.md](FACILITATOR_GUIDE.md#-github-classroom-setup-before-day-1) - Complete setup
 - [COHORT_PROVISIONING.md](COHORT_PROVISIONING.md) - Provisioning
 - [classroom/README.md](classroom/README.md) - Fast copy-paste setup pack
 
 ### Accessibility
+
 - [ACCESSIBILITY_TESTING.md](ACCESSIBILITY_TESTING.md) - Testing procedures
 - [FACILITATOR_GUIDE.md](FACILITATOR_GUIDE.md) - Accessibility philosophy (throughout)
 
 ### Student Communication
+
 - [ANNOUNCEMENT.md](ANNOUNCEMENT.md) - Announcement templates
 - [STUDENT_ONBOARDING_EMAIL.md](STUDENT_ONBOARDING_EMAIL.md) - Onboarding email
 - [FAQ.md](FAQ.md) - FAQs to share
 
 ### Troubleshooting
+
 - [FACILITATOR_CLASSROOM_TROUBLESHOOTING.md](FACILITATOR_CLASSROOM_TROUBLESHOOTING.md) - GitHub-specific issues
 - [TROUBLESHOOTING.md](TROUBLESHOOTING.md) - General troubleshooting
 
 ### Assessment
+
 - [FACILITATOR_ASSESSMENT.md](FACILITATOR_ASSESSMENT.md) - Grading rubric
 - [PROGRESS_TRACKER.md](PROGRESS_TRACKER.md) - Progress tracking
 
