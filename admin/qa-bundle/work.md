@@ -243,7 +243,7 @@ Source template: [challenge-05-make-your-mark.yml](learning-room/.github/ISSUE_T
 ### Step-by-step instructions
 
 #### Step 1: Make sure you are on your branch
-1. Look at the branch dropdown (should show your branch name like `learn/yourname`)
+1. Look at the branch dropdown (should show your branch name like `learn/YOUR-USERNAME`)
 2. If it says `main`, click the dropdown and select `learn/YOUR-USERNAME`
 3. You must be on your personal branch before making edits
 
@@ -414,7 +414,7 @@ When Git cannot automatically merge code, it marks the problem with special mark
 The version currently on main branch
 =======
 Your version from your branch
->>>>>>> learn/your-username
+>>>>>>> learn/YOUR-USERNAME
 ```
 
 **Your job:** Decide which version is right (or combine them), then **DELETE all three marker lines** (the `<<<<<<<`, `=======`, `>>>>>>>` lines). The final file should have NO markers and have actual, meaningful code.
