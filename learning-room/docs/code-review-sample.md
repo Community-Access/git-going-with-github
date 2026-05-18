@@ -22,7 +22,7 @@ Here is a list:
 
 ![A picture of a cat](cat.jpg)
 
-Here is a link: [click here](https://example.com)
+Here is a link: [example website](https://example.com)
 
 ## Next Steps
 
@@ -34,3 +34,17 @@ Here is a link: [click here](https://example.com)
 ---
 
 Thank you for participating in the review!
+
+## Authoritative Sources
+
+Use these official references when you need the current source of truth for Markdown review, headings, links, and accessibility checks.
+
+- [GitHub Docs, home](https://docs.github.com/en)
+- [GitHub Flavored Markdown spec](https://github.github.com/gfm/)
+- [GitHub Pages docs](https://docs.github.com/en/pages)
+
+### Section-Level Source Map
+
+- **What to look for:** [GitHub Docs, home](https://docs.github.com/en), [GitHub Flavored Markdown spec](https://github.github.com/gfm/)
+- **Example Section:** [GitHub Docs, home](https://docs.github.com/en), [GitHub Flavored Markdown spec](https://github.github.com/gfm/)
+- **Next Steps:** [GitHub Docs, home](https://docs.github.com/en), [GitHub Pages docs](https://docs.github.com/en/pages)

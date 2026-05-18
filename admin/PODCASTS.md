@@ -52780,3 +52780,17 @@ These episodes are generated with local neural text-to-speech models. Each episo
   language, and screen reader-friendly descriptions.
 
 Source bundles and production documentation are in the [podcasts/](podcasts/) directory.
+
+## Authoritative Sources
+
+Use these official references when you need the current source of truth for podcast publishing and workshop audio content.
+
+- [GitHub Docs, home](https://docs.github.com/en)
+- [GitHub Pages docs](https://docs.github.com/en/pages)
+- [GitHub Actions docs](https://docs.github.com/en/actions)
+
+### Section-Level Source Map
+
+- **Git Going with GitHub - Audio Series:** [GitHub Docs, home](https://docs.github.com/en), [GitHub Pages docs](https://docs.github.com/en/pages), [GitHub Actions docs](https://docs.github.com/en/actions)
+- **How to Use These Episodes:** [GitHub Docs, home](https://docs.github.com/en), [GitHub Pages docs](https://docs.github.com/en/pages)
+- **Production:** [GitHub Docs, home](https://docs.github.com/en), [GitHub Actions docs](https://docs.github.com/en/actions)

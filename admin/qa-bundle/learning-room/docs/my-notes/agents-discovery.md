@@ -27,3 +27,16 @@ always verify suggestions against the actual rendered output.
 ---
 
 <!-- Add your section below this line -->
+
+## Authoritative Sources
+
+Use these official references when you need the current source of truth for Challenge 15 agent discovery notes and agent workflow terminology.
+
+- [GitHub Docs, home](https://docs.github.com/en)
+- [GitHub Copilot docs](https://docs.github.com/en/copilot)
+- [GitHub Skills catalog](https://skills.github.com/)
+
+### Section-Level Source Map
+
+- **Example entry:** [GitHub Docs, home](https://docs.github.com/en), [GitHub Copilot docs](https://docs.github.com/en/copilot)
+- **Participant sections:** [GitHub Docs, home](https://docs.github.com/en), [GitHub Skills catalog](https://skills.github.com/)
