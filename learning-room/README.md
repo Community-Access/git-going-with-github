@@ -74,7 +74,7 @@ The bot isn't always right! If you believe feedback is incorrect:
 2. Request human review
 3. Facilitators can override bot checks
 
-[**Read the Student Guide →**](.github/STUDENT_GUIDE.md)
+[**Read the Student Guide →**](https://github.com/Community-Access/git-going-with-github/blob/main/learning-room/.github/STUDENT_GUIDE.md)
 
 ## Skills & Progression
 

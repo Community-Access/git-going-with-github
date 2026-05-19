@@ -64,7 +64,7 @@ Day-2-only participants skip Assignment 1 entirely. They verify readiness using 
 | [assignment-day2-you-can-build-this.md](assignment-day2-you-can-build-this.md) | Assignment description for Day 2 (paste into Classroom UI) |
 | [grading-guide.md](grading-guide.md) | Facilitator rubric for all 21 challenges |
 | [roster-template.csv](https://github.com/Community-Access/git-going-with-github/blob/main/classroom/roster-template.csv) | Starter CSV for importing student roster |
-| [student-progression.yml](student-progression.yml) | Reference copy of the progression bot workflow |
+| [student-progression.yml](https://github.com/Community-Access/git-going-with-github/blob/main/classroom/student-progression.yml) | Reference copy of the progression bot workflow |
 | [HUMAN_TEST_MATRIX.md](HUMAN_TEST_MATRIX.md) | End-to-end human walkthrough for all 16 core and 5 bonus challenges |
 | [teardown-checklist.md](teardown-checklist.md) | Post-workshop cleanup steps |
 | [../GO-LIVE-QA-GUIDE.md](../GO-LIVE-QA-GUIDE.md) | Final release-readiness guide and checklist |
@@ -444,7 +444,7 @@ See [teardown-checklist.md](teardown-checklist.md) for the complete post-worksho
 
 - [GitHub Classroom documentation](https://docs.github.com/en/education/manage-coursework-with-github-classroom)
 - [Autograding documentation](https://docs.github.com/en/education/manage-coursework-with-github-classroom/teach-with-github-classroom/use-autograding)
-- [Facilitator Guide](../facilitator/FACILITATOR_GUIDE.md) -- workshop-level facilitation reference
+- [Facilitator Guide](../admin/FACILITATOR_GUIDE.md) -- workshop-level facilitation reference
 - [Challenge Hub](../docs/CHALLENGES.md) -- all 21 challenges with instructions
 - [Solutions Directory](../docs/solutions/) -- reference solutions for facilitator use
 - [Grading Guide](grading-guide.md) -- per-challenge rubric and completion levels

@@ -5,7 +5,7 @@
 > redirect.
 >
 > The current facilitator guide is at
-> [facilitator/FACILITATOR_GUIDE.md](../facilitator/FACILITATOR_GUIDE.md).
+> [FACILITATOR_GUIDE.md](./FACILITATOR_GUIDE.md).
 >
 > The workshop deployment guide is at
 > [classroom/README.md](../classroom/README.md).

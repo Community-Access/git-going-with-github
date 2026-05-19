@@ -462,7 +462,7 @@ All 13 chapters (4-16) have challenge content defined with generally clear instr
 
  **Verified:**
 
-- Explicit: Complete [Pre-Workshop Setup](00-pre-workshop-setup.md) first
+- Explicit: Complete [Pre-Workshop Setup](../docs/00-pre-workshop-setup.md) first
 - Assumes: GitHub account, browser, screen reader (implied)
 - Realistic progression: happens after GitHub web skills
 
@@ -554,7 +554,7 @@ All 13 chapters (4-16) have challenge content defined with generally clear instr
 
 4. **Separate section for desktop vs github.dev if length allows**, OR
 
-   **Add footnote:** "This challenge uses github.dev (browser-based). You can also complete it with VS Code Desktop following the same steps. See [VS Code Desktop Guide](___) for setup."
+   **Add footnote:** "This challenge uses github.dev (browser-based). You can also complete it with VS Code Desktop following the same steps. See [VS Code Desktop Guide](../docs/01-choose-your-tools.md) for setup."
 
 ### Chapter 11: Git & Source Control
 

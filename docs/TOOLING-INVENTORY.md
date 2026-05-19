@@ -11,7 +11,7 @@ Scope of this inventory:
 - `podcasts/` tooling and configuration (excluding `audio/`, `chapters/`, `transcripts/`, `bundles/`, `challenge-bundles/`, `logs/`, `_backups/`, `_snapshot-*/`, `llm-podcast-generator-review/generated/`, `__pycache__/`).
 - `scripts/` directory.
 - `docs/` (excluding `EPISODE_MAP.json` and `EPISODE-MAP-SCHEMA.json`).
-- `admin/` markdown (excluding `qa-bundle/` which is regenerated copy).
+- `admin/` markdown.
 - Site repo `c:\code\ggg`.
 
 Out of scope (excluded as noise):
@@ -22,7 +22,6 @@ Out of scope (excluded as noise):
 - `podcasts/logs/`, `tmp-*` files.
 - `podcasts/chapters/`, `podcasts/transcripts/`, `podcasts/bundles/`, `podcasts/challenge-bundles/` (regenerable build outputs).
 - `podcasts/llm-podcast-generator-review/generated/` (regression run outputs).
-- `admin/qa-bundle/` (regenerated copy of admin docs).
 - `node_modules/`, `.git/`, `epub/`, `learning-room/`, `classroom/` (out of reorg scope).
 
 Counts shown below are raw hits from ripgrep against the patterns `\bep[0-9]{2}\b`, `appendix-[a-z]+`, and `cc-bonus-[a-e]`.
@@ -109,7 +108,6 @@ These files contain many `ep##` / `appendix-X` references but are entirely regen
 | [podcasts/validate-report.json](../podcasts/validate-report.json) | excluded | validator output |
 | [podcasts/tools/quality_triage_report.md](../podcasts/tools/quality_triage_report.md), [podcasts/tools/quality_triage_report.csv](../podcasts/tools/quality_triage_report.csv) | 112 ep##, 5 cc-bonus each | Whatever produced them; mark as regenerable. |
 | `html/**/*.html` and `html/**/search-index.json` | very high | `npm run build:html` (via `scripts/build-html.js`) |
-| `admin/qa-bundle/**` | high | Whatever produces the qa-bundle copy. |
 
 ## Group G: Authoring documentation (manual update at content cutover)
 

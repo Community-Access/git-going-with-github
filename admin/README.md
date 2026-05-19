@@ -182,7 +182,7 @@ This folder contains all administrative and facilitator documentation for runnin
 
 - **[../classroom/](../classroom/)** - GitHub Classroom deployment and configuration
 - **[../docs/](../docs/)** - Student-facing guides and learning materials
-- **[../scripts/](../scripts/)** - Automation and utility scripts
+- **[scripts/](https://github.com/Community-Access/git-going-with-github/tree/main/scripts)** - Automation and utility scripts
 
 ---
 
