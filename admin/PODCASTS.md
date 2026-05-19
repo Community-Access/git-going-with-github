@@ -21583,3 +21583,21 @@ These episodes are generated with local neural text-to-speech models. Each episo
   language, and screen reader-friendly descriptions.
 
 Source bundles and production documentation are in the [podcasts/](podcasts/) directory.
+
+## Authoritative Sources
+
+Use these official references when you need the current source of truth for this listing.
+
+- [Podcast site generator](../podcasts/generate-site.js)
+- [Podcast feed output](../podcasts/feed.xml)
+- [Listening order configuration](../podcasts/config/listening-order.json)
+- [Podcast source directory](../podcasts/)
+
+### Section-Level Source Map
+
+Use this map to verify facts for each major section in this file.
+
+- **Git Going with GitHub - Audio Series:** [Podcast site generator](../podcasts/generate-site.js), [Podcast feed output](../podcasts/feed.xml)
+- **How to Use These Episodes:** [Listening order configuration](../podcasts/config/listening-order.json), [Podcast site generator](../podcasts/generate-site.js)
+- **Start Here / episode listings / transcripts:** [Podcast feed output](../podcasts/feed.xml), [Podcast site generator](../podcasts/generate-site.js), [Podcast source directory](../podcasts/)
+- **Production:** [Podcast source directory](../podcasts/), [Podcast site generator](../podcasts/generate-site.js)

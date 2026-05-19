@@ -153,3 +153,22 @@ The deploy repo `c:\code\ggg` contains a parallel `generator/` pipeline with its
 4. `generate-audio*.bat` wrappers do not need refactor until physical mp3 filenames rotate (Stage 2.3 or later). Until then, the existing `ep##-slug` mp3 filenames continue to work because identity is now carried inside ID3 tags via `narration_id` UUID, not the filename.
 
 5. Documentation updates (Group G) and regenerable artifacts (Group F) are last-mile work, done after the tooling refactor is stable.
+
+## Authoritative Sources
+
+Use these official references when you need the current source of truth for this inventory.
+
+- [Episode map](EPISODE_MAP.json)
+- [Episode map schema](EPISODE-MAP-SCHEMA.json)
+- [Site information architecture](SITE-IA.md)
+- [Reorganization master plan](../REORG-PLAN.md)
+
+### Section-Level Source Map
+
+Use this map to verify facts for each major section in this file.
+
+- **Purpose / scope / exclusions:** [Reorganization master plan](../REORG-PLAN.md), [Site Information Architecture (Stage 1.3)](SITE-IA.md)
+- **Group A - live tooling that drives audio identity:** [Episode map](EPISODE_MAP.json), [Episode map schema](EPISODE-MAP-SCHEMA.json)
+- **Group B-D - docs tooling, legacy tools, wrappers:** [Reorganization master plan](../REORG-PLAN.md), [Site Information Architecture (Stage 1.3)](SITE-IA.md)
+- **Group E-G - generation pipeline, artifacts, authoring docs:** [Reorganization master plan](../REORG-PLAN.md), [Episode map](EPISODE_MAP.json)
+- **Group H / recommendations:** [Site Information Architecture (Stage 1.3)](SITE-IA.md), [Reorganization master plan](../REORG-PLAN.md), [Episode map](EPISODE_MAP.json)

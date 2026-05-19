@@ -171,3 +171,22 @@ old -> new pair so a reverse rename script can be reconstructed.
   is the cleanest restore point.
 - The cutover branch should be `cutover-20260518` per the REORG-PLAN.md
   specification.
+
+## Authoritative Sources
+
+Use these official references when you need the current source of truth for this checklist.
+
+- [Reorganization master plan](REORG-PLAN.md)
+- [Episode map](docs/EPISODE_MAP.json)
+- [Site information architecture](docs/SITE-IA.md)
+- [Tooling inventory](docs/TOOLING-INVENTORY.md)
+
+### Section-Level Source Map
+
+Use this map to verify facts for each major section in this file.
+
+- **Pre-cutover state (verified):** [Reorganization master plan](REORG-PLAN.md), [Episode map](docs/EPISODE_MAP.json)
+- **Built tools (this session):** [Tooling Inventory (Stage 1.4)](docs/TOOLING-INVENTORY.md), [Reorganization master plan](REORG-PLAN.md)
+- **Dry-run summary:** [Reorganization master plan](REORG-PLAN.md), [Stage 3 Cutover - Ship Checklist](SHIP-CHECKLIST.md)
+- **Fire sequence (locally reversible up through step 5):** [Reorganization master plan](REORG-PLAN.md), [Site Information Architecture (Stage 1.3)](docs/SITE-IA.md)
+- **Rollback / exclusions / notes:** [Reorganization master plan](REORG-PLAN.md), [Tooling Inventory (Stage 1.4)](docs/TOOLING-INVENTORY.md)
