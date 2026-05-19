@@ -16,6 +16,18 @@ Registration is **open and free** for the May 2026 cohort. The workshop runs **T
 
 You will need a [GitHub account](https://github.com/login) to register. New to GitHub? Creating an account is free and takes about two minutes; the registration page walks you through every step.
 
+## Fully Remote -- Learn From Anywhere
+
+GIT Going with GitHub is a **fully remote workshop**. Wherever you are, you can join.
+
+- **Live sessions** run on Zoom with live captions and screen-reader-friendly facilitation.
+- **All materials** -- challenges, episodes, podcasts, and reference docs -- are published on this site and available to read or listen to at your own pace, before and after the workshop.
+- **Hands-on practice** happens inside your own GitHub Classroom assignment; mentors and automation agents support you in real time through GitHub issues and discussions.
+- **No travel, no special software** -- a browser, a keyboard, and your screen reader or assistive tech of choice are all you need.
+- **Self-paced option** -- can't make the live dates? Every challenge, episode, and document on this site is yours to work through whenever you are ready. Open a discussion if you get stuck and a mentor will meet you there.
+
+This is open-source learning: free to read, free to share, free to join.
+
 > **Tools change. Exploration is part of the skill.** GitHub.com, GitHub Classroom, VS Code, GitHub Copilot, github.dev, browser extensions, and agent experiences change continuously. We do our best to keep this documentation current, source-backed, and tested, but a label may move, a feature may graduate from preview, or an account policy may change what you hear. When something differs, pause and use the exploration skills taught here: check the page title and URL, move by headings and landmarks, find the named tab or button, use the Command Palette or keyboard shortcut help, and compare with the official docs linked in each chapter. If the documented path is wrong, file a curriculum issue so we can update it for everyone.
 
 | Detail | Information |

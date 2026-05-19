@@ -6,6 +6,12 @@
 
 Welcome, traveler. I am your Grey Wizard Mentor at the gate, here to welcome you to your Git and GitHub adventure.
 
+## A fully remote adventure -- learn from anywhere
+
+This workshop is **100% remote**. Live sessions run on Zoom with captions and screen-reader-friendly facilitation; every challenge, episode, and reference document is published on the public site, available to read or listen to before, during, and after the workshop. You will work in your own GitHub Classroom assignment with mentors and automation agents supporting you through issues and discussions. No travel, no special software -- just a browser, a keyboard, and your assistive tech of choice.
+
+Can't make the live dates? The full curriculum stays open. Begin at your own pace and open a discussion whenever you need a mentor.
+
 ## A magical welcome
 
 My role is simple: set expectations, light the path when Git gets foggy, and help you move from uncertain first steps to confident collaboration.
