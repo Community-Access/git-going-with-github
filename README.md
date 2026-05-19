@@ -8,6 +8,14 @@ License: CC BY 4.0 | [Site](https://community-access.org/git-going-with-github/)
 >
 > **About Community Access:** [Community Access](https://community-access.org) is a community of blind and low vision technology professionals. Visit [community-access.org](https://community-access.org) to learn more.
 
+## Register Now -- May 21 & 22, 2026
+
+Registration is **open and free** for the May 2026 cohort. The workshop runs **Thursday, May 21 and Friday, May 22, 2026**.
+
+**[Register for GIT Going with GitHub](https://community-access.org/git-going-with-github/REGISTER.html)** -- single enrollment form, automated confirmation, guided next steps.
+
+You will need a [GitHub account](https://github.com/login) to register. New to GitHub? Creating an account is free and takes about two minutes; the registration page walks you through every step.
+
 > **Tools change. Exploration is part of the skill.** GitHub.com, GitHub Classroom, VS Code, GitHub Copilot, github.dev, browser extensions, and agent experiences change continuously. We do our best to keep this documentation current, source-backed, and tested, but a label may move, a feature may graduate from preview, or an account policy may change what you hear. When something differs, pause and use the exploration skills taught here: check the page title and URL, move by headings and landmarks, find the named tab or button, use the Command Palette or keyboard shortcut help, and compare with the official docs linked in each chapter. If the documented path is wrong, file a curriculum issue so we can update it for everyone.
 
 | Detail | Information |
