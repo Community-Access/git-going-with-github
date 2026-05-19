@@ -44,3 +44,18 @@ Reference material that supports the chapters. See [appendix-a-glossary.md](appe
 ## Reference solutions
 
 The [solutions/](solutions/) directory has reference answers for every challenge, intended for facilitator use and for learners who get stuck.
+
+## Authoritative Sources
+
+Use these official references when you need the current source of truth for facts in this index.
+
+- [GitHub Docs, home](https://docs.github.com/en)
+- [GitHub Changelog](https://github.blog/changelog/)
+
+### Section-Level Source Map
+
+Use this map to verify facts for each major section in this file.
+
+- **Chapters:** [GitHub Docs, home](https://docs.github.com/en), [GitHub Changelog](https://github.blog/changelog/)
+- **Appendices:** [GitHub Docs, home](https://docs.github.com/en), [GitHub Changelog](https://github.blog/changelog/)
+- **Reference solutions:** [GitHub Docs, home](https://docs.github.com/en), [GitHub Changelog](https://github.blog/changelog/)

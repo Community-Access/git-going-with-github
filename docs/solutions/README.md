@@ -37,3 +37,18 @@ This directory contains reference solutions for every challenge. They are intend
 - [Workshop documentation](../README.md)
 - [Challenges overview](../CHALLENGES.md)
 - [Course guide](../course-guide.md)
+
+## Authoritative Sources
+
+Use these official references when you need the current source of truth for facts in this solutions index.
+
+- [GitHub Docs, home](https://docs.github.com/en)
+- [GitHub Changelog](https://github.blog/changelog/)
+
+### Section-Level Source Map
+
+Use this map to verify facts for each major section in this file.
+
+- **Solutions:** [GitHub Docs, home](https://docs.github.com/en), [GitHub Changelog](https://github.blog/changelog/)
+- **Back to the workshop:** [GitHub Docs, home](https://docs.github.com/en), [GitHub Changelog](https://github.blog/changelog/)
+
