@@ -193,7 +193,11 @@ function buildBundles() {
 
   for (const ep of episodes) {
     const pad = String(ep.number).padStart(2, '0');
-    const outFile = path.join(BUNDLES_DIR, `ep${pad}-${ep.slug}.md`);
+    if (!ep.audio) {
+      throw new Error(`episode ${ep.number} missing canonical audio filename from EPISODE_MAP.json`);
+    }
+    const canonicalBase = ep.audio.replace(/\.mp3$/i, '');
+    const outFile = path.join(BUNDLES_DIR, `${canonicalBase}.md`);
 
     // Read and concatenate source chapter(s)
     let sourceContent = '';
@@ -253,7 +257,10 @@ function buildBundles() {
   // Write manifest JSON for use by generate-site.js and other consumers.
   const manifestPath = path.join(__dirname, 'manifest.json');
   const manifest = episodes.map(ep => {
-    const pad = String(ep.number).padStart(2, '0');
+    if (!ep.audio) {
+      throw new Error(`episode ${ep.number} missing canonical audio filename from EPISODE_MAP.json`);
+    }
+    const canonicalBase = ep.audio.replace(/\.mp3$/i, '');
     return {
       number: ep.number,
       slug: ep.slug,
@@ -261,8 +268,8 @@ function buildBundles() {
       description: ep.description || '',
       duration: ep.duration || '10-15 min',
       sources: ep.sources.map(resolveSourceName),
-      bundle: `ep${pad}-${ep.slug}.md`,
-      audio: `ep${pad}-${ep.slug}.mp3`,
+      bundle: `${canonicalBase}.md`,
+      audio: ep.audio,
       status: 'bundle-ready'
     };
   });

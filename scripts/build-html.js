@@ -303,10 +303,12 @@ function getPodcastCompanionsForPage(normalizedRelativePath) {
     const bySource = new Map();
 
     for (const ep of manifest) {
-      const pad = String(ep.number).padStart(2, '0');
-      const defaultAudio = `ep${pad}-${ep.slug}.mp3`;
-      const audioFile = ep.audio || defaultAudio;
-      const scriptName = `ep${pad}-${ep.slug}.txt`.toLowerCase();
+      if (!ep.audio) {
+        throw new Error(`manifest entry missing required 'audio' field (number=${ep.number}, slug=${ep.slug}); regenerate manifest before building HTML`);
+      }
+      const audioFile = ep.audio;
+      const canonicalBase = audioFile.replace(/\.mp3$/i, '');
+      const scriptName = `${canonicalBase}.txt`.toLowerCase();
       const scriptPath = scriptMap.get(scriptName) || null;
       const transcriptUrl = scriptPath
         ? `${REPO_BLOB_BASE_URL}/${path.relative(process.cwd(), scriptPath).replace(/\\/g, '/')}`

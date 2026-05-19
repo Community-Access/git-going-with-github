@@ -22,6 +22,13 @@ const SCRIPTS_DIR = path.join(__dirname, 'scripts');
 const TRANSCRIPTS_DIR = path.join(__dirname, 'transcripts');
 const SCRIPT_GROUP_DIRS = ['chapters', 'challenges', 'appendices'];
 
+function companionBase(episode) {
+  if (!episode || !episode.audio) {
+    throw new Error(`episode ${episode && episode.number} missing canonical audio filename from EPISODE_MAP.json`);
+  }
+  return episode.audio.replace(/\.mp3$/i, '');
+}
+
 function parseArgs(argv) {
   const args = {
     slug: null,
@@ -58,7 +65,7 @@ function shouldGenerateCompanion(episode, args) {
   const group = scriptGroupForCompanion(episode);
   if (!selectedScriptGroups(args).has(group)) return false;
   if (args.slug) {
-    const episodeSlug = `ep${String(episode.number).padStart(2, '0')}-${episode.slug}`;
+    const episodeSlug = companionBase(episode);
     return args.slug === episodeSlug;
   }
   return shouldIncludeRange(episode.number, args);
@@ -1239,7 +1246,7 @@ function buildCompanionScript(episode, total) {
   addSpokenLine(builder, 'JAMIE', 'That is a better way to say it than just follow the steps.');
   addSpokenLine(builder, 'ALEX', `Right. Steps matter, but understanding wins. That is episode ${episode.number}. Next in the series is ${episode.number + 1 < total ? `episode ${episode.number + 1}` : 'the next learning block'}, where we keep building the same contributor muscles.`);
 
-  return { fileName: `ep${pad}-${episode.slug}.txt`, script: builder.lines.join('\n'), chapterPlan: builder.chapters };
+  return { fileName: `${companionBase(episode)}.txt`, script: builder.lines.join('\n'), chapterPlan: builder.chapters };
 }
 
 function buildChallengeScript(challenge) {
@@ -1290,7 +1297,7 @@ function main() {
   const selectedEpisodes = episodes.filter(episode => shouldGenerateCompanion(episode, args));
   const selectedChallenges = challenges.filter(challenge => shouldGenerateChallenge(challenge, args));
   const selectedFiles = [
-    ...selectedEpisodes.map(episode => `ep${String(episode.number).padStart(2, '0')}-${episode.slug}.txt`),
+    ...selectedEpisodes.map(episode => `${companionBase(episode)}.txt`),
     ...selectedChallenges.map(challenge => `cc-${challenge.id}-${challenge.slug}.txt`)
   ];
 

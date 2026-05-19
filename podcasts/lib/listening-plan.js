@@ -15,8 +15,10 @@ function loadListeningOrder() {
 }
 
 function companionAudioFile(ep) {
-  const pad = String(ep.number).padStart(2, '0');
-  return ep.audio || `ep${pad}-${ep.slug}.mp3`;
+  if (!ep || !ep.audio) {
+    throw new Error(`manifest entry missing required 'audio' field (number=${ep && ep.number}, slug=${ep && ep.slug})`);
+  }
+  return ep.audio;
 }
 
 function companionSlug(ep) {

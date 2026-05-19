@@ -30,10 +30,11 @@ const FEED_XML = path.join(__dirname, 'feed.xml');
 
 const REPO_URL = 'https://github.com/Community-Access/git-going-with-github';
 const SITE_URL = 'https://community-access.org/git-going-with-github';
+const PODCAST_SITE_URL = 'https://lp.csedesigns.com/ggg';
 // Canonical media host: all mp3 audio (player pages + RSS enclosures) is served
 // from Caddy at lp.csedesigns.com/ggg/media. Do NOT point at GitHub Releases.
 const AUDIO_BASE = 'https://lp.csedesigns.com/ggg/media';
-const CHAPTERS_BASE = `${SITE_URL}/podcasts/chapters`;
+const CHAPTERS_BASE = '';
 const COMMUNITY_ACCESS_NAME = 'Community Access';
 const COMMUNITY_ACCESS_URL = 'http://www.community-access.org';
 const DEFAULT_KOKORO_AUDIO_DIR = path.join(AUDIO_DIR, 'kokoro-am_liam-af_jessica');
@@ -62,17 +63,17 @@ function groupLabel(ep) {
 
 // Map episode number to chapter/appendix source label
 function sourceLabel(ep) {
-  if (ep.number === 0) return '[Course Guide](docs/course-guide.md)';
+  if (ep.number === 0) return '[Course Guide](../docs/course-guide.md)';
   const src = Array.isArray(ep.sources) ? ep.sources[0] : '';
   if (!src) return ep.title || 'Source unavailable';
   const chapterNumber = chapterNumberFromSource(ep);
   if (chapterNumber !== null) {
-    return `[Chapter ${chapterNumber}: ${ep.title}](docs/${src})`;
+    return `[Chapter ${chapterNumber}: ${ep.title}](../docs/${src})`;
   }
   // Extract appendix letter from filename
   const match = src.match(/appendix-([a-z])-/);
   const letter = match ? match[1].toUpperCase() : '';
-  return `[Appendix ${letter}: ${ep.title}](docs/${src})`;
+  return `[Appendix ${letter}: ${ep.title}](../docs/${src})`;
 }
 
 // ---------------------------------------------------------------------------
@@ -188,8 +189,14 @@ function durationFromSegments(slug) {
 }
 
 function companionAudioFile(ep) {
-  const pad = String(ep.number).padStart(2, '0');
-  return ep.audio || `ep${pad}-${ep.slug}.mp3`;
+  if (!ep || !ep.audio) {
+    throw new Error(`manifest entry missing required 'audio' field (number=${ep && ep.number}, slug=${ep && ep.slug})`);
+  }
+  return ep.audio;
+}
+
+function companionBase(ep) {
+  return companionAudioFile(ep).replace(/\.mp3$/i, '');
 }
 
 function challengeAudioFile(challenge) {
@@ -201,6 +208,7 @@ function buildListeningItems(manifest) {
 }
 
 function chapterElementForSlug(slug) {
+  if (!CHAPTERS_BASE) return '';
   const chapterFile = `${slug}.json`;
   const chapterPath = path.join(CHAPTERS_DIR, chapterFile);
   if (!fs.existsSync(chapterPath)) return '';
@@ -245,13 +253,13 @@ function findScriptByPrefix(prefix) {
  * They may be stored directly in scripts/ or in categorized subfolders.
  */
 function findScriptFile(ep) {
-  const pad = String(ep.number).padStart(2, '0');
-  const expected = `ep${pad}-${ep.slug}.txt`;
+  const base = companionBase(ep);
+  const expected = `${base}.txt`;
   const expectedPath = findScriptByName(expected);
   if (expectedPath) return expectedPath;
 
-  // Fallback: scan for any file matching the episode number.
-  return findScriptByPrefix(`ep${pad}-`);
+  // Fallback: scan for any file matching the canonical base prefix.
+  return findScriptByPrefix(`${base}.`);
 }
 
 /**
@@ -428,7 +436,7 @@ function generatePlayerPage(manifest) {
   lines.push('');
   pushWrappedParagraph(lines, 'Listen to the workshop as one end-to-end path. Companion lessons, Challenge Coach episodes, and reference material are interleaved so learners can hear the concept, practice it, and then keep moving through the course. Every episode includes a full transcript below the player.');
   lines.push('');
-  pushWrappedParagraph(lines, `Add the [podcast RSS feed](${SITE_URL}/podcasts/feed.xml) to your preferred podcast app - Apple Podcasts, Spotify, Overcast, or any RSS reader.`, 100, '**Subscribe:** ');
+  pushWrappedParagraph(lines, `Add the [podcast RSS feed](${PODCAST_SITE_URL}/feed.xml) to your preferred podcast app - Apple Podcasts, Spotify, Overcast, or any RSS reader.`, 100, '**Subscribe:** ');
   lines.push('');
   pushWrappedParagraph(lines, 'Every episode includes a complete, readable transcript. Expand the "Read Transcript" section below any episode to follow along or search the conversation.', 100, '**Transcripts:** ');
   lines.push('');
@@ -509,7 +517,25 @@ function generatePlayerPage(manifest) {
   lines.push('');
   pushWrappedParagraph(lines, 'These episodes are generated with local neural text-to-speech models. Each episode is produced from the workshop chapter content using episode-specific scripts that ensure concept coverage, accessible language, and screen reader-friendly descriptions.');
   lines.push('');
-  lines.push('Source bundles and production documentation are in the [podcasts/](podcasts/) directory.');
+  lines.push('Source bundles and production documentation are in the [podcasts/](../podcasts/) directory.');
+  lines.push('');
+  lines.push('## Authoritative Sources');
+  lines.push('');
+  lines.push('Use these official references when you need the current source of truth for this listing.');
+  lines.push('');
+  lines.push(`- [Podcast site generator](${REPO_URL}/blob/main/podcasts/generate-site.js)`);
+  lines.push(`- [Podcast feed output](${PODCAST_SITE_URL}/feed.xml)`);
+  lines.push(`- [Listening order configuration](${REPO_URL}/blob/main/podcasts/config/listening-order.json)`);
+  lines.push(`- [Podcast source directory](${REPO_URL}/tree/main/podcasts)`);
+  lines.push('');
+  lines.push('### Section-Level Source Map');
+  lines.push('');
+  lines.push('Use this map to verify facts for each major section in this file.');
+  lines.push('');
+  lines.push(`- **Git Going with GitHub - Audio Series:** [Podcast site generator](${REPO_URL}/blob/main/podcasts/generate-site.js), [Podcast feed output](${PODCAST_SITE_URL}/feed.xml)`);
+  lines.push(`- **How to Use These Episodes:** [Listening order configuration](${REPO_URL}/blob/main/podcasts/config/listening-order.json), [Podcast site generator](${REPO_URL}/blob/main/podcasts/generate-site.js)`);
+  lines.push(`- **Start Here / episode listings / transcripts:** [Podcast feed output](${PODCAST_SITE_URL}/feed.xml), [Podcast site generator](${REPO_URL}/blob/main/podcasts/generate-site.js), [Podcast source directory](${REPO_URL}/tree/main/podcasts)`);
+  lines.push(`- **Production:** [Podcast source directory](${REPO_URL}/tree/main/podcasts), [Podcast site generator](${REPO_URL}/blob/main/podcasts/generate-site.js)`);
   lines.push('');
 
   return lines.join('\n');
@@ -529,7 +555,7 @@ function generateRssFeed(manifest) {
     const audioPath = audioPathForFile(audioFile);
     if (!fs.existsSync(audioPath)) return null;
     const audioUrl = audioUrlForFile(audioFile);
-    const episodeUrl = `${SITE_URL}/admin/PODCASTS.html`;
+    const episodeUrl = `${PODCAST_SITE_URL}/PODCASTS.html`;
     const enclosureLength = fileSizeBytes(audioPath);
     const pubDate = pubDateForFile(audioPath, now);
     const chapterTag = chapterElementForSlug(audioSlug);
@@ -585,8 +611,8 @@ function generateRssFeed(manifest) {
     xmlns:ca="https://community-access.org/podcast/ns">
   <channel>
     <title>Git Going with GitHub - Audio Series</title>
-    <link>${SITE_URL}</link>
-    <atom:link href="${SITE_URL}/podcasts/feed.xml" rel="self" type="application/rss+xml" />
+    <link>${PODCAST_SITE_URL}</link>
+    <atom:link href="${PODCAST_SITE_URL}/feed.xml" rel="self" type="application/rss+xml" />
     <description>Companion audio episodes for the Git Going with GitHub workshop. Standalone teaching conversations for every chapter and appendix, designed for blind and low-vision developers learning GitHub and open source collaboration.</description>
     <language>en-us</language>
     <lastBuildDate>${now}</lastBuildDate>
