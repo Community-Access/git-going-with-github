@@ -31,11 +31,11 @@ A tour of the workshop structure, the two-day arc, and what you will accomplish.
 Based on: [Course Guide](docs/course-guide.md)
 
 <audio controls preload="none">
-  <source src="https://github.com/Community-Access/git-going-with-github/releases/download/podcasts/ch-00-welcome.mp3" type="audio/mpeg">
-  Your browser does not support the audio element. <a href="https://github.com/Community-Access/git-going-with-github/releases/download/podcasts/ch-00-welcome.mp3">Download Episode 0 (MP3)</a>
+  <source src="https://lp.csedesigns.com/ggg/media/ch-00-welcome.mp3" type="audio/mpeg">
+  Your browser does not support the audio element. <a href="https://lp.csedesigns.com/ggg/media/ch-00-welcome.mp3">Download Episode 0 (MP3)</a>
 </audio>
 
-[Download Episode 0 (MP3)](https://github.com/Community-Access/git-going-with-github/releases/download/podcasts/ch-00-welcome.mp3)
+[Download Episode 0 (MP3)](https://lp.csedesigns.com/ggg/media/ch-00-welcome.mp3)
 
 <details>
 <summary>Read Transcript - Episode 0: Welcome to Git Going with GitHub</summary>
@@ -239,11 +239,11 @@ Comprehensive glossary: Git, GitHub, open source, and accessibility terminology.
 Based on: [Appendix A: Glossary of Terms](docs/appendix-a-glossary.md)
 
 <audio controls preload="none">
-  <source src="https://github.com/Community-Access/git-going-with-github/releases/download/podcasts/ref-01-glossary.mp3" type="audio/mpeg">
-  Your browser does not support the audio element. <a href="https://github.com/Community-Access/git-going-with-github/releases/download/podcasts/ref-01-glossary.mp3">Download Episode 18 (MP3)</a>
+  <source src="https://lp.csedesigns.com/ggg/media/ref-01-glossary.mp3" type="audio/mpeg">
+  Your browser does not support the audio element. <a href="https://lp.csedesigns.com/ggg/media/ref-01-glossary.mp3">Download Episode 18 (MP3)</a>
 </audio>
 
-[Download Episode 18 (MP3)](https://github.com/Community-Access/git-going-with-github/releases/download/podcasts/ref-01-glossary.mp3)
+[Download Episode 18 (MP3)](https://lp.csedesigns.com/ggg/media/ref-01-glossary.mp3)
 
 <details>
 <summary>Read Transcript - Episode 18: Glossary of Terms</summary>
@@ -639,11 +639,11 @@ Creating your GitHub account, installing Git and VS Code, configuring your scree
 Based on: [Chapter 0: Pre-Workshop Setup](docs/00-pre-workshop-setup.md)
 
 <audio controls preload="none">
-  <source src="https://github.com/Community-Access/git-going-with-github/releases/download/podcasts/ch-01-pre-workshop-setup.mp3" type="audio/mpeg">
-  Your browser does not support the audio element. <a href="https://github.com/Community-Access/git-going-with-github/releases/download/podcasts/ch-01-pre-workshop-setup.mp3">Download Episode 1 (MP3)</a>
+  <source src="https://lp.csedesigns.com/ggg/media/ch-01-pre-workshop-setup.mp3" type="audio/mpeg">
+  Your browser does not support the audio element. <a href="https://lp.csedesigns.com/ggg/media/ch-01-pre-workshop-setup.mp3">Download Episode 1 (MP3)</a>
 </audio>
 
-[Download Episode 1 (MP3)](https://github.com/Community-Access/git-going-with-github/releases/download/podcasts/ch-01-pre-workshop-setup.mp3)
+[Download Episode 1 (MP3)](https://lp.csedesigns.com/ggg/media/ch-01-pre-workshop-setup.mp3)
 
 <details>
 <summary>Read Transcript - Episode 1: Pre-Workshop Setup</summary>
@@ -949,11 +949,11 @@ A guided tour of browser GitHub, github.dev, VS Code, GitHub Desktop, and the CL
 Based on: [Chapter 1: Choose Your Tools](docs/01-choose-your-tools.md)
 
 <audio controls preload="none">
-  <source src="https://github.com/Community-Access/git-going-with-github/releases/download/podcasts/agents-04-choose-your-tools.mp3" type="audio/mpeg">
-  Your browser does not support the audio element. <a href="https://github.com/Community-Access/git-going-with-github/releases/download/podcasts/agents-04-choose-your-tools.mp3">Download Episode 44 (MP3)</a>
+  <source src="https://lp.csedesigns.com/ggg/media/agents-04-choose-your-tools.mp3" type="audio/mpeg">
+  Your browser does not support the audio element. <a href="https://lp.csedesigns.com/ggg/media/agents-04-choose-your-tools.mp3">Download Episode 44 (MP3)</a>
 </audio>
 
-[Download Episode 44 (MP3)](https://github.com/Community-Access/git-going-with-github/releases/download/podcasts/agents-04-choose-your-tools.mp3)
+[Download Episode 44 (MP3)](https://lp.csedesigns.com/ggg/media/agents-04-choose-your-tools.mp3)
 
 <details>
 <summary>Read Transcript - Episode 44: Choose Your Tools</summary>
@@ -1211,11 +1211,11 @@ How GitHub organizes its web pages, heading structure, landmarks, and keyboard s
 Based on: [Chapter 2: Understanding GitHub on the Web](docs/02-understanding-github.md)
 
 <audio controls preload="none">
-  <source src="https://github.com/Community-Access/git-going-with-github/releases/download/podcasts/ch-02-github-web-structure.mp3" type="audio/mpeg">
-  Your browser does not support the audio element. <a href="https://github.com/Community-Access/git-going-with-github/releases/download/podcasts/ch-02-github-web-structure.mp3">Download Episode 2 (MP3)</a>
+  <source src="https://lp.csedesigns.com/ggg/media/ch-02-github-web-structure.mp3" type="audio/mpeg">
+  Your browser does not support the audio element. <a href="https://lp.csedesigns.com/ggg/media/ch-02-github-web-structure.mp3">Download Episode 2 (MP3)</a>
 </audio>
 
-[Download Episode 2 (MP3)](https://github.com/Community-Access/git-going-with-github/releases/download/podcasts/ch-02-github-web-structure.mp3)
+[Download Episode 2 (MP3)](https://lp.csedesigns.com/ggg/media/ch-02-github-web-structure.mp3)
 
 <details>
 <summary>Read Transcript - Episode 2: Understanding GitHub on the Web</summary>
@@ -1409,11 +1409,11 @@ NVDA, JAWS, and VoiceOver commands for GitHub and VS Code.
 Based on: [Appendix B: Screen Reader Cheat Sheet](docs/appendix-b-screen-reader-cheatsheet.md)
 
 <audio controls preload="none">
-  <source src="https://github.com/Community-Access/git-going-with-github/releases/download/podcasts/ref-02-screen-reader-cheatsheet.mp3" type="audio/mpeg">
-  Your browser does not support the audio element. <a href="https://github.com/Community-Access/git-going-with-github/releases/download/podcasts/ref-02-screen-reader-cheatsheet.mp3">Download Episode 19 (MP3)</a>
+  <source src="https://lp.csedesigns.com/ggg/media/ref-02-screen-reader-cheatsheet.mp3" type="audio/mpeg">
+  Your browser does not support the audio element. <a href="https://lp.csedesigns.com/ggg/media/ref-02-screen-reader-cheatsheet.mp3">Download Episode 19 (MP3)</a>
 </audio>
 
-[Download Episode 19 (MP3)](https://github.com/Community-Access/git-going-with-github/releases/download/podcasts/ref-02-screen-reader-cheatsheet.mp3)
+[Download Episode 19 (MP3)](https://lp.csedesigns.com/ggg/media/ref-02-screen-reader-cheatsheet.mp3)
 
 <details>
 <summary>Read Transcript - Episode 19: Screen Reader Cheat Sheet</summary>
@@ -1672,11 +1672,11 @@ Exploring a repository: tabs, files, README, branches, and commit history.
 Based on: [Chapter 3: Navigating Repositories](docs/03-navigating-repositories.md)
 
 <audio controls preload="none">
-  <source src="https://github.com/Community-Access/git-going-with-github/releases/download/podcasts/ch-03-navigating-repositories.mp3" type="audio/mpeg">
-  Your browser does not support the audio element. <a href="https://github.com/Community-Access/git-going-with-github/releases/download/podcasts/ch-03-navigating-repositories.mp3">Download Episode 3 (MP3)</a>
+  <source src="https://lp.csedesigns.com/ggg/media/ch-03-navigating-repositories.mp3" type="audio/mpeg">
+  Your browser does not support the audio element. <a href="https://lp.csedesigns.com/ggg/media/ch-03-navigating-repositories.mp3">Download Episode 3 (MP3)</a>
 </audio>
 
-[Download Episode 3 (MP3)](https://github.com/Community-Access/git-going-with-github/releases/download/podcasts/ch-03-navigating-repositories.mp3)
+[Download Episode 3 (MP3)](https://lp.csedesigns.com/ggg/media/ch-03-navigating-repositories.mp3)
 
 <details>
 <summary>Read Transcript - Episode 3: Navigating Repositories</summary>
@@ -1911,11 +1911,11 @@ Your shared practice environment: challenges, PR workflow, bot feedback, peer re
 Based on: [Chapter 4: The Learning Room](docs/04-the-learning-room.md)
 
 <audio controls preload="none">
-  <source src="https://github.com/Community-Access/git-going-with-github/releases/download/podcasts/ch-04-the-learning-room.mp3" type="audio/mpeg">
-  Your browser does not support the audio element. <a href="https://github.com/Community-Access/git-going-with-github/releases/download/podcasts/ch-04-the-learning-room.mp3">Download Episode 4 (MP3)</a>
+  <source src="https://lp.csedesigns.com/ggg/media/ch-04-the-learning-room.mp3" type="audio/mpeg">
+  Your browser does not support the audio element. <a href="https://lp.csedesigns.com/ggg/media/ch-04-the-learning-room.mp3">Download Episode 4 (MP3)</a>
 </audio>
 
-[Download Episode 4 (MP3)](https://github.com/Community-Access/git-going-with-github/releases/download/podcasts/ch-04-the-learning-room.mp3)
+[Download Episode 4 (MP3)](https://lp.csedesigns.com/ggg/media/ch-04-the-learning-room.mp3)
 
 <details>
 <summary>Read Transcript - Episode 4: The Learning Room</summary>
@@ -2208,11 +2208,11 @@ Repository orientation, headings, tabs, file tree navigation, and confidence in 
 Practice focus: Day 1 foundation
 
 <audio controls preload="none">
-  <source src="https://github.com/Community-Access/git-going-with-github/releases/download/podcasts/cc-01-find-your-way-around.mp3" type="audio/mpeg">
-  Your browser does not support the audio element. <a href="https://github.com/Community-Access/git-going-with-github/releases/download/podcasts/cc-01-find-your-way-around.mp3">Download Challenge 01 (MP3)</a>
+  <source src="https://lp.csedesigns.com/ggg/media/cc-01-find-your-way-around.mp3" type="audio/mpeg">
+  Your browser does not support the audio element. <a href="https://lp.csedesigns.com/ggg/media/cc-01-find-your-way-around.mp3">Download Challenge 01 (MP3)</a>
 </audio>
 
-[Download Challenge 01 (MP3)](https://github.com/Community-Access/git-going-with-github/releases/download/podcasts/cc-01-find-your-way-around.mp3)
+[Download Challenge 01 (MP3)](https://lp.csedesigns.com/ggg/media/cc-01-find-your-way-around.mp3)
 
 <details>
 <summary>Read Transcript - Challenge 01: Find Your Way Around</summary>
@@ -2444,11 +2444,11 @@ Filing, searching, filtering, commenting on, and managing GitHub issues.
 Based on: [Chapter 5: Working with Issues](docs/05-working-with-issues.md)
 
 <audio controls preload="none">
-  <source src="https://github.com/Community-Access/git-going-with-github/releases/download/podcasts/ch-05-working-with-issues.mp3" type="audio/mpeg">
-  Your browser does not support the audio element. <a href="https://github.com/Community-Access/git-going-with-github/releases/download/podcasts/ch-05-working-with-issues.mp3">Download Episode 5 (MP3)</a>
+  <source src="https://lp.csedesigns.com/ggg/media/ch-05-working-with-issues.mp3" type="audio/mpeg">
+  Your browser does not support the audio element. <a href="https://lp.csedesigns.com/ggg/media/ch-05-working-with-issues.mp3">Download Episode 5 (MP3)</a>
 </audio>
 
-[Download Episode 5 (MP3)](https://github.com/Community-Access/git-going-with-github/releases/download/podcasts/ch-05-working-with-issues.mp3)
+[Download Episode 5 (MP3)](https://lp.csedesigns.com/ggg/media/ch-05-working-with-issues.mp3)
 
 <details>
 <summary>Read Transcript - Episode 5: Working with Issues</summary>
@@ -2835,11 +2835,11 @@ Finding a TODO, creating a clear issue, and explaining what needs to change.
 Practice focus: Day 1 foundation
 
 <audio controls preload="none">
-  <source src="https://github.com/Community-Access/git-going-with-github/releases/download/podcasts/cc-02-file-your-first-issue.mp3" type="audio/mpeg">
-  Your browser does not support the audio element. <a href="https://github.com/Community-Access/git-going-with-github/releases/download/podcasts/cc-02-file-your-first-issue.mp3">Download Challenge 02 (MP3)</a>
+  <source src="https://lp.csedesigns.com/ggg/media/cc-02-file-your-first-issue.mp3" type="audio/mpeg">
+  Your browser does not support the audio element. <a href="https://lp.csedesigns.com/ggg/media/cc-02-file-your-first-issue.mp3">Download Challenge 02 (MP3)</a>
 </audio>
 
-[Download Challenge 02 (MP3)](https://github.com/Community-Access/git-going-with-github/releases/download/podcasts/cc-02-file-your-first-issue.mp3)
+[Download Challenge 02 (MP3)](https://lp.csedesigns.com/ggg/media/cc-02-file-your-first-issue.mp3)
 
 <details>
 <summary>Read Transcript - Challenge 02: File Your First Issue</summary>
@@ -3075,11 +3075,11 @@ Comments, mentions, reactions, and constructive peer communication.
 Practice focus: Day 1 foundation
 
 <audio controls preload="none">
-  <source src="https://github.com/Community-Access/git-going-with-github/releases/download/podcasts/cc-03-join-the-conversation.mp3" type="audio/mpeg">
-  Your browser does not support the audio element. <a href="https://github.com/Community-Access/git-going-with-github/releases/download/podcasts/cc-03-join-the-conversation.mp3">Download Challenge 03 (MP3)</a>
+  <source src="https://lp.csedesigns.com/ggg/media/cc-03-join-the-conversation.mp3" type="audio/mpeg">
+  Your browser does not support the audio element. <a href="https://lp.csedesigns.com/ggg/media/cc-03-join-the-conversation.mp3">Download Challenge 03 (MP3)</a>
 </audio>
 
-[Download Challenge 03 (MP3)](https://github.com/Community-Access/git-going-with-github/releases/download/podcasts/cc-03-join-the-conversation.mp3)
+[Download Challenge 03 (MP3)](https://lp.csedesigns.com/ggg/media/cc-03-join-the-conversation.mp3)
 
 <details>
 <summary>Read Transcript - Challenge 03: Join the Conversation</summary>
@@ -3366,11 +3366,11 @@ Markdown syntax, GitHub extensions, and writing accessible documentation.
 Based on: [Appendix C: GitHub Flavored Markdown](docs/appendix-c-markdown-reference.md)
 
 <audio controls preload="none">
-  <source src="https://github.com/Community-Access/git-going-with-github/releases/download/podcasts/tools-01-github-flavored-markdown.mp3" type="audio/mpeg">
-  Your browser does not support the audio element. <a href="https://github.com/Community-Access/git-going-with-github/releases/download/podcasts/tools-01-github-flavored-markdown.mp3">Download Episode 22 (MP3)</a>
+  <source src="https://lp.csedesigns.com/ggg/media/tools-01-github-flavored-markdown.mp3" type="audio/mpeg">
+  Your browser does not support the audio element. <a href="https://lp.csedesigns.com/ggg/media/tools-01-github-flavored-markdown.mp3">Download Episode 22 (MP3)</a>
 </audio>
 
-[Download Episode 22 (MP3)](https://github.com/Community-Access/git-going-with-github/releases/download/podcasts/tools-01-github-flavored-markdown.mp3)
+[Download Episode 22 (MP3)](https://lp.csedesigns.com/ggg/media/tools-01-github-flavored-markdown.mp3)
 
 <details>
 <summary>Read Transcript - Episode 22: GitHub Flavored Markdown</summary>
@@ -3687,11 +3687,11 @@ Lightweight code sharing: creating, editing, forking, and embedding Gists.
 Based on: [Appendix U: GitHub Gists](docs/appendix-u-discussions-and-gists.md)
 
 <audio controls preload="none">
-  <source src="https://github.com/Community-Access/git-going-with-github/releases/download/podcasts/tools-02-github-gists.mp3" type="audio/mpeg">
-  Your browser does not support the audio element. <a href="https://github.com/Community-Access/git-going-with-github/releases/download/podcasts/tools-02-github-gists.mp3">Download Episode 23 (MP3)</a>
+  <source src="https://lp.csedesigns.com/ggg/media/tools-02-github-gists.mp3" type="audio/mpeg">
+  Your browser does not support the audio element. <a href="https://lp.csedesigns.com/ggg/media/tools-02-github-gists.mp3">Download Episode 23 (MP3)</a>
 </audio>
 
-[Download Episode 23 (MP3)](https://github.com/Community-Access/git-going-with-github/releases/download/podcasts/tools-02-github-gists.mp3)
+[Download Episode 23 (MP3)](https://lp.csedesigns.com/ggg/media/tools-02-github-gists.mp3)
 
 <details>
 <summary>Read Transcript - Episode 23: GitHub Gists</summary>
@@ -3938,11 +3938,11 @@ Forum-style conversations, Q&A, polls, and navigation with screen readers.
 Based on: [Appendix U: GitHub Discussions](docs/appendix-u-discussions-and-gists.md)
 
 <audio controls preload="none">
-  <source src="https://github.com/Community-Access/git-going-with-github/releases/download/podcasts/tools-03-github-discussions.mp3" type="audio/mpeg">
-  Your browser does not support the audio element. <a href="https://github.com/Community-Access/git-going-with-github/releases/download/podcasts/tools-03-github-discussions.mp3">Download Episode 24 (MP3)</a>
+  <source src="https://lp.csedesigns.com/ggg/media/tools-03-github-discussions.mp3" type="audio/mpeg">
+  Your browser does not support the audio element. <a href="https://lp.csedesigns.com/ggg/media/tools-03-github-discussions.mp3">Download Episode 24 (MP3)</a>
 </audio>
 
-[Download Episode 24 (MP3)](https://github.com/Community-Access/git-going-with-github/releases/download/podcasts/tools-03-github-discussions.mp3)
+[Download Episode 24 (MP3)](https://lp.csedesigns.com/ggg/media/tools-03-github-discussions.mp3)
 
 <details>
 <summary>Read Transcript - Episode 24: GitHub Discussions</summary>
@@ -4229,11 +4229,11 @@ Creating, reviewing, commenting on, and merging pull requests.
 Based on: [Chapter 6: Working with Pull Requests](docs/06-working-with-pull-requests.md)
 
 <audio controls preload="none">
-  <source src="https://github.com/Community-Access/git-going-with-github/releases/download/podcasts/ch-06-working-with-pull-requests.mp3" type="audio/mpeg">
-  Your browser does not support the audio element. <a href="https://github.com/Community-Access/git-going-with-github/releases/download/podcasts/ch-06-working-with-pull-requests.mp3">Download Episode 6 (MP3)</a>
+  <source src="https://lp.csedesigns.com/ggg/media/ch-06-working-with-pull-requests.mp3" type="audio/mpeg">
+  Your browser does not support the audio element. <a href="https://lp.csedesigns.com/ggg/media/ch-06-working-with-pull-requests.mp3">Download Episode 6 (MP3)</a>
 </audio>
 
-[Download Episode 6 (MP3)](https://github.com/Community-Access/git-going-with-github/releases/download/podcasts/ch-06-working-with-pull-requests.mp3)
+[Download Episode 6 (MP3)](https://lp.csedesigns.com/ggg/media/ch-06-working-with-pull-requests.mp3)
 
 <details>
 <summary>Read Transcript - Episode 6: Working with Pull Requests</summary>
@@ -4535,11 +4535,11 @@ Creating a safe working branch and understanding why branches protect main.
 Practice focus: Day 1 contribution
 
 <audio controls preload="none">
-  <source src="https://github.com/Community-Access/git-going-with-github/releases/download/podcasts/cc-04-branch-out.mp3" type="audio/mpeg">
-  Your browser does not support the audio element. <a href="https://github.com/Community-Access/git-going-with-github/releases/download/podcasts/cc-04-branch-out.mp3">Download Challenge 04 (MP3)</a>
+  <source src="https://lp.csedesigns.com/ggg/media/cc-04-branch-out.mp3" type="audio/mpeg">
+  Your browser does not support the audio element. <a href="https://lp.csedesigns.com/ggg/media/cc-04-branch-out.mp3">Download Challenge 04 (MP3)</a>
 </audio>
 
-[Download Challenge 04 (MP3)](https://github.com/Community-Access/git-going-with-github/releases/download/podcasts/cc-04-branch-out.mp3)
+[Download Challenge 04 (MP3)](https://lp.csedesigns.com/ggg/media/cc-04-branch-out.mp3)
 
 <details>
 <summary>Read Transcript - Challenge 04: Branch Out</summary>
@@ -4774,11 +4774,11 @@ Editing a file, writing a useful commit message, and connecting a change to an i
 Practice focus: Day 1 contribution
 
 <audio controls preload="none">
-  <source src="https://github.com/Community-Access/git-going-with-github/releases/download/podcasts/cc-05-make-your-mark.mp3" type="audio/mpeg">
-  Your browser does not support the audio element. <a href="https://github.com/Community-Access/git-going-with-github/releases/download/podcasts/cc-05-make-your-mark.mp3">Download Challenge 05 (MP3)</a>
+  <source src="https://lp.csedesigns.com/ggg/media/cc-05-make-your-mark.mp3" type="audio/mpeg">
+  Your browser does not support the audio element. <a href="https://lp.csedesigns.com/ggg/media/cc-05-make-your-mark.mp3">Download Challenge 05 (MP3)</a>
 </audio>
 
-[Download Challenge 05 (MP3)](https://github.com/Community-Access/git-going-with-github/releases/download/podcasts/cc-05-make-your-mark.mp3)
+[Download Challenge 05 (MP3)](https://lp.csedesigns.com/ggg/media/cc-05-make-your-mark.mp3)
 
 <details>
 <summary>Read Transcript - Challenge 05: Make Your Mark</summary>
@@ -5036,11 +5036,11 @@ Opening a pull request, comparing branches, and using closing keywords.
 Practice focus: Day 1 contribution
 
 <audio controls preload="none">
-  <source src="https://github.com/Community-Access/git-going-with-github/releases/download/podcasts/cc-06-open-your-first-pr.mp3" type="audio/mpeg">
-  Your browser does not support the audio element. <a href="https://github.com/Community-Access/git-going-with-github/releases/download/podcasts/cc-06-open-your-first-pr.mp3">Download Challenge 06 (MP3)</a>
+  <source src="https://lp.csedesigns.com/ggg/media/cc-06-open-your-first-pr.mp3" type="audio/mpeg">
+  Your browser does not support the audio element. <a href="https://lp.csedesigns.com/ggg/media/cc-06-open-your-first-pr.mp3">Download Challenge 06 (MP3)</a>
 </audio>
 
-[Download Challenge 06 (MP3)](https://github.com/Community-Access/git-going-with-github/releases/download/podcasts/cc-06-open-your-first-pr.mp3)
+[Download Challenge 06 (MP3)](https://lp.csedesigns.com/ggg/media/cc-06-open-your-first-pr.mp3)
 
 <details>
 <summary>Read Transcript - Challenge 06: Open Your First Pull Request</summary>
@@ -5308,11 +5308,11 @@ Why conflicts happen, how to read conflict markers, and resolving them confident
 Based on: [Chapter 7: Merge Conflicts Are Not Scary](docs/07-merge-conflicts.md)
 
 <audio controls preload="none">
-  <source src="https://github.com/Community-Access/git-going-with-github/releases/download/podcasts/ch-07-merge-conflicts.mp3" type="audio/mpeg">
-  Your browser does not support the audio element. <a href="https://github.com/Community-Access/git-going-with-github/releases/download/podcasts/ch-07-merge-conflicts.mp3">Download Episode 7 (MP3)</a>
+  <source src="https://lp.csedesigns.com/ggg/media/ch-07-merge-conflicts.mp3" type="audio/mpeg">
+  Your browser does not support the audio element. <a href="https://lp.csedesigns.com/ggg/media/ch-07-merge-conflicts.mp3">Download Episode 7 (MP3)</a>
 </audio>
 
-[Download Episode 7 (MP3)](https://github.com/Community-Access/git-going-with-github/releases/download/podcasts/ch-07-merge-conflicts.mp3)
+[Download Episode 7 (MP3)](https://lp.csedesigns.com/ggg/media/ch-07-merge-conflicts.mp3)
 
 <details>
 <summary>Read Transcript - Episode 7: Merge Conflicts Are Not Scary</summary>
@@ -5567,11 +5567,11 @@ Reading conflict markers, choosing content, deleting markers, and committing a r
 Practice focus: Day 1 stretch
 
 <audio controls preload="none">
-  <source src="https://github.com/Community-Access/git-going-with-github/releases/download/podcasts/cc-07-survive-a-merge-conflict.mp3" type="audio/mpeg">
-  Your browser does not support the audio element. <a href="https://github.com/Community-Access/git-going-with-github/releases/download/podcasts/cc-07-survive-a-merge-conflict.mp3">Download Challenge 07 (MP3)</a>
+  <source src="https://lp.csedesigns.com/ggg/media/cc-07-survive-a-merge-conflict.mp3" type="audio/mpeg">
+  Your browser does not support the audio element. <a href="https://lp.csedesigns.com/ggg/media/cc-07-survive-a-merge-conflict.mp3">Download Challenge 07 (MP3)</a>
 </audio>
 
-[Download Challenge 07 (MP3)](https://github.com/Community-Access/git-going-with-github/releases/download/podcasts/cc-07-survive-a-merge-conflict.mp3)
+[Download Challenge 07 (MP3)](https://lp.csedesigns.com/ggg/media/cc-07-survive-a-merge-conflict.mp3)
 
 <details>
 <summary>Read Transcript - Challenge 07: Survive a Merge Conflict</summary>
@@ -5805,11 +5805,11 @@ Communication norms, code review etiquette, inclusive language, and asking quest
 Based on: [Chapter 8: Open Source Culture and Etiquette](docs/08-open-source-culture.md)
 
 <audio controls preload="none">
-  <source src="https://github.com/Community-Access/git-going-with-github/releases/download/podcasts/ch-08-culture-and-etiquette.mp3" type="audio/mpeg">
-  Your browser does not support the audio element. <a href="https://github.com/Community-Access/git-going-with-github/releases/download/podcasts/ch-08-culture-and-etiquette.mp3">Download Episode 8 (MP3)</a>
+  <source src="https://lp.csedesigns.com/ggg/media/ch-08-culture-and-etiquette.mp3" type="audio/mpeg">
+  Your browser does not support the audio element. <a href="https://lp.csedesigns.com/ggg/media/ch-08-culture-and-etiquette.mp3">Download Episode 8 (MP3)</a>
 </audio>
 
-[Download Episode 8 (MP3)](https://github.com/Community-Access/git-going-with-github/releases/download/podcasts/ch-08-culture-and-etiquette.mp3)
+[Download Episode 8 (MP3)](https://lp.csedesigns.com/ggg/media/ch-08-culture-and-etiquette.mp3)
 
 <details>
 <summary>Read Transcript - Episode 8: Open Source Culture and Etiquette</summary>
@@ -6085,11 +6085,11 @@ Reflection, community norms, issue triage, labels, and respectful communication.
 Practice focus: Day 1 stretch
 
 <audio controls preload="none">
-  <source src="https://github.com/Community-Access/git-going-with-github/releases/download/podcasts/cc-08-open-source-culture.mp3" type="audio/mpeg">
-  Your browser does not support the audio element. <a href="https://github.com/Community-Access/git-going-with-github/releases/download/podcasts/cc-08-open-source-culture.mp3">Download Challenge 08 (MP3)</a>
+  <source src="https://lp.csedesigns.com/ggg/media/cc-08-open-source-culture.mp3" type="audio/mpeg">
+  Your browser does not support the audio element. <a href="https://lp.csedesigns.com/ggg/media/cc-08-open-source-culture.mp3">Download Challenge 08 (MP3)</a>
 </audio>
 
-[Download Challenge 08 (MP3)](https://github.com/Community-Access/git-going-with-github/releases/download/podcasts/cc-08-open-source-culture.mp3)
+[Download Challenge 08 (MP3)](https://lp.csedesigns.com/ggg/media/cc-08-open-source-culture.mp3)
 
 <details>
 <summary>Read Transcript - Challenge 08: The Culture Layer</summary>
@@ -6377,11 +6377,11 @@ Organizing and tracking work with labels, milestones, and GitHub Projects.
 Based on: [Chapter 9: Labels, Milestones, and Projects](docs/09-labels-milestones-projects.md)
 
 <audio controls preload="none">
-  <source src="https://github.com/Community-Access/git-going-with-github/releases/download/podcasts/ch-09-labels-milestones-projects.mp3" type="audio/mpeg">
-  Your browser does not support the audio element. <a href="https://github.com/Community-Access/git-going-with-github/releases/download/podcasts/ch-09-labels-milestones-projects.mp3">Download Episode 9 (MP3)</a>
+  <source src="https://lp.csedesigns.com/ggg/media/ch-09-labels-milestones-projects.mp3" type="audio/mpeg">
+  Your browser does not support the audio element. <a href="https://lp.csedesigns.com/ggg/media/ch-09-labels-milestones-projects.mp3">Download Episode 9 (MP3)</a>
 </audio>
 
-[Download Episode 9 (MP3)](https://github.com/Community-Access/git-going-with-github/releases/download/podcasts/ch-09-labels-milestones-projects.mp3)
+[Download Episode 9 (MP3)](https://lp.csedesigns.com/ggg/media/ch-09-labels-milestones-projects.mp3)
 
 <details>
 <summary>Read Transcript - Episode 9: Labels, Milestones, and Projects</summary>
@@ -6666,11 +6666,11 @@ Project boards, table and roadmap views, custom fields, cross-repo management.
 Based on: [Appendix R: GitHub Projects Deep Dive](docs/appendix-r-projects-deep-dive.md)
 
 <audio controls preload="none">
-  <source src="https://github.com/Community-Access/git-going-with-github/releases/download/podcasts/tools-05-github-projects.mp3" type="audio/mpeg">
-  Your browser does not support the audio element. <a href="https://github.com/Community-Access/git-going-with-github/releases/download/podcasts/tools-05-github-projects.mp3">Download Episode 26 (MP3)</a>
+  <source src="https://lp.csedesigns.com/ggg/media/tools-05-github-projects.mp3" type="audio/mpeg">
+  Your browser does not support the audio element. <a href="https://lp.csedesigns.com/ggg/media/tools-05-github-projects.mp3">Download Episode 26 (MP3)</a>
 </audio>
 
-[Download Episode 26 (MP3)](https://github.com/Community-Access/git-going-with-github/releases/download/podcasts/tools-05-github-projects.mp3)
+[Download Episode 26 (MP3)](https://lp.csedesigns.com/ggg/media/tools-05-github-projects.mp3)
 
 <details>
 <summary>Read Transcript - Episode 26: GitHub Projects Deep Dive</summary>
@@ -6883,11 +6883,11 @@ GitHub search query language, qualifiers, and filtering for issues, PRs, and cod
 Based on: [Appendix N: Advanced Search](docs/appendix-n-advanced-search.md)
 
 <audio controls preload="none">
-  <source src="https://github.com/Community-Access/git-going-with-github/releases/download/podcasts/tools-06-advanced-search.mp3" type="audio/mpeg">
-  Your browser does not support the audio element. <a href="https://github.com/Community-Access/git-going-with-github/releases/download/podcasts/tools-06-advanced-search.mp3">Download Episode 27 (MP3)</a>
+  <source src="https://lp.csedesigns.com/ggg/media/tools-06-advanced-search.mp3" type="audio/mpeg">
+  Your browser does not support the audio element. <a href="https://lp.csedesigns.com/ggg/media/tools-06-advanced-search.mp3">Download Episode 27 (MP3)</a>
 </audio>
 
-[Download Episode 27 (MP3)](https://github.com/Community-Access/git-going-with-github/releases/download/podcasts/tools-06-advanced-search.mp3)
+[Download Episode 27 (MP3)](https://lp.csedesigns.com/ggg/media/tools-06-advanced-search.mp3)
 
 <details>
 <summary>Read Transcript - Episode 27: Advanced Search</summary>
@@ -7176,11 +7176,11 @@ Managing your notification inbox, @mentions, and strategies for avoiding overloa
 Based on: [Chapter 10: Notifications and Mentions](docs/10-notifications-and-day-1-close.md)
 
 <audio controls preload="none">
-  <source src="https://github.com/Community-Access/git-going-with-github/releases/download/podcasts/ch-10-notifications.mp3" type="audio/mpeg">
-  Your browser does not support the audio element. <a href="https://github.com/Community-Access/git-going-with-github/releases/download/podcasts/ch-10-notifications.mp3">Download Episode 10 (MP3)</a>
+  <source src="https://lp.csedesigns.com/ggg/media/ch-10-notifications.mp3" type="audio/mpeg">
+  Your browser does not support the audio element. <a href="https://lp.csedesigns.com/ggg/media/ch-10-notifications.mp3">Download Episode 10 (MP3)</a>
 </audio>
 
-[Download Episode 10 (MP3)](https://github.com/Community-Access/git-going-with-github/releases/download/podcasts/ch-10-notifications.mp3)
+[Download Episode 10 (MP3)](https://lp.csedesigns.com/ggg/media/ch-10-notifications.mp3)
 
 <details>
 <summary>Read Transcript - Episode 10: Notifications and Mentions</summary>
@@ -7404,11 +7404,11 @@ Final PR readiness, review signals, merging, and verifying linked issue closure.
 Practice focus: Day 1 stretch
 
 <audio controls preload="none">
-  <source src="https://github.com/Community-Access/git-going-with-github/releases/download/podcasts/cc-09-merge-day.mp3" type="audio/mpeg">
-  Your browser does not support the audio element. <a href="https://github.com/Community-Access/git-going-with-github/releases/download/podcasts/cc-09-merge-day.mp3">Download Challenge 09 (MP3)</a>
+  <source src="https://lp.csedesigns.com/ggg/media/cc-09-merge-day.mp3" type="audio/mpeg">
+  Your browser does not support the audio element. <a href="https://lp.csedesigns.com/ggg/media/cc-09-merge-day.mp3">Download Challenge 09 (MP3)</a>
 </audio>
 
-[Download Challenge 09 (MP3)](https://github.com/Community-Access/git-going-with-github/releases/download/podcasts/cc-09-merge-day.mp3)
+[Download Challenge 09 (MP3)](https://lp.csedesigns.com/ggg/media/cc-09-merge-day.mp3)
 
 <details>
 <summary>Read Transcript - Challenge 09: Merge Day</summary>
@@ -7659,11 +7659,11 @@ Notification hygiene, mentions, subscriptions, and avoiding overload.
 Practice focus: Bonus
 
 <audio controls preload="none">
-  <source src="https://github.com/Community-Access/git-going-with-github/releases/download/podcasts/cc-bonus-d-notifications.mp3" type="audio/mpeg">
-  Your browser does not support the audio element. <a href="https://github.com/Community-Access/git-going-with-github/releases/download/podcasts/cc-bonus-d-notifications.mp3">Download Challenge bonus-d (MP3)</a>
+  <source src="https://lp.csedesigns.com/ggg/media/cc-bonus-d-notifications.mp3" type="audio/mpeg">
+  Your browser does not support the audio element. <a href="https://lp.csedesigns.com/ggg/media/cc-bonus-d-notifications.mp3">Download Challenge bonus-d (MP3)</a>
 </audio>
 
-[Download Challenge bonus-d (MP3)](https://github.com/Community-Access/git-going-with-github/releases/download/podcasts/cc-bonus-d-notifications.mp3)
+[Download Challenge bonus-d (MP3)](https://lp.csedesigns.com/ggg/media/cc-bonus-d-notifications.mp3)
 
 <details>
 <summary>Read Transcript - Challenge bonus-d: Notifications</summary>
@@ -7862,11 +7862,11 @@ Screen reader mode, Command Palette, sidebar navigation, and accessibility setti
 Based on: [Chapter 11: VS Code Setup and Accessibility](docs/11-vscode-interface.md)
 
 <audio controls preload="none">
-  <source src="https://github.com/Community-Access/git-going-with-github/releases/download/podcasts/ch-11-vscode-basics.mp3" type="audio/mpeg">
-  Your browser does not support the audio element. <a href="https://github.com/Community-Access/git-going-with-github/releases/download/podcasts/ch-11-vscode-basics.mp3">Download Episode 11 (MP3)</a>
+  <source src="https://lp.csedesigns.com/ggg/media/ch-11-vscode-basics.mp3" type="audio/mpeg">
+  Your browser does not support the audio element. <a href="https://lp.csedesigns.com/ggg/media/ch-11-vscode-basics.mp3">Download Episode 11 (MP3)</a>
 </audio>
 
-[Download Episode 11 (MP3)](https://github.com/Community-Access/git-going-with-github/releases/download/podcasts/ch-11-vscode-basics.mp3)
+[Download Episode 11 (MP3)](https://lp.csedesigns.com/ggg/media/ch-11-vscode-basics.mp3)
 
 <details>
 <summary>Read Transcript - Episode 11: VS Code Setup and Accessibility</summary>
@@ -8185,11 +8185,11 @@ Keyboard navigation, accessible views, terminal access, signals, speech, and Cop
 Based on: [Chapter 12: VS Code Accessibility Deep Dive](docs/12-vscode-accessibility.md)
 
 <audio controls preload="none">
-  <source src="https://github.com/Community-Access/git-going-with-github/releases/download/podcasts/a11y-02-vscode-accessibility-deep-dive.mp3" type="audio/mpeg">
-  Your browser does not support the audio element. <a href="https://github.com/Community-Access/git-going-with-github/releases/download/podcasts/a11y-02-vscode-accessibility-deep-dive.mp3">Download Episode 45 (MP3)</a>
+  <source src="https://lp.csedesigns.com/ggg/media/a11y-02-vscode-accessibility-deep-dive.mp3" type="audio/mpeg">
+  Your browser does not support the audio element. <a href="https://lp.csedesigns.com/ggg/media/a11y-02-vscode-accessibility-deep-dive.mp3">Download Episode 45 (MP3)</a>
 </audio>
 
-[Download Episode 45 (MP3)](https://github.com/Community-Access/git-going-with-github/releases/download/podcasts/a11y-02-vscode-accessibility-deep-dive.mp3)
+[Download Episode 45 (MP3)](https://lp.csedesigns.com/ggg/media/a11y-02-vscode-accessibility-deep-dive.mp3)
 
 <details>
 <summary>Read Transcript - Episode 45: VS Code Accessibility Deep Dive</summary>
@@ -8457,11 +8457,11 @@ Personal access tokens, SSH keys, credential storage, and commit signing.
 Based on: [Appendix D: Git Authentication](docs/appendix-d-git-authentication.md)
 
 <audio controls preload="none">
-  <source src="https://github.com/Community-Access/git-going-with-github/releases/download/podcasts/git-01-git-authentication.mp3" type="audio/mpeg">
-  Your browser does not support the audio element. <a href="https://github.com/Community-Access/git-going-with-github/releases/download/podcasts/git-01-git-authentication.mp3">Download Episode 21 (MP3)</a>
+  <source src="https://lp.csedesigns.com/ggg/media/git-01-git-authentication.mp3" type="audio/mpeg">
+  Your browser does not support the audio element. <a href="https://lp.csedesigns.com/ggg/media/git-01-git-authentication.mp3">Download Episode 21 (MP3)</a>
 </audio>
 
-[Download Episode 21 (MP3)](https://github.com/Community-Access/git-going-with-github/releases/download/podcasts/git-01-git-authentication.mp3)
+[Download Episode 21 (MP3)](https://lp.csedesigns.com/ggg/media/git-01-git-authentication.mp3)
 
 <details>
 <summary>Read Transcript - Episode 21: Git Authentication</summary>
@@ -8704,11 +8704,11 @@ Commits, branches, staging, local versus remote, push, pull, fetch, and why conf
 Based on: [Chapter 13: How Git Works: The Mental Model](docs/13-how-git-works.md)
 
 <audio controls preload="none">
-  <source src="https://github.com/Community-Access/git-going-with-github/releases/download/podcasts/ch-18-how-git-works.mp3" type="audio/mpeg">
-  Your browser does not support the audio element. <a href="https://github.com/Community-Access/git-going-with-github/releases/download/podcasts/ch-18-how-git-works.mp3">Download Episode 46 (MP3)</a>
+  <source src="https://lp.csedesigns.com/ggg/media/ch-18-how-git-works.mp3" type="audio/mpeg">
+  Your browser does not support the audio element. <a href="https://lp.csedesigns.com/ggg/media/ch-18-how-git-works.mp3">Download Episode 46 (MP3)</a>
 </audio>
 
-[Download Episode 46 (MP3)](https://github.com/Community-Access/git-going-with-github/releases/download/podcasts/ch-18-how-git-works.mp3)
+[Download Episode 46 (MP3)](https://lp.csedesigns.com/ggg/media/ch-18-how-git-works.mp3)
 
 <details>
 <summary>Read Transcript - Episode 46: How Git Works: The Mental Model</summary>
@@ -8952,11 +8952,11 @@ Cloning, branching, staging, committing, pushing, and pulling from VS Code.
 Based on: [Chapter 14: Git and Source Control in VS Code](docs/14-git-in-practice.md)
 
 <audio controls preload="none">
-  <source src="https://github.com/Community-Access/git-going-with-github/releases/download/podcasts/ch-12-git-source-control.mp3" type="audio/mpeg">
-  Your browser does not support the audio element. <a href="https://github.com/Community-Access/git-going-with-github/releases/download/podcasts/ch-12-git-source-control.mp3">Download Episode 12 (MP3)</a>
+  <source src="https://lp.csedesigns.com/ggg/media/ch-12-git-source-control.mp3" type="audio/mpeg">
+  Your browser does not support the audio element. <a href="https://lp.csedesigns.com/ggg/media/ch-12-git-source-control.mp3">Download Episode 12 (MP3)</a>
 </audio>
 
-[Download Episode 12 (MP3)](https://github.com/Community-Access/git-going-with-github/releases/download/podcasts/ch-12-git-source-control.mp3)
+[Download Episode 12 (MP3)](https://lp.csedesigns.com/ggg/media/ch-12-git-source-control.mp3)
 
 <details>
 <summary>Read Transcript - Episode 12: Git and Source Control in VS Code</summary>
@@ -9255,11 +9255,11 @@ Cloning, local branches, commits, pushing, and understanding local versus remote
 Practice focus: Day 2 local workflow
 
 <audio controls preload="none">
-  <source src="https://github.com/Community-Access/git-going-with-github/releases/download/podcasts/cc-10-go-local.mp3" type="audio/mpeg">
-  Your browser does not support the audio element. <a href="https://github.com/Community-Access/git-going-with-github/releases/download/podcasts/cc-10-go-local.mp3">Download Challenge 10 (MP3)</a>
+  <source src="https://lp.csedesigns.com/ggg/media/cc-10-go-local.mp3" type="audio/mpeg">
+  Your browser does not support the audio element. <a href="https://lp.csedesigns.com/ggg/media/cc-10-go-local.mp3">Download Challenge 10 (MP3)</a>
 </audio>
 
-[Download Challenge 10 (MP3)](https://github.com/Community-Access/git-going-with-github/releases/download/podcasts/cc-10-go-local.mp3)
+[Download Challenge 10 (MP3)](https://lp.csedesigns.com/ggg/media/cc-10-go-local.mp3)
 
 <details>
 <summary>Read Transcript - Challenge 10: Go Local</summary>
@@ -9539,11 +9539,11 @@ Reading history, understanding commits over time, and using history as a learnin
 Practice focus: Bonus
 
 <audio controls preload="none">
-  <source src="https://github.com/Community-Access/git-going-with-github/releases/download/podcasts/cc-bonus-e-git-history.mp3" type="audio/mpeg">
-  Your browser does not support the audio element. <a href="https://github.com/Community-Access/git-going-with-github/releases/download/podcasts/cc-bonus-e-git-history.mp3">Download Challenge bonus-e (MP3)</a>
+  <source src="https://lp.csedesigns.com/ggg/media/cc-bonus-e-git-history.mp3" type="audio/mpeg">
+  Your browser does not support the audio element. <a href="https://lp.csedesigns.com/ggg/media/cc-bonus-e-git-history.mp3">Download Challenge bonus-e (MP3)</a>
 </audio>
 
-[Download Challenge bonus-e (MP3)](https://github.com/Community-Access/git-going-with-github/releases/download/podcasts/cc-bonus-e-git-history.mp3)
+[Download Challenge bonus-e (MP3)](https://lp.csedesigns.com/ggg/media/cc-bonus-e-git-history.mp3)
 
 <details>
 <summary>Read Transcript - Challenge bonus-e: Git History</summary>
@@ -9813,11 +9813,11 @@ Viewing, creating, reviewing, and merging PRs from inside VS Code.
 Based on: [Chapter 15: The GitHub Pull Requests Extension](docs/15-code-review.md)
 
 <audio controls preload="none">
-  <source src="https://github.com/Community-Access/git-going-with-github/releases/download/podcasts/ch-13-github-prs-extension.mp3" type="audio/mpeg">
-  Your browser does not support the audio element. <a href="https://github.com/Community-Access/git-going-with-github/releases/download/podcasts/ch-13-github-prs-extension.mp3">Download Episode 13 (MP3)</a>
+  <source src="https://lp.csedesigns.com/ggg/media/ch-13-github-prs-extension.mp3" type="audio/mpeg">
+  Your browser does not support the audio element. <a href="https://lp.csedesigns.com/ggg/media/ch-13-github-prs-extension.mp3">Download Episode 13 (MP3)</a>
 </audio>
 
-[Download Episode 13 (MP3)](https://github.com/Community-Access/git-going-with-github/releases/download/podcasts/ch-13-github-prs-extension.mp3)
+[Download Episode 13 (MP3)](https://lp.csedesigns.com/ggg/media/ch-13-github-prs-extension.mp3)
 
 <details>
 <summary>Read Transcript - Episode 13: The GitHub Pull Requests Extension</summary>
@@ -10093,11 +10093,11 @@ Navigating diffs with a screen reader, reviewing PRs in browser and VS Code.
 Based on: [Chapter 15: Accessible Code Review](docs/15-code-review.md)
 
 <audio controls preload="none">
-  <source src="https://github.com/Community-Access/git-going-with-github/releases/download/podcasts/ch-15-accessible-code-review.mp3" type="audio/mpeg">
-  Your browser does not support the audio element. <a href="https://github.com/Community-Access/git-going-with-github/releases/download/podcasts/ch-15-accessible-code-review.mp3">Download Episode 15 (MP3)</a>
+  <source src="https://lp.csedesigns.com/ggg/media/ch-15-accessible-code-review.mp3" type="audio/mpeg">
+  Your browser does not support the audio element. <a href="https://lp.csedesigns.com/ggg/media/ch-15-accessible-code-review.mp3">Download Episode 15 (MP3)</a>
 </audio>
 
-[Download Episode 15 (MP3)](https://github.com/Community-Access/git-going-with-github/releases/download/podcasts/ch-15-accessible-code-review.mp3)
+[Download Episode 15 (MP3)](https://lp.csedesigns.com/ggg/media/ch-15-accessible-code-review.mp3)
 
 <details>
 <summary>Read Transcript - Episode 15: Accessible Code Review</summary>
@@ -10379,11 +10379,11 @@ Opening a pull request from a locally pushed branch and reading it in VS Code.
 Practice focus: Day 2 local workflow
 
 <audio controls preload="none">
-  <source src="https://github.com/Community-Access/git-going-with-github/releases/download/podcasts/cc-11-day-2-pull-request.mp3" type="audio/mpeg">
-  Your browser does not support the audio element. <a href="https://github.com/Community-Access/git-going-with-github/releases/download/podcasts/cc-11-day-2-pull-request.mp3">Download Challenge 11 (MP3)</a>
+  <source src="https://lp.csedesigns.com/ggg/media/cc-11-day-2-pull-request.mp3" type="audio/mpeg">
+  Your browser does not support the audio element. <a href="https://lp.csedesigns.com/ggg/media/cc-11-day-2-pull-request.mp3">Download Challenge 11 (MP3)</a>
 </audio>
 
-[Download Challenge 11 (MP3)](https://github.com/Community-Access/git-going-with-github/releases/download/podcasts/cc-11-day-2-pull-request.mp3)
+[Download Challenge 11 (MP3)](https://lp.csedesigns.com/ggg/media/cc-11-day-2-pull-request.mp3)
 
 <details>
 <summary>Read Transcript - Challenge 11: Open a Day 2 PR</summary>
@@ -10581,11 +10581,11 @@ Reviewing a classmate PR, leaving specific feedback, and owning review tone.
 Practice focus: Day 2 local workflow
 
 <audio controls preload="none">
-  <source src="https://github.com/Community-Access/git-going-with-github/releases/download/podcasts/cc-12-code-review.mp3" type="audio/mpeg">
-  Your browser does not support the audio element. <a href="https://github.com/Community-Access/git-going-with-github/releases/download/podcasts/cc-12-code-review.mp3">Download Challenge 12 (MP3)</a>
+  <source src="https://lp.csedesigns.com/ggg/media/cc-12-code-review.mp3" type="audio/mpeg">
+  Your browser does not support the audio element. <a href="https://lp.csedesigns.com/ggg/media/cc-12-code-review.mp3">Download Challenge 12 (MP3)</a>
 </audio>
 
-[Download Challenge 12 (MP3)](https://github.com/Community-Access/git-going-with-github/releases/download/podcasts/cc-12-code-review.mp3)
+[Download Challenge 12 (MP3)](https://lp.csedesigns.com/ggg/media/cc-12-code-review.mp3)
 
 <details>
 <summary>Read Transcript - Challenge 12: Review Like a Pro</summary>
@@ -10810,11 +10810,11 @@ Inline suggestions, Copilot Chat, prompting strategies, and custom instructions.
 Based on: [Chapter 16: GitHub Copilot](docs/16-github-copilot.md)
 
 <audio controls preload="none">
-  <source src="https://github.com/Community-Access/git-going-with-github/releases/download/podcasts/ch-14-github-copilot.mp3" type="audio/mpeg">
-  Your browser does not support the audio element. <a href="https://github.com/Community-Access/git-going-with-github/releases/download/podcasts/ch-14-github-copilot.mp3">Download Episode 14 (MP3)</a>
+  <source src="https://lp.csedesigns.com/ggg/media/ch-14-github-copilot.mp3" type="audio/mpeg">
+  Your browser does not support the audio element. <a href="https://lp.csedesigns.com/ggg/media/ch-14-github-copilot.mp3">Download Episode 14 (MP3)</a>
 </audio>
 
-[Download Episode 14 (MP3)](https://github.com/Community-Access/git-going-with-github/releases/download/podcasts/ch-14-github-copilot.mp3)
+[Download Episode 14 (MP3)](https://lp.csedesigns.com/ggg/media/ch-14-github-copilot.mp3)
 
 <details>
 <summary>Read Transcript - Episode 14: GitHub Copilot</summary>
@@ -11151,11 +11151,11 @@ All Copilot features, chat participants, slash commands, and MCP servers.
 Based on: [Appendix K: GitHub Copilot - Complete Reference](docs/appendix-k-copilot-reference.md)
 
 <audio controls preload="none">
-  <source src="https://github.com/Community-Access/git-going-with-github/releases/download/podcasts/agents-02-copilot-reference.mp3" type="audio/mpeg">
-  Your browser does not support the audio element. <a href="https://github.com/Community-Access/git-going-with-github/releases/download/podcasts/agents-02-copilot-reference.mp3">Download Episode 40 (MP3)</a>
+  <source src="https://lp.csedesigns.com/ggg/media/agents-02-copilot-reference.mp3" type="audio/mpeg">
+  Your browser does not support the audio element. <a href="https://lp.csedesigns.com/ggg/media/agents-02-copilot-reference.mp3">Download Episode 40 (MP3)</a>
 </audio>
 
-[Download Episode 40 (MP3)](https://github.com/Community-Access/git-going-with-github/releases/download/podcasts/agents-02-copilot-reference.mp3)
+[Download Episode 40 (MP3)](https://lp.csedesigns.com/ggg/media/agents-02-copilot-reference.mp3)
 
 <details>
 <summary>Read Transcript - Episode 40: GitHub Copilot - Complete Reference</summary>
@@ -11447,11 +11447,11 @@ Usage-based billing, GitHub AI Credits, model volatility, and durable model-sele
 Based on: [Appendix K: Copilot Billing and Models](docs/appendix-k-copilot-reference.md)
 
 <audio controls preload="none">
-  <source src="https://github.com/Community-Access/git-going-with-github/releases/download/podcasts/agents-03-copilot-models.mp3" type="audio/mpeg">
-  Your browser does not support the audio element. <a href="https://github.com/Community-Access/git-going-with-github/releases/download/podcasts/agents-03-copilot-models.mp3">Download Episode 41 (MP3)</a>
+  <source src="https://lp.csedesigns.com/ggg/media/agents-03-copilot-models.mp3" type="audio/mpeg">
+  Your browser does not support the audio element. <a href="https://lp.csedesigns.com/ggg/media/agents-03-copilot-models.mp3">Download Episode 41 (MP3)</a>
 </audio>
 
-[Download Episode 41 (MP3)](https://github.com/Community-Access/git-going-with-github/releases/download/podcasts/agents-03-copilot-models.mp3)
+[Download Episode 41 (MP3)](https://lp.csedesigns.com/ggg/media/agents-03-copilot-models.mp3)
 
 <details>
 <summary>Read Transcript - Episode 41: Copilot Billing and Models</summary>
@@ -11697,11 +11697,11 @@ Using Copilot as a reviewed writing partner while keeping human judgment in char
 Practice focus: Day 2 local workflow
 
 <audio controls preload="none">
-  <source src="https://github.com/Community-Access/git-going-with-github/releases/download/podcasts/cc-13-copilot-as-collaborator.mp3" type="audio/mpeg">
-  Your browser does not support the audio element. <a href="https://github.com/Community-Access/git-going-with-github/releases/download/podcasts/cc-13-copilot-as-collaborator.mp3">Download Challenge 13 (MP3)</a>
+  <source src="https://lp.csedesigns.com/ggg/media/cc-13-copilot-as-collaborator.mp3" type="audio/mpeg">
+  Your browser does not support the audio element. <a href="https://lp.csedesigns.com/ggg/media/cc-13-copilot-as-collaborator.mp3">Download Challenge 13 (MP3)</a>
 </audio>
 
-[Download Challenge 13 (MP3)](https://github.com/Community-Access/git-going-with-github/releases/download/podcasts/cc-13-copilot-as-collaborator.mp3)
+[Download Challenge 13 (MP3)](https://lp.csedesigns.com/ggg/media/cc-13-copilot-as-collaborator.mp3)
 
 <details>
 <summary>Read Transcript - Challenge 13: AI as Your Copilot</summary>
@@ -11993,11 +11993,11 @@ Creating YAML-based issue templates for bug reports, features, and custom forms.
 Based on: [Chapter 17: Issue Templates](docs/17-issue-templates.md)
 
 <audio controls preload="none">
-  <source src="https://github.com/Community-Access/git-going-with-github/releases/download/podcasts/ch-16-issue-templates.mp3" type="audio/mpeg">
-  Your browser does not support the audio element. <a href="https://github.com/Community-Access/git-going-with-github/releases/download/podcasts/ch-16-issue-templates.mp3">Download Episode 16 (MP3)</a>
+  <source src="https://lp.csedesigns.com/ggg/media/ch-16-issue-templates.mp3" type="audio/mpeg">
+  Your browser does not support the audio element. <a href="https://lp.csedesigns.com/ggg/media/ch-16-issue-templates.mp3">Download Episode 16 (MP3)</a>
 </audio>
 
-[Download Episode 16 (MP3)](https://github.com/Community-Access/git-going-with-github/releases/download/podcasts/ch-16-issue-templates.mp3)
+[Download Episode 16 (MP3)](https://lp.csedesigns.com/ggg/media/ch-16-issue-templates.mp3)
 
 <details>
 <summary>Read Transcript - Episode 16: Issue Templates</summary>
@@ -12333,11 +12333,11 @@ YAML issue forms, accessible labels, required fields, and useful maintainer inta
 Practice focus: Day 2 capstone
 
 <audio controls preload="none">
-  <source src="https://github.com/Community-Access/git-going-with-github/releases/download/podcasts/cc-14-design-an-issue-template.mp3" type="audio/mpeg">
-  Your browser does not support the audio element. <a href="https://github.com/Community-Access/git-going-with-github/releases/download/podcasts/cc-14-design-an-issue-template.mp3">Download Challenge 14 (MP3)</a>
+  <source src="https://lp.csedesigns.com/ggg/media/cc-14-design-an-issue-template.mp3" type="audio/mpeg">
+  Your browser does not support the audio element. <a href="https://lp.csedesigns.com/ggg/media/cc-14-design-an-issue-template.mp3">Download Challenge 14 (MP3)</a>
 </audio>
 
-[Download Challenge 14 (MP3)](https://github.com/Community-Access/git-going-with-github/releases/download/podcasts/cc-14-design-an-issue-template.mp3)
+[Download Challenge 14 (MP3)](https://lp.csedesigns.com/ggg/media/cc-14-design-an-issue-template.mp3)
 
 <details>
 <summary>Read Transcript - Challenge 14: Template Remix</summary>
@@ -12590,11 +12590,11 @@ Practice focus: Day 2 capstone
 Based on: [Chapter 19: Accessibility Agents](docs/19-accessibility-agents.md)
 
 <audio controls preload="none">
-  <source src="https://github.com/Community-Access/git-going-with-github/releases/download/podcasts/ch-17-accessibility-agents.mp3" type="audio/mpeg">
-  Your browser does not support the audio element. <a href="https://github.com/Community-Access/git-going-with-github/releases/download/podcasts/ch-17-accessibility-agents.mp3">Download Episode 17 (MP3)</a>
+  <source src="https://lp.csedesigns.com/ggg/media/ch-17-accessibility-agents.mp3" type="audio/mpeg">
+  Your browser does not support the audio element. <a href="https://lp.csedesigns.com/ggg/media/ch-17-accessibility-agents.mp3">Download Episode 17 (MP3)</a>
 </audio>
 
-[Download Episode 17 (MP3)](https://github.com/Community-Access/git-going-with-github/releases/download/podcasts/ch-17-accessibility-agents.mp3)
+[Download Episode 17 (MP3)](https://lp.csedesigns.com/ggg/media/ch-17-accessibility-agents.mp3)
 
 <details>
 <summary>Read Transcript - Episode 17: Accessibility Agents</summary>
@@ -12911,11 +12911,11 @@ All 55 agents, all 54+ slash commands, customization, and troubleshooting.
 Based on: [Appendix L: Accessibility Agents - Complete Reference](docs/appendix-l-agents-reference.md)
 
 <audio controls preload="none">
-  <source src="https://github.com/Community-Access/git-going-with-github/releases/download/podcasts/agents-01-accessibility-agents-reference.mp3" type="audio/mpeg">
-  Your browser does not support the audio element. <a href="https://github.com/Community-Access/git-going-with-github/releases/download/podcasts/agents-01-accessibility-agents-reference.mp3">Download Episode 39 (MP3)</a>
+  <source src="https://lp.csedesigns.com/ggg/media/agents-01-accessibility-agents-reference.mp3" type="audio/mpeg">
+  Your browser does not support the audio element. <a href="https://lp.csedesigns.com/ggg/media/agents-01-accessibility-agents-reference.mp3">Download Episode 39 (MP3)</a>
 </audio>
 
-[Download Episode 39 (MP3)](https://github.com/Community-Access/git-going-with-github/releases/download/podcasts/agents-01-accessibility-agents-reference.mp3)
+[Download Episode 39 (MP3)](https://lp.csedesigns.com/ggg/media/agents-01-accessibility-agents-reference.mp3)
 
 <details>
 <summary>Read Transcript - Episode 39: Accessibility Agents - Complete Reference</summary>
@@ -13239,11 +13239,11 @@ Exploring agent files, running agents carefully, and verifying AI output against
 Practice focus: Day 2 capstone
 
 <audio controls preload="none">
-  <source src="https://github.com/Community-Access/git-going-with-github/releases/download/podcasts/cc-15-discover-accessibility-agents.mp3" type="audio/mpeg">
-  Your browser does not support the audio element. <a href="https://github.com/Community-Access/git-going-with-github/releases/download/podcasts/cc-15-discover-accessibility-agents.mp3">Download Challenge 15 (MP3)</a>
+  <source src="https://lp.csedesigns.com/ggg/media/cc-15-discover-accessibility-agents.mp3" type="audio/mpeg">
+  Your browser does not support the audio element. <a href="https://lp.csedesigns.com/ggg/media/cc-15-discover-accessibility-agents.mp3">Download Challenge 15 (MP3)</a>
 </audio>
 
-[Download Challenge 15 (MP3)](https://github.com/Community-Access/git-going-with-github/releases/download/podcasts/cc-15-discover-accessibility-agents.mp3)
+[Download Challenge 15 (MP3)](https://lp.csedesigns.com/ggg/media/cc-15-discover-accessibility-agents.mp3)
 
 <details>
 <summary>Read Transcript - Challenge 15: Meet the Agents</summary>
@@ -13469,11 +13469,11 @@ The complete fork-based open source contribution workflow from fork to upstream 
 Based on: [Chapter 18: Fork and Contribute](docs/18-fork-and-contribute.md)
 
 <audio controls preload="none">
-  <source src="https://github.com/Community-Access/git-going-with-github/releases/download/podcasts/ch-19-fork-and-contribute.mp3" type="audio/mpeg">
-  Your browser does not support the audio element. <a href="https://github.com/Community-Access/git-going-with-github/releases/download/podcasts/ch-19-fork-and-contribute.mp3">Download Episode 47 (MP3)</a>
+  <source src="https://lp.csedesigns.com/ggg/media/ch-19-fork-and-contribute.mp3" type="audio/mpeg">
+  Your browser does not support the audio element. <a href="https://lp.csedesigns.com/ggg/media/ch-19-fork-and-contribute.mp3">Download Episode 47 (MP3)</a>
 </audio>
 
-[Download Episode 47 (MP3)](https://github.com/Community-Access/git-going-with-github/releases/download/podcasts/ch-19-fork-and-contribute.mp3)
+[Download Episode 47 (MP3)](https://lp.csedesigns.com/ggg/media/ch-19-fork-and-contribute.mp3)
 
 <details>
 <summary>Read Transcript - Episode 47: Fork and Contribute</summary>
@@ -13812,11 +13812,11 @@ Designing, writing, testing, and contributing a custom accessibility agent.
 Based on: [Chapter 20: Build Your Agent: Capstone](docs/20-build-your-agent.md)
 
 <audio controls preload="none">
-  <source src="https://github.com/Community-Access/git-going-with-github/releases/download/podcasts/ch-20-build-your-agent-capstone.mp3" type="audio/mpeg">
-  Your browser does not support the audio element. <a href="https://github.com/Community-Access/git-going-with-github/releases/download/podcasts/ch-20-build-your-agent-capstone.mp3">Download Episode 48 (MP3)</a>
+  <source src="https://lp.csedesigns.com/ggg/media/ch-20-build-your-agent-capstone.mp3" type="audio/mpeg">
+  Your browser does not support the audio element. <a href="https://lp.csedesigns.com/ggg/media/ch-20-build-your-agent-capstone.mp3">Download Episode 48 (MP3)</a>
 </audio>
 
-[Download Episode 48 (MP3)](https://github.com/Community-Access/git-going-with-github/releases/download/podcasts/ch-20-build-your-agent-capstone.mp3)
+[Download Episode 48 (MP3)](https://lp.csedesigns.com/ggg/media/ch-20-build-your-agent-capstone.mp3)
 
 <details>
 <summary>Read Transcript - Episode 48: Build Your Agent: Capstone</summary>
@@ -14079,11 +14079,11 @@ Choosing a meaningful repository, defining a mission, writing responsibilities a
 Practice focus: Day 2 capstone
 
 <audio controls preload="none">
-  <source src="https://github.com/Community-Access/git-going-with-github/releases/download/podcasts/cc-16-build-your-own-agent.mp3" type="audio/mpeg">
-  Your browser does not support the audio element. <a href="https://github.com/Community-Access/git-going-with-github/releases/download/podcasts/cc-16-build-your-own-agent.mp3">Download Challenge 16 (MP3)</a>
+  <source src="https://lp.csedesigns.com/ggg/media/cc-16-build-your-own-agent.mp3" type="audio/mpeg">
+  Your browser does not support the audio element. <a href="https://lp.csedesigns.com/ggg/media/cc-16-build-your-own-agent.mp3">Download Challenge 16 (MP3)</a>
 </audio>
 
-[Download Challenge 16 (MP3)](https://github.com/Community-Access/git-going-with-github/releases/download/podcasts/cc-16-build-your-own-agent.mp3)
+[Download Challenge 16 (MP3)](https://lp.csedesigns.com/ggg/media/cc-16-build-your-own-agent.mp3)
 
 <details>
 <summary>Read Transcript - Challenge 16: Capstone Project</summary>
@@ -14368,11 +14368,11 @@ Extending or improving an existing agent with a clear accessibility purpose.
 Practice focus: Bonus
 
 <audio controls preload="none">
-  <source src="https://github.com/Community-Access/git-going-with-github/releases/download/podcasts/cc-bonus-a-improve-agent.mp3" type="audio/mpeg">
-  Your browser does not support the audio element. <a href="https://github.com/Community-Access/git-going-with-github/releases/download/podcasts/cc-bonus-a-improve-agent.mp3">Download Challenge bonus-a (MP3)</a>
+  <source src="https://lp.csedesigns.com/ggg/media/cc-bonus-a-improve-agent.mp3" type="audio/mpeg">
+  Your browser does not support the audio element. <a href="https://lp.csedesigns.com/ggg/media/cc-bonus-a-improve-agent.mp3">Download Challenge bonus-a (MP3)</a>
 </audio>
 
-[Download Challenge bonus-a (MP3)](https://github.com/Community-Access/git-going-with-github/releases/download/podcasts/cc-bonus-a-improve-agent.mp3)
+[Download Challenge bonus-a (MP3)](https://lp.csedesigns.com/ggg/media/cc-bonus-a-improve-agent.mp3)
 
 <details>
 <summary>Read Transcript - Challenge bonus-a: Improve an Agent</summary>
@@ -14610,11 +14610,11 @@ Collaborative contribution, division of work, and communication across a small t
 Practice focus: Bonus
 
 <audio controls preload="none">
-  <source src="https://github.com/Community-Access/git-going-with-github/releases/download/podcasts/cc-bonus-c-group-challenge.mp3" type="audio/mpeg">
-  Your browser does not support the audio element. <a href="https://github.com/Community-Access/git-going-with-github/releases/download/podcasts/cc-bonus-c-group-challenge.mp3">Download Challenge bonus-c (MP3)</a>
+  <source src="https://lp.csedesigns.com/ggg/media/cc-bonus-c-group-challenge.mp3" type="audio/mpeg">
+  Your browser does not support the audio element. <a href="https://lp.csedesigns.com/ggg/media/cc-bonus-c-group-challenge.mp3">Download Challenge bonus-c (MP3)</a>
 </audio>
 
-[Download Challenge bonus-c (MP3)](https://github.com/Community-Access/git-going-with-github/releases/download/podcasts/cc-bonus-c-group-challenge.mp3)
+[Download Challenge bonus-c (MP3)](https://lp.csedesigns.com/ggg/media/cc-bonus-c-group-challenge.mp3)
 
 <details>
 <summary>Read Transcript - Challenge bonus-c: Group Challenge</summary>
@@ -14967,11 +14967,11 @@ Connecting capstone work to GitHub's accessibility program and open source at sc
 Based on: [Chapter 21: GitHub Accessibility and Open Source at Scale](docs/21-github-accessibility-and-open-source.md)
 
 <audio controls preload="none">
-  <source src="https://github.com/Community-Access/git-going-with-github/releases/download/podcasts/a11y-03-github-accessibility-and-open-source.mp3" type="audio/mpeg">
-  Your browser does not support the audio element. <a href="https://github.com/Community-Access/git-going-with-github/releases/download/podcasts/a11y-03-github-accessibility-and-open-source.mp3">Download Episode 49 (MP3)</a>
+  <source src="https://lp.csedesigns.com/ggg/media/a11y-03-github-accessibility-and-open-source.mp3" type="audio/mpeg">
+  Your browser does not support the audio element. <a href="https://lp.csedesigns.com/ggg/media/a11y-03-github-accessibility-and-open-source.mp3">Download Episode 49 (MP3)</a>
 </audio>
 
-[Download Episode 49 (MP3)](https://github.com/Community-Access/git-going-with-github/releases/download/podcasts/a11y-03-github-accessibility-and-open-source.mp3)
+[Download Episode 49 (MP3)](https://lp.csedesigns.com/ggg/media/a11y-03-github-accessibility-and-open-source.mp3)
 
 <details>
 <summary>Read Transcript - Episode 49: GitHub Accessibility and Open Source at Scale</summary>
@@ -15139,11 +15139,11 @@ WCAG 2.2, ARIA roles, and the PR accessibility checklist.
 Based on: [Appendix M: Accessibility Standards Reference](docs/appendix-m-accessibility-standards.md)
 
 <audio controls preload="none">
-  <source src="https://github.com/Community-Access/git-going-with-github/releases/download/podcasts/ref-03-accessibility-standards.mp3" type="audio/mpeg">
-  Your browser does not support the audio element. <a href="https://github.com/Community-Access/git-going-with-github/releases/download/podcasts/ref-03-accessibility-standards.mp3">Download Episode 20 (MP3)</a>
+  <source src="https://lp.csedesigns.com/ggg/media/ref-03-accessibility-standards.mp3" type="audio/mpeg">
+  Your browser does not support the audio element. <a href="https://lp.csedesigns.com/ggg/media/ref-03-accessibility-standards.mp3">Download Episode 20 (MP3)</a>
 </audio>
 
-[Download Episode 20 (MP3)](https://github.com/Community-Access/git-going-with-github/releases/download/podcasts/ref-03-accessibility-standards.mp3)
+[Download Episode 20 (MP3)](https://lp.csedesigns.com/ggg/media/ref-03-accessibility-standards.mp3)
 
 <details>
 <summary>Read Transcript - Episode 20: Accessibility Standards Reference</summary>
@@ -15381,11 +15381,11 @@ Semantic versioning, GitHub Releases, and repository analytics.
 Based on: [Appendix S: Releases, Tags, and Insights](docs/appendix-s-releases-tags-insights.md)
 
 <audio controls preload="none">
-  <source src="https://github.com/Community-Access/git-going-with-github/releases/download/podcasts/tools-04-releases-tags-insights.mp3" type="audio/mpeg">
-  Your browser does not support the audio element. <a href="https://github.com/Community-Access/git-going-with-github/releases/download/podcasts/tools-04-releases-tags-insights.mp3">Download Episode 25 (MP3)</a>
+  <source src="https://lp.csedesigns.com/ggg/media/tools-04-releases-tags-insights.mp3" type="audio/mpeg">
+  Your browser does not support the audio element. <a href="https://lp.csedesigns.com/ggg/media/tools-04-releases-tags-insights.mp3">Download Episode 25 (MP3)</a>
 </audio>
 
-[Download Episode 25 (MP3)](https://github.com/Community-Access/git-going-with-github/releases/download/podcasts/tools-04-releases-tags-insights.mp3)
+[Download Episode 25 (MP3)](https://lp.csedesigns.com/ggg/media/tools-04-releases-tags-insights.mp3)
 
 <details>
 <summary>Read Transcript - Episode 25: Releases, Tags, and Insights</summary>
@@ -15700,11 +15700,11 @@ Required reviews, status checks, rulesets, and diagnosing blocked merges.
 Based on: [Appendix O: Branch Protection and Rulesets](docs/appendix-o-branch-protection.md)
 
 <audio controls preload="none">
-  <source src="https://github.com/Community-Access/git-going-with-github/releases/download/podcasts/sec-01-branch-protection.mp3" type="audio/mpeg">
-  Your browser does not support the audio element. <a href="https://github.com/Community-Access/git-going-with-github/releases/download/podcasts/sec-01-branch-protection.mp3">Download Episode 28 (MP3)</a>
+  <source src="https://lp.csedesigns.com/ggg/media/sec-01-branch-protection.mp3" type="audio/mpeg">
+  Your browser does not support the audio element. <a href="https://lp.csedesigns.com/ggg/media/sec-01-branch-protection.mp3">Download Episode 28 (MP3)</a>
 </audio>
 
-[Download Episode 28 (MP3)](https://github.com/Community-Access/git-going-with-github/releases/download/podcasts/sec-01-branch-protection.mp3)
+[Download Episode 28 (MP3)](https://lp.csedesigns.com/ggg/media/sec-01-branch-protection.mp3)
 
 <details>
 <summary>Read Transcript - Episode 28: Branch Protection and Rulesets</summary>
@@ -15968,11 +15968,11 @@ Dependabot, secret scanning, code scanning, and private security advisories.
 Based on: [Appendix P: GitHub Security Features](docs/appendix-p-security-features.md)
 
 <audio controls preload="none">
-  <source src="https://github.com/Community-Access/git-going-with-github/releases/download/podcasts/sec-02-security-features.mp3" type="audio/mpeg">
-  Your browser does not support the audio element. <a href="https://github.com/Community-Access/git-going-with-github/releases/download/podcasts/sec-02-security-features.mp3">Download Episode 29 (MP3)</a>
+  <source src="https://lp.csedesigns.com/ggg/media/sec-02-security-features.mp3" type="audio/mpeg">
+  Your browser does not support the audio element. <a href="https://lp.csedesigns.com/ggg/media/sec-02-security-features.mp3">Download Episode 29 (MP3)</a>
 </audio>
 
-[Download Episode 29 (MP3)](https://github.com/Community-Access/git-going-with-github/releases/download/podcasts/sec-02-security-features.mp3)
+[Download Episode 29 (MP3)](https://lp.csedesigns.com/ggg/media/sec-02-security-features.mp3)
 
 <details>
 <summary>Read Transcript - Episode 29: GitHub Security Features</summary>
@@ -16230,11 +16230,11 @@ Complete accessibility settings, audio signals, diff viewer, and screen reader c
 Based on: [Appendix G: VS Code Accessibility Reference](docs/appendix-g-vscode-reference.md)
 
 <audio controls preload="none">
-  <source src="https://github.com/Community-Access/git-going-with-github/releases/download/podcasts/a11y-01-vscode-accessibility-reference.mp3" type="audio/mpeg">
-  Your browser does not support the audio element. <a href="https://github.com/Community-Access/git-going-with-github/releases/download/podcasts/a11y-01-vscode-accessibility-reference.mp3">Download Episode 30 (MP3)</a>
+  <source src="https://lp.csedesigns.com/ggg/media/a11y-01-vscode-accessibility-reference.mp3" type="audio/mpeg">
+  Your browser does not support the audio element. <a href="https://lp.csedesigns.com/ggg/media/a11y-01-vscode-accessibility-reference.mp3">Download Episode 30 (MP3)</a>
 </audio>
 
-[Download Episode 30 (MP3)](https://github.com/Community-Access/git-going-with-github/releases/download/podcasts/a11y-01-vscode-accessibility-reference.mp3)
+[Download Episode 30 (MP3)](https://lp.csedesigns.com/ggg/media/a11y-01-vscode-accessibility-reference.mp3)
 
 <details>
 <summary>Read Transcript - Episode 30: VS Code Accessibility Reference</summary>
@@ -16547,11 +16547,11 @@ Cloud dev environments, accessibility setup, and screen reader usage.
 Based on: [Appendix J: GitHub Codespaces](docs/appendix-j-cloud-editors.md)
 
 <audio controls preload="none">
-  <source src="https://github.com/Community-Access/git-going-with-github/releases/download/podcasts/tools-07-github-codespaces.mp3" type="audio/mpeg">
-  Your browser does not support the audio element. <a href="https://github.com/Community-Access/git-going-with-github/releases/download/podcasts/tools-07-github-codespaces.mp3">Download Episode 31 (MP3)</a>
+  <source src="https://lp.csedesigns.com/ggg/media/tools-07-github-codespaces.mp3" type="audio/mpeg">
+  Your browser does not support the audio element. <a href="https://lp.csedesigns.com/ggg/media/tools-07-github-codespaces.mp3">Download Episode 31 (MP3)</a>
 </audio>
 
-[Download Episode 31 (MP3)](https://github.com/Community-Access/git-going-with-github/releases/download/podcasts/tools-07-github-codespaces.mp3)
+[Download Episode 31 (MP3)](https://lp.csedesigns.com/ggg/media/tools-07-github-codespaces.mp3)
 
 <details>
 <summary>Read Transcript - Episode 31: GitHub Codespaces</summary>
@@ -16774,11 +16774,11 @@ VoiceOver and TalkBack guide for iOS and Android GitHub apps.
 Based on: [Appendix V: GitHub Mobile](docs/appendix-v-github-mobile.md)
 
 <audio controls preload="none">
-  <source src="https://github.com/Community-Access/git-going-with-github/releases/download/podcasts/tools-08-github-mobile.mp3" type="audio/mpeg">
-  Your browser does not support the audio element. <a href="https://github.com/Community-Access/git-going-with-github/releases/download/podcasts/tools-08-github-mobile.mp3">Download Episode 32 (MP3)</a>
+  <source src="https://lp.csedesigns.com/ggg/media/tools-08-github-mobile.mp3" type="audio/mpeg">
+  Your browser does not support the audio element. <a href="https://lp.csedesigns.com/ggg/media/tools-08-github-mobile.mp3">Download Episode 32 (MP3)</a>
 </audio>
 
-[Download Episode 32 (MP3)](https://github.com/Community-Access/git-going-with-github/releases/download/podcasts/tools-08-github-mobile.mp3)
+[Download Episode 32 (MP3)](https://lp.csedesigns.com/ggg/media/tools-08-github-mobile.mp3)
 
 <details>
 <summary>Read Transcript - Episode 32: GitHub Mobile</summary>
@@ -17010,11 +17010,11 @@ Free static site hosting, custom domains, HTTPS, and accessibility.
 Based on: [Appendix W: Publishing with GitHub Pages](docs/appendix-w-github-pages.md)
 
 <audio controls preload="none">
-  <source src="https://github.com/Community-Access/git-going-with-github/releases/download/podcasts/tools-09-github-pages.mp3" type="audio/mpeg">
-  Your browser does not support the audio element. <a href="https://github.com/Community-Access/git-going-with-github/releases/download/podcasts/tools-09-github-pages.mp3">Download Episode 33 (MP3)</a>
+  <source src="https://lp.csedesigns.com/ggg/media/tools-09-github-pages.mp3" type="audio/mpeg">
+  Your browser does not support the audio element. <a href="https://lp.csedesigns.com/ggg/media/tools-09-github-pages.mp3">Download Episode 33 (MP3)</a>
 </audio>
 
-[Download Episode 33 (MP3)](https://github.com/Community-Access/git-going-with-github/releases/download/podcasts/tools-09-github-pages.mp3)
+[Download Episode 33 (MP3)](https://lp.csedesigns.com/ggg/media/tools-09-github-pages.mp3)
 
 <details>
 <summary>Read Transcript - Episode 33: Publishing with GitHub Pages</summary>
@@ -17252,11 +17252,11 @@ Workflow YAML structure, CI/CD, automation, and the Actions marketplace.
 Based on: [Appendix Q: GitHub Actions and Workflows](docs/appendix-q-actions-workflows.md)
 
 <audio controls preload="none">
-  <source src="https://github.com/Community-Access/git-going-with-github/releases/download/podcasts/tools-10-github-actions.mp3" type="audio/mpeg">
-  Your browser does not support the audio element. <a href="https://github.com/Community-Access/git-going-with-github/releases/download/podcasts/tools-10-github-actions.mp3">Download Episode 34 (MP3)</a>
+  <source src="https://lp.csedesigns.com/ggg/media/tools-10-github-actions.mp3" type="audio/mpeg">
+  Your browser does not support the audio element. <a href="https://lp.csedesigns.com/ggg/media/tools-10-github-actions.mp3">Download Episode 34 (MP3)</a>
 </audio>
 
-[Download Episode 34 (MP3)](https://github.com/Community-Access/git-going-with-github/releases/download/podcasts/tools-10-github-actions.mp3)
+[Download Episode 34 (MP3)](https://lp.csedesigns.com/ggg/media/tools-10-github-actions.mp3)
 
 <details>
 <summary>Read Transcript - Episode 34: GitHub Actions and Workflows</summary>
@@ -17516,11 +17516,11 @@ Profile README, GitHub Sponsors, and repository Wikis.
 Based on: [Appendix T: Profile, Sponsors, and Wikis](docs/appendix-t-community-and-social.md)
 
 <audio controls preload="none">
-  <source src="https://github.com/Community-Access/git-going-with-github/releases/download/podcasts/tools-11-profile-sponsors-wikis.mp3" type="audio/mpeg">
-  Your browser does not support the audio element. <a href="https://github.com/Community-Access/git-going-with-github/releases/download/podcasts/tools-11-profile-sponsors-wikis.mp3">Download Episode 35 (MP3)</a>
+  <source src="https://lp.csedesigns.com/ggg/media/tools-11-profile-sponsors-wikis.mp3" type="audio/mpeg">
+  Your browser does not support the audio element. <a href="https://lp.csedesigns.com/ggg/media/tools-11-profile-sponsors-wikis.mp3">Download Episode 35 (MP3)</a>
 </audio>
 
-[Download Episode 35 (MP3)](https://github.com/Community-Access/git-going-with-github/releases/download/podcasts/tools-11-profile-sponsors-wikis.mp3)
+[Download Episode 35 (MP3)](https://lp.csedesigns.com/ggg/media/tools-11-profile-sponsors-wikis.mp3)
 
 <details>
 <summary>Read Transcript - Episode 35: Profile, Sponsors, and Wikis</summary>
@@ -17765,11 +17765,11 @@ GitHub Organizations, repository templates, visibility, and archiving.
 Based on: [Appendix T: Organizations and Templates](docs/appendix-t-community-and-social.md)
 
 <audio controls preload="none">
-  <source src="https://github.com/Community-Access/git-going-with-github/releases/download/podcasts/tools-12-organizations-templates.mp3" type="audio/mpeg">
-  Your browser does not support the audio element. <a href="https://github.com/Community-Access/git-going-with-github/releases/download/podcasts/tools-12-organizations-templates.mp3">Download Episode 36 (MP3)</a>
+  <source src="https://lp.csedesigns.com/ggg/media/tools-12-organizations-templates.mp3" type="audio/mpeg">
+  Your browser does not support the audio element. <a href="https://lp.csedesigns.com/ggg/media/tools-12-organizations-templates.mp3">Download Episode 36 (MP3)</a>
 </audio>
 
-[Download Episode 36 (MP3)](https://github.com/Community-Access/git-going-with-github/releases/download/podcasts/tools-12-organizations-templates.mp3)
+[Download Episode 36 (MP3)](https://lp.csedesigns.com/ggg/media/tools-12-organizations-templates.mp3)
 
 <details>
 <summary>Read Transcript - Episode 36: Organizations and Templates</summary>
@@ -18051,11 +18051,11 @@ Finding issues, scoping contributions, the fork-to-PR workflow, and building hab
 Based on: [Chapter 8: Contributing to Open Source](docs/08-open-source-culture.md)
 
 <audio controls preload="none">
-  <source src="https://github.com/Community-Access/git-going-with-github/releases/download/podcasts/ch-21-contributing-to-open-source.mp3" type="audio/mpeg">
-  Your browser does not support the audio element. <a href="https://github.com/Community-Access/git-going-with-github/releases/download/podcasts/ch-21-contributing-to-open-source.mp3">Download Episode 37 (MP3)</a>
+  <source src="https://lp.csedesigns.com/ggg/media/ch-21-contributing-to-open-source.mp3" type="audio/mpeg">
+  Your browser does not support the audio element. <a href="https://lp.csedesigns.com/ggg/media/ch-21-contributing-to-open-source.mp3">Download Episode 37 (MP3)</a>
 </audio>
 
-[Download Episode 37 (MP3)](https://github.com/Community-Access/git-going-with-github/releases/download/podcasts/ch-21-contributing-to-open-source.mp3)
+[Download Episode 37 (MP3)](https://lp.csedesigns.com/ggg/media/ch-21-contributing-to-open-source.mp3)
 
 <details>
 <summary>Read Transcript - Episode 37: Contributing to Open Source</summary>
@@ -18430,11 +18430,11 @@ Reflective documentation, portfolio language, and accessible Markdown.
 Practice focus: Bonus
 
 <audio controls preload="none">
-  <source src="https://github.com/Community-Access/git-going-with-github/releases/download/podcasts/cc-bonus-b-document-your-journey.mp3" type="audio/mpeg">
-  Your browser does not support the audio element. <a href="https://github.com/Community-Access/git-going-with-github/releases/download/podcasts/cc-bonus-b-document-your-journey.mp3">Download Challenge bonus-b (MP3)</a>
+  <source src="https://lp.csedesigns.com/ggg/media/cc-bonus-b-document-your-journey.mp3" type="audio/mpeg">
+  Your browser does not support the audio element. <a href="https://lp.csedesigns.com/ggg/media/cc-bonus-b-document-your-journey.mp3">Download Challenge bonus-b (MP3)</a>
 </audio>
 
-[Download Challenge bonus-b (MP3)](https://github.com/Community-Access/git-going-with-github/releases/download/podcasts/cc-bonus-b-document-your-journey.mp3)
+[Download Challenge bonus-b (MP3)](https://lp.csedesigns.com/ggg/media/cc-bonus-b-document-your-journey.mp3)
 
 <details>
 <summary>Read Transcript - Challenge bonus-b: Document Your Journey</summary>
@@ -18721,11 +18721,11 @@ Tools, references, communities, and continued learning paths.
 Based on: [Appendix X: Resources and Links](docs/appendix-x-resources.md)
 
 <audio controls preload="none">
-  <source src="https://github.com/Community-Access/git-going-with-github/releases/download/podcasts/ref-04-resources.mp3" type="audio/mpeg">
-  Your browser does not support the audio element. <a href="https://github.com/Community-Access/git-going-with-github/releases/download/podcasts/ref-04-resources.mp3">Download Episode 38 (MP3)</a>
+  <source src="https://lp.csedesigns.com/ggg/media/ref-04-resources.mp3" type="audio/mpeg">
+  Your browser does not support the audio element. <a href="https://lp.csedesigns.com/ggg/media/ref-04-resources.mp3">Download Episode 38 (MP3)</a>
 </audio>
 
-[Download Episode 38 (MP3)](https://github.com/Community-Access/git-going-with-github/releases/download/podcasts/ref-04-resources.mp3)
+[Download Episode 38 (MP3)](https://lp.csedesigns.com/ggg/media/ref-04-resources.mp3)
 
 <details>
 <summary>Read Transcript - Episode 38: Resources and Links</summary>
@@ -19000,11 +19000,11 @@ Downloading the repository, reading offline, keeping updated, audio format.
 Based on: [Appendix Y: Accessing Workshop Materials](docs/appendix-y-workshop-materials.md)
 
 <audio controls preload="none">
-  <source src="https://github.com/Community-Access/git-going-with-github/releases/download/podcasts/ref-05-accessing-workshop-materials.mp3" type="audio/mpeg">
-  Your browser does not support the audio element. <a href="https://github.com/Community-Access/git-going-with-github/releases/download/podcasts/ref-05-accessing-workshop-materials.mp3">Download Episode 42 (MP3)</a>
+  <source src="https://lp.csedesigns.com/ggg/media/ref-05-accessing-workshop-materials.mp3" type="audio/mpeg">
+  Your browser does not support the audio element. <a href="https://lp.csedesigns.com/ggg/media/ref-05-accessing-workshop-materials.mp3">Download Episode 42 (MP3)</a>
 </audio>
 
-[Download Episode 42 (MP3)](https://github.com/Community-Access/git-going-with-github/releases/download/podcasts/ref-05-accessing-workshop-materials.mp3)
+[Download Episode 42 (MP3)](https://lp.csedesigns.com/ggg/media/ref-05-accessing-workshop-materials.mp3)
 
 <details>
 <summary>Read Transcript - Episode 42: Accessing Workshop Materials</summary>
@@ -19229,11 +19229,11 @@ All 36 GitHub Skills modules organized into six learning paths.
 Based on: [Appendix Z: GitHub Skills - Complete Course Catalog](docs/appendix-z-github-skills.md)
 
 <audio controls preload="none">
-  <source src="https://github.com/Community-Access/git-going-with-github/releases/download/podcasts/ref-06-github-skills-catalog.mp3" type="audio/mpeg">
-  Your browser does not support the audio element. <a href="https://github.com/Community-Access/git-going-with-github/releases/download/podcasts/ref-06-github-skills-catalog.mp3">Download Episode 43 (MP3)</a>
+  <source src="https://lp.csedesigns.com/ggg/media/ref-06-github-skills-catalog.mp3" type="audio/mpeg">
+  Your browser does not support the audio element. <a href="https://lp.csedesigns.com/ggg/media/ref-06-github-skills-catalog.mp3">Download Episode 43 (MP3)</a>
 </audio>
 
-[Download Episode 43 (MP3)](https://github.com/Community-Access/git-going-with-github/releases/download/podcasts/ref-06-github-skills-catalog.mp3)
+[Download Episode 43 (MP3)](https://lp.csedesigns.com/ggg/media/ref-06-github-skills-catalog.mp3)
 
 <details>
 <summary>Read Transcript - Episode 43: GitHub Skills - Complete Course Catalog</summary>
@@ -19483,11 +19483,11 @@ Cherry-pick, rebase, revert, reset, tags, bisect, clean, and other Git recovery 
 Based on: [Appendix E: Advanced Git Operations](docs/appendix-e-advanced-git.md)
 
 <audio controls preload="none">
-  <source src="https://github.com/Community-Access/git-going-with-github/releases/download/podcasts/git-02-advanced-git-operations.mp3" type="audio/mpeg">
-  Your browser does not support the audio element. <a href="https://github.com/Community-Access/git-going-with-github/releases/download/podcasts/git-02-advanced-git-operations.mp3">Download Episode 50 (MP3)</a>
+  <source src="https://lp.csedesigns.com/ggg/media/git-02-advanced-git-operations.mp3" type="audio/mpeg">
+  Your browser does not support the audio element. <a href="https://lp.csedesigns.com/ggg/media/git-02-advanced-git-operations.mp3">Download Episode 50 (MP3)</a>
 </audio>
 
-[Download Episode 50 (MP3)](https://github.com/Community-Access/git-going-with-github/releases/download/podcasts/git-02-advanced-git-operations.mp3)
+[Download Episode 50 (MP3)](https://lp.csedesigns.com/ggg/media/git-02-advanced-git-operations.mp3)
 
 <details>
 <summary>Read Transcript - Episode 50: Advanced Git Operations</summary>
@@ -19769,11 +19769,11 @@ Secrets, .gitignore, environment variables, push protection, and safe contributo
 Based on: [Appendix F: Git Security for Contributors](docs/appendix-f-git-security.md)
 
 <audio controls preload="none">
-  <source src="https://github.com/Community-Access/git-going-with-github/releases/download/podcasts/git-03-git-security-for-contributors.mp3" type="audio/mpeg">
-  Your browser does not support the audio element. <a href="https://github.com/Community-Access/git-going-with-github/releases/download/podcasts/git-03-git-security-for-contributors.mp3">Download Episode 51 (MP3)</a>
+  <source src="https://lp.csedesigns.com/ggg/media/git-03-git-security-for-contributors.mp3" type="audio/mpeg">
+  Your browser does not support the audio element. <a href="https://lp.csedesigns.com/ggg/media/git-03-git-security-for-contributors.mp3">Download Episode 51 (MP3)</a>
 </audio>
 
-[Download Episode 51 (MP3)](https://github.com/Community-Access/git-going-with-github/releases/download/podcasts/git-03-git-security-for-contributors.mp3)
+[Download Episode 51 (MP3)](https://lp.csedesigns.com/ggg/media/git-03-git-security-for-contributors.mp3)
 
 <details>
 <summary>Read Transcript - Episode 51: Git Security for Contributors</summary>
@@ -20043,11 +20043,11 @@ Using GitHub Desktop as an accessible alternative for cloning, branching, commit
 Based on: [Appendix H: GitHub Desktop](docs/appendix-h-github-desktop.md)
 
 <audio controls preload="none">
-  <source src="https://github.com/Community-Access/git-going-with-github/releases/download/podcasts/git-04-github-desktop.mp3" type="audio/mpeg">
-  Your browser does not support the audio element. <a href="https://github.com/Community-Access/git-going-with-github/releases/download/podcasts/git-04-github-desktop.mp3">Download Episode 52 (MP3)</a>
+  <source src="https://lp.csedesigns.com/ggg/media/git-04-github-desktop.mp3" type="audio/mpeg">
+  Your browser does not support the audio element. <a href="https://lp.csedesigns.com/ggg/media/git-04-github-desktop.mp3">Download Episode 52 (MP3)</a>
 </audio>
 
-[Download Episode 52 (MP3)](https://github.com/Community-Access/git-going-with-github/releases/download/podcasts/git-04-github-desktop.mp3)
+[Download Episode 52 (MP3)](https://lp.csedesigns.com/ggg/media/git-04-github-desktop.mp3)
 
 <details>
 <summary>Read Transcript - Episode 52: GitHub Desktop</summary>
@@ -20314,11 +20314,11 @@ Using the GitHub CLI for issues, pull requests, authentication, and automation-f
 Based on: [Appendix I: GitHub CLI Reference](docs/appendix-i-github-cli.md)
 
 <audio controls preload="none">
-  <source src="https://github.com/Community-Access/git-going-with-github/releases/download/podcasts/git-05-github-cli-reference.mp3" type="audio/mpeg">
-  Your browser does not support the audio element. <a href="https://github.com/Community-Access/git-going-with-github/releases/download/podcasts/git-05-github-cli-reference.mp3">Download Episode 53 (MP3)</a>
+  <source src="https://lp.csedesigns.com/ggg/media/git-05-github-cli-reference.mp3" type="audio/mpeg">
+  Your browser does not support the audio element. <a href="https://lp.csedesigns.com/ggg/media/git-05-github-cli-reference.mp3">Download Episode 53 (MP3)</a>
 </audio>
 
-[Download Episode 53 (MP3)](https://github.com/Community-Access/git-going-with-github/releases/download/podcasts/git-05-github-cli-reference.mp3)
+[Download Episode 53 (MP3)](https://lp.csedesigns.com/ggg/media/git-05-github-cli-reference.mp3)
 
 <details>
 <summary>Read Transcript - Episode 53: GitHub CLI Reference</summary>
@@ -20618,11 +20618,11 @@ Installing accessibility agents, configuring for your environment, and verifying
 Based on: [Appendix : Agent Installation and Setup](docs/appendix-aa-agent-installation-setup.md)
 
 <audio controls preload="none">
-  <source src="https://github.com/Community-Access/git-going-with-github/releases/download/podcasts/agents-05-agent-installation-setup.mp3" type="audio/mpeg">
-  Your browser does not support the audio element. <a href="https://github.com/Community-Access/git-going-with-github/releases/download/podcasts/agents-05-agent-installation-setup.mp3">Download Episode 54 (MP3)</a>
+  <source src="https://lp.csedesigns.com/ggg/media/agents-05-agent-installation-setup.mp3" type="audio/mpeg">
+  Your browser does not support the audio element. <a href="https://lp.csedesigns.com/ggg/media/agents-05-agent-installation-setup.mp3">Download Episode 54 (MP3)</a>
 </audio>
 
-[Download Episode 54 (MP3)](https://github.com/Community-Access/git-going-with-github/releases/download/podcasts/agents-05-agent-installation-setup.mp3)
+[Download Episode 54 (MP3)](https://lp.csedesigns.com/ggg/media/agents-05-agent-installation-setup.mp3)
 
 <details>
 <summary>Read Transcript - Episode 54: Agent Installation and Setup</summary>
@@ -20853,11 +20853,11 @@ Using agents for code review, pair programming, CI/CD integration, and team work
 Based on: [Appendix : Advanced Agent Patterns](docs/appendix-ab-advanced-agent-patterns.md)
 
 <audio controls preload="none">
-  <source src="https://github.com/Community-Access/git-going-with-github/releases/download/podcasts/agents-06-advanced-agent-patterns.mp3" type="audio/mpeg">
-  Your browser does not support the audio element. <a href="https://github.com/Community-Access/git-going-with-github/releases/download/podcasts/agents-06-advanced-agent-patterns.mp3">Download Episode 55 (MP3)</a>
+  <source src="https://lp.csedesigns.com/ggg/media/agents-06-advanced-agent-patterns.mp3" type="audio/mpeg">
+  Your browser does not support the audio element. <a href="https://lp.csedesigns.com/ggg/media/agents-06-advanced-agent-patterns.mp3">Download Episode 55 (MP3)</a>
 </audio>
 
-[Download Episode 55 (MP3)](https://github.com/Community-Access/git-going-with-github/releases/download/podcasts/agents-06-advanced-agent-patterns.mp3)
+[Download Episode 55 (MP3)](https://lp.csedesigns.com/ggg/media/agents-06-advanced-agent-patterns.mp3)
 
 <details>
 <summary>Read Transcript - Episode 55: Advanced Agent Patterns</summary>
@@ -21068,11 +21068,11 @@ Managing documentation with version control, collaboration, accessibility, and d
 Based on: [Appendix : Document Developer Tools](docs/appendix-ac-document-developer-tools.md)
 
 <audio controls preload="none">
-  <source src="https://github.com/Community-Access/git-going-with-github/releases/download/podcasts/a11y-04-document-developer-tools.mp3" type="audio/mpeg">
-  Your browser does not support the audio element. <a href="https://github.com/Community-Access/git-going-with-github/releases/download/podcasts/a11y-04-document-developer-tools.mp3">Download Episode 56 (MP3)</a>
+  <source src="https://lp.csedesigns.com/ggg/media/a11y-04-document-developer-tools.mp3" type="audio/mpeg">
+  Your browser does not support the audio element. <a href="https://lp.csedesigns.com/ggg/media/a11y-04-document-developer-tools.mp3">Download Episode 56 (MP3)</a>
 </audio>
 
-[Download Episode 56 (MP3)](https://github.com/Community-Access/git-going-with-github/releases/download/podcasts/a11y-04-document-developer-tools.mp3)
+[Download Episode 56 (MP3)](https://lp.csedesigns.com/ggg/media/a11y-04-document-developer-tools.mp3)
 
 <details>
 <summary>Read Transcript - Episode 56: Document Developer Tools</summary>
@@ -21324,11 +21324,11 @@ How to continue learning, contributing, and building confidence after the worksh
 Based on: [Chapter 22: What Comes Next](docs/22-what-comes-next.md)
 
 <audio controls preload="none">
-  <source src="https://github.com/Community-Access/git-going-with-github/releases/download/podcasts/ch-22-what-comes-next.mp3" type="audio/mpeg">
-  Your browser does not support the audio element. <a href="https://github.com/Community-Access/git-going-with-github/releases/download/podcasts/ch-22-what-comes-next.mp3">Download Episode 79 (MP3)</a>
+  <source src="https://lp.csedesigns.com/ggg/media/ch-22-what-comes-next.mp3" type="audio/mpeg">
+  Your browser does not support the audio element. <a href="https://lp.csedesigns.com/ggg/media/ch-22-what-comes-next.mp3">Download Episode 79 (MP3)</a>
 </audio>
 
-[Download Episode 79 (MP3)](https://github.com/Community-Access/git-going-with-github/releases/download/podcasts/ch-22-what-comes-next.mp3)
+[Download Episode 79 (MP3)](https://lp.csedesigns.com/ggg/media/ch-22-what-comes-next.mp3)
 
 <details>
 <summary>Read Transcript - Episode 79: What Comes Next</summary>

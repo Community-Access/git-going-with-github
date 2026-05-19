@@ -1,0 +1,968 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="GIT Going with GitHub - A two-day accessible open source workshop by Community Access">
+  <title>gpt-5.4 -> gpt-5.5 transcript comparison - GIT Going with GitHub</title>
+  <link rel="stylesheet" href="../../styles/github-markdown.css">
+  <link rel="stylesheet" href="../../styles/highlight.css">
+  <link rel="stylesheet" href="../../styles/custom.css">
+  <style>
+    .markdown-body {
+      box-sizing: border-box;
+      min-width: 0;
+      max-width: 980px;
+      margin: 0;
+      padding: 45px;
+    }
+
+    .page-layout {
+      max-width: 1320px;
+      margin: 0 auto;
+      padding: 1rem 1rem 2rem;
+      display: grid;
+      grid-template-columns: minmax(240px, 300px) minmax(0, 1fr);
+      gap: 1.25rem;
+      align-items: start;
+    }
+
+    @media (max-width: 767px) {
+      .page-layout {
+        grid-template-columns: 1fr;
+        padding: 0.5rem 0.5rem 1rem;
+      }
+
+      .markdown-body {
+        padding: 15px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+  <header class="site-header" role="banner">
+    <div class="site-header-inner">
+      <nav aria-label="Breadcrumb" class="breadcrumb">
+        <a href="../../index.html">Home</a> <span aria-hidden="true">›</span> <span aria-current="page">gpt-5.4 -> gpt-5.5 transcript comparison</span>
+      </nav>
+      <div class="header-actions">
+        <a href="https://github.com/Community-Access/git-going-with-github/wiki" class="wiki-link" target="_blank" rel="noopener noreferrer">
+          <svg aria-hidden="true" focusable="false" width="16" height="16" viewBox="0 0 16 16" fill="currentColor">
+            <path d="M1.75 1h8.5c.966 0 1.75.784 1.75 1.75v5.5A1.75 1.75 0 0 1 10.25 10H7.06l-2.573 2.573A1.458 1.458 0 0 1 2 11.543V10h-.25A1.75 1.75 0 0 1 0 8.25v-5.5C0 1.784.784 1 1.75 1ZM1.5 2.75v5.5c0 .138.112.25.25.25h1a.75.75 0 0 1 .75.75v2.19l2.72-2.72a.749.749 0 0 1 .53-.22h3.5a.25.25 0 0 0 .25-.25v-5.5a.25.25 0 0 0-.25-.25h-8.5a.25.25 0 0 0-.25.25Zm13 2a.25.25 0 0 0-.25-.25h-.5a.75.75 0 0 1 0-1.5h.5c.966 0 1.75.784 1.75 1.75v5.5A1.75 1.75 0 0 1 14.25 12H14v1.543a1.457 1.457 0 0 1-2.487 1.03L9.22 12.28a.749.749 0 1 1 1.06-1.06l2.22 2.22v-2.19a.75.75 0 0 1 .75-.75h.25a.25.25 0 0 0 .25-.25v-5.5Z"/>
+          </svg>
+          Wiki
+        </a>
+        <form role="search" class="search-form" action="../../search.html" method="get">
+        <label for="site-search" class="search-label">Search docs</label>
+        <input
+          type="search"
+          id="site-search"
+          class="search-input"
+          name="q"
+          placeholder="Search docs…"
+          autocomplete="off"
+          aria-label="Search documentation"
+        >
+        <button type="submit" class="search-button" aria-label="Submit search">
+          <svg aria-hidden="true" focusable="false" width="16" height="16" viewBox="0 0 16 16" fill="currentColor">
+            <path d="M10.68 11.74a6 6 0 0 1-7.922-8.982 6 6 0 0 1 8.982 7.922l3.04 3.04a.749.749 0 0 1-.326 1.275.749.749 0 0 1-.734-.215ZM11.5 7a4.499 4.499 0 1 0-8.997 0A4.499 4.499 0 0 0 11.5 7Z"/>
+          </svg>
+        </button>
+      </form>
+      </div>
+    </div>
+  </header>
+  <div class="page-layout">
+    <aside class="guided-sidebar" aria-label="Guided reference">
+    <h2 class="guided-title">Guided Reference</h2>
+    <p class="guided-intro">Follow the learning order, then jump into challenge issue views, appendices, and support resources.</p>
+
+
+    <section class="guided-resume" aria-label="Resume learning">
+      <a id="resume-link" class="guided-resume-link" href="../../index.html" hidden>Resume where you left off</a>
+    </section>
+
+    <nav class="guided-nav" aria-label="Workshop navigation">
+      <section class="guided-section">
+        <h3>Start Here</h3>
+        <ul>
+          <li><a href="../../index.html">Workshop Home</a></li>
+          <li><a href="../../docs/course-guide.html">Course Guide</a></li>
+<li><a href="../../docs/get-going.html">Get Going with GitHub</a></li>
+<li><a href="../../docs/CHALLENGES.html">Challenge Hub</a></li>
+        </ul>
+      </section>
+
+      <section class="guided-section">
+        <h3>Learning Order</h3>
+        <details>
+          <summary>Day 1 chapters</summary>
+          <ul>
+            <li><a href="../../docs/00-pre-workshop-setup.html">Pre-Workshop Setup - GIT Going with GitHub</a></li>
+<li><a href="../../docs/01-choose-your-tools.html">Choose Your Adventure: A Tool Tour</a></li>
+<li><a href="../../docs/02-understanding-github.html">Understanding GitHub&#39;s Web Structure</a></li>
+<li><a href="../../docs/03-navigating-repositories.html">Navigating Repositories</a></li>
+<li><a href="../../docs/04-the-learning-room.html">The Learning Room: Your Personal Practice Repository</a></li>
+<li><a href="../../docs/05-working-with-issues.html">Working with Issues</a></li>
+<li><a href="../../docs/06-working-with-pull-requests.html">Working with Pull Requests</a></li>
+<li><a href="../../docs/07-merge-conflicts.html">Merge Conflicts</a></li>
+<li><a href="../../docs/08-open-source-culture.html">Culture, Etiquette, and Community Standards</a></li>
+<li><a href="../../docs/09-labels-milestones-projects.html">Labels, Milestones, and Projects</a></li>
+<li><a href="../../docs/10-notifications-and-day-1-close.html">Notifications</a></li>
+          </ul>
+        </details>
+        <details>
+          <summary>Day 2 chapters</summary>
+          <ul>
+            <li><a href="../../docs/11-vscode-interface.html">VS Code: Interface and Setup</a></li>
+<li><a href="../../docs/12-vscode-accessibility.html">VS Code: Accessibility Deep Dive</a></li>
+<li><a href="../../docs/13-how-git-works.html">How Git Works: The Mental Model</a></li>
+<li><a href="../../docs/14-git-in-practice.html">Git &amp; Source Control in VS Code</a></li>
+<li><a href="../../docs/15-code-review.html">Code Review: PRs, Diffs, and Constructive Feedback</a></li>
+<li><a href="../../docs/16-github-copilot.html">GitHub Copilot</a></li>
+<li><a href="../../docs/17-issue-templates.html">Issue Templates</a></li>
+<li><a href="../../docs/18-fork-and-contribute.html">Fork and Contribute: The Open Source Workflow</a></li>
+<li><a href="../../docs/19-accessibility-agents.html">Accessibility Agents</a></li>
+<li><a href="../../docs/20-build-your-agent.html">Capstone Project: Contribute an Impactful Agent</a></li>
+<li><a href="../../docs/21-github-accessibility-and-open-source.html">GitHub Accessibility and Open Source at Scale</a></li>
+<li><a href="../../docs/22-what-comes-next.html">What Comes Next: Your Developer Journey</a></li>
+          </ul>
+        </details>
+      </section>
+
+      <section class="guided-section">
+        <h3>Appendices</h3>
+        <details>
+          <summary>Reference library</summary>
+          <ul>
+            <li><a href="../../docs/appendix-a-glossary.html">Appendix A: GitHub Concepts &amp; Glossary</a></li>
+<li><a href="../../docs/appendix-b-screen-reader-cheatsheet.html">Appendix B: Screen Reader Cheat Sheet</a></li>
+<li><a href="../../docs/appendix-c-markdown-reference.html">Appendix C: Markdown and GitHub Flavored Markdown - Complete Guide</a></li>
+<li><a href="../../docs/appendix-d-git-authentication.html">Appendix D: Git Authentication</a></li>
+<li><a href="../../docs/appendix-e-advanced-git.html">Appendix E: Advanced Git Operations</a></li>
+<li><a href="../../docs/appendix-f-git-security.html">Appendix F: Git Security for Contributors</a></li>
+<li><a href="../../docs/appendix-g-vscode-reference.html">Appendix G: VS Code Accessibility Reference</a></li>
+<li><a href="../../docs/appendix-h-github-desktop.html">Appendix H: GitHub Desktop</a></li>
+<li><a href="../../docs/appendix-i-github-cli.html">Appendix I: GitHub CLI Reference</a></li>
+<li><a href="../../docs/appendix-j-cloud-editors.html">Appendix J: GitHub Codespaces</a></li>
+<li><a href="../../docs/appendix-k-copilot-reference.html">Appendix K: Copilot Reference</a></li>
+<li><a href="../../docs/appendix-l-agents-reference.html">Appendix L: Accessibility Agents Reference</a></li>
+<li><a href="../../docs/appendix-m-accessibility-standards.html">Appendix M: Accessibility Standards Reference</a></li>
+<li><a href="../../docs/appendix-n-advanced-search.html">Appendix N: GitHub Advanced Search</a></li>
+<li><a href="../../docs/appendix-o-branch-protection.html">Appendix O: Branch Protection Rules and Repository Rulesets</a></li>
+<li><a href="../../docs/appendix-p-security-features.html">Appendix P: GitHub Security Features</a></li>
+<li><a href="../../docs/appendix-q-actions-workflows.html">Appendix Q: GitHub Actions and Workflows</a></li>
+<li><a href="../../docs/appendix-r-projects-deep-dive.html">Appendix R: GitHub Projects Deep Dive</a></li>
+<li><a href="../../docs/appendix-s-releases-tags-insights.html">Appendix S: Releases, Tags, and Repository Insights</a></li>
+<li><a href="../../docs/appendix-t-community-and-social.html">Appendix T: Community and Social</a></li>
+<li><a href="../../docs/appendix-u-discussions-and-gists.html">Appendix U: Discussions and Gists</a></li>
+<li><a href="../../docs/appendix-v-github-mobile.html">Appendix V: GitHub Mobile</a></li>
+<li><a href="../../docs/appendix-w-github-pages.html">Appendix W: Publishing with GitHub Pages</a></li>
+<li><a href="../../docs/appendix-x-resources.html">Appendix X: Resources</a></li>
+<li><a href="../../docs/appendix-y-workshop-materials.html">Appendix Y: Accessing and Downloading Workshop Materials</a></li>
+<li><a href="../../docs/appendix-z-github-skills.html">Appendix Z: GitHub Skills - Complete Course Catalog</a></li>
+<li><a href="../../docs/appendix-aa-agent-installation-setup.html">Appendix AA: Agent Installation &amp; Setup Across All Platforms</a></li>
+<li><a href="../../docs/appendix-ab-advanced-agent-patterns.html">Appendix AB: Advanced Agent Patterns &amp; Skills</a></li>
+<li><a href="../../docs/appendix-ac-document-developer-tools.html">Appendix AC: Document &amp; Developer Tool Agents</a></li>
+          </ul>
+        </details>
+      </section>
+
+      <section class="guided-section">
+        <h3>Challenge Lab</h3>
+        <ul>
+          <li><a href="../../docs/CHALLENGES.html">Challenge Hub</a></li>
+<li><a href="../../work.html">Issue-Style Challenge Walkthrough</a></li>
+<li><a href="../../docs/17-issue-templates.html">Issue Template Deep Dive</a></li>
+        </ul>
+      </section>
+
+      <section class="guided-section">
+        <h3>External Resources</h3>
+        <ul>
+          <li><a href="https://lp.csedesigns.com/ggg/PODCASTS.html">Podcast Episodes <span class="guided-external">(external)</span></a></li>
+<li><a href="https://lp.csedesigns.com/ggg/feed.xml">RSS Feed <span class="guided-external">(external)</span></a></li>
+        </ul>
+      </section>
+
+      <section class="guided-section">
+        <h3>Get Help</h3>
+        <ul>
+          <li><a href="https://github.com/Community-Access/support">Support Hub <span class="guided-external">(external)</span></a></li>
+        </ul>
+      </section>
+    </nav>
+  </aside>
+    <main id="main-content" class="markdown-body page-main">
+      <nav class="quick-jumps" aria-label="Quick jumps">
+    <h2 class="quick-jumps-title">Quick Jumps</h2>
+    <ul class="quick-jumps-list">
+      <li><a href="#course-content">Jump to course content</a></li><li><a href="#main-content">Jump to main content top</a></li><li><a href="../../docs/CHALLENGES.html">Open challenge hub</a></li><li><a href="../../work.html">Open issue-style challenge walkthrough</a></li>
+    </ul>
+  </nav>
+
+
+      <div id="course-content"><h1 id="gpt-54--gt-gpt-55-transcript-comparison">gpt-5.4 -&gt; gpt-5.5 transcript comparison</h1>
+<p>Slugs compared: 79
+Total chars before: 2,408,574
+Total chars after: 1,029,867
+Overall char change: -57.2%</p>
+<p>Per-slug metrics. Columns: chars (old -&gt; new, %), ALEX (old -&gt; new), JAMIE (old -&gt; new), PAUSE (old -&gt; new).</p>
+<table>
+<thead>
+<tr>
+<th scope="col">Group</th>
+<th scope="col">Slug</th>
+<th scope="col">Chars (old -&gt; new)</th>
+<th scope="col">Char %</th>
+<th scope="col">ALEX</th>
+<th scope="col">JAMIE</th>
+<th scope="col">PAUSE</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>chapters</td>
+<td>ep00-welcome</td>
+<td>10,326 -&gt; 10,326</td>
+<td>+0.0%</td>
+<td>25 -&gt; 25</td>
+<td>22 -&gt; 22</td>
+<td>9 -&gt; 9</td>
+</tr>
+<tr>
+<td>chapters</td>
+<td>ep01-pre-workshop-setup</td>
+<td>15,185 -&gt; 15,185</td>
+<td>+0.0%</td>
+<td>40 -&gt; 40</td>
+<td>39 -&gt; 39</td>
+<td>7 -&gt; 7</td>
+</tr>
+<tr>
+<td>chapters</td>
+<td>ep02-github-web-structure</td>
+<td>21,618 -&gt; 10,120</td>
+<td>-53.2%</td>
+<td>71 -&gt; 20</td>
+<td>71 -&gt; 19</td>
+<td>13 -&gt; 7</td>
+</tr>
+<tr>
+<td>chapters</td>
+<td>ep03-navigating-repositories</td>
+<td>23,235 -&gt; 11,017</td>
+<td>-52.6%</td>
+<td>78 -&gt; 31</td>
+<td>78 -&gt; 30</td>
+<td>20 -&gt; 7</td>
+</tr>
+<tr>
+<td>chapters</td>
+<td>ep04-the-learning-room</td>
+<td>25,156 -&gt; 12,800</td>
+<td>-49.1%</td>
+<td>74 -&gt; 46</td>
+<td>74 -&gt; 41</td>
+<td>18 -&gt; 8</td>
+</tr>
+<tr>
+<td>chapters</td>
+<td>ep05-working-with-issues</td>
+<td>24,669 -&gt; 17,828</td>
+<td>-27.7%</td>
+<td>87 -&gt; 60</td>
+<td>82 -&gt; 55</td>
+<td>27 -&gt; 10</td>
+</tr>
+<tr>
+<td>chapters</td>
+<td>ep06-working-with-pull-requests</td>
+<td>28,407 -&gt; 14,821</td>
+<td>-47.8%</td>
+<td>98 -&gt; 40</td>
+<td>95 -&gt; 35</td>
+<td>29 -&gt; 9</td>
+</tr>
+<tr>
+<td>chapters</td>
+<td>ep07-merge-conflicts</td>
+<td>21,390 -&gt; 12,379</td>
+<td>-42.1%</td>
+<td>58 -&gt; 33</td>
+<td>48 -&gt; 33</td>
+<td>23 -&gt; 9</td>
+</tr>
+<tr>
+<td>chapters</td>
+<td>ep08-culture-and-etiquette</td>
+<td>28,087 -&gt; 13,399</td>
+<td>-52.3%</td>
+<td>97 -&gt; 35</td>
+<td>84 -&gt; 34</td>
+<td>21 -&gt; 12</td>
+</tr>
+<tr>
+<td>chapters</td>
+<td>ep09-labels-milestones-projects</td>
+<td>21,413 -&gt; 14,479</td>
+<td>-32.4%</td>
+<td>75 -&gt; 37</td>
+<td>74 -&gt; 32</td>
+<td>17 -&gt; 9</td>
+</tr>
+<tr>
+<td>chapters</td>
+<td>ep10-notifications</td>
+<td>20,803 -&gt; 11,199</td>
+<td>-46.2%</td>
+<td>75 -&gt; 29</td>
+<td>72 -&gt; 24</td>
+<td>19 -&gt; 8</td>
+</tr>
+<tr>
+<td>chapters</td>
+<td>ep11-vscode-basics</td>
+<td>26,360 -&gt; 15,468</td>
+<td>-41.3%</td>
+<td>76 -&gt; 44</td>
+<td>74 -&gt; 43</td>
+<td>15 -&gt; 7</td>
+</tr>
+<tr>
+<td>chapters</td>
+<td>ep12-git-source-control</td>
+<td>30,834 -&gt; 15,206</td>
+<td>-50.7%</td>
+<td>88 -&gt; 41</td>
+<td>76 -&gt; 37</td>
+<td>18 -&gt; 8</td>
+</tr>
+<tr>
+<td>chapters</td>
+<td>ep13-github-prs-extension</td>
+<td>37,793 -&gt; 13,810</td>
+<td>-63.5%</td>
+<td>125 -&gt; 38</td>
+<td>123 -&gt; 32</td>
+<td>23 -&gt; 10</td>
+</tr>
+<tr>
+<td>chapters</td>
+<td>ep14-github-copilot</td>
+<td>35,014 -&gt; 17,918</td>
+<td>-48.8%</td>
+<td>122 -&gt; 39</td>
+<td>119 -&gt; 38</td>
+<td>23 -&gt; 10</td>
+</tr>
+<tr>
+<td>chapters</td>
+<td>ep15-accessible-code-review</td>
+<td>33,008 -&gt; 14,113</td>
+<td>-57.2%</td>
+<td>128 -&gt; 36</td>
+<td>110 -&gt; 30</td>
+<td>21 -&gt; 11</td>
+</tr>
+<tr>
+<td>chapters</td>
+<td>ep16-issue-templates</td>
+<td>28,934 -&gt; 16,424</td>
+<td>-43.2%</td>
+<td>88 -&gt; 47</td>
+<td>85 -&gt; 41</td>
+<td>22 -&gt; 11</td>
+</tr>
+<tr>
+<td>chapters</td>
+<td>ep17-accessibility-agents</td>
+<td>29,607 -&gt; 15,673</td>
+<td>-47.1%</td>
+<td>101 -&gt; 43</td>
+<td>97 -&gt; 38</td>
+<td>19 -&gt; 10</td>
+</tr>
+<tr>
+<td>chapters</td>
+<td>ep22-github-flavored-markdown</td>
+<td>79,038 -&gt; 15,886</td>
+<td>-79.9%</td>
+<td>255 -&gt; 41</td>
+<td>118 -&gt; 39</td>
+<td>59 -&gt; 8</td>
+</tr>
+<tr>
+<td>chapters</td>
+<td>ep37-contributing-to-open-source</td>
+<td>25,543 -&gt; 17,802</td>
+<td>-30.3%</td>
+<td>102 -&gt; 52</td>
+<td>89 -&gt; 51</td>
+<td>22 -&gt; 11</td>
+</tr>
+<tr>
+<td>chapters</td>
+<td>ep40-copilot-reference</td>
+<td>82,613 -&gt; 15,274</td>
+<td>-81.5%</td>
+<td>263 -&gt; 33</td>
+<td>113 -&gt; 30</td>
+<td>53 -&gt; 9</td>
+</tr>
+<tr>
+<td>chapters</td>
+<td>ep44-choose-your-tools</td>
+<td>19,694 -&gt; 12,342</td>
+<td>-37.3%</td>
+<td>60 -&gt; 33</td>
+<td>51 -&gt; 33</td>
+<td>10 -&gt; 9</td>
+</tr>
+<tr>
+<td>chapters</td>
+<td>ep45-vscode-accessibility-deep-dive</td>
+<td>26,130 -&gt; 13,705</td>
+<td>-47.6%</td>
+<td>71 -&gt; 31</td>
+<td>66 -&gt; 30</td>
+<td>12 -&gt; 9</td>
+</tr>
+<tr>
+<td>chapters</td>
+<td>ep46-how-git-works</td>
+<td>20,399 -&gt; 11,770</td>
+<td>-42.3%</td>
+<td>71 -&gt; 32</td>
+<td>64 -&gt; 31</td>
+<td>9 -&gt; 7</td>
+</tr>
+<tr>
+<td>chapters</td>
+<td>ep47-fork-and-contribute</td>
+<td>19,856 -&gt; 15,242</td>
+<td>-23.2%</td>
+<td>67 -&gt; 51</td>
+<td>61 -&gt; 44</td>
+<td>13 -&gt; 11</td>
+</tr>
+<tr>
+<td>chapters</td>
+<td>ep48-build-your-agent-capstone</td>
+<td>21,654 -&gt; 12,397</td>
+<td>-42.7%</td>
+<td>72 -&gt; 37</td>
+<td>64 -&gt; 32</td>
+<td>16 -&gt; 9</td>
+</tr>
+<tr>
+<td>chapters</td>
+<td>ep49-github-accessibility-and-open-source</td>
+<td>9,814 -&gt; 7,517</td>
+<td>-23.4%</td>
+<td>30 -&gt; 20</td>
+<td>24 -&gt; 20</td>
+<td>10 -&gt; 8</td>
+</tr>
+<tr>
+<td>chapters</td>
+<td>ep53-github-cli-reference</td>
+<td>29,516 -&gt; 14,647</td>
+<td>-50.4%</td>
+<td>93 -&gt; 44</td>
+<td>45 -&gt; 38</td>
+<td>16 -&gt; 8</td>
+</tr>
+<tr>
+<td>chapters</td>
+<td>ep79-what-comes-next</td>
+<td>15,811 -&gt; 12,848</td>
+<td>-18.7%</td>
+<td>39 -&gt; 30</td>
+<td>39 -&gt; 28</td>
+<td>9 -&gt; 10</td>
+</tr>
+<tr>
+<td>appendices</td>
+<td>ep18-glossary</td>
+<td>24,811 -&gt; 17,354</td>
+<td>-30.1%</td>
+<td>95 -&gt; 63</td>
+<td>90 -&gt; 58</td>
+<td>11 -&gt; 9</td>
+</tr>
+<tr>
+<td>appendices</td>
+<td>ep19-screen-reader-cheatsheet</td>
+<td>22,816 -&gt; 13,413</td>
+<td>-41.2%</td>
+<td>66 -&gt; 29</td>
+<td>58 -&gt; 27</td>
+<td>12 -&gt; 8</td>
+</tr>
+<tr>
+<td>appendices</td>
+<td>ep20-accessibility-standards</td>
+<td>21,972 -&gt; 11,774</td>
+<td>-46.4%</td>
+<td>70 -&gt; 28</td>
+<td>56 -&gt; 27</td>
+<td>16 -&gt; 9</td>
+</tr>
+<tr>
+<td>appendices</td>
+<td>ep21-git-authentication</td>
+<td>19,651 -&gt; 11,876</td>
+<td>-39.6%</td>
+<td>62 -&gt; 30</td>
+<td>59 -&gt; 29</td>
+<td>8 -&gt; 8</td>
+</tr>
+<tr>
+<td>appendices</td>
+<td>ep23-github-gists</td>
+<td>25,116 -&gt; 11,551</td>
+<td>-54.0%</td>
+<td>94 -&gt; 34</td>
+<td>85 -&gt; 33</td>
+<td>29 -&gt; 9</td>
+</tr>
+<tr>
+<td>appendices</td>
+<td>ep24-github-discussions</td>
+<td>24,649 -&gt; 13,043</td>
+<td>-47.1%</td>
+<td>85 -&gt; 40</td>
+<td>76 -&gt; 40</td>
+<td>27 -&gt; 11</td>
+</tr>
+<tr>
+<td>appendices</td>
+<td>ep25-releases-tags-insights</td>
+<td>24,361 -&gt; 15,105</td>
+<td>-38.0%</td>
+<td>85 -&gt; 43</td>
+<td>81 -&gt; 42</td>
+<td>22 -&gt; 11</td>
+</tr>
+<tr>
+<td>appendices</td>
+<td>ep26-github-projects</td>
+<td>23,917 -&gt; 10,907</td>
+<td>-54.4%</td>
+<td>83 -&gt; 25</td>
+<td>81 -&gt; 22</td>
+<td>15 -&gt; 8</td>
+</tr>
+<tr>
+<td>appendices</td>
+<td>ep27-advanced-search</td>
+<td>18,810 -&gt; 12,905</td>
+<td>-31.4%</td>
+<td>64 -&gt; 44</td>
+<td>56 -&gt; 40</td>
+<td>13 -&gt; 7</td>
+</tr>
+<tr>
+<td>appendices</td>
+<td>ep28-branch-protection</td>
+<td>16,802 -&gt; 12,884</td>
+<td>-23.3%</td>
+<td>57 -&gt; 35</td>
+<td>55 -&gt; 34</td>
+<td>9 -&gt; 6</td>
+</tr>
+<tr>
+<td>appendices</td>
+<td>ep29-security-features</td>
+<td>20,992 -&gt; 12,630</td>
+<td>-39.8%</td>
+<td>63 -&gt; 33</td>
+<td>52 -&gt; 30</td>
+<td>11 -&gt; 9</td>
+</tr>
+<tr>
+<td>appendices</td>
+<td>ep30-vscode-accessibility-reference</td>
+<td>22,726 -&gt; 17,011</td>
+<td>-25.1%</td>
+<td>77 -&gt; 36</td>
+<td>70 -&gt; 35</td>
+<td>13 -&gt; 8</td>
+</tr>
+<tr>
+<td>appendices</td>
+<td>ep31-github-codespaces</td>
+<td>19,469 -&gt; 11,317</td>
+<td>-41.9%</td>
+<td>54 -&gt; 29</td>
+<td>53 -&gt; 24</td>
+<td>12 -&gt; 9</td>
+</tr>
+<tr>
+<td>appendices</td>
+<td>ep32-github-mobile</td>
+<td>18,987 -&gt; 11,608</td>
+<td>-38.9%</td>
+<td>64 -&gt; 29</td>
+<td>53 -&gt; 27</td>
+<td>12 -&gt; 7</td>
+</tr>
+<tr>
+<td>appendices</td>
+<td>ep33-github-pages</td>
+<td>17,968 -&gt; 11,395</td>
+<td>-36.6%</td>
+<td>66 -&gt; 32</td>
+<td>64 -&gt; 31</td>
+<td>13 -&gt; 9</td>
+</tr>
+<tr>
+<td>appendices</td>
+<td>ep34-github-actions</td>
+<td>22,408 -&gt; 11,794</td>
+<td>-47.4%</td>
+<td>50 -&gt; 38</td>
+<td>47 -&gt; 35</td>
+<td>14 -&gt; 9</td>
+</tr>
+<tr>
+<td>appendices</td>
+<td>ep35-profile-sponsors-wikis</td>
+<td>26,305 -&gt; 10,878</td>
+<td>-58.6%</td>
+<td>99 -&gt; 36</td>
+<td>78 -&gt; 33</td>
+<td>20 -&gt; 9</td>
+</tr>
+<tr>
+<td>appendices</td>
+<td>ep36-organizations-templates</td>
+<td>24,938 -&gt; 13,315</td>
+<td>-46.6%</td>
+<td>86 -&gt; 38</td>
+<td>81 -&gt; 38</td>
+<td>21 -&gt; 10</td>
+</tr>
+<tr>
+<td>appendices</td>
+<td>ep38-resources</td>
+<td>26,673 -&gt; 14,202</td>
+<td>-46.8%</td>
+<td>98 -&gt; 33</td>
+<td>79 -&gt; 31</td>
+<td>19 -&gt; 8</td>
+</tr>
+<tr>
+<td>appendices</td>
+<td>ep39-accessibility-agents-reference</td>
+<td>27,039 -&gt; 16,480</td>
+<td>-39.1%</td>
+<td>90 -&gt; 41</td>
+<td>82 -&gt; 36</td>
+<td>16 -&gt; 9</td>
+</tr>
+<tr>
+<td>appendices</td>
+<td>ep41-copilot-models</td>
+<td>35,665 -&gt; 11,965</td>
+<td>-66.5%</td>
+<td>133 -&gt; 30</td>
+<td>108 -&gt; 29</td>
+<td>25 -&gt; 9</td>
+</tr>
+<tr>
+<td>appendices</td>
+<td>ep42-accessing-workshop-materials</td>
+<td>15,698 -&gt; 10,724</td>
+<td>-31.7%</td>
+<td>49 -&gt; 31</td>
+<td>46 -&gt; 27</td>
+<td>11 -&gt; 7</td>
+</tr>
+<tr>
+<td>appendices</td>
+<td>ep43-github-skills-catalog</td>
+<td>17,680 -&gt; 11,600</td>
+<td>-34.4%</td>
+<td>48 -&gt; 34</td>
+<td>33 -&gt; 33</td>
+<td>15 -&gt; 11</td>
+</tr>
+<tr>
+<td>appendices</td>
+<td>ep50-advanced-git-operations</td>
+<td>26,372 -&gt; 13,525</td>
+<td>-48.7%</td>
+<td>97 -&gt; 37</td>
+<td>84 -&gt; 36</td>
+<td>14 -&gt; 9</td>
+</tr>
+<tr>
+<td>appendices</td>
+<td>ep51-git-security-for-contributors</td>
+<td>19,257 -&gt; 13,755</td>
+<td>-28.6%</td>
+<td>77 -&gt; 32</td>
+<td>65 -&gt; 32</td>
+<td>15 -&gt; 9</td>
+</tr>
+<tr>
+<td>appendices</td>
+<td>ep52-github-desktop</td>
+<td>24,443 -&gt; 13,008</td>
+<td>-46.8%</td>
+<td>86 -&gt; 36</td>
+<td>79 -&gt; 30</td>
+<td>19 -&gt; 10</td>
+</tr>
+<tr>
+<td>appendices</td>
+<td>ep54-agent-installation-setup</td>
+<td>17,071 -&gt; 11,376</td>
+<td>-33.4%</td>
+<td>43 -&gt; 29</td>
+<td>39 -&gt; 26</td>
+<td>11 -&gt; 8</td>
+</tr>
+<tr>
+<td>appendices</td>
+<td>ep55-advanced-agent-patterns</td>
+<td>22,617 -&gt; 11,360</td>
+<td>-49.8%</td>
+<td>62 -&gt; 22</td>
+<td>55 -&gt; 20</td>
+<td>9 -&gt; 7</td>
+</tr>
+<tr>
+<td>appendices</td>
+<td>ep56-document-developer-tools</td>
+<td>18,650 -&gt; 12,796</td>
+<td>-31.4%</td>
+<td>61 -&gt; 30</td>
+<td>52 -&gt; 29</td>
+<td>13 -&gt; 8</td>
+</tr>
+<tr>
+<td>challenges</td>
+<td>cc-01-find-your-way-around</td>
+<td>31,669 -&gt; 10,735</td>
+<td>-66.1%</td>
+<td>103 -&gt; 32</td>
+<td>101 -&gt; 29</td>
+<td>18 -&gt; 7</td>
+</tr>
+<tr>
+<td>challenges</td>
+<td>cc-02-file-your-first-issue</td>
+<td>20,951 -&gt; 11,425</td>
+<td>-45.5%</td>
+<td>74 -&gt; 28</td>
+<td>60 -&gt; 28</td>
+<td>26 -&gt; 8</td>
+</tr>
+<tr>
+<td>challenges</td>
+<td>cc-03-join-the-conversation</td>
+<td>29,629 -&gt; 11,930</td>
+<td>-59.7%</td>
+<td>113 -&gt; 49</td>
+<td>74 -&gt; 43</td>
+<td>42 -&gt; 11</td>
+</tr>
+<tr>
+<td>challenges</td>
+<td>cc-04-branch-out</td>
+<td>30,430 -&gt; 11,508</td>
+<td>-62.2%</td>
+<td>97 -&gt; 29</td>
+<td>95 -&gt; 27</td>
+<td>30 -&gt; 8</td>
+</tr>
+<tr>
+<td>challenges</td>
+<td>cc-05-make-your-mark</td>
+<td>31,040 -&gt; 11,845</td>
+<td>-61.8%</td>
+<td>104 -&gt; 37</td>
+<td>95 -&gt; 37</td>
+<td>29 -&gt; 9</td>
+</tr>
+<tr>
+<td>challenges</td>
+<td>cc-06-open-your-first-pr</td>
+<td>31,430 -&gt; 12,354</td>
+<td>-60.7%</td>
+<td>117 -&gt; 40</td>
+<td>106 -&gt; 36</td>
+<td>32 -&gt; 9</td>
+</tr>
+<tr>
+<td>challenges</td>
+<td>cc-07-survive-a-merge-conflict</td>
+<td>16,416 -&gt; 11,401</td>
+<td>-30.5%</td>
+<td>53 -&gt; 29</td>
+<td>40 -&gt; 29</td>
+<td>18 -&gt; 8</td>
+</tr>
+<tr>
+<td>challenges</td>
+<td>cc-08-open-source-culture</td>
+<td>30,286 -&gt; 14,568</td>
+<td>-51.9%</td>
+<td>130 -&gt; 39</td>
+<td>102 -&gt; 33</td>
+<td>28 -&gt; 11</td>
+</tr>
+<tr>
+<td>challenges</td>
+<td>cc-09-merge-day</td>
+<td>96,161 -&gt; 12,380</td>
+<td>-87.1%</td>
+<td>277 -&gt; 33</td>
+<td>129 -&gt; 32</td>
+<td>45 -&gt; 10</td>
+</tr>
+<tr>
+<td>challenges</td>
+<td>cc-10-go-local</td>
+<td>30,160 -&gt; 13,372</td>
+<td>-55.7%</td>
+<td>110 -&gt; 36</td>
+<td>82 -&gt; 36</td>
+<td>35 -&gt; 9</td>
+</tr>
+<tr>
+<td>challenges</td>
+<td>cc-11-day-2-pull-request</td>
+<td>35,775 -&gt; 9,028</td>
+<td>-74.8%</td>
+<td>109 -&gt; 24</td>
+<td>70 -&gt; 24</td>
+<td>40 -&gt; 9</td>
+</tr>
+<tr>
+<td>challenges</td>
+<td>cc-12-code-review</td>
+<td>30,641 -&gt; 11,023</td>
+<td>-64.0%</td>
+<td>115 -&gt; 27</td>
+<td>113 -&gt; 25</td>
+<td>27 -&gt; 8</td>
+</tr>
+<tr>
+<td>challenges</td>
+<td>cc-13-copilot-as-collaborator</td>
+<td>30,643 -&gt; 14,255</td>
+<td>-53.5%</td>
+<td>123 -&gt; 40</td>
+<td>101 -&gt; 37</td>
+<td>24 -&gt; 8</td>
+</tr>
+<tr>
+<td>challenges</td>
+<td>cc-14-design-an-issue-template</td>
+<td>26,899 -&gt; 12,561</td>
+<td>-53.3%</td>
+<td>80 -&gt; 33</td>
+<td>77 -&gt; 29</td>
+<td>28 -&gt; 10</td>
+</tr>
+<tr>
+<td>challenges</td>
+<td>cc-15-discover-accessibility-agents</td>
+<td>19,106 -&gt; 10,915</td>
+<td>-42.9%</td>
+<td>53 -&gt; 29</td>
+<td>51 -&gt; 27</td>
+<td>13 -&gt; 7</td>
+</tr>
+<tr>
+<td>challenges</td>
+<td>cc-16-build-your-own-agent</td>
+<td>116,698 -&gt; 13,867</td>
+<td>-88.1%</td>
+<td>346 -&gt; 39</td>
+<td>149 -&gt; 38</td>
+<td>64 -&gt; 8</td>
+</tr>
+<tr>
+<td>challenges</td>
+<td>cc-bonus-a-improve-agent</td>
+<td>113,252 -&gt; 11,277</td>
+<td>-90.0%</td>
+<td>337 -&gt; 33</td>
+<td>145 -&gt; 29</td>
+<td>62 -&gt; 8</td>
+</tr>
+<tr>
+<td>challenges</td>
+<td>cc-bonus-b-document-your-journey</td>
+<td>140,818 -&gt; 12,995</td>
+<td>-90.8%</td>
+<td>439 -&gt; 41</td>
+<td>193 -&gt; 36</td>
+<td>96 -&gt; 10</td>
+</tr>
+<tr>
+<td>challenges</td>
+<td>cc-bonus-c-group-challenge</td>
+<td>35,634 -&gt; 15,941</td>
+<td>-55.3%</td>
+<td>105 -&gt; 55</td>
+<td>103 -&gt; 54</td>
+<td>32 -&gt; 11</td>
+</tr>
+<tr>
+<td>challenges</td>
+<td>cc-bonus-d-notifications</td>
+<td>21,410 -&gt; 10,278</td>
+<td>-52.0%</td>
+<td>86 -&gt; 22</td>
+<td>72 -&gt; 21</td>
+<td>25 -&gt; 8</td>
+</tr>
+<tr>
+<td>challenges</td>
+<td>cc-bonus-e-git-history</td>
+<td>29,756 -&gt; 13,063</td>
+<td>-56.1%</td>
+<td>102 -&gt; 36</td>
+<td>97 -&gt; 35</td>
+<td>25 -&gt; 9</td>
+</tr>
+</tbody></table>
+</div>
+
+    </main>
+  </div>
+  <footer role="contentinfo" class="site-footer">
+    <p><strong>GIT Going with GitHub</strong> - A workshop by <a href="https://community-access.org">Community Access</a></p>
+    <p><a href="https://github.com/community-access/git-going-with-github">View on GitHub</a> · <a href="https://community-access.org">community-access.org</a></p>
+  </footer>
+
+  <script>
+  (function() {
+    var key = 'gggLastVisitedPath';
+    var currentPath = window.location.pathname || '';
+    try {
+      if (currentPath) {
+        localStorage.setItem(key, currentPath);
+      }
+    } catch (e) {}
+
+    var resumeLink = document.getElementById('resume-link');
+    if (!resumeLink) return;
+
+    try {
+      var savedPath = localStorage.getItem(key);
+      if (savedPath && savedPath !== currentPath) {
+        resumeLink.hidden = false;
+        resumeLink.setAttribute('href', savedPath);
+      }
+    } catch (e) {}
+  })();
+  </script>
+  </body>
+</html>

@@ -1,0 +1,651 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="GIT Going with GitHub - A two-day accessible open source workshop by Community Access">
+  <title>Site Information Architecture (Stage 1.3) - GIT Going with GitHub</title>
+  <link rel="stylesheet" href="../styles/github-markdown.css">
+  <link rel="stylesheet" href="../styles/highlight.css">
+  <link rel="stylesheet" href="../styles/custom.css">
+  <style>
+    .markdown-body {
+      box-sizing: border-box;
+      min-width: 0;
+      max-width: 980px;
+      margin: 0;
+      padding: 45px;
+    }
+
+    .page-layout {
+      max-width: 1320px;
+      margin: 0 auto;
+      padding: 1rem 1rem 2rem;
+      display: grid;
+      grid-template-columns: minmax(240px, 300px) minmax(0, 1fr);
+      gap: 1.25rem;
+      align-items: start;
+    }
+
+    @media (max-width: 767px) {
+      .page-layout {
+        grid-template-columns: 1fr;
+        padding: 0.5rem 0.5rem 1rem;
+      }
+
+      .markdown-body {
+        padding: 15px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+  <header class="site-header" role="banner">
+    <div class="site-header-inner">
+      <nav aria-label="Breadcrumb" class="breadcrumb">
+        <a href="../index.html">Home</a> <span aria-hidden="true">›</span> <span aria-current="page">Site Information Architecture (Stage 1.3)</span>
+      </nav>
+      <div class="header-actions">
+        <a href="https://github.com/Community-Access/git-going-with-github/wiki" class="wiki-link" target="_blank" rel="noopener noreferrer">
+          <svg aria-hidden="true" focusable="false" width="16" height="16" viewBox="0 0 16 16" fill="currentColor">
+            <path d="M1.75 1h8.5c.966 0 1.75.784 1.75 1.75v5.5A1.75 1.75 0 0 1 10.25 10H7.06l-2.573 2.573A1.458 1.458 0 0 1 2 11.543V10h-.25A1.75 1.75 0 0 1 0 8.25v-5.5C0 1.784.784 1 1.75 1ZM1.5 2.75v5.5c0 .138.112.25.25.25h1a.75.75 0 0 1 .75.75v2.19l2.72-2.72a.749.749 0 0 1 .53-.22h3.5a.25.25 0 0 0 .25-.25v-5.5a.25.25 0 0 0-.25-.25h-8.5a.25.25 0 0 0-.25.25Zm13 2a.25.25 0 0 0-.25-.25h-.5a.75.75 0 0 1 0-1.5h.5c.966 0 1.75.784 1.75 1.75v5.5A1.75 1.75 0 0 1 14.25 12H14v1.543a1.457 1.457 0 0 1-2.487 1.03L9.22 12.28a.749.749 0 1 1 1.06-1.06l2.22 2.22v-2.19a.75.75 0 0 1 .75-.75h.25a.25.25 0 0 0 .25-.25v-5.5Z"/>
+          </svg>
+          Wiki
+        </a>
+        <form role="search" class="search-form" action="../search.html" method="get">
+        <label for="site-search" class="search-label">Search docs</label>
+        <input
+          type="search"
+          id="site-search"
+          class="search-input"
+          name="q"
+          placeholder="Search docs…"
+          autocomplete="off"
+          aria-label="Search documentation"
+        >
+        <button type="submit" class="search-button" aria-label="Submit search">
+          <svg aria-hidden="true" focusable="false" width="16" height="16" viewBox="0 0 16 16" fill="currentColor">
+            <path d="M10.68 11.74a6 6 0 0 1-7.922-8.982 6 6 0 0 1 8.982 7.922l3.04 3.04a.749.749 0 0 1-.326 1.275.749.749 0 0 1-.734-.215ZM11.5 7a4.499 4.499 0 1 0-8.997 0A4.499 4.499 0 0 0 11.5 7Z"/>
+          </svg>
+        </button>
+      </form>
+      </div>
+    </div>
+  </header>
+  <div class="page-layout">
+    <aside class="guided-sidebar" aria-label="Guided reference">
+    <h2 class="guided-title">Guided Reference</h2>
+    <p class="guided-intro">Follow the learning order, then jump into challenge issue views, appendices, and support resources.</p>
+
+
+    <section class="guided-resume" aria-label="Resume learning">
+      <a id="resume-link" class="guided-resume-link" href="../index.html" hidden>Resume where you left off</a>
+    </section>
+
+    <nav class="guided-nav" aria-label="Workshop navigation">
+      <section class="guided-section">
+        <h3>Start Here</h3>
+        <ul>
+          <li><a href="../index.html">Workshop Home</a></li>
+          <li><a href="../docs/course-guide.html">Course Guide</a></li>
+<li><a href="../docs/get-going.html">Get Going with GitHub</a></li>
+<li><a href="../docs/CHALLENGES.html">Challenge Hub</a></li>
+        </ul>
+      </section>
+
+      <section class="guided-section">
+        <h3>Learning Order</h3>
+        <details open>
+          <summary>Day 1 chapters</summary>
+          <ul>
+            <li><a href="../docs/00-pre-workshop-setup.html">Pre-Workshop Setup - GIT Going with GitHub</a></li>
+<li><a href="../docs/01-choose-your-tools.html">Choose Your Adventure: A Tool Tour</a></li>
+<li><a href="../docs/02-understanding-github.html">Understanding GitHub&#39;s Web Structure</a></li>
+<li><a href="../docs/03-navigating-repositories.html">Navigating Repositories</a></li>
+<li><a href="../docs/04-the-learning-room.html">The Learning Room: Your Personal Practice Repository</a></li>
+<li><a href="../docs/05-working-with-issues.html">Working with Issues</a></li>
+<li><a href="../docs/06-working-with-pull-requests.html">Working with Pull Requests</a></li>
+<li><a href="../docs/07-merge-conflicts.html">Merge Conflicts</a></li>
+<li><a href="../docs/08-open-source-culture.html">Culture, Etiquette, and Community Standards</a></li>
+<li><a href="../docs/09-labels-milestones-projects.html">Labels, Milestones, and Projects</a></li>
+<li><a href="../docs/10-notifications-and-day-1-close.html">Notifications</a></li>
+          </ul>
+        </details>
+        <details open>
+          <summary>Day 2 chapters</summary>
+          <ul>
+            <li><a href="../docs/11-vscode-interface.html">VS Code: Interface and Setup</a></li>
+<li><a href="../docs/12-vscode-accessibility.html">VS Code: Accessibility Deep Dive</a></li>
+<li><a href="../docs/13-how-git-works.html">How Git Works: The Mental Model</a></li>
+<li><a href="../docs/14-git-in-practice.html">Git &amp; Source Control in VS Code</a></li>
+<li><a href="../docs/15-code-review.html">Code Review: PRs, Diffs, and Constructive Feedback</a></li>
+<li><a href="../docs/16-github-copilot.html">GitHub Copilot</a></li>
+<li><a href="../docs/17-issue-templates.html">Issue Templates</a></li>
+<li><a href="../docs/18-fork-and-contribute.html">Fork and Contribute: The Open Source Workflow</a></li>
+<li><a href="../docs/19-accessibility-agents.html">Accessibility Agents</a></li>
+<li><a href="../docs/20-build-your-agent.html">Capstone Project: Contribute an Impactful Agent</a></li>
+<li><a href="../docs/21-github-accessibility-and-open-source.html">GitHub Accessibility and Open Source at Scale</a></li>
+<li><a href="../docs/22-what-comes-next.html">What Comes Next: Your Developer Journey</a></li>
+          </ul>
+        </details>
+      </section>
+
+      <section class="guided-section">
+        <h3>Appendices</h3>
+        <details>
+          <summary>Reference library</summary>
+          <ul>
+            <li><a href="../docs/appendix-a-glossary.html">Appendix A: GitHub Concepts &amp; Glossary</a></li>
+<li><a href="../docs/appendix-b-screen-reader-cheatsheet.html">Appendix B: Screen Reader Cheat Sheet</a></li>
+<li><a href="../docs/appendix-c-markdown-reference.html">Appendix C: Markdown and GitHub Flavored Markdown - Complete Guide</a></li>
+<li><a href="../docs/appendix-d-git-authentication.html">Appendix D: Git Authentication</a></li>
+<li><a href="../docs/appendix-e-advanced-git.html">Appendix E: Advanced Git Operations</a></li>
+<li><a href="../docs/appendix-f-git-security.html">Appendix F: Git Security for Contributors</a></li>
+<li><a href="../docs/appendix-g-vscode-reference.html">Appendix G: VS Code Accessibility Reference</a></li>
+<li><a href="../docs/appendix-h-github-desktop.html">Appendix H: GitHub Desktop</a></li>
+<li><a href="../docs/appendix-i-github-cli.html">Appendix I: GitHub CLI Reference</a></li>
+<li><a href="../docs/appendix-j-cloud-editors.html">Appendix J: GitHub Codespaces</a></li>
+<li><a href="../docs/appendix-k-copilot-reference.html">Appendix K: Copilot Reference</a></li>
+<li><a href="../docs/appendix-l-agents-reference.html">Appendix L: Accessibility Agents Reference</a></li>
+<li><a href="../docs/appendix-m-accessibility-standards.html">Appendix M: Accessibility Standards Reference</a></li>
+<li><a href="../docs/appendix-n-advanced-search.html">Appendix N: GitHub Advanced Search</a></li>
+<li><a href="../docs/appendix-o-branch-protection.html">Appendix O: Branch Protection Rules and Repository Rulesets</a></li>
+<li><a href="../docs/appendix-p-security-features.html">Appendix P: GitHub Security Features</a></li>
+<li><a href="../docs/appendix-q-actions-workflows.html">Appendix Q: GitHub Actions and Workflows</a></li>
+<li><a href="../docs/appendix-r-projects-deep-dive.html">Appendix R: GitHub Projects Deep Dive</a></li>
+<li><a href="../docs/appendix-s-releases-tags-insights.html">Appendix S: Releases, Tags, and Repository Insights</a></li>
+<li><a href="../docs/appendix-t-community-and-social.html">Appendix T: Community and Social</a></li>
+<li><a href="../docs/appendix-u-discussions-and-gists.html">Appendix U: Discussions and Gists</a></li>
+<li><a href="../docs/appendix-v-github-mobile.html">Appendix V: GitHub Mobile</a></li>
+<li><a href="../docs/appendix-w-github-pages.html">Appendix W: Publishing with GitHub Pages</a></li>
+<li><a href="../docs/appendix-x-resources.html">Appendix X: Resources</a></li>
+<li><a href="../docs/appendix-y-workshop-materials.html">Appendix Y: Accessing and Downloading Workshop Materials</a></li>
+<li><a href="../docs/appendix-z-github-skills.html">Appendix Z: GitHub Skills - Complete Course Catalog</a></li>
+<li><a href="../docs/appendix-aa-agent-installation-setup.html">Appendix AA: Agent Installation &amp; Setup Across All Platforms</a></li>
+<li><a href="../docs/appendix-ab-advanced-agent-patterns.html">Appendix AB: Advanced Agent Patterns &amp; Skills</a></li>
+<li><a href="../docs/appendix-ac-document-developer-tools.html">Appendix AC: Document &amp; Developer Tool Agents</a></li>
+          </ul>
+        </details>
+      </section>
+
+      <section class="guided-section">
+        <h3>Challenge Lab</h3>
+        <ul>
+          <li><a href="../docs/CHALLENGES.html">Challenge Hub</a></li>
+<li><a href="../work.html">Issue-Style Challenge Walkthrough</a></li>
+<li><a href="../docs/17-issue-templates.html">Issue Template Deep Dive</a></li>
+        </ul>
+      </section>
+
+      <section class="guided-section">
+        <h3>External Resources</h3>
+        <ul>
+          <li><a href="https://lp.csedesigns.com/ggg/PODCASTS.html">Podcast Episodes <span class="guided-external">(external)</span></a></li>
+<li><a href="https://lp.csedesigns.com/ggg/feed.xml">RSS Feed <span class="guided-external">(external)</span></a></li>
+        </ul>
+      </section>
+
+      <section class="guided-section">
+        <h3>Get Help</h3>
+        <ul>
+          <li><a href="https://github.com/Community-Access/support">Support Hub <span class="guided-external">(external)</span></a></li>
+        </ul>
+      </section>
+    </nav>
+  </aside>
+    <main id="main-content" class="markdown-body page-main">
+      <nav class="quick-jumps" aria-label="Quick jumps">
+    <h2 class="quick-jumps-title">Quick Jumps</h2>
+    <ul class="quick-jumps-list">
+      <li><a href="#course-content">Jump to course content</a></li><li><a href="#main-content">Jump to main content top</a></li><li><a href="#on-this-page">Jump to on-page sections</a></li><li><a href="../docs/CHALLENGES.html">Open challenge hub</a></li><li><a href="../work.html">Open issue-style challenge walkthrough</a></li>
+    </ul>
+  </nav>
+
+      <nav id="on-this-page" class="onpage-nav" aria-label="On this page">
+    <h2 class="onpage-title">On This Page</h2>
+    <ul class="onpage-list">
+      <li class="onpage-item"><a href="#principles">Principles</a></li>
+<li class="onpage-item"><a href="#url-map">URL map</a></li>
+<li class="onpage-item onpage-sub"><a href="#per-episode-url-examples">Per-episode URL examples</a></li>
+<li class="onpage-item"><a href="#page-level-layout">Page-level layout</a></li>
+<li class="onpage-item onpage-sub"><a href="#homepage-">Homepage /</a></li>
+<li class="onpage-item onpage-sub"><a href="#curriculum-view-learn">Curriculum view /learn/</a></li>
+<li class="onpage-item onpage-sub"><a href="#feed-view-feed-order">Feed view /feed-order/</a></li>
+<li class="onpage-item onpage-sub"><a href="#band-landing-ltbandgt">Band landing /&lt;band&gt;/</a></li>
+<li class="onpage-item onpage-sub"><a href="#per-episode-page-episodesltfilename-without-extgt">Per-episode page /episodes/&lt;filename-without-ext&gt;/</a></li>
+<li class="onpage-item onpage-sub"><a href="#transcript-page-episodesltfilename-without-extgttranscript">Transcript page /episodes/&lt;filename-without-ext&gt;/transcript/</a></li>
+<li class="onpage-item"><a href="#facilitator-banners">Facilitator banners</a></li>
+<li class="onpage-item"><a href="#inline-player-component">Inline player component</a></li>
+<li class="onpage-item"><a href="#chapter-list-component">Chapter list component</a></li>
+<li class="onpage-item"><a href="#cross-link-rendering">Cross-link rendering</a></li>
+<li class="onpage-item"><a href="#accessibility-checklist-per-page">Accessibility checklist (per page)</a></li>
+<li class="onpage-item"><a href="#url-stability-contract">URL stability contract</a></li>
+<li class="onpage-item"><a href="#open-questions-for-stage-15-review">Open questions for Stage 1.5 review</a></li>
+<li class="onpage-item"><a href="#mapping-to-existing-tooling">Mapping to existing tooling</a></li>
+<li class="onpage-item"><a href="#routing-summary-one-screen-reference">Routing summary (one-screen reference)</a></li>
+    </ul>
+  </nav>
+      <div id="course-content"><h1 id="site-information-architecture-stage-13">Site Information Architecture (Stage 1.3)</h1>
+<p>Status: draft for Stage 1.5 gate approval.
+Authority: this doc, together with <a href="EPISODE_MAP.json">EPISODE_MAP.json</a>, governs every URL emitted by the site generator in <code>c:\code\ggg\generator\</code>.</p>
+<h2 id="principles">Principles</h2>
+<ol>
+<li><strong>Identity-first URLs.</strong> Every per-episode URL is keyed on the immutable map <code>filename</code> (without the <code>.mp3</code> extension). When <code>filename</code> is locked, the URL is locked. <code>track_number</code> is never in a URL.</li>
+<li><strong>One landing page per learning band.</strong> Nine top-level navigation routes, one per band. No &quot;appendices&quot; umbrella.</li>
+<li><strong>Audio and learning views.</strong> Listeners can browse by feed order (chronological / track) or by curriculum (paired view). Both views resolve to the same per-episode pages.</li>
+<li><strong>No legacy redirects.</strong> Greenfield launch. Old paths (<code>ep##-slug.html</code>, <code>appendix-x-*.html</code>, anything with <code>cc-NN-</code> only) simply do not exist on the new site.</li>
+<li><strong>All pages are static.</strong> No client-side routing. Every URL serves a real file from <code>c:\code\ggg\site\</code>.</li>
+<li><strong>Accessibility is non-negotiable.</strong> Semantic HTML, single H1 per page, named landmarks, keyboard-reachable controls, captions/transcripts linked from every episode page.</li>
+</ol>
+<h2 id="url-map">URL map</h2>
+<p>All URLs are rooted at <code>https://lp.csedesigns.com/ggg/</code>. Local site build mirrors this layout under <code>c:\code\ggg\site\</code>.</p>
+<table>
+<thead>
+<tr>
+<th scope="col">URL</th>
+<th scope="col">Source</th>
+<th scope="col">Description</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>/</code></td>
+<td><code>generator/templates/home.html</code> + map</td>
+<td>Homepage. Curriculum view by default. Toggle for feed view. Hero, what-this-is, &quot;Start here&quot; CTA pointing at <code>/chapters/ch-00-welcome/</code>.</td>
+</tr>
+<tr>
+<td><code>/learn/</code></td>
+<td><code>generator/templates/learn.html</code> + map</td>
+<td>Full curriculum-ordered view: chapters 00..22 interleaved with their paired challenges, bonus block, then appendix bands in order ref / git / tools / agents / sec / a11y. Same ordering as <code>track_number</code>.</td>
+</tr>
+<tr>
+<td><code>/feed-order/</code></td>
+<td><code>generator/templates/feed-order.html</code> + map</td>
+<td>Strict <code>track_number</code> list 1..79 with no grouping. Direct mirror of the RSS feed.</td>
+</tr>
+<tr>
+<td><code>/feed.xml</code></td>
+<td><code>generator/generate-feed.js</code> + map</td>
+<td>Public RSS 2.0 + iTunes podcast feed.</td>
+</tr>
+<tr>
+<td><code>/chapters/</code></td>
+<td><code>generator/templates/band-landing.html</code> + map filter <code>learning_band=chapter</code></td>
+<td>Lists 23 chapters in <code>topic_number</code> order.</td>
+</tr>
+<tr>
+<td><code>/challenges/</code></td>
+<td>same template, filter <code>learning_band=challenge</code></td>
+<td>Lists 16 code challenges in <code>topic_number</code> order.</td>
+</tr>
+<tr>
+<td><code>/bonus/</code></td>
+<td>same template, filter <code>learning_band=bonus</code></td>
+<td>Lists 5 bonus challenges in <code>topic_number</code> order.</td>
+</tr>
+<tr>
+<td><code>/ref/</code></td>
+<td>same template, filter <code>learning_band=reference</code></td>
+<td>Lists 6 reference appendices.</td>
+</tr>
+<tr>
+<td><code>/git/</code></td>
+<td>same template, filter <code>learning_band=git</code></td>
+<td>Lists 5 git appendices.</td>
+</tr>
+<tr>
+<td><code>/tools/</code></td>
+<td>same template, filter <code>learning_band=tools</code></td>
+<td>Lists 12 tools appendices.</td>
+</tr>
+<tr>
+<td><code>/agents/</code></td>
+<td>same template, filter <code>learning_band=agents</code></td>
+<td>Lists 6 agents appendices.</td>
+</tr>
+<tr>
+<td><code>/sec/</code></td>
+<td>same template, filter <code>learning_band=sec</code></td>
+<td>Lists 2 security appendices.</td>
+</tr>
+<tr>
+<td><code>/a11y/</code></td>
+<td>same template, filter <code>learning_band=a11y</code></td>
+<td>Lists 4 accessibility appendices.</td>
+</tr>
+<tr>
+<td><code>/episodes/&lt;filename-without-ext&gt;/</code></td>
+<td><code>generator/templates/episode.html</code> + map entry</td>
+<td>Per-episode page. One per map entry. 79 pages total.</td>
+</tr>
+<tr>
+<td><code>/media/&lt;filename&gt;.mp3</code></td>
+<td><code>c:\code\ggg\site\media\</code></td>
+<td>Raw enclosure URL. Used by <code>&lt;enclosure&gt;</code> and <code>&lt;audio src&gt;</code>. Direct download supported.</td>
+</tr>
+<tr>
+<td><code>/about/</code>, <code>/contributors/</code>, <code>/contact/</code>, <code>/license/</code></td>
+<td>static templates</td>
+<td>Standard site furniture. No map dependency.</td>
+</tr>
+<tr>
+<td><code>/search/</code></td>
+<td><code>generator/templates/search.html</code> + <code>site/search-index.json</code></td>
+<td>Client-side search across episode titles, summaries, and chapter marker titles. Built from map.</td>
+</tr>
+<tr>
+<td><code>/sitemap.xml</code></td>
+<td><code>generator/generate-sitemap.js</code> + map</td>
+<td>XML sitemap including all 79 episode pages and all band landings.</td>
+</tr>
+<tr>
+<td><code>/robots.txt</code></td>
+<td>static</td>
+<td>Standard.</td>
+</tr>
+<tr>
+<td><code>/opml.xml</code></td>
+<td><code>generator/generate-opml.js</code> + map</td>
+<td>OPML export of the feed. Stage 5 polish; can ship empty in Stage 3.</td>
+</tr>
+</tbody></table>
+<h3 id="per-episode-url-examples">Per-episode URL examples</h3>
+<table>
+<thead>
+<tr>
+<th scope="col">Map entry</th>
+<th scope="col">URL</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>ch-00-welcome.mp3</code></td>
+<td><code>/episodes/ch-00-welcome/</code></td>
+</tr>
+<tr>
+<td><code>ch-05-collaboration.mp3</code></td>
+<td><code>/episodes/ch-05-collaboration/</code></td>
+</tr>
+<tr>
+<td><code>cc-05-make-your-mark.mp3</code></td>
+<td><code>/episodes/cc-05-make-your-mark/</code></td>
+</tr>
+<tr>
+<td><code>cc-bonus-d-notifications.mp3</code></td>
+<td><code>/episodes/cc-bonus-d-notifications/</code></td>
+</tr>
+<tr>
+<td><code>ref-01-glossary.mp3</code></td>
+<td><code>/episodes/ref-01-glossary/</code></td>
+</tr>
+<tr>
+<td><code>a11y-04-document-developer-tools.mp3</code></td>
+<td><code>/episodes/a11y-04-document-developer-tools/</code></td>
+</tr>
+</tbody></table>
+<h2 id="page-level-layout">Page-level layout</h2>
+<h3 id="homepage-">Homepage <code>/</code></h3>
+<p>Sections, top to bottom:</p>
+<ol>
+<li>Skip link to main content (visually hidden until focus).</li>
+<li>Site header with primary nav (chapters, challenges, appendices dropdown opening to the six appendix-band routes, search).</li>
+<li>Hero: show title, tagline, single CTA &quot;Start with Chapter 00: Welcome&quot; linking to <code>/episodes/ch-00-welcome/</code>.</li>
+<li>&quot;How to use this site&quot; three-card row: Learn (curriculum view), Listen (feed view), Reference (band landings).</li>
+<li>Latest two map entries by <code>track_number</code> (NOT by date) as a &quot;Continue where the curriculum begins&quot; strip.</li>
+<li>Newsletter / register CTA. No-op for now.</li>
+<li>Site footer with license, repo links, accessibility statement.</li>
+</ol>
+<p>No date carousel. No &quot;recent episodes&quot; widget. Order is curriculum-driven, not chronological.</p>
+<h3 id="curriculum-view-learn">Curriculum view <code>/learn/</code></h3>
+<ul>
+<li>Linear ordered list of all 79 entries by <code>track_number</code>.</li>
+<li>Visual grouping: chapter+challenge pairs share a card (the chapter on top, the challenge nested below in a <code>details</code>/<code>summary</code> block), bonuses get their own card-band, each appendix band gets a heading.</li>
+<li>Each card: track number (&quot;Episode 7 of 79&quot;), within-topic identity (&quot;Challenge 03: Join the Conversation&quot;), summary, duration, and a link to the per-episode page.</li>
+<li>Day 1 and Day 2 banner inserts at the relevant track positions (see &quot;Facilitator banners&quot; below).</li>
+</ul>
+<h3 id="feed-view-feed-order">Feed view <code>/feed-order/</code></h3>
+<ul>
+<li>Flat ordered table of all 79 entries by <code>track_number</code>.</li>
+<li>Columns: track, topic id (ch-05), title, duration, link.</li>
+<li>Sortable column headers (client-side, JS optional - default order is correct).</li>
+</ul>
+<h3 id="band-landing-ltbandgt">Band landing <code>/&lt;band&gt;/</code></h3>
+<ul>
+<li>H1: human-readable band name (&quot;Chapters&quot;, &quot;Code Challenges&quot;, &quot;Bonus Challenges&quot;, &quot;Reference&quot;, &quot;Git&quot;, &quot;Tools&quot;, &quot;Copilot and Agents&quot;, &quot;Security&quot;, &quot;Accessibility&quot;).</li>
+<li>Lead paragraph: one sentence describing what this band covers.</li>
+<li>Ordered list by <code>topic_number</code>. Each item: within-topic id, title, summary, duration, link.</li>
+<li>For <code>/chapters/</code>: each item shows the paired challenge as a nested link (when <code>pairs_with_uuid</code> resolves the other direction).</li>
+<li>For <code>/challenges/</code>: each item shows its parent chapter as a nested link.</li>
+<li>For <code>/bonus/</code>, <code>/ref/</code>, <code>/git/</code>, <code>/tools/</code>, <code>/agents/</code>, <code>/sec/</code>, <code>/a11y/</code>: no pairing.</li>
+</ul>
+<h3 id="per-episode-page-episodesltfilename-without-extgt">Per-episode page <code>/episodes/&lt;filename-without-ext&gt;/</code></h3>
+<p>Sections, top to bottom:</p>
+<ol>
+<li>Skip link.</li>
+<li>Site header (same as homepage).</li>
+<li>Breadcrumb: Home -&gt; band landing -&gt; this episode.</li>
+<li>H1: title from map (e.g. &quot;Chapter 05: Collaboration&quot;).</li>
+<li>Subtitle (when map <code>subtitle</code> is set).</li>
+<li>Episode metadata block: track number, within-topic id, duration, learning band, paired-with link (when applicable).</li>
+<li><strong>Inline player component</strong> (see below).</li>
+<li><strong>Chapter list component</strong> (see below).</li>
+<li>Summary (from map <code>summary</code>).</li>
+<li>Show notes (rendered from <code>podcasts/scripts/&lt;group&gt;/&lt;slug&gt;.txt</code> companion show-notes file, or generated from script. Source TBD in Stage 5).</li>
+<li>Authoritative sources block (from <code>scripts/add-authoritative-sources.js</code> output, keyed by <code>narration_id</code>).</li>
+<li>Cross-references: links to prerequisites and follow-ups (from map <code>pairs_with_uuid</code> and a future <code>prerequisites</code> field, or static curation in bundles).</li>
+<li>Transcript link (opens transcript page in same tab; transcript is its own file at <code>/episodes/&lt;slug&gt;/transcript/</code>).</li>
+<li>Download link to mp3 enclosure URL.</li>
+<li>Next / previous navigation by <code>track_number</code>.</li>
+<li>Footer.</li>
+</ol>
+<h3 id="transcript-page-episodesltfilename-without-extgttranscript">Transcript page <code>/episodes/&lt;filename-without-ext&gt;/transcript/</code></h3>
+<ul>
+<li>H1: &quot;Transcript: <episode title>&quot;.</li>
+<li>Static HTML rendering of the cleaned-up script text.</li>
+<li>Speaker name spans (Host A, Host B) styled but kept as plain text in the DOM.</li>
+<li>Download as <code>.txt</code> button.</li>
+</ul>
+<h2 id="facilitator-banners">Facilitator banners</h2>
+<p>Day 1 and Day 2 are workshop-cohort orientation breakpoints. They appear ONLY on the curriculum view <code>/learn/</code> and on the relevant per-episode pages, never on the feed view, band landings, or homepage.</p>
+<table>
+<thead>
+<tr>
+<th scope="col">Banner</th>
+<th scope="col">Appears at</th>
+<th scope="col">Content</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Day 1</td>
+<td>Above <code>ch-00</code> on <code>/learn/</code>; above the metadata block on <code>/episodes/ch-00-welcome/</code>, <code>/episodes/ch-01-pre-workshop-setup/</code></td>
+<td>&quot;Day 1 of the workshop. Goal: get oriented and complete Challenge 01.&quot;</td>
+</tr>
+<tr>
+<td>Day 1: Issues and Collaboration</td>
+<td>Above <code>ch-05</code> on <code>/learn/</code>; above the metadata block on <code>ch-05</code> and <code>cc-05</code> episode pages</td>
+<td>Day 1 mid-morning section header.</td>
+</tr>
+<tr>
+<td>Day 1: Pull Requests and Merge Day</td>
+<td>Above <code>ch-06</code> on <code>/learn/</code>; above the metadata block on <code>ch-06..ch-10</code> and <code>cc-06..cc-10</code></td>
+<td>Day 1 afternoon section header.</td>
+</tr>
+<tr>
+<td>Day 2: Local Workflow</td>
+<td>Above <code>ch-11</code> on <code>/learn/</code>; above the metadata block on <code>ch-11..ch-16</code> and <code>cc-11..cc-16</code></td>
+<td>Day 2 morning section header.</td>
+</tr>
+<tr>
+<td>Day 2: Agents and Capstone</td>
+<td>Above <code>ch-17</code> on <code>/learn/</code>; above the metadata block on <code>ch-17..ch-22</code> and <code>cc-bonus-a..e</code></td>
+<td>Day 2 afternoon section header.</td>
+</tr>
+</tbody></table>
+<p>Banner block markup: <code>&lt;aside class=&quot;facilitator-banner&quot; aria-label=&quot;Workshop day marker&quot;&gt;</code>. Visually a thin colored stripe with the day label and section title; programmatically a labelled landmark.</p>
+<p>The banner placements above are driven by a small <code>facilitator-banners.json</code> config consumed by the generator. The config is NOT in <code>EPISODE_MAP.json</code> because it is a presentation concern, not an identity concern.</p>
+<h2 id="inline-player-component">Inline player component</h2>
+<p>Markup:</p>
+<pre><code class="hljs language-html"><span class="hljs-tag">&lt;<span class="hljs-name">figure</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;episode-player&quot;</span> <span class="hljs-attr">role</span>=<span class="hljs-string">&quot;region&quot;</span> <span class="hljs-attr">aria-label</span>=<span class="hljs-string">&quot;Episode audio player&quot;</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">figcaption</span>&gt;</span>Listen: Chapter 05: Collaboration<span class="hljs-tag">&lt;/<span class="hljs-name">figcaption</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">audio</span>
+    <span class="hljs-attr">controls</span>
+    <span class="hljs-attr">preload</span>=<span class="hljs-string">&quot;metadata&quot;</span>
+    <span class="hljs-attr">src</span>=<span class="hljs-string">&quot;/media/ch-05-collaboration.mp3&quot;</span>
+    <span class="hljs-attr">aria-describedby</span>=<span class="hljs-string">&quot;player-help-ch-05-collaboration&quot;</span>&gt;</span>
+    Your browser does not support the audio element.
+    <span class="hljs-tag">&lt;<span class="hljs-name">a</span> <span class="hljs-attr">href</span>=<span class="hljs-string">&quot;/media/ch-05-collaboration.mp3&quot;</span>&gt;</span>Download the mp3<span class="hljs-tag">&lt;/<span class="hljs-name">a</span>&gt;</span>.
+  <span class="hljs-tag">&lt;/<span class="hljs-name">audio</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">p</span> <span class="hljs-attr">id</span>=<span class="hljs-string">&quot;player-help-ch-05-collaboration&quot;</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;visually-hidden&quot;</span>&gt;</span>
+    Use Space to play and pause. Use arrow keys to scrub. Chapter markers are available below the player.
+  <span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">figure</span>&gt;</span></code></pre>
+<p>Requirements:</p>
+<ul>
+<li>Native <code>&lt;audio controls&gt;</code> with no JS wrapper for v1. Browser controls are accessible by default.</li>
+<li><code>preload=&quot;metadata&quot;</code> so duration shows without fetching the file body.</li>
+<li><code>src</code> points to <code>/media/&lt;filename&gt;</code> which mirrors the map <code>filename</code>.</li>
+<li>A non-controls fallback <code>&lt;a&gt;</code> always provides the download link.</li>
+<li>ARIA <code>aria-describedby</code> ties to a visually hidden help paragraph that names the keyboard model.</li>
+</ul>
+<p>Stage 5 enhancement (post-launch): a custom player that surfaces chapter markers as clickable jump links. v1 ships native controls only.</p>
+<h2 id="chapter-list-component">Chapter list component</h2>
+<p>Markup:</p>
+<pre><code class="hljs language-html"><span class="hljs-tag">&lt;<span class="hljs-name">section</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;episode-chapters&quot;</span> <span class="hljs-attr">aria-labelledby</span>=<span class="hljs-string">&quot;chapters-heading&quot;</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">h2</span> <span class="hljs-attr">id</span>=<span class="hljs-string">&quot;chapters-heading&quot;</span>&gt;</span>Chapters<span class="hljs-tag">&lt;/<span class="hljs-name">h2</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">ol</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;chapter-list&quot;</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">li</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">button</span> <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;button&quot;</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;chapter-jump&quot;</span> <span class="hljs-attr">data-start</span>=<span class="hljs-string">&quot;0&quot;</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">span</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;chapter-time&quot;</span>&gt;</span>00:00<span class="hljs-tag">&lt;/<span class="hljs-name">span</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">span</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;chapter-title&quot;</span>&gt;</span>Welcome and overview<span class="hljs-tag">&lt;/<span class="hljs-name">span</span>&gt;</span>
+      <span class="hljs-tag">&lt;/<span class="hljs-name">button</span>&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-name">li</span>&gt;</span>
+    <span class="hljs-comment">&lt;!-- repeat per chapter marker --&gt;</span>
+  <span class="hljs-tag">&lt;/<span class="hljs-name">ol</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">section</span>&gt;</span></code></pre>
+<p>Requirements:</p>
+<ul>
+<li>Chapter data sourced from <code>podcasts/chapters/&lt;slug&gt;.json</code> (already authored for all 79; mirrors the CHAP frames in the mp3). Generator reads this file by <code>narration_id</code> (or by <code>filename-without-ext</code>, equivalent).</li>
+<li>Each marker is rendered as an <code>&lt;ol&gt;&lt;li&gt;</code> with a button. The button&#39;s click handler sets <code>audio.currentTime = data.start</code>. JS file: <code>site/static/js/chapter-jump.js</code>. Progressive enhancement: if JS is off, the buttons are inert but the list is still readable.</li>
+<li>Time format <code>MM:SS</code> for under one hour, <code>H:MM:SS</code> for over. (None of the 79 entries exceed an hour, so v1 always uses <code>MM:SS</code>.)</li>
+<li>Button labels are full chapter titles (not truncated). Keyboard accessible by default.</li>
+</ul>
+<h2 id="cross-link-rendering">Cross-link rendering</h2>
+<p>Wherever a map entry references another entry (<code>pairs_with_uuid</code>, or a future <code>cross_refs</code> array, or a markdown link in show notes), the generator rewrites the link to the canonical URL <code>/episodes/&lt;filename-without-ext&gt;/</code>. The link text is the resolved entry&#39;s title.</p>
+<p>Show notes prose may contain free-text references like &quot;as we discussed in Chapter 5&quot;; these are NOT auto-rewritten. The rewrite only fires when a structured reference (UUID or current slug) is present.</p>
+<h2 id="accessibility-checklist-per-page">Accessibility checklist (per page)</h2>
+<p>Every generated page MUST pass:</p>
+<ul>
+<li>One <code>&lt;h1&gt;</code>. Heading levels do not skip.</li>
+<li><code>&lt;main&gt;</code> landmark contains the primary content.</li>
+<li><code>&lt;nav&gt;</code> for the top nav. Skip link targets <code>&lt;main id=&quot;content&quot;&gt;</code>.</li>
+<li>All <code>&lt;a&gt;</code> and <code>&lt;button&gt;</code> have visible focus indicators (3:1 contrast against background).</li>
+<li>Color contrast meets WCAG 2.2 AA (4.5:1 body, 3:1 large text).</li>
+<li>All <code>&lt;img&gt;</code> have meaningful <code>alt</code> or <code>alt=&quot;&quot;</code> for decorative.</li>
+<li><code>&lt;audio&gt;</code> has a labelled <code>&lt;figcaption&gt;</code>.</li>
+<li>Language is set on <code>&lt;html lang=&quot;en&quot;&gt;</code>.</li>
+<li>Page title format: &quot;<Episode title> | Git Going with GitHub&quot; for episode pages; &quot;<Section name> | Git Going with GitHub&quot; for landings.</li>
+<li>Forms (search, newsletter) have associated <code>&lt;label&gt;</code> elements.</li>
+</ul>
+<p>The generator runs axe-core in CI on a representative sample (homepage, one band landing, one episode page, one transcript page) and fails the build on any violation at impact &gt;= serious.</p>
+<h2 id="url-stability-contract">URL stability contract</h2>
+<table>
+<thead>
+<tr>
+<th scope="col">Field</th>
+<th scope="col">Stability</th>
+<th scope="col">Notes</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>filename</code> (without extension)</td>
+<td>Permanent after launch</td>
+<td>Drives the per-episode URL. Renaming an episode requires either (a) a 301 redirect from the old URL, or (b) waiting until a future major site rev. Launch is greenfield so we set this once.</td>
+</tr>
+<tr>
+<td><code>track_number</code></td>
+<td>Mutable</td>
+<td>Never appears in a URL. Drives feed order and &quot;Episode N of M&quot; labels only.</td>
+</tr>
+<tr>
+<td>Band routes (<code>/chapters/</code> etc.)</td>
+<td>Permanent after launch</td>
+<td>Each route is a stable noun for a learning band. Adding a band later requires a new route; we do not rename existing ones.</td>
+</tr>
+<tr>
+<td><code>/learn/</code>, <code>/feed-order/</code>, <code>/feed.xml</code></td>
+<td>Permanent after launch</td>
+<td>Top-level navigation anchors.</td>
+</tr>
+</tbody></table>
+<h2 id="open-questions-for-stage-15-review">Open questions for Stage 1.5 review</h2>
+<ol>
+<li><strong>Subtitle field on the per-episode page.</strong> The map does not currently populate <code>subtitle</code>. Should Stage 2 enrich the map with a one-sentence subtitle per entry, or do we collapse <code>summary</code> into the lead and skip the subtitle slot?</li>
+<li><strong>Show notes vs script.</strong> The show notes block currently renders the script. Should we generate a separate &quot;show notes&quot; markdown per entry, distinct from the spoken script? Decision deferred to Stage 5.</li>
+<li><strong>Search index scope.</strong> v1 search indexes title + summary + chapter marker titles. Should it also index the full transcript? Transcript-level search adds ~5 MB to <code>search-index.json</code>. Decision deferred to Stage 5.</li>
+<li><strong>OPML export.</strong> Stage 5 polish item. Confirm whether to ship a placeholder <code>opml.xml</code> in Stage 3 or defer entirely.</li>
+</ol>
+<h2 id="mapping-to-existing-tooling">Mapping to existing tooling</h2>
+<ul>
+<li><code>c:\code\ggg\generator\generate-site.js</code> (Stage 2.2 refactor target) emits every URL in this doc by reading <code>EPISODE_MAP.json</code>.</li>
+<li><code>c:\code\ggg\generator\generate-feed.js</code> (new in Stage 3.7) emits <code>/feed.xml</code> from the same map.</li>
+<li><code>c:\code\ggg\generator\generate-sitemap.js</code> (new in Stage 3.8) emits <code>/sitemap.xml</code>.</li>
+<li><code>c:\code\ggg\generator\templates/</code> holds page templates.</li>
+<li><code>c:\code\ggg\site\</code> is the build output; <code>c:\code\ggg\site\media\</code> mirrors <code>podcasts/audio/kokoro-am_liam-af_jessica/</code> post-rename.</li>
+<li><code>c:\code\ggg\generator\config\listening-order.json</code> is REPLACED by map-derived ordering and removed in Stage 2.2.</li>
+<li><code>c:\code\ggg\generator\manifest.json</code> is REPLACED by map-derived data and removed in Stage 2.2.</li>
+</ul>
+<h2 id="routing-summary-one-screen-reference">Routing summary (one-screen reference)</h2>
+<pre><code class="hljs">/                                          home
+/learn/                                    curriculum view (interleaved)
+/feed-order/                               strict track_number list
+/feed.xml                                  podcast RSS
+/chapters/                                 23 entries
+/challenges/                               16 entries
+/bonus/                                    5 entries
+/ref/                                      6 entries
+/git/                                      5 entries
+/tools/                                    12 entries
+/agents/                                   6 entries
+/sec/                                      2 entries
+/a11y/                                     4 entries
+/episodes/&lt;filename-without-ext&gt;/          per-episode page (79 total)
+/episodes/&lt;filename-without-ext&gt;/transcript/  per-episode transcript (79 total)
+/media/&lt;filename&gt;.mp3                      mp3 enclosure (79 total)
+/search/                                   client-side search
+/sitemap.xml                               sitemap
+/robots.txt                                robots
+/opml.xml                                  OPML <span class="hljs-built_in">export</span> (Stage 5, placeholder OK)
+/about/, /contributors/, /contact/, /license/   static furniture</code></pre>
+<p>Total static URLs generated by the build: roughly 12 + 9 + 79 + 79 = 179 HTML pages plus 79 mp3 enclosures plus feed/sitemap/opml. Buildable in a single <code>node generate-site.js</code> pass.</p>
+</div>
+
+    </main>
+  </div>
+  <footer role="contentinfo" class="site-footer">
+    <p><strong>GIT Going with GitHub</strong> - A workshop by <a href="https://community-access.org">Community Access</a></p>
+    <p><a href="https://github.com/community-access/git-going-with-github">View on GitHub</a> · <a href="https://community-access.org">community-access.org</a></p>
+  </footer>
+
+  <script>
+  (function() {
+    var key = 'gggLastVisitedPath';
+    var currentPath = window.location.pathname || '';
+    try {
+      if (currentPath) {
+        localStorage.setItem(key, currentPath);
+      }
+    } catch (e) {}
+
+    var resumeLink = document.getElementById('resume-link');
+    if (!resumeLink) return;
+
+    try {
+      var savedPath = localStorage.getItem(key);
+      if (savedPath && savedPath !== currentPath) {
+        resumeLink.hidden = false;
+        resumeLink.setAttribute('href', savedPath);
+      }
+    } catch (e) {}
+  })();
+  </script>
+  </body>
+</html>

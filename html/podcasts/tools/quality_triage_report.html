@@ -1,0 +1,1628 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="GIT Going with GitHub - A two-day accessible open source workshop by Community Access">
+  <title>Podcast Script Quality Triage - GIT Going with GitHub</title>
+  <link rel="stylesheet" href="../../styles/github-markdown.css">
+  <link rel="stylesheet" href="../../styles/highlight.css">
+  <link rel="stylesheet" href="../../styles/custom.css">
+  <style>
+    .markdown-body {
+      box-sizing: border-box;
+      min-width: 0;
+      max-width: 980px;
+      margin: 0;
+      padding: 45px;
+    }
+
+    .page-layout {
+      max-width: 1320px;
+      margin: 0 auto;
+      padding: 1rem 1rem 2rem;
+      display: grid;
+      grid-template-columns: minmax(240px, 300px) minmax(0, 1fr);
+      gap: 1.25rem;
+      align-items: start;
+    }
+
+    @media (max-width: 767px) {
+      .page-layout {
+        grid-template-columns: 1fr;
+        padding: 0.5rem 0.5rem 1rem;
+      }
+
+      .markdown-body {
+        padding: 15px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+  <header class="site-header" role="banner">
+    <div class="site-header-inner">
+      <nav aria-label="Breadcrumb" class="breadcrumb">
+        <a href="../../index.html">Home</a> <span aria-hidden="true">›</span> <span aria-current="page">Podcast Script Quality Triage</span>
+      </nav>
+      <div class="header-actions">
+        <a href="https://github.com/Community-Access/git-going-with-github/wiki" class="wiki-link" target="_blank" rel="noopener noreferrer">
+          <svg aria-hidden="true" focusable="false" width="16" height="16" viewBox="0 0 16 16" fill="currentColor">
+            <path d="M1.75 1h8.5c.966 0 1.75.784 1.75 1.75v5.5A1.75 1.75 0 0 1 10.25 10H7.06l-2.573 2.573A1.458 1.458 0 0 1 2 11.543V10h-.25A1.75 1.75 0 0 1 0 8.25v-5.5C0 1.784.784 1 1.75 1ZM1.5 2.75v5.5c0 .138.112.25.25.25h1a.75.75 0 0 1 .75.75v2.19l2.72-2.72a.749.749 0 0 1 .53-.22h3.5a.25.25 0 0 0 .25-.25v-5.5a.25.25 0 0 0-.25-.25h-8.5a.25.25 0 0 0-.25.25Zm13 2a.25.25 0 0 0-.25-.25h-.5a.75.75 0 0 1 0-1.5h.5c.966 0 1.75.784 1.75 1.75v5.5A1.75 1.75 0 0 1 14.25 12H14v1.543a1.457 1.457 0 0 1-2.487 1.03L9.22 12.28a.749.749 0 1 1 1.06-1.06l2.22 2.22v-2.19a.75.75 0 0 1 .75-.75h.25a.25.25 0 0 0 .25-.25v-5.5Z"/>
+          </svg>
+          Wiki
+        </a>
+        <form role="search" class="search-form" action="../../search.html" method="get">
+        <label for="site-search" class="search-label">Search docs</label>
+        <input
+          type="search"
+          id="site-search"
+          class="search-input"
+          name="q"
+          placeholder="Search docs…"
+          autocomplete="off"
+          aria-label="Search documentation"
+        >
+        <button type="submit" class="search-button" aria-label="Submit search">
+          <svg aria-hidden="true" focusable="false" width="16" height="16" viewBox="0 0 16 16" fill="currentColor">
+            <path d="M10.68 11.74a6 6 0 0 1-7.922-8.982 6 6 0 0 1 8.982 7.922l3.04 3.04a.749.749 0 0 1-.326 1.275.749.749 0 0 1-.734-.215ZM11.5 7a4.499 4.499 0 1 0-8.997 0A4.499 4.499 0 0 0 11.5 7Z"/>
+          </svg>
+        </button>
+      </form>
+      </div>
+    </div>
+  </header>
+  <div class="page-layout">
+    <aside class="guided-sidebar" aria-label="Guided reference">
+    <h2 class="guided-title">Guided Reference</h2>
+    <p class="guided-intro">Follow the learning order, then jump into challenge issue views, appendices, and support resources.</p>
+
+
+    <section class="guided-resume" aria-label="Resume learning">
+      <a id="resume-link" class="guided-resume-link" href="../../index.html" hidden>Resume where you left off</a>
+    </section>
+
+    <nav class="guided-nav" aria-label="Workshop navigation">
+      <section class="guided-section">
+        <h3>Start Here</h3>
+        <ul>
+          <li><a href="../../index.html">Workshop Home</a></li>
+          <li><a href="../../docs/course-guide.html">Course Guide</a></li>
+<li><a href="../../docs/get-going.html">Get Going with GitHub</a></li>
+<li><a href="../../docs/CHALLENGES.html">Challenge Hub</a></li>
+        </ul>
+      </section>
+
+      <section class="guided-section">
+        <h3>Learning Order</h3>
+        <details>
+          <summary>Day 1 chapters</summary>
+          <ul>
+            <li><a href="../../docs/00-pre-workshop-setup.html">Pre-Workshop Setup - GIT Going with GitHub</a></li>
+<li><a href="../../docs/01-choose-your-tools.html">Choose Your Adventure: A Tool Tour</a></li>
+<li><a href="../../docs/02-understanding-github.html">Understanding GitHub&#39;s Web Structure</a></li>
+<li><a href="../../docs/03-navigating-repositories.html">Navigating Repositories</a></li>
+<li><a href="../../docs/04-the-learning-room.html">The Learning Room: Your Personal Practice Repository</a></li>
+<li><a href="../../docs/05-working-with-issues.html">Working with Issues</a></li>
+<li><a href="../../docs/06-working-with-pull-requests.html">Working with Pull Requests</a></li>
+<li><a href="../../docs/07-merge-conflicts.html">Merge Conflicts</a></li>
+<li><a href="../../docs/08-open-source-culture.html">Culture, Etiquette, and Community Standards</a></li>
+<li><a href="../../docs/09-labels-milestones-projects.html">Labels, Milestones, and Projects</a></li>
+<li><a href="../../docs/10-notifications-and-day-1-close.html">Notifications</a></li>
+          </ul>
+        </details>
+        <details>
+          <summary>Day 2 chapters</summary>
+          <ul>
+            <li><a href="../../docs/11-vscode-interface.html">VS Code: Interface and Setup</a></li>
+<li><a href="../../docs/12-vscode-accessibility.html">VS Code: Accessibility Deep Dive</a></li>
+<li><a href="../../docs/13-how-git-works.html">How Git Works: The Mental Model</a></li>
+<li><a href="../../docs/14-git-in-practice.html">Git &amp; Source Control in VS Code</a></li>
+<li><a href="../../docs/15-code-review.html">Code Review: PRs, Diffs, and Constructive Feedback</a></li>
+<li><a href="../../docs/16-github-copilot.html">GitHub Copilot</a></li>
+<li><a href="../../docs/17-issue-templates.html">Issue Templates</a></li>
+<li><a href="../../docs/18-fork-and-contribute.html">Fork and Contribute: The Open Source Workflow</a></li>
+<li><a href="../../docs/19-accessibility-agents.html">Accessibility Agents</a></li>
+<li><a href="../../docs/20-build-your-agent.html">Capstone Project: Contribute an Impactful Agent</a></li>
+<li><a href="../../docs/21-github-accessibility-and-open-source.html">GitHub Accessibility and Open Source at Scale</a></li>
+<li><a href="../../docs/22-what-comes-next.html">What Comes Next: Your Developer Journey</a></li>
+          </ul>
+        </details>
+      </section>
+
+      <section class="guided-section">
+        <h3>Appendices</h3>
+        <details>
+          <summary>Reference library</summary>
+          <ul>
+            <li><a href="../../docs/appendix-a-glossary.html">Appendix A: GitHub Concepts &amp; Glossary</a></li>
+<li><a href="../../docs/appendix-b-screen-reader-cheatsheet.html">Appendix B: Screen Reader Cheat Sheet</a></li>
+<li><a href="../../docs/appendix-c-markdown-reference.html">Appendix C: Markdown and GitHub Flavored Markdown - Complete Guide</a></li>
+<li><a href="../../docs/appendix-d-git-authentication.html">Appendix D: Git Authentication</a></li>
+<li><a href="../../docs/appendix-e-advanced-git.html">Appendix E: Advanced Git Operations</a></li>
+<li><a href="../../docs/appendix-f-git-security.html">Appendix F: Git Security for Contributors</a></li>
+<li><a href="../../docs/appendix-g-vscode-reference.html">Appendix G: VS Code Accessibility Reference</a></li>
+<li><a href="../../docs/appendix-h-github-desktop.html">Appendix H: GitHub Desktop</a></li>
+<li><a href="../../docs/appendix-i-github-cli.html">Appendix I: GitHub CLI Reference</a></li>
+<li><a href="../../docs/appendix-j-cloud-editors.html">Appendix J: GitHub Codespaces</a></li>
+<li><a href="../../docs/appendix-k-copilot-reference.html">Appendix K: Copilot Reference</a></li>
+<li><a href="../../docs/appendix-l-agents-reference.html">Appendix L: Accessibility Agents Reference</a></li>
+<li><a href="../../docs/appendix-m-accessibility-standards.html">Appendix M: Accessibility Standards Reference</a></li>
+<li><a href="../../docs/appendix-n-advanced-search.html">Appendix N: GitHub Advanced Search</a></li>
+<li><a href="../../docs/appendix-o-branch-protection.html">Appendix O: Branch Protection Rules and Repository Rulesets</a></li>
+<li><a href="../../docs/appendix-p-security-features.html">Appendix P: GitHub Security Features</a></li>
+<li><a href="../../docs/appendix-q-actions-workflows.html">Appendix Q: GitHub Actions and Workflows</a></li>
+<li><a href="../../docs/appendix-r-projects-deep-dive.html">Appendix R: GitHub Projects Deep Dive</a></li>
+<li><a href="../../docs/appendix-s-releases-tags-insights.html">Appendix S: Releases, Tags, and Repository Insights</a></li>
+<li><a href="../../docs/appendix-t-community-and-social.html">Appendix T: Community and Social</a></li>
+<li><a href="../../docs/appendix-u-discussions-and-gists.html">Appendix U: Discussions and Gists</a></li>
+<li><a href="../../docs/appendix-v-github-mobile.html">Appendix V: GitHub Mobile</a></li>
+<li><a href="../../docs/appendix-w-github-pages.html">Appendix W: Publishing with GitHub Pages</a></li>
+<li><a href="../../docs/appendix-x-resources.html">Appendix X: Resources</a></li>
+<li><a href="../../docs/appendix-y-workshop-materials.html">Appendix Y: Accessing and Downloading Workshop Materials</a></li>
+<li><a href="../../docs/appendix-z-github-skills.html">Appendix Z: GitHub Skills - Complete Course Catalog</a></li>
+<li><a href="../../docs/appendix-aa-agent-installation-setup.html">Appendix AA: Agent Installation &amp; Setup Across All Platforms</a></li>
+<li><a href="../../docs/appendix-ab-advanced-agent-patterns.html">Appendix AB: Advanced Agent Patterns &amp; Skills</a></li>
+<li><a href="../../docs/appendix-ac-document-developer-tools.html">Appendix AC: Document &amp; Developer Tool Agents</a></li>
+          </ul>
+        </details>
+      </section>
+
+      <section class="guided-section">
+        <h3>Challenge Lab</h3>
+        <ul>
+          <li><a href="../../docs/CHALLENGES.html">Challenge Hub</a></li>
+<li><a href="../../work.html">Issue-Style Challenge Walkthrough</a></li>
+<li><a href="../../docs/17-issue-templates.html">Issue Template Deep Dive</a></li>
+        </ul>
+      </section>
+
+      <section class="guided-section">
+        <h3>External Resources</h3>
+        <ul>
+          <li><a href="https://lp.csedesigns.com/ggg/PODCASTS.html">Podcast Episodes <span class="guided-external">(external)</span></a></li>
+<li><a href="https://lp.csedesigns.com/ggg/feed.xml">RSS Feed <span class="guided-external">(external)</span></a></li>
+        </ul>
+      </section>
+
+      <section class="guided-section">
+        <h3>Get Help</h3>
+        <ul>
+          <li><a href="https://github.com/Community-Access/support">Support Hub <span class="guided-external">(external)</span></a></li>
+        </ul>
+      </section>
+    </nav>
+  </aside>
+    <main id="main-content" class="markdown-body page-main">
+      <nav class="quick-jumps" aria-label="Quick jumps">
+    <h2 class="quick-jumps-title">Quick Jumps</h2>
+    <ul class="quick-jumps-list">
+      <li><a href="#course-content">Jump to course content</a></li><li><a href="#main-content">Jump to main content top</a></li><li><a href="#on-this-page">Jump to on-page sections</a></li><li><a href="../../docs/CHALLENGES.html">Open challenge hub</a></li><li><a href="../../work.html">Open issue-style challenge walkthrough</a></li>
+    </ul>
+  </nav>
+
+      <nav id="on-this-page" class="onpage-nav" aria-label="On this page">
+    <h2 class="onpage-title">On This Page</h2>
+    <ul class="onpage-list">
+      <li class="onpage-item"><a href="#full_rewrite-11">FULL_REWRITE (11)</a></li>
+<li class="onpage-item"><a href="#surgical_edit-39">SURGICAL_EDIT (39)</a></li>
+<li class="onpage-item"><a href="#touch_up-83">TOUCH_UP (83)</a></li>
+    </ul>
+  </nav>
+      <div id="course-content"><h1 id="podcast-script-quality-triage">Podcast Script Quality Triage</h1>
+<p>Total scripts scanned: 133</p>
+<ul>
+<li>FULL_REWRITE: 11</li>
+<li>HEAVY_EDIT: 0</li>
+<li>SURGICAL_EDIT: 39</li>
+<li>TOUCH_UP: 83</li>
+</ul>
+<h2 id="full_rewrite-11">FULL_REWRITE (11)</h2>
+<table>
+<thead>
+<tr>
+<th style="text-align:right" scope="col">Score</th>
+<th scope="col">Group</th>
+<th scope="col">File</th>
+<th style="text-align:right" scope="col">Lines</th>
+<th style="text-align:right" scope="col">Turns</th>
+<th style="text-align:right" scope="col">Mech</th>
+<th style="text-align:right" scope="col">Stale</th>
+<th scope="col">Top signals</th>
+</tr>
+</thead>
+<tbody><tr>
+<td style="text-align:right">2100</td>
+<td>challenges</td>
+<td><code>challenges/cc-bonus-b-document-your-journey.txt</code></td>
+<td style="text-align:right">2090</td>
+<td style="text-align:right">632</td>
+<td style="text-align:right">2100</td>
+<td style="text-align:right">0</td>
+<td>has three jobs x69; show what counts as evidence x69; name the idea x69; give the learner a move x69; Anchor this part on x23</td>
+</tr>
+<tr>
+<td style="text-align:right">1753</td>
+<td>challenges</td>
+<td><code>challenges/cc-15-discover-accessibility-agents.txt</code></td>
+<td style="text-align:right">1848</td>
+<td style="text-align:right">564</td>
+<td style="text-align:right">1706</td>
+<td style="text-align:right">47</td>
+<td>has three jobs x50; show what counts as evidence x50; name the idea x50; give the learner a move x50; This is the move inside x20</td>
+</tr>
+<tr>
+<td style="text-align:right">1663</td>
+<td>challenges</td>
+<td><code>challenges/cc-16-build-your-own-agent.txt</code></td>
+<td style="text-align:right">1615</td>
+<td style="text-align:right">495</td>
+<td style="text-align:right">1596</td>
+<td style="text-align:right">67</td>
+<td>has three jobs x50; show what counts as evidence x50; name the idea x50; give the learner a move x50; GitHub Docs, home, GitHub Changelog x18</td>
+</tr>
+<tr>
+<td style="text-align:right">1587</td>
+<td>challenges</td>
+<td><code>challenges/cc-bonus-a-improve-agent.txt</code></td>
+<td style="text-align:right">1572</td>
+<td style="text-align:right">482</td>
+<td style="text-align:right">1537</td>
+<td style="text-align:right">50</td>
+<td>has three jobs x48; show what counts as evidence x48; name the idea x48; give the learner a move x48; GitHub Docs, home, GitHub Changelog x14</td>
+</tr>
+<tr>
+<td style="text-align:right">1398</td>
+<td>chapters</td>
+<td><code>chapters/agents-02-copilot-reference.txt</code></td>
+<td style="text-align:right">1236</td>
+<td style="text-align:right">376</td>
+<td style="text-align:right">1398</td>
+<td style="text-align:right">0</td>
+<td>has three jobs x57; show what counts as evidence x57; name the idea x57; give the learner a move x57; Anchor this part on x11</td>
+</tr>
+<tr>
+<td style="text-align:right">1398</td>
+<td>appendices</td>
+<td><code>appendices/agents-02-copilot-reference.txt</code></td>
+<td style="text-align:right">1236</td>
+<td style="text-align:right">377</td>
+<td style="text-align:right">1398</td>
+<td style="text-align:right">0</td>
+<td>has three jobs x57; show what counts as evidence x57; name the idea x57; give the learner a move x57; Anchor this part on x11</td>
+</tr>
+<tr>
+<td style="text-align:right">1200</td>
+<td>challenges</td>
+<td><code>challenges/cc-09-merge-day.txt</code></td>
+<td style="text-align:right">1307</td>
+<td style="text-align:right">406</td>
+<td style="text-align:right">1200</td>
+<td style="text-align:right">0</td>
+<td>has three jobs x35; show what counts as evidence x35; name the idea x35; give the learner a move x35; GitHub Docs, home, GitHub Changelog x10</td>
+</tr>
+<tr>
+<td style="text-align:right">1095</td>
+<td>chapters</td>
+<td><code>chapters/tools-01-github-flavored-markdown.txt</code></td>
+<td style="text-align:right">1239</td>
+<td style="text-align:right">373</td>
+<td style="text-align:right">1095</td>
+<td style="text-align:right">0</td>
+<td>has three jobs x35; show what counts as evidence x35; name the idea x35; give the learner a move x35; This is the move inside x14</td>
+</tr>
+<tr>
+<td style="text-align:right">1095</td>
+<td>appendices</td>
+<td><code>appendices/tools-01-github-flavored-markdown.txt</code></td>
+<td style="text-align:right">1239</td>
+<td style="text-align:right">374</td>
+<td style="text-align:right">1095</td>
+<td style="text-align:right">0</td>
+<td>has three jobs x35; show what counts as evidence x35; name the idea x35; give the learner a move x35; This is the move inside x14</td>
+</tr>
+<tr>
+<td style="text-align:right">478</td>
+<td>chapters</td>
+<td><code>chapters/git-05-github-cli-reference.txt</code></td>
+<td style="text-align:right">448</td>
+<td style="text-align:right">138</td>
+<td style="text-align:right">478</td>
+<td style="text-align:right">0</td>
+<td>has three jobs x24; show what counts as evidence x24; name the idea x24; give the learner a move x24; GitHub Docs, home, GitHub Changelog x6</td>
+</tr>
+<tr>
+<td style="text-align:right">478</td>
+<td>appendices</td>
+<td><code>appendices/git-05-github-cli-reference.txt</code></td>
+<td style="text-align:right">448</td>
+<td style="text-align:right">139</td>
+<td style="text-align:right">478</td>
+<td style="text-align:right">0</td>
+<td>has three jobs x24; show what counts as evidence x24; name the idea x24; give the learner a move x24; GitHub Docs, home, GitHub Changelog x6</td>
+</tr>
+</tbody></table>
+<h2 id="surgical_edit-39">SURGICAL_EDIT (39)</h2>
+<table>
+<thead>
+<tr>
+<th style="text-align:right" scope="col">Score</th>
+<th scope="col">Group</th>
+<th scope="col">File</th>
+<th style="text-align:right" scope="col">Lines</th>
+<th style="text-align:right" scope="col">Turns</th>
+<th style="text-align:right" scope="col">Mech</th>
+<th style="text-align:right" scope="col">Stale</th>
+<th scope="col">Top signals</th>
+</tr>
+</thead>
+<tbody><tr>
+<td style="text-align:right">10</td>
+<td>chapters</td>
+<td><code>chapters/ch-00-welcome.txt</code></td>
+<td style="text-align:right">444</td>
+<td style="text-align:right">135</td>
+<td style="text-align:right">10</td>
+<td style="text-align:right">0</td>
+<td>Section-Level Source Map x2</td>
+</tr>
+<tr>
+<td style="text-align:right">10</td>
+<td>appendices</td>
+<td><code>appendices/ch-00-welcome.txt</code></td>
+<td style="text-align:right">444</td>
+<td style="text-align:right">135</td>
+<td style="text-align:right">10</td>
+<td style="text-align:right">0</td>
+<td>Section-Level Source Map x2</td>
+</tr>
+<tr>
+<td style="text-align:right">9</td>
+<td>chapters</td>
+<td><code>chapters/ch-17-accessibility-agents.txt</code></td>
+<td style="text-align:right">631</td>
+<td style="text-align:right">198</td>
+<td style="text-align:right">0</td>
+<td style="text-align:right">9</td>
+<td>[STALE] Fork the accessibility-agents repository x1; [STALE] fifty-five agents x1</td>
+</tr>
+<tr>
+<td style="text-align:right">9</td>
+<td>chapters</td>
+<td><code>chapters/tools-06-advanced-search.txt</code></td>
+<td style="text-align:right">385</td>
+<td style="text-align:right">120</td>
+<td style="text-align:right">9</td>
+<td style="text-align:right">0</td>
+<td>Section-Level Source Map x1; Next: x2</td>
+</tr>
+<tr>
+<td style="text-align:right">9</td>
+<td>chapters</td>
+<td><code>chapters/tools-09-github-pages.txt</code></td>
+<td style="text-align:right">417</td>
+<td style="text-align:right">130</td>
+<td style="text-align:right">9</td>
+<td style="text-align:right">0</td>
+<td>Section-Level Source Map x1; Next: x2</td>
+</tr>
+<tr>
+<td style="text-align:right">9</td>
+<td>appendices</td>
+<td><code>appendices/ch-17-accessibility-agents.txt</code></td>
+<td style="text-align:right">631</td>
+<td style="text-align:right">198</td>
+<td style="text-align:right">0</td>
+<td style="text-align:right">9</td>
+<td>[STALE] Fork the accessibility-agents repository x1; [STALE] fifty-five agents x1</td>
+</tr>
+<tr>
+<td style="text-align:right">9</td>
+<td>appendices</td>
+<td><code>appendices/tools-06-advanced-search.txt</code></td>
+<td style="text-align:right">385</td>
+<td style="text-align:right">120</td>
+<td style="text-align:right">9</td>
+<td style="text-align:right">0</td>
+<td>Section-Level Source Map x1; Next: x2</td>
+</tr>
+<tr>
+<td style="text-align:right">9</td>
+<td>appendices</td>
+<td><code>appendices/tools-09-github-pages.txt</code></td>
+<td style="text-align:right">417</td>
+<td style="text-align:right">130</td>
+<td style="text-align:right">9</td>
+<td style="text-align:right">0</td>
+<td>Section-Level Source Map x1; Next: x2</td>
+</tr>
+<tr>
+<td style="text-align:right">8</td>
+<td>chapters</td>
+<td><code>chapters/a11y-01-vscode-accessibility-reference.txt</code></td>
+<td style="text-align:right">466</td>
+<td style="text-align:right">147</td>
+<td style="text-align:right">8</td>
+<td style="text-align:right">0</td>
+<td>Section-Level Source Map x1; Think of this as x1</td>
+</tr>
+<tr>
+<td style="text-align:right">8</td>
+<td>chapters</td>
+<td><code>chapters/agents-03-copilot-models.txt</code></td>
+<td style="text-align:right">778</td>
+<td style="text-align:right">241</td>
+<td style="text-align:right">8</td>
+<td style="text-align:right">0</td>
+<td>Section-Level Source Map x1; Think of this as x1</td>
+</tr>
+<tr>
+<td style="text-align:right">8</td>
+<td>chapters</td>
+<td><code>chapters/ref-06-github-skills-catalog.txt</code></td>
+<td style="text-align:right">295</td>
+<td style="text-align:right">81</td>
+<td style="text-align:right">8</td>
+<td style="text-align:right">0</td>
+<td>Section-Level Source Map x1; Think of this as x1</td>
+</tr>
+<tr>
+<td style="text-align:right">8</td>
+<td>chapters</td>
+<td><code>chapters/agents-05-agent-installation-setup.txt</code></td>
+<td style="text-align:right">321</td>
+<td style="text-align:right">82</td>
+<td style="text-align:right">8</td>
+<td style="text-align:right">0</td>
+<td>Section-Level Source Map x1; Think of this as x1</td>
+</tr>
+<tr>
+<td style="text-align:right">8</td>
+<td>chapters</td>
+<td><code>chapters/agents-06-advanced-agent-patterns.txt</code></td>
+<td style="text-align:right">376</td>
+<td style="text-align:right">117</td>
+<td style="text-align:right">8</td>
+<td style="text-align:right">0</td>
+<td>Section-Level Source Map x1; Think of this as x1</td>
+</tr>
+<tr>
+<td style="text-align:right">8</td>
+<td>appendices</td>
+<td><code>appendices/a11y-01-vscode-accessibility-reference.txt</code></td>
+<td style="text-align:right">466</td>
+<td style="text-align:right">147</td>
+<td style="text-align:right">8</td>
+<td style="text-align:right">0</td>
+<td>Section-Level Source Map x1; Think of this as x1</td>
+</tr>
+<tr>
+<td style="text-align:right">8</td>
+<td>appendices</td>
+<td><code>appendices/agents-03-copilot-models.txt</code></td>
+<td style="text-align:right">778</td>
+<td style="text-align:right">241</td>
+<td style="text-align:right">8</td>
+<td style="text-align:right">0</td>
+<td>Section-Level Source Map x1; Think of this as x1</td>
+</tr>
+<tr>
+<td style="text-align:right">8</td>
+<td>appendices</td>
+<td><code>appendices/ref-06-github-skills-catalog.txt</code></td>
+<td style="text-align:right">295</td>
+<td style="text-align:right">81</td>
+<td style="text-align:right">8</td>
+<td style="text-align:right">0</td>
+<td>Section-Level Source Map x1; Think of this as x1</td>
+</tr>
+<tr>
+<td style="text-align:right">8</td>
+<td>appendices</td>
+<td><code>appendices/agents-05-agent-installation-setup.txt</code></td>
+<td style="text-align:right">321</td>
+<td style="text-align:right">82</td>
+<td style="text-align:right">8</td>
+<td style="text-align:right">0</td>
+<td>Section-Level Source Map x1; Think of this as x1</td>
+</tr>
+<tr>
+<td style="text-align:right">8</td>
+<td>appendices</td>
+<td><code>appendices/agents-06-advanced-agent-patterns.txt</code></td>
+<td style="text-align:right">376</td>
+<td style="text-align:right">117</td>
+<td style="text-align:right">8</td>
+<td style="text-align:right">0</td>
+<td>Section-Level Source Map x1; Think of this as x1</td>
+</tr>
+<tr>
+<td style="text-align:right">7</td>
+<td>chapters</td>
+<td><code>chapters/ch-04-the-learning-room.txt</code></td>
+<td style="text-align:right">482</td>
+<td style="text-align:right">148</td>
+<td style="text-align:right">0</td>
+<td style="text-align:right">7</td>
+<td>[STALE] if you finish early x1; [STALE] finish early x1</td>
+</tr>
+<tr>
+<td style="text-align:right">7</td>
+<td>chapters</td>
+<td><code>chapters/ref-01-glossary.txt</code></td>
+<td style="text-align:right">576</td>
+<td style="text-align:right">184</td>
+<td style="text-align:right">7</td>
+<td style="text-align:right">0</td>
+<td>Section-Level Source Map x1; Next: x1</td>
+</tr>
+<tr>
+<td style="text-align:right">7</td>
+<td>appendices</td>
+<td><code>appendices/ch-04-the-learning-room.txt</code></td>
+<td style="text-align:right">482</td>
+<td style="text-align:right">149</td>
+<td style="text-align:right">0</td>
+<td style="text-align:right">7</td>
+<td>[STALE] if you finish early x1; [STALE] finish early x1</td>
+</tr>
+<tr>
+<td style="text-align:right">7</td>
+<td>appendices</td>
+<td><code>appendices/ref-01-glossary.txt</code></td>
+<td style="text-align:right">576</td>
+<td style="text-align:right">185</td>
+<td style="text-align:right">7</td>
+<td style="text-align:right">0</td>
+<td>Section-Level Source Map x1; Next: x1</td>
+</tr>
+<tr>
+<td style="text-align:right">5</td>
+<td>challenges</td>
+<td><code>challenges/cc-bonus-c-group-challenge.txt</code></td>
+<td style="text-align:right">687</td>
+<td style="text-align:right">208</td>
+<td style="text-align:right">5</td>
+<td style="text-align:right">0</td>
+<td>Section-Level Source Map x1</td>
+</tr>
+<tr>
+<td style="text-align:right">5</td>
+<td>chapters</td>
+<td><code>chapters/ch-09-labels-milestones-projects.txt</code></td>
+<td style="text-align:right">497</td>
+<td style="text-align:right">149</td>
+<td style="text-align:right">5</td>
+<td style="text-align:right">0</td>
+<td>Section-Level Source Map x1</td>
+</tr>
+<tr>
+<td style="text-align:right">5</td>
+<td>chapters</td>
+<td><code>chapters/ch-11-vscode-basics.txt</code></td>
+<td style="text-align:right">479</td>
+<td style="text-align:right">150</td>
+<td style="text-align:right">5</td>
+<td style="text-align:right">0</td>
+<td>Section-Level Source Map x1</td>
+</tr>
+<tr>
+<td style="text-align:right">5</td>
+<td>chapters</td>
+<td><code>chapters/sec-02-security-features.txt</code></td>
+<td style="text-align:right">366</td>
+<td style="text-align:right">114</td>
+<td style="text-align:right">5</td>
+<td style="text-align:right">0</td>
+<td>Section-Level Source Map x1</td>
+</tr>
+<tr>
+<td style="text-align:right">5</td>
+<td>chapters</td>
+<td><code>chapters/ref-04-resources.txt</code></td>
+<td style="text-align:right">568</td>
+<td style="text-align:right">177</td>
+<td style="text-align:right">5</td>
+<td style="text-align:right">0</td>
+<td>Section-Level Source Map x1</td>
+</tr>
+<tr>
+<td style="text-align:right">5</td>
+<td>chapters</td>
+<td><code>chapters/ref-05-accessing-workshop-materials.txt</code></td>
+<td style="text-align:right">306</td>
+<td style="text-align:right">94</td>
+<td style="text-align:right">5</td>
+<td style="text-align:right">0</td>
+<td>Section-Level Source Map x1</td>
+</tr>
+<tr>
+<td style="text-align:right">5</td>
+<td>chapters</td>
+<td><code>chapters/a11y-02-vscode-accessibility-deep-dive.txt</code></td>
+<td style="text-align:right">434</td>
+<td style="text-align:right">137</td>
+<td style="text-align:right">5</td>
+<td style="text-align:right">0</td>
+<td>Section-Level Source Map x1</td>
+</tr>
+<tr>
+<td style="text-align:right">5</td>
+<td>chapters</td>
+<td><code>chapters/ch-20-build-your-agent-capstone.txt</code></td>
+<td style="text-align:right">442</td>
+<td style="text-align:right">136</td>
+<td style="text-align:right">5</td>
+<td style="text-align:right">0</td>
+<td>Section-Level Source Map x1</td>
+</tr>
+<tr>
+<td style="text-align:right">5</td>
+<td>chapters</td>
+<td><code>chapters/a11y-04-document-developer-tools.txt</code></td>
+<td style="text-align:right">364</td>
+<td style="text-align:right">113</td>
+<td style="text-align:right">5</td>
+<td style="text-align:right">0</td>
+<td>Section-Level Source Map x1</td>
+</tr>
+<tr>
+<td style="text-align:right">5</td>
+<td>chapters</td>
+<td><code>chapters/ch-22-what-comes-next.txt</code></td>
+<td style="text-align:right">254</td>
+<td style="text-align:right">78</td>
+<td style="text-align:right">5</td>
+<td style="text-align:right">0</td>
+<td>Section-Level Source Map x1</td>
+</tr>
+<tr>
+<td style="text-align:right">5</td>
+<td>appendices</td>
+<td><code>appendices/ch-09-labels-milestones-projects.txt</code></td>
+<td style="text-align:right">497</td>
+<td style="text-align:right">150</td>
+<td style="text-align:right">5</td>
+<td style="text-align:right">0</td>
+<td>Section-Level Source Map x1</td>
+</tr>
+<tr>
+<td style="text-align:right">5</td>
+<td>appendices</td>
+<td><code>appendices/ch-11-vscode-basics.txt</code></td>
+<td style="text-align:right">479</td>
+<td style="text-align:right">150</td>
+<td style="text-align:right">5</td>
+<td style="text-align:right">0</td>
+<td>Section-Level Source Map x1</td>
+</tr>
+<tr>
+<td style="text-align:right">5</td>
+<td>appendices</td>
+<td><code>appendices/sec-02-security-features.txt</code></td>
+<td style="text-align:right">366</td>
+<td style="text-align:right">115</td>
+<td style="text-align:right">5</td>
+<td style="text-align:right">0</td>
+<td>Section-Level Source Map x1</td>
+</tr>
+<tr>
+<td style="text-align:right">5</td>
+<td>appendices</td>
+<td><code>appendices/ref-04-resources.txt</code></td>
+<td style="text-align:right">568</td>
+<td style="text-align:right">177</td>
+<td style="text-align:right">5</td>
+<td style="text-align:right">0</td>
+<td>Section-Level Source Map x1</td>
+</tr>
+<tr>
+<td style="text-align:right">5</td>
+<td>appendices</td>
+<td><code>appendices/ref-05-accessing-workshop-materials.txt</code></td>
+<td style="text-align:right">306</td>
+<td style="text-align:right">95</td>
+<td style="text-align:right">5</td>
+<td style="text-align:right">0</td>
+<td>Section-Level Source Map x1</td>
+</tr>
+<tr>
+<td style="text-align:right">5</td>
+<td>appendices</td>
+<td><code>appendices/a11y-02-vscode-accessibility-deep-dive.txt</code></td>
+<td style="text-align:right">434</td>
+<td style="text-align:right">137</td>
+<td style="text-align:right">5</td>
+<td style="text-align:right">0</td>
+<td>Section-Level Source Map x1</td>
+</tr>
+<tr>
+<td style="text-align:right">5</td>
+<td>appendices</td>
+<td><code>appendices/a11y-04-document-developer-tools.txt</code></td>
+<td style="text-align:right">364</td>
+<td style="text-align:right">113</td>
+<td style="text-align:right">5</td>
+<td style="text-align:right">0</td>
+<td>Section-Level Source Map x1</td>
+</tr>
+</tbody></table>
+<h2 id="touch_up-83">TOUCH_UP (83)</h2>
+<table>
+<thead>
+<tr>
+<th style="text-align:right" scope="col">Score</th>
+<th scope="col">Group</th>
+<th scope="col">File</th>
+<th style="text-align:right" scope="col">Lines</th>
+<th style="text-align:right" scope="col">Turns</th>
+<th style="text-align:right" scope="col">Mech</th>
+<th style="text-align:right" scope="col">Stale</th>
+<th scope="col">Top signals</th>
+</tr>
+</thead>
+<tbody><tr>
+<td style="text-align:right">3</td>
+<td>chapters</td>
+<td><code>chapters/ch-03-navigating-repositories.txt</code></td>
+<td style="text-align:right">507</td>
+<td style="text-align:right">156</td>
+<td style="text-align:right">3</td>
+<td style="text-align:right">0</td>
+<td>Think of this as x1</td>
+</tr>
+<tr>
+<td style="text-align:right">3</td>
+<td>chapters</td>
+<td><code>chapters/ch-14-github-copilot.txt</code></td>
+<td style="text-align:right">768</td>
+<td style="text-align:right">241</td>
+<td style="text-align:right">3</td>
+<td style="text-align:right">0</td>
+<td>Think of this as x1</td>
+</tr>
+<tr>
+<td style="text-align:right">3</td>
+<td>chapters</td>
+<td><code>chapters/ch-15-accessible-code-review.txt</code></td>
+<td style="text-align:right">755</td>
+<td style="text-align:right">238</td>
+<td style="text-align:right">3</td>
+<td style="text-align:right">0</td>
+<td>Think of this as x1</td>
+</tr>
+<tr>
+<td style="text-align:right">3</td>
+<td>chapters</td>
+<td><code>chapters/ref-03-accessibility-standards.txt</code></td>
+<td style="text-align:right">429</td>
+<td style="text-align:right">126</td>
+<td style="text-align:right">3</td>
+<td style="text-align:right">0</td>
+<td>Think of this as x1</td>
+</tr>
+<tr>
+<td style="text-align:right">3</td>
+<td>chapters</td>
+<td><code>chapters/tools-05-github-projects.txt</code></td>
+<td style="text-align:right">521</td>
+<td style="text-align:right">164</td>
+<td style="text-align:right">3</td>
+<td style="text-align:right">0</td>
+<td>Think of this as x1</td>
+</tr>
+<tr>
+<td style="text-align:right">3</td>
+<td>chapters</td>
+<td><code>chapters/agents-01-accessibility-agents-reference.txt</code></td>
+<td style="text-align:right">556</td>
+<td style="text-align:right">172</td>
+<td style="text-align:right">3</td>
+<td style="text-align:right">0</td>
+<td>Think of this as x1</td>
+</tr>
+<tr>
+<td style="text-align:right">3</td>
+<td>chapters</td>
+<td><code>chapters/git-04-github-desktop.txt</code></td>
+<td style="text-align:right">532</td>
+<td style="text-align:right">164</td>
+<td style="text-align:right">3</td>
+<td style="text-align:right">0</td>
+<td>Think of this as x1</td>
+</tr>
+<tr>
+<td style="text-align:right">3</td>
+<td>appendices</td>
+<td><code>appendices/ch-03-navigating-repositories.txt</code></td>
+<td style="text-align:right">507</td>
+<td style="text-align:right">156</td>
+<td style="text-align:right">3</td>
+<td style="text-align:right">0</td>
+<td>Think of this as x1</td>
+</tr>
+<tr>
+<td style="text-align:right">3</td>
+<td>appendices</td>
+<td><code>appendices/ch-14-github-copilot.txt</code></td>
+<td style="text-align:right">768</td>
+<td style="text-align:right">241</td>
+<td style="text-align:right">3</td>
+<td style="text-align:right">0</td>
+<td>Think of this as x1</td>
+</tr>
+<tr>
+<td style="text-align:right">3</td>
+<td>appendices</td>
+<td><code>appendices/ch-15-accessible-code-review.txt</code></td>
+<td style="text-align:right">755</td>
+<td style="text-align:right">238</td>
+<td style="text-align:right">3</td>
+<td style="text-align:right">0</td>
+<td>Think of this as x1</td>
+</tr>
+<tr>
+<td style="text-align:right">3</td>
+<td>appendices</td>
+<td><code>appendices/ref-03-accessibility-standards.txt</code></td>
+<td style="text-align:right">429</td>
+<td style="text-align:right">126</td>
+<td style="text-align:right">3</td>
+<td style="text-align:right">0</td>
+<td>Think of this as x1</td>
+</tr>
+<tr>
+<td style="text-align:right">3</td>
+<td>appendices</td>
+<td><code>appendices/tools-05-github-projects.txt</code></td>
+<td style="text-align:right">521</td>
+<td style="text-align:right">164</td>
+<td style="text-align:right">3</td>
+<td style="text-align:right">0</td>
+<td>Think of this as x1</td>
+</tr>
+<tr>
+<td style="text-align:right">3</td>
+<td>appendices</td>
+<td><code>appendices/agents-01-accessibility-agents-reference.txt</code></td>
+<td style="text-align:right">556</td>
+<td style="text-align:right">172</td>
+<td style="text-align:right">3</td>
+<td style="text-align:right">0</td>
+<td>Think of this as x1</td>
+</tr>
+<tr>
+<td style="text-align:right">3</td>
+<td>appendices</td>
+<td><code>appendices/git-04-github-desktop.txt</code></td>
+<td style="text-align:right">532</td>
+<td style="text-align:right">165</td>
+<td style="text-align:right">3</td>
+<td style="text-align:right">0</td>
+<td>Think of this as x1</td>
+</tr>
+<tr>
+<td style="text-align:right">2</td>
+<td>challenges</td>
+<td><code>challenges/cc-08-open-source-culture.txt</code></td>
+<td style="text-align:right">753</td>
+<td style="text-align:right">232</td>
+<td style="text-align:right">2</td>
+<td style="text-align:right">0</td>
+<td>Next: x1</td>
+</tr>
+<tr>
+<td style="text-align:right">2</td>
+<td>challenges</td>
+<td><code>challenges/cc-13-copilot-as-collaborator.txt</code></td>
+<td style="text-align:right">719</td>
+<td style="text-align:right">224</td>
+<td style="text-align:right">2</td>
+<td style="text-align:right">0</td>
+<td>Next: x1</td>
+</tr>
+<tr>
+<td style="text-align:right">2</td>
+<td>challenges</td>
+<td><code>challenges/cc-bonus-e-git-history.txt</code></td>
+<td style="text-align:right">646</td>
+<td style="text-align:right">199</td>
+<td style="text-align:right">2</td>
+<td style="text-align:right">0</td>
+<td>Next: x1</td>
+</tr>
+<tr>
+<td style="text-align:right">2</td>
+<td>chapters</td>
+<td><code>chapters/sec-01-branch-protection.txt</code></td>
+<td style="text-align:right">353</td>
+<td style="text-align:right">112</td>
+<td style="text-align:right">2</td>
+<td style="text-align:right">0</td>
+<td>Next: x1</td>
+</tr>
+<tr>
+<td style="text-align:right">2</td>
+<td>chapters</td>
+<td><code>chapters/ch-21-contributing-to-open-source.txt</code></td>
+<td style="text-align:right">660</td>
+<td style="text-align:right">191</td>
+<td style="text-align:right">2</td>
+<td style="text-align:right">0</td>
+<td>Next: x1</td>
+</tr>
+<tr>
+<td style="text-align:right">2</td>
+<td>appendices</td>
+<td><code>appendices/sec-01-branch-protection.txt</code></td>
+<td style="text-align:right">353</td>
+<td style="text-align:right">112</td>
+<td style="text-align:right">2</td>
+<td style="text-align:right">0</td>
+<td>Next: x1</td>
+</tr>
+<tr>
+<td style="text-align:right">2</td>
+<td>appendices</td>
+<td><code>appendices/ch-21-contributing-to-open-source.txt</code></td>
+<td style="text-align:right">660</td>
+<td style="text-align:right">191</td>
+<td style="text-align:right">2</td>
+<td style="text-align:right">0</td>
+<td>Next: x1</td>
+</tr>
+<tr>
+<td style="text-align:right">0</td>
+<td>challenges</td>
+<td><code>challenges/cc-01-find-your-way-around.txt</code></td>
+<td style="text-align:right">647</td>
+<td style="text-align:right">204</td>
+<td style="text-align:right">0</td>
+<td style="text-align:right">0</td>
+<td></td>
+</tr>
+<tr>
+<td style="text-align:right">0</td>
+<td>challenges</td>
+<td><code>challenges/cc-02-file-your-first-issue.txt</code></td>
+<td style="text-align:right">453</td>
+<td style="text-align:right">134</td>
+<td style="text-align:right">0</td>
+<td style="text-align:right">0</td>
+<td></td>
+</tr>
+<tr>
+<td style="text-align:right">0</td>
+<td>challenges</td>
+<td><code>challenges/cc-03-join-the-conversation.txt</code></td>
+<td style="text-align:right">644</td>
+<td style="text-align:right">187</td>
+<td style="text-align:right">0</td>
+<td style="text-align:right">0</td>
+<td></td>
+</tr>
+<tr>
+<td style="text-align:right">0</td>
+<td>challenges</td>
+<td><code>challenges/cc-04-branch-out.txt</code></td>
+<td style="text-align:right">635</td>
+<td style="text-align:right">192</td>
+<td style="text-align:right">0</td>
+<td style="text-align:right">0</td>
+<td></td>
+</tr>
+<tr>
+<td style="text-align:right">0</td>
+<td>challenges</td>
+<td><code>challenges/cc-05-make-your-mark.txt</code></td>
+<td style="text-align:right">658</td>
+<td style="text-align:right">199</td>
+<td style="text-align:right">0</td>
+<td style="text-align:right">0</td>
+<td></td>
+</tr>
+<tr>
+<td style="text-align:right">0</td>
+<td>challenges</td>
+<td><code>challenges/cc-06-open-your-first-pr.txt</code></td>
+<td style="text-align:right">748</td>
+<td style="text-align:right">223</td>
+<td style="text-align:right">0</td>
+<td style="text-align:right">0</td>
+<td></td>
+</tr>
+<tr>
+<td style="text-align:right">0</td>
+<td>challenges</td>
+<td><code>challenges/cc-07-survive-a-merge-conflict.txt</code></td>
+<td style="text-align:right">429</td>
+<td style="text-align:right">93</td>
+<td style="text-align:right">0</td>
+<td style="text-align:right">0</td>
+<td></td>
+</tr>
+<tr>
+<td style="text-align:right">0</td>
+<td>challenges</td>
+<td><code>challenges/cc-10-go-local.txt</code></td>
+<td style="text-align:right">645</td>
+<td style="text-align:right">192</td>
+<td style="text-align:right">0</td>
+<td style="text-align:right">0</td>
+<td></td>
+</tr>
+<tr>
+<td style="text-align:right">0</td>
+<td>challenges</td>
+<td><code>challenges/cc-11-day-2-pull-request.txt</code></td>
+<td style="text-align:right">618</td>
+<td style="text-align:right">179</td>
+<td style="text-align:right">0</td>
+<td style="text-align:right">0</td>
+<td></td>
+</tr>
+<tr>
+<td style="text-align:right">0</td>
+<td>challenges</td>
+<td><code>challenges/cc-12-code-review.txt</code></td>
+<td style="text-align:right">737</td>
+<td style="text-align:right">228</td>
+<td style="text-align:right">0</td>
+<td style="text-align:right">0</td>
+<td></td>
+</tr>
+<tr>
+<td style="text-align:right">0</td>
+<td>challenges</td>
+<td><code>challenges/cc-14-design-an-issue-template.txt</code></td>
+<td style="text-align:right">570</td>
+<td style="text-align:right">157</td>
+<td style="text-align:right">0</td>
+<td style="text-align:right">0</td>
+<td></td>
+</tr>
+<tr>
+<td style="text-align:right">0</td>
+<td>challenges</td>
+<td><code>challenges/cc-bonus-d-notifications.txt</code></td>
+<td style="text-align:right">531</td>
+<td style="text-align:right">158</td>
+<td style="text-align:right">0</td>
+<td style="text-align:right">0</td>
+<td></td>
+</tr>
+<tr>
+<td style="text-align:right">0</td>
+<td>chapters</td>
+<td><code>chapters/ch-01-pre-workshop-setup.txt</code></td>
+<td style="text-align:right">381</td>
+<td style="text-align:right">118</td>
+<td style="text-align:right">0</td>
+<td style="text-align:right">0</td>
+<td></td>
+</tr>
+<tr>
+<td style="text-align:right">0</td>
+<td>chapters</td>
+<td><code>chapters/ch-02-github-web-structure.txt</code></td>
+<td style="text-align:right">454</td>
+<td style="text-align:right">142</td>
+<td style="text-align:right">0</td>
+<td style="text-align:right">0</td>
+<td></td>
+</tr>
+<tr>
+<td style="text-align:right">0</td>
+<td>chapters</td>
+<td><code>chapters/ch-05-working-with-issues.txt</code></td>
+<td style="text-align:right">533</td>
+<td style="text-align:right">169</td>
+<td style="text-align:right">0</td>
+<td style="text-align:right">0</td>
+<td></td>
+</tr>
+<tr>
+<td style="text-align:right">0</td>
+<td>chapters</td>
+<td><code>chapters/ch-06-working-with-pull-requests.txt</code></td>
+<td style="text-align:right">636</td>
+<td style="text-align:right">193</td>
+<td style="text-align:right">0</td>
+<td style="text-align:right">0</td>
+<td></td>
+</tr>
+<tr>
+<td style="text-align:right">0</td>
+<td>chapters</td>
+<td><code>chapters/ch-07-merge-conflicts.txt</code></td>
+<td style="text-align:right">469</td>
+<td style="text-align:right">106</td>
+<td style="text-align:right">0</td>
+<td style="text-align:right">0</td>
+<td></td>
+</tr>
+<tr>
+<td style="text-align:right">0</td>
+<td>chapters</td>
+<td><code>chapters/ch-08-culture-and-etiquette.txt</code></td>
+<td style="text-align:right">589</td>
+<td style="text-align:right">181</td>
+<td style="text-align:right">0</td>
+<td style="text-align:right">0</td>
+<td></td>
+</tr>
+<tr>
+<td style="text-align:right">0</td>
+<td>chapters</td>
+<td><code>chapters/ch-10-notifications.txt</code></td>
+<td style="text-align:right">498</td>
+<td style="text-align:right">147</td>
+<td style="text-align:right">0</td>
+<td style="text-align:right">0</td>
+<td></td>
+</tr>
+<tr>
+<td style="text-align:right">0</td>
+<td>chapters</td>
+<td><code>chapters/ch-12-git-source-control.txt</code></td>
+<td style="text-align:right">519</td>
+<td style="text-align:right">164</td>
+<td style="text-align:right">0</td>
+<td style="text-align:right">0</td>
+<td></td>
+</tr>
+<tr>
+<td style="text-align:right">0</td>
+<td>chapters</td>
+<td><code>chapters/ch-13-github-prs-extension.txt</code></td>
+<td style="text-align:right">799</td>
+<td style="text-align:right">248</td>
+<td style="text-align:right">0</td>
+<td style="text-align:right">0</td>
+<td></td>
+</tr>
+<tr>
+<td style="text-align:right">0</td>
+<td>chapters</td>
+<td><code>chapters/ch-16-issue-templates.txt</code></td>
+<td style="text-align:right">562</td>
+<td style="text-align:right">173</td>
+<td style="text-align:right">0</td>
+<td style="text-align:right">0</td>
+<td></td>
+</tr>
+<tr>
+<td style="text-align:right">0</td>
+<td>chapters</td>
+<td><code>chapters/ref-02-screen-reader-cheatsheet.txt</code></td>
+<td style="text-align:right">395</td>
+<td style="text-align:right">124</td>
+<td style="text-align:right">0</td>
+<td style="text-align:right">0</td>
+<td></td>
+</tr>
+<tr>
+<td style="text-align:right">0</td>
+<td>chapters</td>
+<td><code>chapters/git-01-git-authentication.txt</code></td>
+<td style="text-align:right">378</td>
+<td style="text-align:right">121</td>
+<td style="text-align:right">0</td>
+<td style="text-align:right">0</td>
+<td></td>
+</tr>
+<tr>
+<td style="text-align:right">0</td>
+<td>chapters</td>
+<td><code>chapters/tools-02-github-gists.txt</code></td>
+<td style="text-align:right">594</td>
+<td style="text-align:right">179</td>
+<td style="text-align:right">0</td>
+<td style="text-align:right">0</td>
+<td></td>
+</tr>
+<tr>
+<td style="text-align:right">0</td>
+<td>chapters</td>
+<td><code>chapters/tools-03-github-discussions.txt</code></td>
+<td style="text-align:right">515</td>
+<td style="text-align:right">161</td>
+<td style="text-align:right">0</td>
+<td style="text-align:right">0</td>
+<td></td>
+</tr>
+<tr>
+<td style="text-align:right">0</td>
+<td>chapters</td>
+<td><code>chapters/tools-04-releases-tags-insights.txt</code></td>
+<td style="text-align:right">541</td>
+<td style="text-align:right">166</td>
+<td style="text-align:right">0</td>
+<td style="text-align:right">0</td>
+<td></td>
+</tr>
+<tr>
+<td style="text-align:right">0</td>
+<td>chapters</td>
+<td><code>chapters/tools-07-github-codespaces.txt</code></td>
+<td style="text-align:right">364</td>
+<td style="text-align:right">106</td>
+<td style="text-align:right">0</td>
+<td style="text-align:right">0</td>
+<td></td>
+</tr>
+<tr>
+<td style="text-align:right">0</td>
+<td>chapters</td>
+<td><code>chapters/tools-08-github-mobile.txt</code></td>
+<td style="text-align:right">386</td>
+<td style="text-align:right">116</td>
+<td style="text-align:right">0</td>
+<td style="text-align:right">0</td>
+<td></td>
+</tr>
+<tr>
+<td style="text-align:right">0</td>
+<td>chapters</td>
+<td><code>chapters/tools-10-github-actions.txt</code></td>
+<td style="text-align:right">394</td>
+<td style="text-align:right">96</td>
+<td style="text-align:right">0</td>
+<td style="text-align:right">0</td>
+<td></td>
+</tr>
+<tr>
+<td style="text-align:right">0</td>
+<td>chapters</td>
+<td><code>chapters/tools-11-profile-sponsors-wikis.txt</code></td>
+<td style="text-align:right">570</td>
+<td style="text-align:right">177</td>
+<td style="text-align:right">0</td>
+<td style="text-align:right">0</td>
+<td></td>
+</tr>
+<tr>
+<td style="text-align:right">0</td>
+<td>chapters</td>
+<td><code>chapters/tools-12-organizations-templates.txt</code></td>
+<td style="text-align:right">542</td>
+<td style="text-align:right">167</td>
+<td style="text-align:right">0</td>
+<td style="text-align:right">0</td>
+<td></td>
+</tr>
+<tr>
+<td style="text-align:right">0</td>
+<td>chapters</td>
+<td><code>chapters/agents-04-choose-your-tools.txt</code></td>
+<td style="text-align:right">377</td>
+<td style="text-align:right">111</td>
+<td style="text-align:right">0</td>
+<td style="text-align:right">0</td>
+<td></td>
+</tr>
+<tr>
+<td style="text-align:right">0</td>
+<td>chapters</td>
+<td><code>chapters/ch-18-how-git-works.txt</code></td>
+<td style="text-align:right">416</td>
+<td style="text-align:right">135</td>
+<td style="text-align:right">0</td>
+<td style="text-align:right">0</td>
+<td></td>
+</tr>
+<tr>
+<td style="text-align:right">0</td>
+<td>chapters</td>
+<td><code>chapters/ch-19-fork-and-contribute.txt</code></td>
+<td style="text-align:right">422</td>
+<td style="text-align:right">128</td>
+<td style="text-align:right">0</td>
+<td style="text-align:right">0</td>
+<td></td>
+</tr>
+<tr>
+<td style="text-align:right">0</td>
+<td>chapters</td>
+<td><code>chapters/a11y-03-github-accessibility-and-open-source.txt</code></td>
+<td style="text-align:right">189</td>
+<td style="text-align:right">54</td>
+<td style="text-align:right">0</td>
+<td style="text-align:right">0</td>
+<td></td>
+</tr>
+<tr>
+<td style="text-align:right">0</td>
+<td>chapters</td>
+<td><code>chapters/git-02-advanced-git-operations.txt</code></td>
+<td style="text-align:right">570</td>
+<td style="text-align:right">181</td>
+<td style="text-align:right">0</td>
+<td style="text-align:right">0</td>
+<td></td>
+</tr>
+<tr>
+<td style="text-align:right">0</td>
+<td>chapters</td>
+<td><code>chapters/git-03-git-security-for-contributors.txt</code></td>
+<td style="text-align:right">455</td>
+<td style="text-align:right">141</td>
+<td style="text-align:right">0</td>
+<td style="text-align:right">0</td>
+<td></td>
+</tr>
+<tr>
+<td style="text-align:right">0</td>
+<td>appendices</td>
+<td><code>appendices/ch-01-pre-workshop-setup.txt</code></td>
+<td style="text-align:right">381</td>
+<td style="text-align:right">118</td>
+<td style="text-align:right">0</td>
+<td style="text-align:right">0</td>
+<td></td>
+</tr>
+<tr>
+<td style="text-align:right">0</td>
+<td>appendices</td>
+<td><code>appendices/ch-02-github-web-structure.txt</code></td>
+<td style="text-align:right">454</td>
+<td style="text-align:right">143</td>
+<td style="text-align:right">0</td>
+<td style="text-align:right">0</td>
+<td></td>
+</tr>
+<tr>
+<td style="text-align:right">0</td>
+<td>appendices</td>
+<td><code>appendices/ch-05-working-with-issues.txt</code></td>
+<td style="text-align:right">533</td>
+<td style="text-align:right">169</td>
+<td style="text-align:right">0</td>
+<td style="text-align:right">0</td>
+<td></td>
+</tr>
+<tr>
+<td style="text-align:right">0</td>
+<td>appendices</td>
+<td><code>appendices/ch-06-working-with-pull-requests.txt</code></td>
+<td style="text-align:right">636</td>
+<td style="text-align:right">193</td>
+<td style="text-align:right">0</td>
+<td style="text-align:right">0</td>
+<td></td>
+</tr>
+<tr>
+<td style="text-align:right">0</td>
+<td>appendices</td>
+<td><code>appendices/ch-07-merge-conflicts.txt</code></td>
+<td style="text-align:right">469</td>
+<td style="text-align:right">106</td>
+<td style="text-align:right">0</td>
+<td style="text-align:right">0</td>
+<td></td>
+</tr>
+<tr>
+<td style="text-align:right">0</td>
+<td>appendices</td>
+<td><code>appendices/ch-08-culture-and-etiquette.txt</code></td>
+<td style="text-align:right">589</td>
+<td style="text-align:right">181</td>
+<td style="text-align:right">0</td>
+<td style="text-align:right">0</td>
+<td></td>
+</tr>
+<tr>
+<td style="text-align:right">0</td>
+<td>appendices</td>
+<td><code>appendices/ch-10-notifications.txt</code></td>
+<td style="text-align:right">498</td>
+<td style="text-align:right">147</td>
+<td style="text-align:right">0</td>
+<td style="text-align:right">0</td>
+<td></td>
+</tr>
+<tr>
+<td style="text-align:right">0</td>
+<td>appendices</td>
+<td><code>appendices/ch-12-git-source-control.txt</code></td>
+<td style="text-align:right">519</td>
+<td style="text-align:right">164</td>
+<td style="text-align:right">0</td>
+<td style="text-align:right">0</td>
+<td></td>
+</tr>
+<tr>
+<td style="text-align:right">0</td>
+<td>appendices</td>
+<td><code>appendices/ch-13-github-prs-extension.txt</code></td>
+<td style="text-align:right">799</td>
+<td style="text-align:right">249</td>
+<td style="text-align:right">0</td>
+<td style="text-align:right">0</td>
+<td></td>
+</tr>
+<tr>
+<td style="text-align:right">0</td>
+<td>appendices</td>
+<td><code>appendices/ch-16-issue-templates.txt</code></td>
+<td style="text-align:right">562</td>
+<td style="text-align:right">173</td>
+<td style="text-align:right">0</td>
+<td style="text-align:right">0</td>
+<td></td>
+</tr>
+<tr>
+<td style="text-align:right">0</td>
+<td>appendices</td>
+<td><code>appendices/ref-02-screen-reader-cheatsheet.txt</code></td>
+<td style="text-align:right">395</td>
+<td style="text-align:right">124</td>
+<td style="text-align:right">0</td>
+<td style="text-align:right">0</td>
+<td></td>
+</tr>
+<tr>
+<td style="text-align:right">0</td>
+<td>appendices</td>
+<td><code>appendices/git-01-git-authentication.txt</code></td>
+<td style="text-align:right">378</td>
+<td style="text-align:right">121</td>
+<td style="text-align:right">0</td>
+<td style="text-align:right">0</td>
+<td></td>
+</tr>
+<tr>
+<td style="text-align:right">0</td>
+<td>appendices</td>
+<td><code>appendices/tools-02-github-gists.txt</code></td>
+<td style="text-align:right">594</td>
+<td style="text-align:right">179</td>
+<td style="text-align:right">0</td>
+<td style="text-align:right">0</td>
+<td></td>
+</tr>
+<tr>
+<td style="text-align:right">0</td>
+<td>appendices</td>
+<td><code>appendices/tools-03-github-discussions.txt</code></td>
+<td style="text-align:right">515</td>
+<td style="text-align:right">161</td>
+<td style="text-align:right">0</td>
+<td style="text-align:right">0</td>
+<td></td>
+</tr>
+<tr>
+<td style="text-align:right">0</td>
+<td>appendices</td>
+<td><code>appendices/tools-04-releases-tags-insights.txt</code></td>
+<td style="text-align:right">541</td>
+<td style="text-align:right">166</td>
+<td style="text-align:right">0</td>
+<td style="text-align:right">0</td>
+<td></td>
+</tr>
+<tr>
+<td style="text-align:right">0</td>
+<td>appendices</td>
+<td><code>appendices/tools-07-github-codespaces.txt</code></td>
+<td style="text-align:right">364</td>
+<td style="text-align:right">107</td>
+<td style="text-align:right">0</td>
+<td style="text-align:right">0</td>
+<td></td>
+</tr>
+<tr>
+<td style="text-align:right">0</td>
+<td>appendices</td>
+<td><code>appendices/tools-08-github-mobile.txt</code></td>
+<td style="text-align:right">386</td>
+<td style="text-align:right">117</td>
+<td style="text-align:right">0</td>
+<td style="text-align:right">0</td>
+<td></td>
+</tr>
+<tr>
+<td style="text-align:right">0</td>
+<td>appendices</td>
+<td><code>appendices/tools-10-github-actions.txt</code></td>
+<td style="text-align:right">394</td>
+<td style="text-align:right">97</td>
+<td style="text-align:right">0</td>
+<td style="text-align:right">0</td>
+<td></td>
+</tr>
+<tr>
+<td style="text-align:right">0</td>
+<td>appendices</td>
+<td><code>appendices/tools-11-profile-sponsors-wikis.txt</code></td>
+<td style="text-align:right">570</td>
+<td style="text-align:right">177</td>
+<td style="text-align:right">0</td>
+<td style="text-align:right">0</td>
+<td></td>
+</tr>
+<tr>
+<td style="text-align:right">0</td>
+<td>appendices</td>
+<td><code>appendices/tools-12-organizations-templates.txt</code></td>
+<td style="text-align:right">542</td>
+<td style="text-align:right">167</td>
+<td style="text-align:right">0</td>
+<td style="text-align:right">0</td>
+<td></td>
+</tr>
+<tr>
+<td style="text-align:right">0</td>
+<td>appendices</td>
+<td><code>appendices/agents-04-choose-your-tools.txt</code></td>
+<td style="text-align:right">377</td>
+<td style="text-align:right">111</td>
+<td style="text-align:right">0</td>
+<td style="text-align:right">0</td>
+<td></td>
+</tr>
+<tr>
+<td style="text-align:right">0</td>
+<td>appendices</td>
+<td><code>appendices/ch-18-how-git-works.txt</code></td>
+<td style="text-align:right">416</td>
+<td style="text-align:right">136</td>
+<td style="text-align:right">0</td>
+<td style="text-align:right">0</td>
+<td></td>
+</tr>
+<tr>
+<td style="text-align:right">0</td>
+<td>appendices</td>
+<td><code>appendices/git-02-advanced-git-operations.txt</code></td>
+<td style="text-align:right">570</td>
+<td style="text-align:right">181</td>
+<td style="text-align:right">0</td>
+<td style="text-align:right">0</td>
+<td></td>
+</tr>
+<tr>
+<td style="text-align:right">0</td>
+<td>appendices</td>
+<td><code>appendices/git-03-git-security-for-contributors.txt</code></td>
+<td style="text-align:right">455</td>
+<td style="text-align:right">142</td>
+<td style="text-align:right">0</td>
+<td style="text-align:right">0</td>
+<td></td>
+</tr>
+</tbody></table>
+</div>
+
+    </main>
+  </div>
+  <footer role="contentinfo" class="site-footer">
+    <p><strong>GIT Going with GitHub</strong> - A workshop by <a href="https://community-access.org">Community Access</a></p>
+    <p><a href="https://github.com/community-access/git-going-with-github">View on GitHub</a> · <a href="https://community-access.org">community-access.org</a></p>
+  </footer>
+
+  <script>
+  (function() {
+    var key = 'gggLastVisitedPath';
+    var currentPath = window.location.pathname || '';
+    try {
+      if (currentPath) {
+        localStorage.setItem(key, currentPath);
+      }
+    } catch (e) {}
+
+    var resumeLink = document.getElementById('resume-link');
+    if (!resumeLink) return;
+
+    try {
+      var savedPath = localStorage.getItem(key);
+      if (savedPath && savedPath !== currentPath) {
+        resumeLink.hidden = false;
+        resumeLink.setAttribute('href', savedPath);
+      }
+    } catch (e) {}
+  })();
+  </script>
+  </body>
+</html>

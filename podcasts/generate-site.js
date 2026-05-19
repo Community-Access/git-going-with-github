@@ -30,7 +30,9 @@ const FEED_XML = path.join(__dirname, 'feed.xml');
 
 const REPO_URL = 'https://github.com/Community-Access/git-going-with-github';
 const SITE_URL = 'https://community-access.org/git-going-with-github';
-const AUDIO_BASE = `${REPO_URL}/releases/download/podcasts`;
+// Canonical media host: all mp3 audio (player pages + RSS enclosures) is served
+// from Caddy at lp.csedesigns.com/ggg/media. Do NOT point at GitHub Releases.
+const AUDIO_BASE = 'https://lp.csedesigns.com/ggg/media';
 const CHAPTERS_BASE = `${SITE_URL}/podcasts/chapters`;
 const COMMUNITY_ACCESS_NAME = 'Community Access';
 const COMMUNITY_ACCESS_URL = 'http://www.community-access.org';
