@@ -182,9 +182,10 @@ exit /b 1
 set "SLUG=%~1"
 set "IDX=%~2"
 set "TOT=%~3"
-echo [!IDX!/!TOT!] Tagging metadata and chapter markers: !SLUG!
-python podcasts\tag-audio-metadata.py --write --allow-missing --audio-dir !KOKORO_OUTPUT_DIR! --slug !SLUG!
-if errorlevel 1 exit /b 1
+rem [Stage 2.2] Auto-tagging retired post-audio-lock. The tagger is still callable
+rem directly via: python podcasts\tag-audio-metadata.py --slug <slug> --audio-dir <dir>
+rem Tagging now happens during the Stage 3 retag pass driven by docs/EPISODE_MAP.json.
+echo [!IDX!/!TOT!] Skipping auto-tag (Stage 2.2 retired): !SLUG!
 if not exist "!CHAPTERS_DIR!\!SLUG!.json" exit /b 1
 exit /b 0
 

@@ -1,0 +1,387 @@
+{
+  "generatedAt": "2026-05-18T23:43:46.232Z",
+  "schemaVersion": 2,
+  "kind": "companion",
+  "slug": "ep25-releases-tags-insights",
+  "title": "Episode 25: Releases, Tags, and Insights",
+  "description": "Semantic versioning, GitHub Releases, and repository analytics.",
+  "concepts": [
+    "What a Git tag is: a named pointer to a specific commit",
+    "Lightweight tags versus annotated tags",
+    "Semantic versioning: major.minor.patch and what each number means",
+    "When to bump major, minor, or patch version",
+    "What a GitHub Release is: a tag plus release notes and assets",
+    "Creating a Release from the web interface",
+    "Auto-generated release notes from merged PRs",
+    "Downloading release assets (binaries, archives)",
+    "Repository Insights: the Pulse page",
+    "Contributors graph and activity",
+    "Traffic: clones, views, referring sites",
+    "Dependency graph and Dependabot",
+    "Using Insights to assess project health and activity"
+  ],
+  "transcriptPath": "C:\\code\\git-going-with-github\\podcasts\\scripts\\appendices\\ep25-releases-tags-insights.txt",
+  "chapterPlanPath": "C:\\code\\git-going-with-github\\podcasts\\transcripts\\appendices\\ep25-releases-tags-insights-chapters.json",
+  "transcriptText": "[ALEX]\nWelcome back. Today we’re tying together two ideas that tell you a lot about a GitHub project: releases, which show versioned milestones, and insights, which show repository activity and patterns over time.\n\n[JAMIE]\nSo one tells me what shipped, and the other helps me understand how the project is moving?\n\n[ALEX]\nExactly. And for contributors, especially newer contributors, that matters a lot. Releases help you answer, “When does my merged work become part of an official version?” Insights help you answer, “Is this project active, who’s contributing, and what kind of momentum does it have?”\n\n[JAMIE]\nAnd we’re also keeping accessibility front and center here, right? Screen reader navigation, low-vision workflows, all of that?\n\n[ALEX]\nYes. Not as an afterthought. It’s part of the lesson.\n\n[PAUSE]\n\n[ALEX]\nBefore we dive in, one administrative note: this appendix is paired with the broader discussion of open source culture, and the authoritative baseline for the releases material is GitHub’s documentation about releases.\n\n[JAMIE]\nGood grounding. So let’s start simple. What is a release?\n\n[ALEX]\nA release is a named snapshot of a repository at a specific point in history, packaged and published for users. In practice, a release usually includes a version number like v2.1.0, release notes explaining what changed, maybe downloadable built assets like binaries, and source code archives that GitHub generates automatically.\n\n[JAMIE]\nAnd this isn’t only for software, right?\n\n[ALEX]\nRight. In documentation-only projects or other non-software projects, releases can still mark stable checkpoints. Think of them as official version markers for a state of the work.\n\n[JAMIE]\nI want to ask the learner question here. If my pull request gets merged today, does that mean users get it today?\n\n[ALEX]\nNot necessarily. When your PR is merged, your change becomes part of the code on the default branch. But it becomes part of the next published release only when a maintainer creates and publishes that release. Depending on the project, that might happen in days, weeks, or months.\n\n[JAMIE]\nSo merge does not automatically mean release.\n\n[ALEX]\nCorrect.\n\n[PAUSE]\n\n[JAMIE]\nNow I think this is where people get tangled up: branches, tags, and releases.\n\n[ALEX]\nVery common confusion. Here’s the clean distinction. A branch is a movable pointer. It keeps advancing as new commits are added on that line of work. A tag is fixed. It points to one specific commit and does not move. A release is a GitHub-published object built on top of a tag, usually with release notes and sometimes downloadable assets.\n\n[JAMIE]\nSo branch moves, tag stays put, release is the polished publication around a tag.\n\n[ALEX]\nPerfect summary. And the relationship matters: every release is backed by a tag. But not every tag has a release. A tag by itself can just be a marker in git history. And when you create a release on GitHub, GitHub can create the tag for you if it doesn’t already exist.\n\n[JAMIE]\nThat’s helpful. It means if I see a release, I know there’s a corresponding fixed point in history behind it.\n\n[ALEX]\nYes. That stability is the whole point.\n\n[PAUSE]\n\n[JAMIE]\nOkay, let’s make this practical. How do I find releases on GitHub?\n\n[ALEX]\nFrom a repository home page, look for the Releases section in the right sidebar. It often shows the latest version. You can activate the release link there to open the latest release, or activate the releases count link to open the full releases list. And if needed, you can go directly to github dot com slash owner slash repo slash releases.\n\n[JAMIE]\nWhat’s the screen reader path?\n\n[ALEX]\nOn the repository home page, use heading navigation, often H or a number command depending on your screen reader, to find the Releases heading in the right sidebar. Then tab to the latest release link and press Enter. Or tab to the link that says something like N releases and activate that to open the full list.\n\n[JAMIE]\nAnd for low-vision users, that right sidebar can be tricky at high zoom.\n\n[ALEX]\nExactly. At higher zoom levels, the sidebar may collapse below the main content. So if you don’t see Releases where you expect it, scroll further down the page. That’s an important practical note.\n\n[PAUSE]\n\n[JAMIE]\nWhat do I find on the releases list page?\n\n[ALEX]\nEach release appears like its own section. You’ll usually encounter the release title, often the version number, a badge like Latest or Pre-release, the publication date, the tag name, the release notes body, any downloadable assets that were attached, and source code archives in zip and tar dot gz formats that GitHub provides automatically.\n\n[JAMIE]\nSo even if a maintainer doesn’t upload custom files, GitHub still gives source archives.\n\n[ALEX]\nRight. Those are always there.\n\n[JAMIE]\nAnd how should someone navigate that page with a screen reader?\n\n[ALEX]\nUse heading navigation to jump between release titles. Use link navigation for download assets, compare links, and tag links. Then use arrow reading to move through the release notes themselves.\n\n[JAMIE]\nWhat should someone listen for to identify the most current stable version?\n\n[ALEX]\nThe Latest badge. That badge marks the most recent stable release. That’s distinct from a pre-release, which is intentionally not presented as the stable current version.\n\n[JAMIE]\nAnd for low-vision users?\n\n[ALEX]\nRelease notes often use Markdown headings like Breaking Changes, New Features, Bug Fixes, and Dependencies. At higher zoom, those headings become excellent landmarks for quickly scanning what matters. Also, the Latest badge can be visually small, so zooming to around 150 percent or more may help make it easier to spot.\n\n[JAMIE]\nAnd for sighted mouse users, I guess the main visual cue is a series of release cards with title, date, tag, and badge.\n\n[ALEX]\nYes, plus the Full Changelog link often near the bottom of a release note.\n\n[PAUSE]\n\n[JAMIE]\nLet’s talk version numbers, because learners see things like v2.1.3 and may not know what story that tells.\n\n[ALEX]\nMany projects follow Semantic Versioning, often called semver. The pattern is major, minor, patch.\n\n[JAMIE]\nMeaning?\n\n[ALEX]\nMajor changes indicate breaking changes. Something changed in a way that may require users to update their code or workflow. Minor changes add new features in a backward-compatible way. Patch changes fix bugs without changing the expected interface in a breaking way.\n\n[JAMIE]\nSo if I see v2.0.0, I should be alert for bigger changes. If I see v2.1.0, likely new features. If I see v2.1.3, probably bug-fix progression since v2.1.0.\n\n[ALEX]\nExactly.\n\n[JAMIE]\nAnd then there are those suffixes: alpha, beta, release candidate.\n\n[ALEX]\nYes. They’re not the core semver triplet, but they’re very common. Alpha usually means early preview and potentially unstable. Beta often means feature complete enough to test but not final. RC, or release candidate, means nearly final unless significant issues are found.\n\n[JAMIE]\nI want to connect this back to contribution. What’s the journey from my PR to a version number?\n\n[ALEX]\nThink of it as a pipeline. PR opened, PR reviewed, PR merged, default branch updated. Then at some later point the next release is prepared. A tag gets created, the release is published, and now your contribution is part of that version, maybe something like v2.1.1.\n\n[JAMIE]\nThat’s emotionally useful, honestly. It explains why a contributor may see their code merged but not yet announced in a release.\n\n[ALEX]\nExactly right.\n\n[PAUSE]\n\n[JAMIE]\nNow let’s read release notes like grown-ups.\n\n[ALEX]\nA noble goal.\n\n[JAMIE]\nWhat makes release notes good release notes?\n\n[ALEX]\nThey explain what changed in a way users and contributors can scan. High-quality notes usually categorize changes. Common categories include Breaking Changes, New Features, Bug Fixes, and Dependencies.\n\n[JAMIE]\nCan you give an example shape?\n\n[ALEX]\nSure. You might have a heading like “What’s new in v2.1.0,” then a Breaking Changes section noting that a file format changed and linking to migration guidance. Then New Features listing commands or capabilities added, often with pull request numbers and contributor usernames. Then Bug Fixes, which helps users see what problems were solved. Then Dependencies, showing upgraded packages or tools.\n\n[JAMIE]\nAnd then the Full Changelog link.\n\n[ALEX]\nYes. That link is especially important. It usually points to a compare view between two tags. That compare view shows all merged PRs between those versions. It’s often where a contributor can find their PR listed and see their username credited.\n\n[JAMIE]\nSo if I want to know whether my work made it into a release, the release notes might mention it directly, and the compare view gives me the complete list.\n\n[ALEX]\nExactly.\n\n[PAUSE]\n\n[JAMIE]\nLet’s switch perspective for a minute. Suppose I become a maintainer. How do I create a release in the GitHub web interface?\n\n[ALEX]\nYou can go to the new release page directly at the repository releases path ending in slash new. Then you choose a tag. That can be a new version tag like v2.1.0, which GitHub can create when you publish, or you can select an existing tag. You choose the target branch, usually main. You enter a release title, often the same as the tag. You write release notes manually or use GitHub’s Generate release notes feature. Optionally attach assets. Mark it as a pre-release if appropriate. Save as draft if you’re not ready to publish. Then publish the release.\n\n[JAMIE]\nSo the key fields are tag, target branch, title, notes, assets, and state toggles.\n\n[ALEX]\nYes. And for maintainers using assistive technology, the form order matters.\n\n[JAMIE]\nSay more.\n\n[ALEX]\nFor screen reader users, the release creation page contains multiple form controls, often including a tag selector or combobox, a target branch control, a title input, the release notes text area, asset upload area, and the draft and pre-release toggles. Tabbing through in order is usually the most reliable approach. Because it’s a complex form, moving steadily field by field helps reduce disorientation.\n\n[JAMIE]\nAnd the practical accessibility point is not just “it exists,” but “expect a long form and navigate it deliberately.”\n\n[ALEX]\nExactly.\n\n[PAUSE]\n\n[JAMIE]\nThe source also mentioned accessibility agents for release notes.\n\n[ALEX]\nYes. A command like slash draft-release can generate structured release notes from merged pull requests. The benefit is speed and consistency. Instead of manually combing through merged work, the tool can draft a categorized summary for you.\n\n[JAMIE]\nWhat kind of output are we talking about?\n\n[ALEX]\nTypically a title for the upcoming version, then sections like New Features, Bug Fixes, and Dependencies, with entries derived from merged PRs and other changes since the last release.\n\n[JAMIE]\nSo a maintainer still reviews it, but it gives them a strong starting point.\n\n[ALEX]\nYes. Think “assist,” not “publish blindly.”\n\n[JAMIE]\nAnd if there’s an example version like v2.1.0, the generated output would likely group the notable changes under those category headings.\n\n[ALEX]\nCorrect. That structure also improves readability for users consuming the notes with screen readers, magnification, or quick visual scanning.\n\n[PAUSE]\n\n[JAMIE]\nWe should also cover draft and pre-release states, because those badges change how people interpret a release.\n\n[ALEX]\nAbsolutely. A draft release is not publicly finalized. It lets maintainers prepare the version, edit notes, and attach assets before publishing. A pre-release is published, but it is explicitly marked as an early or not-yet-stable version, often for alpha, beta, or release candidate testing.\n\n[JAMIE]\nSo draft means private preparation stage, pre-release means publicly visible but not the stable recommendation.\n\n[ALEX]\nThat’s the distinction. And as a learner or contributor, if you see pre-release, interpret it as test-oriented or not fully final. If you’re guiding others, don’t confuse the Latest stable badge with the existence of a newer pre-release.\n\n[PAUSE]\n\n[ALEX]\nNow let’s pivot to repository insights.\n\n[JAMIE]\nThis is the part that can feel mysterious. What exactly is the Insights tab?\n\n[ALEX]\nIt’s a set of repository analytics and summary views that help you understand activity: recent work, contribution patterns, traffic, dependency relationships, community documentation, and more.\n\n[JAMIE]\nWho can see it?\n\n[ALEX]\nThat can vary by repository visibility, permissions, and specific insight type. In many public repositories, at least some insights are visible broadly. In private repositories, access is often more restricted to people with repository permissions.\n\n[JAMIE]\nAnd what does Insights not show?\n\n[ALEX]\nIt does not magically reveal everything about a project’s quality or team dynamics. Metrics don’t fully capture collaboration quality, accessibility quality, maintainer responsiveness, or whether contributors feel welcome. They’re clues, not complete truth.\n\n[JAMIE]\nThat’s such an important warning. Numbers can be useful without becoming the whole story.\n\n[ALEX]\nExactly.\n\n[PAUSE]\n\n[JAMIE]\nHow do I get to Insights?\n\n[ALEX]\nUsually from the repository tab bar. Activate the Insights tab if it’s present. Once there, you’ll often encounter a secondary navigation for specific views such as Pulse, Contributors, Traffic, Dependency Graph, Network, Forks, and Community Standards.\n\n[JAMIE]\nWhat’s the screen reader strategy?\n\n[ALEX]\nFirst locate the main repository tab bar and activate Insights. Then look for the sub-navigation within the Insights area. That secondary nav is important because Insights is not one page but a family of views.\n\n[JAMIE]\nSo don’t assume landing on Insights means you’ve seen all of it.\n\n[ALEX]\nPrecisely.\n\n[PAUSE]\n\n[JAMIE]\nLet’s start with Pulse.\n\n[ALEX]\nPulse is a recent activity summary. It gives a quick overview of what’s happened in the repository over a recent window of time, often including merged pull requests, open issues, closed issues, and general momentum.\n\n[JAMIE]\nWhy does that matter to a contributor?\n\n[ALEX]\nBecause it answers practical questions. Is this project actively merging work? Are issues being closed? Does the repository look maintained? If the Pulse view shows recent activity, that can be encouraging. If activity is sparse, that may shape your expectations about review timing.\n\n[JAMIE]\nAnd navigation?\n\n[ALEX]\nFor screen reader users, after opening Pulse, use headings and lists to move through activity summaries. Read the recent counts and then drill into linked issues or PRs if needed. The aim is to understand the rhythm, not necessarily inspect every item in one pass.\n\n[JAMIE]\nSo Pulse is like the repository heartbeat.\n\n[ALEX]\nThat’s a nice way to put it.\n\n[PAUSE]\n\n[JAMIE]\nNext up: Contributors.\n\n[ALEX]\nThe Contributors view shows who has been contributing to the project, often with counts or graphical summaries over time.\n\n[JAMIE]\nWhy does this matter to a new contributor?\n\n[ALEX]\nSeveral reasons. It helps you see whether one person does nearly everything or whether the project has a broader contributor base. It can suggest whether the project is healthy, collaborative, or bottlenecked. It may also help you identify maintainers or regular contributors whose names you’ll recognize in issues and pull requests.\n\n[JAMIE]\nThe source emphasized table accessibility here.\n\n[ALEX]\nYes. When contributor data is presented in table form, that’s good news for accessibility because tables can often be navigated cell by cell or row by row by screen readers more reliably than purely visual charts. If there is a chart, it may still require interpretation support, but tabular data is usually more accessible.\n\n[JAMIE]\nAnd what’s the screen reader advice?\n\n[ALEX]\nUse table navigation when available. If the view includes headings plus contributor names and commit counts, move systematically. Listen for patterns rather than trying to memorize every row. You’re trying to understand who builds the project and at what scale.\n\n[PAUSE]\n\n[JAMIE]\nTraffic sounds more external-facing.\n\n[ALEX]\nIt is. Traffic shows who visits the repository and how people discover or use it, often including metrics such as views, visitors, clones, and referrers, depending on what GitHub exposes.\n\n[JAMIE]\nWhy should a contributor care?\n\n[ALEX]\nBecause it helps contextualize impact. A project with substantial traffic may have many users relying on it. A project with modest traffic may still be important, but the audience shape is different. Traffic can also help maintainers understand documentation needs, onboarding priorities, and visibility.\n\n[JAMIE]\nAny caution here?\n\n[ALEX]\nYes. Traffic is interesting, but it is not a direct measure of project quality or community health. Also, some traffic views are more limited in who can access them.\n\n[PAUSE]\n\n[JAMIE]\nWhat about commits and code frequency?\n\n[ALEX]\nThose views show development activity over time. Commit histories can suggest cadence. Code frequency visualizations may show additions and deletions over time. Together, they can hint at whether development is steady, bursty, or quiet.\n\n[JAMIE]\nBut charts can be hard for screen reader users.\n\n[ALEX]\nAbsolutely. This is where general strategy matters. If a chart is not accessible in a rich textual way, look for summaries, axes labels, adjacent tables, or alternate views that communicate the same information. Don’t assume the graph alone is the only source of truth.\n\n[JAMIE]\nSo for inaccessible graphs, we fall back to nearby text, commit lists, release cadence, Pulse, and contributor summaries.\n\n[ALEX]\nExactly. Build an evidence picture from multiple accessible clues.\n\n[PAUSE]\n\n[JAMIE]\nDependency graph.\n\n[ALEX]\nThe dependency graph shows relationships between the repository and the packages it depends on, and often packages that depend on it, depending on the project setup and GitHub features enabled.\n\n[JAMIE]\nWhy does this matter?\n\n[ALEX]\nIt can reveal security and maintenance implications. Dependencies are part of a project’s supply chain. Seeing them helps maintainers and contributors understand what external components matter and where updates may be needed.\n\n[JAMIE]\nAnd there was a note about enabling or viewing.\n\n[ALEX]\nYes. In some repositories, dependency graph features may need to be enabled or may only appear when GitHub can detect supported dependency manifests. So if you don’t see it, that doesn’t always mean the project has no dependencies.\n\n[PAUSE]\n\n[JAMIE]\nNetwork and forks feel related but not identical.\n\n[ALEX]\nRight. Network helps visualize the relationship among branches and forks over time. Forks indicate how many copies of the repository people have created under their own accounts or organizations.\n\n[JAMIE]\nWhy should a learner care?\n\n[ALEX]\nFork counts can suggest interest and reuse, though again not perfect quality. Network views can help you understand branching and divergence patterns, especially in active open source ecosystems. But visually dense network graphs may be challenging for assistive tech users, so use them carefully and rely on supplementary information where possible.\n\n[PAUSE]\n\n[JAMIE]\nCommunity Standards sounds less numeric and more policy-oriented.\n\n[ALEX]\nExactly. Community Standards surfaces whether the repository has key project health files and practices, like a README, contributing guidelines, code of conduct, issue templates, pull request templates, and often a license.\n\n[JAMIE]\nThat seems incredibly useful for a new contributor.\n\n[ALEX]\nIt is. It tells you whether the project has documented how people should contribute and interact. Strong community standards usually reduce ambiguity and make contribution more approachable.\n\n[JAMIE]\nScreen reader advice?\n\n[ALEX]\nTreat it like a checklist view. Move item by item. Listen for which standards are present and which are missing. If contributing guidelines are available, open them before making your first contribution.\n\n[PAUSE]\n\n[JAMIE]\nWe should gather the screen reader navigation reference into one practical bundle.\n\n[ALEX]\nGood idea. For releases pages, start on the repository home page and locate the Releases area, often in the right sidebar. Use heading navigation to find it. Open either the latest release or the full releases list. On the releases list page, jump between release headings, navigate links for assets and compare views, and read notes linearly. On an individual release page, use the same strategy: heading first, then metadata like badge, date, and tag, then note sections, then assets and source links.\n\n[JAMIE]\nAnd comparing two releases?\n\n[ALEX]\nThe changelog or compare view between tags is where you inspect every merged pull request between versions. Navigate by headings and lists, and expect a denser page because it’s more of a full comparison than a polished summary.\n\n[JAMIE]\nNow the Insights side.\n\n[ALEX]\nWithin Insights, first identify the sub-navigation. That’s essential. Then for charts and graphs in general, look for textual summaries, table forms, labels, and alternate linked views. For Pulse, use headings and linked items to assess recent activity quickly. For contributor and traffic views, prefer tables or summaries when available over trying to infer everything from a graph alone.\n\n[JAMIE]\nThat “general strategy” point feels like one of the most useful accessibility lessons in the whole appendix.\n\n[ALEX]\nI agree. Accessible navigation isn’t just about keystrokes. It’s also about deciding where the most reliable information is.\n\n[PAUSE]\n\n[JAMIE]\nAnd finally, there were accessibility agents for personal and team metrics too.\n\n[ALEX]\nYes: slash my-stats and slash team-dashboard. The idea is to turn repository activity into summaries that are easier to consume than raw charts.\n\n[JAMIE]\nWhat would slash my-stats be for?\n\n[ALEX]\nA personal contribution summary. Think of it as surfacing information like your pull requests, reviews, commits, or other activity in a more direct format that you can read without mining multiple GitHub views.\n\n[JAMIE]\nAnd slash team-dashboard?\n\n[ALEX]\nThat’s a higher-level team summary. It can help maintainers or coordinators understand overall project activity, patterns, and participation without relying exclusively on graphical insight pages.\n\n[JAMIE]\nSo just like slash draft-release helps turn history into readable release notes, these commands help turn activity data into readable status summaries.\n\n[ALEX]\nExactly. They are accessibility-minded shortcuts to understanding.\n\n[PAUSE]\n\n[JAMIE]\nLet me see if I can tie this together. A release is an official published snapshot built on a tag. A tag is fixed, a branch moves. Version numbers often follow semantic versioning, so they communicate the scale of change. Release notes tell the story of what changed, and the full changelog comparison shows every merged PR between versions.\n\n[ALEX]\nYes.\n\n[JAMIE]\nMaintainers can create releases in the GitHub UI, save them as drafts, mark them as pre-releases, and use tools like slash draft-release to generate structured notes. Then on the repository side, Insights gives activity views like Pulse, Contributors, Traffic, commit and code frequency trends, dependency information, network and forks, and community standards.\n\n[ALEX]\nExactly right.\n\n[JAMIE]\nAnd the accessibility throughline is: use headings, sub-navigation, tables, and text summaries intentionally; don’t rely on charts alone; and use agent-generated summaries when they reduce friction.\n\n[ALEX]\nThat’s the heart of it. Releases tell you where the project has been published. Insights help you understand how the project lives between releases.\n\n[JAMIE]\nAnd as a contributor, both matter. One tells me when my work becomes part of a version users can point to. The other helps me understand the project’s rhythm and health.\n\n[ALEX]\nBeautifully put.\n\n[PAUSE]\n\n[ALEX]\nIf you want one practical next step after listening, open a repository you know, find its releases page, read the latest notes, activate the full changelog, then visit Insights and inspect Pulse and Community Standards. That one short workflow will make today’s concepts concrete.\n\n[JAMIE]\nAnd if you’re using a screen reader or magnification, do it slowly enough to notice the navigation landmarks we discussed. That’s part of the skill.\n\n[ALEX]\nExactly. We’ll leave it there.\n",
+  "chapterPlanText": "{\n  \"version\": 1,\n  \"slug\": \"ep25-releases-tags-insights\",\n  \"chapters\": [\n    {\n      \"title\": \"ep25-releases-tags-insights: Overview\",\n      \"startSegmentIndex\": 0\n    },\n    {\n      \"title\": \"Section 2\",\n      \"startSegmentIndex\": 16\n    },\n    {\n      \"title\": \"Section 3\",\n      \"startSegmentIndex\": 30\n    },\n    {\n      \"title\": \"Section 4\",\n      \"startSegmentIndex\": 43\n    },\n    {\n      \"title\": \"Section 5\",\n      \"startSegmentIndex\": 56\n    },\n    {\n      \"title\": \"Section 6\",\n      \"startSegmentIndex\": 67\n    },\n    {\n      \"title\": \"Section 7\",\n      \"startSegmentIndex\": 85\n    },\n    {\n      \"title\": \"Section 8\",\n      \"startSegmentIndex\": 100\n    },\n    {\n      \"title\": \"Section 9\",\n      \"startSegmentIndex\": 116\n    },\n    {\n      \"title\": \"Section 10\",\n      \"startSegmentIndex\": 132\n    },\n    {\n      \"title\": \"Section 11\",\n      \"startSegmentIndex\": 146\n    },\n    {\n      \"title\": \"Section 12\",\n      \"startSegmentIndex\": 158\n    },\n    {\n      \"title\": \"Section 13\",\n      \"startSegmentIndex\": 176\n    }\n  ]\n}\n",
+  "sourceFiles": [
+    {
+      "exists": true,
+      "path": "C:\\code\\git-going-with-github\\docs\\appendix-s-releases-tags-insights.md",
+      "headings": [
+        {
+          "level": 2,
+          "title": "Understanding Versioned Releases and Repository Activity"
+        },
+        {
+          "level": 2,
+          "title": "Table of Contents"
+        },
+        {
+          "level": 3,
+          "title": "Part 1 - Releases and Tags"
+        },
+        {
+          "level": 3,
+          "title": "Part 2 - Repository Insights"
+        },
+        {
+          "level": 2,
+          "title": "Part 1 - Releases and Tags"
+        },
+        {
+          "level": 2,
+          "title": "1. What Is a Release?"
+        },
+        {
+          "level": 2,
+          "title": "2. Releases vs. Tags vs. Branches"
+        },
+        {
+          "level": 3,
+          "title": "The relationship"
+        },
+        {
+          "level": 2,
+          "title": "3. Navigating Releases on GitHub"
+        },
+        {
+          "level": 3,
+          "title": "Finding the Releases Page"
+        },
+        {
+          "level": 4,
+          "title": "Screen reader path"
+        },
+        {
+          "level": 3,
+          "title": "The Releases List Page"
+        },
+        {
+          "level": 4,
+          "title": "Navigation"
+        },
+        {
+          "level": 3,
+          "title": "Learning Cards: Navigating Releases"
+        },
+        {
+          "level": 2,
+          "title": "4. Understanding Version Numbers"
+        },
+        {
+          "level": 3,
+          "title": "Examples"
+        },
+        {
+          "level": 3,
+          "title": "Your contribution's journey"
+        },
+        {
+          "level": 2,
+          "title": "5. Reading Release Notes"
+        },
+        {
+          "level": 2,
+          "title": "What's New in v2.1.0"
+        },
+        {
+          "level": 3,
+          "title": "Breaking Changes"
+        },
+        {
+          "level": 3,
+          "title": "New Features"
+        },
+        {
+          "level": 3,
+          "title": "Bug Fixes"
+        },
+        {
+          "level": 3,
+          "title": "Dependencies"
+        },
+        {
+          "level": 2,
+          "title": "6. For Maintainers: Creating a Release"
+        },
+        {
+          "level": 3,
+          "title": "Creating a Release from the GitHub UI"
+        },
+        {
+          "level": 3,
+          "title": "Using Accessibility Agents for Release Notes"
+        },
+        {
+          "level": 3,
+          "title": "Learning Cards: Creating a Release"
+        },
+        {
+          "level": 2,
+          "title": "7. Draft and Pre-Release States"
+        },
+        {
+          "level": 2,
+          "title": "8. Accessibility Agents: `/draft-release`"
+        },
+        {
+          "level": 3,
+          "title": "Usage"
+        },
+        {
+          "level": 3,
+          "title": "What it produces"
+        },
+        {
+          "level": 3,
+          "title": "Example output"
+        },
+        {
+          "level": 2,
+          "title": "v2.1.0"
+        },
+        {
+          "level": 3,
+          "title": "New Features"
+        },
+        {
+          "level": 3,
+          "title": "Bug Fixes"
+        },
+        {
+          "level": 3,
+          "title": "Dependencies"
+        },
+        {
+          "level": 2,
+          "title": "Part 2 - Repository Insights"
+        },
+        {
+          "level": 2,
+          "title": "9. What Is the Insights Tab?"
+        },
+        {
+          "level": 3,
+          "title": "Who can see Insights"
+        },
+        {
+          "level": 3,
+          "title": "What Insights does NOT show"
+        },
+        {
+          "level": 2,
+          "title": "10. Navigating to Insights"
+        },
+        {
+          "level": 3,
+          "title": "Screen reader path"
+        },
+        {
+          "level": 2,
+          "title": "11. Pulse - Recent Activity Summary"
+        },
+        {
+          "level": 3,
+          "title": "What it tells you as a contributor"
+        },
+        {
+          "level": 3,
+          "title": "Screen reader navigation"
+        },
+        {
+          "level": 3,
+          "title": "Learning Cards: Pulse (Recent Activity Summary)"
+        },
+        {
+          "level": 2,
+          "title": "12. Contributors - Who Builds the Project"
+        },
+        {
+          "level": 3,
+          "title": "The table (accessible)"
+        },
+        {
+          "level": 3,
+          "title": "Why this matters as a new contributor"
+        },
+        {
+          "level": 3,
+          "title": "Screen reader"
+        },
+        {
+          "level": 3,
+          "title": "Learning Cards: Contributors"
+        },
+        {
+          "level": 2,
+          "title": "13. Traffic - Who Visits the Repo"
+        },
+        {
+          "level": 3,
+          "title": "Metrics"
+        },
+        {
+          "level": 3,
+          "title": "Why this matters"
+        },
+        {
+          "level": 2,
+          "title": "14. Commits and Code Frequency"
+        },
+        {
+          "level": 2,
+          "title": "15. Dependency Graph"
+        },
+        {
+          "level": 3,
+          "title": "Enabling/viewing"
+        },
+        {
+          "level": 2,
+          "title": "16. Network and Forks"
+        },
+        {
+          "level": 2,
+          "title": "17. Community Standards"
+        },
+        {
+          "level": 3,
+          "title": "Screen reader"
+        },
+        {
+          "level": 2,
+          "title": "18. Screen Reader Navigation Reference"
+        },
+        {
+          "level": 3,
+          "title": "Releases Pages"
+        },
+        {
+          "level": 4,
+          "title": "Repository home page (finding releases)"
+        },
+        {
+          "level": 4,
+          "title": "Releases list page"
+        },
+        {
+          "level": 4,
+          "title": "Individual release page"
+        },
+        {
+          "level": 4,
+          "title": "Comparing two releases (the Changelog)"
+        },
+        {
+          "level": 3,
+          "title": "Insights Pages"
+        },
+        {
+          "level": 4,
+          "title": "Insights tab bar (sub-navigation)"
+        },
+        {
+          "level": 4,
+          "title": "Charts and graphs - general strategy"
+        },
+        {
+          "level": 4,
+          "title": "Pulse view"
+        },
+        {
+          "level": 2,
+          "title": "19. Accessibility Agents: `/my-stats` and `/team-dashboard`"
+        },
+        {
+          "level": 3,
+          "title": "`/my-stats`"
+        },
+        {
+          "level": 3,
+          "title": "`/team-dashboard`"
+        },
+        {
+          "level": 2,
+          "title": "Authoritative Sources"
+        },
+        {
+          "level": 3,
+          "title": "Section-Level Source Map"
+        }
+      ],
+      "content": "# Appendix S: Releases, Tags, and Repository Insights\n>\n> **Listen to Episode 25:** [Releases, Tags, and Insights](https://lp.csedesigns.com/ggg/PODCASTS.html) - a conversational audio overview of this chapter. Listen before reading to preview the concepts, or after to reinforce what you learned.\n\n> **Reference companion to:** [Chapter 08: Open Source Culture](08-open-source-culture.md)\n>\n> **Authoritative source:** [GitHub Docs: About releases](https://docs.github.com/en/repositories/releasing-projects-on-github/about-releases)\n\n## Understanding Versioned Releases and Repository Activity\n\n> Two things help you understand a repository's health and your place in it: **releases** (the versioned snapshots your contributions land in) and **insights** (the activity metrics that show how a project grows). This appendix covers both.\n\n## Table of Contents\n\n### Part 1 - Releases and Tags\n\n1. [What Is a Release?](#1-what-is-a-release)\n2. [Releases vs. Tags vs. Branches](#2-releases-vs-tags-vs-branches)\n3. [Navigating Releases on GitHub](#3-navigating-releases-on-github)\n4. [Understanding Version Numbers](#4-understanding-version-numbers)\n5. [Reading Release Notes](#5-reading-release-notes)\n6. [For Maintainers: Creating a Release](#6-for-maintainers-creating-a-release)\n7. [Draft and Pre-Release States](#7-draft-and-pre-release-states)\n8. [Accessibility Agents: `/draft-release`](#8-accessibility-agents-draft-release)\n\n### Part 2 - Repository Insights\n\n1. [What Is the Insights Tab?](#9-what-is-the-insights-tab)\n2. [Navigating to Insights](#10-navigating-to-insights)\n3. [Pulse - Recent Activity Summary](#11-pulse---recent-activity-summary)\n4. [Contributors - Who Builds the Project](#12-contributors---who-builds-the-project)\n5. [Traffic - Who Visits the Repo](#13-traffic---who-visits-the-repo)\n6. [Commits and Code Frequency](#14-commits-and-code-frequency)\n7. [Dependency Graph](#15-dependency-graph)\n8. [Network and Forks](#16-network-and-forks)\n9. [Community Standards](#17-community-standards)\n10. [Screen Reader Navigation Reference](#18-screen-reader-navigation-reference)\n11. [Accessibility Agents: `/my-stats` and `/team-dashboard`](#19-accessibility-agents-my-stats-and-team-dashboard)\n\n## Part 1 - Releases and Tags\n\n## 1. What Is a Release?\n\nA **release** is a named snapshot of a repository at a specific point in history, packaged and published for users.\n\nFor software projects, a release typically includes:\n\n- A version number (e.g., `v2.1.0`)\n- Release notes explaining what changed\n- Links to download the compiled or packaged software (if applicable)\n- Source code archives (automatically generated by GitHub)\n\nFor documentation-only or non-software projects, releases are often used to mark stable checkpoints or versions of a document.\n\n**When your PR gets merged:** Your change becomes part of the code on the default branch. It will be *included* in the next release whenever the maintainer decides to publish one - this might be days, weeks, or months away depending on the project's release cadence.\n\n## 2. Releases vs. Tags vs. Branches\n\nThese three concepts are closely related:\n\n| Concept | What It Is | Lives |\n| ---  | ---  | ---  |\n| **Branch** | A movable pointer to the latest commit on a line of work | Permanently moves as commits are added |\n| **Tag** | A fixed pointer to a single specific commit | Never moves - always points to the same commit |\n| **Release** | A tag + release notes + optional downloadable assets published on GitHub | Based on a tag |\n\n### The relationship\n\n- Every release is backed by a tag\n- A tag without a release is just a version marker in the git history\n- GitHub automatically creates a tag when you create a release\n\n## 3. Navigating Releases on GitHub\n\n### Finding the Releases Page\n\nFrom any repository page:\n\n1. Look on the right sidebar for a **\"Releases\"** section showing the latest release\n2. Activate \"Releases\" or the version link to go to the full releases page\n3. Alternatively: navigate to `github.com/owner/repo/releases`\n\n#### Screen reader path\n\n```text\nOn the repository home page:\n→ H or 3 to find \"Releases\" heading in the right sidebar\n→ Tab to the latest release link → Enter\n→ Or: Tab to \"N Releases\" count link → Enter → Opens full releases list\n```\n\n### The Releases List Page\n\nEach release appears as a section with:\n\n- The release title (usually the version number)\n- A badge: \"Latest\" (most recent stable), \"Pre-release\", or nothing (older release)\n- Publication date\n- The tag name\n- Release notes (the main body)\n- Asset downloads (if included)\n- Source code download links (always present - auto-generated zip/tar.gz)\n\n#### Navigation\n\n```text\n2 → Jump between release title headings\nK → Navigate links (download assets, compare, tag links)\n↓ → Read release notes\n```\n\n### Learning Cards: Navigating Releases\n\n<details>\n<summary>Screen reader users</summary>\n\n- On the repository home page, press H or 3 to find the \"Releases\" heading in the right sidebar, then K to the version link — Enter opens the latest release directly\n- On the Releases list page, each release is a heading — use 2 or 3 to jump between releases and arrow down to read the notes inline\n- The \"Latest\" badge appears next to the most recent stable release — listen for it to distinguish stable releases from pre-releases or older versions\n\n</details>\n\n<details>\n<summary>Low vision users</summary>\n\n- The Releases link on the repo home page sits in the right sidebar — at high zoom the sidebar may collapse below the main content; scroll down to find it\n- Release notes use Markdown headings (Breaking Changes, New Features, Bug Fixes) — zoom in and scan the bold section labels for quick triage\n- The green \"Latest\" badge next to the newest stable release is small — zoom to 150%+ to spot it among the release list entries\n\n</details>\n\n<details>\n<summary>Sighted users</summary>\n\n- On the repository home page, look at the right sidebar for the Releases section showing the latest version number and a link to all releases\n- On the Releases list page, each release card shows a title, date, tag, and a \"Latest\" badge on the most recent stable version\n- Scroll through release notes to see categorized change lists — look for the \"Full Changelog\" link at the bottom to see every merged PR between two versions\n\n</details>\n\n## 4. Understanding Version Numbers\n\nMost projects follow **Semantic Versioning** (semver): `MAJOR.MINOR.PATCH`\n\n| Part | When It Changes | Meaning |\n| ---  | ---  | ---  |\n| `MAJOR` (e.g., `2.x.x`) | Breaking changes | Existing behavior changed in an incompatible way; users may need to update their code |\n| `MINOR` (e.g., `x.1.x`) | New features, backward-compatible | New functionality added; existing code still works |\n| `PATCH` (e.g., `x.x.1`) | Bug fixes | Something was broken and is now fixed |\n\n### Examples\n\n- `v2.0.0` → major release, breaking changes possible\n- `v2.1.0` → new features added\n- `v2.1.3` → three bug fixes since v2.1.0\n\n**Pre-release suffixes** (not part of semver core, but common):\n\n- `v2.1.0-alpha.1` → early preview, may be unstable\n- `v2.1.0-beta.2` → feature-complete but still testing\n- `v2.1.0-rc.1` → release candidate, nearly final\n\n### Your contribution's journey\n\n```text\nPR opened → PR reviewed → PR merged → default branch updated\n                                              ↓\n                                   Next release prepared\n                                              ↓\n                          Tag created → Release published → v2.1.1\n```\n\n## 5. Reading Release Notes\n\nRelease notes document what changed. High-quality release notes categorize changes:\n\n```text\n## What's New in v2.1.0\n\n### Breaking Changes\n- The `preferences.md` format has changed - see the migration guide\n\n### New Features\n- Added `/project-status` command (#42, @alice)\n- Added `/onboard-repo` command (#38, @bob)\n\n### Bug Fixes\n- Fixed keyboard navigation in the triage workflow (#51, @charlie)\n- Screen reader announcement now correct for merged PRs (#48, @alice)\n\n### Dependencies\n- Updated github-mcp-server to v3.0.1\n\n**Full Changelog:** https://github.com/owner/repo/compare/v2.0.0...v2.1.0\n```\n\n**The \"Full Changelog\" link** at the bottom of many release notes goes to a comparison view showing every merged PR between two tags. This is where you'll see your PR listed by name, with your username credited.\n\n## 6. For Maintainers: Creating a Release\n\nThis section is relevant if you become a maintainer or contribute to a project that asks you to prepare releases.\n\n### Creating a Release from the GitHub UI\n\n1. Navigate to `github.com/owner/repo/releases/new`\n2. **Choose a tag:** Type a new version tag (e.g., `v2.1.0`) - GitHub will create it on publish, or select an existing tag if you already created one\n3. **Choose a target branch:** The branch the tag will be applied to (usually `main`)\n4. **Release title:** Usually the same as the tag (e.g., `v2.1.0`)\n5. **Release notes:** Write manually, or click **\"Generate release notes\"** - GitHub auto-generates from merged PR titles since the last release\n6. **Assets:** Optionally attach compiled binaries or other files\n7. **Pre-release toggle:** Mark as pre-release if it's alpha/beta\n8. **Draft toggle:** Save as draft to prepare without publishing immediately\n9. **Publish release**\n\n### Using Accessibility Agents for Release Notes\n\nThe `/draft-release` command generates structured release notes automatically from your merged PRs - much faster and more consistent than writing them manually. See [Section 8](#8-accessibility-agents-draft-release).\n\n### Learning Cards: Creating a Release\n\n**Screen reader users:**\n\n- The release creation form at `github.com/owner/repo/releases/new` has several fields -- Tab through them in order: tag selector (combobox), target branch, title input, release notes textarea, asset upload, pre-release checkbox, draft checkbox, and publish button\n- The tag selector is a combobox -- type a new version tag (e.g., `v2.1.0`) and the option to create it appears; arrow down and press Enter to select\n- The \"Generate release notes\" button auto-fills the textarea with merged PR titles -- after clicking it, arrow through the generated notes to verify accuracy before publishing\n\n**Low-vision users:**\n\n- The release creation page uses a single-column form layout -- zoom in and the form fields stack vertically for easy scanning\n- The \"Pre-release\" and \"Draft\" checkboxes are at the bottom of the form, below the release notes editor -- scroll past the potentially long textarea to find them\n- The \"Generate release notes\" button is a small link-style button near the release notes textarea -- look for it above or beside the text area at high magnification\n\n**Sighted users:**\n\n- The tag selector dropdown shows existing tags and a text input for creating new ones -- type `v` to filter for version tags\n- Click \"Generate release notes\" to auto-populate from merged PRs since the last release -- review and manually categorize the entries (Breaking Changes, Features, Bug Fixes) for a polished result\n- The Assets section at the bottom accepts drag-and-drop file uploads for binaries, installers, or compiled packages\n\n## 7. Draft and Pre-Release States\n\n**Draft release:** Saved but not published. Only visible to repository collaborators. Use drafts to prepare release notes in advance.\n\n**Pre-release:** Published and visible, but not marked \"Latest.\" Users who look for the latest stable version won't be directed to it automatically. Use for alpha/beta/RC versions.\n\n**Latest release:** The most recent non-pre-release, non-draft release. This is what GitHub highlights in the sidebar and what `github.com/owner/repo/releases/latest` redirects to.\n\n## 8. Accessibility Agents: `/draft-release`\n\nThe `/draft-release` command automates release note generation from your merged pull requests.\n\n### Usage\n\n```text\n/draft-release v2.1.0\n/draft-release owner/repo v2.1.0\n```\n\n### What it produces\n\n- Auto-categorized changes: Breaking Changes, Features, Bug Fixes, Dependencies\n- Each PR listed with number, title, and author\n- A full changelog link\n- Markdown formatted and ready to paste into GitHub's release editor\n\n### Example output\n\n```markdown\n## v2.1.0\n\n### New Features\n- Add `/project-status` command (#42, @alice)\n- Add `/onboard-repo` for first-time repo scanning (#38, @bob)\n\n### Bug Fixes\n- Fix keyboard navigation in triage workflow (#51, @charlie)\n- Correct screen reader announcement for merged PRs (#48, @alice)\n\n### Dependencies\n- Update github-mcp-server to v3.0.1 (#55)\n\n**Full Changelog:** https://github.com/community-access/accessibility-agents/compare/v2.0.0...v2.1.0\n```\n\n> **See also:** The `/release-prep` command runs a complete pre-release checklist (milestone status, open PRs, CI health, security, and then generates release notes) - useful when preparing a release from scratch rather than just generating notes.\n\n## Part 2 - Repository Insights\n\n## 9. What Is the Insights Tab?\n\nThe Insights tab shows quantitative activity data for a repository. It is primarily read-only and chart-heavy - but all underlying data is also presented in tables that screen readers can navigate.\n\n### Who can see Insights\n\n- Anyone can see Insights on a public repository\n- Private repository Insights require collaborator access\n\n### What Insights does NOT show\n\n- Individual user data in detail (e.g., lines per commit per person)\n- Real-time data (most views update daily or weekly)\n- Code quality scores\n\n## 10. Navigating to Insights\n\nFrom any repository:\n\n1. Navigate to the repository's main tab bar\n2. Find and select the **Insights** tab\n3. The Insights sub-navigation has multiple views listed on the left (or top on smaller screens)\n\n### Screen reader path\n\n```text\nT → navigate the repository tab bar\n→ \"Insights\" link → Enter\n→ Left sidebar has sub-navigation: Pulse, Contributors, Traffic, Commits, etc.\n→ K to navigate sidebar links → Enter to open each view\n```\n\n## 11. Pulse - Recent Activity Summary\n\n**Pulse** is the Insights landing page. It summarizes activity in a chosen time period (last 24 hours, 7 days, or 30 days):\n\n- **Open issues / Closed issues** - net change in the time period\n- **Open pull requests / Merged pull requests / Closed pull requests** - with counts\n- **Authors:** N contributors pushed M commits to N branches\n- A list of merged PRs (each linked to the PR)\n- A list of proposed PRs (open)\n- A list of opened and closed issues\n\n### What it tells you as a contributor\n\n- Is this project actively maintained? (Are PRs being merged regularly?)\n- Is there a backlog? (Many open issues vs. few closures)\n- Is the maintainer responsive? (Time between PR open and merge)\n\n### Screen reader navigation\n\n```text\n2 → Section headings: \"Merged pull requests\", \"Proposed pull requests\", \"Closed issues\", etc.\n3 → Individual PR/issue title links within each section\nK → Navigate all links\n```\n\n### Learning Cards: Pulse (Recent Activity Summary)\n\n<details>\n<summary>Screen reader users</summary>\n\n- Pulse is the Insights landing page — after entering the Insights tab, you land here; use 2 to jump between section headings (Merged PRs, Opened Issues, etc.)\n- Each section lists linked PR or issue titles — press 3 to jump between individual items, or K to navigate the links directly\n- Use the time period selector (last 24 hours, 7 days, 30 days) at the top to scope the summary — Tab to it and select with arrow keys\n\n</details>\n\n<details>\n<summary>Low vision users</summary>\n\n- Pulse displays activity counts in large numbers at the top of the page — zoom in to read the open/closed/merged totals\n- The merged PR and opened issue lists below the summary use standard link formatting — increase font size to scan titles comfortably\n- The time period toggle (24h, 7d, 30d) sits near the top — it can be small at default zoom; look for the underlined active period indicator\n\n</details>\n\n<details>\n<summary>Sighted users</summary>\n\n- Pulse shows a dashboard-style summary at the top with counts for issues opened/closed and PRs opened/merged/closed in the chosen time period\n- Below the summary, merged PRs and proposed PRs are listed as clickable links — scan titles to see recent activity at a glance\n- Use the time period selector (24 hours, 7 days, 30 days) at the top right to adjust the window — 7 days is the default and most useful for weekly check-ins\n\n</details>\n\n## 12. Contributors - Who Builds the Project\n\nThe Contributors view shows a bar chart of commits over time, with each contributor represented by a different color. Below the chart is a sortable table.\n\n### The table (accessible)\n\n- Username\n- Number of commits (with a link to filtered commit history)\n- Additions (lines added)\n- Deletions (lines removed)\n- Sorted by total commits by default\n\n### Why this matters as a new contributor\n\n- You can see how active top contributors are\n- After your first merged PR, your name appears here (with your commits)\n- You can link to your section (`github.com/owner/repo/graphs/contributors`) as proof of contribution\n\n### Screen reader\n\nThe chart is a canvas graphic - not directly readable. The table below it is fully accessible. Navigate with `T` to reach the table, then `Tab` for sorting controls.\n\n```text\nT → Contributors table\nTab → Column headers (click to sort: Commits, Additions, Deletions)\n↓ → Navigate rows (each contributor is a row)\nK → Links to each contributor's filtered commit list\n```\n\n### Learning Cards: Contributors\n\n**Screen reader users:**\n\n- The contributor chart is a canvas graphic that screen readers cannot access -- skip it and navigate to the data table below with `T` (next table) which contains the same information in accessible form\n- The table has sortable column headers (Commits, Additions, Deletions) -- Tab to a header and press Enter to sort; the table reloads with the new sort order\n- Each contributor's username is a link to their filtered commit list -- activate it to see every commit that person made to this repository\n\n**Low-vision users:**\n\n- The bar chart uses color to distinguish contributors -- the table below provides the same data as text; zoom in on the table if the chart colors are hard to differentiate\n- Sorting by Commits (default) puts top contributors first -- at high zoom, the table may require horizontal scrolling to see the Additions and Deletions columns\n- After your first merged PR, your username appears in this table -- link to it (`github.com/owner/repo/graphs/contributors`) as proof of contribution in your portfolio\n\n**Sighted users:**\n\n- The color-coded bar chart at the top shows commit frequency over time -- each contributor is a different color in the stacked bars\n- The table below the chart is sortable by column -- click Commits, Additions, or Deletions to reorder and quickly find the most active contributors\n- Your name appears here after your first merged PR -- bookmark the URL to reference your contribution history when building your developer portfolio\n\n## 13. Traffic - Who Visits the Repo\n\n**Traffic** shows who is viewing and cloning the repository. Available only to repository owners and collaborators with push access.\n\n### Metrics\n\n| View | What It Shows |\n| ---  | ---  |\n| **Visitors** | Unique visitors and total page views over 14 days |\n| **Git clones** | Number of times the repo was cloned (git clone, not forks) |\n| **Referring sites** | Where traffic comes from (Google, Hacker News, direct, etc.) |\n| **Popular content** | Which files and pages in the repo get the most views |\n\n### Why this matters\n\n- If the README is the most-viewed file, documentation improvements have high impact\n- If traffic spiked when a blog post linked the repo, that's a good signal for community growth\n\n## 14. Commits and Code Frequency\n\n**Commits** shows commit frequency over the past year, by week. Useful for identifying:\n\n- Active development periods (many commits)\n- Dormant periods (no commits) - a project with 6+ months of inactivity may be unmaintained\n- Release sprints (burst of commits before a release tag)\n\n**Code Frequency** shows additions and deletions per week as an area chart. A healthy codebase has more additions than deletions until it matures, then stabilizes.\n\n**Churn** (high deletions alongside high additions) can indicate:\n\n- Heavy refactoring\n- Ongoing maintenance of large files\n- Active cleanup of technical debt\n\n**Screen reader note for both views:** The charts are visual canvas elements. For a text-based view of commit history, use the Commits tab on the main repository page instead.\n\n## 15. Dependency Graph\n\nThe **Dependency Graph** shows:\n\n- What your project depends on (libraries, packages)\n- What depends on your project (if others import your repo)\n\n**Dependents** - repositories that depend on this one - is the \"used by\" count you see on the right sidebar of popular packages.\n\n### Enabling/viewing\n\n- Settings → Security & Analysis → Dependency graph → Enable\n- Navigate to Insights → Dependency graph\n\n**Why it matters for security:** The dependency graph feeds Dependabot. If a vulnerability is found in a library, Dependabot uses this graph to identify which repos use the affected version and opens automated PRs to update them. See [Appendix L: GitHub Security Features](appendix-p-security-features.md) for more on Dependabot.\n\n## 16. Network and Forks\n\nThe **Network** view shows a graphical branch/fork network - who has forked the repo, what branches exist, and how they diverge.\n\n**Screen reader note:** The network graph is a canvas visualization not accessible to screen readers. The underlying fork list is accessible separately at `github.com/owner/repo/forks`.\n\n**The forks list** (at `/forks`) is a simple table of who forked the repo - navigable with standard table navigation.\n\n## 17. Community Standards\n\nThe **Community Standards** view (found in the Insights sidebar or in the main repository homepage's \"Recommended\" sidebar section) shows a checklist of community health files:\n\n| File | Purpose | Status |\n| ---  | ---  | ---  |\n| Description | One-line repo summary | Present or Missing |\n| README | Project overview | Present or Missing |\n| Code of Conduct | Community behavior standards | Present or Missing |\n| Contributing guide | How to contribute | Present or Missing |\n| License | Usage rights | Present or Missing |\n| Issue templates | Structured issue forms | Present or Missing |\n| Pull request template | PR checklist | Present or Missing |\n| Security policy | How to report vulnerabilities | Present or Missing |\n\nA fully green checklist signals a well-maintained project. For accessibility-agents contributors, **adding a missing community health file is always a welcome `good first issue` contribution.**\n\n### Screen reader\n\n```text\nH / 2 → \"Community Standards\" section heading\nTab → Each checklist item (links to add missing files)\n```\n\n## 18. Screen Reader Navigation Reference\n\n### Releases Pages\n\n#### Repository home page (finding releases)\n\n```text\nRight sidebar:\n→ H or 3 to find \"Releases\" heading\n→ K to the version link (e.g., \"v2.1.0\") → Enter opens that release\n→ K to the \"N releases\" count link → Enter opens full list\n```\n\n#### Releases list page\n\n```text\n2         → Major section headings\n3         → Individual release title headings (each release is an h2 or h3)\nK         → Navigate links (assets, tag, compare)\n↓         → Read release notes inline\n```\n\n#### Individual release page\n\n```text\nH / 2     → Section headings within release notes\nI         → List items (change entries)\nK         → Links (PRs referenced, comparison link, asset downloads)\n```\n\n#### Comparing two releases (the Changelog)\n\nThe compare URL (`/compare/v1.0.0...v2.0.0`) shows a diff of all commits and merged PRs between two tags:\n\n```text\n3         → Individual commit or PR headings\nI         → Commit list items\n```\n\n### Insights Pages\n\n#### Insights tab bar (sub-navigation)\n\n```text\nInsights left sidebar:\nK → Navigate sidebar links: Pulse, Contributors, Traffic, Commits, Code frequency, Dependency graph, Network, Forks, Community\nEnter → Open that Insights view\n```\n\n#### Charts and graphs - general strategy\n\nMost Insights charts are canvas or SVG visuals. They announce as \"image\" or \"graphic\" to screen readers. **Skip the chart and use the data table or list below it**, which contains the same information in accessible form.\n\n```text\nT → Jump to data tables\nH → Section headings\nI → List items (in Pulse views)\n```\n\n#### Pulse view\n\n```text\n2 → \"Merged pull requests\", \"Opened issues\", etc. sections\n3 → Individual PR/issue titles\nK → Links to each item\n```\n\n## 19. Accessibility Agents: `/my-stats` and `/team-dashboard`\n\nInstead of navigating GitHub's chart-heavy Insights UI, Accessibility Agents provides two commands that deliver the same data in text form directly in VS Code.\n\n### `/my-stats`\n\nShows your personal contribution statistics across all tracked repos:\n\n```text\n/my-stats\n/my-stats last 30 days\n/my-stats org:community-access\n```\n\nOutput includes:\n\n- PRs opened and merged\n- Issues filed and closed\n- Reviews conducted\n- Commits pushed\n- Compare to previous period\n\n### `/team-dashboard`\n\nShows team-wide activity across tracked repos - who contributed what, response times, review coverage:\n\n```text\n/team-dashboard\n/team-dashboard org:community-access\n/team-dashboard sprint\n```\n\nOutput includes:\n\n- Per-person contribution summary\n- Review coverage (how many PRs got reviews)\n- Open issues by assignee\n- CI health across team repos\n\n---\n\n*Next: [Appendix T: Community and Social](appendix-t-community-and-social.md)*  \n*Back: [Appendix R: Projects Deep Dive](appendix-r-projects-deep-dive.md)*  \n*Teaching chapter: [Chapter 08: Open Source Culture](08-open-source-culture.md)*\n\n## Authoritative Sources\n\nUse these official references when you need the current source of truth for facts in this chapter.\n\n- [GitHub Docs, home](https://docs.github.com/en)\n- [GitHub Changelog](https://github.blog/changelog/)\n- [About releases](https://docs.github.com/en/repositories/releasing-projects-on-github/about-releases)\n- [Managing releases and tags](https://docs.github.com/en/repositories/releasing-projects-on-github/managing-releases-in-a-repository)\n\n### Section-Level Source Map\n\nUse this map to verify facts for each major section in this file.\n\n- **Understanding Versioned Releases and Repository Activity:** [GitHub Docs, home](https://docs.github.com/en), [GitHub Changelog](https://github.blog/changelog/), [About releases](https://docs.github.com/en/repositories/releasing-projects-on-github/about-releases), [Managing releases and tags](https://docs.github.com/en/repositories/releasing-projects-on-github/managing-releases-in-a-repository), [About Git](https://docs.github.com/en/get-started/using-git/about-git)\n- **Part 1 - Releases and Tags:** [GitHub Docs, home](https://docs.github.com/en), [GitHub Changelog](https://github.blog/changelog/), [About releases](https://docs.github.com/en/repositories/releasing-projects-on-github/about-releases), [Managing releases and tags](https://docs.github.com/en/repositories/releasing-projects-on-github/managing-releases-in-a-repository)\n- **1. What Is a Release?:** [GitHub Docs, home](https://docs.github.com/en), [GitHub Changelog](https://github.blog/changelog/), [About releases](https://docs.github.com/en/repositories/releasing-projects-on-github/about-releases), [Managing releases and tags](https://docs.github.com/en/repositories/releasing-projects-on-github/managing-releases-in-a-repository)\n- **2. Releases vs. Tags vs. Branches:** [GitHub Docs, home](https://docs.github.com/en), [GitHub Changelog](https://github.blog/changelog/), [About releases](https://docs.github.com/en/repositories/releasing-projects-on-github/about-releases), [Managing releases and tags](https://docs.github.com/en/repositories/releasing-projects-on-github/managing-releases-in-a-repository), [About Git](https://docs.github.com/en/get-started/using-git/about-git)\n- **3. Navigating Releases on GitHub:** [GitHub Docs, home](https://docs.github.com/en), [GitHub Changelog](https://github.blog/changelog/), [About releases](https://docs.github.com/en/repositories/releasing-projects-on-github/about-releases), [Managing releases and tags](https://docs.github.com/en/repositories/releasing-projects-on-github/managing-releases-in-a-repository), [About Git](https://docs.github.com/en/get-started/using-git/about-git)\n- **4. Understanding Version Numbers:** [GitHub Docs, home](https://docs.github.com/en), [GitHub Changelog](https://github.blog/changelog/), [About releases](https://docs.github.com/en/repositories/releasing-projects-on-github/about-releases), [Managing releases and tags](https://docs.github.com/en/repositories/releasing-projects-on-github/managing-releases-in-a-repository)\n- **5. Reading Release Notes:** [GitHub Docs, home](https://docs.github.com/en), [GitHub Changelog](https://github.blog/changelog/), [About releases](https://docs.github.com/en/repositories/releasing-projects-on-github/about-releases), [Managing releases and tags](https://docs.github.com/en/repositories/releasing-projects-on-github/managing-releases-in-a-repository)\n- **What's New in v2.1.0:** [GitHub Docs, home](https://docs.github.com/en), [GitHub Changelog](https://github.blog/changelog/), [About releases](https://docs.github.com/en/repositories/releasing-projects-on-github/about-releases), [Managing releases and tags](https://docs.github.com/en/repositories/releasing-projects-on-github/managing-releases-in-a-repository)\n- **6. For Maintainers: Creating a Release:** [GitHub Docs, home](https://docs.github.com/en), [GitHub Changelog](https://github.blog/changelog/), [About releases](https://docs.github.com/en/repositories/releasing-projects-on-github/about-releases), [Managing releases and tags](https://docs.github.com/en/repositories/releasing-projects-on-github/managing-releases-in-a-repository)\n- **7. Draft and Pre-Release States:** [GitHub Docs, home](https://docs.github.com/en), [GitHub Changelog](https://github.blog/changelog/), [About releases](https://docs.github.com/en/repositories/releasing-projects-on-github/about-releases), [Managing releases and tags](https://docs.github.com/en/repositories/releasing-projects-on-github/managing-releases-in-a-repository)\n- **8. Accessibility Agents: `/draft-release`:** [GitHub Docs, home](https://docs.github.com/en), [GitHub Changelog](https://github.blog/changelog/), [About releases](https://docs.github.com/en/repositories/releasing-projects-on-github/about-releases), [Managing releases and tags](https://docs.github.com/en/repositories/releasing-projects-on-github/managing-releases-in-a-repository), [GitHub Copilot docs](https://docs.github.com/en/copilot)\n- **v2.1.0:** [GitHub Docs, home](https://docs.github.com/en), [GitHub Changelog](https://github.blog/changelog/), [About releases](https://docs.github.com/en/repositories/releasing-projects-on-github/about-releases), [Managing releases and tags](https://docs.github.com/en/repositories/releasing-projects-on-github/managing-releases-in-a-repository)\n- **Part 2 - Repository Insights:** [GitHub Docs, home](https://docs.github.com/en), [GitHub Changelog](https://github.blog/changelog/), [About releases](https://docs.github.com/en/repositories/releasing-projects-on-github/about-releases), [Managing releases and tags](https://docs.github.com/en/repositories/releasing-projects-on-github/managing-releases-in-a-repository), [About Git](https://docs.github.com/en/get-started/using-git/about-git)\n- **9. What Is the Insights Tab?:** [GitHub Docs, home](https://docs.github.com/en), [GitHub Changelog](https://github.blog/changelog/), [About releases](https://docs.github.com/en/repositories/releasing-projects-on-github/about-releases), [Managing releases and tags](https://docs.github.com/en/repositories/releasing-projects-on-github/managing-releases-in-a-repository)\n- **10. Navigating to Insights:** [GitHub Docs, home](https://docs.github.com/en), [GitHub Changelog](https://github.blog/changelog/), [About releases](https://docs.github.com/en/repositories/releasing-projects-on-github/about-releases), [Managing releases and tags](https://docs.github.com/en/repositories/releasing-projects-on-github/managing-releases-in-a-repository)\n- **11. Pulse - Recent Activity Summary:** [GitHub Docs, home](https://docs.github.com/en), [GitHub Changelog](https://github.blog/changelog/), [About releases](https://docs.github.com/en/repositories/releasing-projects-on-github/about-releases), [Managing releases and tags](https://docs.github.com/en/repositories/releasing-projects-on-github/managing-releases-in-a-repository)\n"
+    }
+  ],
+  "companions": {
+    "pairedChallenges": [],
+    "pairedChapters": [],
+    "classroomReview": "",
+    "assignments": []
+  },
+  "voiceRules": {
+    "bannedPhrases": [
+      "has three jobs",
+      "name the idea",
+      "give the learner a move",
+      "show what counts as evidence",
+      "Section-Level Source Map",
+      "GitHub Docs, home, GitHub Changelog",
+      "Think of this as",
+      "The next useful detail is concrete",
+      "The point is not speed; the point is never losing your place",
+      "That is the difference between guessing and knowing",
+      "This is the move inside",
+      "Anchor this part on",
+      "For someone navigating by keyboard or screen reader",
+      "The teaching point here is not",
+      "The durable skill is not memorizing one screen",
+      "It is knowing how to find your footing when the screen changes",
+      "Keep it that plain",
+      "That is the rhythm: orient, act, verify, continue",
+      "Each step should leave a trace you can name",
+      "That small check between steps is what makes the workflow reliable",
+      "This part earns its place because",
+      "That matters in practice:"
+    ],
+    "staleFacts": [
+      "Fork the accessibility-agents repository",
+      "80 AI-powered agents",
+      "eighty AI-powered agents",
+      "Build Your Agent (Capstone)",
+      "Build Your Own Agent",
+      "if you finish early",
+      "cross-fork PR"
+    ],
+    "currentFacts": [
+      "The Accessibility Agents collection grows over time. Refer to it as a living catalog rather than asserting a fixed count of agents.",
+      "Challenge 15 (Discover Accessibility Agents) is browse-first. Learners are not required to fork the accessibility-agents repository to complete it.",
+      "Completing Challenge 15 unlocks Challenge 16 (Capstone Project) plus Bonus Challenges A through E. The bonus challenges are a structured unlock path, not \"things to do if you finish early\".",
+      "Challenge 16 is titled \"Capstone Project\". It accepts contributions to Accessibility Agents, GLOW, or any other meaningful repository. Review-ready drafts and contribution plans are valid evidence of completion.",
+      "The Learning Room repository is where Day 1 contributions happen (issue, branch, commit, pull request, merge). It is provisioned per learner.",
+      "Hosts are Alex (warm expert) and Jamie (curious co-host who asks the questions learners hesitate to ask). They are colleagues, not teacher and student."
+    ],
+    "voiceExemplarPath": "C:\\code\\git-going-with-github\\podcasts\\scripts\\challenges\\cc-14-design-an-issue-template.txt",
+    "voiceExemplar": "[ALEX]\nWelcome back. Today we're working with one of those GitHub features that quietly makes open source collaboration much easier: issue templates.\n\n[JAMIE]\nAnd this is a great one for people who have ever opened a blank issue form and thought, what exactly am I supposed to put here?\n\n[ALEX]\nExactly. An issue template turns that blank box into a guided experience. Instead of guessing what maintainers need, contributors get prompts, structure, and clear required fields. That reduces back-and-forth, improves quality, and helps teams act on issues faster.\n\n[JAMIE]\nSo this is not just about formatting. It's about making contributions clearer and more usable.\n\n[ALEX]\nYes, and especially in accessibility work. If someone is reporting an accessibility barrier, a vague report can be hard to reproduce. A thoughtful template can ask where the problem occurred, what assistive technology was involved, what the expected behavior was, and how severe the barrier is.\n\n[PAUSE]\n\n[JAMIE]\nBefore we get into the design challenge, what should learners already have in place?\n\n[ALEX]\nA few practical things. First, you should already know how to work with GitHub issues at a basic level. Second, you need a repository where you can create or edit files, usually your fork or your own repo. Third, it really helps to use an editor with YAML syntax highlighting, such as VS Code.\n\n[JAMIE]\nAnd some things are recommended but not strictly required, right?\n\n[ALEX]\nRight. Familiarity with GitHub Copilot can help if you want to generate variations, but it's optional. Basic terminal comfort is useful, though you can also use the GitHub web editor or github.dev. And if you already filled out the workshop registration template earlier in this course, that template becomes a learning example now.\n\n[JAMIE]\nI like that. You've already used a professional issue template, so now you reverse-engineer it.\n\n[ALEX]\nExactly. Also, there's an administrative note here: this chapter is meant to prepare you for a later workflow using a template-building agent. The advice is to complete the manual template chapter first, then use the automation later.\n\n[JAMIE]\nAnd time-wise?\n\n[ALEX]\nPlan roughly two to two and a half hours if you do the exercises and some YAML troubleshooting.\n\n[PAUSE]\n\n[ALEX]\nThe learning pattern for this challenge is analyze, remix, create, and test.\n\n[JAMIE]\nThat feels approachable. First understand an existing template, then adapt one, then optionally build another version from scratch, then verify it works.\n\n[ALEX]\nThat's the idea. The workshop recommendation frames Challenge 14 as design-focused rather than automation-focused. You're producing evidence of understanding, often as an issue comment or a pull request, rather than trying to satisfy a complicated code runtime.\n\n[JAMIE]\nThough there is still one small autograded requirement in the challenge template itself.\n\n[ALEX]\nYes. For the assigned challenge issue, the autograder checks that a YAML file exists in the repository\n\n[... exemplar continues; match this tone throughout ...]"
+  }
+}

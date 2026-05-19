@@ -1,321 +1,180 @@
 [ALEX]
-Welcome back. This lesson is a practical setup guide for accessibility agents across five platforms: GitHub Copilot in VS Code, Claude Code, Gemini CLI, Claude Desktop, and Codex CLI. It’s a companion to earlier material on agents and to the broader reference docs, and the authoritative source is the Accessibility Agents repository plus its system requirements documentation.
+Welcome back. Today we're setting up accessibility agents across the tools people are most likely to use in this workshop: GitHub Copilot in VS Code, Claude Code, Gemini CLI, Claude Desktop, and Codex CLI.
 
 [JAMIE]
-So this is the episode you listen to when you want to get from “I’ve heard of these tools” to “they are actually installed, verified, and working on my machine.”
+And before anybody worries that an agent is some separate mystery system, can we place it in the normal workflow?
 
 [ALEX]
-Exactly. And because our audience includes blind and low-vision learners, we’ll keep naming commands, interface locations, and verification cues out loud. We’ll also include the maintenance and troubleshooting details, not just the happy path.
+Yes. An agent is a configured assistant you call while you work, usually from chat or a command line. It can help inspect code, draft changes, explain accessibility issues, or guide a test, but you still decide what to run, what to commit, and what evidence is ready to share.
+
+[JAMIE]
+So the agent sits beside Git, GitHub, and VS Code. It doesn't replace the contribution workflow.
 
 [PAUSE]
 
 [ALEX]
-At a high level, the setup process has six parts: check system requirements, confirm versions, install the platform you want, verify the installation, troubleshoot if needed, and keep your tools updated.
+The biggest setup rule is tool currency. Accessibility agents rely on newer chat features, API behavior, and bug fixes, so old versions can fail in confusing ways.
 
 [JAMIE]
-And before we get lost in platform differences, what’s the biggest rule that applies to all of them?
+When you say newer, are we talking about a vague keep everything updated, or are there actual baselines?
 
 [ALEX]
-Tool currency. These agents depend on current features, current APIs, and bug fixes. Older versions are a common reason things fail. The baseline in the source is May 2026, and the guidance is to use the latest versions.
+There are baselines. As of May 2026, VS Code should be 1.113 or later, GitHub Copilot should be current from the VS Code Marketplace, Node.js should be version 18 or higher, Python should be 3.8 or higher, and Git should be 2.20 or higher.
 
 [JAMIE]
-What are the minimums learners should keep in mind?
+And the operating system matters too, right?
 
 [ALEX]
-For VS Code, version 1.113 or later, stable or Insiders. GitHub Copilot and GitHub Copilot Chat should be current from the VS Code Marketplace. Node.js should be version 18 or higher. Python should be 3.8 or higher. And the supported operating systems are Windows 10 or 11, macOS 10.15 or later, and Linux, with Ubuntu 20.04 LTS or later as the primary baseline.
+Right. Windows should be Windows 10 build 1909 or later, with PowerShell 5.1 or later for command-line tools. macOS should be 10.15 Catalina or later, and you may need to run xcode-select --install for command-line tools. Linux is centered on Ubuntu 20.04 LTS or later, with Debian, Fedora, and RHEL relatives also supported.
 
 [JAMIE]
-Let’s make the operating system piece concrete.
+What about memory and disk space? Some learners are on older laptops.
 
 [ALEX]
-On Windows, you want Windows 10 build 1909 or later, or Windows 11. Supported architectures are x64 and Arm64 in preview, and PowerShell 5.1 or later is required for command-line tools. On macOS, the minimum is Catalina, version 10.15, on either Intel or Apple Silicon, and you also need the command-line tools, which you can install with xcode-select double dash install. On Linux, Ubuntu 20.04 LTS or later is the main target, with x64 as primary and ARM64 supported, and Debian, Fedora, and RHEL-family systems are also supported.
+For GitHub Copilot in VS Code, Claude Code, and Claude Desktop, plan on at least 4 GB of RAM. Gemini CLI and Codex CLI can work with 2 GB, though more is always nicer. Disk space ranges from about 500 MB to 2 GB depending on the platform, and network access is required for most workflows, with Codex able to support some local modes.
 
 [JAMIE]
-And the resource requirements vary a little by platform, right?
+So before installing, know your machine, your account, and your connection.
 
 [ALEX]
-They do. GitHub Copilot in VS Code and Claude Code and Claude Desktop each call for about 4 gigabytes of RAM. Gemini CLI and Codex CLI can work with about 2 gigabytes. Disk needs range from about 500 megabytes to 2 gigabytes available. Network access is required for most of these, with Codex CLI noting optional network access for local mode. There are also platform notes: Copilot in VS Code supports inline suggestions, chat, and Accessible View. Claude Desktop is aimed at longer context windows and longer sessions. Gemini CLI emphasizes fast iteration and Google Search integration. Codex CLI uses experimental roles and TOML configuration.
+Exactly. Copilot in VS Code needs VS Code, the Copilot and Copilot Chat extensions, Node.js, Git, a GitHub account, and internet access. Claude Code needs the Claude Code CLI and a Pro, Max, or Team subscription. Gemini CLI needs the Gemini CLI and a Google AI Studio API key. Claude Desktop needs the app, a Claude subscription, and MCP configuration. Codex CLI needs Node.js and the Codex CLI package.
 
 [PAUSE]
 
 [JAMIE]
-If someone asks, “What exact tools do I need for my chosen platform?” how would you answer?
+I like checking before fixing. What commands tell me whether the machine is ready?
 
 [ALEX]
-For GitHub Copilot in VS Code, you need VS Code 1.113 or later, the GitHub Copilot extension, the GitHub Copilot Chat extension, Node.js 18 or later for tools like Playwright and axe-core, and Git 2.20 or later for repository work.
-
-For Claude Code, you need the Claude Code CLI, installed from Anthropic’s docs path, and an active Claude subscription such as Pro, Max, or Team.
-
-For Gemini CLI, you need the Gemini CLI and a Google AI Studio API key.
-
-For Claude Desktop, you need the desktop app, a Claude subscription, and MCP server configuration in a dot m c p dot json file.
-
-For Codex CLI, you need the CLI itself and Node.js 18 or later because installation uses npm.
+For VS Code and Copilot, start with code --version. Then run code --list-extensions piped to grep -i copilot if your shell supports grep. Also check node --version, npm --version, and git --version.
 
 [JAMIE]
-That’s a nice checklist mindset: operating system, runtime, app or CLI, authentication, and then the agents repository itself.
+If the terminal prints a lot of text, what am I listening for?
 
 [ALEX]
-Yes. And now let’s talk version checks, because verifying first saves time.
+For VS Code, you want 1.113.0 or higher. For extensions, you want entries like github.copilot and Copilot Chat. For Node.js, listen for v18.0.0 or higher, and for Git, v2.20.0 or higher.
+
+[JAMIE]
+How do the other platforms check in?
+
+[ALEX]
+Claude Code uses claude code --version and claude code whoami, plus node --version. Gemini CLI uses gemini --version, gemini config show, and node --version. Claude Desktop is checked inside the app under Settings, About. Codex CLI uses codex --version, node --version, and npm --version.
 
 [PAUSE]
 
 [ALEX]
-On GitHub Copilot in VS Code, you can check VS Code with: code space double dash version. To confirm the Copilot extension is installed, use: code space double dash list-extensions, pipe to grep space dash i space copilot. To check Node.js, run node space double dash version and npm space double dash version. To verify Git, run git space double dash version.
+For most workshop learners, the recommended path is GitHub Copilot in VS Code. Install VS Code from code.visualstudio.com, open it once to make sure it starts, and then open the Extensions panel with Ctrl+Shift+X or through View, Extensions.
 
 [JAMIE]
-And what outputs are we hoping for?
+Then search for GitHub Copilot?
 
 [ALEX]
-VS Code 1.113.0 or higher, an extension listing that includes github dot copilot, Node.js version 18 or higher, and Git version 2.20 or higher.
+Yes. Install both GitHub Copilot and GitHub Copilot Chat, both by GitHub. When VS Code prompts you, sign in with your GitHub account and allow the authentication flow to complete in the browser.
 
 [JAMIE]
-What about Claude Code?
+Where do Node.js and the agents repository come in?
 
 [ALEX]
-Run claude space code space double dash version. To verify subscription and authentication, use claude space code space whoami. And check Node.js with node space double dash version.
+Install Node.js from nodejs.org, using version 18 LTS or later, then verify node --version and npm --version. If you are setting up the local Accessibility Agents catalog, clone https://github.com/Community-Access/accessibility-agents.git into your projects folder, enter that folder, and open it with code .
 
 [JAMIE]
-Gemini CLI?
+That wording helps. Browsing the living catalog is not the same thing as being forced to fork it.
 
 [ALEX]
-Run gemini space double dash version. To confirm your API key is configured, use gemini space config space show. And again, check Node.js with node space double dash version.
-
-[JAMIE]
-Claude Desktop is more graphical.
-
-[ALEX]
-Right. You check inside the app under Settings, then About.
-
-[JAMIE]
-And Codex CLI?
-
-[ALEX]
-Use codex space double dash version, then node space double dash version, and npm space double dash version.
-
-[PAUSE]
-
-[JAMIE]
-Now for the actual installation paths. Which one is recommended for most workshops?
-
-[ALEX]
-GitHub Copilot in VS Code. It’s the recommended starting point for most workshop settings.
-
-[JAMIE]
-Walk us through it.
-
-[ALEX]
-Step one: install VS Code from code dot visualstudio dot com, run the installer, and verify it opens successfully.
-
-Step two: install the GitHub Copilot extensions. Open the Extensions panel with Control Shift X, or use the View menu and choose Extensions. Search for GitHub Copilot. Install both GitHub Copilot by GitHub and GitHub Copilot Chat by GitHub. Then sign in with your GitHub account when prompted.
-
-Step three: install Node.js from nodejs dot org, choosing version 18 LTS or later. Verify with node double dash version and npm double dash version.
-
-Step four: clone the Accessibility Agents repository. Change into your projects folder, run git clone with the repository URL, then change into the accessibility-agents directory.
-
-Step five: open the repository in VS Code with code space dot.
-
-Step six: verify that the agents load. Open Copilot Chat with Control Alt I. Type the at sign and listen or inspect for agent autocomplete suggestions. Also verify that the dot github slash agents slash folder exists in the repository.
-
-Step seven is optional but useful: install global tools. For accessibility scanning, npm install dash g at axe-core slash cli and pa11y. For Playwright testing, npm install dash g playwright.
-
-[JAMIE]
-I want to underline the accessibility detail there. In VS Code, typing the at sign and hearing autocomplete suggestions, or reviewing them in Accessible View, can be a meaningful confirmation that agents are discoverable.
-
-[ALEX]
-Exactly right.
-
-[PAUSE]
-
-[JAMIE]
-What about Claude Code?
-
-[ALEX]
-Install it with npm install dash g at anthropic-ai slash claude-code. Then authenticate by running claude space code space auth and following the browser login flow. After that, clone the accessibility-agents repository, change into it, and test by running claude space code space at daily-briefing space morning space briefing.
-
-[JAMIE]
-So the browser login flow is not an optional flourish. It is part of setup.
-
-[ALEX]
-Yes. If you skip authentication, the tool may be installed but unusable.
-
-[JAMIE]
-And Gemini CLI?
-
-[ALEX]
-Install it with npm install dash g at google slash gemini-cli. Then get an API key from ai dot google dot dev and set the environment variable GEMINI underscore API underscore KEY to your key. On Unix-like shells, the example is export space GEMINI_API_KEY equals quoted key. Then test with gemini double dash version and gemini whoami. To use it with the agents, run gemini skill search accessibility-agents and gemini skill use community-access slash accessibility-agents.
-
-[JAMIE]
-So for Gemini, authentication is API-key based rather than a browser sign-in to a subscription account.
-
-[ALEX]
-Correct.
-
-[PAUSE]
-
-[JAMIE]
-Claude Desktop is a different shape because it needs MCP.
-
-[ALEX]
-It does. First, download the app from claude dot ai slash download, install it, and open it. Then configure the MCP server by creating or editing a file named dot m c p dot json in your home folder. On macOS and Linux, that is tilde slash dot m c p dot json. On Windows, it is percent USERPROFILE percent backslash dot m c p dot json.
-
-[JAMIE]
-And what goes in that file?
-
-[ALEX]
-A JSON object declaring an mcpServers block. Inside it, define accessibility-agents with command set to node, args pointing to the path of the repository’s mcp-server slash index dot js file, and an env block such as PORT equals 3000.
-
-[JAMIE]
-Then restart the app?
-
-[ALEX]
-Yes. Quit Claude Desktop completely, reopen it, and verify the MCP server connects by checking logs.
-
-[JAMIE]
-That path detail matters. If the path to index dot js is wrong, everything can look installed but still not connect.
-
-[ALEX]
-Exactly.
-
-[PAUSE]
-
-[JAMIE]
-And finally Codex CLI.
-
-[ALEX]
-Install with npm install dash g at codex-cli slash core. Then initialize configuration with codex init and answer the interactive setup questions. After that, test with codex double dash version and codex role list. To use accessibility agents, run codex role search accessibility and codex run at accessibility-lead.
-
-[JAMIE]
-So for Codex, we should explicitly expect setup prompts.
-
-[ALEX]
-Yes. “Answer interactive setup questions” is part of the installation flow, not a side note.
+Exactly. For setup, cloning the catalog can make local agents discoverable. In VS Code, open Copilot Chat with Ctrl+Alt+I, type @, and listen for agent autocomplete suggestions. Also confirm that the .github/agents folder exists. If you want extra testing tools, you can install @axe-core/cli and pa11y globally for accessibility scanning, and playwright globally for browser testing.
 
 [PAUSE]
 
 [ALEX]
-Once any platform is installed, do a post-installation verification. Think of this as a checklist.
-
-First, confirm core tools: node double dash version and git double dash version should report at least Node 18 and Git 2.20.
-
-Second, confirm the repository is cloned. Listing the accessibility-agents directory should show the dot github slash agents slash folder.
-
-Third, confirm agents are discoverable. Type the at sign in the relevant chat or CLI and check whether agent names appear in autocomplete.
-
-Fourth, confirm network access. If GitHub or required services are blocked by a firewall or proxy, the setup may partially work but fail when it tries to fetch or authenticate.
-
-Fifth, if you are using Claude or Gemini, confirm API or account authentication with claude code whoami or gemini whoami.
+Claude Code starts from npm install -g @anthropic-ai/claude-code. After that, run claude code auth and follow the browser login flow.
 
 [JAMIE]
-And then there’s the simplest real-world test: run one agent.
+And this is where the active Claude subscription matters.
 
 [ALEX]
-Exactly. In GitHub Copilot in VS Code, open chat with Control Alt I and type at daily-briefing morning briefing. In Claude Code, run claude code at daily-briefing morning briefing. In Gemini CLI, run gemini at daily-briefing morning briefing. In Claude Desktop, type at daily-briefing morning briefing in the chat input. In Codex CLI, run codex run at daily-briefing morning briefing.
+Right. Once authenticated, clone the Accessibility Agents catalog if your workflow needs local access, move into that folder, and try claude code @daily-briefing morning briefing. Gemini CLI is similar at the command line: install it with npm install -g @google/gemini-cli, get an API key from ai.google.dev, set GEMINI_API_KEY in your environment, and test with gemini --version and gemini whoami.
 
 [JAMIE]
-And if the agent responds with information, installation is considered successful.
+Claude Desktop sounds less command-line centered.
 
 [ALEX]
-Yes. That is the practical pass condition.
+It is. Download Claude Desktop from claude.ai/download, install it, and open it. Then create or edit .mcp.json in your home folder. On macOS and Linux, that is usually ~/.mcp.json. On Windows, it is usually %USERPROFILE%\.mcp.json. The configuration points an MCP server named accessibility-agents at node, passes the path to the catalog's mcp-server index file, and can set PORT to 3000.
+
+[JAMIE]
+Then quit and reopen the app?
+
+[ALEX]
+Completely quit Claude Desktop, reopen it, and check the logs if the MCP server does not connect. For Codex CLI, install with npm install -g @codex-cli/core, run codex init, answer the interactive setup questions, and test with codex --version and codex role list. To try agents there, you can search roles with codex role search accessibility and run one with codex run @accessibility-lead.
 
 [PAUSE]
 
 [JAMIE]
-Now let’s talk about what goes wrong.
+After all that, what proves the installation worked?
 
 [ALEX]
-For GitHub Copilot in VS Code, one issue is that agents do not appear after typing the at sign. Common causes are missing or outdated extensions. The fix is to reinstall GitHub Copilot and GitHub Copilot Chat from the VS Code Marketplace.
-
-Another issue is a “Cannot find agents” error. A common cause is that the dot github slash agents slash folder is missing. The remedy is to clone the full accessibility-agents repository rather than copying files manually.
-
-A third problem is chat not working because Copilot is not signed in. In that case, sign in again through the Copilot interface.
+Use a short checklist. Confirm Node.js and Git report the expected versions. Confirm the accessibility-agents folder exists if you cloned it, and that .github/agents is inside it. Confirm typing @ in chat or the CLI shows agent names. Confirm the network can reach GitHub and that API checks like claude code whoami or gemini whoami succeed.
 
 [JAMIE]
-And the source specifically calls out cache and restart steps too.
+And then run one tiny agent call instead of trying a full project.
 
 [ALEX]
-Right. If VS Code seems stuck in a bad state, delete the VS Code cache and restart VS Code. Those two actions can clear extension-loading issues.
+Exactly. In Copilot Chat, open chat with Ctrl+Alt+I and type @daily-briefing morning briefing. In Claude Code, run claude code @daily-briefing morning briefing. In Gemini CLI, run gemini @daily-briefing morning briefing. In Claude Desktop, type the same agent request into chat. In Codex CLI, run codex run @daily-briefing morning briefing.
 
 [JAMIE]
-What about the other platforms, even if the source doesn’t spell out every row in the table we only partially saw?
+If the agent responds with useful information, setup is basically alive.
 
 [ALEX]
-We can still teach the main compatibility mindset from the appendix. For Claude Code, likely failure points include npm-based installation problems, missing Node.js, or incomplete authentication. Check the CLI version, confirm Node 18 or later, and rerun auth if needed.
-
-For Gemini CLI, likely issues include a missing or invalid API key, environment variables not being set in the current shell, or Node.js being too old. Recheck gemini config show, verify your key, and confirm node double dash version.
-
-For Claude Desktop, the big risks are malformed dot m c p dot json, incorrect file paths, or forgetting to fully restart the application after configuration changes. Validate the JSON carefully and review logs.
-
-For Codex CLI, common trouble areas are incomplete initialization, Node or npm path problems, or misunderstanding the roles configuration. Rerun codex init if necessary and verify codex role list works.
-
-[JAMIE]
-And then there’s universal troubleshooting.
-
-[ALEX]
-Yes. Across all platforms: verify versions first, confirm authentication, confirm network access, make sure the repository is complete, prefer the latest stable tools, and restart the affected app or shell after major changes. If a command behaves oddly, test whether your shell can actually find it with a version command before assuming the agents are at fault.
+Yes, and this is a good time to tune accessibility preferences. In VS Code, make sure screen reader support, Accessible View, keyboard shortcuts, high contrast themes, and terminal accessibility settings match how you work. You can also ask agents to answer in shorter chunks, include file paths before explanations, avoid giant tables, or pause before suggesting a command that changes files.
 
 [PAUSE]
 
 [JAMIE]
-Let’s finish with updates, because this appendix is very clear that setup is not one-and-done.
+Let's talk about the part everyone hits eventually: something installed, but nothing shows up.
 
 [ALEX]
-Correct. Updates matter because these tools evolve quickly. New accessibility features, API capabilities, support for custom agents or skills, bug fixes, and compatibility changes often require current versions. Running old versions is one of the fastest ways to get stuck with missing features or broken workflows.
+For Copilot in VS Code, if agents do not appear after typing @, reinstall or update both Copilot extensions from the Marketplace. If you get a cannot find agents error, check that the full catalog was cloned and that .github/agents exists. If chat itself is not working, check GitHub sign-in, subscription or access, network restrictions, and extension status.
 
 [JAMIE]
-So learners should have an update rhythm.
+The appendix also mentions cache and restart steps. When should someone use those?
 
 [ALEX]
-Yes. The appendix includes update schedules by platform, and the larger idea is that fast-moving agent ecosystems deserve regular checks, not annual maintenance.
-
-For VS Code, update the editor itself. For extensions, update GitHub Copilot and related extensions through the Extensions interface. The source explicitly notes that you can use the VS Code UI, go to Extensions, and click update on the GitHub Copilot extensions.
+If updates and sign-in checks do not help, close VS Code, clear the VS Code cache only as directed by current support guidance, then restart VS Code. A simple restart often refreshes extension state, authentication, and workspace indexing without touching project files.
 
 [JAMIE]
-That’s important for learners who prefer graphical workflows or who find the command line less convenient in some contexts.
+What about command-line tools?
 
 [ALEX]
-Absolutely. Good setup guidance should support both command-line and UI-first habits.
+For Claude Code, check authentication, subscription access, Node.js, and whether the claude command is on your PATH. For Gemini CLI, check the API key, environment variable spelling, network access, and gemini whoami. For Claude Desktop, check the .mcp.json path, JSON syntax, file permissions, the server path, logs, and whether the app was fully restarted. For Codex CLI, check Node.js, npm global install permissions, TOML or role configuration, and the fact that some role behavior may still be experimental.
 
 [JAMIE]
-And update best practices?
+And the universal version of troubleshooting?
 
 [ALEX]
-A few. Update before a workshop, not during it. Re-run version checks after updating. If authentication-dependent tools start acting strangely after an update, verify sign-in again. Read changelogs for breaking changes. And if you rely on accessibility workflows like Playwright or axe-core, keep those supporting tools current too, not just the main AI client.
+Restart the terminal after installing tools, check firewall or proxy blocks, verify exact versions, and copy exact error messages. When asking for help, include your operating system, tool versions, command you ran, what you expected, what happened instead, and any accessibility setup that affects the workflow. Do not paste API keys, tokens, or private account details.
+
+[PAUSE]
+
+[ALEX]
+Updates are not just housekeeping here. Agent support changes quickly, and accessibility fixes often arrive through editor updates, extension updates, CLI releases, and model provider changes.
+
+[JAMIE]
+How often should learners update?
+
+[ALEX]
+Before a workshop or capstone session, check VS Code, Copilot extensions, Node.js, and whichever CLI or desktop app you plan to use. In VS Code, use the normal app update flow, then open Extensions and update the GitHub Copilot extensions if updates are offered. For npm-based CLIs, rerun the install command with -g for the package you use, such as the Claude Code, Gemini, Codex, or testing tool packages.
+
+[JAMIE]
+But don't create chaos five minutes before presenting.
+
+[ALEX]
+Exactly. Update one tool at a time when possible, rerun the version checks, run the daily briefing test again, and keep short notes about what changed. If you are in the middle of a live exercise and your setup already works, wait unless the facilitator asks for an update.
 
 [PAUSE]
 
 [JAMIE]
-Before we close, can we do a quick learning-card style recap?
+If setup still does not work, where should people go without feeling like they failed?
 
 [ALEX]
-Sure.
-
-If you remember one rule, remember this: use current versions.
-
-If you remember one platform recommendation, start with GitHub Copilot in VS Code for most workshops.
-
-If you remember one repository check, make sure dot github slash agents slash exists.
-
-If you remember one verification move, run a single agent like at daily-briefing morning briefing.
-
-If you remember one troubleshooting principle, check versions, authentication, and restart state before doing anything more exotic.
-
-If you remember one maintenance habit, keep VS Code, extensions, Node.js, and your chosen agent platform updated on a regular schedule.
+Start with the Accessibility Agents repository and its system requirements, then use the official documentation for the platform you are installing: VS Code Copilot, Claude Code, Gemini CLI, Claude Desktop, or Codex CLI. Release notes and provider documentation can explain behavior that changed recently. The learning cards for installation and setup are useful as quick reminders for commands, checks, and the minimum information to include in a help request.
 
 [JAMIE]
-And if learners want to go deeper?
-
-[ALEX]
-The appendix points to references and authoritative sources, including the Accessibility Agents repository, system requirements documentation, GitHub Copilot docs, custom instructions support information, docs about custom agents and agent skills, auto model selection, the Copilot changelog feed, the VS Code Copilot chat overview, the VS Code agent overview, and VS Code custom instructions documentation. It also includes a section-level source map so you can verify facts section by section.
-
-[JAMIE]
-That source map is a nice reminder that installation guidance changes over time, so checking upstream docs is part of being a reliable contributor.
-
-[ALEX]
-Exactly. Setup is technical, but it is also an accessibility practice: current tools, clear verification, reproducible steps, and careful troubleshooting make collaboration more inclusive for everyone.
-
-[JAMIE]
-Well said.
-
-[ALEX]
-That’s it for this setup walkthrough. Next time you prepare a workshop machine or your own development environment, you’ll have a structured path: requirements, version checks, installation, verification, troubleshooting, and updates.
+I like ending there. A working setup is great, but a clear help request is also progress. It means you know what you tried, what changed, and what evidence someone else can use to help you get unstuck.

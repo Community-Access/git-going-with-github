@@ -1,0 +1,613 @@
+{
+  "generatedAt": "2026-05-18T23:43:47.638Z",
+  "schemaVersion": 2,
+  "kind": "companion",
+  "slug": "ep37-contributing-to-open-source",
+  "title": "Episode 37: Contributing to Open Source",
+  "description": "Finding issues, scoping contributions, the fork-to-PR workflow, and building habits.",
+  "concepts": [
+    "What counts as a contribution: code, docs, tests, reviews, issues",
+    "Finding your first issue: good first issue and help wanted labels",
+    "Evaluating a project: activity, responsiveness, Code of Conduct",
+    "The contribution workflow: fork, clone, branch, commit, push, PR",
+    "Reading CONTRIBUTING.md: every project has different expectations",
+    "Scoping your contribution: start small, pick one thing",
+    "Writing a PR description that maintainers will appreciate",
+    "Responding to review feedback on your contribution",
+    "Building a sustainable contribution habit after the workshop",
+    "The GitHub Skills modules for continued structured learning",
+    "Finding communities that welcome new contributors"
+  ],
+  "transcriptPath": "C:\\code\\git-going-with-github\\podcasts\\scripts\\chapters\\ep37-contributing-to-open-source.txt",
+  "chapterPlanPath": "C:\\code\\git-going-with-github\\podcasts\\transcripts\\chapters\\ep37-contributing-to-open-source-chapters.json",
+  "transcriptText": "[ALEX]\nWelcome back. Today we're focusing on the human side of open source: culture, etiquette, community standards, and the workflows that make collaboration work.\n\n[JAMIE]\nI'm glad we're doing this, because people often think open source is mainly about code quality.\n\n[ALEX]\nRight, and code quality matters. But technical skill helps you make a contribution. Communication skill helps that contribution get understood, reviewed, merged, and welcomed. That is the real lesson here.\n\n[PAUSE]\n\n[ALEX]\nBefore we get into the details, a couple of learning notes. This chapter pairs well with accessibility standards, Git security, branch protection, and GitHub Pages materials. And if you want official references, GitHub Docs on contributing to open source and the Open Source Guides are strong sources to keep bookmarked.\n\n[JAMIE]\nAnd there's also a workshop task attached to this chapter, right?\n\n[ALEX]\nYes. This chapter's workshop activity is a guided reflection, not an auto-graded coding task. That matters. Communication quality is subjective, so the evidence is a structured reflection comment posted on your assigned Chapter 8 challenge issue in your Learning Room repository.\n\n[JAMIE]\nSo instead of proving you can run a command, you're proving you can think clearly about how you'll collaborate.\n\n[ALEX]\nExactly. The pattern is: read, reflect, and commit to one set of behaviors in writing.\n\n[JAMIE]\nWhat does the learner actually do?\n\n[ALEX]\nThey read the chapter, think about a real situation where communication helped or could have helped, open the assigned issue titled with their Chapter 8 reflection prompt, and post a short comment in a specific format. The format is essentially three commitments: one respectful review habit, one clear way they'll ask for help, and one constructive way they'll respond to feedback.\n\n[JAMIE]\nAnd the important part is specificity.\n\n[ALEX]\nYes. Not \"I will be nice.\" Instead, \"I will begin review comments by naming something that works before suggesting a change.\" Not \"I'll ask good questions.\" Instead, \"I will include the exact step where I got stuck and what I already tried.\"\n\n[JAMIE]\nThat's much easier for a facilitator to evaluate, and honestly easier for the learner to remember.\n\n[ALEX]\nRight. The learner is done when that comment appears on the issue with three specific, actionable behaviors. That comment is the evidence. No extra upload is needed, and then they can close the challenge issue.\n\n[JAMIE]\nWhat outcomes are expected here?\n\n[ALEX]\nThat the learner can name respectful collaboration behaviors, can prepare for future review work, and feels safer asking for help in public threads.\n\n[JAMIE]\nIf someone gets stuck writing the reflection?\n\n[ALEX]\nKeep it simple. One sentence per prompt. Draft bullets in a text editor first if that's easier. Look back at the examples on feedback and asking for help. Or ask a facilitator for a model response and rewrite it in your own words.\n\n[JAMIE]\nSo the point is not perfection. It's building a communication habit.\n\n[ALEX]\nExactly. Technical quality and communication quality reinforce each other. Good communication helps good code move faster.\n\n[PAUSE]\n\n[ALEX]\nNow let's ground all of this in the standard workflow you'll see in many open source projects: GitHub Flow.\n\n[JAMIE]\nBecause etiquette makes more sense when you know where the conversations happen.\n\n[ALEX]\nExactly. GitHub Flow is a lightweight contribution model. It works whether you're fixing one typo or building a substantial feature.\n\n[JAMIE]\nWalk us through the steps.\n\n[ALEX]\nStep one: create a branch from main, and give it a descriptive name like fix slash missing-alt-text or docs slash update-contributing-guide.\n\nStep two: make your changes and commit them in small, logical pieces, with clear messages.\n\nStep three: open a pull request. You can do that early, even as a draft. Explain what changed, why it changed, how to test it, and link the related issue if there is one.\n\nStep four: discuss and review. Reviewers comment, you revise, and ideally everyone treats that exchange as collaboration rather than conflict.\n\nStep five: pass status checks. Tests, linting, and other automated checks exist to protect the project.\n\nStep six: merge. A maintainer merges the pull request into main, and if the PR closes an issue, that issue can close automatically.\n\n[JAMIE]\nThat's straightforward. Why does this model work so well?\n\n[ALEX]\nA few reasons. Main stays deployable. Branches are cheap and disposable. Pull requests become the central place for context and discussion. And small changes move faster than huge ones.\n\n[JAMIE]\nThat last point is huge. A small pull request is easier to review, easier to test, and easier to trust.\n\n[ALEX]\nExactly. In practice, a focused five-file PR may get quick attention, while a sprawling fifty-file PR often waits.\n\n[PAUSE]\n\n[JAMIE]\nNow, learners may hear about Git Flow too. How is that different?\n\n[ALEX]\nGit Flow is an older, more structured branching model designed for scheduled releases. It usually includes permanent main and develop branches, plus temporary feature, release, and hotfix branches.\n\n[JAMIE]\nSo instead of branching from main and coming back to main, feature work typically branches from develop and returns to develop.\n\n[ALEX]\nRight. Then when enough features accumulate, a release branch gets created for final testing, version bumps, and release prep. Critical production bugs may go through a hotfix branch from main, then merge back into both main and develop.\n\n[JAMIE]\nThat sounds more complex.\n\n[ALEX]\nIt is. GitHub Flow has one long-lived branch, main, and a simple rule: main should always be deployable. Git Flow has multiple branch types and stricter merge paths.\n\n[JAMIE]\nSo when might you still see Git Flow?\n\n[ALEX]\nIn enterprise products with planned release cycles, mobile apps that depend on app store review, embedded systems, firmware, or older legacy projects.\n\n[JAMIE]\nAnd why teach GitHub Flow here?\n\n[ALEX]\nBecause for open source contributions, workshops, web projects, and fast collaborative work, GitHub Flow is simpler and maps well to how GitHub pull requests are actually used.\n\n[JAMIE]\nThere's also an unwritten rule here, right?\n\n[ALEX]\nYes: one thing per branch. One fix, one feature, one focused purpose. If you mix unrelated changes in one branch, review becomes harder, testing becomes harder, and the conversation becomes muddled.\n\n[JAMIE]\nThat rule also helps accessibility reviewers and documentation reviewers, because they can focus on the actual topic of the PR.\n\n[ALEX]\nExactly.\n\n[PAUSE]\n\n[ALEX]\nNow let's talk about forks, because many open source contributions begin in your own fork of someone else's repository.\n\n[JAMIE]\nAnd forks can drift out of date if the original project keeps moving.\n\n[ALEX]\nCorrect. So you need to keep your fork synchronized. The reason is simple: if your fork is behind, your branches may start from stale code, your pull requests may show unrelated changes, and merge conflicts become more likely.\n\n[JAMIE]\nWhat's the easiest way?\n\n[ALEX]\nMethod one is the GitHub web interface. On your fork on GitHub, there is usually a sync option to bring your fork's main branch up to date with the upstream repository. It's often the simplest path.\n\n[JAMIE]\nAnd if someone is working in VS Code with the terminal?\n\n[ALEX]\nThen there's a command-line method. First, one-time setup: add the upstream remote, meaning the original repository, not your fork. Typically that means your fork remains origin, and the original project is added as upstream.\n\n[JAMIE]\nThen the sync process?\n\n[ALEX]\nSwitch to your main branch. Fetch upstream changes. Merge upstream's main into your local main. Then push the updated main back to your fork on GitHub.\n\n[JAMIE]\nSo in plain language: make sure you're on main, bring down new information from the original repo, combine it into your local copy, then upload your refreshed main branch to your fork.\n\n[ALEX]\nExactly. And there's also a desktop option using GitHub Desktop for people who prefer a graphical workflow.\n\n[JAMIE]\nWhen should you sync?\n\n[ALEX]\nBefore starting new work, before opening a pull request, after a long break, and anytime you notice your fork is behind. Frequent syncing keeps surprises small.\n\n[PAUSE]\n\n[ALEX]\nNext: commit messages. This sounds small, but it's part of professional communication.\n\n[JAMIE]\nBecause a commit is a message to future reviewers, future maintainers, and your future self.\n\n[ALEX]\nExactly. A good commit message usually has a first line, optionally a body, and optionally a footer.\n\n[JAMIE]\nWhat's special about the first line?\n\n[ALEX]\nIt's required. It should be short, clear, and describe what the commit does. Think of it as the headline. For example: fix broken heading structure in README, or add alt text to homepage screenshots.\n\n[JAMIE]\nAnd the body?\n\n[ALEX]\nOptional, but useful when the change needs explanation. The body can explain why the change was needed, what tradeoffs were made, or anything a reviewer might not infer from the diff alone.\n\n[JAMIE]\nThe footer is optional too?\n\n[ALEX]\nYes. It might reference issues or other metadata, depending on project conventions.\n\n[JAMIE]\nThe chapter also emphasizes atomic commits.\n\n[ALEX]\nRight. An atomic commit is one complete, coherent change. Not half of a fix. Not three unrelated edits bundled together. Atomic commits make history cleaner, make review easier, and make rollback safer.\n\n[JAMIE]\nWhat mistakes should people avoid?\n\n[ALEX]\nVague messages like update stuff. Commits that mix unrelated changes. Overly long subject lines that bury the point. And messages that describe effort instead of outcome.\n\n[JAMIE]\nSo \"worked on README\" is weak, but \"clarify installation steps for Windows users\" is strong.\n\n[ALEX]\nExactly. Good commit messages tell the story of the codebase.\n\n[PAUSE]\n\n[ALEX]\nNow we reach a big idea: the nature of open source communication.\n\n[JAMIE]\nWhich is different from chatting with a teammate sitting next to you.\n\n[ALEX]\nVery different. Open source communication is largely written, asynchronous, and public.\n\n[JAMIE]\nLet's unpack that.\n\n[ALEX]\nWritten means your wording matters. People cannot hear your tone of voice, so clarity and care matter more.\n\nAsynchronous means replies may take hours or days. So good messages must contain enough context to stand on their own.\n\nPublic means your issue comments, pull request discussions, and review threads may be read by many people, including future contributors. You are not just solving today's problem. You are leaving a trail others may learn from.\n\n[JAMIE]\nThat public aspect can feel intimidating.\n\n[ALEX]\nIt can. But it also means a clear question or respectful review comment can help many readers, not just one.\n\n[PAUSE]\n\n[JAMIE]\nSo what does helpful feedback actually look like?\n\n[ALEX]\nA useful pattern has five parts. First, acknowledge what's working. That lowers defensiveness and shows you read the contribution carefully.\n\nSecond, identify the specific concern. Not \"this feels off,\" but \"this heading skips from level two to level four,\" or \"this function name doesn't match the project's naming pattern.\"\n\nThird, explain why it matters. Maybe it affects accessibility, maintainability, consistency, or user understanding.\n\nFourth, suggest a path forward when you can. That might be a proposed wording, an example, a question, or a reference.\n\nFifth, signal the weight of the concern. Is this required before merge, a strong recommendation, or just a possible improvement?\n\n[JAMIE]\nThat last one is really helpful. Otherwise every comment can feel equally urgent.\n\n[ALEX]\nExactly. If you say whether something is blocking or optional, you reduce ambiguity.\n\n[PAUSE]\n\n[ALEX]\nTone matters too. A strong guideline is to prefer \"we\" language or describe the code, not the person.\n\n[JAMIE]\nSo instead of \"you wrote this wrong,\" say \"we may want to rename this for consistency,\" or \"this code path may fail when the input is empty.\"\n\n[ALEX]\nPerfect. Also use tentative language when you're uncertain. Phrases like \"I think,\" \"it looks like,\" or \"would it make sense to\" can be respectful when you are exploring rather than declaring.\n\n[JAMIE]\nBut not so tentative that you hide required issues.\n\n[ALEX]\nRight. If something truly must change, be clear. Another important point is to acknowledge cultural and language diversity. Many contributors are communicating in a second or third language. So favor plain language, avoid idioms, and interpret awkward phrasing generously.\n\n[JAMIE]\nAnd avoid fake urgency.\n\n[ALEX]\nExactly. Don't use urgency markers like \"ASAP\" or \"urgent\" unless the situation is genuinely urgent. Otherwise you create stress and noise.\n\n[PAUSE]\n\n[JAMIE]\nLet's talk about commenting etiquette inside pull requests and issues.\n\n[ALEX]\nKeep comments focused. One thread should address one concern when possible. That makes it easier to respond clearly and to resolve the conversation later.\n\n[JAMIE]\nAnd don't leave comments unresolved forever.\n\n[ALEX]\nRight. If the issue is addressed, mark the conversation resolved. If it is not addressed, explain what still needs attention. Lingering unresolved comments create confusion.\n\n[JAMIE]\nWhat about piling on?\n\n[ALEX]\nDon't do it. If someone has already raised a point, add a reaction or a brief note if necessary, but avoid repeating the same criticism in multiple voices. That can feel overwhelming, especially to new contributors.\n\n[JAMIE]\nSo reactions have a real purpose.\n\n[ALEX]\nThey do. A thumbs up or similar reaction can signal agreement without adding noise.\n\n[JAMIE]\nThe chapter also highlights Saved Replies as an accessibility win.\n\n[ALEX]\nYes, and this is a very practical tool. Saved Replies let you store common comment templates in GitHub. They reduce typing, improve consistency, and can be especially helpful for screen reader users or anyone who wants to lower writing fatigue.\n\n[JAMIE]\nWhat are common uses?\n\n[ALEX]\nWelcoming a contributor, asking for more information, requesting tests, reminding someone about contribution guidelines, or sharing a respectful accessibility review pattern.\n\n[JAMIE]\nHow do you create one?\n\n[ALEX]\nIn GitHub settings, there is a Saved Replies area where you can add a name and the reply text.\n\n[JAMIE]\nAnd when using it in a comment?\n\n[ALEX]\nYou start typing the shortcut that invokes saved replies in the comment box, then select the one you want and edit it as needed before posting.\n\n[JAMIE]\nAnything specific for screen reader users?\n\n[ALEX]\nYes. Learn the path to the comment field, invoke the saved reply chooser, and review the inserted text carefully before submitting. The benefit is that repeated, structured responses become faster and less fatiguing.\n\n[PAUSE]\n\n[ALEX]\nNow, etiquette differs slightly depending on whether you are reviewing or authoring.\n\n[JAMIE]\nLet's start with reviewers.\n\n[ALEX]\nReview the code, not the person. Don't gatekeep knowledge by acting as though unfamiliarity is a moral failing. Ask questions instead of issuing demands when appropriate. Distinguish opinion from requirement. And if the work is ready, approve explicitly rather than leaving the author guessing.\n\n[JAMIE]\nThat distinction between opinion and requirement is so important.\n\n[ALEX]\nIt is. \"Required: this needs alt text for accessibility\" is different from \"Optional: I prefer a different variable name.\"\n\n[JAMIE]\nWhat about authors receiving review?\n\n[ALEX]\nSay thank you. Don't take feedback personally. Explain your choices when context matters. And surface blockers early.\n\n[JAMIE]\nMeaning if you disagree, or if you can't complete a requested change, say so clearly instead of going silent.\n\n[ALEX]\nExactly. Silence creates uncertainty. A short update is better than none.\n\n[PAUSE]\n\n[JAMIE]\nThe chapter also calls out inclusive commenting for accessibility issues.\n\n[ALEX]\nYes. Accessibility comments should be specific, respectful, and framed around user impact. Instead of shaming language, describe the barrier and the improvement. For example: \"This image needs alt text so screen reader users can access the same information.\" That keeps the focus on access, not blame.\n\n[JAMIE]\nSo accessibility feedback is part of quality, not an optional afterthought.\n\n[ALEX]\nExactly.\n\n[JAMIE]\nAnd what's the \"good first issue\" social contract?\n\n[ALEX]\nIf a project labels something as a good first issue, there's an implied promise: the task should be reasonably scoped, documented enough to start, and welcoming to a newcomer. On the contributor side, the social contract means reading carefully, asking clarifying questions respectfully, and not assuming the label means no effort is required.\n\n[PAUSE]\n\n[JAMIE]\nWhat about difficult situations? Open source is human, so sometimes things go wrong.\n\n[ALEX]\nThey do. If you receive harsh feedback, pause before responding. Extract the technical point, if there is one, and reply calmly. If needed, ask for clarification on the concrete change being requested.\n\nIf you disagree with a decision, state your reasoning respectfully, accept that maintainers set direction, and avoid turning disagreement into a personal contest.\n\nIf someone is rude to you, document the behavior, disengage from escalation, and use the project's code of conduct or moderator channels when appropriate.\n\nAnd if you accidentally caused offense, acknowledge it directly, apologize without defensiveness, and adjust your language moving forward.\n\n[JAMIE]\nThat's a good reminder that repair matters.\n\n[ALEX]\nIt does.\n\n[PAUSE]\n\n[ALEX]\nNow let's shift to project documentation, starting with your first README.\n\n[JAMIE]\nA README is often the first thing a newcomer experiences.\n\n[ALEX]\nExactly. A useful README usually includes what the project is, how to install it, how to use it, how to contribute, and what license applies.\n\n[JAMIE]\nSo if we think in terms of a simple skeleton, it starts with the project name, then installation, usage, contributing, and license.\n\n[ALEX]\nYes. That structure gives readers a quick map.\n\n[JAMIE]\nWhat belongs in each part?\n\n[ALEX]\nProject name and a short description tell people what they're looking at.\n\nInstallation explains setup steps.\n\nUsage gives examples or basic instructions.\n\nContributing tells potential collaborators how to participate and where to look for guidelines.\n\nLicense states the legal terms.\n\n[JAMIE]\nAnd accessibility in READMEs?\n\n[ALEX]\nVery important. Use meaningful heading structure. Prefer descriptive link text over \"click here.\" Keep language clear. Provide alt text or accessible descriptions for images. Don't rely only on screenshots to convey essential instructions.\n\n[JAMIE]\nSo a bad README is vague, incomplete, and inaccessible. A good README is clear, structured, and helpful to both users and contributors.\n\n[ALEX]\nExactly.\n\n[PAUSE]\n\n[JAMIE]\nRelated to that, there are community health files people should know how to find.\n\n[ALEX]\nYes. These files set expectations for participation and maintenance.\n\nCONTRIBUTING dot md explains how to contribute.\n\nCODEOFCONDUCT dot md describes behavior expectations and reporting processes.\n\nSECURITY dot md tells people how to report vulnerabilities responsibly.\n\nLICENSE explains legal reuse rights.\n\n[JAMIE]\nAnd where do learners find these on GitHub?\n\n[ALEX]\nUsually in the repository root, sometimes in a dot github folder, and GitHub may also surface them in repository sidebars or insights areas depending on the project setup.\n\n[JAMIE]\nSo before contributing, it's smart to look for these files and read them.\n\n[ALEX]\nAbsolutely. They answer questions before you have to ask them.\n\n[PAUSE]\n\n[ALEX]\nAnother practical topic is choosing the right communication channel.\n\n[JAMIE]\nBecause not every message belongs in the same place.\n\n[ALEX]\nRight. Use issues for trackable problems and feature discussions. Use pull request comments for feedback tied to a specific change. Use discussion forums, chat, or community spaces when the project provides them for broader questions. Use security channels, not public issues, for vulnerabilities. And use documentation when the information should persist for future readers.\n\n[JAMIE]\nSo a good rule is: choose the channel that matches the audience, sensitivity, and need for long-term visibility.\n\n[ALEX]\nExactly.\n\n[PAUSE]\n\n[JAMIE]\nThe chapter also gives quick phrase patterns that work well.\n\n[ALEX]\nYes. Phrases like \"Nice improvement here; I have one suggestion,\" \"Could we clarify this for new users?\" \"I'm blocked at this step; here's what I tried,\" or \"I think this may affect screen reader users because\"¦\" These patterns are clear, respectful, and actionable.\n\n[JAMIE]\nAnd there's a rewrite exercise too.\n\n[ALEX]\nRight. Take one comment that sounds blunt or vague and rewrite it into something specific, respectful, and useful. That exercise helps you practice tone, not just understand it intellectually.\n\n[PAUSE]\n\n[ALEX]\nNow let's widen the frame to contributing to open source more generally, especially for first-time contributors.\n\n[JAMIE]\nA lot of people still wonder what open source actually means.\n\n[ALEX]\nAt the core, open source means the source code is publicly available under a license that permits use, study, modification, and sharing under defined terms.\n\n[JAMIE]\nAnd who can contribute?\n\n[ALEX]\nAlmost anyone. Contributions are not limited to code. Documentation, bug reports, design ideas, accessibility fixes, testing, issue triage, translation, examples, and community support all matter.\n\n[JAMIE]\nWhat makes a good first contribution?\n\n[ALEX]\nSomething small enough to finish, clear enough to understand, and valuable enough to matter. Documentation fixes, accessibility improvements, typo corrections, test additions, or small bug fixes are often strong starting points.\n\n[JAMIE]\nWhat are signs a first contribution is too large?\n\n[ALEX]\nIf it spans many unrelated files, requires deep architectural knowledge, changes many systems at once, or depends on unresolved product debates, it may be too large for a first attempt.\n\n[PAUSE]\n\n[JAMIE]\nHow do you find something to work on?\n\n[ALEX]\nLook for issues labeled good first issue, help wanted, documentation, accessibility, bug, or similar onboarding labels. Read the README and contribution guide. Explore the issue tracker. Start with projects you already use or care about.\n\n[JAMIE]\nThat emotional connection helps motivation.\n\n[ALEX]\nIt does. And once you find an issue, read it carefully before you start. Check whether someone is already assigned or has claimed it. Read the full thread. Understand the expected outcome. If anything is unclear, ask before investing major time.\n\n[JAMIE]\nThat can save a lot of duplicated effort.\n\n[ALEX]\nExactly.\n\n[PAUSE]\n\n[ALEX]\nThen comes making the contribution.\n\n[JAMIE]\nThis is where the tools and workflow come together.\n\n[ALEX]\nRight. In a fork-and-clone model, you fork the repository, clone your fork locally, create a branch, edit files, test your changes if appropriate, commit with clear messages, push your branch, and open a pull request.\n\n[JAMIE]\nSo even the simple phrase \"edit files\" sits inside a larger contribution system.\n\n[ALEX]\nExactly. The basic workflow is not just typing changes. It's preparing a clean branch, making focused edits, reviewing your work, and then explaining it well in the PR.\n\n[JAMIE]\nWhat belongs in a good pull request description?\n\n[ALEX]\nWhat changed, why it changed, how it was tested, any screenshots or text examples if relevant, and links to related issues. If there are limitations or unfinished parts, say so.\n\n[JAMIE]\nSo the PR description is another communication artifact, not just a formality.\n\n[ALEX]\nVery much so.\n\n[PAUSE]\n\n[JAMIE]\nAnd if you need help during all this?\n\n[ALEX]\nAsk clearly. Include the exact step where you're stuck, what you expected, what happened instead, and what you already tried. That makes it easier for others to help without guessing.\n\n[JAMIE]\nWhat happens after your contribution is merged?\n\n[ALEX]\nCelebrate a little. Then sync your fork, delete the merged branch if appropriate, thank the reviewers, and stay open to follow-up work. One merged PR is often the beginning of a relationship with a project.\n\n[JAMIE]\nAnd how do you build a contribution habit?\n\n[ALEX]\nStart small and repeat. Keep a shortlist of projects you care about. Look for modest issues regularly. Improve docs when you notice confusion. Respond to feedback calmly. Save useful reply templates. And treat contribution as a practice, not a one-time performance.\n\n[JAMIE]\nPractical habits beat grand intentions.\n\n[ALEX]\nExactly.\n\n[PAUSE]\n\n[ALEX]\nLet's close by returning to the core idea. Open source is technical, but it is also social. Branches, commits, forks, pull requests, README files, and community health files all create structure. Your communication gives that structure life.\n\n[JAMIE]\nSo being a strong contributor means more than writing working code. It means asking clear questions, making focused changes, writing useful commit messages, giving respectful reviews, receiving feedback well, and helping create an environment where more people can participate.\n\n[ALEX]\nBeautifully said. And for this chapter's task, your next step is simple: write that reflection comment with three specific behaviors you will actually practice.\n\n[JAMIE]\nOne respectful review habit.\n\n[ALEX]\nOne clear way to ask for help.\n\n[JAMIE]\nAnd one constructive way to respond to feedback.\n\n[ALEX]\nThat commitment is small, but it can change every contribution you make after this.\n\n[PAUSE]\n",
+  "chapterPlanText": "﻿[\n    {\n        \"title\":  \"ep37-contributing-to-open-source: Overview\",\n        \"startSegmentIndex\":  0\n    },\n    {\n        \"title\":  \"Section 2\",\n        \"startSegmentIndex\":  22\n    },\n    {\n        \"title\":  \"Section 3\",\n        \"startSegmentIndex\":  47\n    },\n    {\n        \"title\":  \"Section 4\",\n        \"startSegmentIndex\":  61\n    },\n    {\n        \"title\":  \"Section 5\",\n        \"startSegmentIndex\":  77\n    },\n    {\n        \"title\":  \"Section 6\",\n        \"startSegmentIndex\":  90\n    },\n    {\n        \"title\":  \"Section 7\",\n        \"startSegmentIndex\":  117\n    },\n    {\n        \"title\":  \"Section 8\",\n        \"startSegmentIndex\":  134\n    },\n    {\n        \"title\":  \"Section 9\",\n        \"startSegmentIndex\":  151\n    },\n    {\n        \"title\":  \"Section 10\",\n        \"startSegmentIndex\":  164\n    },\n    {\n        \"title\":  \"Section 11\",\n        \"startSegmentIndex\":  179\n    },\n    {\n        \"title\":  \"Section 12\",\n        \"startSegmentIndex\":  196\n    }\n]\n",
+  "sourceFiles": [
+    {
+      "exists": true,
+      "path": "C:\\code\\git-going-with-github\\docs\\08-open-source-culture.md",
+      "headings": [
+        {
+          "level": 2,
+          "title": "How to Be an Effective and Respectful Open Source Contributor"
+        },
+        {
+          "level": 2,
+          "title": "Workshop Recommendation (Chapter 8)"
+        },
+        {
+          "level": 3,
+          "title": "Chapter 8 Challenge Set"
+        },
+        {
+          "level": 3,
+          "title": "Challenge 8.1 Step-by-Step: Guided Reflection"
+        },
+        {
+          "level": 3,
+          "title": "Completing Chapter 8: Submit Your Evidence"
+        },
+        {
+          "level": 3,
+          "title": "Expected Outcomes"
+        },
+        {
+          "level": 3,
+          "title": "If You Get Stuck"
+        },
+        {
+          "level": 3,
+          "title": "Learning Moment"
+        },
+        {
+          "level": 3,
+          "title": "Learning Pattern Used in This Chapter"
+        },
+        {
+          "level": 2,
+          "title": "GitHub Flow - The Standard Contribution Workflow"
+        },
+        {
+          "level": 3,
+          "title": "The Six Steps of GitHub Flow"
+        },
+        {
+          "level": 3,
+          "title": "Why This Model Works"
+        },
+        {
+          "level": 3,
+          "title": "GitHub Flow vs Git Flow"
+        },
+        {
+          "level": 4,
+          "title": "What Git Flow Is"
+        },
+        {
+          "level": 4,
+          "title": "How the Git Flow Cycle Works"
+        },
+        {
+          "level": 4,
+          "title": "How GitHub Flow Differs"
+        },
+        {
+          "level": 4,
+          "title": "When You Might See Git Flow"
+        },
+        {
+          "level": 4,
+          "title": "Why This Workshop Uses GitHub Flow"
+        },
+        {
+          "level": 3,
+          "title": "The Unwritten Rule: One Thing Per Branch"
+        },
+        {
+          "level": 3,
+          "title": "Learning Cards: GitHub Flow"
+        },
+        {
+          "level": 2,
+          "title": "Keeping Your Fork Up to Date"
+        },
+        {
+          "level": 3,
+          "title": "Why Sync Your Fork?"
+        },
+        {
+          "level": 3,
+          "title": "Method 1: GitHub Web Interface (Easiest)"
+        },
+        {
+          "level": 3,
+          "title": "Method 2: Git Command Line (VS Code Terminal)"
+        },
+        {
+          "level": 4,
+          "title": "One-time setup - add the upstream remote"
+        },
+        {
+          "level": 4,
+          "title": "Sync process"
+        },
+        {
+          "level": 2,
+          "title": "When to sync"
+        },
+        {
+          "level": 3,
+          "title": "Method 3: GitHub Desktop"
+        },
+        {
+          "level": 3,
+          "title": "Learning Cards: Keeping Your Fork Up to Date"
+        },
+        {
+          "level": 2,
+          "title": "Writing Good Commit Messages"
+        },
+        {
+          "level": 3,
+          "title": "The commit message format"
+        },
+        {
+          "level": 3,
+          "title": "The First Line (Required)"
+        },
+        {
+          "level": 3,
+          "title": "The Body (Optional)"
+        },
+        {
+          "level": 3,
+          "title": "The Footer (Optional)"
+        },
+        {
+          "level": 3,
+          "title": "Atomic Commits"
+        },
+        {
+          "level": 3,
+          "title": "Common mistakes to avoid"
+        },
+        {
+          "level": 3,
+          "title": "Good commit messages in practice"
+        },
+        {
+          "level": 3,
+          "title": "Learning Cards: Writing Good Commit Messages"
+        },
+        {
+          "level": 2,
+          "title": "The Nature of Open Source Communication"
+        },
+        {
+          "level": 3,
+          "title": "In writing"
+        },
+        {
+          "level": 3,
+          "title": "Asynchronously"
+        },
+        {
+          "level": 3,
+          "title": "In public"
+        },
+        {
+          "level": 2,
+          "title": "The Anatomy of Helpful Feedback"
+        },
+        {
+          "level": 3,
+          "title": "1. Acknowledge what's working"
+        },
+        {
+          "level": 3,
+          "title": "2. Identify the specific concern"
+        },
+        {
+          "level": 3,
+          "title": "3. Explain why it matters"
+        },
+        {
+          "level": 3,
+          "title": "4. Suggest a path forward (when you can)"
+        },
+        {
+          "level": 3,
+          "title": "5. Signal the weight of the concern"
+        },
+        {
+          "level": 2,
+          "title": "Language and Tone"
+        },
+        {
+          "level": 3,
+          "title": "Prefer \"we\" or describe the code, not the person"
+        },
+        {
+          "level": 3,
+          "title": "Use tentative language for uncertainty"
+        },
+        {
+          "level": 3,
+          "title": "Acknowledge cultural and language diversity"
+        },
+        {
+          "level": 3,
+          "title": "Avoid urgency markers unless genuinely urgent"
+        },
+        {
+          "level": 2,
+          "title": "Commenting Etiquette"
+        },
+        {
+          "level": 3,
+          "title": "Keep comments focused"
+        },
+        {
+          "level": 3,
+          "title": "Don't leave comments unresolved"
+        },
+        {
+          "level": 3,
+          "title": "Resolving conversations"
+        },
+        {
+          "level": 3,
+          "title": "Do not \"pile on\""
+        },
+        {
+          "level": 3,
+          "title": "Reactions"
+        },
+        {
+          "level": 3,
+          "title": "Saved Replies - Your Accessibility Win"
+        },
+        {
+          "level": 4,
+          "title": "Common uses"
+        },
+        {
+          "level": 4,
+          "title": "Creating a Saved Reply"
+        },
+        {
+          "level": 4,
+          "title": "Using a Saved Reply in a comment"
+        },
+        {
+          "level": 4,
+          "title": "Screen reader path"
+        },
+        {
+          "level": 3,
+          "title": "Learning Cards: Commenting Etiquette"
+        },
+        {
+          "level": 2,
+          "title": "Code Review Etiquette - For Reviewers"
+        },
+        {
+          "level": 3,
+          "title": "Review the code, not the person"
+        },
+        {
+          "level": 3,
+          "title": "Don't gatekeep knowledge"
+        },
+        {
+          "level": 3,
+          "title": "Ask questions instead of making demands"
+        },
+        {
+          "level": 3,
+          "title": "Distinguish opinion from requirement"
+        },
+        {
+          "level": 3,
+          "title": "Approve explicitly"
+        },
+        {
+          "level": 2,
+          "title": "Code Review Etiquette - For Authors"
+        },
+        {
+          "level": 3,
+          "title": "Say thank you"
+        },
+        {
+          "level": 3,
+          "title": "Don't take feedback personally"
+        },
+        {
+          "level": 3,
+          "title": "Explain your choices"
+        },
+        {
+          "level": 3,
+          "title": "Surface blockers early"
+        },
+        {
+          "level": 2,
+          "title": "Inclusive Commenting for Accessibility Issues"
+        },
+        {
+          "level": 2,
+          "title": "The \"Good First Issue\" Social Contract"
+        },
+        {
+          "level": 2,
+          "title": "Handling Difficult Situations"
+        },
+        {
+          "level": 3,
+          "title": "When you receive harsh feedback"
+        },
+        {
+          "level": 3,
+          "title": "When you disagree with a decision"
+        },
+        {
+          "level": 3,
+          "title": "When someone is rude to you"
+        },
+        {
+          "level": 3,
+          "title": "When you accidentally caused offense"
+        },
+        {
+          "level": 2,
+          "title": "Writing Your First README"
+        },
+        {
+          "level": 3,
+          "title": "What belongs in a README"
+        },
+        {
+          "level": 3,
+          "title": "A skeleton you can copy"
+        },
+        {
+          "level": 2,
+          "title": "Installation"
+        },
+        {
+          "level": 2,
+          "title": "Usage"
+        },
+        {
+          "level": 2,
+          "title": "Contributing"
+        },
+        {
+          "level": 2,
+          "title": "License"
+        },
+        {
+          "level": 3,
+          "title": "Accessibility in READMEs"
+        },
+        {
+          "level": 3,
+          "title": "Good README vs. bad README"
+        },
+        {
+          "level": 3,
+          "title": "Learning Cards: Writing Your First README"
+        },
+        {
+          "level": 2,
+          "title": "Community Health Files"
+        },
+        {
+          "level": 3,
+          "title": "CONTRIBUTING.md"
+        },
+        {
+          "level": 3,
+          "title": "CODE_OF_CONDUCT.md"
+        },
+        {
+          "level": 3,
+          "title": "SECURITY.md"
+        },
+        {
+          "level": 3,
+          "title": "LICENSE"
+        },
+        {
+          "level": 3,
+          "title": "Finding these files on GitHub"
+        },
+        {
+          "level": 3,
+          "title": "Learning Cards: Community Health Files"
+        },
+        {
+          "level": 2,
+          "title": "When to Use Different Communication Channels"
+        },
+        {
+          "level": 2,
+          "title": "Quick Reference: Phrases That Work"
+        },
+        {
+          "level": 2,
+          "title": "Try It: Rewrite One Comment"
+        },
+        {
+          "level": 2,
+          "title": "Contributing to Open Source"
+        },
+        {
+          "level": 2,
+          "title": "A Guide for First-Time Contributors"
+        },
+        {
+          "level": 2,
+          "title": "Table of Contents"
+        },
+        {
+          "level": 2,
+          "title": "1. What Is Open Source?"
+        },
+        {
+          "level": 2,
+          "title": "2. Who Can Contribute?"
+        },
+        {
+          "level": 2,
+          "title": "3. What Makes a Good First Contribution?"
+        },
+        {
+          "level": 3,
+          "title": "Signs a contribution is too large for a first attempt"
+        },
+        {
+          "level": 2,
+          "title": "4. Finding Something to Work On"
+        },
+        {
+          "level": 3,
+          "title": "Learning Cards: Finding Something to Work On"
+        },
+        {
+          "level": 2,
+          "title": "5. Reading an Issue Before You Start"
+        },
+        {
+          "level": 2,
+          "title": "6. Making Your Contribution"
+        },
+        {
+          "level": 3,
+          "title": "Tool Cards: Fork, Clone, and Contribute"
+        },
+        {
+          "level": 3,
+          "title": "The Basic Workflow"
+        },
+        {
+          "level": 3,
+          "title": "Writing a Good PR Description"
+        },
+        {
+          "level": 2,
+          "title": "7. Getting Help"
+        },
+        {
+          "level": 2,
+          "title": "8. After Your Contribution Is Merged"
+        },
+        {
+          "level": 2,
+          "title": "9. Building a Contribution Habit"
+        },
+        {
+          "level": 3,
+          "title": "Practical habits"
+        },
+        {
+          "level": 2,
+          "title": "Authoritative Sources"
+        },
+        {
+          "level": 3,
+          "title": "Section-Level Source Map"
+        }
+      ],
+      "content": "# Culture, Etiquette, and Community Standards\n>\n> **Listen to Episode 8:** [Open Source Culture and Etiquette](https://lp.csedesigns.com/ggg/PODCASTS.html) - a conversational audio overview of this chapter. Listen before reading to preview the concepts, or after to reinforce what you learned.\n\n> **Related appendices:** [Appendix M: Accessibility Standards](appendix-m-accessibility-standards.md) | [Appendix F: Git Security](appendix-f-git-security.md) | [Appendix O: Branch Protection](appendix-o-branch-protection.md) | [Appendix W: GitHub Pages](appendix-w-github-pages.md)\n> **Authoritative sources:** [GitHub Docs: Contributing to open source](https://docs.github.com/en/get-started/exploring-projects-on-github/contributing-to-a-project) | [Open Source Guides: How to Contribute](https://opensource.guide/how-to-contribute/)\n\n## How to Be an Effective and Respectful Open Source Contributor\n\n> Technical skills get your code into a project. Communication skills keep you welcomed in the community. This guide covers the human side of open source.\n\n## Workshop Recommendation (Chapter 8)\n\nChapter 8 is a **communication and culture chapter**.\n\n- **Challenge count:** 1 guided reflection (no bot grading)\n- **Automation check:** none - communication quality is too subjective for fair automated scoring\n- **Evidence:** structured reflection comment on your assigned challenge issue\n- **Pattern:** read, reflect, commit to one behavior\n\n### Chapter 8 Challenge Set\n\n1. **Guided reflection** - read the chapter, then post a short reflection comment committing to three specific collaboration behaviors.\n\n### Challenge 8.1 Step-by-Step: Guided Reflection\n\n**Goal:** Identify three concrete communication behaviors you will practice during the rest of the workshop.\n\n**Where you are working:** your assigned Chapter 8 challenge issue in your Learning Room repository on GitHub.com.\n\n1. Read through the chapter content below, paying attention to the sections on GitHub Flow, constructive feedback, and asking for help.\n2. As you read, think about one situation from Day 1 where communication helped (or could have helped) you.\n3. Open your **assigned Chapter 8 challenge issue** (the one titled \"Chapter 8.1: Guided Reflection (@yourname)\").\n4. Scroll to the comment box at the bottom of the issue.\n5. Post a reflection comment using this format:\n\n```text\nChapter 8 reflection:\n- One respectful review habit I will use:\n- One way I will ask for help clearly:\n- One way I will respond to feedback constructively:\n```\n\n1. For each prompt, write one specific, actionable sentence - not a vague goal. Examples:\n   - Good: \"I will start review comments with what the author did well before suggesting changes.\"\n   - Vague: \"I will be nice.\"\n   - Good: \"I will include the exact step where I got stuck and what I already tried.\"\n   - Vague: \"I will ask good questions.\"\n2. Activate the **Comment** button (or press `Ctrl+Enter`).\n\n**You are done when:** Your reflection comment appears on the issue with three specific, actionable behaviors.\n\n### Completing Chapter 8: Submit Your Evidence\n\nThe reflection comment itself is your evidence. No additional steps are needed. The facilitator reviews your comment for specificity. Close your Chapter 8 challenge issue when done.\n\n### Expected Outcomes\n\n- Student can name specific, actionable respectful collaboration behaviors.\n- Student can prepare a constructive feedback style before review work in later chapters.\n- Student feels safer asking for help in public threads.\n\n### If You Get Stuck\n\n1. Use one simple sentence per prompt - do not overthink it.\n2. Focus on one real behavior you can start doing today, not an abstract principle.\n3. If writing feels hard, draft bullet points first in a text editor, then paste into the comment.\n4. Look at the \"Giving Feedback\" and \"Asking for Help\" sections in this chapter for concrete examples.\n5. Ask facilitator for one example response and adapt it to your own words.\n6. Finished but not sure you did it right? Compare your work against the [Challenge 8 reference solution](solutions/solution-08-culture.md).\n\n### Learning Moment\n\nTechnical quality and communication quality work together. Respectful, clear communication helps good code get merged faster. The behaviors you commit to here will directly improve your PR reviews in Chapters 12 and 14.\n\n### Learning Pattern Used in This Chapter\n\n1. Read and absorb community norms (not just rules, but reasons).\n2. Reflect on personal experience (what worked, what was hard).\n3. Commit to specific behaviors in writing (public accountability).\n4. Apply those behaviors in upcoming chapters (reviews, comments, PRs).\n\n## GitHub Flow - The Standard Contribution Workflow\n\nBefore diving into communication norms, it helps to understand the workflow that gives all of those conversations their context. **GitHub Flow** is the lightweight branching model recommended for open source contribution. It is simple by design and works whether you are making a one-line documentation fix or a major feature addition.\n\n### The Six Steps of GitHub Flow\n\n```text\n1. Create a branch\n   └─ Branch off main with a descriptive name\n      (e.g., fix/missing-alt-text, docs/update-contributing-guide)\n\n2. Make your changes and commit\n   └─ Work in small, logical commits with clear messages\n      Each commit should represent one coherent, complete change\n\n3. Open a Pull Request\n   └─ Share your work early - even as a Draft PR\n      Describe what you changed, why, and how to test it\n      Link to the related issue (Closes #42)\n\n4. Discuss and review\n   └─ Reviewers leave feedback → you refine your work\n      This is collaborative, not adversarial\n\n5. Pass status checks\n   └─ Automated tests and linting must pass\n      The project's quality gates exist to protect everyone\n\n6. Merge\n   └─ A maintainer merges your PR into main\n      The linked issue closes automatically\n      Your contribution is now part of the project\n```\n\n### Why This Model Works\n\n- **`main` is always deployable.** Nothing goes into `main` directly - every change goes through a PR and review. This protects the project and all its users.\n- **Branches are cheap and disposable.** Create a branch per task. Delete it after merging. There is no overhead to starting fresh.\n- **PRs are the unit of conversation.** Everything about a change - the why, the tradeoffs, the review, the approval - lives in one place.\n- **Small changes move faster.** A 5-file PR gets reviewed in an hour. A 50-file PR sits for days. The most effective contributors keep PRs small and focused.\n\n### GitHub Flow vs Git Flow\n\nYou may encounter \"Git Flow\" (sometimes written \"GitFlow\") in older projects or enterprise environments. This section explains what Git Flow is, how it differs from GitHub Flow, and why this workshop teaches GitHub Flow.\n\n#### What Git Flow Is\n\nGit Flow is a branching model published by Vincent Driessen in 2010. It was designed for teams that ship versioned releases on a schedule (desktop software, mobile apps, embedded systems). It defines five branch types:\n\nThe following table describes each Git Flow branch type, its lifetime, and its purpose.\n\n| Branch | Lifetime | Purpose |\n| --- | --- | --- |\n| `main` (or `master`) | Permanent | Always reflects the latest production release. Only receives merges from `release/` or `hotfix/` branches. |\n| `develop` | Permanent | Integration branch where completed features accumulate. Represents the next planned release. |\n| `feature/` | Temporary | Branched from `develop`. One branch per feature. Merged back into `develop` when complete. Deleted after merge. |\n| `release/` | Temporary | Branched from `develop` when enough features are ready. Used for final testing, version bumps, and changelog updates. Merged into both `main` and `develop`, then deleted. |\n| `hotfix/` | Temporary | Branched from `main` to patch a critical production bug. Merged into both `main` and `develop`, then deleted. |\n\n#### How the Git Flow Cycle Works\n\n1. Developers branch `feature/my-feature` off `develop` and work there.\n2. Completed features merge back into `develop` via pull request.\n3. When `develop` has enough features for a release, a `release/1.2.0` branch is created.\n4. The release branch gets final testing, bug fixes, and version number updates.\n5. The release branch merges into `main` (tagged with the version) and back into `develop`.\n6. If a critical bug is found in production, a `hotfix/` branch is created from `main`, fixed, and merged into both `main` and `develop`.\n\n#### How GitHub Flow Differs\n\nThe following table compares GitHub Flow and Git Flow across key dimensions.\n\n| Dimension | GitHub Flow | Git Flow |\n| --- | --- | --- |\n| Long-lived branches | `main` only | `main` and `develop` (plus temporary `release/` and `hotfix/`) |\n| Feature work | Branch off `main`, PR back to `main` | Branch off `develop`, PR back to `develop` |\n| Releases | Every merge to `main` is deployable | Explicit `release/` branches with version numbers |\n| Hotfixes | Same as any other PR to `main` | Dedicated `hotfix/` branch merged to both `main` and `develop` |\n| Complexity | Low - one rule: `main` is always deployable | High - multiple branch types with specific merge targets |\n| Best for | Continuous deployment, web apps, open source | Scheduled releases, versioned software, large enterprise teams |\n\n#### When You Might See Git Flow\n\n- **Enterprise products** with quarterly or annual release cycles\n- **Mobile apps** that go through app store review before release\n- **Embedded systems or firmware** where \"deploying\" means shipping hardware\n- **Legacy projects** that adopted it before continuous deployment became common\n\n#### Why This Workshop Uses GitHub Flow\n\nFor open source contribution - especially at a hackathon or when contributing to web-based projects - **GitHub Flow is what you want**. It is what GitHub itself uses and what most modern open source projects follow. The single-branch simplicity means you can focus on your contribution rather than navigating branch logistics.\n\nIf you join a project that uses Git Flow, the pull request skills you learn here transfer directly. The difference is which branch you target (usually `develop` instead of `main`) and the additional coordination around release timing.\n\n### The Unwritten Rule: One Thing Per Branch\n\nA branch and its PR should do **one thing**. If you are fixing a broken link and you notice a typo nearby, fix the typo in a **separate branch and PR**. This keeps reviews fast, history clean, and reduces the risk of one unrelated problem blocking an urgent fix.\n\n### Learning Cards: GitHub Flow\n\n<details>\n<summary>Screen reader users</summary>\n\n- The six steps (branch, commit, PR, review, checks, merge) map to six distinct pages on GitHub; you can verify your stage by pressing `1` to hear the page title on each\n- When you open a PR, press `D` to the \"Pull request navigation tabs\" landmark; the Conversation tab confirms your PR is open and shows the linked issue\n- After merge, press `G I` to jump to the Issues tab and verify the linked issue closed automatically (it now shows a purple \"Closed\" badge)\n\n</details>\n\n<details>\n<summary>Low vision users</summary>\n\n- Each PR in the Pull Requests list has a colored icon: green circle for open, purple merged icon for merged, red circle for closed\n- The \"Compare & pull request\" yellow banner appears at the top of the repo after pushing a branch; it is full-width and prominent at any zoom level\n- Before merging, the status checks area below the PR description shows green checkmarks (passed) or red X marks (failed); zoom in to read individual check names\n\n</details>\n\n<details>\n<summary>Sighted users</summary>\n\n- GitHub Flow uses one long-lived branch (`main`) plus short-lived feature branches; the branch dropdown on the Code tab shows all active branches\n- After pushing, look for the yellow \"Compare & pull request\" banner at the top of the repository page to quickly open a PR\n- The PR timeline on the Conversation tab shows the entire story: description, bot checks, review comments, and merge status in chronological order\n\n</details>\n\n## Keeping Your Fork Up to Date\n\nWhen you fork a repository, you get a snapshot of the project at that moment. The original repository (called \"upstream\") continues to evolve. To keep your fork current with upstream changes:\n\n### Why Sync Your Fork?\n\n- **Stay compatible** - upstream changes may affect your work\n- **Avoid conflicts** - the longer you wait, the more conflicts you'll face when merging\n- **Get bug fixes** - benefit from improvements made while you worked\n- **Keep branches clean** - start new PRs from an up-to-date main branch\n\n### Method 1: GitHub Web Interface (Easiest)\n\n<details>\n<summary>Visual / mouse users</summary>\n\n1. Navigate to your fork's main page: `github.com/your-username/repo-name`\n2. Look for the sync indicator: \"This branch is X commits behind upstream/main\"\n3. Click the **\"Sync fork\"** button\n4. Click **\"Update branch\"**\n\nGitHub merges the upstream changes into your fork automatically.\n\n</details>\n\n<details>\n<summary>Screen reader users (NVDA / JAWS / VoiceOver)</summary>\n\n1. Navigate to your fork's main page: `github.com/your-username/repo-name`\n2. The sync button appears in the landmark that contains the branch selector\n3. Press `D` to cycle through landmarks until you reach that region\n4. Press `B` to cycle buttons until you hear \"Sync fork\" → press `Enter`\n5. A dialog or page update presents \"Update branch\" - activate it\n\n</details>\n\n### Method 2: Git Command Line (VS Code Terminal)\n\nIf you're working locally in VS Code:\n\n#### One-time setup - add the upstream remote\n\n```bash\ngit remote add upstream https://github.com/original-owner/repo-name.git\ngit remote -v  # Verify it was added\n```\n\n#### Sync process\n\n```bash\n# 1. Switch to your main branch\ngit checkout main\n\n# 2. Fetch upstream changes\ngit fetch upstream\n\n# 3. Merge upstream's main into yours\ngit merge upstream/main\n\n# 4. Push the updated main to your fork on GitHub\ngit push origin main\n```\n\n## When to sync\n\n- Before starting work on a new feature\n- Before submitting a PR (to ensure you're working off the latest code)\n- Periodically on long-running branches (weekly if actively developed)\n\n### Method 3: GitHub Desktop\n\n1. Open GitHub Desktop\n2. Select **Repository → Pull** to get your fork's latest\n3. Select **Branch → Merge into Current Branch**\n4. Choose **upstream/main**\n5. Push the changes to your fork on GitHub\n\n### Learning Cards: Keeping Your Fork Up to Date\n\n**Screen reader users:**\n\n- In the GitHub web interface, press `D` to cycle landmarks until you reach the branch region, then press `B` to find the \"Sync fork\" button.\n- In the terminal, run `git remote -v` to confirm your upstream remote is configured before fetching -- the output reads back both `origin` and `upstream` URLs.\n- After `git fetch upstream && git merge upstream/main`, run `git log --oneline -3` to hear the latest commits and verify the merge succeeded.\n\n**Low-vision users:**\n\n- On github.com, the \"Sync fork\" button and its \"X commits behind\" indicator sit near the branch selector -- zoom to 200% and the button remains in the same row.\n- In GitHub Desktop, the merge dialog uses high-contrast text for branch names; confirm you see \"upstream/main\" before activating Merge.\n- If the terminal output of `git fetch` scrolls too fast, pipe it through `| more` or increase your terminal font size before running sync commands.\n\n**Sighted users:**\n\n- The yellow \"This branch is N commits behind\" banner on your fork's main page is your visual cue -- click **Sync fork** then **Update branch** and watch the banner disappear.\n- In GitHub Desktop, the branch graph in History view shows where upstream diverged; after merging, the graph lines should rejoin.\n- In VS Code's Source Control sidebar, the sync icon (circular arrows) in the status bar updates your branch with one click once the upstream remote is configured.\n\n## Writing Good Commit Messages\n\nEvery commit you make includes a message describing what changed. Good commit messages make project history understandable months or years later. They also show professionalism and consideration for future contributors (including yourself).\n\n### The commit message format\n\n```text\n<type>: <short summary in imperative mood>\n\n<optional body: more detailed explanation>\n\n<optional footer: references to issues>\n```\n\n### The First Line (Required)\n\n**Keep it under 50 characters.** This is the commit summary that appears in logs and GitHub's commit list. Think of it as an email subject line.\n\n**Use the imperative mood:** Write as if giving a command to the codebase.\n\n\"Fix broken link in README\"  \n\"Add alt text to hero image\"  \n\"Remove deprecated function\"  \n\n\"Fixed broken link\" - past tense  \n\"Fixing broken link\" - gerund  \n\"I fixed the broken link\" - too personal  \n\n**Why imperative?** It matches Git's autogen messages: \"Merge pull request #42\" or \"Revert commit abc123.\"\n\n**Optional prefixes** (common in some projects):\n\n- `fix:` - bug fix\n- `feat:` - new feature\n- `docs:` - documentation only\n- `style:` - formatting, no code change\n- `refactor:` - code restructuring\n- `test:` - adding or updating tests\n- `chore:` - maintenance (bump dependencies, etc.)\n\nExample: `fix: correct ARIA label on submit button`\n\n### The Body (Optional)\n\nIf the summary isn't enough, add a body explaining:\n\n- **Why** you made the change (more important than what)\n- **What** trade-offs you considered\n- **How** the change affects behavior\n\nLeave a blank line between the summary and the body.\n\nExample:\n\n```text\nfeat: add keyboard shortcuts for issue navigation\n\nThe previous interface required excessive tabbing to reach issue actions.\nThis change adds G+I to jump to issues list and C to comment inline.\n\nShortcuts follow GitHub's existing pattern (G+letter for navigation).\nTested with NVDA, JAWS, and VoiceOver.\n```\n\n### The Footer (Optional)\n\nLink commits to issues or PRs:\n\n```text\nCloses #42\nFixes #17\nPart of #89\n```\n\nWhen the commit is merged, GitHub automatically closes linked issues.\n\n### Atomic Commits\n\nEach commit should represent **one logical change**. Don't bundle unrelated fixes into a single commit.\n\nGood: One commit adds alt text; another fixes a typo  \nBad: One commit adds alt text, fixes a typo, reformats code, and updates dependencies  \n\n**Why?** If a commit introduces a bug, you want to revert just that change-not everything.\n\n### Common mistakes to avoid\n\n- \"WIP\" or \"more changes\" - not descriptive\n- \"Update file.js\" - GitHub already knows that\n- \"Fixed it\" - doesn't say what \"it\" is\n- Commit messages filled with expletives or frustration\n- Extremely long summaries that get cut off in logs\n\n### Good commit messages in practice\n\n```text\nfix: prevent crash when username contains special characters\n\nPreviously, usernames with @ or # caused a parsing error in the\nnotification system. This escapes special characters before processing.\n\nFixes #142\n```\n\n```text\ndocs: add screen reader instructions to contribution guide\n\nNew section covers NVDA, JAWS, and VoiceOver setup for contributors\nusing assistive technology. Based on workshop feedback.\n\nPart of #200\n```\n\n**When you make a habit of writing good commit messages, you build trust.** Maintainers see that you care about the project's long-term health, not just your immediate contribution.\n\n### Learning Cards: Writing Good Commit Messages\n\n<details>\n<summary>Screen reader users</summary>\n\n- In VS Code's Source Control panel (`Ctrl+Shift+G`), the commit message input is the first field; type your message there and press `Ctrl+Enter` to commit\n- On the Commits tab of a PR, press `3` to jump between date-group headings, then `I` to navigate individual commits; each commit announces its message and author\n- Good commit messages start with a verb in imperative mood (\"Add,\" \"Fix,\" \"Remove\"); your screen reader will read these as the first word when navigating commit lists\n\n</details>\n\n<details>\n<summary>Low vision users</summary>\n\n- In the commit history view, only the first line (subject) of each commit message is visible by default; click \"...\" to expand the full body\n- Keep the subject line under 50 characters so it does not truncate in GitHub's commit list view at any zoom level\n- VS Code shows a vertical ruler in the commit message field at 72 characters; lines longer than this may wrap awkwardly in terminal and email displays\n\n</details>\n\n<details>\n<summary>Sighted users</summary>\n\n- The commit list on GitHub shows one commit per row with the subject line, author avatar, and relative timestamp; descriptive subjects make scanning easy\n- Use the format \"type: description\" (e.g., `fix: remove broken link in setup guide`) to categorize commits at a glance\n- Separate the subject from the body with a blank line; GitHub renders the body as expandable detail below the subject\n\n</details>\n\n## The Nature of Open Source Communication\n\nOpen source collaboration happens primarily **in writing**, **asynchronously**, **in public**. Understanding these three characteristics shapes everything about how we communicate.\n\n### In writing\n\n- There is no tone of voice, body language, or immediate clarification\n- A message that sounds terse in your head may read as hostile to the reader\n- Sarcasm and irony are nearly impossible to convey safely - avoid them\n- **Solution:** Be explicit. \"I think this might cause a problem because...\" is clearer than \"This is problematic.\"\n\n### Asynchronously  \n\n- Comments are not instant messages - the reader may see your post hours or days later\n- You may be in a rush; they are not receiving urgency from your message\n- Comments exist without the context of what you were thinking when you wrote them\n- **Solution:** Provide all necessary context in every message. Do not assume continuity.\n\n### In public\n\n- Everything you write is visible to everyone, forever, and may be indexed and shared\n- Future contributors, employers, and the broader community will read your words\n- A dismissive reply to a beginner casts a shadow on the entire project\n- **Solution:** Write as if your most supportive and most critical reader are both watching.\n\n## The Anatomy of Helpful Feedback\n\nWhether commenting on an issue, reviewing a PR, or responding to a question, effective feedback has a structure:\n\n### 1. Acknowledge what's working\n\nBefore identifying problems, name what is good. This is not flattery - it is accuracy. Most contributions have real strengths.\n\n> \"The approach of separating the icon from the button text is exactly right - makes the screen reader label much cleaner.\"\n\n### 2. Identify the specific concern\n\nBe precise. Vague feedback is not actionable.\n\n\"This code is inaccessible.\"  \n\"This button has no accessible name - `aria-label` or visible text is needed for screen readers to announce its purpose.\"\n\n### 3. Explain why it matters\n\nContext turns a complaint into a lesson. It also respects the contributor - they deserve to understand, not just comply.\n\n> \"Without an accessible name, screen readers will announce the button as simply 'button,' which gives the user no information about what activating it will do.\"\n\n### 4. Suggest a path forward (when you can)\n\nIf you have an idea for a solution, offer it as a suggestion, not a mandate.\n\n> \"Something like `aria-label='Close navigation menu'` would work well here. Happy to help if you'd like.\"\n\n### 5. Signal the weight of the concern\n\nHelp contributors understand what is a blocker versus a preference.\n\n- `nit:` - minor, optional suggestion (\"nit: there's a trailing space here\")\n- No qualifier - normal concern, should be addressed\n- \"This is a blocker because...\"  - must be fixed before merge\n- \"Just a thought, not a blocker...\" - feedback but no requirement\n\n## Language and Tone\n\n### Prefer \"we\" or describe the code, not the person\n\n\"You made an error here.\"  \n\"There's an error here.\" or \"This line does X but we need Y.\"\n\n### Use tentative language for uncertainty\n\n\"This will crash on mobile.\"  \n\"I think this might cause issues on mobile - have you tested with a narrower viewport?\"\n\n### Acknowledge cultural and language diversity\n\nOpen source is global. Contributors may be:\n\n- Writing in their second or third language\n- Unfamiliar with idioms (\"it's a no-brainer,\" \"hit the ground running,\" \"over the top\")\n- Accustomed to different norms of directness\n\n**When reading someone's comment:** Assume good intent unless there is clear evidence otherwise.  \n**When writing:** Choose plain words over clever ones.\n\n### Avoid urgency markers unless genuinely urgent\n\n\"I need this fixed ASAP\"  \n\"This is blocking our release scheduled for next Friday - is there capacity to look at it this week?\"\n\n## Commenting Etiquette\n\n### Keep comments focused\n\nEach comment should address one concern. If you have three issues, leave three comments - unless they are closely related.\n\n### Don't leave comments unresolved\n\nIf you asked a question and got an answer, respond. \"Thanks, that makes sense\" or resolving the conversation thread signals that the thread is complete.\n\n### Resolving conversations\n\nOn a PR, conversations (inline comment threads) can be \"resolved\" once addressed. The author of the change and the reviewer can both resolve them. If you addressed a reviewer's comment, resolve the thread and leave a note: \"Fixed in commit a1b2c3d.\"\n\n### Do not \"pile on\"\n\nIf five people already said the same thing about an issue, you don't need to add a sixth comment saying the same thing. A reaction on an existing comment is enough.\n\n### Reactions\n\nGitHub reactions () are an efficient way to express agreement, appreciation, or concern without adding noise to a thread.\n\n### Saved Replies - Your Accessibility Win\n\nGitHub lets you save frequently used responses as **Saved Replies** - reusable text snippets you can insert into any comment box with a few keystrokes. This is a significant accessibility win for anyone who types the same comments repeatedly during triage, reviews, or issue management.\n\n#### Common uses\n\n- \"Thank you for your contribution! I'll take a look this week.\"\n- \"This looks like a duplicate of #N - closing, please continue the discussion there.\"\n- \"I've labeled this `good first issue`. To claim it, leave a comment saying you'd like to work on it and I'll assign you.\"\n- Your team's standard accessibility issue acknowledgement template\n\n#### Creating a Saved Reply\n\n1. Navigate to `github.com/settings/replies`\n2. Activate **\"Add a saved reply\"**\n3. Give it a title (e.g., \"Good first issue claim\") - this is what you search for\n4. Type the full reply text in the body (Markdown is supported)\n5. Save\n\n#### Using a Saved Reply in a comment\n\n1. Navigate to any comment text area\n2. Activate the **Saved Replies button** (the speech bubble icon in the comment toolbar, or press `Ctrl+.` if enabled)\n3. A dropdown appears showing your saved replies - type to filter by title\n4. Select the reply - it inserts into the text area\n5. Edit as needed before submitting\n\n#### Screen reader path\n\n```text\nIn a comment text area:\n→ Tab to the toolbar icons\n→ \"Saved replies\" button → Enter\n→ Filter by typing part of the title\n→ ↑/↓ to select → Enter to insert\n```\n\n**Limit:** GitHub allows up to 100 saved replies per account.\n\n### Learning Cards: Commenting Etiquette\n\n<details>\n<summary>Screen reader users</summary>\n\n- Press `D` to jump to the \"Add a comment\" landmark on any issue or PR, then switch to Focus Mode (`NVDA+Space`) to type your comment\n- Use `Ctrl+Enter` to submit a comment directly from the text area without needing to find the Submit button\n- In a comment, type `@` followed by a username to trigger autocomplete; press `Down Arrow` to navigate suggestions and `Enter` to select\n\n</details>\n\n<details>\n<summary>Low vision users</summary>\n\n- The comment box has a formatting toolbar above it (bold, italic, code, link); at high zoom these icons may wrap but remain functional\n- Use the Preview tab next to Write to check how your Markdown renders before posting; this helps catch formatting issues at any zoom level\n- Saved replies are accessed via the speech bubble icon in the comment toolbar; they insert pre-written text to save typing on common responses\n\n</details>\n\n<details>\n<summary>Sighted users</summary>\n\n- The comment box appears at the bottom of every issue and PR Conversation tab; it supports full Markdown with a live Preview tab\n- Use `Ctrl+B` for bold, `Ctrl+I` for italic, `Ctrl+K` for links, and `Ctrl+E` for inline code while typing in the comment area\n- GitHub renders @mentions, issue references (`#42`), and emoji shortcodes (`:+1:`) automatically in the posted comment\n\n</details>\n\n## Code Review Etiquette - For Reviewers\n\n### Review the code, not the person\n\n\"You clearly don't understand accessibility.\"  \n\"This implementation doesn't account for keyboard navigation - here's how to add it.\"\n\n### Don't gatekeep knowledge\n\nIf a contributor makes a mistake because they didn't know something, explain the concept. They're here to learn.\n\n### Ask questions instead of making demands\n\n\"Change this to use `aria-label`.\"  \n\"What do you think about using `aria-label` here instead? Screen readers would then announce the button's purpose directly.\"\n\n### Distinguish opinion from requirement\n\nIf something is your stylistic preference but NOT a bug or correctness issue, say so.\n\n> \"The current implementation is correct. I personally prefer the pattern in utils/helpers.js, but this is a nit - feel free to keep it as-is.\"\n\n### Approve explicitly\n\nWhen a PR is ready to merge, say so clearly - either by using the Approve review option, or in a comment: \"This looks great to me! No blockers on my end.\"\n\n## Code Review Etiquette - For Authors\n\n### Say thank you\n\nWhen someone takes time to review your work, acknowledge it - even if you disagree with some feedback.\n\n> \"Thanks so much for the thorough review! I've addressed all but the last comment - see my note there.\"\n\n### Don't take feedback personally\n\nCode review is about the code, not your worth as a person or developer. Even the most senior contributors receive change requests.\n\n### Explain your choices\n\nIf you are keeping your implementation despite feedback, explain why.\n\n> \"I considered `aria-label` here, but I went with a visually-hidden `<span>` instead because it allows translators to localize the text more easily. Let me know if you think that tradeoff is wrong.\"\n\n### Surface blockers early\n\nDon't wait until you have finished a 500-line PR to mention that you weren't sure about the approach. Open a Draft PR early and ask.\n\n## Inclusive Commenting for Accessibility Issues\n\nWhen filing or discussing accessibility bugs, additional context helps:\n\n- **Describe what was announced** - quote your screen reader's exact output when possible\n- **Do not assume all users experience the same thing** - NVDA users, JAWS users, and VoiceOver users may have different experiences\n- **Be precise about versions** - accessibility behavior changes between OS and screen reader versions\n- **Represent the gap** - \"This means that [group of people] cannot [do the thing]\" - frame in impact, not just symptoms\n- **Don't catastrophize or be dismissive** - \"No blind person can use this\" may be inaccurate; be precise about the specific failure and its scope\n\n## The \"Good First Issue\" Social Contract\n\nWhen a maintainer labels an issue `good first issue`, they are:\n\n- **Investing time** - good first issues require extra documentation and mentorship\n- **Signaling welcome** - they want to support a new contributor\n\nWhen you take a good first issue, your responsibilities:\n\n1. **Comment to claim it** - \"Hi, I'd like to work on this. Can I be assigned?\"\n2. **Wait for assignment** - do not start until assigned; two people working in parallel wastes everyone's time\n3. **Check in if stuck** - \"I've been working on this for a day and I'm stuck on X - can you point me in the right direction?\"\n4. **Check in if unavailable** - \"Life got busy and I can't finish this by the original estimate - is it okay if I extend by a week, or should you reassign?\"\n5. **Don't disappear** - if you claim an issue, see it through or explicitly hand it back\n\n## Handling Difficult Situations\n\n### When you receive harsh feedback\n\n1. Take a breath before responding - there is no urgency; the thread will wait\n2. Look for the valid concern underneath the harsh words\n3. Respond to the concern, not the tone\n4. If the behavior crosses into harassment, report it via the \"...\" button on the comment → \"Report\"\n\n### When you disagree with a decision\n\n1. Make your case once, clearly and with evidence\n2. Accept that the maintainer has the final say in their project\n3. If you strongly disagree, you can fork the project and take it in a different direction - this is legitimate in open source\n\n### When someone is rude to you\n\n1. You do not have to engage\n2. You can reply once to state your boundary: \"I'm happy to discuss the technical merits, but I'd prefer if we kept the conversation constructive.\"\n3. Report via GitHub's reporting tools if the behavior is abusive\n\n### When you accidentally caused offense\n\n1. Acknowledge it directly: \"I can see how that came across as dismissive - that wasn't my intention.\"\n2. Do not over-explain or defend excessively\n3. Adjust going forward\n\n## Writing Your First README\n\n> **See also:** [Appendix W: GitHub Pages](appendix-w-github-pages.md) for publishing your README as a website.\n\nA README is the front door of your project. It is the first file visitors read, and often the only file they read before deciding whether to stay or move on.\n\n### What belongs in a README\n\nEvery README should answer these questions, roughly in this order:\n\n| Section | What it answers |\n| --- | --- |\n| **Project name** | What is this? |\n| **Description** | Why does it exist? What problem does it solve? |\n| **Installation** | How do I get it running on my machine? |\n| **Usage** | How do I use it once it is installed? |\n| **Contributing** | How can I help? (or link to CONTRIBUTING.md) |\n| **License** | What am I allowed to do with this code? |\n\nYou do not need all six sections for a tiny project, but you should have at least a name, a one-sentence description, and a license.\n\n### A skeleton you can copy\n\n```markdown\n# Project Name\n\nOne sentence that describes what this project does.\n\n## Installation\n\nSteps to install and set up the project locally.\n\n## Usage\n\nShow a basic example of how to use the project.\n\n## Contributing\n\nContributions are welcome. See [CONTRIBUTING.md](CONTRIBUTING.md) for details.\n\n## License\n\nThis project is licensed under the MIT License. See [LICENSE](LICENSE) for the full text.\n```\n\n### Accessibility in READMEs\n\nYour README is a web page -- GitHub renders it as HTML. That means the same accessibility rules apply:\n\n- **Alt text for images and badges.** A badge that says `![](https://img.shields.io/badge/build-passing-green)` is invisible to screen readers. Write `![Build status: passing](...)` instead.\n- **Heading hierarchy.** Use `#` for the project name, `##` for top-level sections, `###` for subsections. Never skip levels.\n- **Descriptive link text.** Write `See the [installation guide](docs/install.md)` -- not `Click [here](docs/install.md)`.\n\n> **Screen reader tip:** When you navigate a README with a screen reader, the heading list (`Insert + F7` in NVDA, `Rotor > Headings` in VoiceOver) is your table of contents. A flat list of `##` headings with clear names makes the document fast to scan.\n\n### Good README vs. bad README\n\n**Bad:** A single paragraph that says \"This is my project. Run it with npm start.\" No headings, no license, no description of what the project does.\n\n**Good:** A clear name, a sentence explaining the purpose, a short install block, a usage example, a link to CONTRIBUTING.md, and a license section -- all under well-structured headings.\n\nThe difference is about two minutes of writing and saves every future visitor from guessing.\n\n### Learning Cards: Writing Your First README\n\n**Screen reader users:**\n\n- Maintain strict heading hierarchy (`#` then `##` then `###`) -- your heading list shortcut (`Insert+F7` in NVDA, Rotor in VoiceOver) becomes a usable table of contents only when levels are not skipped.\n- Write descriptive alt text on every badge and image: `![Build status: passing](...)` rather than an empty `![]()` that reads as \"image\" with no context.\n- Use real Markdown link text (`[installation guide](docs/install.md)`) instead of bare URLs, so your screen reader announces the destination rather than spelling out a long URL.\n\n**Low-vision users:**\n\n- Use `##` headings to create clear visual blocks -- GitHub's rendered Markdown adds spacing and larger font weight to headings, making the README scannable at high zoom.\n- Keep code blocks short (under 10 lines) and use syntax-highlighted fenced blocks (` ```bash `) so keywords stand out in your high-contrast or dark theme.\n- Put the most important information (project name, one-line description, install command) in the first 5 lines so it is visible without scrolling at 200% zoom.\n\n**Sighted users:**\n\n- Preview your README in VS Code (`Ctrl+Shift+V`) or on GitHub after pushing -- the rendered view reveals formatting mistakes that are invisible in raw Markdown.\n- Add a badge row near the top (build status, license, version) for a quick visual health check, but always include alt text for each badge.\n- Use a table for structured information (like the \"What belongs in a README\" table in this section) -- tables render as clean grids on GitHub and are faster to scan than bullet lists for tabular data.\n\n## Community Health Files\n\nCommunity health files tell contributors how your project operates before they write a single line of code. GitHub recognizes these files and surfaces them in the repository's **Community Standards** page (under the **Insights** tab), so visitors can see at a glance which expectations are documented.\n\n### CONTRIBUTING.md\n\nThis file answers the question every newcomer asks: \"How do I help?\" A good CONTRIBUTING.md covers:\n\n- **How to report bugs** -- what information to include, which issue template to use\n- **How to suggest features** -- whether to open a Discussion first or go straight to an Issue\n- **Code style** -- formatting rules, linter settings, naming conventions\n- **PR process** -- branch naming, commit message format, who reviews, how long to wait\n\nKeep the tone welcoming. A sentence like \"We are glad you are here\" costs nothing and signals that newcomers are expected, not tolerated.\n\n**Always read CONTRIBUTING.md before opening a PR.** Skipping it leads to rejected PRs and wasted effort on both sides. See [Chapter 6](06-working-with-pull-requests.md) for the full PR workflow.\n\n### CODE_OF_CONDUCT.md\n\nA code of conduct sets the social contract for your project. Without one, \"acceptable behavior\" is whatever each participant assumes it is -- and those assumptions vary widely.\n\nMost projects adopt the [Contributor Covenant](https://www.contributor-covenant.org/), which covers:\n\n- Expected behavior (be respectful, use welcoming language, accept constructive criticism)\n- Unacceptable behavior (harassment, trolling, personal attacks)\n- Enforcement -- who to contact and what happens after a report\n\nWhen you see a CODE_OF_CONDUCT.md in a repository, it means the maintainers take community health seriously, there is a process for reporting violations, and you are both protected and expected to protect others.\n\n### SECURITY.md\n\n> **See also:** [Appendix F: Git Security](appendix-f-git-security.md) and [Appendix P: Security Features](appendix-p-security-features.md) for security best practices.\n\nIf someone discovers a vulnerability in your project, you do not want them to file a public issue. A SECURITY.md file tells reporters how to disclose responsibly:\n\n- **Supported versions** -- which releases still receive security patches\n- **How to report** -- a private email address or GitHub's private vulnerability reporting feature\n- **What to expect** -- typical response time and disclosure timeline\n\nEven small projects benefit from this file. It takes five minutes to write and prevents an accidental public disclosure that could affect your users.\n\n### LICENSE\n\nWithout a license file, your code is \"all rights reserved\" by default -- meaning nobody can legally use, copy, or modify it, regardless of whether the repository is public. Adding a LICENSE file is a one-time step that makes your project genuinely open source.\n\nYou do not need to become a licensing expert. The [choosealicense.com](https://choosealicense.com/) site walks you through the most common options. For class projects, MIT or Apache 2.0 are typical choices.\n\n### Finding these files on GitHub\n\nNavigate to any repository and click **Insights** then **Community Standards**. GitHub shows a checklist of which community health files are present and links to add any that are missing. This is the fastest way to audit a project before you contribute.\n\n> **Screen reader tip:** The Community Standards page is a simple checklist. Each item is a link -- if the file exists, the link text includes a checkmark. You can tab through the list to quickly confirm which files are in place.\n\n### Learning Cards: Community Health Files\n\n<details>\n<summary>Screen reader users</summary>\n\n- Navigate to any repo's Insights tab by pressing `D` to the repository navigation landmark, then `K` to find \"Insights\"; from there, find \"Community Standards\"\n- On the Community Standards page, each file is announced as a list item with a checkmark status (present or missing); `Tab` through the list to audit quickly\n- When creating a README, use heading levels (`#`, `##`, `###`) so screen readers can navigate sections with `H`; start with a single H1 for the project name\n\n</details>\n\n<details>\n<summary>Low vision users</summary>\n\n- The Community Standards checklist uses green checkmarks for present files and grey circles for missing ones; in high-contrast mode these use distinct system colors\n- README files render below the file table on the repository's Code tab; zoom in on the rendered Markdown for the most comfortable reading experience\n- When writing a README, keep paragraphs short (3-4 sentences) and use bullet lists so the content is scannable at high magnification\n\n</details>\n\n<details>\n<summary>Sighted users</summary>\n\n- Navigate to Insights tab, then Community Standards to see a checklist of recommended files (README, LICENSE, CONTRIBUTING, CODE_OF_CONDUCT, etc.)\n- Each missing file has an \"Add\" link next to it that opens a pre-filled template editor on GitHub\n- The README renders as formatted Markdown below the file table on the main Code tab; it is the first thing visitors see when they land on your repository\n\n</details>\n\n## When to Use Different Communication Channels\n\n| Channel | Use For |\n| ---------  | ---------  |\n| **Issue** | Bug reports, feature requests, questions about a specific problem |\n| **PR comment** | Feedback on a specific code change |\n| **PR review** | Formal verdict (approve/request changes) with consolidated feedback |\n| **Discussion** | Open-ended conversation, proposals, community Q&A |\n| **Email / direct** | Sensitive matters (security vulnerabilities, Code of Conduct reports) |\n\n**GitHub Discussions are separate from Issues.** Use Discussions for: \"What do people think about X approach?\" and Issues for: \"The X button is broken.\"\n\n## Quick Reference: Phrases That Work\n\n| Instead of... | Try... |\n| ---------------  | --------  |\n| \"This is wrong.\" | \"This looks like it might cause X - is that intended?\" |\n| \"Everyone knows you should...\" | \"A common pattern for this is...\" |\n| \"This is terrible.\" | \"I think this approach has some drawbacks - here's what I'm seeing.\" |\n| \"Fix this.\" | \"What do you think about changing this to X?\" |\n| \"Obviously...\" | *(just omit the word \"obviously\")* |\n| \"This is a major issue.\" | \"This is a blocker for users who rely on keyboard navigation.\" |\n| \"Can't you just...\" | \"One approach that might work is...\" |\n| \"No.\" | \"I don't think this approach is right for this project because...\" |\n\n## Try It: Rewrite One Comment\n\n**Time:** 2 minutes | **What you need:** Just your brain\n\nRead this code review comment and rewrite it to be constructive:\n\n> **Original:** \"This alt text is bad. Fix it.\"\n\nUse the five-step feedback anatomy from this chapter:\n\n1. **What** you noticed\n2. **Why** it matters\n3. **What** you suggest\n4. **Why** the suggestion helps\n5. **Encouragement**\n\nHere's one way:\n\n> **Rewritten:** \"The alt text on this image says 'image1.png' - screen reader users will hear the filename instead of what's in the image. Could you describe what the screenshot shows, like 'Settings page with the Accessibility section expanded'? That way everyone gets the same information. Nice catch adding the image though - it really helps illustrate the step!\"\n\nNotice: same feedback, completely different experience for the person receiving it.\n\n> **What success feels like:** You turned a two-word dismissal into help that someone would actually want to receive. That's the difference between a comment that fixes code and a comment that also keeps a contributor coming back.\n\n> ### Day 2 Amplifier - Accessibility Agents Outputs Are Your Responsibility\n>\n> **Every communication principle in this guide applies with extra force when agents are involved.** When `@pr-review` generates review comments, *you* are responsible for their tone before you post them. When `@issue-tracker` drafts a triage reply, *your* name appears on it in the repository's public history. The agent writes - the contributor publishes.\n>\n> As you work with agents on Day 2, use this guide as your editing checklist:\n>\n> - **In VS Code** - Review every agent-generated comment against the \"anatomy of helpful feedback\" section before posting; use the \"phrases that work\" table to refine anything that reads as automated, generic, or cold\n> - **In your repo** - Accessibility Agents outputs are first drafts, not final words; the community you contribute to experiences your judgment, not the agent's draft\n> - **In the cloud** - GitHub Agentic Workflow comments must be designed with the same care as human comments: clear purpose, respectful language, and a transparent signal that automation posted them\n>\n> *A community's culture is shaped by every message posted in its name - including the ones an agent wrote for you.*\n\n*Next: [Labels, Milestones, and Projects](09-labels-milestones-projects.md)*\n*Back: [Merge Conflicts](07-merge-conflicts.md)*\n*Related: [Working with Issues](05-working-with-issues.md) | [Working with Pull Requests](06-working-with-pull-requests.md)*\n\n---\n\n## Contributing to Open Source\n\n> *This section was previously Appendix T. It is now part of the teaching narrative.*\n\n>\n> **Listen to Episode 37:** [Contributing to Open Source](https://lp.csedesigns.com/ggg/PODCASTS.html) - a conversational audio overview of this chapter. Listen before reading to preview the concepts, or after to reinforce what you learned.\n\n## A Guide for First-Time Contributors\n\n> You do not need to be a professional developer to contribute to open source. Documentation, accessibility improvements, and bug reports are among the most valuable contributions any project can receive.\n\n## Table of Contents\n\n1. [What Is Open Source?](#1-what-is-open-source)\n2. [Who Can Contribute?](#2-who-can-contribute)\n3. [What Makes a Good First Contribution?](#3-what-makes-a-good-first-contribution)\n4. [Finding Something to Work On](#4-finding-something-to-work-on)\n5. [Reading an Issue Before You Start](#5-reading-an-issue-before-you-start)\n6. [Making Your Contribution](#6-making-your-contribution)\n7. [Getting Help](#7-getting-help)\n8. [After Your Contribution Is Merged](#8-after-your-contribution-is-merged)\n9. [Building a Contribution Habit](#9-building-a-contribution-habit)\n\n## 1. What Is Open Source?\n\nOpen source software is software whose source code is publicly available. Anyone can read it, use it, and - in most cases - contribute to it. Contributions can include:\n\n- Fixing bugs in the software\n- Writing or improving documentation\n- Filing bug reports that help maintainers understand problems\n- Reviewing other people's changes and leaving thoughtful feedback\n- Translating content into other languages\n- Improving accessibility - adding alt text, fixing heading structure, testing with screen readers\n\nThe projects that power much of today's web infrastructure - operating systems, programming languages, screen readers, and developer tools - are maintained by contributors who started exactly where you are now.\n\n## 2. Who Can Contribute?\n\nContributors come from all backgrounds, skill levels, and countries. A first contribution could be fixing a typo, adding a missing full stop, or filing a bug report that saves a maintainer hours of debugging.\n\nAssistive technology users bring a perspective that most sighted, mouse-first developers cannot - you notice when heading structure is broken, when a button has no accessible name, or when a form cannot be completed with a keyboard. These are real, high-value contributions that improve projects for everyone.\n\nYou do not need permission to start. If a repository's issues are public, you can file a bug or suggest an improvement today.\n\n## 3. What Makes a Good First Contribution?\n\nA good first contribution is:\n\n- **Specific** - it addresses one problem clearly, not a general \"this could be better\"\n- **Scoped** - it does not try to fix everything at once; one PR, one problem\n- **Described** - the PR or issue explains what changed and why, not just what\n- **Tested** - for documentation, this means reading it aloud with your screen reader before submitting; for code, it means verifying the fix works\n\n### Signs a contribution is too large for a first attempt\n\n- The PR touches more than three or four files\n- You need to understand the entire codebase to make the change\n- The issue has been open for a long time with many comments suggesting it is complex\n\nStart small. A well-executed small contribution is far more valuable than a large contribution that cannot be merged because it is out of scope.\n\n## 4. Finding Something to Work On\n\nMost open source projects label issues that are suitable for new contributors. Look for:\n\n| Label | Meaning |\n| -------  | ---------  |\n| `good first issue` | Explicitly recommended for first-time contributors |\n| `first-timers-only` | Reserved for people making their first contribution to this project |\n| `help wanted` | Maintainers are actively looking for someone to pick this up |\n| `beginner` or `easy` | Lower complexity than average |\n| `documentation` | No coding required - writing or editing docs |\n| `accessibility` | Directly relevant to AT users; high-value work |\n\n**How to search:** On any GitHub repository, go to Issues → filter by label. Or use GitHub's global search: `label:\"good first issue\" is:open language:markdown` to find documentation issues across all public repositories.\n\n### Learning Cards: Finding Something to Work On\n\n**Screen reader users:**\n\n- On a repository's Issues page, use the landmark shortcut (`D` in NVDA browse mode) to jump to the filter region, then type a label name like `good first issue` in the Label filter field and press `Enter` to narrow results.\n- GitHub's global search (`label:\"good first issue\" is:open language:markdown`) returns a results list navigable by heading level -- each issue title is a link, so press `K` (next link) or `Tab` to step through them efficiently.\n- Before claiming an issue, press `End` to jump to the bottom of the issue page and listen for recent comments -- if someone already said \"I'll take this,\" move on to the next one.\n\n**Low-vision users:**\n\n- GitHub color-codes labels, but do not rely on color alone -- hover over a label to see its text name in a tooltip, or use the Label dropdown which lists label names as text.\n- Zoom to 150-200% when scanning the Issues list; the issue title, label pills, and comment count remain in a single row up to about 250% zoom before wrapping.\n- Use the Sort dropdown (\"Newest,\" \"Recently updated\") to push stale issues down the list so you focus on actively maintained work first.\n\n**Sighted users:**\n\n- Skim the colored label pills on the Issues list for `good first issue` (typically green) or `help wanted` (typically yellow) -- these stand out visually in a long list.\n- Check the comment count and last-updated date on the right side of each issue row; a high comment count on a `first-timers-only` issue often means someone is already working on it.\n- Use GitHub's global search bar with `label:\"good first issue\" is:open` and add `language:` or `topic:` filters to match your interests across all public repositories.\n\n## 5. Reading an Issue Before You Start\n\nBefore commenting \"I'll take this\" on an issue, ask yourself:\n\n- **Is the description clear enough to act on?** If you are not sure what the problem is, ask a clarifying question before starting work.\n- **Is anyone else already working on it?** Look for recent comments from others saying they are working on it, or an open PR that references this issue. If a PR exists, it may already be in review.\n- **Is the issue in scope for me?** A documentation task does not require programming knowledge. A bug fix in compiled code may require understanding the codebase.\n- **How old is the issue?** Very old issues (2+ years) may be stale or no longer relevant. You can ask the maintainer if it is still valid before investing time.\n\nIf the issue looks right for you, comment briefly to let the team know you are working on it: \"I'd like to work on this. I'll open a draft PR shortly.\" This prevents duplicate work.\n\n## 6. Making Your Contribution\n\n### Tool Cards: Fork, Clone, and Contribute\n\n**github.com (browser):**\n\n1. Click **Fork** on the repository page, then **Create fork**.\n2. Edit files directly in your fork's web interface.\n3. Click **Contribute > Open pull request** to submit back to the original.\n\n**github.dev (web editor):**\n\n1. Fork the repo on github.com first.\n2. Navigate to your fork and press `.` to open in the web editor.\n3. Edit, commit, and create a PR from the Source Control panel.\n\n**VS Code Desktop:**\n\n1. Fork on github.com, then clone your fork: `Ctrl+Shift+P` > **Git: Clone**.\n2. Create a branch, make edits, commit and push.\n3. Use **GitHub Pull Requests: Create Pull Request** to submit.\n\n**GitHub Desktop:**\n\n1. **File > Clone Repository**, select your fork.\n2. Create a branch via **Branch > New Branch**, make edits.\n3. Push and click **Create Pull Request** (opens browser).\n\n**Git CLI / GitHub CLI:**\n\n```bash\ngh repo fork owner/repo --clone\ncd repo\ngit checkout -b fix/my-change\n# edit files\ngit add . && git commit -m \"fix: description\"\ngit push -u origin fix/my-change\ngh pr create\n```\n\n### The Basic Workflow\n\n1. **Fork the repository** - creates your own copy on GitHub\n2. **Clone your fork** to your computer (or open a Codespace - see [Appendix N](appendix-j-cloud-editors.md))\n3. **Create a branch** - name it something descriptive: `fix/broken-link-setup-guide`\n4. **Make your change** - edit the file, save, verify\n5. **Commit with a clear message** - \"Fix broken link in setup-guide.md line 34\"\n6. **Push to your fork**\n7. **Open a pull request** from your branch to the original repository's default branch\n8. **Respond to review feedback** - maintainers may ask for changes; this is normal and not a rejection\n\n### Writing a Good PR Description\n\nA PR description should answer:\n\n- **What** did you change?\n- **Why** was the change needed?\n- **How** did you verify it works?\n\nExample:\n> Fixed a broken link on line 34 of `setup-guide.md`. The link pointed to `/docs/old-setup` which no longer exists. Updated it to `/docs/00-pre-workshop-setup.md`, verified the target file exists and the anchor is correct.\n\nThis gives the reviewer everything they need to approve quickly.\n\n## 7. Getting Help\n\nIt is always acceptable to ask a question on an issue or pull request. Good questions:\n\n- **Are specific:** \"I'm trying to fix the broken link on line 24 of `setup-guide.md`. The link currently points to `/docs/old-setup`. Where should it point?\"\n- **Show what you tried:** \"I searched the repository for the correct URL but couldn't find a file at that path.\"\n- **Are polite:** Assume good intent from maintainers, even if they are slow to respond. Maintainers are often volunteers with day jobs.\n\nIf you opened a PR and are waiting for a review, it is appropriate to leave one polite follow-up comment after a week or two. Start with: \"Hi, just checking in on this PR when you have a moment.\"\n\n## 8. After Your Contribution Is Merged\n\nWhen your pull request is merged:\n\n- Your name appears in the project's **commit history permanently** - it cannot be removed\n- The issue you fixed is closed\n- You are officially listed as a **contributor** to this project, visible on the repository's Contributors page\n\nThis matters for your GitHub profile. Each merged contribution demonstrates real-world collaboration with a project team: you scoped a problem, communicated with maintainers, addressed feedback, and saw the work through. That record is visible to anyone who views your profile.\n\nOver time, a series of contributions builds a portfolio that shows how you work - not just what you can do in isolation.\n\n## 9. Building a Contribution Habit\n\nThe hardest part of open source contribution is starting. Once you have one merged PR, the next is easier - you know the workflow, you have proof it is possible, and you have already navigated the social dynamics of working with a maintainer.\n\n### Practical habits\n\n- **Keep a list** of projects you use and like. These are natural candidates for contributions because you already understand what they do.\n- **File bug reports** when you encounter problems, even if you cannot fix them yourself. A clear, reproducible bug report is a real contribution.\n- **Review other PRs.** Even as a new contributor, you can leave useful feedback: \"Does this change affect screen reader users?\" or \"The example in the PR description is missing a step.\"\n- **Set a low bar.** A contribution does not need to be impressive. A fixed typo merged into a project used by thousands of people is more valuable than a perfect contribution never submitted.\n\n> **Challenge Time:** Complete **Challenge 8: The Culture Layer** in the [Challenge Hub](CHALLENGES.md), then advance to [Chapter 09: Labels, Milestones and Projects](09-labels-milestones-projects.md).\n\n---\n\n*Next: [Chapter 09: Labels, Milestones, and Projects](09-labels-milestones-projects.md)*  \n*Back: [Chapter 07: Merge Conflicts](07-merge-conflicts.md)*  \n*Related appendices: [Appendix M: Accessibility Standards](appendix-m-accessibility-standards.md) | [Appendix F: Git Security](appendix-f-git-security.md) | [Appendix O: Branch Protection](appendix-o-branch-protection.md)*\n\n## Authoritative Sources\n\nUse these official references when you need the current source of truth for facts in this chapter.\n\n- [GitHub Docs, home](https://docs.github.com/en)\n- [GitHub Changelog](https://github.blog/changelog/)\n- [About Git](https://docs.github.com/en/get-started/using-git/about-git)\n- [GitHub flow](https://docs.github.com/en/get-started/using-github/github-flow)\n- [About pull requests](https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/about-pull-requests)\n- [About issues](https://docs.github.com/en/issues/tracking-your-work-with-issues/about-issues)\n- [Contributing to a project](https://docs.github.com/en/get-started/exploring-projects-on-github/contributing-to-a-project)\n\n### Section-Level Source Map\n\nUse this map to verify facts for each major section in this file.\n\n- **How to Be an Effective and Respectful Open Source Contributor:** [GitHub Docs, home](https://docs.github.com/en), [GitHub Changelog](https://github.blog/changelog/), [About Git](https://docs.github.com/en/get-started/using-git/about-git), [GitHub flow](https://docs.github.com/en/get-started/using-github/github-flow), [About pull requests](https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/about-pull-requests)\n- **Workshop Recommendation (Chapter 8):** [GitHub Docs, home](https://docs.github.com/en), [GitHub Changelog](https://github.blog/changelog/), [About Git](https://docs.github.com/en/get-started/using-git/about-git), [GitHub flow](https://docs.github.com/en/get-started/using-github/github-flow), [About pull requests](https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/about-pull-requests)\n- **GitHub Flow - The Standard Contribution Workflow:** [GitHub Docs, home](https://docs.github.com/en), [GitHub Changelog](https://github.blog/changelog/), [About Git](https://docs.github.com/en/get-started/using-git/about-git), [GitHub flow](https://docs.github.com/en/get-started/using-github/github-flow), [About pull requests](https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/about-pull-requests)\n- **Keeping Your Fork Up to Date:** [GitHub Docs, home](https://docs.github.com/en), [GitHub Changelog](https://github.blog/changelog/), [About Git](https://docs.github.com/en/get-started/using-git/about-git), [GitHub flow](https://docs.github.com/en/get-started/using-github/github-flow), [About pull requests](https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/about-pull-requests)\n- **When to sync:** [GitHub Docs, home](https://docs.github.com/en), [GitHub Changelog](https://github.blog/changelog/), [About Git](https://docs.github.com/en/get-started/using-git/about-git), [GitHub flow](https://docs.github.com/en/get-started/using-github/github-flow), [About pull requests](https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/about-pull-requests)\n- **Writing Good Commit Messages:** [GitHub Docs, home](https://docs.github.com/en), [GitHub Changelog](https://github.blog/changelog/), [About Git](https://docs.github.com/en/get-started/using-git/about-git), [GitHub flow](https://docs.github.com/en/get-started/using-github/github-flow), [About pull requests](https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/about-pull-requests)\n- **The Nature of Open Source Communication:** [GitHub Docs, home](https://docs.github.com/en), [GitHub Changelog](https://github.blog/changelog/), [About Git](https://docs.github.com/en/get-started/using-git/about-git), [GitHub flow](https://docs.github.com/en/get-started/using-github/github-flow), [About pull requests](https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/about-pull-requests)\n- **The Anatomy of Helpful Feedback:** [GitHub Docs, home](https://docs.github.com/en), [GitHub Changelog](https://github.blog/changelog/), [About Git](https://docs.github.com/en/get-started/using-git/about-git), [GitHub flow](https://docs.github.com/en/get-started/using-github/github-flow), [About pull requests](https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/about-pull-requests)\n- **Language and Tone:** [GitHub Docs, home](https://docs.github.com/en), [GitHub Changelog](https://github.blog/changelog/), [About Git](https://docs.github.com/en/get-started/using-git/about-git), [GitHub flow](https://docs.github.com/en/get-started/using-github/github-flow), [About pull requests](https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/about-pull-requests)\n- **Commenting Etiquette:** [GitHub Docs, home](https://docs.github.com/en), [GitHub Changelog](https://github.blog/changelog/), [About Git](https://docs.github.com/en/get-started/using-git/about-git), [GitHub flow](https://docs.github.com/en/get-started/using-github/github-flow), [About pull requests](https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/about-pull-requests)\n- **Code Review Etiquette - For Reviewers:** [GitHub Docs, home](https://docs.github.com/en), [GitHub Changelog](https://github.blog/changelog/), [About Git](https://docs.github.com/en/get-started/using-git/about-git), [GitHub flow](https://docs.github.com/en/get-started/using-github/github-flow), [About pull requests](https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/about-pull-requests)\n- **Code Review Etiquette - For Authors:** [GitHub Docs, home](https://docs.github.com/en), [GitHub Changelog](https://github.blog/changelog/), [About Git](https://docs.github.com/en/get-started/using-git/about-git), [GitHub flow](https://docs.github.com/en/get-started/using-github/github-flow), [About pull requests](https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/about-pull-requests)\n- **Inclusive Commenting for Accessibility Issues:** [GitHub Docs, home](https://docs.github.com/en), [GitHub Changelog](https://github.blog/changelog/), [About Git](https://docs.github.com/en/get-started/using-git/about-git), [GitHub flow](https://docs.github.com/en/get-started/using-github/github-flow), [About pull requests](https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/about-pull-requests)\n- **The \"Good First Issue\" Social Contract:** [GitHub Docs, home](https://docs.github.com/en), [GitHub Changelog](https://github.blog/changelog/), [About Git](https://docs.github.com/en/get-started/using-git/about-git), [GitHub flow](https://docs.github.com/en/get-started/using-github/github-flow), [About pull requests](https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/about-pull-requests)\n- **Handling Difficult Situations:** [GitHub Docs, home](https://docs.github.com/en), [GitHub Changelog](https://github.blog/changelog/), [About Git](https://docs.github.com/en/get-started/using-git/about-git), [GitHub flow](https://docs.github.com/en/get-started/using-github/github-flow), [About pull requests](https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/about-pull-requests)\n- **Writing Your First README:** [GitHub Docs, home](https://docs.github.com/en), [GitHub Changelog](https://github.blog/changelog/), [About Git](https://docs.github.com/en/get-started/using-git/about-git), [GitHub flow](https://docs.github.com/en/get-started/using-github/github-flow), [About pull requests](https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/about-pull-requests)\n"
+    }
+  ],
+  "companions": {
+    "pairedChallenges": [
+      {
+        "id": "03",
+        "slug": "cc-03-join-the-conversation",
+        "title": "Join the Conversation",
+        "focus": "Comments, mentions, reactions, and constructive peer communication.",
+        "day": "Day 1 foundation"
+      },
+      {
+        "id": "08",
+        "slug": "cc-08-open-source-culture",
+        "title": "The Culture Layer",
+        "focus": "Reflection, community norms, issue triage, labels, and respectful communication.",
+        "day": "Day 1 stretch"
+      },
+      {
+        "id": "12",
+        "slug": "cc-12-code-review",
+        "title": "Review Like a Pro",
+        "focus": "Reviewing a classmate PR, leaving specific feedback, and owning review tone.",
+        "day": "Day 2 local workflow"
+      },
+      {
+        "id": "bonus-b",
+        "slug": "cc-bonus-b-document-your-journey",
+        "title": "Document Your Journey",
+        "focus": "Reflective documentation, portfolio language, and accessible Markdown.",
+        "day": "Bonus"
+      },
+      {
+        "id": "bonus-c",
+        "slug": "cc-bonus-c-group-challenge",
+        "title": "Group Challenge",
+        "focus": "Collaborative contribution, division of work, and communication across a small team.",
+        "day": "Bonus"
+      }
+    ],
+    "pairedChapters": [],
+    "classroomReview": "",
+    "assignments": []
+  },
+  "voiceRules": {
+    "bannedPhrases": [
+      "has three jobs",
+      "name the idea",
+      "give the learner a move",
+      "show what counts as evidence",
+      "Section-Level Source Map",
+      "GitHub Docs, home, GitHub Changelog",
+      "Think of this as",
+      "The next useful detail is concrete",
+      "The point is not speed; the point is never losing your place",
+      "That is the difference between guessing and knowing",
+      "This is the move inside",
+      "Anchor this part on",
+      "For someone navigating by keyboard or screen reader",
+      "The teaching point here is not",
+      "The durable skill is not memorizing one screen",
+      "It is knowing how to find your footing when the screen changes",
+      "Keep it that plain",
+      "That is the rhythm: orient, act, verify, continue",
+      "Each step should leave a trace you can name",
+      "That small check between steps is what makes the workflow reliable",
+      "This part earns its place because",
+      "That matters in practice:"
+    ],
+    "staleFacts": [
+      "Fork the accessibility-agents repository",
+      "80 AI-powered agents",
+      "eighty AI-powered agents",
+      "Build Your Agent (Capstone)",
+      "Build Your Own Agent",
+      "if you finish early",
+      "cross-fork PR"
+    ],
+    "currentFacts": [
+      "The Accessibility Agents collection grows over time. Refer to it as a living catalog rather than asserting a fixed count of agents.",
+      "Challenge 15 (Discover Accessibility Agents) is browse-first. Learners are not required to fork the accessibility-agents repository to complete it.",
+      "Completing Challenge 15 unlocks Challenge 16 (Capstone Project) plus Bonus Challenges A through E. The bonus challenges are a structured unlock path, not \"things to do if you finish early\".",
+      "Challenge 16 is titled \"Capstone Project\". It accepts contributions to Accessibility Agents, GLOW, or any other meaningful repository. Review-ready drafts and contribution plans are valid evidence of completion.",
+      "The Learning Room repository is where Day 1 contributions happen (issue, branch, commit, pull request, merge). It is provisioned per learner.",
+      "Hosts are Alex (warm expert) and Jamie (curious co-host who asks the questions learners hesitate to ask). They are colleagues, not teacher and student."
+    ],
+    "voiceExemplarPath": "C:\\code\\git-going-with-github\\podcasts\\scripts\\challenges\\cc-14-design-an-issue-template.txt",
+    "voiceExemplar": "[ALEX]\nWelcome back. Today we're working with one of those GitHub features that quietly makes open source collaboration much easier: issue templates.\n\n[JAMIE]\nAnd this is a great one for people who have ever opened a blank issue form and thought, what exactly am I supposed to put here?\n\n[ALEX]\nExactly. An issue template turns that blank box into a guided experience. Instead of guessing what maintainers need, contributors get prompts, structure, and clear required fields. That reduces back-and-forth, improves quality, and helps teams act on issues faster.\n\n[JAMIE]\nSo this is not just about formatting. It's about making contributions clearer and more usable.\n\n[ALEX]\nYes, and especially in accessibility work. If someone is reporting an accessibility barrier, a vague report can be hard to reproduce. A thoughtful template can ask where the problem occurred, what assistive technology was involved, what the expected behavior was, and how severe the barrier is.\n\n[PAUSE]\n\n[JAMIE]\nBefore we get into the design challenge, what should learners already have in place?\n\n[ALEX]\nA few practical things. First, you should already know how to work with GitHub issues at a basic level. Second, you need a repository where you can create or edit files, usually your fork or your own repo. Third, it really helps to use an editor with YAML syntax highlighting, such as VS Code.\n\n[JAMIE]\nAnd some things are recommended but not strictly required, right?\n\n[ALEX]\nRight. Familiarity with GitHub Copilot can help if you want to generate variations, but it's optional. Basic terminal comfort is useful, though you can also use the GitHub web editor or github.dev. And if you already filled out the workshop registration template earlier in this course, that template becomes a learning example now.\n\n[JAMIE]\nI like that. You've already used a professional issue template, so now you reverse-engineer it.\n\n[ALEX]\nExactly. Also, there's an administrative note here: this chapter is meant to prepare you for a later workflow using a template-building agent. The advice is to complete the manual template chapter first, then use the automation later.\n\n[JAMIE]\nAnd time-wise?\n\n[ALEX]\nPlan roughly two to two and a half hours if you do the exercises and some YAML troubleshooting.\n\n[PAUSE]\n\n[ALEX]\nThe learning pattern for this challenge is analyze, remix, create, and test.\n\n[JAMIE]\nThat feels approachable. First understand an existing template, then adapt one, then optionally build another version from scratch, then verify it works.\n\n[ALEX]\nThat's the idea. The workshop recommendation frames Challenge 14 as design-focused rather than automation-focused. You're producing evidence of understanding, often as an issue comment or a pull request, rather than trying to satisfy a complicated code runtime.\n\n[JAMIE]\nThough there is still one small autograded requirement in the challenge template itself.\n\n[ALEX]\nYes. For the assigned challenge issue, the autograder checks that a YAML file exists in the repository\n\n[... exemplar continues; match this tone throughout ...]"
+  }
+}

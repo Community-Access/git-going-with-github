@@ -1,11 +1,27 @@
 [
   {
     "speaker": "ALEX",
-    "text": "Welcome back to Git Going with GitHub. This is episode 53: GitHub CLI Reference. I am Alex, and today we are turning GitHub CLI Reference from a list of instructions into a working mental model that actually feels alive."
+    "text": "Welcome back. Today we're looking at the GitHub CLI, which is the `gh` command. It lets you work with GitHub issues, pull requests, repositories, and releases from your terminal."
   },
   {
     "speaker": "JAMIE",
-    "text": "And I am Jamie. I will stop us whenever the instructions sound simple on paper but feel less magical at the keyboard with a screen reader."
+    "text": "So this is different from `git`, right? Because I can already clone, branch, commit, and push with Git."
+  },
+  {
+    "speaker": "ALEX",
+    "text": "Exactly. `git` handles local version control: commits, branches, history, and moving code between your computer and a remote. `gh` handles GitHub-specific work: opening an issue, viewing a pull request, checking CI, creating a release, or opening the current repo in your browser."
+  },
+  {
+    "speaker": "JAMIE",
+    "text": "That distinction helps. Git is the version control tool, and `gh` is the GitHub workflow tool that sits beside it."
+  },
+  {
+    "speaker": "ALEX",
+    "text": "Yes. A good way to learn it is local first, then GitHub. Get comfortable with the Git basics, then add `gh` when you want the GitHub page information without hunting through a web interface. And after each command, listen to or read the result before you keep going."
+  },
+  {
+    "speaker": "JAMIE",
+    "text": "I like that it encourages smaller moves. Clone, inspect, branch, edit, commit, push, then open the pull request. Nothing has to be one giant leap."
   },
   {
     "speaker": "PAUSE",
@@ -13,335 +29,47 @@
   },
   {
     "speaker": "ALEX",
-    "text": "Using the GitHub CLI for issues, pull requests, authentication, and automation-friendly workflows. That is the surface description. Underneath it, we are building judgment: where to focus, what to ignore, and how to verify the result."
+    "text": "To install `gh`, the path depends on your operating system. On Windows, you can use `winget install GitHub.cli`, or download the installer from cli.github.com. On macOS, the common Homebrew command is `brew install gh`."
   },
   {
     "speaker": "JAMIE",
-    "text": "So we are not using the audio as a shortcut around learning. We are using it to make the learning easier to enter and easier to remember."
+    "text": "And Linux has a slightly longer setup, especially on Debian or Ubuntu, because you add the official GitHub CLI package source and then install `gh` with apt."
   },
   {
     "speaker": "ALEX",
-    "text": "Yes. A good audio lesson gives someone enough context to try the work with confidence, even before they open the written material."
-  },
-  {
-    "speaker": "PAUSE",
-    "text": ""
+    "text": "Right. The appendix gives the full Debian and Ubuntu command block, and it is worth copying from the official reference rather than retyping it from memory. Once installed, run `gh --version` to confirm the command is available."
   },
   {
     "speaker": "JAMIE",
-    "text": "Okay, set the room for us. What are we walking into?"
+    "text": "Then comes signing in, which is the part people sometimes worry about."
   },
   {
     "speaker": "ALEX",
-    "text": "Your Terminal, Supercharged for GitHub: Who this is for: You want to manage GitHub -- issues, pull requests, repos, releases -- from your terminal without opening a browser. The next useful detail is concrete: The GitHub CLI (gh) gives you full access to GitHub from the command line, with clean plain-text output that works beautifully with screen readers."
-  },
-  {
-    "speaker": "ALEX",
-    "text": "The next layer is this. Here is the learner-facing version. Or download the installer from cli.github.com. A good GitHub workflow is like a well-run meeting: everyone knows the topic, the next action, and who has the floor."
+    "text": "The command is `gh auth login`. It asks where you use GitHub, usually GitHub.com unless your organization uses Enterprise. Then it asks for your preferred protocol, HTTPS or SSH, and whether to authenticate with a browser."
   },
   {
     "speaker": "JAMIE",
-    "text": "What is the safe way to learn from that example?"
+    "text": "And if you choose the browser option, the terminal hands you off to sign in, then you come back to the terminal when GitHub confirms it worked."
   },
   {
     "speaker": "ALEX",
-    "text": "Verify installation has three jobs: name the idea, give the learner a move, and show what counts as evidence."
-  },
-  {
-    "speaker": "ALEX",
-    "text": "Treat examples as spoken recipes, not decorations. You may hear something like gh --version. Read the command, understand what it changes, then run it only when the repository state matches the lesson."
+    "text": "Exactly. After that, `gh auth status` checks the signed-in account. `gh auth logout` signs out. `gh auth refresh` updates credentials or adds permissions, which GitHub calls scopes."
   },
   {
     "speaker": "JAMIE",
-    "text": "That feels much more doable when you say it as one move."
+    "text": "One thing I appreciate is that the login prompt is plain text. Arrow keys move through choices, Enter confirms, and the browser step is only one part of the flow."
   },
   {
     "speaker": "ALEX",
-    "text": "Right. The magic is not speed. The magic is knowing what changed and why it matters."
-  },
-  {
-    "speaker": "PAUSE",
-    "text": ""
+    "text": "On Windows, the appendix recommends setting up Windows Terminal once and reusing it. Keep a dedicated shell profile for Git work, learn mark mode with Ctrl+Shift+M for reviewing and copying output line by line, and use Ctrl+Shift+P for the command palette. Stable font size and contrast also help a lot."
   },
   {
     "speaker": "JAMIE",
-    "text": "What should happen before anyone copies and runs it?"
+    "text": "And the setup advice is not only for screen reader users. Low vision users can scale the terminal and choose contrast settings, and sighted users can watch for the greater-than marker that shows the current interactive choice."
   },
   {
     "speaker": "ALEX",
-    "text": "Anchor this part on Authenticating. After signing in, return to the terminal. This is the part to say slowly: gh auth login is an interactive prompt -- navigate with Arrow keys, confirm with Enter."
-  },
-  {
-    "speaker": "ALEX",
-    "text": "For a learner, the useful signals are concrete. Where do you use GitHub? \u00e2\u2020\u2019 GitHub.com (or Enterprise). Preferred protocol? \u00e2\u2020\u2019 HTTPS (or SSH). Authenticate with browser? \u00e2\u2020\u2019 Yes -- your browser opens for OAuth sign-in."
-  },
-  {
-    "speaker": "ALEX",
-    "text": "Treat examples as spoken recipes, not decorations. You may hear something like gh auth login. Check your auth status at any time; gh auth status; Log out; gh auth logout; Refresh credentials / add new scopes; gh auth refresh. Read the command, understand what it changes, then run it only when the repository state matches the lesson."
-  },
-  {
-    "speaker": "JAMIE",
-    "text": "What does someone need before they touch the keyboard?"
-  },
-  {
-    "speaker": "ALEX",
-    "text": "Learning Cards: Getting Started with gh has three jobs: name the idea, give the learner a move, and show what counts as evidence."
-  },
-  {
-    "speaker": "ALEX",
-    "text": "The parts worth keeping in working memory are these. gh auth login uses plain-text arrow-key prompts -- every option is announced as you arrow through the list. After authentication, gh auth status confirms your login in a single readable line -- no browser needed. All gh output is plain text with no hidden elements, making it one of the most screen-reader-friendly GitHub interfaces. Increase your terminal font size before running gh commands -- all output scales with your terminal settings. Use a high-contrast terminal theme (light text on dark background, or vice versa) for comfortable reading of command output. gh output is plain text with no color-dependent meaning -- colors are supplementary labels, not the only indicator."
-  },
-  {
-    "speaker": "ALEX",
-    "text": "The useful habit is simple: orient, act, verify, then continue. That pause between action and trust is part of the work."
-  },
-  {
-    "speaker": "JAMIE",
-    "text": "How do you keep commands from becoming magic words?"
-  },
-  {
-    "speaker": "ALEX",
-    "text": "2. Repos -- Clone, Fork, Create, View has three jobs: name the idea, give the learner a move, and show what counts as evidence."
-  },
-  {
-    "speaker": "ALEX",
-    "text": "Treat examples as spoken recipes, not decorations. You may hear something like Clone a repository (automatically sets up the remote); gh repo clone owner/repo-name; Fork a repo and clone your fork in one step; gh repo fork owner/repo-name --clone; Fork without cloning (creates the fork on GitHub only); gh repo fork owner/repo-name. Read the command, understand what it changes, then run it only when the repository state matches the lesson."
-  },
-  {
-    "speaker": "PAUSE",
-    "text": ""
-  },
-  {
-    "speaker": "JAMIE",
-    "text": "What should they understand before typing anything?"
-  },
-  {
-    "speaker": "ALEX",
-    "text": "Creating issues has three jobs: name the idea, give the learner a move, and show what counts as evidence."
-  },
-  {
-    "speaker": "ALEX",
-    "text": "Treat examples as spoken recipes, not decorations. You may hear something like Create an issue interactively (opens a prompt for title, body, labels, etc.); gh issue create; Create with all details inline; gh issue create \\; --title \"Screen reader can't navigate the settings menu\" \\; --body \"When using NVDA with Firefox, the Settings. Read the command, understand what it changes, then run it only when the repository state matches the lesson."
-  },
-  {
-    "speaker": "ALEX",
-    "text": "A solid issue habit is to read the title, the body, and the timeline before acting. You are listening for the requested action, the missing evidence, and the person who needs a response."
-  },
-  {
-    "speaker": "JAMIE",
-    "text": "Let's pause on Listing and filtering issues. What should a learner take away from it?"
-  },
-  {
-    "speaker": "ALEX",
-    "text": "Listing and filtering issues has three jobs: name the idea, give the learner a move, and show what counts as evidence."
-  },
-  {
-    "speaker": "ALEX",
-    "text": "Treat examples as spoken recipes, not decorations. You may hear something like List open issues (current repo); gh issue list; List issues with filters; gh issue list --label \"accessibility\"; gh issue list --label \"good first issue\"; gh issue list --assignee \"@me\"; gh issue list --state closed; gh issue list --limit 50; Search issues by. Read the command, understand what it changes, then run it only when the repository state matches the lesson."
-  },
-  {
-    "speaker": "JAMIE",
-    "text": "Now it sounds like a workflow instead of a wall of instructions."
-  },
-  {
-    "speaker": "ALEX",
-    "text": "That is where confidence comes from: not from never getting lost, but from knowing how to recover."
-  },
-  {
-    "speaker": "JAMIE",
-    "text": "Let's pause on Viewing issues. What should a learner take away from it?"
-  },
-  {
-    "speaker": "ALEX",
-    "text": "The teaching point here is not the label; it is the move. gh issue view 42 outputs clean plain text -- title, metadata, and body all formatted without noise. That is the difference between guessing and knowing: Much faster than navigating a browser page with a screen reader."
-  },
-  {
-    "speaker": "ALEX",
-    "text": "Treat examples as spoken recipes, not decorations. You may hear something like View an issue (renders Markdown as plain text in the terminal); gh issue view 42; Open the issue in your browser; gh issue view 42 --web; View comments on an issue; gh issue view 42 --comments. Read the command, understand what it changes, then run it only when the repository state matches the lesson."
-  },
-  {
-    "speaker": "PAUSE",
-    "text": ""
-  },
-  {
-    "speaker": "JAMIE",
-    "text": "Let's pause on Commenting and updating. What should a learner take away from it?"
-  },
-  {
-    "speaker": "ALEX",
-    "text": "Commenting and updating has three jobs: name the idea, give the learner a move, and show what counts as evidence."
-  },
-  {
-    "speaker": "ALEX",
-    "text": "Treat examples as spoken recipes, not decorations. You may hear something like Add a comment to an issue; gh issue comment 42 --body \"I can reproduce this on Windows 11 with NVDA 2024.1.\"; Comment from a file; gh issue comment 42 --body-file./my-comment.md; Edit an issue (title, body, labels, assignees); gh issue edit 42 --title \"Updated. Read the command, understand what it changes, then run it only when the repository state matches the lesson."
-  },
-  {
-    "speaker": "JAMIE",
-    "text": "Let's pause on Pinning and locking. What should a learner take away from it?"
-  },
-  {
-    "speaker": "ALEX",
-    "text": "Pinning and locking has three jobs: name the idea, give the learner a move, and show what counts as evidence."
-  },
-  {
-    "speaker": "ALEX",
-    "text": "Treat examples as spoken recipes, not decorations. You may hear something like Pin an issue (shows at top of the Issues tab); gh issue pin 42; Lock an issue (prevents new comments); gh issue lock 42 --reason \"resolved\". Read the command, understand what it changes, then run it only when the repository state matches the lesson."
-  },
-  {
-    "speaker": "JAMIE",
-    "text": "Let's pause on Creating a PR. What should a learner take away from it?"
-  },
-  {
-    "speaker": "ALEX",
-    "text": "Creating a PR has three jobs: name the idea, give the learner a move, and show what counts as evidence."
-  },
-  {
-    "speaker": "ALEX",
-    "text": "Treat examples as spoken recipes, not decorations. You may hear something like Create a PR interactively (prompts for title, body, base branch, etc.); gh pr create; Create with all details inline; gh pr create \\; --title \"Add keyboard navigation to settings menu\" \\; --body \"Closes 42. Adds Tab/arrow key support to the settings dropdown.\". Read the command, understand what it changes, then run it only when the repository state matches the lesson."
-  },
-  {
-    "speaker": "ALEX",
-    "text": "A solid pull request habit is to separate three questions: what changed, why it changed, and what still needs review. That keeps the conversation useful instead of noisy."
-  },
-  {
-    "speaker": "PAUSE",
-    "text": ""
-  },
-  {
-    "speaker": "JAMIE",
-    "text": "Let's pause on Listing and viewing PRs. What should a learner take away from it?"
-  },
-  {
-    "speaker": "ALEX",
-    "text": "Listing and viewing PRs has three jobs: name the idea, give the learner a move, and show what counts as evidence."
-  },
-  {
-    "speaker": "ALEX",
-    "text": "Treat examples as spoken recipes, not decorations. You may hear something like List open PRs; gh pr list; List with filters; gh pr list --state closed; gh pr list --author \"@me\"; gh pr list --label \"accessibility\"; gh pr list --search \"screen reader\"; View a PR (title, description, status, checks); gh pr view 56; View the diff of a PR. Read the command, understand what it changes, then run it only when the repository state matches the lesson."
-  },
-  {
-    "speaker": "JAMIE",
-    "text": "That is the kind of detail that keeps a screen reader user oriented."
-  },
-  {
-    "speaker": "ALEX",
-    "text": "Yes. The named thing - the heading, tab, field, branch, or button - is the handhold."
-  },
-  {
-    "speaker": "JAMIE",
-    "text": "Let's pause on Reviewing PRs. What should a learner take away from it?"
-  },
-  {
-    "speaker": "ALEX",
-    "text": "Reviewing PRs has three jobs: name the idea, give the learner a move, and show what counts as evidence."
-  },
-  {
-    "speaker": "ALEX",
-    "text": "Treat examples as spoken recipes, not decorations. You may hear something like Approve a PR; gh pr review 56 --approve; gh pr review 56 --approve --body \"Tested with NVDA -- keyboard nav works perfectly. LGTM!\"; Request changes; gh pr review 56 --request-changes --body \"The focus indicator disappears on the last menu item.\"; Leave a. Read the command, understand what it changes, then run it only when the repository state matches the lesson."
-  },
-  {
-    "speaker": "JAMIE",
-    "text": "Let's pause on Checking CI status. What should a learner take away from it?"
-  },
-  {
-    "speaker": "ALEX",
-    "text": "Checking CI status has three jobs: name the idea, give the learner a move, and show what counts as evidence."
-  },
-  {
-    "speaker": "ALEX",
-    "text": "Treat examples as spoken recipes, not decorations. You may hear something like View all CI checks for a PR; gh pr checks 56; Watch checks update in real time (refreshes every 10s); gh pr checks 56 --watch; View checks for the current branch; gh pr checks. Read the command, understand what it changes, then run it only when the repository state matches the lesson."
-  },
-  {
-    "speaker": "PAUSE",
-    "text": ""
-  },
-  {
-    "speaker": "JAMIE",
-    "text": "Let's pause on Merging PRs. What should a learner take away from it?"
-  },
-  {
-    "speaker": "ALEX",
-    "text": "Merging PRs has three jobs: name the idea, give the learner a move, and show what counts as evidence."
-  },
-  {
-    "speaker": "ALEX",
-    "text": "Treat examples as spoken recipes, not decorations. You may hear something like Merge a PR (interactive -- prompts for merge strategy); gh pr merge 56; Merge with a specific strategy; gh pr merge 56 --merge Creates a merge commit; gh pr merge 56 --squash Squashes all commits into one; gh pr merge 56 --rebase Rebases commits onto base. Read the command, understand what it changes, then run it only when the repository state matches the lesson."
-  },
-  {
-    "speaker": "JAMIE",
-    "text": "Let's pause on Other PR operations. What should a learner take away from it?"
-  },
-  {
-    "speaker": "ALEX",
-    "text": "Other PR operations has three jobs: name the idea, give the learner a move, and show what counts as evidence."
-  },
-  {
-    "speaker": "ALEX",
-    "text": "Treat examples as spoken recipes, not decorations. You may hear something like Convert a draft PR to ready for review; gh pr ready 56; Mark a ready PR back as draft; gh pr ready 56 --undo; Update your PR branch with the latest from base (equivalent to \"Update branch\" button); gh pr update-branch 56; gh pr update-branch 56 --rebase; Close. Read the command, understand what it changes, then run it only when the repository state matches the lesson."
-  },
-  {
-    "speaker": "JAMIE",
-    "text": "Let's pause on 5. Releases -- Create, List, Upload. What should a learner take away from it?"
-  },
-  {
-    "speaker": "ALEX",
-    "text": "Put 5. Releases -- Create, List, Upload into plain language. See also: Appendix H: Releases, Tags, and Insights for the GitHub.com interface side of releases. The interface gets easier when it becomes a set of named places instead of a wall of controls."
-  },
-  {
-    "speaker": "ALEX",
-    "text": "Treat examples as spoken recipes, not decorations. You may hear something like Create a release interactively; gh release create v1.2.0; Create with all details; gh release create v1.2.0 \\; --title \"Version 1.2.0 -- Accessibility Improvements\" \\; --notes \"- Fixed keyboard navigation in settings\\n- Added ARIA labels to all form inputs\". Read the command, understand what it changes, then run it only when the repository state matches the lesson."
-  },
-  {
-    "speaker": "JAMIE",
-    "text": "So the learner is not behind if they stop there and check the page."
-  },
-  {
-    "speaker": "ALEX",
-    "text": "Yes. Pausing to verify is not a detour; it is how you keep control of the workflow."
-  },
-  {
-    "speaker": "PAUSE",
-    "text": ""
-  },
-  {
-    "speaker": "JAMIE",
-    "text": "Let's pause on 6. Search -- Issues, PRs, Repos, Code. What should a learner take away from it?"
-  },
-  {
-    "speaker": "ALEX",
-    "text": "6. Search -- Issues, PRs, Repos, Code has three jobs: name the idea, give the learner a move, and show what counts as evidence."
-  },
-  {
-    "speaker": "ALEX",
-    "text": "Treat examples as spoken recipes, not decorations. You may hear something like Search issues across all of GitHub; gh search issues \"screen reader navigation\" --label accessibility; gh search issues \"keyboard shortcut\" --repo owner/repo-name; gh search issues \"help wanted\" --language javascript --limit 20; Search pull requests; gh search. Read the command, understand what it changes, then run it only when the repository state matches the lesson."
-  },
-  {
-    "speaker": "JAMIE",
-    "text": "Let's pause on Labels. What should a learner take away from it?"
-  },
-  {
-    "speaker": "ALEX",
-    "text": "Labels has three jobs: name the idea, give the learner a move, and show what counts as evidence."
-  },
-  {
-    "speaker": "ALEX",
-    "text": "Treat examples as spoken recipes, not decorations. You may hear something like List labels in the current repo; gh label list; Create a label; gh label create \"accessibility\" --color \"0075ca\" --description \"Accessibility improvements\"; Clone labels from another repo (copies all their labels to yours); gh label clone owner/source-repo. Read the command, understand what it changes, then run it only when the repository state matches the lesson."
-  },
-  {
-    "speaker": "ALEX",
-    "text": "A solid project habit is to treat metadata as decision support. Labels, status, assignees, and notifications tell you what kind of attention the work needs."
-  },
-  {
-    "speaker": "JAMIE",
-    "text": "Let's pause on Milestones. What should a learner take away from it?"
-  },
-  {
-    "speaker": "ALEX",
-    "text": "Milestones has three jobs: name the idea, give the learner a move, and show what counts as evidence."
-  },
-  {
-    "speaker": "ALEX",
-    "text": "Treat examples as spoken recipes, not decorations. You may hear something like List milestones; gh api repos/{owner}/{repo}/milestones --jq '.[].title'; Create a milestone; gh api repos/{owner}/{repo}/milestones \\; --method POST \\; --field title=\"v2.0 Launch\" \\; --field description=\"All features for the v2.0 release\" \\; --field due. Read the command, understand what it changes, then run it only when the repository state matches the lesson."
+    "text": "One safety note before we leave setup: stick with options shown in `gh --help` or the official CLI manual, especially in class or production work. Undocumented flags can change or disappear."
   },
   {
     "speaker": "PAUSE",
@@ -349,39 +77,39 @@
   },
   {
     "speaker": "ALEX",
-    "text": "Here is the practical turn. Here is the learner-facing version. By default gh outputs human-readable text. That gives the learner a foothold: for scripting or custom display, you can get raw JSON and filter it. A good GitHub workflow is like a well-run meeting: everyone knows the topic, the next action, and who has the floor."
+    "text": "Repository commands are where `gh` starts feeling fast. `gh repo clone owner/repo-name` clones a repository and sets up the remote for you."
   },
   {
     "speaker": "JAMIE",
-    "text": "Let's pause on --json flag. What should a learner take away from it?"
+    "text": "So instead of copying a URL from the website, I can use the owner and repo name directly."
   },
   {
     "speaker": "ALEX",
-    "text": "--json flag has three jobs: name the idea, give the learner a move, and show what counts as evidence."
-  },
-  {
-    "speaker": "ALEX",
-    "text": "Treat examples as spoken recipes, not decorations. You may hear something like Get issue data as JSON; gh issue view 42 --json title,body,labels,state; Get PR data as JSON; gh pr view 56 --json title,number,state,mergeable,reviews; List issues as JSON; gh issue list --json number,title,labels,assignees. Read the command, understand what it changes, then run it only when the repository state matches the lesson."
+    "text": "Exactly. If you need a fork, `gh repo fork owner/repo-name --clone` creates the fork and clones your fork in one flow. If you only want the fork on GitHub, use `gh repo fork owner/repo-name` without `--clone`."
   },
   {
     "speaker": "JAMIE",
-    "text": "That is a useful checkpoint before anyone starts pressing keys."
+    "text": "What about starting something new?"
   },
   {
     "speaker": "ALEX",
-    "text": "Exactly. Checkpoints turn uncertainty into information."
+    "text": "Use `gh repo create my-new-project`. You can add `--public`, `--private`, and a description. Then `gh repo view` shows details for the current repository, and `gh repo view owner/repo-name` shows details for another one."
   },
   {
     "speaker": "JAMIE",
-    "text": "Let's pause on --jq flag (filter JSON inline). What should a learner take away from it?"
+    "text": "And `gh repo view --web` opens the repo in the browser when the web page really is useful."
   },
   {
     "speaker": "ALEX",
-    "text": "--jq flag (filter JSON inline) has three jobs: name the idea, give the learner a move, and show what counts as evidence."
+    "text": "Yes. You can list your repositories with `gh repo list`, raise the count with `--limit 50`, or list an organization's repos with `gh repo list my-org --limit 100`. There are also admin-level commands: `gh repo archive owner/repo-name`, and `gh repo delete owner/repo-name --confirm`."
+  },
+  {
+    "speaker": "JAMIE",
+    "text": "Delete with confirm sounds like a command to slow down around."
   },
   {
     "speaker": "ALEX",
-    "text": "Treat examples as spoken recipes, not decorations. You may hear something like List just issue numbers and titles; gh issue list --json number,title --jq '.[] \"\\(.number): \\(.title)\"'; Get the names of all labels on an issue; gh issue view 42 --json labels --jq '.labels[].name'; Count open PRs; gh pr list --json number --jq 'length'. Read the command, understand what it changes, then run it only when the repository state matches the lesson."
+    "text": "Definitely. Read the target repository name before pressing Enter. And if you're working from a fork, `gh repo sync` or `gh repo sync --branch main` helps bring your fork up to date with its upstream repository."
   },
   {
     "speaker": "PAUSE",
@@ -389,131 +117,43 @@
   },
   {
     "speaker": "JAMIE",
-    "text": "Let's pause on --template flag (Go templates). What should a learner take away from it?"
+    "text": "Issues feel like a natural place for the CLI, because there is so much listing, filtering, and checking."
   },
   {
     "speaker": "ALEX",
-    "text": "The reason this matters is simple: --json with --jq produces clean, predictable output -- ideal for piping to a file or reading with a screen reader. That matters in practice: The default human-readable output is also clean, but JSON gives you precise control over what's announced."
-  },
-  {
-    "speaker": "ALEX",
-    "text": "Treat examples as spoken recipes, not decorations. You may hear something like Custom formatted output; gh issue list --template '{{range.}} {{.number}} {{.title}} ({{.state}}){{\"\\n\"}}{{end}}'. Read the command, understand what it changes, then run it only when the repository state matches the lesson."
-  },
-  {
-    "speaker": "ALEX",
-    "text": "Another way to ground it. Learning Cards: Output Formatting has three jobs: name the idea, give the learner a move, and show what counts as evidence."
-  },
-  {
-    "speaker": "ALEX",
-    "text": "That becomes easier when you listen for these cues. Use --json with --jq to extract exactly the fields you need -- this eliminates table formatting noise and reads as clean key-value pairs. Pipe long output to a file (gh issue list --json title issues.txt) and open it in VS Code for structured navigation with Alt+F2. Go templates (--template) let you define a single-line-per-item format that reads naturally with arrow keys. The default table output aligns columns with spaces -- increase terminal font size so columns stay readable. JSON output with --jq strips visual formatting and gives compact text that scales cleanly with any font size. Pipe output to VS Code (gh pr view 42 --json body --jq '.body' code -) to read it with your preferred editor theme and zoom."
+    "text": "They are a great fit. `gh issue create` starts an interactive prompt for the title, body, labels, and related fields. If you already know the details, you can provide them inline with options like `--title`, `--body`, `--label`, and `--assignee @me`."
   },
   {
     "speaker": "JAMIE",
-    "text": "Let's pause on 9. Aliases -- Create Your Own Shortcuts. What should a learner take away from it?"
+    "text": "And for a long accessibility report, typing everything into a prompt might not be ideal."
   },
   {
     "speaker": "ALEX",
-    "text": "If the interface shifts, 9. Aliases -- Create Your Own Shortcuts is still useful because aliases let you create custom gh commands from long commands you run often."
-  },
-  {
-    "speaker": "ALEX",
-    "text": "Treat examples as spoken recipes, not decorations. You may hear something like Create an alias; gh alias set bugs 'issue list --label bug'; gh alias set my-prs 'pr list --author @me'; gh alias set review-ready 'pr list --label \"ready for review\"'; Use your alias; gh bugs; gh my-prs; gh review-ready; List all aliases; gh alias list. Read the command, understand what it changes, then run it only when the repository state matches the lesson."
-  },
-  {
-    "speaker": "PAUSE",
-    "text": ""
+    "text": "Right. Write the report in a Markdown file first, then run `gh issue create --title \"Accessibility audit findings\" --body-file./report.md`. That lets you use your editor, spell check, search, and review commands before publishing."
   },
   {
     "speaker": "JAMIE",
-    "text": "Let's pause on Useful aliases to set up. What should a learner take away from it?"
+    "text": "Once issues exist, how do you find the right one?"
   },
   {
     "speaker": "ALEX",
-    "text": "Useful aliases to set up has three jobs: name the idea, give the learner a move, and show what counts as evidence."
-  },
-  {
-    "speaker": "ALEX",
-    "text": "Treat examples as spoken recipes, not decorations. You may hear something like Issues assigned to you; gh alias set mine 'issue list --assignee @me'; Your open PRs; gh alias set mypr 'pr list --author @me --state open'; Check CI on current branch's PR; gh alias set ci 'pr checks'; View current PR; gh alias set pr 'pr view'. Read the command, understand what it changes, then run it only when the repository state matches the lesson."
+    "text": "`gh issue list` shows open issues in the current repo. Add filters like `--label accessibility`, `--label \"good first issue\"`, `--assignee @me`, `--state closed`, or `--limit 50`. You can search with `gh issue list --search \"screen reader\"`, and you can point at another repository with `--repo owner/repo-name`."
   },
   {
     "speaker": "JAMIE",
-    "text": "I like that because it gives people permission to slow down."
+    "text": "Viewing is where the accessibility benefit really shows up for me."
   },
   {
     "speaker": "ALEX",
-    "text": "That is the goal. We want the page to feel explorable, not fragile."
+    "text": "Yes. `gh issue view 42` renders the title, metadata, and Markdown body as plain terminal text. `gh issue view 42 --comments` includes comments, and `gh issue view 42 --web` opens the browser if you want the full web page."
   },
   {
     "speaker": "JAMIE",
-    "text": "Let's pause on 10. Extensions -- Adding New Commands. What should a learner take away from it?"
+    "text": "Plain text means I can review line by line instead of crossing through navigation regions, sidebars, buttons, and reactions."
   },
   {
     "speaker": "ALEX",
-    "text": "The teaching point here is not the label; it is the move. Extensions add new gh subcommands written by the community."
-  },
-  {
-    "speaker": "ALEX",
-    "text": "Treat examples as spoken recipes, not decorations. You may hear something like Browse available extensions; gh extension search; Install an extension; gh extension install owner/gh-extension-name; List installed extensions; gh extension list; Update all extensions; gh extension upgrade --all; Update a specific extension; gh extension. Read the command, understand what it changes, then run it only when the repository state matches the lesson."
-  },
-  {
-    "speaker": "JAMIE",
-    "text": "Let's pause on 11. Copilot in the CLI. What should a learner take away from it?"
-  },
-  {
-    "speaker": "ALEX",
-    "text": "This part earns its place because install the Copilot extension once, then ask coding and git questions without leaving the terminal. The useful version is: Copilot CLI shows the suggested command, explains what it does, and asks whether to run it - perfect for learning while doing. That is the difference between following directions and owning the workflow."
-  },
-  {
-    "speaker": "ALEX",
-    "text": "Treat examples as spoken recipes, not decorations. You may hear something like Install (one time); gh extension install github/gh-copilot; Ask for a command suggestion; gh copilot suggest \"squash my last 4 commits into one\"; gh copilot suggest \"find which commit introduced a bug in auth.js\"; gh copilot suggest \"create a pull request from. Read the command, understand what it changes, then run it only when the repository state matches the lesson."
-  },
-  {
-    "speaker": "PAUSE",
-    "text": ""
-  },
-  {
-    "speaker": "JAMIE",
-    "text": "Let's pause on Auto model selection. What should a learner take away from it?"
-  },
-  {
-    "speaker": "ALEX",
-    "text": "Auto model selection: As of early 2026, gh copilot uses auto model selection by default - it picks the best available model for your request without you needing to specify one. That is the difference between guessing and knowing: You can still request a specific model using the --model flag if you prefer."
-  },
-  {
-    "speaker": "ALEX",
-    "text": "Treat examples as spoken recipes, not decorations. You may hear something like Let Copilot choose automatically (default); gh copilot suggest \"create a pull request from my current branch\"; Request a specific model; gh copilot suggest --model gpt-5 \"create a pull request from my current branch\". Read the command, understand what it changes, then run it only when the repository state matches the lesson."
-  },
-  {
-    "speaker": "JAMIE",
-    "text": "Let's pause on Telemetry opt-out. What should a learner take away from it?"
-  },
-  {
-    "speaker": "ALEX",
-    "text": "Here is the learner-facing version. As of gh CLI 2.70 (April 2026), gh collects anonymized usage telemetry by default to improve the product. This is where the workflow starts to feel magical, because the result becomes visible and explainable: Or set the environment variable GH NO UPDATE NOTIFIER=1 to suppress update notifications only."
-  },
-  {
-    "speaker": "ALEX",
-    "text": "Treat examples as spoken recipes, not decorations. You may hear something like gh config set telemetry disabled. Read the command, understand what it changes, then run it only when the repository state matches the lesson."
-  },
-  {
-    "speaker": "JAMIE",
-    "text": "What is the one idea that makes the next few steps less mysterious?"
-  },
-  {
-    "speaker": "ALEX",
-    "text": "This is the move inside 12. Screen Reader Tips: the GitHub CLI is one of the most screen-reader-friendly ways to use GitHub. That gives the learner a foothold: here's why and how to get the most out of it."
-  },
-  {
-    "speaker": "JAMIE",
-    "text": "That is the part I would want someone to say out loud while they work."
-  },
-  {
-    "speaker": "ALEX",
-    "text": "Exactly. A learner should always know what they are trying to prove before they take the next action."
-  },
-  {
-    "speaker": "ALEX",
-    "text": "A solid navigation habit is to prove where you are before activating controls. Headings, landmarks, and the address bar are not trivia; they are your map."
+    "text": "For updates, use `gh issue comment 42 --body \"I can reproduce this on Windows 11 with NVDA.\"` or `--body-file./my-comment.md`. You can edit an issue title, add or remove labels, add an assignee, close it with a comment or a reason, and reopen it later. Maintainers can also pin an issue so it appears at the top of the Issues tab, or lock it to prevent new comments when a discussion is resolved or needs to cool down."
   },
   {
     "speaker": "PAUSE",
@@ -521,71 +161,47 @@
   },
   {
     "speaker": "ALEX",
-    "text": "This is where confidence starts to build. Why the CLI works so well has three jobs: name the idea, give the learner a move, and show what counts as evidence."
-  },
-  {
-    "speaker": "ALEX",
-    "text": "Here are the anchors worth keeping. Plain text output -- no visual noise, no unlabelled buttons, no hidden dialogs. Predictable structure -- every command produces consistent output you can navigate with arrow keys. No focus traps -- you control when you read output; nothing streams unexpectedly. Keyboard-first by design -- everything is a command you type."
+    "text": "Pull requests follow a similar pattern, but they connect your branch to a review process. After you commit and push your branch, `gh pr create` walks you through the title, body, base branch, and other details."
   },
   {
     "speaker": "JAMIE",
-    "text": "Let's pause on Tips by task. What should a learner take away from it?"
+    "text": "And if I already know what I want, I can create it without the prompt."
   },
   {
     "speaker": "ALEX",
-    "text": "The reason this matters is simple: creating content without a browser."
-  },
-  {
-    "speaker": "ALEX",
-    "text": "Treat examples as spoken recipes, not decorations. You may hear something like Pipe output to less for page-by-page reading; gh issue view 42 less; Save to a file and open in your editor; gh pr view 56 pr-56.md; code pr-56.md. Limit results to a manageable number; gh issue list --limit 10; Combine with search to narrow down; gh issue list --search \"keyboard\" --limit 5. Read the command, understand what it changes, then run it only when the repository state matches the lesson."
-  },
-  {
-    "speaker": "ALEX",
-    "text": "That connects to another useful point. NVDA / JAWS (Windows) has three jobs: name the idea, give the learner a move, and show what counts as evidence."
-  },
-  {
-    "speaker": "ALEX",
-    "text": "On the ground, that means a few things. Run gh commands in Windows Terminal or the VS Code integrated terminal -- both work well with NVDA/JAWS. Use Insert+Down (NVDA) or Insert+F12 (JAWS) to read the current line of terminal output. For long output, use less and navigate with Space (next page) and b (back)."
-  },
-  {
-    "speaker": "PAUSE",
-    "text": ""
+    "text": "Yes. You can pass a title, body, base branch, and labels inline. You can also create a draft with `--draft`, use `--body-file` to pull the description from a Markdown file, or use `gh pr create --web` to open the browser form."
   },
   {
     "speaker": "JAMIE",
-    "text": "If I am listening before the workshop starts, what should settle in my mind first?"
+    "text": "Draft is useful when the work is visible but not ready for review yet."
   },
   {
     "speaker": "ALEX",
-    "text": "VoiceOver (macOS) has three jobs: name the idea, give the learner a move, and show what counts as evidence."
-  },
-  {
-    "speaker": "ALEX",
-    "text": "Here is what that changes in practice. Run gh in Terminal.app or VS Code integrated terminal. VO+Right moves through terminal output character by character; VO+Down line by line. Use Ctrl+C to stop a running command if output is too long."
-  },
-  {
-    "speaker": "ALEX",
-    "text": "Now bring the learner back to the room. Learning Cards: Screen Reader CLI Workflow has three jobs: name the idea, give the learner a move, and show what counts as evidence."
-  },
-  {
-    "speaker": "ALEX",
-    "text": "The room should hear these as checkpoints. gh is keyboard-first by design -- no focus traps, no streaming, no unlabelled buttons; everything is typed and read as plain text. Use Insert+Down (NVDA) or Insert+F12 (JAWS) to read the current line, and arrow keys to move through multi-line output. Write issue and PR bodies in a text file first, then use --body-file./issue.md to submit -- much easier than composing inline. Terminal output from gh has no icons or images -- all information is conveyed as text that scales with your terminal font. Use --limit 10 on list commands to keep output short enough to scan comfortably without scrolling. Run gh in the VS Code integrated terminal to benefit from VS Code's zoom, themes, and Accessible View (Alt+F2)."
+    "text": "Exactly. To keep track of review work, `gh pr list` shows open pull requests. Filters can narrow by author, assignee, label, base branch, or state. `gh pr view` shows the title, description, review status, and checks for the current branch's pull request."
   },
   {
     "speaker": "JAMIE",
-    "text": "So this is less about memorizing and more about noticing."
+    "text": "What if I need to inspect the actual code changes?"
   },
   {
     "speaker": "ALEX",
-    "text": "Right. Once the learner can name the move, the interface becomes much less intimidating."
+    "text": "Use `gh pr diff` for the patch, or `gh pr view --web` if a visual web diff is better for that moment. You can also run `gh pr checkout 123` to check out someone else's pull request branch locally and test it."
   },
   {
     "speaker": "JAMIE",
-    "text": "Where do you want a learner to place their attention here?"
+    "text": "The review commands are the ones I always forget."
   },
   {
     "speaker": "ALEX",
-    "text": "The teaching point here is not the label; it is the move. Next: Appendix J: Codespaces Back: Appendix H: GitHub Desktop Teaching chapter: Chapter 01: Choose Your Tools."
+    "text": "They are direct: approve, request changes, or leave a comment-only review. For status, `gh pr checks` shows CI results, `gh pr checks --watch` refreshes while checks run, and you can check the current branch's PR too. For merging, `gh pr merge` can prompt for the merge strategy, or you can specify merge, squash, or rebase, enable auto-merge when checks pass, and delete the branch after merging."
+  },
+  {
+    "speaker": "JAMIE",
+    "text": "And if the state changes, there are commands for that as well."
+  },
+  {
+    "speaker": "ALEX",
+    "text": "Yes. You can mark a draft ready for review, move a ready PR back to draft, update the branch with the latest base branch, close without merging, reopen a closed PR, and add a comment. The CLI is especially good when you know the PR number and the action you want."
   },
   {
     "speaker": "PAUSE",
@@ -593,11 +209,31 @@
   },
   {
     "speaker": "ALEX",
-    "text": "That matters because of the next idea. This part earns its place because use this map to verify facts for each major section in this file."
+    "text": "Releases are another area where the CLI keeps repeatable work tidy. You can create a release interactively, create one with all details inline, or load notes from a file."
+  },
+  {
+    "speaker": "JAMIE",
+    "text": "And there are different release states, right? Published, pre-release, and draft."
   },
   {
     "speaker": "ALEX",
-    "text": "These are the details that keep the idea from floating away. Your Terminal, Supercharged for GitHub: GitHub Docs, home, GitHub Changelog, GitHub CLI manual, GitHub Copilot CLI docs, About Git. Installing and Authenticating: GitHub Docs, home, GitHub Changelog, GitHub CLI manual, GitHub Copilot CLI docs, GitHub security features. Repos -- Clone, Fork, Create, View: GitHub Docs, home, GitHub Changelog, GitHub CLI manual, GitHub Copilot CLI docs, About Git. Issues -- Create, List, View, Comment, Close: GitHub Docs, home, GitHub Changelog, GitHub CLI manual, GitHub Copilot CLI docs, About Git. Pull Requests -- Create, Review, Merge, Check: GitHub Docs, home, GitHub Changelog, GitHub CLI manual, GitHub Copilot CLI docs, About Git. Releases -- Create, List, Upload: GitHub Docs, home, GitHub Changelog, GitHub CLI manual, GitHub Copilot CLI docs, About releases."
+    "text": "Right. A pre-release signals that the version is not final, and a draft release lets maintainers prepare everything before publishing. You can upload files to a release, list releases, view one, download release assets, and delete a release when you have permission."
+  },
+  {
+    "speaker": "JAMIE",
+    "text": "Search is broader than the current repository."
+  },
+  {
+    "speaker": "ALEX",
+    "text": "It is. `gh search issues`, `gh search prs`, `gh search repos`, and `gh search code` let you search across GitHub from the terminal. You can combine search terms and filters when you need a short, focused result set."
+  },
+  {
+    "speaker": "JAMIE",
+    "text": "Labels and milestones fit into project maintenance."
+  },
+  {
+    "speaker": "ALEX",
+    "text": "Yes. You can list labels, create a label, clone labels from another repository, or delete a label. For milestones, you can list existing milestones and create new ones. Those commands help keep issue and PR organization consistent across repositories."
   },
   {
     "speaker": "PAUSE",
@@ -605,18 +241,122 @@
   },
   {
     "speaker": "JAMIE",
-    "text": "What should people carry with them after this?"
+    "text": "The output formatting part feels powerful, but also like the place where people might get intimidated."
   },
   {
     "speaker": "ALEX",
-    "text": "Carry the map. Know what page or tool you are in, know which action you are taking, and know what confirmation should follow. If the confirmation is missing, pause. That pause is not wasted time; it is professional judgment, and it is how complex workflows start to feel magical instead of stressful."
+    "text": "A little, but the idea is simple. Many `gh` commands can return JSON with `--json`, which means structured data instead of human-formatted text. For example, you can request issue fields, PR fields, or a list of issues as JSON."
   },
   {
     "speaker": "JAMIE",
-    "text": "That is a better way to say it than just follow the steps."
+    "text": "JSON is the format with names and values, so tools can pick out just the pieces you ask for."
   },
   {
     "speaker": "ALEX",
-    "text": "Right. Steps matter, but understanding wins. That is episode 53. Next in the series is episode 54, where we keep building the same contributor muscles."
+    "text": "Exactly. Then `--jq` filters that JSON right inside the command. You can list just issue numbers and titles, get the names of labels on an issue, count open PRs, or list reviewers who approved a PR."
+  },
+  {
+    "speaker": "JAMIE",
+    "text": "That is also good for screen reader output, because less output can mean less noise."
+  },
+  {
+    "speaker": "ALEX",
+    "text": "Yes. And if you want a custom text layout, `--template` uses Go templates. That is more advanced, but it can produce exactly the line format your team wants."
+  },
+  {
+    "speaker": "JAMIE",
+    "text": "Aliases are the friendly version of that idea: make the command shorter."
+  },
+  {
+    "speaker": "ALEX",
+    "text": "Right. `gh alias set` creates a shortcut, `gh alias list` shows your aliases, and `gh alias delete` removes one. You can also create a shell alias that runs a full shell command, not only a `gh` subcommand."
+  },
+  {
+    "speaker": "JAMIE",
+    "text": "Useful examples would be issues assigned to me, my open PRs, check CI for the current branch's PR, or view the current PR."
+  },
+  {
+    "speaker": "ALEX",
+    "text": "Those are exactly the kind of shortcuts worth keeping. Extensions go one step further by adding new `gh` commands. You can browse available extensions, install one, list installed extensions, update all of them or one specific extension, and remove an extension you no longer use."
+  },
+  {
+    "speaker": "PAUSE",
+    "text": ""
+  },
+  {
+    "speaker": "ALEX",
+    "text": "Copilot can also appear in the CLI, if your account and environment support it. After a one-time setup, you can ask for a command suggestion or ask Copilot to explain a command you do not recognize."
+  },
+  {
+    "speaker": "JAMIE",
+    "text": "That sounds helpful, but I would still want to read the command before running it."
+  },
+  {
+    "speaker": "ALEX",
+    "text": "Absolutely. Treat suggestions as drafts. Confirm the command, confirm the repository, and confirm whether it changes anything before you press Enter."
+  },
+  {
+    "speaker": "JAMIE",
+    "text": "The appendix also mentions model selection and telemetry."
+  },
+  {
+    "speaker": "ALEX",
+    "text": "Yes. Copilot can choose a model automatically by default, or you can request a specific model when that option is available. And if you need to opt out of telemetry, use the documented Copilot CLI settings rather than guessing at configuration files."
+  },
+  {
+    "speaker": "PAUSE",
+    "text": ""
+  },
+  {
+    "speaker": "ALEX",
+    "text": "Let's spend a moment on screen reader and low vision workflow, because this is where the CLI can be genuinely comfortable. Terminal output is plain text, there are no hidden page regions, and command results are easy to copy, save, search, or open in an editor."
+  },
+  {
+    "speaker": "JAMIE",
+    "text": "But plain text can still be too much if a command prints a hundred lines."
+  },
+  {
+    "speaker": "ALEX",
+    "text": "Exactly. Pipe output to `less` for page-by-page reading. Save output to a file and open it in VS Code or your preferred editor. Limit results with flags like `--limit 20`, and combine list commands with search terms so the result set starts smaller."
+  },
+  {
+    "speaker": "JAMIE",
+    "text": "I also like asking for one field when that is all I need."
+  },
+  {
+    "speaker": "ALEX",
+    "text": "Yes. Get just the PR title, just the issue body, or CI check status as a simple list. And for writing, compose the issue body or PR body in a text file first, then create the issue or pull request from that file."
+  },
+  {
+    "speaker": "JAMIE",
+    "text": "Any platform-specific habits?"
+  },
+  {
+    "speaker": "ALEX",
+    "text": "On Windows with NVDA or JAWS, Windows Terminal mark mode can help you review and copy output. On macOS with VoiceOver, keep a familiar terminal profile and use your usual text navigation commands. Across platforms, one stable terminal and one stable editor setup usually beats switching tools every time something feels tricky."
+  },
+  {
+    "speaker": "JAMIE",
+    "text": "So when is the CLI faster than the web?"
+  },
+  {
+    "speaker": "ALEX",
+    "text": "When you already know the object and the action: view issue 42, comment on PR 17, check CI, list my assigned issues, create a draft PR from this branch. The browser is still useful for visual review, settings pages, and final verification, but it does not have to be your starting point for every GitHub task."
+  },
+  {
+    "speaker": "JAMIE",
+    "text": "That makes the quick reference card make sense. Authentication, repos, issues, pull requests, releases, and Copilot are all there as reminders, not as commands to memorize all at once."
+  },
+  {
+    "speaker": "ALEX",
+    "text": "Exactly. Start with `gh auth status`, `gh issue list`, `gh issue view`, `gh pr create`, and `gh pr checks`. Add more commands as your real work asks for them."
+  },
+  {
+    "speaker": "JAMIE",
+    "text": "And use the official GitHub CLI manual and the GitHub Accessibility Lab CLI guide when you need the exact syntax."
+  },
+  {
+    "speaker": "ALEX",
+    "text": "That's the habit I want learners to leave with: use the terminal for clear, repeatable GitHub actions, verify each result, and switch to the browser only when it adds something useful."
   }
 ]

@@ -1,417 +1,206 @@
 [ALEX]
-Welcome back. Today we’re talking about publishing a static website with GitHub Pages, which is one of the simplest ways to take files from a repository and make them available on the web.
+Welcome back. Today we're publishing a website without renting a server or setting up a separate hosting account. GitHub Pages lets a repository serve a static website, right from GitHub.
 
 [JAMIE]
-And this is especially useful for documentation, workshop materials, portfolios, project home pages, and other sites that don’t need a back-end server, right?
+Static website is one of those phrases that sounds simple until it doesn't. What does static mean here?
 
 [ALEX]
-Exactly. GitHub Pages is built into GitHub. For a simple site, you don’t need to rent a server or build a complicated deployment pipeline. You can publish directly from a repository.
+It means GitHub Pages serves files as they already exist: HTML, CSS, JavaScript, images, PDFs, and files like that. It does not run server-side code, so no PHP request handlers, no Python web app, no Node.js server, and no private database behind the page.
 
 [JAMIE]
-Before we go deeper, I want to make sure we frame it for our learners. This appendix is a reference companion to earlier material on open source culture and also connects to later next-step work. And the main authoritative source behind the material is GitHub’s Pages documentation.
+So it is great for things that can be delivered as files: documentation, workshop materials, a project landing page, a portfolio, maybe a blog.
 
 [ALEX]
-Right. So think of this lesson as practical, but also grounded in the official docs.
-
-[PAUSE]
-
-[ALEX]
-Here’s the basic idea. GitHub Pages hosts static files. That means files are served as they already exist: HTML, CSS, JavaScript, images, PDFs, and similar assets.
-
-[JAMIE]
-So when people hear website, they might imagine a full web app. But GitHub Pages is not running server-side code for you.
-
-[ALEX]
-That’s the key distinction. No PHP, no Python app server, no Node request handlers, no database-backed logic running on the server. If your project needs dynamic server behavior, GitHub Pages is not the right host by itself.
-
-[JAMIE]
-But for static content, it’s great.
-
-[ALEX]
-Very often, yes. It’s good for documentation sites, workshop materials like this project, project landing pages, personal portfolios, and simple blogs, including some Jekyll-based workflows.
-
-[JAMIE]
-And the URL pattern matters too. Usually the published address looks like username dot github dot io, slash repository name, slash.
-
-[ALEX]
-Yes. In the common case, it’s:
-username dot github dot io slash repository-name slash.
-For a user site or an organization profile repository named username slash username dot github dot io, the published site becomes just username dot github dot io.
+Exactly. The default address for a project site usually looks like https://username.github.io/repo-name/. For a user or organization Pages site, where the repository is named username.github.io, the address becomes https://username.github.io/.
 
 [PAUSE]
 
 [JAMIE]
-Let’s talk setup. If I’m on GitHub dot com and I want to enable Pages for a repository, what do I do?
+Let's say I have a repository with a small site in it. Where do I turn Pages on?
 
 [ALEX]
-Go to the repository. Open Settings. In the left sidebar, find Pages under the Code and automation group. Then under Build and deployment, choose how the site will be published.
+Open the repository on GitHub.com, then go to Settings. In the left sidebar, find the Code and automation group, and choose Pages. That page is where you choose how GitHub should build and publish the site.
 
 [JAMIE]
-And there are two major choices.
+And the accessibility detail here is helpful. Settings is a link in the repository navigation, and Pages is also a link in the settings sidebar under that Code and automation grouping.
 
 [ALEX]
-Right. One is Deploy from a branch. The other is GitHub Actions.
+Right. Under Build and deployment, you choose a source. The two big choices are deploying directly from a branch, or using GitHub Actions to build and deploy.
 
 [JAMIE]
-If I choose deploy from a branch, I then choose a branch like main or master, and a folder source.
+If I choose deploy from a branch, what am I picking?
 
 [ALEX]
-Yes. The folder choices are the repository root, shown as slash, or the docs folder, shown as slash docs. Then you select the combination and choose Save.
+You select the branch, commonly main or master, then select the folder. GitHub Pages supports either the repository root, written as slash, or the docs folder, written as docs slash. After you save, the first deployment usually takes a minute or two, and the published URL appears near the top of the Pages settings page.
 
 [JAMIE]
-And after that, GitHub usually builds and deploys within a minute or two, and once the first deployment succeeds, the site URL appears near the top of the Pages settings.
-
-[ALEX]
-That’s the typical flow.
-
-[PAUSE]
-
-[JAMIE]
-Let’s do the accessibility walk-through too, because that matters here.
-
-[ALEX]
-Absolutely. For screen reader users, the Settings control is a link in the repository’s top navigation and has the accessible name Settings. Inside repository settings, the Pages link is in the left sidebar under the Code and automation grouping. The branch and folder controls are standard select elements, so you can navigate them with arrow keys.
-
-[JAMIE]
-And for low-vision users, the Pages screen follows the same general settings layout GitHub uses elsewhere. You click Settings, then look in the left sidebar for Pages. The deployment status uses familiar visual signals like a green check for success and a red X for failure.
-
-[ALEX]
-Also important: the published website does not inherit accessibility styling from GitHub itself. Your site’s own CSS has to provide readable font sizing, adequate contrast, visible focus indicators, and so on.
-
-[JAMIE]
-And for sighted mouse users, it’s still just Settings, then Pages, then choose the branch and folder source, then Save. After success, there’s generally a green banner with the site URL.
+For low vision learners, the status indicators matter too. A successful deployment shows a green checkmark, and a failed one shows a red X. And the published site does not inherit GitHub's styling, so your own CSS has to handle contrast, spacing, and readable font sizes.
 
 [PAUSE]
 
 [ALEX]
-Now let’s compare publishing sources a little more carefully. Deploying from a branch is the simplest model. GitHub reads files directly from the branch.
+Choosing the publishing source is really a design decision. If you serve from the root, GitHub publishes files from the top level of the repository. If you serve from docs slash, GitHub publishes only that folder.
 
 [JAMIE]
-And the two folder modes behave differently.
+I can see why docs slash is cleaner when the repository also has source files, scripts, tests, or notes that are not meant to be the website.
 
 [ALEX]
-They do. If you choose root, GitHub serves the repository root. If you choose docs, it serves only the docs folder. Using docs is often the better practice because it isolates published content from source code and other repository files.
+Yes. The docs folder keeps the published site separate from the working parts of the project. But when you need a build step, branch publishing may not be enough.
 
 [JAMIE]
-Especially when a project has a build pipeline and the built site lives in a specific output folder.
+This is where Jekyll comes in, right?
 
 [ALEX]
-Exactly.
+Yes. Jekyll is the classic static site generator associated with GitHub Pages. A static site generator takes source files, often Markdown plus templates, and produces plain HTML, CSS, and other assets. You can also use Hugo, Eleventy, or a Next.js static export, but those usually need GitHub Actions so the site can be built before it is published.
 
 [JAMIE]
-So when do we reach for GitHub Actions instead?
+And Actions can do more than build. It can run checks before the site goes live, including accessibility checks.
+
+[PAUSE]
 
 [ALEX]
-When the site needs a build step before publishing. For example, if your source is Markdown and you generate HTML, or if you use a static site generator such as Jekyll, Hugo, or Eleventy, or if you want automated tests to run before deployment, including accessibility checks.
+In this project, there is a specific wrinkle. The Markdown content has a pre-built HTML mirror in an html folder, generated by scripts/build-html.js.
 
 [JAMIE]
-And in this project, there is a build step.
+But GitHub Pages does not let me choose any folder I want when I deploy from a branch. It gives me root or docs slash.
 
 [ALEX]
-Yes. A representative workflow here would check out the repository, run the Node script that builds the HTML, then upload the html folder as the Pages artifact.
+Correct. One manual approach is to copy the contents of html into docs, then commit and push the docs folder. After that, set the Pages source to the master branch and the docs folder.
+
+[JAMIE]
+What about renaming html to docs? That sounds tempting.
+
+[ALEX]
+It can work in a different project, but only if docs is not already being used for something else. You would update the build script output path first, then move html to docs and commit the change. In this project, docs is used for Markdown source files, so copying the built output or using Actions is safer.
+
+[JAMIE]
+So the automated version is the cleaner long-term path.
+
+[ALEX]
+Yes. A Pages workflow can run on every push to master. It checks out the repository, sets up Node.js, installs dependencies, runs node scripts/build-html.js, uploads the html folder as the Pages artifact, and then deploys it.
 
 [PAUSE]
 
 [JAMIE]
-That brings us to the project-specific part: the html folder.
+What if I don't want the github.io address? Can I use my own domain?
 
 [ALEX]
-Right. This project already has a prebuilt HTML mirror of the Markdown content in an html folder, created by scripts slash build-html dot js.
+You can. In repository Settings, then Pages, enter the custom domain and save it. GitHub adds a CNAME file to the repository containing that domain name.
 
 [JAMIE]
-But GitHub Pages, when you use branch deployment, only supports the root folder or docs as the source folder.
+Then the DNS provider has to point the domain at GitHub Pages.
 
 [ALEX]
-That’s the constraint. So if your output is in html, you need to adapt.
+For a subdomain, like learning.example.org, you create a CNAME record that points to the account's github.io host. For an apex domain, like example.org, you use four A records. The current GitHub Pages IP addresses are 185.199.108.153, 185.199.109.153, 185.199.110.153, and 185.199.111.153.
 
 [JAMIE]
-Let’s start with the manual approach.
+DNS can be slow, so this is not always instant.
 
 [ALEX]
-Option A is manual publishing from the html folder. Since html is not an allowed branch-based Pages source folder, one safe approach is to copy the contents of html into docs.
-
-[JAMIE]
-So conceptually, generate the site into html, copy those built files into docs, commit docs, push, then configure Pages to use the branch and the docs folder.
-
-[ALEX]
-Yes. The example commands are essentially: copy recursively from html into docs, add docs to Git, commit with a message noting that HTML output was published to docs for GitHub Pages, and push.
-
-[JAMIE]
-Then in Pages settings, set the source to the branch, here given as master, and the folder to slash docs.
-
-[ALEX]
-Correct.
-
-[JAMIE]
-There’s also a rename option, but with an important warning.
-
-[ALEX]
-Option A2 is renaming html to docs after first changing the build script output path. That could work in a project where docs is free to use for generated output.
-
-[JAMIE]
-But not in this project.
-
-[ALEX]
-Right. This project already uses docs for Markdown source files, so renaming html to docs would create a conflict. That’s why copying into docs, or better yet using GitHub Actions, is safer here.
+Right. DNS changes can take up to 48 hours to propagate, and GitHub Pages will keep checking. GitHub also recommends verifying the custom domain in your account or organization Pages settings, because verification helps prevent someone else from claiming your domain on Pages if you temporarily remove it.
 
 [PAUSE]
 
 [JAMIE]
-Let’s unpack the GitHub Actions approach, because a lot of learners hear workflow YAML and tense up.
+What about HTTPS? Do learners have to buy a certificate?
 
 [ALEX]
-Fair. The purpose of the workflow is straightforward: on each push to the chosen branch, GitHub runs a series of steps to rebuild the site and deploy it.
+No. GitHub Pages enforces HTTPS automatically for github.io subdomains. For custom domains, once DNS has propagated, you can enable Enforce HTTPS, and GitHub Pages provisions a certificate through Let's Encrypt.
 
 [JAMIE]
-In the example workflow, the trigger is a push to master.
+So the visitor gets redirected from HTTP to HTTPS once enforcement is on.
 
 [ALEX]
-Yes. The workflow requests permissions needed for Pages deployment, including reading contents, writing Pages data, and using an ID token. It also sets a concurrency group for pages so deployments are managed predictably.
-
-[JAMIE]
-Then there are two jobs: build and deploy.
-
-[ALEX]
-The build job runs on Ubuntu, checks out the repository, sets up Node version 20, installs dependencies with npm install, runs node scripts slash build-html dot js, and uploads the html folder as the Pages artifact.
-
-[JAMIE]
-And the deploy job waits for build, then deploys that artifact using the official deploy-pages action.
-
-[ALEX]
-Exactly. That means you don’t have to copy files manually into docs. The workflow turns html into the deployed site automatically.
-
-[JAMIE]
-Which is cleaner and less error-prone once you’re comfortable with Actions.
-
-[ALEX]
-Usually, yes.
+Exactly. One security reminder, though: a Pages site is public static hosting. Do not put secrets, API keys, private data, or anything confidential into files that will be published. Client-side JavaScript is visible to visitors, too.
 
 [PAUSE]
 
 [JAMIE]
-Now custom domains. A lot of people don’t want the default github dot io address forever.
+Publishing is exciting, but accessibility cannot stop at the repository. What should people check in the actual site?
 
 [ALEX]
-GitHub Pages supports custom domains, so instead of something like community-access dot github dot io slash Learning-Room, you can use a domain you control, like a subdomain or apex domain.
+Start with semantic HTML. Use headings in a real outline, a main landmark for the page's primary content, navigation where navigation belongs, and footer or aside only when they make sense. Screen reader users should be able to move by headings, landmarks, links, and form controls and get a coherent picture of the page.
 
 [JAMIE]
-What’s the setup sequence?
+Skip links are one of those tiny features that make a site feel much less exhausting.
 
 [ALEX]
-In repository Settings, then Pages, enter the domain in the Custom domain field and save. GitHub creates a CNAME file in the repository root containing that domain name. Then you configure DNS with your domain provider.
+Yes. Add a skip link near the top of the page that jumps to the main content, and make sure it becomes visible when focused. It helps keyboard users bypass repeated navigation.
 
 [JAMIE]
-And the DNS record type depends on whether it’s a subdomain or an apex domain.
+What changes for single-page sites, where the URL or content changes without a full reload?
 
 [ALEX]
-Right. For a subdomain like learning dot community-access dot org, you typically create a CNAME pointing to the GitHub Pages host, here illustrated as community-access dot github dot io. For an apex domain like community-access dot org, you use A records.
+Focus needs attention. After a route change, move focus to the main heading or main region, and update the document title so assistive technology announces the correct page. Otherwise, a listener may hear the old page title while the visible content has changed.
 
 [JAMIE]
-And the current A record IPs listed here are four addresses: 185 point 199 point 108 point 153, then 109 point 153, 110 point 153, and 111 point 153.
+And the basics still matter: images and color.
 
 [ALEX]
-Correct. And DNS changes may take up to 48 hours to propagate, so this is one of those places where patience matters.
-
-[JAMIE]
-Then GitHub checks and verifies the domain once DNS is configured.
-
-[ALEX]
-Yes, and there’s another security step learners should know: domain verification.
-
-[JAMIE]
-That’s to reduce domain takeover risk?
-
-[ALEX]
-Exactly. GitHub recommends verifying your custom domain in your account or organization settings under Pages. That way, if the domain is ever temporarily removed from one repo, another party has a harder time claiming it for their own GitHub Pages site.
+Definitely. Give meaningful images useful alt text, mark decorative images with empty alt text, and check color contrast for text, controls, focus indicators, and links. Also test zoom and text resizing, because published sites need to remain readable when someone increases magnification.
 
 [PAUSE]
 
 [JAMIE]
-Let’s move into HTTPS and security more broadly.
+After deployment, how would you test without making it a giant ritual?
 
 [ALEX]
-For github dot io subdomains, HTTPS is enforced automatically. For custom domains, once DNS has propagated, you should enable Enforce HTTPS in Pages settings.
+Open the published URL, not just the local files. Use the keyboard to move through links and controls, check that focus is visible, inspect headings and landmarks with a screen reader, and confirm the page title makes sense. Automated tools like axe, Lighthouse, or pa11y can help, but they do not replace a real navigation pass.
 
 [JAMIE]
-And GitHub Pages uses Let’s Encrypt to provision the certificate automatically.
+The troubleshooting note about wrong page titles feels easy to miss.
 
 [ALEX]
-Yes. When HTTPS is enforced, HTTP traffic is redirected to HTTPS.
+It is. If a screen reader announces the wrong page title, check the title element in the HTML. For a single-page app, also make sure route changes update the title before or at the same time the new content is presented.
 
 [JAMIE]
-And there’s a big security reminder here: do not put secrets into a GitHub Pages repository.
+What about the 404 page? GitHub Pages will show something if a page is missing, but can we make that experience better?
 
 [ALEX]
-Exactly. No API keys, no private credentials, no confidential data. A GitHub Pages site serves public content. Treat everything in the published site and its repository as potentially public unless the hosting model and repo settings clearly guarantee otherwise.
+Yes. Add a 404.html file to the root of the published output. Make it plain and accessible: say the page was not found, provide a link back home, and include links to search, documentation, or the main project page if those are useful.
 
 [PAUSE]
 
 [JAMIE]
-Now to one of the most important parts for this audience: accessibility of the published site itself.
+Manual publishing is fine once, but it can get stale. What does continuous deployment add?
 
 [ALEX]
-Yes. Publishing accessible source material is not enough if the resulting website becomes harder to navigate after deployment. The published site should meet the same accessibility expectations as the source.
+It makes publishing repeatable. A GitHub Actions workflow can build the site on each push, run checks, upload the Pages artifact, and deploy it. The workflow needs permissions such as contents read, pages write, and id-token write so it can publish securely.
 
 [JAMIE]
-So let’s go point by point.
+You mentioned accessibility checks earlier. Where do those fit?
 
 [ALEX]
-First, navigation and landmarks. Use meaningful landmark regions and semantic structure so screen reader users can move efficiently among major areas of the page. That usually means a clear header, navigation region, main content, and footer where appropriate.
-
-[JAMIE]
-And headings should reflect the content hierarchy, not just visual styling.
-
-[ALEX]
-Exactly.
-
-[JAMIE]
-Next: skip navigation.
-
-[ALEX]
-Provide a skip link so keyboard and screen reader users can move past repeated navigation and get to the main content quickly. It should be keyboard reachable and visible on focus.
-
-[JAMIE]
-Then focus management, especially if the site behaves like a single-page app or has in-page navigation.
-
-[ALEX]
-Right. If navigation changes the visible content without a full page reload, manage focus intentionally so users understand that context has changed. Don’t leave keyboard focus stranded in an old control while the page appears to have moved somewhere else.
-
-[JAMIE]
-Images are another big one.
-
-[ALEX]
-Every meaningful image needs appropriate alt text. Decorative images should not create noise for assistive technology. The rule is not just add alt text everywhere. It’s use the right text alternative for the function and meaning of the image.
-
-[JAMIE]
-Color contrast comes up a lot with static sites because people may assume a simple site is automatically accessible.
-
-[ALEX]
-It is not automatic. Your CSS needs sufficient color contrast, readable text sizing, and visible interactive states. GitHub Pages does not fix poor contrast for you.
-
-[JAMIE]
-And testing has to happen after deployment, not just before.
-
-[ALEX]
-Absolutely. Test the published site itself. Sometimes the generated HTML, asset paths, deployment context, or production CSS changes what users experience.
-
-[JAMIE]
-What are some good post-deployment checks?
-
-[ALEX]
-At minimum: verify page titles are correct and unique enough to orient users, confirm landmarks and heading structure still make sense, tab through navigation and interactive controls, test the skip link, check focus visibility, inspect image alt behavior, confirm color contrast in the real published theme, and try the site with a screen reader on the actual deployed URL.
-
-[JAMIE]
-So the accessibility learning cards here really boil down to this: the hosted site is its own user experience, and it has to be evaluated as such.
-
-[ALEX]
-Exactly right.
+Put them after the build and before the deploy, or in a separate job that the deploy depends on. Depending on the project, that might be npm test, an HTML validator, pa11y, axe-based tests, or link checking. Some teams fail the deployment on serious accessibility errors, while others start with warnings and tighten the rules over time.
 
 [PAUSE]
 
 [JAMIE]
-How does this connect back to GitHub Actions and continuous deployment?
+What are the limits? Because Pages sounds simple, but it is not a full web host.
 
 [ALEX]
-Continuous deployment means every push can rebuild and republish the site automatically. That’s efficient, but it also means mistakes can go live quickly.
+That's the key. GitHub Pages is for static output, so it will not run server-side code, host a database, process private form submissions by itself, or protect secret files. It is also not ideal for very large media-heavy sites or anything that needs a custom backend.
 
 [JAMIE]
-Which is why accessibility checks in the workflow are valuable.
+If I push a change and the site does not update, where should I look first?
 
 [ALEX]
-Yes. You can add automated accessibility checks to the workflow so common issues are caught in CI before or during deployment. Automation won’t replace human testing, but it can flag missing alt text, obvious structural problems, and some color contrast or labeling issues depending on the tooling.
+Check the Pages settings and the Actions or deployment history. Make sure the selected branch and folder are correct, the commit reached that branch, and the workflow actually finished. Also try a hard refresh, because browser caching can make an old page look like a failed deployment.
 
 [JAMIE]
-So a mature workflow might build the site, run accessibility checks, and only then deploy if everything passes.
+What about the scary one: the home page works, but every other page is a 404?
 
 [ALEX]
-That’s the idea.
-
-[PAUSE]
+That often comes from paths. Project Pages live under slash repo-name slash, so root-relative links can break if the site generator assumes it is hosted at the domain root. Single-page apps may also need a fallback strategy, and regular sites need the generated files to match the URLs you are linking to.
 
 [JAMIE]
-What limitations should learners keep in mind with GitHub Pages?
+And if the HTTPS certificate is stuck?
 
 [ALEX]
-The biggest one is the static-only model. No server-side processing, no custom back-end logic. Also, if your source folder arrangement doesn’t match Pages’ branch deployment options, you may need a docs copy step or an Actions-based workflow. And custom domains and HTTPS can involve DNS timing and certificate delays that aren’t under your direct control.
+Confirm the DNS records are correct, remove conflicting records, wait for propagation, and then try Enforce HTTPS again when GitHub shows the domain is ready. If the certificate is still not provisioning, the DNS check is usually the place to start.
 
 [JAMIE]
-So it’s wonderfully convenient, but it’s not universal hosting.
+So GitHub Pages is not magic, but it is a very practical publishing path when the output is static and the checks are visible.
 
 [ALEX]
-Exactly.
-
-[PAUSE]
-
-[JAMIE]
-Let’s finish with troubleshooting, because that’s usually where stress spikes.
-
-[ALEX]
-Good idea.
-
-[JAMIE]
-First: the site is not updating after a push.
-
-[ALEX]
-Check whether you pushed to the correct branch, whether Pages is configured for the branch and folder you intended, and whether the deployment actually succeeded. In a branch-based setup, make sure the changed files are in the published folder, not just somewhere else in the repo. In an Actions-based setup, inspect the workflow run for build or deploy failures.
-
-[JAMIE]
-Also remember that deployments may take a minute or two, and browsers can cache aggressively.
-
-[ALEX]
-Yes. Give it a little time, then refresh carefully or test in a private window.
-
-[JAMIE]
-Next: 404 on all pages except index.
-
-[ALEX]
-That often points to path issues. Internal links, asset paths, or route assumptions may work locally but break when the site is hosted under a repository subpath. Remember that many project Pages sites live under slash repository-name slash, not the domain root.
-
-[JAMIE]
-So absolute paths can be dangerous if they assume the site lives at slash.
-
-[ALEX]
-Exactly.
-
-[JAMIE]
-What about HTTPS certificate not provisioning?
-
-[ALEX]
-Usually check the custom domain DNS first. If DNS isn’t correct or hasn’t fully propagated, certificate provisioning can stall. Wait for propagation, confirm records, then try enforcing HTTPS again. This is especially common right after initial domain setup.
-
-[JAMIE]
-And the accessibility-specific troubleshooting item: a screen reader announces the wrong page title.
-
-[ALEX]
-That usually means the built HTML has incorrect title elements, duplicated templates, or client-side navigation isn’t updating document titles when the visible content changes. The fix is to inspect the deployed page source and the actual browser title behavior, not just the local authoring files.
-
-[JAMIE]
-So again, test the deployed experience.
-
-[ALEX]
-Always.
-
-[PAUSE]
-
-[JAMIE]
-Before we wrap, I want to mention the source trail because that matters for technical learners.
-
-[ALEX]
-Yes. The key authoritative references here are GitHub Docs broadly, the GitHub Changelog, the GitHub Pages docs, the Pages quickstart, and where relevant related Git and security documentation. For accessibility expectations, WCAG overview material is part of the factual grounding.
-
-[JAMIE]
-And that section-level source map is useful as a verification tool. It tells you where to confirm each major section if GitHub changes interfaces or workflow details over time.
-
-[ALEX]
-Exactly. That’s a strong habit for open source learners: learn the concept, then know where the living documentation lives.
-
-[JAMIE]
-So the big picture is: GitHub Pages gives you a low-friction path from repository to public static site. You can publish from a branch or through Actions, adapt build outputs like html when needed, add a custom domain, enable HTTPS, and keep accessibility central from source through deployment.
-
-[ALEX]
-Well said. And if you remember just one thing, let it be this: publishing is not the end of accessibility work. The deployed site is the product users actually experience.
-
-[JAMIE]
-That’s it for today.
-
-[ALEX]
-See you next time.
+Exactly. Pick the right source, build when you need to, protect the domain and HTTPS settings, and test the published site as a real website. That turns a repository into something people can actually read, navigate, and use.

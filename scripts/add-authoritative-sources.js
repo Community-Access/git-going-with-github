@@ -1,4 +1,5 @@
 #!/usr/bin/env node
+// lint-no-hardcoded-slugs: allow (appendix-X topic routing; will be remapped when appendices renumber in Stage 3)
 const fs = require('fs');
 const path = require('path');
 

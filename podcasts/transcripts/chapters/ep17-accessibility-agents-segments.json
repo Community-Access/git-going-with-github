@@ -1,39 +1,27 @@
 [
   {
     "speaker": "ALEX",
-    "text": "Welcome back. Today we're exploring accessibility agents: what they are, where they run, how to decide whether you're actually ready to use one, and how to contribute to an open ecosystem of agents without treating automation like magic."
+    "text": "Welcome back. Today we're talking about Accessibility Agents, a living catalog of specialized AI assistants for accessibility and GitHub workflow tasks."
   },
   {
     "speaker": "JAMIE",
-    "text": "And I'm glad we're starting there, because a lot of learners hear \"AI agents\"\u009d and think, great, now the tool will just do accessibility for me."
+    "text": "So these are not just general chatbots with a friendly name. They are meant to help with specific work, like reviewing a pull request, checking a page for accessibility issues, or drafting a better issue template."
   },
   {
     "speaker": "ALEX",
-    "text": "Right, and this chapter pushes back on that. The core idea is simple: skill first, agent second. An agent multiplies a skill you already have. It does not create that skill for you."
-  },
-  {
-    "speaker": "PAUSE",
-    "text": ""
-  },
-  {
-    "speaker": "ALEX",
-    "text": "A quick orientation note before we go deeper. There's an audio companion for this material, related appendices for agents and Copilot reference material, and a set of authoritative sources from GitHub Docs and VS Code Docs. If you want the official product behavior, those docs are the source of truth."
+    "text": "Exactly. They extend GitHub Copilot with domain knowledge. Instead of asking a broad assistant to help with everything, you call an agent that has instructions, responsibilities, and guardrails for one kind of task."
   },
   {
     "speaker": "JAMIE",
-    "text": "So this lesson is teaching practice and workflow, but not replacing the official documentation."
+    "text": "And the catalog keeps growing, right? The current snapshot names 55 agents, but learners should treat that as a moment in time, not a ceiling."
   },
   {
     "speaker": "ALEX",
-    "text": "Exactly. Also, there's an important product note: newer VS Code versions include an Agents window in stable as a preview feature. That does not replace custom accessibility agents. It gives you a dedicated place to run and organize agent sessions, review changed files, and manage work across projects."
+    "text": "Right. The important shape is three teams across five platforms. Accessibility agents cover web, document, and mobile auditing. GitHub Workflow agents help with issues, pull requests, analytics, and templates. Developer Tools agents support Python, desktop apps, CI checks, and custom tooling."
   },
   {
     "speaker": "JAMIE",
-    "text": "So learners should think, custom agents are still the substance, and the Agents window is one interface for working with them."
-  },
-  {
-    "speaker": "ALEX",
-    "text": "Perfectly said."
+    "text": "That already sounds powerful, but also a little risky. If an agent sounds confident, I can imagine people accepting its answer too quickly."
   },
   {
     "speaker": "PAUSE",
@@ -41,67 +29,31 @@
   },
   {
     "speaker": "ALEX",
-    "text": "Let's frame the landscape. The repository highlighted in this chapter is a growing open source ecosystem of AI-powered agents organized into three teams and deployable across five platforms."
+    "text": "Before using any agent, check the basics. You need Git, VS Code, a GitHub account, Copilot working in VS Code, and a repository that either already has a.github/agents folder or can receive custom agent files."
   },
   {
     "speaker": "JAMIE",
-    "text": "I noticed one number early on says fifty-five agents, and another later says eighty. How should learners hear that?"
+    "text": "And Copilot Free is enough for this workshop, as long as the built-in Copilot features are enabled and working."
   },
   {
     "speaker": "ALEX",
-    "text": "As a living project. The exact count can change as the ecosystem grows. The important ideas are the structure and the breadth: three teams, multiple platforms, and a wide range of workflows. You are not expected to use every agent. You're expected to find the agents that match skills you already built manually."
+    "text": "Yes. Then comes the deeper prerequisite: manual skill. If you have not read issues by hand, an issue-tracking agent will not help you judge issue summaries. If you have not reviewed a diff, a pull request review agent can sound useful while missing something important."
   },
   {
     "speaker": "JAMIE",
-    "text": "And the platforms matter too, right?"
+    "text": "So the agent is a multiplier. It can speed up a skill I have practiced, but it should not replace learning the skill."
   },
   {
     "speaker": "ALEX",
-    "text": "Yes. These agents aren't trapped in one editor. The chapter positions them across GitHub Copilot, Claude Code, Gemini CLI, Claude Desktop, and Codex CLI. So the lesson isn't \"use this one exact interface.\"\u009d It's \"understand the pattern, then choose the platform that fits your workflow and access needs.\"\u009d"
-  },
-  {
-    "speaker": "PAUSE",
-    "text": ""
+    "text": "Exactly. If you want to use @template-builder, you should have designed and tested a template manually. If you want @web-accessibility-wizard or @contrast-master, you should understand the relevant WCAG checks and have tried manual testing. If you want a Python or wxPython agent, you should know enough code and keyboard testing to spot bad advice."
   },
   {
     "speaker": "JAMIE",
-    "text": "Before anyone starts, what's the checklist?"
+    "text": "I like the self-check: could I do this task manually right now? If the honest answer is no, pause and learn that workflow first."
   },
   {
     "speaker": "ALEX",
-    "text": "There's a real prerequisites checklist, and it matters. First, learners should already have workshop setup completed: Git, VS Code, and a GitHub account. Second, GitHub Copilot should already be enabled and working in VS Code. Third, Copilot access is required, but the free tier is enough for this workshop. Fourth, your repository should include a .github slash agents folder, or you should be prepared to create custom agents."
-  },
-  {
-    "speaker": "JAMIE",
-    "text": "And then there's the deeper prerequisite: not just software, but skill."
-  },
-  {
-    "speaker": "ALEX",
-    "text": "Yes. The chapter explicitly maps agent categories to manual experience. For GitHub workflow agents like daily briefings, issue tracking, pull request review, and analytics, you should already know how to navigate repositories, file issues, review pull requests, and explore repository insights."
-  },
-  {
-    "speaker": "JAMIE",
-    "text": "So if I've never reviewed a pull request by hand, I should not ask an agent to review one and assume I understand the result."
-  },
-  {
-    "speaker": "ALEX",
-    "text": "Correct. For accessibility monitoring agents, you should already know how to file an accessibility bug, apply accessibility labels, and inspect things like heading hierarchy. For template creation agents, you should already have designed and tested templates manually. For web accessibility auditing agents, you should already understand WCAG success criteria and have tested pages with assistive technology."
-  },
-  {
-    "speaker": "JAMIE",
-    "text": "And the document-specific agents have their own manual prerequisites too."
-  },
-  {
-    "speaker": "ALEX",
-    "text": "They do. If you want help with Word, Excel, PDF, or EPUB accessibility, you should already know something about document structure and manual accessibility review. If you want remediation agents, you should understand tagging, alternative text, bookmarks, or the relevant toolchain. Python or wxPython agents assume Python knowledge and GUI accessibility basics. Developer tool agents assume CI or testing experience."
-  },
-  {
-    "speaker": "JAMIE",
-    "text": "So the self-check question is: could I do this manually right now?"
-  },
-  {
-    "speaker": "ALEX",
-    "text": "Exactly. If the answer is no, learn the manual skill first."
+    "text": "That self-check is especially important for blind and low-vision contributors. The agent may summarize a screen, a diff, or a document, but you still need a way to confirm what changed, what evidence exists, and whether the result is accessible."
   },
   {
     "speaker": "PAUSE",
@@ -109,123 +61,35 @@
   },
   {
     "speaker": "JAMIE",
-    "text": "This chapter also includes a workshop recommendation and a challenge set, right?"
+    "text": "Challenge 15 is where this becomes hands-on. It is a browse-first challenge, not a requirement to fork the Accessibility Agents repository."
   },
   {
     "speaker": "ALEX",
-    "text": "Yes. This is an exploration and validation chapter. The challenge sequence asks learners to discover agents, validate one against their own manual understanding, inspect an agent's instructions, and optionally improve an existing agent or propose a new one."
+    "text": "Yes. You start by exploring the living catalog on GitHub.com and matching agents to work you already practiced on Day 1. The beginner-friendly starting set is @daily-briefing, @issue-tracker, and @pr-review because those connect to repository awareness, issues, and pull request review."
   },
   {
     "speaker": "JAMIE",
-    "text": "Let's walk that in plain language."
+    "text": "Then learners post evidence in their assigned Challenge 15 issue, right? Something like, here are three agents, and here is the manual skill that makes me ready to try each one."
   },
   {
     "speaker": "ALEX",
-    "text": "Challenge 15.1 is agent discovery mapping. The goal is to identify three to five agents that match skills you already have from earlier workshop work. The recommended starting set, especially if the ecosystem feels large, is daily briefing, issue tracker, and pull request review."
+    "text": "Exactly. Then you validate one agent. You run it carefully, read the output, compare it to what you expected, and write down whether it was accurate, incomplete, or questionable."
   },
   {
     "speaker": "JAMIE",
-    "text": "And the workflow is practical."
+    "text": "And the third part is reading the agent itself. Not just using the magic box, but opening the instruction file and asking what it is actually allowed to do."
   },
   {
     "speaker": "ALEX",
-    "text": "Very practical. Fork the accessibility-agents repository on GitHub. Open the repository. Review the list of agents. For each one, ask yourself whether you've performed that task manually. Then post a comment on your assigned challenge issue that maps each chosen agent to the manual skill that makes you ready."
+    "text": "Yes. Look for its purpose, capabilities, domain knowledge, responsibilities, response guidelines, and limits. The optional extension path is contribution-oriented: improve an existing agent or propose a new one with a clear accessibility purpose."
   },
   {
     "speaker": "JAMIE",
-    "text": "So not just \"I want to use this,\"\u009d but \"I am ready because I already did this work myself.\"\u009d"
+    "text": "Completing Challenge 15 matters because it unlocks Challenge 16, the Capstone Project, plus Bonus Challenges A through E. Those bonuses are a structured path, not spare-time extras."
   },
   {
     "speaker": "ALEX",
-    "text": "Exactly."
-  },
-  {
-    "speaker": "JAMIE",
-    "text": "Then comes validation."
-  },
-  {
-    "speaker": "ALEX",
-    "text": "Challenge 15.2 asks you to clone your fork into VS Code or open it in github.dev, open Copilot Chat, choose one agent from your discovery list, run a simple prompt, and then evaluate the output against your manual expectations."
-  },
-  {
-    "speaker": "JAMIE",
-    "text": "That evaluation step feels important."
-  },
-  {
-    "speaker": "ALEX",
-    "text": "It's essential. The automation check for this chapter is explicitly none. Agent output always requires human judgment. You're expected to read the output carefully and say whether it looks accurate, helpful, incomplete, or questionable."
-  },
-  {
-    "speaker": "JAMIE",
-    "text": "And Challenge 15.3 goes inside the agent itself."
-  },
-  {
-    "speaker": "ALEX",
-    "text": "Yes. Agent instructions deep dive. You read one agent source file and assess what it can and cannot do. That helps learners move from \"AI said a thing\"\u009d to \"I understand how this tool is framed, constrained, and prompted.\"\u009d"
-  },
-  {
-    "speaker": "JAMIE",
-    "text": "Then there are optional hackathon-style extensions."
-  },
-  {
-    "speaker": "ALEX",
-    "text": "Right. Improve an existing agent by finding a gap in its instructions and opening a pull request, or propose a new agent for a workflow the ecosystem doesn't yet cover."
-  },
-  {
-    "speaker": "JAMIE",
-    "text": "And when learners finish?"
-  },
-  {
-    "speaker": "ALEX",
-    "text": "They submit evidence. The expected evidence is usually an issue comment showing agent output and your evaluation. The expected outcomes are that you can match agents to your current skills, test them critically, inspect their instructions, and begin thinking like a contributor rather than just a user."
-  },
-  {
-    "speaker": "JAMIE",
-    "text": "What if someone gets stuck?"
-  },
-  {
-    "speaker": "ALEX",
-    "text": "The chapter explicitly normalizes that. If you get stuck, narrow the scope. Start with the simplest agents. Use one short prompt. Compare results to something you already know how to do manually. The learning moment is not \"the agent was perfect.\"\u009d The learning moment is \"I can judge what the agent did.\"\u009d"
-  },
-  {
-    "speaker": "JAMIE",
-    "text": "And there's even a teaching pattern behind this."
-  },
-  {
-    "speaker": "ALEX",
-    "text": "Yes: explore, validate, read internals, optionally contribute. That's the learning pattern of the chapter."
-  },
-  {
-    "speaker": "PAUSE",
-    "text": ""
-  },
-  {
-    "speaker": "JAMIE",
-    "text": "There's also a capstone note that sounds unusually direct."
-  },
-  {
-    "speaker": "ALEX",
-    "text": "It does, and we should keep it. One of the most important tasks in the chapter is to share workshop feedback. Not busywork\"\u201dfeedback that helps improve the curriculum, tooling, and accessibility of the learning experience."
-  },
-  {
-    "speaker": "JAMIE",
-    "text": "So submitting workshop feedback is framed as a genuine contribution."
-  },
-  {
-    "speaker": "ALEX",
-    "text": "Exactly."
-  },
-  {
-    "speaker": "PAUSE",
-    "text": ""
-  },
-  {
-    "speaker": "JAMIE",
-    "text": "I saw a table of contents in the source, but for listeners, maybe we should turn that into a road map."
-  },
-  {
-    "speaker": "ALEX",
-    "text": "Good idea. Here's the road map in plain speech: first, the guiding principle of skill first, agent second. Then setup and configuration. Then the ecosystem and team structure. Then multi-platform deployment beyond VS Code. Then detailed hands-on reference for specific agents. Then slash commands and prompts. Then contributing your own agents or improving existing ones. Then the bigger orchestration picture. Then GitHub Desktop, GitHub CLI, and Copilot CLI. And finally, accessibility shortcuts, troubleshooting, and the official source trail."
+    "text": "And do not skip the feedback task. The workshop asks for feedback because these agents, challenges, and examples are evolving with learner experience."
   },
   {
     "speaker": "PAUSE",
@@ -233,75 +97,39 @@
   },
   {
     "speaker": "ALEX",
-    "text": "Let's come back to the principle, because it is the foundation for everything else. Every agent has a manual prerequisite. If you have not done the corresponding skill by hand, the agent is not ready for you yet, and you are not ready for it."
+    "text": "To run agents locally, you usually work in VS Code with Copilot Chat open. The common shortcut is Ctrl+Alt+I, but if that conflicts with your setup, use the Command Palette and run Chat: Open Chat."
   },
   {
     "speaker": "JAMIE",
-    "text": "That sounds strict, but honestly, it's protective."
+    "text": "What does invoking an agent sound like in practice?"
   },
   {
     "speaker": "ALEX",
-    "text": "Very much so. Without that rule, agents create false confidence. A learner might get a polished summary of issues without understanding labels, timelines, duplicate reports, or severity. Or get a PR review without understanding diffs, testing, or risk."
+    "text": "In Copilot Chat, you mention the agent by name and give it a small task. For example: @daily-briefing morning briefing. Or @issue-tracker find open issues labeled good-first-issue in accessibility-agents. Or @pr-review show open pull requests in accessibility-agents."
   },
   {
     "speaker": "JAMIE",
-    "text": "So the \"learning cards\"\u009d for this principle would be things like: automation amplifies skill, manual fluency comes first, and trust requires verification."
+    "text": "Small task first. That feels easier to verify than asking for a giant report."
   },
   {
     "speaker": "ALEX",
-    "text": "Exactly. Those are the takeaways."
-  },
-  {
-    "speaker": "PAUSE",
-    "text": ""
+    "text": "Exactly. Agents are discovered through files in your repository, commonly under.github/agents, and through related.github configuration. Some setups include a quick install command, with one version for macOS or Linux shells and another for Windows PowerShell."
   },
   {
     "speaker": "JAMIE",
-    "text": "Now setup. If someone wants to begin using these agents, what does that look like?"
+    "text": "And if the repository carries the agent files, the behavior can travel with the repo. A teammate or contributor can open the project and get the same custom instructions."
   },
   {
     "speaker": "ALEX",
-    "text": "The chapter includes a quick install path with platform-specific one-command setup for macOS or Linux and for Windows PowerShell. The exact commands belong in the written material because they can change, but the idea is that the repository is designed to be installed and explored quickly."
+    "text": "Right. You can also personalize your instance with a preferences file: GitHub username, repositories you work on most, preferred output format, and notification priority. That helps agents produce output that fits your workflow instead of a generic response."
   },
   {
     "speaker": "JAMIE",
-    "text": "So in audio, we emphasize the workflow, not recite volatile commands."
+    "text": "On GitHub.com, there are browser-native Copilot features too: PR summaries, PR review help, Copilot in issues, GitHub Models as an AI playground, and release notes drafted from changes."
   },
   {
     "speaker": "ALEX",
-    "text": "Right. Then comes workshop setup: fork the repository, clone your fork locally, and open it in VS Code or another supported environment."
-  },
-  {
-    "speaker": "JAMIE",
-    "text": "And there's a prerequisites section inside setup too."
-  },
-  {
-    "speaker": "ALEX",
-    "text": "Yes. It reinforces the need for Git, GitHub, VS Code, and Copilot readiness. Then there's a key concept: how agents are discovered."
-  },
-  {
-    "speaker": "JAMIE",
-    "text": "Meaning how the platform even knows an agent exists."
-  },
-  {
-    "speaker": "ALEX",
-    "text": "Correct. Agents typically travel with the repository through convention-based files and folders, especially under .github. That means repository context matters. If the repo includes agent definitions, compatible tools can detect and expose them."
-  },
-  {
-    "speaker": "JAMIE",
-    "text": "That \"travel with your repo\"\u009d idea is powerful. It means the workflow can move with forks and collaborators."
-  },
-  {
-    "speaker": "ALEX",
-    "text": "Exactly. And there's also an optional personalization step. You can customize preferences like your GitHub username, the repositories you work on most, your preferred output format, and notification priority."
-  },
-  {
-    "speaker": "JAMIE",
-    "text": "So this chapter even includes a personal preferences section."
-  },
-  {
-    "speaker": "ALEX",
-    "text": "It does. In effect, it models the kinds of settings that make agent output more useful and more accessible to you. Maybe you want concise bullet points. Maybe you prefer structured sections. Maybe you want urgent notifications first. Those preferences shape the interaction."
+    "text": "Yes, and VS Code 1.120 adds the Agents window as a Preview feature in Stable. It does not replace custom Accessibility Agents. It gives you one place to manage sessions, changed files, customizations, and validation tasks across projects."
   },
   {
     "speaker": "PAUSE",
@@ -309,27 +137,67 @@
   },
   {
     "speaker": "JAMIE",
-    "text": "Let's talk about invoking agents on GitHub dot com, because not everyone wants to live in the editor."
+    "text": "Let us zoom out to the ecosystem. You said three teams, and I want to understand how they relate."
   },
   {
     "speaker": "ALEX",
-    "text": "Absolutely. There are two main web-based paths highlighted. One is Copilot Chat with task mode. The other is assigning an issue to Copilot."
+    "text": "Team 1 is Accessibility, with agents for web, document, and mobile work. That includes page audits, contrast checks, keyboard navigation, Word, Excel, PDF, ePub, and remediation support."
   },
   {
     "speaker": "JAMIE",
-    "text": "So learners can interact in the browser, not just locally."
+    "text": "So that team is closest to accessibility testing and repair."
   },
   {
     "speaker": "ALEX",
-    "text": "Yes, and the chapter also points out browser-native Copilot features on GitHub itself: pull request summaries, pull request review help, Copilot in issues, GitHub Models as a free AI playground, and Copilot-drafted release notes."
+    "text": "Yes. Team 2 is GitHub Workflow. Those agents help with daily briefings, issue tracking, pull request review, analytics, accessibility change monitoring, and template building."
   },
   {
     "speaker": "JAMIE",
-    "text": "That sounds broader than \"custom agents.\"\u009d"
+    "text": "And Team 3 is Developer Tools, which sounds like the bridge into code and automation."
   },
   {
     "speaker": "ALEX",
-    "text": "It is. The lesson is partly about custom agents and partly about the surrounding AI ecosystem on GitHub. The learning cards for this section would emphasize setup, discovery, repo-scoped behavior, and browser-native options."
+    "text": "Exactly. That team includes Python and desktop development support, CI accessibility checks, Playwright scanning, and custom tool workflows. Around the agents, there is a supporting ecosystem: slash commands, prompts, hooks in tools like Claude Code, configuration files, and examples for contributors."
+  },
+  {
+    "speaker": "JAMIE",
+    "text": "That is also where the roadmap matters. Learners are not only consumers here; they can help shape what gets built next."
+  },
+  {
+    "speaker": "ALEX",
+    "text": "Yes. A useful contribution might be a clearer instruction, a new workflow example, a bug report about a misleading response, or a new agent proposal for an uncovered accessibility workflow."
+  },
+  {
+    "speaker": "PAUSE",
+    "text": ""
+  },
+  {
+    "speaker": "ALEX",
+    "text": "The five platforms give you choices. Most learners should start with GitHub Copilot in VS Code because it is already part of the workshop flow and works well with files, chat, and repository context."
+  },
+  {
+    "speaker": "JAMIE",
+    "text": "But the catalog is not limited to VS Code."
+  },
+  {
+    "speaker": "ALEX",
+    "text": "Right. Claude Code can be useful for faster command-line iteration and hook-based enforcement. Gemini CLI can be a free or low-cost command-line path for some accessibility checks. Claude Desktop can work well for long planning sessions. Codex CLI is another command-line option for agentic coding workflows."
+  },
+  {
+    "speaker": "JAMIE",
+    "text": "How should someone choose without getting overwhelmed?"
+  },
+  {
+    "speaker": "ALEX",
+    "text": "Start from your strongest environment. If you use VS Code every day, use the VS Code path. If you prefer the command line, use a CLI path. If you want both, let VS Code handle editing and review while a command-line tool helps with repeatable checks."
+  },
+  {
+    "speaker": "JAMIE",
+    "text": "And accessibility of the platform matters. Screen reader behavior, zoom support, keyboard focus, and how chat output is exposed are all part of the choice."
+  },
+  {
+    "speaker": "ALEX",
+    "text": "Yes. Try the same small task on more than one platform only after you understand the task. Then compare whether the result is easier to navigate, easier to copy, and easier to verify."
   },
   {
     "speaker": "PAUSE",
@@ -337,51 +205,59 @@
   },
   {
     "speaker": "JAMIE",
-    "text": "Now the ecosystem section. We mentioned three teams earlier. Let's unpack them."
+    "text": "The slash commands are the part I can imagine using every day. They sound like shortcuts for common prompts."
   },
   {
     "speaker": "ALEX",
-    "text": "Team one is Accessibility, the largest cluster. These agents focus on accessibility workflows: auditing, checking, remediating, and tracking accessibility concerns across web, documents, and code-adjacent tasks."
+    "text": "That is the idea. The catalog includes 54+ slash commands organized by workflow. A slash command is a named prompt, like /my-issues or /review-pr, that gives the assistant a focused job without making you retype the whole instruction every time."
   },
   {
     "speaker": "JAMIE",
-    "text": "Team two is GitHub Workflow."
+    "text": "Which ones should learners try first?"
   },
   {
     "speaker": "ALEX",
-    "text": "Right. Those agents support issue triage, PR review, daily status awareness, analytics, and workflow management around collaboration."
+    "text": "Start with /my-issues to find your work, /review-pr to structure a pull request review, /triage to sort issues, /daily-briefing to get a morning overview, and /a11y-update to summarize accessibility-relevant changes."
   },
   {
     "speaker": "JAMIE",
-    "text": "And team three is Developer Tools."
+    "text": "And reading a command definition is part of the learning, not just running it."
   },
   {
     "speaker": "ALEX",
-    "text": "Yes. That group covers more technical workflows like CI accessibility checks, test automation, and tool-assisted development patterns."
+    "text": "Yes. Open the command file and look for what it asks the assistant to gather, how it should format the answer, and what behavior it promises. For /a11y-update, for example, you would expect it to focus on accessibility changes, risks, and follow-up actions rather than a generic project summary."
+  },
+  {
+    "speaker": "PAUSE",
+    "text": ""
+  },
+  {
+    "speaker": "ALEX",
+    "text": "If a learner asks which agents are worth trying first, I would pick a small, high-impact set. @daily-briefing gives a morning view of issues opened in the last day, PRs awaiting review, CI failures, security alerts, and community activity."
   },
   {
     "speaker": "JAMIE",
-    "text": "Then there's a supporting ecosystem beyond the agents themselves."
+    "text": "That is useful because it turns scattered repository activity into one checklist I can review at my own pace."
   },
   {
     "speaker": "ALEX",
-    "text": "Exactly. The chapter highlights that the ecosystem includes not only agent files but prompts, slash commands, cloud features, hooks, platform integrations, and contribution pathways. For example, hook-based enforcement in tools like Claude Code can apply checks or automation rules at the right moment in a development workflow."
+    "text": "@issue-tracker is good for finding open issues, especially labels like good-first-issue, and it can help draft replies. @pr-review can summarize a pull request, identify risk areas, map changed files, suggest inline comments, and recommend whether minor changes are needed."
   },
   {
     "speaker": "JAMIE",
-    "text": "So an agent isn't always a chat personality. Sometimes it's part of a workflow system."
+    "text": "What about accessibility-specific monitoring?"
   },
   {
     "speaker": "ALEX",
-    "text": "Well said. The chapter also asks a design question: what would you build? That opens the contribution paths."
+    "text": "@insiders-a11y-tracker watches recent changes for accessibility signals. It might flag a heading hierarchy skip, non-descriptive link text, or a positive change like an ARIA label being added. @template-builder helps create issue templates interactively, which connects back to the template design work from earlier."
   },
   {
     "speaker": "JAMIE",
-    "text": "And those paths include improving an existing agent, proposing a new one, adding new workflows, and helping shape the roadmap."
+    "text": "And @analytics can show team trends, active contributors, files that change a lot, and review turnaround time. That is less about one issue and more about how the project is moving."
   },
   {
     "speaker": "ALEX",
-    "text": "Yes. The roadmap section reminds learners this is evolving. You're not studying a finished museum exhibit. You're entering a live open source ecosystem."
+    "text": "Exactly. The safest habit is to ask for sources and concrete locations: issue numbers, PR numbers, file names, line ranges, or links. Then check those locations yourself before acting."
   },
   {
     "speaker": "PAUSE",
@@ -389,59 +265,67 @@
   },
   {
     "speaker": "JAMIE",
-    "text": "Then we go beyond VS Code entirely."
+    "text": "What about building or improving an agent? That sounds like Bonus Challenge A territory."
   },
   {
     "speaker": "ALEX",
-    "text": "Right. Multi-platform deployment is a major idea here. The same general agent concepts can work across five platforms, but each platform has different strengths."
+    "text": "Yes. Bonus Challenge A is about improving an existing agent with a clear accessibility purpose. A custom agent usually lives in an agent.md-style file with frontmatter at the top and instructions below it."
   },
   {
     "speaker": "JAMIE",
-    "text": "Let's do the \"when to use each\"\u009d version."
+    "text": "Frontmatter is the little metadata block, right? The part that tells the system the agent name, description, tools, or permissions."
   },
   {
     "speaker": "ALEX",
-    "text": "GitHub Copilot is recommended for most learners because it integrates well with common GitHub and VS Code workflows. Claude Code is positioned for faster iteration, especially if you like command-line-centered work. Gemini CLI offers a free-access path that may be attractive to some learners. Claude Desktop can be useful for longer, conversational sessions. And Codex CLI belongs in the broader multi-platform picture for people who prefer that toolchain."
+    "text": "Right. Then the body explains purpose, capabilities, domain knowledge, responsibilities, and response guidelines. Informational agents should stay read-only when they only need to summarize or inspect. Task-oriented agents may need file editing, shell execution, or GitHub API access, so their guardrails must be stronger."
   },
   {
     "speaker": "JAMIE",
-    "text": "So the platform comparison is really about capability, comfort, and access."
+    "text": "I want the agent to know when to stop and ask."
   },
   {
     "speaker": "ALEX",
-    "text": "Yes. The chapter encourages choosing a primary platform, while also understanding that you may run the same agent across multiple platforms depending on the task."
+    "text": "That is the tiered decision pattern. Low-risk actions can be suggested directly. Medium-risk actions should be explained with options. High-risk actions, like changing files, running commands, or opening a PR, should ask for confirmation and leave a clear review path."
   },
   {
     "speaker": "JAMIE",
-    "text": "Can you give an example?"
+    "text": "The template-builder exercises fit here too. Generate a template, extend the agent for a project, then refine the result through feedback."
   },
   {
     "speaker": "ALEX",
-    "text": "Sure. You might discover and discuss an issue in GitHub's web interface, investigate locally in VS Code, and then use a CLI-based workflow for fast iteration or scripting. Same conceptual agent, different interaction layer."
+    "text": "Yes, and the pre-built guided workflows give models to study: an accessibility bug report template and a security vulnerability template. You are learning how an agent gathers details, produces a useful file, and invites human review."
+  },
+  {
+    "speaker": "PAUSE",
+    "text": ""
+  },
+  {
+    "speaker": "ALEX",
+    "text": "The most powerful workflows chain agents together. One agent can triage issues, another can inspect accessibility risk, another can draft a template or review a PR, and an orchestrator can coordinate the handoff."
   },
   {
     "speaker": "JAMIE",
-    "text": "And the chapter includes learning paths by platform."
+    "text": "Orchestrator agents are the ones like @nexus, @accessibility-lead, and @web-accessibility-wizard?"
   },
   {
     "speaker": "ALEX",
-    "text": "It does. Path A is for people who use VS Code and is the recommended path for most learners. Path B is for people who prefer the command line. Path C is for learners who want the best of both."
+    "text": "Yes. @nexus can help route work across the ecosystem. @accessibility-lead can keep the accessibility mission and guardrails visible. @web-accessibility-wizard can coordinate web audit tasks across checks like headings, keyboard flow, contrast, and ARIA usage."
   },
   {
     "speaker": "JAMIE",
-    "text": "There's also explicit accessibility guidance by platform, which I'm glad to see."
+    "text": "Give me a real contribution example."
   },
   {
     "speaker": "ALEX",
-    "text": "Very important. The chapter addresses screen reader, low vision, and keyboard navigation considerations across platforms. That means learners should actively evaluate not just what a platform can do, but how accessible it is for them in practice."
+    "text": "You might use /triage to find an accessibility issue, ask @insiders-a11y-tracker what changed recently, ask @web-accessibility-wizard for likely test areas, make a small documentation or code improvement, then ask @pr-review to help prepare a review-ready summary. The human still decides what is true, what should be changed, and whether the evidence is strong enough."
   },
   {
     "speaker": "JAMIE",
-    "text": "So \"best platform\"\u009d is personal, not universal."
+    "text": "That connects directly to Challenge 16, the Capstone Project. The contribution can be to Accessibility Agents, GLOW, or another meaningful repository."
   },
   {
     "speaker": "ALEX",
-    "text": "Exactly. Next steps in this section are: choose your primary platform, run a simple agent there, and compare whether another platform gives you a better accessible experience."
+    "text": "Yes. Challenge 16 is about choosing a meaningful repository, defining a mission, writing responsibilities and guardrails, and preparing a review-ready contribution. A review-ready draft or a well-supported contribution plan can be valid evidence of completion."
   },
   {
     "speaker": "PAUSE",
@@ -449,422 +333,34 @@
   },
   {
     "speaker": "JAMIE",
-    "text": "Now for the hands-on reference section. This is where specific agents are introduced."
+    "text": "Where do GitHub Desktop, GitHub CLI, and Copilot CLI fit into all this?"
   },
   {
     "speaker": "ALEX",
-    "text": "Yes, and the chapter first distinguishes two types of agents: informational agents and task-oriented agents."
+    "text": "GitHub Desktop is useful if you want a visual app for cloning, branching, committing, and pushing. GitHub CLI, the gh command, is useful for signing in, listing issues, checking PRs, viewing workflow runs, and opening links from the terminal."
   },
   {
     "speaker": "JAMIE",
-    "text": "Informational means read-only, analysis, summaries, status reports."
+    "text": "And gh copilot can explain a command, suggest a command, or help write a shell script. That is handy when the terminal is the fastest path but the syntax is hard to remember."
   },
   {
     "speaker": "ALEX",
-    "text": "Right. Task-oriented means agents that may edit files, run commands, or take more direct action, depending on the platform and permissions."
+    "text": "Exactly. Just keep the same verification habit. If Copilot suggests a command, read it before running it, especially if it edits files, deletes anything, changes permissions, or posts to GitHub."
   },
   {
     "speaker": "JAMIE",
-    "text": "Let's go one by one through the featured examples."
+    "text": "Troubleshooting is pretty practical too. If an agent is not found, check the file location, the agent name, the repository workspace, and whether Copilot or the Agents window has refreshed."
   },
   {
     "speaker": "ALEX",
-    "text": "Agent one is daily briefing. Its job is to produce a morning overview of what needs your attention."
+    "text": "If the agent gives incorrect output, narrow the prompt, provide the repository or file context, ask for sources, and compare the answer to GitHub itself. If a slash command does not work, check the command name, whether the command file is present, and whether your platform supports that command style."
   },
   {
     "speaker": "JAMIE",
-    "text": "What kinds of things show up in that briefing?"
+    "text": "And for going deeper, Appendix V lists the full slash command catalog, while Episode 39 walks through every agent in more detail."
   },
   {
     "speaker": "ALEX",
-    "text": "The chapter gives a structured output format that may include issues opened in the last twenty-four hours, pull requests awaiting your review, CI failures on your branches, security alerts, and community activity."
-  },
-  {
-    "speaker": "JAMIE",
-    "text": "So it's a prioritization assistant."
-  },
-  {
-    "speaker": "ALEX",
-    "text": "Exactly. Example commands are short, like asking for a morning briefing. The output is organized so you can scan it quickly."
-  },
-  {
-    "speaker": "JAMIE",
-    "text": "Agent two is issue tracker."
-  },
-  {
-    "speaker": "ALEX",
-    "text": "That agent helps with issue management. It can find open issues, especially by label or other criteria, and support triage thinking."
-  },
-  {
-    "speaker": "JAMIE",
-    "text": "The example output includes open issues labeled good-first-issue, broken into high and medium priority, plus a drafted reply for a particular issue."
-  },
-  {
-    "speaker": "ALEX",
-    "text": "Yes, and that's a good teaching moment: a drafted reply is not a final reply. It's a starting point that you must judge, revise, and own."
-  },
-  {
-    "speaker": "JAMIE",
-    "text": "Agent three is pull request review."
-  },
-  {
-    "speaker": "ALEX",
-    "text": "A very useful one, if you already know how to review manually. Its output may include a summary, a risk assessment, what could break, high-impact areas, a change map for specific files, suggested inline comments, and a recommendation such as approve with minor changes."
-  },
-  {
-    "speaker": "JAMIE",
-    "text": "That sounds impressive\"\u201dand dangerous if someone trusts it blindly."
-  },
-  {
-    "speaker": "ALEX",
-    "text": "Exactly. A confident review summary can be wrong. The agent is useful because it helps you notice patterns and focus your attention. It does not replace your responsibility to read the diff and understand the impact."
-  },
-  {
-    "speaker": "JAMIE",
-    "text": "Agent four is analytics."
-  },
-  {
-    "speaker": "ALEX",
-    "text": "Right. Team analytics looks at contribution summaries, active contributors, high-churn files, review turnaround time, and trends. This can help maintainers understand workflow patterns, but again, interpretation matters."
-  },
-  {
-    "speaker": "JAMIE",
-    "text": "Agent five is insiders accessibility tracker."
-  },
-  {
-    "speaker": "ALEX",
-    "text": "That one monitors accessibility-related changes. The example output includes recent accessibility changes, issues found, specific problems like a heading hierarchy skip or non-descriptive link text, positive changes such as an added ARIA label, and recommendations."
-  },
-  {
-    "speaker": "JAMIE",
-    "text": "I noticed the example even references a VS Code setup heading inside that output."
-  },
-  {
-    "speaker": "ALEX",
-    "text": "Yes, which reinforces that these agents can point at concrete artifacts in docs or code. But you still verify the underlying file and context yourself."
-  },
-  {
-    "speaker": "JAMIE",
-    "text": "And agent six is template builder."
-  },
-  {
-    "speaker": "ALEX",
-    "text": "An interactive issue template wizard. Instead of asking you to manually remember every field type and YAML detail, it can guide template creation. But once again, it's most useful if you have already built and tested templates manually, because then you can tell whether the generated structure actually fits your project."
-  },
-  {
-    "speaker": "PAUSE",
-    "text": ""
-  },
-  {
-    "speaker": "JAMIE",
-    "text": "Then there's a section on slash commands and prompts. Why isolate that as its own topic?"
-  },
-  {
-    "speaker": "ALEX",
-    "text": "Because prompt ergonomics matter. A good agent can still be hard to use if you don't understand how to invoke it effectively. The chapter highlights the most useful slash commands for the workshop and gives a quick reference."
-  },
-  {
-    "speaker": "JAMIE",
-    "text": "And it teaches how to read slash command definitions, not just memorize command names."
-  },
-  {
-    "speaker": "ALEX",
-    "text": "Yes. That's crucial. If you read a slash command definition carefully, you can usually infer the intended behavior, scope, and output style. The example slash command in the chapter is an accessibility update command, and the important question is not merely \"what do I type,\"\u009d but \"what behavior should I expect when I type it?\"\u009d"
-  },
-  {
-    "speaker": "JAMIE",
-    "text": "So the learning cards here would be: read the definition, understand the behavior, use short targeted prompts, and verify the output."
-  },
-  {
-    "speaker": "ALEX",
-    "text": "Exactly."
-  },
-  {
-    "speaker": "PAUSE",
-    "text": ""
-  },
-  {
-    "speaker": "JAMIE",
-    "text": "Now my favorite part: contributing to the ecosystem."
-  },
-  {
-    "speaker": "ALEX",
-    "text": "This chapter is very strong on that. It explains two types of custom agents and then shows the general file structure of an agent."
-  },
-  {
-    "speaker": "JAMIE",
-    "text": "Let's list that structure in human terms."
-  },
-  {
-    "speaker": "ALEX",
-    "text": "An agent definition typically includes its purpose, its capabilities, its domain knowledge, its responsibilities, and response guidelines. There's also frontmatter\"\u201dmetadata that describes what kind of agent it is and how it should behave."
-  },
-  {
-    "speaker": "JAMIE",
-    "text": "And the distinction between informational and task-oriented shows up again in the metadata."
-  },
-  {
-    "speaker": "ALEX",
-    "text": "Right. Informational agents are read-only and limited to GitHub tools or similar lookup behavior. Task-oriented agents may edit files, execute shell commands, or use APIs, depending on environment permissions."
-  },
-  {
-    "speaker": "JAMIE",
-    "text": "The chapter gives an informational example first."
-  },
-  {
-    "speaker": "ALEX",
-    "text": "Yes, the insiders accessibility tracker. That shows a read-only monitoring pattern."
-  },
-  {
-    "speaker": "JAMIE",
-    "text": "And then a task-oriented example: the Markdown Accessibility Assistant."
-  },
-  {
-    "speaker": "ALEX",
-    "text": "Exactly. That example introduces a key pattern called tiered decision-making."
-  },
-  {
-    "speaker": "JAMIE",
-    "text": "Meaning the agent doesn't immediately charge ahead with edits."
-  },
-  {
-    "speaker": "ALEX",
-    "text": "Correct. It can reason in steps: assess, identify issues, suggest or preview changes, and only then act more directly when appropriate. That pattern is especially important for accessibility work, where blind or low-vision contributors need output that is explainable, structured, and reviewable."
-  },
-  {
-    "speaker": "JAMIE",
-    "text": "The chapter also lists required prerequisites for that assistant."
-  },
-  {
-    "speaker": "ALEX",
-    "text": "Yes. Again, you need the underlying accessibility and markdown knowledge first. Otherwise the automation can obscure the reasoning you should be learning."
-  },
-  {
-    "speaker": "JAMIE",
-    "text": "How do you invoke custom agents?"
-  },
-  {
-    "speaker": "ALEX",
-    "text": "Several ways: from VS Code chat, from the VS Code Agents window, from GitHub dot com task mode, and from issue assignment flows. There's also environment setup guidance for cloud agents so they can operate in GitHub-hosted contexts."
-  },
-  {
-    "speaker": "JAMIE",
-    "text": "And if someone wants to create their own?"
-  },
-  {
-    "speaker": "ALEX",
-    "text": "The chapter walks them toward that. Start with the template builder agent as an exercise. First generate a template with the agent. Then extend the agent for your own project. Then do iterative refinement: compare what the agent produced, identify gaps, adjust instructions, and test again."
-  },
-  {
-    "speaker": "JAMIE",
-    "text": "That's a very open-source way to learn."
-  },
-  {
-    "speaker": "ALEX",
-    "text": "It is. You're not just consuming AI output; you're shaping the tool."
-  },
-  {
-    "speaker": "JAMIE",
-    "text": "There are also two pre-built workflows highlighted."
-  },
-  {
-    "speaker": "ALEX",
-    "text": "Yes. A guided accessibility template workflow and a guided security vulnerability template workflow. Each shows an invocation pattern, a workflow sequence, and in the security case an output shape."
-  },
-  {
-    "speaker": "JAMIE",
-    "text": "And the exercises ask learners to notice what they're adding and then continue refining."
-  },
-  {
-    "speaker": "ALEX",
-    "text": "Exactly. The \"what comes next\"\u009d message is that custom agents are not static. You evolve them as project needs become clearer."
-  },
-  {
-    "speaker": "PAUSE",
-    "text": ""
-  },
-  {
-    "speaker": "JAMIE",
-    "text": "Then the chapter zooms out again to the bigger picture: teams, orchestration, and work beyond the editor."
-  },
-  {
-    "speaker": "ALEX",
-    "text": "Yes. The three teams connect because real workflows connect. Accessibility work touches repository workflow. Repository workflow touches developer tooling. Orchestrator agents help coordinate across those boundaries."
-  },
-  {
-    "speaker": "JAMIE",
-    "text": "So instead of one specialized agent doing everything, you may have multiple agents with narrower jobs that are composed together."
-  },
-  {
-    "speaker": "ALEX",
-    "text": "Exactly. The chapter also calls out high-impact agents to try first and the slash commands that save the most time."
-  },
-  {
-    "speaker": "JAMIE",
-    "text": "And it introduces scope at three levels."
-  },
-  {
-    "speaker": "ALEX",
-    "text": "Right. Scope one is your editor: accessibility agents helping you locally while you work. Scope two is your repository: agent definitions traveling with forks and collaborators. Scope three is the cloud: GitHub-hosted agentic workflows that operate through issues, pull requests, task mode, or other cloud contexts."
-  },
-  {
-    "speaker": "JAMIE",
-    "text": "That helps learners understand where the action is happening."
-  },
-  {
-    "speaker": "ALEX",
-    "text": "Yes, and it leads into deeper examples like auto-triaging accessibility issues. That kind of workflow can be powerful, but only if maintainers have clear criteria and review habits."
-  },
-  {
-    "speaker": "PAUSE",
-    "text": ""
-  },
-  {
-    "speaker": "JAMIE",
-    "text": "We also need to cover GitHub Desktop, GitHub CLI, and Copilot CLI."
-  },
-  {
-    "speaker": "ALEX",
-    "text": "Definitely. GitHub Desktop appears as a simpler graphical path for repository operations. Then GitHub CLI, the gh tool, is covered with installation, authentication, and common commands."
-  },
-  {
-    "speaker": "JAMIE",
-    "text": "Again, we won't recite every command in audio, but we should explain the role."
-  },
-  {
-    "speaker": "ALEX",
-    "text": "Exactly. GitHub CLI lets you inspect and manipulate GitHub resources from the terminal: repositories, issues, pull requests, authentication, and more. Then GitHub Copilot CLI extends that experience with AI assistance in the shell."
-  },
-  {
-    "speaker": "JAMIE",
-    "text": "And the example tasks are very concrete: explain a command, suggest a command, or write a shell script."
-  },
-  {
-    "speaker": "ALEX",
-    "text": "Yes. Those examples show where Copilot CLI can reduce friction. If you know what you want but not the syntax, it can help. If you have a command and want it explained in accessible terms, it can help. If you need a short script scaffold, it can help."
-  },
-  {
-    "speaker": "JAMIE",
-    "text": "But the same caution applies."
-  },
-  {
-    "speaker": "ALEX",
-    "text": "Always. Never paste or run shell commands you do not understand, especially commands that modify files, history, permissions, or remote state."
-  },
-  {
-    "speaker": "JAMIE",
-    "text": "The example session in the chapter likely exists to show that rhythm: ask, inspect, understand, then decide."
-  },
-  {
-    "speaker": "ALEX",
-    "text": "Exactly. And the learning cards for this section would emphasize that GitHub Desktop, GitHub CLI, and Copilot CLI are complementary tools, not competing identities."
-  },
-  {
-    "speaker": "PAUSE",
-    "text": ""
-  },
-  {
-    "speaker": "JAMIE",
-    "text": "There's also a quick-reference keyboard shortcut section."
-  },
-  {
-    "speaker": "ALEX",
-    "text": "Yes. For this audience, that matters a lot. The chapter includes accessibility-agents quick-reference shortcuts, including opening Copilot Chat and navigating key workflows. Since shortcuts vary by keymap and platform, learners should verify them in their own environment. The important practice is to know both the shortcut path and the Command Palette path."
-  },
-  {
-    "speaker": "JAMIE",
-    "text": "That way if a shortcut conflicts or isn't memorable, you still have a reliable route."
-  },
-  {
-    "speaker": "ALEX",
-    "text": "Exactly."
-  },
-  {
-    "speaker": "PAUSE",
-    "text": ""
-  },
-  {
-    "speaker": "JAMIE",
-    "text": "Let's finish with troubleshooting, because agents never fail at convenient times."
-  },
-  {
-    "speaker": "ALEX",
-    "text": "Very true. The chapter includes several common failure modes. First: \"agent not found.\"\u009d"
-  },
-  {
-    "speaker": "JAMIE",
-    "text": "What should learners check?"
-  },
-  {
-    "speaker": "ALEX",
-    "text": "Check whether the agent definition exists in the expected repository location, whether the platform supports that style of custom agent, whether the repository is open in the correct context, and whether you may need to reload or rescan the environment."
-  },
-  {
-    "speaker": "JAMIE",
-    "text": "Second: the agent produces incorrect output."
-  },
-  {
-    "speaker": "ALEX",
-    "text": "Then treat it as an analysis artifact, not truth. Compare it against the underlying issue, PR, file, or repository state. Tighten the prompt. Check whether the agent instructions are too vague. And if the agent itself needs improvement, that can become a contribution."
-  },
-  {
-    "speaker": "JAMIE",
-    "text": "Third: slash command doesn't work."
-  },
-  {
-    "speaker": "ALEX",
-    "text": "Check whether the command is supported in your current tool, whether the syntax matches the definition, and whether the command belongs to a different platform or agent context than the one you're using."
-  },
-  {
-    "speaker": "JAMIE",
-    "text": "So troubleshooting here is partly technical and partly conceptual."
-  },
-  {
-    "speaker": "ALEX",
-    "text": "Exactly. Sometimes the fix is \"reload the window.\"\u009d Sometimes the fix is \"I misunderstood what this tool can do.\"\u009d"
-  },
-  {
-    "speaker": "PAUSE",
-    "text": ""
-  },
-  {
-    "speaker": "JAMIE",
-    "text": "Before we close, can we pull together the authoritative-source idea one more time?"
-  },
-  {
-    "speaker": "ALEX",
-    "text": "Yes. This chapter repeatedly points back to GitHub Docs, GitHub Changelog, GitHub Copilot docs, custom instructions support matrices, and documentation about custom agents. That matters because AI features move quickly. If a menu label changes, if a support matrix expands, if the Agents window behavior shifts, the official docs outrank any static lesson."
-  },
-  {
-    "speaker": "JAMIE",
-    "text": "So the durable learning here is not memorizing one interface screenshot."
-  },
-  {
-    "speaker": "ALEX",
-    "text": "Right. The durable learning is: understand skill first, agent second; know how agent files travel with repositories; choose a platform that works for your workflow and accessibility needs; validate outputs against manual knowledge; read agent instructions; and contribute improvements when you find gaps."
-  },
-  {
-    "speaker": "JAMIE",
-    "text": "Let me see if I can summarize the learner mindset. Don't ask, \"Which agent is coolest?\"\u009d Ask, \"Which agent matches a skill I already have?\"\u009d Don't ask, \"Can I trust the output?\"\u009d Ask, \"How do I verify the output?\"\u009d And don't ask, \"What if the agent is imperfect?\"\u009d Ask, \"Can I improve it?\"\u009d"
-  },
-  {
-    "speaker": "ALEX",
-    "text": "That is exactly the mindset this chapter wants."
-  },
-  {
-    "speaker": "JAMIE",
-    "text": "And for the workshop tasks: map three to five agents to skills you already have, run one and evaluate it, read one agent's instructions closely, optionally contribute a fix or propose a new agent, and don't skip the feedback submission."
-  },
-  {
-    "speaker": "ALEX",
-    "text": "Perfect. Accessibility agents are most powerful when they stay in partnership with human judgment, human skill, and accessible contribution workflows."
-  },
-  {
-    "speaker": "JAMIE",
-    "text": "Which is a very fitting note for this course."
-  },
-  {
-    "speaker": "ALEX",
-    "text": "It is. We'll stop there."
+    "text": "Exactly. For now, keep the workflow grounded: choose an agent that matches a skill you have, run a small task, verify the output, and only then use it in a contribution."
   }
 ]

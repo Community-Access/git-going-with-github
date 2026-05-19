@@ -16,7 +16,7 @@ const ROOT = path.join(__dirname, '..', '..', '..', '..');
 const REVIEW_DIR = path.join(ROOT, 'podcasts', 'llm-podcast-generator-review');
 const DB_PATH = path.join(REVIEW_DIR, 'generated', 'execution', 'ai_jobs.sqlite');
 const PACKET_SCRIPT = path.join(ROOT, 'podcasts', 'tools', 'agentic-pilot', 'build-source-packet.js');
-const DEFAULT_MODEL = process.env.PODCAST_LLM_MODEL || 'openai/gpt-5.4';
+const DEFAULT_MODEL = process.env.PODCAST_LLM_MODEL || 'openai/gpt-5.5';
 const DEFAULT_ENDPOINT = '/chat/completions';
 const DEFAULT_BASE_URL = process.env.OPENAI_BASE_URL || 'https://api.openai.com/v1';
 
@@ -26,7 +26,7 @@ function parseArgs(argv) {
     mode: 'batch',
     model: DEFAULT_MODEL,
     endpoint: DEFAULT_ENDPOINT,
-    maxTokens: Number.parseInt(process.env.PODCAST_LLM_MAX_OUTPUT_TOKENS || '12000', 10),
+    maxTokens: Number.parseInt(process.env.PODCAST_LLM_MAX_OUTPUT_TOKENS || '16000', 10),
     temperature: Number.parseFloat(process.env.PODCAST_LLM_TEMPERATURE || '0.65'),
     limit: null,
     slug: [],
@@ -88,7 +88,15 @@ function main() {
 
   const ledger = new JobLedger(DB_PATH);
   const mode = args.mode === 'sync' ? JOB_MODE.SYNC : JOB_MODE.BATCH;
-  const systemPrompt = 'You are an expert instructional podcast writer. Return JSON only.';
+  // Stable system prompt so OpenAI/OpenRouter automatic prompt caching can
+  // match the prefix across every job in a batch run. Keep this identical
+  // across jobs.
+  const systemPrompt = [
+    'You are an expert instructional podcast writer for the Git Going with GitHub series.',
+    'You write conversational two-host scripts for blind and low-vision learners.',
+    'You strictly obey the voice rules, banned phrases, and current curriculum facts supplied in the user message.',
+    'You return JSON only, with no surrounding prose, no code fences, and no commentary.'
+  ].join(' ');
   const created = [];
   const reused = [];
 
@@ -103,7 +111,17 @@ function main() {
       path: source.sourcePath,
       content: source.content
     }));
-    const prompt = buildPrompt({ slug, sourceTexts, sourceLabels: sourceTexts.map(source => source.label) });
+    const prompt = buildPrompt({
+      slug,
+      sourceTexts,
+      sourceLabels: sourceTexts.map(source => source.label),
+      kind: packetData.kind,
+      title: packetData.title,
+      description: packetData.description,
+      concepts: packetData.concepts,
+      companions: packetData.companions,
+      voiceRules: packetData.voiceRules
+    });
     const sourceChecksum = checksumContent(sourceTexts.map(source => source.content).join('\n\n'));
     const generationParams = {
       temperature: args.temperature,

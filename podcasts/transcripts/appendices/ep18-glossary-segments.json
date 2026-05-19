@@ -1,235 +1,35 @@
 [
   {
     "speaker": "ALEX",
-    "text": "Welcome back. Today we're doing something a little different. Instead of following one workflow from start to finish, we're building a mental map of GitHub and Git terms you'll hear over and over in open source work."
+    "text": "Welcome back. This episode is a companion to the glossary, so the goal is simple: make GitHub words feel less mysterious when you hear them in a workshop, an issue, or a pull request."
   },
   {
     "speaker": "JAMIE",
-    "text": "So this is the episode people can return to when they hear a word like fork, upstream, rebase, or detached HEAD and think, wait, what exactly does that mean again?"
+    "text": "I love a glossary episode because half the stress of open source is hearing a familiar word used in a very specific way. Like, I know what a branch is in a tree. Git has other plans."
   },
   {
     "speaker": "ALEX",
-    "text": "Exactly. This glossary is meant to be a reference companion for the whole workshop, and really for all chapters. If a term feels fuzzy, this is where you come back to ground yourself."
+    "text": "Exactly. The glossary is there for quick lookup across the whole workshop. Terms are grouped by topic, and there is also an alphabetical quick reference near the end when you already know the word you need."
   },
   {
     "speaker": "JAMIE",
-    "text": "And because our audience includes blind and low-vision learners, let's start with the navigation tips too, not just the definitions."
+    "text": "And the navigation tips matter. If you use a screen reader, headings are your friend here. Jump by headings, open the elements list, and type a few letters of the term."
   },
   {
     "speaker": "ALEX",
-    "text": "Yes. If you're using a screen reader, the glossary is designed so you can move by headings. Jumping by heading level is a fast way to move term by term, especially where each term is a level-three heading. You can also open your screen reader's elements list, like NVDA plus F7 or Insert plus F6 in some screen readers, to browse all headings at once and filter by typing a few letters."
+    "text": "If you use magnification, the term headings and the alphabetical table are useful because each row stands on its own. And anyone can use Control-F in the browser to search directly for a word like remote, stash, or ARIA."
   },
   {
     "speaker": "JAMIE",
-    "text": "And if you know the term but not the category, the alphabetical quick reference at the bottom is often the fastest path."
+    "text": "Let's also say pronunciations as we go, because some of these terms are awkward when you only read them."
   },
   {
     "speaker": "ALEX",
-    "text": "Right. For low-vision users, increasing zoom and scanning the bold term headings can make the page much easier to browse. The alphabetical table is also useful at high zoom because each row stands on its own. And for sighted users, the categories can help you narrow the search, while Control-F is still a great shortcut for everyone."
-  },
-  {
-    "speaker": "PAUSE",
-    "text": ""
-  },
-  {
-    "speaker": "ALEX",
-    "text": "Let's start with the building blocks. First up: repository, often shortened to repo."
+    "text": "Yes. Git is pronounced with a hard G, like get with an i sound. Repo is REE-poh, short for repository. Org is just org, short for organization. And PR is usually spoken as the letters P R, meaning pull request."
   },
   {
     "speaker": "JAMIE",
-    "text": "This is one of those words people hear immediately, but it helps to define it carefully."
-  },
-  {
-    "speaker": "ALEX",
-    "text": "A repository is the container for an entire project. It holds the files, folders, documentation, and the full history of changes. A good analogy is a project folder with a time machine built in. You don't just have the current version of the files. You have a recorded history of how they changed over time."
-  },
-  {
-    "speaker": "JAMIE",
-    "text": "And on GitHub, a repository lives at a web address like github dot com slash owner slash repo name."
-  },
-  {
-    "speaker": "ALEX",
-    "text": "Exactly. And a few related terms matter here. A remote repository usually means the copy hosted on GitHub. A local repository is the copy on your computer. Upstream is the original project you forked from. And a fork is your own copy of someone else's repository."
-  },
-  {
-    "speaker": "JAMIE",
-    "text": "That naturally leads to organization, or org."
-  },
-  {
-    "speaker": "ALEX",
-    "text": "An organization is a shared GitHub account for groups of people. Many open source projects live under organizations rather than personal accounts. In a URL like github dot com slash microsoft slash vscode, microsoft is the organization and vscode is the repository."
-  },
-  {
-    "speaker": "JAMIE",
-    "text": "So if a learner sees a project under an org, that usually means multiple maintainers or teams may be involved."
-  },
-  {
-    "speaker": "ALEX",
-    "text": "That's often true."
-  },
-  {
-    "speaker": "JAMIE",
-    "text": "Now let's define fork, because that one can feel abstract at first."
-  },
-  {
-    "speaker": "ALEX",
-    "text": "A fork is a personal copy of someone else's repository that lives in your own GitHub account. It includes the files and the history. Changes you make in your fork do not automatically affect the original repository. If you want your changes considered by the original project, you open a pull request."
-  },
-  {
-    "speaker": "JAMIE",
-    "text": "And the reason people fork is simple: most open source repositories do not give random contributors direct write access."
-  },
-  {
-    "speaker": "ALEX",
-    "text": "Right. Forking gives you a safe place to work freely."
-  },
-  {
-    "speaker": "JAMIE",
-    "text": "Okay, then what is a remote?"
-  },
-  {
-    "speaker": "ALEX",
-    "text": "A remote is a named connection from your local Git repository to a repository hosted somewhere else, usually on GitHub. Your local repository can have more than one remote. The most common two are origin and upstream."
-  },
-  {
-    "speaker": "JAMIE",
-    "text": "Origin usually points to your fork, and upstream usually points to the original repository you forked from."
-  },
-  {
-    "speaker": "ALEX",
-    "text": "Exactly. If you run a command like git push origin main, you're pushing your local main branch to the remote named origin."
-  },
-  {
-    "speaker": "JAMIE",
-    "text": "And if someone wants to inspect their remotes, the command is git remote space dash v."
-  },
-  {
-    "speaker": "ALEX",
-    "text": "Yes. That shows the remote names and URLs. And to add a remote, you might use something like git remote add upstream followed by the URL of the original repository."
-  },
-  {
-    "speaker": "JAMIE",
-    "text": "So origin is really a special case of remote."
-  },
-  {
-    "speaker": "ALEX",
-    "text": "That's a great way to say it. Origin is the default name Git gives the repository you cloned from. If you cloned your fork, then origin points to your fork on GitHub. Commands like git push and git pull often default to origin unless you specify a different remote."
-  },
-  {
-    "speaker": "PAUSE",
-    "text": ""
-  },
-  {
-    "speaker": "JAMIE",
-    "text": "Let's talk about dot gitignore, because this one protects people from a lot of headaches."
-  },
-  {
-    "speaker": "ALEX",
-    "text": "Absolutely. A .gitignore file lives at the root of your repository and tells Git which files or folders to ignore. In other words, Git will not track or commit those files if they are untracked."
-  },
-  {
-    "speaker": "JAMIE",
-    "text": "And there are a few common categories of things people usually want to ignore."
-  },
-  {
-    "speaker": "ALEX",
-    "text": "Yes. Dependencies, like node underscore modules or vendor folders. Environment variables, like .env files that may contain secrets. Build outputs, like dist or build folders and sometimes log files. Operating system files, such as .DS underscore Store on macOS or Thumbs dot db on Windows. And IDE files, such as .vscode or .idea."
-  },
-  {
-    "speaker": "JAMIE",
-    "text": "Important accessibility note for understanding this concept: .gitignore is not just housekeeping. It's often a security and collaboration tool."
-  },
-  {
-    "speaker": "ALEX",
-    "text": "Exactly. It helps keep secrets out of Git, keeps generated files from cluttering history, and avoids editor-specific noise that doesn't belong in the project."
-  },
-  {
-    "speaker": "JAMIE",
-    "text": "And there's one important gotcha."
-  },
-  {
-    "speaker": "ALEX",
-    "text": "Yes. .gitignore only applies to untracked files. If a file was already committed, adding it to .gitignore does not magically remove it from version control. You first have to stop tracking it, often with git rm dash dash cached filename, then add it to .gitignore and commit that change."
-  },
-  {
-    "speaker": "JAMIE",
-    "text": "That's such a common beginner surprise."
-  },
-  {
-    "speaker": "ALEX",
-    "text": "It really is."
-  },
-  {
-    "speaker": "JAMIE",
-    "text": "Next term: clone."
-  },
-  {
-    "speaker": "ALEX",
-    "text": "Cloning means copying a repository from GitHub to your local computer so you can work on it in VS Code or another editor. When you clone, you get both the files and the full history."
-  },
-  {
-    "speaker": "JAMIE",
-    "text": "And this is where people mix up fork and clone."
-  },
-  {
-    "speaker": "ALEX",
-    "text": "Right. Fork is your copy on GitHub. Clone is your copy on your computer. In a typical open source workflow, you fork first on GitHub, then clone your fork locally."
-  },
-  {
-    "speaker": "JAMIE",
-    "text": "Now branch."
-  },
-  {
-    "speaker": "ALEX",
-    "text": "A branch is a separate line of development inside a repository. The main branch, often called main and in some older projects master, is usually the stable primary branch. When you want to add a feature or fix a bug, you create another branch so your work stays isolated until it's ready."
-  },
-  {
-    "speaker": "JAMIE",
-    "text": "I like the idea of branches as parallel timelines."
-  },
-  {
-    "speaker": "ALEX",
-    "text": "That's the classic mental model. They can evolve independently, then be merged later. Common names include main, develop, feature slash something, fix slash something, or docs slash something."
-  },
-  {
-    "speaker": "JAMIE",
-    "text": "So branch names often communicate purpose."
-  },
-  {
-    "speaker": "ALEX",
-    "text": "Exactly."
-  },
-  {
-    "speaker": "JAMIE",
-    "text": "Then we have commit."
-  },
-  {
-    "speaker": "ALEX",
-    "text": "A commit is a saved snapshot of your changes at a moment in time. Each commit has a message describing what changed and why, a unique SHA hash, the author and timestamp, and the actual additions and deletions."
-  },
-  {
-    "speaker": "JAMIE",
-    "text": "And good commit messages are usually written in the imperative mood. So, Fix typo in README, not Fixed typo."
-  },
-  {
-    "speaker": "ALEX",
-    "text": "Yes. A strong commit message helps future readers understand intent. Sometimes the message also includes a longer body explaining context, and it may reference an issue number, like Fixes number 42."
-  },
-  {
-    "speaker": "JAMIE",
-    "text": "Last building-block term in this group: diff."
-  },
-  {
-    "speaker": "ALEX",
-    "text": "A diff shows the difference between two versions of a file. Added lines are typically shown in green with a plus sign. Removed lines are shown in red with a minus sign. Unchanged lines appear around them for context."
-  },
-  {
-    "speaker": "JAMIE",
-    "text": "And even if a learner can't see those colors, the conceptual point still matters."
-  },
-  {
-    "speaker": "ALEX",
-    "text": "Absolutely. Whether you're using visual diff views or screen reader-friendly text output, you're still interpreting additions, deletions, and context. Reading diffs is a core skill for code review. When you open the Files Changed tab in a pull request, you're reading a diff."
+    "text": "Good. My shoulders just dropped a little."
   },
   {
     "speaker": "PAUSE",
@@ -237,119 +37,71 @@
   },
   {
     "speaker": "ALEX",
-    "text": "Now let's shift to collaboration workflow."
+    "text": "A repository, often shortened to repo, is the project container. It holds the files, folders, documentation, and the full history of changes."
   },
   {
     "speaker": "JAMIE",
-    "text": "Starting with issues."
+    "text": "So it is more than a folder. It is a folder with memory."
   },
   {
     "speaker": "ALEX",
-    "text": "An issue is a discussion item in a GitHub repository. Issues can report bugs, request features, ask questions, discuss ideas, or track work. Each issue gets a number, like number 42, and can include labels, assignees, milestones, and comments."
+    "text": "Right. A repository on GitHub has an address like github.com, then the owner name, then the repo name. If the owner is a group account, that group is called an organization, or org."
   },
   {
     "speaker": "JAMIE",
-    "text": "And in many projects, issues are the starting point for contribution."
+    "text": "So in microsoft slash vscode, microsoft is the organization and vscode is the repository."
   },
   {
     "speaker": "ALEX",
-    "text": "Yes. It's often best practice to find or open an issue before changing code. That helps you avoid duplicated work and align with maintainers."
+    "text": "Exactly. A fork is your personal copy of someone else's repository on GitHub. You use a fork when you do not have permission to write directly to the original project, but you still want to propose changes."
   },
   {
     "speaker": "JAMIE",
-    "text": "Then comes the pull request, or PR."
+    "text": "And clone is different from fork, right? That pair always trips people up."
   },
   {
     "speaker": "ALEX",
-    "text": "A pull request is a proposal to merge changes from one branch into another. You're essentially saying, here is my work, please review it and consider bringing it into the target branch."
+    "text": "Fork means a copy under your GitHub account. Clone means a copy on your computer, where you can work in VS Code or another editor. A common workflow is fork the project on GitHub, then clone your fork to your computer."
   },
   {
     "speaker": "JAMIE",
-    "text": "A PR shows the source branch, the target branch, the diff, a description, and the discussion around the change."
+    "text": "Where do remotes fit into that?"
   },
   {
     "speaker": "ALEX",
-    "text": "Right. And the phrase pull request comes from the idea that you're requesting maintainers to pull your changes into their project."
+    "text": "A remote is a named connection from your local Git repository to a repository hosted somewhere else, usually GitHub. The remote named origin usually points to the repo you cloned from. If you cloned your fork, origin points to your fork."
   },
   {
     "speaker": "JAMIE",
-    "text": "Then reviewers step in."
+    "text": "And upstream is the original project you forked from."
   },
   {
     "speaker": "ALEX",
-    "text": "That process is called code review. One or more collaborators read the PR and provide feedback. They may leave comments, approve the change, or request changes before merge."
+    "text": "Yes. You can see remotes with `git remote -v`. You can add the original project as upstream with a command like `git remote add upstream https://github.com/original-owner/repo.git`."
   },
   {
     "speaker": "JAMIE",
-    "text": "And good reviews are not just technically correct. They're kind, specific, and constructive."
+    "text": "So local means on my computer, remote means hosted elsewhere, origin is usually my GitHub copy, and upstream is the original project."
   },
   {
     "speaker": "ALEX",
-    "text": "Exactly. Code review is communication as much as evaluation."
+    "text": "That is the usual setup. You may also hear downstream, which means something based on another project. A fork is downstream from the original because it receives changes from that original source."
   },
   {
     "speaker": "JAMIE",
-    "text": "Let's define merge."
+    "text": "Before we leave the project container words, what is dot gitignore?"
   },
   {
     "speaker": "ALEX",
-    "text": "Merging means combining changes from one branch into another. Once a PR is approved, a maintainer may merge it. Common strategies include a merge commit, which creates a new commit recording the merge; squash and merge, which combines all PR commits into one; and rebase and merge, which replays the commits on top of the target branch for a linear history."
+    "text": "`.gitignore` is a special file that tells Git not to track certain files. You use it for temporary operating system files, build outputs like `dist/` or `build/`, dependency folders like `node_modules/`, editor folders like `.vscode/`, and secret files like `.env`."
   },
   {
     "speaker": "JAMIE",
-    "text": "And then the scary phrase: merge conflict."
+    "text": "Important warning there: dot gitignore does not magically erase something that was already committed."
   },
   {
     "speaker": "ALEX",
-    "text": "A merge conflict happens when two branches changed the same part of the same file in different ways, and Git can't decide which version to keep. It stops and asks a human to resolve the conflict."
-  },
-  {
-    "speaker": "JAMIE",
-    "text": "That's when you may see conflict markers in the file."
-  },
-  {
-    "speaker": "ALEX",
-    "text": "Yes. You'll see markers that separate your current branch content from the incoming branch content. You resolve the conflict by editing the file so it contains the correct final version, removing the markers, and then committing the resolution."
-  },
-  {
-    "speaker": "JAMIE",
-    "text": "So a conflict is not Git failing. It's Git asking for help where ambiguity exists."
-  },
-  {
-    "speaker": "ALEX",
-    "text": "Beautifully put."
-  },
-  {
-    "speaker": "JAMIE",
-    "text": "Now upstream."
-  },
-  {
-    "speaker": "ALEX",
-    "text": "Upstream refers to the original repository you forked from. If you have a fork, your changes often go from your local clone to your fork, and then through a PR toward the original project. But updates from the original project can also move the other direction into your fork when you sync with upstream."
-  },
-  {
-    "speaker": "JAMIE",
-    "text": "So upstream is about the source project, while origin is usually your fork."
-  },
-  {
-    "speaker": "ALEX",
-    "text": "Exactly."
-  },
-  {
-    "speaker": "JAMIE",
-    "text": "And then some organizing terms: label, milestone, and project."
-  },
-  {
-    "speaker": "ALEX",
-    "text": "A label is a colored tag used to categorize issues and pull requests. Labels might indicate bug, documentation, accessibility, good first issue, help wanted, or priority."
-  },
-  {
-    "speaker": "JAMIE",
-    "text": "A milestone groups related issues or PRs around a goal or release."
-  },
-  {
-    "speaker": "ALEX",
-    "text": "Right. And GitHub Projects is a planning tool, often board-like, used to track work across issues and PRs. Think status columns, planning views, and a shared work dashboard."
+    "text": "Correct. It only ignores untracked files. If a file is already tracked by Git, you remove it from tracking with `git rm --cached filename`, then add the pattern to `.gitignore`, then commit that change."
   },
   {
     "speaker": "PAUSE",
@@ -357,59 +109,51 @@
   },
   {
     "speaker": "ALEX",
-    "text": "Next are people and roles."
+    "text": "A branch is a separate line of development inside a repository. The main branch, usually called `main`, is often the stable version of the project."
   },
   {
     "speaker": "JAMIE",
-    "text": "Maintainer is probably the most important one to define."
+    "text": "And sometimes older projects use `master`, so if I hear that, it is also a branch name, not a different tool."
   },
   {
     "speaker": "ALEX",
-    "text": "A maintainer is a person with responsibility for the repository. They often have write or admin access and make decisions about issues, pull requests, releases, and direction."
+    "text": "Right. Common branch names include `main`, sometimes `develop`, and then names like `feature/add-search`, `fix/broken-button`, or `docs/update-readme`. The name should help people understand the purpose of the work."
   },
   {
     "speaker": "JAMIE",
-    "text": "A contributor is broader."
+    "text": "Then a commit is the saved checkpoint."
   },
   {
     "speaker": "ALEX",
-    "text": "Yes. A contributor is anyone who contributes to the project. That could mean code, documentation, design, bug reports, testing, accessibility feedback, translations, discussions, and more."
+    "text": "Yes. A commit records a snapshot of changes, a message, the author, a timestamp, and a unique identifier called a SHA hash. SHA is often pronounced shah, though spelling S H A is also common."
   },
   {
     "speaker": "JAMIE",
-    "text": "Then triage."
+    "text": "Commit messages have a style too, don't they?"
   },
   {
     "speaker": "ALEX",
-    "text": "Triage is the work of reviewing and categorizing incoming issues or pull requests. That may include adding labels, asking clarifying questions, closing duplicates, or helping route work to the right people."
+    "text": "They do. A good message says what the change does, often in the imperative mood: `Fix typo in README`, not `Fixed typo` or `Fixing typo`. Longer commit messages can include a short title, a blank line, and then a body explaining why the change was made."
   },
   {
     "speaker": "JAMIE",
-    "text": "And collaborator?"
+    "text": "And a diff is how we inspect the change."
   },
   {
     "speaker": "ALEX",
-    "text": "A collaborator is someone who has been granted direct access to work in a repository, usually with some level of write permission, even if they are not a full maintainer."
-  },
-  {
-    "speaker": "PAUSE",
-    "text": ""
+    "text": "A diff, short for difference, shows what changed between two versions. Added lines are usually shown with a plus sign, removed lines with a minus sign, and unchanged lines appear as context."
   },
   {
     "speaker": "JAMIE",
-    "text": "The glossary also includes common abbreviations and slang. We may not have every single informal phrase spelled out in the source excerpt we saw, but let's cover the style of language learners will hear."
+    "text": "That is what I am reading on the Files Changed tab of a pull request."
   },
   {
     "speaker": "ALEX",
-    "text": "Good idea. You'll regularly hear repo for repository, org for organization, PR for pull request, and SHA pronounced either as individual letters or sometimes just called a hash. You'll also hear people say push, pull, fetch, merge, squash, rebase, and sync as shorthand for common Git actions."
+    "text": "Exactly. Push, pull, and fetch are the movement words. Push sends your local commits up to a remote. Fetch downloads remote changes so you can inspect them. Pull fetches changes and then integrates them into your current branch."
   },
   {
     "speaker": "JAMIE",
-    "text": "And it's okay if this language feels dense at first. Fluency comes from repetition."
-  },
-  {
-    "speaker": "ALEX",
-    "text": "Exactly."
+    "text": "So fetch is the cautious look, and pull is the update that changes my branch."
   },
   {
     "speaker": "PAUSE",
@@ -417,79 +161,55 @@
   },
   {
     "speaker": "ALEX",
-    "text": "Now we move into more technical Git and GitHub concepts."
+    "text": "An issue is a discussion item in a GitHub repository. People use issues to report bugs, request features, ask questions, discuss ideas, and track work."
   },
   {
     "speaker": "JAMIE",
-    "text": "Let's start with HEAD, because that name sounds strange."
+    "text": "Issues also have numbers, like number 42, and they can have labels, assignees, milestones, and comments."
   },
   {
     "speaker": "ALEX",
-    "text": "HEAD is a pointer to your current location in Git, usually the latest commit on the branch you're currently on. If you're on a branch, HEAD generally points to that branch tip."
+    "text": "Yes. A pull request, or PR, is a proposal to merge changes from one branch into another. It includes the branch information, the diff, a description of what changed and why, and a place for discussion."
   },
   {
     "speaker": "JAMIE",
-    "text": "So HEAD answers the question, where am I right now in the commit history?"
+    "text": "The name still sounds a little odd. It means I am asking maintainers to pull my changes into their project."
   },
   {
     "speaker": "ALEX",
-    "text": "Yes."
+    "text": "That is exactly it. Review is the feedback process on a PR. A reviewer can leave a comment, approve the change, or request changes before it can be merged."
   },
   {
     "speaker": "JAMIE",
-    "text": "Then what is detached HEAD?"
+    "text": "And good review is not just thumbs up or thumbs down. It should be kind, specific, and useful."
   },
   {
     "speaker": "ALEX",
-    "text": "Detached HEAD means HEAD is pointing directly to a commit instead of to a branch name. This often happens if you check out a specific commit, a tag, or something other than a branch tip."
+    "text": "Yes. You may also see a draft PR. Draft means the work is visible, but the author is signaling that it is not ready for final review yet."
   },
   {
     "speaker": "JAMIE",
-    "text": "Why does that matter?"
+    "text": "That is useful in learning settings too. A review-ready draft or a clear contribution plan can be real evidence that someone understands the workflow, even before a maintainer merges anything."
   },
   {
     "speaker": "ALEX",
-    "text": "Because if you make commits while detached, those commits are not attached to a named branch. They can become hard to find later if you move away. That's the big practical meaning."
+    "text": "Merging is combining changes from one branch into another. GitHub projects may use a merge commit, squash and merge, or rebase and merge, depending on how they want the history to look."
   },
   {
     "speaker": "JAMIE",
-    "text": "So why it happens is usually that a person checked out a commit or tag directly."
+    "text": "And then there is the famous merge conflict."
   },
   {
     "speaker": "ALEX",
-    "text": "Correct. What it means is: you're looking at a snapshot, not working on a normal branch. And how to fix it is usually to create or switch to a branch. If you want to keep work you made there, create a new branch from that point so the commits have a name and a stable reference."
+    "text": "A merge conflict happens when two branches changed the same part of the same file in incompatible ways. Git pauses because it cannot decide which version should win."
   },
   {
     "speaker": "JAMIE",
-    "text": "That's much less scary when explained plainly."
+    "text": "Those conflict markers are the lines with less-than signs, equals signs, and greater-than signs."
   },
   {
     "speaker": "ALEX",
-    "text": "It really is."
-  },
-  {
-    "speaker": "JAMIE",
-    "text": "Next: stash."
-  },
-  {
-    "speaker": "ALEX",
-    "text": "A stash is a temporary shelf for uncommitted changes. If you're in the middle of work and need to switch branches or handle something urgent, stash lets you set aside your changes without making a commit yet."
-  },
-  {
-    "speaker": "JAMIE",
-    "text": "What's a common workflow?"
-  },
-  {
-    "speaker": "ALEX",
-    "text": "Imagine you're working on branch A and you suddenly need to do something on main, or on another branch. You can stash your uncommitted changes, switch branches, do the urgent task, then come back and reapply the stash."
-  },
-  {
-    "speaker": "JAMIE",
-    "text": "And there are specific stash commands people should recognize."
-  },
-  {
-    "speaker": "ALEX",
-    "text": "Yes. Common ones include git stash to save changes, git stash list to see saved stashes, git stash apply to reapply one while keeping it in the stash list, and git stash pop to reapply it and remove it from the list."
+    "text": "Yes. You resolve the file by choosing the final content, removing the markers, saving the file, and committing the resolution. It feels intimidating the first time, but it is a normal collaboration moment."
   },
   {
     "speaker": "PAUSE",
@@ -497,67 +217,179 @@
   },
   {
     "speaker": "JAMIE",
-    "text": "Rebase is one of the most confusing terms for beginners."
+    "text": "Let's talk about the people words, because GitHub is not just commands."
   },
   {
     "speaker": "ALEX",
-    "text": "So let's frame it carefully. Merge and rebase can both integrate changes from one line of development into another, but they do it differently."
+    "text": "A maintainer is someone with responsibility for a repository, often with write or admin access. A contributor is anyone who helps, whether through code, docs, issues, design, testing, accessibility feedback, or review."
   },
   {
     "speaker": "JAMIE",
-    "text": "Merge preserves the branching history and creates a merge commit."
+    "text": "And a collaborator?"
   },
   {
     "speaker": "ALEX",
-    "text": "Right. Rebase, by contrast, replays your commits on top of another base commit. The result is a cleaner, more linear history, but it rewrites commit history."
+    "text": "A collaborator is someone who has been granted access to work directly in a repository, usually more access than a typical outside contributor. Triage is the work of reviewing new issues, adding labels, asking clarifying questions, and routing work to the right place."
   },
   {
     "speaker": "JAMIE",
-    "text": "That's the key tradeoff."
+    "text": "Labels are those colored tags, like bug, documentation, good first issue, or accessibility."
   },
   {
     "speaker": "ALEX",
-    "text": "Exactly. When to use rebase? Often when you're updating your local feature branch to sit on top of the latest main before opening or updating a PR, especially in projects that prefer linear history."
+    "text": "Right. A milestone groups issues and pull requests around a goal, such as a release or a workshop deadline. GitHub Projects can organize work in boards, tables, and views so a team can track progress."
   },
   {
     "speaker": "JAMIE",
-    "text": "And when should you not rebase?"
+    "text": "Community files are part of that collaboration picture too."
   },
   {
     "speaker": "ALEX",
-    "text": "Do not casually rebase shared public history that other people are already building on. Because rebase changes commit identities, it can disrupt collaborators."
+    "text": "They are. A README explains what the project is. A LICENSE tells people what they are allowed to do with the code. CONTRIBUTING explains how to help. A code of conduct sets expectations for behavior."
   },
   {
     "speaker": "JAMIE",
-    "text": "What's a basic rebase workflow?"
+    "text": "And templates can guide issues and pull requests so people do not start from a blank box."
   },
   {
     "speaker": "ALEX",
-    "text": "You update your knowledge of the remote branch, then rebase your current branch onto the newer target branch. If conflicts appear, you fix the conflicts, continue the rebase, and test your result."
+    "text": "Exactly. You may also see SECURITY for reporting vulnerabilities, SUPPORT for help channels, GitHub Discussions for broader community conversations, a wiki for multi-page documentation, and Gists for small shareable snippets."
   },
   {
     "speaker": "JAMIE",
-    "text": "So that omitted heading about fixing conflicts still matters here."
+    "text": "What about the quick slang pile?"
   },
   {
     "speaker": "ALEX",
-    "text": "Definitely. Conflicts during rebase are resolved much like merge conflicts: edit the files, remove conflict markers, then continue the process."
+    "text": "A few common ones: LGTM means looks good to me. WIP means work in progress. CI means continuous integration, where automated checks run on changes. CD can mean continuous delivery or continuous deployment, depending on the project."
+  },
+  {
+    "speaker": "PAUSE",
+    "text": ""
+  },
+  {
+    "speaker": "ALEX",
+    "text": "Now for the Git terms that sound scarier than they usually are. HEAD, in all caps, is Git's pointer to your current branch or commit."
   },
   {
     "speaker": "JAMIE",
-    "text": "Then there's cherry-pick."
+    "text": "Detached HEAD is the one that makes people wonder if they broke everything."
   },
   {
     "speaker": "ALEX",
-    "text": "Cherry-pick means taking one specific commit and applying it onto your current branch. Instead of merging a whole branch, you choose a single commit by its SHA."
+    "text": "A detached HEAD means you are looking at a specific commit instead of working on a branch. It can happen when you check out an old commit, a tag, or a commit hash directly."
   },
   {
     "speaker": "JAMIE",
-    "text": "When would you use it?"
+    "text": "What does that mean for my work?"
   },
   {
     "speaker": "ALEX",
-    "text": "When one isolated fix belongs on another branch too. For example, maybe a bug fix was made on a feature branch and you want that exact fix on a release branch without bringing over all the other work."
+    "text": "You can look around safely, but new commits made there may be hard to find unless you create a branch. The fix is usually to create a branch at that point with `git switch -c branch-name`, or switch back to an existing branch if you were only inspecting history."
+  },
+  {
+    "speaker": "JAMIE",
+    "text": "Stash is another useful safety word."
+  },
+  {
+    "speaker": "ALEX",
+    "text": "Stash temporarily saves uncommitted changes so you can switch tasks or update your branch without committing unfinished work. A common flow is `git stash`, do the other task, then `git stash pop` to bring the changes back."
+  },
+  {
+    "speaker": "JAMIE",
+    "text": "And if I want to see what I stashed?"
+  },
+  {
+    "speaker": "ALEX",
+    "text": "Use `git stash list`. You can use `git stash apply` to reapply without removing the stash, or `git stash drop` when you are sure you no longer need it."
+  },
+  {
+    "speaker": "JAMIE",
+    "text": "Rebase is where people get nervous."
+  },
+  {
+    "speaker": "ALEX",
+    "text": "Rebase replays your commits on top of another branch. Merge preserves the branch history and creates a merge point. Rebase can make history more linear, but it rewrites commit history."
+  },
+  {
+    "speaker": "JAMIE",
+    "text": "So when is rebase reasonable?"
+  },
+  {
+    "speaker": "ALEX",
+    "text": "It is usually reasonable on your own local branch before you share it, or when your team explicitly uses that workflow. Do not rebase shared branches casually, because rewriting history can disrupt other people's work."
+  },
+  {
+    "speaker": "JAMIE",
+    "text": "And cherry-pick?"
+  },
+  {
+    "speaker": "ALEX",
+    "text": "Cherry-pick copies one specific commit from one branch onto another. It is useful when you need one fix without bringing over every other change from that branch."
+  },
+  {
+    "speaker": "JAMIE",
+    "text": "Force push sounds like the red button."
+  },
+  {
+    "speaker": "ALEX",
+    "text": "It deserves caution. Force push overwrites the remote branch with your local history. It may be needed after a rebase on your own branch, but it is not okay on shared branches unless the team has agreed."
+  },
+  {
+    "speaker": "JAMIE",
+    "text": "There is a safer version, right?"
+  },
+  {
+    "speaker": "ALEX",
+    "text": "Use `--force-with-lease` instead of plain force push when you can. It checks whether someone else updated the remote branch before overwriting it, which helps prevent accidental damage."
+  },
+  {
+    "speaker": "PAUSE",
+    "text": ""
+  },
+  {
+    "speaker": "ALEX",
+    "text": "A SHA or hash is the unique identifier for a commit or Git object. You will often see a short version, like seven characters, in GitHub links and commit lists."
+  },
+  {
+    "speaker": "JAMIE",
+    "text": "A tag is a name attached to a specific commit, often for a version."
+  },
+  {
+    "speaker": "ALEX",
+    "text": "Yes. A release builds on a tag and adds release notes, downloadable files, or other packaged information for users."
+  },
+  {
+    "speaker": "JAMIE",
+    "text": "Then GitHub Actions is the automation system."
+  },
+  {
+    "speaker": "ALEX",
+    "text": "Right. An Action runs workflows, and a workflow is an automated process defined in the repository. CI/CD workflows might run tests, check formatting, build documentation, or deploy a site."
+  },
+  {
+    "speaker": "JAMIE",
+    "text": "And status checks are the pass or fail results that show up on a pull request."
+  },
+  {
+    "speaker": "ALEX",
+    "text": "Exactly. A status check might say the tests passed, the build failed, or an accessibility check needs attention. Maintainers often require important checks to pass before merging."
+  },
+  {
+    "speaker": "JAMIE",
+    "text": "What is a webhook?"
+  },
+  {
+    "speaker": "ALEX",
+    "text": "A webhook sends information to another service when something happens on GitHub, like a push, issue comment, or pull request event. It is a way to connect GitHub activity to other tools."
+  },
+  {
+    "speaker": "JAMIE",
+    "text": "And profile?"
+  },
+  {
+    "speaker": "ALEX",
+    "text": "Your GitHub profile is your public identity on GitHub. It can show your repositories, contributions, bio, links, and sometimes a profile README."
   },
   {
     "speaker": "PAUSE",
@@ -565,67 +397,91 @@
   },
   {
     "speaker": "JAMIE",
-    "text": "Fetch versus pull is another pair that gets blurred together."
+    "text": "The glossary also needs the accessibility words we keep using in this series."
   },
   {
     "speaker": "ALEX",
-    "text": "Fetch downloads new information from a remote without merging it into your current branch. Pull usually means fetch plus merge, or fetch plus rebase, depending on configuration."
+    "text": "A screen reader is software that reads interface content aloud or sends it to a braille display. NVDA, JAWS, VoiceOver, and TalkBack are common examples."
   },
   {
     "speaker": "JAMIE",
-    "text": "So when should learners use fetch?"
+    "text": "Landmarks and headings are navigation structure."
   },
   {
     "speaker": "ALEX",
-    "text": "Use fetch when you want to see what's changed remotely without changing your working branch yet. It's a cautious, inspect-first move."
+    "text": "Yes. Headings organize content by level, like heading level 1 for the page title and heading level 2 for major areas. Landmarks identify regions such as main content, navigation, search, and footer."
   },
   {
     "speaker": "JAMIE",
-    "text": "And pull?"
+    "text": "ARIA is pronounced AIR-ee-uh, right?"
   },
   {
     "speaker": "ALEX",
-    "text": "Use pull when you're ready to bring remote changes directly into your local branch in one step."
+    "text": "Right. ARIA stands for Accessible Rich Internet Applications. It can add accessibility information to custom interface elements, but native HTML should come first whenever it can do the job."
   },
   {
     "speaker": "JAMIE",
-    "text": "Now the term everyone approaches with caution: force push."
+    "text": "Focus is the current place my keyboard or assistive technology is interacting with."
   },
   {
     "speaker": "ALEX",
-    "text": "Force push overwrites the remote branch reference with your local branch history, even if that means discarding the remote's previous history for that branch."
+    "text": "Exactly. Tab order is the path focus follows as you press Tab. A good tab order matches the visual and logical reading order, does not trap people, and makes every interactive control reachable."
   },
   {
     "speaker": "JAMIE",
-    "text": "Why would anyone need that?"
+    "text": "So when we review a page, we are not only asking whether it looks good. We are asking whether the structure and keyboard path make sense."
   },
   {
     "speaker": "ALEX",
-    "text": "Most commonly after rewriting history locally, such as after a rebase or an interactive cleanup of commits. Since the commit identities changed, a normal push may be rejected."
+    "text": "Yes, and whether names, roles, labels, error messages, and instructions are available to assistive technology. That is where careful issues and clear reproduction notes really help maintainers."
+  },
+  {
+    "speaker": "PAUSE",
+    "text": ""
+  },
+  {
+    "speaker": "ALEX",
+    "text": "Finally, the agent vocabulary. GitHub Copilot is an AI coding assistant. Depending on the environment, it may suggest code, answer questions, help explain errors, or help draft changes."
   },
   {
     "speaker": "JAMIE",
-    "text": "When is force push okay?"
+    "text": "And an agent is a little more active than a simple suggestion box."
   },
   {
     "speaker": "ALEX",
-    "text": "Usually only on your own branch, especially a personal feature branch where you understand the consequences and no one else is relying on that exact remote history."
+    "text": "Yes. An agent can follow instructions, use tools, inspect files, and carry out a task within limits. You still review the output, test it, and decide what belongs in the project."
   },
   {
     "speaker": "JAMIE",
-    "text": "When is it never okay?"
+    "text": "Slash commands are the short commands that start with a slash, like a shortcut in a chat or coding assistant."
   },
   {
     "speaker": "ALEX",
-    "text": "Never force push shared protected branches like main in a collaborative project unless there is an extraordinary, explicitly coordinated administrative reason. For ordinary work, that's off limits."
+    "text": "Right. A prompt is the request you give the tool. An instruction file is a project-level guide that tells the assistant how to behave, such as coding style, testing expectations, accessibility requirements, or documentation tone."
   },
   {
     "speaker": "JAMIE",
-    "text": "And the safer alternative is force with lease."
+    "text": "This connects to the later accessibility agent work too."
   },
   {
     "speaker": "ALEX",
-    "text": "Yes. Dash dash force with lease checks that the remote branch is still in the state you expect before overwriting it. It's safer because it helps prevent accidentally deleting someone else's newer work."
+    "text": "It does. The Accessibility Agents collection is a living catalog, so it grows over time. Challenge 15 is browse-first, and learners do not need to fork that repository just to complete the discovery challenge."
+  },
+  {
+    "speaker": "JAMIE",
+    "text": "Completing that discovery challenge unlocks the Capstone Project and the structured bonus path, right?"
+  },
+  {
+    "speaker": "ALEX",
+    "text": "Yes. Challenge 16 is titled Capstone Project. It can involve a contribution to Accessibility Agents, GLOW, or another meaningful repository, and review-ready drafts or contribution plans can count as valid evidence of completion."
+  },
+  {
+    "speaker": "JAMIE",
+    "text": "And Day 1 contributions happen somewhere else."
+  },
+  {
+    "speaker": "ALEX",
+    "text": "They happen in the Learning Room repository, which is provisioned for each learner. That is where the issue, branch, commit, pull request, and merge workflow is practiced end to end."
   },
   {
     "speaker": "PAUSE",
@@ -633,154 +489,34 @@
   },
   {
     "speaker": "JAMIE",
-    "text": "Let's define SHA or hash more directly."
+    "text": "Let's end with a quick pronunciation pass for the words people may only have read."
   },
   {
     "speaker": "ALEX",
-    "text": "A SHA, often just called a hash, is the unique identifier for a commit or other Git object. Think of it like a fingerprint. Even a short abbreviated SHA is often enough to identify a commit in conversation or commands."
+    "text": "Git has a hard G. GitHub is Git-hub. Repo is REE-poh. Org is org. PR is P R. SHA can be shah or S H A."
   },
   {
     "speaker": "JAMIE",
-    "text": "Tag and release are related but not identical."
+    "text": "More please."
   },
   {
     "speaker": "ALEX",
-    "text": "Correct. A tag is a permanent named reference to a specific commit, often used for version markers like v1 point 0 point 0. A release is a GitHub concept built around a versioned snapshot, often with release notes and downloadable assets. Releases commonly point to tags."
+    "text": "ARIA is AIR-ee-uh. CI/CD is C I slash C D. YAML is often YAM-ul. `.gitignore` is usually spoken as dot gitignore. `HEAD` is head, even though it is written in capital letters."
   },
   {
     "speaker": "JAMIE",
-    "text": "Now actions, workflows, and CI slash CD."
+    "text": "And when a term gets fuzzy, do not try to memorize every definition at once."
   },
   {
     "speaker": "ALEX",
-    "text": "GitHub Actions is GitHub's automation system. A workflow is an automated process defined in files in the repository, often triggered by events like pushes or pull requests. CI means continuous integration, usually automated testing and checks on new changes. CD can mean continuous delivery or deployment, where software is packaged or released automatically."
+    "text": "Look it up, read the nearby related terms, and connect it to the workflow you are doing right now. If a fact might have changed, use the official GitHub documentation, release notes, and linked references as the current source of truth."
   },
   {
     "speaker": "JAMIE",
-    "text": "So if a PR runs tests automatically, that's usually a workflow in Actions acting as CI."
+    "text": "That makes the glossary less like homework and more like a map you keep beside you."
   },
   {
     "speaker": "ALEX",
-    "text": "Exactly."
-  },
-  {
-    "speaker": "JAMIE",
-    "text": "And those results often appear as status checks."
-  },
-  {
-    "speaker": "ALEX",
-    "text": "Right. A status check is an automated pass or fail result shown on a pull request or commit. It might report that tests passed, linting failed, builds succeeded, or accessibility checks found a problem."
-  },
-  {
-    "speaker": "JAMIE",
-    "text": "Webhook sounds more infrastructure-heavy."
-  },
-  {
-    "speaker": "ALEX",
-    "text": "A webhook is a way for GitHub to send event data to another service when something happens, such as a push, issue comment, or PR update. It's part of how GitHub can integrate with outside tools."
-  },
-  {
-    "speaker": "JAMIE",
-    "text": "GitHub Discussions?"
-  },
-  {
-    "speaker": "ALEX",
-    "text": "That's a dedicated discussion space for conversation that isn't necessarily an issue or a pull request. It's useful for questions, ideas, community support, and longer-form project discussion."
-  },
-  {
-    "speaker": "JAMIE",
-    "text": "Profile is simpler, but still worth naming."
-  },
-  {
-    "speaker": "ALEX",
-    "text": "Your GitHub profile is your public account presence: your repositories, contribution activity, profile README if you have one, and other information you choose to share."
-  },
-  {
-    "speaker": "JAMIE",
-    "text": "And GitHub Copilot?"
-  },
-  {
-    "speaker": "ALEX",
-    "text": "GitHub Copilot is an AI coding assistant integrated into tools like editors and GitHub features. It can suggest code and text, but it's important to treat those suggestions as drafts to review carefully, not as unquestioned truth."
-  },
-  {
-    "speaker": "PAUSE",
-    "text": ""
-  },
-  {
-    "speaker": "JAMIE",
-    "text": "The source also points to community files and quick reference material."
-  },
-  {
-    "speaker": "ALEX",
-    "text": "Yes. One purpose of the glossary is not just long-form explanation but also quick lookup. The alphabetical quick reference is there for flat A to Z scanning when you already know the term and just need the meaning fast."
-  },
-  {
-    "speaker": "JAMIE",
-    "text": "And that can be especially useful for screen reader users who want a simpler lookup structure, and for low-vision users at high zoom where compact self-contained rows can be easier to navigate."
-  },
-  {
-    "speaker": "ALEX",
-    "text": "Exactly. The glossary serves both learning and reference."
-  },
-  {
-    "speaker": "JAMIE",
-    "text": "There were also a few extra terms visible in the quick reference list that are useful to name briefly, even if they weren't expanded earlier in the body."
-  },
-  {
-    "speaker": "ALEX",
-    "text": "Good catch. README is usually the main documentation file introducing a repository. Review is the formal feedback process on a pull request, which we discussed under code review. Squash merge is the strategy that combines all commits in a PR into one when merging. Pull is the command that fetches remote changes and integrates them. Wiki is a multi-page documentation area some repositories use."
-  },
-  {
-    "speaker": "JAMIE",
-    "text": "And the repeated items in the table, like tag, triage, and upstream, reinforce that these terms come up a lot."
-  },
-  {
-    "speaker": "ALEX",
-    "text": "They do."
-  },
-  {
-    "speaker": "PAUSE",
-    "text": ""
-  },
-  {
-    "speaker": "JAMIE",
-    "text": "Before we wrap up, let's include the administrative notes too."
-  },
-  {
-    "speaker": "ALEX",
-    "text": "This glossary points learners to an audio companion, which is exactly what we're creating here, and it also names an authoritative source for facts: GitHub Docs, especially the glossary and related documentation. The GitHub Changelog is also useful when details evolve over time."
-  },
-  {
-    "speaker": "JAMIE",
-    "text": "So if a learner ever finds that a feature has changed since the workshop material was written, the official docs and changelog are the place to verify current behavior."
-  },
-  {
-    "speaker": "ALEX",
-    "text": "Exactly. The section-level source map in the written material is there for that purpose: to connect major sections of the glossary with authoritative references."
-  },
-  {
-    "speaker": "JAMIE",
-    "text": "And the written appendix also points forward to the next appendix, the screen reader cheat sheet, while reminding learners that this glossary supports the GitHub fundamentals chapter and really all chapters."
-  },
-  {
-    "speaker": "ALEX",
-    "text": "That's right. If you remember nothing else, remember the structure: a repository contains the project and history, a fork is your GitHub copy, a clone is your local copy, branches isolate work, commits save snapshots, diffs show changes, issues track discussion, pull requests propose changes, reviews refine them, and merges combine them."
-  },
-  {
-    "speaker": "JAMIE",
-    "text": "Then as your confidence grows, the more advanced terms like HEAD, stash, rebase, cherry-pick, fetch, pull, and force push start fitting into that bigger map."
-  },
-  {
-    "speaker": "ALEX",
-    "text": "Well said. Keep this glossary close. Revisit it often. Fluency in Git and GitHub is not about memorizing everything at once. It's about hearing the terms repeatedly in meaningful workflows until they become familiar."
-  },
-  {
-    "speaker": "JAMIE",
-    "text": "And if you're learning with a screen reader or at high zoom, remember: good navigation strategies are part of technical fluency too."
-  },
-  {
-    "speaker": "ALEX",
-    "text": "Absolutely. Thanks for learning with us."
+    "text": "Exactly. The win is not knowing every word before you start. It is being able to recover your place when a new term appears, then keep contributing with confidence."
   }
 ]

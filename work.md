@@ -16,21 +16,18 @@ Source template: [challenge-01-find-your-way.yml](learning-room/.github/ISSUE_TE
 #### Step-by-step scavenger hunt
 
 #### Task 1: Count files in the root
-
 1. Make sure you are on the **Code** tab (click it at the top)
 2. Look at the file/folder list
 3. Count how many items are showing (stop before the first folder)
 4. Write down this number
 
 #### Task 2: Find an open issue
-
 1. Click the **Issues** tab
 2. Look for issues with a green **Open** label
 3. Click on one to read it
 4. Write down its title
 
 #### Task 3: Read welcome.md
-
 1. Click the **Code** tab
 2. Look for a folder named `docs/`
 3. Click to open it
@@ -39,21 +36,18 @@ Source template: [challenge-01-find-your-way.yml](learning-room/.github/ISSUE_TE
 6. Write down what it says
 
 #### Task 4: Find the repo description
-
 1. Go to the **Code** tab
 2. Look at the top-right area - you should see a text description under the repo name
 3. This is the "About" section
 4. Write down what it says
 
 #### Task 5: Read the README
-
 1. On the **Code** tab, scroll down to find `README.md`
 2. Click it to open
 3. Find the section that says "Who this workshop is for"
 4. Write down the answer
 
 #### Task 6: Check the About section
-
 1. On the **Code** tab, look at the right sidebar
 2. You should see a section labeled "About" with repo information
 3. Write down what you see there
@@ -100,14 +94,14 @@ Source template: [challenge-02-first-issue.yml](learning-room/.github/ISSUE_TEMP
 
 1. Open `docs/welcome.md` and look for a line that contains `TODO` -- this marks something that needs fixing.
 2. Go to the **Issues** tab and select **New issue**.
-3. Write a clear, descriptive title (not just "Fix TODO").
-4. In the description, use this required format:
+  3. Write a clear, descriptive title (not just "Fix TODO").
+  4. In the description, use this required format:
     - `What:` what needs to change
     - `Where:` where the problem is (must include `docs/welcome.md`)
     - `Why:` why the change matters
     - Mention the exact `TODO` text you found
 
-### Required format (checked automatically)
+  ### Required format (checked automatically)
 
   Use this structure in your issue description:
 
@@ -472,22 +466,18 @@ Source template: [challenge-08-culture.yml](learning-room/.github/ISSUE_TEMPLATE
 #### Step-by-step instructions
 
 #### Step 1: Reflect on community
-
 Think about your workshop experience today and answer 2-3 of these questions (write 1-2 sentences for each):
-
 - What made you feel welcome or supported today?
 - What moment taught you something new?
 - What would make this community more inclusive?
 - How did a peer help you or learn from you?
 
 #### Step 2: Find an issue to triage
-
 1. Click the **Issues** tab
 2. Look for the **Peer Simulation: Welcome Link Needs Context** issue (or a real classmate's issue if you have buddy access)
 3. Click to open it
 
 #### Step 3: Add a label
-
 1. In the issue, look on the right side for a section labeled **Labels**
 2. Click in that section
 3. You will see a dropdown menu of available labels
@@ -501,10 +491,8 @@ Think about your workshop experience today and answer 2-3 of these questions (wr
 6. The label will appear in the issue
 
 #### Step 4: Leave a comment (optional)
-
 1. Scroll down to the comment box
 2. Type a short message about why you chose that label:
-
 ```text
    I added the "documentation" label because this issue helps new contributors understand the welcome section.
 ```text
@@ -557,7 +545,6 @@ Source template: [challenge-09-merge-day.yml](learning-room/.github/ISSUE_TEMPLA
 #### Pre-merge checklist
 
 Before clicking merge, make sure:
-
 - ✅ Your PR has no conflict markers or merge conflicts (if it does, go back to Challenge 7)
 - ✅ Your PR description includes `Closes #XX` linking to your Challenge 2 issue
 - ✅ Your commit message is meaningful (describes what you changed)
@@ -566,27 +553,23 @@ Before clicking merge, make sure:
 #### Step-by-step merge
 
 #### Step 1: Open your PR
-
 1. Click the **Pull requests** tab
 2. Find your PR (the one you created in Challenge 6)
 3. Click it to open
 
 #### Step 2: Check the merge button
-
 1. Look at the top of the PR
 2. You should see a button labeled **Merge pull request** in green
 3. If the button is gray and disabled, your facilitator may need to approve it or resolve conflicts first
 4. Ask your facilitator if needed
 
 #### Step 3: Click to merge
-
 1. Click the green **Merge pull request** button
 2. A dropdown may appear with merge strategy options - just click **Merge**
 3. You may see a confirmation message asking if you're sure - click **Confirm merge**
 4. GitHub will show "Pull request successfully merged"
 
 #### Step 4: Verify your changes are on main
-
 1. Click the **Code** tab
 2. Make sure the branch dropdown shows `main`
 3. Navigate to `docs/welcome.md`
@@ -594,7 +577,6 @@ Before clicking merge, make sure:
 5. This confirms your change is now on the main branch for everyone to see
 
 #### Step 5: Check that your issue was closed
-
 1. Click the **Issues** tab
 2. Look at the issue you filed in Challenge 2
 3. It should show **Closed** (because your PR said `Closes #XX`)
@@ -603,7 +585,6 @@ Before clicking merge, make sure:
 #### Day 1 achievements 🎉
 
 Stop and celebrate! You have now:
-
 - Navigated a real GitHub repository
 - Filed an issue with clear, structured content
 - Collaborated through comments and @mentions
@@ -619,7 +600,6 @@ That is the full professional GitHub workflow. You just did it!
 #### Day 1 celebration
 
 You have completed Day 1. Take a moment to appreciate what you accomplished:
-
 - You navigated a real GitHub repository
 - You filed an issue and had a conversation
 - You created a branch, made changes, and opened a pull request
@@ -676,7 +656,6 @@ This is the professional Git workflow you will use for the rest of your career:
 #### Option A: VS Code (recommended for Day 2)
 
 #### Step 1: Clone the repository
-
 1. Open VS Code
 2. Press Ctrl+Shift+P (or Cmd+Shift+P on Mac) to open the Command Palette
 3. Type `Git: Clone`
@@ -685,24 +664,20 @@ This is the professional Git workflow you will use for the rest of your career:
 6. Wait for it to clone (you should see it in the file explorer)
 
 #### Step 2: Create your feature branch
-
 1. Press Ctrl+Shift+P again
 2. Type `Git: Create Branch`
 3. Name it: `fix/YOUR-USERNAME` (replace YOUR-USERNAME with your username)
 4. Press Enter
 
 #### Step 3: Edit a file
-
 1. In the explorer on the left, open `README.md`
 2. Add a comment, fix a typo, or improve a sentence (just 1-2 lines)
 
 #### Step 4: Commit your change
-
 1. Press Ctrl+Shift+G to open the Source Control panel
 2. You will see your modified file listed
 3. Select the **+** next to it to **Stage** the change
-4. In the message field at the top, write a commit message:
-
+  4. In the message field at the top, write a commit message:
 ```text
     docs: improve README wording
 ```text
@@ -812,7 +787,6 @@ Source template: [challenge-11-day2-pr.yml](learning-room/.github/ISSUE_TEMPLATE
 #### The workflow pattern
 
 Notice the parallel:
-
 - **Day 1:** Edit on GitHub.com → commit → open PR on GitHub
 - **Day 2:** Edit locally → commit locally → push to GitHub → open PR
 
@@ -821,14 +795,12 @@ The PR creation step is the same. Git just moves you between locations.
 #### Step-by-step instructions
 
 #### Step 1: Check for a notification banner
-
 1. Go to the sci-fi themes repository on GitHub.com
 2. You may see a notification banner at the top saying "Your branch had recent pushes"
 3. If so, select **Compare & pull request** - this is a shortcut
 4. Skip to Step 3
 
 #### Step 2: Or create PR manually
-
 1. Select the **Pull requests** tab
 2. Select **New pull request**
 3. Set **base** to `main`
@@ -836,9 +808,7 @@ The PR creation step is the same. Git just moves you between locations.
 5. Select **Create pull request**
 
 #### Step 3: Write your PR title
-
 Write a clear, specific title about what you changed:
-
 ```text
 docs: improve README wording
 ```text
@@ -895,7 +865,6 @@ Source template: [challenge-12-review.yml](learning-room/.github/ISSUE_TEMPLATE/
 #### Step-by-step review process
 
 #### Step 1: Find the PR to review
-
 1. Go to the **Pull requests** tab in this repository
 2. Look for the **Peer Simulation: Improve contribution guidance** PR
 3. Click to open it
@@ -903,18 +872,15 @@ Source template: [challenge-12-review.yml](learning-room/.github/ISSUE_TEMPLATE/
 5. If you do not have a real PR to review, open and review the sample file at `docs/code-review-sample.md` instead.
 
 #### Step 2: Go to the Files changed tab
-
 1. At the top of the PR, you will see tabs: **Conversation**, **Commits**, **Files changed**, **Checks**
 2. Click **Files changed**
 3. You will see the exact lines that were added or removed (red = removed, green = added)
 
 #### Step 3: Leave inline comment #1 (something positive)
-
 1. Hover over a line of the changed code
 2. A comment button (+) will appear on the left
 3. Click it
 4. Type a specific observation about something they did well:
-
 ```text
    Great! This heading structure makes the section easy to scan.
 ```text
@@ -1013,18 +979,15 @@ Source template: [challenge-13-copilot.yml](learning-room/.github/ISSUE_TEMPLATE
 #### Step-by-step instructions
 
 #### Step 1: Open the code review sample file
-
 1. Go to the **Code** tab
 2. Navigate to `docs/code-review-sample.md` (the same file used in Challenge 12)
 3. Open it
 
 #### Step 2: Use Copilot to improve it
-
   1. In VS Code, open the same file locally (from Challenge 10)
   2. Select a paragraph or section that could be clearer, or fix any issues you found in Challenge 12
   3. Press Ctrl+Shift+A (or click the Copilot icon)
   4. Write a prompt like:
-
 ```text
     Improve the clarity of this paragraph for beginners
 ```text
@@ -1142,32 +1105,26 @@ Source template: [challenge-14-template.yml](learning-room/.github/ISSUE_TEMPLAT
 #### Step-by-step instructions
 
 #### Step 1: Study the familiar template
-
 1. Open `.github/ISSUE_TEMPLATE/workshop-registration.yml`
 2. Notice the structure: `name`, `description`, `title`, `labels`, `body`
 3. Then open `docs/samples/challenge-14-registration-remix-example.yml`
 4. Compare what stayed the same and what changed for the new use case
 
 #### Step 2: Create your template file
-
 1. From Challenge 10, you already have the repository cloned locally
 2. On your `fix/YOUR-USERNAME` branch, go to `.github/ISSUE_TEMPLATE/`
 3. Create a new file: `YOUR-USERNAME-template.yml`
 4. Use the registration template and remix sample as your starting structure
 
 #### Step 3: Choose a new purpose
-
 Pick any structured form that would be useful. Examples:
-
 - **Accessibility feedback** for reporting barriers
 - **Workshop improvement** ideas from participants
 - **Bug report** with steps to reproduce
 - **Feature request** with problem and proposed solution
 
 #### Step 4: Include the required structure
-
 Your template must include:
-
 ```yaml
 name: "Your Template Name"
 description: "One sentence describing when to use this template"
@@ -1236,20 +1193,17 @@ Source template: [challenge-15-agents.yml](learning-room/.github/ISSUE_TEMPLATE/
 #### Step-by-step
 
 #### Step 1: Discover agents (5 min)
-
-1. Go to <https://github.com/Community-Access/accessibility-agents>
+1. Go to https://github.com/Community-Access/accessibility-agents
 2. Browse the folders - each one is an agent
 3. Find and list at least 3 agent names and what they do
 
 #### Step 2: Run an agent (10 min)
-
 1. Choose one agent that interests you
 2. Follow its README for how to run it (Copilot command, VS Code palette, etc.)
 3. Test it on a file or task
 4. Describe what it did
 
 #### Step 3: Read an agent's instructions (10 min)
-
 1. Open any agent's `.agent.md` file
 2. Find these sections:
    - **Purpose** -- what is this agent for?
@@ -1260,7 +1214,6 @@ Source template: [challenge-15-agents.yml](learning-room/.github/ISSUE_TEMPLATE/
 #### What to look for in an `.agent.md` file
 
 Every agent file follows a pattern:
-
 - **YAML frontmatter** at the top: metadata like name, description, tools
 - **Responsibilities** section: what the agent is designed to do
 - **Guardrails** section: boundaries that keep the agent safe and focused
@@ -1270,23 +1223,19 @@ Every agent file follows a pattern:
 When you close Challenge 15, **Challenge 16** and **all five bonus challenges** unlock. You can move into the capstone, choose any bonus challenge, or mix them in the order that helps you most.
 
 #### Step 4: Document your discoveries (5 min)
-
 1. Open `docs/my-notes/agents-discovery.md` in this repository (from your local clone in Challenge 10, or via the GitHub editor)
 2. Add a section with your discoveries:
-
    ```markdown
    ## YOUR-USERNAME: Agent Discoveries
 
-#### Agents I found
-
-- Agent name: what it does
-- Agent name: what it does
-- Agent name: what it does
+#### Agents I found:
+   - Agent name: what it does
+   - Agent name: what it does
+   - Agent name: what it does
 
    **Agent I ran:** [name] - It did: [what happened]
 
    **Agent I read:** [name] - Purpose: ... Guardrails include: ...
-
 ```text
 3. Commit and push your changes:
 ```text
@@ -1343,22 +1292,18 @@ Source template: [challenge-16-capstone.yml](learning-room/.github/ISSUE_TEMPLAT
 **When this opens:** Challenge 16 unlocks right after Challenge 15, at the same time as Bonus A-E. You can work on the capstone first, pick a bonus first, or alternate between them.
 
 #### Phase 1: Choose your contribution path
-
 1. Pick one path: **Accessibility Agents**, **GLOW**, or another repository you care about
 2. Write a one-sentence mission statement for your contribution
 3. Decide what you will create or improve
 
 #### Phase 2: Fork or prepare your workspace
-
 1. If the repository accepts fork-based contributions, fork it to your account
 2. Clone your fork locally
 3. Create a branch for your work
 4. If you cannot open a PR, prepare a review-ready draft or contribution plan instead
 
 #### Phase 3: Build the contribution
-
 Choose one contribution type:
-
 - **Agent file**
 - **Prompt or slash command**
 - **Custom instructions**
@@ -1366,7 +1311,6 @@ Choose one contribution type:
 - **Issue template or documentation improvement**
 
 If you build an agent file, include:
-
 ```markdown
 ---
 name: "Your Agent Name"
@@ -1446,23 +1390,19 @@ Source template: [bonus-a-improve-agent.yml](learning-room/.github/ISSUE_TEMPLAT
 #### Step-by-step
 
 #### Step 1: Pick an agent (5 min)
-
 1. Open the repository you chose for your capstone, or start with `github.com/Community-Access/accessibility-agents`
 2. Browse the agent folders
 3. Read 2-3 `.agent.md` files
 4. Choose one to improve
 
 #### Step 2: Identify an improvement (5 min)
-
 Look for:
-
 - Vague responsibility that needs clarification
 - Missing guardrail (what it should NOT do)
 - Typo or unclear description
 - New responsibility that fits
 
 #### Step 3: Make the improvement (10 min)
-
 1. On your fork or working branch, create `agent-improve/AGENT-NAME`
 2. Edit the agent's `.agent.md` file
 3. Make your improvement clear and focused
@@ -1470,7 +1410,6 @@ Look for:
 5. Push to your fork
 
 #### Step 4: Open cross-fork PR (5 min)
-
 1. Go to the original repository for the agent you improved
 2. Click "New pull request"
 3. Set the base branch to the original repository's main branch
@@ -1483,7 +1422,6 @@ If the repository does not allow a workshop PR, share a review-ready branch or c
 #### Improvement criteria
 
 Good improvements are:
-
 - **Specific** -- change one thing well, not many things vaguely
 - **Justified** -- explain WHY the change makes the agent better
 - **Respectful** -- the original author made choices for reasons. Improve, do not rewrite.
@@ -1525,13 +1463,10 @@ Source template: [bonus-b-document-journey.yml](learning-room/.github/ISSUE_TEMP
 #### Step-by-step
 
 #### Step 1: Create your file (2 min)
-
 1. On your branch, create: `reflections/YOUR-USERNAME.md`
 
 #### Step 2: Document key sections (20 min)
-
 Write about:
-
 - **What I learned:** Your top 3 GitHub skills
 - **How I felt:** Surprising? Challenging? Fun?
 - **My biggest win:** One accomplishment you're proud of
@@ -1539,13 +1474,11 @@ Write about:
 - **Advice to next cohort:** One thing you'd tell future students
 
 #### Step 3: Format properly (5 min)
-
 - Use markdown headings (##, ###)
 - Use lists for clarity
 - Keep it 300-500 words
 
 #### Step 4: Share your story (5 min)
-
 - Commit to your branch
 - Push to GitHub
 - Optional: Share in #wins or discussions
@@ -1602,32 +1535,27 @@ Source template: [bonus-c-group-challenge.yml](learning-room/.github/ISSUE_TEMPL
 
 **When this unlocks:** Bonus challenges unlock after Challenge 15. You can pick this as soon as that challenge closes.
 
-### Step-by-step
+  ### Step-by-step
 
 #### Step 1: Choose a collaboration problem
-
   1. Think of a task that requires collaboration -- something one person cannot easily do alone.
   2. Aim for a challenge that teaches teamwork, not just parallel solo work.
 
 #### Step 2: Create your challenge file
-
   1. Create `docs/group-challenges/YOUR-USERNAME-challenge.md`
   2. Add a clear title and short summary at the top
 
 #### Step 3: Include the required sections
-
   Your challenge design must include:
-
-- **Title** -- a catchy, descriptive name
-- **Goal** -- what students will learn or accomplish
-- **Team size** -- how many people (recommend 3-5)
-- **Time estimate** -- how long it should take
-- **Instructions** -- step-by-step guide
-- **Success criteria** -- how do students know they are done?
-- **Accessibility note** -- how does this work for all participants regardless of how they interact with technology?
+   - **Title** -- a catchy, descriptive name
+   - **Goal** -- what students will learn or accomplish
+   - **Team size** -- how many people (recommend 3-5)
+   - **Time estimate** -- how long it should take
+   - **Instructions** -- step-by-step guide
+   - **Success criteria** -- how do students know they are done?
+   - **Accessibility note** -- how does this work for all participants regardless of how they interact with technology?
 
 #### Step 4: Commit and share
-
   1. Commit your file
   2. Push your branch
   3. Open a PR
@@ -1635,7 +1563,6 @@ Source template: [bonus-c-group-challenge.yml](learning-room/.github/ISSUE_TEMPL
 #### Design criteria
 
 Strong group challenges:
-
 - Require genuine collaboration (not just dividing work)
 - Have clear success criteria
 - Are accessible to all participants
@@ -1687,7 +1614,6 @@ Go to [github.com/settings/notifications](https://github.com/settings/notificati
 #### Demonstrate your setup
 
 After configuring, answer these questions:
-
 1. How will you know when someone requests your review?
 2. How will you avoid being overwhelmed by notifications from busy repositories?
 3. What is your strategy for the GitHub notification inbox (read all, triage, filter)?
@@ -1727,8 +1653,7 @@ Source template: [bonus-e-git-history.yml](learning-room/.github/ISSUE_TEMPLATE/
 
 #### Instructions
 
-#### Using GitHub Desktop
-
+#### Using GitHub Desktop:
 1. Open the learning-room repository in GitHub Desktop.
 2. Go to the **History** tab.
 3. Explore the commit timeline. Notice:
@@ -1736,8 +1661,7 @@ Source template: [bonus-e-git-history.yml](learning-room/.github/ISSUE_TEMPLATE/
    - Where merges bring lines back together
    - Which commits are yours vs seeded peer-simulation commits
 
-#### Using GitHub.com (alternative)
-
+#### Using GitHub.com (alternative):
 1. Go to the learning-room repository on GitHub.com.
 2. Select **Insights** > **Network** to see the branch graph.
 3. Or select **Commits** on the Code tab to see the linear history.
@@ -1745,7 +1669,6 @@ Source template: [bonus-e-git-history.yml](learning-room/.github/ISSUE_TEMPLATE/
 #### What to observe
 
 Answer these questions as you explore:
-
 - How many branches exist in the repository right now?
 - Can you find your Challenge 5 commit in the history?
 - Where does your `learn/YOUR-USERNAME` branch diverge from `main`?

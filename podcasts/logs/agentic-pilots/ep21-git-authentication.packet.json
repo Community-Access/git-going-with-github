@@ -1,0 +1,311 @@
+{
+  "generatedAt": "2026-05-18T23:43:42.738Z",
+  "schemaVersion": 2,
+  "kind": "companion",
+  "slug": "ep21-git-authentication",
+  "title": "Episode 21: Git Authentication",
+  "description": "Personal access tokens, SSH keys, credential storage, and commit signing.",
+  "concepts": [
+    "Why authentication is needed: proving you are who you say you are",
+    "HTTPS versus SSH: two ways to authenticate with GitHub",
+    "Personal Access Tokens (PATs): creating, scoping, and using them",
+    "Classic tokens versus fine-grained tokens",
+    "SSH keys: what they are (public key and private key pair)",
+    "Generating an SSH key pair with ssh-keygen",
+    "Adding the public key to your GitHub account",
+    "Testing SSH authentication with ssh -T git@github.com",
+    "Credential helpers: storing tokens so you do not retype them",
+    "Git Credential Manager: the recommended cross-platform solution",
+    "Commit signing: what it is and why verified commits matter",
+    "Signing with GPG keys versus SSH keys",
+    "Troubleshooting: permission denied, token expired, wrong remote URL"
+  ],
+  "transcriptPath": "C:\\code\\git-going-with-github\\podcasts\\scripts\\appendices\\ep21-git-authentication.txt",
+  "chapterPlanPath": "C:\\code\\git-going-with-github\\podcasts\\transcripts\\appendices\\ep21-git-authentication-chapters.json",
+  "transcriptText": "[ALEX]\nWelcome back. This time we’re focusing on Git authentication, which sounds technical, but the core idea is simple: when GitHub needs proof that it’s really you, you need a secure way to provide that proof.\n\n[JAMIE]\nAnd that usually becomes relevant when someone is working in VS Code or the command line and suddenly tries to push, right?\n\n[ALEX]\nExactly. If you’re only browsing public repositories on GitHub.com, reading issues, or even cloning public repositories, you often won’t need authentication at all. But the moment you want to push commits, clone a private repository, or access organization repositories with restricted permissions, GitHub needs to authenticate you.\n\n[JAMIE]\nSo this is not a universal first-day task for every learner.\n\n[ALEX]\nRight. If someone is working entirely in the GitHub web interface, or using GitHub Desktop in a way that already handles sign-in for them, they may be able to skip most of this. But if they’re using VS Code with Git at the command line and want to push to a fork, this becomes important.\n\n[JAMIE]\nBefore we go further, I want to call out the accessibility guidance built into this reference, because that matters for our audience.\n\n[ALEX]\nAbsolutely. For screen reader users, this appendix is structured around two main paths: Personal Access Tokens, often called PATs, and SSH keys. The steps are presented as numbered sequences, which is helpful because screen readers announce position, like “1 of 8,” as you move through them. And the troubleshooting section is organized by recognizable error messages, so you can jump to the one that matches what you heard or saw.\n\n[JAMIE]\nAnd for low vision users, the practical takeaway is that command examples are meant to be readable in code blocks, but it’s still wise to zoom in, use your preferred theme, and move into a terminal or editor view that respects your settings.\n\n[ALEX]\nYes. Also, the security warnings are visually emphasized in the original material, especially the “do not” guidance. And for sighted users, the reference is designed so you can compare methods first, then follow the one you choose, and later scan troubleshooting by error message.\n\n[PAUSE]\n\n[ALEX]\nThere are two main authentication methods here: Personal Access Tokens and SSH keys.\n\n[JAMIE]\nLet’s do the plain-language version first. What is a PAT?\n\n[ALEX]\nA Personal Access Token is a long password-like string generated on GitHub. When Git asks for credentials over HTTPS, you use your GitHub username as the username, and the token instead of your normal account password.\n\n[JAMIE]\nSo it behaves like a substitute password, but it’s really a separate credential with its own permissions and expiration.\n\n[ALEX]\nExactly. And that leads to the pros and cons. PATs work on all operating systems. They’re relatively easy to set up, especially for screen reader users, because most of the setup happens in the GitHub web interface rather than through terminal configuration. They can be scoped to specific permissions, and if one is compromised, you can revoke it.\n\n[JAMIE]\nThe downsides are that you have to store it securely, and it expires.\n\n[ALEX]\nCorrect. You need a safe place to keep it, and eventually you’ll need to generate a new one.\n\n[JAMIE]\nNow SSH keys.\n\n[ALEX]\nSSH uses public-key cryptography. You generate a pair of keys on your computer: a private key, which stays on your machine, and a public key, which you upload to GitHub. When GitHub challenges you, your private key proves your identity without exposing the private key itself.\n\n[JAMIE]\nAnd the appeal is that once it’s working, it feels almost invisible.\n\n[ALEX]\nThat’s one of the biggest advantages. SSH keys typically work automatically once set up, they avoid repeated password prompts, they’re generally more secure than tokens in everyday use, and they don’t expire by default.\n\n[JAMIE]\nBut setup is more complex.\n\n[ALEX]\nYes. It usually requires terminal commands and a bit more configuration, which can make it less accessible for some learners, especially those who are still getting comfortable with command-line workflows.\n\n[PAUSE]\n\n[JAMIE]\nSo for this workshop, which path is recommended?\n\n[ALEX]\nThe recommended path is creating a Personal Access Token. Not because SSH is bad, but because PAT setup is more approachable in a workshop context and more accessible through the GitHub web interface.\n\n[JAMIE]\nLet’s walk through that carefully.\n\n[ALEX]\nStep one is generating the token. You go to GitHub’s token settings page at github dot com slash settings slash tokens. In the left sidebar, choose Tokens classic. Then activate Generate new token and select Generate new token classic.\n\n[JAMIE]\nAnd then you’re asked to describe it.\n\n[ALEX]\nYes. In the Note field, give it a meaningful label, something like Workshop Laptop Token, so you’ll recognize it later. Then choose an expiration. For temporary workshop use, 30 days or 60 days is recommended.\n\n[JAMIE]\nWhat permissions should learners select?\n\n[ALEX]\nAt minimum, the reference recommends the repo scope, which covers repository access, including public repo work and private repositories. If you’ll be working with GitHub Actions workflows, also include workflow.\n\n[JAMIE]\nThen generate it.\n\n[ALEX]\nRight. Scroll down, activate Generate token, and then comes the most important warning: copy the token immediately. GitHub will show it once. If you navigate away without saving it, you generally can’t reveal that same token again. You’d have to generate a new one.\n\n[JAMIE]\nThat’s a big moment for screen reader users too.\n\n[ALEX]\nIt is. The token appears as a long string in a text field. A practical workflow is select all with Control plus A, copy with Control plus C, and paste it immediately into a secure location.\n\n[JAMIE]\nWhich brings us to step two: storage.\n\n[ALEX]\nExactly. Best option: a password manager, such as 1Password, Bitwarden, or another trusted manager. Also acceptable: an encrypted secure note provided by your operating system. A plain text file in an encrypted folder can be a temporary option, but it’s not ideal for long-term storage.\n\n[JAMIE]\nAnd the “do not” list matters here.\n\n[ALEX]\nVery much. Do not paste the token into an unencrypted document that syncs to cloud storage. Do not email it to yourself. Do not save it in a public GitHub file. Treat it like a password.\n\n[JAMIE]\nThen step three is using it when Git asks for credentials.\n\n[ALEX]\nYes. The next time Git prompts you over HTTPS, you enter your GitHub username in the username field, and paste the Personal Access Token into the password field.\n\n[JAMIE]\nNot your regular GitHub account password.\n\n[ALEX]\nCorrect. The token goes where Git says password.\n\n[JAMIE]\nAnd the operating system may help remember it.\n\n[ALEX]\nOn Windows, Git Credential Manager often stores it automatically after first use. On macOS, Keychain may offer to save it; the guidance here is to allow that, often by selecting Always Allow. On Linux, you may want to configure credential caching with a Git command so you’re not prompted every single time.\n\n[ALEX]\nThe command is: git config double-dash global credential dot helper cache.\n\n[JAMIE]\nSo that’s the recommended workshop path: generate, store securely, then use the token in place of a password when Git asks.\n\n[PAUSE]\n\n[JAMIE]\nNow let’s cover the alternative, because some learners will prefer SSH.\n\n[ALEX]\nDefinitely. The first step in SSH setup is checking whether you already have a key. In a terminal, run the command to list files in your .ssh directory.\n\n[ALEX]\nYou’re looking for names like id underscore rsa dot pub or id underscore ed25519 dot pub. If you see a matching private key and public key pair, you may already have a usable key.\n\n[JAMIE]\nIf not, generate a new one.\n\n[ALEX]\nRight. The command shown here uses the modern ed25519 algorithm with your email as a label. When prompted, press Enter to accept the default file location, and optionally set a passphrase. Optional in the sense that the command allows it, but recommended for security.\n\n[JAMIE]\nAnd Git creates two files.\n\n[ALEX]\nYes. The private key, usually named id underscore ed25519, must stay private. The public key, usually id underscore ed25519 dot pub, is the one you can share with GitHub.\n\n[JAMIE]\nThat private-versus-public distinction is one of the most important concepts in this whole lesson.\n\n[ALEX]\nAbsolutely. Never share the private key. Only upload the public key.\n\n[JAMIE]\nNext comes copying the public key, and the commands vary by operating system.\n\n[ALEX]\nOn Windows PowerShell, there’s a command that reads the public key file and sends it to the clipboard. On macOS, pbcopy can copy the public key file directly into the clipboard. On Linux, the reference shows a command to print the file contents, then manually select and copy the output.\n\n[JAMIE]\nThat manual-copy note deserves to be said out loud because it appears as a separate heading in the source.\n\n[ALEX]\nGood catch. On Linux in particular, if your setup doesn’t provide a simple clipboard command, you may need to run the command that displays the key, then manually select and copy the full output yourself.\n\n[JAMIE]\nOnce you’ve copied the public key, you add it to GitHub.\n\n[ALEX]\nYes. Go to github dot com slash settings slash keys. Choose New SSH key. Give it a descriptive title, like Workshop Laptop SSH Key. For key type, choose Authentication Key. Then paste the public key into the key field. It should begin with something like ssh dash ed25519 or ssh dash rsa. Then select Add SSH key and confirm with your password or two-factor authentication if prompted.\n\n[JAMIE]\nAfter that, test the connection.\n\n[ALEX]\nExactly. Use the SSH test command to connect to GitHub. If everything is set up correctly, GitHub responds with a greeting like, “Hi username, you’ve successfully authenticated.”\n\n[JAMIE]\nAnd from then on, you need to use SSH-style repository URLs, not HTTPS ones.\n\n[ALEX]\nThat’s crucial. The SSH format looks like git at github dot com, colon, owner slash repo dot git. The HTTPS format starts with https colon slash slash github dot com slash owner slash repo dot git. If you set up SSH but keep using an HTTPS remote, Git won’t suddenly switch methods on its own.\n\n[PAUSE]\n\n[JAMIE]\nThat leads perfectly into switching between HTTPS and SSH.\n\n[ALEX]\nYes. First, check your current remote with git remote dash v. That shows the fetch and push URLs currently configured for origin.\n\n[JAMIE]\nIf you want SSH, set the origin URL to the SSH form.\n\n[ALEX]\nRight. Use git remote set-url origin followed by the SSH URL, like git at github dot com colon your-username slash repo dot git.\n\n[JAMIE]\nAnd if you want to go back to HTTPS, do the same with the HTTPS URL.\n\n[ALEX]\nExactly. Same command pattern, different URL. This is useful if you started one way and later decided the other method fits your workflow better.\n\n[JAMIE]\nThere’s also accessibility guidance for troubleshooting here.\n\n[ALEX]\nYes. For screen reader users, each troubleshooting entry starts with the error message itself, so jumping by heading is effective. The commands are in code blocks, so using a focused reading mode can help when copying. For low vision users, the error messages are intended to be easy to scan, and if terminal output is hard to read, it may help to paste commands into VS Code’s integrated terminal where your own color theme and zoom settings apply. For sighted users, the practical advice is to locate the exact error heading and try the most common fix first.\n\n[PAUSE]\n\n[JAMIE]\nLet’s go through the common failures.\n\n[ALEX]\nFirst: “Authentication failed” when pushing. If you’re using HTTPS and a Personal Access Token, this usually means the token is expired, incorrect, or an old cached credential is interfering.\n\n[JAMIE]\nWhat should the learner do?\n\n[ALEX]\nGenerate a new PAT if needed. Then clear the cached credentials. On Windows that often means checking Credential Manager. On macOS, Keychain. On Linux, the command shown is git credential-cache exit. Then try pushing again so Git prompts you for fresh credentials.\n\n[JAMIE]\nSecond: “Permission denied, publickey.”\n\n[ALEX]\nThat usually points to SSH. It means GitHub didn’t accept the SSH key being offered, or no appropriate key was offered.\n\n[JAMIE]\nSo the fixes are?\n\n[ALEX]\nFirst, verify that your public key is actually added to your GitHub account at the SSH keys settings page. Then check whether the SSH agent is running and knows about your key. The reference suggests using ssh-add dash l to list loaded keys, and if necessary, adding your key with ssh-add followed by the path to your private key file.\n\n[JAMIE]\nAnd third: “Host key verification failed.”\n\n[ALEX]\nThat one means your computer doesn’t yet trust GitHub’s host key, or the known-hosts record needs attention. The provided fix is to use ssh-keyscan github dot com and append the result to your known_hosts file.\n\n[JAMIE]\nSo the theme in troubleshooting is: identify whether the problem is token-related, key-related, or host-trust-related.\n\n[ALEX]\nExactly.\n\n[PAUSE]\n\n[JAMIE]\nNow let’s zoom out to security best practices, because authentication setup can accidentally turn into security mistakes if people rush.\n\n[ALEX]\nWell said. First, never share your private key or your Personal Access Token. Treat both like passwords. Second, use scoped PATs, meaning give them only the permissions you need. Third, set expiration dates on PATs so they don’t live forever. Fourth, use a passphrase on SSH keys for an extra layer of protection. Fifth, revoke old tokens when you’re finished with a project or stop using a device. And sixth, never commit tokens or keys into Git repositories. If a config file might contain secrets, make sure it’s excluded appropriately, often with .gitignore.\n\n[JAMIE]\nThat point about not committing secrets is huge in open source.\n\n[ALEX]\nIt really is. Accidental secret exposure is one of the easiest mistakes for new contributors to make.\n\n[PAUSE]\n\n[JAMIE]\nThe appendix also introduces commit signing, verified badges, and something called vigilant mode. Even though the source excerpt is shortened, we should teach the concepts that are clearly signposted there.\n\n[ALEX]\nAgreed. Commit signing is related to authentication but serves a different purpose. Authentication proves you can access GitHub for operations like push. Commit signing proves that a particular commit was cryptographically signed by a key associated with you. On GitHub, signed commits may show a Verified badge, while unsigned or improperly configured commits may show as unverified.\n\n[JAMIE]\nSo why does that matter?\n\n[ALEX]\nIt adds trust and traceability. Maintainers and collaborators can see stronger evidence that a commit genuinely came from the claimed authoring identity and was not altered in transit. In some projects, especially security-conscious ones, signed commits are encouraged or even expected.\n\n[JAMIE]\nThe source mentions two methods for signing commits: SSH signing and GPG signing.\n\n[ALEX]\nRight. SSH signing is often the simpler option because it can reuse an SSH key you already have. GPG signing is the traditional method and has been common for years, but it usually involves more setup steps.\n\n[JAMIE]\nThe source specifically highlights SSH signing as simpler because it reuses your existing SSH key.\n\n[ALEX]\nYes, and that’s a practical recommendation for many learners. If you already set up SSH successfully, SSH signing may be the lowest-friction path to getting verified commit signatures.\n\n[JAMIE]\nBut the material also includes a GPG path with some very specific prompts.\n\n[ALEX]\nIt does. If using GPG signing, one instruction is to choose RSA and RSA, 4096 bits, and never expires, and to enter your GitHub email address when prompted. Those details matter because the email on the key needs to align with your GitHub identity for GitHub to recognize the signature properly.\n\n[JAMIE]\nThen there’s a step to find the key ID.\n\n[ALEX]\nYes. The output from GPG includes a line with something like sec rsa4096 slash followed by a long identifier. That identifier is the key ID. The source explicitly calls out that the Xs in that pattern stand in for your actual key ID.\n\n[JAMIE]\nAfter that, export the public key.\n\n[ALEX]\nCorrect. You export the public portion of the GPG key and copy the block that begins with the line BEGIN PGP PUBLIC KEY BLOCK. That public key block is what you add to GitHub.\n\n[JAMIE]\nThen add it to GitHub, and configure Git to sign all commits.\n\n[ALEX]\nExactly. Once GitHub has the corresponding public signing key, you can configure Git so new commits are signed automatically.\n\n[JAMIE]\nNow let’s explain vigilant mode, because that term can sound intimidating.\n\n[ALEX]\nVigilant mode is a GitHub feature some maintainers enable to emphasize commit signature verification more strongly. The reason some maintainers use it is simple: they want clearer security signals in repositories, especially for collaborative or sensitive projects.\n\n[JAMIE]\nWhat does a contributor experience when vigilant mode is in play?\n\n[ALEX]\nYou may notice that commit verification states become more noticeable, and unsigned commits may stand out more clearly. In practice, it means verification badges matter more in the social and review workflow. If you contribute to a repository with vigilant mode expectations, signing your commits can help avoid confusion and make your work easier to trust.\n\n[JAMIE]\nAnd there’s an accessibility point here too: how to read verification badges with a screen reader.\n\n[ALEX]\nYes. The key idea is not to rely only on the visual badge. Screen reader users should inspect the accessible text associated with the verification state on the commit page or in commit details. In other words, listen for whether GitHub reports the commit as Verified or Unverified rather than assuming that a badge color or icon communicates enough.\n\n[PAUSE]\n\n[JAMIE]\nSo for this workshop, what’s the practical recommendation?\n\n[ALEX]\nFor authentication, the recommended approach is a Personal Access Token, because it’s the most accessible and least disruptive setup path for many learners using HTTPS with Git. SSH remains a solid alternative if you’re comfortable in the terminal and want a smoother long-term workflow. And for commit signing, if you decide to pursue verified commits later, SSH signing is often the simplest next step if you already use SSH, while GPG remains a traditional option with more setup overhead.\n\n[JAMIE]\nAnd the appendix also points learners back to the bigger learning path.\n\n[ALEX]\nYes. This material is a reference companion to pre-workshop setup and also connects to later practical Git work. It’s not meant to be memorized all at once. It’s a just-in-time guide for the moment authentication becomes necessary.\n\n[JAMIE]\nBefore we wrap up, can we give learners one short mental model to carry forward?\n\n[ALEX]\nDefinitely. Here it is: if you use HTTPS, Git will usually ask for your username and a token. If you use SSH, Git will use your key pair. If something breaks, first identify which method you’re using, then troubleshoot that method specifically.\n\n[JAMIE]\nThat’s clean. And the final reminder?\n\n[ALEX]\nUse official GitHub documentation as the authority when details change. Authentication interfaces evolve. Token pages move. Security defaults get updated. So use this lesson to understand the concepts and workflow, and use GitHub Docs to confirm the latest exact steps.\n\n[JAMIE]\nThanks for listening. If authentication has ever felt mysterious, hopefully now it feels more like a set of clear choices.\n\n[ALEX]\nAnd more importantly, choices you can make accessibly and securely.\n",
+  "chapterPlanText": "{\n  \"version\": 1,\n  \"slug\": \"ep21-git-authentication\",\n  \"chapters\": [\n    {\n      \"title\": \"ep21-git-authentication: Overview\",\n      \"startSegmentIndex\": 0\n    },\n    {\n      \"title\": \"Section 2\",\n      \"startSegmentIndex\": 24\n    },\n    {\n      \"title\": \"Section 3\",\n      \"startSegmentIndex\": 49\n    },\n    {\n      \"title\": \"Section 4\",\n      \"startSegmentIndex\": 69\n    },\n    {\n      \"title\": \"Section 5\",\n      \"startSegmentIndex\": 91\n    },\n    {\n      \"title\": \"Section 6\",\n      \"startSegmentIndex\": 119\n    }\n  ]\n}\n",
+  "sourceFiles": [
+    {
+      "exists": true,
+      "path": "C:\\code\\git-going-with-github\\docs\\appendix-d-git-authentication.md",
+      "headings": [
+        {
+          "level": 2,
+          "title": "SSH Keys & Personal Access Tokens"
+        },
+        {
+          "level": 3,
+          "title": "Learning Cards: Using This Authentication Reference"
+        },
+        {
+          "level": 2,
+          "title": "When You Need Authentication"
+        },
+        {
+          "level": 2,
+          "title": "Two Authentication Methods"
+        },
+        {
+          "level": 3,
+          "title": "Personal Access Token (PAT)"
+        },
+        {
+          "level": 4,
+          "title": "Pros"
+        },
+        {
+          "level": 4,
+          "title": "Cons"
+        },
+        {
+          "level": 3,
+          "title": "SSH Keys"
+        },
+        {
+          "level": 4,
+          "title": "Pros"
+        },
+        {
+          "level": 4,
+          "title": "Cons"
+        },
+        {
+          "level": 2,
+          "title": "Creating a Personal Access Token (Recommended for This Workshop)"
+        },
+        {
+          "level": 3,
+          "title": "Step 1: Generate the Token"
+        },
+        {
+          "level": 3,
+          "title": "Step 2: Store It Securely"
+        },
+        {
+          "level": 4,
+          "title": "Options"
+        },
+        {
+          "level": 4,
+          "title": "Do not"
+        },
+        {
+          "level": 3,
+          "title": "Step 3: Use It"
+        },
+        {
+          "level": 2,
+          "title": "Setting Up SSH Keys (Alternative Method)"
+        },
+        {
+          "level": 3,
+          "title": "Step 1: Check If You Already Have a Key"
+        },
+        {
+          "level": 3,
+          "title": "Step 2: Generate a New SSH Key"
+        },
+        {
+          "level": 3,
+          "title": "Step 3: Copy Your Public Key"
+        },
+        {
+          "level": 4,
+          "title": "Windows (PowerShell)"
+        },
+        {
+          "level": 4,
+          "title": "macOS"
+        },
+        {
+          "level": 4,
+          "title": "Linux"
+        },
+        {
+          "level": 3,
+          "title": "Step 4: Add to GitHub"
+        },
+        {
+          "level": 3,
+          "title": "Step 5: Test the Connection"
+        },
+        {
+          "level": 3,
+          "title": "Step 6: Use SSH URLs"
+        },
+        {
+          "level": 2,
+          "title": "Switching Between HTTPS and SSH"
+        },
+        {
+          "level": 3,
+          "title": "Check your current remote"
+        },
+        {
+          "level": 3,
+          "title": "Switch to SSH"
+        },
+        {
+          "level": 3,
+          "title": "Switch to HTTPS"
+        },
+        {
+          "level": 3,
+          "title": "Learning Cards: Troubleshooting Authentication"
+        },
+        {
+          "level": 2,
+          "title": "Troubleshooting"
+        },
+        {
+          "level": 3,
+          "title": "\"Authentication failed\" when pushing"
+        },
+        {
+          "level": 4,
+          "title": "Solution"
+        },
+        {
+          "level": 3,
+          "title": "\"Permission denied (publickey)\""
+        },
+        {
+          "level": 4,
+          "title": "Solution"
+        },
+        {
+          "level": 3,
+          "title": "\"Host key verification failed\""
+        },
+        {
+          "level": 4,
+          "title": "Solution"
+        },
+        {
+          "level": 2,
+          "title": "Security Best Practices"
+        },
+        {
+          "level": 2,
+          "title": "Commit Signing - Verified Badges and Vigilant Mode"
+        },
+        {
+          "level": 3,
+          "title": "Why It Matters"
+        },
+        {
+          "level": 3,
+          "title": "Two Methods for Signing Commits"
+        },
+        {
+          "level": 4,
+          "title": "SSH Signing (simpler - reuses your existing SSH key)"
+        },
+        {
+          "level": 4,
+          "title": "GPG Signing (traditional method)"
+        },
+        {
+          "level": 2,
+          "title": "Step 2: Find your key ID"
+        },
+        {
+          "level": 2,
+          "title": "Step 3: Export the public key"
+        },
+        {
+          "level": 2,
+          "title": "Step 4: Add to GitHub"
+        },
+        {
+          "level": 2,
+          "title": "Step 5: Configure Git to sign all commits"
+        },
+        {
+          "level": 3,
+          "title": "Vigilant Mode"
+        },
+        {
+          "level": 4,
+          "title": "Why some maintainers enable Vigilant Mode"
+        },
+        {
+          "level": 4,
+          "title": "What you see as a contributor"
+        },
+        {
+          "level": 4,
+          "title": "To read verification badges with a screen reader"
+        },
+        {
+          "level": 2,
+          "title": "For This Workshop"
+        },
+        {
+          "level": 3,
+          "title": "Recommended approach"
+        },
+        {
+          "level": 2,
+          "title": "Authoritative Sources"
+        },
+        {
+          "level": 3,
+          "title": "Section-Level Source Map"
+        }
+      ],
+      "content": "# Appendix D: Git Authentication\n>\n> **Listen to Episode 21:** [Git Authentication](https://lp.csedesigns.com/ggg/PODCASTS.html) - a conversational audio overview of this chapter. Listen before reading to preview the concepts, or after to reinforce what you learned.\n\n> **Reference companion to:** [Chapter 00: Pre-Workshop Setup](00-pre-workshop-setup.md) | Also relevant: [Chapter 14](14-git-in-practice.md)\n>\n> **Authoritative source:** [GitHub Docs: Authenticating with GitHub from Git](https://docs.github.com/en/get-started/getting-started-with-git/set-up-git#authenticating-with-github-from-git)\n\n## SSH Keys & Personal Access Tokens\n\n> **Audience:** This appendix is for contributors who need to configure Git authentication for push access. If you're working entirely through the GitHub web interface or GitHub Desktop, you can skip this. If you're using VS Code with Git command line, this becomes relevant when you want to push commits to your fork.\n\n### Learning Cards: Using This Authentication Reference\n\n<details>\n<summary>Screen reader users</summary>\n\n- This appendix has two main paths: Personal Access Token (recommended) and SSH Keys -- jump to your chosen method via heading navigation\n- Step-by-step instructions are numbered lists -- your screen reader announces \"1 of 8,\" etc. to track progress\n- The Troubleshooting section near the bottom covers the error messages you are most likely to encounter\n\n</details>\n\n<details>\n<summary>Low vision users</summary>\n\n- Command-line examples are in code blocks with high contrast -- increase zoom to read them comfortably\n- Each method (PAT vs SSH) is a separate section with its own step-by-step flow\n- The \"Do not\" lists use bold text to highlight security warnings\n\n</details>\n\n<details>\n<summary>Sighted users</summary>\n\n- Start at \"Two Authentication Methods\" for a pros/cons comparison, then follow the section for your choice\n- Code blocks show the exact commands to copy -- use the copy button in the top-right corner on GitHub\n- The Troubleshooting section at the bottom is organized by error message\n\n</details>\n\n## When You Need Authentication\n\nGitHub requires authentication when you:\n\n- **Push** commits to a repository\n- **Clone** a private repository\n- **Access** organization repositories with specific permissions\n\nYou do **not** need authentication to:\n\n- Clone public repositories\n- View public repositories on GitHub.com\n- Read issues and pull requests\n\n## Two Authentication Methods\n\n### Personal Access Token (PAT)\n\nA Personal Access Token is a password-like string you generate on GitHub and use instead of your account password when Git asks for credentials.\n\n#### Pros\n\n- Works on all operating systems\n- Easy to set up for screen reader users (no command line required)\n- Can be scoped to specific permissions\n- Easy to revoke if compromised\n\n#### Cons\n\n- You have to store it securely\n- Expires after a set time (you must regenerate)\n\n### SSH Keys\n\nSSH uses public-key cryptography. You generate a key pair on your computer (public + private), upload the public key to GitHub, and Git uses the private key to prove your identity.\n\n#### Pros\n\n- Once set up, works automatically (no password prompts)\n- More secure than tokens\n- Never expires\n\n#### Cons\n\n- Requires command-line setup (less accessible for some screen reader users)\n- Slightly more complex initial configuration\n\n## Creating a Personal Access Token (Recommended for This Workshop)\n\n**Why this method:** It's screen reader accessible through the GitHub web interface, and you can complete it without command-line Git configuration.\n\n### Step 1: Generate the Token\n\n1. Navigate to [github.com/settings/tokens](https://github.com/settings/tokens)\n2. Select **\"Tokens (classic)\"** from the left sidebar\n3. Activate **\"Generate new token\"** → Select **\"Generate new token (classic)\"**\n4. Give it a descriptive name in the **Note** field: \"Workshop Laptop Token\"\n5. Set expiration: **30 days** or **60 days** (recommended for temporary workshop use)\n6. Select scopes:\n   - **`repo`** - Full control of private repositories (includes public repo access)\n   - **`workflow`** - Update GitHub Actions workflows (if you'll work with Actions)\n7. Scroll down and activate **\"Generate token\"**\n8. **CRITICAL:** Copy the token immediately - you cannot see it again\n\n**Screen reader note:** The token appears as a long string in a text field. Select all (`Ctrl+A`), copy (`Ctrl+C`), and paste it into a secure note or password manager.\n\n### Step 2: Store It Securely\n\n#### Options\n\n- **Password manager** (1Password, Bitwarden, LastPass) - best option\n- **Encrypted note** in your operating system's secure notes\n- **Plain text file** in an encrypted folder (temporary only)\n\n#### Do not\n\n- Paste it into a document you sync to cloud storage unencrypted\n- Email it to yourself\n- Save it in a public GitHub file\n\n### Step 3: Use It\n\nThe next time Git asks for your password (when you push, pull from a private repo, or clone a private repo):\n\n```text\nUsername: [your-github-username]\nPassword: [paste-your-PAT-here]\n```\n\n**Windows Git Credential Manager:** Windows will remember this token automatically after your first use. You only paste it once.\n\n**macOS Keychain:** macOS will offer to save it to Keychain. Select \"Always Allow.\"\n\n**Linux:** You can configure Git to cache credentials:\n\n```bash\ngit config --global credential.helper cache\n```\n\n## Setting Up SSH Keys (Alternative Method)\n\nIf you prefer SSH and are comfortable with terminal commands:\n\n### Step 1: Check If You Already Have a Key\n\n```bash\nls -al ~/.ssh\n```\n\nLook for files named `id_rsa.pub`, `id_ed25519.pub`, or similar. If you see these, you already have a key.\n\n### Step 2: Generate a New SSH Key\n\n```bash\nssh-keygen -t ed25519 -C \"your-email@example.com\"\n```\n\nWhen prompted:\n\n- Press `Enter` to accept the default file location\n- Enter a passphrase (optional but recommended)\n\n**Screen reader note:** Git will print output showing where the key was saved. It generates two files: `id_ed25519` (private) and `id_ed25519.pub` (public).\n\n### Step 3: Copy Your Public Key\n\n#### Windows (PowerShell)\n\n```powershell\nGet-Content ~/.ssh/id_ed25519.pub | Set-Clipboard\n```\n\n#### macOS\n\n```bash\npbcopy < ~/.ssh/id_ed25519.pub\n```\n\n#### Linux\n\n```bash\ncat ~/.ssh/id_ed25519.pub\n# Manually select and copy the output\n```\n\n### Step 4: Add to GitHub\n\n1. Navigate to [github.com/settings/keys](https://github.com/settings/keys)\n2. Select **\"New SSH key\"**\n3. **Title:** \"Workshop Laptop SSH Key\"\n4. **Key type:** Authentication Key\n5. **Key:** Paste your public key (should start with `ssh-ed25519` or `ssh-rsa`)\n6. Select **\"Add SSH key\"**\n7. Confirm with your password or 2FA code\n\n### Step 5: Test the Connection\n\n```bash\nssh -T git@github.com\n```\n\nYou should see: `Hi username! You've successfully authenticated...`\n\n### Step 6: Use SSH URLs\n\nWhen cloning or adding remotes, use SSH URLs instead of HTTPS:\n\n```text\n# SSH format\ngit@github.com:owner/repo.git\n\n# Instead of HTTPS\nhttps://github.com/owner/repo.git\n```\n\n## Switching Between HTTPS and SSH\n\nIf you cloned with HTTPS but want to use SSH (or vice versa), update the remote:\n\n### Check your current remote\n\n```bash\ngit remote -v\n```\n\n### Switch to SSH\n\n```bash\ngit remote set-url origin git@github.com:your-username/repo.git\n```\n\n### Switch to HTTPS\n\n```bash\ngit remote set-url origin https://github.com/your-username/repo.git\n```\n\n### Learning Cards: Troubleshooting Authentication\n\n<details>\n<summary>Screen reader users</summary>\n\n- Each troubleshooting entry starts with the error message in quotes as an h3 heading -- press 3 to jump between errors\n- Solutions include terminal commands in code blocks -- switch to Focus Mode before copying them\n- If your error is not listed here, search the GitHub Docs authentication troubleshooting page\n\n</details>\n\n<details>\n<summary>Low vision users</summary>\n\n- Error messages are displayed as bold h3 headings for easy visual scanning\n- Solution steps are numbered and include code blocks you can copy directly\n- If terminal output is hard to read, paste commands into VS Code's integrated terminal which respects your theme settings\n\n</details>\n\n<details>\n<summary>Sighted users</summary>\n\n- Scan the h3 headings to find your exact error message\n- Each solution starts with the most common fix first -- try that before the alternatives\n- The \"Security Best Practices\" section below is worth skimming after you resolve your issue\n\n</details>\n\n## Troubleshooting\n\n### \"Authentication failed\" when pushing\n\n**Problem:** Your token expired or is incorrect.\n\n#### Solution\n\n- Generate a new PAT\n- Clear your credential cache (Windows: Credential Manager; macOS: Keychain; Linux: `git credential-cache exit`)\n- Try pushing again - Git will ask for credentials\n\n### \"Permission denied (publickey)\"\n\n**Problem:** SSH key not properly set up.\n\n#### Solution\n\n- Verify your key is added to GitHub: [github.com/settings/keys](https://github.com/settings/keys)\n- Check SSH agent is running: `ssh-add -l`\n- Add your key to the agent: `ssh-add ~/.ssh/id_ed25519`\n\n### \"Host key verification failed\"\n\n**Problem:** SSH doesn't recognize GitHub's host key.\n\n#### Solution\n\n```bash\nssh-keyscan github.com >> ~/.ssh/known_hosts\n```\n\n## Security Best Practices\n\n1. **Never share your private key or PAT** - treat them like passwords\n2. **Use scoped PATs** - only grant the minimum permissions needed\n3. **Set expiration dates** on PATs - regenerate periodically\n4. **Use a passphrase** on SSH keys - adds another layer of security\n5. **Revoke old tokens** when you're done with a project or device\n6. **Don't commit tokens or keys to Git** - use `.gitignore` for config files\n\n## Commit Signing - Verified Badges and Vigilant Mode\n\nWhen you push commits to GitHub, each commit shows a small badge: **Verified** or **Unverified**. This badge tells anyone viewing the commit history whether the commit was cryptographically signed - proving it came from you and was not tampered with.\n\n### Why It Matters\n\nOpen source maintainers increasingly require signed commits before merging. Some repositories enforce this with branch protection rules. If you contribute to [accessibility-agents](https://github.com/Community-Access/accessibility-agents) and your commits show \"Unverified,\" a maintainer may ask you to sign them before the PR can be merged.\n\n### Two Methods for Signing Commits\n\n#### SSH Signing (simpler - reuses your existing SSH key)\n\nIf you already have an SSH key set up for authentication, you can use it for signing too.\n\n##### Step 1: Configure Git to use SSH for signing\n\n```bash\ngit config --global gpg.format ssh\ngit config --global user.signingkey ~/.ssh/id_ed25519.pub\ngit config --global commit.gpgsign true\n```\n\n##### Step 2: Add your SSH key as a signing key on GitHub\n\n1. Navigate to [github.com/settings/ssh](https://github.com/settings/ssh)\n2. Select **\"New SSH key\"**\n3. Change **\"Key type\"** to **\"Signing Key\"** (not Authentication Key)\n4. Paste your public key and save\n\nYour commits now show the **Verified** badge in GitHub's commit history.\n\n#### GPG Signing (traditional method)\n\n##### Step 1: Generate a GPG key\n\n```bash\ngpg --full-generate-key\n# Choose: RSA and RSA, 4096 bits, never expires\n# Enter your GitHub email address when prompted\n```\n\n## Step 2: Find your key ID\n\n```bash\ngpg --list-secret-keys --keyid-format=long\n# Output includes: sec   rsa4096/XXXXXXXXXXXXXXXX\n# The X's are your key ID\n```\n\n## Step 3: Export the public key\n\n```bash\ngpg --armor --export YOUR_KEY_ID\n# Copies the block starting with -----BEGIN PGP PUBLIC KEY BLOCK-----\n```\n\n## Step 4: Add to GitHub\n\n1. Navigate to [github.com/settings/gpg-keys](https://github.com/settings/gpg-keys)\n2. Select **\"New GPG key\"** → paste the exported public key\n\n## Step 5: Configure Git to sign all commits\n\n```bash\ngit config --global user.signingkey YOUR_KEY_ID\ngit config --global commit.gpgsign true\n```\n\n### Vigilant Mode\n\nGitHub has an optional setting called **Vigilant Mode** (in Settings → SSH and GPG Keys → Vigilant mode). When enabled, GitHub marks **all** commits from your account as \"Unverified\" unless they are signed - even commits that were previously shown without a badge.\n\n#### Why some maintainers enable Vigilant Mode\n\n- It makes tampered or spoofed commits immediately obvious\n- It signals that the repository cares about commit provenance\n\n#### What you see as a contributor\n\n- Every unsigned commit you push will show a yellow \"Unverified\" badge\n- This is a visual signal - commits can still be pushed, but maintainers may block the merge\n\n#### To read verification badges with a screen reader\n\n- Navigate to the repository's commit history (Code tab → Commits link)\n- Each commit row contains either \"Verified\" or \"Unverified\" as a badge element\n- NVDA/JAWS: the badge is inside the commit row; use `↓` to read through each row and the badge text is read inline\n- VoiceOver: use `VO+Right` through the commit row; the badge is read as a button with the text \"Verified\" (clicking it shows the certificate)\n\n**Workshop recommendation:** SSH signing is simpler to set up than GPG and reuses your existing key. If you have 10 minutes, configure it before Day 2 - every commit you push to accessibility-agents will show as Verified.\n\n## For This Workshop\n\n### Recommended approach\n\n1. Generate a Personal Access Token with 30-day expiration\n2. Scope: `repo` and `workflow`\n3. Store it in your password manager\n4. Use it when VS Code or Git asks for a password\n\nSSH keys are great for long-term use, but PATs are faster to set up and more accessible for screen reader users during a time-constrained workshop.\n\n---\n\n*Next: [Appendix E: Advanced Git](appendix-e-advanced-git.md)*  \n*Back: [Appendix C: Markdown Reference](appendix-c-markdown-reference.md)*  \n*Teaching chapter: [Chapter 00: Pre-Workshop Setup](00-pre-workshop-setup.md)*\n\n## Authoritative Sources\n\nUse these official references when you need the current source of truth for facts in this chapter.\n\n- [GitHub Docs, home](https://docs.github.com/en)\n- [GitHub Changelog](https://github.blog/changelog/)\n- [GitHub security features](https://docs.github.com/en/code-security/getting-started/github-security-features)\n- [Dependabot docs](https://docs.github.com/en/code-security/dependabot)\n- [Secret scanning docs](https://docs.github.com/en/code-security/secret-scanning/introduction/about-secret-scanning)\n- [Git authentication overview](https://docs.github.com/en/authentication/keeping-your-account-and-data-secure/about-authentication-to-github)\n- [Managing personal access tokens](https://docs.github.com/en/authentication/keeping-your-account-and-data-secure/managing-your-personal-access-tokens)\n\n### Section-Level Source Map\n\nUse this map to verify facts for each major section in this file.\n\n- **SSH Keys & Personal Access Tokens:** [GitHub Docs, home](https://docs.github.com/en), [GitHub Changelog](https://github.blog/changelog/), [GitHub security features](https://docs.github.com/en/code-security/getting-started/github-security-features), [Dependabot docs](https://docs.github.com/en/code-security/dependabot), [Secret scanning docs](https://docs.github.com/en/code-security/secret-scanning/introduction/about-secret-scanning)\n- **When You Need Authentication:** [GitHub Docs, home](https://docs.github.com/en), [GitHub Changelog](https://github.blog/changelog/), [GitHub security features](https://docs.github.com/en/code-security/getting-started/github-security-features), [Dependabot docs](https://docs.github.com/en/code-security/dependabot), [Secret scanning docs](https://docs.github.com/en/code-security/secret-scanning/introduction/about-secret-scanning)\n- **Two Authentication Methods:** [GitHub Docs, home](https://docs.github.com/en), [GitHub Changelog](https://github.blog/changelog/), [GitHub security features](https://docs.github.com/en/code-security/getting-started/github-security-features), [Dependabot docs](https://docs.github.com/en/code-security/dependabot), [Secret scanning docs](https://docs.github.com/en/code-security/secret-scanning/introduction/about-secret-scanning)\n- **Creating a Personal Access Token (Recommended for This Workshop):** [GitHub Docs, home](https://docs.github.com/en), [GitHub Changelog](https://github.blog/changelog/), [GitHub security features](https://docs.github.com/en/code-security/getting-started/github-security-features), [Dependabot docs](https://docs.github.com/en/code-security/dependabot), [Secret scanning docs](https://docs.github.com/en/code-security/secret-scanning/introduction/about-secret-scanning)\n- **Setting Up SSH Keys (Alternative Method):** [GitHub Docs, home](https://docs.github.com/en), [GitHub Changelog](https://github.blog/changelog/), [GitHub security features](https://docs.github.com/en/code-security/getting-started/github-security-features), [Dependabot docs](https://docs.github.com/en/code-security/dependabot), [Secret scanning docs](https://docs.github.com/en/code-security/secret-scanning/introduction/about-secret-scanning)\n- **Switching Between HTTPS and SSH:** [GitHub Docs, home](https://docs.github.com/en), [GitHub Changelog](https://github.blog/changelog/), [GitHub security features](https://docs.github.com/en/code-security/getting-started/github-security-features), [Dependabot docs](https://docs.github.com/en/code-security/dependabot), [Secret scanning docs](https://docs.github.com/en/code-security/secret-scanning/introduction/about-secret-scanning)\n- **Troubleshooting:** [GitHub Docs, home](https://docs.github.com/en), [GitHub Changelog](https://github.blog/changelog/), [GitHub security features](https://docs.github.com/en/code-security/getting-started/github-security-features), [Dependabot docs](https://docs.github.com/en/code-security/dependabot), [Secret scanning docs](https://docs.github.com/en/code-security/secret-scanning/introduction/about-secret-scanning)\n- **Security Best Practices:** [GitHub Docs, home](https://docs.github.com/en), [GitHub Changelog](https://github.blog/changelog/), [GitHub security features](https://docs.github.com/en/code-security/getting-started/github-security-features), [Dependabot docs](https://docs.github.com/en/code-security/dependabot), [Secret scanning docs](https://docs.github.com/en/code-security/secret-scanning/introduction/about-secret-scanning)\n- **Commit Signing - Verified Badges and Vigilant Mode:** [GitHub Docs, home](https://docs.github.com/en), [GitHub Changelog](https://github.blog/changelog/), [GitHub security features](https://docs.github.com/en/code-security/getting-started/github-security-features), [Dependabot docs](https://docs.github.com/en/code-security/dependabot), [Secret scanning docs](https://docs.github.com/en/code-security/secret-scanning/introduction/about-secret-scanning)\n- **For This Workshop:** [GitHub Docs, home](https://docs.github.com/en), [GitHub Changelog](https://github.blog/changelog/), [GitHub security features](https://docs.github.com/en/code-security/getting-started/github-security-features), [Dependabot docs](https://docs.github.com/en/code-security/dependabot), [Secret scanning docs](https://docs.github.com/en/code-security/secret-scanning/introduction/about-secret-scanning)\n"
+    }
+  ],
+  "companions": {
+    "pairedChallenges": [],
+    "pairedChapters": [],
+    "classroomReview": "",
+    "assignments": []
+  },
+  "voiceRules": {
+    "bannedPhrases": [
+      "has three jobs",
+      "name the idea",
+      "give the learner a move",
+      "show what counts as evidence",
+      "Section-Level Source Map",
+      "GitHub Docs, home, GitHub Changelog",
+      "Think of this as",
+      "The next useful detail is concrete",
+      "The point is not speed; the point is never losing your place",
+      "That is the difference between guessing and knowing",
+      "This is the move inside",
+      "Anchor this part on",
+      "For someone navigating by keyboard or screen reader",
+      "The teaching point here is not",
+      "The durable skill is not memorizing one screen",
+      "It is knowing how to find your footing when the screen changes",
+      "Keep it that plain",
+      "That is the rhythm: orient, act, verify, continue",
+      "Each step should leave a trace you can name",
+      "That small check between steps is what makes the workflow reliable",
+      "This part earns its place because",
+      "That matters in practice:"
+    ],
+    "staleFacts": [
+      "Fork the accessibility-agents repository",
+      "80 AI-powered agents",
+      "eighty AI-powered agents",
+      "Build Your Agent (Capstone)",
+      "Build Your Own Agent",
+      "if you finish early",
+      "cross-fork PR"
+    ],
+    "currentFacts": [
+      "The Accessibility Agents collection grows over time. Refer to it as a living catalog rather than asserting a fixed count of agents.",
+      "Challenge 15 (Discover Accessibility Agents) is browse-first. Learners are not required to fork the accessibility-agents repository to complete it.",
+      "Completing Challenge 15 unlocks Challenge 16 (Capstone Project) plus Bonus Challenges A through E. The bonus challenges are a structured unlock path, not \"things to do if you finish early\".",
+      "Challenge 16 is titled \"Capstone Project\". It accepts contributions to Accessibility Agents, GLOW, or any other meaningful repository. Review-ready drafts and contribution plans are valid evidence of completion.",
+      "The Learning Room repository is where Day 1 contributions happen (issue, branch, commit, pull request, merge). It is provisioned per learner.",
+      "Hosts are Alex (warm expert) and Jamie (curious co-host who asks the questions learners hesitate to ask). They are colleagues, not teacher and student."
+    ],
+    "voiceExemplarPath": "C:\\code\\git-going-with-github\\podcasts\\scripts\\challenges\\cc-14-design-an-issue-template.txt",
+    "voiceExemplar": "[ALEX]\nWelcome back. Today we're working with one of those GitHub features that quietly makes open source collaboration much easier: issue templates.\n\n[JAMIE]\nAnd this is a great one for people who have ever opened a blank issue form and thought, what exactly am I supposed to put here?\n\n[ALEX]\nExactly. An issue template turns that blank box into a guided experience. Instead of guessing what maintainers need, contributors get prompts, structure, and clear required fields. That reduces back-and-forth, improves quality, and helps teams act on issues faster.\n\n[JAMIE]\nSo this is not just about formatting. It's about making contributions clearer and more usable.\n\n[ALEX]\nYes, and especially in accessibility work. If someone is reporting an accessibility barrier, a vague report can be hard to reproduce. A thoughtful template can ask where the problem occurred, what assistive technology was involved, what the expected behavior was, and how severe the barrier is.\n\n[PAUSE]\n\n[JAMIE]\nBefore we get into the design challenge, what should learners already have in place?\n\n[ALEX]\nA few practical things. First, you should already know how to work with GitHub issues at a basic level. Second, you need a repository where you can create or edit files, usually your fork or your own repo. Third, it really helps to use an editor with YAML syntax highlighting, such as VS Code.\n\n[JAMIE]\nAnd some things are recommended but not strictly required, right?\n\n[ALEX]\nRight. Familiarity with GitHub Copilot can help if you want to generate variations, but it's optional. Basic terminal comfort is useful, though you can also use the GitHub web editor or github.dev. And if you already filled out the workshop registration template earlier in this course, that template becomes a learning example now.\n\n[JAMIE]\nI like that. You've already used a professional issue template, so now you reverse-engineer it.\n\n[ALEX]\nExactly. Also, there's an administrative note here: this chapter is meant to prepare you for a later workflow using a template-building agent. The advice is to complete the manual template chapter first, then use the automation later.\n\n[JAMIE]\nAnd time-wise?\n\n[ALEX]\nPlan roughly two to two and a half hours if you do the exercises and some YAML troubleshooting.\n\n[PAUSE]\n\n[ALEX]\nThe learning pattern for this challenge is analyze, remix, create, and test.\n\n[JAMIE]\nThat feels approachable. First understand an existing template, then adapt one, then optionally build another version from scratch, then verify it works.\n\n[ALEX]\nThat's the idea. The workshop recommendation frames Challenge 14 as design-focused rather than automation-focused. You're producing evidence of understanding, often as an issue comment or a pull request, rather than trying to satisfy a complicated code runtime.\n\n[JAMIE]\nThough there is still one small autograded requirement in the challenge template itself.\n\n[ALEX]\nYes. For the assigned challenge issue, the autograder checks that a YAML file exists in the repository\n\n[... exemplar continues; match this tone throughout ...]"
+  }
+}

@@ -1,570 +1,236 @@
 [ALEX]
-Welcome back. If you already know the everyday Git moves like clone, branch, commit, push, and pull, this lesson is about the next layer up: the commands people reach for when real work gets messy.
+Welcome back. Today we're getting into the Git commands people usually meet when the simple path gets messy: cherry-pick, rebase, reset, revert, tags, bisect, clean, and a few recovery tools.
 
 [JAMIE]
-So this is the part where Git starts feeling powerful and a little scary.
+I like that you said when it gets messy, because these commands can sound intimidating. They also sound like the ones you reach for right when you're already stressed.
 
 [ALEX]
-Exactly. We’re covering the operations that come up constantly in open source and team workflows: grabbing one commit without merging a whole branch, cleaning up history before a pull request, undoing mistakes safely, understanding detached HEAD, force pushing without causing trouble, finding the exact commit that introduced a bug, cleaning untracked files, and figuring out why a protected branch refuses your push.
+Exactly. This is not a speed run through powerful commands. It's a guide for choosing the least risky tool, checking where you are, and knowing how to back out when Git pauses or complains.
 
 [JAMIE]
-And the appendix this comes from is organized around three ways to do things, right?
+And the appendix this episode pairs with gives multiple paths, right? VS Code, GitHub CLI, and regular Git in the terminal.
 
 [ALEX]
-Yes. Most sections show a VS Code path, a GitHub CLI path with gh when that makes sense, and the Git CLI path. Different tools, same underlying Git concepts.
+Yes. The outcome is the same, so use the path that fits your setup. If you're reading the appendix with a screen reader, the operations are organized as numbered sections, and the tool paths sit under them. If you're using low vision settings, the command examples are labeled and meant to stay readable when zoomed.
 
 [JAMIE]
-Let’s also keep the accessibility guidance in view, because this material is meant to work as a reference too.
-
-[ALEX]
-Right. If you’re reading along with the markdown, each operation is its own numbered section. Screen reader users can jump by heading between operations, and then jump among the tool-specific subheadings. The table of contents links go directly to each operation. Low vision users get a very consistent layout: what the command is, when to use it, then the tool-specific steps. And there’s a quick reference table near the bottom for fast lookup.
-
-[JAMIE]
-So the structure itself is part of the teaching.
-
-[ALEX]
-Exactly.
+This also connects nicely to Bonus Challenge E, Git History, because the goal there is not just doing commands. It's learning to read commits over time and use history as a clue instead of a wall of noise.
 
 [PAUSE]
 
 [ALEX]
-Let’s start with cherry-pick. Cherry-pick means: take one specific commit from somewhere else and apply that commit onto the branch you’re on now.
+Let's start with cherry-pick. Cherry-pick takes one commit from somewhere else and applies that change to your current branch.
 
 [JAMIE]
-So not merge the branch. Not rebase the branch. Just copy one change.
+So if I fixed a bug on the wrong branch, I don't have to bring the whole branch with me. I can move just that one fix.
 
 [ALEX]
-That’s the idea. Think of it as surgically lifting one commit out of another branch. You’d use it when a bug fix exists on a feature branch and main needs that fix immediately, or when a teammate has one useful commit but you don’t want all their in-progress work, or when you committed to the wrong branch and need that commit somewhere else.
+Right. First you need the commit SHA, which is the commit's unique ID. In VS Code, you can open the Timeline view, look at the branch that contains the commit, and copy the SHA from the details. In the terminal, you might run git log feature/bug-fix --oneline, and Git will show short IDs like a1b2c3d next to the commit messages.
 
 [JAMIE]
-Before you can cherry-pick, you need the commit identifier, the SHA.
+Where does GitHub CLI fit here? I know gh is great for GitHub, but cherry-pick is local Git.
 
 [ALEX]
-Right. In VS Code, one path is the Timeline view. You can open the Timeline, move to the branch that contains the commit, inspect the history there, and copy the SHA from the details.
+That's the distinction. gh can help you list commits from GitHub, for example with gh api against the repository commits endpoint, but the actual cherry-pick is git cherry-pick a1b2c3d. In VS Code, you can use the Command Palette, search for Git: Cherry Pick, and paste the SHA.
 
 [JAMIE]
-And from the terminal?
+And there are a few variations. A single commit, a range of commits, or no automatic commit if I want to inspect the changes first.
 
 [ALEX]
-A very direct command is to view another branch’s history without switching to it: git log, the branch name, and oneline output. That gives you short commit IDs followed by commit messages. So you might see something like a short SHA, then “Fix null pointer error in auth module,” then another SHA for “Add unit tests for login.” The short SHA is typically the first seven characters, and that’s often enough for local operations.
+Yes. git cherry-pick a1b2c3d applies one commit. git cherry-pick a1b2c3d..e4f5g6h applies a range, older to newer, not including the first SHA. git cherry-pick --no-commit a1b2c3d applies the changes but lets you review before committing.
 
 [JAMIE]
-That “without switching to it” part is nice. People often think they have to check out the other branch just to inspect it.
+What happens if Git says there is a conflict?
 
 [ALEX]
-You usually don’t.
+Git stops and marks the files, the same way it does during a merge conflict. Run git status so you can hear or read exactly which files need attention, fix the conflict markers, stage the files, then run git cherry-pick --continue. If you decide this was the wrong move, git cherry-pick --abort takes you back to where you started.
+
+[PAUSE]
 
 [JAMIE]
-Okay. Once I have the SHA, how do I actually do the cherry-pick?
+Rebase is the one that makes people nervous, and honestly, fair.
 
 [ALEX]
-In VS Code, open the Command Palette, type cherry, choose the Git cherry-pick command, paste or type the SHA, and VS Code applies it to your current branch.
+Fair. Interactive rebase lets you edit a sequence of commits before you share them. You can combine several small commits, rewrite a vague commit message, reorder commits, drop an experiment, or pause to amend a commit.
 
 [JAMIE]
-And gh?
+The scary part is that it rewrites history. When is that okay?
 
 [ALEX]
-GitHub CLI does not itself perform cherry-pick, because cherry-pick is a local Git operation. But gh can help you discover the commit SHA through the GitHub API. Then you still use regular git cherry-pick locally.
+It's usually okay on your own local branch before other people depend on it. Be very cautious with commits that have already been pushed to a shared branch. If someone else has pulled that history, changing it can make their copy disagree with yours.
 
 [JAMIE]
-So gh helps find; git helps apply.
+How do you start without getting lost in the editor?
 
 [ALEX]
-Exactly. At the Git CLI, you can cherry-pick a single commit. You can also cherry-pick a range of commits using the older-dot-dot-newer syntax, where the first endpoint is exclusive. And you can use no-commit if you want Git to apply the changes without creating the commit immediately, which gives you a chance to review or modify the result first.
+In VS Code, open the integrated terminal with Ctrl+Backtick and run git rebase -i HEAD~3 to edit the last three commits. You can also run git rebase -i main to edit everything since your branch split from main. If Git opens vim and you don't want that, set VS Code as your Git editor with git config --global core.editor code --wait.
 
 [JAMIE]
-That no-commit option sounds useful if I’m not totally sure the commit belongs exactly as-is.
+Then you get a list where each line starts with a command word, like pick.
 
 [ALEX]
-Yes. It gives you a checkpoint before the final commit is created.
+Yes. pick keeps the commit. squash combines it with the commit above and lets you combine messages. fixup also combines it but drops that commit's message. reword edits the message, drop removes the commit, and edit pauses so you can change the commit.
 
 [JAMIE]
-What about conflicts?
+So three typo commits can become one clear commit before a pull request, and a message like fix stuff can become something useful.
 
 [ALEX]
-Cherry-pick can conflict for the same reason merges do: the target branch and that commit both touched overlapping code. Git pauses, marks the conflicting files, and you resolve them. In VS Code you can use the conflict editor. After resolving, stage the fixed files. Then continue the cherry-pick. If you decide this was a mistake, abort and Git returns you to where you started.
-
-[JAMIE]
-And for screen reader users, the appendix had a practical tip here.
-
-[ALEX]
-Yes: if a cherry-pick stops because of a conflict, run git status. It tells you which files need attention. The conflict markers in the files are plain text, so they read line by line in a straightforward way.
-
-[JAMIE]
-There was also a Copilot angle.
-
-[ALEX]
-Right. If you’re unsure whether a commit is the right one to cherry-pick, you can inspect it with git show and paste that output into Copilot Chat with a question like, “What does this commit do, and should I cherry-pick it onto my branch?” And if a conflict appears, Copilot can help explain the conflict or suggest a resolution.
+Exactly. If the rebase goes sideways, git rebase --abort returns to the starting point. If there is a conflict, resolve the file, stage it, and run git rebase --continue. The important habit is to pause before pushing and make sure the history now says what you intended.
 
 [PAUSE]
 
 [ALEX]
-Now let’s move to interactive rebase, one of the most useful and most misunderstood Git tools.
+Now let's separate reset and revert, because both sound like undo, but they behave very differently.
 
 [JAMIE]
-This is the one people use to make their branch history look less chaotic before opening a pull request.
+Reset feels like it changes where my branch points. Is that the right mental model?
 
 [ALEX]
-Exactly. Interactive rebase lets you rewrite your local commit history before it becomes shared history. You can reorder commits, squash several tiny commits together, rewrite commit messages, drop a commit entirely, or pause to edit one.
+Yes. git reset moves the branch pointer, and the mode controls what happens to your files. --soft undoes the commit but keeps the changes staged. --mixed keeps the changes but unstages them. --hard discards the changes from your working tree, so treat it as destructive unless you are very sure.
 
 [JAMIE]
-Give me the golden rule first.
+So for the last commit, git reset --soft HEAD~1 is the gentler option. git reset HEAD~1 keeps the changes but unstages them. git reset --hard HEAD~1 is the danger zone.
 
 [ALEX]
-Only rewrite commits that have not yet been pushed to a shared branch, unless you fully understand the consequences and are prepared to force push safely afterward. Rewriting public history can create problems for collaborators.
+That's a good read. In VS Code, you can undo the last commit from Source Control or search the Command Palette for Git undo actions. To unstage one file without undoing a commit, use VS Code's staged changes area, or run git restore --staged path/to/file. You may also see older examples using git reset HEAD path/to/file.
 
 [JAMIE]
-So interactive rebase is ideal for cleaning up your own branch before the branch becomes everybody else’s problem.
+Where does revert come in?
 
 [ALEX]
-Well said.
+git revert creates a new commit that cancels out an older commit. It does not erase history, which makes it safer for shared branches and pull requests. You can run git revert a1b2c3d, git revert --no-edit a1b2c3d to accept the default message, or git revert --no-commit a1b2c3d to stage the reversal before committing.
 
 [JAMIE]
-How do you start one?
+And merge commits need extra care, right?
 
 [ALEX]
-In VS Code, you’ll generally open the integrated terminal because full interactive rebase is really a terminal workflow. A common command is rebase interactively on HEAD tilde 3, which means, “open the last three commits for editing.” Another common form is interactive rebase against main, meaning, “rewrite everything on my branch since I diverged from main.”
+They do. To revert a merge commit, Git needs to know which parent side to keep, so you use something like git revert -m 1 commit-sha. As a rule, use reset for private local cleanup, and use revert when the commit is already part of shared history.
+
+[PAUSE]
 
 [JAMIE]
-And when that opens, what exactly am I looking at?
+Tags feel calmer than reset and rebase. They mark important moments.
 
 [ALEX]
-A list of commits, one per line. Each line begins with a command word such as pick. Pick means keep the commit as-is. Squash means combine this commit into the one above it. Fixup also combines it into the one above but discards this commit’s message. Reword keeps the commit but asks you to edit the message. Drop removes the commit entirely. Edit pauses at that commit so you can amend it.
+That's what they do. A tag points to a commit so you can find it later, often for a release like v1.0.0. Lightweight tags are simple pointers. Annotated tags include extra metadata and are usually better for releases.
 
 [JAMIE]
-So the rebase file is really a little instruction sheet to Git.
+How would you create one?
 
 [ALEX]
-That’s a great mental model.
+In VS Code, you can use the Command Palette if your Git extension exposes tag commands. With GitHub CLI, gh release create v1.0.0 can create a GitHub Release and the underlying tag. In Git, git tag v1.0.0 creates a lightweight tag, while git tag -a v1.0.0 -m Release v1.0.0 creates an annotated one.
 
 [JAMIE]
-What’s a common cleanup example?
+And tags are local until you push them?
 
 [ALEX]
-Suppose you made one real commit and then two typo-fix commits. You can leave the first as pick and change the next two to squash. Save and close the file. Git then opens another editor asking for the final combined commit message. You write one clean message, save, and now those three commits become one tidy commit.
+Right. git push origin v1.0.0 pushes one tag, and git push origin --tags pushes all local tags. You can list tags with git tag or git tag -l 'v1.*', inspect an annotated tag with git show v1.0.0, delete a local tag with git tag -d v1.0.0, and delete the remote tag with git push origin --delete v1.0.0.
 
 [JAMIE]
-And reword is for when the code is fine but the message is vague.
+Detached HEAD is another phrase that sounds worse than it is.
 
 [ALEX]
-Exactly. Change pick to reword for that commit, save, and Git prompts you to edit the message.
+It means you're looking at a specific commit instead of working on a branch name. If you only meant to inspect something, switch back with git switch main, or whatever branch you were on. If you made commits there and want to keep them, run git switch -c saved-work while you're still at that position. Now those commits are attached to a real branch.
 
 [JAMIE]
-The appendix also included an important editor tip.
-
-[ALEX]
-Yes. If rebase opens in vim and that’s not comfortable, especially for accessibility, set your Git editor to VS Code with core.editor set to code wait. Then future interactive rebases open in VS Code, which is often much more screen-reader-friendly.
-
-[JAMIE]
-What if I get nervous halfway through?
-
-[ALEX]
-Abort the rebase, and Git returns to the pre-rebase state. If you hit a conflict mid-rebase, resolve the conflict, stage the files, and continue the rebase. The pattern is similar to cherry-pick and merge: fix, stage, continue. If needed, abort.
+So don't panic, don't close everything, and if you made work there, make a branch before moving away.
 
 [PAUSE]
 
 [ALEX]
-Next is git reset, which is all about undoing, but at different depths.
+Force pushing is where the safety habits really matter.
 
 [JAMIE]
-This is the one where the modes matter a lot.
+I hear people say never force push, but then rebase workflows sometimes require it. What's the practical version?
 
 [ALEX]
-Very much. Reset can move HEAD and optionally change the staging area and working tree. The three classic modes are soft, mixed, and hard.
-
-[JAMIE]
-Let’s translate that into plain language.
-
-[ALEX]
-Soft reset moves the branch pointer back but keeps your changes staged. Mixed reset, which is the default, moves the branch pointer back and unstages the changes, but keeps them in your files. Hard reset moves the branch pointer back and discards the changes from both staging and working tree.
+Prefer git push --force-with-lease over git push --force. The lease version refuses to overwrite the remote branch if someone else pushed new work since your last fetch. You can also do a dry run first, such as git push --force-with-lease --dry-run, to check what Git plans to do.
 
 [JAMIE]
-So soft is the gentlest undo, mixed is a deeper undo but keeps the work, and hard is destructive.
+So the common case is: I rebased my own feature branch, and GitHub still has the old version of that same branch.
 
 [ALEX]
-Exactly. Hard reset is the dangerous one. The appendix explicitly warns that discarding changes with hard reset may be impossible to recover without reflog, and even then you’re depending on local history that may not last forever.
-
-[JAMIE]
-How might someone do this in VS Code?
-
-[ALEX]
-The appendix includes VS Code routes for undoing the last commit through the Source Control panel and through the Command Palette. Those are friendly entry points when you want to undo a recent commit without memorizing flags.
-
-[JAMIE]
-And at the CLI?
-
-[ALEX]
-There are several common patterns. Undo the last commit but keep changes staged: soft reset to HEAD tilde 1. Undo the last commit but keep changes unstaged: mixed reset to HEAD tilde 1, or simply reset HEAD tilde 1 since mixed is the default. Undo the last three commits but keep all changes unstaged: reset mixed to HEAD tilde 3. Undo the last commit and discard the changes entirely: hard reset to HEAD tilde 1. You can also reset to a specific commit SHA if you want to move directly to some earlier point.
-
-[JAMIE]
-There’s a separate but related task here too: unstaging.
-
-[ALEX]
-Yes. Sometimes you do not want to undo a commit at all. You simply staged the wrong file. In VS Code, you can unstage from the Source Control interface. In Git CLI, you can unstage a specific file by resetting that file, or unstage everything by resetting with no path. That removes content from the staging area but leaves the working tree unchanged.
-
-[JAMIE]
-That distinction is huge: unstaging is not deleting.
-
-[ALEX]
-Exactly. It just says, “don’t include this in the next commit yet.”
-
-[PAUSE]
-
-[ALEX]
-Now let’s compare reset with revert, because people mix them up constantly.
-
-[JAMIE]
-Revert is the safe undo for shared branches.
-
-[ALEX]
-Right. Reset rewrites history. Revert preserves history by adding a new commit that undoes an earlier commit. That makes revert the safer choice when the branch is already shared, published, or protected.
-
-[JAMIE]
-So if I accidentally broke main and the bad commit is already on the remote, I should usually revert, not reset.
-
-[ALEX]
-Correct. In VS Code, there are interface-based ways to revert a commit. In the Git CLI, the standard form is revert followed by the commit SHA. By default that opens an editor so you can confirm or edit the revert commit message. If you want the default message without opening the editor, there’s a no-edit form. And if you want Git to apply the revert changes without committing yet, there’s a no-commit form so you can review or change the message yourself.
-
-[JAMIE]
-The appendix also mentions reverting a merge commit, which is a special case.
-
-[ALEX]
-Yes. Reverting a merge commit requires specifying which parent should be treated as the mainline. That’s because a merge has more than one parent, so Git needs to know which side you want to preserve when constructing the inverse change.
-
-[JAMIE]
-So when do I use revert versus reset in one sentence?
-
-[ALEX]
-Use reset for local history cleanup before sharing; use revert when history is already shared and you need a safe, auditable undo.
-
-[PAUSE]
-
-[ALEX]
-Let’s talk about tags.
-
-[JAMIE]
-These are the labels you attach to important moments in history, like releases.
-
-[ALEX]
-Exactly. A tag marks a specific commit with a memorable name. There are two main kinds here: lightweight tags and annotated tags.
-
-[JAMIE]
-What’s the difference?
-
-[ALEX]
-A lightweight tag is basically just a named pointer to a commit. An annotated tag stores extra metadata like tagger, date, and a message, which is why annotated tags are generally recommended for releases.
-
-[JAMIE]
-How do you create them?
-
-[ALEX]
-In VS Code, the Command Palette can help create tags. With GitHub CLI, one convenient path is to create a release through GitHub’s API or release tooling, which can create both the underlying tag and a GitHub Release in one step.
-
-[JAMIE]
-That’s an important distinction: a Git tag and a GitHub Release are related but not identical.
-
-[ALEX]
-Right. The release is a GitHub platform object; the tag is a Git object. Some GitHub workflows create both together.
-
-[JAMIE]
-And the plain Git CLI options?
-
-[ALEX]
-Create a lightweight tag at the current commit with just the tag name. Create an annotated tag with the a flag and a message. Tag a specific older commit by giving the tag name and the commit SHA. You can list all tags, list tags matching a pattern, and show the details of an annotated tag.
-
-[JAMIE]
-Creating the tag locally doesn’t automatically publish it, though.
-
-[ALEX]
-Exactly. You then push either one specific tag or all local tags to GitHub. And if you need to delete a tag, there are two separate steps to think about: delete the local tag, and if it was already published, delete the remote tag on the GitHub remote as well.
-
-[PAUSE]
-
-[ALEX]
-Now for detached HEAD.
-
-[JAMIE]
-This phrase sounds mysterious the first time you hear it.
-
-[ALEX]
-It does, but the core idea is simple: normally HEAD points to a branch name, and that branch name points to a commit. In detached HEAD, HEAD points directly to a commit instead of a branch. You can inspect history there, but if you make new commits and then move away without saving them onto a branch, they become easy to lose track of.
-
-[JAMIE]
-How do people end up there?
-
-[ALEX]
-Usually by checking out a specific commit SHA or sometimes a tag, instead of checking out a branch.
-
-[JAMIE]
-If I just want to get back to normal, what do I do?
-
-[ALEX]
-If you didn’t make any commits you care about, simply switch back to a real branch, often the branch you were on before.
-
-[JAMIE]
-And if I did make commits while detached?
-
-[ALEX]
-Then create a new branch at the current detached position. That anchors those commits to a branch, making them safe. After that, you’re on a real branch again and the work is no longer floating.
-
-[JAMIE]
-And VS Code can help show this state too.
-
-[ALEX]
-Yes. VS Code’s branch and source control indicators can reveal that you’re detached, and you can create or switch branches from the UI.
-
-[PAUSE]
-
-[ALEX]
-Let’s tackle force pushing safely, because this is where good intentions can become team problems.
-
-[JAMIE]
-We need the difference between force and force-with-lease.
-
-[ALEX]
-Absolutely. Force push overwrites the remote branch with your local branch. Force-with-lease is the safer variant: it will refuse to overwrite the remote if someone else has pushed changes since your last fetch. So it acts like a seatbelt.
-
-[JAMIE]
-When would I need any force push at all?
-
-[ALEX]
-Most commonly after rewriting commit history on your own branch, especially after interactive rebase. Your local branch now has a different history than the remote branch, so a normal push is rejected. Force-with-lease is then the typical way to update the remote copy of your branch.
-
-[JAMIE]
-But not usually on shared branches like main.
-
-[ALEX]
-Correct. This is usually for your own feature branch, not protected shared branches.
-
-[JAMIE]
-How do the tools fit here?
-
-[ALEX]
-VS Code offers push flows, but for force pushing, the appendix explicitly says to use git directly. GitHub CLI likewise is not the place for the actual force-push flag; use Git CLI.
-
-[JAMIE]
-And the key commands?
-
-[ALEX]
-Safe force push is push with force-with-lease. There’s also a way to inspect what will happen before pushing, and there is unconditional force, plain force, which the appendix says to avoid unless you know exactly what you’re doing.
-
-[JAMIE]
-Can you walk through the common rebase-plus-force-push sequence?
-
-[ALEX]
-Sure. One: you’re on your feature branch and rebase it onto main to pick up the latest changes. Two: resolve any conflicts and continue the rebase. Three: because the remote still has the old pre-rebase history, you push your branch with force-with-lease so the remote branch is updated safely.
-
-[JAMIE]
-So the safe pattern is: rewrite locally, verify, then force-with-lease, not plain force.
-
-[ALEX]
-Exactly.
-
-[PAUSE]
-
-[ALEX]
-Now let’s look at git bisect, which is one of Git’s most brilliant debugging tools.
-
-[JAMIE]
-This is the “find the exact bad commit” feature by binary search.
-
-[ALEX]
-Yes. Instead of checking every commit one by one, bisect repeatedly chooses a midpoint between a known bad commit and a known good commit. You test that midpoint and tell Git whether it’s good or bad. Each answer cuts the search space roughly in half.
-
-[JAMIE]
-How do you start?
-
-[ALEX]
-First, start bisect mode. Then mark the current broken state as bad. Then tell Git a commit you know was good, maybe by SHA, tag, or branch name from before the bug appeared.
-
-[JAMIE]
-After that, Git checks out a midpoint and asks me to judge it.
-
-[ALEX]
-Exactly. If the bug is present at that midpoint, mark it bad. If the bug is not present, mark it good. Git moves again. You keep repeating until Git identifies the first bad commit.
-
-[JAMIE]
-And when I’m done?
-
-[ALEX]
-End the bisect session to return to your original branch.
-
-[JAMIE]
-The appendix also mentions automation.
-
-[ALEX]
-Yes. If you have a reliable test script that exits successfully when things are good and fails when things are bad, you can ask Git to run that script automatically at each step. That turns bisect into a mostly hands-off search.
-
-[JAMIE]
-And there was a note later about Copilot helping if the bisect itself becomes confusing.
-
-[ALEX]
-Right. Copilot can help interpret odd outputs or help debug why your test script isn’t behaving consistently during bisect.
-
-[PAUSE]
-
-[ALEX]
-Next up is git clean, which sounds mild but can be destructive.
-
-[JAMIE]
-This is for deleting untracked files, not tracked changes.
-
-[ALEX]
-Correct. Clean removes files Git is not tracking. That often means build artifacts, generated files, or scratch files cluttering your working directory. The big rule here is: always dry-run first.
-
-[JAMIE]
-Because otherwise you might delete something you forgot wasn’t tracked.
-
-[ALEX]
-Exactly. The dry-run form shows what would be deleted without actually deleting it. The appendix even notes an equivalent dry-run spelling, so learners recognize both forms.
-
-[JAMIE]
-What are the common variations?
-
-[ALEX]
-You can remove untracked files only, remove untracked files and directories, remove untracked plus ignored files—which is especially dangerous because that includes things listed in gitignore, like build outputs—and use interactive mode so Git prompts you before deleting items.
-
-[JAMIE]
-And the option meanings matter.
-
-[ALEX]
-Yes. The appendix explicitly explains the common flags: n for dry run, f for force, because Git usually requires force before deleting, d for directories, and x for ignored files too.
-
-[JAMIE]
-Is there a VS Code angle?
-
-[ALEX]
-There is mention of VS Code, but git clean is fundamentally more of a command-line task. The key teaching point is understanding what counts as untracked and using dry-run before any destructive clean.
-
-[PAUSE]
-
-[ALEX]
-Now let’s talk about branch protection, because sometimes Git isn’t rejecting you due to a mistake in your command. Sometimes the repository rules are doing their job.
-
-[JAMIE]
-This is the “why can’t I push to main?” lesson.
-
-[ALEX]
-Exactly. Branch protection can block direct pushes, block merges until reviews pass, require status checks or CI, require up-to-date branches, and enforce other repository policies.
-
-[JAMIE]
-So if a push or merge is blocked, it may be policy, not a broken workflow.
-
-[ALEX]
-Right. And the correct flow for protected branches is very consistent. Never work directly on main. Create a branch. Make your changes and commit them. Push your branch, not main. Open a pull request on GitHub. Then wait for reviews and automated checks to pass, and merge through the pull request.
-
-[JAMIE]
-That line from the appendix is subtle but important: protection rules often apply to the merge into the protected branch, not to your ability to push your own feature branch.
-
-[ALEX]
-Exactly.
-
-[JAMIE]
-What if my branch is out of date with main and GitHub says it must be updated?
-
-[ALEX]
-You usually have two options. Option A is merge main into your branch. That creates a merge commit and is often straightforward. Option B is rebase your branch onto main. That gives a cleaner history, but because it rewrites your branch history, it usually requires a force-with-lease push afterward.
-
-[JAMIE]
-And those can be done in VS Code, plain Git CLI, or in some cases via GitHub tooling.
-
-[ALEX]
-Yes. The appendix includes VS Code and CLI approaches, and also notes GitHub CLI routes for updating a pull request branch from the GitHub side when that workflow is available.
-
-[JAMIE]
-How do I check what branch protection rules are actually active?
-
-[ALEX]
-Through GitHub CLI, you can query branch protection information for a branch like main. And on GitHub.com, repository settings expose the rules in the branch protection or ruleset interface.
-
-[JAMIE]
-So the real skill isn’t just knowing Git commands. It’s recognizing when repository governance is part of the workflow.
-
-[ALEX]
-Precisely.
-
-[PAUSE]
-
-[ALEX]
-The appendix also includes a quick reference table of advanced commands.
-
-[JAMIE]
-Which is not new content so much as a compact lookup.
-
-[ALEX]
-Right. It gives one-row-per-operation summaries so you can quickly remind yourself which command family fits which problem: cherry-pick for transplanting a commit, interactive rebase for cleaning history, reset for local undo, revert for shared-history undo, tags for marking commits, bisect for bug hunting, clean for untracked files, and so on.
-
-[PAUSE]
-
-[ALEX]
-Before we finish, there’s a modern companion topic: using GitHub Copilot for Git operations.
-
-[JAMIE]
-I like that this section is not “let Copilot do magic,” but “use Copilot to understand and choose better.”
-
-[ALEX]
-Exactly. Copilot can be especially helpful in a few focused situations. One is resolving merge conflicts. You can show it the conflict markers and ask it to explain the competing changes or draft a merged version.
-
-[JAMIE]
-Another is writing better commit messages.
-
-[ALEX]
-Yes. If your commit message is vague, Copilot can turn a diff or a staged-changes summary into a clearer message that explains intent and outcome.
-
-[JAMIE]
-And confusing Git output is a huge one.
-
-[ALEX]
-Absolutely. Git error messages are often precise but not beginner-friendly. You can paste the terminal output into Copilot and ask, “What does this mean?” That includes things like rebase conflicts, non-fast-forward push errors, detached HEAD warnings, branch protection messages, and bisect output.
-
-[JAMIE]
-The appendix also highlights using Copilot to choose the right command in the first place.
-
-[ALEX]
-Right. You can describe your goal in plain language—something like, “I accidentally committed to the wrong branch but haven’t pushed yet; what command should I use?”—and Copilot can suggest likely commands, which you should then verify before running.
-
-[JAMIE]
-There’s also a section about debugging a failing bisect and getting help with branch protection errors.
-
-[ALEX]
-Yes. Those are great examples of Copilot as an interpreter and workflow coach rather than an autopilot. It can help you reason through what state Git thinks you’re in.
-
-[JAMIE]
-And we should distinguish Copilot in Terminal from Copilot Chat.
-
-[ALEX]
-Good point. Copilot Chat is conversational and better for explanations, pasted output, and back-and-forth questions. Copilot in the terminal or Copilot CLI is good for command suggestions. The appendix specifically notes that you can ask Copilot to suggest a Git command for what you want to do.
-
-[JAMIE]
-So the safe pattern is: ask for explanation or suggestion, inspect the proposed command, understand it, then run it.
-
-[ALEX]
-Exactly. Especially with destructive commands like reset hard, clean force, or force push.
+Yes. You fetch, rebase your branch onto main, resolve any conflicts, run git rebase --continue, and then push with git push --force-with-lease. Use it on your own branch, not on a shared main branch, and coordinate if anyone else may be working from the same branch.
 
 [PAUSE]
 
 [JAMIE]
-Before we close, can we do a rapid decision guide?
+Bisect feels like Git turning into a detective tool.
 
 [ALEX]
-Sure. Need one specific commit from another branch? Cherry-pick. Need to tidy your own unpublished history? Interactive rebase. Need to undo local commits at varying depths? Reset. Need to safely undo something already shared? Revert. Need to mark a release point? Tag. Stuck on a commit instead of a branch? You’re probably in detached HEAD—switch back or create a branch. Rewrote history on your own branch? Force-with-lease, not plain force. Need to find which commit introduced a bug? Bisect. Want to remove untracked clutter? Clean, but dry-run first. Push to main blocked? You’re probably dealing with branch protection; work through a branch and pull request.
+It is. git bisect helps you find the commit that introduced a bug by checking commits between a known good point and a known bad point. Start with git bisect start, mark the current broken commit with git bisect bad, then mark a working commit with git bisect good followed by a tag, SHA, or branch name.
 
 [JAMIE]
-And if the terminal starts sounding cryptic, use git status, read the repository rules, and ask Copilot to explain the output—not to replace your judgment, but to support it.
+Then Git checks out a commit in the middle and asks, does the bug happen here?
 
 [ALEX]
-Well said. One last note: this appendix points back to earlier material on how Git works and to the Pro Git book and GitHub Docs as authoritative sources. That matters because advanced Git is easiest to learn when you keep connecting commands back to Git’s model of commits, branches, HEAD, and history.
+Exactly. You test, then run git bisect bad if the bug is present, or git bisect good if it is not. Git keeps narrowing the range until it identifies the likely commit. When you're done, git bisect reset returns you to your original branch.
 
 [JAMIE]
-So the commands stop feeling random once you understand what they’re moving: pointers, snapshots, and recorded history.
+And if there is a test script, Git can run the checks for me?
 
 [ALEX]
-Exactly. That’s the real upgrade from basic Git to confident Git.
+Yes. git bisect run ./test-script.sh lets Git run the script at each step, using the exit code to decide good or bad. This is a strong match for Bonus Challenge E because you are using commit history as evidence. Tags, SHAs, branch names, and commit messages all become signposts.
+
+[JAMIE]
+That's a nice shift. History is not just an archive. It's a tool for finding when behavior changed.
 
 [PAUSE]
 
 [ALEX]
-Thanks for learning with us.
+git clean removes untracked files, which means files Git is not currently tracking.
 
 [JAMIE]
-See you next time.
+That sounds useful for build leftovers, but also a little terrifying.
+
+[ALEX]
+It should make you cautious. Always dry-run first with git clean -n, or git clean -dn if you want to include directories in the preview. That shows what would be deleted without deleting it.
+
+[JAMIE]
+Then the flags decide how aggressive it gets.
+
+[ALEX]
+Right. -n means dry run. -f means actually remove files. -d includes untracked directories. -x also removes ignored files, including things matched by .gitignore, so be very careful with it. If you want confirmation item by item, use git clean -i for interactive mode.
+
+[PAUSE]
+
+[JAMIE]
+Sometimes the problem is not my command. It's that GitHub blocks the push or the merge.
+
+[ALEX]
+That's often branch protection doing its job. A protected branch may block direct pushes to main, require reviews, require status checks from CI, require the branch to be up to date, or limit who can push. It can feel like a wall, but it's usually there to keep the project stable.
+
+[JAMIE]
+So the correct flow is to work on a branch, not to fight main.
+
+[ALEX]
+Yes. Create a branch, make your changes, commit them, push your branch, open a pull request, wait for reviews and checks, then merge through the pull request when the rules are satisfied.
+
+[JAMIE]
+What if my pull request says the branch is out of date?
+
+[ALEX]
+You can update it in VS Code by fetching and merging or rebasing. In Git, one option is git merge main, which creates a merge commit. Another is git rebase main, which gives cleaner history but usually requires git push --force-with-lease afterward. GitHub CLI can also help with gh pr update-branch, and you can inspect protection settings on GitHub or through the GitHub API if you have access.
+
+[PAUSE]
+
+[JAMIE]
+Where does Copilot fit into all this without becoming a magic button?
+
+[ALEX]
+Use it as a translator and reviewer. It can explain confusing Git output, suggest a conflict resolution, help write clearer commit messages, compare reset versus revert for your situation, debug a failing bisect run, or explain a branch protection error. In the terminal, Copilot CLI can suggest a command from a plain language request, while Copilot Chat is better when you want to paste context and ask for an explanation.
+
+[JAMIE]
+But still read the command before running it, and don't paste secrets or private tokens into a chat.
+
+[ALEX]
+Absolutely. Before any destructive command, run git status, check your current branch, and consider making a backup branch. Dry-run when the command supports it. Prefer revert on shared history. If you get into trouble, git reflog can show where your branch and HEAD have recently been, which can help you recover a lost position.
+
+[JAMIE]
+So reflog is the emergency breadcrumb trail.
+
+[ALEX]
+That's a good way to say it. git reflog lists recent movements, and if you are certain about the target, you can recover by creating a branch at that SHA or resetting back to it. For deeper reading, the Pro Git book is the core reference behind this appendix.
+
+[JAMIE]
+Advanced Git is less about memorizing every command and more about slowing down enough to choose the safe one. Check where you are, make the smallest change that solves the problem, and leave yourself a way back.

@@ -1,23 +1,19 @@
 [
   {
     "speaker": "ALEX",
-    "text": "Welcome back. Today we\u2019re tying together two ideas that tell you a lot about a GitHub project: releases, which show versioned milestones, and insights, which show repository activity and patterns over time."
+    "text": "Welcome back. Today we're looking at two parts of GitHub that help you understand where a project has been and where your work may show up later: releases and repository Insights."
   },
   {
     "speaker": "JAMIE",
-    "text": "So one tells me what shipped, and the other helps me understand how the project is moving?"
+    "text": "I like that pairing, because releases feel very official, and Insights can feel a little mysterious. Both can answer the question, is this project active, and where do my contributions fit?"
   },
   {
     "speaker": "ALEX",
-    "text": "Exactly. And for contributors, especially newer contributors, that matters a lot. Releases help you answer, \u201cWhen does my merged work become part of an official version?\u201d Insights help you answer, \u201cIs this project active, who\u2019s contributing, and what kind of momentum does it have?\u201d"
+    "text": "Exactly. A release is about a versioned snapshot. Insights are about activity, participation, traffic, dependencies, and other signals that help you read the health of a repository."
   },
   {
     "speaker": "JAMIE",
-    "text": "And we\u2019re also keeping accessibility front and center here, right? Screen reader navigation, low-vision workflows, all of that?"
-  },
-  {
-    "speaker": "ALEX",
-    "text": "Yes. Not as an afterthought. It\u2019s part of the lesson."
+    "text": "So we're not just clicking around. We're learning how maintainers communicate progress, and how contributors can tell what is happening."
   },
   {
     "speaker": "PAUSE",
@@ -25,39 +21,23 @@
   },
   {
     "speaker": "ALEX",
-    "text": "Before we dive in, one administrative note: this appendix is paired with the broader discussion of open source culture, and the authoritative baseline for the releases material is GitHub\u2019s documentation about releases."
+    "text": "A release is a named snapshot of a repository at a specific point in history, packaged and published for users. In a software project, it usually has a version number, release notes, download links for packaged files if the project has them, and source code archives that GitHub creates automatically."
   },
   {
     "speaker": "JAMIE",
-    "text": "Good grounding. So let\u2019s start simple. What is a release?"
+    "text": "And for a documentation project, or a curriculum repo, a release might not include an app download at all. It might just mark a stable version of the material."
   },
   {
     "speaker": "ALEX",
-    "text": "A release is a named snapshot of a repository at a specific point in history, packaged and published for users. In practice, a release usually includes a version number like v2.1.0, release notes explaining what changed, maybe downloadable built assets like binaries, and source code archives that GitHub generates automatically."
+    "text": "Right. When your pull request gets merged, your change becomes part of the default branch. It does not automatically mean a release goes out that same minute. Your work is included in the next release when the maintainer decides to publish one."
   },
   {
     "speaker": "JAMIE",
-    "text": "And this isn\u2019t only for software, right?"
+    "text": "That timing can vary a lot, then. Some projects release every few days, some every few weeks, and some only when there is enough meaningful change."
   },
   {
     "speaker": "ALEX",
-    "text": "Right. In documentation-only projects or other non-software projects, releases can still mark stable checkpoints. Think of them as official version markers for a state of the work."
-  },
-  {
-    "speaker": "JAMIE",
-    "text": "I want to ask the learner question here. If my pull request gets merged today, does that mean users get it today?"
-  },
-  {
-    "speaker": "ALEX",
-    "text": "Not necessarily. When your PR is merged, your change becomes part of the code on the default branch. But it becomes part of the next published release only when a maintainer creates and publishes that release. Depending on the project, that might happen in days, weeks, or months."
-  },
-  {
-    "speaker": "JAMIE",
-    "text": "So merge does not automatically mean release."
-  },
-  {
-    "speaker": "ALEX",
-    "text": "Correct."
+    "text": "Yes. That pattern is called release cadence, which just means the project's usual rhythm for publishing versions."
   },
   {
     "speaker": "PAUSE",
@@ -65,55 +45,27 @@
   },
   {
     "speaker": "JAMIE",
-    "text": "Now I think this is where people get tangled up: branches, tags, and releases."
+    "text": "The part that used to confuse me was the difference between a branch, a tag, and a release. They all point at code, but not in the same way."
   },
   {
     "speaker": "ALEX",
-    "text": "Very common confusion. Here\u2019s the clean distinction. A branch is a movable pointer. It keeps advancing as new commits are added on that line of work. A tag is fixed. It points to one specific commit and does not move. A release is a GitHub-published object built on top of a tag, usually with release notes and sometimes downloadable assets."
+    "text": "A branch is a movable pointer. As commits are added to that line of work, the branch moves forward. A Git tag is a named pointer to one specific commit. Once you use it to mark version v2.1.0, it should keep pointing to that exact commit."
   },
   {
     "speaker": "JAMIE",
-    "text": "So branch moves, tag stays put, release is the polished publication around a tag."
+    "text": "So a tag is like saying, this commit is the one we mean when we say v2.1.0."
   },
   {
     "speaker": "ALEX",
-    "text": "Perfect summary. And the relationship matters: every release is backed by a tag. But not every tag has a release. A tag by itself can just be a marker in git history. And when you create a release on GitHub, GitHub can create the tag for you if it doesn\u2019t already exist."
+    "text": "Yes. There are two common kinds of tags. A lightweight tag is basically just the name pointing to the commit. An annotated tag stores extra metadata, such as the tagger, date, and a message, and it can be signed in some workflows."
   },
   {
     "speaker": "JAMIE",
-    "text": "That\u2019s helpful. It means if I see a release, I know there\u2019s a corresponding fixed point in history behind it."
+    "text": "And a GitHub Release sits on top of that tag."
   },
   {
     "speaker": "ALEX",
-    "text": "Yes. That stability is the whole point."
-  },
-  {
-    "speaker": "PAUSE",
-    "text": ""
-  },
-  {
-    "speaker": "JAMIE",
-    "text": "Okay, let\u2019s make this practical. How do I find releases on GitHub?"
-  },
-  {
-    "speaker": "ALEX",
-    "text": "From a repository home page, look for the Releases section in the right sidebar. It often shows the latest version. You can activate the release link there to open the latest release, or activate the releases count link to open the full releases list. And if needed, you can go directly to github dot com slash owner slash repo slash releases."
-  },
-  {
-    "speaker": "JAMIE",
-    "text": "What\u2019s the screen reader path?"
-  },
-  {
-    "speaker": "ALEX",
-    "text": "On the repository home page, use heading navigation, often H or a number command depending on your screen reader, to find the Releases heading in the right sidebar. Then tab to the latest release link and press Enter. Or tab to the link that says something like N releases and activate that to open the full list."
-  },
-  {
-    "speaker": "JAMIE",
-    "text": "And for low-vision users, that right sidebar can be tricky at high zoom."
-  },
-  {
-    "speaker": "ALEX",
-    "text": "Exactly. At higher zoom levels, the sidebar may collapse below the main content. So if you don\u2019t see Releases where you expect it, scroll further down the page. That\u2019s an important practical note."
+    "text": "Exactly. Every GitHub Release is backed by a tag. A tag without a release is still useful as a marker in Git history. When you create a release in GitHub, GitHub can create the tag for you if it does not already exist."
   },
   {
     "speaker": "PAUSE",
@@ -121,51 +73,35 @@
   },
   {
     "speaker": "JAMIE",
-    "text": "What do I find on the releases list page?"
+    "text": "Let's talk about finding releases, because GitHub pages can have a lot going on."
   },
   {
     "speaker": "ALEX",
-    "text": "Each release appears like its own section. You\u2019ll usually encounter the release title, often the version number, a badge like Latest or Pre-release, the publication date, the tag name, the release notes body, any downloadable assets that were attached, and source code archives in zip and tar dot gz formats that GitHub provides automatically."
+    "text": "From a repository home page, the Releases area is usually in the right sidebar. It may show the latest version and a link to the full releases page. You can also go directly to github.com/owner/repo/releases if you know the owner and repository name."
   },
   {
     "speaker": "JAMIE",
-    "text": "So even if a maintainer doesn\u2019t upload custom files, GitHub still gives source archives."
+    "text": "At high zoom, that right sidebar may not feel like a sidebar anymore. It can move below the main content, so scrolling down is worth trying."
   },
   {
     "speaker": "ALEX",
-    "text": "Right. Those are always there."
+    "text": "For screen reader navigation, start on the repository home page and use heading navigation to find the Releases heading. Some people use H, or jump by heading level if their screen reader supports that. Then Tab or use link navigation to reach the version link or the link that says how many releases exist."
   },
   {
     "speaker": "JAMIE",
-    "text": "And how should someone navigate that page with a screen reader?"
+    "text": "Once you're on the releases list, each release behaves like its own section. Headings are your friend there."
   },
   {
     "speaker": "ALEX",
-    "text": "Use heading navigation to jump between release titles. Use link navigation for download assets, compare links, and tag links. Then use arrow reading to move through the release notes themselves."
+    "text": "Yes. A release entry usually has a title, often the version number, a badge such as Latest or Pre-release, a publication date, the tag name, the release notes, and asset downloads if the project attached any. GitHub also provides source code downloads as zip and tar.gz archives."
   },
   {
     "speaker": "JAMIE",
-    "text": "What should someone listen for to identify the most current stable version?"
+    "text": "The badge language is helpful. Latest usually means the newest stable release, while Pre-release tells you it may be an alpha, beta, or release candidate."
   },
   {
     "speaker": "ALEX",
-    "text": "The Latest badge. That badge marks the most recent stable release. That\u2019s distinct from a pre-release, which is intentionally not presented as the stable current version."
-  },
-  {
-    "speaker": "JAMIE",
-    "text": "And for low-vision users?"
-  },
-  {
-    "speaker": "ALEX",
-    "text": "Release notes often use Markdown headings like Breaking Changes, New Features, Bug Fixes, and Dependencies. At higher zoom, those headings become excellent landmarks for quickly scanning what matters. Also, the Latest badge can be visually small, so zooming to around 150 percent or more may help make it easier to spot."
-  },
-  {
-    "speaker": "JAMIE",
-    "text": "And for sighted mouse users, I guess the main visual cue is a series of release cards with title, date, tag, and badge."
-  },
-  {
-    "speaker": "ALEX",
-    "text": "Yes, plus the Full Changelog link often near the bottom of a release note."
+    "text": "And if you are scanning links, listen for asset names, compare links, tag links, and source code archive links. If there are compiled binaries, installers, or other packaged files, they usually appear in the assets area."
   },
   {
     "speaker": "PAUSE",
@@ -173,51 +109,35 @@
   },
   {
     "speaker": "JAMIE",
-    "text": "Let\u2019s talk version numbers, because learners see things like v2.1.3 and may not know what story that tells."
+    "text": "Version numbers look simple until you have to decide what they mean. What is semantic versioning?"
   },
   {
     "speaker": "ALEX",
-    "text": "Many projects follow Semantic Versioning, often called semver. The pattern is major, minor, patch."
+    "text": "Semantic versioning, often shortened to semver, uses three numbers: major, minor, and patch. You will usually see it written as something like v2.1.3. The first number is major, the second is minor, and the third is patch."
   },
   {
     "speaker": "JAMIE",
-    "text": "Meaning?"
+    "text": "So v2.0.0, v2.1.0, and v2.1.3 are telling different stories."
   },
   {
     "speaker": "ALEX",
-    "text": "Major changes indicate breaking changes. Something changed in a way that may require users to update their code or workflow. Minor changes add new features in a backward-compatible way. Patch changes fix bugs without changing the expected interface in a breaking way."
+    "text": "v2.0.0 usually signals a major release, where breaking changes are possible. v2.1.0 usually means new features were added without breaking existing use. v2.1.3 usually means patch-level fixes, such as bugs fixed after v2.1.0."
   },
   {
     "speaker": "JAMIE",
-    "text": "So if I see v2.0.0, I should be alert for bigger changes. If I see v2.1.0, likely new features. If I see v2.1.3, probably bug-fix progression since v2.1.0."
+    "text": "When should a maintainer bump each number?"
   },
   {
     "speaker": "ALEX",
-    "text": "Exactly."
+    "text": "Bump major when existing users may have to change how they use the project. Bump minor when you add backward-compatible features. Bump patch when you fix something without changing the public behavior in a breaking way."
   },
   {
     "speaker": "JAMIE",
-    "text": "And then there are those suffixes: alpha, beta, release candidate."
+    "text": "And then there are suffixes like alpha, beta, and rc."
   },
   {
     "speaker": "ALEX",
-    "text": "Yes. They\u2019re not the core semver triplet, but they\u2019re very common. Alpha usually means early preview and potentially unstable. Beta often means feature complete enough to test but not final. RC, or release candidate, means nearly final unless significant issues are found."
-  },
-  {
-    "speaker": "JAMIE",
-    "text": "I want to connect this back to contribution. What\u2019s the journey from my PR to a version number?"
-  },
-  {
-    "speaker": "ALEX",
-    "text": "Think of it as a pipeline. PR opened, PR reviewed, PR merged, default branch updated. Then at some later point the next release is prepared. A tag gets created, the release is published, and now your contribution is part of that version, maybe something like v2.1.1."
-  },
-  {
-    "speaker": "JAMIE",
-    "text": "That\u2019s emotionally useful, honestly. It explains why a contributor may see their code merged but not yet announced in a release."
-  },
-  {
-    "speaker": "ALEX",
-    "text": "Exactly right."
+    "text": "Right. v2.1.0-alpha.1 is an early preview. v2.1.0-beta.2 means the feature set is closer but still being tested. v2.1.0-rc.1 means release candidate, which is nearly final unless testing finds a problem."
   },
   {
     "speaker": "PAUSE",
@@ -225,43 +145,27 @@
   },
   {
     "speaker": "JAMIE",
-    "text": "Now let\u2019s read release notes like grown-ups."
+    "text": "Release notes are where the version number becomes readable. What should I listen for when I open them?"
   },
   {
     "speaker": "ALEX",
-    "text": "A noble goal."
+    "text": "Good release notes group changes into categories. You might hear Breaking Changes, New Features, Bug Fixes, and Dependencies. A note might say a preferences file format changed, a new command was added, keyboard navigation was fixed, or a dependency was updated."
   },
   {
     "speaker": "JAMIE",
-    "text": "What makes release notes good release notes?"
+    "text": "That is much easier than one giant paragraph of commit messages."
   },
   {
     "speaker": "ALEX",
-    "text": "They explain what changed in a way users and contributors can scan. High-quality notes usually categorize changes. Common categories include Breaking Changes, New Features, Bug Fixes, and Dependencies."
+    "text": "Definitely. Many release notes also include issue or pull request numbers and usernames. For example, a bug fix might reference number 51 and credit the contributor who opened or merged it."
   },
   {
     "speaker": "JAMIE",
-    "text": "Can you give an example shape?"
+    "text": "And the Full Changelog link is where a contributor can go looking for their own merged pull request."
   },
   {
     "speaker": "ALEX",
-    "text": "Sure. You might have a heading like \u201cWhat\u2019s new in v2.1.0,\u201d then a Breaking Changes section noting that a file format changed and linking to migration guidance. Then New Features listing commands or capabilities added, often with pull request numbers and contributor usernames. Then Bug Fixes, which helps users see what problems were solved. Then Dependencies, showing upgraded packages or tools."
-  },
-  {
-    "speaker": "JAMIE",
-    "text": "And then the Full Changelog link."
-  },
-  {
-    "speaker": "ALEX",
-    "text": "Yes. That link is especially important. It usually points to a compare view between two tags. That compare view shows all merged PRs between those versions. It\u2019s often where a contributor can find their PR listed and see their username credited."
-  },
-  {
-    "speaker": "JAMIE",
-    "text": "So if I want to know whether my work made it into a release, the release notes might mention it directly, and the compare view gives me the complete list."
-  },
-  {
-    "speaker": "ALEX",
-    "text": "Exactly."
+    "text": "Yes. That link usually opens a comparison between two tags, such as v2.0.0 to v2.1.0. It shows the merged pull requests and commits between those versions, so you can confirm whether your work is part of that release window."
   },
   {
     "speaker": "PAUSE",
@@ -269,35 +173,51 @@
   },
   {
     "speaker": "JAMIE",
-    "text": "Let\u2019s switch perspective for a minute. Suppose I become a maintainer. How do I create a release in the GitHub web interface?"
+    "text": "What changes when you're the maintainer, or you're helping prepare a release?"
   },
   {
     "speaker": "ALEX",
-    "text": "You can go to the new release page directly at the repository releases path ending in slash new. Then you choose a tag. That can be a new version tag like v2.1.0, which GitHub can create when you publish, or you can select an existing tag. You choose the target branch, usually main. You enter a release title, often the same as the tag. You write release notes manually or use GitHub\u2019s Generate release notes feature. Optionally attach assets. Mark it as a pre-release if appropriate. Save as draft if you\u2019re not ready to publish. Then publish the release."
+    "text": "Then you may create the release yourself. In GitHub, you can go to github.com/owner/repo/releases/new. The form asks for a tag, a target branch, a release title, release notes, optional assets, and choices about draft or pre-release status."
   },
   {
     "speaker": "JAMIE",
-    "text": "So the key fields are tag, target branch, title, notes, assets, and state toggles."
+    "text": "If the tag does not exist yet, GitHub can create it when the release is published, right?"
   },
   {
     "speaker": "ALEX",
-    "text": "Yes. And for maintainers using assistive technology, the form order matters."
+    "text": "Yes. You type a new version tag, such as v2.1.0, or choose an existing tag. The target branch is usually main, because that is the branch you want the version to mark. The title is often the same as the tag."
   },
   {
     "speaker": "JAMIE",
-    "text": "Say more."
+    "text": "And the notes can be written by hand, or GitHub can generate release notes from merged pull requests since the last release."
   },
   {
     "speaker": "ALEX",
-    "text": "For screen reader users, the release creation page contains multiple form controls, often including a tag selector or combobox, a target branch control, a title input, the release notes text area, asset upload area, and the draft and pre-release toggles. Tabbing through in order is usually the most reliable approach. Because it\u2019s a complex form, moving steadily field by field helps reduce disorientation."
+    "text": "Exactly. Auto-generated notes are a useful starting point, especially when pull request titles are clear. You can also attach assets such as binaries, installers, PDFs, or any packaged files users need to download."
   },
   {
     "speaker": "JAMIE",
-    "text": "And the practical accessibility point is not just \u201cit exists,\u201d but \u201cexpect a long form and navigate it deliberately.\u201d"
+    "text": "Draft and pre-release sound similar, but they are not the same thing."
   },
   {
     "speaker": "ALEX",
-    "text": "Exactly."
+    "text": "A draft release is saved but not published to users yet. A pre-release is published, but marked as not final, which is useful for alpha, beta, or release candidate versions. You can have a draft that later becomes a stable release, or a draft that later becomes a pre-release."
+  },
+  {
+    "speaker": "JAMIE",
+    "text": "The appendix also mentions Accessibility Agents for release notes. How should learners treat that?"
+  },
+  {
+    "speaker": "ALEX",
+    "text": "The Accessibility Agents collection is a living catalog, so available commands may grow or change over time. If your environment includes the /draft-release agent, it can help prepare structured release notes from merged pull requests. It does not replace maintainer judgment, but it can save time and improve consistency."
+  },
+  {
+    "speaker": "JAMIE",
+    "text": "What would that output usually include?"
+  },
+  {
+    "speaker": "ALEX",
+    "text": "It can group changes under headings like New Features, Bug Fixes, and Dependencies, and include pull request numbers or contributor names when available. A maintainer should still review it for accuracy, remove noise, and call out breaking changes clearly."
   },
   {
     "speaker": "PAUSE",
@@ -305,35 +225,35 @@
   },
   {
     "speaker": "JAMIE",
-    "text": "The source also mentioned accessibility agents for release notes."
+    "text": "Now let's move from releases to Insights. What is the Insights tab actually for?"
   },
   {
     "speaker": "ALEX",
-    "text": "Yes. A command like slash draft-release can generate structured release notes from merged pull requests. The benefit is speed and consistency. Instead of manually combing through merged work, the tool can draft a categorized summary for you."
+    "text": "Insights is GitHub's area for repository activity and health signals. It can show recent activity, contributors, traffic, commits over time, code frequency, dependency information, forks, network activity, and community standards."
   },
   {
     "speaker": "JAMIE",
-    "text": "What kind of output are we talking about?"
+    "text": "Can everyone see all of that?"
   },
   {
     "speaker": "ALEX",
-    "text": "Typically a title for the upcoming version, then sections like New Features, Bug Fixes, and Dependencies, with entries derived from merged PRs and other changes since the last release."
+    "text": "Not always. On public repositories, many activity views are visible to anyone, but some areas, especially traffic or security-related information, may require maintainer or collaborator access. On private repositories, visibility depends on your access to that repository."
   },
   {
     "speaker": "JAMIE",
-    "text": "So a maintainer still reviews it, but it gives them a strong starting point."
+    "text": "And Insights does not show everything people might imagine."
   },
   {
     "speaker": "ALEX",
-    "text": "Yes. Think \u201cassist,\u201d not \u201cpublish blindly.\u201d"
+    "text": "Correct. It is not a private analytics dashboard for individual visitors. It does not tell you every person who viewed a page. It gives aggregated repository signals, and some of those signals are limited to recent time windows."
   },
   {
     "speaker": "JAMIE",
-    "text": "And if there\u2019s an example version like v2.1.0, the generated output would likely group the notable changes under those category headings."
+    "text": "How do you get there?"
   },
   {
     "speaker": "ALEX",
-    "text": "Correct. That structure also improves readability for users consuming the notes with screen readers, magnification, or quick visual scanning."
+    "text": "Open the repository and find the top navigation bar with tabs like Code, Issues, Pull requests, Actions, and Insights. Activate Insights, then use the Insights sub-navigation to choose Pulse, Contributors, Traffic, Commits, Code frequency, Dependency graph, Network, Forks, or Community standards when those pages are available."
   },
   {
     "speaker": "PAUSE",
@@ -341,59 +261,27 @@
   },
   {
     "speaker": "JAMIE",
-    "text": "We should also cover draft and pre-release states, because those badges change how people interpret a release."
+    "text": "Pulse is a good first stop because the name is pretty literal. It tells you whether the project has a pulse."
   },
   {
     "speaker": "ALEX",
-    "text": "Absolutely. A draft release is not publicly finalized. It lets maintainers prepare the version, edit notes, and attach assets before publishing. A pre-release is published, but it is explicitly marked as an early or not-yet-stable version, often for alpha, beta, or release candidate testing."
+    "text": "Pulse summarizes recent activity over a selected period. You may find recently opened and closed issues, merged pull requests, open pull requests, commits, releases, and other activity counts."
   },
   {
     "speaker": "JAMIE",
-    "text": "So draft means private preparation stage, pre-release means publicly visible but not the stable recommendation."
+    "text": "As a contributor, I would use that to ask, is anyone reviewing things, merging things, and responding to issues?"
   },
   {
     "speaker": "ALEX",
-    "text": "That\u2019s the distinction. And as a learner or contributor, if you see pre-release, interpret it as test-oriented or not fully final. If you\u2019re guiding others, don\u2019t confuse the Latest stable badge with the existence of a newer pre-release."
-  },
-  {
-    "speaker": "PAUSE",
-    "text": ""
-  },
-  {
-    "speaker": "ALEX",
-    "text": "Now let\u2019s pivot to repository insights."
+    "text": "Exactly. A project with recent merges and issue activity may be easier to engage with. A quiet project is not necessarily bad, but it changes your expectations. You might write a more patient contribution plan, or check whether maintainers have posted guidance."
   },
   {
     "speaker": "JAMIE",
-    "text": "This is the part that can feel mysterious. What exactly is the Insights tab?"
+    "text": "Charts and graphs can be awkward with audio output. What is a practical way to read them?"
   },
   {
     "speaker": "ALEX",
-    "text": "It\u2019s a set of repository analytics and summary views that help you understand activity: recent work, contribution patterns, traffic, dependency relationships, community documentation, and more."
-  },
-  {
-    "speaker": "JAMIE",
-    "text": "Who can see it?"
-  },
-  {
-    "speaker": "ALEX",
-    "text": "That can vary by repository visibility, permissions, and specific insight type. In many public repositories, at least some insights are visible broadly. In private repositories, access is often more restricted to people with repository permissions."
-  },
-  {
-    "speaker": "JAMIE",
-    "text": "And what does Insights not show?"
-  },
-  {
-    "speaker": "ALEX",
-    "text": "It does not magically reveal everything about a project\u2019s quality or team dynamics. Metrics don\u2019t fully capture collaboration quality, accessibility quality, maintainer responsiveness, or whether contributors feel welcome. They\u2019re clues, not complete truth."
-  },
-  {
-    "speaker": "JAMIE",
-    "text": "That\u2019s such an important warning. Numbers can be useful without becoming the whole story."
-  },
-  {
-    "speaker": "ALEX",
-    "text": "Exactly."
+    "text": "Use headings, tables, lists, and nearby text before trying to interpret the visual shape. Many GitHub Insights pages have accessible labels or data summaries, but not every chart gives the same experience. If the graph is hard to understand, look for counts, dates, contributor names, and links around it."
   },
   {
     "speaker": "PAUSE",
@@ -401,27 +289,35 @@
   },
   {
     "speaker": "JAMIE",
-    "text": "How do I get to Insights?"
+    "text": "The Contributors view answers a different question: who builds this project?"
   },
   {
     "speaker": "ALEX",
-    "text": "Usually from the repository tab bar. Activate the Insights tab if it\u2019s present. Once there, you\u2019ll often encounter a secondary navigation for specific views such as Pulse, Contributors, Traffic, Dependency Graph, Network, Forks, and Community Standards."
+    "text": "Yes. It shows contributor activity, often with a graph and a table or list of contributors. You may hear names, commit counts, and activity over time. The table or list is usually more useful than the chart if you're relying on speech output."
   },
   {
     "speaker": "JAMIE",
-    "text": "What\u2019s the screen reader strategy?"
+    "text": "For a new contributor, why does that matter?"
   },
   {
     "speaker": "ALEX",
-    "text": "First locate the main repository tab bar and activate Insights. Then look for the sub-navigation within the Insights area. That secondary nav is important because Insights is not one page but a family of views."
+    "text": "It helps you understand whether the project has one main maintainer, a small active group, or a broad community. If one person does most of the work, be thoughtful about review time. If many people contribute, look for patterns in how pull requests are labeled, reviewed, and merged."
   },
   {
     "speaker": "JAMIE",
-    "text": "So don\u2019t assume landing on Insights means you\u2019ve seen all of it."
+    "text": "Traffic sounds more like a maintainer feature."
   },
   {
     "speaker": "ALEX",
-    "text": "Precisely."
+    "text": "It often is. Traffic can show clones, views, unique cloners, unique visitors, referring sites, and popular content, depending on your permissions and the repository. It helps maintainers understand how people find and use the project."
+  },
+  {
+    "speaker": "JAMIE",
+    "text": "But it is not a popularity contest."
+  },
+  {
+    "speaker": "ALEX",
+    "text": "Right. A sudden increase in views might mean a blog post linked to the repo, a release got attention, or users are looking for installation help. Referring sites can tell maintainers where people are coming from, and popular paths can show which docs or files need extra care."
   },
   {
     "speaker": "PAUSE",
@@ -429,35 +325,35 @@
   },
   {
     "speaker": "JAMIE",
-    "text": "Let\u2019s start with Pulse."
+    "text": "There are several other Insights pages that sound technical but are useful once you know what question they answer."
   },
   {
     "speaker": "ALEX",
-    "text": "Pulse is a recent activity summary. It gives a quick overview of what\u2019s happened in the repository over a recent window of time, often including merged pull requests, open issues, closed issues, and general momentum."
+    "text": "Commits shows commit activity over time, and Code frequency shows lines added and removed across the repository's history. Big spikes can reflect a migration, generated files, a cleanup, or a major feature. They are clues, not automatic proof of quality."
   },
   {
     "speaker": "JAMIE",
-    "text": "Why does that matter to a contributor?"
+    "text": "The Dependency graph is the one I connect with security work."
   },
   {
     "speaker": "ALEX",
-    "text": "Because it answers practical questions. Is this project actively merging work? Are issues being closed? Does the repository look maintained? If the Pulse view shows recent activity, that can be encouraging. If activity is sparse, that may shape your expectations about review timing."
+    "text": "Yes. The Dependency graph shows the packages or libraries a project depends on, when GitHub can detect them. Dependabot can use that information to alert maintainers about vulnerable dependencies and, when configured, open pull requests to update them."
   },
   {
     "speaker": "JAMIE",
-    "text": "And navigation?"
+    "text": "Network and Forks are about copies and relationships between repositories."
   },
   {
     "speaker": "ALEX",
-    "text": "For screen reader users, after opening Pulse, use headings and lists to move through activity summaries. Read the recent counts and then drill into linked issues or PRs if needed. The aim is to understand the rhythm, not necessarily inspect every item in one pass."
+    "text": "The Forks page shows who has forked the project. The Network view can help you see branch and fork relationships, especially when work has happened outside the main repository. For contributors, it can reveal whether a project has active downstream experimentation."
   },
   {
     "speaker": "JAMIE",
-    "text": "So Pulse is like the repository heartbeat."
+    "text": "Community standards feels less like analytics and more like a readiness checklist."
   },
   {
     "speaker": "ALEX",
-    "text": "That\u2019s a nice way to put it."
+    "text": "That is a fair reading. It looks for files and practices such as a README, license, contributing guide, code of conduct, issue templates, and security policy. If those are present and clear, a new contributor has a better chance of understanding how to participate."
   },
   {
     "speaker": "PAUSE",
@@ -465,290 +361,26 @@
   },
   {
     "speaker": "JAMIE",
-    "text": "Next up: Contributors."
+    "text": "So if I am assessing a project, I should not rely on one number or one graph."
   },
   {
     "speaker": "ALEX",
-    "text": "The Contributors view shows who has been contributing to the project, often with counts or graphical summaries over time."
+    "text": "Exactly. Read the latest release to see what has shipped. Check release notes to understand the kind of work being published. Use Pulse and Contributors to see whether people are active, then use Traffic, Dependencies, Network, Forks, and Community standards when you need a fuller picture."
   },
   {
     "speaker": "JAMIE",
-    "text": "Why does this matter to a new contributor?"
+    "text": "And if I am looking for my own contribution, I trace it from pull request, to merge, to the default branch, to a tag, to a release, and maybe to the comparison link between releases."
   },
   {
     "speaker": "ALEX",
-    "text": "Several reasons. It helps you see whether one person does nearly everything or whether the project has a broader contributor base. It can suggest whether the project is healthy, collaborative, or bottlenecked. It may also help you identify maintainers or regular contributors whose names you\u2019ll recognize in issues and pull requests."
+    "text": "Yes. That path turns a merged pull request into a published version you can point to. It is also a good reminder that open source work continues after the merge button. Packaging, notes, versions, downloads, and project health signals all help users trust the work."
   },
   {
     "speaker": "JAMIE",
-    "text": "The source emphasized table accessibility here."
+    "text": "That makes releases and Insights feel less like extra tabs and more like part of the collaboration story."
   },
   {
     "speaker": "ALEX",
-    "text": "Yes. When contributor data is presented in table form, that\u2019s good news for accessibility because tables can often be navigated cell by cell or row by row by screen readers more reliably than purely visual charts. If there is a chart, it may still require interpretation support, but tabular data is usually more accessible."
-  },
-  {
-    "speaker": "JAMIE",
-    "text": "And what\u2019s the screen reader advice?"
-  },
-  {
-    "speaker": "ALEX",
-    "text": "Use table navigation when available. If the view includes headings plus contributor names and commit counts, move systematically. Listen for patterns rather than trying to memorize every row. You\u2019re trying to understand who builds the project and at what scale."
-  },
-  {
-    "speaker": "PAUSE",
-    "text": ""
-  },
-  {
-    "speaker": "JAMIE",
-    "text": "Traffic sounds more external-facing."
-  },
-  {
-    "speaker": "ALEX",
-    "text": "It is. Traffic shows who visits the repository and how people discover or use it, often including metrics such as views, visitors, clones, and referrers, depending on what GitHub exposes."
-  },
-  {
-    "speaker": "JAMIE",
-    "text": "Why should a contributor care?"
-  },
-  {
-    "speaker": "ALEX",
-    "text": "Because it helps contextualize impact. A project with substantial traffic may have many users relying on it. A project with modest traffic may still be important, but the audience shape is different. Traffic can also help maintainers understand documentation needs, onboarding priorities, and visibility."
-  },
-  {
-    "speaker": "JAMIE",
-    "text": "Any caution here?"
-  },
-  {
-    "speaker": "ALEX",
-    "text": "Yes. Traffic is interesting, but it is not a direct measure of project quality or community health. Also, some traffic views are more limited in who can access them."
-  },
-  {
-    "speaker": "PAUSE",
-    "text": ""
-  },
-  {
-    "speaker": "JAMIE",
-    "text": "What about commits and code frequency?"
-  },
-  {
-    "speaker": "ALEX",
-    "text": "Those views show development activity over time. Commit histories can suggest cadence. Code frequency visualizations may show additions and deletions over time. Together, they can hint at whether development is steady, bursty, or quiet."
-  },
-  {
-    "speaker": "JAMIE",
-    "text": "But charts can be hard for screen reader users."
-  },
-  {
-    "speaker": "ALEX",
-    "text": "Absolutely. This is where general strategy matters. If a chart is not accessible in a rich textual way, look for summaries, axes labels, adjacent tables, or alternate views that communicate the same information. Don\u2019t assume the graph alone is the only source of truth."
-  },
-  {
-    "speaker": "JAMIE",
-    "text": "So for inaccessible graphs, we fall back to nearby text, commit lists, release cadence, Pulse, and contributor summaries."
-  },
-  {
-    "speaker": "ALEX",
-    "text": "Exactly. Build an evidence picture from multiple accessible clues."
-  },
-  {
-    "speaker": "PAUSE",
-    "text": ""
-  },
-  {
-    "speaker": "JAMIE",
-    "text": "Dependency graph."
-  },
-  {
-    "speaker": "ALEX",
-    "text": "The dependency graph shows relationships between the repository and the packages it depends on, and often packages that depend on it, depending on the project setup and GitHub features enabled."
-  },
-  {
-    "speaker": "JAMIE",
-    "text": "Why does this matter?"
-  },
-  {
-    "speaker": "ALEX",
-    "text": "It can reveal security and maintenance implications. Dependencies are part of a project\u2019s supply chain. Seeing them helps maintainers and contributors understand what external components matter and where updates may be needed."
-  },
-  {
-    "speaker": "JAMIE",
-    "text": "And there was a note about enabling or viewing."
-  },
-  {
-    "speaker": "ALEX",
-    "text": "Yes. In some repositories, dependency graph features may need to be enabled or may only appear when GitHub can detect supported dependency manifests. So if you don\u2019t see it, that doesn\u2019t always mean the project has no dependencies."
-  },
-  {
-    "speaker": "PAUSE",
-    "text": ""
-  },
-  {
-    "speaker": "JAMIE",
-    "text": "Network and forks feel related but not identical."
-  },
-  {
-    "speaker": "ALEX",
-    "text": "Right. Network helps visualize the relationship among branches and forks over time. Forks indicate how many copies of the repository people have created under their own accounts or organizations."
-  },
-  {
-    "speaker": "JAMIE",
-    "text": "Why should a learner care?"
-  },
-  {
-    "speaker": "ALEX",
-    "text": "Fork counts can suggest interest and reuse, though again not perfect quality. Network views can help you understand branching and divergence patterns, especially in active open source ecosystems. But visually dense network graphs may be challenging for assistive tech users, so use them carefully and rely on supplementary information where possible."
-  },
-  {
-    "speaker": "PAUSE",
-    "text": ""
-  },
-  {
-    "speaker": "JAMIE",
-    "text": "Community Standards sounds less numeric and more policy-oriented."
-  },
-  {
-    "speaker": "ALEX",
-    "text": "Exactly. Community Standards surfaces whether the repository has key project health files and practices, like a README, contributing guidelines, code of conduct, issue templates, pull request templates, and often a license."
-  },
-  {
-    "speaker": "JAMIE",
-    "text": "That seems incredibly useful for a new contributor."
-  },
-  {
-    "speaker": "ALEX",
-    "text": "It is. It tells you whether the project has documented how people should contribute and interact. Strong community standards usually reduce ambiguity and make contribution more approachable."
-  },
-  {
-    "speaker": "JAMIE",
-    "text": "Screen reader advice?"
-  },
-  {
-    "speaker": "ALEX",
-    "text": "Treat it like a checklist view. Move item by item. Listen for which standards are present and which are missing. If contributing guidelines are available, open them before making your first contribution."
-  },
-  {
-    "speaker": "PAUSE",
-    "text": ""
-  },
-  {
-    "speaker": "JAMIE",
-    "text": "We should gather the screen reader navigation reference into one practical bundle."
-  },
-  {
-    "speaker": "ALEX",
-    "text": "Good idea. For releases pages, start on the repository home page and locate the Releases area, often in the right sidebar. Use heading navigation to find it. Open either the latest release or the full releases list. On the releases list page, jump between release headings, navigate links for assets and compare views, and read notes linearly. On an individual release page, use the same strategy: heading first, then metadata like badge, date, and tag, then note sections, then assets and source links."
-  },
-  {
-    "speaker": "JAMIE",
-    "text": "And comparing two releases?"
-  },
-  {
-    "speaker": "ALEX",
-    "text": "The changelog or compare view between tags is where you inspect every merged pull request between versions. Navigate by headings and lists, and expect a denser page because it\u2019s more of a full comparison than a polished summary."
-  },
-  {
-    "speaker": "JAMIE",
-    "text": "Now the Insights side."
-  },
-  {
-    "speaker": "ALEX",
-    "text": "Within Insights, first identify the sub-navigation. That\u2019s essential. Then for charts and graphs in general, look for textual summaries, table forms, labels, and alternate linked views. For Pulse, use headings and linked items to assess recent activity quickly. For contributor and traffic views, prefer tables or summaries when available over trying to infer everything from a graph alone."
-  },
-  {
-    "speaker": "JAMIE",
-    "text": "That \u201cgeneral strategy\u201d point feels like one of the most useful accessibility lessons in the whole appendix."
-  },
-  {
-    "speaker": "ALEX",
-    "text": "I agree. Accessible navigation isn\u2019t just about keystrokes. It\u2019s also about deciding where the most reliable information is."
-  },
-  {
-    "speaker": "PAUSE",
-    "text": ""
-  },
-  {
-    "speaker": "JAMIE",
-    "text": "And finally, there were accessibility agents for personal and team metrics too."
-  },
-  {
-    "speaker": "ALEX",
-    "text": "Yes: slash my-stats and slash team-dashboard. The idea is to turn repository activity into summaries that are easier to consume than raw charts."
-  },
-  {
-    "speaker": "JAMIE",
-    "text": "What would slash my-stats be for?"
-  },
-  {
-    "speaker": "ALEX",
-    "text": "A personal contribution summary. Think of it as surfacing information like your pull requests, reviews, commits, or other activity in a more direct format that you can read without mining multiple GitHub views."
-  },
-  {
-    "speaker": "JAMIE",
-    "text": "And slash team-dashboard?"
-  },
-  {
-    "speaker": "ALEX",
-    "text": "That\u2019s a higher-level team summary. It can help maintainers or coordinators understand overall project activity, patterns, and participation without relying exclusively on graphical insight pages."
-  },
-  {
-    "speaker": "JAMIE",
-    "text": "So just like slash draft-release helps turn history into readable release notes, these commands help turn activity data into readable status summaries."
-  },
-  {
-    "speaker": "ALEX",
-    "text": "Exactly. They are accessibility-minded shortcuts to understanding."
-  },
-  {
-    "speaker": "PAUSE",
-    "text": ""
-  },
-  {
-    "speaker": "JAMIE",
-    "text": "Let me see if I can tie this together. A release is an official published snapshot built on a tag. A tag is fixed, a branch moves. Version numbers often follow semantic versioning, so they communicate the scale of change. Release notes tell the story of what changed, and the full changelog comparison shows every merged PR between versions."
-  },
-  {
-    "speaker": "ALEX",
-    "text": "Yes."
-  },
-  {
-    "speaker": "JAMIE",
-    "text": "Maintainers can create releases in the GitHub UI, save them as drafts, mark them as pre-releases, and use tools like slash draft-release to generate structured notes. Then on the repository side, Insights gives activity views like Pulse, Contributors, Traffic, commit and code frequency trends, dependency information, network and forks, and community standards."
-  },
-  {
-    "speaker": "ALEX",
-    "text": "Exactly right."
-  },
-  {
-    "speaker": "JAMIE",
-    "text": "And the accessibility throughline is: use headings, sub-navigation, tables, and text summaries intentionally; don\u2019t rely on charts alone; and use agent-generated summaries when they reduce friction."
-  },
-  {
-    "speaker": "ALEX",
-    "text": "That\u2019s the heart of it. Releases tell you where the project has been published. Insights help you understand how the project lives between releases."
-  },
-  {
-    "speaker": "JAMIE",
-    "text": "And as a contributor, both matter. One tells me when my work becomes part of a version users can point to. The other helps me understand the project\u2019s rhythm and health."
-  },
-  {
-    "speaker": "ALEX",
-    "text": "Beautifully put."
-  },
-  {
-    "speaker": "PAUSE",
-    "text": ""
-  },
-  {
-    "speaker": "ALEX",
-    "text": "If you want one practical next step after listening, open a repository you know, find its releases page, read the latest notes, activate the full changelog, then visit Insights and inspect Pulse and Community Standards. That one short workflow will make today\u2019s concepts concrete."
-  },
-  {
-    "speaker": "JAMIE",
-    "text": "And if you\u2019re using a screen reader or magnification, do it slowly enough to notice the navigation landmarks we discussed. That\u2019s part of the skill."
-  },
-  {
-    "speaker": "ALEX",
-    "text": "Exactly. We\u2019ll leave it there."
+    "text": "That's the takeaway. Tags mark exact commits, releases explain and package those moments, and Insights help you read the life of the repository around them."
   }
 ]

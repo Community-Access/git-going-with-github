@@ -24,7 +24,7 @@ function parseArgs(argv) {
     dryRun: false,
     dayBudgetUsd: Number.parseFloat(process.env.PODCAST_LLM_DAY_BUDGET_USD || '100'),
     runBudgetUsd: Number.parseFloat(process.env.PODCAST_LLM_RUN_BUDGET_USD || '50'),
-    modelAllowlist: String(process.env.PODCAST_LLM_MODEL_ALLOWLIST || 'openai/gpt-5.4,openai/gpt-5.4-mini,gpt-5.4,gpt-5.4-mini')
+    modelAllowlist: String(process.env.PODCAST_LLM_MODEL_ALLOWLIST || 'openai/gpt-5.4,openai/gpt-5.4-mini,openai/gpt-5.5,openai/gpt-5.5-pro,gpt-5.4,gpt-5.4-mini,gpt-5.5,gpt-5.5-pro')
       .split(',')
       .map(item => item.trim())
       .filter(Boolean),
