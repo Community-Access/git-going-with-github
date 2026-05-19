@@ -873,12 +873,13 @@ function convertMarkdownFile(mdPath, outputDir) {
     const relativePath = path.relative(process.cwd(), mdPath);
     let outputPath = path.join(outputDir, relativePath.replace(/\.md$/, '.html'));
     const isRootRegisterPage = path.basename(mdPath) === 'REGISTER.md' && path.dirname(relativePath) === '.';
+    const isSubfolderReadme = path.basename(mdPath) === 'README.md' && path.dirname(relativePath) !== '.';
 
     // ANNOUNCEMENT.md becomes the site front page (index.html)
     // README.md at the root becomes README.html (repo documentation)
     if (path.basename(mdPath) === 'ANNOUNCEMENT.md' && path.dirname(relativePath) === '.') {
       outputPath = path.join(outputDir, 'index.html');
-    } else if (path.basename(mdPath) === 'README.md' && path.dirname(relativePath) !== '.') {
+    } else if (isSubfolderReadme) {
       // Sub-folder READMEs still become index.html in their directory
       const dir = path.dirname(outputPath);
       outputPath = path.join(dir, 'index.html');
@@ -912,6 +913,14 @@ function convertMarkdownFile(mdPath, outputDir) {
     // Write HTML file
     writeGeneratedFile(outputPath, html);
     console.log(`✓ Converted: ${relativePath} → ${path.relative(process.cwd(), outputPath)}`);
+
+    // Subfolder READMEs render at /<dir>/index.html. Also write a /<dir>/README.html
+    // alias so explicit links to `<dir>/README.html` (a common, natural form) don't 404.
+    if (isSubfolderReadme) {
+      const readmeAlias = path.join(path.dirname(outputPath), 'README.html');
+      writeGeneratedFile(readmeAlias, html);
+      console.log(`✓ Alias: ${path.relative(process.cwd(), readmeAlias)}`);
+    }
 
     // Keep lowercase registration URLs working on case-sensitive hosts.
     if (isRootRegisterPage) {

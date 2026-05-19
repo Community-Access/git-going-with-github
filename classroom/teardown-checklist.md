@@ -16,7 +16,7 @@ Use this checklist after each workshop cohort completes the course.
 - [ ] Archive the classroom (Classroom Settings, Archive)
 - [ ] Close any remaining open issues across student Learning Room repositories (or leave them open if students want to continue practicing post-workshop)
 - [ ] Merge or close any abandoned student PRs with a kind comment
-- [ ] Update the [student roster](.github/data/student-roster.json) in the main repo if students should retain access for ongoing contribution
+- [ ] Update the [student roster](https://github.com/Community-Access/git-going-with-github/blob/main/.github/data/student-roster.json) in the main repo if students should retain access for ongoing contribution
 
 ## Clean up student repositories
 
@@ -31,7 +31,7 @@ GitHub Classroom creates one repository per student per assignment. After the co
 - [ ] Document any chapter sections that confused multiple students
 - [ ] Note any technical issues encountered (e.g., Copilot activation problems, clone failures)
 - [ ] File issues in the git-going-with-github repo for curriculum improvements
-- [ ] Update the [FACILITATOR.md](admin/FACILITATOR.md) with any new troubleshooting tips
+- [ ] Update the [FACILITATOR.md](../admin/FACILITATOR_GUIDE.md) with any new troubleshooting tips
 
 ## Prepare for next cohort
 

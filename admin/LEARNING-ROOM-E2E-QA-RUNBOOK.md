@@ -40,7 +40,7 @@ Out of scope:
 | Registration entry page | [REGISTER.md](../REGISTER.md) |
 | Registration automation admin | [REGISTRATION-ADMIN.md](REGISTRATION-ADMIN.md) |
 | Registration automation quickstart | [REGISTRATION-QUICKSTART.md](REGISTRATION-QUICKSTART.md) |
-| Registration workflow logic | [.github/workflows/registration.yml](../.github/workflows/registration.yml) |
+| Registration workflow logic | [.github/workflows/registration.yml](https://github.com/Community-Access/git-going-with-github/blob/main/.github/workflows/registration.yml) |
 | Classroom deployment | [classroom/README.md](../classroom/README.md) |
 | Assignment copy and autograding setup | [admin/classroom/README.md](classroom/README.md) |
 | Human challenge walkthrough | [classroom/HUMAN_TEST_MATRIX.md](../classroom/HUMAN_TEST_MATRIX.md) |
@@ -542,7 +542,7 @@ Pass criteria:
 2. Confirm workflow marks the issue duplicate and closes it with guidance to the original issue.
 3. For waitlist behavior, use a controlled test strategy:
    - Preferred: run in a staging copy where capacity can be reached safely.
-   - Alternative: dry-run logic review from [.github/workflows/registration.yml](../.github/workflows/registration.yml) and verify conditions with maintainers.
+   - Alternative: dry-run logic review from [.github/workflows/registration.yml](https://github.com/Community-Access/git-going-with-github/blob/main/.github/workflows/registration.yml) and verify conditions with maintainers.
 4. Confirm waitlist message and `waitlist` label behavior in the chosen test environment.
 
 Pass criteria:
@@ -680,7 +680,7 @@ Note: a classroom already exists for this repository (`GIT Going with Github`, c
 1. Go to [classroom.github.com](https://classroom.github.com) as `accesswatch`.
 2. Select **New classroom** and choose `Community-Access-Classroom` as the organization.
 3. Name it `Git Going - [Cohort Name] - [Month Year]` (for example, `Git Going - May 2026`).
-4. Import roster from [classroom/roster-template.csv](../classroom/roster-template.csv) on the Roster tab.
+4. Import roster from [classroom/roster-template.csv](https://github.com/Community-Access/git-going-with-github/blob/main/classroom/roster-template.csv) on the Roster tab.
 5. Add `accesswatch-student` to the roster as the test student.
 
 **To verify the existing classroom is accessible:**
@@ -890,7 +890,7 @@ Core chapters:
 - [ ] [docs/18-fork-and-contribute.md](../docs/18-fork-and-contribute.md)
 - [ ] [docs/19-accessibility-agents.md](../docs/19-accessibility-agents.md)
 - [ ] [docs/20-build-your-agent.md](../docs/20-build-your-agent.md)
-- [ ] [docs/21-next-steps.md](../docs/21-next-steps.md)
+- [ ] [docs/22-what-comes-next.md](../docs/22-what-comes-next.md)
 
 Appendices:
 
@@ -954,10 +954,10 @@ Why this matters:
   - [ ] [classroom/HUMAN_TEST_MATRIX.md](../classroom/HUMAN_TEST_MATRIX.md)
   - [ ] [classroom/grading-guide.md](../classroom/grading-guide.md)
 - [ ] Learning Room automation docs:
-  - [ ] [learning-room/.github/STUDENT_GUIDE.md](../learning-room/.github/STUDENT_GUIDE.md)
-  - [ ] [learning-room/.github/FACILITATOR_GUIDE.md](../learning-room/.github/FACILITATOR_GUIDE.md)
-  - [ ] [learning-room/.github/SETUP_AND_MAINTENANCE.md](../learning-room/.github/SETUP_AND_MAINTENANCE.md)
-  - [ ] [learning-room/.github/DEPLOYMENT_VALIDATION.md](../learning-room/.github/DEPLOYMENT_VALIDATION.md)
+  - [ ] [learning-room/.github/STUDENT_GUIDE.md](https://github.com/Community-Access/git-going-with-github/blob/main/learning-room/.github/STUDENT_GUIDE.md)
+  - [ ] [learning-room/.github/FACILITATOR_GUIDE.md](https://github.com/Community-Access/git-going-with-github/blob/main/learning-room/.github/FACILITATOR_GUIDE.md)
+  - [ ] [learning-room/.github/SETUP_AND_MAINTENANCE.md](https://github.com/Community-Access/git-going-with-github/blob/main/learning-room/.github/SETUP_AND_MAINTENANCE.md)
+  - [ ] [learning-room/.github/DEPLOYMENT_VALIDATION.md](https://github.com/Community-Access/git-going-with-github/blob/main/learning-room/.github/DEPLOYMENT_VALIDATION.md)
 
 Pass criteria:
 
@@ -1243,7 +1243,7 @@ Why this matters:
 | `registration.yml` duplicate logic | Duplicate handling | Duplicate issue thread + labels + closed state | On second submission by same user | Duplicate message references original and issue auto-closes |
 | `registration.yml` waitlist logic | Capacity full behavior | Registration issue comment + `waitlist` label | When threshold reached in controlled test | Waitlist message and label applied |
 | `registration.yml` CSV export | Registration data artifact | Actions artifacts | Every registration run or manual dispatch | `registration-data` artifact is available and current |
-| `registration.yml` roster sync | Non-PII roster update | [.github/data/student-roster.json](../.github/data/student-roster.json) and workflow commit | Every registration run or manual dispatch | Roster updates only when changed and no PII stored |
+| `registration.yml` roster sync | Non-PII roster update | [.github/data/student-roster.json](https://github.com/Community-Access/git-going-with-github/blob/main/.github/data/student-roster.json) and workflow commit | Every registration run or manual dispatch | Roster updates only when changed and no PII stored |
 | `pr-validation-bot.yml` | PR structure and guidance checks | PR comments + Actions | PR open/edit/sync/review events | Validation comment appears and updates in place |
 | `content-validation.yml` | Link/markdown/accessibility checks | PR checks/comments + Actions logs | PR open/edit/sync | Clear actionable findings tied to changed files |
 | `student-progression.yml` | Challenge unlock sequence | Issues tab + Actions logs | Issue close and workflow dispatch | Next challenge issue appears with correct sequence |

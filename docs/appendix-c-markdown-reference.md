@@ -604,10 +604,10 @@ The following table contrasts bad and good link text with an explanation.
 
 | Bad (do not do this) | Good (do this instead) | Why |
 |---|---|---|
-| Click [here](url) for the guide | Read the [Contributing Guide](url) | "here" means nothing out of context |
-| [Read more](url) | [Read the full accessibility audit report](url) | "Read more" is ambiguous in a link list |
+| Click [here](#) for the guide | Read the [Contributing Guide](#) | "here" means nothing out of context |
+| [Read more](#) | [Read the full accessibility audit report](#) | "Read more" is ambiguous in a link list |
 | [https://docs.github.com](https://docs.github.com) | [GitHub Documentation](https://docs.github.com) | Screen readers read the entire URL character by character |
-| [Link](url) | [Pre-Workshop Setup instructions](url) | "Link" tells you nothing about the destination |
+| [Link](#) | [Pre-Workshop Setup instructions](#) | "Link" tells you nothing about the destination |
 
 ### Reference-style links
 

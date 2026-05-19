@@ -39,12 +39,12 @@
 
 **Links OUT to:**
 
-- ✅ [Appendix L: Agents Reference](docs/appendix-l-agents-reference.md) - "All 80 agents organized by team"
-- ✅ [Appendix K: Copilot Reference](docs/appendix-k-copilot-reference.md) - "Platform features and MCP"
-- ✅ [Appendix M: Accessibility Standards](docs/appendix-m-accessibility-standards.md) - "WCAG 2.2 AA reference" (existing)
-- ✅ [Appendix AA: Installation & Setup](docs/appendix-aa-agent-installation-setup.md) - "Platform-specific installation guide (NEW)"
-- ✅ [Appendix AB: Advanced Patterns](docs/appendix-ab-advanced-agent-patterns.md) - "Subagents, hooks, skills (NEW)"
-- ✅ [Appendix AC: Document & Developer Tools](docs/appendix-ac-document-developer-tools.md) - "Specialized agents (NEW)"
+- ✅ [Appendix L: Agents Reference](../docs/appendix-l-agents-reference.md) - "All 80 agents organized by team"
+- ✅ [Appendix K: Copilot Reference](../docs/appendix-k-copilot-reference.md) - "Platform features and MCP"
+- ✅ [Appendix M: Accessibility Standards](../docs/appendix-m-accessibility-standards.md) - "WCAG 2.2 AA reference" (existing)
+- ✅ [Appendix AA: Installation & Setup](../docs/appendix-aa-agent-installation-setup.md) - "Platform-specific installation guide (NEW)"
+- ✅ [Appendix AB: Advanced Patterns](../docs/appendix-ab-advanced-agent-patterns.md) - "Subagents, hooks, skills (NEW)"
+- ✅ [Appendix AC: Document & Developer Tools](../docs/appendix-ac-document-developer-tools.md) - "Specialized agents (NEW)"
 - ✅ [admin/AGENTS_ROADMAP.md](admin/AGENTS_ROADMAP.md) - "Version history and learning pathways (NEW)"
 
 **Section 3A content includes:**
@@ -67,9 +67,9 @@
 
 **Links OUT to:**
 
-- ✅ [Appendix L: Agents Reference](docs/appendix-l-agents-reference.md) - "Agent list and capabilities"
-- ✅ [Appendix AA: Installation & Setup](docs/appendix-aa-agent-installation-setup.md) - "Platform-specific setup"
-- ✅ [Chapter 19: Accessibility Agents](docs/19-accessibility-agents.md) - "Agent introduction"
+- ✅ [Appendix L: Agents Reference](../docs/appendix-l-agents-reference.md) - "Agent list and capabilities"
+- ✅ [Appendix AA: Installation & Setup](../docs/appendix-aa-agent-installation-setup.md) - "Platform-specific setup"
+- ✅ [Chapter 19: Accessibility Agents](../docs/19-accessibility-agents.md) - "Agent introduction"
 - ✅ [admin/AGENTS_ROADMAP.md](admin/AGENTS_ROADMAP.md) - "Version tracking"
 
 **New Section 4B (MCP Servers) includes:**
@@ -85,9 +85,9 @@
 
 **Links OUT to:**
 
-- ✅ [Appendix K: Copilot Reference](docs/appendix-k-copilot-reference.md) - "Copilot features"
-- ✅ [Chapter 19: Accessibility Agents](docs/19-accessibility-agents.md) - "Agents introduction"
-- ✅ [Appendix AA: Installation & Setup](docs/appendix-aa-agent-installation-setup.md) - "Getting started"
+- ✅ [Appendix K: Copilot Reference](../docs/appendix-k-copilot-reference.md) - "Copilot features"
+- ✅ [Chapter 19: Accessibility Agents](../docs/19-accessibility-agents.md) - "Agents introduction"
+- ✅ [Appendix AA: Installation & Setup](../docs/appendix-aa-agent-installation-setup.md) - "Getting started"
 - ✅ [Accessibility Agents Repository](https://github.com/Community-Access/accessibility-agents) - "Canonical source for 80 agents"
 
 **Updated tables include:**
@@ -105,8 +105,8 @@
 
 **Links OUT to:**
 
-- ✅ [Appendix L: Agents Reference](docs/appendix-l-agents-reference.md) - "All agents"
-- ✅ [Chapter 19: Accessibility Agents](docs/19-accessibility-agents.md) - "Agent overview"
+- ✅ [Appendix L: Agents Reference](../docs/appendix-l-agents-reference.md) - "All agents"
+- ✅ [Chapter 19: Accessibility Agents](../docs/19-accessibility-agents.md) - "Agent overview"
 - ✅ [Accessibility Agents Repository](https://github.com/Community-Access/accessibility-agents) - "Official source"
 
 **Platform-specific sections cover:**
@@ -130,9 +130,9 @@
 
 **Links OUT to:**
 
-- ✅ [Appendix L: Agents Reference](docs/appendix-l-agents-reference.md) - "Agent list"
-- ✅ [Appendix AA: Installation & Setup](docs/appendix-aa-agent-installation-setup.md) - "Setup reference"
-- ✅ [Chapter 19: Accessibility Agents](docs/19-accessibility-agents.md) - "Agent context"
+- ✅ [Appendix L: Agents Reference](../docs/appendix-l-agents-reference.md) - "Agent list"
+- ✅ [Appendix AA: Installation & Setup](../docs/appendix-aa-agent-installation-setup.md) - "Setup reference"
+- ✅ [Chapter 19: Accessibility Agents](../docs/19-accessibility-agents.md) - "Agent context"
 - ✅ [Accessibility Agents Repository](https://github.com/Community-Access/accessibility-agents) - "Source for skills and hooks"
 
 **Advanced topics covered:**
@@ -151,9 +151,9 @@
 
 **Links OUT to:**
 
-- ✅ [Appendix L: Agents Reference](docs/appendix-l-agents-reference.md) - "Complete agent list"
-- ✅ [Appendix AB: Advanced Patterns](docs/appendix-ab-advanced-agent-patterns.md) - "Advanced techniques"
-- ✅ [Appendix AA: Installation & Setup](docs/appendix-aa-agent-installation-setup.md) - "Setup guide"
+- ✅ [Appendix L: Agents Reference](../docs/appendix-l-agents-reference.md) - "Complete agent list"
+- ✅ [Appendix AB: Advanced Patterns](../docs/appendix-ab-advanced-agent-patterns.md) - "Advanced techniques"
+- ✅ [Appendix AA: Installation & Setup](../docs/appendix-aa-agent-installation-setup.md) - "Setup guide"
 
 **Specialized content covers:**
 
@@ -173,7 +173,7 @@
 
 - ✅ Minimum versions table (VS Code 1.113+, Node.js v18+, Git v2.20+)
 - ✅ Version checking commands
-- ✅ Links to [Appendix AA: Installation](docs/appendix-aa-agent-installation-setup.md)
+- ✅ Links to [Appendix AA: Installation](../docs/appendix-aa-agent-installation-setup.md)
 - ✅ Explains agents are optional (Day 2 extension)
 
 ---

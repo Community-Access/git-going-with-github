@@ -125,7 +125,7 @@ Every content file must be reviewed before go-live. Use this checklist to assign
 
 - [ ] Root docs: [README.md](README.md), [BUILD.md](BUILD.md), [REGISTER.md](REGISTER.md), [CONTRIBUTING.md](CONTRIBUTING.md), [SECURITY.md](SECURITY.md), [REPOSITORY_SECURITY.md](REPOSITORY_SECURITY.md).
 - [ ] Student onboarding: [docs/get-going.md](docs/get-going.md), [docs/course-guide.md](docs/course-guide.md), and [docs/student-onboarding.md](docs/student-onboarding.md).
-- [ ] Core chapters: [docs/00-pre-workshop-setup.md](docs/00-pre-workshop-setup.md) through [docs/21-next-steps.md](docs/21-next-steps.md).
+- [ ] Core chapters: [docs/00-pre-workshop-setup.md](docs/00-pre-workshop-setup.md) through [docs/22-what-comes-next.md](docs/22-what-comes-next.md).
 - [ ] Appendices: [docs/appendix-a-glossary.md](docs/appendix-a-glossary.md) through [docs/appendix-z-github-skills.md](docs/appendix-z-github-skills.md).
 - [ ] Challenge hub: [docs/CHALLENGES.md](docs/CHALLENGES.md).
 - [ ] Challenge solutions: all files in [docs/solutions](docs/solutions/README.md).

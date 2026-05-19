@@ -92,7 +92,7 @@ Routing:
 
 - [ ] `REGISTER.md` and registration workflow comments point to Support Hub.
 - [ ] Facilitator guides reference Support Hub as the alumni channel.
-- [ ] `docs/21-next-steps.md` points learners to Support Hub.
+- [ ] `docs/22-what-comes-next.md` points learners to Support Hub.
 - [ ] Go-live checklist includes Support Hub readiness.
 - [ ] Podcast scripts/transcripts reference Support Hub as the default help path.
 

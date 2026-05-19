@@ -82,7 +82,7 @@ When you complete all 9 challenges, you have the foundation for everything in Da
 
 **Continuing to Day 2?** See the [Day 2 assignment](https://github.com/Community-Access/git-going-with-github/blob/main/classroom/assignment-day2-you-can-build-this.md) for what comes next.
 
-**Day 1 is your only day?** Everything you learned today is complete and self-contained. See the [Next Steps guide](https://github.com/Community-Access/git-going-with-github/blob/main/docs/21-next-steps.md) for how to continue your GitHub journey independently.
+**Day 1 is your only day?** Everything you learned today is complete and self-contained. See the [Next Steps guide](https://github.com/Community-Access/git-going-with-github/blob/main/docs/22-what-comes-next.md) for how to continue your GitHub journey independently.
 
 ## Bonus Challenges
 

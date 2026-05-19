@@ -49,7 +49,7 @@
 - **Windows:** Git may not be in your PATH. Search for "Git Bash" in the Start menu and use that terminal instead. Or add Git to PATH: Settings → System → Advanced → Environment Variables → edit PATH → add `C:\Program Files\Git\cmd`
 - **macOS:** If `xcode-select` hangs, try `sudo xcode-select --reset` first
 
-**Prevention:** Complete [Pre-Workshop Setup](docs/00-pre-workshop-setup.md) before starting.
+**Prevention:** Complete [Pre-Workshop Setup](../docs/00-pre-workshop-setup.md) before starting.
 
 ### Problem: Node.js or npm is not installed
 
@@ -109,7 +109,7 @@ Security: We strongly recommend enabling Two-Factor Authentication (2FA) on your
 **Solution:**
 
 - **Corporate/restricted device:** Ask your IT department to allow VS Code, or use the portable ZIP version: <https://code.visualstudio.com/docs/editor/portable>
-- **Chromebook:** Use github.dev (press `.` on any repo) for Day 1. For Day 2, consider GitHub Codespaces: see [Appendix N](docs/appendix-j-cloud-editors.md)
+- **Chromebook:** Use github.dev (press `.` on any repo) for Day 1. For Day 2, consider GitHub Codespaces: see [Appendix N](../docs/appendix-j-cloud-editors.md)
 - **Older OS:** VS Code requires Windows 10+, macOS 10.15+, or a modern Linux distribution
 
 ## Git Configuration and Operations
@@ -248,7 +248,7 @@ Use the same email address as your GitHub account so commits are attributed to y
 2. Check tokens: <https://github.com/settings/tokens> - is your token still active?
 3. Regenerate if expired
 
-See [Appendix D (Git Authentication)](docs/appendix-d-git-authentication.md) for complete setup instructions.
+See [Appendix D (Git Authentication)](../docs/appendix-d-git-authentication.md) for complete setup instructions.
 
 ### Problem: SSH key passphrase prompts every time
 
@@ -312,7 +312,7 @@ See [Appendix D (Git Authentication)](docs/appendix-d-git-authentication.md) for
 1. Go to <https://github.com/settings/accessibility>
 2. Uncheck "Hovercards" (or the equivalent setting for reducing motion/overlays)
 3. Save changes
-4. This is covered in [Pre-Workshop Setup](docs/00-pre-workshop-setup.md), Step 4
+4. This is covered in [Pre-Workshop Setup](../docs/00-pre-workshop-setup.md), Step 4
 
 ### Problem: GitHub shows "Loading..." or blank content
 
@@ -480,7 +480,7 @@ git checkout -b recovered-branch COMMIT-HASH
 
 **Cause D: Branch protection rules**
 
-- The main branch may have protection rules. See [Appendix K (Branch Protection)](docs/appendix-o-branch-protection.md)
+- The main branch may have protection rules. See [Appendix K (Branch Protection)](../docs/appendix-o-branch-protection.md)
 
 ### Problem: PR shows wrong base branch
 
@@ -629,7 +629,7 @@ After fixing, commit and push to main, then hard-refresh the browser.
 - **Too quiet:** Check that `editor.accessibilitySupport` is set to `on` (not `auto` or `off`)
 - **Audio signals:** Search `accessibility.signals` in Settings → enable or disable specific sounds (error, warning, breakpoint, diff changes, etc.)
 
-See [Appendix M (VS Code Accessibility Reference)](docs/appendix-g-vscode-reference.md) for all settings.
+See [Appendix M (VS Code Accessibility Reference)](../docs/appendix-g-vscode-reference.md) for all settings.
 
 ### Problem: Cannot find a VS Code command
 
@@ -1147,7 +1147,7 @@ See [Appendix M (VS Code Accessibility Reference)](docs/appendix-g-vscode-refere
 
 **Symptoms:** You want to read the materials but cannot find where they are hosted or how to download them.
 
-**Solution:** See [Appendix Y (Accessing Workshop Materials)](docs/appendix-y-workshop-materials.md) for complete instructions covering:
+**Solution:** See [Appendix Y (Accessing Workshop Materials)](../docs/appendix-y-workshop-materials.md) for complete instructions covering:
 
 - Reading on GitHub Pages (if hosted)
 - Reading directly on GitHub.com
@@ -1198,9 +1198,9 @@ If your issue is not listed here:
 
 1. **[FAQ](FAQ.md)** - Answers to common questions about the workshop
 2. **[Quick Reference](QUICK_REFERENCE.md)** - Condensed keyboard shortcuts and commands
-3. **[Glossary](docs/appendix-a-glossary.md)** - Term definitions
-4. **[Screen Reader Cheat Sheet](docs/appendix-b-screen-reader-cheatsheet.md)** - NVDA, JAWS, VoiceOver commands
-5. **[Resources](docs/appendix-x-resources.md)** - External documentation and links
+3. **[Glossary](../docs/appendix-a-glossary.md)** - Term definitions
+4. **[Screen Reader Cheat Sheet](../docs/appendix-b-screen-reader-cheatsheet.md)** - NVDA, JAWS, VoiceOver commands
+5. **[Resources](../docs/appendix-x-resources.md)** - External documentation and links
 6. **Open an issue** on this repository with:
    - What you tried
    - What happened (exact error messages)

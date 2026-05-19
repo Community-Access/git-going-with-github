@@ -611,7 +611,7 @@ Everything you learned today is complete and self-contained. You can now:
 
 **What to do next on your own:**
 
-- Explore the [Next Steps](../docs/21-next-steps.md) guide for continuing your GitHub journey independently
+- Explore the [Next Steps](../docs/22-what-comes-next.md) guide for continuing your GitHub journey independently
 - Browse [github.com/topics/accessibility](https://github.com/topics/accessibility) for projects that need contributors
 - Look for issues labeled `good first issue` on any project that interests you
 - Complete the bonus challenges (A through E) in your Classroom repository

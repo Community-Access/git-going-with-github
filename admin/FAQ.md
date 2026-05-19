@@ -78,7 +78,7 @@
 
 ### Q: I am teaching GitHub to a group. Do I need to know everything?
 
-**A:** Yes, read the full curriculum first. Also read [FACILITATOR.md](FACILITATOR.md), [DAY1_AGENDA.md](DAY1_AGENDA.md), and [DAY2_AGENDA.md](DAY2_AGENDA.md) for lesson plans and pacing tips.
+**A:** Yes, read the full curriculum first. Also read [FACILITATOR.md](FACILITATOR_GUIDE.md), [DAY1_AGENDA.md](DAY1_AGENDA.md), and [DAY2_AGENDA.md](DAY2_AGENDA.md) for lesson plans and pacing tips.
 
 ### Q: I use screen readers (NVDA, JAWS, or VoiceOver). Is this guide accessible?
 
@@ -1018,7 +1018,7 @@ This FAQ does not cover your question? Try these resources in order:
 4. [**Appendix B (Screen Reader Cheat Sheet)**](../docs/appendix-b-screen-reader-cheatsheet.md) - NVDA, JAWS, VoiceOver keyboard commands
 5. [**Appendix U (Resources)**](../docs/appendix-x-resources.md) - External documentation and links
 6. **GitHub Issues** - Search existing issues or [open a new one](../../issues)
-7. [**FACILITATOR.md**](FACILITATOR.md) - If you are leading a workshop
+7. [**FACILITATOR.md**](FACILITATOR_GUIDE.md) - If you are leading a workshop
 
 *Last updated: May 2026*  
 *Have more questions? Open an issue or discussion on GitHub!*

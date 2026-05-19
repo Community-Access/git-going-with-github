@@ -166,7 +166,7 @@ function render(entries) {
     if (!items.length) return '';
 
     const blocks = items.map((item) => {
-      const sourceLink = `learning-room/.github/ISSUE_TEMPLATE/${item.fileName}`;
+      const sourceLink = `https://github.com/Community-Access/git-going-with-github/blob/main/learning-room/.github/ISSUE_TEMPLATE/${item.fileName}`;
       return `### ${item.name}\n\nSource template: [${item.fileName}](${sourceLink})\n\n${item.body}`.trim();
     });
 

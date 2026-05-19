@@ -1,0 +1,817 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="GIT Going with GitHub - A two-day accessible open source workshop by Community Access">
+  <title>GIT Going with GitHub</title>
+  <link rel="stylesheet" href="../../styles/github-markdown.css">
+  <link rel="stylesheet" href="../../styles/highlight.css">
+  <link rel="stylesheet" href="../../styles/custom.css">
+  <style>
+    .markdown-body {
+      box-sizing: border-box;
+      min-width: 0;
+      max-width: 980px;
+      margin: 0;
+      padding: 45px;
+    }
+
+    .page-layout {
+      max-width: 1320px;
+      margin: 0 auto;
+      padding: 1rem 1rem 2rem;
+      display: grid;
+      grid-template-columns: minmax(240px, 300px) minmax(0, 1fr);
+      gap: 1.25rem;
+      align-items: start;
+    }
+
+    @media (max-width: 767px) {
+      .page-layout {
+        grid-template-columns: 1fr;
+        padding: 0.5rem 0.5rem 1rem;
+      }
+
+      .markdown-body {
+        padding: 15px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+  <header class="site-header" role="banner">
+    <div class="site-header-inner">
+      <nav aria-label="Breadcrumb" class="breadcrumb">
+        <a href="../../index.html">Home</a> <span aria-hidden="true">›</span> <span aria-current="page">GIT Going with GitHub</span>
+      </nav>
+      <div class="header-actions">
+        <a href="https://github.com/Community-Access/git-going-with-github/wiki" class="wiki-link" target="_blank" rel="noopener noreferrer">
+          <svg aria-hidden="true" focusable="false" width="16" height="16" viewBox="0 0 16 16" fill="currentColor">
+            <path d="M1.75 1h8.5c.966 0 1.75.784 1.75 1.75v5.5A1.75 1.75 0 0 1 10.25 10H7.06l-2.573 2.573A1.458 1.458 0 0 1 2 11.543V10h-.25A1.75 1.75 0 0 1 0 8.25v-5.5C0 1.784.784 1 1.75 1ZM1.5 2.75v5.5c0 .138.112.25.25.25h1a.75.75 0 0 1 .75.75v2.19l2.72-2.72a.749.749 0 0 1 .53-.22h3.5a.25.25 0 0 0 .25-.25v-5.5a.25.25 0 0 0-.25-.25h-8.5a.25.25 0 0 0-.25.25Zm13 2a.25.25 0 0 0-.25-.25h-.5a.75.75 0 0 1 0-1.5h.5c.966 0 1.75.784 1.75 1.75v5.5A1.75 1.75 0 0 1 14.25 12H14v1.543a1.457 1.457 0 0 1-2.487 1.03L9.22 12.28a.749.749 0 1 1 1.06-1.06l2.22 2.22v-2.19a.75.75 0 0 1 .75-.75h.25a.25.25 0 0 0 .25-.25v-5.5Z"/>
+          </svg>
+          Wiki
+        </a>
+        <form role="search" class="search-form" action="../../search.html" method="get">
+        <label for="site-search" class="search-label">Search docs</label>
+        <input
+          type="search"
+          id="site-search"
+          class="search-input"
+          name="q"
+          placeholder="Search docs…"
+          autocomplete="off"
+          aria-label="Search documentation"
+        >
+        <button type="submit" class="search-button" aria-label="Submit search">
+          <svg aria-hidden="true" focusable="false" width="16" height="16" viewBox="0 0 16 16" fill="currentColor">
+            <path d="M10.68 11.74a6 6 0 0 1-7.922-8.982 6 6 0 0 1 8.982 7.922l3.04 3.04a.749.749 0 0 1-.326 1.275.749.749 0 0 1-.734-.215ZM11.5 7a4.499 4.499 0 1 0-8.997 0A4.499 4.499 0 0 0 11.5 7Z"/>
+          </svg>
+        </button>
+      </form>
+      </div>
+    </div>
+  </header>
+  <div class="page-layout">
+    <aside class="guided-sidebar" aria-label="Guided reference">
+    <h2 class="guided-title">Guided Reference</h2>
+    <p class="guided-intro">Follow the learning order, then jump into challenge issue views, appendices, and support resources.</p>
+
+
+    <section class="guided-resume" aria-label="Resume learning">
+      <a id="resume-link" class="guided-resume-link" href="../../index.html" hidden>Resume where you left off</a>
+    </section>
+
+    <nav class="guided-nav" aria-label="Workshop navigation">
+      <section class="guided-section">
+        <h3>Start Here</h3>
+        <ul>
+          <li><a href="../../index.html">Workshop Home</a></li>
+          <li><a href="../../docs/course-guide.html">Course Guide</a></li>
+<li><a href="../../docs/get-going.html">Get Going with GitHub</a></li>
+<li><a href="../../docs/CHALLENGES.html">Challenge Hub</a></li>
+        </ul>
+      </section>
+
+      <section class="guided-section">
+        <h3>Learning Order</h3>
+        <details>
+          <summary>Day 1 chapters</summary>
+          <ul>
+            <li><a href="../../docs/00-pre-workshop-setup.html">Pre-Workshop Setup - GIT Going with GitHub</a></li>
+<li><a href="../../docs/01-choose-your-tools.html">Choose Your Adventure: A Tool Tour</a></li>
+<li><a href="../../docs/02-understanding-github.html">Understanding GitHub&#39;s Web Structure</a></li>
+<li><a href="../../docs/03-navigating-repositories.html">Navigating Repositories</a></li>
+<li><a href="../../docs/04-the-learning-room.html">The Learning Room: Your Personal Practice Repository</a></li>
+<li><a href="../../docs/05-working-with-issues.html">Working with Issues</a></li>
+<li><a href="../../docs/06-working-with-pull-requests.html">Working with Pull Requests</a></li>
+<li><a href="../../docs/07-merge-conflicts.html">Merge Conflicts</a></li>
+<li><a href="../../docs/08-open-source-culture.html">Culture, Etiquette, and Community Standards</a></li>
+<li><a href="../../docs/09-labels-milestones-projects.html">Labels, Milestones, and Projects</a></li>
+<li><a href="../../docs/10-notifications-and-day-1-close.html">Notifications</a></li>
+          </ul>
+        </details>
+        <details>
+          <summary>Day 2 chapters</summary>
+          <ul>
+            <li><a href="../../docs/11-vscode-interface.html">VS Code: Interface and Setup</a></li>
+<li><a href="../../docs/12-vscode-accessibility.html">VS Code: Accessibility Deep Dive</a></li>
+<li><a href="../../docs/13-how-git-works.html">How Git Works: The Mental Model</a></li>
+<li><a href="../../docs/14-git-in-practice.html">Git &amp; Source Control in VS Code</a></li>
+<li><a href="../../docs/15-code-review.html">Code Review: PRs, Diffs, and Constructive Feedback</a></li>
+<li><a href="../../docs/16-github-copilot.html">GitHub Copilot</a></li>
+<li><a href="../../docs/17-issue-templates.html">Issue Templates</a></li>
+<li><a href="../../docs/18-fork-and-contribute.html">Fork and Contribute: The Open Source Workflow</a></li>
+<li><a href="../../docs/19-accessibility-agents.html">Accessibility Agents</a></li>
+<li><a href="../../docs/20-build-your-agent.html">Capstone Project: Contribute an Impactful Agent</a></li>
+<li><a href="../../docs/21-github-accessibility-and-open-source.html">GitHub Accessibility and Open Source at Scale</a></li>
+<li><a href="../../docs/22-what-comes-next.html">What Comes Next: Your Developer Journey</a></li>
+          </ul>
+        </details>
+      </section>
+
+      <section class="guided-section">
+        <h3>Appendices</h3>
+        <details>
+          <summary>Reference library</summary>
+          <ul>
+            <li><a href="../../docs/appendix-a-glossary.html">Appendix A: GitHub Concepts &amp; Glossary</a></li>
+<li><a href="../../docs/appendix-b-screen-reader-cheatsheet.html">Appendix B: Screen Reader Cheat Sheet</a></li>
+<li><a href="../../docs/appendix-c-markdown-reference.html">Appendix C: Markdown and GitHub Flavored Markdown - Complete Guide</a></li>
+<li><a href="../../docs/appendix-d-git-authentication.html">Appendix D: Git Authentication</a></li>
+<li><a href="../../docs/appendix-e-advanced-git.html">Appendix E: Advanced Git Operations</a></li>
+<li><a href="../../docs/appendix-f-git-security.html">Appendix F: Git Security for Contributors</a></li>
+<li><a href="../../docs/appendix-g-vscode-reference.html">Appendix G: VS Code Accessibility Reference</a></li>
+<li><a href="../../docs/appendix-h-github-desktop.html">Appendix H: GitHub Desktop</a></li>
+<li><a href="../../docs/appendix-i-github-cli.html">Appendix I: GitHub CLI Reference</a></li>
+<li><a href="../../docs/appendix-j-cloud-editors.html">Appendix J: GitHub Codespaces</a></li>
+<li><a href="../../docs/appendix-k-copilot-reference.html">Appendix K: Copilot Reference</a></li>
+<li><a href="../../docs/appendix-l-agents-reference.html">Appendix L: Accessibility Agents Reference</a></li>
+<li><a href="../../docs/appendix-m-accessibility-standards.html">Appendix M: Accessibility Standards Reference</a></li>
+<li><a href="../../docs/appendix-n-advanced-search.html">Appendix N: GitHub Advanced Search</a></li>
+<li><a href="../../docs/appendix-o-branch-protection.html">Appendix O: Branch Protection Rules and Repository Rulesets</a></li>
+<li><a href="../../docs/appendix-p-security-features.html">Appendix P: GitHub Security Features</a></li>
+<li><a href="../../docs/appendix-q-actions-workflows.html">Appendix Q: GitHub Actions and Workflows</a></li>
+<li><a href="../../docs/appendix-r-projects-deep-dive.html">Appendix R: GitHub Projects Deep Dive</a></li>
+<li><a href="../../docs/appendix-s-releases-tags-insights.html">Appendix S: Releases, Tags, and Repository Insights</a></li>
+<li><a href="../../docs/appendix-t-community-and-social.html">Appendix T: Community and Social</a></li>
+<li><a href="../../docs/appendix-u-discussions-and-gists.html">Appendix U: Discussions and Gists</a></li>
+<li><a href="../../docs/appendix-v-github-mobile.html">Appendix V: GitHub Mobile</a></li>
+<li><a href="../../docs/appendix-w-github-pages.html">Appendix W: Publishing with GitHub Pages</a></li>
+<li><a href="../../docs/appendix-x-resources.html">Appendix X: Resources</a></li>
+<li><a href="../../docs/appendix-y-workshop-materials.html">Appendix Y: Accessing and Downloading Workshop Materials</a></li>
+<li><a href="../../docs/appendix-z-github-skills.html">Appendix Z: GitHub Skills - Complete Course Catalog</a></li>
+<li><a href="../../docs/appendix-aa-agent-installation-setup.html">Appendix AA: Agent Installation &amp; Setup Across All Platforms</a></li>
+<li><a href="../../docs/appendix-ab-advanced-agent-patterns.html">Appendix AB: Advanced Agent Patterns &amp; Skills</a></li>
+<li><a href="../../docs/appendix-ac-document-developer-tools.html">Appendix AC: Document &amp; Developer Tool Agents</a></li>
+          </ul>
+        </details>
+      </section>
+
+      <section class="guided-section">
+        <h3>Challenge Lab</h3>
+        <ul>
+          <li><a href="../../docs/CHALLENGES.html">Challenge Hub</a></li>
+<li><a href="../../work.html">Issue-Style Challenge Walkthrough</a></li>
+<li><a href="../../docs/17-issue-templates.html">Issue Template Deep Dive</a></li>
+        </ul>
+      </section>
+
+      <section class="guided-section">
+        <h3>External Resources</h3>
+        <ul>
+          <li><a href="https://lp.csedesigns.com/ggg/PODCASTS.html">Podcast Episodes <span class="guided-external">(external)</span></a></li>
+<li><a href="https://lp.csedesigns.com/ggg/feed.xml">RSS Feed <span class="guided-external">(external)</span></a></li>
+        </ul>
+      </section>
+
+      <section class="guided-section">
+        <h3>Get Help</h3>
+        <ul>
+          <li><a href="https://github.com/Community-Access/support">Support Hub <span class="guided-external">(external)</span></a></li>
+        </ul>
+      </section>
+    </nav>
+  </aside>
+    <main id="main-content" class="markdown-body page-main">
+      <nav class="quick-jumps" aria-label="Quick jumps">
+    <h2 class="quick-jumps-title">Quick Jumps</h2>
+    <ul class="quick-jumps-list">
+      <li><a href="#course-content">Jump to course content</a></li><li><a href="#main-content">Jump to main content top</a></li><li><a href="#on-this-page">Jump to on-page sections</a></li><li><a href="../../docs/CHALLENGES.html">Open challenge hub</a></li><li><a href="../../work.html">Open issue-style challenge walkthrough</a></li>
+    </ul>
+  </nav>
+
+      <nav id="on-this-page" class="onpage-nav" aria-label="On this page">
+    <h2 class="onpage-title">On This Page</h2>
+    <ul class="onpage-list">
+      <li class="onpage-item"><a href="#a-workshop-by-community-access">A Workshop by Community Access</a></li>
+<li class="onpage-item"><a href="#what-is-this-event">What Is This Event?</a></li>
+<li class="onpage-item"><a href="#who-is-this-for">Who Is This For?</a></li>
+<li class="onpage-item"><a href="#two-day-overview">Two-Day Overview</a></li>
+<li class="onpage-item onpage-sub"><a href="#the-journey-arc">The Journey Arc</a></li>
+<li class="onpage-item"><a href="#how-to-read-these-docs">How to Read These Docs</a></li>
+<li class="onpage-item"><a href="#post-workshop-support">Post-Workshop Support</a></li>
+<li class="onpage-item"><a href="#your-challenges">Your Challenges</a></li>
+<li class="onpage-item onpage-sub"><a href="#quick-navigation">Quick Navigation</a></li>
+<li class="onpage-item"><a href="#this-repository39s-structure">This Repository&amp;#39;s Structure</a></li>
+<li class="onpage-item"><a href="#quick-reference">Quick Reference</a></li>
+<li class="onpage-item"><a href="#screen-reader-users-start-here">Screen Reader Users: Start Here</a></li>
+<li class="onpage-item"><a href="#the-goal-of-this-event">The Goal of This Event</a></li>
+<li class="onpage-item"><a href="#questions-before-the-event">Questions Before the Event?</a></li>
+<li class="onpage-item"><a href="#license">License</a></li>
+<li class="onpage-item"><a href="#authoritative-sources">Authoritative Sources</a></li>
+<li class="onpage-item onpage-sub"><a href="#section-level-source-map">Section-Level Source Map</a></li>
+    </ul>
+  </nav>
+      <div id="course-content"><h1 id="git-going-with-github">GIT Going with GitHub</h1>
+<p>License: CC BY 4.0 | <a href="https://community-access.org/git-going-with-github/">Site</a> | <a href="https://github.com/community-access/git-going-with-github/discussions">Discussions</a></p>
+<h2 id="a-workshop-by-community-access">A Workshop by <a href="https://community-access.org">Community Access</a></h2>
+<blockquote>
+<p><strong>Welcome.</strong> This repository is your complete guide and companion for the two-day GIT Going with GitHub workshop. Every document here is written to be read with or without a screen reader. All steps are keyboard-accessible. You belong here.</p>
+<p><strong>About Community Access:</strong> <a href="https://community-access.org">Community Access</a> is a community of blind and low vision technology professionals. Visit <a href="https://community-access.org">community-access.org</a> to learn more.</p>
+</blockquote>
+<blockquote>
+<p><strong>Tools change. Exploration is part of the skill.</strong> GitHub.com, GitHub Classroom, VS Code, GitHub Copilot, github.dev, browser extensions, and agent experiences change continuously. We do our best to keep this documentation current, source-backed, and tested, but a label may move, a feature may graduate from preview, or an account policy may change what you hear. When something differs, pause and use the exploration skills taught here: check the page title and URL, move by headings and landmarks, find the named tab or button, use the Command Palette or keyboard shortcut help, and compare with the official docs linked in each chapter. If the documented path is wrong, file a curriculum issue so we can update it for everyone.</p>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th scope="col">Detail</th>
+<th scope="col">Information</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><strong>Workshop site</strong></td>
+<td><a href="https://community-access.org/git-going-with-github/">community-access.org/git-going-with-github</a></td>
+</tr>
+<tr>
+<td><strong>Registration</strong></td>
+<td><a href="https://community-access.org/git-going-with-github/REGISTER.html">Student opt-in and waitlist workflow</a></td>
+</tr>
+<tr>
+<td><strong>Discussions</strong></td>
+<td><a href="https://github.com/community-access/git-going-with-github/discussions">Join the conversation</a></td>
+</tr>
+<tr>
+<td><strong>Support hub</strong></td>
+<td><a href="https://github.com/Community-Access/support">Community-Access/support</a></td>
+</tr>
+<tr>
+<td><strong>Curriculum issues</strong></td>
+<td><a href="https://github.com/community-access/git-going-with-github/issues">File an issue in this repository</a></td>
+</tr>
+<tr>
+<td><strong>Dates</strong></td>
+<td>May 21, 2026 &amp; May 22, 2026</td>
+</tr>
+<tr>
+<td><strong>Facilitators</strong></td>
+<td>Jeff Bishop and Michael Babcock</td>
+</tr>
+</tbody></table>
+<blockquote>
+<p><strong>The Central Project: Accessibility Agents</strong></p>
+<p>This workshop is built around a real, live open source project: <strong><a href="https://github.com/community-access/accessibility-agents">Accessibility Agents</a></strong> - 55 AI agents across 3 teams and 5 platforms for accessible, agentic repository management. It was built by your facilitator Jeff Bishop and is MIT-licensed.</p>
+<p>You will fork it, understand it, contribute to it, and personalize it. The live workshop prepares you to make a real contribution, and the async continuation path gives you time to polish and submit it well.</p>
+<p><strong>Accessibility Agents does not replace what you learn on Day 1. It amplifies it.</strong> The agents only make sense when you already understand the skills they automate. That is why Day 1 comes first - and why every guide in this repository shows you the manual path before it shows you the agent path.</p>
+</blockquote>
+<h2 id="what-is-this-event">What Is This Event?</h2>
+<p>During this two-day workshop, you will learn how to confidently navigate and contribute to open source projects on GitHub using:</p>
+<ul>
+<li>A <strong>screen reader</strong> (NVDA on Windows, JAWS on Windows, or VoiceOver on macOS)</li>
+<li><strong>Keyboard-only navigation</strong> - no mouse required</li>
+<li><strong>GitHub Copilot</strong> (Day 2) - AI-assisted writing and coding in the browser and in VS Code</li>
+</ul>
+<p>By the end of this event, you will have practiced <strong>real contribution workflows</strong> in a real repository. Some participants will ship during the live event; others will leave with a branch, a pull request path, and clear next steps to finish asynchronously.</p>
+<h2 id="who-is-this-for">Who Is This For?</h2>
+<p>This event is designed for:</p>
+<ul>
+<li>People new to GitHub who use assistive technology</li>
+<li>Developers who use screen readers and want to contribute to open source</li>
+<li>Anyone who is curious about accessible development workflows</li>
+<li>Sighted participants are welcome - all content is keyboard-navigable for everyone</li>
+</ul>
+<p>You do <strong>not</strong> need to know how to code to participate and contribute meaningfully. Documentation improvements, issue filing, accessibility bug reports, and code reviews are all valuable contributions.</p>
+<h2 id="two-day-overview">Two-Day Overview</h2>
+<table>
+<thead>
+<tr>
+<th scope="col">Day</th>
+<th scope="col">Focus</th>
+<th scope="col">What You Will Do</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><strong>Day 1</strong></td>
+<td>GitHub Foundations</td>
+<td>Set up your environment, learn GitHub navigation with your screen reader, file your first issue, open your first pull request</td>
+</tr>
+<tr>
+<td><strong>Day 2</strong></td>
+<td>VS Code + Accessibility Agents</td>
+<td>Bridge from the browser to <strong>github.dev</strong> (VS Code in your browser - no install needed), then step into <strong>Visual Studio Code</strong> on the desktop, learn VS Code basics, use GitHub Copilot, activate the Accessibility Agents ecosystem (55 agents, 3 teams, 5 platforms), see agentic workflows in the cloud, and prepare a real upstream contribution path</td>
+</tr>
+</tbody></table>
+<h3 id="the-journey-arc">The Journey Arc</h3>
+<p>This is not a two-day course with two separate syllabi. It is one arc.</p>
+<pre><code class="hljs">Day <span class="hljs-number">1</span> - Learn the skill in the browser
+  Navigate → Issue → Pull Request → Review → Merge
+
+     ↓  (bridge: press . on any GitHub repo - VS <span class="hljs-built_in">Code</span> opens right in your browser)
+
+github.dev - VS <span class="hljs-built_in">Code</span> on the web, no install needed
+  Same keyboard shortcuts · Same <span class="hljs-keyword">screen</span> reader mode · <span class="hljs-keyword">Edit</span> files · <span class="hljs-keyword">Open</span> PRs
+  Limits: no <span class="hljs-keyword">local</span> terminal <span class="hljs-keyword">or</span> debugger, only web-compatible extensions, <span class="hljs-keyword">and</span> <span class="hljs-keyword">not</span> the full desktop agent workflow
+
+     ↓  (you&#x27;ve earned the desktop - now it makes sense)
+
+Day <span class="hljs-number">2</span> - Deepen with VS <span class="hljs-built_in">Code</span> + Accessibility Agents
+  Learn VS <span class="hljs-built_in">Code</span> basics → Copilot inline → Copilot Chat
+  <span class="hljs-comment">@daily-briefing → @</span>issue-tracker → <span class="hljs-comment">@pr-review → @</span>analytics → prepare upstream</code></pre>
+<p>Every skill you build on Day 1 maps directly to an Accessibility Agents command on Day 2. The agent is not a shortcut - it is a multiplier. You have to understand what it is doing to know when it is wrong.</p>
+<p><strong>By the end of the Day 2 core path, you will have:</strong></p>
+<ul>
+<li>A fork of <code>accessibility-agents</code> with your personalized preferences</li>
+<li>A branch or pull request path for a real open source contribution</li>
+<li>Clear next steps to get your contribution reviewed and merged</li>
+<li>A working set of 55 AI agents across 3 teams that travel with your fork to any repository you apply them to</li>
+</ul>
+<h2 id="how-to-read-these-docs">How to Read These Docs</h2>
+<p>All documentation lives in the <code>docs/</code> folder. If you are new, start with <a href="docs/get-going.html">Get Going with GitHub</a>. It explains the GitHub Classroom assignment link, your private Learning Room repository, the first challenge issue, how evidence works, and how to choose the tool path that fits you.</p>
+<p>Facilitators preparing a cohort should use the <a href="GO-LIVE-QA-GUIDE.html">Go-Live QA Guide</a> as the release gate before sharing Classroom invite links.</p>
+<h2 id="post-workshop-support">Post-Workshop Support</h2>
+<p>After the workshop, use the open support repository for questions, troubleshooting, and alumni discussion:</p>
+<ul>
+<li><a href="https://github.com/Community-Access/support">Community-Access/support</a></li>
+</ul>
+<p>Use this repository for curriculum and platform changes only.</p>
+<h2 id="your-challenges">Your Challenges</h2>
+<p><strong>16 challenges guide you through the workshop, plus 5 bonus challenges for those who finish early.</strong></p>
+<p>Open the <strong>Issues</strong> tab of the Learning Room repository and look for challenge issue templates matching each chapter. The <a href="docs/CHALLENGES.html">Challenge Hub</a> has the full list with instructions, evidence requirements, and links.</p>
+<p><strong>The workflow:</strong></p>
+<ol>
+<li>Open the challenge issue template for the current chapter</li>
+<li>Follow the instructions in the issue and the corresponding chapter</li>
+<li>Complete the challenge and post your evidence</li>
+<li>Open a PR that references your issue with <code>Closes #N</code></li>
+<li>The validation bot checks your work</li>
+<li>When it passes, merge and move to the next challenge</li>
+</ol>
+<p>Every chapter has an &quot;If You Get Stuck&quot; section. Every challenge has a <a href="docs/solutions/">reference solution</a>. You do not need to memorize anything.</p>
+<blockquote>
+<p><strong>HTML Version Available:</strong> All markdown documentation is automatically converted to HTML format. After cloning the repository, you can browse the <code>html/</code> directory for web-formatted versions of every document. See <a href="BUILD.html">BUILD.md</a> for details.</p>
+</blockquote>
+<blockquote>
+<p><strong>Audio Series Available:</strong> Every chapter and appendix has a companion podcast episode - a conversational two-host overview perfect for previewing concepts or reducing screen reader fatigue. The refreshed catalog now covers 54 companion episodes, with Challenge Coach episodes planned as a separate teaching layer. <a href="https://lp.csedesigns.com/ggg/PODCASTS.html">Browse the podcast episodes</a> or <a href="https://lp.csedesigns.com/ggg/feed.xml">subscribe via RSS</a>.</p>
+</blockquote>
+<h3 id="quick-navigation">Quick Navigation</h3>
+<blockquote>
+<p><strong>Looking for a student-friendly table of contents?</strong> See the <a href="docs/course-guide.html">Course Guide</a> - a single page with day-by-day chapter tables, grouped appendices, all 24 exercises at a glance, and where to get help.</p>
+</blockquote>
+<p><strong>Chapters</strong></p>
+<table>
+<thead>
+<tr>
+<th scope="col">#</th>
+<th scope="col">Document</th>
+<th scope="col">What It Covers</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><a href="docs/get-going.html">Start</a></td>
+<td><strong>Get Going with GitHub</strong></td>
+<td>GitHub Classroom onboarding, Learning Room first steps, support, and tool choice</td>
+</tr>
+<tr>
+<td><a href="docs/00-pre-workshop-setup.html">00</a></td>
+<td><strong>Pre-Workshop Setup</strong></td>
+<td>Everything to install and configure before Day 1</td>
+</tr>
+<tr>
+<td><a href="docs/01-choose-your-tools.html">01</a></td>
+<td><strong>Choose Your Tools</strong></td>
+<td>Screen reader options, tooling decisions, and workflow setup</td>
+</tr>
+<tr>
+<td><a href="docs/02-understanding-github.html">02</a></td>
+<td><strong>Understanding GitHub</strong></td>
+<td>How GitHub is organized, page types, landmark structure, and screen reader orientation</td>
+</tr>
+<tr>
+<td><a href="docs/03-navigating-repositories.html">03</a></td>
+<td><strong>Navigating Repositories</strong></td>
+<td>Step-by-step repository navigation with your screen reader</td>
+</tr>
+<tr>
+<td><a href="docs/04-the-learning-room.html">04</a></td>
+<td><strong>The Learning Room</strong></td>
+<td>Your private practice repository, branching, committing, and PR workflow</td>
+</tr>
+<tr>
+<td><a href="docs/05-working-with-issues.html">05</a></td>
+<td><strong>Working with Issues</strong></td>
+<td>Filing, managing, and participating in issues</td>
+</tr>
+<tr>
+<td><a href="docs/06-working-with-pull-requests.html">06</a></td>
+<td><strong>Working with Pull Requests</strong></td>
+<td>Creating, reviewing, and merging pull requests</td>
+</tr>
+<tr>
+<td><a href="docs/07-merge-conflicts.html">07</a></td>
+<td><strong>Merge Conflicts</strong></td>
+<td>Understanding, preventing, and resolving merge conflicts</td>
+</tr>
+<tr>
+<td><a href="docs/08-open-source-culture.html">08</a></td>
+<td><strong>Open Source Culture</strong></td>
+<td>Community norms, contributing, giving feedback</td>
+</tr>
+<tr>
+<td><a href="docs/09-labels-milestones-projects.html">09</a></td>
+<td><strong>Labels, Milestones, and Projects</strong></td>
+<td>Organizing and cross-referencing work</td>
+</tr>
+<tr>
+<td><a href="docs/10-notifications-and-day-1-close.html">10</a></td>
+<td><strong>Notifications and Day 1 Close</strong></td>
+<td>Managing your inbox, merging your work, Day 1 recap</td>
+</tr>
+<tr>
+<td><a href="docs/11-vscode-interface.html">11</a></td>
+<td><strong>VS Code Interface</strong></td>
+<td>VS Code accessibility, screen reader mode, keyboard navigation</td>
+</tr>
+<tr>
+<td><a href="docs/12-vscode-accessibility.html">12</a></td>
+<td><strong>VS Code Accessibility</strong></td>
+<td>Accessibility signals, Accessible View, Accessible Diff Viewer</td>
+</tr>
+<tr>
+<td><a href="docs/13-how-git-works.html">13</a></td>
+<td><strong>How Git Works</strong></td>
+<td>Commits, branches, merges, and the mental model</td>
+</tr>
+<tr>
+<td><a href="docs/14-git-in-practice.html">14</a></td>
+<td><strong>Git in Practice</strong></td>
+<td>Clone, branch, edit, commit, push using VS Code and terminal</td>
+</tr>
+<tr>
+<td><a href="docs/15-code-review.html">15</a></td>
+<td><strong>Code Review</strong></td>
+<td>PR extension, diffs, inline comments, review verdicts</td>
+</tr>
+<tr>
+<td><a href="docs/16-github-copilot.html">16</a></td>
+<td><strong>GitHub Copilot</strong></td>
+<td>Inline suggestions, Copilot Chat, prompting, Accessible View</td>
+</tr>
+<tr>
+<td><a href="docs/17-issue-templates.html">17</a></td>
+<td><strong>Issue Templates</strong></td>
+<td>Creating and using GitHub issue templates</td>
+</tr>
+<tr>
+<td><a href="docs/18-fork-and-contribute.html">18</a></td>
+<td><strong>Fork and Contribute</strong></td>
+<td>Fork workflow, upstream sync, cross-repo contributions</td>
+</tr>
+<tr>
+<td><a href="docs/19-accessibility-agents.html">19</a></td>
+<td><strong>Accessibility Agents</strong></td>
+<td>83 agent files, prompts, skills, and contribution paths across the ecosystem</td>
+</tr>
+<tr>
+<td><a href="docs/20-build-your-agent.html">20</a></td>
+<td><strong>Capstone Project</strong></td>
+<td>Choose Accessibility Agents, GLOW, or another project and create an impactful agentic contribution</td>
+</tr>
+<tr>
+<td><a href="docs/21-next-steps.html">21</a></td>
+<td><strong>What Comes Next</strong></td>
+<td>Where to go after the workshop</td>
+</tr>
+</tbody></table>
+<p><strong>Workshop Agendas</strong> - For facilitators only (not part of learner sequence)</p>
+<table>
+<thead>
+<tr>
+<th scope="col">Document</th>
+<th scope="col">What It Covers</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><a href="admin/DAY1_AGENDA.html">DAY1_AGENDA.md</a></td>
+<td>Full Day 1 schedule, objectives, and activities</td>
+</tr>
+<tr>
+<td><a href="admin/DAY2_AGENDA.html">DAY2_AGENDA.md</a></td>
+<td>Full Day 2 schedule, objectives, and activities</td>
+</tr>
+</tbody></table>
+<p><strong>Appendices</strong> - Reference material; open any time during the workshop</p>
+<table>
+<thead>
+<tr>
+<th scope="col">Appendix</th>
+<th scope="col">Document</th>
+<th scope="col">What It Covers</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><a href="docs/appendix-a-glossary.html">A</a></td>
+<td><strong>GitHub Concepts Glossary</strong></td>
+<td>Every term, concept, and piece of jargon explained</td>
+</tr>
+<tr>
+<td><a href="docs/appendix-b-screen-reader-cheatsheet.html">B</a></td>
+<td><strong>Screen Reader Cheat Sheet</strong></td>
+<td>Complete NVDA, JAWS, and VoiceOver navigation commands - task-based and per-screen-reader - plus the full GitHub built-in keyboard shortcut system</td>
+</tr>
+<tr>
+<td><a href="docs/appendix-m-accessibility-standards.html">C</a></td>
+<td><strong>Accessibility Standards Reference</strong></td>
+<td>WCAG 2.2 success criteria, ARIA roles and patterns, and a quick-reference PR checklist</td>
+</tr>
+<tr>
+<td><a href="docs/appendix-d-git-authentication.html">D</a></td>
+<td><strong>Git Authentication</strong></td>
+<td>SSH keys, Personal Access Tokens, credential storage, and commit signing</td>
+</tr>
+<tr>
+<td><a href="docs/appendix-c-markdown-reference.html">E</a></td>
+<td><strong>GitHub Flavored Markdown</strong></td>
+<td>Alert blocks, collapsible sections, Mermaid diagrams, math, footnotes, heading anchors, and screen reader guidance</td>
+</tr>
+<tr>
+<td><a href="docs/appendix-u-discussions-and-gists.html">F</a></td>
+<td><strong>GitHub Gists</strong></td>
+<td>Code snippets, sharing, embedding, and cloning</td>
+</tr>
+<tr>
+<td><a href="docs/appendix-u-discussions-and-gists.html">G</a></td>
+<td><strong>GitHub Discussions</strong></td>
+<td>Forum-style conversations, Q&amp;A, polls, and accessibility navigation for discussion threads</td>
+</tr>
+<tr>
+<td><a href="docs/appendix-s-releases-tags-insights.html">H</a></td>
+<td><strong>Releases, Tags, and Repository Insights</strong></td>
+<td>Versioned releases, semver, reading release notes, pulse, contributors, traffic, and Insights metrics</td>
+</tr>
+<tr>
+<td><a href="docs/appendix-r-projects-deep-dive.html">I</a></td>
+<td><strong>GitHub Projects Deep Dive</strong></td>
+<td>Boards, tables, roadmaps, custom fields, automations, iterations, cross-repo projects, and accessible navigation</td>
+</tr>
+<tr>
+<td><a href="docs/appendix-n-advanced-search.html">J</a></td>
+<td><strong>GitHub Advanced Search</strong></td>
+<td>Complete query language reference for searching issues, PRs, code, commits, and repositories</td>
+</tr>
+<tr>
+<td><a href="docs/appendix-o-branch-protection.html">K</a></td>
+<td><strong>Branch Protection and Rulesets</strong></td>
+<td>Required reviews, status checks, repository rulesets, and diagnosing why your PR cannot be merged</td>
+</tr>
+<tr>
+<td><a href="docs/appendix-p-security-features.html">L</a></td>
+<td><strong>GitHub Security Features</strong></td>
+<td>Dependabot alerts and updates, secret scanning, code scanning/CodeQL, private vulnerability reporting, and SBOM</td>
+</tr>
+<tr>
+<td><a href="docs/appendix-g-vscode-reference.html">M</a></td>
+<td><strong>VS Code Accessibility Reference</strong></td>
+<td>Complete technical reference for accessibility settings, audio cues, diff viewer, Agents window accessibility notes, screen reader configurations, keyboard shortcuts</td>
+</tr>
+<tr>
+<td><a href="docs/appendix-j-cloud-editors.html">N</a></td>
+<td><strong>GitHub Codespaces</strong></td>
+<td>Cloud development environments - setup, accessibility configuration, and screen reader usage</td>
+</tr>
+<tr>
+<td><a href="docs/appendix-v-github-mobile.html">O</a></td>
+<td><strong>GitHub Mobile</strong></td>
+<td>Accessibility guide for iOS and Android - VoiceOver, TalkBack, notifications, and PR reviews</td>
+</tr>
+<tr>
+<td><a href="docs/appendix-w-github-pages.html">P</a></td>
+<td><strong>Publishing with GitHub Pages</strong></td>
+<td>Deploy a static site from your repository - branch setup, custom domains, CI workflows, and accessibility checks</td>
+</tr>
+<tr>
+<td><a href="docs/appendix-q-actions-workflows.html">Q</a></td>
+<td><strong>GitHub Actions and Workflows</strong></td>
+<td>Deep-dive reference - automation, status checks, CI/CD workflows, and the path to agentic cloud</td>
+</tr>
+<tr>
+<td><a href="docs/appendix-t-community-and-social.html">R</a></td>
+<td><strong>GitHub Profile, Sponsors, and Wikis</strong></td>
+<td>Profile README, GitHub Sponsors, and GitHub Wikis</td>
+</tr>
+<tr>
+<td><a href="docs/appendix-t-community-and-social.html">S</a></td>
+<td><strong>Organizations, Templates, and Repository Settings</strong></td>
+<td>Organizations, repository templates, visibility, archiving, and contributor-relevant settings</td>
+</tr>
+<tr>
+<td><a href="docs/08-open-source-culture.html">T</a></td>
+<td><strong>Contributing to Open Source</strong></td>
+<td>A first-timer&#39;s guide: finding issues, scoping contributions, writing PRs, and building a contribution habit</td>
+</tr>
+<tr>
+<td><a href="docs/appendix-x-resources.html">U</a></td>
+<td><strong>Resources</strong></td>
+<td>Every link, tool, and reference from this event</td>
+</tr>
+<tr>
+<td><a href="docs/appendix-l-agents-reference.html">V</a></td>
+<td><strong>Accessibility Agents Reference</strong></td>
+<td>55 agents, 3 teams, 5 platforms, slash commands, and workspace configuration</td>
+</tr>
+<tr>
+<td><a href="docs/appendix-k-copilot-reference.html">W</a></td>
+<td><strong>GitHub Copilot Reference</strong></td>
+<td>Copilot features, Agents window, chat participants, slash commands, MCP servers, and agentic ecosystem</td>
+</tr>
+<tr>
+<td><a href="docs/appendix-k-copilot-reference.html">X</a></td>
+<td><strong>GitHub Copilot Billing and Models</strong></td>
+<td>Source-backed guidance for current Copilot billing, GitHub AI Credits, model volatility, and selection principles</td>
+</tr>
+<tr>
+<td><a href="docs/appendix-y-workshop-materials.html">Y</a></td>
+<td><strong>Accessing and Downloading Workshop Materials</strong></td>
+<td>GitHub Pages, GitHub.com, cloning, ZIP download, offline reading, folder guide</td>
+</tr>
+<tr>
+<td><a href="docs/appendix-z-github-skills.html">Z</a></td>
+<td><strong>GitHub Skills - Complete Course Catalog</strong></td>
+<td>All 36 GitHub Skills modules organized into six learning paths, with links, prerequisites, and integration guidance</td>
+</tr>
+</tbody></table>
+<blockquote>
+<p><strong>Each guide from Lesson 03 onward includes a &quot;Day 2 Amplifier&quot; callout</strong> that shows how Accessibility Agents extends that skill across three scopes: your VS Code editor → your repository (travels with every fork) → the cloud (GitHub Agentic Workflows running without VS Code). <strong>Learn the manual skill first (Chapter 14), then see how it&#39;s automated (Chapter 16).</strong></p>
+</blockquote>
+<h2 id="this-repository39s-structure">This Repository&#39;s Structure</h2>
+<blockquote>
+<p><strong>One repository, everything included.</strong> Clone or fork this repo and you have the complete workshop - all curriculum guides, Accessibility Agents agents and slash commands, YAML issue forms, PR template, and a practice contribution target in <code>learning-room/</code>. GitHub Skills modules cannot be bundled here (each participant activates their own copy on their own account), but links are in <code>.github/ISSUE_TEMPLATE/config.yml</code>.</p>
+</blockquote>
+<pre><code class="hljs">[repo root]/
+├── README.md                            <span class="hljs-comment">-- You are here</span>
+├── CONTRIBUTING.md                      <span class="hljs-comment">-- How to contribute to this repo</span>
+├── CODE_OF_CONDUCT.md                   <span class="hljs-comment">-- Community standards</span>
+├── <span class="hljs-keyword">admin</span>/FACILITATOR_GUIDE.md           <span class="hljs-comment">-- For workshop organizers only</span>
+├── <span class="hljs-keyword">admin</span>/DAY1_AGENDA.md                 <span class="hljs-comment">-- Day 1 workshop schedule</span>
+├── <span class="hljs-keyword">admin</span>/DAY2_AGENDA.md                 <span class="hljs-comment">-- Day 2 workshop schedule</span>
+├── .github/
+│   ├── ISSUE_TEMPLATE/
+│   │   ├── config.yml                   <span class="hljs-comment">-- Links to GitHub Skills; disables blank issues</span>
+│   │   ├── challenge-*.yml              <span class="hljs-comment">-- 16 core challenge templates</span>
+│   │   ├── bonus-*.yml                  <span class="hljs-comment">-- 5 bonus challenge templates</span>
+│   │   ├── accessibility-bug.yml        <span class="hljs-comment">-- Structured accessibility bug form</span>
+│   │   └── feature-request.yml          <span class="hljs-comment">-- Feature/improvement request form</span>
+│   ├── PULL_REQUEST_TEMPLATE.md         <span class="hljs-comment">-- PR checklist with accessibility section</span>
+│   ├── workflows/                       <span class="hljs-comment">-- CI/CD and autograding workflows</span>
+│   ├── agents/                          <span class="hljs-comment">-- 55 Accessibility Agents for Copilot Chat</span>
+│   └── prompts/                         <span class="hljs-comment">-- 54+ slash commands for Copilot Chat</span>
+├── classroom/                           <span class="hljs-comment">-- GitHub Classroom setup artifacts</span>
+│   ├── README.md                        <span class="hljs-comment">-- Workshop Deployment Guide (unified setup for new cohorts)</span>
+│   ├── assignment-day1-you-belong-here.md
+│   ├── assignment-day2-you-can-build-this.md
+│   ├── roster-<span class="hljs-keyword">template</span>.csv
+│   ├── grading-guide.md
+│   └── teardown-checklist.md
+├── learning-room/                       <span class="hljs-comment">-- GitHub Classroom template copied into each student&#x27;s private repo</span>
+│   ├── README.md
+│   └── docs/
+│       ├── welcome.md                   <span class="hljs-comment">-- Has TODO sections for you to complete</span>
+│       ├── keyboard-shortcuts.md        <span class="hljs-comment">-- Has intentional accessibility issues to fix</span>
+│       └── setup-guide.md              <span class="hljs-comment">-- Has a broken link to find and fix</span>
+├── docs/                                <span class="hljs-comment">-- Full workshop curriculum (22 chapters + appendices)</span>
+│   ├── course-guide.md                  <span class="hljs-comment">-- Student landing page</span>
+│   ├── CHALLENGES.md                    <span class="hljs-comment">-- Challenge Hub: all 21 challenges</span>
+│   ├── <span class="hljs-number">00</span>-pre-workshop-setup.md through <span class="hljs-number">21</span>-next-steps.md
+│   ├── appendix-a-glossary.md through appendix-z-github-skills.md
+│   └── solutions/                       <span class="hljs-comment">-- Reference solutions for every challenge</span>
+├── podcasts/                            <span class="hljs-comment">-- Audio companion episodes</span>
+└── PODCASTS.md                          <span class="hljs-comment">-- Audio player page</span></code></pre>
+<blockquote>
+<p><em>Note: Appendices were renumbered during a February 2026 review. If you encounter external references to &quot;Appendix D&quot; or later letters, subtract one letter (e.g., the former Appendix D is now <a href="docs/appendix-m-accessibility-standards.html">Appendix C</a>).</em></p>
+</blockquote>
+<h2 id="quick-reference">Quick Reference</h2>
+<p>These standalone documents provide additional guidance and resources:</p>
+<table>
+<thead>
+<tr>
+<th scope="col">Document</th>
+<th scope="col">Description</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><a href="admin/FAQ.html">FAQ</a></td>
+<td>Frequently asked questions about the workshop</td>
+</tr>
+<tr>
+<td><a href="admin/QUICK_REFERENCE.html">Quick Reference</a></td>
+<td>Condensed cheat sheet for common tasks</td>
+</tr>
+<tr>
+<td><a href="admin/TROUBLESHOOTING.html">Troubleshooting</a></td>
+<td>Solutions for common setup and workflow issues</td>
+</tr>
+<tr>
+<td><a href="admin/PROGRESS_TRACKER.html">Progress Tracker</a></td>
+<td>Track your learning progress through the workshop</td>
+</tr>
+<tr>
+<td><a href="ACCESSIBILITY_TESTING.html">Accessibility Testing</a></td>
+<td>Accessibility testing procedures and standards</td>
+</tr>
+<tr>
+<td><a href="SECURITY.html">Security</a></td>
+<td>Security policy and vulnerability reporting</td>
+</tr>
+<tr>
+<td><a href="GITHUB_PROPOSAL.html">GitHub Proposal</a></td>
+<td>Original event proposal and curriculum overview (internal reference)</td>
+</tr>
+</tbody></table>
+<h2 id="screen-reader-users-start-here">Screen Reader Users: Start Here</h2>
+<p>Before doing anything else, please read <a href="docs/00-pre-workshop-setup.html"><strong>00 - Pre-Workshop Setup</strong></a>. It will walk you through:</p>
+<ul>
+<li>Configuring your screen reader for GitHub</li>
+<li>Verifying GitHub&#39;s modern interface is working (may already be active - instructions include how to check and enable if needed)</li>
+<li>Turning off settings that make screen reader navigation harder</li>
+<li>Verifying everything works before Day 1 begins</li>
+</ul>
+<h2 id="the-goal-of-this-event">The Goal of This Event</h2>
+<p>Open source software is built by people. Accessibility bugs in open source affect millions of people who use assistive technology every day. By learning to contribute - even something as small as filing a clear, detailed accessibility issue - you become part of fixing that. That matters.</p>
+<p><strong>You don&#39;t have to write a single line of code to make open source more accessible.</strong></p>
+<p>And by the end of Day 2, you will not just be a learner. You will be a product maker - someone who has shipped something real to a project that other people use.</p>
+<h2 id="questions-before-the-event">Questions Before the Event?</h2>
+<ul>
+<li><strong>Discussion Forum:</strong> <a href="https://github.com/community-access/git-going-with-github/discussions">Join the conversation</a> - ask questions, connect with fellow participants, share ideas</li>
+<li><strong>File an issue</strong> in this repository if something in these docs is unclear</li>
+<li><strong>Community:</strong> <a href="https://github.com/orgs/community/discussions/categories/accessibility">GitHub Accessibility Discussions</a></li>
+</ul>
+<h2 id="license">License</h2>
+<p>All workshop documentation is licensed under <a href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a> - you are free to share and adapt with attribution.</p>
+<p><em>Last reviewed: May 2026</em>
+<em>A <a href="https://community-access.org">Community Access</a> initiative.</em></p>
+<h2 id="authoritative-sources">Authoritative Sources</h2>
+<p>Use these official references when you need the current source of truth for facts in this chapter.</p>
+<ul>
+<li><a href="https://docs.github.com/en">GitHub Docs, home</a></li>
+<li><a href="https://github.blog/changelog/">GitHub Changelog</a></li>
+</ul>
+<h3 id="section-level-source-map">Section-Level Source Map</h3>
+<p>Use this map to verify facts for each major section in this file.</p>
+<ul>
+<li><strong>A Workshop by <a href="https://community-access.org">Community Access</a>:</strong> <a href="https://docs.github.com/en">GitHub Docs, home</a>, <a href="https://github.blog/changelog/">GitHub Changelog</a>, <a href="https://docs.github.com/en/discussions">GitHub Discussions docs</a>, <a href="https://docs.github.com/en/get-started/writing-on-github/editing-and-sharing-content-with-gists">GitHub Gists docs</a></li>
+<li><strong>What Is This Event?:</strong> <a href="https://docs.github.com/en">GitHub Docs, home</a>, <a href="https://github.blog/changelog/">GitHub Changelog</a></li>
+<li><strong>Who Is This For?:</strong> <a href="https://docs.github.com/en">GitHub Docs, home</a>, <a href="https://github.blog/changelog/">GitHub Changelog</a></li>
+<li><strong>Two-Day Overview:</strong> <a href="https://docs.github.com/en">GitHub Docs, home</a>, <a href="https://github.blog/changelog/">GitHub Changelog</a></li>
+<li><strong>How to Read These Docs:</strong> <a href="https://docs.github.com/en">GitHub Docs, home</a>, <a href="https://github.blog/changelog/">GitHub Changelog</a></li>
+<li><strong>Post-Workshop Support:</strong> <a href="https://docs.github.com/en">GitHub Docs, home</a>, <a href="https://github.blog/changelog/">GitHub Changelog</a></li>
+<li><strong>Your Challenges:</strong> <a href="https://docs.github.com/en">GitHub Docs, home</a>, <a href="https://github.blog/changelog/">GitHub Changelog</a></li>
+<li><strong>This Repository&#39;s Structure:</strong> <a href="https://docs.github.com/en">GitHub Docs, home</a>, <a href="https://github.blog/changelog/">GitHub Changelog</a>, <a href="https://docs.github.com/en/get-started/using-git/about-git">About Git</a>, <a href="https://docs.github.com/en/get-started/using-github/github-flow">GitHub flow</a>, <a href="https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/about-pull-requests">About pull requests</a></li>
+<li><strong>Screen Reader Users: Start Here:</strong> <a href="https://docs.github.com/en">GitHub Docs, home</a>, <a href="https://github.blog/changelog/">GitHub Changelog</a>, <a href="https://www.w3.org/WAI/standards-guidelines/wcag/">W3C Web Content Accessibility Guidelines (WCAG) 2 overview</a>, <a href="https://www.w3.org/WAI/tutorials/">WAI tutorials for accessible design patterns</a>, <a href="https://www.w3.org/WAI/ARIA/apg/">WAI-ARIA Authoring Practices Guide</a></li>
+<li><strong>The Goal of This Event:</strong> <a href="https://docs.github.com/en">GitHub Docs, home</a>, <a href="https://github.blog/changelog/">GitHub Changelog</a></li>
+<li><strong>Questions Before the Event?:</strong> <a href="https://docs.github.com/en">GitHub Docs, home</a>, <a href="https://github.blog/changelog/">GitHub Changelog</a></li>
+<li><strong>License:</strong> <a href="https://docs.github.com/en">GitHub Docs, home</a>, <a href="https://github.blog/changelog/">GitHub Changelog</a></li>
+</ul>
+</div>
+
+    </main>
+  </div>
+  <footer role="contentinfo" class="site-footer">
+    <p><strong>GIT Going with GitHub</strong> - A workshop by <a href="https://community-access.org">Community Access</a></p>
+    <p><a href="https://github.com/community-access/git-going-with-github">View on GitHub</a> · <a href="https://community-access.org">community-access.org</a></p>
+  </footer>
+
+  <script>
+  (function() {
+    var key = 'gggLastVisitedPath';
+    var currentPath = window.location.pathname || '';
+    try {
+      if (currentPath) {
+        localStorage.setItem(key, currentPath);
+      }
+    } catch (e) {}
+
+    var resumeLink = document.getElementById('resume-link');
+    if (!resumeLink) return;
+
+    try {
+      var savedPath = localStorage.getItem(key);
+      if (savedPath && savedPath !== currentPath) {
+        resumeLink.hidden = false;
+        resumeLink.setAttribute('href', savedPath);
+      }
+    } catch (e) {}
+  })();
+  </script>
+  </body>
+</html>

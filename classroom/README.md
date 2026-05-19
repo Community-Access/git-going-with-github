@@ -63,7 +63,7 @@ Day-2-only participants skip Assignment 1 entirely. They verify readiness using 
 | [assignment-day1-you-belong-here.md](assignment-day1-you-belong-here.md) | Assignment description for Day 1 (paste into Classroom UI) |
 | [assignment-day2-you-can-build-this.md](assignment-day2-you-can-build-this.md) | Assignment description for Day 2 (paste into Classroom UI) |
 | [grading-guide.md](grading-guide.md) | Facilitator rubric for all 21 challenges |
-| [roster-template.csv](roster-template.csv) | Starter CSV for importing student roster |
+| [roster-template.csv](https://github.com/Community-Access/git-going-with-github/blob/main/classroom/roster-template.csv) | Starter CSV for importing student roster |
 | [student-progression.yml](student-progression.yml) | Reference copy of the progression bot workflow |
 | [HUMAN_TEST_MATRIX.md](HUMAN_TEST_MATRIX.md) | End-to-end human walkthrough for all 16 core and 5 bonus challenges |
 | [teardown-checklist.md](teardown-checklist.md) | Post-workshop cleanup steps |
@@ -116,7 +116,7 @@ The roster links GitHub usernames to student identities so facilitators can trac
 1. Open the classroom you just created
 2. Go to **Settings** (gear icon) then **Roster Management**
 3. Click **Import from CSV**
-4. Upload a completed version of [roster-template.csv](roster-template.csv):
+4. Upload a completed version of [roster-template.csv](https://github.com/Community-Access/git-going-with-github/blob/main/classroom/roster-template.csv):
 
 ```csv
 identifier,name,email

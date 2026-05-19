@@ -82,5 +82,5 @@ The Classroom model equivalents live in [learning-room/.github/workflows/](../le
 - [Workshop Deployment Guide](../classroom/README.md) -- full setup using GitHub Classroom
 - [Support Hub](https://github.com/Community-Access/support) -- post-workshop support and async Q&A
 - [Template Repository Content](../learning-room/.github/) -- automation that runs in each student's repo
-- [Student Guide](../learning-room/.github/STUDENT_GUIDE.md) -- how students interact with Gandalf bot
+- [Student Guide](https://github.com/Community-Access/git-going-with-github/blob/main/learning-room/.github/STUDENT_GUIDE.md) -- how students interact with Gandalf bot
 - [Challenge Progression Config](data/challenge-progression.json) -- level and badge definitions
