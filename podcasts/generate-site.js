@@ -467,7 +467,7 @@ function generatePlayerPage(manifest) {
     const label = ep.number === 0 ? ep.title : `Episode ${ep.number}: ${ep.title}`;
     lines.push(`- **${label}** - ${sourceLabel(ep)}`);
     if (hasAudio) {
-      lines.push(`  <audio controls preload="none"><source src="${audioUrl}" type="audio/mpeg"></audio>`);
+      lines.push(`  <audio controls preload="none" aria-label="Audio player: ${label}"><source src="${audioUrl}" type="audio/mpeg"></audio>`);
     }
     lines.push('');
   }
@@ -480,7 +480,7 @@ function generatePlayerPage(manifest) {
     const label = isBonus ? `Bonus: ${ch.title}` : `Challenge ${ch.id}: ${ch.title}`;
     lines.push(`- **${label}** - ${ch.day}`);
     if (hasAudio) {
-      lines.push(`  <audio controls preload="none"><source src="${audioUrl}" type="audio/mpeg"></audio>`);
+      lines.push(`  <audio controls preload="none" aria-label="Audio player: ${label}"><source src="${audioUrl}" type="audio/mpeg"></audio>`);
     }
     lines.push('');
   }
@@ -548,7 +548,7 @@ function generatePlayerPage(manifest) {
     }
     lines.push('');
     if (hasAudio) {
-      lines.push('<audio controls preload="none">');
+      lines.push(`<audio controls preload="none" aria-label="Audio player: ${item.title}">`);
       lines.push(`  <source src="${audioUrl}" type="audio/mpeg">`);
       lines.push(`  Your browser does not support the audio element. <a href="${audioUrl}">Download ${item.shortTitle} (MP3)</a>`);
       lines.push('</audio>');
