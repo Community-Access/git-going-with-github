@@ -66,6 +66,8 @@ for (const e of _map.episodes) {
     // strip the leading `epNN-` so downstream consumers see the same value
     // they did before the data source switch.
     slug: e.current_slug.replace(/^ep\d+-/, ''),
+    // Explicit audio filename from the map (Stage 3 cutover).
+    audio: e.filename,
     title: cfg.title,
     description: cfg.description || '',
     duration: cfg.duration || '10-15 min',
