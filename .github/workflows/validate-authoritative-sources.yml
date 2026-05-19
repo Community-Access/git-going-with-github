@@ -8,7 +8,6 @@ on:
       - "classroom/**/*.md"
       - "learning-room/**/*.md"
       - "admin/**/*.md"
-      - "scripts/add-authoritative-sources.js"
       - "scripts/validate-authoritative-sources.js"
       - "package.json"
       - ".github/workflows/validate-authoritative-sources.yml"
@@ -21,7 +20,6 @@ on:
       - "classroom/**/*.md"
       - "learning-room/**/*.md"
       - "admin/**/*.md"
-      - "scripts/add-authoritative-sources.js"
       - "scripts/validate-authoritative-sources.js"
       - "package.json"
       - ".github/workflows/validate-authoritative-sources.yml"
@@ -29,6 +27,8 @@ on:
 jobs:
   validate-authoritative-sources:
     runs-on: ubuntu-latest
+    env:
+      FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: true
 
     steps:
       - name: Checkout
@@ -37,7 +37,7 @@ jobs:
       - name: Setup Node
         uses: actions/setup-node@v4
         with:
-          node-version: 20
+          node-version: 24
 
       - name: Validate authoritative source sections
         run: npm run validate:authoritative-sources

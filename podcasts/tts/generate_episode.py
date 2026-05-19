@@ -1,4 +1,5 @@
 #!/usr/bin/env python3
+# lint-no-hardcoded-slugs: allow (single-episode helper retains legacy slug default; superseded by generate_all_kokoro --map flow)
 """Generate a single podcast episode using local Piper ONNX models.
 
 Produces per-segment WAVs (including silence for pauses) inside

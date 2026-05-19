@@ -1,0 +1,13 @@
+const { DatabaseSync } = require('node:sqlite');
+const db = new DatabaseSync('podcasts/llm-podcast-generator-review/generated/execution/ai_jobs.sqlite');
+const byStatus = db.prepare("SELECT status, COUNT(1) AS c FROM ai_jobs WHERE model = 'openai/gpt-5.5' GROUP BY status").all();
+console.log('By status:', byStatus);
+const recent = db.prepare("SELECT source_record_id AS slug, status, cost_actual, output_tokens_actual, updated_at FROM ai_jobs WHERE model = 'openai/gpt-5.5' ORDER BY updated_at DESC LIMIT 15").all();
+console.log('Most recent updates:');
+for (const r of recent) console.log(' ', String(r.slug).padEnd(28), String(r.status).padEnd(12), String(r.output_tokens_actual ?? '').padStart(6), '$' + (Number(r.cost_actual) || 0).toFixed(4), r.updated_at);
+const totalCost = db.prepare("SELECT COALESCE(SUM(cost_actual),0) AS s FROM ai_jobs WHERE model = 'openai/gpt-5.5'").get();
+console.log('Total cost so far: $' + Number(totalCost.s).toFixed(4));
+const attempts = db.prepare("SELECT COUNT(1) AS c FROM ai_job_attempts WHERE job_id IN (SELECT id FROM ai_jobs WHERE model = 'openai/gpt-5.5')").get();
+console.log('Attempts:', attempts.c);
+const results = db.prepare("SELECT COUNT(1) AS c FROM ai_job_results WHERE job_id IN (SELECT id FROM ai_jobs WHERE model = 'openai/gpt-5.5')").get();
+console.log('Results:', results.c);

@@ -1,0 +1,539 @@
+{
+  "generatedAt": "2026-05-18T23:43:41.185Z",
+  "schemaVersion": 2,
+  "kind": "challenge",
+  "slug": "cc-07-survive-a-merge-conflict",
+  "title": "Challenge 07: Survive a Merge Conflict",
+  "description": "Reading conflict markers, choosing content, deleting markers, and committing a resolution.",
+  "concepts": [
+    "Reading conflict markers, choosing content, deleting markers, and committing a resolution.",
+    "Challenge title: Survive a Merge Conflict"
+  ],
+  "transcriptPath": "C:\\code\\git-going-with-github\\podcasts\\scripts\\challenges\\cc-07-survive-a-merge-conflict.txt",
+  "chapterPlanPath": "C:\\code\\git-going-with-github\\podcasts\\transcripts\\challenges\\cc-07-survive-a-merge-conflict-chapters.json",
+  "transcriptText": "[ALEX]\nWelcome back. Today we're doing something that sounds dramatic but is actually very ordinary in Git and GitHub: surviving a merge conflict.\n\n[JAMIE]\nI appreciate that wording, because \"merge conflict\" sounds like I broke the internet.\n\n[ALEX]\nExactly. But a merge conflict is not a failure. It's a checkpoint. Git is simply saying, \"Two changes overlap, and I need a human decision.\"\n\n[PAUSE]\n\n[ALEX]\nHere's the big picture. In this lesson, we'll cover what a merge conflict is, why it happens, how to prevent it, how to read the conflict markers, how to resolve conflicts on GitHub, how VS Code helps, what to do in the terminal if you work locally, and what to do when you feel stuck.\n\n[JAMIE]\nAnd for this course specifically, there's a controlled practice challenge, right?\n\n[ALEX]\nRight. This chapter uses one short practice challenge so you can learn conflict resolution in a low-pressure way. The pattern is: observe, resolve, verify. The time expectation is under ten minutes. Your evidence is an issue-linked pull request and a completion comment.\n\n[JAMIE]\nSo the goal isn't just \"make the warning go away.\" It's to understand the structure, make a decision, and prove you resolved it cleanly.\n\n[ALEX]\nThat's it.\n\n[PAUSE]\n\n[ALEX]\nFor the challenge, your facilitator triggers a merge conflict in your pull request. You open the PR, look for the conflict notice, choose Resolve conflicts or edit the file directly on your branch, find the conflict markers, decide what content belongs in the final file, delete the marker lines, and commit the resolution.\n\n[JAMIE]\nAnd the autograder is looking for two things: no conflict markers left behind, and meaningful content still in the file.\n\n[ALEX]\nYes. So if you remove everything, that's not success. And if you leave even one marker line, that's not success either.\n\n[PAUSE]\n\n[ALEX]\nLet's define the core idea. A merge conflict happens when two people change the same part of the same file in different ways, and Git cannot automatically decide which version to keep.\n\n[JAMIE]\nSo if I edit line twelve and you edit line two hundred, Git usually handles that fine.\n\n[ALEX]\nUsually, yes. But if we both edit the same line, or nearby lines in a way that overlaps, Git may stop and ask for help.\n\n[JAMIE]\nWhat are the common reasons this happens?\n\n[ALEX]\nA few classics: two people edited the same line, one person deleted a file while another edited it, two people restructured the same section, or a branch stayed open too long and drifted far away from main.\n\n[JAMIE]\nThat last one feels especially realistic in open source.\n\n[ALEX]\nVery realistic. Long-running branches invite conflicts.\n\n[PAUSE]\n\n[ALEX]\nBefore we resolve conflicts, let's make them less likely. Prevention is easier than resolution.\n\n[JAMIE]\nGive us the practical list.\n\n[ALEX]\nKeep branches short-lived. Aim for small, focused work that merges in a few days, not a few weeks.\n\nSync with main frequently. From your feature branch, you may merge origin slash main into your branch. And if you're comfortable with rebasing, rebasing onto origin slash main is another option.\n\nCommunicate with your team. If you know you'll be editing a heavily used file, say so.\n\nAvoid mass reformatting unless it's coordinated, because changing lots of lines creates unnecessary overlap.\n\nPull before you push, so you're not building on stale history.\n\nWork on separate files when possible.\n\nKeep pull requests small.\n\nAnd use draft pull requests for early visibility, so other contributors can see what area you're touching before things collide.\n\n[JAMIE]\nThat's a strong pattern: short branches, frequent sync, small PRs, visible work.\n\n[ALEX]\nExactly. Those habits reduce stress.\n\n[JAMIE]\nAnd there was also an advanced prevention idea about fast-forward merges.\n\n[ALEX]\nYes. The important concept is that simpler branch histories can reduce complexity. You don't need to master fast-forward behavior today, but it helps to know that the shape of history affects how cleanly changes integrate.\n\n[PAUSE]\n\n[JAMIE]\nOkay. Now let's talk about the thing learners actually see: conflict markers.\n\n[ALEX]\nYes. When Git can't merge automatically, it inserts plain-text markers directly into the file.\n\nHere is the classic shape:\n\nLess-than signs repeated seven times, then HEAD.\nThen one version of the content.\nThen a separator line made of equals signs.\nThen the other version of the content.\nThen greater-than signs repeated seven times, followed by a branch name.\n\n[JAMIE]\nAnd because this is an audio lesson, let's label the sections clearly.\n\n[ALEX]\nGood idea. There are three important parts.\n\nFirst, the section between the start marker and the separator.\n\nSecond, the section between the separator and the end marker.\n\nThird, the marker lines themselves.\n\nIn the solution reference, the section between the start marker and the separator is described as the version on the branch you are merging into, usually main. The section between the separator and the end marker is the version on your branch.\n\n[JAMIE]\nBut in the practice chapter instructions, the wording says the first block is your version, the current branch, and the second block is their version, the incoming branch.\n\n[ALEX]\nRight, and that's why context matters. Different tools and workflows describe the sides a little differently depending on where the merge is happening. The safe habit is this: do not rely only on labels like \"yours\" and \"theirs.\" Read the actual text on both sides and decide what final content should remain.\n\n[JAMIE]\nThat's helpful, especially for learners who worry about memorizing the wrong mapping.\n\n[ALEX]\nExactly. The universally safe truth is: the marker lines are not content, and the final file must contain only the text you actually want to keep.\n\n[PAUSE]\n\n[ALEX]\nLet's make that concrete with the example resolution from the reference solution.\n\nSuppose one side says, \"Welcome to the Learning Room. This is the main branch version.\"\nThe other side says, \"Welcome to the Learning Room. This is my improved version with more detail.\"\n\nYour options are threefold.\n\nKeep yours: delete the other section and all marker lines.\n\nKeep theirs: delete your section and all marker lines.\n\nOr combine both: write one clean final version that incorporates the best parts of each.\n\n[JAMIE]\nSo there is not always one magic correct answer.\n\n[ALEX]\nCorrect. The decision depends on what is better for the project. Two valid resolutions may use different wording.\n\n[JAMIE]\nThat fits the peer simulation note too. It's okay if your final wording differs from someone else's, as long as it's a valid resolution.\n\n[ALEX]\nExactly right.\n\n[PAUSE]\n\n[ALEX]\nNow let's walk through the challenge flow step by step.\n\nFirst, wait for your facilitator to trigger the conflict. If you don't see a conflict yet, it may simply not be ready.\n\nSecond, open your assigned challenge issue. It tells you which practice file contains the conflict markers.\n\nThird, open that file and search for the start marker. In a browser you can use Control F. In VS Code you can also search directly. Screen reader users can search for the literal characters, since the markers are plain text and fully readable.\n\nFourth, read both sides carefully.\n\nFifth, decide: keep one side or combine them.\n\nSixth, delete all three types of marker lines: the start line, the equals separator, and the end line with the branch name.\n\nSeventh, review the file and search again so there are zero remaining markers.\n\nEighth, commit your changes on your short-lived feature branch. The recommended naming pattern is fix slash your name dash issue number.\n\nNinth, open or update your pull request. The suggested title pattern is fix: resolve conflict markers in filename. In the body, include Closes number, with your issue number, and a brief sentence or two explaining what content you kept and why.\n\n[JAMIE]\nAnd when everything is open and passing checks, there's one more administrative step.\n\n[ALEX]\nYes. Post a completion comment on your assigned challenge issue. The example format is: Chapter 7 completed, then the PR number, the filename, and your content decision with a short reason.\n\n[JAMIE]\nThat matters because this course wants issue-linked evidence, not just a private sense that \"I think I fixed it.\"\n\n[ALEX]\nExactly.\n\n[PAUSE]\n\n[JAMIE]\nLet's stay with accessibility for a moment. What should blind or low-vision learners know about navigating this?\n\n[ALEX]\nA few key points. The conflict markers themselves are just text, so screen readers can read them directly. Search is your friend. Searching for the start marker is often the fastest way to jump into the conflict area.\n\nIf you're on GitHub and can't find the Resolve conflicts button, look on the PR conversation tab near the merge section toward the bottom. Screen reader users may want to search the page for the phrase \"Resolve conflicts\" button.\n\nFor low-vision users, high contrast themes and zoom can make the conflict regions easier to parse, especially in editors that highlight current and incoming changes.\n\nAnd this chapter also includes learning card guidance for different working styles: visual and mouse users, low vision users, NVDA or JAWS on Windows, VoiceOver on macOS, and CLI users.\n\n[JAMIE]\nSo the chapter is intentionally not one-size-fits-all.\n\n[ALEX]\nRight. Open the guidance that matches how you work.\n\n[PAUSE]\n\n[ALEX]\nLet's talk about spotting a conflict on GitHub. On a pull request, GitHub may show a message that the branch has conflicts that must be resolved before merging.\n\n[JAMIE]\nAnd that's your cue that GitHub needs human help.\n\n[ALEX]\nYes. If the web editor is available, choose Resolve conflicts. GitHub's conflict editor will show the conflicting sections, and your task is to edit the file into one clean final version.\n\nStep by step on GitHub: click Resolve conflicts, edit the file so the markers are removed and the final content is what you want, choose Mark as resolved, and then Commit merge.\n\n[JAMIE]\nWhat does the editor generally feel like?\n\n[ALEX]\nIt highlights the conflict region and places you right where the disagreement is. But the same rule applies: don't just click through. Read both sides. Decide intentionally.\n\n[PAUSE]\n\n[JAMIE]\nNow compare that with VS Code.\n\n[ALEX]\nIn VS Code, conflicts are often shown with highlighted regions and helpful actions above each conflict. Common actions include Accept Current Change, Accept Incoming Change, and Accept Both Changes.\n\n[JAMIE]\nAnd we should translate those a little.\n\n[ALEX]\nYes. \"Current\" usually means the version currently checked out in your workspace. \"Incoming\" usually means the version being merged in. \"Accept Both\" keeps both chunks, after which you may still need to edit for clarity and formatting.\n\n[JAMIE]\nSo even when the tool gives you buttons, you still need judgment.\n\n[ALEX]\nAlways. Tooling helps, but it doesn't replace understanding.\n\n[PAUSE]\n\n[ALEX]\nIf you cloned the repository and prefer local work, there is a terminal-based alternative.\n\nYou update main, switch back to your branch, and merge main into your branch. If a conflict happens, Git pauses the merge and reports the affected files.\n\nThen you open each conflicted file in your editor, look for the markers, remove the markers while keeping the content you want, save the file, mark it resolved with git add, complete the merge with git commit, and push. Your pull request updates automatically.\n\n[JAMIE]\nCan we also walk through the command-line conflict reading pattern more explicitly?\n\n[ALEX]\nDefinitely.\n\nStart the merge that causes the conflict.\n\nThen check which files have conflicts. Look for lines like \"both modified\" in Git's output.\n\nOpen each conflicted file in your editor.\n\nEdit the file: remove the marker lines, keep the content you want.\n\nAfter editing, mark the file as resolved with git add.\n\nThen complete the merge with git commit. Git often auto-fills the merge commit message.\n\nAfter that, check the result. Review the diff so you understand what changed. On the PR, review merge state, checks, and overall readiness.\n\n[JAMIE]\nThat sequence really matters: detect, edit, add, commit, verify.\n\n[ALEX]\nExactly.\n\n[PAUSE]\n\n[JAMIE]\nThere was also a real-file style example in the chapter, where two students both add content to the same table row.\n\n[ALEX]\nYes, and that example is useful because it shows that conflicts aren't always huge. Sometimes two people just edited the same small region, like one row in a Markdown table. The resolution options remain the same: keep one edit, keep the other, or combine them into one clean row that preserves the useful information.\n\n[JAMIE]\nSo the skill scales from tiny wording changes to larger sections.\n\n[ALEX]\nExactly.\n\n[PAUSE]\n\n[ALEX]\nNow, something important philosophically: conflicts are not always bad.\n\n[JAMIE]\nThat sounds surprising.\n\n[ALEX]\nA conflict can be evidence that two contributors both cared about the same important area. The conflict forces a deliberate review. In that sense, it can improve quality, because someone must consciously choose the final wording or logic rather than letting one change silently overwrite the other.\n\n[JAMIE]\nAnd the chapter also frames this as relevant to AI-assisted work.\n\n[ALEX]\nYes. Sometimes an AI tool confidently produces changes that overlap with human-written changes. Conflict resolution becomes part of supervising AI safely. You are not just merging text. You are evaluating which content deserves to survive.\n\n[PAUSE]\n\n[JAMIE]\nLet's cover the most common stuck moments, because learners definitely hit these.\n\n[ALEX]\nAbsolutely.\n\nIf you do not see a conflict, your facilitator may not have triggered it yet. Wait for the signal.\n\nIf you cannot find the Resolve conflicts button, check the PR conversation area near the merge section, or search the page for that button label.\n\nIf you are not sure what to keep, read both versions aloud. If both are useful, combine them. There is often no single correct answer.\n\nIf the autograder still reports conflict markers, search the file for all three marker types. Every one of them must be completely removed.\n\nIf you accidentally deleted too much, undo and redo that section carefully.\n\nAnd if you want a sanity check, ask your facilitator before opening the PR.\n\n[JAMIE]\nWhat about the nuclear option?\n\n[ALEX]\nAlso valid. If you feel tangled up, you can abandon the attempt and start fresh from a clean copy of the branch or file. Sometimes restarting is faster than untangling confused edits.\n\n[JAMIE]\nThat's reassuring. Starting over is not cheating.\n\n[ALEX]\nNot at all.\n\n[PAUSE]\n\n[ALEX]\nLet's do a compact checklist.\n\nA merge conflict means overlapping edits need a human decision.\n\nConflict markers are plain text and come in three parts: start marker, separator, end marker.\n\nRead both sides.\n\nChoose one side or combine them.\n\nDelete all marker lines.\n\nSearch again to confirm none remain.\n\nCommit the resolution.\n\nVerify the PR status, checks, and diff.\n\nSubmit your issue-linked evidence.\n\n[JAMIE]\nAnd emotionally?\n\n[ALEX]\nConflicts are normal. They are manageable. The skill is calm reading and intentional editing.\n\n[PAUSE]\n\n[JAMIE]\nBefore we wrap up, what are the expected outcomes for this chapter?\n\n[ALEX]\nYou should be able to identify the three marker lines immediately, read both sides of a conflict, make an intentional content decision, remove all markers, and submit a clean pull request linked to the issue.\n\n[JAMIE]\nAnd that's the learning moment, really. Not \"avoid all conflicts forever,\" but \"recognize them without panic and resolve them clearly.\"\n\n[ALEX]\nExactly. That is the point.\n\n[PAUSE]\n\n[ALEX]\nIf you want to check current official guidance beyond the course material, the authoritative sources named for this chapter are GitHub Docs, the GitHub Changelog, GitHub documentation about Git and pull requests, GitHub Flow guidance, and the Git SCM book's discussion of basic merge conflicts.\n\n[JAMIE]\nSo the course teaches the workflow, and those references are your source of truth when interfaces change.\n\n[ALEX]\nWell said.\n\n[PAUSE]\n\n[ALEX]\nOne final reminder for the challenge: your job is not to preserve the markers. Your job is to produce a clean file that says what the project should actually say.\n\n[JAMIE]\nDelete the markers, keep the meaning.\n\n[ALEX]\nPerfect. And once you can do that, merge conflicts stop feeling scary.\n\n[JAMIE]\nThey start feeling like editing.\n\n[ALEX]\nExactly.\n",
+  "chapterPlanText": "﻿[\n    {\n        \"title\":  \"cc-07-survive-a-merge-conflict: Overview\",\n        \"startSegmentIndex\":  0\n    },\n    {\n        \"title\":  \"Section 2\",\n        \"startSegmentIndex\":  14\n    },\n    {\n        \"title\":  \"Section 3\",\n        \"startSegmentIndex\":  30\n    },\n    {\n        \"title\":  \"Section 4\",\n        \"startSegmentIndex\":  45\n    },\n    {\n        \"title\":  \"Section 5\",\n        \"startSegmentIndex\":  62\n    },\n    {\n        \"title\":  \"Section 6\",\n        \"startSegmentIndex\":  75\n    },\n    {\n        \"title\":  \"Section 7\",\n        \"startSegmentIndex\":  93\n    },\n    {\n        \"title\":  \"Section 8\",\n        \"startSegmentIndex\":  106\n    }\n]\n",
+  "sourceFiles": [
+    {
+      "exists": true,
+      "path": "C:\\code\\git-going-with-github\\learning-room\\.github\\ISSUE_TEMPLATE\\challenge-07-merge-conflict.yml",
+      "headings": [],
+      "content": "name: \"Challenge 7: Survive a Merge Conflict\"\ndescription: Resolve a facilitator-triggered merge conflict.\nhidden: true\ntitle: \"Challenge 7: Survive a Merge Conflict (@{username})\"\nlabels: [\"challenge\", \"day-1\", \"autograded\"]\nbody:\n  - type: markdown\n    attributes:\n      value: |\n        ## Challenge 7: Survive a Merge Conflict\n\n        **Chapter:** [Ch07: Merge Conflicts](https://github.com/Community-Access/git-going-with-github/blob/main/docs/07-merge-conflicts.md)\n\n        **What you will do:** Your facilitator will intentionally trigger a merge conflict in your PR. You will resolve it by identifying conflict markers, choosing the right content, and cleaning up the markers.\n\n        **Why this matters:** Merge conflicts happen in real teamwork. Learning to resolve them calmly is a key professional skill.\n\n        ### Understanding conflict markers\n\n        When Git cannot automatically merge code, it marks the problem with special markers:\n\n        ```\n        <<<<<<< HEAD\n        The version currently on main branch\n        =======\n        Your version from your branch\n        >>>>>>> learn/your-username\n        ```\n\n        **Your job:** Decide which version is right (or combine them), then **DELETE all three marker lines** (the `<<<<<<<`, `=======`, `>>>>>>>` lines). The final file should have NO markers and have actual, meaningful code.\n\n        ### Step-by-step resolution\n\n        **Step 1: Look at your PR**\n        1. Go to your **Pull requests** tab\n        2. Click on your PR\n        3. You should see a message: \"Can't automatically merge\" or \"This branch has conflicts...\"\n        4. Look for a button: **Resolve conflicts** (or \"Resolve\")\n        5. Click it\n\n        **Step 2: Find the conflict markers**\n        1. GitHub will show the file with conflict markers highlighted\n        2. Look for lines starting with `<<<<<<<`, `=======`, `>>>>>>>`\n        3. Read both versions carefully\n\n        **Step 3: Choose your version**\n        You have three options:\n        - Keep the **main branch** version (delete everything from `<<<<<<<` to `=======` inclusive, keep `=======` to `>>>>>>>`)\n        - Keep **your branch** version (keep `<<<<<<<` to `=======` exclusive, delete `=======` to `>>>>>>>`)\n        - **Combine both** (keep parts of both, delete all marker lines)\n        - Ask your facilitator which is correct\n\n        **Step 4: Clean up**\n        1. Delete the marker lines: `<<<<<<<`, `=======`, `>>>>>>>`\n        2. The final file should have NO conflict markers\n        3. The final file should have meaningful, correct code\n\n        **Step 5: Mark as resolved**\n        1. At the bottom, click **Mark as resolved**\n        2. Commit the resolution\n        3. Your PR should now be mergeable\n\n        **Autograded:** The autograder will check that no conflict markers remain in your file and that the file has meaningful content.\n\n  - type: textarea\n    id: evidence\n    attributes:\n      label: \"Your evidence\"\n      description: \"Describe the conflict and how you resolved it.\"\n      placeholder: |\n        The conflict was in file: ...\n        I chose to keep: ...\n        I resolved it by: ...\n    validations:\n      required: true\n\n  - type: markdown\n    attributes:\n      value: |\n        ### Peer simulation check\n\n        Compare your resolution with the facilitator's conflict seed or with a real buddy if you have access. It is OK if two valid resolutions keep different wording.\n\n        ### If you get stuck\n\n        | Symptom | Try this |\n        |---|---|\n        | I do not see a conflict | Your facilitator may not have triggered it yet. Wait for their signal. |\n        | I cannot find the Resolve conflicts button | Look in the PR conversation tab, near the merge section at the bottom. Screen reader users: search for \"Resolve conflicts\" button. |\n        | I am not sure which content to keep | Read both versions. If both are valuable, combine them. If one is clearly better, keep that one. There is no single right answer. |\n        | The autograder still reports conflict markers | Search the file for `<<<<<<<`, `=======`, and `>>>>>>>`. All three types must be completely removed. |\n        | I finished but want to check my work | [View the reference solution](https://github.com/Community-Access/git-going-with-github/blob/main/docs/solutions/solution-07-merge-conflict.md) |\n"
+    },
+    {
+      "exists": true,
+      "path": "C:\\code\\git-going-with-github\\docs\\solutions\\solution-07-merge-conflict.md",
+      "headings": [
+        {
+          "level": 2,
+          "title": "What conflict markers look like"
+        },
+        {
+          "level": 3,
+          "title": "The three sections"
+        },
+        {
+          "level": 2,
+          "title": "Example resolution"
+        },
+        {
+          "level": 3,
+          "title": "Decision process"
+        },
+        {
+          "level": 2,
+          "title": "On github.com"
+        },
+        {
+          "level": 2,
+          "title": "In VS Code"
+        },
+        {
+          "level": 2,
+          "title": "What matters"
+        },
+        {
+          "level": 2,
+          "title": "Authoritative Sources"
+        },
+        {
+          "level": 3,
+          "title": "Section-Level Source Map"
+        }
+      ],
+      "content": "# Solution Reference: Challenge 7 -- Resolve a Merge Conflict\n\nThis shows what conflict markers look like and how to resolve them.\n\n## What conflict markers look like\n\nWhen Git cannot automatically merge two changes to the same lines, it inserts markers:\n\n```\n<<<<<<< HEAD\nWelcome to the Learning Room! This is the main branch version.\n=======\nWelcome to the Learning Room! This is my improved version with more detail.\n>>>>>>> fix/welcome-update\n```\n\n### The three sections\n\n- **Between `<<<<<<< HEAD` and `=======`**: The version on the branch you are merging INTO (usually main)\n- **Between `=======` and `>>>>>>>`**: The version on YOUR branch\n- **The marker lines themselves**: Must be deleted -- they are not content\n\n## Example resolution\n\n**Before (with conflict markers):**\n\n```\n<<<<<<< HEAD\nWelcome to the Learning Room! This is the main branch version.\n=======\nWelcome to the Learning Room! This is my improved version with more detail.\n>>>>>>> fix/welcome-update\n```\n\n**After (resolved):**\n\n```\nWelcome to the Learning Room! This is my improved version with more detail.\n```\n\n### Decision process\n\nYou chose one of three options:\n\n1. **Keep yours:** Delete the HEAD section and all markers, keep your changes\n2. **Keep theirs:** Delete your section and all markers, keep the HEAD version\n3. **Combine both:** Write new text that incorporates ideas from both versions, delete all markers\n\nAll three are valid. The choice depends on which version is better for the project.\n\n## On github.com\n\nGitHub offers a conflict editor directly in the browser:\n\n1. Click \"Resolve conflicts\" on the PR page\n2. The editor highlights conflicting sections\n3. Edit the file to remove markers and keep the content you want\n4. Click \"Mark as resolved\" then \"Commit merge\"\n\n## In VS Code\n\nVS Code highlights conflicts and offers clickable options above each conflict:\n\n- \"Accept Current Change\" (HEAD version)\n- \"Accept Incoming Change\" (your version)\n- \"Accept Both Changes\" (keeps both, you edit after)\n\n## What matters\n\nThe learning objective is understanding that conflicts are normal and resolvable. If you removed all conflict markers and the file makes sense, you completed this challenge.\n\n## Authoritative Sources\n\nUse these official references when you need the current source of truth for facts in this chapter.\n\n- [GitHub Docs, home](https://docs.github.com/en)\n- [GitHub Changelog](https://github.blog/changelog/)\n\n### Section-Level Source Map\n\nUse this map to verify facts for each major section in this file.\n\n- **What conflict markers look like:** [GitHub Docs, home](https://docs.github.com/en), [GitHub Changelog](https://github.blog/changelog/)\n- **Example resolution:** [GitHub Docs, home](https://docs.github.com/en), [GitHub Changelog](https://github.blog/changelog/)\n- **On github.com:** [GitHub Docs, home](https://docs.github.com/en), [GitHub Changelog](https://github.blog/changelog/), [About Git](https://docs.github.com/en/get-started/using-git/about-git), [GitHub flow](https://docs.github.com/en/get-started/using-github/github-flow), [About pull requests](https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/about-pull-requests)\n- **In VS Code:** [GitHub Docs, home](https://docs.github.com/en), [GitHub Changelog](https://github.blog/changelog/)\n- **What matters:** [GitHub Docs, home](https://docs.github.com/en), [GitHub Changelog](https://github.blog/changelog/)\n"
+    },
+    {
+      "exists": true,
+      "path": "C:\\code\\git-going-with-github\\docs\\07-merge-conflicts.md",
+      "headings": [
+        {
+          "level": 2,
+          "title": "Understanding, Preventing, and Resolving Conflicts"
+        },
+        {
+          "level": 2,
+          "title": "Workshop Recommendation (Chapter 7)"
+        },
+        {
+          "level": 3,
+          "title": "Chapter 7 Challenge Set"
+        },
+        {
+          "level": 3,
+          "title": "Challenge 7.1 Step-by-Step: Resolve Conflict Markers"
+        },
+        {
+          "level": 3,
+          "title": "Completing Chapter 7: Submit Your Evidence"
+        },
+        {
+          "level": 3,
+          "title": "Expected Outcomes"
+        },
+        {
+          "level": 3,
+          "title": "If You Get Stuck"
+        },
+        {
+          "level": 3,
+          "title": "Learning Moment"
+        },
+        {
+          "level": 3,
+          "title": "Learning Pattern Used in This Chapter"
+        },
+        {
+          "level": 3,
+          "title": "About Learning Cards in This Chapter"
+        },
+        {
+          "level": 2,
+          "title": "Local Git Alternative: Resolving Conflicts from Your Terminal"
+        },
+        {
+          "level": 2,
+          "title": "What Is a Merge Conflict?"
+        },
+        {
+          "level": 2,
+          "title": "Why Conflicts Happen"
+        },
+        {
+          "level": 2,
+          "title": "How to Prevent Conflicts (Prevention is Easier Than Resolution)"
+        },
+        {
+          "level": 3,
+          "title": "1. **Keep your branches short-lived**"
+        },
+        {
+          "level": 3,
+          "title": "2. **Sync with main frequently**"
+        },
+        {
+          "level": 3,
+          "title": "3. **Communicate with your team**"
+        },
+        {
+          "level": 3,
+          "title": "4. **Avoid mass reformatting**"
+        },
+        {
+          "level": 3,
+          "title": "5. **Pull before you push**"
+        },
+        {
+          "level": 3,
+          "title": "6. **Work on separate files when possible**"
+        },
+        {
+          "level": 3,
+          "title": "7. **Keep PRs small**"
+        },
+        {
+          "level": 3,
+          "title": "8. **Use Draft PRs for early visibility**"
+        },
+        {
+          "level": 3,
+          "title": "Learning Cards: How to Prevent Conflicts"
+        },
+        {
+          "level": 2,
+          "title": "Advanced Prevention: Understanding Fast-Forward Merges"
+        },
+        {
+          "level": 2,
+          "title": "When Conflicts Are Actually Good"
+        },
+        {
+          "level": 2,
+          "title": "Spotting a Conflict on GitHub"
+        },
+        {
+          "level": 3,
+          "title": "Tool Cards: Resolve a Merge Conflict"
+        },
+        {
+          "level": 2,
+          "title": "Conflict Markers - What They Mean"
+        },
+        {
+          "level": 3,
+          "title": "Breakdown"
+        },
+        {
+          "level": 3,
+          "title": "Example in a real file"
+        },
+        {
+          "level": 4,
+          "title": "Original file (`docs/keyboard-shortcuts.md`) before conflict"
+        },
+        {
+          "level": 4,
+          "title": "After two students both added a shortcut to the same table row"
+        },
+        {
+          "level": 4,
+          "title": "Resolution options"
+        },
+        {
+          "level": 3,
+          "title": "Learning Cards: Conflict Markers"
+        },
+        {
+          "level": 2,
+          "title": "Resolving Conflicts on GitHub (Web Editor)"
+        },
+        {
+          "level": 3,
+          "title": "Step-by-step: GitHub Conflict Editor"
+        },
+        {
+          "level": 3,
+          "title": "What it looks like in the editor"
+        },
+        {
+          "level": 3,
+          "title": "Learning Cards: Resolving Conflicts on GitHub"
+        },
+        {
+          "level": 2,
+          "title": "Resolving Conflicts in VS Code (Day 2)"
+        },
+        {
+          "level": 3,
+          "title": "VS Code shows conflicts as"
+        },
+        {
+          "level": 3,
+          "title": "VS Code merge conflict actions"
+        },
+        {
+          "level": 2,
+          "title": "When You Feel Stuck"
+        },
+        {
+          "level": 3,
+          "title": "Ask for help - it's normal"
+        },
+        {
+          "level": 3,
+          "title": "Abandon and start fresh (nuclear option)"
+        },
+        {
+          "level": 3,
+          "title": "Learning Cards: When You Feel Stuck"
+        },
+        {
+          "level": 2,
+          "title": "Reading a Conflict Message from Git (Command Line Reference)"
+        },
+        {
+          "level": 2,
+          "title": "Summary Checklist"
+        },
+        {
+          "level": 2,
+          "title": "Try It: Read a Conflict (Without Fear)"
+        },
+        {
+          "level": 2,
+          "title": "Authoritative Sources"
+        },
+        {
+          "level": 3,
+          "title": "Section-Level Source Map"
+        }
+      ],
+      "content": "# Merge Conflicts\n>\n> **Listen to Episode 7:** [Merge Conflicts Are Not Scary](https://lp.csedesigns.com/ggg/PODCASTS.html) - a conversational audio overview of this chapter. Listen before reading to preview the concepts, or after to reinforce what you learned.\n\n> **Related appendices:** [Appendix E: Advanced Git](appendix-e-advanced-git.md) | [Appendix G: VS Code Reference](appendix-g-vscode-reference.md)\n> **Authoritative sources:** [GitHub Docs: Resolving merge conflicts](https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/addressing-merge-conflicts/resolving-a-merge-conflict-on-github) | [Git SCM: Basic Merge Conflicts](https://git-scm.com/book/en/v2/Git-Branching-Basic-Branching-and-Merging#_basic_merge_conflicts)\n\n## Understanding, Preventing, and Resolving Conflicts\n\n> Merge conflicts sound intimidating but are a normal, manageable part of collaborative development. This guide explains what conflicts are, how to read conflict markers, and how to resolve them - step by step.\n\n## Workshop Recommendation (Chapter 7)\n\nChapter 7 uses **one controlled practice challenge** so students can learn conflict resolution without high-pressure scenarios.\n\n- **Challenge count:** 1\n- **Time:** under 10 minutes\n- **Evidence:** issue-linked PR and completion comment\n- **Pattern:** observe, resolve, verify\n\n### Chapter 7 Challenge Set\n\n1. **Resolve conflict markers** - identify and clean up conflict markers in a practice file, then open a linked PR.\n\n> **Branch guidance for Chapter 7:** Use a short-lived feature branch: `fix/yourname-issueXX` (for example, `fix/maria-issue48`). The same pattern you used in Chapter 6.\n\n### Challenge 7.1 Step-by-Step: Resolve Conflict Markers\n\n**Goal:** Identify the three types of conflict markers in a practice file, decide which content to keep, remove the markers, and submit a clean PR.\n\n> **Agentic strategy:** Sometimes an AI agent will confidently generate code that conflicts with human-written code. Resolving merge conflicts is not just a hurdle for human teamwork; it is exactly how you supervise, correct, and collaborate safely with an AI.\n\n**Where you are working:** your Learning Room repository on GitHub.com (web editor) or in VS Code if you cloned locally.\n\n**Before you start:** Open your **assigned Chapter 7 challenge issue** (the one titled \"Chapter 7.1: Resolve Conflict Markers (@yourname)\"). The issue description tells you which practice file contains the conflict markers.\n\nPractice sample: [`learning-room/docs/samples/chapter-6-conflict-practice-sample.md`](../learning-room/docs/samples/chapter-6-conflict-practice-sample.md)\n\n1. Open the practice file specified in your challenge issue.\n2. Search the file for `<<<<<<<`. This is the **start marker** - it shows where the conflict begins.\n3. Read the content between `<<<<<<<` and `=======`. This is **your version** (the current branch).\n4. Read the content between `=======` and `>>>>>>>`. This is **their version** (the incoming branch).\n5. Decide which content to keep:\n   - Keep only your version, or\n   - Keep only their version, or\n   - Combine both versions into one clean paragraph.\n6. Delete all three marker lines:\n   - The `<<<<<<< HEAD` line (or similar)\n   - The `=======` separator line\n   - The `>>>>>>> branch-name` line\n7. Review the file to confirm no marker lines remain. Search for `<<<<<<<` again - there should be zero results.\n8. Commit your changes on a branch named `fix/yourname-issueXX`.\n9. Open a pull request with:\n   - Title: `fix: resolve conflict markers in [filename]`\n   - Body: Include `Closes #XX` (your challenge issue number) and a 1-2 sentence description of which content you kept and why.\n\n**Screen reader tip:** Use your screen reader's find command (`Ctrl+F` in browser, `Ctrl+H` in VS Code) to jump directly to `<<<<<<<`. The markers are plain text, so they are fully readable.\n\n**You are done when:** Your PR passes bot validation checks and contains no remaining conflict markers.\n\n### Completing Chapter 7: Submit Your Evidence\n\nWhen your PR is open and passing checks, post a comment on your assigned Chapter 7 challenge issue:\n\n```text\nChapter 7 completed:\n- Challenge 7.1: Opened PR #[number] resolving conflict markers in [filename]\n- Content decision: kept [your version / their version / combined both] because [reason]\n```\n\n### Expected Outcomes\n\n- Student can identify the three conflict marker lines (`<<<<<<<`, `=======`, `>>>>>>>`) immediately.\n- Student can read both sides of a conflict and make an intentional content decision.\n- Student can remove all markers and submit a clean, issue-linked PR.\n\n### If You Get Stuck\n\n1. Can't find the markers? Use `Ctrl+F` and search for `<<<<<<<` - they are always in sets of three.\n2. Not sure which side to keep? Read both versions aloud. Pick the one that is clearer, or combine them.\n3. Accidentally deleted too much? Undo with `Ctrl+Z` and start the section over.\n4. PR bot says content is wrong? Double-check that zero marker lines remain - search for `<<<<<<<`, `=======`, and `>>>>>>>`.\n5. Ask facilitator to sanity-check your final content before opening the PR.\n6. Finished but not sure you did it right? Compare your work against the [Challenge 7 reference solution](solutions/solution-07-merge-conflict.md).\n\n### Learning Moment\n\nMerge conflicts are not failures. They are a normal collaboration checkpoint and a chance to make an intentional content decision. In real open source projects, conflicts happen whenever two people edit near the same lines. The skill is not avoiding them - it is resolving them calmly and clearly.\n\n### Learning Pattern Used in This Chapter\n\n1. Start with a controlled, safe conflict (practice file with known markers).\n2. Learn to read the conflict structure (your version vs. their version).\n3. Make a deliberate content decision (not just deleting randomly).\n4. Submit clean evidence through the PR workflow.\n5. Build confidence for real conflicts in future contributions.\n\n### About Learning Cards in This Chapter\n\nThis chapter provides learning cards: expandable blocks that offer perspective-specific guidance for different ways of working. Not every card appears at every step. Open the ones that match how you work.\n\nThe following table describes the five learning card types used in this chapter.\n\n| Card | Who it helps | What it covers |\n| --- | --- | --- |\n| Visual / mouse | Sighted users navigating with a mouse or trackpad | Click targets, visual cues, color-coded conflict regions |\n| Low vision | Users with magnification, zoom, or high-contrast themes | Zoom-friendly navigation, high contrast marker visibility, enlargement tips |\n| NVDA / JAWS (Windows) | Screen reader users on Windows | Keystroke sequences, Focus and Browse mode, verbosity tips |\n| VoiceOver (macOS) | Screen reader users on macOS | VO key sequences, rotor navigation, interaction model |\n| CLI (git / gh) | Terminal users on any platform | Git and GitHub CLI commands for conflict detection and resolution |\n\n## Local Git Alternative: Resolving Conflicts from Your Terminal\n\n<details>\n<summary>If you cloned the learning-room in Block 0 and prefer resolving conflicts locally</summary>\n\nThe GitHub web conflict editor works well and is the primary method taught in this chapter. If you cloned the Learning Room in Block 0 and prefer working in your terminal, here is how to resolve conflicts locally. This is the same workflow covered in depth in [Chapter 11: Git and Source Control](14-git-in-practice.md).\n\n**Step 1 - Sync main and merge into your branch:**\n\n```bash\ncd ~/Documents/learning-room\ngit checkout main\ngit pull origin main\ngit checkout your-branch-name\ngit merge main\n```\n\nIf there is a conflict, Git will report which files are affected and stop the merge.\n\n**Step 2 - Open the conflicted file:**\n\n```bash\ncode docs/welcome.md   # or your preferred editor\n```\n\nLook for the conflict markers:\n\n```text\n<<<<<<< HEAD\nYour version of the content\n=======\nThe incoming version from main\n>>>>>>> main\n```\n\n**Step 3 - Resolve by editing:**\n\n- Keep the version you want (or combine both)\n- Delete all three marker lines (`<<<<<<<`, `=======`, `>>>>>>>`)\n- Save the file\n\n**Step 4 - Mark resolved, commit, and push:**\n\n```bash\ngit add docs/welcome.md\ngit commit -m \"Resolve merge conflict in welcome.md\"\ngit push\n```\n\nYour PR on GitHub updates automatically with the resolved content. The same bot checks and human review process apply.\n\n</details>\n\n## What Is a Merge Conflict?\n\nA merge conflict occurs when two people have both changed the **same part of the same file** in **different ways**, and Git cannot automatically decide which version is correct.\n\nGit can merge changes automatically when they touch different parts of a file. Conflicts only happen when two changes overlap - for example:\n\n- Person A changed line 12 to say \"Submit form\"\n- Person B changed line 12 to say \"Send message\"\n- Git asks: which one do you want to keep?\n\n## Why Conflicts Happen\n\nThe most common causes:\n\n| Cause | Example |\n| -------  | ---------  |\n| Two people edited the same line | You both fixed the same typo differently |\n| One person deleted a file but another edited it | You removed an old function; they fixed a bug in it |\n| Two people restructured the same section | You reorganized a list; they added items to it |\n| A long-running PR diverged from main | Your branch is weeks old and main has changed significantly |\n\n## How to Prevent Conflicts (Prevention is Easier Than Resolution)\n\nAvoiding conflicts in the first place saves time and reduces stress. Here are the most effective strategies:\n\n### 1. **Keep your branches short-lived**\n\nWork in small, focused chunks. A branch that lives for 3 days has far fewer conflicts than one that lives for 3 weeks.\n\n- Target: 1-3 days from branch to merge\n- If a feature takes longer, break it into smaller PRs\n\n### 2. **Sync with main frequently**\n\nThe longer your branch diverges from main, the more likely conflicts become.\n\n**Best practice:** Sync daily if main is active:\n\n```bash\n# From your feature branch\ngit fetch origin\ngit merge origin/main\n# Or: git rebase origin/main (if comfortable with rebasing)\n```\n\n**GitHub web method:** Use the \"Update branch\" button on your PR if it appears.\n\n### 3. **Communicate with your team**\n\nLet others know what files you're working on. Use issue comments:\n\n> \"Heads up: I'm working on the `[TODO]` sections in `docs/welcome.md` for Challenge 3. If you're also editing welcome.md, let's coordinate so we don't conflict.\"\n\nIn the Learning Room, this is especially important because multiple students may claim challenges that touch the same file. Challenges 1 and 3 both modify `docs/welcome.md` - if two students work on both simultaneously without coordinating, a merge conflict will occur.\n\n### 4. **Avoid mass reformatting**\n\nRunning a formatter on an entire file creates conflicts with anyone else editing that file. If you must:\n\n- Do it in a **separate PR** before functional changes\n- Announce it to the team\n- Merge it quickly so everyone can sync\n\n### 5. **Pull before you push**\n\nAlways fetch and merge (or pull) before pushing your changes:\n\n```bash\ngit pull origin main  # Sync your local main\ngit checkout your-branch\ngit merge main        # Merge main into your branch\ngit push              # Now push\n```\n\nThis catches conflicts locally where they're easier to resolve.\n\n### 6. **Work on separate files when possible**\n\nIf multiple people are working simultaneously, divide tasks by files or modules rather than everyone touching the same code.\n\n### 7. **Keep PRs small**\n\nA 50-file PR will almost certainly conflict with something. A 5-file PR merges quickly and cleanly.\n\nThe most effective contributors make many small PRs rather than one giant one.\n\n### 8. **Use Draft PRs for early visibility**\n\nOpen your PR as a draft while still working. Others can see what you're changing and avoid overlapping work. Convert to \"Ready for review\" when done.\n\n### Learning Cards: How to Prevent Conflicts\n\n<details>\n<summary>Screen reader users</summary>\n\n- Before starting work, run `git pull origin main` in VS Code's terminal (`` Ctrl+` ``) to sync your branch; this prevents conflicts from stale branches\n- On GitHub, check the PR's merge status section by pressing `D` toward the bottom of the Conversation tab; \"This branch has conflicts\" warns you before you waste review time\n- Use issue comments to announce which files you are editing; press `D` to the \"Add a comment\" landmark on the issue and type your coordination message\n\n</details>\n\n<details>\n<summary>Low vision users</summary>\n\n- The \"Update branch\" button on a PR appears near the merge section at the bottom of the Conversation tab; it has a white-on-green style when available\n- When multiple students are editing the same file, GitHub shows a yellow conflict banner; zoom in on the merge area to check for it before requesting review\n- Draft PRs show a grey \"Draft\" badge in the PR list; opening drafts early gives teammates visibility into which files you are changing\n\n</details>\n\n<details>\n<summary>Sighted users</summary>\n\n- Keep your PR small: a 5-file PR merges quickly and rarely conflicts; a 50-file PR almost certainly will\n- The \"Update branch\" button appears on PRs that are behind the base branch; click it to merge the latest changes from main into your branch\n- Draft PRs are shown with a grey \"Draft\" label in the PR list view; open them early so teammates can see your in-progress file changes\n\n</details>\n\n## Advanced Prevention: Understanding Fast-Forward Merges\n\nWhen your branch is perfectly up to date with main and adds new commits on top, GitHub can do a \"fast-forward\" merge - main simply moves forward to your latest commit. No merge commit needed. No possibility of conflicts.\n\n**How to achieve this:** Rebase your branch on main right before merging:\n\n```bash\ngit checkout your-branch\ngit fetch origin\ngit rebase origin/main\ngit push --force-with-lease  # See warning below about force pushing\n```\n\n**Warning:** Force pushing rewrites history. Only do this on branches you alone control (not shared branches). Never force push to `main`.\n\nFor more on force pushing and rebasing, see the [Glossary](appendix-a-glossary.md#force-push).\n\n## When Conflicts Are Actually Good\n\nConflicts indicate that multiple people are actively improving the project. In a healthy, collaborative environment, occasional conflicts are normal and manageable.\n\nIf you never have conflicts, it might mean:\n\n- You're the only contributor (less review, less learning)\n- PRs are moving too slowly (stagnation)\n- People are avoiding working on important files (technical debt)\n\n**The goal isn't zero conflicts.** The goal is catching them early, resolving them cleanly, and learning patterns that reduce future conflicts.\n\n## Spotting a Conflict on GitHub\n\n### Tool Cards: Resolve a Merge Conflict\n\n**github.com (browser):**\n\n1. On the PR page, click **Resolve conflicts** if the button is available.\n2. Edit the file in the web editor to remove conflict markers.\n3. Click **Mark as resolved**, then **Commit merge**.\n\n**github.dev (web editor):**\n\n1. Open the PR's branch by pressing `.` on the repository page.\n2. Open the conflicting file -- conflict markers are highlighted in the editor.\n3. Edit to resolve, commit via Source Control panel.\n\n**VS Code Desktop:**\n\n1. Pull the latest changes: `git pull origin main`.\n2. VS Code highlights conflicts with **Accept Current / Accept Incoming / Accept Both** buttons.\n3. Click your choice, save, stage, and commit.\n\n**GitHub Desktop:**\n\n1. **Branch > Update from main** (or the merge prompt banner).\n2. GitHub Desktop opens your editor with conflict markers highlighted.\n3. Resolve in the editor, return to GitHub Desktop, and click **Commit merge**.\n\n**Git CLI (terminal):**\n\n```bash\ngit merge main\n# Edit conflicting files to remove <<<<<<< / ======= / >>>>>>>\ngit add resolved-file.md\ngit commit -m \"resolve merge conflict\"\n```\n\nWhen a PR has a merge conflict, you will see this message on the Conversation tab, near the merge section:\n\n> “This branch has conflicts that must be resolved”\n\nYou will also see a “Resolve conflicts” button. If you cannot see it (it may require write access), contact the PR author.\n\n<details>\n<summary>Visual / mouse users</summary>\n\nScroll to the bottom of the Conversation tab. The conflict message appears as a yellow or orange banner above the merge button area. Click **Resolve conflicts** to open the web conflict editor.\n\n</details>\n\n<details>\n<summary>Low vision users (zoom, high contrast)</summary>\n\nThe conflict banner sits near the bottom of the Conversation tab, above the merge button area. If your browser zoom is at 200% or higher, you may need to scroll past lengthy comment threads to reach it.\n\n- The banner uses a yellow or orange background. In **Windows High Contrast** mode, it renders with the system alert color so it remains visible.\n- The **Resolve conflicts** button is a standard link-style button. If it is hard to target at high zoom, use `Tab` to reach it after the merge status section and press `Enter`.\n- If the button does not appear, you may lack write access to the repository. Ask the PR author or a maintainer for help.\n\n</details>\n\n<details>\n<summary>Screen reader users (NVDA / JAWS - Windows)</summary>\n\n1. Press `D` to reach the bottom of the Conversation tab\n2. Navigate down with `H` or `↓` past the comment threads\n3. Find the heading or region containing \"This branch has conflicts\"\n4. Press `B` to find the **Resolve conflicts** button → `Enter`\n\n</details>\n\n<details>\n<summary>Screen reader users (VoiceOver - macOS)</summary>\n\n1. `VO+U` → Landmarks or `VO+Down` to move toward the bottom of the Conversation tab\n2. Quick Nav `H` or `VO+Cmd+H` past comment headings until you reach the conflict notice\n3. Quick Nav `B` to find the **Resolve conflicts** button → `VO+Space`\n\n</details>\n\n## Conflict Markers - What They Mean\n\nWhen conflict markers appear in a file, your editor is showing you both versions of the conflicted content so you can choose. The format is always:\n\n```text\n<<<<<<< HEAD\nThe content that is on YOUR current branch\n=======\nThe content coming from the OTHER branch (or main)\n>>>>>>> branch-name-or-commit-hash\n```\n\n### Breakdown\n\n- `<<<<<<< HEAD` - the start of YOUR version (HEAD = \"the branch you are currently on\")\n- `=======` - the dividing line between the two versions\n- `>>>>>>> branch-name` - the end of the INCOMING version (from the branch being merged in)\n\n### Example in a real file\n\n#### Original file (`docs/keyboard-shortcuts.md`) before conflict\n\n```markdown\n| Insert+Space | Toggle between Browse Mode and Focus Mode |\n```\n\n#### After two students both added a shortcut to the same table row\n\n```\n<<<<<<< HEAD\n  Insert+Space -- Toggle between Browse Mode and Focus Mode\n  Insert+F5 -- List elements by type\n=======\n  Insert+Space -- Toggle between Browse Mode and Focus Mode\n  Insert+F7 -- Elements list (links, headings, form fields)\n>>>>>>> add-nvda-shortcut\n```\n\n#### Resolution options\n\n1. Keep your version: add only `Insert+F5`\n2. Keep their version: add only `Insert+F7`\n3. Keep both rows: add both shortcuts to the table (often the right answer when two students added different valid shortcuts)\n\n### Learning Cards: Conflict Markers\n\n<details>\n<summary>Screen reader users</summary>\n\n- Conflict markers are three lines: `<<<<<<< HEAD`, `=======`, and `>>>>>>> branch-name`; your screen reader may spell out each `<`, `=`, and `>` character individually\n- Everything between `<<<<<<< HEAD` and `=======` is YOUR version; everything between `=======` and `>>>>>>>` is the INCOMING version\n- After resolving, search the file for `<<<<` using `Ctrl+F` to verify no markers remain; any leftover markers will break the file\n\n</details>\n\n<details>\n<summary>Low vision users</summary>\n\n- In GitHub's conflict editor, each version is highlighted with a different background color (typically green for yours, blue for incoming); high-contrast themes use bolder system colors\n- The three marker lines (`<<<`, `===`, `>>>`) span the full width of the editor; look for rows that contain only repeated symbols\n- After resolving, zoom in on the edited area and confirm the marker lines are completely deleted, not just partially removed\n\n</details>\n\n<details>\n<summary>Sighted users</summary>\n\n- Conflict markers appear as three distinctive lines of repeated symbols: `<<<<<<<`, `=======`, and `>>>>>>>`; they visually bracket the two conflicting versions\n- The `HEAD` label after `<<<<<<<` means \"your current branch\"; the branch name after `>>>>>>>` identifies where the incoming change came from\n- After editing, delete all three marker lines plus the version you do not want; the remaining content should read naturally as valid code or Markdown\n\n</details>\n\n## Resolving Conflicts on GitHub (Web Editor)\n\nGitHub has a built-in conflict editor that you can use without any local tools.\n\n### Step-by-step: GitHub Conflict Editor\n\n<details>\n<summary>Visual / mouse users</summary>\n\n1. Click **Resolve conflicts** on the PR Conversation tab\n2. GitHub opens a full-page text editor showing each conflicted file\n3. The conflict markers are highlighted - everything between `<<<<<<` and `=======` is your version; between `=======` and `>>>>>>>` is the incoming version\n4. Edit the content directly: delete the lines you don’t want, including the three marker lines (`<<<`, `===`, `>>>`)\n5. When the file looks correct, click **Mark as resolved** (top-right of the file)\n6. If there are multiple conflicted files, a file list on the left lets you jump between them\n7. After all files are resolved, click **Commit merge**\n\n</details>\n\n<details><summary>Low vision users (zoom, high contrast)</summary>\n\n1. Open the conflict editor from the **Resolve conflicts** button on the PR Conversation tab.\n2. GitHub opens a monospace text editor. At 200% zoom or higher, the editor scrolls horizontally. Use `Shift+Scroll` or horizontal scrollbar to navigate wide lines.\n3. Conflict markers (`<<<<<<<`, `=======`, `>>>>>>>`) are displayed in highlighted bands. In high-contrast themes, the markers use distinct system colors for good visibility.\n4. The file list panel (left side) may collapse at high zoom levels. Look for a toggle or hamburger icon in the top-left corner to reopen it.\n5. Edit directly in the editor: delete unwanted lines, including all three marker lines.\n6. Click **Mark as resolved** in the top-right. At high zoom, this button may require horizontal scrolling to find. You can also `Tab` to reach it.\n7. After all files are resolved, click **Commit merge**.\n\n**Tip:** Increase your browser's minimum font size (Settings, Appearance, Font size) for a more comfortable editing experience in the conflict editor. This setting persists across GitHub pages.\n\n</details>\n\n<details><summary>Screen reader users (NVDA / JAWS - Windows)</summary>\n\n1. Activate the **Resolve conflicts** button from the PR Conversation tab\n2. GitHub opens the conflict editor - a full-page text editor\n3. Navigate between conflicted files using the file list (press `NVDA+F7` or `VO+U` to find the file navigation panel)\n4. Switch to Focus Mode (`NVDA+Space`) to enter the text editor\n5. Read the conflict markers line by line with `↓`:\n   - `<<<<<<< HEAD` marks the start of your version\n   - `=======` is the dividing line\n   - `>>>>>>> branch-name` marks the end of the incoming version\n6. Edit to keep the desired content - delete the conflict marker lines and the version you don't want\n7. `Tab` to **Mark as resolved** button → `Enter`\n8. Repeat for all conflicted files\n9. `Tab` to **Commit merge** button → `Enter`\n\n</details>\n\n<details>\n<summary>Screen reader users (VoiceOver - macOS)</summary>\n\n1. Activate the **Resolve conflicts** button from the PR Conversation tab\n2. GitHub opens the conflict editor - a full-page text editor\n3. `VO+U` → navigate to the file navigation panel to switch between conflicted files\n4. `VO+Shift+Down` to interact with the text editor\n5. `VO+Down` to read the conflict markers line by line:\n   - `<<<<<<< HEAD` marks the start of your version\n   - `=======` is the dividing line\n   - `>>>>>>> branch-name` marks the end of the incoming version\n6. Edit to keep the desired content - delete the conflict marker lines and the version you don't want\n7. `VO+Shift+Up` to stop interacting, then `Tab` to **Mark as resolved** → `VO+Space`\n8. Repeat for all conflicted files\n9. `Tab` to **Commit merge** → `VO+Space`\n\n</details>\n\n### What it looks like in the editor\n\nWhen the conflict editor opens, your screen reader will announce a text editor. In Focus Mode, navigate with arrow keys. The content reads:\n\n```text\n<  <  <  <  <  <  <  H  E  A  D\n<button aria-label=\"Submit form\">Submit</button>\n=  =  =  =  =  =  =\n<button type=\"submit\">Send message</button>\n>  >  >  >  >  >  >  f  e  a  t  u  r  e  /  f  o  r  m - i  m  p  r  o  v  e  m  e  n  t  s\n```\n\n*(Note: screen readers may spell out the `<` and `>` characters letter by letter - this is normal)*\n\n### Learning Cards: Resolving Conflicts on GitHub\n\n<details>\n<summary>Screen reader users</summary>\n\n- After clicking \"Resolve conflicts,\" GitHub opens a text editor; switch to Focus Mode (`NVDA+Space`) and use `Down Arrow` to read line by line through the conflict markers\n- After editing, press `Tab` to find the \"Mark as resolved\" button (top-right of the file); then `Tab` again to \"Commit merge\" after all files are resolved\n- Use `NVDA+F7` to open the Elements List and find the file navigator if there are multiple conflicted files\n\n</details>\n\n<details>\n<summary>Low vision users</summary>\n\n- The conflict editor is a monospace text editor that may require horizontal scrolling at high zoom; use `Shift+Scroll` for wide lines\n- The file list panel on the left shows all conflicted files; at high zoom it may collapse to a toggle icon in the top-left corner\n- The \"Mark as resolved\" button is in the top-right of each file's editor; at 200%+ zoom you may need to scroll right to find it\n\n</details>\n\n<details>\n<summary>Sighted users</summary>\n\n- The conflict editor highlights your version and the incoming version with different background colors, with the `=======` divider between them\n- A file list on the left side lets you jump between conflicted files; a checkmark appears next to each file after you click \"Mark as resolved\"\n- After all files show checkmarks, the green \"Commit merge\" button becomes available at the top of the editor\n\n</details>\n\n## Resolving Conflicts in VS Code (Day 2)\n\n> **See also:** [Appendix E: Advanced Git](appendix-e-advanced-git.md) covers rebase, cherry-pick, and other advanced conflict resolution strategies.\n\nVS Code has excellent merge conflict tooling with full screen reader support. This is covered in depth in [Git & Source Control in VS Code](14-git-in-practice.md), but here is an overview:\n\n### VS Code shows conflicts as\n\n```\n<<<<<<< HEAD (Current Change)\nYour version\n======= original                   -- (3-way merge, if enabled)\nOriginal version before both edits\n=======\nIncoming version\n>>>>>>> branch-name (Incoming Change)\n```\n\n### VS Code merge conflict actions\n\n<details>\n<summary>Visual / mouse users</summary>\n\nWhen your cursor is on a conflict region, VS Code shows **CodeLens action links** above the conflict block in the editor:\n\n- **Accept Current Change** - keeps your version (HEAD)\n- **Accept Incoming Change** - keeps the branch version being merged\n- **Accept Both Changes** - keeps both (stacked one after the other)\n- **Compare Changes** - opens a side-by-side diff\n\nClick the link you want. The conflict markers disappear and your chosen content remains. Save the file with `Ctrl+S`.\n\n</details>\n\n<details>\n<summary>Low vision users (zoom, high contrast)</summary>\n\nVS Code highlights conflict regions with colored background bands:\n\n- **Current Change** (your version) appears with a green-tinted background\n- **Incoming Change** (their version) appears with a blue-tinted background\n\nIn high-contrast themes, these colors map to system theme colors that remain distinguishable. The **CodeLens action links** (Accept Current Change, Accept Incoming Change, Accept Both Changes, Compare Changes) appear as small text links above the conflict block.\n\n**Tips for comfort at high zoom:**\n\n- At 200% editor zoom (`Ctrl+=`), the CodeLens links remain clickable. If they feel small, use `Ctrl+Shift+P` and type `Merge Conflict: Accept Current` (or `Incoming`, `Both`) to trigger the same actions from the Command Palette without clicking.\n- Enable **Editor, Minimap: Enabled = false** in settings to reclaim horizontal space at high zoom.\n- Use `Ctrl+Shift+M` to open the Problems panel. After resolving markers, this panel confirms no remaining conflict errors.\n- Use `F8` (Next Problem) to jump between remaining conflict regions across the file without scrolling.\n\n</details>\n\n<details>\n<summary>Screen reader users (NVDA / JAWS - Windows)</summary>\n\n1. Open the conflicted file\n2. Press `↓` to navigate to a conflict marker (`<<<<<<<`)\n3. The CodeLens links appear above - press `Tab` to reach them\n4. Press `Enter` on your chosen action\n5. Save the file (`Ctrl+S`)\n6. Stage the resolved file: `Ctrl+Shift+G` → find the file → **Stage changes**\n7. Commit the merge\n\n**GitHub Copilot can help:** With the cursor in a conflict region, open Copilot Chat (`Ctrl+Alt+I`, or **Chat: Open Chat** from the Command Palette if your keymap differs) and type: \"Resolve this merge conflict - keep meaningful changes from both sides.\" Copilot will suggest a resolution that you can review and accept.\n\n</details>\n\n<details>\n<summary>Screen reader users (VoiceOver - macOS)</summary>\n\n1. Open the conflicted file\n2. `VO+Down` or arrow keys to navigate to a conflict marker (`<<<<<<<`)\n3. The CodeLens links appear above - `Tab` to reach them\n4. `VO+Space` on your chosen action\n5. Save the file (`Cmd+S`)\n6. Stage the resolved file: `Cmd+Shift+G` → find the file → **Stage changes**\n7. Commit the merge\n\n**GitHub Copilot can help:** With the cursor in a conflict region, open Copilot Chat with **Chat: Open Chat** from the Command Palette, or use your configured Chat shortcut, and type: \"Resolve this merge conflict - keep meaningful changes from both sides.\" Copilot will suggest a resolution that you can review and accept.\n\n</details>\n\n## When You Feel Stuck\n\n### Ask for help - it's normal\n\nIf you are unsure which version to keep:\n\n1. Leave a comment on the PR: \"I have a merge conflict in `filename.js` and I'm not sure which version to keep - could someone help me understand the intent of these two changes?\"\n2. Tag the PR author or a maintainer with `@username`\n\n### Abandon and start fresh (nuclear option)\n\nIf a conflict is severe (the branch diverged a lot from main):\n\n1. Close the PR without merging\n2. Start a new branch from the latest `main`\n3. Apply only your intended changes to the new branch\n4. Open a new PR\n\nThis is legitimate - not a failure.\n\n### Learning Cards: When You Feel Stuck\n\n<details>\n<summary>Screen reader users</summary>\n\n- Leave a PR comment asking for help: press `D` to the \"Add a comment\" landmark, type your question including the filename and your confusion, then `Ctrl+Enter` to submit\n- Use `@username` to tag the PR author or a maintainer so they receive a notification; type `@` and GitHub autocompletes usernames\n- If you need to abandon and start fresh, close the PR (Tab to \"Close pull request\" button), create a new branch from main, and re-apply only your intended changes\n\n</details>\n\n<details>\n<summary>Low vision users</summary>\n\n- When stuck, scroll to the comment box at the bottom of the PR's Conversation tab and describe which file and which lines are confusing\n- The \"Close pull request\" button is at the bottom of the Conversation tab next to the comment box; closing a conflicted PR is a valid strategy, not a failure\n- After starting a new branch, verify you are on the latest main by checking the branch selector in the top-left of the Code tab\n\n</details>\n\n<details>\n<summary>Sighted users</summary>\n\n- Post a comment on the PR with a screenshot or code snippet showing the conflict you cannot resolve; tag the author with `@username`\n- The \"Close pull request\" button is a red-outlined button at the bottom of the Conversation tab; use it to close and start fresh if the conflict is severe\n- When starting over, use the branch dropdown on the Code tab to verify you branched from the latest `main` before re-applying your changes\n\n</details>\n\n## Reading a Conflict Message from Git (Command Line Reference)\n\nIf you work locally, `git merge` or `git pull` will say:\n\n```text\nCONFLICT (content): Merge conflict in src/index.html\nAutomatic merge failed; fix conflicts and then commit the result.\n```\n\nAnd `git status` will show:\n\n```text\nboth modified: src/index.html\n```\n\nThese are normal outputs. The conflict markers are inserted into the file by Git - open the file and follow the steps above.\n\n<details>\n<summary>Git CLI alternative - resolving conflicts in the terminal</summary>\n\nResolve merge conflicts entirely from the command line:\n\n```bash\n# 1. Start the merge that causes the conflict\ngit merge main\n\n# 2. See which files have conflicts\ngit status\n# Look for \"both modified:\" entries\n\n# 3. Open each conflicted file in your editor\n# Edit the file: remove <<<<<<, =======, >>>>>> markers\n# Keep the content you want\n\n# 4. After editing, mark the file as resolved\ngit add src/index.html\n\n# 5. Complete the merge\ngit commit\n# Git auto-fills the merge commit message\n\n# Check the result\ngit log --oneline -3\n```\n\n</details>\n\n<details>\n<summary>GitHub CLI (gh) alternative - checking PR conflict status</summary>\n\nCheck whether a PR has conflicts without opening a browser:\n\n```bash\n# View PR status (shows merge state)\ngh pr view 42\n\n# Check all PR checks and merge readiness\ngh pr checks 42\n\n# View the diff to understand what changed\ngh pr diff 42\n```\n\nIf conflicts exist, the `gh pr view` output shows \"This branch has conflicts that must be resolved.\" Resolve locally using `git merge` (above) then push, or use the web editor.\n\n</details>\n\n## Summary Checklist\n\n```text\nBefore you start:\n  □ My PR is small and focused (fewer conflicts = easier life)\n  □ I checked that others aren't editing the same files\n\nWhen you see a conflict:\n  □ Don't panic - conflicts are normal\n  □ Read both versions (between <<< and ===, and between === and >>>)\n  □ Decide: keep one, keep both, or combine intelligently\n  □ Remove ALL three conflict marker lines (<<<, ===, >>>)\n  □ Verify the final file makes sense\n  □ Mark as resolved → Commit merge\n\nAfter resolving:\n  □ Re-check that the PR description and issue link are still accurate\n  □ Comment on the PR: \"Resolved merge conflict - kept both the aria-label and type attribute\"\n  □ Request re-review if reviewers already approved before the conflict was introduced\n```\n\n## Try It: Read a Conflict (Without Fear)\n\n**Time:** 2 minutes | **What you need:** Any text editor or just read below\n\nRead this merge conflict aloud. The goal is not to resolve it - just to understand what you're hearing:\n\n```text\nThe button should have an\n<<<<<<< HEAD\naria-label=\"Submit form\"\n=======\naria-label=\"Send your response\"\n>>>>>>> feature-branch\nattribute for screen readers.\n```\n\nAnswer these three questions:\n\n1. **What does your branch say?** (The text between `<<<<<<< HEAD` and `=======`)\n2. **What does the other branch say?** (The text between `=======` and `>>>>>>>`)\n3. **Which version would you keep, and why?**\n\n**You're done.** You just read a merge conflict. That's the entire skill - everything else is just choosing which lines to keep and deleting the three marker lines.\n\n> **What success feels like:** Conflicts aren't mysterious anymore. They're just two versions side by side with markers telling you which is which. You already know how to pick the right one.\n\n> ### Day 2 Amplifier - Copilot Chat & Conflict Prevention\n>\n> **Resolve at least one conflict completely by hand before using any AI assistance.** You must be able to read `<<<<<<<`, `=======`, and `>>>>>>>` markers and understand what each version represents. An AI-suggested resolution you cannot independently verify is a liability - you are accepting a change you do not understand into a codebase other people depend on.\n>\n> Once you have mastered manual conflict resolution:\n>\n> - **In VS Code** - Copilot Chat (`Ctrl+Alt+I`, or **Chat: Open Chat** from the Command Palette if your keymap differs) can explain a conflict in plain language - *\"Person A renamed the button to 'Submit Form'; Person B renamed it to 'Send Message'. Which intent should take priority?\"* - but you decide what survives\n> - **In your repo** - Accessibility Agents' `@pr-review` can identify high-risk overlapping changes before a conflict occurs, flagging when two contributors are editing the same file area and giving you time to coordinate before it escalates\n> - **In the cloud** - GitHub Agentic Workflows can detect stale PRs diverging from `main` and automatically notify contributors with a suggested rebase checklist - preventing the conflict before it is ever introduced\n>\n> *Understanding conflict markers is not a stepping stone to letting AI handle conflicts. It is the skill that tells you when AI got it wrong.*\n\n> **Challenge Time:** Check the [Challenge Hub](CHALLENGES.md) for **Challenge 7: Survive a Merge Conflict**. Follow the steps to resolve it, then move to [Chapter 08: Open Source Culture](08-open-source-culture.md).\n\n---\n\n*Next: [Chapter 08: Open Source Culture](08-open-source-culture.md)*  \n*Back: [Chapter 06: Working with Pull Requests](06-working-with-pull-requests.md)*  \n*Related appendices: [Appendix E: Advanced Git](appendix-e-advanced-git.md)*\n\n## Authoritative Sources\n\nUse these official references when you need the current source of truth for facts in this chapter.\n\n- [GitHub Docs, home](https://docs.github.com/en)\n- [GitHub Changelog](https://github.blog/changelog/)\n- [About Git](https://docs.github.com/en/get-started/using-git/about-git)\n- [GitHub flow](https://docs.github.com/en/get-started/using-github/github-flow)\n- [About pull requests](https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/about-pull-requests)\n- [About issues](https://docs.github.com/en/issues/tracking-your-work-with-issues/about-issues)\n- [Contributing to a project](https://docs.github.com/en/get-started/exploring-projects-on-github/contributing-to-a-project)\n\n### Section-Level Source Map\n\nUse this map to verify facts for each major section in this file.\n\n- **Understanding, Preventing, and Resolving Conflicts:** [GitHub Docs, home](https://docs.github.com/en), [GitHub Changelog](https://github.blog/changelog/), [About Git](https://docs.github.com/en/get-started/using-git/about-git), [GitHub flow](https://docs.github.com/en/get-started/using-github/github-flow), [About pull requests](https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/about-pull-requests)\n- **Workshop Recommendation (Chapter 7):** [GitHub Docs, home](https://docs.github.com/en), [GitHub Changelog](https://github.blog/changelog/), [About Git](https://docs.github.com/en/get-started/using-git/about-git), [GitHub flow](https://docs.github.com/en/get-started/using-github/github-flow), [About pull requests](https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/about-pull-requests)\n- **Local Git Alternative: Resolving Conflicts from Your Terminal:** [GitHub Docs, home](https://docs.github.com/en), [GitHub Changelog](https://github.blog/changelog/), [About Git](https://docs.github.com/en/get-started/using-git/about-git), [GitHub flow](https://docs.github.com/en/get-started/using-github/github-flow), [About pull requests](https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/about-pull-requests)\n- **What Is a Merge Conflict?:** [GitHub Docs, home](https://docs.github.com/en), [GitHub Changelog](https://github.blog/changelog/), [About Git](https://docs.github.com/en/get-started/using-git/about-git), [GitHub flow](https://docs.github.com/en/get-started/using-github/github-flow), [About pull requests](https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/about-pull-requests)\n- **Why Conflicts Happen:** [GitHub Docs, home](https://docs.github.com/en), [GitHub Changelog](https://github.blog/changelog/), [About Git](https://docs.github.com/en/get-started/using-git/about-git), [GitHub flow](https://docs.github.com/en/get-started/using-github/github-flow), [About pull requests](https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/about-pull-requests)\n- **How to Prevent Conflicts (Prevention is Easier Than Resolution):** [GitHub Docs, home](https://docs.github.com/en), [GitHub Changelog](https://github.blog/changelog/), [About Git](https://docs.github.com/en/get-started/using-git/about-git), [GitHub flow](https://docs.github.com/en/get-started/using-github/github-flow), [About pull requests](https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/about-pull-requests)\n- **Advanced Prevention: Understanding Fast-Forward Merges:** [GitHub Docs, home](https://docs.github.com/en), [GitHub Changelog](https://github.blog/changelog/), [About Git](https://docs.github.com/en/get-started/using-git/about-git), [GitHub flow](https://docs.github.com/en/get-started/using-github/github-flow), [About pull requests](https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/about-pull-requests)\n- **When Conflicts Are Actually Good:** [GitHub Docs, home](https://docs.github.com/en), [GitHub Changelog](https://github.blog/changelog/), [About Git](https://docs.github.com/en/get-started/using-git/about-git), [GitHub flow](https://docs.github.com/en/get-started/using-github/github-flow), [About pull requests](https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/about-pull-requests)\n- **Spotting a Conflict on GitHub:** [GitHub Docs, home](https://docs.github.com/en), [GitHub Changelog](https://github.blog/changelog/), [About Git](https://docs.github.com/en/get-started/using-git/about-git), [GitHub flow](https://docs.github.com/en/get-started/using-github/github-flow), [About pull requests](https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/about-pull-requests)\n- **Conflict Markers - What They Mean:** [GitHub Docs, home](https://docs.github.com/en), [GitHub Changelog](https://github.blog/changelog/), [About Git](https://docs.github.com/en/get-started/using-git/about-git), [GitHub flow](https://docs.github.com/en/get-started/using-github/github-flow), [About pull requests](https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/about-pull-requests)\n- **Resolving Conflicts on GitHub (Web Editor):** [GitHub Docs, home](https://docs.github.com/en), [GitHub Changelog](https://github.blog/changelog/), [About Git](https://docs.github.com/en/get-started/using-git/about-git), [GitHub flow](https://docs.github.com/en/get-started/using-github/github-flow), [About pull requests](https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/about-pull-requests)\n- **Resolving Conflicts in VS Code (Day 2):** [GitHub Docs, home](https://docs.github.com/en), [GitHub Changelog](https://github.blog/changelog/), [About Git](https://docs.github.com/en/get-started/using-git/about-git), [GitHub flow](https://docs.github.com/en/get-started/using-github/github-flow), [About pull requests](https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/about-pull-requests)\n- **When You Feel Stuck:** [GitHub Docs, home](https://docs.github.com/en), [GitHub Changelog](https://github.blog/changelog/), [About Git](https://docs.github.com/en/get-started/using-git/about-git), [GitHub flow](https://docs.github.com/en/get-started/using-github/github-flow), [About pull requests](https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/about-pull-requests)\n- **Reading a Conflict Message from Git (Command Line Reference):** [GitHub Docs, home](https://docs.github.com/en), [GitHub Changelog](https://github.blog/changelog/), [About Git](https://docs.github.com/en/get-started/using-git/about-git), [GitHub flow](https://docs.github.com/en/get-started/using-github/github-flow), [About pull requests](https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/about-pull-requests)\n- **Summary Checklist:** [GitHub Docs, home](https://docs.github.com/en), [GitHub Changelog](https://github.blog/changelog/), [About Git](https://docs.github.com/en/get-started/using-git/about-git), [GitHub flow](https://docs.github.com/en/get-started/using-github/github-flow), [About pull requests](https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/about-pull-requests)\n- **Try It: Read a Conflict (Without Fear):** [GitHub Docs, home](https://docs.github.com/en), [GitHub Changelog](https://github.blog/changelog/), [About Git](https://docs.github.com/en/get-started/using-git/about-git), [GitHub flow](https://docs.github.com/en/get-started/using-github/github-flow), [About pull requests](https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/about-pull-requests)\n"
+    }
+  ],
+  "companions": {
+    "pairedChallenges": [],
+    "pairedChapters": [
+      {
+        "path": "C:\\code\\git-going-with-github\\docs\\07-merge-conflicts.md",
+        "relPath": "docs/07-merge-conflicts.md",
+        "exists": true,
+        "headings": [
+          {
+            "level": 2,
+            "title": "Understanding, Preventing, and Resolving Conflicts"
+          },
+          {
+            "level": 2,
+            "title": "Workshop Recommendation (Chapter 7)"
+          },
+          {
+            "level": 3,
+            "title": "Chapter 7 Challenge Set"
+          },
+          {
+            "level": 3,
+            "title": "Challenge 7.1 Step-by-Step: Resolve Conflict Markers"
+          },
+          {
+            "level": 3,
+            "title": "Completing Chapter 7: Submit Your Evidence"
+          },
+          {
+            "level": 3,
+            "title": "Expected Outcomes"
+          },
+          {
+            "level": 3,
+            "title": "If You Get Stuck"
+          },
+          {
+            "level": 3,
+            "title": "Learning Moment"
+          },
+          {
+            "level": 3,
+            "title": "Learning Pattern Used in This Chapter"
+          },
+          {
+            "level": 3,
+            "title": "About Learning Cards in This Chapter"
+          },
+          {
+            "level": 2,
+            "title": "Local Git Alternative: Resolving Conflicts from Your Terminal"
+          },
+          {
+            "level": 2,
+            "title": "What Is a Merge Conflict?"
+          },
+          {
+            "level": 2,
+            "title": "Why Conflicts Happen"
+          },
+          {
+            "level": 2,
+            "title": "How to Prevent Conflicts (Prevention is Easier Than Resolution)"
+          },
+          {
+            "level": 3,
+            "title": "1. **Keep your branches short-lived**"
+          },
+          {
+            "level": 3,
+            "title": "2. **Sync with main frequently**"
+          },
+          {
+            "level": 3,
+            "title": "3. **Communicate with your team**"
+          },
+          {
+            "level": 3,
+            "title": "4. **Avoid mass reformatting**"
+          },
+          {
+            "level": 3,
+            "title": "5. **Pull before you push**"
+          },
+          {
+            "level": 3,
+            "title": "6. **Work on separate files when possible**"
+          },
+          {
+            "level": 3,
+            "title": "7. **Keep PRs small**"
+          },
+          {
+            "level": 3,
+            "title": "8. **Use Draft PRs for early visibility**"
+          },
+          {
+            "level": 3,
+            "title": "Learning Cards: How to Prevent Conflicts"
+          },
+          {
+            "level": 2,
+            "title": "Advanced Prevention: Understanding Fast-Forward Merges"
+          },
+          {
+            "level": 2,
+            "title": "When Conflicts Are Actually Good"
+          },
+          {
+            "level": 2,
+            "title": "Spotting a Conflict on GitHub"
+          },
+          {
+            "level": 3,
+            "title": "Tool Cards: Resolve a Merge Conflict"
+          },
+          {
+            "level": 2,
+            "title": "Conflict Markers - What They Mean"
+          },
+          {
+            "level": 3,
+            "title": "Breakdown"
+          },
+          {
+            "level": 3,
+            "title": "Example in a real file"
+          },
+          {
+            "level": 4,
+            "title": "Original file (`docs/keyboard-shortcuts.md`) before conflict"
+          },
+          {
+            "level": 4,
+            "title": "After two students both added a shortcut to the same table row"
+          },
+          {
+            "level": 4,
+            "title": "Resolution options"
+          },
+          {
+            "level": 3,
+            "title": "Learning Cards: Conflict Markers"
+          },
+          {
+            "level": 2,
+            "title": "Resolving Conflicts on GitHub (Web Editor)"
+          },
+          {
+            "level": 3,
+            "title": "Step-by-step: GitHub Conflict Editor"
+          },
+          {
+            "level": 3,
+            "title": "What it looks like in the editor"
+          },
+          {
+            "level": 3,
+            "title": "Learning Cards: Resolving Conflicts on GitHub"
+          },
+          {
+            "level": 2,
+            "title": "Resolving Conflicts in VS Code (Day 2)"
+          },
+          {
+            "level": 3,
+            "title": "VS Code shows conflicts as"
+          },
+          {
+            "level": 3,
+            "title": "VS Code merge conflict actions"
+          },
+          {
+            "level": 2,
+            "title": "When You Feel Stuck"
+          },
+          {
+            "level": 3,
+            "title": "Ask for help - it's normal"
+          },
+          {
+            "level": 3,
+            "title": "Abandon and start fresh (nuclear option)"
+          },
+          {
+            "level": 3,
+            "title": "Learning Cards: When You Feel Stuck"
+          },
+          {
+            "level": 2,
+            "title": "Reading a Conflict Message from Git (Command Line Reference)"
+          },
+          {
+            "level": 2,
+            "title": "Summary Checklist"
+          },
+          {
+            "level": 2,
+            "title": "Try It: Read a Conflict (Without Fear)"
+          },
+          {
+            "level": 2,
+            "title": "Authoritative Sources"
+          },
+          {
+            "level": 3,
+            "title": "Section-Level Source Map"
+          }
+        ]
+      }
+    ],
+    "classroomReview": "",
+    "assignments": [
+      {
+        "path": "C:\\code\\git-going-with-github\\classroom\\assignment-day1-you-belong-here.md",
+        "exists": true,
+        "content": "<!-- Classroom Setup Metadata\nAssignment title: You Belong Here\nTemplate repository: Community-Access/learning-room-template\nVisibility: Private (student repos are private)\nGrant admin access: No\nDeadline: [Set per cohort - one week after Day 1]\nGroup assignment: No (individual)\nEnable feedback pull requests: Yes\nAutograding: None to configure in the Classroom UI. Automated checks run as GitHub Actions workflows inside the template repo. See admin/classroom/autograding-setup.md.\nSupported editor: Browser, GitHub Desktop, CLI\n-->\n\n# Assignment 1: You Belong Here\n\nWelcome to Git Going with GitHub! This is your private learning repository for Day 1. Everything you do here is yours -- experiment freely.\n\n## What You Will Do Today\n\nDuring the live Day 1 core path, you will practice the skills needed to make your first browser-based GitHub contribution. If the room needs more time, later challenges can continue during open lab time or after the event.\n\n- Navigate a real GitHub repository using your screen reader\n- File your first issue describing something you noticed\n- Communicate with teammates using @mentions and comments\n- Create a branch to work in safely\n- Make your first commit to a file\n- Open a pull request linking your work to an issue\n- Learn how merge conflicts work, with live support if time allows\n- Reflect on open source culture and communication, live or asynchronously\n- Merge a pull request into the main branch, or leave with clear next steps to finish it\n\n## Challenges\n\nComplete these challenges in order. Each one builds on the previous. When you close a challenge issue, the Student Progression Bot automatically opens your next challenge. The live agenda prioritizes Challenges 1-6; Challenges 7-9 are available as stretch or async follow-up.\n\n| Challenge | What You Do | Chapter |\n|---|---|---|\n| 1. Find Your Way Around | Explore the repository structure and locate key files | [Chapter 3](https://github.com/Community-Access/git-going-with-github/blob/main/docs/03-navigating-repositories.md) |\n| 2. File Your First Issue | Create an issue describing something you noticed | [Chapter 5](https://github.com/Community-Access/git-going-with-github/blob/main/docs/05-working-with-issues.md) |\n| 3. Join the Conversation | Mention a teammate or bot using @mentions | [Chapter 5](https://github.com/Community-Access/git-going-with-github/blob/main/docs/05-working-with-issues.md) |\n| 4. Branch Out | Create a feature branch for your work | [Chapter 4](https://github.com/Community-Access/git-going-with-github/blob/main/docs/04-the-learning-room.md) |\n| 5. Make Your Mark | Edit a file and commit with a clear message | [Chapter 4](https://github.com/Community-Access/git-going-with-github/blob/main/docs/04-the-learning-room.md) |\n| 6. Open Your First Pull Request | Open a PR that references an issue with `Closes #N` | [Chapter 6](https://github.com/Community-Access/git-going-with-github/blob/main/docs/06-working-with-pull-requests.md) |\n| 7. Survive a Merge Conflict | Understand and fix conflict markers | [Chapter 7](https://github.com/Community-Access/git-going-with-github/blob/main/docs/07-merge-conflicts.md) |\n| 8. The Culture Layer | Reflect on community norms and communication | [Chapter 8](https://github.com/Community-Access/git-going-with-github/blob/main/docs/08-open-source-culture.md) |\n| 9. Merge Day | Get your PR reviewed, approved, and merged | [Chapter 10](https://github.com/Community-Access/git-going-with-github/blob/main/docs/10-notifications-and-day-1-close.md) |\n\n## Automated Checks\n\nChallenges 2, 5, 6, and 7 have automated checks that run as GitHub Actions inside your repo:\n\n- **Challenge 2:** Verifies you have filed at least one issue\n- **Challenge 5:** Verifies at least one commit exists on a non-default branch\n- **Challenge 6:** Verifies your PR body contains `Closes`, `Fixes`, or `Resolves`\n- **Challenge 7:** Verifies no merge conflict markers remain in `docs/`\n\nEach check posts a single comment on the relevant issue or pull request and updates it whenever you push a new change. If a check fails, read the comment and push an update.\n\n## Evidence\n\nEach challenge has an issue that the Student Progression Bot creates for you. Complete the challenge, leave a comment with your evidence, and close the issue to unlock the next one.\n\n## If You Get Stuck\n\nEvery chapter has an \"If You Get Stuck\" section with specific troubleshooting steps. Start there.\n\nYou can also:\n\n- Ask your assigned buddy or study group\n- Post a question on the issue thread\n- Mention `@gandalf-bot` in a comment for a workspace check\n- Ask a facilitator for help -- that is what they are here for\n\n## After Day 1\n\nWhen you complete all 9 challenges, you have the foundation for everything in Day 2 -- or for contributing to any open source project on your own. These skills are yours permanently.\n\n**Continuing to Day 2?** See the [Day 2 assignment](https://github.com/Community-Access/git-going-with-github/blob/main/classroom/assignment-day2-you-can-build-this.md) for what comes next.\n\n**Day 1 is your only day?** Everything you learned today is complete and self-contained. See the [Next Steps guide](https://github.com/Community-Access/git-going-with-github/blob/main/docs/21-next-steps.md) for how to continue your GitHub journey independently.\n\n## Bonus Challenges\n\nIf you finish early, check the [Challenges page](https://github.com/Community-Access/git-going-with-github/blob/main/docs/CHALLENGES.md) for bonus challenges A through E.\n\n## Authoritative Sources\n\nUse these official references when you need the current source of truth for facts in this chapter.\n\n- [GitHub Docs, home](https://docs.github.com/en)\n- [GitHub Changelog](https://github.blog/changelog/)\n- [About Git](https://docs.github.com/en/get-started/using-git/about-git)\n- [GitHub flow](https://docs.github.com/en/get-started/using-github/github-flow)\n- [About pull requests](https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/about-pull-requests)\n- [About issues](https://docs.github.com/en/issues/tracking-your-work-with-issues/about-issues)\n- [Contributing to a project](https://docs.github.com/en/get-started/exploring-projects-on-github/contributing-to-a-project)\n\n### Section-Level Source Map\n\nUse this map to verify facts for each major section in this file.\n\n- **What You Will Do Today:** [GitHub Docs, home](https://docs.github.com/en), [GitHub Changelog](https://github.blog/changelog/), [About Git](https://docs.github.com/en/get-started/using-git/about-git), [GitHub flow](https://docs.github.com/en/get-started/using-github/github-flow), [About pull requests](https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/about-pull-requests)\n- **Challenges:** [GitHub Docs, home](https://docs.github.com/en), [GitHub Changelog](https://github.blog/changelog/), [About Git](https://docs.github.com/en/get-started/using-git/about-git), [GitHub flow](https://docs.github.com/en/get-started/using-github/github-flow), [About pull requests](https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/about-pull-requests)\n- **Automated Checks:** [GitHub Docs, home](https://docs.github.com/en), [GitHub Changelog](https://github.blog/changelog/), [About Git](https://docs.github.com/en/get-started/using-git/about-git), [GitHub flow](https://docs.github.com/en/get-started/using-github/github-flow), [About pull requests](https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/about-pull-requests)\n- **Evidence:** [GitHub Docs, home](https://docs.github.com/en), [GitHub Changelog](https://github.blog/changelog/), [About Git](https://docs.github.com/en/get-started/using-git/about-git), [GitHub flow](https://docs.github.com/en/get-started/using-github/github-flow), [About pull requests](https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/about-pull-requests)\n- **If You Get Stuck:** [GitHub Docs, home](https://docs.github.com/en), [GitHub Changelog](https://github.blog/changelog/), [About Git](https://docs.github.com/en/get-started/using-git/about-git), [GitHub flow](https://docs.github.com/en/get-started/using-github/github-flow), [About pull requests](https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/about-pull-requests)\n- **After Day 1:** [GitHub Docs, home](https://docs.github.com/en), [GitHub Changelog](https://github.blog/changelog/), [About Git](https://docs.github.com/en/get-started/using-git/about-git), [GitHub flow](https://docs.github.com/en/get-started/using-github/github-flow), [About pull requests](https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/about-pull-requests)\n- **Bonus Challenges:** [GitHub Docs, home](https://docs.github.com/en), [GitHub Changelog](https://github.blog/changelog/), [About Git](https://docs.github.com/en/get-started/using-git/about-git), [GitHub flow](https://docs.github.com/en/get-started/using-github/github-flow), [About pull requests](https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/about-pull-requests)\n"
+      }
+    ]
+  },
+  "voiceRules": {
+    "bannedPhrases": [
+      "has three jobs",
+      "name the idea",
+      "give the learner a move",
+      "show what counts as evidence",
+      "Section-Level Source Map",
+      "GitHub Docs, home, GitHub Changelog",
+      "Think of this as",
+      "The next useful detail is concrete",
+      "The point is not speed; the point is never losing your place",
+      "That is the difference between guessing and knowing",
+      "This is the move inside",
+      "Anchor this part on",
+      "For someone navigating by keyboard or screen reader",
+      "The teaching point here is not",
+      "The durable skill is not memorizing one screen",
+      "It is knowing how to find your footing when the screen changes",
+      "Keep it that plain",
+      "That is the rhythm: orient, act, verify, continue",
+      "Each step should leave a trace you can name",
+      "That small check between steps is what makes the workflow reliable",
+      "This part earns its place because",
+      "That matters in practice:"
+    ],
+    "staleFacts": [
+      "Fork the accessibility-agents repository",
+      "80 AI-powered agents",
+      "eighty AI-powered agents",
+      "Build Your Agent (Capstone)",
+      "Build Your Own Agent",
+      "if you finish early",
+      "cross-fork PR"
+    ],
+    "currentFacts": [
+      "The Accessibility Agents collection grows over time. Refer to it as a living catalog rather than asserting a fixed count of agents.",
+      "Challenge 15 (Discover Accessibility Agents) is browse-first. Learners are not required to fork the accessibility-agents repository to complete it.",
+      "Completing Challenge 15 unlocks Challenge 16 (Capstone Project) plus Bonus Challenges A through E. The bonus challenges are a structured unlock path, not \"things to do if you finish early\".",
+      "Challenge 16 is titled \"Capstone Project\". It accepts contributions to Accessibility Agents, GLOW, or any other meaningful repository. Review-ready drafts and contribution plans are valid evidence of completion.",
+      "The Learning Room repository is where Day 1 contributions happen (issue, branch, commit, pull request, merge). It is provisioned per learner.",
+      "Hosts are Alex (warm expert) and Jamie (curious co-host who asks the questions learners hesitate to ask). They are colleagues, not teacher and student."
+    ],
+    "voiceExemplarPath": "C:\\code\\git-going-with-github\\podcasts\\scripts\\challenges\\cc-14-design-an-issue-template.txt",
+    "voiceExemplar": "[ALEX]\nWelcome back. Today we're working with one of those GitHub features that quietly makes open source collaboration much easier: issue templates.\n\n[JAMIE]\nAnd this is a great one for people who have ever opened a blank issue form and thought, what exactly am I supposed to put here?\n\n[ALEX]\nExactly. An issue template turns that blank box into a guided experience. Instead of guessing what maintainers need, contributors get prompts, structure, and clear required fields. That reduces back-and-forth, improves quality, and helps teams act on issues faster.\n\n[JAMIE]\nSo this is not just about formatting. It's about making contributions clearer and more usable.\n\n[ALEX]\nYes, and especially in accessibility work. If someone is reporting an accessibility barrier, a vague report can be hard to reproduce. A thoughtful template can ask where the problem occurred, what assistive technology was involved, what the expected behavior was, and how severe the barrier is.\n\n[PAUSE]\n\n[JAMIE]\nBefore we get into the design challenge, what should learners already have in place?\n\n[ALEX]\nA few practical things. First, you should already know how to work with GitHub issues at a basic level. Second, you need a repository where you can create or edit files, usually your fork or your own repo. Third, it really helps to use an editor with YAML syntax highlighting, such as VS Code.\n\n[JAMIE]\nAnd some things are recommended but not strictly required, right?\n\n[ALEX]\nRight. Familiarity with GitHub Copilot can help if you want to generate variations, but it's optional. Basic terminal comfort is useful, though you can also use the GitHub web editor or github.dev. And if you already filled out the workshop registration template earlier in this course, that template becomes a learning example now.\n\n[JAMIE]\nI like that. You've already used a professional issue template, so now you reverse-engineer it.\n\n[ALEX]\nExactly. Also, there's an administrative note here: this chapter is meant to prepare you for a later workflow using a template-building agent. The advice is to complete the manual template chapter first, then use the automation later.\n\n[JAMIE]\nAnd time-wise?\n\n[ALEX]\nPlan roughly two to two and a half hours if you do the exercises and some YAML troubleshooting.\n\n[PAUSE]\n\n[ALEX]\nThe learning pattern for this challenge is analyze, remix, create, and test.\n\n[JAMIE]\nThat feels approachable. First understand an existing template, then adapt one, then optionally build another version from scratch, then verify it works.\n\n[ALEX]\nThat's the idea. The workshop recommendation frames Challenge 14 as design-focused rather than automation-focused. You're producing evidence of understanding, often as an issue comment or a pull request, rather than trying to satisfy a complicated code runtime.\n\n[JAMIE]\nThough there is still one small autograded requirement in the challenge template itself.\n\n[ALEX]\nYes. For the assigned challenge issue, the autograder checks that a YAML file exists in the repository\n\n[... exemplar continues; match this tone throughout ...]"
+  }
+}

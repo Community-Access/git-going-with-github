@@ -1,95 +1,23 @@
 [
   {
     "speaker": "ALEX",
-    "text": "Welcome back. Today we're working in that very practical space where Git, GitHub, and VS Code all meet. This lesson is about using source control accessibly on your own machine: cloning repositories, checking branches, staging changes, committing, pushing, pulling, reviewing history, handling conflicts, and recovering when things go sideways."
+    "text": "Welcome back. Today we're moving Git out of the browser and into VS Code, where you can clone a repo, edit files, stage changes, commit, push, pull, and open the path toward a pull request."
   },
   {
     "speaker": "JAMIE",
-    "text": "And this is a big milestone, right? Because up to this point, learners may have done plenty in the browser, but local Git is where things start to feel more real."
+    "text": "This is the moment where Git starts feeling real, right? Not just buttons on GitHub.com, but a local copy on your own machine."
   },
   {
     "speaker": "ALEX",
-    "text": "Exactly. This is the first hands-on local Git workflow chapter, and it supports a challenge built around a repeatable pattern: clone, branch, edit, commit, push, and open a pull request. The expectation is not perfection. It's building a reliable workflow you can repeat with confidence."
+    "text": "Exactly. This supports Challenge 10, Go Local, where you clone your private Learning Room repository, create or use a learn/<username> branch, make one commit, push it, and use that work as evidence. Then Challenge 11 builds on it by opening a Day 2 pull request from that pushed branch and reading the PR in VS Code."
   },
   {
     "speaker": "JAMIE",
-    "text": "Before we get into the mechanics, what should learners already know?"
+    "text": "And just to be very clear, the Learning Room repository is the one GitHub Classroom created for each learner. It is not the facilitator template repository."
   },
   {
     "speaker": "ALEX",
-    "text": "You'll have a much easier time if you already know the VS Code interface and accessibility basics, how pull requests work, and the general idea of merge conflicts. And one quick accessibility note: when the material says Control on Windows or Linux, Mac users should usually think Command. Alt usually maps to Option. So shortcuts like Control Shift G become Command Shift G on Mac."
-  },
-  {
-    "speaker": "PAUSE",
-    "text": ""
-  },
-  {
-    "speaker": "ALEX",
-    "text": "Let's anchor this in the workshop challenge. There are three short practices. First, clone your private Learning Room repository to your machine. Second, create or switch to your learn slash username branch, make a small meaningful edit, stage it, and commit it. Third, push that branch and open a pull request that links back to the relevant issue."
-  },
-  {
-    "speaker": "JAMIE",
-    "text": "I like that it's evidence-based. Not just \"I think I did it,\"\u009d but branch names, commit history, and PR metadata."
-  },
-  {
-    "speaker": "ALEX",
-    "text": "Right. Your evidence is in the actual workflow artifacts: the branch, the commit, the push, and the linked PR."
-  },
-  {
-    "speaker": "JAMIE",
-    "text": "And even though the work is happening in VS Code, the chapter recommends some CLI habits too."
-  },
-  {
-    "speaker": "ALEX",
-    "text": "Yes, and they're excellent habits. Before doing anything, run git status so you know your current state. Keep branch context explicit with git branch dash dash show-current. Before pushing, fetch and then check status so you understand whether your local branch is aligned with the remote. And if you're creating or updating a pull request tied to an issue, include plain-text linkage like Closes number. Also, avoid mystery convenience flags you don't understand. Use stable commands with clear output."
-  },
-  {
-    "speaker": "PAUSE",
-    "text": ""
-  },
-  {
-    "speaker": "ALEX",
-    "text": "Let's walk through the first practice: cloning your Learning Room repository."
-  },
-  {
-    "speaker": "JAMIE",
-    "text": "And this is an important distinction: not the template repository."
-  },
-  {
-    "speaker": "ALEX",
-    "text": "Correct. You want your own private Learning Room repo, the one created for you, not the facilitator-maintained template. The URL should look like a workshop organization followed by learning-room-your-username. If GitHub says you don't have access, double-check that URL first. Often the problem is simply cloning the wrong repository."
-  },
-  {
-    "speaker": "JAMIE",
-    "text": "So how do we do it in VS Code in the most accessible way?"
-  },
-  {
-    "speaker": "ALEX",
-    "text": "The recommended method, especially for screen reader users, is the Command Palette. Open VS Code. If no folder is open, you may land on the Welcome tab. Press Control Shift P, or Command Shift P on Mac, type Git: Clone, and select it. Then paste the repository URL and press Enter. VS Code will ask where to save the clone. Choose a location you can find again easily, like Documents or Desktop, then confirm the destination. When cloning finishes, VS Code asks whether you want to open the cloned repository. Activate Open."
-  },
-  {
-    "speaker": "JAMIE",
-    "text": "And then verify, don't assume."
-  },
-  {
-    "speaker": "ALEX",
-    "text": "Always verify. Open Explorer with Control Shift E. Your screen reader should announce the file tree. In the Learning Room repository, you should hear familiar items like README dot md and the docs folder."
-  },
-  {
-    "speaker": "JAMIE",
-    "text": "What if the learner hears nothing while the clone is happening and starts wondering whether VS Code froze?"
-  },
-  {
-    "speaker": "ALEX",
-    "text": "There's a good accessibility tip here. After choosing the destination, VS Code shows a progress notification. NVDA often reads this automatically. If you hear nothing for a while, you can use the Command Palette and run Notifications: Focus Notification Toast to check the current status."
-  },
-  {
-    "speaker": "JAMIE",
-    "text": "Once the clone is done, there's one subtle thing learners may miss: they only have the default branch checked out locally."
-  },
-  {
-    "speaker": "ALEX",
-    "text": "Yes. A fresh clone usually checks out only main. But the remote repository may already contain other branches you made earlier, such as learn slash yourname. Open the integrated terminal and run git branch -a. That shows local and remote-tracking branches. The starred branch is your current one. Entries starting with remotes slash origin slash are on GitHub. If you see remotes slash origin slash learn slash yourname, you can check it out locally with git checkout learn slash yourname or git switch learn slash yourname."
+    "text": "Right. Use the private repo URL that looks like https://github.com/<workshop-org>/learning-room-<your-username>.git. Also, the shortcuts are mostly Ctrl on Windows and Linux, and Cmd on Mac, so Ctrl+Shift+P becomes Cmd+Shift+P, Ctrl+Shift+G becomes Cmd+Shift+G, and Ctrl+Enter becomes Cmd+Enter."
   },
   {
     "speaker": "PAUSE",
@@ -97,27 +25,43 @@
   },
   {
     "speaker": "JAMIE",
-    "text": "The chapter also teaches more than one way to clone, right?"
+    "text": "Let's start with cloning, because that word sounds simple until you have three different tools offering to do it."
   },
   {
     "speaker": "ALEX",
-    "text": "It does, and that matters because different situations call for different methods. In VS Code, there are three broad ways. First, the Command Palette, which is the recommended route for screen reader users because it gives predictable keyboard access. Second, the Start Page clone button if you're on the welcome experience and want a more visual starting point. Third, initiating from GitHub dot com, often through the Code button, copying the URL, and then completing the clone in VS Code or the terminal."
+    "text": "Cloning means making a full local copy of a Git repository. In VS Code, the most reliable path is the Command Palette: press Ctrl+Shift+P, run Git: Clone, paste the repository URL, choose a folder you can find again, and then open the cloned repository when VS Code asks."
   },
   {
     "speaker": "JAMIE",
-    "text": "And on the CLI side, there are several clone patterns learners should recognize."
+    "text": "So VS Code is still using Git underneath, but it gives you prompts instead of making you remember the whole command."
   },
   {
     "speaker": "ALEX",
-    "text": "Yes. Standard Git clone uses the full repository URL. GitHub CLI offers a shorter syntax like gh repo clone owner slash name, and it often handles authentication more smoothly once you're signed in. You can clone into a specific folder by adding a target directory name. For large repositories, a single-branch clone can be faster if you only need the default branch initially. And after cloning, always verify. That can mean opening the folder in VS Code, listing files, or checking git status."
+    "text": "Yes. The terminal version is git clone followed by the repository URL. The GitHub CLI version is gh repo clone owner/name, which is shorter and can handle GitHub authentication nicely once gh is signed in. VS Code also has a Start Page clone button, and GitHub.com has a Code button where you can copy the URL."
   },
   {
     "speaker": "JAMIE",
-    "text": "There was also a concrete practice repo mentioned."
+    "text": "What should a screen reader user expect while the clone is happening?"
   },
   {
     "speaker": "ALEX",
-    "text": "Yes, a sci-fi themes repository used as a try-it exercise. The point isn't the theme itself. It's that learners practice the flow: clone using owner slash name instead of a full URL when using GitHub CLI, change into the cloned folder, and open that repo in VS Code. It builds muscle memory."
+    "text": "VS Code usually shows a progress notification. NVDA often reads it automatically, and if nothing seems to happen, you can run Notifications: Focus Notification Toast from the Command Palette. When the clone finishes, open Explorer with Ctrl+Shift+E and confirm you hear files such as README.md and folders such as docs."
+  },
+  {
+    "speaker": "JAMIE",
+    "text": "And after cloning, you might only see main locally, even if there are branches on GitHub."
+  },
+  {
+    "speaker": "ALEX",
+    "text": "Yes. A fresh clone checks out the default branch, often main. In the terminal, git branch -a lists local branches and remote-tracking branches like remotes/origin/learn/yourname. The star marks your current branch, and git switch learn/yourname or git checkout learn/yourname can create a local branch that follows the one on GitHub."
+  },
+  {
+    "speaker": "JAMIE",
+    "text": "The chapter also gives a low-stakes practice clone with the Sci-Fi Themes repo, which is helpful if you want to rehearse before touching your Learning Room work."
+  },
+  {
+    "speaker": "ALEX",
+    "text": "That's a good warm-up. You can clone with gh repo clone owner/name, cd into the folder, and open it in VS Code with code. if the code command is installed."
   },
   {
     "speaker": "PAUSE",
@@ -125,127 +69,31 @@
   },
   {
     "speaker": "ALEX",
-    "text": "Now let's move into the Source Control panel in VS Code, because this is where many learners spend most of their time once a repo is open."
+    "text": "Once the repository is open, the Source Control view becomes your main Git dashboard in VS Code."
   },
   {
     "speaker": "JAMIE",
-    "text": "Can you describe what opens when someone presses Control Shift G?"
+    "text": "That's the branch-looking icon in the Activity Bar, and the shortcut is Ctrl+Shift+G, or Cmd+Shift+G on Mac."
   },
   {
     "speaker": "ALEX",
-    "text": "When you open Source Control, VS Code focuses the source control view. From top to bottom, you'll typically find a commit message input, action buttons like Commit or more actions, then grouped lists for changes. Depending on state, you may hear sections such as Changes, Staged Changes, and sometimes merge-related groups. If the repository is clean, you may hear that there are no changes."
+    "text": "When it opens, you get the commit message input near the top, then groups of files such as Changes and Staged Changes. A changed file might be modified, added, deleted, renamed, or untracked. You can open a file's diff, stage it with the plus button, or use the context menu with Shift+F10."
   },
   {
     "speaker": "JAMIE",
-    "text": "And screen reader navigation differs a little by platform."
+    "text": "I like that the panel separates what changed from what is ready to commit. That reduces the mystery."
   },
   {
     "speaker": "ALEX",
-    "text": "It does. For NVDA and JAWS, users often move through the panel with Tab to reach major controls, then arrow keys to navigate within file lists. For VoiceOver, interacting with groups and lists may require VoiceOver navigation patterns, but the core idea is the same: move to the Source Control area, then navigate the tree or list of changed files and controls."
+    "text": "Git is tracking three areas. The working tree is the folder you are editing. The staging area is the set of changes you have selected for the next commit. The repository is Git's saved history after you commit."
   },
   {
     "speaker": "JAMIE",
-    "text": "What does each file item actually tell you?"
+    "text": "So the file states are untracked for a new file Git is not tracking yet, modified for a tracked file that changed, and staged for a change that is queued for the next commit."
   },
   {
     "speaker": "ALEX",
-    "text": "A changed file generally announces its name and status. That status might be modified, added, deleted, or untracked. If you open the file's diff, you can review what changed. And if the file has been staged, it moves into the staged section, which is a very important conceptual cue: staged means ready for the next commit; unstaged means changed but not yet included."
-  },
-  {
-    "speaker": "JAMIE",
-    "text": "There's also a context menu learners should know about."
-  },
-  {
-    "speaker": "ALEX",
-    "text": "Absolutely. Right-click, or Shift F10 on many keyboards, opens file actions. That can include stage, unstage, discard changes, open changes, reveal in explorer, and sometimes compare options. For keyboard users, that context menu can be more discoverable than trying to hunt for tiny inline buttons."
-  },
-  {
-    "speaker": "JAMIE",
-    "text": "How does this map to the CLI?"
-  },
-  {
-    "speaker": "ALEX",
-    "text": "Very directly. If you want to see all modified, staged, and untracked files in a compact way, use git status with the short format. If you want to see only what is staged, use git diff dash dash cached. If you want to see modified but unstaged changes, use plain git diff. And if you want both the staged and unstaged picture with actual content differences, you combine those diff views intentionally."
-  },
-  {
-    "speaker": "PAUSE",
-    "text": ""
-  },
-  {
-    "speaker": "ALEX",
-    "text": "Branch management is next, and it's one of those skills that prevents a lot of confusion later."
-  },
-  {
-    "speaker": "JAMIE",
-    "text": "First question learners often ask: how do I know what branch I'm on right now?"
-  },
-  {
-    "speaker": "ALEX",
-    "text": "In VS Code, look to the status bar at the bottom. The current branch is shown there. Keyboard users can move focus to the status bar and have the screen reader announce it. In the terminal, git branch dash dash show-current is a clean way to hear just the current branch name."
-  },
-  {
-    "speaker": "JAMIE",
-    "text": "And if you want a new branch?"
-  },
-  {
-    "speaker": "ALEX",
-    "text": "The recommended accessible method in VS Code is again the Command Palette. Use Git: Create Branch. Enter the branch name, such as feature slash something, fix slash issue-number, or in the workshop context, learn slash username. Good branch names are descriptive, short, and consistent."
-  },
-  {
-    "speaker": "JAMIE",
-    "text": "CLI equivalents?"
-  },
-  {
-    "speaker": "ALEX",
-    "text": "To create and switch in one step, you can use git checkout -b branch-name or the newer syntax git switch -c branch-name. To list local branches, git branch. To list local and remote-tracking branches, git branch -a. To switch to an existing branch, git checkout branch-name or git switch branch-name."
-  },
-  {
-    "speaker": "JAMIE",
-    "text": "What about deleting branches?"
-  },
-  {
-    "speaker": "ALEX",
-    "text": "After a PR is merged, it's often good housekeeping to delete the branch you no longer need. Locally, git branch -d branch-name performs a safe delete and refuses if the branch isn't merged. A force delete uses uppercase D, but that's riskier. You can also rename the current branch with git branch -m new-name. And if you need to push a new branch to GitHub the first time, you'll typically use git push -u origin branch-name so the upstream tracking is set."
-  },
-  {
-    "speaker": "JAMIE",
-    "text": "The chapter also mentioned deleting a remote branch and even creating a branch linked to an issue."
-  },
-  {
-    "speaker": "ALEX",
-    "text": "Yes. Remote branch deletion is possible and useful after merge cleanup. And GitHub tooling can create an issue-linked branch, sometimes auto-naming it from the issue title. The exact interface can vary, but the important concept is that issue context and branch context can be connected."
-  },
-  {
-    "speaker": "JAMIE",
-    "text": "When you switch branches in VS Code, what should learners expect?"
-  },
-  {
-    "speaker": "ALEX",
-    "text": "Files in the working directory may change to match the target branch. That can feel surprising if you're new to Git. So before switching, check whether you have uncommitted work. If you do, commit it, stash it, or consciously discard it. Otherwise Git may block the switch, or you may create confusion for yourself."
-  },
-  {
-    "speaker": "PAUSE",
-    "text": ""
-  },
-  {
-    "speaker": "ALEX",
-    "text": "Now let's make the branch idea concrete with the second practice: create a branch and commit."
-  },
-  {
-    "speaker": "JAMIE",
-    "text": "Walk us through it."
-  },
-  {
-    "speaker": "ALEX",
-    "text": "Open the Command Palette. If your learn slash username branch already exists on the remote, use Git: Checkout to and select that branch. If it doesn't exist yet, use Git: Create Branch and enter learn slash your-username. Then confirm your branch by checking the status bar. Next, open Explorer, go into the docs folder, and open the file your challenge refers to, such as docs slash welcome dot md. Make one small, meaningful change. Save with Control S. Then open Source Control with Control Shift G. Your changed file appears under Changes. Navigate to the file and either press Enter to open the diff or activate the Stage Changes control, often announced as a plus button. Once staged, the file moves to Staged Changes. Move to the commit message box, type a clear message like docs: improve welcome.md introduction, then press Control Enter to commit. When the staged changes disappear, that's your success signal."
-  },
-  {
-    "speaker": "JAMIE",
-    "text": "That step where the file moves from Changes to Staged Changes is really important for understanding Git's three areas."
-  },
-  {
-    "speaker": "ALEX",
-    "text": "It is. You edit in the working directory, stage in the index, and commit into repository history. That separation is what gives Git precision."
+    "text": "Exactly. In the terminal, git status gives the same overview, git status -s gives a compact one-letter view, git diff shows unstaged changes, and git diff --staged shows what is ready to commit. Those command cards in the chapter are worth keeping nearby because they give you another way to verify what VS Code is showing."
   },
   {
     "speaker": "PAUSE",
@@ -253,43 +101,35 @@
   },
   {
     "speaker": "JAMIE",
-    "text": "So let's talk staging in more detail, because this chapter goes beyond whole-file staging."
+    "text": "Branches are where a lot of people get nervous. What is the practical version?"
   },
   {
     "speaker": "ALEX",
-    "text": "Yes. You can stage an entire file, multiple files at once, or just individual lines or chunks. In VS Code, staging a whole file is usually as simple as activating the plus button next to that file or using the file's context menu. There may also be a keyboard shortcut depending on focus and platform."
+    "text": "A branch is a named line of work. For Challenge 10, you either switch to your existing learn/<username> branch or create it if it does not exist yet. In VS Code, use the Command Palette and run Git: Checkout to... for an existing branch, or Git: Create Branch... for a new one."
   },
   {
     "speaker": "JAMIE",
-    "text": "And staging multiple files?"
+    "text": "And naming matters because maintainers and facilitators read those names later."
   },
   {
     "speaker": "ALEX",
-    "text": "You can often stage all changes from the group header, or select multiple files using list interaction patterns if your setup supports it. On the CLI, git add filename stages a specific file, and git add dot or git add -A stages broadly depending on what you intend."
+    "text": "Yes. A name like learn/yourname or docs/improve-welcome is easier to understand than random-test. After you switch, the status bar shows the current branch. You can focus the status bar to hear it, and you can also run git branch --show-current."
   },
   {
     "speaker": "JAMIE",
-    "text": "What about partial staging, which can feel a little more advanced?"
+    "text": "What happens when you switch branches?"
   },
   {
     "speaker": "ALEX",
-    "text": "Partial staging is incredibly useful. Suppose you fixed a typo and also made an unrelated formatting change. Rather than bundling them together, you can stage just the relevant hunk. In terminal Git, git add -p launches interactive patch staging. Git shows each hunk and asks whether to stage it, with choices like yes, no, split, or edit. In VS Code, chunk-level staging may be available from the diff or context actions."
+    "text": "VS Code updates the files in your working tree to match that branch. If you have uncommitted changes that would be overwritten, Git will stop and ask you to commit, stash, or discard them first. In the CLI, git switch -c branch-name creates and switches, git switch branch-name switches, git branch lists local branches, and git branch -a includes remote-tracking branches."
   },
   {
     "speaker": "JAMIE",
-    "text": "That seems especially helpful in a workshop where you want one clean commit for one clear improvement."
+    "text": "And after a pull request is merged, deleting the branch is cleanup, not part of making the contribution real."
   },
   {
     "speaker": "ALEX",
-    "text": "Exactly. One commit, one idea is a very strong habit."
-  },
-  {
-    "speaker": "JAMIE",
-    "text": "And unstaging is just the reverse?"
-  },
-  {
-    "speaker": "ALEX",
-    "text": "Yes. In VS Code, use the minus button or context menu on a staged file. In terminal Git, git restore --staged filename is the modern form for unstaging a file. And to check what is staged versus unstaged, compare git diff with git diff --cached."
+    "text": "Right. You can delete a merged local branch with git branch -d branch-name, and delete a remote branch with git push origin --delete branch-name. Use force deletion only when you are certain the work is no longer needed."
   },
   {
     "speaker": "PAUSE",
@@ -297,103 +137,39 @@
   },
   {
     "speaker": "ALEX",
-    "text": "Once changes are staged, it's time to commit, and the chapter gives special attention to screen reader workflows here."
+    "text": "Staging is the part of Git that lets you choose exactly what goes into a commit."
   },
   {
     "speaker": "JAMIE",
-    "text": "What's the standard process?"
+    "text": "Why not just commit everything that changed?"
   },
   {
     "speaker": "ALEX",
-    "text": "Open Source Control, review the staged items, move to the message input, type a meaningful commit message, and trigger commit with Control Enter. Screen reader users should listen for focus changes carefully, because it's easy to land on action buttons before the message field. The panel structure matters."
+    "text": "Sometimes that is fine, but staging gives you control. Maybe you fixed a typo and also started a bigger edit that is not ready. You can stage one file, stage all changes, or stage only selected lines or chunks, which Git often calls hunks."
   },
   {
     "speaker": "JAMIE",
-    "text": "Any differences for NVDA, JAWS, and VoiceOver?"
+    "text": "That is especially useful in workshop practice because a small commit is easier to explain and easier to review."
   },
   {
     "speaker": "ALEX",
-    "text": "The experience differs mainly in how each screen reader announces grouped controls and text inputs. NVDA and JAWS users often navigate with Tab and arrows. VoiceOver users may need to interact with the source control region and move deliberately into the message field. But the key goal is the same: confirm you're in the message box before typing."
+    "text": "In VS Code, use the plus button next to one file to stage that file, or the plus button on the Changes group to stage everything. For line or chunk staging, open the diff and use the stage controls for the selected change. In the CLI, git add path stages one file, git add. stages current folder changes, and git add -p walks you through hunks interactively."
   },
   {
     "speaker": "JAMIE",
-    "text": "Let's spend a moment on commit messages, because learners often overthink them."
+    "text": "And if you stage the wrong thing?"
   },
   {
     "speaker": "ALEX",
-    "text": "A good commit message is short, specific, and tells future-you what changed. Many teams like a format such as type colon description, for example docs: clarify setup steps, fix: correct broken link, feat: add keyboard shortcut notes. The quick reference is: use imperative mood, keep it descriptive, and tie it to the actual change."
+    "text": "You can unstage it. In VS Code, use the minus button in Staged Changes. In the terminal, git restore --staged path removes it from the staging area without deleting your edit. Then check again with git status or by reading the Source Control groups."
   },
   {
     "speaker": "JAMIE",
-    "text": "And CLI commit options?"
+    "text": "What about throwing changes away? That feels risky."
   },
   {
     "speaker": "ALEX",
-    "text": "Git commit -m lets you commit staged changes with a one-line message. Git commit without dash m opens your editor for a multi-line message. And git commit -am can stage tracked files and commit in one step, but note the limitation: it does not include new untracked files, so beginners should use it carefully."
-  },
-  {
-    "speaker": "JAMIE",
-    "text": "What happens after a commit?"
-  },
-  {
-    "speaker": "ALEX",
-    "text": "The changes are saved in local history on your current branch. They are not on GitHub yet until you push. In VS Code, the source control lists usually clear if there are no remaining modifications. Your branch indicator remains, and history tools can now show the new commit."
-  },
-  {
-    "speaker": "PAUSE",
-    "text": ""
-  },
-  {
-    "speaker": "ALEX",
-    "text": "That brings us to push and pull operations."
-  },
-  {
-    "speaker": "JAMIE",
-    "text": "Let's start with pushing."
-  },
-  {
-    "speaker": "ALEX",
-    "text": "After committing locally, open the Command Palette and run Git: Push, or use the sync and push controls in the interface. If the branch has never been pushed before, VS Code may prompt you to publish the branch. Accept that. After the push completes, the sync indicator should show that local and remote are aligned."
-  },
-  {
-    "speaker": "JAMIE",
-    "text": "The CLI versions learners should know?"
-  },
-  {
-    "speaker": "ALEX",
-    "text": "Git push sends commits to GitHub. For a brand-new branch, git push -u origin branch-name both pushes and sets upstream tracking. Pulling changes from GitHub is git pull. If you want to see updates first without merging them into your files, use git fetch."
-  },
-  {
-    "speaker": "JAMIE",
-    "text": "When should learners pull?"
-  },
-  {
-    "speaker": "ALEX",
-    "text": "Before starting work for the day, before pushing if others may have changed shared branches, and any time you know the remote may have advanced. Some tools also auto-fetch in the background, which can be helpful, but you should still understand what fetch means: it updates your knowledge of remote branches without changing your working files."
-  },
-  {
-    "speaker": "JAMIE",
-    "text": "What if push fails?"
-  },
-  {
-    "speaker": "ALEX",
-    "text": "Don't panic. Read the error. Common causes include authentication problems, trying to push to a branch you don't have permission to modify, or a non-fast-forward situation where the remote has commits you don't have locally. In that last case, fetch or pull, inspect what changed, resolve any conflicts if necessary, then push again."
-  },
-  {
-    "speaker": "JAMIE",
-    "text": "Now let's tie this to the third workshop practice: push and open a linked PR."
-  },
-  {
-    "speaker": "ALEX",
-    "text": "After your local commit, run Git: Push. If asked to publish the branch, confirm. Wait for the push to finish. Then open your Learning Room repository on GitHub. Often you'll see a banner saying you recently pushed to your branch, with a Compare and pull request button. Activate it. If not, go to Pull requests, choose New pull request, set base to main and compare to your learn slash username branch. Then write a descriptive PR title, usually close to your commit theme. In the PR description, include plain text linking to the issue, such as Closes number. Submit the pull request."
-  },
-  {
-    "speaker": "JAMIE",
-    "text": "And that plain-text linkage matters because it creates traceability."
-  },
-  {
-    "speaker": "ALEX",
-    "text": "Exactly. It helps reviewers, and when merged it can automatically close the linked issue depending on repository settings."
+    "text": "It should feel serious. Discard only when you are sure you do not need the edit. VS Code can discard one file or all unstaged changes, while git restore path does the same in the terminal. If you might need the work later, stash it instead; and if you truly want to remove a file from the repository, use Git Delete in VS Code or git rm path so the deletion is tracked and can be committed."
   },
   {
     "speaker": "PAUSE",
@@ -401,211 +177,19 @@
   },
   {
     "speaker": "JAMIE",
-    "text": "The chapter also covers syncing a fork with upstream, which learners may encounter in open source contribution workflows."
+    "text": "Now we have changes staged. What makes a good commit?"
   },
   {
     "speaker": "ALEX",
-    "text": "Yes, and there are two main patterns. The quickest on GitHub is often the Sync fork button on the web interface. For screen reader users, the path is generally to open your fork on GitHub, find the sync control near branch information, and activate it."
+    "text": "A commit is a saved snapshot plus a message. A good subject line is short, specific, and written like an action, such as docs: improve welcome.md introduction. Many teams use a prefix like docs, fix, chore, or feat, followed by a colon and a plain-language summary."
   },
   {
     "speaker": "JAMIE",
-    "text": "And if you're doing it with Git remotes?"
+    "text": "And the commit message input is at the top of Source Control."
   },
   {
     "speaker": "ALEX",
-    "text": "That's the classic one-time setup plus recurring sync workflow. First, add the upstream remote once, pointing to the original repository. Then fetch updates from upstream. Next, make sure you're on your default branch, usually main. Merge upstream slash main into your local main. Finally, push your updated main back to your fork on GitHub."
-  },
-  {
-    "speaker": "JAMIE",
-    "text": "So conceptually: upstream is the source project, origin is your fork."
-  },
-  {
-    "speaker": "ALEX",
-    "text": "Precisely. And in VS Code, some of these operations may be available through the Command Palette, but it's helpful to know the underlying Git model. If conflicts occur during sync, you resolve them just like other merge conflicts: inspect, choose or combine changes, stage, and complete the merge."
-  },
-  {
-    "speaker": "PAUSE",
-    "text": ""
-  },
-  {
-    "speaker": "ALEX",
-    "text": "Sometimes, though, the right move is not to keep a change but to discard it."
-  },
-  {
-    "speaker": "JAMIE",
-    "text": "This is one of those areas where wording matters, because discard is permanent in many cases."
-  },
-  {
-    "speaker": "ALEX",
-    "text": "Yes. Discard only when you truly want to restore content to the last committed state. In VS Code, you can discard a single file from its context menu, or discard broader groups of changes from group actions. The CLI equivalents are worth knowing too. For a specific file, you can restore it to the last commit. For all unstaged changes, you can restore the working tree more broadly. If changes are staged, unstage first, then restore. And there is a nuclear option that throws away staged and unstaged work together. That one should be treated with extreme caution."
-  },
-  {
-    "speaker": "JAMIE",
-    "text": "Is there a safer way to preview before discarding?"
-  },
-  {
-    "speaker": "ALEX",
-    "text": "Absolutely. Review the diff first. In terminal Git, inspect with git diff for unstaged changes and git diff --cached for staged changes. In VS Code, open the diff view and listen carefully to what changed before taking destructive action."
-  },
-  {
-    "speaker": "JAMIE",
-    "text": "And the chapter explicitly recommends stash as a safer alternative in many cases."
-  },
-  {
-    "speaker": "ALEX",
-    "text": "It does. If you're not sure whether you'll need the changes later, stash instead of discard."
-  },
-  {
-    "speaker": "JAMIE",
-    "text": "There's also a section on deleting files from a repository, which is slightly different from simply removing them in your file explorer."
-  },
-  {
-    "speaker": "ALEX",
-    "text": "Correct. Git-aware deletion means Git records the removal. Git rm removes a file and stages that deletion in one step. If you want Git to stop tracking a file but keep it on your machine, use the cached form. You can remove an entire directory recursively as well. Then commit the deletion and verify the file is no longer tracked."
-  },
-  {
-    "speaker": "JAMIE",
-    "text": "So the main distinction is whether you want the file gone everywhere or just no longer version-controlled."
-  },
-  {
-    "speaker": "ALEX",
-    "text": "Exactly right."
-  },
-  {
-    "speaker": "PAUSE",
-    "text": ""
-  },
-  {
-    "speaker": "ALEX",
-    "text": "Now let's talk history, because Git isn't just about changing files. It's also about understanding what happened."
-  },
-  {
-    "speaker": "JAMIE",
-    "text": "That's where Timeline view comes in."
-  },
-  {
-    "speaker": "ALEX",
-    "text": "Yes. In VS Code, you can open Timeline from the Explorer sidebar when a file is selected, or use the Command Palette to access history-related views. Timeline shows events associated with the selected file, including commits. You can browse backward through changes, open a particular commit entry, and inspect what changed."
-  },
-  {
-    "speaker": "JAMIE",
-    "text": "And then there's blame, which has a dramatic name but a practical purpose."
-  },
-  {
-    "speaker": "ALEX",
-    "text": "Very practical. Git blame shows who last changed each line and in which commit. In some setups it appears inline or in an extension-provided view. For screen reader users, the most important thing is whether the information is exposed accessibly. Sometimes the terminal or a text-based history command is easier to read than a dense visual annotation."
-  },
-  {
-    "speaker": "JAMIE",
-    "text": "The chapter also includes CLI history commands learners should recognize."
-  },
-  {
-    "speaker": "ALEX",
-    "text": "Yes. You can view commit history for the whole repository with git log. For a specific file, git log double-dash path-to-file. To see what changed in each commit, use patch output. For line-level history, blame commands show authorship. You can show a specific commit's changes with git show commit-sha. You can compare two commits, filter commits by author, limit to recent days, inspect recent commits on the web, and review PR history on GitHub."
-  },
-  {
-    "speaker": "JAMIE",
-    "text": "And there's an accessibility point here too: structured diff review often beats visually scanning for changes."
-  },
-  {
-    "speaker": "ALEX",
-    "text": "Exactly. A diff viewer that lets you move hunk by hunk is often more efficient than searching manually through a changed file."
-  },
-  {
-    "speaker": "PAUSE",
-    "text": ""
-  },
-  {
-    "speaker": "JAMIE",
-    "text": "Which leads naturally to merge conflicts."
-  },
-  {
-    "speaker": "ALEX",
-    "text": "Yes. Conflicts happen when Git can't automatically reconcile competing changes. VS Code displays conflict regions in the editor and often provides actions such as accepting the current change, the incoming change, both changes, or manually editing the result."
-  },
-  {
-    "speaker": "JAMIE",
-    "text": "What does a good screen reader workflow look like for resolving conflicts?"
-  },
-  {
-    "speaker": "ALEX",
-    "text": "First, identify which file has the conflict. Open it and navigate carefully through the conflict regions. If your setup exposes structured conflict actions accessibly, use them. If not, reading the conflict markers and editing manually may be necessary. Review the surrounding context so you understand what each version is trying to do."
-  },
-  {
-    "speaker": "JAMIE",
-    "text": "The chapter emphasizes accessible diff tools here."
-  },
-  {
-    "speaker": "ALEX",
-    "text": "Yes, because accessible diff navigation gives you structured, hunk-by-hunk movement instead of forcing you to hunt for markers in a long file. After choosing or combining content, save the file, stage it, and complete the merge commit. If the merge is not worth continuing, you can abort the merge and return to the pre-merge state."
-  },
-  {
-    "speaker": "JAMIE",
-    "text": "So an aborted merge is not failure. It's a controlled retreat."
-  },
-  {
-    "speaker": "ALEX",
-    "text": "Exactly. Sometimes stepping back is the best troubleshooting move."
-  },
-  {
-    "speaker": "PAUSE",
-    "text": ""
-  },
-  {
-    "speaker": "ALEX",
-    "text": "Stash management is another skill that helps when your work is in-between states."
-  },
-  {
-    "speaker": "JAMIE",
-    "text": "When should someone use stash?"
-  },
-  {
-    "speaker": "ALEX",
-    "text": "Use stash when you have uncommitted changes but need to switch tasks, change branches, pull updates safely, or test something without committing half-finished work. Think of it as temporarily setting your changes aside."
-  },
-  {
-    "speaker": "JAMIE",
-    "text": "How do you create a stash?"
-  },
-  {
-    "speaker": "ALEX",
-    "text": "In VS Code, the Command Palette may offer stash commands. In the terminal, you can stash all uncommitted changes with a message, which is especially helpful because named stashes are easier to identify later. If you also want to include untracked new files, use the include-untracked option."
-  },
-  {
-    "speaker": "JAMIE",
-    "text": "How do you see what stashes exist?"
-  },
-  {
-    "speaker": "ALEX",
-    "text": "Either through the Command Palette if your interface exposes them, or in terminal with git stash list. To inspect a specific stash, use a show command that reveals its contents."
-  },
-  {
-    "speaker": "JAMIE",
-    "text": "And restoring?"
-  },
-  {
-    "speaker": "ALEX",
-    "text": "Applying a stash restores the changes but keeps the stash entry. Popping a stash restores the changes and removes that stash entry in one step. You can apply the most recent stash or a specific stash by reference. That difference between apply and pop is important: apply is safer when you're unsure."
-  },
-  {
-    "speaker": "JAMIE",
-    "text": "And cleanup?"
-  },
-  {
-    "speaker": "ALEX",
-    "text": "You can drop a specific stash or clear all stashes, but clearing all should be done very carefully."
-  },
-  {
-    "speaker": "PAUSE",
-    "text": ""
-  },
-  {
-    "speaker": "JAMIE",
-    "text": "Then there's the emergency recovery section, which I think comforts a lot of learners."
-  },
-  {
-    "speaker": "ALEX",
-    "text": "It should. Git reflog is one of the best safety nets in Git. It records where your HEAD and branch references have been locally, even when commits seem lost after resets, rebases, or branch deletions."
+    "text": "Yes. Type the message there, then press Ctrl+Enter, or Cmd+Enter on Mac. Screen readers usually announce the Source Control state changing afterward because the staged files disappear. That is your signal that the commit was created locally."
   },
   {
     "speaker": "JAMIE",
@@ -613,31 +197,7 @@
   },
   {
     "speaker": "ALEX",
-    "text": "Exactly. Reflog is local-only. It's your machine's memory of reference movements. It is not a shared remote history."
-  },
-  {
-    "speaker": "JAMIE",
-    "text": "So if you think you lost a commit, what's the recovery pattern?"
-  },
-  {
-    "speaker": "ALEX",
-    "text": "First, open the VS Code terminal and read the reflog to find the last good commit SHA. Second, preview that commit with a show command so you know it's the right one. Third, take the safer recovery route whenever possible: create a new branch at that commit. That preserves the current state while giving you access to the lost work. The riskier option is resetting your current branch back to that point."
-  },
-  {
-    "speaker": "JAMIE",
-    "text": "And if you deleted a branch entirely?"
-  },
-  {
-    "speaker": "ALEX",
-    "text": "Use reflog to find the commit that branch pointed to, then recreate the branch at that SHA. This is one reason experienced Git users seem calm in situations that feel catastrophic to beginners."
-  },
-  {
-    "speaker": "JAMIE",
-    "text": "Because they know the history is often still recoverable."
-  },
-  {
-    "speaker": "ALEX",
-    "text": "Exactly."
+    "text": "Exactly. A commit on your computer is not on GitHub yet. In the terminal, the equivalent is git commit -m followed by your message. You can also use git commit without -m to write a longer message in an editor, or git commit -am for tracked files only, but beginners should be careful because that skips untracked new files."
   },
   {
     "speaker": "PAUSE",
@@ -645,23 +205,55 @@
   },
   {
     "speaker": "ALEX",
-    "text": "The chapter also acknowledges that VS Code is not the only interface."
+    "text": "Pushing sends your local commits to GitHub."
   },
   {
     "speaker": "JAMIE",
-    "text": "Right. There are alternatives depending on accessibility preferences and task type."
+    "text": "So if I commit and then close my laptop, GitHub does not know about that commit until I push."
   },
   {
     "speaker": "ALEX",
-    "text": "Yes. GitHub Desktop can be appealing for a more guided visual workflow. GitHub CLI, the gh tool, is excellent for repository and pull request tasks and often works very well with screen readers when you like structured terminal output. And the core Git CLI remains the most universal interface, with common commands for status, add, commit, branch, switch, push, pull, fetch, stash, log, show, diff, and reflog."
+    "text": "Correct. In VS Code, run Git: Push from the Command Palette, or use the sync and publish controls in the Source Control area. If the branch is new, VS Code may say Publish Branch. That creates or connects the branch on GitHub, often called origin, so your local branch has a remote tracking branch."
   },
   {
     "speaker": "JAMIE",
-    "text": "So the real goal is not loyalty to one interface. It's fluency across concepts."
+    "text": "Remote tracking branch is one of those phrases that sounds bigger than it is."
   },
   {
     "speaker": "ALEX",
-    "text": "Beautifully said. Tools differ. The model stays the same."
+    "text": "It means your local branch knows which branch on GitHub it normally pushes to and pulls from. In the CLI, the first push for a new branch is often git push -u origin branch-name. After that, git push is usually enough because Git remembers the relationship."
+  },
+  {
+    "speaker": "JAMIE",
+    "text": "Pulling is the opposite direction, then?"
+  },
+  {
+    "speaker": "ALEX",
+    "text": "Mostly, yes. Pulling downloads commits from GitHub and integrates them into your current branch. Technically, git pull is git fetch plus a merge by default. If you want to see what changed before integrating, run git fetch, then git status or git log."
+  },
+  {
+    "speaker": "JAMIE",
+    "text": "When would git pull --rebase come up?"
+  },
+  {
+    "speaker": "ALEX",
+    "text": "Use it when your local branch and the GitHub branch both have new commits, and you want your local commits replayed on top of the latest remote commits for a cleaner history. It is common on personal feature branches, but be careful on branches other people are also using. If a conflict appears during rebase or pull, stop, read the conflicting files, resolve them, then continue the operation."
+  },
+  {
+    "speaker": "JAMIE",
+    "text": "And if push fails, the usual reason is that GitHub has commits you do not have yet."
+  },
+  {
+    "speaker": "ALEX",
+    "text": "Right. Run git fetch, check git status, pull or pull with rebase if appropriate, resolve any conflicts, and then push again. For forked projects, GitHub.com may also offer a Sync fork button, and the terminal version is to add an upstream remote once, fetch upstream, merge or rebase the default branch, and push the updated branch back to your fork."
+  },
+  {
+    "speaker": "JAMIE",
+    "text": "Challenge 11 starts right after that push, because now the branch exists on GitHub and can become a pull request."
+  },
+  {
+    "speaker": "ALEX",
+    "text": "Yes. On GitHub.com, use Compare and pull request if the banner appears, or open Pull requests, choose New pull request, set base to main, compare to your branch, and include plain text like Closes #XX so the PR links to the challenge issue. If you prefer the web workflow for a small edit, you can still edit directly on GitHub.com, commit in the browser, and open a PR there, but Challenge 10 is about practicing the local path."
   },
   {
     "speaker": "PAUSE",
@@ -669,62 +261,86 @@
   },
   {
     "speaker": "JAMIE",
-    "text": "Before we wrap, can we give learners a quick practical recap they can actually use the next time they sit down to work?"
+    "text": "Once work exists in history, how do you look back without getting lost?"
   },
   {
     "speaker": "ALEX",
-    "text": "Absolutely. Start by checking your state: git status. Confirm your branch: git branch --show-current. If you need the repo locally, clone it and verify it opened correctly in Explorer. Create or switch to the correct branch before editing. Make one meaningful change. Stage intentionally, either whole file or selected chunks. Write a clear commit message. Commit locally. Push to GitHub, publishing the branch if needed. Open a pull request and include issue linkage like Closes number. If you need updates first, fetch or pull. If something feels risky, stash instead of discarding. If something seems lost, reflog may save you."
+    "text": "VS Code has a Timeline view for a file. You can open it from the Explorer sidebar or through the Command Palette, and it shows recent saves and Git commits related to that file. Opening a commit lets you inspect what changed."
   },
   {
     "speaker": "JAMIE",
-    "text": "And for accessibility specifically?"
+    "text": "And Git blame is the line-by-line history tool, right?"
   },
   {
     "speaker": "ALEX",
-    "text": "Prefer predictable keyboard-first workflows. The Command Palette is often the most screen-reader-friendly route in VS Code. Use the Source Control panel deliberately: know where the message field is, know where the file groups are, and use context menus when inline buttons are awkward. Verify feedback through notifications, status bar announcements, diffs, and terminal commands. Never rely on visual assumptions alone."
+    "text": "Yes. Blame shows which commit and author last changed each line. It is not about blaming a person; it is about finding context. In the terminal, git log shows repository history, git log -- path shows history for one file, git log -p includes patch details, git blame path shows line history, and git show commit-hash displays a specific commit."
   },
   {
     "speaker": "JAMIE",
-    "text": "One more thing: the chapter includes a try-it prompt to practice clone, branch, and commit. That's worth doing even if you think you understood the lesson."
+    "text": "Conflicts are another kind of history lesson, but less friendly."
   },
   {
     "speaker": "ALEX",
-    "text": "Absolutely. Git becomes clear through repetition. Practice the sequence until it feels boring. That's when it becomes dependable."
+    "text": "A merge conflict happens when Git cannot safely combine two edits to the same area. VS Code marks the file as conflicted and offers actions such as accept current, accept incoming, accept both, or compare changes. Do not just pick a button blindly; read the file and make the final content correct."
   },
   {
     "speaker": "JAMIE",
-    "text": "And if someone gets stuck?"
+    "text": "The accessible diff view helps because you can move through changes in a more structured way than searching for conflict markers by hand."
   },
   {
     "speaker": "ALEX",
-    "text": "Pause, check status, check branch, read the exact message Git or VS Code is giving you, and ask for help with those details. \"It didn't work\"\u009d is hard to debug. \"Git says non-fast-forward on branch learn slash jamie after push\"\u009d is very debug-friendly."
-  },
-  {
-    "speaker": "JAMIE",
-    "text": "That is such a good learning habit."
-  },
-  {
-    "speaker": "ALEX",
-    "text": "It is. And one final note: this chapter points learners toward authoritative sources too, especially the VS Code source control docs, GitHub's Git documentation, and the GitHub Accessibility Lab CLI guide. Those are excellent references as you keep practicing."
-  },
-  {
-    "speaker": "JAMIE",
-    "text": "So the big takeaway is that accessible Git is absolutely possible, and a careful workflow beats a fast, fuzzy one."
-  },
-  {
-    "speaker": "ALEX",
-    "text": "Exactly. Clear state, explicit branches, deliberate staging, meaningful commits, and accessible review habits. That's a professional workflow."
+    "text": "Yes. Use the diff viewer, review one hunk at a time, save the resolved file, stage it, and complete the merge or rebase. If you realize you are in the wrong operation, git merge --abort can back out of a merge, and git rebase --abort can back out of a rebase."
   },
   {
     "speaker": "PAUSE",
     "text": ""
   },
   {
+    "speaker": "JAMIE",
+    "text": "We touched stash earlier, but it deserves one more pass because it solves a very real problem: I changed files, and now I need to switch tasks."
+  },
+  {
     "speaker": "ALEX",
-    "text": "Thanks for learning with us."
+    "text": "Stash temporarily shelves uncommitted work. In VS Code, use the Command Palette for Git: Stash, then later Git: Apply Stash or Git: Pop Stash. Apply restores the changes and keeps the stash entry; pop restores the changes and removes the stash entry."
   },
   {
     "speaker": "JAMIE",
-    "text": "We'll see you next time."
+    "text": "The terminal version is git stash push -m with a message, git stash list, git stash show, git stash apply, and git stash pop."
+  },
+  {
+    "speaker": "ALEX",
+    "text": "Exactly. If you need to include new untracked files, use git stash push -u. You can drop one stash when you are done, or clear all stashes, but clear is a careful command because it removes every stash entry."
+  },
+  {
+    "speaker": "JAMIE",
+    "text": "And then there is reflog, the emergency tool."
+  },
+  {
+    "speaker": "ALEX",
+    "text": "Reflog records where your local branch tips and HEAD have been. If you deleted a branch or moved away from a commit, git reflog can help you find the old commit hash. The safer recovery move is usually to create a new branch at that hash, using git branch recovered-name hash, before doing anything destructive."
+  },
+  {
+    "speaker": "JAMIE",
+    "text": "But reflog is local. It is not a GitHub backup service."
+  },
+  {
+    "speaker": "ALEX",
+    "text": "Right. It exists on your machine and eventually expires entries. For everyday work, use steady habits: git status before acting, git branch --show-current before pushing, git fetch before assuming you are up to date, and clear PR text like Closes #XX."
+  },
+  {
+    "speaker": "JAMIE",
+    "text": "There are also alternatives if VS Code is not the best fit for a specific moment."
+  },
+  {
+    "speaker": "ALEX",
+    "text": "GitHub Desktop offers a visual Git interface. GitHub CLI gives commands like gh repo clone, gh pr create, gh pr view, and gh pr checkout. The Git CLI gives the most direct commands: clone, switch, add, commit, push, pull, fetch, status, log, restore, stash, and reflog."
+  },
+  {
+    "speaker": "JAMIE",
+    "text": "So the expected result for Challenge 10 is not a giant feature. It is evidence that the local workflow happened: the right branch name, a meaningful commit, a pushed branch, and PR metadata that links back to the issue."
+  },
+  {
+    "speaker": "ALEX",
+    "text": "Exactly. If you get stuck, confirm the repository URL, confirm you are on the intended branch, run git status, fetch before pushing, and ask for help with the exact message Git gave you. Small, verifiable steps make this workflow much less mysterious."
   }
 ]

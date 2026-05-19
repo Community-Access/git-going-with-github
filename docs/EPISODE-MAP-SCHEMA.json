@@ -1,0 +1,127 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://lp.csedesigns.com/ggg/episode-map.schema.json",
+  "title": "Git Going with GitHub - Episode Map",
+  "description": "Canonical map of all podcast episodes. Stage 0.2 establishes identity fields (uuid, filename, group, duration, sha256, narration_id). Topic/track/ordering fields are populated in Stage 1.1.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["schema_version", "show", "episodes"],
+  "properties": {
+    "schema_version": {
+      "type": "string",
+      "pattern": "^[0-9]+\\.[0-9]+\\.[0-9]+$"
+    },
+    "generated_at": {
+      "type": "string",
+      "format": "date-time",
+      "description": "ISO 8601 timestamp of the last full mint or refresh."
+    },
+    "show": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["title", "feed_url"],
+      "properties": {
+        "title": { "type": "string", "minLength": 1 },
+        "default_cover_art": {
+          "type": ["string", "null"],
+          "description": "Repo-relative path to default cover art, or null if not yet supplied."
+        },
+        "feed_url": { "type": "string", "format": "uri" }
+      }
+    },
+    "episodes": {
+      "type": "array",
+      "items": { "$ref": "#/$defs/episode" }
+    }
+  },
+  "$defs": {
+    "episode": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "uuid",
+        "current_filename",
+        "current_slug",
+        "group",
+        "narration_id",
+        "duration_seconds",
+        "size_bytes",
+        "sha256"
+      ],
+      "properties": {
+        "uuid": {
+          "type": "string",
+          "pattern": "^[0-9a-f]{8}-[0-9a-f]{4}-4[0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$",
+          "description": "UUID v4. Immutable after first mint."
+        },
+        "current_filename": {
+          "type": "string",
+          "pattern": "^[a-z0-9][a-z0-9-]+\\.mp3$",
+          "description": "Filename on disk today. May or may not match the post-reorg filename."
+        },
+        "current_slug": {
+          "type": "string",
+          "pattern": "^[a-z0-9][a-z0-9-]+$",
+          "description": "current_filename without the .mp3 extension."
+        },
+        "group": {
+          "type": "string",
+          "enum": ["ep", "challenge", "bonus"],
+          "description": "Inventory bucket from Stage 0.1. 'ep' covers both chapters and appendices pending Stage 1.1 classification."
+        },
+        "narration_id": {
+          "type": "string",
+          "description": "What the narration calls this episode today (e.g. 'ep05', 'cc-07', 'cc-bonus-a'). Stays in narration even when track_number is reassigned."
+        },
+        "duration_seconds": { "type": "number", "exclusiveMinimum": 0 },
+        "size_bytes": { "type": "integer", "exclusiveMinimum": 0 },
+        "sha256": { "type": "string", "pattern": "^[0-9a-f]{64}$" },
+        "filename": {
+          "type": "string",
+          "pattern": "^(ch|cc|ref|git|tools|agents|sec|a11y)-[0-9]{2}-[a-z0-9-]+\\.mp3$|^cc-bonus-[a-z]-[a-z0-9-]+\\.mp3$",
+          "description": "Final filename after Stage 3 cutover. Populated in Stage 1.1."
+        },
+        "topic_prefix": {
+          "type": "string",
+          "enum": ["ch", "cc", "cc-bonus", "ref", "git", "tools", "agents", "sec", "a11y"]
+        },
+        "topic_number": { "type": "string", "pattern": "^([0-9]{2}|[a-z])$" },
+        "learning_band": {
+          "type": "string",
+          "enum": ["chapter", "challenge", "bonus", "ref", "git", "tools", "agents", "sec", "a11y"]
+        },
+        "title": { "type": "string", "minLength": 1 },
+        "subtitle": { "type": "string" },
+        "summary": { "type": "string" },
+        "track_number": { "type": "integer", "minimum": 1 },
+        "pair_order": { "type": "integer", "minimum": 0 },
+        "pairs_with_uuid": {
+          "type": ["string", "null"],
+          "pattern": "^[0-9a-f]{8}-[0-9a-f]{4}-4[0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$"
+        },
+        "published_at": { "type": ["string", "null"], "format": "date-time" },
+        "source_script": { "type": ["string", "null"] },
+        "source_docs": {
+          "type": "array",
+          "description": "Repo-relative paths to the docs/ files this episode is built from. Populated in Stage 2.2. Updated at Stage 3.4bis when docs are renamed to band-prefixed names.",
+          "items": {
+            "type": "string",
+            "pattern": "^(docs|admin|classroom)/[A-Za-z0-9_./-]+\\.md$"
+          },
+          "uniqueItems": true
+        },
+        "cover_art": { "type": ["string", "null"] },
+        "explicit": { "type": "boolean", "default": false },
+        "archived": { "type": "boolean", "default": false },
+        "notes": { "type": "string" }
+      },
+      "allOf": [
+        {
+          "description": "If any naming field is present, all four must be present and consistent with each other.",
+          "if": { "required": ["filename"] },
+          "then": { "required": ["topic_prefix", "topic_number", "learning_band"] }
+        }
+      ]
+    }
+  }
+}

@@ -1,0 +1,159 @@
+[ALEX]
+Welcome back. Challenge 15 is called Meet the Agents, and it really is a getting-to-know-you exercise. You're exploring a living catalog of accessibility agents, trying one carefully, and checking what its instructions actually allow it to do.
+
+[JAMIE]
+I like that this starts with browsing instead of building. Sometimes when people hear agents, they assume they have to set up something huge before they can even look around.
+
+[ALEX]
+Right, and not here. The first move is simple: open the Community-Access accessibility-agents repository, read the README, and browse the agent folders. For this challenge, you are discovering what's there and how it's organized.
+
+[JAMIE]
+So the repo itself is the museum, and we're walking the rooms a little before touching anything.
+
+[ALEX]
+Exactly. And while you browse, you're looking for at least three agent names plus a plain-language note about what each one does.
+
+[PAUSE]
+
+[JAMIE]
+What kind of agents are learners likely to run into first?
+
+[ALEX]
+A few common ones come up quickly. You might find an orchestrator like accessibility-lead, which coordinates reviews and can hand work to more specialized agents. Then there are specialists like aria-specialist, focused on ARIA roles, states, and properties, or keyboard-navigator, which looks at tab order, focus management, and keyboard access in code.
+
+[JAMIE]
+And that distinction matters, right? One agent may coordinate, another may inspect a narrower topic.
+
+[ALEX]
+Yes. That's part of what you're noticing in this challenge. Some agents are broad guides, some are narrow experts, and some are read-only helpers that summarize information without editing anything.
+
+[JAMIE]
+That helps lower the mystery a bit. You're not meeting one giant robot brain. You're meeting a set of tools with different jobs and limits.
+
+[PAUSE]
+
+[ALEX]
+There's also an important checkpoint before you run anything: use agents for work you've already practiced manually. If you've read issues yourself, reviewed a diff yourself, or checked heading structure yourself, then an agent can help. If you haven't done the task by hand yet, the output can sound convincing without being useful.
+
+[JAMIE]
+So if I ask a PR review agent to analyze a pull request, I still need some feel for what a good review looks like.
+
+[ALEX]
+Exactly. The challenge is not just to make an agent respond. It's to compare the response with your own understanding. That's why the chapter pairs exploration with validation.
+
+[JAMIE]
+That makes this less like magic and more like assisted work. Helpful, but not self-authenticating.
+
+[PAUSE]
+
+[JAMIE]
+Okay, say I've found a few agents. How do I choose one to run without getting in over my head?
+
+[ALEX]
+Pick one that matches a skill you've already used. A GitHub workflow agent like daily-briefing, issue-tracker, or pr-review is often a good starting point because those connect to repo navigation, issues, and pull requests. If you've done accessibility checks already, something like keyboard-navigator or another focused accessibility agent can also work.
+
+[JAMIE]
+And then I actually read the folder's README instead of guessing the command.
+
+[ALEX]
+Yes, please. The README usually tells you how that agent is invoked, whether that's through Copilot Chat, the VS Code command flow, or another supported path. Different platforms can support the same agent family, but the launch method may differ.
+
+[JAMIE]
+So one learner might use VS Code with Copilot Chat, and another might be looking from GitHub.com or another tool, depending on what's supported.
+
+[ALEX]
+That's right. The ecosystem spans multiple platforms, but for this challenge, the safest approach is to follow the instructions attached to the specific agent you chose.
+
+[PAUSE]
+
+[ALEX]
+Here's a concrete example. Suppose you choose accessibility-lead and ask it to review the heading structure of a file. It may route that request to a more specialized heading-focused agent and return findings like a skipped heading level.
+
+[JAMIE]
+So the interesting part isn't only the answer. It's also noticing whether the agent delegated the task and whether the result lines up with what I'd catch by reading the file myself.
+
+[ALEX]
+Exactly. Another example would be running issue-tracker to find open issues with a particular label, or pr-review to summarize open pull requests. In each case, you read the output critically and ask, does this match the repository as I understand it?
+
+[JAMIE]
+And if it doesn't, that's not failure. That's evidence.
+
+[ALEX]
+Yes. A mismatch is useful information. It tells you the tool may be missing context, using the wrong scope, or reaching past what it can reliably know.
+
+[PAUSE]
+
+[JAMIE]
+Now let's talk about the file itself, because .agent.md can look intimidating at first glance.
+
+[ALEX]
+It can, but the pattern repeats. At the top you'll usually see YAML frontmatter, which is structured metadata. That gives details like the agent's name, description, tool access, model preferences, and sometimes how invocation is controlled.
+
+[JAMIE]
+So before I read the prose, I can scan that top block to figure out what kind of agent I'm dealing with.
+
+[ALEX]
+Exactly. Then move into the body. You're looking for sections like Purpose, Responsibilities, and Guardrails or similar boundary language. Purpose tells you why the agent exists. Responsibilities tell you what it's expected to handle. Guardrails tell you what it should avoid, what it can't verify, or where a human still has to step in.
+
+[JAMIE]
+That last part is huge. If keyboard-navigator says it can inspect code for keyboard patterns but can't perform real keyboard testing, that keeps me from overtrusting it.
+
+[ALEX]
+Yes, and that's one of the strongest lessons in the challenge. An agent may review code that suggests likely behavior, but actual interaction testing still belongs to a person.
+
+[PAUSE]
+
+[ALEX]
+As you read more of the reference material, you start seeing the broader system around these files. Agents can be informational, task-oriented, guided, or orchestration-focused. There are also slash commands, prompt files, skills, always-on instructions, and preference files that shape how AI behaves in a repo or for an individual user.
+
+[JAMIE]
+So the .agent.md file is one piece of a larger customization toolkit.
+
+[ALEX]
+Exactly. Repo-level instructions can travel with the repository. Personal preference files can shape output style for your own setup. Instruction files can apply to certain file types. And skills can load extra procedures when the task calls for them.
+
+[JAMIE]
+That's helpful because it explains why an agent is not just a nickname in chat. It's backed by files that define scope, tools, and behavior.
+
+[ALEX]
+Right. And when something goes wrong, those files are also where you begin troubleshooting. If an agent isn't found, the file may be in the wrong location, discovery may not be enabled in that environment, or the platform may support a different setup path.
+
+[PAUSE]
+
+[JAMIE]
+What does a solid submission for this challenge actually sound like?
+
+[ALEX]
+Something plain and specific. Name three agents you found and say what each one does. Describe one agent you ran, what prompt or task you used, and what happened. Then summarize one .agent.md file by stating its purpose and a couple of boundaries you noticed.
+
+[JAMIE]
+And in the Day 2 version, learners also add those notes to docs slash my-notes slash agents-discovery dot md, commit, push, and open a pull request.
+
+[ALEX]
+Yes. If you're working from your local clone or the web editor, that notes file becomes your written evidence. Then you include the PR or commit URL in the challenge issue.
+
+[JAMIE]
+I also noticed there's a peer comparison idea built in. Check what someone else found, or compare with a peer-simulation issue, and see whether you noticed different agents or different uses.
+
+[ALEX]
+That's a great habit. Two people can browse the same catalog and come away with different starting points, depending on which manual skills they already trust themselves with.
+
+[PAUSE]
+
+[ALEX]
+And one practical milestone matters here. Finishing Challenge 15 unlocks Challenge 16, the Capstone Project, along with Bonus Challenges A through E. Those bonus challenges are part of the planned path forward, not just extra filler.
+
+[JAMIE]
+So this is the doorway into the bigger project space.
+
+[ALEX]
+Exactly. And Challenge 16 is flexible in a good way. You can contribute to Accessibility Agents, GLOW, or another meaningful repository, and completion can be shown through a contribution, a review-ready draft, or even a solid contribution plan.
+
+[JAMIE]
+That makes this browsing challenge feel more purposeful. You're not wandering a repo for trivia. You're learning what kinds of help and contribution paths exist before you enter the capstone.
+
+[ALEX]
+That's it. Meet the agents, test one with care, read the instructions behind one, and keep your own judgment in the loop the whole time.
+
+[JAMIE]
+Which is a pretty good rule for AI in general.

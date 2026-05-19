@@ -1,8 +1,13 @@
 const MODEL_PRICING_USD_PER_1K = {
-  'openai/gpt-5.4': { input: 0.01, output: 0.03 },
-  'openai/gpt-5.4-mini': { input: 0.002, output: 0.006 },
-  'gpt-5.4': { input: 0.01, output: 0.03 },
-  'gpt-5.4-mini': { input: 0.002, output: 0.006 }
+  // Prices below match OpenRouter list prices (USD per 1K tokens).
+  'openai/gpt-5.4': { input: 0.0025, output: 0.015 },
+  'openai/gpt-5.4-mini': { input: 0.0005, output: 0.002 },
+  'openai/gpt-5.5': { input: 0.005, output: 0.030 },
+  'openai/gpt-5.5-pro': { input: 0.030, output: 0.180 },
+  'gpt-5.4': { input: 0.0025, output: 0.015 },
+  'gpt-5.4-mini': { input: 0.0005, output: 0.002 },
+  'gpt-5.5': { input: 0.005, output: 0.030 },
+  'gpt-5.5-pro': { input: 0.030, output: 0.180 }
 };
 
 function estimateTokensFromText(text) {

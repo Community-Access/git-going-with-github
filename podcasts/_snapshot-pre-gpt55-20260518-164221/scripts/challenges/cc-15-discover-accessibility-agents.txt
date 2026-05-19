@@ -1,0 +1,337 @@
+[ALEX]
+Welcome back. Challenge 15 is called Meet the Agents, and it's where we move from using GitHub and VS Code directly into exploring AI helpers that can support accessibility and workflow tasks.
+
+[JAMIE]
+I like the word "meet" there. It lowers the pressure a little. We're not becoming agent experts in one sitting; we're getting introduced.
+
+[ALEX]
+Exactly. The Accessibility Agents project is a living catalog of agent files and related tools. It grows over time, so don't memorize a count. Your job is to browse, notice patterns, try one carefully, and compare what it gives you against skills you already have.
+
+[JAMIE]
+So the challenge isn't, "trust the robot." It's more like, "learn how the robot is configured, then check its work."
+
+[ALEX]
+Yes. And that's the heart of this chapter: skill first, agent second. If an agent reviews a pull request, you should already know what a pull request review feels like. If an agent checks headings, you should already know why heading order matters.
+
+[PAUSE]
+
+[JAMIE]
+Before someone starts clicking around, what should they already have ready?
+
+[ALEX]
+You'll want the basics from the workshop: a GitHub account, Git installed, VS Code installed, and Copilot available in VS Code. Copilot Free is enough for the workshop path. You should also be comfortable navigating a repository, reading files, working with issues, and understanding a pull request at a basic level.
+
+[JAMIE]
+And for people who missed Day 1 but have used GitHub before?
+
+[ALEX]
+They can still succeed. The Day 2 quick start is there to confirm the accounts, tools, and core skills. Day 1 contributions happen in each learner's Learning Room repository, where they practice issues, branches, commits, pull requests, and merging. Challenge 15, though, is browse-first in the Accessibility Agents catalog.
+
+[JAMIE]
+That browse-first detail matters. People do not need to make their own copy of the Accessibility Agents repository just to complete this challenge.
+
+[ALEX]
+Right. You're exploring the main Community-Access accessibility-agents repository. If your cohort asks you to write notes in your assigned repo, you can use your local clone from the earlier local Git challenge, or the GitHub web editor.
+
+[PAUSE]
+
+[ALEX]
+Start at github.com slash Community-Access slash accessibility-agents. Open the README first. The README gives you the project context: what the agents are for, how they're organized, and how they're meant to be used.
+
+[JAMIE]
+And then we browse the folders?
+
+[ALEX]
+Yes. Each agent lives in a folder or file structure that gives you clues. You're looking for at least three agent names and short descriptions of what they do. You might find accessibility-focused agents, GitHub workflow agents, and developer tool agents.
+
+[JAMIE]
+Can we give examples without implying those are the only right choices?
+
+[ALEX]
+Definitely. One example is accessibility-lead. Its purpose is to coordinate accessibility reviews across a team. It acts as an orchestrator, which means it routes a request to a more specialized agent instead of doing every check itself.
+
+[JAMIE]
+So if I ask a broad accessibility question, the lead agent might decide, "this belongs to the ARIA specialist," or "this belongs to the keyboard specialist."
+
+[ALEX]
+Exactly. Another example is aria-specialist. ARIA stands for Accessible Rich Internet Applications, and it's a set of roles, states, and properties that help assistive technologies understand custom interface patterns. That agent reviews whether ARIA is being used correctly in HTML or web components.
+
+[JAMIE]
+And that's a good place where manual knowledge matters, because ARIA can help, but bad ARIA can also make things worse.
+
+[ALEX]
+Yes. A third example is keyboard-navigator. It looks at whether interactive elements can be reached and operated by keyboard, including tab order, focus management, shortcuts, skip links, and focus traps.
+
+[JAMIE]
+But it can't press the Tab key for me in the real interface.
+
+[ALEX]
+Right. Its instructions may let it review code and point out likely problems, but actual keyboard behavior still needs human testing. That's a perfect example of why guardrails matter.
+
+[PAUSE]
+
+[JAMIE]
+Let's pause on that word: guardrails. What are we looking for inside an agent file?
+
+[ALEX]
+Most custom agent files use the .agent.md format. At the top, there is YAML frontmatter. YAML is a structured text format, and the frontmatter usually includes metadata such as the agent name, description, model preferences, and tools the agent can use.
+
+[JAMIE]
+Tools meaning things like reading files, editing files, running commands, or using GitHub information?
+
+[ALEX]
+Exactly. After the frontmatter, the body explains the agent's behavior. In this challenge, you're specifically looking for the purpose, the responsibilities, and the guardrails. Purpose tells you why the agent exists. Responsibilities tell you what it is designed to do. Guardrails tell you what it should avoid, what it cannot verify, or when it should ask for human confirmation.
+
+[JAMIE]
+That makes the agent feel less mysterious. It's not just "AI magic." It's a markdown file with instructions and boundaries.
+
+[ALEX]
+That's the right read. Agents are configurable tools. You can inspect them, question them, and improve them.
+
+[PAUSE]
+
+[JAMIE]
+The challenge also asks learners to run one agent. What does "run" mean here?
+
+[ALEX]
+It depends on the agent. Some are invoked in Copilot Chat with an at-mention, some are surfaced through VS Code commands or an agents window, and some have README instructions in their folder. So first, choose an agent that interests you. Then read its README or usage notes before you try it.
+
+[JAMIE]
+So we don't just type random commands and hope.
+
+[ALEX]
+Right. A safe first run is small and specific. For example, you might ask, "@accessibility-lead review the heading structure of this file." In the reference solution, the lead agent delegates to a heading-focused specialist, which notices that a document jumps from an H2 heading to an H4 heading.
+
+[JAMIE]
+That's useful, but I'd still open the file and check the heading sequence myself.
+
+[ALEX]
+Yes. The agent's output is evidence to review, not a verdict to accept automatically. You compare it with your own understanding. If it found a heading skip, you verify the headings. If it suggests an ARIA change, you check whether the element actually needs ARIA.
+
+[JAMIE]
+And if the output seems wrong?
+
+[ALEX]
+Say so in your notes. A good evaluation can say, "The agent identified one issue correctly, but it missed another," or "The recommendation needs manual testing." Challenge 15 has no autograder for agent quality because human judgment is part of the work.
+
+[PAUSE]
+
+[JAMIE]
+I want to connect this to the bigger ecosystem without overwhelming people. What kinds of agents are in the catalog?
+
+[ALEX]
+The catalog is organized around teams and platforms. One team focuses on accessibility work: things like ARIA, contrast, keyboard access, forms, headings, tables, documents, media, mobile, and design systems. Another team supports GitHub workflow: issues, pull requests, daily briefings, repository administration, analytics, templates, releases, and project coordination.
+
+[JAMIE]
+And the developer tools side?
+
+[ALEX]
+That area supports engineering workflows such as CI, testing, command-line work, language-specific help, and automation. The important part is to choose agents that match tasks you understand. If you've manually reviewed a pull request, a PR review agent makes sense. If you've never read a diff before, learn that first.
+
+[JAMIE]
+The chapter also mentions multiple platforms, right?
+
+[ALEX]
+Yes. GitHub Copilot in VS Code is the recommended starting point for most learners in this course. The ecosystem also describes command-line and desktop paths such as Claude Code, Gemini CLI, Claude Desktop, and Codex CLI, depending on what the agent supports. For this challenge, stay with the instructions your agent provides and don't worry about trying every platform.
+
+[JAMIE]
+That's a relief. I can explore one path deeply instead of opening five tools at once.
+
+[ALEX]
+Exactly. VS Code also has an Agents window available as a preview feature in stable releases. It can help organize agent sessions, changed files, customizations, and validation tasks, but it does not replace learning how custom agent files work.
+
+[PAUSE]
+
+[JAMIE]
+There are also slash commands and prompts in the reference material. How do those fit with agents?
+
+[ALEX]
+A slash command is a reusable prompt you can call by name, usually starting with a slash. A prompt file, often ending in .prompt.md, can define that reusable workflow. An agent file defines a persona and tools; a prompt file defines a repeatable task.
+
+[JAMIE]
+So an agent is more like, "who is helping me and what are they allowed to do," while a prompt is, "what workflow am I asking for right now."
+
+[ALEX]
+Nicely put. There are also instruction files, like .github slash copilot-instructions.md, that provide always-on project guidance. For example, a repository can tell Copilot about accessibility standards, documentation tone, or commit message style.
+
+[JAMIE]
+And AGENTS.md or CLAUDE.md may appear for other tools or compatibility.
+
+[ALEX]
+Yes. Appendix L is the deep reference for those file types. It explains user-level files, workspace-level files, and organization-level instructions. It also explains priority: when multiple instruction sources apply, the more specific or higher-priority source can win when there is a conflict.
+
+[JAMIE]
+That sounds like something I don't need to master today, but I should know it exists.
+
+[ALEX]
+Exactly. For Challenge 15, your anchor is the .agent.md file: frontmatter, purpose, responsibilities, and guardrails.
+
+[PAUSE]
+
+[JAMIE]
+What about agent skills? I saw references to SKILL.md files.
+
+[ALEX]
+A skill is reusable procedural knowledge. A SKILL.md file can describe when to use a skill, what steps to follow, and what output format to produce. Agents can draw on skills so the same process can be reused across different agents or contexts.
+
+[JAMIE]
+And hooks?
+
+[ALEX]
+Hooks are automation points that run around tool use or lifecycle events in some environments. They can enforce rules or require permission before a risky action. For a beginner, the main lesson is simple: if an agent has permission to edit files, run commands, or interact with GitHub, pay closer attention to the tool list and the guardrails.
+
+[JAMIE]
+Because a read-only helper and a file-editing helper carry different risk.
+
+[ALEX]
+Exactly. Some agents are informational, which means they mainly read and summarize. Others are task-oriented, which may edit files, run shell commands, or use APIs. Interactive wizard agents guide you through questions, like an issue template builder.
+
+[JAMIE]
+That distinction helps me decide how cautious to be.
+
+[ALEX]
+Yes. If an agent proposes a change, review the diff. If it runs a command, understand what the command does. If you don't understand, ask it to explain before you allow the next step.
+
+[PAUSE]
+
+[JAMIE]
+Let's walk through the actual evidence learners need to leave behind.
+
+[ALEX]
+In your Challenge 15 issue, the evidence field asks for four things. First, name three agents you discovered and describe what each one does. Second, describe one agent you ran and what happened. Third, summarize one agent file you read, including its purpose and guardrails. Fourth, paste a pull request URL or commit URL if your cohort's challenge template asks you to update the notes file.
+
+[JAMIE]
+That notes file is docs slash my-notes slash agents-discovery.md, right?
+
+[ALEX]
+Yes. You can open it from your local clone or use the GitHub editor. Add a short section with your username, the agents you found, the agent you ran, and the agent instructions you read. Then commit the change.
+
+[JAMIE]
+If I'm using Git locally, the commands are the familiar rhythm: add the file, commit with a message, and push.
+
+[ALEX]
+Right. For example, add docs/my-notes/agents-discovery.md, commit with a message like "docs: add agent discoveries for your-username," and push. Then open a pull request if the assignment asks for one.
+
+[JAMIE]
+And if the issue version says to type the name of the agent I explored and close the issue?
+
+[ALEX]
+Do that after you've recorded your evidence. Closing Challenge 15 unlocks Challenge 16, titled Capstone Project, and the structured Bonus Challenges A through E. Those bonus challenges are an organized path you can choose from, not throwaway extras.
+
+[PAUSE]
+
+[JAMIE]
+What should people know about the capstone before they unlock it?
+
+[ALEX]
+Challenge 16, Capstone Project, gives you room to make a meaningful contribution. That contribution can be to Accessibility Agents, to GLOW, or to another repository where your work matters. A finished merge is great, but it is not the only valid evidence.
+
+[JAMIE]
+So a review-ready draft can count?
+
+[ALEX]
+Yes. A thoughtful contribution plan can also be valid evidence when it shows real analysis and a clear next step. The capstone is about demonstrating that you can choose a meaningful workflow, explain it, and prepare it for review.
+
+[JAMIE]
+That fits nicely with Challenge 15. You're not just finding agents; you're learning where your next contribution might live.
+
+[ALEX]
+Exactly. You might discover an agent that needs clearer guardrails, a README that needs better usage instructions, or a missing workflow that deserves a proposed agent.
+
+[PAUSE]
+
+[JAMIE]
+Let's talk about troubleshooting, because I can imagine several places where people get stuck.
+
+[ALEX]
+If you can't find the repository, go to the Community-Access organization on GitHub and search for accessibility-agents. If you can't tell how to run an agent, open that agent's folder and look for a README or usage instructions. Some agents are designed for Copilot Chat, others for VS Code workflows, and some may depend on a specific setup.
+
+[JAMIE]
+What if the .agent.md file feels like too much text?
+
+[ALEX]
+Start at the top. Read the YAML frontmatter first, because it names the agent and shows the description and tools. Then move by headings to purpose, responsibilities, and guardrails. People using screen readers can navigate by headings, and low-vision learners may find it easier to collapse sections or use search.
+
+[JAMIE]
+And Gandalf is available as a helper in the challenge prompt.
+
+[ALEX]
+Yes. If you're confused about how the schema works, you can mention @gandalf-bot and ask, "How does the agent schema work?" That's a good question. It asks for an explanation of the structure, not for the bot to do your reflection for you.
+
+[JAMIE]
+What if an agent isn't found when I type its at-mention?
+
+[ALEX]
+Check whether you opened the right repository or workspace, whether the agent file is in the expected .github slash agents location, and whether Copilot or VS Code has loaded the customizations. If a slash command does not appear, check the file location and naming. If instructions do not seem to apply, look for conflicts between user-level, workspace-level, and organization-level guidance.
+
+[PAUSE]
+
+[JAMIE]
+I'm glad you mentioned conflicts. Appendix L gets pretty detailed about scope and priority.
+
+[ALEX]
+It does, and it's useful when you start customizing. Personal instructions can apply across your workspaces. Workspace instructions travel with a repository. Organization instructions may apply in enterprise setups. When multiple files apply, the tool combines them, and priority rules decide what happens if they disagree.
+
+[JAMIE]
+There's also a preferences file, right?
+
+[ALEX]
+Yes. A preferences.md file can capture personal settings such as your GitHub username, repositories you work on most, preferred output format, notification priority, review comment tone, time zone, and accessibility context. That helps agents respond in a way that fits your workflow.
+
+[JAMIE]
+For example, someone might prefer concise summaries with headings, or might want higher priority for accessibility blockers.
+
+[ALEX]
+Exactly. Clear output formats are especially helpful when using screen readers, magnification, or keyboard navigation because they make results easier to scan and revisit.
+
+[JAMIE]
+And the reference also mentions smart actions, browser agents, and third-party agents.
+
+[ALEX]
+Yes. Those are part of the broader tool landscape. For this challenge, keep your focus narrow: inspect the catalog, run one supported agent, read one instruction file, and document what you learned.
+
+[PAUSE]
+
+[JAMIE]
+Can we give one sample evidence entry, just to make the expectation feel concrete?
+
+[ALEX]
+Sure. You might write: "Three agents I found: accessibility-lead coordinates specialist reviews; aria-specialist checks ARIA roles, states, and properties; keyboard-navigator reviews tab order and focus management." Then: "I ran accessibility-lead on a markdown file and it reported a skipped heading level." Then: "I read keyboard-navigator. Its purpose is to review keyboard accessibility, and its guardrails say it cannot replace hands-on keyboard testing."
+
+[JAMIE]
+That's short, but it proves the learner actually looked.
+
+[ALEX]
+Yes. You don't need a long essay. You need enough detail to show discovery, one careful run, and one read of the agent's internal instructions.
+
+[JAMIE]
+And a peer simulation check is part of the template too.
+
+[ALEX]
+Right. Compare your findings with the peer-simulation issue or with a real buddy if you have one. Maybe they found different agents. Maybe they chose the same agent but imagined a different use case. That comparison helps you see the catalog as a set of possible workflows, not a list to memorize.
+
+[PAUSE]
+
+[JAMIE]
+What official references should learners trust when agent behavior or Copilot features change?
+
+[ALEX]
+Use the current GitHub Copilot documentation, the VS Code Copilot and custom agents documentation, the custom instructions support matrix, and the relevant changelog feeds. Those sources change as the tools change. The course points you there so you can verify current behavior instead of relying on old screenshots or memory.
+
+[JAMIE]
+So if the UI has shifted, I should trust the current docs and then adapt the same idea.
+
+[ALEX]
+Exactly. The screens may change, but the habit stays steady: read the instructions, check the tools and permissions, run a small test, review the output, and document what you learned.
+
+[JAMIE]
+Challenge 15 feels like a bridge. It starts with browsing and ends with contribution possibilities.
+
+[ALEX]
+That's a good way to describe it. Meet the Agents is not asking you to surrender judgment to automation. It's asking you to become the kind of contributor who can use automation thoughtfully, inspect its boundaries, and decide when human review is still required.
+
+[JAMIE]
+And that's exactly the mindset you want before a capstone.
+
+[ALEX]
+Yes. Find three agents. Run one. Read one .agent.md file. Record the evidence. Close the issue when you're ready, and you'll open the path into Capstone Project and the bonus challenge sequence.

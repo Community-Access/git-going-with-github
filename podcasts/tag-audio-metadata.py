@@ -1,4 +1,5 @@
 #!/usr/bin/env python3
+# lint-no-hardcoded-slugs: allow (argparse help strings contain slug examples for users)
 """Apply podcast ID3 metadata to generated MP3 episode files.
 
 This tool intentionally defaults to dry-run mode. Use --write only after all

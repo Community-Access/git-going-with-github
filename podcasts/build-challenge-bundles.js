@@ -4,12 +4,21 @@
  *
  * Creates local prompt bundles for short Challenge Coach episodes. These are
  * generated working files and are intentionally ignored by git.
+ *
+ * Stage 2.2: data source migrated from a hardcoded array to the canonical
+ * episode map (docs/EPISODE_MAP.json) plus per-challenge bundle metadata in
+ * podcasts/bundle-config.json (bundles_challenge and bundles_bonus sections).
+ * Public exports preserved for back-compat:
+ *
+ *   module.exports = { challenges, buildChallengeBundles }
  */
 const fs = require('fs');
 const path = require('path');
 
 const ROOT = path.join(__dirname, '..');
 const OUT_DIR = path.join(__dirname, 'challenge-bundles');
+const MAP_PATH = path.join(ROOT, 'docs', 'EPISODE_MAP.json');
+const CONFIG_PATH = path.join(__dirname, 'bundle-config.json');
 
 const COMMON_SOURCES = [
   'docs/CHALLENGES.md',
@@ -17,29 +26,62 @@ const COMMON_SOURCES = [
   'classroom/assignment-day2-you-can-build-this.md'
 ];
 
-const challenges = [
-  { id: '01', slug: 'find-your-way-around', title: 'Find Your Way Around', day: 'Day 1 foundation', template: 'learning-room/.github/ISSUE_TEMPLATE/challenge-01-find-your-way.yml', solution: 'docs/solutions/solution-01-scavenger-hunt.md', chapters: ['docs/02-understanding-github.md', 'docs/03-navigating-repositories.md', 'docs/04-the-learning-room.md'], focus: 'Repository orientation, headings, tabs, file tree navigation, and confidence in the Learning Room.' },
-  { id: '02', slug: 'file-your-first-issue', title: 'File Your First Issue', day: 'Day 1 foundation', template: 'learning-room/.github/ISSUE_TEMPLATE/challenge-02-first-issue.yml', solution: 'docs/solutions/solution-02-first-issue.md', chapters: ['docs/05-working-with-issues.md'], focus: 'Finding a TODO, creating a clear issue, and explaining what needs to change.' },
-  { id: '03', slug: 'join-the-conversation', title: 'Join the Conversation', day: 'Day 1 foundation', template: 'learning-room/.github/ISSUE_TEMPLATE/challenge-03-conversation.yml', solution: 'docs/solutions/solution-03-conversation.md', chapters: ['docs/05-working-with-issues.md', 'docs/08-open-source-culture.md'], focus: 'Comments, mentions, reactions, and constructive peer communication.' },
-  { id: '04', slug: 'branch-out', title: 'Branch Out', day: 'Day 1 contribution', template: 'learning-room/.github/ISSUE_TEMPLATE/challenge-04-branch-out.yml', solution: 'docs/solutions/solution-04-branch-out.md', chapters: ['docs/04-the-learning-room.md', 'docs/06-working-with-pull-requests.md'], focus: 'Creating a safe working branch and understanding why branches protect main.' },
-  { id: '05', slug: 'make-your-mark', title: 'Make Your Mark', day: 'Day 1 contribution', template: 'learning-room/.github/ISSUE_TEMPLATE/challenge-05-make-your-mark.yml', solution: 'docs/solutions/solution-05-make-your-mark.md', chapters: ['docs/04-the-learning-room.md', 'docs/06-working-with-pull-requests.md'], focus: 'Editing a file, writing a useful commit message, and connecting a change to an issue.' },
-  { id: '06', slug: 'open-your-first-pr', title: 'Open Your First Pull Request', day: 'Day 1 contribution', template: 'learning-room/.github/ISSUE_TEMPLATE/challenge-06-first-pr.yml', solution: 'docs/solutions/solution-06-first-pr.md', chapters: ['docs/06-working-with-pull-requests.md'], focus: 'Opening a pull request, comparing branches, and using closing keywords.' },
-  { id: '07', slug: 'survive-a-merge-conflict', title: 'Survive a Merge Conflict', day: 'Day 1 stretch', template: 'learning-room/.github/ISSUE_TEMPLATE/challenge-07-merge-conflict.yml', solution: 'docs/solutions/solution-07-merge-conflict.md', chapters: ['docs/07-merge-conflicts.md'], focus: 'Reading conflict markers, choosing content, deleting markers, and committing a resolution.' },
-  { id: '08', slug: 'open-source-culture', title: 'The Culture Layer', day: 'Day 1 stretch', template: 'learning-room/.github/ISSUE_TEMPLATE/challenge-08-culture.yml', solution: 'docs/solutions/solution-08-culture.md', chapters: ['docs/08-open-source-culture.md', 'docs/09-labels-milestones-projects.md'], focus: 'Reflection, community norms, issue triage, labels, and respectful communication.' },
-  { id: '09', slug: 'merge-day', title: 'Merge Day', day: 'Day 1 stretch', template: 'learning-room/.github/ISSUE_TEMPLATE/challenge-09-merge-day.yml', solution: 'docs/solutions/solution-09-merge-day.md', chapters: ['docs/06-working-with-pull-requests.md', 'docs/10-notifications-and-day-1-close.md'], focus: 'Final PR readiness, review signals, merging, and verifying linked issue closure.' },
-  { id: '10', slug: 'go-local', title: 'Go Local', day: 'Day 2 local workflow', template: 'learning-room/.github/ISSUE_TEMPLATE/challenge-10-go-local.yml', solution: 'docs/solutions/solution-10-go-local.md', chapters: ['docs/13-how-git-works.md', 'docs/14-git-in-practice.md'], focus: 'Cloning, local branches, commits, pushing, and understanding local versus remote.' },
-  { id: '11', slug: 'day-2-pull-request', title: 'Open a Day 2 PR', day: 'Day 2 local workflow', template: 'learning-room/.github/ISSUE_TEMPLATE/challenge-11-day2-pr.yml', solution: 'docs/solutions/solution-11-day2-pr.md', chapters: ['docs/14-git-in-practice.md', 'docs/15-code-review.md'], focus: 'Opening a pull request from a locally pushed branch and reading it in VS Code.' },
-  { id: '12', slug: 'code-review', title: 'Review Like a Pro', day: 'Day 2 local workflow', template: 'learning-room/.github/ISSUE_TEMPLATE/challenge-12-review.yml', solution: 'docs/solutions/solution-12-review.md', chapters: ['docs/15-code-review.md', 'docs/08-open-source-culture.md'], focus: 'Reviewing a classmate PR, leaving specific feedback, and owning review tone.' },
-  { id: '13', slug: 'copilot-as-collaborator', title: 'AI as Your Copilot', day: 'Day 2 local workflow', template: 'learning-room/.github/ISSUE_TEMPLATE/challenge-13-copilot.yml', solution: 'docs/solutions/solution-13-copilot.md', chapters: ['docs/16-github-copilot.md'], focus: 'Using Copilot as a reviewed writing partner while keeping human judgment in charge.' },
-  { id: '14', slug: 'design-an-issue-template', title: 'Template Remix', day: 'Day 2 capstone', template: 'learning-room/.github/ISSUE_TEMPLATE/challenge-14-template.yml', solution: 'docs/solutions/solution-14-template.md', chapters: ['docs/17-issue-templates.md'], focus: 'YAML issue forms, accessible labels, required fields, and useful maintainer intake.' },
-  { id: '15', slug: 'discover-accessibility-agents', title: 'Meet the Agents', day: 'Day 2 capstone', template: 'learning-room/.github/ISSUE_TEMPLATE/challenge-15-agents.yml', solution: 'docs/solutions/solution-15-agents.md', chapters: ['docs/19-accessibility-agents.md', 'docs/appendix-l-agents-reference.md'], focus: 'Exploring agent files, running agents carefully, and verifying AI output against manual skill.' },
-  { id: '16', slug: 'build-your-own-agent', title: 'Capstone Project', day: 'Day 2 capstone', template: 'learning-room/.github/ISSUE_TEMPLATE/challenge-16-capstone.yml', solution: 'docs/solutions/solution-16-capstone.md', chapters: ['docs/20-build-your-agent.md', 'docs/19-accessibility-agents.md'], focus: 'Choosing a meaningful repository, defining a mission, writing responsibilities and guardrails, and preparing a review-ready contribution.' },
-  { id: 'bonus-a', slug: 'improve-agent', title: 'Improve an Agent', day: 'Bonus', template: 'learning-room/.github/ISSUE_TEMPLATE/bonus-a-improve-agent.yml', solution: 'docs/solutions/solution-bonus-a.md', chapters: ['docs/19-accessibility-agents.md', 'docs/20-build-your-agent.md'], focus: 'Extending or improving an existing agent with a clear accessibility purpose.' },
-  { id: 'bonus-b', slug: 'document-your-journey', title: 'Document Your Journey', day: 'Bonus', template: 'learning-room/.github/ISSUE_TEMPLATE/bonus-b-document-journey.yml', solution: 'docs/solutions/solution-bonus-b.md', chapters: ['docs/08-open-source-culture.md', 'docs/appendix-c-markdown-reference.md'], focus: 'Reflective documentation, portfolio language, and accessible Markdown.' },
-  { id: 'bonus-c', slug: 'group-challenge', title: 'Group Challenge', day: 'Bonus', template: 'learning-room/.github/ISSUE_TEMPLATE/bonus-c-group-challenge.yml', solution: 'docs/solutions/solution-bonus-c.md', chapters: ['docs/08-open-source-culture.md', 'docs/15-code-review.md'], focus: 'Collaborative contribution, division of work, and communication across a small team.' },
-  { id: 'bonus-d', slug: 'notifications', title: 'Notifications', day: 'Bonus', template: 'learning-room/.github/ISSUE_TEMPLATE/bonus-d-notifications.yml', solution: 'docs/solutions/solution-bonus-d.md', chapters: ['docs/10-notifications-and-day-1-close.md'], focus: 'Notification hygiene, mentions, subscriptions, and avoiding overload.' },
-  { id: 'bonus-e', slug: 'git-history', title: 'Git History', day: 'Bonus', template: 'learning-room/.github/ISSUE_TEMPLATE/bonus-e-git-history.yml', solution: 'docs/solutions/solution-bonus-e.md', chapters: ['docs/13-how-git-works.md', 'docs/appendix-e-advanced-git.md'], focus: 'Reading history, understanding commits over time, and using history as a learning tool.' }
-];
+// ---------------------------------------------------------------------------
+// Load map + bundle config and synthesize the legacy `challenges` array.
+// Each record retains the exact shape the previous hardcoded array exposed
+// so downstream consumers (generate-site, validate-listening-order, agentic
+// pilot scripts, llm-podcast-generator-review, challenge-doc-consistency
+// tests) keep working unchanged.
+// ---------------------------------------------------------------------------
+
+const _map = JSON.parse(fs.readFileSync(MAP_PATH, 'utf-8'));
+const _config = JSON.parse(fs.readFileSync(CONFIG_PATH, 'utf-8'));
+const _ccCfg = _config.bundles_challenge || {};
+const _bonusCfg = _config.bundles_bonus || {};
+
+function _idFromNarrationId(nid) {
+  // 'cc-01'..'cc-16'   -> '01'..'16'
+  // 'cc-bonus-a'..'-e' -> 'bonus-a'..'bonus-e'
+  return nid.replace(/^cc-/, '');
+}
+
+function _bareSlug(currentSlug, nid) {
+  // Map current_slug is like 'cc-01-find-your-way-around' or
+  // 'cc-bonus-a-improve-agent'. Legacy slug stripped the cc-NN- or
+  // cc-bonus-X- prefix.
+  if (nid.startsWith('cc-bonus-')) {
+    return currentSlug.replace(/^cc-bonus-[a-z]-/, '');
+  }
+  return currentSlug.replace(/^cc-\d+-/, '');
+}
+
+const challenges = [];
+const _ccByTrack = _map.episodes
+  .filter(e => e.group === 'challenge' || e.group === 'bonus')
+  .slice()
+  .sort((a, b) => (a.track_number || 0) - (b.track_number || 0));
+
+for (const e of _ccByTrack) {
+  const cfg = e.group === 'bonus' ? _bonusCfg[e.narration_id] : _ccCfg[e.narration_id];
+  if (!cfg) {
+    console.warn(`  bundle-config.json missing entry for ${e.narration_id}; skipping`);
+    continue;
+  }
+  challenges.push({
+    id: _idFromNarrationId(e.narration_id),
+    slug: _bareSlug(e.current_slug, e.narration_id),
+    title: cfg.title,
+    day: cfg.day,
+    template: cfg.template,
+    solution: cfg.solution,
+    chapters: cfg.chapters || [],
+    focus: cfg.focus || ''
+  });
+}
+
+// ---------------------------------------------------------------------------
+// Build logic (unchanged from previous revision)
+// ---------------------------------------------------------------------------
 
 function ensureDir(dir) {
   fs.mkdirSync(dir, { recursive: true });

@@ -132,14 +132,38 @@ function estimatedChapterPreview(plan, segments) {
   };
 }
 
-function findGroupForSlug(slug) {
-  const groups = ['chapters', 'appendices', 'challenges'];
-  for (const group of groups) {
-    const scriptPath = path.join(SCRIPTS_DIR, group, `${slug}.txt`);
-    if (fs.existsSync(scriptPath)) return group;
+const MANIFEST_PATH = path.join(PODCASTS_DIR, 'manifest.json');
+let manifestGroupCache = null;
+
+function loadManifestGroupMap() {
+  if (manifestGroupCache) return manifestGroupCache;
+  const map = new Map();
+  try {
+    const entries = JSON.parse(fs.readFileSync(MANIFEST_PATH, 'utf8'));
+    for (const e of entries) {
+      const n = parseInt(e.number, 10);
+      if (!Number.isFinite(n) || !e.slug) continue;
+      const stem = `ep${String(n).padStart(2, '0')}-${e.slug}`;
+      const firstSource = String(((e.sources || [])[0]) || '').toLowerCase();
+      const group = firstSource.startsWith('appendix-') ? 'appendices' : 'chapters';
+      map.set(stem, group);
+    }
+  } catch (_) {
+    // manifest unavailable; fall back to heuristics below
   }
+  manifestGroupCache = map;
+  return map;
+}
+
+function findGroupForSlug(slug) {
   if (/^cc-/i.test(slug)) return 'challenges';
-  if (/appendix/i.test(slug) || /^ep(4[4-9]|5\d|6\d|7\d|8\d)/i.test(slug)) return 'appendices';
+  const manifestGroup = loadManifestGroupMap().get(slug);
+  if (manifestGroup) return manifestGroup;
+  // Fall back: prefer an existing on-disk script if manifest doesn't cover the slug.
+  for (const group of ['chapters', 'appendices', 'challenges']) {
+    if (fs.existsSync(path.join(SCRIPTS_DIR, group, `${slug}.txt`))) return group;
+  }
+  if (/appendix/i.test(slug)) return 'appendices';
   return 'chapters';
 }
 

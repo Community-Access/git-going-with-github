@@ -1,4 +1,5 @@
 #!/usr/bin/env python3
+# lint-no-hardcoded-slugs: allow (argparse help string contains slug example for users)
 """Batch-generate podcast episodes with Kokoro voices.
 
 Usage:

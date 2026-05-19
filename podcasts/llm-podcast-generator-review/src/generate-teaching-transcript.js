@@ -82,12 +82,18 @@ function readPacket(packetPath) {
   const sourceFiles = (packet.sourceFiles || []).map(source => {
     const sourcePath = absolutePath(source.path);
     const exists = fs.existsSync(sourcePath);
+    // Prefer content captured in the packet (so prompt building is reproducible
+    // even if source files later change); fall back to live disk read for
+    // backward compatibility with schemaVersion 1 packets.
+    const content = typeof source.content === 'string'
+      ? source.content
+      : (exists ? fs.readFileSync(sourcePath, 'utf8') : '');
     return {
       sourcePath,
       sourceLabel: path.basename(sourcePath),
       exists,
       concepts: [],
-      content: exists ? fs.readFileSync(sourcePath, 'utf8') : ''
+      content
     };
   });
   const concepts = [...new Set([...(packet.concepts || []), ...[]])].filter(Boolean);
@@ -95,7 +101,12 @@ function readPacket(packetPath) {
     packetPath: absolute,
     packet,
     sourceFiles,
-    concepts
+    concepts,
+    kind: packet.kind || null,
+    title: packet.title || '',
+    description: packet.description || '',
+    companions: packet.companions || null,
+    voiceRules: packet.voiceRules || null
   };
 }
 
@@ -126,7 +137,152 @@ function compactSourceContent(text, maxChars = 14000) {
   return `${head}\n\n<!-- content omitted for length -->\n\n${tail}`;
 }
 
-function buildPrompt({ slug, sourceTexts, sourceLabels }) {
+/**
+ * Render the stable voice preamble from the packet's voiceRules block. Falls
+ * back to the live voice-rules module when an older packet did not include it.
+ * The preamble is intentionally identical across all slugs so OpenAI /
+ * OpenRouter automatic prompt caching can match the prefix and discount the
+ * cached tokens (50% off for cached prefixes >= 1024 tokens).
+ */
+function renderVoicePreamble(voiceRulesBlock) {
+  let banned = voiceRulesBlock && Array.isArray(voiceRulesBlock.bannedPhrases)
+    ? voiceRulesBlock.bannedPhrases
+    : null;
+  let stale = voiceRulesBlock && Array.isArray(voiceRulesBlock.staleFacts)
+    ? voiceRulesBlock.staleFacts
+    : null;
+  let current = voiceRulesBlock && Array.isArray(voiceRulesBlock.currentFacts)
+    ? voiceRulesBlock.currentFacts
+    : null;
+  let exemplar = voiceRulesBlock && typeof voiceRulesBlock.voiceExemplar === 'string'
+    ? voiceRulesBlock.voiceExemplar
+    : '';
+
+  if (!banned || !stale || !current || !exemplar) {
+    try {
+      const live = require('../../tools/voice-rules');
+      banned = banned || live.BANNED_PHRASES;
+      stale = stale || live.STALE_FACTS;
+      current = current || live.CURRENT_FACTS;
+      exemplar = exemplar || live.loadVoiceExemplar();
+    } catch (err) {
+      banned = banned || [];
+      stale = stale || [];
+      current = current || [];
+      exemplar = exemplar || '';
+    }
+  }
+
+  const lines = [];
+  lines.push('# Podcast Voice Rules (stable preamble)');
+  lines.push('');
+  lines.push('You are writing a Git Going with GitHub podcast script. The audience is blind and low-vision learners studying GitHub, Git, VS Code, open source, and accessible contribution workflows.');
+  lines.push('');
+  lines.push('## Hosts');
+  lines.push('- Alex: warm expert. Explains the concept and grounds it in a real workflow.');
+  lines.push('- Jamie: curious co-host. Asks the question a learner would hesitate to ask. Reflects back, summarizes, and occasionally challenges.');
+  lines.push('- They are colleagues. They are not teacher and student. They build on each other.');
+  lines.push('');
+  lines.push('## Voice rules (hard requirements)');
+  lines.push('1. Alternate [ALEX] and [JAMIE] turns. Most turns are one to four sentences. Occasionally a longer turn is fine when explaining something complex, but never a single turn longer than roughly six sentences.');
+  lines.push('2. Each speaker tag MUST be on its own line, exactly: [ALEX] or [JAMIE]. The next line(s) are that speaker\'s lines.');
+  lines.push('3. Use [PAUSE] on its own line at meaningful section transitions. Do not narrate the section title before or after a pause.');
+  lines.push('4. Conversational, not template-driven. Vary sentence shape. Use contractions when natural.');
+  lines.push('5. Never narrate the script\'s own structure. Do not say "in this section" or "next, we will cover". Just transition.');
+  lines.push('6. When teaching a procedure, walk through it as one host explaining and the other reacting or asking. Do not output bulleted lists of steps as a monologue.');
+  lines.push('7. Cover everything substantive from the source markdown, but in conversation, not as a recitation of headings.');
+  lines.push('8. Plain language. If a technical term is needed, define it briefly the first time. No insider jargon left unexplained.');
+  lines.push('9. ASCII ONLY. Every character in your output must be plain US-ASCII (codepoint 0 to 127). Use straight apostrophes, straight double quotes, hyphens instead of em-dash or en-dash, three periods instead of an ellipsis, and a normal space instead of a non-breaking space. The output goes to a neural TTS engine that mispronounces or skips smart-typography characters.');
+  lines.push('10. Chapter markers must be GENUINE topic shifts. Produce between 6 and 9 chapters per script (closer to 9 for longer source material, closer to 6 for short scripts). Anchor each chapter at the FIRST [ALEX] or [JAMIE] segment that opens the new topic. segmentIndex 0 is the very first segment.');
+  lines.push('11. Chapter titles must be 3 to 8 words, topic-focused, in sentence case, with NO trailing punctuation, NO question marks, NO narrator filler (no "Let us pause on", no "Now bring the learner back", no "Question:"). Write them like podcast app chapter labels that a listener would click to jump to a topic.');
+  lines.push('');
+  lines.push('## Banned phrases (do not output any of these, in any casing)');
+  for (const phrase of banned) lines.push(`- ${phrase}`);
+  lines.push('');
+  lines.push('These phrases come from a previous generation pass that produced template-feeling output. Rephrase any thought that would otherwise use them.');
+  lines.push('');
+  lines.push('## Stale facts (do not state any of these as true)');
+  for (const fact of stale) lines.push(`- ${fact}`);
+  lines.push('');
+  lines.push('## Current curriculum facts (the model must align with these)');
+  for (const fact of current) lines.push(`- ${fact}`);
+  lines.push('');
+  lines.push('## Voice exemplar (this is the target tone)');
+  lines.push('The following is a real podcast script from this series. Match its conversational rhythm, sentence length, contractions, and how the hosts react to each other. Do not copy its content; only its voice.');
+  lines.push('');
+  lines.push('```');
+  lines.push(exemplar || '(voice exemplar unavailable)');
+  lines.push('```');
+  lines.push('');
+  return lines.join('\n');
+}
+
+/**
+ * Render the per-slug context block: kind, title, description, paired
+ * challenges or chapters, classroom review, assignment context, headings.
+ * This block changes per slug; it goes AFTER the cached preamble.
+ */
+function renderSlugContext({ slug, kind, title, description, concepts, companions, headings, sourceLabels }) {
+  const lines = [];
+  lines.push(`# Slug: ${slug}`);
+  lines.push('');
+  if (kind) lines.push(`Kind: ${kind} (${kind === 'challenge' ? 'challenge walkthrough' : 'chapter / appendix companion'})`);
+  if (title) lines.push(`Title: ${title}`);
+  if (description) lines.push(`Description: ${description}`);
+  if (Array.isArray(concepts) && concepts.length) {
+    lines.push('Concepts to cover:');
+    for (const concept of concepts) lines.push(`- ${concept}`);
+  }
+  lines.push('');
+
+  if (companions) {
+    if (Array.isArray(companions.pairedChallenges) && companions.pairedChallenges.length) {
+      lines.push('## Paired challenges that build on this material');
+      lines.push('Mention these challenges naturally where relevant; they are how learners apply this content.');
+      for (const ch of companions.pairedChallenges) {
+        lines.push(`- Challenge ${ch.id} (${ch.day}): ${ch.title} - ${ch.focus}`);
+      }
+      lines.push('');
+    }
+    if (Array.isArray(companions.pairedChapters) && companions.pairedChapters.length) {
+      lines.push('## Chapters this challenge grounds in');
+      for (const ch of companions.pairedChapters) {
+        lines.push(`- ${ch.relPath}`);
+      }
+      lines.push('');
+    }
+    if (typeof companions.classroomReview === 'string' && companions.classroomReview.trim()) {
+      lines.push('## Classroom content-review block (authoritative challenge intent)');
+      lines.push('');
+      lines.push('```markdown');
+      lines.push(companions.classroomReview.trim().slice(0, 4000));
+      lines.push('```');
+      lines.push('');
+    }
+    if (Array.isArray(companions.assignments) && companions.assignments.length) {
+      lines.push('## Day assignment context');
+      for (const asn of companions.assignments) {
+        const excerpt = String(asn.content || '').slice(0, 1800);
+        lines.push(`### ${path.basename(asn.path)}`);
+        lines.push('');
+        lines.push('```markdown');
+        lines.push(excerpt);
+        lines.push('```');
+        lines.push('');
+      }
+    }
+  }
+
+  lines.push('## Sources provided');
+  for (const label of sourceLabels) lines.push(`- ${label}`);
+  lines.push('');
+  lines.push('## Headings that must be represented (in conversation, never spoken aloud as labels)');
+  lines.push(headings || '(No headings detected.)');
+  lines.push('');
+  return lines.join('\n');
+}
+
+function buildPrompt({ slug, sourceTexts, sourceLabels, kind, title, description, concepts, companions, voiceRules: voiceRulesBlock }) {
   const allHeadings = sourceTexts.flatMap(source => collectHeadings(source.content).map(item => ({
     sourceLabel: source.label,
     level: item.level,
@@ -137,60 +293,75 @@ function buildPrompt({ slug, sourceTexts, sourceLabels }) {
     .join('\n');
   const sourceBody = sourceTexts.map(source => `## Source: ${source.label}\n\n\`\`\`markdown\n${compactSourceContent(source.content)}\n\`\`\``).join('\n\n');
 
-  return `You are writing a Git Going with GitHub podcast script.
+  const preamble = renderVoicePreamble(voiceRulesBlock);
+  const slugContext = renderSlugContext({
+    slug,
+    kind,
+    title,
+    description,
+    concepts,
+    companions,
+    headings,
+    sourceLabels
+  });
 
-Audience:
-Blind and low-vision learners studying GitHub, Git, VS Code, open source, and accessible contribution workflows.
+  const outputContract = `# Output contract
 
-Hosts:
-- Alex: warm expert professor
-- Jamie: curious professor who asks the questions learners may hesitate to ask
+Return JSON only. No prose outside the JSON. No code fences. The JSON must validate against this shape:
 
-Goal:
-Create a complete, conversational, two-host audio lesson. Teach every substantive concept from the Markdown source. Do not merely summarize. Do not omit administrative or accessibility content. Use varied phrasing and make it feel like a thoughtful NotebookLM-style teaching conversation.
-
-Scale rules:
-- The source set may be large. Prioritize complete conceptual coverage over quoting every line.
-- Use concise turns and avoid unnecessary verbosity.
-
-Required script markers:
-Use only these markers on their own lines:
-[ALEX]
-[JAMIE]
-[PAUSE]
-
-Narration constraints:
-- Do not say chapter titles, section names, or "chapter marker" language out loud.
-- Keep transitions natural so chapter separation can be handled in metadata, not spoken labels.
-
-Return JSON only:
 {
-  "script": "[ALEX]\\n...\\n",
+  "script": "[ALEX]\\nFirst line of dialogue.\\n\\n[JAMIE]\\nResponse.\\n\\n[PAUSE]\\n\\n[ALEX]\\n...",
   "chapters": [
     {
-      "title": "Specific chapter title",
+      "title": "Punchy topic label, 3 to 8 words, sentence case, no trailing punctuation",
       "startSegmentIndex": 0,
-      "sourceHeading": "Heading represented"
+      "sourceHeading": "Heading or topic this chapter represents"
     }
   ],
   "coverageNotes": [
     {
       "sourceHeading": "Heading",
       "status": "covered | partial | risk",
-      "notes": "Brief note"
+      "notes": "Brief note about how this was covered or why it was condensed"
     }
   ]
 }
 
-Slug: ${slug}
-Sources:
-${sourceLabels.map(label => `- ${label}`).join('\n')}
+Script format requirements:
+- Speaker tags [ALEX], [JAMIE], [PAUSE] on their own lines.
+- Blank line between turns.
+- No spoken section labels.
+- No phrase from the banned list.
+- No stale fact.
+- ASCII only. Straight apostrophes. Straight double quotes. Hyphens, not em-dashes or en-dashes. Three periods, not an ellipsis character. No curly typography of any kind.
+- Match the voice exemplar's rhythm.
 
-Headings that must be represented:
-${headings || '(No headings detected.)'}
+Chapter requirements:
+- Produce 6 to 9 chapters. The first chapter MUST have startSegmentIndex 0.
+- segmentIndex counts every [ALEX], [JAMIE], and [PAUSE] block in your script in order, starting at 0.
+- Place each chapter at the FIRST spoken segment that opens its topic. Never anchor a chapter on a [PAUSE] segment.
+- Titles 3 to 8 words. Sentence case. No trailing period. No question mark. No narrator filler.
+- Titles must be specific enough that a listener could pick the right one to jump to that topic.
 
-Markdown source:
+Quality self-check before finalizing (do this silently, do not include in output):
+- Would this read like two real colleagues talking, or like a templated lecture?
+- Did I say any banned phrase? If yes, rewrite.
+- Did I assert any stale fact? If yes, replace with the current fact.
+- Did either host monologue for more than ~6 sentences? If yes, break it up.
+- Did I narrate the script's own structure? If yes, rewrite the transition.
+- Are all my chapter titles 3 to 8 words and free of trailing punctuation? If not, rewrite.
+- Is every character in my output ASCII (codepoint 0 to 127)? If not, replace it.
+`;
+
+  return `${preamble}
+
+${slugContext}
+
+# Markdown source
+
 ${sourceBody}
+
+${outputContract}
 `;
 }
 
@@ -496,7 +667,12 @@ function resolveInput(args) {
       sourceEntries: packetData.sourceFiles,
       sourceLabels: sourceTexts.map(source => source.label),
       concepts: [...new Set([...(packetData.concepts || []), ...args.concepts])],
-      packetPath: packetData.packetPath
+      packetPath: packetData.packetPath,
+      kind: packetData.kind,
+      title: packetData.title,
+      description: packetData.description,
+      companions: packetData.companions,
+      voiceRules: packetData.voiceRules
     };
   }
 
@@ -522,7 +698,12 @@ function resolveInput(args) {
     sourceEntries,
     sourceLabels: sourceEntries.map(source => source.sourceLabel),
     concepts: [...args.concepts],
-    packetPath: null
+    packetPath: null,
+    kind: null,
+    title: '',
+    description: '',
+    companions: null,
+    voiceRules: null
   };
 }
 
@@ -540,7 +721,13 @@ async function main() {
   const prompt = buildPrompt({
     slug: args.slug,
     sourceTexts: input.sourceTexts,
-    sourceLabels: input.sourceLabels
+    sourceLabels: input.sourceLabels,
+    kind: input.kind,
+    title: input.title,
+    description: input.description,
+    concepts: input.concepts,
+    companions: input.companions,
+    voiceRules: input.voiceRules
   });
 
   const outDir = path.join(ROOT, 'podcasts', 'llm-podcast-generator-review', 'generated');

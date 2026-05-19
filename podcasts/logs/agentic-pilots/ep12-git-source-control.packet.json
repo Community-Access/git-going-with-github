@@ -1,0 +1,807 @@
+{
+  "generatedAt": "2026-05-18T23:43:42.997Z",
+  "schemaVersion": 2,
+  "kind": "companion",
+  "slug": "ep12-git-source-control",
+  "title": "Episode 12: Git and Source Control in VS Code",
+  "description": "Cloning, branching, staging, committing, pushing, and pulling from VS Code.",
+  "concepts": [
+    "The Source Control view in the Activity Bar",
+    "What the Source Control view shows: changed files, staged files, commit input",
+    "Cloning a repository from VS Code using the Command Palette",
+    "The difference between cloning via VS Code, git clone, and gh repo clone",
+    "What the working tree, staging area, and repository are",
+    "The three states of a file: untracked, modified, staged",
+    "Creating a new branch from VS Code",
+    "Switching between branches",
+    "Staging files: what it means and why Git has a staging step",
+    "Staging individual files versus staging all changes",
+    "Writing a commit message: subject line conventions",
+    "Committing staged changes",
+    "What pushing means: sending local commits to GitHub",
+    "What pulling means: downloading new commits from GitHub",
+    "The relationship between local branch and remote tracking branch",
+    "Handling pull conflicts and when to use git pull --rebase",
+    "The web alternative: editing directly on github.com",
+    "The git CLI alternative for each operation"
+  ],
+  "transcriptPath": "C:\\code\\git-going-with-github\\podcasts\\scripts\\chapters\\ep12-git-source-control.txt",
+  "chapterPlanPath": "C:\\code\\git-going-with-github\\podcasts\\transcripts\\chapters\\ep12-git-source-control-chapters.json",
+  "transcriptText": "[ALEX]\nWelcome back. Today we're working in that very practical space where Git, GitHub, and VS Code all meet. This lesson is about using source control accessibly on your own machine: cloning repositories, checking branches, staging changes, committing, pushing, pulling, reviewing history, handling conflicts, and recovering when things go sideways.\n\n[JAMIE]\nAnd this is a big milestone, right? Because up to this point, learners may have done plenty in the browser, but local Git is where things start to feel more real.\n\n[ALEX]\nExactly. This is the first hands-on local Git workflow chapter, and it supports a challenge built around a repeatable pattern: clone, branch, edit, commit, push, and open a pull request. The expectation is not perfection. It's building a reliable workflow you can repeat with confidence.\n\n[JAMIE]\nBefore we get into the mechanics, what should learners already know?\n\n[ALEX]\nYou'll have a much easier time if you already know the VS Code interface and accessibility basics, how pull requests work, and the general idea of merge conflicts. And one quick accessibility note: when the material says Control on Windows or Linux, Mac users should usually think Command. Alt usually maps to Option. So shortcuts like Control Shift G become Command Shift G on Mac.\n\n[PAUSE]\n[ALEX]\nLet's anchor this in the workshop challenge. There are three short practices. First, clone your private Learning Room repository to your machine. Second, create or switch to your learn slash username branch, make a small meaningful edit, stage it, and commit it. Third, push that branch and open a pull request that links back to the relevant issue.\n\n[JAMIE]\nI like that it's evidence-based. Not just \"I think I did it,\" but branch names, commit history, and PR metadata.\n\n[ALEX]\nRight. Your evidence is in the actual workflow artifacts: the branch, the commit, the push, and the linked PR.\n\n[JAMIE]\nAnd even though the work is happening in VS Code, the chapter recommends some CLI habits too.\n\n[ALEX]\nYes, and they're excellent habits. Before doing anything, run git status so you know your current state. Keep branch context explicit with git branch dash dash show-current. Before pushing, fetch and then check status so you understand whether your local branch is aligned with the remote. And if you're creating or updating a pull request tied to an issue, include plain-text linkage like Closes number. Also, avoid mystery convenience flags you don't understand. Use stable commands with clear output.\n\n[PAUSE]\n[ALEX]\nLet's walk through the first practice: cloning your Learning Room repository.\n\n[JAMIE]\nAnd this is an important distinction: not the template repository.\n\n[ALEX]\nCorrect. You want your own private Learning Room repo, the one created for you, not the facilitator-maintained template. The URL should look like a workshop organization followed by learning-room-your-username. If GitHub says you don't have access, double-check that URL first. Often the problem is simply cloning the wrong repository.\n\n[JAMIE]\nSo how do we do it in VS Code in the most accessible way?\n\n[ALEX]\nThe recommended method, especially for screen reader users, is the Command Palette. Open VS Code. If no folder is open, you may land on the Welcome tab. Press Control Shift P, or Command Shift P on Mac, type Git: Clone, and select it. Then paste the repository URL and press Enter. VS Code will ask where to save the clone. Choose a location you can find again easily, like Documents or Desktop, then confirm the destination. When cloning finishes, VS Code asks whether you want to open the cloned repository. Activate Open.\n\n[JAMIE]\nAnd then verify, don't assume.\n\n[ALEX]\nAlways verify. Open Explorer with Control Shift E. Your screen reader should announce the file tree. In the Learning Room repository, you should hear familiar items like README dot md and the docs folder.\n\n[JAMIE]\nWhat if the learner hears nothing while the clone is happening and starts wondering whether VS Code froze?\n\n[ALEX]\nThere's a good accessibility tip here. After choosing the destination, VS Code shows a progress notification. NVDA often reads this automatically. If you hear nothing for a while, you can use the Command Palette and run Notifications: Focus Notification Toast to check the current status.\n\n[JAMIE]\nOnce the clone is done, there's one subtle thing learners may miss: they only have the default branch checked out locally.\n\n[ALEX]\nYes. A fresh clone usually checks out only main. But the remote repository may already contain other branches you made earlier, such as learn slash yourname. Open the integrated terminal and run git branch -a. That shows local and remote-tracking branches. The starred branch is your current one. Entries starting with remotes slash origin slash are on GitHub. If you see remotes slash origin slash learn slash yourname, you can check it out locally with git checkout learn slash yourname or git switch learn slash yourname.\n\n[PAUSE]\n[JAMIE]\nThe chapter also teaches more than one way to clone, right?\n\n[ALEX]\nIt does, and that matters because different situations call for different methods. In VS Code, there are three broad ways. First, the Command Palette, which is the recommended route for screen reader users because it gives predictable keyboard access. Second, the Start Page clone button if you're on the welcome experience and want a more visual starting point. Third, initiating from GitHub dot com, often through the Code button, copying the URL, and then completing the clone in VS Code or the terminal.\n\n[JAMIE]\nAnd on the CLI side, there are several clone patterns learners should recognize.\n\n[ALEX]\nYes. Standard Git clone uses the full repository URL. GitHub CLI offers a shorter syntax like gh repo clone owner slash name, and it often handles authentication more smoothly once you're signed in. You can clone into a specific folder by adding a target directory name. For large repositories, a single-branch clone can be faster if you only need the default branch initially. And after cloning, always verify. That can mean opening the folder in VS Code, listing files, or checking git status.\n\n[JAMIE]\nThere was also a concrete practice repo mentioned.\n\n[ALEX]\nYes, a sci-fi themes repository used as a try-it exercise. The point isn't the theme itself. It's that learners practice the flow: clone using owner slash name instead of a full URL when using GitHub CLI, change into the cloned folder, and open that repo in VS Code. It builds muscle memory.\n\n[PAUSE]\n[ALEX]\nNow let's move into the Source Control panel in VS Code, because this is where many learners spend most of their time once a repo is open.\n\n[JAMIE]\nCan you describe what opens when someone presses Control Shift G?\n\n[ALEX]\nWhen you open Source Control, VS Code focuses the source control view. From top to bottom, you'll typically find a commit message input, action buttons like Commit or more actions, then grouped lists for changes. Depending on state, you may hear sections such as Changes, Staged Changes, and sometimes merge-related groups. If the repository is clean, you may hear that there are no changes.\n\n[JAMIE]\nAnd screen reader navigation differs a little by platform.\n\n[ALEX]\nIt does. For NVDA and JAWS, users often move through the panel with Tab to reach major controls, then arrow keys to navigate within file lists. For VoiceOver, interacting with groups and lists may require VoiceOver navigation patterns, but the core idea is the same: move to the Source Control area, then navigate the tree or list of changed files and controls.\n\n[JAMIE]\nWhat does each file item actually tell you?\n\n[ALEX]\nA changed file generally announces its name and status. That status might be modified, added, deleted, or untracked. If you open the file's diff, you can review what changed. And if the file has been staged, it moves into the staged section, which is a very important conceptual cue: staged means ready for the next commit; unstaged means changed but not yet included.\n\n[JAMIE]\nThere's also a context menu learners should know about.\n\n[ALEX]\nAbsolutely. Right-click, or Shift F10 on many keyboards, opens file actions. That can include stage, unstage, discard changes, open changes, reveal in explorer, and sometimes compare options. For keyboard users, that context menu can be more discoverable than trying to hunt for tiny inline buttons.\n\n[JAMIE]\nHow does this map to the CLI?\n\n[ALEX]\nVery directly. If you want to see all modified, staged, and untracked files in a compact way, use git status with the short format. If you want to see only what is staged, use git diff dash dash cached. If you want to see modified but unstaged changes, use plain git diff. And if you want both the staged and unstaged picture with actual content differences, you combine those diff views intentionally.\n\n[PAUSE]\n[ALEX]\nBranch management is next, and it's one of those skills that prevents a lot of confusion later.\n\n[JAMIE]\nFirst question learners often ask: how do I know what branch I'm on right now?\n\n[ALEX]\nIn VS Code, look to the status bar at the bottom. The current branch is shown there. Keyboard users can move focus to the status bar and have the screen reader announce it. In the terminal, git branch dash dash show-current is a clean way to hear just the current branch name.\n\n[JAMIE]\nAnd if you want a new branch?\n\n[ALEX]\nThe recommended accessible method in VS Code is again the Command Palette. Use Git: Create Branch. Enter the branch name, such as feature slash something, fix slash issue-number, or in the workshop context, learn slash username. Good branch names are descriptive, short, and consistent.\n\n[JAMIE]\nCLI equivalents?\n\n[ALEX]\nTo create and switch in one step, you can use git checkout -b branch-name or the newer syntax git switch -c branch-name. To list local branches, git branch. To list local and remote-tracking branches, git branch -a. To switch to an existing branch, git checkout branch-name or git switch branch-name.\n\n[JAMIE]\nWhat about deleting branches?\n\n[ALEX]\nAfter a PR is merged, it's often good housekeeping to delete the branch you no longer need. Locally, git branch -d branch-name performs a safe delete and refuses if the branch isn't merged. A force delete uses uppercase D, but that's riskier. You can also rename the current branch with git branch -m new-name. And if you need to push a new branch to GitHub the first time, you'll typically use git push -u origin branch-name so the upstream tracking is set.\n\n[JAMIE]\nThe chapter also mentioned deleting a remote branch and even creating a branch linked to an issue.\n\n[ALEX]\nYes. Remote branch deletion is possible and useful after merge cleanup. And GitHub tooling can create an issue-linked branch, sometimes auto-naming it from the issue title. The exact interface can vary, but the important concept is that issue context and branch context can be connected.\n\n[JAMIE]\nWhen you switch branches in VS Code, what should learners expect?\n\n[ALEX]\nFiles in the working directory may change to match the target branch. That can feel surprising if you're new to Git. So before switching, check whether you have uncommitted work. If you do, commit it, stash it, or consciously discard it. Otherwise Git may block the switch, or you may create confusion for yourself.\n\n[PAUSE]\n[ALEX]\nNow let's make the branch idea concrete with the second practice: create a branch and commit.\n\n[JAMIE]\nWalk us through it.\n\n[ALEX]\nOpen the Command Palette. If your learn slash username branch already exists on the remote, use Git: Checkout to and select that branch. If it doesn't exist yet, use Git: Create Branch and enter learn slash your-username. Then confirm your branch by checking the status bar.\n\nNext, open Explorer, go into the docs folder, and open the file your challenge refers to, such as docs slash welcome dot md. Make one small, meaningful change. Save with Control S.\n\nThen open Source Control with Control Shift G. Your changed file appears under Changes. Navigate to the file and either press Enter to open the diff or activate the Stage Changes control, often announced as a plus button. Once staged, the file moves to Staged Changes.\n\nMove to the commit message box, type a clear message like docs: improve welcome.md introduction, then press Control Enter to commit. When the staged changes disappear, that's your success signal.\n\n[JAMIE]\nThat step where the file moves from Changes to Staged Changes is really important for understanding Git's three areas.\n\n[ALEX]\nIt is. You edit in the working directory, stage in the index, and commit into repository history. That separation is what gives Git precision.\n\n[PAUSE]\n[JAMIE]\nSo let's talk staging in more detail, because this chapter goes beyond whole-file staging.\n\n[ALEX]\nYes. You can stage an entire file, multiple files at once, or just individual lines or chunks. In VS Code, staging a whole file is usually as simple as activating the plus button next to that file or using the file's context menu. There may also be a keyboard shortcut depending on focus and platform.\n\n[JAMIE]\nAnd staging multiple files?\n\n[ALEX]\nYou can often stage all changes from the group header, or select multiple files using list interaction patterns if your setup supports it. On the CLI, git add filename stages a specific file, and git add dot or git add -A stages broadly depending on what you intend.\n\n[JAMIE]\nWhat about partial staging, which can feel a little more advanced?\n\n[ALEX]\nPartial staging is incredibly useful. Suppose you fixed a typo and also made an unrelated formatting change. Rather than bundling them together, you can stage just the relevant hunk. In terminal Git, git add -p launches interactive patch staging. Git shows each hunk and asks whether to stage it, with choices like yes, no, split, or edit. In VS Code, chunk-level staging may be available from the diff or context actions.\n\n[JAMIE]\nThat seems especially helpful in a workshop where you want one clean commit for one clear improvement.\n\n[ALEX]\nExactly. One commit, one idea is a very strong habit.\n\n[JAMIE]\nAnd unstaging is just the reverse?\n\n[ALEX]\nYes. In VS Code, use the minus button or context menu on a staged file. In terminal Git, git restore --staged filename is the modern form for unstaging a file. And to check what is staged versus unstaged, compare git diff with git diff --cached.\n\n[PAUSE]\n[ALEX]\nOnce changes are staged, it's time to commit, and the chapter gives special attention to screen reader workflows here.\n\n[JAMIE]\nWhat's the standard process?\n\n[ALEX]\nOpen Source Control, review the staged items, move to the message input, type a meaningful commit message, and trigger commit with Control Enter. Screen reader users should listen for focus changes carefully, because it's easy to land on action buttons before the message field. The panel structure matters.\n\n[JAMIE]\nAny differences for NVDA, JAWS, and VoiceOver?\n\n[ALEX]\nThe experience differs mainly in how each screen reader announces grouped controls and text inputs. NVDA and JAWS users often navigate with Tab and arrows. VoiceOver users may need to interact with the source control region and move deliberately into the message field. But the key goal is the same: confirm you're in the message box before typing.\n\n[JAMIE]\nLet's spend a moment on commit messages, because learners often overthink them.\n\n[ALEX]\nA good commit message is short, specific, and tells future-you what changed. Many teams like a format such as type colon description, for example docs: clarify setup steps, fix: correct broken link, feat: add keyboard shortcut notes. The quick reference is: use imperative mood, keep it descriptive, and tie it to the actual change.\n\n[JAMIE]\nAnd CLI commit options?\n\n[ALEX]\nGit commit -m lets you commit staged changes with a one-line message. Git commit without dash m opens your editor for a multi-line message. And git commit -am can stage tracked files and commit in one step, but note the limitation: it does not include new untracked files, so beginners should use it carefully.\n\n[JAMIE]\nWhat happens after a commit?\n\n[ALEX]\nThe changes are saved in local history on your current branch. They are not on GitHub yet until you push. In VS Code, the source control lists usually clear if there are no remaining modifications. Your branch indicator remains, and history tools can now show the new commit.\n\n[PAUSE]\n[ALEX]\nThat brings us to push and pull operations.\n\n[JAMIE]\nLet's start with pushing.\n\n[ALEX]\nAfter committing locally, open the Command Palette and run Git: Push, or use the sync and push controls in the interface. If the branch has never been pushed before, VS Code may prompt you to publish the branch. Accept that. After the push completes, the sync indicator should show that local and remote are aligned.\n\n[JAMIE]\nThe CLI versions learners should know?\n\n[ALEX]\nGit push sends commits to GitHub. For a brand-new branch, git push -u origin branch-name both pushes and sets upstream tracking. Pulling changes from GitHub is git pull. If you want to see updates first without merging them into your files, use git fetch.\n\n[JAMIE]\nWhen should learners pull?\n\n[ALEX]\nBefore starting work for the day, before pushing if others may have changed shared branches, and any time you know the remote may have advanced. Some tools also auto-fetch in the background, which can be helpful, but you should still understand what fetch means: it updates your knowledge of remote branches without changing your working files.\n\n[JAMIE]\nWhat if push fails?\n\n[ALEX]\nDon't panic. Read the error. Common causes include authentication problems, trying to push to a branch you don't have permission to modify, or a non-fast-forward situation where the remote has commits you don't have locally. In that last case, fetch or pull, inspect what changed, resolve any conflicts if necessary, then push again.\n\n[JAMIE]\nNow let's tie this to the third workshop practice: push and open a linked PR.\n\n[ALEX]\nAfter your local commit, run Git: Push. If asked to publish the branch, confirm. Wait for the push to finish. Then open your Learning Room repository on GitHub. Often you'll see a banner saying you recently pushed to your branch, with a Compare and pull request button. Activate it. If not, go to Pull requests, choose New pull request, set base to main and compare to your learn slash username branch.\n\nThen write a descriptive PR title, usually close to your commit theme. In the PR description, include plain text linking to the issue, such as Closes number. Submit the pull request.\n\n[JAMIE]\nAnd that plain-text linkage matters because it creates traceability.\n\n[ALEX]\nExactly. It helps reviewers, and when merged it can automatically close the linked issue depending on repository settings.\n\n[PAUSE]\n[JAMIE]\nThe chapter also covers syncing a fork with upstream, which learners may encounter in open source contribution workflows.\n\n[ALEX]\nYes, and there are two main patterns. The quickest on GitHub is often the Sync fork button on the web interface. For screen reader users, the path is generally to open your fork on GitHub, find the sync control near branch information, and activate it.\n\n[JAMIE]\nAnd if you're doing it with Git remotes?\n\n[ALEX]\nThat's the classic one-time setup plus recurring sync workflow. First, add the upstream remote once, pointing to the original repository. Then fetch updates from upstream. Next, make sure you're on your default branch, usually main. Merge upstream slash main into your local main. Finally, push your updated main back to your fork on GitHub.\n\n[JAMIE]\nSo conceptually: upstream is the source project, origin is your fork.\n\n[ALEX]\nPrecisely. And in VS Code, some of these operations may be available through the Command Palette, but it's helpful to know the underlying Git model. If conflicts occur during sync, you resolve them just like other merge conflicts: inspect, choose or combine changes, stage, and complete the merge.\n\n[PAUSE]\n[ALEX]\nSometimes, though, the right move is not to keep a change but to discard it.\n\n[JAMIE]\nThis is one of those areas where wording matters, because discard is permanent in many cases.\n\n[ALEX]\nYes. Discard only when you truly want to restore content to the last committed state. In VS Code, you can discard a single file from its context menu, or discard broader groups of changes from group actions. The CLI equivalents are worth knowing too.\n\nFor a specific file, you can restore it to the last commit. For all unstaged changes, you can restore the working tree more broadly. If changes are staged, unstage first, then restore. And there is a nuclear option that throws away staged and unstaged work together. That one should be treated with extreme caution.\n\n[JAMIE]\nIs there a safer way to preview before discarding?\n\n[ALEX]\nAbsolutely. Review the diff first. In terminal Git, inspect with git diff for unstaged changes and git diff --cached for staged changes. In VS Code, open the diff view and listen carefully to what changed before taking destructive action.\n\n[JAMIE]\nAnd the chapter explicitly recommends stash as a safer alternative in many cases.\n\n[ALEX]\nIt does. If you're not sure whether you'll need the changes later, stash instead of discard.\n\n[JAMIE]\nThere's also a section on deleting files from a repository, which is slightly different from simply removing them in your file explorer.\n\n[ALEX]\nCorrect. Git-aware deletion means Git records the removal. Git rm removes a file and stages that deletion in one step. If you want Git to stop tracking a file but keep it on your machine, use the cached form. You can remove an entire directory recursively as well. Then commit the deletion and verify the file is no longer tracked.\n\n[JAMIE]\nSo the main distinction is whether you want the file gone everywhere or just no longer version-controlled.\n\n[ALEX]\nExactly right.\n\n[PAUSE]\n[ALEX]\nNow let's talk history, because Git isn't just about changing files. It's also about understanding what happened.\n\n[JAMIE]\nThat's where Timeline view comes in.\n\n[ALEX]\nYes. In VS Code, you can open Timeline from the Explorer sidebar when a file is selected, or use the Command Palette to access history-related views. Timeline shows events associated with the selected file, including commits. You can browse backward through changes, open a particular commit entry, and inspect what changed.\n\n[JAMIE]\nAnd then there's blame, which has a dramatic name but a practical purpose.\n\n[ALEX]\nVery practical. Git blame shows who last changed each line and in which commit. In some setups it appears inline or in an extension-provided view. For screen reader users, the most important thing is whether the information is exposed accessibly. Sometimes the terminal or a text-based history command is easier to read than a dense visual annotation.\n\n[JAMIE]\nThe chapter also includes CLI history commands learners should recognize.\n\n[ALEX]\nYes. You can view commit history for the whole repository with git log. For a specific file, git log double-dash path-to-file. To see what changed in each commit, use patch output. For line-level history, blame commands show authorship. You can show a specific commit's changes with git show commit-sha. You can compare two commits, filter commits by author, limit to recent days, inspect recent commits on the web, and review PR history on GitHub.\n\n[JAMIE]\nAnd there's an accessibility point here too: structured diff review often beats visually scanning for changes.\n\n[ALEX]\nExactly. A diff viewer that lets you move hunk by hunk is often more efficient than searching manually through a changed file.\n\n[PAUSE]\n[JAMIE]\nWhich leads naturally to merge conflicts.\n\n[ALEX]\nYes. Conflicts happen when Git can't automatically reconcile competing changes. VS Code displays conflict regions in the editor and often provides actions such as accepting the current change, the incoming change, both changes, or manually editing the result.\n\n[JAMIE]\nWhat does a good screen reader workflow look like for resolving conflicts?\n\n[ALEX]\nFirst, identify which file has the conflict. Open it and navigate carefully through the conflict regions. If your setup exposes structured conflict actions accessibly, use them. If not, reading the conflict markers and editing manually may be necessary. Review the surrounding context so you understand what each version is trying to do.\n\n[JAMIE]\nThe chapter emphasizes accessible diff tools here.\n\n[ALEX]\nYes, because accessible diff navigation gives you structured, hunk-by-hunk movement instead of forcing you to hunt for markers in a long file. After choosing or combining content, save the file, stage it, and complete the merge commit. If the merge is not worth continuing, you can abort the merge and return to the pre-merge state.\n\n[JAMIE]\nSo an aborted merge is not failure. It's a controlled retreat.\n\n[ALEX]\nExactly. Sometimes stepping back is the best troubleshooting move.\n\n[PAUSE]\n[ALEX]\nStash management is another skill that helps when your work is in-between states.\n\n[JAMIE]\nWhen should someone use stash?\n\n[ALEX]\nUse stash when you have uncommitted changes but need to switch tasks, change branches, pull updates safely, or test something without committing half-finished work. Think of it as temporarily setting your changes aside.\n\n[JAMIE]\nHow do you create a stash?\n\n[ALEX]\nIn VS Code, the Command Palette may offer stash commands. In the terminal, you can stash all uncommitted changes with a message, which is especially helpful because named stashes are easier to identify later. If you also want to include untracked new files, use the include-untracked option.\n\n[JAMIE]\nHow do you see what stashes exist?\n\n[ALEX]\nEither through the Command Palette if your interface exposes them, or in terminal with git stash list. To inspect a specific stash, use a show command that reveals its contents.\n\n[JAMIE]\nAnd restoring?\n\n[ALEX]\nApplying a stash restores the changes but keeps the stash entry. Popping a stash restores the changes and removes that stash entry in one step. You can apply the most recent stash or a specific stash by reference. That difference between apply and pop is important: apply is safer when you're unsure.\n\n[JAMIE]\nAnd cleanup?\n\n[ALEX]\nYou can drop a specific stash or clear all stashes, but clearing all should be done very carefully.\n\n[PAUSE]\n[JAMIE]\nThen there's the emergency recovery section, which I think comforts a lot of learners.\n\n[ALEX]\nIt should. Git reflog is one of the best safety nets in Git. It records where your HEAD and branch references have been locally, even when commits seem lost after resets, rebases, or branch deletions.\n\n[JAMIE]\nLocal is the key word there.\n\n[ALEX]\nExactly. Reflog is local-only. It's your machine's memory of reference movements. It is not a shared remote history.\n\n[JAMIE]\nSo if you think you lost a commit, what's the recovery pattern?\n\n[ALEX]\nFirst, open the VS Code terminal and read the reflog to find the last good commit SHA. Second, preview that commit with a show command so you know it's the right one. Third, take the safer recovery route whenever possible: create a new branch at that commit. That preserves the current state while giving you access to the lost work. The riskier option is resetting your current branch back to that point.\n\n[JAMIE]\nAnd if you deleted a branch entirely?\n\n[ALEX]\nUse reflog to find the commit that branch pointed to, then recreate the branch at that SHA. This is one reason experienced Git users seem calm in situations that feel catastrophic to beginners.\n\n[JAMIE]\nBecause they know the history is often still recoverable.\n\n[ALEX]\nExactly.\n\n[PAUSE]\n[ALEX]\nThe chapter also acknowledges that VS Code is not the only interface.\n\n[JAMIE]\nRight. There are alternatives depending on accessibility preferences and task type.\n\n[ALEX]\nYes. GitHub Desktop can be appealing for a more guided visual workflow. GitHub CLI, the gh tool, is excellent for repository and pull request tasks and often works very well with screen readers when you like structured terminal output. And the core Git CLI remains the most universal interface, with common commands for status, add, commit, branch, switch, push, pull, fetch, stash, log, show, diff, and reflog.\n\n[JAMIE]\nSo the real goal is not loyalty to one interface. It's fluency across concepts.\n\n[ALEX]\nBeautifully said. Tools differ. The model stays the same.\n\n[PAUSE]\n[JAMIE]\nBefore we wrap, can we give learners a quick practical recap they can actually use the next time they sit down to work?\n\n[ALEX]\nAbsolutely. Start by checking your state: git status. Confirm your branch: git branch --show-current. If you need the repo locally, clone it and verify it opened correctly in Explorer. Create or switch to the correct branch before editing. Make one meaningful change. Stage intentionally, either whole file or selected chunks. Write a clear commit message. Commit locally. Push to GitHub, publishing the branch if needed. Open a pull request and include issue linkage like Closes number. If you need updates first, fetch or pull. If something feels risky, stash instead of discarding. If something seems lost, reflog may save you.\n\n[JAMIE]\nAnd for accessibility specifically?\n\n[ALEX]\nPrefer predictable keyboard-first workflows. The Command Palette is often the most screen-reader-friendly route in VS Code. Use the Source Control panel deliberately: know where the message field is, know where the file groups are, and use context menus when inline buttons are awkward. Verify feedback through notifications, status bar announcements, diffs, and terminal commands. Never rely on visual assumptions alone.\n\n[JAMIE]\nOne more thing: the chapter includes a try-it prompt to practice clone, branch, and commit. That's worth doing even if you think you understood the lesson.\n\n[ALEX]\nAbsolutely. Git becomes clear through repetition. Practice the sequence until it feels boring. That's when it becomes dependable.\n\n[JAMIE]\nAnd if someone gets stuck?\n\n[ALEX]\nPause, check status, check branch, read the exact message Git or VS Code is giving you, and ask for help with those details. \"It didn't work\" is hard to debug. \"Git says non-fast-forward on branch learn slash jamie after push\" is very debug-friendly.\n\n[JAMIE]\nThat is such a good learning habit.\n\n[ALEX]\nIt is. And one final note: this chapter points learners toward authoritative sources too, especially the VS Code source control docs, GitHub's Git documentation, and the GitHub Accessibility Lab CLI guide. Those are excellent references as you keep practicing.\n\n[JAMIE]\nSo the big takeaway is that accessible Git is absolutely possible, and a careful workflow beats a fast, fuzzy one.\n\n[ALEX]\nExactly. Clear state, explicit branches, deliberate staging, meaningful commits, and accessible review habits. That's a professional workflow.\n\n[PAUSE]\n[ALEX]\nThanks for learning with us.\n\n[JAMIE]\nWe'll see you next time.\n",
+  "chapterPlanText": "﻿[\n    {\n        \"title\":  \"ep12-git-source-control: Overview\",\n        \"startSegmentIndex\":  0\n    },\n    {\n        \"title\":  \"Section 2\",\n        \"startSegmentIndex\":  12\n    },\n    {\n        \"title\":  \"Section 3\",\n        \"startSegmentIndex\":  24\n    },\n    {\n        \"title\":  \"Section 4\",\n        \"startSegmentIndex\":  43\n    },\n    {\n        \"title\":  \"Section 5\",\n        \"startSegmentIndex\":  57\n    },\n    {\n        \"title\":  \"Section 6\",\n        \"startSegmentIndex\":  74\n    },\n    {\n        \"title\":  \"Section 7\",\n        \"startSegmentIndex\":  86\n    },\n    {\n        \"title\":  \"Section 8\",\n        \"startSegmentIndex\":  100\n    },\n    {\n        \"title\":  \"Section 9\",\n        \"startSegmentIndex\":  119\n    },\n    {\n        \"title\":  \"Section 10\",\n        \"startSegmentIndex\":  138\n    },\n    {\n        \"title\":  \"Section 11\",\n        \"startSegmentIndex\":  150\n    },\n    {\n        \"title\":  \"Section 12\",\n        \"startSegmentIndex\":  161\n    },\n    {\n        \"title\":  \"Section 13\",\n        \"startSegmentIndex\":  180\n    }\n]\n",
+  "sourceFiles": [
+    {
+      "exists": true,
+      "path": "C:\\code\\git-going-with-github\\docs\\14-git-in-practice.md",
+      "headings": [
+        {
+          "level": 2,
+          "title": "Managing Repositories, Branches, and Changes Accessibly"
+        },
+        {
+          "level": 2,
+          "title": "Workshop Recommendation (Chapter 14 / Challenge 10)"
+        },
+        {
+          "level": 3,
+          "title": "Challenge 10 Practice Set"
+        },
+        {
+          "level": 3,
+          "title": "CLI best practices for getting started"
+        },
+        {
+          "level": 3,
+          "title": "Practice 10.1 Step-by-Step: Clone Your Learning Room Repository"
+        },
+        {
+          "level": 3,
+          "title": "Practice 10.2 Step-by-Step: Create a Branch and Commit"
+        },
+        {
+          "level": 3,
+          "title": "Practice 10.3 Step-by-Step: Push and Open a Linked PR"
+        },
+        {
+          "level": 3,
+          "title": "Completing Challenge 10: Submit Your Evidence"
+        },
+        {
+          "level": 3,
+          "title": "Expected Outcomes"
+        },
+        {
+          "level": 3,
+          "title": "If You Get Stuck"
+        },
+        {
+          "level": 3,
+          "title": "Learning Moment"
+        },
+        {
+          "level": 3,
+          "title": "Learning Pattern Used in This Chapter"
+        },
+        {
+          "level": 3,
+          "title": "About Learning Cards"
+        },
+        {
+          "level": 2,
+          "title": "Table of Contents"
+        },
+        {
+          "level": 2,
+          "title": "1. Cloning a Repository in VS Code"
+        },
+        {
+          "level": 3,
+          "title": "Tool Cards: Clone a Repository (Day 2)"
+        },
+        {
+          "level": 3,
+          "title": "Three ways to clone a repository"
+        },
+        {
+          "level": 3,
+          "title": "Method 1: Command Palette (Recommended for Screen Readers)"
+        },
+        {
+          "level": 4,
+          "title": "Screen reader navigation"
+        },
+        {
+          "level": 3,
+          "title": "Method 2: Start Page Clone Button"
+        },
+        {
+          "level": 3,
+          "title": "Method 3: From GitHub.com"
+        },
+        {
+          "level": 3,
+          "title": "Learning Cards: Cloning a Repository"
+        },
+        {
+          "level": 3,
+          "title": "Try It Now: Clone the Sci-Fi Themes Repo"
+        },
+        {
+          "level": 4,
+          "title": "Why Clone This?"
+        },
+        {
+          "level": 4,
+          "title": "Quick Start"
+        },
+        {
+          "level": 2,
+          "title": "2. The Source Control Panel - Complete Walkthrough"
+        },
+        {
+          "level": 3,
+          "title": "Opening the Source Control Panel"
+        },
+        {
+          "level": 4,
+          "title": "What opens"
+        },
+        {
+          "level": 4,
+          "title": "Panel structure from top to bottom"
+        },
+        {
+          "level": 3,
+          "title": "Screen Reader Navigation in the Source Control Panel"
+        },
+        {
+          "level": 4,
+          "title": "NVDA/JAWS"
+        },
+        {
+          "level": 4,
+          "title": "VoiceOver"
+        },
+        {
+          "level": 3,
+          "title": "What Each File Shows"
+        },
+        {
+          "level": 3,
+          "title": "Context Menu Actions (Right-Click or Shift+F10)"
+        },
+        {
+          "level": 3,
+          "title": "Learning Cards: Source Control Panel"
+        },
+        {
+          "level": 2,
+          "title": "3. Branch Management"
+        },
+        {
+          "level": 3,
+          "title": "Viewing the Current Branch"
+        },
+        {
+          "level": 4,
+          "title": "Where it's shown"
+        },
+        {
+          "level": 4,
+          "title": "Keyboard access to status bar"
+        },
+        {
+          "level": 3,
+          "title": "Creating a New Branch"
+        },
+        {
+          "level": 4,
+          "title": "Command Palette method (recommended)"
+        },
+        {
+          "level": 4,
+          "title": "Naming conventions"
+        },
+        {
+          "level": 3,
+          "title": "Switching Between Branches"
+        },
+        {
+          "level": 4,
+          "title": "Command Palette method"
+        },
+        {
+          "level": 4,
+          "title": "What happens when you switch"
+        },
+        {
+          "level": 3,
+          "title": "Deleting a Branch"
+        },
+        {
+          "level": 4,
+          "title": "After your PR is merged, you can delete the branch"
+        },
+        {
+          "level": 3,
+          "title": "Viewing All Branches"
+        },
+        {
+          "level": 3,
+          "title": "Learning Cards: Branch Management"
+        },
+        {
+          "level": 4,
+          "title": "Creating a branch"
+        },
+        {
+          "level": 4,
+          "title": "Switching branches"
+        },
+        {
+          "level": 4,
+          "title": "Deleting a branch"
+        },
+        {
+          "level": 4,
+          "title": "Creating a branch"
+        },
+        {
+          "level": 4,
+          "title": "Switching branches"
+        },
+        {
+          "level": 4,
+          "title": "Getting the current branch name"
+        },
+        {
+          "level": 2,
+          "title": "4. Staging Changes - Files, Lines, and Chunks"
+        },
+        {
+          "level": 3,
+          "title": "Staging an Entire File"
+        },
+        {
+          "level": 4,
+          "title": "Alternative (keyboard shortcut)"
+        },
+        {
+          "level": 4,
+          "title": "Alternative (context menu)"
+        },
+        {
+          "level": 4,
+          "title": "What happens"
+        },
+        {
+          "level": 3,
+          "title": "Staging Multiple Files at Once"
+        },
+        {
+          "level": 3,
+          "title": "Staging Individual Lines or Chunks"
+        },
+        {
+          "level": 4,
+          "title": "Workflow"
+        },
+        {
+          "level": 4,
+          "title": "Use case for this workshop"
+        },
+        {
+          "level": 3,
+          "title": "Unstaging Files"
+        },
+        {
+          "level": 4,
+          "title": "Reverse the process"
+        },
+        {
+          "level": 3,
+          "title": "Learning Cards: Staging Changes"
+        },
+        {
+          "level": 2,
+          "title": "5. Committing with Screen Readers"
+        },
+        {
+          "level": 3,
+          "title": "The Commit Workflow"
+        },
+        {
+          "level": 4,
+          "title": "Standard process"
+        },
+        {
+          "level": 3,
+          "title": "Learning Cards: Committing"
+        },
+        {
+          "level": 4,
+          "title": "Screen reader experience"
+        },
+        {
+          "level": 4,
+          "title": "NVDA/JAWS"
+        },
+        {
+          "level": 4,
+          "title": "VoiceOver"
+        },
+        {
+          "level": 3,
+          "title": "Writing Good Commit Messages"
+        },
+        {
+          "level": 4,
+          "title": "Quick reference"
+        },
+        {
+          "level": 4,
+          "title": "Format"
+        },
+        {
+          "level": 3,
+          "title": "What Happens After Commit"
+        },
+        {
+          "level": 2,
+          "title": "6. Push and Pull Operations"
+        },
+        {
+          "level": 3,
+          "title": "Pushing Your Commits to GitHub"
+        },
+        {
+          "level": 4,
+          "title": "After committing locally"
+        },
+        {
+          "level": 4,
+          "title": "Alternative: Command Palette"
+        },
+        {
+          "level": 3,
+          "title": "Learning Cards: Push and Pull"
+        },
+        {
+          "level": 4,
+          "title": "Pushing"
+        },
+        {
+          "level": 4,
+          "title": "Pulling"
+        },
+        {
+          "level": 4,
+          "title": "Checking sync status"
+        },
+        {
+          "level": 4,
+          "title": "Pushing"
+        },
+        {
+          "level": 4,
+          "title": "Pulling"
+        },
+        {
+          "level": 4,
+          "title": "Screen reader feedback"
+        },
+        {
+          "level": 2,
+          "title": "What to do if push fails"
+        },
+        {
+          "level": 3,
+          "title": "Pulling Changes from GitHub"
+        },
+        {
+          "level": 4,
+          "title": "When to pull"
+        },
+        {
+          "level": 4,
+          "title": "How to pull"
+        },
+        {
+          "level": 4,
+          "title": "Auto-fetch setting"
+        },
+        {
+          "level": 2,
+          "title": "Syncing Your Fork with the Upstream Repository"
+        },
+        {
+          "level": 3,
+          "title": "The GitHub \"Sync fork\" Button (Quickest Method)"
+        },
+        {
+          "level": 4,
+          "title": "Screen reader path"
+        },
+        {
+          "level": 3,
+          "title": "Adding the Upstream Remote (One-Time Setup)"
+        },
+        {
+          "level": 4,
+          "title": "Example for Accessibility Agents"
+        },
+        {
+          "level": 3,
+          "title": "Fetching and Merging Upstream Changes"
+        },
+        {
+          "level": 2,
+          "title": "Via VS Code Command Palette"
+        },
+        {
+          "level": 3,
+          "title": "When Conflicts Occur During Sync"
+        },
+        {
+          "level": 2,
+          "title": "7. Discarding Changes"
+        },
+        {
+          "level": 3,
+          "title": "When to Discard"
+        },
+        {
+          "level": 3,
+          "title": "How to Discard Changes"
+        },
+        {
+          "level": 4,
+          "title": "Single file"
+        },
+        {
+          "level": 4,
+          "title": "All changes"
+        },
+        {
+          "level": 3,
+          "title": "Learning Cards: Discarding Changes"
+        },
+        {
+          "level": 4,
+          "title": "Single file"
+        },
+        {
+          "level": 4,
+          "title": "All files"
+        },
+        {
+          "level": 3,
+          "title": "Safer Alternative: Stash Instead of Discard"
+        },
+        {
+          "level": 3,
+          "title": "Deleting a File from the Repository (Git Delete / git rm)"
+        },
+        {
+          "level": 4,
+          "title": "How to use"
+        },
+        {
+          "level": 4,
+          "title": "When to use Git Delete vs. just deleting the file"
+        },
+        {
+          "level": 3,
+          "title": "Learning Cards: Deleting a File from the Repository"
+        },
+        {
+          "level": 2,
+          "title": "8. Timeline View - File History and Blame"
+        },
+        {
+          "level": 3,
+          "title": "Opening Timeline View"
+        },
+        {
+          "level": 4,
+          "title": "Method 1: Explorer Sidebar"
+        },
+        {
+          "level": 4,
+          "title": "Method 2: Command Palette"
+        },
+        {
+          "level": 3,
+          "title": "What Timeline Shows"
+        },
+        {
+          "level": 3,
+          "title": "Viewing a Commit's Changes"
+        },
+        {
+          "level": 3,
+          "title": "Git Blame - Line-by-Line History"
+        },
+        {
+          "level": 4,
+          "title": "How to access"
+        },
+        {
+          "level": 4,
+          "title": "What appears"
+        },
+        {
+          "level": 4,
+          "title": "For screen reader users"
+        },
+        {
+          "level": 3,
+          "title": "Learning Cards: Timeline and History"
+        },
+        {
+          "level": 4,
+          "title": "Opening Timeline"
+        },
+        {
+          "level": 4,
+          "title": "Reading a diff with screen reader"
+        },
+        {
+          "level": 4,
+          "title": "Git Blame"
+        },
+        {
+          "level": 4,
+          "title": "Opening Timeline"
+        },
+        {
+          "level": 4,
+          "title": "Accessible Diff Viewer"
+        },
+        {
+          "level": 2,
+          "title": "9. Resolving Merge Conflicts in VS Code"
+        },
+        {
+          "level": 3,
+          "title": "How VS Code Displays Conflicts"
+        },
+        {
+          "level": 2,
+          "title": "Timeline View - File History"
+        },
+        {
+          "level": 2,
+          "title": "Timeline View - Git History and Blame"
+        },
+        {
+          "level": 3,
+          "title": "Screen Reader Workflow for Resolving Conflicts"
+        },
+        {
+          "level": 3,
+          "title": "Using Accessible Diff for Conflict Review"
+        },
+        {
+          "level": 4,
+          "title": "This gives you structured, hunk-by-hunk navigation instead of searching for markers manually"
+        },
+        {
+          "level": 3,
+          "title": "Aborting a Merge"
+        },
+        {
+          "level": 3,
+          "title": "Learning Cards: Resolving Merge Conflicts"
+        },
+        {
+          "level": 2,
+          "title": "10. Stash Management"
+        },
+        {
+          "level": 3,
+          "title": "When to Use Stash"
+        },
+        {
+          "level": 3,
+          "title": "Creating a Stash"
+        },
+        {
+          "level": 4,
+          "title": "Method 1: Command Palette"
+        },
+        {
+          "level": 4,
+          "title": "What happens"
+        },
+        {
+          "level": 3,
+          "title": "Viewing Stashes"
+        },
+        {
+          "level": 4,
+          "title": "Command Palette"
+        },
+        {
+          "level": 4,
+          "title": "Alternative: Integrated Terminal"
+        },
+        {
+          "level": 3,
+          "title": "Applying a Stash"
+        },
+        {
+          "level": 4,
+          "title": "To restore your stashed changes"
+        },
+        {
+          "level": 4,
+          "title": "Or to apply a specific stash"
+        },
+        {
+          "level": 4,
+          "title": "Difference between Apply and Pop"
+        },
+        {
+          "level": 3,
+          "title": "Dropping a Stash"
+        },
+        {
+          "level": 3,
+          "title": "Learning Cards: Stash Management"
+        },
+        {
+          "level": 4,
+          "title": "Creating a stash"
+        },
+        {
+          "level": 4,
+          "title": "Applying a stash"
+        },
+        {
+          "level": 4,
+          "title": "Viewing stashes"
+        },
+        {
+          "level": 2,
+          "title": "10b. Emergency Recovery - git reflog"
+        },
+        {
+          "level": 3,
+          "title": "When to Use Reflog"
+        },
+        {
+          "level": 3,
+          "title": "Reading the Reflog in VS Code Terminal"
+        },
+        {
+          "level": 3,
+          "title": "Recovering Lost Commits"
+        },
+        {
+          "level": 4,
+          "title": "If you need to restore a commit that has been lost"
+        },
+        {
+          "level": 3,
+          "title": "Recovering a Deleted Branch"
+        },
+        {
+          "level": 3,
+          "title": "Why Reflog Is Local-Only"
+        },
+        {
+          "level": 3,
+          "title": "Learning Cards: Emergency Recovery"
+        },
+        {
+          "level": 2,
+          "title": "11. Alternative Git Interfaces"
+        },
+        {
+          "level": 3,
+          "title": "GitHub Desktop"
+        },
+        {
+          "level": 3,
+          "title": "GitHub CLI (`gh`)"
+        },
+        {
+          "level": 4,
+          "title": "Common commands"
+        },
+        {
+          "level": 3,
+          "title": "Git CLI (Terminal)"
+        },
+        {
+          "level": 4,
+          "title": "Common commands"
+        },
+        {
+          "level": 2,
+          "title": "VS Code Keyboard Shortcuts - Git Operations Quick Reference"
+        },
+        {
+          "level": 2,
+          "title": "Try It: Clone, Branch, Commit"
+        },
+        {
+          "level": 2,
+          "title": "Authoritative Sources"
+        },
+        {
+          "level": 3,
+          "title": "Section-Level Source Map"
+        }
+      ],
+      "content": "# Git & Source Control in VS Code\n>\n> **Listen to Episode 12:** [Git and Source Control in VS Code](https://lp.csedesigns.com/ggg/PODCASTS.html) - a conversational audio overview of this chapter. Listen before reading to preview the concepts, or after to reinforce what you learned.\n\n> **Related appendices:** [Appendix E: Advanced Git](appendix-e-advanced-git.md) | [Appendix D: Git Authentication](appendix-d-git-authentication.md) | [Appendix H: GitHub Desktop](appendix-h-github-desktop.md)\n> **Authoritative sources:** [VS Code Docs: Source Control](https://code.visualstudio.com/docs/sourcecontrol/overview) | [GitHub Docs: Using Git](https://docs.github.com/en/get-started/using-git) | [GitHub Accessibility Lab: CLI Guide](https://accessibility.github.com/documentation/guide/cli/)\n\n## Managing Repositories, Branches, and Changes Accessibly\n\n> **Day 2, Block 1-2 Material**\n>\n> This guide covers all Git operations in VS Code: cloning repositories, navigating the Source Control panel with screen readers, branch management, staging changes (including individual lines), push/pull operations, viewing file history with Timeline, resolving merge conflicts, and stash management.\n>\n> **Prerequisites:** [VS Code Setup & Accessibility Basics](11-vscode-interface.md), [Working with Pull Requests](06-working-with-pull-requests.md), [Merge Conflicts](07-merge-conflicts.md)\n>\n> **Mac keyboard shortcuts:** Throughout this chapter, all `Ctrl+` shortcuts use `Cmd+` on Mac, and `Alt+` shortcuts use `Option+`. Common equivalents: `Ctrl+Shift+G` → `Cmd+Shift+G`, `Ctrl+Shift+P` → `Cmd+Shift+P`, `Ctrl+Enter` → `Cmd+Enter`, `Ctrl+S` → `Cmd+S`.\n\n## Workshop Recommendation (Chapter 14 / Challenge 10)\n\nChapter 14 is the first **local Git workflow chapter** with hands-on repository management. It supports Challenge 10: Go Local.\n\n- **Challenge count:** 3\n- **Time per challenge:** under 10 minutes each\n- **Evidence:** PR metadata, branch names, and committed changes\n- **Pattern:** clone, branch, edit, commit, push, PR\n\n### Challenge 10 Practice Set\n\n1. **Clone your Learning Room repository** - clone your private Learning Room repo to your local machine using VS Code.\n2. **Create a branch and make one commit** - check out (or create) your `learn/<username>` branch, edit a file, stage, write a clear commit message, and commit locally.\n3. **Push and open a linked PR** - push your branch and open a PR in your Learning Room repo that references your Challenge 10 or Day 2 PR issue.\n\n### CLI best practices for getting started\n\nEven when you are working in VS Code, these CLI habits improve reliability:\n\n1. Check current state before action: run `git status`.\n2. Keep branch context explicit: run `git branch --show-current`.\n3. Verify remote alignment before pushing: run `git fetch` then `git status`.\n4. Confirm PR linkage in plain text (`Closes #<number>`) before opening or updating the PR.\n5. Avoid undocumented or unverified convenience flags; use stable commands with clear output.\n\n### Practice 10.1 Step-by-Step: Clone Your Learning Room Repository\n\n**Goal:** Get a local copy of your Learning Room repository on your machine using VS Code.\n\n**Where you are working:** VS Code desktop (or github.dev if you cannot install desktop VS Code).\n\nYour Learning Room repo is the same repo you have been working in all of Day 1 -- the private copy of `learning-room-template` that GitHub Classroom created for you. Cloning it locally lets you practice the full local Git workflow on a codebase you already know.\n\nDo **not** clone `Community-Access/learning-room-template` for this challenge. That template is maintained by facilitators. Clone your own private Learning Room repository, the one whose URL looks like `https://github.com/<workshop-org>/learning-room-<your-username>.git`.\n\nYou do **not** need a GitHub organization or organization-level permissions to complete this workflow. If GitHub asks for authentication, sign in with your own GitHub account. If GitHub says you do not have access to the repo, confirm that you are using your private Learning Room URL and ask a facilitator for help.\n\n1. Open VS Code. If no folder is open, you should see the Welcome tab.\n2. Open the Command Palette: `Ctrl+Shift+P` (Mac: `Cmd+Shift+P`).\n3. Type `git clone` and select **Git: Clone**.\n4. VS Code asks for a repository URL. Paste your Learning Room repo URL (it looks like `https://github.com/<workshop-org>/learning-room-<your-username>.git`). You can copy this from the green **Code** button on your repo's GitHub page.\n5. Press `Enter`.\n6. A file browser dialog opens asking where to save the clone. Choose a folder you can find easily (for example, `Documents` or `Desktop`). Press **Select as Repository Destination**.\n7. VS Code clones the repository. When it finishes, a notification appears asking \"Would you like to open the cloned repository?\" Activate **Open**.\n8. Verify the clone worked: press `Ctrl+Shift+E` (Mac: `Cmd+Shift+E`) to open Explorer. Your screen reader should announce the file tree with files like `README.md` and the `docs/` folder.\n\n**Screen reader tip:** After step 6, VS Code shows a progress notification. NVDA reads this automatically. If you hear nothing for 30 seconds, open the Command Palette and run `Notifications: Focus Notification Toast` to check status.\n\n**You are done when:** Your Learning Room repo folder is open in VS Code and you can see the `docs/` folder along with `README.md` in the Explorer panel.\n\n> **After cloning: check what branches exist.** A fresh clone only checks out the default branch (`main`), but the remote may have other branches you created earlier on GitHub.com (such as your `learn/<username>` branch). Run `git branch -a` in the terminal (`` Ctrl+` ``) to see all branches -- local and remote:\n>\n> ```bash\n> git branch -a\n> ```\n>\n> You will see output like:\n>\n> ```text\n> * main\n>   remotes/origin/HEAD -> origin/main\n>   remotes/origin/main\n>   remotes/origin/learn/yourname\n> ```\n>\n> The `*` marks your current branch. Lines starting with `remotes/origin/` are branches on GitHub that you can check out locally with `git checkout learn/yourname` or `git switch learn/yourname`.\n\n### Practice 10.2 Step-by-Step: Create a Branch and Commit\n\n> **See also:** [Chapter 13: How Git Works](13-how-git-works.md) explains the three areas (working directory, staging, repository) that make commits meaningful.\n\n**Goal:** Check out (or create) a properly named branch, edit a file, stage the change, and commit with a clear message.\n\n**Where you are working:** VS Code with your cloned Learning Room repository open.\n\n1. Open the Command Palette: `Ctrl+Shift+P` (Mac: `Cmd+Shift+P`).\n2. If your `learn/<username>` branch already exists on the remote (because you created it during Day 1), type `git checkout` and select **Git: Checkout to...**, then pick `learn/<your-username>`. If the branch does not exist yet, type `git create branch` and select **Git: Create Branch...** and enter `learn/<your-username>`.\n3. The status bar at the bottom of VS Code now shows your branch name instead of `main`. Your screen reader announces the branch name when you focus the status bar.\n4. Open the Explorer (`Ctrl+Shift+E`) and navigate to the `docs/` folder. Open any file mentioned in your Challenge 10 issue (for example, `docs/welcome.md`).\n5. Make one small, meaningful edit. For example, add a new sentence, fix a typo, or improve a description. Save the file with `Ctrl+S` (Mac: `Cmd+S`).\n6. Open the Source Control panel: `Ctrl+Shift+G` (Mac: `Cmd+Shift+G`). Your screen reader announces \"Source Control\" and shows your changed file under \"Changes.\"\n7. Navigate to your changed file in the Changes list. Press `Enter` or activate the `+` (Stage Changes) button next to the filename. The file moves from \"Changes\" to \"Staged Changes.\"\n8. Move focus to the **Message** input box at the top of the Source Control panel. Type a clear commit message, for example: `docs: improve welcome.md introduction`\n9. Press `Ctrl+Enter` (Mac: `Cmd+Enter`) to commit. The staged changes disappear, which means your commit succeeded.\n\n**Screen reader tip:** In the Source Control panel, use arrow keys to navigate between changed files. Each file announces its name and change status (modified, added, deleted). The `+` button is announced as \"Stage Changes\" when you Tab to it.\n\n**You are done when:** Your commit appears in the Source Control panel's history (no more staged or unstaged changes visible) and the status bar still shows your branch name.\n\n### Practice 10.3 Step-by-Step: Push and Open a Linked PR\n\n**Goal:** Push your branch to GitHub and open a PR in your Learning Room repo that references your challenge issue.\n\n**Where you are working:** VS Code (for the push) and GitHub.com (for the PR).\n\n1. Open the Command Palette: `Ctrl+Shift+P` (Mac: `Cmd+Shift+P`).\n2. Type `git push` and select **Git: Push**. If VS Code asks to publish the branch (because it is new), confirm by selecting **OK** or **Publish Branch**.\n3. Wait for the push to complete. VS Code shows a progress notification. When done, the sync indicator in the status bar should show no pending changes.\n4. Open your browser and navigate to your Learning Room repository on GitHub.\n5. GitHub usually shows a yellow banner: \"yourname recently pushed to learn/yourname.\" Activate the **Compare & pull request** button in that banner.\n6. If you do not see the banner, activate the **Pull requests** tab, then activate **New pull request**. Set the base branch to `main` and the compare branch to your `learn/<your-username>` branch.\n7. In the PR title, write a descriptive title (for example: \"docs: improve welcome.md introduction\").\n8. In the PR description, type `Closes #XX` (replace `XX` with your Challenge 10 or Day 2 PR issue number). Because the issue lives in the same repo as the PR, you only need the short `#XX` form.\n9. Activate the **Create pull request** button.\n\n**Screen reader tip:** The \"Compare & pull request\" banner is a standard link element near the top of the repository page. If your screen reader does not find it, use the heading navigation to jump to the Pull Requests tab instead.\n\n**Same-repo linking:** Because your challenge issue and your PR live in the same repository, the short form `Closes #XX` is enough -- GitHub automatically resolves the issue number to a closure link. (If you ever open a PR in a different repo, you would use the full `Closes <owner>/<repo>#XX` form, which works exactly the same way.)\n\n**You are done when:** Your PR appears on the Pull requests tab of your Learning Room repo, shows your branch name, and the description contains the `Closes #XX` reference to your challenge issue.\n\n### Completing Challenge 10: Submit Your Evidence\n\nOpen your **assigned Challenge 10 issue** in your Learning Room repo and post a completion comment:\n\n```text\nChallenge 10 completed:\n- Repository cloned: <my Learning Room repo>\n- Branch name: learn/<yourname>\n- Commit message: [your commit message]\n- PR number: #[your PR number]\n- PR links to issue: yes (Closes #XX in description)\n```\n\nClose your Challenge 10 issue when your branch is pushed and the PR is open.\n\n### Expected Outcomes\n\n- Student can clone a repository using VS Code Command Palette.\n- Student can create or check out a named branch following the workshop naming convention.\n- Student can navigate the Source Control panel, stage files, and commit with a descriptive message.\n- Student can push a branch and open a PR with same-repo issue linking.\n\n### If You Get Stuck\n\n1. Command Palette does not open? Confirm you are in VS Code (not the browser) and press `Ctrl+Shift+P` (Mac: `Cmd+Shift+P`).\n2. Source Control panel is empty? You may not have saved your file yet. Press `Ctrl+S` to save, then check again.\n3. Push fails with authentication error? Open Command Palette, run `Git: Fetch` to test your connection. If it fails, run `GitHub: Sign In` from Command Palette.\n4. Branch name wrong? Open Command Palette, run `Git: Rename Branch...` to fix it before pushing.\n5. Cannot find the \"Compare & pull request\" banner on GitHub? Navigate to Pull requests tab and create the PR manually (step 6 above).\n6. `Closes #XX` not linking? Make sure the format is exactly `Closes #XX` with a single space and no extra characters. The keyword is case-insensitive but must be one of `Closes`, `Fixes`, or `Resolves`.\n7. Ask facilitator to verify your clone location, branch name, and help with one push.\n8. Finished but not sure you did it right? Compare your work against the [Challenge 10 reference solution](solutions/solution-10-go-local.md).\n\n> **Continue learning:** The GitHub Skills course [Introduction to Git](https://github.com/skills/introduction-to-git) walks through commits, branches, and merges in an interactive, self-paced format. See [Appendix Z](appendix-z-github-skills.md) for the full catalog.\n\n### Learning Moment\n\nLocal Git operations give you full control and immediate feedback. You can see your changes, review them, and fix mistakes before they reach GitHub. The clone-branch-edit-commit-push-PR cycle you just completed is the daily workflow of every open source contributor. And now your Copilot Chat has custom sci-fi loading phrases as a bonus.\n\n### Learning Pattern Used in This Chapter\n\n1. Clone once to get a local copy of the project.\n2. Branch before editing (never work directly on `main`).\n3. Make small, focused edits with clear commit messages.\n4. Push and open a PR that links to an issue for traceability.\n5. Verify each step before moving to the next.\n\n### About Learning Cards\n\nThroughout this chapter, each major operation includes **learning cards** - expandable sections showing how to accomplish the same task from multiple perspectives. Open the card that matches how you work:\n\nThe following table describes each learning card type and who it is for.\n\n| Card | Who it is for |\n| --- | --- |\n| **Visual / mouse users** | Sighted users navigating with a mouse or trackpad |\n| **Low vision users** | Users working with zoom (200%+), magnification, high contrast themes, or large cursors |\n| **Screen reader users (NVDA / JAWS)** | Windows users navigating with NVDA or JAWS in Browse/Virtual mode |\n| **Screen reader users (VoiceOver)** | macOS users navigating with VoiceOver |\n| **GitHub.com web interface** | Browser-only workflow - no local tools required |\n| **CLI (git / gh)** | Terminal commands for Git and GitHub CLI - predictable text output, scriptable |\n\nYou do not need to read every card. Pick the one or two that match your setup and skip the rest.\n\n## Table of Contents\n\n1. [Cloning a Repository in VS Code](#1-cloning-a-repository-in-vs-code)\n2. [The Source Control Panel - Complete Walkthrough](#2-the-source-control-panel---complete-walkthrough)\n3. [Branch Management](#3-branch-management)\n4. [Staging Changes - Files, Lines, and Chunks](#4-staging-changes---files-lines-and-chunks)\n5. [Committing with Screen Readers](#5-committing-with-screen-readers)\n6. [Push and Pull Operations](#6-push-and-pull-operations)\n7. [Discarding Changes](#7-discarding-changes)\n8. [Timeline View - File History and Blame](#8-timeline-view---file-history-and-blame)\n9. [Resolving Merge Conflicts in VS Code](#9-resolving-merge-conflicts-in-vs-code)\n10. [Stash Management](#10-stash-management)\n11. [Emergency Recovery - git reflog](#10b-emergency-recovery---git-reflog)\n12. [Alternative Git Interfaces](#11-alternative-git-interfaces)\n\n## 1. Cloning a Repository in VS Code\n\n### Tool Cards: Clone a Repository (Day 2)\n\n**VS Code Desktop (primary for Day 2):**\n\n1. `Ctrl+Shift+P` > **Git: Clone** > paste the HTTPS URL > choose a folder > **Open**.\n\n**github.dev (web editor):**\nNo clone needed. Press `.` on any GitHub repository page to open it instantly.\n\n**GitHub Desktop:**\n\n1. **File > Clone Repository** > paste URL or select from your account > **Clone**.\n\n**Git CLI (terminal):**\n\n```bash\ngit clone https://github.com/owner/repo.git && cd repo\n```\n\n**GitHub CLI:**\n\n```bash\ngh repo clone owner/repo && cd repo\n```\n\n### Three ways to clone a repository\n\n### Method 1: Command Palette (Recommended for Screen Readers)\n\n1. Open Command Palette: `Ctrl+Shift+P` (Mac: `Cmd+Shift+P`)\n2. Type \"git clone\"\n3. Select \"Git: Clone\"\n4. Paste the repository URL (example: `https://github.com/community-access/accessibility-agents.git`)\n5. Press `Enter`\n6. Choose a local folder where the repository should be cloned\n7. VS Code asks: \"Would you like to open the cloned repository?\" - select \"Open\"\n\n#### Screen reader navigation\n\n- The Command Palette is a searchable list - type to filter, `Up/Down Arrow` to navigate results\n- The folder picker is a standard file dialog - navigate with `Arrow` keys, `Enter` to select\n\n### Method 2: Start Page Clone Button\n\n1. Open VS Code (no folder open)\n2. The Start page appears\n3. Navigate to \"Clone Git Repository\" button - press `Enter`\n4. Paste repository URL → `Enter`\n5. Choose destination folder\n6. Open when prompted\n\n**Screen reader note:** The Start page is keyboard-accessible. `Tab` to navigate between \"New File,\" \"Open Folder,\" and \"Clone Repository\" buttons.\n\n### Method 3: From GitHub.com\n\n1. On any GitHub repository page, click the green \"Code\" button\n2. Copy the HTTPS URL (recommended) or SSH URL\n3. Open VS Code → `Ctrl+Shift+P` (Mac: `Cmd+Shift+P`) → \"Git: Clone\"\n4. Paste URL → `Enter`\n5. Choose destination → Open\n\n### Learning Cards: Cloning a Repository\n\n<details>\n<summary>Low vision users (zoom, high contrast)</summary>\n\nCloning works the same as the Command Palette method above. A few tips for zoomed or magnified displays:\n\n1. The Command Palette (`Ctrl+Shift+P`) appears at the top-center of VS Code and scales with your zoom level - it remains visible even at 200%+ zoom.\n2. When the folder picker dialog opens, it may extend beyond your visible area at high zoom. Use `Alt+Up Arrow` to navigate up in the folder tree and `Enter` to select. The dialog title bar shows your current location.\n3. After cloning, the Explorer panel (`Ctrl+Shift+E`) shows the file tree. At high zoom, use `Ctrl+-` to temporarily reduce zoom if the tree is hard to scan, then `Ctrl+=` to restore.\n4. If you use a high contrast theme (Settings: `Ctrl+,` then search \"color theme\"), file status colours in the Explorer (green for added, yellow for modified) may be subtle. Enable **Editor Decorator Colors** or rely on the Source Control panel (`Ctrl+Shift+G`) where status letters (M, A, D) are shown as text.\n\n</details>\n\n<details>\n<summary>GitHub.com web interface (no local tools needed)</summary>\n\nIf you cannot install Git or VS Code, you can work directly in the browser:\n\n1. Navigate to the repository on GitHub.com\n2. Press `.` (period) to open **github.dev** - a browser-based VS Code editor\n3. The full repository opens in an editor with file tree, search, and editing\n4. Changes are committed directly to GitHub from the browser\n\nAlternatively, for quick edits:\n\n1. Navigate to any file on GitHub\n2. Press `E` to open the file editor\n3. Make changes and commit from the web editor\n\n**Note:** github.dev does not support terminal commands or local Git operations. For full Git workflows (branching, staging individual lines, stash), use desktop VS Code.\n\n</details>\n\n<details>\n<summary>CLI (git / gh)</summary>\n\nClone from your terminal using either standard Git or GitHub CLI:\n\n```bash\n# Standard Git clone\ngit clone https://github.com/Community-Access/vscode-sci-fi-themes.git\ncd vscode-sci-fi-themes\n\n# GitHub CLI clone (shorter syntax, handles auth automatically)\ngh repo clone Community-Access/vscode-sci-fi-themes\ncd vscode-sci-fi-themes\n\n# Clone into a specific folder\ngit clone https://github.com/Community-Access/vscode-sci-fi-themes.git ~/projects/themes\n\n# Clone only the default branch (faster for large repos)\ngh repo clone Community-Access/vscode-sci-fi-themes -- --single-branch\n\n# Verify the clone\ngit status\ngit remote -v\n```\n\n**Screen reader advantage:** Terminal output is plain text. After cloning, `git status` confirms you are on the default branch with a clean working tree.\n\n</details>\n\n**Why HTTPS over SSH for this workshop:** HTTPS works immediately with no setup. SSH requires key generation and configuration (see [Appendix D: Git Authentication](appendix-d-git-authentication.md) for SSH setup).\n\n### Try It Now: Clone the Sci-Fi Themes Repo\n\nTo make your first clone meaningful and fun, try cloning the **VS Code Sci-Fi Thinking Phrases** repository:\n\n**Repository URL:** `https://github.com/community-access/vscode-sci-fi-themes.git`\n\nThis repo contains custom loading phrases for GitHub Copilot Chat from three sci-fi universes:\n\n- **Star Trek** — Engage warp drive and run diagnostics\n- **The Hitchhiker's Guide** — Consult the Infinite Improbability Drive\n- **Star Wars** — Read the ripples in the Force\n\n#### Why Clone This?\n\n- It's a real, working repository with multiple files to explore\n- You'll see a practical use of cloning (customizing your personal VS Code setup)\n- After cloning, you can pick a theme and apply it to your `settings.json`\n- When you open Copilot Chat, you'll see your custom phrases appear!\n\n#### Quick Start\n\n1. Clone: `Ctrl+Shift+P` → \"Git: Clone\" → paste URL above → `Enter`\n2. Choose a destination folder and open when prompted\n3. Navigate to the `themes/` folder and pick a `.json` file (star-trek, hitchhikers, or star-wars)\n4. Copy the `chat.agent.thinking.phrases` setting into your VS Code `settings.json`\n5. Reload VS Code: `Ctrl+Shift+P` → \"Developer: Reload Window\"\n6. Open Copilot Chat (`Ctrl+Alt+I`, or **Chat: Open Chat** from the Command Palette if your keymap differs) and ask a question - watch your custom phrases appear!\n\nSee `CLONE-THIS-REPO.md` in that repo for full instructions.\n\n<details>\n<summary>Web alternative (github.com)</summary>\n\nIf you prefer not to clone locally, you can work entirely on GitHub.com:\n\n1. Navigate to the repository on GitHub\n2. Click any file to view it, then click the **pencil icon** (Edit) to modify it directly in the browser\n3. GitHub automatically creates a branch and commit for your edit\n4. When you save, GitHub prompts you to open a pull request\n\nThis approach requires no local tools - just a browser. It works well for documentation changes and small edits. For larger changes, cloning to VS Code gives you a full editor with multi-file editing, Git staging, and the Accessible Diff Viewer.\n\n</details>\n\n<details>\n<summary>GitHub CLI (gh) alternative</summary>\n\nClone a repository with one command:\n\n```bash\n# Clone using owner/name (no URL needed)\ngh repo clone community-access/vscode-sci-fi-themes\n\n# Clone and cd into the folder\ngh repo clone community-access/vscode-sci-fi-themes && cd vscode-sci-fi-themes\n\n# Open the cloned repo in VS Code\ngh repo clone community-access/vscode-sci-fi-themes && code vscode-sci-fi-themes\n```\n\n</details>\n\n## 2. The Source Control Panel - Complete Walkthrough\n\nThe Source Control panel (`Ctrl+Shift+G` - Mac: `Cmd+Shift+G`) is where all Git operations happen in VS Code. This section provides a complete screen reader walkthrough of every interactive element.\n\n### Opening the Source Control Panel\n\n**Shortcut:** `Ctrl+Shift+G` (Mac: `Cmd+Shift+G`)\n\n#### What opens\n\n- A sidebar panel on the left side of VS Code\n- Focus lands on the first interactive element (usually the commit message input or the first changed file)\n\n#### Panel structure from top to bottom\n\n1. **Source Control title bar** (heading level 2)\n   - Branch name displayed (example: \"main\" or \"feature/add-documentation\")\n   - View/More Actions button (three dots menu)\n\n2. **Commit message input** (multi-line text field)\n   - Type your commit message here\n   - Announced as \"Source Control Input, edit, multi-line\"\n\n3. **Commit button** (or \"Publish Branch\" if this is a new branch)\n   - Shortcut: `Ctrl+Enter` (Mac: `Cmd+Enter`) when focused in the message input\n\n4. **Changes section** (collapsible tree)\n   - Lists all modified files not yet staged\n   - Announced as \"Changes, expanded\" or \"Changes, collapsed\"\n   - Count shown (example: \"Changes 3\")\n\n5. **Staged Changes section** (collapsible tree)\n   - Lists files staged for commit\n   - Empty if nothing staged yet\n   - Announced as \"Staged Changes, expanded\"\n\n6. **Merge Changes section** (appears only during a merge)\n   - Lists files with conflicts\n   - See Section 9 for conflict resolution workflow\n\n### Screen Reader Navigation in the Source Control Panel\n\n#### NVDA/JAWS\n\n- The panel is a web-based tree view\n- Use `Up/Down Arrow` to navigate between items\n- Use `Right Arrow` to expand a section (Changes, Staged Changes)\n- Use `Left Arrow` to collapse a section\n- Use `Enter` to open a file diff\n- Use `Space` to stage/unstage a file (when focused on a file item)\n\n#### VoiceOver\n\n- Navigate with `VO+Arrow` keys\n- `VO+Space` to activate (open diff or stage/unstage)\n- The panel is announced as a \"group\" containing lists\n\n**Key point:** The Source Control panel is **not** a standard file tree. It's a specialized Git status view. Each changed file is an interactive item with a context menu.\n\n### What Each File Shows\n\nWhen a file appears in the Changes or Staged Changes list, VS Code shows a status letter:\n\n| Letter | Meaning |\n| --------  | ---------  |\n| M | Modified - file exists and was changed |\n| A | Added - new file, not in Git yet |\n| D | Deleted - file was removed |\n| R | Renamed - file was moved or renamed |\n| U | Untracked - file exists but Git is ignoring it |\n| C | Conflict - file has merge conflicts (see Section 9) |\n\n**Screen reader announcement:** \"docs/GUIDE.md, Modified\" or \"README.md, Added\"\n\n### Context Menu Actions (Right-Click or Shift+F10)\n\nWhen focused on any file in the Source Control panel:\n\n| Action | What It Does |\n| --------  | -------------  |\n| Open File | Opens the file in the editor (same as `Enter`) |\n| Open Changes | Opens side-by-side diff view (same as `Enter`) |\n| Stage Changes | Moves file from Changes → Staged Changes |\n| Unstage Changes | Moves file from Staged Changes → Changes |\n| Discard Changes | **Dangerous** - deletes your local edits, restores file to last commit |\n| Stage Selected Ranges | Stage only specific lines (see Section 4) |\n| Revert Selected Ranges | Discard changes to specific lines only |\n\n**Screen reader tip:** Use `Shift+F10` to open the context menu. Navigate options with `Up/Down Arrow`. Press `Enter` to select.\n\n### Learning Cards: Source Control Panel\n\n<details>\n<summary>Low vision users (zoom, high contrast)</summary>\n\nThe Source Control panel adapts well to zoom and high contrast settings:\n\n1. **At high zoom (200%+):** The panel may narrow. File names truncate but the status letter (M, A, D) remains visible at the end of each row. Hover over truncated names to see the full path in a tooltip.\n2. **High contrast themes:** Status colours are reinforced by the status letter (M/A/D/R/U/C), so you do not rely on colour alone. To switch to a high contrast theme: `Ctrl+Shift+P` then type \"Preferences: Color Theme\" and select \"High Contrast\" or \"High Contrast Light.\"\n3. **The commit message input** is a multi-line text area. At high zoom it may appear narrow - it expands vertically as you type. Use `Ctrl+Enter` to commit from anywhere in the input (not `Enter`, which adds a new line).\n4. **Diff views** opened from the panel use red/green highlighting. In high contrast themes these use distinct border patterns instead of subtle colour shading. Press `F7` to jump between change hunks rather than scrolling through large diffs visually.\n5. **Minimap:** If the minimap (the narrow code preview strip on the right edge of the editor) is distracting at high zoom, disable it: Settings (`Ctrl+,`) then search \"minimap enabled\" and uncheck it.\n\n</details>\n\n<details>\n<summary>CLI equivalent: viewing Git status</summary>\n\nThe Source Control panel shows the same information as these terminal commands:\n\n```bash\n# See all modified, staged, and untracked files\ngit status\n\n# Short format (one letter per file, compact)\ngit status -s\n\n# See what is staged (ready to commit)\ngit diff --cached --name-only\n\n# See what is modified but not staged\ngit diff --name-only\n\n# See both staged and unstaged differences with content\ngit diff          # unstaged changes\ngit diff --cached # staged changes\n```\n\n**The letters match:** `M` = modified, `A` = added, `D` = deleted, `R` = renamed, `??` = untracked.\n\n</details>\n\n## 3. Branch Management\n\nBranches are how you organize work in Git. Every repository starts with a `main` or `master` branch. You create new branches for features, bug fixes, or experiments.\n\n### Viewing the Current Branch\n\n#### Where it's shown\n\n1. Bottom-left corner of VS Code (status bar) - visual users see it immediately\n2. Source Control panel title bar\n3. Command Palette: `Ctrl+Shift+P` (Mac: `Cmd+Shift+P`) → \"Git: Show Git Output\"\n\n#### Keyboard access to status bar\n\n- The status bar is not in the standard keyboard navigation flow\n- Use the Command Palette for branch operations instead\n\n> **Visual users:** You can also click the branch name in the bottom-left status bar to open the branch picker directly.\n\n### Creating a New Branch\n\n#### Command Palette method (recommended)\n\n1. `Ctrl+Shift+P` (Mac: `Cmd+Shift+P`)\n2. Type \"git create branch\"\n3. Select \"Git: Create Branch...\"\n4. Type the new branch name (example: `feature/improve-docs`)\n5. Press `Enter`\n\nVS Code:\n\n- Creates the branch\n- Switches to it automatically\n- Your working files stay exactly as they were\n\n#### Naming conventions\n\n- Use lowercase with hyphens: `feature/add-timeline-guide`\n- Avoid spaces and special characters\n- Be descriptive: `fix/heading-hierarchy` not `fix1`\n\n<details>\n<summary>Web alternative (github.com) - branch management</summary>\n\nCreate and switch branches without leaving your browser:\n\n1. On the repository page, click the **branch dropdown** (shows \"main\" by default)\n2. Type a new branch name in the search field\n3. Click **\"Create branch: your-branch-name from main\"**\n4. GitHub switches to the new branch immediately\n5. Any file edits you make in the browser will be on this branch\n\nTo switch between branches, click the branch dropdown and select the branch you want.\n\n</details>\n\n<details>\n<summary>Git CLI alternative - branch management</summary>\n\nManage branches from your terminal:\n\n```bash\n# Create and switch to a new branch\ngit checkout -b feature/improve-docs\n\n# List all branches\ngit branch -a\n\n# Switch to an existing branch\ngit checkout main\n\n# Delete a branch (after merging)\ngit branch -d feature/improve-docs\n```\n\n</details>\n\n### Switching Between Branches\n\n#### Command Palette method\n\n1. `Ctrl+Shift+P` (Mac: `Cmd+Shift+P`)\n2. Type \"git checkout\"\n3. Select \"Git: Checkout to...\"\n4. A list of all branches appears\n5. `Up/Down Arrow` to navigate\n6. `Enter` to switch\n\n**Screen reader announcement:** \"Branch: main\" or \"Branch: feature/add-timeline-guide\"\n\n#### What happens when you switch\n\n- VS Code saves your current files\n- Loads the files from the other branch\n- If you have uncommitted changes, Git may block the switch (see \"Stashing\" in Section 10)\n\n### Deleting a Branch\n\n#### After your PR is merged, you can delete the branch\n\n1. `Ctrl+Shift+P` (Mac: `Cmd+Shift+P`)\n2. Type \"git delete branch\"\n3. Select \"Git: Delete Branch...\"\n4. Choose the branch to delete from the list\n5. Confirm\n\n**Note:** You cannot delete the branch you're currently on. Switch to `main` first.\n\n### Viewing All Branches\n\n**Command:** `Ctrl+Shift+P` → \"Git: Show Git Output\" → Branch list appears\n\n**Alternative:** Use the integrated terminal:\n\n```bash\ngit branch          # Local branches only\ngit branch -a       # All branches (including remote)\n```\n\n### Learning Cards: Branch Management\n\n<details>\n<summary>Low vision users (zoom, high contrast)</summary>\n\n1. **Branch name in the status bar:** The current branch name appears in the bottom-left corner of VS Code. At high zoom, the status bar may be partially off-screen. Use `Ctrl+Shift+P` then type \"Git: Checkout to...\" to see and switch branches from the Command Palette instead.\n2. **Branch picker list:** When you open the branch picker from the Command Palette, the list shows all available branches. At high zoom, long branch names may truncate. Type the first few characters to filter the list - the filter is instant.\n3. **Visual branch indicators in the Explorer:** Modified files on a branch show a coloured dot in the Explorer panel. In high contrast themes, these dots use distinct shapes or borders. The Source Control panel (`Ctrl+Shift+G`) is more reliable for seeing which files changed on your branch.\n\n</details>\n\n<details>\n<summary>Screen reader users (NVDA / JAWS on Windows)</summary>\n\n#### Creating a branch\n\n1. Press `Ctrl+Shift+P` to open the Command Palette\n2. Type \"git create branch\" - NVDA/JAWS announces results as you type\n3. Press `Enter` on \"Git: Create Branch...\"\n4. The input focus moves to a text field - type your branch name (e.g., `feature/add-docs`)\n5. Press `Enter` - VS Code creates and switches to the branch\n6. NVDA/JAWS announces the new branch name in the status bar notification\n\n#### Switching branches\n\n1. Press `Ctrl+Shift+P`, type \"git checkout\"\n2. Select \"Git: Checkout to...\"\n3. A list of branches appears - navigate with `Up/Down Arrow`\n4. Each item is announced as the branch name (e.g., \"main\", \"feature/add-docs\")\n5. Press `Enter` to switch\n6. VS Code reloads files for that branch - you hear a status bar update\n\n#### Deleting a branch\n\n1. Switch to a different branch first (you cannot delete the branch you are on)\n2. Press `Ctrl+Shift+P`, type \"git delete branch\"\n3. Select \"Git: Delete Branch...\"\n4. Navigate the list to find the branch to delete, press `Enter`\n\n</details>\n\n<details>\n<summary>Screen reader users (VoiceOver on macOS)</summary>\n\n#### Creating a branch\n\n1. Press `Cmd+Shift+P` to open the Command Palette\n2. Type \"git create branch\" - VoiceOver announces filtered results\n3. Press `Return` on \"Git: Create Branch...\"\n4. Type the branch name in the input field\n5. Press `Return` to create and switch\n\n#### Switching branches\n\n1. Press `Cmd+Shift+P`, type \"git checkout\"\n2. Select \"Git: Checkout to...\"\n3. Use `VO+Down Arrow` to navigate the branch list\n4. Press `Return` to switch\n\n#### Getting the current branch name\n\n1. Press `VO+M` to move to the menu bar, then `VO+Right Arrow` to the status bar area\n2. Or use the Command Palette: `Cmd+Shift+P` then type \"Git: Show Git Output\" - the output pane includes the current branch\n\n</details>\n\n<details>\n<summary>GitHub.com web interface</summary>\n\nCreate and switch branches without leaving your browser:\n\n1. On the repository page, find the **branch dropdown** button (shows \"main\" by default) - it is above the file table\n2. Click or activate the dropdown\n3. Type a new branch name in the search field\n4. Click **\"Create branch: your-branch-name from main\"** when it appears\n5. GitHub switches to the new branch immediately\n6. Any file edits in the browser will be on this branch\n\nTo switch between branches:\n\n1. Click the branch dropdown\n2. Select the branch you want - the page reloads with that branch's files\n\nTo delete a branch:\n\n1. Navigate to the repository's Branches page: click the branch count link (e.g., \"3 branches\") near the branch dropdown, or go to `github.com/owner/repo/branches`\n2. Find the branch\n3. Click the trash can icon next to it\n\n</details>\n\n<details>\n<summary>CLI (git / gh)</summary>\n\nManage branches from your terminal:\n\n```bash\n# Create and switch to a new branch\ngit checkout -b feature/improve-docs\n\n# Or use the newer 'switch' command\ngit switch -c feature/improve-docs\n\n# List local branches (current branch marked with *)\ngit branch\n\n# List all branches including remote-tracking\ngit branch -a\n\n# Switch to an existing branch\ngit checkout main\n# or\ngit switch main\n\n# Delete a branch (safe - only if merged)\ngit branch -d feature/improve-docs\n\n# Force delete a branch (even if not merged)\ngit branch -D feature/improve-docs\n\n# Rename the current branch\ngit branch -m new-name\n\n# Push a new branch to GitHub for the first time\ngit push -u origin feature/improve-docs\n\n# Delete a remote branch\ngit push origin --delete feature/improve-docs\n```\n\nUsing GitHub CLI:\n\n```bash\n# Create a branch linked to an issue (auto-names from issue title)\ngh issue develop 42 --checkout\n\n# List remote branches\ngh api repos/{owner}/{repo}/branches --jq '.[].name'\n```\n\n</details>\n\n## 4. Staging Changes - Files, Lines, and Chunks\n\nGit has a two-step commit process:\n\n1. **Stage** the changes you want to include\n2. **Commit** those staged changes\n\nThis lets you commit only part of your work, leaving the rest for a later commit.\n\n### Staging an Entire File\n\n<details>\n<summary>Visual / mouse users</summary>\n\n1. Open Source Control: `Ctrl+Shift+G` (Mac: `Cmd+Shift+G`)\n2. Hover over a file in the \"Changes\" list - a **+** icon appears to its right\n3. Click the **+** to stage that file\n4. Or right-click a file → \"Stage Changes\"\n\n</details>\n\n<details>\n<summary>Low vision users (zoom, high contrast)</summary>\n\n1. Open Source Control: `Ctrl+Shift+G` (Mac: `Cmd+Shift+G`)\n2. At high zoom, the **+** (stage), **undo** (discard), and **open file** icons may be small. Instead of hovering:\n   - Right-click any file in the Changes list to get a full-size context menu with \"Stage Changes\", \"Discard Changes\", and other options\n   - Or use `Ctrl+Shift+P` then type \"Git: Stage Changes\" to stage the currently open file\n3. The file moves from \"Changes\" to \"Staged Changes\" - both section headings include a count (e.g., \"Changes 2\", \"Staged Changes 1\") so you can confirm the move without relying on colour alone.\n4. In high contrast themes, staged files show a distinct background or border in the Staged Changes section.\n\n</details>\n\n<details>\n<summary>Screen reader users (NVDA / JAWS / VoiceOver)</summary>\n\n1. Open Source Control: `Ctrl+Shift+G` (Mac: `Cmd+Shift+G`)\n2. Navigate to the file in the \"Changes\" list\n3. Press `Ctrl+Enter` (Mac: `Cmd+Enter`) to stage immediately\n\n#### Alternative (keyboard shortcut)\n\n- Focus the file → press `Space`\n\n#### Alternative (context menu)\n\n- Focus the file → press `Shift+F10` (Mac: `Ctrl+Return`) → select \"Stage Changes\"\n\n</details>\n\n#### What happens\n\n- The file moves from \"Changes\" → \"Staged Changes\"\n- A green \"A\" or \"M\" indicator appears\n\n### Staging Multiple Files at Once\n\n1. `Ctrl+Shift+G` (Mac: `Cmd+Shift+G`) to open Source Control\n2. Navigate to the \"Changes\" section heading\n3. Press `Shift+F10` (Mac: `Ctrl+Return`) to open context menu on the section itself\n4. Select \"Stage All Changes\"\n\nAll modified files move to \"Staged Changes.\"\n\n### Staging Individual Lines or Chunks\n\n**This is one of Git's most powerful features:** You can stage only specific lines of a file, leaving other changes unstaged.\n\n#### Workflow\n\n1. Open Source Control: `Ctrl+Shift+G` (Mac: `Cmd+Shift+G`)\n2. Navigate to a file in \"Changes\"\n3. Press `Enter` to open the diff view\n4. The diff shows your changes side-by-side or inline\n5. Navigate to a changed line (use `Arrow` keys or `F7` for next hunk)\n6. Press `Shift+F10` (Mac: `Ctrl+Return`) to open context menu\n7. Select \"Stage Selected Lines\"\n\n**Result:** Only those lines are staged. The rest of the file remains in \"Changes.\"\n\n#### Use case for this workshop\n\n- You fixed a typo and added a new section in the same file\n- You want to commit the typo fix separately from the new content\n- Stage only the typo fix lines, commit them with message \"fix: typo in heading\"\n- Then stage the new section, commit with message \"docs: add Timeline View guide\"\n\n**Screen reader tip:** In the diff view, press `Alt+H` to see Accessible Help for diff-specific keyboard shortcuts.\n\n<details>\n<summary>Web alternative (github.com) - editing files</summary>\n\nOn GitHub.com, there is no staging step. When you edit a file in the browser:\n\n1. Click the **pencil icon** on any file to open the web editor\n2. Make your changes\n3. Click **\"Commit changes\"** - GitHub creates the commit directly\n4. Choose to commit to the current branch or create a new branch and PR\n\nThis is the simplest workflow if you are making a focused change to one file. For multi-file changes, VS Code's staging system gives you more control.\n\n</details>\n\n<details>\n<summary>Git CLI alternative - staging</summary>\n\nStage files from your terminal:\n\n```bash\n# Stage a specific file\ngit add docs/GUIDE.md\n\n# Stage all changes\ngit add .\n\n# Stage specific lines interactively\ngit add -p docs/GUIDE.md\n# Git shows each change hunk and asks: stage this? (y/n/s/e)\n\n# Unstage a file\ngit restore --staged docs/GUIDE.md\n\n# Check what is staged vs unstaged\ngit status\n```\n\n</details>\n\n### Unstaging Files\n\n#### Reverse the process\n\n1. Focus the file in \"Staged Changes\"\n2. Press `Ctrl+Enter` (Mac: `Cmd+Enter`) or `Space`\n3. File moves back to \"Changes\"\n\n### Learning Cards: Staging Changes\n\n<details>\n<summary>Screen reader users</summary>\n\n- In Source Control (`Ctrl+Shift+G`), press `+` or `Space` on a file to stage it -- your screen reader announces the file moving from \"Changes\" to \"Staged Changes\"\n- To stage individual lines, open the file diff (`Enter` on the file), select lines with `Shift+Up/Down`, then use Command Palette: \"Git: Stage Selected Ranges\"\n- Press `Ctrl+Z` in the Source Control panel to unstage the last staged file if you staged the wrong one\n\n</details>\n\n<details>\n<summary>Low vision users</summary>\n\n- Staged files appear under a separate \"Staged Changes\" heading with a green `+` icon -- look for the section break in the Source Control panel\n- The inline diff view highlights added lines in green and removed lines in red; use `Ctrl+=` to zoom if the colors are hard to distinguish\n- Right-click a file in the Source Control panel for a context menu with \"Stage Changes\", \"Discard Changes\", and \"Open File\" options\n\n</details>\n\n<details>\n<summary>Sighted users</summary>\n\n- Hover over a file in the Changes list to see `+` (stage), curved arrow (discard), and file-open icons appear on the right\n- Click the `+` icon next to \"Changes\" header to stage all files at once, or click `+` on individual files for selective staging\n- The Source Control badge number on the Activity Bar decreases as you stage and commit changes\n\n</details>\n\n## 5. Committing with Screen Readers\n\n### The Commit Workflow\n\n#### Standard process\n\n1. Open Source Control: `Ctrl+Shift+G` (Mac: `Cmd+Shift+G`)\n2. Stage changes (see Section 4)\n3. Focus the commit message input (usually `Tab` or `Shift+Tab` to reach it)\n4. Type your commit message\n5. Press `Ctrl+Enter` (Mac: `Cmd+Enter`) to commit\n\n### Learning Cards: Committing\n\n<details>\n<summary>Visual / mouse users</summary>\n\n1. Open Source Control (`Ctrl+Shift+G`)\n2. Stage your files (click the **+** icon next to each file, or click **Stage All Changes** above the Changes section header)\n3. Click in the **\"Message\"** text area at the top of the Source Control panel\n4. Type your commit message\n5. Click the **Commit** button (checkmark icon) or press `Ctrl+Enter`\n6. If nothing is staged, VS Code asks if you want to stage all changes and commit directly - click \"Yes\" if that is what you want\n\n</details>\n\n<details>\n<summary>Low vision users (zoom, high contrast)</summary>\n\n1. The commit message input is at the top of the Source Control panel. At high zoom it may appear as a narrow rectangle - it expands vertically as you type.\n2. The **Commit button** may show only as a small checkmark icon at high zoom. Use `Ctrl+Enter` from inside the message input instead - this is more reliable than finding the button visually.\n3. After committing, the Staged Changes section clears. The count next to the section heading drops to 0, confirming the commit was recorded.\n4. If you need to see your recent commits, use the Timeline view (`Ctrl+Shift+E`, navigate to the Timeline section at the bottom of Explorer) where each commit shows full message text at a readable size.\n\n</details>\n\n#### Screen reader experience\n\n#### NVDA/JAWS\n\n- The commit input is announced as \"Source Control Input, edit, multi-line\"\n- You're automatically in Forms Mode - just start typing\n- The input expands as you type (supports multi-line messages)\n- Press `Ctrl+Enter` (Mac: `Cmd+Enter`) to commit (not `Enter`, which adds a new line)\n\n#### VoiceOver\n\n- `VO+Tab` to navigate to the input\n- `VO+Shift+Down` to interact\n- Type your message\n- `Ctrl+Enter` to commit\n- `VO+Shift+Up` to stop interacting\n\n### Writing Good Commit Messages\n\nSee [Culture & Etiquette: Writing Good Commit Messages](08-open-source-culture.md#writing-good-commit-messages) for format guidance.\n\n#### Quick reference\n\n```text\nfix: correct heading hierarchy in GUIDE.md\n\nFixes #42\n```\n\n#### Format\n\n- First line: type + colon + short summary (50 characters max)\n- Blank line\n- Optional body: detailed explanation\n- Optional footer: \"Fixes #123\" to link to issue\n\n**Common types:** `feat:`, `fix:`, `docs:`, `style:`, `refactor:`, `test:`, `chore:`\n\n<details>\n<summary>Git CLI alternative - committing</summary>\n\nCommit from your terminal:\n\n```bash\n# Commit staged changes with a message\ngit commit -m \"fix: correct heading hierarchy in GUIDE.md\"\n\n# Commit with a multi-line message (opens your editor)\ngit commit\n\n# Stage all tracked files and commit in one step\ngit commit -am \"docs: update screen reader instructions\"\n```\n\n</details>\n\n### What Happens After Commit\n\n- The \"Staged Changes\" section clears\n- Your changes are now part of Git history\n- The commit exists locally only - you must **push** to send it to GitHub (see Section 6)\n\n## 6. Push and Pull Operations\n\n**Push** sends your local commits to GitHub.  \n**Pull** downloads new commits from GitHub to your local repository.\n\n### Pushing Your Commits to GitHub\n\n#### After committing locally\n\n1. Open Source Control: `Ctrl+Shift+G` (Mac: `Cmd+Shift+G`)\n2. Look for the \"Publish Branch\" button (if this is a new branch) or \"Sync Changes\" button\n3. Press `Enter` on that button\n\n#### Alternative: Command Palette\n\n1. `Ctrl+Shift+P` (Mac: `Cmd+Shift+P`)\n2. Type \"git push\"\n3. Select \"Git: Push\"\n4. VS Code pushes your commits to GitHub\n\n### Learning Cards: Push and Pull\n\n<details>\n<summary>Low vision users (zoom, high contrast)</summary>\n\n1. **The Sync/Publish button** appears in the Source Control panel header area. At high zoom it may display as a small cloud icon with an arrow. If you cannot find it, use the Command Palette (`Ctrl+Shift+P` then type \"Git: Push\") - this is always reliable.\n2. **Progress indication:** While pushing, VS Code shows a spinning icon in the status bar (bottom-left). At high zoom this may be off-screen. After pushing, run `Ctrl+Shift+P` then \"Git: Show Git Output\" to read the push log as scrollable text.\n3. **Pull indicators:** When your branch is behind the remote, the status bar shows a down-arrow with a number (e.g., \"↓2\" means 2 commits to pull). At high zoom, the Command Palette approach (`Ctrl+Shift+P` then \"Git: Pull\") avoids needing to read the status bar.\n4. **Auto-fetch:** Enable auto-fetch (Settings: search \"git autofetch\") so VS Code checks for remote changes every few minutes. This prevents surprise conflicts when you push.\n\n</details>\n\n<details>\n<summary>Screen reader users (NVDA / JAWS on Windows)</summary>\n\n#### Pushing\n\n1. After committing, press `Ctrl+Shift+P`, type \"git push\", select \"Git: Push\"\n2. NVDA/JAWS announces \"Pushing...\" in the status bar\n3. On success, a notification appears: \"Successfully pushed\" - if using NVDA, check `NVDA+N` to read recent notifications\n4. For a new branch (first push), use \"Git: Publish Branch\" instead - this sets up the upstream tracking\n\n#### Pulling\n\n1. Press `Ctrl+Shift+P`, type \"git pull\", select \"Git: Pull\"\n2. NVDA/JAWS announces \"Pulling...\" then the status changes\n3. If there are conflicts, the Source Control panel shows a \"Merge Changes\" section - navigate there with `Ctrl+Shift+G` then `Down Arrow`\n\n#### Checking sync status\n\n1. Press `Ctrl+Shift+P`, type \"Git: Show Git Output\"\n2. The output pane opens with push/pull log messages in plain text\n3. Use `Up/Down Arrow` to read line by line\n\n</details>\n\n<details>\n<summary>Screen reader users (VoiceOver on macOS)</summary>\n\n#### Pushing\n\n1. Press `Cmd+Shift+P`, type \"git push\", select \"Git: Push\"\n2. VoiceOver announces progress from the status bar\n3. On success, a notification toast appears - press `VO+F3` to read the latest notification\n\n#### Pulling\n\n1. Press `Cmd+Shift+P`, type \"git pull\", select \"Git: Pull\"\n2. VoiceOver announces when the pull completes\n3. If conflicts exist, navigate to Source Control (`Cmd+Shift+G`) and review the Merge Changes section\n\n</details>\n\n#### Screen reader feedback\n\n- NVDA/JAWS: Status bar announces \"Pushing...\" then \"Pushed successfully\" or an error message\n- Check the Source Control panel for any error messages (they appear as banner notifications)\n\n<details>\n<summary>Git CLI alternative - push and pull</summary>\n\nPush and pull from your terminal:\n\n```bash\n# Push commits to GitHub\ngit push\n\n# Push a new branch for the first time\ngit push -u origin feature/improve-docs\n\n# Pull changes from GitHub\ngit pull\n\n# Fetch without merging (see what changed first)\ngit fetch\ngit log HEAD..origin/main --oneline\n```\n\n</details>\n\n<details>\n<summary>Web alternative (github.com) - push and pull</summary>\n\nOn GitHub.com, there is no push/pull step - your commits are saved directly to GitHub when you use the web editor. If you edited on a branch, your changes are already on GitHub. Simply open a pull request from that branch.\n\nIf your branch is behind `main`, look for the **\"Update branch\"** button on your PR page to pull in the latest changes.\n\n</details>\n\n## What to do if push fails\n\n- **Error: \"No upstream branch\"** → You need to publish the branch first (Command Palette → \"Git: Publish Branch\")\n- **Error: \"Permission denied\"** → Check your authentication (see [Appendix D: Git Authentication](appendix-d-git-authentication.md))\n- **Error: \"Rejected - non-fast-forward\"** → Someone else pushed changes; you need to pull first\n\n### Pulling Changes from GitHub\n\n#### When to pull\n\n- Before you start work each day\n- When GitHub shows your branch is behind the remote\n- When preparing to merge a PR\n\n#### How to pull\n\n1. `Ctrl+Shift+P` (Mac: `Cmd+Shift+P`)\n2. Type \"git pull\"\n3. Select \"Git: Pull\"\n4. VS Code fetches and merges remote changes\n\n**If there are conflicts:** See Section 9.\n\n#### Auto-fetch setting\n\n- VS Code can check for remote changes automatically every few minutes\n- Enable: Settings (`Ctrl+,` - Mac: `Cmd+,`) → search \"git autofetch\" → set to `true`\n\n## Syncing Your Fork with the Upstream Repository\n\nWhen you fork a repository and the original (upstream) repository receives new commits, your fork gets out of date. Keeping your fork current prevents merge conflicts and ensures you're working with the latest code.\n\n### The GitHub \"Sync fork\" Button (Quickest Method)\n\nFor straightforward updates, GitHub has a built-in sync button:\n\n1. Navigate to your fork on GitHub\n2. On the repository page, look for the **\"This branch is N commits behind owner/repo:main\"** notice\n3. Activate the **\"Sync fork\"** button next to it\n4. GitHub automatically merges upstream changes into your fork's default branch\n5. Then pull those changes to your local clone: `Git: Pull` from the Command Palette\n\n#### Screen reader path\n\n```text\nOn your fork's main page:\n→ H or 3 to find the sync notice heading\n→ Tab to \"Sync fork\" button → Enter\n→ \"Update branch\" in the dialog → Enter\n```\n\n**Limitation:** The GitHub sync button only syncs the default branch. For other branches, use the git method below.\n\n### Adding the Upstream Remote (One-Time Setup)\n\nTo sync locally using git, you first configure the upstream remote. This only needs to be done once per clone.\n\n```text\nStep 1: Open the terminal in VS Code: Ctrl+` (backtick)\nStep 2: Check your current remotes:\n  git remote -v\n  → You should see \"origin\" pointing to YOUR fork\nStep 3: Add the upstream remote:\n  git remote add upstream https://github.com/ORIGINAL-OWNER/ORIGINAL-REPO.git\nStep 4: Verify:\n  git remote -v\n  → You should now see both \"origin\" (your fork) and \"upstream\" (original)\n```\n\n#### Example for Accessibility Agents\n\n```bash\ngit remote add upstream https://github.com/community-access/accessibility-agents.git\n```\n\n### Fetching and Merging Upstream Changes\n\nOnce your upstream remote is configured:\n\n```bash\n# 1. Fetch all updates from upstream (does not change your files yet)\ngit fetch upstream\n\n# 2. Make sure you are on your default branch\ngit checkout main\n\n# 3. Merge upstream changes into your local branch\ngit merge upstream/main\n\n# 4. Push the updated branch to your fork on GitHub\ngit push origin main\n```\n\n## Via VS Code Command Palette\n\n```text\nCtrl+Shift+P → \"Git: Fetch\" → select \"upstream\"\nCtrl+Shift+P → \"Git: Merge Branch\" → select \"upstream/main\"\nCtrl+Shift+P → \"Git: Push\"\n```\n\n### When Conflicts Occur During Sync\n\n> **See also:** [Chapter 07: Merge Conflicts](07-merge-conflicts.md) for a dedicated walkthrough of conflict resolution.\n\nIf you've made changes to the same files the upstream has changed, merge conflicts can occur during sync. The same conflict resolution flow applies - see Section 9 of this chapter.\n\n**Best practice:** Always sync before starting new work on a fork. A quick `git fetch upstream` at the start of each session prevents conflicts from accumulating.\n\n## 7. Discarding Changes\n\n**Discarding = permanently deleting your local edits.** The file reverts to the state of the last commit. This is **irreversible.**\n\n### When to Discard\n\n- You made experimental changes and they didn't work\n- You want to start over from the last commit\n- You accidentally edited the wrong file\n\n### How to Discard Changes\n\n#### Single file\n\n1. Open Source Control: `Ctrl+Shift+G`\n2. Navigate to the file in \"Changes\"\n3. Press `Shift+F10` for context menu\n4. Select \"Discard Changes\"\n5. Confirm in the warning dialog (VS Code will ask \"Are you sure?\")\n\n#### All changes\n\n1. `Ctrl+Shift+G`\n2. Navigate to the \"Changes\" section heading\n3. `Shift+F10` for context menu\n4. Select \"Discard All Changes\"\n5. Confirm (this affects every modified file)\n\n**Screen reader warning:** VS Code shows a modal confirmation dialog. Navigate with `Tab`, select \"Discard\" or \"Cancel\" with `Enter`.\n\n### Learning Cards: Discarding Changes\n\n<details>\n<summary>Low vision users (zoom, high contrast)</summary>\n\n1. The **discard icon** (an undo arrow) appears when hovering over a file in the Changes list. At high zoom, right-click the file instead to get a full-size context menu with \"Discard Changes.\"\n2. The **confirmation dialog** that appears is a modal - it dims the background. In high contrast themes, the dialog has a clear border. The \"Discard\" button is typically the focused (primary) button.\n3. For \"Discard All Changes\", right-click the \"Changes\" section heading to get the context menu.\n4. After discarding, the file disappears from the Changes list. Check the file count in the section heading to confirm (e.g., \"Changes 2\" becomes \"Changes 1\").\n\n</details>\n\n<details>\n<summary>Screen reader users (NVDA / JAWS on Windows)</summary>\n\n#### Single file\n\n1. Press `Ctrl+Shift+G` to open Source Control\n2. Navigate to the file in the Changes section with `Down Arrow`\n3. Press `Shift+F10` to open the context menu\n4. Navigate to \"Discard Changes\" with `Down Arrow`, press `Enter`\n5. A confirmation dialog appears - NVDA announces \"Are you sure you want to discard changes\" or similar\n6. Press `Tab` to navigate between \"Discard\" and \"Cancel\", press `Enter` on your choice\n\n#### All files\n\n1. Navigate to the \"Changes\" section heading (announced as \"Changes, expanded, N items\")\n2. Press `Shift+F10`, select \"Discard All Changes\"\n3. Confirm in the dialog\n\n</details>\n\n<details>\n<summary>Screen reader users (VoiceOver on macOS)</summary>\n\n1. Press `Cmd+Shift+G` to open Source Control\n2. Use `VO+Arrow` keys to navigate to the file\n3. Press `VO+Shift+M` to open the context menu (or `Ctrl+Return`)\n4. Navigate to \"Discard Changes\", press `VO+Space`\n5. In the confirmation dialog, use `VO+Right Arrow` to reach the buttons, `VO+Space` to activate\n\n</details>\n\n<details>\n<summary>CLI (git / gh)</summary>\n\nDiscard changes from your terminal:\n\n```bash\n# Discard changes to a specific file (restore to last commit)\ngit restore docs/GUIDE.md\n\n# Discard all unstaged changes\ngit restore .\n\n# Discard staged changes (unstage first, then restore)\ngit restore --staged docs/GUIDE.md\ngit restore docs/GUIDE.md\n\n# Nuclear option: discard ALL changes (staged and unstaged)\ngit checkout -- .\n\n# Preview what would be discarded before doing it\ngit diff              # shows unstaged changes\ngit diff --cached     # shows staged changes\n```\n\n> **Safety tip:** Run `git diff` before `git restore` to review what you are about to lose. Unlike VS Code's discard, there is no confirmation prompt in the terminal.\n\n</details>\n\n### Safer Alternative: Stash Instead of Discard\n\nIf you're not sure whether you'll need these changes later, use **stash** (Section 10) instead of discard. Stash saves your changes temporarily without committing them.\n\n### Deleting a File from the Repository (Git Delete / git rm)\n\n**Git Delete** removes a file from both your working directory AND Git's tracking. This is different from discarding changes - it permanently removes the file from the repository history going forward.\n\n#### How to use\n\n1. Open the file you want to remove in the editor\n2. `Ctrl+Shift+P` (Mac: `Cmd+Shift+P`)\n3. Type \"Git: Delete\"\n4. Confirm the deletion\n\nThe file is staged for deletion - you still need to commit to record the removal.\n\n#### When to use Git Delete vs. just deleting the file\n\n- Simply deleting a file from Explorer leaves it as an \"untracked deletion\" in Git\n- Using `Git: Delete` (git rm) stages the deletion in one step\n- Use `git rm` when you want to track the file removal as part of your next commit\n\n### Learning Cards: Deleting a File from the Repository\n\n<details>\n<summary>Visual / mouse users</summary>\n\n1. Right-click the file in the Explorer panel (`Ctrl+Shift+E`)\n2. Select \"Delete\" to delete from your file system\n3. The file appears in Source Control (`Ctrl+Shift+G`) under Changes with a \"D\" (deleted) status\n4. Stage and commit the deletion to record it in Git\n\nAlternatively: `Ctrl+Shift+P` then \"Git: Delete\" removes the file and stages the deletion in one step.\n\n</details>\n\n<details>\n<summary>Low vision users (zoom, high contrast)</summary>\n\n1. The easiest approach at high zoom is `Ctrl+Shift+P` then type \"Git: Delete\" - this works on the currently open file and avoids finding small context menu targets.\n2. After deletion, confirm in Source Control (`Ctrl+Shift+G`) - the file appears with a \"D\" status letter. The \"D\" is text, not colour-only, so it works in all themes.\n3. Stage and commit as normal.\n\n</details>\n\n<details>\n<summary>Screen reader users (NVDA / JAWS / VoiceOver)</summary>\n\n1. Open the file you want to remove in the editor\n2. Press `Ctrl+Shift+P` (Mac: `Cmd+Shift+P`), type \"Git: Delete\"\n3. Select the command - the file is deleted and staged for removal\n4. Navigate to Source Control (`Ctrl+Shift+G`) - the file is announced as \"filename, Deleted\" in the Staged Changes section\n5. Write a commit message and press `Ctrl+Enter` to commit the removal\n\n**NVDA/JAWS note:** The file disappears from the Explorer tree. If you navigate there, you will no longer hear the filename.\n\n</details>\n\n<details>\n<summary>GitHub.com web interface</summary>\n\n1. Navigate to the file on GitHub\n2. Click the three-dot menu (\"...\") in the file header\n3. Select \"Delete file\"\n4. Write a commit message describing why the file was removed\n5. Choose to commit directly or open a PR\n6. Click \"Commit changes\"\n\nFor screen reader users on GitHub: press `Tab` to navigate to the file actions menu, then `Enter` to open it.\n\n</details>\n\n<details>\n<summary>CLI (git / gh)</summary>\n\n```bash\n# Remove a file and stage the deletion in one step\ngit rm docs/old-file.md\n\n# Remove a file but keep it locally (stop tracking only)\ngit rm --cached docs/old-file.md\n\n# Remove an entire directory\ngit rm -r old-folder/\n\n# Commit the deletion\ngit commit -m \"chore: remove outdated documentation file\"\n\n# Verify the file is no longer tracked\ngit status\n```\n\n</details>\n\n## 8. Timeline View - File History and Blame\n\nThe **Timeline view** shows the Git history of the currently open file: every commit that touched this file, who made it, and when.\n\n### Opening Timeline View\n\n#### Method 1: Explorer Sidebar\n\n1. Open Explorer: `Ctrl+Shift+E`\n2. At the bottom of the Explorer, there's a \"Timeline\" section\n3. `Tab` or `Arrow` to navigate into Timeline\n4. The list shows all commits affecting the currently open file\n\n#### Method 2: Command Palette\n\n1. Open a file in the editor\n2. `Ctrl+Shift+P`\n3. Type \"timeline\"\n4. Select \"View: Show Timeline\"\n\n### What Timeline Shows\n\nFor each commit entry:\n\n- **Commit message** (first line)\n- **Author name**\n- **Relative time** (example: \"3 days ago\" or \"2 hours ago\")\n- **Commit hash** (short form, like `a3f2b9c`)\n\n**Screen reader announcement:** \"docs: add Timeline Guide, Jeff, 2 days ago\"\n\n### Viewing a Commit's Changes\n\n1. Navigate to a commit in the Timeline list\n2. Press `Enter`\n3. A diff view opens showing what changed in that specific commit\n\nThis is incredibly useful for understanding:\n\n- When a particular line was added\n- Why a section was removed\n- What the file looked like at any point in history\n\n### Git Blame - Line-by-Line History\n\n**Git Blame** shows who last modified each line of the file.\n\n#### How to access\n\n1. Open a file in the editor\n2. `Ctrl+Shift+P`\n3. Type \"git blame\"\n4. Select \"Git: Toggle Blame\"\n\n#### What appears\n\n- Inline annotations next to every line (visually)\n- Hover over a line to see commit details\n\n#### For screen reader users\n\n- The inline blame annotations can add noise\n- Use **Timeline view instead** to see recent changes to the whole file\n- Use `Ctrl+F` to search the Timeline list for a specific author or date\n\n**Useful blame settings** (add to `.vscode/settings.json` or user Settings):\n\n| Setting | Default | What It Does |\n| ---------  | ---------  | -------------  |\n| `git.blame.ignoreWhitespace` | `false` | When `true`, whitespace-only changes (reformatting) are excluded from blame - useful when code was reformatted without logic changes |\n| `git.blame.editorDecoration.disableHover` | `false` | When `true`, disables the hover tooltip on blame annotations - reduces screen reader noise if you find the blame decorations intrusive |\n\n### Learning Cards: Timeline and History\n\n<details>\n<summary>Low vision users (zoom, high contrast)</summary>\n\n1. **Timeline panel location:** It is at the bottom of the Explorer sidebar (`Ctrl+Shift+E`). At high zoom you may need to scroll down in the Explorer to find it. If the Timeline section is collapsed, click the **Timeline** heading to expand it.\n2. **Reading commit entries:** Each entry shows the commit message, author, and time. At high zoom, long commit messages may truncate. Click any entry to open the diff view, which shows the full message in the editor tab title.\n3. **Diff view at high zoom:** Red/green highlighting shows removed/added lines. In high contrast themes, changes use distinct borders or backgrounds. Press `F7` to jump through changes with a visible highlight that is easier to track than scrolling.\n4. **Git Blame at high zoom:** The inline blame annotations are small grey text at the end of each line. At high zoom they may overlap with code. Use Timeline view instead for a more readable list of who changed what.\n\n</details>\n\n<details>\n<summary>Screen reader users (NVDA / JAWS on Windows)</summary>\n\n#### Opening Timeline\n\n1. Press `Ctrl+Shift+E` to open Explorer\n2. Press `Tab` repeatedly or `Down Arrow` to navigate past the file tree to the \"Timeline\" section\n3. Press `Right Arrow` to expand it if collapsed\n4. Navigate commit entries with `Up/Down Arrow`\n5. Each entry is announced as: \"commit message, author, time\" (e.g., \"docs: add Timeline Guide, Jeff, 2 days ago\")\n6. Press `Enter` on any entry to open its diff view\n\n#### Reading a diff with screen reader\n\n1. In the diff view, press `Alt+F2` to open the Accessible Diff Viewer\n2. The Accessible Diff Viewer presents changes as a text list: each line shows `+` (added), `-` (removed), or unchanged\n3. Navigate with `Up/Down Arrow` to read each line\n4. Press `Escape` to close the Accessible Diff Viewer\n\n#### Git Blame\n\n1. Open a file, press `Ctrl+Shift+P`, type \"Git: Toggle Blame\"\n2. Blame annotations appear inline - NVDA reads them when navigating lines\n3. To reduce noise, disable blame (repeat the toggle command) and use Timeline instead\n\n</details>\n\n<details>\n<summary>Screen reader users (VoiceOver on macOS)</summary>\n\n#### Opening Timeline\n\n1. Press `Cmd+Shift+E` to open Explorer\n2. Use `VO+Down Arrow` to navigate below the file tree to the Timeline section\n3. Press `VO+Space` to expand if collapsed\n4. Navigate entries with `VO+Down Arrow`\n5. Press `VO+Space` on a commit to open its diff\n\n#### Accessible Diff Viewer\n\n1. In any diff view, press `Option+F2` to open the Accessible Diff Viewer\n2. Read changes line by line with `VO+Down Arrow`\n3. Press `Escape` to close\n\n</details>\n\n<details>\n<summary>CLI (git / gh) - history and blame</summary>\n\n```bash\n# View commit history for the entire repo\ngit log --oneline\n\n# View history for a specific file\ngit log --oneline docs/GUIDE.md\n\n# View history with what changed in each commit\ngit log -p docs/GUIDE.md\n\n# View who last changed each line (blame)\ngit blame docs/GUIDE.md\n\n# Blame with short commit hashes and author\ngit blame --date=short docs/GUIDE.md\n\n# Show a specific commit's changes\ngit show abc1234\n\n# Show what changed between two commits\ngit diff abc1234..def5678\n\n# Show commits by a specific author\ngit log --author=\"Jeff\" --oneline\n\n# Show commits in the last 7 days\ngit log --since=\"7 days ago\" --oneline\n```\n\nUsing GitHub CLI:\n\n```bash\n# View recent commits from the web\ngh api repos/{owner}/{repo}/commits --jq '.[0:5] | .[] | .commit.message'\n\n# View PR history\ngh pr list --state all --limit 10\n```\n\n**Screen reader advantage:** `git log --oneline` and `git blame` produce clean, columnar text output. Read line by line with arrow keys in the terminal.\n\n</details>\n\n## 9. Resolving Merge Conflicts in VS Code\n\nMerge conflicts happen when two people edit the same lines of a file. Git can't decide which version to keep, so it asks you to choose.\n\n**Prerequisite:** Read [Merge Conflicts](07-merge-conflicts.md) for the underlying concepts. This section covers the VS Code-specific workflow.\n\n### How VS Code Displays Conflicts\n\nWhen you open a file with conflicts, you see something like:\n\n```markdown\n<<<<<<< HEAD\n## Timeline View - File History\n=======\n## Timeline View - Git History and Blame\n>>>>>>> feature/improve-timeline-guide\n```\n\n**VS Code adds buttons above each conflict** (visually):\n\n- \"Accept Current Change\" (keeps HEAD version)\n- \"Accept Incoming Change\" (keeps the other branch's version)\n- \"Accept Both Changes\" (keeps both, one after the other)\n- \"Compare Changes\" (opens side-by-side diff)\n\n### Screen Reader Workflow for Resolving Conflicts\n\n**The buttons are NOT accessible via keyboard.** Use this method instead:\n\n1. **Identify the conflict markers:**\n   - `<<<<<<<` marks the start\n   - `=======` separates the two versions\n   - `>>>>>>>` marks the end\n\n2. **Read both versions:**\n   - The section between `<<<<<<<` and `=======` is **your current branch** (HEAD)\n   - The section between `=======` and `>>>>>>>` is **the incoming branch** (the branch you're merging)\n\n3. **Decide what to keep:**\n   - Delete the conflict markers (`<<<<<<<`, `=======`, `>>>>>>>`)\n   - Delete the version you don't want\n   - Or rewrite the section combining both versions\n   - Save the file\n\n4. **Stage the resolved file:**\n   - `Ctrl+Shift+G` to open Source Control\n   - The file appears in \"Merge Changes\" section\n   - Stage it (presses `Ctrl+Enter` or `Space`)\n\n5. **Commit the merge:**\n   - Type commit message (or keep the auto-generated one: \"Merge branch 'feature/...' into main\")\n   - `Ctrl+Enter` (Mac: `Cmd+Enter`) to commit\n\n### Using Accessible Diff for Conflict Review\n\n**Better approach:** Use the Accessible Diff Viewer (`F7`) to navigate conflict hunks systematically.\n\n1. Open the conflicted file\n2. Press `F7` to jump to the first conflict hunk\n3. Press `Alt+F2` to open Accessible View\n4. Read both versions clearly\n5. Press `Escape` to return to editor\n6. Manually edit to resolve\n7. Press `F7` to jump to the next conflict\n8. Repeat until all conflicts resolved\n\n#### This gives you structured, hunk-by-hunk navigation instead of searching for markers manually\n\n### Aborting a Merge\n\nIf you want to cancel the merge and go back to before you started:\n\n1. `Ctrl+Shift+P`\n2. Type \"git abort\"\n3. Select \"Git: Abort Merge\"\n\nEverything returns to the pre-merge state.\n\n### Learning Cards: Resolving Merge Conflicts\n\n<details>\n<summary>Screen reader users</summary>\n\n- Press `F7` in a conflict file to enter the Accessible Diff Viewer and step through conflicts hunk by hunk with announced change types\n- Conflict markers (`<<<<<<<`, `=======`, `>>>>>>>`) are read aloud as you arrow through lines -- listen for these to identify conflict boundaries\n- After resolving all markers, stage the file with `Ctrl+Shift+G` then navigate to it and press `+`, then commit to complete the merge\n\n</details>\n\n<details>\n<summary>Low vision users</summary>\n\n- VS Code highlights conflict regions with colored backgrounds: green for \"Current Change\" (yours) and blue for \"Incoming Change\" (theirs)\n- The inline action buttons (\"Accept Current\", \"Accept Incoming\", \"Accept Both\") appear above each conflict -- they are visible at high zoom levels\n- Use `Ctrl+Shift+M` to check the Problems panel for any remaining conflict markers you may have missed\n\n</details>\n\n<details>\n<summary>Sighted users</summary>\n\n- Look for the colored conflict blocks in the editor: green background = your version, blue background = incoming version\n- Click \"Accept Current Change\", \"Accept Incoming Change\", or \"Accept Both Changes\" above each conflict for one-click resolution\n- The Source Control panel shows a merge badge when conflicts exist -- it clears after you commit the resolution\n\n</details>\n\n## 10. Stash Management\n\n**Stash** temporarily saves your uncommitted changes so you can switch branches or pull updates without committing half-finished work.\n\n### When to Use Stash\n\n- You need to switch branches but have uncommitted changes\n- You want to pull updates from GitHub but have local edits\n- You want to save experimental work without committing it\n\n### Creating a Stash\n\n#### Method 1: Command Palette\n\n1. `Ctrl+Shift+P`\n2. Type \"git stash\"\n3. Select \"Git: Stash\"\n4. Optionally type a stash message (helps you remember what's in it)\n\n#### What happens\n\n- Your uncommitted changes disappear from the editor\n- The files revert to the last commit\n- Your changes are saved in a hidden Git stash\n- You can now switch branches or pull safely\n\n### Viewing Stashes\n\n#### Command Palette\n\n1. `Ctrl+Shift+P`\n2. Type \"git stash list\"\n3. Select \"Git: Show Stash\"\n\n#### Alternative: Integrated Terminal\n\n```bash\ngit stash list\n```\n\nOutput looks like:\n\n```text\nstash@{0}: WIP on feature/docs: add Timeline guide\nstash@{1}: WIP on main: fix typo\n```\n\n### Applying a Stash\n\n#### To restore your stashed changes\n\n1. `Ctrl+Shift+P`\n2. Type \"git stash apply\"\n3. Select \"Git: Apply Latest Stash\"\n\n#### Or to apply a specific stash\n\n1. `Ctrl+Shift+P`\n2. Type \"git stash pop\"\n3. Select \"Git: Pop Stash...\"\n4. Choose which stash from the list\n\n#### Difference between Apply and Pop\n\n- **Apply**: restores changes and keeps the stash (you can apply it again later)\n- **Pop**: restores changes and deletes the stash\n\n### Dropping a Stash\n\nIf you no longer need what's in a stash:\n\n1. `Ctrl+Shift+P`\n2. Type \"git stash drop\"\n3. Select \"Git: Drop Stash...\"\n4. Choose which stash to delete\n\n### Learning Cards: Stash Management\n\n<details>\n<summary>Visual / mouse users</summary>\n\n1. Open Source Control: `Ctrl+Shift+G`\n2. In the Source Control panel, there may be a **\"Stashes\"** section below Staged Changes (visible when stashes exist)\n3. Click a stash to see what it contains\n4. Right-click a stash to Apply, Pop, or Drop it\n\nIf the Stashes section is not visible, use the Command Palette: `Ctrl+Shift+P` then type \"git stash\" to access all stash commands.\n\n</details>\n\n<details>\n<summary>Low vision users (zoom, high contrast)</summary>\n\n1. The Stashes section in the Source Control panel may be below the fold at high zoom. Scroll down in the panel, or use the Command Palette (`Ctrl+Shift+P` then \"git stash\") which is always accessible regardless of zoom level.\n2. Stash names in the Command Palette list are full text (e.g., \"stash@{0}: WIP on feature/docs: add Timeline guide\") and respect your font size settings.\n3. After applying a stash, your files reappear in the Changes section of Source Control. Check the file count to confirm.\n\n</details>\n\n<details>\n<summary>Screen reader users (NVDA / JAWS on Windows)</summary>\n\n#### Creating a stash\n\n1. Press `Ctrl+Shift+P`, type \"git stash\"\n2. Select \"Git: Stash\" - NVDA announces the result\n3. An input appears asking for a stash message - type something descriptive (e.g., \"WIP: documentation changes for Timeline section\")\n4. Press `Enter` - your changes disappear from Source Control and are saved in the stash\n5. NVDA announces the Source Control panel update (file counts drop to 0)\n\n#### Applying a stash\n\n1. Press `Ctrl+Shift+P`, type \"git stash pop\"\n2. Select \"Git: Pop Stash...\"\n3. A list of stashes appears - navigate with `Up/Down Arrow`\n4. Each item is announced with the stash message you wrote\n5. Press `Enter` to apply and delete the stash\n6. Your changes reappear in the Changes section\n\n#### Viewing stashes\n\n1. Press `Ctrl+Shift+P`, type \"git stash list\"\n2. Or in the terminal: type `git stash list` and read the output line by line\n\n</details>\n\n<details>\n<summary>Screen reader users (VoiceOver on macOS)</summary>\n\n1. Press `Cmd+Shift+P`, type \"git stash\"\n2. Select \"Git: Stash\" and provide a message\n3. Press `Return`\n4. To apply: `Cmd+Shift+P`, type \"git stash pop\", select from the list with `VO+Down Arrow`, press `Return`\n\n</details>\n\n<details>\n<summary>GitHub.com web interface</summary>\n\nGitHub.com does not have a stash feature. Stash is a local Git operation only. If you need to save work-in-progress without committing on GitHub.com:\n\n1. Create a draft commit on a temporary branch\n2. Or use GitHub Codespaces (which runs a full VS Code environment in the browser and supports `git stash` in the terminal)\n\n</details>\n\n<details>\n<summary>CLI (git / gh) - stash commands</summary>\n\n```bash\n# Stash all uncommitted changes with a message\ngit stash push -m \"WIP: documentation changes\"\n\n# Stash including untracked (new) files\ngit stash push -u -m \"WIP: including new files\"\n\n# List all stashes\ngit stash list\n\n# Show what a specific stash contains\ngit stash show stash@{0}\ngit stash show -p stash@{0}    # with full diff\n\n# Apply the most recent stash (keep stash)\ngit stash apply\n\n# Apply and delete the most recent stash\ngit stash pop\n\n# Apply a specific stash\ngit stash apply stash@{1}\n\n# Delete a specific stash\ngit stash drop stash@{0}\n\n# Delete ALL stashes (careful)\ngit stash clear\n```\n\n</details>\n\n## 10b. Emergency Recovery - git reflog\n\n`git reflog` is the safety net you reach for when something goes seriously wrong: an accidental hard reset, a lost branch, a rebase that destroyed commits you needed. It is the most underused recovery tool in Git.\n\n**What reflog records:** Every time the `HEAD` pointer moves - from commits, resets, rebases, checkouts, merges - Git quietly records it in the reflog. These entries are kept for 90 days by default.\n\n### When to Use Reflog\n\n| Scenario | What happened | Reflog solution |\n| ----------  | --------------  | ------------------  |\n| Deleted a branch by mistake | `git branch -D feature/x` | Find the last commit SHA from reflog → recreate branch |\n| `git reset --hard` lost commits | Moved HEAD to older commit | Find the SHA before the reset → reset back to it |\n| Rebase went wrong | Commits appear lost | Find pre-rebase HEAD → reset to it |\n| Accidentally force-pushed | Local history destroyed | Find the SHA from reflog → restore |\n\n### Reading the Reflog in VS Code Terminal\n\n```bash\ngit reflog\n```\n\nOutput looks like:\n\n```text\nabc1234 HEAD@{0}: commit: Fix typo in README\nbcd2345 HEAD@{1}: reset: moving to HEAD~1\ncde3456 HEAD@{2}: commit: Add accessibility section\ndef4567 HEAD@{3}: checkout: moving from main to feature/docs\n```\n\nEach line: `<SHA> HEAD@{N}: <what happened>`\n\n**Screen reader tip:** Run this in the integrated terminal (`Ctrl+Backtick`). The output is plain text - read line by line with ↓. You are looking for the SHA just before the action that caused the problem.\n\n### Recovering Lost Commits\n\n#### If you need to restore a commit that has been lost\n\n```bash\n# Step 1 - Find the last good commit SHA in reflog\ngit reflog\n\n# Step 2 - Preview what that commit looked like\ngit show abc1234\n\n# Step 3a - Create a new branch at that point (safest)\ngit branch recovery/my-lost-work abc1234\n\n# Step 3b - OR reset the current branch to that point\ngit reset --hard abc1234\n```\n\n> **Use `git branch` over `git reset --hard` when recovering** - creating a branch is non-destructive; you keep both the current state and the recovered state, then decide which to keep.\n\n### Recovering a Deleted Branch\n\n```bash\n# Find the last commit on the deleted branch\ngit reflog | grep 'feature/deleted-branch-name'\n\n# Recreate the branch at that SHA\ngit checkout -b feature/deleted-branch-name abc1234\n```\n\n### Why Reflog Is Local-Only\n\nReflog records are stored in your local `.git/` directory and are **not pushed to GitHub**. If your entire local clone is destroyed (hard drive failure, `rm -rf`), reflog cannot help - but GitHub retains the pushed commits in the remote history.\n\n**Workshop tip:** If you run a reset or rebase during the workshop and lose something, immediately run `git reflog` before doing anything else. The recovery window is open as long as you haven't run `git gc`.\n\n### Learning Cards: Emergency Recovery\n\n<details>\n<summary>Screen reader users</summary>\n\n- Run `git reflog --oneline` in the terminal and arrow through the output -- each line announces a HEAD movement with its SHA and action description\n- Copy the SHA you want to recover to by selecting it in the terminal (`Shift+Arrow`) then pressing `Ctrl+C`, then run `git checkout -b recovery <SHA>`\n- Reflog entries are kept for 90 days -- you have time to recover, so do not panic\n\n</details>\n\n<details>\n<summary>Low vision users</summary>\n\n- `git reflog` output is columnar text: SHA on the left, action description on the right -- increase terminal font size with `Ctrl+=` for readability\n- Each reflog entry starts with `HEAD@{N}` where N is the number of steps back -- lower numbers are more recent\n- Use `git log --oneline --graph` after recovery to visually confirm the branch history looks correct\n\n</details>\n\n<details>\n<summary>Sighted users</summary>\n\n- Look for the SHA hash in the leftmost column of `git reflog` output -- these are the restore points you can checkout or reset to\n- The action column (e.g., \"commit:\", \"reset:\", \"checkout:\") tells you what caused each HEAD movement\n- After recovering with `git checkout -b`, verify in the Source Control panel that the branch appears with the expected files\n\n</details>\n\n## 11. Alternative Git Interfaces\n\nVS Code's Source Control panel is one way to use Git. These alternatives exist for different workflows.\n\n### GitHub Desktop\n\n- **Graphical Git client**\n- Download: [desktop.github.com](https://desktop.github.com)\n- Strengths: Visual diff review, simpler branch management for beginners\n- Screen reader support: Partial - keyboard navigation works for core flows but some visual-only elements exist\n\n### GitHub CLI (`gh`)\n\n- **Command-line interface for GitHub operations**\n- Install: `winget install GitHub.cli` (Windows) or `brew install gh` (macOS)\n- Strengths: Fast, scriptable, plain-text output (predictable for screen readers)\n\n#### Common commands\n\n```bash\ngh repo clone owner/repo       # Clone a repository\ngh issue list                  # List issues\ngh pr create                   # Create a PR interactively\ngh pr list                     # List your PRs\ngh pr view 14                  # Read PR #14\n```\n\nSee [Culture & Etiquette](08-open-source-culture.md) for more `gh` examples.\n\n### Git CLI (Terminal)\n\n- **The standard Git command-line interface**\n- Included with VS Code (integrated terminal: `Ctrl+Backtick`)\n\n#### Common commands\n\n```bash\ngit status                     # Show modified files\ngit add .                      # Stage all changes\ngit commit -m \"message\"        # Commit with message\ngit push                       # Push to GitHub\ngit pull                       # Pull from GitHub\ngit log                        # View commit history\n```\n\n**Screen reader tip:** Terminal output is plain text - more predictable than GUI elements for some operations.\n\n## VS Code Keyboard Shortcuts - Git Operations Quick Reference\n\n| Action | Shortcut |\n| --------  | ----------  |\n| Open Source Control | `Ctrl+Shift+G` |\n| Stage file | `Ctrl+Enter` (on file in Changes) |\n| Unstage file | `Ctrl+Enter` (on file in Staged Changes) |\n| Commit | `Ctrl+Enter` (in message input) |\n| View file diff | `Enter` (on file in Source Control) |\n| Next diff hunk | `F7` |\n| Previous diff hunk | `Shift+F7` |\n| Open Accessible Diff Viewer | `Alt+F2` (in diff view) |\n| Accessible Help | `Alt+H` (in any panel) |\n| Open Timeline view | `Ctrl+Shift+E` → navigate to Timeline section |\n| Integrated terminal | `Ctrl+Backtick` |\n| Delete file from repo (git rm) | `Ctrl+Shift+P` → \"Git: Delete\" |\n\n## Try It: Clone, Branch, Commit\n\n**Time:** 5 minutes | **What you need:** VS Code with Git configured\n\nDo the complete Git workflow once, start to finish:\n\n1. **Clone** - Press `Ctrl+Shift+P`, type `Git: Clone`, press `Enter`. Paste `https://github.com/Community-Access/vscode-sci-fi-themes.git` and choose a folder. VS Code opens the repo.\n2. **Create a branch** - Click the branch name in the status bar (bottom left) or press `Ctrl+Shift+P` → `Git: Create Branch`. Name it `chapter11/your-name`.\n3. **Make a change** - Open a theme file in the `themes/` folder (for example, `star-trek-settings.json`). Add a new thinking phrase to the array.\n4. **Stage** - Press `Ctrl+Shift+G` to open Source Control. Navigate to your changed file and press `Enter` to stage it (or use the `+` button).\n5. **Commit** - Tab to the message input, type `feat: add new thinking phrase`, press `Ctrl+Enter`.\n6. **Push** - Press `Ctrl+Shift+P` → `Git: Push`.\n\n**You're done.** You just completed the full Git cycle: clone → branch → edit → stage → commit → push.\n\n> **What success feels like:** Your change is on GitHub. You can verify by visiting the repository and switching to your branch. Every future contribution follows this same six-step pattern. And your Copilot Chat now has a custom sci-fi loading phrase you wrote.\n\n---\n\n*Next: [Chapter 15: Code Review](15-code-review.md)*  \n*Back: [Chapter 13: How Git Works](13-how-git-works.md)*  \n*Related appendices: [Appendix E: Advanced Git](appendix-e-advanced-git.md) | [Appendix D: Git Authentication](appendix-d-git-authentication.md)*\n\n## Authoritative Sources\n\nUse these official references when you need the current source of truth for facts in this chapter.\n\n- [GitHub Docs, home](https://docs.github.com/en)\n- [GitHub Changelog](https://github.blog/changelog/)\n- [About Git](https://docs.github.com/en/get-started/using-git/about-git)\n- [GitHub flow](https://docs.github.com/en/get-started/using-github/github-flow)\n- [About pull requests](https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/about-pull-requests)\n- [About issues](https://docs.github.com/en/issues/tracking-your-work-with-issues/about-issues)\n- [Contributing to a project](https://docs.github.com/en/get-started/exploring-projects-on-github/contributing-to-a-project)\n\n### Section-Level Source Map\n\nUse this map to verify facts for each major section in this file.\n\n- **Managing Repositories, Branches, and Changes Accessibly:** [GitHub Docs, home](https://docs.github.com/en), [GitHub Changelog](https://github.blog/changelog/), [About Git](https://docs.github.com/en/get-started/using-git/about-git), [GitHub flow](https://docs.github.com/en/get-started/using-github/github-flow), [About pull requests](https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/about-pull-requests)\n- **Workshop Recommendation (Chapter 14 / Challenge 10):** [GitHub Docs, home](https://docs.github.com/en), [GitHub Changelog](https://github.blog/changelog/), [About Git](https://docs.github.com/en/get-started/using-git/about-git), [GitHub flow](https://docs.github.com/en/get-started/using-github/github-flow), [About pull requests](https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/about-pull-requests)\n- **1. Cloning a Repository in VS Code:** [GitHub Docs, home](https://docs.github.com/en), [GitHub Changelog](https://github.blog/changelog/), [About Git](https://docs.github.com/en/get-started/using-git/about-git), [GitHub flow](https://docs.github.com/en/get-started/using-github/github-flow), [About pull requests](https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/about-pull-requests)\n- **2. The Source Control Panel - Complete Walkthrough:** [GitHub Docs, home](https://docs.github.com/en), [GitHub Changelog](https://github.blog/changelog/), [About Git](https://docs.github.com/en/get-started/using-git/about-git), [GitHub flow](https://docs.github.com/en/get-started/using-github/github-flow), [About pull requests](https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/about-pull-requests)\n- **3. Branch Management:** [GitHub Docs, home](https://docs.github.com/en), [GitHub Changelog](https://github.blog/changelog/), [About Git](https://docs.github.com/en/get-started/using-git/about-git), [GitHub flow](https://docs.github.com/en/get-started/using-github/github-flow), [About pull requests](https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/about-pull-requests)\n- **4. Staging Changes - Files, Lines, and Chunks:** [GitHub Docs, home](https://docs.github.com/en), [GitHub Changelog](https://github.blog/changelog/), [About Git](https://docs.github.com/en/get-started/using-git/about-git), [GitHub flow](https://docs.github.com/en/get-started/using-github/github-flow), [About pull requests](https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/about-pull-requests)\n- **5. Committing with Screen Readers:** [GitHub Docs, home](https://docs.github.com/en), [GitHub Changelog](https://github.blog/changelog/), [About Git](https://docs.github.com/en/get-started/using-git/about-git), [GitHub flow](https://docs.github.com/en/get-started/using-github/github-flow), [About pull requests](https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/about-pull-requests)\n- **6. Push and Pull Operations:** [GitHub Docs, home](https://docs.github.com/en), [GitHub Changelog](https://github.blog/changelog/), [About Git](https://docs.github.com/en/get-started/using-git/about-git), [GitHub flow](https://docs.github.com/en/get-started/using-github/github-flow), [About pull requests](https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/about-pull-requests)\n- **What to do if push fails:** [GitHub Docs, home](https://docs.github.com/en), [GitHub Changelog](https://github.blog/changelog/), [About Git](https://docs.github.com/en/get-started/using-git/about-git), [GitHub flow](https://docs.github.com/en/get-started/using-github/github-flow), [About pull requests](https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/about-pull-requests)\n- **Syncing Your Fork with the Upstream Repository:** [GitHub Docs, home](https://docs.github.com/en), [GitHub Changelog](https://github.blog/changelog/), [About Git](https://docs.github.com/en/get-started/using-git/about-git), [GitHub flow](https://docs.github.com/en/get-started/using-github/github-flow), [About pull requests](https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/about-pull-requests)\n- **Via VS Code Command Palette:** [GitHub Docs, home](https://docs.github.com/en), [GitHub Changelog](https://github.blog/changelog/), [About Git](https://docs.github.com/en/get-started/using-git/about-git), [GitHub flow](https://docs.github.com/en/get-started/using-github/github-flow), [About pull requests](https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/about-pull-requests)\n- **7. Discarding Changes:** [GitHub Docs, home](https://docs.github.com/en), [GitHub Changelog](https://github.blog/changelog/), [About Git](https://docs.github.com/en/get-started/using-git/about-git), [GitHub flow](https://docs.github.com/en/get-started/using-github/github-flow), [About pull requests](https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/about-pull-requests)\n- **8. Timeline View - File History and Blame:** [GitHub Docs, home](https://docs.github.com/en), [GitHub Changelog](https://github.blog/changelog/), [About Git](https://docs.github.com/en/get-started/using-git/about-git), [GitHub flow](https://docs.github.com/en/get-started/using-github/github-flow), [About pull requests](https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/about-pull-requests)\n- **9. Resolving Merge Conflicts in VS Code:** [GitHub Docs, home](https://docs.github.com/en), [GitHub Changelog](https://github.blog/changelog/), [About Git](https://docs.github.com/en/get-started/using-git/about-git), [GitHub flow](https://docs.github.com/en/get-started/using-github/github-flow), [About pull requests](https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/about-pull-requests)\n- **Timeline View - File History:** [GitHub Docs, home](https://docs.github.com/en), [GitHub Changelog](https://github.blog/changelog/), [About Git](https://docs.github.com/en/get-started/using-git/about-git), [GitHub flow](https://docs.github.com/en/get-started/using-github/github-flow), [About pull requests](https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/about-pull-requests)\n- **Timeline View - Git History and Blame:** [GitHub Docs, home](https://docs.github.com/en), [GitHub Changelog](https://github.blog/changelog/), [About Git](https://docs.github.com/en/get-started/using-git/about-git), [GitHub flow](https://docs.github.com/en/get-started/using-github/github-flow), [About pull requests](https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/about-pull-requests)\n"
+    }
+  ],
+  "companions": {
+    "pairedChallenges": [
+      {
+        "id": "10",
+        "slug": "cc-10-go-local",
+        "title": "Go Local",
+        "focus": "Cloning, local branches, commits, pushing, and understanding local versus remote.",
+        "day": "Day 2 local workflow"
+      },
+      {
+        "id": "11",
+        "slug": "cc-11-day-2-pull-request",
+        "title": "Open a Day 2 PR",
+        "focus": "Opening a pull request from a locally pushed branch and reading it in VS Code.",
+        "day": "Day 2 local workflow"
+      }
+    ],
+    "pairedChapters": [],
+    "classroomReview": "",
+    "assignments": []
+  },
+  "voiceRules": {
+    "bannedPhrases": [
+      "has three jobs",
+      "name the idea",
+      "give the learner a move",
+      "show what counts as evidence",
+      "Section-Level Source Map",
+      "GitHub Docs, home, GitHub Changelog",
+      "Think of this as",
+      "The next useful detail is concrete",
+      "The point is not speed; the point is never losing your place",
+      "That is the difference between guessing and knowing",
+      "This is the move inside",
+      "Anchor this part on",
+      "For someone navigating by keyboard or screen reader",
+      "The teaching point here is not",
+      "The durable skill is not memorizing one screen",
+      "It is knowing how to find your footing when the screen changes",
+      "Keep it that plain",
+      "That is the rhythm: orient, act, verify, continue",
+      "Each step should leave a trace you can name",
+      "That small check between steps is what makes the workflow reliable",
+      "This part earns its place because",
+      "That matters in practice:"
+    ],
+    "staleFacts": [
+      "Fork the accessibility-agents repository",
+      "80 AI-powered agents",
+      "eighty AI-powered agents",
+      "Build Your Agent (Capstone)",
+      "Build Your Own Agent",
+      "if you finish early",
+      "cross-fork PR"
+    ],
+    "currentFacts": [
+      "The Accessibility Agents collection grows over time. Refer to it as a living catalog rather than asserting a fixed count of agents.",
+      "Challenge 15 (Discover Accessibility Agents) is browse-first. Learners are not required to fork the accessibility-agents repository to complete it.",
+      "Completing Challenge 15 unlocks Challenge 16 (Capstone Project) plus Bonus Challenges A through E. The bonus challenges are a structured unlock path, not \"things to do if you finish early\".",
+      "Challenge 16 is titled \"Capstone Project\". It accepts contributions to Accessibility Agents, GLOW, or any other meaningful repository. Review-ready drafts and contribution plans are valid evidence of completion.",
+      "The Learning Room repository is where Day 1 contributions happen (issue, branch, commit, pull request, merge). It is provisioned per learner.",
+      "Hosts are Alex (warm expert) and Jamie (curious co-host who asks the questions learners hesitate to ask). They are colleagues, not teacher and student."
+    ],
+    "voiceExemplarPath": "C:\\code\\git-going-with-github\\podcasts\\scripts\\challenges\\cc-14-design-an-issue-template.txt",
+    "voiceExemplar": "[ALEX]\nWelcome back. Today we're working with one of those GitHub features that quietly makes open source collaboration much easier: issue templates.\n\n[JAMIE]\nAnd this is a great one for people who have ever opened a blank issue form and thought, what exactly am I supposed to put here?\n\n[ALEX]\nExactly. An issue template turns that blank box into a guided experience. Instead of guessing what maintainers need, contributors get prompts, structure, and clear required fields. That reduces back-and-forth, improves quality, and helps teams act on issues faster.\n\n[JAMIE]\nSo this is not just about formatting. It's about making contributions clearer and more usable.\n\n[ALEX]\nYes, and especially in accessibility work. If someone is reporting an accessibility barrier, a vague report can be hard to reproduce. A thoughtful template can ask where the problem occurred, what assistive technology was involved, what the expected behavior was, and how severe the barrier is.\n\n[PAUSE]\n\n[JAMIE]\nBefore we get into the design challenge, what should learners already have in place?\n\n[ALEX]\nA few practical things. First, you should already know how to work with GitHub issues at a basic level. Second, you need a repository where you can create or edit files, usually your fork or your own repo. Third, it really helps to use an editor with YAML syntax highlighting, such as VS Code.\n\n[JAMIE]\nAnd some things are recommended but not strictly required, right?\n\n[ALEX]\nRight. Familiarity with GitHub Copilot can help if you want to generate variations, but it's optional. Basic terminal comfort is useful, though you can also use the GitHub web editor or github.dev. And if you already filled out the workshop registration template earlier in this course, that template becomes a learning example now.\n\n[JAMIE]\nI like that. You've already used a professional issue template, so now you reverse-engineer it.\n\n[ALEX]\nExactly. Also, there's an administrative note here: this chapter is meant to prepare you for a later workflow using a template-building agent. The advice is to complete the manual template chapter first, then use the automation later.\n\n[JAMIE]\nAnd time-wise?\n\n[ALEX]\nPlan roughly two to two and a half hours if you do the exercises and some YAML troubleshooting.\n\n[PAUSE]\n\n[ALEX]\nThe learning pattern for this challenge is analyze, remix, create, and test.\n\n[JAMIE]\nThat feels approachable. First understand an existing template, then adapt one, then optionally build another version from scratch, then verify it works.\n\n[ALEX]\nThat's the idea. The workshop recommendation frames Challenge 14 as design-focused rather than automation-focused. You're producing evidence of understanding, often as an issue comment or a pull request, rather than trying to satisfy a complicated code runtime.\n\n[JAMIE]\nThough there is still one small autograded requirement in the challenge template itself.\n\n[ALEX]\nYes. For the assigned challenge issue, the autograder checks that a YAML file exists in the repository\n\n[... exemplar continues; match this tone throughout ...]"
+  }
+}

@@ -1,55 +1,23 @@
 [
   {
     "speaker": "ALEX",
-    "text": "Welcome back. Today we're talking about GitHub Actions and workflows, which sounds technical, but for most contributors the practical question is much simpler: when GitHub runs automated checks on your pull request, what are those checks doing, what do the results mean, and what should you do next?"
+    "text": "Welcome back. Today we're talking about GitHub Actions, which is GitHub's built-in automation system for repositories."
   },
   {
     "speaker": "JAMIE",
-    "text": "And that really matters in open source, because a person can make a perfectly good contribution and still feel stuck when a red X appears."
+    "text": "This is the thing that suddenly starts running when you open a pull request, right? Tests, checks, little status icons, sometimes a red X that makes everyone nervous."
   },
   {
     "speaker": "ALEX",
-    "text": "Exactly. Automation is everywhere in real repositories. Tests run, linters run, docs builds run, accessibility scans run, and sometimes deployment previews run too. You do not need to become a workflow author to contribute well. But you do need to become comfortable reading the signals."
+    "text": "Exactly. Actions are event-driven automation. Something happens in the repository, like a commit being pushed or a pull request being opened, and GitHub runs a workflow that the maintainers defined."
   },
   {
     "speaker": "JAMIE",
-    "text": "Before we get into the mechanics, I want to call out a few practical notes. This lesson has an audio companion role in the course, and it's also connected to earlier material on issue templates and related material on accessibility agents. And if you want the official reference for the platform itself, GitHub's documentation on understanding Actions is the authority."
+    "text": "So as a contributor, I may not be writing the automation, but I still need to understand what it is telling me."
   },
   {
     "speaker": "ALEX",
-    "text": "Well said. Also, if you're a blind or low-vision learner, this topic has a lot of interface reading in it, so we'll keep surfacing navigation strategies, not just definitions."
-  },
-  {
-    "speaker": "PAUSE",
-    "text": ""
-  },
-  {
-    "speaker": "ALEX",
-    "text": "Let's start with the core idea. GitHub Actions is GitHub's built-in automation system. A repository can define automated processes that run when certain events happen. For example, someone pushes commits, opens or updates a pull request, submits a review, posts a comment, or publishes a release."
-  },
-  {
-    "speaker": "JAMIE",
-    "text": "So when people say, the checks are running, that's usually GitHub Actions behind the scenes?"
-  },
-  {
-    "speaker": "ALEX",
-    "text": "Often yes. Think of it as a configurable robot assistant for a repository. Maintainers tell that assistant what events to watch for and what jobs to run in response. Those jobs might test code, check formatting, scan for accessibility problems, check spelling, build documentation, or publish a preview version of a site."
-  },
-  {
-    "speaker": "JAMIE",
-    "text": "And the key reassurance here is that contributors usually do not need to write the automation."
-  },
-  {
-    "speaker": "ALEX",
-    "text": "Right. Most contributors are readers of workflow results, not authors of workflow files. Your everyday skill is understanding what ran, whether it passed, and what to fix if it did not."
-  },
-  {
-    "speaker": "JAMIE",
-    "text": "Can we make that concrete for different learners?"
-  },
-  {
-    "speaker": "ALEX",
-    "text": "Yes. If you're using a screen reader, workflow files live in a folder named dot github, inside a subfolder named workflows. On GitHub, the T shortcut for go to file can help you search for files ending in dot yml there. The Actions tab sits in the repository navigation landmark, so in NVDA or JAWS you can jump by landmarks with D to find it quickly. And again, you do not need to write YAML just to contribute. If you're a low-vision learner, it helps to know that the Actions tab uses a play-button style icon in the top navigation. Zooming in can make the label easier to catch. Workflow files use indentation-sensitive syntax, so in VS Code, larger font size and visible whitespace can make the structure much easier to read. On pull requests, the check results are paired with small colored icons, so zoom to a comfortable level and read the text beside the icons rather than relying on color alone. And for sighted learners, the Actions tab is in the top repository navigation, and the quickest way to understand a workflow file is usually to open one in the Code tab and look for its trigger section and its job steps."
+    "text": "Yes. Most contributors only need to read the results, follow the links when something fails, and make a focused fix. The written appendix is also a reference, so you can jump to the part you need later instead of memorizing every possible workflow feature today."
   },
   {
     "speaker": "PAUSE",
@@ -57,19 +25,35 @@
   },
   {
     "speaker": "JAMIE",
-    "text": "Let's build the vocabulary, because this topic gets confusing fast if all the words blur together."
+    "text": "Let's slow down on the vocabulary, because Actions has a lot of nested words. Workflow, job, step, action, runner... they all sound similar at first."
   },
   {
     "speaker": "ALEX",
-    "text": "Good idea. A workflow is the complete automated process described in one YAML file. A repository can have many workflows. A job is one major unit inside a workflow. Jobs usually run on their own machine environment. A step is one task inside a job, like running a shell command or calling a reusable action. An action is a reusable unit of automation, almost like a plugin. Many public actions are shared through GitHub Marketplace. A runner is the machine that executes the job. Often it's a GitHub-hosted virtual server. A trigger, or event, is what starts the workflow. Push, pull request, schedule, and manual launch are common examples. A status check is the pass or fail result that appears on a pull request. An artifact is a file produced by a workflow, like a report, build output, or downloadable package. A secret is an encrypted value stored in repository settings so workflows can use sensitive data without exposing it directly. And YAML is the format used to write workflow files. Indentation matters a lot."
+    "text": "A workflow is the full automated process, and it is stored in a YAML file. YAML is a plain text format where indentation matters, so spaces at the start of a line change what belongs under what."
   },
   {
     "speaker": "JAMIE",
-    "text": "There are also two little YAML keys that people see constantly: on and runs-on."
+    "text": "And a job is inside the workflow?"
   },
   {
     "speaker": "ALEX",
-    "text": "Exactly. The key called on defines the trigger. The key called runs-on tells GitHub what operating system or runner environment to use, like ubuntu-latest, windows-latest, or macos-latest."
+    "text": "Right. A job is a group of steps that run together, usually on one machine. A step might run a command, like npm test, or use a reusable action, like actions/checkout, which downloads the repository code into the runner."
+  },
+  {
+    "speaker": "JAMIE",
+    "text": "Runner is the machine doing the work?"
+  },
+  {
+    "speaker": "ALEX",
+    "text": "Yes. GitHub-hosted runners are virtual machines such as ubuntu-latest, windows-latest, or macos-latest. The workflow says which runner to use with the key runs-on."
+  },
+  {
+    "speaker": "JAMIE",
+    "text": "Where do I find these workflow files if I'm browsing a repository?"
+  },
+  {
+    "speaker": "ALEX",
+    "text": "They live in a required folder path:.github/workflows. The folder name starts with a dot, so a screen reader may announce it as \"dot github.\" On GitHub.com, the file browser shows it, and you can press T to open Go to file and search for workflow YAML files, usually ending in.yml."
   },
   {
     "speaker": "PAUSE",
@@ -77,27 +61,35 @@
   },
   {
     "speaker": "JAMIE",
-    "text": "Now where do these files actually live?"
+    "text": "What would I actually hear or read inside a simple workflow file?"
   },
   {
     "speaker": "ALEX",
-    "text": "In a very specific location: a folder named .github, and inside that, a folder named workflows. So the full path is .github slash workflows slash some-file-name dot yml."
+    "text": "A common file might be called.github/workflows/ci.yml. Near the top, name: CI gives the workflow its display name. Then on: defines the events that start it, jobs: lists the work to do, and steps: lists the individual commands or reusable actions."
   },
   {
     "speaker": "JAMIE",
-    "text": "And that location is not optional."
+    "text": "So if I hear on colon, then pull_request under it, that's saying this workflow runs when a pull request changes."
   },
   {
     "speaker": "ALEX",
-    "text": "Correct. GitHub expects workflow files there. Example names might include ci dot yml for tests, lint dot yml for style checks, a11y-scan dot yml for accessibility scanning, or deploy dot yml for deployment after merge."
+    "text": "Exactly. Other common triggers are push, schedule, workflow_dispatch, release, issue_comment, pull_request_review, and merge_group. Schedule means a timer, workflow_dispatch means someone can start it manually from the Actions tab, and pull_request is the one contributors usually notice first."
   },
   {
     "speaker": "JAMIE",
-    "text": "That dot at the start of dot github matters too."
+    "text": "Because that is the one that runs checks on my PR."
   },
   {
     "speaker": "ALEX",
-    "text": "It does. It means the folder is hidden by convention. On GitHub.com, you can still navigate to it in the file browser, or use the T shortcut to search for files. In VS Code, it appears in the Explorer, though some setups may require hidden files to be shown. For screen reader users, it's useful to hear the folder name as dot github, then workflows inside it. And when you hear filenames ending in dot yml, those are workflow definitions written in YAML."
+    "text": "Yes. On the pull request Conversation tab, near the merge area, GitHub shows status checks. A yellow or orange spinner means the check is still running, a green checkmark means it passed, a red X means something failed, and a gray slashed circle usually means the check was skipped by design."
+  },
+  {
+    "speaker": "JAMIE",
+    "text": "And required checks are the ones that can block merging."
+  },
+  {
+    "speaker": "ALEX",
+    "text": "Right. Non-required checks may still be useful, but required checks must pass before the pull request can be merged, if the repository has that rule enabled. Some projects also put status badges in the README so visitors can see whether the main branch is currently passing its workflow."
   },
   {
     "speaker": "PAUSE",
@@ -105,43 +97,35 @@
   },
   {
     "speaker": "JAMIE",
-    "text": "Can we walk through what a workflow file looks like without turning this into a YAML programming lesson?"
+    "text": "If I'm using NVDA or JAWS, how do I get to the checks without wandering the whole page?"
   },
   {
     "speaker": "ALEX",
-    "text": "Absolutely. Imagine a file named ci dot yml. At the top, it might say name: CI. That's the display name you'll often see in the Actions tab. Then it has on, the trigger section. Maybe it runs on push to the main branch and also on pull_request targeting main. Then it has jobs. Inside jobs, perhaps there is one job called test. That job says runs-on: ubuntu-latest, meaning it uses a Linux runner. Then under steps, you might see a sequence like: check out the code, set up Node.js, install dependencies, and run tests."
+    "text": "Open the pull request Conversation tab, then move by headings with H, or by heading level if that is easier, until you find the checks area. Each result is usually exposed as a link or button with a name and status, and you can press Enter on a failed one to open more detail."
   },
   {
     "speaker": "JAMIE",
-    "text": "So the logic is basically: when this event happens, run this job, and inside the job run these steps."
+    "text": "And with VoiceOver on macOS?"
   },
   {
     "speaker": "ALEX",
-    "text": "Exactly. And reading a workflow file is usually easier if you ask three questions. First, what triggers it? Second, what jobs does it define? Third, what steps run inside those jobs?"
+    "text": "Use VO+U to open the Rotor, choose Headings, move to the checks area, then read through the results with VO+Arrow. When you find the failed check link, activate it with VO+Space."
   },
   {
     "speaker": "JAMIE",
-    "text": "And if the step that runs tests returns an error, the job fails, and that failure shows up on the pull request."
+    "text": "What if I want to look at the full workflow run instead of just the pull request summary?"
   },
   {
     "speaker": "ALEX",
-    "text": "That's the practical consequence. You do not need to memorize the syntax. You need to recognize the structure well enough to interpret what the automation is trying to do."
-  },
-  {
-    "speaker": "PAUSE",
-    "text": ""
-  },
-  {
-    "speaker": "ALEX",
-    "text": "Now let's talk triggers, because they explain why something ran when it did. Common triggers include push, which means any commit pushed to a branch; pull_request, which covers a pull request being opened, updated, synchronized, or reopened; pull_request_review, when someone submits a review; issue_comment, when someone comments on an issue or PR; schedule, which is a recurring timer; workflow_dispatch, which allows a manual run from the Actions tab; release, when a release is published; and merge_group, which is used with merge queues."
+    "text": "Use the repository navigation and open the Actions tab. It is in the repo's top navigation, often near Projects and Security, with a play-button style icon. In the Actions tab, you can choose a workflow, then choose a run, then expand a job and read the step logs."
   },
   {
     "speaker": "JAMIE",
-    "text": "If I'm contributing, the most important one is pull_request."
+    "text": "Logs are where the real clue usually lives."
   },
   {
     "speaker": "ALEX",
-    "text": "Yes. That's usually what causes checks to appear on your PR. Sometimes push also matters, especially if the repository runs checks on every branch update, but pull_request is the one most contributors experience directly."
+    "text": "Yes. You are looking for the first failing step, the error message, and any file names or line numbers. Some workflows also upload artifacts, which are files produced by the run, like test reports, coverage reports, screenshots, build output, or accessibility scan results."
   },
   {
     "speaker": "PAUSE",
@@ -149,43 +133,27 @@
   },
   {
     "speaker": "JAMIE",
-    "text": "Okay, now the part learners really care about: the status checks on a pull request."
+    "text": "What kinds of workflows should a new contributor expect to see in real projects?"
   },
   {
     "speaker": "ALEX",
-    "text": "When you open a PR in a repository that uses GitHub Actions, you'll usually find a checks or status checks section on the Conversation tab, often near the merge area. A spinning yellow or orange indicator means checks are still running. Wait. A green checkmark means the relevant checks passed. A red X means one or more checks failed, and you should read the failure before trying to merge. A gray slashed circle usually means a check was skipped, often intentionally. And sometimes you'll encounter a warning state that is not a hard blocker. It still deserves review, but it may not prevent merging."
+    "text": "Continuous integration, or CI, is the big one. It usually means running tests every time someone opens or updates a pull request, so maintainers can see whether the change broke existing behavior."
   },
   {
     "speaker": "JAMIE",
-    "text": "That distinction matters, because learners often see anything that's not green and assume disaster."
+    "text": "Then there are style checks, right? The ones that complain about formatting."
   },
   {
     "speaker": "ALEX",
-    "text": "Right. Not every non-green state means you broke the project."
+    "text": "Yes. Linting checks code style and common mistakes. Documentation projects may run spelling checks, link checks, Markdown checks, or build the docs site to make sure the pages still compile."
   },
   {
     "speaker": "JAMIE",
-    "text": "What about navigating this with a screen reader?"
+    "text": "Accessibility and security checks can show up too."
   },
   {
     "speaker": "ALEX",
-    "text": "For NVDA or JAWS in browse mode, open the pull request Conversation tab, jump by headings with H or by heading level if that works well in your setup, find the checks section, then move through the individual check items. Each result is typically announced as a link or button with its name and status. Activate a failed check with Enter to reveal or open more detail. For VoiceOver on macOS in Safari, open the Rotor with VO+U, move to Headings, locate the checks section, then read through the listed results with VO navigation. Activate a selected check with VO+Space."
-  },
-  {
-    "speaker": "JAMIE",
-    "text": "And then there's the idea of required versus non-required checks."
-  },
-  {
-    "speaker": "ALEX",
-    "text": "Yes. Required checks must pass before a PR can be merged. Non-required checks are informative. They may still point to a real problem, but they are not configured as merge blockers."
-  },
-  {
-    "speaker": "JAMIE",
-    "text": "So if I see a failed non-required check, I shouldn't ignore it automatically, but I also shouldn't assume the merge button is permanently blocked."
-  },
-  {
-    "speaker": "ALEX",
-    "text": "Exactly. The right question is, is this required, and what is it telling me? A useful mental model here is: status checks are automated reviewers. They do not replace human review, but they often catch predictable problems quickly."
+    "text": "They can. Accessibility workflows might scan pages for detectable issues, while security workflows might check dependencies or scan for known vulnerabilities. Deployment workflows are another common pattern: a project may deploy to production when code is pushed to main, or create a preview build for each pull request."
   },
   {
     "speaker": "PAUSE",
@@ -193,227 +161,35 @@
   },
   {
     "speaker": "JAMIE",
-    "text": "Let's move to the Actions tab itself, because sometimes the pull request only shows the summary and you need to inspect the run."
+    "text": "You mentioned reusable actions earlier. Where do maintainers find those?"
   },
   {
     "speaker": "ALEX",
-    "text": "That's right. The Actions tab is where you can browse workflow runs across the repository. On GitHub, it's in the repository's main navigation. For screen reader users, a reliable way to reach it is to jump through landmarks or tab through the repository navigation until you hear Actions. Once there, you'll find a list of workflow runs, often with the workflow name, branch, triggering event, commit message, time, and status."
+    "text": "Many reusable actions are shared through the GitHub Marketplace under the Actions category. A maintainer can search for an action that sets up Node, checks out code, uploads an artifact, deploys a site, or runs a specific tool."
   },
   {
     "speaker": "JAMIE",
-    "text": "How would someone navigate that list efficiently in NVDA or JAWS?"
+    "text": "So an action is like a reusable automation component, not necessarily the whole workflow."
   },
   {
     "speaker": "ALEX",
-    "text": "In browse mode, use heading navigation and links navigation to move among workflow names and run entries. The page is often structured with headings, links, and status text. Open the run you want, then explore the jobs and steps. If the page feels busy, switching between browse mode reading and focused interaction can help."
+    "text": "Exactly. The workflow is the full recipe. An action is one reusable ingredient that a step can call with uses: and often configure with with: options."
   },
   {
     "speaker": "JAMIE",
-    "text": "And in VoiceOver on macOS?"
+    "text": "What about matrix builds? I see that phrase in a lot of CI files."
   },
   {
     "speaker": "ALEX",
-    "text": "Use the Rotor to jump among headings, links, and landmarks. Once inside a run page, VO navigation can move through job names and step entries. The key is to identify the status summary first, then the failing job, then the failing step."
+    "text": "A matrix build runs the same job across several combinations. For example, a project might test Node.js 18, 20, and 22, or test on ubuntu-latest, windows-latest, and macos-latest. That helps maintainers catch a problem that only appears in one version or one operating system."
   },
   {
     "speaker": "JAMIE",
-    "text": "What details should a learner expect inside one run?"
+    "text": "For low vision learners, this is where indentation and nesting can get hard to track."
   },
   {
     "speaker": "ALEX",
-    "text": "Usually you'll find the overall result, then one or more jobs, and within each job a sequence of steps. Expanding a failed step reveals log output. That log is often the most important evidence: it tells you what command ran and what error it produced. Sometimes the run also includes artifacts, such as generated reports or preview outputs, which can be downloaded."
-  },
-  {
-    "speaker": "PAUSE",
-    "text": ""
-  },
-  {
-    "speaker": "JAMIE",
-    "text": "Now let's name the kinds of workflows learners are likely to encounter over and over."
-  },
-  {
-    "speaker": "ALEX",
-    "text": "First, continuous integration, or CI. This is the general category for automatically building and testing the project whenever code changes. Second, linting or code style checks. These look for formatting problems, style violations, or patterns the project considers incorrect. Third, spelling and documentation checks. These catch typos, broken docs builds, malformed markdown, or documentation rules. Fourth, accessibility scanning. These workflows try to detect common accessibility issues, often in web content. Fifth, security scanning. These look for known vulnerable dependencies, insecure patterns, or other security concerns. Sixth, deployment or preview builds. These create a temporary preview of a site or publish a new version after changes are merged."
-  },
-  {
-    "speaker": "JAMIE",
-    "text": "I like that list because it helps learners interpret a check name. If the workflow is called CI, it probably runs tests. If it's called lint, it's probably style. If it's called preview, it may be building something you can inspect."
-  },
-  {
-    "speaker": "ALEX",
-    "text": "Exactly. The workflow name is a clue about the kind of feedback you're getting."
-  },
-  {
-    "speaker": "PAUSE",
-    "text": ""
-  },
-  {
-    "speaker": "JAMIE",
-    "text": "Let's tackle the emotional side and the practical side together: what should you do when a check fails?"
-  },
-  {
-    "speaker": "ALEX",
-    "text": "Step one: don't panic. A failed check is information, not a judgment about your worth or your ability. Step two: navigate to the failed check. From the PR checks section or the Actions tab, open the failed run. Step three: find the failing step. Don't stop at the workflow name. You need the exact job and exact step that failed. Step four: read the error message carefully. Look for the command that ran, the file involved, the line number if one is given, and whether the issue is a test failure, formatting issue, missing dependency, syntax error, or something else. Step five: fix the issue locally or in the web editor, depending on the kind of change and the repository's workflow. Some problems are quick text edits. Others are best fixed in VS Code where you can run tools locally. Step six: commit and push the fix. That usually retriggers the relevant checks automatically. Step seven: if you're stuck, ask for help. Leave a comment on the PR or issue, explain what check failed, what you already tried, and what part you don't understand."
-  },
-  {
-    "speaker": "JAMIE",
-    "text": "Let's slow that down with a realistic example. Suppose the lint check fails."
-  },
-  {
-    "speaker": "ALEX",
-    "text": "Then the failing step might say something like run linter, and the log may point to a file with a formatting problem. Maybe a line is too long, indentation is off, or a style rule was violated. You fix the file, commit, push, and the lint workflow runs again."
-  },
-  {
-    "speaker": "JAMIE",
-    "text": "And if the CI test fails?"
-  },
-  {
-    "speaker": "ALEX",
-    "text": "The log may show a test name, expected versus actual output, or a missing setup step. In a beginner-friendly repository, this may still be something you can fix. In a more complex project, you may need maintainer guidance. The important skill is locating and naming the failure clearly."
-  },
-  {
-    "speaker": "JAMIE",
-    "text": "So a useful learning card here would be: failed check, open it; failing workflow is not enough, find the failing step; read the message; make a fix; push again; ask for help if needed."
-  },
-  {
-    "speaker": "ALEX",
-    "text": "Perfect summary."
-  },
-  {
-    "speaker": "PAUSE",
-    "text": ""
-  },
-  {
-    "speaker": "JAMIE",
-    "text": "Now security and permissions. This is the part where learners can accidentally click through prompts without understanding the risk."
-  },
-  {
-    "speaker": "ALEX",
-    "text": "Yes, and that is worth taking seriously. Some workflows need approval before they can run, especially in contexts involving pull requests from forks or contributors who do not yet have trusted status in the repository. The reason is security. Workflows can execute code, and maintainers need to protect secrets, infrastructure, and deployment systems."
-  },
-  {
-    "speaker": "JAMIE",
-    "text": "So if a workflow says it is waiting for approval, that is not a personal rejection."
-  },
-  {
-    "speaker": "ALEX",
-    "text": "Not at all. It's a guardrail."
-  },
-  {
-    "speaker": "JAMIE",
-    "text": "What should contributors never do?"
-  },
-  {
-    "speaker": "ALEX",
-    "text": "Never paste secrets, tokens, passwords, API keys, or private credentials into workflow files, issue comments, pull request comments, logs, or screenshots. Never approve or modify automation you do not understand just because you're trying to make a red message disappear. And never assume that because something is automated, it is automatically safe."
-  },
-  {
-    "speaker": "JAMIE",
-    "text": "What about Dependabot?"
-  },
-  {
-    "speaker": "ALEX",
-    "text": "Dependabot is GitHub's tool for automated dependency updates and some security-related pull requests. You may see PRs created by it, and repositories may have workflows that respond to those updates. The key contributor takeaway is that automated dependency PRs are normal, but they are still subject to checks, review, and security awareness."
-  },
-  {
-    "speaker": "PAUSE",
-    "text": ""
-  },
-  {
-    "speaker": "JAMIE",
-    "text": "Let's spend real time on accessibility-focused workflows, since this course cares about accessible contribution practices."
-  },
-  {
-    "speaker": "ALEX",
-    "text": "Absolutely. Some repositories run accessibility-specific workflows. GitHub has its own accessibility-related scanning action offerings, and many projects use other common tools in a11y workflows as well."
-  },
-  {
-    "speaker": "JAMIE",
-    "text": "What kinds of tools are we talking about?"
-  },
-  {
-    "speaker": "ALEX",
-    "text": "Often browser-based or static analysis tools that catch issues like missing alt text, insufficient form labels, color contrast concerns detectable from code, missing ARIA attributes in certain contexts, heading structure problems, or landmark-related issues. Commonly used tooling in the broader ecosystem includes automated accessibility checkers integrated into CI pipelines."
-  },
-  {
-    "speaker": "JAMIE",
-    "text": "But we should be careful not to oversell them."
-  },
-  {
-    "speaker": "ALEX",
-    "text": "Exactly. Automated tools catch some problems, not all problems. They are very good at repeatable rule-based checks. They are not good at judging whether alt text is meaningful, whether focus order makes sense in a complex interaction, whether instructions are understandable, or whether the overall user experience works well with assistive technology."
-  },
-  {
-    "speaker": "JAMIE",
-    "text": "So if an accessibility workflow passes, that does not prove the experience is fully accessible."
-  },
-  {
-    "speaker": "ALEX",
-    "text": "Correct. It means the automated checks did not detect certain known issues. That's useful, but incomplete."
-  },
-  {
-    "speaker": "JAMIE",
-    "text": "The source also mentions preparing the environment for GitHub-hosted agents."
-  },
-  {
-    "speaker": "ALEX",
-    "text": "Yes. In accessibility workflows, the runner often needs the right environment before scans can succeed. That may include installing dependencies, setting up a browser, building the site, launching a local server, or ensuring the app is reachable to the scanning tool. In other words, accessibility scanning in Actions usually depends on ordinary setup steps being correct first."
-  },
-  {
-    "speaker": "JAMIE",
-    "text": "So a failed a11y scan may actually mean the site never built or the test environment never started."
-  },
-  {
-    "speaker": "ALEX",
-    "text": "Exactly. Always read the failing step before assuming the accessibility findings themselves are the problem."
-  },
-  {
-    "speaker": "PAUSE",
-    "text": ""
-  },
-  {
-    "speaker": "JAMIE",
-    "text": "Let's make this hands-on. If a learner wants to explore a workflow in a repository, what should they do?"
-  },
-  {
-    "speaker": "ALEX",
-    "text": "Here's a good activity. Go to the repository's Code area and look for the .github slash workflows folder. Open a workflow file, perhaps ci dot yml or something similarly named. Then identify these pieces: the workflow name, the trigger or triggers under on, the jobs that are defined, the runner listed under runs-on, and the steps inside a job. Next, visit the Actions tab and locate a recent run of that workflow. Open it and answer a few questions for yourself: what event triggered this run, did it pass or fail, which job ran, and what steps were included? If there is a failed run available, try to find the exact failing step and read its log message."
-  },
-  {
-    "speaker": "JAMIE",
-    "text": "And if this is being used as a class or self-study discussion?"
-  },
-  {
-    "speaker": "ALEX",
-    "text": "Good discussion questions include: what is this workflow trying to protect or verify? Which trigger matters most for contributors? If it failed, would the likely fix be in code, documentation, configuration, or infrastructure? And how easy was it to navigate the run details with your current accessibility tools?"
-  },
-  {
-    "speaker": "JAMIE",
-    "text": "I really like that last one, because it treats accessibility as part of the workflow experience, not as an afterthought."
-  },
-  {
-    "speaker": "ALEX",
-    "text": "Exactly."
-  },
-  {
-    "speaker": "PAUSE",
-    "text": ""
-  },
-  {
-    "speaker": "JAMIE",
-    "text": "We should also be honest about what we're not covering."
-  },
-  {
-    "speaker": "ALEX",
-    "text": "Yes. We are not teaching full workflow authoring, advanced YAML design, matrix builds, custom composite actions, caching strategies, reusable workflows, self-hosted runners, deployment architecture, or deep GitHub Actions security engineering. Those are real topics, just beyond the scope of a contributor-focused introduction."
-  },
-  {
-    "speaker": "JAMIE",
-    "text": "So where should learners go next?"
-  },
-  {
-    "speaker": "ALEX",
-    "text": "Start with GitHub Docs for workflow syntax and understanding Actions. Check GitHub's changelog for evolving features. Review GitHub's security guidance for secure use and hardening of Actions. And if your goal is contribution rather than automation engineering, stay grounded in the basics we've covered today: know where workflows live, know what triggers them, know how to read checks, and know how to respond when something fails."
+    "text": "Absolutely. Increase the editor font size, turn on visible whitespace in VS Code, and use YAML syntax highlighting if it helps. In workflow files, a line in the wrong indentation level can change the meaning or break the file entirely."
   },
   {
     "speaker": "PAUSE",
@@ -421,26 +197,134 @@
   },
   {
     "speaker": "ALEX",
-    "text": "Let's wrap it up. GitHub Actions is the automation system many repositories use to run tests, checks, scans, and builds. Workflows live in .github slash workflows and are written in YAML. They are triggered by events like push or pull request. On your PR, their results appear as status checks."
+    "text": "Now, the moment everyone meets eventually: a check fails."
   },
   {
     "speaker": "JAMIE",
-    "text": "Your job as a contributor is usually not to write the automation. It's to interpret it."
+    "text": "I appreciate naming that, because the first red X can feel like you broke the whole project."
   },
   {
     "speaker": "ALEX",
-    "text": "Exactly. Learn the vocabulary: workflow, job, step, action, runner, trigger, status check, artifact, secret. Learn the common statuses: running, passed, failed, skipped, warning. Learn how to navigate the checks section and the Actions tab with your screen reader or visual setup. And when a check fails, don't panic. Open the run, find the failing step, read the error, fix what you can, push again, and ask for help when needed."
+    "text": "Usually you did not. Start by opening the failed check, then open the workflow run, then expand the failed job. Inside that job, find the step marked as failed and read the log around the error."
   },
   {
     "speaker": "JAMIE",
-    "text": "And for accessibility work especially, remember that automated a11y checks are useful but partial. They support human judgment; they do not replace it."
+    "text": "Should I read from the very top of the log?"
   },
   {
     "speaker": "ALEX",
-    "text": "Well said. The more comfortable you become reading automation, the more confident you'll feel contributing to real projects."
+    "text": "Not usually. Start near the failed step and look for the first real error message, not every warning. A useful error often mentions a command, a file path, a missing dependency, a test name, or a line number."
   },
   {
     "speaker": "JAMIE",
-    "text": "And the next time a red X appears, you'll know it's not the end of the story. It's the start of an investigation."
+    "text": "Then I fix the issue locally or in the web editor, commit, and push again?"
+  },
+  {
+    "speaker": "ALEX",
+    "text": "Yes. Pushing another commit to the same branch usually reruns the pull request checks. If you are stuck, leave a clear comment on the pull request that says which check failed, what error you found, and what you already tried."
+  },
+  {
+    "speaker": "JAMIE",
+    "text": "That gives maintainers something concrete to respond to."
+  },
+  {
+    "speaker": "PAUSE",
+    "text": ""
+  },
+  {
+    "speaker": "ALEX",
+    "text": "Security matters a lot in workflows because automation can access code, tokens, and deployment systems."
+  },
+  {
+    "speaker": "JAMIE",
+    "text": "Is that why GitHub sometimes asks maintainers to approve workflows from first-time contributors?"
+  },
+  {
+    "speaker": "ALEX",
+    "text": "Yes. Some repositories require approval before running workflows on contributions from new or external contributors, especially when the workflow could use secrets or write permissions. That pause is a safety measure, not a personal rejection."
+  },
+  {
+    "speaker": "JAMIE",
+    "text": "Let's define secrets, because that word is easy to misunderstand."
+  },
+  {
+    "speaker": "ALEX",
+    "text": "A secret is an encrypted value stored in repository or organization settings, usually for API keys, tokens, passwords, or deployment credentials. Workflows can read secrets without printing the actual value, if they are configured correctly."
+  },
+  {
+    "speaker": "JAMIE",
+    "text": "And environment variables?"
+  },
+  {
+    "speaker": "ALEX",
+    "text": "Environment variables are named values available to commands while the job runs. Some are harmless, like a version number or a build mode. Sensitive values should be stored as secrets, not typed directly into a YAML file, a log, an issue, or a pull request comment."
+  },
+  {
+    "speaker": "JAMIE",
+    "text": "Where does Dependabot fit into this?"
+  },
+  {
+    "speaker": "ALEX",
+    "text": "Dependabot can open pull requests that update dependencies or security alerts. Those PRs may trigger workflows too, and maintainers still review the checks before merging."
+  },
+  {
+    "speaker": "PAUSE",
+    "text": ""
+  },
+  {
+    "speaker": "ALEX",
+    "text": "Accessibility-focused workflows are helpful, but they are not magic."
+  },
+  {
+    "speaker": "JAMIE",
+    "text": "Meaning they can catch some barriers automatically, but not every barrier a person might experience."
+  },
+  {
+    "speaker": "ALEX",
+    "text": "Exactly. Tools such as GitHub's Accessibility Scanner Action, axe-based checks, pa11y, Lighthouse, or project-specific scripts can detect issues like missing labels, color contrast problems in some contexts, invalid HTML, and certain ARIA mistakes."
+  },
+  {
+    "speaker": "JAMIE",
+    "text": "But they cannot tell whether the whole experience makes sense with a screen reader."
+  },
+  {
+    "speaker": "ALEX",
+    "text": "Right. Automated scans do not replace keyboard testing, screen reader testing, magnification checks, plain language review, or feedback from disabled users. They are useful gates, but they are only part of accessibility practice."
+  },
+  {
+    "speaker": "JAMIE",
+    "text": "Some workflows need the app running before they can scan it, yes?"
+  },
+  {
+    "speaker": "ALEX",
+    "text": "Yes. A workflow may need to install dependencies, build the project, start a local server, wait for the page to become available, and then point the scanner at that URL. On GitHub-hosted runners, the environment is temporary, so the workflow has to prepare everything it needs each time."
+  },
+  {
+    "speaker": "PAUSE",
+    "text": ""
+  },
+  {
+    "speaker": "JAMIE",
+    "text": "What is a good hands-on activity for this appendix if I do not want to write a workflow from scratch?"
+  },
+  {
+    "speaker": "ALEX",
+    "text": "Pick a repository you are allowed to inspect and open.github/workflows. Choose one YAML file and identify its name, its on: triggers, the jobs it defines, the runner it uses, and one step that runs a command."
+  },
+  {
+    "speaker": "JAMIE",
+    "text": "Then I would open the Actions tab and compare the file to a real run."
+  },
+  {
+    "speaker": "ALEX",
+    "text": "Yes. Find a recent run, open a job, read several step names, and notice whether any artifacts were uploaded. If there is a pull request with checks, compare the PR status summary with the workflow run details."
+  },
+  {
+    "speaker": "JAMIE",
+    "text": "And the reflection questions are practical: What started the workflow? Which check would block a merge? Where would I click or activate if it failed? What would I tell a maintainer if I needed help?"
+  },
+  {
+    "speaker": "ALEX",
+    "text": "Exactly. GitHub Actions can look intimidating at first, but most contributor work comes down to reading the status, opening the failed run when needed, understanding the error, and making the next small fix."
   }
 ]

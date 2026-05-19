@@ -1,0 +1,448 @@
+﻿[ALEX]
+Welcome back to Git Going with GitHub. This is episode 53: GitHub CLI Reference. I am Alex, and today we are turning GitHub CLI Reference from a list of instructions into a working mental model that actually feels alive.
+
+[JAMIE]
+And I am Jamie. I will stop us whenever the instructions sound simple on paper but feel less magical at the keyboard with a screen reader.
+
+[PAUSE]
+
+[ALEX]
+Using the GitHub CLI for issues, pull requests, authentication, and automation-friendly workflows. That is the surface description. Underneath it, we are building judgment: where to focus, what to ignore, and how to verify the result.
+
+[JAMIE]
+So we are not using the audio as a shortcut around learning. We are using it to make the learning easier to enter and easier to remember.
+
+[ALEX]
+Yes. A good audio lesson gives someone enough context to try the work with confidence, even before they open the written material.
+
+[PAUSE]
+
+[JAMIE]
+Okay, set the room for us. What are we walking into?
+
+[ALEX]
+Your Terminal, Supercharged for GitHub: Who this is for: You want to manage GitHub -- issues, pull requests, repos, releases -- from your terminal without opening a browser. The next useful detail is concrete: The GitHub CLI (gh) gives you full access to GitHub from the command line, with clean plain-text output that works beautifully with screen readers.
+
+[ALEX]
+The next layer is this. Here is the learner-facing version. Or download the installer from cli.github.com. A good GitHub workflow is like a well-run meeting: everyone knows the topic, the next action, and who has the floor.
+
+[JAMIE]
+What is the safe way to learn from that example?
+
+[ALEX]
+Verify installation has three jobs: name the idea, give the learner a move, and show what counts as evidence.
+
+[ALEX]
+Treat examples as spoken recipes, not decorations. You may hear something like gh --version. Read the command, understand what it changes, then run it only when the repository state matches the lesson.
+
+[JAMIE]
+That feels much more doable when you say it as one move.
+
+[ALEX]
+Right. The magic is not speed. The magic is knowing what changed and why it matters.
+
+[PAUSE]
+
+[JAMIE]
+What should happen before anyone copies and runs it?
+
+[ALEX]
+Anchor this part on Authenticating. After signing in, return to the terminal. This is the part to say slowly: gh auth login is an interactive prompt -- navigate with Arrow keys, confirm with Enter.
+
+[ALEX]
+For a learner, the useful signals are concrete. Where do you use GitHub? â†’ GitHub.com (or Enterprise). Preferred protocol? â†’ HTTPS (or SSH). Authenticate with browser? â†’ Yes -- your browser opens for OAuth sign-in.
+
+[ALEX]
+Treat examples as spoken recipes, not decorations. You may hear something like gh auth login. Check your auth status at any time; gh auth status; Log out; gh auth logout; Refresh credentials / add new scopes; gh auth refresh. Read the command, understand what it changes, then run it only when the repository state matches the lesson.
+
+[JAMIE]
+What does someone need before they touch the keyboard?
+
+[ALEX]
+Learning Cards: Getting Started with gh has three jobs: name the idea, give the learner a move, and show what counts as evidence.
+
+[ALEX]
+The parts worth keeping in working memory are these. gh auth login uses plain-text arrow-key prompts -- every option is announced as you arrow through the list. After authentication, gh auth status confirms your login in a single readable line -- no browser needed. All gh output is plain text with no hidden elements, making it one of the most screen-reader-friendly GitHub interfaces. Increase your terminal font size before running gh commands -- all output scales with your terminal settings. Use a high-contrast terminal theme (light text on dark background, or vice versa) for comfortable reading of command output. gh output is plain text with no color-dependent meaning -- colors are supplementary labels, not the only indicator.
+
+[ALEX]
+The useful habit is simple: orient, act, verify, then continue. That pause between action and trust is part of the work.
+
+[JAMIE]
+How do you keep commands from becoming magic words?
+
+[ALEX]
+2. Repos -- Clone, Fork, Create, View has three jobs: name the idea, give the learner a move, and show what counts as evidence.
+
+[ALEX]
+Treat examples as spoken recipes, not decorations. You may hear something like Clone a repository (automatically sets up the remote); gh repo clone owner/repo-name; Fork a repo and clone your fork in one step; gh repo fork owner/repo-name --clone; Fork without cloning (creates the fork on GitHub only); gh repo fork owner/repo-name. Read the command, understand what it changes, then run it only when the repository state matches the lesson.
+
+[PAUSE]
+
+[JAMIE]
+What should they understand before typing anything?
+
+[ALEX]
+Creating issues has three jobs: name the idea, give the learner a move, and show what counts as evidence.
+
+[ALEX]
+Treat examples as spoken recipes, not decorations. You may hear something like Create an issue interactively (opens a prompt for title, body, labels, etc.); gh issue create; Create with all details inline; gh issue create \; --title "Screen reader can't navigate the settings menu" \; --body "When using NVDA with Firefox, the Settings. Read the command, understand what it changes, then run it only when the repository state matches the lesson.
+
+[ALEX]
+A solid issue habit is to read the title, the body, and the timeline before acting. You are listening for the requested action, the missing evidence, and the person who needs a response.
+
+[JAMIE]
+Let's pause on Listing and filtering issues. What should a learner take away from it?
+
+[ALEX]
+Listing and filtering issues has three jobs: name the idea, give the learner a move, and show what counts as evidence.
+
+[ALEX]
+Treat examples as spoken recipes, not decorations. You may hear something like List open issues (current repo); gh issue list; List issues with filters; gh issue list --label "accessibility"; gh issue list --label "good first issue"; gh issue list --assignee "@me"; gh issue list --state closed; gh issue list --limit 50; Search issues by. Read the command, understand what it changes, then run it only when the repository state matches the lesson.
+
+[JAMIE]
+Now it sounds like a workflow instead of a wall of instructions.
+
+[ALEX]
+That is where confidence comes from: not from never getting lost, but from knowing how to recover.
+
+[JAMIE]
+Let's pause on Viewing issues. What should a learner take away from it?
+
+[ALEX]
+The teaching point here is not the label; it is the move. gh issue view 42 outputs clean plain text -- title, metadata, and body all formatted without noise. That is the difference between guessing and knowing: Much faster than navigating a browser page with a screen reader.
+
+[ALEX]
+Treat examples as spoken recipes, not decorations. You may hear something like View an issue (renders Markdown as plain text in the terminal); gh issue view 42; Open the issue in your browser; gh issue view 42 --web; View comments on an issue; gh issue view 42 --comments. Read the command, understand what it changes, then run it only when the repository state matches the lesson.
+
+[PAUSE]
+
+[JAMIE]
+Let's pause on Commenting and updating. What should a learner take away from it?
+
+[ALEX]
+Commenting and updating has three jobs: name the idea, give the learner a move, and show what counts as evidence.
+
+[ALEX]
+Treat examples as spoken recipes, not decorations. You may hear something like Add a comment to an issue; gh issue comment 42 --body "I can reproduce this on Windows 11 with NVDA 2024.1."; Comment from a file; gh issue comment 42 --body-file./my-comment.md; Edit an issue (title, body, labels, assignees); gh issue edit 42 --title "Updated. Read the command, understand what it changes, then run it only when the repository state matches the lesson.
+
+[JAMIE]
+Let's pause on Pinning and locking. What should a learner take away from it?
+
+[ALEX]
+Pinning and locking has three jobs: name the idea, give the learner a move, and show what counts as evidence.
+
+[ALEX]
+Treat examples as spoken recipes, not decorations. You may hear something like Pin an issue (shows at top of the Issues tab); gh issue pin 42; Lock an issue (prevents new comments); gh issue lock 42 --reason "resolved". Read the command, understand what it changes, then run it only when the repository state matches the lesson.
+
+[JAMIE]
+Let's pause on Creating a PR. What should a learner take away from it?
+
+[ALEX]
+Creating a PR has three jobs: name the idea, give the learner a move, and show what counts as evidence.
+
+[ALEX]
+Treat examples as spoken recipes, not decorations. You may hear something like Create a PR interactively (prompts for title, body, base branch, etc.); gh pr create; Create with all details inline; gh pr create \; --title "Add keyboard navigation to settings menu" \; --body "Closes 42. Adds Tab/arrow key support to the settings dropdown.". Read the command, understand what it changes, then run it only when the repository state matches the lesson.
+
+[ALEX]
+A solid pull request habit is to separate three questions: what changed, why it changed, and what still needs review. That keeps the conversation useful instead of noisy.
+
+[PAUSE]
+
+[JAMIE]
+Let's pause on Listing and viewing PRs. What should a learner take away from it?
+
+[ALEX]
+Listing and viewing PRs has three jobs: name the idea, give the learner a move, and show what counts as evidence.
+
+[ALEX]
+Treat examples as spoken recipes, not decorations. You may hear something like List open PRs; gh pr list; List with filters; gh pr list --state closed; gh pr list --author "@me"; gh pr list --label "accessibility"; gh pr list --search "screen reader"; View a PR (title, description, status, checks); gh pr view 56; View the diff of a PR. Read the command, understand what it changes, then run it only when the repository state matches the lesson.
+
+[JAMIE]
+That is the kind of detail that keeps a screen reader user oriented.
+
+[ALEX]
+Yes. The named thing - the heading, tab, field, branch, or button - is the handhold.
+
+[JAMIE]
+Let's pause on Reviewing PRs. What should a learner take away from it?
+
+[ALEX]
+Reviewing PRs has three jobs: name the idea, give the learner a move, and show what counts as evidence.
+
+[ALEX]
+Treat examples as spoken recipes, not decorations. You may hear something like Approve a PR; gh pr review 56 --approve; gh pr review 56 --approve --body "Tested with NVDA -- keyboard nav works perfectly. LGTM!"; Request changes; gh pr review 56 --request-changes --body "The focus indicator disappears on the last menu item."; Leave a. Read the command, understand what it changes, then run it only when the repository state matches the lesson.
+
+[JAMIE]
+Let's pause on Checking CI status. What should a learner take away from it?
+
+[ALEX]
+Checking CI status has three jobs: name the idea, give the learner a move, and show what counts as evidence.
+
+[ALEX]
+Treat examples as spoken recipes, not decorations. You may hear something like View all CI checks for a PR; gh pr checks 56; Watch checks update in real time (refreshes every 10s); gh pr checks 56 --watch; View checks for the current branch; gh pr checks. Read the command, understand what it changes, then run it only when the repository state matches the lesson.
+
+[PAUSE]
+
+[JAMIE]
+Let's pause on Merging PRs. What should a learner take away from it?
+
+[ALEX]
+Merging PRs has three jobs: name the idea, give the learner a move, and show what counts as evidence.
+
+[ALEX]
+Treat examples as spoken recipes, not decorations. You may hear something like Merge a PR (interactive -- prompts for merge strategy); gh pr merge 56; Merge with a specific strategy; gh pr merge 56 --merge Creates a merge commit; gh pr merge 56 --squash Squashes all commits into one; gh pr merge 56 --rebase Rebases commits onto base. Read the command, understand what it changes, then run it only when the repository state matches the lesson.
+
+[JAMIE]
+Let's pause on Other PR operations. What should a learner take away from it?
+
+[ALEX]
+Other PR operations has three jobs: name the idea, give the learner a move, and show what counts as evidence.
+
+[ALEX]
+Treat examples as spoken recipes, not decorations. You may hear something like Convert a draft PR to ready for review; gh pr ready 56; Mark a ready PR back as draft; gh pr ready 56 --undo; Update your PR branch with the latest from base (equivalent to "Update branch" button); gh pr update-branch 56; gh pr update-branch 56 --rebase; Close. Read the command, understand what it changes, then run it only when the repository state matches the lesson.
+
+[JAMIE]
+Let's pause on 5. Releases -- Create, List, Upload. What should a learner take away from it?
+
+[ALEX]
+Put 5. Releases -- Create, List, Upload into plain language. See also: Appendix H: Releases, Tags, and Insights for the GitHub.com interface side of releases. The interface gets easier when it becomes a set of named places instead of a wall of controls.
+
+[ALEX]
+Treat examples as spoken recipes, not decorations. You may hear something like Create a release interactively; gh release create v1.2.0; Create with all details; gh release create v1.2.0 \; --title "Version 1.2.0 -- Accessibility Improvements" \; --notes "- Fixed keyboard navigation in settings\n- Added ARIA labels to all form inputs". Read the command, understand what it changes, then run it only when the repository state matches the lesson.
+
+[JAMIE]
+So the learner is not behind if they stop there and check the page.
+
+[ALEX]
+Yes. Pausing to verify is not a detour; it is how you keep control of the workflow.
+
+[PAUSE]
+
+[JAMIE]
+Let's pause on 6. Search -- Issues, PRs, Repos, Code. What should a learner take away from it?
+
+[ALEX]
+6. Search -- Issues, PRs, Repos, Code has three jobs: name the idea, give the learner a move, and show what counts as evidence.
+
+[ALEX]
+Treat examples as spoken recipes, not decorations. You may hear something like Search issues across all of GitHub; gh search issues "screen reader navigation" --label accessibility; gh search issues "keyboard shortcut" --repo owner/repo-name; gh search issues "help wanted" --language javascript --limit 20; Search pull requests; gh search. Read the command, understand what it changes, then run it only when the repository state matches the lesson.
+
+[JAMIE]
+Let's pause on Labels. What should a learner take away from it?
+
+[ALEX]
+Labels has three jobs: name the idea, give the learner a move, and show what counts as evidence.
+
+[ALEX]
+Treat examples as spoken recipes, not decorations. You may hear something like List labels in the current repo; gh label list; Create a label; gh label create "accessibility" --color "0075ca" --description "Accessibility improvements"; Clone labels from another repo (copies all their labels to yours); gh label clone owner/source-repo. Read the command, understand what it changes, then run it only when the repository state matches the lesson.
+
+[ALEX]
+A solid project habit is to treat metadata as decision support. Labels, status, assignees, and notifications tell you what kind of attention the work needs.
+
+[JAMIE]
+Let's pause on Milestones. What should a learner take away from it?
+
+[ALEX]
+Milestones has three jobs: name the idea, give the learner a move, and show what counts as evidence.
+
+[ALEX]
+Treat examples as spoken recipes, not decorations. You may hear something like List milestones; gh api repos/{owner}/{repo}/milestones --jq '.[].title'; Create a milestone; gh api repos/{owner}/{repo}/milestones \; --method POST \; --field title="v2.0 Launch" \; --field description="All features for the v2.0 release" \; --field due. Read the command, understand what it changes, then run it only when the repository state matches the lesson.
+
+[PAUSE]
+
+[ALEX]
+Here is the practical turn. Here is the learner-facing version. By default gh outputs human-readable text. That gives the learner a foothold: for scripting or custom display, you can get raw JSON and filter it. A good GitHub workflow is like a well-run meeting: everyone knows the topic, the next action, and who has the floor.
+
+[JAMIE]
+Let's pause on --json flag. What should a learner take away from it?
+
+[ALEX]
+--json flag has three jobs: name the idea, give the learner a move, and show what counts as evidence.
+
+[ALEX]
+Treat examples as spoken recipes, not decorations. You may hear something like Get issue data as JSON; gh issue view 42 --json title,body,labels,state; Get PR data as JSON; gh pr view 56 --json title,number,state,mergeable,reviews; List issues as JSON; gh issue list --json number,title,labels,assignees. Read the command, understand what it changes, then run it only when the repository state matches the lesson.
+
+[JAMIE]
+That is a useful checkpoint before anyone starts pressing keys.
+
+[ALEX]
+Exactly. Checkpoints turn uncertainty into information.
+
+[JAMIE]
+Let's pause on --jq flag (filter JSON inline). What should a learner take away from it?
+
+[ALEX]
+--jq flag (filter JSON inline) has three jobs: name the idea, give the learner a move, and show what counts as evidence.
+
+[ALEX]
+Treat examples as spoken recipes, not decorations. You may hear something like List just issue numbers and titles; gh issue list --json number,title --jq '.[] "\(.number): \(.title)"'; Get the names of all labels on an issue; gh issue view 42 --json labels --jq '.labels[].name'; Count open PRs; gh pr list --json number --jq 'length'. Read the command, understand what it changes, then run it only when the repository state matches the lesson.
+
+[PAUSE]
+
+[JAMIE]
+Let's pause on --template flag (Go templates). What should a learner take away from it?
+
+[ALEX]
+The reason this matters is simple: --json with --jq produces clean, predictable output -- ideal for piping to a file or reading with a screen reader. That matters in practice: The default human-readable output is also clean, but JSON gives you precise control over what's announced.
+
+[ALEX]
+Treat examples as spoken recipes, not decorations. You may hear something like Custom formatted output; gh issue list --template '{{range.}} {{.number}} {{.title}} ({{.state}}){{"\n"}}{{end}}'. Read the command, understand what it changes, then run it only when the repository state matches the lesson.
+
+[ALEX]
+Another way to ground it. Learning Cards: Output Formatting has three jobs: name the idea, give the learner a move, and show what counts as evidence.
+
+[ALEX]
+That becomes easier when you listen for these cues. Use --json with --jq to extract exactly the fields you need -- this eliminates table formatting noise and reads as clean key-value pairs. Pipe long output to a file (gh issue list --json title issues.txt) and open it in VS Code for structured navigation with Alt+F2. Go templates (--template) let you define a single-line-per-item format that reads naturally with arrow keys. The default table output aligns columns with spaces -- increase terminal font size so columns stay readable. JSON output with --jq strips visual formatting and gives compact text that scales cleanly with any font size. Pipe output to VS Code (gh pr view 42 --json body --jq '.body' code -) to read it with your preferred editor theme and zoom.
+
+[JAMIE]
+Let's pause on 9. Aliases -- Create Your Own Shortcuts. What should a learner take away from it?
+
+[ALEX]
+If the interface shifts, 9. Aliases -- Create Your Own Shortcuts is still useful because aliases let you create custom gh commands from long commands you run often.
+
+[ALEX]
+Treat examples as spoken recipes, not decorations. You may hear something like Create an alias; gh alias set bugs 'issue list --label bug'; gh alias set my-prs 'pr list --author @me'; gh alias set review-ready 'pr list --label "ready for review"'; Use your alias; gh bugs; gh my-prs; gh review-ready; List all aliases; gh alias list. Read the command, understand what it changes, then run it only when the repository state matches the lesson.
+
+[PAUSE]
+
+[JAMIE]
+Let's pause on Useful aliases to set up. What should a learner take away from it?
+
+[ALEX]
+Useful aliases to set up has three jobs: name the idea, give the learner a move, and show what counts as evidence.
+
+[ALEX]
+Treat examples as spoken recipes, not decorations. You may hear something like Issues assigned to you; gh alias set mine 'issue list --assignee @me'; Your open PRs; gh alias set mypr 'pr list --author @me --state open'; Check CI on current branch's PR; gh alias set ci 'pr checks'; View current PR; gh alias set pr 'pr view'. Read the command, understand what it changes, then run it only when the repository state matches the lesson.
+
+[JAMIE]
+I like that because it gives people permission to slow down.
+
+[ALEX]
+That is the goal. We want the page to feel explorable, not fragile.
+
+[JAMIE]
+Let's pause on 10. Extensions -- Adding New Commands. What should a learner take away from it?
+
+[ALEX]
+The teaching point here is not the label; it is the move. Extensions add new gh subcommands written by the community.
+
+[ALEX]
+Treat examples as spoken recipes, not decorations. You may hear something like Browse available extensions; gh extension search; Install an extension; gh extension install owner/gh-extension-name; List installed extensions; gh extension list; Update all extensions; gh extension upgrade --all; Update a specific extension; gh extension. Read the command, understand what it changes, then run it only when the repository state matches the lesson.
+
+[JAMIE]
+Let's pause on 11. Copilot in the CLI. What should a learner take away from it?
+
+[ALEX]
+This part earns its place because install the Copilot extension once, then ask coding and git questions without leaving the terminal. The useful version is: Copilot CLI shows the suggested command, explains what it does, and asks whether to run it - perfect for learning while doing. That is the difference between following directions and owning the workflow.
+
+[ALEX]
+Treat examples as spoken recipes, not decorations. You may hear something like Install (one time); gh extension install github/gh-copilot; Ask for a command suggestion; gh copilot suggest "squash my last 4 commits into one"; gh copilot suggest "find which commit introduced a bug in auth.js"; gh copilot suggest "create a pull request from. Read the command, understand what it changes, then run it only when the repository state matches the lesson.
+
+[PAUSE]
+
+[JAMIE]
+Let's pause on Auto model selection. What should a learner take away from it?
+
+[ALEX]
+Auto model selection: As of early 2026, gh copilot uses auto model selection by default - it picks the best available model for your request without you needing to specify one. That is the difference between guessing and knowing: You can still request a specific model using the --model flag if you prefer.
+
+[ALEX]
+Treat examples as spoken recipes, not decorations. You may hear something like Let Copilot choose automatically (default); gh copilot suggest "create a pull request from my current branch"; Request a specific model; gh copilot suggest --model gpt-5 "create a pull request from my current branch". Read the command, understand what it changes, then run it only when the repository state matches the lesson.
+
+[JAMIE]
+Let's pause on Telemetry opt-out. What should a learner take away from it?
+
+[ALEX]
+Here is the learner-facing version. As of gh CLI 2.70 (April 2026), gh collects anonymized usage telemetry by default to improve the product. This is where the workflow starts to feel magical, because the result becomes visible and explainable: Or set the environment variable GH NO UPDATE NOTIFIER=1 to suppress update notifications only.
+
+[ALEX]
+Treat examples as spoken recipes, not decorations. You may hear something like gh config set telemetry disabled. Read the command, understand what it changes, then run it only when the repository state matches the lesson.
+
+[JAMIE]
+What is the one idea that makes the next few steps less mysterious?
+
+[ALEX]
+This is the move inside 12. Screen Reader Tips: the GitHub CLI is one of the most screen-reader-friendly ways to use GitHub. That gives the learner a foothold: here's why and how to get the most out of it.
+
+[JAMIE]
+That is the part I would want someone to say out loud while they work.
+
+[ALEX]
+Exactly. A learner should always know what they are trying to prove before they take the next action.
+
+[ALEX]
+A solid navigation habit is to prove where you are before activating controls. Headings, landmarks, and the address bar are not trivia; they are your map.
+
+[PAUSE]
+
+[ALEX]
+This is where confidence starts to build. Why the CLI works so well has three jobs: name the idea, give the learner a move, and show what counts as evidence.
+
+[ALEX]
+Here are the anchors worth keeping. Plain text output -- no visual noise, no unlabelled buttons, no hidden dialogs. Predictable structure -- every command produces consistent output you can navigate with arrow keys. No focus traps -- you control when you read output; nothing streams unexpectedly. Keyboard-first by design -- everything is a command you type.
+
+[JAMIE]
+Let's pause on Tips by task. What should a learner take away from it?
+
+[ALEX]
+The reason this matters is simple: creating content without a browser.
+
+[ALEX]
+Treat examples as spoken recipes, not decorations. You may hear something like Pipe output to less for page-by-page reading; gh issue view 42 less; Save to a file and open in your editor; gh pr view 56 pr-56.md; code pr-56.md. Limit results to a manageable number; gh issue list --limit 10; Combine with search to narrow down; gh issue list --search "keyboard" --limit 5. Read the command, understand what it changes, then run it only when the repository state matches the lesson.
+
+[ALEX]
+That connects to another useful point. NVDA / JAWS (Windows) has three jobs: name the idea, give the learner a move, and show what counts as evidence.
+
+[ALEX]
+On the ground, that means a few things. Run gh commands in Windows Terminal or the VS Code integrated terminal -- both work well with NVDA/JAWS. Use Insert+Down (NVDA) or Insert+F12 (JAWS) to read the current line of terminal output. For long output, use less and navigate with Space (next page) and b (back).
+
+[PAUSE]
+
+[JAMIE]
+If I am listening before the workshop starts, what should settle in my mind first?
+
+[ALEX]
+VoiceOver (macOS) has three jobs: name the idea, give the learner a move, and show what counts as evidence.
+
+[ALEX]
+Here is what that changes in practice. Run gh in Terminal.app or VS Code integrated terminal. VO+Right moves through terminal output character by character; VO+Down line by line. Use Ctrl+C to stop a running command if output is too long.
+
+[ALEX]
+Now bring the learner back to the room. Learning Cards: Screen Reader CLI Workflow has three jobs: name the idea, give the learner a move, and show what counts as evidence.
+
+[ALEX]
+The room should hear these as checkpoints. gh is keyboard-first by design -- no focus traps, no streaming, no unlabelled buttons; everything is typed and read as plain text. Use Insert+Down (NVDA) or Insert+F12 (JAWS) to read the current line, and arrow keys to move through multi-line output. Write issue and PR bodies in a text file first, then use --body-file./issue.md to submit -- much easier than composing inline. Terminal output from gh has no icons or images -- all information is conveyed as text that scales with your terminal font. Use --limit 10 on list commands to keep output short enough to scan comfortably without scrolling. Run gh in the VS Code integrated terminal to benefit from VS Code's zoom, themes, and Accessible View (Alt+F2).
+
+[JAMIE]
+So this is less about memorizing and more about noticing.
+
+[ALEX]
+Right. Once the learner can name the move, the interface becomes much less intimidating.
+
+[JAMIE]
+Where do you want a learner to place their attention here?
+
+[ALEX]
+The teaching point here is not the label; it is the move. Next: Appendix J: Codespaces Back: Appendix H: GitHub Desktop Teaching chapter: Chapter 01: Choose Your Tools.
+
+[PAUSE]
+
+[ALEX]
+That matters because of the next idea. This part earns its place because use this map to verify facts for each major section in this file.
+
+[ALEX]
+These are the details that keep the idea from floating away. Your Terminal, Supercharged for GitHub: GitHub Docs, home, GitHub Changelog, GitHub CLI manual, GitHub Copilot CLI docs, About Git. Installing and Authenticating: GitHub Docs, home, GitHub Changelog, GitHub CLI manual, GitHub Copilot CLI docs, GitHub security features. Repos -- Clone, Fork, Create, View: GitHub Docs, home, GitHub Changelog, GitHub CLI manual, GitHub Copilot CLI docs, About Git. Issues -- Create, List, View, Comment, Close: GitHub Docs, home, GitHub Changelog, GitHub CLI manual, GitHub Copilot CLI docs, About Git. Pull Requests -- Create, Review, Merge, Check: GitHub Docs, home, GitHub Changelog, GitHub CLI manual, GitHub Copilot CLI docs, About Git. Releases -- Create, List, Upload: GitHub Docs, home, GitHub Changelog, GitHub CLI manual, GitHub Copilot CLI docs, About releases.
+
+[PAUSE]
+
+[JAMIE]
+What should people carry with them after this?
+
+[ALEX]
+Carry the map. Know what page or tool you are in, know which action you are taking, and know what confirmation should follow. If the confirmation is missing, pause. That pause is not wasted time; it is professional judgment, and it is how complex workflows start to feel magical instead of stressful.
+
+[JAMIE]
+That is a better way to say it than just follow the steps.
+
+[ALEX]
+Right. Steps matter, but understanding wins. That is episode 53. Next in the series is episode 54, where we keep building the same contributor muscles.

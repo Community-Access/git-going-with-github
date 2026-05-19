@@ -1,115 +1,23 @@
 [
   {
     "speaker": "ALEX",
-    "text": "Welcome back. Today we're getting practical about code review: how to work with pull requests in VS Code, how to read diffs accessibly, how to leave comments that actually help, and how to decide whether to approve, request changes, or just comment."
+    "text": "Welcome back. Today we're staying in VS Code and bringing pull requests into the editor with the GitHub Pull Requests and Issues extension."
   },
   {
     "speaker": "JAMIE",
-    "text": "So this is not only, \"What is a pull request?\" It's also, \"How do I manage one, review one, and respond like a good collaborator?\""
+    "text": "This is the one that lets you look at PRs, read diffs, comment, and even merge without constantly jumping back to the browser, right?"
   },
   {
     "speaker": "ALEX",
-    "text": "Exactly. And for our blind and low-vision learners, there's a second thread running through everything: how to do this with a screen reader in a way that is efficient, not exhausting."
+    "text": "Exactly. A pull request, or PR, is the conversation around a proposed change. The extension gives that conversation a home inside VS Code, right beside your files, source control, and terminal."
   },
   {
     "speaker": "JAMIE",
-    "text": "I appreciate that. A visual diff can be overwhelming fast."
+    "text": "That sounds especially useful on Day 2, because learners are no longer only clicking through GitHub.com. They are pushing branches from VS Code and then trying to understand what changed."
   },
   {
     "speaker": "ALEX",
-    "text": "It can. So we'll keep returning to the workflows that reduce noise, especially the GitHub Pull Requests and Issues extension in VS Code, GitHub's web review tools, and the Accessible Diff Viewer in VS Code."
-  },
-  {
-    "speaker": "PAUSE",
-    "text": ""
-  },
-  {
-    "speaker": "ALEX",
-    "text": "A quick setup note before we dive in. This material assumes you've already practiced basic pull request workflows and Git in VS Code. Also, whenever we mention Windows-style shortcuts like Control, Mac users should translate them: Control becomes Command, Alt becomes Option, and Shift+F10 context menu behavior is typically Control+Return on Mac."
-  },
-  {
-    "speaker": "JAMIE",
-    "text": "And there are some related references in the background too, right?"
-  },
-  {
-    "speaker": "ALEX",
-    "text": "Yes. If you need them, a VS Code reference appendix and a Markdown reference appendix support this lesson. And the main source guidance behind today's material comes from GitHub Docs on reviewing pull requests and GitHub's accessibility guidance for pull request reviews."
-  },
-  {
-    "speaker": "JAMIE",
-    "text": "Nice. So what's the big picture for the day?"
-  },
-  {
-    "speaker": "ALEX",
-    "text": "Three parts. First, using the GitHub Pull Requests extension in VS Code. Second, accessible code review in both the browser and VS Code. Third, the reviewer's craft: what to look for, how to write constructive feedback, and how to use judgment."
-  },
-  {
-    "speaker": "JAMIE",
-    "text": "And there were workshop tasks tied to this too."
-  },
-  {
-    "speaker": "ALEX",
-    "text": "Right. Two guided practice items for the extension portion: install the extension and sign in, then check out a classmate's pull request and post one constructive comment. No automation check for those, because extension state and review state live on your local machine and your account. Evidence is usually a comment confirming what you completed."
-  },
-  {
-    "speaker": "JAMIE",
-    "text": "Let's start with the extension itself."
-  },
-  {
-    "speaker": "PAUSE",
-    "text": ""
-  },
-  {
-    "speaker": "ALEX",
-    "text": "The GitHub Pull Requests and Issues extension brings GitHub workflow directly into VS Code. Instead of constantly switching to a browser tab, you can see open pull requests, inspect changes, check out a PR branch, comment, create PRs, and sometimes merge, all from the editor."
-  },
-  {
-    "speaker": "JAMIE",
-    "text": "That sounds convenient, but I want the concrete steps. If I'm starting from zero, how do I install it?"
-  },
-  {
-    "speaker": "ALEX",
-    "text": "You have two main methods. The first is through the Extensions sidebar. Press Control+Shift+X. The search box in the Marketplace usually gets focus. Type GitHub Pull Requests, press Enter, move through the results, choose the extension published by GitHub, and activate Install."
-  },
-  {
-    "speaker": "JAMIE",
-    "text": "And if someone prefers the Command Palette?"
-  },
-  {
-    "speaker": "ALEX",
-    "text": "That's method two. Open the Command Palette with Control+Shift+P, search for extension-related commands or directly search for the GitHub Pull Requests extension, then install it from there. The sidebar method is usually simpler for most learners, but both are valid."
-  },
-  {
-    "speaker": "JAMIE",
-    "text": "What happens after install?"
-  },
-  {
-    "speaker": "ALEX",
-    "text": "Often VS Code prompts you to sign in to GitHub. Activate Sign in to GitHub, which opens a browser window for OAuth authorization. Complete the approval in the browser, then return to VS Code."
-  },
-  {
-    "speaker": "JAMIE",
-    "text": "How do I know it worked?"
-  },
-  {
-    "speaker": "ALEX",
-    "text": "Verify sign-in by going to the Explorer sidebar with Control+Shift+E. You should find a GitHub section that includes pull requests and issues. That's one of the clearest signs the extension is active and authenticated."
-  },
-  {
-    "speaker": "JAMIE",
-    "text": "And if a notification appeared and disappeared too fast for the screen reader?"
-  },
-  {
-    "speaker": "ALEX",
-    "text": "Great accessibility detail. Open the Command Palette and run Notifications: Focus Notification Toast. That brings the latest toast into focus so you can read what happened."
-  },
-  {
-    "speaker": "JAMIE",
-    "text": "So the extension adds a GitHub area in the interface, commands for PR work, and tighter connection between local Git and GitHub's review system."
-  },
-  {
-    "speaker": "ALEX",
-    "text": "Exactly. It adds views, commands, PR trees, changed file access, comment features, checkout options, PR creation tools, and integration points with review and merge workflows."
+    "text": "Yes. On Day 1, your Learning Room repository gave you the web workflow: issue, branch, commit, pull request, merge. This workflow maps those same ideas into the editor, so when Challenge 11 asks you to open a Day 2 PR from a locally pushed branch, the pieces already feel familiar."
   },
   {
     "speaker": "PAUSE",
@@ -117,51 +25,27 @@
   },
   {
     "speaker": "JAMIE",
-    "text": "Let's say the extension is installed. How do I actually view pull requests?"
+    "text": "Before anyone reviews anything, they need the extension installed. What should they have open?"
   },
   {
     "speaker": "ALEX",
-    "text": "There are two common entry points. One is the GitHub Pull Requests panel from the Activity Bar. The other is a GitHub section in Explorer. In practice, many screen reader users like using the Command Palette to jump directly into the Pull Requests view by running GitHub Pull Requests: Focus on Pull Requests View."
+    "text": "Open VS Code desktop with your Learning Room repository loaded. Then open the Extensions sidebar with `Ctrl+Shift+X`, or `Cmd+Shift+X` on Mac, search for `GitHub Pull Requests`, choose the GitHub-published extension, and activate Install."
   },
   {
     "speaker": "JAMIE",
-    "text": "Once I'm there, what can I do?"
+    "text": "And if someone prefers commands over sidebars, they can use the Command Palette?"
   },
   {
     "speaker": "ALEX",
-    "text": "You can list open pull requests, move through them, open one to inspect its details, open it in your browser if needed, and filter the list so you only hear the PRs that matter to you, like items awaiting your review."
+    "text": "Yes. Open it with `Ctrl+Shift+P`, or `Cmd+Shift+P` on Mac, and run the command to install extensions, then search from there. After installation, VS Code usually prompts you to sign in to GitHub, opens a browser for authorization, and then returns you to VS Code."
   },
   {
     "speaker": "JAMIE",
-    "text": "Let's slow down on filtering. Why is that important?"
+    "text": "How do I know the sign-in worked? Because OAuth windows can feel a little mysterious."
   },
   {
     "speaker": "ALEX",
-    "text": "Because long PR lists are noisy. Filtering by status helps you narrow to open, closed, or review-requested items. Filtering by repository matters if you're connected to multiple repos. And a specific filter for PRs waiting for your review is especially useful when you're acting as reviewer rather than author."
-  },
-  {
-    "speaker": "JAMIE",
-    "text": "What does the PR list sound like for a screen reader user?"
-  },
-  {
-    "speaker": "ALEX",
-    "text": "Typically you're navigating a tree or list structure. A pull request entry may announce the PR title, number, repository context, branch information, and status indicators. Inside a specific PR tree, you may find sections like description and changed files. The key idea is orientation: understand what level of the tree you're on and what object currently has focus."
-  },
-  {
-    "speaker": "JAMIE",
-    "text": "So description, changed files, and maybe actions are all nested under that PR."
-  },
-  {
-    "speaker": "ALEX",
-    "text": "Right. And a good screen reader announcement example might sound like a tree item with the PR title and state, then child items underneath for description or files. The exact wording varies by VS Code version and screen reader, but the structural pattern matters."
-  },
-  {
-    "speaker": "JAMIE",
-    "text": "If I want full details for one PR, what should I expect?"
-  },
-  {
-    "speaker": "ALEX",
-    "text": "You should be able to open a detail view that includes the title, author, status, branch relationship, description, and the list of changed files. For many users, that's enough to decide whether to inspect the diff in VS Code or jump to the browser for a more familiar review form."
+    "text": "Open the Explorer sidebar with `Ctrl+Shift+E`. You should see a GitHub section with Pull Requests and Issues. If an install or sign-in notification disappeared too quickly, run `Notifications: Focus Notification Toast` from the Command Palette and listen for the message."
   },
   {
     "speaker": "PAUSE",
@@ -169,51 +53,27 @@
   },
   {
     "speaker": "JAMIE",
-    "text": "Now the next big skill: checking out a PR branch. Why would I do that instead of just reading the pull request online?"
+    "text": "Once the extension is ready, where do pull requests actually show up?"
   },
   {
     "speaker": "ALEX",
-    "text": "Because checking out a PR makes the proposed changes local. That means you can test them, run the project, inspect files with your normal editor setup, and review the diff in context. It's especially useful if you need more than a surface-level read."
+    "text": "You have a couple of routes. You can use the GitHub icon in the Activity Bar, or run `GitHub Pull Requests: Focus on Pull Requests View` from the Command Palette. You can also find a GitHub section inside Explorer, which is handy if you already live in the file tree."
   },
   {
     "speaker": "JAMIE",
-    "text": "So it's not just reading. It's validating."
+    "text": "And the list is not just one giant pile of every PR on GitHub, I hope."
   },
   {
     "speaker": "ALEX",
-    "text": "Exactly. You might want to verify the change actually works, that it only changes what it claims, or that it doesn't break something nearby."
+    "text": "No, it is organized. You can see PRs assigned to you, PRs you created, open PRs, and PRs waiting for your review. The tree usually groups by repository and status, and a screen reader may announce something like pull request number, title, author, branch, and review state."
   },
   {
     "speaker": "JAMIE",
-    "text": "How do I check out a PR?"
+    "text": "If I open one from the list, what am I reading first?"
   },
   {
     "speaker": "ALEX",
-    "text": "Three common methods. First, from the PR detail view, activate Checkout. Second, from the PR tree itself, use the context menu on the PR item and choose checkout. Third, use the Command Palette and search for a GitHub Pull Requests checkout command."
-  },
-  {
-    "speaker": "JAMIE",
-    "text": "And once I do that, VS Code switches me to that PR's branch?"
-  },
-  {
-    "speaker": "ALEX",
-    "text": "Yes. Your local workspace now reflects that pull request branch. It's smart to notice the branch indicator in the status bar or Source Control area so you know you're no longer on your original branch."
-  },
-  {
-    "speaker": "JAMIE",
-    "text": "That brings up an anxious question learners often have: how do I get back?"
-  },
-  {
-    "speaker": "ALEX",
-    "text": "Important question. Return to your original branch using the branch switcher in VS Code, the Source Control UI, or Git commands if you're comfortable with them. After a review, many people switch back to main or to their own feature branch. The key is situational awareness: always know what branch you're on before editing or committing."
-  },
-  {
-    "speaker": "JAMIE",
-    "text": "That sounds like one of those small habits that prevents big mistakes."
-  },
-  {
-    "speaker": "ALEX",
-    "text": "It absolutely is."
+    "text": "Usually the PR detail view: title, description, status, checks, reviewers, comments, and changed files. If you want the browser version, open the PR on GitHub.com and use the Conversation and Files changed tabs. If you want the terminal version, `gh pr list`, `gh pr view`, and `gh pr status` cover the same basic orientation."
   },
   {
     "speaker": "PAUSE",
@@ -221,311 +81,59 @@
   },
   {
     "speaker": "JAMIE",
-    "text": "Now let's get to the heart of review: reading changed files and understanding the diff."
+    "text": "Reading a PR is one thing. Checking it out sounds more serious. Why would I do that?"
   },
   {
     "speaker": "ALEX",
-    "text": "When you open a pull request for review, one of the main things you'll inspect is the files changed list. In the PR detail view, you can usually move through the changed files and open one in the Diff Editor."
+    "text": "Checking out a PR means VS Code switches your working copy to the branch from that pull request. That lets you run the code, test the docs locally, or inspect files with all your usual editor tools instead of only reading the web diff."
   },
   {
     "speaker": "JAMIE",
-    "text": "What does the Diff Editor look like conceptually?"
+    "text": "So in Challenge 12, when I review a classmate's PR, checking it out helps me verify what they changed instead of only reacting to the summary."
   },
   {
     "speaker": "ALEX",
-    "text": "By default, it's often a split view. Old content on the left, new content on the right. Removed lines appear on the old side, added lines on the new side. That's visually useful, but with a screen reader, raw side-by-side navigation can be tiring."
+    "text": "Right. From the PR detail view, activate Checkout. From the PR tree, open the context menu with `Shift+F10` on Windows, or `Ctrl+Return` on Mac, and choose Checkout. You can also use the Command Palette if you remember the extension command better than the panel layout."
   },
   {
     "speaker": "JAMIE",
-    "text": "Is there another display mode?"
+    "text": "And when I am done, I should get back to my own branch."
   },
   {
     "speaker": "ALEX",
-    "text": "Yes. Inline view puts the diff into a single flow instead of two side-by-side panes. Some learners prefer that because it reduces lateral complexity. You can toggle between split and inline views in the editor controls."
-  },
-  {
-    "speaker": "JAMIE",
-    "text": "But the big recommendation here is still the Accessible Diff Viewer, right?"
-  },
-  {
-    "speaker": "ALEX",
-    "text": "Yes. For screen reader users, the Accessible Diff Viewer is usually the best way to read changes. Press F7 to move to the next change and Shift+F7 to move to the previous one. Instead of making you navigate every visual artifact in the editor, it announces the change as structured information."
-  },
-  {
-    "speaker": "JAMIE",
-    "text": "Can you give an example of what that means?"
-  },
-  {
-    "speaker": "ALEX",
-    "text": "Imagine the screen reader telling you something like: line changed, one line removed, two lines added, then reading the old and new text in a logical sequence. That is far superior to manually crawling through split columns, where context can be easy to lose."
-  },
-  {
-    "speaker": "JAMIE",
-    "text": "So instead of deciphering a picture, I'm getting a concise explanation of the edit."
-  },
-  {
-    "speaker": "ALEX",
-    "text": "Exactly. That's why the chapter emphasizes that structured reading is much better than navigating the visual diff manually."
-  },
-  {
-    "speaker": "JAMIE",
-    "text": "What should I be listening for during review?"
-  },
-  {
-    "speaker": "ALEX",
-    "text": "Ask questions like: what changed, why did it change, and does it improve the file? Also: is anything missing, misleading, inaccessible, or inconsistent? If you're reviewing documentation, you might listen for heading hierarchy, clear link text, missing steps, grammar, or formatting problems. If you're reviewing code, the questions shift toward correctness, clarity, safety, tests, and maintainability."
-  },
-  {
-    "speaker": "JAMIE",
-    "text": "And if I notice an issue?"
-  },
-  {
-    "speaker": "ALEX",
-    "text": "Flag it. But flagging doesn't always mean blocking. Some issues are must-fix, some are optional improvements, and some are questions. That distinction matters a lot when you write comments."
+    "text": "Yes. Use the branch control in the status bar, the Source Control panel with `Ctrl+Shift+G`, or Git commands to return to your original branch. The web fallback is to stay on GitHub.com and review read-only. The terminal version is `gh pr checkout` for a local checkout, and `gh pr diff` if you only want to inspect changes without switching branches."
   },
   {
     "speaker": "PAUSE",
     "text": ""
   },
   {
-    "speaker": "JAMIE",
-    "text": "Before we leave the extension workflow, there's a part many learners really want: creating a pull request from VS Code."
-  },
-  {
     "speaker": "ALEX",
-    "text": "Yes. The extension can help you create a pull request from your editor. Before you do that, make sure you have a branch with commits pushed to GitHub. The extension can't create a meaningful PR if your work isn't available on the remote."
+    "text": "The heart of review is the diff, which is the before-and-after view of the files changed by a PR."
   },
   {
     "speaker": "JAMIE",
-    "text": "What are the ways to create it?"
+    "text": "Diffs are where I see added lines, removed lines, and whether the change matches what the author claimed."
   },
   {
     "speaker": "ALEX",
-    "text": "Method one, and generally the recommended one, is from the Command Palette. Search for a GitHub Pull Requests create command. Method two is from the Source Control panel, where VS Code may offer a Create Pull Request action when your branch is pushed and differs from the base branch. Method three is from the GitHub panel itself."
+    "text": "Exactly. In VS Code, open the PR, then open the changed files list. A file may open in the Diff Editor, often with old content on the left and new content on the right. You can switch between split view and inline view if one is easier to read."
   },
   {
     "speaker": "JAMIE",
-    "text": "When the PR form opens, what fields matter most?"
+    "text": "For screen reader users, the visual layout is not always the easiest way to understand the change."
   },
   {
     "speaker": "ALEX",
-    "text": "Title is required. Description is optional in a technical sense, but strongly recommended. Then you choose the base branch, which is the target you're merging into, usually main. The compare branch is your source branch. You may also be able to add reviewers, labels, a milestone, and mark the PR as draft."
+    "text": "That is where the Accessible Diff Viewer helps. Press `F7` to move to the next change and `Shift+F7` to move to the previous change. It reads a change as a structured block, such as removed line, added line, and surrounding context, which is usually much clearer than wandering through each visual column."
   },
   {
     "speaker": "JAMIE",
-    "text": "Let's unpack draft for a second."
+    "text": "So the review habit is: read the PR description, read the changed files, use `F7` through the diff, and notice one specific thing worth saying."
   },
   {
     "speaker": "ALEX",
-    "text": "A draft pull request says, in effect, \"Please look if you want, but this isn't ready for final decision yet.\" That's useful when you want early feedback without implying the work is finished."
-  },
-  {
-    "speaker": "JAMIE",
-    "text": "And for screen reader users, any advice on the form itself?"
-  },
-  {
-    "speaker": "ALEX",
-    "text": "Move steadily through the fields, confirm which branch is base and which is compare, and don't rush through the controls because they're easy to invert mentally. Title first, description next, then metadata like reviewers and labels."
-  },
-  {
-    "speaker": "JAMIE",
-    "text": "How is submission handled?"
-  },
-  {
-    "speaker": "ALEX",
-    "text": "Some flows are interactive and prompt you step by step for title, body, and base branch. Other flows are more inline, where you fill details directly in a form. You may get an option to create as draft, or to open the form in your browser if you prefer or need more stable accessibility for complex fields."
-  },
-  {
-    "speaker": "JAMIE",
-    "text": "So if the in-editor form gets awkward, opening in the browser is a perfectly acceptable move."
-  },
-  {
-    "speaker": "ALEX",
-    "text": "Absolutely. The goal is a correct, clear PR, not loyalty to a single interface."
-  },
-  {
-    "speaker": "PAUSE",
-    "text": ""
-  },
-  {
-    "speaker": "JAMIE",
-    "text": "That leads naturally to pull request description templates. Why do they matter?"
-  },
-  {
-    "speaker": "ALEX",
-    "text": "Templates reduce ambiguity. They remind authors to include the information reviewers need: what changed, why it changed, related issues, testing performed, and any checklist items."
-  },
-  {
-    "speaker": "JAMIE",
-    "text": "Where are those templates usually stored?"
-  },
-  {
-    "speaker": "ALEX",
-    "text": "They're typically stored in the repository, often in a .github directory as a pull request template file. A repo may also offer multiple templates depending on the kind of change."
-  },
-  {
-    "speaker": "JAMIE",
-    "text": "And a typical template might ask for what?"
-  },
-  {
-    "speaker": "ALEX",
-    "text": "A short description, a related issue reference, the type of change, testing notes, a checklist, and screenshots if applicable."
-  },
-  {
-    "speaker": "JAMIE",
-    "text": "For a screen reader user, what's the best workflow when a template opens?"
-  },
-  {
-    "speaker": "ALEX",
-    "text": "Read the prompts first. Then move section by section and replace placeholder text with real content. Don't leave headings like Description or Testing blank if the project expects them. Templates are there to help reviewers, so filling them out thoughtfully is part of accessibility too."
-  },
-  {
-    "speaker": "PAUSE",
-    "text": ""
-  },
-  {
-    "speaker": "JAMIE",
-    "text": "All right. Now let's get into comments and formal reviews."
-  },
-  {
-    "speaker": "ALEX",
-    "text": "You can add an inline comment directly on a changed line. In VS Code, position your cursor on the relevant line and run GitHub Pull Requests: Add Comment from the Command Palette. Then type your comment and submit it."
-  },
-  {
-    "speaker": "JAMIE",
-    "text": "What makes a good inline comment?"
-  },
-  {
-    "speaker": "ALEX",
-    "text": "Be specific. Mention the exact problem or praise. If possible, explain why it matters. And if you're asking for change, make the next step clear."
-  },
-  {
-    "speaker": "JAMIE",
-    "text": "Can you give some formats?"
-  },
-  {
-    "speaker": "ALEX",
-    "text": "Sure. A blocking comment might say, \"Blocking: this heading skips from level two to level four, which breaks document structure for screen reader navigation. Please change this to a level three heading.\" A non-blocking note might say, \"Nit: consider shortening this sentence for clarity.\" A question might say, \"Question: should this setup step mention logging in first?\""
-  },
-  {
-    "speaker": "JAMIE",
-    "text": "So we are not dumping vague reactions like, \"This seems off.\""
-  },
-  {
-    "speaker": "ALEX",
-    "text": "Exactly. Review comments should be actionable whenever possible."
-  },
-  {
-    "speaker": "JAMIE",
-    "text": "What if I have several comments to make across the PR?"
-  },
-  {
-    "speaker": "ALEX",
-    "text": "Then use Start Review rather than posting each comment immediately. That lets you batch multiple comments and submit them together with a final verdict."
-  },
-  {
-    "speaker": "JAMIE",
-    "text": "And the verdict options are approve, request changes, or comment only."
-  },
-  {
-    "speaker": "ALEX",
-    "text": "Right. Approve means the PR is acceptable to merge. Request changes means there are issues that should be fixed before merge. Comment-only means you're adding feedback without a merge verdict."
-  },
-  {
-    "speaker": "JAMIE",
-    "text": "What happens after submission?"
-  },
-  {
-    "speaker": "ALEX",
-    "text": "Your comments and verdict are attached to the PR. The author gets notified. They may reply, push updates, or ask for clarification. If they revise the PR, reviewers often come back to inspect what changed since the last round."
-  },
-  {
-    "speaker": "JAMIE",
-    "text": "There's also a note that some review actions can happen from other environments too, correct?"
-  },
-  {
-    "speaker": "ALEX",
-    "text": "Yes. You can view a PR diff in your terminal with Git tools if that's part of your workflow, though today's focus is browser and VS Code. And the three formal outcomes still map across environments: approve, request changes, or comment without verdict."
-  },
-  {
-    "speaker": "PAUSE",
-    "text": ""
-  },
-  {
-    "speaker": "JAMIE",
-    "text": "What about merging pull requests from VS Code?"
-  },
-  {
-    "speaker": "ALEX",
-    "text": "You can sometimes merge directly from the extension, assuming prerequisites are met. Typically that means the PR is in a mergeable state, required reviews are satisfied, required checks have passed, and you have permission to merge."
-  },
-  {
-    "speaker": "JAMIE",
-    "text": "How do you do it?"
-  },
-  {
-    "speaker": "ALEX",
-    "text": "Either from the PR detail view, where a merge action may be available, or via a Command Palette command for merging the current PR."
-  },
-  {
-    "speaker": "JAMIE",
-    "text": "And merge type matters here."
-  },
-  {
-    "speaker": "ALEX",
-    "text": "It does. Common merge types are the default merge commit, squash and merge, and sometimes rebase merge depending on repository settings. Which one to use depends on the team's conventions. Squash is often used to keep history cleaner for small feature branches. The default merge strategy preserves the branch history more explicitly."
-  },
-  {
-    "speaker": "JAMIE",
-    "text": "There's also auto-merge sometimes."
-  },
-  {
-    "speaker": "ALEX",
-    "text": "Yes. If the repository allows it, you may be able to enable auto-merge so the PR merges automatically once required checks pass."
-  },
-  {
-    "speaker": "JAMIE",
-    "text": "After merging, what's the housekeeping?"
-  },
-  {
-    "speaker": "ALEX",
-    "text": "Switch back to main and pull the latest changes so your local repo reflects the merged work. Then consider deleting the feature branch if it's no longer needed. Some workflows even combine squash and merge with branch deletion as a standard cleanup step."
-  },
-  {
-    "speaker": "PAUSE",
-    "text": ""
-  },
-  {
-    "speaker": "JAMIE",
-    "text": "Let's make room for troubleshooting, because these workflows rarely go perfectly the first time."
-  },
-  {
-    "speaker": "ALEX",
-    "text": "Agreed. If you see \"No pull requests found,\" first check whether you're signed in, in the correct repository, and looking at the right filter, such as All Open instead of a narrower view."
-  },
-  {
-    "speaker": "JAMIE",
-    "text": "What if you get \"Could not create pull request\"?"
-  },
-  {
-    "speaker": "ALEX",
-    "text": "Usually that points to branch state or permissions. Confirm your changes are committed and pushed, make sure the compare branch exists on GitHub, and check that you have rights to create PRs in that repository."
-  },
-  {
-    "speaker": "JAMIE",
-    "text": "And \"Authentication failed\"?"
-  },
-  {
-    "speaker": "ALEX",
-    "text": "Verify that your GitHub browser session is active, then retry sign-in. Sometimes closing and reopening VS Code helps. If the extension seems stuck, reloading the window from the Command Palette can reset the interface."
-  },
-  {
-    "speaker": "JAMIE",
-    "text": "What about checkout problems?"
-  },
-  {
-    "speaker": "ALEX",
-    "text": "If checkout fails because of permissions or repository restrictions, you can still review read-only on GitHub.com. That's an explicit fallback in the practice guidance. And if the Diff Editor itself feels too hard to navigate, go straight to F7 and use the Accessible Diff Viewer."
+    "text": "Yes. It might be a typo, an unclear instruction, a missing setup step, a heading hierarchy issue, link text that needs improvement, or something the author handled well. Specific comments are useful; vague approval is rarely enough by itself."
   },
   {
     "speaker": "PAUSE",
@@ -533,63 +141,39 @@
   },
   {
     "speaker": "ALEX",
-    "text": "Let's pause and walk through the first guided practice in plain language."
+    "text": "Creating a PR from VS Code is the author side of the same loop."
   },
   {
     "speaker": "JAMIE",
-    "text": "Good. This is the install-and-sign-in one."
+    "text": "This is where Challenge 11 fits, right? I make changes on a local branch, push that branch, and then open a Day 2 PR."
   },
   {
     "speaker": "ALEX",
-    "text": "Yes. Open Extensions with Control+Shift+X. Search for GitHub Pull Requests. Choose the extension published by GitHub. Install it. If prompted, sign in to GitHub through the browser OAuth flow. Return to VS Code. Then verify success by checking Explorer for a GitHub section showing pull requests and issues."
+    "text": "Yes. You need a repository connected to GitHub, a branch with commits, and usually that branch pushed to the remote. Then run `GitHub Pull Requests: Create Pull Request` from the Command Palette, or start from Source Control, or use the GitHub panel."
   },
   {
     "speaker": "JAMIE",
-    "text": "And the learner is done when that GitHub section appears and is populated for the repository they're working in."
+    "text": "The two branch fields always trip people up. Base branch and compare branch sound similar."
   },
   {
     "speaker": "ALEX",
-    "text": "Correct."
+    "text": "The base branch is the target, often `main`, where you want the change to land. The compare branch is your source branch, the one containing your commits. If those are reversed, the PR will look confusing, so pause and confirm them before creating it."
   },
   {
     "speaker": "JAMIE",
-    "text": "Then comes the second practice: check out a PR and leave a comment."
+    "text": "Then I write the title and description in VS Code too?"
   },
   {
     "speaker": "ALEX",
-    "text": "Right. Open the Command Palette. Run GitHub Pull Requests: Focus on Pull Requests View. Find an open PR that is not your own. Check it out if permissions allow. Open the changed files. Open a changed file in the Diff Editor. Use F7 and Shift+F7 to navigate changes accessibly. Find one specific item to comment on, such as a typo, unclear sentence, missing step, or a genuinely good improvement. Then add a comment with the Add Comment command."
+    "text": "Yes. The title is required. The description is optional in the tool, but recommended in real collaboration. If the repo has a PR template, often stored in `.github/pull_request_template.md` or a related template folder, fill it in: description, related issue, type of change, testing, checklist, and screenshots when relevant."
   },
   {
     "speaker": "JAMIE",
-    "text": "And if checkout is blocked?"
+    "text": "And reviewers, labels, milestones, and draft status are optional fields, but they are not random decoration. They tell other people how to treat the PR."
   },
   {
     "speaker": "ALEX",
-    "text": "Skip local checkout and review in the browser instead. Use the Files changed tab on GitHub.com and post your comment there."
-  },
-  {
-    "speaker": "JAMIE",
-    "text": "What counts as completion evidence for this part?"
-  },
-  {
-    "speaker": "ALEX",
-    "text": "A completion comment stating whether the extension was installed, whether you signed in, which PR you reviewed, whether you posted the comment inline or on GitHub.com, and a one-sentence summary of what your comment was about."
-  },
-  {
-    "speaker": "JAMIE",
-    "text": "Expected outcomes are practical, not theoretical."
-  },
-  {
-    "speaker": "ALEX",
-    "text": "Exactly. Install and authenticate the extension. Check out or view a PR. Navigate diffs with F7. Post constructive, specific feedback."
-  },
-  {
-    "speaker": "JAMIE",
-    "text": "And if someone gets stuck, the recovery steps are very concrete: reload window, retry OAuth, switch to All Open, use browser fallback, use F7, search directly for Add Comment, and ask a facilitator for help verifying the panel."
-  },
-  {
-    "speaker": "ALEX",
-    "text": "Yes. And the deeper lesson here is worth naming: PR tooling multiplies your impact. Reviewing others' work sharpens your own standards and builds trust in a community."
+    "text": "Right. Draft means not ready for final review. The browser alternative is GitHub.com's New pull request page. The terminal alternative is `gh pr create`, either interactively for prompts or inline with flags for title, body, base, head, and draft."
   },
   {
     "speaker": "PAUSE",
@@ -597,191 +181,107 @@
   },
   {
     "speaker": "JAMIE",
-    "text": "Now let's move from tool use to accessible code review more broadly. Not just extension mechanics, but how to review well with a screen reader."
+    "text": "Let's talk about comments, because this is where review can either help someone or make them feel shut down."
   },
   {
     "speaker": "ALEX",
-    "text": "Good shift. There are really two environments for code review: GitHub.com in the browser and VS Code with the extension. You should be able to work in both, because sometimes one is more accessible or more efficient than the other for a given task."
+    "text": "A good inline comment attaches to a specific line and explains what you noticed. In VS Code, put your cursor on the line, run `GitHub Pull Requests: Add Comment`, write the comment, and add it. If that is difficult, open the PR in the browser and comment from the Files changed tab."
   },
   {
     "speaker": "JAMIE",
-    "text": "Before starting that, what prerequisites should a learner mentally check off?"
+    "text": "What if I have several comments and do not want to send them one at a time?"
   },
   {
     "speaker": "ALEX",
-    "text": "You should already know the basics of pull requests, branches, and diff concepts. You should be signed in to GitHub, have access to the repo, and know how to navigate either the GitHub web UI or VS Code at a basic level."
+    "text": "Use Start Review when it is available. That lets you collect comments, then submit them together with a review verdict. Your verdict can be Approve, Request changes, or Comment. Approve means you believe it is ready, Request changes means something should be fixed before merge, and Comment means you are giving feedback without a blocking decision."
   },
   {
     "speaker": "JAMIE",
-    "text": "And there were learning cards in this part too."
+    "text": "I like prefixes for tone too: blocking, suggestion, question, nit. They tell the author whether I am stopping the PR or just offering a small improvement."
   },
   {
     "speaker": "ALEX",
-    "text": "Yes. Conceptually, those cards reinforce a few repeatable tasks: view the full PR diff in your terminal if needed, inspect PR details like description and checks, check out the PR branch locally for testing, and choose one of the three review actions: approve, request changes, or leave a comment-only review."
+    "text": "Exactly. The web path is Files changed, add inline comments, then Review changes. The terminal path is `gh pr review --approve`, `gh pr review --request-changes`, or `gh pr review --comment`, and `gh pr diff` helps you inspect before deciding. Challenge 12 is really about this: leave specific feedback and own the tone of your review."
   },
   {
     "speaker": "PAUSE",
     "text": ""
   },
   {
-    "speaker": "JAMIE",
-    "text": "Let's start in the browser. How do I review on GitHub.com accessibly?"
-  },
-  {
     "speaker": "ALEX",
-    "text": "The good news is that the modern interface is now the default. Step one is to reach the Files changed tab of the pull request. That's where the actual diff review happens."
+    "text": "Merging is the moment when the accepted change becomes part of the target branch."
   },
   {
     "speaker": "JAMIE",
-    "text": "Step two?"
+    "text": "So I should not merge just because the button is there."
   },
   {
     "speaker": "ALEX",
-    "text": "Use the file tree to orient yourself. Listen for the list of changed files, which tells you scope. Ask: how many files changed, and which ones are likely high value to inspect first?"
+    "text": "Correct. Check that you have permission, the PR is review-ready, required checks have passed, conflicts are resolved, and the team agrees it should land. In VS Code, the merge action appears in the PR detail view when you have access. You can also run a merge command from the Command Palette."
   },
   {
     "speaker": "JAMIE",
-    "text": "So before reading the lines, I should understand the map."
+    "text": "There are different merge types too, right?"
   },
   {
     "speaker": "ALEX",
-    "text": "Exactly. Step three is navigating between file diffs. Move file by file rather than wandering line by line through the entire page without context."
+    "text": "Yes. A regular merge keeps the branch history. Squash and merge combines the PR into one commit, which many documentation projects prefer for a tidy history. Rebase and merge replays commits on top of the base branch. Use the repository's norm, not personal preference in the moment."
   },
   {
     "speaker": "JAMIE",
-    "text": "Then step four: read a diff."
+    "text": "After merging, I still need to clean up my local view of the world."
   },
   {
     "speaker": "ALEX",
-    "text": "Right. Pay attention to what each line announces or shows: whether it's context, a removal, or an addition. The goal is to reconstruct the author's change, not just hear isolated lines."
-  },
-  {
-    "speaker": "JAMIE",
-    "text": "And then comes placing a comment."
-  },
-  {
-    "speaker": "ALEX",
-    "text": "Yes. Step five is placing an inline comment on a specific line. In web review, GitHub provides comment controls adjacent to changed lines. You can also place a multi-line comment when the issue spans several lines."
-  },
-  {
-    "speaker": "JAMIE",
-    "text": "That seems important for accessibility issues that are structural rather than line-local."
-  },
-  {
-    "speaker": "ALEX",
-    "text": "Very much so. A heading hierarchy problem, for example, may need you to reference surrounding lines, not just a single word."
-  },
-  {
-    "speaker": "JAMIE",
-    "text": "What's next after commenting?"
-  },
-  {
-    "speaker": "ALEX",
-    "text": "Step six is reading existing comments and threads. Reviews are conversations. Before adding a duplicate comment, check whether another reviewer already raised the same issue and whether the author has responded."
-  },
-  {
-    "speaker": "JAMIE",
-    "text": "Then step seven is submitting the review."
-  },
-  {
-    "speaker": "ALEX",
-    "text": "Correct. Choose approve, request changes, or comment. Understand the meaning of each. Request changes should be used for issues that must be resolved before merge. Approve means you're satisfied. Comment-only is for feedback that doesn't need to block progress."
-  },
-  {
-    "speaker": "JAMIE",
-    "text": "And step eight?"
-  },
-  {
-    "speaker": "ALEX",
-    "text": "Re-request review for authors when appropriate, especially after updates. In some workflows the author or maintainer handles that, but knowing the concept matters: review is iterative."
+    "text": "Switch back to `main`, pull the latest changes, and delete the feature branch if the project expects that. On GitHub.com, use the merge button and then delete the branch if offered. With the CLI, use commands such as `gh pr merge`, `gh pr merge --squash --delete-branch`, or auto-merge options when checks must pass first."
   },
   {
     "speaker": "PAUSE",
     "text": ""
   },
   {
-    "speaker": "JAMIE",
-    "text": "Now mirror that in VS Code with the Accessible Diff Viewer."
-  },
-  {
     "speaker": "ALEX",
-    "text": "In VS Code, first open the PR for review through the GitHub extension. Then open a changed file. From there, use the Accessible Diff Viewer with F7."
+    "text": "A few problems come up often enough that they are worth recognizing by sound and pattern."
   },
   {
     "speaker": "JAMIE",
-    "text": "What's the navigation model there?"
+    "text": "First one: the panel says there are no pull requests. That can feel like the extension is broken."
   },
   {
     "speaker": "ALEX",
-    "text": "F7 moves to the next change, Shift+F7 moves back. The viewer presents the change in a structured way so you can understand additions and deletions without wrestling with split panes."
+    "text": "Usually it is a filter or repository issue. Switch to an All Open view, confirm the right repository is open, and make sure you are signed in with the account that can see the PRs. If the extension seems stuck, reload the window with `Developer: Reload Window` from the Command Palette."
   },
   {
     "speaker": "JAMIE",
-    "text": "And what makes that better than the raw diff editor?"
+    "text": "What about could not create pull request or authentication failed?"
   },
   {
     "speaker": "ALEX",
-    "text": "Less visual clutter, stronger structure, and more reliable screen reader announcements. Instead of scanning for color and alignment you can't use, you're handed the semantic change."
+    "text": "For PR creation, confirm your branch has commits, the branch is pushed, and the base and compare branches make sense. For authentication, sign in to GitHub in the browser first, close and reopen VS Code, then retry the extension sign-in. If checkout is blocked by permissions, use GitHub.com in read-only mode and still leave your review comment there."
   },
   {
     "speaker": "JAMIE",
-    "text": "Can you place comments in VS Code too?"
+    "text": "And if the diff or comment command is the hard part, use `F7`, search the Command Palette for `GitHub Pull Requests: Add Comment`, or ask a facilitator to model one comment."
   },
   {
     "speaker": "ALEX",
-    "text": "Yes. Once you identify the relevant changed line, use the extension's Add Comment command. So the workflow becomes: open PR, inspect changed files, use Accessible Diff Viewer to understand the edit, then attach a comment at the right location."
-  },
-  {
-    "speaker": "JAMIE",
-    "text": "That feels more controlled than browser review for some learners."
-  },
-  {
-    "speaker": "ALEX",
-    "text": "Often it is, especially if VS Code is already your primary workspace."
+    "text": "For the chapter evidence, post a completion comment in your assigned setup or review practice issue. Include whether the extension is installed, whether you are signed in, which classmate PR you reviewed, whether the comment was inline or on GitHub.com, and a one-sentence summary of what your comment addressed. There is no automation check here because extension state lives in your account and your local VS Code setup."
   },
   {
     "speaker": "PAUSE",
     "text": ""
   },
   {
-    "speaker": "JAMIE",
-    "text": "Let's talk about the content of review comments, because tooling alone doesn't make feedback helpful."
-  },
-  {
     "speaker": "ALEX",
-    "text": "Exactly. A useful review comment usually has three parts: what you noticed, why it matters, and what action or suggestion follows."
+    "text": "The deeper skill is review judgment, not just button finding."
   },
   {
     "speaker": "JAMIE",
-    "text": "Can we do examples?"
+    "text": "So when I review, I am asking: does the PR do what it says, is the change understandable, does it create an accessibility problem, and can another person maintain it later?"
   },
   {
     "speaker": "ALEX",
-    "text": "Definitely. A blocking example for a documentation PR might be: \"Blocking: this keyboard shortcuts page lists a command without indicating the Mac equivalent. That makes the instructions incomplete for Mac users. Please add the Command or Option version here.\""
-  },
-  {
-    "speaker": "JAMIE",
-    "text": "Clear, specific, and tied to the learner's experience."
-  },
-  {
-    "speaker": "ALEX",
-    "text": "A non-blocking nit might be: \"Nit: this welcome paragraph could be shortened into two sentences for easier reading.\" Helpful, but not a merge blocker."
-  },
-  {
-    "speaker": "JAMIE",
-    "text": "And a question example?"
-  },
-  {
-    "speaker": "ALEX",
-    "text": "\"Question: should this setup guide mention that the user must be signed into GitHub before running this command?\" That's not asserting an error as fact. It's inviting clarification."
-  },
-  {
-    "speaker": "JAMIE",
-    "text": "The chapter also mentions prefixes that set expectations."
-  },
-  {
-    "speaker": "ALEX",
-    "text": "Yes. Prefixes like Blocking, Nit, Question, Suggestion, or Praise help the author quickly understand the weight of your comment. That reduces social ambiguity."
+    "text": "Yes. Useful review comments include the issue, the reason it matters, and a possible next action. For example, a blocking comment might say that a heading skips from level two to level four and ask the author to preserve the hierarchy. A non-blocking nit might suggest clearer link text without delaying the merge."
   },
   {
     "speaker": "JAMIE",
@@ -789,302 +289,34 @@
   },
   {
     "speaker": "ALEX",
-    "text": "There's no fixed number. Too many is when you're overwhelming the author with low-value noise or repeating the same point. If you have lots of small issues, look for patterns and combine where appropriate. Prioritize clarity and signal over volume."
+    "text": "If every line gets a comment, the author may not know what matters. Group repeated issues, mark small preferences as nits, and save bigger patterns for the review summary. Review is also a learning tool: explaining what you noticed sharpens your own standards."
+  },
+  {
+    "speaker": "JAMIE",
+    "text": "Where does Copilot fit into this without replacing the reviewer?"
+  },
+  {
+    "speaker": "ALEX",
+    "text": "Use it to help understand unfamiliar code or summarize a diff, but do not outsource the decision. It can miss context, invent certainty, or overlook accessibility impact. The Accessibility Agents collection is a living catalog that can support review work over time, but the human reviewer still owns the judgment."
   },
   {
     "speaker": "PAUSE",
     "text": ""
   },
   {
-    "speaker": "JAMIE",
-    "text": "What about keyboard reference? I know we won't read a giant list, but what should learners remember?"
-  },
-  {
     "speaker": "ALEX",
-    "text": "A few anchor keys matter a lot. In VS Code: Control+Shift+P for Command Palette, Control+Shift+X for Extensions, Control+Shift+E for Explorer, F7 and Shift+F7 for Accessible Diff navigation, and Control+Shift+G for Source Control. On Mac, substitute Command for Control and Option for Alt-based shortcuts."
+    "text": "The same PR workflow now has three doors: VS Code, GitHub.com, and the `gh` CLI."
   },
   {
     "speaker": "JAMIE",
-    "text": "And in the browser?"
+    "text": "And they line up pretty cleanly. View with the PR panel, the browser tabs, or `gh pr view`. Create with the VS Code command, the web form, or `gh pr create`. Review with inline comments and verdicts in the editor, on GitHub.com, or through `gh pr review`. Merge in the PR detail view, with the web button, or with `gh pr merge`."
   },
   {
     "speaker": "ALEX",
-    "text": "The exact keys depend more on your screen reader and browser, but the principle is to use heading, button, link, and region navigation to move efficiently, especially within the Files changed tab and comment controls."
-  },
-  {
-    "speaker": "PAUSE",
-    "text": ""
+    "text": "That is why this episode pairs so naturally with Challenge 11, Challenge 12, and bonus-c. Challenge 11 gets your own branch into a PR. Challenge 12 has you review a classmate with clear, constructive feedback. Bonus-c adds the team layer: divide the work, communicate what changed, and make the review conversation easier for everyone."
   },
   {
     "speaker": "JAMIE",
-    "text": "Now let's handle some common review scenarios, because that's where learners often hesitate."
-  },
-  {
-    "speaker": "ALEX",
-    "text": "Great idea."
-  },
-  {
-    "speaker": "JAMIE",
-    "text": "Scenario one: \"I want to verify the PR only changes what it claims.\""
-  },
-  {
-    "speaker": "ALEX",
-    "text": "Start with the PR description. Then inspect the changed file list. If the PR says it updates one setup document but also changes unrelated files, that's a signal to investigate. You're checking scope alignment."
-  },
-  {
-    "speaker": "JAMIE",
-    "text": "Scenario two: \"I want to find all changes to one specific section.\""
-  },
-  {
-    "speaker": "ALEX",
-    "text": "Use the file tree and search strategically. In VS Code, once the branch is checked out locally, normal editor search can help you find a heading or phrase across files. In the browser, navigate by file and scan for the relevant area."
-  },
-  {
-    "speaker": "JAMIE",
-    "text": "Scenario three: \"I agreed, but then the author made more changes. Did anything new appear?\""
-  },
-  {
-    "speaker": "ALEX",
-    "text": "Return to the updated diff and focus on changes since your last review if the interface offers that view. At minimum, reread the changed files and comment threads so you understand what was added or revised after your earlier approval."
-  },
-  {
-    "speaker": "JAMIE",
-    "text": "Scenario four: \"A reviewer left a comment I don't understand.\""
-  },
-  {
-    "speaker": "ALEX",
-    "text": "Read the surrounding diff, check whether the comment is blocking or optional, and ask for clarification if needed. Review comments are part of collaboration, not judgment from a mountaintop."
-  },
-  {
-    "speaker": "PAUSE",
-    "text": ""
-  },
-  {
-    "speaker": "JAMIE",
-    "text": "There were also structured exercises around this. Can we turn those into an audio walkthrough?"
-  },
-  {
-    "speaker": "ALEX",
-    "text": "Absolutely. Exercise A is a complete web review. First, navigate to the pull request. Second, read the PR description. Third, go to Files changed. Fourth, if available, activate focus mode or whatever reading mode improves diff clarity for you. Fifth, find a heading hierarchy issue. Sixth, place a blocking review comment on that heading. Seventh, find a link text issue. Eighth, place a comment on the link. Ninth, submit your review."
-  },
-  {
-    "speaker": "JAMIE",
-    "text": "And then reflect."
-  },
-  {
-    "speaker": "ALEX",
-    "text": "Yes. Ask yourself what was easy, what was difficult, and what clues helped you orient inside the diff."
-  },
-  {
-    "speaker": "JAMIE",
-    "text": "Exercise B shifts to VS Code."
-  },
-  {
-    "speaker": "ALEX",
-    "text": "Right. Make sure the extension is installed. Open the GitHub Pull Requests extension. Open the Pull Requests sidebar. View the changed files for a PR. Access the Accessible Diff Viewer with F7. Listen to the first change carefully. Find the heading hierarchy issue. Locate the heading line and add an inline comment. Write your accessible diff comment. Then create the GitHub PR comment through the extension."
-  },
-  {
-    "speaker": "JAMIE",
-    "text": "And again, reflect on the experience."
-  },
-  {
-    "speaker": "ALEX",
-    "text": "Yes. Especially compare how much context you retained in VS Code versus the web interface."
-  },
-  {
-    "speaker": "JAMIE",
-    "text": "Then Exercise C is the comparison exercise."
-  },
-  {
-    "speaker": "ALEX",
-    "text": "Exactly. Gather your data from both review environments. Navigate to the PR or designated place to leave a reflection comment. Write your comparison of browser versus VS Code. Then review your comment, submit it, and validate your learning at the checkpoint."
-  },
-  {
-    "speaker": "PAUSE",
-    "text": ""
-  },
-  {
-    "speaker": "JAMIE",
-    "text": "Let's do that reflection out loud. Browser versus VS Code: how should learners think about preference?"
-  },
-  {
-    "speaker": "ALEX",
-    "text": "Ask which environment made orientation easier, which made comment placement easier, and which made the diff itself easier to understand."
-  },
-  {
-    "speaker": "JAMIE",
-    "text": "So, specific strengths."
-  },
-  {
-    "speaker": "ALEX",
-    "text": "Yes. Maybe the browser made overall PR context easier because the discussion, checks, and review form are native there. Maybe VS Code made the actual code or document changes easier because the Accessible Diff Viewer reduced clutter."
-  },
-  {
-    "speaker": "JAMIE",
-    "text": "And the real-world impact?"
-  },
-  {
-    "speaker": "ALEX",
-    "text": "In real collaborative work, you don't need a single perfect tool. You need the judgment to choose the environment that best supports the task and your access needs."
-  },
-  {
-    "speaker": "PAUSE",
-    "text": ""
-  },
-  {
-    "speaker": "JAMIE",
-    "text": "The chapter also introduces GitHub Copilot during code review. This is one of those areas where people can either overtrust it or ignore it completely."
-  },
-  {
-    "speaker": "ALEX",
-    "text": "Well said. Copilot can help you understand code changes, summarize a diff, explain an unfamiliar pattern, or suggest questions to investigate. In VS Code, that might happen with an open diff. On GitHub.com, it may assist through integrated features depending on your setup."
-  },
-  {
-    "speaker": "JAMIE",
-    "text": "Can you give an example exchange?"
-  },
-  {
-    "speaker": "ALEX",
-    "text": "Sure. You might ask Copilot, \"Explain what changed in this diff and what risk areas I should inspect.\" Or, \"Summarize the functional impact of these additions.\" That can give you a starting frame."
-  },
-  {
-    "speaker": "JAMIE",
-    "text": "But not a final verdict."
-  },
-  {
-    "speaker": "ALEX",
-    "text": "Exactly. Copilot has limitations that are critical to know. It can misread intent, miss context outside the diff, sound confident when uncertain, and overlook project-specific requirements. Best practice is to use it as a helper for understanding, not as a substitute for reviewing."
-  },
-  {
-    "speaker": "JAMIE",
-    "text": "So skill first, assistant second."
-  },
-  {
-    "speaker": "ALEX",
-    "text": "Always."
-  },
-  {
-    "speaker": "PAUSE",
-    "text": ""
-  },
-  {
-    "speaker": "JAMIE",
-    "text": "That phrase actually connects to the final part: the reviewer's craft."
-  },
-  {
-    "speaker": "ALEX",
-    "text": "It does. Good reviewing is not just clicking buttons. It's noticing important things, weighing their impact, and communicating clearly."
-  },
-  {
-    "speaker": "JAMIE",
-    "text": "What should a reviewer look for?"
-  },
-  {
-    "speaker": "ALEX",
-    "text": "Start with purpose. Does the change do what the PR says it does? Then clarity. Is the code or documentation understandable? Then correctness. Then accessibility. Then consistency with project style. Then testing or evidence. And finally scope: are there unrelated changes that should be split out?"
-  },
-  {
-    "speaker": "JAMIE",
-    "text": "And the three review actions fit into that judgment."
-  },
-  {
-    "speaker": "ALEX",
-    "text": "Yes. Approve when the work is ready. Request changes when there are blockers. Comment-only when you want to contribute feedback without stopping progress."
-  },
-  {
-    "speaker": "JAMIE",
-    "text": "How do you write constructive feedback instead of demoralizing feedback?"
-  },
-  {
-    "speaker": "ALEX",
-    "text": "Focus on the work, not the person. Be specific. Explain why. Offer a path forward. Use respectful language. And include positive observations when they're real, not performative."
-  },
-  {
-    "speaker": "JAMIE",
-    "text": "So something like, \"This section is strong because the steps are explicit, but one accessibility issue remains: the link text 'click here' doesn't describe the destination. Please revise it to the page name.\""
-  },
-  {
-    "speaker": "ALEX",
-    "text": "Perfect example. Clear praise, clear issue, clear next step."
-  },
-  {
-    "speaker": "JAMIE",
-    "text": "Is there a reviewer checklist we can leave listeners with?"
-  },
-  {
-    "speaker": "ALEX",
-    "text": "Yes. Before submitting a review, ask: Did I understand the PR description? Did I inspect the changed files rather than guessing? Did I verify the scope matches the claim? Did I note any accessibility, correctness, or clarity issues? Are my comments actionable? Did I choose the right verdict? And if I used Copilot or another aid, did I independently verify its suggestions?"
-  },
-  {
-    "speaker": "JAMIE",
-    "text": "I like that. Reviewing becomes a learning tool too, doesn't it?"
-  },
-  {
-    "speaker": "ALEX",
-    "text": "Absolutely. Reviewing teaches you to recognize quality. You start noticing patterns in structure, clarity, tests, accessibility, and collaboration. That makes you a stronger author as well as a stronger reviewer."
-  },
-  {
-    "speaker": "PAUSE",
-    "text": ""
-  },
-  {
-    "speaker": "JAMIE",
-    "text": "There's also a teaser about a larger accessibility agents review ecosystem."
-  },
-  {
-    "speaker": "ALEX",
-    "text": "Yes. The idea is that more tools and agents can assist with code review, perhaps by surfacing patterns, checking policies, or helping summarize changes. But the guiding principle remains the same: skill first, agent second."
-  },
-  {
-    "speaker": "JAMIE",
-    "text": "So agents help, but they do not replace human judgment."
-  },
-  {
-    "speaker": "ALEX",
-    "text": "Exactly. A real review flow might include you reading the PR, using accessibility tools to inspect the diff, optionally asking an assistant for a summary or risk checklist, then making your own decision and writing your own review comment."
-  },
-  {
-    "speaker": "PAUSE",
-    "text": ""
-  },
-  {
-    "speaker": "JAMIE",
-    "text": "Before we close, can we restate the practical takeaways from the whole lesson?"
-  },
-  {
-    "speaker": "ALEX",
-    "text": "Of course. Install and sign in to the GitHub Pull Requests and Issues extension. Use it to view pull requests, filter them, and open details. Check out a PR branch when local testing or deeper inspection will help. Review changed files in VS Code, and for screen reader users, strongly prefer the Accessible Diff Viewer with F7 and Shift+F7. Create pull requests from VS Code when convenient, but don't hesitate to open the form in the browser if accessibility is better there. Use PR templates fully and thoughtfully. Add inline comments that are specific, respectful, and actionable. Batch comments into a review when needed, then choose approve, request changes, or comment-only. Merge only when prerequisites are satisfied, and clean up afterward by returning to main, pulling, and deleting old branches when appropriate."
-  },
-  {
-    "speaker": "JAMIE",
-    "text": "And on the craft side: understand the change, evaluate its impact, set expectation with comment prefixes, avoid noisy review behavior, and remember that reviewing is part of learning."
-  },
-  {
-    "speaker": "ALEX",
-    "text": "Exactly. Also remember your fallback paths. If the extension gives you trouble, reload the window. If authentication fails, re-establish browser sign-in. If checkout isn't allowed, review on GitHub.com. If the visual diff is too chaotic, use the accessible tools designed for this job."
-  },
-  {
-    "speaker": "JAMIE",
-    "text": "I think that's the reassuring note many learners need: there is almost always another route."
-  },
-  {
-    "speaker": "ALEX",
-    "text": "There is. Good collaboration isn't about forcing yourself through one interface. It's about using the tools that let you understand the change and communicate effectively."
-  },
-  {
-    "speaker": "JAMIE",
-    "text": "And if you're doing the practice work tied to this lesson, your evidence comment should say whether the extension was installed, whether you signed in, which PR you reviewed, whether your comment was inline or on GitHub.com, and what your comment was about."
-  },
-  {
-    "speaker": "ALEX",
-    "text": "Exactly. Then close out any related challenge issues if your course setup uses them."
-  },
-  {
-    "speaker": "JAMIE",
-    "text": "All right. Today's lesson was a big one, but the through-line is simple: make pull requests manageable, make diffs readable, and make feedback constructive."
-  },
-  {
-    "speaker": "ALEX",
-    "text": "Beautifully said. We'll stop there."
+    "text": "So the takeaway is not that everyone must abandon the browser. It is that you can choose the environment that keeps you oriented, verify the change with accessible tools, and leave feedback that helps the project move forward."
   }
 ]

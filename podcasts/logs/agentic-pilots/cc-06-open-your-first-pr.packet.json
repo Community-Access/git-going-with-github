@@ -1,0 +1,1007 @@
+{
+  "generatedAt": "2026-05-18T23:43:40.907Z",
+  "schemaVersion": 2,
+  "kind": "challenge",
+  "slug": "cc-06-open-your-first-pr",
+  "title": "Challenge 06: Open Your First Pull Request",
+  "description": "Opening a pull request, comparing branches, and using closing keywords.",
+  "concepts": [
+    "Opening a pull request, comparing branches, and using closing keywords.",
+    "Challenge title: Open Your First Pull Request"
+  ],
+  "transcriptPath": "C:\\code\\git-going-with-github\\podcasts\\scripts\\challenges\\cc-06-open-your-first-pr.txt",
+  "chapterPlanPath": "C:\\code\\git-going-with-github\\podcasts\\transcripts\\challenges\\cc-06-open-your-first-pr-chapters.json",
+  "transcriptText": "[ALEX]\nWelcome back. Today we're working with pull requests, and for a lot of learners, this is the moment GitHub starts to feel real. A pull request is where a private branch change becomes a proposed contribution.\n\n[JAMIE]\nAnd for some people, it's also where everything suddenly feels more complicated. There's a branch, an issue, a form, checks, comments, tabs, diffs. So can we frame this simply before we go deep?\n\n[ALEX]\nAbsolutely. Think of the workflow as a short chain. First, you make a focused change on a branch. Then you open a pull request from that branch into `main`. In the pull request description, you connect the change to the reason by linking the issue, usually with text like `Closes #12`. Then GitHub and, sometimes, repository bots run checks. Reviewers read the description, inspect the diff, maybe comment, and eventually someone merges it.\n\n[JAMIE]\nSo the pull request is not just \"here's my code.\" It's also \"here's why this exists.\"\n\n[ALEX]\nExactly. And that issue linkage matters. This chapter's challenge is specifically about opening your first PR from your branch to `main` and linking it to the issue you filed earlier. That connection is one of GitHub's most powerful workflow features.\n\n[PAUSE]\n\n[ALEX]\nBefore the hands-on part, a few accessibility and setup notes matter. This lesson is built for keyboard and screen reader workflows. GitHub's pull request interface is usable, but it's much easier if you understand landmarks, headings, and when to switch between reading and typing modes.\n\n[JAMIE]\nLet's make that concrete for NVDA users.\n\n[ALEX]\nFor NVDA, stay in Browse Mode for reading conversation threads, jumping by heading, moving through landmarks, and reviewing diffs. Switch to Focus Mode with `NVDA+Space` only when you need to type in an edit field, search box, or comment field. Then switch back to Browse Mode when you're done typing. Also, maximizing the browser window often makes landmark layout more consistent.\n\n[JAMIE]\nAnd there was also a note about GitHub's newer Files Changed experience, right?\n\n[ALEX]\nYes. The improved Files Changed interface adds better ARIA structure for the file tree and diff navigation. Depending on the account, it may already be enabled automatically. If someone wants to verify, they can open the GitHub user menu, look for Feature Preview, and check whether the New Files Changed Experience is enabled. If it's missing from the preview list entirely, that usually means it has already become the standard interface.\n\n[JAMIE]\nThat matters because the diff is where many screen reader users either feel empowered or lost.\n\n[ALEX]\nExactly. Good structure makes the difference.\n\n[PAUSE]\n\n[ALEX]\nThis chapter is also the first PR-validated chapter in the workshop flow. The pattern is intentionally small and repeatable: make one small change, open a linked PR, then pass required checks.\n\n[JAMIE]\nSo not a giant feature. Not ten edits. One focused change.\n\n[ALEX]\nRight. The workshop recommendation is three short challenges, each designed to take under about ten minutes. The evidence of completion is not just that you changed a file. It's the PR metadata, the issue linkage, and the check results.\n\n[JAMIE]\nWhat are the three challenge steps?\n\n[ALEX]\nFirst, create one small branch change. Second, open a linked PR. Third, respond to feedback until required checks pass.\n\n[JAMIE]\nAnd there was some command-line guidance here too.\n\n[ALEX]\nYes. If you use the CLI, keep a few principles in mind. Check your current branch before you push with `git branch --show-current`. Keep each PR small and focused. Confirm the issue linkage is present in plain text, like `Closes #number`. After each push, check status with `gh pr checks`. And when you use GitHub CLI, prefer documented command options by consulting help output rather than guessing.\n\n[PAUSE]\n\n[JAMIE]\nLet's talk branch naming, because beginners often get tangled there.\n\n[ALEX]\nGood place to pause. In this workshop, beginners are encouraged to use the web editor. When you edit on GitHub and choose to propose changes, GitHub can create the branch for you automatically. A suggested naming pattern is something like `fix/yourname-issue42`.\n\n[JAMIE]\nAnd there's an important warning: don't just keep piling unrelated work onto the long-lived learning branch unless the facilitator explicitly tells you to.\n\n[ALEX]\nExactly. For this chapter, short-lived feature branches are better because they teach the pull request loop cleanly. If you're working locally instead of in the web editor, you'd create that branch yourself from `main`, for example with `git checkout -b fix/yourname-issue42`.\n\n[JAMIE]\nSo there are two paths: web editor for the gentle on-ramp, local Git for people already comfortable working in a clone.\n\n[ALEX]\nThat's right.\n\n[PAUSE]\n\n[ALEX]\nNow let's walk the first challenge path in detail. The goal is to edit one practice file and save that change on a new branch.\n\n[JAMIE]\nAnd the learner begins in their Learning Room repository, using GitHub.com.\n\n[ALEX]\nYes. They start by opening their assigned challenge issue for this step. That issue tells them which file to edit and what kind of fix to make.\n\n[JAMIE]\nWhat kinds of files are they likely to see?\n\n[ALEX]\nThree typical practice files are used. `docs/welcome.md`, which has missing content marked with TODO placeholders. `docs/keyboard-shortcuts.md`, which contains intentionally incorrect shortcut references. And `docs/setup-guide.md`, which may contain broken links or incomplete instructions.\n\n[JAMIE]\nSo the learner is not inventing a project from scratch. They're practicing realistic maintenance work.\n\n[ALEX]\nExactly. Very small, concrete repairs.\n\n[JAMIE]\nWhat's the actual editing path?\n\n[ALEX]\nNavigate to the specified file, either through the repository file tree or with the Go to file shortcut, `T`. Open the file. Then activate the Edit this file button, usually the pencil icon.\n\n[JAMIE]\nAnd for screen reader users?\n\n[ALEX]\nNVDA or JAWS users can move by buttons, often with `B`, until they hear Edit this file, then press Enter. VoiceOver users can use the rotor, go to buttons, find Edit this file, and activate it with `VO+Space`.\n\n[JAMIE]\nThen they make exactly the requested change.\n\n[ALEX]\nYes. If the issue points to a TODO section, replace the placeholder with the requested content. If it's a broken link, correct the URL. If it's a shortcut error, fix the incorrect shortcut entry. Keep the scope small. Edit only what the issue asks for.\n\n[PAUSE]\n\n[ALEX]\nAfter editing comes the branch creation step. In the web editor, activate the Commit changes button. A dialog appears. In the branch name field, enter a short descriptive branch name, such as `fix/yourname-issueXX`.\n\n[JAMIE]\nAnd then choose the option that creates a new branch and starts a pull request.\n\n[ALEX]\nRight. Then activate Propose changes. At that point, GitHub saves the change on the new branch and usually opens the page for creating a pull request.\n\n[JAMIE]\nSo the success condition for that first part is not \"I typed some words.\" It's \"GitHub has my change on a branch and has taken me to the PR flow.\"\n\n[ALEX]\nExactly.\n\n[PAUSE]\n\n[JAMIE]\nNow we're on the open pull request page. What should the learner focus on first?\n\n[ALEX]\nThree things: the title, the body, and the branch relationship. The base branch should be `main`. The compare branch should be the feature branch they just created.\n\n[JAMIE]\nLet's talk title first. What makes a good PR title?\n\n[ALEX]\nA good title clearly describes the change so that someone scanning a list understands what happened without opening the PR. It should be short enough to scan, but specific enough to be meaningful.\n\n[JAMIE]\nCan you give examples?\n\n[ALEX]\nSure. \"Complete the Who Can Contribute section in welcome.md.\" Or \"Fix broken accessibility settings link in setup-guide.md.\" Or \"Correct NVDA modifier key in keyboard-shortcuts.md.\"\n\n[JAMIE]\nSo better than something vague like \"update file\" or \"changes.\"\n\n[ALEX]\nMuch better.\n\n[JAMIE]\nAnd the body?\n\n[ALEX]\nThe body should answer two basic questions: what changed, and why. A simple template works well.\n\n[ALEX]\n## What this changes\nOne sentence describing the change.\n\n## Why\nOne sentence explaining why it matters.\n\nCloses #XX\n\n[JAMIE]\nThat's refreshingly small.\n\n[ALEX]\nIt is. And it's enough to teach the important habit: every change should be connected to a reason.\n\n[PAUSE]\n\n[JAMIE]\nCan we hear a full example?\n\n[ALEX]\nCertainly. Imagine a PR titled: \"Fix TODO: add workshop schedule link to welcome.md.\"\n\nThen the body might say:\n\n## What this changes\nReplaces the TODO placeholder on line 15 of `docs/welcome.md` with an actual link to the workshop schedule.\n\n## Why\nStudents need a working link to find session times. The TODO was a known gap filed in issue number 3.\n\nCloses #3\n\n[JAMIE]\nThat's nice because a reviewer can immediately understand the file, the exact type of fix, and the reason.\n\n[ALEX]\nExactly. It's clear, scannable, and linked.\n\n[JAMIE]\nAnd that `Closes #3` line is doing real work.\n\n[ALEX]\nYes. It creates a two-way link. The issue will show that it is referenced by the PR, and the PR will show that it closes the issue. When the PR is merged, GitHub automatically closes the issue.\n\n[JAMIE]\nThat automation is one of those small things that makes a repository feel organized instead of chaotic.\n\n[ALEX]\nWell said.\n\n[PAUSE]\n\n[JAMIE]\nAre learners limited to the exact word `Closes`?\n\n[ALEX]\nNo. `Closes #3`, `Fixes #3`, and `Resolves #3` all work the same way for issue-linking in this context.\n\n[JAMIE]\nSo if someone writes `Fixes #12` instead of `Closes #12`, they're still fine.\n\n[ALEX]\nYes. The main learning objective is the relationship: a PR should reference the issue it resolves.\n\n[JAMIE]\nAnd if they forget the line when creating the PR?\n\n[ALEX]\nThey can edit the PR description afterward. On the description block, use the edit control or the more options menu, add the line, and save.\n\n[PAUSE]\n\n[ALEX]\nNow, in the challenge workflow, after the learner fills out the title and body, they activate Create pull request.\n\n[JAMIE]\nAnd then the checks begin.\n\n[ALEX]\nUsually within about thirty seconds. The Conversation tab is often where the first validation feedback appears.\n\n[JAMIE]\nWhat kinds of things are checked?\n\n[ALEX]\nThis workshop's validation bot checks for issue linkage, like the presence of `Closes #XX`. It checks whether the description is detailed enough, not just a one-word note. It verifies that the changed files are in the expected learning-room area. And it may check accessibility-related quality, such as heading hierarchy, descriptive link text, and valid alt text.\n\n[JAMIE]\nSo the PR is not just judged on whether it exists, but also on whether it communicates and follows accessibility expectations.\n\n[ALEX]\nExactly. That's an important part of contribution quality.\n\n[JAMIE]\nAnd if checks fail?\n\n[ALEX]\nRead the bot feedback carefully. Make the needed corrections on the same branch. Push or commit the fix, depending on your workflow, and GitHub reruns the checks. If the repository uses automated checks, a green checkmark appears once they pass.\n\n[JAMIE]\nSo passing checks is not a side quest. It's part of the core PR loop.\n\n[ALEX]\nYes. Open PR, read feedback, revise, recheck.\n\n[PAUSE]\n\n[JAMIE]\nBefore we broaden the lesson, can we explicitly name what matters most for Challenge 6?\n\n[ALEX]\nCertainly. If your PR has a clear title, a body that explains what changed and why, and a linked issue reference such as `Closes #number`, then you have achieved the essential learning goal. The point is connecting a change to a reason through GitHub's linking system.\n\n[JAMIE]\nAnd there was also an evidence requirement.\n\n[ALEX]\nYes. Learners are asked to paste the URL of their pull request as evidence, and they may also note which issue the PR links to.\n\n[JAMIE]\nPlus a peer simulation step.\n\n[ALEX]\nRight. Find the Peer Simulation PR about improving contribution guidance and leave an encouraging comment. If you have access to a real buddy's PR, you can comment there too. The full review workflow comes later, but even now, leaving a constructive comment helps learners enter the social rhythm of pull requests.\n\n[PAUSE]\n\n[JAMIE]\nAnd if someone gets stuck during PR creation, there were a few very practical troubleshooting notes.\n\n[ALEX]\nYes. If you can't find the New pull request button, make sure you are on the Pull requests tab; it's usually near the top right. If GitHub says, \"There isn't anything to compare,\" your branch may not actually contain a commit that differs from `main`, or you may have committed on the wrong branch. If you forgot `Closes #XX`, edit the description after the PR is created. And if you want to compare your work to a model, use the solution reference.\n\n[JAMIE]\nThat's reassuring. Most early PR problems are not mysterious, just workflow mismatches.\n\n[ALEX]\nExactly.\n\n[PAUSE]\n\n[JAMIE]\nLet's widen the lens. What is a pull request, in plain language?\n\n[ALEX]\nA pull request is a proposal to merge changes from one branch into another branch. It gives collaborators a place to discuss the change, inspect the diff, run checks, request revisions, and eventually merge. It is both a technical object and a conversation space.\n\n[JAMIE]\nSo it includes metadata, discussion, and code comparison.\n\n[ALEX]\nYes. And that's why learning to navigate it accessibly matters.\n\n[PAUSE]\n\n[ALEX]\nThere are several ways to navigate to pull requests. You might arrive from a notification, for example if someone requested your review or commented on your PR. You can also go directly to the Pull requests tab in a repository.\n\n[JAMIE]\nAnd for terminal users?\n\n[ALEX]\nThe CLI gives you several options. You can list open PRs, filter by review status, inspect a specific PR in the terminal, or open a PR in your browser. The exact subcommands can vary over time, so the safe habit is to consult `gh pr --help` and use documented flags.\n\n[JAMIE]\nThat matches the earlier principle: prefer documented command options.\n\n[ALEX]\nExactly.\n\n[JAMIE]\nOn the web, what does the PR list page offer?\n\n[ALEX]\nA list of open, closed, or merged pull requests, each with a title, author, status indicators, and sometimes review or check summaries. Good PR titles matter here because people often decide what to open based on the list alone.\n\n[PAUSE]\n\n[JAMIE]\nOnce a learner opens a specific PR, what should they expect on the page?\n\n[ALEX]\nThe PR page has several major areas. There's header information with the title and branch relationship. There's a tab bar, often including Conversation, Commits, Checks, and Files changed. The Conversation tab contains the description, timeline events, bot comments, and review discussion. Other tabs let you inspect commits, CI details, and the diff itself.\n\n[JAMIE]\nSo if someone feels overwhelmed, a good strategy is to think: first read the description, then the status, then comments, then the actual changed files.\n\n[ALEX]\nExactly. That sequence works well.\n\n[PAUSE]\n\n[ALEX]\nLet's go tab by tab.\n\n[JAMIE]\nStart with Conversation.\n\n[ALEX]\nIn the Conversation tab, read the PR description first. This tells you what the author believes changed and why. Then locate the status checks area, where you may hear whether checks are pending, passing, or failing. After that, review comments and timeline events.\n\n[JAMIE]\nAnd comment resolution matters too.\n\n[ALEX]\nYes. In review conversations, some comments are part of a thread that can be marked resolved once the concern has been addressed. Resolving a conversation signals that the issue was handled, though teams differ on who should resolve it and when.\n\n[JAMIE]\nSo a learner should read not just the first comment, but the whole thread, because the answer may already be there.\n\n[ALEX]\nPrecisely.\n\n[PAUSE]\n\n[JAMIE]\nWhat about the Commits tab?\n\n[ALEX]\nThe Commits tab shows the individual commits included in the PR. That can be useful for understanding how the work evolved, especially if there were follow-up fixes after review.\n\n[JAMIE]\nAnd the Checks tab?\n\n[ALEX]\nThe Checks tab is where you inspect automated validation results in more detail. If a status line says something failed, the Checks tab often contains the actionable information: what job ran, what step failed, and sometimes a log or annotation.\n\n[JAMIE]\nSo for accessibility learners, the principle is: don't stop at \"failed.\" Open the area that tells you why.\n\n[ALEX]\nExactly. Treat failure output as guidance, not as a verdict on your ability.\n\n[PAUSE]\n\n[JAMIE]\nNow the big one: Files changed.\n\n[ALEX]\nYes, the Files changed tab is where you inspect the diff. GitHub's newer experience provides a left-side file tree and a main diff panel.\n\n[JAMIE]\nLet's describe both.\n\n[ALEX]\nThe file tree lists changed files, helping you jump directly to a file of interest. The diff panel shows additions, deletions, and context lines for the selected file.\n\n[JAMIE]\nHow are lines in a diff read conceptually?\n\n[ALEX]\nA removed line is read as a deletion, often marked with a minus. An added line is read as an addition, often marked with a plus. Context lines are unchanged lines shown around the edit to help you understand location.\n\n[JAMIE]\nSo a diff is not the whole file. It's a focused representation of what changed, with just enough surroundings to orient you.\n\n[ALEX]\nExactly.\n\n[JAMIE]\nWhat's a good screen reader strategy for this tab?\n\n[ALEX]\nUse headings and landmarks aggressively. Jump among changed file headings. Read the file title, then move into the diff content. If your screen reader announces line-level controls, listen for whether a line is added, removed, or unchanged context. Move deliberately. Don't try to ingest the entire diff in one sweep.\n\n[JAMIE]\nAnd inline comments?\n\n[ALEX]\nYou can place an inline comment on a diff line using the comment controls attached to that line. GitHub also supports multi-line comments, with slightly different keyboard interaction patterns on Windows and macOS. The key idea is that you can comment on a specific span of changed lines, not just leave a general note.\n\n[JAMIE]\nAnd when reviewing an existing PR, comments may appear inside the diff too.\n\n[ALEX]\nYes. Part of reading the Files changed tab is noticing comments embedded near the changed code or text. Those often contain the most specific feedback.\n\n[PAUSE]\n\n[JAMIE]\nLet's return to opening a PR, but now as a broader skill rather than just the workshop challenge.\n\n[ALEX]\nGood idea. A PR can begin from the web editor workflow, where you edit a file on GitHub and then propose changes. It can also begin from a fork or a feature branch created locally. In either case, the important form fields are the title and description.\n\n[JAMIE]\nAnd if the repository offers a template, use it.\n\n[ALEX]\nAbsolutely. Templates reduce ambiguity and make review easier.\n\n[JAMIE]\nWhat kind of sections often appear in a strong PR description?\n\n[ALEX]\nA strong structure often includes a summary, a list of changes, related issues, testing, and, if relevant, screenshots or recordings. For accessibility or documentation work, screenshots may be less central than in UI-heavy projects, but they can still help if something visual changed.\n\n[JAMIE]\nSo the simple workshop template is the beginner version of a broader professional habit.\n\n[ALEX]\nExactly. Start with what and why. Add testing details and evidence as the work becomes more complex.\n\n[PAUSE]\n\n[JAMIE]\nCan we talk about draft pull requests?\n\n[ALEX]\nYes. A draft PR is useful when you want to share work early but are not yet ready for formal review or merge. It signals \"please don't treat this as finished.\"\n\n[JAMIE]\nWhen should someone use a draft?\n\n[ALEX]\nWhen the implementation is incomplete, when you want early feedback on direction, when checks are still being stabilized, or when you want visibility without implying readiness.\n\n[JAMIE]\nWhat does a draft PR do differently?\n\n[ALEX]\nIt changes the PR state so reviewers know it is not ready for approval in the usual way. It may limit merge actions until it is marked ready for review. It's a communication tool as much as a technical status.\n\n[JAMIE]\nAnd later, the author can mark it ready for review.\n\n[ALEX]\nExactly. There is a control to convert draft to ready. There's also typically a path to convert an open PR back into draft if needed. In CLI-oriented workflows, you can also create a draft PR, check whether a PR is in draft state, and list only draft PRs.\n\n[JAMIE]\nSo draft is not a dead end. It's part of the lifecycle.\n\n[ALEX]\nRight.\n\n[PAUSE]\n\n[JAMIE]\nWhat about requesting reviewers?\n\n[ALEX]\nRequesting reviewers formally asks specific collaborators to examine the PR. It helps route work and makes expectations clearer.\n\n[JAMIE]\nAnd when you're the reviewer, you need to know how to submit a review, not just a comment.\n\n[ALEX]\nYes. A review can contain line comments plus an overall verdict. Typically the choices are approve, request changes, or leave a comment-only review with no verdict.\n\n[JAMIE]\nWalk us through that flow.\n\n[ALEX]\nYou usually start by reading the diff and optionally adding comments as part of a pending review. Then, when ready, you choose Submit review. From there, you can approve the PR, approve with a summary comment, request changes if something must be fixed before merge, or leave a neutral comment-only review.\n\n[JAMIE]\nAnd terminal users can review too.\n\n[ALEX]\nYes. You can inspect a PR diff in the terminal, and GitHub CLI supports actions like approving a PR, approving with a comment, requesting changes, or leaving a comment-only review. Again, use help text for exact syntax.\n\n[PAUSE]\n\n[JAMIE]\nThere was also a note about keyboard shortcuts on GitHub pages.\n\n[ALEX]\nYes. GitHub includes shortcuts that can speed navigation on the PR list page, on an open PR, and on the Files changed tab. These are useful, but for screen reader users they should be adopted carefully because some keystrokes can conflict with browser or assistive technology commands. Learn a few that fit your setup rather than trying to memorize everything.\n\n[JAMIE]\nSo landmarks and headings remain the reliable baseline.\n\n[ALEX]\nExactly.\n\n[PAUSE]\n\n[JAMIE]\nI'm glad this chapter also covers suggested changes, because that can seem mysterious at first.\n\n[ALEX]\nSuggested changes are structured code or text replacements that a reviewer can propose directly in a review comment. As a reviewer, you can insert a suggestion for a specific change instead of just describing it in prose.\n\n[JAMIE]\nAnd as the author?\n\n[ALEX]\nAs the author, you can often apply an accepted suggestion directly from the PR interface. Multiple suggestions can sometimes be batched into one commit, which keeps history tidy.\n\n[JAMIE]\nWhen should a reviewer use a suggestion instead of a regular comment?\n\n[ALEX]\nUse a suggestion when the fix is small, concrete, and easy to express exactly. Use a regular comment when the issue is conceptual, exploratory, or requires discussion rather than a single replacement.\n\n[PAUSE]\n\n[JAMIE]\nNow let's switch perspectives again. Suppose someone is a maintainer. What merge options should they understand?\n\n[ALEX]\nThree common options are merge commit, squash and merge, and rebase and merge. A merge commit preserves the branch history as a distinct merge event. Squash and merge combines the PR's commits into one commit on the target branch. Rebase and merge reapplies commits onto the target branch without a merge commit.\n\n[JAMIE]\nAnd there's also the choice to delete the branch afterward.\n\n[ALEX]\nYes. Deleting the branch after merging helps keep the repository tidy, especially for short-lived feature branches.\n\n[JAMIE]\nAnd auto-merge?\n\n[ALEX]\nAuto-merge lets a PR merge automatically once required conditions are met, such as approvals and passing checks. It's useful when everything is ready except a pending check and you do not want to wait around watching the page.\n\n[JAMIE]\nHow does a user enable it?\n\n[ALEX]\nOn the PR page, if the repository allows it and the necessary prerequisites are in place, there is an option to enable auto-merge. Screen reader users should navigate the action controls near merge options. Once enabled, GitHub waits for requirements to pass, then merges automatically.\n\n[JAMIE]\nAnd if circumstances change?\n\n[ALEX]\nYou can cancel auto-merge before it completes.\n\n[PAUSE]\n\n[JAMIE]\nWhat happens after a PR is merged?\n\n[ALEX]\nIf the description included `Closes #number`, the linked issue closes automatically. The branch may be deleted. The PR moves from open to merged state. And the change becomes part of the target branch history.\n\n[JAMIE]\nSo merge is not just the end of the conversation. It also updates project state.\n\n[ALEX]\nExactly.\n\n[PAUSE]\n\n[JAMIE]\nCan we walk through a few practical scenarios learners may face?\n\n[ALEX]\nCertainly. Scenario one: \"I want to review an assigned PR.\" Start at notifications or the PR list, open the PR, read the description first, inspect checks, then review the Files changed tab. Leave inline comments where needed, then submit a review.\n\n[JAMIE]\nScenario two: \"I want to respond to review feedback on my PR.\"\n\n[ALEX]\nOpen the PR conversation and diff comments. Read each thread fully. Make changes on the same branch. Reply to comments if explanation helps. Then push updates, let checks rerun, and resolve conversations when appropriate.\n\n[JAMIE]\nScenario three: \"My PR has a merge conflict.\"\n\n[ALEX]\nThat means the branch can no longer merge cleanly into the base branch. The author needs to update the branch, often by bringing it up to date with `main` and resolving conflicts either locally or using GitHub's conflict tools if available. The key is to read carefully and avoid accidental content loss.\n\n[PAUSE]\n\n[JAMIE]\nWhat are some common PR mistakes to avoid?\n\n[ALEX]\nOpening a PR with a vague title. Leaving the description blank or too thin to explain intent. Forgetting to link the related issue. Mixing unrelated changes into one PR. Ignoring failing checks. And treating reviewer comments as interruptions instead of part of the collaboration process.\n\n[JAMIE]\nThat makes sense. And the chapter also goes deeper on PR descriptions.\n\n[ALEX]\nYes. Writing PR descriptions that get reviewed is a genuine skill. Reviewers look for clarity, scope, reason, and confidence that the author understands the impact of the change.\n\n[JAMIE]\nCan you name a few especially useful patterns?\n\n[ALEX]\nOne is the `Closes XX` pattern for issue linkage. Another is before-and-after structure, where you briefly explain what was true before and what is true now. And a reusable template helps authors avoid missing the essentials.\n\n[JAMIE]\nWhat might such a template include?\n\n[ALEX]\nA summary, changes made, related issues, testing, and a checklist. For example: what did you change, why, which issue does it address, how did you test it, and did you review for obvious errors before requesting review?\n\n[JAMIE]\nAnd common description mistakes?\n\n[ALEX]\nBeing too vague, omitting the why, burying the issue number in a wall of text, or claiming testing that wasn't actually done.\n\n[PAUSE]\n\n[JAMIE]\nI want to come back to the challenge's solution reference one more time, because it's a neat model.\n\n[ALEX]\nIt is. The solution shows a complete PR with a clear title, a concise body, and linked issue syntax. The key elements are simple but powerful: a title that says what happened, a body that explains what and why, an issue link like `Closes #N`, and attention to automated checks.\n\n[JAMIE]\nAnd if the checks are green, that signals the repository's automated validation agrees the PR meets the baseline expectations.\n\n[ALEX]\nExactly. If checks fail, read the bot's feedback and revise. That feedback loop is part of the lesson, not evidence that you failed the lesson.\n\n[PAUSE]\n\n[JAMIE]\nThere's also a local Git alternative in this chapter, and I think it's worth making that explicit for learners who already cloned the repo.\n\n[ALEX]\nCertainly. The full local workflow is: start from `main`, create a feature branch, make the small edit locally, commit it, push the branch to GitHub, and then open a pull request from that branch into `main`. After that, the rest of the workflow is the same: fill out the PR form, link the issue, watch checks, respond to feedback.\n\n[JAMIE]\nSo whether the branch was born in the web editor or from `git checkout -b`, the conceptual model is unchanged.\n\n[ALEX]\nExactly right.\n\n[PAUSE]\n\n[JAMIE]\nThere's also a nice exercise in this chapter: reading a real pull request.\n\n[ALEX]\nYes, and it's excellent practice. Open a recent PR. Read the description first and identify which file changed and what challenge it was solving. Check whether the description references `Closes #XX`. Then read the conversation and bot feedback. Finally, open Files changed and inspect the actual additions and deletions.\n\n[JAMIE]\nThat sequence teaches people to follow a PR from intention to discussion to implementation.\n\n[ALEX]\nExactly. And for screen reader users, it reinforces that headings and landmarks are enough to navigate a full review path without sighted scanning.\n\n[PAUSE]\n\n[JAMIE]\nBefore we wrap, I want to mention one philosophical thread I noticed. This chapter frames pull requests as preparation not just for human collaboration, but for reviewing AI-generated changes too.\n\n[ALEX]\nYes. That's an important idea. AI systems may generate code or documentation, but responsible workflows still route those changes through pull requests. The PR is where humans inspect, question, verify, and judge. An agent can draft. A human supplies context and final judgment.\n\n[JAMIE]\nSo learning to edit Markdown cleanly, link issues correctly, read diffs, and respond to checks is future-proof.\n\n[ALEX]\nVery much so.\n\n[PAUSE]\n\n[ALEX]\nLet's close with a compact review. A pull request proposes merging a branch into another branch, usually into `main`. For this chapter's challenge, you make one small change, open a PR, and include a linked issue reference like `Closes #XX`. Your title should clearly describe the change. Your body should explain what changed and why. GitHub and repository checks may then validate the PR. If something fails, read the feedback, revise, and rerun.\n\n[JAMIE]\nWhen navigating PRs, start with the list page, then the PR page itself. Read the Conversation tab for the description, checks, and comments. Use the Commits and Checks tabs when you need deeper detail. Use the Files changed tab to inspect the diff, relying on headings, landmarks, and line status cues.\n\n[ALEX]\nAnd remember the practical habits: keep PRs small, use short-lived feature branches, request or submit reviews thoughtfully, use draft PRs when work is not ready, and choose merge options intentionally.\n\n[JAMIE]\nMost of all, connect the change to the reason.\n\n[ALEX]\nExactly. That's what turns editing into contribution.\n\n[PAUSE]\n\n[ALEX]\nIf you want the current source of truth after this lesson, check GitHub Docs, the GitHub Changelog, and GitHub's official pull request documentation and accessibility guidance. Those references change over time, and they're the authoritative place to verify details.\n\n[JAMIE]\nAnd if today's challenge is in front of you right now: go to Pull requests, choose New pull request if needed, make sure base is `main`, compare is your feature branch, write a descriptive title, add what changed, why, and `Closes #XX`, then create the PR.\n\n[ALEX]\nYou've got this.\n",
+  "chapterPlanText": "﻿[\n    {\n        \"title\":  \"cc-06-open-your-first-pr: Overview\",\n        \"startSegmentIndex\":  0\n    },\n    {\n        \"title\":  \"Section 2\",\n        \"startSegmentIndex\":  14\n    },\n    {\n        \"title\":  \"Section 3\",\n        \"startSegmentIndex\":  29\n    },\n    {\n        \"title\":  \"Section 4\",\n        \"startSegmentIndex\":  43\n    },\n    {\n        \"title\":  \"Section 5\",\n        \"startSegmentIndex\":  63\n    },\n    {\n        \"title\":  \"Section 6\",\n        \"startSegmentIndex\":  79\n    },\n    {\n        \"title\":  \"Section 7\",\n        \"startSegmentIndex\":  91\n    },\n    {\n        \"title\":  \"Section 8\",\n        \"startSegmentIndex\":  103\n    },\n    {\n        \"title\":  \"Section 9\",\n        \"startSegmentIndex\":  116\n    },\n    {\n        \"title\":  \"Section 10\",\n        \"startSegmentIndex\":  129\n    },\n    {\n        \"title\":  \"Section 11\",\n        \"startSegmentIndex\":  151\n    },\n    {\n        \"title\":  \"Section 12\",\n        \"startSegmentIndex\":  171\n    },\n    {\n        \"title\":  \"Section 13\",\n        \"startSegmentIndex\":  185\n    },\n    {\n        \"title\":  \"Section 14\",\n        \"startSegmentIndex\":  203\n    },\n    {\n        \"title\":  \"Section 15\",\n        \"startSegmentIndex\":  215\n    },\n    {\n        \"title\":  \"Section 16\",\n        \"startSegmentIndex\":  226\n    },\n    {\n        \"title\":  \"Section 17\",\n        \"startSegmentIndex\":  241\n    }\n]\n",
+  "sourceFiles": [
+    {
+      "exists": true,
+      "path": "C:\\code\\git-going-with-github\\learning-room\\.github\\ISSUE_TEMPLATE\\challenge-06-first-pr.yml",
+      "headings": [],
+      "content": "name: \"Challenge 6: Open Your First Pull Request\"\ndescription: Open a PR from your branch to main, linking it to your issue.\nhidden: true\ntitle: \"Challenge 6: Open Your First PR (@{username})\"\nlabels: [\"challenge\", \"day-1\"]\nbody:\n  - type: markdown\n    attributes:\n      value: |\n        ## Challenge 6: Open Your First Pull Request\n\n        **Chapter:** [Ch06: Working with Pull Requests](https://github.com/Community-Access/git-going-with-github/blob/main/docs/06-working-with-pull-requests.md)\n\n        **What you will do:** Open a pull request from your `learn/YOUR-USERNAME` branch to `main`, connecting it to the issue you filed in Challenge 2.\n\n        ### Instructions\n\n        1. Go to the **Pull requests** tab.\n        2. Select **New pull request**.\n        3. Set **base** to `main` and **compare** to `learn/YOUR-USERNAME`.\n        4. Write a descriptive PR title.\n        5. In the PR description, include `Closes #XX` (replace XX with your Challenge 2 issue number). This automatically links and closes the issue when the PR is merged.\n        6. Submit the pull request.\n\n        ### PR description template\n\n        Use this structure for your PR description:\n\n        ```\n        ## What this PR does\n        [One sentence describing your change]\n\n        ## Why\n        [One sentence explaining why this change is needed]\n\n        Closes #XX\n        ```\n\n        ### The magic of `Closes #XX`\n\n        When you write `Closes #12` in a PR description, GitHub automatically:\n        - Links the PR to issue #12\n        - Closes issue #12 when the PR is merged\n\n        This is one of GitHub's most powerful workflow features.\n\n  - type: textarea\n    id: evidence\n    attributes:\n      label: \"Your evidence\"\n      description: \"Paste the URL of your pull request.\"\n      placeholder: |\n        PR URL: https://github.com/...\n        My PR links to issue #...\n    validations:\n      required: true\n\n  - type: markdown\n    attributes:\n      value: |\n        ### Peer simulation check\n\n        Find the **Peer Simulation: Improve contribution guidance** PR and leave an encouraging comment. If you have access to a real buddy's PR, you may comment there too. You will do a full code review in Day 2.\n\n        ### If you get stuck\n\n        | Symptom | Try this |\n        |---|---|\n        | I cannot find the New pull request button | Make sure you are on the Pull requests tab. The button is near the top-right. |\n        | It says \"There isn't anything to compare\" | Make sure your branch has at least one commit that differs from main. Did you commit to the right branch? |\n        | I forgot to include `Closes #XX` | Edit your PR description after creating it. Select the three-dot menu or the Edit button on the description. |\n        | I finished but want to check my work | [View the reference solution](https://github.com/Community-Access/git-going-with-github/blob/main/docs/solutions/solution-06-first-pr.md) |\n"
+    },
+    {
+      "exists": true,
+      "path": "C:\\code\\git-going-with-github\\docs\\solutions\\solution-06-first-pr.md",
+      "headings": [
+        {
+          "level": 2,
+          "title": "Example PR"
+        },
+        {
+          "level": 2,
+          "title": "What this changes"
+        },
+        {
+          "level": 2,
+          "title": "Why"
+        },
+        {
+          "level": 2,
+          "title": "Key elements"
+        },
+        {
+          "level": 3,
+          "title": "Title"
+        },
+        {
+          "level": 3,
+          "title": "Body"
+        },
+        {
+          "level": 3,
+          "title": "Linked issue"
+        },
+        {
+          "level": 3,
+          "title": "Passing checks"
+        },
+        {
+          "level": 2,
+          "title": "Alternate linking syntax"
+        },
+        {
+          "level": 2,
+          "title": "What matters"
+        },
+        {
+          "level": 2,
+          "title": "Authoritative Sources"
+        },
+        {
+          "level": 3,
+          "title": "Section-Level Source Map"
+        }
+      ],
+      "content": "# Solution Reference: Challenge 6 -- Your First Pull Request\n\nThis shows what a complete pull request looks like.\n\n## Example PR\n\n**Title:** Fix TODO: add workshop schedule link to welcome.md\n\n**Body:**\n\n```markdown\n## What this changes\n\nReplaces the TODO placeholder on line 15 of `docs/welcome.md` with an actual\nlink to the workshop schedule.\n\n## Why\n\nStudents need a working link to find session times. The TODO was a known gap\nfiled in issue #3.\n\nCloses #3\n```\n\n## Key elements\n\n### Title\n\n- Describes the change clearly: someone reading just the title understands what happened\n- Short enough to scan in a list\n\n### Body\n\n- **What:** Summarizes the change\n- **Why:** Explains the motivation\n- **Closes #N:** Links to the issue this PR resolves -- GitHub automatically closes the issue when the PR merges\n\n### Linked issue\n\nThe `Closes #3` line creates a two-way link. The issue shows \"referenced by PR #5\" and the PR shows \"Closes #3.\" When the PR merges, issue #3 closes automatically.\n\n### Passing checks\n\nIf the repository has automated checks (the PR validation bot), a green checkmark appears. If checks fail, read the bot's feedback comment for specific guidance.\n\n## Alternate linking syntax\n\nAll of these work identically:\n\n- `Closes #3`\n- `Fixes #3`\n- `Resolves #3`\n\n## What matters\n\nThe learning objective is connecting a change (PR) to a reason (issue) through GitHub's linking system. If your PR has a clear title, a description, and references an issue number, you completed this challenge.\n\n## Authoritative Sources\n\nUse these official references when you need the current source of truth for facts in this chapter.\n\n- [GitHub Docs, home](https://docs.github.com/en)\n- [GitHub Changelog](https://github.blog/changelog/)\n\n### Section-Level Source Map\n\nUse this map to verify facts for each major section in this file.\n\n- **Example PR:** [GitHub Docs, home](https://docs.github.com/en), [GitHub Changelog](https://github.blog/changelog/), [About Git](https://docs.github.com/en/get-started/using-git/about-git), [GitHub flow](https://docs.github.com/en/get-started/using-github/github-flow), [About pull requests](https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/about-pull-requests)\n- **What this changes:** [GitHub Docs, home](https://docs.github.com/en), [GitHub Changelog](https://github.blog/changelog/)\n- **Why:** [GitHub Docs, home](https://docs.github.com/en), [GitHub Changelog](https://github.blog/changelog/)\n- **Key elements:** [GitHub Docs, home](https://docs.github.com/en), [GitHub Changelog](https://github.blog/changelog/)\n- **Alternate linking syntax:** [GitHub Docs, home](https://docs.github.com/en), [GitHub Changelog](https://github.blog/changelog/)\n- **What matters:** [GitHub Docs, home](https://docs.github.com/en), [GitHub Changelog](https://github.blog/changelog/)\n"
+    },
+    {
+      "exists": true,
+      "path": "C:\\code\\git-going-with-github\\docs\\06-working-with-pull-requests.md",
+      "headings": [
+        {
+          "level": 2,
+          "title": "Creating, Reviewing, and Merging Pull Requests with a Screen Reader"
+        },
+        {
+          "level": 2,
+          "title": "Workshop Recommendation (Chapter 6)"
+        },
+        {
+          "level": 3,
+          "title": "Chapter 6 Challenge Set"
+        },
+        {
+          "level": 3,
+          "title": "CLI getting-started principles for pull request work"
+        },
+        {
+          "level": 3,
+          "title": "Challenge 6.1 Step-by-Step: Create One Small Branch Change"
+        },
+        {
+          "level": 3,
+          "title": "Challenge 6.2 Step-by-Step: Open a Linked PR"
+        },
+        {
+          "level": 3,
+          "title": "Challenge 6.3 Step-by-Step: Pass Required Checks"
+        },
+        {
+          "level": 3,
+          "title": "Expected Outcomes"
+        },
+        {
+          "level": 3,
+          "title": "If You Get Stuck"
+        },
+        {
+          "level": 3,
+          "title": "Learning Moment"
+        },
+        {
+          "level": 3,
+          "title": "Why this feels achievable"
+        },
+        {
+          "level": 3,
+          "title": "About Learning Cards in This Chapter"
+        },
+        {
+          "level": 2,
+          "title": "Local Git Alternative: The Full Branch-Edit-PR Workflow"
+        },
+        {
+          "level": 2,
+          "title": "What Is a Pull Request?"
+        },
+        {
+          "level": 2,
+          "title": "Navigating to Pull Requests"
+        },
+        {
+          "level": 3,
+          "title": "From a PR notification"
+        },
+        {
+          "level": 3,
+          "title": "Learning Cards: Navigating to Pull Requests"
+        },
+        {
+          "level": 2,
+          "title": "The Pull Request List Page"
+        },
+        {
+          "level": 2,
+          "title": "Anatomy of a Pull Request Page"
+        },
+        {
+          "level": 2,
+          "title": "Navigating the PR Tab Bar"
+        },
+        {
+          "level": 2,
+          "title": "Reading the Conversation Tab"
+        },
+        {
+          "level": 3,
+          "title": "PR Description"
+        },
+        {
+          "level": 3,
+          "title": "Status Checks Section"
+        },
+        {
+          "level": 3,
+          "title": "Review Comments"
+        },
+        {
+          "level": 4,
+          "title": "Resolving conversations"
+        },
+        {
+          "level": 3,
+          "title": "Learning Cards: Reading the Conversation Tab"
+        },
+        {
+          "level": 2,
+          "title": "Reading the Commits Tab"
+        },
+        {
+          "level": 2,
+          "title": "Reading the Checks Tab"
+        },
+        {
+          "level": 3,
+          "title": "Learning Cards: Reading the Checks Tab"
+        },
+        {
+          "level": 2,
+          "title": "Reading the Files Changed Tab"
+        },
+        {
+          "level": 3,
+          "title": "File Tree (left panel)"
+        },
+        {
+          "level": 3,
+          "title": "The Diff for a File"
+        },
+        {
+          "level": 4,
+          "title": "Lines in a diff are read as"
+        },
+        {
+          "level": 3,
+          "title": "Navigating the diff with a screen reader"
+        },
+        {
+          "level": 3,
+          "title": "Placing an inline comment on a diff line"
+        },
+        {
+          "level": 4,
+          "title": "Multi-line comment (Windows)"
+        },
+        {
+          "level": 4,
+          "title": "Multi-line comment (macOS)"
+        },
+        {
+          "level": 3,
+          "title": "Viewing comments within the diff"
+        },
+        {
+          "level": 3,
+          "title": "Learning Cards: Reading the Files Changed Tab"
+        },
+        {
+          "level": 2,
+          "title": "Opening a Pull Request"
+        },
+        {
+          "level": 3,
+          "title": "Tool Cards: Open a Pull Request"
+        },
+        {
+          "level": 3,
+          "title": "From the web editor workflow (editing a file on GitHub)"
+        },
+        {
+          "level": 3,
+          "title": "From a fork or feature branch"
+        },
+        {
+          "level": 3,
+          "title": "Filling out the PR form"
+        },
+        {
+          "level": 4,
+          "title": "Title field"
+        },
+        {
+          "level": 4,
+          "title": "Description field"
+        },
+        {
+          "level": 2,
+          "title": "Summary"
+        },
+        {
+          "level": 2,
+          "title": "Changes"
+        },
+        {
+          "level": 2,
+          "title": "Related Issues"
+        },
+        {
+          "level": 2,
+          "title": "Testing"
+        },
+        {
+          "level": 2,
+          "title": "Screenshots / recordings"
+        },
+        {
+          "level": 3,
+          "title": "Setting a Draft PR"
+        },
+        {
+          "level": 3,
+          "title": "Draft Pull Requests - Full Lifecycle"
+        },
+        {
+          "level": 4,
+          "title": "When to use a draft"
+        },
+        {
+          "level": 4,
+          "title": "What a draft PR does differently"
+        },
+        {
+          "level": 4,
+          "title": "Mark a draft ready for review"
+        },
+        {
+          "level": 4,
+          "title": "Screen reader path"
+        },
+        {
+          "level": 4,
+          "title": "Convert an open PR to draft (after opening)"
+        },
+        {
+          "level": 3,
+          "title": "Learning Cards: Opening a Pull Request"
+        },
+        {
+          "level": 2,
+          "title": "Requesting reviewers"
+        },
+        {
+          "level": 2,
+          "title": "Submitting a Review"
+        },
+        {
+          "level": 3,
+          "title": "Starting a review"
+        },
+        {
+          "level": 3,
+          "title": "Completing and submitting a review"
+        },
+        {
+          "level": 3,
+          "title": "GitHub shortcuts for pull requests"
+        },
+        {
+          "level": 4,
+          "title": "On the PR list page"
+        },
+        {
+          "level": 4,
+          "title": "On an open pull request"
+        },
+        {
+          "level": 4,
+          "title": "On the Files Changed tab"
+        },
+        {
+          "level": 3,
+          "title": "Learning Cards: Submitting a Review"
+        },
+        {
+          "level": 3,
+          "title": "Suggested Changes"
+        },
+        {
+          "level": 4,
+          "title": "As a reviewer - inserting a suggestion"
+        },
+        {
+          "level": 4,
+          "title": "As an author - applying a suggestion"
+        },
+        {
+          "level": 4,
+          "title": "Batching multiple suggestions into one commit"
+        },
+        {
+          "level": 4,
+          "title": "When to use suggestions vs. comments"
+        },
+        {
+          "level": 3,
+          "title": "Learning Cards: Suggested Changes"
+        },
+        {
+          "level": 2,
+          "title": "Understanding Merge Options (for Maintainers)"
+        },
+        {
+          "level": 2,
+          "title": "After a PR is merged"
+        },
+        {
+          "level": 2,
+          "title": "Auto-Merge - Merging When You Can't Wait Around"
+        },
+        {
+          "level": 3,
+          "title": "Enabling Auto-Merge on Your PR"
+        },
+        {
+          "level": 4,
+          "title": "Screen reader path"
+        },
+        {
+          "level": 4,
+          "title": "What happens next"
+        },
+        {
+          "level": 3,
+          "title": "Cancelling Auto-Merge"
+        },
+        {
+          "level": 2,
+          "title": "Practical Scenarios"
+        },
+        {
+          "level": 3,
+          "title": "Scenario A: \"I want to review an assigned PR\""
+        },
+        {
+          "level": 3,
+          "title": "Scenario B: \"I want to respond to review feedback on my PR\""
+        },
+        {
+          "level": 3,
+          "title": "Scenario C: \"My PR has a merge conflict\""
+        },
+        {
+          "level": 2,
+          "title": "Common PR Mistakes to Avoid"
+        },
+        {
+          "level": 2,
+          "title": "Writing PR Descriptions That Get Reviewed"
+        },
+        {
+          "level": 3,
+          "title": "What Reviewers Look For"
+        },
+        {
+          "level": 3,
+          "title": "The `Closes #XX` Pattern"
+        },
+        {
+          "level": 3,
+          "title": "Before/After Structure"
+        },
+        {
+          "level": 3,
+          "title": "A PR Description Template"
+        },
+        {
+          "level": 2,
+          "title": "Summary"
+        },
+        {
+          "level": 2,
+          "title": "Changes Made"
+        },
+        {
+          "level": 2,
+          "title": "Related Issues"
+        },
+        {
+          "level": 2,
+          "title": "Testing"
+        },
+        {
+          "level": 2,
+          "title": "Checklist"
+        },
+        {
+          "level": 3,
+          "title": "Common Description Mistakes"
+        },
+        {
+          "level": 3,
+          "title": "Good vs. Bad: Side by Side"
+        },
+        {
+          "level": 2,
+          "title": "Summary"
+        },
+        {
+          "level": 2,
+          "title": "Changes Made"
+        },
+        {
+          "level": 2,
+          "title": "Related Issues"
+        },
+        {
+          "level": 2,
+          "title": "Testing"
+        },
+        {
+          "level": 2,
+          "title": "Checklist"
+        },
+        {
+          "level": 3,
+          "title": "Learning Cards: Writing PR Descriptions That Get Reviewed"
+        },
+        {
+          "level": 2,
+          "title": "Try It: Read a Real Pull Request"
+        },
+        {
+          "level": 2,
+          "title": "Authoritative Sources"
+        },
+        {
+          "level": 3,
+          "title": "Section-Level Source Map"
+        }
+      ],
+      "content": "# Working with Pull Requests\n>\n> **Listen to Episode 6:** [Working with Pull Requests](https://lp.csedesigns.com/ggg/PODCASTS.html) - a conversational audio overview of this chapter. Listen before reading to preview the concepts, or after to reinforce what you learned.\n\n> **Related appendices:** [Appendix C: Markdown Reference](appendix-c-markdown-reference.md) | [Appendix B: Screen Reader Cheat Sheet](appendix-b-screen-reader-cheatsheet.md)\n> **Authoritative sources:** [GitHub Docs: About pull requests](https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/about-pull-requests) | [GitHub Accessibility Guide: Pull Requests](https://accessibility.github.com/documentation/guide/pull-requests/) | [GitHub Accessibility Lab: CLI Guide](https://accessibility.github.com/documentation/guide/cli/)\n\n## Creating, Reviewing, and Merging Pull Requests with a Screen Reader\n\n> **See also:** [Chapter 15: Code Review](15-code-review.md) covers the full review workflow including multi-file diffs and suggested changes.\n\n> Pull requests are where your work becomes a contribution. This guide takes you through the full pull request workflow - from opening one to participating in review - using only your keyboard and screen reader.\n>\n> **Official GitHub Accessibility Guide:** GitHub publishes an NVDA-focused guide for working with pull requests using a screen reader at [Using GitHub Pull Requests with a Screen Reader](https://accessibility.github.com/documentation/guide/pull-requests/). This chapter covers the same material with additional perspectives (VoiceOver, low vision, CLI) and workshop-specific challenges. Use the official guide as a companion reference.\n>\n> **Screen reader note - New Files Changed Experience:** This guide uses GitHub's improved Files Changed experience, which adds proper ARIA landmark structure to the Files Changed tab, including the file tree and diff navigation. This feature may already be active for your account - it has been broadly rolled out and may no longer appear as a Feature Preview toggle at all.\n>\n> **To verify:** Activate the **User Menu** button (top-right of any GitHub page) → activate **\"Feature preview\"** → scan the list for **\"New Files Changed Experience\"**:\n>\n> - If listed and the toggle announces **\"Pressed\"** (or **\"Disable\"**) - already enabled, no action needed\n> - If listed but **not Pressed** (or **\"Enable\"**) - activate the toggle to enable it\n> - If not listed at all - the feature has graduated to the standard interface; it is active automatically\n>\n> Full step-by-step instructions with per-screen-reader commands are in [Pre-Workshop Setup, Step 4](00-pre-workshop-setup.md#step-4---check-github-feature-preview-settings).\n>\n> **Browse vs Focus Mode (NVDA):** Use **Browse Mode** (the default) for reading PR conversations, navigating headings, and reviewing diffs. Switch to **Focus Mode** (`NVDA+Space`) only when you need to type in comment boxes or search fields. Switch back to Browse Mode to resume navigation. Maximize your browser window for consistent landmark layout.\n\n## Workshop Recommendation (Chapter 6)\n\nChapter 6 is the first **PR-validated chapter** where students convert issue work into merge-ready contributions.\n\n- **Challenge count:** 3\n- **Time per challenge:** under 10 minutes each\n- **Evidence:** PR metadata, bot checks, and merged issue linkage\n- **Pattern:** small change -> linked PR -> green checks\n\n### Chapter 6 Challenge Set\n\n1. **Create one small branch change** - edit a practice file on a new branch.\n2. **Open a linked PR** - use the PR template and include `Closes #XX`.\n3. **Pass required checks** - respond to bot feedback until all required checks pass.\n\n### CLI getting-started principles for pull request work\n\nFor reliable PR workflows in the terminal:\n\n1. Check current branch before pushing (`git branch --show-current`).\n2. Keep PR scope small (one focused change per branch).\n3. Confirm issue linkage in plain text (`Closes #<number>`).\n4. Validate check status after each push (`gh pr checks`).\n5. Prefer documented command options only (`gh pr --help`).\n\n> **Branch guidance for Chapter 6:** This is the first chapter where you edit files and create branches. Use one of these two paths:\n>\n> - **Web editor (recommended for beginners):** When you edit a file on GitHub.com and click \"Propose changes,\" GitHub creates a branch for you automatically. Name it `fix/yourname-issueXX` (for example, `fix/maria-issue42`).\n> - **Local Git (if you cloned in Block 0):** Create a feature branch with `git checkout -b fix/yourname-issueXX` from `main`. See the \"Local Git Alternative\" section below for the full command sequence.\n>\n> **Do not reuse your `learn/<username>` branch for this short exercise unless your facilitator tells you to.** Chapter 6 works best with a short-lived feature branch such as `fix/yourname-issueXX`, because it teaches the pull request loop without mixing multiple challenges on one branch.\n\n### Challenge 6.1 Step-by-Step: Create One Small Branch Change\n\n**Goal:** Edit one of the practice files and save your change on a new branch.\n\n**Where you are working:** your Learning Room repository on GitHub.com, using the web editor.\n\n**Before you start:** Open your **assigned Chapter 6.1 challenge issue** (the one titled \"Chapter 6.1: Create One Small Branch Change (@yourname)\"). The issue description tells you which file to edit and what to fix.\n\nThe Learning Room has three practice files with intentional problems. Your assigned issue points you to one of them:\n\nThe following table summarizes the practice files in the learning-room, what each file contains, and the type of issues to look for.\n\n| File | What it contains | What to fix |\n|------|-----------------|-------------|\n| `docs/welcome.md` | Introduction to open source contribution | Three `[TODO]` sections where content is missing |\n| `docs/keyboard-shortcuts.md` | Screen reader shortcut reference tables | Intentional errors in shortcut references |\n| `docs/setup-guide.md` | Getting-started instructions | Broken links and incomplete steps |\n\n**Steps using the web editor:**\n\n1. In your Learning Room repository, navigate to the file specified in your issue. Use the file tree or the \"Go to file\" button (`T` keyboard shortcut).\n2. Open the file and activate the **pencil icon** (Edit this file) button.\n   - Screen reader users (NVDA/JAWS): Press `B` to navigate buttons, find \"Edit this file,\" and press `Enter`.\n   - VoiceOver users: Press `VO+U`, open Buttons rotor, find \"Edit this file,\" and press `VO+Space`.\n3. The file opens in the web editor. Make your change. For example:\n   - If your issue is about a `[TODO]` section: replace the `[TODO]` placeholder with the requested content (one to three sentences).\n   - If your issue is about a broken link: find and correct the URL.\n   - If your issue is about a shortcut error: find and fix the incorrect value in the table.\n4. Keep your change small and focused. Edit only what the issue asks for.\n\n**Proposing your changes (this creates your branch):**\n\n1. After editing, activate the **Commit changes** button (green button above the editor).\n2. A dialog appears. In the **Branch name** field, type: `fix/yourname-issueXX` (replace `yourname` with your GitHub username, and `XX` with the issue number).\n3. Select **Create a new branch for this commit and start a pull request**.\n4. Activate **Propose changes**.\n\n**You are done when:** GitHub shows the \"Open a pull request\" page. Your file change is saved on a new branch. Continue to Challenge 6.2.\n\n### Challenge 6.2 Step-by-Step: Open a Linked PR\n\n**Goal:** Open a pull request\n\n> **Agentic strategy:** AI agents do not just deploy code directly; they submit pull requests. Learning to edit a file, format it in Markdown, and review a PR today prepares you to audit and approve AI-generated changes tomorrow. Make your Markdown clean and structured, and include the `Closes #XX` line that links to your challenge issue so it closes automatically on merge.\n\n**Where you are working:** the \"Open a pull request\" page that appeared after Challenge 6.1 (or navigate to Pull Requests tab and select \"Compare and pull request\").\n\n1. In the **Title** field, write a short description of your change. Examples:\n   - \"Complete the Who Can Contribute section in welcome.md\"\n   - \"Fix broken accessibility settings link in setup-guide.md\"\n   - \"Correct NVDA modifier key in keyboard-shortcuts.md\"\n2. In the **Body** field, use the PR template if one is provided. Make sure to include:\n   - A summary of what you changed and why (at least 50 characters).\n   - The line `Closes #XX` where `XX` is the number of your **assigned Chapter 6 challenge issue**.\n3. Verify the **base branch** is `main` and the **compare branch** is your `fix/yourname-issueXX` branch.\n4. Activate the **Create pull request** button.\n\n**You are done when:** Your PR appears in the Pull Requests list. The bot will begin running checks within about 30 seconds. Continue to Challenge 6.3.\n\n### Challenge 6.3 Step-by-Step: Pass Required Checks\n\n**Goal:** Read bot feedback, fix any issues it finds, and get all required checks to pass.\n\n**Where you are working:** the Conversation tab of your open pull request.\n\n1. Wait approximately 30 seconds after opening the PR. The bot posts a validation comment.\n2. Read the bot comment carefully. It checks:\n   - That your PR references an issue with `Closes #XX`.\n   - That your PR description is detailed enough (50+ characters).\n   - That your changed files are in the `learning-room/` folder.\n   - Accessibility checks: heading hierarchy, descriptive link text, valid alt text.\n3. If the bot reports failures:\n   - Open the changed file from the **Files changed** tab.\n   - Activate the pencil icon to edit the file again (directly on your branch).\n   - Fix the issue the bot identified.\n   - Commit the fix to the **same branch** (the bot re-runs automatically on each push).\n4. Repeat step 3 until all required checks show a green checkmark.\n5. When all checks pass, request a review from a peer or the facilitator.\n\n**You are done when:** The bot comment shows all required checks passed (green checkmarks). Your PR is ready for human review and merge.\n\n### Expected Outcomes\n\n- Student opens a focused PR that maps to one issue.\n- Student uses `Closes #XX` correctly.\n- Student can interpret bot feedback and improve the PR.\n\n### If You Get Stuck\n\n1. Confirm your PR includes `Closes #XX` in title or body.\n2. Check that changed files are only in `learning-room/`.\n3. Open the bot validation comment and resolve one required check at a time.\n4. If checks still fail, ask for peer or facilitator review with the exact error message.\n5. Finished but not sure you did it right? Compare your work against the [Challenge 6 reference solution](solutions/solution-06-first-pr.md).\n\n### Learning Moment\n\nA great PR is small, linked to an issue, and easy to review. Faster feedback builds confidence and momentum.\n\n### Why this feels achievable\n\n- Scope is intentionally small.\n- Feedback is immediate and specific.\n- Success is visible (green checks + closed issue).\n\n### About Learning Cards in This Chapter\n\nThis chapter provides learning cards: expandable blocks that offer perspective-specific guidance for different ways of working. Not every card appears at every step. Open the ones that match how you work.\n\nThe following table describes the six learning card types used in this chapter.\n\n| Card | Who it helps | What it covers |\n| --- | --- | --- |\n| Visual / mouse | Sighted users navigating with a mouse or trackpad | Click targets, visual cues, layout orientation |\n| Low vision | Users with magnification, zoom, or high-contrast themes | Zoom-friendly navigation, finding controls at high magnification, high contrast visibility |\n| NVDA / JAWS (Windows) | Screen reader users on Windows | Keystroke sequences, Focus and Browse mode, landmark paths |\n| VoiceOver (macOS) | Screen reader users on macOS | VO key sequences, rotor usage, interaction model |\n| GitHub.com web | All users working in the browser | Browser-based workflows without local tools |\n| CLI (git / gh) | Terminal users on any platform | Git and GitHub CLI commands for PR management |\n\n## Local Git Alternative: The Full Branch-Edit-PR Workflow\n\n<details>\n<summary>If you cloned the learning-room in Block 0 and prefer working locally</summary>\n\nThe web editor workflow (pencil button, \"Propose changes\") is the primary path taught in this chapter. If you cloned the Learning Room in Block 0 and are comfortable in a terminal, here is the local equivalent. This is the same workflow covered in depth in [Chapter 11: Git and Source Control](14-git-in-practice.md).\n\n**Step 1 - Sync and create a feature branch:**\n\n```bash\ncd ~/Documents/learning-room\ngit checkout main\ngit pull origin main\ngit checkout -b fix/welcome-todos\n```\n\n**Step 2 - Edit the file in your editor:**\n\nOpen the file in VS Code or your preferred editor:\n\n```bash\ncode docs/welcome.md\n```\n\nMake your changes and save the file.\n\n**Step 3 - Stage, commit, and push:**\n\n```bash\ngit add docs/welcome.md\ngit commit -m \"Complete TODO sections in welcome.md\"\ngit push -u origin fix/welcome-todos\n```\n\n**Step 4 - Open a pull request:**\n\n```bash\ngh pr create --title \"Complete TODO sections in welcome.md\" \\\n  --body \"Closes #42\" --base main\n```\n\nOr open interactively:\n\n```bash\ngh pr create\n```\n\nThe GitHub CLI walks you through title, body, base branch, and reviewers.\n\n**What happens next is identical:** the Learning Room bot validates your PR, posts feedback, and you request a human reviewer - the same as the web workflow.\n\n> **Tip:** You can also create a named feature branch with `git checkout -b fix/yourname-issueXX` if you prefer that naming convention over the practice branch.\n\n</details>\n\n## What Is a Pull Request?\n\nA pull request (PR) is a proposal to merge changes from one branch into another. When you have:\n\n- Edited a file directly on GitHub (web editor)\n- Made changes in your fork\n- Made changes on a feature branch\n\n...you open a PR to request that those changes be merged into the target branch (usually `main`).\n\nA PR shows:\n\n- **What** changed - a diff of every file\n- **Why** it changed - your PR description\n- **Conversation** - comments, reviews, and discussion\n- **Status** - automated checks (CI/CD) and review status\n\n> **Learning Room connection:** In the Learning Room repository, every hands-on contribution follows this pattern. For example, when you complete Challenge 3 (filling the `[TODO]` sections in `docs/welcome.md`), you open a PR that shows your added content as green `+` lines in the diff, your description explains which TODOs you completed and why, and the validation bot posts automated check results. The scenarios in this chapter use Learning Room files so you can follow along with real content.\n\n## Navigating to Pull Requests\n\n> **Global pull requests dashboard:** GitHub now shows a global pull requests page at [github.com/pulls](https://github.com/pulls) listing all open PRs across every repository you have access to. This is now the **default landing page** when you click \"Pull requests\" in the top navigation bar (the one above the repository content, not inside a repository). You can opt out in your GitHub settings if you prefer the old behavior. Screen reader path: top navigation region > \"Pull requests\" link > Enter (or navigate to github.com/pulls directly).\n\n<details>\n<summary>Visual / mouse users</summary>\n\nClick the **Pull requests** tab in the repository navigation bar. The tab shows the count of open PRs. Click any PR title to open it.\n\n</details>\n\n<details>\n<summary>Low vision users (zoom, high contrast)</summary>\n\nThe **Pull requests** tab is in the repository navigation bar near the top of the page. At 200% browser zoom or higher, the tab bar may wrap to a second line. The tab text includes the open PR count in parentheses.\n\n- In **Windows High Contrast** mode, the active tab is indicated by a system-colored underline, not just a color change.\n- At high magnification, use `Tab` to move through the repository navigation links if the tab bar is hard to target with a pointer.\n- Once in the PR list, PR titles are links with standard hover underlines. They remain clickable at any zoom level.\n\n</details>\n\n<details>\n<summary>Screen reader users (NVDA / JAWS - Windows)</summary>\n\n1. `D` → \"Repository navigation\" landmark\n2. `K` to navigate tabs → \"Pull requests, [N] open\"\n3. `Enter` to open\n\n</details>\n\n<details>\n<summary>Screen reader users (VoiceOver - macOS)</summary>\n\n1. `VO+U` → Landmarks → navigate to \"Repository navigation\"\n2. Quick Nav `K` or `VO+Right` to navigate tabs → \"Pull requests\"\n3. `VO+Space` to open\n\n</details>\n\n### From a PR notification\n\nIf you received a notification about a PR, follow the notification link directly to the PR page.\n\n<details>\n<summary>GitHub CLI (gh) alternative</summary>\n\nList and view pull requests from your terminal:\n\n```bash\n# List open PRs\ngh pr list\n\n# Filter by review status\ngh pr list --search \"review-requested:@me\"\n\n# View a specific PR in the terminal\ngh pr view 42\n\n# Open a PR in your browser\ngh pr view 42 --web\n```\n\n**Setup:** Install the GitHub CLI from [cli.github.com](https://cli.github.com) and authenticate with `gh auth login`. See [Appendix D](appendix-d-git-authentication.md) for details.\n\n</details>\n\n### Learning Cards: Navigating to Pull Requests\n\n**Screen reader users:**\n\n- Press `D` to jump to the \"Repository navigation\" landmark, then `K` to reach the \"Pull requests\" tab link -- this is faster than arrowing through the entire page\n- The tab link announces the open PR count (\"Pull requests, 7 open\"), giving you a quick triage number without opening the list\n- From any GitHub page, press `G` then `P` (two sequential key presses in Focus Mode) to jump directly to the repository's Pull Requests tab\n- Use terminal-first triage when needed: `gh pr list` then `gh pr view <number>` to review essentials before entering the web diff\n\n**Low-vision users:**\n\n- The Pull requests tab is in the repository navigation bar near the page top; at 200%+ zoom the tab bar may wrap to a second line, but each tab remains a distinct clickable link\n- The open PR count appears in parentheses next to the tab text; zoom into the tab area to read it without opening the list\n- Use `Tab` key navigation to step through the repository nav links if pointer targeting is difficult at high magnification\n\n**Sighted users:**\n\n- Click the **Pull requests** tab in the horizontal navigation bar below the repository name; the badge shows the number of open PRs\n- Bookmark the URL pattern `github.com/OWNER/REPO/pulls` to skip navigation entirely\n- The active tab is underlined; open PRs are the default view -- use the \"Closed\" filter link to toggle\n\n## The Pull Request List Page\n\nThe PR list works identically to the Issues list:\n\n- `3` to navigate PR titles (they are h3 headings)\n- `I` to navigate list items\n- `F` or `E` / `Shift+E` to reach the search/filter field\n- Filters work the same as Issues: `is:open`, `author:@me`, `review-requested:@me`, etc.\n\n> **Screen reader note - PR list semantics:** The PR list does **not** have individual ARIA item containers with per-item semantics. To read a PR's full detail (title, author, labels, status), you must navigate sequentially with `Tab` or arrow keys through the elements for each item. Starting from a PR title link, `Tab` forward to find the author, labels, and review status for that same PR before moving to the next title.\n>\n> **Hovercards:** Hovercards appear when you hover over usernames and links in the PR list, adding extra verbosity. To reduce this noise: go to your GitHub Profile → Accessibility settings → disable \"Show link previews\" and similar hover triggers. This makes sequential navigation significantly less cluttered.\n\n## Anatomy of a Pull Request Page\n\nA PR page has three main tabs:\n\n```text\n[PR title - h1]\n[State badge: Open / Merged / Closed / Draft]\n[Author, base ← compare, timestamp]\n\n[ Conversation ] [ Commits ] [ Files changed ]\n                                ↑ tab bar landmark\n\n─── Conversation Tab ────────────────────────────────────────\n[PR description - authored by opener]\n[Status checks summary]\n[Activity / review thread]\n  [Review comment - h3]\n  [Line comments - nested]\n[Merge controls (for maintainers)]\n[Comment box]\n\n─── Commits Tab ─────────────────────────────────────────────\n[List of commits, grouped by date - h3 for dates]\n[Each commit as a list item with SHA, message, author]\n\n─── Files Changed Tab ────────────────────────────────────────\n[File filter search]\n[File tree (left panel)]\n[Diff for each file - each file is a heading]\n[Line-level comment threads within diffs]\n```\n\n## Navigating the PR Tab Bar\n\nThe Conversation, Commits, and Files changed tabs are in a “Pull request navigation tabs” landmark.\n\n<details>\n<summary>Visual / mouse users</summary>\n\nThe three tabs - **Conversation**, **Commits**, and **Files changed** - appear just below the PR title. Click the tab you want. The active tab is underlined. The count on **Files changed** shows how many files were modified.\n\n</details>\n\n<details>\n<summary>Low vision users (zoom, high contrast)</summary>\n\nThe PR tab bar sits just below the PR title and state badge. At high zoom levels:\n\n- The three tabs (**Conversation**, **Commits**, **Files changed**) may stack or wrap. Each tab remains a distinct clickable link.\n- The active tab is distinguished by an underline. In Windows High Contrast mode, the underline uses a system accent color for visibility.\n- The **Files changed** tab includes a count (for example, \"Files changed 3\"). This count is part of the link text, not a separate element.\n- If the tabs are hard to click at high magnification, use `Tab` key navigation from the PR title area to reach each tab link sequentially.\n\n</details>\n\n<details>\n<summary>Screen reader users (NVDA / JAWS)</summary>\n\n1. Press `D` → navigate to “Pull request navigation tabs”\n2. Press `←` or `→` arrow keys to move between tab options\n3. Press `Enter` to activate a tab\n\n</details>\n\n<details>\n<summary>Screen reader users (VoiceOver)</summary>\n\n1. `VO+U` → Landmarks → “Pull request navigation tabs”\n2. `VO+Right` to move between tabs\n3. `VO+Space` to activate\n\n</details>\n\nEach tab link reads with its name and the count: \"Files changed, 3 files changed.\"\n\n## Reading the Conversation Tab\n\n### PR Description\n\n1. `2` → navigate to \"Description\" h2 heading\n2. `↓` to read the description\n3. Markdown renders as semantic HTML - headings, lists, code blocks are fully accessible\n\n### Status Checks Section\n\nBelow the description, the status checks summary shows whether automated tests passed. Look for:\n\n- “All checks have passed” / “Some checks failed” / “Checks pending”\n- A “Show all checks” button or link\n\n<details>\n<summary>Visual / mouse users</summary>\n\nStatus checks appear as a coloured banner below the PR description - green tick for passed, red X for failed, yellow spinner for running. Click **Show all checks** to expand the full list. Click a check name to go to its run log.\n\n</details>\n\n<details>\n<summary>Screen reader users (NVDA / JAWS - Windows)</summary>\n\n1. Press `H` or `2` to find the \"Checks\" or \"Status checks\" heading\n2. Press `K` to navigate links for individual check names\n3. Press `Enter` on a check to see its details\n\n</details>\n\n<details>\n<summary>Screen reader users (VoiceOver - macOS)</summary>\n\n1. Quick Nav `H` or `VO+Cmd+H` to jump to the \"Checks\" or \"Status checks\" heading\n2. Quick Nav `K` to navigate check name links\n3. `VO+Space` on a check to see its details\n\n</details>\n\nSee [GitHub Actions & Workflows](appendix-q-actions-workflows.md) for full guidance on reading status checks.\n\n### Review Comments\n\nEach review comment thread is an h3. Navigate with `3`:\n\n- Hear the reviewer's username, timestamp, and their review verdict (\"approved\" or \"requested changes\")\n- Then the body of their review comment\n- Then any replies to that comment\n\nTo reply to a review comment:\n\n```text\nStep 1: Navigate to the comment (3)\nStep 2: Tab to \"Reply…\" link/button\nStep 3: The reply text area appears - Focus Mode → type your reply\nStep 4: Ctrl+Enter to submit\n```\n\n#### Resolving conversations\n\nWhen a review comment has been addressed, you can mark the conversation as resolved:\n\n1. Navigate to the conversation thread (`3` to jump between comment headings)\n2. `Tab` to the end of the thread to find the **\"Resolve conversation\"** button\n3. Press `Enter` to mark it resolved\n4. The conversation collapses and shows as \"Resolved\"\n\nResolved conversations are still accessible - they collapse but can be expanded again. This helps both reviewers and authors track which feedback items have been addressed.\n\n### Learning Cards: Reading the Conversation Tab\n\n<details>\n<summary>Screen reader users</summary>\n\n- Press `2` to jump between H2 headings: \"Description\" (the PR body) and \"Activity\" (the comment thread)\n- Press `3` to jump between individual review comments (each is an H3); each announces the reviewer's username, timestamp, and verdict\n- Press `D` to jump to the \"Add a comment\" landmark at the bottom to skip directly to the reply box\n\n</details>\n\n<details>\n<summary>Low vision users</summary>\n\n- Status checks below the description show green checkmarks (passed), red X marks (failed), or yellow spinners (running); zoom in on this area after opening a PR\n- Review comments have a colored left border: green for \"Approved,\" red for \"Request changes,\" grey for \"Comment\"\n- The merge button section at the bottom turns green when all checks pass; it is disabled (greyed out) when checks are pending or reviews are missing\n\n</details>\n\n<details>\n<summary>Sighted users</summary>\n\n- The Conversation tab has a timeline layout: PR description at the top, status checks below, then comments and events in chronological order\n- Review verdicts appear as banners in the timeline: a green banner for Approve, a red banner for Request Changes\n- The merge section at the bottom shows which requirements are met (green checkmarks) and which are pending (yellow dots)\n\n</details>\n\n## Reading the Commits Tab\n\n```text\nStep 1: Navigate to Commits tab (D → PR tabs → Enter)\nStep 2: 3 to navigate date group headings (\"Commits on April 20\")\nStep 3: I to navigate individual commits within a date group\nStep 4: Each commit: SHA link, message, author, [Verified] badge if signed\nStep 5: Enter on a commit to open its diff\n```\n\n## Reading the Checks Tab\n\nThe Checks tab shows the status of automated tests, CI workflows, and other verification processes running on your PR. It helps you verify whether your changes pass all required tests before merging.\n\n<details>\n<summary>Screen reader users (NVDA / JAWS - Windows)</summary>\n\n1. Navigate to the **\"Pull request tabs\"** landmark (`D`)\n2. Navigate between tab links (`K` or `Tab`) and activate \"Checks\"\n3. Press `D` to jump to the **\"check suites\"** section - this moves focus to the collapsed details button of the first check\n4. Press `B` or `Tab` to navigate between check buttons; each button is labeled with the check's name\n5. Press `Enter` or `Space` to expand a check and reveal its logs:\n   - Navigate through the check steps with `K` or `Tab`\n   - Activate a step for more details\n6. For a summary view: press `D` to navigate to the **\"check run summary\"** section\n\n</details>\n\n<details>\n<summary>Screen reader users (VoiceOver - macOS)</summary>\n\n1. `VO+U` -> Landmarks -> \"Pull request tabs\" -> activate \"Checks\"\n2. `VO+U` -> Landmarks -> navigate to \"check suites\" section\n3. `VO+Right` to move through check buttons, `VO+Space` to expand\n4. For summary: `VO+U` -> Landmarks -> \"check run summary\"\n\n</details>\n\n### Learning Cards: Reading the Checks Tab\n\n**Screen reader users:**\n\n- Each check button is labeled with the check's name and its pass/fail state; listen for \"success\" or \"failure\" in the ARIA label before expanding the details\n- Press `D` to jump between the \"check suites\" and \"check run summary\" landmarks to get a high-level pass/fail overview without expanding every check\n- If a check fails, expand it and press `K` to navigate step links inside the log -- the failing step is usually labeled with a red X icon described in the accessible name\n\n**Low-vision users:**\n\n- Passed checks show a green checkmark icon; failed checks show a red X icon; pending checks show a yellow dot -- in Windows High Contrast mode these map to system success/error/warning colors\n- At high zoom, each check row may wrap; the icon and check name stay on the first line, while the duration and \"Details\" link may appear on a second line\n- Click the \"Details\" link next to a failed check to jump to the CI log; failed steps are highlighted with a red background that remains visible in high-contrast themes\n\n**Sighted users:**\n\n- Scan the Checks tab for a row of green checkmarks (all passed) or spot a red X (failed); the summary banner at the top reads \"All checks have passed\" or \"Some checks were not successful\"\n- Click any check name to expand its step log inline; failed steps are bolded and marked with a red X so you can skip passing steps quickly\n- The \"Re-run\" button (circular arrow) appears next to each check for maintainers; use it to retry a flaky check without pushing a new commit\n\n## Reading the Files Changed Tab\n\nThis is the core of a code review. You will read diffs - the before/after state of every file that changed.\n\n> **Note:** This guide uses GitHub's improved Files Changed experience. If your Files Changed tab doesn't match these steps, refer to the screen reader verification steps in the prerequisite callout at the top of this chapter - the feature may need to be enabled in Feature Preview, or it may already be active for your account with no action required.\n\n### File Tree (left panel)\n\nThe file tree lists every changed file. Use it to jump directly to a specific file’s diff.\n\n<details>\n<summary>Visual / mouse users</summary>\n\nThe file tree panel is on the left side of the Files Changed tab. It lists every modified file. Click a filename to scroll the diff view to that file. You can collapse or expand folders by clicking the arrow. Type in the filter box at the top to narrow the file list.\n\n</details>\n\n<details>\n<summary>Low vision users (zoom, high contrast)</summary>\n\nThe file tree panel is on the left side of the Files Changed tab. At 200% zoom or higher:\n\n- The panel may collapse into a toggle button or hamburger menu. Look for a sidebar toggle icon in the top-left area of the Files Changed tab.\n- File names in the tree may be truncated. Hover over a truncated name to see the full path in a tooltip.\n- The filter box at the top of the file tree lets you type a filename to narrow the list. This is faster than scrolling through a long file list at high magnification.\n- Each file entry shows an icon indicating the change type (added, modified, deleted). In high-contrast themes, these icons use distinct system colors rather than relying on green/red alone.\n\n</details>\n\n<details>\n<summary>Screen reader users (NVDA / JAWS - Windows)</summary>\n\n1. `D` → navigate to \"File tree\" region\n2. `↑/↓` to navigate the file list\n3. `Enter` to jump to that file's diff\n\n</details>\n\n<details>\n<summary>Screen reader users (VoiceOver - macOS)</summary>\n\n1. `VO+U` → Landmarks → navigate to \"File tree\" region\n2. `VO+Down` to move through the file list\n3. `VO+Space` to jump to that file's diff\n\n</details>\n\n### The Diff for a File\n\nEach changed file has:\n\n- A **file heading** (its path, e.g., \"src/index.html\") - navigable with `3` or `H`\n- A **stats line** (\"24 additions, 6 deletions\")\n- The **diff content** - a table where each row is one line of code\n\n#### Lines in a diff are read as\n\n- `+ Added line` - line that was added\n- `- Removed line` - line that was removed\n- `Context line` - unchanged line shown for context\n\n### Navigating the diff with a screen reader\n\n<details>\n<summary>Visual / mouse users</summary>\n\nEach file’s diff shows added lines in green and removed lines in red. Scroll the page to read through changes. Unchanged context lines are shown in white/grey. Collapse a file’s diff by clicking the arrow next to its filename heading. Use `Ctrl+F` (browser Find) to search for specific text within visible diffs.\n\n</details>\n\n<details>\n<summary>Low vision users (zoom, high contrast)</summary>\n\nThe diff view uses color-coded backgrounds: green for added lines, red for removed lines, and white or grey for unchanged context.\n\n**Tips for reading diffs at high magnification:**\n\n- Enable **Split diff** view (dropdown at the top of Files Changed tab) to see old and new versions side-by-side. At very high zoom, **Unified diff** may be more comfortable because it uses a single column.\n- Each line has a `+` or `-` prefix in addition to the color. In Windows High Contrast mode, the color backgrounds are replaced with system contrast colors and the `+`/`-` prefixes remain visible.\n- Use `Ctrl+F` (browser Find) to search for specific text within the visible diffs. This is often faster than scrolling through long diffs at high zoom.\n- Line numbers appear on the left margin. At extreme zoom levels, these may overlap the code text. Hover over a line number to see the full number in a tooltip.\n- To collapse a long diff and reduce visual clutter, click the arrow next to the file heading.\n\n</details>\n\n<details>\n<summary>Screen reader users (NVDA / JAWS)</summary>\n\n1. `T` to jump to the next diff table\n2. Switch to Focus Mode: `Insert+Space` (NVDA) or `Insert+Z` (JAWS)\n3. `Ctrl+Alt+↓` to move down one row (next diff line), `Ctrl+Alt+↑` to move up\n4. `Ctrl+Alt+→` to read across columns (line number | change type | content)\n5. The screen reader reads: “+  Add accessible name to submit button”\n6. Collapsed sections contain unchanged code. Focus the expand/disclosure control and activate it (`Enter` or `Space`) to reveal the hidden lines.\n\n> **Tip:** You can also use `↓` and `↑` in Focus Mode for simpler line-by-line reading when you don’t need column-level detail. Use `NVDA+F7` to get a headings overview of all changed files before diving into individual diffs.\n\n</details>\n\n<details>\n<summary>Screen reader users (VoiceOver)</summary>\n\n1. `T` or `VO+U` → Tables → select the diff table\n2. `VO+Shift+Down` to enter the table\n3. `VO+Right/Left` for columns, `VO+Up/Down` for rows\n\n</details>\n\n### Placing an inline comment on a diff line\n\n<details>\n<summary>Visual / mouse users</summary>\n\nHover over any line in the diff - a blue `+` button appears on the left margin. Click it to open a comment box for that line. Type your comment, then click **Add single comment** (posts immediately) or **Start a review** (batches the comment with others). To select a range of lines, click and drag across the line numbers on the left.\n\n</details>\n\n<details>\n<summary>Low vision users (zoom, high contrast)</summary>\n\nThe inline comment button (a blue `+` icon) appears on hover near the left margin of each diff line. At high magnification:\n\n- The `+` button can be small and hard to target. **Keyboard alternative:** `Tab` into the diff line area, then press `Enter` on the focused line to open the comment box.\n- Once the comment box opens, it spans the full width of the diff area. At 200% zoom, you may need to scroll down to see the **Add single comment** and **Start a review** buttons below the text area.\n- In Windows High Contrast mode, the `+` button uses the system link color rather than blue, and the comment box border uses the system window frame color.\n\n</details>\n\n<details>\n<summary>Screen reader users (NVDA / JAWS - Windows)</summary>\n\n1. Navigate to the specific line in the diff (using the table navigation above)\n2. While focused on that line, a comment button appears - press `Enter` or `Space` to activate it\n3. A comment box opens below the line\n4. Focus Mode → type your comment\n5. `Tab` to **Add single comment** button (instant comment) OR **Start a review** (to batch comments)\n\n#### Multi-line comment (Windows)\n\n1. Focus the first line you want to comment on\n2. Press `Shift+↓` to extend the selection to additional lines\n3. A comment button appears - activate it\n4. The comment applies to the full range of selected lines\n\n</details>\n\n<details>\n<summary>Screen reader users (VoiceOver - macOS)</summary>\n\n1. Navigate to the specific line in the diff (using the table navigation above)\n2. While focused on that line, `VO+Space` on the comment button that appears\n3. A comment box opens below the line\n4. `VO+Shift+Down` to interact with the text area, then type your comment\n5. `VO+Shift+Up` to stop interacting, then `Tab` to **Add single comment** and `VO+Space`\n\n#### Multi-line comment (macOS)\n\n1. Focus the first line and `Shift+↓` to extend the selection\n2. `VO+Space` on the comment button that appears\n3. The comment applies to the full range of selected lines\n\n</details>\n\n### Viewing comments within the diff\n\nInline comments appear as expandable threads within the diff table. Navigate to them with `3` (they are h3 headings). Each thread shows the comment, any replies, and a \"Reply\" button.\n\n### Learning Cards: Reading the Files Changed Tab\n\n<details>\n<summary>Screen reader users</summary>\n\n- Press `D` to jump to the \"File tree\" landmark on the left; use `Up/Down Arrow` to navigate files, `Enter` to jump to that file's diff\n- Press `T` to jump to the next diff table; use `Ctrl+Alt+Down Arrow` to walk through diff lines row by row\n- Each line is announced with its change type: `+` for additions, `-` for deletions, and context lines with no prefix\n\n</details>\n\n<details>\n<summary>Low vision users</summary>\n\n- Added lines have a green background; removed lines have a red background; in high-contrast themes, these use bolder system-color shading\n- Toggle between Split diff (two-column) and Unified diff (single-column) using the dropdown at the top of the Files Changed tab; Unified is easier at high zoom\n- Each file heading shows the path and a summary like \"+24 -6\"; zoom in on this to quickly assess the scope of changes per file\n\n</details>\n\n<details>\n<summary>Sighted users</summary>\n\n- The file tree panel on the left lists every changed file; click a filename to scroll the right panel to that file's diff\n- Green-highlighted lines are additions; red-highlighted lines are deletions; grey lines are unchanged context\n- Hover over any line number in the diff to reveal a blue \"+\" button for adding an inline review comment\n\n</details>\n\n## Opening a Pull Request\n\n### Tool Cards: Open a Pull Request\n\n**github.com (browser):**\n\n1. Push your branch, then click the **Compare & pull request** banner (or go to **Pull requests > New pull request**).\n2. Set base branch to `main`, compare branch to yours.\n3. Fill in the title and description, then click **Create pull request**.\n\n**github.dev (web editor):**\n\n1. After committing changes, click the **Source Control** icon.\n2. Click **Create Pull Request** in the Source Control panel header.\n3. Fill in details and submit.\n\n**VS Code Desktop (GitHub Pull Requests extension):**\n\n1. Press `Ctrl+Shift+P`, type **GitHub Pull Requests: Create Pull Request**.\n2. Select base and compare branches.\n3. Fill in the title and description, then click **Create**.\n\n**GitHub Desktop:**\n\n1. After pushing your branch, click **Create Pull Request** in the banner or **Branch > Create Pull Request**.\n2. This opens github.com with the PR form pre-filled.\n\n**Git CLI / GitHub CLI:**\n\n```bash\ngit push -u origin your-branch\ngh pr create --title \"Your title\" --body \"Description\"\n```\n\n### From the web editor workflow (editing a file on GitHub)\n\n1. You edited a file → GitHub showed a \"Propose changes\" form\n2. You named your branch and activated \"Propose changes\"\n3. GitHub redirected you to the \"Open a pull request\" page\n\n### From a fork or feature branch\n\n<details>\n<summary>Visual / mouse users</summary>\n\n1. Navigate to the repository on GitHub\n2. If you recently pushed, a yellow banner “Compare & pull request” appears at the top - click it\n3. If no banner appears: click the **Pull requests** tab → click the green **New pull request** button\n4. Use the branch dropdowns to choose your **base** branch (what to merge into) and your **compare** branch (your changes)\n5. Click **Create pull request**\n\n</details>\n\n<details>\n<summary>Screen reader users (NVDA / JAWS - Windows)</summary>\n\n1. Navigate to the repository\n2. A \"Compare & pull request\" banner may appear (if you recently pushed) - activate it\n3. OR: Navigate to Pull Requests tab → \"New pull request\"\n4. Choose your base branch (what to merge into) and compare branch (your changes)\n\n</details>\n\n<details>\n<summary>Screen reader users (VoiceOver - macOS)</summary>\n\n1. Navigate to the repository\n2. Check for a \"Compare & pull request\" banner - Quick Nav `B` to find and `VO+Space` to activate it\n3. OR: navigate to Pull Requests tab (`VO+U` → Landmarks → Repository navigation) → Quick Nav `B` for \"New pull request\"\n4. Use the branch dropdowns (`VO+Space` to open, arrow keys to select) to choose base and compare branches\n\n</details>\n\n### Filling out the PR form\n\n#### Title field\n\n```text\nStep 1: F to navigate to the title field\nStep 2: Focus Mode → type a descriptive title\nStep 3: Good: \"Add keyboard navigation for carousel component\"\nStep 4: Bad: \"Fix bugs\"\n```\n\n#### Description field\n\n```text\nStep 1: Tab to the body text area\nStep 2: Focus Mode → type using the PR template (if provided)\n```\n\n> **Copilot can write your PR description:** If your account has Copilot access, a **\"Copilot actions\"** button appears in the description toolbar. Activate it to open a menu with options to generate a summary of your changes or an outline of the most important changes in the PR. Screen reader users: `Tab` from the description text area to find the \"Copilot actions\" button, then press `Enter` to open the menu and `↑/↓` to choose an option.\n\nIf no template, use this structure:\n\n```markdown\n## Summary\n\nWhat does this PR change and why?\n\n## Changes\n\n- Added `aria-label` to the search button\n- Fixed keyboard trap in the modal dialog\n- Replaced `<div>` with `<button>` for the dismiss control\n\n## Related Issues\n\nCloses #42\n\n## Testing\n\n- Tested with NVDA + Chrome on Windows 11\n- Tested with VoiceOver + Safari on macOS Sonoma\n- Keyboard-only navigation verified\n\n## Screenshots / recordings\n\n[Include if relevant - with descriptive alt text for any images]\n```\n\n> **Learning Room example:** In the Learning Room repository, a PR template is provided for you. Here is what a completed PR looks like for Challenge 3 (Complete Welcome Guide):\n>\n> ```markdown\n> ## Description\n>\n> Completed three [TODO] sections in docs/welcome.md:\n> - Added paragraph about contributors from all backgrounds\n> - Added guidance on evaluating issues before starting\n> - Added note about GitHub profile and portfolio impact\n>\n> ## Related Issue\n>\n> Closes #12\n>\n> ## Type of change\n>\n> - [x] Documentation update\n>\n> ## Accessibility checklist\n>\n> - [x] Heading levels follow a logical hierarchy\n> - [x] Link text is descriptive (no \"click here\")\n> - [x] No images added (or alt text provided)\n> ```\n>\n> The `Closes #12` line tells GitHub to automatically close issue 12 when this PR merges. The validation bot checks that this line is present and that your description is at least 50 characters long.\n\n### Setting a Draft PR\n\nIf your work is not finished, open as a Draft:\n\n1. After filling in the form, find the dropdown arrow next to \"Create pull request\"\n2. Select \"Create draft pull request\"\n3. This signals to reviewers that it is not ready for formal review yet\n\n### Draft Pull Requests - Full Lifecycle\n\nA **draft pull request** is a PR explicitly marked as a work in progress. It is visible to the team, can receive comments, and runs CI - but is blocked from being merged until you mark it ready.\n\n#### When to use a draft\n\n- You want to show your approach and get early feedback before finishing\n- You need CI to run but don't want accidental merges\n- You are working across multiple days and want your progress visible\n- You want to pair with a collaborator on the work\n\n#### What a draft PR does differently\n\n- The merge button is disabled - even an authorized maintainer cannot merge a draft\n- The PR header shows a grey \"Draft\" badge instead of the green \"Open\" badge\n- Reviewers are not auto-notified (no review requests are sent until ready)\n- CI workflows still run normally\n\n#### Mark a draft ready for review\n\n1. Open the PR\n2. Navigate to the \"Reviewers\" sidebar or scroll to bottom of the Conversation tab\n3. Find and activate the **\"Ready for review\"** button\n4. The draft badge changes to \"Open\" and reviewers are notified\n\n#### Screen reader path\n\n```text\nScroll to bottom of Conversation tab\n→ B to navigate buttons\n→ \"Ready for review\" button → Enter\n→ Confirmation: PR status changes to Open\n```\n\n#### Convert an open PR to draft (after opening)\n\n1. In the right sidebar, find the \"Reviewers\" section\n2. Look for the **\"Convert to draft\"** link (below the review status)\n3. Confirm in the dialog - this removes merge eligibility until you mark it ready again\n\n<details>\n<summary>GitHub CLI (gh) alternative - draft PR lifecycle</summary>\n\nManage draft PRs from your terminal:\n\n```bash\n# Create a draft PR\ngh pr create --draft --title \"WIP: Add carousel keyboard nav\"\n\n# Mark a draft ready for review\ngh pr ready 42\n\n# Check PR status (shows draft state)\ngh pr view 42\n\n# List only draft PRs\ngh pr list --draft\n```\n\n</details>\n\n### Learning Cards: Opening a Pull Request\n\n<details>\n<summary>Screen reader users</summary>\n\n- After editing a file on GitHub, the \"Propose changes\" form has a branch name field and a commit message field; press `Tab` to move between them\n- On the \"Open a pull request\" page, press `F` to jump to the Title field; `Tab` moves to the Description text area\n- Press `Ctrl+Enter` from inside the description text area to submit the PR without finding the Create button\n\n</details>\n\n<details>\n<summary>Low vision users</summary>\n\n- The \"Compare & pull request\" yellow banner appears at the top of the repo after a recent push; at high zoom it may span the full width of the page\n- The branch comparison dropdowns (base and compare) use small text; zoom in on the area above the diff preview to read them\n- Draft PR: look for the dropdown arrow next to the green \"Create pull request\" button to switch to \"Create draft pull request\"\n\n</details>\n\n<details>\n<summary>Sighted users</summary>\n\n- After pushing a branch, a yellow \"Compare & pull request\" banner appears at the top of the repository page; click it to pre-fill the PR form\n- The PR form shows a diff preview below the description field so you can verify your changes before submitting\n- The dropdown arrow next to \"Create pull request\" lets you switch to Draft mode; the button text changes to \"Create draft pull request\"\n\n</details>\n\n## Requesting reviewers\n\nFrom the sidebar Reviewers section:\n\n1. Navigate to \"Reviewers\" heading (`3` or `H`)\n2. Activate the gear button\n3. Type a username in the search field\n4. Select from the dropdown\n5. Escape to save\n\n> **Why some reviews are requested automatically:** A file called `CODEOWNERS` in many repositories maps file paths to specific people or teams. When your PR touches a file covered by a CODEOWNERS rule, GitHub automatically adds those people as required reviewers - you'll see them appear in the Reviewers sidebar without you adding them. You cannot remove a CODEOWNERS-required reviewer. If a required reviewer hasn't responded, reach out to them directly or leave a comment on the PR.\n\n## Submitting a Review\n\nWhen you are asked to review a PR, you have three options:\n\n- **Comment** - leave feedback without a verdict; does not block merging\n- **Approve** - signal you are satisfied; often required before merge\n- **Request changes** - indicate changes must be addressed; blocks merge until resolved\n\n### Starting a review\n\nOn the Files Changed tab, when you add inline comments, choose \"Start a review\" instead of \"Add single comment.\" This batches all your comments into one review submission.\n\n### Completing and submitting a review\n\nAfter adding your inline comments via “Start a review,” you must submit the review to notify the PR author. The review is pending until you submit it.\n\n<details>\n<summary>Visual / mouse users</summary>\n\n1. Look for the **Finish your review** button in the top-right area of the Files Changed tab (it shows the number of pending comments)\n2. Click it - a popover appears with a summary text area and three radio buttons: **Comment**, **Approve**, **Request changes**\n3. Optionally type a summary comment\n4. Select your verdict by clicking the radio button\n5. Click **Submit review**\n\n</details>\n\n<details>\n<summary>Low vision users (zoom, high contrast)</summary>\n\nThe **Finish your review** button is in the top-right area of the Files Changed tab. It shows a badge with the number of pending comments. At high magnification:\n\n- The button may scroll off-screen to the right. Use horizontal scrolling or press `Tab` from the page top to cycle through focusable elements until you reach it.\n- When clicked, a popover appears with a summary text area and three radio buttons (**Comment**, **Approve**, **Request changes**). At 200%+ zoom, the popover may extend below the visible viewport. Scroll down within the popover to see the **Submit review** button.\n- The radio buttons are standard HTML radio buttons. In Windows High Contrast mode, the selected radio button uses the system highlight color.\n- **Keyboard shortcut:** If the button is hard to find visually, press `Ctrl+Shift+Enter` from within any review comment text area to open the submit review dialog directly.\n\n</details>\n\n<details>\n<summary>Screen reader users (NVDA / JAWS)</summary>\n\n1. Press `1` to go to the h1 (PR title)\n2. Press `B` (or `Tab`) to navigate to the **“Submit review”** button and activate it (`Enter`/`Space`)\n3. A “Submit review” dialog/panel appears\n4. Switch to Focus Mode (`NVDA+Space`) if prompted to type\n5. Optionally type a summary comment in the “markdown value” textbox\n6. `Tab` to the “Review Event” radio group\n7. Use `↑/↓` to select one of:\n   - **Comment** - general feedback, does not block merge\n   - **Approve** - you are satisfied; signals merge readiness\n   - **Request changes** - must be addressed before merge\n8. `Tab` to the “Submit review” button and press `Enter`\n\n</details>\n<details>\n<summary>Screen reader users (VoiceOver - macOS)</summary>\n\n1. Quick Nav `H` or `VO+Cmd+H` to navigate to the PR title (h1)\n2. Quick Nav `B` or `Tab` to find the **\"Submit review\"** button → `VO+Space`\n3. A \"Submit review\" dialog/panel appears\n4. `VO+Shift+Down` to interact with the summary text area, type an optional comment\n5. `VO+Shift+Up` to stop interacting, then `Tab` to the \"Review Event\" radio group\n6. `VO+Left/Right` or arrow keys to select:\n   - **Comment** - general feedback, does not block merge\n   - **Approve** - you are satisfied; signals merge readiness\n   - **Request changes** - must be addressed before merge\n7. `Tab` to the \"Submit review\" button → `VO+Space`\n\n</details>\n> **Tip from accessibility.github.com:** If you submitted comments as \"Add single comment\" instead of \"Start a review,\" each comment is already posted individually. The \"Submit review\" flow is only needed when you chose \"Start a review\" to batch comments together.\n\n<details>\n<summary>GitHub CLI (gh) alternative - reviewing a PR</summary>\n\nReview a pull request from your terminal:\n\n```bash\n# View the PR diff in your terminal\ngh pr diff 42\n\n# Approve a PR\ngh pr review 42 --approve\n\n# Approve with a comment\ngh pr review 42 --approve --body \"Looks good - heading hierarchy is correct.\"\n\n# Request changes\ngh pr review 42 --request-changes --body \"The alt text on line 34 needs to describe the image content.\"\n\n# Leave a comment-only review (no verdict)\ngh pr review 42 --comment --body \"A few suggestions - see inline comments.\"\n```\n\n**Note:** `gh pr diff` outputs the full diff to your terminal, which a screen reader can read line by line. For inline comments on specific lines, use the web interface or VS Code.\n\n</details>\n\n### GitHub shortcuts for pull requests\n\nThese are the GitHub built-in shortcuts for PR pages. Enable Focus Mode first (NVDA: `NVDA+Space`, JAWS: `Insert+Z`) before using single-key shortcuts.\n\n#### On the PR list page\n\n| Shortcut | Action |\n| ---  | ---  |\n| `G P` | Jump to the Pull Requests tab from anywhere in the repo |\n| `C` | Create a new pull request |\n| `Ctrl+/` (Win) or `Cmd+/` (Mac) | Focus the PR search bar |\n\n**Shortcut note:** For `G P`, press `G`, release it, then press `P` (two sequential key presses, not simultaneous).\n\n#### On an open pull request\n\n| Shortcut | Action |\n| ---  | ---  |\n| `?` | Show all shortcuts for this page |\n| `Q` | Request a reviewer |\n| `M` | Set a milestone |\n| `L` | Apply a label |\n| `A` | Set an assignee |\n| `R` | Quote selected text in your reply |\n| `Ctrl+Shift+P` | Toggle Write and Preview tabs in the comment box |\n| `Ctrl+Enter` | Submit comment from inside the text area |\n\n#### On the Files Changed tab\n\n| Shortcut | Action |\n| ---  | ---  |\n| `T` | Jump to the \"Filter changed files\" field |\n| `C` | Open the commits dropdown to filter which commits are shown |\n| `Ctrl+G` (Win) or `Cmd+G` (Mac) | Insert a code suggestion block around selected code |\n| `Ctrl+Shift+Enter` (Win) or `Cmd+Shift+Enter` (Mac) | Submit a review comment |\n\nFor the full shortcut system, see [Screen Reader Cheat Sheet - GitHub Shortcuts section](appendix-b-screen-reader-cheatsheet.md#github-built-in-keyboard-shortcuts).\n\n### Learning Cards: Submitting a Review\n\n**Screen reader users:**\n\n- The review verdict controls are inside a popover triggered by the \"Finish your review\" button; press `1` to return to the h1 (PR title), then `B` or `Tab` forward to find the button -- it is easy to miss because it is not a landmark\n- Inside the popover, `Tab` past the summary text area to reach a radio group labeled \"Review Event\"; use `Up/Down Arrow` to switch between Comment, Approve, and Request Changes\n- Shortcut: press `Ctrl+Shift+Enter` from any review comment text area to open the submit review dialog directly, bypassing the search for the button\n\n**Low-vision users:**\n\n- The \"Finish your review\" button sits in the top-right corner of the Files Changed tab with a small badge showing your pending comment count; at 200%+ zoom it may scroll off-screen to the right\n- Inside the submit popover, the three radio buttons (Comment, Approve, Request changes) are small standard HTML radios; zoom in on the popover area or use `Tab` to step between them\n- After submitting, your review verdict appears as a colored banner in the Conversation timeline: green for Approve, red for Request Changes, grey for Comment\n\n**Sighted users:**\n\n- Look for the green \"Finish your review\" button in the sticky header of the Files Changed tab; the badge shows how many comments are pending\n- The popover has a text area for an overall summary at the top and three radio buttons at the bottom: Comment, Approve, Request changes -- select one before clicking \"Submit review\"\n- If you added comments with \"Add single comment\" instead of \"Start a review,\" those are already posted; the submit review flow only applies to batched review comments\n\n### Suggested Changes\n\nA **suggested change** is a special form of inline review comment where the reviewer proposes exact replacement text. The PR author can apply the suggestion directly from GitHub - no copy-paste or separate commit needed.\n\n#### As a reviewer - inserting a suggestion\n\n1. On the Files Changed tab, navigate to the line you want to propose a change for\n2. Activate the **line comment button** for that line (the `+` that appears on hover, or Tab to navigate to it)\n3. In the comment text area that opens, press `Ctrl+G` (Windows) or `Cmd+G` (Mac)\n4. GitHub wraps a suggestion block around the current line content:\n\n   ````markdown\n   ```suggestion\n   the current line content here\n   ```\n   ````\n\n5. Edit the text inside the suggestion block to show your proposed change\n6. Add context above the block if helpful: \"This makes the alt text more descriptive:\"\n7. Submit as part of your review (\"Start a review\" → batch with other comments)\n\n**Screen reader note:** The suggestion block is plain Markdown text in the comment editor. Type it directly:\n\n```text\n```suggestion\nyour proposed text here\n```text\n\n```\n\n(Three backticks, the word `suggestion`, Enter, your text, Enter, three backticks.)\n\n#### As an author - applying a suggestion\n\n1. Open the PR Conversation or Files Changed tab\n2. Navigate to the inline comment containing a suggestion (it shows a diff-style preview)\n3. Find and activate the **\"Apply suggestion\"** button below the suggestion block\n4. GitHub creates a commit automatically that applies the change - no file editing required\n5. The conversation thread is marked as resolved\n\n#### Batching multiple suggestions into one commit\n\n1. For each suggestion you want to apply, activate **\"Add suggestion to batch\"** instead of \"Apply suggestion\"\n2. After selecting all suggestions, activate the **\"Commit suggestions\"** button that appears at the top\n3. GitHub applies all batched suggestions in a single commit\n\n#### When to use suggestions vs. comments\n\n- Use a suggestion when you know the exact text that would fix the issue\n- Use a plain comment when the change requires judgment from the author (e.g., \"this alt text isn't descriptive - can you describe what the image shows?\")\n\n1. After adding all your inline comments, navigate to the review summary button\n2. On Files Changed tab: find the \"Review changes\" button (B to navigate buttons)\n3. Press Enter to open the review dialog\n4. A panel opens:\n   - A summary text area for overall comments\n   - Radio buttons for Comment / Approve / Request changes\n5. Switch to Focus Mode → type your summary comment\n6. Navigate to the radio buttons with arrow keys → select your verdict\n7. Tab to \"Submit review\" button → Enter\n\n### Learning Cards: Suggested Changes\n\n**Screen reader users:**\n\n- To insert a suggestion block, press `Ctrl+G` (Windows) or `Cmd+G` (Mac) in the comment text area; the screen reader announces the inserted fence -- arrow down to edit the text between the backtick lines\n- Alternatively type the block manually: three backticks, the word `suggestion`, Enter, your replacement text, Enter, three backticks -- this avoids relying on the keyboard shortcut\n- As a PR author, navigate to a suggestion comment with `3`, then `Tab` to the \"Apply suggestion\" button; GitHub commits the change automatically with no file editing required\n\n**Low-vision users:**\n\n- Suggestion blocks render as a mini inline diff: the original line in red/pink background and your proposed replacement in green background; in high-contrast mode these use system diff colors\n- The \"Apply suggestion\" button is small and sits below the suggestion diff preview; zoom into the comment area to find it, or `Tab` from the suggestion text to reach it\n- When batching multiple suggestions, a floating \"Commit suggestions\" bar appears at the top of the page; at high zoom scroll up or press `Home` to find it\n\n**Sighted users:**\n\n- In the comment box, press `Ctrl+G` / `Cmd+G` to wrap the current line in a suggestion block; edit the text inside to show your proposed replacement -- the preview tab renders it as an inline diff\n- As a PR author, each suggestion shows an \"Apply suggestion\" button and an \"Add suggestion to batch\" button; use batching to combine several suggestions into one clean commit\n- Applied suggestions auto-resolve the conversation thread and create a commit attributed to both the reviewer (author of the suggestion) and you (committer)\n\n## Understanding Merge Options (for Maintainers)\n\nWhen a PR is approved and checks pass, a maintainer can merge it. The merge button section appears at the bottom of the Conversation tab.\n\n```text\n\nStep 1: Navigate to the bottom of the Conversation tab\nStep 2: Find \"Merge pull request\" button (or similar)\nStep 3: A dropdown arrow next to the button offers strategy options:\n\n- Create a merge commit\n- Squash and merge\n- Rebase and merge\nStep 4: Choose strategy → activate the button\nStep 5: Confirm in the dialog that appears\n\n```\n\n<details>\n<summary>GitHub CLI (gh) alternative - merging a PR</summary>\n\nMerge a pull request from your terminal:\n\n```bash\n# Merge with default strategy (merge commit)\ngh pr merge 42\n\n# Squash and merge\ngh pr merge 42 --squash\n\n# Rebase and merge\ngh pr merge 42 --rebase\n\n# Delete the branch after merging\ngh pr merge 42 --squash --delete-branch\n\n# Enable auto-merge (merges when checks pass)\ngh pr merge 42 --auto --squash\n```\n\n</details>\n\n## After a PR is merged\n\n- The PR status badge changes to \"Merged\" (purple)\n- The source branch can be deleted - a \"Delete branch\" button appears\n- Any linked issues with `Closes #N` in the description are automatically closed\n\n> **Screen reader tip - deleting the branch after merge:** Navigate to the \"Add a comment\" section (`D`), then press `Shift+B` to navigate backwards to the **\"Delete branch\"** button and activate it. This keeps your repository clean by removing the now-merged feature branch.\n\n## Auto-Merge - Merging When You Can't Wait Around\n\n**Auto-merge** lets you pre-authorize a PR to merge automatically the moment all branch protection requirements are satisfied - required reviews approved, all status checks passing, and the branch up to date.\n\nThis is especially useful when:\n\n- You've addressed all review comments and are waiting for CI to finish\n- A maintainer has approved the PR but a required check is still running\n- You're in a different time zone from the reviewers\n\n### Enabling Auto-Merge on Your PR\n\n```text\n1. Open your PR → scroll to the merge box at the bottom\n2. Tab to the merge button dropdown arrow (next to \"Merge pull request\")\n3. Select \"Enable auto-merge\"\n4. Choose your merge strategy (squash, rebase, or merge commit)\n5. Confirm in the dialog - the merge box now shows \"Auto-merge enabled\"\n```\n\n#### Screen reader path\n\n```text\nConversation tab → End key → merge box region\nTab → dropdown button (announced as \"Select merge method\" or similar)\nEnter → arrow keys through options → \"Enable auto-merge\" → Enter\nDialog: Tab → confirm button → Enter\n```\n\n#### What happens next\n\n- The PR merge box changes to show \"Auto-merge enabled - merge will happen automatically\"\n- When the last required check passes (or last required review arrives), GitHub merges the PR silently\n- You receive a notification: \"Your PR was automatically merged\"\n- If a reviewer requests changes after auto-merge is enabled, auto-merge is automatically cancelled (a new approval is required before it re-enables)\n\n### Cancelling Auto-Merge\n\n```text\nMerge box → Tab → \"Disable auto-merge\" button → Enter\n```\n\n> **Note:** Auto-merge is only available if the repository administrator has enabled it in Settings → General. Many open source repos have it on; some do not.\n\n## Practical Scenarios\n\n### Scenario A: \"I want to review an assigned PR\"\n\n**Example:** You are assigned to review a PR titled \"Add missing NVDA shortcut to keyboard-shortcuts.md.\" The PR modifies `docs/keyboard-shortcuts.md` in the Learning Room repository and references Challenge 2.\n\n```text\n1. Notifications → open the PR notification\n2. D → PR tabs → Files changed tab\n3. T → enter the first diff table → navigate lines with arrow keys\n4. Check: does the new shortcut appear in the correct NVDA table? Is the table formatting preserved?\n5. For each concern: activate the line comment button → type comment → Start a review\n6. D → PR tabs → Conversation → scroll to bottom\n7. B → \"Review changes\" button → type summary → select verdict → Submit review\n```\n\n### Scenario B: \"I want to respond to review feedback on my PR\"\n\n**Example:** Your PR for Challenge 3 (Complete Welcome Guide) received a review comment: \"The [TODO] about evaluating issues is good, but the paragraph could mention checking if the issue is already assigned.\" The validation bot also flagged a link text issue.\n\n```text\n1. Open your PR (Notifications → PR link, or find it in PR list)\n2. 3 to navigate review comments\n3. For the reviewer's comment: read it → Tab to \"Reply\" → Focus Mode → type \"Good point - I will add a sentence about checking assignees. Pushing a fix now.\"\n4. For the bot's link text flag: fix the link in docs/welcome.md, commit, and push\n5. When all addressed: Tab to \"Re-request review\" button → Enter\n```\n\n### Scenario C: \"My PR has a merge conflict\"\n\n```text\n1. You will see a \"This branch has conflicts that must be resolved\" message near the bottom\n2. Tab to \"Resolve conflicts\" button → GitHub opens a web conflict editor\n3. The editor shows conflict markers - see Merge Conflicts guide (07-merge-conflicts.md)\n4. Edit the file to resolve → Mark as resolved → Commit merge\n```\n\n## Common PR Mistakes to Avoid\n\n| Mistake | Better Approach |\n| ---------  | ----------------  |\n| Opening a PR without an associated issue | Link to or create an issue first; comment \"I'd like to work on this\" |\n| A vague title like \"Fix things\" | Be specific: \"Fix missing alt text on homepage hero image\" |\n| Missing the PR template sections | Fill all sections - description, testing, related issues |\n| Pushing many unrelated changes in one PR | One PR per logical change (smaller PRs get faster reviews) |\n| Not testing your own changes | Test before requesting review |\n| Not responding to reviewer comments | Acknowledge all comments, even if you disagree |\n\n## Writing PR Descriptions That Get Reviewed\n\n> **See also:** [Appendix C: Markdown Reference](appendix-c-markdown-reference.md) for formatting your PR description with headings, lists, and task lists.\n\nA pull request is only as useful as its description. Reviewers decide whether to pick up your PR -- and how carefully to read it -- based on what you write in that text box. A strong description saves everyone time, catches misunderstandings early, and makes the review conversation productive instead of confused.\n\nThis section walks you through what reviewers expect, how to structure your description, and the patterns that separate descriptions people actually read from descriptions people skip.\n\n### What Reviewers Look For\n\nWhen a reviewer opens your PR, they are asking four questions before they ever look at the diff:\n\n1. **Why does this change exist?** -- What problem does it solve, or what goal does it advance?\n2. **What is the scope?** -- Which files changed, and roughly how big is the change?\n3. **How was it tested?** -- Did you verify that the change works, and how?\n4. **What should I pay attention to?** -- Are there tricky parts, trade-offs, or areas where you want a second opinion?\n\nIf your description answers all four, the reviewer can jump straight into the code with context. If it answers none, the reviewer has to reverse-engineer your intent from the diff -- and that slows everything down.\n\n> **Screen reader tip:** When you write your description in the GitHub comment box, use Markdown headings (`##` or `###`) to separate sections. Reviewers using screen readers can then press `H` to jump between sections instead of arrowing through a wall of text.\n\n### The `Closes #XX` Pattern\n\nGitHub recognizes special keywords in PR descriptions that automatically close linked issues when the PR merges. You do not need to close issues by hand -- just include the right keyword followed by the issue number.\n\n| Keyword | Effect When PR Merges | When to Use |\n| ------- | --------------------- | ----------- |\n| `Closes #12` | Closes issue #12 | The PR fully resolves the issue |\n| `Fixes #12` | Closes issue #12 | The PR fixes a bug described in the issue |\n| `Resolves #12` | Closes issue #12 | The PR resolves a discussion or question in the issue |\n\nAll three keywords behave identically -- GitHub closes the linked issue on merge. The difference is purely semantic. Use whichever word best describes the relationship between your PR and the issue.\n\nYou can link multiple issues in one description:\n\n```text\nCloses #12\nCloses #14\n```\n\nIf your PR is related to an issue but does not fully resolve it, skip the keyword and write a plain reference instead: \"Related to #12\" or \"See #12 for background.\" That creates a clickable link without triggering auto-close.\n\n> **Screen reader tip:** After your PR merges, navigate to the linked issue. GitHub adds a cross-reference comment like \"Closed by #25\" that you can find by pressing `3` to jump between comments. This confirms the link worked.\n\n### Before/After Structure\n\nOne of the most effective patterns for PR descriptions is showing the state before your change and the state after. This gives the reviewer an instant mental model of what changed without reading the diff line by line.\n\nFor text-based changes, use a simple two-part layout:\n\n```text\n**Before:** The welcome page had a [TODO] placeholder where the\nintroduction paragraph should be.\n\n**After:** The welcome page now has a three-sentence introduction\nthat describes what the Learning Room is and who it is for.\n```\n\nFor visual changes -- layout shifts, color updates, new UI elements -- describe what the reviewer would see. Since this curriculum prioritizes accessibility, write your before/after as text descriptions rather than relying solely on screenshots. A reviewer using a screen reader cannot see an image, but they can read \"Before: the sidebar had no skip link. After: the sidebar has a skip link targeting the main content area.\"\n\nIf you do include screenshots, always add alt text that conveys the same information as the image. The screenshot is a convenience, not the only source of truth.\n\n### A PR Description Template\n\nHere is a template you can copy into your PR descriptions. Not every section applies to every PR, but filling in even a few sentences per section makes a meaningful difference.\n\n```markdown\n## Summary\n\nOne or two sentences describing what this PR does and why.\n\n## Changes Made\n\n- Bullet list of specific changes\n- One bullet per logical change\n- Reference filenames when helpful\n\n## Related Issues\n\nCloses #XX\n\n## Testing\n\n- How you verified the change works\n- Any edge cases you checked\n\n## Checklist\n\n- [ ] I tested my changes locally\n- [ ] I checked for accessibility (alt text, heading order, link text)\n- [ ] I linked the related issue\n```\n\nYou will see a version of this template in the Learning Room's `.github/PULL_REQUEST_TEMPLATE.md` file. When a repository has a PR template, GitHub auto-fills the description box with it every time you open a new PR. You just fill in the blanks. See [Chapter 5](05-working-with-issues.md) for how issue templates work the same way.\n\n### Common Description Mistakes\n\nEven experienced contributors make these mistakes. Knowing what to avoid is half the battle.\n\n| Mistake | Why It Hurts | Better Version |\n| ------- | ------------ | -------------- |\n| Empty description | Reviewer has zero context; they may skip the PR entirely | Write at least a Summary and Related Issues section |\n| \"Fixed stuff\" or \"Updates\" | No one can tell what changed or why | \"Add missing alt text to three images on the setup page\" |\n| Describing HOW but not WHY | The diff already shows how; the description should explain the motivation | \"The setup page had three images with empty alt attributes, which caused screen readers to announce 'image' with no context\" |\n| Forgetting to link issues | The reviewer cannot see what problem you are solving, and the issue stays open after merge | Add `Closes #XX` or at minimum \"Related to #XX\" |\n| Pasting a massive paragraph | Hard to scan, especially with a screen reader | Use Markdown headings and bullet lists to break it up |\n\n### Good vs. Bad: Side by Side\n\n**Bad description:**\n\n```text\nfixed the file\n```\n\nThat is the entire description. No context, no linked issue, no explanation of what file or what was wrong with it. A reviewer seeing this has to open the diff, figure out which file changed, read every line, and guess at the intent. Most reviewers will either skip this PR or leave a comment asking for more information -- which delays the merge.\n\n**Good description:**\n\n```text\n## Summary\n\nFill in the [TODO] introduction section on the welcome page so new\nvisitors understand what the Learning Room is.\n\n## Changes Made\n\n- Replaced the [TODO] placeholder in docs/welcome.md with a\n  three-sentence introduction paragraph\n- Added a \"What you will learn\" bullet list below the introduction\n\n## Related Issues\n\nCloses #7\n\n## Testing\n\n- Opened docs/welcome.md in the VS Code preview and confirmed the\n  new text renders correctly\n- Checked heading order with the accessibility linter -- no warnings\n- Verified the [TODO] marker is completely removed\n\n## Checklist\n\n- [x] I tested my changes locally\n- [x] I checked for accessibility (alt text, heading order, link text)\n- [x] I linked the related issue\n```\n\nThis version answers every question a reviewer has before they touch the diff. They know the file, the issue, the change, and the testing. The review conversation can focus on the content itself rather than on figuring out what the PR is about.\n\n> **Screen reader tip:** When scanning a list of open PRs, the title and first line of the description are what you hear first. Front-load the most important information so you can triage PRs quickly using `Arrow Down` from the PR title.\n\n### Learning Cards: Writing PR Descriptions That Get Reviewed\n\n<details>\n<summary>Screen reader users</summary>\n\n- Use Markdown headings (`##`) in your description (Summary, Changes, Related Issues, Testing) so reviewers can press `H` to jump between sections\n- Type `Closes #` followed by the issue number to auto-close the linked issue on merge; GitHub autocompletes when you type `#`\n- Press `Ctrl+Shift+P` in the description text area to toggle between Write and Preview modes; Preview renders your Markdown so you can check structure before submitting\n\n</details>\n\n<details>\n<summary>Low vision users</summary>\n\n- Use the Preview tab to verify your Markdown renders correctly; headings, bullet lists, and code blocks are easier to proofread in rendered form\n- Keep bullet points short (one line each) so the description is scannable at high zoom without excessive horizontal scrolling\n- When including screenshots, add alt text in the Markdown image syntax: `![description](url)` so every reader gets the same information\n\n</details>\n\n<details>\n<summary>Sighted users</summary>\n\n- A well-structured description uses bold section headers and bullet lists; reviewers scan these visually to decide whether to dive into the diff\n- The `Closes #XX` link renders as a clickable cross-reference; GitHub adds a small icon showing the linked issue's state (open/closed)\n- Use the checklist syntax (`- [ ]` and `- [x]`) for your testing and accessibility checklist; these render as interactive checkboxes\n\n</details>\n\n## Try It: Read a Real Pull Request\n\n**Time:** 3 minutes | **What you need:** Browser, signed in to GitHub\n\nGo to the Learning Room repository's Pull Requests tab and find any open or recently closed PR:\n\n1. Navigate to Pull Requests (`G` then `P` in Focus Mode)\n2. Open the first PR in the list (press `Enter` on its title)\n3. **Read the description** - press `2` to jump to the first section heading, then arrow down to read. Look for: which file was changed (`docs/welcome.md`, `docs/keyboard-shortcuts.md`, or `docs/setup-guide.md`)? Which challenge was this PR solving? Does the description reference `Closes #XX`?\n4. **Check the conversation** - press `3` to jump between comments. Read what the validation bot reported - did the bot find any accessibility issues like broken headings or non-descriptive links? How did the author respond?\n5. **Look at the diff** - press `D` to the \"Pull request tabs\" landmark, then navigate to \"Files changed\" and press `Enter`. Press `H` to scan the changed file headings. If the PR touched `docs/welcome.md`, you should see `+` lines where the `[TODO]` sections were filled in. If it touched `docs/keyboard-shortcuts.md`, you should see new rows added to a shortcut table.\n\n**You're done.** You just read a complete PR - description, conversation, and code changes.\n\n> **What success feels like:** You followed a PR from description to diff using only headings and landmarks. The next time you open a PR - yours or someone else's - you'll know exactly where everything is.\n\n> ### Day 2 Amplifier - Accessibility Agents: `@pr-review`\n>\n> **Review at least two pull requests manually before using any agent.** A review generated by `@pr-review` is only as useful as your ability to read, edit, and challenge it. The agent writes a first draft - you supply the context, the history, and the final judgment that no diff can contain.\n>\n> Once you have mastered manual pull request review:\n>\n> - **In VS Code** - `@pr-review review PR #N` generates line-numbered diffs with change maps, risk assessment, before/after snapshots, CI results, and suggested inline comments - a documented starting point for your own review, not a replacement for it\n> - **In your repo** - Accessibility Agents' review capabilities work across every repository you have access to by default; fork [accessibility-agents](https://github.com/Community-Access/accessibility-agents) and those capabilities travel with your project from day one\n> - **In the cloud** - GitHub Agentic Workflows can auto-generate PR descriptions, verify linked issues, and post accessibility impact summaries on a `pull_request` trigger - running the moment a PR is opened, whether or not anyone is watching\n>\n> *The agent documents the diff. You bring the context that no diff can contain.*\n\n> **Challenge Time:** Go to the [Challenge Hub](CHALLENGES.md) and complete **Challenges 4, 5, and 6** to open your first PR. Gandalf will guide you from there.\n\n---\n\n*Next: [Chapter 07: Merge Conflicts](07-merge-conflicts.md)*\n*Back: [Chapter 05: Working with Issues](05-working-with-issues.md)*\n*Related appendices: [Appendix C: Markdown Reference](appendix-c-markdown-reference.md) | [Appendix B: Screen Reader Cheat Sheet](appendix-b-screen-reader-cheatsheet.md)*\n\n## Authoritative Sources\n\nUse these official references when you need the current source of truth for facts in this chapter.\n\n- [GitHub Docs, home](https://docs.github.com/en)\n- [GitHub Changelog](https://github.blog/changelog/)\n- [GitHub Docs: About pull requests](https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/about-pull-requests)\n\n### Section-Level Source Map\n\nUse this map to verify facts for each major section in this file.\n\n- **Creating, Reviewing, and Merging Pull Requests:** [GitHub Docs: About pull requests](https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/about-pull-requests), [GitHub Docs, home](https://docs.github.com/en)\n- **Challenge and workflow guidance:** [GitHub Docs, home](https://docs.github.com/en), [GitHub Changelog](https://github.blog/changelog/)\n- **CLI pull request workflow guidance:** [GitHub Docs, home](https://docs.github.com/en), [GitHub Changelog](https://github.blog/changelog/)\n"
+    }
+  ],
+  "companions": {
+    "pairedChallenges": [],
+    "pairedChapters": [
+      {
+        "path": "C:\\code\\git-going-with-github\\docs\\06-working-with-pull-requests.md",
+        "relPath": "docs/06-working-with-pull-requests.md",
+        "exists": true,
+        "headings": [
+          {
+            "level": 2,
+            "title": "Creating, Reviewing, and Merging Pull Requests with a Screen Reader"
+          },
+          {
+            "level": 2,
+            "title": "Workshop Recommendation (Chapter 6)"
+          },
+          {
+            "level": 3,
+            "title": "Chapter 6 Challenge Set"
+          },
+          {
+            "level": 3,
+            "title": "CLI getting-started principles for pull request work"
+          },
+          {
+            "level": 3,
+            "title": "Challenge 6.1 Step-by-Step: Create One Small Branch Change"
+          },
+          {
+            "level": 3,
+            "title": "Challenge 6.2 Step-by-Step: Open a Linked PR"
+          },
+          {
+            "level": 3,
+            "title": "Challenge 6.3 Step-by-Step: Pass Required Checks"
+          },
+          {
+            "level": 3,
+            "title": "Expected Outcomes"
+          },
+          {
+            "level": 3,
+            "title": "If You Get Stuck"
+          },
+          {
+            "level": 3,
+            "title": "Learning Moment"
+          },
+          {
+            "level": 3,
+            "title": "Why this feels achievable"
+          },
+          {
+            "level": 3,
+            "title": "About Learning Cards in This Chapter"
+          },
+          {
+            "level": 2,
+            "title": "Local Git Alternative: The Full Branch-Edit-PR Workflow"
+          },
+          {
+            "level": 2,
+            "title": "What Is a Pull Request?"
+          },
+          {
+            "level": 2,
+            "title": "Navigating to Pull Requests"
+          },
+          {
+            "level": 3,
+            "title": "From a PR notification"
+          },
+          {
+            "level": 3,
+            "title": "Learning Cards: Navigating to Pull Requests"
+          },
+          {
+            "level": 2,
+            "title": "The Pull Request List Page"
+          },
+          {
+            "level": 2,
+            "title": "Anatomy of a Pull Request Page"
+          },
+          {
+            "level": 2,
+            "title": "Navigating the PR Tab Bar"
+          },
+          {
+            "level": 2,
+            "title": "Reading the Conversation Tab"
+          },
+          {
+            "level": 3,
+            "title": "PR Description"
+          },
+          {
+            "level": 3,
+            "title": "Status Checks Section"
+          },
+          {
+            "level": 3,
+            "title": "Review Comments"
+          },
+          {
+            "level": 4,
+            "title": "Resolving conversations"
+          },
+          {
+            "level": 3,
+            "title": "Learning Cards: Reading the Conversation Tab"
+          },
+          {
+            "level": 2,
+            "title": "Reading the Commits Tab"
+          },
+          {
+            "level": 2,
+            "title": "Reading the Checks Tab"
+          },
+          {
+            "level": 3,
+            "title": "Learning Cards: Reading the Checks Tab"
+          },
+          {
+            "level": 2,
+            "title": "Reading the Files Changed Tab"
+          },
+          {
+            "level": 3,
+            "title": "File Tree (left panel)"
+          },
+          {
+            "level": 3,
+            "title": "The Diff for a File"
+          },
+          {
+            "level": 4,
+            "title": "Lines in a diff are read as"
+          },
+          {
+            "level": 3,
+            "title": "Navigating the diff with a screen reader"
+          },
+          {
+            "level": 3,
+            "title": "Placing an inline comment on a diff line"
+          },
+          {
+            "level": 4,
+            "title": "Multi-line comment (Windows)"
+          },
+          {
+            "level": 4,
+            "title": "Multi-line comment (macOS)"
+          },
+          {
+            "level": 3,
+            "title": "Viewing comments within the diff"
+          },
+          {
+            "level": 3,
+            "title": "Learning Cards: Reading the Files Changed Tab"
+          },
+          {
+            "level": 2,
+            "title": "Opening a Pull Request"
+          },
+          {
+            "level": 3,
+            "title": "Tool Cards: Open a Pull Request"
+          },
+          {
+            "level": 3,
+            "title": "From the web editor workflow (editing a file on GitHub)"
+          },
+          {
+            "level": 3,
+            "title": "From a fork or feature branch"
+          },
+          {
+            "level": 3,
+            "title": "Filling out the PR form"
+          },
+          {
+            "level": 4,
+            "title": "Title field"
+          },
+          {
+            "level": 4,
+            "title": "Description field"
+          },
+          {
+            "level": 2,
+            "title": "Summary"
+          },
+          {
+            "level": 2,
+            "title": "Changes"
+          },
+          {
+            "level": 2,
+            "title": "Related Issues"
+          },
+          {
+            "level": 2,
+            "title": "Testing"
+          },
+          {
+            "level": 2,
+            "title": "Screenshots / recordings"
+          },
+          {
+            "level": 3,
+            "title": "Setting a Draft PR"
+          },
+          {
+            "level": 3,
+            "title": "Draft Pull Requests - Full Lifecycle"
+          },
+          {
+            "level": 4,
+            "title": "When to use a draft"
+          },
+          {
+            "level": 4,
+            "title": "What a draft PR does differently"
+          },
+          {
+            "level": 4,
+            "title": "Mark a draft ready for review"
+          },
+          {
+            "level": 4,
+            "title": "Screen reader path"
+          },
+          {
+            "level": 4,
+            "title": "Convert an open PR to draft (after opening)"
+          },
+          {
+            "level": 3,
+            "title": "Learning Cards: Opening a Pull Request"
+          },
+          {
+            "level": 2,
+            "title": "Requesting reviewers"
+          },
+          {
+            "level": 2,
+            "title": "Submitting a Review"
+          },
+          {
+            "level": 3,
+            "title": "Starting a review"
+          },
+          {
+            "level": 3,
+            "title": "Completing and submitting a review"
+          },
+          {
+            "level": 3,
+            "title": "GitHub shortcuts for pull requests"
+          },
+          {
+            "level": 4,
+            "title": "On the PR list page"
+          },
+          {
+            "level": 4,
+            "title": "On an open pull request"
+          },
+          {
+            "level": 4,
+            "title": "On the Files Changed tab"
+          },
+          {
+            "level": 3,
+            "title": "Learning Cards: Submitting a Review"
+          },
+          {
+            "level": 3,
+            "title": "Suggested Changes"
+          },
+          {
+            "level": 4,
+            "title": "As a reviewer - inserting a suggestion"
+          },
+          {
+            "level": 4,
+            "title": "As an author - applying a suggestion"
+          },
+          {
+            "level": 4,
+            "title": "Batching multiple suggestions into one commit"
+          },
+          {
+            "level": 4,
+            "title": "When to use suggestions vs. comments"
+          },
+          {
+            "level": 3,
+            "title": "Learning Cards: Suggested Changes"
+          },
+          {
+            "level": 2,
+            "title": "Understanding Merge Options (for Maintainers)"
+          },
+          {
+            "level": 2,
+            "title": "After a PR is merged"
+          },
+          {
+            "level": 2,
+            "title": "Auto-Merge - Merging When You Can't Wait Around"
+          },
+          {
+            "level": 3,
+            "title": "Enabling Auto-Merge on Your PR"
+          },
+          {
+            "level": 4,
+            "title": "Screen reader path"
+          },
+          {
+            "level": 4,
+            "title": "What happens next"
+          },
+          {
+            "level": 3,
+            "title": "Cancelling Auto-Merge"
+          },
+          {
+            "level": 2,
+            "title": "Practical Scenarios"
+          },
+          {
+            "level": 3,
+            "title": "Scenario A: \"I want to review an assigned PR\""
+          },
+          {
+            "level": 3,
+            "title": "Scenario B: \"I want to respond to review feedback on my PR\""
+          },
+          {
+            "level": 3,
+            "title": "Scenario C: \"My PR has a merge conflict\""
+          },
+          {
+            "level": 2,
+            "title": "Common PR Mistakes to Avoid"
+          },
+          {
+            "level": 2,
+            "title": "Writing PR Descriptions That Get Reviewed"
+          },
+          {
+            "level": 3,
+            "title": "What Reviewers Look For"
+          },
+          {
+            "level": 3,
+            "title": "The `Closes #XX` Pattern"
+          },
+          {
+            "level": 3,
+            "title": "Before/After Structure"
+          },
+          {
+            "level": 3,
+            "title": "A PR Description Template"
+          },
+          {
+            "level": 2,
+            "title": "Summary"
+          },
+          {
+            "level": 2,
+            "title": "Changes Made"
+          },
+          {
+            "level": 2,
+            "title": "Related Issues"
+          },
+          {
+            "level": 2,
+            "title": "Testing"
+          },
+          {
+            "level": 2,
+            "title": "Checklist"
+          },
+          {
+            "level": 3,
+            "title": "Common Description Mistakes"
+          },
+          {
+            "level": 3,
+            "title": "Good vs. Bad: Side by Side"
+          },
+          {
+            "level": 2,
+            "title": "Summary"
+          },
+          {
+            "level": 2,
+            "title": "Changes Made"
+          },
+          {
+            "level": 2,
+            "title": "Related Issues"
+          },
+          {
+            "level": 2,
+            "title": "Testing"
+          },
+          {
+            "level": 2,
+            "title": "Checklist"
+          },
+          {
+            "level": 3,
+            "title": "Learning Cards: Writing PR Descriptions That Get Reviewed"
+          },
+          {
+            "level": 2,
+            "title": "Try It: Read a Real Pull Request"
+          },
+          {
+            "level": 2,
+            "title": "Authoritative Sources"
+          },
+          {
+            "level": 3,
+            "title": "Section-Level Source Map"
+          }
+        ]
+      }
+    ],
+    "classroomReview": "",
+    "assignments": [
+      {
+        "path": "C:\\code\\git-going-with-github\\classroom\\assignment-day1-you-belong-here.md",
+        "exists": true,
+        "content": "<!-- Classroom Setup Metadata\nAssignment title: You Belong Here\nTemplate repository: Community-Access/learning-room-template\nVisibility: Private (student repos are private)\nGrant admin access: No\nDeadline: [Set per cohort - one week after Day 1]\nGroup assignment: No (individual)\nEnable feedback pull requests: Yes\nAutograding: None to configure in the Classroom UI. Automated checks run as GitHub Actions workflows inside the template repo. See admin/classroom/autograding-setup.md.\nSupported editor: Browser, GitHub Desktop, CLI\n-->\n\n# Assignment 1: You Belong Here\n\nWelcome to Git Going with GitHub! This is your private learning repository for Day 1. Everything you do here is yours -- experiment freely.\n\n## What You Will Do Today\n\nDuring the live Day 1 core path, you will practice the skills needed to make your first browser-based GitHub contribution. If the room needs more time, later challenges can continue during open lab time or after the event.\n\n- Navigate a real GitHub repository using your screen reader\n- File your first issue describing something you noticed\n- Communicate with teammates using @mentions and comments\n- Create a branch to work in safely\n- Make your first commit to a file\n- Open a pull request linking your work to an issue\n- Learn how merge conflicts work, with live support if time allows\n- Reflect on open source culture and communication, live or asynchronously\n- Merge a pull request into the main branch, or leave with clear next steps to finish it\n\n## Challenges\n\nComplete these challenges in order. Each one builds on the previous. When you close a challenge issue, the Student Progression Bot automatically opens your next challenge. The live agenda prioritizes Challenges 1-6; Challenges 7-9 are available as stretch or async follow-up.\n\n| Challenge | What You Do | Chapter |\n|---|---|---|\n| 1. Find Your Way Around | Explore the repository structure and locate key files | [Chapter 3](https://github.com/Community-Access/git-going-with-github/blob/main/docs/03-navigating-repositories.md) |\n| 2. File Your First Issue | Create an issue describing something you noticed | [Chapter 5](https://github.com/Community-Access/git-going-with-github/blob/main/docs/05-working-with-issues.md) |\n| 3. Join the Conversation | Mention a teammate or bot using @mentions | [Chapter 5](https://github.com/Community-Access/git-going-with-github/blob/main/docs/05-working-with-issues.md) |\n| 4. Branch Out | Create a feature branch for your work | [Chapter 4](https://github.com/Community-Access/git-going-with-github/blob/main/docs/04-the-learning-room.md) |\n| 5. Make Your Mark | Edit a file and commit with a clear message | [Chapter 4](https://github.com/Community-Access/git-going-with-github/blob/main/docs/04-the-learning-room.md) |\n| 6. Open Your First Pull Request | Open a PR that references an issue with `Closes #N` | [Chapter 6](https://github.com/Community-Access/git-going-with-github/blob/main/docs/06-working-with-pull-requests.md) |\n| 7. Survive a Merge Conflict | Understand and fix conflict markers | [Chapter 7](https://github.com/Community-Access/git-going-with-github/blob/main/docs/07-merge-conflicts.md) |\n| 8. The Culture Layer | Reflect on community norms and communication | [Chapter 8](https://github.com/Community-Access/git-going-with-github/blob/main/docs/08-open-source-culture.md) |\n| 9. Merge Day | Get your PR reviewed, approved, and merged | [Chapter 10](https://github.com/Community-Access/git-going-with-github/blob/main/docs/10-notifications-and-day-1-close.md) |\n\n## Automated Checks\n\nChallenges 2, 5, 6, and 7 have automated checks that run as GitHub Actions inside your repo:\n\n- **Challenge 2:** Verifies you have filed at least one issue\n- **Challenge 5:** Verifies at least one commit exists on a non-default branch\n- **Challenge 6:** Verifies your PR body contains `Closes`, `Fixes`, or `Resolves`\n- **Challenge 7:** Verifies no merge conflict markers remain in `docs/`\n\nEach check posts a single comment on the relevant issue or pull request and updates it whenever you push a new change. If a check fails, read the comment and push an update.\n\n## Evidence\n\nEach challenge has an issue that the Student Progression Bot creates for you. Complete the challenge, leave a comment with your evidence, and close the issue to unlock the next one.\n\n## If You Get Stuck\n\nEvery chapter has an \"If You Get Stuck\" section with specific troubleshooting steps. Start there.\n\nYou can also:\n\n- Ask your assigned buddy or study group\n- Post a question on the issue thread\n- Mention `@gandalf-bot` in a comment for a workspace check\n- Ask a facilitator for help -- that is what they are here for\n\n## After Day 1\n\nWhen you complete all 9 challenges, you have the foundation for everything in Day 2 -- or for contributing to any open source project on your own. These skills are yours permanently.\n\n**Continuing to Day 2?** See the [Day 2 assignment](https://github.com/Community-Access/git-going-with-github/blob/main/classroom/assignment-day2-you-can-build-this.md) for what comes next.\n\n**Day 1 is your only day?** Everything you learned today is complete and self-contained. See the [Next Steps guide](https://github.com/Community-Access/git-going-with-github/blob/main/docs/21-next-steps.md) for how to continue your GitHub journey independently.\n\n## Bonus Challenges\n\nIf you finish early, check the [Challenges page](https://github.com/Community-Access/git-going-with-github/blob/main/docs/CHALLENGES.md) for bonus challenges A through E.\n\n## Authoritative Sources\n\nUse these official references when you need the current source of truth for facts in this chapter.\n\n- [GitHub Docs, home](https://docs.github.com/en)\n- [GitHub Changelog](https://github.blog/changelog/)\n- [About Git](https://docs.github.com/en/get-started/using-git/about-git)\n- [GitHub flow](https://docs.github.com/en/get-started/using-github/github-flow)\n- [About pull requests](https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/about-pull-requests)\n- [About issues](https://docs.github.com/en/issues/tracking-your-work-with-issues/about-issues)\n- [Contributing to a project](https://docs.github.com/en/get-started/exploring-projects-on-github/contributing-to-a-project)\n\n### Section-Level Source Map\n\nUse this map to verify facts for each major section in this file.\n\n- **What You Will Do Today:** [GitHub Docs, home](https://docs.github.com/en), [GitHub Changelog](https://github.blog/changelog/), [About Git](https://docs.github.com/en/get-started/using-git/about-git), [GitHub flow](https://docs.github.com/en/get-started/using-github/github-flow), [About pull requests](https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/about-pull-requests)\n- **Challenges:** [GitHub Docs, home](https://docs.github.com/en), [GitHub Changelog](https://github.blog/changelog/), [About Git](https://docs.github.com/en/get-started/using-git/about-git), [GitHub flow](https://docs.github.com/en/get-started/using-github/github-flow), [About pull requests](https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/about-pull-requests)\n- **Automated Checks:** [GitHub Docs, home](https://docs.github.com/en), [GitHub Changelog](https://github.blog/changelog/), [About Git](https://docs.github.com/en/get-started/using-git/about-git), [GitHub flow](https://docs.github.com/en/get-started/using-github/github-flow), [About pull requests](https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/about-pull-requests)\n- **Evidence:** [GitHub Docs, home](https://docs.github.com/en), [GitHub Changelog](https://github.blog/changelog/), [About Git](https://docs.github.com/en/get-started/using-git/about-git), [GitHub flow](https://docs.github.com/en/get-started/using-github/github-flow), [About pull requests](https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/about-pull-requests)\n- **If You Get Stuck:** [GitHub Docs, home](https://docs.github.com/en), [GitHub Changelog](https://github.blog/changelog/), [About Git](https://docs.github.com/en/get-started/using-git/about-git), [GitHub flow](https://docs.github.com/en/get-started/using-github/github-flow), [About pull requests](https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/about-pull-requests)\n- **After Day 1:** [GitHub Docs, home](https://docs.github.com/en), [GitHub Changelog](https://github.blog/changelog/), [About Git](https://docs.github.com/en/get-started/using-git/about-git), [GitHub flow](https://docs.github.com/en/get-started/using-github/github-flow), [About pull requests](https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/about-pull-requests)\n- **Bonus Challenges:** [GitHub Docs, home](https://docs.github.com/en), [GitHub Changelog](https://github.blog/changelog/), [About Git](https://docs.github.com/en/get-started/using-git/about-git), [GitHub flow](https://docs.github.com/en/get-started/using-github/github-flow), [About pull requests](https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/about-pull-requests)\n"
+      }
+    ]
+  },
+  "voiceRules": {
+    "bannedPhrases": [
+      "has three jobs",
+      "name the idea",
+      "give the learner a move",
+      "show what counts as evidence",
+      "Section-Level Source Map",
+      "GitHub Docs, home, GitHub Changelog",
+      "Think of this as",
+      "The next useful detail is concrete",
+      "The point is not speed; the point is never losing your place",
+      "That is the difference between guessing and knowing",
+      "This is the move inside",
+      "Anchor this part on",
+      "For someone navigating by keyboard or screen reader",
+      "The teaching point here is not",
+      "The durable skill is not memorizing one screen",
+      "It is knowing how to find your footing when the screen changes",
+      "Keep it that plain",
+      "That is the rhythm: orient, act, verify, continue",
+      "Each step should leave a trace you can name",
+      "That small check between steps is what makes the workflow reliable",
+      "This part earns its place because",
+      "That matters in practice:"
+    ],
+    "staleFacts": [
+      "Fork the accessibility-agents repository",
+      "80 AI-powered agents",
+      "eighty AI-powered agents",
+      "Build Your Agent (Capstone)",
+      "Build Your Own Agent",
+      "if you finish early",
+      "cross-fork PR"
+    ],
+    "currentFacts": [
+      "The Accessibility Agents collection grows over time. Refer to it as a living catalog rather than asserting a fixed count of agents.",
+      "Challenge 15 (Discover Accessibility Agents) is browse-first. Learners are not required to fork the accessibility-agents repository to complete it.",
+      "Completing Challenge 15 unlocks Challenge 16 (Capstone Project) plus Bonus Challenges A through E. The bonus challenges are a structured unlock path, not \"things to do if you finish early\".",
+      "Challenge 16 is titled \"Capstone Project\". It accepts contributions to Accessibility Agents, GLOW, or any other meaningful repository. Review-ready drafts and contribution plans are valid evidence of completion.",
+      "The Learning Room repository is where Day 1 contributions happen (issue, branch, commit, pull request, merge). It is provisioned per learner.",
+      "Hosts are Alex (warm expert) and Jamie (curious co-host who asks the questions learners hesitate to ask). They are colleagues, not teacher and student."
+    ],
+    "voiceExemplarPath": "C:\\code\\git-going-with-github\\podcasts\\scripts\\challenges\\cc-14-design-an-issue-template.txt",
+    "voiceExemplar": "[ALEX]\nWelcome back. Today we're working with one of those GitHub features that quietly makes open source collaboration much easier: issue templates.\n\n[JAMIE]\nAnd this is a great one for people who have ever opened a blank issue form and thought, what exactly am I supposed to put here?\n\n[ALEX]\nExactly. An issue template turns that blank box into a guided experience. Instead of guessing what maintainers need, contributors get prompts, structure, and clear required fields. That reduces back-and-forth, improves quality, and helps teams act on issues faster.\n\n[JAMIE]\nSo this is not just about formatting. It's about making contributions clearer and more usable.\n\n[ALEX]\nYes, and especially in accessibility work. If someone is reporting an accessibility barrier, a vague report can be hard to reproduce. A thoughtful template can ask where the problem occurred, what assistive technology was involved, what the expected behavior was, and how severe the barrier is.\n\n[PAUSE]\n\n[JAMIE]\nBefore we get into the design challenge, what should learners already have in place?\n\n[ALEX]\nA few practical things. First, you should already know how to work with GitHub issues at a basic level. Second, you need a repository where you can create or edit files, usually your fork or your own repo. Third, it really helps to use an editor with YAML syntax highlighting, such as VS Code.\n\n[JAMIE]\nAnd some things are recommended but not strictly required, right?\n\n[ALEX]\nRight. Familiarity with GitHub Copilot can help if you want to generate variations, but it's optional. Basic terminal comfort is useful, though you can also use the GitHub web editor or github.dev. And if you already filled out the workshop registration template earlier in this course, that template becomes a learning example now.\n\n[JAMIE]\nI like that. You've already used a professional issue template, so now you reverse-engineer it.\n\n[ALEX]\nExactly. Also, there's an administrative note here: this chapter is meant to prepare you for a later workflow using a template-building agent. The advice is to complete the manual template chapter first, then use the automation later.\n\n[JAMIE]\nAnd time-wise?\n\n[ALEX]\nPlan roughly two to two and a half hours if you do the exercises and some YAML troubleshooting.\n\n[PAUSE]\n\n[ALEX]\nThe learning pattern for this challenge is analyze, remix, create, and test.\n\n[JAMIE]\nThat feels approachable. First understand an existing template, then adapt one, then optionally build another version from scratch, then verify it works.\n\n[ALEX]\nThat's the idea. The workshop recommendation frames Challenge 14 as design-focused rather than automation-focused. You're producing evidence of understanding, often as an issue comment or a pull request, rather than trying to satisfy a complicated code runtime.\n\n[JAMIE]\nThough there is still one small autograded requirement in the challenge template itself.\n\n[ALEX]\nYes. For the assigned challenge issue, the autograder checks that a YAML file exists in the repository\n\n[... exemplar continues; match this tone throughout ...]"
+  }
+}
