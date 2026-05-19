@@ -7,12 +7,12 @@
 # quoted strings.
 #
 # Patterns rewritten:
-#   1. Exact mp3 filename matches:  ep00-welcome.mp3  -> ch-00-welcome.mp3
-#   2. Slug inside a path segment:  /ep00-welcome     -> /ch-00-welcome
-#   3. Slug inside a code span:     `ep00-welcome`    -> `ch-00-welcome`
-#   4. Slug inside double quotes:   "ep00-welcome"    -> "ch-00-welcome"
+#   1. Exact mp3 filename matches:  ch-00-welcome.mp3  -> ch-00-welcome.mp3
+#   2. Slug inside a path segment:  /ch-00-welcome     -> /ch-00-welcome
+#   3. Slug inside a code span:     `ch-00-welcome`    -> `ch-00-welcome`
+#   4. Slug inside double quotes:   "ch-00-welcome"    -> "ch-00-welcome"
 #   5. Slug at line/word boundary followed by . or - extension/path:
-#                                   ep00-welcome.md   -> ch-00-welcome.md
+#                                   ch-00-welcome.md   -> ch-00-welcome.md
 #
 # Usage:
 #   .\scripts\rewrite-cross-links.ps1                 # dry-run (default)
@@ -26,6 +26,7 @@
 param(
     [string]$Repo = $null,
     [string]$MapPath = $null,
+    [string]$AuditLog = $null,
     [switch]$Apply,
     [string]$ReportPath = "tmp-crosslink-rewrite-report.txt"
 )
@@ -61,6 +62,26 @@ foreach ($e in $mapJson.episodes) {
         NewFilename = $new
         OldSlug     = $curSlug
         NewSlug     = $newSlug
+    }
+}
+
+# Fallback: if the map has been finalized (current == filename), read pairs
+# from the rename audit log produced by podcasts/tools/rename_audio.py.
+if ($pairs.Count -eq 0) {
+    if (-not $AuditLog) { $AuditLog = Join-Path $repoDefault 'tmp-rename-audit.log' }
+    if (Test-Path $AuditLog) {
+        foreach ($line in Get-Content -LiteralPath $AuditLog) {
+            if ($line -match '^RENAME\s+(\S+)\s+(\S+)') {
+                $oldF = $Matches[1]; $newF = $Matches[2]
+                if ($oldF -eq $newF) { continue }
+                $pairs += [pscustomobject]@{
+                    OldFilename = $oldF
+                    NewFilename = $newF
+                    OldSlug     = ($oldF -replace '\.mp3$','')
+                    NewSlug     = ($newF -replace '\.mp3$','')
+                }
+            }
+        }
     }
 }
 

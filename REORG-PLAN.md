@@ -158,7 +158,7 @@ Why first: once every mp3 carries its UUID, title, track number, and chapter mar
 - [x] Spot-checked `ep05`, `cc-07`, `ep44`: mp3 duration vs segment-manifest sum diff under 0.1 s on all three. Pass.
 - [x] Snapshot at `podcasts/_snapshot-pre-tagging-20260518/` (79 files).
 - [x] **Cover art: DEFERRED.** None present in either repo; Stage 0.3 will skip the `APIC` frame and Stage 0.5+ feed work will leave `<itunes:image>` unset until art is supplied. No other stage is blocked.
-- [x] Known finding: `ep04-the-learning-room` has 3 transcript-vs-script text mismatches (segments 16, 33, 64). Logged for Stage 3.4 disposition; not a re-render blocker.
+- [x] Known finding: `ch-04-the-learning-room` has 3 transcript-vs-script text mismatches (segments 16, 33, 64). Logged for Stage 3.4 disposition; not a re-render blocker.
 
 ### 0.2 - Mint EPISODE_MAP.json with stable UUIDs
 - [ ] Generate UUID v4 per inventory entry.

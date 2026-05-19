@@ -67,13 +67,13 @@ Evaluate any transcript against all mapped sources with explicit thresholds:
 
 ```powershell
 node podcasts/tools/agentic-pilot/evaluate-transcript.js \
-  --packet podcasts/logs/agentic-pilots/ep05-working-with-issues.packet.json \
-  --transcript podcasts/logs/agentic-pilots/candidates/ep05-working-with-issues/attempt-001.txt \
+  --packet podcasts/logs/agentic-pilots/ch-05-working-with-issues.packet.json \
+  --transcript podcasts/logs/agentic-pilots/candidates/ch-05-working-with-issues/attempt-001.txt \
   --max-missing 4 \
   --max-repeated-starts 2 \
   --max-repeated-long 0 \
   --max-stock-hits 0 \
-  --out podcasts/logs/agentic-pilots/candidates/ep05-working-with-issues/attempt-001.txt.report.json
+  --out podcasts/logs/agentic-pilots/candidates/ch-05-working-with-issues/attempt-001.txt.report.json
 ```
 
 Run a full-catalog pass with per-episode coverage reports:
