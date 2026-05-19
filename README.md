@@ -168,7 +168,7 @@ Every chapter has an "If You Get Stuck" section. Every challenge has a [referenc
 | [18](docs/18-fork-and-contribute.md) | **Fork and Contribute** | Fork workflow, upstream sync, cross-repo contributions |
 | [19](docs/19-accessibility-agents.md) | **Accessibility Agents** | 83 agent files, prompts, skills, and contribution paths across the ecosystem |
 | [20](docs/20-build-your-agent.md) | **Capstone Project** | Choose Accessibility Agents, GLOW, or another project and create an impactful agentic contribution |
-| [21](docs/21-next-steps.md) | **What Comes Next** | Where to go after the workshop |
+| [22](docs/22-what-comes-next.md) | **What Comes Next** | Where to go after the workshop |
 
 **Workshop Agendas** - For facilitators only (not part of learner sequence)
 
@@ -249,7 +249,7 @@ Every chapter has an "If You Get Stuck" section. Every challenge has a [referenc
 ├── docs/                                -- Full workshop curriculum (22 chapters + appendices)
 │   ├── course-guide.md                  -- Student landing page
 │   ├── CHALLENGES.md                    -- Challenge Hub: all 21 challenges
-│   ├── 00-pre-workshop-setup.md through 21-next-steps.md
+│   ├── 00-pre-workshop-setup.md through 22-what-comes-next.md
 │   ├── appendix-a-glossary.md through appendix-z-github-skills.md
 │   └── solutions/                       -- Reference solutions for every challenge
 ├── podcasts/                            -- Audio companion episodes
@@ -268,9 +268,9 @@ These standalone documents provide additional guidance and resources:
 | [Quick Reference](admin/QUICK_REFERENCE.md) | Condensed cheat sheet for common tasks |
 | [Troubleshooting](admin/TROUBLESHOOTING.md) | Solutions for common setup and workflow issues |
 | [Progress Tracker](admin/PROGRESS_TRACKER.md) | Track your learning progress through the workshop |
-| [Accessibility Testing](ACCESSIBILITY_TESTING.md) | Accessibility testing procedures and standards |
+| [Accessibility Testing](admin/ACCESSIBILITY_TESTING.md) | Accessibility testing procedures and standards |
 | [Security](SECURITY.md) | Security policy and vulnerability reporting |
-| [GitHub Proposal](GITHUB_PROPOSAL.md) | Original event proposal and curriculum overview (internal reference) |
+| [GitHub Proposal](admin/GITHUB_PROPOSAL.md) | Original event proposal and curriculum overview (internal reference) |
 
 ## Screen Reader Users: Start Here
 

@@ -6,8 +6,8 @@ Listen to the workshop as one end-to-end path. Companion lessons, Challenge Coac
   reference material are interleaved so learners can hear the concept, practice it, and then keep
   moving through the course. Every episode includes a full transcript below the player.
 
-**Subscribe:** Add the [podcast RSS feed](https://community-access.org/git-going-with-github/podcasts/feed.xml) to
-  your preferred podcast app - Apple Podcasts, Spotify, Overcast, or any RSS reader.
+**Subscribe:** Add the [podcast RSS feed](https://lp.csedesigns.com/ggg/feed.xml) to your preferred podcast app -
+  Apple Podcasts, Spotify, Overcast, or any RSS reader.
 
 **Transcripts:** Every episode includes a complete, readable transcript. Expand the "Read Transcript" section below
   any episode to follow along or search the conversation.
@@ -28,7 +28,7 @@ Listen to the workshop as one end-to-end path. Companion lessons, Challenge Coac
 
 A tour of the workshop structure, the two-day arc, and what you will accomplish.
 
-Based on: [Course Guide](docs/course-guide.md)
+Based on: [Course Guide](../docs/course-guide.md)
 
 <audio controls preload="none">
   <source src="https://lp.csedesigns.com/ggg/media/ch-00-welcome.mp3" type="audio/mpeg">
@@ -236,7 +236,7 @@ Based on: [Course Guide](docs/course-guide.md)
 
 Comprehensive glossary: Git, GitHub, open source, and accessibility terminology.
 
-Based on: [Appendix A: Glossary of Terms](docs/appendix-a-glossary.md)
+Based on: [Appendix A: Glossary of Terms](../docs/appendix-a-glossary.md)
 
 <audio controls preload="none">
   <source src="https://lp.csedesigns.com/ggg/media/ref-01-glossary.mp3" type="audio/mpeg">
@@ -636,7 +636,7 @@ Based on: [Appendix A: Glossary of Terms](docs/appendix-a-glossary.md)
 
 Creating your GitHub account, installing Git and VS Code, configuring your screen reader.
 
-Based on: [Chapter 0: Pre-Workshop Setup](docs/00-pre-workshop-setup.md)
+Based on: [Chapter 0: Pre-Workshop Setup](../docs/00-pre-workshop-setup.md)
 
 <audio controls preload="none">
   <source src="https://lp.csedesigns.com/ggg/media/ch-01-pre-workshop-setup.mp3" type="audio/mpeg">
@@ -946,7 +946,7 @@ Based on: [Chapter 0: Pre-Workshop Setup](docs/00-pre-workshop-setup.md)
 
 A guided tour of browser GitHub, github.dev, VS Code, GitHub Desktop, and the CLI.
 
-Based on: [Chapter 1: Choose Your Tools](docs/01-choose-your-tools.md)
+Based on: [Chapter 1: Choose Your Tools](../docs/01-choose-your-tools.md)
 
 <audio controls preload="none">
   <source src="https://lp.csedesigns.com/ggg/media/agents-04-choose-your-tools.mp3" type="audio/mpeg">
@@ -1208,7 +1208,7 @@ Based on: [Chapter 1: Choose Your Tools](docs/01-choose-your-tools.md)
 
 How GitHub organizes its web pages, heading structure, landmarks, and keyboard shortcuts.
 
-Based on: [Chapter 2: Understanding GitHub on the Web](docs/02-understanding-github.md)
+Based on: [Chapter 2: Understanding GitHub on the Web](../docs/02-understanding-github.md)
 
 <audio controls preload="none">
   <source src="https://lp.csedesigns.com/ggg/media/ch-02-github-web-structure.mp3" type="audio/mpeg">
@@ -1406,7 +1406,7 @@ Based on: [Chapter 2: Understanding GitHub on the Web](docs/02-understanding-git
 
 NVDA, JAWS, and VoiceOver commands for GitHub and VS Code.
 
-Based on: [Appendix B: Screen Reader Cheat Sheet](docs/appendix-b-screen-reader-cheatsheet.md)
+Based on: [Appendix B: Screen Reader Cheat Sheet](../docs/appendix-b-screen-reader-cheatsheet.md)
 
 <audio controls preload="none">
   <source src="https://lp.csedesigns.com/ggg/media/ref-02-screen-reader-cheatsheet.mp3" type="audio/mpeg">
@@ -1669,7 +1669,7 @@ Based on: [Appendix B: Screen Reader Cheat Sheet](docs/appendix-b-screen-reader-
 
 Exploring a repository: tabs, files, README, branches, and commit history.
 
-Based on: [Chapter 3: Navigating Repositories](docs/03-navigating-repositories.md)
+Based on: [Chapter 3: Navigating Repositories](../docs/03-navigating-repositories.md)
 
 <audio controls preload="none">
   <source src="https://lp.csedesigns.com/ggg/media/ch-03-navigating-repositories.mp3" type="audio/mpeg">
@@ -1908,7 +1908,7 @@ Based on: [Chapter 3: Navigating Repositories](docs/03-navigating-repositories.m
 
 Your shared practice environment: challenges, PR workflow, bot feedback, peer review.
 
-Based on: [Chapter 4: The Learning Room](docs/04-the-learning-room.md)
+Based on: [Chapter 4: The Learning Room](../docs/04-the-learning-room.md)
 
 <audio controls preload="none">
   <source src="https://lp.csedesigns.com/ggg/media/ch-04-the-learning-room.mp3" type="audio/mpeg">
@@ -2441,7 +2441,7 @@ Practice focus: Day 1 foundation
 
 Filing, searching, filtering, commenting on, and managing GitHub issues.
 
-Based on: [Chapter 5: Working with Issues](docs/05-working-with-issues.md)
+Based on: [Chapter 5: Working with Issues](../docs/05-working-with-issues.md)
 
 <audio controls preload="none">
   <source src="https://lp.csedesigns.com/ggg/media/ch-05-working-with-issues.mp3" type="audio/mpeg">
@@ -3363,7 +3363,7 @@ Practice focus: Day 1 foundation
 
 Markdown syntax, GitHub extensions, and writing accessible documentation.
 
-Based on: [Appendix C: GitHub Flavored Markdown](docs/appendix-c-markdown-reference.md)
+Based on: [Appendix C: GitHub Flavored Markdown](../docs/appendix-c-markdown-reference.md)
 
 <audio controls preload="none">
   <source src="https://lp.csedesigns.com/ggg/media/tools-01-github-flavored-markdown.mp3" type="audio/mpeg">
@@ -3684,7 +3684,7 @@ Based on: [Appendix C: GitHub Flavored Markdown](docs/appendix-c-markdown-refere
 
 Lightweight code sharing: creating, editing, forking, and embedding Gists.
 
-Based on: [Appendix U: GitHub Gists](docs/appendix-u-discussions-and-gists.md)
+Based on: [Appendix U: GitHub Gists](../docs/appendix-u-discussions-and-gists.md)
 
 <audio controls preload="none">
   <source src="https://lp.csedesigns.com/ggg/media/tools-02-github-gists.mp3" type="audio/mpeg">
@@ -3935,7 +3935,7 @@ Based on: [Appendix U: GitHub Gists](docs/appendix-u-discussions-and-gists.md)
 
 Forum-style conversations, Q&A, polls, and navigation with screen readers.
 
-Based on: [Appendix U: GitHub Discussions](docs/appendix-u-discussions-and-gists.md)
+Based on: [Appendix U: GitHub Discussions](../docs/appendix-u-discussions-and-gists.md)
 
 <audio controls preload="none">
   <source src="https://lp.csedesigns.com/ggg/media/tools-03-github-discussions.mp3" type="audio/mpeg">
@@ -4226,7 +4226,7 @@ Based on: [Appendix U: GitHub Discussions](docs/appendix-u-discussions-and-gists
 
 Creating, reviewing, commenting on, and merging pull requests.
 
-Based on: [Chapter 6: Working with Pull Requests](docs/06-working-with-pull-requests.md)
+Based on: [Chapter 6: Working with Pull Requests](../docs/06-working-with-pull-requests.md)
 
 <audio controls preload="none">
   <source src="https://lp.csedesigns.com/ggg/media/ch-06-working-with-pull-requests.mp3" type="audio/mpeg">
@@ -5305,7 +5305,7 @@ Practice focus: Day 1 contribution
 
 Why conflicts happen, how to read conflict markers, and resolving them confidently.
 
-Based on: [Chapter 7: Merge Conflicts Are Not Scary](docs/07-merge-conflicts.md)
+Based on: [Chapter 7: Merge Conflicts Are Not Scary](../docs/07-merge-conflicts.md)
 
 <audio controls preload="none">
   <source src="https://lp.csedesigns.com/ggg/media/ch-07-merge-conflicts.mp3" type="audio/mpeg">
@@ -5802,7 +5802,7 @@ Practice focus: Day 1 stretch
 
 Communication norms, code review etiquette, inclusive language, and asking questions.
 
-Based on: [Chapter 8: Open Source Culture and Etiquette](docs/08-open-source-culture.md)
+Based on: [Chapter 8: Open Source Culture and Etiquette](../docs/08-open-source-culture.md)
 
 <audio controls preload="none">
   <source src="https://lp.csedesigns.com/ggg/media/ch-08-culture-and-etiquette.mp3" type="audio/mpeg">
@@ -6374,7 +6374,7 @@ Practice focus: Day 1 stretch
 
 Organizing and tracking work with labels, milestones, and GitHub Projects.
 
-Based on: [Chapter 9: Labels, Milestones, and Projects](docs/09-labels-milestones-projects.md)
+Based on: [Chapter 9: Labels, Milestones, and Projects](../docs/09-labels-milestones-projects.md)
 
 <audio controls preload="none">
   <source src="https://lp.csedesigns.com/ggg/media/ch-09-labels-milestones-projects.mp3" type="audio/mpeg">
@@ -6663,7 +6663,7 @@ Based on: [Chapter 9: Labels, Milestones, and Projects](docs/09-labels-milestone
 
 Project boards, table and roadmap views, custom fields, cross-repo management.
 
-Based on: [Appendix R: GitHub Projects Deep Dive](docs/appendix-r-projects-deep-dive.md)
+Based on: [Appendix R: GitHub Projects Deep Dive](../docs/appendix-r-projects-deep-dive.md)
 
 <audio controls preload="none">
   <source src="https://lp.csedesigns.com/ggg/media/tools-05-github-projects.mp3" type="audio/mpeg">
@@ -6880,7 +6880,7 @@ Based on: [Appendix R: GitHub Projects Deep Dive](docs/appendix-r-projects-deep-
 
 GitHub search query language, qualifiers, and filtering for issues, PRs, and code.
 
-Based on: [Appendix N: Advanced Search](docs/appendix-n-advanced-search.md)
+Based on: [Appendix N: Advanced Search](../docs/appendix-n-advanced-search.md)
 
 <audio controls preload="none">
   <source src="https://lp.csedesigns.com/ggg/media/tools-06-advanced-search.mp3" type="audio/mpeg">
@@ -7173,7 +7173,7 @@ Based on: [Appendix N: Advanced Search](docs/appendix-n-advanced-search.md)
 
 Managing your notification inbox, @mentions, and strategies for avoiding overload.
 
-Based on: [Chapter 10: Notifications and Mentions](docs/10-notifications-and-day-1-close.md)
+Based on: [Chapter 10: Notifications and Mentions](../docs/10-notifications-and-day-1-close.md)
 
 <audio controls preload="none">
   <source src="https://lp.csedesigns.com/ggg/media/ch-10-notifications.mp3" type="audio/mpeg">
@@ -7859,7 +7859,7 @@ Practice focus: Bonus
 
 Screen reader mode, Command Palette, sidebar navigation, and accessibility settings.
 
-Based on: [Chapter 11: VS Code Setup and Accessibility](docs/11-vscode-interface.md)
+Based on: [Chapter 11: VS Code Setup and Accessibility](../docs/11-vscode-interface.md)
 
 <audio controls preload="none">
   <source src="https://lp.csedesigns.com/ggg/media/ch-11-vscode-basics.mp3" type="audio/mpeg">
@@ -8182,7 +8182,7 @@ Based on: [Chapter 11: VS Code Setup and Accessibility](docs/11-vscode-interface
 Keyboard navigation, accessible views, terminal access, signals, speech, and Copilot accessibility
   in VS Code.
 
-Based on: [Chapter 12: VS Code Accessibility Deep Dive](docs/12-vscode-accessibility.md)
+Based on: [Chapter 12: VS Code Accessibility Deep Dive](../docs/12-vscode-accessibility.md)
 
 <audio controls preload="none">
   <source src="https://lp.csedesigns.com/ggg/media/a11y-02-vscode-accessibility-deep-dive.mp3" type="audio/mpeg">
@@ -8454,7 +8454,7 @@ Based on: [Chapter 12: VS Code Accessibility Deep Dive](docs/12-vscode-accessibi
 
 Personal access tokens, SSH keys, credential storage, and commit signing.
 
-Based on: [Appendix D: Git Authentication](docs/appendix-d-git-authentication.md)
+Based on: [Appendix D: Git Authentication](../docs/appendix-d-git-authentication.md)
 
 <audio controls preload="none">
   <source src="https://lp.csedesigns.com/ggg/media/git-01-git-authentication.mp3" type="audio/mpeg">
@@ -8701,7 +8701,7 @@ Based on: [Appendix D: Git Authentication](docs/appendix-d-git-authentication.md
 
 Commits, branches, staging, local versus remote, push, pull, fetch, and why conflicts happen.
 
-Based on: [Chapter 13: How Git Works: The Mental Model](docs/13-how-git-works.md)
+Based on: [Chapter 13: How Git Works: The Mental Model](../docs/13-how-git-works.md)
 
 <audio controls preload="none">
   <source src="https://lp.csedesigns.com/ggg/media/ch-18-how-git-works.mp3" type="audio/mpeg">
@@ -8949,7 +8949,7 @@ Based on: [Chapter 13: How Git Works: The Mental Model](docs/13-how-git-works.md
 
 Cloning, branching, staging, committing, pushing, and pulling from VS Code.
 
-Based on: [Chapter 14: Git and Source Control in VS Code](docs/14-git-in-practice.md)
+Based on: [Chapter 14: Git and Source Control in VS Code](../docs/14-git-in-practice.md)
 
 <audio controls preload="none">
   <source src="https://lp.csedesigns.com/ggg/media/ch-12-git-source-control.mp3" type="audio/mpeg">
@@ -9810,7 +9810,7 @@ Practice focus: Bonus
 
 Viewing, creating, reviewing, and merging PRs from inside VS Code.
 
-Based on: [Chapter 15: The GitHub Pull Requests Extension](docs/15-code-review.md)
+Based on: [Chapter 15: The GitHub Pull Requests Extension](../docs/15-code-review.md)
 
 <audio controls preload="none">
   <source src="https://lp.csedesigns.com/ggg/media/ch-13-github-prs-extension.mp3" type="audio/mpeg">
@@ -10090,7 +10090,7 @@ Based on: [Chapter 15: The GitHub Pull Requests Extension](docs/15-code-review.m
 
 Navigating diffs with a screen reader, reviewing PRs in browser and VS Code.
 
-Based on: [Chapter 15: Accessible Code Review](docs/15-code-review.md)
+Based on: [Chapter 15: Accessible Code Review](../docs/15-code-review.md)
 
 <audio controls preload="none">
   <source src="https://lp.csedesigns.com/ggg/media/ch-15-accessible-code-review.mp3" type="audio/mpeg">
@@ -10807,7 +10807,7 @@ Practice focus: Day 2 local workflow
 
 Inline suggestions, Copilot Chat, prompting strategies, and custom instructions.
 
-Based on: [Chapter 16: GitHub Copilot](docs/16-github-copilot.md)
+Based on: [Chapter 16: GitHub Copilot](../docs/16-github-copilot.md)
 
 <audio controls preload="none">
   <source src="https://lp.csedesigns.com/ggg/media/ch-14-github-copilot.mp3" type="audio/mpeg">
@@ -11148,7 +11148,7 @@ Based on: [Chapter 16: GitHub Copilot](docs/16-github-copilot.md)
 
 All Copilot features, chat participants, slash commands, and MCP servers.
 
-Based on: [Appendix K: GitHub Copilot - Complete Reference](docs/appendix-k-copilot-reference.md)
+Based on: [Appendix K: GitHub Copilot - Complete Reference](../docs/appendix-k-copilot-reference.md)
 
 <audio controls preload="none">
   <source src="https://lp.csedesigns.com/ggg/media/agents-02-copilot-reference.mp3" type="audio/mpeg">
@@ -11444,7 +11444,7 @@ Based on: [Appendix K: GitHub Copilot - Complete Reference](docs/appendix-k-copi
 
 Usage-based billing, GitHub AI Credits, model volatility, and durable model-selection guidance.
 
-Based on: [Appendix K: Copilot Billing and Models](docs/appendix-k-copilot-reference.md)
+Based on: [Appendix K: Copilot Billing and Models](../docs/appendix-k-copilot-reference.md)
 
 <audio controls preload="none">
   <source src="https://lp.csedesigns.com/ggg/media/agents-03-copilot-models.mp3" type="audio/mpeg">
@@ -11990,7 +11990,7 @@ Practice focus: Day 2 local workflow
 
 Creating YAML-based issue templates for bug reports, features, and custom forms.
 
-Based on: [Chapter 17: Issue Templates](docs/17-issue-templates.md)
+Based on: [Chapter 17: Issue Templates](../docs/17-issue-templates.md)
 
 <audio controls preload="none">
   <source src="https://lp.csedesigns.com/ggg/media/ch-16-issue-templates.mp3" type="audio/mpeg">
@@ -12587,7 +12587,7 @@ Practice focus: Day 2 capstone
 55 agents across 3 teams and 5 platforms, 54+ slash commands, custom agents, and agentic
   accessibility workflows.
 
-Based on: [Chapter 19: Accessibility Agents](docs/19-accessibility-agents.md)
+Based on: [Chapter 19: Accessibility Agents](../docs/19-accessibility-agents.md)
 
 <audio controls preload="none">
   <source src="https://lp.csedesigns.com/ggg/media/ch-17-accessibility-agents.mp3" type="audio/mpeg">
@@ -12908,7 +12908,7 @@ Based on: [Chapter 19: Accessibility Agents](docs/19-accessibility-agents.md)
 
 All 55 agents, all 54+ slash commands, customization, and troubleshooting.
 
-Based on: [Appendix L: Accessibility Agents - Complete Reference](docs/appendix-l-agents-reference.md)
+Based on: [Appendix L: Accessibility Agents - Complete Reference](../docs/appendix-l-agents-reference.md)
 
 <audio controls preload="none">
   <source src="https://lp.csedesigns.com/ggg/media/agents-01-accessibility-agents-reference.mp3" type="audio/mpeg">
@@ -13466,7 +13466,7 @@ Practice focus: Day 2 capstone
 
 The complete fork-based open source contribution workflow from fork to upstream pull request.
 
-Based on: [Chapter 18: Fork and Contribute](docs/18-fork-and-contribute.md)
+Based on: [Chapter 18: Fork and Contribute](../docs/18-fork-and-contribute.md)
 
 <audio controls preload="none">
   <source src="https://lp.csedesigns.com/ggg/media/ch-19-fork-and-contribute.mp3" type="audio/mpeg">
@@ -13809,7 +13809,7 @@ Based on: [Chapter 18: Fork and Contribute](docs/18-fork-and-contribute.md)
 
 Designing, writing, testing, and contributing a custom accessibility agent.
 
-Based on: [Chapter 20: Build Your Agent: Capstone](docs/20-build-your-agent.md)
+Based on: [Chapter 20: Build Your Agent: Capstone](../docs/20-build-your-agent.md)
 
 <audio controls preload="none">
   <source src="https://lp.csedesigns.com/ggg/media/ch-20-build-your-agent-capstone.mp3" type="audio/mpeg">
@@ -14964,7 +14964,7 @@ Practice focus: Bonus
 
 Connecting capstone work to GitHub's accessibility program and open source at scale.
 
-Based on: [Chapter 21: GitHub Accessibility and Open Source at Scale](docs/21-github-accessibility-and-open-source.md)
+Based on: [Chapter 21: GitHub Accessibility and Open Source at Scale](../docs/21-github-accessibility-and-open-source.md)
 
 <audio controls preload="none">
   <source src="https://lp.csedesigns.com/ggg/media/a11y-03-github-accessibility-and-open-source.mp3" type="audio/mpeg">
@@ -15136,7 +15136,7 @@ Based on: [Chapter 21: GitHub Accessibility and Open Source at Scale](docs/21-gi
 
 WCAG 2.2, ARIA roles, and the PR accessibility checklist.
 
-Based on: [Appendix M: Accessibility Standards Reference](docs/appendix-m-accessibility-standards.md)
+Based on: [Appendix M: Accessibility Standards Reference](../docs/appendix-m-accessibility-standards.md)
 
 <audio controls preload="none">
   <source src="https://lp.csedesigns.com/ggg/media/ref-03-accessibility-standards.mp3" type="audio/mpeg">
@@ -15378,7 +15378,7 @@ Based on: [Appendix M: Accessibility Standards Reference](docs/appendix-m-access
 
 Semantic versioning, GitHub Releases, and repository analytics.
 
-Based on: [Appendix S: Releases, Tags, and Insights](docs/appendix-s-releases-tags-insights.md)
+Based on: [Appendix S: Releases, Tags, and Insights](../docs/appendix-s-releases-tags-insights.md)
 
 <audio controls preload="none">
   <source src="https://lp.csedesigns.com/ggg/media/tools-04-releases-tags-insights.mp3" type="audio/mpeg">
@@ -15697,7 +15697,7 @@ Based on: [Appendix S: Releases, Tags, and Insights](docs/appendix-s-releases-ta
 
 Required reviews, status checks, rulesets, and diagnosing blocked merges.
 
-Based on: [Appendix O: Branch Protection and Rulesets](docs/appendix-o-branch-protection.md)
+Based on: [Appendix O: Branch Protection and Rulesets](../docs/appendix-o-branch-protection.md)
 
 <audio controls preload="none">
   <source src="https://lp.csedesigns.com/ggg/media/sec-01-branch-protection.mp3" type="audio/mpeg">
@@ -15965,7 +15965,7 @@ Based on: [Appendix O: Branch Protection and Rulesets](docs/appendix-o-branch-pr
 
 Dependabot, secret scanning, code scanning, and private security advisories.
 
-Based on: [Appendix P: GitHub Security Features](docs/appendix-p-security-features.md)
+Based on: [Appendix P: GitHub Security Features](../docs/appendix-p-security-features.md)
 
 <audio controls preload="none">
   <source src="https://lp.csedesigns.com/ggg/media/sec-02-security-features.mp3" type="audio/mpeg">
@@ -16227,7 +16227,7 @@ Based on: [Appendix P: GitHub Security Features](docs/appendix-p-security-featur
 
 Complete accessibility settings, audio signals, diff viewer, and screen reader configs.
 
-Based on: [Appendix G: VS Code Accessibility Reference](docs/appendix-g-vscode-reference.md)
+Based on: [Appendix G: VS Code Accessibility Reference](../docs/appendix-g-vscode-reference.md)
 
 <audio controls preload="none">
   <source src="https://lp.csedesigns.com/ggg/media/a11y-01-vscode-accessibility-reference.mp3" type="audio/mpeg">
@@ -16544,7 +16544,7 @@ Based on: [Appendix G: VS Code Accessibility Reference](docs/appendix-g-vscode-r
 
 Cloud dev environments, accessibility setup, and screen reader usage.
 
-Based on: [Appendix J: GitHub Codespaces](docs/appendix-j-cloud-editors.md)
+Based on: [Appendix J: GitHub Codespaces](../docs/appendix-j-cloud-editors.md)
 
 <audio controls preload="none">
   <source src="https://lp.csedesigns.com/ggg/media/tools-07-github-codespaces.mp3" type="audio/mpeg">
@@ -16771,7 +16771,7 @@ Based on: [Appendix J: GitHub Codespaces](docs/appendix-j-cloud-editors.md)
 
 VoiceOver and TalkBack guide for iOS and Android GitHub apps.
 
-Based on: [Appendix V: GitHub Mobile](docs/appendix-v-github-mobile.md)
+Based on: [Appendix V: GitHub Mobile](../docs/appendix-v-github-mobile.md)
 
 <audio controls preload="none">
   <source src="https://lp.csedesigns.com/ggg/media/tools-08-github-mobile.mp3" type="audio/mpeg">
@@ -17007,7 +17007,7 @@ Based on: [Appendix V: GitHub Mobile](docs/appendix-v-github-mobile.md)
 
 Free static site hosting, custom domains, HTTPS, and accessibility.
 
-Based on: [Appendix W: Publishing with GitHub Pages](docs/appendix-w-github-pages.md)
+Based on: [Appendix W: Publishing with GitHub Pages](../docs/appendix-w-github-pages.md)
 
 <audio controls preload="none">
   <source src="https://lp.csedesigns.com/ggg/media/tools-09-github-pages.mp3" type="audio/mpeg">
@@ -17249,7 +17249,7 @@ Based on: [Appendix W: Publishing with GitHub Pages](docs/appendix-w-github-page
 
 Workflow YAML structure, CI/CD, automation, and the Actions marketplace.
 
-Based on: [Appendix Q: GitHub Actions and Workflows](docs/appendix-q-actions-workflows.md)
+Based on: [Appendix Q: GitHub Actions and Workflows](../docs/appendix-q-actions-workflows.md)
 
 <audio controls preload="none">
   <source src="https://lp.csedesigns.com/ggg/media/tools-10-github-actions.mp3" type="audio/mpeg">
@@ -17513,7 +17513,7 @@ Based on: [Appendix Q: GitHub Actions and Workflows](docs/appendix-q-actions-wor
 
 Profile README, GitHub Sponsors, and repository Wikis.
 
-Based on: [Appendix T: Profile, Sponsors, and Wikis](docs/appendix-t-community-and-social.md)
+Based on: [Appendix T: Profile, Sponsors, and Wikis](../docs/appendix-t-community-and-social.md)
 
 <audio controls preload="none">
   <source src="https://lp.csedesigns.com/ggg/media/tools-11-profile-sponsors-wikis.mp3" type="audio/mpeg">
@@ -17762,7 +17762,7 @@ Based on: [Appendix T: Profile, Sponsors, and Wikis](docs/appendix-t-community-a
 
 GitHub Organizations, repository templates, visibility, and archiving.
 
-Based on: [Appendix T: Organizations and Templates](docs/appendix-t-community-and-social.md)
+Based on: [Appendix T: Organizations and Templates](../docs/appendix-t-community-and-social.md)
 
 <audio controls preload="none">
   <source src="https://lp.csedesigns.com/ggg/media/tools-12-organizations-templates.mp3" type="audio/mpeg">
@@ -18048,7 +18048,7 @@ Based on: [Appendix T: Organizations and Templates](docs/appendix-t-community-an
 
 Finding issues, scoping contributions, the fork-to-PR workflow, and building habits.
 
-Based on: [Chapter 8: Contributing to Open Source](docs/08-open-source-culture.md)
+Based on: [Chapter 8: Contributing to Open Source](../docs/08-open-source-culture.md)
 
 <audio controls preload="none">
   <source src="https://lp.csedesigns.com/ggg/media/ch-21-contributing-to-open-source.mp3" type="audio/mpeg">
@@ -18718,7 +18718,7 @@ Practice focus: Bonus
 
 Tools, references, communities, and continued learning paths.
 
-Based on: [Appendix X: Resources and Links](docs/appendix-x-resources.md)
+Based on: [Appendix X: Resources and Links](../docs/appendix-x-resources.md)
 
 <audio controls preload="none">
   <source src="https://lp.csedesigns.com/ggg/media/ref-04-resources.mp3" type="audio/mpeg">
@@ -18997,7 +18997,7 @@ Based on: [Appendix X: Resources and Links](docs/appendix-x-resources.md)
 
 Downloading the repository, reading offline, keeping updated, audio format.
 
-Based on: [Appendix Y: Accessing Workshop Materials](docs/appendix-y-workshop-materials.md)
+Based on: [Appendix Y: Accessing Workshop Materials](../docs/appendix-y-workshop-materials.md)
 
 <audio controls preload="none">
   <source src="https://lp.csedesigns.com/ggg/media/ref-05-accessing-workshop-materials.mp3" type="audio/mpeg">
@@ -19226,7 +19226,7 @@ Based on: [Appendix Y: Accessing Workshop Materials](docs/appendix-y-workshop-ma
 
 All 36 GitHub Skills modules organized into six learning paths.
 
-Based on: [Appendix Z: GitHub Skills - Complete Course Catalog](docs/appendix-z-github-skills.md)
+Based on: [Appendix Z: GitHub Skills - Complete Course Catalog](../docs/appendix-z-github-skills.md)
 
 <audio controls preload="none">
   <source src="https://lp.csedesigns.com/ggg/media/ref-06-github-skills-catalog.mp3" type="audio/mpeg">
@@ -19480,7 +19480,7 @@ Based on: [Appendix Z: GitHub Skills - Complete Course Catalog](docs/appendix-z-
 
 Cherry-pick, rebase, revert, reset, tags, bisect, clean, and other Git recovery tools.
 
-Based on: [Appendix E: Advanced Git Operations](docs/appendix-e-advanced-git.md)
+Based on: [Appendix E: Advanced Git Operations](../docs/appendix-e-advanced-git.md)
 
 <audio controls preload="none">
   <source src="https://lp.csedesigns.com/ggg/media/git-02-advanced-git-operations.mp3" type="audio/mpeg">
@@ -19766,7 +19766,7 @@ Based on: [Appendix E: Advanced Git Operations](docs/appendix-e-advanced-git.md)
 
 Secrets, .gitignore, environment variables, push protection, and safe contributor habits.
 
-Based on: [Appendix F: Git Security for Contributors](docs/appendix-f-git-security.md)
+Based on: [Appendix F: Git Security for Contributors](../docs/appendix-f-git-security.md)
 
 <audio controls preload="none">
   <source src="https://lp.csedesigns.com/ggg/media/git-03-git-security-for-contributors.mp3" type="audio/mpeg">
@@ -20040,7 +20040,7 @@ Based on: [Appendix F: Git Security for Contributors](docs/appendix-f-git-securi
 
 Using GitHub Desktop as an accessible alternative for cloning, branching, committing, and syncing.
 
-Based on: [Appendix H: GitHub Desktop](docs/appendix-h-github-desktop.md)
+Based on: [Appendix H: GitHub Desktop](../docs/appendix-h-github-desktop.md)
 
 <audio controls preload="none">
   <source src="https://lp.csedesigns.com/ggg/media/git-04-github-desktop.mp3" type="audio/mpeg">
@@ -20311,7 +20311,7 @@ Based on: [Appendix H: GitHub Desktop](docs/appendix-h-github-desktop.md)
 
 Using the GitHub CLI for issues, pull requests, authentication, and automation-friendly workflows.
 
-Based on: [Appendix I: GitHub CLI Reference](docs/appendix-i-github-cli.md)
+Based on: [Appendix I: GitHub CLI Reference](../docs/appendix-i-github-cli.md)
 
 <audio controls preload="none">
   <source src="https://lp.csedesigns.com/ggg/media/git-05-github-cli-reference.mp3" type="audio/mpeg">
@@ -20615,7 +20615,7 @@ Based on: [Appendix I: GitHub CLI Reference](docs/appendix-i-github-cli.md)
 
 Installing accessibility agents, configuring for your environment, and verifying the setup.
 
-Based on: [Appendix : Agent Installation and Setup](docs/appendix-aa-agent-installation-setup.md)
+Based on: [Appendix : Agent Installation and Setup](../docs/appendix-aa-agent-installation-setup.md)
 
 <audio controls preload="none">
   <source src="https://lp.csedesigns.com/ggg/media/agents-05-agent-installation-setup.mp3" type="audio/mpeg">
@@ -20850,7 +20850,7 @@ Based on: [Appendix : Agent Installation and Setup](docs/appendix-aa-agent-insta
 
 Using agents for code review, pair programming, CI/CD integration, and team workflows.
 
-Based on: [Appendix : Advanced Agent Patterns](docs/appendix-ab-advanced-agent-patterns.md)
+Based on: [Appendix : Advanced Agent Patterns](../docs/appendix-ab-advanced-agent-patterns.md)
 
 <audio controls preload="none">
   <source src="https://lp.csedesigns.com/ggg/media/agents-06-advanced-agent-patterns.mp3" type="audio/mpeg">
@@ -21065,7 +21065,7 @@ Based on: [Appendix : Advanced Agent Patterns](docs/appendix-ab-advanced-agent-p
 
 Managing documentation with version control, collaboration, accessibility, and developer workflows.
 
-Based on: [Appendix : Document Developer Tools](docs/appendix-ac-document-developer-tools.md)
+Based on: [Appendix : Document Developer Tools](../docs/appendix-ac-document-developer-tools.md)
 
 <audio controls preload="none">
   <source src="https://lp.csedesigns.com/ggg/media/a11y-04-document-developer-tools.mp3" type="audio/mpeg">
@@ -21321,7 +21321,7 @@ Based on: [Appendix : Document Developer Tools](docs/appendix-ac-document-develo
 
 How to continue learning, contributing, and building confidence after the workshop.
 
-Based on: [Chapter 22: What Comes Next](docs/22-what-comes-next.md)
+Based on: [Chapter 22: What Comes Next](../docs/22-what-comes-next.md)
 
 <audio controls preload="none">
   <source src="https://lp.csedesigns.com/ggg/media/ch-22-what-comes-next.mp3" type="audio/mpeg">
@@ -21582,22 +21582,22 @@ These episodes are generated with local neural text-to-speech models. Each episo
   the workshop chapter content using episode-specific scripts that ensure concept coverage, accessible
   language, and screen reader-friendly descriptions.
 
-Source bundles and production documentation are in the [podcasts/](podcasts/) directory.
+Source bundles and production documentation are in the [podcasts/](../podcasts/) directory.
 
 ## Authoritative Sources
 
 Use these official references when you need the current source of truth for this listing.
 
-- [Podcast site generator](../podcasts/generate-site.js)
-- [Podcast feed output](../podcasts/feed.xml)
-- [Listening order configuration](../podcasts/config/listening-order.json)
-- [Podcast source directory](../podcasts/)
+- [Podcast site generator](https://github.com/Community-Access/git-going-with-github/blob/main/podcasts/generate-site.js)
+- [Podcast feed output](https://lp.csedesigns.com/ggg/feed.xml)
+- [Listening order configuration](https://github.com/Community-Access/git-going-with-github/blob/main/podcasts/config/listening-order.json)
+- [Podcast source directory](https://github.com/Community-Access/git-going-with-github/tree/main/podcasts)
 
 ### Section-Level Source Map
 
 Use this map to verify facts for each major section in this file.
 
-- **Git Going with GitHub - Audio Series:** [Podcast site generator](../podcasts/generate-site.js), [Podcast feed output](../podcasts/feed.xml)
-- **How to Use These Episodes:** [Listening order configuration](../podcasts/config/listening-order.json), [Podcast site generator](../podcasts/generate-site.js)
-- **Start Here / episode listings / transcripts:** [Podcast feed output](../podcasts/feed.xml), [Podcast site generator](../podcasts/generate-site.js), [Podcast source directory](../podcasts/)
-- **Production:** [Podcast source directory](../podcasts/), [Podcast site generator](../podcasts/generate-site.js)
+- **Git Going with GitHub - Audio Series:** [Podcast site generator](https://github.com/Community-Access/git-going-with-github/blob/main/podcasts/generate-site.js), [Podcast feed output](https://lp.csedesigns.com/ggg/feed.xml)
+- **How to Use These Episodes:** [Listening order configuration](https://github.com/Community-Access/git-going-with-github/blob/main/podcasts/config/listening-order.json), [Podcast site generator](https://github.com/Community-Access/git-going-with-github/blob/main/podcasts/generate-site.js)
+- **Start Here / episode listings / transcripts:** [Podcast feed output](https://lp.csedesigns.com/ggg/feed.xml), [Podcast site generator](https://github.com/Community-Access/git-going-with-github/blob/main/podcasts/generate-site.js), [Podcast source directory](https://github.com/Community-Access/git-going-with-github/tree/main/podcasts)
+- **Production:** [Podcast source directory](https://github.com/Community-Access/git-going-with-github/tree/main/podcasts), [Podcast site generator](https://github.com/Community-Access/git-going-with-github/blob/main/podcasts/generate-site.js)
