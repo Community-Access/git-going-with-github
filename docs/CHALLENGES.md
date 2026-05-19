@@ -325,7 +325,7 @@ The capstone is where you choose a real repository and prepare an impactful agen
 5. Push and open a pull request, or prepare a review-ready branch, issue, or contribution plan if you do not have access.
 6. Review a classmate's capstone PR when one is available.
 
-Use the [agent file template](../learning-room/docs/samples/agent-file-template.md) and [fork workflow checklist](../learning-room/docs/samples/fork-workflow-checklist.md) for structure.
+Use the [agent file template](https://github.com/Community-Access/git-going-with-github/blob/main/learning-room/docs/samples/agent-file-template.md) and [fork workflow checklist](https://github.com/Community-Access/git-going-with-github/blob/main/learning-room/docs/samples/fork-workflow-checklist.md) for structure.
 
 **Evidence to post:** Link to your capstone PR, branch, draft issue, or contribution plan. Include the repository you chose, the mission statement, what you changed or proposed, how you tested it, and the responsibilities and guardrails that make it safe.
 
@@ -378,7 +378,7 @@ The [Bonus E solution reference](https://github.com/Community-Access/git-going-w
 
 ## Skills-Inspired Optional Scenarios
 
-For advanced students who finish early, use the curated optional scenarios in [Learning Room skills bonus scenarios](../learning-room/docs/skills-bonus-scenarios.md).
+For advanced students who finish early, use the curated optional scenarios in [Learning Room skills bonus scenarios](https://github.com/Community-Access/git-going-with-github/blob/main/learning-room/docs/skills-bonus-scenarios.md).
 
 These scenarios adapt selected GitHub Skills exercises into this workshop environment without changing the official 21-challenge progression.
 

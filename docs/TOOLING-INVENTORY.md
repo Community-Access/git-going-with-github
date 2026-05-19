@@ -103,7 +103,7 @@ These files contain many `ep##` / `appendix-X` references but are entirely regen
 
 | File | Counts | Regeneration command |
 |------|--------|----------------------|
-| [admin/PODCASTS.md](../admin/PODCASTS.md) | 174 ep##, 29 appendix-, 15 cc-bonus | `npm run build:podcast-site` (via `build-rss-feed.bat`) |
+| [admin/PODCASTS.md](https://github.com/Community-Access/git-going-with-github/blob/main/admin/PODCASTS.md) | 174 ep##, 29 appendix-, 15 cc-bonus | `npm run build:podcast-site` (via `build-rss-feed.bat`) |
 | [podcasts/feed.xml](../podcasts/feed.xml) | excluded | `npm run build:podcast-site` |
 | [podcasts/manifest.json](../podcasts/manifest.json) | excluded | `npm run build:podcast-site` |
 | [podcasts/validate-report.json](../podcasts/validate-report.json) | excluded | validator output |
@@ -121,11 +121,11 @@ These are human-authored markdown documents that mention episodes/appendices by 
 | [docs/Home.md](Home.md) | 29 appendix- | Landing page. Update at Stage 3. |
 | [docs/appendix-x-resources.md](appendix-x-resources.md) | 26 appendix- | Cross-references between appendices. Update at Stage 3. |
 | [README.md](../README.md) | 27 appendix- | Repo README. Update at Stage 3. |
-| [admin/LEARNING-ROOM-E2E-QA-RUNBOOK.md](../admin/LEARNING-ROOM-E2E-QA-RUNBOOK.md) | 26 appendix- | QA runbook. Update at Stage 3. |
-| [admin/FAQ.md](../admin/FAQ.md) | 24 appendix- | FAQ. Update at Stage 3. |
-| [admin/GITHUB_PROPOSAL.md](../admin/GITHUB_PROPOSAL.md) | 24 appendix- | Proposal doc. Update at Stage 3. |
-| [admin/CURRICULUM_2.0_ORGANIZATION.md](../admin/CURRICULUM_2.0_ORGANIZATION.md) | 22 appendix- | Curriculum org doc. Update at Stage 3. |
-| [admin/TROUBLESHOOTING.md](../admin/TROUBLESHOOTING.md), [admin/ACCESSIBILITY_TESTING.md](../admin/ACCESSIBILITY_TESTING.md), [admin/QUICK_REFERENCE.md](../admin/QUICK_REFERENCE.md), [admin/DAY1_AGENDA.md](../admin/DAY1_AGENDA.md), [admin/DAY2_AGENDA.md](../admin/DAY2_AGENDA.md), [admin/DAY2_QUICK_START.md](../admin/DAY2_QUICK_START.md), [admin/STUDENT_ONBOARDING_EMAIL.md](../admin/STUDENT_ONBOARDING_EMAIL.md), [admin/PROGRESS_TRACKER.md](../admin/PROGRESS_TRACKER.md), [admin/VALIDATION_AUDIT.md](../admin/VALIDATION_AUDIT.md), [admin/ANNOUNCEMENT.md](../admin/ANNOUNCEMENT.md) | 1-8 each | Various admin docs. Update at Stage 3. |
+| [admin/LEARNING-ROOM-E2E-QA-RUNBOOK.md](https://github.com/Community-Access/git-going-with-github/blob/main/admin/LEARNING-ROOM-E2E-QA-RUNBOOK.md) | 26 appendix- | QA runbook. Update at Stage 3. |
+| [admin/FAQ.md](https://github.com/Community-Access/git-going-with-github/blob/main/admin/FAQ.md) | 24 appendix- | FAQ. Update at Stage 3. |
+| [admin/GITHUB_PROPOSAL.md](https://github.com/Community-Access/git-going-with-github/blob/main/admin/GITHUB_PROPOSAL.md) | 24 appendix- | Proposal doc. Update at Stage 3. |
+| [admin/CURRICULUM_2.0_ORGANIZATION.md](https://github.com/Community-Access/git-going-with-github/blob/main/admin/CURRICULUM_2.0_ORGANIZATION.md) | 22 appendix- | Curriculum org doc. Update at Stage 3. |
+| [admin/TROUBLESHOOTING.md](https://github.com/Community-Access/git-going-with-github/blob/main/admin/TROUBLESHOOTING.md), [admin/ACCESSIBILITY_TESTING.md](https://github.com/Community-Access/git-going-with-github/blob/main/admin/ACCESSIBILITY_TESTING.md), [admin/QUICK_REFERENCE.md](https://github.com/Community-Access/git-going-with-github/blob/main/admin/QUICK_REFERENCE.md), [admin/DAY1_AGENDA.md](https://github.com/Community-Access/git-going-with-github/blob/main/admin/DAY1_AGENDA.md), [admin/DAY2_AGENDA.md](https://github.com/Community-Access/git-going-with-github/blob/main/admin/DAY2_AGENDA.md), [admin/DAY2_QUICK_START.md](https://github.com/Community-Access/git-going-with-github/blob/main/admin/DAY2_QUICK_START.md), [admin/STUDENT_ONBOARDING_EMAIL.md](https://github.com/Community-Access/git-going-with-github/blob/main/admin/STUDENT_ONBOARDING_EMAIL.md), [admin/PROGRESS_TRACKER.md](https://github.com/Community-Access/git-going-with-github/blob/main/admin/PROGRESS_TRACKER.md), [admin/VALIDATION_AUDIT.md](https://github.com/Community-Access/git-going-with-github/blob/main/admin/VALIDATION_AUDIT.md), [admin/ANNOUNCEMENT.md](https://github.com/Community-Access/git-going-with-github/blob/main/admin/ANNOUNCEMENT.md) | 1-8 each | Various admin docs. Update at Stage 3. |
 | [docs/_Sidebar.md](_Sidebar.md) | 3 appendix- | Wiki sidebar. Update at Stage 3. |
 | [GO-LIVE-QA-GUIDE.md](../GO-LIVE-QA-GUIDE.md), [CONTRIBUTING.md](../CONTRIBUTING.md), [work.md](../work.md), [work.html](../work.html) | 1 each | Light references. Update at Stage 3. |
 

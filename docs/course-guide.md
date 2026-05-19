@@ -209,9 +209,9 @@ If you get stuck at any point during the workshop, these resources are always av
 
 | Resource | What It Is | When to Use It |
 |----------|-----------|---------------|
-| [FAQ](../admin/FAQ.md) | Answers to common questions | When you have a question about the workshop, GitHub, or screen readers |
-| [Troubleshooting](../admin/TROUBLESHOOTING.md) | Step-by-step solutions to common problems | When something is not working |
-| [Quick Reference](../admin/QUICK_REFERENCE.md) | Condensed shortcuts and commands | When you need a keyboard shortcut or command fast |
+| [FAQ](https://github.com/Community-Access/git-going-with-github/blob/main/admin/FAQ.md) | Answers to common questions | When you have a question about the workshop, GitHub, or screen readers |
+| [Troubleshooting](https://github.com/Community-Access/git-going-with-github/blob/main/admin/TROUBLESHOOTING.md) | Step-by-step solutions to common problems | When something is not working |
+| [Quick Reference](https://github.com/Community-Access/git-going-with-github/blob/main/admin/QUICK_REFERENCE.md) | Condensed shortcuts and commands | When you need a keyboard shortcut or command fast |
 | [Glossary](appendix-a-glossary.md) | Term definitions | When you encounter an unfamiliar word |
 | [Screen Reader Cheat Sheet](appendix-b-screen-reader-cheatsheet.md) | Navigation commands | When you need a screen reader shortcut |
 | [Resources](appendix-x-resources.md) | External links and documentation | When you want to learn more about a topic |

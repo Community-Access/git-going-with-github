@@ -34,7 +34,7 @@ Chapter 7 uses **one controlled practice challenge** so students can learn confl
 
 **Before you start:** Open your **assigned Chapter 7 challenge issue** (the one titled "Chapter 7.1: Resolve Conflict Markers (@yourname)"). The issue description tells you which practice file contains the conflict markers.
 
-Practice sample: [`learning-room/docs/samples/chapter-6-conflict-practice-sample.md`](../learning-room/docs/samples/chapter-6-conflict-practice-sample.md)
+Practice sample: [`learning-room/docs/samples/chapter-6-conflict-practice-sample.md`](https://github.com/Community-Access/git-going-with-github/blob/main/learning-room/docs/samples/chapter-6-conflict-practice-sample.md)
 
 1. Open the practice file specified in your challenge issue.
 2. Search the file for `<<<<<<<`. This is the **start marker** - it shows where the conflict begins.
