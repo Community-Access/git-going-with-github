@@ -451,7 +451,75 @@ function generatePlayerPage(manifest) {
   lines.push('---');
   lines.push('');
 
+  // -------------------------------------------------------------------------
+  // Browse by Category - alternate access path. Lists every companion episode
+  // grouped by Day 1 / Day 2 / Reference, plus every Challenge Coach episode.
+  // Each row carries its own audio player so this section is self-sufficient.
+  // -------------------------------------------------------------------------
+  const day1Eps = manifest.filter(ep => groupLabel(ep) === 'day1');
+  const day2Eps = manifest.filter(ep => groupLabel(ep) === 'day2');
+  const appendixEps = manifest.filter(ep => groupLabel(ep) === 'appendix');
+
+  function emitCompanionRow(ep) {
+    const audioFile = companionAudioFile(ep);
+    const audioUrl = audioUrlForFile(audioFile);
+    const hasAudio = fs.existsSync(audioPathForFile(audioFile));
+    const label = ep.number === 0 ? ep.title : `Episode ${ep.number}: ${ep.title}`;
+    lines.push(`- **${label}** - ${sourceLabel(ep)}`);
+    if (hasAudio) {
+      lines.push(`  <audio controls preload="none"><source src="${audioUrl}" type="audio/mpeg"></audio>`);
+    }
+    lines.push('');
+  }
+
+  function emitChallengeRow(ch) {
+    const audioFile = challengeAudioFile(ch);
+    const audioUrl = audioUrlForFile(audioFile);
+    const hasAudio = fs.existsSync(audioPathForFile(audioFile));
+    const isBonus = String(ch.id).startsWith('bonus');
+    const label = isBonus ? `Bonus: ${ch.title}` : `Challenge ${ch.id}: ${ch.title}`;
+    lines.push(`- **${label}** - ${ch.day}`);
+    if (hasAudio) {
+      lines.push(`  <audio controls preload="none"><source src="${audioUrl}" type="audio/mpeg"></audio>`);
+    }
+    lines.push('');
+  }
+
+  lines.push('## Browse by Category');
+  lines.push('');
+  pushWrappedParagraph(lines, 'Prefer to jump straight to a section? Use this index to find any companion episode by day or any Challenge Coach episode by number. Every row includes its own player. The full curated journey with transcripts is in the sections below.');
+  lines.push('');
+
+  if (day1Eps.length) {
+    lines.push(`### Day 1 - GitHub on the Web (${day1Eps.length} episodes)`);
+    lines.push('');
+    day1Eps.forEach(emitCompanionRow);
+  }
+  if (day2Eps.length) {
+    lines.push(`### Day 2 - VS Code, Git, and Agents (${day2Eps.length} episodes)`);
+    lines.push('');
+    day2Eps.forEach(emitCompanionRow);
+  }
+  if (appendixEps.length) {
+    lines.push(`### Reference and Appendix (${appendixEps.length} episodes)`);
+    lines.push('');
+    appendixEps.forEach(emitCompanionRow);
+  }
+  if (challenges.length) {
+    lines.push(`### Challenge Coach (${challenges.length} challenges)`);
+    lines.push('');
+    challenges.forEach(emitChallengeRow);
+  }
+
+  lines.push('---');
+  lines.push('');
+
   let currentSection = null;
+
+  lines.push('## Curated Listening Journey');
+  lines.push('');
+  pushWrappedParagraph(lines, 'Follow the workshop end-to-end in this order. Companion lessons and Challenge Coach episodes are interleaved so you hear the concept, practice it, then keep moving. Every entry below includes a full transcript - expand "Read Transcript" to follow along.');
+  lines.push('');
 
   for (const item of listeningItems) {
     if (item.section !== currentSection) {
