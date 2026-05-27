@@ -18,7 +18,7 @@ jobs:
       - name: Evaluate Day 1 completion signals and release Day 2 link
         id: day2_release_primary
         continue-on-error: true
-        uses: actions/github-script@v7
+        uses: actions/github-script@v8
         env:
           DAY2_ASSIGNMENT_URL: ${{ vars.CLASSROOM_DAY2_ASSIGNMENT_URL }}
         with:
@@ -97,7 +97,7 @@ jobs:
 
       - name: Retry Day 2 release once if primary step failed
         if: ${{ steps.day2_release_primary.outcome == 'failure' }}
-        uses: actions/github-script@v7
+        uses: actions/github-script@v8
         env:
           DAY2_ASSIGNMENT_URL: ${{ vars.CLASSROOM_DAY2_ASSIGNMENT_URL }}
         with:
