@@ -26,7 +26,7 @@ jobs:
     if: github.event_name == 'issues' && github.event.action == 'opened'
     steps:
       - name: Greet First Issue
-        uses: actions/github-script@v7
+        uses: actions/github-script@v8
         with:
           script: |
             try {
@@ -73,7 +73,7 @@ jobs:
 
     steps:
       - name: Check if first-time contributor
-        uses: actions/github-script@v7
+        uses: actions/github-script@v8
         with:
           script: |
             try {
@@ -163,7 +163,7 @@ jobs:
 
       - name: Post validation results
         if: always()
-        uses: actions/github-script@v7
+        uses: actions/github-script@v8
         with:
           script: |
             const fs = require('fs');
@@ -250,7 +250,7 @@ jobs:
 
       - name: Set status check
         if: always()
-        uses: actions/github-script@v7
+        uses: actions/github-script@v8
         with:
           script: |
             const fs = require('fs');
@@ -282,7 +282,7 @@ jobs:
 
     steps:
       - name: Congratulate reviewer
-        uses: actions/github-script@v7
+        uses: actions/github-script@v8
         with:
           script: |
             const reviewBody = [
@@ -311,8 +311,11 @@ jobs:
     if: github.event_name == 'issue_comment'
 
     steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
       - name: Auto-respond to keywords
-        uses: actions/github-script@v7
+        uses: actions/github-script@v8
         with:
           script: |
             const { getAutoResponse } = require('./.github/scripts/comment-responder.js');
