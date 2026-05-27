@@ -186,7 +186,7 @@ if ($tpl -notmatch 'Post workflow error notice') {
         $lf +
         '      - name: Post workflow error notice' + $lf +
         '        if: failure()' + $lf +
-        '        uses: actions/github-script@v7' + $lf +
+        '        uses: actions/github-script@v8' + $lf +
         '        with:' + $lf +
         '          script: |' + $lf +
         "            const MARKER = '## Challenge 14:';" + $lf +
@@ -316,7 +316,7 @@ jobs:
 
     steps:
       - name: Find PR and post notice if needed
-        uses: actions/github-script@v7
+        uses: actions/github-script@v8
         with:
           script: |
             const run = context.payload.workflow_run;

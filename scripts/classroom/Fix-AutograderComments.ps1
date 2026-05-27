@@ -91,7 +91,7 @@ foreach ($c in $challenges) {
             $lf +
             '      - name: Post workflow error notice' + $lf +
             '        if: failure()' + $lf +
-            '        uses: actions/github-script@v7' + $lf +
+            '        uses: actions/github-script@v8' + $lf +
             '        with:' + $lf +
             '          script: |' + $lf +
             "            const MARKER = '## Challenge " + $num + ":';" + $lf +
