@@ -148,30 +148,31 @@ contact_links:
 "@
         [IO.File]::WriteAllText((Join-Path $clonePath '.github/ISSUE_TEMPLATE/config.yml'), $issueConfig, [Text.UTF8Encoding]::new($false))
 
-        $firstResponse = @"
-name: First Response Assistant
-
-on:
-  issues:
-    types: [opened]
-
-permissions:
-  issues: write
-
-jobs:
-  first-response:
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/github-script@v7
-        with:
-          script: |
-            await github.rest.issues.createComment({
-              owner: context.repo.owner,
-              repo: context.repo.repo,
-              issue_number: context.issue.number,
-              body: `Thanks for opening this request. A maintainer will review it within 24 to 48 hours.`
-            });
-"@
+                $firstResponse = @(
+                    'name: First Response Assistant'
+                    ''
+                    'on:'
+                    '  issues:'
+                    '    types: [opened]'
+                    ''
+                    'permissions:'
+                    '  issues: write'
+                    ''
+                    'jobs:'
+                    '  first-response:'
+                    '    runs-on: ubuntu-latest'
+                    '    steps:'
+                    '      - uses: actions/github-script@v8'
+                    '        with:'
+                    '          script: |'
+                    '            await github.rest.issues.createComment({'
+                    '              owner: context.repo.owner,'
+                    '              repo: context.repo.repo,'
+                    '              issue_number: context.issue.number,'
+                    "              body: 'Thanks for opening this request. A maintainer will review it within 24 to 48 hours.'"
+                    '            });'
+                    ''
+                ) -join "`n"
         [IO.File]::WriteAllText((Join-Path $clonePath '.github/workflows/first-response.yml'), $firstResponse, [Text.UTF8Encoding]::new($false))
 
         Invoke-CheckedCommand git @('config', 'user.name', 'accesswatch')
