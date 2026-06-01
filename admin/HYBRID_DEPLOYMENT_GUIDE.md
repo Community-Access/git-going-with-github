@@ -5,7 +5,8 @@ This is the step-by-step guide to deploying the Hybrid architecture from
 provisioning core that replaces GitHub Classroom, plus the optional accessible Flask
 companion. For the conceptual model and day-to-day operations, see
 [OWNED_PROVISIONING.md](OWNED_PROVISIONING.md). For the legacy Classroom-based flow,
-see [../classroom/README.md](../classroom/README.md).
+see [../classroom/README.md](../classroom/README.md). To review every piece of the
+Hybrid deliverable from one place, start at [HYBRID_REVIEW_INDEX.md](HYBRID_REVIEW_INDEX.md).
 
 Follow the phases in order. Each phase ends with a verification step. Do not advance
 until the current phase verifies, exactly as the phased roadmap in golden.md requires.
