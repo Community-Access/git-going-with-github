@@ -1,0 +1,93 @@
+name: Provision Learning Rooms (owned, GitHub-native)
+
+# Owned, GitHub-native replacement for GitHub Classroom provisioning.
+# Implements SPEC.md section 7. The roster of record lives in a private admin
+# repository; this workflow reads it, idempotently provisions every pending or
+# failed learner, and commits the updated roster plus the provisioning log back.
+#
+# Nothing here is destructive: re-running heals partial failures and never
+# corrupts an existing student repository (idempotent on github_handle+cohort).
+
+on:
+  workflow_dispatch:
+    inputs:
+      dry_run:
+        description: List who would be provisioned without making changes
+        type: boolean
+        default: false
+  schedule:
+    # Trickle-provision newly registered learners every 30 minutes. Provisioning
+    # on registration (a trickle) avoids the burst that would trip rate limits.
+    - cron: '*/30 * * * *'
+
+# Least privilege: this workflow needs no write scope on THIS repository. All
+# writes happen against the private admin repo and student repos via a scoped
+# token or GitHub App installation token configured in secrets.
+permissions:
+  contents: read
+
+concurrency:
+  group: provision-learning-rooms
+  cancel-in-progress: false
+
+jobs:
+  provision:
+    name: Provision learning rooms
+    runs-on: ubuntu-latest
+    environment: provisioning
+    steps:
+      - name: Check out workshop repo (provisioning scripts)
+        uses: actions/checkout@v4
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Check out admin roster repo
+        uses: actions/checkout@v4
+        with:
+          repository: ${{ vars.ADMIN_ROSTER_REPO }}
+          token: ${{ secrets.PRIVATE_STUDENT_DATA_TOKEN }}
+          path: _roster
+
+      - name: Provision (dry run)
+        if: ${{ inputs.dry_run }}
+        run: |
+          node .github/scripts/provisioning/provision-cli.js \
+            --roster _roster/roster.json --dry-run
+        env:
+          LEARNING_ROOM_TEMPLATE_REPO: ${{ vars.LEARNING_ROOM_TEMPLATE_REPO }}
+          PROVISIONING_STUDENT_OWNER: ${{ vars.PROVISIONING_STUDENT_OWNER }}
+
+      - name: Provision learners
+        if: ${{ !inputs.dry_run }}
+        run: |
+          node .github/scripts/provisioning/provision-cli.js \
+            --roster _roster/roster.json \
+            --log _roster/provisioning-log.json
+        env:
+          PROVISIONING_MODE: ${{ vars.PROVISIONING_MODE }}
+          LEARNING_ROOM_TEMPLATE_REPO: ${{ vars.LEARNING_ROOM_TEMPLATE_REPO }}
+          PROVISIONING_STUDENT_OWNER: ${{ vars.PROVISIONING_STUDENT_OWNER }}
+          GITHUB_API_URL: ${{ github.api_url }}
+          # github-app mode (production):
+          PROVISIONING_APP_ID: ${{ secrets.PROVISIONING_APP_ID }}
+          PROVISIONING_APP_PRIVATE_KEY: ${{ secrets.PROVISIONING_APP_PRIVATE_KEY }}
+          PROVISIONING_APP_INSTALLATION_ID: ${{ secrets.PROVISIONING_APP_INSTALLATION_ID }}
+          # actions-bot mode (Phase 1 spike only):
+          PROVISIONING_TOKEN: ${{ secrets.PROVISIONING_TOKEN }}
+
+      - name: Commit updated roster and provisioning log
+        if: ${{ !inputs.dry_run }}
+        working-directory: _roster
+        run: |
+          if [ -n "$(git status --porcelain)" ]; then
+            git config user.name "glow-provisioning[bot]"
+            git config user.email "provisioning@users.noreply.github.com"
+            git add roster.json provisioning-log.json
+            git commit -m "chore(provisioning): update roster and provisioning log"
+            git push
+          else
+            echo "No roster changes to commit."
+          fi

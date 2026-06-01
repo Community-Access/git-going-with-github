@@ -1,0 +1,80 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://github.com/Community-Access/git-going-with-github/roster.schema.json",
+  "title": "GLOW Roster of Record",
+  "description": "Canonical, vendor-independent roster for the GIT Going with GitHub workshop. Maps a learner GitHub handle to cohort, path, provisioning state, and progression status. Reconstructable from registration issues plus provisioning results without any third party. Implements SPEC.md section 6.1.",
+  "type": "object",
+  "required": ["version", "cohorts", "learners"],
+  "additionalProperties": false,
+  "properties": {
+    "version": {
+      "type": "integer",
+      "const": 1,
+      "description": "Roster schema version. Bump only on a breaking shape change."
+    },
+    "generated_at": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Optional timestamp of the last write. Informational only; never a source of truth."
+    },
+    "cohorts": {
+      "type": "array",
+      "description": "Cohorts known to the roster.",
+      "items": {
+        "type": "object",
+        "required": ["cohort_id"],
+        "additionalProperties": false,
+        "properties": {
+          "cohort_id": { "type": "string", "minLength": 1 },
+          "label": { "type": "string" },
+          "opens_at": { "type": "string", "format": "date-time" }
+        }
+      }
+    },
+    "learners": {
+      "type": "array",
+      "description": "One record per learner. See SPEC.md section 6.1.",
+      "items": { "$ref": "#/definitions/learner" }
+    }
+  },
+  "definitions": {
+    "learner": {
+      "type": "object",
+      "required": ["github_handle", "cohort_id", "path", "provision_state", "status"],
+      "additionalProperties": false,
+      "properties": {
+        "github_handle": {
+          "type": "string",
+          "pattern": "^[A-Za-z0-9](?:[A-Za-z0-9]|-(?=[A-Za-z0-9])){0,38}$",
+          "description": "Primary identity key. A valid GitHub username."
+        },
+        "cohort_id": { "type": "string", "minLength": 1 },
+        "path": {
+          "type": "string",
+          "enum": ["day1-day2", "day2-only"],
+          "description": "Which arc the learner is enrolled in."
+        },
+        "learning_room_repo": {
+          "type": ["string", "null"],
+          "description": "owner/name of the provisioned repository. Null until provisioned."
+        },
+        "provision_state": {
+          "type": "string",
+          "enum": ["pending", "provisioned", "failed", "healed"],
+          "description": "State of the owned provisioning of record."
+        },
+        "status": {
+          "type": "string",
+          "enum": ["awaiting-ack", "active-day1", "day1-complete", "day2-released", "needs-info"],
+          "description": "Learner progression status derived from deterministic signals."
+        },
+        "registered_at": { "type": ["string", "null"], "format": "date-time" },
+        "last_signal_at": { "type": ["string", "null"], "format": "date-time" },
+        "notes": {
+          "type": "string",
+          "description": "Facilitator notes. Redacted in any public surface."
+        }
+      }
+    }
+  }
+}

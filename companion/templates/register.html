@@ -1,0 +1,81 @@
+{% extends "base.html" %}
+{% block title %}Register{% endblock %}
+{% block content %}
+<h1>Register for the workshop</h1>
+<p>
+  Welcome. Tell us your GitHub username and which cohort you are joining. We will
+  create your private Learning Room and invite you to it.
+</p>
+
+{% if errors %}
+<div class="error-summary" role="alert" aria-labelledby="error-summary-title" tabindex="-1">
+  <h2 id="error-summary-title">There is a problem</h2>
+  <ul>
+    {% for field, message in errors %}
+    <li><a href="#{{ field }}">{{ message }}</a></li>
+    {% endfor %}
+  </ul>
+</div>
+{% endif %}
+
+<form method="post" action="{{ url_for('register') }}" novalidate>
+  <input type="hidden" name="csrf_token" value="{{ csrf_token }}" />
+
+  {% set field_errors = {} %}
+  {% for field, message in errors %}{% set _ = field_errors.update({field: message}) %}{% endfor %}
+
+  <div class="field">
+    <label for="github_handle">GitHub username (required)</label>
+    <p id="github_handle_hint" class="hint">For example, octocat. Do not include the @ sign.</p>
+    {% if field_errors.get('github_handle') %}
+    <p id="github_handle_error" class="field-error">{{ field_errors['github_handle'] }}</p>
+    {% endif %}
+    <input
+      type="text"
+      id="github_handle"
+      name="github_handle"
+      value="{{ form.github_handle }}"
+      autocomplete="username"
+      required
+      aria-describedby="github_handle_hint{% if field_errors.get('github_handle') %} github_handle_error{% endif %}"
+      {% if field_errors.get('github_handle') %}aria-invalid="true"{% endif %}
+    />
+  </div>
+
+  <div class="field">
+    <label for="cohort_id">Cohort (required)</label>
+    <p id="cohort_id_hint" class="hint">Your facilitator gives you this cohort identifier.</p>
+    {% if field_errors.get('cohort_id') %}
+    <p id="cohort_id_error" class="field-error">{{ field_errors['cohort_id'] }}</p>
+    {% endif %}
+    <input
+      type="text"
+      id="cohort_id"
+      name="cohort_id"
+      value="{{ form.cohort_id }}"
+      required
+      aria-describedby="cohort_id_hint{% if field_errors.get('cohort_id') %} cohort_id_error{% endif %}"
+      {% if field_errors.get('cohort_id') %}aria-invalid="true"{% endif %}
+    />
+  </div>
+
+  <fieldset class="field">
+    <legend>Which path are you joining?</legend>
+    {% if field_errors.get('path') %}
+    <p id="path_error" class="field-error">{{ field_errors['path'] }}</p>
+    {% endif %}
+    <div class="radio">
+      <input type="radio" id="path_day1_day2" name="path" value="day1-day2"
+        {% if form.path == 'day1-day2' %}checked{% endif %} />
+      <label for="path_day1_day2">Day 1 and Day 2 (the full workshop)</label>
+    </div>
+    <div class="radio">
+      <input type="radio" id="path_day2_only" name="path" value="day2-only"
+        {% if form.path == 'day2-only' %}checked{% endif %} />
+      <label for="path_day2_only">Day 2 only (I have completed Day 1 before)</label>
+    </div>
+  </fieldset>
+
+  <button type="submit">Register</button>
+</form>
+{% endblock %}

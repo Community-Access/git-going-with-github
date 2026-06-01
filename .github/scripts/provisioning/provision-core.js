@@ -1,0 +1,253 @@
+/**
+ * Idempotent provisioning core for the GLOW workshop: the GitHub-native
+ * replacement for GitHub Classroom. Implements the serial, backoff, idempotent
+ * algorithm in SPEC.md section 7.2b.
+ *
+ * This module is pure orchestration. It takes an injected `client` (see
+ * github-client.js) so it can run against the real GitHub API from the workflow
+ * or the CLI, and against a fake client in unit tests. It never reads secrets,
+ * never touches the network directly, and never persists state itself: it
+ * returns an updated roster plus a provisioning log for the caller to store.
+ */
+
+'use strict';
+
+const { entriesToProvision, learnerKey } = require('./roster');
+const { REQUIRED_WORKFLOWS } = require('./github-client');
+
+function defaultRepoName(handle, cohortId) {
+  const safeHandle = String(handle).toLowerCase().replace(/[^a-z0-9-]/g, '-');
+  const safeCohort = String(cohortId).toLowerCase().replace(/[^a-z0-9-]/g, '-');
+  return `learning-room-${safeCohort}-${safeHandle}`;
+}
+
+function isSecondaryRateLimit(err) {
+  if (!err) return false;
+  if (err.status === 403 || err.status === 429) return true;
+  return /HTTP (403|429)/.test(String(err.message || ''));
+}
+
+const sleepReal = (ms) => new Promise((resolve) => setTimeout(resolve, ms));
+
+/**
+ * Provision (or heal) every pending/failed learner in the roster.
+ *
+ * config = {
+ *   studentOwner,            // org/user that owns student repos
+ *   templateOwner,
+ *   templateRepo,
+ *   requiredWorkflows,       // defaults to REQUIRED_WORKFLOWS
+ *   repoNameFor,             // (handle, cohortId) => name; defaults to defaultRepoName
+ *   delayMs,                 // delay between entries (default 1500)
+ *   maxRetries,              // backoff attempts on secondary rate limit (default 5)
+ *   collaboratorPermission   // default 'push'
+ * }
+ *
+ * Returns { roster (updated), log: [entries], summary }.
+ */
+async function provisionRoster({
+  roster,
+  client,
+  config = {},
+  sleep = sleepReal,
+  now = () => new Date(),
+  logger = () => {}
+}) {
+  const studentOwner = required(config, 'studentOwner');
+  const templateOwner = required(config, 'templateOwner');
+  const templateRepo = required(config, 'templateRepo');
+  const requiredWorkflows = config.requiredWorkflows || REQUIRED_WORKFLOWS;
+  const repoNameFor = config.repoNameFor || defaultRepoName;
+  const delayMs = config.delayMs == null ? 1500 : config.delayMs;
+  const maxRetries = config.maxRetries == null ? 5 : config.maxRetries;
+  const permission = config.collaboratorPermission || 'push';
+
+  const log = [];
+  const targets = entriesToProvision(roster);
+
+  for (let i = 0; i < targets.length; i += 1) {
+    const learner = targets[i];
+    const handle = learner.github_handle;
+    const cohortId = learner.cohort_id;
+    const repoName = repoNameFor(handle, cohortId);
+    const repo = `${studentOwner}/${repoName}`;
+    const attemptAt = now().toISOString();
+
+    let result;
+    try {
+      result = await withRateLimitRetry(
+        () =>
+          provisionOne({
+            client,
+            handle,
+            studentOwner,
+            templateOwner,
+            templateRepo,
+            repoName,
+            requiredWorkflows,
+            permission
+          }),
+        { maxRetries, sleep, logger }
+      );
+    } catch (err) {
+      learner.provision_state = 'failed';
+      learner.learning_room_repo = repo;
+      const entry = {
+        github_handle: handle,
+        cohort_id: cohortId,
+        attempt_at: attemptAt,
+        result: 'error',
+        repo,
+        template_sha: null,
+        error_detail: String(err && err.message ? err.message : err)
+      };
+      log.push(entry);
+      logger(`FAILED ${learnerKey(handle, cohortId)}: ${entry.error_detail}`);
+      if (i < targets.length - 1) await sleep(delayMs);
+      continue;
+    }
+
+    learner.provision_state = result.healed ? 'healed' : 'provisioned';
+    learner.learning_room_repo = repo;
+    log.push({
+      github_handle: handle,
+      cohort_id: cohortId,
+      attempt_at: attemptAt,
+      result: result.result,
+      repo,
+      template_sha: result.templateSha,
+      error_detail: null
+    });
+    logger(`OK ${learnerKey(handle, cohortId)}: ${result.result} -> ${repo}`);
+
+    if (i < targets.length - 1) await sleep(delayMs);
+  }
+
+  const summary = summarize(log);
+  return { roster, log, summary };
+}
+
+async function provisionOne({
+  client,
+  handle,
+  studentOwner,
+  templateOwner,
+  templateRepo,
+  repoName,
+  requiredWorkflows,
+  permission
+}) {
+  const exists = await client.repoExists({ owner: studentOwner, repo: repoName });
+
+  let result = 'created';
+  let healed = false;
+
+  if (exists) {
+    const present = await client.listWorkflowPaths({ owner: studentOwner, repo: repoName });
+    const missing = missingWorkflows(requiredWorkflows, present);
+    if (missing.length === 0) {
+      result = 'already-exists';
+    } else if (typeof client.seedContent === 'function') {
+      await client.seedContent({
+        owner: studentOwner,
+        repo: repoName,
+        templateOwner,
+        templateRepo,
+        missing
+      });
+      healed = true;
+      result = 'healed';
+    } else {
+      throw new Error(
+        `Repo ${studentOwner}/${repoName} exists but is missing required workflows: ${missing.join(', ')}`
+      );
+    }
+  } else {
+    await client.createFromTemplate({
+      templateOwner,
+      templateRepo,
+      owner: studentOwner,
+      repo: repoName,
+      isPrivate: true
+    });
+    result = 'created';
+  }
+
+  await client.ensureCollaborator({
+    owner: studentOwner,
+    repo: repoName,
+    username: handle,
+    permission
+  });
+
+  // Final verification gate: required workflows must be present.
+  const present = await client.listWorkflowPaths({ owner: studentOwner, repo: repoName });
+  const stillMissing = missingWorkflows(requiredWorkflows, present);
+  if (stillMissing.length > 0) {
+    throw new Error(
+      `Verification failed for ${studentOwner}/${repoName}: missing ${stillMissing.join(', ')}`
+    );
+  }
+
+  let templateSha = null;
+  if (typeof client.getDefaultBranchSha === 'function') {
+    templateSha = await client.getDefaultBranchSha({ owner: studentOwner, repo: repoName });
+  }
+
+  return { result, healed, templateSha };
+}
+
+async function withRateLimitRetry(fn, { maxRetries, sleep, logger }) {
+  let attempt = 0;
+  // eslint-disable-next-line no-constant-condition
+  while (true) {
+    try {
+      return await fn();
+    } catch (err) {
+      if (isSecondaryRateLimit(err) && attempt < maxRetries) {
+        const backoff = Math.min(60000, 1000 * 2 ** attempt);
+        attempt += 1;
+        logger(`Secondary rate limit hit; backing off ${backoff}ms (attempt ${attempt})`);
+        await sleep(backoff);
+        continue;
+      }
+      throw err;
+    }
+  }
+}
+
+function missingWorkflows(required, present) {
+  const have = new Set((present || []).map((p) => String(p).toLowerCase()));
+  return required.filter((w) => !have.has(String(w).toLowerCase()));
+}
+
+function summarize(log) {
+  const summary = {
+    total: log.length,
+    created: 0,
+    already_exists: 0,
+    healed: 0,
+    error: 0
+  };
+  for (const entry of log) {
+    if (entry.result === 'created' || entry.result === 'seeded') summary.created += 1;
+    else if (entry.result === 'already-exists') summary.already_exists += 1;
+    else if (entry.result === 'healed') summary.healed += 1;
+    else if (entry.result === 'error') summary.error += 1;
+  }
+  return summary;
+}
+
+function required(config, key) {
+  if (!config[key]) throw new Error(`provisionRoster config requires "${key}"`);
+  return config[key];
+}
+
+module.exports = {
+  provisionRoster,
+  provisionOne,
+  defaultRepoName,
+  isSecondaryRateLimit,
+  missingWorkflows,
+  summarize
+};

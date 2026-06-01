@@ -1,0 +1,22 @@
+{% extends "base.html" %}
+{% block title %}Facilitator sign in{% endblock %}
+{% block content %}
+<h1>Facilitator sign in</h1>
+<p>Enter your facilitator access token to view the cohort dashboard.</p>
+
+{% if error %}
+<div class="error-summary" role="alert" tabindex="-1">
+  <h2>There is a problem</h2>
+  <p>{{ error }}</p>
+</div>
+{% endif %}
+
+<form method="post" action="{{ url_for('login') }}{% if request.args.get('next') %}?next={{ request.args.get('next') }}{% endif %}" novalidate>
+  <input type="hidden" name="csrf_token" value="{{ csrf_token }}" />
+  <div class="field">
+    <label for="token">Facilitator access token (required)</label>
+    <input type="password" id="token" name="token" autocomplete="current-password" required />
+  </div>
+  <button type="submit">Sign in</button>
+</form>
+{% endblock %}
