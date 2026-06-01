@@ -4,7 +4,8 @@ This is the operator guide for the GitHub-native provisioning subsystem: the own
 replacement for GitHub Classroom described in [golden.md](../golden.md) and specified
 in [SPEC.md](../SPEC.md) sections 6 and 7. It explains the data model, how to run
 provisioning, how to recover from failure, and how the optional Flask companion fits
-in at the edges.
+in at the edges. For first-time setup and deployment, follow the
+[Hybrid Deployment Guide](HYBRID_DEPLOYMENT_GUIDE.md) first.
 
 The whole point of this subsystem is captured in one promise: a vendor sunset is a
 non-event. Provisioning, roster, and progress are owned and reconstructable, so no
