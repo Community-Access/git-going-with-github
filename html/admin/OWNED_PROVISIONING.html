@@ -1,0 +1,300 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="GIT Going with GitHub - A two-day accessible open source workshop by Community Access">
+  <title>Owned, GitHub-native Provisioning - GIT Going with GitHub</title>
+  <link rel="stylesheet" href="./styles/github-markdown.css">
+  <link rel="stylesheet" href="./styles/highlight.css">
+  <link rel="stylesheet" href="./styles/custom.css">
+  <style>
+    .markdown-body {
+      box-sizing: border-box;
+      min-width: 200px;
+      max-width: 980px;
+      margin: 0 auto;
+      padding: 45px;
+    }
+    @media (max-width: 767px) {
+      .markdown-body {
+        padding: 15px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+  <header class="site-header" role="banner">
+    <div class="site-header-inner">
+      <nav aria-label="Breadcrumb" class="breadcrumb">
+        <a href="./index.html">Home</a> <span aria-hidden="true">›</span> <span aria-current="page">Owned, GitHub-native Provisioning</span>
+      </nav>
+      <div class="header-actions">
+        <a href="https://github.com/Community-Access/git-going-with-github/wiki" class="wiki-link" target="_blank" rel="noopener noreferrer">
+          <svg aria-hidden="true" focusable="false" width="16" height="16" viewBox="0 0 16 16" fill="currentColor">
+            <path d="M1.75 1h8.5c.966 0 1.75.784 1.75 1.75v5.5A1.75 1.75 0 0 1 10.25 10H7.06l-2.573 2.573A1.458 1.458 0 0 1 2 11.543V10h-.25A1.75 1.75 0 0 1 0 8.25v-5.5C0 1.784.784 1 1.75 1ZM1.5 2.75v5.5c0 .138.112.25.25.25h1a.75.75 0 0 1 .75.75v2.19l2.72-2.72a.749.749 0 0 1 .53-.22h3.5a.25.25 0 0 0 .25-.25v-5.5a.25.25 0 0 0-.25-.25h-8.5a.25.25 0 0 0-.25.25Zm13 2a.25.25 0 0 0-.25-.25h-.5a.75.75 0 0 1 0-1.5h.5c.966 0 1.75.784 1.75 1.75v5.5A1.75 1.75 0 0 1 14.25 12H14v1.543a1.457 1.457 0 0 1-2.487 1.03L9.22 12.28a.749.749 0 1 1 1.06-1.06l2.22 2.22v-2.19a.75.75 0 0 1 .75-.75h.25a.25.25 0 0 0 .25-.25v-5.5Z"/>
+          </svg>
+          Wiki
+        </a>
+        <form role="search" class="search-form" action="./search.html" method="get">
+        <label for="site-search" class="search-label">Search docs</label>
+        <input
+          type="search"
+          id="site-search"
+          class="search-input"
+          name="q"
+          placeholder="Search docs…"
+          autocomplete="off"
+          aria-label="Search documentation"
+        >
+        <button type="submit" class="search-button" aria-label="Submit search">
+          <svg aria-hidden="true" focusable="false" width="16" height="16" viewBox="0 0 16 16" fill="currentColor">
+            <path d="M10.68 11.74a6 6 0 0 1-7.922-8.982 6 6 0 0 1 8.982 7.922l3.04 3.04a.749.749 0 0 1-.326 1.275.749.749 0 0 1-.734-.215ZM11.5 7a4.499 4.499 0 1 0-8.997 0A4.499 4.499 0 0 0 11.5 7Z"/>
+          </svg>
+        </button>
+      </form>
+      </div>
+    </div>
+  </header>
+  <main id="main-content" class="markdown-body">
+    <h1 id="owned-github-native-provisioning">Owned, GitHub-native Provisioning</h1>
+<p>This is the operator guide for the GitHub-native provisioning subsystem: the owned
+replacement for GitHub Classroom described in <a href="../golden.html">golden.md</a> and specified
+in <a href="../SPEC.html">SPEC.md</a> sections 6 and 7. It explains the data model, how to run
+provisioning, how to recover from failure, and how the optional Flask companion fits
+in at the edges. For first-time setup and deployment, follow the
+<a href="HYBRID_DEPLOYMENT_GUIDE.html">Hybrid Deployment Guide</a> first. To review the whole
+deliverable from one place, see <a href="HYBRID_REVIEW_INDEX.html">HYBRID_REVIEW_INDEX.md</a>.</p>
+<p>The whole point of this subsystem is captured in one promise: a vendor sunset is a
+non-event. Provisioning, roster, and progress are owned and reconstructable, so no
+future change to GitHub Classroom can strand a cohort.</p>
+<h2 id="table-of-contents">Table of contents</h2>
+<ul>
+<li><a href="#why-this-exists">Why this exists</a></li>
+<li><a href="#the-three-owned-sources-of-truth">The three owned sources of truth</a></li>
+<li><a href="#how-provisioning-works">How provisioning works</a></li>
+<li><a href="#one-time-setup">One-time setup</a></li>
+<li><a href="#running-a-cohort">Running a cohort</a></li>
+<li><a href="#idempotency-and-self-healing">Idempotency and self-healing</a></li>
+<li><a href="#failure-modes-and-recovery">Failure modes and recovery</a></li>
+<li><a href="#the-optional-flask-companion">The optional Flask companion</a></li>
+<li><a href="#security-and-least-privilege">Security and least privilege</a></li>
+<li><a href="#local-development-and-testing">Local development and testing</a></li>
+<li><a href="#authoritative-sources">Authoritative Sources</a></li>
+</ul>
+<h2 id="why-this-exists">Why this exists</h2>
+<p>GitHub Classroom does only two things for this workshop: it copies a template
+repository into a per-student private repository, and it maps a GitHub identity to a
+roster entry. Everything else already lives in infrastructure the project controls.
+This subsystem replaces those two things with code we own, so the critical learner
+path no longer depends on a single vendor feature.</p>
+<h2 id="the-three-owned-sources-of-truth">The three owned sources of truth</h2>
+<p>The decoupling contract requires three owned, reconstructable records. See SPEC.md
+section 6 for the full schemas.</p>
+<ol>
+<li><strong>Roster of record.</strong> One canonical JSON document mapping each learner handle to
+cohort, path, provisioning state, and progression status. Lives in the private
+admin repository as <code>roster.json</code>. Schema and validation live in
+<a href="../.github/scripts/provisioning/roster.js">roster.js</a> and
+<a href="../roster.schema.json">roster.schema.json</a>. An example is in
+<a href="examples/roster.example.json">examples/roster.example.json</a>.</li>
+<li><strong>Progress of record.</strong> Never authored by a vendor. Derived from deterministic
+signals the project controls (challenge issue state, PR closing keywords, labels,
+and the plain-text signals <code>ack</code> and <code>day1-complete</code>) by
+<a href="../.github/scripts/provisioning/progress.js">progress.js</a>.</li>
+<li><strong>Provisioning of record.</strong> An append-only log of provisioning attempts and
+outcomes (<code>provisioning-log.json</code>), sufficient to prove a repository is correctly
+seeded and to safely re-run.</li>
+</ol>
+<p>Reconstruction rule: running the idempotent provisioning action against the roster
+reproduces a healthy state for every learner, with no third party involved.</p>
+<h2 id="how-provisioning-works">How provisioning works</h2>
+<p>The provisioning subsystem is plain Node with no third-party dependencies (it uses
+built-in <code>crypto</code> and global <code>fetch</code>). The pieces are:</p>
+<table>
+<thead>
+<tr>
+<th scope="col">File</th>
+<th scope="col">Role</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><a href="../.github/scripts/provisioning/roster.js">roster.js</a></td>
+<td>Owned roster: parse, validate, upsert, serialize, redact</td>
+</tr>
+<tr>
+<td><a href="../.github/scripts/provisioning/progress.js">progress.js</a></td>
+<td>Derive learner status from deterministic signals</td>
+</tr>
+<tr>
+<td><a href="../.github/scripts/provisioning/github-app-auth.js">github-app-auth.js</a></td>
+<td>Sign an App JWT and mint a short-lived installation token</td>
+</tr>
+<tr>
+<td><a href="../.github/scripts/provisioning/github-client.js">github-client.js</a></td>
+<td>Minimal GitHub REST client (fetch or Octokit)</td>
+</tr>
+<tr>
+<td><a href="../.github/scripts/provisioning/provision-core.js">provision-core.js</a></td>
+<td>The idempotent, serial, backoff provisioning algorithm</td>
+</tr>
+<tr>
+<td><a href="../.github/scripts/provisioning/provision-cli.js">provision-cli.js</a></td>
+<td>Standalone runner used by the workflow</td>
+</tr>
+<tr>
+<td><a href="../.github/workflows/provision-learning-rooms.yml">provision-learning-rooms.yml</a></td>
+<td>Scheduled and manual workflow wrapper</td>
+</tr>
+</tbody></table>
+<p>The algorithm (SPEC.md section 7.2b) runs serially with a short delay and exponential
+backoff, not a parallel fan-out, to stay clear of GitHub secondary rate limits. For
+each pending or failed learner it: checks whether the repository exists; creates it
+from the template if not; ensures the learner is a collaborator; verifies the required
+workflow set is present; and records the outcome. Every step is safe to repeat.</p>
+<h2 id="one-time-setup">One-time setup</h2>
+<p>Provisioning supports two modes via the <code>PROVISIONING_MODE</code> variable.</p>
+<h3 id="production-github-app-github-app">Production: GitHub App (<code>github-app</code>)</h3>
+<p>A GitHub App is the production identity because it is not tied to a human account,
+mints short-lived tokens, and uses fine-grained least-privilege permissions.</p>
+<ol>
+<li>Create a GitHub App in the <code>Community-Access</code> organization with only these
+permissions: Repository administration (write), Contents (write), Metadata (read),
+and optionally Issues (write). Nothing more.</li>
+<li>Install the App on the organization, scoped to the template and student repositories.</li>
+<li>Generate a private key (PEM). Store these as repository or environment secrets:<ul>
+<li><code>PROVISIONING_APP_ID</code></li>
+<li><code>PROVISIONING_APP_PRIVATE_KEY</code> (the PEM contents)</li>
+<li><code>PROVISIONING_APP_INSTALLATION_ID</code></li>
+</ul>
+</li>
+<li>Set repository variables:<ul>
+<li><code>PROVISIONING_MODE</code> = <code>github-app</code></li>
+<li><code>LEARNING_ROOM_TEMPLATE_REPO</code> = <code>Community-Access/learning-room-template</code></li>
+<li><code>PROVISIONING_STUDENT_OWNER</code> = <code>Community-Access</code></li>
+<li><code>ADMIN_ROSTER_REPO</code> = the private admin repository holding <code>roster.json</code></li>
+</ul>
+</li>
+<li>Provide <code>PRIVATE_STUDENT_DATA_TOKEN</code>, a token that can check out and push to the
+admin roster repository.</li>
+</ol>
+<h3 id="phase-1-spike-only-actions-bot-actions-bot">Phase 1 spike only: Actions bot (<code>actions-bot</code>)</h3>
+<p>For an early validation spike you may use a least-privilege fine-grained PAT in
+<code>PROVISIONING_TOKEN</code> with <code>PROVISIONING_MODE</code> = <code>actions-bot</code>. Because the downstream
+system cannot tell which mode created a repository, spiking with a PAT and graduating
+to the App loses nothing. Do not use the PAT path for a real cohort: a PAT is bound to
+a person and is a single point of failure.</p>
+<h2 id="running-a-cohort">Running a cohort</h2>
+<p>Provisioning is designed to run as a trickle, on registration, rather than as a
+big-bang on go-live morning. The scheduled workflow picks up newly registered learners
+every 30 minutes; you can also run it on demand.</p>
+<ul>
+<li><strong>Dry run (no changes).</strong> In the Actions tab, run <em>Provision Learning Rooms</em> with
+the <code>dry_run</code> input checked. It lists who would be provisioned.</li>
+<li><strong>Provision.</strong> Run the same workflow with <code>dry_run</code> unchecked. It provisions every
+pending or failed learner, commits the updated <code>roster.json</code> and
+<code>provisioning-log.json</code> back to the admin repository, and prints a summary.</li>
+<li><strong>Local run.</strong> From a checkout of the admin repo:</p>
+<pre><code class="hljs language-bash">LEARNING_ROOM_TEMPLATE_REPO=Community-Access/learning-room-template \
+PROVISIONING_STUDENT_OWNER=Community-Access \
+PROVISIONING_MODE=actions-bot PROVISIONING_TOKEN=*** \
+node .github/scripts/provisioning/provision-cli.js \
+  --roster roster.json --<span class="hljs-built_in">log</span> provisioning-log.json</code></pre>
+<p>Add <code>--dry-run</code> to preview without making changes.</li>
+</ul>
+<h2 id="idempotency-and-self-healing">Idempotency and self-healing</h2>
+<p>The provisioning action is idempotent on <code>(github_handle, cohort_id)</code>:</p>
+<ul>
+<li>Running it twice is safe. An existing, complete repository is recorded as
+<code>already-exists</code> and left untouched.</li>
+<li>A re-run resumes a half-finished batch instead of duplicating work.</li>
+<li>If a repository exists but is missing required workflows, the run heals it (when a
+content-seeding capability is available) or fails loudly so the watchdog and the
+facilitator see it before a learner does.</li>
+</ul>
+<p>Always prove idempotency before go-live by running provisioning twice and confirming
+the second run reports <code>already-exists</code> for healthy learners and makes no changes.</p>
+<h2 id="failure-modes-and-recovery">Failure modes and recovery</h2>
+<table>
+<thead>
+<tr>
+<th scope="col">Symptom</th>
+<th scope="col">What it means</th>
+<th scope="col">Recovery</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>One learner is <code>failed</code> in the roster</td>
+<td>Repo creation or verification failed for that entry</td>
+<td>Fix the cause (seat, permission, name clash), then re-run provisioning. Only pending/failed entries are retried.</td>
+</tr>
+<tr>
+<td><code>provisioning-log.json</code> shows <code>error</code> with a rate-limit detail</td>
+<td>Secondary rate limit during a burst</td>
+<td>Re-run. The algorithm already backs off; idempotency means a re-run heals.</td>
+</tr>
+<tr>
+<td>Repo exists but missing workflows</td>
+<td>Partial seed</td>
+<td>Re-run; the verify gate re-checks and heals or flags.</td>
+</tr>
+<tr>
+<td>App token mint fails</td>
+<td>Bad App ID, key, or installation ID</td>
+<td>Re-check the three App secrets; rotate the private key if exposure is suspected.</td>
+</tr>
+</tbody></table>
+<p>No learner should ever be the first to discover a failure. The watchdog and the
+facilitator find it first.</p>
+<h2 id="the-optional-flask-companion">The optional Flask companion</h2>
+<p>The companion in <a href="../companion/">../companion/</a> is strictly optional and lives at the
+edges. It renders the owned roster more nicely (an accessible registration front door
+and a facilitator dashboard) but never holds state the learner depends on. If it is
+down, the GitHub-native issue-form front door and the admin-issue dashboard carry the
+entire workshop. See <a href="../companion/README.html">../companion/README.md</a>.</p>
+<h2 id="security-and-least-privilege">Security and least privilege</h2>
+<ul>
+<li>Grant only the four App permissions listed above. Anything more fails the security
+review in SPEC.md section 13.</li>
+<li>Store the App ID, installation ID, and private key only in GitHub Secrets. Never in
+code, never in a public repository.</li>
+<li>Mint the installation token at the start of each run and never persist it.</li>
+<li>Document and rehearse private-key rotation; rotate on any suspected exposure.</li>
+<li>The companion authenticates facilitator actions, protects forms with per-session
+CSRF tokens, validates and encodes all input, and sets strict security headers.</li>
+</ul>
+<h2 id="local-development-and-testing">Local development and testing</h2>
+<pre><code class="hljs language-bash"><span class="hljs-comment"># Provisioning subsystem (Node, no install needed)</span>
+npm run <span class="hljs-built_in">test</span>:provisioning
+
+<span class="hljs-comment"># Flask companion (Python)</span>
+<span class="hljs-built_in">cd</span> companion
+python -m venv .venv &amp;&amp; .venv/bin/pip install -r requirements.txt
+.venv/bin/python -m unittest discover -s tests</code></pre>
+<h2 id="authoritative-sources">Authoritative Sources</h2>
+<p>Use these official references when you need the current source of truth for facts in
+this document.</p>
+<ul>
+<li><a href="https://docs.github.com/en/apps/creating-github-apps/authenticating-with-a-github-app/authenticating-as-a-github-app-installation">Authenticating as a GitHub App installation</a></li>
+<li><a href="https://docs.github.com/en/rest/repos/repos#create-a-repository-using-a-template">Generate a repository from a template (REST)</a></li>
+<li><a href="https://docs.github.com/en/rest/using-the-rest-api/rate-limits-for-the-rest-api">Rate limits for the REST API</a></li>
+<li><a href="https://docs.github.com/en/apps/creating-github-apps/registering-a-github-app/choosing-permissions-for-a-github-app">Choosing permissions for a GitHub App</a></li>
+</ul>
+<h3 id="section-level-source-map">Section-Level Source Map</h3>
+<p>Use this map to verify facts for each major section in this file.</p>
+<ul>
+<li><strong>Why this exists, The three owned sources of truth:</strong> <a href="../golden.html">golden.md</a>, <a href="../SPEC.html">SPEC.md</a></li>
+<li><strong>How provisioning works, Idempotency and self-healing:</strong> <a href="https://docs.github.com/en/rest/repos/repos#create-a-repository-using-a-template">Generate a repository from a template (REST)</a>, <a href="https://docs.github.com/en/rest/using-the-rest-api/rate-limits-for-the-rest-api">Rate limits for the REST API</a></li>
+<li><strong>One-time setup, Security and least privilege:</strong> <a href="https://docs.github.com/en/apps/creating-github-apps/authenticating-with-a-github-app/authenticating-as-a-github-app-installation">Authenticating as a GitHub App installation</a>, <a href="https://docs.github.com/en/apps/creating-github-apps/registering-a-github-app/choosing-permissions-for-a-github-app">Choosing permissions for a GitHub App</a></li>
+<li><strong>Running a cohort, Failure modes and recovery, The optional Flask companion, Local development and testing:</strong> <a href="../SPEC.html">SPEC.md</a>, <a href="../golden.html">golden.md</a></li>
+</ul>
+
+  </main>
+  <footer role="contentinfo" class="site-footer">
+    <p><strong>GIT Going with GitHub</strong> - A workshop by <a href="https://community-access.org">Community Access</a></p>
+    <p><a href="https://github.com/community-access/git-going-with-github">View on GitHub</a> · <a href="https://community-access.org">community-access.org</a></p>
+  </footer>
+
+  </body>
+</html>

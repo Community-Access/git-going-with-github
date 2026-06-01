@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="GIT Going with GitHub - A two-day accessible open source workshop by Community Access">
+  <title>GLOW Companion (optional, accessible front door) - GIT Going with GitHub</title>
+  <link rel="stylesheet" href="./styles/github-markdown.css">
+  <link rel="stylesheet" href="./styles/highlight.css">
+  <link rel="stylesheet" href="./styles/custom.css">
+  <style>
+    .markdown-body {
+      box-sizing: border-box;
+      min-width: 200px;
+      max-width: 980px;
+      margin: 0 auto;
+      padding: 45px;
+    }
+    @media (max-width: 767px) {
+      .markdown-body {
+        padding: 15px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+  <header class="site-header" role="banner">
+    <div class="site-header-inner">
+      <nav aria-label="Breadcrumb" class="breadcrumb">
+        <a href="./index.html">Home</a> <span aria-hidden="true">›</span> <span aria-current="page">GLOW Companion (optional, accessible front door)</span>
+      </nav>
+      <div class="header-actions">
+        <a href="https://github.com/Community-Access/git-going-with-github/wiki" class="wiki-link" target="_blank" rel="noopener noreferrer">
+          <svg aria-hidden="true" focusable="false" width="16" height="16" viewBox="0 0 16 16" fill="currentColor">
+            <path d="M1.75 1h8.5c.966 0 1.75.784 1.75 1.75v5.5A1.75 1.75 0 0 1 10.25 10H7.06l-2.573 2.573A1.458 1.458 0 0 1 2 11.543V10h-.25A1.75 1.75 0 0 1 0 8.25v-5.5C0 1.784.784 1 1.75 1ZM1.5 2.75v5.5c0 .138.112.25.25.25h1a.75.75 0 0 1 .75.75v2.19l2.72-2.72a.749.749 0 0 1 .53-.22h3.5a.25.25 0 0 0 .25-.25v-5.5a.25.25 0 0 0-.25-.25h-8.5a.25.25 0 0 0-.25.25Zm13 2a.25.25 0 0 0-.25-.25h-.5a.75.75 0 0 1 0-1.5h.5c.966 0 1.75.784 1.75 1.75v5.5A1.75 1.75 0 0 1 14.25 12H14v1.543a1.457 1.457 0 0 1-2.487 1.03L9.22 12.28a.749.749 0 1 1 1.06-1.06l2.22 2.22v-2.19a.75.75 0 0 1 .75-.75h.25a.25.25 0 0 0 .25-.25v-5.5Z"/>
+          </svg>
+          Wiki
+        </a>
+        <form role="search" class="search-form" action="./search.html" method="get">
+        <label for="site-search" class="search-label">Search docs</label>
+        <input
+          type="search"
+          id="site-search"
+          class="search-input"
+          name="q"
+          placeholder="Search docs…"
+          autocomplete="off"
+          aria-label="Search documentation"
+        >
+        <button type="submit" class="search-button" aria-label="Submit search">
+          <svg aria-hidden="true" focusable="false" width="16" height="16" viewBox="0 0 16 16" fill="currentColor">
+            <path d="M10.68 11.74a6 6 0 0 1-7.922-8.982 6 6 0 0 1 8.982 7.922l3.04 3.04a.749.749 0 0 1-.326 1.275.749.749 0 0 1-.734-.215ZM11.5 7a4.499 4.499 0 1 0-8.997 0A4.499 4.499 0 0 0 11.5 7Z"/>
+          </svg>
+        </button>
+      </form>
+      </div>
+    </div>
+  </header>
+  <main id="main-content" class="markdown-body">
+    <h1 id="glow-companion-optional-accessible-front-door">GLOW Companion (optional, accessible front door)</h1>
+<p>The companion is the optional Flask service that sits at the edges of the Hybrid
+architecture in <a href="../golden.html">golden.md</a> (Option C) and <a href="../SPEC.html">SPEC.md</a>
+section 11. It makes a good thing nicer; it never makes a working thing necessary.</p>
+<p>If this service is ever down, learners can still register and complete the entire
+workshop on GitHub through the issue-form front door, and facilitators can still read
+the admin-issue dashboard. The companion is non-critical by design.</p>
+<h2 id="what-it-provides">What it provides</h2>
+<ul>
+<li>An accessible registration landing page that writes to the owned roster.</li>
+<li>A facilitator cohort dashboard that reads the owned roster and derived progress.</li>
+<li>A redacted <code>roster.json</code> endpoint for facilitator tooling.</li>
+</ul>
+<h2 id="what-it-deliberately-does-not-do">What it deliberately does not do</h2>
+<ul>
+<li>It does not invent a parallel store of record. The only state it touches is the
+owned roster JSON, through the same contract the provisioning subsystem uses.</li>
+<li>It does not provision repositories directly. Provisioning is the GitHub-native
+subsystem&#39;s job (see <a href="../admin/OWNED_PROVISIONING.html">../admin/OWNED_PROVISIONING.md</a>).</li>
+</ul>
+<h2 id="accessibility-wcag-22-aa">Accessibility (WCAG 2.2 AA)</h2>
+<p>Every template is authored screen-reader-first and keyboard-operable:</p>
+<ul>
+<li>Semantic landmarks (<code>header</code>, <code>nav</code>, <code>main</code>, <code>footer</code>) and a visible skip link.</li>
+<li>Correct heading order and labeled form controls with hint and error associations
+via <code>aria-describedby</code> and <code>aria-invalid</code>.</li>
+<li>An error summary with in-page links to each invalid field.</li>
+<li>Live-region announcements for flash messages (<code>role=&quot;status&quot;</code>, <code>aria-live</code>).</li>
+<li>Visible focus styles and no keyboard traps.</li>
+<li>No information conveyed by color alone; no emoji.</li>
+<li>A data table with a <code>caption</code>, <code>scope</code>-d headers, and an intro sentence.</li>
+</ul>
+<p>Run a manual screen reader pass (NVDA, JAWS, VoiceOver) before any cohort, per the
+project accessibility testing guidance.</p>
+<h2 id="security-owasp-aware">Security (OWASP-aware)</h2>
+<ul>
+<li>Output is auto-escaped by Jinja2.</li>
+<li>Per-session CSRF tokens protect every state-changing POST.</li>
+<li>Facilitator actions require sign-in; the token is compared in constant time.</li>
+<li>Input is validated (GitHub handle regex, cohort, path enum) before any write.</li>
+<li>Best-effort per-IP rate limiting on registration and sign-in.</li>
+<li>Strict security headers: a restrictive <code>Content-Security-Policy</code> (no inline
+scripts), <code>X-Content-Type-Options</code>, <code>X-Frame-Options</code>, and <code>Referrer-Policy</code>.</li>
+<li>Secrets come only from the environment; cookies are <code>HttpOnly</code>, <code>SameSite=Lax</code>,
+and <code>Secure</code> by default.</li>
+</ul>
+<h2 id="configuration">Configuration</h2>
+<p>All configuration is environment-driven:</p>
+<table>
+<thead>
+<tr>
+<th scope="col">Variable</th>
+<th scope="col">Purpose</th>
+<th scope="col">Default</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>COMPANION_SECRET_KEY</code></td>
+<td>Flask session signing key</td>
+<td>random per process (set this in production)</td>
+</tr>
+<tr>
+<td><code>COMPANION_ROSTER_PATH</code></td>
+<td>Path to the owned <code>roster.json</code></td>
+<td><code>roster.json</code></td>
+</tr>
+<tr>
+<td><code>COMPANION_FACILITATOR_TOKEN</code></td>
+<td>Facilitator sign-in token</td>
+<td>empty (dashboard locked until set)</td>
+</tr>
+<tr>
+<td><code>COMPANION_SECURE_COOKIES</code></td>
+<td>Set <code>0</code> only for local HTTP testing</td>
+<td><code>1</code></td>
+</tr>
+<tr>
+<td><code>COMPANION_RATE_LIMIT_MAX</code></td>
+<td>Requests per window per IP</td>
+<td><code>10</code></td>
+</tr>
+<tr>
+<td><code>COMPANION_RATE_LIMIT_WINDOW</code></td>
+<td>Rate-limit window in seconds</td>
+<td><code>300</code></td>
+</tr>
+<tr>
+<td><code>PORT</code></td>
+<td>Port for the built-in dev server</td>
+<td><code>5000</code></td>
+</tr>
+</tbody></table>
+<h2 id="run-locally">Run locally</h2>
+<pre><code class="hljs language-bash"><span class="hljs-built_in">cd</span> companion
+python -m venv .venv
+.venv/bin/pip install -r requirements.txt    <span class="hljs-comment"># Windows: .venv\Scripts\pip install -r requirements.txt</span>
+
+<span class="hljs-built_in">export</span> COMPANION_SECRET_KEY=<span class="hljs-string">&quot;dev-only-not-a-real-secret&quot;</span>
+<span class="hljs-built_in">export</span> COMPANION_FACILITATOR_TOKEN=<span class="hljs-string">&quot;dev-token&quot;</span>
+<span class="hljs-built_in">export</span> COMPANION_SECURE_COOKIES=0
+<span class="hljs-built_in">export</span> COMPANION_ROSTER_PATH=<span class="hljs-string">&quot;../admin/examples/roster.example.json&quot;</span>
+
+.venv/bin/python app.py
+<span class="hljs-comment"># Visit http://127.0.0.1:5000/</span></code></pre>
+<p>For production, serve <code>app:app</code> behind a WSGI server (for example gunicorn) and a
+TLS-terminating reverse proxy, set a strong <code>COMPANION_SECRET_KEY</code>, and point
+<code>COMPANION_ROSTER_PATH</code> at a working copy of the admin roster that a separate job
+commits back to the admin repository.</p>
+<h2 id="test">Test</h2>
+<pre><code class="hljs language-bash"><span class="hljs-built_in">cd</span> companion
+.venv/bin/python -m unittest discover -s tests</code></pre>
+<p>The suite covers routing, CSRF enforcement, input validation, facilitator auth,
+rate limiting, roster redaction, and the accessible page shell.</p>
+<h2 id="routes">Routes</h2>
+<table>
+<thead>
+<tr>
+<th scope="col">Method</th>
+<th scope="col">Path</th>
+<th scope="col">Auth</th>
+<th scope="col">Purpose</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>GET</td>
+<td><code>/</code></td>
+<td>none</td>
+<td>Redirects to <code>/register</code></td>
+</tr>
+<tr>
+<td>GET, POST</td>
+<td><code>/register</code></td>
+<td>none</td>
+<td>Accessible registration form; writes the roster</td>
+</tr>
+<tr>
+<td>GET</td>
+<td><code>/register/success</code></td>
+<td>none</td>
+<td>Confirmation and next steps</td>
+</tr>
+<tr>
+<td>GET, POST</td>
+<td><code>/login</code></td>
+<td>none</td>
+<td>Facilitator sign-in</td>
+</tr>
+<tr>
+<td>POST</td>
+<td><code>/logout</code></td>
+<td>session</td>
+<td>Sign out</td>
+</tr>
+<tr>
+<td>GET</td>
+<td><code>/dashboard</code></td>
+<td>facilitator</td>
+<td>Cohort dashboard</td>
+</tr>
+<tr>
+<td>GET</td>
+<td><code>/roster.json</code></td>
+<td>facilitator</td>
+<td>Redacted roster JSON</td>
+</tr>
+<tr>
+<td>GET</td>
+<td><code>/healthz</code></td>
+<td>none</td>
+<td>Liveness probe</td>
+</tr>
+</tbody></table>
+
+  </main>
+  <footer role="contentinfo" class="site-footer">
+    <p><strong>GIT Going with GitHub</strong> - A workshop by <a href="https://community-access.org">Community Access</a></p>
+    <p><a href="https://github.com/community-access/git-going-with-github">View on GitHub</a> · <a href="https://community-access.org">community-access.org</a></p>
+  </footer>
+
+  </body>
+</html>

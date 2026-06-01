@@ -1,0 +1,914 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="GIT Going with GitHub - A two-day accessible open source workshop by Community Access">
+  <title>SPEC.md - GIT Going with GitHub</title>
+  <link rel="stylesheet" href="./styles/github-markdown.css">
+  <link rel="stylesheet" href="./styles/highlight.css">
+  <link rel="stylesheet" href="./styles/custom.css">
+  <style>
+    .markdown-body {
+      box-sizing: border-box;
+      min-width: 200px;
+      max-width: 980px;
+      margin: 0 auto;
+      padding: 45px;
+    }
+    @media (max-width: 767px) {
+      .markdown-body {
+        padding: 15px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+  <header class="site-header" role="banner">
+    <div class="site-header-inner">
+      <nav aria-label="Breadcrumb" class="breadcrumb">
+        <a href="./index.html">Home</a> <span aria-hidden="true">›</span> <span aria-current="page">SPEC.md</span>
+      </nav>
+      <div class="header-actions">
+        <a href="https://github.com/Community-Access/git-going-with-github/wiki" class="wiki-link" target="_blank" rel="noopener noreferrer">
+          <svg aria-hidden="true" focusable="false" width="16" height="16" viewBox="0 0 16 16" fill="currentColor">
+            <path d="M1.75 1h8.5c.966 0 1.75.784 1.75 1.75v5.5A1.75 1.75 0 0 1 10.25 10H7.06l-2.573 2.573A1.458 1.458 0 0 1 2 11.543V10h-.25A1.75 1.75 0 0 1 0 8.25v-5.5C0 1.784.784 1 1.75 1ZM1.5 2.75v5.5c0 .138.112.25.25.25h1a.75.75 0 0 1 .75.75v2.19l2.72-2.72a.749.749 0 0 1 .53-.22h3.5a.25.25 0 0 0 .25-.25v-5.5a.25.25 0 0 0-.25-.25h-8.5a.25.25 0 0 0-.25.25Zm13 2a.25.25 0 0 0-.25-.25h-.5a.75.75 0 0 1 0-1.5h.5c.966 0 1.75.784 1.75 1.75v5.5A1.75 1.75 0 0 1 14.25 12H14v1.543a1.457 1.457 0 0 1-2.487 1.03L9.22 12.28a.749.749 0 1 1 1.06-1.06l2.22 2.22v-2.19a.75.75 0 0 1 .75-.75h.25a.25.25 0 0 0 .25-.25v-5.5Z"/>
+          </svg>
+          Wiki
+        </a>
+        <form role="search" class="search-form" action="./search.html" method="get">
+        <label for="site-search" class="search-label">Search docs</label>
+        <input
+          type="search"
+          id="site-search"
+          class="search-input"
+          name="q"
+          placeholder="Search docs…"
+          autocomplete="off"
+          aria-label="Search documentation"
+        >
+        <button type="submit" class="search-button" aria-label="Submit search">
+          <svg aria-hidden="true" focusable="false" width="16" height="16" viewBox="0 0 16 16" fill="currentColor">
+            <path d="M10.68 11.74a6 6 0 0 1-7.922-8.982 6 6 0 0 1 8.982 7.922l3.04 3.04a.749.749 0 0 1-.326 1.275.749.749 0 0 1-.734-.215ZM11.5 7a4.499 4.499 0 1 0-8.997 0A4.499 4.499 0 0 0 11.5 7Z"/>
+          </svg>
+        </button>
+      </form>
+      </div>
+    </div>
+  </header>
+  <main id="main-content" class="markdown-body">
+    <h1 id="specmd">SPEC.md</h1>
+<p>Complete project specification for GIT Going with GitHub (GLOW). This is the technical source of truth: what the system is, what every component does, how data and state flow, the interfaces between parts, and the requirements every piece must meet. It implements the vision in <a href="golden.html">golden.md</a>. Where this spec and reality disagree, fix one of them and note it here.</p>
+<h2 id="table-of-contents">Table of contents</h2>
+<ul>
+<li><a href="#1-overview">1. Overview</a></li>
+<li><a href="#2-goals-and-non-goals">2. Goals and non-goals</a></li>
+<li><a href="#3-personas-and-primary-journeys">3. Personas and primary journeys</a></li>
+<li><a href="#4-system-architecture">4. System architecture</a></li>
+<li><a href="#5-component-catalog">5. Component catalog</a></li>
+<li><a href="#6-data-model-and-state-of-record">6. Data model and state of record</a></li>
+<li><a href="#7-provisioning-subsystem-the-classroom-replacement">7. Provisioning subsystem (the Classroom replacement)</a></li>
+<li><a href="#8-automation-contracts">8. Automation contracts</a></li>
+<li><a href="#9-curriculum-subsystem">9. Curriculum subsystem</a></li>
+<li><a href="#10-content-pipeline-docs-html-epub-audio">10. Content pipeline: docs, HTML, EPUB, audio</a></li>
+<li><a href="#11-optional-flask-companion">11. Optional Flask companion</a></li>
+<li><a href="#12-accessibility-requirements">12. Accessibility requirements</a></li>
+<li><a href="#13-security-requirements">13. Security requirements</a></li>
+<li><a href="#14-reliability-observability-and-recovery">14. Reliability, observability, and recovery</a></li>
+<li><a href="#15-testing-and-quality-strategy">15. Testing and quality strategy</a></li>
+<li><a href="#16-configuration-surface">16. Configuration surface</a></li>
+<li><a href="#17-repository-layout">17. Repository layout</a></li>
+<li><a href="#18-migration-plan-from-classroom-to-owned-provisioning">18. Migration plan: from Classroom to owned provisioning</a></li>
+<li><a href="#19-acceptance-criteria">19. Acceptance criteria</a></li>
+<li><a href="#20-open-questions">20. Open questions</a></li>
+</ul>
+<h2 id="1-overview">1. Overview</h2>
+<p>GLOW is a two-day, accessibility-first workshop that teaches blind and low vision technologists to navigate and contribute to open source on GitHub using a screen reader and keyboard alone. It is delivered as:</p>
+<ul>
+<li>A <strong>curriculum</strong> of 22 chapters plus appendices in <a href="docs/">docs/</a>, published to HTML, EPUB, and an audio podcast series.</li>
+<li>A <strong>Learning Room</strong>: a per-student private repository, created from a template, that drives 16 core challenges plus 5 bonus challenges through GitHub-native automation (a PR validation bot named Gandalf, a Student Progression Bot, and a suite of autograders).</li>
+<li>A <strong>registration and cohort system</strong> that intakes learners, provisions their Learning Room, releases Day 2 content, and gives facilitators a live status dashboard.</li>
+</ul>
+<p>The current production system depends on GitHub Classroom for provisioning. This spec defines both the present system and the target system in which Classroom is replaced by owned, GitHub-native provisioning, per <a href="golden.html">golden.md</a>.</p>
+<h2 id="2-goals-and-non-goals">2. Goals and non-goals</h2>
+<h3 id="goals">Goals</h3>
+<ul>
+<li>A learner completes the full arc from first GitHub navigation to a real, review-ready open source contribution.</li>
+<li>Every learner-facing surface is fully operable with NVDA, JAWS, and VoiceOver, by keyboard alone.</li>
+<li>Provisioning, roster, and progress are owned and reconstructable, with no single vendor as a point of failure.</li>
+<li>Facilitators can open a cohort, run it, and recover from any failure using documented runbooks.</li>
+<li>The system degrades gracefully: every automated step has a manual fallback.</li>
+</ul>
+<h3 id="non-goals">Non-goals</h3>
+<ul>
+<li>Email delivery is not a dependency. All flows complete using the GitHub web notification inbox.</li>
+<li>The system does not require learners to join an organization, hold a paid plan, or change Actions settings.</li>
+<li>The system does not aim to replace VS Code, Copilot, or GitHub itself; it teaches their accessible use.</li>
+<li>Real-time chat, grading-for-credit, and LMS integration are out of scope.</li>
+</ul>
+<h2 id="3-personas-and-primary-journeys">3. Personas and primary journeys</h2>
+<h3 id="personas">Personas</h3>
+<ul>
+<li><strong>Learner.</strong> New-to-GitHub, uses assistive technology, may not code. Needs belonging, clarity, and a forgiving path.</li>
+<li><strong>Facilitator.</strong> Runs a cohort, seeds challenges, monitors progress, recovers stuck learners.</li>
+<li><strong>Maintainer.</strong> Owns the curriculum, automation, content pipeline, and this spec.</li>
+</ul>
+<h3 id="primary-learner-journey">Primary learner journey</h3>
+<ol>
+<li>Register through an accessible front door (Flask companion, GitHub Pages form, or issue form fallback).</li>
+<li>Receive a provisioned private Learning Room repository.</li>
+<li>Acknowledge readiness (<code>ack</code>), complete Day 1 challenges, signal <code>day1-complete</code>.</li>
+<li>Receive Day 2 release, complete Day 2 challenges and the capstone.</li>
+<li>Open or prepare a real upstream contribution; continue asynchronously with support hub access.</li>
+</ol>
+<h3 id="primary-facilitator-journey">Primary facilitator journey</h3>
+<ol>
+<li>Sync and validate the Learning Room template.</li>
+<li>Open a cohort; provisioning creates student repositories.</li>
+<li>Seed Challenge 1 (and Challenge 10 for Day 2) per student.</li>
+<li>Monitor the dashboard; intervene on watchdog alerts.</li>
+<li>Run teardown after the cohort.</li>
+</ol>
+<h2 id="4-system-architecture">4. System architecture</h2>
+<p>The architecture separates a dependable GitHub-native core (the critical learner path) from an optional companion at the edges. The companion can vanish without breaking any learner.</p>
+<pre><code class="hljs language-text">                         ACCESSIBLE FRONT DOOR
+        (Flask companion  OR  GitHub Pages form  OR  issue form fallback)
+                                   |
+                                   v
+                        REGISTRATION + ROSTER (owned)
+              private admin repo roster record  &lt;----+ companion mirror (optional)
+                                   |
+                                   v
+                   PROVISIONING SUBSYSTEM (GitHub-native)
+        idempotent action: template ----&gt; per-student private Learning Room repo
+                                   |
+                                   v
+                          THE LEARNING ROOM (per student)
+   Gandalf (PR bot) | Student Progression Bot | Autograders | Challenge issues
+                                   |
+                                   v
+              PROGRESSION + DAY 2 RELEASE (deterministic text signals)
+                                   |
+                                   v
+                  FACILITATOR DASHBOARD (admin issues  +  optional companion view)</code></pre>
+<p>Architectural rules:</p>
+<ul>
+<li>The critical path (front door fallback, provisioning, Learning Room, progression, release) runs entirely on GitHub.</li>
+<li>The companion only ever renders owned state more nicely; it never holds state the learner depends on.</li>
+<li>Each arrow is a documented contract (Section 8) with a manual fallback.</li>
+</ul>
+<h2 id="5-component-catalog">5. Component catalog</h2>
+<p>This table is the index of moving parts. Each component has an owner, a trigger, and a fallback.</p>
+<table>
+<thead>
+<tr>
+<th scope="col">Component</th>
+<th scope="col">Location</th>
+<th scope="col">Trigger</th>
+<th scope="col">Responsibility</th>
+<th scope="col">Manual fallback</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Registration workflow</td>
+<td><a href=".github/workflows/registration.yml">.github/workflows/registration.yml</a></td>
+<td>Registration issue opened</td>
+<td>Validate, redact, label, store intake, post links</td>
+<td>Facilitator labels and replies by hand</td>
+</tr>
+<tr>
+<td>Day 2 release</td>
+<td><a href=".github/workflows/day2-release.yml">.github/workflows/day2-release.yml</a></td>
+<td>Schedule, dispatch</td>
+<td>Post Day 2 link when <code>day1-complete</code> signal present</td>
+<td>Facilitator posts Day 2 link</td>
+</tr>
+<tr>
+<td>Dashboard sync</td>
+<td><a href=".github/workflows/instructor-dashboard-sync.yml">.github/workflows/instructor-dashboard-sync.yml</a></td>
+<td>Schedule, events</td>
+<td>Upsert per-student status issue in admin repo</td>
+<td>Facilitator reads enrollment issues</td>
+</tr>
+<tr>
+<td>Student grouping</td>
+<td><a href=".github/workflows/student-grouping.yml">.github/workflows/student-grouping.yml</a></td>
+<td>Schedule, dispatch</td>
+<td>Cohort grouping support</td>
+<td>Manual roster grouping</td>
+</tr>
+<tr>
+<td>Skills progression</td>
+<td><a href=".github/workflows/skills-progression.yml">.github/workflows/skills-progression.yml</a></td>
+<td>Issue events</td>
+<td>Track skills progression</td>
+<td>Manual tracking</td>
+</tr>
+<tr>
+<td>Learning Room validation</td>
+<td><a href=".github/workflows/learning-room-validation.yml">.github/workflows/learning-room-validation.yml</a></td>
+<td>PR, dispatch</td>
+<td>Validate template integrity</td>
+<td>Manual template review</td>
+</tr>
+<tr>
+<td>Authoritative sources validation</td>
+<td><a href=".github/workflows/validate-authoritative-sources.yml">.github/workflows/validate-authoritative-sources.yml</a></td>
+<td>PR</td>
+<td>Enforce source maps in content</td>
+<td>Run validator script locally</td>
+</tr>
+<tr>
+<td>Gandalf (PR bot)</td>
+<td><a href="learning-room/.github/workflows/pr-validation-bot.yml">learning-room/.github/workflows/pr-validation-bot.yml</a></td>
+<td>PR events, comments</td>
+<td>Welcome, validate PR, answer help</td>
+<td>Facilitator comments</td>
+</tr>
+<tr>
+<td>Student Progression Bot</td>
+<td><a href="learning-room/.github/workflows/student-progression.yml">learning-room/.github/workflows/student-progression.yml</a></td>
+<td>Issue closed, dispatch</td>
+<td>Create next challenge issue</td>
+<td>Dispatch with <code>start_challenge</code></td>
+</tr>
+<tr>
+<td>Autograders (8)</td>
+<td><a href="learning-room/.github/workflows/">learning-room/.github/workflows/autograder-*.yml</a></td>
+<td>Issue, PR, push, schedule</td>
+<td>Verify objective challenge evidence</td>
+<td>Facilitator verifies manually</td>
+</tr>
+<tr>
+<td>Content validation</td>
+<td><a href="learning-room/.github/workflows/content-validation.yml">learning-room/.github/workflows/content-validation.yml</a></td>
+<td>PR</td>
+<td>Validate student content edits</td>
+<td>Manual review</td>
+</tr>
+<tr>
+<td>Provisioning action (target)</td>
+<td>new, GitHub App or Actions bot</td>
+<td>Roster entry created</td>
+<td>Create and seed Learning Room repo idempotently</td>
+<td>Classroom invite during transition</td>
+</tr>
+<tr>
+<td>Content pipeline</td>
+<td><a href=".github/workflows/">.github/workflows/</a> build-* and deploy-*</td>
+<td>Push, dispatch</td>
+<td>Build HTML, EPUB, diagrams, Pages</td>
+<td>Run build scripts locally</td>
+</tr>
+<tr>
+<td>Flask companion (optional)</td>
+<td>new service</td>
+<td>HTTP</td>
+<td>Accessible front door and dashboard</td>
+<td>GitHub Pages form and admin issues</td>
+</tr>
+</tbody></table>
+<h3 id="the-three-learning-room-automation-systems">The three Learning Room automation systems</h3>
+<ul>
+<li><strong>Gandalf (PR Validation Bot).</strong> Welcomes first-time contributors, validates PR structure, responds to help requests, posts real-time feedback on every push. Idempotent comment updates keyed by a marker string so it never spams a thread.</li>
+<li><strong>Student Progression Bot.</strong> On close of a <code>Challenge N</code> issue, creates the next challenge issue; on <code>workflow_dispatch</code> with <code>start_challenge</code>, seeds a specific challenge. Concurrency-guarded per issue. See <a href="learning-room/.github/scripts/challenge-progression.js">challenge-progression.js</a>.</li>
+<li><strong>Autograders.</strong> Eight workflows verifying objective evidence: issue filed, branch commit, PR link, merge conflicts resolved, local commit, template validity, capstone, and a watchdog. Each posts a single, kind, idempotent pass or fail comment and a separate error notice on workflow failure so the learner is never blamed for infrastructure faults.</li>
+</ul>
+<h2 id="6-data-model-and-state-of-record">6. Data model and state of record</h2>
+<p>The decoupling contract from <a href="golden.html">golden.md</a> requires three owned, reconstructable sources of truth. This section defines their schemas.</p>
+<h3 id="61-roster-of-record">6.1 Roster of record</h3>
+<p>Canonical store: one record per learner in the private admin repository (optionally mirrored by the companion). Logical schema:</p>
+<table>
+<thead>
+<tr>
+<th scope="col">Field</th>
+<th scope="col">Type</th>
+<th scope="col">Notes</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>github_handle</code></td>
+<td>string</td>
+<td>Primary identity key</td>
+</tr>
+<tr>
+<td><code>cohort_id</code></td>
+<td>string</td>
+<td>Cohort the learner belongs to</td>
+</tr>
+<tr>
+<td><code>path</code></td>
+<td>enum</td>
+<td><code>day1-day2</code> or <code>day2-only</code></td>
+</tr>
+<tr>
+<td><code>learning_room_repo</code></td>
+<td>string</td>
+<td>Owner/name of provisioned repo, null until provisioned</td>
+</tr>
+<tr>
+<td><code>provision_state</code></td>
+<td>enum</td>
+<td><code>pending</code>, <code>provisioned</code>, <code>failed</code>, <code>healed</code></td>
+</tr>
+<tr>
+<td><code>status</code></td>
+<td>enum</td>
+<td><code>awaiting-ack</code>, <code>active-day1</code>, <code>day1-complete</code>, <code>day2-released</code>, <code>needs-info</code></td>
+</tr>
+<tr>
+<td><code>registered_at</code></td>
+<td>timestamp</td>
+<td>Intake time</td>
+</tr>
+<tr>
+<td><code>last_signal_at</code></td>
+<td>timestamp</td>
+<td>Last deterministic signal observed</td>
+</tr>
+<tr>
+<td><code>notes</code></td>
+<td>string</td>
+<td>Facilitator notes, redacted in any public surface</td>
+</tr>
+</tbody></table>
+<p>Reconstruction rule: the roster can be rebuilt from registration issues plus provisioning results without any third party.</p>
+<h3 id="62-progress-of-record">6.2 Progress of record</h3>
+<p>Derived, never authored by a vendor. Progress is computed from signals the project controls:</p>
+<ul>
+<li>Challenge issue state (open or closed) and titles (<code>Challenge N</code>).</li>
+<li>PR state and closing-keyword links (<code>Closes #N</code>).</li>
+<li>Labels (<code>enrolled</code>, <code>day1-complete</code>, <code>day2-eligible</code>, <code>day2-released</code>).</li>
+<li>Deterministic text signals in comments: <code>ack</code>, <code>day1-complete</code>.</li>
+</ul>
+<p>Reconstruction rule: re-derivable by replaying issue and PR events in the student repository.</p>
+<h3 id="63-provisioning-of-record">6.3 Provisioning of record</h3>
+<p>A log of provisioning attempts and outcomes per learner, sufficient to prove a repository is correctly seeded and to safely re-run. Fields: <code>github_handle</code>, <code>attempt_at</code>, <code>result</code> (<code>created</code>, <code>already-exists</code>, <code>seeded</code>, <code>healed</code>, <code>error</code>), <code>repo</code>, <code>template_sha</code>, <code>error_detail</code>.</p>
+<p>Reconstruction rule: running the idempotent provisioning action against the roster reproduces a healthy state for every learner.</p>
+<h2 id="7-provisioning-subsystem-the-classroom-replacement">7. Provisioning subsystem (the Classroom replacement)</h2>
+<p>This is the only piece that fundamentally changes when Classroom departs. Everything downstream is unchanged because the resulting student repository is byte-shaped identically to a Classroom-created one.</p>
+<h3 id="71-responsibilities">7.1 Responsibilities</h3>
+<ol>
+<li>Given a roster entry, create a private repository from <code>Community-Access/learning-room-template</code>.</li>
+<li>Grant the learner access.</li>
+<li>Confirm all required automation files are present (the workflow set listed in the go-live gate).</li>
+<li>Record the outcome in the provisioning log.</li>
+<li>Be idempotent: re-running heals partial failures and never corrupts an existing repository.</li>
+</ol>
+<h3 id="72-implementation-options-and-decision">7.2 Implementation options and decision</h3>
+<ul>
+<li><strong>Option A, GitHub App (decided for production).</strong> A GitHub App with least-privilege permissions (repository administration to create, contents to seed, metadata). Scoped, auditable, installable, and not tied to any human account.</li>
+<li><strong>Option B, Actions bot (Phase 1 spike only).</strong> A scheduled or dispatched workflow in the admin repo using a least-privilege fine-grained token with repo-creation scope. Faster to stand up; acceptable only as a throwaway validation of seeding logic, then discarded.</li>
+</ul>
+<p>Both must implement the same internal contract so the method is swappable via <code>PROVISIONING_MODE</code>.</p>
+<p><strong>Decision: build the GitHub App for production; use the PAT path only as an optional Phase 1 spike.</strong> The deciding factor is not rate limits or convenience, it is the first principle in <a href="golden.html">golden.md</a>: never let a single point of failure hold a cohort hostage. A PAT is bound to a facilitator&#39;s account, so that person leaving, resetting credentials, or changing 2FA can break provisioning. The App&#39;s properties (not tied to a human, short-lived installation tokens, fine-grained least-privilege) are the literal embodiment of the golden vision, and the extra one-time setup is small.</p>
+<p>The pros and cons that drove the decision:</p>
+<table>
+<thead>
+<tr>
+<th scope="col">Factor</th>
+<th scope="col">GitHub App</th>
+<th scope="col">Actions bot (PAT)</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Identity</td>
+<td>Purpose-built, survives staff change</td>
+<td>Bound to a human account, single point of failure</td>
+</tr>
+<tr>
+<td>Token lifetime</td>
+<td>Short-lived installation token (~1 hour), minted on demand</td>
+<td>Long-lived (months); larger leak blast radius</td>
+</tr>
+<tr>
+<td>Permission granularity</td>
+<td>Fine-grained (Administration, Contents, Metadata only)</td>
+<td>Account-level even when fine-grained</td>
+</tr>
+<tr>
+<td>Rate limit ceiling</td>
+<td>Scales with org (floor 5,000/hour, scaling up)</td>
+<td>Flat 5,000/hour</td>
+</tr>
+<tr>
+<td>Audit trail</td>
+<td>Clean App identity per action</td>
+<td>Everything looks like the token owner</td>
+</tr>
+<tr>
+<td>Setup cost</td>
+<td>~30 to 60 minutes one-time (App, App ID, PEM secret, token mint step)</td>
+<td>Fastest; afternoon prototype</td>
+</tr>
+<tr>
+<td>Key custody</td>
+<td>Holds a signing key; must be in Secrets and rotatable</td>
+<td>One token to store and rotate</td>
+</tr>
+</tbody></table>
+<p>Because the downstream system cannot tell which mode created a repository, spiking with a PAT first and graduating to the App loses nothing.</p>
+<h3 id="72a-github-app-permission-set">7.2a GitHub App permission set</h3>
+<p>Grant only these. Anything beyond this list is over-privileged and fails the security review in Section 13.</p>
+<table>
+<thead>
+<tr>
+<th scope="col">Permission</th>
+<th scope="col">Level</th>
+<th scope="col">Why</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Repository administration</td>
+<td>Write</td>
+<td>Create the per-student private repository from the template</td>
+</tr>
+<tr>
+<td>Contents</td>
+<td>Write</td>
+<td>Seed and heal repository content (workflows, issue templates)</td>
+</tr>
+<tr>
+<td>Metadata</td>
+<td>Read</td>
+<td>Mandatory baseline for any App</td>
+</tr>
+<tr>
+<td>Issues</td>
+<td>Write</td>
+<td>Seed the first challenge issue and provisioning status (optional; can defer to the Progression Bot)</td>
+</tr>
+</tbody></table>
+<p>App configuration rules:</p>
+<ul>
+<li>Install the App only on the <code>Community-Access</code> organization, scoped to the template and student repositories.</li>
+<li>Store <code>PROVISIONING_APP_ID</code> and <code>PROVISIONING_APP_PRIVATE_KEY</code> in GitHub Secrets; never in code or public repos.</li>
+<li>Mint a short-lived installation token at the start of each provisioning run; never persist it.</li>
+<li>Document a private-key rotation procedure and rotate on any suspected exposure.</li>
+</ul>
+<h3 id="72b-provisioning-algorithm-idempotent-serial">7.2b Provisioning algorithm (idempotent, serial)</h3>
+<p>Provisioning runs serially with a small delay and exponential backoff, not parallel fan-out, to stay clear of GitHub secondary (abuse) rate limits on content-creating requests. The algorithm is idempotent on <code>(github_handle, cohort_id)</code>, so a re-run resumes a half-finished batch instead of duplicating or corrupting work.</p>
+<pre><code class="hljs language-text">for each roster entry where provision_state in (pending, failed):
+    key = (github_handle, cohort_id)
+    expected_repo = name_for(key)
+
+    1. If expected_repo already exists:
+         - Verify required workflow files and template SHA.
+         - If complete: mark provisioned (or healed), log already-exists, continue.
+         - If incomplete: re-seed missing files, mark healed, log healed.
+       Else:
+         - Create private repo from template at the pinned template SHA.
+         - Log created.
+
+    2. Grant the learner access (idempotent; skip if already granted).
+
+    3. Seed required content if not already present
+       (workflows, issue templates). Log seeded.
+
+    4. Verify required workflow set is present (go-live gate list).
+         - On success: provision_state = provisioned (or healed).
+         - On failure: provision_state = failed, write error_detail,
+           surface to watchdog. Do NOT leave a half-seeded repo silently.
+
+    5. Wait a short delay (1 to a few seconds) before the next entry.
+       On HTTP 403/429 (secondary limit), back off exponentially and retry
+       the same entry; never skip it.</code></pre>
+<p>Invariants: at-most-one repository per key; pinned template SHA; learner has access; required workflows present; every outcome written to the provisioning log; any failure visible to a human before a learner notices.</p>
+<h3 id="73-provisioning-contract">7.3 Provisioning contract</h3>
+<ul>
+<li>Input: roster entry (<code>github_handle</code>, <code>cohort_id</code>, <code>path</code>).</li>
+<li>Output: <code>learning_room_repo</code>, <code>provision_state</code>, provisioning log entry.</li>
+<li>Idempotency key: <code>(github_handle, cohort_id)</code>.</li>
+<li>Guarantees: at-most-one repository per key; correct template SHA; learner has access; required workflows present.</li>
+<li>Failure behavior: on any error, set <code>provision_state = failed</code>, write <code>error_detail</code>, and surface to the watchdog. Never leave a half-seeded repo silently.</li>
+</ul>
+<h3 id="74-rate-and-scale-considerations">7.4 Rate and scale considerations</h3>
+<p>For any realistic size of this workshop, documented hourly rate limits are a non-issue. The real risk is GitHub secondary (abuse) rate limits, which trigger on bursts of content-creating requests fired in parallel. The serial-with-delay-and-backoff algorithm in Section 7.2b avoids them, and idempotency means hitting a limit just means run it again, it heals.</p>
+<p><strong>Design target: 1 to 100 learners.</strong> That is what a high-touch, accessibility-first, facilitator-led workshop actually is. A cohort large enough to hit real rate limits would also be too large to run with the recover-every-stuck-learner quality bar that defines this project. The constraint that bites first is facilitator attention, not API quota.</p>
+<p>This table is the planning guidance by cohort size.</p>
+<table>
+<thead>
+<tr>
+<th scope="col">Cohort size</th>
+<th scope="col">Reality</th>
+<th scope="col">What to do</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>1 to 30 (likely case)</td>
+<td>Trivial; serial creation finishes in minutes</td>
+<td>Serial loop, 1 to 2 second delay, backoff on error</td>
+</tr>
+<tr>
+<td>30 to 100</td>
+<td>Comfortable within an hour</td>
+<td>Same pattern; rely on idempotent re-run to heal mid-batch failures</td>
+</tr>
+<tr>
+<td>100 to 300</td>
+<td>Approaching where bursting would trip secondary limits</td>
+<td>Throttle to a steady rate, chunk the batch, resume via idempotency; the App ceiling helps</td>
+</tr>
+<tr>
+<td>300+</td>
+<td>Plan deliberately</td>
+<td>Stagger provisioning over time windows, pre-flight seat and quota checks, monitor for 403s</td>
+</tr>
+</tbody></table>
+<p>Two design choices make cohort size a permanent non-worry, and both are already specified:</p>
+<ul>
+<li><strong>Idempotent provisioning keyed on <code>(github_handle, cohort_id)</code></strong> (Section 7.2b). A re-run resumes a half-finished batch rather than duplicating or corrupting it.</li>
+<li><strong>Provision on registration, not big-bang.</strong> Creating repositories as learners register (a trickle) rather than all at once on go-live morning (a burst) means you essentially never approach a burst limit regardless of total size.</li>
+</ul>
+<p>Operational rules:</p>
+<ul>
+<li>Pre-flight check org seat and repository quotas before a cohort opens.</li>
+<li>Template sync and smoke validation (<code>Prepare-LearningRoomTemplate.ps1</code>, <code>Test-LearningRoomTemplate.ps1</code>) run before any provisioning.</li>
+</ul>
+<h2 id="8-automation-contracts">8. Automation contracts</h2>
+<p>Each arrow in the architecture is a stable contract. Contracts are intentionally simple text and label signals so facilitators can test and recover them by hand.</p>
+<table>
+<thead>
+<tr>
+<th scope="col">Contract</th>
+<th scope="col">Producer</th>
+<th scope="col">Consumer</th>
+<th scope="col">Signal</th>
+<th scope="col">Idempotent</th>
+<th scope="col">Manual fallback</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Enroll</td>
+<td>Registration workflow</td>
+<td>Roster</td>
+<td><code>enrolled</code> label, roster record</td>
+<td>Yes</td>
+<td>Apply label, add record</td>
+</tr>
+<tr>
+<td>Acknowledge</td>
+<td>Learner</td>
+<td>Roster, dashboard</td>
+<td>comment <code>ack</code></td>
+<td>Yes</td>
+<td>Facilitator marks acked</td>
+</tr>
+<tr>
+<td>Day 1 complete</td>
+<td>Learner</td>
+<td>Day 2 release</td>
+<td>comment <code>day1-complete</code> or label</td>
+<td>Yes</td>
+<td>Facilitator posts Day 2 link</td>
+</tr>
+<tr>
+<td>Day 2 release</td>
+<td>Release workflow</td>
+<td>Learner</td>
+<td>comment with Day 2 link, <code>day2-released</code> label</td>
+<td>Yes</td>
+<td>Facilitator posts link</td>
+</tr>
+<tr>
+<td>Next challenge</td>
+<td>Progression bot</td>
+<td>Learner</td>
+<td>new <code>Challenge N+1</code> issue</td>
+<td>Yes (per issue)</td>
+<td>Dispatch with <code>start_challenge</code></td>
+</tr>
+<tr>
+<td>Autograde</td>
+<td>Autograder</td>
+<td>Learner</td>
+<td>single pass/fail comment keyed by marker</td>
+<td>Yes</td>
+<td>Facilitator verifies and comments</td>
+</tr>
+<tr>
+<td>Dashboard</td>
+<td>Dashboard sync</td>
+<td>Facilitator</td>
+<td>upserted status issue</td>
+<td>Yes</td>
+<td>Read enrollment issues</td>
+</tr>
+<tr>
+<td>Provision</td>
+<td>Provisioning action</td>
+<td>Roster, learner</td>
+<td>repo created and seeded</td>
+<td>Yes (per key)</td>
+<td>Classroom invite during transition</td>
+</tr>
+</tbody></table>
+<p>Contract invariants:</p>
+<ul>
+<li>Every bot comment is updated in place via a marker string, never duplicated.</li>
+<li>Every workflow that can fail posts a separate, blameless error notice on failure.</li>
+<li>Every signal is plain text or a label so it is human-testable and human-recoverable.</li>
+</ul>
+<h2 id="9-curriculum-subsystem">9. Curriculum subsystem</h2>
+<ul>
+<li>22 chapters (<a href="docs/00-pre-workshop-setup.html">docs/00-pre-workshop-setup.md</a> through <a href="docs/22-what-comes-next.html">docs/22-what-comes-next.md</a>) plus appendices A through Z and AA through AC.</li>
+<li>16 core challenges and 5 bonus challenges, indexed in <a href="docs/CHALLENGES.html">docs/CHALLENGES.md</a>, each with instructions, evidence requirements, and a reference solution in <a href="docs/solutions/">docs/solutions/</a>.</li>
+<li>Each chapter is authored screen-reader-first: every step keyboard-accessible, every concept explained without sight, an &quot;If You Get Stuck&quot; section, and a Section-Level Source Map enforced by the authoritative-sources validator.</li>
+<li>The arc is one journey: browser, then github.dev, then desktop VS Code with Accessibility Agents. Every Day 1 skill maps to a Day 2 agent command.</li>
+</ul>
+<p>Curriculum requirements:</p>
+<ul>
+<li>Source maps required on in-scope content; podcasts and non-content paths excluded (per repo memory and the validator).</li>
+<li>Every reference URL must resolve; broken links fail the content gate.</li>
+<li>Tools-change resilience: chapters teach exploration so learners survive UI drift.</li>
+</ul>
+<h2 id="10-content-pipeline-docs-html-epub-audio">10. Content pipeline: docs, HTML, EPUB, audio</h2>
+<p>The pipeline turns Markdown into every delivery format.</p>
+<table>
+<thead>
+<tr>
+<th scope="col">Stage</th>
+<th scope="col">Input</th>
+<th scope="col">Output</th>
+<th scope="col">Workflow or script</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>HTML build</td>
+<td><code>docs/*.md</code></td>
+<td><code>html/</code></td>
+<td>build per <a href="BUILD.html">BUILD.md</a></td>
+</tr>
+<tr>
+<td>EPUB build</td>
+<td><code>docs/*.md</code>, <code>epub/epub.css</code></td>
+<td>EPUB</td>
+<td><a href=".github/workflows/build-epub.yml">build-epub.yml</a></td>
+</tr>
+<tr>
+<td>Diagrams</td>
+<td>diagram sources</td>
+<td>SVGs</td>
+<td><a href=".github/workflows/generate-diagram-svgs.yml">generate-diagram-svgs.yml</a></td>
+</tr>
+<tr>
+<td>Pages deploy</td>
+<td>HTML</td>
+<td>published site</td>
+<td><a href=".github/workflows/deploy-pages.yml">deploy-pages.yml</a></td>
+</tr>
+<tr>
+<td>Wiki sync</td>
+<td>docs</td>
+<td>wiki</td>
+<td><a href=".github/workflows/sync-docs-to-wiki.yml">sync-docs-to-wiki.yml</a></td>
+</tr>
+<tr>
+<td>Audio series</td>
+<td>transcripts</td>
+<td>MP3, RSS</td>
+<td>batch scripts, RSS feed builder</td>
+</tr>
+</tbody></table>
+<p>Audio policy: minimize MP3 regeneration. Prefer transcript-only and site-only updates unless a podcast release is explicitly in scope. The catalog currently covers 54 companion episodes plus planned Challenge Coach episodes.</p>
+<p>Pipeline requirements:</p>
+<ul>
+<li>HTML must build from current Markdown before any cohort opens.</li>
+<li>The RSS feed validates before publish.</li>
+<li>All generated HTML preserves heading structure, descriptive links, and table semantics.</li>
+</ul>
+<h2 id="11-optional-flask-companion">11. Optional Flask companion</h2>
+<p>The companion is strictly optional and lives at the edges. It must add delight without becoming a dependency.</p>
+<h3 id="111-scope">11.1 Scope</h3>
+<ul>
+<li>Accessible registration landing page (writes to the owned roster).</li>
+<li>Facilitator cohort dashboard (reads owned roster and progress).</li>
+<li>Bulk facilitator operations (trigger provisioning, re-seed, recover) as thin wrappers over the owned provisioning action.</li>
+</ul>
+<h3 id="112-hard-constraints">11.2 Hard constraints</h3>
+<ul>
+<li>Stateless about anything critical. If the companion is down, the GitHub-native front door and admin-issue dashboard carry the full workshop.</li>
+<li>WCAG 2.2 AA: semantic landmarks, correct heading order, labeled controls, visible focus, live-region announcements, no keyboard traps.</li>
+<li>OWASP Top 10 reviewed: authenticated facilitator actions, CSRF protection, input validation, output encoding, least-privilege tokens, rate limiting, secrets never in client code.</li>
+<li>All writes go through the owned roster and provisioning contracts; the companion never invents a parallel state store of record.</li>
+</ul>
+<h3 id="113-interfaces">11.3 Interfaces</h3>
+<ul>
+<li>Reads and writes the roster of record (admin repo or its mirror).</li>
+<li>Invokes the provisioning action through its defined contract only.</li>
+<li>Renders progress derived from the same signals the GitHub-native dashboard uses.</li>
+</ul>
+<h2 id="12-accessibility-requirements">12. Accessibility requirements</h2>
+<p>Accessibility is the product. These are acceptance-blocking.</p>
+<ul>
+<li>Every learner-facing surface verified on NVDA, JAWS, and VoiceOver, fully keyboard operable.</li>
+<li>All documentation readable with or without a screen reader; no information conveyed by color alone.</li>
+<li>Markdown follows the project accessibility rules: descriptive link text, alt text for meaningful images, correct heading hierarchy, table intro sentences, emoji removed or translated, diagrams given text alternatives, no em-dashes, validated anchors.</li>
+<li>Automation copy is screen-reader-first: front-loaded, clear, free of decorative noise.</li>
+<li>Any Flask companion meets WCAG 2.2 AA in full (Section 11.2).</li>
+<li>Testing follows the project accessibility testing guidance; manual screen reader passes are required, not just automated checks.</li>
+</ul>
+<h2 id="13-security-requirements">13. Security requirements</h2>
+<ul>
+<li>Free of OWASP Top 10 vulnerabilities across any hosted surface and all automation.</li>
+<li>Least-privilege tokens and scopes; each token documented with the single capability it enables and a rotation procedure.</li>
+<li>Secrets only in GitHub Secrets or a managed secret store; never in code, public repos, or client bundles.</li>
+<li>Public registration redacts private intake; detailed data stored only in the private admin repo when configured.</li>
+<li>Provisioning permissions scoped to repository creation and seeding only.</li>
+<li>Workflows pin actions and follow GitHub Actions security hardening (limited permissions blocks, no untrusted input in run shells).</li>
+<li>Treat all tool and webhook input as untrusted; validate and encode. Watch for and report prompt-injection attempts in any AI-assisted automation.</li>
+</ul>
+<h2 id="14-reliability-observability-and-recovery">14. Reliability, observability, and recovery</h2>
+<ul>
+<li><strong>No silent failure.</strong> Every automated step either succeeds or raises a human-visible alert with a clear recovery action.</li>
+<li><strong>Watchdog.</strong> A scheduled workflow detects stalled provisioning, stuck progression, or learners without a healthy repository, and surfaces them before a learner notices. See <a href="learning-room/.github/workflows/autograder-watchdog.yml">autograder-watchdog.yml</a>.</li>
+<li><strong>Idempotent everything.</strong> Provisioning, seeding, and bot comments are safe to re-run.</li>
+<li><strong>Tiered learner recovery.</strong> Documented restore levels return a stuck learner to a known-good state with branch and PR evidence, no data loss (per the QA runbook).</li>
+<li><strong>Manual fallback for every contract</strong> (Section 8), so the system survives any single automation outage.</li>
+<li><strong>Release gate.</strong> No cohort opens until <a href="GO-LIVE-QA-GUIDE.html">GO-LIVE-QA-GUIDE.md</a> passes; execution follows <a href="admin/LEARNING-ROOM-E2E-QA-RUNBOOK.html">admin/LEARNING-ROOM-E2E-QA-RUNBOOK.md</a>.</li>
+</ul>
+<h2 id="15-testing-and-quality-strategy">15. Testing and quality strategy</h2>
+<table>
+<thead>
+<tr>
+<th scope="col">Layer</th>
+<th scope="col">What it covers</th>
+<th scope="col">Where</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Unit and automation tests</td>
+<td>Scripts and helpers</td>
+<td><code>npm run test:automation</code>, <a href=".github/workflows/automation-tests.yml">automation-tests.yml</a></td>
+</tr>
+<tr>
+<td>Content validation</td>
+<td>Links, markdown, source maps, accessibility</td>
+<td>content-validation and authoritative-sources workflows and <code>.github/scripts</code> checks</td>
+</tr>
+<tr>
+<td>Template smoke</td>
+<td>Template integrity before provisioning</td>
+<td><code>Prepare-LearningRoomTemplate.ps1</code>, <code>Test-LearningRoomTemplate.ps1</code></td>
+</tr>
+<tr>
+<td>Challenge reliability matrix</td>
+<td>Happy, failure, and recovery path per challenge family</td>
+<td><a href="classroom/HUMAN_TEST_MATRIX.html">classroom/HUMAN_TEST_MATRIX.md</a></td>
+</tr>
+<tr>
+<td>End-to-end QA</td>
+<td>Registration through completion</td>
+<td><a href="admin/LEARNING-ROOM-E2E-QA-RUNBOOK.html">admin/LEARNING-ROOM-E2E-QA-RUNBOOK.md</a></td>
+</tr>
+<tr>
+<td>Accessibility passes</td>
+<td>NVDA, JAWS, VoiceOver, keyboard</td>
+<td>Project accessibility testing guidance</td>
+</tr>
+<tr>
+<td>Release gate</td>
+<td>All of the above consolidated</td>
+<td><a href="GO-LIVE-QA-GUIDE.html">GO-LIVE-QA-GUIDE.md</a></td>
+</tr>
+</tbody></table>
+<p>Quality rules:</p>
+<ul>
+<li>Every challenge has happy-path, failure-path, and recovery-path evidence before go-live.</li>
+<li>Provisioning is tested with at least one re-run to prove idempotency.</li>
+<li>Any companion ships only after an accessibility pass and an OWASP review.</li>
+</ul>
+<h2 id="16-configuration-surface">16. Configuration surface</h2>
+<p>Variables:</p>
+<ul>
+<li><code>CLASSROOM_DAY1_ASSIGNMENT_URL</code>, <code>CLASSROOM_DAY2_ASSIGNMENT_URL</code> (transitional; retired after Classroom removal).</li>
+<li><code>PRIVATE_STUDENT_DATA_REPO</code>.</li>
+<li><code>ENABLE_PUBLIC_CLASSROOM_INTAKE_EXPORT</code>, <code>ENABLE_PUBLIC_REGISTRATION_EXPORT</code>.</li>
+<li>New for owned provisioning: <code>LEARNING_ROOM_TEMPLATE_REPO</code>, <code>ADMIN_ROSTER_REPO</code>, <code>PROVISIONING_MODE</code> (<code>github-app</code> or <code>actions-bot</code>).</li>
+</ul>
+<p>Secrets:</p>
+<ul>
+<li><code>PRIVATE_STUDENT_DATA_TOKEN</code>, <code>INSTRUCTOR_DASHBOARD_TOKEN</code>.</li>
+<li>New for owned provisioning: <code>PROVISIONING_APP_ID</code> and <code>PROVISIONING_APP_PRIVATE_KEY</code> (App mode) or <code>PROVISIONING_TOKEN</code> (bot mode), least-privilege and rotatable.</li>
+</ul>
+<h2 id="17-repository-layout">17. Repository layout</h2>
+<table>
+<thead>
+<tr>
+<th scope="col">Path</th>
+<th scope="col">Purpose</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><a href="docs/">docs/</a></td>
+<td>Curriculum chapters, appendices, challenges, solutions</td>
+</tr>
+<tr>
+<td><a href="learning-room/">learning-room/</a></td>
+<td>Source of the per-student template: workflows, scripts, issue templates</td>
+</tr>
+<tr>
+<td><a href=".github/workflows/">.github/workflows/</a></td>
+<td>Cohort-level automation and content pipeline</td>
+</tr>
+<tr>
+<td><a href="classroom/">classroom/</a></td>
+<td>Deployment guide, assignments, test matrix, grading guide, teardown</td>
+</tr>
+<tr>
+<td><a href="admin/">admin/</a></td>
+<td>Facilitator operations, QA runbooks, architecture, podcasts</td>
+</tr>
+<tr>
+<td><a href="scripts/">scripts/</a></td>
+<td>Generation and classroom preparation scripts</td>
+</tr>
+<tr>
+<td><a href="html/">html/</a>, <a href="epub/">epub/</a>, <a href="podcasts/">podcasts/</a></td>
+<td>Generated delivery formats</td>
+</tr>
+<tr>
+<td><a href="golden.html">golden.md</a></td>
+<td>Vision and quality north star</td>
+</tr>
+<tr>
+<td><a href="SPEC.html">SPEC.md</a></td>
+<td>This specification</td>
+</tr>
+<tr>
+<td><a href="GO-LIVE-QA-GUIDE.html">GO-LIVE-QA-GUIDE.md</a></td>
+<td>Release gate</td>
+</tr>
+</tbody></table>
+<h2 id="18-migration-plan-from-classroom-to-owned-provisioning">18. Migration plan: from Classroom to owned provisioning</h2>
+<p>Aligned to the phased roadmap in <a href="golden.html">golden.md</a>.</p>
+<ol>
+<li><strong>Phase 0, harden the present.</strong> Pass the full go-live gate on the current Classroom flow.</li>
+<li><strong>Phase 1, prove decoupling.</strong> Implement the owned roster, owned progress derivation, and the idempotent provisioning action. Validate end to end with test accounts. Classroom remains primary.</li>
+<li><strong>Phase 2, production provisioning.</strong> Run a real test cohort on GitHub-native provisioning with Classroom kept as parallel fallback. Prove idempotency with a re-run.</li>
+<li><strong>Phase 3, accessible front door.</strong> Add the optional companion (or Pages form) under the full accessibility and security bar.</li>
+<li><strong>Phase 4, retire Classroom.</strong> After a clean full cohort, remove the hard Classroom dependency, retire <code>CLASSROOM_*</code> variables, and mark owned provisioning canonical.</li>
+<li><strong>Phase 5, continuous delight.</strong> Iterate on copy, recovery speed, audio companions, and accessibility.</li>
+</ol>
+<p>No phase ships until the prior phase is golden. No phase weakens accessibility, reliability, or learner trust.</p>
+<h2 id="19-acceptance-criteria">19. Acceptance criteria</h2>
+<p>The system is acceptable for a cohort when:</p>
+<ul>
+<li>The full learner journey completes end to end with provisioning that does not require GitHub Classroom (or with both paths proven during transition).</li>
+<li>Provisioning is idempotent; a re-run heals partial failures and never corrupts a repo.</li>
+<li>Roster, progress, and provisioning are owned and reconstructable without a third party.</li>
+<li>Every learner-facing surface passes NVDA, JAWS, and VoiceOver review and is fully keyboard operable.</li>
+<li>Any companion passes WCAG 2.2 AA and an OWASP Top 10 review with least-privilege, rotatable secrets.</li>
+<li>Every automation contract has a tested manual fallback.</li>
+<li>The watchdog surfaces stalled provisioning or progression before a learner notices.</li>
+<li>Zero broken learner-facing links or dead assignment URLs.</li>
+<li>Automation copy is warm, screen-reader-first, and frames failure as the next step.</li>
+<li>The go-live release gate passes.</li>
+</ul>
+<h2 id="20-open-questions">20. Open questions</h2>
+<ul>
+<li>GitHub App versus Actions bot for production provisioning: <strong>Resolved.</strong> Build a GitHub App for production; PAT path is a Phase 1 spike only (Section 7.2).</li>
+<li>Maximum cohort size for rate-limit and quota planning: <strong>Resolved.</strong> Design for 1 to 100 learners with serial, idempotent, provision-on-registration behavior (Section 7.4).</li>
+<li>Where does the companion (if built) get hosted, and what is its uptime expectation given it must be non-critical?</li>
+<li>Should the owned roster mirror live in the companion database, or stay solely in admin-repo records for a single source of truth?</li>
+<li>Which Challenge Coach audio episodes are in scope for the next release, given the minimize-regeneration policy?</li>
+</ul>
+<hr>
+<p>This spec is a living contract. When provisioning moves off Classroom, when the companion ships, or when a challenge changes, update the relevant section and the acceptance criteria together. Measure every change against <a href="golden.html">golden.md</a>: more dependable, more accessible, more flexible, more error free, more delightful.</p>
+<h2 id="implementation-status">Implementation status</h2>
+<p>The owned, GitHub-native core of the Hybrid plan is implemented and tested:</p>
+<ul>
+<li>Owned roster (section 6.1): <a href=".github/scripts/provisioning/roster.js">roster.js</a>, <a href="roster.schema.json">roster.schema.json</a>, example in <a href="admin/examples/roster.example.json">admin/examples/roster.example.json</a>.</li>
+<li>Owned progress derivation (section 6.2): <a href=".github/scripts/provisioning/progress.js">progress.js</a>.</li>
+<li>Idempotent provisioning subsystem (section 7): <a href=".github/scripts/provisioning/provision-core.js">provision-core.js</a>, <a href=".github/scripts/provisioning/github-app-auth.js">github-app-auth.js</a>, <a href=".github/scripts/provisioning/github-client.js">github-client.js</a>, <a href=".github/scripts/provisioning/provision-cli.js">provision-cli.js</a>, and the <a href=".github/workflows/provision-learning-rooms.yml">provisioning workflow</a>.</li>
+<li>Optional accessible Flask companion (section 11): <a href="companion/">companion/</a>.</li>
+<li>Operator guide: <a href="admin/OWNED_PROVISIONING.html">admin/OWNED_PROVISIONING.md</a>.</li>
+<li>Tests: <code>npm run test:provisioning</code> (Node) and <code>companion/tests</code> (Python).</li>
+</ul>
+<h2 id="authoritative-sources">Authoritative Sources</h2>
+<p>Use these official references when you need the current source of truth for facts in this document.</p>
+<ul>
+<li><a href="https://docs.github.com/en">GitHub Docs, home</a></li>
+<li><a href="https://docs.github.com/en/apps/creating-github-apps/authenticating-with-a-github-app/authenticating-as-a-github-app-installation">Authenticating as a GitHub App installation</a></li>
+<li><a href="https://docs.github.com/en/rest/repos/repos#create-a-repository-using-a-template">Generate a repository from a template (REST)</a></li>
+<li><a href="https://www.w3.org/TR/WCAG22/">Web Content Accessibility Guidelines (WCAG) 2.2</a></li>
+<li><a href="https://owasp.org/www-project-top-ten/">OWASP Top Ten</a></li>
+</ul>
+<h3 id="section-level-source-map">Section-Level Source Map</h3>
+<p>Use this map to verify facts for each major section in this file.</p>
+<ul>
+<li><strong>Overview, Goals and non-goals, Personas, System architecture, Component catalog, Curriculum subsystem, Content pipeline, Repository layout:</strong> <a href="https://docs.github.com/en">GitHub Docs, home</a></li>
+<li><strong>Data model, Provisioning subsystem, Automation contracts, Configuration surface, Migration plan, Acceptance criteria, Implementation status:</strong> <a href="https://docs.github.com/en/apps/creating-github-apps/authenticating-with-a-github-app/authenticating-as-a-github-app-installation">Authenticating as a GitHub App installation</a>, <a href="https://docs.github.com/en/rest/repos/repos#create-a-repository-using-a-template">Generate a repository from a template (REST)</a></li>
+<li><strong>Optional Flask companion, Accessibility requirements:</strong> <a href="https://www.w3.org/TR/WCAG22/">Web Content Accessibility Guidelines (WCAG) 2.2</a></li>
+<li><strong>Security requirements, Reliability and recovery, Testing and quality strategy:</strong> <a href="https://owasp.org/www-project-top-ten/">OWASP Top Ten</a>, <a href="https://docs.github.com/en">GitHub Docs, home</a></li>
+</ul>
+
+  </main>
+  <footer role="contentinfo" class="site-footer">
+    <p><strong>GIT Going with GitHub</strong> - A workshop by <a href="https://community-access.org">Community Access</a></p>
+    <p><a href="https://github.com/community-access/git-going-with-github">View on GitHub</a> · <a href="https://community-access.org">community-access.org</a></p>
+  </footer>
+
+  </body>
+</html>

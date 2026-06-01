@@ -1,0 +1,443 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="GIT Going with GitHub - A two-day accessible open source workshop by Community Access">
+  <title>Hybrid Deployment Guide - GIT Going with GitHub</title>
+  <link rel="stylesheet" href="./styles/github-markdown.css">
+  <link rel="stylesheet" href="./styles/highlight.css">
+  <link rel="stylesheet" href="./styles/custom.css">
+  <style>
+    .markdown-body {
+      box-sizing: border-box;
+      min-width: 200px;
+      max-width: 980px;
+      margin: 0 auto;
+      padding: 45px;
+    }
+    @media (max-width: 767px) {
+      .markdown-body {
+        padding: 15px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+  <header class="site-header" role="banner">
+    <div class="site-header-inner">
+      <nav aria-label="Breadcrumb" class="breadcrumb">
+        <a href="./index.html">Home</a> <span aria-hidden="true">›</span> <span aria-current="page">Hybrid Deployment Guide</span>
+      </nav>
+      <div class="header-actions">
+        <a href="https://github.com/Community-Access/git-going-with-github/wiki" class="wiki-link" target="_blank" rel="noopener noreferrer">
+          <svg aria-hidden="true" focusable="false" width="16" height="16" viewBox="0 0 16 16" fill="currentColor">
+            <path d="M1.75 1h8.5c.966 0 1.75.784 1.75 1.75v5.5A1.75 1.75 0 0 1 10.25 10H7.06l-2.573 2.573A1.458 1.458 0 0 1 2 11.543V10h-.25A1.75 1.75 0 0 1 0 8.25v-5.5C0 1.784.784 1 1.75 1ZM1.5 2.75v5.5c0 .138.112.25.25.25h1a.75.75 0 0 1 .75.75v2.19l2.72-2.72a.749.749 0 0 1 .53-.22h3.5a.25.25 0 0 0 .25-.25v-5.5a.25.25 0 0 0-.25-.25h-8.5a.25.25 0 0 0-.25.25Zm13 2a.25.25 0 0 0-.25-.25h-.5a.75.75 0 0 1 0-1.5h.5c.966 0 1.75.784 1.75 1.75v5.5A1.75 1.75 0 0 1 14.25 12H14v1.543a1.457 1.457 0 0 1-2.487 1.03L9.22 12.28a.749.749 0 1 1 1.06-1.06l2.22 2.22v-2.19a.75.75 0 0 1 .75-.75h.25a.25.25 0 0 0 .25-.25v-5.5Z"/>
+          </svg>
+          Wiki
+        </a>
+        <form role="search" class="search-form" action="./search.html" method="get">
+        <label for="site-search" class="search-label">Search docs</label>
+        <input
+          type="search"
+          id="site-search"
+          class="search-input"
+          name="q"
+          placeholder="Search docs…"
+          autocomplete="off"
+          aria-label="Search documentation"
+        >
+        <button type="submit" class="search-button" aria-label="Submit search">
+          <svg aria-hidden="true" focusable="false" width="16" height="16" viewBox="0 0 16 16" fill="currentColor">
+            <path d="M10.68 11.74a6 6 0 0 1-7.922-8.982 6 6 0 0 1 8.982 7.922l3.04 3.04a.749.749 0 0 1-.326 1.275.749.749 0 0 1-.734-.215ZM11.5 7a4.499 4.499 0 1 0-8.997 0A4.499 4.499 0 0 0 11.5 7Z"/>
+          </svg>
+        </button>
+      </form>
+      </div>
+    </div>
+  </header>
+  <main id="main-content" class="markdown-body">
+    <h1 id="hybrid-deployment-guide">Hybrid Deployment Guide</h1>
+<p>This is the step-by-step guide to deploying the Hybrid architecture from
+<a href="../golden.html">golden.md</a> and <a href="../SPEC.html">SPEC.md</a>: the owned, GitHub-native
+provisioning core that replaces GitHub Classroom, plus the optional accessible Flask
+companion. For the conceptual model and day-to-day operations, see
+<a href="OWNED_PROVISIONING.html">OWNED_PROVISIONING.md</a>. For the legacy Classroom-based flow,
+see <a href="../classroom/README.html">../classroom/README.md</a>. To review every piece of the
+Hybrid deliverable from one place, start at <a href="HYBRID_REVIEW_INDEX.html">HYBRID_REVIEW_INDEX.md</a>.</p>
+<p>Follow the phases in order. Each phase ends with a verification step. Do not advance
+until the current phase verifies, exactly as the phased roadmap in golden.md requires.</p>
+<h2 id="table-of-contents">Table of contents</h2>
+<ul>
+<li><a href="#what-you-are-deploying">What you are deploying</a></li>
+<li><a href="#prerequisites">Prerequisites</a></li>
+<li><a href="#phase-1-prepare-the-admin-roster-repository">Phase 1: Prepare the admin roster repository</a></li>
+<li><a href="#phase-2-create-the-provisioning-github-app">Phase 2: Create the provisioning GitHub App</a></li>
+<li><a href="#phase-3-configure-variables-and-secrets">Phase 3: Configure variables and secrets</a></li>
+<li><a href="#phase-4-deploy-and-smoke-test-provisioning">Phase 4: Deploy and smoke-test provisioning</a></li>
+<li><a href="#phase-5-deploy-the-optional-companion">Phase 5: Deploy the optional companion</a></li>
+<li><a href="#phase-6-go-live-checklist">Phase 6: Go-live checklist</a></li>
+<li><a href="#operating-a-cohort">Operating a cohort</a></li>
+<li><a href="#rollback-and-fallback">Rollback and fallback</a></li>
+<li><a href="#reference-configuration-surface">Reference: configuration surface</a></li>
+<li><a href="#authoritative-sources">Authoritative Sources</a></li>
+</ul>
+<h2 id="what-you-are-deploying">What you are deploying</h2>
+<table>
+<thead>
+<tr>
+<th scope="col">Piece</th>
+<th scope="col">Where it runs</th>
+<th scope="col">Required?</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Provisioning scripts</td>
+<td>This repository, <code>.github/scripts/provisioning/</code></td>
+<td>Yes</td>
+</tr>
+<tr>
+<td>Provisioning workflow</td>
+<td>GitHub Actions in this repository</td>
+<td>Yes</td>
+</tr>
+<tr>
+<td>Roster of record (<code>roster.json</code>)</td>
+<td>A private admin repository</td>
+<td>Yes</td>
+</tr>
+<tr>
+<td>Provisioning identity</td>
+<td>A GitHub App in the <code>Community-Access</code> org</td>
+<td>Yes (production)</td>
+</tr>
+<tr>
+<td>Learning Room template</td>
+<td><code>Community-Access/learning-room-template</code></td>
+<td>Yes (already exists)</td>
+</tr>
+<tr>
+<td>Flask companion</td>
+<td>A small host you control (or none)</td>
+<td>No, optional</td>
+</tr>
+</tbody></table>
+<p>The critical path is the first five rows. The companion is a convenience at the edges
+and can be skipped entirely; the issue-form front door and admin-issue dashboard carry
+the workshop without it.</p>
+<h2 id="prerequisites">Prerequisites</h2>
+<ul>
+<li>Owner or admin access to the <code>Community-Access</code> GitHub organization.</li>
+<li>The Learning Room template repository exists and passes template validation
+(<code>scripts/classroom/Test-LearningRoomTemplate.ps1</code>).</li>
+<li>A private admin repository you control, to hold the roster and provisioning log.</li>
+<li>Node.js 20 or newer for local runs and tests.</li>
+<li>Python 3.12 or newer if you deploy the companion.</li>
+<li>The <code>gh</code> CLI authenticated, for the convenience commands below.</li>
+</ul>
+<p>Confirm your toolchain:</p>
+<pre><code class="hljs language-bash">node --version      <span class="hljs-comment"># v20+</span>
+python --version    <span class="hljs-comment"># 3.12+</span>
+gh auth status</code></pre>
+<h2 id="phase-1-prepare-the-admin-roster-repository">Phase 1: Prepare the admin roster repository</h2>
+<p>The roster of record lives in a private repository so intake data is never public.</p>
+<ol>
+<li>Create (or choose) a private repository, for example <code>Community-Access/glow-admin</code>.</li>
+<li><p>Add a starter roster at its root. Copy the shape from
+<a href="examples/roster.example.json">examples/roster.example.json</a>, or start empty:</p>
+<pre><code class="hljs language-json"><span class="hljs-punctuation">{</span> <span class="hljs-attr">&quot;version&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-number">1</span><span class="hljs-punctuation">,</span> <span class="hljs-attr">&quot;cohorts&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-punctuation">[</span><span class="hljs-punctuation">]</span><span class="hljs-punctuation">,</span> <span class="hljs-attr">&quot;learners&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-punctuation">[</span><span class="hljs-punctuation">]</span> <span class="hljs-punctuation">}</span></code></pre>
+</li>
+<li>Commit it as <code>roster.json</code>. The provisioning run will also create and maintain
+<code>provisioning-log.json</code> next to it.</li>
+</ol>
+<p>Verification: the file validates locally.</p>
+<pre><code class="hljs language-bash">node -e <span class="hljs-string">&quot;require(&#x27;./.github/scripts/provisioning/roster&#x27;).parseRoster(require(&#x27;fs&#x27;).readFileSync(&#x27;roster.json&#x27;,&#x27;utf8&#x27;)); console.log(&#x27;roster ok&#x27;)&quot;</span></code></pre>
+<h2 id="phase-2-create-the-provisioning-github-app">Phase 2: Create the provisioning GitHub App</h2>
+<p>A GitHub App is the production identity because it is not tied to a human account,
+mints short-lived tokens, and uses fine-grained least-privilege permissions
+(SPEC.md section 7.2). Create it once.</p>
+<ol>
+<li>In the organization, go to Settings, Developer settings, GitHub Apps, New GitHub App.</li>
+<li>Name it (for example <code>GLOW Provisioning</code>). Set a homepage URL (the repo is fine).</li>
+<li>Disable the webhook (this App is called by Actions, not by webhooks).</li>
+<li>Grant only these repository permissions, nothing more:<ul>
+<li>Administration: Read and write (create student repositories).</li>
+<li>Contents: Read and write (seed and heal repository content).</li>
+<li>Metadata: Read-only (mandatory baseline).</li>
+<li>Issues: Read and write (optional; only if the App seeds the first issue).</li>
+</ul>
+</li>
+<li>Create the App, then note the numeric App ID.</li>
+<li>Generate a private key; a <code>.pem</code> file downloads. Keep it secret.</li>
+<li>Install the App on the <code>Community-Access</code> organization, scoped to the template
+repository and the student repositories (or all repositories if simpler for now).</li>
+<li>Open the installation and note the numeric Installation ID (it is in the
+installation settings URL).</li>
+</ol>
+<p>Verification: you now hold three values: App ID, Installation ID, and the PEM key.</p>
+<h2 id="phase-3-configure-variables-and-secrets">Phase 3: Configure variables and secrets</h2>
+<p>Set these on this repository (Settings, Secrets and variables, Actions). Using an
+Environment named <code>provisioning</code> is recommended so you can add required reviewers.</p>
+<p>Repository or environment variables:</p>
+<table>
+<thead>
+<tr>
+<th scope="col">Variable</th>
+<th scope="col">Value</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>PROVISIONING_MODE</code></td>
+<td><code>github-app</code></td>
+</tr>
+<tr>
+<td><code>LEARNING_ROOM_TEMPLATE_REPO</code></td>
+<td><code>Community-Access/learning-room-template</code></td>
+</tr>
+<tr>
+<td><code>PROVISIONING_STUDENT_OWNER</code></td>
+<td><code>Community-Access</code></td>
+</tr>
+<tr>
+<td><code>ADMIN_ROSTER_REPO</code></td>
+<td><code>Community-Access/glow-admin</code> (your admin repo)</td>
+</tr>
+</tbody></table>
+<p>Secrets:</p>
+<table>
+<thead>
+<tr>
+<th scope="col">Secret</th>
+<th scope="col">Value</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>PROVISIONING_APP_ID</code></td>
+<td>The App ID from Phase 2</td>
+</tr>
+<tr>
+<td><code>PROVISIONING_APP_INSTALLATION_ID</code></td>
+<td>The Installation ID from Phase 2</td>
+</tr>
+<tr>
+<td><code>PROVISIONING_APP_PRIVATE_KEY</code></td>
+<td>The full contents of the <code>.pem</code> file</td>
+</tr>
+<tr>
+<td><code>PRIVATE_STUDENT_DATA_TOKEN</code></td>
+<td>A token that can check out and push to the admin repo</td>
+</tr>
+</tbody></table>
+<p>Using <code>gh</code> for the App secrets (run from this repository):</p>
+<pre><code class="hljs language-bash">gh secret <span class="hljs-built_in">set</span> PROVISIONING_APP_ID --body <span class="hljs-string">&quot;123456&quot;</span>
+gh secret <span class="hljs-built_in">set</span> PROVISIONING_APP_INSTALLATION_ID --body <span class="hljs-string">&quot;98765432&quot;</span>
+gh secret <span class="hljs-built_in">set</span> PROVISIONING_APP_PRIVATE_KEY &lt; glow-provisioning.private-key.pem</code></pre>
+<p>Security rules: the PEM lives only in Secrets, never in code or a public repo. Mint
+tokens on demand and never persist them (the workflow already does this). Document and
+rehearse key rotation; rotate on any suspected exposure.</p>
+<h2 id="phase-4-deploy-and-smoke-test-provisioning">Phase 4: Deploy and smoke-test provisioning</h2>
+<p>The provisioning workflow ships in this repository at
+<a href="../.github/workflows/provision-learning-rooms.yml">../.github/workflows/provision-learning-rooms.yml</a>.
+Merging this branch deploys it. It runs on a 30-minute schedule and on demand.</p>
+<p>Smoke test with a single test account before any real cohort:</p>
+<ol>
+<li>Add one test learner to the admin <code>roster.json</code> (a throwaway GitHub account you
+control), <code>provision_state</code> set to <code>pending</code>.</li>
+<li>In the Actions tab, run <strong>Provision Learning Rooms</strong> with <code>dry_run</code> checked.
+Confirm it lists exactly your test learner.</li>
+<li>Run it again with <code>dry_run</code> unchecked. Confirm:<ul>
+<li>A private student repository is created from the template.</li>
+<li>The test account receives a repository invitation.</li>
+<li>The roster entry flips to <code>provisioned</code> and <code>provisioning-log.json</code> records
+<code>created</code>.</li>
+</ul>
+</li>
+<li>Prove idempotency: run it a second time. The log should record <code>already-exists</code>
+and make no changes.</li>
+</ol>
+<p>You can also run it locally against a checkout of the admin repo:</p>
+<pre><code class="hljs language-bash">LEARNING_ROOM_TEMPLATE_REPO=Community-Access/learning-room-template \
+PROVISIONING_STUDENT_OWNER=Community-Access \
+PROVISIONING_MODE=github-app \
+PROVISIONING_APP_ID=123456 \
+PROVISIONING_APP_INSTALLATION_ID=98765432 \
+PROVISIONING_APP_PRIVATE_KEY=<span class="hljs-string">&quot;@glow-provisioning.private-key.pem&quot;</span> \
+node .github/scripts/provisioning/provision-cli.js --roster roster.json --<span class="hljs-built_in">log</span> provisioning-log.json</code></pre>
+<p>Verification: a healthy student repository exists, the invite arrived, the roster and
+log updated, and a re-run heals rather than duplicates.</p>
+<h2 id="phase-5-deploy-the-optional-companion">Phase 5: Deploy the optional companion</h2>
+<p>Skip this phase entirely if you are not running the companion. The workshop is fully
+functional without it.</p>
+<p>The companion lives in <a href="../companion/">../companion/</a>. See its
+<a href="../companion/README.html">README</a> for full detail. Production deployment outline:</p>
+<ol>
+<li>Provision a small host with Python 3.12+ and TLS (a reverse proxy terminating
+HTTPS in front of the app).</li>
+<li><p>Install dependencies and a WSGI server:</p>
+<pre><code class="hljs language-bash"><span class="hljs-built_in">cd</span> companion
+python -m venv .venv
+.venv/bin/pip install -r requirements.txt gunicorn</code></pre>
+</li>
+<li><p>Provide configuration via the environment (never in code):</p>
+<pre><code class="hljs language-bash"><span class="hljs-built_in">export</span> COMPANION_SECRET_KEY=<span class="hljs-string">&quot;<span class="hljs-subst">$(python -c &#x27;import secrets;print(secrets.token_hex(32)</span>)&#x27;)&quot;</span>
+<span class="hljs-built_in">export</span> COMPANION_FACILITATOR_TOKEN=<span class="hljs-string">&quot;a-strong-random-token&quot;</span>
+<span class="hljs-built_in">export</span> COMPANION_ROSTER_PATH=<span class="hljs-string">&quot;/srv/glow/roster.json&quot;</span>
+<span class="hljs-built_in">export</span> COMPANION_SECURE_COOKIES=1</code></pre>
+</li>
+<li><p>Run behind gunicorn (bind to localhost; let the proxy handle TLS and the public port):</p>
+<pre><code class="hljs language-bash">.venv/bin/gunicorn --workers 2 --<span class="hljs-built_in">bind</span> 127.0.0.1:8000 app:app</code></pre>
+</li>
+<li>Wire the roster: the companion writes registrations to <code>COMPANION_ROSTER_PATH</code>. A
+separate scheduled job (or a small commit hook) must sync that file to the admin
+repository so provisioning picks it up. The companion deliberately does not push to
+GitHub itself; it only owns the local roster file through the shared contract.</li>
+</ol>
+<p>Verification:</p>
+<ul>
+<li><code>GET /healthz</code> returns <code>{&quot;status&quot;:&quot;ok&quot;}</code>.</li>
+<li>The registration page loads, and a screen reader pass (NVDA, JAWS, or VoiceOver)
+confirms landmarks, labeled fields, the error summary, and live-region messages.</li>
+<li>Facilitator sign-in with the token reaches the dashboard; a bad token is rejected.</li>
+<li>Response headers include <code>Content-Security-Policy</code> and <code>X-Frame-Options: DENY</code>.</li>
+<li>A registration appears in <code>roster.json</code> with <code>provision_state</code> <code>pending</code>.</li>
+</ul>
+<h2 id="phase-6-go-live-checklist">Phase 6: Go-live checklist</h2>
+<p>Do not open a cohort until every item holds. This complements the release gate in
+<a href="../GO-LIVE-QA-GUIDE.html">../GO-LIVE-QA-GUIDE.md</a>.</p>
+<ul>
+<li><input aria-label="Template validation passes; the template has all required workflows." disabled="" type="checkbox"> Template validation passes; the template has all required workflows.</li>
+<li><input aria-label="Admin" disabled="" type="checkbox"> Admin <code>roster.json</code> exists and validates.</li>
+<li><input aria-label="The GitHub App is installed with only the four permissions listed." disabled="" type="checkbox"> The GitHub App is installed with only the four permissions listed.</li>
+<li><input aria-label="All variables and secrets are set on the provisioning environment." disabled="" type="checkbox"> All variables and secrets are set on the provisioning environment.</li>
+<li><input aria-label="A single-account smoke test provisioned cleanly and a re-run reported" disabled="" type="checkbox"> A single-account smoke test provisioned cleanly and a re-run reported
+<code>already-exists</code> (idempotency proven).</li>
+<li><input aria-label="Org seat and repository quotas are sufficient for the cohort size." disabled="" type="checkbox"> Org seat and repository quotas are sufficient for the cohort size.</li>
+<li><input aria-label="If used, the companion passes its accessibility and security verification." disabled="" type="checkbox"> If used, the companion passes its accessibility and security verification.</li>
+<li><input aria-label="The manual fallback (issue-form registration, Classroom invite during
+transition) is documented and ready." disabled="" type="checkbox"> The manual fallback (issue-form registration, Classroom invite during
+transition) is documented and ready.</li>
+</ul>
+<h2 id="operating-a-cohort">Operating a cohort</h2>
+<ul>
+<li><strong>Provision on registration, not big-bang.</strong> Let the 30-minute schedule trickle new
+learners in. This keeps you far below any rate limit regardless of cohort size.</li>
+<li><strong>Watch the roster and log.</strong> <code>failed</code> entries and <code>error</code> log lines are your signal
+to intervene; re-running provisioning heals pending and failed entries.</li>
+<li><strong>Recover a stuck learner.</strong> Fix the root cause (seat, name clash, permission), then
+re-run provisioning. Only pending and failed entries are retried; healthy learners
+are untouched.</li>
+<li><strong>Day 2 and progression</strong> continue to run on the existing deterministic text signals
+(<code>ack</code>, <code>day1-complete</code>); the owned provisioning swap does not change them.</li>
+</ul>
+<h2 id="rollback-and-fallback">Rollback and fallback</h2>
+<p>Because the owned core is additive and the downstream system cannot tell which method
+created a repository, rollback is low-risk.</p>
+<ul>
+<li><strong>Disable owned provisioning.</strong> Turn off the schedule on the provisioning workflow
+(or set its environment to require manual approval) and fall back to the Classroom
+invite during the transition window. No learner data is lost; the roster is still the
+source of truth.</li>
+<li><strong>Companion outage.</strong> None of the critical path depends on it. Point learners at the
+issue-form front door and read the admin-issue dashboard until it returns.</li>
+<li><strong>Bad App credential.</strong> Re-issue the App private key, update
+<code>PROVISIONING_APP_PRIVATE_KEY</code>, and re-run. Idempotency means the re-run heals.</li>
+</ul>
+<h2 id="reference-configuration-surface">Reference: configuration surface</h2>
+<p>See SPEC.md section 16 for the authoritative list. Summary:</p>
+<table>
+<thead>
+<tr>
+<th scope="col">Name</th>
+<th scope="col">Type</th>
+<th scope="col">Purpose</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>PROVISIONING_MODE</code></td>
+<td>variable</td>
+<td><code>github-app</code> (production) or <code>actions-bot</code> (spike)</td>
+</tr>
+<tr>
+<td><code>LEARNING_ROOM_TEMPLATE_REPO</code></td>
+<td>variable</td>
+<td><code>owner/name</code> of the template</td>
+</tr>
+<tr>
+<td><code>PROVISIONING_STUDENT_OWNER</code></td>
+<td>variable</td>
+<td>Org or user that owns student repos</td>
+</tr>
+<tr>
+<td><code>ADMIN_ROSTER_REPO</code></td>
+<td>variable</td>
+<td><code>owner/name</code> of the private admin repo</td>
+</tr>
+<tr>
+<td><code>PROVISIONING_APP_ID</code></td>
+<td>secret</td>
+<td>GitHub App ID (App mode)</td>
+</tr>
+<tr>
+<td><code>PROVISIONING_APP_INSTALLATION_ID</code></td>
+<td>secret</td>
+<td>Installation ID (App mode)</td>
+</tr>
+<tr>
+<td><code>PROVISIONING_APP_PRIVATE_KEY</code></td>
+<td>secret</td>
+<td>PEM private key (App mode)</td>
+</tr>
+<tr>
+<td><code>PROVISIONING_TOKEN</code></td>
+<td>secret</td>
+<td>Fine-grained PAT (actions-bot spike only)</td>
+</tr>
+<tr>
+<td><code>PRIVATE_STUDENT_DATA_TOKEN</code></td>
+<td>secret</td>
+<td>Checkout and push to the admin repo</td>
+</tr>
+<tr>
+<td><code>COMPANION_SECRET_KEY</code></td>
+<td>env</td>
+<td>Flask session signing key (companion)</td>
+</tr>
+<tr>
+<td><code>COMPANION_FACILITATOR_TOKEN</code></td>
+<td>env</td>
+<td>Facilitator sign-in token (companion)</td>
+</tr>
+<tr>
+<td><code>COMPANION_ROSTER_PATH</code></td>
+<td>env</td>
+<td>Path to <code>roster.json</code> (companion)</td>
+</tr>
+</tbody></table>
+<h2 id="authoritative-sources">Authoritative Sources</h2>
+<p>Use these official references when you need the current source of truth for facts in
+this document.</p>
+<ul>
+<li><a href="https://docs.github.com/en/apps/creating-github-apps/registering-a-github-app/registering-a-github-app">Registering a GitHub App</a></li>
+<li><a href="https://docs.github.com/en/apps/creating-github-apps/authenticating-with-a-github-app/authenticating-as-a-github-app-installation">Authenticating as a GitHub App installation</a></li>
+<li><a href="https://docs.github.com/en/actions/security-for-github-actions/security-guides/using-secrets-in-github-actions">Using secrets in GitHub Actions</a></li>
+<li><a href="https://docs.github.com/en/rest/repos/repos#create-a-repository-using-a-template">Generate a repository from a template (REST)</a></li>
+<li><a href="https://docs.github.com/en/rest/using-the-rest-api/rate-limits-for-the-rest-api">Rate limits for the REST API</a></li>
+</ul>
+<h3 id="section-level-source-map">Section-Level Source Map</h3>
+<p>Use this map to verify facts for each major section in this file.</p>
+<ul>
+<li><strong>What you are deploying, Prerequisites, Phase 1, Operating a cohort:</strong> <a href="https://docs.github.com/en/rest/repos/repos#create-a-repository-using-a-template">Generate a repository from a template (REST)</a>, <a href="https://docs.github.com/en/rest/using-the-rest-api/rate-limits-for-the-rest-api">Rate limits for the REST API</a></li>
+<li><strong>Phase 2: Create the provisioning GitHub App:</strong> <a href="https://docs.github.com/en/apps/creating-github-apps/registering-a-github-app/registering-a-github-app">Registering a GitHub App</a>, <a href="https://docs.github.com/en/apps/creating-github-apps/authenticating-with-a-github-app/authenticating-as-a-github-app-installation">Authenticating as a GitHub App installation</a></li>
+<li><strong>Phase 3: Configure variables and secrets, Reference: configuration surface:</strong> <a href="https://docs.github.com/en/actions/security-for-github-actions/security-guides/using-secrets-in-github-actions">Using secrets in GitHub Actions</a></li>
+<li><strong>Phase 4, Phase 5, Phase 6, Rollback and fallback:</strong> <a href="https://docs.github.com/en/apps/creating-github-apps/authenticating-with-a-github-app/authenticating-as-a-github-app-installation">Authenticating as a GitHub App installation</a>, <a href="https://docs.github.com/en/actions/security-for-github-actions/security-guides/using-secrets-in-github-actions">Using secrets in GitHub Actions</a></li>
+</ul>
+
+  </main>
+  <footer role="contentinfo" class="site-footer">
+    <p><strong>GIT Going with GitHub</strong> - A workshop by <a href="https://community-access.org">Community Access</a></p>
+    <p><a href="https://github.com/community-access/git-going-with-github">View on GitHub</a> · <a href="https://community-access.org">community-access.org</a></p>
+  </footer>
+
+  </body>
+</html>
