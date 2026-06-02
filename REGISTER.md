@@ -8,7 +8,7 @@ Welcome, traveler. I am your Grey Wizard Mentor at the gate, here to welcome you
 
 ## Learn online from anywhere
 
-Remote learners follow the workshop as a **fully online, self-paced experience**. Every challenge, episode, and reference document is published on the public site, available to read or listen to at any time. You will work in your own GitHub Classroom assignment with mentors and automation agents supporting you through issues and discussions. No travel, no special software -- just a browser, a keyboard, and your assistive tech of choice.
+Remote learners follow the workshop as a **fully online, self-paced experience**. Every challenge, episode, and reference document is published on the public site, available to read or listen to at any time. You will work in your own GitHub learning room with mentors and automation agents supporting you through issues and discussions. No travel, no special software -- just a browser, a keyboard, and your assistive tech of choice.
 
 Begin at your own pace and open a discussion whenever you need a mentor.
 
@@ -35,10 +35,10 @@ You only need one path to begin.
 2. Open the enrollment form in a new tab.
 3. Answer the five quick prompts.
 4. Submit the form and open the new issue page that appears.
-5. Stay on that issue page until the automation comment posts your classroom link.
+5. Stay on that issue page until the automation comment posts your learning room link and next steps.
 6. Reply `ack`, then close the enrollment issue as **Challenge 0**.
 
-> <a href="https://github.com/community-access/git-going-with-github/issues/new?template=classroom-enrollment.yml&title=%5BENROLL%5D+GIT+Going+with+GitHub+Classroom" target="_blank" rel="noopener noreferrer"><strong>Begin the Adventure (opens in new tab)</strong></a>
+> <a href="https://github.com/community-access/git-going-with-github/issues/new?template=start-here-roadmap.yml&title=%5BENROLL%5D+GIT+Going+with+GitHub" target="_blank" rel="noopener noreferrer"><strong>Begin the Adventure (opens in new tab)</strong></a>
 
 ## How to fill the form (wizard tips)
 
@@ -61,8 +61,9 @@ If you do not receive an email notification, refresh your submitted issue page d
 - Duplicate submissions are handled automatically.
 - Registration is currently unlimited.
 - Enrollment submissions are processed and public issue bodies are redacted after automation runs.
-- Classroom and challenge progression automation picks up after enrollment.
-- Enrollment issues stay open until the student replies `ack` and closes the issue.
+- Your learning room repository is provisioned automatically after enrollment.
+- Challenge progression automation picks up as you close issues and open pull requests.
+- Enrollment issues stay open until the student replies `ack` and closes the issue as Challenge 0.
 
 ## Important note
 
