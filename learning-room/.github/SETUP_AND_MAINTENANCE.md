@@ -7,7 +7,7 @@
 
 ## Overview
 
-The Learning Room uses GitHub Actions workflows to provide real-time feedback to students as they work through challenges in their individual Classroom repos. This guide explains how the system works and how to maintain or extend it.
+The Learning Room uses GitHub Actions workflows to provide real-time feedback to students as they work through challenges in their individual Learning Room repositories. This guide explains how the system works and how to maintain or extend it.
 
 ### The Automation Stack
 

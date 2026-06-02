@@ -6,7 +6,7 @@
 
 This workshop is designed so you are never left guessing what comes next. You will have:
 
-- A GitHub Classroom assignment link from the facilitator
+- An enrollment link from the facilitator to create your Learning Room
 - Your own private Learning Room repository
 - Challenge issues that tell you exactly what to do
 - Evidence prompts that tell you what to post when you finish
@@ -18,7 +18,7 @@ The goal is not to rush. The goal is to build confidence one checkable step at a
 
 ## When Tools or Pages Change
 
-GitHub.com, GitHub Classroom, VS Code, GitHub Copilot, github.dev, browser extensions, and agent tools change often. This course is actively maintained, and we use official sources and live checks wherever possible, but your screen may not always match the exact wording in a step.
+GitHub.com, VS Code, GitHub Copilot, github.dev, browser extensions, and agent tools change often. This course is actively maintained, and we use official sources and live checks wherever possible, but your screen may not always match the exact wording in a step.
 
 When that happens, do not assume you are failing. Use the same exploration skills the workshop teaches:
 
@@ -36,17 +36,15 @@ Before Day 1 starts, complete [Chapter 00: Pre-Workshop Setup](00-pre-workshop-s
 
 If you cannot finish every setup step before the workshop, tell a facilitator early. Setup problems are normal, and the workshop is designed with time and support for recovery.
 
-## Step 2 - Accept the GitHub Classroom Assignment
+## Step 2 - Complete Your Enrollment
 
-At the start of the workshop, the facilitator gives you a GitHub Classroom assignment link. It usually starts with `https://classroom.github.com/a/`. This single assignment covers both Day 1 and Day 2 content -- Day 2 challenges automatically unlock after you complete Day 1.
+At the start of the workshop, the facilitator shares an enrollment link. Complete the form to create your private Learning Room repository. Day 2 challenges automatically unlock after you complete Day 1.
 
-1. Open the assignment link in the browser where you are signed in to GitHub.
-2. If GitHub asks you to authorize GitHub Classroom, activate **Authorize GitHub Classroom**.
-3. If you are asked to choose your name from a roster, find your name and select it. If your name is missing, use the skip option and tell the facilitator.
-4. Activate **Accept this assignment**.
-5. Wait while GitHub Classroom creates your private repository.
-6. Refresh the page until the repository link appears.
-7. Open the repository link and bookmark it.
+1. Open the enrollment link in the browser where you are signed in to GitHub.
+2. Complete the enrollment form with your details.
+3. An issue will be created in your account. Reply with acknowledgement (`ack`).
+4. Automation will provision your private Learning Room repository.
+5. Wait for the invitation email from GitHub, then open and bookmark your repository.
 
 Your repository name usually looks like `learning-room-your-username`. This is your personal practice space for the workshop.
 

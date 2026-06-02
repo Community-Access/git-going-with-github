@@ -30,15 +30,15 @@ If any step blocks you, tell us before the workshop. Setup problems are normal, 
 
 You do **not** need to accept a GitHub Classroom assignment before Day 1.
 
-At the beginning of the workshop, the facilitator will share a GitHub Classroom assignment link in the meeting chat. That link creates your private Learning Room repository. We will walk through the process together.
+At the beginning of the workshop, the facilitator will share an enrollment link in the meeting chat. Completing enrollment creates your private Learning Room repository. We will walk through the process together.
 
-Preview the steps in [The Learning Room: Accept Your Classroom Assignment and Open Your Repo](04-the-learning-room.md#step-by-step-accept-your-classroom-assignment-and-open-your-repo).
+Preview the steps in [The Learning Room: Get Your Learning Room and Open Your Repo](04-the-learning-room.md#step-by-step-get-your-learning-room-and-open-your-repo).
 
 ## What Your Learning Room Is
 
 Your Learning Room is a private GitHub repository created from the `Community-Access/learning-room-template` template. It is your practice space for the workshop.
 
-You do **not** clone or work directly in the template repository. GitHub Classroom makes a private copy for you, and that private copy is the repository you use during the workshop.
+You do **not** clone or work directly in the template repository. The provisioning system makes a private copy for you, and that private copy is the repository you use during the workshop.
 
 Inside that repository you will find:
 
@@ -48,7 +48,7 @@ Inside that repository you will find:
 - Gandalf, the workshop bot that gives feedback on pull requests
 - Reference files for branches, pull requests, merge conflicts, Copilot, and agents
 
-Other students cannot see your private Learning Room repository. Facilitators can see it through GitHub Classroom so they can help when you get stuck.
+Other students cannot see your private Learning Room repository. Facilitators can see it so they can help when you get stuck.
 
 You do **not** need a GitHub organization, owner access, or repository settings access. The facilitators configure the template, Classroom assignment, and GitHub Actions permissions before the workshop. Your job is to accept the assignment link, work in the repository it creates for you, and ask for help if a permission prompt appears.
 

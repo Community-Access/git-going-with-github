@@ -6,8 +6,8 @@
 # Learning Room Template: Implementation Guide
 
 > **For full workshop deployment instructions, see
-> [classroom/README.md](../../classroom/README.md).** That guide covers creating
-> the GitHub Classroom, configuring assignments, and all facilitator setup steps.
+> [HYBRID_DEPLOYMENT_GUIDE.md](../../admin/HYBRID_DEPLOYMENT_GUIDE.md).** That guide covers setting up GitHub App provisioning,
+> managing student rosters, and all facilitator setup steps.
 >
 > This document describes the automation that ships with the template repository
 > and how to customize it.
@@ -16,9 +16,8 @@
 
 ## What This Template Contains
 
-When a student accepts a GitHub Classroom assignment, they receive a private copy
-of this repository. The following automation runs in each student's repo
-automatically:
+When a student completes enrollment through the Hybrid provisioning system, they receive a private copy
+of this repository. The following automation runs in each student's repo automatically:
 
 ### Workflows (in `.github/workflows/`)
 

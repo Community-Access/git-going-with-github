@@ -22,7 +22,7 @@ Out of scope (excluded as noise):
 - `podcasts/logs/`, `tmp-*` files.
 - `podcasts/chapters/`, `podcasts/transcripts/`, `podcasts/bundles/`, `podcasts/challenge-bundles/` (regenerable build outputs).
 - `podcasts/llm-podcast-generator-review/generated/` (regression run outputs).
-- `node_modules/`, `.git/`, `epub/`, `learning-room/`, `classroom/` (out of reorg scope).
+- `node_modules/`, `.git/`, `epub/`, `learning-room/` (out of reorg scope).
 
 Counts shown below are raw hits from ripgrep against the patterns `\bep[0-9]{2}\b`, `appendix-[a-z]+`, and `cc-bonus-[a-e]`.
 

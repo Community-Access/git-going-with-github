@@ -7,17 +7,17 @@
 
 ## What Is the Learning Room?
 
-The **Learning Room** is your **own private GitHub repository** for the workshop. When you accept the GitHub Classroom assignment in Block 0, GitHub copies the [`Community-Access/learning-room-template`](https://github.com/Community-Access/learning-room-template) repository into the workshop classroom organization as `<workshop-org>/learning-room-<your-username>`. That copy is yours to use for the workshop - you have write access, your own branches, your own pull requests, and your own automated feedback from Gandalf the PR validation bot.
+The **Learning Room** is your **own private GitHub repository** for the workshop. When you enroll in Block 0, the provisioning system creates a copy of the [`Community-Access/learning-room-template`](https://github.com/Community-Access/learning-room-template) repository in the workshop organization as `<workshop-org>/learning-room-<your-username>`. That copy is yours to use for the workshop - you have write access, your own branches, your own pull requests, and your own automated feedback from Gandalf the PR validation bot.
 
-You do **not** work directly in `Community-Access/learning-room-template`. Think of the template as the clean master copy facilitators maintain. Your work happens in the private Learning Room repository created for you by GitHub Classroom.
+You do **not** work directly in `Community-Access/learning-room-template`. Think of the template as the clean master copy facilitators maintain. Your work happens in the private Learning Room repository created for you during enrollment.
 
 Throughout this chapter and the rest of Day 1, "your Learning Room repository" or "your Learning Room repo" refers to this private copy. Every student gets one, and every copy starts from the same template files. You will not see other students' work in your repo, and they will not see yours - but everyone is doing the same challenges in parallel. Peer-simulation issues and pull requests inside your repo provide realistic collaboration practice, and facilitators may also pair students for real peer review when access is intentionally provided.
 
-You do **not** need to create a GitHub organization or change repository permission settings. The workshop organization, template repository, Classroom assignment, and GitHub Actions permissions are managed by the facilitators.
+You do **not** need to create a GitHub organization or change repository permission settings. The workshop organization, template repository, provisioning system, and GitHub Actions permissions are managed by the facilitators.
 
 ## Why a Per-Student Repo?
 
-GitHub Classroom gives each participant their own repository for three reasons:
+Each participant gets their own repository for three reasons:
 
 - **Safety** -- you can experiment, break things, and recover without affecting anyone else
 - **Authenticity** -- you practice real repository work: issues, branches, pull requests, checks, reviews, and merging
@@ -25,38 +25,23 @@ GitHub Classroom gives each participant their own repository for three reasons:
 
 Real open source projects are shared spaces, and you will absolutely contribute to one on Day 2 (`accessibility-agents`) and through the Bonus C challenge. The Learning Room exists so you can build the muscle memory for issue, branch, PR, review, merge in a space where every mistake is a learning opportunity, not a public problem.
 
-## Step-by-Step: Accept Your Classroom Assignment and Open Your Repo
+## Step-by-Step: Get Your Learning Room and Open Your Repo
 
 This is the very first hands-on step of Day 1. By the end of this walkthrough you will have your own Learning Room repository on GitHub and your first challenge issue waiting for you. The whole flow takes about five minutes.
 
 > **What you need before you start:**
 >
 > - A GitHub account you are signed into in your browser ([Pre-Workshop Setup, Step 1](00-pre-workshop-setup.md#step-1---create-your-github-account))
-> - The **Classroom assignment link** -- the facilitator pastes this link in the workshop chat at the start of Block 0. It looks like `https://classroom.github.com/a/<random-id>`. If you do not have it, ask in chat or DM the facilitator.
+> - The **enrollment link** -- the facilitator shares this link in the workshop chat at the start of Block 0. If you do not have it, ask in chat or DM the facilitator.
 
-### 1. Open the assignment link
+### 1. Complete enrollment
 
-1. In the same browser where you are signed into GitHub, open the Classroom assignment link the facilitator shared.
-2. The page that loads is hosted on `classroom.github.com`. Your screen reader announces a heading with the assignment name (for example, "Git Going with GitHub").
-3. If the page asks you to authorize **GitHub Classroom** to access your GitHub account, activate **Authorize GitHub Classroom**. This is a one-time step.
-
-### 2. Identify yourself (if asked)
-
-GitHub Classroom may ask you to pick your name from a roster so the facilitators can match your GitHub username to the registration list.
-
-1. If a roster page appears, navigate the list with arrow keys or use Find-in-Page (`Ctrl+F` / `Cmd+F`) to search for your name.
-2. Activate the link or button next to your name.
-3. If you do not see your name on the roster, activate the **Skip to the next step** link and tell the facilitator in chat. They will reconcile the roster after your repo is created.
-
-### 3. Accept the assignment
-
-1. You now see a screen with a button that says **Accept this assignment** (or just **Accept the assignment**). Activate it.
-2. The page changes to a status screen that says something like "You are ready to go!" with a refresh option. GitHub Classroom is now copying the `learning-room-template` repository into the workshop classroom organization and granting you access to your private copy. This usually takes 10-30 seconds.
-3. Activate the **Refresh** link (or reload the page with `F5`) every 15 seconds or so until you see a link to your new repository. The link looks like `https://github.com/<workshop-org>/learning-room-<your-username>`.
-
-> **Screen reader tip:** The status page does not auto-announce when the repo is ready. Use Browse mode and press `K` to step through links until you hear your repository link, or refresh the page until it appears.
-
-### 4. Open your new repository
+1. Open the enrollment link the facilitator shared in your browser (where you are signed into GitHub).
+2. Fill in your profile information (name, email, GitHub experience level).
+3. Submit the form to file an enrollment issue.
+4. On the issue page, reply `ack` in a comment, then close the issue.
+5. The automation will process your enrollment and create your Learning Room repository. This usually takes 30-60 seconds.
+6. Once ready, you will receive a GitHub notification with a link to your new repository, or you can navigate to it directly at `https://github.com/<workshop-org>/learning-room-<your-username>`.
 
 1. Activate the link to your repository. You land on the standard GitHub repo page for `<workshop-org>/learning-room-<your-username>`.
 2. Verify three things on this page:
@@ -65,7 +50,7 @@ GitHub Classroom may ask you to pick your name from a roster so the facilitators
    - You see folders like `docs/`, `.github/`, and files like `README.md`. These came from the template.
 3. Bookmark this page. You will return here for every Day 1 challenge.
 
-### 5. Find your first challenge issue
+### 3. Find your first challenge issue
 
 When your Learning Room repo is ready, **Challenge 1** appears as a GitHub issue in your repo. The facilitators prepare this by running the Student Progression Bot after students accept the Classroom assignment. The next challenges unlock one at a time as you close the previous ones.
 
@@ -78,7 +63,7 @@ When your Learning Room repo is ready, **Challenge 1** appears as a GitHub issue
 > 1. Open the **Actions** tab and check whether the **Student Progression Bot** workflow ran successfully.
 > 2. If it failed or never ran, post a message in the workshop chat with the link to your repo. The facilitator can trigger `student-progression.yml` or create Challenge 1 from the issue template.
 
-### 6. Confirm Gandalf can talk to you
+### 4. Confirm Gandalf can talk to you
 
 The PR validation bot, **Gandalf**, posts educational feedback whenever you open a pull request. To confirm Gandalf is wired up, open the **Actions** tab in your repo and look for a workflow named **pr-validation-bot** (or **Gandalf PR Validation**). The workflow should appear in the list even before you have opened a PR. You do not need to run anything yet -- you just want to confirm it exists.
 

@@ -16,9 +16,9 @@
 >
 > **Please complete this guide at least one day before the workshop.** If you run into any issues, use the support hub at [Community-Access/support](https://github.com/Community-Access/support) so we can help - we want Day 1 to start with everyone ready to go, not troubleshooting.
 
-If you want the most guided starting path, begin with [Get Going with GitHub](get-going.md). It explains how GitHub Classroom, your Learning Room repository, Challenge 1, evidence prompts, and tool choice all fit together before you start setup.
+If you want the most guided starting path, begin with [Get Going with GitHub](get-going.md). It explains how your Learning Room repository, Challenge 1, evidence prompts, and tool choice all fit together before you start setup.
 
-> **Expect change across tools.** GitHub.com, GitHub Classroom, VS Code, GitHub Copilot, github.dev, browsers, extensions, and agent tools change regularly. The setup steps below are maintained against official sources, but exact labels, order, prompts, and availability can vary by account, organization policy, browser, operating system, and rollout. If something differs, pause, use headings/landmarks/labels or the VS Code Command Palette to explore, and ask for help with the exact page or prompt where you got stuck.
+> **Expect change across tools.** GitHub.com, VS Code, GitHub Copilot, github.dev, browsers, extensions, and agent tools change regularly. The setup steps below are maintained against official sources, but exact labels, order, prompts, and availability can vary by account, organization policy, browser, operating system, and rollout. If something differs, pause, use headings/landmarks/labels or the VS Code Command Palette to explore, and ask for help with the exact page or prompt where you got stuck.
 
 ## Table of Contents
 
@@ -910,9 +910,9 @@ GIT & VS CODE (required before the workshop)
 
 ### What Happens at the Start of Day 1
 
-You do **not** need to claim a workshop repository before Day 1 -- that is the very first hands-on step we do together in Block 0. When the workshop opens, the facilitator will paste a **GitHub Classroom assignment link** in the chat. Accepting that link creates your own private Learning Room repository in the workshop organization and seeds it with Challenge 1.
+You do **not** need to claim a workshop repository before Day 1 -- that is the very first hands-on step we do together in Block 0. When the workshop opens, the facilitator will share an **enrollment link** in the chat. Completing enrollment creates your own private Learning Room repository in the workshop organization and seeds it with Challenge 1.
 
-The full guided walkthrough lives in [Chapter 4: Step-by-Step: Accept Your Classroom Assignment and Open Your Repo](04-the-learning-room.md#step-by-step-accept-your-classroom-assignment-and-open-your-repo). Skim it the night before if you want to know what to expect; we will walk through it live in Block 0.
+The full guided walkthrough lives in [Chapter 4: Step-by-Step: Get Your Learning Room Repository and Open Your Repo](04-the-learning-room.md#step-by-step-get-your-learning-room-and-open-your-repo). Skim it the night before if you want to know what to expect; we will walk through it live in Block 0.
 
 ## Other GitHub Access Methods (Reference Only)
 

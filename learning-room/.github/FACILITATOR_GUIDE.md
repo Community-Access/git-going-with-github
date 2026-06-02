@@ -241,8 +241,8 @@ Remember: **The bot enables human connection, not replaces it.**
 - [Automation Setup and Maintenance](./SETUP_AND_MAINTENANCE.md)
 - [Learning Room README](../README.md)
 - [Challenge Hub](../../docs/CHALLENGES.md)
-- [Grading Guide](../../classroom/grading-guide.md)
 - [Solutions Directory](../../docs/solutions/)
+- [Hybrid Provisioning Guide](../../admin/HYBRID_DEPLOYMENT_GUIDE.md)
 
 **Questions?** Check the setup guide or reach out in your facilitator channel.
 
