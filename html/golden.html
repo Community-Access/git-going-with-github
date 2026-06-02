@@ -1,0 +1,299 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="GIT Going with GitHub - A two-day accessible open source workshop by Community Access">
+  <title>golden.md - GIT Going with GitHub</title>
+  <link rel="stylesheet" href="./styles/github-markdown.css">
+  <link rel="stylesheet" href="./styles/highlight.css">
+  <link rel="stylesheet" href="./styles/custom.css">
+  <style>
+    .markdown-body {
+      box-sizing: border-box;
+      min-width: 200px;
+      max-width: 980px;
+      margin: 0 auto;
+      padding: 45px;
+    }
+    @media (max-width: 767px) {
+      .markdown-body {
+        padding: 15px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+  <header class="site-header" role="banner">
+    <div class="site-header-inner">
+      <nav aria-label="Breadcrumb" class="breadcrumb">
+        <a href="./index.html">Home</a> <span aria-hidden="true">›</span> <span aria-current="page">golden.md</span>
+      </nav>
+      <div class="header-actions">
+        <a href="https://github.com/Community-Access/git-going-with-github/wiki" class="wiki-link" target="_blank" rel="noopener noreferrer">
+          <svg aria-hidden="true" focusable="false" width="16" height="16" viewBox="0 0 16 16" fill="currentColor">
+            <path d="M1.75 1h8.5c.966 0 1.75.784 1.75 1.75v5.5A1.75 1.75 0 0 1 10.25 10H7.06l-2.573 2.573A1.458 1.458 0 0 1 2 11.543V10h-.25A1.75 1.75 0 0 1 0 8.25v-5.5C0 1.784.784 1 1.75 1ZM1.5 2.75v5.5c0 .138.112.25.25.25h1a.75.75 0 0 1 .75.75v2.19l2.72-2.72a.749.749 0 0 1 .53-.22h3.5a.25.25 0 0 0 .25-.25v-5.5a.25.25 0 0 0-.25-.25h-8.5a.25.25 0 0 0-.25.25Zm13 2a.25.25 0 0 0-.25-.25h-.5a.75.75 0 0 1 0-1.5h.5c.966 0 1.75.784 1.75 1.75v5.5A1.75 1.75 0 0 1 14.25 12H14v1.543a1.457 1.457 0 0 1-2.487 1.03L9.22 12.28a.749.749 0 1 1 1.06-1.06l2.22 2.22v-2.19a.75.75 0 0 1 .75-.75h.25a.25.25 0 0 0 .25-.25v-5.5Z"/>
+          </svg>
+          Wiki
+        </a>
+        <form role="search" class="search-form" action="./search.html" method="get">
+        <label for="site-search" class="search-label">Search docs</label>
+        <input
+          type="search"
+          id="site-search"
+          class="search-input"
+          name="q"
+          placeholder="Search docs…"
+          autocomplete="off"
+          aria-label="Search documentation"
+        >
+        <button type="submit" class="search-button" aria-label="Submit search">
+          <svg aria-hidden="true" focusable="false" width="16" height="16" viewBox="0 0 16 16" fill="currentColor">
+            <path d="M10.68 11.74a6 6 0 0 1-7.922-8.982 6 6 0 0 1 8.982 7.922l3.04 3.04a.749.749 0 0 1-.326 1.275.749.749 0 0 1-.734-.215ZM11.5 7a4.499 4.499 0 1 0-8.997 0A4.499 4.499 0 0 0 11.5 7Z"/>
+          </svg>
+        </button>
+      </form>
+      </div>
+    </div>
+  </header>
+  <main id="main-content" class="markdown-body">
+    <h1 id="goldenmd">golden.md</h1>
+<p>The north star for GIT Going with GitHub (GLOW). This document defines what &quot;golden&quot; means for this project, names the single biggest risk to its future, and lays out a bold, dependable, accessible path to get there. It is a vision document and a decision record. When a choice is hard, return here.</p>
+<blockquote>
+<p>One sentence: Every blind and low vision learner who starts this workshop should reach a real, merged open source contribution through an experience so reliable, so accessible, and so quietly delightful that the technology disappears and only their growing confidence remains.</p>
+</blockquote>
+<h2 id="table-of-contents">Table of contents</h2>
+<ul>
+<li><a href="#what-golden-means">What golden means</a></li>
+<li><a href="#the-existential-risk-github-classroom-is-going-away">The existential risk: GitHub Classroom is going away</a></li>
+<li><a href="#design-principles-that-never-bend">Design principles that never bend</a></li>
+<li><a href="#architecture-options-for-life-after-classroom">Architecture options for life after Classroom</a></li>
+<li><a href="#the-recommended-path-github-native-core-flask-companion-at-the-edges">The recommended path: GitHub-native core, Flask companion at the edges</a></li>
+<li><a href="#the-decoupling-contract-own-your-state">The decoupling contract: own your state</a></li>
+<li><a href="#the-five-quality-pillars">The five quality pillars</a></li>
+<li><a href="#failure-modes-and-graceful-recovery">Failure modes and graceful recovery</a></li>
+<li><a href="#phased-roadmap">Phased roadmap</a></li>
+<li><a href="#definition-of-golden-the-release-gate">Definition of golden: the release gate</a></li>
+<li><a href="#guardrails-and-non-negotiables">Guardrails and non-negotiables</a></li>
+</ul>
+<h2 id="what-golden-means">What golden means</h2>
+<p>Golden is not &quot;feature complete.&quot; Golden is a standard of care. A golden release of this workshop is:</p>
+<ul>
+<li><strong>Dependable.</strong> A facilitator can open a cohort and trust that every link resolves, every workflow fires, every challenge can be completed, failed, and recovered. No surprises on go-live day.</li>
+<li><strong>Accessible by construction.</strong> Not retrofitted. Every artifact, every automation message, every fallback page is authored to be read with or without a screen reader, navigated by keyboard alone, and understood without sight. Accessibility is the product, not a checkbox.</li>
+<li><strong>Flexible.</strong> The learning experience survives a vendor sunset, an API change, a renamed button, or a student who arrives with a different tool than expected. The curriculum already teaches &quot;tools change, exploration is the skill.&quot; The infrastructure must live that value too.</li>
+<li><strong>Error free where it counts.</strong> Zero broken learner-facing paths. Automation either succeeds, or fails loudly to a human with a clear recovery action. Silent failure is the only unacceptable outcome.</li>
+<li><strong>Magical and delightful.</strong> The small things: a welcome that uses the learner&#39;s name, a validation bot that congratulates instead of scolds, a recovery path that feels like a safety net rather than a punishment, an audio companion when screen reader fatigue sets in. Delight is the sum of a hundred respected details.</li>
+</ul>
+<p>If a change does not move the project toward all five at once, question it.</p>
+<h2 id="the-existential-risk-github-classroom-is-going-away">The existential risk: GitHub Classroom is going away</h2>
+<p>The entire Learning Room model currently assumes GitHub Classroom exists. Today the flow is: a student accepts a Classroom assignment link, Classroom clones a template repository into a private student repository, and a chain of GitHub Actions drives registration, Day 2 release, autograding, progression, and the instructor dashboard. See <a href="admin/GITHUB_CLASSROOM_ARCHITECTURE.html">admin/GITHUB_CLASSROOM_ARCHITECTURE.md</a> for the current production design.</p>
+<p>This is a single point of failure. If GitHub Classroom is deprecated, removed, or changes its assignment model, the workshop&#39;s onboarding spine breaks. The good news: most of the value does not actually live in Classroom. Classroom does exactly two things for us:</p>
+<ol>
+<li><strong>Provisioning.</strong> It copies a template repository into a per-student private repository and grants access.</li>
+<li><strong>Roster mapping.</strong> It associates a GitHub identity with a roster entry.</li>
+</ol>
+<p>Everything else that makes this workshop work already lives in places we control: the curriculum in <a href="docs/">docs/</a>, the automation in the Learning Room workflows (<a href="learning-room/.github/workflows/">learning-room/.github/workflows/</a>), the autograders, the progression bot, the registration flow, and the support hub. Classroom is a thin provisioning layer, not the brain.</p>
+<p>The golden response is therefore not panic. It is <strong>deliberate decoupling</strong>: replace the two things Classroom does for us with infrastructure we own, keep everything else exactly where it is, and lose nothing the learner depends on.</p>
+<h2 id="design-principles-that-never-bend">Design principles that never bend</h2>
+<p>These are the constitution. Every architectural choice below is measured against them.</p>
+<ol>
+<li><strong>Accessibility is non-negotiable.</strong> Any replacement for Classroom must be fully operable with NVDA, JAWS, and VoiceOver, by keyboard alone. A provisioning UI that a blind learner cannot use is not a candidate, no matter how convenient it is for facilitators.</li>
+<li><strong>Prefer infrastructure the learner already trusts.</strong> GitHub itself is the safest home. A learner who can navigate github.com can already operate most of our flow. New surfaces add new accessibility risk and new failure modes.</li>
+<li><strong>Own your state.</strong> Never again let a single vendor feature hold the cohort hostage. Roster, progress, and provisioning state must be reconstructable from data we control.</li>
+<li><strong>Degrade gracefully, never silently.</strong> Every automated step has a documented manual fallback that a facilitator can run by hand. The automation is an accelerator, not a dependency.</li>
+<li><strong>One arc, many tools.</strong> The curriculum is one journey from browser to github.dev to VS Code. The infrastructure must not fracture that arc, regardless of which provisioning method is in play.</li>
+</ol>
+<h2 id="architecture-options-for-life-after-classroom">Architecture options for life after Classroom</h2>
+<p>Three credible paths exist. Each is evaluated against the principles above.</p>
+<h3 id="option-a-github-native-provisioning-no-classroom">Option A: GitHub-native provisioning (no Classroom)</h3>
+<p>Replace Classroom&#39;s provisioning with a GitHub App or an Actions-driven bot that, on registration, creates a private repository from the existing template and invites the student. The roster lives in a private admin repository (as the instructor dashboard already does). Everything downstream stays identical because student repositories look exactly the same as they do today.</p>
+<p>Strengths: stays entirely inside GitHub, the surface learners already navigate accessibly. Reuses the existing template, autograders, progression bot, and dashboard sync with near-zero change. Lowest accessibility risk. Lowest new-failure-mode risk.</p>
+<p>Weaknesses: requires a GitHub App or a bot token with repository-creation scope and careful permission hygiene. Repository creation rate limits and org seat limits need planning for large cohorts.</p>
+<h3 id="option-b-flask-companion-application">Option B: Flask companion application</h3>
+<p>A small Flask service handles registration, roster, provisioning orchestration (calling the GitHub API to create student repositories), Day 2 release, and a facilitator dashboard. The learner-facing curriculum still lives in GitHub repositories.</p>
+<p>Strengths: full control over registration UX, dashboards, and cohort logic. Can present a single accessible front door. Can store richer state and analytics than issue comments allow.</p>
+<p>Weaknesses: a new hosted service to secure, deploy, monitor, and make accessible. New attack surface (OWASP Top 10 applies in full: auth, secrets, injection, CSRF, rate limiting). A self-hosted dependency that can go down on go-live day. Higher accessibility testing burden because we now own HTML, focus order, and live regions ourselves.</p>
+<h3 id="option-c-hybrid-recommended">Option C: Hybrid (recommended)</h3>
+<p>GitHub-native provisioning and automation form the dependable core. A thin, optional Flask companion sits at the edges only where GitHub genuinely cannot deliver a good experience: a polished accessible registration landing page, a facilitator cohort dashboard, and bulk operations. The companion is stateless about anything critical: if it disappears, the GitHub-native core still completes the full learner journey.</p>
+<p>This is the golden choice. It honors &quot;prefer infrastructure the learner already trusts&quot; for the critical path, while allowing a delightful, fully accessible front door where it adds real value, and it never makes the learner&#39;s success depend on a service we have to keep alive.</p>
+<h2 id="the-recommended-path-github-native-core-flask-companion-at-the-edges">The recommended path: GitHub-native core, Flask companion at the edges</h2>
+<p>The plain-language architecture, in order of how a learner experiences it:</p>
+<ol>
+<li><strong>Front door (optional Flask companion or a GitHub Pages form).</strong> An accessible registration page collects the learner&#39;s GitHub handle and preferences. If the Flask companion is unavailable, the existing issue-form registration in the repository is the fallback front door and loses nothing essential.</li>
+<li><strong>Provisioning (GitHub-native).</strong> A GitHub App or Actions bot creates the private Learning Room repository from the template, replacing what Classroom did. The roster entry is written to the private admin repository. This is the only piece that truly changes when Classroom departs.</li>
+<li><strong>The Learning Room (unchanged).</strong> Same private student repository, same seeded challenge issues, same autograders, same progression bot, same PR validation. Because the repository shape is identical, the entire downstream automation in <a href="learning-room/.github/workflows/">learning-room/.github/workflows/</a> keeps working.</li>
+<li><strong>Progression and release (GitHub-native).</strong> Day 2 release, autograder pass/fail comments, and the next-challenge progression all continue to run on the deterministic text signals already documented (<code>ack</code>, <code>day1-complete</code>). These are intentionally simple so a facilitator can test and recover them by hand.</li>
+<li><strong>Facilitator visibility (Flask companion or private admin issues).</strong> The instructor dashboard already syncs to private admin repository issues. The Flask companion, when present, reads the same roster and renders a richer accessible dashboard. When absent, the admin issues are the dashboard.</li>
+</ol>
+<p>The principle holding this together: <strong>the critical path runs on GitHub; the companion only ever makes a good thing nicer, never makes a working thing necessary.</strong></p>
+<h3 id="what-changes-and-what-does-not">What changes and what does not</h3>
+<p>This table summarizes the migration impact so the scope is honest and small.</p>
+<table>
+<thead>
+<tr>
+<th scope="col">Capability</th>
+<th scope="col">Today (Classroom)</th>
+<th scope="col">Golden (post-Classroom)</th>
+<th scope="col">Change size</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Provisioning student repos</td>
+<td>Classroom clones template</td>
+<td>GitHub App or Actions bot clones template</td>
+<td>New, contained</td>
+</tr>
+<tr>
+<td>Roster identity mapping</td>
+<td>Classroom roster</td>
+<td>Private admin repository roster record</td>
+<td>Small</td>
+</tr>
+<tr>
+<td>Registration intake</td>
+<td>Issue form plus Classroom link</td>
+<td>Accessible front door plus same issue-form fallback</td>
+<td>Small</td>
+</tr>
+<tr>
+<td>Challenge seeding</td>
+<td>Template issues</td>
+<td>Unchanged template issues</td>
+<td>None</td>
+</tr>
+<tr>
+<td>Autograding</td>
+<td>Autograder workflows</td>
+<td>Unchanged autograder workflows</td>
+<td>None</td>
+</tr>
+<tr>
+<td>Progression bot</td>
+<td>Progression workflow</td>
+<td>Unchanged progression workflow</td>
+<td>None</td>
+</tr>
+<tr>
+<td>Day 2 release</td>
+<td><code>day2-release.yml</code> signals</td>
+<td>Unchanged signal logic</td>
+<td>None</td>
+</tr>
+<tr>
+<td>Instructor dashboard</td>
+<td>Dashboard sync to admin repo</td>
+<td>Same sync, optional richer companion view</td>
+<td>None to small</td>
+</tr>
+</tbody></table>
+<p>The lesson of this table is the whole strategy: by owning the template and the automation already, the project has quietly insulated itself from Classroom. The migration is a provisioning swap, not a rewrite.</p>
+<h2 id="the-decoupling-contract-own-your-state">The decoupling contract: own your state</h2>
+<p>To make a vendor sunset a non-event forever, the project commits to three owned sources of truth:</p>
+<ul>
+<li><strong>Roster of record.</strong> A single canonical roster (in the private admin repository, optionally mirrored by the companion) that maps GitHub handle to cohort, day, and status. Reconstructable without any third party.</li>
+<li><strong>Progress of record.</strong> Challenge status derived from signals the project controls (issue and PR state, labels, the deterministic text signals). Never read progress from a vendor that could remove the API.</li>
+<li><strong>Provisioning of record.</strong> A repeatable, idempotent provisioning action that, given a roster entry, guarantees a correctly seeded student repository. Running it twice is safe. Running it after a partial failure heals the state.</li>
+</ul>
+<p>If all three are owned and reconstructable, no future vendor change can strand a cohort. That is what flexibility means in practice.</p>
+<h2 id="the-five-quality-pillars">The five quality pillars</h2>
+<h3 id="pillar-1-accessibility-you-can-feel">Pillar 1: Accessibility you can feel</h3>
+<ul>
+<li>Every learner-facing surface passes screen reader review on NVDA, JAWS, and VoiceOver and is fully keyboard operable.</li>
+<li>If a Flask companion ships, it meets WCAG 2.2 AA: semantic landmarks, correct heading order, labeled form controls, visible focus, live-region announcements for dynamic updates, and no keyboard traps. The project&#39;s own accessibility agents and guides are the in-house review team for it.</li>
+<li>Automation messages (bot comments, validation feedback) are written for a screen reader ear: clear, front-loaded, no decorative noise.</li>
+</ul>
+<h3 id="pillar-2-reliability-you-can-trust">Pillar 2: Reliability you can trust</h3>
+<ul>
+<li>The critical learner path has no single vendor point of failure after the Classroom swap.</li>
+<li>Every automated workflow has a documented manual fallback in the facilitator runbook (<a href="admin/LEARNING-ROOM-E2E-QA-RUNBOOK.html">admin/LEARNING-ROOM-E2E-QA-RUNBOOK.md</a>).</li>
+<li>Provisioning is idempotent and self-healing. Re-running never corrupts a student repository.</li>
+<li>The go-live release gate (<a href="GO-LIVE-QA-GUIDE.html">GO-LIVE-QA-GUIDE.md</a>) must pass before any cohort opens.</li>
+</ul>
+<h3 id="pillar-3-flexibility-that-outlasts-vendors">Pillar 3: Flexibility that outlasts vendors</h3>
+<ul>
+<li>State is owned and reconstructable (the decoupling contract above).</li>
+<li>The provisioning method is swappable behind a stable internal contract, so the next vendor change is a localized edit, not a crisis.</li>
+<li>The curriculum keeps teaching exploration as a skill, so learners are resilient to UI drift even when our docs lag reality.</li>
+</ul>
+<h3 id="pillar-4-error-free-learner-paths">Pillar 4: Error-free learner paths</h3>
+<ul>
+<li>Zero broken links, zero dead assignment URLs, zero orphaned challenges in a shipped cohort.</li>
+<li>Automation fails loud, not silent: a watchdog detects stalled provisioning or stuck progression and raises a human-visible alert.</li>
+<li>Security is part of correctness: any Flask companion is reviewed against the OWASP Top 10, secrets never live in client code or public repos, tokens are least-privilege and rotatable.</li>
+</ul>
+<h3 id="pillar-5-delight-in-the-details">Pillar 5: Delight in the details</h3>
+<ul>
+<li>The welcome uses the learner&#39;s name and affirms belonging from the first message.</li>
+<li>The validation bot celebrates progress and frames failures as the next step, never as a verdict.</li>
+<li>Recovery feels like a safety net: a learner who breaks something is guided back without shame.</li>
+<li>Audio companions exist for every chapter so a tired learner can switch modes. Honor the existing preference to update transcripts and the site without regenerating audio unless a podcast release is explicitly in scope.</li>
+</ul>
+<h2 id="failure-modes-and-graceful-recovery">Failure modes and graceful recovery</h2>
+<p>Golden software assumes things break and plans the catch. For each likely failure, there is a defined, accessible recovery.</p>
+<ul>
+<li><strong>Provisioning fails for one student.</strong> The idempotent provisioning action is re-run for that roster entry. The watchdog flags any student without a healthy repository before Day 1 begins.</li>
+<li><strong>The companion service is down on go-live day.</strong> The GitHub-native front door and core path carry the entire workshop. The companion&#39;s absence is invisible to learners.</li>
+<li><strong>A GitHub UI label or button moves.</strong> The curriculum&#39;s exploration skills cover the learner in the moment; a curriculum issue is filed so the docs catch up for everyone.</li>
+<li><strong>A token expires or is revoked.</strong> Least-privilege tokens are documented and rotatable; the runbook lists exactly which capability each token enables so recovery is fast and scoped.</li>
+<li><strong>A learner falls behind or breaks their repository.</strong> Tiered recovery (already part of the QA runbook) restores them to a known-good state with branch and PR evidence, no data loss.</li>
+</ul>
+<p>The rule: a learner should never be the one who discovers a failure. The watchdog and the facilitator find it first.</p>
+<h2 id="phased-roadmap">Phased roadmap</h2>
+<p>A bold vision delivered in safe increments.</p>
+<ol>
+<li><strong>Phase 0: Harden the present.</strong> Pass the full go-live gate on the current Classroom-based flow. You cannot migrate cleanly from an unstable base.</li>
+<li><strong>Phase 1: Prove the decoupling contract.</strong> Stand up the owned roster, owned progress, and an idempotent provisioning action that creates a student repository from the template without Classroom. Validate with test accounts end to end.</li>
+<li><strong>Phase 2: GitHub-native provisioning in production.</strong> Make the GitHub-native path the default for a real test cohort. Keep Classroom available as a parallel fallback during transition.</li>
+<li><strong>Phase 3: Accessible front door and facilitator dashboard.</strong> Add the optional Flask companion (or GitHub Pages form) only after the core path is proven. Subject it to the same accessibility and security bar as the curriculum itself.</li>
+<li><strong>Phase 4: Retire the Classroom dependency.</strong> Once the GitHub-native path has run a full cohort cleanly, remove the hard dependency on Classroom and document the new architecture as canonical.</li>
+<li><strong>Phase 5: Continuous delight.</strong> Iterate on the hundred small details: warmer automation copy, faster recovery, richer audio companions, sharper accessibility.</li>
+</ol>
+<p>Each phase ships only when the previous phase is golden. No phase weakens accessibility, reliability, or learner trust to move faster.</p>
+<h2 id="definition-of-golden-the-release-gate">Definition of golden: the release gate</h2>
+<p>A cohort is golden only when all of the following hold. This complements, and does not replace, the detailed <a href="GO-LIVE-QA-GUIDE.html">GO-LIVE-QA-GUIDE.md</a>.</p>
+<ul>
+<li>The critical learner path completes end to end with no GitHub Classroom dependency, or with Classroom and the GitHub-native path both proven.</li>
+<li>Provisioning is idempotent and re-running it heals partial failures.</li>
+<li>Owned roster, owned progress, and owned provisioning are all reconstructable without a third party.</li>
+<li>Every learner-facing surface passes NVDA, JAWS, and VoiceOver review and is fully keyboard operable.</li>
+<li>Any Flask companion passes WCAG 2.2 AA and an OWASP Top 10 security review, with least-privilege, rotatable secrets.</li>
+<li>Every automated workflow has a tested manual fallback in the runbook.</li>
+<li>A watchdog surfaces stalled provisioning or progression to a human before a learner notices.</li>
+<li>Zero broken learner-facing links or dead assignment URLs in the shipped cohort.</li>
+<li>Automation copy is warm, screen-reader-first, and frames failure as the next step.</li>
+</ul>
+<h2 id="guardrails-and-non-negotiables">Guardrails and non-negotiables</h2>
+<ul>
+<li><strong>Never trade accessibility for convenience.</strong> A faster facilitator tool that a blind learner cannot use is not shipped.</li>
+<li><strong>Never let a vendor own the critical path again.</strong> Provisioning, roster, and progress stay owned and reconstructable.</li>
+<li><strong>Never fail silently.</strong> Loud, human-visible failure with a clear recovery action, every time.</li>
+<li><strong>Never make delight an afterthought.</strong> The warm welcome, the kind validation message, the safety-net recovery: these are requirements, not polish.</li>
+<li><strong>Keep the GLOW name and branding</strong> unless explicitly asked to change it.</li>
+<li><strong>Minimize audio regeneration.</strong> Prefer transcript and site-only updates unless a podcast release is explicitly in scope.</li>
+</ul>
+<hr>
+<p>Golden is a direction, not a destination. Measure every pull request, every workflow, every word of bot copy against this question: does it make the journey more dependable, more accessible, more flexible, more error free, and more delightful for the learner who needs it most? If yes, ship it. If no, return here and try again.</p>
+<h2 id="authoritative-sources">Authoritative Sources</h2>
+<p>Use these official references when you need the current source of truth for facts in this document.</p>
+<ul>
+<li><a href="https://docs.github.com/en">GitHub Docs, home</a></li>
+<li><a href="https://docs.github.com/en/education/manage-coursework-with-github-classroom/teach-with-github-classroom/about-github-classroom">About GitHub Classroom</a></li>
+<li><a href="https://www.w3.org/TR/WCAG22/">Web Content Accessibility Guidelines (WCAG) 2.2</a></li>
+</ul>
+<h3 id="section-level-source-map">Section-Level Source Map</h3>
+<p>Use this map to verify facts for each major section in this file.</p>
+<ul>
+<li><strong>What golden means, Design principles, The five quality pillars, Guardrails:</strong> <a href="https://docs.github.com/en">GitHub Docs, home</a>, <a href="https://www.w3.org/TR/WCAG22/">Web Content Accessibility Guidelines (WCAG) 2.2</a></li>
+<li><strong>The existential risk, Architecture options, The recommended path, The decoupling contract, Failure modes, Phased roadmap, Definition of golden:</strong> <a href="https://docs.github.com/en/education/manage-coursework-with-github-classroom/teach-with-github-classroom/about-github-classroom">About GitHub Classroom</a>, <a href="https://docs.github.com/en">GitHub Docs, home</a></li>
+</ul>
+
+  </main>
+  <footer role="contentinfo" class="site-footer">
+    <p><strong>GIT Going with GitHub</strong> - A workshop by <a href="https://community-access.org">Community Access</a></p>
+    <p><a href="https://github.com/community-access/git-going-with-github">View on GitHub</a> · <a href="https://community-access.org">community-access.org</a></p>
+  </footer>
+
+  </body>
+</html>

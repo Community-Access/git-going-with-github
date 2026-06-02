@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{% block title %}GIT Going with GitHub{% endblock %} - GLOW companion</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}" />
+  </head>
+  <body>
+    <a class="skip-link" href="#main">Skip to main content</a>
+    <header>
+      <p class="brand">GIT Going with GitHub</p>
+      <nav aria-label="Primary">
+        <ul>
+          <li><a href="{{ url_for('register') }}">Register</a></li>
+          {% if session.get('facilitator') %}
+          <li><a href="{{ url_for('dashboard') }}">Facilitator dashboard</a></li>
+          <li>
+            <form method="post" action="{{ url_for('logout') }}" class="inline-form">
+              <input type="hidden" name="csrf_token" value="{{ csrf_token }}" />
+              <button type="submit" class="link-button">Sign out</button>
+            </form>
+          </li>
+          {% else %}
+          <li><a href="{{ url_for('login') }}">Facilitator sign in</a></li>
+          {% endif %}
+        </ul>
+      </nav>
+    </header>
+
+    {% set messages = get_flashed_messages(with_categories=true) %}
+    {% if messages %}
+    <div class="flash" role="status" aria-live="polite">
+      <ul>
+        {% for category, message in messages %}
+        <li class="flash-{{ category }}">{{ message }}</li>
+        {% endfor %}
+      </ul>
+    </div>
+    {% endif %}
+
+    <main id="main">
+      {% block content %}{% endblock %}
+    </main>
+
+    <footer>
+      <p>
+        This optional companion is a convenience. If it is ever unavailable, you
+        can still register and complete the workshop entirely on GitHub.
+      </p>
+    </footer>
+  </body>
+</html>

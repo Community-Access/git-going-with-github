@@ -6,6 +6,8 @@ The previous "multi-player sandbox" provisioning model (shared repo + batch issu
 
 See the [Workshop Deployment Guide](../classroom/README.md) for all setup instructions.
 
+> **Looking ahead, beyond Classroom.** The owned, GitHub-native replacement for Classroom provisioning is specified in [SPEC.md](../SPEC.md) and operated per [OWNED_PROVISIONING.md](OWNED_PROVISIONING.md). That subsystem removes the single-vendor dependency by owning the roster, progress, and provisioning of record.
+
 ## Authoritative Sources
 
 Use these official references when you need the current source of truth for facts in this chapter.

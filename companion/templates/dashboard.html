@@ -1,0 +1,66 @@
+{% extends "base.html" %}
+{% block title %}Facilitator dashboard{% endblock %}
+{% block content %}
+<h1>Cohort dashboard</h1>
+<p>
+  This dashboard renders the owned roster of record. It is a read-only view; the
+  same data lives in the private admin repository, so this page can disappear
+  without losing anything.
+</p>
+
+<h2>Summary</h2>
+<p>
+  {{ summary.total }} learner(s) total.
+  Provisioned: {{ summary.get('provision_provisioned', 0) }}.
+  Pending: {{ summary.get('provision_pending', 0) }}.
+  Failed: {{ summary.get('provision_failed', 0) }}.
+  Healed: {{ summary.get('provision_healed', 0) }}.
+</p>
+
+<form method="get" action="{{ url_for('dashboard') }}" class="filter-form">
+  <label for="cohort">Filter by cohort</label>
+  <select id="cohort" name="cohort">
+    <option value="">All cohorts</option>
+    {% for c in cohorts %}
+    <option value="{{ c }}" {% if c == cohort_filter %}selected{% endif %}>{{ c }}</option>
+    {% endfor %}
+  </select>
+  <button type="submit">Apply filter</button>
+</form>
+
+<h2>Learners</h2>
+{% if learners %}
+<table>
+  <caption>
+    Roster of {{ learners|length }} learner(s){% if cohort_filter %} in cohort {{ cohort_filter }}{% endif %}.
+    Columns: GitHub username, cohort, path, provisioning state, and progression status.
+  </caption>
+  <thead>
+    <tr>
+      <th scope="col">GitHub username</th>
+      <th scope="col">Cohort</th>
+      <th scope="col">Path</th>
+      <th scope="col">Provisioning</th>
+      <th scope="col">Status</th>
+      <th scope="col">Learning Room</th>
+    </tr>
+  </thead>
+  <tbody>
+    {% for l in learners %}
+    <tr>
+      <th scope="row">{{ l.github_handle }}</th>
+      <td>{{ l.cohort_id }}</td>
+      <td>{{ l.path }}</td>
+      <td>{{ l.provision_state }}</td>
+      <td>{{ l.status }}</td>
+      <td>
+        {% if l.learning_room_repo %}{{ l.learning_room_repo }}{% else %}Not yet provisioned{% endif %}
+      </td>
+    </tr>
+    {% endfor %}
+  </tbody>
+</table>
+{% else %}
+<p>No learners match this view yet.</p>
+{% endif %}
+{% endblock %}

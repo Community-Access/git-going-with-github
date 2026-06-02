@@ -46,3 +46,13 @@ jobs:
 
       - name: Run automation test suite
         run: npm run test:automation
+
+      - name: Run provisioning test suite
+        run: npm run test:provisioning
+
+      - name: Install companion dependencies
+        run: pip install -r companion/requirements.txt
+
+      - name: Run companion test suite
+        working-directory: companion
+        run: python -m unittest discover -s tests
