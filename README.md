@@ -21,13 +21,13 @@ You will need a [GitHub account](https://github.com/login) to register. New to G
 GIT Going with GitHub is available to remote learners as a **fully online, self-paced experience**. Wherever you are, you can work through the full curriculum on your own schedule.
 
 - **All materials** -- challenges, episodes, podcasts, and reference docs -- are published on this site and available to read or listen to at any time.
-- **Hands-on practice** happens inside your own GitHub Classroom assignment; mentors and automation agents support you through GitHub issues and discussions.
+- **Hands-on practice** happens inside your own GitHub learning room repository; mentors and automation agents support you through GitHub issues and discussions.
 - **No travel, no special software** -- a browser, a keyboard, and your screen reader or assistive tech of choice are all you need.
 - **Open a discussion** if you get stuck and a mentor will meet you there.
 
 This is open-source learning: free to read, free to share, free to join.
 
-> **Tools change. Exploration is part of the skill.** GitHub.com, GitHub Classroom, VS Code, GitHub Copilot, github.dev, browser extensions, and agent experiences change continuously. We do our best to keep this documentation current, source-backed, and tested, but a label may move, a feature may graduate from preview, or an account policy may change what you hear. When something differs, pause and use the exploration skills taught here: check the page title and URL, move by headings and landmarks, find the named tab or button, use the Command Palette or keyboard shortcut help, and compare with the official docs linked in each chapter. If the documented path is wrong, file a curriculum issue so we can update it for everyone.
+> **Tools change. Exploration is part of the skill.** GitHub.com, VS Code, GitHub Copilot, github.dev, browser extensions, and agent experiences change continuously. We do our best to keep this documentation current, source-backed, and tested, but a label may move, a feature may graduate from preview, or an account policy may change what you hear. When something differs, pause and use the exploration skills taught here: check the page title and URL, move by headings and landmarks, find the named tab or button, use the Command Palette or keyboard shortcut help, and compare with the official docs linked in each chapter. If the documented path is wrong, file a curriculum issue so we can update it for everyone.
 
 | Detail | Information |
 |---|---|

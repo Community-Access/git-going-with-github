@@ -1,6 +1,6 @@
 # Admin & Facilitator Resources
 
-This folder contains all administrative and facilitator documentation for running GitHub Classroom workshops.
+This folder contains all administrative and facilitator documentation for running GIT Going with GitHub workshops using Hybrid, GitHub-native provisioning.
 
 ---
 
@@ -13,7 +13,6 @@ This folder contains all administrative and facilitator documentation for runnin
 - **[FACILITATOR_RESOURCES.md](FACILITATOR_RESOURCES.md)** - Navigation hub for all facilitator guides
 - **[FACILITATOR_GUIDE.md](FACILITATOR_GUIDE.md)** - Complete workshop bible (setup through post-workshop)
 - **[FACILITATOR_OPERATIONS.md](FACILITATOR_OPERATIONS.md)** - Hour-by-hour procedures during workshop
-- **[FACILITATOR_CLASSROOM_TROUBLESHOOTING.md](FACILITATOR_CLASSROOM_TROUBLESHOOTING.md)** - Problem-solving guide
 - **[../GO-LIVE-QA-GUIDE.md](../GO-LIVE-QA-GUIDE.md)** - Final release-readiness guide and end-to-end test checklist
 - **[LEARNING-ROOM-E2E-QA-RUNBOOK.md](LEARNING-ROOM-E2E-QA-RUNBOOK.md)** - Single step-by-step QA runbook from registration to full student completion (podcast excluded)
 
@@ -25,11 +24,22 @@ This folder contains all administrative and facilitator documentation for runnin
 
 ---
 
+## Provisioning and Deployment
+
+**Hybrid provisioning is the current, owned, GitHub-native system:**
+
+- **[HYBRID_REVIEW_INDEX.md](HYBRID_REVIEW_INDEX.md)** - Start here: catalog of the entire Hybrid deliverable
+- **[HYBRID_DEPLOYMENT_GUIDE.md](HYBRID_DEPLOYMENT_GUIDE.md)** - Phase-by-phase deployment of Hybrid provisioning and optional companion
+- **[OWNED_PROVISIONING.md](OWNED_PROVISIONING.md)** - Day-to-day operations guide for the owned provisioning subsystem
+- **[companion/README.md](../companion/README.md)** - Optional Flask companion (registration front door + facilitator dashboard)
+
+---
+
 ## Student And Enrollment Management
 
 - **[STUDENT_MANAGEMENT.md](STUDENT_MANAGEMENT.md)** - Managing student rosters, enrollments, tracking
-- **[REGISTRATION-ADMIN.md](REGISTRATION-ADMIN.md)** - Registration process administration and API classroom automation setup
-- **[REGISTRATION-QUICKSTART.md](REGISTRATION-QUICKSTART.md)** - 5-minute facilitator setup for registration + classroom API automation
+- **[REGISTRATION-ADMIN.md](REGISTRATION-ADMIN.md)** - Registration process administration
+- **[REGISTRATION-QUICKSTART.md](REGISTRATION-QUICKSTART.md)** - 5-minute facilitator setup for registration
 - **[STUDENT_ONBOARDING_EMAIL.md](STUDENT_ONBOARDING_EMAIL.md)** - Template email for student onboarding
 
 ---
@@ -44,15 +54,14 @@ This folder contains all administrative and facilitator documentation for runnin
 
 ---
 
-## Setup And Deployment
+## Setup And Validation
 
 - **[COHORT_PROVISIONING.md](COHORT_PROVISIONING.md)** - Setting up a new cohort
 - **[ACCESSIBILITY_TESTING.md](ACCESSIBILITY_TESTING.md)** - Testing workshop for accessibility
 - **[VALIDATION_AUDIT.md](VALIDATION_AUDIT.md)** - Validating everything works
-- **[classroom/README.md](classroom/README.md)** - Copy-paste classroom setup pack (assignments, autograding, seeding)
 - **[LEARNING-ROOM-E2E-QA-RUNBOOK.md](LEARNING-ROOM-E2E-QA-RUNBOOK.md)** - Full registration-through-challenges QA execution path for one operator
 - **[qa-readiness/README.md](qa-readiness/README.md)** - Local unit-test readiness evidence pack (non-podcast)
-- **[../GO-LIVE-QA-GUIDE.md](../GO-LIVE-QA-GUIDE.md)** - Complete pre-cohort QA gate for content, workflows, Classroom, podcasts, and human testing
+- **[../GO-LIVE-QA-GUIDE.md](../GO-LIVE-QA-GUIDE.md)** - Complete pre-cohort QA gate for content, workflows, provisioning, podcasts, and human testing
 
 ---
 
@@ -76,8 +85,8 @@ This folder contains all administrative and facilitator documentation for runnin
 
 ### Planning Phase (Weeks 1-2 Before)
 
-1. [COHORT_PROVISIONING.md](COHORT_PROVISIONING.md) - Set up the cohort
-2. [FACILITATOR_GUIDE.md](FACILITATOR_GUIDE.md#-github-classroom-setup-before-day-1) - GitHub Classroom setup
+1. [HYBRID_DEPLOYMENT_GUIDE.md](HYBRID_DEPLOYMENT_GUIDE.md) - Deploy provisioning infrastructure
+2. [COHORT_PROVISIONING.md](COHORT_PROVISIONING.md) - Set up the cohort
 3. [ANNOUNCEMENT.md](ANNOUNCEMENT.md) - Create student announcements
 4. [STUDENT_MANAGEMENT.md](STUDENT_MANAGEMENT.md) - Prepare roster
 
@@ -90,8 +99,8 @@ This folder contains all administrative and facilitator documentation for runnin
 ### During Workshop
 
 1. [FACILITATOR_OPERATIONS.md](FACILITATOR_OPERATIONS.md) - Follow hour-by-hour procedures
-2. [FACILITATOR_CLASSROOM_TROUBLESHOOTING.md](FACILITATOR_CLASSROOM_TROUBLESHOOTING.md) - Reference when needed
-3. [PROGRESS_TRACKER.md](PROGRESS_TRACKER.md) - Track student progress
+2. [PROGRESS_TRACKER.md](PROGRESS_TRACKER.md) - Track student progress
+3. [OWNED_PROVISIONING.md](OWNED_PROVISIONING.md#failure-modes-and-recovery) - Reference for recovery if needed
 
 ### Post-Workshop
 

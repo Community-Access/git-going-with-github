@@ -55,25 +55,9 @@ These are the constitution. Every architectural choice below is measured against
 
 ## Architecture options for life after Classroom
 
-Three credible paths exist. Each is evaluated against the principles above.
+The workshop has transitioned to Hybrid architecture: GitHub-native provisioning and automation form the dependable core, with an optional Flask companion at the edges for a polished accessible registration landing page and facilitator dashboard.
 
-### Option A: GitHub-native provisioning (no Classroom)
-
-Replace Classroom's provisioning with a GitHub App or an Actions-driven bot that, on registration, creates a private repository from the existing template and invites the student. The roster lives in a private admin repository (as the instructor dashboard already does). Everything downstream stays identical because student repositories look exactly the same as they do today.
-
-Strengths: stays entirely inside GitHub, the surface learners already navigate accessibly. Reuses the existing template, autograders, progression bot, and dashboard sync with near-zero change. Lowest accessibility risk. Lowest new-failure-mode risk.
-
-Weaknesses: requires a GitHub App or a bot token with repository-creation scope and careful permission hygiene. Repository creation rate limits and org seat limits need planning for large cohorts.
-
-### Option B: Flask companion application
-
-A small Flask service handles registration, roster, provisioning orchestration (calling the GitHub API to create student repositories), Day 2 release, and a facilitator dashboard. The learner-facing curriculum still lives in GitHub repositories.
-
-Strengths: full control over registration UX, dashboards, and cohort logic. Can present a single accessible front door. Can store richer state and analytics than issue comments allow.
-
-Weaknesses: a new hosted service to secure, deploy, monitor, and make accessible. New attack surface (OWASP Top 10 applies in full: auth, secrets, injection, CSRF, rate limiting). A self-hosted dependency that can go down on go-live day. Higher accessibility testing burden because we now own HTML, focus order, and live regions ourselves.
-
-### Option C: Hybrid (recommended)
+### Hybrid (current, recommended)
 
 GitHub-native provisioning and automation form the dependable core. A thin, optional Flask companion sits at the edges only where GitHub genuinely cannot deliver a good experience: a polished accessible registration landing page, a facilitator cohort dashboard, and bulk operations. The companion is stateless about anything critical: if it disappears, the GitHub-native core still completes the full learner journey.
 

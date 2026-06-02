@@ -55,12 +55,3 @@ test('Go-live release checklist contains required non-podcast readiness gates', 
         );
     });
 });
-
-test('recovery restore script exists and is discoverable in scripts/classroom', () => {
-    const scriptPath = path.join(repoRoot, 'scripts/classroom/Restore-LearningRoomFiles.ps1');
-    assert.equal(fs.existsSync(scriptPath), true, 'Missing recovery restore script in scripts/classroom');
-
-    const content = fs.readFileSync(scriptPath, 'utf8');
-    assert.match(content, /Profile\s*=\s*'core-day1'/i, 'Recovery script should provide default restore profile');
-    assert.match(content, /OpenPullRequest/i, 'Recovery script should support opening a recovery pull request');
-});
