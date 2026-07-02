@@ -1,0 +1,357 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="GIT Going with GitHub - A two-day accessible open source workshop by Community Access">
+  <title>Operations Review: Provisioning Failures and Workshop Model Robustness - GIT Going with GitHub</title>
+  <link rel="stylesheet" href="./styles/github-markdown.css">
+  <link rel="stylesheet" href="./styles/highlight.css">
+  <link rel="stylesheet" href="./styles/custom.css">
+  <style>
+    .markdown-body {
+      box-sizing: border-box;
+      min-width: 0;
+      max-width: 980px;
+      margin: 0;
+      padding: 45px;
+    }
+
+    .page-layout {
+      max-width: 1320px;
+      margin: 0 auto;
+      padding: 1rem 1rem 2rem;
+      display: grid;
+      grid-template-columns: minmax(240px, 300px) minmax(0, 1fr);
+      gap: 1.25rem;
+      align-items: start;
+    }
+
+    @media (max-width: 767px) {
+      .page-layout {
+        grid-template-columns: 1fr;
+        padding: 0.5rem 0.5rem 1rem;
+      }
+
+      .markdown-body {
+        padding: 15px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+  <header class="site-header" role="banner">
+    <div class="site-header-inner">
+      <nav aria-label="Breadcrumb" class="breadcrumb">
+        <a href="./index.html">Home</a> <span aria-hidden="true">›</span> <span aria-current="page">Operations Review: Provisioning Failures and Workshop Model Robustness</span>
+      </nav>
+      <div class="header-actions">
+        <a href="https://github.com/Community-Access/git-going-with-github/wiki" class="wiki-link" target="_blank" rel="noopener noreferrer">
+          <svg aria-hidden="true" focusable="false" width="16" height="16" viewBox="0 0 16 16" fill="currentColor">
+            <path d="M1.75 1h8.5c.966 0 1.75.784 1.75 1.75v5.5A1.75 1.75 0 0 1 10.25 10H7.06l-2.573 2.573A1.458 1.458 0 0 1 2 11.543V10h-.25A1.75 1.75 0 0 1 0 8.25v-5.5C0 1.784.784 1 1.75 1ZM1.5 2.75v5.5c0 .138.112.25.25.25h1a.75.75 0 0 1 .75.75v2.19l2.72-2.72a.749.749 0 0 1 .53-.22h3.5a.25.25 0 0 0 .25-.25v-5.5a.25.25 0 0 0-.25-.25h-8.5a.25.25 0 0 0-.25.25Zm13 2a.25.25 0 0 0-.25-.25h-.5a.75.75 0 0 1 0-1.5h.5c.966 0 1.75.784 1.75 1.75v5.5A1.75 1.75 0 0 1 14.25 12H14v1.543a1.457 1.457 0 0 1-2.487 1.03L9.22 12.28a.749.749 0 1 1 1.06-1.06l2.22 2.22v-2.19a.75.75 0 0 1 .75-.75h.25a.25.25 0 0 0 .25-.25v-5.5Z"/>
+          </svg>
+          Wiki
+        </a>
+        <form role="search" class="search-form" action="./search.html" method="get">
+        <label for="site-search" class="search-label">Search docs</label>
+        <input
+          type="search"
+          id="site-search"
+          class="search-input"
+          name="q"
+          placeholder="Search docs…"
+          autocomplete="off"
+          aria-label="Search documentation"
+        >
+        <button type="submit" class="search-button" aria-label="Submit search">
+          <svg aria-hidden="true" focusable="false" width="16" height="16" viewBox="0 0 16 16" fill="currentColor">
+            <path d="M10.68 11.74a6 6 0 0 1-7.922-8.982 6 6 0 0 1 8.982 7.922l3.04 3.04a.749.749 0 0 1-.326 1.275.749.749 0 0 1-.734-.215ZM11.5 7a4.499 4.499 0 1 0-8.997 0A4.499 4.499 0 0 0 11.5 7Z"/>
+          </svg>
+        </button>
+      </form>
+      </div>
+    </div>
+  </header>
+  <div class="page-layout">
+    <aside class="guided-sidebar" aria-label="Guided reference">
+    <h2 class="guided-title">Guided Reference</h2>
+    <p class="guided-intro">Follow the learning order, then jump into challenge issue views, appendices, and support resources.</p>
+
+
+    <section class="guided-resume" aria-label="Resume learning">
+      <a id="resume-link" class="guided-resume-link" href="./index.html" hidden>Resume where you left off</a>
+    </section>
+
+    <nav class="guided-nav" aria-label="Workshop navigation">
+      <section class="guided-section">
+        <h3>Start Here</h3>
+        <ul>
+          <li><a href="./index.html">Workshop Home</a></li>
+          <li><a href="./docs/course-guide.html">Course Guide</a></li>
+<li><a href="./docs/get-going.html">Get Going with GitHub</a></li>
+<li><a href="./docs/CHALLENGES.html">Challenge Hub</a></li>
+        </ul>
+      </section>
+
+      <section class="guided-section">
+        <h3>Learning Order</h3>
+        <details>
+          <summary>Day 1 chapters</summary>
+          <ul>
+            <li><a href="./docs/00-pre-workshop-setup.html">Pre-Workshop Setup - GIT Going with GitHub</a></li>
+<li><a href="./docs/01-choose-your-tools.html">Choose Your Adventure: A Tool Tour</a></li>
+<li><a href="./docs/02-understanding-github.html">Understanding GitHub&#39;s Web Structure</a></li>
+<li><a href="./docs/03-navigating-repositories.html">Navigating Repositories</a></li>
+<li><a href="./docs/04-the-learning-room.html">The Learning Room: Your Personal Practice Repository</a></li>
+<li><a href="./docs/05-working-with-issues.html">Working with Issues</a></li>
+<li><a href="./docs/06-working-with-pull-requests.html">Working with Pull Requests</a></li>
+<li><a href="./docs/07-merge-conflicts.html">Merge Conflicts</a></li>
+<li><a href="./docs/08-open-source-culture.html">Culture, Etiquette, and Community Standards</a></li>
+<li><a href="./docs/09-labels-milestones-projects.html">Labels, Milestones, and Projects</a></li>
+<li><a href="./docs/10-notifications-and-day-1-close.html">Notifications</a></li>
+          </ul>
+        </details>
+        <details>
+          <summary>Day 2 chapters</summary>
+          <ul>
+            <li><a href="./docs/11-vscode-interface.html">VS Code: Interface and Setup</a></li>
+<li><a href="./docs/12-vscode-accessibility.html">VS Code: Accessibility Deep Dive</a></li>
+<li><a href="./docs/13-how-git-works.html">How Git Works: The Mental Model</a></li>
+<li><a href="./docs/14-git-in-practice.html">Git &amp; Source Control in VS Code</a></li>
+<li><a href="./docs/15-code-review.html">Code Review: PRs, Diffs, and Constructive Feedback</a></li>
+<li><a href="./docs/16-github-copilot.html">GitHub Copilot</a></li>
+<li><a href="./docs/17-issue-templates.html">Issue Templates</a></li>
+<li><a href="./docs/18-fork-and-contribute.html">Fork and Contribute: The Open Source Workflow</a></li>
+<li><a href="./docs/19-accessibility-agents.html">Accessibility Agents</a></li>
+<li><a href="./docs/20-build-your-agent.html">Capstone Project: Contribute an Impactful Agent</a></li>
+<li><a href="./docs/21-github-accessibility-and-open-source.html">GitHub Accessibility and Open Source at Scale</a></li>
+<li><a href="./docs/22-what-comes-next.html">What Comes Next: Your Developer Journey</a></li>
+          </ul>
+        </details>
+      </section>
+
+      <section class="guided-section">
+        <h3>Appendices</h3>
+        <details>
+          <summary>Reference library</summary>
+          <ul>
+            <li><a href="./docs/appendix-a-glossary.html">Appendix A: GitHub Concepts &amp; Glossary</a></li>
+<li><a href="./docs/appendix-b-screen-reader-cheatsheet.html">Appendix B: Screen Reader Cheat Sheet</a></li>
+<li><a href="./docs/appendix-c-markdown-reference.html">Appendix C: Markdown and GitHub Flavored Markdown - Complete Guide</a></li>
+<li><a href="./docs/appendix-d-git-authentication.html">Appendix D: Git Authentication</a></li>
+<li><a href="./docs/appendix-e-advanced-git.html">Appendix E: Advanced Git Operations</a></li>
+<li><a href="./docs/appendix-f-git-security.html">Appendix F: Git Security for Contributors</a></li>
+<li><a href="./docs/appendix-g-vscode-reference.html">Appendix G: VS Code Accessibility Reference</a></li>
+<li><a href="./docs/appendix-h-github-desktop.html">Appendix H: GitHub Desktop</a></li>
+<li><a href="./docs/appendix-i-github-cli.html">Appendix I: GitHub CLI Reference</a></li>
+<li><a href="./docs/appendix-j-cloud-editors.html">Appendix J: GitHub Codespaces</a></li>
+<li><a href="./docs/appendix-k-copilot-reference.html">Appendix K: Copilot Reference</a></li>
+<li><a href="./docs/appendix-l-agents-reference.html">Appendix L: Accessibility Agents Reference</a></li>
+<li><a href="./docs/appendix-m-accessibility-standards.html">Appendix M: Accessibility Standards Reference</a></li>
+<li><a href="./docs/appendix-n-advanced-search.html">Appendix N: GitHub Advanced Search</a></li>
+<li><a href="./docs/appendix-o-branch-protection.html">Appendix O: Branch Protection Rules and Repository Rulesets</a></li>
+<li><a href="./docs/appendix-p-security-features.html">Appendix P: GitHub Security Features</a></li>
+<li><a href="./docs/appendix-q-actions-workflows.html">Appendix Q: GitHub Actions and Workflows</a></li>
+<li><a href="./docs/appendix-r-projects-deep-dive.html">Appendix R: GitHub Projects Deep Dive</a></li>
+<li><a href="./docs/appendix-s-releases-tags-insights.html">Appendix S: Releases, Tags, and Repository Insights</a></li>
+<li><a href="./docs/appendix-t-community-and-social.html">Appendix T: Community and Social</a></li>
+<li><a href="./docs/appendix-u-discussions-and-gists.html">Appendix U: Discussions and Gists</a></li>
+<li><a href="./docs/appendix-v-github-mobile.html">Appendix V: GitHub Mobile</a></li>
+<li><a href="./docs/appendix-w-github-pages.html">Appendix W: Publishing with GitHub Pages</a></li>
+<li><a href="./docs/appendix-x-resources.html">Appendix X: Resources</a></li>
+<li><a href="./docs/appendix-y-workshop-materials.html">Appendix Y: Accessing and Downloading Workshop Materials</a></li>
+<li><a href="./docs/appendix-z-github-skills.html">Appendix Z: GitHub Skills - Complete Course Catalog</a></li>
+<li><a href="./docs/appendix-aa-agent-installation-setup.html">Appendix AA: Agent Installation &amp; Setup Across All Platforms</a></li>
+<li><a href="./docs/appendix-ab-advanced-agent-patterns.html">Appendix AB: Advanced Agent Patterns &amp; Skills</a></li>
+<li><a href="./docs/appendix-ac-document-developer-tools.html">Appendix AC: Document &amp; Developer Tool Agents</a></li>
+          </ul>
+        </details>
+      </section>
+
+      <section class="guided-section">
+        <h3>Challenge Lab</h3>
+        <ul>
+          <li><a href="./docs/CHALLENGES.html">Challenge Hub</a></li>
+<li><a href="./work.html">Issue-Style Challenge Walkthrough</a></li>
+<li><a href="./docs/17-issue-templates.html">Issue Template Deep Dive</a></li>
+        </ul>
+      </section>
+
+      <section class="guided-section">
+        <h3>External Resources</h3>
+        <ul>
+          <li><a href="https://lp.csedesigns.com/ggg/PODCASTS.html">Podcast Episodes <span class="guided-external">(external)</span></a></li>
+<li><a href="https://lp.csedesigns.com/ggg/feed.xml">RSS Feed <span class="guided-external">(external)</span></a></li>
+        </ul>
+      </section>
+
+      <section class="guided-section">
+        <h3>Get Help</h3>
+        <ul>
+          <li><a href="https://github.com/Community-Access/support">Support Hub <span class="guided-external">(external)</span></a></li>
+        </ul>
+      </section>
+    </nav>
+  </aside>
+    <main id="main-content" class="markdown-body page-main">
+      <nav class="quick-jumps" aria-label="Quick jumps">
+    <h2 class="quick-jumps-title">Quick Jumps</h2>
+    <ul class="quick-jumps-list">
+      <li><a href="#course-content">Jump to course content</a></li><li><a href="#main-content">Jump to main content top</a></li><li><a href="#on-this-page">Jump to on-page sections</a></li><li><a href="./docs/CHALLENGES.html">Open challenge hub</a></li><li><a href="./work.html">Open issue-style challenge walkthrough</a></li>
+    </ul>
+  </nav>
+
+      <nav id="on-this-page" class="onpage-nav" aria-label="On this page">
+    <h2 class="onpage-title">On This Page</h2>
+    <ul class="onpage-list">
+      <li class="onpage-item"><a href="#1-headline-finding-the-provisioning-github-app-is-not-installed-on-the-org">1. Headline Finding: The Provisioning GitHub App Is Not Installed on the Org</a></li>
+<li class="onpage-item"><a href="#2-immediate-fix-operator-steps-15-minutes">2. Immediate Fix (Operator Steps, ~15 Minutes)</a></li>
+<li class="onpage-item"><a href="#3-make-the-failure-class-impossible-code-changes">3. Make the Failure Class Impossible: Code Changes</a></li>
+<li class="onpage-item onpage-sub"><a href="#31-auto-discover-the-installation-id">3.1 Auto-discover the installation ID</a></li>
+<li class="onpage-item onpage-sub"><a href="#32-alert-on-failure---implement-the-spec39s-watchdog">3.2 Alert on failure - implement the spec&amp;#39;s watchdog</a></li>
+<li class="onpage-item onpage-sub"><a href="#33-skip-work-free-runs">3.3 Skip work-free runs</a></li>
+<li class="onpage-item onpage-sub"><a href="#34-event-driven-provisioning-instead-of-30-minute-polling">3.4 Event-driven provisioning instead of 30-minute polling</a></li>
+<li class="onpage-item onpage-sub"><a href="#35-credential-health-check">3.5 Credential health check</a></li>
+<li class="onpage-item onpage-sub"><a href="#36-preflight-assertions">3.6 Preflight assertions</a></li>
+<li class="onpage-item"><a href="#4-pipeline-gaps-in-the-workshop-model">4. Pipeline Gaps in the Workshop Model</a></li>
+<li class="onpage-item onpage-sub"><a href="#41-registration-does-not-reach-the-provisioning-roster">4.1 Registration does not reach the provisioning roster</a></li>
+<li class="onpage-item onpage-sub"><a href="#42-new-registrants-are-being-sent-dead-classroom-links">4.2 New registrants are being sent dead Classroom links</a></li>
+<li class="onpage-item onpage-sub"><a href="#43-pii-in-public-issue-bodies">4.3 PII in public issue bodies</a></li>
+<li class="onpage-item onpage-sub"><a href="#44-two-overlapping-intake-paths">4.4 Two overlapping intake paths</a></li>
+<li class="onpage-item onpage-sub"><a href="#45-template-drift-risk">4.5 Template drift risk</a></li>
+<li class="onpage-item"><a href="#5-process-finding-the-assessment-predicted-this">5. Process Finding: The Assessment Predicted This</a></li>
+<li class="onpage-item"><a href="#6-repo-hygiene-and-smaller-findings">6. Repo Hygiene and Smaller Findings</a></li>
+<li class="onpage-item"><a href="#7-suggested-order-of-work">7. Suggested Order of Work</a></li>
+<li class="onpage-item"><a href="#authoritative-sources">Authoritative Sources</a></li>
+<li class="onpage-item onpage-sub"><a href="#section-level-source-map">Section-Level Source Map</a></li>
+    </ul>
+  </nav>
+      <div id="course-content"><h1 id="operations-review-provisioning-failures-and-workshop-model-robustness">Operations Review: Provisioning Failures and Workshop Model Robustness</h1>
+<p>Date: July 2, 2026
+Scope: GitHub Actions failure analysis, provisioning subsystem, registration pipeline, repo hygiene.</p>
+<p>Implementation status (July 2, 2026): everything in sections 3, 4.1-4.4, and 6 that is
+code has been implemented (installation-ID auto-discovery, watchdog alert issue,
+work-free early exit, event-driven provisioning dispatch, weekly credentials health
+check, preflight assertions, intake-to-roster sync, Classroom link removal, [REGISTER]
+private intake plus redaction, authoritative-sources gate fixes, scratch cleanup).
+The remaining manual step is section 2: install the GitHub App on the
+Community-Access organization. Template drift (4.5) is still open.</p>
+<h2 id="1-headline-finding-the-provisioning-github-app-is-not-installed-on-the-org">1. Headline Finding: The Provisioning GitHub App Is Not Installed on the Org</h2>
+<p>The &quot;Provision Learning Rooms&quot; workflow has failed on every real run since it was deployed. Verified numbers from the GitHub API:</p>
+<ul>
+<li>280 total runs of <code>provision-learning-rooms.yml</code>.</li>
+<li>Exactly 1 success ever (June 2, 2026, 20:16 UTC) - and that run was a dry run, which skips authentication entirely.</li>
+<li>Every non-dry run, including roughly 12 scheduled runs per day for the past 30 days, fails with:
+<code>Failed to mint installation token (HTTP 404)</code></li>
+</ul>
+<p>Root cause, confirmed directly: <code>GET /orgs/Community-Access/installations</code> shows exactly one GitHub App installed on the org - <code>digitalocean</code> (app id 64711). The provisioning App was created (App ID and PEM are stored as secrets) but was never installed on the Community-Access organization. There is no installation to mint a token against, so the token mint returns 404 no matter what <code>PROVISIONING_APP_INSTALLATION_ID</code> contains.</p>
+<p>Consequences, also confirmed:</p>
+<ul>
+<li>The private roster (<code>git-going-with-github-administration/roster.json</code>) has 2 learners in <code>provision_state: pending</code> - unchanged since June 2. Two registered people have been waiting a month for learning rooms that were never created.</li>
+<li>The admin repo has had no roster commits since June 2 because the workflow dies before the commit step.</li>
+<li>This is precisely the failure class SPEC.md&#39;s golden principle warns about (&quot;never let a single point of failure hold a cohort hostage&quot;) and violates the section 7.2b invariant &quot;any failure visible to a human before a learner notices.&quot; The watchdog the spec calls for does not exist.</li>
+</ul>
+<p>Note on the local working-tree changes: the uncommitted edits to <code>github-app-auth.js</code> (normalize URL-form installation IDs, better 404 hint) are good hardening and all 58 provisioning tests pass, but they will not fix production. No installation ID is valid until the App is installed.</p>
+<h2 id="2-immediate-fix-operator-steps-15-minutes">2. Immediate Fix (Operator Steps, ~15 Minutes)</h2>
+<ol>
+<li>Install the App: GitHub -&gt; Organization settings -&gt; Developer settings -&gt; GitHub Apps -&gt; your provisioning App -&gt; Install App -&gt; Community-Access. Because the App must create new repositories, install it org-wide (repository creation cannot be granted through a selected-repositories installation).</li>
+<li>Capture the installation ID from the post-install URL (<code>.../settings/installations/&lt;id&gt;</code>) or from <code>GET /app/installations</code> using an App JWT.</li>
+<li>Update the <code>PROVISIONING_APP_INSTALLATION_ID</code> secret (it lives in the <code>provisioning</code> environment, not repo-level secrets).</li>
+<li>Run the workflow manually with <code>dry_run: true</code> (expect: &quot;2 learner(s) would be provisioned&quot;), then run it for real.</li>
+<li>Verify: two new <code>learning-room-*</code> repos, invitations sent, roster entries flipped to <code>provisioned</code>, <code>provisioning-log.json</code> committed to the admin repo.</li>
+</ol>
+<h2 id="3-make-the-failure-class-impossible-code-changes">3. Make the Failure Class Impossible: Code Changes</h2>
+<p>These are ordered by payoff.</p>
+<h3 id="31-auto-discover-the-installation-id">3.1 Auto-discover the installation ID</h3>
+<p>Stop storing the installation ID as a secret at all. With an App JWT you can call <code>GET /app/installations</code> and select the installation whose account matches <code>PROVISIONING_STUDENT_OWNER</code>. Add this as the fallback (or the default) in <code>github-app-auth.js</code> / <code>provision-cli.js</code>. This removes an entire class of copy-paste misconfiguration and survives App re-installation (installation IDs change when an App is uninstalled and reinstalled).</p>
+<p>Alternative for the workflow path: the official <code>actions/create-github-app-token</code> action needs only <code>app-id</code> and <code>private-key</code> and resolves the installation from the repo owner automatically. It keeps the zero-npm-dependency property of the repo since it runs as an action, and the CLI keeps the hand-rolled path for local use.</p>
+<h3 id="32-alert-on-failure---implement-the-spec39s-watchdog">3.2 Alert on failure - implement the spec&#39;s watchdog</h3>
+<p>Thirty days of silent failure proves the need. Add a final <code>if: failure()</code> step to <code>provision-learning-rooms.yml</code> that creates or updates a pinned, labeled issue (for example <code>provisioning-broken</code>) in this repo, including the error line from the log. Close it automatically on the next success. Requires <code>issues: write</code> on this workflow only.</p>
+<h3 id="33-skip-work-free-runs">3.3 Skip work-free runs</h3>
+<p>Most of the 280 failed runs had zero learners to provision. Read the roster first; if there are no <code>pending</code>/<code>failed</code> entries, exit success before minting a token. Fewer runs, less noise, and credential problems surface only when they matter - paired with 3.5 so they still surface promptly.</p>
+<h3 id="34-event-driven-provisioning-instead-of-30-minute-polling">3.4 Event-driven provisioning instead of 30-minute polling</h3>
+<p>The registration workflow already fires on <code>issues: opened</code>. Have the enrollment path send a <code>repository_dispatch</code> (or <code>workflow_dispatch</code>) to trigger provisioning immediately, and relax the cron to a few times per day as a healing sweep. Students get rooms in minutes instead of up to 30 (in practice, GitHub throttles the 30-minute cron to roughly every 2 hours anyway), and scheduled load drops by 90 percent.</p>
+<h3 id="35-credential-health-check">3.5 Credential health check</h3>
+<p>A small weekly job that mints a token and makes one read call (<code>GET /app</code>), with the same failure-alert step. Catches expired keys, uninstalled Apps, and permission drift before a learner does.</p>
+<h3 id="36-preflight-assertions">3.6 Preflight assertions</h3>
+<p>Before iterating the roster, <code>provision-cli.js</code> should verify the minted token can read <code>LEARNING_ROOM_TEMPLATE_REPO</code>. Fail with one clear message instead of per-learner errors.</p>
+<h2 id="4-pipeline-gaps-in-the-workshop-model">4. Pipeline Gaps in the Workshop Model</h2>
+<h3 id="41-registration-does-not-reach-the-provisioning-roster">4.1 Registration does not reach the provisioning roster</h3>
+<p>The chain today: <code>[ENROLL]</code> issue -&gt; intake issue in the private admin repo -&gt; (manual, undocumented step) -&gt; <code>roster.json</code> -&gt; provisioning. Nothing automates the middle hop. The 2 pending learners suggest roster entries were hand-written once on June 2 and never again. Recommendation: a workflow in the admin repo that converts intake issues into <code>pending</code> roster entries (idempotent on github_handle+cohort), or teach <code>provision-cli.js</code> to read intake issues directly. Until then, document the manual step in the runbook so it is at least a known duty.</p>
+<h3 id="42-new-registrants-are-being-sent-dead-classroom-links">4.2 New registrants are being sent dead Classroom links</h3>
+<p><code>CLASSROOM_DAY1_ASSIGNMENT_URL</code> / <code>CLASSROOM_DAY2_ASSIGNMENT_URL</code> repo variables still point at <code>classroom.github.com/a/...</code> and the registration welcome comment still sends people there - but Classroom was removed from the program in the June 2 transition. Anyone registering today gets a broken onboarding path. Replace these variables and the welcome text with the Hybrid flow (enroll issue -&gt; learning room invitation), or clear the vars so the fallback text (&quot;a facilitator will share your link&quot;) is used.</p>
+<h3 id="43-pii-in-public-issue-bodies">4.3 PII in public issue bodies</h3>
+<p>The <code>[ENROLL]</code> path redacts the public issue body after capturing intake privately - good. The <code>[REGISTER]</code> path does not: full name and email remain in public issue bodies indefinitely. Apply the same redact-after-capture pattern to <code>[REGISTER]</code>, and consider a backfill pass over historical registration issues.</p>
+<h3 id="44-two-overlapping-intake-paths">4.4 Two overlapping intake paths</h3>
+<p><code>[REGISTER]</code> (waitlist/welcome/CSV) and <code>[ENROLL]</code> (intake/provisioning) coexist with different field schemas and different privacy behavior. For the self-paced era, collapse to one form that captures minimal public data (GitHub handle only), stores the rest privately, and feeds the roster automatically.</p>
+<h3 id="45-template-drift-risk">4.5 Template drift risk</h3>
+<p>The workshop repo carries <code>learning-room/</code> while provisioning seeds from the separate <code>Community-Access/learning-room-template</code> repo (last pushed May 22). Two sources of truth will drift. Either add a sync workflow (this repo -&gt; template repo on change to <code>learning-room/**</code>) or delete one copy and point everything at the survivor.</p>
+<h2 id="5-process-finding-the-assessment-predicted-this">5. Process Finding: The Assessment Predicted This</h2>
+<p><code>DEPLOYMENT_ASSESSMENT.md</code> (June 2) declared the system &quot;READY FOR PRODUCTION&quot; while flagging, in its own MUST-DO section, that the end-to-end smoke test had not been run. The smoke test would have failed in under a minute and pointed at the missing installation. The lesson to encode in the runbook and QA gate: an untested MUST-DO item means the status is NOT READY - the smoke test is the gate, and no schedule gets enabled until a real (non-dry-run) invocation has succeeded once. The assessment also states &quot;Secrets &amp; Variables: HARDENED, Risk: None identified&quot; for a credential set that had never authenticated successfully; future assessments should require evidence (a green run ID) next to every READY claim.</p>
+<h2 id="6-repo-hygiene-and-smaller-findings">6. Repo Hygiene and Smaller Findings</h2>
+<ul>
+<li><code>validate-authoritative-sources</code> fails at HEAD: <code>DEPLOYMENT_ASSESSMENT.md</code> and <code>fix.md</code> are missing the required &quot;Authoritative Sources&quot; and &quot;Section-Level Source Map&quot; sections. Every docs push will keep failing this gate until fixed (add sections, or exclude assessment/scratch files in <code>scripts/validate-authoritative-sources.js</code>).</li>
+<li><code>DEPLOYMENT_ASSESSMENT.md</code> is full of emoji, violating the repo&#39;s own no-emoji rule in <code>.github/copilot-instructions.md</code>.</li>
+<li>Root clutter: <code>tmp-*.csv</code>, <code>tmp-*.log</code>, <code>tmp-*.ps1</code>, <code>fix.md</code>/<code>fix.html</code>, <code>key.txt</code> (verify this is not a credential; if it ever held one, rotate it), and two <code>learning-room-e2e-*.json</code> files sit at repo root. Move to an untracked scratch area or delete; add <code>tmp-*</code> to <code>.gitignore</code>.</li>
+<li><code>PROVISIONING_TOKEN</code> (actions-bot spike mode) is still wired into the production workflow env, empty. The spec calls the PAT path &quot;throwaway.&quot; Remove it from the workflow to shrink the config surface.</li>
+<li>Actions runners warn that <code>actions/checkout@v4</code> and <code>actions/setup-node@v4</code> target deprecated Node 20; bump to the current majors during the next maintenance pass.</li>
+<li><code>learning-room-pr-bot</code> shows occasional <code>action_required</code> conclusions (first-time fork contributors awaiting approval) - expected, but worth a facilitator habit of clearing the queue.</li>
+</ul>
+<h2 id="7-suggested-order-of-work">7. Suggested Order of Work</h2>
+<ol>
+<li>Install the App, fix the secret, provision the 2 waiting learners (section 2). Everything else is secondary to unblocking real people.</li>
+<li>Commit the local <code>github-app-auth.js</code> hardening plus installation-ID auto-discovery (3.1).</li>
+<li>Add failure alerting to the provisioning workflow (3.2) - small diff, permanent visibility.</li>
+<li>Fix the dead Classroom links in registration (4.2) and the <code>[REGISTER]</code> PII redaction (4.3).</li>
+<li>Fix the <code>validate-authoritative-sources</code> gate (section 6) so CI is green at HEAD.</li>
+<li>Event-driven provisioning + registration-to-roster automation (3.4, 4.1) - this is the &quot;robust model&quot;: one intake form, automatic roster append, provision-on-registration, healing sweep cron, watchdog issue on any failure, weekly credential health check.</li>
+</ol>
+<h2 id="authoritative-sources">Authoritative Sources</h2>
+<p>Use these official references when you need the current source of truth for facts in this chapter.</p>
+<ul>
+<li><a href="https://docs.github.com/en">GitHub Docs, home</a></li>
+<li><a href="https://github.blog/changelog/">GitHub Changelog</a></li>
+</ul>
+<h3 id="section-level-source-map">Section-Level Source Map</h3>
+<p>Use this map to verify facts for each major section in this file.</p>
+<ul>
+<li><strong>Headline Finding:</strong> <a href="https://docs.github.com/en/rest/orgs/orgs#list-app-installations-for-an-organization">GitHub REST API, list app installations for an organization</a>, <a href="https://docs.github.com/en/rest/apps/apps#create-an-installation-access-token-for-an-app">GitHub REST API, create an installation access token</a></li>
+<li><strong>Immediate Fix:</strong> <a href="https://docs.github.com/en/apps/using-github-apps/installing-a-github-app-from-a-third-party">Installing GitHub Apps</a></li>
+<li><strong>Code Changes:</strong> <a href="https://github.com/actions/create-github-app-token">actions/create-github-app-token</a>, <a href="https://docs.github.com/en/rest/apps/apps#list-installations-for-the-authenticated-app">GitHub REST API, list installations for the authenticated app</a></li>
+<li><strong>Pipeline Gaps:</strong> <a href="https://docs.github.com/en/actions/using-workflows/events-that-trigger-workflows#repository_dispatch">GitHub Actions, repository_dispatch event</a></li>
+<li><strong>Repo Hygiene:</strong> <a href="https://github.blog/changelog/2025-09-19-deprecation-of-node-20-on-github-actions-runners/">GitHub Actions runner Node 20 deprecation</a></li>
+</ul>
+</div>
+
+    </main>
+  </div>
+  <footer role="contentinfo" class="site-footer">
+    <p><strong>GIT Going with GitHub</strong> - A workshop by <a href="https://community-access.org">Community Access</a></p>
+    <p><a href="https://github.com/community-access/git-going-with-github">View on GitHub</a> · <a href="https://community-access.org">community-access.org</a></p>
+  </footer>
+
+  <script>
+  (function() {
+    var key = 'gggLastVisitedPath';
+    var currentPath = window.location.pathname || '';
+    try {
+      if (currentPath) {
+        localStorage.setItem(key, currentPath);
+      }
+    } catch (e) {}
+
+    var resumeLink = document.getElementById('resume-link');
+    if (!resumeLink) return;
+
+    try {
+      var savedPath = localStorage.getItem(key);
+      if (savedPath && savedPath !== currentPath) {
+        resumeLink.hidden = false;
+        resumeLink.setAttribute('href', savedPath);
+      }
+    } catch (e) {}
+  })();
+  </script>
+  </body>
+</html>

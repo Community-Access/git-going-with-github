@@ -89,18 +89,28 @@ mints short-lived tokens, and uses fine-grained least-privilege permissions.
 1. Create a GitHub App in the `Community-Access` organization with only these
    permissions: Repository administration (write), Contents (write), Metadata (read),
    and optionally Issues (write). Nothing more.
-2. Install the App on the organization, scoped to the template and student repositories.
+2. Install the App on the organization. Creating student repositories requires an
+   organization-wide installation (repository creation cannot be granted through a
+   selected-repositories installation). Do not skip this step: an App that exists but
+   is not installed fails every token mint with HTTP 404.
 3. Generate a private key (PEM). Store these as repository or environment secrets:
    - `PROVISIONING_APP_ID`
    - `PROVISIONING_APP_PRIVATE_KEY` (the PEM contents)
-   - `PROVISIONING_APP_INSTALLATION_ID`
+   - `PROVISIONING_APP_INSTALLATION_ID` (optional; when unset, provisioning discovers
+     the installation from the App itself, which also survives re-installation)
 4. Set repository variables:
    - `PROVISIONING_MODE` = `github-app`
    - `LEARNING_ROOM_TEMPLATE_REPO` = `Community-Access/learning-room-template`
    - `PROVISIONING_STUDENT_OWNER` = `Community-Access`
    - `ADMIN_ROSTER_REPO` = the private admin repository holding `roster.json`
+   - `PROVISIONING_COHORT_ID` = the cohort that new enrollees are added to
 5. Provide `PRIVATE_STUDENT_DATA_TOKEN`, a token that can check out and push to the
    admin roster repository.
+6. Verify credentials before relying on the schedule: run the
+   **Provisioning Credentials Health Check** workflow (or
+   `node .github/scripts/provisioning/provision-cli.js --check-auth` locally). It mints
+   a token and confirms the template repository is reachable, without making changes.
+   The same check runs weekly and opens a `provisioning-alert` issue on failure.
 
 ### Phase 1 spike only: Actions bot (`actions-bot`)
 
@@ -113,8 +123,13 @@ a person and is a single point of failure.
 ## Running a cohort
 
 Provisioning is designed to run as a trickle, on registration, rather than as a
-big-bang on go-live morning. The scheduled workflow picks up newly registered learners
-every 30 minutes; you can also run it on demand.
+big-bang on go-live morning. The registration workflow dispatches provisioning the
+moment an enrollment lands, a healing sweep runs on a schedule a few times per day,
+and you can also run it on demand. Each run first syncs open `[ENROLL-INTAKE]` issues
+from the admin repository into `roster.json` (idempotently, into the cohort named by
+`PROVISIONING_COHORT_ID`), so enrollments flow to provisioning with no manual roster
+edits. Any failure opens or updates a `provisioning-alert` issue in this repository,
+which closes automatically on the next successful run.
 
 - **Dry run (no changes).** In the Actions tab, run *Provision Learning Rooms* with
   the `dry_run` input checked. It lists who would be provisioned.

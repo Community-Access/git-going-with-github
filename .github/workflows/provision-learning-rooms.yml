@@ -2,11 +2,19 @@ name: Provision Learning Rooms (owned, GitHub-native)
 
 # Owned, GitHub-native replacement for GitHub Classroom provisioning.
 # Implements SPEC.md section 7. The roster of record lives in a private admin
-# repository; this workflow reads it, idempotently provisions every pending or
-# failed learner, and commits the updated roster plus the provisioning log back.
+# repository; this workflow syncs enrollment intake issues into the roster,
+# idempotently provisions every pending or failed learner, and commits the
+# updated roster plus the provisioning log back.
 #
 # Nothing here is destructive: re-running heals partial failures and never
 # corrupts an existing student repository (idempotent on github_handle+cohort).
+#
+# Triggers:
+#   - repository_dispatch (provision-learning-rooms): fired by the registration
+#     workflow when a new enrollment lands, so learners get rooms in minutes.
+#   - schedule: a healing sweep a few times per day that re-syncs intake and
+#     retries any failed entries.
+#   - workflow_dispatch: manual runs, with an optional dry-run.
 
 on:
   workflow_dispatch:
@@ -15,16 +23,19 @@ on:
         description: List who would be provisioned without making changes
         type: boolean
         default: false
+  repository_dispatch:
+    types: [provision-learning-rooms]
   schedule:
-    # Trickle-provision newly registered learners every 30 minutes. Provisioning
-    # on registration (a trickle) avoids the burst that would trip rate limits.
-    - cron: '*/30 * * * *'
+    # Healing sweep. Event-driven provisioning (repository_dispatch above)
+    # covers the fast path, so the cron only needs to catch stragglers.
+    - cron: '17 */6 * * *'
 
-# Least privilege: this workflow needs no write scope on THIS repository. All
-# writes happen against the private admin repo and student repos via a scoped
-# token or GitHub App installation token configured in secrets.
+# Least privilege: contents read to run the scripts; issues write only for the
+# watchdog alert issue in this repository. All student-repo writes happen via
+# the GitHub App installation token configured in the provisioning environment.
 permissions:
   contents: read
+  issues: write
 
 concurrency:
   group: provision-learning-rooms
@@ -51,6 +62,29 @@ jobs:
           token: ${{ secrets.PRIVATE_STUDENT_DATA_TOKEN }}
           path: _roster
 
+      - name: Sync enrollment intake issues into the roster
+        if: ${{ !inputs.dry_run }}
+        run: |
+          node .github/scripts/provisioning/sync-intake-to-roster.js \
+            --roster _roster/roster.json
+        env:
+          INTAKE_REPO: ${{ vars.ADMIN_ROSTER_REPO }}
+          INTAKE_TOKEN: ${{ secrets.PRIVATE_STUDENT_DATA_TOKEN }}
+          PROVISIONING_COHORT_ID: ${{ vars.PROVISIONING_COHORT_ID }}
+          GITHUB_API_URL: ${{ github.api_url }}
+
+      - name: Count pending work
+        id: pending
+        run: |
+          count=$(node -e "
+            const fs = require('node:fs');
+            const { parseRoster, entriesToProvision } = require('./.github/scripts/provisioning/roster');
+            const roster = parseRoster(fs.readFileSync('_roster/roster.json', 'utf8'));
+            console.log(entriesToProvision(roster).length);
+          ")
+          echo "count=$count" >> "$GITHUB_OUTPUT"
+          echo "$count learner(s) pending or failed."
+
       - name: Provision (dry run)
         if: ${{ inputs.dry_run }}
         run: |
@@ -61,7 +95,7 @@ jobs:
           PROVISIONING_STUDENT_OWNER: ${{ vars.PROVISIONING_STUDENT_OWNER }}
 
       - name: Provision learners
-        if: ${{ !inputs.dry_run }}
+        if: ${{ !inputs.dry_run && steps.pending.outputs.count != '0' }}
         run: |
           node .github/scripts/provisioning/provision-cli.js \
             --roster _roster/roster.json \
@@ -71,15 +105,15 @@ jobs:
           LEARNING_ROOM_TEMPLATE_REPO: ${{ vars.LEARNING_ROOM_TEMPLATE_REPO }}
           PROVISIONING_STUDENT_OWNER: ${{ vars.PROVISIONING_STUDENT_OWNER }}
           GITHUB_API_URL: ${{ github.api_url }}
-          # github-app mode (production):
           PROVISIONING_APP_ID: ${{ secrets.PROVISIONING_APP_ID }}
           PROVISIONING_APP_PRIVATE_KEY: ${{ secrets.PROVISIONING_APP_PRIVATE_KEY }}
+          # Optional: discovered from the App installations when unset.
           PROVISIONING_APP_INSTALLATION_ID: ${{ secrets.PROVISIONING_APP_INSTALLATION_ID }}
-          # actions-bot mode (Phase 1 spike only):
-          PROVISIONING_TOKEN: ${{ secrets.PROVISIONING_TOKEN }}
 
+      # Runs even when provisioning failed: per-learner failed states and the
+      # provisioning log are exactly what a facilitator needs to see.
       - name: Commit updated roster and provisioning log
-        if: ${{ !inputs.dry_run }}
+        if: ${{ always() && !inputs.dry_run }}
         working-directory: _roster
         run: |
           if [ -n "$(git status --porcelain)" ]; then
@@ -91,3 +125,84 @@ jobs:
           else
             echo "No roster changes to commit."
           fi
+
+      # Watchdog (SPEC.md section 7.3): any failure must be visible to a human
+      # before a learner notices. Opens or updates a pinned alert issue.
+      - name: Open or update provisioning alert issue
+        if: ${{ failure() }}
+        uses: actions/github-script@v8
+        with:
+          script: |
+            const label = 'provisioning-alert';
+            try {
+              await github.rest.issues.createLabel({
+                owner: context.repo.owner,
+                repo: context.repo.repo,
+                name: label,
+                color: 'b60205',
+                description: 'Automated alert: learning room provisioning is failing'
+              });
+            } catch (e) { /* label already exists */ }
+
+            const runUrl = `${context.serverUrl}/${context.repo.owner}/${context.repo.repo}/actions/runs/${context.runId}`;
+            const open = await github.rest.issues.listForRepo({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              labels: label,
+              state: 'open',
+              per_page: 1
+            });
+
+            if (open.data.length) {
+              await github.rest.issues.createComment({
+                owner: context.repo.owner,
+                repo: context.repo.repo,
+                issue_number: open.data[0].number,
+                body: `Provisioning failed again: ${runUrl}`
+              });
+            } else {
+              await github.rest.issues.create({
+                owner: context.repo.owner,
+                repo: context.repo.repo,
+                title: 'Learning room provisioning is failing',
+                labels: [label],
+                body: [
+                  '## Provisioning watchdog',
+                  '',
+                  'The Provision Learning Rooms workflow failed. Learners may be waiting on repositories.',
+                  '',
+                  `- Failed run: ${runUrl}`,
+                  '- Runbook: admin/OWNED_PROVISIONING.md',
+                  '',
+                  'This issue closes automatically on the next successful run.'
+                ].join('\n')
+              });
+            }
+
+      - name: Close provisioning alert issue on success
+        if: ${{ success() }}
+        uses: actions/github-script@v8
+        with:
+          script: |
+            const open = await github.rest.issues.listForRepo({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              labels: 'provisioning-alert',
+              state: 'open',
+              per_page: 10
+            });
+            for (const issue of open.data) {
+              await github.rest.issues.createComment({
+                owner: context.repo.owner,
+                repo: context.repo.repo,
+                issue_number: issue.number,
+                body: 'Provisioning succeeded; closing this alert.'
+              });
+              await github.rest.issues.update({
+                owner: context.repo.owner,
+                repo: context.repo.repo,
+                issue_number: issue.number,
+                state: 'closed',
+                state_reason: 'completed'
+              });
+            }

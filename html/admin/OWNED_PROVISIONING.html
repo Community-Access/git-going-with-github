@@ -326,11 +326,15 @@ mints short-lived tokens, and uses fine-grained least-privilege permissions.</p>
 <li>Create a GitHub App in the <code>Community-Access</code> organization with only these
 permissions: Repository administration (write), Contents (write), Metadata (read),
 and optionally Issues (write). Nothing more.</li>
-<li>Install the App on the organization, scoped to the template and student repositories.</li>
+<li>Install the App on the organization. Creating student repositories requires an
+organization-wide installation (repository creation cannot be granted through a
+selected-repositories installation). Do not skip this step: an App that exists but
+is not installed fails every token mint with HTTP 404.</li>
 <li>Generate a private key (PEM). Store these as repository or environment secrets:<ul>
 <li><code>PROVISIONING_APP_ID</code></li>
 <li><code>PROVISIONING_APP_PRIVATE_KEY</code> (the PEM contents)</li>
-<li><code>PROVISIONING_APP_INSTALLATION_ID</code></li>
+<li><code>PROVISIONING_APP_INSTALLATION_ID</code> (optional; when unset, provisioning discovers
+the installation from the App itself, which also survives re-installation)</li>
 </ul>
 </li>
 <li>Set repository variables:<ul>
@@ -338,10 +342,16 @@ and optionally Issues (write). Nothing more.</li>
 <li><code>LEARNING_ROOM_TEMPLATE_REPO</code> = <code>Community-Access/learning-room-template</code></li>
 <li><code>PROVISIONING_STUDENT_OWNER</code> = <code>Community-Access</code></li>
 <li><code>ADMIN_ROSTER_REPO</code> = the private admin repository holding <code>roster.json</code></li>
+<li><code>PROVISIONING_COHORT_ID</code> = the cohort that new enrollees are added to</li>
 </ul>
 </li>
 <li>Provide <code>PRIVATE_STUDENT_DATA_TOKEN</code>, a token that can check out and push to the
 admin roster repository.</li>
+<li>Verify credentials before relying on the schedule: run the
+<strong>Provisioning Credentials Health Check</strong> workflow (or
+<code>node .github/scripts/provisioning/provision-cli.js --check-auth</code> locally). It mints
+a token and confirms the template repository is reachable, without making changes.
+The same check runs weekly and opens a <code>provisioning-alert</code> issue on failure.</li>
 </ol>
 <h3 id="phase-1-spike-only-actions-bot-actions-bot">Phase 1 spike only: Actions bot (<code>actions-bot</code>)</h3>
 <p>For an early validation spike you may use a least-privilege fine-grained PAT in
@@ -351,8 +361,13 @@ to the App loses nothing. Do not use the PAT path for a real cohort: a PAT is bo
 a person and is a single point of failure.</p>
 <h2 id="running-a-cohort">Running a cohort</h2>
 <p>Provisioning is designed to run as a trickle, on registration, rather than as a
-big-bang on go-live morning. The scheduled workflow picks up newly registered learners
-every 30 minutes; you can also run it on demand.</p>
+big-bang on go-live morning. The registration workflow dispatches provisioning the
+moment an enrollment lands, a healing sweep runs on a schedule a few times per day,
+and you can also run it on demand. Each run first syncs open <code>[ENROLL-INTAKE]</code> issues
+from the admin repository into <code>roster.json</code> (idempotently, into the cohort named by
+<code>PROVISIONING_COHORT_ID</code>), so enrollments flow to provisioning with no manual roster
+edits. Any failure opens or updates a <code>provisioning-alert</code> issue in this repository,
+which closes automatically on the next successful run.</p>
 <ul>
 <li><strong>Dry run (no changes).</strong> In the Actions tab, run <em>Provision Learning Rooms</em> with
 the <code>dry_run</code> input checked. It lists who would be provisioned.</li>

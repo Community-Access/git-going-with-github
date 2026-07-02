@@ -17,11 +17,13 @@ test('registration workflow contains required label and duplicate/waitlist flows
         "labels: ['duplicate']",
         "labels: ['waitlist']",
         "labels: ['registration']",
-        'CLASSROOM_DAY1_ASSIGNMENT_URL',
-        'CLASSROOM_DAY2_ASSIGNMENT_URL',
-        'Please reply `ack` on this issue after you confirm your Day 1 link works.',
+        'Please reply `ack` on this issue after you receive your learning room invitation.',
         'Upload CSV as artifact',
         'Sync Student Roster (No PII)',
+        // Hybrid model: enrollment triggers provisioning directly.
+        'createWorkflowDispatch',
+        // PII hygiene: the [REGISTER] path stores intake privately, then redacts.
+        'Registration submission (redacted)',
     ];
 
     requiredSnippets.forEach(snippet => {
@@ -31,6 +33,14 @@ test('registration workflow contains required label and duplicate/waitlist flows
             `Registration workflow missing expected behavior marker: ${snippet}`
         );
     });
+
+    // GitHub Classroom was removed in the June 2026 Hybrid transition; the
+    // workflow must never send registrants to classroom.github.com again.
+    assert.equal(
+        /CLASSROOM_DAY[12]_ASSIGNMENT_URL|classroom\.github\.com/i.test(workflow),
+        false,
+        'Registration workflow must not reference removed GitHub Classroom assignment links'
+    );
 });
 
 test('registration issue form template exists', () => {

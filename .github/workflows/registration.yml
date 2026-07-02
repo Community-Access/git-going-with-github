@@ -8,6 +8,8 @@ on:
 permissions:
   contents: write
   issues: write
+  # Needed to dispatch the provisioning workflow when an enrollment lands.
+  actions: write
 
 jobs:
   classroom-enrollment:
@@ -50,7 +52,6 @@ jobs:
         uses: actions/github-script@v8
         env:
           ORIGINAL_ISSUE: ${{ steps.dup-check.outputs.original_issue }}
-          DAY1_ASSIGNMENT_URL: ${{ vars.CLASSROOM_DAY1_ASSIGNMENT_URL }}
         with:
           script: |
             function parseField(body, fieldName) {
@@ -65,19 +66,14 @@ jobs:
 
             const body = context.payload.issue.body || '';
             const displayName = parseField(body, 'Full Name') || 'there';
-            const links = [];
-            const day1 = (process.env.DAY1_ASSIGNMENT_URL || '').trim();
-            if (day1) links.push(`- Day 1 assignment link: ${day1}`);
-
-            const quickLinksSection = links.length
-              ? `\n\n## Quick links\n${links.join('\n')}`
-              : '';
             const duplicateBodyLines = [
               '## You are already enrolled',
               '',
               `Hi ${displayName}, it looks like you already submitted enrollment in #${process.env.ORIGINAL_ISSUE}.`,
               '',
-              `No action needed. Your original enrollment remains active.${quickLinksSection}`,
+              'No action needed. Your original enrollment remains active. If you have not received',
+              'your learning room invitation yet, check your GitHub notifications, or ask for help:',
+              '- https://github.com/Community-Access/support/issues',
               '',
               '## Where to see replies',
               '- GitHub notification bell',
@@ -354,8 +350,6 @@ jobs:
           steps.storage-guardrail.outputs.configured == 'true' &&
           steps.parse.outputs.is_valid == 'true'
         uses: actions/github-script@v8
-        env:
-          DAY1_ASSIGNMENT_URL: ${{ vars.CLASSROOM_DAY1_ASSIGNMENT_URL }}
         with:
           script: |
             function parseField(body, fieldName) {
@@ -370,21 +364,14 @@ jobs:
 
             const body = context.payload.issue.body || '';
             const displayName = parseField(body, 'Full Name') || 'there';
-            const day1 = (process.env.DAY1_ASSIGNMENT_URL || '').trim();
-
-            const onboarding = [];
-            if (day1) onboarding.push(`- Day 1 assignment: ${day1}`);
-
-            const noLinksFallback = onboarding.length
-              ? ''
-              : '\n- Your enrollment was received. A facilitator will share your classroom link shortly.';
             const successBodyLines = [
               '## You are enrolled. Welcome!',
-              '',
               `Hi ${displayName}, great job submitting your first step.`,
               '',
               '## Next steps',
-              `${onboarding.join('\n')}${noLinksFallback}`,
+              '- Your private learning room repository is being prepared automatically.',
+              '- Watch for a GitHub repository invitation (notification bell and email). Accept it to open your learning room.',
+              '- While you wait, start with the Pre-Workshop Setup Guide: https://community-access.github.io/git-going-with-github/docs/00-pre-workshop-setup.html',
               '',
               'Day 2 content automatically unlocks in your learning room after you complete Day 1 challenges.',
               '',
@@ -392,10 +379,10 @@ jobs:
               '- GitHub notification bell',
               '- Email notifications for this issue thread',
               '',
-              'Please reply `ack` on this issue after you confirm your Day 1 link works.',
+              'Please reply `ack` on this issue after you receive your learning room invitation.',
               'Then close this enrollment issue as Challenge 0.',
               '',
-              'If you get stuck at any step, open support:',
+              'If you do not receive an invitation within an hour, or you get stuck at any step, open support:',
               '- https://github.com/Community-Access/support/issues',
               '',
               'You belong here.'
@@ -407,6 +394,29 @@ jobs:
               issue_number: context.issue.number,
               body: successBodyLines.join('\n')
             });
+
+      - name: Trigger learning room provisioning
+        if: >-
+          steps.dup-check.outputs.is_duplicate == 'false' &&
+          steps.storage-guardrail.outputs.configured == 'true' &&
+          steps.parse.outputs.is_valid == 'true'
+        uses: actions/github-script@v8
+        with:
+          script: |
+            // Event-driven provisioning: the provisioning workflow also runs on
+            // a healing-sweep schedule, so a failed dispatch only delays a
+            // learner, never strands them. Do not fail enrollment over it.
+            try {
+              await github.rest.actions.createWorkflowDispatch({
+                owner: context.repo.owner,
+                repo: context.repo.repo,
+                workflow_id: 'provision-learning-rooms.yml',
+                ref: 'main'
+              });
+              console.log('Provisioning workflow dispatched.');
+            } catch (e) {
+              console.log(`Could not dispatch provisioning workflow: ${e.message}`);
+            }
 
       - name: Add enrolled label
         if: >-
@@ -614,9 +624,6 @@ jobs:
       - name: Post welcome comment
         if: steps.dup-check.outputs.is_duplicate == 'false' && steps.capacity-check.outputs.is_full == 'false'
         uses: actions/github-script@v8
-        env:
-          DAY1_ASSIGNMENT_URL: ${{ vars.CLASSROOM_DAY1_ASSIGNMENT_URL }}
-          DAY2_ASSIGNMENT_URL: ${{ vars.CLASSROOM_DAY2_ASSIGNMENT_URL }}
         with:
           script: |
             function parseField(body, fieldName) {
@@ -634,14 +641,6 @@ jobs:
             const lastName = parseField(body, 'Last Name');
             const fullName = [firstName, lastName].filter(Boolean).join(' ').trim() || parseField(body, 'Full Name') || parseField(body, 'Name');
             const displayName = fullName || 'there';
-            const day1 = (process.env.DAY1_ASSIGNMENT_URL || '').trim();
-            const day2 = (process.env.DAY2_ASSIGNMENT_URL || '').trim();
-
-            let classroomSection = '';
-            if (day1) {
-              const lines = ['## Classroom Access', `- Start here: ${day1}`];
-              classroomSection = `\n\n${lines.join('\n')}`;
-            }
 
             await github.rest.issues.createComment({
               owner: context.repo.owner,
@@ -651,11 +650,7 @@ jobs:
 
             Hi ${displayName}, thank you for registering! We are excited to have you join us.
 
-            Your registration is confirmed. Please register for the Zoom session here: [Register on Zoom](https://us06web.zoom.us/meeting/register/YdAAvwzAQUCYpPpNtAlG3g)
-
-            In the meantime, you can get a head start with the [Pre-Workshop Setup Guide](https://community-access.github.io/git-going-with-github/docs/00-pre-workshop-setup.html).
-
-            ${classroomSection}
+            Your registration is confirmed. You can get a head start with the [Pre-Workshop Setup Guide](https://community-access.github.io/git-going-with-github/docs/00-pre-workshop-setup.html).
 
             ## Where replies appear
             - GitHub notification bell
@@ -665,7 +660,7 @@ jobs:
             - Issues: https://github.com/Community-Access/support/issues
             - Discussions: https://github.com/Community-Access/support/discussions
 
-            See you at the workshop!`
+            You belong here.`
             });
 
       - name: Add registration label
@@ -683,6 +678,89 @@ jobs:
             } catch (e) {
               console.log('Label may already exist:', e.message);
             }
+
+      # PII hygiene: this is a public repository. Mirror the [ENROLL] pattern -
+      # store the full intake privately, then redact the public issue body so
+      # names and email addresses do not live in public issues indefinitely.
+      - name: Store registration intake in private repo
+        id: store-intake
+        if: >-
+          steps.dup-check.outputs.is_duplicate == 'false' &&
+          steps.capacity-check.outputs.is_full == 'false' &&
+          vars.PRIVATE_STUDENT_DATA_REPO != ''
+        uses: actions/github-script@v8
+        env:
+          TARGET_REPO: ${{ vars.PRIVATE_STUDENT_DATA_REPO }}
+        with:
+          github-token: ${{ secrets.PRIVATE_STUDENT_DATA_TOKEN }}
+          script: |
+            function parseField(body, fieldName) {
+              if (!body) return '';
+              const regex = new RegExp(`### ${fieldName}\\s*\\n+([\\s\\S]*?)(?=\\n### |$)`, 'i');
+              const match = body.match(regex);
+              if (!match) return '';
+              const value = match[1].trim();
+              if (value === '_No response_') return '';
+              return value;
+            }
+
+            const target = (process.env.TARGET_REPO || '').trim();
+            if (!target.includes('/')) {
+              core.setOutput('stored', 'false');
+              return;
+            }
+
+            const body = context.payload.issue.body || '';
+            const firstName = parseField(body, 'First Name');
+            const lastName = parseField(body, 'Last Name');
+            const [owner, repo] = target.split('/');
+            const intakeLines = [
+              '## Workshop Registration Intake',
+              '',
+              `- Public issue: https://github.com/${context.repo.owner}/${context.repo.repo}/issues/${context.issue.number}`,
+              `- Submitted by: @${context.payload.issue.user.login}`,
+              `- First Name: ${firstName}`,
+              `- Last Name: ${lastName}`,
+              `- Email Address: ${parseField(body, 'Email Address')}`,
+              `- GitHub Proficiency Level: ${parseField(body, 'GitHub Proficiency Level')}`,
+              `- Primary Screen Reader: ${parseField(body, 'Primary Screen Reader')}`,
+              `- Questions or Accommodations: ${parseField(body, 'Questions or Accommodations')}`,
+              '',
+              `- Captured at: ${new Date().toISOString()}`
+            ];
+
+            try {
+              await github.rest.issues.create({
+                owner,
+                repo,
+                title: `[REGISTER-INTAKE] ${[firstName, lastName].filter(Boolean).join(' ') || context.payload.issue.user.login}`,
+                body: intakeLines.join('\n')
+              });
+              core.setOutput('stored', 'true');
+            } catch (error) {
+              console.log(`Could not store private intake: ${error.message}`);
+              core.setOutput('stored', 'false');
+            }
+
+      # Only redact once the data is safely captured privately; otherwise leave
+      # the issue as-is so no information is lost.
+      - name: Redact public registration issue body
+        if: steps.store-intake.outputs.stored == 'true'
+        uses: actions/github-script@v8
+        with:
+          script: |
+            await github.rest.issues.update({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              issue_number: context.issue.number,
+              body: [
+                '## Registration submission (redacted)',
+                '',
+                '- Status: accepted',
+                `- Submitted by: @${context.payload.issue.user.login}`,
+                `- Processed at: ${new Date().toISOString()}`
+              ].join('\n')
+            });
 
   export-csv:
     name: Export Registrations to CSV

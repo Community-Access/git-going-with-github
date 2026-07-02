@@ -26,15 +26,16 @@ const path = require('node:path');
 const { parseRoster, serializeRoster } = require('./roster');
 const { provisionRoster } = require('./provision-core');
 const { createFetchClient, REQUIRED_WORKFLOWS } = require('./github-client');
-const { mintInstallationToken } = require('./github-app-auth');
+const { mintInstallationToken, discoverInstallationId } = require('./github-app-auth');
 
 function parseArgs(argv) {
-  const args = { dryRun: false };
+  const args = { dryRun: false, checkAuth: false };
   for (let i = 0; i < argv.length; i += 1) {
     const a = argv[i];
     if (a === '--roster') args.roster = argv[++i];
     else if (a === '--log') args.log = argv[++i];
     else if (a === '--dry-run') args.dryRun = true;
+    else if (a === '--check-auth') args.checkAuth = true;
     else if (a === '--help' || a === '-h') args.help = true;
   }
   return args;
@@ -43,6 +44,10 @@ function parseArgs(argv) {
 function usage() {
   return [
     'Usage: node provision-cli.js --roster <file> [--log <file>] [--dry-run]',
+    '       node provision-cli.js --check-auth',
+    '',
+    '--check-auth mints a token and verifies the template repo is reachable,',
+    'then exits. Use it as a credentials health check; it makes no changes.',
     '',
     'Environment:',
     '  PROVISIONING_MODE                github-app | actions-bot',
@@ -52,7 +57,8 @@ function usage() {
     '  github-app mode:',
     '    PROVISIONING_APP_ID',
     '    PROVISIONING_APP_PRIVATE_KEY            (PEM, or @path to a PEM file)',
-    '    PROVISIONING_APP_INSTALLATION_ID',
+    '    PROVISIONING_APP_INSTALLATION_ID        (optional; discovered from the',
+    '                                             App installations when unset)',
     '  actions-bot mode:',
     '    PROVISIONING_TOKEN'
   ].join('\n');
@@ -69,18 +75,34 @@ function readPrivateKey(value) {
     : value;
 }
 
-async function resolveToken(env, apiBaseUrl) {
+async function resolveToken(env, apiBaseUrl, deps = {}) {
   const mode = env.PROVISIONING_MODE || 'github-app';
   if (mode === 'actions-bot') {
     if (!env.PROVISIONING_TOKEN) throw new Error('actions-bot mode requires PROVISIONING_TOKEN');
     return env.PROVISIONING_TOKEN;
   }
   if (mode === 'github-app') {
+    const appId = env.PROVISIONING_APP_ID;
+    const privateKey = readPrivateKey(env.PROVISIONING_APP_PRIVATE_KEY);
+    const fetchImpl = deps.fetchImpl || fetch;
+    let installationId = String(env.PROVISIONING_APP_INSTALLATION_ID || '').trim();
+    if (!installationId) {
+      // No stored ID: discover it from the App's installations. This removes a
+      // copy-paste failure mode and survives App re-installation.
+      installationId = await discoverInstallationId({
+        appId,
+        privateKey,
+        owner: env.PROVISIONING_STUDENT_OWNER,
+        apiBaseUrl,
+        fetchImpl
+      });
+    }
     const { token } = await mintInstallationToken({
-      appId: env.PROVISIONING_APP_ID,
-      privateKey: readPrivateKey(env.PROVISIONING_APP_PRIVATE_KEY),
-      installationId: env.PROVISIONING_APP_INSTALLATION_ID,
-      apiBaseUrl
+      appId,
+      privateKey,
+      installationId,
+      apiBaseUrl,
+      fetchImpl
     });
     return token;
   }
@@ -89,7 +111,7 @@ async function resolveToken(env, apiBaseUrl) {
 
 async function main() {
   const args = parseArgs(process.argv.slice(2));
-  if (args.help || !args.roster) {
+  if (args.help || (!args.roster && !args.checkAuth)) {
     process.stdout.write(`${usage()}\n`);
     process.exit(args.help ? 0 : 2);
   }
@@ -103,6 +125,25 @@ async function main() {
   const [templateOwner, templateRepo] = templateRepoFull.split('/');
   if (!templateOwner || !templateRepo) {
     throw new Error('LEARNING_ROOM_TEMPLATE_REPO must be owner/name');
+  }
+
+  if (args.checkAuth) {
+    const token = await resolveToken(env, apiBaseUrl);
+    const client = createFetchClient({ token, apiBaseUrl });
+    const templateVisible = await client.repoExists({
+      owner: templateOwner,
+      repo: templateRepo
+    });
+    if (!templateVisible) {
+      throw new Error(
+        `Auth check failed: token minted but cannot see ${templateRepoFull}. ` +
+          'Check the App installation repository access and Contents permission.'
+      );
+    }
+    process.stdout.write(
+      `Auth check OK: token minted and template ${templateRepoFull} is reachable.\n`
+    );
+    return;
   }
 
   const rosterJson = fs.readFileSync(args.roster, 'utf8');
@@ -121,6 +162,19 @@ async function main() {
 
   const token = await resolveToken(env, apiBaseUrl);
   const client = createFetchClient({ token, apiBaseUrl });
+
+  // Preflight: fail with one clear message if the token cannot even see the
+  // template, instead of a confusing per-learner error cascade.
+  const templateVisible = await client.repoExists({
+    owner: templateOwner,
+    repo: templateRepo
+  });
+  if (!templateVisible) {
+    throw new Error(
+      `Preflight failed: cannot see template ${templateRepoFull} with the minted token. ` +
+        'Check the App installation repository access and Contents permission.'
+    );
+  }
 
   const { roster: updated, log, summary } = await provisionRoster({
     roster,

@@ -223,9 +223,10 @@ Grant only these. Anything beyond this list is over-privileged and fails the sec
 
 App configuration rules:
 
-- Install the App only on the `Community-Access` organization, scoped to the template and student repositories.
-- Store `PROVISIONING_APP_ID` and `PROVISIONING_APP_PRIVATE_KEY` in GitHub Secrets; never in code or public repos.
+- Install the App on the `Community-Access` organization with all-repositories access (creating student repositories requires an organization-wide installation). An App that exists but is not installed fails every token mint with HTTP 404.
+- Store `PROVISIONING_APP_ID` and `PROVISIONING_APP_PRIVATE_KEY` in GitHub Secrets; never in code or public repos. `PROVISIONING_APP_INSTALLATION_ID` is optional: when unset, provisioning discovers the installation from the App at runtime, which removes a copy-paste failure mode and survives re-installation.
 - Mint a short-lived installation token at the start of each provisioning run; never persist it.
+- Verify credentials independently of enrollment: a weekly health check mints a token and confirms template access, and any provisioning failure opens a `provisioning-alert` issue (the watchdog required by section 7.3).
 - Document a private-key rotation procedure and rotate on any suspected exposure.
 
 ### 7.2b Provisioning algorithm (idempotent, serial)
