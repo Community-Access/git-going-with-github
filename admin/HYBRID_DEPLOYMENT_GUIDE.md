@@ -96,12 +96,20 @@ mints short-lived tokens, and uses fine-grained least-privilege permissions
    - Issues: Read and write (optional; only if the App seeds the first issue).
 5. Create the App, then note the numeric App ID.
 6. Generate a private key; a `.pem` file downloads. Keep it secret.
-7. Install the App on the `Community-Access` organization, scoped to the template
-   repository and the student repositories (or all repositories if simpler for now).
+7. Install the App on the `Community-Access` organization with **All repositories**
+   access. Creating new student repositories requires an organization-wide
+   installation; a selected-repositories installation cannot create repos. This step
+   is mandatory: an App that exists but is not installed fails every token mint with
+   HTTP 404, and nothing downstream can work.
 8. Open the installation and note the numeric Installation ID (it is in the
-   installation settings URL).
+   installation settings URL). Storing it is optional - provisioning discovers it
+   automatically when the secret is unset.
 
-Verification: you now hold three values: App ID, Installation ID, and the PEM key.
+Verification: you now hold three values: App ID, Installation ID (optional), and the
+PEM key. Confirm they work before continuing: run the **Provisioning Credentials
+Health Check** workflow, or locally
+`node .github/scripts/provisioning/provision-cli.js --check-auth`. Do not proceed to
+Phase 4 until the check passes.
 
 ## Phase 3: Configure variables and secrets
 
@@ -116,13 +124,14 @@ Repository or environment variables:
 | `LEARNING_ROOM_TEMPLATE_REPO` | `Community-Access/learning-room-template` |
 | `PROVISIONING_STUDENT_OWNER` | `Community-Access` |
 | `ADMIN_ROSTER_REPO` | `Community-Access/glow-admin` (your admin repo) |
+| `PROVISIONING_COHORT_ID` | Cohort that new enrollees are added to |
 
 Secrets:
 
 | Secret | Value |
 |---|---|
 | `PROVISIONING_APP_ID` | The App ID from Phase 2 |
-| `PROVISIONING_APP_INSTALLATION_ID` | The Installation ID from Phase 2 |
+| `PROVISIONING_APP_INSTALLATION_ID` | Optional. The Installation ID from Phase 2; when unset, provisioning discovers it from the App installations |
 | `PROVISIONING_APP_PRIVATE_KEY` | The full contents of the `.pem` file |
 | `PRIVATE_STUDENT_DATA_TOKEN` | A token that can check out and push to the admin repo |
 
@@ -142,7 +151,7 @@ rehearse key rotation; rotate on any suspected exposure.
 
 The provisioning workflow ships in this repository at
 [../.github/workflows/provision-learning-rooms.yml](../.github/workflows/provision-learning-rooms.yml).
-Merging this branch deploys it. It runs on a 30-minute schedule and on demand.
+Merging this branch deploys it. It runs when registration dispatches it, on a healing-sweep schedule, and on demand.
 
 Smoke test with a single test account before any real cohort:
 
@@ -238,7 +247,7 @@ Do not open a cohort until every item holds. This complements the release gate i
 
 ## Operating a cohort
 
-- **Provision on registration, not big-bang.** Let the 30-minute schedule trickle new
+- **Provision on registration, not big-bang.** Let the registration dispatch and healing sweep trickle new
   learners in. This keeps you far below any rate limit regardless of cohort size.
 - **Watch the roster and log.** `failed` entries and `error` log lines are your signal
   to intervene; re-running provisioning heals pending and failed entries.

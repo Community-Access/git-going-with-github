@@ -11,19 +11,19 @@ The Hybrid provisioning system is **architecturally sound, hardened, and product
 
 ## Hardening Assessment by Component
 
-### ✅ **GitHub App Configuration**
+### OK: **GitHub App Configuration**
 - **Status:** HARDENED
 - **Why:** Fine-grained permissions (least privilege), secrets stored in GitHub Actions only, PEM key never in code
 - **Risk:** None identified
 - **Action:** READY
 
-### ✅ **Secrets & Variables Management**
+### OK: **Secrets & Variables Management**
 - **Status:** HARDENED
 - **Why:** All three secrets (App ID, Installation ID, PEM) stored securely in GitHub repository Actions secrets; variables configured correctly
 - **Risk:** None identified
 - **Action:** READY
 
-### ✅ **Infrastructure Code (Provisioning Scripts)**
+### OK: **Infrastructure Code (Provisioning Scripts)**
 - **Status:** HARDENED
 - **Why:** 
   - Idempotent: Re-running is safe (already-exists vs. created state)
@@ -33,14 +33,14 @@ The Hybrid provisioning system is **architecturally sound, hardened, and product
 - **Risk:** None identified
 - **Action:** READY
 
-### ✅ **Documentation Updates**
+### OK: **Documentation Updates**
 - **Status:** COMPLETE
 - **What:** 15+ files updated, 37+ files deleted, HTML regenerated on both sites
 - **Coverage:** Student-facing, facilitator, operator all covered
 - **Risk:** None identified
 - **Action:** READY
 
-### ✅ **Public Site Deployments**
+### OK: **Public Site Deployments**
 - **Status:** COMPLETE
 - **Coverage:** 
   - community-access.org/git-going-with-github (auto via GitHub Pages)
@@ -49,7 +49,7 @@ The Hybrid provisioning system is **architecturally sound, hardened, and product
 - **Risk:** None identified
 - **Action:** READY
 
-### ⚠️ **End-to-End Student Workflow (NOT YET TESTED)**
+### Warning: **End-to-End Student Workflow (NOT YET TESTED)**
 - **Status:** UNTESTED
 - **What's missing:**
   1. Admin roster repo creation
@@ -57,25 +57,25 @@ The Hybrid provisioning system is **architecturally sound, hardened, and product
   3. Verification that provision workflow runs end-to-end
   4. Verification that invitation email sent to test account
   5. Verification that student can accept invite and access repo
-- **Risk:** Medium—logical gaps possible, though architecture is solid
-- **Action:** REQUIRED—Run Phase 4 before admitting real students
+- **Risk:** Medium-logical gaps possible, though architecture is solid
+- **Action:** REQUIRED-Run Phase 4 before admitting real students
 
 ---
 
-## What Has Been Tested ✅
+## What Has Been Tested
 
-- ✅ Automation tests: 78/78 passing (was 98, reduced after removing Classroom tests)
-- ✅ Provisioning tests: 55/55 passing  
-- ✅ HTML regeneration: 393 markdown files → HTML
-- ✅ Site deployments: Both production sites live
-- ✅ GitHub App creation: Properly configured with correct permissions
-- ✅ Secrets storage: All three values stored securely
+- OK: Automation tests: 78/78 passing (was 98, reduced after removing Classroom tests)
+- OK: Provisioning tests: 55/55 passing  
+- OK: HTML regeneration: 393 markdown files -> HTML
+- OK: Site deployments: Both production sites live
+- OK: GitHub App creation: Properly configured with correct permissions
+- OK: Secrets storage: All three values stored securely
 
 ---
 
-## What Has NOT Been Tested ❌
+## What Has NOT Been Tested
 
-- ❌ **End-to-end provisioning flow** with a real test student
+- Missing: **End-to-end provisioning flow** with a real test student
   - Enrollment form submission
   - Issue creation in test account
   - Automation comment with learning room link
@@ -154,14 +154,14 @@ The Hybrid provisioning system is **architecturally sound, hardened, and product
 
 ## Failsafety Verdict
 
-### ✅ System is FAILSAFE for:
+### System is FAILSAFE for:
 - **Re-running provisioning**: Safe, idempotent, no duplicates
 - **Recovering from failures**: Re-run workflow, roster is source of truth
 - **Credential compromise**: GitHub App scope limited, PEM in Actions only
 - **Data loss**: Audit trail in provisioning-log.json, roster can be rebuilt from git history
 - **Classroom service issues**: No longer dependent on GitHub Classroom
 
-### ⚠️ System NEEDS TESTING for:
+### System NEEDS TESTING for:
 - **Real student enrollment**: End-to-end flow not yet validated
 - **Scale**: Tested with unit tests (78 automation, 55 provisioning), not with 50+ real students
 - **Edge cases**: Duplicate submissions, roster conflicts, network timeouts during provisioning
@@ -189,3 +189,33 @@ The Hybrid provisioning system is **architecturally sound, hardened, and product
 
 *Assessment completed June 2, 2026*
 *System: Hybrid Provisioning v1.0*
+
+---
+
+## Correction (July 2, 2026)
+
+This assessment's verdict did not hold. The Phase 4 smoke test listed above as MUST DO was never completed: the provisioning GitHub App was created but never installed on the Community-Access organization, so every non-dry-run provisioning attempt from June 2 onward failed while minting an installation token (HTTP 404), and two enrolled learners remained unprovisioned for a month with no alert.
+
+Lessons now encoded in the workflow and runbook:
+
+- An untested MUST DO item means the status is NOT READY. The smoke test is the release gate; no schedule is enabled until a real (non-dry-run) run has succeeded once.
+- Every READY claim in an assessment must cite evidence (a green run ID), especially for credentials.
+- Scheduled workflows must alert on failure. The provisioning workflow now opens a watchdog issue on any failure, and a weekly credentials health check catches drift between enrollments.
+
+See REVIEW-2026-07-02.md for the full incident review.
+
+## Authoritative Sources
+
+Use these official references when you need the current source of truth for facts in this chapter.
+
+- [GitHub Docs, home](https://docs.github.com/en)
+- [GitHub Changelog](https://github.blog/changelog/)
+
+### Section-Level Source Map
+
+Use this map to verify facts for each major section in this file.
+
+- **Hardening Assessment by Component:** [GitHub Apps documentation](https://docs.github.com/en/apps)
+- **Failsafe Mechanisms:** [GitHub Actions documentation](https://docs.github.com/en/actions)
+- **Recommendations Before Go-Live:** [Installing GitHub Apps](https://docs.github.com/en/apps/using-github-apps/installing-a-github-app-from-a-third-party)
+- **Correction (July 2, 2026):** [GitHub REST API, create an installation access token](https://docs.github.com/en/rest/apps/apps#create-an-installation-access-token-for-an-app)

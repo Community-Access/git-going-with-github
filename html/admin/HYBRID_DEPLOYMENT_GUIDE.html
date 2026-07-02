@@ -333,12 +333,20 @@ mints short-lived tokens, and uses fine-grained least-privilege permissions
 </li>
 <li>Create the App, then note the numeric App ID.</li>
 <li>Generate a private key; a <code>.pem</code> file downloads. Keep it secret.</li>
-<li>Install the App on the <code>Community-Access</code> organization, scoped to the template
-repository and the student repositories (or all repositories if simpler for now).</li>
+<li>Install the App on the <code>Community-Access</code> organization with <strong>All repositories</strong>
+access. Creating new student repositories requires an organization-wide
+installation; a selected-repositories installation cannot create repos. This step
+is mandatory: an App that exists but is not installed fails every token mint with
+HTTP 404, and nothing downstream can work.</li>
 <li>Open the installation and note the numeric Installation ID (it is in the
-installation settings URL).</li>
+installation settings URL). Storing it is optional - provisioning discovers it
+automatically when the secret is unset.</li>
 </ol>
-<p>Verification: you now hold three values: App ID, Installation ID, and the PEM key.</p>
+<p>Verification: you now hold three values: App ID, Installation ID (optional), and the
+PEM key. Confirm they work before continuing: run the <strong>Provisioning Credentials
+Health Check</strong> workflow, or locally
+<code>node .github/scripts/provisioning/provision-cli.js --check-auth</code>. Do not proceed to
+Phase 4 until the check passes.</p>
 <h2 id="phase-3-configure-variables-and-secrets">Phase 3: Configure variables and secrets</h2>
 <p>Set these on this repository (Settings, Secrets and variables, Actions). Using an
 Environment named <code>provisioning</code> is recommended so you can add required reviewers.</p>
@@ -366,6 +374,10 @@ Environment named <code>provisioning</code> is recommended so you can add requir
 <td><code>ADMIN_ROSTER_REPO</code></td>
 <td><code>Community-Access/glow-admin</code> (your admin repo)</td>
 </tr>
+<tr>
+<td><code>PROVISIONING_COHORT_ID</code></td>
+<td>Cohort that new enrollees are added to</td>
+</tr>
 </tbody></table>
 <p>Secrets:</p>
 <table>
@@ -381,7 +393,7 @@ Environment named <code>provisioning</code> is recommended so you can add requir
 </tr>
 <tr>
 <td><code>PROVISIONING_APP_INSTALLATION_ID</code></td>
-<td>The Installation ID from Phase 2</td>
+<td>Optional. The Installation ID from Phase 2; when unset, provisioning discovers it from the App installations</td>
 </tr>
 <tr>
 <td><code>PROVISIONING_APP_PRIVATE_KEY</code></td>
@@ -402,7 +414,7 @@ rehearse key rotation; rotate on any suspected exposure.</p>
 <h2 id="phase-4-deploy-and-smoke-test-provisioning">Phase 4: Deploy and smoke-test provisioning</h2>
 <p>The provisioning workflow ships in this repository at
 <a href="../.github/workflows/provision-learning-rooms.yml">../.github/workflows/provision-learning-rooms.yml</a>.
-Merging this branch deploys it. It runs on a 30-minute schedule and on demand.</p>
+Merging this branch deploys it. It runs when registration dispatches it, on a healing-sweep schedule, and on demand.</p>
 <p>Smoke test with a single test account before any real cohort:</p>
 <ol>
 <li>Add one test learner to the admin <code>roster.json</code> (a throwaway GitHub account you
@@ -483,7 +495,7 @@ transition) is documented and ready.</li>
 </ul>
 <h2 id="operating-a-cohort">Operating a cohort</h2>
 <ul>
-<li><strong>Provision on registration, not big-bang.</strong> Let the 30-minute schedule trickle new
+<li><strong>Provision on registration, not big-bang.</strong> Let the registration dispatch and healing sweep trickle new
 learners in. This keeps you far below any rate limit regardless of cohort size.</li>
 <li><strong>Watch the roster and log.</strong> <code>failed</code> entries and <code>error</code> log lines are your signal
 to intervene; re-running provisioning heals pending and failed entries.</li>

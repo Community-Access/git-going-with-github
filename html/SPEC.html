@@ -633,9 +633,10 @@
 </tbody></table>
 <p>App configuration rules:</p>
 <ul>
-<li>Install the App only on the <code>Community-Access</code> organization, scoped to the template and student repositories.</li>
-<li>Store <code>PROVISIONING_APP_ID</code> and <code>PROVISIONING_APP_PRIVATE_KEY</code> in GitHub Secrets; never in code or public repos.</li>
+<li>Install the App on the <code>Community-Access</code> organization with all-repositories access (creating student repositories requires an organization-wide installation). An App that exists but is not installed fails every token mint with HTTP 404.</li>
+<li>Store <code>PROVISIONING_APP_ID</code> and <code>PROVISIONING_APP_PRIVATE_KEY</code> in GitHub Secrets; never in code or public repos. <code>PROVISIONING_APP_INSTALLATION_ID</code> is optional: when unset, provisioning discovers the installation from the App at runtime, which removes a copy-paste failure mode and survives re-installation.</li>
 <li>Mint a short-lived installation token at the start of each provisioning run; never persist it.</li>
+<li>Verify credentials independently of enrollment: a weekly health check mints a token and confirms template access, and any provisioning failure opens a <code>provisioning-alert</code> issue (the watchdog required by section 7.3).</li>
 <li>Document a private-key rotation procedure and rotate on any suspected exposure.</li>
 </ul>
 <h3 id="72b-provisioning-algorithm-idempotent-serial">7.2b Provisioning algorithm (idempotent, serial)</h3>

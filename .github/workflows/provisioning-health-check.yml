@@ -1,0 +1,91 @@
+name: Provisioning Credentials Health Check
+
+# Weekly canary for the provisioning GitHub App: mints an installation token
+# and verifies the learning-room template repository is reachable. Makes no
+# changes. Catches expired keys, uninstalled Apps, and permission drift before
+# a learner does, instead of the failure surfacing mid-enrollment.
+
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: '23 6 * * 1'
+
+permissions:
+  contents: read
+  issues: write
+
+jobs:
+  check-auth:
+    name: Mint token and verify template access
+    runs-on: ubuntu-latest
+    environment: provisioning
+    steps:
+      - name: Check out workshop repo (provisioning scripts)
+        uses: actions/checkout@v4
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Check provisioning credentials
+        run: node .github/scripts/provisioning/provision-cli.js --check-auth
+        env:
+          PROVISIONING_MODE: ${{ vars.PROVISIONING_MODE }}
+          LEARNING_ROOM_TEMPLATE_REPO: ${{ vars.LEARNING_ROOM_TEMPLATE_REPO }}
+          PROVISIONING_STUDENT_OWNER: ${{ vars.PROVISIONING_STUDENT_OWNER }}
+          GITHUB_API_URL: ${{ github.api_url }}
+          PROVISIONING_APP_ID: ${{ secrets.PROVISIONING_APP_ID }}
+          PROVISIONING_APP_PRIVATE_KEY: ${{ secrets.PROVISIONING_APP_PRIVATE_KEY }}
+          PROVISIONING_APP_INSTALLATION_ID: ${{ secrets.PROVISIONING_APP_INSTALLATION_ID }}
+
+      - name: Open or update provisioning alert issue
+        if: ${{ failure() }}
+        uses: actions/github-script@v8
+        with:
+          script: |
+            const label = 'provisioning-alert';
+            try {
+              await github.rest.issues.createLabel({
+                owner: context.repo.owner,
+                repo: context.repo.repo,
+                name: label,
+                color: 'b60205',
+                description: 'Automated alert: learning room provisioning is failing'
+              });
+            } catch (e) { /* label already exists */ }
+
+            const runUrl = `${context.serverUrl}/${context.repo.owner}/${context.repo.repo}/actions/runs/${context.runId}`;
+            const open = await github.rest.issues.listForRepo({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              labels: label,
+              state: 'open',
+              per_page: 1
+            });
+
+            if (open.data.length) {
+              await github.rest.issues.createComment({
+                owner: context.repo.owner,
+                repo: context.repo.repo,
+                issue_number: open.data[0].number,
+                body: `Credentials health check failed: ${runUrl}`
+              });
+            } else {
+              await github.rest.issues.create({
+                owner: context.repo.owner,
+                repo: context.repo.repo,
+                title: 'Provisioning credentials health check is failing',
+                labels: [label],
+                body: [
+                  '## Provisioning watchdog',
+                  '',
+                  'The weekly credentials health check failed. Provisioning will fail for the next enrollee.',
+                  '',
+                  `- Failed run: ${runUrl}`,
+                  '- Runbook: admin/OWNED_PROVISIONING.md',
+                  '',
+                  'This issue closes automatically on the next successful provisioning run.'
+                ].join('\n')
+              });
+            }
