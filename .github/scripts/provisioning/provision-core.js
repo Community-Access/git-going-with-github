@@ -40,6 +40,8 @@ const sleepReal = (ms) => new Promise((resolve) => setTimeout(resolve, ms));
  *   repoNameFor,             // (handle, cohortId) => name; defaults to defaultRepoName
  *   delayMs,                 // delay between entries (default 1500)
  *   maxRetries,              // backoff attempts on secondary rate limit (default 5)
+ *   verifyRetries,           // verification attempts after create/heal (default 10)
+ *   verifyDelayMs,           // delay between verification attempts (default 3000)
  *   collaboratorPermission   // default 'push'
  * }
  *
@@ -60,6 +62,8 @@ async function provisionRoster({
   const repoNameFor = config.repoNameFor || defaultRepoName;
   const delayMs = config.delayMs == null ? 1500 : config.delayMs;
   const maxRetries = config.maxRetries == null ? 5 : config.maxRetries;
+  const verifyRetries = config.verifyRetries == null ? 10 : config.verifyRetries;
+  const verifyDelayMs = config.verifyDelayMs == null ? 3000 : config.verifyDelayMs;
   const permission = config.collaboratorPermission || 'push';
 
   const log = [];
@@ -85,7 +89,10 @@ async function provisionRoster({
             templateRepo,
             repoName,
             requiredWorkflows,
-            permission
+            permission,
+            verifyRetries,
+            verifyDelayMs,
+            sleep
           }),
         { maxRetries, sleep, logger }
       );
@@ -135,7 +142,10 @@ async function provisionOne({
   templateRepo,
   repoName,
   requiredWorkflows,
-  permission
+  permission,
+  verifyRetries = 10,
+  verifyDelayMs = 3000,
+  sleep = sleepReal
 }) {
   const exists = await client.repoExists({ owner: studentOwner, repo: repoName });
 
@@ -180,9 +190,17 @@ async function provisionOne({
     permission
   });
 
-  // Final verification gate: required workflows must be present.
-  const present = await client.listWorkflowPaths({ owner: studentOwner, repo: repoName });
-  const stillMissing = missingWorkflows(requiredWorkflows, present);
+  // Final verification gate: required workflows must be present. On a fresh
+  // create (or heal), GitHub copies template content asynchronously after the
+  // API returns, so give the copy time to land instead of failing the learner.
+  const attempts = result === 'already-exists' ? 1 : Math.max(1, verifyRetries);
+  let stillMissing = requiredWorkflows;
+  for (let attempt = 1; attempt <= attempts; attempt += 1) {
+    const present = await client.listWorkflowPaths({ owner: studentOwner, repo: repoName });
+    stillMissing = missingWorkflows(requiredWorkflows, present);
+    if (stillMissing.length === 0) break;
+    if (attempt < attempts) await sleep(verifyDelayMs);
+  }
   if (stillMissing.length > 0) {
     throw new Error(
       `Verification failed for ${studentOwner}/${repoName}: missing ${stillMissing.join(', ')}`
