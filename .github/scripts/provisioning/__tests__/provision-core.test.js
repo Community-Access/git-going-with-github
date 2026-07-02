@@ -102,6 +102,58 @@ test('heals an incomplete repo when seedContent is available', async () => {
   assert.equal(summary.healed, 1);
 });
 
+test('waits for asynchronous template copy before verifying a fresh repo', async () => {
+  // GitHub's generate-from-template API returns before the content copy
+  // finishes; verification must wait instead of marking the learner failed.
+  const { client, state } = makeClient();
+  client.createFromTemplate = async ({ repo }) => {
+    state.calls.create += 1;
+    state.repos.set(repo, { workflows: [] });
+    return { full_name: repo };
+  };
+  let listCalls = 0;
+  client.listWorkflowPaths = async ({ repo }) => {
+    listCalls += 1;
+    if (listCalls >= 3) state.repos.get(repo).workflows = [...REQUIRED];
+    return state.repos.get(repo).workflows;
+  };
+  let slept = 0;
+  const countingSleep = async () => { slept += 1; };
+
+  const roster = rosterWith({ github_handle: 'dana', cohort_id: 'c1' });
+  const { roster: out, summary } = await provisionRoster({
+    roster,
+    client,
+    config,
+    sleep: countingSleep
+  });
+
+  assert.equal(out.learners[0].provision_state, 'provisioned');
+  assert.equal(summary.created, 1);
+  assert.equal(summary.error, 0);
+  assert.ok(slept >= 1, 'should have waited between verification attempts');
+});
+
+test('still fails when content never arrives after creation', async () => {
+  const { client, state } = makeClient();
+  client.createFromTemplate = async ({ repo }) => {
+    state.calls.create += 1;
+    state.repos.set(repo, { workflows: [] });
+    return { full_name: repo };
+  };
+  const roster = rosterWith({ github_handle: 'erin', cohort_id: 'c1' });
+  const { roster: out, log, summary } = await provisionRoster({
+    roster,
+    client,
+    config: { ...config, verifyRetries: 2, verifyDelayMs: 0 },
+    sleep: noSleep
+  });
+
+  assert.equal(out.learners[0].provision_state, 'failed');
+  assert.equal(summary.error, 1);
+  assert.match(log[0].error_detail, /Verification failed/);
+});
+
 test('fails loudly when repo exists but incomplete and cannot heal', async () => {
   const { client, state } = makeClient();
   state.repos.set('learning-room-c1-carol', { workflows: ['pr-validation-bot.yml'] });
