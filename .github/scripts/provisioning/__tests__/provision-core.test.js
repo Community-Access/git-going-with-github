@@ -216,6 +216,54 @@ test('a failure does not stop the batch; others still provision', async () => {
   assert.equal(summary.created, 1);
 });
 
+test('seeds the first challenge issue after workflows are verified', async () => {
+  const seedCalls = [];
+  const { client, state } = makeClient({
+    async seedFirstChallenge({ owner, repo, assignee }) {
+      seedCalls.push({ owner, repo, assignee, listCallsSoFar: state.calls.list });
+    }
+  });
+  const roster = rosterWith({ github_handle: 'alice', cohort_id: 'c1' });
+  const { roster: out, summary } = await provisionRoster({ roster, client, config, sleep: noSleep });
+
+  assert.equal(out.learners[0].provision_state, 'provisioned');
+  assert.equal(summary.error, 0);
+  assert.equal(seedCalls.length, 1);
+  assert.equal(seedCalls[0].owner, 'Community-Access');
+  assert.equal(seedCalls[0].repo, 'learning-room-c1-alice');
+  assert.equal(seedCalls[0].assignee, 'alice');
+  assert.ok(seedCalls[0].listCallsSoFar >= 1, 'seeding must happen after workflow verification');
+});
+
+test('seeds the first challenge on the already-exists path too', async () => {
+  const seedCalls = [];
+  const { client, state } = makeClient({
+    async seedFirstChallenge(args) {
+      seedCalls.push(args);
+    }
+  });
+  state.repos.set('learning-room-c1-alice', { workflows: [...REQUIRED] });
+  const roster = rosterWith({ github_handle: 'alice', cohort_id: 'c1' });
+  const { summary } = await provisionRoster({ roster, client, config, sleep: noSleep });
+
+  assert.equal(summary.already_exists, 1);
+  assert.equal(seedCalls.length, 1);
+});
+
+test('marks the learner failed when first-challenge seeding fails', async () => {
+  const { client } = makeClient({
+    async seedFirstChallenge() {
+      throw new Error('seed boom');
+    }
+  });
+  const roster = rosterWith({ github_handle: 'alice', cohort_id: 'c1' });
+  const { roster: out, log, summary } = await provisionRoster({ roster, client, config, sleep: noSleep });
+
+  assert.equal(out.learners[0].provision_state, 'failed');
+  assert.equal(summary.error, 1);
+  assert.match(log[0].error_detail, /seed boom/);
+});
+
 test('isSecondaryRateLimit detects status and message forms', () => {
   assert.ok(isSecondaryRateLimit({ status: 429 }));
   assert.ok(isSecondaryRateLimit({ message: 'oops HTTP 403 here' }));

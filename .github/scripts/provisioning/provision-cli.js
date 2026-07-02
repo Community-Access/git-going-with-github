@@ -26,6 +26,7 @@ const path = require('node:path');
 const { parseRoster, serializeRoster } = require('./roster');
 const { provisionRoster } = require('./provision-core');
 const { createFetchClient, REQUIRED_WORKFLOWS } = require('./github-client');
+const { createChallengeSeeder } = require('./seed-first-challenge');
 const { mintInstallationToken, discoverInstallationId } = require('./github-app-auth');
 
 function parseArgs(argv) {
@@ -161,7 +162,13 @@ async function main() {
   }
 
   const token = await resolveToken(env, apiBaseUrl);
-  const client = createFetchClient({ token, apiBaseUrl });
+  // The seeder runs the learning-room progression script from this checkout,
+  // so provisioned rooms start with their Challenge 1 issue already open.
+  const seeder = createChallengeSeeder({
+    token,
+    learningRoomDir: path.join(__dirname, '..', '..', '..', 'learning-room')
+  });
+  const client = { ...createFetchClient({ token, apiBaseUrl }), ...seeder };
 
   // Preflight: fail with one clear message if the token cannot even see the
   // template, instead of a confusing per-learner error cascade.

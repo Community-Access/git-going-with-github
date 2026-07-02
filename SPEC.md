@@ -219,7 +219,7 @@ Grant only these. Anything beyond this list is over-privileged and fails the sec
 | Repository administration | Write | Create the per-student private repository from the template |
 | Contents | Write | Seed and heal repository content (workflows, issue templates) |
 | Metadata | Read | Mandatory baseline for any App |
-| Issues | Write | Seed the first challenge issue and provisioning status (optional; can defer to the Progression Bot) |
+| Issues | Write | Seed the first challenge issue at provision time. Not deferrable: the Progression Bot only fires on issue close or manual dispatch, so a room provisioned without a Challenge 1 issue never starts the progression chain |
 
 App configuration rules:
 
@@ -256,7 +256,15 @@ for each roster entry where provision_state in (pending, failed):
          - On failure: provision_state = failed, write error_detail,
            surface to watchdog. Do NOT leave a half-seeded repo silently.
 
-    5. Wait a short delay (1 to a few seconds) before the next entry.
+    5. Seed the Challenge 1 issue if no challenge issue exists yet
+       (idempotent; runs the learning-room progression script against the
+       student repo). The learner's collaborator invitation is usually still
+       pending at this point, so the issue is created unassigned; the
+       Progression Bot assigns subsequent challenges to whoever closes the
+       previous one. A seeding failure marks the learner failed and surfaces
+       to the watchdog.
+
+    6. Wait a short delay (1 to a few seconds) before the next entry.
        On HTTP 403/429 (secondary limit), back off exponentially and retry
        the same entry; never skip it.
 ```
