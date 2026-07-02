@@ -269,6 +269,28 @@ async function issueAlreadyExists(titlePrefix) {
   }
 }
 
+// A GitHub user can only be assigned when they have access to the repository.
+// Right after provisioning the learner's collaborator invitation is still
+// pending, so they exist as a user but are not yet assignable; creating the
+// issue with them as assignee fails with HTTP 422. Check assignability in
+// this repository (204 when assignable, 404 when not) and degrade to an
+// unassigned issue instead of failing the run.
+async function resolveValidAssignee(candidate, request = githubRequest) {
+  if (!candidate) {
+    return null;
+  }
+  log('DEBUG', `Validating assignee: ${candidate}`);
+  try {
+    await request(`/repos/${owner}/${repo}/assignees/${candidate}`, {}, 1);
+    log('DEBUG', `Assignee ${candidate} can be assigned in this repository`);
+    return candidate;
+  } catch (error) {
+    log('WARN', `Assignee ${candidate} cannot be assigned yet (pending invitation or no repo access): ${error.message}`);
+    log('INFO', 'Issue will be created without an assignee.');
+    return null;
+  }
+}
+
 async function createChallenge(challengeNumber) {
   const templateName = findTemplate(challengeNumber);
   return createIssueFromTemplate(templateName, `Challenge ${challengeNumber}`);
@@ -305,19 +327,7 @@ async function createIssueFromTemplate(templateName, fallbackLabel) {
       return;
     }
 
-    // Validate actor if assignees will be used
-    let validAssignee = actor;
-    if (actor) {
-      log('DEBUG', `Validating assignee: ${actor}`);
-      try {
-        await githubRequest(`/users/${actor}`);
-        log('DEBUG', `Assignee ${actor} exists`);
-      } catch (error) {
-        log('WARN', `Assignee ${actor} does not exist or is inaccessible: ${error.message}`);
-        log('INFO', `Issue will be created without assignee. Ensure assignee is valid in GitHub.`);
-        validAssignee = null;
-      }
-    }
+    const validAssignee = await resolveValidAssignee(actor);
 
     const bodyParts = [
       ...readMarkdownBlocks(content),
@@ -389,29 +399,33 @@ async function seedMergeConflict() {
   }
 }
 
-const progressionTargets = getProgressionTargets();
-if (!progressionTargets.length) {
-  log('INFO', 'No challenge to create for this event.');
-  console.log('No challenge to create for this event.');
-} else {
-  log('INFO', `Proceeding with ${progressionTargets.length} progression target(s).`);
-  (async () => {
-    for (const target of progressionTargets) {
-      if (target.kind === 'challenge') {
-        await createChallenge(target.number);
-      } else if (target.kind === 'bonus') {
-        await createIssueFromTemplate(target.template, 'Bonus');
+if (require.main === module) {
+  const progressionTargets = getProgressionTargets();
+  if (!progressionTargets.length) {
+    log('INFO', 'No challenge to create for this event.');
+    console.log('No challenge to create for this event.');
+  } else {
+    log('INFO', `Proceeding with ${progressionTargets.length} progression target(s).`);
+    (async () => {
+      for (const target of progressionTargets) {
+        if (target.kind === 'challenge') {
+          await createChallenge(target.number);
+        } else if (target.kind === 'bonus') {
+          await createIssueFromTemplate(target.template, 'Bonus');
+        }
       }
-    }
 
-    if (progressionTargets.some(target => target.kind === 'challenge' && target.number === 7)) {
-      await seedMergeConflict();
-    }
-  })()
-    .catch(error => {
-      log('ERROR', `Challenge progression failed: ${error.message}`);
-      log('ERROR', error.stack);
-      console.error(`FATAL: ${error.message}`);
-      process.exitCode = 1;
-    });
+      if (progressionTargets.some(target => target.kind === 'challenge' && target.number === 7)) {
+        await seedMergeConflict();
+      }
+    })()
+      .catch(error => {
+        log('ERROR', `Challenge progression failed: ${error.message}`);
+        log('ERROR', error.stack);
+        console.error(`FATAL: ${error.message}`);
+        process.exitCode = 1;
+      });
+  }
 }
+
+module.exports = { resolveValidAssignee };

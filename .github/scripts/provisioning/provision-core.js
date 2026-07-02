@@ -207,6 +207,18 @@ async function provisionOne({
     );
   }
 
+  // A room without a Challenge 1 issue never starts the progression chain:
+  // the Student Progression Bot only fires on issue close or manual dispatch.
+  // Seed after content verification so the issue never points at an empty
+  // repo. The seeder is idempotent (skips when a challenge issue exists).
+  if (typeof client.seedFirstChallenge === 'function') {
+    await client.seedFirstChallenge({
+      owner: studentOwner,
+      repo: repoName,
+      assignee: handle
+    });
+  }
+
   let templateSha = null;
   if (typeof client.getDefaultBranchSha === 'function') {
     templateSha = await client.getDefaultBranchSha({ owner: studentOwner, repo: repoName });
