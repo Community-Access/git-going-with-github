@@ -521,16 +521,16 @@ Execute in a single working session. Plan a 2-3 hour window. Branch: `cutover-20
 
 Use these official references when you need the current source of truth for this plan.
 
-- [Episode map](docs/EPISODE_MAP.json)
-- [Episode map schema](docs/EPISODE-MAP-SCHEMA.json)
-- [Tooling inventory](docs/TOOLING-INVENTORY.md)
-- [Site information architecture](docs/SITE-IA.md)
+- [Episode map](../../docs/EPISODE_MAP.json)
+- [Episode map schema](../../docs/EPISODE-MAP-SCHEMA.json)
+- [Tooling inventory](TOOLING-INVENTORY.md)
+- [Site information architecture](SITE-IA.md)
 
 ### Section-Level Source Map
 
 Use this map to verify facts for each major section in this file.
 
-- **Launch posture:** [Site Information Architecture (Stage 1.3)](docs/SITE-IA.md), [Tooling Inventory (Stage 1.4)](docs/TOOLING-INVENTORY.md)
-- **Identity model:** [Episode map](docs/EPISODE_MAP.json), [Episode map schema](docs/EPISODE-MAP-SCHEMA.json)
-- **Guiding principles:** [Tooling Inventory (Stage 1.4)](docs/TOOLING-INVENTORY.md), [Site Information Architecture (Stage 1.3)](docs/SITE-IA.md)
-- **Stage plans and gates:** [Site Information Architecture (Stage 1.3)](docs/SITE-IA.md), [Tooling Inventory (Stage 1.4)](docs/TOOLING-INVENTORY.md), [Stage 3 Cutover - Ship Checklist](SHIP-CHECKLIST.md)
+- **Launch posture:** [Site Information Architecture (Stage 1.3)](SITE-IA.md), [Tooling Inventory (Stage 1.4)](TOOLING-INVENTORY.md)
+- **Identity model:** [Episode map](../../docs/EPISODE_MAP.json), [Episode map schema](../../docs/EPISODE-MAP-SCHEMA.json)
+- **Guiding principles:** [Tooling Inventory (Stage 1.4)](TOOLING-INVENTORY.md), [Site Information Architecture (Stage 1.3)](SITE-IA.md)
+- **Stage plans and gates:** [Site Information Architecture (Stage 1.3)](SITE-IA.md), [Tooling Inventory (Stage 1.4)](TOOLING-INVENTORY.md), [Stage 3 Cutover - Ship Checklist](SHIP-CHECKLIST.md)
