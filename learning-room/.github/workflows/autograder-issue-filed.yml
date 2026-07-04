@@ -20,8 +20,18 @@ jobs:
   acknowledge-issue:
     name: Acknowledge first issue
     runs-on: ubuntu-latest
-    # Only react when the author is the student (not a bot or facilitator pre-seeded issue).
-    if: github.event_name == 'workflow_dispatch' || (github.event.issue.user.login == github.actor && github.event.issue.user.type == 'User')
+    # Only react when the author is the student (not a bot or facilitator
+    # pre-seeded issue), and never grade seeded workshop artifacts: peer
+    # simulation issues, challenge issues, and the onboarding roadmap are
+    # created by automation or facilitators, not Challenge 2 submissions.
+    if: >-
+      github.event_name == 'workflow_dispatch' || (
+        github.event.issue.user.login == github.actor &&
+        github.event.issue.user.type == 'User' &&
+        !startsWith(github.event.issue.title, 'Peer Simulation:') &&
+        !startsWith(github.event.issue.title, 'Challenge ') &&
+        !startsWith(github.event.issue.title, 'Start Here:')
+      )
 
     steps:
       - name: Count issues authored by this student
