@@ -230,14 +230,17 @@
 <li><code>learning-room-smoke-b</code></li>
 </ul>
 <h2 id="required-facilitator-setup">Required Facilitator Setup</h2>
-<p>After the student repository exists, run:</p>
-<pre><code class="hljs language-powershell">scripts/classroom/Seed<span class="hljs-literal">-LearningRoomChallenge</span>.ps1 <span class="hljs-literal">-Repository</span> Community<span class="hljs-literal">-Access</span>/learning<span class="hljs-literal">-room-smoke-a</span> <span class="hljs-literal">-Challenge</span> <span class="hljs-number">1</span> <span class="hljs-literal">-Assignee</span> <span class="hljs-built_in">test-student</span><span class="hljs-literal">-a</span>
-scripts/classroom/Seed<span class="hljs-literal">-PeerSimulation</span>.ps1 <span class="hljs-literal">-Repository</span> Community<span class="hljs-literal">-Access</span>/learning<span class="hljs-literal">-room-smoke-a</span> <span class="hljs-literal">-StudentUsername</span> <span class="hljs-built_in">test-student</span><span class="hljs-literal">-a</span></code></pre>
-<p>For Day 2-only testing, seed Challenge 10 instead:</p>
-<pre><code class="hljs language-powershell">scripts/classroom/Seed<span class="hljs-literal">-LearningRoomChallenge</span>.ps1 <span class="hljs-literal">-Repository</span> Community<span class="hljs-literal">-Access</span>/learning<span class="hljs-literal">-room-smoke-a</span> <span class="hljs-literal">-Challenge</span> <span class="hljs-number">10</span> <span class="hljs-literal">-Assignee</span> <span class="hljs-built_in">test-student</span><span class="hljs-literal">-a</span>
-scripts/classroom/Seed<span class="hljs-literal">-PeerSimulation</span>.ps1 <span class="hljs-literal">-Repository</span> Community<span class="hljs-literal">-Access</span>/learning<span class="hljs-literal">-room-smoke-a</span> <span class="hljs-literal">-StudentUsername</span> <span class="hljs-built_in">test-student</span><span class="hljs-literal">-a</span></code></pre>
+<p>The old <code>scripts/classroom/</code> PowerShell seeding scripts were removed with GitHub Classroom. Seeding now runs through the Student Progression Bot workflow inside the student repository.</p>
+<p>After the student repository exists, open the repo&#39;s Actions tab, choose <strong>Student Progression Bot</strong>, select <strong>Run workflow</strong>, and set:</p>
+<ul>
+<li><code>start_challenge</code>: <code>1</code></li>
+<li><code>assignee</code>: <code>test-student-a</code></li>
+</ul>
+<p>For Day 2-only testing, set <code>start_challenge</code> to <code>10</code> instead.</p>
+<p>Equivalent CLI:</p>
+<pre><code class="hljs language-bash">gh workflow run student-progression.yml -R Community-Access/learning-room-smoke-a -f start_challenge=1 -f assignee=test-student-a</code></pre>
 <h2 id="what-the-peer-simulation-creates">What The Peer Simulation Creates</h2>
-<p><code>Seed-PeerSimulation.ps1</code> creates realistic collaboration artifacts inside the student&#39;s private repo:</p>
+<p>The progression bot seeds realistic collaboration artifacts inside the student&#39;s private repo automatically whenever it creates a challenge issue (and repairs them if any are missing):</p>
 <ul>
 <li><code>Peer Simulation: Welcome Link Needs Context</code> issue</li>
 <li><code>Peer Simulation: Review Request for Contribution Guidance</code> issue</li>

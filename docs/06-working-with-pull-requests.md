@@ -75,7 +75,30 @@ The following table summarizes the practice files in the learning-room, what eac
 | `docs/keyboard-shortcuts.md` | Screen reader shortcut reference tables | Intentional errors in shortcut references |
 | `docs/setup-guide.md` | Getting-started instructions | Broken links and incomplete steps |
 
-**Steps using the web editor:**
+#### Steps Using the Web Editor
+
+This is your first challenge that uses GitHub's web editor, so take a moment with the learning cards below before you start.
+
+**About the web editor:** GitHub offers two browser-based editors. The **file editor** (the pencil icon on any file) edits one file at a time and is what these steps use. The full **github.dev** editor (press `.` (period) from the repository's Code page) is a browser-based version of Visual Studio Code with the same commands, Command Palette, and screen reader mode as the desktop app. Either works for this challenge. If you use github.dev, see [Chapter 11: VS Code Interface](11-vscode-interface.md) and the [VS Code Accessibility Deep Dive](12-vscode-accessibility.md) for full navigation guidance.
+
+<details>
+<summary>Screen reader users (NVDA / JAWS / VoiceOver)</summary>
+
+- **Find your file:** On the repository's Code page, the file list is a table. Use your table reading commands to reach the file named in your issue, then press `Enter` to open it. Or press `T` to open "Go to file" and type the file name.
+- **Open the editor:** With the file displayed, press `E` to open it directly in the file editor, or press `B` (NVDA/JAWS buttons quick key) to find the "Edit this file" button and press `Enter`. VoiceOver: use the Buttons rotor (`VO+U`) to find "Edit this file" and press `VO+Space`.
+- **Alternative - github.dev:** With the file displayed (or from the Code page), press `.` (period) to open the whole repository in github.dev, a web version of VS Code. Enable screen reader mode when prompted.
+- **Find the Commit changes button:** After editing, press `B` (or use the Buttons rotor) to find the button named "Commit changes..." - it sits above the editor. Activating it opens a dialog where the branch name field and "Propose changes" button live; the dialog receives focus automatically.
+
+</details>
+
+<details>
+<summary>Sighted users</summary>
+
+- Navigate to the file via the file list or the "Go to file" search.
+- Select the **pencil icon** (Edit this file) at the top right of the file view.
+- After editing, select the green **Commit changes** button above the editor to open the commit dialog.
+
+</details>
 
 1. In your Learning Room repository, navigate to the file specified in your issue. Use the file tree or the "Go to file" button (`T` keyboard shortcut).
 2. Open the file and activate the **pencil icon** (Edit this file) button.

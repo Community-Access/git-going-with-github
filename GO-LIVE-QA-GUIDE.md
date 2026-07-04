@@ -1,5 +1,7 @@
 # Git Going with GitHub Go-Live QA Guide
 
+> **Status note (2026-07):** GitHub Classroom and the `scripts/classroom/` PowerShell tooling were removed; provisioning is now the hybrid pipeline in `.github/scripts/provisioning/`, and peer simulation seeding happens automatically via the Student Progression Bot in each learning room. Interpret `scripts/classroom/*.ps1` steps below as the Student Progression Bot workflow dispatch (inputs `start_challenge`, `assignee`).
+
 Use this guide before a cohort is opened to learners. It is the release gate for curriculum content, GitHub Classroom deployment, Learning Room automation, accessibility, and human test coverage. Podcast and LLM-generation QA is tracked here as non-blocking unless a podcast release is explicitly in scope.
 
 For end-to-end execution details, use [admin/LEARNING-ROOM-E2E-QA-RUNBOOK.md](admin/LEARNING-ROOM-E2E-QA-RUNBOOK.md) as the operator procedure. This guide is the release gate summary; the runbook is the required execution playbook.
@@ -241,8 +243,8 @@ Run these checks in disposable student repositories created by GitHub Classroom.
 
 ### Seeding Scripts
 
-- [ ] `Seed-LearningRoomChallenge.ps1` creates the requested starting challenge.
-- [ ] `Seed-PeerSimulation.ps1` creates the peer simulation issues, branch, file, and PR.
+- [ ] Student Progression Bot workflow dispatch creates the requested starting challenge.
+- [ ] The progression bot seeds the peer simulation issues, branch, file, and PR automatically alongside the challenge issue.
 - [ ] `Start-MergeConflictChallenge.ps1` creates a real conflict against the student branch.
 - [ ] `Test-LearningRoomTemplate.ps1` reports the template readiness state.
 - [ ] Script failures show a clear error message and do not partially hide the problem.

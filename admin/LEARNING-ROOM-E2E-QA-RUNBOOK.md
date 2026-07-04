@@ -1,5 +1,7 @@
 # Learning Room End-to-End QA Runbook (Registration to Student Completion)
 
+> **Status note (2026-07):** GitHub Classroom and the `scripts/classroom/` PowerShell tooling were removed. Provisioning is the hybrid pipeline in `.github/scripts/provisioning/` (workflow `provision-learning-rooms.yml`), and peer simulation artifacts are seeded automatically by the Student Progression Bot in each learning room. Interpret `scripts/classroom/*.ps1` steps below as the Student Progression Bot workflow dispatch (inputs `start_challenge`, `assignee`); `Seed-PeerSimulation.ps1` steps need no action because the bot seeds and self-repairs those artifacts.
+
 Use this runbook when you want one operational checklist that covers the full workflow:
 
 1. Registration intake and validation.

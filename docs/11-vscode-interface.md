@@ -449,27 +449,16 @@ Before diving into individual features, here is how VS Code is organized. Every 
 
 ### The Five Major Regions
 
-```text
-+----------------------------------------------------------+
-|  Menu Bar (File, Edit, View, Go, Run, Terminal, Help)    |
-+------+---------------------------------------------------+
-|      |                                                    |
-| A    |  Editor Area                                       |
-| c    |  (your files open here)                            |
-| t    |                                                    |
-| i    |                                                    |
-| v    |                                                    |
-| i    +---------------------------------------------------+
-| t    |                                                    |
-| y    |  Panel (Terminal, Problems, Output, Debug Console) |
-|      |                                                    |
-| B    +---------------------------------------------------+
-| a    |  Status Bar (line, column, language, Git branch,   |
-| r    |   Copilot status, encoding, notifications)         |
-+------+---------------------------------------------------+
-```
+| Region | Where it sits | What it contains |
+| --- | --- | --- |
+| Menu Bar | Full width across the top | File, Edit, View, Go, Run, Terminal, Help menus |
+| Activity Bar | Vertical strip along the left edge | Icons for Explorer, Source Control, Search, Extensions, Accounts |
+| Sidebar | Right of the Activity Bar | Content for the selected activity (file tree, search results, etc.) |
+| Editor Area | Large central region | Your open files |
+| Panel | Below the Editor Area | Terminal, Problems, Output, Debug Console tabs |
+| Status Bar | Very bottom, full width | Line, column, language, Git branch, Copilot status, encoding, notifications |
 
-**Text description of the layout above:** VS Code has five major regions arranged in a grid. The **Menu Bar** spans the full width across the top. Below it, the **Activity Bar** runs vertically along the left edge (it contains icons for Explorer, Source Control, Search, Extensions, and more). The **Sidebar** appears to the right of the Activity Bar and shows content for the selected activity (file tree, search results, etc.). The **Editor Area** fills the large central region where your files open. Below the Editor Area, the **Panel** stretches across the bottom and contains the Terminal, Problems, Output, and Debug Console tabs. Finally, the **Status Bar** runs along the very bottom showing line number, column, language mode, Git branch, Copilot status, encoding, and notifications.
+**How the regions fit together:** VS Code has five major regions arranged in a grid. The **Menu Bar** spans the full width across the top. Below it, the **Activity Bar** runs vertically along the left edge (it contains icons for Explorer, Source Control, Search, Extensions, and more). The **Sidebar** appears to the right of the Activity Bar and shows content for the selected activity (file tree, search results, etc.). The **Editor Area** fills the large central region where your files open. Below the Editor Area, the **Panel** stretches across the bottom and contains the Terminal, Problems, Output, and Debug Console tabs. Finally, the **Status Bar** runs along the very bottom showing line number, column, language mode, Git branch, Copilot status, encoding, and notifications.
 
 ### Navigating Between Regions
 
