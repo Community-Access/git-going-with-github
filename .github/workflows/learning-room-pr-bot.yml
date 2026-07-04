@@ -23,7 +23,13 @@ jobs:
   welcome-issue-timer:
     name: Welcome to Your First Issue
     runs-on: ubuntu-latest
-    if: github.event_name == 'issues' && github.event.action == 'opened'
+    # Skip intake issues (enrollment/registration): those get their own
+    # automation comments, and a "first issue" greeting there confuses
+    # brand-new learners mid-signup.
+    if: >-
+      github.event_name == 'issues' && github.event.action == 'opened' &&
+      !startsWith(github.event.issue.title, '[ENROLL]') &&
+      !startsWith(github.event.issue.title, '[REGISTER]')
     steps:
       - name: Greet First Issue
         uses: actions/github-script@v8
