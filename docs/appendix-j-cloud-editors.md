@@ -348,6 +348,18 @@ If the branch exists on GitHub, you can create a new Codespace from it. Uncommit
 
 You may have committed but not pushed. In the Source Control panel, look for the **Sync Changes** or **Push** button. Run `git push` in the terminal if needed.
 
+### Commit and Push is disabled in github.dev even though I have write access
+
+In github.dev, your edits are saved in the browser's local storage until you commit them. If the repository receives new commits after you opened the editor (for example, workshop maintenance updates pushed to your Learning Room), the editor's copy of the repository goes stale and **Commit & Push** can become disabled - pressing `Ctrl+Enter` in the commit message field does nothing, and the Accessible View reports that commit and push are disabled. AI assistants sometimes misreport this as a permissions problem; if you could open the private repository in github.dev, you are signed in and your access is fine.
+
+To fix it:
+
+1. Reload the browser tab (`F5`), or go back to the repository page on GitHub.com and press `.` to reopen github.dev. Your uncommitted edits are restored from browser storage after the reload.
+2. Confirm you are signed in: the **Accounts** button in the Activity Bar should announce your GitHub username.
+3. Return to the Source Control panel (`Ctrl+Shift+G`), enter your commit message, and press `Ctrl+Enter`.
+
+If it is still disabled after a reload, copy your edited text to the clipboard as a backup, then use the **Edit this file** (pencil) editor on GitHub.com instead - it commits directly and does not depend on browser state.
+
 ---
 
 *Next: [Appendix K: Copilot Reference](appendix-k-copilot-reference.md)*  
