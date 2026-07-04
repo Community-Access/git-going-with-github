@@ -17,23 +17,24 @@ Full collaboration test:
 
 ## Required Facilitator Setup
 
-After the student repository exists, run:
+The old `scripts/classroom/` PowerShell seeding scripts were removed with GitHub Classroom. Seeding now runs through the Student Progression Bot workflow inside the student repository.
 
-```powershell
-scripts/classroom/Seed-LearningRoomChallenge.ps1 -Repository Community-Access/learning-room-smoke-a -Challenge 1 -Assignee test-student-a
-scripts/classroom/Seed-PeerSimulation.ps1 -Repository Community-Access/learning-room-smoke-a -StudentUsername test-student-a
-```
+After the student repository exists, open the repo's Actions tab, choose **Student Progression Bot**, select **Run workflow**, and set:
 
-For Day 2-only testing, seed Challenge 10 instead:
+- `start_challenge`: `1`
+- `assignee`: `test-student-a`
 
-```powershell
-scripts/classroom/Seed-LearningRoomChallenge.ps1 -Repository Community-Access/learning-room-smoke-a -Challenge 10 -Assignee test-student-a
-scripts/classroom/Seed-PeerSimulation.ps1 -Repository Community-Access/learning-room-smoke-a -StudentUsername test-student-a
+For Day 2-only testing, set `start_challenge` to `10` instead.
+
+Equivalent CLI:
+
+```bash
+gh workflow run student-progression.yml -R Community-Access/learning-room-smoke-a -f start_challenge=1 -f assignee=test-student-a
 ```
 
 ## What The Peer Simulation Creates
 
-`Seed-PeerSimulation.ps1` creates realistic collaboration artifacts inside the student's private repo:
+The progression bot seeds realistic collaboration artifacts inside the student's private repo automatically whenever it creates a challenge issue (and repairs them if any are missing):
 
 - `Peer Simulation: Welcome Link Needs Context` issue
 - `Peer Simulation: Review Request for Contribution Guidance` issue

@@ -968,7 +968,11 @@ function findMarkdownFiles(dir, fileList = []) {
         findMarkdownFiles(filePath, fileList);
       }
     } else if (file.endsWith('.md')) {
-      fileList.push(filePath);
+      // gold.md is a private maintainer log; keep it out of the public site.
+      const relative = path.relative(process.cwd(), filePath).replace(/\\/g, '/');
+      if (relative !== 'gold.md') {
+        fileList.push(filePath);
+      }
     }
   });
 

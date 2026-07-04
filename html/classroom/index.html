@@ -250,6 +250,9 @@
   </nav>
       <div id="course-content"><h1 id="workshop-deployment-guide">Workshop Deployment Guide</h1>
 <blockquote>
+<p><strong>Status note (2026-07):</strong> GitHub Classroom and the <code>scripts/classroom/</code> PowerShell tooling described in this guide have been removed. Current cohorts use hybrid provisioning (<code>.github/scripts/provisioning/</code>, triggered by the <code>provision-learning-rooms.yml</code> workflow), and peer simulation artifacts are seeded automatically by the Student Progression Bot inside each learning room. Where this guide references a <code>scripts/classroom/*.ps1</code> script, use the Student Progression Bot&#39;s <strong>Run workflow</strong> dispatch (inputs <code>start_challenge</code> and <code>assignee</code>) instead. This guide is retained for the parts that are still accurate (challenge flow, bots, grading).</p>
+</blockquote>
+<blockquote>
 <p>Single, end-to-end guide for deploying a new Git Going with GitHub workshop cohort. Covers everything from creating the classroom through post-workshop teardown. This is the only deployment document you need.</p>
 </blockquote>
 <blockquote>
@@ -592,8 +595,7 @@ student-a,Alice Student,<span class="hljs-symbol">alice@</span>example.com</code
 <pre><code class="hljs language-powershell">scripts/classroom/Seed<span class="hljs-literal">-LearningRoomChallenge</span>.ps1 <span class="hljs-literal">-Repository</span> Community<span class="hljs-literal">-Access-Classroom</span>/learning<span class="hljs-literal">-room-studentname</span> <span class="hljs-literal">-Challenge</span> <span class="hljs-number">1</span> <span class="hljs-literal">-Assignee</span> studentname</code></pre>
 <p>For Day 2, use <code>-Challenge 10</code>.</p>
 <h3 id="seeding-peer-simulation">Seeding peer simulation</h3>
-<p>Because each GitHub Classroom repository is private, students cannot automatically see a classmate&#39;s issues or pull requests. To preserve realistic collaboration without exposing private student repos, seed peer-simulation artifacts into each student&#39;s repository:</p>
-<pre><code class="hljs language-powershell">scripts/classroom/Seed<span class="hljs-literal">-PeerSimulation</span>.ps1 <span class="hljs-literal">-Repository</span> Community<span class="hljs-literal">-Access-Classroom</span>/learning<span class="hljs-literal">-room-studentname</span> <span class="hljs-literal">-StudentUsername</span> studentname</code></pre>
+<p>Because each learning room repository is private, students cannot automatically see a classmate&#39;s issues or pull requests. To preserve realistic collaboration without exposing private student repos, peer-simulation artifacts are seeded into each student&#39;s repository automatically: the Student Progression Bot creates them the first time it opens a challenge issue, and repairs them on later runs if any are missing. No facilitator action is required.</p>
 <p>This creates two peer-simulation issues and one peer-simulation pull request. Challenges that ask students to comment, react, review, compare, or practice peer collaboration can use those seeded artifacts. If facilitators intentionally provision real buddy access, students may use real buddy repositories instead.</p>
 <h3 id="triggering-merge-conflict-practice">Triggering merge conflict practice</h3>
 <p>Challenge 7 needs a real conflict. After the student has edited <code>docs/welcome.md</code> on their challenge branch and opened a pull request, run:</p>

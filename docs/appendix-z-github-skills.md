@@ -333,6 +333,7 @@ Path 6: Cloud and Migration
 - [GitHub Skills homepage](https://skills.github.com/) - browse all courses with descriptions
 - [GitHub Skills organization](https://github.com/skills) - view all course repositories directly
 - [GitHub Skills Discussions](https://github.com/orgs/skills/discussions) - ask questions and share feedback with the GitHub Skills community
+- [GitHub's learning portal](https://learn.github.com/) - GitHub's broader learning hub, including certification prep and links to Microsoft Learn modules. Accessibility varies by module, but it is a rich way to explore concepts hands-on and Microsoft Learn content is often quite accessible.
 
 ---
 

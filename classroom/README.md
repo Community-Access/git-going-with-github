@@ -1,5 +1,7 @@
 # Workshop Deployment Guide
 
+> **Status note (2026-07):** GitHub Classroom and the `scripts/classroom/` PowerShell tooling described in this guide have been removed. Current cohorts use hybrid provisioning (`.github/scripts/provisioning/`, triggered by the `provision-learning-rooms.yml` workflow), and peer simulation artifacts are seeded automatically by the Student Progression Bot inside each learning room. Where this guide references a `scripts/classroom/*.ps1` script, use the Student Progression Bot's **Run workflow** dispatch (inputs `start_challenge` and `assignee`) instead. This guide is retained for the parts that are still accurate (challenge flow, bots, grading).
+
 > Single, end-to-end guide for deploying a new Git Going with GitHub workshop cohort. Covers everything from creating the classroom through post-workshop teardown. This is the only deployment document you need.
 
 > Before sharing invite links with students, complete the [Go-Live QA Guide](../GO-LIVE-QA-GUIDE.md). It is the final release gate for content, workflows, Classroom setup, podcasts, accessibility, and human test coverage.
@@ -265,11 +267,7 @@ For Day 2, use `-Challenge 10`.
 
 ### Seeding peer simulation
 
-Because each GitHub Classroom repository is private, students cannot automatically see a classmate's issues or pull requests. To preserve realistic collaboration without exposing private student repos, seed peer-simulation artifacts into each student's repository:
-
-```powershell
-scripts/classroom/Seed-PeerSimulation.ps1 -Repository Community-Access-Classroom/learning-room-studentname -StudentUsername studentname
-```
+Because each learning room repository is private, students cannot automatically see a classmate's issues or pull requests. To preserve realistic collaboration without exposing private student repos, peer-simulation artifacts are seeded into each student's repository automatically: the Student Progression Bot creates them the first time it opens a challenge issue, and repairs them on later runs if any are missing. No facilitator action is required.
 
 This creates two peer-simulation issues and one peer-simulation pull request. Challenges that ask students to comment, react, review, compare, or practice peer collaboration can use those seeded artifacts. If facilitators intentionally provision real buddy access, students may use real buddy repositories instead.
 

@@ -235,6 +235,9 @@
     </ul>
   </nav>
       <div id="course-content"><h1 id="git-going-with-github-go-live-qa-guide">Git Going with GitHub Go-Live QA Guide</h1>
+<blockquote>
+<p><strong>Status note (2026-07):</strong> GitHub Classroom and the <code>scripts/classroom/</code> PowerShell tooling were removed; provisioning is now the hybrid pipeline in <code>.github/scripts/provisioning/</code>, and peer simulation seeding happens automatically via the Student Progression Bot in each learning room. Interpret <code>scripts/classroom/*.ps1</code> steps below as the Student Progression Bot workflow dispatch (inputs <code>start_challenge</code>, <code>assignee</code>).</p>
+</blockquote>
 <p>Use this guide before a cohort is opened to learners. It is the release gate for curriculum content, GitHub Classroom deployment, Learning Room automation, accessibility, and human test coverage. Podcast and LLM-generation QA is tracked here as non-blocking unless a podcast release is explicitly in scope.</p>
 <p>For end-to-end execution details, use <a href="admin/LEARNING-ROOM-E2E-QA-RUNBOOK.html">admin/LEARNING-ROOM-E2E-QA-RUNBOOK.md</a> as the operator procedure. This guide is the release gate summary; the runbook is the required execution playbook.</p>
 <p>The goal is simple: a facilitator should be able to create a classroom, seed test repositories, complete every challenge path, validate every generated artifact, and know exactly what remains before students arrive.</p>
@@ -489,8 +492,8 @@ git <span class="hljs-built_in">diff</span> <span class="hljs-literal">--check</
 </ul>
 <h3 id="seeding-scripts">Seeding Scripts</h3>
 <ul>
-<li><input aria-label="" disabled="" type="checkbox"> <code>Seed-LearningRoomChallenge.ps1</code> creates the requested starting challenge.</li>
-<li><input aria-label="" disabled="" type="checkbox"> <code>Seed-PeerSimulation.ps1</code> creates the peer simulation issues, branch, file, and PR.</li>
+<li><input aria-label="Student Progression Bot workflow dispatch creates the requested starting challenge." disabled="" type="checkbox"> Student Progression Bot workflow dispatch creates the requested starting challenge.</li>
+<li><input aria-label="The progression bot seeds the peer simulation issues, branch, file, and PR automatically alongside the challenge issue." disabled="" type="checkbox"> The progression bot seeds the peer simulation issues, branch, file, and PR automatically alongside the challenge issue.</li>
 <li><input aria-label="" disabled="" type="checkbox"> <code>Start-MergeConflictChallenge.ps1</code> creates a real conflict against the student branch.</li>
 <li><input aria-label="" disabled="" type="checkbox"> <code>Test-LearningRoomTemplate.ps1</code> reports the template readiness state.</li>
 <li><input aria-label="Script failures show a clear error message and do not partially hide the problem." disabled="" type="checkbox"> Script failures show a clear error message and do not partially hide the problem.</li>

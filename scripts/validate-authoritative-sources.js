@@ -39,8 +39,8 @@ function includeContentFile(relPath) {
 
   if (excludedPrefixes.some(prefix => n.startsWith(prefix))) return false;
 
-  // Tooling instructions, not curriculum content.
-  const excludedRootFiles = ['CLAUDE.md'];
+  // Tooling instructions and maintainer logs, not curriculum content.
+  const excludedRootFiles = ['CLAUDE.md', 'gold.md'];
   if (excludedRootFiles.includes(n)) return false;
 
   if (n.startsWith('docs/')) return true;
