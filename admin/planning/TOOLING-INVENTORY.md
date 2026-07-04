@@ -2,7 +2,7 @@
 
 Purpose: identify every source file in the content repo and the deploy/site repo that hardcodes an episode identifier, an appendix letter, or an audio slug, so Stage 1.3 (Site IA) and Stage 2+ (refactor) can be scoped accurately.
 
-The canonical identity source is now [docs/EPISODE_MAP.json](EPISODE_MAP.json). Every locked field below should ultimately resolve through that map by `narration_id`, `filename`, or `topic_prefix` + `topic_number`.
+The canonical identity source is now [docs/EPISODE_MAP.json](../../docs/EPISODE_MAP.json). Every locked field below should ultimately resolve through that map by `narration_id`, `filename`, or `topic_prefix` + `topic_number`.
 
 Scope of this inventory:
 
@@ -156,17 +156,17 @@ The deploy repo `c:\code\ggg` contains a parallel `generator/` pipeline with its
 
 Use these official references when you need the current source of truth for this inventory.
 
-- [Episode map](EPISODE_MAP.json)
+- [Episode map](../../docs/EPISODE_MAP.json)
 - [Episode map schema](EPISODE-MAP-SCHEMA.json)
 - [Site information architecture](SITE-IA.md)
-- [Reorganization master plan](../REORG-PLAN.md)
+- [Reorganization master plan](REORG-PLAN.md)
 
 ### Section-Level Source Map
 
 Use this map to verify facts for each major section in this file.
 
-- **Purpose / scope / exclusions:** [Reorganization master plan](../REORG-PLAN.md), [Site Information Architecture (Stage 1.3)](SITE-IA.md)
-- **Group A - live tooling that drives audio identity:** [Episode map](EPISODE_MAP.json), [Episode map schema](EPISODE-MAP-SCHEMA.json)
-- **Group B-D - docs tooling, legacy tools, wrappers:** [Reorganization master plan](../REORG-PLAN.md), [Site Information Architecture (Stage 1.3)](SITE-IA.md)
-- **Group E-G - generation pipeline, artifacts, authoring docs:** [Reorganization master plan](../REORG-PLAN.md), [Episode map](EPISODE_MAP.json)
-- **Group H / recommendations:** [Site Information Architecture (Stage 1.3)](SITE-IA.md), [Reorganization master plan](../REORG-PLAN.md), [Episode map](EPISODE_MAP.json)
+- **Purpose / scope / exclusions:** [Reorganization master plan](REORG-PLAN.md), [Site Information Architecture (Stage 1.3)](SITE-IA.md)
+- **Group A - live tooling that drives audio identity:** [Episode map](../../docs/EPISODE_MAP.json), [Episode map schema](EPISODE-MAP-SCHEMA.json)
+- **Group B-D - docs tooling, legacy tools, wrappers:** [Reorganization master plan](REORG-PLAN.md), [Site Information Architecture (Stage 1.3)](SITE-IA.md)
+- **Group E-G - generation pipeline, artifacts, authoring docs:** [Reorganization master plan](REORG-PLAN.md), [Episode map](../../docs/EPISODE_MAP.json)
+- **Group H / recommendations:** [Site Information Architecture (Stage 1.3)](SITE-IA.md), [Reorganization master plan](REORG-PLAN.md), [Episode map](../../docs/EPISODE_MAP.json)
