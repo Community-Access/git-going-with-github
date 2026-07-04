@@ -38,7 +38,7 @@ You only need one path to begin.
 5. Stay on that issue page until the automation comment posts your learning room link and next steps.
 6. Reply `ack`, then close the enrollment issue as **Challenge 0**.
 
-> <a href="https://github.com/community-access/git-going-with-github/issues/new?template=start-here-roadmap.yml&title=%5BENROLL%5D+GIT+Going+with+GitHub" target="_blank" rel="noopener noreferrer"><strong>Begin the Adventure (opens in new tab)</strong></a>
+> <a href="https://github.com/community-access/git-going-with-github/issues/new?template=enrollment.yml&title=%5BENROLL%5D+GIT+Going+with+GitHub" target="_blank" rel="noopener noreferrer"><strong>Begin the Adventure (opens in new tab)</strong></a>
 
 ## How to fill the form (wizard tips)
 
