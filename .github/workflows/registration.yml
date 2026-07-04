@@ -247,7 +247,25 @@ jobs:
               '',
               `Hi ${displayName}, we could not process enrollment because some required values were missing: ${process.env.MISSING_FIELDS}.`,
               '',
-              'Please edit this issue and add the missing information, then comment `ready` so a facilitator can retry.'
+              'This usually happens when the issue was created from a different template than the enrollment form, so the name and email questions never appeared.',
+              '',
+              '**Easiest fix:** edit this issue and paste the lines below at the top of the issue body, filling in your details:',
+              '',
+              '```markdown',
+              '### Full Name',
+              '',
+              'Your Name Here',
+              '',
+              '### Email Address',
+              '',
+              'you@example.com',
+              '```',
+              '',
+              'To edit: open this issue, find the **Edit** option on the first post (in the `...` menu at the top right of the post), make the change, and select **Update comment**.',
+              '',
+              'When you are done, comment `ready` so a facilitator can retry.',
+              '',
+              'Prefer to start over instead? Use the enrollment form directly: https://github.com/Community-Access/git-going-with-github/issues/new?template=enrollment.yml&title=%5BENROLL%5D+GIT+Going+with+GitHub'
             ];
 
             await github.rest.issues.createComment({
