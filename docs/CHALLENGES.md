@@ -188,7 +188,7 @@ Before moving on, scan the [Challenge 9 solution reference](https://github.com/C
 
 **Chapters:** Ch11-14 | **Evidence:** Comment | **Autograded**
 
-Day 2 moves the same contribution workflow onto your computer. You clone the sci-fi themes repository, create a branch locally, edit `README.md`, commit, and push the branch back to GitHub.
+Day 2 moves the same contribution workflow onto your computer. You clone your own Learning Room repository, create a branch locally, edit `README.md`, commit, and push the branch back to GitHub.
 
 **CLI best practices for this challenge:**
 
@@ -199,7 +199,7 @@ Day 2 moves the same contribution workflow onto your computer. You clone the sci
 
 **What to do:**
 
-- Clone `https://github.com/Community-Access/vscode-sci-fi-themes.git` to your computer with VS Code, GitHub Desktop, or the command line
+- Clone your own Learning Room repository (copy the HTTPS URL from the green **Code** button on its main page) with VS Code, GitHub Desktop, or the command line
 - Create a branch named `fix/YOUR-USERNAME`
 - Edit `README.md`
 - Commit and push the branch to GitHub
@@ -214,7 +214,7 @@ The [Challenge 10 solution reference](https://github.com/Community-Access/git-go
 
 **Chapters:** Ch14-15 | **Evidence:** Comment
 
-This challenge proves that the pull request pattern is the same whether the edit started in the browser or on your computer. You push a local branch to the sci-fi themes repository, open a PR, and explain the change for reviewers.
+This challenge proves that the pull request pattern is the same whether the edit started in the browser or on your computer. You push a local branch to your Learning Room repository, open a PR, and explain the change for reviewers.
 
 **CLI best practices for this challenge:**
 
