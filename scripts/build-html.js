@@ -926,9 +926,23 @@ function convertMarkdownFile(mdPath, outputDir) {
     if (isRootRegisterPage) {
       const lowerFileAlias = path.join(outputDir, 'register.html');
       const lowerDirAlias = path.join(outputDir, 'register', 'index.html');
-      writeRedirectPage(lowerFileAlias, './REGISTER.html');
+      // On case-insensitive filesystems (Windows, macOS) register.html resolves
+      // to REGISTER.html itself, so writing the alias would overwrite the real
+      // page with a self-redirect. Only write it where the names are distinct.
+      let aliasCollides = false;
+      try {
+        aliasCollides =
+          fs.realpathSync.native(lowerFileAlias) === fs.realpathSync.native(outputPath);
+      } catch {
+        aliasCollides = false;
+      }
+      if (aliasCollides) {
+        console.log('✓ Skipped register.html alias (case-insensitive filesystem)');
+      } else {
+        writeRedirectPage(lowerFileAlias, './REGISTER.html');
+      }
       writeRedirectPage(lowerDirAlias, '../REGISTER.html');
-      console.log('✓ Added aliases: register.html, register/index.html');
+      console.log('✓ Added alias: register/index.html');
     }
 
     return outputPath;
