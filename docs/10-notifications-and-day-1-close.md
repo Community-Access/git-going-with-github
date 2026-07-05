@@ -13,11 +13,11 @@
 
 ## Workshop Recommendation (Chapter 10)
 
-For this workshop, Chapter 10 is a **guided practice chapter**, not a graded automation chapter.
+Chapter 10 is a **guided practice chapter** with no required Day 1 challenge issue of its own. The walkthrough below corresponds to the optional **Bonus D: Notification Mastery** issue, which unlocks after Challenge 15 (Day 2). You can read this chapter and try the walkthrough today, but you do not need a challenge issue to do so, and you do not need to wait for Bonus D to unlock to practice it.
 
-- **Challenge count:** 1 guided walkthrough
+- **Challenge count:** 0 required (optional Bonus D covers this topic later)
 - **Automation check:** none - notification settings are account-level and cannot be validated by the Learning Room PR bot
-- **Evidence:** structured completion comment on your assigned challenge issue
+- **Evidence:** if you want credit now, note what you tried in a comment on your current challenge issue; formal evidence is submitted on the Bonus D issue once it unlocks
 - **Pattern:** configure, filter, act
 
 ### Important Note: This Challenge Uses GitHub's Web Notification Inbox
@@ -39,11 +39,11 @@ This challenge focuses on **GitHub's web-based notification inbox** (at `github.
 
 If you have already configured email notifications on your GitHub account, that is fine—but this challenge does not require or test email delivery. Focus on the web inbox workflow instead.
 
-### Chapter 10 Challenge Set
+### Chapter 10 Practice Set
 
-1. **Configure notifications and practice inbox management** - set your watch level, use filters to find relevant notifications, and perform one inbox action.
+1. **Configure notifications and practice inbox management** - set your watch level, use filters to find relevant notifications, and perform one inbox action. (Formal evidence for this goes on the Bonus D issue once it unlocks.)
 
-### Challenge 10.1 Step-by-Step: Notification Inbox Walkthrough
+### Practice Step-by-Step: Notification Inbox Walkthrough
 
 **Goal:** Set up a useful notification workflow so you can keep up with reviews, mentions, and assignments without inbox overload.
 
@@ -68,16 +68,14 @@ If you have already configured email notifications on your GitHub account, that 
 
 ### Completing Chapter 10: Submit Your Evidence
 
-Open your **assigned Chapter 10 challenge issue** and post a completion comment:
+This practice does not have its own required issue. If you want to record what you tried, post a comment on your current challenge issue (or later on the **Bonus D: Notification Mastery** issue once it unlocks):
 
 ```text
-Chapter 10 completed:
+Chapter 10 practice completed:
 - Watch level set to: Participating and @mentions
 - Filters tested: Review requested, Assigned
 - Inbox action performed: [mute / mark done] on [thread description]
 ```
-
-Close your Chapter 10 challenge issue when done.
 
 ### Expected Outcomes
 
@@ -586,7 +584,7 @@ Go to [github.com/notifications](https://github.com/notifications) and practice:
 
 Take a breath. Day 1 is complete -- and you did a lot.
 
-Here is every skill you practiced, mapped to the chapter where you learned it and the evidence you created along the way:
+Here is every skill you practiced, mapped to the chapter where you learned it and the evidence you created along the way. Chapters 00-01 are setup (no challenge issue); Challenges 1-9 are the required Day 1 challenges; Chapters 09 and 10 are practice content with no required issue of their own (Chapter 09's evidence folds into Challenge 8, and Chapter 10 corresponds to the optional Bonus D, unlocked later):
 
 | Chapter | Skill | Evidence |
 |---|---|---|
@@ -598,11 +596,11 @@ Here is every skill you practiced, mapped to the chapter where you learned it an
 | [Chapter 05](05-working-with-issues.md) | Created, labeled, and commented on issues | Issue created with a descriptive title and body |
 | [Chapter 06](06-working-with-pull-requests.md) | Created a branch, edited a file, and opened a pull request | Merged PR visible in the repository |
 | [Chapter 07](07-merge-conflicts.md) | Recognized a merge conflict and resolved it | Conflict-free merge committed |
-| [Chapter 08](08-open-source-culture.md) | Read contributing guidelines, understood community norms, and practiced respectful communication | Thoughtful comment on a peer's issue or PR |
-| [Chapter 09](09-labels-milestones-projects.md) | Used labels, milestones, and project boards to organize work | Labels applied, milestone progress visible |
-| [Chapter 10](10-notifications-and-day-1-close.md) | Configured notification preferences and managed your inbox | Watch level set, at least one notification acted on |
+| [Chapter 08](08-open-source-culture.md) | Read contributing guidelines, understood community norms, and practiced respectful communication | Thoughtful comment on a peer's issue or PR, plus a label triaged |
+| [Chapter 09](09-labels-milestones-projects.md) | Used labels, milestones, and project boards to organize work | Folded into your Challenge 8 evidence - no separate issue |
+| [Chapter 10](10-notifications-and-day-1-close.md) | Configured notification preferences and managed your inbox | Optional - formal evidence goes on Bonus D once it unlocks |
 
-That is eleven chapters, eleven skills, and a trail of real evidence in a real repository.
+That is eleven chapters and eleven skills, built on nine required Day 1 challenges and a trail of real evidence in a real repository.
 
 ### If This Was Your First Time
 
@@ -612,7 +610,7 @@ If parts felt confusing or slow, that is completely normal. Every skill you prac
 
 ### Confidence Check
 
-Before you close your laptop, take two minutes to answer these questions in your Chapter 10 challenge issue. There are no wrong answers -- this is for you.
+Before you close your laptop, take two minutes to answer these questions in a comment on your **Challenge 9: Merge Day** issue (or in a personal note if you have already closed it). There are no wrong answers -- this is for you.
 
 1. Which chapter felt the most natural to you? Which one do you want to revisit?
 2. Can you explain what a pull request does to someone who has never used GitHub?
@@ -625,7 +623,7 @@ Before you close your laptop, take two minutes to answer these questions in your
 
 Look at how many challenge issues you completed today. Each one represents a skill you did not just read about -- you practiced it, posted evidence, and moved on. Some workshops hand you a certificate for sitting in a chair. This one asked you to prove your skills in a live repository, and you did.
 
-If you completed all eleven challenges, you are ready for Day 2 with a strong foundation. If you missed a few, that is fine -- you can finish them at your own pace before Day 2 begins. The Learning Room stays open.
+If you completed all nine Day 1 challenges, you are ready for Day 2 with a strong foundation. If you missed a few, that is fine -- you can finish them at your own pace before Day 2 begins. The Learning Room stays open.
 
 ### Learning Cards: What You Accomplished Today
 

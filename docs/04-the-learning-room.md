@@ -344,7 +344,7 @@ Each challenge lists the file(s) to edit, estimated time, skills practiced, and 
 
 ### Bonus Challenges
 
-Five bonus challenges (A through E) are available for students who finish faster. These include an accessibility audit, mentoring a peer, cross-repository contribution, creating a custom workflow, and documentation improvement.
+Five bonus challenges (A through E) unlock after Challenge 15 for students who finish faster: improving an existing agent and opening a PR (A), writing a reflection on your workshop journey (B), designing a collaborative challenge for future cohorts (C), configuring GitHub notifications (D), and exploring repository history visually with GitHub Desktop (E).
 
 ## How PR Sharing Works
 

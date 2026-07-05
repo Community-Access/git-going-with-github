@@ -86,9 +86,9 @@ Chapter 15, Part 1 introduces the **GitHub Pull Requests extension** for managin
 
 **You are done when:** You have posted at least one constructive review comment on someone else's PR.
 
-### Completing Chapter 15, Part 1: Submit Your Evidence
+### Completing Chapter 15, Part 1: Practice Only
 
-Open your assigned setup or review practice issue and post a completion comment:
+Part 1 is setup and practice - it does not have its own required issue. Post a comment on your current challenge issue if you want to record what you tried:
 
 ```text
 Chapter 15 Part 1 completed:
@@ -99,7 +99,7 @@ Chapter 15 Part 1 completed:
 - My comment was about: [one-sentence summary]
 ```
 
-Close your Chapter 12 challenge issues when done.
+Your formal evidence for this skill is submitted later, on the **Challenge 12: Review Like a Pro** issue (see Part 2 below).
 
 ### Expected Outcomes
 
