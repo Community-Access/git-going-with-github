@@ -367,39 +367,119 @@ async function createIssueFromTemplate(templateName, fallbackLabel) {
 
     log('INFO', `Successfully created issue: ${issue.html_url}`);
     console.log(`Created ${finalTitle}: ${issue.html_url}`);
+    return issue;
   } catch (error) {
     log('ERROR', `Failed to create issue from template ${templateName}: ${error.message}`);
     throw error;
   }
 }
 
-async function seedMergeConflict() {
-  const filePath = 'docs/welcome.md';
-  log('INFO', 'Seeding merge conflict for Challenge 7...');
+// Challenge 7 needs a real, GitHub-recognized merge conflict for the student
+// to resolve, but there is no live facilitator in the self-paced model to
+// trigger one by hand. The previous approach tried to replace a `[TODO]`
+// placeholder in docs/welcome.md on main - but that placeholder is always
+// resolved back in Challenge 1, long before Challenge 7 opens, so the check
+// silently skipped every time and no conflict was ever created (support#61).
+// Instead, open a dedicated branch and commit a different edit to the same
+// line on that branch and on main, then open a PR between them. Because both
+// edits diverge from the same base content, GitHub reports a genuine
+// conflict on the PR regardless of what any earlier challenge did.
+const CONFLICT_BRANCH = 'challenge-7/conflict-practice';
+const CONFLICT_FILE = 'docs/welcome.md';
+const CONFLICT_ANCHOR = '<!-- challenge-7-conflict-anchor -->';
+const CONFLICT_PR_TITLE = 'Challenge 7 practice: resolve this merge conflict';
+
+async function findOpenOrPastPullRequest(branch, request = githubRequest) {
+  const existing = await request(`/repos/${owner}/${repo}/pulls?head=${owner}:${encodeURIComponent(branch)}&state=all`, {}, 1);
+  return Array.isArray(existing) && existing.length > 0 ? existing[0] : null;
+}
+
+async function postConflictPracticeComment(issueNumber, prNumber, request = githubRequest) {
+  if (!issueNumber) {
+    return;
+  }
+  await request(`/repos/${owner}/${repo}/issues/${issueNumber}/comments`, {
+    method: 'POST',
+    body: {
+      body: `Your merge conflict practice PR is ready: #${prNumber}. Open that PR (not any other pull request you may already have open) and follow Step 1 below.`
+    }
+  });
+}
+
+async function ensureMergeConflictPractice(issueNumber, request = githubRequest) {
+  log('INFO', 'Setting up merge conflict practice for Challenge 7...');
   try {
-    const fileData = await githubRequest(`/repos/${owner}/${repo}/contents/${filePath}?ref=main`);
-    const currentContent = Buffer.from(fileData.content.replace(/\n/g, ''), 'base64').toString('utf8');
-    const todoPattern = /\[TODO: Add a paragraph explaining that contributors come from all backgrounds[^\]]+\]/;
-    const replacement = 'Contributors come from many backgrounds, skill levels, countries, and access needs. People who use assistive technology bring practical insight that helps projects work better for everyone.';
-    if (!todoPattern.test(currentContent)) {
-      log('INFO', 'TODO placeholder not found on main — conflict already seeded or student replaced it. Skipping.');
+    let targetIssueNumber = issueNumber;
+    if (!targetIssueNumber) {
+      const existingIssue = await findIssueByTitlePrefix('Challenge 7: Survive a Merge Conflict', request);
+      targetIssueNumber = existingIssue && existingIssue.number;
+    }
+
+    const existingPr = await findOpenOrPastPullRequest(CONFLICT_BRANCH, request);
+    if (existingPr) {
+      log('DEBUG', `Merge conflict practice PR already exists (#${existingPr.number}). Skipping.`);
+      await postConflictPracticeComment(targetIssueNumber, existingPr.number, request);
       return;
     }
-    const newContent = currentContent.replace(todoPattern, replacement);
-    const encoded = Buffer.from(newContent).toString('base64');
-    await githubRequest(`/repos/${owner}/${repo}/contents/${filePath}`, {
+
+    const mainRef = await request(`/repos/${owner}/${repo}/git/ref/heads/main`, {}, 1);
+    const fileData = await request(`/repos/${owner}/${repo}/contents/${CONFLICT_FILE}?ref=main`, {}, 1);
+    const baseContent = Buffer.from(fileData.content.replace(/\n/g, ''), 'base64').toString('utf8');
+
+    if (baseContent.includes(CONFLICT_ANCHOR)) {
+      log('INFO', 'Conflict anchor already present on main; assuming practice already ran. Skipping.');
+      return;
+    }
+
+    await request(`/repos/${owner}/${repo}/git/refs`, {
+      method: 'POST',
+      body: { ref: `refs/heads/${CONFLICT_BRANCH}`, sha: mainRef.object.sha }
+    });
+
+    const branchContent = `${baseContent.trimEnd()}\n\n${CONFLICT_ANCHOR}\nThis sentence was written on the practice branch for Challenge 7.\n`;
+    await request(`/repos/${owner}/${repo}/contents/${CONFLICT_FILE}`, {
       method: 'PUT',
       body: {
-        message: 'Workshop: seed merge conflict for Challenge 7 practice',
-        content: encoded,
+        message: 'Challenge 7 practice: edit on the practice branch',
+        content: Buffer.from(branchContent).toString('base64'),
+        sha: fileData.sha,
+        branch: CONFLICT_BRANCH
+      }
+    });
+
+    const mainContent = `${baseContent.trimEnd()}\n\n${CONFLICT_ANCHOR}\nThis sentence was written directly on main for Challenge 7.\n`;
+    await request(`/repos/${owner}/${repo}/contents/${CONFLICT_FILE}`, {
+      method: 'PUT',
+      body: {
+        message: 'Workshop: seed Challenge 7 merge conflict practice',
+        content: Buffer.from(mainContent).toString('base64'),
         sha: fileData.sha,
         branch: 'main'
       }
     });
-    log('INFO', 'Merge conflict seeded successfully on main.');
-    console.log('Merge conflict seeded on main for Challenge 7.');
+
+    const pr = await request(`/repos/${owner}/${repo}/pulls`, {
+      method: 'POST',
+      body: {
+        title: CONFLICT_PR_TITLE,
+        head: CONFLICT_BRANCH,
+        base: 'main',
+        body: [
+          'This pull request was opened automatically for Challenge 7 practice.',
+          '',
+          `Both \`main\` and this branch changed the same line in \`${CONFLICT_FILE}\`, so GitHub should show a real merge conflict here.`,
+          '',
+          targetIssueNumber ? `Related: #${targetIssueNumber}` : ''
+        ].filter(Boolean).join('\n')
+      }
+    });
+
+    log('INFO', `Opened Challenge 7 conflict practice PR: ${pr.html_url}`);
+    console.log(`Opened Challenge 7 conflict practice PR: ${pr.html_url}`);
+
+    await postConflictPracticeComment(targetIssueNumber, pr.number, request);
   } catch (error) {
-    log('WARN', `Could not seed merge conflict: ${error.message}. Students can still resolve manually.`);
+    log('WARN', `Could not set up merge conflict practice: ${error.message}. Student can still resolve manually.`);
   }
 }
 
@@ -600,16 +680,20 @@ if (require.main === module) {
       // to point at.
       await ensurePeerSimulationArtifacts();
 
+      let challenge7Issue = null;
       for (const target of progressionTargets) {
         if (target.kind === 'challenge') {
-          await createChallenge(target.number);
+          const issue = await createChallenge(target.number);
+          if (target.number === 7) {
+            challenge7Issue = issue;
+          }
         } else if (target.kind === 'bonus') {
           await createIssueFromTemplate(target.template, 'Bonus');
         }
       }
 
       if (progressionTargets.some(target => target.kind === 'challenge' && target.number === 7)) {
-        await seedMergeConflict();
+        await ensureMergeConflictPractice(challenge7Issue && challenge7Issue.number);
       }
     })()
       .catch(error => {
@@ -627,5 +711,6 @@ module.exports = {
   ensureLabel,
   ensurePeerIssue,
   ensurePeerSimulationBranch,
-  ensurePeerSimulationPullRequest
+  ensurePeerSimulationPullRequest,
+  ensureMergeConflictPractice
 };

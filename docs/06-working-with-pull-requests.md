@@ -63,7 +63,7 @@ For reliable PR workflows in the terminal:
 
 **Where you are working:** your Learning Room repository on GitHub.com, using the web editor.
 
-**Before you start:** Open your **assigned Chapter 6.1 challenge issue** (the one titled "Chapter 6.1: Create One Small Branch Change (@yourname)"). The issue description tells you which file to edit and what to fix.
+**Before you start:** This section is preparation for your **Challenge 6: Open Your First PR** issue - there is no separate issue for making the edit itself. Pick one of the three practice files below, make one focused change, and save it on a new branch. When your branch has a commit, come back and continue with the PR steps later in this chapter.
 
 The Learning Room has three practice files with intentional problems. Your assigned issue points you to one of them:
 

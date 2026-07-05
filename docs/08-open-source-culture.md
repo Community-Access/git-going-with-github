@@ -20,19 +20,18 @@ Chapter 8 is a **communication and culture chapter**.
 
 ### Chapter 8 Challenge Set
 
-1. **Guided reflection** - read the chapter, then post a short reflection comment committing to three specific collaboration behaviors.
+1. **The Culture Layer** - read the chapter, reflect on three specific collaboration behaviors, then practice triaging an issue by adding a descriptive label.
 
-### Challenge 8.1 Step-by-Step: Guided Reflection
+### Challenge 8.1 Step-by-Step: The Culture Layer
 
-**Goal:** Identify three concrete communication behaviors you will practice during the rest of the workshop.
+**Goal:** Identify three concrete communication behaviors you will practice during the rest of the workshop, then triage an issue with a label.
 
-**Where you are working:** your assigned Chapter 8 challenge issue in your Learning Room repository on GitHub.com.
+**Where you are working:** your **assigned Challenge 8 issue** (the one titled "Challenge 8: The Culture Layer (@yourname)") in your Learning Room repository on GitHub.com.
 
 1. Read through the chapter content below, paying attention to the sections on GitHub Flow, constructive feedback, and asking for help.
 2. As you read, think about one situation from Day 1 where communication helped (or could have helped) you.
-3. Open your **assigned Chapter 8 challenge issue** (the one titled "Chapter 8.1: Guided Reflection (@yourname)").
-4. Scroll to the comment box at the bottom of the issue.
-5. Post a reflection comment using this format:
+3. Open your Challenge 8 issue and scroll to the comment box at the bottom.
+4. Post a reflection comment using this format:
 
 ```text
 Chapter 8 reflection:
@@ -47,12 +46,14 @@ Chapter 8 reflection:
    - Good: "I will include the exact step where I got stuck and what I already tried."
    - Vague: "I will ask good questions."
 2. Activate the **Comment** button (or press `Ctrl+Enter`).
+3. Open the **Peer Simulation: Welcome Link Needs Context** issue (or a real classmate's issue if you have buddy access) and apply one label that describes it (`bug`, `enhancement`, `documentation`, `good first issue`, or `question`).
+4. Optionally, leave a short comment on that issue explaining why you chose that label.
 
-**You are done when:** Your reflection comment appears on the issue with three specific, actionable behaviors.
+**You are done when:** Your reflection comment appears on your Challenge 8 issue with three specific, actionable behaviors, and you have applied a label to the peer-simulation issue.
 
 ### Completing Chapter 8: Submit Your Evidence
 
-The reflection comment itself is your evidence. No additional steps are needed. The facilitator reviews your comment for specificity. Close your Chapter 8 challenge issue when done.
+Post your evidence on your Challenge 8 issue: the reflection comment plus which issue you triaged and which label you applied. No additional steps are needed. Close your Challenge 8 issue when done.
 
 ### Expected Outcomes
 

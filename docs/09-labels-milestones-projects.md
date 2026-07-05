@@ -11,32 +11,32 @@
 
 ## Workshop Recommendation (Chapter 9)
 
-Chapter 9 is a **guided triage chapter** focused on organization skills.
+Chapter 9 is a **guided triage chapter** focused on organization skills. It does not have its own separate GitHub issue - your label-triage evidence for this stage of the workshop is submitted as part of your **Challenge 8: The Culture Layer** issue (see [Chapter 8](08-open-source-culture.md)). Use the exercise below as practice before you finish that evidence.
 
-- **Challenge count:** 1 guided challenge
+- **Challenge count:** 0 (practice only - folded into Challenge 8's evidence)
 - **Automation check:** none by default
-- **Evidence:** structured issue comment in assigned challenge issue
+- **Evidence:** structured comment on your Challenge 8 issue
 - **Pattern:** inspect, classify, explain
 
-### Chapter 9 Challenge Set
+### Chapter 9 Practice Set
 
 1. **Post a triage recommendation** - read an issue, recommend labels/milestone/project placement, and explain your reasoning.
 
-### Challenge 9.1 Step-by-Step: Triage Recommendation Comment
+### Practice Step-by-Step: Triage Recommendation Comment
 
 **Goal:** Read the details of a Learning Room issue and post a structured triage recommendation that a maintainer could act on immediately.
 
 > **Agentic strategy:** Labels and issue states are how we wake up agents. In the Day 2 capstone, you can design an agent that only activates when an issue gets a specific label, such as `needs-review` or `accessibility-check`.
 
-**Where you are working:** your assigned Chapter 9 challenge issue in your Learning Room repository on GitHub.com, plus one other open issue you will triage.
+**Where you are working:** your Learning Room repository on GitHub.com - pick one open issue to triage, then record your evidence on your Challenge 8 issue.
 
 1. Open the **Issues** tab in your Learning Room repository.
-2. Find any **open issue** that does not already have labels applied (or pick one your facilitator assigns).
+2. Find any **open issue** that does not already have labels applied.
 3. Read the issue title and full description carefully. Note:
    - What type of work is it? (documentation fix, bug report, accessibility improvement, new content)
    - How urgent does it seem? (blocking other work, nice-to-have, unclear)
    - Which file or area of the repo does it affect?
-4. Open your **assigned Chapter 9 challenge issue** (the one titled "Chapter 9.1: Triage Recommendation (@yourname)").
+4. Open your **Challenge 8: The Culture Layer** issue.
 5. Scroll to the comment box and post a triage recommendation using this format:
 
 ```text
@@ -52,11 +52,11 @@ Chapter 9 triage recommendation for issue #[number]:
 
 **Screen reader tip:** When browsing available labels, open the Labels page (`/labels` path on the repo) to see all label names and descriptions. Your screen reader will read each label name and its description text.
 
-**You are done when:** Your triage recommendation comment appears on your assigned challenge issue with all four fields filled in.
+**You are done when:** Your triage recommendation comment appears on your Challenge 8 issue with all four fields filled in.
 
 ### Completing Chapter 9: Submit Your Evidence
 
-Your triage recommendation comment is your evidence. Close your Chapter 9 challenge issue when done. If you also applied labels directly, mention that in your comment.
+This practice folds into your Challenge 8 evidence - there is no separate issue to close for Chapter 9. If you also applied labels directly, mention that in the same comment.
 
 ### Expected Outcomes
 

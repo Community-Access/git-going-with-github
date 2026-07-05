@@ -20,9 +20,9 @@ Chapter 7 uses **one controlled practice challenge** so students can learn confl
 
 ### Chapter 7 Challenge Set
 
-1. **Resolve conflict markers** - identify and clean up conflict markers in a practice file, then open a linked PR.
+1. **Resolve conflict markers** - identify and clean up conflict markers in an automatically opened practice pull request.
 
-> **Branch guidance for Chapter 7:** Use a short-lived feature branch: `fix/yourname-issueXX` (for example, `fix/maria-issue48`). The same pattern you used in Chapter 6.
+> **Branch guidance for Chapter 7:** No manual branch is needed this time. Opening your Challenge 7 issue automatically creates the practice branch and pull request for you.
 
 ### Challenge 7.1 Step-by-Step: Resolve Conflict Markers
 
@@ -32,11 +32,9 @@ Chapter 7 uses **one controlled practice challenge** so students can learn confl
 
 **Where you are working:** your Learning Room repository on GitHub.com (web editor) or in VS Code if you cloned locally.
 
-**Before you start:** Open your **assigned Chapter 7 challenge issue** (the one titled "Chapter 7.1: Resolve Conflict Markers (@yourname)"). The issue description tells you which practice file contains the conflict markers.
+**Before you start:** Open your **assigned Challenge 7 issue** (the one titled "Challenge 7: Survive a Merge Conflict (@yourname)"). Opening that issue automatically opens a practice pull request in your repository with a real merge conflict already showing in `docs/welcome.md` - look for a comment on the issue linking that PR.
 
-Practice sample: [`learning-room/docs/samples/chapter-6-conflict-practice-sample.md`](https://github.com/Community-Access/git-going-with-github/blob/main/learning-room/docs/samples/chapter-6-conflict-practice-sample.md)
-
-1. Open the practice file specified in your challenge issue.
+1. Open the practice PR linked in the issue comment, then open `docs/welcome.md` in the conflict editor.
 2. Search the file for `<<<<<<<`. This is the **start marker** - it shows where the conflict begins.
 3. Read the content between `<<<<<<<` and `=======`. This is **your version** (the current branch).
 4. Read the content between `=======` and `>>>>>>>`. This is **their version** (the incoming branch).
@@ -49,22 +47,19 @@ Practice sample: [`learning-room/docs/samples/chapter-6-conflict-practice-sample
    - The `=======` separator line
    - The `>>>>>>> branch-name` line
 7. Review the file to confirm no marker lines remain. Search for `<<<<<<<` again - there should be zero results.
-8. Commit your changes on a branch named `fix/yourname-issueXX`.
-9. Open a pull request with:
-   - Title: `fix: resolve conflict markers in [filename]`
-   - Body: Include `Closes #XX` (your challenge issue number) and a 1-2 sentence description of which content you kept and why.
+8. Click **Mark as resolved**, then **Commit merge** to finish resolving the conflict on the practice PR.
 
 **Screen reader tip:** Use your screen reader's find command (`Ctrl+F` in browser, `Ctrl+H` in VS Code) to jump directly to `<<<<<<<`. The markers are plain text, so they are fully readable.
 
-**You are done when:** Your PR passes bot validation checks and contains no remaining conflict markers.
+**You are done when:** Your practice PR passes bot validation checks and contains no remaining conflict markers.
 
 ### Completing Chapter 7: Submit Your Evidence
 
-When your PR is open and passing checks, post a comment on your assigned Chapter 7 challenge issue:
+When your practice PR is resolved and passing checks, post a comment on your Challenge 7 issue:
 
 ```text
 Chapter 7 completed:
-- Challenge 7.1: Opened PR #[number] resolving conflict markers in [filename]
+- Challenge 7.1: Resolved conflict markers in docs/welcome.md on the practice PR
 - Content decision: kept [your version / their version / combined both] because [reason]
 ```
 
