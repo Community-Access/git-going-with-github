@@ -863,6 +863,7 @@ gh pr create --title "Your title" --body "Description"
 2. A "Compare & pull request" banner may appear (if you recently pushed) - activate it
 3. OR: Navigate to Pull Requests tab → "New pull request"
 4. Choose your base branch (what to merge into) and compare branch (your changes)
+5. Activate the **Create pull request** button. It sits between the branch choosers and the diff, and the title and description form appears only after you activate it. Use the button quick navigation key (B in NVDA and JAWS browse mode) or search the page for "Create pull request". The comparison preview can read as very long because it includes unchanged context lines - the form is above it, not below it.
 
 </details>
 

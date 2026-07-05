@@ -316,10 +316,11 @@ Source template: [challenge-06-first-pr.yml](https://github.com/Community-Access
 
 1. Go to the **Pull requests** tab.
 2. Select **New pull request**.
-3. Set **base** to `main` and **compare** to `learn/YOUR-USERNAME`.
-4. Write a descriptive PR title.
-5. In the PR description, include `Closes #XX` (replace XX with your Challenge 2 issue number). This automatically links and closes the issue when the PR is merged.
-6. Submit the pull request.
+3. Set **base** to `main` and **compare** to `learn/YOUR-USERNAME`. The page shows a preview of your commits and changed files. This preview can read as very long because it includes unchanged context lines around each change - that is normal.
+4. Activate the **Create pull request** button. It sits between the branch choosers and the diff, and the title and description fields do not appear until you activate it. With a screen reader, use the button quick navigation key (B in NVDA and JAWS browse mode) or search the page for "Create pull request".
+5. Write a descriptive PR title.
+6. In the PR description, include `Closes #XX` (replace XX with your Challenge 2 issue number). This automatically links and closes the issue when the PR is merged.
+7. Submit by activating the **Create pull request** button below the description field.
 
 #### PR description template
 
@@ -363,6 +364,7 @@ Find the **Peer Simulation: Improve contribution guidance** PR and leave an enco
 | Symptom | Try this |
 |---|---|
 | I cannot find the New pull request button | Make sure you are on the Pull requests tab. The button is near the top-right. |
+| The diff appears but there is no title or description field | The compare page shows only a preview at first. Activate the **Create pull request** button between the branch choosers and the diff to open the form. |
 | It says "There isn't anything to compare" | Make sure your branch has at least one commit that differs from main. Did you commit to the right branch? |
 | I forgot to include `Closes #XX` | Edit your PR description after creating it. Select the three-dot menu or the Edit button on the description. |
 | I finished but want to check my work | [View the reference solution](https://github.com/Community-Access/git-going-with-github/blob/main/docs/solutions/solution-06-first-pr.md) |
