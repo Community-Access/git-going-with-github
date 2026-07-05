@@ -4545,8 +4545,8 @@ Based on: [Chapter 6: Working with Pull Requests](../docs/06-working-with-pull-r
 </p>
 <hr />
 <p><strong>Alex:</strong> In the chapter practice, the first mini challenge is intentionally small: create one
-  branch change. You open your assigned Chapter 6.1 issue in the Learning Room, go to the
-  file it names, and make only the requested edit.
+  branch change. This is prep work for Challenge 6, not a separate issue - you just pick one
+  of the three practice files in the Learning Room and make one focused edit.
 </p>
 <p><strong>Jamie:</strong> Those files are things like the welcome document, the keyboard shortcuts reference, and
   the setup guide, right?
@@ -5653,9 +5653,9 @@ Based on: [Chapter 7: Merge Conflicts Are Not Scary](../docs/07-merge-conflicts.
 <p><strong>Jamie:</strong> I like that it is controlled. You are not being dropped into a huge open source conflict
   with ten files and a blinking cursor.
 </p>
-<p><strong>Alex:</strong> Exactly. You open your assigned Chapter 7 challenge issue, the one titled something like
-  &quot;Chapter 7.1: Resolve Conflict Markers (@yourname).&quot; The issue tells you which
-  practice file contains the markers.
+<p><strong>Alex:</strong> Exactly. You open your Challenge 7 issue - titled &quot;Challenge 7: Survive a Merge
+  Conflict&quot; - and opening it automatically opens a practice pull request in your repository
+  with a real conflict already showing in docs/welcome.md.
 </p>
 <p><strong>Jamie:</strong> Then the first practical move is to search for &lt;&lt;&lt;&lt;&lt;&lt;&lt;, right?
 </p>
