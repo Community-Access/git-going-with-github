@@ -34,8 +34,10 @@ Chapter 7 uses **one controlled practice challenge** so students can learn confl
 
 **Before you start:** Open your **assigned Challenge 7 issue** (the one titled "Challenge 7: Survive a Merge Conflict (@yourname)"). Opening that issue automatically opens a practice pull request in your repository with a real merge conflict already showing in `docs/welcome.md` - look for a comment on the issue linking that PR.
 
-1. Open the practice PR linked in the issue comment, then open `docs/welcome.md` in the conflict editor.
-2. Search the file for `<<<<<<<`. This is the **start marker** - it shows where the conflict begins.
+> **Which tool should I use?** Use the inline conflict editor on **github.com** for this challenge - not github.dev. The "Resolving Conflicts on GitHub (Web Editor)" tool cards further down this chapter cover several tools (github.com, github.dev, VS Code, GitHub Desktop, CLI) because real-world conflicts can happen anywhere. For this specific challenge, stick to the github.com path in the steps below; it's the one this walkthrough (and the evidence you'll post) assumes you used.
+
+1. Open the practice PR linked in the issue comment. Scroll to the bottom of its Conversation tab and click the **Resolve conflicts** button (see the "Tool Cards: Resolve a Merge Conflict" section further down this chapter for exactly where this button sits and how to reach it with a screen reader). This opens GitHub's inline conflict editor directly on the PR page - a full-page text editor, still on github.com.
+2. In that editor, search the file for `<<<<<<<`. This is the **start marker** - it shows where the conflict begins.
 3. Read the content between `<<<<<<<` and `=======`. This is **your version** (the current branch).
 4. Read the content between `=======` and `>>>>>>>`. This is **their version** (the incoming branch).
 5. Decide which content to keep:
@@ -47,11 +49,12 @@ Chapter 7 uses **one controlled practice challenge** so students can learn confl
    - The `=======` separator line
    - The `>>>>>>> branch-name` line
 7. Review the file to confirm no marker lines remain. Search for `<<<<<<<` again - there should be zero results.
-8. Click **Mark as resolved**, then **Commit merge** to finish resolving the conflict on the practice PR.
+8. Click **Mark as resolved** (top-right of the file), then **Commit merge** (appears once every file in the PR is marked resolved) to finish resolving the conflict on the practice PR.
+9. The practice PR is disposable - its content is not meant to be merged into your real learning room. Once it shows no conflicts, you're done with it. You do **not** need to find or click "Close pull request" to complete this challenge; that button is for abandoning a PR entirely (covered later in this chapter for real-world conflicts) and is unrelated to finishing Challenge 7. Leave the practice PR open, or close it without merging if you'd like to tidy up - either is fine.
 
 **Screen reader tip:** Use your screen reader's find command (`Ctrl+F` in browser, `Ctrl+H` in VS Code) to jump directly to `<<<<<<<`. The markers are plain text, so they are fully readable.
 
-**You are done when:** Your practice PR passes bot validation checks and contains no remaining conflict markers.
+**You are done when:** Your practice PR passes bot validation checks and contains no remaining conflict markers. Completion is judged by the issue evidence comment below, not by merging or closing the practice PR.
 
 ### Completing Chapter 7: Submit Your Evidence
 
