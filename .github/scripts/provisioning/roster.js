@@ -151,6 +151,8 @@ function upsertLearner(roster, entry) {
     status: entry.status || 'awaiting-ack',
     registered_at: entry.registered_at || null,
     last_signal_at: entry.last_signal_at || null,
+    enrollment_repo: entry.enrollment_repo || null,
+    enrollment_issue_number: entry.enrollment_issue_number || null,
     notes: entry.notes || ''
   });
   return next;

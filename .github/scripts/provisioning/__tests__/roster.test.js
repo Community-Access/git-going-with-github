@@ -69,6 +69,25 @@ test('upsertLearner rejects invalid handle', () => {
   assert.throws(() => upsertLearner(emptyRoster(), { github_handle: '-bad', cohort_id: 'c1' }), /handle/);
 });
 
+test('upsertLearner persists enrollment_repo and enrollment_issue_number', () => {
+  const roster = emptyRoster();
+  const next = upsertLearner(roster, {
+    github_handle: 'alice',
+    cohort_id: 'c1',
+    enrollment_repo: 'Community-Access/git-going-with-github',
+    enrollment_issue_number: 250
+  });
+  assert.equal(next.learners[0].enrollment_repo, 'Community-Access/git-going-with-github');
+  assert.equal(next.learners[0].enrollment_issue_number, 250);
+});
+
+test('upsertLearner defaults enrollment fields to null when omitted', () => {
+  const roster = emptyRoster();
+  const next = upsertLearner(roster, { github_handle: 'bob', cohort_id: 'c1' });
+  assert.equal(next.learners[0].enrollment_repo, null);
+  assert.equal(next.learners[0].enrollment_issue_number, null);
+});
+
 test('findLearner locates by key', () => {
   const r = upsertLearner(emptyRoster(), { github_handle: 'Bob', cohort_id: 'c2' });
   assert.ok(findLearner(r, 'bob', 'c2'));
