@@ -194,14 +194,6 @@ async function provisionOne({
     permission
   });
 
-  await notifyEnrollmentIssue({
-    client,
-    enrollmentRepo,
-    enrollmentIssueNumber,
-    collaboratorStatus: collaboratorResult.status,
-    learningRoomRepo: `${studentOwner}/${repoName}`
-  });
-
   // Final verification gate: required workflows must be present. On a fresh
   // create (or heal), GitHub copies template content asynchronously after the
   // API returns, so give the copy time to land instead of failing the learner.
@@ -236,6 +228,14 @@ async function provisionOne({
     templateSha = await client.getDefaultBranchSha({ owner: studentOwner, repo: repoName });
   }
 
+  await notifyEnrollmentIssue({
+    client,
+    enrollmentRepo,
+    enrollmentIssueNumber,
+    collaboratorStatus: collaboratorResult.status,
+    learningRoomRepo: `${studentOwner}/${repoName}`
+  });
+
   return { result, healed, templateSha, collaboratorStatus: collaboratorResult.status };
 }
 
@@ -268,7 +268,7 @@ async function notifyEnrollmentIssue({
     await client.commentOnIssue({ owner, repo, issue_number: enrollmentIssueNumber, body });
   } catch (err) {
     console.error(
-      `Could not post enrollment follow-up comment on ${enrollmentRepo}#${enrollmentIssueNumber}: ${err.message}`
+      `Could not post enrollment follow-up comment on ${enrollmentRepo}#${enrollmentIssueNumber}: ${err && err.message ? err.message : String(err)}`
     );
   }
 }
