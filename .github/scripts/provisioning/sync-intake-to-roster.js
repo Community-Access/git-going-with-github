@@ -34,8 +34,9 @@ const { parseRoster, serializeRoster, findLearner, upsertLearner, isValidHandle 
 const INTAKE_TITLE_PREFIX = '[ENROLL-INTAKE]';
 
 /**
- * Extract { github_handle, registered_at } from an intake issue, or null when
- * the issue is not a parseable intake record.
+ * Extract the learner handle, registration time, intake issue number, and
+ * enrollment issue reference (enrollment_repo/enrollment_issue_number) from an
+ * intake issue, or null when the issue is not a parseable intake record.
  */
 function parseIntakeIssue(issue) {
   if (!issue || typeof issue.title !== 'string') return null;

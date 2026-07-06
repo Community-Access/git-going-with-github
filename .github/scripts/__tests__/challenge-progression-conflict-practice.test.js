@@ -84,7 +84,7 @@ test('opens a branch, two conflicting edits, a PR, and comments the issue', asyn
 
   const issueComments = calls.filter((c) => c.method === 'POST' && c.route === '/repos/org/room/issues/11/comments');
   assert.equal(issueComments.length, 1);
-  assert.match(issueComments[0].body.body, /#99/);
+  assert.match(issueComments[0].body.body, /practice PR is ready/);
 });
 
 test('is idempotent: does nothing when a practice PR already exists in any state', async () => {
@@ -132,7 +132,7 @@ test('never throws: progression survives a seeding failure', async () => {
     throw new Error('boom: no network');
   };
 
-  await assert.doesNotReject(ensureMergeConflictPractice(11, request));
+  await assert.doesNotReject(ensureMergeConflictPractice(11, request, 0));
 });
 
 test('falls back to manual instructions when the practice PR never registers as conflicting', async () => {

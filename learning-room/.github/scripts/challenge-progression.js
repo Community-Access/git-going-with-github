@@ -388,7 +388,7 @@ const CONFLICT_BRANCH = 'challenge-7/conflict-practice';
 const CONFLICT_FILE = 'docs/welcome.md';
 const CONFLICT_ANCHOR = '<!-- challenge-7-conflict-anchor -->';
 const CONFLICT_PR_TITLE = 'Challenge 7 practice: resolve this merge conflict';
-const CONFLICT_VERIFY_ATTEMPTS = 3;
+const CONFLICT_VERIFY_ATTEMPTS = 5;
 const CONFLICT_VERIFY_DELAY_MS = 2000;
 
 async function findOpenOrPastPullRequest(branch, request = githubRequest) {
